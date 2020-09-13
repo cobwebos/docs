@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure AD 应用代理发布远程桌面 | Microsoft Docs
-description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
+description: 介绍如何配置 RDS 应用程序代理
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019516"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396754"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -50,15 +50,15 @@ ms.locfileid: "87019516"
 
 - 应该[已部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](application-proxy-add-on-premises-application.md)。
 
-- 最终用户必须使用兼容的浏览器连接到 RD Web 或 RD Web 客户端。 有关更多详细信息，请参阅[客户端配置支持](#support-for-other-client-configurations)。
+- 最终用户必须使用兼容的浏览器连接到 RD Web 或 RD Web 客户端。 有关更多详细信息，请参阅 [客户端配置支持](#support-for-other-client-configurations)。
 
 - 发布 RD Web 时，建议使用相同的内部和外部 FQDN。 如果内部和外部 FQDN 不同，应禁用请求头转换，以免客户端收到无效链接。
 
 - 如果在 Internet Explorer 上使用 RD Web，则需要启用 RDS ActiveX 外接程序。
 
-- 如果使用的是 RD Web 客户端，则需要使用应用程序代理[连接器版本1.5.1975 或更高版本](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)。
+- 如果使用的是 RD Web 客户端，则需要使用应用程序代理 [连接器版本1.5.1975 或更高版本](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)。
 
-- 对于 Azure AD 预身份验证流，用户只能在 " **RemoteApp 和桌面**" 窗格中连接到发布的资源。 用户无法使用 "**连接到远程电脑**" 窗格连接到桌面。
+- 对于 Azure AD 预身份验证流，用户只能在 " **RemoteApp 和桌面** " 窗格中连接到发布的资源。 用户无法使用 " **连接到远程电脑** " 窗格连接到桌面。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>部署 RDS 和应用程序代理联合方案
 
@@ -77,16 +77,16 @@ ms.locfileid: "87019516"
    >[!Note]
    >你的用户需要进行一次身份验证，以便 Azure AD 一次，一次登录到 RD Web，但他们有权 RD 网关的单一登录。
 
-4. 选择 " **Azure Active Directory**"，然后选择 "**应用注册**"。 从列表中选择应用。
-5. 在 "**管理**" 下，选择 "**品牌**"。
-6. 将 "**主页 URL** " 字段更新为指向 RD Web 终结点（如 `https://\<rdhost\>.com/RDWeb` ）。
+4. 选择 " **Azure Active Directory**"，然后选择 " **应用注册**"。 从列表中选择应用。
+5. 在 " **管理**" 下，选择 " **品牌**"。
+6. 将 " **主页 URL** " 字段更新为指向 RD Web 终结点 (如 `https://\<rdhost\>.com/RDWeb`) 。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 
 以管理员身份连接到 RDS 部署，并更改部署的 RD 网关服务器名称。 此配置可确保连接通过 Azure AD 应用程序代理服务。
 
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
-2. 启动**服务器管理器**。
+2. 启动 **服务器管理器**。
 3. 在左侧窗格中选择“远程桌面服务”。****
 4. 选择“概述”。
 5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。****
@@ -101,7 +101,7 @@ ms.locfileid: "87019516"
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **例如：**
+   例如：
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -116,9 +116,9 @@ ms.locfileid: "87019516"
 配置远程桌面后，Azure AD 应用程序代理会充当 RDS.的面向 Internet 的组件。 可以在 RD Web 和 RD 网关计算机上删除其他面向 Internet 的公共终结点。
 
 ### <a name="enable-the-rd-web-client"></a>启用 RD Web 客户端
-如果你还希望用户能够使用 RD Web 客户端，请按照[为你的用户设置远程桌面 Web 客户端中的](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin)步骤来启用此操作。
+如果你还希望用户能够使用 RD Web 客户端，请按照 [为你的用户设置远程桌面 Web 客户端中的](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) 步骤来启用此操作。
 
-远程桌面 web 客户端允许用户通过与 HTML5 兼容的 web 浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox，v 55.0 及更高版本）访问组织的远程桌面基础结构。
+远程桌面 web 客户端允许用户通过与 HTML5 兼容的 web 浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和) 更高版本）访问组织的远程桌面基础结构。
 
 ## <a name="test-the-scenario"></a>测试方案
 
@@ -135,8 +135,8 @@ ms.locfileid: "87019516"
 
 | 身份验证方法 | 支持的客户端配置 |
 | --------------------- | ------------------------------ |
-| 预身份验证    | 使用 Internet Explorer 和 RDS ActiveX 外接程序的 RD Web-Windows 7/10 |
-| 预身份验证    | RD Web 客户端-与 HTML5 兼容的 web 浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox） |
+| 预身份验证    | 使用 Internet Explorer 或 [Edge CHROMIUM IE 模式](https://docs.microsoft.com/deployedge/edge-ie-mode) + RDS ActiveX 外接程序的 RD Web-Windows 7/10 |
+| 预身份验证    | RD Web 客户端-与 HTML5 兼容的 Web 浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome、Safari 或 Mozilla Firefox (v 55.0 和更高版本)  |
 | 传递 | 支持 Microsoft 远程桌面应用程序的任何其他操作系统 |
 
 相比传递流，预身份验证流可提供更多的安全优势。 使用预身份验证，你可以使用 Azure AD 身份验证功能，如单一登录、条件性访问和本地资源的双重验证。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。

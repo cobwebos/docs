@@ -2,17 +2,17 @@
 title: 创建和管理 Azure ExpressRoute 公共对等互连
 description: 了解和管理 Azure 公共对等互连
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.author: cherylmc
-ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79481127"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398080"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>创建和管理 ExpressRoute 公共对等互连
 
@@ -22,10 +22,10 @@ ms.locfileid: "79481127"
 > * [文章 - Microsoft 对等互连](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
-可以参照本文来创建和管理 ExpressRoute 线路的公共对等互连路由配置。 还可以检查状态，以及更新/删除和取消预配对等互连。 本文适用于已弃用公共对等互连之前创建的资源管理器线路。 如果以前存在的线路（在公共对等互连之前已创建），则可以使用[Azure PowerShell](#powershell)、 [Azure CLI](#cli)和[Azure 门户](#portal)来管理/配置公共对等互连。
+可以参照本文来创建和管理 ExpressRoute 线路的公共对等互连路由配置。 还可以检查状态，以及更新/删除和取消预配对等互连。 本文适用于已弃用公共对等互连之前创建的资源管理器线路。 如果先前存在 (在公共对等互连之前创建的线路) ，则可以使用 [Azure PowerShell](#powershell)、 [Azure CLI](#cli)和 [Azure 门户](#portal)管理/配置公共对等互连。
 
 >[!NOTE]
->已弃用公共对等互连。 不能在新的 ExpressRoute 线路上创建公共对等互连。 如果你使用的是新的 ExpressRoute 线路，请将[Microsoft 对等互连](expressroute-circuit-peerings.md#microsoftpeering)用于 Azure 服务。
+>已弃用公共对等互连。 不能在新的 ExpressRoute 线路上创建公共对等互连。 如果你使用的是新的 ExpressRoute 线路，请将 [Microsoft 对等互连](expressroute-circuit-peerings.md#microsoftpeering) 用于 Azure 服务。
 >
 
 ## <a name="connectivity"></a>连接

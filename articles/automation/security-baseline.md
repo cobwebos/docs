@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: abc8ee3b79b43676ce114094af5614b1a2d945bf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230987"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400511"
 ---
 # <a name="azure-security-baseline-for-automation"></a>用于自动化的 Azure 安全基线
 
@@ -448,7 +448,7 @@ ms.locfileid: "89230987"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure AD 提供有助于发现陈旧帐户的日志。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
+**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
 
 * [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
@@ -516,7 +516,7 @@ ms.locfileid: "89230987"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 使用独立的自动化帐户资源隔离环境。 混合 Runbook 辅助角色等资源应该由虚拟网络/子网分开、标记正确，并在网络安全组 (NSG) 或 Azure 防火墙中得到保护。 对于存储或处理敏感数据的虚拟机，执行策略和过程 () 在不使用时将其关闭。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 使用独立的自动化帐户资源隔离环境。 混合 Runbook 辅助角色等资源应该由虚拟网络/子网分开、标记正确，并在网络安全组 (NSG) 或 Azure 防火墙中得到保护。 对于存储或处理敏感数据的虚拟机，执行策略和过程 () 在不使用时将其关闭。
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -644,7 +644,7 @@ ms.locfileid: "89230987"
 
 **指南**： Azure Automation 目前不公开基础多租户 runbook 辅助角色的虚拟机，这由平台处理。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-如果使用 Azure 虚拟机支持的混合 Runbook 辅助角色，请使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+如果使用 Azure 虚拟机支持的混合 Runbook 辅助角色，请使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
 * [Azure 中的更新管理](./update-management/update-mgmt-overview.md)
 
@@ -1042,7 +1042,9 @@ ms.locfileid: "89230987"
 
 * [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/managed-identity.md)
+* [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+
+* [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1144,7 +1146,7 @@ ms.locfileid: "89230987"
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
-**指南**：使用 azure 资源管理器部署 azure 自动化帐户和相关资源。 Azure 资源管理器提供导出模板的功能，可以将这些模板用作还原 Azure Automation 帐户和相关资源的备份。 使用 Azure 自动化定期调用 Azure 资源管理器模板导出 API。 在 Azure Key Vault 中备份客户托管的密钥。 可以使用 Azure 门户或 PowerShell 将 runbook 导出到脚本文件。
+**指南**：使用 azure 资源管理器部署 azure 自动化帐户和相关资源。 Azure 资源管理器提供导出模板的功能，可以将这些模板用作还原 Azure Automation 帐户和相关资源的备份。 使用 Azure 自动化定期调用 Azure 资源管理器模板导出 API。 在 Azure Key Vault 中备份客户管理的密钥。 可以使用 Azure 门户或 PowerShell 将 runbook 导出到脚本文件。
 
 * [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)
 
@@ -1170,7 +1172,7 @@ ms.locfileid: "89230987"
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指南**：如果需要，请确保定期定期将 Azure 资源管理器模板部署到隔离的订阅。 测试已备份客户托管密钥的还原。
+**指南**：如果需要，请确保定期定期将 Azure 资源管理器模板部署到隔离的订阅。 测试对备份的客户管理的密钥进行还原。
 
 * [使用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
 

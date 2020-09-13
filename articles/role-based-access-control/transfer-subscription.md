@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227026"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400538"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>将 Azure 订阅转移到其他 Azure AD 目录（预览）
 
@@ -36,7 +36,7 @@ ms.locfileid: "89227026"
 将 Azure 订阅转移到其他 Azure AD 目录是一个复杂的过程，必须仔细计划和执行。 许多 Azure 服务都需要安全主体（标识）才能正常运行，或者才能管理其他 Azure 资源。 本文将尽力涵盖很大程度上依赖于安全主体的大多数 Azure 服务，但这些服务并不全面。
 
 > [!IMPORTANT]
-> 在某些情况下，传输订阅可能需要停机才能完成此过程。 需要认真规划才能评估传输是否需要停机时间。
+> 在某些情况下，转移订阅的过程可能需要停机才能完成。 需要认真规划才能评估传输是否需要停机时间。
 
 下图显示了将订阅转移到其他目录时必须遵循的基本步骤。
 
@@ -74,7 +74,7 @@ ms.locfileid: "89227026"
 | 系统分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须禁用并重新启用托管标识。 必须重新创建角色分配。 |
 | 用户分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须删除、重新创建托管标识并将其附加到相应的资源。 必须重新创建角色分配。 |
 | Azure Key Vault | “是” | “是” | [列出 Key Vault 访问策略](#list-key-vaults) | 必须更新与密钥保管库关联的租户 ID。 必须删除并添加新的访问策略。 |
-| 启用了 Azure AD authentication 集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| 启用了 Azure AD 身份验证集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure 存储和 Azure Data Lake Storage Gen2 | “是” | “是” |  | 必须重新创建任何 ACL。 |
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 必须重新创建任何 ACL。 |
 | Azure 文件 | 是 | 是 |  | 必须重新创建任何 ACL。 |
@@ -224,7 +224,7 @@ ms.locfileid: "89227026"
 > [!WARNING]
 > 如果将静态加密用于某个资源（例如存储帐户或 SQL 数据库），而该资源依赖于 **不** 在正在传输的同一订阅中的密钥保管库，则可能会导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
 
-- 如果有密钥保管库，请使用 [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) 列出访问策略。 有关详细信息，请参阅[使用访问控制策略提供 Key Vault 身份验证](../key-vault/key-vault-group-permissions-for-apps.md)。
+- 如果有密钥保管库，请使用 [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) 列出访问策略。 有关详细信息，请参阅 [分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-cli.md)。
 
     ```azurecli
     az keyvault show --name MyKeyVault

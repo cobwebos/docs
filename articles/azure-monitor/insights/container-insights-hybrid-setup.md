@@ -3,12 +3,12 @@ title: 为混合 Kubernetes 群集配置适用于容器的 Azure Monitor | Micro
 description: 本文介绍了如何配置适用于容器的 Azure Monitor 以监视在 Azure Stack 或其他环境中承载的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26846148f3212699cecd6db3318cd2da2d9aa783
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498893"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398375"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>为混合 Kubernetes 群集配置适用于容器的 Azure Monitor
 
@@ -16,21 +16,21 @@ ms.locfileid: "86498893"
 
 ## <a name="supported-configurations"></a>支持的配置
 
-对于容器 Azure Monitor，正式支持以下配置。
+适用于容器的 Azure Monitor 正式支持以下配置。
 
 - 环境：
 
     - 本地 Kubernetes
     
-    - Azure 上的 AKS 引擎和 Azure Stack。 有关详细信息，请参阅[Azure Stack 上的 AKS Engine](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    - Azure 和 Azure Stack 的 AKS 引擎。 有关详细信息，请参阅 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
     
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 版本 4 及更高版本，位于本地或其他云环境中。
 
 - Kubernetes 和支持策略的版本与 [AKS 支持](../../aks/supported-kubernetes-versions.md)的版本相同。
 
-- 支持以下容器运行时： Docker、小鲸鱼和 CRI 兼容的运行时，例如 CRI 和 ContainerD。
+- 支持以下容器运行时：Docker、Moby 和 CRI 兼容的运行时，例如 CRI-O 和 ContainerD。
 
-- 支持适用于主节点和辅助节点的 Linux OS 版本为： Ubuntu （18.04 LTS 和 16.04 LTS）和 Red Hat Enterprise Linux CoreOS 43.81。
+- 支持的适用于主节点和工作器节点的 Linux OS 版本包括：Ubuntu（18.04 LTS 和 16.04 LTS）和 Red Hat Enterprise Linux CoreOS 43.81。
 
 - 支持的访问控制：Kubernetes RBAC 和非 RBAC
 
@@ -46,9 +46,9 @@ ms.locfileid: "86498893"
     >不支持对同一 Log Analytics 工作区中具有相同群集名称的多个群集启用监视。 群集名称必须独一无二。
     >
 
-- 需要成为 **Log Analytics 参与者角色**的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理对工作区和日志数据的访问](../platform/manage-access.md)。
+- 需要成为 **Log Analytics 参与者角色**的成员才能启用容器监视。 要详细了解如何控制对 Log Analytics 工作区的访问，请参阅[管理对工作区和日志数据的访问](../platform/manage-access.md)。
 
-- 若要查看监视数据，需要在 Log Analytics 工作区中拥有 Log Analytics 的 "[*读取*](../platform/manage-access.md#manage-access-using-azure-permissions)者" 角色，并将 "Azure Monitor" 设置为 "容器"。
+- 若要查看监视数据，需要在 Log Analytics 工作区（该工作区为容器配置了 Azure Monitor）中拥有 [Log Analytics 读者](../platform/manage-access.md#manage-access-using-azure-permissions)角色。
 
 - [HELM 客户端](https://helm.sh/docs/using_helm/)，用于为指定的 Kubernetes 群集载入适用于容器的 Azure Monitor 图表。
 
@@ -71,9 +71,11 @@ ms.locfileid: "86498893"
 
 为混合 Kubernetes 群集启用适用于容器的 Azure Monitor 的操作包括按顺序执行以下步骤。
 
-1. 为 Log Analytics 工作区配置容器见解解决方案。
+1. 为 Log Analytics 工作区配置容器见解解决方案。   
 
 2. 通过 Log Analytics 工作区启用适用于容器的 Azure Monitor 的 HELM 图表。
+
+有关中的监视解决方案的其他信息，请参阅 [此处](../../azure-monitor/insights/solutions.md)Azure Monitor。
 
 ### <a name="how-to-add-the-azure-monitor-containers-solution"></a>如何添加 Azure Monitor 容器解决方案
 
@@ -252,25 +254,25 @@ ms.locfileid: "86498893"
 
 ## <a name="install-the-helm-chart"></a>安装 HELM 图表
 
-在本部分中，将为容器的 Azure Monitor 安装容器化代理。 在继续之前，需要确定参数所需的工作区 ID `omsagent.secret.wsid` 以及参数所需的主密钥 `omsagent.secret.key` 。 可以通过执行以下步骤来确定此信息，然后使用 HELM 图表运行命令来安装代理。
+本部分介绍如何为适用于容器的 Azure Monitor 安装容器化代理。 在继续之前，需要先确定 `omsagent.secret.wsid` 参数所需的工作区 ID 和 `omsagent.secret.key` 参数所需的主密钥。 可以通过执行以下步骤来确定这些信息，然后运行命令来安装使用 HELM 图表的代理。
 
-1. 运行以下命令以标识工作区 ID：
+1. 运行以下命令以确定工作区 ID：
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    在输出中，找到字段**名称**下的工作区名称，然后将该工作区的 "工作区 ID" Log Analytics " **customerID**" 下。
+    在输出中，在“name”字段下找到工作区名称，然后在“customerID”下复制该 Log Analytics 工作区的工作区 ID 。
 
-2. 运行以下命令来确定工作区的主密钥：
+2. 运行以下命令以确定工作区的主密钥：
 
     `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
 
-    在输出中，找到 " **primarySharedKey**" 字段下的主密钥，然后复制值。
+    在输出中，在“primarySharedKey”下找到主密钥，然后复制其值。
 
 >[!NOTE]
 >以下命令仅适用于 Helm 版本 2。 `--name` 参数不适合在 Helm 版本 3 中使用。 
 
 >[!NOTE]
->如果 Kubernetes 群集通过代理服务器进行通信，则 `omsagent.proxy` 使用代理服务器的 URL 配置参数。 如果群集未通过代理服务器进行通信，则无需指定此参数。 有关详细信息，请参阅本文后面的[配置代理终结点](#configure-proxy-endpoint)。
+>如果 Kubernetes 群集通过代理服务器进行通信，则使用代理服务器的 URL 来配置参数 `omsagent.proxy`。 如果群集不是通过代理服务器进行通信，则无需指定此参数。 有关详细信息，请参阅本文稍后的[配置代理终结点](#configure-proxy-endpoint)。
 
 3. 通过运行以下命令，将 Azure 图表存储库添加到你的本地列表：
 
@@ -301,7 +303,7 @@ ms.locfileid: "86498893"
 
 ### <a name="enable-the-helm-chart-using-the-api-model"></a>通过 API 模型启用 Helm 图表
 
-你可以在 AKS 引擎群集规范 json 文件中指定一个加载项，也称为 API 模型。 在此加载项中，提供在 `WorkspaceGUID` `WorkspaceKey` 其中存储所收集的监视数据的 Log Analytics 工作区的 base64 编码版本。 您可以 `WorkspaceGUID` `WorkspaceKey` 在上一节中找到并使用步骤1和2。
+你可以在 AKS 引擎群集规范 json 文件中指定一个加载项，也称为 API 模型。 在此加载项中，提供存储所收集监视数据的 Log Analytics 工作区的 base64 编码版 `WorkspaceGUID` 和 `WorkspaceKey`。 可以使用上一部分中的步骤 1 和 2 来查找 `WorkspaceGUID` 和 `WorkspaceKey`。
 
 在此示例中，可以找到 Azure Stack Hub 群集支持的 API 定义 - [kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)。 具体而言，请在 **kubernetesConfig** 中查找 **addons** 属性：
 
@@ -332,14 +334,14 @@ ms.locfileid: "86498893"
 
 ## <a name="configure-proxy-endpoint"></a>配置代理终结点
 
-从图表版本2.7.1 开始，图表将支持指定具有 chart 参数的代理终结点 `omsagent.proxy` 。 这允许它通过代理服务器进行通信。 容器代理和 Azure Monitor 的 Azure Monitor 之间的通信可以是 HTTP 或 HTTPS 代理服务器，并且支持匿名身份验证和基本身份验证（用户名/密码）。
+从图表版本 2.7.1 开始，图表将支持使用 `omsagent.proxy` 图表参数来指定代理终结点。 这样，图表即可通过代理服务器进行通信。 适用于容器的 Azure Monitor 代理与 Azure Monitor 之间的通信可以通过 HTTP 或 HTTPS 代理服务器进行，并且支持匿名身份验证和基本身份验证（用户名/密码）。
 
 代理配置值具有以下语法：`[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
->如果代理服务器不需要身份验证，则仍需指定伪类用户名/密码。 这可以是任何用户名或密码。
+>如果代理服务器不需要身份验证，那么你仍需指定伪用户名/密码。 这可以是任何用户名或密码。
 
-|properties| 说明 |
+|属性| 说明 |
 |--------|-------------|
 |协议 | http 或 https |
 |user | 用于代理身份验证的可选用户名 |
@@ -349,7 +351,7 @@ ms.locfileid: "86498893"
 
 例如： `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
-如果以**http**形式指定协议，则将使用 SSL/TLS 安全连接创建 http 请求。 代理服务器必须支持 SSL/TLS 协议。
+如果将协议指定为“http”，则使用 SSL/TLS 安全连接创建 HTTP 请求。 代理服务器必须支持 SSL/TLS 协议。
 
 ## <a name="troubleshooting"></a>故障排除
 

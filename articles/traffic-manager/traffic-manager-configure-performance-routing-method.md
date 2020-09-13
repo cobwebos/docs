@@ -4,20 +4,20 @@ description: 本文介绍了如何配置流量管理器以将流量路由到终�
 services: traffic-manager
 manager: twooley
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: rohink
-ms.openlocfilehash: 5299c72d96fd7453d7df352ca842b4ede35f41fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707661"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401021"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>配置性能流量路由方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "84707661"
 
 ##  <a name="to-configure-performance-routing-method"></a>配置性能路由方法
 
-1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册一个[月免费试用版](https://azure.microsoft.com/free/)。 
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册一个 [月免费试用版](https://azure.microsoft.com/free/)。 
 2. 在门户的搜索栏中，搜索“流量管理器配置文件”****，并单击要为其配置路由方法的配置文件名称。
 3. 在“流量管理器配置文件”  边栏选项卡中，检查要包含在配置中的云服务和网站是否都存在。
 4. 在“设置”  部分，单击“配置”  ，并在“配置”  边栏选项卡中完成如下操作：

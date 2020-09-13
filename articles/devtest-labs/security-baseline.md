@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078038"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398316"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -391,7 +391,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 了解有关 [开发测试实验室映像工厂](image-factory-create.md)的详细信息，它是一种配置为代码的解决方案，可定期自动构建和分发映像以及所有需要的配置。 
 
-作为订阅管理员，你还可以使用 Azure 更新管理解决方案来管理开发测试实验室 Vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+作为订阅管理员，你还可以使用 Azure 更新管理解决方案来管理开发测试实验室 Vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 可以使用 System Center Updates Publisher (Updates Publisher) 之类的工具将自定义更新发布到 Windows Server Update Services (WSUS) 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 Configuration Manager 作为其更新存储库的计算机。
 
 - [Azure 中的更新管理解决方案](../automation/update-management/update-mgmt-overview.md)
 - [管理 VM 的更新和修补程序](../automation/update-management/update-mgmt-overview.md)
@@ -478,11 +478,11 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 **指南：** Azure Automation 在部署、操作和解除工作负荷和资源的实现过程中提供完全控制。 作为订阅管理员，你可以使用 Azure 虚拟机库存自动收集有关你的订阅中的开发测试实验室 Vm 的所有软件的信息。 "软件名称"、"版本"、"发布者" 和 "刷新时间" 属性可从 Azure 门户中获取。 若要获得安装日期和其他信息的访问权限，客户需要启用来宾级诊断并将 Windows 事件日志置于 Log Analytics 工作区中。
 
-除了使用更改跟踪来监视软件应用程序外，Azure 安全中心的自适应应用程序控件还可以使用机器学习来分析计算机上运行的应用程序，并通过此智能创建允许列表。 此功能极大地简化了配置和维护应用程序允许列表策略的过程，使你能够避免在你的环境中使用不需要的软件。 你可以配置审核模式或强制模式。 审核模式只审核受保护 Vm 上的活动。 强制模式确实强制执行这些规则，并确保阻止不允许运行的应用程序。 
+除了使用更改跟踪来监视软件应用程序外，Azure 安全中心的自适应应用程序控制还可以使用机器学习来分析计算机上运行的应用程序，并通过此智能创建允许列表。 此功能极大地简化了配置和维护应用程序允许列表策略的过程，使你能够避免在你的环境中使用不需要的软件。 你可以配置审核模式或强制模式。 审核模式只审核受保护 VM 上的活动。 强制模式确实强制执行这些规则，并确保阻止不允许运行的应用程序。 
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 - [如何启用 Azure VM 清单](../automation/automation-tutorial-installed-software.md)
-- [了解自适应应用程序控件](../security-center/security-center-adaptive-application.md)
+- [了解自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
 **Azure 安全中心监视：** 不适用
 
@@ -693,7 +693,8 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 - [在开发测试实验室中配置托管标识以部署 Azure 资源管理器环境](use-managed-identities-environments.md)
 - [在开发测试实验室中配置托管标识以部署虚拟机](enable-managed-identities-lab-vms.md)
 - [如何创建密钥保管库](../key-vault/quick-create-portal.md)
-- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/managed-identity.md)
+- [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+- [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视：** 是的
 
@@ -791,7 +792,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 - [在使用加密的 Azure Vm 上备份](../backup/backup-azure-vms-encryption.md)
 - [如何从 Azure VM 备份恢复文件](../backup/backup-azure-restore-files-from-vm.md)
 - [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
-- [如何备份和还原已加密的 VM](../backup/backup-azure-vms-encryption.md)
+- [如何备份和还原加密的 VM](../backup/backup-azure-vms-encryption.md)
 
 **Azure 安全中心监视：** 不适用
 

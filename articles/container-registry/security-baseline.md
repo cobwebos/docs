@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea7460b3f997e0432ea0b987849eafccbe57b3b9
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3fcbc386c60611493912fdfb17226490549cdc53
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229168"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396805"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure 容器注册表的 Azure 安全基线
 
@@ -458,7 +458,7 @@ Azure 容器注册表管理员帐户： https://docs.microsoft.com/azure/contain
 
 
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：客户
 
@@ -970,9 +970,11 @@ Azure Repos 文档：  https://docs.microsoft.com/azure/devops/repos/index?view=
 
 如何与 Azure 托管标识集成：  https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-如何创建 Key Vault： https://docs.microsoft.com/azure/key-vault/quick-create-portal
+如何创建 Key Vault： https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何提供使用托管标识进行的 Key Vault 身份验证： https://docs.microsoft.com/azure/key-vault/managed-identity
+如何对 Key Vault 进行身份验证： https://docs.microsoft.com/azure/key-vault/general/authentication
+
+如何分配 Key Vault 访问策略： https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 在 Azure 容器注册表任务中使用 Azure 托管标识： https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
 

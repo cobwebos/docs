@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b027e44a2ee31b0168ec3b6af717df23dd560abd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d55e53ba455a4b91b4f57ea08b250320a5467c2b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89225581"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398438"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 安全基线
 
@@ -296,7 +296,7 @@ ms.locfileid: "89225581"
 
 **指导**：使用 Azure 安全中心和配置的 Log Analytics 工作区，监视安全日志和事件中发现的 Azure 虚拟机异常活动并发出警报。
 
-或者，你可以将和机载数据启用到 Azure Sentinel 或第三方 SIEM，为异常活动设置警报。
+或者，可以启用数据并将其载入 Azure Sentinel 或第三方 SIEM，以针对异常活动设置警报。
 
 * [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
@@ -384,7 +384,7 @@ ms.locfileid: "89225581"
 
 **责任**：客户
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory (SSO 的单一登录) 
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
 **指南**：尽可能将 SSO 与 Azure Active Directory 结合使用，而不是为每个服务配置单独的单独凭据。 请使用 Azure 安全中心标识和访问管理建议。
 
@@ -408,7 +408,7 @@ ms.locfileid: "89225581"
 
 **责任**：客户
 
-### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：对管理任务使用 Azure 托管的安全工作站
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
@@ -484,9 +484,9 @@ ms.locfileid: "89225581"
 
 **责任**：客户
 
-### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帐户登录行为偏差时发出警报
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：使用 Azure Active Directory 的风险和标识保护功能配置对检测到的与存储帐户资源相关的可疑操作的自动响应。 应通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
+**指导**：使用 Azure Active Directory 的风险和标识保护功能配置对检测到的与存储帐户资源相关的可疑操作的自动响应。 应通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
 
 * [如何查看 Azure AD 风险登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -904,7 +904,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略、azure 资源管理器模板、所需状态配置脚本等。 若要访问在 Azure DevOps 中管理的资源（例如代码、生成和跟踪），必须拥有这些特定资源的权限。 大多数权限通过内置安全组授予，如 "权限和访问" 中所述。 如果与 Azure DevOps 集成，则可以授予或拒绝特定用户、内置安全组或组中定义) Azure AD (Azure Active Directory 的组的权限（如果与 Azure 集成，则可以授予或拒绝）; 如果与 TFS 集成，则可以指定 Active Directory。
+**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略、azure 资源管理器模板、所需状态配置脚本等。 若要访问在 Azure DevOps 中管理的资源（例如代码、生成和跟踪），必须拥有这些特定资源的权限。 大多数权限通过内置安全组授予，如“权限和访问”中所述。 你可以向特定用户、内置安全组或者 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）或 Active Directory（如果与 TFS 集成）中定义的组授予权限，或拒绝向其授予权限。
 
 * [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -976,7 +976,9 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何创建 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+
+* [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：不适用
 

@@ -7,18 +7,18 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3aed75c26880ae2c3e31b412496655e5225b2edc
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2030469262baf406635fd170af384e154fec6ae6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035444"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401106"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
 
-可以在[Azure 可用性区域](../availability-zones/az-overview.md)中部署 VPN 和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 可通过在 Azure 可用性区域中部署网关，在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。
+可以在 [Azure 可用性区域](../availability-zones/az-overview.md)中部署 VPN 和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 如果在 Azure 可用性区域中部署网关，可以在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。
 
 ### <a name="zone-redundant-gateways"></a><a name="zrgw"></a>区域冗余网关
 
@@ -42,7 +42,7 @@ ms.locfileid: "88035444"
 
 区域冗余网关和区域网关以新的网关 SKU 的形式提供。 我们已在 Azure AZ 区域中添加了新的虚拟网络网关 SKU。 这些 SKU 与 ExpressRoute 网关和 VPN 网关的相应现有 SKU 类似，不同之处在于它们是区域冗余网关和区域网关的专用 SKU。 可以通过 SKU 名称中的 "AZ" 标识这些 Sku。
 
-有关网关 Sku 的信息，请参阅[VPN 网关 sku](vpn-gateway-about-vpngateways.md#gwsku)和[ExpressRoute 网关 sku](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
+有关网关 Sku 的信息，请参阅 [VPN 网关 sku](vpn-gateway-about-vpngateways.md#gwsku) 和 [ExpressRoute 网关 sku](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
 
 ## <a name="public-ip-skus"></a><a name="pipskus"></a>公共 IP SKU
 

@@ -123,7 +123,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 对路由或后端池等的任何更新都是无缝的，如果新配置是正确的) ，将导致零停机 (。 证书更新也是原子的，将不会导致任何中断，除非从 "AFD 托管" 切换到 "使用自己的证书"，反之亦然。
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure 前门是否可以在虚拟网络中对流量进行负载均衡或路由
 

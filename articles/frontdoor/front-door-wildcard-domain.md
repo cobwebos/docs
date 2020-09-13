@@ -2,20 +2,20 @@
 title: Azure 前门-对通配符域的支持
 description: 本文将帮助你了解 Azure 前门如何支持在自定义域列表中映射和管理通配符域。
 services: frontdoor
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
-ms.author: sharadag
-ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81768317"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398743"
 ---
 # <a name="wildcard-domains"></a>通配符域
 
@@ -24,7 +24,7 @@ ms.locfileid: "81768317"
 支持通配符域的主要方案包括：
 
 - 无需在 Azure 前门配置文件中载入每个子域，然后启用 HTTPS 即可为每个子域绑定证书。
-- 如果应用程序添加新的子域，则不再需要更改生产 Azure 前门配置。 以前，你必须添加子域，将证书绑定到该子域，附加 web 应用程序防火墙（WAF）策略，然后将该域添加到不同的路由规则。
+- 如果应用程序添加新的子域，则不再需要更改生产 Azure 前门配置。 以前，你必须添加子域，将证书绑定到它，将 web 应用程序防火墙 (WAF) 策略，然后将该域添加到不同的路由规则。
 
 > [!NOTE]
 > 目前仅支持通过 API、PowerShell 和 Azure CLI 来支持通配符域。 对在 Azure 门户中添加和管理通配符域的支持不可用。
@@ -38,7 +38,7 @@ ms.locfileid: "81768317"
 
 可以在前端主机中添加通配符域的任意多个下级子域，最多可添加到前端主机的限制。 此功能可能是必需的：
 
-- 定义子域的其他路由，而不是域的其余部分（来自通配符域）。
+- 为子域定义不同于通配符域) 的其他路由 (。
 
 - 针对特定子域具有不同的 WAF 策略。 例如， `*.contoso.com` 允许添加， `foo.contoso.com` 而无需再次证明域所有权。 但不允许这样做， `foo.bar.contoso.com` 因为它不是的单个级别的子域 `*.contoso.com` 。 若要添加 `foo.bar.contoso.com` 而不添加其他域所有权验证， `*.bar.contosonews.com` 需要添加。
 
@@ -48,7 +48,7 @@ ms.locfileid: "81768317"
   - 不能将通配符域添加到任何其他 Azure 前门配置文件。
   - 不能将通配符域的第一级子域添加到另一个 Azure 前门配置文件或 Azure 内容分发网络配置文件。
 - 如果将通配符域的子域添加到 Azure 前门配置文件或 Azure 内容分发网络配置文件，则不能将通配符域添加到其他 Azure 前门配置文件。
-- 如果两个配置文件（Azure 前门或 Azure 内容交付网络）具有根域的不同子域，则不能将通配符域添加到任一配置文件。
+- 如果两个配置文件 (Azure 前门或 Azure 内容分发网络) 具有根域的不同子域，则不能将通配符域添加到任一配置文件。
 
 ## <a name="certificate-binding"></a>证书绑定
 
@@ -63,19 +63,19 @@ ms.locfileid: "81768317"
 
 ## <a name="waf-policies"></a>WAF 策略
 
-可以将 WAF 策略附加到通配符域，类似于其他域。 可以将不同的 WAF 策略应用到通配符域的子域。 对于子域，必须指定要使用的 WAF 策略，即使该策略与通配符域相同。 子域*不*会自动从通配符域继承 WAF 策略。
+可以将 WAF 策略附加到通配符域，类似于其他域。 可以将不同的 WAF 策略应用到通配符域的子域。 对于子域，必须指定要使用的 WAF 策略，即使该策略与通配符域相同。 子域 *不* 会自动从通配符域继承 WAF 策略。
 
 如果你不希望为子域运行 WAF 策略，则可以创建没有托管或自定义规则集的空 WAF 策略。
 
 ## <a name="routing-rules"></a>路由规则
 
-配置路由规则时，可以选择通配符域作为前端主机。 对于通配符域和子域，还可以具有不同的路由行为。 如[Azure 前端的路由匹配方式](front-door-route-matching.md)中所述，在运行时选择不同路由规则中的域的最特定匹配。
+配置路由规则时，可以选择通配符域作为前端主机。 对于通配符域和子域，还可以具有不同的路由行为。 如 [Azure 前端的路由匹配方式](front-door-route-matching.md)中所述，在运行时选择不同路由规则中的域的最特定匹配。
 
 > [!IMPORTANT]
-> 你必须在路由规则中具有匹配的路径模式，否则你的客户端将会看到失败。 例如，有两个路由规则，例如路由1（ `*.foo.com/*` 映射到后端池 A）和路由2（ `bar.foo.com/somePath/*` 映射到后端池 B）。 然后，请求到达 `bar.foo.com/anotherPath/*` 。 Azure 前门根据更具体的域匹配选择路由2，而只查找路由之间没有匹配的路径模式。
+> 你必须在路由规则中具有匹配的路径模式，否则你的客户端将会看到失败。 例如，有两个路由规则（例如路由 1 (`*.foo.com/*` 映射到后端池）) 和路由 2 (`bar.foo.com/somePath/*` 映射到后端池 B) 。 然后，请求到达 `bar.foo.com/anotherPath/*` 。 Azure 前门根据更具体的域匹配选择路由2，而只查找路由之间没有匹配的路径模式。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[创建 Azure 前门配置文件](quickstart-create-front-door.md)。
-- 了解如何[在 Azure 前门上添加自定义域](front-door-custom-domain.md)。
-- 了解如何[在自定义域上启用 HTTPS](front-door-custom-domain-https.md)。
+- 了解如何 [创建 Azure 前门配置文件](quickstart-create-front-door.md)。
+- 了解如何 [在 Azure 前门上添加自定义域](front-door-custom-domain.md)。
+- 了解如何 [在自定义域上启用 HTTPS](front-door-custom-domain-https.md)。
