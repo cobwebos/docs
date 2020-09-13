@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: d87635b3bfbfd70a67e8eebd4000fda73229d606
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018350"
+ms.locfileid: "90033517"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -252,7 +252,7 @@ IoT 中心支持从/向客户提供的存储 blob 批量[导入/导出](./iot-hu
 
 3. 导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮  。
 
-现在可以使用用于[创建导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs)的 Azure IoT REST API 了解有关如何使用批量导入/导出功能的信息。 需要在请求正文中提供 `storageAuthenticationType="identityBased"`，并分别使用 `inputBlobContainerUri="https://..."` 和 `outputBlobContainerUri="https://..."` 作为存储帐户的输入和输出 URL。
+现在可以使用用于[创建导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs)的 Azure IoT REST API 了解有关如何使用批量导入/导出功能的信息。 需要在请求正文中提供 `storageAuthenticationType="identityBased"`，并分别使用 `inputBlobContainerUri="https://..."` 和 `outputBlobContainerUri="https://..."` 作为存储帐户的输入和输出 URL。
 
 Azure IoT 中心 SDK 也支持在服务客户端的注册表管理器中使用此功能。 以下代码段演示如何在使用 C# SDK 时启动导入或导出作业。
 

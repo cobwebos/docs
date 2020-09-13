@@ -41,9 +41,15 @@
       href: ./samples/azure-security-benchmark.md
     - name: 澳大利亚政府 ISM PROTECTED
       items:
+        - name: 概述
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/index.md
         - name: 控制映射
           displayName: 'standards, Australian, Government, ISM, PROTECTED'
           href: ./samples/ism-protected/control-mapping.md
+        - name: 部署步骤
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/deploy.md
     - name: 加拿大联邦 PBMM
       items:
         - name: 概述

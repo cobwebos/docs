@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461997"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031477"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -220,7 +220,7 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 可以捕获客户端和服务器之间的流量，以便提供有关客户端和服务器正在交换的数据以及底层网络状况的详细信息。 有用的网络日志记录工具包括：
 
 * [Fiddler](https://www.telerik.com/fiddler) 是一个免费 Web 调试代理，使用它可以检查 HTTP 与 HTTPS 请求和响应消息的标头和有效负载数据。 有关详细信息，请参阅[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量](#appendix-1)。
-* [Microsoft 网络监视器 (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) 和 [Wireshark](https://www.wireshark.org/) 是免费的网络协议分析器，使用它们可以查看各种网络协议的详细数据包信息。 有关 Wireshark 的详细信息，请参阅[附录 2：使用 Wireshark 捕获网络流量](#appendix-2)。
+* [Microsoft 网络监视器 (Netmon)](https://cnet-downloads.com/network-monitor) 和 [Wireshark](https://www.wireshark.org/) 是免费的网络协议分析器，使用它们可以查看各种网络协议的详细数据包信息。 有关 Wireshark 的详细信息，请参阅[附录 2：使用 Wireshark 捕获网络流量](#appendix-2)。
 * Microsoft Message Analyzer 是 Microsoft 提供的用于取代 Netmon 的工具，它除了捕获网络数据包数据外，还可帮助你查看和分析其他工具捕获的日志数据。 有关详细信息，请参阅[附录 3：使用 Microsoft Message Analyzer 捕获网络流量](#appendix-3)。
 * 如果要执行基本连接测试，以检查客户端计算机是否能够通过网络连接到 Azure 存储服务，则不能在客户端上使用标准 **ping** 工具来执行此操作。 但是，可以使用 [**tcping** 工具](https://www.elifulkerson.com/projects/tcping.php)来检查连接性。
 
@@ -346,7 +346,7 @@ catch (StorageException storageException)
 
 ![来自 Azure 门户的插图，其显示了一个示例，其中 AverageE2ELatency 明显高于 AverageServerLatency。][4]
 
-存储服务仅对成功的请求计算指标 **AverageE2ELatency**，与 **AverageServerLatency** 不同，它包括客户端发送数据及从存储服务接收确认所需的时间。 因此，**AverageE2ELatency** 和 **AverageServerLatency** 之间的差异可能是由于客户端应用程序响应速度慢，或者是由网络情况导致的。
+存储服务仅对成功的请求计算指标 **AverageE2ELatency** ，与 **AverageServerLatency**不同，它包括客户端发送数据和从存储服务接收确认所用的时间。 因此，**AverageE2ELatency** 和 **AverageServerLatency** 之间的差异可能是由于客户端应用程序响应速度慢，或者是由网络情况导致的。
 
 > [!NOTE]
 > 还可以在存储日志记录日志数据中查看单个存储操作的 **E2ELatency** 和 **ServerLatency**。
@@ -409,7 +409,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 * 验证应用程序是否成功地将该消息添加到队列。 检查应用程序在成功添加前是否未多次重试 **AddMessage** 方法。 存储客户端库日志会显示存储操作的任何重复重试。
 * 验证将消息添加到队列的辅助角色与从队列读取该消息的辅助角色之间不存在任何时钟偏差，使得处理看起来就像出现延迟。
-* 检查从队列中读取该消息的辅助角色是否出现故障。 如果队列客户端调用了 GetMessage 方法，但无法响应确认消息，则该消息将一直在队列中保持不可见，直到 invisibilityTimeout 期限过期。 此时，该消息可供再次处理。
+* 检查从队列中读取该消息的辅助角色是否出现故障。 如果队列客户端调用 **GetMessage** 方法，但未能通过确认响应，则该消息将一直在队列中保持不可见，直到 **invisibilityTimeout** 期限过期。 此时，该消息可供再次处理。
 * 检查队列长度是否随着时间的推移不断增长。 如果没有足够多的辅助角色可用于处理其他辅助角色放入队列的所有消息，会出现这种情况。 此外，还应检查指标以了解删除请求是否失败，并应查看消息的出队计数，该计数可能指示删除消息的重复失败尝试次数。
 * 检查存储日志记录日志以查找在长于平常的时间段内具有高于预期的 **E2ELatency** 和 **ServerLatency** 值的任何队列操作。
 
@@ -617,9 +617,9 @@ client.SetServiceProperties(sp);
 
 服务器端日志文件还包含另一个具有同一 **client-request-id** 值 (813ea74f…) 的条目，该条目针对从同一客户端对同一实体进行的成功删除操作。 此成功的删除操作在失败的删除请求之前很短的时间内发生。
 
-此情况最有可能的原因是客户端将针对实体的删除请求发送到表服务，该请求成功，但未从服务器收到确认消息（可能是因为临时网络问题）。 然后，客户端自动重试该操作（使用同一 client-request-id），但此重试失败，因为该实体已删除。
+这种情况最可能的原因是客户端将对实体的删除请求发送到表服务，该请求成功，但未从服务器收到确认 (可能是由于临时网络问题) 。 然后，客户端自动重试该操作（使用同一 client-request-id），但此重试失败，因为该实体已删除。
 
-如果此问题频繁出现，应该调查为什么客户端无法从表服务收到确认消息。 如果此问题是间歇性的，则应捕获“HTTP (404) 找不到”错误并在客户端中记录它，但允许客户端继续执行。
+如果此问题频繁出现，则应调查客户端无法从表服务接收确认的原因。 如果此问题是间歇性的，则应捕获“HTTP (404) 找不到”错误并在客户端中记录它，但允许客户端继续执行。
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
@@ -777,7 +777,7 @@ Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 诊断网络问题
 除了使用 Microsoft Message Analyzer **Web 代理**跟踪来捕获客户端应用程序和存储服务之间的 HTTP/HTTPS 流量的详细信息外，还可以使用内置的**本地链路层**跟踪来捕获网络数据包信息。 此能够实现捕获类似于使用 Wireshark 捕获的数据，并诊断丢弃的数据包等网络问题。
 
-下面的屏幕截图显示了**本地链路层**跟踪的一个示例，其中一些**信息性**消息显示在 **DiagnosisTypes** 列中。 单击 **DiagnosisTypes** 列中的图标可显示消息的详细信息。 在此示例中，服务器重新传输了消息 #305，因为它未收到来自客户端的确认消息：
+下面的屏幕截图显示了**本地链路层**跟踪的一个示例，其中一些**信息性**消息显示在 **DiagnosisTypes** 列中。 单击 **DiagnosisTypes** 列中的图标可显示消息的详细信息。 在此示例中，服务器重新传输了消息 #305 因为它未收到来自客户端的确认消息：
 
 ![屏幕截图，其显示了本地链路层跟踪的一个示例，其中一些信息性消息显示在 DiagnosisTypes 列中][9]
 

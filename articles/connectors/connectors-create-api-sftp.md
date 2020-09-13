@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
-ms.openlocfilehash: 817c17b0e05180f5c7a616320a25c2bc3c21c5f8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651416"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033296"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>在 Azure 逻辑应用中监视、创建和管理 SFTP 文件
 
@@ -114,6 +114,10 @@ SFTP 触发器的工作原理是轮询 SFTP 文件系统并查找自上次轮询
 ### <a name="sftp-action-get-content"></a>SFTP 操作：获取内容
 
 此操作从 SFTP 服务器上的文件中获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/azure/data-factory/connector-sftp)。
 
 ## <a name="next-steps"></a>后续步骤
 

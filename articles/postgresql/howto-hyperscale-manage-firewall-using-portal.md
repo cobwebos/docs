@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 9/12/2019
-ms.openlocfilehash: c84616e8a9b9ff9722f5a104175c80c37dbcbcc3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 9/11/2020
+ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116907"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032534"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>为 Azure Database for PostgreSQL - 超大规模 (Citus) 管理防火墙规则
 服务器级别防火墙规则可用于管理从指定 IP 地址或 IP 地址范围对超大规模 (Citus) 协调器节点的访问。
@@ -24,14 +24,14 @@ ms.locfileid: "86116907"
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
 
 > [!NOTE]
-> 在创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器组的过程中，也可以访问这些设置。 在“网络”选项卡下，单击“公共终结点”。
+> 在创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器组的过程中，也可以访问这些设置。 在 " **网络** " 选项卡下，单击 " **公共访问**"。
 > ![Azure 门户 - 网络选项卡](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. 在 PostgreSQL 服务器组页上的“安全性”标题下，单击“网络”以打开防火墙规则。
 
    ![Azure 门户 - 单击“网络”](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
 
-2. 在工具栏上（下面的选项 A），或在链接中（选项 B），单击“添加客户端 IP”。 任一方式都会自动创建一条防火墙规则，其中包含计算机的公共 IP 地址（由 Azure 系统标识）。
+2. 单击 " **添加当前客户端 IP 地址** "，创建一个防火墙规则，其中包含计算机的公共 IP 地址，如 Azure 系统所示。
 
    ![Azure 门户 - 单击“添加客户端 IP”](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "86116907"
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>通过 Azure 门户管理现有的服务器级别防火墙规则
 重复这些步骤来管理防火墙规则。
-* 若要添加当前计算机，请单击“添加客户端 IP”的 + 按钮。 单击“保存”以保存更改。
+* 要添加当前计算机，请单击按钮 "+ **添加当前客户端 IP 地址**"。 单击“保存”以保存更改。
 * 若要添加其他 IP 地址，请键入“规则名称”、“起始 IP 地址”和“结束 IP 地址”。 单击“保存”以保存更改。
 * 若要修改现有规则，单击规则中的任意字段并修改。 单击“保存”以保存更改。
 * 要删除现有规则，请单击省略号 […]，并单击“删除”即可删除该规则。 单击“保存”以保存更改。

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400307"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033007"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -163,7 +163,17 @@ Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或[资源令牌](sec
 | 资源令牌最长过期时间 | 默认为 24 小时。 可以通过[开具 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来提高此限制|
 | 令牌授权的最大时钟偏差| 15 分钟 |
 
-Cosmos DB 支持在写入期间执行触发器。 对于每个写入操作，该服务最多支持一个预先触发器和一个后期触发器。 
+Cosmos DB 支持在写入期间执行触发器。 对于每个写入操作，该服务最多支持一个预先触发器和一个后期触发器。
+
+## <a name="metadata-request-limits"></a>元数据请求限制
+
+Azure Cosmos DB 维护每个帐户的系统元数据。 此元数据可用于免费枚举集合、数据库、其他 Azure Cosmos DB 资源及其配置。
+
+| 资源 | 默认限制 |
+| --- | --- |
+|最大集合创建速率 u 分钟| 5|
+|最大数据库创建速率/分钟|   5|
+|最大预配吞吐量每分钟更新速率| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>自动缩放预配吞吐量限制
 

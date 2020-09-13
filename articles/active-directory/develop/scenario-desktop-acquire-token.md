@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 0d1946862ec8af6a107ca4f5f963efbcb8912a5e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440926"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032803"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -183,7 +183,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-UI 非常重要，因为它是交互式的。 `AcquireTokenInteractive` 提供一个特定的可选参数，该参数可为支持它的平台指定父 UI。 在桌面应用程序中使用时，`.WithParentActivityOrWindow` 根据具体的平台采用不同的类型。
+UI 非常重要，因为它是交互式的。 `AcquireTokenInteractive` 提供一个特定的可选参数，该参数可为支持它的平台指定父 UI。 在桌面应用程序中使用时，`.WithParentActivityOrWindow` 根据具体的平台采用不同的类型。 或者，如果您不想控制登录对话框在屏幕上的显示位置，则可以省略可选的父窗口参数以创建窗口。 这适用于基于命令行的应用程序，该应用程序用于将调用传递到任何其他后端服务，无需任何 windows 用户交互。 
 
 ```csharp
 // net45
@@ -425,7 +425,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - 在 `PublicClientApplicationBuilder` 中传入的颁发机构需要：
   - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`tenant` 是表示租户 ID 或者与该租户关联的域的 GUID）。
-  - 适用于任何工作和学校帐户：`https://login.microsoftonline.com/organizations/`。
+  - 对于任何工作和学校帐户：`https://login.microsoftonline.com/organizations/`。
   - 不支持 Microsoft 个人帐户。 不能使用 /common 或 /consumers 租户。
 
 - 因为集成 Windows 身份验证是一个无提示流：

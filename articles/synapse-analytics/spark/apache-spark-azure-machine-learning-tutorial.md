@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: 57830ae14c5d6653f6a2225924160fcb75646c12
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d4df4ea96f8dafa2f0eb26e27fcc08ab4ec89003
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590596"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033568"
 ---
 # <a name="run-experiments-using-azure-automated-ml-and-apache-spark"></a>使用 Azure 自动 ML ML 和 Apache Spark 运行试验
 
@@ -28,7 +28,7 @@ Azure 机器学习是一种基于云的环境，可让你对机器学习模型�
 - 定型自动化机器学习回归模型
 - 计算模型准确度
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 - 按照 [创建 Apache Spark 池教程](../quickstart-create-apache-spark-pool-studio.md)创建 Apache Spark 池。
 - 如果没有现有 Azure 机器学习工作区，请完成 [Azure 机器学习工作区设置教程](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) 。 
 

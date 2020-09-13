@@ -1,6 +1,6 @@
 ---
 title: Azure 中网络虚拟设备问题故障排除 | Microsoft Docs
-description: 排查 Azure 中的网络虚拟设备（NVA）问题并验证 NVA 配置的基本 Azure 平台要求。
+description: 排查网络虚拟设备 (NVA) Azure 中的问题，并验证 NVA 配置的基本 Azure 平台要求。
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7046062b1c2e42f47d650df6d616d6fb73c8d1ca
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286064"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033058"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
 
@@ -135,12 +135,12 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
    netsh trace start capture = yes tracefile = c：\ server_IP .etl 方案 = test-netconnection
 
-   **对于 Linux**
+   **适用于 Linux**
 
    sudo tcpdump-eth0-X-w vmtrace.cap
 
 2. 使用从源 VM 到目标 VM 的 PsPing 或 Nmap（例如：`PsPing 10.0.0.4:80` 或 `Nmap -p 80 10.0.0.4`）********。
-3. 使用[网络监视器](https://www.microsoft.com/download/details.aspx?id=4865)或 tcpdump 从目标 VM 打开网络跟踪。 为运行 PsPing 或 Nmap 的源 VM 的 IP 应用显示筛选器，例如 `IPv4.address==10.0.0.4 (Windows netmon)` 或 `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux)********。
+3. 使用[网络监视器](https://cnet-downloads.com/network-monitor)或 tcpdump 从目标 VM 打开网络跟踪。 为运行 PsPing 或 Nmap 的源 VM 的 IP 应用显示筛选器，例如 `IPv4.address==10.0.0.4 (Windows netmon)` 或 `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux)********。
 
 ### <a name="analyze-traces"></a>分析跟踪
 

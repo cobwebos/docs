@@ -1,25 +1,25 @@
 ---
-title: 排查数据流问题
+title: 映射数据流疑难解答
 description: 了解如何排查 Azure 数据工厂中的数据流问题。
 services: data-factory
 ms.author: makromer
 author: kromerm
-manager: anandsub
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/08/2020
-ms.openlocfilehash: 6f2bf98e1c527be27ba0f08a43785ae7d3aea726
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.date: 09/11/2020
+ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594145"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031851"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中的数据流问题
+# <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure 数据工厂中映射数据流的疑难解答
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文探讨了排查 Azure 数据工厂中的数据流问题的常见方法。
+本文探讨了在 Azure 数据工厂中映射数据流的常见故障排除方法。
 
 ## <a name="common-errors-and-messages"></a>常见错误和消息
 
@@ -31,7 +31,7 @@ ms.locfileid: "89594145"
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>错误代码:DF-Executor-SystemImplicitCartesian
 
 - **消息**：用于 INNER 联接的隐式笛卡尔乘积不受支持。请改用 CROSS JOIN。 联接中使用的列应为行创建唯一键。
-- 原因：用于逻辑计划之间 INNER 联接的隐式笛卡尔乘积不受支持。 如果联接中使用的列创建了唯一键，则需要来自关系双方的至少一列。
+- 原因：用于逻辑计划之间 INNER 联接的隐式笛卡尔乘积不受支持。 如果联接中使用的列创建唯一键，则至少需要两个关系的一列。
 - **建议**：对于基于不相等的联接，必须选择使用 CUSTOM CROSS JOIN。
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>错误代码:DF-Executor-SystemInvalidJson
@@ -43,10 +43,10 @@ ms.locfileid: "89594145"
 ### <a name="error-code-df-executor-broadcasttimeout"></a>错误代码:DF-Executor-BroadcastTimeout
 
 - **消息**：广播联接超时错误。请确保在调试运行中广播流在 60 秒内生成数据，在作业运行中广播流在 300 秒内生成数据
-- 原因：在调试运行中，广播的默认超时为 60 秒；在作业运行中，广播的默认超时为 300 秒。 为广播选择的流似乎很大，无法在此限制内生成数据。
-- **建议**：请检查数据流转换的“优化”选项卡，以进行 Join、Exists 和 Lookup。 广播的默认选项为“自动”。 如果已设置此选项，或你要手动将左侧或右侧设置为“固定”下的广播，则可以设置较大的 Azure Integration Runtime 配置，或关闭广播。 为了获得最佳的数据流性能，推荐的方法是允许 Spark 使用“自动”进行广播，并使用内存优化的 Azure IR。
+- **原因**：广播在调试运行中的默认超时为60秒，在作业运行期间为300秒。 为广播选择的流似乎太大，无法在此限制内生成数据。
+- **建议**：请检查数据流转换的“优化”选项卡，以进行 Join、Exists 和 Lookup。 广播的默认选项为“自动”。 如果设置了 "自动"，或者要在 "固定" 下手动设置向左或向右广播，则可以设置较大的 Azure Integration Runtime 配置，或关闭广播。 为了获得最佳的数据流性能，推荐的方法是允许 Spark 使用“自动”进行广播，并使用内存优化的 Azure IR。
 
-如果要从调试管道运行在调试测试执行中执行数据流，可能会更频繁地运行到此条件。 这是因为 ADF 将广播超时限制为60秒，以便保持更快的调试体验。 如果要从触发的运行中将其扩展到300秒的超时时间，则可以使用 Debug > Use 活动运行时选项来利用执行数据流管道活动中定义的 Azure IR。
+如果要从调试管道运行在调试测试执行中执行数据流，可能会更频繁地运行到此条件。 这是因为 ADF 将广播超时限制为60秒，以便保持更快的调试体验。 如果要将该时间从触发的运行延长到300秒的超时时间，则可以使用 Debug > Use 活动运行时选项来利用执行数据流管道活动中定义的 Azure IR。
 
 ### <a name="error-code-df-executor-conversion"></a>错误代码:DF-Executor-Conversion
 
@@ -59,6 +59,46 @@ ms.locfileid: "89594145"
 - **消息**：需要在查询中指定列名称。如果使用的是 SQL 函数，请设置别名
 - 原因：未指定列名称
 - **建议**：如果使用的是 min()/max() 等 SQL 函数，请设置别名。
+
+ ### <a name="error-code-df-executor-drivererror"></a>错误代码： DF-执行器-DriverError
+- **消息**： INT96 是 ADF 数据流不支持的旧时间戳类型。 请考虑将列类型升级到最新类型。
+- **原因**：驱动程序错误
+- **建议**： INT96 是旧时间戳类型，ADF 数据流不支持此类型。 请考虑将列类型升级到最新类型。
+
+ ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>错误代码： DF-执行器-BlockCountExceedsLimitError
+- **消息**：未提交的块计数不能超过100000块的最大限制。 检查 blob 配置。
+- **原因**： blob 中最多可以有100000个未提交的块。
+- **建议**：有关此问题的详细信息，请与 Microsoft 产品团队联系
+
+ ### <a name="error-code-df-executor-partitiondirectoryerror"></a>错误代码： DF-执行器-PartitionDirectoryError
+- **消息**：指定的源路径包含多个分区目录 (，例如 <Source Path> /<分区根目录 1>/a = 10/b = 20， <Source Path> /<分区根目录 2>/c = 10/d = 30) 或包含其他文件或非分区目录的分区目录 (例如 <Source Path> /<分区根目录 1>/a = 10/b = 20， <Source Path> /目录 2/file1) ，从源路径中删除分区根目录并通过单独的源转换进行读取。
+- **原因**：源路径包含多个分区目录或分区目录，其中包含其他文件或非分区目录。
+- **建议**：从源路径中删除已分区的根目录并通过单独的源转换读取该目录。
+
+ ### <a name="error-code-df-executor-outofmemoryerror"></a>错误代码： DF-执行器-OutOfMemoryError
+- **消息**：群集在执行过程中遇到内存不足问题，请使用具有更大核心计数和/或内存优化计算类型的集成运行时重试
+- **原因**：群集内存不足
+- **建议**：调试群集用于开发目的。 利用数据采样、适当的计算类型和大小来运行有效负载。 若要实现最佳性能，请参阅 [映射数据流性能指南](concepts-data-flow-performance.md) 。
+
+ ### <a name="error-code-df-executor-illegalargument"></a>错误代码： DF-执行器-illegalArgument
+- **消息**：请确保链接的服务中的访问密钥正确
+- **原因**：帐户名称或访问密钥不正确
+- **建议**：确保在链接服务中指定的帐户名称或访问密钥是正确的。 
+
+ ### <a name="error-code-df-executor-invalidtype"></a>错误代码： DF-执行器-InvalidType
+- **消息**：请确保参数类型与传入的值的类型相匹配。 当前不支持从管道传递浮点参数。
+- **原因**：声明类型与实际参数值之间不兼容的数据类型
+- **建议**：检查传递到数据流的参数值是否与声明的类型匹配。
+
+ ### <a name="error-code-df-executor-columnunavailable"></a>错误代码： DF-执行器-ColumnUnavailable
+- **消息**：表达式中使用的列名称不可用或无效
+- **原因**：表达式中使用的列名称无效或不可用
+- **建议**：检查表达式中使用的列名称 () 
+
+ ### <a name="error-code-df-executor-parseerror"></a>错误代码： DF-执行器-ParseError
+- **消息**：无法分析表达式
+- **原因**：表达式由于格式设置而分析错误
+- **建议**：检查表达式中的格式设置
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>错误代码:GetCommand OutputAsync 失败
 

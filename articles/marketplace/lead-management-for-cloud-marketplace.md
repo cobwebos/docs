@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 14c4877e9692a35cb5b20e8d357c74fbb1dc909a
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e3924e609091f4d0975901024f20db74efb6aac5
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419786"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032701"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>商业应用程序的潜在客户管理
 
@@ -48,7 +48,7 @@ ms.locfileid: "89419786"
 
 **无法将潜在顾客保存到 Dynamics CRM。检查 Dynamics CRM 帐户设置。LastCRMError：无法登录 Dynamics CRM，LastCRMException:** 
 
-> 如果选择了 O365 身份验证，请检查用户帐户和密码是否有效。 如果选择 Azure Active Directory，请检查租户 ID、应用程序 ID 和应用程序密钥是否与 Azure Active Directory 上设置的内容相匹配。 请按照[此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的说明进行操作。 如果帐户用户名/密码有效，请确保可以访问 Dynamics 365 并已分配许可证（如果使用 Azure Active Directory，则执行步骤 11-15，或者如何使用 Office 用户，则使用安全设置）。 
+> 如果选择了 Microsoft 365 身份验证，请检查用户帐户和密码是否有效。 如果选择 Azure Active Directory，请检查租户 ID、应用程序 ID 和应用程序密钥是否与 Azure Active Directory 上设置的内容相匹配。 请按照[此处](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)的说明进行操作。 如果帐户用户名/密码有效，请确保可以访问 Dynamics 365 并已分配许可证（如果使用 Azure Active Directory，则执行步骤 11-15，或者如何使用 Office 用户，则使用安全设置）。 
 
 **无法将潜在顾客保存到 Dynamics CRM。用户不具有潜在顾客实体中 leadsourcecode 属性的创建权限** 
 

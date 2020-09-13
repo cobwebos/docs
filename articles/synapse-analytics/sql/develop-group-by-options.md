@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429039"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032293"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 选项
 Synapse SQL 允许通过实施不同的 GROUP BY 选项来开发解决方案。 
@@ -124,7 +124,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-下图显示了[CREATE TABLE 为 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)的结果：
+下图显示了 [CREATE TABLE 为 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)的结果：
 
 ![按多维数据集分组](./media/develop-group-by-options/develop-group-by-cube.png)
 

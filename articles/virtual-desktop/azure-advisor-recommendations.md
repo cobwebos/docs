@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083742"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033024"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>如何解决 Azure 顾问的建议
 
@@ -34,7 +34,7 @@ ms.locfileid: "89083742"
 
 2. 接下来，选择要从生产环境更改为验证环境的主机池。
 
-3. 在主机池中，选择屏幕右侧列中的 " **属性** " 选项卡。 接下来，向下滚动，直到看到 "验证环境"。 选择 **"是**"，然后选择 " **应用**"。
+3. 在主机池中，选择左栏中的 " **属性** "。 接下来，向下滚动，直到看到 "验证环境"。 选择 **"是**"，然后选择 " **应用**"。
 
 >[!div class="mx-imgBorder"]
 >!["属性" 菜单的屏幕截图。 "验证环境" 以红色突出显示，并且 "是" 气泡处于选中状态。](media/validation-yes.png)

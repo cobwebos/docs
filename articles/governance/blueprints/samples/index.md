@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
-ms.date: 07/10/2020
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: cf8109dc8446fe1e3625e4f7c6fd0b5493c352d6
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488348"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031868"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -18,7 +18,7 @@ ms.locfileid: "89488348"
 
 | 示例 | 说明 |
 |---------|---------|
-| [澳大利亚政府 ISM PROTECTED](./ism-protected/control-mapping.md) | 提供可帮助满足澳大利亚政府 ISM PROTECTED 的规范措施。 |
+| [澳大利亚政府 ISM PROTECTED](./ism-protected/index.md) | 提供可帮助满足澳大利亚政府 ISM PROTECTED 的规范措施。 |
 | [Azure 安全基准](./azure-security-benchmark.md) | 提供可帮助符合 [Azure 安全基准](../../../security/benchmarks/overview.md)的规范措施。 |
 | [加拿大联邦 PBMM](./canada-federal-pbmm/index.md) | 提供防护措施，以便符合加拿大联邦受保护的 B、中等完整性、中等可用性 (PBMM)。 |
 | [CIS Microsoft Azure 基础基准](./cis-azure-1-1-0.md)| 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准建议。 |

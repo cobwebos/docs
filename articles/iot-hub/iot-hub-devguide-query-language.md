@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022439"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031171"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
-IoT 中心提供类似于 SQL 的强大语言，用于检索有关 [设备孪生](iot-hub-devguide-device-twins.md)、 [模块孪生](iot-hub-devguide-module-twins.md)、 [作业](iot-hub-devguide-jobs.md)和 [消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
+IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生](iot-hub-devguide-device-twins.md)、[模块孪生](iot-hub-devguide-module-twins.md)、[作业](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
 
 * IoT 中心查询语言的主要功能简介，以及
 * 语言的详细说明。 有关用于消息路由的查询语言的详细信息，请参阅[消息路由中的查询](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
@@ -234,7 +234,7 @@ query.nextAsTwin(onResults);
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始终返回最新值，并具有更高的节流限制。 可以直接发出 REST API 或使用 [Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) 之一中的等效功能。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable)。 此 API 始终返回最新值，并具有更高的节流限制。 可以直接发出 REST API 或使用 [Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) 之一中的等效功能。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 

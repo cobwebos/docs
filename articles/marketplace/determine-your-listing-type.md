@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 7acfd5e1a1b1c44a9a109bb2b8bc38c7fcc57593
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484861"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032378"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 
@@ -45,7 +45,7 @@ ms.locfileid: "89484861"
 
 &#42; Microsoft AppSource 中的 SaaS 应用程序事务处理产品/服务目前仅支持信用卡。
 
-&#42;&#42; Microsoft 365 产品/服务可免费安装，并可通过 SaaS 产品/服务作为授权服务实现盈利。 有关详细信息，请参阅[通过 Microsoft 商业市场利用 Office 365 加载项实现盈利](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
+&#42;&#42; Microsoft 365 产品/服务可免费安装，并可通过 SaaS 产品/服务作为授权服务实现盈利。 有关详细信息，请参阅 [通过 Microsoft 商用 Marketplace 盈利 Microsoft 365 外接程序](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
 ## <a name="choose-a-listing-option"></a>选择列表选项
 

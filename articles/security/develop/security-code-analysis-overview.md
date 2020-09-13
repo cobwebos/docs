@@ -12,16 +12,16 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543004"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031239"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>关于 Microsoft 安全代码分析
 
-利用 Microsoft 安全代码分析扩展，团队可以将安全代码分析添加到其 Azure DevOps 持续集成和交付（CI/CD）管道。 Microsoft[安全开发生命周期（SDL）](https://www.microsoft.com/securityengineering/sdl/practices)专家建议进行此分析。
+利用 Microsoft 安全代码分析扩展，团队可以将安全代码分析添加到其 Azure DevOps 持续集成和交付 (CI/CD) 管道。 此分析是 Microsoft [ (SDL) 专家的安全开发生命周期 ](https://www.microsoft.com/securityengineering/sdl/practices) 的建议。
 
 一致性 UX 通过隐藏正在运行的工具的复杂性来简化安全性。 通过基于 NuGet 的工具交付，团队不再需要管理工具的安装或更新。 使用用于生成任务的命令行和基本接口，所有用户都可以根据需要对工具有很多控制。
 
@@ -61,11 +61,11 @@ Microsoft 安全代码分析扩展使你随时可以使用最新版本的重要�
 
 ### <a name="anti-malware-scanner"></a>反恶意软件扫描程序
 
-反恶意软件扫描程序生成任务现已包含在 Microsoft 安全代码分析扩展中。 此任务必须在已安装 Windows Defender 的生成代理上运行。 有关详细信息，请参阅[Windows Defender 网站](https://aka.ms/defender)。
+反恶意软件扫描程序生成任务现已包含在 Microsoft 安全代码分析扩展中。 此任务必须在已安装 Windows Defender 的生成代理上运行。 有关详细信息，请参阅 [Windows Defender 网站](https://aka.ms/defender)。
 
 ### <a name="binskim"></a>BinSkim
 
-BinSkim 是一种可移植可执行（PE）的轻型扫描程序，用于验证编译器设置、链接器设置和二进制文件的其他与安全相关的特征。 此生成任务在 binskim.exe 控制台应用程序的周围提供了一个命令行包装器。 BinSkim 是一个开源工具。 有关详细信息，请参阅[GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
+BinSkim 是可移植的可执行文件 (PE) 轻型扫描程序，用于验证编译器设置、链接器设置和二进制文件的其他与安全相关的特征。 此生成任务在 binskim.exe 控制台应用程序的周围提供了一个命令行包装器。 BinSkim 是一个开源工具。 有关详细信息，请参阅 [GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
 
 ### <a name="credential-scanner"></a>凭据扫描程序
 
@@ -73,11 +73,11 @@ BinSkim 是一种可移植可执行（PE）的轻型扫描程序，用于验证�
 
 ### <a name="roslyn-analyzers"></a>Roslyn 分析器
 
-Roslyn 分析器是 Microsoft 的编译器集成工具，用于静态分析托管 c # 和 Visual Basic 代码。 有关详细信息，请参阅[基于 Roslyn 的分析器](https://docs.microsoft.com/dotnet/standard/analyzers/)。
+Roslyn 分析器是 Microsoft 的编译器集成工具，用于静态分析托管 c # 和 Visual Basic 代码。 有关详细信息，请参阅 [基于 Roslyn 的分析器](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)。
 
 ### <a name="tslint"></a>TSLint
 
-TSLint 是一种可扩展的静态分析工具，用于检查 TypeScript 代码的可读性、可维护性和功能错误。 它受新式编辑器和生成系统广泛支持。 可以用自己不起毛的规则、配置和格式化程序对其进行自定义。 TSLint 是一个开源工具。 有关详细信息，请参阅[GitHub 上的 TSLint](https://github.com/palantir/tslint)。
+TSLint 是一种可扩展的静态分析工具，用于检查 TypeScript 代码的可读性、可维护性和功能错误。 它受新式编辑器和生成系统广泛支持。 可以用自己不起毛的规则、配置和格式化程序对其进行自定义。 TSLint 是一个开源工具。 有关详细信息，请参阅 [GitHub 上的 TSLint](https://github.com/palantir/tslint)。
 
 ## <a name="analysis-and-post-processing-of-results"></a>分析并处理结果
 
@@ -95,7 +95,7 @@ Microsoft 安全代码分析扩展还包含三个后处理任务。 这些任务
 
 可以将此任务配置为报告特定工具或所有工具的结果。 你还可以选择要报告的问题级别，例如仅错误或错误和警告。
 
-### <a name="post-analysis-build-break"></a>后期分析（生成中断）
+### <a name="post-analysis-build-break"></a>后期分析 (生成中断) 
 
 使用后期分析生成任务，可以注入特意导致生成失败的生成中断。 如果一个或多个分析工具在代码中报告问题，则会注入生成中断。
 
@@ -106,8 +106,8 @@ Microsoft 安全代码分析扩展还包含三个后处理任务。 这些任务
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何载入和安装 Microsoft 安全代码分析的说明，请参阅我们的[载入和安装指南](security-code-analysis-onboard.md)。
+有关如何载入和安装 Microsoft 安全代码分析的说明，请参阅我们的 [载入和安装指南](security-code-analysis-onboard.md)。
 
-有关配置生成任务的详细信息，请参阅我们的[配置指南](security-code-analysis-customize.md)或[YAML 配置指南](yaml-configuration.md)。
+有关配置生成任务的详细信息，请参阅我们的 [配置指南](security-code-analysis-customize.md) 或 [YAML 配置指南](yaml-configuration.md)。
 
-如果对扩展和所提供的工具还有其他疑问，请查看[常见问题页](security-code-analysis-faq.md)。
+如果对扩展和所提供的工具还有其他疑问，请查看 [常见问题页](security-code-analysis-faq.md)。

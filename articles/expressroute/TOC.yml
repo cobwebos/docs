@@ -8,6 +8,7 @@
   items:
     - name: 创建 ExpressRoute 线路 - ARM 模板
       href: quickstart-create-expressroute-vnet-template.md
+  expanded: true
 - name: 教程
   items:
     - name: 创建和修改线路
@@ -205,7 +206,7 @@
           href: expressroute-asymmetric-routing.md
         - name: 用于 ExpressRoute 的 NAT
           href: expressroute-nat.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 验证 ExpressRoute 连接
           href: expressroute-troubleshooting-expressroute-overview.md

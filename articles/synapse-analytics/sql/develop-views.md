@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 84cd5c2de0b1a6d0909a31071506d98627966775
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fafa0c2e1b02cc49bfb852ed7770b0927b0e9334
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500736"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032718"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>使用 Synapse SQL 的 t-sql 视图
 在本文中，你将了解有关使用 T-sql 视图的技巧，以及如何使用 Synapse SQL 开发解决方案。 
@@ -28,14 +28,14 @@ ms.locfileid: "87500736"
 > [!NOTE]
 > **SQL pool**：本文不讨论 CREATE VIEW 的语法。 有关详细信息，请参阅 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 文档。
 
-### <a name="sql-on-demand-preview---create-view"></a>SQL 点播（预览版）-创建视图
+### <a name="sql-on-demand-preview---create-view"></a>SQL 点播 (预览) -创建视图
 
 > [!NOTE]
 > **SQL 点播**：创建视图的语法不在本文中讨论。 有关详细信息，请参阅 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 文档。
 
 ## <a name="architectural-abstraction"></a>体系结构摘要
 
-常见的应用程序模式是使用[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) （CTAS）重新创建表，在加载数据时，将使用后跟对象重命名模式。
+常见的应用程序模式是使用 [CREATE TABLE 作为 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) 重新创建表，在加载数据时，该模式后面跟有对象重命名模式。
 
 以下示例向日期维度添加新的日期记录。 请注意，这里先创建了一个新表 DimDate_New，然后将它重命名以替换表的原始版本。
 

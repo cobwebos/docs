@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a4b0cb9b53adbf6362d79766fcd7bce57f5441ac
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fd68f720f372ee61f7c441ea83bd365bc2a6f36a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322879"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032735"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>适用于 Azure Monitor 的 Azure 安全基线
 
@@ -80,7 +80,7 @@ Azure Monitor 是 Azure 核心服务的一部分，并且 Azure Monitor 服务�
 
 - [在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机](platform/gateway.md) 
 
-- [请参阅 Application Insights 入门](//azure/azure-monitor/app/app-insights-overview#get-started)
+- [请参阅 Application Insights 入门](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
 
 - [如何设置可用性 web 测试](app/monitor-web-app-availability.md)
 

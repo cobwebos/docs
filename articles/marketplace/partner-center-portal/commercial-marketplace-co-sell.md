@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: ca1a1bd1f07bf30fd7e5cd57b617a823120e85ea
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017364"
+ms.locfileid: "90033245"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的联合销售选项
 
@@ -66,7 +66,7 @@ ms.locfileid: "90017364"
 
 | 文档    | **说明**  |
 | :------------------- | :-------------------|
-| *单客户-寻呼* | 客户对你的产品/服务的说明。 Microsoft 销售团队可能与客户共享此信息，以帮助确定你的产品/服务是否合适，以及确保客户已准备就绪。 <br> <br> 使用合作伙伴中心提供的相关模板之一： <br> <ul> <li> Microsoft Azure 单页导航模板 </li> <li> Microsoft Dynamics 365 1-寻呼程序模板 </li> <li> Office 365 1-寻呼程序模板 </li> <li> Windows 10 1-寻呼程序模板 </li> </ul> |
+| *单客户-寻呼* | 客户对你的产品/服务的说明。 Microsoft 销售团队可能与客户共享此信息，以帮助确定你的产品/服务是否合适，以及确保客户已准备就绪。 <br> <br> 使用合作伙伴中心提供的相关模板之一： <br> <ul> <li> Microsoft Azure 单页导航模板 </li> <li> Microsoft Dynamics 365 1-寻呼程序模板 </li> <li> Microsoft 365 1-寻呼程序模板 </li> <li> Windows 10 1-寻呼程序模板 </li> </ul> |
 | *客户演示* | 将您的解决方案与其价值主张一起滑出。 确保你的产品/服务可供客户使用后，Microsoft 销售团队可能与客户共享此演示文稿，以清楚地说明两家公司在部署联合解决方案时带来的价值。 该演示文稿应涵盖你的解决方案的功能、它可以如何帮助客户、解决方案适用的行业以及它如何与竞争性解决方案进行比较。 <br> <br> 使用合作伙伴中心提供的模板。|
 | *客户案例研究* | 此信息向潜在客户显示你和 Microsoft 在以前的情况下如何成功部署此解决方案。 <br> <br> 使用合作伙伴中心提供的模板。 |
 | *可验证客户入选 (可选) * | 部署解决方案后客户成功的特定示例。 |

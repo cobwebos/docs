@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 28f8dd4be9e03af9f0b155d6e79949fe522cd7c2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.date: 09/11/2020
+ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007751"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032106"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>有关 Microsoft 商用 marketplace 的常见问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "90007751"
 
 ### <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商用 marketplace？
 
-商业市场将商业机构和政府机构与我们的合作伙伴构建的解决方案联系起来。 我们的合作伙伴在合作伙伴中心创建和管理产品/服务，客户可以通过产品内体验来发现和购买解决方案，如 Microsoft AppSource、Azure 市场、云解决方案提供商计划中的经销商、以及通过联合销售计划的销售团队。
+商业市场将商业机构和政府机构与我们的合作伙伴构建的解决方案联系起来。 我们的合作伙伴在合作伙伴中心创建和管理产品/服务，并且客户可以通过产品内体验（例如 Microsoft AppSource、Azure Marketplace、云解决方案提供商计划中的经销商以及销售团队通过共同销售计划）来发现和购买解决方案。
 
 要了解详细信息，请转至 [Microsoft 商业市场中心](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)。
 
@@ -42,7 +42,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 我们管理多个国家/地区的税务支付，并提供对全球经销商渠道网络的访问。 你可以使用客户的 Microsoft 客户协议或企业协议向组织进行销售，而无需创建新的购买关系。
 
-要了解详细信息，请观看[为什么通过市场销售](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace)的视频。
+若要了解详细信息，请参阅 [Microsoft 商用 marketplace 中心](https://aka.ms/commercialmarketplacehub)。
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场是否收取发布费用？
 
@@ -67,7 +67,7 @@ Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 
 
 注册并接受发布者协议后，你将有权访问合作伙伴中心的商业市场页。 这是你创建和管理产品/服务以及查看分析报告的位置。 对于 Microsoft 365 应用，还必须在合作伙伴中心激活 Office 应用商店计划。
 
-有关详细信息，请参阅[欢迎使用商业市场](index.yml)和[通过 Microsoft 商业市场利用 Office 365 加载项盈利](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
+有关详细信息，请参阅 [欢迎使用商业性 marketplace](index.yml) ，并 [通过 Microsoft 商用 marketplace 盈利 Microsoft 365 外接程序](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>如何获得商业市场的支持帮助？
 
@@ -329,7 +329,7 @@ Microsoft AppSource 支持信用卡付款。 Azure 市场支持信用卡付款�
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>我可以从何处了解有关 Microsoft 管理中心的更多信息？
 
-有关 Microsoft 管理中心的信息，请参阅[管理组织的第三方应用订阅](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide)。
+有关 Microsoft 管理中心的信息，请参阅[管理组织的第三方应用订阅](/microsoft-365/commerce/manage-saas-apps)。
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>我可以从何处了解有关 Azure 计费的更多信息？
 

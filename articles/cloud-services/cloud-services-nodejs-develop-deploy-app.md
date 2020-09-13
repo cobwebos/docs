@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c2d76ccd0c2e81147c39f81568fd1394cc1868b6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079203"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032871"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -36,8 +36,8 @@ ms.locfileid: "88079203"
 > [!NOTE]
 > 本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
-* 安装和配置 [Azure PowerShell]。
-* 下载并安装 [用于 .NET 2.7 的 Azure SDK]。 在安装设置中，选择：
+* 安装并配置 [Azure PowerShell]。
+* 下载并安装 [适用于 .NET 2.7 的 Azure SDK]。 在安装设置中，选择：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
@@ -90,7 +90,7 @@ http.createServer(function (req, res) {
 ## <a name="deploy-the-application-to-azure"></a>将应用程序部署到 Azure
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
+> 要完成本教程，需要一个 Azure 帐户。 可以 [激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) 或 [注册免费帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
 
 ### <a name="download-the-azure-publishing-settings"></a>下载 Azure 发布设置
 要将应用程序部署到 Azure，必须先为 Azure 订阅下载发布设置。
@@ -180,7 +180,7 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
 [Azure 网站、云服务和虚拟机的比较]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用轻型 Web 应用]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
-[用于 .NET 2.7 的 Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [将 PowerShell 连接]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [创建 Azure 托管服务概述]: https://azure.microsoft.com/documentation/services/cloud-services/

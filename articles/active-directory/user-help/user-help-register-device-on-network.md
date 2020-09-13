@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/04/2019
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799394"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033041"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在组织的网络上注册个人设备
 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，将能够访问组织的受限资源。
@@ -31,7 +31,7 @@ ms.locfileid: "88799394"
 
 - Windows 在组织的网络上注册设备。
 
-- （可选）根据组织的选择，可能需要通过[多重身份验证](multi-factor-authentication-end-user-first-time.md)或[安全信息](./security-info-setup-signin.md)设置双重验证。
+- 根据组织的选择，可能会要求你通过 [双重身份验证](multi-factor-authentication-end-user-first-time.md) 或 [安全信息](./security-info-setup-signin.md)设置双重验证。
 
 - （可选）根据组织的选择，可能会自动注册移动设备管理，如 Microsoft Intune。 有关在 Microsoft Intune 中注册的详细信息，请参阅[在 Intune 中注册设备](/intune-user-help/enroll-your-device-in-intune-all)。
 

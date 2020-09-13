@@ -184,9 +184,9 @@
     - name: Azure PowerShell
       items:
         - name: 策略
-          href: /powershell/module/az.resources/#policies
+          href: /powershell/module/az.resources#policy
         - name: 策略见解
-          href: /powershell/module/az.policyinsights#policy_insights
+          href: /powershell/module/az.policyinsights
         - name: 来宾配置
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: 用于 .NET 的 Azure SDK
@@ -233,7 +233,7 @@
           href: /rest/api/policy-insights/remediations
         - name: 来宾配置
           href: /rest/api/guestconfiguration/
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       items:
         - name: 分配
           href: /azure/templates/microsoft.authorization/policyassignments
