@@ -3,12 +3,12 @@ title: 计划定义中的法规遵从性
 description: 描述如何使用计划定义按规章域（如访问控制、配置管理等）对策略进行分组。
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544615"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645532"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure 策略中的合规性
 
@@ -33,18 +33,18 @@ Microsoft 负责的控件为 `type` [静态](./definition-structure.md#type)。
 
 新选项卡上，将 **控件** 添加到页面。 筛选功能按 **符合性域** 提供，策略定义按 `title` **policyMetadata** 对象中的字段进行分组。 每一行都表示一个控件，该 **控件** 显示其符合性状态、它所属的 **符合性域** 、责任信息以及组成该 **控制**的不符合和合规性策略定义的数量。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="NIST SP 800-53 R4 内置定义的规章遵从性概述的示例。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="用于显示符合和不符合性控件的 NIST SP 800-53 R4 内置定义的规章遵从性概述的屏幕截图。":::
 
 选择 **控件** 将打开有关该控件的详细信息页。 **概述**包含来自和的信息 `description` `requirements` 。 " **策略** " 选项卡下是参与此 **控制**的计划中的各个策略定义。 " **资源符合性** " 选项卡提供按当前查看的 **控件**的成员策略计算的每个资源的粒度视图。
 
 > [!NOTE]
 > **Microsoft 托管**的评估类型适用于[静态](./definition-structure.md#type)策略定义 `type` 。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="NIST SP 800-53 R4 内置定义的系统和通信保护域的边界保护控制中的合规性策略定义示例。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="适用于 NIST SP 800-53 R4 内置定义的边界保护控制的规章符合性详细信息的屏幕截图。":::
 
 在同一 **控制** 页中，更改为 " **资源符合性** " 选项卡将显示此 **控件**的策略定义所包含的所有资源。 筛选器可用于名称或 ID、符合性状态、资源类型和位置。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="符合 NIST SP 800-53 R4 内置定义的系统和通信保护域的边界保护控制中受策略定义影响的规章遵从性资源的示例。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="对 NIST SP 800-53 R4 内置定义的边界保护控制的资源符合性的屏幕截图。":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>SDK 中的法规遵从性
 

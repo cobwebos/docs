@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b92bfad99c854f75c945121d352a7122d8c6db89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d5de8374f58eaf8dc83f54f05557b0a125191c34
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011593"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613725"
 ---
 # <a name="cut-planes"></a>剪切平面
 
@@ -56,7 +56,6 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 }
 ```
 
-
 ### <a name="cutplanecomponent-properties"></a>CutPlaneComponent 属性
 
 裁切平面组件上公开了以下属性：
@@ -68,6 +67,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 * `FadeColor` 和 `FadeLength`：
 
   如果 *FadeColor* 的 alpha 值不为零，则靠近裁切平面的像素将会根据 FadeColor 的 RGB 部分淡化。 alpha 通道的强度决定了像素是根据淡化颜色完全淡化，还是仅部分淡化。 *FadeLength* 定义超过什么距离将进行这种淡化。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # CutPlaneComponent 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
+* [C + + CutPlaneComponent 类](https://docs.microsoft.com/cpp/api/remote-rendering/cutplanecomponent)
 
 ## <a name="next-steps"></a>后续步骤
 

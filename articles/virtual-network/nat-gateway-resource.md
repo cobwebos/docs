@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: f6e0009a1e1df57298884097cac076ef3a344714
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135821"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612898"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
 
@@ -217,7 +217,7 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 
 如果虚拟机实例部署在同一子网中的多个区域内，则无法使用 NAT 网关资源实现区域承诺。   即使已将多个局部区域性 NAT 网关附加到子网，虚拟机实例也不知道要选择哪个 NAT 网关资源。
 
-如果存在以下情况，则无法实现局部区域性承诺：a) 虚拟机实例的区域与局部区域性 NAT 网关的区域不一致，或 b) 区域性 NAT 网关资源与局部区域性虚拟机实例一起使用。
+如果) 虚拟机实例的区域和区域 NAT 网关的区域未对齐，或 b) 区域 NAT 网关资源与区域虚拟机实例一起使用，则存在区域性承诺不。
 
 尽管方案看起来正常运行，但从可用性区域的角度看，其运行状况模型和故障模式是未定义的。 请考虑改用局部区域性堆栈或全区域性堆栈。
 
@@ -336,11 +336,11 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 * 有关验证 NAT 网关的教程
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
   - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [门户](tutorial-create-validate-nat-gateway-portal.md)
+  - [Portal](tutorial-create-validate-nat-gateway-portal.md)
 * 有关部署 NAT 网关资源的快速入门
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [门户](./quickstart-create-nat-gateway-portal.md)
+  - [Portal](./quickstart-create-nat-gateway-portal.md)
   - [模板](./quickstart-create-nat-gateway-template.md)
 * 了解 NAT 网关资源 API
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)

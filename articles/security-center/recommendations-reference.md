@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8a0ead681c8b6cfbfbf820b546f1bcb320871c70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c3351931013fb9b4d4de25d12e358fbe27f05472
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587355"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613510"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
@@ -34,7 +34,7 @@ ms.locfileid: "88587355"
 
 ## <a name="network-recommendations"></a><a name="recs-network"></a>网络建议
 
-|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应在面向 Internet 的虚拟机上应用自适应网络强化建议**|当自适应网络强化功能发现了过于宽松的 NSG 规则时，标准定价层上的客户会看到此建议。<br>（相关策略：应在面向 Internet 的虚拟机上应用自适应网络强化建议）|高|N|虚拟机|
 |应在与 VM 关联的 NSG 上限制所有网络端口|通过限制现有允许规则的访问来增强面向 Internet 的 VM 的网络安全组。<br>当向*所有*源开放任何端口（端口 22、3389、5985、5986、80 和 1443 除外）时，将触发此建议。<br>（相关策略：应该限制通过面向 Internet 的终结点进行访问）|高|N|虚拟机|
@@ -53,11 +53,10 @@ ms.locfileid: "88587355"
 
 ## <a name="container-recommendations"></a><a name="recs-containers"></a>容器建议
 
-|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应对 Azure Kubernetes 服务的群集启用高级威胁防护**|安全中心为容器化环境提供实时威胁防护，并针对可疑活动生成警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。<br>重要提示：修正此建议将导致保护 AKS 群集。 如果此订阅中没有任何 AKS 群集，则不会产生任何费用。 如果以后在此订阅上创建任何 AKS 群集，这些群集将自动受到保护，并将在该时间开始收费。<br> (相关策略： [应在 Azure Kubernetes Service 群集上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)) |高|**是**|订阅|
 |**应在 Kubernetes 服务上定义经授权的 IP 范围**|通过仅向特定范围内的 IP 地址授予 API 访问权限，来限制对 Kubernetes 服务管理 API 的访问。 建议配置已获授权的 IP 范围，以便只有受允许网络中的应用程序可以访问群集。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义经授权的 IP 范围）|高|N|计算资源（容器）|
-|应定义 Pod 安全策略，通过删除不必要的应用程序特权来减少攻击途径。|通过删除不必要的应用程序特权，来定义 Pod 安全策略以减少攻击途径。 建议配置 pod 安全策略，以便 pod 只能访问其有权访问的资源。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义 Pod 安全策略）|中型|N|计算资源（容器）|
 |**应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问权限**|若要提供对用户可以执行的操作的粒度筛选，请使用基于角色的访问控制 (RBAC) 来管理 Kubernetes 服务群集中的权限并配置相关授权策略。 有关详细信息，请参阅 [Azure 基于角色的访问控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>（相关策略：[预览]：应在 Kubernetes 服务中使用基于角色的访问控制 (RBAC)）|中型|N|计算资源（容器）|
 |**Kubernetes 服务应升级到最新的 Kubernetes 版本**|将 Azure Kubernetes Service 群集升级到最新的 Kubernetes 版本，以便从最新的漏洞修补程序中获益。 有关特定 Kubernetes 漏洞的详细信息，请参阅 [Kubernetes CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>（相关策略：[预览]：Kubernetes 服务应升级到不易受攻击的 Kubernetes 版本）|高|N|计算资源（容器）|
 |**应对 Azure 容器注册表的注册表启用高级威胁防护**|若要构建安全的容器化工作负荷，请确保它们所基于的映像没有已知的漏洞。 安全中心会扫描注册表中每个推送的容器映像的安全漏洞，并显示每个映像的详细发现。<br>重要提示：修正此建议将导致为你的 ACR 注册表提供保护费用。 如果此订阅中没有任何 ACR 注册表，则不会产生任何费用。 如果以后在此订阅上创建任何 ACR 注册表，则这些注册表会自动受到保护，并将从该时间开始收费。<br> (相关策略： [应在 Azure 容器注册表注册表中启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)) |高|**是**|订阅|
@@ -67,7 +66,7 @@ ms.locfileid: "88587355"
 
 ## <a name="app-service-recommendations"></a><a name="recs-appservice"></a>应用服务建议
 
-| 建议                                                              | 说明及相关策略                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | 严重性 | 已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)） | 资源类型 |
+| 建议                                                              | 说明及相关策略                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | severity | 已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)） | 资源类型 |
 |-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | **应在 Azure 应用服务计划上启用高级威胁防护** | 安全中心利用云的规模和 Azure 作为云提供商拥有的可见性来监视常见的 Web 应用攻击。<br>重要提示：修正此建议将导致保护应用服务计划的费用。 如果此订阅中没有任何应用服务计划，则不会产生任何费用。 如果以后在此订阅上创建任何应用服务计划，则这些计划会自动受到保护，并将在该时间开始收费。<br> (相关策略： [应对 Azure App Service 计划启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb))  | 高     | **是**                                                                                                                                                                   | 订阅  |
 | **只能通过 HTTPS 访问 Web 应用程序**                    | 为 Web 应用启用“仅 HTTPS”访问权限。 使用 HTTPS 可确保执行服务器/服务身份验证服务，并保护传输中的数据不受网络层窃听攻击威胁。<br>（相关策略：应只能通过 HTTPS 访问 Web 应用程序）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 中型   | **是**                                                                                                                                                                   | 应用服务   |
@@ -85,7 +84,7 @@ ms.locfileid: "88587355"
 
 ## <a name="compute-and-app-recommendations"></a><a name="recs-computeapp"></a>计算和应用建议
 
-| 建议                                                                                            | 说明及相关策略                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 严重性 | 已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)） | 资源类型                          |
+| 建议                                                                                            | 说明及相关策略                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | severity | 已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)） | 资源类型                          |
 |-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
 | **应在虚拟机上启用高级威胁防护**                                      | 安全中心为虚拟机工作负荷提供实时威胁保护，并生成强化建议以及有关可疑活动的警报。<br>你可以使用此信息快速纠正安全问题，并提高虚拟机的安全性。<br>重要提示：修正此建议将导致保护虚拟机的费用。 如果此订阅中没有任何虚拟机，将不会产生任何费用。 如果以后在此订阅上创建任何虚拟机，则这些虚拟机将自动受到保护，并将在该时间开始收费。<br> (相关策略： [应在虚拟机上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d))                                                                                                          | 高     | **是**                                                                                                                                                                   | 订阅                           |
 | **应启用 Azure 流分析的诊断日志**                                           | 启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用 Azure 流分析的诊断日志）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | 低      | **是**                                                                                                                                                                   | 计算资源（流分析）   |
@@ -128,7 +127,7 @@ ms.locfileid: "88587355"
 
 ## <a name="virtual-machine-scale-set-recommendations"></a><a name="recs-vmscalesets"></a>虚拟机规模集建议
 
-|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应当启用虚拟机规模集中的诊断日志**|启用日志并将其保留长达一年的时间。 这样可以重新创建用于调查的活动线索。 这适用于发生安全事件或网络受到危害的情况。<br>（相关策略：应启用虚拟机规模集的诊断日志）|低|N|虚拟机规模集|
 |应在虚拟机规模集上修正 Endpoint Protection 运行状况故障|修复虚拟机规模集上的 Endpoint Protection 运行状况故障，使其免受威胁和漏洞的侵害。<br>（无相关策略 - 依赖于“应在虚拟机规模集上安装 Endpoint Protection 解决方案”）|低|N|虚拟机规模集|
@@ -141,7 +140,7 @@ ms.locfileid: "88587355"
 
 ## <a name="data-and-storage-recommendations"></a><a name="recs-datastorage"></a>数据和存储建议
 
-|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应在 Azure SQL 数据库服务器上启用高级数据安全**|高级数据安全是一个提供高级 SQL 安全功能的统一包。 它包括用于呈现和缓解潜在的数据库漏洞的功能，检测可能指示数据库威胁的异常活动，并发现和分类敏感数据。 <br>重要提示：修正此建议将导致保护 Azure SQL 数据库服务器的费用。 如果此订阅中没有任何 Azure SQL 数据库服务器，则不会产生任何费用。 如果以后在此订阅上创建任何 Azure SQL 数据库服务器，则这些服务器会自动受到保护，并将在该时间开始收费。<br> (相关策略： [应在 AZURE SQL 数据库服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)) |高|**是**|订阅|
 |**应在计算机的 SQL 服务器上启用高级数据安全**|高级数据安全是一个提供高级 SQL 安全功能的统一包。 它包括用于呈现和缓解潜在的数据库漏洞的功能，检测可能指示数据库威胁的异常活动，并发现和分类敏感数据。 <br>重要提示：修正此建议将导致保护计算机上的 SQL server 的费用。 如果此订阅中的计算机上没有 SQL server，则不会产生任何费用。 如果以后在此订阅的计算机上创建任何 SQL server，则这些服务器会自动受到保护，并将在该时间开始收费。<br> (相关策略： [应在计算机上的 SQL server 上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b)) |高|**是**|订阅|
@@ -167,7 +166,7 @@ ms.locfileid: "88587355"
 
 ## <a name="identity-and-access-recommendations"></a><a name="recs-identity"></a>标识和访问建议
 
-|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应在对订阅拥有读取权限的帐户上启用 MFA**|为具有读取特权的所有订阅帐户启用多重身份验证 (MFA)，以防止破坏帐户或资源。<br>（相关策略：应在对订阅拥有读取权限的帐户上启用 MFA）|高|N|订阅|
 |应在对订阅拥有写入权限的帐户上启用 MFA|为具有写入特权的所有订阅帐户启用多重身份验证 (MFA)，以防止破坏帐户或资源。<br>（相关策略：应在对订阅拥有写入权限的帐户上启用 MFA）|高|N|订阅|
@@ -180,18 +179,20 @@ ms.locfileid: "88587355"
 |**应为订阅分配了多个所有者**|指定多个订阅所有者，以实现管理员访问权限冗余。<br>（相关策略：应向订阅分配多个所有者）|高|N|订阅|
 |**只多只为订阅指定 3 个所有者**|指定少于 3 个订阅所有者，以减少已遭入侵的所有者做出违规行为的可能性。<br>（相关策略：最多只能为订阅指定 3 个所有者）|高|N|订阅|
 |**应对 Azure Key Vault 的保管库启用高级威胁防护**|Azure 安全中心包含针对 Azure Key Vault 的 Azure 原生高级威胁防护，提供额外的安全情报层。<br>重要提示：修正此建议将导致保护 AKV 保管库的费用。 如果此订阅中没有任何 AKV 保管库，则不会产生任何费用。 如果以后在此订阅上创建任何 AKV 保管库，则这些保管库将自动受到保护，并将从该时间开始收费。<br> (相关策略： [应在 Azure Key Vault 保管库上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |高|**是**|订阅|
-|**应启用 Key Vault 的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用密钥保管库的诊断日志）|低|**是**|密钥保管库|
+|**应启用 Key Vault 的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用密钥保管库的诊断日志）|低|**是**|Key Vault|
 |**应使用服务主体来保护订阅，而不是管理证书**|管理证书允许向他们进行身份验证的任何用户管理与其关联)  (的订阅。 为了更安全地管理订阅，建议将服务主体与资源管理器结合使用，以限制在证书泄露的情况下的冲击半径。 它还自动化了资源管理。|中型|否|订阅|
 ||||||
 
 
 ## <a name="deprecated-recommendations"></a>弃用的建议
 
-|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |应限制对应用服务的访问|通过更改网络配置来限制对应用服务的访问，以拒绝来自过大范围的入站流量。<br>（相关策略：[预览]：应限制对应用服务的访问）|高|N|应用服务|
 |应强化 IaaS NSG 上 Web 应用的规则|如果运行 web 应用程序的虚拟机的网络安全组 (NSG) 所包含的 NSG 规则对于 web 应用程序端口而言过于宽松，应强化这些安全组。<br>（相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）|高|N|虚拟机|
-
+|应定义 Pod 安全策略，通过删除不必要的应用程序特权来减少攻击途径。|通过删除不必要的应用程序特权，来定义 Pod 安全策略以减少攻击途径。 建议配置 pod 安全策略，以便 pod 只能访问其有权访问的资源。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义 Pod 安全策略）|中型|N|计算资源（容器）|
+|**为 IoT 安全模块安装 Azure 安全中心，以便更好地了解 IoT 设备**|为 IoT 安全模块安装 Azure 安全中心，以便更好地了解 IoT 设备。|低|N|IoT 设备|
+||||
 
 
 ## <a name="next-steps"></a>后续步骤

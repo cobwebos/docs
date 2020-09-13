@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74fae6a8aa0c59043db0ab816e09b16affb63580
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2e7f441a727bea8d1a5d401fb5e9757dee1044fc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021827"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613800"
 ---
 # <a name="remote-rendering-sessions"></a>远程渲染会话
 
@@ -31,7 +31,7 @@ Azure 远程渲染的工作原理是，将复杂的渲染任务卸载到云中�
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>同时管理多个会话
 
-无法从一个设备完全连接到多个会话。 不过，可以从单个应用程序创建、观察和关闭任意数量的会话。 只要该应用不是要连接到某个会话，就不需要在诸如 HoloLens 2 的设备上运行。 如果希望通过中心机制来控制会话，则可使用此类实现的用例。 例如，可构建一个 Web 应用，多个平板电脑和 HoloLenses 都可以登录该应用。 然后，该应用可以在平板电脑上显示选项，例如要显示的 CAD 模型。 如果用户进行了选择，则会将此信息传达给所有 HoloLenses 以创造共享体验。
+无法从一个设备完全连接到多个会话。 不过，可以从单个应用程序创建、观察和关闭任意数量的会话。 只要该应用不是要连接到某个会话，就不需要在诸如 HoloLens 2 的设备上运行。 如果希望通过中心机制来控制会话，则可使用此类实现的用例。 例如，可能会构建一个 web 应用，其中多个平板电脑和 HoloLens 设备可以登录。 然后，该应用可以在平板电脑上显示选项，例如要显示的 CAD 模型。 如果用户进行了选择，则会将此信息传递给所有 HoloLens 设备，以创建共享体验。
 
 ## <a name="session-phases"></a>会话阶段
 
@@ -146,6 +146,15 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 可以通过 `AzureSession.SessionUUID()` 查询持久会话 ID 并在本地进行缓存。 使用此 ID，应用程序可以调用 `AzureFrontend.OpenSession` 以绑定到该会话。
 
 如果 `AzureSession.IsConnected` 为 true，则 `AzureSession.Actions` 将返回 `RemoteManager` 的实例，该实例包含的函数用于[加载模型](models.md)、操作[实体](entities.md)以及[查询](../overview/features/spatial-queries.md)所渲染的场景的相关信息。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # AzureSession 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession)
+* [C # AzureFrontend CreateNewRenderingSessionAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
+* [C # AzureFrontend OpenRenderingSession ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
+* [C + + AzureSession 类](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession)
+* [C + + AzureFrontend：： CreateNewRenderingSessionAsync](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
+* [C + + AzureFrontend：： OpenRenderingSession](https://docs.microsoft.com/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
 
 ## <a name="next-steps"></a>后续步骤
 

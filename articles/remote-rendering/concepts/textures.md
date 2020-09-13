@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20c2951b601690beb9ec64040cf650bb5208d0e4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dc38b53705c24cb12a001237a9a80ec66ec33e14
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997704"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613789"
 ---
 # <a name="textures"></a>纹理
 
@@ -82,11 +82,19 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 }
 ```
 
-
 纹理类型和内容可能存在限制，具体取决于要使用的纹理。 例如，[PBR 材料](../overview/features/pbr-materials.md)的粗糙度图必须为灰度。
 
 > [!CAUTION]
 > ARR 中的所有 Async 函数都返回异步操作对象。 在完成操作之前，必须存储对这些对象的引用。 否则，C# 垃圾回收器可能会提前删除该操作，并且该操作永远不能完成。 在上面的示例代码中，成员变量“_textureLoad”用于保存引用，直到“已完成”事件到达。
+
+## <a name="api-documentation"></a>API 文档
+
+* [C # 纹理类](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C # RemoteManager LoadTextureAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C # RemoteManager LoadTextureFromSASAsync ( # B1 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C + + 纹理类](https://docs.microsoft.com/cpp/api/remote-rendering/texture)
+* [C + + RemoteManager：： LoadTextureAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C + + RemoteManager：： LoadTextureFromSASAsync ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>后续步骤
 

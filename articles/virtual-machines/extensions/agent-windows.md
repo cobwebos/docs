@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 42470df5391a976e8023467758d2a3fd0890883e
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041470"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612831"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -70,11 +70,11 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>先决条件
 
-- 若要运行 .Net Framework 4.0，Windows VM 代理至少需要 Windows Server 2008 (64 位) 才能运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- 若要运行 .Net Framework 4.0，Windows VM 代理至少需要 Windows Server 2008 SP2 (64 位) 才能运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 - 确保 VM 可以访问 IP 地址 168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
-- 确保在来宾 VM 内启用 DHCP。 这是从 DHCP 获取用于 IaaS VM 代理和扩展的主机或构造地址的必需操作。 如果需要静态专用 IP，应通过 Azure 门户或 PowerShell 进行配置，并确保已启用 VM 内的 DHCP 选项。 [详细了解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何通过 PowerShell 设置静态 IP 地址。
+- 确保在来宾 VM 内启用 DHCP。 必须这样做，才能从 DHCP 获取主机或构造地址，以便 IaaS VM 代理和扩展可以正常工作。 如果需要静态专用 IP，则应通过 Azure 门户或 PowerShell 进行配置，同时确保启用 VM 内的 DHCP 选项。 [详细了解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何通过 PowerShell 设置静态 IP 地址。
 
 
 ## <a name="detect-the-vm-agent"></a>检测 VM 代理
@@ -115,7 +115,7 @@ foreach ($vm in $vms) {
 
 
 ## <a name="upgrade-the-vm-agent"></a>升级 VM 代理
-适用于 Windows 的 Azure VM 代理会自动升级到从 Azure marketplace 部署的映像。 新 VM 部署到 Azure 后，会在 VM 预配时获得最新 VM 代理。 如果手动安装了代理或正在部署自定义 VM 映像，则需要手动更新以在创建映像时包括新的 VM 代理。
+适用于 Windows 的 Azure VM 代理会在从 Azure 市场部署的映像上自动升级。 新 VM 部署到 Azure 后，会在 VM 预配时获得最新 VM 代理。 如果已手动安装了代理或正在部署自定义 VM 映像，则需要在创建映像时进行手动更新以包括新的 VM 代理。
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows 来宾代理自动日志收集
 Windows 来宾代理具有自动收集一些日志的功能。 此功能由 CollectGuestLogs.exe 进程控制。 它同时适用于 PaaS 云服务和 IaaS 虚拟机，其目标是快速自动地从 VM 收集一些诊断日志 - 以便将它们用于脱机分析。 收集的日志包括事件日志、OS 日志、Azure 日志和一些注册表项。 它会生成一个压缩文件，该文件传输到 VM 的主机。 然后，工程团队和支持专业人员可以查看此 ZIP 文件，以根据拥有 VM 的客户的请求调查问题。

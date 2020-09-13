@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 430b491780e10840274f16315b159a8095c11889
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051111"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612527"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -41,7 +41,7 @@ ms.locfileid: "89051111"
 --- | ---
 **VMware vCenter 服务器** | 版本5.5、6.0、6.5 或6.7。
 **VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5 或6.7。
-**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储. 浏览**：允许浏览 VM 日志文件来排除快照创建和删除故障。<br/><br/> - **LowLevelFileOperations**：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Configu。DiskChangeTracking**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Configu。DiskLease**：允许 VM 的磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. ReadOnlyDiskAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. VirtualMachineDownload**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine. SnapshotManagement. \* **：允许创建和管理用于复制的 VM 快照。<br/><br/> - **虚拟机。** 关机：允许 VM 在迁移到 Azure 期间关闭。
+**vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储. 浏览**：允许浏览 VM 日志文件来排除快照创建和删除故障。<br/><br/> - **FileManagement**：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease**：允许 VM 的磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. GetVmFiles**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine. \* **：允许创建和管理用于复制的 VM 快照。<br/><br/> - **虚拟机。关机**：允许 VM 在迁移到 Azure 期间关闭。
 
 
 
@@ -68,7 +68,7 @@ ms.locfileid: "89051111"
 **存储 vMotion** | 不支持。 如果 VM 使用 storage vMotion，则复制将不起作用。
 **成组 Nic** | 不支持。
 **IPv6** | 不支持。
-**目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、高级 SSD) 的托管磁盘。
+**目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、标准 SSD、高级 SSD) 的托管磁盘。
 **同时复制** | 300 Vm/vCenter Server。 如果有更多的，请按批次300进行迁移。
 
 
@@ -116,17 +116,17 @@ vSphere/ESXI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 **网络/存储** | 有关最新信息，请查看 Site Recovery 的 [网络](../site-recovery/vmware-physical-azure-support-matrix.md#network) 和 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#storage) 必备组件。 Azure Migrate 提供完全相同的网络/存储要求。
 **Azure 要求** | 有关最新信息，请查看 Site Recovery 的 [Azure 网络](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和 [计算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) 要求。 对于 VMware 迁移，Azure Migrate 具有相同的要求。
 **移动服务** | 必须在要迁移的每个 VM 上安装移动服务代理。
-**UEFI 启动** | 支持。
+**UEFI 启动** | 。
 **UEFI-安全启动**         | 不支持迁移。
-**目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、高级 SSD) 的托管磁盘。
+**目标磁盘** | Vm 只能迁移到 Azure 中 (标准 HDD、标准 SSD、高级 SSD) 的托管磁盘。
 **磁盘大小** | 2 TB 操作系统磁盘;8 TB （适用于数据磁盘）。
 **磁盘限制** |  每个虚拟机最多63个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
 **共享磁盘群集** | 不支持。
-**独立磁盘** | 支持。
-**传递磁盘** | 支持。
+**独立磁盘** | 。
+**传递磁盘** | 。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
-**iSCSI 目标** | 支持。
+**iSCSI 目标** | 。
 **多路径 IO** | 不支持。
 **存储 vMotion** | 支持
 **成组 Nic** | 不支持。
