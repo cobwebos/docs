@@ -68,7 +68,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了特定于 Azure Synapse Analytics 链接服务的 JSON 元素的说明。
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **AzureSqlDW** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure Synapse Analytics 实例所需的信息。 仅支持基本身份验证。 |是 |
@@ -81,7 +81,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure Synapse 分析数据库中的表或视图的名称。 |是 |
 
@@ -96,7 +96,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 ### <a name="sqldwsource"></a>SqlDWSource
 源为 **SqlDWSource** 类型时，可在 **typeProperties** 节中使用以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
@@ -142,7 +142,7 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** 支持以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
 | allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 Azure Synapse Analytics 的建议方法。** 有关约束和详细信息，请参阅 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。 |True <br/>False（默认值） |否 |

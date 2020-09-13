@@ -194,7 +194,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![提供授权策略的信息](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
-   | properties | 必选 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | 策略名称 | 是 | 要用于授权策略的名称 |
    | **申请** | 是 | 逻辑应用从入站调用接受的声明类型和值。 下面是可用的声明类型： <p><p>- 颁发者 <br>- 受众 <br>- **主题** <br>- JWT ID（JSON Web 令牌 ID） <p><p>**声明**列表中至少必须包含**颁发者**声明，该声明的值以 `https://sts.windows.net/` 或开头 `https://login.microsoftonline.com/` 为 Azure AD 颁发者 ID。 有关这些声明类型的详细信息，请参阅 [Azure AD 安全令牌中的声明](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 你还可以指定自己的声明类型和值。 |

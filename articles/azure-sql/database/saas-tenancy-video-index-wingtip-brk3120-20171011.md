@@ -10,12 +10,12 @@ ms.reviewer: ''
 ms.custom: sqldbrb=1
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0ba510d87764fde824b3fc7c594c230b880d05c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cceeef7e41e8fc5c48b4e67cdb1adf3aa4f02a1
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170318"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483858"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,12 +43,12 @@ ms.locfileid: "84170318"
 
 以下标题是到本文后面相应批注部分的链接：
 
-- [1. **（开始）** 欢迎幻灯片，0:00:03](#anchor-image-wtip-min00001)
+- [1. ** (开始) ** 欢迎幻灯片，0:00:03](#anchor-image-wtip-min00001)
 - [2. 会话目标，0:03:11](#anchor-image-wtip-min00311)
 - [3. 议程，0:04:17](#anchor-image-wtip-min00417)
 - [4. 多租户 web 应用，0:05:05](#anchor-image-wtip-min00505)
 - [5. 应用程序 web 窗体，0:05:55](#anchor-image-wtip-min00555)
-- [6. 每个租户的成本（缩放、隔离、恢复）、0:09:31](#anchor-image-wtip-min00931)
+- [6. 按租户收费 (规模、隔离、恢复) 、0:09:31](#anchor-image-wtip-min00931)
 - [7. 多租户的数据库模型：优点和缺点，0:11:59](#anchor-image-wtip-min01159)
 - [8. 混合模型混合 MT/ST 的优点，0:13:01](#anchor-image-wtip-min01301)
 - [9. 单租户与多租户：优点和缺点，0:16:44](#anchor-image-wtip-min01644)
@@ -77,7 +77,7 @@ ms.locfileid: "84170318"
 - [32跨租户数据库的分布式查询，1:12:21](#anchor-image-wtip-min11221)
 - [33. 票证生成演示，1:12:32](#anchor-image-wtip-min11232)
 - [34 SSMS 即席分析，1:12:46](#anchor-image-wtip-min11246)
-- [35. 将租户数据提取到 SQL DW、1:16:32](#anchor-image-wtip-min11632)
+- [35. 将租户数据提取到 Azure Synapse Analytics，1:16:32](#anchor-image-wtip-min11632)
 - [36. 每日销售分配图，1:16:48](#anchor-image-wtip-min11648)
 - [37。包装和调用操作，1:19:52](#anchor-image-wtip-min11952)
 - [38。有关详细信息，请查看1:20:42](#anchor-image-wtip-min12042)
@@ -91,7 +91,7 @@ ms.locfileid: "84170318"
 
 
 &nbsp; <a name="anchor-image-wtip-min00001"></a>
-#### <a name="1-start-welcome-slide-00001"></a>1. *（开始）* 欢迎幻灯片，0:00:01
+#### <a name="1-start-welcome-slide-00001"></a>1. * (开始) * 欢迎幻灯片，0:00:01
 
 借鉴 MYOB：设计 Azure SQL 数据库上的 SaaS 应用程序模式 - BRK3120**
 
@@ -129,7 +129,7 @@ ms.locfileid: "84170318"
 
 
 &nbsp; <a name="anchor-image-wtip-min00931"></a>
-#### <a name="6-per-tenant-cost-scale-isolation-recovery-00658"></a>6. 每个租户的成本（缩放、隔离、恢复）、0:06:58
+#### <a name="6-per-tenant-cost-scale-isolation-recovery-00658"></a>6. 按租户收费 (规模、隔离、恢复) 、0:06:58
 [![每个租户的成本、缩放、隔离、恢复][image-wtip-min00931-per-tenant-cost]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=418)
 
 
@@ -273,8 +273,8 @@ ms.locfileid: "84170318"
 
 
 &nbsp; <a name="anchor-image-wtip-min11632"></a>
-#### <a name="35-extract-tenant-data-into-sql-dw-11546"></a>35. 将租户数据提取到 SQL DW、1:15:46
-[![将租户数据提取到 SQL DW 中][image-wtip-min11632-extract-tenant-data-sql-dw]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4546)
+#### <a name="35-extract-tenant-data-into-azure-synapse-analytics-11546"></a>35. 将租户数据提取到 Azure Synapse Analytics，1:15:46
+[![将租户数据提取到 Azure Synapse Analytics][image-wtip-min11632-extract-tenant-data-sql-dw]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4546)
 
 
 &nbsp; <a name="anchor-image-wtip-min11648"></a>
@@ -383,7 +383,7 @@ ms.locfileid: "84170318"
 
 [image-wtip-min11246-ssms-adhoc-analytics]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11246-tsql-adhoc-analystics-db-elastic-query.png "SSMS 临时分析"
 
-[image-wtip-min11632-extract-tenant-data-sql-dw]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11632-extract-tenant-data-analytics-db-dw.png "将租户数据提取到 SQL DW 中"
+[image-wtip-min11632-extract-tenant-data-sql-dw]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11632-extract-tenant-data-analytics-db-dw.png "将租户数据提取到 Azure Synapse Analytics"
 
 [image-wtip-min11648-graph-daily-sale-distribution]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min11648-graph-daily-sale-contoso-concert-hall.png "日销售分配图"
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871558"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488824"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -50,7 +50,7 @@ ms.locfileid: "88871558"
 
   你还可以使用这些类别来识别连接器，尽管某些连接器可以存在于多个类别中。 例如，SAP 既是企业连接器，也是本地连接器：
 
-  | 类别 | 描述 |
+  | 类别 | 说明 |
   |----------|-------------|
   | [**托管连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 |
   | [**本地连接器**](#on-premises-connectors) | 安装并设置[本地数据网关][gateway-doc]后，这些连接器可以帮助逻辑应用访问 SQL Server、SharePoint Server、Oracle DB、文件共享等本地系统。 |
@@ -66,7 +66,7 @@ ms.locfileid: "88871558"
 > [!NOTE]
 > 在 ISE 及其连接器中运行的逻辑应用，不管这些连接器的运行位置如何，都遵循固定定价计划与基于消耗的定价计划。 有关详细信息，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md) 和 [逻辑应用定价详细](https://azure.microsoft.com/pricing/details/logic-apps/)信息。
 
-| Label | 示例 | 描述 |
+| Label | 示例 | 说明 |
 |-------|---------|-------------|
 | **转储** | ![示例核心连接器](./media/apis-list/example-core-connector.png) | 此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
 | **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你的本地系统已连接到 Azure 虚拟网络，则 ISE 允许你的逻辑应用直接访问该系统，而无需使用 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 相反，你可以使用该系统的 **ISE** 连接器（如果有）、HTTP 操作或 [自定义连接器](#custom)。 对于没有 **ISE** 连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅 [ise 连接器](#ise-connectors)。 |
@@ -79,7 +79,7 @@ ms.locfileid: "88871558"
 
 逻辑应用提供内置触发器和操作，使你能够创建基于计划的工作流、帮助逻辑应用与其他应用和服务通信、通过逻辑应用控制工作流，以及管理或处理数据。
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![计划内置连接器 ][schedule-icon]<br> **计划**][schedule-doc] | - 使用[ **“重复周期”** 触发器][schedule-recurrence-doc]，按指定的重复周期以简单到高级的计划运行逻辑应用。 <br>- 使用[ **“滑动窗口”** 触发器][schedule-sliding-window-doc]，运行需要处理连续区块中的数据的逻辑应用。 <br>- 使用[ **“延迟”** 操作][schedule-delay-doc]，将逻辑应用暂停指定的持续时间。 <br>- 使用[ **“延迟截止时间”** 操作][schedule-delay-until-doc]，将逻辑应用暂停到指定的日期和时间。 |
 | [![批处理内置连接器 ][batch-icon]<br> **批处理**][batch-doc] | - 使用“批处理消息”触发器来批量处理消息。 <br>- 使用“发送要批量处理的消息”操作调用具有现有批处理触发器的逻辑应用。 |
@@ -94,7 +94,7 @@ ms.locfileid: "88871558"
 
 逻辑应用提供内置操作用于在逻辑应用工作流中运行你自己的代码：
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![Azure Functions 内置连接器 ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 |
 | [![内联代码内置连接器 ][inline-code-icon]<br> **内联代码**][inline-code-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
@@ -104,7 +104,7 @@ ms.locfileid: "88871558"
 
 逻辑应用提供用于在逻辑应用工作流中构建和控制操作的内置操作：
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![条件内置操作 ][condition-icon]<br> **条件**][condition-doc] | 评估条件，并根据条件是 true 还是 false 运行不同的操作。 |
 | [![对于 ][for-each-icon]<br> **每个**内置操作][for-each-doc] | 对数组中的每个项执行相同的操作。 |
@@ -118,7 +118,7 @@ ms.locfileid: "88871558"
 
 逻辑应用提供用于处理数据输出及其格式的内置操作：
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![数据操作内置操作 ][data-operations-icon]<br> **数据操作**][data-operations-doc] | 对数据执行操作： <p>- **撰写**：基于具有不同类型的多个输入创建单个输出。 <br>- **创建 CSV 表**：基于包含 JSON 对象的数组创建逗号分隔值 (CSV) 表。 <br>- **创建 HTML 表**：基于包含 JSON 对象的数组创建一个 HTML 表。 <br>- **筛选数组**：基于符合条件的另一个数组中的项创建一个数组。 <br>- **联接**：基于数组中的所有项创建一个字符串，并使用指定的分隔符分隔这些项。 <br>- **分析 JSON**：基于 JSON 内容中的属性及其值创建用户友好的令牌，以便可以在工作流中使用这些属性。 <br>- **选择**：通过转换另一数组中的项或值并将这些项映射到指定的属性，创建包含 JSON 对象的数组。 |
 | ![日期时间内置操作][date-time-icon]<br>**日期时间** | 对时间戳执行操作： <p>- **添加到时间**：将指定的单位数添加到时间戳。 <br>- **转换时区**：将时间戳从源时区转换为目标时区。 <br>- **当前时间**：返回字符串形式的当前时间戳。 <br>- **获取将来的时间**：返回当前时间戳加上指定的时间单位。 <br>- **获取过去的时间**：返回当前时间戳减去指定的时间单位。 <br>- **从时间中减去**：从时间戳中减去一定数目的时间单位。 |
@@ -131,7 +131,7 @@ ms.locfileid: "88871558"
 
 逻辑应用提供以下用于自动化这些服务或系统的任务、流程和工作流的流行标准连接器：
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![Azure 服务总线托管连接器 ][azure-service-bus-icon]<br> **Azure 服务总线**][azure-service-bus-doc] | 使用逻辑应用中最常用的连接器管理异步消息、会话和主题订阅。 |
 | [![SQL Server 托管连接器 ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | 连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。 |
@@ -308,7 +308,7 @@ ms.locfileid: "88871558"
         [![Azure 服务总线 ISE 连接器 ][azure-service-bus-icon]<br> **azure 服务 <br> 总线**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Azure SQL 数据仓库 ISE 连接器 ][azure-sql-data-warehouse-icon]<br> **Azure sql 数据 <br> 仓库**][azure-sql-data-warehouse-doc]
+        [![Azure Synapse Analytics ISE 连接器 ][azure-sql-data-warehouse-icon]<br> **Azure SQL 数据 <br> 仓库**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
         [![Azure 表存储 ISE 连接器 ][azure-table-storage-icon]<br> **azure 表 <br> 存储**][azure-table-storage-doc]
@@ -572,7 +572,7 @@ ms.locfileid: "88871558"
 [azure-monitor-logs-doc]: /connectors/azuremonitorlogs/ "在 Log Analytics 工作区和 Application Insights 组件之间针对 Azure Monitor 日志运行查询"
 [azure-queues-doc]: /connectors/azurequeues/ "连接到 Azure 存储帐户，以便创建和管理队列与消息"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "从服务总线队列和主题发送消息，并从服务总线队列和订阅接收消息"
-[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "连接到 Azure SQL 数据仓库，以便查看数据"
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "连接到 Azure Synapse Analytics，以便查看数据"
 [azure-table-storage-doc]: /connectors/azuretables/ "连接到 Azure 存储帐户，以便创建、更新和查询表与其他对象"
 [biztalk-server-doc]: /connectors/biztalk/ "连接到 BizTalk Server，以便可以将基于 BizTalk 的应用程序与 Azure 逻辑应用并行运行"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "连接到本地文件系统"

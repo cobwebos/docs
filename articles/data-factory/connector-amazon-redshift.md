@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a756a3cec5702570751e0bea09a4f59152accafc
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418246"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484537"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -57,7 +57,7 @@ ms.locfileid: "81418246"
 
 Amazon Redshift 链接的服务支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AmazonRedshift** | 是 |
 | server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
@@ -99,7 +99,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 若要从 Amazon Redshift 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AmazonRedshiftTable** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -134,7 +134,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”  。 复制活动**source**部分支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**AmazonRedshiftSource** | 是 |
 | 查询 |使用自定义查询读取数据。 例如：select * from MyTable。 |否（如果指定了数据集中的“tableName”） |
@@ -164,11 +164,11 @@ Amazon Redshift 链接的服务支持以下属性：
 
 [UNLOAD](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) 是 Amazon Redshift 提供的一种机制，可将查询结果卸载到 Amazon 简单存储服务 (Amazon S3) 上的一个或多个文件中。 Amazon 推荐使用此方式从 Redshift 复制大数据集。
 
-**示例：使用 UNLOAD、暂存复制和 PolyBase 将数据从 Amazon Redshift 复制到 Azure SQL 数据仓库**
+**示例：使用 UNLOAD、暂存复制和 PolyBase 将数据从 Amazon Redshift 复制到 Azure Synapse Analytics (以前的 SQL 数据) 仓库**
 
-对于此用例，复制活动按“redshiftUnloadSettings”中的配置将数据从 Amazon Redshift 卸载到 Amazon S3，然后按“stagingSettings”中指定的内容将数据从 Amazon S3 复制到 Azure Blob，最后使用 PolyBase 将数据载入 SQL 数据仓库。 所有临时格式均由复制活动正确处理。
+对于此示例用例，复制活动将数据从 Amazon Redshift 卸载到 Amazon S3 （如 "redshiftUnloadSettings" 中的配置），然后将数据从 Amazon S3 复制到 Azure Blob （如 "stagingSettings" 中指定），最后使用 PolyBase 将数据加载到 Azure Synapse Analytics (以前的 SQL 数据仓库) 。 所有临时格式均由复制活动正确处理。
 
-![Redshift 到 SQL DW 复制工作流](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
+![Redshift to Azure Synapse Analytics copy workflow](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[
@@ -231,7 +231,7 @@ Amazon Redshift 链接的服务支持以下属性：
 | SMALLINT |Int16 |
 | TEXT |String |
 | TIMESTAMP |DateTime |
-| VARCHAR |字符串 |
+| VARCHAR |String |
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 

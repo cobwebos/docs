@@ -1,14 +1,14 @@
 ---
 title: 使用服务终结点限制访问
-description: 使用 Azure 虚拟网络中的服务终结点限制对 Azure 容器注册表的访问。 服务终结点访问是高级服务层的一项功能。
+description: 使用 Azure 虚拟网络中的服务终结点限制对 Azure 容器注册表的访问。 服务终结点访问是高级服务层级的一项功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371424"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488655"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虚拟网络中的服务终结点限制对容器注册表的访问
 
@@ -28,6 +28,8 @@ ms.locfileid: "87371424"
 * 只有 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)群集或 Azure [虚拟机](../virtual-machines/linux/overview.md)可以用作主机，以使用服务终结点访问容器注册表。 其他 Azure 服务（包括 Azure 容器实例）不受支持。
 * 每个注册表最多支持 100 条网络访问规则。
 * Azure 容器注册表的服务终结点在 Azure 美国政府云或 Azure 中国云中不受支持。
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -101,7 +103,7 @@ az network vnet subnet show \
 
 #### <a name="change-default-network-access-to-registry"></a>更改默认网络对注册表的访问权限
 
-默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 请将以下 [az acr update][az-acr-update] 命令中的占位符替换为你的注册表名称：
+默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 在以下 [az acr update][az-acr-update] 命令中，替换注册表的名称：
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny

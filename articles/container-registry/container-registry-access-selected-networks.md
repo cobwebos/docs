@@ -3,12 +3,12 @@ title: 配置公共注册表访问
 description: 配置 IP 规则，以便能够从所选的公共 IP 地址或地址范围访问 Azure 容器注册表。
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660919"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488756"
 ---
 # <a name="configure-public-ip-network-rules"></a>配置公共 IP 网络规则
 
@@ -17,6 +17,8 @@ ms.locfileid: "88660919"
 IP 网络规则在公共注册表终结点上进行配置。 IP 网络规则不适用于配置有[专用链接](container-registry-private-link.md)的专用终结点
 
 可在“高级”容器注册表服务层级配置 IP 访问规则。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="access-from-selected-public-network---cli"></a>从所选的公用网络进行访问 - CLI
 

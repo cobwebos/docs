@@ -2,13 +2,13 @@
 title: ACR 任务概述
 description: 介绍 ACR 任务。ACR 任务是 Azure 容器注册表中的功能套件，它在云中提供安全、自动化的容器映像的生成、管理和修补。
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087274"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488637"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任务自动执行容器映像的生成和维护
 
@@ -100,7 +100,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 ## <a name="context-locations"></a>上下文位置
 
-下表显示了 ACR 任务支持的上下文位置的几个示例：
+下表显示了 ACR 任务支持的上下文位置的示例：
 
 | 上下文位置 | 说明 | 示例 |
 | ---------------- | ----------- | ------- |
@@ -111,6 +111,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | GitHub 提交 | 公共或专用 GitHub 存储库中的特定提交。 示例显示了提交哈希 (SHA) 和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps 子文件夹 | 公共或专用 Azure 存储库中某个子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | 远程 tarball | 远程 Web 服务器上某个压缩存档中的文件。 | `http://remoteserver/myapp.tar.gz` |
+| 容器注册表中的项目 | 容器注册表存储库中的[OCI 项目](container-registry-oci-artifacts.md)文件。 | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > 使用专用 Git 存储库作为任务的上下文时，需要提供个人访问令牌 (PAT)。

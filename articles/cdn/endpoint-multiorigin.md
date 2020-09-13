@@ -1,21 +1,21 @@
 ---
-title: Azure CDN 终结点多源
+title: 'Azure CDN 端点多源 (预览版) '
 description: 开始 Azure CDN 终结点多个源。
 services: cdn
 author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 8/20/2020
+ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870438"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504667"
 ---
-# <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN 终结点多源
+# <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN 端点多源 (预览版) 
 
 多源支持可消除停机时间，并建立全局冗余。 
 
@@ -25,6 +25,10 @@ ms.locfileid: "88870438"
 
 > [!NOTE]
 > 目前，此功能仅适用于 Microsoft Azure CDN。 
+
+> [!IMPORTANT]
+> Azure CDN endpoint 多源目前处于公共预览版中。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-the-origin-group"></a>创建源组
 
@@ -86,7 +90,7 @@ ms.locfileid: "88870438"
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="配置源路径" border="true":::
 
-5. 选择“确定”。
+5. 选择“确定” 。
 
 ## <a name="configure-origins-and-origin-group-settings"></a>配置源和源组设置
 

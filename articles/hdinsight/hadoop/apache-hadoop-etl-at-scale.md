@@ -1,19 +1,19 @@
 ---
 title: 大规模提取、转换和加载 (ETL) - Azure HDInsight
 description: 了解如何通过 Apache Hadoop 在 HDInsight 中使用提取、转换和加载。
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e048365ca589d452385607b902ee6b285de8165f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084114"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504309"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -48,7 +48,7 @@ Azure 数据工厂以平台即服务 (PaaS) 的形式提供业务流程功能。
 
 1. 创建和安排数据驱动的工作流。 通过这些管道从不同的数据存储引入数据。
 1. 使用计算服务（如 HDInsight 或 Hadoop）处理和转换数据。 对于此步骤，还可使用 Spark、Azure Data Lake Analytics、Azure Batch 或 Azure 机器学习。
-1. 将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供 BI 应用程序使用。
+1. 将输出数据发布到数据存储（如 Azure Synapse Analytics），以供 BI 应用程序使用。
 
 有关 Azure 数据工厂的详细信息，请参阅[文档](../../data-factory/introduction.md)。
 
@@ -84,11 +84,11 @@ Data Lake Storage 已针对使用 Azure 事件中心或 Apache Storm 运行的�
 
 - **从硬盘驱动器上传数据：** 可以使用 [Azure 导入/导出服务](../../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure Blob 存储。 然后可使用 Azure 数据工厂或 AdlCopy 工具从 Azure Blob 存储将数据复制到 Data Lake Storage。
 
-### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL 数据仓库是存储已准备结果的恰当选择。 可以使用 Azure HDInsight 为 SQL 数据仓库执行这些服务。
+Azure Synapse Analytics 是一种用于存储已准备结果的合适选择。 可以使用 Azure HDInsight 来执行 z Synapse Analytics 提供的服务。
 
-Azure SQL 数据仓库是已针对分析工作负载进行优化的关系数据库。 它根据分区表进行缩放。 表可以跨多个节点分区。 在创建节点时便选择了节点。 可以在事后缩放节点，但是，该主动过程可能需要移动数据。 有关详细信息，请参阅[管理 SQL 数据仓库中的计算资源](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+Azure Synapse Analytics 是针对分析工作负荷进行优化的关系数据库存储。 它根据分区表进行缩放。 表可以跨多个节点分区。 在创建节点时便选择了节点。 可以在事后缩放节点，但是，该主动过程可能需要移动数据。 有关详细信息，请参阅 [在 Azure Synapse Analytics 中管理计算](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 
 ### <a name="apache-hbase"></a>Apache HBase
 

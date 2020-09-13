@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835591"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488501"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
@@ -23,7 +23,7 @@ ms.locfileid: "83835591"
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>案例 1 – 在各个输入分区中，查询本质上是完全可并行的
 如果在各个输入分区中，查询本质上是完全可并行的，则可以按照以下步骤操作：
 1.  通过使用 PARTITION BY 关键字来创作查询使之易并行。 请参阅[此页](stream-analytics-parallelization.md)易并行作业部分中的更多详细信息。
-2.  根据查询中使用的输出类型，某些输出可能是不可并行的，或者需要进一步配置来实现易并行。 例如，PowerBI 输出不可并行。 请始终先合并输出，然后再将其发送到输出接收器。 Blob、表、ADLS、服务总线和 Azure Function 会自动并行化。 SQL 和 SQL DW 输出具有并行化选项。 事件中心需要将 PartitionKey 配置设置为与 PARTITION BY 字段（通常是 PartitionId）匹配。 对于事件中心，还要格外注意匹配所有输入和所有输出的分区数量，以避免分区之间的交叉。 
+2.  根据查询中使用的输出类型，某些输出可能是不可并行的，或者需要进一步配置来实现易并行。 例如，PowerBI 输出不可并行。 请始终先合并输出，然后再将其发送到输出接收器。 Blob、表、ADLS、服务总线和 Azure Function 会自动并行化。 SQL 和 Azure Synapse Analytics 输出具有用于并行化的选项。 事件中心需要将 PartitionKey 配置设置为与 PARTITION BY 字段（通常是 PartitionId）匹配。 对于事件中心，还要格外注意匹配所有输入和所有输出的分区数量，以避免分区之间的交叉。 
 3.  使用 6 SU（即单个计算节点的全部容量）来运行查询，以度量最大可实现的吞吐量，如果你使用的是 GROUP BY，则度量作业能处理的组数（基数）。 达到系统资源限制的作业，一般症状将如下所示。
     - SU 利用率指标超过 80%。 该指示内存使用率较高。 [此处](stream-analytics-streaming-unit-consumption.md)描述了导致此指标增加的因素。 
     -   输出时间戳滞后于时钟时间。 根据查询逻辑，输出时间戳可能与时钟时间之间存在一个逻辑偏差。 但是，它们应该以大致相同的速度增进。 如果输出时间戳进一步滞后，则指示系统工作时间过长。 它可能是由于下游输出接收器限制，或高 CPU 利用率所致。 我们目前没有提供 CPU 利用率指标，因此很难区分两者。
@@ -40,7 +40,7 @@ ms.locfileid: "83835591"
 如果查询不是易并行，则可以执行以下步骤。
 1.  首先使用不带 PARTITION BY 的查询来避免分区复杂性，然后使用 6 SU 运行查询，以度量最大负载，如[案例 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) 中所示。
 2.  如果能在吞吐量方面达到预期负载，则操作完成。 或者，你可以选择度量在 3 SU 和 1 SU 上运行的相同作业，以找到适用于你方案的 SU 的最小数目。
-3.  如果不能实现所需的吞吐量，请尝试尽可能地将查询分解为多个步骤，如果没有多个步骤，则在查询中为每个步骤分配最多6 个 SU。 例如，如果你有 3 个步骤，则在“规模”选项中分配 18 个 SU。
+3.  如果不能实现所需的吞吐量，请尝试尽可能地将查询分解为多个步骤，如果没有多个步骤，则在查询中为每个步骤分配最多6 个 SU。 例如，如果有 3 个步骤，则在“规模”选项中分配 18 个 SU。
 4.  在运行此类作业时，流分析会将各步骤分配到自己包含专用 6 SU 资源的节点上。 
 5.  如果仍未实现负载目标，可以尝试使用 PARTITION BY，从更接近输入的步骤开始。 对于不可自然分区的 GROUP BY 运算符，可以使用本地/全局聚合模式来执行分区的 GROUP BY，然后执行非分区 GROUP BY。 例如，如果想要计算每 3 分钟有多少车辆通过每个收费站，以及超出 6 SU 能够处理范围的数据量。
 
@@ -78,7 +78,7 @@ ms.locfileid: "83835591"
 
 
 ## <a name="get-help"></a>获取帮助
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

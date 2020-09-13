@@ -1,15 +1,15 @@
 ---
 title: 支持的 Azure 资源管理器资源类型
-description: 提供 Azure 资源关系图支持的 Azure 资源管理器资源类型列表和更改历史记录。
-ms.date: 08/10/2020
+description: 提供 Azure Resource Graph 和更改历史记录支持的 Azure 资源管理器资源类型的列表。
+ms.date: 09/04/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 91b8a88fd056db2fd8495c85dccbcc08f4a94fda
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: b81ffcdde074978a9a72c5ab651ec2c5556870bd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065992"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488314"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -19,12 +19,16 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
-- microsoft advisor/建议/禁止显示
+- microsoft.advisor/recommendations/suppressions
 - microsoft.advisor/suppressions
 
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
 - microsoft.alertsmanagement/alerts
+
+## <a name="guestconfigurationresources"></a>guestconfigurationresources
+
+- guestconfiguration/guestconfigurationassignments
 
 ## <a name="healthresources"></a>healthresources
 
@@ -56,6 +60,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - livearena.broadcast/services
 - mailjet.email/services
 - microsoft.aad/domainservices
+- aadiam/azureadmetrics
 - microsoft.aadiam/privatelinkforazuread
 - microsoft.aadiam/tenants
 - microsoft.aisupercomputer/accounts
@@ -69,6 +74,9 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.appplatform/spring
 - microsoft.archive/collections
 - microsoft.attestation/attestationproviders
+- microsoft. authorization/resourcemanagementprivatelinks
+- automanage/帐户
+- automanage/configurationprofilepreferences
 - microsoft.automation/automationaccounts
 - microsoft.automation/automationaccounts/configurations
 - microsoft.automation/automationaccounts/runbooks
@@ -76,6 +84,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.avs/privateclouds
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
+- azureactivedirectory/guestusages
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -84,6 +93,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.azuredata/sqlmanagedinstances
 - microsoft.azuredata/sqlserverinstances
 - microsoft.azuredata/sqlserverregistrations
+- test-azurestack/edgesubscriptions
 - microsoft.azurestack/registrations
 - microsoft.azurestackhci/clusters
 - microsoft.baremetal/consoleconnections
@@ -114,6 +124,10 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.classicstorage/storageaccounts
 - microsoft.cloudes/accounts
 - microsoft.cloudsearch/indexes
+- cloudtest/帐户
+- cloudtest/images
+- cloudtest/池
+- codespaces/计划
 - microsoft.cognition/syntheticsaccounts
 - microsoft.cognitiveservices/accounts
 - microsoft.compute/availabilitysets
@@ -141,6 +155,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.compute/virtualmachines/extensions
 - microsoft.compute/virtualmachines/runcommands
 - microsoft.compute/virtualmachinescalesets
+- confluent/组织
+- connectedcache/cachenodes
 - microsoft.containerinstance/containergroups
 - microsoft.containerregistry/registries
 - microsoft.containerregistry/registries/agentpools
@@ -155,11 +171,13 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.contoso/employees
 - microsoft.costmanagement/connectors
 - microsoft.customproviders/resourceproviders
+- d365customerinsights/实例
 - microsoft.databox/jobs
 - microsoft.databoxedge/databoxedgedevices
 - microsoft.databricks/workspaces
 - microsoft.datacatalog/catalogs
 - microsoft.datacatalog/datacatalogs
+- datacollaboration/工作区
 - microsoft.datadog/monitors
 - microsoft.datafactory/datafactories
 - microsoft.datafactory/factories
@@ -169,9 +187,12 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.datamigration/services/projects
 - microsoft.datamigration/slots
 - microsoft.dataprotection/backupvaults
+- dataprotection/resourceoperationgatekeepers
 - microsoft.datashare/accounts
 - microsoft.dbformariadb/servers
+- dbformysql/flexibleservers
 - microsoft.dbformysql/servers
+- dbforpostgresql/flexibleservers
 - microsoft.dbforpostgresql/servergroups
 - microsoft.dbforpostgresql/servers
 - microsoft.dbforpostgresql/serversv2
@@ -189,6 +210,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.devices/elasticpools/iothubtenants
 - microsoft.devices/iothubs
 - microsoft.devices/provisioningservices
+- deviceupdate/帐户
+- deviceupdate/accounts/实例
 - microsoft.devops/pipelines
 - microsoft.devspaces/controllers
 - microsoft.devtestlab/labcenters
@@ -209,7 +232,9 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.eventhub/clusters
 - microsoft.eventhub/namespaces
 - microsoft.experimentation/experimentworkspaces
+- extendedlocation/customlocations
 - microsoft.falcon/namespaces
+- footprintmonitoring/配置文件
 - microsoft.gaming/titles
 - microsoft.genomics/accounts
 - microsoft.guestconfiguration/automanagedaccounts
@@ -222,8 +247,13 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.hybridcompute/machines
 - microsoft.hybridcompute/machines/extensions
 - microsoft.hybriddata/datamanagers
+- hybridnetwork/设备
+- hybridnetwork/virtualnetworkfunctions
 - microsoft.importexport/jobs
+- industrydatalifecycle/custodiancollaboratives
 - microsoft.industrydatalifecycle/derivedmodels
+- industrydatalifecycle/membercollaboratives
+- industrydatalifecycle/pipelinesets
 - microsoft.insights/actiongroups
 - microsoft.insights/activitylogalerts
 - microsoft.insights/alertrules
@@ -239,9 +269,11 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.insights/webtests
 - microsoft.insights/workbooks
 - microsoft.insights/workbooktemplates
+- intelligentitdigitaltwin/digitaltwins
 - microsoft.iotcentral/iotapps
 - microsoft.iotspaces/graph
 - microsoft.keyvault/hsmpools
+- keyvault/managedhsms
 - microsoft.keyvault/vaults
 - microsoft.kubernetes/connectedclusters
 - microsoft.kusto/clusters
@@ -256,6 +288,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.machinelearning/workspaces
 - microsoft.machinelearningcompute/operationalizationclusters
 - microsoft.machinelearningservices/workspaces
+- machinelearningservices/工作区/inferenceendpoints
+- machinelearningservices/工作区/inferenceendpoints/部署
 - microsoft.maintenance/maintenanceconfigurations
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
@@ -294,9 +328,11 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.network/azurefirewalls
 - microsoft.network/bastionhosts
 - microsoft.network/connections
+- customipprefixes/网络
 - microsoft.network/ddoscustompolicies
 - microsoft.network/ddosprotectionplans
 - microsoft.network/dnszones
+- dscpconfigurations/网络
 - microsoft.network/expressroutecircuits
 - microsoft.network/expressroutecrossconnections
 - microsoft.network/expressroutegateways
@@ -308,6 +344,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.network/ipgroups
 - microsoft.network/loadbalancers
 - microsoft.network/localnetworkgateways
+- mastercustomipprefixes/网络
 - microsoft.network/natgateways
 - microsoft.network/networkexperimentprofiles
 - microsoft.network/networkintentpolicies
@@ -346,6 +383,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.network/vpnsites
 - microsoft.notificationhubs/namespaces
 - microsoft.notificationhubs/namespaces/notificationhubs
+- nutanix/接口
+- nutanix/节点
 - microsoft.objectstore/osnamespaces
 - microsoft.offazure/hypervsites
 - microsoft.offazure/importsites
@@ -359,6 +398,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.peering/peeringservices
 - microsoft.portal/dashboards
 - microsoft.portalsdk/rootresources
+- microsoft powerbi/privatelinkservicesforpowerbi
+- microsoft powerbi/租户
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/capacities
 - microsoft.projectbabylon/accounts
@@ -412,9 +453,13 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.storagesyncdev/storagesyncservices
 - microsoft.storagesyncint/storagesyncservices
 - microsoft.storsimple/managers
+- streamanalytics-default-central-us/群集
 - microsoft.streamanalytics/streamingjobs
+- swiftlet/virtualmachines
+- synapse/privatelinkhubs
 - microsoft.synapse/workspaces
 - microsoft.synapse/workspaces/bigdatapools
+- synapse/工作区/sqldatabases
 - microsoft.synapse/workspaces/sqlpools
 - microsoft.terraformoss/providerregistrations
 - microsoft.timeseriesinsights/environments
@@ -439,6 +484,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.vmwarevirtustream/privateclouds
 - microsoft.vsonline/accounts
 - microsoft.vsonline/plans
+- system.web/apimanagementaccounts
 - microsoft.web/apimanagementaccounts/apis
 - microsoft.web/certificates
 - microsoft.web/connectiongateways
@@ -453,6 +499,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.web/staticsites
 - microsoft.windowsesu/multipleactivationkeys
 - microsoft.windowsiot/deviceservices
+- workloadbuilder/工作负荷
 - myget.packagemanagement/services
 - paraleap.cloudmonix/services
 - pokitdok.platform/services
@@ -481,10 +528,13 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
+- microsoft. 安全性/位置/警报
 - microsoft.security/pricings
 - microsoft.security/regulatorycompliancestandards
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+- microsoft. security/securescores
+- securescores/securescorecontrols
 
 ## <a name="next-steps"></a>后续步骤
 

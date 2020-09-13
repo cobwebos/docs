@@ -1,29 +1,25 @@
 ---
 title: 设置专用链接
-description: 在容器注册表上设置专用终结点，并通过本地虚拟网络中的专用链接启用访问。 私有链接访问是高级服务层的一项功能。
+description: 在容器注册表上设置专用终结点，并实现在本地虚拟网络中通过专用链接进行访问的功能。 专用链接访问是高级服务层级的一项功能。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523836"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488739"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure Private Link 将专用连接到 Azure 容器注册表
 
 
-通过将虚拟网络专用 IP 地址分配到注册表终结点并使用[Azure 专用链接](../private-link/private-link-overview.md)，限制对注册表的访问。 虚拟网络上的客户端与注册表的专用终结点之间的网络流量将遍历 Microsoft 主干网络上的虚拟网络和专用链接，从而消除了公共 internet 的泄露。 通过 "专用链接"，还可以通过[Azure ExpressRoute](../expressroute/expressroute-introduction.MD)专用对等互连或[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)启用从本地进行的私有注册表访问。
+通过将虚拟网络专用 IP 地址分配到注册表终结点并使用 [Azure 专用链接](../private-link/private-link-overview.md)，限制对注册表的访问。 虚拟网络上的客户端与注册表的专用终结点之间的网络流量将遍历 Microsoft 主干网络上的虚拟网络和专用链接，从而消除了公共 internet 的泄露。 专用链接还允许通过 [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) 专用对等互连或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)从本地进行专用注册表访问。
 
-你可以为注册表的专用终结点[配置 DNS 设置](../private-link/private-endpoint-overview.md#dns-configuration)，以使这些设置解析为注册表分配的专用 IP 地址。 使用 DNS 配置时，网络中的客户端和服务可以继续按注册表的完全限定的域名（如 myregistry.azurecr.io）来访问注册表。 
+你可以为注册表的专用终结点 [配置 DNS 设置](../private-link/private-endpoint-overview.md#dns-configuration) ，以使这些设置解析为注册表分配的专用 IP 地址。 使用 DNS 配置时，网络中的客户端和服务可以继续按注册表的完全限定的域名（如 myregistry.azurecr.io）来访问注册表。 
 
-此功能在“高级”容器注册表服务层级中可用。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
+此功能在“高级”容器注册表服务层级中可用。 目前，最多可以为注册表设置10个私有终结点。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
 
-
-## <a name="things-to-know"></a>使用须知
-
-* 当前，在使用专用终结点配置的注册表无法使用 Azure 安全中心进行映像扫描。
-* 目前，最多可以为注册表设置10个私有终结点。
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -237,7 +233,7 @@ az network private-dns record-set a add-record \
 1. 在“专用终结点”选项卡上，选择“+ 专用终结点”。
 1. 在“基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |

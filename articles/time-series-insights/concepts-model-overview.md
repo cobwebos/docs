@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855204"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488552"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 时序见解第 2 代中的时序模型
 
@@ -24,7 +24,7 @@ ms.locfileid: "88855204"
 > [!TIP]
 >
 > * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
-> * 了解如何使用 Azure 时序见解 TSI 资源管理器 [处理时序模型](/azure/time-series-insights/how-to-edit-your-model) 。
+> * 了解如何使用 Azure 时序见解资源管理器 [处理时序模型](/azure/time-series-insights/how-to-edit-your-model) 。
 
 ## <a name="summary"></a>摘要
 
@@ -75,7 +75,7 @@ ms.locfileid: "88855204"
 
 [![时序模型概述图表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-可以通过 [Azure 时序见解 TSI 资源管理器](/azure/time-series-insights/concepts-model-overview)创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) 来管理时序模型设置。
+可以通过 [Azure 时序见解资源管理器](/azure/time-series-insights/concepts-model-overview)创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) 来管理时序模型设置。
 
 ## <a name="time-series-model-instances"></a>时序模型实例
 
@@ -87,7 +87,7 @@ ms.locfileid: "88855204"
 
 实例字段是描述性信息的集合，可包含层次结构级别的值，以及制造商、运营商等信息。
 
-为 Azure 时序见解第 2 代环境配置事件源后，会在时序模型中自动发现和创建实例。 可以使用时序模型查询通过 Azure 时序见解 TSI 资源管理器创建或更新实例。
+为 Azure 时序见解第 2 代环境配置事件源后，会在时序模型中自动发现和创建实例。 使用时序模型查询可以通过 Azure 时序见解资源管理器创建或更新实例。
 
 [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)提供了多个实时实例示例。
 
@@ -216,7 +216,7 @@ ms.locfileid: "88855204"
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | “building”、“floor”和“room”均未设置。 |
 
-时序**ID1**和**ID4**在[Azure 时序见解 TSI 资源管理器](time-series-insights-update-explorer.md)中作为层次结构**H1**的一部分显示，因为它们具有完全定义且正确排序的*生成*、*楼层*和*房间*参数。
+时序**ID1**和**ID4**在[Azure 时序见解资源管理器](time-series-insights-update-explorer.md)中作为层次结构**H1**的一部分显示，因为它们具有完全定义且正确排序的*生成*、*楼层*和*房间*参数。
 
 其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。
 

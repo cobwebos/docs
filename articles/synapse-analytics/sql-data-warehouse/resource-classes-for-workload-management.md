@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1dc9c39192dc478a4ffeba64983a498191417ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c3793daa820d0cb5b5b6900402704756f206425
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213578"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488382"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的资源类管理工作负载
 
@@ -133,7 +133,7 @@ ms.locfileid: "85213578"
 - DBCC
 
 <!--
-Removed as these two are not confirmed / supported under SQL DW
+Removed as these two are not confirmed / supported under Azure Synapse Analytics
 - CREATE REMOTE TABLE AS SELECT
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
