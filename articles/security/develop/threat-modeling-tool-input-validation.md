@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a10dec01757fd344c9fa2bc92082082d2af085e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3bb944badfbdffd703672f9e78619c70a148aae2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000560"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293347"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
 | 产品/服务 | 项目 |
@@ -397,7 +397,7 @@ myCommand.Fill(userDataset);
 | **适用的技术** | 泛型、MVC5、MVC6 |
 | **属性**              | 空值  |
 | **参考**              | [添加验证](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[验证 MVC 应用程序中的模型数据](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 应用程序指导原则](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **步骤** | <p>在应用程序中使用所有输入参数之前必须验证这些参数，确保应用程序能够防御恶意用户输入的攻击。 结合允许列表验证策略，在服务器端使用正则表达式验证来验证输入值。 传递给方法的未经净化的用户输入/参数可能会导致代码注入安全漏洞。</p><p>对于 Web 应用程序而言，入口点可能还包含窗体字段、QueryStrings、Cookie、HTTP 标头和 Web 服务参数。</p><p>必须针对模型绑定执行以下输入验证检查：</p><ul><li>应该使用 RegularExpression 批注来批注模型属性，以便接受允许的字符，遵守最大允许长度</li><li>控制器方法应执行 ModelState 有效性检查</li></ul>|
+| **步骤** | <p>在应用程序中使用所有输入参数之前必须验证这些参数，确保应用程序能够防御恶意用户输入的攻击。 在服务器端使用 "正则表达式验证" 验证输入值，并使用允许列表验证策略。 传递给方法的未经净化的用户输入/参数可能会导致代码注入安全漏洞。</p><p>对于 Web 应用程序而言，入口点可能还包含窗体字段、QueryStrings、Cookie、HTTP 标头和 Web 服务参数。</p><p>必须针对模型绑定执行以下输入验证检查：</p><ul><li>应该使用 RegularExpression 批注来批注模型属性，以便接受允许的字符，遵守最大允许长度</li><li>控制器方法应执行 ModelState 有效性检查</li></ul>|
 
 ## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>应该针对接受所有字符的表单域（例如 RTF 编辑器）应用净化
 

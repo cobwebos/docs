@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640576"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296509"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -38,7 +38,7 @@ ms.locfileid: "88640576"
 
 如果设备计算机位于代理后面，则会发生这种情况。
 
-- 如果代理需要，请确保提供身份验证凭据。
+- 请确保提供代理所需的授权凭据。
 - 如果使用基于 URL 的防火墙代理控制出站连接，请将 [这些 url](migrate-appliance.md#url-access) 添加到允许列表中。
 - 如果使用截取代理连接到 internet，请使用 [以下步骤](./migrate-appliance.md)将代理证书导入到设备 VM。
 
@@ -151,7 +151,7 @@ ms.locfileid: "88640576"
 如果这不起作用，并且你发现的是 VMware 服务器：
 
 - 验证指定的 vCenter 帐户是否已正确设置权限，并且可以访问至少一个 VM。
-- 如果 vCenter 帐户有权在 vCenter VM 文件夹级别授予访问权限，则 Azure Migrate 无法发现 VMware Vm。 [了解](set-discovery-scope.md) 有关范围发现的详细信息。
+- 如果 vCenter 帐户具有在 vCenter VM 文件夹级别授予访问权限，则 Azure Migrate 无法发现 VMware Vm。 [了解](set-discovery-scope.md) 有关范围发现的详细信息。
 
 ## <a name="vm-data-not-in-portal"></a>VM 数据不在门户中
 
@@ -196,7 +196,7 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 
 表中汇总了典型的应用发现错误。 
 
-**错误** | **原因** | **Action**
+**错误** | **原因** | **操作**
 --- | --- | ---
 9000：无法检测到 VMware 工具状态。     |   VMWare 工具可能未安装或已损坏。    |   确保已在 VM 上安装并运行 VMware 工具。
 9001：未安装 VMware 工具。     |   VMWare 工具可能未安装或已损坏。    |   确保已在 VM 上安装并运行 VMware 工具。

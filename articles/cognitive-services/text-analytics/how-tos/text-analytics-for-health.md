@@ -1,7 +1,7 @@
 ---
-title: 如何将文本分析用于运行状况
+title: 如何使用健康状况文本分析
 titleSuffix: Azure Cognitive Services
-description: 了解如何从非结构化临床文本中提取和标记医疗信息，并提供文本分析的运行状况。
+description: 了解如何健康状况文本分析从非结构化临床文本中提取和标记医疗信息。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,70 +10,70 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167685"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300062"
 ---
-# <a name="how-to-use-text-analytics-for-health-preview"></a>如何：将文本分析用于运行状况 (预览版) 
+# <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
 > [!NOTE]
-> 运行状况容器的文本分析最近已更新。 有关最近更改的详细信息，请参阅[新增功能](../whats-new.md)。 请记得提取最新的容器以使用列出的更新。
+> 运行状况容器的文本分析最近已更新。 有关最近更改的详细信息，请参阅 [新增功能](../whats-new.md) 。 请记得提取最新的容器以使用列出的更新。
 
 > [!IMPORTANT] 
-> 针对运行状况的文本分析是 "按原样" 和 "所有错误" 提供的预览功能。 因此，**不应在任何生产用途中实现或部署运行状况 (预览版) 文本分析。** 针对运行状况的文本分析不是要用作医疗设备、临床支持、诊断工具或其他旨在用于诊断、硬化、缓解、治疗或防范疾病或其他情况的技术，Microsoft 不会授予使用此功能的任何许可或权利。 此功能不是专为实现或部署的，而是作为一种替代专业人员的医疗建议或医疗保健、诊断、治疗或医疗保健专业人员的临床判断，不应如此。 客户独自负责使用文本分析的健康状况。 Microsoft 不保证文本分析的运行状况或与功能连接的任何材料都足以满足任何医疗目的或满足任何人的健康或医疗要求。 
+> 健康状况文本分析是一项预览功能，其“按原样”提供并在“不保证没有缺点”情况下提供。 因此，不应在任何生产用途中实施或部署健康状况文本分析（预览版）。 健康状况文本分析不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户独自负责健康状况文本分析的任何使用。 Microsoft 不保证健康状况文本分析或提供的与该功能相关的任何材料足够充分用于任何医疗目的，或者满足任何人的健康或医疗要求。 
 
 
-针对运行状况的文本分析是一种容器化的服务，它从非结构化文本（如医生的说明、解雇摘要、临床文档和电子运行状况记录）提取和标记相关的医疗信息。  
+健康状况文本分析是一种容器化服务，它从非结构化文本（如医生的备注、出院摘要、临床文档和电子健康状况记录）中提取和标记相关医疗信息。  
 
 ## <a name="features"></a>功能
 
-运行状况容器文本分析当前对你自己的开发环境中的英语文本 (NER) 、关系提取、实体求反和实体链接，以满足你的特定安全和数据管理要求。
+健康状况文本分析容器当前在满足特定安全和数据管理要求的用户自身开发环境中执行英语文本的命名实体识别 (NER)、关系提取、实体否定和实体链接。
 
 #### <a name="named-entity-recognition"></a>[命名实体识别](#tab/ner)
 
-命名实体识别可检测可与一个或多个语义类型关联的非结构化文本中提到的字词和短语，如诊断、药物名称、征兆/符号或年龄。
+命名实体识别检测非结构化文本中提及的可与一个或多个语义类型关联的字词和短语，如诊断、药物名称、症状/体征或年龄。
 
 > [!div class="mx-imgBorder"]
-> ![运行状况 NER](../media/ta-for-health/health-named-entity-recognition.png)
+> ![健康状况 NER](../media/ta-for-health/health-named-entity-recognition.png)
 
 #### <a name="relation-extraction"></a>[关系提取](#tab/relation-extraction)
 
-关系提取标识文本中所述概念之间的有意义的连接。 例如，通过将条件名称与时间关联来查找 "条件时间" 关系。 
+关系提取标识文本中提及的概念之间有意义的联系。 例如，通过将疾病名称与时间关联来查找“疾病时间”关系。 
 
 > [!div class="mx-imgBorder"]
-> ![运行状况重新](../media/ta-for-health/health-relation-extraction.png)
+> ![健康状况 RE](../media/ta-for-health/health-relation-extraction.png)
 
 
 #### <a name="entity-linking"></a>[实体链接](#tab/entity-linking)
 
-实体链接消除不同的实体，方法是将文本中提到的命名实体关联到在概念的预定义数据库中找到的概念。 例如，统一的医疗语言系统 (UMLS) 。
+实体链接将文本中提及的命名实体与预定义概念数据库中找到的概念相关联来消除不同实体的歧义。 例如，统一医学语言系统 (UMLS)。
 
 > [!div class="mx-imgBorder"]
-> ![运行状况 EL](../media/ta-for-health/health-entity-linking.png)
+> ![健康状况 EL](../media/ta-for-health/health-entity-linking.png)
 
-用于运行状况的文本分析支持链接到统一医疗语言系统中找到的健康和生物医学词汇 ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) Metathesaurus 知识库。
+健康状况文本分析支持链接到统一医学语言系统 ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) 元词表知识源中的健康状况和生物医学词汇。
 
-#### <a name="negation-detection"></a>[求反检测](#tab/negation-detection) 
+#### <a name="negation-detection"></a>[否定检测](#tab/negation-detection) 
 
-医疗内容的意义由修饰符（如求反）高度影响，这在误诊时可能会有重要含义。 针对运行状况的文本分析支持对文本中提到的不同实体进行求反检测。 
+医学内容的意义受到修饰语（如否定）的高度影响，这在误诊时可能有重大影响。 健康状况文本分析支持对文本中提到的不同实体进行否定检测。 
 
 > [!div class="mx-imgBorder"]
-> ![运行状况 NEG](../media/ta-for-health/health-negation.png)
+> ![健康状况 NEG](../media/ta-for-health/health-negation.png)
 
 ---
 
-有关支持的实体的完整列表，请参阅由文本分析返回的[实体类别](../named-entity-types.md?tabs=health)。
+有关支持的实体的完整列表，请参阅由文本分析返回的 [实体类别](../named-entity-types.md?tabs=health) 。
 
 ## <a name="supported-languages"></a>支持的语言
 
-运行状况文本分析仅支持英语文档。
+健康状况文本分析仅支持英语文档。
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-填写并提交[认知服务容器请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。 目前，不会向你收取文本分析的健康状况。 
+填写并提交[认知服务容器请求表单](https://aka.ms/cognitivegate)以请求访问容器。 目前，将不会对健康状况文本分析容器的使收费。 
 
 [!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -83,17 +83,17 @@ ms.locfileid: "88167685"
 
 可以通过多种方式来安装和运行容器。 
 
-- 使用[Azure 门户](text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
-- 使用以下 PowerShell 和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)脚本来自动执行资源部署容器配置。
+- 使用 [Azure 门户](text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
+- 使用以下 PowerShell 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 脚本来自动执行资源部署容器配置。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>使用 Azure 用于容器的 Web 应用安装容器
 
-Azure[用于容器的 Web 应用](https://azure.microsoft.com/services/app-service/containers/)是专用于在云中运行容器的 azure 资源。 它提供了现成的功能，如自动缩放、对 docker 容器的支持、docker 编写、HTTPS 支持等等。
+Azure [用于容器的 Web 应用](https://azure.microsoft.com/services/app-service/containers/)是专用于在云中运行容器的 Azure 资源。 它提供自动缩放、Docker 容器和 Docker 编写支持、HTTPS 支持等开箱即用功能。
 
 > [!NOTE]
-> 使用 Azure Web 应用时，将自动获取`<appservice_name>.azurewebsites.net`
+> 使用 Azure Web 应用时，将自动获取 `<appservice_name>.azurewebsites.net` 格式的域
 
-使用 Azure CLI 运行此 PowerShell 脚本，使用你的订阅和 HTTPS 上的容器映像创建用于容器的 Web 应用。 等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。
+通过 HTTPS 使用订阅和容器映像，从而利用 Azure CLI 运行此 PowerShell 脚本来创建用于容器的 Web 应用。 等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。
 
 ```bash
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
@@ -121,10 +121,10 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 ### <a name="install-the-container-using-azure-container-instance"></a>使用 Azure 容器实例安装容器
 
-你还可以使用 (ACI) 的 Azure 容器实例，以便更轻松地进行部署。 ACI 是一项资源，允许在托管的无服务器 Azure 环境中按需运行 Docker 容器。 
+还可以使用 Azure 容器实例 (ACI) 更轻松地部署。 ACI 资源允许在托管的无服务器 Azure 环境中按需运行 Docker 容器。 
 
-有关使用 Azure 门户部署 ACI 资源的步骤，请参阅[如何使用 Azure 容器实例](text-analytics-how-to-use-container-instances.md)。 还可以使用以下 PowerShell 脚本 Azure CLI，这将使用容器映像在订阅上创建 ACI。  等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。  由于每个 ACI 资源的最大 Cpu 数的限制，如果你希望提交超过5个大文档 (每个请求) 约5000个字符，请不要选择此选项。
-有关可用性信息，请参阅[ACI 区域支持](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability)文章。 
+有关使用 Azure 门户部署 ACI 资源的步骤，请参阅[如何使用 Azure 容器实例](text-analytics-how-to-use-container-instances.md)。 还可以通过 Azure CLI 使用以下 PowerShell 脚本，这将使用容器映像在订阅上创建 ACI。  等待脚本完成 (大约25-30 分钟) ，然后提交第一个请求。  由于每个 ACI 资源的最大 Cpu 数的限制，如果你希望提交超过5个大文档 (每个请求) 约5000个字符，请不要选择此选项。
+有关可用性信息，请参阅 [ACI 区域支持](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) 文章。 
 
 > [!NOTE] 
 > Azure 容器实例不包括对内置域的 HTTPS 支持。 如果需要 HTTPS，则需要手动配置它，包括创建证书和注册域。 可以通过下面的 NGINX 查找有关如何执行此操作的说明。
@@ -152,22 +152,22 @@ az container create --resource-group $resource_group_name --name $azure_containe
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```
 
-### <a name="secure-aci-connectivity"></a>安全的 ACI 连接
+### <a name="secure-aci-connectivity"></a>保护 ACI 连接
 
-默认情况下，将 ACI 与容器 API 一起使用时不提供安全性。 这是因为，通常容器将作为 pod 的一部分运行，而该 pod 由网桥保护。 但是，可以使用正面组件来修改容器，使容器终结点保持私有。 以下示例使用[NGINX](https://www.nginx.com)作为入口网关，以支持 HTTPS/SSL 和客户端证书身份验证。
+默认情况下，将 ACI 与容器 API 一起使用时不提供安全性。 这是因为大多数情况下容器会作为 Pod 的一部分运行，而 Pod 受网络桥的保护，与外部隔离。 但是，可以使用前端组件来修改容器，使容器终结点保持专用。 以下示例使用 [NGINX](https://www.nginx.com) 作为入口网关，以支持 HTTPS/SSL 和客户端证书身份验证。
 
 > [!NOTE]
-> NGINX 是一个开源、高性能 HTTP 服务器和代理。 NGINX 容器可用于终止单个容器的 TLS 连接。 还可能会有更复杂的基于入口的 TLS 终止解决方案 NGINX。
+> NGINX 是高性能的开源 HTTP 服务器和代理。 NGINX 容器可用于终止单个容器的 TLS 连接。 还可能会有更复杂的基于 NGINX 入口的 TLS 终止解决方案。
 
 #### <a name="set-up-nginx-as-an-ingress-gateway"></a>将 NGINX 设置为入口网关
 
-NGINX 使用[配置文件](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/)在运行时启用功能。 若要为另一个服务启用 TLS 终止，必须指定一个 SSL 证书以终止 TLS 连接，并 `proxy_pass` 指定该服务的地址。 下面提供了一个示例。
+NGINX 使用[配置文件](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/)在运行时启用功能。 若要为另一个服务启用 TLS 终止，必须指定用于终止 TLS 连接的 SSL 证书，以及用于指定服务地址的 `proxy_pass`。 下面提供了示例。
 
 
 > [!NOTE]
-> `ssl_certificate`需要在 NGINX 容器的本地文件系统中指定一个路径。 为指定的地址 `proxy_pass` 必须在 NGINX 容器的网络中可用。
+> `ssl_certificate` 需要路径在 NGINX 容器的本地文件系统中进行指定。 为 `proxy_pass` 指定的地址必须在 NGINX 容器的网络中可用。
 
-NGINX 容器会将中装入的中的所有文件都加载 `_.conf_` `/etc/nginx/conf.d/` 到 HTTP 配置路径中。
+NGINX 容器将 `/etc/nginx/conf.d/` 下装载的 `_.conf_` 中的所有文件加载到 HTTP 配置路径。
 
 ```nginx
 server {
@@ -188,9 +188,9 @@ server {
 }
 ```
 
-#### <a name="example-docker-compose-file"></a>Docker 撰写文件示例
+#### <a name="example-docker-compose-file"></a>示例 Docker compose 文件
 
-下面的示例演示了如何创建[docker 合成](https://docs.docker.com/compose/reference/overview)文件来部署运行状况容器的 NGINX 和文本分析：
+下面的示例演示如何创建 [docker compose](https://docs.docker.com/compose/reference/overview) 文件来部署 NGINX 和健康状况文本分析容器：
 
 ```yaml
 version: "3.7"
@@ -217,26 +217,26 @@ services:
       - <path-to-conf-folder>:/etc/nginx/conf.d/
 ```
 
-若要启动此 Docker 合成文件，请在文件根级别的控制台中执行以下命令：
+若要启动此 Docker compose 文件，请在文件根级别从控制台中执行以下命令：
 
 ```bash
 docker-compose up
 ```
 
-有关详细信息，请参阅 NGINX 的文档[NGINX SSL 终止](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)。
+有关详细信息，请参阅有关 [NGINX SSL 终止](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)的 NGINX 文档。
 
 
 ## <a name="example-api-request"></a>示例 API 请求
 该容器提供基于 REST 的查询预测终结点 API。
 
-使用下面的示例卷请求将查询提交到已部署的容器， `serverURL` 并将该变量替换为适当的值。
+使用下面的示例 cURL 请求将查询提交到已部署的容器，并使用适当的值替换 `serverURL` 变量。
 
 ```bash
 curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
-以下 JSON 是附加到运行状况 API 请求的 POST 正文的文本分析的 JSON 文件的示例：
+以下 JSON 是附加到健康状况文本分析 API 请求 POST 正文的 JSON 文件示例：
 
 ```json
 example.json
@@ -259,7 +259,7 @@ example.json
 
 ## <a name="api-response-body"></a>API 响应正文
 
-以下 JSON 是运行状况 API 响应正文的文本分析的示例：
+以下 JSON 是健康状况文本分析 API 响应正文的示例：
 
 ```json
 {
@@ -370,7 +370,7 @@ example.json
 
 ### <a name="negation-detection-output"></a>求反检测输出
 
-使用求反检测时，在某些情况下，单个否定字词可以同时处理多个字词。 在 JSON 输出中，通过标志的布尔值表示已识别的实体的求反结果 `isNegated` ：
+使用求反检测时，在某些情况下，单个否定字词可以同时处理多个字词。 通过 `isNegated` 标志的布尔值将已识别实体的否定表示在 JSON 输出中：
 
 ```json
 {
@@ -395,26 +395,23 @@ example.json
 
 ### <a name="relation-extraction-output"></a>关系提取输出
 
-关系提取输出包含对关系*源*及其*目标*的 URI 引用。 具有关系角色的实体 `ENTITY` 分配给 `target` 字段。 具有关系角色的实体 `ATTRIBUTE` 分配给 `source` 字段。 缩写关系包含双向 `source` 和 `target` 字段，并且 `bidirectional` 将设置为 `true` 。 
+关系提取输出包含对关系 *源* 及其 *目标*的 URI 引用。 具有关系角色的实体 `ENTITY` 分配给 `target` 字段。 具有关系角色的实体 `ATTRIBUTE` 分配给 `source` 字段。 缩写关系包含双向 `source` 和 `target` 字段，并且 `bidirectional` 将设置为 `true` 。 
 
 ```json
 "relations": [
-  {
-      "relationType": "DosageOfMedication",
-      "score": 1.0,
-      "bidirectional": false,
-      "source": "#/documents/2/entities/0",
-      "target": "#/documents/2/entities/1",
-      "entities": [
-          {
-              "id": "0",
-              "role": "ATTRIBUTE"
-          },
-          {
-              "id": "1",
-              "role": "ENTITY"
-          }
-      ]
+                {
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
+                },
+                {
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
+                }
+            ]
   },
 ...
 ]

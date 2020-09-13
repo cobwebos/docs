@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
-ms.openlocfilehash: 29caccd666294add98882d080a2a0fd3bd9dd660
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 827871bdac689d1f5e8acb64d3565ca3c6da39be
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036617"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292514"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
@@ -21,16 +21,16 @@ ms.locfileid: "88036617"
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
 
-## <a name="release-date-07132020"></a>发布日期：07/13/2020
+## <a name="release-date-07132020"></a>发行日期：2020/07/13
 
 此版本适用于 HDInsight 3.6 和 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
 
 ### <a name="new-features"></a>新增功能
 #### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>支持 Microsoft Azure 客户密码箱
-Azure HDInsight 现在支持 Azure 客户密码箱。 它为客户提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此方法。 有关详细信息，请参阅[Microsoft Azure 客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)。
+Azure HDInsight 现在支持 Azure 客户密码箱。 客户可通过其提供的界面查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用它。 有关详细信息，请参阅 [Microsoft Azure 客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)。
 
-#### <a name="service-endpoint-policies-for-storage"></a>用于存储的服务终结点策略
-现在，客户可以在 HDInsight 群集子网上 (SEP) 使用服务终结点策略。 了解有关[Azure 服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)的详细信息。
+#### <a name="service-endpoint-policies-for-storage"></a>存储的服务终结点策略
+现在，客户可以在 HDInsight 群集子网上使用服务终结点策略 (SEP)。 详细了解 [Azure 服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
 
 ### <a name="deprecation"></a>弃用
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>弃用 HDInsight 3.6 Spark 群集中的 Spark 2.1 和 2.2
@@ -49,18 +49,18 @@ Azure HDInsight 现在支持 Azure 客户密码箱。 它为客户提供了一�
 即将发布的版本中将推出以下变更。 
 
 #### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>能够为 Spark、Hadoop 和 ML 服务选择不同的 Zookeeper SKU
-HDInsight 目前不支持更改 Spark、Hadoop 和 ML 服务群集类型的 Zookeeper SKU。 它使用适用于 Zookeeper 节点 A2_v2/A2 SKU，客户不收取费用。 在即将推出的版本中，客户可以根据需要更改 Spark、Hadoop 和 ML 服务的 Zookeeper SKU。 将对 SKU 不是 A2_v2/A2 的 Zookeeper 节点收取费用。 默认 SKU 仍将 A2_V2/A2 并免费。
+HDInsight 目前不支持更改 Spark、Hadoop 和 ML 服务群集类型的 Zookeeper SKU。 它为 Zookeeper 节点使用 A2_v2/A2 SKU，客户无需对此付费。 在即将推出的版本中，客户可以根据需要更改 Spark、Hadoop 和 ML 服务的 Zookeeper SKU。 会对不使用 A2_v2/A2 SKU 的 Zookeeper 节点收取费用。 默认 SKU 仍为 A2_V2/A2 并免费。
 
 ### <a name="bug-fixes"></a>Bug 修复
 HDInsight 会持续改善群集的可靠性和性能。 
-#### <a name="fixed-hive-warehouse-connector-issue"></a>固定 Hive 仓库连接器问题
-以前版本中的 Hive 仓库连接器可用性存在问题。 此问题已解决。 
+#### <a name="fixed-hive-warehouse-connector-issue"></a>已修复 Hive 仓库连接器问题
+以前的版本中，Hive 仓库连接器的可用性存在问题。 现在已修复该问题。 
 
-#### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>已修复 Zeppelin 笔记本截断前导零问题
-Zeppelin 在字符串格式的表输出中错误地截断了前导零。 此版本修复了此问题。
+#### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>已修复 Zeppelin 笔记本截断起始零的问题
+Zeppelin 过去会在字符串格式的表输出中错误地截断起始零。 此版本已修复此问题。
 
 ### <a name="component-version-change"></a>组件版本更改
-此发行版未发生组件版本更改。 可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中找到 hdinsight 4.0 和 hdinsight 3.6 的当前组件版本。
+此发行版未发生组件版本更改。 可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
 ## <a name="release-date-06112020"></a>发行日期：2020/06/11
 
@@ -98,8 +98,8 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从此版本起，新�
 #### <a name="create-new-service-principal-through-hdinsight"></a>通过 HDInsight 创建新的服务主体
 以前，在创建群集的过程中，客户可以创建新的服务主体来访问 Azure 门户中已连接的 ADLS 第 1 代帐户。 从 2020 年 6 月 15 日起，客户无法在 HDInsight 创建工作流中创建新的服务主体，我们只支持现有的服务主体。 请参阅[使用 Azure Active Directory 创建服务主体和证书](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-#### <a name="time-out-for-script-actions-with-cluster-creation"></a>创建群集时脚本操作的超时时间
-HDInsight 支持在创建群集的过程中运行脚本操作。 在此版本中，群集创建的所有脚本操作都必须在**60 分钟**内完成，否则会超时。提交到正在运行的群集的脚本操作不会受到影响。 请访问[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process)了解更多详细信息。
+#### <a name="time-out-for-script-actions-with-cluster-creation"></a>创建群集时脚本操作的超时
+HDInsight 支持在创建群集的过程中运行脚本操作。 在此版本中，群集创建过程中的所有脚本操作都必须在 60 分钟内完成，否则会超时。提交到正在运行的群集的脚本操作不会受到影响。 请访问[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process)了解更多详细信息。
  
 ### <a name="upcoming-changes"></a>即将推出的更改
 没有需要注意的即将发生的中断性变更。
@@ -122,7 +122,7 @@ Kafka 版本已从 2.1.0 升级到 2.1.1。
 ### <a name="known-issues"></a>已知问题
 
 #### <a name="hive-warehouse-connector-issue"></a>Hive 仓库连接器问题
-此版本中的 Hive 仓库连接器存在问题。 此修补程序将包含在下一个版本中。 在此版本之前创建的现有群集不受影响。 如果可能，请避免删除并重新创建群集。 如果需要进一步的帮助，请打开支持票证。
+此版本中的 Hive 仓库连接器存在问题。 下一版本将修复该问题。 在此版本之前创建的现有群集不受影响。 如果可能，请避免删除并重新创建群集。 如果需要进一步的帮助，请提交支持票证。
 
 ## <a name="release-date-01092020"></a>发行日期：01/09/2020
 
@@ -164,8 +164,8 @@ Kafka 版本已从 2.1.0 升级到 2.1.1。
 #### <a name="kafka-210-to-211"></a>Kafka 2.1.0 到 2.1.1
 在即将推出的 HDInsight 4.0 版本中，Kafka 版本将从版本 2.1.0 升级到 2.1.1
 
-#### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>提供至少有 4 个核心的 VM 作为头节点 
-头节点至少需要 4 核 VM，以确保 HDInsight 群集的高可用性和可靠性。 从 2020 年 4 月 6 日开始，客户只能选择至少有 4 个核心的 VM 作为新 HDInsight 群集的头节点。 现有群集将继续按预期方式运行。 
+#### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>头节点至少需要 4 核 VM 
+头节点至少需要 4 核 VM，以确保 HDInsight 群集的高可用性和可靠性。 从 2020 年 4 月 6 日开始，客户只能选择 4 核或以上的 VM 作为新 HDInsight 群集的头节点。 现有群集将继续按预期方式运行。 
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 群集节点大小更改 
 在即将推出的版本中，ESP Spark 群集允许的最小节点大小将更改为 Standard_D13_V2。 由于 CPU 和内存容量相对较低，因此 A 系列 VM 可能会导致 ESP 群集问题。 创建新 ESP 群集时将弃用 A 系列 VM。
@@ -779,7 +779,7 @@ HDP 2.6.4 提供 Hadoop Common 2.7.3 和以下 Apache 修补程序：
 
 -   [*HIVE-17621*](https://issues.apache.org/jira/browse/HIVE-17621)：执行 HCatInputFormat 拆分计算期间忽略 Hive-site 设置。
 
--   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629)：CachedStore：提供允许列表/方块列表配置，以允许对表/分区进行选择性的缓存，并允许在预热时读取。
+-   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629)： CachedStore：具有已批准/未批准的配置，以允许选择性地缓存表/分区并在 prewarming 时允许读取。
 
 -   [*HIVE-17636*](https://issues.apache.org/jira/browse/HIVE-17636)：为 Blob 存储添加 multiple\_agg.q 测试。
 
@@ -1692,7 +1692,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 |**Apache 组件**|**Apache JIRA**|**摘要**|**详细信息**|
 |--|--|--|--|
-|**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |-有一个 "弃用" 文档和 "行为变化" 指南，https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-对于 SQL 部件，还有另一个详细的 "迁移" 指南 (2.2 到 2.3) ，https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |-有一个 "弃用" 文档和 "行为变化" 指南， https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-对于 SQL 部件，还有另一个详细的 "迁移" 指南 (2.2 到 2.3) ， https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景：** 当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
 |**Kafka 1.0**|**不适用**|**Apache Spark 发行说明中所述的更改** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 策略 |**场景：** **INSERT OVERWRITE** 需要其他 ranger hive 策略<br /><br />**以前的行为：** Hive **INSERT OVERWRITE** 查询像往常一样成功。<br /><br />**新行为：** 升级到 HDP 2.6.x 之后，Hive **INSERT OVERWRITE** 查询意外失败并出现错误：<br /><br />编译语句时出错:失败:HiveAccessControlException 权限被拒绝: 用户 jdoe 对 /tmp/ 没有写入特权\*(状态=42000，代码=40000)<br /><br />从 HDP-2.6.0 开始，Hive **INSERT OVERWRITE** 查询需要 Ranger URI 策略才能允许写入操作，即使已通过 HDFS 策略为用户授予了写入特权。<br /><br />**解决方法/预期的客户操作：**<br /><br />1.在 Hive 存储库下创建新策略。<br />2.在显示“数据库”的下拉列表中，选择“URI”。<br />3.更新路径（示例：/tmp/*）<br />4.添加用户和组并保存。<br />5.重试 insert 查询。|
