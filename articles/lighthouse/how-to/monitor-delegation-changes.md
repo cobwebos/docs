@@ -1,14 +1,14 @@
 ---
 title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589735"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567599"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -48,6 +48,9 @@ ms.locfileid: "88589735"
 - 确保此服务主体不具有对任何委派的客户资源的访问权限。
 - [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) ，并 [将其安全地存储在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
 - 限制有权代表服务主体执行操作的用户。
+
+> [!NOTE]
+> 你还可以将监视读取器 Azure 内置角色的根范围分配给单个用户或用户组。 如果希望用户能够 [直接在 Azure 门户中查看委派信息](#view-delegation-changes-in-the-azure-portal)，这会很有用。 如果这样做，请注意，这是一种广泛的访问级别，应限制为尽可能少的用户数。
 
 使用以下方法之一来进行根范围分配。
 
@@ -164,6 +167,15 @@ else {
 
 > [!TIP]
 > 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](../concepts/enterprise.md) 可以使用相同的过程。
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>查看 Azure 门户中的委派更改
+
+在根范围内分配了监视读者 Azure 内置角色的用户可以直接在 Azure 门户中查看委托更改。
+
+1. 导航到 " **我的客户** " 页，然后从左侧导航菜单中选择 " **活动日志** "。
+1. 确保在屏幕顶部附近的筛选器中选择 " **目录活动** "。
+
+将显示委托更改列表。 你可以选择 **"编辑列** " 以显示或隐藏 **状态**、 **事件类别**、 **时间**、 **时间戳**、 **订阅**、 **事件启动者**、 **资源组**、 **资源类型**和 **资源** 值。
 
 ## <a name="next-steps"></a>后续步骤
 

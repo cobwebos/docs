@@ -14,18 +14,18 @@ ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ea8bf2407fb533870495dc501a2d740bff9ee968
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815991"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567344"
 ---
 # <a name="start-using-privileged-identity-management"></a>开始使用 Privileged Identity Management
 
 本文介绍如何启用 Privileged Identity Management (PIM) 并开始使用它。
 
-使用 Privileged Identity Management (PIM) 可管理、控制和监视 Azure Active Directory (Azure AD) 组织内的访问。 使用 PIM，可以根据需要及时提供对 Azure 资源、Azure AD 资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的访问。
+使用 Privileged Identity Management (PIM) 可管理、控制和监视 Azure Active Directory (Azure AD) 组织内的访问。 使用 PIM，你可以提供对 Azure 资源、Azure AD 资源以及其他 Microsoft 联机服务（如 Microsoft 365 或 Microsoft Intune）的按需和实时访问权限。
 
 ## <a name="prerequisites"></a>先决条件
 

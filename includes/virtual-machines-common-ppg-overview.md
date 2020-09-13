@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81421835"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570201"
 ---
 将 VM 置于单个区域可以减少实例之间的物理距离。 将它们置于单一可用性区域中也会减少它们的物理距离。 但是，随着 Azure 占用空间的增加，单个可用性区域可能会跨多个物理数据中心，这可能导致网络延迟，对应用程序造成影响。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "81421835"
 
 邻近放置组是 Azure 中的一种新资源类型。 在将邻近放置组用于其他资源之前，需要先创建邻近放置组。 创建后，可将其用于虚拟机、可用性集或虚拟机规模集。 创建计算资源时，可以通过提供邻近放置组 ID 来指定邻近放置组。 
 
-还可将现有资源移入邻近放置组。 将资源移入邻近放置组时，应该先停止（解除分配）资产，因为可能需要将资产重新部署到区域中的另一数据中心以满足共置约束。 
+还可将现有资源移入邻近放置组。 将资源移到邻近组时，应停止 (解除分配) 资产，因为它可能会重新部署到区域中的其他数据中心以满足归置约束。 
 
 对于可用性集和虚拟机规模集，应在资源级别而不是在单个虚拟机上设置邻近放置组。 
 

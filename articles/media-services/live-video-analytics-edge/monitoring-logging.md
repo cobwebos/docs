@@ -3,12 +3,12 @@ title: 监视和日志记录 - Azure
 description: 本文概述了 IoT Edge 上实时视频分析的监视和日志记录。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934287"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567548"
 ---
 # <a name="monitoring-and-logging"></a>监视和日志记录
 
@@ -20,7 +20,8 @@ ms.locfileid: "88934287"
 
 IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据。
 
-![IoT Edge 上的实时视频分析遥测架构](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="事件的分类":::
 
 * 可操作：事件是用户执行的操作的一部分，或者是在执行[媒体图](media-graph-concept.md)期间生成的。
    
@@ -71,6 +72,7 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
    * 示例:
       
       检测到的动作（如下所示），推理结果。
+
    ```      
    {
      "body": {
@@ -98,16 +100,20 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
      }
    }
    ```
+
 模块发出的事件将发送到 [IoT Edge 中心](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)，然后可以从那里将其路由到其他目标。 
 
 ### <a name="timestamps-in-analytic-events"></a>分析事件中的时间戳
-如上所示，作为视频分析的一部分生成的事件具有与之关联的时间戳。 如果您将 [实时视频记录](video-recording-concept.md) 为图形拓扑的一部分，则此时间戳可帮助您找到记录的视频中发生特定事件的位置。 下面是有关如何将分析事件中的时间戳映射到记录到 [Azure 媒体服务资产](terminology.md#asset)的视频时间线的指导原则。
 
-首先，提取 `eventTime` 值。 在 [时间范围筛选器](playback-recordings-how-to.md#time-range-filters) 中使用此值可检索记录的合适部分。 例如，你可能想要提取在之前30秒开始的视频 `eventTime` 并在30秒后结束。 在上面的示例中，其中， `eventTime` 为 2020-05-12T23：33： 09.381 z，为 +/30 秒窗口的 HLS 清单请求将如下所示：
+如上所述，作为视频分析的一部分生成的事件具有与其相关联的时间戳。 如果您将 [实时视频记录](video-recording-concept.md) 为图形拓扑的一部分，则此时间戳可帮助您找到记录的视频中发生特定事件的位置。 以下是关于如何将分析事件中的时间戳映射到录制到 [Azure 媒体服务资产](terminology.md#asset)中的视频时间戳的指导原则。
+
+首先，提取 `eventTime` 值。 在[时间范围筛选器](playback-recordings-how-to.md#time-range-filters)中使用此值检索录制的适当部分。 例如，你可能希望提取在 `eventTime` 之前 30 秒开始和在其之后 30 秒结束的视频。 在上面的示例中，如果 `eventTime` 为 2020-05-12T23:33:09.381Z，那么 +/- 30s 窗口的 HLS 清单的请求将如下所示：
+
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
-上述 URL 将返回所谓的 [主播放列表](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)，其中包含用于媒体播放列表的 url。 媒体播放列表包含如下所示的条目：
+
+上面的 URL 将返回一个所谓的[主播放列表](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)，其中包含媒体播放列表的 URL。 媒体播放列表将包含如下所示的条目：
 
 ```
 ...
@@ -115,9 +121,9 @@ https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,star
 Fragments(video=143039375031270,format=m3u8-aapl)
 ...
 ```
-在上面的条目中，会报告可从时间戳值开始的视频片段 `143039375031270` 。 `timestamp`分析事件中的值使用与媒体播放列表相同的时间刻度，可用于标识相关视频片段，并查找正确的帧。
+在上面的条目中，条目报告有一个从时间戳值 `143039375031270` 开始的视频片段。 分析事件中的 `timestamp` 值使用与媒体播放列表相同的时间刻度，可用于标识相关的视频片段，并查找正确的帧。
 
-有关详细信息，可以阅读有关 HLS 中的帧准确查找的众多 [文章](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) 之一。
+有关详细信息，可以阅读 HLS 中有关准确查找帧的众多[文章](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS)之一。
 
 ## <a name="controlling-events"></a>控制事件
 

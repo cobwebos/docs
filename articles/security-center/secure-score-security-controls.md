@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272274"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567618"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure 安全中心的增强安全分数
 
@@ -45,17 +45,17 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
 > 较早版本的安全中心在建议级别奖励分数：修正针对单个资源的某条建议后，安全评分就会提高。 现在，只有修正控制中针对单个资源的所有建议后，分数才会提高。 因此，只有提高了资源的安全性，分数才会提高。
 
 
-## <a name="accessing-your-secure-score"></a>访问安全分数
+## <a name="access-your-secure-score"></a>访问安全分数
 
 可以通过 Azure 门户或以编程方式使用 Azure 安全中心 REST API 来查找整体安全分数以及每个订阅的分数。
 
-### <a name="getting-your-secure-score-from-the-portal"></a>从门户获取安全评分
+### <a name="get-your-secure-score-from-the-portal"></a>从门户获取你的安全评分
 
 安全中心会在门户中突出显示你的分数：这是 "概述" 页中的第一件事。 如果单击进入专用安全评分页面，你将看到按订阅细分的分数。 单击单个订阅，可查看优先建议的详细列表以及修正这些建议对订阅分数产生的潜在影响。
 
 ![门户中显示的总体安全分数](media/secure-score-security-controls/single-secure-score-via-ui.png)
 
-### <a name="getting-your-secure-score-from-the-rest-api"></a>从 REST API 获取安全分数
+### <a name="get-your-secure-score-from-the-rest-api"></a>从 REST API 获取安全分数
 
 你可以通过 [安全分数 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (当前在预览版) 中访问你的评分。 利用 API 方法可以灵活地查询数据，并在一段时间内构建你自己的安全评分报表机制。 例如，可以使用 **安全评分** API 来获取特定订阅的分数。 此外，你可以使用 **安全分数控制** API 列出你的订阅的安全控制和当前分数。
 
@@ -91,13 +91,22 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
 |**安全评分**<br>多个订阅|<br>将所有订阅中所有资源的当前分数相加，之后的计算方式与单个订阅相同<br><br>查看多个订阅时，安全评分会计算所有已启用策略中的所有资源，并将其对每个安全控制的最高分的综合影响进行分组。<br>![启用了所有控制的多个订阅的安全评分](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>综合得分不是平均值，而是指所有订阅中所有资源状态的计算状况。<br>同样，在这里，如果转到建议页面并将可能得到的分数相加，你会发现结果是当前分数 (24) 与最高得分 (60) 之差。|
 ||||
 
-## <a name="improving-your-secure-score"></a>提高安全评分
+### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>安全分数计算中包括哪些建议？
+
+只有内置建议才会影响安全评分。
+
+此外，标记为 **预览版** 的建议不包含在安全分数的计算中。 它们应尽可能进行修正，以便在预览期结束时，它们会给你评分。
+
+预览建议的示例如下：
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
+
+
+## <a name="improve-your-secure-score"></a>提高安全分数
 
 若要提高安全评分，请修正建议列表中的安全建议。 既可以为每个资源手动修正每个建议，也可以使用“快速修复!” 选项（如果有）对一组资源快速应用建议修正。 有关详细信息，请参阅[修正建议](security-center-remediate-recommendations.md)。
 
->[!IMPORTANT]
-> 只有内置建议才会影响安全评分。
-
+改善分数并确保用户不会创建对分数产生负面影响的资源的另一种方法是在相关建议上配置 "强制" 和 "拒绝" 选项。 有关详细信息 [，请参阅防止强制/拒绝建议](prevent-misconfigurations.md)的错误配置。
 
 ## <a name="security-controls-and-their-recommendations"></a>安全控制及其建议
 
@@ -144,7 +153,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">修正安全配置（最高 4 分）</p></strong>配置错误的 IT 资产受到攻击的风险更高。 当部署资产并且必须在截止日期之前完成时，通常会忘记基本的强化措施。 错误的安全配置可能出现在基础结构中的任何级别：从操作系统和网络设备到云资源。<br>Azure 安全中心会不断将资源的配置与行业标准、法规和基准中的要求进行比较。 配置了对组织而言很重要的相关“合规性包”（标准和基线）后，任何差距都会产生安全建议，其中包括 CCEID 以及对潜在安全影响的说明。<br>常用包为 <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure 安全基准</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基础基准版本 1.1.0</a></td>
-    <td class="tg-lboi"; width=55%>- 应在 Kubernetes 服务上定义 Pod 安全策略<br>- 应修正容器安全配置中的漏洞<br>- 应修正计算机上安全配置中的漏洞<br>- 应修正虚拟机规模集上安全配置中的漏洞<br>- 应在虚拟机上安装监视代理<br>- 应在计算机上安装监视代理<br>- Log Analytics 代理应在基于 Windows 的 Azure Arc 计算机上安装 (预览版) <br>- Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上 (预览版) <br>- 应在虚拟机规模集上安装监视代理<br>- 应在计算机上解决监视代理运行状况问题</td>
+    <td class="tg-lboi"; width=55%>- 应修正容器安全配置中的漏洞<br>- 应修正计算机上安全配置中的漏洞<br>- 应修正虚拟机规模集上安全配置中的漏洞<br>- 应在虚拟机上安装监视代理<br>- 应在计算机上安装监视代理<br>- Log Analytics 代理应在基于 Windows 的 Azure Arc 计算机上安装 (预览版) <br>- Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上 (预览版) <br>- 应在虚拟机规模集上安装监视代理<br>- 应在计算机上解决监视代理运行状况问题</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">限制未经授权的网络访问（最高 4 分）</p></strong>组织内的终结点提供从虚拟网络到受支持的 Azure 服务的直接连接。 子网中的虚拟机可以与所有资源通信。 若要限制与子网内资源的通信，请创建一个网络安全组并将其关联到子网。 组织可以通过创建入站和出站规则来限制和防范未经授权的流量。</td>

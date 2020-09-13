@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661310"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595574"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 
@@ -30,15 +30,15 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 
 |资源类型  |支持维度 |多资源警报| 可用指标|
 |---------|---------|-----|----------|
-|Aadiam/azureADMetrics | 是 | 否 | |
+|Microsoft.Aadiam/azureADMetrics | 是 | 否 | |
 |Microsoft.ApiManagement/service | 是 | 否 | [API 管理](./metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft.AppConfiguration/configurationStores |是 | 否 | [应用配置](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft.AppPlatform/Spring | 是 | 否 | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
 |Microsoft.Automation/automationAccounts | 是| 否 | [自动化帐户](./metrics-supported.md#microsoftautomationautomationaccounts) |
-|PrivateClouds/ | 否 | 否 | |
+|Microsoft.AVS/privateClouds | 否 | 否 | |
 |Microsoft.Batch/batchAccounts | 是 | 否 | [Batch 帐户](./metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft.Cache/Redis | 是 | 否 | [用于 Redis 的 Azure 缓存](./metrics-supported.md#microsoftcacheredis) |
-|Microsoft.ClassicStorage/storageAccounts | 是 | 否 | [ (经典) 存储帐户 ](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
+|Microsoft.ClassicStorage/storageAccounts | 是 | 否 | [存储帐户（经典）](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
 |Microsoft.ClassicStorage/storageAccounts/blobServices | 是 | 否 | |
 |Microsoft.ClassicStorage/storageAccounts/fileServices | 是 | 否 | |
 |Microsoft.ClassicStorage/storageAccounts/queueServices | 是 | 否 | |
@@ -55,13 +55,13 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.DataShare/accounts | 是 | 否 | |
 |Microsoft.DBforMariaDB/servers | 否 | 否 | [DB for MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | 否 | 否 |[适用于 MySQL 的 DB](./metrics-supported.md#microsoftdbformysqlservers)|
-|DBforPostgreSQL/flexibleServers | 是 | 否 | |
+|Microsoft.DBforPostgreSQL/flexibleServers | 是 | 否 | |
 |Microsoft.DBforPostgreSQL/servers | 否 | 否 | [适用于 PostgreSQL 的 DB](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | 否 | 否 | [DB for PostgreSQL V2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft.DBforPostgreSQL/singleservers | 否 | 否 | [DB for PostgreSQL (单台服务器) ](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|Microsoft.DBforPostgreSQL/singleservers | 否 | 否 | [DB for PostgreSQL（单一服务器）](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
 |Microsoft.Devices/IotHubs | 是 | 否 |[IoT 中心](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| 是 | 否 | [设备预配服务](./metrics-supported.md#microsoftdevicesprovisioningservices) |
-|DigitalTwins/digitalTwinsInstances | 是 | 否 | |
+|Microsoft.DigitalTwins/digitalTwinsInstances | 是 | 否 | |
 |Microsoft.DocumentDB/databaseAccounts | 是 | 否 | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
 |Microsoft.EventGrid/domains | 是 | 否 | [事件网格域](./metrics-supported.md#microsofteventgriddomains) |
 |Microsoft.EventGrid/systemTopics | 是 | 否 | [事件网格系统主题](./metrics-supported.md#microsofteventgridsystemtopics) |
@@ -72,16 +72,16 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Insights/Components | 是 | 否 | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
 |Microsoft.KeyVault/vaults | 是 |是 |[保管库](./metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Kusto/Clusters | 是 |否 |[数据资源管理器群集](./metrics-supported.md#microsoftkustoclusters)|
-|Microsoft.Logic/integrationServiceEnvironments | 是 | 否 |[Integration Service 环境](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
+|Microsoft.Logic/integrationServiceEnvironments | 是 | 否 |[集成服务环境](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft.Logic/workflows | 否 | 否 |[逻辑应用](./metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces | 是 | 否 | [机器学习](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
-|Microsoft.Maps/accounts | 是 | 否 | [映射帐户](./metrics-supported.md#microsoftmapsaccounts) |
+|Microsoft.Maps/accounts | 是 | 否 | [Maps 帐户](./metrics-supported.md#microsoftmapsaccounts) |
 |Microsoft.Media/mediaservices | 否 | 否 | [媒体服务](./metrics-supported.md#microsoftmediamediaservices) |
 |Microsoft.Media/mediaservices/streamingEndpoints | 是 | 否 | [媒体服务流式处理终结点](./metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
 |Microsoft.NetApp/netAppAccounts/capacityPools | 是 | 是 | [Azure NetApp 容量池](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
 |Microsoft.NetApp/netAppAccounts/capacityPools/volumes | 是 | 是 | [Azure NetApp 卷](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways | 是 | 否 | [应用程序网关](./metrics-supported.md#microsoftnetworkapplicationgateways) |
-|Microsoft.Network/azurefirewalls | 是 | 否 | [道](./metrics-supported.md#microsoftnetworkazurefirewalls) |
+|Microsoft.Network/azurefirewalls | 是 | 否 | [防火墙](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | 否 | 否 | [DNS 区域](./metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | 空值 | 否 |[Express Route 线路](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft.Network/loadBalancers（仅限标准 SKU）| 是| 否 | [负载均衡器](./metrics-supported.md#microsoftnetworkloadbalancers) |
@@ -103,16 +103,16 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Storage/storageAccounts |是 | 否 | [存储帐户](./metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | 是| 否 | [Blob 服务](./metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[文件服务](./metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[队列服务](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices)和[表服务](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StorageCache/caches | 是 | 否 | |
-|Storagesync.sys/storageSyncServices | 是 | 否 | [存储同步服务](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
+|Microsoft.StorageSync/storageSyncServices | 是 | 否 | [存储同步服务](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft.StreamAnalytics/streamingjobs | 是 | 否 | [流分析](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
-|VMWareCloudSimple/virtualMachines | 是 | 否 | [CloudSimple 虚拟机](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
+|Microsoft.VMWareCloudSimple/virtualMachines | 是 | 否 | [CloudSimple 虚拟机](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
 |Microsoft.Web/hostingEnvironments/multiRolePools | 是 | 否 | [应用服务环境多角色池](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | 是 | 否 | [应用服务环境工作线程池](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | 是 | 否 | [应用服务计划](./metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft.Web/sites | 是 | 否 | [应用程序服务](./metrics-supported.md#microsoftwebsites-excluding-functions)和 [Functions](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | 是 | 否 | [应用服务槽](./metrics-supported.md#microsoftwebsitesslots)|
 
-<sup>1</sup> 仅支持平台指标 (自定义指标) 
+<sup>1</sup> 不支持虚拟机网络指标 (网络总数、网络传出总数、入站流、出站流、入站流最大创建速率、出站流) 和自定义指标的最大创建速率。
 
 ## <a name="payload-schema"></a>负载架构
 

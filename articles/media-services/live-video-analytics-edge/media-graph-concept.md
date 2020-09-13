@@ -3,12 +3,12 @@ title: 媒体图概念 - Azure
 description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文提供了媒体图概念的详细说明。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048410"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567923"
 ---
 # <a name="media-graph"></a>媒体图
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048410"
 
 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 可以采用所需方式连接组件或节点来进行定义。 下图提供了媒体图的图形表示形式。  
 
-![媒体图的图形表示形式](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="媒体图":::
 
 IoT Edge 上的实时视频分析支持不同类型的源、处理器和接收器。
 
@@ -37,27 +38,28 @@ IoT Edge 上的实时视频分析支持不同类型的源、处理器和接收�
 
 ## <a name="media-graph-states"></a>媒体图状态  
 
-以下状态图显示了关系图拓扑和图形实例的生命周期。
+以下状态图显示了图形拓扑和图形实例的生命周期。
 
-![图形拓扑和图形实例生命周期](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="图形拓扑和图形实例生命周期":::
 
-首先 [创建图形拓扑](direct-methods.md#graphtopologyset)。 然后，对于每个要使用此拓扑处理的实时视频源，都要 [创建一个图形实例](direct-methods.md#graphinstanceset)。 
+首先[创建图形拓扑](direct-methods.md#graphtopologyset)。 然后对每个要使用此拓扑处理的实时视频源，[创建图形实例](direct-methods.md#graphinstanceset)。 
 
-Graph 实例将处于 `Inactive` 空闲) 状态 (。
+图形实例将处于 `Inactive`（空闲）状态。
 
-准备好将实时视频源发送到图形实例时，可以将其 [激活](direct-methods.md#graphinstanceactivate) 。 Graph 实例将短暂进入 transitionary `Activating` 状态，如果成功，则进入 `Active` 状态。 在 `Active` 状态下，如果 graph 实例接收到输入数据) ，则将处理媒体 (。
+准备好将实时视频源发送到图形实例时，[激活](direct-methods.md#graphinstanceactivate)该实例。 图形实例将短暂为过渡的 `Activating` 状态，如果成功，则进入 `Active` 状态。 在 `Active` 状态下，将会处理媒体（如果图形实例接收了输入数据）。
 
 > [!NOTE]
->  图形实例可以处于活动状态，而不会对其进行数据流动 (例如，照相机进入脱机状态) 。
+>  图形实例可以在没有数据流通过它时处于活动状态（例如相机离线）。
 > 当图形实例处于活动状态时，将对你的 Azure 订阅进行计费。
 
 如果有其他实时视频源要处理，则可以重复为同一拓扑创建和激活其他图形实例。
 
-处理完实时视频源后，可以 [停用](direct-methods.md#graphinstancedeactivate) 图形实例。 Graph 实例将短暂经历 transitionary `Deactivating` 状态，刷新其所具有的任何数据，然后返回 `Inactive` 状态。
+处理完实时视频源后，可以[停用](direct-methods.md#graphinstancedeactivate)该图形实例。 图形实例将短暂为过渡的 `Deactivating` 状态，刷新其包含的所有数据，然后返回到 `Inactive` 状态。
 
-只能在图形实例处于状态时将其 [删除](direct-methods.md#graphinstancedelete) `Inactive` 。
+仅当图形实例处于 `Inactive` 状态时，才能将其[删除](direct-methods.md#graphinstancedelete)。
 
-删除了引用特定图形拓扑的所有图形实例后，可以 [删除图形拓扑](direct-methods.md#graphtopologydelete)。
+删除引用特定图形拓扑的所有图形实例后，可以[删除图形拓扑](direct-methods.md#graphtopologydelete)。
 
 
 ## <a name="sources-processors-and-sinks"></a>源、处理器和接收器  
@@ -88,11 +90,11 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="http-extension-processor"></a>HTTP 扩展处理器
 
-通过 HTTP 扩展处理器节点，你可以将自己的 IoT Edge 模块连接到媒体图。 此节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点。 如果需要，此节点能够使用 REST 终结点进行身份验证。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 REST 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 JPEG、PNG 或 BMP 格式。
+通过 HTTP 扩展处理器节点，你可以将自己的 IoT Edge 模块连接到媒体图。 此节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点。 如果需要，此节点能够使用 REST 终结点进行身份验证。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 REST 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 JPEG、PNG 或 BMP 格式。 在 [此处](media-graph-extension-concept.md#http-extension-processor)了解有关处理器的详细信息。
 
 #### <a name="grpc-extension-processor"></a>gRPC 扩展处理器
 
-GRPC extension processor 节点会将解码的视频帧作为输入，并将此类帧中继到模块公开的 [gRPC](terminology.md#grpc) 终结点。 此外，在将视频帧中继到 gRPC 终结点之前，该节点还提供了用于缩放和编码的内置映像格式化程序。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 jpeg、png 或 bmp 格式。
+此 gRPC 扩展处理器节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 [gRPC](terminology.md#grpc) 终结点。 节点支持使用 [共享内存](https://en.wikipedia.org/wiki/Shared_memory) 传输数据或直接将内容嵌入到 gRPC 消息的正文中。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 gRPC 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 jpeg、png 或 bmp 格式。 在 [此处](media-graph-extension-concept.md#grpc-extension-processor)了解有关处理器的详细信息。
 
 #### <a name="signal-gate-processor"></a>信号门处理器  
 
@@ -114,7 +116,7 @@ GRPC extension processor 节点会将解码的视频帧作为输入，并将此�
 
 ## <a name="rules-on-the-use-of-nodes"></a>使用节点的规则
 
-有关如何在媒体图中使用不同节点的其他规则，请参阅 [关系图拓扑的限制](quotas-limitations.md#limitations-on-graph-topologies-at-preview) 。
+有关如何在媒体图中使用不同节点的其他规则，请参阅[图形拓扑的限制](quotas-limitations.md#limitations-on-graph-topologies-at-preview)。
 
 ## <a name="scenarios"></a>方案
 
