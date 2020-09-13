@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b506d56f8aff2204c705ae8685f475654c1b1705
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640474"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441912"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>配置基于 SAML 的单一登录
 
 在应用程序管理的 [快速入门系列](view-applications-portal.md) 中，已了解如何使用 Azure AD 作为标识提供程序 (IdP) 应用程序。 本文介绍有关单一登录的基于 SAML 的选项的更多详细信息。 
 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 使用 Azure AD 作为标识提供者 (IdP) 并设置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要基于 SAML 的 SSO 的自定义配置，则此文适用于你。
 
@@ -51,7 +51,6 @@ ms.locfileid: "88640474"
 | **登录 URL** | 必选 | 不指定 | 当用户打开此 URL 时，服务提供程序会将用户重定向到 Azure AD 进行身份验证和登录。 Azure AD 使用 URL 从 Office 365 或 Azure AD 我的应用启动应用程序。 如果为空，则 Azure AD 在用户从 Office 365 启动应用程序、Azure AD 我的应用程序或 Azure AD SSO URL 时启动 IdP 启动的登录。|
 | **中继状态** | 可选 | 可选 | 指定应用程序在完成身份验证以后将用户重定向到何处。 通常，该值是应用程序的有效 URL。 但是，某些应用程序以不同的方式使用此字段。 有关详细信息，请询问应用程序供应商。
 | **注销 URL** | 可选 | 可选 | 用于将 SAML 注销响应发回到应用程序。
-
 
 ## <a name="user-attributes-and-claims"></a>用户属性和声明 
 
@@ -112,7 +111,7 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
 
 选择 " **测试** "，然后选择 "测试" 以当前登录的用户或其他人进行测试。 
 
-如果登录成功，则你可以将用户和组分配到 SAML 应用程序。 恭喜！
+如果登录成功，则你可以将用户和组分配到 SAML 应用程序。 祝贺你！
 
 如果出现了错误消息，请完成以下步骤：
 

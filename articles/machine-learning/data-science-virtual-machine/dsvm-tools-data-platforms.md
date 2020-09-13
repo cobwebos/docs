@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012479"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440348"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -25,7 +25,7 @@ DSVM 支持以下数据平台工具。
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 本地关系数据库实例      |
 | 支持的 DSVM 版本      | Windows 2016：SQL Server 2017、Windows 2019：SQL Server 2019      |
@@ -45,7 +45,7 @@ DSVM 支持以下数据平台工具。
 CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 ```
 
-（将% COMPUTERNAME% 替换为 VM 名称。）
+ (将% COMPUTERNAME% 替换为 VM 名称。 ) 
 
 若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost``` 。
 
@@ -53,7 +53,7 @@ CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS
 
 默认情况下，具有默认数据库实例的数据库服务器会自动运行。 可在 VM 上使用 SQL Server Management Studio 等工具在本地访问 SQL Server 数据库。 本地管理员帐户在数据库中具有管理员访问权限。
 
-ODBC 驱动程序和 JDBC 驱动程序随附的 DSVM 还会通过使用多种语言（包括 Python 和 Machine Learning Server）编写的应用程序与 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库通信。
+此外，DSVM 附带了 ODBC 和 JDBC 驱动程序，可与用多种语言编写的应用程序（包括 Python 和 Machine Learning Server）进行 SQL Server 通信。
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>如何在 DSVM 上配置和安装它？ 
 
@@ -62,11 +62,11 @@ ODBC 驱动程序和 JDBC 驱动程序随附的 DSVM 还会通过使用多种语
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (Standalone)
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 它是流行的 Apache Spark 平台的独立（单个进程内节点）实例，是快速进行大规模数据处理和机器学习的系统     |
 | 支持的 DSVM 版本      | Linux     |
-| 典型用途      | <ul><li>使用较小的数据集在本地快速开发 Spark/PySpark 应用程序，并在较大的 Spark 群集（例如 Azure HDInsight）上进行部署</li><li>测试 Microsoft Machine Learning Server Spark 上下文</li><li>使用 SparkML 或 Microsoft 的开源[MMLSpark](https://github.com/Azure/mmlspark)库生成 ML 应用程序</li></ul> |
+| 典型用途      | <ul><li>使用较小的数据集在本地快速开发 Spark/PySpark 应用程序，并在较大的 Spark 群集（例如 Azure HDInsight）上进行部署</li><li>测试 Microsoft Machine Learning Server Spark 上下文</li><li>使用 SparkML 或 Microsoft 的开源 [MMLSpark](https://github.com/Azure/mmlspark) 库生成 ML 应用程序</li></ul> |
 | 指向示例的链接      |    Jupyter 示例：<ul><li>~/notebooks/SparkML/pySpark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server（Spark 上下文）：/dsvm/samples/MRS/MRSSparkContextSample.R</p> |
 | DSVM 上的相关工具       | <ul><li>PySpark、Scala</li><li>Jupyter（Spark/PySpark 内核）</li><li>Microsoft Machine Learning Server、SparkR、Sparklyr</li><li>Apache Drill</li></ul> |
 

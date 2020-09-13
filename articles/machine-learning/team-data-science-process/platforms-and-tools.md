@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028122"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439991"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
@@ -63,11 +63,11 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述****：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-使用 Azure SQL 数据仓库可以在片刻之间轻松缩放计算资源，无需过度预配或过度付费。 此外，SQL 数据仓库提供暂停使用计算资源的独特选项，为我们赋予更大的自由以更好地管理云成本。 部署可缩放计算资源的能力使我们能够将所有数据放入 Azure SQL 数据仓库。 存储成本低廉，只需针对想要分析的数据集部分运行计算资源。 
+借助 Azure Synapse Analytics，你可以在数秒内轻松扩展计算资源，而无需过度预配或过度支付。 此外，SQL 数据仓库提供暂停使用计算资源的独特选项，为我们赋予更大的自由以更好地管理云成本。 部署可缩放计算资源的功能使你可以将所有数据引入 Azure Synapse Analytics。 存储成本低廉，只需针对想要分析的数据集部分运行计算资源。 
 
-有关 Azure SQL 数据仓库的详细信息，请参阅 [SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse)网站。 若要了解如何使用 SQL 数据仓库生成端到端高级分析解决方案，请参阅[运行中的 Team Data Science Process：使用 SQL 数据仓库 ](sqldw-walkthrough.md)。
+有关 Azure Synapse Analytics 的详细信息，请参阅 [Azure Synapse analytics](https://azure.microsoft.com/services/sql-data-warehouse) 网站。 若要了解如何使用 Azure Synapse Analytics 构建端到端高级分析解决方案，请参阅运行 [中的团队数据科学过程：使用 Azure Synapse 分析](sqldw-walkthrough.md)。
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

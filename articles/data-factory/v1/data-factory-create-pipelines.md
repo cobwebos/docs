@@ -145,7 +145,7 @@ ms.locfileid: "89440739"
 ### <a name="policies"></a>策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| properties | 允许的值 | 默认值 | 说明 |
+| 属性 | 允许的值 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |

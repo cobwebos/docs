@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 33b8d3f62ef45c6078f10535c6376f611472f5a2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612633"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441742"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面配置图形处理单元 (GPU) 加速
 
@@ -67,7 +67,7 @@ Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具�
 
 2. 在编辑了组策略后，请强制执行组策略更新。 打开“命令提示”并键入：
 
-    ```batch
+    ```cmd
     gpupdate.exe /force
     ```
 
@@ -80,7 +80,7 @@ Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具�
 1. 选择“为远程桌面连接优先使用 H.264/AVC 444 图形模式”策略，并将此策略设置为“已启用”，以便在远程会话中强制使用 H.264/AVC 444 编解码器。
 2. 在编辑了组策略后，请强制执行组策略更新。 打开“命令提示”并键入：
 
-    ```batch
+    ```cmd
     gpupdate.exe /force
     ```
 

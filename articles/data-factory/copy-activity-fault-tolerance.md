@@ -70,7 +70,7 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
      } 
 } 
 ```
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 skipErrorFile | 一组属性，用于指定在数据移动过程中要跳过的失败类型。 | | 否
 fileMissing | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过在复制 ADF 时被其他应用程序删除的文件。 <br/> -True：跳过其他应用程序正在删除的文件，复制其余内容。 <br/> -False：在数据移动过程中，一旦从源存储中删除任何文件则中止复制活动。 <br/>默认情况下，该属性设置为 True。 | True（默认值） <br/>False | 否
@@ -185,7 +185,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 }, 
 ```
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 logStorageSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
@@ -259,7 +259,7 @@ Timestamp, Level, OperationName, OperationItem, Message
 }
 ```
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否

@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 了解如何从网络性能监视器迁移到连接监视器 (预览) 。
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 69dbb1dd4017c5acf9c195f5104741caee38c2b7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dcbb82c1315e6150ddcfadbb52b2976447329b87
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701468"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441827"
 ---
 # <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器 (预览) 
 
-你可以通过一次单击将测试网络性能监视器迁移到新的和改进的连接监视器 (预览) ，并且无需停机。 若要了解有关权益的详细信息，可以阅读 [连接监视器 (预览) ](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview)
+你可以将测试从网络性能监视器 (NPM) 迁移到新的、经过改进的连接监视器 (预览) ，只需单击一次，无需停机。 若要了解有关这些优势的详细信息，请参阅 [连接监视器 (预览) ](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview)。
 
 >[!NOTE]
 > 只有服务连接监视器中的测试可以迁移到连接监视器 (预览) 。
@@ -29,39 +29,49 @@ ms.locfileid: "88701468"
 
 ## <a name="key-points-to-note"></a>需要注意的要点
 
-* 本地代理和防火墙设置将按原样工作。 无需更改。 在 Azure 虚拟机上安装的 Log Analytics 代理需要替换为网络观察程序扩展
-* 现有测试将映射到连接监视器 (预览) > 测试组 > 测试格式。 用户可以单击 " *编辑* " 来查看和修改新连接监视器的属性，并下载模板以更改连接监视器，并通过 Azure 资源管理器进行提交。
+迁移有助于生成以下结果：
+
+* 本地代理和防火墙设置按原样工作。 不需要进行任何更改。 需要将安装在 Azure 虚拟机上的 Log Analytics 代理替换为网络观察程序扩展。
+* 现有测试映射到连接监视器 (预览) > 测试组 > 测试格式。 通过选择 " **编辑**"，可以查看和修改新连接监视器的属性 (预览 ") ，下载模板以对其进行更改，并通过 Azure 资源管理器提交模板。
 * 代理会将数据发送到 Log Analytics 工作区和指标。
-* 监视数据
-    * Log Analytics 中的数据–所有数据迁移将继续在 NetworkMonitoring 表中配置 NPM 的工作区中。 迁移后，数据将转到 NetworkMonitoring 表，并在同一工作区中 ConnectionMonitor_CL 表。 从 NPM 禁用测试后，数据将仅存储在 ConnectionMonitor_CL 表中
-    * 基于日志的警报、仪表板和集成–您必须基于新的表 ConnectionMonitor_CL 手动编辑查询。 你还可以使用此链接在指标中重新创建警报。 即将推出在迁移过程中自动将基于 NetworkMonitoring 表的日志迁移到基于指标的警报的能力
+* 数据监视：
+   * **Log Analytics 中的数据**：迁移之前，数据将保留在 NetworkMonitoring 表中配置 NPM 的工作区中。 迁移后，数据将转到 NetworkMonitoring 表，并在同一工作区中 ConnectionMonitor_CL 表。 在 NPM 中禁用测试后，数据仅存储在 ConnectionMonitor_CL 表中。
+   * **基于日志的警报、仪表板和集成**：您必须基于新的 ConnectionMonitor_CL 表手动编辑查询。 若要在指标中重新创建警报，请参阅 [利用连接监视器进行网络连接监视 (预览) ](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#metrics-in-azure-monitor)。
     
 ## <a name="prerequisites"></a>先决条件
 
-*   确保在 Log Analytics 工作区的订阅和区域中启用网络观察程序
-*   已安装 Log analytics 代理的 Azure 虚拟机将需要通过网络观察程序扩展启用
+* 确保在你的订阅中启用了网络观察程序以及 Log Analytics 工作区的区域。
+* 必须通过网络观察程序扩展启用装有 Log Analytics 代理的 Azure 虚拟机。
 
-## <a name="steps-to-migrate-tests-from-network-performance-monitor-to-connection-monitor-preview"></a>将测试从网络性能监视器迁移到连接监视器 (预览版的步骤) 
+## <a name="migrate-the-tests"></a>迁移测试
 
-1.  单击 "连接监视器"，导航到 "从 NPM 迁移测试"，将测试迁移到连接监视器 (预览) 
+若要将测试从网络性能监视器迁移到连接监视器 (预览版) ，请执行以下操作：
 
-    ![显示将测试从 NPM 迁移到连接监视器预览的屏幕截图](./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png)
+1. 在 "网络观察程序" 中，选择 " **连接监视器**"，然后选择 " **从 NPM 迁移测试** " 选项卡。 
+
+    ![显示网络观察程序中的 "从 NPM 迁移测试" 窗格的屏幕截图 |连接监视器 (预览) 。](./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png)
     
-1.  选择要迁移的 "订阅"、"工作区" 和 "NPM" 功能。 目前只能从服务连接监视器迁移测试。  
-1.  单击 "导入" 以迁移测试
-1.  迁移开始后，将发生以下更改： 
-    1. 已创建新的连接监视器资源
-        1. 每个区域和订阅创建一个连接监视器。 对于包含本地代理的测试，新的连接监视器名称的格式为 <workspaceName> _"本地"。对于 Azure 代理测试，新的连接监视器名称格式 <workspaceName> _<Azure_region_name>
-        1. 监视数据现在存储在启用了 NPM 的同一 Log Analytics 工作区中，在名为 Connectionmonitor_CL table 的新表中。 
-        1. 测试名称将结转到测试组名称。 将不迁移测试说明。
-        1. 源和目标终结点在创建的测试组中创建并使用。 对于本地代理，终结点的格式为 <workspaceName> _"终结点"_ <FQDN of on-premises machine> 。对于 Azure，如果迁移测试包含代理未在运行，你将需要启用代理并再次迁移。
-        1. 目标端口和探测间隔将移到测试配置中，即 "TC"_ <testname> "和" tc "_ <testname> _" AppThresholds "。 根据端口值设置协议。 成功阈值和其他可选属性将留空。
-    1. NPM 未禁用。 因此，迁移的测试会继续将数据发送到 NetworkMonitoring 表和 ConnectionMonitor_CL 表。 此步骤可确保现有的基于日志的警报和集成不受影响。 即将推出在迁移过程中自动将基于 NetworkMonitoring 表的基于日志的警报迁移到基于指标的警报。
-    1. 新创建的连接监视器将在连接监视器 (预览中显示) 
-1.  迁移后，需要手动禁用 NPM 中的测试。 在执行此操作之前，将继续为同一付费。 禁用 NPM 时，请确保在 ConnectionMonitor_CL 表或使用度量值时重新创建警报。 还要确保 Power BI、Grafana、与 SIEM 系统的集成中的仪表板等任何外部集成需要迁移到 ConnectionMonitor_CL 表
+1. 在下拉列表中，选择订阅和工作区，然后选择要迁移的 NPM 功能。 目前只能从服务连接监视器迁移测试。  
+1. 选择 " **导入** " 以迁移测试。
+
+迁移开始后，将进行以下更改： 
+* 这将创建一个新的连接监视器资源。
+   * 每个区域和订阅创建一个连接监视器。 对于包含本地代理的测试，新连接监视器名称的格式为 `<workspaceName>_"on-premises"` 。 对于 Azure 代理测试，新连接监视器名称的格式为 `<workspaceName>_<Azure_region_name>` 。
+   * 监视数据现在存储在启用了 NPM 的同一 Log Analytics 工作区中，在名为 Connectionmonitor_CL 的新表中。 
+   * 测试名称将作为测试组名称来执行。 不迁移测试说明。
+   * 在新的测试组中创建并使用源和目标终结点。 对于本地代理，终结点的格式设置为 `<workspaceName>_"endpoint"_<FQDN of on-premises machine>` 。 对于 Azure，如果迁移测试包含未运行的代理，则需要启用代理并再次迁移。
+   * 目标端口和探测间隔将移到名为*TC_ \<testname> *的测试配置和*TC_ \<testname> _AppThresholds*。 协议是基于端口值设置的。 成功阈值和其他可选属性将留空。
+* NPM 未被禁用，因此，已迁移的测试可以继续将数据发送到 NetworkMonitoring 并 ConnectionMonitor_CL 表。 此方法可确保现有的基于日志的警报和集成不受影响。
+* 在连接监视器 (预览) 中显示新创建的连接监视器。
+
+迁移之后，请务必：
+* 手动禁用 NPM 中的测试。 在执行此操作之前，你将继续为它们付费。 
+* 禁用 NPM 时，请在 ConnectionMonitor_CL 表中重新创建警报或使用度量值。 
+* 将任何外部集成迁移到 ConnectionMonitor_CL 表。 外部集成的示例包括 Power BI 和 Grafana 中的仪表板，以及与安全信息和事件管理 (SIEM) 系统的集成。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [如何从连接监视器迁移到连接监视器 (预览) ](migrate-to-connection-monitor-preview-from-connection-monitor.md)
-* 了解 [如何使用 Azure 门户创建连接监视器 (预览) ](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview-create-using-portal)
+若要详细了解连接监视器 (预览) ，请参阅：
+* [从连接监视器迁移到连接监视器 (预览) ](migrate-to-connection-monitor-preview-from-connection-monitor.md)
+* [使用 Azure 门户创建连接监视器 (预览) ](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview-create-using-portal)

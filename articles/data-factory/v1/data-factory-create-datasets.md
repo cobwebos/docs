@@ -77,7 +77,7 @@ ms.locfileid: "89440722"
 
 下表描述了上述 JSON 中的属性：
 
-| properties | 说明 | 必须 | 默认 |
+| 属性 | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | name |数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |不可用 |
 | type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅 [数据集类型](#Type)。 |是 |不可用 |
@@ -189,7 +189,7 @@ structure:
 
 结构中的每个列都包含以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
@@ -231,7 +231,7 @@ structure:
 
 下表介绍了可用于可用性部分的属性：
 
-| properties | 说明 | 必须 | 默认 |
+| 属性 | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”**** 指定为“Minute”****，则应将“interval”设置为小于 15 的值。 |是 |不可用 |

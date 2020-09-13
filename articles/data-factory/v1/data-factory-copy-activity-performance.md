@@ -202,10 +202,10 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 目前，不能使用暂存存储在两个本地数据存储之间复制数据。 我们预计会尽快提供此选项。
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>配置
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| properties | 说明 | 默认值 | 必须 |
+| 属性 | 说明 | 默认值 | 必须 |
 | --- | --- | --- | --- |
 | **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
 | **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能将存储与共享访问签名一起使用，以通过 PolyBase 将数据加载到 Azure Synapse Analytics 中。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |

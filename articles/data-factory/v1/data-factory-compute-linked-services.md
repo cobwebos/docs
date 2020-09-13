@@ -119,7 +119,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 > 
 
 ### <a name="properties"></a>属性
-| properties                     | 说明                              | 必需 |
+| 属性                     | 说明                              | 必需 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 将 type 属性设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中的工作节点/数据节点数。 HDInsight 群集创建时具有 2 个头节点以及一定数量的工作节点（为此属性指定的数量）。 节点大小为 Standard_D3，采用 4 个核心。 包含 4 个工作节点的群集采用 24 个核心（工作节点采用 4\*4 = 16 个核心，头节点采用 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
@@ -142,7 +142,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="advanced-properties"></a>高级属性
 若要对按需 HDInsight 群集进行粒度配置，可指定以下属性：
 
-| properties               | 说明                              | 必选 |
+| 属性               | 说明                              | 必选 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为要创建的 HDInsight 群集指定核心配置参数 (core-site.xml)。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -195,7 +195,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="node-sizes"></a>节点大小
 若要指定头节点、数据节点和 ZooKeeper 节点的大小，请使用以下属性： 
 
-| properties          | 说明                              | 必选 |
+| 属性          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 设置头节点的大小。 默认值为 **Standard_D3**。 有关详细信息，请参阅[指定节点大小](#specify-node-sizes)。 | 否       |
 | dataNodeSize      | 设置数据节点的大小。 默认值为 **Standard_D3**。 | 否       |
@@ -255,7 +255,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| properties          | 说明                              | 必需 |
+| 属性          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 将 type 属性设置为 **HDInsight**。 | 是      |
 | clusterUri        | HDInsight 群集的 URI。        | 是      |
@@ -303,7 +303,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| properties          | 说明                              | 必需 |
+| 属性          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 将 type 属性设置为 **AzureBatch**。 | 是      |
 | accountName       | Batch 帐户的名称。         | 是      |
@@ -330,7 +330,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| properties   | 说明                              | 必需 |
+| 属性   | 说明                              | 必需 |
 | ---------- | ---------------------------------------- | -------- |
 | 类型       | 将 type 属性设置为 **AzureML**。 | 是      |
 | mlEndpoint | 批处理计分 URL。                   | 是      |
@@ -341,7 +341,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 下表描述了 JSON 定义中使用的泛型属性。
 
-| properties                 | 说明                              | 必需                                 |
+| 属性                 | 说明                              | 必需                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | 将 type 属性设置为 **AzureDataLakeAnalytics**。 | 是                                      |
 | accountName          | Data Lake Analytics 帐户名。  | 是                                      |
@@ -360,7 +360,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 通过指定以下属性使用服务主体身份验证：
 
-| properties                | 说明                              | 必选 |
+| 属性                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | 应用程序的客户端 ID。     | 是      |
 | servicePrincipalKey | 应用程序的密钥。           | 是      |
@@ -388,7 +388,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 #### <a name="user-credential-authentication"></a>用户凭据身份验证
 若要对 Data Lake Analytics 使用用户凭据身份验证，请指定以下属性：
 
-| properties          | 说明                              | 必需 |
+| 属性          | 说明                              | 必需 |
 | :---------------- | :--------------------------------------- | :------- |
 | authorization | 在数据工厂编辑器中，选择“授权”按钮。**** 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
 | sessionID     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |

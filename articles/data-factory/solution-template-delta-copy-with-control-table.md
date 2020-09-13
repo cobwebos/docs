@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629025"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441997"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
 
@@ -46,7 +46,7 @@ ms.locfileid: "82629025"
 - *Data_Destination_Container* 是在目标存储中将数据复制到的位置的根路径。
 - *Data_Destination_Directory* 是在目标存储中将数据复制到的位置的根下的目录路径。
 - *Data_Destination_Table_Name* 是目标存储中要将数据复制到的位置（在选择“Azure Synapse Analytics (以前称为 SQL DW)”作为“数据目标”时适用）。
-- *Data_Destination_Folder_Path*是将数据复制到目标存储中的位置（如果选择 "文件系统" 或 "Azure Data Lake Storage Gen1" 作为数据目标，则适用）。
+- *Data_Destination_Folder_Path* 是将数据复制到目标存储中的位置 (适用于选择 "文件系统" 或 "Azure Data Lake Storage Gen1" 作为数据目标) 的情况。
 - *Control_Table_Table_Name* 是用于存储高水印值的外部控制表。
 - *Control_Table_Table_Name* 是外部控制表中要将高水印值存储到的列。
 
@@ -140,7 +140,7 @@ ms.locfileid: "82629025"
 
     你会看到，只有新行已复制到目标。
 
-15. （可选：）如果选择“Azure Synapse Analytics（以前为 SQL DW）”作为数据目标，则还需按 SQL 数据仓库 Polybase 的要求，提供用于暂存的 Azure Blob 存储的连接。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
+15.  (可选： ) 如果选择 Azure Synapse Analytics (以前的 SQL DW) 作为数据目标，则还必须提供到用于过渡的 Azure Blob 存储的连接，这是 Azure Synapse Analytics (Polybase 所需的 azure Blob 存储。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
     
     ![配置 PolyBase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
