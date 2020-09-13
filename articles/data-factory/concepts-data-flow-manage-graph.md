@@ -1,51 +1,64 @@
 ---
-title: 数据流图表
-description: 如何使用数据工厂数据流图表
+title: 管理映射数据流图表
+description: 如何有效地管理和编辑映射数据流图表
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0d357c4c671070a5c5e9d4587e2f90b6628996f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/02/2020
+ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605361"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420064"
 ---
-# <a name="mapping-data-flow-graphs"></a>映射数据流图表
+# <a name="managing-the-mapping-data-flow-graph"></a>管理映射数据流图表
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-映射数据流设计图面是一个 "构造" 图面，可在其中自上而下、从左向右构建数据流。 具有加号 (+) 符号的每个转换都附加有一个工具箱。 请专注于你的业务逻辑，而非在自由形式的 DAG 环境中通过边缘来连接节点。
+映射数据流是使用设计图面来编写的，它被视为数据流图表。 在图形中，转换逻辑是从左向右构建的，而其他数据流则自上而下地添加。 若要添加新的转换，请选择现有转换右下方的加号。
 
-下面是用于管理数据流图形的内置机制。
+![画布](media/data-flow/canvas2.png "画布")
 
-## <a name="move-nodes"></a>移动节点
+随着您的数据流变得更加复杂，使用以下机制来有效地浏览和管理数据流图表。 
 
-![聚合转换选项](media/data-flow/agghead.png "聚合器标头")
+## <a name="moving-transformations"></a>移动转换
 
-如果不使用拖放模式，"移动" 转换节点的方式是更改传入流。 你将通过更改“传入流”来四处移动转换。
+在映射数据流时，一组已连接的转换逻辑称为 " **流**"。 **传入流**字段规定哪个数据流正在传输当前转换。 每个转换都有一个或两个传入流，具体取决于其函数并表示一个输出流。 传入流的输出架构确定哪些列元数据可由当前转换引用。
 
-## <a name="streams-of-data-inside-of-data-flow"></a>数据流中的数据流
+![移动节点](media/data-flow/move-nodes.png "移动节点")
 
-在 Azure 数据工厂数据流中，流表示数据的流动。 在 "转换设置" 窗格中，您将看到 "传入流" 字段。 它告诉你哪个传入数据流在为该转换提供数据。 可以通过单击传入流名称并选择另一个数据流在图形上更改转换节点的物理位置。 然后，该流上的当前转换以及所有后续转换都将移动到新位置。
-
-如果要移动的转换后面有一个或多个转换，则会通过一个新分支来联接数据流中的新位置。
-
-如果在你选择的节点后面没有后续转换，则只有该转换会移动到新位置。
+与管道画布不同，数据流转换不能使用拖放模型进行编辑。 若要更改的传入流或 "移动" 转换，请从 **传入流** 下拉列表中选择其他值。 执行此操作时，所有下游转换将与编辑的转换一起移动。 图形会自动更新，以显示新的逻辑流。 如果将传入流更改为已具有下游转换的转换，则将创建新的分支或并行数据流。 了解有关 [映射数据流中的新分支的](data-flow-new-branch.md)详细信息。
 
 ## <a name="hide-graph-and-show-graph"></a>隐藏关系图并显示关系图
 
-底部的 "配置" 窗格的右下角有一个按钮，可以在使用转换配置时将底部窗格扩展到全屏。 这样，便可以使用 "上一步" 和 "下一步" 按钮在图形配置中导航。 若要移回图形视图，请单击 "下一步" 按钮并返回到 "拆分屏幕"。
+编辑转换时，可以展开配置面板，使其占据整个画布，隐藏关系图。 单击画布右侧的向上的 v 形 v 形 v 形 v 形 v 形展开按钮。
 
-## <a name="search-graph"></a>搜索关系图
+![隐藏图形](media/data-flow/hide-graph.png "隐藏关系图")
 
-您可以在设计图面上搜索包含 "搜索" 按钮的关系图。
+隐藏关系图后，可以通过单击 " **下一步** " 或 " **上一**步" 在流内的转换之间移动。 单击向下的 v 形 v 形 v 形图标以显示图表。
 
-![搜索](media/data-flow/search001.png "搜索关系图")
+![显示关系图](media/data-flow/show-graph.png "显示关系图")
+
+## <a name="searching-for-transformations"></a>搜索转换
+
+若要在关系图中快速找到转换，请单击 "缩放" 设置上方的 **搜索** 图标。
+
+![搜索](media/data-flow/search-1.png "搜索关系图")
+
+您可以按转换名称或说明进行搜索以查找转换。
+
+![搜索](media/data-flow/search-2.png "搜索关系图")
+
+## <a name="hide-reference-nodes"></a>隐藏引用节点
+
+如果数据流有任何联接、查找、存在或联合转换，则数据流会向所有传入流显示引用节点。 如果要最大程度地减少所用的垂直空间量，可以最小化引用节点。 为此，请在画布上单击右键，然后选择 " **隐藏引用节点**"。
+
+![隐藏引用节点](media/data-flow/hide-reference-nodes.png "隐藏引用节点")
 
 ## <a name="next-steps"></a>后续步骤
 
-完成数据流设计后，打开 "调试" 按钮，并在调试模式下直接在 "数据流[设计器](concepts-data-flow-debug-mode.md)" 或 "[管道调试](control-flow-execute-data-flow-activity.md)" 中对其进行测试。
+完成数据流逻辑后，打开 [调试模式](concepts-data-flow-debug-mode.md) 并在数据预览中对其进行测试。

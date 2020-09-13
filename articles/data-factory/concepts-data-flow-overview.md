@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 08/12/2020
-ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/02/2020
+ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212062"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419957"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>在 Azure 数据工厂中映射数据流
 
@@ -41,7 +41,7 @@ ms.locfileid: "88212062"
 
 ### <a name="graph"></a>图形
 
-关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 " **添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。
+关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 " **添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。 了解更多有关如何 [管理数据流图形的](concepts-data-flow-manage-graph.md)信息。
 
 ![画布](media/data-flow/canvas2.png "画布")
 
@@ -106,10 +106,10 @@ Azure 数据工厂团队已经创建了 [性能优化指南](concepts-data-flow-
 |  澳大利亚中部 | | |  
 | 澳大利亚中部 2 | | |
 | 澳大利亚东部 | ✓ |  ✓ |
-| Australia Southeast   | ✓ | ✓ |
-| Brazil South  | ✓ |  |
+| 澳大利亚东南部   | ✓ | ✓ |
+| 巴西南部  | ✓ |  |
 | 加拿大中部 | ✓ |  |
-| Central India | ✓ |   ✓ |
+| 印度中部 | ✓ |   ✓ |
 | 美国中部    | ✓ |   ✓ |
 | 中国东部 |      | ✓ |
 | 中国东部 2  |   |    |
@@ -126,7 +126,7 @@ Azure 数据工厂团队已经创建了 [性能优化指南](concepts-data-flow-
 |  (公用) 德国北部 | | |
 | 德国东北部 (主权)  | | |
 |  (公用) 德国中西部 |  | ✓ |
-| Japan East | ✓ |  |
+| 日本东部 | ✓ |  |
 | 日本西部 |  | |
 | 韩国中部 | ✓ |  |
 | 韩国南部 | | |
@@ -138,7 +138,7 @@ Azure 数据工厂团队已经创建了 [性能优化指南](concepts-data-flow-
 | 南非西部 |  |    |
 | 美国中南部  | | ✓ |
 | 印度南部 | | |
-| Southeast Asia    | ✓ | ✓ |
+| 东南亚    | ✓ | ✓ |
 | 瑞士北部 |   |  |
 | 瑞士西部 | | |
 | 阿联酋中部 | | |
