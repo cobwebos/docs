@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542953"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458614"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -83,7 +83,7 @@ Azure Blob 存储和 Azure 文件共享中的静态数据都可以在服务器�
 
 #### <a name="transparent-data-encryption"></a>透明数据加密
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可通过数据库加密密钥 (DEK) 实时加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)和 [Azure SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)数据文件，该加密密钥存储在数据库启动记录中，可在恢复期间使用。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 用于对 [SQL SERVER](https://www.microsoft.com/sql-server/sql-server-2016)、 [Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)和 [azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 数据文件进行实时加密，使用数据库加密密钥 (DEK) ，该密钥存储在数据库引导记录中以供恢复时使用。
 
 TDE 使用 AES 和三重数据加密标准 (3DES) 加密算法保护数据和日志文件。 数据库文件加密在页面级执行。 加密数据库中的页面在写入磁盘之前被加密，在读入内存后被解密。 默认情况下，新创建的 Azure SQL 数据库启用 TDE。
 
@@ -113,11 +113,11 @@ Azure 提供了许多机制，用于在迁移数据时保持数据的私密性�
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的数据链路层加密
 
-每当 Azure 客户流量在数据中心之间移动时（不是由 Microsoft （或代表 Microsoft）控制），使用[IEEE 802.1 AE MAC 安全标准](https://1.ieee802.org/security/802-1ae/)（也称为 MACsec）的数据链路层加密方法将在基础网络硬件之间通过点到点应用。 数据包会在发送之前在设备上加密和解密，从而阻止物理 "中间人" 或侦听/wiretapping 攻击。 由于此技术在网络硬件本身上集成，因此它在网络硬件上提供线路速率加密，而不会增加可度量的链接延迟。 默认情况下，此 MACsec 加密对于某个区域内或各区域之间的所有 Azure 流量都处于启用状态，并且在要启用的客户部件上无需执行任何操作。 
+每当 Azure 客户流量在数据中心之间（在不受 Microsoft 或代表 Microsoft 的某方控制的物理边界之外）移动时，都会在底层网络硬件上点对点应用使用 [IEEE 802.1AE MAC 安全标准](https://1.ieee802.org/security/802-1ae/)（也称 MACsec）的数据链路层加密方法。 数据包会在发送之前在设备上进行加密和解密，以防止物理上的“中间人”攻击或窥探/窃听攻击。 由于此技术在网络硬件本身上集成，因此它会在网络硬件上提供线路速率加密，而不会增加可度量的链路延迟。 默认情况下，此 MACsec 加密对于某个区域内或各区域之间的所有 Azure 流量都处于启用状态，并且在要启用的客户部件上无需执行任何操作。 
 
 ### <a name="tls-encryption-in-azure"></a>Azure 中的 TLS 加密
 
-Microsoft 使客户能够使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security)（TLS）协议在云服务和客户之间传输数据时保护数据。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
+Microsoft 让客户能够使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 协议来保护在云服务和客户之间传输的数据。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
 
 [完美正向保密](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) 通过唯一密钥保护客户的客户端系统与 Microsoft 云服务间的连接。 连接还使用基于 RSA 的 2,048 位加密密钥长度。 此组合使得别人难以拦截和访问传输中的数据。
 
@@ -139,7 +139,7 @@ Microsoft 使客户能够使用[传输层安全性](https://en.wikipedia.org/wik
 
 ## <a name="in-transit-encryption-in-vms"></a>VM 中的传输中加密
 
-可以通过多种方式对运行 Windows 的 Vm 的传输中的数据进行加密，具体取决于连接的性质。
+根据连接的性质，可通过多种方式对在运行 Windows 的 VM 间传输的数据进行加密。
 
 ### <a name="rdp-sessions"></a>RDP 会话
 

@@ -5,21 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/25/2020
-ms.openlocfilehash: cb38dcba2f61a432decb56164b816688ad3192d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/03/2020
+ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893677"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458631"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a> (预览版 Azure Monitor 日志中审核查询) 
 日志查询审核日志提供有关 Azure Monitor 中运行的日志查询的遥测。 这包括如下所述的信息：运行查询、运行查询的人员、使用的工具、查询文本，以及描述查询执行的性能统计信息。
-
-## <a name="current-limitations"></a>当前限制
-公共预览期间有以下限制：
-
-- 仅记录以工作区为中心的查询。 查询在以资源为中心的模式下运行，或针对未配置为基于工作区的 Application Insights 运行，不会进行记录。
 
 
 ## <a name="configure-query-auditing"></a>配置查询审核
@@ -55,10 +50,11 @@ ms.locfileid: "88893677"
 | QueryTimeRangeEnd     | 为查询选择的时间范围的结束时间。 在某些情况下（例如从 Log Analytics 启动查询时），并在查询中指定时间范围，而不是在时间选取器中进行填充。  |
 | QueryText             | 运行的查询的文本。 |
 | RequestTarget         | API URL 用于提交查询。  |
-| RequestContext        | 请求运行查询的资源列表。 最多包含三个字符串数组：工作区、应用程序和资源。 订阅或资源组目标查询将显示为 *资源*。 包括 RequestTarget 隐含的目标。 |
+| RequestContext        | 请求运行查询的资源列表。 最多包含三个字符串数组：工作区、应用程序和资源。 订阅或资源组目标查询将显示为 *资源*。 包括 RequestTarget 隐含的目标。<br>如果可以解析每个资源，则将包括该资源的资源 ID。 如果在访问资源时返回错误，可能无法解决此问题。 在这种情况下，将使用查询中的特定文本。<br>如果查询使用不明确的名称（例如多个订阅中现有的工作区名称），则将使用此不明确的名称。 |
 | RequestContextFilters | 指定为查询调用一部分的一组筛选器。 最多包含三个可能的字符串数组：<br>-ResourceTypes-要限制查询范围的资源类型<br>-工作区-要将查询限制到的工作区列表<br>-WorkspaceRegions-要限制查询的工作区区域列表 |
 | ResponseCode          | 提交查询时返回的 HTTP 响应代码。 |
 | ResponseDurationMs    | 返回响应的时间。  |
+| ResponseRowCount     | 查询返回的总行数。 |
 | StatsCPUTimeMs       | 用于计算、分析和数据提取的总计算时间。 仅在 query 返回时填充了状态代码200。 |
 | StatsDataProcessedKB | 用于处理查询的数据量。 受目标表大小、所用时间跨度、已应用筛选器和已引用列数影响。 仅在 query 返回时填充了状态代码200。 |
 | StatsDataProcessedStart | 用于处理查询的最早数据的时间。 受查询显式时间范围和应用的筛选器的影响。 由于数据分区，这可能大于显式时间范围。 仅在 query 返回时填充了状态代码200。 |
@@ -66,7 +62,11 @@ ms.locfileid: "88893677"
 | StatsWorkspaceCount | 查询访问的工作区数。 仅在 query 返回时填充了状态代码200。 |
 | StatsRegionCount | 查询访问的区域数。 仅在 query 返回时填充了状态代码200。 |
 
+## <a name="considerations"></a>注意事项
 
+- 性能统计信息不适用于来自 Azure 数据资源管理器代理的查询。 这些查询的所有其他数据仍将填充。
+- [进行模糊处理字符串文本](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)的字符串上的*h*提示不会影响查询审核日志。 将完全按提交方式捕获查询，而不会对字符串进行模糊处理。 应确保只有具有相容性权限才能查看此数据的用户才能使用 Log Analytics 工作区中提供的各种 RBAC 模式来完成此操作。
+- 对于包含多个工作区中数据的查询，只能在用户有权访问的工作区中捕获查询。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,28 +8,26 @@ ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2019
-ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 09/03/2020
+ms.openlocfilehash: 63b7ad84b0866c91e84007a188b82de65983790f
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233298"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458844"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-此函数从默认原始值 `1900-01-01 00:00:00.000` 返回对应于每个日期/时间段开始的日期/时间值。
+`origin` `1900-01-01 00:00:00.000` 如果未指定源参数，则此函数将从参数定义的时间戳或的默认原始值返回对应于每个 datetime bucket 开头的日期时间值。 
 
 有关所有 Transact-SQL 日期和时间数据类型及函数的概述，请参阅[日期和时间数据类型及函数 &#40;Transact-SQL&#41;](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/)。
 
 [Transact-SQL 语法约定](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql/)
 
-`DATE_BUCKET` 使用默认原始日期值 `1900-01-01 00:00:00.000`即 1900 年 1 月 1 日星期一凌晨 12:00。
-
 ## <a name="syntax"></a>语法
 
 ```sql
-DATE_BUCKET (datePart, number, date)
+DATE_BUCKET (datePart, number, date, origin)
 ```
 
 ## <a name="arguments"></a>参数
@@ -43,16 +41,16 @@ DATE_BUCKET (datePart, number, date)
   
 |*datePart*|缩写形式|  
 |---|---|
-|day|dd, d |  
-|week|wk, ww |  
+|day|dd, d  |  
+|week |wk, ww |  
 |hour|**hh**|  
-|minute|mi, n |  
-|second|ss, s |  
-|millisecond|ms|  
+|minute |mi, n  |  
+|second |ss, s  |  
+|millisecond |ms|  
 
 *数字*
 
-一个整数，用于确定与 datePart 参数组合使用的存储桶的宽度。 这表示从原始时间开始的 dataPart 存储桶的宽度。 **`This argument cannot be a negative integer value`** ： 
+一个整数，用于确定与 datePart 参数组合使用的存储桶的宽度。 这表示从原始时间开始的 dataPart 存储桶的宽度。 **`This argument cannot be a negative integer value`**. 
 
 *date*
 
@@ -66,6 +64,21 @@ DATE_BUCKET (datePart, number, date)
 + **time**
 
 对于 date，`DATE_BUCKET` 将接受列表达式、表达式或用户定义的变量，前提是它们解析为上面提到的任何数据类型。
+
+**源** 
+
+可解析为以下值之一的可选表达式：
+
++ **date**
++ **datetime**
++ **datetimeoffset**
++ **datetime2**
++ **smalldatetime**
++ **time**
+
+的数据类型 `Origin` 应与参数的数据类型匹配 `Date` 。 
+
+`DATE_BUCKET` 如果没有为函数指定原值，则使用默认原始日期值 `1900-01-01 00:00:00.000` 1 1900，即 12:00 AM （星期一，AM）。
 
 ## <a name="return-type"></a>返回类型
 
@@ -92,16 +105,24 @@ Select DATE_BUCKET(wk, 4, @date)
 Select DATE_BUCKET(wk, 6, @date)
 ```
 
-以下表达式的输出是从原始时间开始的 6275 周。
+下面的表达式的输出为 `2020-04-06 00:00:00.0000000` ，从默认的原始时间开始为6275周 `1900-01-01 00:00:00.000` 。
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
 Select DATE_BUCKET(wk, 5, @date)
 ```
 
+下面的表达式的输出为 `2020-06-09 00:00:00.0000000` ，从指定的源时间开始为75周 `2019-01-01 00:00:00` 。
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(wk, 5, @date, @origin)
+```
+
 ## <a name="datepart-argument"></a>datepart 参数
 
-dayofyear、day 和 weekday 返回相同的值  。 每个 datepart 及其缩写都返回相同的值。
+dayofyear、day 和 weekday 返回相同的值    。 每个 datepart 及其缩写都返回相同的值。
   
 ## <a name="number-argument"></a>number 参数
 
@@ -126,6 +147,10 @@ Invalid bucket width value passed to date_bucket function. Only positive values 
 ```sql
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
+
+## <a name="origin-argument"></a>源参数  
+
+中的和参数的数据类型 `origin` `date` 必须相同。 如果使用不同的数据类型，则会生成错误。
 
 ## <a name="remarks"></a>备注
 
@@ -222,7 +247,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>将标量系统函数指定为 date
 
-此示例指定 `SYSDATETIME` 为 date。 返回的确切值取决于语句执行的日期和时间：
+此示例指定 `SYSDATETIME` 为 date  。 返回的确切值取决于语句执行的日期和时间：
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -239,7 +264,7 @@ SELECT Date_Bucket(wk, 10, SYSDATETIME());
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>将标量子查询和标量函数指定为 number 和 date
 
-此示例使用标量子查询 `MAX(OrderDate)` 作为 number 和 date 的参数 。 `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` 充当 number 形参的假实参，用来说明如何从值列表中选择 number 实参。
+此示例使用标量子查询 `MAX(OrderDate)` 作为 number 和 date 的参数   。 `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` 充当 number 形参的假实参，用来说明如何从值列表中选择 number 实参  。
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -256,7 +281,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>将聚合开窗函数指定为 number
 
-此示例使用聚合开窗函数作为 number 的参数。
+此示例使用聚合开窗函数作为 number 的参数  。
   
 ```sql
 Select 
@@ -268,6 +293,15 @@ Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
 GO  
 ``` 
+### <a name="c-using-a-non-default-origin-value"></a>C. 使用非默认的原始值
+
+此示例使用非默认 orgin 值生成日期存储桶。 
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(hh, 2, @date, @origin)
+```
 
 ## <a name="see-also"></a>另请参阅
 

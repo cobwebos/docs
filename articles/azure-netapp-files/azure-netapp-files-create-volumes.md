@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 141b19ca73c3465e59d8c94a3bdc3657d0900b8d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533149"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458905"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
-Azure NetApp 文件支持使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或双重协议（NFSv3 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 NFS 卷。 
+Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协议 (NFSv3 和 SMB) 创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 NFS 卷。 
 
 ## <a name="before-you-begin"></a>开始之前 
 * 必须已设置容量池。  
-    请参阅[设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
+    请参阅 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
 * 子网必须委派给 Azure NetApp 文件。  
-    请参阅[向 Azure NetApp 文件委托子网](azure-netapp-files-delegate-subnet.md)。
+    请参阅 [向 Azure NetApp 文件委托子网](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="considerations"></a>注意事项 
 
 * 确定要使用的 NFS 版本  
-  NFSv3 可以处理各种用例，通常部署在大多数企业应用程序中。 你应验证应用程序所需的版本（NFSv3 或 NFSv 4.1），并使用适当的版本创建你的卷。 例如，如果使用[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，则建议通过 NFSv3 使用 nfsv 4.1 进行文件锁定。 
+  NFSv3 可以处理各种用例，通常部署在大多数企业应用程序中。 应该验证 (NFSv3 或 NFSv 4.1) 应用程序所需的版本，并使用适当的版本创建你的卷。 例如，如果使用 [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，则建议通过 NFSv3 使用 nfsv 4.1 进行文件锁定。 
 
 * 安全性  
-  支持 UNIX 模式位（读取、写入和执行），适用于 NFSv3 和 NFSv 4.1。 NFS 客户端上需要根级别的访问权限才能装载 NFS 卷。
+  支持 UNIX 模式位 (读取、写入和执行) 适用于 NFSv3 和 NFSv 4.1。 NFS 客户端上需要根级别的访问权限才能装载 NFS 卷。
 
 * NFSv 4.1 的本地用户/组和 LDAP 支持  
-  目前，NFSv 4.1 仅支持对卷进行根访问。 请参阅[为 Azure NetApp 文件配置 nfsv 4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)。 
+  目前，NFSv 4.1 仅支持对卷进行根访问。 请参阅 [为 Azure NetApp 文件配置 nfsv 4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)。 
 
 ## <a name="best-practice"></a>最佳做法
 
-* 确保为卷使用正确的装入说明。  请参阅[装入或卸载 Windows 或 Linux 虚拟机的卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。
+* 确保为卷使用正确的装入说明。  请参阅 [装入或卸载 Windows 或 Linux 虚拟机的卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。
 
 * NFS 客户端应与 Azure NetApp 文件卷位于同一 VNet 或对等互连 VNet 中。 支持从 VNet 外部进行连接;但是，它会引入额外的延迟并降低整体性能。
 
@@ -56,7 +56,7 @@ Azure NetApp 文件支持使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或双重�
 
     ![导航到卷](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  在 "创建卷" 窗口中，单击 "**创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
+2.  在 "创建卷" 窗口中，单击 " **创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
     * **卷名称**      
         指定要创建的卷的名称。   
 
@@ -87,15 +87,15 @@ Azure NetApp 文件支持使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或双重�
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 如果要将现有的快照策略应用到卷，请单击 "**显示高级" 部分**将其展开，然后在下拉菜单中选择一个快照策略。 
+    * 如果要将现有的快照策略应用到卷，请单击 " **显示高级" 部分** 将其展开，指定是否要隐藏快照路径，并在下拉菜单中选择快照策略。 
 
-        有关创建快照策略的信息，请参阅[管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+        有关创建快照策略的信息，请参阅 [管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
 
         ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. 单击“协议”****，然后完成以下操作：  
-    * 选择“NFS”**** 作为卷的协议类型。   
-    * 指定将用于创建新卷的导出路径的**文件路径**。 导出路径用来装载并访问卷。
+3. 单击“协议”  ，然后完成以下操作：  
+    * 选择“NFS”  作为卷的协议类型。   
+    * 指定将用于创建新卷的导出路径的 **文件路径** 。 导出路径用来装载并访问卷。
 
         文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。 
 
@@ -103,15 +103,15 @@ Azure NetApp 文件支持使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或双重�
 
     * 选择卷的 NFS 版本（**NFSv3** 或 **NFSv4.1**）。  
 
-    * 如果使用的是 NFSv 4.1，请指出是否要为卷启用**Kerberos**加密。  
+    * 如果使用的是 NFSv 4.1，请指出是否要为卷启用 **Kerberos** 加密。  
 
-        如果将 Kerberos 与 NFSv 4.1 一起使用，则需要进行其他配置。 按照[配置 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的说明进行操作。
+        如果将 Kerberos 与 NFSv 4.1 一起使用，则需要进行其他配置。 按照 [配置 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的说明进行操作。
 
-    * （可选）[配置 NFS 卷的导出策略](azure-netapp-files-configure-export-policy.md)。
+    * （可选） [配置 NFS 卷的导出策略](azure-netapp-files-configure-export-policy.md)。
 
     ![指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-4. 单击“查看 + 创建”以查看卷详细信息。  然后单击 "**创建**" 来创建卷。
+4. 单击“查看 + 创建”以查看卷详细信息。  然后单击 " **创建** " 来创建卷。
 
     创建的卷将显示在“卷”页中。 
  

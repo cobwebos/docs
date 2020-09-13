@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: f08352d4a79b8c27b2c163516f44edf578fbe3a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092637"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458818"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。
@@ -32,7 +32,7 @@ ms.locfileid: "87092637"
 2. 未在云服务的 ServiceConfiguration.cscfg 文件中显式指定 osFamily 的值。 当前，系统对此情况使用默认值“1”。
 3. Azure 门户将来宾操作系统系列值列为“Windows Server 2008”。
 
-要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azure/)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。
+要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azure/)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014)。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
