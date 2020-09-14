@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179566"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055803"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
 
-需要 Azure 多重身份验证 (MFA) 在登录时，将永久分配给一个或多个 Azure AD 管理员角色的单个用户：全局管理员、特权角色管理员、Exchange 管理员和 SharePoint 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
+需要 Azure 多重身份验证 (MFA) 在登录时，将永久分配给一个或多个 Azure AD 管理员角色的单个用户：全局管理员、特权角色管理员、Exchange 管理员和 SharePoint 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，请参阅本指南中的步骤2和 [保护访问数据和服务](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)的步骤3中的 Microsoft 365。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>阶段 2：缓解经常使用的攻击
 
@@ -130,7 +130,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 * 标识具有管理角色的用户及其可以在其中进行管理的服务。
 * 使用 Azure AD PIM 找出组织中的哪些用户对 Azure AD 拥有管理访问权限。
-* 除了在 Azure AD 中定义的角色，Office 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色都映射到常用业务功能，为组织中的人员提供在 [Microsoft 365 管理中心](https://admin.microsoft.com)执行特定任务的权限。 通过 Microsoft 365 管理中心找出组织中哪些用户可以通过管理员身份来访问 Office 365，包括通过不在 Azure AD 中管理的角色进行访问。 有关详细信息，请参阅[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全做法](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
+* 除了 Azure AD 中定义的角色外，Microsoft 365 还附带一组可分配给组织中的用户的管理员角色。 每个管理员角色都映射到常用业务功能，为组织中的人员提供在 [Microsoft 365 管理中心](https://admin.microsoft.com)执行特定任务的权限。 使用 Microsoft 365 管理中心来找出组织中哪些用户具有对 Microsoft 365 的管理员访问权限，包括通过不在 Azure AD 管理的角色。 有关详细信息，请参阅关于 Office 365 [Microsoft 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) 和 [安全实践](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
 * 在组织所依赖的服务（例如 Azure、Intune 或 Dynamics 365）中进行盘点。
 * 确保用于管理目的的帐户：
 
@@ -175,17 +175,17 @@ Azure AD 建议你要求所有用户执行多重身份验证 (MFA)。 请务必�
 
 Azure AD Identity Protection 是一种基于算法的监视和报告工具，用于检测影响组织标识的潜在漏洞。 可以配置自动响应，以便对那些检测到的可疑活动进行响应，并采取相应的解决措施。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../identity-protection/overview-identity-protection.md)。
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>获取 Office 365 安全评分（如果使用 Office 365）
+#### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>获取 Microsoft 365 安全分数 (如果使用 Microsoft 365) 
 
-安全分数查看你正在使用的 Office 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 你将根据你对安全做法的对齐方式获得评分。 对 Office 365 业务高级版或企业版订阅拥有管理员权限的任何人都可以通过 [https://securescore.office.com](https://securescore.office.com/) 访问安全评分。
+安全分数查看你正在使用的 Microsoft 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 你将根据你对安全做法的对齐方式获得评分。 对 Microsoft 365 商业版标准或企业订阅具有管理员权限的任何人都可以访问安全分数 [https://securescore.office.com](https://securescore.office.com/) 。
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>查看 Office 365 安全性和符合性指南（如果使用 Office 365）
+#### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>查看 Microsoft 365 安全性和符合性指南 (是否使用 Microsoft 365) 
 
-[安全性和符合性计划](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)概述了 Office 365 客户可以如何配置 Office 365 并启用其他 EMS 功能。 然后查看步骤 3-6，了解如何[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)，并查看指南，了解如何[监视 Office 365 中的安全性和符合性](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)。
+[安全性和符合性计划](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)概述了 Office 365 客户可以如何配置 Office 365 并启用其他 EMS 功能。 然后，查看 [Microsoft 365 中](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) 的步骤3-6，并查看如何在 [Microsoft 365 中监视安全性和符合性](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)指南。
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>配置 Office 365 活动监视（如果使用 Office 365）
+#### <a name="configure-microsoft-365-activity-monitoring-if-using-microsoft-365"></a>如果使用 Microsoft 365，则配置 Microsoft 365 活动监视 () 
 
-可以监视组织中使用 Office 365 的用户，以识别具有管理员帐户但因未登录到这些门户而可能不需要 Office 365 访问权限的人员。 有关详细信息，请参阅 [Microsoft 365 管理中心内的活动报告](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
+监视你的组织中的用户，这些用户使用 Microsoft 365 来识别拥有管理员帐户但可能不需要 Microsoft 365 访问的人员，因为他们不登录这些门户。 有关详细信息，请参阅 [Microsoft 365 管理中心内的活动报告](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>确定事件/紧急情况响应计划所有者
 
@@ -229,7 +229,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>完成对管理员角色用户的访问权限审核
 
-更多的公司用户是通过云服务获得特许访问权限的，因此可能会导致访问不受管理。 当今的用户可以成为 Office 365 全局管理员、Azure 订阅管理员，或者获取对 VM 或 SaaS 应用的管理访问权限。
+更多企业用户通过云服务获取特权访问权限，这可能会导致未经管理的访问。 如今，用户可以成为 Microsoft 365、Azure 订阅管理员的全局管理员，也可以通过 SaaS 应用对 Vm 或通过 SaaS 应用进行管理员访问。
 
 组织应让所有员工以非特权用户身份处理日常的业务事务，只在有需要时才向其授予管理权限。 完成访问评审，识别并确认有资格激活管理特权的用户。
 
@@ -281,13 +281,13 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 建议你识别每一位在其凭据泄漏的情况下可能会对组织造成灾难性后果的用户。 针对这些用户，请制定严格的身份验证要求，并使用 Azure AD 条件访问来防止这些用户使用用户名和密码登录其电子邮件。 可以[使用条件访问来阻止旧式身份验证](../conditional-access/block-legacy-authentication.md)，并可以通过 Exchange Online [阻止基本身份验证](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)。
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>针对 Office 365 角色完成角色审核评估（如果使用 Office 365）
+#### <a name="complete-a-roles-review-assessment-for-microsoft-365-roles-if-using-microsoft-365"></a>完成 Microsoft 365 角色的角色审查评估 (如果使用 Microsoft 365) 
 
 评估是否所有管理员用户都有正确的角色（根据此评估执行删除和重新分配操作）。
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>审核在 Office 365 中使用的安全事件管理方法，并将其与自己的组织进行比较
+#### <a name="review-the-security-incident-management-approach-used-in-microsoft-365-and-compare-with-your-own-organization"></a>查看 Microsoft 365 中使用的安全事件管理方法，并与你的组织进行比较
 
-可以从 [Microsoft Office 365 中的安全事件管理](https://www.microsoft.com/download/details.aspx?id=54302)下载此报告。
+你可以从 [Microsoft 365 中的 "安全事件管理"](https://www.microsoft.com/download/details.aspx?id=54302)下载此报告。
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>继续保护本地特权管理帐户
 
@@ -348,7 +348,7 @@ Microsoft Cloud App Security 允许根据 Azure 信息保护分类标签来调�
 * 防止数据泄漏
 * 将风险降至最低并自动实施威胁防护和策略
 
-Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，以便集中监视 Office 365 警报和活动。 它还可以在服务器上运行，从 Cloud App Security 拉取警报和活动并将其流式传输到 SIEM 服务器中。 有关详细信息，请参阅 [SIEM 集成](/cloud-app-security/siem)。
+Cloud App Security SIEM 代理将 Cloud App Security 与你的 SIEM 服务器集成，以启用对 Microsoft 365 警报和活动的集中监视。 它还可以在服务器上运行，从 Cloud App Security 拉取警报和活动并将其流式传输到 SIEM 服务器中。 有关详细信息，请参阅 [SIEM 集成](/cloud-app-security/siem)。
 
 ## <a name="stage-4-continue-building-defenses"></a>阶段 4：持续构建防御
 
@@ -387,8 +387,8 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 有关详细信息，请参阅[如何配置联接到混合 Azure Active Directory 的设备](../devices/hybrid-azuread-join-plan.md)。
 
-#### <a name="review-members-of-built-in-office-365-admin-roles"></a>审核[内置 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的成员
-如果不使用 Office 365，请跳过此步骤。
+#### <a name="review-members-of-built-in-microsoft-365-admin-roles"></a>查看[内置 Microsoft 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的成员
+如果不使用 Microsoft 365，请跳过此步骤。
 ‎
 #### <a name="validate-incident-response-plan"></a>验证事件响应计划
 

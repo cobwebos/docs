@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd02f2dbb7666ba9f2134ffba4cf683e1e9ac67b
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038981"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058694"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure 公共 IP 的 azure 安全基线
 
-此安全基线将 [Azure 安全性基准1.0 版](../security/benchmarks/overview.md) 中的指南应用于 AZURE 公共 IP。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 AZURE 公共 IP 的相关指南进行分组。 排除了不适用于 Azure 公共 IP 的**控件**。
+此安全基线将 [Azure 安全性基准1.0 版](../security/benchmarks/overview.md) 中的指南应用于 AZURE 公共 IP。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 AZURE 公共 IP 的相关指南进行分组。 排除了不适用于 Azure 公共 IP 的**控件**。  请注意，Azure 公共 Ip 不存储客户数据。
 
 若要查看 Azure 公共 IP 如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 公共 ip 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
@@ -46,7 +46,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指南**：使用 Azure 活动日志监视配置并检测对公共 IP 实例所做的更改。 除了在控制平面 (例如 Azure 门户) ，公共 IP 本身不会生成与网络流量相关的日志。 
+**指南**：使用 Azure 活动日志监视配置并检测对公共 IP 实例所做的更改。 除了在控制平面 (例如 Azure 门户) ，公共 IP 本身不会生成与网络流量相关的日志。
 
 公共 IP 提供的工具可用于监视、诊断、查看指标，并为 Azure 虚拟网络中的资源启用或禁用日志。
 

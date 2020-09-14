@@ -13,12 +13,12 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266230"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056075"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -44,7 +44,7 @@ ms.locfileid: "84266230"
 
 - 你的组织使用了双重验证和“其他安全验证”页。 如果在组织中结合使用工作或学校帐户（例如 alain@contoso.com）和双重验证，则可以在[“其他安全验证”页](https://account.activedirectory.windowsazure.com/Proofup.aspx)中管理应用密码。 有关详细说明，请参阅本文中的[使用“其他安全验证”页创建和删除应用密码](#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
 
-- 你的组织使用了双重验证和 Office 365 门户。 如果在组织中使用工作或学校帐户（例如 alain@contoso.com）、双重验证和 Office 365 应用，则可以在[“Office 365 门户”页](https://www.office.com)中管理应用密码。 有关详细说明，请参阅本文中的[使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)。
+- 你的组织使用了双重验证和 Office 365 门户。 如果你在组织中使用工作或学校帐户 (如 alain@contoso.com) 、双因素验证和 Microsoft 365 应用，则可以从 [Office 365 门户页面](https://www.office.com)管理应用密码。 有关详细说明，请参阅本文中的[使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)。
 
 - 你在使用双重验证和个人 Microsoft 帐户。 如果使用的是个人 Microsoft 帐户（例如，alain@outlook.com）和双重验证，则可以在[“安全基础”页](https://account.microsoft.com/security/)中管理应用密码。 有关详细说明，请参阅[将应用密码用于不支持双重验证的应用](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)。
 
@@ -82,11 +82,11 @@ ms.locfileid: "84266230"
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建和删除应用密码
 
-如果对工作或学校帐户以及 Office 365 应用使用双重验证，可以使用 Office 365 门户创建和删除应用密码。
+如果对工作或学校帐户以及 Microsoft 365 应用使用双重验证，则可以使用 Office 365 门户创建和删除应用密码。
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建应用密码
 
-1. 登录 Office 365，然后转到[“我的帐户”页](https://portal.office.com)，选择“安全和隐私”，然后展开“其他安全验证” 。
+1. 登录到你的工作或学校帐户，前往 " [我的帐户" 页](https://portal.office.com)，选择 " **安全 & 隐私**"，然后展开 " **其他安全验证**"。
 
     ![Office 门户，其中显示了展开的“其他安全性验证”区域](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 

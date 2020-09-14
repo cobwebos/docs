@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5116b3dfd53c5272ef7bb11d1719b7ee62416c4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762311"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055786"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
 
@@ -87,6 +87,7 @@ ms.locfileid: "88762311"
 * 在多个区域使用 Azure 防火墙时，所有辐射虚拟网络都必须关联到相同的路由表。 例如，具有 Vnet 的子集，而其他 Vnet 在同一虚拟中心绕过 Azure 防火墙是不可能的。
 * 每个 VNet 连接可以配置一个下一个跃点 IP。
 * 虚拟中心不支持 0.0.0.0/0 和下一跃点虚拟网络连接 (或 VNet 连接中设备的 IP 的静态路由) 
+* 所有与 0.0.0.0/0 路由有关的信息均限制为本地中心的路由表。 此路由不会跨集线器传播。
 
 ## <a name="next-steps"></a>后续步骤
 

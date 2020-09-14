@@ -2,17 +2,17 @@
 title: 在 Azure Data Box Gateway 系列设备上安装更新 |Microsoft Docs
 description: 描述如何使用 Azure Data Box Gateway 系列设备的 Azure 门户和本地 web UI 应用更新
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: twooley
-ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1b3f0faa2b5f67a23317935f0ad868e3872cf86e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783869"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055957"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>更新 Azure Data Box Gateway
 
@@ -22,7 +22,7 @@ ms.locfileid: "88783869"
 >
 > - 更新 **1911** 对应于设备上的 **1.6.1049.786** software 版本。 有关此更新的信息，请参阅 [发行说明](data-box-gateway-1911-release-notes.md)。
 >
-> - 请记住，安装更新或修补程序会重新启动设备。 由于 Data Box Gateway 是单节点设备，正在进行的任何 i/o 都将中断，设备软件更新的设备的停机时间最长为30分钟。
+> - 请记住，安装更新或修补程序会重新启动设备。 假设 Data Box Gateway 是一个单节点设备，任何正在进行的 I/O 都会被中断，并且你的设备将经历长达 30 分钟的设备软件更新停机时间。
 
 后续部分将介绍其中的每个步骤。
 
@@ -39,7 +39,7 @@ ms.locfileid: "88783869"
 
 2. 在 " **设备更新** " 边栏选项卡中，检查是否已查看与发行说明中的新功能关联的许可条款。
 
-    您可以选择 **下载和安装更新，** 或仅 **下载** 更新。 然后，可以选择稍后安装这些更新。
+    您可以选择 **下载和安装更新，** 或仅 **下载** 更新。 然后可以选择以后安装这些更新。
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "88783869"
 
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    如果选择仅下载更新，则选择该通知即可打开 " **设备更新** " 边栏选项卡。 选择“安装”。
+    如果选择仅下载更新，则选择该通知即可打开 " **设备更新** " 边栏选项卡。 选择“安装”  。
   
     ![更新后的软件版本](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "88783869"
 
    ![搜索目录](./media/data-box-gateway-apply-updates/download-update-2.png)
 
-3. 选择“下载”。 有一个与设备软件更新相对应的名为 *SoftwareUpdatePackage.exe* 下载的文件。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
+3. 选择“下载”  。 有一个与设备软件更新相对应的名为 *SoftwareUpdatePackage.exe* 下载的文件。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
    ![搜索目录](./media/data-box-gateway-apply-updates/download-update-3.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "88783869"
 
    ![更新设备](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. 选择**应用**。
+3. 选择“应用”。 
 
    ![更新设备](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4462ea0277193f0f8a4112cad5991d1e12c5f600
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652773"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058727"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支持在 Azure 区域之间移动 Azure Vm
 
@@ -80,7 +80,7 @@ Debian 8 |  3.16.0-4-amd64 到 3.16.0-10-amd64，4.9.0-0.bpo.4-amd64 到 4.9.0-0
 
 **版本** | **内核版本** 
 --- |  --- 
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） |  支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.34-azure  
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） |  支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.34-azure  
 
 
 ### <a name="supported-suse-linux-enterprise-server-15-kernel-versions"></a>支持 SUSE Linux Enterprise Server 15 内核版本
@@ -100,7 +100,7 @@ SUSE Linux Enterprise Server 15 和 15 SP1 |  支持所有库存 SUSE 15 和 15 
 
 **设置** | **支持** | **详细信息**
 --- | --- | ---
-大小 | 至少具有两个 CPU 内核和 1 GB RAM 的任何 Azure VM 大小 | 验证 [Azure 虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/sizes-general)。
+大小 | 至少具有两个 CPU 内核和 1 GB RAM 的任何 Azure VM 大小 | 验证 [Azure 虚拟机大小](../virtual-machines/sizes-general.md)。
 可用性集 | 目前不支持 | 如果使用默认选项将具有可用性集的 Azure VM 添加到移动集合，则准备过程将失败。 可以选择将 VM 移到可用性区域，或将其作为单个实例 VM 来移动。 你可以在 "编辑目标属性" 页中修改这些设置。
 可用性区域 | 支持 | 支持，具体取决于目标区域支持。
 Microsoft (发布 Azure 库映像)  | 支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
@@ -113,15 +113,15 @@ RBAC 策略 | 不支持 | 基于角色的访问控制 (在虚拟机上的 RBAC) 
 
 ## <a name="supported-vm-storage-settings"></a>支持的 VM 存储设置
 
-此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。 请务必遵循适用于 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/disk-scalability-targets) 和 [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets) VM 的 VM 磁盘限制以及目标，以避免任何性能问题。
+此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。 请务必遵循适用于 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘限制以及目标，以避免任何性能问题。
 
 **组件** | **支持** | **详细信息**
 --- | --- | ---
-OS 磁盘的最大大小 | 2048 GB | [深入了解 ](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)VM 磁盘相关信息。
-临时磁盘 | 不支持 | 临时磁盘始终从准备进程中排除。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk)。
+OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows/managed-disks-overview.md)VM 磁盘相关信息。
+临时磁盘 | 不支持 | 临时磁盘始终从准备进程中排除。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/managed-disks-overview.md#temporary-disk)。
 数据磁盘的最大大小 | 托管磁盘为 8192 GB
 数据磁盘最小大小 |  托管磁盘为 2 GB |
-数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](https://docs.microsoft.com/azure/virtual-machines/windows/sizesd)VM 大小相关信息。
+数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/windows/sizes.md)VM 大小相关信息。
 数据磁盘更改率 | 每个高级存储的磁盘最大为 10 MBps。 每个标准存储的磁盘最大为 2 MBps。 | 如果磁盘上的平均数据更改率连续高于最大值，则准备工作不会赶上。<br/><br/>  但是，如果最大值不确定，准备可能会赶上，但你可能会看到稍微延迟的恢复点。
 数据磁盘 (标准存储帐户)  | 不支持。 | 将存储类型更改为托管磁盘，然后尝试移动 VM。
 数据磁盘 (高级存储帐户)  | 不支持 | 将存储类型更改为托管磁盘，然后尝试移动 VM。

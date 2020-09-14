@@ -3,14 +3,14 @@ title: 使用顾问评分优化 Azure 工作负荷
 description: 使用顾问评分充分利用 Azure
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: c9e6a13b39ac3436a71b6cecee4c91c609589378
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 720a2b358e35d776a7233452eee2bd69b521654f
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038973"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056228"
 ---
-# <a name="advisor-score-to-get-the-most-out-of-azure"></a>充分利用 Azure 的顾问评分
+# <a name="optimize-azure-workloads-using-advisor-score"></a>使用顾问评分优化 Azure 工作负荷
 
 ## <a name="introduction-to-advisor-score"></a>顾问评分简介
 

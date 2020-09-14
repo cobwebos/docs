@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 57a981f4967bc58ca39067f94abdcf64d764ab87
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536185"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058761"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](./itsmc-overview.md)。
@@ -25,7 +25,8 @@ ms.locfileid: "89536185"
 
 > [!NOTE]
 > 
-> ITSM 连接器只能连接到基于云的 ServiceNow 实例。 当前不支持本地 ServiceNow 实例。
+> 从2020年10月 Cherwell 和 Provance ITSM 集成的 Azure 警报将不再为新客户启用。 不支持新的 ITSM 连接。 
+> 将支持现有的 ITSM 连接。
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>将 System Center Service Manager 连接到 Azure 中的 IT 服务管理连接器
 
@@ -40,6 +41,10 @@ ms.locfileid: "89536185"
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
 - 用户角色：[高级操作员](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
+
+> [!NOTE]
+> 
+> ITSM 连接器只能连接到基于云的 ServiceNow 实例。 当前不支持本地 ServiceNow 实例。
 
 ### <a name="connection-procedure"></a>连接过程
 

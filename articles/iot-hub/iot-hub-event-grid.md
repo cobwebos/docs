@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327644"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056160"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
 通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 配置商业应用程序来侦听 IoT 中心事件，以便安全可靠地以可缩放方式响应关键事件。 例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
 
-[Azure 事件网格](../event-grid/overview.md)是一种完全托管的事件路由服务，使用发布-订阅模型。 事件网格内置了对 Azure 服务（如[Azure Functions](../azure-functions/functions-overview.md)和[Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)）的支持，可以使用 webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
+[Azure 事件网格](../event-grid/overview.md)是一种完全托管的事件路由服务，使用发布-订阅模型。 事件网格内置了对 Azure 服务（如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)）的支持，可以使用 webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 
 ![Azure 事件网格体系结构](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -78,7 +78,7 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 设备遥测消息必须采用有效的 JSON 格式，并且在消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 **UTF-8**。 这两个属性都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。
 
-在通过选择终结点作为事件网格来将设备遥测事件发布到事件网格之前，你可以扩充设备遥测事件。 有关详细信息，请参阅[Message 根据概述](iot-hub-message-enrichments-overview.md)。
+在通过选择终结点作为事件网格来将设备遥测事件发布到事件网格之前，你可以扩充设备遥测事件。 有关详细信息，请参阅 [Message 根据概述](iot-hub-message-enrichments-overview.md)。
 
 以下示例显示了设备遥测事件的架构：
 
@@ -188,7 +188,7 @@ devices/{deviceId}
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>设备已连接和设备已断开连接事件的限制
 
-若要接收设备连接状态事件，设备必须使用 Iot 中心执行 "对 ' 发送遥测数据" 或 "C2D 接收消息" 操作。 但请注意，如果设备使用 AMQP 协议连接到 Iot 中心，则建议它们执行 "C2D 接收消息" 操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) 来打开 C2D 链路；对于 IoT 中心 C# SDK，则调用[用于 AMQP 的设备客户端](iot-hub-amqp-support.md#device-client)。
+若要接收设备连接状态事件，设备必须使用 Iot 中心执行 "对 ' 发送遥测数据" 或 "C2D 接收消息" 操作。 但请注意，如果设备使用 AMQP 协议连接到 Iot 中心，则建议它们执行 "C2D 接收消息" 操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用 IoT 中心 c # SDK 的 Receive Async API 或 [AMQP 的设备客户端](iot-hub-amqp-support.md#device-client)来打开 C2D 链接。
 
 如果正在发送遥测数据，则 D2C 链路是打开的。 
 
@@ -214,4 +214,4 @@ devices/{deviceId}
 
 * [比较路由 IoT 中心事件和消息之间的区别](iot-hub-event-grid-routing-comparison.md)
 
-* [了解如何使用 IoT 遥测事件通过 Azure Maps 来实现 IoT 空间分析](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [了解如何使用 IoT 遥测事件通过 Azure Maps 来实现 IoT 空间分析](../azure-maps/tutorial-iot-hub-maps.md)

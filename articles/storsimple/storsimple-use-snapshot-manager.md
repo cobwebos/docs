@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 用户界面 | Microsoft Docs
 description: 介绍 StorSimple Snapshot Manager 用户界面，并说明如何使用它来管理备份作业和备份目录。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
+ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ead24b89dba889a4bb8f11d57eb687e7790aebfb
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513740"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055905"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>使用 StorSimple Snapshot Manager 用户界面管理备份作业和备份目录
 
@@ -67,7 +67,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表说明了出现在 **“文件”** 菜单上的项目。
 
-| Menu item | 描述 |
+| Menu item | 说明 |
 |:--- |:--- |
 | 新建 |单击“**新建**”可基于 StorSimple Snapshot Manager 新建控制台。 |
 | 打开 |单击 **“打开”** 可打开现有控制台。 |
@@ -107,7 +107,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 > 
 > 
 
-| 操作 | 导航 | 描述 |
+| 操作 | 导航 | 说明 |
 |:--- |:--- |:--- |
 | Authenticate |单击“**设备**”节点，并右键单击“**结果**”窗格中的设备。 |单击“**验证**”可输入为设备配置的密码。 |
 | 克隆 |展开 **“备份目录”**，展开 **“云快照”**，单击标记了日期的备份，然后在 **“结果”** 窗格中选择一个卷。 |单击 **“克隆”** 可创建云快照的副本，并将其存储在指定的位置。 |
@@ -204,7 +204,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 ### <a name="icon-descriptions"></a>图标说明
 下表介绍了工具栏上显示的图标。 
 
-| 图标 | 描述 |
+| 图标 | 说明 |
 |:--- |:--- |
 | ![向左键](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |单击向左键图标可返回上一页。 |
 | ![向右键](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |单击向右键可转到下一页（如果箭头为灰色，则操作不可用）。 |
@@ -354,7 +354,7 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 ### <a name="menu-bar-shortcut-keys"></a>菜单栏的快捷键
 下表介绍了菜单栏的快捷键组合。 按下快捷键且菜单打开后，可以使用菜单的快捷键（菜单上带下划线的键）。 有关菜单栏的详细信息，请转至[菜单栏](#menu-bar)。
 
-| 快捷键 | 结果 | 菜单的快捷键 | 结果 |
+| 快捷方式 | 结果 | 菜单的快捷键 | 结果 |
 |:--- |:--- |:--- |:--- |
 | ALT+F |打开 **“文件”** 菜单。 |N |可打开一个新的控制台实例。 |
 |  |O |打开 **“管理工具”** 页。 | |

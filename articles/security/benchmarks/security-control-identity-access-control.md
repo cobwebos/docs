@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2df534842c6f6a922579e1128757ee4b7f46e006
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408531"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058591"
 ---
 # <a name="security-control-identity-and-access-control"></a>安全控制：标识和访问控制
 
@@ -70,7 +70,7 @@ Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建
 
 - [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [如何在 Azure 安全中心内监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 安全中心监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 ## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
@@ -78,13 +78,13 @@ Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建
 |--|--|--|
 | 3.6 | 4.6、11.6、12.12 | 客户 |
 
-使用配置了 MFA 的 Paw （特权访问工作站）来登录和配置 Azure 资源。
+使用 Paw () 配置了 MFA 的特权访问工作站，并将其配置为登录和配置 Azure 资源。
 
 - [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：对来自管理帐户的可疑活动进行日志和警报
+## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|
@@ -112,9 +112,9 @@ Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建
 |--|--|--|
 | 3.9 | 16.1、16.2、16.4、16.5、16.6 | 客户 |
 
-使用 Azure Active Directory (AAD) 作为中心身份验证和授权系统。 AAD 通过对静态数据和传输中数据使用强加密来保护数据。 AAD 还会对用户凭据进行加盐、哈希处理和安全存储。
+使用 Azure Active Directory 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
-- [如何创建和配置 AAD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
@@ -128,7 +128,7 @@ Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 
 
 - [如何使用 Azure 标识访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
-## <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视器尝试访问停用的凭据
+## <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|

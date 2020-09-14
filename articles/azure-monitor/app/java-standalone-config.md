@@ -4,12 +4,12 @@ description: 对在任何环境中运行的 Java 应用程序进行无代码应�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374280"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056092"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>配置选项 - Azure Monitor Application Insights 的 Java 独立代理
 
@@ -113,18 +113,18 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 java.util.loggi
 
 下面介绍了你可以在 `ApplicationInsights.json` 文件中指定的有效的 `threshold` 值，以及这些值如何对应于不同日志记录框架中的日志记录级别：
 
-| `threshold`  | Log4j  | Logback | JUL     |
-|--------------|--------|---------|---------|
-| OFF          | OFF    | OFF     | OFF     |
-| FATAL        | FATAL  | ERROR   | SEVERE  |
-| ERROR/SEVERE | ERROR  | ERROR   | SEVERE  |
-| WARN/WARNING | WARN   | WARN    | WARNING |
-| INFO         | INFO   | INFO    | INFO    |
-| CONFIG       | DEBUG  | DEBUG   | CONFIG  |
-| DEBUG/FINE   | DEBUG  | DEBUG   | FINE    |
-| FINER        | DEBUG  | DEBUG   | FINER   |
-| TRACE/FINEST | TRACE  | TRACE   | FINEST  |
-| ALL          | ALL    | ALL     | ALL     |
+| 阈值   | Log4j  | Logback | JUL     |
+|-------------------|--------|---------|---------|
+| OFF               | OFF    | OFF     | OFF     |
+| FATAL             | FATAL  | ERROR   | SEVERE  |
+| 错误 (或严重)  | ERROR  | ERROR   | SEVERE  |
+| 警告 (或警告)  | WARN   | WARN    | WARNING |
+| INFO              | INFO   | INFO    | INFO    |
+| CONFIG            | DEBUG  | DEBUG   | CONFIG  |
+| 调试 (或精细)    | DEBUG  | DEBUG   | FINE    |
+| FINER             | DEBUG  | DEBUG   | FINER   |
+| 跟踪 (或最佳)  | TRACE  | TRACE   | FINEST  |
+| ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX 指标
 
@@ -134,7 +134,7 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "jmxMetrics": [
+      "jmxMetrics": [
         {
           "objectName": "java.lang:type=ClassLoading",
           "attribute": "LoadedClassCount",
@@ -181,9 +181,9 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "heartbeat": {
-            "intervalSeconds": 60
-        }
+      "heartbeat": {
+        "intervalSeconds": 60
+      }
     }
   }
 }
@@ -205,13 +205,13 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "sampling": {
-            "fixedRate": {
-                "percentage": 10
-            }
-          }
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10
         }
+      }
     }
+  }
 }
 ```
 
@@ -244,10 +244,10 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "console",
-            "level": "WARN"
-        }
+      "selfDiagnostics": {
+        "destination": "console",
+        "level": "WARN"
+      }
     }
   }
 }
@@ -261,12 +261,12 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "file",
-            "directory": "/var/log/applicationinsights",
-            "level": "WARN",
-            "maxSizeMB": 10
-        }    
+      "selfDiagnostics": {
+        "destination": "file",
+        "directory": "/var/log/applicationinsights",
+        "level": "WARN",
+        "maxSizeMB": 10
+      }
     }
   }
 }

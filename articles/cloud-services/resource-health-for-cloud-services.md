@@ -3,17 +3,16 @@ title: " (经典云服务的资源运行状况) "
 description: '本文介绍资源运行状况检查 (RHC) 支持 Microsoft Azure 云服务 (经典) '
 services: cloud-services
 author: tanmaygore
-manager: vashan
 ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: 969390b0988c59940cb210c14821cbee42edfa7a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663830"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056042"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>资源运行状况检查 (RHC) 对 Azure 云服务的支持 (经典) 
 本文介绍资源运行状况检查 (RHC) 支持 [Microsoft Azure 云服务 (经典) ](https://azure.microsoft.com/services/cloud-services)
@@ -22,6 +21,7 @@ ms.locfileid: "89663830"
 
 Azure 状态报告影响广泛的 Azure 客户的问题。 资源运行状况提供资源运行状况的个性化仪表板。 资源运行状况显示由于 Azure 服务问题导致资源不可用的所有时间。 这些数据可方便你了解是否违反 SLA。
 
+:::image type="content" source="media/cloud-services-allocation-failure/rhc-blade-cloud-services.png" alt-text="Image 显示了 Azure 门户中的资源运行状况检查边栏选项卡。":::
 
 ## <a name="how-health-is-checked-and-reported"></a>如何检查和报告运行状况？
 在部署或角色级别报告资源运行状况。 运行状况检查发生在角色实例级别，聚合状态并将其报告在角色级别。 例如 如果所有角色实例都可用，则角色状态为 "可用"。 同样，我们聚合了所有角色的运行状况状态，并将其报告为部署级别。 例如 如果所有角色都可用，则部署状态将变为可用。 

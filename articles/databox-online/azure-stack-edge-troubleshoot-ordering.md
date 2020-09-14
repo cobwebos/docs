@@ -2,18 +2,18 @@
 title: 使用 Azure 门户解决 Azure Stack Edge 排序问题 |Microsoft Docs
 description: 介绍如何对 Azure Stack 边缘排序问题进行故障排除。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
-ms.author: twooley
-ms.openlocfilehash: 226274c52610e24c305400d77dc7737d32c2b722
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783988"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055939"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>排查 Azure Stack 边缘排序问题
 
