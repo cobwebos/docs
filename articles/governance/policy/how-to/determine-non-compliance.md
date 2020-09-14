@@ -36,11 +36,11 @@ ms.locfileid: "89648569"
 
 1. 在“策略符合性”页的“资源符合性”选项卡下，右键单击或选择“符合性状态”为“不符合”的资源的省略号。 然后选择“查看符合性详细信息”。
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="资源符合性选项卡上的 "查看符合性详细信息" 链接的屏幕截图。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="资源符合性选项卡上的 查看符合性详细信息 链接的屏幕截图。" border="false":::
 
 1. “符合性详细信息”窗格显示对当前策略分配最近进行的计算得出的信息。 在此示例中，发现字段“Microsoft.Sql/servers/version”为“12.0”，而策略定义预期为“14.0”。 如果资源不符合有多种原因，则此窗格将列出每个原因。
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text=""符合性详细信息" 窗格的屏幕截图和不符合性原因：当前值为十二个，"目标值" 为14。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="符合性详细信息 窗格的屏幕截图和不符合性原因：当前值为十二个，目标值 为14。" border="false":::
 
    对于“auditIfNotExists”或“deployIfNotExists”策略定义，详细信息包括“details.type”属性和任何可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上一个计算资源”为定义的“详细信息”部分中的相关资源。
 
@@ -199,11 +199,11 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡 。 此时会显示检测到的更改的列表（如果存在）。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text=""更改历史记录" 选项卡的屏幕截图，检测到资源符合性页上的更改时间。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="更改历史记录 选项卡的屏幕截图，检测到资源符合性页上的更改时间。" border="false":::
 
 1. 选择其中一个检测到的更改。 资源的“视觉差异”在“更改历史记录”页上显示。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="更改历史记录在 "更改历史记录" 页上属性的 "前后" 状态的屏幕截图。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="更改历史记录在 更改历史记录 页上属性的 前后 状态的屏幕截图。" border="false":::
 
 _视觉差异_可帮助识别资源的更改。 检测到的更改可能与资源的当前符合性状态不相关。
 
