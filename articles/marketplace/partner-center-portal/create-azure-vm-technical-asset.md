@@ -157,7 +157,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 7. 打开 PuTTY 应用程序。
 8. 在 PuTTY 的“配置”对话框中，输入 VM 的 IP 地址或 DNS 名称。
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="说明 PuTTY 终端设置，并突出显示 "主机名" 和 "端口" 字段。":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="说明 PuTTY 终端设置，并突出显示 主机名 和 端口 字段。":::
 
 9. 选择“打开”以打开 PuTTY 终端。
 10. 出现提示时，请输入 Linux VM 帐户的帐户名称和密码。
