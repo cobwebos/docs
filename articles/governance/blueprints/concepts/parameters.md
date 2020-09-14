@@ -61,7 +61,7 @@ ms.locfileid: "89651951"
 
 1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”********。 选择项目行来编辑项目参数。
 
-   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="突出显示蓝图定义和 "已填充的 Y 个参数" 的屏幕截图。" border="false":::
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="突出显示蓝图定义和 已填充的 Y 个参数 的屏幕截图。" border="false":::
 
 1. " **编辑项目** " 页显示适用于所选项目的值选项。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”****。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中__****__。
 
