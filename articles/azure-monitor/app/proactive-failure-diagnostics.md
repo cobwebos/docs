@@ -73,7 +73,7 @@ ms.locfileid: "89565831"
 
 打开“警报”页。 包括失败异常警报规则以及已手动设置的任何警报，并可以查看其当前是否处于警报状态。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="在 "Application Insights 资源" 页上，单击 "警报" 磁贴，然后单击 "管理警报规则"。" lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="在 Application Insights 资源 页上，单击 警报 磁贴，然后单击 管理警报规则。" lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 单击警报以配置它。
 
