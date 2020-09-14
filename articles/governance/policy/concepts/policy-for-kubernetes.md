@@ -63,7 +63,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
      1. 选择“Azure Policy”页左侧的“加入预览”。
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text=""策略" 页上的 "联接预览" 节点的屏幕截图。" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="策略 页上的 联接预览 节点的屏幕截图。" border="false":::
 
      1. 选择要添加到预览的订阅行。
 
@@ -126,11 +126,11 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
   1. 选择“Kubernetes 服务”页面左侧的“策略(预览)”。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 "策略 (preview) " 节点的屏幕截图。" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 策略 (preview)  节点的屏幕截图。" border="false":::
 
   1. 在主页中，选择“启用加载项”按钮。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text=""支持 Azure Kubernetes Services 的 Azure 策略" 的 "启用外接程序" 按钮的屏幕截图 (K S) 页面。":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="支持 Azure Kubernetes Services 的 Azure 策略 的 启用外接程序 按钮的屏幕截图 (K S) 页面。":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -466,11 +466,11 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
   1. 选择“Kubernetes 服务”页面左侧的“策略(预览)”。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 "策略 (preview) " 节点的屏幕截图。" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 策略 (preview)  节点的屏幕截图。" border="false":::
 
   1. 在主页中，选择“禁用加载项”按钮。
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text=""Azure Kubernetes 服务的 Azure 策略" 的 "禁用外接程序" 按钮的屏幕截图 (K S) 页面。" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Azure Kubernetes 服务的 Azure 策略 的 禁用外接程序 按钮的屏幕截图 (K S) 页面。" border="false":::
 
 - Azure CLI
 
