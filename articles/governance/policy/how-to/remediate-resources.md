@@ -129,7 +129,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 选择“Azure Policy”页左侧的“修正”。
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text=""策略" 页上的 "修正" 节点的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="策略 页上的 修正 节点的屏幕截图。" border="false":::
 
 1. “要修正的策略”选项卡和数据表中包含所有具有不合规的资源的 deployIfNotExists 和 modify 策略分配。 选择具有不符合的资源的策略。 “新修正任务”页随即打开。
 
@@ -138,17 +138,17 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 在“新修正任务”页上，通过使用“范围”省略号从分配策略的位置选取子资源（包括下面的单个资源对象）来筛选要修正的资源。 此外，使用“位置”下拉列表来进一步筛选资源。 仅对表中列出的资源进行修正。
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="要修正的 "修正" 节点和资源网格的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="要修正的 修正 节点和资源网格的屏幕截图。" border="false":::
 
 1. 通过选择 " **修正**" 筛选资源后，开始修正任务。 “策略符合性”页将打开到“修正任务”选项卡，以显示任务进度的状态。 由修正任务创建的部署将立即开始。
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text=""修正任务" 选项卡的屏幕截图和现有修正任务的进度。" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="修正任务 选项卡的屏幕截图和现有修正任务的进度。" border="false":::
 
 1. 从 "策略符合性" 页中选择 " **修正任务** " 以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
 
 1. 在 " **修正任务** " 页上，右键单击资源以查看修正任务的部署或资源。 在行的末尾，选择 " **相关事件** " 以查看详细信息，例如错误消息。
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text=""修正任务" 选项卡上的资源上下文菜单的屏幕截图。" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="修正任务 选项卡上的资源上下文菜单的屏幕截图。" border="false":::
 
 通过“修正任务”部署的资源将添加到“策略符合性”页上的“部署的资源”选项卡。
 
