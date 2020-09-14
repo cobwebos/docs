@@ -26,7 +26,7 @@ ms.locfileid: "89651380"
 
 1. 在蓝图列表中，选择蓝图分配。 然后，使用 " **更新分配** " 按钮或右键单击蓝图分配，然后选择 " **更新分配**"。
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="突出显示 "更新分配" 按钮的蓝图分配页的屏幕截图。" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="突出显示 更新分配 按钮的蓝图分配页的屏幕截图。" border="false":::
 
 1. " **分配蓝图** " 页加载已预先填充原始赋值的所有值。 可以更改“蓝图定义版本”****、“锁定分配”**** 状态，以及蓝图定义上存在的任何动态参数。 完成更改后，选择 " **分配** "。
 
