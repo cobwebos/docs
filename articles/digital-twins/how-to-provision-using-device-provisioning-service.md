@@ -40,7 +40,7 @@ ms.locfileid: "89380614"
 
 下图演示了此解决方案的体系结构，该解决方案使用 Azure 数字孪生与设备预配服务。 其中显示了设备预配和停用流。
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="在端到端方案中查看设备和多个 Azure 服务。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并通过名为 "分配" 的 Azure 功能通过 Azure 数字孪生。手动 "删除设备" 操作中的数据通过 IoT 中心流向 > 事件中心 > Azure Functions > Azure 数字孪生。":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="在端到端方案中查看设备和多个 Azure 服务。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并通过名为 分配 的 Azure 功能通过 Azure 数字孪生。手动 删除设备 操作中的数据通过 IoT 中心流向 > 事件中心 > Azure Functions > Azure 数字孪生。":::
 
 本文划分为两个部分：
 * [*使用设备预配服务自动设置设备*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ ms.locfileid: "89380614"
 
 在本部分中，会将设备预配服务附加到 Azure 数字孪生，通过以下路径自动设置设备。 这是 [之前](#solution-architecture)所示的完整体系结构的摘录。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="预配流-解决方案体系结构关系图摘录，其中包含流的数字标签部分。数据在恒温器设备与 DPS (1 之间来回流动，> 设备 > DPS，5用于 DPS 设备) 。数据还会从 DPS 流出到 IoT 中心 (4) ，以及通过标记为 "分配" (2) 的 Azure 功能向 Azure 数字孪生 (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="预配流-解决方案体系结构关系图摘录，其中包含流的数字标签部分。数据在恒温器设备与 DPS (1 之间来回流动，> 设备 > DPS，5用于 DPS 设备) 。数据还会从 DPS 流出到 IoT 中心 (4) ，以及通过标记为 分配 (2) 的 Azure 功能向 Azure 数字孪生 (3) 。":::
 
 下面是流程的说明：
 1. 设备联系 DPS 终结点，传递标识信息来证明其身份。
@@ -304,7 +304,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 在本部分中，会将 IoT 中心生命周期事件附加到 Azure 数字孪生，通过以下路径自动停用设备。 这是 [之前](#solution-architecture)所示的完整体系结构的摘录。
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="停用设备流-解决方案体系结构图的摘录，其中包含流的数字标签部分。显示的恒温器设备没有连接到关系图中的 Azure 服务。手动 "删除设备" 操作中的数据通过 IoT 中心流过 (1) > 事件中心 (2) > Azure Functions > Azure 数字孪生 (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="停用设备流-解决方案体系结构图的摘录，其中包含流的数字标签部分。显示的恒温器设备没有连接到关系图中的 Azure 服务。手动 删除设备 操作中的数据通过 IoT 中心流过 (1) > 事件中心 (2) > Azure Functions > Azure 数字孪生 (3) 。":::
 
 下面是流程的说明：
 1. 外部或手动过程会触发在 IoT 中心内删除设备的操作。
