@@ -43,7 +43,7 @@ ms.locfileid: "89651892"
 
 策略即代码的建议常规工作流如下图所示：
 
-:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="显示从创建到要部署的测试的 "代码工作流" 框的策略的关系图。" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="显示从创建到要部署的测试的 代码工作流 框的策略的关系图。" border="false":::
    将策略显示为代码工作流框的关系图。 创建包含策略和计划定义的创建。 测试涵盖已禁用强制模式的赋值。 首先，将网关检查符合性状态，并向其授予对 I 权限和修正资源的分配。  部署包含已启用强制模式的更新分配。
 :::image-end:::
 
