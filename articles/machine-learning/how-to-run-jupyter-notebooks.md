@@ -121,7 +121,7 @@ ms.locfileid: "89650923"
 1. 运行所有笔记本单元。
 1. 选择包含想要新笔记本运行的代码的单元格。 例如，提交实验的代码或可能注册模型的代码。
 1. 选择显示在 "单元格" 工具栏上的 " **集合** " 图标。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="屏幕截图：选择 "收集" 图标":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="屏幕截图：选择 收集 图标":::
 1. 输入新的 "收集的" 笔记本的名称。  
 
 新笔记本只包含代码单元，所有单元格都需要生成与你为收集所选单元产生的结果相同的结果。
