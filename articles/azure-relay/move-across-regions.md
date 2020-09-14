@@ -50,7 +50,7 @@ ms.locfileid: "89463493"
     :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="新模板部署":::    
 1. 在 " **模板部署** " 页上，选择 " **创建**"。
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="新模板部署-"创建" 按钮":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="新模板部署-创建 按钮":::        
 1. 在 " **自定义部署** " 页上，选择 **"在编辑器中生成自己的模板"**。
 
     :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="在编辑器中生成自己的模板-链接":::            
