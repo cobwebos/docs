@@ -33,7 +33,7 @@ ms.locfileid: "89570423"
 
 1. 打开新资源必须满足的建议，然后选择页面顶部的 " **拒绝** " 按钮。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-deny-button.png" alt-text="突出显示 "拒绝" 按钮的建议页面":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-deny-button.png" alt-text="突出显示 拒绝 按钮的建议页面":::
 
     此时将打开 "配置" 窗格，其中列出了作用域选项。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "89570423"
 
 1. 如果新资源不满足此建议，请打开要为其部署模板部署的建议，然后选择页面顶部的 " **强制执行** " 按钮。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="突出显示了 "强制" 按钮的建议页":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="突出显示了 强制 按钮的建议页":::
 
     此时将打开 "配置" 窗格，其中包含所有策略配置选项。 
 
