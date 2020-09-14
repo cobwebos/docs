@@ -37,7 +37,7 @@ ms.locfileid: "89658764"
 
 1. 选择页面顶部的“重命名组”选项。
 
-   :::image type="content" source="./media/detail_action_small.png" alt-text="操作栏和 "管理组" 页上的 "重命名组" 按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/detail_action_small.png" alt-text="操作栏和 管理组 页上的 重命名组 按钮的屏幕截图。" border="false":::
 
 1. 菜单打开后，请输入要显示的新名称。
 
@@ -82,14 +82,14 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 选择“删除”
 
-   :::image type="content" source="./media/delete.png" alt-text="突出显示 "删除" 按钮的 "管理组" 页的屏幕截图。" border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="突出显示 删除 按钮的 管理组 页的屏幕截图。" border="false":::
 
    > [!TIP]
    > 如果该图标已禁用，将鼠标指针悬停在该图标上可显示原因。
 
 1. 此时会打开一个窗口，让你确认是否要删除该管理组。
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="删除管理组的 "删除组" 确认对话框的屏幕截图。" border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="删除管理组的 删除组 确认对话框的屏幕截图。" border="false":::
 
 1. 请选择“是”。
 
@@ -123,7 +123,7 @@ az account management-group delete --name 'Contoso'
 
 1. 若要查看管理组的详细信息，请选择管理组标题旁边的“(详细信息)”链接。 如果此链接不可用，则表示你无权查看该管理组。
 
-   :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的 "管理组" 页的屏幕截图。" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的 管理组 页的屏幕截图。" border="false":::
 
 ### <a name="view-in-powershell"></a>在 PowerShell 中查看
 
@@ -229,7 +229,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中选择具有正确 ID 的订阅。
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="用于选择要添加到管理组的现有订阅的 "添加订阅" 选项的屏幕截图。" border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="用于选择要添加到管理组的现有订阅的 添加订阅 选项的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -243,13 +243,13 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中，选择要移动的订阅所在行末尾的椭圆。
 
-   :::image type="content" source="./media/move_small.png" alt-text="选择 "移动" 选项的订阅的备用菜单屏幕截图。" border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="选择 移动 选项的订阅的备用菜单屏幕截图。" border="false":::
 
 1. 选择“移动”。
 
 1. 在打开的菜单中，选择“父管理组”。
 
-   :::image type="content" source="./media/move_small_context.png" alt-text=""移动" 窗口的屏幕截图和用于将订阅移到其他管理组的选项。" border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="移动 窗口的屏幕截图和用于将订阅移到其他管理组的选项。" border="false":::
 
 1. 选择“保存”。
 
@@ -298,7 +298,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - 选择新管理组将创建一个新管理组。
    - 选择现有管理组将显示所有管理组的下拉列表，这些管理组可移动到此管理组。  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="用于创建新管理组的 "添加管理组" 选项的屏幕截图。" border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="用于创建新管理组的 添加管理组 选项的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
