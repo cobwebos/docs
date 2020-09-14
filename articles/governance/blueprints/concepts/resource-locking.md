@@ -103,7 +103,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 如果蓝图分配选择了“只读”**** 或“不要删除”**** 选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并阻止在 Azure 蓝图之外删除蓝图锁定。
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="访问控制 (I A M) 页面和资源组的 "拒绝分配" 选项卡的屏幕截图。" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="访问控制 (I A M) 页面和资源组的 拒绝分配 选项卡的屏幕截图。" border="false":::
 
 每个模式的 [拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) 如下所示：
 
