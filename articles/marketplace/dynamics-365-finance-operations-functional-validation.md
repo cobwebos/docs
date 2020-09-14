@@ -52,7 +52,7 @@ Microsoft 认证团队将查看视频和文件，然后批准解决方案或有�
 
     1. 请参阅**LCS**  >  **业务流程建模**器  >  **项目库**。 拍摄所有过程步骤的屏幕截图。 包括 **关系图** 和 **查看** 的列，如下所示：
 
-       :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="显示 "项目库" 窗口。":::
+       :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="显示 项目库 窗口。":::
 
       2. 请参阅**LCS**  >  **解决方案管理**  >  **测试解决方案包**。 获取包含这些示例中所示的程序包概述和内容的屏幕截图：
 
