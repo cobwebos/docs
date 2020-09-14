@@ -34,13 +34,13 @@ ms.locfileid: "90019925"
 
     若要设置“属性”  作业配置，请选择一个属性并设置其新值。 若要设置 **命令** 作业配置，请选择要运行的命令。 属性作业可以设置多个属性。
 
-    :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="显示用于创建名为 "设置光源阈值" 的属性作业的选项的屏幕截图":::
+    :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="显示用于创建名为 设置光源阈值 的属性作业的选项的屏幕截图":::
 
     选择 " **保存并退出** "，将作业添加到 " **作业** " 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
 
     选择 " **下一步** " 转到 " **审阅** " 页。 * * 审阅 * * * 页将显示作业配置详细信息。 选择 " **运行** " 以提交作业。
 
-    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="作业向导 "审阅" 页的屏幕截图":::
+    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="作业向导 审阅 页的屏幕截图":::
 
 1. 作业通过 " *挂起*"、" *正在运行*" 和 " *已完成* " 阶段。 作业执行详细信息包含结果指标、持续时间详细信息和设备列表网格。
 
@@ -67,7 +67,7 @@ ms.locfileid: "90019925"
 
 若要复制现有作业，请选择已执行的作业。 在 "作业结果" 页或 "作业详细信息" 页上选择 " **复制** "：
 
-:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="显示 "复制" 按钮的屏幕截图":::
+:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="显示 复制 按钮的屏幕截图":::
 
 此时会打开一个作业配置副本供你编辑，并且 **复制** 将追加到作业名称。
 
