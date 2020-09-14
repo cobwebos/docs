@@ -80,7 +80,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。
 | IP 类型 | IP 类型确定单个 IP 地址是与前端关联还是使用 IP 前缀来确定 IP 地址范围。 </br> 当你需要重复连接到同一终结点时， [公共 IP 前缀](../virtual-network/public-ip-address-prefix.md) 可帮助。 前缀可确保提供足够的端口来协助 SNAT 端口问题。 |
 | 如果选择上述前缀，则公共 IP 地址 (或前缀)  | 为负载均衡器前端选择或创建新的公共 IP (或前缀) 。 |
 
-:::image type="content" source="./media/manage/frontend.png" alt-text=""创建前端 ip 配置" 页。" border="true":::
+:::image type="content" source="./media/manage/frontend.png" alt-text="创建前端 ip 配置 页。" border="true":::
 
 ## <a name="backend-pools"></a>后端池
 
