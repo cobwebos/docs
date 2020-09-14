@@ -34,7 +34,7 @@ ms.locfileid: "89614080"
 
 在 Visual Studio 2019 中，选择 " _文件" > 新建 > 项目_ "并搜索 _Azure Functions_ 模板，然后选择" _下一步_"。
 
-:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio： "新建项目" 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio： 新建项目 对话框":::
 
 指定函数应用的名称，然后选择 " _创建_"。
 
@@ -46,7 +46,7 @@ ms.locfileid: "89614080"
 
 创建 function app 后，visual studio 将在项目文件夹中的 **function.cs** 文件中自动填充代码示例。 此 short Azure 函数用于记录事件。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：包含示例代码的 "项目" 窗口":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：包含示例代码的 项目 窗口":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>使用事件网格触发器编写 Azure 函数
 
@@ -164,15 +164,15 @@ namespace adtIngestFunctionSample
 
 选择 " **Azure** " 作为发布目标，然后选择 " **下一步**"。
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio： "发布 Azure 函数" 对话框，选择 "Azure" ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio： 发布 Azure 函数 对话框，选择 Azure ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text=""Visual Studio：发布函数" 对话框中，选择 "Azure Function App (Windows) 或基于计算机 (Linux) ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text=""Visual Studio：发布函数 对话框中，选择 Azure Function App (Windows) 或基于计算机 (Linux) ":::
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：发布函数对话框，创建新的 Azure 函数":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： "发布函数" 对话框，填写字段，然后选择 "创建"":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： 发布函数 对话框，填写字段，然后选择 创建":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio： "发布函数" 对话框，从列表中选择函数应用，然后单击 "完成"":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio： 发布函数 对话框，从列表中选择函数应用，然后单击 完成":::
 
 在以下页面上，为新的 function app、资源组和其他详细信息输入所需的名称。
 为了使函数应用能够访问 Azure 数字孪生，它需要具有系统管理的标识并且有权访问 Azure 数字孪生实例。
