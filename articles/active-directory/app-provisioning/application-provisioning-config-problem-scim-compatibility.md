@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 7f400d6959a40361ea3beff8bd21c2fa9ef2996a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065482"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052624"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -27,7 +27,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 本文介绍 Azure AD 用户预配服务遵循 SCIM 2.0 协议当前和过去面临的问题，以及如何解决这些问题。
 
 ## <a name="understanding-the-provisioning-job"></a>了解预配作业
-预配服务使用作业的概念来针对应用程序进行操作。 可在[进度栏](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)中找到 jobID。 所有新的预配应用程序都是使用以 "scim" 开头的 jobID 创建的。 Scim 作业表示服务的当前状态。 旧作业的 ID 为 "customappsso"。 此作业表示服务在2018中的状态。 
+预配服务使用作业的概念来针对应用程序进行操作。 可在 [进度栏](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)中找到 jobID。 所有新的预配应用程序都是使用以 "scim" 开头的 jobID 创建的。 Scim 作业表示服务的当前状态。 旧作业的 ID 为 "customappsso"。 此作业表示服务在2018中的状态。 
 
 如果使用的是库中的应用程序，则作业通常包含应用的名称 (例如，缩放雪花、dataBricks 等 ) 。 使用库应用程序时，可以跳过此文档。 这主要适用于 jobID 为 SCIM 或 customAppSSO 的非库应用程序。
 
@@ -43,14 +43,14 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 | 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 降级到 customappSSO |
 | 多值属性的批量请求包含无效路径筛选器语法 | 是  |  2018 年 12 月 18 日  | 降级到 customappSSO |
 | 组创建请求包含无效架构 URI | 是  |  2018 年 12 月 18 日  |  降级到 customappSSO |
-| 更新修补行为以确保符合性 (例如，作为布尔值和正确的组成员身份删除)  | 否 | TBD| 使用预览标志 |
+| 更新修补行为以确保符合性 (例如，作为布尔值和正确的组成员身份删除)  | 否 | 待定| 使用预览标志 |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>用于更改 SCIM 行为的标志
 在应用程序的租户 URL 中使用下面的标志，以更改默认 SCIM 客户端行为。
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="将标志 SCIM 为更高的行为。":::
 
-* 使用以下 URL 更新修补程序行为，并确保 SCIM 符合性 (例如，作为布尔值进行活动，并) 正确地删除组成员身份。 此行为当前仅在使用标志时才可用，但会成为今后几个月的默认行为。
+* 使用以下 URL 更新修补程序行为，并确保 SCIM 符合性 (例如，作为布尔值进行活动，并) 正确地删除组成员身份。 此行为当前仅在使用标志时才可用，但会成为今后几个月的默认行为。 请注意，此预览标志目前不适用于按需预配。 
   * **URL (符合 SCIM 的) ：** AzureAdScimPatch062020
   * **SCIM RFC 参考：** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2

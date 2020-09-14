@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 备份目录 | Microsoft Docs
 description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元查看和管理备份目录。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 94dccdabfa4cf83077bca3629dee8a796d27182a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515472"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054987"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 管理备份目录
 
@@ -92,8 +92,8 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
    
    1. 在 **“名称”** 文本框中，键入克隆的卷的名称。 该名称将显示在 **“卷”** 节点中。 
    2. （可选）选择“**驱动器**”，并从下拉列表中选择驱动器号。
-   3. （可选）选择 "**文件夹（NTFS）**"，键入文件夹路径或单击 "浏览"，然后选择文件夹的位置。 
-   4. 单击“创建”。
+   3.  (可选) 选择 " **文件夹 (NTFS) **"，然后键入文件夹路径或单击 "浏览" 并选择该文件夹的位置。 
+   4. 单击**创建**。
 5. 完成克隆过程后，必须初始化克隆的卷。 启动服务器管理器，并启动磁盘管理。 有关详细说明，请参阅[装载卷](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 完成初始化后，卷将列在 **“作用域”** 窗格中的 **“卷”** 节点下。  如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。
 
 ## <a name="delete-a-backup"></a>删除备份
@@ -124,9 +124,9 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
 4. 按以下步骤完成 **“克隆云快照”** 对话框操作： 
    
    1. 在 **“名称”** 文本框中，键入克隆的卷的名称。 该名称将显示在 **“卷”** 节点中。 
-   2. 可有可无选择 "**驱动器**"，然后从下拉列表中选择驱动器号。 
+   2.  (可选) 选择 " **驱动器**"，然后从下拉列表中选择驱动器号。 
    3. （可选） 选择“文件夹 (NTFS)”****，键入文件夹路径或单击“浏览”**** 并选择该文件夹的位置。 
-   4. 单击“创建”。 
+   4. 单击**创建**。 
 5. 完成克隆过程后，必须初始化克隆的卷。 启动服务器管理器，并启动磁盘管理。 有关详细说明，请参阅[装载卷](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 完成初始化后，卷将列在 **“作用域”** 窗格中的 **“卷”** 节点下。 
    
      如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。

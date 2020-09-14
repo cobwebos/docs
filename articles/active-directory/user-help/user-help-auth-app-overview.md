@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799428"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055225"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什么是 Microsoft Authenticator 应用？
 
@@ -41,8 +41,8 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 | ----|-----------|
 | 双重验证 | 要求专门使用两个验证信息片段（例如密码和 PIN）的验证过程。 Microsoft Authenticator 应用支持标准双重验证和无密码登录。 |
 | 多重身份验证 (MFA) | 所有双重验证都属于多重身份验证，要求根据组织的需求至少使用两个验证信息片段。  |
-| Microsoft 帐户（也称 MSA） | 创建自己的个人帐户，用于访问面向使用者的 Microsoft 产品和云服务，例如 Outlook、OneDrive、Xbox LIVE 或 Office 365。 Microsoft 帐户在由 Microsoft 运行的 Microsoft 使用者标识帐户系统中创建和存储。 |
-| 工作或学校帐户 | 组织为你创建工作或学校帐户（例如 alain@contoso.com），使你能够访问内部的和可能受限的资源，例如 Microsoft Azure、Windows Intune 和 Office 365。 |
+| Microsoft 帐户（也称 MSA） | 你可以创建自己的个人帐户，以便访问面向使用者的 Microsoft 产品和云服务（例如 Outlook、OneDrive、Xbox LIVE 或 Microsoft 365）。 Microsoft 帐户在由 Microsoft 运行的 Microsoft 使用者标识帐户系统中创建和存储。 |
+| 工作或学校帐户 | 你的组织将创建你的工作或学校帐户 (如 alain@contoso.com) ，使你能够访问内部和可能受限的资源，如 Microsoft Azure、Windows Intune 和 Microsoft 365。 |
 | 验证码 | 在每个添加的帐户下显示在验证器应用中的六位代码。 验证码每 30 秒更改一次，以防有人多次使用一个代码。 这也称为一次性密码 (OTP)。 |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>如何在应用中使用双重验证

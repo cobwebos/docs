@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5d90391dd5512b08ee6995a32bcd0b0f111b0f2b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542355"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053929"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn 帐户连接数据共享与同意
 
-可以让 Active Directory （Azure AD）组织中的用户同意使用其 LinkedIn 帐户连接其 Microsoft 工作或学校帐户。 用户连接其帐户后，某些 Microsoft 应用和服务中提供 LinkedIn 提供的信息和突出显示内容。 用户还可以期望通过来自 Microsoft 的信息改进和丰富领英上的网络体验。
+你可以在 Active Directory (Azure AD) 组织的用户同意使用其 LinkedIn 帐户连接其 Microsoft 工作或学校帐户。 用户连接其帐户后，某些 Microsoft 应用和服务中提供 LinkedIn 提供的信息和突出显示内容。 用户还可以期望通过来自 Microsoft 的信息改进和丰富领英上的网络体验。
 
 若要在 Microsoft 应用和服务中查看领英信息，用户必须同意将自己的 Microsoft 帐户和领英帐户进行连接。 当用户首次在 Outlook、OneDrive 或 SharePoint Online 中的个人资料卡片上单击查看某人的领英信息时，系统会提示他们连接其帐户。 在用户同意体验并连接其帐户之前，不会为他们完整启用领英帐户连接。
 
@@ -38,10 +38,10 @@ ms.locfileid: "87542355"
 
 必须是 Azure Active Directory 管理员才能管理组织的设置。 可以为所有用户或一组特定用户启用它。
 
-1. 若要启用或禁用集成，请按照[同意将 LinkedIn 集成到 Azure AD 组织](linkedin-integration.md)中的步骤进行操作。
-2. 当在组织中公布领英集成时，让用户访问有关 [Microsoft 应用和服务中的领英信息](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)的常见问题解答。 本文提供了有关 LinkedIn 信息显示的位置、[数据共享和隐私](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)、[如何连接帐户](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772)等信息。
+1. 若要启用或禁用集成，请按照 [同意将 LinkedIn 集成到 Azure AD 组织](linkedin-integration.md)中的步骤进行操作。
+2. 当在组织中公布领英集成时，让用户访问有关 [Microsoft 应用和服务中的领英信息](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)的常见问题解答。 本文提供了有关 LinkedIn 信息显示的位置、 [数据共享和隐私](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)、 [如何连接帐户](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772) 等信息。
 
-你必须向用户通知 Linkedin 集成，并向他们提供有关[与 Linkedin 集成的数据共享和隐私](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)相关的所有信息。 
+你必须向用户通知 Linkedin 集成，并向他们提供有关 [与 Linkedin 集成的数据共享和隐私](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)相关的所有信息。 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>用于在 Microsoft 和领英中进行数据访问的用户同意
 
@@ -73,12 +73,12 @@ ms.locfileid: "87542355"
 * 个人资料数据 - 包括诸如名字、姓氏、个人资料照片、电子邮件地址、经理以及你管理的人员的信息。
 * 日历数据 - 包括日历中的会议、其时间、位置和与会者联系信息。 日历数据中不包括有关议程、内容或会议标题等会议相关信息。
 * 兴趣数据 - 包括与帐户关联的兴趣，基于对 Microsoft 服务（如 Cortana 和 Bing for Business）的使用。
-* 订阅数据 - 包括组织提供的 Microsoft 应用和服务（如 Office 365）订阅。
+* 订阅数据-包括你的组织为 Microsoft 应用和服务提供的订阅，如 Microsoft 365。
 * 联系人数据 - 包含 Outlook、 Skype 和其他 Microsoft 帐户服务中的联系人列表，包括频繁通信或协作的人员的联系信息。 联系人会由领英定期导入、存储和使用，例如用于提供连接建议、帮助组织联系人以及显示有关联系人的更新。
 
 从 Microsoft 访问的数据不会随领英永久存储（除了联系人）。 Microsoft 联系人在用户删除之前会存储在领英中。 详细了解如何[从领英删除导入的联系人](https://www.linkedin.com/help/linkedin/answer/43377)。
 
-有关领英对个人数据的使用的详细信息，请参阅[领英隐私策略](https://www.linkedin.com/legal/privacy-policy)。 对于 LinkedIn 服务、数据传输和存储，数据可从欧盟流动到美国和背面，如[欧盟数据传输](https://www.linkedin.com/help/linkedin/answer/62533)中所述，保护你的隐私。
+有关领英对个人数据的使用的详细信息，请参阅[领英隐私策略](https://www.linkedin.com/legal/privacy-policy)。 对于 LinkedIn 服务、数据传输和存储，数据可从欧盟流动到美国和背面，如 [欧盟数据传输](https://www.linkedin.com/help/linkedin/answer/62533)中所述，保护你的隐私。
 
 ## <a name="next-steps"></a>后续步骤
 

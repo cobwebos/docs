@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1251813486d4b7406f89ac9c09c49f985fa205
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260604"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055276"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
  
@@ -25,6 +25,9 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 
 > [!NOTE] 
 > 目前，批量执行程序库支持导入和更新操作，但该库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。
+
+> [!IMPORTANT]
+> [无服务器](serverless.md)帐户当前不支持大容量执行程序库。 在 .NET 上，建议使用 V3 版本的 SDK 中提供的 [批量支持](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/) 。
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>批量执行程序库的主要功能  
  

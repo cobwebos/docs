@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb637ae3da9c6a0a3ea066ad741845bad36d5d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489623"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055157"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 
@@ -29,7 +29,7 @@ ms.locfileid: "89489623"
 组织有时需要针对多人使用单个用户名和密码，这通常发生在两种情况下：
 
 * 每个用户必须使用唯一的登录名和密码访问应用程序时（无论是本地应用还是使用者云服务，例如公司的社交媒体帐户）。
-* 创建多用户环境时。 可能使用了单个具有提升特权的本地帐户，并且该帐户用于执行核心安装、管理和恢复活动。 例如，Office 365 的本地“全局管理员”帐户或 Salesforce 中的 root 帐户。
+* 创建多用户环境时。 可能使用了单个具有提升特权的本地帐户，并且该帐户用于执行核心安装、管理和恢复活动。 例如，Microsoft 365 的本地 "全局管理员" 帐户或 Salesforce 中的根帐户。
 
 传统上，这些帐户的共享方式是通过将凭据（用户名/密码）分发给适当的人员，或者将凭据存储在多个受信任代理可以访问的共享位置。
 

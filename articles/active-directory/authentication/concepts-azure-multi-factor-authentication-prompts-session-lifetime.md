@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179345"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052658"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure 多重身份验证的会话生存期
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
     * 使用 [托管设备](../devices/overview.md) 或 [无缝 SSO](../hybrid/how-to-connect-sso.md)跨应用程序启用单一登录 (SSO) 。
     * 如果需要重新进行身份验证，请使用条件访问 [登录频率策略](../conditional-access/howto-conditional-access-session-lifetime.md)。
     * 对于从非托管设备或移动设备方案登录的用户，使用条件访问来启用持久性浏览器会话和登录频率策略。
-* 如果你有 Office 365 应用许可证或免费 Azure AD 层：
+* 如果有 Microsoft 365 应用许可证或免费 Azure AD 层：
     * 使用 [托管设备](../devices/overview.md) 或 [无缝 SSO](../hybrid/how-to-connect-sso.md)跨应用程序启用单一登录 (SSO) 。
     * 保持启用 " *保持登录* " 选项，并指导用户接受该选项。
 * 对于移动设备方案，请确保用户使用 Microsoft Authenticator 应用。 此应用程序用作其他 Azure AD 联合应用程序的代理，并减少设备上的身份验证提示。
@@ -123,13 +123,13 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 
 若要查看令牌生存期，请 [使用 Azure AD PowerShell 来查询任何 Azure AD 策略](../develop/active-directory-configurable-token-lifetimes.md#prerequisites)。 禁用已有的任何策略。
 
-如果在租户中启用了多个设置，则建议你根据可用的许可来更新设置。 例如，如果你有 Azure AD premium 许可证，则应仅使用 *登录频率* 和 *持续浏览器会话*的条件性访问策略。 如果你有 Office 365 应用或 Azure AD 免费许可证，你应该使用 " *保持登录"* 配置。
+如果在租户中启用了多个设置，则建议你根据可用的许可来更新设置。 例如，如果你有 Azure AD premium 许可证，则应仅使用 *登录频率* 和 *持续浏览器会话*的条件性访问策略。 如果有 Microsoft 365 应用或 Azure AD 免费许可证，则应使用 " *保持登录"* 配置。
 
 如果已启用可配置的令牌生存期，则很快会删除此功能。 规划迁移到条件性访问策略。
 
 下表汇总了基于许可证的建议：
 
-|              | Azure AD Free 和 Office 365 应用 | Azure AD Premium |
+|              | Azure AD Free 和 Microsoft 365 应用 | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
 | **SSO**                      | 对于非托管设备， [Azure AD 联接](../devices/concept-azure-ad-join.md)或[混合 Azure AD 联接](../devices/concept-azure-ad-join-hybrid.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md) 。 | Azure AD 加入<br />混合 Azure AD 加入 |
 | **重新身份验证设置** | 保持登录                  | 使用条件性访问策略进行登录频率和持续浏览器会话 |

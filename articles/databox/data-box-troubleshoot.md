@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/08/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200128"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053447"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>排查 Azure Data Box 和 Azure Data Box Heavy 的相关问题
 
@@ -112,13 +112,17 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**** 错误说明：Azure 文件共享将单个共享限制为 5 TB 数据。 某些共享已超过此限制。
+**错误说明：** Azure 文件共享将共享限制为 5 TiB 的数据，并且不会在存储帐户上启用大型文件共享。 已超过某些共享的此限制。
 
 **建议的解决方法：** 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 
-在错误日志中找到存在此问题的文件夹，并确保该文件夹中的文件小于 5 TB。
-
-
+- 从错误日志中确定此问题的文件夹，并确保该文件夹中的文件低于 5 TiB。
+- 5 TiB 限制不适用于允许大型文件共享的存储帐户。 但是，必须在订购时配置大型文件共享。 
+  - 联系 [Microsoft 支持部门](data-box-disk-contact-microsoft-support.md) 并请求一个新的发货标签。
+  - [在存储帐户上启用大型文件共享。](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [展开存储帐户中的文件共享](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares) ，并将配额设置为 100 TiB。
+  
+  
 ## <a name="object-or-file-size-limit-errors"></a>对象或文件大小限制错误
 
 这些错误与超过了 Azure 中允许的最大对象或文件大小的数据相关。 

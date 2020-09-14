@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 08f3a3c17a5f6ea519eea04c4b8c5e7025adcbac
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116761"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052352"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -46,7 +46,7 @@ Azure AD 中的许多帐户启用了自助服务密码重置 (SSPR) 或 Azure �
 | [电子邮件地址](#email-address) | 否 | 仅 SSPR |
 | [应用密码](#app-passwords) | 否 | 仅限在某些情况下执行 MFA |
 
-这些身份验证方法可以在 Azure 门户中进行配置，并且在更多情况下都使用[Microsoft Graph REST API beta 版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
+这些身份验证方法可以在 Azure 门户中进行配置，并且在更多情况下都使用 [Microsoft Graph REST API beta 版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
 
 本文概述了可在 Azure AD 中使用的这些不同的身份验证方法以及特定的限制或限制（如有）。
 
@@ -76,7 +76,7 @@ Authenticator 应用通过将通知推送到智能手机或平板电脑，可帮
 ![Web 浏览器提示示例的屏幕截图，其中提示用户处理 Authenticator 应用通知以完成登录过程](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> 如果你的组织有员工在中国工作或出差，则通过 Android 设备上的*移动应用方法发出的通知*在该国家/地区不起作用，因为 Google play services (包括推送通知) 在区域中被阻止。 但 iOS 通知确实有效。 对于 Android 设备，应让这些用户使用备用身份验证方法。
+> 如果你的组织有员工在中国工作或出差，则通过 Android 设备上的 *移动应用方法发出的通知* 在该国家/地区不起作用，因为 Google play services (包括推送通知) 在区域中被阻止。 但 iOS 通知确实有效。 对于 Android 设备，应让这些用户使用备用身份验证方法。
 
 ### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
 
@@ -212,7 +212,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的 Azure 多重身
 
 ### <a name="predefined-questions"></a>预定义问题
 
-以下预定义的安全问题可作为 SSPR 的验证方法使用。 所有这些安全问题都已根据用户的浏览器区域设置翻译并本地化为 Office 365 的完整语言集：
+以下预定义的安全问题可作为 SSPR 的验证方法使用。 所有这些安全问题都已根据用户的浏览器区域设置翻译和本地化为一整套 Microsoft 365 语言：
 
 * 在哪个城市遇到了第一任配偶/伴侣？
 * 父母在哪个城市相识？
@@ -300,7 +300,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的 Azure 多重身
 
 要详细了解 MFA 概念，请参阅[ Azure 多重身份验证的工作原理][concept-mfa]。
 
-详细了解如何使用[Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)配置身份验证方法。
+详细了解如何使用 [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)配置身份验证方法。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

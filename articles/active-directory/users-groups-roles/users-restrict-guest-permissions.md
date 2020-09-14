@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fb7a6654f5917c0651ffba6e672b41d14fdbe20
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489640"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055208"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>限制来宾访问权限 (预览) 在 Azure Active Directory
 
@@ -154,7 +154,7 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 
 问题 | Answer
 -------- | ------
-这些权限适用于何处？ | 这些目录级别权限在 Azure AD 服务和门户中强制执行，包括 Microsoft Graph、PowerShell v2、Azure 门户和我的应用门户。 利用 Office 365 组进行协作的 Microsoft 365 服务也会受到影响，特别是 Outlook、Microsoft 团队和 SharePoint。
+这些权限适用于何处？ | 这些目录级别权限在 Azure AD 服务和门户中强制执行，包括 Microsoft Graph、PowerShell v2、Azure 门户和我的应用门户。 利用协作方案 Microsoft 365 组 Microsoft 365 服务也会受到影响，特别是 Outlook、Microsoft 团队和 SharePoint。
 此功能在 "我的应用" 门户中的哪些部分会受到影响？ | "我的应用" 门户中的组功能将服从这些新权限。 这包括在我的应用中查看组列表和组成员身份的所有路径。 未对组磁贴可用性进行任何更改。 组磁贴可用性仍由 Azure 管理门户中的现有组设置控制。
 这些权限是否替代 SharePoint 或 Microsoft 团队来宾设置？ | 否。 这些现有设置仍然会控制这些应用程序中的体验和访问权限。 例如，如果您在 SharePoint 中看到问题，请仔细检查您的外部共享设置。
 Planner 和 Yammer 中已知的兼容性问题是什么？ | <li>当权限设置为 "受限制" 时，登录到 Planner 应用或访问 Microsoft 团队中的 Planner 的来宾将无法访问其计划或任何任务。<li>当权限设置为 "受限制" 时，登录到 Yammer 的来宾将无法离开组。

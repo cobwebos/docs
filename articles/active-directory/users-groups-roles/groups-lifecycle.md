@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799292"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054545"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>为 Microsoft 365 组配置过期策略
 
@@ -42,7 +42,7 @@ ms.locfileid: "88799292"
 
 ## <a name="activity-based-automatic-renewal"></a>基于活动的自动续订
 
-使用 Azure AD 智能，将根据最近是否使用组来自动续订组。 此功能消除了组所有者对手动操作的需要，因为它基于 Office 365 服务（如 Outlook、SharePoint 或团队）组中的用户活动。 例如，如果某个所有者或组成员执行类似于在 SharePoint 中上传文档的操作，请访问一个团队渠道，或将电子邮件发送到 Outlook 中的组，则该组将自动续订，所有者不会获得任何续订通知。
+使用 Azure AD 智能，将根据最近是否使用组来自动续订组。 此功能消除了组所有者对手动操作的需要，因为它基于 Outlook、SharePoint 或团队等 Microsoft 365 服务的组中的用户活动。 例如，如果某个所有者或组成员执行类似于在 SharePoint 中上传文档的操作，请访问一个团队渠道，或将电子邮件发送到 Outlook 中的组，则该组将自动续订，所有者不会获得任何续订通知。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>自动续订组过期的活动
 

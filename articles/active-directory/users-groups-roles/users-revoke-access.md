@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8d1b6d912cadb073251d72ee327f4b19950ab1b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147127"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055179"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>在 Azure Active Directory 中撤销用户访问
 
@@ -38,7 +38,7 @@ ms.locfileid: "89147127"
 
 然后 Azure AD 重新评估其授权策略。 如果用户仍获得授权，则 Azure AD 将发布新的访问令牌和刷新令牌。
 
-如果必须在短于令牌的生存期（通常为一小时左右）内撤销访问，则访问令牌可能是一个安全问题。 出于这个原因，Microsoft 正在积极努力将[连续访问评估](../conditional-access/concept-continuous-access-evaluation.md)引入 Office 365 应用程序，这有助于确保访问令牌在近乎实时的情况下失效。  
+如果必须在短于令牌的生存期（通常为一小时左右）内撤销访问，则访问令牌可能是一个安全问题。 出于此原因，Microsoft 正在积极努力将 [持续访问评估](../conditional-access/concept-continuous-access-evaluation.md) 引入 Microsoft 365 应用程序，这有助于确保访问令牌的不间断实时。  
 
 ## <a name="session-tokens-cookies"></a>会话令牌 (cookies)
 

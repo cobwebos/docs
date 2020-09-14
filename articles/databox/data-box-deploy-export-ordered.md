@@ -2,24 +2,24 @@
 title: 从 Azure Data Box 导出数据的教程 |Microsoft Docs
 description: 了解部署先决条件以及如何从 Azure Data Box 导出数据
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783614"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052992"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教程：创建 Azure Data Box (预览版的出口订单) 
 
 Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移到你的位置。 本教程介绍如何创建 Azure Data Box 的出口订单。 创建导出顺序的主要原因是为了进行灾难恢复，并且在本地存储区被泄露并且需要还原备份。
 
-本教程的介绍内容包括：
+在本教程中，你将学习：
 
 > [!div class="checklist"]
 >
@@ -60,7 +60,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![创建资源](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
 
-3. 选择“创建”。
+3. 选择“创建” 。
 
    ![创建 Azure Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
 
@@ -115,9 +115,20 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    若要查看 xml 输入示例，请参阅 [示例 xml 输入](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. 在 " **选择数据**" 中查看设置，然后选择 " **下一步：联系人详细信息>**"。
+9. 在 **数据选择**中，查看设置，然后选择 " **下一步：安全>**。
 
    ![联系人详细信息](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. 在 " **安全**" 中，如果要启用基于软件的双加密，请选择 **"为顺序启用双加密**"。 
+
+   除了对 Data Box 上的数据进行 AES-256 位加密外，还执行基于软件的加密。
+
+   > [!NOTE]
+   > 启用此选项可能会导致订单处理和数据复制耗时较长。 创建订单后，不能更改此选项。
+
+   ![数据框导入、双加密的安全屏幕](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   在完成时选择“下一步:联系人详细信息”以继续。
 
 10. 在 " **联系人详细信息**" 中，选择 " **+ 添加送货地址** " 以输入寄送信息。
 
@@ -157,7 +168,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
-4. 选择“创建”。
+4. 选择“创建” 。
 
    ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 

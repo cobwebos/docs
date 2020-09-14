@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798272"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053542"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 服务的管理员角色
 
@@ -29,10 +29,10 @@ ms.locfileid: "88798272"
 
 Microsoft 365 服务 | 角色内容 | API 内容
 ---------------------- | ------------------ | -----------------
-Office 365 和 Microsoft 365 业务计划中的管理员角色 | [Office 365 管理员角色](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 不可用
+Office 365 和 Microsoft 365 业务计划中的管理员角色 | [Microsoft 365 管理员角色](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 不可用
 Azure Active Directory (Azure AD) 和 Azure AD 标识保护| [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Exchange 基于角色的访问控制](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell for Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[提取角色分配](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD 管理员角色](directory-assign-admin-roles.md)<br>还有[关于 Office 365 中的 SharePoint 管理员角色](/sharepoint/sharepoint-admin-role) | [图形 API](/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](/graph/api/directoryrole-list?view=graph-rest-1.0)
+SharePoint Online | [Azure AD 管理员角色](directory-assign-admin-roles.md)<br>还 [介绍了中的 SharePoint 管理员角色 Microsoft 365](/sharepoint/sharepoint-admin-role) | [图形 API](/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Teams/Skype for Business | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](/graph/api/directoryrole-list?view=graph-rest-1.0)
 安全与合规中心（Office 365 高级威胁防护、Exchange Online Protection、信息保护） | [Office 365 管理员角色](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[提取角色分配](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 安全评分 | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](/graph/api/directoryrole-list?view=graph-rest-1.0)

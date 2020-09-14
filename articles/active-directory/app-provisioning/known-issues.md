@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270999"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052371"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -66,7 +66,13 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 - 不支持预配嵌套组。 
 - 由于租户规模的原因，不支持预配到 B2C 租户。 
 
-**预配间隔已修复** 预配周期的间隔 [时间](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) 当前不可配置。 
+**基于 OIDC 的应用程序无法使用自动预配**
+
+如果创建应用注册，企业应用中的相应服务主体将不会启用自动用户预配。 你需要请求将应用添加到库中（如果打算供多个组织使用），或创建第二个非库应用进行设置。 
+
+**预配间隔已修复**
+
+预配周期的间隔 [时间](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) 当前不可配置。 
 
 **更改不会从目标应用移动到 Azure AD**
 

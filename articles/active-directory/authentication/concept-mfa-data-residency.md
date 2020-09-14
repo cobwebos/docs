@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051159"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052273"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure 多重身份验证的数据驻留和客户数据
 
-客户数据由 Azure AD 基于你的组织在订阅 Microsoft 联机服务（如 Office 365 和 Azure）时提供的地址存储在相关地理位置。 要了解客户数据的存储位置，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
+客户数据根据你的组织在订阅 Microsoft Online 服务（例如 Microsoft 365 和 Azure）时所提供的地址 Azure AD 存储在地理位置。 要了解客户数据的存储位置，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
 
 基于云的 Azure 多重身份验证和 Azure 多重身份验证服务器会处理和存储一些个人数据和组织数据。 本文简要介绍了存储哪些数据及存储在何处。
 

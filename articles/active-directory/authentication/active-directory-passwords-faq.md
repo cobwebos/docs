@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716327"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052370"
 ---
-# <a name="self-service-password-reset-frequently-asked-questions"></a>自助服务密码重置常见问题
+# <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密码重置常见问题解答
 
-下面是一些常见问题 (FAQ) 与自助服务密码重置相关的所有方面。
+下面是与自助式密码重置相关的所有事项的一些常见问题解答 (FAQ)。
 
 如果遇到 Azure Active Directory (Azure AD) 和自助密码重置 (SSPR) 的一般性问题，而在本文中又找不到答案，可以在 [Azure Active Directory 的 Microsoft Q&A 问题页](/answers/topics/azure-active-directory.html)中请求社区帮助。 社区的成员包括工程师、产品经理、MVP 和其他 IT 专业人员。
 
@@ -104,7 +104,7 @@ ms.locfileid: "88716327"
   > * 请检查是否对目录中的身份验证数据进行了正确的格式设置，例如，+1 4255551234 或 user\@contoso.com。 
 * **问：密码重置支持哪些语言？**
 
-  > **答:** 密码重置 UI、短信和语音呼叫实现了相同语言的本地化，这些语言与 Office 365 所支持的语言相同。
+  > **答：** 密码重置 UI、短信和语音呼叫按照 Microsoft 365 中支持的相同语言进行本地化。
   >
   >
 * **问：在自己目录的配置选项卡中设置组织品牌项目后，哪些密码重置体验部分会带有品牌信息？**

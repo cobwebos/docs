@@ -2,16 +2,19 @@
 title: 在 Azure 实验室服务中使用共享映像库 | Microsoft Docs
 description: 了解如何将实验室帐户配置为使用共享映像库，以便用户可以与其他用户共享映像，其他用户可以使用该映像在实验室中创建模板 VM。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 4dc001a5e4c95db608c38f0a7c00190fd1859998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 04e3764b095706d091bb72baaae77f5a4016fd28
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445145"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052828"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中使用共享映像库
 本文介绍教师/实验室管理员如何将模板虚拟机映像保存到[共享映像库](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)，以便其他人可以使用它来创建实验室。 
+
+> [!IMPORTANT]
+> 使用共享映像库时，Azure 实验室服务仅支持少于 128 GB 操作系统磁盘空间的映像。 在创建实验室的过程中，将不会在虚拟机映像列表中显示超过 128 GB 磁盘空间或多个磁盘的映像。
 
 ## <a name="scenarios"></a>方案
 此功能支持以下两个场景： 
@@ -45,7 +48,7 @@ ms.locfileid: "85445145"
     将映像保存到共享映像库后，可以在创建其他实验室时从库中使用该映像。 还可以将映像上传到实验室上下文之外的共享映像库。 有关详细信息，请参阅[共享映像库概述](../virtual-machines/windows/shared-images.md)。 
 
     > [!IMPORTANT]
-    > 将 Azure 实验室服务中的[实验室模板映像保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)到共享映像库时，会将该映像作为**专用映像**上载到库。 [专用映像](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images)保留计算机特定的信息和用户配置文件。 你仍可以直接将通用化映像上传到 Azure 实验室服务之外的库。    
+    > 将 Azure 实验室服务中的 [实验室模板映像保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) 到共享映像库时，会将该映像作为 **专用映像**上载到库。 [专用映像](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) 保留计算机特定的信息和用户配置文件。 你仍可以直接将通用化映像上传到 Azure 实验室服务之外的库。    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>使用共享映像库中的映像
 在创建新的实验室时，教师可以在该模板的共享映像库中选择可用的自定义映像。
@@ -53,7 +56,7 @@ ms.locfileid: "85445145"
 ![使用库中的虚拟机映像](./media/how-to-use-shared-image-gallery/use-shared-image.png)
 
 > [!NOTE]
-> 可以基于 Azure 实验室服务中的**通用**映像和**专用**映像创建模板 VM。 
+> 可以基于 Azure 实验室服务中的 **通用** 映像和 **专用** 映像创建模板 VM。 
 
 
 ## <a name="next-steps"></a>后续步骤

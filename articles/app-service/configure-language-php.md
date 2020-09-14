@@ -1,22 +1,22 @@
 ---
 title: 配置 PHP 应用
-description: 了解如何在 Azure App Service 中的本机 Windows 实例或预建 PHP 容器中配置 PHP 应用。 本文介绍最常见的配置任务。
+description: 了解如何在原生 Windows 实例、预构建的 PHP 容器或 Azure 应用服务中配置 PHP 应用。 本文介绍最常见的配置任务。
 ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c510d6f1cc2aa4a7e71f64e0c296e14a9896614e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717976"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055293"
 ---
-# <a name="configure-a-php-app-for-azure-app-service"></a>为 Azure App Service 配置 PHP 应用
+# <a name="configure-a-php-app-for-azure-app-service"></a>为 Azure 应用服务配置 PHP 应用
 
-本指南演示如何在 Azure App Service 中配置 PHP web 应用、移动后端和 API 应用。
+本指南介绍了如何在 Azure 应用服务中配置 PHP Web 应用、移动后端和 API 应用。
 
-本指南为向应用服务部署应用的 PHP 开发人员提供重要的概念和说明。 若从未使用过 Azure 应用服务，则首先应按照 [PHP 快速入门](quickstart-php.md)以及[将 PHP 与 MySQL 配合使用教程](tutorial-php-mysql-app.md)进行操作。
+本指南为在应用服务中部署应用的 PHP 开发人员提供了重要概念和说明。 若从未使用过 Azure 应用服务，则首先应按照 [PHP 快速入门](quickstart-php.md)以及[将 PHP 与 MySQL 配合使用教程](tutorial-php-mysql-app.md)进行操作。
 
 ## <a name="show-php-version"></a>显示 PHP 版本
 
@@ -78,20 +78,20 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="run-composer"></a>运行编辑器
 
-如果希望应用服务在部署时运行 [编辑器](https://getcomposer.org/) ，最简单的方法是将编辑器包含在存储库中。
+如果你希望应用服务在部署时运行[编辑器](https://getcomposer.org/)，最简单的方式是在你的存储库中包括编辑器。
 
-在本地终端窗口中，将目录更改为存储库根目录，然后按照 [下载书写器](https://getcomposer.org/download/) 中的说明将 *composer.phar* 下载到目录根目录。
+在本地终端窗口中，将目录更改为你的存储库根目录，并按照[下载编辑器](https://getcomposer.org/download/)中的说明将 composer.phar 下载到目录根目录。
 
-运行以下命令 (需要安装 [npm](https://www.npmjs.com/get-npm)) ：
+运行以下命令（需要安装 [npm](https://www.npmjs.com/get-npm)）：
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-存储库根现在包含两个附加文件： *. deployment* 和 *deploy.sh*。
+你的存储库根目录中现在有两个额外的文件：.deployment 和 deploy.sh。
 
-打开 *deploy.sh* 并找到如下所 `Deployment` 示的部分：
+打开 deploy.sh 并找到 `Deployment` 节，该节如下所示：
 
 ```bash
 ##################################################################################################################################
@@ -99,7 +99,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-添加代码部分，需要 *在节末尾* 运行所需的工具 `Deployment` ：
+在 `Deployment` 节的末尾添加运行必需工具所需的代码节：
 
 ```bash
 # 4. Use composer
@@ -113,13 +113,13 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-提交所有更改并使用 Git 部署代码，或启用生成自动化的 Zip 部署。 书写器现在应作为部署自动化的一部分运行。
+提交所有更改，并在启用了生成自动化的情况下使用 Git 或 Zip 部署来部署你的代码。 编辑器现在应作为部署自动化的一部分运行。
 
 ## <a name="run-gruntbowergulp"></a>运行 Grunt/Bower/Gulp
 
-如果希望应用服务在部署时运行常用的自动化工具，如 Grunt、Bower 或 Gulp，则需要提供 [自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 当你通过 Git 进行部署或启用了生成自动化的 [Zip 部署](deploy-zip.md) 时，应用服务将运行此脚本。 
+如果你希望应用服务在部署时运行常用的自动化工具（例如 Grunt、Bower 或 Gulp），则你需要提供[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 当你在启用了生成自动化的情况下通过 Git 或 [Zip 部署](deploy-zip.md)进行部署时，应用服务会运行此脚本。 
 
-若要使存储库能够运行这些工具，需要将它们添加到*package.js上*的依赖项。 例如：
+若要使你的存储库能够运行这些工具，需要将它们添加到 package.json 中的依赖项。 例如：
 
 ```json
 "dependencies": {
@@ -130,16 +130,16 @@ fi
 }
 ```
 
-在本地终端窗口中，将目录更改为存储库根，并运行以下命令 (需要安装 [npm](https://www.npmjs.com/get-npm)) ：
+在本地终端窗口中，将目录更改到你的存储库根目录，并运行以下命令（你需要安装 [npm](https://www.npmjs.com/get-npm)）：
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-存储库根现在包含两个附加文件： *. deployment* 和 *deploy.sh*。
+你的存储库根目录中现在有两个额外的文件：.deployment 和 deploy.sh。
 
-打开 *deploy.sh* 并找到如下所 `Deployment` 示的部分：
+打开 deploy.sh 并找到 `Deployment` 节，该节如下所示：
 
 ```bash
 ##################################################################################################################################
@@ -147,17 +147,17 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-此部分结束于运行 `npm install --production` 。 添加代码部分，需要 *在节末尾* 运行所需的工具 `Deployment` ：
+该节在末尾处运行 `npm install --production`。 在 `Deployment` 节的末尾添加运行必需工具所需的代码节：
 
 - [Bower](#bower)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
-请参阅 [MEAN.js 示例中的示例](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)，在该示例中，部署脚本也运行自定义 `npm install` 命令。
+请参阅 [MEAN.js 示例中的示例](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)，其中的部署脚本也运行自定义 `npm install` 命令。
 
 ### <a name="bower"></a>Bower
 
-此代码段将运行 `bower install` 。
+此代码片段运行 `bower install`。
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/bower.json" ]; then
@@ -170,7 +170,7 @@ fi
 
 ### <a name="gulp"></a>Gulp
 
-此代码段将运行 `gulp imagemin` 。
+此代码片段运行 `gulp imagemin`。
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
@@ -183,7 +183,7 @@ fi
 
 ### <a name="grunt"></a>Grunt
 
-此代码段将运行 `grunt` 。
+此代码片段运行 `grunt`。
 
 ```bash
 if [ -e "$DEPLOYMENT_TARGET/Gruntfile.js" ]; then
@@ -241,9 +241,9 @@ getenv("DB_HOST")
 
 ::: zone pivot="platform-windows"  
 
-所选的 Web 框架可能使用子目录作为站点根路径。 例如， [Laravel](https://laravel.com/)使用 *公共/* 子目录作为网站根目录。
+所选的 Web 框架可能使用子目录作为站点根路径。 例如，[Laravel](https://laravel.com/) 使用 public/ 子目录作为站点根路径。
 
-若要自定义站点根，请使用命令设置应用的虚拟应用程序路径 [`az resource update`](/cli/azure/resource#az-resource-update) 。 下面的示例将站点根目录设置为存储库中的 *公共/* 子目录。 
+若要自定义站点根路径，请使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令设置应用的虚拟应用程序路径。 下面的示例将站点根路径设置为存储库中的 public/ 子目录。 
 
 ```azurecli-interactive
 az resource update --name web --resource-group <group-name> --namespace Microsoft.Web --resource-type config --parent sites/<app-name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -262,7 +262,7 @@ az resource update --name web --resource-group <group-name> --namespace Microsof
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    RewriteCond %{REQUEST_URI} ^/$
+    RewriteCond %{REQUEST_URI} ^(.*)
     RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
@@ -295,7 +295,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 
 ::: zone pivot="platform-windows"  
 
-若要自定义 PHP_INI_USER、PHP_INI_PERDIR 和 PHP_INI_ALL 指令 (参阅 [php.ini 指令](https://www.php.net/manual/ini.list.php)) ，请将 `.user.ini` 文件添加到应用程序的根目录中。
+若要自定义 PHP_INI_USER、PHP_INI_PERDIR 和 PHP_INI_ALL 指令（请参阅 [php.ini 指令](https://www.php.net/manual/ini.list.php)），请将 `.user.ini` 文件添加到应用的根目录中。
 
 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `.user.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
 
@@ -310,7 +310,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 
 通过更改重新部署应用，然后重启该应用。
 
-作为使用文件的替代方法 `.user.ini` ，可以在应用中使用 [ini_set ( # B1 ](https://www.php.net/manual/function.ini-set.php) 来自定义这些非 PHP_INI_SYSTEM 指令。
+除了使用 `.user.ini` 文件之外，还可以在应用中使用 [ini_set()](https://www.php.net/manual/function.ini-set.php) 来自定义这些非 PHP_INI_SYSTEM 指令。
 
 ::: zone-end
 
@@ -348,7 +348,7 @@ php_value upload_max_filesize 10M
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="d:\home\site\ini"
 ```
 
-导航到 Kudu 控制台 (`https://<app-name>.scm.azurewebsites.net/DebugConsole`) 并导航到 `d:\home\site` 。
+导航到 Kudu 控制台 (`https://<app-name>.scm.azurewebsites.net/DebugConsole`)，然后导航到 `d:\home\site`。
 
 在 `d:\home\site` 中创建名为 `ini` 的目录，然后使用要自定义的指令在 `d:\home\site\ini` 目录中创建 .ini 文件（例如 settings.ini） 。 使用将在 php.ini 文件中使用的相同语法。 
 
@@ -452,7 +452,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 
 ::: zone pivot="platform-windows"  
 
-使用标准 [error_log ( # B1 ](https://php.net/manual/function.error-log.php) 实用工具使诊断日志显示在 Azure App Service 中。
+使用标准 [error_log()](https://php.net/manual/function.error-log.php) 实用工具使诊断日志显示在 Azure 应用服务中。
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
@@ -469,7 +469,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 如果运行中的 PHP 应用在应用服务中的行为不同或有错误，请尝试执行以下操作：
 
 - [访问日志流](#access-diagnostic-logs)。
-- 在生产模式下，在本地测试应用。 应用服务在生产模式下运行你的应用，因此你需要确保你的项目在生产模式下以本地方式按预期方式工作。 例如：
+- 在生产模式下，在本地测试应用。 应用服务在生产模式下运行你的应用，因此你需要确保项目在生产模式下按预期在本地运行。 例如：
     - 根据 composer.json，可以为生产模式安装不同的包（`require` 与 `require-dev`）。
     - 某些 Web 框架可以在生产模式下通过各种方式部署静态文件。
     - 在生产模式下运行时，某些 Web 框架可能会使用自定义的启动脚本。

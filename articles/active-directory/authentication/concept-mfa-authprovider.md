@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7e4772ba2b3d8adf163d6f2932461e1e939ed84
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81309904"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052437"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
 
 > [!IMPORTANT]
 > 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 现有的身份验证提供程序可能继续使用和更新，但不可能再进行迁移。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
 
-双重验证对于具有 Azure Active Directory 和 Office 365 用户的全局管理员默认可用。 但是，如果想充分利用[高级功能](howto-mfa-mfasettings.md)，则应购买完整版的 Azure 多重身份验证 (MFA)。
+默认情况下，具有 Azure Active Directory 和 Microsoft 365 用户的全局管理员可以使用双重验证。 但是，如果想充分利用[高级功能](howto-mfa-mfasettings.md)，则应购买完整版的 Azure 多重身份验证 (MFA)。
 
 使用 Azure 多重身份验证提供程序以便利用 Azure 多重身份验证为**没有许可证的用户**提供的功能。
 
@@ -46,7 +46,7 @@ ms.locfileid: "81309904"
 ### <a name="removing-an-authentication-provider"></a>删除身份验证提供程序
 
 > [!CAUTION]
-> 删除身份验证提供程序时，不会出现任何确认。 选择 "**删除**" 是永久性过程。
+> 删除身份验证提供程序时，不会出现任何确认。 选择 " **删除** " 是永久性过程。
 
 可在**Azure 门户**  >  **Azure Active Directory**  >  **安全**  >  **MFA**  >  **提供程序**中找到身份验证提供程序。 单击列出的提供程序，查看与该提供程序关联的详细信息和配置。
 

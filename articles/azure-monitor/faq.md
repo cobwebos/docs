@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4a5203a91ba528328dce7036d4690c6dea137c33
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569197"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054256"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -785,7 +785,7 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 
 该近似值非常适合基于请求/响应的协议，即在连接上发出单个请求，到达的也是单个响应。 这种情况适用于 HTTP(S)（不带管道），但不适用于其他协议。
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我使用的是 Log Analytics 免费定价计划，它们有何限制？
+### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我处于 Log Analytics 免费定价计划中，是否有限制？
 如果已经为 Azure Monitor 配置了使用*免费*定价层的 Log Analytics 工作区，则用于 VM 的 Azure Monitor 的映射功能将仅支持已连接到工作区的五台计算机。 如果已有五台 VM 连接到免费工作区，你断开了其中一台 VM 的连接，然后连接到一台新的 VM，则新的 VM 将不受监视并且不会反映在“映射”页上。  
 
 此情况下，在你打开 VM 并从左侧窗格中选择“见解”时，甚至在 VM 上安装它后，系统都将通过“立即尝试”选项向你发出提示 。  但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 

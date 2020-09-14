@@ -3,7 +3,7 @@ title: 部署 StorSimple Snapshot Manager | Microsoft Docs
 description: 了解如何下载和安装 StorSimple Snapshot Manager，这是用于管理 StorSimple 数据保护和备份功能的 MMC 管理单元。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75933382"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055072"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 管理单元
 
@@ -160,7 +160,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
    > 如果有任何 MMC 进程正在后台中运行，例如 StorSimple Snapshot Manager 或磁盘管理，则卸载会失败且会收到提示在尝试卸载程序前关闭 MMC 的所有实例的消息。 选择 **“自动关闭应用程序并尝试在安装程序完成后重新启动它们”**，然后单击 **“确定”**。
    > 
    > 
-5. 卸载过程完成后，会出现“安装成功”**** 消息。 单击“关闭” 。
+5. 卸载过程完成后，会出现“安装成功”**** 消息。 单击“关闭”。
 
 ### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>第 2 步：备份 StorSimple Snapshot Manager 数据库
 使用以下步骤创建并保存 StorSimple Snapshot Manager 数据库的副本。

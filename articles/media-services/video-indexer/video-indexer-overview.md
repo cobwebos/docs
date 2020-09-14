@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: bff99cdd44763c0df6bb5b2dd863b27728c23fcd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318671"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052131"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什么是 Azure 媒体服务视频索引器？
 
@@ -81,7 +81,7 @@ ms.locfileid: "89318671"
 * **双通道处理**：自动检测单独的脚本并合并到单个时间轴。
 * **噪声消减**：清理电话音频或有噪音的录制内容（基于 Skype 滤波器）。
 * **脚本自定义** (CRIS)：训练自定义语音转文本模型，以创建行业特定的脚本。 有关详细信息，请参阅[从视频索引器网站自定义语言模型](customize-language-model-with-website.md)和[使用视频索引器 API 自定义语言模型](customize-language-model-with-api.md)。
-* **说话人枚举**：映射和了解哪个说话人在何时说了哪些话。
+* **说话人枚举**：映射和了解哪个说话人在何时说了哪些话。 可以在单个音频文件中检测十六个扬声器。
 * **说话人统计信息**：提供说话人发言比率的统计数据。
 * **文本内容审核**：检测音频脚本中的显式文本。
 * **音效**：识别击掌、讲话和静音等音效。

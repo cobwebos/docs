@@ -3,12 +3,12 @@ title: 使用 MARS 代理备份 Windows 计算机
 description: 使用 Microsoft Azure 恢复服务 (MARS) 代理来备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182082"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052216"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>将 Windows Server 文件和文件夹备份到 Azure
 
@@ -125,7 +125,7 @@ Azure 备份中的网络限制在本地操作系统上使用[服务质量 (QoS)]
 1. 在“限制”选项卡上，选择“为备份操作启用 Internet 带宽使用限制”。
 
     ![针对备份操作设置网络限制](./media/backup-configure-vault/throttling-dialog.png)
-1. 指定在工作时间和下班时间允许的带宽。 带宽值最小为 512 Kbps，最大为 1,023 MBps。 然后选择“确定”。
+1. 指定在工作时间和下班时间允许的带宽。 带宽值从 512 Kbps 开始，最高可达 1023 Mbps。 然后选择“确定”。
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 专用终结点以私密方式连接到 Web 应用
-description: 本文介绍如何使用 Azure 专用终结点将专用连接到 Web 应用
+title: '使用 Azure 专用终结点将专用连接到 web 应用 (预览) '
+description: 本文介绍如何使用 Azure 专用终结点 (预览) ，将专用连接到 web 应用。
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
@@ -8,216 +8,222 @@ ms.date: 09/08/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 3d547546c3c0e0bbcdde65a654bf373ab7407be3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: ccbcdbe9204120e1cf181136f566556ec30be871
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569437"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054528"
 ---
-# <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>使用 Azure 专用终结点以私密方式连接到 Web 应用（预览版）
+# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint-preview"></a>使用 Azure 专用终结点将专用连接到 web 应用 (预览) 
 
-Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你以私密方式连接到 Web 应用。
-本快速入门介绍如何使用专用终结点部署一个 Web 应用，然后从虚拟机连接到此 Web 应用。
+Azure 专用终结点 (预览) 是 Azure 专用链接的基本构建基块。 通过使用专用终结点，你可以私下连接到你的 web 应用。 本文介绍如何使用专用终结点部署 web 应用，然后从虚拟机 (VM) 连接到 web 应用。
 
-有关详细信息，请参阅 [使用 Azure Web 应用的专用终结点][privatenedpointwebapp]。
+有关详细信息，请参阅 [将专用终结点用于 Azure web 应用][privateendpointwebapp]。
 
 > [!Note]
->在公共区域中，针对高级 V2 Windows 和 Linux Web 应用以及弹性高级函数提供了此预览版。 
+> 专用终结点 (预览) 在公共区域中提供，用于 PremiumV2 层 Windows web 应用、Linux web 应用和 Azure Functions 高级版计划 (有时称为弹性高级计划) 。 
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-通过 https://portal.azure.com 登录到 Azure 门户。
+在开始之前，请登录到 [Azure 门户](https://portal.azure.com)。
 
-## <a name="virtual-network-and-virtual-machine"></a>虚拟网络和虚拟机
+## <a name="create-a-virtual-network-and-virtual-machine"></a>创建虚拟网络和虚拟机
 
-在本部分，你将创建虚拟网络和子网来托管用于通过专用终结点访问 Web 应用的 VM。
+在本部分中，将创建一个虚拟网络和子网，以托管将用于通过专用终结点访问 web 应用的 VM。
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络
 
-在本部分，请创建虚拟网络和子网。
+若要创建虚拟网络和子网，请执行以下操作：
 
-1. 在屏幕的左上方选择“创建资源” > “网络” > “虚拟网络”，或者在搜索框中搜索“虚拟网络”。   
+1. 在左侧窗格中，选择 "**创建资源**" "网络" "  >  **Networking**  >  **虚拟网络**"。
 
-1. 在“创建虚拟网络”的“基本信息”选项卡中，输入或选择以下信息：
-
-   > [!div class="mx-imgBorder"]
-   > ![创建虚拟网络][1]
-
-1. 单击“下一步:IP 地址 >”并输入或选择以下信息：
+1. 在 " **创建虚拟网络** " 窗格上，选择 " **基本** 信息" 选项卡，然后输入此处显示的信息：
 
    > [!div class="mx-imgBorder"]
-   >![配置 IP 地址][2]
+   > ![Azure 门户中的 "创建虚拟网络" 窗格的屏幕截图。][1]
 
-1. 在“子网”部分，单击“+ 添加子网”并输入以下信息，然后单击“添加” 
-
-   > [!div class="mx-imgBorder"]
-   >![添加子网][3]
-
-1. 单击“查看 + 创建”
-
-1. 通过验证后，单击“创建”。
-
-### <a name="create-virtual-machine"></a>创建虚拟机
-
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “计算” > “虚拟机”  
-
-1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
+1. 选择 " **IP 地址** " 选项卡，然后输入此处显示的信息：
 
    > [!div class="mx-imgBorder"]
-   >![虚拟机基本信息][4]
+   > !["创建虚拟网络" 窗格上的 "IP 地址" 选项卡的屏幕截图。][2]
 
-1. 选择“下一步:磁盘”
-
-   保留默认设置。
-
-1. 选择“下一步:网络”，然后选择以下信息：
+1. 在 " **子网** " 部分中，选择 " **添加子网**"，输入此处显示的信息，然后选择 " **添加**"。
 
    > [!div class="mx-imgBorder"]
-   >![网络][5]
+   > !["添加子网" 窗格的屏幕截图。][3]
 
-1. 单击“查看 + 创建”
+1. 选择“查看 + 创建”。
 
-1. 显示通过了验证的消息后，单击“创建”
+1. 验证成功后，选择 " **创建**"。
 
-## <a name="create-your-web-app-and-private-endpoint"></a>创建 Web 应用和专用终结点
+### <a name="create-the-virtual-machine"></a>创建虚拟机
 
-在本部分，你将创建一个要通过专用终结点连接到的 Web 应用。
+若要创建虚拟机，请执行以下操作：
+
+1. 在 Azure 门户的左窗格中，选择 "**创建资源**" "计算" "  >  **Compute**  >  **虚拟机**"。
+
+1. 在 " **创建虚拟机-基础知识** " 窗格上，输入此处显示的信息：
+
+   > [!div class="mx-imgBorder"]
+   > !["创建虚拟机" 窗格的屏幕截图。][4]
+
+1. 在完成时选择“下一步:**磁盘”** 。
+
+1. 在 " **磁盘** " 窗格中，保留默认设置，然后选择 " **下一步：网络**"。
+
+1. 在 " **网络** " 窗格中，输入如下所示的信息：
+
+   > [!div class="mx-imgBorder"]
+   > !["创建虚拟机" 窗格上的 "网络" 选项卡的屏幕截图。][5]
+
+1. 选择“查看 + 创建”。
+
+1. 验证成功后，选择 " **创建**"。
+
+## <a name="create-a-web-app-and-a-private-endpoint"></a>创建 web 应用和专用终结点
+
+在本部分中，将创建一个使用专用终结点的专用 web 应用。
 
 > [!Note]
->专用终结点功能仅适用于高级 V2 SKU。
+> 专用终结点功能仅可用于 PremiumV2 层。
 
-### <a name="web-app"></a>Web 应用
+### <a name="create-the-web-app"></a>创建 Web 应用
 
-1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "  >  **web**  >  **应用**"
+1. 在 Azure 门户的左窗格中，选择 "**创建资源**" "  >  **web**  >  **web 应用**"。
 
-1. 在“创建 Web 应用 - 基本信息”中，输入或选择以下信息：
+1. 在 " **Web 应用** " 窗格上，选择 " **基本** 信息" 选项卡，然后输入此处显示的信息：
 
    > [!div class="mx-imgBorder"]
-   >![Web 应用基本信息][6]
+   > !["Web 应用" 窗格上的 "基本信息" 选项卡的屏幕截图。][6]
 
-1. 选择“查看 + 创建”
+1. 选择“查看 + 创建”。
 
-1. 显示通过了验证的消息后，单击“创建”
+1. 验证成功后，选择 " **创建**"。
 
 ### <a name="create-the-private-endpoint"></a>创建专用终结点
 
-1. 在 Web 应用属性中，选择“设置” > “网络”，然后单击“配置专用终结点连接”  
+1. 在 "web 应用属性" 的 " **设置**" 下，选择 " **网络**"，然后在 " **专用终结点连接 (预览") **下，选择 " **配置专用终结点连接**"。
 
    > [!div class="mx-imgBorder"]
-   >![Web 应用网络][7]
+   > ![Web 应用网络窗格上的 "配置专用终结点连接" 链接的屏幕截图。][7]
 
-1. 在向导中单击“+ 添加”
-
-   > [!div class="mx-imgBorder"]
-   >![Web 应用专用终结点][8]
-
-1. 填写订阅、VNet 和子网信息，然后单击“确定”
+1. 在 " **专用终结点连接 (预览") ** 向导中，选择 " **添加**"。
 
    > [!div class="mx-imgBorder"]
-   >![Web 应用网络][9]
+   > !["专用终结点连接 (预览) " 向导中的 "添加" 按钮的屏幕截图。][8]
 
-1. 查看专用终结点的创建结果
-
-   > [!div class="mx-imgBorder"]
-   >![查看][10]
-   >![专用终结点的最终视图][11]
-
-## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
-
-1. 在门户的搜索栏中，输入 myVm。
-1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开，请选择“RDP”
+1. 在 " **订阅**"、" **虚拟网络**" 和 " **子网** " 下拉列表中选择正确的信息，然后选择 **"确定"**。
 
    > [!div class="mx-imgBorder"]
-   >![“RDP”按钮][12]
+   > ![" (预览版添加专用终结点) " 窗格的屏幕截图。][9]
 
-1. 单击“下载 RDP”文件后，Azure 会创建远程桌面协议 (.rdp) 文件，并将其下载到计算机
+1. 监视专用终结点的创建进度。
 
    > [!div class="mx-imgBorder"]
-   >![下载 RDP 文件][13]
+   > ![添加专用终结点的进度屏幕截图。 ][10]
+   >  ![新创建的专用终结点的屏幕截图。][11]
 
-1. 打开 downloaded.rdp 文件。
+## <a name="connect-to-the-vm-from-the-internet"></a>从 internet 连接到 VM
 
-   - 出现提示时，选择“连接”。
-   - 输入在创建 VM 时指定的用户名和密码。
+1. 在 Azure 门户 **搜索** 框中，输入 **myVm**。
+1. 选择 " **连接**"，然后选择 " **RDP**"。
+
+   > [!div class="mx-imgBorder"]
+   > !["MyVM" 窗格上的 "RDP" 按钮的屏幕截图。][12]
+
+1. 在 " **与 RDP 连接** " 窗格中，选择 " **下载 rdp 文件**"。  
+
+   > [!div class="mx-imgBorder"]
+   > !["通过 RDP 连接" 窗格上的 "下载 RDP 文件" 按钮的屏幕截图。][13]
+
+   Azure 会创建一个远程桌面协议 (RDP) 文件，并将其下载到计算机。   
+
+1. 打开下载的 RDP 文件。
+
+   a. 在提示符下，选择 " **连接**"。  
+   b. 输入创建 VM 时指定的用户名和密码。
+
+     > [!Note]
+     > 若要使用这些凭据，你可能需要选择 "**更多**选择" "  >  **使用其他帐户**"。
+
+1. 选择“确定” 。
 
    > [!Note]
-   > 可能需要选择“更多选择”>“使用其他帐户”，以指定在创建 VM 时输入的凭据。
+   > 如果在登录过程中收到证书警告，请选择 **"是"** 或 " **继续**"。
 
-   - 选择“确定”。
+1. 当 VM 桌面窗口出现时，将其最小化以返回到本地桌面。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
+## <a name="access-the-web-app-privately-from-the-vm"></a>从 VM 私下访问 web 应用
 
-1. VM 桌面出现后，将其最小化以返回到本地桌面。
+在本部分中，将使用专用终结点将专用连接到 web 应用。
 
-## <a name="access-web-app-privately-from-the-vm"></a>从 VM 以私密方式访问 Web 应用
-
-在本部分，你将使用专用终结点以私密方式连接到 Web 应用。
-
-1. 获取专用终结点的专用 IP，在搜索栏中键入“专用链接”，然后选择“专用链接”
+1. 若要获取专用终结点的专用 IP，请在 **搜索** 框中键入 " **专用链接** "，然后在结果列表中选择 " **专用链接**"。
 
    > [!div class="mx-imgBorder"]
-   >![专用链接][14]
+   > ![搜索结果列表中的 "专用链接" 链接的屏幕截图。][14]
 
-1. 在专用链接中心，选择“专用终结点”以列出所有专用终结点
-
-   > [!div class="mx-imgBorder"]
-   >![专用链接中心][15]
-
-1. 选择指向 Web 应用和子网的专用终结点链接
+1. 在 "专用链接中心" 的左窗格中，选择 " **专用终结点** " 以显示专用终结点。
 
    > [!div class="mx-imgBorder"]
-   >![专用终结点属性][16]
+   > ![专用链接中心中的专用终结点列表的屏幕截图。][15]
 
-1. 复制专用终结点的专用 IP 和 Web 应用的 FQDN，在本例中为 webappdemope.azurewebsites.net 10.10.2。4
-
-1. 在 myVM 中，验证是否无法通过公共 IP 访问 Web 应用。 打开浏览器并粘贴 Web 应用名称，此时必须出现“403 禁止”错误页
+1. 选择链接到你的 web 应用和子网的专用终结点。
 
    > [!div class="mx-imgBorder"]
-   >![尝试使用 IP 地址时出现错误禁止][17]
+   > ![专用终结点的 "属性" 窗格的屏幕截图。][16]
+
+1. 将专用终结点的专用 IP 和完全限定的域名复制 (web 应用的 FQDN) 。 在前面的示例中，专用 ID 是 *`webappdemope.azurewebsites.net 10.10.2.4`* 。
+
+1. 在 " **myVM** " 窗格上，验证 web 应用是否无法通过公共 IP 访问。 为此，请打开浏览器并粘贴 web 应用名称。 该页应显示 "错误 403-禁止显示" 消息。
+
+   > [!div class="mx-imgBorder"]
+   > !["错误 403-禁止访问" 错误页的屏幕截图。][17]
 
    > [!Important]
-   > 由于此功能目前为预览版，因此需要手动管理 DNS 条目。
+   > 由于此功能处于预览阶段，因此需要手动管理域名服务 (DNS) 条目。
 
-   对于 DNS，有两种选择：
-   - 使用 VM 的主机文件 
-   - 或使用 Azure DNS 专用区域服务。
+   对于 DNS，执行以下任一操作：
+ 
+   - 使用 Azure DNS 专用区域服务。  
 
-1. 第一个解决方案：你可以创建名为 privatelink.azurewebsites.net 的 DNS 专用区，并将其链接到 VNet
-1. 然后，需要使用专用终结点的 IP 地址创建两个 A 记录 (应用名称和 SCM 名称) 
-   > [!div class="mx-imgBorder"]
-   >![DNS 专用区域记录][21]
+     a. 创建名为的 DNS 专用区 *`privatelink.azurewebsites.net`* ，并将其链接到虚拟网络。  
+     b. 创建两个 A 记录 (即，应用名称和服务控制管理器 [SCM] 名称) 使用专用终结点的 IP 地址。  
+     > [!div class="mx-imgBorder"]
+     > ![DNS 专用区域记录的屏幕截图。][21]  
 
-1. 第二个解决方案：创建主机项，打开文件资源管理器并找到 hosts 文件
+   - 使用 VM 的 *hosts* 文件。  
 
-   > [!div class="mx-imgBorder"]
-   >![Hosts 文件][18]
+     a. 创建 hosts 条目，打开文件资源管理器，然后查找 *hosts* 文件。  
+     > [!div class="mx-imgBorder"]
+     > ![显示文件资源管理器中的主机文件的屏幕截图。][18]  
+     b. 通过在文本编辑器中编辑 *hosts* 文件，添加包含 web 应用的专用 IP 地址和公共名称的条目。  
+     > [!div class="mx-imgBorder"]
+     > ![Hosts 文件的文本屏幕截图。][19]  
+     c. 保存文件。
 
-1. 使用记事本编辑 hosts 文件，添加一个包含专用 IP 地址和 Web 应用公用名的条目
-
-   > [!div class="mx-imgBorder"]
-   >![Hosts 内容][19]
-
-1. 保存文件
-
-1. 打开浏览器并键入 Web 应用的 URL
+1. 在浏览器中，键入 web 应用的 URL。
 
    > [!div class="mx-imgBorder"]
-   >![包含 PE 的网站][20]
+   > ![显示 web 应用的浏览器的屏幕截图。][20]
 
-1. 你正在通过专用终结点访问 Web 应用
+你现在将通过专用终结点访问你的 web 应用。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-用完专用终结点、Web 应用和 VM 之后，请删除资源组及其包含的所有资源：
+使用完专用终结点、web 应用和 VM 后，请删除资源组及其包含的所有资源。
 
-1. 在门户顶部的搜索框中输入 ready-rg，然后从搜索结果中选择 ready-rg。
+1. 在 "Azure 门户的" **搜索** "框中，输入 **ready-rg**，然后在结果列表中选择" **ready-rg** "。
+
 1. 选择“删除资源组”。
-1. 在“键入资源组名称”字段中输入 ready-rg，然后选择“删除”。
+
+1. 在 " **键入资源组名称**" 下，输入 " **就绪-rg**"，然后选择 " **删除**"。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你在虚拟网络上创建了一个 VM、一个 Web 应用和一个专用终结点。 你已从 Internet 连接到某个 VM，并使用专用链接安全地与 Web 应用进行通信。 若要了解有关专用终结点的详细信息，请参阅 [什么是 Azure 专用终结点][privateendpoint]。
+本文介绍了如何在虚拟网络、web 应用和专用终结点上创建 VM。 你已从 internet 连接到 VM，并使用专用链接安全地传达到 web 应用。 
+
+若要详细了解 (预览) 的专用终结点，请参阅 [什么是 Azure 专用终结点？][privateendpoint]。
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png
@@ -244,5 +250,5 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 
 
 <!--Links-->
-[privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[privateendpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
 [privateendpoint]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview

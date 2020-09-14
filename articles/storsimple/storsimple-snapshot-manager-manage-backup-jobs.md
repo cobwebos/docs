@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 备份作业 | Microsoft Docs
 description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元查看和管理已计划的、当前运行的和已完成的备份作业。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
@@ -13,20 +13,20 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: fb0d330b833c8841e65d650599d74211003843bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: 3c26a84e32a17cba83b5ca895f146e561072fa62
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511494"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054953"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>使用 StorSimple Snapshot Manager查看和管理备份作业
 
 ## <a name="overview"></a>概述
 “范围”**** 窗格中的“作业”**** 节点，显示你发起的交互式或配置策略启动的“已计划”****、“最近 24 小时”**** 和“正在运行”**** 的备份任务。 
 
-本教程介绍如何使用“**作业**”节点显示已计划的、最近的和当前正在运行的备份作业的相关信息。 （作业列表和相应的信息会显示在 "**结果**" 窗格中。）此外，还可以右键单击列出的作业，并查看列出可用操作的上下文菜单。
+本教程介绍如何使用“**作业**”节点显示已计划的、最近的和当前正在运行的备份作业的相关信息。  (作业列表和相应的信息会显示在 " **结果** " 窗格中。此外，还可以通过右键单击列出的作业并查看列出可用操作的上下文菜单 ) 。
 
 ## <a name="view-scheduled-jobs"></a>查看已计划的作业
 使用以下过程查看已计划的备份作业。

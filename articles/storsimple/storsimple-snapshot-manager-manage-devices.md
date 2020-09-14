@@ -3,7 +3,7 @@ title: 使用 StorSimple Snapshot Manager 管理设备 | Microsoft Docs
 description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元连接和管理 StorSimple 设备。
 services: storsimple
 documentationcenter: ''
-author: twooley
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
-ms.author: twooley
-ms.openlocfilehash: ab9f34995cea0dee39fa002f0472298a31b9a48e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: alkohli
+ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513976"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054843"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备
 ## <a name="overview"></a>概述
@@ -31,11 +31,11 @@ ms.locfileid: "85513976"
 
 根据你的 **“视图”** 选择，**“结果”** 窗格将显示以下有关每个设备的信息。 有关配置视图的详细信息，请转到 [“查看”菜单](storsimple-use-snapshot-manager.md#view-menu)。
 
-| 结果列 | 描述 |
+| 结果列 | 说明 |
 |:--- |:--- |
-| “属性” |在 Azure 经典门户中配置的设备的名称 |
+| 名称 |在 Azure 经典门户中配置的设备的名称 |
 | 型号 |设备的型号 |
-| Version |在设备上安装的软件的版本 |
+| 版本 |在设备上安装的软件的版本 |
 | 状态 |设备是否可用 |
 | 上次同步时间 |上次同步设备时的日期和时间 |
 | 序列号 |设备的序列号 |
