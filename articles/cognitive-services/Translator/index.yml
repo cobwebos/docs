@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 275f4d4228e28e3f8c31263001b48fa28d46e353
+  ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83592740"
+  ms.lasthandoff: 09/15/2020
+  ms.locfileid: "90090000"
 landingContent:
 - title: 转换器
   linkLists:
@@ -40,18 +40,8 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 翻译文本
-      url: quickstart-translate.md
-    - text: 直译文本
-      url: quickstart-transliterate.md
-    - text: 语言检测
-      url: quickstart-detect.md
-    - text: 字典查找
-      url: quickstart-dictionary.md
-    - text: 确定句子长度
-      url: quickstart-sentences.md
-    - text: 列出支持的语言
-      url: quickstart-languages.md
+    - text: 快速入门
+      url: quickstart-translator.md
   - linkListType: tutorial
     links:
     - text: 创建 WPF 翻译应用 - C#

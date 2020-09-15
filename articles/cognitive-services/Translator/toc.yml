@@ -2,26 +2,12 @@
   href: index.yml
 - name: 转换器
   items:
-    - name: 概述
-      items:
-        - name: 什么是翻译器？
-          href: translator-info-overview.md
-        - name: 语言支持
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
+    - name: 什么是翻译器？
+      href: translator-info-overview.md
     - name: 快速入门
-      items:
-        - name: 翻译文本
-          href: quickstart-translate.md
-        - name: 直译文本
-          href: quickstart-transliterate.md
-        - name: 检测语言
-          href: quickstart-detect.md
-        - name: 查找字词翻译
-          href: quickstart-dictionary.md
-        - name: 获取支持的语言
-          href: quickstart-languages.md
-        - name: 确定句子长度
-          href: quickstart-sentences.md
+      href: quickstart-translator.md
+    - name: 语言支持
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: 教程
       items:
         - name: 通过 C# 创建一个使用翻译器的 WPF 应用
