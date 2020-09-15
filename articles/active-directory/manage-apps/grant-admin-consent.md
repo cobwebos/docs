@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e40696c935adf6bef78636770b1add81255fa8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060911"
+ms.locfileid: "90069571"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>向应用程序授予租户范围的管理员许可
 
@@ -69,6 +69,9 @@ ms.locfileid: "90060911"
 4. 选择“API 权限”，然后单击“授予管理员许可”。********
 5. 仔细查看应用程序所需的权限。
 6. 如果你同意应用程序所需的权限，请授予许可。 否则，请单击“取消”或关闭窗口。****
+
+> [!WARNING]
+> 通过 **应用注册** 向租户范围内的管理员授予许可将撤消之前已被授予租户范围的任何权限。 之前用户自己已授予的权限将不受影响。 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>构建用于授予租户范围的管理员许可的 URL
 

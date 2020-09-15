@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: d705a43da2b2db37c6601f5865ad6e569688b2a7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 72ce95373df0a670179424d8e7ea95254941db1a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010185"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085920"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
@@ -59,13 +59,13 @@ dataSource.add(new atlas.data.Point([0, 0]));
 - GeoJSON 点几何-此对象只包含一个点的坐标，而不包含其他任何内容。 `atlas.data.Point`Helper 类可用于轻松创建这些对象。
 - GeoJSON MultiPoint geometry-此对象包含多个点的坐标，而不包含其他任何点。 `atlas.data.MultiPoint`Helper 类可用于轻松创建这些对象。
 - GeoJSON 功能-此对象包含任何 GeoJSON 几何和一组属性，其中包含与几何图形关联的元数据。 `atlas.data.Feature`Helper 类可用于轻松创建这些对象。
-- `atlas.Shape`类类似于 GeoJSON 功能。 两者都包含一个 GeoJSON 几何和一组属性，这些属性包含与几何关联的元数据。 如果将 GeoJSON 对象添加到数据源，则可以轻松地在层中呈现它。 但是，如果更新了该 GeoJSON 对象的坐标属性，则数据源和映射不会更改。 这是因为 JSON 对象中没有用于触发更新的机制。 Shape 类提供用于更新其包含的数据的函数。 进行更改时，将自动通知和更新数据源和映射。 
+- `atlas.Shape` 类类似于 GeoJSON 功能。 两者都包含一个 GeoJSON 几何和一组属性，这些属性包含与几何关联的元数据。 如果将 GeoJSON 对象添加到数据源，则可以轻松地在层中呈现它。 但是，如果更新了该 GeoJSON 对象的坐标属性，则数据源和映射不会更改。 这是因为 JSON 对象中没有用于触发更新的机制。 Shape 类提供用于更新其包含的数据的函数。 进行更改时，将自动通知和更新数据源和映射。 
 
 下面的代码示例创建一个 GeoJSON 点几何，并将其传递给 `atlas.Shape` 类以使其易于更新。 地图的中心最初用于呈现符号。 将一个 click 事件添加到地图中，以便在其触发时，将鼠标坐标用于 shapes `setCoordinates` 函数。 鼠标坐标在单击事件时记录。 然后， `setCoordinates` 更新地图上符号的位置。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='切换图钉位置' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的通过 Azure Maps <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>切换图钉位置</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
+<iframe height='500' scrolling='no' title='切换图钉位置' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的通过 Azure Maps <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>切换图钉位置</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
 </iframe>
 
 > [!TIP]
@@ -73,11 +73,11 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>将自定义图标添加到符号层
 
-符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 此示例演示如何将自定义图标添加到地图资源。 然后，此图标用于使用地图上的自定义符号呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在这种情况下，我们想要呈现温度属性。 由于温度为数字，因此需要将其转换为字符串。 此外，我们还需要在其中追加 "° F"。 表达式可用于执行此串联;`['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 此示例演示如何将自定义图标添加到地图资源。 然后，此图标用于使用地图上的自定义符号呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在这种情况下，我们想要呈现温度属性。 由于温度为数字，因此需要将其转换为字符串。 此外，我们还需要在其中追加 "° F"。 表达式可用于执行此串联; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='自定义符号图像图标' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>自定义符号图像图标</a>文章。
+<iframe height='500' scrolling='no' title='自定义符号图像图标' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>自定义符号图像图标</a>文章。
 </iframe>
 
 > [!TIP]
@@ -89,7 +89,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='700' scrolling='no' title='符号层选项' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/PxVXje/'>符号层选项</a>文章。
+<iframe height='700' scrolling='no' title='符号层选项' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/PxVXje/'>符号层选项</a>文章。
 </iframe>
 
 > [!TIP]
@@ -100,16 +100,16 @@ dataSource.add(new atlas.data.Point([0, 0]));
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
+> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer)
 
 > [!div class="nextstepaction"]
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)
 
 > [!div class="nextstepaction"]
-> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
+> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
 
 > [!div class="nextstepaction"]
-> [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
+> [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 013d8b77a16a4c7cd0efdadce25fd141793070be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459515"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085988"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
@@ -26,7 +26,7 @@ Azure Monitor 中的 "解决方案 **概述** " 页显示 Log Analytics 工作�
 
 使用屏幕顶部的下拉框更改工作区或用于磁贴的时间范围。 单击解决方案的磁贴，以打开它的视图，其中包含它收集的数据的更详细分析。
 
-[![概述](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![屏幕截图显示具有所选解决方案的 "Azure 门户" 菜单和 "解决方案" 窗格中显示的解决方案。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 监视解决方案可以包含多种类型的 Azure 资源。可以像查看其他任何资源一样查看解决方案包含的任何资源。 例如，解决方案中包含的任何日志查询都列在[查询资源管理器](../log-query/get-started-portal.md#load-queries)中的“解决方案查询”下，可在使用[日志查询](../log-query/log-query-overview.md)执行临时分析时使用这些查询。
 
@@ -160,7 +160,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 * 解决方案的每项安装只能使用一个 Log Analytics 工作区和一个自动化帐户。 可将解决方案单独安装到多个工作区。
 * 如果解决方案需要自动化帐户，则必须将 Log Analytics 工作区和自动化帐户相互链接。 一个 Log Analytics 工作区只能链接到一个自动化帐户，而一个自动化帐户也只能链接到一个 Log Analytics 工作区。
 
-通过 Azure 市场安装解决方案时，系统会提示提供一个工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
+通过 Azure Marketplace 安装解决方案时，系统将提示你输入工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>验证 Log Analytics 工作区和自动化帐户之间的链接
 

@@ -1,7 +1,7 @@
 ---
 title: 使用托管标识授予对数据的访问权限
 titleSuffix: Azure Storage
-description: 使用 Azure 资源的托管标识对 Azure Vm 中运行的应用程序、函数应用和其他应用程序的 blob 和队列数据访问授权。
+description: 使用 Azure 资源的托管标识在应用程序中授予 Blob 和队列数据的访问权限，此类应用程序在 Azure VM、函数应用等位置中运行。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2087e5f8ec397123df504e9d30d351a0ba79b4a5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2927cbe9a586d8e7a35cea1b523122f9c1c3fed7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018750"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085631"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -46,9 +46,9 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 有关用于 .NET 的 Azure 标识客户端库的详细信息，请参阅[用于 .NET 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。 有关 Azure 标识客户端库的参考文档，请参阅 [Azure.Identity 命名空间](/dotnet/api/azure.identity)。
 
-### <a name="assign-azure-roles-for-access-to-data"></a>分配 Azure 角色以访问数据
+### <a name="assign-azure-roles-for-access-to-data"></a>分配可访问数据的 Azure 角色
 
-当 Azure AD 安全主体尝试访问 Blob 或队列数据时，该安全主体必须有资源访问权限。 无论安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配 Azure 角色，以授予对 Azure 存储中的 blob 或队列数据的访问权限。 有关通过 RBAC 分配权限的信息，请参阅[使用 Azure Active Directory 授予对 azure blob 和队列的访问](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)权限中的 "为**访问权限分配 azure 角色**" 一节。
+当 Azure AD 安全主体尝试访问 Blob 或队列数据时，该安全主体必须有资源访问权限。 不管安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配一个 Azure 角色，由该角色授权访问 Azure 存储中的 Blob 或队列数据。 若要了解如何通过 RBAC 分配权限，请参阅[使用 Azure Active Directory 授权访问 Azure Blob 和队列](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)中标题为“为访问权限分配 Azure 角色”的部分。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>在开发环境中对用户进行身份验证
 
@@ -62,11 +62,11 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 #### <a name="create-the-service-principal"></a>创建服务主体
 
-若要创建具有 Azure CLI 的服务主体并分配 Azure 角色，请调用 [az ad sp create for rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 此外，请提供角色分配的范围。 有关为 Azure 存储提供的内置角色的详细信息，请参阅 [azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+若要通过 Azure CLI 来创建服务主体并分配 Azure 角色，请调用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 此外，请提供角色分配的范围。 若要详细了解为 Azure 存储提供的内置角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 如果没有足够的权限将角色分配给服务主体，可能需要请求帐户所有者或管理员来执行相关角色分配。
 
-下面的示例使用 Azure CLI 创建新服务主体，并将帐户范围内的“存储 Blob 数据读取者”角色分配给它****
+下面的示例使用 Azure CLI 创建新服务主体，并将帐户范围内的“存储 Blob 数据读取者”角色分配给它 
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -88,13 +88,13 @@ az ad sp create-for-rbac \
 ```
 
 > [!IMPORTANT]
-> Azure 角色分配可能需要几分钟时间来进行传播。
+> 传播 Azure 角色分配可能需要几分钟的时间。
 
-#### <a name="set-environment-variables"></a>设置环境变量
+#### <a name="set-environment-variables"></a>设置环境变量。
 
 Azure 标识客户端库会在运行时读取三个环境变量中的值，以对服务主体进行身份验证。 下表介绍了为每个环境变量设置的值。
 
-|环境变量|“值”
+|环境变量|Value
 |-|-
 |`AZURE_CLIENT_ID`|服务主体的应用 ID
 |`AZURE_TENANT_ID`|服务主体的 Azure AD 租户 ID
@@ -165,4 +165,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [使用 RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)。
 - [将 Azure AD 与存储应用程序一起使用](storage-auth-aad-app.md)。
-- [使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据](authorize-active-directory-powershell.md)。
+- [使用 Azure AD 凭据运行 PowerShell 命令以访问 blob 数据](../blobs/authorize-active-directory-powershell.md)

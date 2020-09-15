@@ -1,14 +1,14 @@
 ---
 title: Azure Migrate 设备
-description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
+description: 提供 Azure Migrate 设备支持的摘要。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 2092b03ee95349286b9e845689b5d9d55b61c772
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060724"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084764"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -71,7 +71,7 @@ Azure Migrate 设备用于以下应用场景。
 **PowerShell 脚本** | 请参阅此 [文](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
 **软件/硬件***   |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果将设备作为 Hyper-V VM 运行，Hyper-V 主机上需要有足够的资源来分配 16-GB RAM、8 个 vCPU、约 80 GB 的存储空间，以及设备 VM 的一个外部交换机。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。 
 **Hyper-V 要求** | 如果使用 VHD 模板部署设备，那么 Azure Migrate 提供的设备 VM 是 Hyper-V VM 版本 5.0。<br/><br/> Hyper-V 主机必须运行 Windows Server 2012 R2 或更高版本。 
-**哈希值 - VHD** | [验证](tutorial-assess-hyper-v.md#verify-security) VHD 模板哈希值。
+**哈希值 - VHD** | VHD 模板哈希值。
 **哈希值 - PowerShell 脚本** | [验证](deploy-appliance-script.md#verify-file-security) PowerShell 脚本哈希值。
 
 
@@ -84,7 +84,7 @@ Azure Migrate 设备用于以下应用场景。
 **支持的部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。 可从门户下载该脚本。
 **项目支持** |  设备可与单个项目关联。 <br/> 可以将任意数量的设备与单个项目关联。<br/> 
 **发现限制** | 一个设备最多可以发现1000个物理服务器。
-**PowerShell 脚本** | 从门户或 [此处](https://go.microsoft.com/fwlink/?linkid=2140334) ( # A0) 下载压缩文件夹中的脚本。 [了解详细信息](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance)。<br/><br/> 下载大小为 85 MB。
+**PowerShell 脚本** | 从门户或 [此处](https://go.microsoft.com/fwlink/?linkid=2140334) ( # A0) 下载压缩文件夹中的脚本。 [了解详细信息](tutorial-discover-physical.md)。<br/><br/> 下载大小为 85 MB。
 **软件/硬件** |  设备应在 Windows Server 2016、16 GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接访问或通过代理访问 Internet。<br/><br/> 如果在物理计算机上运行设备，请确保它运行的是 Windows Server 2016，并满足硬件要求。<br/> 不支持在具有 Windows Server 2019 的计算机上运行设备。
 **哈希值** | [验证](deploy-appliance-script.md#verify-file-security) PowerShell 脚本哈希值。
 

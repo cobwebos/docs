@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 0edb50fd72622d3d7d628e0e02ef2c3737f8713a
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 0c4178513c5a6027b3261d6d7975d4ec7cc55c6a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500413"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085784"
 ---
 # <a name="monitoring-azure-storage"></a>监视 Azure 存储
 
@@ -76,7 +76,11 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 ## <a name="configuration"></a>配置
 
-系统会自动收集平台指标和活动日志，但你需要创建诊断设置来收集资源日志，或将其转发到 Azure Monitor 之外。 要了解使用 Azure 门户、Azure CLI 或 PowerShell 创建诊断设置的过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
+系统会自动收集平台指标和活动日志，但你需要创建诊断设置来收集资源日志，或将其转发到 Azure Monitor 之外。 
+
+若要使用 Azure 门户、Azure CLI 或 PowerShell 创建诊断设置，请参阅 [创建诊断设置以在 Azure 中收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。 
+
+若要查看创建诊断设置的 Azure 资源管理器模板，请参阅 [Azure 存储的诊断设置](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)。
 
 创建诊断设置时，请选择要为其启用日志的存储类型，如 blob、队列、表或文件。 Data Lake Storage Gen2 不会显示为存储类型。 这是因为 Data Lake Storage Gen2 是适用于 Blob 存储的一组功能。 
 
@@ -124,7 +128,7 @@ Azure 存储的所有指标都位于以下命名空间中：
 
 #### <a name="list-the-metric-definition"></a>列出指标定义
 
-你可以列出存储帐户或单个存储服务（如 blob、文件、表或队列服务）的指标定义。 请使用 [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition?view=azps-3.3.0) cmdlet。
+你可以列出存储帐户或单个存储服务（如 blob、文件、表或队列服务）的指标定义。 请使用 [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) cmdlet。
 
 在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或单个存储服务（如 blob、文件、表或队列服务）的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
 
@@ -135,7 +139,7 @@ Azure 存储的所有指标都位于以下命名空间中：
 
 #### <a name="reading-metric-values"></a>读取指标值
 
-你可以读取存储帐户或单个存储服务（如 blob、文件、表或队列服务）的帐户级指标值。 使用 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric?view=azps-3.3.0) cmdlet。
+你可以读取存储帐户或单个存储服务（如 blob、文件、表或队列服务）的帐户级指标值。 使用 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) cmdlet。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -146,7 +150,7 @@ Azure 存储的所有指标都位于以下命名空间中：
 
 #### <a name="list-the-account-level-metric-definition"></a>列出帐户级指标定义
 
-你可以列出存储帐户或单个存储服务（如 blob、文件、表或队列服务）的指标定义。 使用 [az monitor metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list-definitions) 命令。
+你可以列出存储帐户或单个存储服务（如 blob、文件、表或队列服务）的指标定义。 使用 [az monitor metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
  
 在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或单个存储服务（如 blob、文件、表或队列服务）的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
 
@@ -156,7 +160,7 @@ Azure 存储的所有指标都位于以下命名空间中：
 
 #### <a name="read-account-level-metric-values"></a>读取帐户级指标值
 
-你可以读取存储帐户或单个存储服务（如 blob、文件、表或队列服务）的指标值。 请使用 [az monitor metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) 命令。
+你可以读取存储帐户或单个存储服务（如 blob、文件、表或队列服务）的指标值。 请使用 [az monitor metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

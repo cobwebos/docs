@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235156"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069758"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 
@@ -26,7 +26,7 @@ ms.locfileid: "88235156"
 
 ## <a name="symptoms"></a>症状
 
-无法使用远程桌面协议 (RDP) 连接到 Azure VM。 连接过程停滞在“正在配置远程连接”阶段，或收到以下错误消息：
+无法使用远程桌面协议 (RDP) 连接到 Azure VM。 连接停滞在 " **配置远程** " 部分，或者您收到以下错误消息：
 
 - RDP 内部错误
 - 发生了内部错误
@@ -35,22 +35,26 @@ ms.locfileid: "88235156"
 
 ## <a name="cause"></a>原因
 
-此问题可能是以下原因造成的：
+此问题可能是由以下原因引起的：
 
-- 无法访问本地 RSA 加密密钥。
+- 虚拟机可能已遭到攻击。
+- 不能访问本地 RSA 加密密钥。
 - 已禁用 TLS 协议。
 - 证书已损坏或过期。
 
 ## <a name="solution"></a>解决方案
 
-在执行这些步骤之前，请创建受影响 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
+若要解决此问题，请完成以下部分中的步骤。 在开始之前，请将受影响 VM 的 OS 磁盘作为备份快照。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
-若要排查此问题，请使用串行控制台，或通过将 VM 的 OS 磁盘附加到恢复 VM 来[修复 VM 脱机](#repair-the-vm-offline)。
+### <a name="check-rdp-security"></a>检查 RDP 安全性
 
+首先，查看 RDP 端口3389的网络安全组是否不安全 (打开) 。 如果它不安全，并显示 \* 为入站的源 IP 地址，则将 rdp 端口限制为特定用户的 ip 地址，然后测试 rdp 访问。 如果此操作失败，请完成下一部分中的步骤。
 
 ### <a name="use-serial-control"></a>使用串行控制台
 
-连接到[串行控制台并打开 PowerShell 实例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+使用串行控制台或通过将 VM 的 OS 磁盘附加到恢复 VM 来 [脱机修复 vm](#repair-the-vm-offline) 。
+
+若要开始，请连接到 [串行控制台并打开 PowerShell 实例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 )。 如果 VM 上未启用串行控制台，请转到[修复 VM 脱机](#repair-the-vm-offline)部分。
 
 #### <a name="step-1-check-the-rdp-port"></a>步骤 1：检查 RDP 端口

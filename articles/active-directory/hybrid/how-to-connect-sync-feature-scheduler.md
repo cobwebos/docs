@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053042"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084730"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
 本主题介绍 Azure AD Connect 同步（同步引擎）中的内置计划程序。
@@ -41,12 +41,12 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 计划程序本身始终运行，但可以将它配置为仅运行其中一个任务或一个任务都不运行。 例如，如果需要运行自己的同步周期过程，则可以在计划程序中禁用此任务，但仍运行维护任务。
 
 >[!IMPORTANT]
->默认情况下，每隔30分钟运行一次同步循环。 如果修改了同步 cycley，则需要确保至少每7天运行一次同步循环。 
+>默认情况下，每 30 分钟运行一个同步周期。 如果修改了同步周期，则需要确保至少每 7 天运行一个同步周期。 
 >
->* 增量同步需要在自上次增量同步后的7天内发生。
->* 完全同步之后 (的增量同步) 需要在最近一次完全同步完成后7天内发生。
+>* 需要自上次增量同步后 7 天内进行增量同步。
+>* 需要自上次完全同步完成后 7 天内进行增量同步（紧随完全同步）。
 >
->如果不这样做，可能会导致同步问题，这将要求你运行完全同步来解决问题。 这也适用于处于暂存模式的服务器。
+>如果未这样做，则可能会导致同步问题，而你需要运行完全同步才能解决该问题。 这也适用于处于暂存模式的服务器。
 
 ## <a name="scheduler-configuration"></a>计划程序配置
 若要查看当前配置设置，请转到 PowerShell 并运行 `Get-ADSyncScheduler`。 它显示的内容如此图所示：
@@ -160,12 +160,15 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 ## <a name="stop-the-scheduler"></a>停止计划程序
 如果计划程序当前正在运行同步周期，可能需要将其停止。 例如，如果启动安装向导并收到以下错误：
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![屏幕截图显示无法更改配置错误消息。](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 正在运行同步周期时，不能进行配置更改。 可以等到计划程序已完成该过程，但也可以将其停止，以便可以立即进行更改。 停止当前周期没有任何害处，挂起的更改会在下次运行时处理。
 
 1. 先要使用 PowerShell cmdlet `Stop-ADSyncSyncCycle`指示计划程序停止其当前周期。
-2. 如果使用 1.1.281 之前的版本，停止计划程序并不会使当前连接器停止执行其当前任务。 若要强制停止连接器，请执行以下操作：![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. 如果使用 1.1.281 之前的版本，停止计划程序并不会使当前连接器停止执行其当前任务。 若要强制停止连接器，请执行以下操作：
+
+   ![屏幕截图显示选定连接器 Synchronization Service Manager，并选中 "停止" 操作，突出显示正在运行的连接器。](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * 从“开始”菜单启动“同步服务”。  转到“连接器”，突出显示状态为“正在运行”的连接器，然后从“操作”中选择“停止”。   
 
 计划程序仍处于活动状态，并在下次有机会时重新启动。

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e79135ccf672fa057d9e88fc91fa72b7826ba71e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282800"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085186"
 ---
 # <a name="add-a-simple-data-layer"></a>添加简单的数据层
 
@@ -57,7 +57,7 @@ map.layers.add(layer);
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用简单数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> 请参阅 CodePen 上的 "通过 Azure Maps （）<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据层</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用简单数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> 请参阅 CodePen 上的 () ，<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据层</a>Azure Maps <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 简单数据层的真正强大之处在于：
@@ -70,12 +70,12 @@ map.layers.add(layer);
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="简单的数据层选项" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>简单" 数据层选项</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
+<iframe height="700" style="width: 100%;" scrolling="no" title="简单的数据层选项" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> 请参阅 CodePen 上的 () ，查看 "笔<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>简单数据层</a>" Azure Maps 选项 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 
 > [!NOTE]
-> 此简单数据层使用[popup 模板](map-add-popup.md#add-popup-templates-to-the-map)类以表的形式显示 KML 气球或功能属性。 默认情况下，弹出窗口中呈现的所有内容都将作为一项安全功能在 iframe 内进行沙盒处理。 但是，存在一些限制：
+> 此简单数据层使用 [popup 模板](map-add-popup.md#add-popup-templates-to-the-map) 类以表的形式显示 KML 气球或功能属性。 默认情况下，弹出窗口中呈现的所有内容都将作为一项安全功能在 iframe 内进行沙盒处理。 但是，存在一些限制：
 >
 > - 所有脚本、窗体、指针锁和顶部导航功能都处于禁用状态。 单击时，允许链接在新选项卡中打开。 
 > - 不支持 iframe 上的参数的较早的浏览器 `srcdoc` 将被限制为呈现少量内容。
@@ -86,7 +86,7 @@ map.layers.add(layer);
 
 如前文所述，简单的数据层包装多个核心呈现层：气泡图、符号图层、直线图、多边形和延伸多边形。 然后，它使用表达式搜索各个功能的有效样式属性。
 
-Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同 Azure 地图层选项的大多数属性名称都支持作为简单数据层中功能的样式属性。 已将表达式添加到一些层选项，以支持 GitHub 通常使用的样式属性名称。 这些属性名称由[GitHub 的 GeoJSON 映射支持](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)定义，它们用于对在平台中存储和呈现的 GeoJSON 文件进行样式。 除了样式属性以外，所有 GitHub 样式属性在简单数据层中都受支持 `marker-symbol` 。
+Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同 Azure 地图层选项的大多数属性名称都支持作为简单数据层中功能的样式属性。 已将表达式添加到一些层选项，以支持 GitHub 通常使用的样式属性名称。 这些属性名称由 [GitHub 的 GeoJSON 映射支持](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)定义，它们用于对在平台中存储和呈现的 GeoJSON 文件进行样式。 除了样式属性以外，所有 GitHub 样式属性在简单数据层中都受支持 `marker-symbol` 。
 
 如果读取器跨越了不太常见的样式属性，则会将其转换为最接近的 Azure Maps style 属性。 此外，使用 `getLayers` 简单数据层的函数和更新任何层上的选项，可以重写默认样式表达式。
 
@@ -96,13 +96,13 @@ Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同
 
 如果某个功能是 `Point` 或 `MultiPoint` ，且该功能没有可用作 `image` 自定义图标以将该点呈现为符号的属性，则该功能将使用呈现 `BubbleLayer` 。
 
-| 层选项 | 支持的属性名称 | 默认值 |
+| 层选项 |  (s) 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `color` | `color`, `marker-color` | `'#1A73AA'` |
 | `radius` | `size`<sup>1</sup>， `marker-size` <sup>2</sup>， `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1 \] 将 `size` 和 `scale` 值视为标量值，并将其乘以`8`
+\[1 \] 将 `size` 和 `scale` 值视为标量值，并将其乘以 `8`
 
 \[2 \] 如果指定了 GitHub `marker-size` 选项，则将为 radius 使用以下值。
 
@@ -118,13 +118,13 @@ Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
-| &lt;万     | `green`  |
+| &lt; 万     | `green`  |
 
 ### <a name="symbol-style-properties"></a>符号样式属性
 
 如果功能为 `Point` 或 `MultiPoint` ，并且具有将用作 `image` 自定义图标以将该点呈现为符号的属性，则该功能将使用呈现 `SymbolLayer` 。
 
-| 层选项 | 支持的属性名称 | 默认值 |
+| 层选项 |  (s) 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `image` | `image` | ``none`` |
 | `size` | `size`， `marker-size` <sup>1</sup> | `1` |
@@ -146,7 +146,7 @@ Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同
 
 如果此功能为 `LineString` 、 `MultiLineString` 、 `Polygon` 或 `MultiPolygon` ，则将使用呈现该功能 `LineLayer` 。
 
-| 层选项 | 支持的属性名称 | 默认值 |
+| 层选项 |  (s) 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `strokeColor` | `strokeColor`, `stroke` | `'#1E90FF'` |
 | `strokeWidth` | `strokeWidth`, `stroke-width`, `stroke-thickness` | `3` |
@@ -156,7 +156,7 @@ Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同
 
 如果该功能是 `Polygon` 或 `MultiPolygon` ，且该功能不具有 `height` 属性或 `height` 属性为零，则将使用呈现该功能 `PolygonLayer` 。
 
-| 层选项 | 支持的属性名称 | 默认值 |
+| 层选项 |  (s) 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
 | `fillOpacity` | `fillOpacity`, '`fill-opacity` | `0.5` |
@@ -165,7 +165,7 @@ Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同
 
 如果该功能是 `Polygon` 或 `MultiPolygon` ，且具有 `height` 值大于0的属性，则将使用呈现该功能 `PolygonExtrusionLayer` 。
 
-| 层选项 | 支持的属性名称 | 默认值 |
+| 层选项 |  (s) 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `base` | `base` | `0` |
 | `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |

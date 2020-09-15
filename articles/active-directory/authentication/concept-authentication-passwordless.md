@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1148555706ff04c58733b66f4784da71849ce8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 144198a708b8e3cfcb5b3c6936d7fc51cadf4a13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226669"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084322"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -28,13 +28,13 @@ ms.locfileid: "89226669"
 
 当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供了以下三个无密码身份验证选项，这些选项与 Azure Active Directory (Azure AD) ：
 
-- Windows Hello 企业版
+- Windows Hello for Business
 - Microsoft Authenticator 应用
 - FIDO2 安全密钥
 
 ![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello 企业版
+## <a name="windows-hello-for-business"></a>Windows Hello for Business
 
 Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 凭据直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构 (PKI) 集成和内置支持单一登录 (SSO) ，Windows Hello 企业版提供了一种方便的方法，可用于无缝访问本地和云中的公司资源。
 
@@ -45,7 +45,7 @@ Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工
 ![概述用户登录 Windows Hello 企业版所涉及步骤的示意图](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
 1. 用户使用生物识别或 PIN 手势登录 Windows。 手势会解除对 Windows Hello 企业版私钥的锁定，并发送到云身份验证安全支持提供程序（称为 *云 AP 提供程序*）。
-1. 云 AP 提供商请求 Azure AD 的 nonce。
+1. 云 AP 提供程序请求 nonce (随机任意数字，只需从 Azure AD) 一次即可。
 1. Azure AD 返回有效时间为5分钟的 nonce。
 1. 云 AP 提供程序使用用户的私钥对 nonce 进行签名，并将签名的 nonce 返回到 Azure AD。
 1. Azure AD 使用用户安全注册的公钥对 nonce 签名进行签名。 验证签名后，Azure AD 验证返回的签名 nonce。 验证 nonce 后，Azure AD 将使用加密到设备传输密钥的会话密钥 (PRT) 创建主刷新令牌，并将其返回给云 AP 提供商。
@@ -159,7 +159,7 @@ Azure AD 无密码登录功能当前以预览版提供。 请注意以下事项�
 
 下面是在选择 Microsoft 无密码技术时要考虑的一些因素：
 
-||**Windows Hello 企业版**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
+||**Windows Hello for Business**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>电话 (运行 Android 6.0 或更高版本的 iOS 和 Android 设备。 ) |Windows 10 版本 1809 或更高版本<br>Azure Active Directory|
 |**模式**|平台|软件|硬件|

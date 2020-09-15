@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531253"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069792"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用用于密钥保管库的 Azure Monitor（预览版）监视密钥保管库服务
 用于密钥保管库的 Azure Monitor（预览版）通过提供密钥保管库请求、性能、故障和延迟的统一视图，对密钥保管库进行全面监视。
@@ -76,16 +76,6 @@ ms.locfileid: "88531253"
 工作簿显示成功（2xx 状态代码）、身份验证错误（401/403 状态代码）、限制（429 状态代码）和其他故障（4xx 状态代码）。
 
 为了更好地理解每个状态代码的含义，建议通读有关 [Azure 密钥保管库状态和响应代码](../../key-vault/general/authentication-requests-and-responses.md)的文档。
-
-## <a name="operations--latency-workbook"></a>“操作与延迟”工作簿
-
-在页面顶部选择“操作与延迟”，“操作与延迟”选项卡随即打开 。 借助此选项卡，可加入密钥保管库以进行监视。 有关更多详细步骤，请参阅[配置密钥保管库以进行监视](#configuring-your-key-vaults-for-monitoring)部分。
-
-你可以查看有多少个密钥保管库启用了日志记录。 如果正确配置了至少一个保管库，你将能够看到相关的表，其中显示了每个密钥保管库的操作和状态代码。 可单击各行的详细信息部分，以获取有关各个操作的其他信息。
-
-![“操作与延迟”图表的屏幕截图](./media/key-vaults-insights-overview/logs.png)
-
-如果在此部分未看到任何数据，请参考上面介绍如何为 Azure 密钥保管库启用日志的部分，或查看下面的疑难解答部分。
 
 ## <a name="view-from-a-key-vault-resource"></a>从密钥保管库资源查看
 
@@ -191,16 +181,6 @@ ms.locfileid: "88531253"
 ### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>固定工作簿的任何部分后，时间范围是多少
 
 时间范围将取决于面板设置。
-
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>为何在“操作和延迟”部分下看不到我的 Key Vault 的任何数据
-
-要查看基于日志的数据，需要为要监视的每个密钥保管库启用日志。 可在每个密钥保管库的诊断设置下完成此操作。 需要将数据发送到指定的 Log Analytics 工作区。
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>我已经为 Key Vault 启用了日志，为何在“操作和延迟”下仍看不到我的数据
-
-目前，诊断日志无法追溯，只有在对密钥保管库执行了操作后，才会显示数据。 因此，此操作可能需要一段时间（几小时到一天），具体取决于密钥保管库的活动情况。
-
-此外，如果选择了大量的密钥保管库和订阅，则由于查询限制，可能无法查看数据。 要查看数据，可能需要减少所选订阅或密钥保管库的数目。 
 
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>如果想要查看其他数据或生成自己的可视化效果，应该怎么做？ 如何对 Key Vault Insights 进行更改
 

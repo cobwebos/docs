@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 84262427c6d5183fb803f3fc16d2e7b8021e9d5e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 52e419e970173ddaf3d4d6176f2dd26a1e8194e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651795"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084654"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型的超参数
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -151,11 +151,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> 贝叶斯采样不支持任何提前终止策略（请参阅[指定提前终止策略](#specify-early-termination-policy)）。 使用贝叶斯参数采样时，请设置 `early_termination_policy = None`，或不使用 `early_termination_policy` 参数。
+> 贝叶斯采样不支持任何提前终止策略（请参阅[指定提前终止策略](#early-termination)）。 使用贝叶斯参数采样时，请设置 `early_termination_policy = None`，或不使用 `early_termination_policy` 参数。
 
-<a name='specify-primary-metric-to-optimize'/>
-
-## <a name="specify-primary-metric"></a>指定主要指标
+## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> 指定主要指标
 
 指定希望让超参数优化试验优化的[主要指标](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true)。 将根据此主要指标评估每个训练运行。 性能不佳的运行（其主要指标不符合提前终止策略设置的条件）将会终止。 除了主要指标名称以外，还需指定优化的目标是要最大化还是最小化主要指标。
 
@@ -169,9 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 优化运行以最大化“准确性”。  确保在训练脚本中记录此值。
 
-<a name='log-metrics-for-hyperparameter-tuning'/>
-
-### <a name="log-metrics-for-hyperparameter-tuning"></a>记录用于超参数优化的指标
+### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> 指定主要指标
 
 模型的训练脚本必须在模型训练过程中记录相关指标。 配置超参数优化时，指定要用于评估运行性能的主要指标。 （请参阅[指定要优化的主要指标](#specify-primary-metric-to-optimize)。）必须在训练脚本中记录此指标，以便将其用于超参数优化过程。
 
@@ -184,8 +180,6 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 训练脚本将计算 `val_accuracy`，并将其记录为“准确性”，它会用作主要指标。 每次记录指标时，超参数优化服务都将收到该指标。 由模型开发人员确定报告此指标的频率。
-
-<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> 指定早期终止策略
 

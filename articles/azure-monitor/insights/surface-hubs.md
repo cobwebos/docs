@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662495"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085342"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>使用 Azure Monitor 监视 Surface Hub 以跟踪其运行状况
 
@@ -60,7 +60,7 @@ Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analy
 3. 单击“此设备”  ，并单击“监视”  下面的“配置 Log Analytics 设置”  。
 4. 选择“**启用监视**”。
 5. 在“Log Analytics 设置”对话框中，键入 Log Analytics“工作区 ID”  和“工作区密钥”  。  
-   ![设置](./media/surface-hubs/settings.png)
+   ![屏幕截图显示了 "启用监视" 选项和 "工作区 ID" 和 "工作区密钥" 文本框的 Microsoft Operations Manager 套件设置。](./media/surface-hubs/settings.png)
 6. 单击“**确定**”以完成配置。
 
 将显示一条确认信息，告诉你是否已将配置成功应用于设备。 如果是，则会出现一条消息，注明代理已成功连接到 Azure Monitor。 然后，设备开始将数据发送到 Azure Monitor，可以查看数据并采取相应操作。

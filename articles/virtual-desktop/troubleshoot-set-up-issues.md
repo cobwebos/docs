@@ -3,15 +3,15 @@ title: Windows 虚拟桌面环境主机池创建-Azure
 description: 如何在 Windows 虚拟桌面环境的安装过程中排除和解决租户和主机池问题。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121368"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084407"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
@@ -47,13 +47,19 @@ ms.locfileid: "88121368"
 
 - 在浏览器中打开在 statusMessage 字段中看到的链接，以提交为指定 VM SKU 增加 Azure 订阅配额的请求。
 
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>错误：无法查看应用组中的用户分配。
+
+原因：此错误通常发生在将订阅从 1 Azure Active Directory (AD) 租户移到另一台。 如果旧的分配仍与旧的 Azure AD 租户相关联，则 Azure 门户将不会对其进行跟踪。
+
+解决方法：需要将用户重新分配到应用组。
+
 ## <a name="azure-resource-manager-template-errors"></a>Azure 资源管理器模板错误
 
 按照以下说明解决 Azure 资源管理器模板和 PowerShell DSC 的不成功部署。
 
-1. 使用[Azure 资源管理器的 "查看部署" 操作](../azure-resource-manager/resource-manager-deployment-operations.md)查看部署中的错误。
-2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误，[以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
-3. 确定错误后，请使用错误消息和资源[解决 azure 资源管理器的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)，以解决此问题。
+1. 使用 [Azure 资源管理器的 "查看部署" 操作](../azure-resource-manager/resource-manager-deployment-operations.md)查看部署中的错误。
+2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误， [以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
+3. 确定错误后，请使用错误消息和资源 [解决 azure 资源管理器的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md) ，以解决此问题。
 4. 删除在之前的部署过程中创建的任何资源，然后重试部署模板。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>错误：部署失败 .... \<hostname> /joindomain
@@ -73,22 +79,22 @@ ms.locfileid: "88121368"
 
 **原因1：** 为将 Vm 加入到域而提供的凭据不正确。
 
-**修复1：** 如果 Vm 未加入[会话主机 VM 配置](troubleshoot-vm-configuration.md)中的域，请参阅 "凭据错误"。
+**修复1：** 如果 Vm 未加入 [会话主机 VM 配置](troubleshoot-vm-configuration.md)中的域，请参阅 "凭据错误"。
 
 **原因2：** 域名未解析。
 
-**修复2：** 请参阅[错误：未](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)在[会话主机 VM 配置](troubleshoot-vm-configuration.md)中解析域名。
+**修复2：** 请参阅 [错误：未](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) 在 [会话主机 VM 配置](troubleshoot-vm-configuration.md)中解析域名。
 
-**原因3：** 虚拟网络 (VNET) DNS 配置设置为 "**默认**"。
+**原因3：** 虚拟网络 (VNET) DNS 配置设置为 " **默认**"。
 
 若要解决此问题，请执行以下操作：
 
-1. 打开 Azure 门户并中转到 "**虚拟网络**" 选项卡。
+1. 打开 Azure 门户并中转到 " **虚拟网络** " 选项卡。
 2. 找到 VNET，然后选择 " **DNS 服务器**"。
-3. "DNS 服务器" 菜单应该出现在屏幕的右侧。 在该菜单上，选择 "**自定义**"。
-4. 请确保 "自定义" 下列出的 DNS 服务器匹配域控制器或 Active Directory 域。 如果看不到你的 DNS 服务器，可以通过在 "**添加 dns 服务器**" 字段中输入其值来添加它。
+3. "DNS 服务器" 菜单应该出现在屏幕的右侧。 在该菜单上，选择 " **自定义**"。
+4. 请确保 "自定义" 下列出的 DNS 服务器匹配域控制器或 Active Directory 域。 如果看不到你的 DNS 服务器，可以通过在 " **添加 dns 服务器** " 字段中输入其值来添加它。
 
-### <a name="error-your-deployment-failedunauthorized"></a>错误：部署失败。 ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>错误：部署失败...\Unauthorized
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -98,7 +104,7 @@ ms.locfileid: "88121368"
 
 **修复：** 更改你的订阅类型或区域，使其可以访问所需的功能。
 
-### <a name="error-vmextensionprovisioningerror"></a>错误： VMExtensionProvisioningError
+### <a name="error-vmextensionprovisioningerror"></a>错误：VMExtensionProvisioningError
 
 > [!div class="mx-imgBorder"]
 > ![部署的屏幕截图失败，终端预配状态为 "失败"。](media/failure-vmextensionprovisioning.png)
@@ -107,9 +113,9 @@ ms.locfileid: "88121368"
 
 **原因2：** 与连接发生暂时性错误。
 
-**修复：** 使用 PowerShell 登录，确认 Windows 虚拟桌面环境正常运行。 在[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中手动完成 VM 注册。
+**修复：** 使用 PowerShell 登录，确认 Windows 虚拟桌面环境正常运行。 在 [使用 PowerShell 创建主机池](create-host-pools-powershell.md)中手动完成 VM 注册。
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>错误：不允许指定的管理员用户名
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>错误：不允许使用指定的管理员用户名
 
 > [!div class="mx-imgBorder"]
 > ![不允许管理员指定的部署的屏幕截图。](media/failure-username.png)
@@ -127,7 +133,7 @@ ms.locfileid: "88121368"
 
 **修复：** 更新用户名或使用其他用户。
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>错误： VM 在处理扩展时报告了故障
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>错误：VM 在处理扩展时报告了一项故障
 
 > [!div class="mx-imgBorder"]
 > ![部署中具有终端预配状态的资源操作的屏幕截图失败。](media/failure-processing.png)
@@ -263,10 +269,10 @@ the VM.\\\"
 
 - 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
 - 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
+- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
 - 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。
+- 若要了解有关该服务的详细信息，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

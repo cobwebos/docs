@@ -3,16 +3,16 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017560"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069826"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
-本文介绍如何使用 Azure 备份服务器将 VMware ESXi 主机/vCenter 服务器上运行的 VMware VM 备份到 Azure。
+本文介绍如何使用 Azure 备份服务器 (MABS) 将运行在 VMware ESXi 主机/vCenter Server 上的 VMware Vm 备份到 Azure。
 
 本文介绍如何执行以下操作：
 
@@ -22,12 +22,37 @@ ms.locfileid: "89017560"
 - 将 vCenter 或 ESXi 服务器添加到 Azure 备份服务器。
 - 设置一个包含要备份的 VMware VM 的保护组，指定备份设置，并计划备份。
 
+## <a name="supported-vmware-features"></a>支持的 VMware 功能
+
+在备份 VMware 虚拟机时，MABS 提供以下功能：
+
+- 无代理备份： MABS 不需要在 vCenter 或 ESXi 服务器上安装代理来备份虚拟机。 相反，只需提供 IP 地址或完全限定的域名 (FQDN) ，以及用于通过 MABS 对 VMware 服务器进行身份验证的登录凭据。
+- 云集成备份： MABS 保护工作负荷到磁盘和云。 MABS 的备份和恢复工作流可帮助管理长期保留和非现场备份。
+- 检测并保护 vCenter 管理的 Vm： MABS 检测并保护部署在 VMware 服务器上 (vCenter 或 ESXi server) 的 Vm。 当部署规模增大时，使用 vCenter 来管理 VMware 环境。 MABS 还检测由 vCenter 管理的 Vm，使你能够保护大型部署。
+- 文件夹级自动保护：vCenter 允许组织 VM 文件夹中的 VM。 MABS 检测这些文件夹，并允许在文件夹级别保护 Vm，并包括所有子文件夹。 保护文件夹时，MABS 不仅保护该文件夹中的 Vm，而且还保护稍后添加的 Vm。 MABS 每日检测新的 Vm 并自动对其进行保护。 在将 Vm 组织到递归文件夹中时，MABS 会自动检测并保护递归文件夹中部署的新 Vm。
+- MABS 保护存储在本地磁盘、网络文件系统 (NFS) 或群集存储中的 Vm。
+- MABS 保护迁移用于负载平衡的 Vm：当迁移 Vm 以实现负载平衡时，MABS 会自动检测并继续 VM 保护。
+- MABS 可以从 Windows VM 恢复文件/文件夹，而无需恢复整个 VM，这有助于更快地恢复所需的文件。
+
+## <a name="prerequisites-and-limitations"></a>先决条件和限制
+
+开始备份 VMware 虚拟机之前，请查看以下限制和先决条件的列表。
+
+- 如果使用 MABS 来保护 (在 Windows) 上运行的 vCenter 服务器作为使用服务器的 FQDN 的 Windows Server，则不能使用服务器的 FQDN 将 vCenter 服务器作为 VMware 服务器来保护。
+  - 可以使用 vCenter Server 的静态 IP 地址作为一种解决方法。
+  - 如果要使用 FQDN，应将保护停止为 Windows Server，删除保护代理，然后使用 FQDN 添加为 VMware 服务器。
+- 如果你使用 vCenter 来管理你的环境中的 ESXi 服务器，请将 vCenter (而不是 ESXi) 添加到 MABS 保护组。
+- 在第一次 MABS 备份之前，无法备份用户快照。 MABS 完成首次备份后，可以备份用户快照。
+- MABS 无法保护具有传递磁盘的 VMware Vm 和物理原始设备映射 (pRDM) 。
+- MABS 无法检测或保护 VMware vApps。
+- MABS 无法通过现有快照保护 VMware Vm。
+
 ## <a name="before-you-start"></a>开始之前
 
 - 验证运行的是否是支持备份的 vCenter/ESXi 版本。 请参阅[此处](./backup-mabs-protection-matrix.md)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
 - 确保以下网络端口处于打开状态：
-  - MABS 与 vCenter 之间的 TCP 443
+  - MABS 和 vCenter 之间的 TCP 443
   - MABS 与 ESXi 主机之间的 TCP 443 和 TCP 902
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>与 vCenter 服务器建立安全连接
@@ -167,15 +192,15 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Virtual machine.Guest Operations.Guest Operation Queries                   | Virtual machine.Guest Operations.Guest Operation Queries                   |
 | Virtual machine .Interaction .Device connection                            | Virtual machine .Interaction .Device connection                            |
 | Virtual machine .Interaction .Guest operating system management by VIX API | Virtual machine .Interaction .Guest operating system management by VIX API |
-| Virtual machine.Interaction.Power Off                                    | Virtual machine .Interaction .Power Off                                    |
-| Virtual machine.Inventory.Create new                                      | Virtual machine .Inventory.Create new                                      |
+| Virtual machine .Interaction .Power Off                                    | Virtual machine .Interaction .Power Off                                    |
+| Virtual machine .Inventory.Create new                                      | Virtual machine .Inventory.Create new                                      |
 | Virtual machine .Inventory.Remove                                          | Virtual machine .Inventory.Remove                                          |
 | Virtual machine .Inventory.Register                                        | Virtual machine .Inventory.Register                                        |
 | Virtual machine .Provisioning.Allow disk access                            | Virtual machine .Provisioning.Allow disk access                            |
 | Virtual machine .Provisioning.Allow file access                            | Virtual machine .Provisioning.Allow file access                            |
 | Virtual machine .Provisioning.Allow read-only disk access                  | Virtual machine .Provisioning.Allow read-only disk access                  |
 | Virtual machine .Provisioning.Allow virtual machine download               | Virtual machine .Provisioning.Allow virtual machine download               |
-| Virtual machine .Snapshot management. 创建快照                      | Virtual machine .Snapshot management. Create snapshot                      |
+| Virtual machine .Snapshot management. Create snapshot                      | Virtual machine .Snapshot management. Create snapshot                      |
 | Virtual machine .Snapshot management.Remove Snapshot                       | Virtual machine .Snapshot management.Remove Snapshot                       |
 | Virtual machine .Snapshot management.Revert to snapshot                    | Virtual machine .Snapshot management.Revert to snapshot                    |
 
@@ -392,7 +417,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 若要备份 vSphere 6.7，请执行以下操作：
 
-- 在 DPM 服务器上启用 TLS 1.2
+- 在 MABS 服务器上启用 TLS 1。2
 
 >[!NOTE]
 >VMWare 6.7 及更高版本已启用 TLS 作为通信协议。

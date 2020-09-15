@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c539fd37116f8c55f336aecf1e8979355a40d61c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662548"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084832"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Microsoft 365 工作负荷（如 Exchange Online 和 Skype for Business）的用户将受益于完整的全局地址列表，以便他们能够发送电子邮件并呼叫所有人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -217,7 +217,7 @@ Azure AD Connect 安装向导始终创建此配置。
 在入站筛选中，使用 **范围** 功能来决定哪些对象要同步或者不同步。 可以在此处根据组织的要求进行调整。 范围模块包含组和子句，决定何时在范围内包含同步规则。   一个组包含一个或多个子句。 多个子句之间使用逻辑“AND”，多个组之间使用逻辑“OR”。
 
 让我们看看以下示例：  
-![显示添加范围筛选器示例的屏幕截图](./media/how-to-connect-sync-configure-filtering/scope.png)  
+![显示添加范围筛选器的示例的屏幕截图。](./media/how-to-connect-sync-configure-filtering/scope.png)  
 这应该显示为 (department = IT) OR (department = Sales AND c = US)。 
 
 以下示例和步骤以用户对象为例，但可以将此示例用于所有对象类型。
@@ -275,7 +275,7 @@ Azure AD Connect 安装向导始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从“开始”菜单启动“同步规则编辑器”。  
 3. 在“规则类型”下，单击“出站”。  
-4. 根据所使用的连接版本，查找名 **为 "Out TO aad – User join** " 或 " **out To Aad-user join SOAInAD**" 的规则，然后单击 " **编辑**"。
+4. 根据所使用的连接版本，查找名为 " **Out to Azure AD – User join** " 或 " **out To Azure AD-user join SOAInAD**" 的规则，然后单击 " **编辑**"。
 5. 在弹出窗口中，回答“是”，以创建规则的副本。 
 6. 在“说明”页上，将“优先顺序”更改为某个尚未使用的值，例如 50。  
 7. 单击左侧导航栏中的“范围筛选器”，然后单击“添加子句”。   在“属性”中选择“mail”。   在“运算符”中选择“ENDSWITH”。   在“值”中键入 **\@contoso.com**，然后单击“添加子句”。   在“属性”中选择“userPrincipalName”。   在“运算符”中选择“ENDSWITH”。   在“值”  中，键入 **\@contoso.com**。
@@ -300,7 +300,7 @@ Azure AD Connect 安装向导始终创建此配置。
 
 1. 启动命令提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`。
 2. 运行 `csexport "Name of Connector" %temp%\export.xml /f:x`。  
-   在同步服务中可以找到连接器名称。 它的名称类似于“contoso.com – AAD”（表示 Azure AD）。
+   在同步服务中可以找到连接器名称。 它的名称类似于 "contoso.com – Azure AD" Azure AD。
 3. 运行 `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`。
 4. 现在在 %temp% 中已经有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
 5. 对数据或配置进行必要的更改并再次运行这些步骤（导入、同步和验证），直到要导出的更改都按预期进行。

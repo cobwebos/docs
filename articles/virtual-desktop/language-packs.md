@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719133"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084203"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
 
@@ -30,7 +30,7 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
 
 - 使用 Windows 10 企业多会话版本1903或更高版本的 Azure 虚拟机 (VM) 
 
-- 语言 ISO 和按需功能 (映像使用的操作系统版本) 磁盘1。 可以在此处下载：
+- 语言 ISO、按需功能 (FOD) Disk 1 和收件箱应用使用映像所使用的 OS 版本的 ISO。 可以在此处下载：
      
      - 语言 ISO：
         - [Windows 10 版本1903或1909语言包 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
@@ -39,6 +39,10 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
      - FOD Disk 1 ISO：
         - [Windows 10 版本1903或 1909 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         - [Windows 10，版本 2004 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        
+     - 收件箱应用 ISO：
+        - [Windows 10 版本1903或1909收件箱应用 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10 2004 版收件箱应用 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
 
 - Windows 文件服务器虚拟机上的 Azure 文件共享或文件共享
 
@@ -47,15 +51,16 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
 
 ## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>根据需要创建语言包和功能的内容存储库
 
-创建语言包和 FODs 的内容存储库：
+若要为 FODs 和收件箱应用包创建内容存储库，请执行以下操作：
 
-1. 在 Azure VM 上，从 [必备组件](#prerequisites)中的链接下载 Windows 10 多语言 ISO 和 FODs for Windows 10 企业多会话版本1903、1909和2004映像。
+1. 在 Azure VM 上，从 [必备组件](#prerequisites)中的链接下载 Windows 10 多语言 ISO、FODs 和收件箱应用，用于 Windows 10 企业多会话版本1903/1909 和2004映像。
 
 2. 打开并在 VM 上装载 ISO 文件。
 
 3. 请访问语言包 ISO 并复制 **LocalExperiencePacks** 和 **x64 \\ langpacks** 文件夹中的内容，然后将内容粘贴到文件共享中。
 
 4. 请访问 **FOD ISO 文件**，复制其所有内容，并将其粘贴到文件共享中。
+5. 中转到收件箱应用 ISO 上的 **amd64fre** 文件夹，并将存储库中的内容复制到已准备的收件箱应用。
 
      >[!NOTE]
      > 如果使用的是有限存储，只需复制你知道的用户所需语言的文件。 您可以通过查看文件名称中的语言代码来区分这些文件。 例如，法语文件的名称中包含代码 "fr-fr"。 有关所有可用语言的完整语言代码列表，请参阅 [适用于 Windows 的可用语言包](/windows-hardware/manufacture/desktop/available-language-packs-for-windows)。
@@ -66,7 +71,7 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
      > [!div class="mx-imgBorder"]
      > ![日语语言包的示例，其文件名中包含 "Jpan" 语言标记。](media/language-pack-example.png)
 
-5. 设置对语言内容存储库共享的权限，以便您拥有用于构建自定义映像的 VM 的读取访问权限。
+6. 设置对语言内容存储库共享的权限，以便您拥有用于构建自定义映像的 VM 的读取访问权限。
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>手动创建自定义 Windows 10 企业多会话映像
 
@@ -75,7 +80,7 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
 1. 部署 Azure VM，然后在 Azure 库中选择要使用的 Windows 10 企业多会话的当前版本。
 2. 部署 VM 后，请使用 RDP 作为本地管理员连接到该 VM。
 3. 请确保 VM 具有所有最新的 Windows 更新。 下载更新，并在必要时重新启动 VM。
-4. 连接到语言包和 FOD 文件共享存储库，并将其装载到驱动器号 (例如，驱动器 E) 。
+4. 连接到语言包、FOD 和收件箱应用文件共享存储库，并将其安装到驱动器 E)  (例如驱动器 E）。
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>自动创建自定义 Windows 10 企业多会话映像
 
@@ -161,6 +166,56 @@ Set-WinUserLanguageList $LanguageList -force
 
 脚本运行完毕后，请通过转到 "**开始**  >  **设置**" "  >  **& 语言**" 来确保正确安装了语言包  >  **Language**。 如果语言文件在那里，则一切都已设置完毕。
 
+向 Windows 映像添加其他语言后，还需要更新收件箱应用以支持添加的语言。 这可以通过使用收件箱应用 ISO 中的内容刷新预安装的应用来完成。 若要在断开连接的环境中执行此刷新 (无法从 VM) Internet 访问，可以使用以下 PowerShell 脚本示例来自动执行此过程。
+
+```powershell
+#########################################
+## Update Inbox Apps for Multi Language##
+#########################################
+##Set Inbox App Package Content Stores##
+[string]$InboxApps = "F:\"
+##Update Inbox Store Apps##
+$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
+$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
+$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
+foreach ($Appx in $AllAppx) {
+    $appname = $appx.name.substring(0,$Appx.name.length-5)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    
+    Write-Host "Handeling with xml $appname"  
+  
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+      
+      Write-Host "Handeling without xml $appname"
+      
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+foreach ($Appx in $AllAppxBundles) {
+    $appname = $appx.name.substring(0,$Appx.name.length-11)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    Write-Host "Handeling with xml $appname"
+    
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+       Write-Host "Handeling without xml $appname"
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+```
+
+>[!IMPORTANT]
+>ISO 中包含的收件箱应用不是预安装的 Windows 应用的最新版本。 若要获取所有应用的最新版本，需要使用 Windows 应用商店应用程序更新应用程序，并在安装了其他语言之后执行手动搜索更新。
+
 完成后，请确保断开共享的连接。
 
 ## <a name="finish-customizing-your-image"></a>完成自定义映像
@@ -177,15 +232,15 @@ Set-WinUserLanguageList $LanguageList -force
      C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
      ```
 
-2. 按照在 [Azure 中创建通用 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)中的说明，关闭 VM，然后将其捕获到托管映像中。
+2. 按照在 [Azure 中创建通用 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)中的说明，停止 VM，然后将其捕获到托管映像中。
 
 3. 你现在可以使用自定义映像来部署 Windows 虚拟机主机池。 若要了解如何部署主机池，请参阅 [教程：使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
 
 ## <a name="enable-languages-in-windows-settings-app"></a>在 Windows 设置应用中启用语言
 
-最后，需要将语言添加到每个用户的语言列表中，以便他们可以在 "设置" 菜单中选择其首选语言。
+最后，在部署主机池之后，你需要将该语言添加到每个用户的语言列表中，以便他们可以在 "设置" 菜单中选择其首选语言。
 
-若要确保你的用户可以选择你安装的语言，请以用户身份登录，然后运行以下 PowerShell cmdlet 以将安装的语言包添加到 "语言" 菜单。 你还可以将此脚本设置为自动执行的任务，该任务会在用户登录到其会话时激活。
+若要确保你的用户可以选择你安装的语言，请以用户身份登录，然后运行以下 PowerShell cmdlet 以将安装的语言包添加到 "语言" 菜单。 你还可以将此脚本设置为自动任务或在用户登录到其会话时激活的登录脚本。
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList

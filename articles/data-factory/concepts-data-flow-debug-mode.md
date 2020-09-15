@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/11/2020
-ms.openlocfilehash: 1d996e62fe60606c3eb93a638d229028ee0471e6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 41153c488825e87583284b23a287353f63ff8db8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030582"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085087"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -32,6 +32,11 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 当调试模式为 on 时，将使用活动的 Spark 群集以交互方式生成数据流。 在 Azure 数据工厂中关闭调试后，会话将关闭。 你应该了解 Azure Databricks 在打开调试会话期间产生的每小时费用。
 
 在大多数情况下，最好在调试模式下生成数据流，以便在 Azure 数据工厂中发布工作之前验证业务逻辑和查看数据转换。 使用 "管道" 面板上的 "调试" 按钮来测试管道中的数据流。
+
+![查看数据流调试会话](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+> [!NOTE]
+> 用户从其 ADF 浏览器 UI 启动的每个调试会话都是一个新会话，其中包含自己的 Spark 群集。 您可以使用以上调试会话的 "监视" 视图来查看和管理每个工厂的调试会话。
 
 ## <a name="cluster-status"></a>群集状态
 

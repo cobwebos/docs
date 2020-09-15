@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115860"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085597"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "88115860"
 > 请注意，我们目前不支持为托管标识服务主体配置令牌生存期。
 
 > [!IMPORTANT]
-> 在预览期间收到客户的来信后，我们实现了 Azure AD 条件性访问中的[身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)。 可以使用此新功能，通过设置登录频率来配置刷新令牌生存期。 5月30日之后2020，任何新租户都无法使用可配置的令牌生存期策略来配置会话和刷新令牌。 弃用将在此之后的几个月内发生，这意味着我们将停止考虑现有会话和刷新令牌策略。 你仍可以在弃用后配置访问令牌生存期。
+> 在预览期间收到客户的来信后，我们实现了 Azure AD 条件性访问中的 [身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106) 。 可以使用此新功能，通过设置登录频率来配置刷新令牌生存期。 5月30日之后2020，任何新租户都无法使用可配置的令牌生存期策略来配置会话和刷新令牌。 弃用将在此之后的几个月内发生，这意味着我们将停止考虑现有会话和刷新令牌策略。 你仍可以在弃用后配置访问令牌生存期。
 
 在 Azure AD 中，策略对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。 每种策略类型都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
 
@@ -34,7 +34,7 @@ ms.locfileid: "88115860"
 
 > [!NOTE]
 > 可配置的令牌生存期策略仅适用于访问 SharePoint Online 和 OneDrive for business 资源的移动和桌面客户端，不适用于 web 浏览器会话。
-> 若要管理 SharePoint Online 和 OneDrive for business 的 web 浏览器会话的生存期，请使用[条件访问会话生存期](../conditional-access/howto-conditional-access-session-lifetime.md)功能。 了解有关配置空闲会话超时的详细信息，请参阅 [SharePoint Online 博客](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)。
+> 若要管理 SharePoint Online 和 OneDrive for business 的 web 浏览器会话的生存期，请使用 [条件访问会话生存期](../conditional-access/howto-conditional-access-session-lifetime.md) 功能。 了解有关配置空闲会话超时的详细信息，请参阅 [SharePoint Online 博客](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)。
 
 ## <a name="token-types"></a>令牌类型
 
@@ -90,20 +90,20 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
 | 单因素刷新令牌最大期限 |MaxAgeSingleFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 | 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
-| 单因素会话令牌最大期限 |MaxAgeSessionSingleFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
-| 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
+| 单因素会话令牌最大期限 |MaxAgeSessionSingleFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |180 天<sup>1</sup> |
+| 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |180 天<sup>1</sup> |
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
 * <sup>2</sup>若要确保 Microsoft 团队 Web 客户端工作，建议将 AccessTokenLifetime 保留为大于15分钟的 Microsoft 团队。
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 | Property | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
 | 刷新令牌最大非活动时间（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |90 天 |
 | 刷新令牌最大期限（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |直到吊销 |
 
-* <sup>1</sup>吊销信息不足的联合用户包括未同步 "LastPasswordChangeTimestamp" 属性的任何用户。 因为 AAD 无法验证何时吊销绑定旧凭据（例如已更改的密码）的令牌，必须更频繁地重新检查以确保用户和关联的令牌状态仍然良好，所以为用户提供此短暂的最大期限。 若要改善此体验，租户管理员必须确保同步 "LastPasswordChangeTimestamp" 属性 (可以使用 PowerShell 或通过 AADSync) 在 user 对象上设置此属性。
+* <sup>1</sup> 吊销信息不足的联合用户包括未同步 "LastPasswordChangeTimestamp" 属性的任何用户。 因为 AAD 无法验证何时吊销绑定旧凭据（例如已更改的密码）的令牌，必须更频繁地重新检查以确保用户和关联的令牌状态仍然良好，所以为用户提供此短暂的最大期限。 若要改善此体验，租户管理员必须确保同步 "LastPasswordChangeTimestamp" 属性 (可以使用 PowerShell 或通过 AADSync) 在 user 对象上设置此属性。
 
 ### <a name="policy-evaluation-and-prioritization"></a>策略评估和优先级
 可以创建令牌生存期策略并将其分配到特定的应用程序、组织和服务主体。 可将多个策略应用到特定的应用程序。 生效的令牌生存期策略遵循以下规则：
@@ -210,11 +210,11 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 * 管理高级策略
 
 ### <a name="prerequisites"></a>先决条件
-以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果你不熟悉 Azure AD，我们建议你在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
+以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果你不熟悉 Azure AD，我们建议你在继续学习这些示例之前，先了解 [如何获取 Azure AD 租户](quickstart-create-new-tenant.md) 。  
 
 若要开始，请执行以下步骤：
 
-1. 下载最新的[PowerShell 模块公共预览版 Azure AD](https://www.powershellgallery.com/packages/AzureADPreview)。
+1. 下载最新的 [PowerShell 模块公共预览版 Azure AD](https://www.powershellgallery.com/packages/AzureADPreview)。
 2. 运行 `Connect` 命令登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
     ```powershell
@@ -284,15 +284,15 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    1. 若要查看新策略并获取策略**ObjectId**，请运行以下命令：
+    1. 若要查看新策略并获取策略 **ObjectId**，请运行以下命令：
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. 将策略分配到服务主体。 还需要获取服务主体的**ObjectId** 。
+1. 将策略分配到服务主体。 还需要获取服务主体的 **ObjectId** 。
 
-    1. 使用[get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet 可查看组织的所有服务主体或单个服务主体。
+    1. 使用 [get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet 可查看组织的所有服务主体或单个服务主体。
         ```powershell
         # Get ID of the service principal
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
@@ -321,9 +321,9 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. 将策略分配到 Web API。 还需要获取应用程序的 **ObjectId**。 使用[get-azureadapplication](/powershell/module/azuread/get-azureadapplication) cmdlet 查找应用的**ObjectId**，或使用[Azure 门户](https://portal.azure.com/)。
+1. 将策略分配到 Web API。 还需要获取应用程序的 **ObjectId**。 使用 [get-azureadapplication](/powershell/module/azuread/get-azureadapplication) cmdlet 查找应用的 **ObjectId**，或使用 [Azure 门户](https://portal.azure.com/)。
 
-    获取应用的**ObjectId**并分配策略：
+    获取应用的 **ObjectId** 并分配策略：
 
     ```powershell
     # Get the application
@@ -354,7 +354,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 
     现已创建一个要应用到整个组织的策略。 可能想要为特定的服务主体保留这个 30 天策略，但要将组织默认策略更改为上限“直到吊销”。
 
-    1. 若要查看组织的所有服务主体，请使用[get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet。
+    1. 若要查看组织的所有服务主体，请使用 [get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet。
 
     1. 如果有服务主体，请运行以下命令：
 
@@ -549,6 +549,6 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 ## <a name="license-requirements"></a>许可要求
 
-使用此功能需要 Azure AD Premium P1 许可证。 若要根据需要查找正确的许可证，请参阅[比较免费版和高级版的通用功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+使用此功能需要 Azure AD Premium P1 许可证。 若要根据需要查找正确的许可证，请参阅 [比较免费版和高级版的通用功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 拥有 [Microsoft 365 商业版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。

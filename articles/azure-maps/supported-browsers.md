@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002944"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085019"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
-Azure Maps Web SDK 提供了名为[isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)的 helper 函数。 此函数检测 web 浏览器是否具有支持加载和呈现地图控件所需的最小 WebGL 功能集。 下面的示例演示如何使用函数：
+Azure Maps Web SDK 提供了名为 [isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)的 helper 函数。 此函数检测 web 浏览器是否具有支持加载和呈现地图控件所需的最小 WebGL 功能集。 下面的示例演示如何使用函数：
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -38,9 +38,9 @@ Azure Maps Web SDK 支持以下桌面浏览器：
 - Mozilla Firefox (当前版本和以前版本) 
 - Apple Safari (Mac OS X)  (当前版本和以前版本) 
 
-另请参阅本文后面的[面向旧版浏览器](#Target-Legacy-Browsers)。
+另请参阅本文后面的 [面向旧版浏览器](#Target-Legacy-Browsers) 。
 
-## <a name="mobile"></a>移动
+## <a name="mobile"></a>移动型
 
 Azure Maps Web SDK 支持以下移动浏览器：
 
@@ -53,7 +53,7 @@ Azure Maps Web SDK 支持以下移动浏览器：
   - IOS 的当前版本 Chrome
 
 > [!TIP]
-> 如果要使用 web 视图控件在移动应用程序中嵌入地图，你可能更倾向于使用[Azure Maps WEB SDK 的 npm 包](https://www.npmjs.com/package/azure-maps-control)，而不是引用在 Azure 内容分发网络上托管的 SDK 版本。 此方法可减少加载时间，因为 SDK 已在用户的设备上，并且无需在运行时下载。
+> 如果要使用 web 视图控件在移动应用程序中嵌入地图，你可能更倾向于使用 [Azure Maps WEB SDK 的 npm 包](https://www.npmjs.com/package/azure-maps-control) ，而不是引用在 Azure 内容分发网络上托管的 SDK 版本。 此方法可减少加载时间，因为 SDK 已在用户的设备上，并且无需在运行时下载。
 
 ## <a name="nodejs"></a>Node.js
 
@@ -63,7 +63,7 @@ Node.js 中还支持以下 Web SDK 模块：
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>定位旧版浏览器
 
-你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如[Leaflet](https://leafletjs.com/)。 下面是一个示例：
+你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如 [Leaflet](https://leafletjs.com/)。 下面是一个示例：
 
 <br/>
 

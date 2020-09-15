@@ -3,15 +3,15 @@ title: 自定义 Windows 虚拟桌面用户的源-Azure
 description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面用户自定义源。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f1779ac27c7e46aa3e608b33e3c006902df8c27
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009114"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084288"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
 
@@ -22,7 +22,7 @@ ms.locfileid: "88009114"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照[设置 PowerShell 模块](powershell-module.md)中的说明进行操作。
+本文假设已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照 [设置 PowerShell 模块](powershell-module.md)中的说明进行操作。
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>自定义 RemoteApp 的显示名称
 
@@ -103,15 +103,15 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
 
-2. 搜索**Windows 虚拟桌面**。
+2. 搜索 **Windows 虚拟桌面**。
 
 3. 在 "服务" 下，选择 " **Windows 虚拟桌面**"。
 
-4. 在 Windows 虚拟桌面页面上，选择屏幕左侧的 "**应用程序组**"，然后选择要编辑的应用组的名称。
+4. 在 Windows 虚拟桌面页面上，选择屏幕左侧的 " **应用程序组** "，然后选择要编辑的应用组的名称。  (例如，若要编辑桌面应用组的显示名称，请选择名为 " **desktop**" 的应用组 ) 
 
-5. 在屏幕左侧的菜单中选择 "**应用程序**"。
+5. 在屏幕左侧的菜单中选择 " **应用程序** "。
 
-6. 选择要更新的应用程序，然后输入新的**显示名称**。
+6. 选择要更新的应用程序，然后输入新的 **显示名称**。
 
 7. 选择“保存”。 你编辑的应用程序现在应显示更新的名称。
 
