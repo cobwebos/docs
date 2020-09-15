@@ -166,7 +166,7 @@ namespace adtIngestFunctionSample
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio： 发布 Azure 函数 对话框，选择 Azure ":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text=""Visual Studio：发布函数 对话框中，选择 Azure Function App (Windows) 或基于计算机 (Linux) ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio：发布函数 对话框中，选择 Azure Function App (Windows) 或基于计算机 (Linux) ":::
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：发布函数对话框，创建新的 Azure 函数":::
 
