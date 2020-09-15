@@ -577,7 +577,7 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 ## <a name="tags-and-billing"></a>标记和计费
 
-可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境（例如，在生产环境中运行的 VM 的计费使用情况）对成本进行分类。
+可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
 
 可以通过 [Azure 资源使用情况和费率卡 api](../../cost-management-billing/manage/usage-rate-card-overview.md) 或使用逗号分隔值 (CSV) 文件来检索有关标记的信息。 从 Azure 门户下载使用情况文件。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择**版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。****
 

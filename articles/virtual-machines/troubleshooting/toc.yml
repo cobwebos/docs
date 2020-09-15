@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: 在应用审核配置策略时，VM 无响应
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: 在应用默认域控制器策略时，VM 无响应
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: 应用组策略时，VM 无响应
           href: unresponsive-vm-apply-group-policy.md
         - name: 应用安全策略时，VM 无响应
@@ -200,7 +202,7 @@
   items:
     - name: 概述
       href: ../managed-disks-overview.md
-    - name: 常见问题解答
+    - name: 常见问题
       href: ../faq-for-disks.md
     - name: 删除存储资源时出错
       href: storage-resource-deletion-errors.md
@@ -291,7 +293,7 @@
           href: ../windows/disk-encryption-overview.md
         - name: 疑难解答
           href: ../windows/disk-encryption-troubleshooting.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../windows/disk-encryption-faq.md
     - name: Linux
       items:

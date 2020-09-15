@@ -293,8 +293,10 @@
       href: azure-monitor-overview.md
     - name: 适用于 SAP 的 Azure Monitor 解决方案提供商
       href: azure-monitor-providers.md
-    - name: 配置适用于 SAP 的 Azure Monitor 解决方案
+    - name: 配置适用于 SAP 的 Azure Monitor 解决方案 - 门户
       href: azure-monitor-sap-quickstart.md
+    - name: 配置适用于 SAP 的 Azure Monitor 解决方案 - Azure PowerShell
+      href: azure-monitor-sap-quickstart-powershell.md
     - name: 适用于 SAP 的 Azure Monitor 解决方案常见问题解答
       href: azure-monitor-faq.md
 - name: 参考

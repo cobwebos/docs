@@ -151,6 +151,8 @@
           href: cloud-services-disaster-recovery-guidance.md
         - name: 经典 VM 体系结构的工作流
           href: cloud-services-workflow-process.md
+        - name: 针对云服务的资源运行状况支持
+          href: resource-health-for-cloud-services.md
         - name: 云服务常见问题
           items:
             - name: 应用程序和服务可用性常见问题解答

@@ -52,8 +52,8 @@
   items:
     - name: 计划条件访问部署
       href: plan-conditional-access.md
-    - name: 最佳做法
-      href: best-practices.md
+    - name: 条件访问 API
+      href: howto-conditional-access-apis.md
     - name: 常用条件访问策略
       items:
         - name: 阻止传统身份验证
@@ -92,13 +92,15 @@
       href: terms-of-use.md
     - name: 登录频率和浏览器持久性控制
       href: howto-conditional-access-session-lifetime.md
+    - name: 最佳做法
+      href: best-practices.md
     - name: 疑难解答
       items:
         - name: 排查登录问题
           href: troubleshoot-conditional-access.md
         - name: 使用 What If 工具排查问题
           href: troubleshoot-conditional-access-what-if.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: faqs.md
     - name: 迁移经典策略
       href: policy-migration-mfa.md

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: c98935781699510d84247f80367d5c57cb388f6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 4de0014abfde32fc4b863afe1cc9000b25d30e83
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137631"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503865"
 ---
 # <a name="two-class-decision-forest-module"></a>“双类决策林”模块
 
@@ -76,7 +76,6 @@ ms.locfileid: "82137631"
   
 5.  对于“决策树的最大深度”，请键入一个数字，以限制任何决策树的最大深度。 增加树的深度可能会提高精度，但存在过度拟合和训练时间增加的风险。
   
-6.  对于“每个节点的随机拆分数”，键入在生成树的每个节点时要使用的拆分数。 “拆分”意味着对树的每个级别（节点）的要素进行随机划分。
   
 7.  对于“每个叶节点的最少样本数”，指定在树中创建任何终端节点（叶）所需的最小事例数。
   

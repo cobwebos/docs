@@ -11,6 +11,8 @@
 - name: 快速入门
   expanded: true
   items:
+    - name: 创建实例 - CLI
+      href: get-started-create-service-instance-cli.md
     - name: 创建实例 - 门户
       href: get-started-create-service-instance.md
     - name: 创建实例 - PowerShell
@@ -266,7 +268,7 @@
       href: ./policy-reference.md
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: api-management-faq.md
     - name: 定价
       href: 'https://aka.ms/apimpricing'

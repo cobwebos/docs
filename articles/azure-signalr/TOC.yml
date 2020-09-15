@@ -25,6 +25,8 @@
   items:
     - name: 生成带身份验证的无服务器实时应用
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: 构建 Blazor Server 聊天应用
+      href: signalr-tutorial-build-blazor-server-chat-app.md
 - name: 示例
   items:
     - name: 代码示例

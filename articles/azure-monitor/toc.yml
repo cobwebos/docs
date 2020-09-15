@@ -372,7 +372,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: FAQ
+        - name: 常见问题解答
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -990,7 +990,7 @@
       items:
         - name: 概述
           href: insights/container-insights-overview.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:
@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: 可视化效果
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: 文本
+              href: platform/workbooks-text-visualizations.md
+            - name: 图表
+              href: platform/workbooks-chart-visualizations.md
+            - name: 网格
+              href: platform/workbooks-grid-visualizations.md
+            - name: Tile
+              href: platform/workbooks-tile-visualizations.md
+            - name: 树
+              href: platform/workbooks-tree-visualizations.md
+            - name: 图形
+              href: platform/workbooks-graph-visualizations.md
+            - name: 复合条
+              href: platform/workbooks-composite-bar.md
         - name: 数据源
           href: platform/workbooks-data-sources.md
         - name: 参数

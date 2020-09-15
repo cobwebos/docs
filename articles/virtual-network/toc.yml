@@ -35,7 +35,7 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: template-samples.md
 - name: 概念
   items:
@@ -91,6 +91,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: 路由首选项
           href: routing-preference-overview.md
+        - name: 公共 IP 安全基线
+          href: public-ip-security-baseline.md
     - name: 安全性
       items:
         - name: 网络安全组

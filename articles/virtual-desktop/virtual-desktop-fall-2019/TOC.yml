@@ -22,6 +22,8 @@
       href: set-up-service-alerts-2019.md
 - name: 操作说明
   items:
+    - name: 手动迁移
+      href: ../manual-migration.md
     - name: 连接到 Windows 虚拟桌面资源
       items:
         - name: 使用 Windows 桌面客户端进行连接

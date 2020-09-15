@@ -61,6 +61,8 @@
       href: ../../azure-databricks/security-baseline.md
     - name: Azure DNS 安全基线
       href: ../../dns/security-baseline.md
+    - name: Azure 开发测试实验室安全基线
+      href: ../../devtest-labs/security-baseline.md
     - name: Azure 防火墙安全基线
       href: ../../firewall/security-baseline.md
     - name: Azure Functions 安全基线
@@ -73,8 +75,14 @@
       href: ../../machine-learning/security-baseline.md
     - name: Azure Policy 安全基线
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - name: Azure 专用链接安全基线
+      href: ../../private-link/security-baseline.md
+    - name: Azure 公共 IP 安全基线
+      href: ../../virtual-network/public-ip-security-baseline.md
     - name: Azure Resource Graph 安全基线
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Sentinel 安全基线
+      href: ../../sentinel/security-baseline.md
     - name: Azure SQL 数据库安全基线
       href: ../../sql-database/security-baseline.md
     - name: Azure 存储安全基线

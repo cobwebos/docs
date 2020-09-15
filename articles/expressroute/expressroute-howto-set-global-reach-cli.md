@@ -2,18 +2,18 @@
 title: Azure ExpressRoute：配置 ExpressRoute Global Reach： CLI
 description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络并启用 Global Reach。
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2018
-ms.author: jaredro
+ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e4f7b53ffd3642869e6246e546e3feeda3cf529
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 20ec5bb565a506d935ef7de6475e5062a21faa22
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495890"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395479"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Global Reach
 
@@ -58,7 +58,7 @@ az account set --subscription <your subscription ID>
 
   > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *地址-前缀*必须是 IPv4 子网（例如，"10.0.0.0/29"）。 我们使用此子网中的 IP 地址在两条 ExpressRoute 线路之间建立连接。 不得在 Azure 虚拟网络或本地网络中使用此子网中的地址。
+* *地址前缀* 必须是 IPv4 子网 (例如，"10.0.0.0/29" ) 。 我们使用此子网中的 IP 地址在两条 ExpressRoute 线路之间建立连接。 不得在 Azure 虚拟网络或本地网络中使用此子网中的地址。
 
 运行以下 CLI 命令来连接两条 ExpressRoute 线路：
 

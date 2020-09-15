@@ -30,6 +30,8 @@
         - name: 发布指南（按产品/服务类型）
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: 规划 SaaS 产品/服务
+              href: ./plan-saas-offer.md
             - name: 虚拟机
               href: ./marketplace-virtual-machines.md
             - name: Azure 应用：解决方案模板

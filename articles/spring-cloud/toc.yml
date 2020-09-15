@@ -67,6 +67,8 @@
   items:
     - name: 准备 Java Spring 应用以进行部署
       href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: 从源代码启动 Java 应用
+      href: spring-cloud-howto-launch-from-source.md
     - name: 设置配置服务器
       href: spring-cloud-tutorial-config-server.md
     - name: 启用服务注册

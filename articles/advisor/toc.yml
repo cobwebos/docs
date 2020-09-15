@@ -41,6 +41,8 @@
       href: advisor-quick-fix.md
     - name: Azure Resource Graph 中的顾问数据
       href: advisor-azure-resource-graph.md
+    - name: 使用顾问分数
+      href: azure-advisor-score.md
 - name: 参考
   items:
     - name: 安全中心

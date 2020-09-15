@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69367da8a732f383222836442406a495bf82a0db
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3dcbd8618dc0f2bae2eacc9ced67869d8209286a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892586"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565518"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
 可以使用 Azure Active Directory (Azure AD) 门户创建基本组。 对于本文而言，将由资源所有者（管理员）向单个资源中添加一个基本组，该组中将包括需要访问该资源的特定成员（员工）。 有关更复杂的方案（包括动态成员身份和规则创建），请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。
@@ -28,7 +28,7 @@ ms.locfileid: "88892586"
 
 ### <a name="group-types"></a>组类型：
 - **安全性**。 用来为一组用户管理成员和计算机对共享资源的访问权限。 例如，你可以创建一个安全组来实施特定的安全策略。 这样，你可以一次向所有成员授予一组权限，而不需要分别为每个成员添加权限。 安全组可以将用户、设备、组和服务主体作为其成员，而将用户和服务主体作为其所有者。 有关管理对资源的访问权限的详细信息，请参阅[使用 Azure Active Directory 组管理对资源的访问权限](active-directory-manage-groups.md)。
-- **Microsoft 365**。 通过向成员授予对共享邮箱、日历、文件、SharePoint 站点和其他内容的访问权限，提供了协作机会。 此选项还允许向组织外部的人授予对该组的访问权限。 Microsoft 365 组只能具有作为其成员的用户。 用户和服务主体可以是 Microsoft 365 组的所有者。 有关 Office 365 组的详细信息，请参阅 [了解 Microsoft 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
+- **Microsoft 365**。 通过向成员授予对共享邮箱、日历、文件、SharePoint 站点和其他内容的访问权限，提供了协作机会。 此选项还允许向组织外部的人授予对该组的访问权限。 Microsoft 365 组只能具有作为其成员的用户。 用户和服务主体可以是 Microsoft 365 组的所有者。 有关 Microsoft 365 组的详细信息，请参阅 [了解 Microsoft 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
 
 ### <a name="membership-types"></a>成员身份类型：
 - **已分配。** 允许将特定用户添加为该组的成员并获得独特权限。 对于本文，我们将使用此选项。
@@ -77,10 +77,9 @@ ms.locfileid: "88892586"
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>打开或关闭组欢迎电子邮件
 
-如果创建了任何新的 Microsoft 365 组（无论使用动态成员身份还是静态成员资格），欢迎通知将发送到添加到该组的所有用户。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行潜在的成员身份更改。 添加的用户也会收到欢迎通知。 可以在 [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps) 中关闭此行为。 
+如果创建了任何新的 Microsoft 365 组（无论使用动态成员身份还是静态成员资格），欢迎通知将发送到添加到该组的所有用户。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行潜在的成员身份更改。 添加的用户也会收到欢迎通知。 可以在 [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps) 中关闭此行为。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [使用组管理对 SaaS 应用程序的访问权限](../users-groups-roles/groups-saasapps.md)
 - [使用 PowerShell 命令管理组](../users-groups-roles/groups-settings-v2-cmdlets.md)
-

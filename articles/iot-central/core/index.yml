@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 02/18/2020
-  ms.openlocfilehash: 6f8cabab3b2feaa219c52c4ed8c53d1cccb4b658
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.date: 06/21/2020
+  ms.openlocfilehash: 870895980c90262a20cfd5ea95a4fdb01b39b4a3
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337188"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90015868"
 landingContent:
 - title: 关于 Azure IoT Central
   linkLists:
@@ -25,8 +25,6 @@ landingContent:
       url: overview-iot-central.md
     - text: 浏览 UI
       url: overview-iot-central-tour.md
-    - text: 设备开发
-      url: overview-iot-central-developer.md
     - text: 最新更新
       url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central
   - linkListType: architecture
@@ -39,18 +37,34 @@ landingContent:
     links:
     - text: 创建新应用程序
       url: quick-deploy-iot-central.md
-- title: 建立连接
+- title: 连接和开发设备
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 面向设备开发人员的概述
+      url: overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: 连接一个设备
-      url: tutorial-connect-device.md
+    - text: 连接设备 (Node.js)
+      url: tutorial-connect-device-nodejs.md
+    - text: 连接设备 (Python)
+      url: tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
+    - text: 设备连接
+      url: concepts-get-connected.md
+    - text: 设备模板
+      url: concepts-device-templates.md
+    - text: 消息有效负载
+      url: concepts-telemetry-properties-commands.md
   - linkListType: how-to-guide
     links:
-    - text: 设置设备模板
+    - text: 设置模板
       url: howto-set-up-template.md
-    - text: 连接其他 IoT 云
-      url: howto-build-iotc-device-bridge.md
+    - text: 连接 Azure Sphere 设备
+      url: howto-connect-sphere.md
+    - text: 排查设备连接问题
+      url: troubleshoot-connection.md
 - title: 保持连接
   linkLists:
   - linkListType: tutorial

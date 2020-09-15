@@ -466,6 +466,8 @@
       href: site-recovery-monitor-and-troubleshoot.md
     - name: 使用 Azure Monitor 日志监视 Site Recovery
       href: monitor-log-analytics.md
+    - name: 监视虚拟机上的代码改动模式
+      href: monitoring-high-churn.md
     - name: 监视进程服务器
       href: vmware-physical-azure-monitor-process-server.md
 - name: 疑难解答
