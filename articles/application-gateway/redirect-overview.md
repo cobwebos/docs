@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253845"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561572"
 ---
 # <a name="application-gateway-redirect-overview"></a>应用程序网关重定向概述
 
@@ -37,7 +37,7 @@ ms.locfileid: "85253845"
    这种类型的重定向只能在特定站点区域中进行 HTTP 到 HTTPS 重定向，例如 /cart/* 表示的购物车区域。
 - **重定向到外部站点**
 
-![重定向](./media/redirect-overview/redirect.png)
+![关系图显示了用户和应用网关以及两者之间的连接，包括未锁定的 H T P P red 箭头、不允许的301直接红色箭头和锁定的 H T T P S 绿色箭头。](./media/redirect-overview/redirect.png)
 
 进行此更改后，客户需要创建新的重定向配置对象，以指定重定向需要指向的目标侦听器或外部站点。 配置元素还支持一些选项，通过这些选项可以将 URI 路径和查询字符串追加到重定向的 URL。 也可选择重定向的类型。 创建此重定向配置后，会通过新规则将其附加到源侦听器。 使用基本规则时，重定向配置与源侦听器相关联，并且是全局重定向。 使用基于路径的规则时，将在 URL 路径映射中定义重定向配置。 因此，它仅适用于站点的特定路径区域。
 

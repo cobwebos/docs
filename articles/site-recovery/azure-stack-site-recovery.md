@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131605"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564303"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -36,7 +36,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ## <a name="architecture"></a>体系结构
 
-![体系结构](./media/azure-stack-site-recovery/architecture.png)
+![关系图显示了云中两个租户的恢复服务保管库，它们都与共同的 Azure Stack 基础结构上的租户订阅相关联。](./media/azure-stack-site-recovery/architecture.png)
 
 **位置** | **组件** |**详细信息**
 --- | --- | ---
@@ -140,7 +140,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 1. 在 Azure 门户中，选择 "**创建资源**  >  **管理工具**" "  >  **备份" 和 "Site Recovery**"。
 2. 在“名称”  中，输入一个友好名称以标识此保管库。
 3. 在“资源”组中，创建或选择资源组  。 我们将使用 contosoRG  。
-4. 在“位置”中，输入 Azure 区域  。 我们将使用“西欧”****。
+4. 在“位置”中，输入 Azure 区域  。 我们将使用“西欧”。
 5. 若要从仪表板快速访问保管库，请选择“固定到仪表板”   >   “创建”。
 
    ![创建新的保管库](./media/azure-stack-site-recovery/new-vault-settings.png)

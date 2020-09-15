@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6afbdb6bcb067bdcb570c366f4604ea77ec4f490
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526810"
+ms.locfileid: "90561340"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
 
@@ -148,11 +148,11 @@ Microsoft 企业 SSO 插件依赖于 [Apple 的企业单一登录框架](https:/
 - 应用程序使用标准协议与 Azure AD (例如 OAuth2、SAML、WS-FEDERATION) 
 - 应用程序不会在本机 UI 中收集明文用户名和密码
 
-在这种情况下，应用程序会在创建网络请求时提供 SSO，并打开 web 浏览器以使用户登录。 如果用户重定向到 Azure AD 登录 URL，SSO 插件将验证 URL，并检查是否有可用于该 URL 的 SSO 凭据。 如果有一个，SSO 插件会将 SSO 凭据传递到 Azure AD，这将授权该应用程序完成网络请求，而不要求最终用户输入凭据。 此外，如果已知设备 Azure AD，SSO 插件还会传递设备证书，以满足基于设备的条件性访问检查的需要。 
+在这种情况下，当应用程序创建网络请求并打开 web 浏览器以对用户进行签名时，将提供 SSO。 如果用户重定向到 Azure AD 登录 URL，SSO 插件将验证 URL，并检查是否有可用于该 URL 的 SSO 凭据。 如果有一个，SSO 插件会将 SSO 凭据传递到 Azure AD，这将授权该应用程序完成网络请求，而不要求用户输入其凭据。 此外，如果已知设备 Azure AD，SSO 插件还会传递设备证书，以满足基于设备的条件性访问检查的需要。 
 
-若要为非 MSAL 应用支持 SSO，SSO 插件会将类似的协议实现到 " [什么是主刷新令牌？](../devices/concept-primary-refresh-token.md#browser-sso-using-prt)" 中所述的 Windows browser 插件。 
+为支持非 MSAL 应用程序的 SSO，SSO 插件实现的协议类似于 " [什么是主刷新令牌？](../devices/concept-primary-refresh-token.md#browser-sso-using-prt)" 中所述的 Windows browser 插件。 
 
-与基于 MSAL 的应用相比，SSO 插件通过与应用提供的现有浏览器登录体验集成，为非 MSAL 的应用提供更透明的操作。 最终用户将看到他们熟悉的体验，其中的好处是无需在每个应用程序中执行其他登录。 例如，SSO 插件可以将 SSO 会话添加到基于 web 的帐户选取器体验，而不是显示本机帐户选取器。 
+与基于 MSAL 的应用相比，SSO 插件通过与应用提供的现有浏览器登录体验集成，为非 MSAL 的应用提供更透明的操作。 最终用户将看到他们熟悉的体验，其中的好处是无需在每个应用程序中执行其他登录。 例如，SSO 插件不会显示本机帐户选取器，而是将 SSO 会话添加到基于 web 的帐户选取器体验。 
 
 ## <a name="next-steps"></a>后续步骤
 

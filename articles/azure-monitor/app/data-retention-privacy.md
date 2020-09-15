@@ -4,12 +4,12 @@ description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f6fa42d6cc20c4d26caa7f571f13bb3917b2c7c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a2440379c001c0213145c1c5972cfed8799f4966
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929323"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562785"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -128,7 +128,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 
 `C:\Users\username\AppData\Local\Temp` 用于暂留数据。 此位置无法通过配置目录进行配置，只有拥有所需凭据的特定用户，才有权访问此文件夹。 （有关详细信息，请参阅[实现](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)。）
 
-###  <a name="net"></a>.Net
+###  <a name="net"></a>.NET
 
 默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。）
 
@@ -153,7 +153,16 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 
 ### <a name="netcore"></a>NetCore
 
-默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。）在 Linux 环境中，除非指定了存储文件夹，否则将禁用本地存储。
+默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。） 
+
+在 Linux 环境中，除非指定了存储文件夹，否则将禁用本地存储。
+
+> [!NOTE]
+> 由于已为 Linux、Mac 和 Windows 自动创建了 release 2.15.0-beta3 和更高版本的本地存储。 对于非 Windows 系统，SDK 会根据以下逻辑自动创建本地存储文件夹：
+> - `${TMPDIR}` -如果 `${TMPDIR}` 设置了环境变量，则使用此位置。
+> - `/var/tmp` -如果不存在以前的位置，我们尝试 `/var/tmp` 。
+> - `/tmp` -如果以前的两个位置都不存在，请尝试 `tmp` 。 
+> - 如果这些位置均不存在，则不会创建本地存储，并且仍需要手动配置。 [了解完整的实现细节](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
 
 下面的代码片段展示了如何在 `Startup.cs` 类的 `ConfigureServices()` 方法中设置 `ServerTelemetryChannel.StorageFolder`：
 

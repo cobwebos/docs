@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d8dc4a3efb034c9428de32f0f975869e1044327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613890"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561867"
 ---
 # <a name="graphics-binding"></a>图形绑定
 
@@ -137,11 +137,23 @@ wmrBinding->BlitRemoteFrame();
 ### <a name="simulation"></a>模拟
 
 `GraphicsApiType.SimD3D11` 是模拟绑定，如果选择，它将创建 `GraphicsBindingSimD3d11` 图形绑定。 此界面用于模拟头部运动，例如，在桌面应用程序中，以及渲染单视场图像时。
+
+若要实现模拟绑定，必须了解本地相机与远程帧之间的差异（如 [相机](../overview/features/camera.md) 页面上所述）。
+
+需要两个照相机：
+
+* **本地照相机**：此照相机表示由应用程序逻辑驱动的当前相机位置。
+* **代理照相机**：此相机与服务器发送的当前 *远程帧* 匹配。 因为客户端请求帧的时间与到达该帧的时间之间存在延迟，所以 *远程帧* 始终是本地相机移动后的一位。
+
+此处的基本方法是使用代理相机将远程映像和本地内容呈现到离屏目标。 然后，代理映像将 reprojected 到本地相机空间，该空间将在 [后期阶段 reprojection](../overview/features/late-stage-reprojection.md)进一步解释。
+
 设置过程要稍微复杂一点，其工作方式如下：
 
 #### <a name="create-proxy-render-target"></a>设置代理渲染目标
 
-需要使用 `GraphicsBindingSimD3d11.Update` 函数提供的代理照相机数据，将远程和本地内容渲染到名为“代理”的屏幕外颜色/深度渲染目标。 代理必须与后台缓冲区的分辨率匹配。 会话准备就绪后，需要先调用 `GraphicsBindingSimD3d11.InitSimulation` 才可连接到该会话：
+需要使用 `GraphicsBindingSimD3d11.Update` 函数提供的代理照相机数据，将远程和本地内容渲染到名为“代理”的屏幕外颜色/深度渲染目标。
+
+代理必须匹配后台缓冲区的分辨率，并且应为 *DXGI_FORMAT_R8G8B8A8_UNORM* 或 *DXGI_FORMAT_B8G8R8A8_UNORM* 格式的 int。 会话准备就绪后，需要先调用 `GraphicsBindingSimD3d11.InitSimulation` 才可连接到该会话：
 
 ```cs
 AzureSession currentSession = ...;
@@ -244,4 +256,6 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 
+* [摄像头](../overview/features/camera.md)
+* [后期阶段重新投影](../overview/features/late-stage-reprojection.md)
 * [教程：查看远程渲染的模型](../tutorials/unity/view-remote-models/view-remote-models.md)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 196b1dda17de1c9430ab048ac90d1d10b6a595b4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104684"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562445"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MariaDB 服务器
 本文介绍如何管理 Azure Database for MariaDB 服务器。 管理任务包括计算和存储缩放、管理员密码重置，以及查看服务器详细信息。
@@ -34,7 +34,7 @@ ms.locfileid: "86104684"
 
 2. 选择“常规用途”或“内存优化”，具体取决于你要缩放到哪一层。   
 
-    ![change-pricing-tier](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+    ![屏幕截图显示已选择定价层的 Azure 门户，并选择 "内存优化" 值。](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
     > 更改层级导致服务器重启。
@@ -79,7 +79,7 @@ ms.locfileid: "86104684"
 
 2. 输入新密码并确认。 文本框会就密码复杂性要求提示你。
 
-   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
+   ![屏幕截图显示 "重置密码" 对话框以及 "密码" 和 "确认密码"。](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. 选择“确定”以保存新密码。 
 
@@ -94,7 +94,7 @@ ms.locfileid: "86104684"
 
 2. 在输入框中键入服务器名称，确认这是要删除的服务器。
 
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![屏幕截图显示一个对话框，该对话框验证是否要删除数据库，这是不可逆的。](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > 删除服务器的操作不可逆。

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 88160d82cb7cc0a012d63445f101a1f2a3740da0
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569267"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563069"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -250,6 +250,7 @@ public void keepAlive(
 
 如果当前函数调用晚于计划时间，则 `IsPastDue` 属性为 `true`。 例如，函数应用重新启动可能会导致调用被错过。
 
+
 ## <a name="ncrontab-expressions"></a>NCRONTAB 表达式 
 
 Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来解释 NCRONTAB 表达式。 NCRONTAB 表达式类似于 CRON 表达式，不同之处在于它在开头包含额外的第六个字段，用于以秒为单位的时间精度：
@@ -282,6 +283,8 @@ Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来�
 |`"0 30 9 * * 1-5"`|每个工作日的上午 9:30|
 |`"0 30 9 * Jan Mon"`|在一月份每星期一的上午 9:30|
 
+> [!NOTE]
+> NCRONTAB 表达式需要 **六个字段** 格式。 Azure 中不支持五个字段 cron 表达式。
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB 时区
 

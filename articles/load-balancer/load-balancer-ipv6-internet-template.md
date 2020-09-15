@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803732"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562513"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -38,7 +38,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 下图演示了使用本文所述示例模板部署的负载均衡解决方案。
 
-![负载均衡器方案](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
+![关系图显示了本文中使用的示例方案，包括通过 Internet 连接到 Azure 负载均衡器的工作站客户端，连接到两个虚拟机。](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
 在此方案中，将创建以下 Azure 资源：
 
@@ -55,43 +55,43 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 1. 打开 Azure 门户，使用有权在 Azure 订阅中创建 VM 和网络资源的帐户登录。 此外，除非使用现有资源，否则该帐户必须有权创建资源组和存储帐户。
 2. 在菜单中单击“+新建”，并在搜索框中键入“模板”。 在搜索结果中选择“模板部署”。
 
-    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![屏幕截图显示新的和模板部署选定的 Azure 门户。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. 在“全部”边栏选项卡中，单击“模板部署”。
 
-    ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![屏幕截图显示 Marketplace 模板部署。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. 单击“创建”。
 
-    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![屏幕截图显示了 Marketplace 中模板部署的说明。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. 单击“编辑模板”。 删除现有内容，复制/粘贴模板文件的整个内容（包括左右大括号 {}），并单击“保存”。
 
     > [!NOTE]
     > 如果使用的是 Microsoft  Internet  Explorer，在粘贴内容时，会看到一个对话框，询问是否允许访问 Windows 剪贴板。 请单击“允许访问”。
 
-    ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![屏幕截图显示自定义部署的 firest 步骤，它是编辑模板。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. 单击“编辑参数”。 在“参数”边栏选项卡中，根据指导在“模板参数”部分中指定值，并单击“保存”关闭“参数”边栏选项卡。 在“自定义部署”边栏选项卡中选择订阅、选择现有资源组或创建一个资源组。 如果要创建资源组，请选择资源组的位置。 接下来，单击“法律条款”  ，并单击法律条款后面的“购买”  。 Azure 开始部署资源。 部署所有资源需要花费几分钟时间。
 
-    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![屏幕截图显示自定义部署所涉及的步骤，从输入模板参数值开始。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     有关这些参数的详细信息，请参阅本文后面的[模板参数和变量](#template-parameters-and-variables)部分。
 
 7. 要查看模板创建的资源，请单击“浏览”，向下滚动列表，直到看到“资源组”，并单击它。
 
-    ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![屏幕截图显示选中了 "浏览" 和 "资源组" 的 Azure 门户。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. 在“资源组”边栏选项卡上，单击步骤 6 中指定的资源组名称。 随后可以看到所有已部署资源的列表。 如果一切正常，“上次部署”下面应会显示“成功”。 否则，请确保使用的帐户有权创建所需的资源。
 
-    ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![屏幕截图显示了资源组的上次部署状态，在此示例中为 "成功"。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > 正在部署资源时，如果在完成步骤 6 之后立即浏览资源组，“上次部署”将显示“正在部署”状态。
 
 9. 在资源列表中单击“myIPv6PublicIP”。 可以看到它在 IP 地址下有一个 IPv6 地址，其 DNS 名称是在步骤 6 中为 dnsNameforIPv6LbIP 参数指定的值。 此资源是公共 IPv6 地址和主机名，可以访问 Internet 客户端。
 
-    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![屏幕截图显示 IPv6 公共地址。](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>验证连接
 

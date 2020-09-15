@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76275115"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564145"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple 的可用区域
 
@@ -39,7 +39,7 @@ Azure 数据中心在全球多个地理位置运行，目的是满足客户对�
 
 下面是一个区域列表，其中的 StorSimple 设备管理器服务适用于 Azure 公有云，可以进行部署。
 
-![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![屏幕截图显示 StorSimple 设备管理器，其中突出显示了 "位置" 列表。](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 对于 Azure 政府云，StorSimple 设备管理器服务在 US Gov 爱荷华州和 US Gov 弗吉尼亚州数据中心提供。
 

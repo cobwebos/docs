@@ -1,24 +1,27 @@
 ---
 title: 在 Linux 中排查 Azure 文件问题 | Microsoft Docs
-description: 排查 Linux 中的 Azure 文件问题。 请参阅从 Linux 客户端连接时与 Azure 文件相关的常见问题，并查看可能的解决方法。
+description: 在 Linux 中排查 Azure 文件存储问题。 请查看从 Linux 客户端进行连接时与 Azure 文件存储相关的常见问题，并查看可能的解决方法。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904915"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564264"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>排查 Linux 中的 Azure 文件问题 (SMB) 
 
 本文列出了从 Linux 客户端连接时与 Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 
 
 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) 确保 Linux 客户端满足正确的先决条件。 AzFileDiagnostics 自动检测本文中提到的大多数症状。 它有助于设置环境以获得最佳性能。 也可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息。 疑难解答提供了帮助你解决连接、映射和装载 Azure 文件共享问题的步骤。
+
+> [!IMPORTANT]
+> 本文的内容仅适用于 SMB 共享。
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>无法连接或装载 Azure 文件共享
 
@@ -84,9 +87,9 @@ ms.locfileid: "87904915"
 
 ### <a name="cause"></a>原因
 
-您已经达到了文件或目录允许的并发打开句柄数上限。
+已达到文件或目录所允许的并发打开句柄数上限。
 
-单个文件或目录上存在2000打开句柄的配额。 当你拥有 2000 个打开句柄时，会显示一条错误消息，指示已达到此配额。
+单个文件或目录的打开句柄配额为 2000 个。 当你拥有 2000 个打开句柄时，会显示一条错误消息，指示已达到此配额。
 
 ### <a name="solution"></a>解决方案
 

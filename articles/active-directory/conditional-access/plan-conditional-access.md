@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049921"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561527"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -380,7 +380,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 根据 CA 策略的配置方式调整方案和预期结果。
 
-| 策略| 场景| 预期结果 |
+| 策略| 方案| 预期结果 |
 | - | - | - |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户在受信任的位置/工作时登录到应用| 不提示用户执行 MFA |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户不在受信任的位置/工作时登录到应用| 提示用户执行 MFA，他们可以成功登录 |
@@ -448,7 +448,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 使用以下管理选项来控制和管理 CA 策略：
 
-![manage-access](media/plan-conditional-access/manage-access.png)
+![屏幕截图显示了用于 C 策略的管理选项，其中包括命名位置、自定义控件、使用条款、V P N 连接性以及所选的经典策略。](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>命名位置

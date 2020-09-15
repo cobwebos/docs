@@ -1,28 +1,35 @@
 ---
 title: 规划 Azure 文件部署 | Microsoft Docs
-description: 了解 Azure 文件部署规划。 可以直接装载 Azure 文件共享，也可以在本地缓存 Azure 文件共享，Azure 文件同步。
+description: 了解规划 Azure 文件部署。 可以直接装载 Azure 文件共享，也可以使用 Azure 文件同步在本地缓存 Azure 文件共享。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705905"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563420"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
 
-- **直接装载 Azure 文件共享**：由于 Azure 文件存储提供 SMB 访问，因此你可以使用 Windows、macOS 和 Linux 中提供的标准 SMB 客户端在本地或云中装载 Azure 文件共享。 由于 Azure 文件共享是无服务器的，因此针对生产方案进行部署不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
+- **直接装载 azure 文件共享**：由于 azure 文件提供 (SMB) 或网络文件系统 (NFS) 访问的服务器消息块，因此可以使用操作系统中提供的标准 SMB 或 NFS 客户端将 Azure 文件共享装载到本地或云中。 由于 Azure 文件共享是无服务器的，因此针对生产方案进行部署不需要管理文件服务器或 NAS 设备。 这意味着，无需应用软件修补程序或交换物理磁盘。 
 
-- **使用 Azure 文件同步在本地缓存 Azure 文件共享**：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将本地（或云中的）Windows Server 转换为 Azure 文件共享的快速缓存。 
+- **使用 Azure 文件同步在本地缓存 Azure 文件共享**：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步将本地 (或云) Windows Server 转换为 Azure SMB 文件共享的快速缓存。 
 
 本文主要阐述有关部署可供本地或云客户端直接装载的 Azure 文件共享时的部署注意事项。 若要规划 Azure 文件同步部署，请参阅 [规划 Azure 文件同步部署](storage-sync-files-planning.md)。
+
+## <a name="available-protocols"></a>可用的协议
+
+Azure 文件提供了两种协议，可以在将文件共享、SMB 和网络文件系统 (NFS) 时使用。 有关这些协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
+
+> [!IMPORTANT]
+> 本文的大部分内容仅适用于 SMB 共享。 适用于 NFS 共享的任何内容都将专门表明它适用。
 
 ## <a name="management-concepts"></a>管理概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -54,7 +61,7 @@ ms.locfileid: "88705905"
 
 - 通过 ExpressRoute 或 VPN 连接访问 Azure 文件共享。 通过网络隧道访问 Azure 文件共享时，可以像装载本地文件共享一样装载 Azure 文件共享，因为 SMB 流量不会通过组织边界。   
 
-尽管从技术角度讲，通过公共终结点装载 Azure 文件共享要容易得多，但我们预期大多数客户会选择通过 ExpressRoute 或 VPN 连接装载其 Azure 文件共享。 为此，需要为环境配置以下设置：  
+尽管从技术角度讲，通过公共终结点装载 Azure 文件共享要容易得多，但我们预期大多数客户会选择通过 ExpressRoute 或 VPN 连接装载其 Azure 文件共享。 可以通过 SMB 和 NFS 共享来安装这些选项。 为此，需要为环境配置以下设置：  
 
 - **使用 ExpressRoute、站点到站点或点到站点 VPN 的网络隧道**：通过隧道连接到虚拟网络后，即使端口 445 已被阻止，也能从本地访问 Azure 文件共享。
 - **专用终结点**：专用终结点在虚拟网络的地址空间中为存储帐户指定一个专用的 IP 地址。 这使得网络隧道无需打开本地网络，直到 Azure 存储群集所拥有的所有 IP 地址范围。 
@@ -66,6 +73,10 @@ ms.locfileid: "88705905"
 Azure 文件存储支持两种不同类型的加密：传输中加密（与装载/访问 Azure 文件共享时使用的加密相关），以及静态加密（与存储在磁盘中的数据的加密方式相关）。 
 
 ### <a name="encryption-in-transit"></a>传输中加密
+
+> [!IMPORTANT]
+> 本部分介绍 SMB 共享的传输详细信息中的加密。 有关通过 NFS 共享传输的加密的详细信息，请参阅 [安全性](storage-files-compare-protocols.md#security)。
+
 默认情况下，所有 Azure 存储帐户均已启用传输中加密。 即通过 SMB 装载文件共享或通过 FileREST 协议（例如，通过 Azure门户、PowerShell/CLI 或 Azure SDK）访问文件共享时，Azure 文件存储仅允许通过加密或 HTTPS 使用 SMB 3.0 及更高版本建立的连接。 如果启用了传输中加密，则不支持 SMB 3.0 的客户端或支持 SMB 3.0 但不支持 SMB 加密的客户端将无法装载 Azure 文件共享。 要详细了解哪些操作系统支持具有加密功能的 SMB 3.0，请参阅适用于 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的详细文档。 PowerShell、CLI 和 SDK 的所有当前版本均支持 HTTPS。  
 
 可以为 Azure 存储帐户禁用传输中加密。 禁用加密后，Azure 文件存储还将允许没有加密功能的 SMB 2.1、SMB 3.0，以及通过 HTTP 进行的未加密 FileREST API 调用。 禁用传输中加密的主要原因是为了支持必须在更低版本的操作系统（例如，Windows Server 2008 R2 或更低版本的 Linux 发行版）上运行的旧版应用程序。 Azure 文件存储仅允许在与 Azure 文件共享相同的 Azure 区域内建立 SMB 2.1 连接；Azure 文件共享的 Azure 区域之外的 SMB 2.1 客户端（例如，本地或其他 Azure 区域）将无法访问文件共享。
@@ -78,17 +89,17 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
 ## <a name="data-protection"></a>数据保护
-Azure 文件具有多层方法，可确保你的数据已备份、可恢复并受安全威胁保护。
+Azure 文件有一种多层方法来确保数据得到备份、恢复以及不受安全威胁。
 
 ### <a name="soft-delete"></a>软删除
-文件共享的软删除 (预览) 是一个存储帐户级别设置，它允许你在意外删除文件共享时恢复该文件。 删除文件共享时，它会转换为软删除状态，而不会被永久删除。 你可以配置软删除数据在被永久删除之前可恢复的时间量，并在此保留期内随时删除该共享。 
+Azure 文件共享的软删除（预览版）是一种存储帐户级别设置，使你在意外删除文件共享时对其进行恢复。 已删除的文件共享会过渡到软删除状态，而非被永久擦除。 可配置软删除数据被永久删除前的可恢复时间，并在此保留期内随时取消删除共享。 
 
-建议为大多数文件共享启用软删除。 如果你的工作流中存在共享删除的常用和预期，你可能会决定保留时间非常短，或者根本没有启用软删除。
+我们建议对大多数文件共享启用软删除。 如果你的工作流中共享删除是常见且预期的，那么你可能会决定很短的保留期，或者根本不启用软删除。
 
-有关软删除的详细信息，请参阅 [防止意外删除数据](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
+有关软删除的详细信息，请参见[防止意外数据删除](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
 
 ### <a name="backup"></a>备份
-可以通过共享快照备份 Azure 文件共享， [共享快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)是共享的只读时间点副本。 快照是增量快照，这意味着它们只包含自上一个快照以来已更改的数据量。 每个文件共享最多可以有200个快照，并将其保留长达10年。 你可以通过 PowerShell 或命令行接口 (CLI) 手动获取这些 Azure 门户快照，或者可以使用 [Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照存储在文件共享中，这意味着，如果删除文件共享，则还会删除快照。 若要保护快照备份不被意外删除，请确保为共享启用软删除。
+可以通过[共享快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)备份 Azure 文件共享，这些快照是共享的只读时间点副本。 快照是增量的，这意味着它们只包含自上一个快照以来更改的数据量。 每个文件共享最多可以有 200 个快照，并将其保留长达 10 年。 你可以通过 PowerShell 或命令行接口 (CLI) 手动获取这些 Azure 门户快照，或者可以使用 [Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照存储在文件共享中，这意味着如果删除文件共享，快照也将删除。 若要保护快照备份不被意外删除，请确保为共享启用软删除。
 
 Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)处理快照的计划和保留。 它的祖父- (GFS) 功能意味着您可以每日、每周、每月和每年的快照，每个快照都具有自己的独特的保留期。 Azure 备份还会协调软删除的启用，并在存储帐户中的任何文件共享配置为进行备份时立即对存储帐户执行删除锁定。 最后，Azure 备份提供某些关键的监视和警报功能，使客户能够获得其备份空间的合并视图。
 
@@ -185,7 +196,7 @@ Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azur
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>迁移
-在很多情况下，你不想要为组织建立全新的文件共享，而是将现有文件共享从本地文件服务器或 NAS 设备迁移到 Azure 文件存储。 为你的方案选择适当的迁移策略和工具对于迁移的成功非常重要。 
+在很多情况下，你不想要为组织建立全新的文件共享，而是将现有文件共享从本地文件服务器或 NAS 设备迁移到 Azure 文件存储。 为你的场景选择正确的迁移策略和工具对于迁移的成功非常重要。 
 
 " [迁移概述](storage-files-migration-overview.md) " 一文简要介绍了基础知识，并包含一个表，该表格可引导你使用可能涵盖方案的迁移指南。
 

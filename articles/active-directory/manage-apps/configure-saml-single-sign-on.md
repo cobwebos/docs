@@ -11,23 +11,23 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 827afbf811042acb2bf01f3e863408d5a6e9732f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 500bfff4afaebc345d344566b02fe945edb05795
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441912"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562598"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>配置基于 SAML 的单一登录
 
 在应用程序管理的 [快速入门系列](view-applications-portal.md) 中，已了解如何使用 Azure AD 作为标识提供程序 (IdP) 应用程序。 本文介绍有关单一登录的基于 SAML 的选项的更多详细信息。 
 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 使用 Azure AD 作为标识提供者 (IdP) 并设置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要基于 SAML 的 SSO 的自定义配置，则此文适用于你。
 
-在 [快速入门系列](view-applications-portal.md)中，有一篇文章介绍了如何配置单一登录。 在此示例中，你将了解如何访问应用的 "SAML 配置" 页。 "SAML 配置" 页包括五个部分。 本文详细讨论了这些部分。
+在 [快速入门系列](add-application-portal-setup-sso.md)中，有一篇文章介绍了如何配置单一登录。 在此示例中，你将了解如何访问应用的 "SAML 配置" 页。 "SAML 配置" 页包括五个部分。 本文详细讨论了这些部分。
 
 > [!IMPORTANT] 
 > 在某些情况下，在**企业应用**程序中的应用程序的导航中将不会出现**单一登录**选项。 
@@ -42,7 +42,7 @@ ms.locfileid: "89441912"
 应从应用程序供应商处获取这些值。 可以手动输入值，或上传元数据文件以提取字段值。
 
 > [!TIP]
-> 许多应用程序都已预先配置为使用 Azure AD。 在将应用添加到 Azure AD 租户时，可浏览的应用库中列出了这些应用。 此 [快速入门系列](view-applications-portal.md) 指导完成该过程。 对于库中的应用，你将会看到详细的分步说明，即设置说明。 若要访问这些步骤，你可以单击 "快速入门" 系列中所述的应用的 "SAML 配置" 页上的链接，也可以浏览 [SaaS 应用配置教程](../saas-apps/tutorial-list.md)中的所有应用配置教程的列表。
+> 许多应用程序都已预先配置为使用 Azure AD。 在将应用添加到 Azure AD 租户时，可浏览的应用库中列出了这些应用。 此 [快速入门系列](add-application-portal-setup-sso.md) 指导完成该过程。 对于库中的应用，你将会看到详细的分步说明，即设置说明。 若要访问这些步骤，你可以单击 "快速入门" 系列中所述的应用的 "SAML 配置" 页上的链接，也可以浏览 [SaaS 应用配置教程](../saas-apps/tutorial-list.md)中的所有应用配置教程的列表。
 
 | 基本 SAML 配置设置 | SP 启动 | idP 启动 | 说明 |
 |:--|:--|:--|:--|
@@ -57,7 +57,7 @@ ms.locfileid: "89441912"
 当用户对应用程序进行身份验证时，Azure AD 会向应用程序颁发 SAML 令牌，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 例如，如果应用程序需要特定的声明值或用户名以外的名称格式，则可能需要自定义这些声明。 
 
 > [!IMPORTANT]
-> 许多应用程序已预先配置，在应用程序库中，无需担心设置用户和组声明。 [快速入门系列](view-applications-portal.md)逐步讲解如何添加和配置应用。
+> 许多应用程序已预先配置，在应用程序库中，无需担心设置用户和组声明。 [快速入门系列](add-application-portal.md)逐步讲解如何添加和配置应用。
 
 
 **唯一的用户标识符 (名称 ID) **标识符值是必需的声明，这一点很重要。 默认值为 " *用户*"。 用户标识符用于唯一标识应用程序中的每个用户。 例如，如果电子邮件地址既是用户名，也是唯一标识符，请将此值设置为 *user.mail*。
@@ -79,7 +79,7 @@ ms.locfileid: "89441912"
 Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 需要使用此证书在 Azure AD 与应用程序之间设置信任。 有关证书格式的详细信息，请参阅应用程序的 SAML 文档。 有关详细信息，请参阅[管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和 [SAML 令牌中的高级证书签名选项](certificate-signing-options.md)。
 
 > [!IMPORTANT]
-> 许多应用程序已预先配置，在应用程序库中，无需深入了解证书。 [快速入门系列](view-applications-portal.md)逐步讲解如何添加和配置应用。
+> 许多应用程序已预先配置，在应用程序库中，无需深入了解证书。 [快速入门系列](add-application-portal.md)逐步讲解如何添加和配置应用。
 
 从 Azure AD 中，可以直接从“使用 SAML 设置单一登录”页直接下载 Base64 或原始格式的活动证书。 此外，还可以通过下载应用程序元数据 XML 文件或使用应用联合元数据 URL 来获取活动证书。 若要查看、创建或下载证书（活动或非活动），请执行以下步骤。
 

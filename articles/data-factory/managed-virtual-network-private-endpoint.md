@@ -9,14 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom:
+- seo-lt-2019
+- references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 0553cb47ba0119cf1bc5e744b689b6c510ba8396
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594350"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563992"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络 (预览) 
 
@@ -88,7 +90,7 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
 
-### <a name="supported-regions"></a>支持的区域
+### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure 数据工厂托管的虚拟网络在以下 Azure 区域中提供：
 - 美国东部
 - 美国东部 2
 - 美国中西部
@@ -104,6 +106,10 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>从 ADF 托管虚拟网络通过公共终结点进行的出站通信
 - 对于出站通信，只打开端口443。
 - 不支持将 Azure 存储和 Azure Data Lake Gen2 从 ADF 托管的虚拟网络通过公共终结点进行连接。
+
+### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault 的链接服务创建 
+- 为 Azure Key Vault 创建链接服务时，不 Azure Integration Runtime 引用。 因此，在 Azure Key Vault 的链接服务创建过程中无法创建专用终结点。 但是，当你为引用 Azure Key Vault 链接服务的数据存储创建链接服务，并且此链接服务引用启用了托管虚拟网络 Azure Integration Runtime 时，你可以在创建期间为 Azure Key Vault 链接的服务创建专用终结点。 
+- Azure Key Vault 的链接服务的**测试连接**操作仅验证 URL 格式，但不执行任何网络操作。
 
 ## <a name="next-steps"></a>后续步骤
 

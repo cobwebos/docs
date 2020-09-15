@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918394"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564009"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
@@ -153,13 +153,25 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 尽管该通道的包和命名空间名称包含“WindowsServer”，但非 Windows 系统也支持此通道，不过存在以下例外情况。 在非 Windows 系统中，该通道默认不会创建本地存储文件夹。 必须创建本地存储文件夹，并将通道配置为使用该文件夹。 配置本地存储后，该通道在所有系统中的工作方式相同。
 
+> [!NOTE]
+> 由于已为 Linux、Mac 和 Windows 自动创建了 release 2.15.0-beta3 和更高版本的本地存储。 对于非 Windows 系统，SDK 会根据以下逻辑自动创建本地存储文件夹：
+> - `${TMPDIR}` -如果 `${TMPDIR}` 设置了环境变量，则使用此位置。
+> - `/var/tmp` -如果不存在以前的位置，我们尝试 `/var/tmp` 。
+> - `/tmp` -如果以前的两个位置都不存在，请尝试 `tmp` 。 
+> - 如果这些位置均不存在，则不会创建本地存储，并且仍需要手动配置。 [了解完整的实现细节](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>SDK 是否创建临时本地存储？ 存储中的数据是否会加密？
 
 出现网络问题或限制时，SDK 会将遥测项存储在本地存储中。 此数据不会在本地加密。
 
 对于 Windows 系统，SDK 会自动在 %TEMP% 或 %LOCALAPPDATA% 目录中创建临时本地文件夹，并仅限管理员和当前用户访问该文件夹。
 
-对于非 Windows 系统，SDK 不会自动创建本地存储，因此默认不会在本地存储数据。 你可以自行创建存储目录，并将通道配置为使用该目录。 在这种情况下，你需负责确保该目录受到保护。
+对于非 Windows 系统，SDK 不会自动创建本地存储，因此默认不会在本地存储数据。
+
+> [!NOTE]
+> 由于已为 Linux、Mac 和 Windows 自动创建了 release 2.15.0-beta3 和更高版本的本地存储。 
+
+ 你可以自行创建存储目录，并将通道配置为使用该目录。 在这种情况下，你需负责确保该目录受到保护。
 详细了解[数据保留和隐私](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage)。
 
 ## <a name="open-source-sdk"></a>开源 SDK

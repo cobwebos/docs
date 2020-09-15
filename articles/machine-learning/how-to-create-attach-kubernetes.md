@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: edd4cc28c6d59f1d6e0c9cabfd5855c72bd3fe73
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cac14d5995042847bc98e47e50ea2d188382fd2a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661838"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564332"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,6 +69,83 @@ Azure 机器学习可以将训练的机器学习模型部署到 Azure Kubernetes
     - [手动缩放 AKS 群集中的节点计数](../aks/scale-cluster.md)
     - [在 AKS 中设置群集自动缩放程序](../aks/cluster-autoscaler.md)
 
+## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes 服务版本
+
+Azure Kubernetes 服务允许使用各种 Kubernetes 版本创建群集。 有关可用版本的详细信息，请参阅 [Azure Kubernetes Service 中支持的 Kubernetes 版本](/azure/aks/supported-kubernetes-versions)。
+
+使用以下方法之一 **创建** Azure Kubernetes Service 群集时， *不能在* 创建的群集版本中进行选择：
+
+* Azure 机器学习 studio 或 Azure 门户的 Azure 机器学习部分。
+* Azure CLI 的机器学习扩展。
+* Azure 机器学习 SDK。
+
+这种创建 AKS 群集的方法使用群集的 __默认__ 版本。 新的 Kubernetes 版本可用*时，默认版本会随时间而改变*。
+
+**附加**现有的 AKS 群集时，我们支持当前支持的所有 AKS 版本。
+
+> [!NOTE]
+> 在某些情况下，你有一个不再受支持的旧群集。 在这种情况下，附加操作将返回一个错误，并列出当前支持的版本。
+>
+> 您可以附加 **预览** 版本。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 对使用预览版本的支持可能会受到限制。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+### <a name="available-and-default-versions"></a>可用和默认版本
+
+若要查找可用的和默认的 AKS 版本，请使用 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 命令 [az AKS get-版本](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions)。 例如，以下命令返回美国西部区域中提供的版本：
+
+```azurecli-interactive
+az aks get-versions -l westus -o table
+```
+
+此命令的输出类似于以下文本：
+
+```text
+KubernetesVersion    Upgrades
+-------------------  ----------------------------------------
+1.18.6(preview)      None available
+1.18.4(preview)      1.18.6(preview)
+1.17.9               1.18.4(preview), 1.18.6(preview)
+1.17.7               1.17.9, 1.18.4(preview), 1.18.6(preview)
+1.16.13              1.17.7, 1.17.9
+1.16.10              1.16.13, 1.17.7, 1.17.9
+1.15.12              1.16.10, 1.16.13
+1.15.11              1.15.12, 1.16.10, 1.16.13
+```
+
+若要查找通过 Azure 机器学习 **创建** 群集时使用的默认版本，可以使用 `--query` 参数选择默认版本：
+
+```azurecli-interactive
+az aks get-versions -l westus --query "orchestrators[?default == `true`].orchestratorVersion" -o table
+```
+
+此命令的输出类似于以下文本：
+
+```text
+Result
+--------
+1.16.13
+```
+
+如果要 **以编程方式检查可用的版本**，请使用 [容器服务客户端-列表协调器](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API。 若要查找可用版本，请查看中的条目 `orchestratorType` `Kubernetes` 。 关联 `orchestrationVersion` 项包含可 **附加** 到工作区的可用版本。
+
+若要查找通过 Azure 机器学习 **创建** 群集时使用的默认版本，请查找其中 `orchestratorType` 为 `Kubernetes` 和 `default` 的条目 `true` 。 关联的 `orchestratorVersion` 值为默认版本。 下面的 JSON 代码段显示了一个示例条目：
+
+```json
+...
+ {
+        "orchestratorType": "Kubernetes",
+        "orchestratorVersion": "1.16.13",
+        "default": true,
+        "upgrades": [
+          {
+            "orchestratorType": "",
+            "orchestratorVersion": "1.17.7",
+            "isPreview": false
+          }
+        ]
+      },
+...
+```
+
 ## <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 
 **时间估计**：大约 10 分钟。
@@ -120,7 +197,7 @@ az ml computetarget create aks -n myaks
 
 有关详细信息，请参阅 [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 有关在门户中创建 AKS 群集的信息，请参阅 [在 Azure 机器学习 studio 中创建计算目标](how-to-create-attach-compute-studio.md#inference-clusters)。
 
@@ -197,7 +274,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 有关详细信息，请参阅 [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) 参考文档。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 有关在门户中附加 AKS 群集的信息，请参阅 [在 Azure 机器学习 studio 中创建计算目标](how-to-create-attach-compute-studio.md#inference-clusters)。
 

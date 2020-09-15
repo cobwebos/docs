@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1a7ab90cccd78c3b005487938432a0f955d50738
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380614"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561425"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -40,7 +40,7 @@ ms.locfileid: "89380614"
 
 下图演示了此解决方案的体系结构，该解决方案使用 Azure 数字孪生与设备预配服务。 其中显示了设备预配和停用流。
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="在端到端方案中查看设备和多个 Azure 服务。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并通过名为 分配 的 Azure 功能通过 Azure 数字孪生。手动 删除设备 操作中的数据通过 IoT 中心流向 > 事件中心 > Azure Functions > Azure 数字孪生。":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="在端到端方案中查看设备和多个 Azure 服务。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并通过名为 "分配" 的 Azure 功能通过 Azure 数字孪生。手动 "删除设备" 操作中的数据通过 IoT 中心流向 > 事件中心 > Azure Functions > Azure 数字孪生。":::
 
 本文划分为两个部分：
 * [*使用设备预配服务自动设置设备*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ ms.locfileid: "89380614"
 
 在本部分中，会将设备预配服务附加到 Azure 数字孪生，通过以下路径自动设置设备。 这是 [之前](#solution-architecture)所示的完整体系结构的摘录。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="预配流-解决方案体系结构关系图摘录，其中包含流的数字标签部分。数据在恒温器设备与 DPS (1 之间来回流动，> 设备 > DPS，5用于 DPS 设备) 。数据还会从 DPS 流出到 IoT 中心 (4) ，以及通过标记为 分配 (2) 的 Azure 功能向 Azure 数字孪生 (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="预配流-解决方案体系结构关系图摘录，其中包含流的数字标签部分。数据在恒温器设备与 DPS (1 之间来回流动，> 设备 > DPS，5用于 DPS 设备) 。数据还会从 DPS 流出到 IoT 中心 (4) ，以及通过标记为 "分配" (2) 的 Azure 功能向 Azure 数字孪生 (3) 。":::
 
 下面是流程的说明：
 1. 设备联系 DPS 终结点，传递标识信息来证明其身份。
@@ -71,7 +71,7 @@ ms.locfileid: "89380614"
 
 以下 Azure CLI 命令将创建设备预配服务。 你将需要指定名称、资源组和区域。 如果[计算机上安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
 
-```azurecli-interactive
+```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ namespace Samples.AdtIothub
 
 通过此 Azure CLI 命令添加设置：
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ node .\adt_custom_register.js
 
 由于在本文中设置的流的结果，设备将在 Azure 数字孪生中自动注册。 使用以下 [Azure 数字孪生 CLI](how-to-use-cli.md) 命令在创建的 Azure 数字孪生实例中查找设备的克隆。
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -304,7 +304,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 在本部分中，会将 IoT 中心生命周期事件附加到 Azure 数字孪生，通过以下路径自动停用设备。 这是 [之前](#solution-architecture)所示的完整体系结构的摘录。
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="停用设备流-解决方案体系结构图的摘录，其中包含流的数字标签部分。显示的恒温器设备没有连接到关系图中的 Azure 服务。手动 删除设备 操作中的数据通过 IoT 中心流过 (1) > 事件中心 (2) > Azure Functions > Azure 数字孪生 (3) 。":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="停用设备流-解决方案体系结构图的摘录，其中包含流的数字标签部分。显示的恒温器设备没有连接到关系图中的 Azure 服务。手动 "删除设备" 操作中的数据通过 IoT 中心流过 (1) > 事件中心 (2) > Azure Functions > Azure 数字孪生 (3) 。":::
 
 下面是流程的说明：
 1. 外部或手动过程会触发在 IoT 中心内删除设备的操作。
@@ -449,13 +449,13 @@ namespace Samples.AdtIothub
 
 将此设置添加 Azure CLI 命令。 如果[计算机上安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI，则可在[Cloud Shell](https://shell.azure.com)中或在本地运行该命令。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 接下来，你将需要配置函数环境变量以连接到新创建的事件中心。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 使用以下 [Azure 数字孪生 CLI](how-to-use-cli.md) 命令验证是否已删除 Azure 数字孪生实例中的设备的克隆。
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 <!-- 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639845"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564043"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
@@ -99,5 +99,5 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何通过门户、 [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、 [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)或[模板](load-balancer-get-started-ilb-arm-template.md)为[你的 ILB 配置 HA 端口](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)。
+- [了解如何通过门户为 ILB 配置 HA 端口](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)，也可通过 [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、[CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule) 或[模板](quickstart-load-balancer-standard-internal-template.md)来这样做。
 - [了解标准负载均衡器](load-balancer-standard-overview.md)

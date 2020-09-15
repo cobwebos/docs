@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 870aded1a7b00cbfbe96aff4997561b15be4141c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290084"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564349"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -46,21 +46,21 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
 
 1. 首先，创建一个事件中心命名空间，该命名空间将从你的 Azure 数字孪生实例接收事件。 你可以使用以下 Azure CLI 说明，或使用 Azure 门户： [*快速入门：使用 Azure 门户创建事件中心*](../event-hubs/event-hubs-create.md)。
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
     az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
     ```
 
 2. 在命名空间中创建事件中心。
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an event hub to receive twin change events. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
 3. 使用发送和接收权限创建 [授权规则](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) 。
 
-    ```azurecli-interactive
+    ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
@@ -153,12 +153,12 @@ namespace SampleFunctionsApp
 1. 从本文前面部分准备 *事件中心命名空间* 和 *资源组* 名称
 
 2. 创建新的事件中心
-    ```azurecli-interactive
+    ```azurecli
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
 3. 使用发送和接收权限创建[授权规则](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)
-    ```azurecli-interactive
+    ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
@@ -171,13 +171,13 @@ namespace SampleFunctionsApp
 
 1. 使用前面为孪生中心创建的授权规则获取孪生 [事件中心连接字符串](../event-hubs/event-hubs-get-connection-string.md)。
 
-    ```azurecli-interactive
+    ```azurecli
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
 2. 使用获得的连接字符串，以在函数应用中创建包含连接字符串的应用设置：
 
-    ```azurecli-interactive
+    ```azurecli
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 
@@ -185,13 +185,13 @@ namespace SampleFunctionsApp
 
 1. 使用上面为时序见解中心创建的授权规则获取 TSI [事件中心连接字符串](../event-hubs/event-hubs-get-connection-string.md)：
 
-    ```azurecli-interactive
+    ```azurecli
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
 2. 在函数应用中，创建一个包含连接字符串的应用设置：
 
-    ```azurecli-interactive
+    ```azurecli
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 
@@ -223,11 +223,11 @@ namespace SampleFunctionsApp
 
 1. 在 [Azure 门户](https://portal.azure.com) 中打开时序见解实例 (可以在门户搜索栏) 中搜索实例的名称。 访问实例概述中所示的 *时序见解资源管理器 URL* 。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的 概述 选项卡中选择 时序见解资源管理器 URL":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的 "概述" 选项卡中选择 "时序见解资源管理器 URL"":::
 
 2. 在资源管理器中，你将看到从左侧显示的 Azure 数字孪生的三个孪生。 选择 _**thermostat67**_，选择 **温度**，然后单击 " **添加**"。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="选择 * * thermostat67 * *，选择 * * 温度 * *，然后单击 添加。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="选择 * * thermostat67 * *，选择 * * 温度 * *，然后单击 "添加"。":::
 
 3. 你现在应看到恒温器的初始温度读数，如下所示。 将为 *room21* 和 *floor1*更新相同的温度读数，并以串联方式可视化这些数据流。
     

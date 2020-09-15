@@ -3,12 +3,12 @@ title: 在 Azure 门户中创建 Service Fabric 群集
 description: 了解如何使用 Azure 门户和 Azure Key Vault 在 Azure 中设置安全的 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259316"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563720"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "86259316"
 ## <a name="cluster-security"></a>群集安全性 
 证书在 Service Fabric 中用于提供身份验证和加密，为群集及其应用程序提供全方位的保护。 若要详细了解如何在 Service Fabric 中使用证书，请参阅 [Service Fabric 群集安全方案][service-fabric-cluster-security]。
 
-如果这是你第一次创建 service fabric 群集或要为测试工作负荷部署群集，则可以跳到下一节 (在**Azure 门户) 中创建群集**，并让系统生成运行测试工作负荷的群集所需的证书。 如果要为生产工作负荷设置群集，请继续阅读。
+如果这是你首次创建 Service Fabric 群集或要为测试工作负荷部署群集，可跳到下一节（在 Azure 门户中创建群集）并使系统生成运行测试工作负荷所需的证书。 如果要为生产工作负荷设置群集，请继续阅读。
 
 #### <a name="cluster-and-server-certificate-required"></a>群集和服务器证书（必需）
 需要使用此证书来保护群集以及防止未经授权访问群集。 此证书通过多种方式保护群集：
@@ -107,7 +107,7 @@ ms.locfileid: "86259316"
 2. 主节点类型的 VM **大小**下限取决于为群集选择的**持久性**层。 持久性层的默认值为 bronze。 有关持久性的详细信息，请参阅[如何选择 Service Fabric 群集持久性][service-fabric-cluster-durability]。
 3. 选择**虚拟机大小**。 D 系列 VM 具有 SSD 驱动器，强烈建议用于有状态应用程序。 不要使用任何具有部分核心或可用磁盘容量小于 10 GB 的 VM SKU。 如需选择 VM 大小的帮助，请参阅 [Service Fabric 群集规划注意事项文档][service-fabric-cluster-capacity]。
 4.  **单节点群集和三节点群集**仅供用于测试。 它们不支持任何正在运行的生产工作负荷。
-5. 选择节点类型的**初始虚拟机规模集容量**。 可在以后横向缩减或扩展节点类型中的 VM 数目，但对主节点类型，生产工作负载的最小值是 5。 其他节点类型可以具有最少一台 VM。 主节点类型的 VM **数目**下限决定了群集的**可靠性**。  
+5. 为节点类型选择“初始虚拟机规模集容量”。 可在以后横向缩减或扩展节点类型中的 VM 数目，但对主节点类型，生产工作负载的最小值是 5。 其他节点类型可以具有最少一台 VM。 主节点类型的 VM **数目**下限决定了群集的**可靠性**。  
 6. 配置**自定义终结点**。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure 负载均衡器针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序进行通信][service-fabric-connect-and-communicate-with-services]
 7. **启用反向代理**。  借助 [Service Fabric 反向代理](service-fabric-reverseproxy.md)，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
 8. 返回“群集配置”边栏选项卡，在“+显示可选设置”下，配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 若要禁用诊断，请将其“状态”切换为“关”。 **不**建议关闭诊断。 如果已创建 Application Insights 项目，则提供该项目密钥，以便向其路由应用程序跟踪。
@@ -128,42 +128,42 @@ ms.locfileid: "86259316"
 
 在前面的过程完成前，请勿离开屏幕。
 
-![CreateKeyVault]
+![屏幕截图显示具有 "密钥保管库" 窗格和 "创建密钥保管库" 窗格中所选基本的 "安全" 页。][CreateKeyVault]
 
 现在，已创建了一个 Key Vault，可以编辑 Key Vault 的访问策略了。 
 
-![CreateKeyVault2]
+![屏幕截图显示了 "创建 Service Fabric 群集" 窗格，其中选择了 "3 个安全性"，并说明未启用密钥保管库。][CreateKeyVault2]
 
 单击“编辑访问策略”并为部署启用对虚拟机的访问权限。  建议同时启用模板部署。 完成选择后，不要忘记单击“保存”按钮并关闭“访问策略”窗格 。
 
-![CreateKeyVault3]
+![屏幕截图显示 "创建 Service Fabric 群集" 窗格，其中打开了 "安全" 窗格，并打开了 "访问策略" 窗格。][CreateKeyVault3]
 
 输入证书的名称并单击“确定”。
 
-![CreateKeyVault4]
+![屏幕截图显示 "创建 Service Fabric 群集" 窗格，其中选择了 "安全性"，但没有说明未启用密钥保管库。][CreateKeyVault4]
 
 #### <a name="custom-option"></a>“自定义”选项
 如果你已执行“基本”选项中的步骤，请跳过本节内容。
 
-![SecurityCustomOption]
+![屏幕截图显示 "安全配置群集安全设置" 对话框。][SecurityCustomOption]
 
 你需要源密钥保管库、证书 URL 和证书指纹信息以完成“安全性”页。 如果“安全性”页未就绪，请打开另一个浏览器窗口，然后在 Azure 门户中执行以下操作
 
 1. 导航到密钥保管库服务。
 2. 选择“属性”选项卡，并将“资源 ID”复制到另一个浏览器窗口上的“源密钥保管库” 
 
-    ![CertInfo0]
+    ![屏幕截图显示密钥保管库的属性窗口。][CertInfo0]
 
 3. 现在，选择“证书”选项卡。
 4. 单击“证书指纹”，转到“版本”页。
 5. 单击当前版本下显示的 GUID。
 
-    ![CertInfo1]
+    ![屏幕截图显示密钥保管库的证书窗口][CertInfo1]
 
 6. 你现在应位于如下所示的屏幕上。 将十六进制 SHA-1 指纹复制到另一个浏览器窗口中的“证书指纹”
 7. 将“机密标识符”复制到另一个浏览器窗口上的“证书 URL”。
 
-    ![CertInfo2]
+    ![屏幕截图显示 "证书版本" 对话框，其中包含用于复制证书标识符的选项。][CertInfo2]
 
 选中“**配置高级设置**”复选框，输入**管理客户端**和**只读客户端**的客户端证书。 在这些字段中，输入管理客户端证书的指纹和只读用户客户端证书的指纹（如果适用）。 当管理员尝试连接群集时，仅当他们的证书指纹与此处输入的指纹值匹配时，才被授予访问权限。  
 
@@ -173,11 +173,11 @@ ms.locfileid: "86259316"
 
 若要完成群集创建，请单击“创建”。 还可以选择性下载模板。
 
-![摘要]
+![屏幕截图显示 "创建 Service Fabric 群集摘要" 页，其中包含用于查看和下载证书的链接。][Summary]
 
 可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。   此过程将需要一些时间才能完成。 
 
-若要使用 PowerShell 或 CLI 在群集上执行管理操作，需要连接到群集，有关如何[连接到群集](service-fabric-connect-to-secure-cluster.md)的详细信息，请参阅。
+若要使用 PowerShell 或 CLI 对群集执行管理操作，需要连接群集，请参阅[连接群集](service-fabric-connect-to-secure-cluster.md)，了解有关如何连接的详细信息。
 
 ## <a name="view-your-cluster-status"></a>查看群集状态
 ![仪表板中群集详细信息的屏幕截图。][ClusterDashboard]
@@ -230,7 +230,7 @@ ms.locfileid: "86259316"
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[摘要]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

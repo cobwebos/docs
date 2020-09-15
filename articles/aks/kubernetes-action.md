@@ -6,12 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255211"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564094"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于将容器部署到 Kubernetes 服务的 GitHub Actions
 
@@ -54,9 +54,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 按照以下步骤配置机密：
 
-1. 在 [GitHub](https://github.com/) 中浏览到存储库，选择“设置”>“机密”>“添加新机密”。****
+1. 在 [GitHub](https://github.com/) 中浏览到存储库，选择“设置”>“机密”>“添加新机密”。 
 
-    ![secrets](media/kubernetes-action/secrets.png)
+    ![屏幕截图显示了 "为存储库添加新的机密" 链接。](media/kubernetes-action/secrets.png)
 
 2. 将上述 `az cli` 命令的内容作为机密变量的值粘贴。 例如，`AZURE_CREDENTIALS`。
 
@@ -67,16 +67,16 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 4. 在定义后，会看到如下所示的机密。
 
-    ![kubernetes-secrets](media/kubernetes-action/kubernetes-secrets.png)
+    ![屏幕截图显示存储库的现有机密。](media/kubernetes-action/kubernetes-secrets.png)
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>生成容器映像并将其部署到 Azure Kubernetes 服务群集
 
 容器映像的生成和推送使用 `Azure/docker-login@v1` 操作完成。 若要将容器映像部署到 AKS，需使用 `Azure/k8s-deploy@v1` 操作。 该操作有五个参数：
 
-| **Parameter**  | **解释**  |
+| **参数**  | **解释**  |
 |---------|---------|
 | **namespace** | （可选）选择目标 Kubernetes 命名空间。 如果未提供命名空间，则命令会在默认命名空间中运行 | 
-| **进行** |  （必需）将要用于部署的清单文件的路径 |
+| **manifests** |  （必需）将要用于部署的清单文件的路径 |
 | **images** | （可选）将要用于在清单文件上进行替换的映像的完全限定资源 URL |
 | **imagepullsecrets** | （可选）已在群集中设置的 docker 注册表机密的名称。 这些机密名称的每一个都在输入清单文件中的工作负载的 imagePullSecrets 字段下添加 |
 | **kubectl-version** | （可选）安装 kubectl 二进制文件的特定版本 |

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808114"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562479"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
 
@@ -36,7 +36,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 1. 展开门户菜单并选择“创建资源”。 
 2. 选择“网络”  ，然后在“特色”列表中选择“应用程序网关”  。
 3. 输入 *myAppGateway* 作为应用程序网关的名称，输入 *myResourceGroupAG* 作为新资源组的名称。
-4. 对于 "**区域**"，请选择 "美国**中部**"。
+4. 对于 " **区域**"，选择 " ** 我们) Central" (**。
 5. 对于“层”，请选择“标准”。  
 6. 在“配置虚拟网络”下选择“新建”，然后输入虚拟网络的以下值：  
    - *myVNet* - 虚拟网络的名称。
@@ -109,8 +109,8 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 
 ### <a name="install-iis"></a>安装 IIS
 
-1. 打开 Cloud Shell 并确保将其设置为**PowerShell**。
-    ![frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+1. 打开 Cloud Shell 并确保将其设置为 **PowerShell**。
+    ![屏幕截图显示使用 PowerShell 的开放 Azure Cloud Shell 控制台窗口。](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. 运行以下命令以在虚拟机上安装 IIS：
 
    ```azurepowershell
@@ -144,13 +144,13 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 2. 选择“后端池”  。 选择“appGatewayBackendPool”  。
 3. 在“目标类型”下选择“虚拟机”，然后在“目标”下选择与 myVM 关联的 vNIC。   
 4. 重复此过程以添加 MyVM2。
-   ![private-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+   ![屏幕截图显示 "编辑后端池" 窗格，其中突出显示了目标类型和目标。](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. 选择“保存”。 
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
 1. 单击门户中的“前端 IP 配置”页查看分配的前端 IP。 
-    ![private-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+    ![屏幕截图显示 "前端 IP 配置" 窗格，其中突出显示了私有类型。](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. 复制专用 IP 地址，并将其粘贴到同一 VNet 中的 VM 或与此 VNet 连接的本地 VM 上的浏览器地址栏中，然后尝试访问应用程序网关。
 
 ## <a name="next-steps"></a>后续步骤

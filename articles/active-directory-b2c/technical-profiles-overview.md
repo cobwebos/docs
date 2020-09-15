@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203208"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562870"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -31,7 +31,8 @@ ms.locfileid: "85203208"
 - [Application Insights](application-insights-technical-profile.md) - 将事件数据发送到 [Application Insights](../azure-monitor/app/app-insights-overview.md)。
 - [Azure Active Directory](active-directory-technical-profile.md) - 为 Azure Active Directory B2C 用户管理提供支持。
 - [Azure 多重身份验证](multi-factor-auth-technical-profile.md) - 使用 Azure 多重身份验证 (MFA) 为验证电话号码提供支持。 
-- [声明转换](claims-transformation-technical-profile.md)-调用输出声明转换来处理声明值、验证声明或设置一组输出声明的默认值。
+- [声明转换](claims-transformation-technical-profile.md) -调用输出声明转换来处理声明值、验证声明或设置一组输出声明的默认值。
+- [ID 令牌提示](id-token-hint.md) -验证 `id_token_hint` JWT 令牌签名、颁发者名称和令牌受众，并从入站令牌中提取声明。
 - [JWT 令牌颁发者](jwt-issuer-technical-profile.md) - 发出返回给信赖方应用程序的 JWT 令牌。
 - [OAuth1](oauth1-technical-profile.md) -与任何 OAuth 1.0 协议标识提供程序联合。
 - [OAuth2](oauth2-technical-profile.md) -与任何 OAuth 2.0 协议标识提供程序联合。

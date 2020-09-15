@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d0f67f9052467e5d1a89fc4c520bd39821403bbe
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015443"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563799"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -167,6 +167,7 @@ SCIM RFC 中定义了多个终结点。 可以从 /User 终结点开始，然后
 * 对于 SCIM 中的结构元素，不要求区分大小写匹配，尤其是 https://tools.ietf.org/html/rfc7644#section-3.5.2 中定义的 PATCH `op` 操作值。 Azure AD 以 `Add`、`Replace` 和 `Remove` 的形式发出“op”的值。
 * Microsoft Azure AD 发出用于提取随机用户和组的请求，以确保终结点和凭据有效。 在 [Azure 门户](https://portal.azure.com)的“测试连接”流中也会完成此操作。 
 * 应在 [Azure 门户](https://portal.azure.com)中将可以查询其资源的属性设置为应用程序的匹配属性。 有关详细信息，请参阅[自定义用户预配属性映射](customize-application-attributes.md)
+* 在 SCIM 终结点上支持 HTTPS
 
 ### <a name="user-provisioning-and-deprovisioning"></a>用户预配和取消预配
 

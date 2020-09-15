@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689208"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563856"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步：了解体系结构
 本主题介绍 Azure AD Connect 同步的基本体系结构。在许多方面，它类似于其前身产品 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步是这些技术的演进。 如果熟悉上述任何早期技术，则也会熟悉本主题的内容。 本主题很适合同步功能的新手。 但是，不一定要了解本主题的详细信息才能成功自定义 Azure AD Connect 同步（在本主题中称为“同步引擎”）。
@@ -36,7 +36,7 @@ ms.locfileid: "84689208"
 
 连接器执行 API 调用，以便与连接的数据源交换标识信息（读取和写入）。 此外，可以使用可扩展的连接框架来添加自定义连接器。 下图演示了连接器如何将连接的数据源连接到同步引擎。
 
-![Arch1](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
+![关系图显示了一个连接的数据源和一个与名为 Connector 的行关联的同步引擎。](./media/concept-azure-ad-connect-sync-architecture/arch1.png)
 
 数据可以朝任一方向流动，但无法同时朝两个方向流动。 换而言之，可将连接器配置为允许数据从连接的数据源流到同步引擎，或从同步引擎流到连接的数据源，但是，每次对一个对象和属性只能执行其中一项操作。 不同的对象和属性的方向可以不同。
 
@@ -62,7 +62,7 @@ ms.locfileid: "84689208"
 
 下图显示了同步引擎内的连接器空间命名空间和 Metaverse 命名空间。
 
-![Arch2](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
+![关系图显示了一个连接的数据源和一个同步引擎，该引擎被分隔为连接器空间和元节命名空间，并与一个名为 Connector 的行相关联。](./media/concept-azure-ad-connect-sync-architecture/arch2.png)
 
 ## <a name="sync-engine-identity-objects"></a>同步引擎标识对象
 同步引擎中的对象是连接的数据源中任一个对象的表示形式，或同步引擎为这些对象提供的集成视图。 每个同步引擎对象必须有一个全局唯一标识符 (GUID)。 GUID 提供数据完整性以及对象之间的明确关系。
@@ -97,13 +97,13 @@ ms.locfileid: "84689208"
 
 下图显示了一个导入对象，它表示连接的数据源中的对象。
 
-![Arch3](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
+![关系图显示从连接的数据源引入同步引擎中的连接器空间命名空间的导入对象。](./media/concept-azure-ad-connect-sync-architecture/arch3.png)
 
 同步引擎使用 Metaverse 中的对象信息创建导出对象。 在下一次通信会话期间，导出对象会导出到连接的数据源。 从同步引擎的立场来看，导出对象尚不在连接的数据源中存在。 因此，无法使用导出对象的定位点属性。 从同步引擎接收对象之后，连接的数据源为对象的定位点属性创建唯一值。
 
 下图显示了如何使用 Metaverse 中的标识信息创建导出对象。
 
-![Arch4](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
+![关系图显示了从元节到连接器空间命名空间，然后再到连接的数据源的导出对象。](./media/concept-azure-ad-connect-sync-architecture/arch4.png)
 
 同步引擎从连接的数据源重新导入对象，确认对象的导出。 同步引擎在下一次导入期间从该连接的数据源接收对象后，导出对象会变为导入对象。
 
@@ -132,7 +132,7 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 
 一个连接器空间对象只能链接到一个 Metaverse 对象。 但是，每个 Metaverse 对象可以链接到相同或不同连接器空间中的多个连接器空间对象，如下图所示。
 
-![Arch5](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
+![关系图显示了与同步引擎关联的两个连接的数据对象，这些对象已联接对象和一个脱离对象。](./media/concept-azure-ad-connect-sync-architecture/arch5.png)
 
 暂存对象与 Metaverse 对象之间的链接关系持续存在，只能按照指定的规则删除。
 
@@ -157,7 +157,7 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 
 下图显示了当标识信息在两个连接的数据源之间流动时，发生每个过程的位置。
 
-![Arch6](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
+![关系图显示了从连接的数据到连接器空间的标识信息的流 (导入) 到 (同步) 连接数据 (导出) 的连接数据。](./media/concept-azure-ad-connect-sync-architecture/arch6.png)
 
 ### <a name="import-process"></a>导入过程
 在导入过程中，同步引擎评估标识信息的更新。 同步引擎比较从连接的数据源收到的标识信息与暂存对象的标识信息，以确定暂存对象是否需要更新。 如果需要使用新数据更新暂存对象，则暂存对象将标记为等待导入。
@@ -252,7 +252,7 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 
 同步引擎存储有关每个暂存对象的导出和导入状态的信息。 自从上次导出以后，如果在属性包含列表中指定的属性值已更改，则存储导入和导出状态可以相应地让同步引擎做出反应。 同步引擎使用导入过程来确认已导出到连接的数据源的属性值。 会在导入和导出的信息之间进行比较（如下图所示），使同步引擎能够确定导出是否成功或者是否需要重复导出。
 
-![Arch7](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
+![关系图显示了连接器空间与连接的数据在连接器之间的同步。](./media/concept-azure-ad-connect-sync-architecture/arch7.png)
 
 例如，如果同步引擎将值为 5 的属性 C 导出到连接的数据源，则在导出状态内存中存储 C=5。 此对象的每次额外导出都会导致尝试再度将 C=5 导出到连接的数据源，因为同步引擎假设此值尚未持续应用到对象（也就是说，除非最近从连接的数据源导入了不同的值）。 在对象导入操作期间收到 C=5 时，会清除导出内存。
 

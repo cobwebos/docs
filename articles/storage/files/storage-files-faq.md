@@ -7,15 +7,15 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654321"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563686"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
-[Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
+[Azure 文件](storage-files-introduction.md) 在云中提供完全托管的文件共享，这些共享可通过行业标准的 [服务器消息块进行访问， (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 和 [网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System) (预览版) 。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
 
 本文回答了关于 Azure 文件特性和功能（包括 Azure 文件同步与 Azure 文件的使用）的常见问题。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
 
@@ -31,7 +31,7 @@ ms.locfileid: "88654321"
 
 * <a id="file-access-options"></a>
   **访问 Azure 文件中的文件有哪些不同方式？**  
-    可以使用 SMB 3.0 协议将文件共享装载到本地计算机上，也可以使用[存储资源管理器](https://storageexplorer.com/)等工具访问文件共享中的文件。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
+    可以使用 SMB 3.0 协议将 SMB 文件共享装载到本地计算机上，也可以使用 [存储资源管理器](https://storageexplorer.com/) 之类的工具访问文件共享中的文件。 可通过复制/粘贴 Azure 门户提供的脚本，将 NFS 文件共享装载到本地计算机上。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
 
 * <a id="what-is-afs"></a>
   **什么是 Azure 文件同步？**  
@@ -43,12 +43,12 @@ ms.locfileid: "88654321"
     
     Azure Blob 存储适用于需要存储非结构化数据且具有大规模缩放性的云本机应用程序。 为了更大程度地提升性能和可缩放性，相对于真实的文件系统而言，Azure Blob 存储是更简单的存储抽象。 此外，只可通过基于 REST 的客户端库访问 Azure Blob 存储（或直接通过基于 REST 的协议访问）。
 
-    Azure 文件是一个专门的文件系统， 具有你在使用本地操作系统多年来所熟知和喜爱的所有文件抽象。 例如 Azure Blob 存储，Azure 文件提供了一个 REST 接口和基于 REST 的客户端库。 与 Azure Blob 存储不同的是，Azure 文件提供了对 Azure 文件共享的 SMB 访问权限。 通过使用 SMB，无需对文件系统写入任何代码或附加任何特殊驱动程序，即可在 Windows、Linux 或 macOS 上及本地或云 VM 中直接装载 Azure 文件共享。 此外，你也可以使用 Azure 文件同步在本地文件服务器上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。 
+    Azure 文件是一个专门的文件系统， 具有你在使用本地操作系统多年来所熟知和喜爱的所有文件抽象。 例如 Azure Blob 存储，Azure 文件提供了一个 REST 接口和基于 REST 的客户端库。 与 Azure Blob 存储不同，Azure 文件提供对 Azure 文件共享的 SMB 或 NFS 访问权限。 文件共享可以直接安装在 Windows、Linux 或 macOS 上，不管是在本地还是在云 Vm 中，无需编写任何代码或附加任何特殊驱动程序到文件系统。 还可以通过使用 Azure 文件同步进行快速访问来缓存本地文件服务器上的 Azure SMB 文件共享，并接近数据的使用位置。 
    
     有关 Azure 文件和 Azure Blob 存储之间差异的深入描述，请参阅[核心 Azure 存储服务简介](../common/storage-introduction.md)。 若要了解有关 Azure Blob 存储的详细信息，请参阅 [Blob 存储简介](../blobs/storage-blobs-introduction.md)。
 
 * <a id="files-versus-disks"></a>**相对于 Azure 磁盘，我为什么要使用 Azure 文件共享？**  
-    Azure 磁盘中的磁盘只是一个磁盘。 若要充分利用 Azure 磁盘，必须将其与在 Azure 中运行的虚拟机相关联。 Azure 磁盘可用于在本地服务器上使用磁盘的所有内容。 你可将其用作操作系统磁盘、操作系统的交换空间，或者应用程序的专用存储空间。 Azure 磁盘其中一个有趣的用途是，可在云中创建一个文件服务器，以在可能使用 Azure 文件共享的相同位置使用。 当需要 Azure 文件当前不支持的部署选项（例如，NFS 协议支持或高级存储）时，在 Azure 虚拟机中部署文件服务器则是一种非常行之有效的获取 Azure 中文件存储的方法。 
+    Azure 磁盘中的磁盘只是一个磁盘。 若要充分利用 Azure 磁盘，必须将其与在 Azure 中运行的虚拟机相关联。 Azure 磁盘可用于在本地服务器上使用磁盘的所有内容。 你可将其用作操作系统磁盘、操作系统的交换空间，或者应用程序的专用存储空间。 Azure 磁盘其中一个有趣的用途是，可在云中创建一个文件服务器，以在可能使用 Azure 文件共享的相同位置使用。 在 azure 虚拟机中部署文件服务器是在 Azure 文件中需要当前不支持的部署选项时，在 Azure 中获取文件存储的高性能方法。 
 
     但是，相比使用 Azure 文件共享，通过将 Azure 磁盘作为后端存储来运行文件服务器的方式，由于多方面的原因，其经济成本通常会更高。 首先，除了为磁盘存储付费之外，还必须为运行一个或多个 Azure VM 的成本付费。 其次，你还必须管理用于运行文件服务器的 VM。 例如，负责操作系统升级。 最后，如果你最终需要在本地缓存数据，则还要自行安装和管理复制技术（例如，分布式文件系统复制 (DFSR)）来实现此目的。
 
@@ -58,17 +58,18 @@ ms.locfileid: "88654321"
 
 * <a id="get-started"></a>
   **如何开始使用 Azure 文件？**  
-   开始使用 Azure 文件非常简单。 首先，[创建文件共享](storage-how-to-create-file-share.md)，然后再将其装载到首选操作系统中： 
+   开始使用 Azure 文件非常简单。 首先， [创建 SMB 文件共享](storage-how-to-create-file-share.md) 或 [如何创建 NFS 共享](storage-files-how-to-create-nfs-shares.md)，然后将其装载到首选操作系统中： 
 
-  * [在 Windows 中装载](storage-how-to-use-files-windows.md)
-  * [在 Linux 中装载](storage-how-to-use-files-linux.md)
-  * [在 macOS 中装载](storage-how-to-use-files-mac.md)
+  * [在 Windows 中装载 SMB 共享](storage-how-to-use-files-windows.md)
+  * [在 Linux 中装载 SMB 共享](storage-how-to-use-files-linux.md)
+  * [在 macOS 中装载 SMB 共享](storage-how-to-use-files-mac.md)
+  * [装载 NFS 文件共享](storage-files-how-to-mount-nfs-shares.md)
 
     有关部署 Azure 文件共享以替换组织中生产文件共享的详细指南，请参阅[规划 Azure 文件部署](storage-files-planning.md)。
 
 * <a id="redundancy-options"></a>
   **Azure 文件支持哪些存储冗余选项？**  
-    目前，Azure 文件支持本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和地理区域冗余存储 (GZRS)。 将来我们计划支持读取访问权限异地冗余存储 (RA-GRS)，但目前还没有可分享的日程表。
+    目前，Azure 文件支持本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和地理区域冗余存储 (GZRS)。 Azure 文件高级层目前仅支持 LRS 和 ZRS。
 
 * <a id="tier-options"></a>
   **Azure 文件支持哪些存储层？**  
@@ -282,6 +283,23 @@ ms.locfileid: "88654321"
 **是否存在用于支持 Get/Set/Copy directory/file Windows Acl 的 REST Api？**
 
     是的，支持在使用 [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07)（或更高版本）REST API 时获取、设置或复制目录或文件 NTFS ACL 的 REST API。 我们还支持在基于 REST 的工具中保留 Windows Acl： [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)。
+
+## <a name="network-file-system"></a>网络文件系统
+
+* <a id="when-to-use-nfs"></a>
+**何时应使用 Azure 文件 NFS？**
+
+    请参阅 [NFS 共享 (预览) ](storage-files-compare-protocols.md#nfs-shares-preview)。
+
+* <a id="backup-nfs-data"></a>
+**如何实现 NFS 共享中存储的备份数据？**
+
+    可以使用熟悉的工具（如 rsync）或第三方备份伙伴之一中的产品来协调 NFS 共享上的数据。 多个备份伙伴（包括 [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、 [Veeam](https://www.veeam.com/blog/?p=123438)和 [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) ）都是我们初始预览版的一部分，并已将其解决方案扩展为适用于 AZURE 文件的 SMB 3.0 和 NFS 4.1。
+
+* <a id="migrate-nfs-data"></a>
+**是否可以将现有数据迁移到 NFS 共享？**
+
+    在某个区域内，可以使用诸如 scp、rsync 或 SSHFS 等标准工具来移动数据。 由于可以同时从多个计算实例访问 Azure 文件 NFS，因此可以通过并行上载提高复制速度。 如果要将数据从区域外部导入，请使用 VPN 或 Expressroute 从本地数据中心装载到文件系统。
 
 ## <a name="on-premises-access"></a>本地访问
 

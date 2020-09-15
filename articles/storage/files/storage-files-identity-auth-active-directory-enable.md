@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 7b629adc24f0c9d8826d610c59379605e1ca0b95
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061812"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563397"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
-[Azure 文件](storage-files-introduction.md)  通过以下两种类型的域服务，支持通过服务器消息块进行基于身份的身份验证 (SMB) ：本地 Active Directory 域服务 (AD DS) Azure Active Directory (Azure AD) 和域服务。 强烈建议查看 [其工作原理部分](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) ，为身份验证选择适当的域服务。 根据所选的域服务，设置会有所不同。 这些文章重点介绍如何启用和配置本地 AD DS 以通过 Azure 文件共享进行身份验证。
+[Azure 文件](storage-files-introduction.md)  通过以下两种类型的域服务，支持通过服务器消息块进行基于身份的身份验证 (SMB) ：本地 Active Directory 域服务 (AD DS) Azure Active Directory (Azure AD) 和域服务。 强烈建议您查看 " [工作原理" 部分](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) ，选择适当的域服务进行身份验证。 根据所选的域服务，设置会有所不同。 这些文章重点介绍如何启用和配置本地 AD DS 以通过 Azure 文件共享进行身份验证。
 
 如果你不熟悉 Azure 文件共享，我们建议在阅读以下文章之前阅读我们的 [规划指南](storage-files-planning.md) 。
 
@@ -28,7 +28,8 @@ ms.locfileid: "90061812"
 - 支持单一登录体验。
 - 仅支持在版本低于 Windows 7 或 Windows Server 2008 R2 的操作系统版本上运行的客户端。
 - 仅支持将存储帐户注册到的 AD 林。 默认情况下，只能使用单个林中的 AD DS 凭据访问 Azure 文件共享。 如果需要从其他林访问 Azure 文件共享，请确保配置了正确的林信任，有关详细信息，请参阅 [常见问题解答](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) 。
-- 不支持对 AD DS 中创建的计算机帐户进行身份验证。 
+- 不支持对 AD DS 中创建的计算机帐户进行身份验证。
+- 不支持对网络文件系统 (NFS) 文件共享进行身份验证。
 
 通过 SMB 为 Azure 文件共享启用 AD DS 时，AD DS 联接的计算机可以使用现有 AD DS 凭据装载 Azure 文件共享。 此功能可以通过本地的计算机托管 AD DS，也可以在 Azure 中托管。
 
@@ -37,7 +38,7 @@ ms.locfileid: "90061812"
 > - [将本地文件服务器替换为 Azure 文件 (包括在文件和 AD 身份验证的专用链接上安装) ](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [使用 Azure 文件作为 Windows 虚拟机的配置文件容器 (包括在 AD 身份验证和 FsLogix 配置上安装) ](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 在为 Azure 文件共享启用 AD DS 身份验证之前，请确保已完成以下先决条件： 
 

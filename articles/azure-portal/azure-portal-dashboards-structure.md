@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459213"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561595"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
@@ -294,7 +294,7 @@ ms.locfileid: "81459213"
 
 ### <a name="the-id-property"></a>ID 属性
 
-Azure 资源 ID，遵循[azure 资源的命名约定](/azure/architecture/best-practices/resource-naming)。 当门户创建仪表板时，它通常选择 guid 形式的 ID，但当你以编程方式创建仪表板时，可以随意使用任何有效名称。 
+Azure 资源 ID，遵循 [azure 资源的命名约定](/azure/architecture/best-practices/resource-naming)。 当门户创建仪表板时，它通常选择 guid 形式的 ID，但当你以编程方式创建仪表板时，可以随意使用任何有效名称。 
 
 ### <a name="the-name-property"></a>“名称”属性
 名称是资源 ID 中不包含订阅、资源类型或资源组信息的那部分。 实质上，它是资源 ID 的最后一段。
@@ -329,7 +329,7 @@ Azure 资源 ID，遵循[azure 资源的命名约定](/azure/architecture/best-p
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
-![网格单元](./media/azure-portal-dashboards-structure/grid-units.png)
+![屏幕截图显示网格的一个闭合，其中突出显示了一个方形网格单元。](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>元数据对象
 每个部件都具有一个元数据属性，一个对象仅有一个必需的属性，名为“类型”____。 此字符串告知门户要显示的磁贴。 示例仪表板使用这些类型的磁贴：

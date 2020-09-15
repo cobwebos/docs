@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268802"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563890"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>规划 Azure Active Directory 设备部署
 
@@ -105,24 +105,24 @@ iOS 和 Android 设备只能注册 Azure AD。 下表提供了有关 Windows 客
 | 注意事项 | 已注册 Azure AD| Azure AD 加入| 混合 Azure AD 加入 |
 | - | - | - | - |
 | **客户端操作系统**| | |  |
-| Windows 10 设备| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| Windows 下层设备 (Windows 8.1 或 Windows 7) | | | ![选中](./media/plan-device-deployment/check.png) |
+| Windows 10 设备| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| Windows 下层设备 (Windows 8.1 或 Windows 7) | | | ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 |**登录选项**| | |  |
-| 最终用户本地凭据| ![选中](./media/plan-device-deployment/check.png)| |  |
-| 密码| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| 设备 PIN| ![选中](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello| ![选中](./media/plan-device-deployment/check.png)| |  |
-| Windows Hello 企业版| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| FIDO 2.0 安全密钥| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| Microsoft Authenticator 应用 (无密码) | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
+| 最终用户本地凭据| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
+| 密码| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| 设备 PIN| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
+| Windows Hello for Business| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| FIDO 2.0 安全密钥| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| Microsoft Authenticator 应用 (无密码) | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 |**关键功能**| | |  |
-| SSO 到云资源| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| SSO 到本地资源| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| 条件性访问 <br>  (要求设备标记为符合)  <br>  (必须由 MDM 管理) | ![选中](./media/plan-device-deployment/check.png) | ![选中](./media/plan-device-deployment/check.png)|![选中](./media/plan-device-deployment/check.png) |
-条件性访问 <br> (要求已加入混合 Azure AD 设备) | | | ![选中](./media/plan-device-deployment/check.png)
-| Windows 登录屏幕上的自助密码重置| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| Windows hello PIN 重置| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| 跨设备的企业状态漫游| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
+| SSO 到云资源| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| SSO 到本地资源| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| 条件性访问 <br>  (要求设备标记为符合)  <br>  (必须由 MDM 管理) | ![这些值的选中标记。](./media/plan-device-deployment/check.png) | ![这些值的选中标记。](./media/plan-device-deployment/check.png)|![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+条件性访问 <br> (要求已加入混合 Azure AD 设备) | | | ![这些值的选中标记。](./media/plan-device-deployment/check.png)
+| Windows 登录屏幕上的自助密码重置| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| Windows hello PIN 重置| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| 跨设备的企业状态漫游| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 
 
 ## <a name="azure-ad-registration"></a>Azure AD 注册 
@@ -179,7 +179,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 你可能确定 Azure AD 联接是设备的最佳解决方案，并且该设备可能已经处于不同的状态。 下面是升级注意事项。
 
-| 当前设备状态| Desired 设备状态| 操作说明 |
+| 当前设备状态| Desired 设备状态| 操作方法 |
 | - | - | - |
 | 已加入本地域| Azure AD 加入| 在加入到 Azure AD 之前从本地域中脱离设备 |
 | 混合 Azure AD 联接| Azure AD 加入| 在加入到 Azure AD 之前，从本地域和 Azure AD 中脱离设备 |
@@ -213,7 +213,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 你可能确定混合 Azure AD 联接是设备的最佳解决方案，并且该设备可能已经处于不同的状态。 下面是升级注意事项。
 
-| 当前设备状态| Desired 设备状态| 操作说明 |
+| 当前设备状态| Desired 设备状态| 操作方法 |
 | - | - | - |
 | 本地域加入| 混合 Azure AD 联接| 使用 Azure AD 连接或 AD FS 加入 Azure |
 | 已加入本地工作组或新工作组| 混合 Azure AD 联接| [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)支持。 否则，设备需要加入本地域，才能混合 Azure AD 联接 |
@@ -239,9 +239,9 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 | 设备管理工具| 已注册 Azure AD| Azure AD 加入| 混合 Azure AD 加入|
 | - | - | - | - |
-| [ (MDM) 的移动设备管理 ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>示例： Microsoft Intune| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)|  |
-| [与 Microsoft Intune 和 Microsoft 端点 Configuration Manager 的共同管理](/mem/configmgr/comanage/overview) <br> (Windows 10 和更高版本) | | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)|  |
-| [组策略](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>仅 (Windows) | | | ![选中](./media/plan-device-deployment/check.png)|  |
+| [ (MDM) 的移动设备管理 ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>示例： Microsoft Intune| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)|  |
+| [与 Microsoft Intune 和 Microsoft 端点 Configuration Manager 的共同管理](/mem/configmgr/comanage/overview) <br> (Windows 10 和更高版本) | | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)|  |
+| [组策略](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>仅 (Windows) | | | ![这些值的选中标记。](./media/plan-device-deployment/check.png)|  |
 
 
 

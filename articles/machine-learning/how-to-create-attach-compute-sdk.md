@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: c25ee5d9c626ba95d28f2247e6771d9fa1ada0f7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662544"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561629"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>通过 Python SDK 创建用于模型定型和部署的计算目标
 
@@ -36,7 +36,11 @@ ms.locfileid: "89662544"
 
 ## <a name="limitations"></a>限制
 
-本文档中列出的某些方案将标记为 " __预览__"。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+* 不要从工作区**创建多个同时同时与相同计算的附件**。 例如，使用两个不同的名称将一个 Azure Kubernetes Service 群集附加到工作区。 每个新附件都会破坏先前存在的附件。
+
+    如果要重新连接计算目标，例如更改 TLS 或其他群集配置设置，则必须先删除现有附件。
+
+* 本文档中列出的某些方案将标记为 " __预览__"。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="whats-a-compute-target"></a>什么是计算目标？
 
@@ -269,6 +273,9 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
    或者，可以[使用 Azure 机器学习工作室](how-to-create-attach-compute-studio.md#attached-compute)将 DSVM 附加到工作区。
 
+    > [!WARNING]
+    > 不要从工作区为同一 DSVM 创建多个同时同步的附件。 每个新附件都会破坏先前存在的附件。
+
 1. **配置**：为 DSVM 计算目标创建运行配置。 Docker 与 conda 用于在 DSVM 上创建和配置训练环境。
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
@@ -313,6 +320,9 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
    ```
 
    或者，可以[使用 Azure 机器学习工作室](how-to-create-attach-compute-studio.md#attached-compute)将 HDInsight 群集附加到工作区。
+
+    > [!WARNING]
+    > 不要从工作区为同一 HDInsight 创建多个同时同步的附件。 每个新附件都会破坏先前存在的附件。
 
 1. **配置**：为 HDI 计算目标创建运行配置。 
 
@@ -360,6 +370,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> 不要同时从工作区创建同一 Azure Batch 的多个附件。 每个新附件都会破坏先前存在的附件。
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -414,6 +427,9 @@ except ComputeTargetException:
 
 有关更详细的示例，请参阅 GitHub 上的 [示例笔记本](https://aka.ms/pl-databricks)。
 
+> [!WARNING]
+> 不要同时从工作区创建同一 Azure Databricks 的多个附件。 每个新附件都会破坏先前存在的附件。
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics 是 Azure 云中的大数据分析平台。 它可以用作 Azure 机器学习管道的计算目标。
@@ -463,6 +479,9 @@ except ComputeTargetException:
 ```
 
 有关更详细的示例，请参阅 GitHub 上的 [示例笔记本](https://aka.ms/pl-adla)。
+
+> [!WARNING]
+> 不要从工作区为同一 ADLA 创建多个同时同步的附件。 每个新附件都会破坏先前存在的附件。
 
 > [!TIP]
 > Azure 机器学习管道只能处理 Data Lake Analytics 帐户的默认数据存储中存储的数据。 如果需要处理的数据不在默认存储中，可以在训练之前使用 [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) 复制数据。

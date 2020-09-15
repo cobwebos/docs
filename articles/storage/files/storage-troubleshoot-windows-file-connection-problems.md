@@ -1,22 +1,25 @@
 ---
-title: 在 Windows 中排查 Azure 文件问题 | Microsoft Docs
-description: 在 Windows 中排查 Azure 文件存储问题。 请查看从 Windows 客户端进行连接时与 Azure 文件存储相关的常见问题，并查看可能的解决方法。
+title: 在 Windows 中排查 Azure 文件问题
+description: 在 Windows 中排查 Azure 文件存储问题。 请查看从 Windows 客户端进行连接时与 Azure 文件存储相关的常见问题，并查看可能的解决方法。 仅适用于 SMB 共享
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 16491e36e0196bc3dabee17daf905d9a5204f8cd
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532386"
+ms.locfileid: "90564247"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>排查 Windows (SMB) 中的 Azure 文件问题
 
 本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息，该疑难解答提供相关步骤来帮助解决在连接/映射/装载 Azure 文件共享时遇到的问题。
+
+> [!IMPORTANT]
+> 本文的内容仅适用于 SMB 共享。
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现错误 5
@@ -54,7 +57,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 
 - **Active Directory (AD) ** 参阅为 [标识分配共享级别权限](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)。
 
-    与 Active Directory (AD) 同步的组和用户支持共享级权限分配，以便使用 (Azure Active Directory) AAD Azure AD Connect。  确认分配给组和用户的共享级权限不受 "仅限云" 组的支持。
+    与 Active Directory (AD) 同步的组和用户支持共享级权限分配，以便使用 (Azure Active Directory Azure AD) Azure AD Connect。  确认分配给组和用户的共享级权限不受 "仅限云" 组的支持。
 - **Azure Active Directory 域服务 (AZURE AD DS) ** 参阅为 [标识分配访问权限](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)。
 
 <a id="error53-67-87"></a>

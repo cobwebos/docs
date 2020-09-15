@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298260"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562940"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证 (脚本) 
 
@@ -38,7 +38,7 @@ ms.locfileid: "89298260"
 
 下面是在 Cloud Shell 中运行部署脚本的步骤。
 1. 在浏览器中转到 [Azure Cloud Shell](https://shell.azure.com/) 窗口。 使用以下命令登录：
-    ```azurecli-interactive
+    ```azurecli
     az login
     ```
     如果 CLI 可以打开默认浏览器，它将这样做并加载 Azure 登录页。 否则，请在浏览器中打开 *https://aka.ms/devicelogin*，然后输入终端中显示的授权代码。
@@ -55,7 +55,7 @@ ms.locfileid: "89298260"
     * 对于实例： *资源组* 名称。 你可以使用现有资源组，或者输入一个新名称来创建。
     * 对于实例： Azure 数字孪生实例的 *名称* 。 新实例的名称在你的订阅的区域内必须是唯一的 (这意味着，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择不同的名称) 。
     * 对于应用注册：要与注册关联的 *Azure AD 应用程序显示名称* 。 通过此应用注册，你可以配置对 [Azure 数字孪生 api](how-to-use-apis-sdks.md)的访问权限。 以后，客户端应用程序将对应用程序注册进行身份验证，因此，会将配置的访问权限授予 Api。
-    * 对于应用注册： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 改用 `http://localhost` 此脚本将为其设置 *公共客户端/本机 (移动 & 桌面) * URI。
+    * 对于应用注册： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 请使用 `http://localhost`。 此脚本将为其设置 *公共客户端/本机 (移动 & 桌面) * URI。
 
 此脚本将创建一个 Azure 数字孪生实例，为你的 Azure 用户分配 azure *数字孪生所有者 (预览 * 该实例上的) 角色，并设置 Azure AD 应用注册，以便客户端应用程序使用。
 
@@ -89,7 +89,7 @@ ms.locfileid: "89298260"
 
 选择它将打开实例的 " *概述* " 页。 注意其 *名称*、 *资源组*和 *主机名*。 稍后可能需要用到它们来标识并连接到实例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 概述 页中的重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 "概述" 页中的重要值":::
 
 ### <a name="collect-app-registration-values"></a>收集应用注册值 
 

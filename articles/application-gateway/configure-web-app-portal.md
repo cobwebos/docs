@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: daf4c4ab56e23a212256c2629b7d0ae52a09e7c4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595704"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563747"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务
 
@@ -67,9 +67,9 @@ ms.locfileid: "89595704"
 
 5. 单击“确定”以创建该 HTTP 设置。
 
-   ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
+   ![屏幕截图显示 "添加 H T T P" 设置窗格，其中包含用于应用服务的 "确定" 和 "确定"。](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
+   ![屏幕截图显示了一个运行状况探测，其中选择了 "选取主机名称" 后端 http 设置。](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -85,7 +85,7 @@ ms.locfileid: "89595704"
 
 5. 单击“确定”以保存此规则。
 
-   ![规则](./media/configure-web-app-portal/rule.png)
+   ![屏幕截图显示 "添加基本规则" 窗格，其中突出显示了侦听器、后端池和 H T T P 设置。](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>重定向到应用服务的相对路径时的其他配置
 

@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673114"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563771"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>安全安装和运行 Azure Data Box Heavy
 
@@ -55,8 +55,8 @@ ms.locfileid: "67673114"
 
 ![警告图标](./media/data-box-heavy-safety/warning-icon.png)![电击图标](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![无用户可维修部件图标](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png)**小心！** 
 
-* 检查收到的原始设备是否有损坏。  如果设备机箱损坏，请联系[Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)获取更换。 请勿尝试操作设备。 
-* 设备上配备了防篡改螺丝。 如果怀疑设备出现故障， [Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)获取更换。 请勿尝试自行维修设备。 
+* 检查收到的原始设备是否有损坏。  如果设备机箱损坏，请联系 [Microsoft 支持部门](data-box-disk-contact-microsoft-support.md) 获取更换。 请勿尝试操作设备。 
+* 设备上配备了防篡改螺丝。 如果怀疑设备出现故障， [Microsoft 支持部门](data-box-disk-contact-microsoft-support.md) 获取更换。 请勿尝试自行维修设备。 
 * 设备不包含任何用户可维修部件。 内有危险电压、电流和能量。 请勿拆开机箱。 请将设备退回到 Microsoft 进行检修。
 
 ![警告图标](./media/data-box-heavy-safety/warning-icon.png)![重物图标](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png)**警告！** 
@@ -156,14 +156,14 @@ ms.locfileid: "67673114"
 - 本设备可能不会造成有害干扰。
 - 本设备必须接受任何干扰，包括可能导致设备意外运行的干扰。
 
-![加拿大](./media/data-box-heavy-safety/canada.png)
+![屏幕截图显示了加拿大所需的通知。](./media/data-box-heavy-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 美国：(800) 426-9400；加拿大：(800) 933-4750
 
 **欧盟：**
 
-[请求](mailto:CSI_Compliance@microsoft.com)欧盟符合性声明的副本。
+[请求](mailto:CSI_Compliance@microsoft.com) 欧盟符合性声明的副本。
 
 ![警告图标 ](./media/data-box-heavy-safety/warning-icon.png) **警告！** 
 
