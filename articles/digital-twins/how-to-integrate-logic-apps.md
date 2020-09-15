@@ -157,7 +157,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 在 *逻辑应用设计器*中，在 " *使用常见触发器启动*" 下，选择 " _**重复周期**_"。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure 门户中的 "逻辑应用设计器" 页。围绕 "定期" 公共触发器突出显示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure 门户中的 逻辑应用设计器 页。围绕 定期 公共触发器突出显示":::
 
 在接下来的 *逻辑应用设计器* 页中，将 **定期** 频率更改为 *第二个*，以便每3秒触发一次事件。 这样，以后就可以轻松地查看结果，而无需等待很长时间。
 
@@ -165,7 +165,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 这将打开 " *选择操作* " 框。 切换到 " *自定义* " 选项卡。你应会在顶部的框中看到自定义连接器。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="在 Azure 门户的逻辑应用设计器中创建流。在 "选择操作" 框中，选择了 "自定义" 选项卡。前面的框中显示了用户的自定义连接器，其中突出显示了它。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="在 Azure 门户的逻辑应用设计器中创建流。在 选择操作 框中，选择了 自定义 选项卡。前面的框中显示了用户的自定义连接器，其中突出显示了它。":::
 
 选择此项可显示该连接器中包含的 Api 的列表。 使用搜索栏或滚动浏览列表以选择 **DigitalTwins_Add**。  (本文使用的 API，但你也可以选择任何其他 API 作为逻辑应用连接) 的有效选择。
 
@@ -178,7 +178,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 单击逻辑应用设计器中的 " *保存* "。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="逻辑应用连接器中应用的已完成视图。DigitalTwinsAdd 框中填充了上述值，包括示例 JSON 修补程序正文。将突出显示该窗口的 "保存" 按钮。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="逻辑应用连接器中应用的已完成视图。DigitalTwinsAdd 框中填充了上述值，包括示例 JSON 修补程序正文。将突出显示该窗口的 保存 按钮。":::
 
 ## <a name="query-twin-to-see-the-update"></a>查询克隆以查看更新
 
