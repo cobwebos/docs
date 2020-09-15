@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.openlocfilehash: 8700bbfe697a6b5fb81380831950d704fcb1f5ff
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317520"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90012852"
 ---
 下表提供了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -39,8 +39,8 @@ ms.locfileid: "84317520"
 | 每个事件中心的使用者组数 |实体 | &nbsp; |1 |20 |
 | 每个命名空间的 AMQP 连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |100 |5,000|
 | 事件数据的最长保留期限 |实体 | &nbsp; |1 天 |1-7 天 |
-|启用 Apache Kafka 的命名空间|命名空间 |使用 Kafka 协议的事件中心命名空间流应用程序 |否 | 是 |
-|捕获 |实体 | 启用后，同一个流上的微批 |否 |是 |
+|启用 Apache Kafka 的命名空间|命名空间 |使用 Kafka 协议的事件中心命名空间流应用程序。 有关详细信息，请参阅[通过 Apache Kafka 应用程序使用 Azure 事件中心](../articles/event-hubs/event-hubs-for-kafka-ecosystem-overview.md)。 |否 | 是 |
+|捕获 |实体 | 启用后，同一个流上的微批。 有关详细信息，请参阅[通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件](../articles/event-hubs/event-hubs-capture-overview.md)。 |否 |是 |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>事件中心专用层 - 配额和限制

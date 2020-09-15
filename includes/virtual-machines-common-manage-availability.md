@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 965da18c265fad1686473d5d6dcf8ba4a7a53b33
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760579"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89324252"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -33,7 +33,7 @@ ms.locfileid: "88760579"
 * [在可用性集中配置多个虚拟机以确保冗余]
 * [在可用性集中对 VM 使用托管磁盘]
 * [使用计划事件主动响应影响 VM 的事件](../articles/virtual-machines/linux/scheduled-events.md)
-* [将每个应用程序层配置到不同的可用性集中]
+* [将每个应用程序层配置到不同的可用性集中](../articles/virtual-machines/windows/tutorial-availability-sets.md)
 * [将负载均衡器与可用性区域或可用性集组合在一起]
 * [使用可用性区域防范数据中心级故障]
 
@@ -82,12 +82,12 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 ```
 
 > [!NOTE]
-> 在某些情况下，同一可用性集中的 2 个 VM 可能共享同一个容错域。 可以通过进入您的可用性集并检查**容错域**列来确认这一点。
-> 这可能是由于部署 VM 时采用了以下顺序而导致的：
-> - 部署第一个 VM
-> - 停止/解除分配第一个 VM
-> - 在这种情况下部署第二个 VM，可能会在与第一个 VM 相同的容错域中创建第二个 VM 的 OS 磁盘，因此第二个 VM 也将位于同一容错域中。 
-> 若要避免此问题，建议不要在两次部署之间停止/解除分配 VM。
+> 在某些情况下，同一可用性集中的两个 VM 可能会共享一个容错域。 可以通过转到可用性集并查看“容错域”列来确认某个共享容错域。 在部署 VM 时，完成以下操作序列可能导致共享容错域：
+> 1. 部署第一个 VM。
+> 1. 停止/解除分配第一个 VM。
+> 1. 部署第二个 VM。
+>
+> 在这些情况下，第二个 VM 的 OS 磁盘可能会在第一个 VM 所在的容错域上创建，从而导致两个 VM 位于同一个容错域中。 为避免此问题，建议不要在部署之间停止/解除分配 VM。
 
 如果计划使用包含非托管磁盘的 VM，请按下述针对存储帐户的最佳做法进行操作。在这些存储帐户中，VM 的虚拟硬盘 (VHD) 以[页 Blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) 形式存储。
 

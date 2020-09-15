@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 949118214851c3eceffd8c1d638a4093bdf7f366
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88748769"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89303959"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "88748769"
 | 标记键长度 |512 |
 | 标记值长度 |256 |
 
-<sup>1</sup>从 2020 年 6 月开始，在你接近限制时，部署将自动从历史记录中删除。 从部署历史记录中删除条目不会影响已部署的资源。 有关详细信息，请参阅[从部署历史记录中自动删除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)。
+<sup>1</sup>当数量接近限额时，将自动从历史记录中删除部署。 从部署历史记录中删除条目不会影响已部署的资源。 有关详细信息，请参阅[从部署历史记录中自动删除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)。
 
 #### <a name="template-limits"></a>模板限制
 

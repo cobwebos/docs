@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 8fa4e94d6ec4c3e612d5a8a29db76e023957d583
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79486062"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89644331"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
 除基本 SKU 外，所有 Azure VPN 网关 SKU 都支持 BGP。
@@ -55,7 +55,7 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 
 * VNet 地址前缀
 * 已连接到 Azure VPN 网关的每个本地网关的地址前缀
-* 从连接到 Azure VPN 网关的其他 BGP 对等会话获知的路由， **默认路由或与任何 VNet 前缀重叠的路由除外**。
+* 从连接到 Azure VPN 网关的其他 BGP 对等会话获知的路由，**默认路由或与任何 VNet 前缀重叠的路由除外**。
 
 ### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>我可以向 Azure VPN 网关发布多少个前缀？
 我们支持最多 4000 个前缀。 如果前缀数目超过此限制，将丢弃 BGP 会话。
@@ -92,7 +92,7 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 是的。 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN 网关将哪个地址用于 BGP 对等节点 IP？
-Azure VPN 网关将从 GatewaySubnet 范围中为主动-待机 VPN 网关分配一个 IP 地址，或为主动-主动 VPN 网关分配两个 IP 地址。 你可以使用 PowerShell （AzVirtualNetworkGateway、查找 "bgpPeeringAddress" 属性）或 Azure 门户（在 "网关配置" 页上的 "配置 BGP ASN" 属性下）来获取分配的实际 BGP IP 地址。
+Azure VPN 网关将从 GatewaySubnet 范围中为主动-待机 VPN 网关分配一个 IP 地址，或为主动-主动 VPN 网关分配两个 IP 地址。 可以使用 PowerShell（Get-AzVirtualNetworkGateway，查找“bgpPeeringAddress”属性）或通过 Azure 门户（“网关配置”页上的“配置BGP ASN”属性下）获取分配的实际 BGP IP 地址。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN 设备上的 BGP 对等节点 IP 地址的要求是什么？
 本地 BGP 对等节点地址**不能**与 VPN 到设备的公共 IP 地址或 VPN 网关的 Vnet 地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是一个分配给设备上环回接口的地址，但请注意，它不能是 APIPA (169.254.x.x) 地址。 在表示该位置的相应本地网关中指定此地址。

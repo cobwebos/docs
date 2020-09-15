@@ -1,202 +1,148 @@
 ---
 title: 快速入门：配置应用以访问 Web API | Azure
 titleSuffix: Microsoft identity platform
-description: 本快速入门介绍如何配置注册到 Microsoft 标识平台的应用，以包含用于访问 Web API 的重定向 URI、凭据或权限。
+description: 在本快速入门中，你将在 Microsoft 标识平台中配置一个表示 Web API 的应用注册，以便对客户端应用程序启用范围内的资源访问（权限）。
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: ryanwi
-ms.custom: aaddev
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88140796"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442243"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入门：配置客户端应用程序以访问 Web API
 
-在本快速入门中，你将添加重定向 URI、凭据或权限，用于访问应用程序的 Web API。 Web 或机密客户端应用程序需要建立安全凭据，才能参与需要身份验证的授权流。 Azure 门户支持的默认身份验证方法为“客户端 ID + 机密密钥”。 应用将在此过程中获取访问令牌。
+在本快速入门中，针对向 Microsoft 标识平台注册的客户端应用，你将提供对你自己的 Web API 的范围内基于权限的访问。 你还将向客户端应用提供访问 Microsoft Graph 的权限。
 
-在客户端可以访问资源应用程序公开的 Web API（例如 Microsoft Graph API）之前，许可框架可确保客户端获取所请求权限的授权。 默认情况下，所有应用程序都可以从 Microsoft Graph API 请求权限。
+通过在客户端应用的注册中指定 Web API 的范围，客户端应用可从 Microsoft 标识平台获取包含这些范围的访问令牌。 然后在其代码内，Web API 可基于访问令牌中的范围提供对其资源的基于权限的访问。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 完成[快速入门：配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)。
+* 具备有效订阅的 Azure 帐户 - [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 完成[快速入门：注册应用程序](quickstart-register-app.md)
+* 完成[快速入门：配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登录到 Azure 门户，并选择应用
+## <a name="add-permissions-to-access-your-web-api"></a>添加用于访问 Web API 的权限
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 如果帐户有权访问多个租户，请在右上角选择该帐户。 将门户会话设置为所需的 Azure AD 租户。
-1. 搜索并选择“Azure Active Directory”。 在“管理”下，选择“应用注册”。  
-1. 找到并选择要配置的应用程序。 选择应用后，会看到应用程序的“概述”页或主注册页。 
+在第一个方案中，向客户端应用授予访问你自己的 Web API 的权限 - 这两者都应作为先决条件的一部分进行注册。 如果尚未注册客户端应用和 Web API，请完成两篇[先决条件](#prerequisites)文章中的步骤。
 
-使用以下过程配置应用程序以访问 Web API。
+此图显示了两个应用注册如何相互关联。 在本部分中，将向客户端应用的注册添加权限。
 
-## <a name="add-redirect-uris-to-your-application"></a>将重定向 URI 添加到应用程序
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/diagram-01-app-permission-to-api-scopes.svg" alt-text="一个显示 Web API 的线形图，其中右侧有公开的范围，左侧有客户端应用程序，且这些范围选为权限" border="false":::
 
-可将自定义重定向 URI 和建议的重定向 URI 添加到应用程序。 若要为 Web 和公共客户端应用程序添加自定义重定向 URI：
+注册客户端应用和 Web API，并通过创建范围公开 API 后，可按照以下步骤来配置客户端对 API 的权限：
 
-1. 在应用的“概述”页中，选择“身份验证”。  
-1. 找到“重定向 URI”。  可能需要选择“切换到旧体验”。 
-1. 选择要生成的应用程序类型：“Web”或“公共客户端/本机(移动和桌面)”。  
-1. 输入应用程序的重定向 URI。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::，以选择包含客户端应用的注册的租户。
+1. 选择“Azure Active Directory” > “应用注册”，然后选择客户端应用程序（而不是 Web API） 。
+1. 选择“API 权限” > “添加权限” > “我的 API”。  
+1. 选择作为先决条件一部分注册的 Web API。
 
-   * 对于 Web 应用程序，请提供应用程序的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用程序的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。
-   * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `https://MyFirstApp`。
-1. 选择“保存”。 
+    默认情况下，选择“委托的权限”。 委托的权限适用于这样的客户端应用，它们以登录用户身份访问 Web API，且其访问权限应仅限于在下一步中选择的权限。 在本例中，请选择“委托的权限”。
 
-若要从建议用于公共客户端的重定向 URI 中进行选择，请执行以下步骤：
+    应用程序权限适用于服务类型或守护程序类型的应用程序，这些应用需要以自身身份访问 Web API，而无需用户交互来进行登录或同意。 除非已为 Web API 定义了应用程序角色，否则禁用此选项。
+1. 在“选择权限”下，展开为 Web API 定义其范围的资源，并选择客户端应用代表已登录用户应具有的权限。
 
-1. 在应用的“概述”页中，选择“身份验证”。  
-1. 找到“建议用于公共客户端(移动、桌面)的重定向 URI”。  可能需要选择“切换到旧体验”。 
-1. 为应用程序选择一个或多个重定向 URI。 还可以输入自定义重定向 URI。 如果不确定要使用哪个值，请参阅库文档。
-1. 选择“保存”。 
+    如果使用了上一个快速入门中指定的示例范围名称，则应会看到 Employees.Read.All 和 Employees.Write.All 。
+    完成先决条件时，请选择 Employees.Read.All 或可能已创建的其他权限。
+1. 选择“添加权限”以完成此过程。
 
-某些限制适用于重定向 URI。 有关详细信息，请参阅[重定向 URI/回复 URL 的限制和局限性](./reply-url.md)。
+将权限添加到 API 后，应在“配置的权限”下看到所选权限。 下图显示了示例 Employees.Read.All 委托的权限已添加到客户端应用的注册。
 
-> [!NOTE]
-> 尝试新的“身份验证设置”体验，在其中可以根据要面向的平台或设备配置应用程序的设置。 
->
-> 若要查看此视图，请在“身份验证”页中选择“试用新体验”。  
->
-> ![单击“试用新体验”以查看平台配置视图](./media/quickstart-update-azure-ad-app-preview/authentication-try-new-experience-cropped.png)
->
-> 此时会转到[新的“平台配置”页](#configure-platform-settings-for-your-application)。 
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Azure 门户中的“配置的权限”窗格，其中显示了新添加的权限":::
 
-### <a name="configure-advanced-settings-for-your-application"></a>配置应用程序的高级设置
+你可能还会注意到 Microsoft Graph API 的 User.Read 权限。 在 Azure 门户中注册应用时，会自动添加此权限。
 
-根据要注册的应用程序，可能需要配置其他一些设置，例如：
+## <a name="add-permissions-to-access-microsoft-graph"></a>添加用于访问 Microsoft Graph 的权限
 
-* **注销 URL**。
-* 对于单页应用，可以启用“隐式授权”，并选择希望授权终结点颁发的令牌。 
-* 对于“默认客户端类型”部分中使用 Windows 集成身份验证、设备代码流或用户名/密码获取令牌的桌面应用，请将“将应用程序视为公共客户端”设置指定为“是”。   
-* 对于使用 Live SDK 来与 Microsoft 帐户服务集成的传统应用，请配置“Live SDK 支持”。  新应用不需要此设置。
-* **默认客户端类型**。
-* **支持的帐户类型**。
+除了代表已登录用户访问你自己的 Web API 外，应用程序可能还需要访问或修改 Microsoft Graph 中存储的用户的（或其他）数据。 或者，你可能有需要自行访问 Microsoft Graph 的服务或守护程序应用，无需任何用户交互即可执行操作。
 
-### <a name="modify-supported-account-types"></a>修改支持的帐户类型
+### <a name="delegated-permission-to-microsoft-graph"></a>Microsoft Graph 的委托权限
 
-“支持的帐户类型”指定哪些用户可以使用该应用程序或访问 API。 
+配置 Microsoft Graph 的委派权限，使客户端应用程序可代表已登录用户执行操作，例如读取其电子邮件或修改其个人资料。 默认情况下，在客户端应用的用户登录时，会询问他们是否同意你为其配置的委派权限。
 
-如果在注册应用程序时配置了支持的帐户类型，则只能在以下情况下使用应用程序清单编辑器更改此设置：
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::，以选择包含客户端应用的注册的租户。
+1. 选择“Azure Active Directory” > “应用注册”，然后选择客户端应用程序 。
+1. 选择“API 权限” > “添加权限” > “Microsoft Graph”  
+1. 选择“委托的权限”。 Microsoft Graph 公开了许多权限，最常用的权限显示在列表顶部。
+1. 在“选择权限”下，选择以下权限：
 
-* 将帐户类型从 **AzureADMyOrg** 或 **AzureADMultipleOrgs** 更改为 **AzureADandPersonalMicrosoftAccount**，或反之，或者
-* 将帐户类型从 **AzureADMyOrg** 更改为 **AzureADMultipleOrgs**，或反之。
+    | 权限       | 说明                                         |
+    |------------------|-----------------------------------------------------|
+    | `email`          | 查看用户的电子邮件地址                           |
+    | `offline_access` | 维护对已授予访问权限的数据的访问权限 |
+    | `openid`         | 登录用户                                       |
+    | `profile`        | 查看用户的基本配置文件                           |
+1. 选择“添加权限”以完成此过程。
 
-若要更改现有应用注册支持的帐户类型，请更新 `signInAudience` 键。 有关详细信息，请参阅[配置应用程序清单](reference-app-manifest.md#configure-the-app-manifest)。
+无论何时配置权限，都将在登录时请求应用用户同意允许你的应用代表他们访问资源 API。
 
-## <a name="configure-platform-settings-for-your-application"></a>配置应用程序的平台设置
+作为管理员，你还可代表所有用户授予同意，以便不提示这些用户执行此操作。 稍后会在本文的[详细介绍 API 权限和管理员同意](#more-on-api-permissions-and-admin-consent)部分讨论管理员同意。
 
-![根据平台或设备配置应用的设置](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations.png)
+### <a name="application-permission-to-microsoft-graph"></a>Microsoft Graph 的应用程序权限
 
-若要根据面向的平台或设备配置应用程序设置：
+为需要进行身份验证的应用程序配置应用程序权限，而无需用户交互或同意。 应用程序权限通常由以“无外设”方式访问 API 的后台服务或守护程序应用，以及访问另一个（下游）API 的 Web API 使用。
 
-1. 在“平台配置”页上选择“添加平台”，并从可用选项中进行选择。  
+在以下步骤中，例如将授予 Microsoft Graph 的 Files.Read.All 权限。
 
-   ![显示“配置平台”页](./media/quickstart-update-azure-ad-app-preview/authentication-platform-configurations-configure-platforms.png)
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false":::，以选择包含客户端应用的注册的租户。
+1. 选择“Azure Active Directory” > “应用注册”，然后选择客户端应用程序 。
+1. 选择“API 权限” > “添加权限” > “Microsoft Graph” > “应用程序权限”   。
+1. Microsoft Graph 公开的所有权限都显示在“选择权限”下。
+1. 选择要授予应用程序的一项或多项权限。 例如，你可能有一个守护程序应用，它用于扫描组织中的文件，并对特定文件类型或名称发出警报。
 
-1. 根据所选的平台输入设置信息。
+    在“选择权限”下展开“文件”，然后选择“Files.Read.All”权限 。
+1. 选择“添加权限”。
 
-   | 平台                | 配置设置            |
-   |-------------------------|-----------------------------------|
-   | **Web**              | 输入应用程序的“重定向 URI”。  |
-   | **iOS/macOS**              | 输入应用的“捆绑 ID”（可在 XCode 中的 info.plist 内找到，或者在“生成设置”中找到）。  添加捆绑 ID 可自动创建应用程序的重定向 URI。 |
-   | **Android**          | 提供应用的“包名称”（可在 AndroidManifest.xml 文件中找到）。 <br/>生成并输入**签名哈希**。 添加签名哈希可自动创建应用程序的重定向 URI。  |
-   | **移动和桌面应用程序**  | 可选。 为桌面和设备生成应用时，请选择**建议的重定向 URI** 之一。<br/>可选。 输入一个**自定义重定向 URI**，用作 Azure AD 在响应身份验证请求时将用户重定向到的位置。 例如，对于要交互的 .NET Core 应用程序，请使用 `http://localhost`。 |
+某些权限（例如 Microsoft Graph 的 Files.Read.All 权限）需要管理员同意。 可通过选择“授予管理员同意”按钮来授予此类同意，这一点稍后将在[管理员同意按钮](#admin-consent-button)部分中进行讨论。
 
-   > [!NOTE]
-   > 在 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD B2C 上，还必须指定端口号。  例如：`http://localhost:1234`。
+### <a name="configure-client-credentials"></a>配置客户端凭据
 
-   > [!IMPORTANT]
-   > 对于不使用最新 Microsoft 身份验证库 (MSAL) 或不使用中介的移动应用程序，必须在“桌面 + 设备”中为这些应用程序配置重定向 URI。 
+使用应用程序权限的应用通过使用自己的凭据自行进行身份验证，无需任何用户交互。 在应用程序（或 API）可通过使用应用程序权限访问 Microsoft Graph、你自己的 Web API 或其他任何 API 之前，需要配置该客户端应用的凭据。
 
-根据所选的平台，可能还可以配置其他设置。 对于“Web”应用，可以： 
+若要详细了解如何配置应用的凭据，请参阅[添加凭据](quickstart-register-app.md#add-credentials)部分 - [快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
 
-* 添加更多重定向 URI
-* 配置“隐式授权”，以选择希望由授权终结点颁发的令牌： 
+## <a name="more-on-api-permissions-and-admin-consent"></a>有关 API 权限和管理员同意的更多信息
 
-  * 对于单页应用，请同时选择“访问令牌”和“ID 令牌”  
-  * 对于 Web 应用，请选择“ID 令牌” 
-
-## <a name="add-credentials-to-your-web-application"></a>将凭据添加到 Web 应用程序
-
-若要将凭据添加到 Web 应用程序，请添加证书或创建客户端机密。 若要添加证书，请执行以下操作：
-
-1. 在应用的“概述”页中，选择“证书和机密”部分。  
-1. 选择“上传证书”。 
-1. 选择要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt。
-1. 选择 **添加** 。
-
-若要添加客户端机密：
-
-1. 在应用的“概述”页中，选择“证书和机密”部分。  
-1. 选择“新建客户端机密”。 
-1. 添加客户端机密的说明。
-1. 选择持续时间。
-1. 选择 **添加** 。
-
-> [!NOTE]
-> 保存配置更改后，最右边的列会包含客户端机密值。 **请务必复制此值**，以便在客户端应用程序代码中使用，因为退出此页后将无法访问此密钥。
-
-## <a name="add-permissions-to-access-web-apis"></a>添加用于访问 Web API 的权限
-
-默认已选择[图形 API 登录和读取用户配置文件权限](/graph/permissions-reference#user-permissions)。 对于每个 Web API，可以从[两种类型的权限](developer-glossary.md#permissions)中进行选择：
-
-* **应用程序权限**。 客户端应用程序需要自行直接访问 Web API，不使用用户上下文。 此权限类型需要管理员许可。 此权限不适用于桌面和移动客户端应用程序。
-* **委托的权限**。 客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限需要管理员许可，否则用户可以授予此类型的权限。
-
-  > [!NOTE]
-  > 将委托权限添加到应用程序不会自动向租户中的用户授予许可。 除非管理员代表所有用户授予许可，否则用户仍必须在运行时手动同意添加的委托权限。
-
-若要添加从客户端访问资源 API 的权限：
-
-1. 在应用的“概述”页中，选择“API 权限”。  
-1. 在“已配置权限”  下，选择“添加权限”  。
-1. 默认情况下，此视图允许从“Microsoft API”进行选择。  选择感兴趣的 API 部分。
-
-    * **Microsoft API**。 用于选择 Microsoft API（例如 Microsoft Graph）的权限。
-    * **我的组织使用的 API**。 用于选择组织公开的 API 或者组织已集成的 API 的权限。
-    * **我的 API**。 用于选择你公开的 API 的权限。
-
-1. 选择 API 后，会看到“请求 API 权限”页。  如果 API 公开委托的权限和应用程序权限，请选择应用程序需要哪种类型的权限。
-1. 完成后，请选择“添加权限”  。
-
-随即会返回到“API 权限”页。  权限已保存并已添加到表中。
-
-## <a name="understanding-api-permissions-and-admin-consent-ui"></a>了解 API 权限和管理员同意 UI
+应用注册的“API 权限”窗格包含[配置的权限](#configured-permissions)表，还可能包含[授予的其他权限](#other-permissions-granted)表。 以下各部分介绍了这两个表和[管理员同意按钮](#admin-consent-button)。
 
 ### <a name="configured-permissions"></a>已配置权限
 
-本部分介绍已在应用程序对象中显式配置的权限。 这些权限是应用所需资源访问列表的一部分。 可以在此表中添加或删除权限。 管理员还可为一组 API 权限或单个权限授予或撤销管理员许可。
+“API 权限”窗格上的“配置的权限”表显示了应用程序在执行基本操作时需要的权限列表 - 必需的资源访问 (RRA) 列表 。 用户或其管理员需要在使用你的应用前同意这些权限。 稍后可在运行时（使用动态同意）请求其他可选权限。
+
+这是用户同意你的应用所需的最小权限列表。 可能还有更多权限，但总是需要这些权限。 为了安全起见，并让用户和管理员更舒适地使用你的应用，请勿询问不需要的内容。
+
+可按照上面概述的步骤或从[授予的其他权限中](#other-permissions-granted)（在下一部分中介绍）添加或删除此表中显示的权限。 作为管理员，你可授予管理员同意表中出现的一整套 API 权限并撤销对单个权限的同意。
 
 ### <a name="other-permissions-granted"></a>授予的其他权限
 
-如果你的应用程序已在租户中注册，则你可能会看到一个名为“为租户授予的其他权限”的附加部分  。 本部分介绍为租户授予的、未在应用程序对象中显式配置的权限。 这些权限是动态请求和许可的。 仅当至少有一个应用的权限时，才会显示此部分。
+你可能还会在“API 权限”窗格上看到标题是“为 {你的租户} 授予的其他权限”的表 。 在“为 {你的租户} 授予的其他权限”表中，显示了为租户授予的、未在应用程序对象中显式配置的权限。 这些权限是动态请求且获得同意的。 仅当至少应用了其中一个权限时，才会显示此部分。
 
-可以将此部分中显示的一组 API 权限或单个权限添加到“已配置权限”部分  。 作为管理员，你还可以撤销此部分中各个 API 或权限的管理员同意。
+可将此表中显示的一整套 API 权限或单个权限添加到“已配置权限”表。 作为管理员，你可撤销此部分中对 API 或单个权限的管理员同意。
 
 ### <a name="admin-consent-button"></a>管理员同意按钮
 
-如果你的应用程序已在租户中注册，你将看到“为租户授予管理员许可”按钮。  如果你不是管理员，或者没有为应用程序配置任何权限，则将禁用此按钮。
-管理员可以通过此按钮向为应用程序配置的权限授予管理员许可。 单击“管理员同意”按钮将启动一个新窗口，其中包含显示了所有已配置权限的同意提示。
+通过“为 {你的租户} 授予其他权限”按钮，管理员可向为应用程序配置的权限授予管理员同意。 选择该按钮后，会显示一个对话框，请求确认同意操作。
 
-> [!NOTE]
-> 为应用程序配置的权限与在同意提示下显示的权限之间存在延迟。 如果在同意提示中看不到所有配置的权限，请将其关闭并重新启动。
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Azure 门户中的“配置的权限”窗格中突出显示了“授予管理员同意”按钮":::
 
-如果为你授予了权限但尚未配置这些权限，则管理员许可按钮会提示你处理这些权限。 可以将它们添加到已配置的权限，也可以将其删除。
+授予同意后，要求管理员同意的权限显示为“已获得权限”：
 
-同意提示提供“接受”或“取消”选项   。 选择“接受”以授予管理员许可。  如果选择“取消”，则不会授予管理员许可。  将有一条错误消息指出已拒绝许可。
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="在 Azure 门户中“配置权限”表，其中显示了已为 Files.Read.All 权限授予管理员同意":::
 
-> [!NOTE]
-> 在许可提示中选择“接受”授予管理员许可之后，在门户中反映管理员许可状态之前，会存在一段延迟。 
+如果你不是管理员，或者没有为应用程序配置任何权限，则将禁用“授予管理员同意”按钮。 如果你获得了权限但尚未配置它们，则“管理员同意”按钮会提示你处理这些权限。 可将它们添加到已配置的权限，或者将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

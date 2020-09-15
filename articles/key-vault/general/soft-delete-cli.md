@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585655"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662050"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -58,7 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>新的密钥保管库
 
-默认情况下，自动对所有密钥保管库启用软删除。 2020 年 12 月 31 日前，无法在禁用软删除的情况下创建新的密钥保管库。
+默认情况下，自动对所有密钥保管库启用软删除。 自 2020 年 12 月 31 日起，无法在禁用软删除的情况下创建新的密钥保管库。
 
 ### <a name="verify-soft-delete-enablement"></a>验证软删除支持
 
