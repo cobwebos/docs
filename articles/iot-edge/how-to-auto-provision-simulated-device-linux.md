@@ -8,18 +8,18 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684450"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531485"
 ---
-# <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>使用 Linux 上的 TPM 创建和预配 IoT Edge 设备
+# <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
-本文介绍如何使用受信任的平台模块 (TPM) ，在 Linux IoT Edge 设备上测试自动预配。 可以通过 [设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
+本文介绍如何使用受信任的平台模块 (TPM) 在 Linux IoT Edge 设备上测试自动预配。 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果不熟悉自动预配过程，请先查看 [预配](../iot-dps/about-iot-dps.md#provisioning-process) 概述，然后再继续。
 
-这些任务如下所示：
+任务如下：
 
 1. 使用用于确保硬件安全性的模拟受信任平台模块 (TPM) 在 Hyper-V 中创建 Linux 虚拟机 (VM)。
 1. 创建 IoT 中心设备预配服务 (DPS) 的实例。
@@ -41,7 +41,7 @@ ms.locfileid: "88684450"
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>创建包含虚拟 TPM 的 Linux 虚拟机
 
-在本部分，我们将在 Hyper-V 上创建新的 Linux 虚拟机。 使用模拟的 TPM 配置此虚拟机，以测试自动预配如何与 IoT Edge 一起工作。
+在本部分，我们将在 Hyper-V 上创建新的 Linux 虚拟机。 为此虚拟机配置模拟 TPM，以便测试自动预配与 IoT Edge 配合使用的效果。
 
 ### <a name="create-a-virtual-switch"></a>创建虚拟交换机
 
@@ -61,9 +61,9 @@ ms.locfileid: "88684450"
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 下载虚拟机使用的磁盘映像文件，并将其保存在本地。 例如， [Ubuntu server 18.04](http://releases.ubuntu.com/18.04/)。 有关 IoT Edge 设备支持的操作系统的信息，请参阅 [Azure IoT Edge 支持的系统](support.md)。
+1. 下载虚拟机使用的磁盘映像文件，并将其保存在本地。 例如，[Ubuntu 服务器 18.04](http://releases.ubuntu.com/18.04/)。 若要了解 IoT Edge 设备支持的操作系统，请参阅 [Azure IoT Edge 支持的系统](support.md)。
 
-2. 在 hyper-v 管理器中，在**Action**  >  **New**  >  "**操作**" 菜单中选择 "操作" "新建**虚拟机**"。
+2. 返回 Hyper-V 管理器，在“操作”菜单中选择“操作” > “新建” > “虚拟机”。   。
 
 3. 使用以下特定配置完成“新建虚拟机向导”：
 
@@ -79,7 +79,7 @@ ms.locfileid: "88684450"
 
 创建 VM 后，打开其设置以启用允许你自动预配设备的虚拟受信任平台模块 (TPM)。
 
-1. 在 "Hyper-v 管理器" 中，右键单击 VM，然后选择 " **设置**"。
+1. 在 Hyper-v 管理器中，右键单击该 VM 并选择“设置”。
 
 2. 导航到“安全性”。
 
@@ -93,16 +93,16 @@ ms.locfileid: "88684450"
 
 在虚拟机中，生成一个可用于检索设备“注册 ID”和“认可密钥”的工具。 
 
-1. 在 Hyper-v 管理器中，启动 VM 并连接到该 VM。
+1. 在 Hyper-v 管理器中，启动你的 VM 并连接到它。
 
 1. 遵照虚拟机中的提示完成安装过程，然后重新启动虚拟机。
 
 1. 登录到 VM，然后遵循[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)中的步骤安装并生成适用于 C 的 Azure IoT 设备 SDK。
 
    >[!TIP]
-   >在本文中，你将复制并粘贴到虚拟机上，这并不是通过 Hyper-v 管理器连接应用程序来实现的。 你可能想要通过 Hyper-v 管理器连接到虚拟机一次以检索其 IP 地址。 首先运行 `sudo apt install net-tools` ，然后执行 `hostname -I` 。 然后，可以使用该 IP 地址通过 SSH 进行连接：`ssh <username>@<ipaddress>`。
+   >在本文的课程中，你将在虚拟机上执行复制和粘贴，这些操作不便于通过 Hyper-V 管理器连接应用程序执行。 可能需要通过 Hyper-V 管理器连接到虚拟机一次以检索其 IP 地址。 先运行 `sudo apt install net-tools`，然后运行 `hostname -I`。 然后，可以使用该 IP 地址通过 SSH 进行连接：`ssh <username>@<ipaddress>`。
 
-1. 运行以下命令以生成 SDK 工具，该工具可从 TPM 检索设备预配信息。
+1. 运行以下命令，以生成从 TPM 检索设备预配信息的 SDK 工具。
 
    ```bash
    cd azure-iot-sdk-c/cmake
@@ -112,13 +112,13 @@ ms.locfileid: "88684450"
    sudo ./tpm_device_provision
    ```
 
-1. "输出" 窗口将显示设备的 " **注册 ID** " 和 " **认可密钥**"。 复制这些值，以便以后在为设备创建单个注册时使用。
+1. 输出窗口会显示设备的“注册 ID”和“认可密钥” 。 请复制这些值，以便稍后为设备创建单独的注册时使用。
 
-获得注册 ID 和认可密钥后，请继续[设置 IoT 中心设备预配服务](#set-up-the-iot-hub-device-provisioning-service)部分
+获得注册 ID 和认可密钥后，请继续阅读[设置 IoT 中心设备预配服务](#set-up-the-iot-hub-device-provisioning-service)部分
 
 ## <a name="retrieve-provisioning-information-from-a-physical-device"></a>从物理设备检索预配信息
 
-如果你使用的是物理 IoT Edge 设备而不是 VM，请构建一个可用于检索设备的设置信息的工具。
+如果你使用的是物理 IoT Edge 设备而不是 VM，请生成一个可用于检索设备预配信息的工具。
 
 1. 按照[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)中的步骤安装并生成适用于 C 的 Azure IoT 设备 SDK。
 
@@ -147,7 +147,7 @@ ms.locfileid: "88684450"
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
 
 > [!TIP]
-> 在 Azure CLI 中，可以创建一个 [注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) ，并使用 **启用了边缘** 的标志来指定设备是 IoT Edge 设备。
+> 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)并使用“edge-enabled”标志来指定某个设备是 IoT Edge 设备。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。
 
@@ -166,9 +166,9 @@ ms.locfileid: "88684450"
 
    4. 选择“True”，以声明此虚拟机是 IoT Edge 设备。
 
-   5. 选择要将设备连接到的链接 IoT 中心，或选择 " **链接到新的 Iot 中心**"。 你可以选择多个中心，并根据所选的分配策略将设备分配给其中的一个中心。
+   5. 选择要将设备连接到的已链接 IoT 中心，或者选择“链接到新 IoT Hub”。 可以选择多个中心，设备将会根据所选分配策略被分配到其中一个中心。
 
-   6. 根据需要，将标记值添加到“初始设备孪生状态”。 可以使用标记将设备组指定为模块部署的目标。 有关详细信息，请参阅 [大规模部署 IoT Edge 模块](how-to-deploy-at-scale.md)。
+   6. 根据需要，将标记值添加到“初始设备孪生状态”。 可以使用标记将设备组指定为模块部署的目标。 有关详细信息，请参阅[大规模部署 IoT Edge 模块](how-to-deploy-at-scale.md)。
 
    7. 选择“保存” 。
 
@@ -180,13 +180,13 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 在开始学习本文之前，请了解与设备类型匹配的 DPS“ID 范围”和设备“注册 ID”。  如果已安装示例 Ubuntu 服务器，请使用 **x64** 说明。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。
 
-在转到配置安全守护程序的步骤时，请确保选择 " [选项 2" "自动预配](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning) "，并配置 TPM 证明。
+在进行到配置安全守护程序这一步时，请确保选择[选项 2 自动预配](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning)并为 TPM 证明进行配置。
 
 [在 Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>向 IoT Edge 授予 TPM 的访问权限
 
-IoT Edge 运行时需要访问 TPM 才能自动预配你的设备。
+IoT Edge 运行时需要访问 TPM 以自动预配设备。
 
 通过覆盖系统设置可以授予 IoT Edge 运行时对 TPM 的访问权限，以便 `iotedge` 服务获得根特权。 如果不想提升服务权限，也可以使用以下步骤手动提供 TPM 访问权限。
 
@@ -285,4 +285,4 @@ iotedge list
 
 ## <a name="next-steps"></a>后续步骤
 
-通过 DPS 注册过程，你可以在预配新设备时设置设备 ID 和设备克隆标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何[使用 Azure 门户大规模部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)，或[使用 Azure CLI](how-to-deploy-cli-at-scale.md) 执行此操作。
+利用 DPS 注册过程，可以在预配新设备的同时设置设备 ID 和设备孪生标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何[使用 Azure 门户大规模部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)，或[使用 Azure CLI](how-to-deploy-cli-at-scale.md) 执行此操作。

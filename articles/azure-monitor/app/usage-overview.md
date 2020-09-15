@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft do
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800205"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532097"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -54,7 +54,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 “用户和会话”报告按页面或自定义事件筛选数据，并按位置、环境和页面等属性将数据分段。 也可以添加自己的筛选器。
 
-![用户](./media/usage-overview/users.png)  
+![屏幕捕获显示虚构公司的 "用户概述" 页。](./media/usage-overview/users.png)  
 
 右侧的见解指出了数据集中的相关模式。  
 
@@ -71,7 +71,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 - 基于真实的用户数据构成假设 
 - 确定产品中是否存在保留问题 
 
-![保留](./media/usage-overview/retention.png) 
+![屏幕捕获显示了 "保持期概述" 页，其中显示了有关用户返回使用其应用的频率的信息。](./media/usage-overview/retention.png) 
 
 使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回头。  
 
@@ -110,7 +110,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 ### <a name="slice-and-dice-events"></a>分解事件
 
 在“用户”、“会话”和“事件”工具中，可按用户、事件名称和属性分解自定义事件。
-![用户](./media/usage-overview/users.png)  
+![屏幕捕获显示虚构公司的 "用户概述" 页。](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>在应用中设计遥测
 

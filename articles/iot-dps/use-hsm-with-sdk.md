@@ -1,8 +1,8 @@
 ---
 title: 将不同的证明机制与 Azure IoT 中心设备预配服务客户端 SDK 配合使用
 description: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的设备预配服务 (DPS) 客户端 SDK 配合使用
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
@@ -10,16 +10,16 @@ services: iot-dps
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687212"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531502"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何将不同的证明机制与用于 C 的设备预配服务客户端 SDK 配合使用
 
-本文展示了如何将不同的[证明机制](concepts-security.md#attestation-mechanism)与用于 C 的设备预配服务客户端 SDK 配合使用。可以使用物理设备，也可以使用模拟器。 预配服务支持下述两类证据机制的身份验证：X.509 和受信任的平台模块 (TPM)。
+本文展示了如何将不同的[证明机制](concepts-service.md#attestation-mechanism)与用于 C 的设备预配服务客户端 SDK 配合使用。可以使用物理设备，也可以使用模拟器。 预配服务支持下述两类证据机制的身份验证：X.509 和受信任的平台模块 (TPM)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,11 +29,11 @@ ms.locfileid: "81687212"
 
 作为设备制造商，首先需要基于受支持类型之一选择一种证明机制。 目前，[用于 C 的设备预配服务客户端 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) 支持以下证明机制： 
 
-- [受信任的平台模块（tpm）](https://en.wikipedia.org/wiki/Trusted_Platform_Module)： TPM 是适用于大多数基于 Windows 的设备平台以及一些基于 Linux/Ubuntu 的设备的已建立标准。 作为设备制造商，如果其设备上运行以上任一种 OS，并且正在寻找某种已建立的标准，则可以选择此证明机制。 使用 TPM 芯片可以向设备预配服务单独注册每台设备。 出于开发目的，可以在 Windows 或 Linux 开发计算机上使用 TPM 模拟器。
+- [受信任的平台模块 (tpm) ](https://en.wikipedia.org/wiki/Trusted_Platform_Module)： tpm 是适用于大多数基于 Windows 的设备平台以及一些基于 Linux/Ubuntu 的设备的已建立标准。 作为设备制造商，如果在设备上运行这些操作系统中的任何一种，并且正在寻找已建立的标准，则可以选择此证明机制。 使用 TPM 芯片可以向设备预配服务单独注册每台设备。 出于开发目的，可以在 Windows 或 Linux 开发计算机上使用 TPM 模拟器。
 
-- [X.509](https://cryptography.io/en/latest/x509/)：X.509 证书可以存储在称为[硬件安全模块 (HSM)](concepts-security.md#hardware-security-module) 的相对较新的芯片中。 Microsoft 内部也正开展基于 RIoT 或 DICE 芯片的工作，目的是实施 X.509 证书。 使用 X.509 芯片可以在门户中进行批量设备注册。 它还支持 Windows 以外的某些 OS，如 embedOS。 出于开发目的，设备预配服务客户端 SDK 支持 X.509 设备模拟器。 
+- [X.509](https://cryptography.io/en/latest/x509/)：X.509 证书可以存储在称为[硬件安全模块 (HSM)](concepts-service.md#hardware-security-module) 的相对较新的芯片中。 Microsoft 内部也正开展基于 RIoT 或 DICE 芯片的工作，目的是实施 X.509 证书。 使用 X.509 芯片可以在门户中进行批量设备注册。 它还支持 Windows 以外的某些 OS，如 embedOS。 出于开发目的，设备预配服务客户端 SDK 支持 X.509 设备模拟器。 
 
-有关详细信息，请参阅 IoT 中心设备预配服务[安全性概念](concepts-security.md)和[自动预配概念](/azure/iot-dps/concepts-auto-provisioning)。
+有关详细信息，请参阅 IoT 中心设备预配服务 [证明机制](concepts-service.md#attestation-mechanism)。
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>为受支持的证明机制启用身份验证
 

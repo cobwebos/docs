@@ -1,14 +1,14 @@
 ---
-title: IoT Edge 上的实时视频分析配额 - Azure
+title: 实时视频分析 IoT Edge 配额和限制-Azure
 description: 本文介绍 IoT Edge 上的实时视频分析配额和限制。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750229"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529224"
 ---
 # <a name="quotas-and-limitations"></a>配额和限制
 
@@ -36,7 +36,7 @@ ms.locfileid: "88750229"
    * 每个图形拓扑仅允许有一个 RTSP 源。
 * 帧速率筛选器处理器
    * 必须立即成为 RTSP 源或运动检测处理器中的下游。
-   * 不能用于 HTTP 或 gRPC 扩展处理器的下游。
+   * 不能是 HTTP 或 gRPC 扩展处理器使用的下游。
    * 不能是运动检测处理器中的上游。
 * HTTP 扩展处理器
    * 每个图形拓扑最多可以有一个此类处理器。
@@ -45,7 +45,7 @@ ms.locfileid: "88750229"
 * 运动检测处理器
    * 必须立即成为 RTSP 源中的下游。
    * 每个图形拓扑最多可以有一个此类处理器。
-   * 不能用于 HTTP 或 gRPC 扩展处理器的下游。
+   * 不能是 HTTP 或 gRPC 扩展处理器使用的下游。
 * 信号门处理器
    * 必须立即成为 RTSP 源中的下游。
 * 资产接收器 
@@ -65,6 +65,10 @@ ms.locfileid: "88750229"
 * 能够在不中断的情况下将媒体服务帐户从一个订阅迁移到另一个订阅。
 * 能够将多个存储帐户用于媒体服务帐户。
 * 能够在不重启的情况下动态更改模块所需属性中的服务主体信息。
+
+只能使用支持 RTSP 协议的 IP 相机。 可以在 [ONVIF 一致性](https://www.onvif.org/conformant-products)产品页上找到支持 RTSP 的 IP 相机。 查找符合配置文件 G、S 或 T 的设备。
+
+此外，还应将这些相机配置为使用 AAC 视频和音频。 当前不支持其他编解码器。 
 
 ## <a name="next-steps"></a>后续步骤
 

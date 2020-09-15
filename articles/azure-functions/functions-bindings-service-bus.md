@@ -6,12 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 46660a0c8d20ab82c994a62b1c781108ea1070c1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5e15dfec049197fa056cbd55fd839b3eb93be77c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111195"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530363"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -23,6 +24,9 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 | 发送 Azure 服务总线消息 |[输出绑定](./functions-bindings-service-bus-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>添加到 Functions 应用
+
+> [!NOTE]
+> 服务总线绑定当前不支持使用托管标识进行身份验证。 相反，请使用 [服务总线共享访问签名](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)。
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
@@ -42,7 +46,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 
 ### <a name="functions-1x"></a>Functions 1.x
 
-函数1.x 应用自动引用了对[Microsoft Azure Web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs)NuGet 包版本2.x 的引用。
+Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 程序包（版本 2.x）。
 
 ## <a name="next-steps"></a>后续步骤
 

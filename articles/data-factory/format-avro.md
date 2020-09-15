@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 558a03cee4d3183debac2492d798e40d49d58881
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 7be92289d293798393ead3562c39721d46ce561b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061625"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531842"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure 数据工厂中的 Avro 格式
 
@@ -86,11 +86,11 @@ ms.locfileid: "90061625"
 
 支持的 **Avro 写入设置** `formatSettings` 如下：
 
-| properties      | 说明                                                  | 必需                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的类型必须设置为 **AvroWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
-| fileNamePrefix | 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
+| fileNamePrefix | 在配置时适用 `maxRowsPerFile` 。<br> 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
@@ -100,7 +100,7 @@ ms.locfileid: "90061625"
 
 下表列出了 avro 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
@@ -113,7 +113,7 @@ ms.locfileid: "90061625"
 
 下表列出了 avro 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
 | 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为 `part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

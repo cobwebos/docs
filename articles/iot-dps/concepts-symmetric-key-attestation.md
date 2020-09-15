@@ -9,25 +9,25 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020331"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531553"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
 本文介绍了在使用含设备预配服务的对称密钥时的标识证明过程。 
 
-对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](concepts-tpm-attestation.md) 或 [X.509 证书](concepts-security.md#x509-certificates)的设备证明更加安全，且应用于更严格的安全要求。
+对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](concepts-tpm-attestation.md) 或 [X.509 证书](concepts-x509-attestation.md)的设备证明更加安全，且应用于更严格的安全要求。
 
 对称密钥注册还为具有有限安全功能的旧设备提供了通过 Azure IoT 启动到云的绝佳方法。 有关旧设备的对称密钥证明的详细信息，请参阅[如何为旧设备使用对称密钥](how-to-legacy-device-symm-key.md)。
 
 
 ## <a name="symmetric-key-creation"></a>对称密钥创建
 
-默认情况下，设备预配服务在启用了 " **自动生成密钥** " 选项的情况下，将创建新的对称密钥，默认长度为64字节。
+默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 64 字节的新对称密钥。
 
 ![自动生成对称密钥](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 
@@ -74,7 +74,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 [如何使用对称密钥预配旧设备](how-to-legacy-device-symm-key.md)一文中使用了该示例。
 
-为设备定义注册 ID 后，注册组的对称密钥用于计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 可使用以下 C# 代码执行注册 ID 的哈希处理：
+为设备定义注册 ID 后，将使用注册组的对称密钥来计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 可使用以下 C# 代码执行注册 ID 的哈希处理：
 
 ```csharp
 using System; 
@@ -109,12 +109,12 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 每个设备的标识由注册 ID 和在中心安装的派生设备密钥表示。 设备密钥不会复制到其他位置，且组密钥不会存储在设备上。
 
-如果未在中心中安装设备密钥，应使用[硬件安全模块 HSM](concepts-security.md#hardware-security-module) 来安全存储设备标识。
+如果未在中心中安装设备密钥，应使用[硬件安全模块 HSM](concepts-service.md#hardware-security-module) 来安全存储设备标识。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解对称密钥证明后，请参阅以下文章以了解更多信息：
 
 * [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
-* [了解自动预配中的概念](./concepts-auto-provisioning.md)
+* [了解预配的概念](about-iot-dps.md#provisioning-process)
 * [自动预配入门](./quick-setup-auto-provision.md) 

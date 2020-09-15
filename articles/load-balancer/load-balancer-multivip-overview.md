@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956366"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530822"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
 
@@ -163,6 +163,7 @@ netsh interface ipv4 set interface “interfacename” weakhostsend=enabled
 
 * 只有 IaaS VM 支持多个前端配置。
 * 使用浮动 IP 规则时，应用程序必须对出站 SNAT 流使用主要 IP 配置。 如果应用程序绑定到来宾 OS 中环回接口上配置的前端 IP 地址，则无法使用 Azure 的出站 SNAT 来重写出站流，此时流处理会失败。  查看[出站方案](load-balancer-outbound-connections.md)。
+* 对于内部负载均衡方案，辅助 IP 配置当前不支持浮动 IP。
 * 公共 IP 地址会影响计费。 有关详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 

@@ -1,25 +1,27 @@
 ---
-title: 使用对称密钥预配旧设备 - Azure IoT 中心设备预配服务
-description: 如何使用对称密钥通过设备预配服务 (DPS) 实例预配旧设备
+title: 使用对称密钥设置设备-Azure IoT 中心设备预配服务
+description: 如何使用对称密钥通过设备预配服务设置设备 (DPS) 实例
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: eliotga
+ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434712"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529384"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>使用对称密钥预配旧设备
+# <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>如何使用对称密钥注册组设置设备
 
-许多旧设备的常见问题是它们的标识通常由单段信息组成。 该信息通常为 MAC 地址或序列号。 旧设备可能没有证书、TPM 或可用于安全地识别设备的任何其他安全功能。 IoT 中心设备预配服务包含对称密钥证明。 对称密钥证明可以用于根据 MAC 地址或序列号等信息标识设备。
+本文演示如何使用注册组将多个对称密钥设备安全地预配到单个 IoT 中心。
 
-如果安装[硬件安全模块 (HSM)](concepts-security.md#hardware-security-module) 和证书比较轻松，这可能是标识和预配设备更好的方式。 这种方式可避免更新部署到所有设备上的代码，并且不必在设备映像中嵌入密钥。
+某些设备可能没有可用于安全标识设备的证书、TPM 或任何其他安全功能。 设备预配服务包括 [对称密钥证明](concepts-symmetric-key-attestation.md)。 对称密钥证明可用于根据 MAC 地址或序列号等唯一信息标识设备。
+
+如果安装[硬件安全模块 (HSM)](concepts-service.md#hardware-security-module) 和证书比较轻松，这可能是标识和预配设备更好的方式。 这种方式可避免更新部署到所有设备上的代码，并且不必在设备映像中嵌入密钥。
 
 本文假定：HSM 或证书都是不可行的选择。 但你有一些更新设备代码的方法，可供使用设备预配服务来预配设备。 
 
@@ -47,7 +49,7 @@ ms.locfileid: "75434712"
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -73,7 +75,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
     应该预料到此操作需要几分钟才能完成。
 
-4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
+4. `cmake`在 Git 存储库的根目录中创建一个子目录，然后导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
 
     ```cmd/sh
     mkdir cmake
@@ -109,23 +111,23 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，并打开你的设备预配服务实例。
 
-2. 选择“管理注册”  选项卡，然后单击页面顶部的“添加注册组”  按钮。 
+2. 选择“管理注册”**** 选项卡，然后单击页面顶部的“添加注册组”**** 按钮。 
 
-3. 在“添加注册组”  中输入以下信息，然后单击“保存”  按钮。
+3. 在“添加注册组”**** 中输入以下信息，然后单击“保存”**** 按钮。
 
-   - **组名称**：输入 **mylegacydevices**。
+   - **组名**：输入 **mylegacydevices**。
 
-   - **证明类型**：选择“对称密钥”  。
+   - **证明类型**：选择**对称密钥**。
 
-   - **自动生成密钥**：选中此框。
+   - **自动生成密钥**：选中此复选框。
 
-   - **选择要如何将设备分配到中心**：选择“静态配置”  ，以便可以分配到特定的中心。
+   - **选择将设备分配到中心的方式**：选择**静态配置**以便可以分配到特定的中心。
 
-   - **选择此组可分配到的 IoT 中心**：选择你的中心之一。
+   - **选择可将该组分配到的 IoT 中心**：选择某一个中心。
 
      ![为对称密钥证明添加注册组](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. 保存注册后，将生成“主要密钥”  和“辅助密钥”  ，并将其添加到注册条目。 对称密钥注册组在“注册组”选项卡的“组名”栏下显示为“mylegacydevices”    。 
+4. 保存注册后，将生成“主要密钥”**** 和“辅助密钥”****，并将其添加到注册条目。 对称密钥注册组在“注册组”选项卡的“组名”栏下显示为“mylegacydevices”********。 
 
     打开注册并复制生成的“主要密钥”  的值。 此密钥是组主密钥。
 
@@ -147,7 +149,8 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 若要生成设备密钥，请使用组主键计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
 
-不要在设备代码中包含你的组主键。
+> [!WARNING]
+> 设备代码只应包括单个设备的派生设备密钥。 不要在设备代码中包含你的组主键。 泄露的主密钥可能会危及使用它进行身份验证的所有设备的安全性。
 
 
 #### <a name="linux-workstations"></a>Linux 工作站
@@ -156,7 +159,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 将“键”  值替换为前面记录的“主键”  。
 
-用注册 ID 替换 REG_ID 值  。
+用注册 ID 替换 REG_ID 值****。
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -177,7 +180,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 将“键”  值替换为前面记录的“主键”  。
 
-用注册 ID 替换 REG_ID 值  。
+用注册 ID 替换 REG_ID 值****。
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -201,23 +204,23 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="create-a-device-image-to-provision"></a>创建用于预配的设备映像
 
-在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample  的预配示例。 
+在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample**** 的预配示例。 
 
 此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别并分配到你在注册组上配置的 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。  
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。******__**
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln  解决方案文件。 解决方案文件应位于以下位置：
+2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln**** 解决方案文件。 解决方案文件应位于以下位置：
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。  展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。 
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
 
-4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。  
+4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -248,9 +251,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
    
     保存文件。
 
-7. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
+7. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
 
-8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。 
+8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。  在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。****
 
     以下输出是模拟设备成功启动并连接到要分配到 IoT 中心的预配服务实例的示例：
 
@@ -269,7 +272,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     Press enter key to exit:
     ```
 
-9. 在门户中，导航到模拟设备分配到的 IoT 中心，然后单击“IoT 设备”  选项卡。将模拟设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”  边栏选项卡上，“状态”为“已启用”   。 你可能需要单击顶部的“刷新”按钮  。 
+9. 在门户中，导航到已为其分配模拟设备的 IoT 中心，然后单击 " **Iot 设备** " 选项卡。成功预配集线器模拟后，其设备 ID 会显示在 " **IoT 设备** " 边栏选项卡上，其 *状态* 为 " **已启用**"。 你可能需要单击顶部的“刷新”按钮****。 
 
     ![设备注册到 IoT 中心](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
@@ -287,7 +290,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 * 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
 * [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
-* 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
+* 若要了解更多取消设置，请参阅 [如何取消预配以前自动预配的设备](how-to-unprovision-devices.md) 
 
 
 

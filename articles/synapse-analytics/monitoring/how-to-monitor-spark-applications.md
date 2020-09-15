@@ -1,6 +1,6 @@
 ---
 title: 如何在 Synapse Studio 中监视 Apache Spark 应用程序
-description: 使用 Synapse Studio 监视 Apache Spark 应用程序。
+description: 了解如何使用 Synapse Studio 监视 Apache Spark 应用程序。
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: b5ad9e6a448747ac8f33829b1137b1af434e7a9c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 2b8dbd20e79b9a6f48ca2d39079ebb452a3b46b2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385579"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530805"
 ---
-# <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio （预览版）监视 Apache Spark 应用程序
+# <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio (预览) 来监视你的 Apache Spark 应用程序
 
 使用 Azure Synapse Analytics，可以使用 Spark 在工作区中的 Spark 池上运行笔记本、作业和其他类型的应用程序。
 
@@ -24,15 +24,15 @@ ms.locfileid: "87385579"
 
 ## <a name="access-apache-spark-applications-list"></a>Access Apache Spark 应用程序列表
 
-若要查看工作区中 Apache Spark 应用程序的列表，请先[打开 Synapse Studio](https://web.azuresynapse.net/) ，然后选择工作区。
+若要查看工作区中 Apache Spark 应用程序的列表，请先 [打开 Synapse Studio](https://web.azuresynapse.net/) ，然后选择工作区。
 
 ![登录到工作区](./media/common/login-workspace.png)
 
-打开工作区后，请选择左侧的 "**监视**" 部分。
+打开工作区后，请选择左侧的 " **监视** " 部分。
 
 ![选择监视中心](./media/common/left-nav.png)
 
-选择**Apache Spark 应用程序**以查看 Apache Spark 应用程序的列表。
+选择 **Apache Spark 应用程序** 以查看 Apache Spark 应用程序的列表。
 
  ![选择 Spark 应用程序](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
 
@@ -52,6 +52,6 @@ ms.locfileid: "87385579"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关监视管道运行的详细信息，请参阅[监视管道运行 Synapse Studio](how-to-monitor-pipeline-runs.md)文章。 
+有关监视管道运行的详细信息，请参阅 [监视管道运行 Synapse Studio](how-to-monitor-pipeline-runs.md) 文章。 
 
-有关 Apache Spark 应用程序进行调试的详细信息，请参阅在[Synapse Studio 上监视 Apache Spark 应用程序](apache-spark-applications.md)。
+有关 Apache Spark 应用程序进行调试的详细信息，请参阅在 [Synapse Studio 上监视 Apache Spark 应用程序](apache-spark-applications.md) 。

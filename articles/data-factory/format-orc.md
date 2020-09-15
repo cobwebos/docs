@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: f71b739242cf4f6a3549927a2a7e61400b2f987e
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 3aa42d6060ecdd93dd97438a025c4f5e4f05ac52
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061062"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531723"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure 数据工厂中的 ORC 格式
 
@@ -87,11 +87,11 @@ ms.locfileid: "90061062"
 
 受支持的 **ORC 写入设置** `formatSettings` 如下：
 
-| properties      | 说明                                                  | 必需                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的类型必须设置为 **OrcWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
-| fileNamePrefix | 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
+| fileNamePrefix | 在配置时适用 `maxRowsPerFile` 。<br> 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
 
 ## <a name="using-self-hosted-integration-runtime"></a>使用自承载集成运行时
 

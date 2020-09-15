@@ -9,16 +9,16 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eb9a302c4da027d7fe00056e7d5ac0ba7fc1dd9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131015"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531451"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
-可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
+可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果不熟悉自动预配过程，请先查看 [预配](../iot-dps/about-iot-dps.md#provisioning-process) 概述，然后再继续。
 
 本文介绍如何通过以下步骤，在 IoT Edge 设备上使用对称密钥证明创建设备预配服务的单个注册：
 
@@ -105,7 +105,7 @@ ms.locfileid: "82131015"
 > [!NOTE]
 > 仅当使用组注册时，才需要此部分。
 
-每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥来计算设备的唯一注册 ID 的[HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。
+每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥来计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含注册的主密钥或辅助密钥。
 

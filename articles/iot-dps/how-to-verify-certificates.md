@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74973435"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530856"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用设备预配服务执行 X.509 CA 证书的所有权证明
 
@@ -23,7 +23,7 @@ ms.locfileid: "74973435"
 2. 使用验证码作为使用者创建 X.509 验证证书，使用与 X.509 CA 证书关联的私钥对该证书进行签名。
 3. 将签名的验证证书上传到服务。 服务将使用要验证的 CA 证书的公共部分来验证验证证书，从而证明你拥有 CA 证书的私钥。
 
-使用登记组时，验证的证书将发挥重要作用。 验证证书所有权可以确保证书上传者拥有该证书的私钥，从而提供一个附加的安全层。 验证可以防止恶意行动者提取中间证书，并使用该证书在其自己的预配服务中创建登记组，从而有效地劫持你的设备，因此，可防止他们探查你的流量。 通过证明证书链中根证书或中间证书的所有权，可以证明你有权针对需要注册为登记组一部分的设备生成叶证书。 出于此原因，在登记组中配置的根证书或中间证书必须是验证的证书，或者在服务中进行身份验证时，必须滚动更新为设备所代表的证书链中的某个已验证证书。 若要详细了解登记组，请参阅 [X.509 证书](concepts-security.md#x509-certificates)和[使用 X.509 证书控制设备对预配服务的访问](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
+使用登记组时，验证的证书将发挥重要作用。 验证证书所有权可以确保证书上传者拥有该证书的私钥，从而提供一个附加的安全层。 验证可以防止恶意行动者提取中间证书，并使用该证书在其自己的预配服务中创建登记组，从而有效地劫持你的设备，因此，可防止他们探查你的流量。 通过证明证书链中根证书或中间证书的所有权，可以证明你有权针对需要注册为登记组一部分的设备生成叶证书。 出于此原因，在登记组中配置的根证书或中间证书必须是验证的证书，或者在服务中进行身份验证时，必须滚动更新为设备所代表的证书链中的某个已验证证书。 若要了解有关 x.509 证书证明的详细信息，请参阅 [x.509 证书](concepts-x509-attestation.md) 和 [使用 x.509 证书控制设备对预配服务的访问权限](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
 ## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>注册 X.509 证书的公共部分并获取验证码
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 09/14/2020
+ms.openlocfilehash: 3f7796dd565238eb853fcea431a6bcb7d18ee05a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242060"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530227"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展会如同内置功能一样运行。
@@ -212,7 +212,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) 和 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) 允许你从一个 PostgreSQL 服务器连接到另一个 PostgreSQL 服务器，或者连接到同一服务器中的另一个数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 当使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接时，可以通过将“允许访问 Azure 服务”设置为“开启”来实现此目的。 如果希望使用扩展来环回到同一服务器，也需要进行此设置。 可以在 Postgres 服务器的 Azure 门户页面中的“连接安全性”下找到“允许访问 Azure 服务”设置。 开启“允许访问 Azure 服务”会将所有 Azure IP 置于允许列表中。
 
-目前，不支持来自 Azure Database for PostgreSQL 的出站连接，但连接到同一区域中的其他 Azure Database for PostgreSQL 服务器除外。
+目前不支持从 Azure Database for PostgreSQL 进行出站连接，连接到同一区域中的其他 Azure Database for PostgreSQL 服务器的情况除外。
 
 ## <a name="uuid"></a>uuid
 如果计划使用 [uuid-ossp 扩展](https://www.postgresql.org/docs/current/uuid-ossp.html)中的 `uuid_generate_v4()`，请考虑将其与 [pgcrypto 扩展](https://www.postgresql.org/docs/current/pgcrypto.html)中的 `gen_random_uuid()` 进行比较，以了解性能优势。
@@ -228,7 +228,7 @@ pg_prewarm 扩展可将关系数据加载到缓存中。 预热缓存意味着�
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。
 
-[详细了解 TimescaleDB](https://docs.timescale.com/latest)，它是 [Timescale, Inc.](https://www.timescale.com/) 的注册商标。 Azure Database for PostgreSQL 提供 Timescale 的开放源代码版本。 若要了解此版本中有哪些 Timescale 功能可用，请参阅 [Timescale 产品比较](https://www.timescale.com/products/)。
+[详细了解 TimescaleDB](https://docs.timescale.com/latest)，它是 [Timescale, Inc.](https://www.timescale.com/) 的注册商标。 Azure Database for PostgreSQL 提供 TimescaleDB [Apache-2 版](https://www.timescale.com/legal/licenses)。
 
 ### <a name="installing-timescaledb"></a>安装 TimescaleDB
 若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要**重启服务器**才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 更改参数。
@@ -279,4 +279,4 @@ SELECT timescaledb_post_restore();
 
 
 ## <a name="next-steps"></a>后续步骤
-如果未看到要使用的扩展，请告诉我们。 在我们的[反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)中投票现有请求或创建新的反馈请求。
+如果未看到要使用的扩展，请告诉我们。 在我们的 [反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)中投票现有请求或创建新的反馈请求。

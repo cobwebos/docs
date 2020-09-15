@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7733859c4ca4de8b580a228d8a73b899f0afa953
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001954"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530890"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -44,7 +44,7 @@ ms.locfileid: "89001954"
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -298,7 +298,7 @@ ms.locfileid: "89001954"
 
 ## <a name="create-the-enrollment"></a>创建注册
 
-在本部分，你将创建一个使用自定义分配策略的新注册组。 为简单起见，本文将在注册中使用[对称密钥证明](concepts-symmetric-key-attestation.md)。 对于更安全的解决方案，请考虑使用具有信任链的 [X.509 证书证明](concepts-security.md#x509-certificates)。
+在本部分，你将创建一个使用自定义分配策略的新注册组。 为简单起见，本文将在注册中使用[对称密钥证明](concepts-symmetric-key-attestation.md)。 对于更安全的解决方案，请考虑使用具有信任链的 [X.509 证书证明](concepts-x509-attestation.md)。
 
 1. 仍在 [Azure 门户](https://portal.azure.com)中操作，打开预配服务。
 

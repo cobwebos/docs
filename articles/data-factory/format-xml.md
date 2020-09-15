@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a11b72024188fa434374110d9ce9e8cc69b2c6f0
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060962"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531706"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
 
@@ -35,7 +35,7 @@ ms.locfileid: "90060962"
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | nullValue | 指定 null 值的字符串表示形式。<br/>默认值为**空字符串**。 | 否 |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type<br>（在 `compression` 下） | 用来读取/写入 XML 文件的压缩编解码器。 <br>允许的值为 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**请注意**，使用复制活动将**ZipDeflate** / **TarGzip**文件解压缩 (s) 并写入基于文件的接收器数据存储时，默认情况下，将文件提取到该文件夹： `<path specified in dataset>/<folder named as source compressed file>/` ，使用 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [复制活动源](#xml-as-source)控制是否将 zip 文件名保留为文件夹结构。 | 否。  |
+| type<br>（在 `compression` 下） | 用来读取/写入 XML 文件的压缩编解码器。 <br>允许的值为 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**请注意**，在使用复制活动将**ZipDeflate** / **TarGzip**文件解压缩 (s) 并写入基于文件的接收器数据存储时，默认情况下，将文件提取到该文件夹： `<path specified in dataset>/<folder named as source compressed file>/` ，使用 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [复制活动源](#xml-as-source)控制是否保留压缩文件的名称， (s) 为文件夹结构。 | 否。  |
 | level<br/>（在 `compression` 下） | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的 XML 数据集的示例：
@@ -98,7 +98,7 @@ ms.locfileid: "90060962"
 
 下表列出了 XML 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。从 [XML 连接器行为](#xml-connector-behavior)中了解详细信息。 使用内联数据集时，你将看到其他文件设置，这些设置与 " [数据集属性](#dataset-properties) " 部分中描述的属性相同。 
 
-| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |

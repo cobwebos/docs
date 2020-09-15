@@ -2,13 +2,13 @@
 title: Azure Migrate 服务器评估中的依赖关系分析
 description: 介绍如何使用依赖关系分析来使用 Azure Migrate Server 评估进行评估。
 ms.topic: conceptual
-ms.date: 06/14/2020
-ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/15/2020
+ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118794"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530244"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
 
@@ -21,7 +21,7 @@ ms.locfileid: "86118794"
 - 你可以确定必须一起迁移的计算机。 如果你不确定哪些计算机是你要迁移到 Azure 的应用部署的一部分，这会特别有用。
 - 您可以确定是否正在使用计算机，以及哪些计算机可以解除授权而非迁移。
 - 分析依赖关系有助于确保不会遗留任何内容，从而避免在迁移后出现意外中断。
-- [查看](common-questions-discovery-assessment.md#what-is-dependency-visualization)有关依赖项分析的常见问题。
+- [查看](common-questions-discovery-assessment.md#what-is-dependency-visualization) 有关依赖项分析的常见问题。
 
 
 ## <a name="analysis-types"></a>分析类型
@@ -31,7 +31,7 @@ ms.locfileid: "86118794"
 **选项** | **详细信息** | **公有云** | **Azure Government**
 ----  |---- | ---- 
 **无代理** | 使用 vSphere Api 轮询 VMware Vm 的数据。<br/><br/> 不需要在 Vm 上安装代理。<br/><br/> 对于 VMware Vm，此选项目前为预览版。 | 。 | 。
-**基于代理的分析** | 使用 Azure Monitor 中的[服务映射解决方案](../azure-monitor/insights/service-map.md)来启用依赖项可视化和分析。<br/><br/> 需要在要分析的每台本地计算机上安装代理。 | 支持 | 不支持。
+**基于代理的分析** | 使用 Azure Monitor 中的 [服务映射解决方案](../azure-monitor/insights/service-map.md) 来启用依赖项可视化和分析。<br/><br/> 需要在要分析的每台本地计算机上安装代理。 | 支持 | 不支持。
 
 
 ## <a name="agentless-analysis"></a>无代理分析
@@ -55,7 +55,7 @@ ms.locfileid: "86118794"
 
 ## <a name="agent-based-analysis"></a>基于代理的分析
 
-对于基于代理的分析，服务器评估使用 Azure Monitor 中的[服务映射](../azure-monitor/insights/service-map.md)解决方案。 在要分析的每台计算机上安装[Microsoft Monitoring Agent/Log Analytics 代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent)和[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。
+对于基于代理的分析，服务器评估使用 Azure Monitor 中的 [服务映射](../azure-monitor/insights/service-map.md) 解决方案。 在要分析的每台计算机上安装 [Microsoft Monitoring Agent/Log Analytics 代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent) 和 [依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。
 
 ### <a name="dependency-data"></a>依赖关系数据
 
@@ -71,13 +71,13 @@ ms.locfileid: "86118794"
 
 无代理可视化和基于代理的可视化对象之间的差异在表中进行了总结。
 
-要求 | **无代理** | **基于代理**
+**要求** | **无代理** | **基于代理**
 --- | --- | ---
-**支持** | 仅适用于 VMware Vm 的预览。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 公开上市（GA）。
+**支持** | 仅适用于 VMware Vm 的预览。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支持的操作系统。 | 公开上市 (GA) 。
 **代理** | 你要分析的计算机上无需代理。 | 需要在要分析的每台本地计算机上安装代理。
-**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中的[服务映射](../azure-monitor/insights/service-map.md)解决方案进行依赖项分析。 
+**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中的[服务映射](../azure-monitor/insights/service-map.md)解决方案进行依赖项分析。<br/><br/> 将 Log Analytics 工作区与 Azure Migrate 项目关联。 工作区必须位于美国东部、东南亚或欧洲西部区域。 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)的区域中。
 **Process** | 捕获 TCP 连接数据。 发现后，它会按五分钟的间隔收集数据。 | 计算机上安装的服务映射代理收集有关 TCP 进程的数据以及每个进程的入站/出站连接。
-**Data** | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 
+**数据** | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 
 **可视化** | 可在一小时到30天内查看单服务器的依赖关系图。 | 单个服务器的依赖关系图。<br/><br/> 一组服务器的依赖关系图。<br/><br/>  仅可在一小时内查看地图。<br/><br/> 在映射视图中添加和删除组中的服务器。
 数据导出 | 过去30天的数据可以下载 CSV 格式。 | 可以通过 Log Analytics 查询数据。
 
@@ -85,6 +85,6 @@ ms.locfileid: "86118794"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [设置](how-to-create-group-machine-dependencies.md)基于代理的依赖项可视化。
-- [试用](how-to-create-group-machine-dependencies-agentless.md)VMware vm 的无代理依赖项可视化。
-- 查看有关依赖关系可视化的[常见问题](common-questions-discovery-assessment.md#what-is-dependency-visualization)。
+- [设置](how-to-create-group-machine-dependencies.md) 基于代理的依赖项可视化。
+- [试用](how-to-create-group-machine-dependencies-agentless.md) VMware vm 的无代理依赖项可视化。
+- 查看有关依赖关系可视化的 [常见问题](common-questions-discovery-assessment.md#what-is-dependency-visualization) 。

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1e4dfb399432278ee09d1c016faae8fd3b584647
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318040"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530193"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
@@ -40,7 +40,7 @@ ms.locfileid: "89318040"
 |希腊语 | `el` |✔ | | |
 |匈牙利语 | `hu` |✔ | | |
 |意大利语 | `it` |✔ |✔ |✔ |
-|日语 | `ja` |✔ | | |
+|日语 | `ja` |✔ | |✔ |
 |朝鲜语 | `ko` |✔ | | |
 |挪威语 | `nb` |✔ | | |
 |波兰语 | `pl` |✔ | | |

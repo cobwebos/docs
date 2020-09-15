@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure IoT 中心设备预配服务 SDK 工具
 description: 本文档介绍 Azure IoT 中心设备预配服务 (DPS) SDK 中提供的用于开发的工具
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d682a9ca698afb72d08b4d111562c725d46996
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691622"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530839"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>如何使用 SDK 中提供的工具来简化预配开发
-IoT 中心设备预配服务简化了预配过程，以安全且可缩放的方式实现零接触实时[自动预配](concepts-auto-provisioning.md)。  需要 X.509 证书形式的安全证明，或受信任的平台模块 (TPM)。  Microsoft 还与[其他安全硬件合作伙伴](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)携手合作，共同提高安全 IoT 部署的可信度。 对于开发者，了解硬件安全需求可能是一项大挑战。 我们提供了一组 Azure IoT 预配服务 SDK，因此，开发者可使用一个便捷的层来编写与预配服务通信的客户端。 这些 SDK 还提供了常用方案的示例，以及一组可简化开发安全证明的工具。
+IoT 中心设备预配服务以一种安全且可缩放的方式简化了预配过程，并具有零接触实时 [预配](about-iot-dps.md#provisioning-process) 。  需要 X.509 证书形式的安全证明，或受信任的平台模块 (TPM)。  Microsoft 还与[其他安全硬件合作伙伴](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)携手合作，共同提高安全 IoT 部署的可信度。 对于开发者，了解硬件安全需求可能是一项大挑战。 我们提供了一组 Azure IoT 预配服务 SDK，因此，开发者可使用一个便捷的层来编写与预配服务通信的客户端。 这些 SDK 还提供了常用方案的示例，以及一组可简化开发安全证明的工具。
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>受信任的平台模块 (TPM) 模拟器
 [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) 可引用用于对平台进行身份验证的安全存储密钥的标准，也可引用与用于实现该标准的模块交互的 I/O 接口。 TPM 可以作为离散硬件、集成硬件、基于固件或基于软件的方式存在。  在生产中，TPM 位于设备上，作为基于离散硬件、集成硬件或固件的模块。 在测试阶段，向开发者提供基于软件的 TPM 模拟器。  当前，此模拟器仅适用于在 Windows 平台上进行开发。

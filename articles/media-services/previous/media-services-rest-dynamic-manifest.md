@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务 REST API 创建筛选器 | Microsoft Docs
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务 REST API 创建动态清单来实现此选择性流。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: a77da9726c6c081ba5129b9b8815c3ac560e3b54
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 04a9776ca2686aebbb7668c86f5afcd61f5f9238
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256814"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530176"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器
 
@@ -372,5 +372,5 @@ Host: media.windows.net
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>另请参阅
 [动态清单概述](media-services-dynamic-manifest-overview.md)

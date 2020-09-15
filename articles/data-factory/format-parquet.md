@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: d8312be1f07b8d0d0d2f142bfc0d54f84d8641ae
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 91455e4797324f28f911dd8a928410517a951728
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060996"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531740"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -85,11 +85,11 @@ ms.locfileid: "90060996"
 
 受支持的 **Parquet 写入设置** `formatSettings` 如下：
 
-| properties      | 说明                                                  | 必需                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的类型必须设置为 **ParquetWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
-| fileNamePrefix | 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
+| fileNamePrefix | 在配置时适用 `maxRowsPerFile` 。<br> 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
@@ -99,7 +99,7 @@ ms.locfileid: "90060996"
 
 下表列出了 parquet 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
@@ -128,7 +128,7 @@ source(allowSchemaDrift: true,
 
 下表列出了 parquet 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |

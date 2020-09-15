@@ -5,16 +5,16 @@ description: 使用 Visual Studio Code 以交互方式调试 Azure 机器学习�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
+ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 1449114ad14ebbd064f95ad2853b516893ba4b12
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 08859eb87431b59e8be68369ce8f3876aa7d9f21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661686"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530295"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 

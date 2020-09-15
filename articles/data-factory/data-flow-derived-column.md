@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 09/14/2020
+ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606504"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531946"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>映射数据流中的派生列转换
 
@@ -20,25 +20,49 @@ ms.locfileid: "81606504"
 
 使用派生列转换在数据流中生成新列或修改现有字段。
 
-## <a name="derived-column-settings"></a>派生列设置
+## <a name="create-and-update-columns"></a>创建和更新列
 
-若要覆盖现有列，请通过列下拉列表选择它。 否则，使用列选择字段作为文本框，然后键入新列的名称。 若要生成派生列的表达式，请单击“输入表达式”框以打开[数据流表达式生成器](concepts-data-flow-expression-builder.md)。
+创建派生列时，可以生成新列或更新现有列。 在 " **列** " 文本框中，输入要创建的列。 若要覆盖架构中的现有列，可以使用 "列" 下拉列表。 若要生成派生列的表达式，请单击 " **输入表达式** " 文本框。 您可以开始键入表达式或打开表达式生成器来构造您的逻辑。
 
-![派生列设置](media/data-flow/dc1.png "派生列设置")
+![派生列设置](media/data-flow/create-derive-column.png "派生列设置")
 
-若要添加其他派生列，请将鼠标悬停在现有派生列上方，然后单击加号图标。 选择“添加列”或“添加列模式”。 如果列名称是来自源的变量，则列模式可能迟早会派上用场。 有关详细信息，请参阅[列模式](concepts-data-flow-column-pattern.md)。
+若要添加更多派生列，请单击列列表上方的 " **添加** " 或现有派生列旁边的加号图标。 选择“添加列”或“添加列模式”。
 
-![新派生列选择](media/data-flow/columnpattern.png "新派生列选择")
+![新派生列选择](media/data-flow/add-derived-column.png "新派生列选择")
 
-## <a name="build-schemas-in-output-schema-pane"></a>在“输出架构”窗格中生成架构
+### <a name="column-patterns"></a>列模式
 
-要修改并添加到架构中的列会在“输出架构”窗格中列出。 可在此处以交互方式生成简单和复杂数据结构。 若要添加其他字段，请选择“添加列”。 若要生成层次结构，请选择“添加子列”。
+如果未显式定义架构，或者如果想要批量更新一组列，则需要创建列模式。 列模式允许使用基于列元数据的规则与列匹配，并为每个匹配列创建派生列。 有关详细信息，请了解如何在派生列转换中 [生成列模式](concepts-data-flow-column-pattern.md#column-patterns-in-derived-column-and-aggregate) 。
 
-![添加子列](media/data-flow/addsubcolumn.png "添加子列")
+![列模式](media/data-flow/column-pattern-derive.png "列模式")
+
+## <a name="building-schemas-using-the-expression-builder"></a>使用表达式生成器生成架构
+
+使用映射数据流 [表达式生成器](concepts-data-flow-expression-builder.md)时，可以在 " **派生列** " 部分中创建、编辑和管理派生列。 在转换中创建或更改的所有列都将列出。 通过单击列名称以交互方式选择要编辑的列或模式。 若要添加其他列，请选择 " **新建** "，并选择是否要添加单个列或模式。
+
+![新建列](media/data-flow/derive-add-column.png "新建列")
+
+使用复杂列时，可以创建个子列。 为此，请单击任何列旁边的加号图标，然后选择 " **添加 subcolumn**"。 有关处理数据流中的复杂类型的详细信息，请参阅[映射数据流中的 JSON 处理](format-json.md#mapping-data-flow-properties)。
+
+![添加子列](media/data-flow/derive-add-subcolumn.png "添加子列")
 
 有关处理数据流中的复杂类型的详细信息，请参阅[映射数据流中的 JSON 处理](format-json.md#mapping-data-flow-properties)。
 
-![添加复杂列](media/data-flow/complexcolumn.png "添加列")
+![添加复杂列](media/data-flow/derive-complex-column.png "添加列")
+
+### <a name="locals"></a>局部变量
+
+如果要在多个列之间共享逻辑或要划分逻辑，可以在派生列转换中创建本地。 本地是一组不会在下游传播到以下转换的逻辑。 可以通过转到 " **表达式元素** " 并选择 " **局部变量**"，在表达式生成器中创建局部变量。 通过选择 " **新建**" 创建一个新的。
+
+![创建本地](media/data-flow/create-local.png "创建本地")
+
+局部变量可以引用派生列中的任何 expression 元素，包括函数、输入架构、参数和其他局部变量。 引用其他局部变量时，order 会很重要，因为引用的本地需要 "高于" 当前的。
+
+![创建本地2](media/data-flow/create-local-2.png "创建本地2")
+
+若要引用派生列中的局部，请在 " **表达式元素** " 视图中单击本地，或在名称前面使用冒号引用它。 例如，名为 local1 的本地被引用 `:local1` 。 若要编辑本地定义，请将鼠标悬停在 "表达式元素" 视图中，然后单击铅笔图标。
+
+![使用局部变量](media/data-flow/using-locals.png "使用局部变量")
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -63,7 +87,7 @@ ms.locfileid: "81606504"
 
 在数据工厂 UX 中，此转换如下图所示：
 
-![派生示例](media/data-flow/derive-script1.png "派生示例")
+![派生示例](media/data-flow/derive-script.png "派生示例")
 
 此转换的数据流脚本位于下面的代码片段中：
 

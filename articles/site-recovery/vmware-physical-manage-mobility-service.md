@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604533"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530142"
 ---
 # <a name="manage-the-mobility-agent"></a>管理移动代理 
 
@@ -26,7 +26,7 @@ ms.locfileid: "88604533"
 ## <a name="update-mobility-service-from-azure-portal"></a>从 Azure 门户更新移动服务
 
 1. 开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
-    1. 从 [9.36 版本](https://support.microsoft.com/help/4578241/) 开始，对于 SUSE LINUX ENTERPRISE SERVER 11 SP4，请确保 [配置服务器和横向扩展进程服务器上有](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)最新的安装程序。
+    1. 从9.36 版开始，对于 SUSE Linux Enterprise Server 11 SP3，RHEL 5，CentOS 5，Debian 7 确保 [配置服务器和横向扩展进程服务器上提供](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)最新的安装程序。
 1. 在门户中打开保管库 >“复制的项”。 
 1. 如果配置服务器是最新版本，则会看到一条通知，指出“新的 Site Recovery 复制代理更新已可用。 单击可安装。”
 

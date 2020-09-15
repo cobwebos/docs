@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002243"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531298"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
 
@@ -36,6 +36,9 @@ ms.locfileid: "89002243"
 
 > [!NOTE]
 > Service Fabric 有状态服务 fabric:/System/InfastructureService/<节点类型名称> 在具有银级或更高持久性的每个节点类型上运行。 它是唯一支持在 Azure 中任何群集节点类型上运行的系统服务。
+
+> [!IMPORTANT]
+> Service Fabric 自动缩放支持 `Default` 和 `NewestVM` 虚拟机规模集的 [扩展配置](../virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy.md)。
 
 ## <a name="vertical-scaling-considerations"></a>垂直缩放注意事项
 
@@ -168,7 +171,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > 横向缩减群集时，你会发现已删除的节点/VM 实例以不正常状态显示在 Service Fabric Explorer 中。 有关此行为的说明，请参阅[可能会在 Service Fabric Explorer 中观察到的行为](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)。 方法：
-> * 结合相应的节点名称调用 [Remove-ServiceFabricNodeState 命令](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)。
+> * 结合相应的节点名称调用 [Remove-ServiceFabricNodeState 命令](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true)。
 > * 在群集上部署 [Service Fabric 自动缩放帮助应用程序](https://github.com/Azure/service-fabric-autoscale-helper/)。 此应用程序可确保从 Service Fabric Explorer 中清除已缩减的节点。
 
 ## <a name="reliability-levels"></a>可靠性级别

@@ -1,36 +1,36 @@
 ---
 title: Azure 防火墙威胁情报配置
-description: 可以为防火墙启用基于威胁智能的筛选，以提醒和拒绝来自/到达已知恶意 IP 地址和域的流量。
+description: 了解如何为 Azure 防火墙策略配置基于威胁智能的筛选，以发出警报，并拒绝从和到已知恶意 IP 地址和域的流量。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567139"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530635"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure 防火墙威胁情报配置
 
-可以为 Azure 防火墙策略配置基于威胁智能的筛选，以发出警报，并拒绝进出已知恶意 IP 地址和域的流量。 IP 地址和域源自 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) 为 Microsoft 威胁智能助力，它已得到 Azure 安全中心等多项服务的运用。<br>
+可以为 Azure 防火墙策略配置基于威胁情报的筛选，以针对来自和发往已知恶意 IP 地址和域的流量发出警报并将其拒绝。 IP 地址和域源自 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) 为 Microsoft 威胁智能助力，它已得到 Azure 安全中心等多项服务的运用。<br>
 
-如果已配置基于威胁智能的筛选，则将在任何 NAT 规则、网络规则或应用程序规则之前处理相关规则。
+如果已配置了基于威胁情报的筛选，则会先处理关联的规则，然后再处理任何 NAT 规则、网络规则或应用程序规则。
 
-:::image type="content" source="media/threat-intelligence-settings/threat-intelligence-policy.png" alt-text="威胁智能策略":::
+:::image type="content" source="media/threat-intelligence-settings/threat-intelligence-policy.png" alt-text="威胁情报策略":::
 
-## <a name="threat-intelligence-mode"></a>威胁智能模式
+## <a name="threat-intelligence-mode"></a>威胁情报模式
 
-可以选择在触发规则时只记录警报，也可以选择 "警报" 和 "拒绝" 模式。
+可以选择在触发规则时仅记录警报，也可以选择“发出警报并拒绝”模式。
 
-默认情况下，基于威胁智能的筛选在警报模式下启用。
+默认情况下，基于威胁情报的筛选将在警报模式下启用。
 
-## <a name="allowed-list-addresses"></a>允许的列表地址
+## <a name="allowed-list-addresses"></a>允许列表地址
 
-你可以配置允许的 IP 地址列表，以便威胁智能不会筛选指定的任何地址、范围或子网。
+可以配置允许的 IP 地址列表，使威胁情报不会筛选任何指定的地址、范围或子网。
 
 
 

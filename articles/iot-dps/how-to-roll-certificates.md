@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299248"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531400"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 
@@ -20,14 +20,14 @@ ms.locfileid: "89299248"
 
 滚动更新证书是一种安全最佳做法，可以在出现违规时帮助保护系统。 作为[假设违规方法](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)的一部分，Microsoft 提倡实施反应式安全流程及预防措施。 这些安全流程应该包括设备证书的滚动更新。 滚动更新证书的频率取决于解决方案的安全需求。 其解决方案涉及到高度敏感数据的客户可以每日滚动更新证书，而其他客户则可以每隔数年滚动更新其证书。
 
-滚动更新设备证书涉及到更新存储在设备和 IoT 中心上的证书。 然后，设备可以使用设备预配服务的一般性[自动预配](concepts-auto-provisioning.md)过程，在 IoT 中心重新预配自身。
+滚动更新设备证书涉及到更新存储在设备和 IoT 中心上的证书。 然后，设备可以通过重新设置) 的设备 [预配 (](about-iot-dps.md#provisioning-process) 服务将其自身与 IoT 中心。
 
 
 ## <a name="obtain-new-certificates"></a>获取新证书
 
 可通过多种方法获取 IoT 设备的新证书。 这些方法包括从设备工厂获取证书、生成自己的证书，以及让第三方管理证书的创建。 
 
-证书相互签名，构成了从根 CA 证书到[叶证书](concepts-security.md#end-entity-leaf-certificate)的信任链。 签名证书是用于签署信任链末尾的叶证书的证书。 签名证书可以是根 CA 证书，也可以是信任链中的中间证书。 有关详细信息，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。
+证书相互签名，构成了从根 CA 证书到[叶证书](concepts-x509-attestation.md#end-entity-leaf-certificate)的信任链。 签名证书是用于签署信任链末尾的叶证书的证书。 签名证书可以是根 CA 证书，也可以是信任链中的中间证书。 有关详细信息，请参阅 [X.509 证书](concepts-x509-attestation.md#x509-certificates)。
  
 可通过两种不同的方法获取签名证书。 第一种方法（建议对生产系统使用）是从根证书颁发机构 (CA) 购买签名证书。 这种方法可将安全性向下链接到受信任的源。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "89299248"
 
 ## <a name="roll-the-certificate-on-the-device"></a>在设备上滚动更新证书
 
-设备上的证书应始终存储在[硬件安全模块 (HSM)](concepts-device.md#hardware-security-module) 等安全位置。 滚动更新设备证书的方式主要取决于它们的创建方式以及在设备中的安装方式。 
+设备上的证书应始终存储在[硬件安全模块 (HSM)](concepts-service.md#hardware-security-module) 等安全位置。 滚动更新设备证书的方式主要取决于它们的创建方式以及在设备中的安装方式。 
 
 如果证书是从第三方获取的，则必须深入了解第三方如何滚动更新其证书。 滚动更新流程可能包含在双方的协定中，也可能单独作为一种服务提供。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "89299248"
 
     如果主要证书和辅助证书同时泄露，应针对这两个证书完成这些步骤。
 
-    ![管理单独注册](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![使用安全漏洞管理单个注册](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. 从配置服务中删除已泄露的证书后，只要其设备注册依然存在，该证书便仍可用于建立与 IoT 中心的设备连接。 可通过两种方法来解决这一问题： 
 
@@ -96,7 +96,7 @@ ms.locfileid: "89299248"
 
 2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。  单击“保存”  。
 
-    ![使用辅助证书管理单独注册](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![使用辅助证书过期管理单个注册](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. 以后当主要证书过期时，请返回此处，并单击“删除当前证书”按钮删除该主要证书。 
 
@@ -118,7 +118,7 @@ ms.locfileid: "89299248"
 
 5. 单击“CA 证书”，然后选择新的根 CA 证书。  然后单击“保存”  。 
 
-    ![选择新的根 CA 证书](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![为受损证书选择新的根 CA 证书](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. 从配置服务中删除已泄露的证书后，只要其设备注册依然存在，该证书便仍可用于建立与 IoT 中心的设备连接。 可通过两种方法来解决这一问题： 
 
@@ -136,9 +136,9 @@ ms.locfileid: "89299248"
 
 2. 依次单击“中间证书”、“删除当前证书”。   单击文件夹图标，导航到注册组的要上传的新中间证书。 完成后单击“保存”  。 如果主要证书和辅助证书同时泄露，应针对这两个证书完成这些步骤。
 
-    此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。
+    此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-x509-attestation.md#x509-certificates)。
 
-    ![管理单独注册](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![管理已泄露的中间的单个注册](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. 从配置服务中删除已泄露的证书后，只要其设备注册依然存在，该证书便仍可用于建立与 IoT 中心的设备连接。 可通过两种方法来解决这一问题： 
@@ -164,7 +164,7 @@ ms.locfileid: "89299248"
 
 3. 单击“CA 证书”，然后在“辅助证书”配置下选择新的根 CA 证书。   然后单击“保存”  。 
 
-    ![选择新的根 CA 证书](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![选择新的根 CA 证书以便过期](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. 以后当主要证书过期时，请单击设备预配服务实例的“证书”选项卡  。 在列表中单击已过期的证书，然后单击“删除”按钮。  输入证书名称确认删除，然后单击“确定”。 
 
@@ -179,9 +179,9 @@ ms.locfileid: "89299248"
 
 2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。  单击“保存”  。
 
-    此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。
+    此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-x509-attestation.md#x509-certificates)。
 
-   ![使用辅助证书管理单独注册](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![使用辅助证书终止管理注册组](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. 以后当主要证书过期时，请返回此处，并单击“删除当前证书”按钮删除该主要证书。 
 
@@ -208,6 +208,6 @@ ms.locfileid: "89299248"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解设备预配服务中的 X.509 证书，请参阅[安全性](concepts-security.md) 
+- 若要在设备预配服务中了解有关 x.509 证书的详细信息，请参阅 [x.509 证书证明](concepts-x509-attestation.md) 
 - 若要了解如何使用 Azure IoT 中心设备预配服务执行 X.509 CA 证书的所有权证明，请参阅[如何验证证书](how-to-verify-certificates.md)
 - 若要了解如何使用门户创建登记组，请参阅[使用 Azure 门户管理设备登记](how-to-manage-enrollments.md)。

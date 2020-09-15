@@ -3,16 +3,16 @@ title: Azure Migrate 复制设备
 description: 了解基于代理的 VMWare 迁移的 Azure Migrate 复制设备。
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122092"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532114"
 ---
 # <a name="replication-appliance"></a>复制设备
 
-本文介绍了使用基于代理的迁移将 VMware Vm、物理计算机和私有/公有云 Vm 迁移到 Azure 时[Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)工具使用的复制设备。 
+本文介绍了使用基于代理的迁移将 VMware Vm、物理计算机和私有/公有云 Vm 迁移到 Azure 时 [Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool) 工具使用的复制设备。 
 
 
 ## <a name="overview"></a>概述
@@ -42,19 +42,19 @@ ms.locfileid: "86122092"
 --- | ---
  | **VMware VM 设备**
 PowerCLI | 如果复制设备在 VMware VM 上运行，则应安装[PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 。
-NIC 类型 | VMXNET3 （如果设备是 VMware VM）
+NIC 类型 | 如果设备是 VMware VM，则 VMXNET3 () 
  | **硬件设置**
 CPU 核心数 | 8
 RAM | 16 GB
 磁盘数目 | 三：操作系统磁盘、进程服务器缓存磁盘和保留驱动器。
-可用磁盘空间（缓存） | 600 GB
+可用磁盘空间 (缓存)  | 600 GB
 可用磁盘空间（保留磁盘） | 600 GB
 **软件设置** |
 操作系统 | Windows Server 2016 或 Windows Server 2012 R2
 许可证 | 该设备附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。<br/><br/> 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
 操作系统区域设置 | 英语 (en-us)
 TLS | 应启用 TLS 1.2。
-.NET framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
+.NET Framework | .NET Framework 4.6 或更高版本应安装在启用了强密码的计算机上 (。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装，也可以在设备部署期间安装 Site Recovery。
 其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V
@@ -73,7 +73,7 @@ NIC 类型 | VMXNET3
 --- | ---
 手动下载和安装 | 下载 MySQL 应用程序 & 将其放在 C:\Temp\ASRSetup 文件夹中，然后手动安装。<br/> 设置设备 MySQL 时，将显示 "已安装"。
 无在线下载 | 将 MySQL 安装程序应用程序放在 C:\Temp\ASRSetup. 文件夹中。 安装设备并单击下载并安装 MySQL 时，安装程序将使用所添加的安装程序。
-下载并安装到 Azure Migrate | 当你安装设备并提示你安装 MySQL 时，请选择 "**下载并安装**"。
+下载并安装到 Azure Migrate | 当你安装设备并提示你安装 MySQL 时，请选择 " **下载并安装**"。
 
 ## <a name="url-access"></a>URL 访问
 
@@ -88,8 +88,8 @@ NIC 类型 | VMXNET3
 https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https： \/ /login.live.com <br/> https： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> https： \/ /www.live.com <br/> https： \/ /www.microsoft.com  | 设备安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在少数几个区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 也是允许的。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | 设备安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在某些区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 也是允许的。
 
 
 ## <a name="azure-government-url-access"></a>Azure 政府版 URL 访问
@@ -105,14 +105,14 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 https:\//management.usgovcloudapi.net | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https： \/ /login.live.com <br/> https： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> https： \/ /www.live.com <br/> https： \/ /www.microsoft.com  | 具有 .OVA 的设备设置需要访问这些 Url。 它们用于 Azure Active Directory 的访问控制和标识管理。
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在少数几个区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 也是允许的。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | 具有 .OVA 的设备设置需要访问这些 Url。 它们用于 Azure Active Directory 的访问控制和标识管理。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在某些区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 也是允许的。
 
 ## <a name="port-access"></a>端口访问
 
 **设备** | **Connection**
 --- | ---
-VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站上的本地复制设备（配置服务器）进行通信。<br/><br/> VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
+VM | Vm 上运行的移动服务与本地复制设备通信， (配置) 服务器在端口 HTTPS 443 入站上，用于复制管理。<br/><br/> VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
 复制设备 | 复制设备通过端口 HTTPS 443 出站来协调与 Azure 的复制。
 进程服务器 | 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。<br/> 默认情况下，进程服务器在复制设备上运行。
 
@@ -125,21 +125,21 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 4. 通信按如下方式发生：
     - Vm 与用于复制管理的端口 HTTPS 443 入站上的复制设备通信。
     - 复制设备通过端口 HTTPS 443 出站来协调与 Azure 的复制。
-    - Vm 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在复制设备上运行）。 可以修改此端口。
+    - Vm 会将复制数据发送到进程服务器 (在复制设备上运行，) 在端口 HTTPS 9443 入站端口上运行。 可以修改此端口。
     - 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
 5. 复制数据首先登陆 Azure 中的缓存存储帐户。 将处理这些日志，并将数据存储在 Azure 托管磁盘中。
 
-![体系结构](./media/migrate-replication-appliance/architecture.png)
+![关系图显示复制过程的体系结构。](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>设备升级
 
 设备将从 Azure Migrate 中心手动升级。 建议始终运行最新版本。
 
-1. 在 Azure Migrate > 服务器 > Azure Migrate：服务器评估、基础结构服务器，请单击 "**配置服务器**"。
-2. 在**配置服务器**中，当复制设备的新版本可用时，**代理版本**中会出现一个链接。 
+1. 在 Azure Migrate > 服务器 > Azure Migrate：服务器评估、基础结构服务器，请单击 " **配置服务器**"。
+2. 在 **配置服务器**中，当复制设备的新版本可用时， **代理版本** 中会出现一个链接。 
 3. 将安装程序下载到复制设备计算机，然后安装升级。 安装程序将检测设备上当前正在运行的版本。
  
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance)为基于代理的 VMware VM 迁移设置复制设备。
-- [了解如何](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance)为物理服务器设置复制设备。
+- [了解如何](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) 为基于代理的 VMware VM 迁移设置复制设备。
+- [了解如何](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) 为物理服务器设置复制设备。

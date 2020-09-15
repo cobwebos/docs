@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 08052b255854ac9637d4f9a65dd10b63b26ba38d
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 7c1a2cf4b9b476a8f31f38fea45b2e1ef3fe4307
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061166"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531759"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
 
@@ -34,7 +34,7 @@ ms.locfileid: "90061166"
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**请注意**，使用复制活动将**ZipDeflate** / **TarGzip**文件解压缩 (s) 并写入基于文件的接收器数据存储时，默认情况下，将文件提取到该文件夹： `<path specified in dataset>/<folder named as source compressed file>/` ，使用 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [复制活动源](#json-as-source)控制是否将 zip 文件名保留为文件夹结构。 | 否。  |
+| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**请注意**，在使用复制活动将**ZipDeflate** / **TarGzip**文件解压缩 (s) 并写入基于文件的接收器数据存储时，默认情况下，将文件提取到该文件夹： `<path specified in dataset>/<folder named as source compressed file>/` ，使用 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [复制活动源](#json-as-source)控制是否保留压缩文件的名称， (s) 为文件夹结构。| 否。  |
 | level<br/>（在 `compression` 下） | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的 JSON 数据集的示例：
@@ -204,7 +204,7 @@ ms.locfileid: "90061166"
 
 下表列出了 json 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
@@ -299,7 +299,7 @@ File3.json
 
 下表列出了 json 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
 | 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为 `part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
@@ -312,11 +312,11 @@ File3.json
 
 在 "输出架构" 侧窗格中，将鼠标悬停在某一列上，并单击加号图标。 选择 " **添加 subcolumn** "，使列成为复杂类型。
 
-![添加子列](media/data-flow/addsubcolumn.png "添加子列")
+![添加子列](media/data-flow/derive-add-subcolumn.png "添加子列")
 
 您可以通过相同的方式添加更多的列和个子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
 
-![复杂列](media/data-flow/complexcolumn.png "复杂列")
+![添加复杂列](media/data-flow/derive-complex-column.png "添加列")
 
 #### <a name="entering-the-json-structure-manually"></a>手动输入 JSON 结构
 

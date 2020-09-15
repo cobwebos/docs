@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294384"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531383"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消预配以前自动预配的设备 
 
@@ -43,7 +43,7 @@ ms.locfileid: "89294384"
 
 
 ## <a name="enrollment-groups"></a>注册组
-使用 X.509 认证时，也可以通过登记组预配设备。 登记组中配置了一个签名证书（中间证书或根 CA 证书），可以使用其证书链中的该证书来控制设备对预配服务的访问。 若要详细了解登记组以及预配服务中的 X.509 证书，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。 
+使用 X.509 认证时，也可以通过登记组预配设备。 登记组中配置了一个签名证书（中间证书或根 CA 证书），可以使用其证书链中的该证书来控制设备对预配服务的访问。 若要了解有关具有预配服务的注册组和 x.509 证书的详细信息，请参阅 [x.509 证书证明](concepts-x509-attestation.md)。 
 
 若要查看已通过某个登记组预配的设备列表，可以查看该登记组的详细信息。 这样，便可以轻松了解每个设备已预配到哪个 IoT 中心。 查看设备列表： 
 

@@ -9,16 +9,16 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e01255a34e97f6c11e4909287b98fcd3d15fca92
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669052"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530737"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
 
-借助 [Azure IoT 中心设备预配服务 (DPS)](../iot-dps/index.yml)，可以使用 X.509 证书自动预配 IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
+借助 [Azure IoT 中心设备预配服务 (DPS)](../iot-dps/index.yml)，可以使用 X.509 证书自动预配 IoT Edge 设备。 如果不熟悉自动预配过程，请先查看 [预配](../iot-dps/about-iot-dps.md#provisioning-process) 概述，然后再继续。
 
 本文介绍如何通过以下步骤，在 IoT Edge 设备上使用 X.509 证书创建设备预配服务注册：
 

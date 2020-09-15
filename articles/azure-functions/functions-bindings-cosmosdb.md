@@ -1,17 +1,17 @@
 ---
 title: 适用于 Functions 1.x 的 Azure Cosmos DB 绑定
-description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。
+description: 了解如何在 Azure Functions 1.x 中使用 Azure Cosmos DB 触发器和绑定。
 author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9ae3ef133fa1b246c09fe0a9aa4ec27b0f75fd19
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214145"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531570"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
 

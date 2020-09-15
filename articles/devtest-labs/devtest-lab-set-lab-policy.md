@@ -3,12 +3,12 @@ title: 管理 Azure 开发测试实验室中的实验室策略 | Microsoft 文�
 description: 了解如何定义实验室策略，例如 VM 大小、每个用户的最大VM 以及自动化关闭。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290429"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530346"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
 
@@ -29,7 +29,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 如果启用此策略，选择一个或多个可以在实验室中创建的 VM 大小。
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ## <a name="set-virtual-machines-per-user"></a>设置每个用户的虚拟机
 通过“每个用户的虚拟机数”策略可指定个人用户可创建的 VM 数量****。 若用户在达到用户上限时尝试创建或声明 VM，则会出现错误消息，指出无法创建/声明 VM。 
@@ -42,7 +42,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 选择“是”限制可以使用 SSD（固态磁盘）的 VM 数。**** 如果不希望限制可以使用 SSD 的 VM 数，请选择“否”。**** 如果选择“是”，请输入一个值，指示可以使用 SSD 创建的 VM 数量。**** 
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ## <a name="set-virtual-machines-per-lab"></a>设置每个实验室的虚拟机
 通过“每个实验室的虚拟机数”策略可指定当前实验室可创建的 VM 数量****。 若用户在达到实验室上限时尝试创建 VM，则会出现错误消息，表示无法创建 VM。 
@@ -55,7 +55,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 选择“是”限制可以使用 SSD（固态磁盘）的 VM 数。**** 如果不希望限制可以使用 SSD 的 VM 数，请选择“否”。**** 如果选择“是”，请输入一个值，指示可以使用 SSD 创建的 VM 数量。**** 
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 ## <a name="set-auto-shutdown"></a>设置自动关机
 通过指定此实验室 VM 关机的时间，自动关机策略有助于最小化实验室浪费。
@@ -72,7 +72,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
    有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-bindings-http-webhook.md)。 
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 要从特定 VM 中删除此设置，请打开 VM 的管理窗格，并更改其“自动关机”设置****。
 
@@ -105,13 +105,13 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 在实验室的“配置和策略”窗格中，选择“自动启动”********。
    
-    ![自动启动](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![屏幕捕获显示虚拟机的自动启动选项。](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. 选择“开启”**** 启用此策略，选择“关闭”**** 禁用此策略。
 
 3. 如果启用此策略，请指定计划的启动时间、时区以及在每周的哪几天应用该时间。 
 
-4. 选择“保存” 。
+4. 选择“保存”。
 
 一旦启用，此策略不会自动应用到当前实验室中所有 VM。 若要将此设置应用到特定 VM，请打开 VM 的管理窗格，并更改其“自动启动”设置****。
 

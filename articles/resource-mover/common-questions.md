@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068041"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530397"
 ---
 # <a name="common-questions"></a>常见问题
 
@@ -50,7 +50,7 @@ ms.locfileid: "90068041"
 
 将资源移动到目标区域后，可以更改订阅。 [详细了解](../azure-resource-manager/management/move-resource-group-and-subscription.md) 如何将资源移到其他订阅。 
 
-### <a name="where-is-the-metadata-about-a-region-move-stored"></a>区域的元数据存储在何处？
+### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>用于在存储的区域之间移动的元数据位于何处？
 
 它存储在 [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) 数据库中，并且存储在 Microsoft 订阅中的 [azure blob 存储](../storage/common/storage-service-encryption.md)中。 当前元数据存储在美国东部2和北欧中。 我们会将此覆盖范围扩展到其他区域。 这并不局限于跨任何公共区域移动资源。
 

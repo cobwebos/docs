@@ -8,16 +8,16 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8a31f2739e497d8e203a9806d25b21608e5701f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131040"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531468"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
-可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
+可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果不熟悉自动预配过程，请先查看 [预配](../iot-dps/about-iot-dps.md#provisioning-process) 概述，然后再继续。
 
 DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明。 对于组注册，如果在对称密钥证明中将“是 IoT Edge 设备”选项选为 TRUE，则在该注册组下注册的所有设备都将标记为 IoT Edge 设备。
 
