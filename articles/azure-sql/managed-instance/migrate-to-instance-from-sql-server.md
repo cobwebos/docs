@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a54cf2ed228a166ea3d87c14515f41d5b0e7aed9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209481"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090221"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本文介绍如何将 SQL Server 2005 或更高版本实例迁移到 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)。 有关迁移到单个数据库或弹性池的信息，请参阅 [迁移到 SQL 数据库](../database/migrate-to-database-from-sql-server.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
+本文介绍如何将 SQL Server 2005 或更高版本实例迁移到 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)。 有关迁移到单一数据库或弹性池的信息，请参阅[迁移到 SQL 数据库](../database/migrate-to-database-from-sql-server.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
 
 > [!NOTE]
 > 要快速入门并试用 Azure SQL 托管实例，可转到[快速入门指南](quickstart-content-reference-guide.md)而不是本页。
@@ -126,7 +126,7 @@ SQL 托管实例支持以下数据库迁移选项（目前仅支持这些迁移�
 
 下图高度概括了该过程：
 
-![迁移流](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![关系图显示了 SQL Server，其中标有 "备份/上传到 URL 流向 Azure 存储" 的箭头，另一个标记为 "从 Azure 存储流到 SQL 托管实例的 URL 还原"。](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 下表提供了可以根据所运行的源 SQL Server 版本使用的方法的详细信息：
 

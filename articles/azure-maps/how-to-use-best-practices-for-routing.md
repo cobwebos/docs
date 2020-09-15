@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400768"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086396"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps 路由服务的最佳做法
 
@@ -275,7 +275,7 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>在 web 应用中使用路由服务
 
-Azure Maps Web SDK 提供 [服务模块](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)。 此模块是一个帮助程序库，使用 JavaScript 或 TypeScript 可以轻松地在 web 或 Node.js 应用程序中使用 Azure Maps REST Api。 服务模块可用于在地图上呈现返回的路由。 模块自动确定要与 GET 和 POST 请求一起使用的 API。
+Azure Maps Web SDK 提供 [服务模块](https://docs.microsoft.com/javascript/api/azure-maps-rest/)。 此模块是一个帮助程序库，使用 JavaScript 或 TypeScript 可以轻松地在 web 或 Node.js 应用程序中使用 Azure Maps REST Api。 服务模块可用于在地图上呈现返回的路由。 模块自动确定要与 GET 和 POST 请求一起使用的 API。
 
 ## <a name="next-steps"></a>后续步骤
 

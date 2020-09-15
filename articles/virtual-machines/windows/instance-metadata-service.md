@@ -11,18 +11,18 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705055"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086702"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
-实例元数据服务可用于运行虚拟机和虚拟机规模集实例。 所有 Api 都支持使用 [Azure 资源管理器](/rest/api/resources/)创建/管理的 vm。 只有证明和网络终结点支持经典 (非 ARM) Vm，而证明仅支持有限的范围。
+实例元数据服务适用于运行虚拟机和虚拟机规模集实例。 所有 API 均支持使用 [Azure 资源管理器](/rest/api/resources/)创建/管理的 VM。 只有证明和网络终结点才支持经典（非 ARM）VM，而证明终结点支持的范围有限。
 
 Azure 的 IMDS 是一个 REST 终结点，位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
 最佳做法是让 HTTP 客户端在查询 IMDS 时绕过 VM 中的 web 代理并同等对待 `169.254.169.254` 和 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
@@ -177,7 +177,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 
 实例元数据服务进行了版本控制，因此，必须在 HTTP 请求中指定 API 版本。
 
-支持的 API 版本如下： 
+支持的 API 版本有： 
 - 2017-03-01
 - 2017-04-02
 - 2017-08-01 
@@ -258,8 +258,8 @@ publisher | VM 映像的发布者 | 2017-04-02
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/management/overview.md) | 2017-08-01
 ResourceId | 资源的[完全限定](/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM 映像的特定 SKU | 2017-04-02
-securityProfile. secureBootEnabled | 标识是否在 VM 上启用了 UEFI 安全启动 | 2020-06-01
-securityProfile.virtualTpmEnabled | 确定虚拟受信任的平台模块 (是否在 VM 上启用了 TPM)  | 2020-06-01
+securityProfile.secureBootEnabled | 标识是否在 VM 上启用了 UEFI 安全启动 | 2020-06-01
+securityProfile.virtualTpmEnabled | 标识是否在 VM 上启用了虚拟受信任的平台模块 (TPM) | 2020-06-01
 storageProfile | 参阅[存储配置文件](#storage-metadata) | 2019-06-01
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
@@ -517,10 +517,11 @@ caching | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
-image   | 源用户映像虚拟硬盘
-lun     | 磁盘的逻辑单元号
+encryptionSettings | 磁盘的加密设置
+图像   | 源用户映像虚拟硬盘
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
+osType  | 磁盘中包含的 OS 类型
 vhd     | 虚拟硬盘
 writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
 
@@ -532,11 +533,10 @@ caching | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
-encryptionSettings | 磁盘的加密设置
-image   | 源用户映像虚拟硬盘
+图像   | 源用户映像虚拟硬盘
+lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
-osType  | 磁盘中包含的 OS 类型
 vhd     | 虚拟硬盘
 writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
 
@@ -685,7 +685,7 @@ Nonce 是一个可选的 10 位字符串。 如果未提供，IMDS 将在其所�
 }
 ```
 
-签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及特定于 VM 的特定详细信息。 对于 ARM Vm，这包括 vmId、sku、nonce、subscriptionId、创建和过期文档的时间戳以及有关映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。 对于经典 (非 ARM) Vm，只保证可以填充 vmId。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及某些特定于 VM 的详细信息。 对于 ARM VM，这包括 vmId、sku、nonce、subscriptionId、文档创建和到期的时间戳以及关于映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。 对于经典（非 ARM）VM，只保证填充 vmId。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
 该文档包含以下字段：
 
 数据 | 说明
@@ -699,7 +699,7 @@ subscriptionId | 虚拟机的 Azure 订阅，引入自 `2019-04-30`
 sku | `2019-11-01` 中介绍了 VM 映像的特定 SKU
 
 > [!NOTE]
-> 对于经典 (非 ARM) Vm，只保证可以填充 vmId。
+> 对于经典（非 ARM）VM，只保证填充 vmId。
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>示例 2：验证 VM 是否在 Azure 中运行
 

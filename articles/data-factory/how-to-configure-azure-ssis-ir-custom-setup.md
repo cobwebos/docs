@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440569"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090578"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
 
@@ -40,7 +40,7 @@ ms.locfileid: "89440569"
 
 以下限制仅适用于标准自定义安装：
 
-- 若要在脚本中使用 *gacutil.exe* 将程序集安装到全局程序集缓存 (GAC)，需要在自定义安装过程中提供 *gacutil.exe*。 或者，可以使用稍后在“说明”部分所述的“公共预览版”容器中提供的副本。
+- 若要在脚本中使用 *gacutil.exe* 将程序集安装到全局程序集缓存 (GAC)，需要在自定义安装过程中提供 *gacutil.exe*。 或者，你可以使用*公共预览版*容器的*示例*文件夹中提供的副本，请参阅下面的**标准自定义安装示例**部分。
 
 - 若要在脚本中引用某个子文件夹，请注意 *msiexec.exe* 不支持使用 `.\` 表示法引用根文件夹。 请使用类似 `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` 的命令，而不要使用 `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`。
 

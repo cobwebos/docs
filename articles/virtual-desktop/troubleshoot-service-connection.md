@@ -1,17 +1,17 @@
 ---
 title: 排查 Windows 虚拟桌面服务连接问题 - Azure
-description: 如何解决在 Windows 虚拟桌面租户环境中设置客户端连接时遇到的问题。
+description: 如何解决在 Windows 虚拟桌面租户环境中设置服务连接时遇到的问题。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009369"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089898"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虚拟桌面服务连接
 
@@ -39,6 +39,12 @@ ms.locfileid: "88009369"
 3. 如果正在使用 Web 客户端，请确认没有缓存的凭据问题。
 
 4. 如果用户是 Azure Active Directory (AD) 用户组的一部分，请确保该用户组是安全组，而不是通讯组。 Windows 虚拟桌面不支持 Azure AD 通讯组。
+
+## <a name="user-loses-existing-feed-and-no-remote-resource-is-displayed-no-feed"></a>用户丢失现有源，没有 (的源中显示远程资源) 
+
+此错误通常在用户将其订阅从一个 Azure AD 租户移到另一个租户后出现。 因此，该服务将无法跟踪其用户分配，因为它们仍与旧的 Azure AD 租户相关联。
+
+若要解决此问题，只需将用户重新分配到其应用组。
 
 ## <a name="next-steps"></a>后续步骤
 

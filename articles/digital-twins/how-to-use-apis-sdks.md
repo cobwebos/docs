@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e97db598556d10538746242fa67449631394cd55
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: aac5c937ab2f80dcbe1567a3817b056a6285cf17
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030644"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086668"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -59,7 +59,8 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
    - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview&preserve-view=true)。
    - 若要查看详细信息和用法示例，请继续阅读本文的 [.net (c # ) SDK (数据平面) ](#net-c-sdk-data-plane) 部分。
 * 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
-   - 可以从 npm 中查看和安装包： [适用于 JavaScript 的 Azure Azure 数字孪生客户端库](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)
+   - 可以从 npm 中查看和安装包： [适用于 JavaScript 的 Azure Azure 数字孪生客户端库](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)。
+   - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)。
 * 可以使用 AutoRest 为其他语言生成 SDK。 按照 [*如何：创建适用于 Azure 数字孪生的自定义 Sdk AutoRest*](how-to-create-custom-sdks.md)中的说明进行操作。
 
 还可以通过 [CLI](how-to-use-cli.md)与 Azure 数字孪生交互，来运用日期平面 api。
@@ -290,7 +291,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 在门户主页上，搜索 Azure 数字孪生实例以提取其详细信息。 从 Azure 数字孪生实例的菜单中选择 " **指标** " 选项，打开 " *指标* " 页。
 
-:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 指标 页的屏幕截图":::
+:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 "指标" 页的屏幕截图":::
 
 在此处，你可以查看实例的度量值并创建自定义视图。
 

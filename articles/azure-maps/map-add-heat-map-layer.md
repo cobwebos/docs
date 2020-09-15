@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: a6235ee6bbb476c69114e6895403f05e69fd6e19
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 80299b66b614e3d31778902c86e8e43f9f1b95de
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010236"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086107"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -39,7 +39,7 @@ ms.locfileid: "88010236"
 
 若要将点的数据源呈现为热度地图，请将数据源传递到类的实例 `HeatMapLayer` 中，并将其添加到地图中。
 
-在下面的代码中，每个热度点在所有缩放级别上都有10个像素的半径。 为了确保更好的用户体验，热度地图位于标签层下方。 标签保持清晰可见。 本示例中的数据来自[USGS 地震危险计划](https://earthquake.usgs.gov/)。 它适用于过去30天内发生的重大地震。
+在下面的代码中，每个热度点在所有缩放级别上都有10个像素的半径。 为了确保更好的用户体验，热度地图位于标签层下方。 标签保持清晰可见。 本示例中的数据来自 [USGS 地震危险计划](https://earthquake.usgs.gov/)。 它适用于过去30天内发生的重大地震。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>简单热度地图层</a>。
+<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>简单热度地图层</a>。
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>自定义热度地图层
@@ -83,13 +83,13 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 - `weight`：默认情况下，所有数据点的权重都为1，并且具有相同的加权。 权重选项用作乘数，你可以将其设置为数字或表达式。 如果将数字设置为权重，则这是将每个数据点置于地图上两次的等效性。 例如，如果权重为2，则该密度会加倍。 将权重选项设置为一个数字，以类似于使用强度选项的方式来呈现热度地图。 
 
   但是，如果使用表达式，则每个数据点的权重可以基于每个数据点的属性。 例如，假设每个数据点都表示地震。 数量级值是每个地震数据点的重要指标。 地震始终发生，但大多数情况下都是很低的，而且没有注意到。 使用表达式中的 "量值" 将权重分配给每个数据点。 通过使用数量级值分配权重，可以更好地表示热图中地震的重要性。
-- `source`和 `source-layer` ：使你能够更新数据源。
+- `source` 和 `source-layer` ：使你能够更新数据源。
 
 以下工具用于测试不同的热度地图层选项。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>热度地图层选项</a>。
+<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>热度地图层选项</a>。
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>一致的 zoomable 热度地图
@@ -102,7 +102,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="一致的 zoomable 热度地图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="一致的 zoomable 热度地图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致 zoomable 热度地图</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -120,10 +120,10 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)
+> [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

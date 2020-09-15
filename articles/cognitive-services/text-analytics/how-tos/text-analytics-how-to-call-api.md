@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fec85a03b74155b5b18145bfaddc5d326c910bc9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561025"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087297"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -59,10 +59,10 @@ ms.locfileid: "84561025"
 
    资源终结点如下所示（你的区域可能有所不同）：
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
 
 2. 设置三个请求标头：
 

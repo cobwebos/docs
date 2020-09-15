@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70080601"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090629"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
 
-性能诊断工具可帮助你解决可能会影响 Windows 或 Linux 虚拟机（VM）的性能问题。 支持故障排除方案包括快速检查已知问题和最佳做法，以及涉及到 VM 性能缓慢，或者 CPU、磁盘空间或内存使用率过高的复杂问题。
+性能诊断工具可帮助你解决可能会影响 Windows 或 Linux 虚拟机 (VM) 的性能问题。 支持故障排除方案包括快速检查已知问题和最佳做法，以及涉及到 VM 性能缓慢，或者 CPU、磁盘空间或内存使用率过高的复杂问题。
 
 可以直接从 Azure 门户运行性能诊断，在其中还可以查看见解，以及有关各种日志、丰富配置和诊断数据的报告。 我们建议在联系 Microsoft 支持部门之前，先运行性能诊断并查看见解和诊断数据。
 
@@ -33,18 +33,35 @@ ms.locfileid: "70080601"
 
 ### <a name="windows"></a>Windows
 
-Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Windows Server 2016、Windows Server 2012、Windows Server 2012 Datacenter、Windows Server 2012 R2、Windows Server 2012 R2 Datacenter、Windows Server 2012 R2 Standard、Windows Server 2012 Standard、Windows Server 2008 R2、Windows Server 2008 R2 Datacenter、Windows Server 2008 R2 Enterprise、Windows Server 2008 R2 Foundation、Windows Server 2008 R2 SP1、Windows Server 2008 R2 Standard。
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6.10 [ `*` ]，7.3，7.6，7.5 （Oracle 数据库-Ee 13.8 marketplace 映像），CentOS 6.5 [ `*` ]，7.6，RHEL 7.2，7.5，8.0 [ `*` ]，Ubuntu 14.04，16.04，18.04，Debian 8，9，10 [ `*` ]，SLES 12 SP4 [ `*` ]
+- 目前支持以下分发版：
+
+    | 分发               | 版本                                         |
+    |----------------------------|-------------------------------------------------|
+    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.6，7。5 |
+    | CentOS                     | 6.5 [ `*` ]，7。6                                    |
+    | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
+    | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
+    | Debian                     | 8、9、10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
+    |                            |                                                   |
 
 >[!Note]
->[ `*` ] 请参阅[已知问题](how-to-use-perfinsights-linux.md#known-issues)
+>[ `*` ] 请参阅 [已知问题](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在 VM 上安装并运行性能诊断
 
-性能诊断会安装一个 VM 扩展，该扩展可运行名为 PerfInsights 的诊断工具。 PerfInsights 适用于[Windows](https://aka.ms/perfinsights)和[Linux](https://aka.ms/perfinsightslinux)。 若要安装并运行性能诊断，请执行以下步骤：
+性能诊断会安装一个 VM 扩展，该扩展可运行名为 PerfInsights 的诊断工具。 PerfInsights 适用于 [Windows](https://aka.ms/perfinsights) 和 [Linux](https://aka.ms/perfinsightslinux)。 若要安装并运行性能诊断，请执行以下步骤：
 
 1. 在左侧的命令列中，选择“虚拟机”。****
 1. 在 VM 名称列表中，选择要对其运行诊断的 VM。
@@ -74,10 +91,10 @@ Oracle Linux Server 6.10 [ `*` ]，7.3，7.6，7.5 （Oracle 数据库-Ee 13.8 m
 Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择一个分析方案。 选择分析所需的持续时间和跟踪选项。
 
 * **快速性能分析**  
-    检查已知问题、分析最佳做法并收集诊断数据。 此分析需要几分钟的时间来运行。 了解更多[Windows](https://aka.ms/perfinsights/quick)或[Linux](https://aka.ms/perfinsightslinux/quick)
+    检查已知问题、分析最佳做法并收集诊断数据。 此分析需要几分钟的时间来运行。 了解更多 [Windows](https://aka.ms/perfinsights/quick) 或 [Linux](https://aka.ms/perfinsightslinux/quick)
 
 * **性能分析**  
-    包括快速性能分析中的所有检查，并监视资源消耗量较高的情况。 使用此版本可以排查一般性的性能问题，例如 CPU、内存和磁盘使用率较高的情况。 此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 了解更多[Windows](https://aka.ms/perfinsights/vmslow)或[Linux](https://aka.ms/perfinsightslinux/vmslow)
+    包括快速性能分析中的所有检查，并监视资源消耗量较高的情况。 使用此版本可以排查一般性的性能问题，例如 CPU、内存和磁盘使用率较高的情况。 此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 了解更多 [Windows](https://aka.ms/perfinsights/vmslow) 或 [Linux](https://aka.ms/perfinsightslinux/vmslow)
 
 * **高级性能分析**`*`  
     包括性能分析中的所有检查，并收集下一部分中所列的一项或多项跟踪。 使用此方案可以排查需要更多跟踪的复杂问题。 长时间运行此方案会增大诊断输出的整体大小，具体输出大小取决于 VM 大小以及选择的跟踪选项。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/advanced)
@@ -109,7 +126,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 分析完成后，以下各项将上传到 Azure 表以及存储帐户中指定的二进制大型对象 (BLOB) 容器：
 
 * 有关运行的所有见解和信息
-* Windows 上的输出压缩（.zip）文件（名为**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ）和包含日志文件的 Linux 上的 tar 球文件（名**PerformanceDiagnostics_yyyy dd_hh gz** ）
+* 在 Windows 上名为 **PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ) 的输出压缩 ( .zip) 文件 (和包含日志文件的 Linux 上名为 (PerformanceDiagnostics_yyyy dd_hh ) **gz** 的 tar 球文件
 * 一份 HTML 报告
 
 上传后，Azure 门户中会列出新的诊断报告。
@@ -146,7 +163,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>下载并查看完整的性能诊断报告
 
-可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。**** 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅[Windows](how-to-use-perfinsights.md#review-the-diagnostics-report)或[Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
+可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。**** 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅 [Windows](how-to-use-perfinsights.md#review-the-diagnostics-report) 或 [Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
 
 ## <a name="manage-performance-diagnostics-reports"></a>管理性能诊断报告
 
@@ -174,7 +191,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。**** 只会将最新的报告提供给支持工程师。
 
 **选项 2：** 为诊断报告压缩文件生成共享访问签名  
-可以使用共享访问签名来共享报告压缩文件的链接。 要实现这一点，请执行下列操作：
+可以使用共享访问签名来共享报告压缩文件的链接。 为此，请按照下列步骤进行操作：
 
 1. 在 Azure 门户中，浏览到存储了诊断数据的存储帐户。
 1. 在“Blob 服务”部分选择“Blob”。********
@@ -201,4 +218,4 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 查看性能诊断见解和报告后，如果仍不能确定问题的原因并需要更多的帮助，可以向 Microsoft 客户支持部门开具支持票证。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 " **获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

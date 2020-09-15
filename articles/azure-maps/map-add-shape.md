@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 58262be34a716a04e9779454a30e845d691f3a6a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0d145c08962f736fa0098b340e954b4b22a21946
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037705"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090731"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>向地图添加多边形层
 
-本文介绍如何使用多边形层渲染地图上的 `Polygon` 和 `MultiPolygon` 特征几何图形区域。 Azure Maps Web SDK 还支持按[扩展 GeoJSON 架构](extend-geojson.md#circle)中定义的方式创建 Circle 几何图形。 在地图上渲染时，这些圆将转换为多边形。 使用 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 类进行包装时，可轻松更新所有特征几何图形。
+本文介绍如何使用多边形层渲染地图上的 `Polygon` 和 `MultiPolygon` 特征几何图形区域。 Azure Maps Web SDK 还支持按[扩展 GeoJSON 架构](extend-geojson.md#circle)中定义的方式创建 Circle 几何图形。 在地图上渲染时，这些圆将转换为多边形。 使用 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类进行包装时，可轻松更新所有特征几何图形。
 
 ## <a name="use-a-polygon-layer"></a>使用多边形层 
 
-将多边形层连接到数据源并加载到地图上时，它将渲染具有 `Polygon` 和 `MultiPolygon` 特征的区域。 要创建多边形，请将其添加到数据源，并使用多边形层通过 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 类对其进行渲染。
+将多边形层连接到数据源并加载到地图上时，它将渲染具有 `Polygon` 和 `MultiPolygon` 特征的区域。 要创建多边形，请将其添加到数据源，并使用多边形层通过 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer) 类对其进行渲染。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 <br/>
 
-<iframe height='500' scrolling='no' title='向地图添加多边形 ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a>（向地图添加多边形）。
+<iframe height='500' scrolling='no' title='向地图添加多边形 ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a>（向地图添加多边形）。
 </iframe>
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>结合使用多边形和线条层
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 <br/>
 
-<iframe height='500' scrolling='no' title='用于添加多边形的多边形和线条层' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 中有关通过 Azure Maps 创建<a href='https://codepen.io/azuremaps/pen/aRyEPy/'>用于添加多边形的多边形和线层</a>的文章 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
+<iframe height='500' scrolling='no' title='用于添加多边形的多边形和线条层' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 中有关通过 Azure Maps 创建<a href='https://codepen.io/azuremaps/pen/aRyEPy/'>用于添加多边形的多边形和线层</a>的文章 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>使用图案填充多边形
@@ -69,7 +69,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="多边形填充图案" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="多边形填充图案" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>Polygon fill pattern</a>（多边形填充图案）。
 </iframe>
 
@@ -83,7 +83,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 <br/>
 
-<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a>。
+<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a>。
 </iframe>
 
 <a id="addACircle"></a>
@@ -110,12 +110,12 @@ Azure Maps Web SDK 将这些 `Point` 特征转换为 `Polygon` 特征。 然后�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='向地图添加圆圈' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a>（向地图添加圆圈）。
+<iframe height='500' scrolling='no' title='向地图添加圆圈' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a>（向地图添加圆圈）。
 </iframe>
 
 ## <a name="make-a-geometry-easy-to-update"></a>简化几何图形更新
 
-`Shape` 类包装[几何图形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，以便可以轻松更新和维护这些特征。 要实例化形状变量，请将一个几何图形或一组属性传递给形状构造函数。
+`Shape` 类包装[几何图形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry)或[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature)，以便可以轻松更新和维护这些特征。 要实例化形状变量，请将一个几何图形或一组属性传递给形状构造函数。
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -129,7 +129,7 @@ var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='更新形状属性' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 中有关通过 Azure Maps <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>更新形状属性</a>的文章 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
+<iframe height='500' scrolling='no' title='更新形状属性' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 中有关通过 Azure Maps <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>更新形状属性</a>的文章 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -137,13 +137,13 @@ var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [多边形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
+> [多边形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)
+> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
 
 > [!div class="nextstepaction"]
-> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 07e8f1d0cf173a8ab41f8feb105743a7559cdd2f
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005785"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089745"
 ---
 # <a name="publisher-verification"></a>发行者验证
 
@@ -33,7 +33,7 @@ ms.locfileid: "90005785"
 
 - 提升品牌形象-“已验证”徽章会出现在 Azure AD [同意提示](application-consent-experience.md)、企业应用页以及最终用户和管理员使用的其他 UX 设计面上。 
 
-- 推动企业更顺畅地采用- 管理员可以配置新的用户同意策略，发布者验证状态将是主要的策略标准之一。 
+- **更流畅的企业采用**-管理员可以配置 [用户同意策略](../manage-apps/configure-user-consent.md)，并将发行者验证状态设置为主要策略条件之一。 
 
 - 改进风险评估- 发布者验证将作为 Microsoft 检测“有风险的”的同意请求的一个信号。 
 
@@ -52,6 +52,8 @@ ms.locfileid: "90005785"
 
     -  在合作伙伴中心，该用户必须拥有以下[角色](/partner-center/permissions-overview)之一。MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。
     
+-  执行验证的用户必须使用 [多重身份验证](../authentication/howto-mfa-getstarted.md)登录。
+
 -  发布者同意[面向开发人员的 Microsoft 标识平台使用条款](/legal/microsoft-identity-platform/terms-of-use)。
 
 已经满足这些先决条件的开发人员可以在几分钟内完成验证。 如果未满足要求，则可以免费进行设置。 

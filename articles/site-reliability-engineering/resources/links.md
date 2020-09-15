@@ -2,21 +2,21 @@
 title: SRE 链接集合和摘要 |Microsoft Docs
 description: 利用这些资源扩展你对站点可靠性工程的了解
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: becbc3e59663c1898cc4e635f61f63d54360a6f5
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471245"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086532"
 ---
 # <a name="sources-for-site-reliability-engineering-information"></a>站点可靠性工程信息源
 
-Web 上有许多站点可靠性工程（SRE）信息源。
+站点可靠性工程中有许多用于 (SRE) 信息的来源。
 
 ## <a name="curated-link-lists"></a>特选链接列表
 
@@ -32,7 +32,7 @@ Web 上有许多站点可靠性工程（SRE）信息源。
 
 ## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>站点可靠性工程师感兴趣的每周摘要
 
-* [Sre](https://sreweekly.com)每周-"Sre 每周是一项新闻稿，旨在确保尽可能一致地使用站点或服务。"
-* [Devops 每](https://www.devopsweekly.com)周-"Devops 新闻的每周切片，通过 Gareth Rushgrove。"
+* [Sre](https://sreweekly.com) 每周-"Sre 每周是一项新闻稿，旨在确保尽可能一致地使用站点或服务。"
+* [Devops 每](https://www.devopsweekly.com) 周-"Devops 新闻的每周切片，通过 Gareth Rushgrove。"
 * [本周 DevOps](https://thisweekindevops.com) -"DevOps 新闻，无夸大宣传"。
 * [KubeWeekly](https://kubeweekly.io) -"Kubernetes 的所有项目的每周新闻速递"。

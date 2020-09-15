@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9247d6bed8f4ca6ec5e51d0d64eb4fe94dc89af7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009046"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089490"
 ---
 # <a name="clustering-point-data"></a>聚类点数据
 
@@ -92,7 +92,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 当鼠标事件在包含聚类数据点的层上发生时，聚类数据点会作为 GeoJSON 点特征对象返回给事件。 此点特征具有以下属性：
 
-| 属性名称             | 类型    | 描述   |
+| 属性名称             | 类型    | 说明   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | 指示特征是否表示聚类。 |
 | `cluster_id`              | 字符串  | 可与数据源 `getClusterExpansionZoom`、`getClusterChildren` 和 `getClusterLeaves` 方法结合使用的群集唯一 ID。 |
@@ -132,13 +132,13 @@ var datasource = new atlas.source.DataSource(null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [DataSource 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [DataSource 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
+> [DataSourceOptions 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [atlas.math 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [atlas.math 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)
 
 请参阅向应用添加功能的代码示例：
 

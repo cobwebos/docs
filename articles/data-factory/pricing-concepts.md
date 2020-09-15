@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: 5110f5fd09e360d1435e26312dd2ee2db6891cbb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949944"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087178"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -130,9 +130,13 @@ ms.locfileid: "88949944"
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>对普通 workday 使用映射数据流调试
 
-作为一位数据工程人员，你负责设计、构建和测试每天映射数据流。 你将在早上登录 ADF UI，并为数据流启用调试模式。 调试会话的默认 TTL 为60分钟。 你一整天就会工作8小时，因此调试会话永远不会过期。 因此，一天的费用将为：
+作为数据工程人员，Sam 负责设计、构建和测试每天映射数据流。 Sam 在早上登录到 ADF UI，并为数据流启用调试模式。 调试会话的默认 TTL 为60分钟。 Sam 在一整天内工作8小时，因此调试会话永不过期。 因此，Sam 的费用将为：
 
 **8 (小时) x 8 (计算优化内核) x $0.193 = $12.35**
+
+同时，Chris 另外，Chris 还会登录到 ADF 浏览器 UI，进行数据事件探查和 ETL 设计工作。 丽丽在 ADF 中的所有日子都不起作用。 丽丽只需在同一时间段内使用数据流调试程序1小时，在同一天内使用 Sam。 这些费用是丽丽为调试使用而产生的费用：
+
+**1 (小时) x 8 (常规用途核心) x $0.274 = $2.19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>在 blob 存储区中转换数据和映射数据流
 

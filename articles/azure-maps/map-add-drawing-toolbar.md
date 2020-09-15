@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 141ae90805e81d7269a12dcf465389d6a9dcaf55
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a156896faff4262d9b8bd3cef10817a5b919749d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286969"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086142"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>将绘图工具工具栏添加到地图
 
-本文介绍如何使用 "绘图工具" 模块，并在地图上显示 "绘图" 工具栏。 [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)控件将绘图工具栏添加到地图上。 您将了解如何创建仅包含一个和所有绘图工具的地图，以及如何在绘图管理器中自定义绘图形状的呈现。
+本文介绍如何使用 "绘图工具" 模块，并在地图上显示 "绘图" 工具栏。 [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)控件将绘图工具栏添加到地图上。 您将了解如何创建仅包含一个和所有绘图工具的地图，以及如何在绘图管理器中自定义绘图形状的呈现。
 
 ## <a name="add-drawing-toolbar"></a>添加绘图工具栏
 
@@ -38,8 +38,8 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="添加绘图工具栏" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图" 工具栏</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="添加绘图工具栏" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图" 工具栏</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 
@@ -62,8 +62,8 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="添加多边形绘图工具" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "通过 Azure Maps （）<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>添加多边形绘图工具</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="添加多边形绘图工具" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+请参阅在 CodePen 上 Azure Maps () 中<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>添加多边形绘图工具</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -122,8 +122,8 @@ drawingManager.setOptions({
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="更改绘制呈现样式" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>更改绘制呈现样式</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="更改绘制呈现样式" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>更改绘制呈现 Azure Maps 样式</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 
@@ -143,10 +143,10 @@ drawingManager.setOptions({
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [绘图工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [绘图工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
 
 > [!div class="nextstepaction"]
-> [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)

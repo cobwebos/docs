@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82a6cfc817cefb78c3239349d9ad7ff839a1ecbd
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754188"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090204"
 ---
 # <a name="supported-devices"></a>支持的设备
 
@@ -33,7 +33,7 @@ ms.locfileid: "80754188"
 建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
 
 * Microsoft Edge（最新版本）
-* Internet Explorer 11
+* Internet Explorer 11 (最终支持8月17日 2021-有关详细信息，请参阅 [博客文章](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666)) 
 * Safari（最新版本，仅限 Mac）
 * Chrome（最新版本）
 * Firefox（最新版本）

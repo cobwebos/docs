@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: c332b960caf7707953069c5252219ca6c51761a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007547"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088317"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
@@ -39,10 +39,10 @@ ms.locfileid: "90007547"
     1. 如果 MPN 帐户已存在，则会识别此帐户，并将你添加到该帐户 
     1. 导航到[“合作伙伴配置文件”页面](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)，该页面上列出了 MPN ID 和主要帐户联系人
 
-- 我不知道谁是我的 Azure AD 全局管理员（也称为公司管理员或租户管理员），如何找到他们？应用管理员呢？或其他管理员角色呢？
+- **我不知道 Azure AD 全局管理员 (也称为公司管理员或租户管理员) ，如何查找它们呢？应用程序管理员或云应用程序管理员怎么办？**
     1. 使用组织的主租户中的用户帐户登录到 [Azure AD 门户](https://aad.portal.azure.com)
     1. 导航到[“角色管理”](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)
-    1. 单击“全局管理员”或所需的管理员角色
+    1. 单击所需的管理员角色
     1. 此时会显示分配了该角色的用户列表
 
 - 我不知道谁是我的 MPN 帐户管理员。转到 [MPN 用户管理页面](https://partner.microsoft.com/pcv/users) 并筛选用户列表，以查看具有各种管理员角色的用户。
@@ -51,22 +51,25 @@ ms.locfileid: "90007547"
     1. 转到[合作伙伴配置文件](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)并验证： 
         - MPN ID 正确无误。 
         - 未显示错误或“挂起的操作”，并且“法律业务配置文件”和“合作伙伴信息”下的验证状态均显示为“已授权”或“成功”。
-    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。
-    1. 转到[“MPN 用户管理”页](https://partner.microsoft.com/pcv/users)，确认登录的用户是全局管理员、MPN 管理员或帐户管理员。
+    1. 转到[“MPN 租户管理”页](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)，确认该应用所注册的租户，并确认登录所使用的用户帐号位于关联租户列表中。 如果需要添加其他租户，请按照 [此处](https://docs.microsoft.com/partner-center/multi-tenant-account)的说明进行操作。 请注意，你添加的任何租户的所有全局管理员都将被授予对你的合作伙伴中心帐户的全局管理员权限。
+    1. 请在 [MPN 用户管理页](https://partner.microsoft.com/pcv/users) 上，确认你登录的用户是全局管理员、MPN 管理员或帐户管理员。如果需要将用户添加到合作伙伴中心中的角色，请按照 [此处](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)的说明进行操作。
 
 - 当我登录到 Azure AD 门户时，我看不到任何已注册的应用程序。**为什么？** 
-    应用注册可能是使用其他用户帐户或在其他租户中创建的。 确保在创建应用注册的租户中使用正确的帐户登录。
+    你的应用注册可能是使用此租户中的其他用户帐户创建的，也可能是个人/使用者帐户或其他租户。 确保在创建应用注册的租户中使用正确的帐户登录。
 
-- 我如何知道谁是 Azure AD 中应用注册的所有者？ 
-    登录注册应用的租户后，导航到“应用注册”边栏选项卡，单击应用，然后单击“所有者”。
+- **我收到了与多重身份验证相关的错误。我该怎么办？** 
+    请确保已启用 [多因素身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) ，并且在此方案中登录的用户需要该身份验证。 例如，MFA 可以是：
+    - 你正在登录的用户始终需要
+    - [Azure 管理是必需的](../conditional-access/howto-conditional-access-policy-azure-management.md)。
+    - [需要为](../conditional-access/howto-conditional-access-policy-admin-mfa.md) 你用来登录的管理员类型。
 
 ## <a name="making-microsoft-graph-api-calls"></a>进行 Microsoft Graph API 调用 
 
 如果遇到问题，但无法根据在 UI 中看到的内容理解出现问题的原因，可能有帮助的做法是，使用 Microsoft Graph 调用执行可在应用注册门户中执行的相同操作来进行进一步的故障排除。
 
-要实现这些请求，最简单的方法是使用 [Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。 还可以考虑使用其他选项，例如，使用 [Postman](https://www.postman.com/)，或使用 PowerShell 来[调用 Web 请求](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)。  
+要实现这些请求，最简单的方法是使用 [Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。 还可以考虑使用其他选项，例如，使用 [Postman](https://www.postman.com/)，或使用 PowerShell 来[调用 Web 请求](/powershell/module/microsoft.powershell.utility/invoke-webrequest)。  
 
-可以使用 Microsoft Graph 来设置和取消设置应用的已验证发布者，并在执行其中一个操作后查看结果。 在与应用注册相对应的[应用程序](/graph/api/resources/application?view=graph-rest-beta)对象和从该应用实例化的任何[服务主体](/graph/api/resources/serviceprincipal?view=graph-rest-beta)上都可以看到该结果。 有关这些对象之间的关系的详细信息，请参阅：[Azure Active Directory 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。  
+可以使用 Microsoft Graph 来设置和取消设置应用的已验证发布者，并在执行其中一个操作后查看结果。 在与应用注册相对应的[应用程序](/graph/api/resources/application)对象和从该应用实例化的任何[服务主体](/graph/api/resources/serviceprincipal)上都可以看到该结果。 有关这些对象之间的关系的详细信息，请参阅：[Azure Active Directory 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。  
 
 下面是一些有用请求的示例：  
 
@@ -105,7 +108,7 @@ POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/unsetVerifiedPublisher
 ### <a name="get-verified-publisher-info-from-application"></a>从应用程序获取已验证的发布者 
  
 ```
-GET https://graph.microsoft.com/beta/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
+GET https://graph.microsoft.com/v1.0/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
 
 HTTP/1.1 200 OK 
 
@@ -124,7 +127,7 @@ HTTP/1.1 200 OK
 
 ### <a name="get-verified-publisher-info-from-service-principal"></a>从服务主体获取已验证的发布者 
 ```
-GET https://graph.microsoft.com/beta/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
+GET https://graph.microsoft.com/v1.0/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
 
 HTTP/1.1 200 OK 
 
@@ -183,11 +186,7 @@ Azure AD B2C 租户不支持此功能。
 
 ### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
 
-目标应用程序 (<AppId>) 必须具有发布者域集。 设置发布者域，然后重试。 
-
-### <a name="publisherdomainisnotdnsverified"></a>PublisherDomainIsNotDNSVerified  
-
-目标应用程序的发布者域 (<publisherDomain>) 不是此租户中已验证的域。 使用 DNS 验证来验证租户域，然后重试。 
+目标应用程序 (\<AppId\>) 必须具有发布服务器域集。 设置发布者域，然后重试。
 
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 

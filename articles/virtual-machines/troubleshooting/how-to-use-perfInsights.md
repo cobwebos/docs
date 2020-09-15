@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526633"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088555"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>如何在 Azure 中使用 PerfInsights
 
@@ -57,7 +57,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ### <a name="benchmarking"></a>基准测试
 
-此方案针对所有附加到 VM 的驱动器运行[Diskspd](https://github.com/Microsoft/diskspd)基准测试（IOPS 和 MBPS）。 
+此方案对附加到 VM 的所有驱动器运行 [Diskspd](https://github.com/Microsoft/diskspd) 基准测试 (IOPS 和 MBPS) 。 
 
 > [!Note]
 > 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
@@ -71,7 +71,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 此方案运行特殊的性能计数器捕获和网络跟踪。 捕获包括所有的“服务器消息块 (SMB) 客户端共享”计数器。 以下是一些关键的 SMB 客户端共享性能计数器，属于捕获的一部分：
 
-| **Type**     | **SMB 客户端共享计数器** |
+| **类型**     | **SMB 客户端共享计数器** |
 |--------------|-------------------------------|
 | IOPS         | 数据请求/秒             |
 |              | 读取请求/秒             |
@@ -80,8 +80,8 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 |              | 平均秒数/读取操作                 |
 |              | 平均秒数/写入操作                |
 | IO 大小      | 平均字节数/数据请求       |
-|              | 平均字节数/读取               |
-|              | 平均字节数/写入              |
+|              | 页的Bytes/Read               |
+|              | 页的Bytes/Write              |
 | 吞吐量   | 数据字节/秒                |
 |              | 读取字节/秒                |
 |              | 写入字节/秒               |
@@ -165,7 +165,15 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 -  此工具必须在有性能问题的 VM 上运行。 
 
--  支持以下操作系统：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1 和 Windows 10。
+-  支持下列操作系统：
+   * Windows Server 2019
+   * Windows Server 2016
+   * Windows Server 2012 R2
+   * Windows Server 2012
+   * Windows Server 2008 R2
+   * Windows 10
+   * Windows 8.1
+   * Windows 8
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>在生产 VM 上运行该工具时可能会出现的问题
 
@@ -190,7 +198,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 1. 下载 [PerfInsights.zip](https://aka.ms/perfinsightsdownload)。
 
-2. 取消阻止 PerfInsights.zip 文件。 为此，请右键单击 PerfInsights.zip 文件，并选择“属性”。**** 在 "**常规**" 选项卡中，选择 "**取消阻止**"，然后选择 **"确定"**。 这可以确保运行工具时不会出现其他任何安全提示。  
+2. 取消阻止 PerfInsights.zip 文件。 为此，请右键单击 PerfInsights.zip 文件，并选择“属性”。**** 在 " **常规** " 选项卡中，选择 " **取消阻止**"，然后选择 **"确定"**。 这可以确保运行工具时不会出现其他任何安全提示。  
 
     ![PerfInsights 的“属性”屏幕截图，其中突出显示了“解除锁定”](media/how-to-use-perfInsights/pi-unlock-file.png)
 
@@ -265,7 +273,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 “磁盘映射”和“卷映射”部分描述了逻辑卷与物理磁盘的相互关系。********
 
-物理磁盘透视图（“磁盘映射”）中的表格显示了磁盘上运行的所有逻辑卷。 在以下示例中， **PhysicalDrive2**运行在多个分区（J 和 H）上创建的两个逻辑卷：
+物理磁盘透视图（“磁盘映射”）中的表格显示了磁盘上运行的所有逻辑卷。 在以下示例中， **PhysicalDrive2** 运行 (J 和 H) 在多个分区上创建的两个逻辑卷：
 
 ![磁盘选项卡的屏幕截图](media/how-to-use-perfInsights/pi-disk-tab.png)
 
@@ -281,7 +289,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 此部分包含“结果”选项卡，及其对应于 VM 上托管的每个 SQL Server 实例的其他选项卡。****
 
-"**发现**" 选项卡包含找到的所有 SQL 相关性能问题的列表以及建议。
+" **发现** " 选项卡包含找到的所有 SQL 相关性能问题的列表以及建议。
 
 以下示例中显示了 **PhysicalDrive0**（运行 C 驱动器）。 之所以显示此项，是因为 **modeldev** 和 **modellog** 文件位于 C 驱动器上，并且属于不同的类型（例如，一个为数据文件，一个为事务日志）。
 

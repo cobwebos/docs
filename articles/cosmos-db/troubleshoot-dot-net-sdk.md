@@ -3,18 +3,18 @@ title: 诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 description: 通过客户端日志记录等功能及其他第三方工具来识别、诊断和排查在使用 .NET SDK 时出现的 Azure Cosmos DB 问题。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 06/16/2020
+ms.date: 09/12/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bc5af781b86ef559abaf33b0cb027ef14adb4262
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d7ed48354b3666a3ec544ffb66724bc605041c90
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021895"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086981"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 
@@ -28,6 +28,7 @@ ms.locfileid: "89021895"
 .NET SDK 提供了客户端逻辑表示，以用于访问 Azure Cosmos DB SQL API。 本文介绍了在遇到任何问题时可以提供帮助的工具和方法。
 
 ## <a name="checklist-for-troubleshooting-issues"></a>问题排查清单
+
 在将应用程序转移到生产环境之前，请考虑根据以下清单进行检查。 使用该清单有助于防止出现多个常见问题。 出现问题时可以快速诊断：
 
 *    使用最新的 [SDK](sql-api-sdk-dotnet-standard.md)。 不要将预览版 SDK 用于生产。 这样就可以避免遇到已更正的已知问题。
@@ -99,10 +100,15 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
     * 启用[现有虚拟机上的加速网络](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)。
     * 考虑使用[更高端的虚拟机](../virtual-machines/windows/sizes.md)。
 
-### <a name="slow-query-performance"></a>查询性能较低
-[查询指标](sql-api-query-metrics.md)有助于确定查询在何处花费的时间最多。 在查询指标中，可以查看查询在客户端与后端上花费的时间。
+### <a name="common-query-issues"></a>常见查询问题
+
+[查询指标](sql-api-query-metrics.md)有助于确定查询在何处花费的时间最多。 在查询指标中，可以查看查询在客户端与后端上花费的时间。 详细了解如何 [排查查询性能问题](troubleshoot-query-performance.md)。
+
 * 如果后端查询的返回速度较快，并将大量的时间花费在客户端上，请检查计算机上的负载。 可能的原因是资源不足，SDK 正在等待资源可用于处理响应。
-* 如果后端查询速度较慢，请尝试[优化查询](optimize-cost-queries.md)，并查看当前的[索引策略](index-overview.md) 
+* 如果后端查询速度较慢，请尝试 [优化查询](troubleshoot-query-performance.md) ，并查看当前的 [索引策略](index-overview.md)
+
+    > [!NOTE]
+    > 为获得提升的性能，建议使用 Windows 64 位主机处理。 SQL SDK 包含一个本机 ServiceInterop.dll，用于在本地分析和优化查询。 仅 Windows x64 平台支持 ServiceInterop.dll。 对于 ServiceInterop.dll 在其中不可用的 Linux 平台及其他不受支持的平台，将对网关进行额外的网络调用以获取优化的查询。
 
 ## <a name="next-steps"></a>后续步骤
 

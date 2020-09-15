@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279578"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087003"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
 
@@ -41,7 +41,7 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 
 下图显示了连接到一个林（尽管支持多个林）的预配引擎的高级体系结构。 此体系结构展示各组件之间的相互交互。
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![关系图显示连接目录和 Azure AD Connect 设置引擎如何交互，包括 SQL 数据库中的连接器空间和元节组件。 ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，可参阅 [Azure AD Connect 同步：了解体系结构](./concept-azure-ad-connect-sync-architecture.md)。
 

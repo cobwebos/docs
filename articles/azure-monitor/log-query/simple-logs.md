@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
-ms.openlocfilehash: 7bdb0ae813600f53df44ee1a61a4cbbb56bb0bfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4926e18aa6b00fe36608843ea5253903ace774e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067496"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089102"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Monitor（预览版）中的简单日志体验
 Azure Monitor 提供了使用 KQL 语言创建[日志查询](log-query-overview.md)的[丰富体验](get-started-portal.md)。 但是，你可能不需要 KQL 的全部功能，并且更喜欢符合基本查询要求的简化体验。 简单日志体验允许你创建基本查询，无需直接与 KQL 交互。 当你需要更复杂的查询时，也可以将“简单日志”用作 KQL 的学习工具。
@@ -26,11 +26,11 @@ Azure Monitor 提供了使用 KQL 语言创建[日志查询](log-query-overview.
 ## <a name="using-simple-logs"></a>使用简单日志
 使用[配置为在 Log Analytics 工作区中收集日志的诊断设置](../platform/resource-logs.md#send-to-azure-storage)导航到 Azure 订阅中的任何 Cosmos DB 或 Key Vault。 单击“监视”菜单中的“日志”，打开简单日志体验。
 
-![菜单](media/simple-logs/menu.png)
+![屏幕截图显示选定了日志的 "监视" 菜单。](media/simple-logs/menu.png)
 
 选择字段和**运算符**并指定要比较的值。 单击“+”并指定“And”/“Or”以添加其他条件。
 
-![条件](media/simple-logs/criteria.png)
+![屏幕截图显示在 "日志" 窗格中选择了简单日志的搜索。](media/simple-logs/criteria.png)
 
 单击“运行”以查看查询结果。
 

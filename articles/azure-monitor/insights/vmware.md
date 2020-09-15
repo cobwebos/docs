@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322901"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090170"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -66,7 +66,7 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
 
 1. 在 Azure 门户中，针对 `VMware_CL` 执行日志查询。 Azure Monitor 收集 syslog 数据时，它将保留 syslog 格式。 在该门户中，将捕获某些特定字段，如 *Hostname* 和 *ProcessName*。  
 
-    ![type](./media/vmware/type.png)  
+    ![屏幕截图显示了类型 = VMware_CL 的日志查询，其中包含带时间戳的结果。](./media/vmware/type.png)  
 
     如果查看的日志搜索结果类似于上面的图像，则要设置使用 VMware 监视解决方案仪表板。  
 
@@ -75,7 +75,7 @@ VMware 监视解决方案使用已启用的适用于 Linux 的 Log Analytics 代
 
 下表显示数据收集方法以及有关如何收集数据的其他详细信息。
 
-| 平台 | 适用于 Linux 的 Log Analytics 代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 适用于 Linux 的 Log Analytics 代理 | System Center Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |每隔 3 分钟 |
 
@@ -105,7 +105,7 @@ VMware 监视解决方案使用已启用的适用于 Linux 的 Log Analytics 代
 ## <a name="vmware-monitoring-solution-overview"></a>VMware 监视解决方案概述
 VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高级视图。 单击该磁贴时，将进入仪表板视图。
 
-![磁贴](./media/vmware/tile.png)
+![屏幕截图显示 VMware 磁贴，显示九个故障。](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>导航仪表板视图
 在“VMware”  仪表板视图中，边栏选项卡的组织方式如下：
@@ -147,13 +147,13 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 #### <a name="common-log-queries"></a>常见日志查询
 该解决方案包括可帮助你管理 ESXi 主机的其他有用查询，如高存储空间、存储延迟和路径故障。
 
-![查询](./media/vmware/queries.png)
+![屏幕截图显示建议的搜索，它们是有用的存储查询。](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>保存查询
 保存日志查询是 Azure Monitor 中的标准功能，可帮助你保留认为有用的任何查询。 创建有用的查询后，单击“收藏夹”  将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
-![DockerDashboardView](./media/vmware/dockerdashboardview.png)
+![屏幕截图显示带有 "撤消"、"导出"、"警报"、"保存"、"收藏夹" 和 "历史记录" 图标的标有 "日志搜索" 的](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>从查询中创建警报
 创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](../platform/alerts-overview.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) 博客文章。

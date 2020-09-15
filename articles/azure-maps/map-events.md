@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e1cce536a9ec498304cbbc591fc56a0ee1b21b13
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036435"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087263"
 ---
 # <a name="interact-with-the-map"></a>与地图交互
 
@@ -26,7 +26,7 @@ ms.locfileid: "88036435"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='与地图交互 - 鼠标事件' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>Interacting with the map - mouse events</a>（与地图交互 - 鼠标事件）。
+<iframe height='600' scrolling='no' title='与地图交互 - 鼠标事件' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>Interacting with the map - mouse events</a>（与地图交互 - 鼠标事件）。
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>与地图层交互
@@ -35,16 +35,16 @@ ms.locfileid: "88036435"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='与地图交互 – 层事件' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Interacting with the map – Layer Events</a>（与地图交互 – 层事件）。
+<iframe height='600' scrolling='no' title='与地图交互 – 层事件' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Interacting with the map – Layer Events</a>（与地图交互 – 层事件）。
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>与 HTML 标记交互
 
-以下代码将 Javascript 地图事件添加到 HTML 标记。 它还突出显示了与 HTML 标记进行交互时触发的事件的名称。
+下面的代码将 JavaScript 映射事件添加到 HTML 标记。 它还突出显示了与 HTML 标记进行交互时触发的事件的名称。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='与地图交互 - HTML 标记事件' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Interacting with the map - HTML Marker events</a>（与地图交互 - HTML 标记事件）。
+<iframe height='500' scrolling='no' title='与地图交互 - HTML 标记事件' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Interacting with the map - HTML Marker events</a>（与地图交互 - HTML 标记事件）。
 </iframe>
 
 下表列出了所有受支持的地图类事件。
@@ -98,11 +98,11 @@ ms.locfileid: "88036435"
 | `sourceremoved`     | 在从地图移除 `DataSource` 或 `VectorTileSource` 时触发。|
 | `styledata`         | 在加载或更改地图的样式时触发。|
 | `styleimagemissing` | 在层尝试从不存在的图像子画面加载图像时触发 |
-| `tokenacquired`     | 在获得 AAD 访问令牌时触发。|
-| `touchcancel`       | 在地图中发生 touchcancel 事件时触发。|
-| `touchend`          | 在地图中发生 touchend 事件时触发。|
-| `touchmove`         | 在地图中发生 touchmove 事件时触发。|
-| `touchstart`        | 在地图中发生 touchstart 事件时触发。|
+| `tokenacquired`     | 获取 Azure Active Directory 访问令牌时触发。|
+| `touchcancel`       | 在 `touchcancel` 映射内发生事件时触发。|
+| `touchend`          | 在 `touchend` 映射内发生事件时触发。|
+| `touchmove`         | 在 `touchmove` 映射内发生事件时触发。|
+| `touchstart`        | 在 `touchstart` 映射内发生事件时触发。|
 | `wheel`             | 在地图中发生鼠标滚轮事件时触发。|
 | `zoom`              | 因用户交互或方法而在从一个缩放级别到另一个缩放级别的动画过渡期间反复触发。|
 | `zoomend`           | 因用户交互或方法而在地图完成从一个缩放级别过渡到另一缩放级别后触发。|

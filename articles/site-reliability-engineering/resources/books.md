@@ -2,21 +2,21 @@
 title: SRE 书籍列表 |Microsoft Docs
 description: 通过这些书籍增加对站点可靠性工程的了解
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 4a350953a5755f24c938011ae4b98e1e35e094e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1e4738d933b7bd20252f597ae9c0ea27c5e3f5c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77599036"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086583"
 ---
 # <a name="books-about-site-reliability-engineering"></a>有关站点可靠性工程的书籍
 
-有关站点可靠性工程（SRE）的更多详细信息，最佳来源是已在主题上发布的三个书籍
+有关站点可靠性工程 (SRE) 的更多详细信息，最佳来源是已在主题上发布的书籍的三个
 
 - [网站可靠性工程：Google 如何运行生产系统__](https://shop.oreilly.com/product/0636920041528.do)（称为“SRE 书籍”）
 - [网站可靠性工作簿：切实可行的 SRE 实现方法__](https://shop.oreilly.com/product/0636920132448.do)（称为“SRE 工作簿”）

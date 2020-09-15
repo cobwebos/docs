@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f90d88e49675681a7f73df838ca489a7193955b3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186106"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087854"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>使用 PowerShell 库中的 Runbook 和模块
 
@@ -39,7 +39,7 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) - 从 PowerShell 库导入自动化帐户中所有模块的最新版本。
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) - 配置 Azure 诊断和日志分析，以接收包含作业状态和作业流的 Azure 自动化日志。
    * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) - 从 Windows Azure 虚拟机复制远程文件。
-   * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - 将本地文件复制到 Azure 虚拟机。
+   * [ItemToAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) -将本地文件复制到 Azure 虚拟机。
 
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>使用 Azure 门户从 Runbook 库导入 PowerShell Runbook
 

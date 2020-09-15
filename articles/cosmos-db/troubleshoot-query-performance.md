@@ -4,16 +4,16 @@ description: 了解如何识别、诊断和排查 Azure Cosmos DB SQL 查询问�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117907"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089983"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 
@@ -26,22 +26,21 @@ ms.locfileid: "85117907"
 
 几乎可以肯定，降低查询的 RU 费用还将降低延迟。
 
-本文提供可使用 [nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) 数据集重新创建的示例。
+本文提供了可通过使用 [营养数据集](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)重新创建的示例。
 
 ## <a name="common-sdk-issues"></a>常见 SDK 问题
 
 阅读本指南之前，考虑与查询引擎无关的常见 SDK 问题将很有帮助。
 
-- 为获得最佳性能，请遵循以下[性能提示](performance-tips.md)。
-    > [!NOTE]
-    > 为获得提升的性能，建议使用 Windows 64 位主机处理。 SQL SDK 包含一个本机 ServiceInterop.dll，用于在本地分析和优化查询。 仅 Windows x64 平台支持 ServiceInterop.dll。 对于 ServiceInterop.dll 在其中不可用的 Linux 平台及其他不受支持的平台，将对网关进行额外的网络调用以获取优化的查询。
+- 遵循这些 [SDK 性能提示](performance-tips.md)。
+    - [.NET SDK 故障排除指南](troubleshoot-dot-net-sdk.md)
+    - [Java SDK 故障排除指南](troubleshoot-java-sdk-v4-sql.md)
 - SDK 允许为查询设置 `MaxItemCount`，但不能指定最小项计数。
     - 代码应处理从零到 `MaxItemCount` 的任意页大小。
-    - 页中的项数将始终小于或等于指定的 `MaxItemCount`。 但 `MaxItemCount` 只是严格意义上的最大值，结果数可能少于此数目。
 - 有时，即使未来页上包含结果，查询也可能包含空页， 其原因可能包括：
     - SDK 可能正在执行多个网络调用。
     - 查询检索文档所花费的时间可能很长。
-- 所有查询都包含一个继续标记，该标记将允许查询继续进行。 请确保完全耗尽查询。 查看 SDK 示例，并在 `FeedIterator.HasMoreResults` 上使用 `while` 循环来耗尽整个查询。
+- 所有查询都包含一个继续标记，该标记将允许查询继续进行。 请确保完全耗尽查询。 详细了解如何 [处理多个结果页](sql-query-pagination.md#handling-multiple-pages-of-results)
 
 ## <a name="get-query-metrics"></a>获取查询指标
 
@@ -476,7 +475,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 在非 Azure Cosmos DB 帐户的区域中运行的查询，比在同一区域中运行的查询的延迟更高。 例如，如果在台式机上运行代码，则延迟比从 Azure Cosmos DB 所在的同一 Azure 区域中的某个虚拟机上运行查询要高出几十或几百毫秒（或更高）。 可以轻松[在 Azure Cosmos DB 中全局分发数据](distribute-data-globally.md)，以确保将数据置于更靠近应用的位置。
 
-### <a name="increase-provisioned-throughput"></a>增大预配吞吐量
+### <a name="increase-provisioned-throughput"></a>增加预配的吞吐量
 
 在 Azure Cosmos DB 中，预配的吞吐量以请求单位 (RU) 计量。 假设某个查询消耗 5 RU 吞吐量。 如果预配 1000 RU，则每秒可以运行该查询 200 次。 如果在没有足够可用吞吐量的情况下尝试运行查询，Azure Cosmos DB 将返回 HTTP 429 错误。 任何当前核心 (SQL) API SDK 在等待一小段时间后，都将自动重试该查询。 受限制的请求需要花费更长的时间，因此增加预配的吞吐量可以改进查询延迟。 可以在 Azure 门户的“指标”边栏选项卡上观察[受限制的请求总数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
 

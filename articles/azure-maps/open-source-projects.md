@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f24a04db9317083fb47c0956174e649b5bd7ae10
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815685"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090510"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区-开源项目
 
@@ -29,13 +29,19 @@ ms.locfileid: "88815685"
 | [机器人框架-兴趣技能要点](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | 相关技能点使用 Azure Maps 与 Azure 机器人服务和机器人框架，为虚拟助手提供 POI 的相关功能。 |
 | [BotBuilder 位置](https://github.com/Microsoft/BotBuilder-Location) | 由 Bing 地图 REST 服务支持的 Microsoft Bot Framework 的开源位置选取器控件。 |
 
+<a name="open-web-sdk-modules"></a>
+
 **打开 Web SDK 模块**
 
 下面列出了扩展 Azure Maps Web SDK 功能的开源项目。
 
 | 项目名称 | 说明 |
 |-|-|
-| [Azure Maps 动画模块](https://github.com/Azure-Samples/azure-maps-animations)| 用于 Azure Maps Web SDK 的丰富动画库。 |
+| [Azure Maps 动画模块](https://github.com/Azure-Samples/azure-maps-animations) | 用于 Azure Maps Web SDK 的丰富动画库。 |
+| [Azure Maps 地理位置控制模块](https://github.com/Azure-Samples/azure-maps-geolocation-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，该控件使用浏览器的地理位置 API 在地图上查找用户。 |
+| [Azure Maps 全屏控制模块](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，用于在全屏模式下显示地图。 |
+| [Azure Maps 选择控件模块](https://github.com/Azure-Samples/azure-maps-selection-control) | 一个 Azure Maps Web SDK 模块，它提供用于在数据源中使用绘图工具或请求路由范围多边形选择数据的控件。 |
+| [Azure Maps 同步映射模块](https://github.com/Azure-Samples/azure-maps-sync-maps) | 同步两个或多个地图的照相机的 Azure Maps Web SDK 模块。 |
 | [Azure Maps Services UI 模块](https://github.com/Azure-Samples/azure-maps-services-ui) | 包装 Azure Maps REST 服务的一组 web UI 控件。 |
 
 **示例**

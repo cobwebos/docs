@@ -3,16 +3,16 @@ title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f9cbe85de9423484343e4054be8d2d58c6c5e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f6e2bdfb2000f3a4c4a8f91eee23348d9cc9c766
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109427"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090391"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
-本文提供了 [Azure Key Vault](../key-vault/index.yml)（当前为预览版）中事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供 [Azure Key Vault](../key-vault/index.yml)中事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
@@ -31,6 +31,7 @@ Azure Key Vault 帐户生成以下事件类型：
 | Microsoft.KeyVault.SecretNewVersionCreated | 创建的机密新版本 | 创建新机密或新机密版本时触发。 |
 | Microsoft.KeyVault.SecretNearExpiry | 机密即将过期 | 当前版本的机密即将过期时触发。 （此事件在机密到期日期前 30 天触发。） |
 | Microsoft.KeyVault.SecretExpired | 机密已过期 | 机密过期时触发。 |
+| KeyVault. VaultAccessPolicyChanged | 保管库访问策略已更改 | 当 Key Vault 上的访问策略发生更改时触发。 它包括在将 Key Vault 权限模型更改为 Azure RBAC 或从 Azure RBAC 更改时的方案  |
 
 ### <a name="event-examples"></a>事件示例
 
@@ -84,10 +85,10 @@ Azure Key Vault 帐户生成以下事件类型：
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
 * 有关如何创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-* 若要详细了解 Key Vault 与事件网格的集成，请参阅[使用 Azure 事件网格（预览版）监视 Key Vault](../key-vault/general/event-grid-overview.md)。
-* 有关 Key Vault 与事件网格集成的教程，请参阅[通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/general/event-grid-tutorial.md)。
+* 若要了解有关 Key Vault 与事件网格集成的详细信息，请参阅 [通过 Azure 事件网格监视 Key Vault](../key-vault/general/event-grid-overview.md)。
+* 有关 Key Vault 与事件网格集成的教程，请参阅 [使用 Azure 事件网格接收和响应 Key Vault 通知](../key-vault/general/event-grid-tutorial.md)。
 * 若要获取有关 Key Vault 和 Azure 自动化的其他指南，请参阅：
     - [什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
-    - [通过 Azure 事件网格监视 Key Vault（预览版）](../key-vault/general/event-grid-overview.md)
-    - [通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/general/event-grid-tutorial.md)
+    - [通过 Azure 事件网格监视 Key Vault](../key-vault/general/event-grid-overview.md)
+    - [通过 Azure 事件网格接收和响应 Key Vault 通知](../key-vault/general/event-grid-tutorial.md)
     - [Azure 自动化概述](../automation/index.yml)

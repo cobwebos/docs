@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0e79efc9de43fc0a3044e9ae1e3959f63bb6e69f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078623"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090240"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>无法通过远程桌面连接到 VM，因为网络接口被禁用
 
@@ -28,6 +28,11 @@ ms.locfileid: "86078623"
 
 无法与 Azure 中的 VM 的任何其他端口建立 RDP 连接或任何其他类型的连接，因为 VM 中的网络接口被禁用。
 
+![显示网络接口断开连接的 VM 的屏幕截图。](./media/troubleshoot-rdp-nic-disabled/disconnected.png)
+
+![显示禁用了网络接口的 VM 的屏幕截图。](./media/troubleshoot-rdp-nic-disabled/disabled.png)
+
+
 ## <a name="solution"></a>解决方案
 
 在执行这些步骤之前，请创建受影响 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
@@ -36,8 +41,7 @@ ms.locfileid: "86078623"
 
 ### <a name="use-serial-control"></a>使用串行控制台
 
-1. 连接到[串行控制台并打开 CMD 实例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](#reset-network-interface)。
+1. 连接到[串行控制台并打开 CMD 实例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 如果未在 VM 上启用串行控制台，请参阅 [重置网络接口](#reset-network-interface)。
 2. 检查网络接口的状态：
 
     ```console

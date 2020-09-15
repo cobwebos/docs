@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708070"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087841"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
 
@@ -44,21 +44,21 @@ ms.locfileid: "84708070"
 
 1. 创建 IoT 中心时，必须在资源组中创建它。 使用现有资源组，或运行以下[命令创建资源组](https://docs.microsoft.com/cli/azure/resource)：
     
-   ```azurecli
+   ```azurecli-interactive
    az group create --name {your resource group name} --location westus
    ```
 
    > [!TIP]
    > 上一示例在美国西部位置创建资源组。 可以通过运行以下命令来查看可用位置列表： 
    >
-   >``` bash
-   >az account list-locations -o table
-   >```
+   > ```azurecli-interactive
+   > az account list-locations -o table
+   > ```
    >
 
 2. 运行以下[命令，使用 IoT 中心的全局唯一名称在资源组中创建 IoT 中心](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)：
     
-   ```azurecli
+   ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
       --resource-group {your resource group name} --sku S1
    ```
@@ -72,16 +72,16 @@ ms.locfileid: "84708070"
 
 可使用 Azure CLI [删除单个资源](https://docs.microsoft.com/cli/azure/resource)（例如 IoT 中心），或删除资源组及其所有资源（包括任何 IoT 中心）。
 
-若要[删除 IoT 中心](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete)，请运行以下命令：
+若要 [删除 IoT 中心](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete)，请运行以下命令：
 
-```azurecli
+```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-若要[删除资源组](https://docs.microsoft.com/cli/azure/group#az-group-delete)及其所有资源，请运行以下命令：
+若要 [删除资源组](https://docs.microsoft.com/cli/azure/group#az-group-delete) 及其所有资源，请运行以下命令：
 
-```azurecli
+```azurecli-interactive
 az group delete --name {your resource group name}
 ```
 

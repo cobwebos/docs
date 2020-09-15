@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 7ec33a70e96ac9aa989eb898ca450696c589ef1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d709bd1c68608720e5fa354b23d2b457e99b1ade
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702969"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087383"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - CLI
 
@@ -34,7 +34,7 @@ ms.locfileid: "84702969"
 
 在创建双堆栈虚拟网络之前，必须先使用 [az group create](/cli/azure/group) 创建一个资源组。 以下示例在 " *eastus* " 位置创建名为 " *DsResourceGroup01* " 的资源组：
 
-```azurecli
+```azurecli-interactive
 az group create \
 --name DsResourceGroup01 \
 --location eastus
@@ -43,7 +43,7 @@ az group create \
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>为负载均衡器创建 IPv4 和 IPv6 公共 IP 地址
 若要在 Internet 上访问 IPv4 和 IPv6 终结点，需要为负载均衡器创建 IPv4 和 IPv6 公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。 以下示例在 *DsResourceGroup01* 资源组中创建名为 *dsPublicIP_v4* 与 *dsPublicIP_v6* 的 IPv4 和 IPv6 公共 IP 地址：
 
-```azurecli
+```azurecli-interactive
 # Create an IPV4 IP address
 az network public-ip create \
 --name dsPublicIP_v4  \
@@ -68,7 +68,7 @@ az network public-ip create \
 
 若要在 Internet 上远程访问 VM，需要为 VM 创建 IPv4 公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。
 
-```azurecli
+```azurecli-interactive
 az network public-ip create \
 --name dsVM0_remote_access  \
 --resource-group DsResourceGroup01 \
@@ -94,7 +94,7 @@ az network public-ip create \
 
 使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **dsLB** 的标准负载均衡器，其中包含名为 **dsLbFrontEnd_v4** 的前端池以及名为 **dsLbBackEndPool_v4** 的后端池（与在上一步骤中创建的 IPv4 公共 IP 地址 **dsPublicIP_v4** 相关联）。 
 
-```azurecli
+```azurecli-interactive
 az network lb create \
 --name dsLB  \
 --resource-group DsResourceGroup01 \
@@ -109,7 +109,7 @@ az network lb create \
 
 使用 [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) 创建 IPv6 前端 IP。 以下示例创建名为 *dsLbFrontEnd_v6* 的前端 IP 配置，并附加 *dsPublicIP_v6* 地址：
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network lb frontend-ip create \
 --lb-name dsLB  \
 --name dsLbFrontEnd_v6  \
@@ -120,9 +120,9 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>配置 IPv6 后端地址池
 
-使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) 创建 IPv6 后端地址池。 以下示例创建名为*dsLbBackEndPool_v6*的后端地址池，以包含具有 IPv6 NIC 配置的 vm：
+使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) 创建 IPv6 后端地址池。 以下示例创建名为 *dsLbBackEndPool_v6*  的后端地址池，以包含具有 IPv6 NIC 配置的 vm：
 
-```azurecli
+```azurecli-interactive
 az network lb address-pool create \
 --lb-name dsLB  \
 --name dsLbBackEndPool_v6  \
@@ -132,7 +132,7 @@ az network lb address-pool create \
 ### <a name="create-a-health-probe"></a>创建运行状况探测器
 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) 创建运行状况探测，以监视虚拟机的运行状况。 
 
-```azurecli
+```azurecli-interactive
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
 ```
 
@@ -142,7 +142,7 @@ az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --pro
 
 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 创建负载均衡器规则。 以下示例创建名为 *dsLBrule_v4* 和 *dsLBrule_v6* 的负载均衡器规则，并通过 IPv4 和 IPv6 前端 IP 配置均衡 *TCP* 端口 *80* 上的流量：
 
-```azurecli
+```azurecli-interactive
 az network lb rule create \
 --lb-name dsLB  \
 --name dsLBrule_v4  \
@@ -175,7 +175,7 @@ az network lb rule create \
 
 使用 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest) 创建可用性集。 以下示例创建名为 *dsAVset* 的可用性集：
 
-```azurecli
+```azurecli-interactive
 az vm availability-set create \
 --name dsAVset  \
 --resource-group DsResourceGroup01  \
@@ -193,7 +193,7 @@ az vm availability-set create \
 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 创建网络安全组
 
 
-```azurecli
+```azurecli-interactive
 az network nsg create \
 --name dsNSG1  \
 --resource-group DsResourceGroup01  \
@@ -205,7 +205,7 @@ az network nsg create \
 
 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 创建网络安全组规则，以允许通过端口 3389 进行 RDP 连接、通过端口 80 进行 Internet 连接，并允许出站连接。
 
-```azurecli
+```azurecli-interactive
 # Create inbound rule for port 3389
 az network nsg rule create \
 --name allowRdpIn  \
@@ -258,7 +258,7 @@ az network nsg rule create \
 
 使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 以下示例创建名为 *dsVNET* 的虚拟网络，其中包含子网 *dsSubNET_v4* 和 *dsSubNET_v6*：
 
-```azurecli
+```azurecli-interactive
 # Create the virtual network
 az network vnet create \
 --name dsVNET \
@@ -280,7 +280,7 @@ az network vnet subnet create \
 
 使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) 为每个 VM 创建虚拟 NIC。 以下示例为每个 VM 创建一个虚拟 NIC。 每个 NIC 采用两个 IP 配置（1 个 IPv4 配置，1 个 IPv6 配置）。 使用 [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) 创建 IPv6 配置。
  
-```azurecli
+```azurecli-interactive
 # Create NICs
 az network nic create \
 --name dsNIC0  \
@@ -333,7 +333,7 @@ az network nic ip-config create \
 
 按如下所示创建虚拟机 *dsVM0*：
 
-```azurecli
+```azurecli-interactive
  az vm create \
 --name dsVM0 \
 --resource-group DsResourceGroup01 \
@@ -345,7 +345,7 @@ az network nic ip-config create \
 
 按如下所示创建虚拟机 *dsVM1*：
 
-```azurecli
+```azurecli-interactive
 az vm create \
 --name dsVM1 \
 --resource-group DsResourceGroup01 \
@@ -366,7 +366,7 @@ az vm create \
 
 如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
 
-```azurecli
+```azurecli-interactive
  az group delete --name DsResourceGroup01
 ```
 

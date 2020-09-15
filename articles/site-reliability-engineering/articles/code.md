@@ -3,17 +3,17 @@ title: 常见问题解答： SRE 和编码 |Microsoft Docs
 titleSuffix: Azure
 description: 常见问题解答：了解 SRE 与编码之间的关系
 author: dnblankedelman
-manager: efreeman
+manager: ScottCa
 ms.service: site-reliability-engineering
 ms.topic: article
-ms.date: 06/19/2020
+ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 7003844878fcd23b20957c393ac2ed011f5f5946
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8865fdd53f4947b17a3621a128fc83f3d93d3e2
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834911"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089065"
 ---
 # <a name="frequently-asked-questions-do-i-need-to-know-how-to-code-to-get-involved-with-sre"></a>常见问题：我是否需要知道如何编写代码来处理 SRE？
 
@@ -31,11 +31,11 @@ ms.locfileid: "85834911"
 
 SRE 无法接受辛劳。 他们努力在可能且适当的时候消除辛劳。 这是自动化在 SRE 中发挥作用的地方之一。 如果可自动处理这些请求，则会释放团队，以处理更多的有影响力。
 
-*编码专业知识*：自动化需要某些编码专业知识，但不需要完全的软件工程技巧。 如果可以编写小型脚本（可能在 PowerShell 或 Bourne shell 中），或者即使创建了 [https://docs.microsoft.com/azure/logic-apps/logic-apps-overview](Azure Logic app) 几乎任何代码，此应用仍可帮助消除 toil。
+*编码专业知识*：自动化需要某些编码专业知识，但不需要完全的软件工程技巧。 如果可以 (可能在 PowerShell 或 Bourne shell 中编写小型脚本) 或者即使你创建了 [https://docs.microsoft.com/azure/logic-apps/logic-apps-overview](Azure Logic app) 几乎任何代码，此应用仍可帮助消除 toil。
 
-## <a name="scenario-2-control-through-apisdomain-specific-languages-dslstemplates"></a>方案2：通过 Api/域特定语言（Dsl）/templates 控制
+## <a name="scenario-2-control-through-apisdomain-specific-languages-dslstemplates"></a>方案2：通过 Api/域特定语言 (Dsl) /templates 的控制
 
-虽然对于 SRE 工作而言不是必需的，但能够通过 Api、Dsl 和模板（特别是云环境）控制环境允许 SREs 增加其工作量。 通过编码，预配/取消预配基础结构、配置监视和集成多项服务都变得更加高效。
+虽然对于 SRE 工作而言不是必需的，但能够通过 Api、Dsl 和模板控制环境 (尤其是云环境) 允许 SREs 扩展其工作量。 通过编码，预配/取消预配基础结构、配置监视和集成多项服务都变得更加高效。
 
 *编码专业知识*：与前面的方案类似，这需要一些编码专业知识，但它不需要完全的软件工程技巧。 除了前面提到的脚本和逻辑应用外， [https://docs.microsoft.com/azure/azure-resource-manager/templates/overview](Azure Resource Manager Templates) 还可以使用最少的编码体验。
 
@@ -48,4 +48,4 @@ SRE 无法接受辛劳。 他们努力在可能且适当的时候消除辛劳。
 
 ## <a name="next-steps"></a>后续步骤
 
-想要了解有关站点可靠性工程和低代码工作的详细信息？ 查看我们的[站点可靠性工程中心](../index.yml)，以上链接的产品文档。
+想要了解有关站点可靠性工程和低代码工作的详细信息？ 查看我们的 [站点可靠性工程中心](../index.yml)，以上链接的产品文档。

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/25/2020
+ms.date: 09/10/2020
 ms.author: victorh
-ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a0333f9afa69b533ac28dc302987e6d057bfeeb1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827216"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090153"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -73,10 +73,53 @@ ms.locfileid: "88827216"
 
    ```
 
+* **DNS 代理日志**
+
+   DNS 代理日志将保存到存储帐户，并传输到事件中心，并/或仅在为每个 Azure 防火墙启用了日志后，才能将其发送到 Azure Monitor 日志。 此日志跟踪 dns 消息到使用 DNS 代理配置的 DNS 服务器。 数据采用 JSON 格式记录，如以下示例中所示：
+
+
+   ```
+   Category: DNS proxy logs.
+   Time: log timestamp.
+   Properties: currently contains the full message.
+   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
+   ```
+
+   成功：
+   ```json
+   {
+     "category": "AzureFirewallDnsProxy",
+     "time": "2020-09-02T19:12:33.751Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallDnsProxyLog",
+     "properties": {
+         "msg": "DNS Request: 11.5.0.7:48197 – 15676 AAA IN md-l1l1pg5lcmkq.blob.core.windows.net. udp 55 false 512 NOERROR - 0 2.000301956s"
+     }
+   }
+   ```
+
+   失败：
+
+   ```json
+   {
+     "category": "AzureFirewallDnsProxy",
+     "time": "2020-09-02T19:12:33.751Z",
+     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+     "operationName": "AzureFirewallDnsProxyLog",
+     "properties": {
+         "msg": " Error: 2 time.windows.com.reddog.microsoft.com. A: read udp 10.0.1.5:49126->168.63.129.160:53: i/o timeout”
+     }
+   }
+   ```
+
+   消息格式：
+
+   `[client’s IP address]:[client’s port] – [query ID] [type of the request] [class of the request] [name of the request] [protocol used] [request size in bytes] [EDNS0 DO (DNSSEC OK) bit set in the query] [EDNS0 buffer size advertised in the query] [response CODE] [response flags] [response size] [response duration]`
+
 可通过三种方式存储日志：
 
 * **存储帐户**：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
-* **事件中心**：若要集成其他安全信息和事件管理 (SEIM) 工具，获取资源警报，则事件中心是很好的选择。
+* 事件中心****：若要集成其他安全信息和事件管理 (SEIM) 工具，获取资源警报，则事件中心是很好的选择。
 * **Azure Monitor 日志**：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
 
 ## <a name="activity-logs"></a>活动日志

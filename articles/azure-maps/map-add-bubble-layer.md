@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 47ee9e67c6885829e3cb0082aea63367da4aa626
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3545701fddeb9573b19327769cb495845def7f64
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006173"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086243"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
@@ -25,7 +25,7 @@ ms.locfileid: "88006173"
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
-下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到[气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。 
+下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到 [气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。 
 
 ```javascript
 //Add point locations.
@@ -57,7 +57,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
+<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
 </iframe>
 
 ## <a name="show-labels-with-a-bubble-layer"></a>显示具有气泡层的标签
@@ -66,7 +66,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='MultiLayer DataSource' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
+<iframe height='500' scrolling='no' title='MultiLayer DataSource' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
 </iframe>
 
 ## <a name="customize-a-bubble-layer"></a>自定义气泡层
@@ -75,7 +75,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='气泡层选项' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>通过 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 查看 Pen <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>气泡层选项</a>。
+<iframe height='700' scrolling='no' title='气泡层选项' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>通过 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 查看 Pen <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>气泡层选项</a>。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -83,10 +83,10 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
+> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

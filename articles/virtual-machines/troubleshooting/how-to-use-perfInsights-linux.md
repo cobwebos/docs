@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121385"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088538"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
-[PerfInsights Linux](https://aka.ms/perfinsightslinuxdownload)是一个自助诊断工具，可用于收集和分析诊断数据，并提供一个报表来帮助排查 Azure 中的 Linux 虚拟机性能问题。 PerfInsights 可以作为独立的工具在支持的虚拟机上运行，也可以使用[Azure 虚拟机的性能诊断](performance-diagnostics.md)直接从门户运行。
+[PerfInsights Linux](https://aka.ms/perfinsightslinuxdownload) 是一个自助诊断工具，可用于收集和分析诊断数据，并提供一个报表来帮助排查 Azure 中的 Linux 虚拟机性能问题。 PerfInsights 可以作为独立的工具在支持的虚拟机上运行，也可以使用 [Azure 虚拟机的性能诊断](performance-diagnostics.md)直接从门户运行。
 
 如果遇到虚拟机性能问题，我们建议在联系支持人员之前先运行此工具。
 
@@ -44,7 +44,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 - 存储信息
 
-- 使用[Azure 实例元数据服务](../windows/instance-metadata-service.md)收集的 Azure 虚拟机配置 () 
+- 使用 [Azure 实例元数据服务](../windows/instance-metadata-service.md) 收集的 Azure 虚拟机配置 () 
 
 - 正在运行的进程的列表、磁盘、内存和 CPU 使用率
 
@@ -130,16 +130,16 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
     | 分发               | 版本                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.6，7.5 (Oracle 数据库-Ee 13.8 marketplace 映像) |
+    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.6，7。5 |
     | CentOS                     | 6.5 [ `*` ]，7。6                                    |
     | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
-    | Ubuntu                     | 14.04、16.04、18.04                               |
+    | Ubuntu                     | 14.04、16.04、18.04、20.04                               |
     | Debian                     | 8、9、10 [ `*` ]                                    |
     | SLES                       | 12 SP4 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[ `*` ] 请参阅[已知问题](#known-issues)部分
+>[ `*` ] 请参阅 [已知问题](#known-issues) 部分
 
 ### <a name="known-issues"></a>已知问题
 
@@ -160,13 +160,13 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 #### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>安装和运行来自 Azure 门户的 PerfInsights
 
-有关此选项的详细信息，请参阅[Azure 性能诊断](performance-diagnostics.md)。  
+有关此选项的详细信息，请参阅 [Azure 性能诊断](performance-diagnostics.md)。  
 
 #### <a name="run-perfinsights-in-standalone-mode"></a>在独立模式下运行 PerfInsights
 
 要运行 PerfInsights 工具，请按照以下步骤操作：
 
-1. 将[PerfInsights](https://aka.ms/perfinsightslinuxdownload)下载到虚拟机上的某个文件夹中，并使用终端中的以下命令提取内容。
+1. 将 [PerfInsights](https://aka.ms/perfinsightslinuxdownload) 下载到虚拟机上的某个文件夹中，并使用终端中的以下命令提取内容。
 
    ```bash
    wget https://download.microsoft.com/download/9/F/8/9F80419C-D60D-45F1-8A98-718855F25722/PerfInsights.tar.gz
@@ -206,17 +206,17 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
     >[!Note]
     >运行方案之前，PerfInsights 会提示用户同意共享诊断信息并同意 EULA。 使用 **-a 或--accept------------------------**
     >
-    >如果你具有与 Microsoft 的活动支持票证，并按你使用的支持工程师的请求运行 PerfInsights，请确保使用 **-s 或--support**选项提供支持票证号。
+    >如果你具有与 Microsoft 的活动支持票证，并按你使用的支持工程师的请求运行 PerfInsights，请确保使用 **-s 或--support** 选项提供支持票证号。
 
-运行完成后，除非指定了 output 文件夹，否则新的 tar 文件将显示在 PerfInsights 所在的文件夹中。 该文件的名称为**PerformanceDiagnostics \_ yyyy-mm-dd hh-mm-ss-fff.zip. \_ gz。** 可以将此文件发送给支持代理进行分析，或在文件中打开报表以查看结果和建议。
+运行完成后，除非指定了 output 文件夹，否则新的 tar 文件将显示在 PerfInsights 所在的文件夹中。 该文件的名称为 **PerformanceDiagnostics \_ yyyy-mm-dd hh-mm-ss-fff.zip. \_ gz。** 可以将此文件发送给支持代理进行分析，或在文件中打开报表以查看结果和建议。
 
 ## <a name="review-the-diagnostics-report"></a>查看诊断报告
 
-在**PerformanceDiagnostics \_ YYYY-MM \_ hh-mm-ss-fff.zip**文件中，可以找到一个 HTML 报告，其中详细说明了 PerfInsights 的调查结果。 若要查看报表，请展开 " **PerformanceDiagnostics" \_ \_ hh-mm-ss-fff.zip**文件，然后打开**PerfInsights Report.html** "文件。
+在 **PerformanceDiagnostics \_ YYYY-MM \_ hh-mm-ss-fff.zip** 文件中，可以找到一个 HTML 报告，其中详细说明了 PerfInsights 的调查结果。 若要查看报表，请展开 " **PerformanceDiagnostics" \_ \_ hh-mm-ss-fff.zip** 文件，然后打开 **PerfInsights Report.html** "文件。
 
 ### <a name="overview-tab"></a>概述选项卡
 
-"**概述**" 选项卡提供了基本的运行详细信息和虚拟机信息。 "**发现**" 选项卡将显示 PerfInsights 报表所有不同部分的建议摘要。
+" **概述** " 选项卡提供了基本的运行详细信息和虚拟机信息。 " **发现** " 选项卡将显示 PerfInsights 报表所有不同部分的建议摘要。
 
 ![PerfInsights 报表的屏幕截图](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
 ![PerfInsights 报表的屏幕截图](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
@@ -228,7 +228,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ### <a name="cpu-tab"></a>CPU 选项卡
 
-**Cpu**选项卡提供 PerfInsights 运行期间的系统范围内 CPU 消耗情况的相关信息。 有关 CPU 使用时间较高和运行时间较长的 CPU 使用者的信息将有助于排查 CPU 相关的高问题。
+**Cpu** 选项卡提供 PerfInsights 运行期间的系统范围内 CPU 消耗情况的相关信息。 有关 CPU 使用时间较高和运行时间较长的 CPU 使用者的信息将有助于排查 CPU 相关的高问题。
 
 ![PerfInsights "报表 CPU" 选项卡的屏幕截图](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
 
@@ -257,4 +257,4 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 请遵照消息中的说明访问文件传输工作区。 为了提高安全性，首次使用时必须更改密码。
 
-登录后，你将看到一个对话框，用于上传 PerfInsights 收集的**PerformanceDiagnostics \_ yyyy-mm-dd \_ hh-mm-ss-fff.zip gz**文件。 "
+登录后，你将看到一个对话框，用于上传 PerfInsights 收集的 **PerformanceDiagnostics \_ yyyy-mm-dd \_ hh-mm-ss-fff.zip gz** 文件。 "

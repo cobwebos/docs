@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 4a804272a92d98156122397ee7427dcb467fbdf0
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9bf34b9abd78b62a5ded16ae41b028bf61a3b51d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010219"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086090"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
@@ -27,7 +27,7 @@ ms.locfileid: "88010219"
 * 天气雷达图
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是在地图上覆盖图像的一种简单方法。 请注意，浏览器在加载大图像时可能会遇到困难。 在这种情况下，请考虑将图像分解为磁贴，并将其作为[TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)加载到地图中。
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)是在地图上覆盖图像的一种简单方法。 请注意，浏览器在加载大图像时可能会遇到困难。 在这种情况下，请考虑将图像分解为磁贴，并将其作为 [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)加载到地图中。
 
 图像层支持以下图像格式：
 
@@ -38,7 +38,7 @@ ms.locfileid: "88010219"
 
 ## <a name="add-an-image-layer"></a>添加图像层
 
-下面的代码在地图上覆盖[1922 的纽瓦克、New Jersey 的图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。 可以通过将 URL 传递到图像来创建[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) ，并以格式表示四个角的坐标 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
+下面的代码在地图上覆盖 [1922 的纽瓦克、New Jersey 的图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 的图像。 可以通过将 URL 传递到图像来创建 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) ，并以格式表示四个角的坐标 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -57,18 +57,18 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='简单图像层' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>简单图像层</a>。
+<iframe height='500' scrolling='no' title='简单图像层' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>简单图像层</a>。
 </iframe>
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>导入 KML 文件作为地面覆盖
 
-此示例演示如何将 KML 地面叠加信息添加为地图上的图像层。 KML 地面叠加提供北方、南部、东和西坐标以及逆时针旋转。 但图像层需要图像每个角的坐标。 本示例中的 KML 地面覆盖适用于 Chartres cathedral，其来源为[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
+此示例演示如何将 KML 地面叠加信息添加为地图上的图像层。 KML 地面叠加提供北方、南部、东和西坐标以及逆时针旋转。 但图像层需要图像每个角的坐标。 本示例中的 KML 地面覆盖适用于 Chartres cathedral，其来源为 [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-该代码使用 `getCoordinatesFromEdges` [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)类中的静态函数。 它使用 "KML" 地面叠加的 "北部"、"东南"、"东部"、"西部" 和 "旋转" 信息来计算图像的四个角。
+该代码使用 `getCoordinatesFromEdges` [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) 类中的静态函数。 它使用 "KML" 地面叠加的 "北部"、"东南"、"东部"、"西部" 和 "旋转" 信息来计算图像的四个角。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='KML 地面叠加作为图像层' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML 地面叠加作为图像层</a>。
+<iframe height='500' scrolling='no' title='KML 地面叠加作为图像层' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML 地面叠加作为图像层</a>。
 </iframe>
 
 ## <a name="customize-an-image-layer"></a>自定义图像层
@@ -77,7 +77,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 <br/>
 
-<iframe height='700' scrolling='no' title='图像层选项' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>图像层选项</a>。
+<iframe height='700' scrolling='no' title='图像层选项' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>图像层选项</a>。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -85,10 +85,10 @@ map.layers.add(new atlas.layer.ImageLayer({
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 > [!div class="nextstepaction"]
-> [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
+> [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

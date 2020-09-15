@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 4c00639c02f8834a24a3828ac5b8ba828d0e1733
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 82c5d87be084e85b6de9f890bd042babca9df476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282817"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090493"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用绘图工具模块
 
-Azure Maps Web SDK 提供了一个 "*绘图工具" 模块*。 使用此模块，可以轻松地使用输入设备（如鼠标或触摸屏）绘制和编辑地图上的形状。 此模块的核心类是[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)。 绘图管理器提供了在地图上绘制和编辑形状所需的所有功能。 它可直接使用，并与自定义工具栏 UI 集成。 还可以使用内置的 "绘图"[工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)类。 
+Azure Maps Web SDK 提供了一个 " *绘图工具" 模块*。 使用此模块，可以轻松地使用输入设备（如鼠标或触摸屏）绘制和编辑地图上的形状。 此模块的核心类是 [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)。 绘图管理器提供了在地图上绘制和编辑形状所需的所有功能。 它可直接使用，并与自定义工具栏 UI 集成。 还可以使用内置的 "绘图" [工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) 类。 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>在网页中加载绘图工具模块
 
-1. 创建一个新的 HTML 文件，并[照常实现该映射](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+1. 创建一个新的 HTML 文件，并 [照常实现该映射](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
 2. 加载 Azure Maps 绘图工具模块。 可以通过以下两种方式之一加载它：
     - 使用 Azure Maps services 模块的全球托管的 Azure 内容分发网络版本。 在文件的元素中添加对 JavaScript 和 CSS 样式表的引用 `<head>` ：
 
@@ -31,7 +31,7 @@ Azure Maps Web SDK 提供了一个 "*绘图工具" 模块*。 使用此模块，
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
-    - 或者，你可以使用 npm 包在本地加载 Azure Maps Web SDK 源代码的 "绘图工具" 模块，[然后将其](https://www.npmjs.com/package/azure-maps-drawing-tools)托管到你的应用程序。 此程序包还包括了 TypeScript 定义。 使用此命令：
+    - 或者，你可以使用 npm 包在本地加载 Azure Maps Web SDK 源代码的 "绘图工具" 模块， [然后将其](https://www.npmjs.com/package/azure-maps-drawing-tools) 托管到你的应用程序。 此程序包还包括了 TypeScript 定义。 使用此命令：
     
         > **npm 安装 azure 地图-绘图工具**
     
@@ -44,13 +44,13 @@ Azure Maps Web SDK 提供了一个 "*绘图工具" 模块*。 使用此模块，
 
 ## <a name="use-the-drawing-manager-directly"></a>直接使用绘图管理器
 
-在应用程序中加载 "绘图工具" 模块后，可以使用 "[绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)" 启用绘图和编辑功能。 可以在对其进行实例化或使用函数时，为绘图管理器指定选项 `drawingManager.setOptions()` 。
+在应用程序中加载 "绘图工具" 模块后，可以使用 " [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)" 启用绘图和编辑功能。 可以在对其进行实例化或使用函数时，为绘图管理器指定选项 `drawingManager.setOptions()` 。
 
 ### <a name="set-the-drawing-mode"></a>设置绘制模式
 
-下面的代码创建一个绘图管理器实例，并设置 "绘制**模式**" 选项。 
+下面的代码创建一个绘图管理器实例，并设置 "绘制 **模式** " 选项。 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon"
@@ -62,7 +62,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="绘制多边形" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅在 CodePen 上按 Azure Maps （）<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>绘制多边形</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅在 CodePen 上通过 Azure Maps () <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>绘制多边形</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -70,13 +70,13 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 
 绘图管理器支持三种不同的方法来与地图进行交互以绘制形状。
 
-* `click`-在单击鼠标或触摸时添加坐标。
-* `freehand `-在将鼠标或触摸拖动到地图上时添加坐标。 
-* `hybrid`-在单击或拖动鼠标或触摸时添加坐标。
+* `click` -在单击鼠标或触摸时添加坐标。
+* `freehand ` -在将鼠标或触摸拖动到地图上时添加坐标。 
+* `hybrid` -在单击或拖动鼠标或触摸时添加坐标。
 
 下面的代码启用多边形绘制模式并设置绘图管理器应遵循的绘图交互的类型 `freehand` 。 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and set drawing mode.
 drawingManager = new atlas.drawing.DrawingManager(map,{
     mode: "draw-polygon",
@@ -89,7 +89,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="自由手写绘图" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的触笔<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>自由右</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
+Azure Maps (<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 在<a href='https://codepen.io'>CodePen</a>上) ，请参阅绘图笔自由。
 </iframe>
 
 
@@ -99,7 +99,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 
 <br/>
 
-<iframe height="685" title="自定义绘图管理器" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>请参阅 CodePen 上的 "通过 Azure Maps （）<a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>获取形状数据</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+<iframe height="685" title="自定义绘图管理器" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>请参阅 CodePen 上的 "通过 Azure Maps () <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>获取形状数据</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 
@@ -122,10 +122,10 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [绘图管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [绘图工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [绘图工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

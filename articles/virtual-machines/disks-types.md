@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752014"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088487"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -71,7 +71,7 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 
 Azure 高级 SSD 为运行输入/输出 (IO) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 若要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级 SSD。 高级 SSD 适用于任务关键型生产应用程序。 高级 SSD 只能用于与高级存储兼容的 VM 系列。
 
-若要详细了解适用于 Windows 或 Linux 的 Azure 中的单个 VM 类型和大小，包括与高级存储兼容的大小，请参阅 [Azure 中虚拟机的大小](sizes.md)。 若要详细了解 Azure 中适用于 Linux 的 VM 类型和大小，包括与高级存储兼容的大小，请参阅 [Azure 中虚拟机的大小](sizes.md)。 在这些文章中，需要检查每个 VM 大小的文章，以确定其是否与高级存储兼容。
+若要详细了解 Azure 中适用于 Windows 或 Linux 的各个 VM 类型和大小（包括哪些大小与高级存储兼容），请参阅 [Azure 中虚拟机的大小](sizes.md)。 在本文中，需要检查每个 VM 大小的文章，以确定其是否与高级存储兼容。
 
 ### <a name="disk-size"></a>磁盘大小
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
@@ -130,7 +130,7 @@ Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本
 
 **出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/bandwidth/)（Azure 数据中心送出的数据）会产生带宽使用费。
 
-**事务**：按标准托管磁盘上执行的事务数计费。 对于标准 SSD，每个小于或等于 256 KiB 吞吐量的 I/O 操作被视为单个 I/O 操作。 大于 256 KiB 吞吐量的 I/O 操作被视为大小为 256 KiB 的多个 I/O。 对于标准 HDD，每个 IO 操作会被视为单个事务，无论 I/O 大小如何。
+**事务**：会根据你对标准托管磁盘执行的事务数向你收费。 对于标准 SSD，每个小于或等于 256 KiB 吞吐量的 I/O 操作被视为单个 I/O 操作。 大于 256 KiB 吞吐量的 I/O 操作被视为大小为 256 KiB 的多个 I/O。 对于标准 HDD，每个 IO 操作会被视为单个事务，无论 I/O 大小如何。
 
 有关托管磁盘定价的详细信息（包括事务成本），请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
@@ -149,4 +149,4 @@ Azure Vm 可以指示它们是否与超磁盘兼容。 与超级磁盘兼容的 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始，请参阅 [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) 。
+请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)以开始使用。

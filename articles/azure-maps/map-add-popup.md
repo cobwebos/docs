@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 5235b273ab45a2ece011f38bf363b33230101396
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c27f80e90447ad4b9053649350201c5180ccbfe6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036498"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090765"
 ---
 # <a name="add-a-popup-to-the-map"></a>向地图添加弹出窗口
 
@@ -22,7 +22,7 @@ ms.locfileid: "88036498"
 
 ## <a name="understand-the-code"></a>了解代码
 
-下面的代码使用符号层向地图添加一个点功能，该功能具有 `name` 和 `description` 属性。 创建了[Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)的实例，但未将其显示出来。 鼠标事件会添加到符号层，以触发打开和关闭弹出窗口。 悬停标记符号时，将 `position` 用标记的位置更新 popup 的属性，并 `content` 用一些 HTML 来更新选项，这些 HTML 用于包装 `name` `description` 要悬停的点功能的和属性。 然后，使用其功能在地图上显示弹出窗口 `open` 。
+下面的代码使用符号层向地图添加一个点功能，该功能具有 `name` 和 `description` 属性。 创建了 [Popup 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) 的实例，但未将其显示出来。 鼠标事件会添加到符号层，以触发打开和关闭弹出窗口。 悬停标记符号时，将 `position` 用标记的位置更新 popup 的属性，并 `content` 用一些 HTML 来更新选项，这些 HTML 用于包装  `name` `description` 要悬停的点功能的和属性。 然后，使用其功能在地图上显示弹出窗口 `open` 。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -80,7 +80,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 <br/>
 
-<iframe height='500' scrolling='no' title='使用 Azure Maps 添加弹出窗口' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Add a pop up using Azure Maps</a>（使用 Azure Maps 添加弹出窗口）。
+<iframe height='500' scrolling='no' title='使用 Azure Maps 添加弹出窗口' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Add a pop up using Azure Maps</a>（使用 Azure Maps 添加弹出窗口）。
 </iframe>
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重复使用具有多个点的弹出窗口
@@ -89,7 +89,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 <br/>
 
-<iframe height='500' scrolling='no' title='重复使用具有多个固定项的弹出窗口' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>重复使用具有多个固定项的弹出窗口</a> Pen。
+<iframe height='500' scrolling='no' title='重复使用具有多个固定项的弹出窗口' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>重复使用具有多个固定项的弹出窗口</a> Pen。
 </iframe>
 
 ## <a name="customizing-a-popup"></a>自定义弹出项
@@ -98,7 +98,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="自定义弹出窗口" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="自定义弹出窗口" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 通过在 CodePen 上 Azure Maps () ，查看笔<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自定义弹出窗口</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
@@ -118,7 +118,7 @@ Popup 模板使你可以轻松地为弹出窗口创建数据驱动布局。 以�
 
 字符串模板会将占位符替换为功能属性的值。 此功能的属性不必赋给 String 类型的值。 例如， `value1` 保存一个整数。 然后，将这些值传递给的 content 属性 `popupTemplate` 。 
 
-`numberFormat`选项指定要显示的数字的格式。 如果 `numberFormat` 未指定，则代码将使用 popup 模板日期格式。 `numberFormat`选项使用[toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函数对数字进行格式设置。 若要格式化大数字，请考虑将 `numberFormat` 选项用于[intl.numberformat](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)中的函数。 例如，下面的代码片段使用 `maximumFractionDigits` 将小数位位数限制为两个数字。
+`numberFormat`选项指定要显示的数字的格式。 如果 `numberFormat` 未指定，则代码将使用 popup 模板日期格式。 `numberFormat`选项使用[toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函数对数字进行格式设置。 若要格式化大数字，请考虑将 `numberFormat` 选项用于 [intl.numberformat](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)中的函数。 例如，下面的代码片段使用 `maximumFractionDigits` 将小数位位数限制为两个数字。
 
 > [!Note]
 > 只有一种方法，字符串模板可以呈现图像。 首先，字符串模板中需要有一个图像标记。 传递给图像标记的值应为指向图像的 URL。 然后，在中，字符串模板需要 `isImage` 设置为 true `HyperLinkFormatOptions` 。 `isImage`选项指定超链接用于图像，超链接将加载到图像标记中。 单击超链接时，将打开该图像。
@@ -252,7 +252,7 @@ var popup = new atlas.Popup({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="reuse-popup-template"></a>重复使用弹出项模板
@@ -261,7 +261,7 @@ var popup = new atlas.Popup({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="popup-events"></a>弹出项事件
@@ -270,7 +270,7 @@ var popup = new atlas.Popup({
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="弹出项事件" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="弹出项事件" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 在 CodePen 上通过 Azure Maps () 来查看笔<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>弹出事件</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 

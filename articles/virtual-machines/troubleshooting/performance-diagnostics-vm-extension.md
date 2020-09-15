@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028543"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090646"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
@@ -27,9 +27,17 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 > [!NOTE]
 > 如果要从 Azure 门户为非经典 VM 运行 VM 上的诊断，建议使用新体验。 有关详细信息，请参阅 [Azure 虚拟机的性能诊断](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-此扩展可以安装在 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 上。 它还可以安装在 Windows 8.1 和 Windows 10 上。
+此扩展可以安装在
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ## <a name="extension-schema"></a>扩展架构
 以下 JSON 显示了 Azure 性能诊断 VM 扩展的架构。 此扩展需要存储帐户的名称和密钥来存储诊断输出和报告。 这些值很敏感。 存储帐户密钥应存储在受保护的设置配置中。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**storageAccountName** 和 **storageAccountKey** 区分大小写。 以下部分列出了其他必需参数。
@@ -66,11 +74,11 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 
 ### <a name="property-values"></a>属性值
 
-|   **名称**   |**值/示例**|       **描述**      |
+|   **Name**   |**值/示例**|       **描述**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
 |publisher|Microsoft.Azure.Performance.Diagnostics|扩展的发布服务器命名空间。
-|类型|AzurePerformanceDiagnostics|VM 扩展的类型。
+|type|AzurePerformanceDiagnostics|VM 扩展的类型。
 |typeHandlerVersion|1.0|扩展处理程序的版本。
 |performanceScenario|基本|需为其捕获数据的性能方案。 有效值为：“基本”****、“vmslow”****、“azurefiles”**** 和“自定义”****。
 |traceDurationInSeconds|300|在选择任意跟踪选项的情况下的跟踪持续时间。
@@ -255,4 +263,4 @@ Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支�
 
     `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 " **获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

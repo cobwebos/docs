@@ -5,42 +5,41 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
+editor: thsomasu
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bf9670ae8fd22342a05f8d506f743c7a5c395e5f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017917"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088130"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>使用 Azure 通知中心发送跨平台通知
 
 本教程基于前一教程：[使用 Azure 通知中心向特定用户发送通知]。 该教程介绍了如何向注册给经过身份验证的特定用户的所有设备推送通知。 该方法需要使用多个请求将通知发送到每个受支持的客户端平台。 Azure 通知中心支持模板，可以通过模板指定特定设备要如何接收通知。 此方法简化了发送跨平台通知的方式。
 
-本文演示了如何利用模板发送针对所有平台的通知。 本文使用单个请求发送不区分平台的通知。 有关模板的更多详细信息，请参阅[通知中心概述][Templates]。
+本文演示了如何利用模板发送针对所有平台的通知。 本文使用单个请求发送不区分平台的通知。 有关模板的更多详细信息，请参阅 [通知中心概述][Templates]。
 
 > [!IMPORTANT]
-> Visual Studio 2019 不支持使用 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2019 平台目标以及兼容性](/visualstudio/releases/2019/compatibility)。
+> Visual Studio 2019 不支持使用 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2019 平台目标和兼容性](/visualstudio/releases/2019/compatibility)。
 
 > [!NOTE]
 > 通过通知中心，设备可使用同一标记注册多个模板。 在这种情况下，针对该标签的传入的邮件将导致系统向设备发送多个通知（每个通知对应一个模板）。 此过程可以在多个可视通知中显示同一消息，如显示为 Windows 应用商店应用中的徽章和 toast 通知。
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>使用模板发送跨平台通知
 
-本部分使用了你在[使用 Azure 通知中心向特定用户发送通知]教程中构建的示例代码。 可以从 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) 下载该示例。
+本部分使用了你在[使用 Azure 通知中心向特定用户发送通知]教程中构建的示例代码。 可以 [从 GitHub 下载完整的示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)。
 
-若要使用模板发送跨平台通知，请执行以下步骤：
+若要使用模板发送跨平台通知，请执行以下操作：
 
 1. 在 Visual Studio 的“解决方案资源管理器”中，展开“Controllers”文件夹，然后打开 RegisterController.cs 文件。   
 

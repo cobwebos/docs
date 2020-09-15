@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 080952752dc5abfd7cf61ae1c5b00b539af58b99
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 5a85efc5de0d99904da568c97672adf40ce8a414
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646560"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088912"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure 网络监视器（预览版）
 Azure 网络监视器为已部署的所有网络资源提供运行状况和指标的全面视图，并且无需任何配置。 "高级搜索" 功能可帮助识别资源依赖关系，这些依赖项通过搜索托管网站名称来识别承载网站的资源等情况。
@@ -30,7 +30,7 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 
 搜索框可用于搜索资源和关联资源。 例如，公共 IP 与应用程序网关相关联。 搜索公共 IP DNS 名称将同时标识公共 IP 和关联的应用程序网关。
 
-![搜索](media/network-insights-overview/search.png)
+![屏幕截图显示搜索 DNS 名称的结果。](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>资源运行状况和指标

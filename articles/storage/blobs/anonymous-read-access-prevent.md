@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.subservice: blobs
+ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534256"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086566"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 blob 的匿名公共读取访问
 
@@ -22,9 +23,9 @@ ms.locfileid: "87534256"
 
 默认情况下，始终禁止对 blob 数据进行公共访问。 但是，存储帐户的默认配置允许具有适当权限的用户配置对存储帐户中的容器和 blob 的公共访问。 为增强安全性，无论单独容器的公共访问设置如何，都可以禁止对存储帐户进行所有公共访问。 不允许对存储帐户进行公共访问会阻止用户在帐户中启用容器的公共访问权限。 如果你的方案需要存储帐户，Microsoft 建议你禁止对其进行公共访问。 禁用公共访问有助于防止意外的匿名访问导致的数据泄露。
 
-当你禁止访问存储帐户的公共 blob 时，Azure 存储将拒绝对该帐户的所有匿名请求。 帐户不允许公共访问后，该帐户中的容器以后无法进行公共访问。 已配置为公开访问的所有容器将不再接受匿名请求。 有关详细信息，请参阅[配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
+当你禁止访问存储帐户的公共 blob 时，Azure 存储将拒绝对该帐户的所有匿名请求。 帐户不允许公共访问后，该帐户中的容器以后无法进行公共访问。 已配置为公开访问的所有容器将不再接受匿名请求。 有关详细信息，请参阅 [配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
 
-本文介绍如何使用拖动（检测-修正-管理）框架持续管理存储帐户的公共访问权限。
+本文介绍如何使用拖 (检测-修正-管理) 框架来持续管理存储帐户的公共访问权限。
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>检测来自客户端应用程序的匿名请求
 
@@ -34,26 +35,26 @@ ms.locfileid: "87534256"
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>监视指标资源管理器的匿名请求
 
-若要跟踪对存储帐户的匿名请求，请在 Azure 门户中使用 Azure 指标资源管理器。 有关指标资源管理器的详细信息，请参阅[Azure 指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)入门。
+若要跟踪对存储帐户的匿名请求，请在 Azure 门户中使用 Azure 指标资源管理器。 有关指标资源管理器的详细信息，请参阅 [Azure 指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)入门。
 
 按照以下步骤创建跟踪匿名请求的指标：
 
-1. 导航到 Azure 门户中的存储帐户。 在 "**监视**" 部分下，选择 "**指标**"。
-1. 选择“添加指标”。 在 "**指标**" 对话框中，指定以下值：
+1. 导航到 Azure 门户中的存储帐户。 在 " **监视** " 部分下，选择 " **指标**"。
+1. 选择“添加指标”。 在 " **指标** " 对话框中，指定以下值：
     1. 将 "作用域" 字段设置为存储帐户的名称。
-    1. 将**指标命名空间**设置为*Blob*。 此指标仅报告对 Blob 存储的请求。
-    1. 将 "**指标**" 字段设置为 "*事务*"。
-    1. 将**聚合**字段设置为*Sum*。
+    1. 将 **指标命名空间** 设置为 *Blob*。 此指标仅报告对 Blob 存储的请求。
+    1. 将 " **指标** " 字段设置为 " *事务*"。
+    1. 将 **聚合** 字段设置为 *Sum*。
 
     新度量值将显示给定时间间隔内针对 Blob 存储的事务数之和。 生成的指标显示如下图所示：
 
     :::image type="content" source="media/anonymous-read-access-prevent/configure-metric-blob-transactions.png" alt-text="显示如何将指标配置为对 blob 事务求和的屏幕截图":::
 
-1. 接下来，选择 "**添加筛选器**" 按钮，为匿名请求的指标创建筛选器。
-1. 在 "**筛选器**" 对话框中，指定以下值：
-    1. 将**属性**值设置为*Authentication*。
-    1. 将 "**运算符**" 字段设置为等号（=）。
-    1. 将 "**值**" 字段设置为 "*匿名*"。
+1. 接下来，选择 " **添加筛选器** " 按钮，为匿名请求的指标创建筛选器。
+1. 在 " **筛选器** " 对话框中，指定以下值：
+    1. 将 **属性** 值设置为 *Authentication*。
+    1. 将 " **运算符** " 字段设置为等号 (=) 。
+    1. 将 " **值** " 字段设置为 " *匿名*"。
 1. 在右上角，选择要查看指标的时间间隔。 还可以通过指定从1分钟到1个月之间的时间间隔，来指示请求聚合的粒度。
 
 配置指标后，匿名请求将开始显示在图形上。 下图显示在过去的30分钟内聚合的匿名请求。
@@ -66,9 +67,9 @@ ms.locfileid: "87534256"
 
 Azure 存储日志捕获有关针对存储帐户发出的请求的详细信息，包括请求的授权方式。 你可以分析这些日志，以确定接收匿名请求的容器。
 
-若要将请求记录到 Azure 存储帐户，以便评估匿名请求，可以在 Azure Monitor （预览版）中使用 Azure 存储日志记录。 有关详细信息，请参阅[监视 Azure 存储](../common/monitor-storage.md)。
+若要将请求记录到 Azure 存储帐户，以便评估匿名请求，可以使用 Azure 存储日志记录 Azure Monitor (预览 ") 中。 有关详细信息，请参阅 [监视 Azure 存储](../common/monitor-storage.md)。
 
-Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅[教程： Log Analytics 查询入门](../../azure-monitor/log-query/get-started-portal.md)。
+Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅 [教程： Log Analytics 查询入门](../../azure-monitor/log-query/get-started-portal.md)。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>在 Azure 门户中创建诊断设置
 
@@ -77,22 +78,22 @@ Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析�
 1. [在 Azure Monitor 预览中注册 Azure 存储日志记录](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。
 1. 在订阅中创建一个包含你的 Azure 存储帐户的新 Log Analytics 工作区。 配置存储帐户的日志记录后，日志将在 "Log Analytics" 工作区中可用。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
 1. 导航到 Azure 门户中的存储帐户。
-1. 在 "监视" 部分，选择 "**诊断设置（预览）**"。
+1. 在 "监视" 部分，选择 " **诊断设置" (预览 ") **。
 1. 选择 " **blob** "，记录对 Blob 存储发出的请求。
 1. 选择“添加诊断设置”。
 1. 提供诊断设置的名称。
-1. 在 "**类别详细信息**" 下的 "**日志**" 部分中，选择要记录的请求的类型。 所有匿名请求都是读取请求，因此请选择 " **StorageRead** " 以捕获匿名请求。
-1. 在 "**目标详细信息**" 下，选择 "**发送到 Log Analytics**"。 选择之前创建的 "订阅" 和 "Log Analytics" 工作区，如下图所示。
+1. 在 " **类别详细信息**" 下的 " **日志** " 部分中，选择要记录的请求的类型。 所有匿名请求都是读取请求，因此请选择 " **StorageRead** " 以捕获匿名请求。
+1. 在 " **目标详细信息**" 下，选择 " **发送到 Log Analytics**"。 选择之前创建的 "订阅" 和 "Log Analytics" 工作区，如下图所示。
 
     :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="显示如何为日志记录请求创建诊断设置的屏幕截图":::
 
-创建诊断设置后，随后会根据该设置记录对存储帐户的请求。 有关详细信息，请参阅[创建诊断设置以收集 Azure 中的资源日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
+创建诊断设置后，随后会根据该设置记录对存储帐户的请求。 有关详细信息，请参阅 [创建诊断设置以收集 Azure 中的资源日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
 
-有关 Azure Monitor 中的 Azure 存储日志中可用的字段的参考，请参阅[资源日志（预览）](../common/monitor-storage-reference.md#resource-logs-preview)。
+有关 Azure Monitor 中的 Azure 存储日志中可用的字段的参考，请参阅 [资源日志 (预览版) ](../common/monitor-storage-reference.md#resource-logs-preview)。
 
 #### <a name="query-logs-for-anonymous-requests"></a>匿名请求的查询日志
 
-Azure Monitor 中的 Azure 存储日志包含用于向存储帐户发出请求的授权类型。 在日志查询中，筛选**AuthenticationType**属性以查看匿名请求。
+Azure Monitor 中的 Azure 存储日志包含用于向存储帐户发出请求的授权类型。 在日志查询中，筛选 **AuthenticationType** 属性以查看匿名请求。
 
 若要检索过去7天对 Blob 存储的匿名请求的日志，请打开 Log Analytics 工作区。 接下来，将以下查询粘贴到新的日志查询中并运行：
 
@@ -102,13 +103,13 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-你还可以根据此查询配置警报规则，以通知你有关匿名请求的信息。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/platform/alerts-log.md)。
+你还可以根据此查询配置警报规则，以通知你有关匿名请求的信息。 有关详细信息，请参阅 [使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/platform/alerts-log.md)。
 
 ## <a name="remediate-anonymous-public-access"></a>修正匿名公共访问
 
-评估对存储帐户中的容器和 blob 的匿名请求后，可以采取措施限制或阻止公共访问。 如果你的存储帐户中的某些容器可能需要提供公共访问权限，则可以在存储帐户中配置每个容器的公共访问设置。 此选项提供对公共访问的最精细控制。 有关详细信息，请参阅[设置容器的公共访问级别](anonymous-read-access-configure.md#set-the-public-access-level-for-a-container)。
+评估对存储帐户中的容器和 blob 的匿名请求后，可以采取措施限制或阻止公共访问。 如果你的存储帐户中的某些容器可能需要提供公共访问权限，则可以在存储帐户中配置每个容器的公共访问设置。 此选项提供对公共访问的最精细控制。 有关详细信息，请参阅 [设置容器的公共访问级别](anonymous-read-access-configure.md#set-the-public-access-level-for-a-container)。
 
-为增强安全性，可以禁止对整个存储帐户进行公共访问。 存储帐户的公共访问设置将覆盖该帐户中的容器的各个设置。 如果你不允许对存储帐户进行公共访问，则任何配置为允许公共访问的容器将不再以匿名方式进行访问。 有关详细信息，请参阅[允许或禁止访问存储帐户的公共读取权限](anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)。
+为增强安全性，可以禁止对整个存储帐户进行公共访问。 存储帐户的公共访问设置将覆盖该帐户中的容器的各个设置。 如果你不允许对存储帐户进行公共访问，则任何配置为允许公共访问的容器将不再以匿名方式进行访问。 有关详细信息，请参阅 [允许或禁止访问存储帐户的公共读取权限](anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)。
 
 如果你的方案需要某些容器需要提供公共访问权限，则可能建议将这些容器及其 blob 移动到保留用于公共访问的存储帐户中。 然后，你可以禁止对任何其他存储帐户进行公共访问。
 
@@ -160,7 +161,7 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 ### <a name="check-the-public-access-setting-for-multiple-accounts"></a>检查多个帐户的公共访问设置
 
-若要在具有最佳性能的一组存储帐户中检查公共访问设置，可以使用 Azure 门户中的 Azure 资源图资源管理器。 若要了解有关使用资源图资源管理器的详细信息，请参阅[快速入门：使用 Azure 资源关系图资源管理器运行第一个资源图形查询](/azure/governance/resource-graph/first-query-portal)。
+若要在具有最佳性能的一组存储帐户中检查公共访问设置，可以使用 Azure 门户中的 Azure 资源图资源管理器。 若要了解有关使用资源图资源管理器的详细信息，请参阅 [快速入门：使用 Azure 资源关系图资源管理器运行第一个资源图形查询](/azure/governance/resource-graph/first-query-portal)。
 
 在资源图资源管理器中运行以下查询将返回存储帐户的列表，并显示每个帐户的公共访问设置：
 
@@ -177,16 +178,16 @@ resources
 
 ### <a name="create-a-policy-with-an-audit-effect"></a>创建具有审核效果的策略
 
-Azure 策略支持确定对资源评估策略规则时会发生什么情况的影响。 当资源不符合标准，但不停止请求时，审核效果将创建警告。 有关效果的详细信息，请参阅[了解 Azure 策略影响](../../governance/policy/concepts/effects.md)。
+Azure 策略支持确定对资源评估策略规则时会发生什么情况的影响。 当资源不符合标准，但不停止请求时，审核效果将创建警告。 有关效果的详细信息，请参阅 [了解 Azure 策略影响](../../governance/policy/concepts/effects.md)。
 
 若要为具有 Azure 门户的存储帐户的公共访问设置创建策略，请执行以下步骤：
 
 1. 在 Azure 门户中，导航到 "Azure 策略服务"。
-1. 在 "**创作**" 部分下，选择 "**定义**"。
-1. 选择 "**添加策略定义**"，创建新策略定义。
-1. 对于 "**定义位置**" 字段，请选择 "**更多**" 按钮以指定审核策略资源所在的位置。
+1. 在 " **创作** " 部分下，选择 " **定义**"。
+1. 选择 " **添加策略定义** "，创建新策略定义。
+1. 对于 " **定义位置** " 字段，请选择 " **更多** " 按钮以指定审核策略资源所在的位置。
 1. 指定策略的名称。 您可以根据需要指定描述和类别。
-1. 在 "**策略规则**" 下，将以下策略定义添加到 " **policyRule** " 部分。
+1. 在 " **策略规则**" 下，将以下策略定义添加到 " **policyRule** " 部分。
 
     ```json
     {
@@ -214,22 +215,22 @@ Azure 策略支持确定对资源评估策略规则时会发生什么情况的�
 
 ### <a name="assign-the-policy"></a>分配策略
 
-接下来，将策略分配给资源。 策略的作用域对应于该资源及其下的所有资源。 有关策略分配的详细信息，请参阅[Azure 策略分配结构](../../governance/policy/concepts/assignment-structure.md)。
+接下来，将策略分配给资源。 策略的作用域对应于该资源及其下的所有资源。 有关策略分配的详细信息，请参阅 [Azure 策略分配结构](../../governance/policy/concepts/assignment-structure.md)。
 
 若要将策略分配到 Azure 门户，请执行以下步骤：
 
 1. 在 Azure 门户中，导航到 "Azure 策略服务"。
-1. 在 "**创作**" 部分下，选择 "**分配**"。
-1. 选择 "**分配策略**" 以创建新的策略分配。
-1. 对于 "**作用域**" 字段，请选择策略分配的作用域。
-1. 对于 "**策略定义**" 字段，请选择 "**更多**" 按钮，然后从列表中选择在上一部分中定义的策略。
+1. 在 " **创作** " 部分下，选择 " **分配**"。
+1. 选择 " **分配策略** " 以创建新的策略分配。
+1. 对于 " **作用域** " 字段，请选择策略分配的作用域。
+1. 对于 " **策略定义** " 字段，请选择 " **更多** " 按钮，然后从列表中选择在上一部分中定义的策略。
 1. 提供策略分配的名称。 说明是可选的。
-1. 将 "**策略强制**集" 设置为 "*已启用*"。 此设置不影响审核策略。
-1. 选择 "**查看 + 创建**" 创建分配。
+1. 将 " **策略强制** 集" 设置为 " *已启用*"。 此设置不影响审核策略。
+1. 选择 " **查看 + 创建** " 创建分配。
 
 ### <a name="view-compliance-report"></a>查看相容性报告
 
-分配策略后，可以查看符合性报告。 审核策略的相容性报告提供有关不符合策略的存储帐户的信息。 有关详细信息，请参阅[获取策略符合性数据](../../governance/policy/how-to/get-compliance-data.md)。
+分配策略后，可以查看符合性报告。 审核策略的相容性报告提供有关不符合策略的存储帐户的信息。 有关详细信息，请参阅 [获取策略符合性数据](../../governance/policy/how-to/get-compliance-data.md)。
 
 创建策略分配后，相容性报告可能需要几分钟的时间。
 
@@ -246,9 +247,9 @@ Azure 策略支持确定对资源评估策略规则时会发生什么情况的�
 
 Azure 策略通过确保 Azure 资源符合要求和标准来支持云监管。 若要确保组织中的存储帐户仅允许授权的请求，你可以创建一个策略，该策略阻止创建新的存储帐户，并使用允许匿名请求的公共访问设置。 如果该帐户的公共访问设置不符合策略，则此策略还将阻止对现有帐户进行所有配置更改。
 
-强制策略使用拒绝效果来阻止请求创建或修改存储帐户以允许公共访问。 有关效果的详细信息，请参阅[了解 Azure 策略影响](../../governance/policy/concepts/effects.md)。
+强制策略使用拒绝效果来阻止请求创建或修改存储帐户以允许公共访问。 有关效果的详细信息，请参阅 [了解 Azure 策略影响](../../governance/policy/concepts/effects.md)。
 
-若要创建对允许匿名请求的公共访问设置具有拒绝影响的策略，请遵循[使用 Azure 策略审核符合性](#use-azure-policy-to-audit-for-compliance)中所述的相同步骤，但在策略定义的**policyRule**节中提供以下 JSON：
+若要创建对允许匿名请求的公共访问设置具有拒绝影响的策略，请遵循 [使用 Azure 策略审核符合性](#use-azure-policy-to-audit-for-compliance)中所述的相同步骤，但在策略定义的 **policyRule** 节中提供以下 JSON：
 
 ```json
 {
@@ -272,9 +273,9 @@ Azure 策略通过确保 Azure 资源符合要求和标准来支持云监管。 
 }
 ```
 
-创建具有拒绝效果的策略并将其分配给作用域后，用户无法创建允许公共访问的存储帐户。 用户也不能对当前允许公共访问的现有存储帐户进行任何配置更改。 尝试这样做会导致错误。 存储帐户的公共访问设置必须设置为**false** ，才能继续创建或配置帐户。
+创建具有拒绝效果的策略并将其分配给作用域后，用户无法创建允许公共访问的存储帐户。 用户也不能对当前允许公共访问的现有存储帐户进行任何配置更改。 尝试这样做会导致错误。 存储帐户的公共访问设置必须设置为 **false** ，才能继续创建或配置帐户。
 
-下图显示当你尝试创建一个允许公共访问的存储帐户（新帐户的默认值）时，如果策略具有拒绝影响，则该错误将需要公共访问权限。
+下图显示了当你尝试创建一个存储帐户时，如果你尝试创建一个存储帐户以允许公共访问 (新帐户的默认值，则在此情况下) 会要求拒绝公共访问。
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="显示在违反策略时创建存储帐户时出现的错误的屏幕截图":::
 

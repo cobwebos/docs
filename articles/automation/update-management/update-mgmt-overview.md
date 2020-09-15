@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: c95bd7523a57c2de02686d3cd06190e60550de0a
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: ab2c584b1e62ac8296c4e9489a72489cd815fc3c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024120"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089847"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -108,7 +108,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 可以将更新管理与 Microsoft Endpoint Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将更新管理与 Microsoft Endpoint Configuration Manager](update-mgmt-mecmintegration.md)。 对于由 Configuration Manager 环境中的站点托管的 Windows 服务器，需要[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)。 
 
-默认情况下，从 Azure 市场部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。 将 Windows VM 添加到工作区时，此行为不会更改。 如果不主动使用更新管理来管理更新，则会应用默认行为（即自动应用更新）。
+默认情况下，从 Azure Marketplace 部署的 Windows Vm 设置为接收来自 Windows 更新服务的自动更新。 将 Windows VM 添加到工作区时，此行为不会更改。 如果不主动使用更新管理来管理更新，则会应用默认行为（即自动应用更新）。
 
 > [!NOTE]
 > 可以修改组策略，以便仅由用户而非系统来执行计算机重启。 如果在用户不进行手动交互的情况下，更新管理无权重启计算机，则托管计算机可能会停滞。 有关详细信息，请参阅[配置自动更新的组策略设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)。
@@ -122,7 +122,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 有关如何安装适用于 Linux 的 Log Analytics 代理以及如何下载最新版本的信息，请参阅[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/agent-linux.md)。
 
-基于 Azure 市场中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的 VM 注册为访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md)。 对于任何其他 Linux 发行版，必须使用发行版支持的方法从发行版联机文件存储库对其进行更新。
+通过 Azure Marketplace 中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的 Vm 将被注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI) ](../../virtual-machines/workloads/redhat/redhat-rhui.md) 。 对于任何其他 Linux 发行版，必须使用发行版支持的方法从发行版联机文件存储库对其进行更新。
 
 ## <a name="permissions"></a>权限
 
@@ -136,7 +136,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 启用更新管理后，任何直接连接到 Log Analytics 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，为支持更新管理的 Runbook 提供支持。
 
-更新管理托管的每个 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 这些组使用 `Hostname FQDN_GUID` 命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试会失败。 这些组仅用于为更新管理提供支持。
+更新管理托管的每个 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 这些组使用 `Hostname FQDN_GUID` 命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试会失败。 这些组仅用于为更新管理提供支持。 若要详细了解如何查看配置为混合 Runbook 辅助角色的 Windows 计算机的列表，请参阅 [查看混合 runbook](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)辅助角色。
 
 如果为更新管理和混合 Runbook 辅助角色组成员身份使用同一帐户，则可以将 Windows 计算机添加到自动化帐户中的混合 Runbook 辅助角色组来为自动化 Runbook 提供支持。 此功能是在 7.2.12024.0 版本的混合 Runbook 辅助角色中添加的。
 
