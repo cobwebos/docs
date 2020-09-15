@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 68b81fa8cf110b47581e482e7e546821d40aef62
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435144"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526521"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -79,7 +79,7 @@ ms.locfileid: "89435144"
    某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。 这些触发器在触发时返回的消息数至少为 1，至多为触发器的**最大消息计数**属性指定的消息数。
 
     > [!NOTE]
-    > 自动完成触发器会自动完成一条消息，但只有在下一次触发器运行时才会完成。 此行为可能会影响逻辑应用的设计。 例如，如果你将自动完成触发器设置为每分钟检查一次消息，但在服务总线端将锁定持续时间设置为30秒，则结果为在完成该消息时出现 "锁定已过期" 的错误。 需要将锁定持续时间设置为长度超过轮询间隔的值。
+    > 自动完成触发器会自动完成一条消息，但只有在下一次触发器运行时才会完成。 此行为可能会影响逻辑应用的设计。 例如，应避免更改自动完成触发器的并发性，因为如果逻辑应用进入限制状态，此更改可能会导致重复的消息。 更改并发控制可创建以下条件：已跳过限制的触发器和 `WorkflowRunInProgress` 代码，完成操作不会发生，下一次触发器运行发生在轮询间隔之后。 您必须将服务总线锁定持续时间设置为比轮询间隔长的值。 但尽管此设置，但如果逻辑应用在下一个轮询间隔内仍处于限制状态，消息仍可能无法完成。
 
 1. 如果触发器是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
 

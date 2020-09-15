@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716990"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526963"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用无密码安全密钥登录到本地资源) 
 
@@ -46,7 +46,7 @@ Azure AD Kerberos Server 对象在本地 Active Directory 中创建，然后安�
 
 组织还必须满足以下软件要求。
 
-- 设备必须运行 Windows 10 内部版本18945或更高版本。
+- 设备必须运行 Windows 10 版本2004或更高版本。
 - 您必须具有 [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)版本的1.4.32.0 或更高版本。
   - 有关可用 Azure AD 混合身份验证选项的详细信息，请参阅 [为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](../hybrid/choose-ad-authn.md) ，并 [选择要用于 Azure AD Connect 的安装类型](../hybrid/how-to-connect-install-select-installation.md)。
 - Windows Server 域控制器必须安装下列修补程序：
@@ -109,7 +109,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 此命令输出 Azure AD Kerberos 服务器的属性。 您可以查看属性以验证所有内容是否都按正确的顺序进行。
 
-| Property | 说明 |
+| 属性 | 说明 |
 | --- | --- |
 | ID | AD DS DC 对象的唯一 ID。 此 ID 有时称为 "槽" 或它是 "分支 ID"。 |
 | DomainDnsName | Active Directory 域的 DNS 域名。 |

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717143"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526997"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
 
@@ -82,7 +82,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 用户将其无密码方法注册为 Azure 多因素身份验证注册流的一部分。 使用用户名和密码以及另一个注册方法的多重身份验证可以作为回退，以防它们在某些情况下无法使用其电话或安全密钥。
 
-### <a name="licensing"></a>许可 
+### <a name="licensing"></a>授权 
 无密码 authentication 无需额外付费，不过某些先决条件可能需要高级订阅。 [Azure Active Directory 许可页面](https://azure.microsoft.com/pricing/details/active-directory/)中提供详细的功能和许可信息。 
 
 ## <a name="develop-a-plan"></a>制定计划
@@ -93,7 +93,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 下表概述了要在此项目中实现的用例。
 
-| 区域 | 说明 |
+| 领域 | 说明 |
 | --- | --- |
 | **访问** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
 | **审核** | 管理员可使用使用情况数据进行近实时审核。 <br> 使用情况数据至少每29天下载到企业系统，或使用 SIEM 工具。 |
@@ -160,7 +160,7 @@ Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下�
 -    Windows 10 版本1809支持 FIDO2 登录，并可能需要部署 FIDO2 密钥制造商提供的软件。 建议使用版本1903或更高版本。 
 
 **对于已加入域的混合 Azure Active Directory 设备**： 
--    Windows 10 预览体验内部版本18945或更高版本
+-    Windows 10 版本2004或更高版本
 -    已充分修补运行 Windows Server 2016 或2019的域服务器。
 -    最新版本的 Azure AD Connect
 
@@ -294,7 +294,7 @@ Azure AD 将条目添加到审核日志中：
 
 | Azure AD 角色 | 说明 |
 | --- | --- |
-| 全局管理员角色|可实现组合注册体验的最小特权角色。 |
+| 全局管理员|可实现组合注册体验的最小特权角色。 |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法。 |
 | 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
 

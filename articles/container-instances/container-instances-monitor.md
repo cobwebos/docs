@@ -3,12 +3,12 @@ title: 监视容器实例
 description: 如何监视 Azure 容器实例中的容器消耗的计算资源，例如 CPU 和内存。
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116361"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526691"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 
@@ -44,7 +44,7 @@ Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这�
 1. 在“概览”页中选择一个指标图表，例如“CPU”。**** **** 
 1. 选择“应用拆分”按钮，然后选择“容器名称”****。****
 
-![维度][dimension]
+![屏幕捕获显示了选定 "应用拆分" 并选择 "容器名称" 的容器实例的指标。][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>获取指标 - Azure CLI
 

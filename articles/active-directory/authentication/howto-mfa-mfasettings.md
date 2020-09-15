@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068806"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526878"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -25,13 +25,13 @@ ms.locfileid: "90068806"
 
 Azure 门户中提供以下 Azure 多重身份验证设置：
 
-| 功能 | 说明 |
+| Feature | 说明 |
 | ------- | ----------- |
 | [帐户锁定](#account-lockout) | 如果行中拒绝过多的身份验证尝试次数过多，请暂时锁定帐户以使用 Azure 多重身份验证。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 阻止特定用户接收 Azure 多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户在被阻止或被手动解除阻止时，将在90天内保持被阻止。 |
 | [欺诈警报](#fraud-alert) | 配置允许用户报告欺诈验证请求的设置。 |
 | [通知](#notifications) | 允许通过 MFA 服务器来通知事件。 |
-| [OATH 令牌](concept-authentication-methods.md#oath-tokens) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
+| [OATH 令牌](concept-authentication-oath-tokens.md) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
 | [电话呼叫设置](#phone-call-settings) | 为云和本地环境配置与电话呼叫和问候语相关的设置。 |
 | 提供程序 | 此项会显示任何现有的与帐户相关联的身份验证提供程序。 自 2018 年 9 月 1 日起，可能无法创建新的身份验证提供程序 |
 

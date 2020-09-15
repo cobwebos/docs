@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0613af3d286a9c670d09b2e72c2807c018753455
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669229"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524991"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>准备源计算机以推送安装移动代理
 
@@ -63,7 +63,7 @@ ms.locfileid: "89669229"
 11. 在“管理帐户”选项卡中，选择“添加帐户”。********
 12. 添加已创建的帐户。
 13. 输入为计算机启用复制时使用的凭据。
-1. 用于更新或保护 SUSE Linux Enterprise Server 11 SP3 计算机的其他步骤。 [确保配置服务器中提供最新版本](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)。
+1. 用于更新或保护 SUSE Linux Enterprise Server 11 SP3 或 RHEL 5 或 Debian 7 计算机的其他步骤。 [确保配置服务器中提供最新版本](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。
 
 ## <a name="anti-virus-on-replicated-machines"></a>复制计算机上的防病毒
 

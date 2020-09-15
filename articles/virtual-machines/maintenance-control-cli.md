@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675853"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528170"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>使用维护控制和 Azure CLI 来控制更新
 
@@ -37,7 +37,7 @@ az maintenance configuration create \
 
 使用 `--maintenanceScope host` 可确保将维护配置用于控制对主机的更新。
 
-如果尝试创建同名的但位于不同位置的配置，则会收到错误。 配置名称必须是你的订阅特有的。
+如果尝试创建同名的但位于不同位置的配置，则会收到错误。 配置名称在资源组中必须是唯一的。
 
 可以使用 `az maintenance configuration list` 来查询可用的维护配置。
 

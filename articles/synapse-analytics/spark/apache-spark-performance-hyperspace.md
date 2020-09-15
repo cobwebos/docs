@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: e87ecc14907c6e0618de47ffdbd334d8ba03ec99
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500616"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526334"
 ---
 # <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>超空间-索引子系统 Apache Spark
 
@@ -392,7 +392,8 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 索引配置对象： IndexConfig，用于指定索引的索引名称、索引和包含列。
 首先，对示例数据创建三个超空间索引：名为 "deptIndex1" 和 "deptIndex2" 的部门数据集中的两个索引，以及一个名为 "empIndex" 的员工数据集的索引。 对于每个索引，需要一个相应的 IndexConfig 来捕获名称，以及索引列和包含列的列列表。 下面的单元格将创建这些 indexConfigs，并将其输出列出。
 
-注意：索引列是显示在筛选器或联接条件中的列。 "包含列" 是在选择/项目中显示的列。
+> [!Note]
+> 索引列是显示在筛选器或联接条件中的列。 "包含列" 是在选择/项目中显示的列。
 
 例如，在下面的查询中：
 
@@ -508,8 +509,9 @@ import com.microsoft.hyperspace.index.Index
 
 下面的单元格使用数据帧的 "show" 操作，以表格形式完整打印行并显示索引的详细信息。 对于每个索引，可以在元数据中看到超空间中存储的所有信息。 你将立即注意到以下内容：
 
-"indexName"、"indexedColumns"、"includedColumns" 和 "status" 是用户通常引用的字段。
-"dfSignature" 由超空间自动生成，并且对于每个索引都是唯一的。 超空间在内部使用此签名来维护索引，并在查询时对其进行利用。
+* "indexName"、"indexedColumns"、"includedColumns" 和 "status" 是用户通常引用的字段。
+* "dfSignature" 由超空间自动生成，并且对于每个索引都是唯一的。 超空间在内部使用此签名来维护索引，并在查询时对其进行利用。
+
 在下面的输出中，所有三个索引都应有 "ACTIVE" 作为状态，并且它们的名称、索引列和包含列应与上面的索引配置中定义的内容相匹配。
 
 :::zone pivot = "programming-language-scala"
@@ -839,7 +841,7 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 | 7876|  ADAMS|    20|
 ```
 
-&nbsp;&nbsp;仅显示前五行 &nbsp;&nbsp;
+&nbsp;&nbsp;这仅显示前5行 &nbsp;&nbsp;
 
 ```console
 |deptId|  deptName|location|
@@ -1369,8 +1371,8 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 以下两个单元格中显示了此方案的示例：
 
-第一个单元向原始部门数据添加了另外两个部门。 它会读取和打印部门列表，以验证是否正确添加了新部门。 输出显示了六个部门，共四个：四个，两个是新的。 调用 "refreshIndex" 更新 "deptIndex1"，以便索引捕获新部门。
-第二个单元格运行范围选择查询示例。 结果现在应包含四个部门：两个部门，在运行上面的查询之前看到了两个部门，另外两个是我们刚刚添加的新部门。
+* 第一个单元向原始部门数据添加了另外两个部门。 它会读取和打印部门列表，以验证是否正确添加了新部门。 输出显示了六个部门，共四个：四个，两个是新的。 调用 "refreshIndex" 更新 "deptIndex1"，以便索引捕获新部门。
+* 第二个单元格运行范围选择查询示例。 结果现在应包含四个部门：两个部门，在运行上面的查询之前看到了两个部门，另外两个是我们刚刚添加的新部门。
 
 ### <a name="specific-index-refresh"></a>特定索引刷新
 

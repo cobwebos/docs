@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 云预配支持的拓扑和方案
-description: 本主题介绍云预配的先决条件和硬件要求。
+description: 了解使用 Azure AD Connect 云预配 Azure AD) 拓扑的各种本地和 Azure Active Directory (。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,15 +11,15 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77620875"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526844"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 云预配支持的拓扑和方案
-本文介绍使用 Azure AD Connect 云预配的各种本地和 Azure Active Directory （Azure AD）拓扑。 本文仅包括支持的配置和方案。
+本文介绍使用 Azure AD Connect 云预配 Azure AD) 拓扑的各种本地和 Azure Active Directory (。 本文仅包括支持的配置和方案。
 
 > [!IMPORTANT]
 > Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 云设置。 这些配置或操作中的任何一种都可能会导致 Azure AD Connect 云预配的状态不一致或不受支持。 因此，Microsoft 无法提供这种部署的技术支持。
@@ -36,7 +36,7 @@ ms.locfileid: "77620875"
 ## <a name="single-forest-single-azure-ad-tenant"></a>单个林，单个 Azure AD 租户
 ![单个林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-最简单的拓扑是具有一个或多个域的单个本地林，以及单个 Azure AD 租户。  有关此方案的示例，请参阅[教程：包含单个 Azure AD 租户的单个林](tutorial-single-forest.md)
+最简单的拓扑是具有一个或多个域的单个本地林，以及单个 Azure AD 租户。  有关此方案的示例，请参阅 [教程：包含单个 Azure AD 租户的单个林](tutorial-single-forest.md)
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>多林、单个 Azure AD 租户
@@ -47,12 +47,12 @@ ms.locfileid: "77620875"
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的现有林，具有云预配的新林
 ![单个林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
-这种情况下，拓扑类似于多林方案，但这种情况涉及到现有 Azure AD Connect 环境，然后使用 Azure AD Connect 云预配引入新的林。  有关此方案的示例，请参阅[教程：包含单个 Azure AD 租户的现有林](tutorial-existing-forest.md)
+这种情况下，拓扑类似于多林方案，但这种情况涉及到现有 Azure AD Connect 环境，然后使用 Azure AD Connect 云预配引入新的林。  有关此方案的示例，请参阅 [教程：包含单个 Azure AD 租户的现有林](tutorial-existing-forest.md)
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>试验 Azure AD Connect 现有混合 AD 林中的云预配
 ![单个林和单个租户 ](media/plan-cloud-provisioning-topologies/migrate.png) 的拓扑，试验方案涉及同一林中的 Azure AD Connect 和 Azure AD Connect 云预配，并相应地设置用户和组的作用域。 注意：对象只应位于其中一个工具的范围内。 
 
-有关此方案的示例，请参阅[教程：在现有同步的 AD 林中试点 Azure AD Connect 云预配](tutorial-pilot-aadc-aadccp.md)
+有关此方案的示例，请参阅 [教程：在现有同步的 AD 林中试点 Azure AD Connect 云预配](tutorial-pilot-aadc-aadccp.md)
 
 
 

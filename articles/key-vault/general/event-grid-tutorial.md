@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 283c66eb3b49b60b87283c5d94cc4f110adceffe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 034bdce96d88deb31a071682a3c02200a64699dd
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588741"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087531"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>通过 Azure 事件网格接收和响应 Key Vault 通知
 
-通过将 Azure Key Vault 与 Azure 事件网格集成（目前提供预览版），用户可以在 Key Vault 中存储的机密的状态发生更改时收到通知。 有关该功能的概述，请参阅[通过事件网格监视 Key Vault](event-grid-overview.md)。
+通过将 Azure Key Vault 与 Azure 事件网格集成，用户可以在 Key Vault 中存储的机密的状态发生更改时收到通知。 有关该功能的概述，请参阅[通过事件网格监视 Key Vault](event-grid-overview.md)。
 
 本指南描述如何通过事件网格接收 Key Vault 通知，以及如何通过 Azure 自动化对状态更改做出响应。
 
@@ -32,7 +32,7 @@ ms.locfileid: "88588741"
 
 事件网格是针对云的事件处理服务。 通过按照本指南中的步骤操作，你将订阅 Key Vault 事件，并将事件路由到自动化。 当 Key Vault 中的机密之一即将过期时，则会通知事件网格状态更改，并对终结点发出 HTTP POST。 然后，Webhook 会触发 PowerShell 脚本的自动化执行。
 
-![HTTP POST 流程图](../media/image1.png)
+![HTTP POST 流程图](../media/event-grid-tutorial-1.png)
 
 ## <a name="create-an-automation-account"></a>创建自动化帐户
 
@@ -46,7 +46,7 @@ ms.locfileid: "88588741"
 
 1.  选择 **添加** 。
 
-    ![自动化帐户窗格](../media/image2.png)
+    ![自动化帐户窗格](../media/event-grid-tutorial-2.png)
 
 1.  在“添加自动化帐户”  窗格中填写所需信息，然后选择“创建”  。
 
@@ -54,7 +54,7 @@ ms.locfileid: "88588741"
 
 自动化帐户准备就绪后，创建 runbook。
 
-![创建 runbook UI](../media/image3.png)
+![创建 runbook UI](../media/event-grid-tutorial-3.png)
 
 1.  选择刚创建的自动化帐户。
 
@@ -92,7 +92,7 @@ write-Error "No input data found."
 }
 ```
 
-![发布 runbook UI](../media/image4.png)
+![发布 runbook UI](../media/event-grid-tutorial-4.png)
 
 ## <a name="create-a-webhook"></a>创建 Webhook
 
@@ -102,7 +102,7 @@ write-Error "No input data found."
 
 1.  选择“添加 Webhook”  。
 
-    ![添加 Webhook 按钮](../media/image5.png)
+    ![添加 Webhook 按钮](../media/event-grid-tutorial-5.png)
 
 1.  选择“创建新 Webhook”  。
 
@@ -115,15 +115,15 @@ write-Error "No input data found."
 
 1. 选择“确定”，然后选择“创建”   。
 
-    ![创建新 Webhook UI](../media/image6.png)
+    ![创建新 Webhook UI](../media/event-grid-tutorial-6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>创建事件网格订阅
 
 通过 [Azure 门户](https://portal.azure.com)创建事件网格订阅。
 
-1.  转到 Key Vault，然后选择“事件”  选项卡。如果看不到，请确保使用的是[门户的预览版本](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)。
+1.  转到 Key Vault，然后选择“事件”**** 选项卡。
 
-    ![Azure 门户中的事件选项卡](../media/image7.png)
+    ![Azure 门户中的事件选项卡](../media/event-grid-tutorial-7.png)
 
 1.  选择“事件订阅”按钮  。
 
@@ -143,15 +143,15 @@ write-Error "No input data found."
 
 1.  选择“创建”  。
 
-    ![创建事件订阅](../media/image8.png)
+    ![创建事件订阅](../media/event-grid-tutorial-8.png)
 
 ## <a name="test-and-verify"></a>测试和验证
 
 验证是否已正确配置事件网格订阅。 此测试假设你已订阅[创建事件网格订阅](#create-an-event-grid-subscription)中的“已创建机密新版本”通知，并且你具有在 Key Vault 中创建机密新版本所需的权限。
 
-![事件网格订阅的测试配置](../media/image9.png)
+![事件网格订阅的测试配置](../media/event-grid-tutorial-9.png)
 
-![创建机密窗格](../media/image10.png)
+![创建机密窗格](../media/event-grid-tutorial-10.png)
 
 1.  在 Azure 门户中转到 Key Vault。
 
@@ -161,7 +161,7 @@ write-Error "No input data found."
 
 1.  在“指标”  下，查看是否捕获了事件。 需要两个事件：SecretNewVersion 和 SecretNearExpiry。 这些事件会验证网格是否已成功捕获 Key Vault 中机密的状态更改。
 
-    ![“指标”窗格：查看捕获的事件](../media/image11.png)
+    ![“指标”窗格：查看捕获的事件](../media/event-grid-tutorial-11.png)
 
 1.  返回到自动化帐户。
 
@@ -169,13 +169,13 @@ write-Error "No input data found."
 
 1.  选择“Webhook”  选项卡，然后确认“上次触发时间”时间戳在创建新机密后的 60 秒内。 该结果可确认事件网格对 Webhook 发出了 POST（其中包含 Key Vault 中状态更改的事件详细信息），并触发了 Webhook。
 
-    ![Webhook 选项卡，上次触发的时间戳](../media/image12.png)
+    ![Webhook 选项卡，上次触发的时间戳](../media/event-grid-tutorial-12.png)
 
 1. 返回到 Runbook，然后选择“概述”  选项卡。
 
 1. 查看“最近的作业”  列表。 应会看到已创建作业且状态为“已完成”。 这可确认 Webhook 触发了 Runbook 来开始执行其脚本。
 
-    ![Webhook 最近的作业列表](../media/image13.png)
+    ![Webhook 最近的作业列表](../media/event-grid-tutorial-13.png)
 
 1. 选择最近的作业并查看从事件网格发送到 Webhook 的 POST 请求。 检查 JSON 并确保 Key Vault 和事件类型的参数正确。 如果 JSON 对象中的“事件类型”参数与 Key Vault 中发生的事件匹配（在本示例中为 Microsoft.KeyVault.SecretNearExpiry），则测试成功。
 
@@ -194,9 +194,9 @@ write-Error "No input data found."
 了解详细信息：
 
 
-- 概述：[通过 Azure 事件网格监视 Key Vault（预览版）](event-grid-overview.md)
+- 概述：[通过 Azure 事件网格监视 Key Vault](event-grid-overview.md)
 - 如何：[Key Vault 机密发生更改时接收电子邮件](event-grid-logicapps.md)
-- [Azure Key Vault 的 Azure 事件网格事件架构（预览版）](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 的 Azure 事件网格事件架构](../../event-grid/event-schema-key-vault.md)
 - [Azure Key Vault 概述](overview.md)
 - [Azure 事件网格概述](../../event-grid/overview.md)
 - [Azure 自动化概述](../../automation/index.yml)

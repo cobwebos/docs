@@ -2,13 +2,13 @@
 title: Azure Migrate 设备常见问题
 description: 获取有关 Azure Migrate 设备的常见问题的解答。
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.date: 09/15/2020
+ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514537"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526555"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -76,7 +76,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 下面是有关如何存储数据的详细信息：
 
 - 收集的数据将安全地存储在 Microsoft 订阅中的 CosmosDB 中。 删除 Azure Migrate 项目时，数据将被删除。 存储由 Azure Migrate 处理。 不能为收集的数据专门选择存储帐户。
-- 如果使用 [依赖关系可视化](concepts-dependency-visualization.md)，收集的数据将存储在 azure 订阅中创建的 azure Log Analytics 工作区的美国中。 删除订阅中的 "Log Analytics" 工作区时，数据将被删除。
+- 如果使用 [依赖关系可视化](concepts-dependency-visualization.md)，则收集的数据存储在 azure 订阅中创建的 azure Log Analytics 工作区中。 删除订阅中的 "Log Analytics" 工作区时，数据将被删除。 
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>连续分析期间上传了多少数据？
 
@@ -101,7 +101,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 设备是否可以连接到多个 vCenter 服务器？
 
-否。 [Azure Migrate 设备](migrate-appliance.md)与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，必须部署多个设备。 
+不是。 [Azure Migrate 设备](migrate-appliance.md)与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，必须部署多个设备。 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 项目可以有多个设备吗？
 
@@ -109,7 +109,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate 设备/复制设备是否可以连接到同一 vCenter？
 
-可以。 你可以同时添加用于评估和无代理 VMware 迁移) 的 Azure Migrate (设备，并将复制设备 (用于 VMware Vm 的基于代理的迁移) 到相同的 vCenter 服务器。 但请确保未在同一 VM 上设置这两个设备，并且当前不支持这两个设备。
+是的。 你可以同时添加用于评估和无代理 VMware 迁移) 的 Azure Migrate (设备，并将复制设备 (用于 VMware Vm 的基于代理的迁移) 到相同的 vCenter 服务器。 但请确保未在同一 VM 上设置这两个设备，并且当前不支持这两个设备。
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>可以通过设备发现多少 Vm 或服务器？
 
@@ -131,11 +131,11 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>能否在 Azure VM 上设置设备？
 
-否。 当前不支持此选项。 
+不是。 当前不支持此选项。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>是否可以在 ESXi 主机上发现？
 
-否。 若要发现 VMware Vm，你必须拥有 vCenter Server。
+不是。 若要发现 VMware Vm，你必须拥有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何实现更新设备？
 
@@ -145,7 +145,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="can-i-check-agent-health"></a>能否检查代理运行状况？
 
-可以。 在门户中，前往 Azure Migrate： Server 评估或 Azure Migrate： Server 迁移工具的 " **代理运行状况** " 页。 可以在 Azure 与设备上的 "发现" 和 "评估" 代理之间检查连接状态。
+是的。 在门户中，前往 Azure Migrate： Server 评估或 Azure Migrate： Server 迁移工具的 " **代理运行状况** " 页。 可以在 Azure 与设备上的 "发现" 和 "评估" 代理之间检查连接状态。
 
 ## <a name="next-steps"></a>后续步骤
 

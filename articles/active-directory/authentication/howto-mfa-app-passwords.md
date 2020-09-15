@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 12be5109f339223c11970041922ed2172f67382b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224911"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526895"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>启用 Azure 多重身份验证并将其用于使用应用密码的旧版应用程序
 
-某些应用程序（如 Office 2010 或更早版本）和 iOS 11 之前的 Apple Mail 不支持多重身份验证。 应用未配置为接受身份验证或提示的辅助形式。 若要在为用户帐户启用 Azure 多重身份验证的情况下安全地使用这些应用程序，可以使用应用密码。 这些应用密码替换了你的传统密码，以允许应用绕过多重身份验证并正常工作。
+在 iOS 11 之前，某些旧的非浏览器应用（如 Office 2010 或更早版本）和 Apple Mail 不了解身份验证过程中的暂停或中断。 如果为用户启用了 Azure 多重身份验证，并尝试使用这些较旧的非浏览器应用之一，则无法成功进行身份验证。 若要在为用户帐户启用 Azure 多重身份验证的情况下安全地使用这些应用程序，可以使用应用密码。 这些应用密码替换了你的传统密码，以允许应用绕过多重身份验证并正常工作。
 
 Microsoft Office 2013 客户端及更高版本支持现代身份验证。 Office 2013 客户端（包括 Outlook）支持新式身份验证协议，并且可以启用以进行双重验证。 启用客户端后，客户端即不要求使用应用密码。
 

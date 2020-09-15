@@ -1,241 +1,100 @@
 ---
-title: 客户拥有的用于日志引入的存储帐户
-description: 使用自己的存储帐户将日志数据引入到 Azure Monitor 中的 Log Analytics 工作区中。
+title: 在 Azure Monitor 中使用客户托管的存储帐户 Log Analytics
+description: 为 Log Analytics 方案使用自己的存储帐户
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 05/20/2020
-ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+author: noakup
+ms.author: noakuper
+ms.date: 09/03/2020
+ms.openlocfilehash: 9d54e6eb84e3269eb95f8d314875474f78536652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962666"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526419"
 ---
-# <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor 上客户拥有的用于日志引入的存储帐户
+# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor 中使用客户托管的存储帐户 Log Analytics
 
-Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志](./diagnostics-extension-logs.md)等数据类型的数据引入过程中使用存储帐户。 在数据引入过程中，先将日志发送到存储帐户，然后再引入到 Log Analytics 或 Application Insights。 如果希望在数据引入过程中对数据进行控制，可以使用自己的存储帐户，不要使用服务托管存储。 使用自己的存储帐户，可以控制引入期间日志的访问、内容、加密和保留。 我们将其称为自带存储或 BYOS。 
+Log Analytics 依赖于各种情况下的 Azure 存储。 此使用通常会自动管理。 但是，某些情况要求你提供和管理你自己的存储帐户，也称为客户管理的存储帐户。 本文档详细介绍了客户管理的存储的使用情况，用于引入 WAD/LAD 日志、专用链接特定方案和 CMK 加密。 
 
-需要 BYOS 的一种方案是通过专用链接进行网络隔离。 使用 VNet 时，通常需要进行网络隔离，并限制公共 internet 访问。 在这种情况下，访问日志数据引入的 Azure Monitor 服务存储可能会被完全阻止，或被视为不好的做法。 相反，应通过 VNet 中客户所有的存储帐户引入日志，或从该帐户轻松访问日志。
+> [!NOTE]
+> 假设格式设置和内容可能会更改，则建议您不要对内容进行依赖 Log Analytics 上传到客户管理的存储。
 
-另一种方案是通过客户托管密钥 (CMK) 加密日志。 客户可以通过使用存储日志的群集上的 CMK 加密日志数据。 也可以在数据引入过程中使用同一密钥加密日志。
+## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>引入 Azure 诊断扩展日志 (WAD/LAD) 
+Azure 诊断扩展代理 (也分别称为 Windows 和 Linux 代理的 WAD 和 LAD，) 收集各种操作系统日志，并将它们存储在客户管理的存储帐户上。 然后，可以将这些日志引入 Log Analytics 来查看和分析这些日志。
+如何从存储帐户收集 Azure 诊断扩展日志使用 [Azure 门户](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs#collect-logs-from-azure-storage) 将存储帐户作为存储数据源连接到 Log Analytics 工作区，或者通过调用 [存储见解 API](https://docs.microsoft.com/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)将存储帐户连接到工作区。
 
-## <a name="data-types-supported"></a>支持的数据类型
+支持的数据类型：
+* Syslog
+* Windows 事件
+* Service Fabric
+* ETW 事件
+* IIS 日志
 
-从存储帐户中引入的数据类型包括以下各项。 有关数据引入类型的详细信息，请参阅[从 Azure 诊断扩展到 Azure Monitor 日志的数据收集](./diagnostics-extension-logs.md)。
+## <a name="using-private-links"></a>使用专用链接
+在某些用例中，当使用专用链接连接到 Azure Monitor 资源时，需要客户托管的存储帐户。 其中一种情况是引入自定义日志或 IIS 日志。 这些数据类型首先作为 blob 上传到中介 Azure 存储帐户，然后引入到工作区。 同样，某些 Azure Monitor 解决方案可能会使用存储帐户来存储 Azure 安全中心解决方案使用的大型文件，如 Watson 转储文件。 
 
-| 类型 | 表格信息 |
-|:-----|:------------------|
-| IIS 日志 | Blob:wad-iis-logfiles|
-|Windows 事件日志 | 表：WADWindowsEventLogsTable |
-| Syslog | 表：LinuxsyslogVer2v0 |
-| Windows ETW 日志 | 表：WADETWEventTable|
-| Service Fabric | 表：WADServiceFabricSystemEventTable <br/> WADServiceFabricReliableActorEventTable<br/> WADServiceFabricReliableServicEventTable |
-| 自定义日志 | 不适用 |
-| Azure 安全中心 Watson 转储文件 | 不适用|  
+##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>需要客户管理的存储的专用链接方案
+* 引入自定义日志和 IIS 日志
+* 允许 ASC 解决方案收集 Watson 转储文件
 
-## <a name="storage-account-requirements"></a>存储帐户要求 
-存储帐户必须满足以下要求：
+### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>如何通过专用链接使用客户管理的存储帐户
+##### <a name="workspace-requirements"></a>工作区要求
+通过专用链接连接到 Azure Monitor 时，Log Analytics 代理只能将日志发送到通过专用链接链接到网络的工作区。 此规则要求正确配置 Azure Monitor 专用链接范围 (AMPLS) 对象，将其连接到你的工作区，然后通过专用链接将 AMPLS 连接到你的网络。 有关 AMPLS 配置过程的详细信息，请参阅 [使用 Azure 专用链接安全地将网络连接到 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)。 
+##### <a name="storage-account-requirements"></a>存储帐户要求
+要使存储帐户成功连接到专用链接，必须执行以下操作：
+* 位于 VNet 或对等互连网络上，并通过专用链接连接到 VNet。 这允许 VNet 上的代理将日志发送到存储帐户。
+* 与它所链接到的工作区位于同一区域。
+* 允许 Azure Monitor 访问存储帐户。 如果选择仅允许选择网络访问存储帐户，则还应允许此例外： "允许受信任的 Microsoft 服务访问此存储帐户"。 这允许 Log Analytics 读取引入到此存储帐户的日志。
+* 如果工作区也处理来自其他网络的流量，则应将存储帐户配置为允许来自相关网络/internet 的传入流量。
 
-- 可以访问写入日志进行存储的 VNet 中的资源。
-- 必须与其所链接到的工作区位于同一区域。
-- 允许 Azure Monitor 访问-如果选择限制存储帐户访问选择网络，请确保允许此例外： *允许受信任的 Microsoft 服务访问此存储帐户*。
+##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>将你的存储帐户链接到 Log Analytics 工作区
+可以通过 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) 或 [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts)将存储帐户链接到工作区。 适用的 dataSourceType 值：
+* CustomLogs –在引入过程中将存储用于自定义日志和 IIS 日志。
+* AzureWatson –使用 ASC (Azure 安全中心上传的 Watson 转储文件) 解决方案。 有关管理保留、替换链接的存储帐户和监视存储帐户活动的详细信息，请参阅 [管理链接存储帐户](#managing-linked-storage-accounts)。 
 
-## <a name="process-to-configure-customer-owned-storage"></a>配置客户所有的存储的过程
-使用自己的存储帐户进行数据引入的基本过程如下所示：
+## <a name="encrypting-data-with-cmk"></a>用 CMK 加密数据
+Azure 存储会对存储帐户中的所有静态数据进行加密。 默认情况下，它使用 Microsoft 托管的密钥对数据进行加密 (MMK) 。 但是，Azure 存储将允许使用 Azure 密钥保管库中客户托管的密钥 (CMK) 来加密存储数据。 你可以将自己的密钥导入 Azure Key Vault 中，也可以使用 Azure Key Vault Api 来生成密钥。
+##### <a name="cmk-scenarios-that-require-a-customer-managed-storage-account"></a>需要客户管理的存储帐户的 CMK 方案
+* 用 CMK 加密日志-警报查询
+* 用 CMK 加密保存的查询
 
-1. 创建存储帐户或选择现有帐户。
-2. 将存储帐户链接到 Log Analytics 工作区。
-3. 通过评审其负载和保留期管理存储，确保其按预期运行。
+### <a name="how-to-apply-cmk-to-customer-managed-storage-accounts"></a>如何将 CMK 应用于客户管理的存储帐户
+##### <a name="storage-account-requirements"></a>存储帐户要求
+存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure 存储加密和密钥管理的详细信息，请参阅[静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
 
-创建和删除链接的唯一方法是通过 REST API。 以下各章节提供了每个进程所需的特定 API 请求详细信息。
+##### <a name="apply-cmk-to-your-storage-accounts"></a>将 CMK 应用于你的存储帐户
+若要将 Azure 存储帐户配置为使用客户管理的密钥与 Azure Key Vault，请[Azure portal](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal?toc=/azure/storage/blobs/toc.json)使用 Azure 门户[PowerShell](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-powershell?toc=/azure/storage/blobs/toc.json)或[CLI](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-cli?toc=/azure/storage/blobs/toc.json)。 
 
-## <a name="command-line-and-rest-api"></a>命令行和 REST API
+## <a name="managing-linked-storage-accounts"></a>管理链接存储帐户
 
-### <a name="command-line"></a>命令行
-若要创建和管理链接存储帐户，请使用 [az monitor log analytics 工作区链接存储](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
+若要将存储帐户链接或取消链接到工作区，请使用 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) 或 [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts)。
 
-### <a name="request-and-cli-values"></a>请求和 CLI 值
+##### <a name="create-or-modify-a-link"></a>创建或修改链接
+当你将存储帐户链接到工作区时，Log Analytics 会开始使用它，而不是服务所拥有的存储帐户。 可以 
+* 注册多个存储帐户以分散它们之间的日志负载
+* 为多个工作区重复使用同一存储帐户
 
-#### <a name="datasourcetype"></a>dataSourceType 
+##### <a name="unlink-a-storage-account"></a>取消存储帐户链接
+若要停止使用存储帐户，请将存储从工作区中取消链接。 取消链接工作区中的所有存储帐户意味着 Log Analytics 将尝试依赖于服务托管的存储帐户。 如果网络对 internet 的访问权限有限，则这些存储可能不可用，任何依赖于存储的情况都将失败。
 
-- AzureWatson - 将此值用于 Azure 安全中心 Azure Watson 转储文件。
-- CustomLogs - 将此值用于以下数据类型：
-  - 自定义日志
-  - IIS 日志
-  - 事件 (Windows)
-  - Syslog (Linux)
-  - ETW 日志
-  - Service Fabric 事件
-  - 评估数据  
+##### <a name="replace-a-storage-account"></a>替换存储帐户
+若要替换用于引入的存储帐户，
+1.  **创建新存储帐户的链接。** 日志记录代理将获取更新的配置，并开始将数据发送到新的存储。 此过程可能需要几分钟的时间。
+2.  **然后取消链接旧存储帐户，以便代理停止写入已删除的帐户。** 数据引入过程将一直读取此帐户中的数据，直到全部引入。 在所有日志引入完之前，请不要删除存储帐户。
 
-#### <a name="storage_account_resource_id"></a>storage_account_resource_id
-此值使用以下结构：
+### <a name="maintaining-storage-accounts"></a>维护存储帐户
+##### <a name="manage-log-retention"></a>管理日志保留
+使用自己的存储帐户时，保留时间取决于你。 换句话说，Log Analytics 不会删除存储在专用存储上的日志。 相反，应设置策略以根据你的喜好处理负载。
 
-```
-subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
-```
-
-
-## <a name="get-linked-storage-accounts"></a>获取链接的存储帐户
-
-### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>获取所有数据源类型的链接存储帐户
-
-#### <a name="api-request"></a>API 请求
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>响应
-
-```json
-{
-    [
-        {
-            "properties":
-            {
-                "dataSourceType": "CustomLogs",
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_1>",
-                    "<storage_account_resource_id_2>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-            "name": "CustomLogs",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        },
-        {
-            "properties":
-            {
-                "dataSourceType": " AzureWatson "
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_3>",
-                    "<storage_account_resource_id_4>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/AzureWatson",
-            "name": "AzureWatson",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        }
-    ]
-}
-```
-
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>获取特定数据源类型的链接存储帐户
-
-#### <a name="api-request"></a>API 请求
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>响应 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-## <a name="create-or-modify-a-link"></a>创建或修改链接
-
-将存储帐户链接到工作区后，Log Analytics 将开始使用该存储帐户，而不是使用服务所拥有的存储帐户。 可以同时注册存储帐户列表，多个工作区可以使用同一存储帐户。
-
-如果工作区既处理 VNet 资源，也处理 VNet 外的资源，则应确保其不会拒绝来自 Internet 的流量。 存储空间应与工作区具有相同的设置，并可供 VNet 之外的资源使用。 
-
-### <a name="api-request"></a>API 请求
-
-```
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-### <a name="payload"></a>有效负载
-
-```json
-{
-    "properties":
-    {
-        "storageAccountIds  " : 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    }
-}
-```
-
-### <a name="response"></a>响应
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs"
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-"id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-"name": "CustomLogs",
-"type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-
-## <a name="unlink-a-storage-account"></a>取消存储帐户链接
-如果决定停止使用存储帐户进行数据引入，或替换使用的工作区，则应取消存储帐户与工作区之间的链接。
-
-取消所有存储帐户与工作区之间的链接意味着引入数据将尝试依赖服务托管存储帐户。 如果代理在具有 Internet 访问权限的 VNet 上运行，预计引入数据会失败。 工作区必须具有可从受监视资源访问的链接存储帐户。
-
-在删除存储帐户之前，应确保其包含的所有数据都已引入到工作区中。 作为预防措施，请在链接到备用存储后保持存储帐户可用。 引入完所有内容后才可将其删除，可看到新数据已写入新连接的存储帐户。
-
-
-### <a name="api-request"></a>API 请求
-```
-DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-## <a name="replace-a-storage-account"></a>替换存储帐户
-
-若要替换用于数据引入的存储帐户，请先为新存储帐户创建链接。 日志记录代理将获取更新的配置，并开始将数据发送到新的存储。
-
-接下来取消与旧存储帐户的链接，以便代理停止写入已删除的帐户。 数据引入过程将一直读取此帐户中的数据，直到全部引入。 在所有日志引入完之前，请不要删除存储帐户。
-
-代理配置将在几分钟后刷新，并将切换到新存储。
-
-## <a name="manage-storage-account"></a>管理存储帐户
-
-### <a name="load"></a>加载
-
-开始限制请求之前，存储帐户可以处理某些读取和写入请求。 限制请求会延长引入日志所花费的时间，并且可能会导致数据丢失。 如果存储已超载，请注册额外的存储帐户，并在帐户之间分布负载。 
+##### <a name="consider-load"></a>考虑负载
+在开始限制请求之前，存储帐户可以处理读取和写入请求的某个负载 (请参阅 [Blob 存储的可伸缩性和性能目标](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account) ，了解更多详细信息) 。 限制会影响引入日志所用的时间。 如果你的存储帐户超载，请注册额外的存储帐户，以便在它们之间分布负载。 若要监视存储帐户的容量和性能，请查看 [Azure 门户中的见解]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview)。
 
 ### <a name="related-charges"></a>相关费用
-
-存储帐户按存储数据量、存储类型和冗余类型收费。 有关详细信息，请参阅[块 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)和[表存储定价](https://azure.microsoft.com/pricing/details/storage/tables/)。
-
-如果工作区已注册的存储帐户位于另一个区域，则根据[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)对流出量进行收费。
-
+存储帐户按存储的数据量、存储类型和冗余类型进行收费。 有关详细信息，请参阅[块 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs)和[表存储定价](https://azure.microsoft.com/pricing/details/storage/tables)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关设置专用链接的详细信息，请参阅 [使用 Azure 专用链接安全地将网络连接到 Azure Monitor](private-link-security.md)
-
+- 了解 [如何使用 Azure 专用链接安全地将网络连接到 Azure Monitor](private-link-security.md)
+- 了解 [Azure Monitor 客户管理的密钥](customer-managed-keys.md)

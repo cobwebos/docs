@@ -2,11 +2,37 @@
   href: index.yml
 - name: 简介
   href: introduction.md
-- name: 安全控制
+- name: 安全控制 (v2)
   expanded: true
   items:
     - name: Azure 安全控制概述
       href: overview.md
+    - name: 网络安全
+      href: security-controls-v2-network-security.md
+    - name: 身份管理
+      href: security-controls-v2-identity-management.md
+    - name: 特权访问
+      href: security-controls-v2-privileged-access.md
+    - name: 数据保护
+      href: security-controls-v2-data-protection.md
+    - name: 资产管理
+      href: security-controls-v2-asset-management.md
+    - name: 日志记录和威胁检测
+      href: security-controls-v2-logging-threat-detection.md
+    - name: 事件响应
+      href: security-controls-v2-incident-response.md
+    - name: 态势和漏洞管理
+      href: security-controls-v2-posture-vulnerability-management.md
+    - name: 终结点安全
+      href: security-controls-v2-endpoint-security.md
+    - name: 备份和恢复
+      href: security-controls-v2-backup-recovery.md
+    - name: 治理和策略
+      href: security-controls-v2-governance-strategy.md
+- name: 安全控制 (v1)
+  items:
+    - name: Azure 安全控制 (v1) 概述
+      href: overview-v1.md
     - name: 网络安全
       href: security-control-network-security.md
     - name: 日志记录和监视

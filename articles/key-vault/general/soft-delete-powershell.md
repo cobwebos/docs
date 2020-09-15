@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 251159c4fcf27ceb4d8b0dddeecbe501c7346e9e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 05ff5d2f7ff87d2ce58f135330487f746cc5c1c7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073227"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528357"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -47,7 +47,7 @@ Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，�
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
 |清除|永久删除已删除的密钥保管库及其所有内容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-有关权限和访问控制的详细信息，请参阅[保护密钥保管库](secure-your-key-vault.md)。
+有关权限和访问控制的详细信息，请参阅[保护 Key Vault](secure-your-key-vault.md)。
 
 ## <a name="enabling-soft-delete"></a>启用软删除
 
@@ -283,4 +283,4 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ## <a name="other-resources"></a>其他资源
 
 - 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)。
-- 有关 Azure Key Vault 使用情况的综述，请参阅[什么是 Azure Key Vault？](overview.md)。
+- 有关 Azure 密钥保管库使用情况的综述，请参阅[什么是 Azure 密钥保管库？](overview.md)。

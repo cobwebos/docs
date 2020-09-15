@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0121c42c5d498aa79109c874981b9de0f8f4b7c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2781ef69ce85e82dab45a9f890ef5e6862949d98
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588868"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087977"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>使用逻辑应用接收有关 Key Vault 机密状态更改的电子邮件
 
 本指南介绍如何使用 [Azure 逻辑应用](../../logic-apps/index.yml)对通过 [Azure 事件网格](../../event-grid/index.yml)收到的 Azure Key Vault 事件做出响应。 本文结束时，我们会完成设置一个 Azure 逻辑应用。每次在 Azure Key Vault 中创建机密时，该应用就会发送一封通知电子邮件。
 
-有关 Azure Key Vault/Azure 事件网格集成的概述，请参阅[使用 Azure 事件网格（预览版）监视 Key Vault](event-grid-overview.md)。
+有关 Azure Key Vault/Azure 事件网格集成的概述，请参阅[使用 Azure 事件网格监视 Key Vault](event-grid-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +56,7 @@ ms.locfileid: "88588868"
 1. 搜索“电子邮件”。 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook**。 使用其他电子邮件提供程序时执行的步骤类似。
 1. 选择“发送电子邮件 (V2)”操作。****
 
-   ![逻辑应用设计器 - 添加电子邮件](../media/eventgrid-logicappdesigner3.png)
+   ![逻辑应用设计器 - 发送电子邮件](../media/eventgrid-logicappdesigner3.png)
 
 1. 生成电子邮件模板：
     - **发件人：** 输入接收通知电子邮件的电子邮件地址。 对于本教程，请使用你可以访问的电子邮件帐户进行测试。
@@ -64,18 +64,18 @@ ms.locfileid: "88588868"
 
     电子邮件模板可能如以下示例所示。
 
-    ![逻辑应用设计器 - 添加电子邮件](../media/eventgrid-logicappdesigner4.png)
+    ![逻辑应用设计器 - 电子邮件正文](../media/eventgrid-logicappdesigner4.png)
 
 8. 单击“另存为”。
 9. 为新的逻辑应用输入“名称”****，并单击“创建”****。
     
-    ![逻辑应用设计器 - 添加电子邮件](../media/eventgrid-logicappdesigner5.png)
+    ![逻辑应用设计器 - 创建](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>测试和验证
 
 1.  在 Azure 门户上，转到 Key Vault，然后选择“事件”>“事件订阅”****。  验证是否已创建新的订阅
     
-    ![逻辑应用设计器 - 添加电子邮件](../media/eventgrid-logicapps-kvnewsubs.png)
+    ![逻辑应用设计器 - 测试和验证](../media/eventgrid-logicapps-kvnewsubs.png)
 
 1.  转到 Key Vault，依次选择“机密”**** 和“+ 生成/导入”****。 创建用于测试的新机密，命名密钥并将其余参数保留为默认设置。
 
@@ -87,8 +87,8 @@ ms.locfileid: "88588868"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 概述：[通过 Azure 事件网格监视 Key Vault（预览版）](event-grid-overview.md)
+- 概述：[通过 Azure 事件网格监视 Key Vault](event-grid-overview.md)
 - 如何：[将 Key Vault 通知路由到 Azure 自动化](event-grid-tutorial.md)。
-- [Azure Key Vault 的 Azure 事件网格事件架构（预览版）](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 的 Azure 事件网格事件架构](../../event-grid/event-schema-key-vault.md)
 - 详细了解 [Azure 事件网格](../../event-grid/index.yml)。
 - 详细了解 [Azure 应用服务的逻辑应用功能](../../logic-apps/index.yml)。

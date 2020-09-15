@@ -3,12 +3,12 @@ title: 在 IoT Edge 设备上部署实时视频分析 - Azure
 description: 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eecc17e36f35e7552c0be83f7ecc38f2d644f18d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 30a3bda4069bb8c07d7c9be3fd8a3a2b1171eba2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439616"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526317"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
 
@@ -107,7 +107,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
     * **IoT Edge 模块名称**：lvaEdge
     * **映像 URI**：mcr.microsoft.com/media/live-video-analytics:1.0    
     
-    ![添加](./media/deploy-iot-edge-device/add.png)
+    ![屏幕截图显示 "模块设置" 选项卡。](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
     > 如本过程所述，在“模块设置”、“容器创建选项”和“模块孪生设置”选项卡上指定值之前，请勿选择“添加”   。
@@ -217,7 +217,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 可能需要等待一段时间，该模块才会在设备上启动并向 IoT 中心发回报告。 刷新页面以查看更新的状态。
 状态代码：200 -OK 表示 [IoT Edge 运行时](../../iot-edge/iot-edge-runtime.md)状况良好并且运行正常。
 
-![状态](./media/deploy-iot-edge-device/status.png)
+![屏幕截图显示 IoT Edge 运行时的状态值。](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>调用直接方法
 
@@ -225,7 +225,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
 1. 单击创建的边缘模块，此操作会将你转到其配置页面。  
 
-    ![模块](./media/deploy-iot-edge-device/modules.png)
+    ![屏幕截图显示 edge 模块的配置页。](./media/deploy-iot-edge-device/modules.png)
 1. 单击“直接方法”菜单选项。
 
     > [!NOTE] 

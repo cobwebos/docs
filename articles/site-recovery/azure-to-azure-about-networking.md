@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068364"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527371"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -35,7 +35,7 @@ ms.locfileid: "90068364"
 
 ![客户环境](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-通常，网络使用防火墙和网络安全组 (NSG) 进行保护。 防火墙使用基于 URL 或 IP 的允许列表来控制网络连接。 NSG 提供使用 IP 地址范围控制网络连接的规则。
+通常，网络使用防火墙和网络安全组 (NSG) 进行保护。 应使用服务标记来控制网络连接。 Nsg 应允许多个服务标记来控制出站连接。
 
 >[!IMPORTANT]
 > Site Recovery 不支持使用经过身份验证的代理控制网络连接，并且无法启用复制。
@@ -45,6 +45,8 @@ ms.locfileid: "90068364"
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许以下 Site Recovery URL：
 
+>[!NOTE]
+> 不应执行基于 IP 地址的允许列表来控制出站连接。
 
 **URL** | **详细信息**
 --- | ---
@@ -63,7 +65,7 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
     - 为源区域创建基于[存储服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则。
     - 允许这些地址，才能从 VM 将数据写入到缓存存储帐户。
 - 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
-- 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，这样就可以访问 Site Recovery 监视功能。
+- 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，以允许访问 Site Recovery 监视。
 - 创建基于 AzureSiteRecovery 服务标记的 NSG 规则，以允许访问任何区域中的 Site Recovery 服务。
 - 创建基于 AzureKeyVault 服务标记的 NSG 规则。 仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做。
 - 创建基于 GuestAndHybridManagement 服务标记的 NSG 规则。 仅在通过门户为复制项启用移动代理自动升级时才需要这样做。
@@ -86,7 +88,7 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS (443) 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
+3. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS () 443 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
 
 4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
@@ -98,7 +100,7 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 2. 基于 NSG 规则为“AzureActiveDirectory”创建出站 HTTPS (443) 安全规则。
 
-3. 与上述安全规则类似，为 NSG 上的 "EastUS" 创建出站 HTTPS () 443 安全规则，该规则对应于源位置。 这样就可以访问 Site Recovery 监视功能。
+3. 与上面的安全规则类似，为与源位置对应的 NSG 上的 "EastUS" 创建出站 HTTPS (443) 安全规则。 这样就可以访问 Site Recovery 监视功能。
 
 4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 

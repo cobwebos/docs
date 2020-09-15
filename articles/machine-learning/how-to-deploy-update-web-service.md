@@ -1,20 +1,23 @@
 ---
-title: 更新已部署的 Web 服务
-author: gvashishtha
+title: " 更新 Web 服务"
+titleSuffix: Azure Machine Learning
+description: 了解如何刷新已部署的 web 服务 Azure 机器学习
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 354d9b84c614447b6a957a6dba65984f4c97cac3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+author: gvashishtha
+ms.date: 07/31/2020
+ms.openlocfilehash: 52d7c42701e20c16272843a50c6c45847545d747
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645968"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525161"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 Web 服务
 
-本文介绍如何更新通过 Azure 机器学习部署的 Web 服务。
+本文介绍如何更新使用 Azure 机器学习部署的 web 服务。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -85,7 +88,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查部署失败问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败的问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)

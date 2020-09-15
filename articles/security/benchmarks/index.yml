@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
+  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213559"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90058659"
 landingContent:
 - title: 关于 Azure 安全基准
   linkLists:
@@ -34,22 +34,22 @@ landingContent:
       url: ../../security-center/index.yml
     - text: Azure 安全基础知识
       url: ../fundamentals/index.yml
-- title: Azure 安全基准控制
+- title: Azure 安全基准 V2 控制
   linkLists:
   - linkListType: overview
     links:
     - text: 网络安全
-      url: security-control-network-security.md
-    - text: 日志记录和监视
-      url: security-control-logging-monitoring.md
-    - text: 标识和访问控制
-      url: security-control-identity-access-control.md
+      url: security-controls-v2-network-security.md
+    - text: 身份管理
+      url: security-controls-v2-identity-management.md
+    - text: 特权访问
+      url: security-controls-v2-privileged-access.md
     - text: 数据保护
-      url: security-control-data-protection.md
-    - text: 漏洞管理
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-data-protection.md
+    - text: 资产管理
+      url: security-controls-v2-asset-management.md
     - text: 查看详细信息
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
 - title: 计算安全基准
   linkLists:
   - linkListType: overview

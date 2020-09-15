@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226420"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526734"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
@@ -168,6 +168,14 @@ ms.locfileid: "89226420"
 }
 ```
 
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>包含应用程序的内容/x-url 编码类型
+
+若要在 HTTP 请求的正文中提供 url 编码数据，必须指定数据具有 `application/x-www-form-urlencoded` 内容类型。 在 HTTP 触发器或操作中，添加 `content-type` 标头。 将标头值设置为 `application/x-www-form-urlencoded` 。
+
+例如，假设有一个逻辑应用，该应用将 HTTP POST 请求发送到支持该类型的网站 `application/x-www-form-urlencoded` 。 下面是此操作的可能外观：
+
+![显示 HTTP 请求并将 "content-type" 标头设置为 "application/x-url 编码" 的屏幕截图](./media/connectors-native-http/http-action-urlencoded.png)
+
 <a name="asynchronous-pattern"></a>
 
 ## <a name="asynchronous-request-response-behavior"></a>异步请求-响应行为
@@ -263,4 +271,3 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 * [对其他服务和系统的出站调用进行安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)
-

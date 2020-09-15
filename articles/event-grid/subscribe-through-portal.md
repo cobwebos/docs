@@ -3,12 +3,12 @@ title: 通过门户创建 Azure 事件网格订阅
 description: 本文介绍如何使用 Azure 门户为支持的源（如 Azure Blob 存储）创建事件网格订阅。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119984"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526453"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
@@ -24,7 +24,7 @@ ms.locfileid: "86119984"
 
 1. 搜索“事件网格订阅”  ，并从可用选项中选择它。
 
-   ![搜索](./media/subscribe-through-portal/search.png)
+   ![屏幕捕获在选定了事件网格订阅的 Azure 门户中显示搜索。](./media/subscribe-through-portal/search.png)
 
 1. 选择“+ 事件订阅”。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "86119984"
 
    ![选择 Azure 订阅](./media/subscribe-through-portal/azure-subscription.png)
 
-1. 若要订阅此事件源的所有事件类型，请使“订阅所有事件类型”  选项保持选中状态。 否则，请为此订阅选择事件类型。
+1. 若要订阅此事件源的所有事件类型，请使“订阅所有事件类型”**** 选项保持选中状态。 否则，请为此订阅选择事件类型。
 
    ![选择事件类型](./media/subscribe-through-portal/select-event-types.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "86119984"
 
    ![提供订阅详细信息](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. 若要启用死信和自定义重试策略，请选择“其他功能”  。
+1. 若要启用死信和自定义重试策略，请选择“其他功能”****。
 
    ![选择其他功能](./media/subscribe-through-portal/select-additional-features.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "86119984"
 
    ![启用死信并重试](./media/subscribe-through-portal/set-deadletter-retry.png)
 
-1. 完成后，选择“创建”。 
+1. 完成后，选择“创建”。****
 
 ## <a name="create-subscription-on-resource"></a>创建关于资源的订阅
 
-某些事件源支持通过该资源的门户界面创建事件订阅。 选择事件源，并在左窗格中查找“事件”  。
+某些事件源支持通过该资源的门户界面创建事件订阅。 选择事件源，并在左窗格中查找“事件”****。
 
 ![提供订阅详细信息](./media/subscribe-through-portal/resource-events.png)
 

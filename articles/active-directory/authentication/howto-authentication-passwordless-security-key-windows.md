@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717959"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526980"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用对 Windows 10 设备的无密码安全密钥登录) 
 
@@ -32,8 +32,8 @@ ms.locfileid: "88717959"
 | [Azure 多重身份验证](howto-mfa-getstarted.md) | X | X |
 | [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md) | X | X |
 | 兼容的 [FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| WebAuthN 需要 Windows 10 版本1809或更高版本 | X | X |
-| [Azure AD 联接的设备](../devices/concept-azure-ad-join.md) 需要 Windows 10 版本1903或更高版本 | X |   |
+| WebAuthN 需要 Windows 10 版本1903或更高版本 | X | X |
+| [Azure AD 联接的设备](../devices/concept-azure-ad-join.md) 需要 Windows 10 版本1909或更高版本 | X |   |
 | [混合 Azure AD 联接的设备](../devices/concept-azure-ad-join-hybrid.md) 需要 Windows 10 版本2004或更高版本 |   | X |
 | 已充分修补 Windows Server 2016/2019 域控制器。 |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 版本1.4.32.0 或更高版本 |   | X |
@@ -56,7 +56,7 @@ ms.locfileid: "88717959"
 
 ## <a name="prepare-devices-for-preview"></a>为预览版准备设备
 
-在功能预览期间要试验的 Azure AD 联接的设备必须运行 Windows 10 版本1809或更高版本。 最佳体验是在 Windows 10 版本1903或更高版本上。
+在功能预览期间要试验的 Azure AD 联接的设备必须运行 Windows 10 版本1909或更高版本。
 
 混合 Azure AD 联接的设备必须运行 Windows 10 版本2004或更高版本。
 
@@ -125,7 +125,7 @@ ms.locfileid: "88717959"
 1. 若要应用创建的预配包，请参阅 [应用预配包](/windows/configuration/provisioning-packages/provisioning-apply-package)。
 
 > [!NOTE]
-> 运行 Windows 10 版本1809的设备还必须启用共享 PC 模式 (*EnableSharedPCMode*) 。 有关启用此功能的详细信息，请参阅 [使用 Windows 10 设置共享计算机或来宾 PC](/windows/configuration/set-up-shared-or-guest-pc)。
+> 运行 Windows 10 版本1903的设备还必须启用共享 PC 模式 (*EnableSharedPCMode*) 。 有关启用此功能的详细信息，请参阅 [使用 Windows 10 设置共享计算机或来宾 PC](/windows/configuration/set-up-shared-or-guest-pc)。
 
 ### <a name="enable-with-group-policy"></a>启用组策略
 

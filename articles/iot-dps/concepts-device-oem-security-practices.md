@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 3854f353e4ea0b78c0162681e0b89d37419105d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80529526"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527201"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>适用于 Azure IoT 设备制造商的安全做法
 随着越来越多的制造商发行 IoT 设备，了解常见做法指导会很有帮助。 本文汇总了在制造与 Azure IoT 设备预配服务 (DPS) 配合使用的设备时要考虑的建议安全做法。  
@@ -98,7 +98,7 @@ TPM 的缺点：
 管理公钥基础结构 (PKI) 可能成本高昂且复杂，  尤其是当你的公司在管理 PKI 方面没有任何经验时。 选项包括：
 - 使用第三方 PKI。 可以向第三方证书供应商购买中间签名证书。 或者，可以使用专用证书颁发机构 (CA)。 
 - 使用自我管理的 PKI。 你可以维护自己的 PKI 系统并生成自己的证书。
-- 使用[Azure Sphere](https://azure.microsoft.com/services/azure-sphere/)安全服务。 此选项仅适用于 Azure Sphere 设备。 
+- 使用 [Azure Sphere](https://azure.microsoft.com/services/azure-sphere/) 安全服务。 此选项仅适用于 Azure Sphere 设备。 
 
 #### <a name="where-certificates-are-stored"></a>证书的存储位置
 有一些因素会影响有关证书存储位置的决策。 这些因素包括设备类型、预期利润（是否可以承受安全存储的成本）、设备功能，以及设备上可使用的现有安全技术。 请考虑以下选项：
@@ -182,12 +182,12 @@ TPM 的缺点：
 #### <a name="step-5-device-is-installed-into-the-location"></a>步骤 5：将设备安装在目标位置
 设备抵达其最终目标位置后，将通过 DPS 完成自动预配过程。
 
-有关详细信息，请参阅[自动预配概念](concepts-auto-provisioning.md)和 [TPM 证明](concepts-tpm-attestation.md)。 
+有关详细信息，请参阅 [预配](about-iot-dps.md#provisioning-process) 和 [TPM 证明](concepts-tpm-attestation.md)。 
 
 ## <a name="resources"></a>资源
 
 除了本文中建议的安全做法以外，Azure IoT 还提供了一些资源来帮助用户选择安全硬件和创建安全 IoT 部署： 
-- Azure IoT[安全建议](../iot-fundamentals/security-recommendations.md)，指导部署过程。 
+- Azure IoT [安全建议](../iot-fundamentals/security-recommendations.md) ，指导部署过程。 
 - [Azure 安全中心](https://azure.microsoft.com/services/security-center/)提供了一个服务来帮助创建安全 IoT 部署。 
 - 有关评估硬件环境的帮助，请参阅白皮书[评估 IoT 安全性](https://download.microsoft.com/download/D/3/9/D3948E3C-D5DC-474E-B22F-81BA8ED7A446/Evaluating_Your_IOT_Security_whitepaper_EN_US.pdf)。 
 - 如需有关选择安全硬件的帮助，请参阅[适用于 IoT 部署的安全硬件](https://download.microsoft.com/download/C/0/5/C05276D6-E602-4BB1-98A4-C29C88E57566/The_right_secure_hardware_for_your_IoT_deployment_EN_US.pdf)。 

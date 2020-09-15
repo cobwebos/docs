@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 7e78c0d2538dbb6326df30d63ec1c38de48b62e6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 9c5c4247ab01a571613cad4f33832de152909b11
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057161"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527099"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>了解 Azure Database for MySQL 的根 CA 更改的更改
 
@@ -87,15 +87,15 @@ Azure Database for MySQL 将更改启用了 SSL 的客户端应用程序/驱动�
 不需要，你无需重新启动数据库服务器即可开始使用新证书。 此根证书是一种客户端更改，传入的客户端连接需要使用新证书来确保它们可以连接到数据库服务器。
 
 ### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. 如果在2020年10月26日之前未更新根证书，则会发生什么情况 (10/26/2020) ？
-如果在2020年11月30日之前未更新根证书，则通过 SSL/TLS 连接并对根证书进行验证的应用程序将无法与 MySQL 数据库服务器通信，应用程序将遇到 MySQL 数据库服务器的连接问题。
+如果在2020年10月26日之前未更新根证书，则通过 SSL/TLS 连接并对根证书进行验证的应用程序将无法与 MySQL 数据库服务器通信，应用程序将遇到 MySQL 数据库服务器的连接问题。
 
 ### <a name="4-do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>4. 是否需要为此更改计划维护停机时间？<BR>
-否。 由于此处的更改仅在客户端连接到数据库服务器，因此，此处不需要维护停机时间来进行此更改。
+不是。 由于此处的更改仅在客户端连接到数据库服务器，因此，此处不需要维护停机时间来进行此更改。
 
 ### <a name="5--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>5. 如果在 2020 (10/26/2020) 之前无法获得此更改的计划停机时间怎么办？
 由于用于连接到服务器的客户端需要更新证书信息（如 [此处](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修复部分所述），因此在这种情况下，服务器不需要停机。
 
-###  <a name="6-if-i-create-a-new-server-after-nov-30-2020-will-i-be-impacted"></a>6. 如果我在2020年11月30日之后创建一个新的服务器，将会受到影响吗？
+###  <a name="6-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>6. 如果我在2020年10月26日之后创建一个新服务器，是否会受到影响？
 对于10月26日之后创建的服务器 2020 (10/26/2020) ，你可以使用应用程序的新颁发的证书来使用 SSL 进行连接。
 
 ### <a name="7-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>7. Microsoft 更新其证书的频率或过期策略是什么？

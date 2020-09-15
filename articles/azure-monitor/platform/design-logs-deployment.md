@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551316"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527303"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
-Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics 工作区中。该工作区是一个 Azure 资源，也是一个用于收集和聚合数据的容器，充当管理边界。 尽管可以在 Azure 订阅中部署一个或多个工作区，但为了确保初始部署遵循我们的指导原则来提供经济高效、易管理、可缩放且符合组织需求的部署，应考虑到以下多种因素。
+Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics 工作区中。该工作区是一个 Azure 资源，也是一个用于收集和聚合数据的容器，充当管理边界。 虽然你可以在 Azure 订阅中部署一个或多个工作区，但你应了解以下几个事项，以确保你的初始部署遵循我们的指导原则，以便为你提供符合组织需求的经济高效、可管理和可伸缩的部署。
 
 工作区中的数据组织成表，每个表存储不同类型的数据，根据生成数据的资源，它还具有自身独特的属性集。 大多数数据源将数据写入到其各自在 Log Analytics 工作区中的表内。
 
@@ -131,7 +131,7 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 
 如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量的速率持续超出阈值，或者您很快就会到达此阈值，则可以通过打开支持请求来请求增加此阈值。 
 
-若要在你的工作区中收到 approching 或达到引入量速率限制的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，并在结果数为大于的情况下使用警报逻辑基数，计算时间为5分钟，频率为5分钟。
+若要在你的工作区中收到 approching 或达到引入量速率限制的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，该查询的结果数大于零，评估期为5分钟，频率为5分钟。
 
 引入量速率达到阈值的 80%：
 ```Kusto
@@ -152,9 +152,9 @@ Operation
 
 ![资源上下文设计示例](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 
-本方案涉及到 IT 组织订阅中的单个工作区设计，该设计不受数据主权或合规性的约束，或者需要映射到部署资源的区域。 此方案可让组织中的安全和 IT 管理团队利用与 Azure 访问管理之间的改进集成，以及更安全的访问控制。
+此方案涉及 IT 组织的订阅中的单个工作区设计，该设计不受数据主权或法规遵从性的约束，或者需要映射到你的资源部署到的区域。 它可让组织的安全和 IT 管理员团队利用改进的 Azure 访问管理集成和更安全的访问控制。
 
-支持由不同团队维护的基础结构和应用程序的所有资源、监视解决方案和见解（例如 Application Insights 和用于 VM 的 Azure Monitor）将配置为向 IT 组织集中式共享工作区转发收集的日志数据。 为每个团队的用户授予其已有权访问的资源的日志访问权限。
+所有资源、监视解决方案和见解（如 Application Insights 和用于 VM 的 Azure Monitor）、支持由不同团队维护的基础结构和应用程序配置为将其收集的日志数据转发到 IT 组织的集中共享工作区。 为每个团队的用户授予其已有权访问的资源的日志访问权限。
 
 部署工作区体系结构后，可以使用 [Azure Policy](../../governance/policy/overview.md) 对 Azure 资源强制实施此方案。 此方案可让你定义策略并确保 Azure 资源合规，因此它们将其所有资源日志发送到特定的工作区。 例如，使用 Azure 虚拟机或虚拟机规模集时，可以使用现有的策略来评估工作区合规性和报告结果，或者自定义策略，以便在不合规的情况下予以补救。  
 

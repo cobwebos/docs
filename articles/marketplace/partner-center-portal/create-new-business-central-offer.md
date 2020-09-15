@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 953d22e2dc41ca64af3793c8e0f67a203eb5ca7c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646855"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527082"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
@@ -71,9 +71,7 @@ ms.locfileid: "89646855"
 
 ### <a name="test-drive"></a>体验版
 
-体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 若要了解详细信息，请从 [什么是测试驱动器](../what-is-test-drive.md)开始。
-
-若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。
+此时，Dynamics 365 Business Central 产品/服务不支持测试驱动器。 若要从产品/服务中删除测试驱动器，请清除 " **启用测试驱动器** " 复选框。
 
 ### <a name="customer-leads"></a>潜在顾客
 
@@ -130,7 +128,7 @@ ms.locfileid: "89646855"
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 总结
+8. 摘要
 9. 说明
 10. 屏幕截图/视频
 
@@ -152,7 +150,7 @@ ms.locfileid: "89646855"
 
 ### <a name="search-keywords"></a>搜索关键字
 
-可选择输入搜索关键字（不超过 3 个），帮助客户在市场中查找你的产品/服务。 为了获得最佳结果，请尝试在说明中也使用这些关键字。
+可以视需要选择输入最多三个搜索关键字，以帮助客户在市场中查找你的产品/服务。 为了达到最佳效果，请尝试也在说明中使用这些关键字。
 
 ### <a name="products-your-app-works-with"></a>可与应用配合使用的产品
 
