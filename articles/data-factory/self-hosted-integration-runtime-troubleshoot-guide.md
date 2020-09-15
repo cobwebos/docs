@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: a6a0a62bd857dff575e17f47f1e2394375b08c45
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033653"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069469"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -46,25 +46,25 @@ ms.locfileid: "90033653"
 > 将对所有联机的自承载 IR 实例执行日志查看和上载请求。 请确保所有自承载 IR 实例都处于联机状态，以防丢失任何日志。 
 
 
-## <a name="self-hosted-ir-general-failure-or-error"></a>自承载 IR 一般故障或错误
+## <a name="self-hosted-ir-general-failure-or-error"></a>自承载 IR 一般性故障或错误
 
 ### <a name="tlsssl-certificate-issue"></a>TLS/SSL 证书问题
 
 #### <a name="symptoms"></a>症状
 
-尝试从**自承载 IR Configuration Manager**远程访问中 (高级) 启用 tls/ssl 证书时  ->  **Remote access from intranet**，请在选择 TLS/ssl 证书后，出现以下错误：
+尝试从“自承载 IR Configuration Manager” -> “从 intranet 执行远程访问”启用 TLS/SSL 证书（高级）时，选择 TLS/SSL 证书后将显示以下错误 ：
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
-在上述情况下，用户使用证书，并将 "microsoft.com" 作为最后一项。
+在上述情况下，用户使用的是以“microsoft.com”为最后一项的证书。
 
 #### <a name="cause"></a>原因
 
-这是 WCF 中的一个已知问题： WCF TLS/SSL 验证仅检查 SAN 中的最后一个 DNSName。 
+这是 WCF 中的一个已知问题：WCF TLS/SSL 验证仅检查 SAN 中的最后一个 DNSName。 
 
 #### <a name="resolution"></a>解决方法
 
-Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的原因通常是 SSL 证书不正确。 SAN 中的最后一个 DNSName 应该是有效的。 请按照以下步骤进行验证。 
+Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的原因通常是 SSL 证书不正确。 SAN 中的最后一个 DNSName 应该为有效。 请按照以下步骤进行验证。 
 1.  打开管理控制台，双击证书详细信息中的 " *使用者* " 和 " *使用者备用名称* "。 例如，在上面的示例中，" *使用者备用名称*" 中的最后一项是 "DNS 名称 = microsoft.com.com"，它是非法的。
 2.  请与证书颁发公司联系，以删除错误的 DNS 名称。
 
@@ -72,14 +72,14 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 #### <a name="symptoms"></a>症状
 
-尝试增加 Azure 数据工厂 UI 中的并发作业限制时，它会挂起，因为它会永久 *更新* 。
-并发作业的最大值设置为24，你需要增加计数，以便作业运行速度更快。 可以输入的最小值为3，可输入的最大值为32。 增加了从24到32的值，并按 "更新" 按钮上的 " *更新* " 按钮，如下面所示，它会停滞在 *更新* 中。 刷新后，客户仍将值视为24，并且它永远不会更新到32。
+尝试从 Azure 数据工厂 UI 增加并发作业限制时，它会永久卡在“正在更新”。
+并发作业的最大值已设置为 24，而你希望增加该值，使作业运行速度更快。 可输入的最小值为 3，可输入的最大值为 32。 增加了从24到32的值，并按 "更新" 按钮上的 " *更新* " 按钮，如下面所示，它会停滞在 *更新* 中。 刷新后，客户会看到值仍为 24，并且永远不会更新到 32。
 
 ![正在更新状态](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
 #### <a name="cause"></a>原因
 
-此设置存在限制，因为该值取决于计算机的 logicCore 和内存，只需将其调整为较小的值（如24），即可查看结果。
+此设置存在限制，因为该值取决于计算机 logicCore 和内存，你只能将其调整为较小的值（如 24），然后查看结果。
 
 > [!TIP] 
 > - 有关逻辑核心计数的详细信息以及如何查找计算机的逻辑核心计数的详细信息，请参阅 [此文](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)。
@@ -96,18 +96,18 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 #### <a name="cause"></a>原因
 
-当我们处理与 SSL/TLS 握手相关的事例时，我们可能会遇到一些与证书链验证相关的问题。 
+当我们处理与 SSL/TLS 握手相关的事例时，可能会遇到一些与证书链验证相关的问题。 
 
 #### <a name="resolution"></a>解决方法
 
 - 下面是对 x.509 证书链生成失败进行故障排除的快速而直观的方法。
  
-    1. 导出需要验证的证书。 前往 "管理计算机证书" 并找到要检查的证书，然后右键单击 "**所有任务**" "  ->  **导出**"。
+    1. 导出需要验证的证书。 转到“管理计算机证书”并找到要检查的证书，然后右键单击“所有任务” -> “导出” 。
     
         ![导出任务](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
     2. 将导出的证书复制到客户端计算机。 
-    3. 在客户端上，在 CMD 中运行以下命令。 请确保已将下面的 *\<certificate path>* 和占位符替换为 *\<output txt file path>* 相关路径。
+    3. 在客户端，使用 CMD 运行以下命令。 请确保已将下面的 *\<certificate path>* 和占位符替换为 *\<output txt file path>* 相关路径。
     
         ```
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
@@ -118,7 +118,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
-    4. 检查输出 txt 文件中是否有任何错误。 可以在 txt 文件末尾找到错误摘要。
+    4. 检查输出 txt 文件中是否有任何错误。 可在 txt 文件末尾找到错误摘要。
 
         例如： 
 
@@ -133,20 +133,20 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
     1. 可以通过检查证书的详细信息来获取此信息。
     
         ![证书详细信息](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
-    1. 运行以下命令。 请确保已将占位符替换 *\<certificate path>* 为证书的相关路径。
+    1. 运行下列命令。 请确保已将占位符替换 *\<certificate path>* 为证书的相关路径。
     
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. 然后，将打开 **URL 检索工具** 。 可以通过单击 " **检索** " 按钮，验证来自 AIA、CDP 和 OCSP 的证书。
+    1. 然后 URL 检索工具将会打开。 可通过单击“检索”按钮来验证 AIA、CDP 和 OCSP 中的证书。
 
         ![检索按钮](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
-        如果 AIA 的证书已 "验证"，并且 CDP 或 OCSP 的证书已 "验证"，则可以成功地构建证书链。
+        如果来自 AIA 的证书为“已验证”，并且来自 CDP 或 OCSP 的证书为“已验证”，则证书链可以成功构建。
 
-        如果在检索 AIA、CDP 时出现故障，请与网络团队合作，使客户端计算机可以连接到目标 URL。 如果可以验证 http 路径或 ldap 路径，则它会足够。
+        如果在检索 AIA、CDP 时出现故障，请与网络团队合作，使客户端计算机可以连接到目标 URL。 如果能验证 http 路径或 ldap 路径，则足够了。
 
-### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>自承载 IR 无法加载文件或程序集
+### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>自承载 IR 未能加载文件或程序集
 
 #### <a name="symptoms"></a>症状
 
@@ -165,7 +165,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 > [!TIP] 
 > 你可以设置筛选器，如以下屏幕截图所示。
 > 它告诉我们，dll **ValueTuple** 不在 GAC 相关文件夹中，或位于 *C:\Program Files\Microsoft integration Runtime\4.0\Gateway*或 *C:\Program Files\Microsoft integration Runtime\4.0\Shared* 文件夹中。
-> 基本上，它首先从 *GAC* 文件夹加载 dll，然后从 *共享* ，最后从 *网关子* 文件夹加载 dll。 因此，可以将 dll 放到可帮助的任何路径。
+> 基本上，它将依次从 GAC 文件夹、Shared 文件夹和 Gateway 文件夹加载 dll  。 因此可将 dll 放到任何有帮助的路径中。
 
 ![设置筛选器](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -173,7 +173,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 你可以找到 **System.ValueTuple.dll** 位于 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* 文件夹中。 将 **System.ValueTuple.dll** 复制到 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* 文件夹以解决此问题。
 
-您可以使用相同的方法解决其他文件或程序集缺少的问题。
+你可以使用相同方法解决其他文件或程序集丢失问题。
 
 #### <a name="more-information"></a>更多信息
 
@@ -186,11 +186,11 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 有关 GAC 的详细信息，请参阅 [此文](https://docs.microsoft.com/dotnet/framework/app-domains/gac)。
 
 
-### <a name="how-to-audit-self-hosted-ir-key-missing"></a>如何审核缺少的自承载 IR 密钥
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>如何审核自承载 IR 密钥丢失
 
 #### <a name="symptoms"></a>症状
 
-自承载集成运行时突然进入脱机状态，但在事件日志中显示以下错误消息： `Authentication Key is not assigned yet`
+自承载集成运行时在没有密钥时突然进入脱机状态，事件日志中显示以下错误消息：`Authentication Key is not assigned yet`
 
 ![缺少身份验证密钥](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
@@ -201,7 +201,7 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 #### <a name="resolution"></a>解决方法
 
-如果上述两个原因均不适用，你可以前往文件夹： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，并检查是否删除了名为的文件 **配置** 。 如果删除了该文件，请按照 [此处](https://www.netwrix.com/how_to_detect_who_deleted_file.html) 的说明进行操作以审核删除该文件的人员。
+如果上述两个原因均不适用，你可以前往文件夹： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，并检查是否删除了名为的文件 **配置** 。 如果该文件已删除，请按照[此处](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的说明审核谁删除了文件。
 
 ![检查配置文件](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,54 +210,54 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 
 #### <a name="symptoms"></a>症状
 
-为源和目标数据存储创建自承载的 IRs 后，你需要将两个 IRs 连接在一起以完成复制。 如果数据存储是在不同的 Vnet 中配置的，或者无法理解网关机制，则会遇到如下错误：在 *目标 IR 中找不到源的驱动程序*; *目标 IR 无法访问源*。
+为源数据存储和目标数据存储创建自承载 IR 后，需要将这两个 IR 连接在一起以完成复制。 如果数据存储是在不同的 Vnet 中配置的，或者无法理解网关机制，则会遇到如下错误：在 *目标 IR 中找不到源的驱动程序*; *目标 IR 无法访问源*。
  
 #### <a name="cause"></a>原因
 
 自承载 IR 设计为复制活动的中心节点，而不是需要为每个数据存储安装的客户端代理。
  
-在上述情况下，应使用相同的 IR 创建每个数据存储的链接服务，并且 IR 应该能够通过网络访问这两个数据存储区。 无论 IR 与源数据存储、目标数据存储或第三台计算机一起安装，如果使用不同的 IRs 创建两个链接的服务，但在同一复制活动中使用，则将使用目标 IR，并且需要在目标 IR 计算机上安装这两个数据存储的驱动程序。
+在上述情况下，应使用相同的 IR 为每个数据存储创建链接服务，并且 IR 应该能够通过网络访问这两个数据存储。 无论 IR 是否与源数据存储、目标数据存储或第三方计算机一起安装，如果两个链接服务是使用不同 IR 创建的，但用于同一复制活动，则将使用目标 IR，并且需要在目标 IR 计算机上为这两个数据存储安装驱动程序。
 
 #### <a name="resolution"></a>解决方法
 
-在目标 IR 上安装源和目标的驱动程序，并确保它可以访问源数据存储。
+在目标 IR 上安装源和目标安装驱动程序，并确保它可访问源数据存储。
  
-如果流量无法通过网络在两个数据存储间传递 (例如，它们在两个 Vnet) 中进行配置，即使安装了 IR，也不能在一个活动中完成复制。 在这种情况下，你可以创建两个包含两个 IRs 的复制活动，每个活动都在一个通风： 1 IR 中，用于从数据存储1复制到 Azure Blob 存储，另一个用于从 Azure Blob 存储复制到数据存储2。 这可以模拟要求使用 IR 创建连接两个已断开连接的数据存储的桥。
+如果流量无法通过网络在两个数据存储间传递（例如它们在两个 VNET 中配置），即使安装了 IR，也不能在一个活动中完成复制。 在这种情况下，你可以使用两个 IR 创建两个复制活动，每个活动都在一个 VENT 中：1 个 IR 从数据存储 1 复制到 Azure Blob 存储，另一个从 Azure Blob 存储复制到数据存储 2。 这可以模拟以下要求：使用 IR 创建一个网桥来连接两个已断开连接的数据存储。
 
 
 ### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>凭据同步问题导致凭据从 HA 丢失
 
 #### <a name="symptoms"></a>症状
 
-当你删除 Azure 门户上的链接服务时，将从当前 Integration Runtime 节点中删除数据源凭据 "XXXXXXXXXX"，或者在该任务具有错误的负载时，请再次通过凭据创建新的链接服务 "。
+从当前 Integration Runtime 节点删除了数据源凭据“XXXXXXXXXX”，其有效负载为“在 Azure 门户上删除链接服务或任务具有错误的有效负载时，请使用凭据重新创建新的链接服务”。
 
 #### <a name="cause"></a>原因
 
-你的自承载 IR 在 HA 模式下构建，其中包含两个节点，但它们不处于凭据同步状态，这意味着，存储在调度程序节点中的凭据不会同步到其他辅助角色节点。 如果从调度程序节点到辅助角色节点发生故障转移，但凭据仅存在于以前的调度程序节点中，则在尝试访问凭据时任务将失败，并且你将会遇到错误。
+你的自承载 IR 是在 HA 模式下构建的，其中包含两个节点，但它们不处于凭据同步状态，这意味着存储在调度程序节点中的凭据不会同步到其他工作器节点。 如果从调度程序节点到工作器节点发生了故障转移，但凭据仅存在于以前的调度程序节点中，则任务将在尝试访问凭据时失败，并且你将会遇到上述错误。
 
 #### <a name="resolution"></a>解决方法
 
-避免此问题的唯一方法是确保两个节点处于凭据同步状态。 否则，你必须为新的调度程序 reinput 凭据。
+避免此问题的唯一方法是确保两个节点处于凭据同步状态。 否则必须为新的调度程序重新输入凭据。
 
 
-### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>由于缺少私钥，因此无法选择证书
+### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>由于缺少私钥，无法选择证书
 
 #### <a name="symptoms"></a>症状
 
 1.  将 PFX 文件导入到证书存储中。
-2.  通过 IR Configuration Manager UI 选择证书时，出现以下错误：
+2.  通过 IR Configuration Manager UI 选择证书时，遇到以下错误：
 
     ![缺少私钥](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
 
 #### <a name="cause"></a>原因
 
-- 用户帐户处于低权限，无法访问私钥。
+- 用户帐户的权限较低，无法访问私钥。
 - 此证书生成为签名，而不是密钥交换。
 
 #### <a name="resolution"></a>解决方法
 
-1.  使用可以访问私钥以操作 UI 的特权帐户。
-2.  运行以下命令以导入证书：
+1.  使用可访问私钥以操作 UI 的特权帐户。
+2.  运行以下命令来导入证书：
     
     ```
     certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
@@ -574,50 +574,6 @@ Get_LoopbackIpOrName 时，无法在新计算机上注册自承载 IR。
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
     因此，你需要与网络团队合作，以检查从自承载 IR 算起的第四个跃点是什么。 如果它是作为 Linux 系统存在的防火墙，请检查日志来确认设备为何在 TCP 3 握手后重置了包。 但是，如果不确定要在何处进行调查，请尝试一起获取自承载 IR 和防火墙在有问题的时间内的 netmon 跟踪，以找出可能重置此包并导致连接断开的设备。 在这种情况下，你还需要与网络团队合作才能继续进行调查。
-
-### <a name="how-to-collect-netmon-trace"></a>如何收集 netmon 跟踪
-
-1.  从[此网站](https://cnet-downloads.com/network-monitor)下载 Netmon 工具，并将其安装在服务器计算机（有问题的任何服务器）和客户端（如自承载 IR）上。
-
-2.  创建一个文件夹，例如在以下路径中创建：D:\netmon。 请确保它有足够的空间来保存日志。
-
-3.  捕获 IP 和端口信息。 
-    1. 启动 CMD 提示符。
-    2. 选择“以管理员身份运行”并运行以下命令：
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  捕获 Netmon 跟踪（网络包）。
-    1. 启动 CMD 提示符。
-    2. 选择“以管理员身份运行”并运行以下命令：
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. 可以使用三个不同的命令来捕获网络包：
-        - 选项 A：轮循式 File 命令（只捕获一个文件，将覆盖旧日志）。
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - 选项 B：链式 File 命令（如果达到 200 MB 的限制，将创建新文件）。
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - 选项 C：计划的 File 命令。
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  按 **Ctrl+C** 可停止捕获 Netmon 跟踪。
- 
-> [!NOTE]
-> 如果只能在客户端计算机上收集 netmon 跟踪，请获取有助于分析跟踪的服务器 IP 地址。
 
 ### <a name="how-to-analyze-netmon-trace"></a>如何分析 netmon 跟踪
 

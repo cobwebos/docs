@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: fdd564618232ce7fde5a76fb9c37937113f179b2
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670351"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061864"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>将 Azure Vm 移到另一个区域中的可用性区域
 
@@ -30,7 +30,7 @@ ms.locfileid: "89670351"
 
 如果要将 Vm 移到同一区域中的不同可用性区域，请 [参阅此文](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 要移动的资源所在的订阅的*所有者*访问权限。
     - 第一次在 Azure 订阅中添加特定源和目标映射的资源时，资源移动器会创建一个 [系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ， (以前称为托管服务标识订阅所信任的 (MSI) # A3。
@@ -71,8 +71,7 @@ ms.locfileid: "89670351"
     ![入门按钮](./media/move-region-availability-zone/get-started.png)
 
 3. 在 "**移动资源**  >  **源 + 目标**" 中，选择源订阅和区域。
-4. 在 " **目标**" 中，选择要将 vm 移动到的区域。 
-5. 在 " **元数据" 区域**中，选择要在其中存储要移动的资源的元数据的位置。 资源组是专门为此目的而创建的。 然后，单击 **“下一步”** 。
+4. 在 " **目标**" 中，选择要将 vm 移动到的区域。 然后，单击 **“下一步”** 。
 
      ![用于填写源和目标订阅/区域的页面](./media/move-region-availability-zone/source-target.png)
 

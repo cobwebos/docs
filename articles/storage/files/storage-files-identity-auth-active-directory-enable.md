@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 7b629adc24f0c9d8826d610c59379605e1ca0b95
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272325"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061812"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
@@ -24,7 +24,7 @@ ms.locfileid: "88272325"
 
 - 用于本地 Azure 文件 AD DS 身份验证的 AD DS 标识必须同步到 Azure AD。 密码哈希同步是可选的。 
 - 支持 Azure 文件同步管理的 Azure 文件共享。
-- 支持通过具有 RC4-HMAC 加密的 AD 进行 Kerberos 身份验证。 目前尚不支持 AES Kerberos 加密。
+- 支持通过具有 RC4-HMAC 和 AES 256 加密的 AD 进行 Kerberos 身份验证。 目前尚不支持 AES 128 Kerberos 加密。
 - 支持单一登录体验。
 - 仅支持在版本低于 Windows 7 或 Windows Server 2008 R2 的操作系统版本上运行的客户端。
 - 仅支持将存储帐户注册到的 AD 林。 默认情况下，只能使用单个林中的 AD DS 凭据访问 Azure 文件共享。 如果需要从其他林访问 Azure 文件共享，请确保配置了正确的林信任，有关详细信息，请参阅 [常见问题解答](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) 。
@@ -37,7 +37,7 @@ ms.locfileid: "88272325"
 > - [将本地文件服务器替换为 Azure 文件 (包括在文件和 AD 身份验证的专用链接上安装) ](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [使用 Azure 文件作为 Windows 虚拟机的配置文件容器 (包括在 AD 身份验证和 FsLogix 配置上安装) ](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 在为 Azure 文件共享启用 AD DS 身份验证之前，请确保已完成以下先决条件： 
 

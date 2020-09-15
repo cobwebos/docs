@@ -3,15 +3,16 @@ title: 将 Akka Streams 用于 Apache Kafka - Azure 事件中心| Microsoft Docs
 description: 本文介绍如何将 Akka Streams 连接到 Azure 事件中心。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbbeef37c4cbdd52d2127c5242474ac46e42d25
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320201"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061693"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>将 Akka Streams 与适用于 Apache Kafka 的事件中心配合使用
-本教程演示如何在不更改协议客户端或运行自己的群集的情况下，将 Akka Streams 连接到事件中心。 适用于 Kafka 的 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
+
+本教程演示如何通过 Apache Kafka 的事件中心支持来连接 Akka 流，而无需更改协议客户端或运行自己的群集。 
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]

@@ -3,18 +3,18 @@ title: 使用 Azure Site Recovery 为 Azure VM 灾难恢复启用加速网络
 description: 介绍了如何将加速网络与 Azure Site Recovery 配合使用来实现 Azure 虚拟机灾难恢复
 services: site-recovery
 documentationcenter: ''
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: mayg
-ms.openlocfilehash: baa15b656f061d812b29ded99d55da13294f9800
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: harshacs
+ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835844"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068007"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>将加速网络与 Azure 虚拟机灾难恢复配合使用
 

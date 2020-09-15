@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003875"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069741"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure 数字孪生：度量值疑难解答
 
@@ -28,20 +28,20 @@ ms.locfileid: "89003875"
 
     从实例的菜单中，选择 " **指标**"。
    
-    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 指标 页的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 "指标" 页的屏幕截图":::
 
     此页面显示 Azure 数字孪生实例的指标。 你还可以通过从列表中选择你想要查看的指标来创建其自定义视图。
     
 3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置**"。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 诊断设置 页和要添加的按钮的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 "诊断设置" 页和要添加的按钮的屏幕截图":::
 
     有关此过程的详细信息，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 
 4. 通过从菜单中选择 " **警报** "，然后选择 " **+ 新建警报规则**"，可以选择为指标数据设置警报。
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示 警报 页和要添加的按钮的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示 "警报" 页和要添加的按钮的屏幕截图":::
 
-    有关此过程的详细信息，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
+    有关此过程的详细信息，请参阅 [*故障排除：设置警报*](troubleshoot-alerts.md)。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure 数字孪生指标以及如何使用它们
 
@@ -70,7 +70,7 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations |  (预览) 计费 API 操作 | 计数 | 总计 | 针对 Azure 数字孪生服务发出的所有 API 请求计数的计费指标。 | 计量 Id |
 | BillingMessagesProcessed |  (预览处理的计费消息)  | 计数 | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数的计费指标。 | 计量 Id |
-| BillingQueryUnits | 计费查询单位 (预览)  | 计数 | 总计 | 查询单位数，即，用于执行查询的服务资源使用情况的内部计算度量值。 还有一个帮助器 API 可用于测量查询单位： [QueryChargeHelper 类](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | 计量 Id |
+| BillingQueryUnits | 计费查询单位 (预览)  | 计数 | 总计 | 查询单位数，即，用于执行查询的服务资源使用情况的内部计算度量值。 还有一个帮助器 API 可用于测量查询单位： [QueryChargeHelper 类](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | 计量 Id |
 
 #### <a name="ingress-metrics"></a>入口指标
 

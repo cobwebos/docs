@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 7d230ce068678bbc074b54ab361f3d70d9b102f8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670326"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061830"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>跨区域 (资源组中移动资源) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "89670326"
 > Azure 资源移动器当前为公共预览版。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 需要对要移动的资源所在的订阅 *拥有所有者* 访问权限。
     - 第一次在 Azure 订阅中添加特定源和目标映射的资源时，资源移动器会创建一个 [系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) ， (以前称为托管服务标识订阅所信任的 (MSI) # A3。
@@ -65,7 +65,6 @@ ms.locfileid: "89670326"
     ![用于将资源移到其他区域的选择](./media/move-region-within-resource-group/select-move-region.png)
     
 4. 在 " **源 + 目标**" 中，选择要将资源移动到的目标区域。 然后，选择“下一步”。
-5. 在 " **元数据" 区域**中，选择要在其中存储要移动的资源的元数据的位置。  资源组是专门为此目的而创建的。 然后，选择“下一步”。
 
 
     ![用于选择目标区域的源和目标页](./media/move-region-within-resource-group/source-target.png)

@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 2092b03ee95349286b9e845689b5d9d55b61c772
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514350"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060724"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -101,7 +101,7 @@ Azure Migrate 设备需要连接到 Internet。
 **URL** | **详细信息**  
 --- | --- |
 *.portal.azure.com  | 导航到 Azure 门户。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登录到 Azure 订阅。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *. office.com | 登录到 Azure 订阅。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Azure Active Directory (AD) 应用，以便与 Azure Migrate 通信。
 management.azure.com | 为设备创建 Azure AD 应用，以便与 Azure Migrate 服务通信。
 *.services.visualstudio.com | 上传用于内部监视的应用日志。
@@ -227,7 +227,7 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 
 **数据**  | **PowerShell cmdlet** | **属性**
 --- | --- | ---
-名称  | Get-help  | 名称
+“属性”  | Get-help  | “属性”
 特征类型 | Get-help  | FeatureType
 Parent  | Get-help  | Parent
 
@@ -237,7 +237,7 @@ Parent  | Get-help  | Parent
 
 **数据**  | **注册表位置**  | **Key**
 --- | --- | ---
-名称  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
+“属性”  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 服务器 \ 实例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
@@ -248,7 +248,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 数据  | WMI 类  | WMI 类属性
 --- | --- | ---
-名称  | Win32_operatingsystem  | Caption
+“属性”  | Win32_operatingsystem  | Caption
 版本  | Win32_operatingsystem  | 版本
 体系结构  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 数据  | Command
 --- | --- 
-名称 | rpm，dpkg，对齐
+“属性” | rpm，dpkg，对齐
 版本 | rpm，dpkg，对齐
 提供程序 | rpm，dpkg，对齐
 
@@ -268,7 +268,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 **数据**  | **命令** 
 --- | --- | ---
-名称 <br/> 版本 | 从以下一个或多个文件收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+“属性” <br/> 版本 | 从以下一个或多个文件收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 体系结构 | uname
 
 

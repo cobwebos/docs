@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718197"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061149"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "88718197"
 | firstRowAsHeader | 指定是否要将给定工作表/范围内的第一行视为带有列名的标题行。<br>允许的值为 **true** 和 **true**（默认值）。 | 否       |
 | nullValue        | 指定 null 值的字符串表示形式。 <br>默认值为**空字符串**。 | 否       |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**注意**，使用复制活动来解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到以下文件夹：`<path specified in dataset>/<folder named as source zip file>/`。 | 否。  |
+| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**注意**，使用复制活动来解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到以下文件夹：`<path specified in dataset>/<folder named as source zip file>/`。 | 否。  |
 | level<br/>（在 `compression` 下） | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上 Excel 数据集的示例：
@@ -73,7 +73,7 @@ ms.locfileid: "88718197"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为“ExcelSource”。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 | 否       |
@@ -104,14 +104,14 @@ ms.locfileid: "88718197"
 
 ### <a name="source-properties"></a>源属性
 
-下表列出了 Excel 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。使用内联数据集时，你将看到与 " [数据集属性](#dataset-properties) " 部分所述的属性相同的其他文件设置。
+下表列出了 Excel 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。使用内联数据集时，你将看到其他文件设置，这些设置与 " [数据集属性](#dataset-properties) " 部分中描述的属性相同。
 
-| 名称                      | 说明                                                  | 必选 | 允许的值                                            | 数据流脚本属性         |
+| “属性”                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | 通配符路径           | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否       | String[]                                                  | wildcardPaths                     |
-| 分区根路径       | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否       | 字符串                                                    | partitionRootPath                 |
+| 分区根路径       | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否       | String                                                    | partitionRootPath                 |
 | 文件列表             | 你的源是否指向列出要处理的文件的文本文件 | 否       | `true` 或 `false`                                         | fileList                          |
-| 要存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | 字符串                                                    | rowUrlColumn                      |
+| 要存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | String                                                    | rowUrlColumn                      |
 | 完成后          | 在处理后删除或移动文件。 文件路径从容器根开始 | 否       | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | 按上次修改时间筛选   | 选择根据文件上次更改时间筛选文件 | 否       | 时间戳                                                 | ModifiedAfter <br> modifiedBefore |
 

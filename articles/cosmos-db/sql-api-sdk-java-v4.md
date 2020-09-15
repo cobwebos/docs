@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: f88004d219989b06d4bc7e75e76aca1ce1e894fe
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: aabd52d47bfc59de7a1d79bbe5ffbdda90d099bf
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536394"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060690"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
 > [!div class="op_single_selector"]
@@ -68,27 +68,14 @@ ms.locfileid: "89536394"
 
 ## <a name="release-history"></a>版本历史记录
 
-### <a name="440-beta2-unreleased"></a>4.4.0 (未发布) 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
-* 修复了启用 tcnative 时的 RequestTimeoutException。
+### <a name="450-beta1-unreleased"></a>4.5.0 (未发布) 
 
-### <a name="440-beta1-2020-08-27"></a>4.4.0 (2020-08-27) 
-#### <a name="new-features"></a>新功能
-* 添加了新的 API，以便有效地加载多个文档 (通过 pk/id 对列表或) 的一组 pk 值的所有文档。
-* 添加了新 `deleteItem` API。
-* 默认情况下启用查询度量值。
+### <a name="440-2020-09-12"></a>4.4.0 (2020-09-12) 
 #### <a name="key-bug-fixes"></a>关键 Bug 修复
-* 修复了中的 NPE `GatewayAddressCache` 。
-* 修复了零项响应的查询指标问题。
-* 提高了性能 (降低了地址分析和主密钥身份验证的 CPU 使用率) 。
-
-### <a name="432-beta2-2020-08-17"></a>4.3.2 (2020-08-17) 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
-* 以前版本没有任何更改，因此无法发布弹簧数据模块的兼容性问题。
-
-### <a name="432-beta1-2020-08-14"></a>4.3.2 (2020-08-14) 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
-* 修复了 RntbdServiceEndpoint 中的问题，以避免未使用的 TCP 连接提前关闭。
+* 修复了 `netty-tcnative-boringssl` 依赖项的 RequestTimeoutException。
+* 修复了模式中操作的内存泄漏问题 `Delete` `GATEWAY` 。
+* 修复了 `CosmosClient` 终结点 uri 无效时的实例化中的泄漏。
+* 改进了 `CPU History` 诊断。
 
 ### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13) 
 #### <a name="key-bug-fixes"></a>关键 Bug 修复

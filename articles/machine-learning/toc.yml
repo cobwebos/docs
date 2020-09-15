@@ -535,6 +535,9 @@
       href: reference-pipeline-yaml.md
     - name: 主权云奇偶校验
       href: reference-machine-learning-cloud-parity.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 发行说明

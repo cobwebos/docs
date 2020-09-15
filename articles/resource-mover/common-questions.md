@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 520c2d4fd258bfab5a5a1e0abf890d58bb98fbdc
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83191fd29e0cda4bc398f6a46a0d2ebf9631665
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652853"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068041"
 ---
 # <a name="common-questions"></a>常见问题
 
@@ -24,7 +24,13 @@ ms.locfileid: "89652853"
 
 资源移动器当前为公共预览版。 支持生产工作负荷。
 
-## <a name="region-move"></a>区域移动
+
+
+## <a name="moving-across-regions"></a>跨区域移动
+
+### <a name="can-i-move-resources-across-any-regions"></a>是否可以跨任何区域移动资源？
+
+目前，可以将资源从任何源公共区域移到任何目标公共区域，具体取决于 [该区域中可用的资源类型](https://azure.microsoft.com/global-infrastructure/services/)。 当前不支持在 Azure 政府区域中移动资源。
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>可以使用资源移动器跨区域移动哪些资源？
 
@@ -34,13 +40,19 @@ ms.locfileid: "89652853"
 - NIC
 - 可用性集 
 - Azure 虚拟网络 
-- 公共 IP 地址 (Nsg) 的网络安全组
+- 公共 IP 地址
+- 网络安全组 (NSG)
 - 内部和公共负载均衡器 
 - Azure SQL 数据库和弹性池
 
+
+### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>在多个区域之间移动资源时，是否可以在多个订阅之间移动资源？
+
+将资源移动到目标区域后，可以更改订阅。 [详细了解](../azure-resource-manager/management/move-resource-group-and-subscription.md) 如何将资源移到其他订阅。 
+
 ### <a name="where-is-the-metadata-about-a-region-move-stored"></a>区域的元数据存储在何处？
 
-它存储在 [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) 数据库中，并且存储在 Microsoft 订阅中的 [azure blob 存储](../storage/common/storage-service-encryption.md)中。
+它存储在 [Azure Cosmos](../cosmos-db/database-encryption-at-rest.md) 数据库中，并且存储在 Microsoft 订阅中的 [azure blob 存储](../storage/common/storage-service-encryption.md)中。 当前元数据存储在美国东部2和北欧中。 我们会将此覆盖范围扩展到其他区域。 这并不局限于跨任何公共区域移动资源。
 
 ### <a name="is-the-collected-metadata-encrypted"></a>收集的元数据是否已加密？
 

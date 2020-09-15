@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: fb990b5aa615e37d9893a891143cb04933b603bb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aaaa073f798998ed97be1bd3cd66795d7b3dfb23
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542609"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069656"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教程：为 RingCentral 配置自动用户预配
 
@@ -113,7 +113,6 @@ ms.locfileid: "88542609"
    |userName|字符串|
    |externalId|字符串|
    |活动|Boolean|
-   |displayName|字符串|
    |title|字符串|
    |emails[type eq "work"].value|字符串|
    |addresses[type eq "work"].country|字符串|
@@ -125,7 +124,6 @@ ms.locfileid: "88542609"
    |name.familyName|字符串|
    |phoneNumbers[type eq "mobile"].value|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
@@ -149,6 +147,10 @@ ms.locfileid: "88542609"
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
+
+## <a name="change-log"></a>更改日志
+
+* 09/10/2020-已删除对 "displayName" 和 "manager" 特性的支持。
 
 ## <a name="additional-resources"></a>其他资源
 

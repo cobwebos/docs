@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587304"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069588"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,12 +99,12 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>“常规用途”层级中的文件 IO 特征
 
-在常规用途服务层中，每个数据库文件都将获得专用 IOPS 和吞吐量，具体取决于文件大小。 较大的数据文件会获得更多的 IOPS 和吞吐量。 下表显示了数据库文件的 IO 特征：
+在常规用途服务层中，每个数据库文件都将获得专用 IOPS 和吞吐量，具体取决于文件大小。 较大的文件可以获得更多的 IOPS 和吞吐量。 下表显示了数据库文件的 IO 特征：
 
-| 文件大小 | >=0 且 <=128 GiB | >128 且 <=256 GiB | >256 且 <= 512 GiB | >0.5 且 <=1 TiB    | >1 且 <=2 TiB    | >2 且 <=4 TiB | >4 且 <=8 TiB |
+| 文件大小 | >=0 且 <=128 GiB | >128 和 <= 512 GiB | >0.5 且 <=1 TiB    | >1 且 <=2 TiB    | >2 且 <=4 TiB | >4 且 <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| 每个文件的 IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
-| 每个文件的吞吐量 | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
+| 每个文件的 IOPS       | 500   | 2300              | 5000              | 7500              | 7500              | 12,500   |
+| 每个文件的吞吐量 | 100 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
 
 如果注意到某个数据库文件的 IO 延迟较高，或者发现 IOPS/吞吐量即将达到限制，可以通过[增大文件大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)来提高性能。
 

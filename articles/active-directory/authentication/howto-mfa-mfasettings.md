@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 6a5ec4644eaed8d525c278c4fc464b4dbc683596
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 838e0a13cb919a5bc17807c2349bb173e4e489f4
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023833"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068806"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -156,7 +156,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> 当 Azure 多重身份验证呼叫通过公共电话网络放置时，有时会通过不支持呼叫方 ID 的运营商来路由它们。 因此，尽管 Azure 多重身份验证始终发送，但不保证调用方 ID。
+> 当 Azure 多重身份验证呼叫通过公共电话网络放置时，有时会通过不支持呼叫方 ID 的运营商来路由呼叫。 因此，即使 Azure 多重身份验证始终发送，也不能保证调用方 ID。 这同时适用于电话呼叫和 Azure 多重身份验证提供的短信。 如果需要验证短信是否来自 Azure 多重身份验证，请参阅 [使用哪些 SMS 短代码发送消息？](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 若要配置自己的调用方 ID 号，请完成以下步骤：
 

@@ -7,16 +7,16 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4c41edc477460e6d239688aafe6d7219bed36cd4
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c4a32a5c929e74332e85ceb6f4cff787e237e385
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352205"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069639"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>模型中的 IoT 即插即用组件
 
-在 IoT 即插即用约定中，如果设备连接到 IoT 中心时，它会显示其数字孪生定义语言（DTDL）型号，则该设备为 IoT 即插即用设备。
+在 IoT 即插即用约定中，如果设备连接到 IoT 中心时，它会 (DTDL) 型号，则该设备为 IoT 即插即用设备。
 
 以下代码片段演示了一些示例模型 Id：
 
@@ -72,19 +72,19 @@ ms.locfileid: "87352205"
 
 组件允许您将模型接口生成为其他接口的程序集。
 
-例如，[恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)接口定义为模型。 定义[温度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)时，可以将此接口作为一个或多个组件合并。 在下面的示例中，这些组件称为 `thermostat1` 和 `thermostat2` 。
+例如， [恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) 接口定义为模型。 定义 [温度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)时，可以将此接口作为一个或多个组件合并。 在下面的示例中，这些组件称为 `thermostat1` 和 `thermostat2` 。
 
 对于包含多个组件的 DTDL 模型，有两个或两个以上的组件部分。 每节均 `@type` 设置为 `Component` ，并显式引用架构，如以下代码片段所示：
 
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:Thermostat;1",
+  "@id": "dtmi:com:example:TemperatureController;1",
   "@type": "Interface",
-  "displayName": "Thermostat",
-  "description": "Reports current temperature and provides desired temperature control.",
+  "displayName": "Temperature Controller",
+  "description": "Device with two thermostats and remote reboot.",
   "contents": [
-... 
+...
     {
       "@type" : "Component",
       "schema": "dtmi:com:example:Thermostat;1",
@@ -115,5 +115,5 @@ ms.locfileid: "87352205"
 
 现在，你已了解模型组件，下面是一些其他资源：
 
-- [数字孪生定义语言 v2 （DTDL）](https://github.com/Azure/opendigitaltwins-dtdl)
+- [数字孪生定义语言 v2 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl)
 - [模型存储库](./concepts-model-repository.md)

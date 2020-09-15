@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873749"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060741"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
-
-> [!div class="op_single_selector"]
-> * [使用单元格 magic](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [使用脚本操作](apache-spark-python-package-installation.md)
 
 HDInsight 在 Spark 群集中有两个内置 Python 安装，即 Anaconda Python 2.7 和 Python 3.5。 客户可能需要自定义 Python 环境。 例如，安装外部 Python 包或其他 Python 版本。 本文介绍的最佳做法涉及如何安全地管理 HDInsight 上 Apache Spark 群集的 Python 环境。
 
@@ -36,12 +32,12 @@ HDInsight 服务中有两种类型的开放源代码组件：
 |组件 |说明 |
 |---|---|
 |内置|这些组件已预先安装在 HDInsight 群集上，并提供群集的核心功能。 例如，Apache Hadoop YARN 资源管理器、Apache Hive 查询语言 (HiveQL) 及 Mahout 库均属于此类别。 [HDInsight 提供的 Apache Hadoop 群集版本的新增功能](../hdinsight-component-versioning.md)中提供了群集组件的完整列表。|
-|自定义|群集用户可以安装或者在工作负荷中使用由社区提供的或自己创建的任何组件。|
+|“自定义”|群集用户可以安装或者在工作负荷中使用由社区提供的或自己创建的任何组件。|
 
 > [!IMPORTANT]
 > 完全支持通过 HDInsight 群集提供的组件。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，有助于进一步解决问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[有关 HDInsight 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)、`https://stackoverflow.com`。 此外，Apache 项目在 `https://apache.org` 上提供了项目站点。
+> 自定义组件可获得合理范围的支持，有助于进一步解决问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[有关 HDInsight 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)、`https://stackoverflow.com`。 此外，Apache 项目在 `https://apache.org` 上有项目站点。
 
 ## <a name="understand-default-python-installation"></a>了解默认 Python 安装
 
@@ -132,7 +128,7 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
 
     4. 保存更改并重启受影响的服务。 需要重启 Spark2 服务才能使这些更改生效。 Ambari UI 将提示需要重启。单击“重启”以重启所有受影响的服务。
 
-        ![通过 Ambari 更改 Spark 配置](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![重新启动服务](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. 如果要在 Jupyter 上使用新创建的虚拟环境。 更改 Jupyter 配置并重启 Jupyter。 使用以下语句在所有头节点上运行脚本操作，使 Jupyter 指向新创建的虚拟环境。 请务必修改针对虚拟环境指定的前缀的路径。 运行此脚本操作后，通过 Ambari UI 重启 Jupyter 服务，使此项更改生效。
 

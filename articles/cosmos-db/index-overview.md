@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760866"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068381"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
@@ -51,14 +51,14 @@ Azure Cosmos DB 将项转换为树的原因是，它允许通过这些树中属�
 
 下面是上述示例项中每个属性的路径：
 
-- /locations/0/country： "德国"
-- /locations/0/city： "柏林"
-- /locations/1/country： "法国"
-- /locations/1/city： "巴黎"
-- /headquarters/country： "华南"
-- /headquarters/employees：250
-- /exports/0/city： "莫斯科"
-- /exports/1/city： "雅典"
+- /locations/0/country:"Germany"
+- /locations/0/city:"Berlin"
+- /locations/1/country:"France"
+- /locations/1/city:"Paris"
+- /headquarters/country:"Belgium"
+- /headquarters/employees:250
+- /exports/0/city:"Moscow"
+- /exports/1/city:"Athens"
 
 写入项时，Azure Cosmos DB 会有效地对每个属性的路径及其相应的值编制索引。
 
@@ -135,7 +135,7 @@ Azure Cosmos DB 目前支持三种类型的索引。
 - 在查询的地理空间：
 
    ```sql
-   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] })
    ```
 
 - 地理空间相交查询：

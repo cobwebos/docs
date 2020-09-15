@@ -4,12 +4,12 @@ description: 了解如何使用用于容器的 Azure Monitor 启用对订阅中�
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 033e6e5e78d59cf4c1048ff63a6d19fee66c7841
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3b4bd007ec2f4315ccd7d8581113e116db693ef
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320334"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068421"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -28,7 +28,7 @@ ms.locfileid: "87320334"
 
 ## <a name="enable-using-azure-cli"></a>启用 Azure CLI
 
-以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，不需要预先创建或指定现有的工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区类似于*形式 defaultworkspace \<GUID> - \<Region> *的格式。
+以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，无需预先创建或指定现有工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区类似于 *DefaultWorkspace-\<GUID>-\<Region>* 格式。
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -105,13 +105,13 @@ provisioningState       : Succeeded
 
 要启用 Azure Monitor 对 Azure 门户中的 AKS 群集的监视，请执行以下操作：
 
-1. 在 Azure 门户中选择“监视”。 
+1. 在 Azure 门户中选择“监视”。
 
 2. 从列表中选择容器  。
 
-3. 在 "**监视容器**" 页上，选择 "未**监视群集**"。
+3. 在“监视 - 容器”页上，选择“未监视的群集” 。
 
-4. 从未监视群集的列表中，找到列表中的容器，然后单击 "**启用**"。
+4. 从未监视的群集列表中找到容器，然后单击“启用”。
 
 5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。
     列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
@@ -127,7 +127,7 @@ provisioningState       : Succeeded
 
 若要在 Azure 门户中直接使用某个 AKS 群集来启用监视，请执行以下操作：
 
-1. 在 Azure 门户中，选择“所有服务”。 
+1. 在 Azure 门户中，选择“所有服务”。
 
 2. 在资源列表中，开始键入“Containers”  。  列表会根据输入的内容进行筛选。
 
@@ -313,7 +313,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```
 
-如果群集上有 Windows Server 节点，你可以运行以下命令来验证代理是否已成功部署。
+如果群集上有 Windows Server 节点，则可运行以下命令，验证代理是否已成功部署。
 
 ```
 kubectl get ds omsagent-win --namespace=kube-system
@@ -343,7 +343,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>代理版本低于 06072018
 
-若要验证 06072018** 之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：
+若要验证 06072018 之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：
 
 ```
 kubectl get ds omsagent --namespace=kube-system

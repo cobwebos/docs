@@ -651,7 +651,7 @@
               href: cassandra-import-data.md
         - name: 概念
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: cassandra-faq.md
             - name: 弹性缩放
               href: manage-scale-cassandra.md
@@ -754,7 +754,7 @@
               href: mongodb-feature-support-36.md
             - name: 线路协议支持 (3.2)
               href: mongodb-feature-support.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: mongodb-api-faq.md
         - name: 操作指南
           items:
@@ -830,7 +830,7 @@
               href: tutorial-query-graph.md
         - name: 概念
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: gremlin-api-faq.md
         - name: 操作指南
           items:
@@ -915,7 +915,7 @@
               maintainContext: true
         - name: 概念
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: table-api-faq.md
         - name: 操作指南
           items:
@@ -967,6 +967,8 @@
         - name: 使用资源管理器模板
           href: manage-sql-with-resource-manager.md
           displayName: ARM
+        - name: 在区域之间移动
+          href: how-to-move-regions.md
     - name: 全球分布
       items:
         - name: 配置多主数据库
@@ -1320,7 +1322,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

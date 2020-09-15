@@ -2,18 +2,18 @@
 title: 关于如何使用 Azure Site Recovery 在 Azure VM 灾难恢复中联网
 description: 概述了使用 Azure Site Recovery 复制 Azure 虚拟机的网络。
 services: site-recovery
-author: sujayt
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
-ms.author: sutalasi
-ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 2c6d1873aadbbf19f1b7650f9b432b3b6bed2841
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131390"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068364"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -48,7 +48,7 @@ ms.locfileid: "86131390"
 
 **URL** | **详细信息**
 --- | ---
-*.blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以允许访问特定的存储帐户 Url （例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net），而不是 blob.core.windows.net。
+\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以允许访问特定的存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *. blob.core.windows.net
 login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。
 *.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。
@@ -86,9 +86,9 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS （443）安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
+3. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS (443) 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
 
-4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS （443）安全规则。 这允许访问任何区域中的 Site Recovery 服务。
+4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 ### <a name="nsg-rules---central-us"></a>NSG 规则 - 美国中部
 
@@ -98,9 +98,9 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 2. 基于 NSG 规则为“AzureActiveDirectory”创建出站 HTTPS (443) 安全规则。
 
-3. 与上述安全规则类似，为 NSG 上的 "EastUS" 创建出站 HTTPS （443）安全规则，该规则对应于源位置。 这样就可以访问 Site Recovery 监视功能。
+3. 与上述安全规则类似，为 NSG 上的 "EastUS" 创建出站 HTTPS () 443 安全规则，该规则对应于源位置。 这样就可以访问 Site Recovery 监视功能。
 
-4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS （443）安全规则。 这允许访问任何区域中的 Site Recovery 服务。
+4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 ## <a name="network-virtual-appliance-configuration"></a>网络虚拟设备配置
 

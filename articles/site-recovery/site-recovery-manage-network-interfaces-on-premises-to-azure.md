@@ -1,20 +1,20 @@
 ---
 title: 通过 Azure Site Recovery 管理用于本地灾难恢复的网络适配器
 description: 介绍如何使用 Azure Site Recovery 管理网络接口，以实现本地到 Azure 的灾难恢复
-author: mayurigupta13
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
-ms.author: mayg
-ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: harshacs
+ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129899"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068109"
 ---
-# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理用于本地灾难恢复到 Azure 的 VM 网络接口
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理用于本地到 Azure 灾难恢复的 VM 网络接口
 
 Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以附加 VM 的大小所能够支持的网络接口数量。
 

@@ -1,6 +1,6 @@
 ---
-title: 排查将应用程序添加到 Azure Active Directory 时遇到的常见问题
-description: 排查在将应用添加到 Azure Active Directory 时遇到的常见问题。
+title: 排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题
+description: 排查在添加或删除要 Azure Active Directory 的应用程序时遇到的常见问题。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410392"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068024"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>排查将应用程序添加到 Azure Active Directory 时遇到的常见问题
-本文可帮助你了解在将应用添加到 Azure Active Directory 时人们面临的常见问题。
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>排查在 Azure Active Directory 中添加或删除应用程序时遇到的常见问题
+本文可帮助你了解在添加或删除要 Azure Active Directory 的应用时面临的常见问题。
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>单击“添加”按钮后，应用程序要很长时间才显示
 某些情况下，将应用程序添加到目录后，可能需要 1-2 分钟（有时更久）才会显示该应用程序。 尽管这不是正常的预期结果，但通过单击 [Azure 门户](https://portal.azure.com/)右上角的“通知”图标（铃铛），并查找标签为“添加应用程序”的“正在进行中”或“已完成”通知，可以看到应用程序添加正在进行中****************。
@@ -34,6 +34,16 @@ ms.locfileid: "89410392"
 如果对应用程序的了解有帮助，有关 [如何将 SaaS 应用与 Azure Active Directory 项目集成的教程的列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) 是一个不错的开端。
 
 除此之外，[Azure AD 应用程序文档库](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)可帮助你详细了解如何使用 Azure AD 进行单一登录及其工作原理。
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>我要删除应用程序，但 "删除" 按钮已禁用
+
+在以下情况下，将禁用 "删除" 按钮：
+
+- 对于 "企业应用程序" 下的应用程序，如果没有以下角色之一：全局管理员、云应用程序管理员、应用程序管理员或服务主体的所有者。
+
+- 对于 Microsoft 应用程序，无论你的角色如何，你都无法从 UI 中删除它们。
+
+- 对于与托管标识对应的服务主体。 无法在 "企业应用" 边栏选项卡中删除托管标识服务主体。 你需要中转到 Azure 资源来对其进行管理。 L 有关[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的详细信息
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看门户通知的详细信息
 可以通过遵循以下步骤来查看任何门户通知的详细信息：

@@ -7,21 +7,21 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ad0ccdabd0320d8821d0760ca9802db37049149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8312be1f07b8d0d0d2f142bfc0d54f84d8641ae
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84611014"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060996"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 如果要**分析 Parquet 文件或以 Parquet 格式写入数据**，请遵循此文章中的说明。 
 
-以下连接器支持 Parquet 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
+以下连接器支持 Parquet 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、 [文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>数据集属性
 
@@ -80,25 +80,34 @@ ms.locfileid: "84611014"
 | 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **ParquetSink**。 | 是      |
+| formatSettings | 一组属性。 请参阅下面的 **Parquet 写入设置** 表。 |    否      |
 | storeSettings | 有关如何将数据写入到数据存储的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自身支持的写入设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
+
+受支持的 **Parquet 写入设置** `formatSettings` 如下：
+
+| properties      | 说明                                                  | 必需                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| type          | FormatSettings 的类型必须设置为 **ParquetWriteSettings**。 | 是                                                   |
+| maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
+| fileNamePrefix | 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流时，可以在以下数据存储中读取和写入 parquet 格式： [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+在映射数据流时，可以在以下数据存储中读取和写入 parquet 格式： [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
 
 ### <a name="source-properties"></a>源属性
 
-下表列出了 parquet 源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。
+下表列出了 parquet 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| “属性” | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 格式 | 格式必须为`parquet` | 是 | `parquet` | format |
+| 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
 | 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
 | 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
-| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或`false` <br> 移动`[<from>, <to>]` | purgeFiles <br> moveFiles |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `[<from>, <to>]` | purgeFiles <br> moveFiles |
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
 
 ### <a name="source-example"></a>源示例
 
@@ -117,13 +126,13 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-properties"></a>接收器属性
 
-下表列出了 parquet 源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。
+下表列出了 parquet 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| “属性” | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| “属性” | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 格式 | 格式必须为`parquet` | 是 | `parquet` | format |
+| 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
-| 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为`part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件：`['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为 `part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件： `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 
 ### <a name="sink-example"></a>接收器示例
 
@@ -151,7 +160,7 @@ ParquetSource sink(
 ## <a name="using-self-hosted-integration-runtime"></a>使用自承载集成运行时
 
 > [!IMPORTANT]
-> 对于自承载 Integration Runtime （例如，在本地和云数据存储之间）的复制，如果不**按**原样复制 Parquet 文件，则需要在 IR 计算机上安装**64 位 JRE 8 （Java Runtime Environment）或 OpenJDK**和**Microsoft Visual C++ 2010 可再发行组件包**。 有关更多详细信息，请查看以下段落。
+> 对于自承载 Integration Runtime （例如，在本地和云数据存储之间）的复制，如果不 **按**原样复制 Parquet 文件，则需要在 IR 计算机上安装 **64 位 JRE 8 (Java Runtime Environment) 或 OpenJDK** 和 **Microsoft Visual C++ 2010 可再发行组件包** 。 有关更多详细信息，请查看以下段落。
 
 对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
 

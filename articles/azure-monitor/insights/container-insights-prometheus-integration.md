@@ -3,24 +3,24 @@ title: 配置 Prometheus 集成的容器 Azure Monitor |Microsoft Docs
 description: 本文介绍如何配置容器代理的 Azure Monitor，以擦除 Prometheus 与 Kubernetes 群集的指标。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f7a43f00ce160829cc8e6ed3b6272ab14aaace66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800454"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069418"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>将抓取的 Prometheus 度量值配置为用于容器的 Azure Monitor
+# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 Prometheus 指标的抓取
 
-[Prometheus](https://prometheus.io/)是一种常用的开源指标监视解决方案，属于[云本机计算基础](https://www.cncf.io/)。 容器 Azure Monitor 提供无缝载入体验来收集 Prometheus 指标。 通常，若要使用 Prometheus，需要使用存储设置和管理 Prometheus 服务器。 与 Azure Monitor 集成后，不需要 Prometheus 服务器。 只需通过导出程序或 pod （应用程序）公开 Prometheus 指标终结点，容器 Azure Monitor 容器的容器即可为你擦除指标。 
+[Prometheus](https://prometheus.io/) 是一种常用的开源指标监视解决方案，属于 [云本机计算基础](https://www.cncf.io/)。 容器 Azure Monitor 提供无缝载入体验来收集 Prometheus 指标。 通常，若要使用 Prometheus，需要使用存储设置和管理 Prometheus 服务器。 与 Azure Monitor 集成后，不需要 Prometheus 服务器。 你只需通过导出程序或 pod (应用程序) 公开 Prometheus 指标终结点，容器的容器化 Azure Monitor 代理可为你擦除这些指标。 
 
 ![Prometheus 的容器监视体系结构](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
 >[!NOTE]
 >抓取 Prometheus 指标支持的最低代理版本为 ciprod07092019 或更高版本，并且在表中编写配置和代理错误所支持的代理版本 `KubeMonAgentEvents` 为 ciprod10112019。 对于 Azure Red Hat OpenShift 和 Red Hat OpenShift v4，代理版本 ciprod04162020 或更高版本。 
 >
->有关代理版本和每个版本中包含的内容的详细信息，请参阅[代理发行说明](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)。 
->若要验证代理版本，请在“节点”选项卡中选择一个节点，然后在属性窗格中记下“代理映像标记”属性的值。********
+>有关代理版本和每个版本中包含的内容的详细信息，请参阅 [代理发行说明](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)。 
+>若要验证代理版本，请在“节点”选项卡中选择一个节点，然后在属性窗格中记下“代理映像标记”属性的值。
 
 在上托管的 Kubernetes 群集支持抓取的 Prometheus 指标：
 
@@ -44,17 +44,17 @@ ms.locfileid: "85800454"
 
 指定 URL 后，用于容器的 Azure Monitor 仅擦除此终结点。 指定 Kubernetes 服务后，将使用群集 DNS 服务器来解析服务名称以获取 IP 地址，然后擦除已解析的服务。
 
-|范围 | 键 | 数据类型 | “值” | 描述 |
+|范围 | 密钥 | 数据类型 | 值 | 说明 |
 |------|-----|-----------|-------|-------------|
 | 群集范围 | | | | 指定以下三种方法中的任何一种，以擦除指标的终结点。 |
 | | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
 | | `kubernetes_services` | String | 逗号分隔的数组 | 用于从 kube-state-metrics 擦除指标的 Kubernetes 服务数组。 例如：`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`。|
-| | `monitor_kubernetes_pods` | 布尔 | true 或 false | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | 布尔 | true 或 false | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
+| | `monitor_kubernetes_pods` | 布尔 | True 或 False | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | 布尔 | True 或 False | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
 | | `prometheus.io/scheme` | String | http 或 https | 默认为通过 HTTP 擦除。 必要时设置为 `https`。 | 
 | | `prometheus.io/path` | String | 逗号分隔的数组 | 要从中提取指标的 HTTP 资源路径。 如果指标路径不是 `/metrics`，请使用此批注定义它。 |
 | | `prometheus.io/port` | String | 9102 | 指定要从其擦除的端口。 如果未设置端口，则默认为 9102。 |
-| | `monitor_kubernetes_pods_namespaces` | String | 逗号分隔的数组 | 允许从 Kubernetes pod 擦除指标的命名空间列表。<br> 例如，`monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
+| | `monitor_kubernetes_pods_namespaces` | String | 逗号分隔的数组 | 允许从 Kubernetes pod 擦除指标的命名空间列表。<br> 例如 `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
 | 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
 | 节点范围或群集范围 | `interval` | String | 60s | 收集间隔默认为 1 分钟（60 秒）。 可将 *[prometheus_data_collection_settings.node]* 和/或 *[prometheus_data_collection_settings.cluster]* 的收集间隔设置为 s、m、h 等时间单位。 |
 | 节点范围或群集范围 | `fieldpass`<br> `fielddrop`| String | 逗号分隔的数组 | 可以通过设置允许 (`fieldpass`) 和禁止 (`fielddrop`) 列表，来指定要从终结点收集或不收集的特定指标。 必须先设置允许列表。 |
@@ -142,12 +142,12 @@ ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 �
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如，`monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如 `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 3. 运行以下 kubectl 命令： `kubectl apply -f <configmap_yaml_file.yaml>` 。
     
@@ -160,11 +160,11 @@ ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 �
 本部分包括成功为 Azure Red Hat OpenShift v3 群集配置 ConfigMap 配置文件的要求和步骤。
 
 >[!NOTE]
->对于 Azure Red Hat OpenShift v3. x，会在*OpenShift-* ConfigMap 命名空间中创建一个模板文件。 它未配置为主动擦除指标或从代理收集数据。
+>对于 Azure Red Hat OpenShift v3. x，会在 *OpenShift-* ConfigMap 命名空间中创建一个模板文件。 它未配置为主动擦除指标或从代理收集数据。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-在开始之前，请确认你是 Azure Red Hat OpenShift 群集的 "客户群集管理员" 角色的成员，以配置容器化代理和 Prometheus 抓取设置。 若要验证你是否为*osa 客户*组的成员，请运行以下命令：
+在开始之前，请确认你是 Azure Red Hat OpenShift 群集的 "客户群集管理员" 角色的成员，以配置容器化代理和 Prometheus 抓取设置。 若要验证你是否为 *osa 客户* 组的成员，请运行以下命令：
 
 ``` bash
   oc get groups
@@ -177,7 +177,7 @@ NAME                  USERS
 osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
 ```
 
-如果你是 ConfigMap 组*的*成员，则可以 `container-azm-ms-agentconfig` 使用以下命令列出此：
+如果你是 ConfigMap 组 *的* 成员，则可以 `container-azm-ms-agentconfig` 使用以下命令列出此：
 
 ``` bash
 oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
@@ -259,12 +259,12 @@ container-azm-ms-agentconfig   4         56m
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如，`monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如 `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 2. 保存在编辑器中所做的更改。
 
@@ -310,23 +310,23 @@ config::unsupported/missing config schema version - 'v21' , using defaults
     >此命令不适用于 Azure Red Hat OpenShift 群集。
     > 
 
-- 从实时数据（预览）。 实时数据（预览）日志显示类似于以下内容的错误：
+- 从实时数据 (预览) 。 实时数据 (预览) 日志显示类似于以下内容的错误：
 
     ```
     2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
     ```
 
-- 从 Log Analytics 工作区中的 **KubeMonAgentEvents** 表。 数据每小时发送一次，*并在出现配置错误的情况*中擦除错误和*错误*严重性。 如果没有错误，表中的条目将包含严重性为“信息”** 的数据，这些数据不会报告错误。 **Tags**属性包含有关在其上发生错误的 pod 和容器 ID 的详细信息，以及最后一个小时内的第一个匹配项、最后一个匹配项和计数。
+- 从 Log Analytics 工作区中的 **KubeMonAgentEvents** 表。 数据每小时发送一次， *并在出现配置错误的情况* 中擦除错误和 *错误* 严重性。 如果没有错误，表中的条目将包含严重性为“信息”的数据，这些数据不会报告错误。 **Tags**属性包含有关在其上发生错误的 pod 和容器 ID 的详细信息，以及最后一个小时内的第一个匹配项、最后一个匹配项和计数。
 
-- 对于 Azure Red Hat OpenShift 1.x 和 v4. x，请通过搜索**ContainerLog**表来检查 omsagent 日志，以验证是否已启用 OpenShift 日志收集。
+- 对于 Azure Red Hat OpenShift 1.x 和 v4. x，请通过搜索 **ContainerLog** 表来检查 omsagent 日志，以验证是否已启用 OpenShift 日志收集。
 
-错误阻止了 omsagent 分析文件，导致其重启并使用默认配置。 更正了除 Azure Red Hat OpenShift v3. x 以外的其他群集上的 ConfigMap 中的错误后，请通过运行以下命令保存 yaml 文件并应用更新的 ConfigMaps： `kubectl apply -f <configmap_yaml_file.yaml` 。 
+错误阻止了 omsagent 分析文件，导致其重启并使用默认配置。 更正了除 Azure Red Hat OpenShift v3. x 以外的群集上的 ConfigMap 中的错误 (s) ，请通过运行以下命令保存 yaml 文件并应用更新的 ConfigMaps： `kubectl apply -f <configmap_yaml_file.yaml` 。 
 
 对于 Azure Red Hat OpenShift v3. x，请运行以下命令编辑并保存更新的 ConfigMaps： `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` 。
 
 ## <a name="query-prometheus-metrics-data"></a>查询 Prometheus 指标数据
 
-若要查看 prometheus 指标擦除 by Azure Monitor 和代理报告的任何配置/抓取错误，请查看[Query prometheus 度量值数据](container-insights-log-search.md#query-prometheus-metrics-data)和[查询配置或抓取错误](container-insights-log-search.md#query-config-or-scraping-errors)。
+若要查看 prometheus 指标擦除 by Azure Monitor 和代理报告的任何配置/抓取错误，请查看 [Query prometheus 度量值数据](container-insights-log-search.md#query-prometheus-metrics-data) 和 [查询配置或抓取错误](container-insights-log-search.md#query-config-or-scraping-errors)。
 
 ## <a name="view-prometheus-metrics-in-grafana"></a>在 Grafana 中查看 Prometheus 指标
 
@@ -368,4 +368,4 @@ InsightsMetrics
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何在[此处](container-insights-agent-config.md)为容器工作负载的 stdout、stderr 和环境变量配置代理收集设置。 
+若要详细了解如何在 [此处](container-insights-agent-config.md)为容器工作负载的 stdout、stderr 和环境变量配置代理收集设置。 

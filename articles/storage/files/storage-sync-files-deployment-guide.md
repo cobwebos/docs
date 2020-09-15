@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 834b3b60a887dadd75e00a7a33abaff15e1a9407
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441470"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069622"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -157,7 +157,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 
 在打开的窗格中，输入以下信息：
 
-- 名称：存储同步服务的唯一名称（按订阅）****。
+- **名称**：存储同步服务每个区域)  (唯一名称。
 - 订阅：需要在其中创建存储同步服务的订阅****。 根据组织的配置策略，可能有权访问一个或多个订阅。 Azure 订阅是对每项云服务（如 Azure 文件）计费的最基本容器。
 - **资源组**：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 你可以创建新的资源组或使用现有资源组进行 Azure 文件同步。 (建议使用资源组作为容器以逻辑方式将资源隔离到你的组织，例如对 HR 资源或特定项目的资源进行分组。 ) 
 - **位置**：要在其中部署 Azure 文件同步的区域。此列表中仅提供受支持的区域。
