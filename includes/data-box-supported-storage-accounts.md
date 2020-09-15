@@ -3,20 +3,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: da36e2bbf358a1c61d2b9b3f7ede592ac88fd427
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200307"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90533172"
 ---
 下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有不同类型的存储帐户及其完整功能的完整列表，请参阅[存储帐户类型](/azure/storage/common/storage-account-overview#types-of-storage-accounts)。
 
 对于导入顺序，下表显示了支持的存储帐户。
 
-| **存储帐户/支持的存储类型** | **块 blob** |**页 blob*** |**Azure 文件** |备注|
+| **存储帐户/支持的存储类型** | **块 blob** |**页 blob*** |**Azure 文件** |**备注**|
 | --- | --- | -- | -- | -- |
 | 经典标准 | Y | Y | Y |
 | 常规用途 v1 标准  | Y | Y | Y | 支持热和冷。|
@@ -41,7 +41,7 @@ ms.locfileid: "86200307"
 | 页 Blob 存储高级版 | |Y | | |
 
 > [!IMPORTANT]
-> - 对于常规用途的帐户，Data Box 不支持队列、表、磁盘和 Azure Data Lake 第2代存储类型。
+> - 对于常规用途的帐户，Data Box 不支持导入订单的队列、表和磁盘存储类型。 对于出口订单，Data Box 不支持用于常规用途帐户的队列、表、磁盘和 Azure Data Lake 第2代存储类型。
 > - Data Box 不支持 Blob 存储和块 Blob 存储帐户的追加 blob。
 > - Data Box 不支持高级文件存储帐户。
 > - 上传到页 blob 的数据必须为512字节，如 Vhd。

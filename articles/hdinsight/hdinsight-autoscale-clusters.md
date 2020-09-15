@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
-ms.date: 08/21/2020
-ms.openlocfilehash: 7ce4580b366b57e2a1d4904b6ab63bf1834bdb65
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/14/2020
+ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090102"
+ms.locfileid: "90532182"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -68,7 +68,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 > [!Important]
 > Azure HDInsight 自动缩放功能于 2019 年 11 月 7 日正式发布，适用于 Spark 和 Hadoop 群集，并包含了该功能预览版本中未提供的改进。 如果你在 2019 年 11 月 7 日之前创建了 Spark 群集，并希望在群集上使用自动缩放功能，我们建议创建新群集，并在新群集上启用自动缩放。
 >
-> 交互式查询 (LLAP) 和 HBase 群集的自动缩放功能仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
+> 在8月27日，2020公开上市 (LLAP) 的自动缩放。 HBase 群集仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
 
 下表描述了与自动缩放功能兼容的群集类型和版本。
 
@@ -243,7 +243,7 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 ![启用工作器节点的基于计划的自动缩放指标](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 ### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>请考虑向上扩展和向下缩放操作的延迟
 

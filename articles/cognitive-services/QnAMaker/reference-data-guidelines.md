@@ -1,14 +1,14 @@
 ---
 title: 导入和导出数据引用-QnA Maker
-description: 了解如何使用 Url 类型来导入和创建 QnA 对。
+description: 使用此导入和导出引用可以获得最佳的知识库备份、存储和替换结果。
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c77f51263206c3cc0d4b546e1728963211a186c6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804237"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532148"
 ---
 # <a name="import-and-export-data-reference"></a>导入和导出数据引用
 

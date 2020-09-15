@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299247"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532335"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>如何从 Azure IoT 中心设备预配服务取消注册设备
 
 适当管理设备凭据对于高可见性 IoT 解决方案等系统至关重要。 此类系统的最佳做法是指定明确的计划，规定在设备凭据（共享访问签名 (SAS) 令牌或 X.509 证书）可能被盗用时应如何撤消设备的访问权限。 
 
-设备预配服务中的注册使设备能够[自动预配](concepts-auto-provisioning.md)。 已预配的设备是已向 IoT 中心进行了注册的设备，这允许设备接收其初始[设备孪生](~/articles/iot-hub/iot-hub-devguide-device-twins.md)状态并开始报告遥测数据。 本文介绍了如何从预配服务实例取消注册设备，阻止设备在将来再次预配。
+设备预配服务中的注册可 [设置](about-iot-dps.md#provisioning-process)设备。 已预配的设备是已向 IoT 中心进行了注册的设备，这允许设备接收其初始[设备孪生](~/articles/iot-hub/iot-hub-devguide-device-twins.md)状态并开始报告遥测数据。 本文介绍了如何从预配服务实例取消注册设备，阻止设备在将来再次预配。
 
 > [!NOTE] 
 > 请注意要撤消访问权限的设备的重试策略。 例如，具有无限的重试策略的设备可能持续尝试注册到预配服务。 这种情况会消耗服务资源并可能影响性能。

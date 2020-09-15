@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f167ffb652054b64098994d334eea6e1db6d2d14
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 549f9b03272accbe107c432f4929c5de250a6f6b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061200"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532386"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -369,7 +369,7 @@ Cmdlet 按顺序执行以下检查，并为故障提供指导：
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Azure 文件本地 AD DS 针对 AES 256 Kerberos 加密的身份验证支持
 
-我们引入了 AES 256 AD DS 通过 [AzFilesHybrid module 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases)身份验证对 Azure 文件进行本地身份验证的 Kerberos 加密支持。 如果已使用0.2.2 以外的模块版本启用 AD DS 身份验证，则需要下载最新的 AzFilesHybrid 模块 (v 0.2.2 +) ，并运行以下 PowerShell。 如果尚未在存储帐户上启用 AD DS 身份验证，则可以按照本 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) 进行启用。 如果执行了 AzFilesHybrid module v 0.2.2 或更高版本的功能支持，则无需重新运行以下 PowerShell。 
+我们引入了 AES 256 AD DS 通过 [AzFilesHybrid module 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases)身份验证对 Azure 文件进行本地身份验证的 Kerberos 加密支持。 如果已使用0.2.2 以外的模块版本启用 AD DS 身份验证，则需要下载最新的 AzFilesHybrid 模块 (v 0.2.2 +) ，并运行以下 PowerShell。 如果尚未在存储帐户上启用 AD DS 身份验证，则可以按照本 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) 进行启用。 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

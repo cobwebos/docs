@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b18ca88f9a97b09b7c5e15e78a2301bee712df5e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e6ee8ce065361ac27bba0e80349eb5e1d1877526
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394748"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532284"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -24,7 +24,7 @@ ms.locfileid: "89394748"
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
 - 管理 Key Vault 证书。 有关详细信息，请参阅[证书](../certificates/about-certificates.md)
 
-有关 Azure Key Vault 的更多常规信息，请参阅 [什么是 Key Vault](overview.md)) 。
+有关 Azure Key Vault 的更多常规信息，请参阅[什么是 Key Vault](overview.md)。
 
 ## <a name="public-previews"></a>公共预览版
 
@@ -140,7 +140,7 @@ ms.locfileid: "89394748"
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 
-- [Key Vault 软删除行为](soft-delete-overview.md)) 描述允许恢复已删除的对象的功能，无论是有意还是无意删除。
+- [Key Vault 软删除行为](soft-delete-overview.md)介绍了一种可以恢复已删除的对象的功能（不管是有意还是无意删除）。
 - [Key Vault 客户端限制](overview-throttling.md)介绍了有关限制的基本概念，并针对应用提供了限制方法。
 - [Key Vault 安全体系](overview-security-worlds.md)介绍了区域与安全领域之间的关系。
 
