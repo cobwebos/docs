@@ -1,5 +1,5 @@
 ---
-title: 语音合成快速入门 - 语音服务
+title: 文本转语音快速入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音 SDK 将文本转换为语音。 本快速入门介绍有关语音合成的对象构造和设计模式、支持的音频输出格式、语音 CLI 以及自定义配置选项。
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: speech-full-stack
-ms.openlocfilehash: 12ee7fbbd7699d09deae85971ffe411e115609ec
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: 文本转语音
+ms.openlocfilehash: 79409f95d698e015d15d9131dcf1f27b34b03343
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934680"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400888"
 ---
-# <a name="get-started-with-speech-synthesis"></a>语音合成入门
+# <a name="get-started-with-text-to-speech"></a>开始使用文本转语音
 
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 

@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 08/11/2020
-ms.openlocfilehash: c1527161948a6312fc0877748b2818b3ccc2143e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 09/02/2020
+ms.openlocfilehash: 332eb274b7ae632a3496b9ff43439bb48cfed5e4
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322613"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419276"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -82,6 +82,8 @@ ms.locfileid: "89322613"
 [动态联接和动态查找](https://youtu.be/CMOPPie9bXM)
 
 [平展转换](https://youtu.be/VY2tFQJoAXE)
+
+[转换层次结构数据](https://youtu.be/oAEh21NFgWQ)
 
 ## <a name="source-and-sink"></a>源和接收器
 

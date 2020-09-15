@@ -1,25 +1,25 @@
 ---
-title: 快速入门：识别存储在 Blob 存储中的语音
+title: 识别存储在 Blob 存储中的语音
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用批量听录 REST API 以异步方式识别存储在 SAS Blob 中的语音。
+description: 在本操作说明中，你将使用批量听录 REST API 以异步方式识别存储在 SAS Blob 中的语音。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 3c6ae5a7635222b48ce097c6c517cebb60f961aa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 28da97cb54c0147edc3d1609596b56db81546f18
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926129"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569402"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>快速入门：识别存储在 Blob 存储中的语音
+# <a name="recognize-speech-stored-in-blob-storage"></a>识别存储在 Blob 存储中的语音
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

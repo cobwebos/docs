@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400426"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595982"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>排查 Azure 密钥保管库访问策略问题
 
@@ -25,6 +25,14 @@ ms.locfileid: "89400426"
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>如何监视保管库可用性、服务延迟周期或密钥保管库的其他性能指标？
 
 当你开始缩放服务时，发送到密钥保管库的请求数量将会增加。 此类需求有可能会增加请求的延迟，并且在极端情况下，可能会导致请求受到限制，从而影响服务的性能。 你可以监视密钥保管库性能指标，并获得特定阈值的警报，有关配置监视的分步指南，请[了解详细信息](https://docs.microsoft.com/azure/key-vault/general/alert)。
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>我无法修改访问策略，如何启用它？
+用户需要有足够的 AAD 权限才能修改访问策略。 在这种情况下，用户需要具有更高级的参与者角色。
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>我看到“未知策略”错误。 这是什么意思？
+在“未知”部分中看到访问策略，可能有两种不同的情况：
+* 可能有以前的用户具有访问权限，而由于某种原因，该用户已不存在。
+* 如果通过 powershell 添加了访问策略，并为应用程序 objectid 而不是服务原则添加了访问策略
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>如何为每个密钥保管库对象分配访问控制？ 
 

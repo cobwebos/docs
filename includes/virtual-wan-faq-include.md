@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303921"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570057"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -83,7 +83,7 @@ ms.locfileid: "89303921"
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>就用户 VPN（点到站点）来说，支持多少个客户端？
 
-每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-12 支持 5000 个连接，缩放单元 13-20 支持最多 10,000 个连接。 
+每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-12 支持 5000 个连接，缩放单元 13-18 支持最多 10,000 个连接。 
 
 例如，假设用户选择 1 个缩放单元。 每个缩放单元的存在都意味着已部署主动-主动网关，并且每个实例（在本例中为 2 个）都支持最多 500 个连接。 每个网关可以获得 500 * 2 个连接，但这并不意味着你要为此缩放单元的 1000 个（而不是 500 个）连接做规划。 系统可能需要为实例提供服务，而在服务期间，当你超过建议的连接数时，系统可能会中断这额外的 500 个连接。 此外，如果决定在缩放单元上纵向扩展或缩减，或者在 VPN 网关上更改点到站点配置，请确保计划停机时间。
 

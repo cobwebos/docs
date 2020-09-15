@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 4c501368dfbeb95be1c5d2af9ff7aae3850257b3
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761138"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536168"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>经典订阅管理员角色、Azure 角色和 Azure AD 角色
 
@@ -44,7 +44,7 @@ ms.locfileid: "87761138"
 
 | 经典订阅管理员 | 限制 | 权限 | 说明 |
 | --- | --- | --- | --- |
-| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>访问 [Azure 帐户中心](https://account.azure.com/Subscriptions)</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。<br>帐户管理员无权访问 Azure 门户。 |
+| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>[在 Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中管理计费</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。<br>帐户管理员无权访问 Azure 门户。 |
 | 服务管理员 | 每个 Azure 订阅有 1 个 | <ul><li>在 [Azure 门户](https://portal.azure.com)中管理服务</li><li>取消订阅</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。<br>服务管理员具有 Azure 门户的完全访问权限。 |
 | 共同管理员 | 每个订阅有 200 个 | <ul><li>与服务管理员的访问特权相同，但无法更改订阅与 Azure 目录之间的关联。</li><li>将用户分配到共同管理员角色，但无法更改服务管理员</li></ul> | 共同管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
 
@@ -66,7 +66,7 @@ Azure 订阅可帮助你组织 Azure 资源的访问权限。 它们还可帮助
 
 每个订阅都与一个 Azure AD 目录相关联。 若要查找与订阅关联的目录，请在 Azure 门户中打开“订阅”，然后选择一个订阅以查看目录。
 
-帐户和订阅在 [Azure 帐户中心](https://account.azure.com/Subscriptions)进行管理。
+帐户和订阅在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中进行管理。
 
 ## <a name="azure-roles"></a>Azure 角色
 

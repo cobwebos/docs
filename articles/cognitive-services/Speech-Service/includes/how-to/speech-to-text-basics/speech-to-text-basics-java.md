@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 314617554abf8fee430e47eb4b0a0ca5db5bc75f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: db2f1a685e3413814878ee1a6a367bd790739d4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375763"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564952"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,34 +45,30 @@ SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "Your
 
 ## <a name="initialize-a-recognizer"></a>初始化识别器
 
-创建 [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) 后，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) 时，需要向其传递 `config`。 这会提供语音服务验证请求所需的凭据。
-
-如果使用设备的默认麦克风识别语音，则 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) 应如下所示：
+创建 [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) 后，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) 时，向其传递 `SpeechConfig`。 这会提供语音服务验证请求所需的凭据。
 
 ```java
 SpeechRecognizer recognizer = new SpeechRecognizer(config);
 ```
 
-如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) 时提供 `audioConfig` 参数。
+## <a name="recognize-from-microphone-or-file"></a>从麦克风或文件识别
 
-> [!TIP]
-> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) 时将其作为参数传递。
 
-首先，添加以下 `import` 语句。
+若要使用设备麦克风识别语音，请使用 `fromDefaultMicrophoneInput()` 创建 `AudioConfig`，并在创建 `SpeechRecognizer` 对象时传递 audio config。
 
 ```java
 import java.util.concurrent.Future;
 import com.microsoft.cognitiveservices.speech.*;
-```
 
-接下来，你将能够引用 `AudioConfig` 对象，如下所示：
-
-```java
 AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 ```
 
-如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 但是，当你创建 [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable)（而不是调用 `fromDefaultMicrophoneInput`）时，你将调用 `fromWavFileOutput` 并传递 `filename` 参数。
+> [!TIP]
+> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+
+如果要从音频文件（而不是使用麦克风）识别语音，则仍需要创建 `AudioConfig`。 但创建 [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable)（而不是调用 `fromDefaultMicrophoneInput()`）时，需要调用 `fromWavFileInput()` 并传递 `filename` 参数。
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -221,7 +217,7 @@ config.setSpeechRecognitionLanguage("fr-FR");
 
 ## <a name="improve-recognition-accuracy"></a>提高识别准确度
 
-可以通过多种方式使用语音 SDK 来提高识别的准确性。 让我们看一下短语列表。 短语列表用于标识音频数据中的已知短语，如人的姓名或特定位置。 可以将单个词或完整短语添加到短语列表。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与短语完全匹配的项，则不支持识别。
+可以通过多种方式使用语音 SDK 来提高识别的准确度。 让我们看一下短语列表。 短语列表用于标识音频数据中的已知短语，如人的姓名或特定位置。 可以将单个词或完整短语添加到短语列表。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与短语完全匹配的项，则不支持识别。
 
 > [!IMPORTANT]
 > 短语列表功能仅以英语提供。
@@ -243,7 +239,7 @@ phraseList.clear();
 
 ### <a name="other-options-to-improve-recognition-accuracy"></a>提高识别精确度的其他方式
 
-短语列表只是提高识别准确度的一种方式。 你还可以： 
+短语列表只是提高识别准确度的一种方式。 也可执行以下操作： 
 
 * [使用自定义语音识别提高准确性](../../../how-to-custom-speech.md)
 * [使用租户模型提高准确性](../../../tutorial-tenant-model.md)

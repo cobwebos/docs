@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e5adf007294ea4be0f5716a4614e0639f840fa75
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684926"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569350"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡
 
@@ -190,7 +190,7 @@ Microsoft Azure 支持的付款方式为信用卡和支票/电汇。 若要获�
 
 ### <a name="how-do-i-change-the-tax-id"></a>如何更改税务 ID？
 
-若要添加或更新税务 ID，请在 [Azure 帐户中心](https://account.azure.com/Profile)更新个人资料，然后选择“税务记录”。 此税务 ID 用于免税计算，并且会显示在发票上。
+若要添加或更新税务 ID，请在 [Azure 门户](https://portal.azure.com)更新个人资料，然后选择“税务记录”。 此税务 ID 用于免税计算，并且会显示在发票上。
 
 ## <a name="check-the-type-of-your-account"></a>检查帐户的类型
 

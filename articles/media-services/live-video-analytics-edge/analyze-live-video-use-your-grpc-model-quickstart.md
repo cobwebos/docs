@@ -4,12 +4,12 @@ description: 在本快速入门中，你将应用计算机视觉来分析来自�
 ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: ac11ced68ab8463da26b9978a5b0b02c4cd1a402
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687134"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421507"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>快速入门：使用自己的 gRPC 模型分析实时视频
 
@@ -56,11 +56,11 @@ ms.locfileid: "88687134"
 ## <a name="create-and-deploy-the-media-graph"></a>创建和部署媒体图
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
 ::: zone-end
 
 ## <a name="interpret-results"></a>解释结果
@@ -79,4 +79,9 @@ ms.locfileid: "88687134"
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试使用 gRPC 协议运行不同的媒体图拓扑。
+* 尝试使用 gRPC 协议运行不同的媒体图拓扑。
+* **生成并运行示例实时视频分析 (LVA) 扩展**
+<br/>请试用我们的 Jupyter 示例笔记本，可通过这些笔记本生成并运行基于 [ONNX](http://onnx.ai/) 的 YOLO 模型作为实时视频分析 (LVA) 扩展。
+    * [示例 YOLOv3 模型](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/notebooks/Yolo/yolov3/yolov3-grpc-icpu-onnx/readme.md)
+    * [示例 YOLOv4 模型](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/Yolo/yolov4/yolov4-grpc-icpu-onnx/readme.md)
+

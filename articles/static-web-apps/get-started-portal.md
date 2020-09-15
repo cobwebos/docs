@@ -5,18 +5,18 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752793"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434757"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>快速入门：在 Azure 门户中构建你的第一个静态 Web 应用
 
-Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布到生产环境。 在本快速入门中，你可使用门户将 Web 应用程序部署到 Azure Static Web Apps。
+Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布到生产环境。 在此快速入门中，你会使用 Azure 门户将 Web 应用部署到 Azure Static Web Apps。
 
 如果没有 Azure 订阅，[请创建一个免费的试用帐户](https://azure.microsoft.com/free)。
 
@@ -56,38 +56,39 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 1. 选择首选组织
 1. 选择“存储库”下拉列表中的“my-first-web-static-app”
 1. 从“分支”下拉列表中选择“master”
-1. 选择页面底部的“下一步:生成 >”按钮以编辑生成配置
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="下一个生成按钮":::
 
 > [!NOTE]
 > 如果看不到任何存储库，则可能需要在 GitHub 中授权 Azure Static Web Apps。 浏览到 GitHub 存储库，转到“设置”>“应用程序”>“授权 OAuth 应用”，选择“Azure Static Web Apps”，然后选择“授予”。 对于组织存储库，你必须是组织的所有者才能授予权限。
 
-1. 在“生成”选项卡中，添加特定于首选前端框架的配置详细信息。
+1. 在“生成详细信息”部分中，添加特定于首选前端框架的配置详细信息。
 
     # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
 
-    - 清除“应用位置”框中的默认值
-    - 清除“Api 位置”框中的默认值
-    - 清除“应用项目位置”框中的默认值
+    1. 从“生成预设”下拉列表中选择“自定义”
+    1. 清除“应用位置”框中的默认值
+    1. 清除“Api 位置”框中的默认值
+    1. 将“应用项目位置”框留空
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - 清除“应用位置”框中的默认值
-    - 清除“Api 位置”框中的默认值
-    - 在“应用项目位置”框中键入 dist/angular-basic
+    1. 从“生成预设”下拉列表中选择“Angular”
+    1. 保留“应用位置”框中的默认值
+    1. 清除“Api 位置”框中的默认值
+    1. 在“应用项目位置”框中键入 dist/angular-basic
 
     # <a name="react"></a>[React](#tab/react)
 
-    - 清除“应用位置”框中的默认值
-    - 清除“Api 位置”框中的默认值
-    - 在“应用项目位置”框中键入 build
+    1. 从“生成预设”下拉列表中选择“响应”
+    1. 保留“应用位置”框中的默认值
+    1. 清除“Api 位置”框中的默认值
+    1. 在“应用项目位置”框中键入 build
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - 清除“应用位置”框中的默认值
-    - 清除“Api 位置”框中的默认值
-    - 在“应用项目位置”框中键入 dist
+    1. 从“生成预设”下拉列表中选择“Vue.js”
+    1. 保留“应用位置”框中的默认值
+    1. 清除“Api 位置”框中的默认值
+    1. 保留“应用项目位置”框中的默认值
 
     ---
 

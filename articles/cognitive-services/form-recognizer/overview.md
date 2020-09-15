@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723549"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394391"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -48,6 +48,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 ## <a name="prebuilt-models"></a>预生成的模型
 
 表单识别器还包括用于独特表单类型的预生成模型。
+
 ### <a name="prebuilt-receipt-model"></a>预生成的收据模型
 预生成的收据模型用于读取澳大利亚、加拿大、英国、印度和美国的英语销售收据 &mdash; 由餐馆、油站、零售店等使用的类型。 此模型可提取关键信息，如交易的时间和日期、商家信息、税额、明细项目和总计等。 此外，预生成的回执模型经过训练，可识别和返回回执中的所有文本。 
 
@@ -74,9 +75,11 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
     * [在没有标签的情况下进行训练 - cURL](quickstarts/curl-train-extract.md)
     * [在没有标签的情况下进行训练 - Python](quickstarts/python-train-extract.md)
     * [在有标签的情况下进行训练 - Python](quickstarts/python-labeled-data.md)
-  * 从美国销售收据中提取数据
+  * 从销售收据提取数据
     * [提取收据数据 - cURL](quickstarts/curl-receipts.md)
     * [提取收据数据 - Python](quickstarts/python-receipts.md)
+  * 从名片提取数据
+    * [提取名片数据 - Python](quickstarts/python-business-cards.md)
   * 从表单中提取文本和表结构
     * [提取布局数据 - Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 | **训练自定义模型**| 使用相同类型的 5 个表单对新模型进行训练，以便分析你的表单。 将 _useLabelFile_ 参数设置为 `true`，以便使用手动标记的数据进行训练。 |
 | **分析表单** |使用自定义模型分析作为流传入的单个文档，以从表单中提取文本、键值对和表。  |
 | **分析收据** |分析单个回执文档，以提取关键信息和其他回执文本。|
+| **分析名片** |分析名片以提取关键信息和文本。|
 | **分析布局** |分许表单布局，以便提取文本和表结构。|
 
 请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。

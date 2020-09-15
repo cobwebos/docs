@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504859"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433970"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 
@@ -45,26 +45,26 @@ ms.locfileid: "85504859"
 
 ## <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 
-从“如何：  使用门户创建可访问资源的 Azure AD 应用程序和服务主体”中的各部分开始，按照说明执行以下任务：
+从“如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体”中的各部分开始，按照说明执行以下任务：
 
 1. 在[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中，创建一个应用程序来表示正在本教程中创建的 .NET 应用程序。 对于登录 URL，可以提供虚拟 URL，如本文中所示 (`https://contoso.org/exampleapp`)。
-2. 在[获取用于登录的值](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)中，获取应用程序 ID 和租户 ID，并记下这些值，稍后要在本教程中使用它们   。 
-3. 在[证书与机密](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)中，获取身份验证密钥，并记此值，稍后要在本教程中使用它  。
-4. 在[将应用程序分配给角色](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，在订阅级别将应用程序分配到“参与者”角色，让该应用程序可以在订阅中创建数据工厂  。
+2. 在[获取用于登录的值](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)中，获取应用程序 ID 和租户 ID，并记下这些值，稍后要在本教程中使用它们 。 
+3. 在[证书与机密](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)中，获取身份验证密钥，并记此值，稍后要在本教程中使用它。
+4. 在[将应用程序分配给角色](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，在订阅级别将应用程序分配到“参与者”角色，让该应用程序可以在订阅中创建数据工厂。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
 接下来，在 Visual Studio 中创建 C# 控制台应用程序：
 
 1. 启动 **Visual Studio**。
-2. 在“开始”窗口中，选择“创建新项目” > “控制台应用(.NET Framework)”   。 需要 .NET 4.5.2 或更高版本。
-3. 在“项目名称”中，输入 ADFv2QuickStart   。
-4. 选择“创建”  来创建项目。
+2. 在“开始”窗口中，选择“创建新项目” > “控制台应用(.NET Framework)” 。 需要 .NET 4.5.2 或更高版本。
+3. 在“项目名称”中，输入 ADFv2QuickStart 。
+4. 选择“创建”来创建项目。
 
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
-1. 选择“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。
-2. 在“包管理器控制台”窗格中，运行以下命令来安装包  。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
+1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”。
+2. 在“包管理器控制台”窗格中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -87,7 +87,7 @@ ms.locfileid: "85504859"
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. 将以下代码添加到 **Main** 方法以设置变量。 将占位符替换为自己的值。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 将以下代码添加到 **Main** 方法以设置变量。 将占位符替换为自己的值。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他区域中。
 
    ```csharp
    // Set variables
@@ -260,7 +260,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 在 **Main** 方法中添加用于**触发管道运行**的以下代码。
 
-此代码还设置 inputPath 和 outputPath 参数的值，这些值是使用源和接收器 Blob 路径的实际值在管道中指定的值   。
+此代码还设置 inputPath 和 outputPath 参数的值，这些值是使用源和接收器 Blob 路径的实际值在管道中指定的值 。
 
 ```csharp
 // Create a pipeline run
@@ -296,7 +296,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    }
    ```
 
-2. 在 Main 方法中添加以下代码用于检索复制活动运行详细信息，例如，读取/写入的数据大小  。
+2. 在 Main 方法中添加以下代码用于检索复制活动运行详细信息，例如，读取/写入的数据大小。
 
    ```csharp
    // Check the copy activity run details
@@ -318,7 +318,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 生成并启动应用程序，然后验证管道执行。
 
-控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等待，直至看到包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 Blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
+控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等待，直至看到包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 Blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
 
 ### <a name="sample-output"></a>示例输出
 
@@ -430,10 +430,10 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>验证输出
 
-该管道自动在 adftutorial Blob 容器中创建 output 文件夹  。 然后，将 emp.txt 文件从 input 文件夹复制到 output 文件夹  。 
+该管道自动在 adftutorial Blob 容器中创建 output 文件夹。 然后，将 emp.txt 文件从 input 文件夹复制到 output 文件夹。 
 
-1. 在 Azure 门户中，在你在以上[为 Blob 容器添加输入文件夹和文件](#add-an-input-folder-and-file-for-the-blob-container)部分中停留的 adftutorial 容器页上，选择“刷新”以查看输出文件夹   。 
-2. 在文件夹列表中，选择“output”  。
+1. 在 Azure 门户中，在你在以上[为 Blob 容器添加输入文件夹和文件](#add-an-input-folder-and-file-for-the-blob-container)部分中停留的 adftutorial 容器页上，选择“刷新”以查看输出文件夹 。 
+2. 在文件夹列表中，选择“output”。
 3. 确认 **emp.txt** 已复制到 output 文件夹。 
 
 ## <a name="clean-up-resources"></a>清理资源

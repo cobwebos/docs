@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 12d91e43576647b2ffbc1e78d2e059871dbe8a3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6aa0aa22fce5ba0f763f98fec37f607d0ce8a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033167"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441759"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
 
 可以使用各种库和框架连接到 Azure SQL 数据库或 Azure SQL 托管实例。 请查看[快速入门教程](https://aka.ms/sqldev)，了解 C#、Java、Node.js、PHP、Python 等编程语言的快速入门方式。 然后使用基于 Linux 或 Windows 的 SQL Server 或基于 macOS 的 Docker 生成一个应用。
 
-下表列出的连接库或驱动程序可供客户端应用程序用于通过多种语言连接到在本地或云中运行的 SQL Server 并使用该 SQL Server。 可以在 Linux、Windows 或 Docker 上使用它们，并将其用于连接到 Azure SQL 数据库、Azure SQL 托管实例和 Azure SQL 数据仓库。
+下表列出的连接库或驱动程序可供客户端应用程序用于通过多种语言连接到在本地或云中运行的 SQL Server 并使用该 SQL Server。 可以在 Linux、Windows 或 Docker 上使用它们，连接到 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（以前称为 SQL 数据仓库）。
 
 | 语言 | 平台 | 其他资源 | 下载 | 入门 |
 | :-- | :-- | :-- | :-- | :-- |

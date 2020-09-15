@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587848"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469110"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>教程：连接到 Azure Red Hat OpenShift 4 群集
 
@@ -23,9 +23,9 @@ ms.locfileid: "88587848"
 
 ## <a name="before-you-begin"></a>开始之前
 
-在前面的教程中，已经创建了一个 Azure Red Hat OpenShift 群集。 如果尚未完成这些步骤，因此想要逐一完成它们，请先阅读[教程 1 - 创建 Azure Red Hat Openshift 4 群集](tutorial-create-cluster.md)。
+在前面的教程中，已经创建了一个 Azure Red Hat OpenShift 群集。 如果尚未完成这些步骤，因此想要逐一完成它们，请先阅读[教程 1 - 创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md)。
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 

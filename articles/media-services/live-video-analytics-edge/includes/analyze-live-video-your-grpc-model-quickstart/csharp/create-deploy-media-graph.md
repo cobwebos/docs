@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b2b35e21cf9c8650b9dcf95cbd199c56cc23783
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8f9ed14a0bcef346281c38146cbb2d9551633c15
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687138"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421506"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>检查和编辑示例文件
 
@@ -31,7 +31,50 @@ ms.locfileid: "88687138"
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * 在 GraphTopologyDelete 下，编辑名称：
     * `"name"` : `"InferencingWithGrpcExtension"`
-    
+
+> [!NOTE]
+> <p>
+> <details>
+> <summary>展开此项并查看如何在拓扑中实现 MediaGraphGrpcExtension 节点</summary>
+> <pre><code>
+> {
+>   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+>   "name": "grpcExtension",
+>   "endpoint": {
+>       "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+>       "url": "${grpcExtensionAddress}",
+>       "credentials": {
+>           "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+>           "username": "${grpcExtensionUserName}",
+>           "password": "${grpcExtensionPassword}"
+>       }
+>   },
+>   "dataTransfer": {
+>       "mode": "sharedMemory",
+>       "SharedMemorySizeMiB": "5"
+>   },
+>   "image": {
+>       "scale": {
+>           "mode": "${imageScaleMode}",
+>           "width": "${frameWidth}",
+>           "height": "${frameHeight}"
+>       },
+>       "format": {
+>           "@type": "#Microsoft.Media.MediaGraphImageFormatEncoded",
+>           "encoding": "${imageEncoding}",
+>           "quality": "${imageQuality}"
+>       }
+>   },
+>   "inputs": [
+>       {
+>           "nodeName": "motionDetection"
+>       }
+>   ]
+> }          
+> </code></pre>
+> </details>    
+> </p>
+
 ### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>生成并部署 IoT Edge 部署清单
 
 1. 右键单击 src/edge/ deployment.grpcyolov3icpu.template.json 文件，然后选择“生成 IoT Edge 部署清单” 。

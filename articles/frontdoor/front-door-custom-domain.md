@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: f0d4ab9e3ecba8af1f6775389a4837e8c90eb14d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399763"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648809"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教程：将自定义域添加到 Front Door
 本教程介绍如何将自定义域添加到 Front Door。 使用 Azure Front Door 进行应用程序交付时，如果希望自己的域名在最终用户请求中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。
@@ -37,11 +37,11 @@ ms.locfileid: "89399763"
 
 ## <a name="prerequisites"></a>先决条件
 
-在完成本教程中的步骤之前，必须先创建一个 Front Door。 有关详细信息，请参阅[快速入门：创建 Front Door](quickstart-create-front-door.md)。
+* 在完成本教程中的步骤之前，必须先创建一个 Front Door。 有关详细信息，请参阅[快速入门：创建 Front Door](quickstart-create-front-door.md)。
 
-如果没有自定义域，则必须先在域提供商那里购买一个。 有关示例，请参阅[购买自定义域名](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)。
+* 如果没有自定义域，则必须先在域提供商那里购买一个。 有关示例，请参阅[购买自定义域名](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)。
 
-如果使用 Azure 来托管 [DNS 域](https://docs.microsoft.com/azure/dns/dns-overview)，必须将域提供商的域名系统 (DNS) 委托给 Azure DNS。 有关详细信息，请参阅 [向 Azure DNS 委派域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 否则，如果通过域提供商处理 DNS 域，请转到[创建 CNAME DNS 记录](#create-a-cname-dns-record)。
+* 如果使用 Azure 来托管 [DNS 域](https://docs.microsoft.com/azure/dns/dns-overview)，必须将域提供商的域名系统 (DNS) 委托给 Azure DNS。 有关详细信息，请参阅 [向 Azure DNS 委派域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 否则，如果通过域提供商处理 DNS 域，请转到[创建 CNAME DNS 记录](#create-a-cname-dns-record)。
 
 
 ## <a name="create-a-cname-dns-record"></a>创建 CNAME DNS 记录
@@ -202,7 +202,11 @@ ms.locfileid: "89399763"
 
 在本教程中，你了解了如何执行以下操作：
 
-> [!div class="checklist"]
-> - 创建 CNAME DNS 记录。
-> - 将自定义域与 Front Door 相关联。
-> - 验证自定义域。
+* 创建 CNAME DNS 记录。
+* 将自定义域与 Front Door 相关联。
+* 验证自定义域。
+
+若要了解如何为自定义域启用 HTTPS，请继续学习下一教程。
+
+> [!div class="nextstepaction"]
+> [为自定义域启用 HTTPS](front-door-custom-domain.md)

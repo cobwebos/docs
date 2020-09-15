@@ -14,6 +14,8 @@
       href: deployment-models.md
     - name: 按服务分类的资源提供程序
       href: azure-services-resource-providers.md
+    - name: 控制平面和数据平面
+      href: control-plane-and-data-plane.md
     - name: 扩展资源类型
       href: extension-resource-types.md
     - name: 资源实例限制

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 80918c63c1fef82c13b23569bcda10545628e8e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 56198392f3c769837d8d672b861baa9b341d284e
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998010"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419344"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
 
@@ -86,100 +86,21 @@ ms.locfileid: "88998010"
 
 1. 将以下代码添加到 AppSettings.cs 文件。 此文件从 Settings.json 文件中读取连接字符串，并将其分配给配置参数：
 
-   ```csharp
-   namespace CosmosTableSamples
-   {
-    using Microsoft.Extensions.Configuration;
-    public class AppSettings
-    {
-        public string StorageConnectionString { get; set; }
-        public static AppSettings LoadAppSettings()
-        {
-            IConfigurationRoot configRoot = new ConfigurationBuilder()
-                .AddJsonFile("Settings.json")
-                .Build();
-            AppSettings appSettings = configRoot.Get<AppSettings>();
-            return appSettings;
-        }
-    }
-   }
-   ```
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/AppSettings.cs":::
 
-## <a name="parse-and-validate-the-connection-details"></a>分析和验证连接详细信息 
+## <a name="parse-and-validate-the-connection-details"></a>分析和验证连接详细信息
 
 1. 右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，并添加名为“Common.cs”的类  。 将编写代码来验证连接详细信息并在此类中创建表。
 
-1. 按如下所示定义方法 `CreateStorageAccountFromConnectionString`。 此方法将分析连接字符串详细信息，并验证“Settings.json”文件中提供的帐户名称和帐户密钥详细信息是否有效。 
+1. 按如下所示定义方法 `CreateStorageAccountFromConnectionString`。 此方法将分析连接字符串详细信息，并验证“Settings.json”文件中提供的帐户名称和帐户密钥详细信息是否有效。
 
- ```csharp
-using System;
-
-namespace CosmosTableSamples
-{
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Cosmos.Table;
-    using Microsoft.Azure.Documents;
-
-    public class Common
-    {
-        public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
-        {
-            CloudStorageAccount storageAccount;
-            try
-            {
-                storageAccount = CloudStorageAccount.Parse(storageConnectionString);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the application.");
-                throw;
-            }
-            catch (ArgumentException)
-            {
-                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
-                Console.ReadLine();
-                throw;
-            }
-
-            return storageAccount;
-        }
-    }
-}
-   ```
-
+   :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="createStorageAccount":::
 
 ## <a name="create-a-table"></a>创建表 
 
 [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) 类用于检索存储在表存储中的表和实体。 由于 Cosmos DB 表 API 帐户中没有任何表，请将 `CreateTableAsync` 方法添加到 Common.cs 类来创建表：
 
-```csharp
-public static async Task<CloudTable> CreateTableAsync(string tableName)
-  {
-    string storageConnectionString = AppSettings.LoadAppSettings().StorageConnectionString;
-
-    // Retrieve storage account information from connection string.
-    CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString);
-
-    // Create a table client for interacting with the table service
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
-
-    Console.WriteLine("Create a Table for the demo");
-
-    // Create a table client for interacting with the table service 
-    CloudTable table = tableClient.GetTableReference(tableName);
-    if (await table.CreateIfNotExistsAsync())
-    {
-      Console.WriteLine("Created Table named: {0}", tableName);
-    }
-    else
-    {
-      Console.WriteLine("Table {0} already exists", tableName);
-    }
-
-    Console.WriteLine();
-    return table;
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
 如果收到“503 服务不可用异常”错误，则连接模式所需的端口可能已被防火墙阻止。 若要解决此问题，打开所需端口或使用网关模式连接，如以下代码所示：
 
@@ -193,27 +114,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 右键单击项目“CosmosTableSamples”。 选择“添加”、“新建文件夹”并将其命名为“模型”  。 在“模型”文件夹中添加名为“CustomerEntity.cs”的类，并向其添加以下代码。
 
-```csharp
-namespace CosmosTableSamples.Model
-{
-    using Microsoft.Azure.Cosmos.Table;
-    public class CustomerEntity : TableEntity
-    {
-        public CustomerEntity()
-        {
-        }
-
-        public CustomerEntity(string lastName, string firstName)
-        {
-            PartitionKey = lastName;
-            RowKey = firstName;
-        }
-
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
 此代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 分区键相同的实体可以实现比分区键不同的实体更快的查询速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 需要存储在表中的实体必须是受支持的类型，例如，派生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) 类。 要存储在表中的实体属性必须是相应类型的公共属性，并且允许获取和设置值。 此外，实体类型必须公开无参数构造函数。
 
@@ -223,174 +124,27 @@ namespace CosmosTableSamples.Model
 
 右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，并添加名为“SamplesUtils.cs”的类  。 此类存储对实体执行 CRUD 操作所需的全部代码。 
 
-```csharp
- public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
- {
-     if (entity == null)
-     {
-         throw new ArgumentNullException("entity");
-     }
-     try
-     {
-         // Create the InsertOrReplace table operation
-         TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
-
-         // Execute the operation.
-         TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
-         CustomerEntity insertedCustomer = result.Result as CustomerEntity;
-
-         // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure Cosmos DB
-         if (result.RequestCharge.HasValue)
-         {
-             Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
-         }
-
-         return insertedCustomer;
-     }
-     catch (StorageException e)
-     {
-         Console.WriteLine(e.Message);
-         Console.ReadLine();
-         throw;
-     }
- }
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
 ## <a name="get-an-entity-from-a-partition"></a>从分区获取实体
 
-可以通过使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) 类下的 Retrieve 方法从分区获取实体。 以下代码示例获取客户实体的分区键、行键、电子邮件和电话号码。 此示例还打印出用于查询实体的请求单元。 要查询实体，请将以下代码追加到“SamplesUtils.cs”文件： 
+可以通过使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) 类下的 Retrieve 方法从分区获取实体。 以下代码示例获取客户实体的分区键、行键、电子邮件和电话号码。 此示例还打印出用于查询实体的请求单元。 要查询实体，请将以下代码追加到“SamplesUtils.cs”文件：
 
-```csharp
-public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
-    {
-      try
-      {
-        TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>(partitionKey, rowKey);
-        TableResult result = await table.ExecuteAsync(retrieveOperation);
-        CustomerEntity customer = result.Result as CustomerEntity;
-        if (customer != null)
-        {
-          Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", customer.PartitionKey, customer.RowKey, customer.Email, customer.PhoneNumber);
-        }
-
-        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-        if (result.RequestCharge.HasValue)
-        {
-           Console.WriteLine("Request Charge of Retrieve Operation: " + result.RequestCharge);
-        }
-
-        return customer;
-        }
-        catch (StorageException e)
-        {
-           Console.WriteLine(e.Message);
-           Console.ReadLine();
-           throw;
-        }
-    }
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
 ## <a name="delete-an-entity"></a>删除实体
 
 在检索实体之后，可使用更新实体的相同演示模式轻松删除该实体。 以下代码检索并删除一个客户实体。 要删除实体，请将以下代码追加到“SamplesUtils.cs”文件： 
 
-```csharp
-public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity deleteEntity)
-   {
-     try
-     {
-        if (deleteEntity == null)
-     {
-        throw new ArgumentNullException("deleteEntity");
-     }
-
-    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-    TableResult result = await table.ExecuteAsync(deleteOperation);
-
-    // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-    if (result.RequestCharge.HasValue)
-    {
-       Console.WriteLine("Request Charge of Delete Operation: " + result.RequestCharge);
-    }
-
-    }
-    catch (StorageException e)
-    {
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-        throw;
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>对示例数据执行 CRUD 操作
 
-定义创建表、插入或合并实体的方法后，对示例数据运行这些方法。 要执行此操作，请右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，然后添加名为“BasicSamples.cs”的类，并向其添加以下代码  。 此代码将创建表并向该表添加实体。 如果要删除项目末尾的实体和表，请从以下代码中删除 `table.DeleteIfExistsAsync()` 和 `SamplesUtils.DeleteEntityAsync(table, customer)` 方法中的注释：
+定义创建表、插入或合并实体的方法后，对示例数据运行这些方法。 要执行此操作，请右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，然后添加名为“BasicSamples.cs”的类，并向其添加以下代码  。 此代码将创建表并向该表添加实体。
 
-```csharp
-using System;
-namespace CosmosTableSamples
-{
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Cosmos.Table;
-    using Model;
+如果不希望删除项目末尾的实体和表，请在以下代码中注释 `await table.DeleteIfExistsAsync()` 和 `SamplesUtils.DeleteEntityAsync(table, customer)` 方法。 最好在删除表之前注释掉这些方法并验证数据。
 
-    class BasicSamples
-    {
-        public async Task RunSamples()
-        {
-            Console.WriteLine("Azure Cosmos DB Table - Basic Samples\n");
-            Console.WriteLine();
-
-            string tableName = "demo" + Guid.NewGuid().ToString().Substring(0, 5);
-
-            // Create or reference an existing table
-            CloudTable table = await Common.CreateTableAsync(tableName);
-
-            try
-            {
-                // Demonstrate basic CRUD functionality 
-                await BasicDataOperationsAsync(table);
-            }
-            finally
-            {
-                // Delete the table
-                // await table.DeleteIfExistsAsync();
-            }
-        }
-
-        private static async Task BasicDataOperationsAsync(CloudTable table)
-        {
-            // Create an instance of a customer entity. See the Model\CustomerEntity.cs for a description of the entity.
-            CustomerEntity customer = new CustomerEntity("Harp", "Walter")
-            {
-                Email = "Walter@contoso.com",
-                PhoneNumber = "425-555-0101"
-            };
-
-            // Demonstrate how to insert the entity
-            Console.WriteLine("Insert an Entity.");
-            customer = await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
-
-            // Demonstrate how to Update the entity by changing the phone number
-            Console.WriteLine("Update an existing Entity using the InsertOrMerge Upsert Operation.");
-            customer.PhoneNumber = "425-555-0105";
-            await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
-            Console.WriteLine();
-
-            // Demonstrate how to Read the updated entity using a point query 
-            Console.WriteLine("Reading the updated Entity.");
-            customer = await SamplesUtils.RetrieveEntityUsingPointQueryAsync(table, "Harp", "Walter");
-            Console.WriteLine();
-
-            // Demonstrate how to Delete an entity
-            //Console.WriteLine("Delete the entity. ");
-            //await SamplesUtils.DeleteEntityAsync(table, customer);
-            //Console.WriteLine();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/BasicSamples.cs":::
 
 上述代码会创建以“demo”开头的表并将生成的 GUID 追加到表名。 然后，它会添加姓名为“Harp Walter”的客户实体，并稍后更新此用户的电话号码。 
 
@@ -400,26 +154,7 @@ namespace CosmosTableSamples
 
 从项目“CosmosTableSamples”， 打开名为“Program.cs”的类。然后将以下代码添加到其中，以便在项目运行时调用 BasicSamples。
 
-```csharp
-using System;
-
-namespace CosmosTableSamples
-{
-    class Program
-    {
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Azure Cosmos Table Samples");
-            BasicSamples basicSamples = new BasicSamples();
-            basicSamples.RunSamples().Wait();
-           
-            Console.WriteLine();
-            Console.WriteLine("Press any key to exit");
-            Console.Read();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 
 立即生成解决方案并按 F5 运行该项目。 运行项目时，将在命令提示符中看到以下输出：
 

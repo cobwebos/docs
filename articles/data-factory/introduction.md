@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191107"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536306"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 
@@ -28,11 +28,11 @@ ms.locfileid: "84191107"
 
 为了分析这些日志，该公司需要使用参考数据，例如位于本地数据存储中的客户信息、游戏信息和市场营销活动信息。 公司想要利用本地数据存储中的这些数据，将其与云数据存储中具有的其他日志数据结合在一起。 
 
-为了获取见解，它希望使用云中的 Spark 群集 (Azure HDInsight) 处理加入的数据，并将转换的数据发布到云数据仓库（如 Azure SQL 数据仓库）以轻松地基于它生成报表。 公司的人员希望自动执行此工作流，并每天按计划对其进行监视和管理。 他们还希望在文件存储到 blob 存储容器中时执行该工作流。
+为了获取见解，公司希望使用云中的 Spark 群集 (Azure HDInsight) 处理加入的数据，并将转换的数据发布到云数据仓库（如 Synapse Analytics，以前称为 SQL 数据仓库）以轻松地在此基础上生成报表。 公司的人员希望自动执行此工作流，并每天按计划对其进行监视和管理。 他们还希望在文件存储到 blob 存储容器中时执行该工作流。
 
 Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL 和数据集成服务，可让你创建数据驱动型工作流用于大规模协调数据移动和转换数据。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。 可以构建复杂的 ETL 流程，用于通过数据流或使用 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL 数据库等计算服务直观转换数据。 
 
-此外，还可以将转换的数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。 最终，通过 Azure 数据工厂，可将原始数据组织成有意义的数据存储和数据湖，以实现更好的业务决策。
+此外，还可以将转换的数据发布到数据存储（例如 Azure Synapse Analytics），供商业智能 (BI) 应用程序使用。 最终，通过 Azure 数据工厂，可将原始数据组织成有意义的数据存储和数据湖，以实现更好的业务决策。
 
 ![数据工厂的顶级视图](media/data-flow/overview.png)
 
@@ -62,7 +62,15 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 成功地构建和部署数据集成管道后（提供优化数据的业务值），请监视计划的活动和管道，以了解成功率和失败率。 Azure 数据工厂通过 Azure 门户上的 Azure Monitor、API、PowerShell、Azure Monitor 日志和运行状况面板，对管道监视提供内置支持。
 
 ## <a name="top-level-concepts"></a>顶级概念
-一个 Azure 订阅可以包含一个或多个 Azure 数据工厂实例（或数据工厂）。 Azure 数据工厂由四个关键组件组成。 这些组件组合起来提供一个平台，供你在上面编写数据驱动型工作流（其中包含用来移动和转换数据的步骤）。
+一个 Azure 订阅可以包含一个或多个 Azure 数据工厂实例（或数据工厂）。 Azure 数据工厂由以下关键组件组成。
+- 管道
+- 活动
+- 数据集
+- 链接服务
+- 数据流
+- Integration Runtime
+
+这些组件组合起来提供一个平台，供你在上面编写数据驱动型工作流（其中包含用来移动和转换数据的步骤）。
 
 ### <a name="pipeline"></a>管道
 数据工厂可以包含一个或多个管道。 管道是执行任务单元的活动的逻辑分组。 管道中的活动可以共同执行一项任务。 例如，一个管道可能包含一组活动，这些活动从 Azure Blob 引入数据，然后在 HDInsight 群集上运行 Hive 查询，以便对数据分区。 

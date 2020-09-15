@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 08/04/2020
+ms.date: 09/08/2020
 ms.author: punagpal
-ms.openlocfilehash: 55d072492a1d90c6964935f2a79f73aacdceff21
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826766"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594367"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>快速入门：使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）
 
@@ -169,7 +169,10 @@ Azure 提供了一套全面的 IoT 产品，用于连接和管理 IoT 设备。 
 > 实际设备准备就绪后，可以使用相同的 IoT Central 应用程序[加入设备](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template)并替换设备模拟器。 设备数据也将自动开始流向 FHIR。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>使用适用于 FHIR 的 Azure IoT 连接器（预览版）连接 IoT 数据
-部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#set-up-data-export)。 在“连续数据导出”页上：
+> [!WARNING]
+> 本指南中提供的设备映射模板旨在与 IoT Central 中的数据导出（旧版）一起使用。
+
+部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy)。 在“连续数据导出”页上：
 - 选择“Azure 事件中心”作为导出目标。
 - 选择“事件中心命名空间”字段的“使用连接字符串”值。
 - 为“连接字符串”字段提供在上一步中获取的适用于 FHIR 的 Azure IoT 连接器的连接字符串。

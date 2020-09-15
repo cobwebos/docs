@@ -13,17 +13,17 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 4dbbf8267b4a7a1ea280d16ee787c8ae6cd652c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267352"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441762"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>快速入门：使用 Azure 门户的查询编辑器查询 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-查询编辑器是 Azure 门户中的一个工具，用于针对 Azure SQL 数据库中的数据库或 Azure SQL 数据仓库中的数据仓库运行 SQL 查询。 
+查询编辑器是 Azure 门户中的一个工具，用于针对 Azure SQL 数据库中的数据库或 Azure Synapse Analytics 中的数据仓库运行 SQL 查询。 
 
 在本快速入门中，你将使用查询编辑器针对数据库运行 Transact-SQL (T-SQL) 查询。
 

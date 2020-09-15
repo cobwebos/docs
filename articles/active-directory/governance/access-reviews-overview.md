@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783665"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594333"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 访问评审可以使组织有效地管理组�
 ## <a name="when-should-you-use-access-reviews"></a>何时应使用访问评审？
 
 - **特权角色用户过多：** 建议检查多少用户具有管理访问权限，其中有多少用户是全局管理员，以及检查是否存在向其分配管理任务后未将其删除的受邀来宾和合作伙伴。 可以重新验证 [Azure AD 角色](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如全局管理员）或 [Azure 资源角色](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 体验中的用户访问权限管理员）中的角色分配用户。
-- **自动化不可行：** 可针对安全组或 Office 365 组中的动态成员资格创建规则，但如果人力资源数据不在 Azure AD 中或者如果用户在离开组后仍需访问权限来培训其接任者应该怎么办？ 对于此类情况，可以对该组创建评审，确保仍需访问权限的用户能够继续获得访问权限。
+- **自动化不可行：** 可针对安全组或 Microsoft 365 组中的动态成员资格创建规则，但如果人力资源数据不在 Azure AD 中或者如果用户在离开组后仍需访问权限来培训其接任者，应该怎么办？ 对于此类情况，可以对该组创建评审，确保仍需访问权限的用户能够继续获得访问权限。
 - **将组用于新用途：** 如果要将组同步到 Azure AD，或计划为所有销售团队组成员启用 Salesforce 应用程序，则要求组所有者在将组用于其他风险内容前评审组成员资格会非常有用。
 - **业务关键数据访问权限：** 对于特定资源，可能出于审核目的要求 IT 以外的人员定期注销并提供需要访问权限的正当理由。
 - **要维护策略的例外列表：** 在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 IT 管理员可以管理此任务、避免忽视策略例外情况，为审核员提供定期评审这些例外情况的证明。
@@ -94,8 +94,10 @@ Azure Active Directory (Azure AD) 访问评审可以使组织有效地管理组�
 | 管理员创建组 A 的访问评审，该组包含 75 个用户和 1 个组所有者，并将该组所有者指定为审阅者。 | 作为审阅者的组所有者需要 1 个许可证 | 1 |
 | 管理员创建组 B 的访问评审，该组包含 500 个用户和 3 个组所有者，并将这 3 个组所有者指定为审阅者。 | 作为审阅者的各个组所有者共需 3 个许可证 | 3 |
 | 管理员创建具有 500 个用户的组 B 的访问评审。 并使其成为自我评审。 | 各个用户进行自我评审共需 500 个许可证 | 500 |
-| 管理员创建具有 50 个成员用户和 25 个来宾用户的组 C 的访问评审。 并使其成为自我评审。 | 各个用户进行自我评审共需 50 个许可证。<br/>（来宾用户已涵盖在要求的 1:5 比例内）。 | 50 |
-| 管理员创建具有 6 个成员用户和 108 个来宾用户的组 D 的访问评审。 并使其成为自我评审。 | 充当自我审阅者的各个用户共需 6 个许可证 + 按所要求的 1:5 比例涵盖所有 108 位来宾用户需要 16 个额外的许可证。 6 个许可证，涵盖 6\*5=30 个来宾用户。 对于余下的 (108-6\*5)=78 位来宾用户，需要 78/5=16 个额外的许可证。 因此，总共需要 22 个许可证 (6+16)。 | 22 |
+| 管理员创建具有 50 个成员用户和 25 个来宾用户的组 C 的访问评审。 并使其成为自我评审。 | 50 名作为自我审阅者的用户各需 1 个许可证。* | 50 |
+| 管理员创建具有 6 个成员用户和 108 个来宾用户的组 D 的访问评审。 并使其成为自我评审。 | 6 名作为自我审阅者的用户各需 1 个证书。 来宾用户按月度活跃用户 (MAU) 计费。 不需要其他许可证。 *  | - |
+
+\* Azure AD External Identities（来宾用户）定价基于月度活动用户数 (MAU)，这是对一个日历月内具有身份验证活动的独立用户的计数。 此模型将替换 1:5 比率计费模型，该模型允许租户中的每个 Azure AD Premium 许可证最多 5 个来宾用户。 当你的租户链接到订阅时，如果使用 External Identities 功能与来宾用户协作，则将使用基于 MAU 的计费模型自动计费。 有关详细信息，请参阅 Azure AD External Identities 的计费模型。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: afe5ec179826b6d8dbef54ef773948bf9cbaea2f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: db0e3bf102feeab6272ac96198d486b51e144d05
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684149"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570090"
 ---
-
-![概述](../../../media/quickstarts/overview-qs5.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="../../../media/quickstarts/overview-qs5.svg" alt-text="信号流":::
 
 此图显示本快速入门中信号的流动方式。 [Edge 模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)模拟托管实时流式处理协议 (RTSP) 服务器的 IP 相机。 [RTSP 源](../../../media-graph-concept.md#rtsp-source)节点从该服务器拉取视频源，并将视频帧发送到[帧速率筛选器处理器](../../../media-graph-concept.md#frame-rate-filter-processor)节点。 该处理器会限制到达 [HTTP 扩展处理器](../../../media-graph-concept.md#http-extension-processor)节点的视频流的帧速率。 
 

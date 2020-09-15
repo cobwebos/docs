@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401480"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420874"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -188,6 +188,13 @@ ms.locfileid: "89401480"
 
 如果使用 Azure Key Vault 管理证书，则可以将 PKCS12 证书从 Key Vault 导入到应用服务中，前提是该证书[满足要求](#private-certificate-requirements)。
 
+### <a name="authorize-app-service-to-read-from-the-vault"></a>授权应用服务读取保管库
+默认情况下，应用服务资源提供程序无权访问 Key Vault。 若要将 Key Vault 用于证书部署，需要[授权资源提供程序对 KeyVault 的读取访问权限](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)。 
+
+`abfa0a7c-a6b6-4736-8310-5855508787cd` 是应用服务的资源提供程序服务主体名称，并且对于所有 Azure 订阅都是相同的。 对于 Azure 政府云环境，请改用 `6a02c803-dafd-4136-b4c3-5a6f318b4714` 作为资源提供程序服务主体名称。
+
+### <a name="import-a-certificate-from-your-vault-to-your-app"></a>将保管库中的证书导入到应用
+
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>” 。
 
 在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入 Key Vault 证书”  。
@@ -199,12 +206,15 @@ ms.locfileid: "89401480"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| Key Vault | 包含要导入的证书的保管库。 |
+| 密钥保管库 | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。
 
 ![导入 Key Vault 证书已完成](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!NOTE]
+> 如果使用新证书更新 Key Vault 中的证书，应用服务会在 48 小时内自动同步证书。
 
 > [!IMPORTANT] 
 > 若要使用此证书保护自定义域，仍需要创建证书绑定。 按照[创建绑定](configure-ssl-bindings.md#create-binding)中的步骤操作。

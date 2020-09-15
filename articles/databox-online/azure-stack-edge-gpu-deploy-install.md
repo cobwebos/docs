@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262849"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421367"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>教程：使用 GPU 安装 Azure Stack Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "89262849"
 
 安装可能需要大约两小时才能完成。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 拆开设备包装
@@ -221,6 +221,10 @@ ms.locfileid: "89262849"
 4. 将电源线连接到配电装置 (PDU)。 确保两个 PSU 使用单独的电源。
 5. 按下电源按钮打开设备。
 6. 将 1-GbE 网络接口的端口 1 连接到用于配置物理设备的计算机。 端口 1 用作管理接口。
+    
+    > [!NOTE]
+    > 如果将计算机直接连接到设备（不通过交换机），请使用交叉电缆或 USB 以太网适配器。
+
 7. 将一个或多个端口 2、端口 3、端口 4、端口 5 或端口 6 连接到数据中心网络/Internet。
 
     - 如果连接端口 2，请使用 1-GbE RJ-45 网线。
@@ -235,7 +239,7 @@ ms.locfileid: "89262849"
 > * 将设备装入机架
 > * 为设备布线
 
-请继续学习下一教程，了解如何连接、设置和激活设备。
+请继续学习下一教程，了解如何连接到设备。
 
 > [!div class="nextstepaction"]
 > [连接 Azure Stack Edge](./azure-stack-edge-gpu-deploy-connect.md)

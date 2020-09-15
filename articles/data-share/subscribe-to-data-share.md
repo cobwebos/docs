@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268887"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489912"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
@@ -41,7 +41,7 @@ ms.locfileid: "89268887"
 ### <a name="receive-data-into-a-sql-based-target"></a>将数据接收到基于 SQL 的目标中：
 
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。 
-* 数据共享资源托管标识用于访问 Azure SQL 数据库或 Azure SQL 数据仓库的权限。 可以通过以下步骤完成此操作： 
+* 数据共享资源托管标识用于访问 Azure SQL 数据库或 Azure Synapse Analytics 的权限。 可以通过以下步骤完成此操作： 
     1. 将你自己设置为 SQL Server 的 Azure Active Directory 管理员。
     1. 使用 Azure Active Directory 连接到 Azure SQL 数据库/数据仓库。
     1. 使用查询编辑器（预览版）执行以下脚本，以将 Data Share 托管标识添加为“db_datareader, db_datawriter, db_ddladmin”。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 

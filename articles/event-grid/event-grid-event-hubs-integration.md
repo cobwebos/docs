@@ -1,18 +1,18 @@
 ---
 title: 教程：将事件中心数据发送到数据仓库 - 事件网格
-description: 教程：介绍了如何使用 Azure 事件网格和事件中心将数据迁移到 SQL 数据仓库。 它使用 Azure 函数来检索 Capture 文件。
+description: 教程：介绍了如何使用 Azure 事件网格和事件中心将数据迁移到 Azure Synapse Analytics。 它使用 Azure 函数来检索 Capture 文件。
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007428"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435025"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库
-Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知（事件）作出响应。 例如，它可以触发 Azure 函数来处理已捕获到 Azure Blob 存储或 Azure Data Lake Storage 的事件中心数据，并将数据迁移到其他数据存储库。 此[事件中心和事件网格集成示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)展示了如何将事件中心与事件网格结合使用，从而将捕获的事件中心数据从 blob 存储无缝迁移到 SQL 数据仓库。
+Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知（事件）作出响应。 例如，它可以触发 Azure 函数来处理已捕获到 Azure Blob 存储或 Azure Data Lake Storage 的事件中心数据，并将数据迁移到其他数据存储库。 此[事件中心和事件网格集成示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)展示了如何将事件中心与事件网格结合使用，从而将捕获的事件中心数据从 blob 存储无缝迁移到 Azure Synapse Analytics（旧称 SQL 数据仓库）。
 
 ![应用概览](media/event-grid-event-hubs-integration/overview.png)
 
@@ -22,12 +22,12 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 2. 完成数据捕获后，将生成一个事件并将其发送到 Azure 事件网格。 
 3. 事件网格将此事件数据转发到 Azure 函数应用。
 4. 函数应用使用事件数据中的 Blob URL 从存储中检索 Blob。 
-5. 函数应用将 Blob 数据迁移到 Azure SQL 数据仓库。 
+5. 函数应用将 Blob 数据迁移到 Azure Synapse Analytics。 
 
 在本文中，将执行以下步骤：
 
 > [!div class="checklist"]
-> * 使用 Azure 资源管理器模板部署基础结构：事件中心、存储帐户、函数应用、SQL 数据仓库。
+> * 使用 Azure 资源管理器模板部署基础结构：事件中心、存储帐户、函数应用、Synapse Analytics。
 > * 在数据仓库中创建表。
 > * 将代码添加到函数应用。
 > * 订阅事件。 
@@ -52,7 +52,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 * 用于托管函数应用的应用服务计划
 * 用于处理事件的函数应用
 * 用于托管数据仓库的 SQL Server
-* 用于存储已迁移数据的 SQL 数据仓库
+* 用于存储迁移数据的 Azure Synapse Analytics
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>在 Azure 门户中启动 Azure Cloud Shell
 
@@ -97,7 +97,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
           "tags": null
         }
         ```
-2. 通过运行以下 CLI 命令来部署上一部分（事件中心、存储帐户、函数应用、SQL 数据仓库）中提到的所有资源： 
+2. 通过运行以下 CLI 命令来部署上一部分提到的所有资源（事件中心、存储帐户、函数应用、Azure Synapse Analytics）： 
     1. 将命令复制并粘贴到 Cloud Shell 窗口中。 或者，可能需要复制/粘贴到所选的编辑器中，设置值，然后将该命令复制到 Cloud Shell。 
 
         ```azurecli
@@ -112,7 +112,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
         3. 事件中心的名称。 可以将值保留原样 (hubdatamigration)。
         4. SQL Server 的名称。
         5. SQL 用户名称和密码。 
-        6. SQL 数据仓库的名称
+        6. Azure Synapse Analytics 的名称
         7. 存储帐户的名称。 
         8. 函数应用的名称。 
     3.  在 Cloud Shell 窗口中按 ENTER 以运行该命令。 此过程可能需要一段时间，因为正在创建一系列资源。 在命令的结果中，请确保没有任何故障。 
@@ -131,7 +131,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
         ```
     2. 为资源组指定名称。
     3. 按 Enter。 
-3. 通过运行以下命令来部署上一部分（事件中心、存储帐户、函数应用、SQL 数据仓库）中提到的所有资源：
+3. 通过运行以下命令来部署上一部分提到的所有资源（事件中心、存储帐户、函数应用、Azure Synapse Analytics）：
     1. 将命令复制并粘贴到 Cloud Shell 窗口中。 或者，可能需要复制/粘贴到所选的编辑器中，设置值，然后将该命令复制到 Cloud Shell。 
 
         ```powershell
@@ -143,7 +143,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
         3. 事件中心的名称。 可以将值保留原样 (hubdatamigration)。
         4. SQL Server 的名称。
         5. SQL 用户名称和密码。 
-        6. SQL 数据仓库的名称
+        6. Azure Synapse Analytics 的名称
         7. 存储帐户的名称。 
         8. 函数应用的名称。 
     3.  在 Cloud Shell 窗口中按 ENTER 以运行该命令。 此过程可能需要一段时间，因为正在创建一系列资源。 在命令的结果中，请确保没有任何故障。 
@@ -162,13 +162,13 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 
     ![资源组中的资源](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>在 SQL 数据仓库中创建表
+### <a name="create-a-table-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建表
 通过运行 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) 脚本在数据仓库中创建表。 若要运行此脚本，可以使用 Visual Studio 或门户中的查询编辑器。 以下步骤显示如何使用查询编辑器： 
 
 1. 在资源组的资源列表中，选择“Synapse SQL 池(数据仓库)”。 
-2. 在 SQL 数据仓库页中，选择左侧菜单中的“查询编辑器 (预览)”。 
+2. 在 Azure Synapse Analytics 页中，选择左侧菜单中的“查询编辑器(预览)”。 
 
-    ![SQL 数据仓库页](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+    ![Azure Synapse Analytics 页](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
 2. 输入 SQL Server 的“用户名”和“密码”，然后选择“确定”  。 需要将客户端 IP 地址添加到防火墙中才能成功登录 SQL Server。 
 
     ![SQL Server 身份验证](media/event-grid-event-hubs-integration/sql-server-authentication.png)
@@ -258,7 +258,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
         ![创建事件网格订阅](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>运行应用以生成数据
-至此，已完成设置事件中心、SQL 数据仓库、Azure 函数应用和事件订阅。 需要先配置几个值，然后再运行应用来生成事件中心数据。
+至此，已完成设置事件中心、Azure Synapse Analytics、Azure 函数应用和事件订阅。 需要先配置几个值，然后再运行应用来生成事件中心数据。
 
 1. 在 Azure 门户中，像之前那样导航到资源组。 
 2. 选择事件中心命名空间。

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259058"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489895"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教程：使用 Azure Data Share 共享数据  
 
@@ -40,7 +40,7 @@ ms.locfileid: "89259058"
 
 ### <a name="share-from-a-sql-based-source"></a>从基于 SQL 的源共享：
 
-* 包含要共享的表和视图的 Azure SQL 数据库或 Azure Synapse Analytics（以前的 Azure SQL 数据仓库）。
+* 包含要共享的表和视图的 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 SQL 数据仓库）。
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。
 * 用于访问数据仓库的数据共享权限。 可以通过以下步骤完成此操作： 
     1. 将你自己设置为 SQL Server 的 Azure Active Directory 管理员。
@@ -113,7 +113,7 @@ ms.locfileid: "89259058"
 
     ![向共享添加数据集](./media/datasets.png "数据集")
 
-1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure SQL 数据仓库进行共享，系统将提示你输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
+1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure Synapse Analytics 共享，系统将提示输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
 
     ![AddDatasets](./media/add-datasets.png "添加数据集")    
 

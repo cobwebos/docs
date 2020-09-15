@@ -3,15 +3,15 @@ title: 使用门户管理 Windows 虚拟桌面的应用组 - Azure
 description: 如何使用 Azure 门户管理 Windows 虚拟桌面应用组。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 21dba3c9beeefa2b25b8038f6cbd0ec77f947774
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 52f495753d055730c1ad42444c83cf3d5cd4c1d3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226720"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461419"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教程：使用 Azure 门户管理应用组
 
@@ -121,6 +121,9 @@ ms.locfileid: "89226720"
 - 将应用组发布到你选择的用户和用户组。
 - 注册应用组（如果你选择这样做）。
 - 基于你的配置创建 Azure 资源管理器模板的链接，你可以下载并保存该模板供以后使用。
+
+>[!IMPORTANT]
+>只能为每个 Azure Active Directory 租户创建 50 个应用程序组。 由于检索用户源存在服务限制，我们添加了此限制。 此限制不适用于在 Windows 虚拟桌面（经典）中创建的应用组。
 
 ## <a name="next-steps"></a>后续步骤
 

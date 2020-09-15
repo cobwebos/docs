@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377806"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418953"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -225,7 +225,9 @@ ms.locfileid: "89377806"
 > [!NOTE]
 > 请参阅以下日期格式设置规则：
 > 
-> 以下字符可用作 DMY 日期分隔符：`, - / . \`。 空格不能用作分隔符。 例如：
+> 必须指定格式（`dmy`、`mdy`、`ymd`）以使日期格式生效。
+>
+> 以下字符可用作日期分隔符：`, - / . \`。 空格不能用作分隔符。 例如：
 > * 2020,01,01
 > * 2020-01-01
 > * 2020/01/01
@@ -234,11 +236,11 @@ ms.locfileid: "89377806"
 > * 2020-1-1
 > * 20-01-1
 >
-> 如果 DMY 日期字符串具有八位数字，可以使用也可以不使用分隔符：
+> 如果日期字符串具有八位数字，则可以使用也可以不使用分隔符：
 > * 20200101
 > * 2020 01 01
 >
-> 月份还可以按其完整名称或简短名称写入。 如果使用该名称，可以使用也可以不使用分隔符：
+> 月份还可以按其完整名称或简短名称写入。 如果使用该名称，则可以使用也可以不使用分隔符。 但是，这种格式可能会被认为没有其他格式那么准确。
 > * 2020/Jan/01
 > * 2020Jan01
 > * 2020 Jan 01

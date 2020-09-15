@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure 基础基准的法规符合性详细信息
 description: CIS Microsoft Azure 基础基准法规符合性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 07/10/2020
+ms.date: 09/04/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c5a452ad00ff0126b3d768b4b3499dfbed0b33e1
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 9228a8395bcfd5618fdbe81630a9cafc36bdc969
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275455"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486971"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基础基准法规符合性内置计划的详细信息
 
@@ -102,7 +102,7 @@ ms.locfileid: "86275455"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |建议通过 Azure 安全中心监视未启用磁盘加密的 VM |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-network-security-groups-is-not-disabled"></a>确保 ASC 默认策略设置“监视网络安全组”不是处于“已禁用”状态
 
@@ -252,7 +252,7 @@ ms.locfileid: "86275455"
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[应在 SQL 托管实例上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |审核所有未启用高级数据安全的 SQL 托管实例。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
-|[应在 SQL 服务器上启用高级数据安全性](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |审核没有高级数据安全的 SQL 服务器 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
+|[应在 SQL 服务器上启用高级数据安全性](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |审核没有高级数据安全的 SQL 服务器 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
 
 ### <a name="ensure-that-azure-active-directory-admin-is-configured"></a>确保配置 Azure Active Directory 管理员
 
@@ -318,14 +318,6 @@ ms.locfileid: "86275455"
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[应为 PostgreSQL 数据库服务器记录断开连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e446) |此策略帮助审核环境中任何未启用 log_disconnections 的 PostgreSQL 数据库。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogDisconnections_Audit.json) |
-
-### <a name="ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>确保 PostgreSQL 数据库服务器的服务器参数“log_duration”设置为“ON”
-
-**ID**：CIS Azure 4.16 所有权：客户
-
-|名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
-|---|---|---|---|
-|[应为 PostgreSQL 数据库服务器启用“记录持续时间”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e8f3) |此策略帮助审核环境中任何未启用 log_duration 设置的 PostgreSQL 数据库。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogDuration_Audit.json) |
 
 ### <a name="ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>确保 PostgreSQL 数据库服务器的服务器参数“connection_throttling”设置为“ON”
 
@@ -491,7 +483,7 @@ ms.locfileid: "86275455"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |建议通过 Azure 安全中心监视未启用磁盘加密的 VM |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-that-data-disks-are-encrypted"></a>确保“数据磁盘”已加密
 
@@ -499,7 +491,7 @@ ms.locfileid: "86275455"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |建议通过 Azure 安全中心监视未启用磁盘加密的 VM |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-that-unattached-disks-are-encrypted"></a>确保加密“未附加的磁盘”
 
@@ -549,7 +541,7 @@ ms.locfileid: "86275455"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在 Kubernetes 服务中使用基于角色的访问控制 (RBAC)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |若要对用户可以执行的操作提供粒度筛选，请使用基于角色的访问控制 (RBAC) 来管理 Kubernetes 服务群集中的权限并配置相关授权策略。 |Audit、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
+|[应在 Kubernetes 服务中使用基于角色的访问控制 (RBAC)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |若要对用户可以执行的操作提供粒度筛选，请使用基于角色的访问控制 (RBAC) 来管理 Kubernetes 服务群集中的权限并配置相关授权策略。 |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
 
 ## <a name="appservice"></a>应用服务
 
@@ -597,19 +589,9 @@ ms.locfileid: "86275455"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[确保在 API 应用中启用“注册到 Azure Active Directory”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86d97760-d216-4d81-a3ad-163087b2b6c3) |应用服务中的托管服务标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在应用服务中注册到 Azure Active Directory 时，应用将安全连接到其他 Azure 服务，而无需输入用户名和密码 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_AD_Enabled.json) |
-|[确保在函数应用中启用“注册到 Azure Active Directory”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff0473e7a-a1ba-4e86-afb2-e829e11b01d8) |应用服务中的托管服务标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在应用服务中注册到 Azure Active Directory 时，应用将安全连接到其他 Azure 服务，而无需输入用户名和密码 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_AD_Enabled.json) |
-|[确保在 WEB 应用中启用“注册到 Azure Active Directory”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faa81768c-cb87-4ce2-bfaa-00baa10d760c) |应用服务中的托管服务标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在应用服务中注册到 Azure Active Directory 时，应用将安全连接到其他 Azure 服务，而无需输入用户名和密码 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_AD_Enabled.json) |
-
-### <a name="ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>确保用作 Web 应用一部分的“.Net Framework”版本是最新的
-
-**ID**：CIS Azure 9.6 所有权：客户
-
-|名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
-|---|---|---|---|
-|[确保用作 API 应用一部分的“.NET Framework”版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc2e7ca55-f62c-49b2-89a4-d41eb661d2f0) |我们定期发布适用于 .NET Framework 软件的更新版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 .NET Framework 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_NETFrameWork_Latest.json) |
-|[确保用作函数应用一部分的“.NET Framework”版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F10c1859c-e1a7-4df3-ab97-a487fa8059f6) |我们定期发布适用于 .NET Framework 软件的更新版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 .NET Framework 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_NETFrameWork_Latest.json) |
-|[确保用作 Web 应用一部分的“.NET Framework”版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F843664e0-7563-41ee-a9cb-7522c382d2c4) |我们定期发布适用于 .NET Framework 软件的更新版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 .NET Framework 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_NETFrameWork_Latest.json) |
+|[应在 API 应用中使用的托管标识](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4d441f8-f9d9-4a9e-9cef-e82117cb3eef) |使用托管标识以实现增强的身份验证安全性 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_UseManagedIdentity_ApiApp_Audit.json) |
+|[应在函数应用中使用的托管标识](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0da106f2-4ca3-48e8-bc85-c638fe6aea8f) |使用托管标识以实现增强的身份验证安全性 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_UseManagedIdentity_FunctionApp_Audit.json) |
+|[应在 Web 应用中使用的托管标识](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2b9ad585-36bc-4615-b300-fd4435808332) |使用托管标识以实现增强的身份验证安全性 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_UseManagedIdentity_WebApp_Audit.json) |
 
 ### <a name="ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>确保用于运行 Web 应用的“PHP 版本”是最新的
 
@@ -618,7 +600,6 @@ ms.locfileid: "86275455"
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[确保用作 API 应用一部分的“PHP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |我们定期发布适用于 PHP 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 API 应用的最新 PHP 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[确保用作函数应用一部分的“PHP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fab965db2-d2bf-4b64-8b39-c38ec8179461) |我们定期发布适用于 PHP 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用函数应用的最新 PHP 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_PHP_Latest.json) |
 |[确保用作 WEB 应用一部分的“PHP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |我们定期发布适用于 PHP 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 PHP 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
 
 ### <a name="ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>确保用于运行 Web 应用的“Python 版本”是最新的
@@ -649,7 +630,7 @@ ms.locfileid: "86275455"
 |---|---|---|---|
 |[确保用于运行 API 应用的“HTTP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |我们定期发布适用于 HTTP 的更高版本来解决安全漏洞或包含更多功能。 使用 Web 应用的最新 HTTP 版本可以利用更高版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
 |[确保用于运行函数应用的“HTTP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |我们定期发布适用于 HTTP 的更高版本来解决安全漏洞或包含更多功能。 使用 Web 应用的最新 HTTP 版本可以利用更高版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
-|[确保用于运行 Web 应用的“HTTP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |应用服务中的托管服务标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在应用服务中注册到 Azure Active Directory 时，应用将安全连接到其他 Azure 服务，而无需输入用户名和密码 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
+|[确保用于运行 Web 应用的“HTTP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |我们定期发布适用于 HTTP 的更高版本来解决安全漏洞或包含更多功能。 使用 Web 应用的最新 HTTP 版本可以利用更高版本的安全修复（如果有）和/或新功能。 |AuditIfNotExists、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
 
 > [!NOTE]
 > 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。

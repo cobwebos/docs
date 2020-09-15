@@ -2,18 +2,18 @@
 title: 使用 Azure IaaS Site Recovery 将 Azure VM 移动到另一个区域
 description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域移动到另一个 Azure 区域。
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076109"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425919"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -88,7 +88,7 @@ ms.locfileid: "87076109"
 1. 在“名称”  中，指定友好名称 **ContosoVMVault**。 如果有多个订阅，请选择合适的一个。
 1. 创建资源组 ContosoRG  。
 1. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
-1. 在“恢复服务保管库”中，选择“概述” > “ContosoVMVault” > “+复制”。
+1. 在“恢复服务保管库”中，选择“概述” > “ContosoVMVault” > “复制项” > “+复制”    。
 1. 在“源”中，选择“Azure”。
 1. 在“源位置”中，选择当前运行 VM 的 Azure 源区域。
 1. 选择“资源管理器”部署模型。 然后选择“源订阅”和“源资源组”。

@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399780"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648881"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -219,7 +219,27 @@ postmaster@&lt;your-domain-name.com&gt;
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>常见问题
 
+1. 谁是证书提供者？使用哪种类型的证书？ 
+
+    Digicert 提供的专用/单一证书用于自定义域。 
+
+2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？ 
+
+    Azure Front Door 使用 SNI TLS/SSL。
+
+3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？ 
+
+    如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 afdverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
+
+4. 使用 SAN 证书是否没有使用专用证书安全？ 
+    
+    SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 TLS/SSL 证书都使用 SHA-256 来增强服务器安全性。
+
+5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？ 
+
+    否，当前不需要证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
 
 ## <a name="clean-up-resources---disable-https"></a>清理资源 - 禁用 HTTPS
 
@@ -247,30 +267,15 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 | 2 证书取消预配 | 删除证书 |
 | 3 完成 | 已删除证书 |
 
-## <a name="frequently-asked-questions"></a>常见问题
-
-1. 谁是证书提供者？使用哪种类型的证书？ 
-
-    Digicert 提供的专用/单一证书用于自定义域。 
-
-2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？ 
-
-    Azure Front Door 使用 SNI TLS/SSL。
-
-3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？ 
-
-    如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 afdverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
-
-4. 使用 SAN 证书是否没有使用专用证书安全？ 
-    
-    SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 TLS/SSL 证书都使用 SHA-256 来增强服务器安全性。
-
-5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？ 
-
-    否，当前不需要证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
-
-
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[创建 Front Door](quickstart-create-front-door.md)。
-- 了解 [Front Door 的工作原理](front-door-routing-architecture.md)。
+在本教程中，你了解了如何执行以下操作：
+
+* 向 Key Vault 上传证书。
+* 验证域。
+* 为自定义域启用 HTTPS。
+
+若要了解如何设置 Front Door 的地理筛选策略，请继续学习下一教程。
+
+> [!div class="nextstepaction"]
+> [设置地区筛选策略](front-door-geo-filtering.md)

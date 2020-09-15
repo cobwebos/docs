@@ -2,20 +2,20 @@
 title: Azure ExpressRoute 概述：通过专用连接进行连接
 description: 此 ExpressRoute 技术概述介绍了如何使用 ExpressRoute 连接，以便用户通过专用连接将本地网络扩展到 Azure。
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: overview
 ms.date: 08/25/2020
-ms.author: mialdrid
-ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.author: duau
+ms.openlocfilehash: 40d84a4196a3cc104a29b4b9511bd627f3f8d40e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852947"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566868"
 ---
 # <a name="what-is-azure-expressroute"></a>什么是 Azure ExpressRoute？
-使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure 和 Office 365 等 Microsoft 云服务建立连接。
+使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure 和 Microsoft 365 等 Microsoft 云服务建立连接。
 
 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、一致的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 
@@ -44,7 +44,7 @@ Microsoft 使用 BGP（一种行业标准动态路由协议），在本地网络
 ### <a name="connectivity-to-microsoft-cloud-services"></a>与 Microsoft 云服务建立连接
 通过 ExpressRoute 连接可访问以下服务：
 * Microsoft Azure 服务
-* Microsoft Office 365 服务
+* Microsoft 365 服务
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]

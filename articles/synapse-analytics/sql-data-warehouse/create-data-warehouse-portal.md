@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166036"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459379"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并查询 Synapse SQL 池
 
@@ -89,7 +89,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 1. 部署完成后，从左侧菜单中选择“所有服务”。 选择“数据库”，然后选择“Azure Synapse Analytics”旁边的星形图标将 Azure Synapse Analytics 添加到收藏夹。 
 
-2. 在左侧菜单中选择“Azure Synapse Analytics”，然后在“Azure Synapse Analytics”页上选择“mySampleDataWarehouse”。   此时会打开数据库的概述页，其中显示了完全限定的服务器名称（例如 **sqlpoolservername.database.windows.net**），并提供了其他配置的选项。
+2. 在左侧菜单中选择“Azure Synapse Analytics”，然后在“Azure Synapse Analytics”页上选择“mySampleDataWarehouse”。    此时会打开数据库的概述页，其中显示了完全限定的服务器名称（例如 **sqlpoolservername.database.windows.net**），并提供了其他配置的选项。
 
 3. 复制此完全限定的服务器名称，以便在此快速入门和其他快速入门中使用它连接到服务器及其数据库。 若要打开服务器设置，请选择服务器名称。
 
@@ -122,7 +122,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 2. 在左侧菜单中选择“Azure Synapse Analytics”，然后在“Azure Synapse Analytics”页上选择你的 SQL 池。 
 
-3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。  在此示例中，完全限定的名称为 sqlpoolservername.database.windows.net。
+3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定的名称为 sqlpoolservername.database.windows.net。
 
     ![连接信息](./media/create-data-warehouse-portal/find-server-name-copy.png)
 
@@ -155,7 +155,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 不建议在以服务器管理员身份登录时运行大型查询，因为它使用[有限的资源类](resource-classes-for-workload-management.md)。 改为按[教程中所示](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)配置[工作负荷隔离](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)。
 
-SQL 数据仓库使用 T-SQL 作为查询语言。 打开一个查询窗口并运行一些 T-SQL 查询，请使用以下步骤：
+Azure Synapse Analytics 使用 T-SQL 作为查询语言。 打开一个查询窗口并运行一些 T-SQL 查询，请使用以下步骤：
 
 1. 右键单击“mySampleDataWarehouse”并选择“新建查询”。  “新建查询”窗口随即打开。
 

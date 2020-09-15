@@ -11,14 +11,14 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 514d1197c5e6d0f4c0f38faf24c6c2522d489820
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9ced792ab076c312c827d4a74c08cfa7971b7e17
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400928"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569403"
 ---
-在本快速入门中，你将使用 REST API 在批处理中识别文件中的语音。 批处理执行语音听录，无需任何用户交互。 它提供了一个简单的编程模型，无需管理并发、自定义语音识别模型或其他详细信息。 它需要高级控制选项，同时可以有效利用 Azure 语音服务资源。
+在本操作说明中，你将使用批量听录 REST API 从文件批量识别语音。 批处理执行语音听录，无需任何用户交互。 它提供了一个简单的编程模型，无需管理并发、自定义语音识别模型或其他详细信息。 它需要高级控制选项，同时可以有效利用 Azure 语音服务资源。
 
 若要深入了解可用选项和配置详细信息，请参阅[批量听录](../../../batch-transcription.md)。
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 3ee78560818d3651d5822c551ba2e0ccee3376e6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 13ab7fc5b4461559fc54b5643d22ca309c752a37
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204601"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564955"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,29 +60,30 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 
 ## <a name="initialize-a-recognizer"></a>初始化识别器
 
-创建 [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) 后，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) 时，需要向其传递 `speech_config`。 这会提供语音服务验证请求所需的凭据。
-
-如果使用设备的默认麦克风识别语音，则 [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) 应如下所示：
+创建 [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) 后，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) 时，向其传递 `speech_config`。 这会提供语音服务验证请求所需的凭据。
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 ```
 
-如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) 时提供 `audio_config` 参数。
+## <a name="recognize-from-microphone-or-file"></a>从麦克风或文件识别
 
-> [!TIP]
-> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) 时将其作为参数传递。
+
+若要使用设备麦克风识别语音，只需创建 `SpeechRecognizer` 而无需传递 `AudioConfig`
 
 ```Python
-audio_config = AudioConfig(device_name="<device id>");
-speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 ```
 
-如果要提供音频文件而不是使用麦克风，则仍需要提供 `audio_config`。 但是，在创建 [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) 时，你需要使用 `filename` 参数，而不是提供 `device_name`。
+> [!TIP]
+> 如果要按 ID 引用设备，请使用 `AudioConfig(device_name="<device id>")` 创建 `AudioConfig`
+> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+
+如果要从音频文件（而不是使用麦克风）识别语音，请创建 [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) 并使用 `filename` 参数。
 
 ```Python
-audio_filename = "whatstheweatherlike.wav"
-audio_input = speechsdk.AudioConfig(filename=audio_filename)
+audio_input = speechsdk.AudioConfig(filename="your_file_name.wav")
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 ```
 

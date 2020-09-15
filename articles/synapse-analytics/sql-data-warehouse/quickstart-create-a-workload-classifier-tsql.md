@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 05173790d8efe05851d39121ecfa15186ccb6d3c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 65a77dfaab0bf99207fd27a35d67a12532056476
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212949"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442933"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>快速入门：使用 T-SQL 创建工作负荷分类器
 
@@ -31,7 +31,7 @@ ms.locfileid: "85212949"
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门假设你已有 SQL 数据仓库，并且具有 CONTROL DATABASE 权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
+本快速入门假定你已在 Azure Synapse Analytics中预配 Synapse SQL 池，并且具有 CONTROL DATABASE 权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 

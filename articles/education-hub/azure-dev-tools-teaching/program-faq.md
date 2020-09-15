@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100677"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567803"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>有关 Azure Dev Tools for Teaching 的常见问题解答
+# <a name="frequently-asked-questions-about-the-education-hub"></a>有关教育中心的常见问题
 
 本文解决了有关面向学生的 Azure、面向学生的 Azure 入门版和 Azure Dev Tools for Teaching 的常见问题。
 
@@ -152,6 +152,11 @@ Azure 课程额度仅涵盖自激活 Azure 赞助套餐之后的使用情况。 
 如果你在 Azure 门户中的“订阅”边栏选项卡中查看特定订阅，你将看到“套餐名称”为属性之一。 如果套餐已连接到课程额度，则“套餐名称”将显示“Azure 赞助”。 如果未显示“Azure 赞助”，请联系支持人员进行转换。
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
+
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>谁有资格购买 Microsoft Azure Dev Tools for Teaching？
+
+只有与 Microsoft 签订了批量许可 (VL) 协议的学术机构才能注册 Azure Dev Tools for Teaching。  如果你当前是无 VL 协议的 Dev Tools for Teaching 客户，则可以继续续订你的订阅。 有关学术机构 VL 协议的详细信息，请访问 https://aka.ms/ees 
+
 
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Azure Dev Tools for Teaching 订阅中包含哪些产品？
 

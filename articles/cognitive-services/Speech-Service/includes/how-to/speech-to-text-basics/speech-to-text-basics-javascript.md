@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5ab742e7ce2d198a321e15118522e6866bd1d104
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fced9206bfd7d33ab4d9e911f92f12ec4b2aa99c
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405852"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564953"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,27 +77,30 @@ const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourS
 
 ## <a name="initialize-a-recognizer"></a>初始化识别器
 
-创建 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) 后，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) 时，需要向其传递 `speechConfig`。 这会提供语音服务验证请求所需的凭据。
-
-如果使用设备的默认麦克风识别语音，则 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) 应如下所示：
+创建 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) 后，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) 时，向其传递 `speechConfig`。 这会提供语音服务验证请求所需的凭据。
 
 ```javascript
 const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) 时提供 `audioConfig` 参数。
+## <a name="recognize-from-microphone-or-file"></a>从麦克风或文件识别
 
-> [!TIP]
-> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) 时将其作为参数传递。
 
-引用 `AudioConfig` 对象，如下所示：
+若要使用设备麦克风识别语音，请使用 `fromDefaultMicrophoneInput()` 创建 `AudioConfig`，并在创建 `SpeechRecognizer` 对象时传递 audio config。
 
 ```javascript
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 但是，只有在以 Node.js 为目标时才能这样做。创建 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) 时，需调用 `fromWavFileOutput` 并传递 `filename` 参数，而不是调用 `fromDefaultMicrophoneInput`。
+> [!TIP]
+> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+
+如果要从音频文件（而不是使用麦克风）识别语音，则仍需要提供 `AudioConfig`。 但创建 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest)（而不是调用 `fromDefaultMicrophoneInput()`）时，需要调用 `fromWavFileInput()` 并传递 `filename` 参数。
+
+> [!IMPORTANT]
+> 从文件识别语音仅在 Node.js SDK 中受支持
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -255,7 +258,7 @@ phraseList.clear();
 
 ### <a name="other-options-to-improve-recognition-accuracy"></a>提高识别精确度的其他方式
 
-短语列表只是提高识别准确度的一种方式。 你还可以： 
+短语列表只是提高识别准确度的一种方式。 也可执行以下操作： 
 
 * [使用自定义语音识别提高准确性](../../../how-to-custom-speech.md)
 * [使用租户模型提高准确性](../../../tutorial-tenant-model.md)

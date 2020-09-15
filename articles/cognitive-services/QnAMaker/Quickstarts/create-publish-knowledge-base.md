@@ -3,12 +3,12 @@ title: 快速入门：创建、训练和发布知识库 - QnA Maker
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540748"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535843"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 

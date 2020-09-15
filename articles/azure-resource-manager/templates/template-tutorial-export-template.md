@@ -2,16 +2,16 @@
 title: 教程 - 从 Azure 门户导出模板
 description: 了解如何使用导出的模板完成模板开发。
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497148"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650065"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>教程：从 Azure 门户使用导出的模板
 
@@ -62,7 +62,7 @@ ms.locfileid: "87497148"
 
    导出模板功能将提取资源的当前状态，并生成用于部署该资源的模板。 导出模板可能有助于快速获取部署资源所需的 JSON。
 
-1. 将 **Microsoft.Web/serverfarms** 定义和参数定义复制到模板。
+1. 查看导出的模板中的 Microsoft.Web/serverfarms 定义和参数定义。 不需要复制这些部分。 可以使用此导出的模板作为示例，了解如何将此资源添加到模板。
 
     ![资源管理器模板 - 导出模板 - 导出的模板](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "87497148"
 
 导出的模板提供所需的大部分 JSON，但你需要根据模板自定义这些 JSON。 请特别注意你的模板与导出的模板之间的参数和变量差异。 很明显，导出过程并不知道你已在模板中定义的参数和变量。
 
-以下示例突出显示了在模板中添加的内容。 其中包含导出的代码以及一些更改。 第一，它会更改参数的名称以符合命名约定。 第二，它对应用服务计划的位置使用 location 参数。 第三，它会删除 **properties** 对象中的 **name**，因为在资源级别，此值对于 **name** 属性是多余的。
+以下示例突出显示了在模板中添加的内容。 其中包含导出的代码以及一些更改。 第一，它会更改参数的名称以符合命名约定。 第二，它对应用服务计划的位置使用 location 参数。 第三，它删除默认值正常的所有属性。
 
 复制整个文件，将模板替换为该文件的内容。
 
@@ -117,7 +117,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
 1. 选择已部署到的资源组。
 1. 该资源组包含一个存储帐户和一个应用服务计划。
@@ -129,7 +129,7 @@ az deployment group create \
 如果你不打算继续学习，请删除该资源组以清理部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。 
 

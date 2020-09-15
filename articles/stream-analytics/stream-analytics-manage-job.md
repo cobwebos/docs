@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697400"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612057"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
@@ -185,7 +185,7 @@ ms.locfileid: "83697400"
 
    ![配置 Azure 流分析输出](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. 选择“授权”以后，系统会打开一个弹出窗口，并要求你提供通过 Power BI 帐户进行身份验证所需的凭据。**** 授权成功以后，请单击“保存”以保存设置。****
+4. 选择“授权”以后，系统会打开一个弹出窗口，并要求你提供通过 Power BI 帐户进行身份验证所需的凭据。**** 授权成功以后，请单击“保存”以保存设置。**** 若要使用托管标识，请参阅[使用托管标识对 Power BI 的 Azure 流分析作业进行身份验证](powerbi-output-managed-identity.md)。
 
 ## <a name="define-a-query-to-analyze-input-data"></a>定义用于分析输入数据的查询
 
@@ -240,13 +240,13 @@ ms.locfileid: "83697400"
 
 1. 若要启动作业，请导航到作业的“概览”窗格，然后选择“启动”。**** ****
 
-2. 选择“现在”作为作业输出启动时间，然后选择“启动”。**** **** 可以在通知栏中查看作业状态。
+2. 选择“现在”作为作业输出启动时间，然后选择“启动”。  可以在通知栏中查看作业状态。
 
 3. 作业成功以后，请导航到 [Power BI](https://powerbi.com/)，然后使用工作或学校帐户登录。 如果流分析作业查询输出结果，则创建的 *ASAdataset* 数据集存在于“数据集”选项卡下。****
 
 4. 从 Power BI 工作区选择“+ 创建”，**** 创建名为“欺诈性呼叫”的新仪表板。**
 
-5. 在窗口顶部，选择“添加磁贴”****。 然后选择“自定义流数据”和“下一步”。**** **** 在“你的数据集”下选择“ASAdataset”。**** **** 从“可视化效果类型”下拉列表中选择“卡”，然后向“字段”添加“欺诈性呼叫”**** **** **** ****。 选择“下一步”****，为磁贴输入一个名称，然后选择“应用”，创建该磁贴。****
+5. 在窗口顶部，选择“添加磁贴”。 然后选择“自定义流数据”和“下一步”。  在“你的数据集”下选择“ASAdataset”。**** **** 从“可视化效果类型”下拉列表中选择“卡”，然后向“字段”添加“欺诈性呼叫”**** **** **** ****。 选择“下一步”，为磁贴输入一个名称，然后选择“应用”，创建该磁贴。
 
    ![创建 Power BI 仪表板磁贴](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 

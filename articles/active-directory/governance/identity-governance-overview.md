@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783291"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460808"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -68,7 +68,7 @@ Identity Governance 可帮助组织在以下需求之间实现平衡：工作效
 
 ![特权访问权限生命周期](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 提供用于保护 Azure AD、Azure 和其他 Microsoft Online Services 中的资源访问权限的其他定制控制措施。  Azure AD PIM 提供的实时访问和角色更改警报功能，以及多重身份验证和条件访问，共同提供了一套综合性的监管控制措施，可帮助保护公司的资源（目录、Office 365 和 Azure 资源角色）。 与处理其他形式的访问权限一样，组织可以使用访问评审来针对充当管理员角色的所有用户配置定期的访问权限重新认证。
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 提供用于保护 Azure AD、Azure 和其他 Microsoft Online Services 中的资源访问权限的其他定制控制措施。  Azure AD PIM 提供的实时访问和角色更改警报功能，以及多重身份验证和条件访问，共同提供了一套综合性的监管控制措施，可帮助保护公司的资源（目录、Microsoft 365 和 Azure 资源角色）。 与处理其他形式的访问权限一样，组织可以使用访问评审来针对充当管理员角色的所有用户配置定期的访问权限重新认证。
 
 ## <a name="getting-started"></a>入门
 

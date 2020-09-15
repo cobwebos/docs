@@ -3,12 +3,12 @@ title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044611"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649834"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -73,7 +73,7 @@ ms.locfileid: "86044611"
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
 在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下） 。
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="现有资源上的“导出模板”页" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure 门户中现有资源上的“导出模板”页的屏幕截图。" border="false":::
 
 针对存储帐户执行此操作会显示以下示例所示的模板：
 

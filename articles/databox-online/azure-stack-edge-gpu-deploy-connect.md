@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 713f9eeef87cbfe3d8cb3d9717ad703328b54fe3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3b500a7d93d19bcc0cd9c23d64ad079f0abfd353
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262713"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421350"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>教程：使用 GPU 连接到 Azure Stack Edge
 
@@ -41,11 +41,11 @@ ms.locfileid: "89262713"
 
 1. 在计算机上配置以太网适配器，以便通过静态 IP 地址 192.168.100.5 和子网 255.255.255.0 连接到 Azure Stack Edge 设备。
 
-2. 将计算机连接到设备上的端口 1。 使用下图标识设备上的端口 1。
+2. 将计算机连接到设备上的端口 1。 如果将计算机直接连接到设备（不通过交换机），请使用交叉电缆或 USB 以太网适配器。 使用下图标识设备上的端口 1。
 
     ![已布线设备的背板](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    设备的背板看上去可能略有不同，具体取决于你收到的确切型号。
+    设备的背板看上去可能略有不同，具体取决于你收到的确切型号。 有关详细信息，请参阅[连接设备电缆](azure-stack-edge-gpu-deploy-install.md#cable-the-device)。
 
 
 3. 打开浏览器窗口并通过 `https://192.168.100.10` 访问设备的本地 Web UI。  

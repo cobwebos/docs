@@ -1,5 +1,5 @@
 ---
-title: 什么是“翻译”？ - 翻译
+title: 什么是翻译器？ - 翻译
 titlesuffix: Azure Cognitive Services
 description: 将“翻译”集成到应用程序、网站、工具和其他解决方案中，提供多语言用户体验。
 services: cognitive-services
@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589445"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425953"
 ---
-# <a name="what-is-the-translator"></a>什么是“翻译”？
+# <a name="what-is-translator"></a>什么是翻译器？
 
-“翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过它，你可以添加[超过 70 种语言](languages.md)的多语言用户体验，并且可以在具有任何操作系统的任何硬件平台上将其应用于文本到文本语言翻译。
-
-“翻译”是云中机器学习和 AI 算法的 [Azure 认知服务](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 集合的一部分，可随时在开发项目中使用。
+Azure 认知服务翻译是一项基于云的机器翻译服务，是认知 API 的 [Azure 认知服务](https://docs.microsoft.com/azure/?pivot=products&panel=ai)系列的一部分，用于生成智能应用。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过它，你可以添加[超过 70 种语言](languages.md)的多语言用户体验，并且可以在具有任何操作系统的任何硬件平台上将其应用于文本到文本语言翻译。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 
-“翻译”是基于云的机器翻译服务。 核心服务是“翻译”，其为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
+Azure 认知服务翻译是基于云的机器翻译服务。 “翻译”为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使其内容可传播到全球的受众。
 
-语音翻译由“翻译”提供支持，也通过 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/)提供。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。 语音服务将替换语音翻译 API，后者自 2019 年 10 月 15 日起停用。
+语音翻译由“翻译”提供支持，也可通过 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/)提供。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。 
 
 ## <a name="language-support"></a>语言支持
 
@@ -46,7 +44,7 @@ NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区�
 
 ## <a name="language-customization"></a>语言自定义
 
-自定义翻译器是核心 Microsoft Translator 服务的扩展，可以与“翻译”配合用于自定义神经翻译系统，并改进特定术语和样式的翻译。
+自定义翻译器是翻译服务的扩展，可以与“翻译”配合用于自定义神经翻译系统，并改进特定术语和样式的翻译。
 
 使用自定义翻译，可以构建翻译系统来处理自己的业务或行业中使用的术语。 然后，就可以使用类别参数通过常规的翻译将自定义翻译系统轻松集成到现有的应用程序、工作流和网站中，而且可以跨多种类型的设备。
 

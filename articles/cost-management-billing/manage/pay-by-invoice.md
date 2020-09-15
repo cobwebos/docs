@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684858"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567905"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
 
@@ -67,7 +67,7 @@ ms.locfileid: "88684858"
      特定区域和系列的订阅：<br>
 
     - “公司名称”和“公司地址”应与你为 Azure 帐户提供的信息匹配。  若要查看或更新信息，请参阅[更改 Azure 帐户个人资料信息](change-azure-account-profile.md)。
-    - 请在 Azure 门户中添加计费联系人信息，然后额度限制才会获得批准。 联系人详细信息应该与公司的应付账款或财务部门相关。 若要更新计费联系人信息，请转到 [Azure 帐户中心](https://account.azure.com/Profile)。
+    - 请在 Azure 门户中添加计费联系人信息，然后额度限制才会获得批准。 联系人详细信息应该与公司的应付账款或财务部门相关。 若要更新计费联系人信息，请转到 [Azure 门户](https://portal.azure.com)。
 
 6. 验证联系人信息和首选联系方法，并选择“创建”。
 

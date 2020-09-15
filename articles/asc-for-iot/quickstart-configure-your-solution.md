@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6ab713715cacc799d2b980c2bce2a2a15b76887
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310859"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505448"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>快速入门：配置 IoT 解决方案
 
@@ -45,8 +45,8 @@ ms.locfileid: "81310859"
 若要将新资源添加到 IoT 解决方案，请执行以下操作：
 
 1. 在 Azure 门户中打开你的 **IoT 中心**。
-1. 从左侧菜单的“安全性”  下选择并打开“资源”  。
-1. 选择“编辑”  并选择属于 IoT 解决方案的资源组。
+1. 从左侧菜单的“安全性”部分选择并打开“设置”，然后选择“受监视资源”  。
+1. 选择“编辑”并选择属于 IoT 解决方案的受监视资源。
 1. 单击“添加”  。
 
 祝贺你！ 现已将新资源组添加到 IoT 解决方案。

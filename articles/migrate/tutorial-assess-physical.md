@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 21ffc425ff7d04bbb1bc0c3a550133ae5374b1e9
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 25bd5241700d5950eb032a6c932470871e79945f
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950096"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514112"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用 Azure Migrate:服务器评估工具评估物理服务器
 
@@ -115,13 +115,13 @@ ms.locfileid: "88950096"
 
         **方案** | **下载*** | **哈希值**
         --- | --- | ---
-        物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | 6de88e229c2b4836d16ce03fdfac93b5c27274945577bd8a359d598cf3777b24
+        物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
 
     - 对于 Azure 政府：
 
         **方案** | **下载*** | **哈希值**
         --- | --- | ---
-        物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | 5a4715a9d10e81a5f38192b7d1c6ac0919ae3998afbf2e933c99bafae6bef80e
+        物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
 
 ### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
 

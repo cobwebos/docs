@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f67cbb70d7064b894b9042bba42f48e4fb6a6b5e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684756"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400120"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -73,7 +73,7 @@ ms.locfileid: "88684756"
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
- 购买一个预留中的多个资源实例后，可能会希望将一个预留中的实例分配给其他订阅。 默认情况下，所有实例都有一个范围 - 单个订阅或共享。 例如，已购买 10 个预留实例并将范围指定为订阅 A。现在可能需要将 7 个预留的范围更改为订阅 A，将剩余 3 个预留范围更改为订阅 B。通过拆分预留可以分配实例以进行精细的范围管理。 可以通过选择共享范围来简化分配到订阅。 但出于成本管理或预算目的，可以将数量分配到特定订阅。
+ 购买一个预留中的多个资源实例后，可能会希望将一个预留中的实例分配给其他订阅。 默认情况下，所有实例都有一个范围 - 单个订阅、资源组或共享。 假设已购买 10 VM 实例的预留并将范围指定为订阅 A。现在需要将 7 VM 实例的范围更改为订阅 A，将剩余 3 个预留范围更改为订阅 B。通过拆分预留可以执行此操作。 拆分预留后，将取消原始 ReservationID 并创建两个新预留。 拆分不会影响预留订单 - 拆分不带来新的商业交易，新预留的结束日期与被拆分的预留相同。
 
  可以通过 PowerShell、CLI 或通过 API 将一个预订拆分为两个预订。
 

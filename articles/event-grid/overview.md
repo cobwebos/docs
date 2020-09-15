@@ -3,12 +3,12 @@ title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116125"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436861"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -118,6 +118,6 @@ Azure 事件网格使用按事件支付的定价模型，因此，你只需为�
 * [将逻辑应用用作事件处理程序](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   本教程介绍如何使用逻辑应用生成应用，并对事件网格推送的事件作出响应。
 * [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)  
-  本教程介绍如何使用 Azure Functions 将数据从事件中心流式传输到 SQL 数据仓库。
+  本教程介绍如何使用 Azure Functions 将数据从事件中心流式传输到 Azure Synapse Analytics。
 * [事件网格 REST API 参考](/rest/api/eventgrid)  
   提供用于管理事件订阅、路由和筛选的参考内容。

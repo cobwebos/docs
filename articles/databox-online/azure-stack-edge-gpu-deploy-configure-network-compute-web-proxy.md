@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6e7dbc2b96a53d220554e07228a5e30857d12d9c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cc111f0df889efd1d3720e2ec0e4aaa452efd801
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262968"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461861"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>教程：使用 GPU 为 Azure Stack Edge 配置网络
 
@@ -104,14 +104,18 @@ ms.locfileid: "89262968"
     
 3. 分配“Kubernetes 节点 IP”。 这些静态 IP 地址适用于计算 VM。 
 
-    对于 n 节点设备，使用起始 IP 地址和结束 IP 地址为计算 VM 提供了连续范围内的至少 n + 1 个（或更多）IPv4 地址 。 假设 Azure Stack Edge 是 1 节点设备，则至少提供 2 个连续的 IPv4 地址。 
+    对于 n 节点设备，使用起始 IP 地址和结束 IP 地址为计算 VM 提供了连续范围内的至少 n + 1 个（或更多）IPv4 地址 。 假设 Azure Stack Edge 是 1 节点设备，则至少提供 2 个连续的 IPv4 地址。
+
+    > [!IMPORTANT]
+    > Azure Stack Edge 上的 Kubernetes 对 Pod 使用 172.27.0.0/16 子网，对服务使用 172.28.0.0/16 子网。 请确保这些子网未在网络中使用。 如果这些子网已在网络中使用，则可从设备的 PowerShell 界面运行 `Set-HcsKubeClusterNetworkInfo` cmdlet 来更改这些子网。 有关详细信息，请参阅[更改 Kubernetes Pod 子网和服务子网](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets)。
+
 
 4. 分配“Kubernetes 外部服务 IP”。 这些地址也是负载均衡 IP 地址。 这些连续的 IP 地址用于要在 Kubernetes 群集之外公开的服务，你可以根据公开的服务数量指定静态 IP 范围。 
     
     > [!IMPORTANT]
     > 强烈建议为 Azure Stack Edge 中心服务指定至少 1 个 IP 地址，以访问计算模块。 然后，可以选择为需要从群集外部访问的其他服务/IoT Edge 模块指定其他 IP 地址（每个服务/模块 1 个地址）。 以后可以更新服务 IP 地址。 
     
-5. 选择“应用”。 
+5. 选择“应用”。
 
     ![本地 UI 中的计算页](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 

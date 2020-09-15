@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: 日志数据
           items:
-            - name: 日志数据结构
-              href: log-query/logs-structure.md
             - name: 查询范围
               href: log-query/scope.md
-            - name: 标准属性
-              href: platform/log-standard-properties.md
+            - name: 标准列
+              href: platform/log-standard-columns.md
             - name: 计算机组
               href: platform/computer-groups.md
         - name: 查询语言
@@ -372,7 +370,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: 常见问题解答
+        - name: FAQ
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -887,7 +885,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 异常
+            - name: 例外
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -990,7 +988,7 @@
       items:
         - name: 概述
           href: insights/container-insights-overview.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:

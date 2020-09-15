@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070112"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459533"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 托管专用终结点（预览版）
 
@@ -23,7 +23,7 @@ ms.locfileid: "87070112"
 
 托管专用终结点是在托管工作区 Microsoft Azure 虚拟网络中创建的专用终结点，用于建立到 Azure 资源的专用链接。 Azure Synapse 代表你管理这些专用终结点。
 
-Azure Synapse 支持专用链接。 通过专用链接，你可以安全地从 Azure 虚拟网络访问 Azure 服务（例如 Azure 存储、Azure Cosmos DB 和 Azure SQL 数据仓库）和 Azure 托管的客户/合作伙伴服务。
+Azure Synapse 支持专用链接。 通过专用链接，你可以安全地从 Azure 虚拟网络访问 Azure 服务（例如 Azure 存储和 Azure Cosmos DB）和 Azure 托管的客户/合作伙伴服务。
 
 使用专用链接时，虚拟网络与工作区之间的流量全部通过 Microsoft 主干网络进行传输。 专用链接可防止数据泄露风险。 可以通过创建专用终结点来建立到资源的专用链接。
 

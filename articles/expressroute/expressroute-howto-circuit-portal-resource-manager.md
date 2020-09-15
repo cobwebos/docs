@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: duau
-ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322095"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566256"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>教程：创建和修改 ExpressRoute 线路
 
@@ -75,7 +75,10 @@ ms.locfileid: "89322095"
     > [!IMPORTANT]
     > “对等互连位置”指明了与 Microsoft 建立对等互连的[实际位置](expressroute-locations.md)。 此位置与“Location”属性**没有**关系，后者指的是 Azure 网络资源提供商所在的地理位置。 尽管两者之间没有关系，但最好是选择地理上与线路对等互连位置靠近的网络资源提供商。
 
-    * **SKU** 确定是启用 ExpressRoute 本地版、ExpressRoute 标准版还是 ExpressRoute 高级版加载项。 可以指定“本地”以获取本地 SKU，指定“标准”以获取标准 SKU，或指定“高级”以获取高级版加载项。
+    * **SKU** 确定是启用 ExpressRoute 本地版、ExpressRoute 标准版还是 ExpressRoute 高级版加载项。 可以指定“本地”以获取本地 SKU，指定“标准”以获取标准 SKU，或指定“高级”以获取高级版加载项  。 请注意，可以更改 SKU 以启用高级加载项。
+    > [!IMPORTANT]
+    > 不能将 SKU 从“标准”/“高级”更改为“本地” 。
+    
     * **计费模型**确定计费类型。 可以指定“Metered”**** 以获取数据流量套餐，指定“Unlimited”**** 以获取无限制流量套餐。 请注意，你可以将计费类型从“按流量计费”更改为“不限流量”********。
 
     > [!IMPORTANT]
@@ -150,6 +153,10 @@ ms.locfileid: "89322095"
 可以执行下列任务，而不产生任何故障时间：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute Premium 加载项。
+
+> [!IMPORTANT]
+  > 不支持将 SKU 从“标准”/“高级”更改为“本地” 。
+
 * 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。
 
   > [!IMPORTANT]

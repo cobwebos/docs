@@ -2,20 +2,21 @@
 title: 快速入门：创建 Python 应用
 description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 容器即可开始使用 Azure 应用服务。
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 3bfe927b2c9dc16de8712f6c1793e850df92c201
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078446"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568908"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
 在本快速入门中，需将 Python Web 应用部署到 [Linux 上的应用服务](overview.md#app-service-on-linux)，该版本提供了一项高度可缩放、自我修补的 Azure Web 托管服务。 在 Mac、Linux 或 Windows 计算机上使用本地 [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。 配置的 Web 应用使用免费的应用服务层，因此本文中的操作不会产生任何费用。
 
-如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)。
+> [!NOTE]
+> 如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)。
 
 ## <a name="set-up-your-initial-environment"></a>设置初始环境
 
@@ -67,15 +68,10 @@ az login
 
 ## <a name="clone-the-sample"></a>克隆示例
 
-使用以下命令克隆示例存储库。 （如果尚未安装 git，请[安装 git](https://git-scm.com/downloads)。）
+使用以下命令克隆示例存储库，然后导航到该文件夹。 （如果尚未安装 git，请[安装 git](https://git-scm.com/downloads)。）
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
-```
-
-然后转到该文件夹：
-
-```terminal
 cd python-docs-hello-world
 ```
 
@@ -157,7 +153,7 @@ az webapp up --sku F1 -n <app-name>
 - 如果无法识别 `az` 命令，请确保按照[设置初始环境](#set-up-your-initial-environment)中所述安装 Azure CLI。
 - 将 `<app_name>` 替换为在整个 Azure 中均唯一的名称（有效字符为 `a-z`、`0-9` 和 `-`）。 良好的模式是结合使用公司名称和应用标识符。
 - `--sku F1` 参数在“免费”定价层上创建 Web 应用。 省略此参数可使用更快的高级层，这会按小时计费。
-- 可以选择性地包含参数 `-l <location-name>`，其中，`<location_name>` 是 Azure 区域，例如 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia等。 可以运行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。
+- 可以选择性地包含参数 `-l <location-name>`，其中，`<location_name>` 是 Azure 区域，例如 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia等。 可以运行 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。
 - 如果看到错误“无法自动检测应用的运行时堆栈”，请确保在包含 requirements.txt 文件的 python-docs-hello-world 文件夹中运行该命令 。 （请参阅[通过 az webapp up 解决自动检测问题](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub)。）
 
 此命令可能需要花费几分钟时间完成。 运行时，它提供以下相关信息：创建资源组、应用服务计划和托管应用，配置日志记录，然后执行 ZIP 部署。 然后，它将显示消息“可以在 http://&lt;app-name&gt;.azurewebsites.net（这是 Azure 上应用的 URL）启动应用”。

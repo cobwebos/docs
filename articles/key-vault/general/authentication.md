@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378962"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481369"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>对 Azure Key Vault 进行身份验证
 
 借助 Azure 密钥保管库，可以在集中的安全云存储库中存储机密并控制其分发，因而无需在应用程序中存储凭据。 应用程序只需要在运行时使用密钥保管库进行身份验证即可访问这些机密。
 
-## <a name="app-identity-and-service-principals"></a>应用标识和服务主体
+## <a name="app-identity-and-security-principals"></a>应用标识和安全主体
 
 使用密钥保管库进行的身份验证可与 [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) 结合使用，后者负责对任何给定安全主体的标识进行身份验证。
 
@@ -40,7 +40,7 @@ ms.locfileid: "89378962"
 
 * 如果不能使用托管标识，请改为将应用程序注册到 Azure AD 租户，如[快速入门：将应用程序注册到 Azure 标识平台](/azure/active-directory/develop/quickstart-register-app)中所述。 注册操作还会创建第二个应用程序对象，该对象在所有租户中标识该应用。
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>授权服务主体访问密钥保管库
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>授权安全主体访问 Key Vault
 
 密钥保管库可用于两个不同的授权级别：
 

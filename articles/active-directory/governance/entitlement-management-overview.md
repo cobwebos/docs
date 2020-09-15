@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/25/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871201"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594316"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -153,7 +153,7 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 - 被委托了管理任务的用户（例如目录创建者、目录所有者和访问包管理员）无需任何许可证。
 - 有权请求访问包但并不请求访问包的来宾无需任何许可证 。
 
-对于为成员用户（员工）购买的每个付费 Azure AD Premium P2 许可证，你可以使用 Azure AD B2B 邀请至多 5 位来宾用户。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅 [Azure AD B2B 协作许可指南](../external-identities/licensing-guidance.md)。
+Azure AD External Identities（来宾用户）定价基于月度活动用户数 (MAU)，这是对一个日历月内具有身份验证活动的独立用户的计数。 此模型将替换 1:5 比率计费模型，该模型允许租户中的每个 Azure AD Premium 许可证最多 5 个来宾用户。 当你的租户链接到订阅时，如果使用 External Identities 功能与来宾用户协作，则将使用基于 MAU 的计费模型自动计费。 有关详细信息，请参阅 [Azure AD External Identities](../external-identities/external-identities-pricing.md) 的计费模型。
 
 有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269635"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489929"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>快速入门：在 Azure 门户中使用 Azure Data Share 共享数据
 
@@ -67,7 +67,7 @@ Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费
 
    ![向共享添加数据集](./media/datasets.png "数据集")
 
-1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure SQL 数据仓库进行共享，系统将提示你输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
+1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure Synapse Analytics 共享，系统将提示输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
 
    ![AddDatasets](./media/add-datasets.png "添加数据集")    
 

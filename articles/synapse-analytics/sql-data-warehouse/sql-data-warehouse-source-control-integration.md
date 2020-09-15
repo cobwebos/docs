@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: afb1108bacadd16007e1f53186107ea8458d96e9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205112"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441263"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL 池的源代码管理集成
 
@@ -29,31 +29,39 @@ ms.locfileid: "85205112"
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>设置并连接到 Azure DevOps
 
-1. 在 Azure DevOps 组织中，创建一个通过 Azure Repo 存储库托管 SSDT 数据库项目的项目
+1. 在 Azure DevOps 组织中，创建一个通过 Azure Repo 存储库托管 SSDT 数据库项目的项目。
 
    ![创建项目](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "创建项目")
 
-2. 打开 Visual Studio 并通过选择“管理连接”连接到步骤 1 中的 Azure DevOps 组织和项目
+2. 打开 Visual Studio 并通过选择“管理连接”连接到步骤 1 中的 Azure DevOps 组织和项目。
 
    ![管理连接](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理连接")
 
-   ![“连接”](./media/sql-data-warehouse-source-control-integration/3-connect.png "连接")
+3. 通过依次选择“管理连接”、“连接到项目”连接到你的项目 。
+ ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "连接")
 
-3. 将项目中的 Azure Repo 存储库克隆到本地计算机
+
+4. 找到你在步骤 1 中创建的项目，选择“连接”。
+![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "连接")
+
+
+3. 将项目中的 Azure DevOps 存储库克隆到本地计算机。
 
    ![克隆存储库](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "克隆存储库")
 
+有关使用 Visual Studio 连接项目的详细信息，请参阅[在团队资源管理器中连接到项目](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019)。 有关使用 Visual Studio 克隆存储库的指南，请查看[克隆现有 Git 存储库](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio)一文。 
+
 ## <a name="create-and-connect-your-project"></a>创建并连接项目
 
-1. 在 Visual Studio 中，使用**本地克隆存储库**中的目录和本地 Git 存储库创建新的 SQL Server 数据库项目
+1. 在 Visual Studio 中，使用本地克隆存储库中的目录和本地 Git 存储库创建新的 SQL Server 数据库项目。
 
    ![创建新项目](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "创建新项目")  
 
-2. 右键单击空的 sqlproject 并将数据仓库导入数据库项目
+2. 右键单击空的 sqlproject 并将数据仓库导入数据库项目。
 
    ![导入项目](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "导入项目")  
 
-3. 在 Visual Studio 的团队资源管理器中，将所有更改提交到本地 Git 存储库
+3. 在 Visual Studio 的团队资源管理器中，将更改提交到本地 Git 存储库。
 
    ![提交](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
@@ -65,19 +73,19 @@ ms.locfileid: "85205112"
 
 ## <a name="validation"></a>验证
 
-1. 通过从 Visual Studio SQL Server Data Tools (SSDT) 更新数据库项目中的表列，验证是否已将更改推送到 Azure Repo
+1. 通过从 Visual Studio SQL Server Data Tools (SSDT) 更新数据库项目中的表列，验证是否已将更改推送到 Azure Repo。
 
    ![验证更新列](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "验证更新列")
 
-2. 提交更改并将更改从本地存储库推送到 Azure Repo
+2. 提交更改并将更改从本地存储库推送到 Azure Repo。
 
    ![推送更改](./media/sql-data-warehouse-source-control-integration/9-push-column-change.png "推送更改")
 
-3. 验证是否已将更改推送到 Azure Repo 存储库
+3. 验证是否已将更改推送到 Azure Repo 存储库。
 
    ![验证](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "验证更改")
 
-4. （**可选**）使用“架构比较”并使用 SSDT 更新对目标数据仓库的更改，以确保 Azure Repo 存储库和本地存储库中的对象定义反映数据仓库
+4. （**可选**）使用“架构比较”并使用 SSDT 更新对目标数据仓库的更改，以确保 Azure Repo 存储库和本地存储库中的对象定义反映数据仓库。
 
 ## <a name="next-steps"></a>后续步骤
 

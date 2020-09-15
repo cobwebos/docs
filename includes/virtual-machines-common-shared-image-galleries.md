@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501946"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494312"
 ---
-共享映像库是一种服务，可帮助你围绕映像构建结构和组织。 共享映像库提供：
+共享映像库是一种可以帮助你围绕映像构建结构和组织的服务。 共享映像库提供：
 
 - 支持映像全局复制。
 - 对映像进行版本控制和分组，以便于管理。
@@ -33,7 +33,7 @@ ms.locfileid: "86501946"
 
 | 资源 | 说明|
 |----------|------------|
-| **映像源** | 这是可用于在映像库中创建“映像版本”的资源。 映像源可以是[通用或专用](#generalized-and-specialized-images)的现有 Azure VM，也可以是托管映像、快照、VHD 或其他映像库中的映像版本。 |
+| **映像源** | 这是可用于在映像库中创建“映像版本”的资源。 映像源可以是现有的 Azure VM（可以是[通用或专用](#generalized-and-specialized-images)的）、托管映像、快照、VHD 或其他映像库中的映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像定义在库中创建，携带有关该映像以及在内部使用该映像的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
@@ -50,7 +50,7 @@ ms.locfileid: "86501946"
 
 |映像定义|发布者|产品/服务|SKU|
 |---|---|---|---|
-|myImage1|Contoso|Finance|后端|
+|myImage1|Contoso|财务|后端|
 |myImage2|Contoso|财务|前端|
 |myImage3|测试|财务|前端|
 
@@ -68,7 +68,7 @@ ms.locfileid: "86501946"
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 * 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
 * Hyper-V 生成 - 可以指定是从第 1 代还是从第 2 代 Hyper-V VHD 创建映像。
-* Marketplace 映像的购买计划信息： `-PurchasePlanPublisher ` 、 `-PurchasePlanName` 和 `-PurchasePlanProduct` 。 有关购买计划信息的详细信息，请参阅[在 Azure marketplace 中查找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在创建映像时提供 azure Marketplace 购买计划信息](../articles/virtual-machines/marketplace-images.md)。
+* 市场映像的购买计划信息 `-PurchasePlanPublisher `、`-PurchasePlanName` 和 `-PurchasePlanProduct`。 若要详细了解购买计划信息，请参阅[在 Azure 市场中查找映像](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)和[在创建映像时提供 Azure 市场购买计划信息](../articles/virtual-machines/marketplace-images.md)。
 
 ## <a name="generalized-and-specialized-images"></a>通用和专用映像
 
@@ -83,14 +83,14 @@ ms.locfileid: "86501946"
 
 ## <a name="regional-support"></a>区域支持
 
-所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要将订阅添加到允许列表。 若要请求将订阅添加到允许列表，请参阅：https://azure.microsoft.com/global-infrastructure/australia/contact/
+所有公共区域都可以是目标区域，要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅添加到允许列表。 若要请求将订阅添加到允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>限制 
 
 使用共享映像库部署资源时，每个订阅存在限制：
 - 每个区域的每个订阅限制为 100 个共享映像库
 - 每个区域的每个订阅限制为 1,000 个映像定义
-- 每个区域每个订阅限 10,000 个映像版本
+- 每个区域的每个订阅限制为 10,000 个映像版本
 - 每个区域的每个订阅限制为 10 个映像版本副本
 - 附加到映像的任何磁盘的大小必须小于或等于 1 TB
 
@@ -99,9 +99,9 @@ ms.locfileid: "86501946"
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
 
-现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。  可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 我们知道了没有两个图像或区域是相同的，不过以下提供了有关如何在区域中使用副本的一般准则：
+现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。  可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本都是映像的深层副本，这有助于使用每个额外的副本线性扩展部署。 我们知道了没有两个图像或区域是相同的，不过以下提供了有关如何在区域中使用副本的一般准则：
 
-- 对于非虚拟机规模集 (VMSS) 部署 - 对于同时创建的每 20 个 VM，我们建议保留一个副本。 例如，如果使用某个区域中的同一映像同时创建 120 个 VM，我们建议你保留至少 6 个映像副本。 
+- 对于非虚拟机规模集 (VMSS) 部署 - 我们建议你对同时创建的每 20 个 VM 保留一个副本。 例如，如果使用某个区域中的同一映像同时创建 120 个 VM，我们建议你保留至少 6 个映像副本。 
 - 对于虚拟机规模集 (VMSS) 部署 - 对于包含多达 600 个实例的每个规模集部署，我们建议至少保留一个副本。 例如，如果同时创建 5 个规模集，每个规模集具有 600 个使用某个区域中的同一映像的 VM 实例，则建议至少保留 5 个映像副本。 
 
 鉴于映像大小、内容和 OS 类型等因素，我们始终建议保留的副本数应超出该副本数。
@@ -196,7 +196,7 @@ ms.locfileid: "86501946"
 * [使用共享映像库会产生哪些费用？](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [应使用哪个 API 版本来创建共享映像库、映像定义和映像版本？](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [我应该使用哪种 API 版本来通过映像版本创建共享 VM 或虚拟机规模集？](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [能否将使用托管映像创建的虚拟机规模集更新为使用共享映像库映像？]
+* [是否可以将使用托管映像创建的虚拟机规模集更新，以使用共享映像库映像？](#can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images)
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>如何列出不同订阅中的所有共享映像库资源？
 
@@ -230,7 +230,7 @@ ms.locfileid: "86501946"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是，可以使用[CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、 [PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)或 API 从专用映像创建 VM。 
+是的，可以使用 [CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、[PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md) 或 API 从专用映像创建 VM。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可以将其移动到其他订阅中？
 

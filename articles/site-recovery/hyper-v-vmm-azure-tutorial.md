@@ -4,12 +4,12 @@ description: 了解如何使用 Site Recovery 设置 System Center VMM 云中的
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130224"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442814"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>设置 VMM 云中的本地 Hyper-V VM 到 Azure 的灾难恢复
 
@@ -83,7 +83,11 @@ ms.locfileid: "86130224"
 在 Microsoft Azure 恢复服务代理安装程序向导中配置以下设置：
 
 1. **先决条件检查**。 选择“**下一页**”。 系统会自动安装任何缺少的必备组件。
-1. **安装设置**。 接受安装位置和缓存位置。 缓存驱动器需要至少 5 GB 的存储空间。 我们建议使用 600 GB 或更多可用空间的驱动器。 然后，选择“安装”。
+1. **安装设置**。 接受安装位置。 然后，选择“安装”。
+
+    >[!NOTE]
+    >对于 Azure Site Recovery，不需要缓存位置。
+
 1. **安装**。 安装完成后，选择“关闭”以完成向导。
 
    ![安装代理](./media/hyper-v-vmm-azure-tutorial/mars-install.png)

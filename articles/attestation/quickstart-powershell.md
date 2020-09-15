@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70e86e01a9d37a27620d451bcd5d035dfcb4573d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236840"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421282"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 设置 Azure 证明
 
@@ -159,26 +159,27 @@ TagsTable:
 
 可以使用 Remove-AzAttestation cmdlet 删除证明提供程序。  
 
-``azurepowershell Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
+```powershell
+Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
 ```
 
-## Policy management
+## <a name="policy-management"></a>策略管理
 
-In order to manage policies, an Azure AD user requires the following permissions for "Actions":
+为了管理策略，Azure AD 用户需要对“操作”具有以下权限：
 - Microsoft.Attestation/attestationProviders/attestation/read
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-These permissions can be assigned to an AD user through a role such as "Owner" (wildcard permissions), "Contributor" (wildcard permissions) or "Attestation Contributor" (specific permissions for Azure Attestation only).  
+可以通过“所有者”（通配符权限）、“参与者”（通配符权限）或“证明参与者”（仅适用于 Azure 证明的特定权限）等角色将这些权限分配给 AD 用户。  
 
-In order to read policies, an Azure AD user requires the following permission for "Actions":
+为了读取策略，Azure AD 用户需要对“操作”具有以下权限：
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-This permission can be assigned to an AD user through a role such as "Reader" (wildcard permissions) or "Attestation Reader" (specific permissions for Azure Attestation only).
+可以通过“读取器”（通配符权限）或“证明读取器”（仅适用于 Azure 证明的特定权限）等角色将此权限分配给 AD 用户。
 
-Below PowerShell cmdlets provide policy management for an attestation provider (one TEE at a time).
+下面的 PowerShell cmdlet 为证明提供程序提供策略管理（一次一个 TEE）。
 
-Get-AzAttestationPolicy returns the current policy for the specified TEE. The cmdlet displays policy in both text and JWT format of the policy.
+Get-AzAttestationPolicy 返回指定 TEE 的当前策略。 此 cmdlet 以策略的文本和 JWT 格式显示策略。
 
 ```powershell
 $teeType = "<tee Type>"

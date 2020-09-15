@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854928"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536221"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
@@ -56,11 +56,14 @@ ms.locfileid: "88854928"
 导入 `Workspace` 类，并使用函数 `from_config().` 从文件 `config.json` 中加载订阅信息。默认情况下，这会查找当前目录中的 JSON 文件，但你也可以使用 `from_config(path="your/file/path")` 指定一个路径参数以指向该文件。 如果你在工作区中的云笔记本服务器上运行此笔记本，则该文件会自动包含在根目录中。
 
 如果以下代码要求进行额外的身份验证，只需在浏览器中粘贴链接，然后输入身份验证令牌即可。 此外，如果有多个租户链接到用户，则需要添加以下行：
-```
+
+```python
 from azureml.core.authentication import InteractiveLoginAuthentication
 interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
 ```
+
+有关身份验证的详细信息，请参阅 [Azure 机器学习中的身份验证](https://aka.ms/aml-notebook-auth)
+
 
 ```python
 from azureml.core import Workspace

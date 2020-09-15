@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 3d67361ecd4e06fdf006e836011d2cab59e340b6
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ff171dfce0bcbb04ec017a8d5e3310cf3162e8e2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587895"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564951"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,31 +47,27 @@ auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourService
 
 创建 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) 后，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) 时，需要向其传递 `speech_config`。 这会提供语音服务验证请求所需的凭据。
 
-如果使用设备的默认麦克风识别语音，则 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) 应如下所示：
-
 ```cpp
 auto recognizer = SpeechRecognizer::FromConfig(config);
 ```
 
-如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) 时提供 `audioConfig` 参数。
+## <a name="recognize-from-microphone-or-file"></a>从麦克风或文件识别
 
-> [!TIP]
-> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+如果要指定音频输入设备，则需要创建一个 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) 并在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) 时将其作为参数传递。
 
-首先，在 `#include` 定义后添加以下 `using namespace` 语句。
+若要使用设备麦克风识别语音，请使用 `FromDefaultMicrophoneInput()` 创建 `AudioConfig`，并在创建 `SpeechRecognizer` 对象时传递 audio config。
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech::Audio;
-```
 
-接下来，你将能够引用 `AudioConfig` 对象，如下所示：
-
-```cpp
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
 ```
 
-如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 但是，当你创建 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig)（而不是调用 `FromDefaultMicrophoneInput`）时，你将调用 `FromWavFileOutput` 并传递 `filename` 参数。
+> [!TIP]
+> [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+
+如果要从音频文件（而不是使用麦克风）识别语音，则仍需要创建 `AudioConfig`。 但创建 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig)（而不是调用 `FromDefaultMicrophoneInput()`）时，需要调用 `FromWavFileInput()` 并传递 `filename` 参数。
 
 ```cpp
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
@@ -226,7 +222,7 @@ config->SetSpeechRecognitionLanguage("de-DE");
 
 ## <a name="improve-recognition-accuracy"></a>提高识别准确度
 
-可以通过多种方式使用语音 SDK 来提高识别的准确性。 让我们看一下短语列表。 短语列表用于标识音频数据中的已知短语，如人的姓名或特定位置。 可以将单个词或完整短语添加到短语列表。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与短语完全匹配的项，则不支持识别。
+可以通过多种方式使用语音 SDK 来提高识别的准确度。 让我们看一下短语列表。 短语列表用于标识音频数据中的已知短语，如人的姓名或特定位置。 可以将单个词或完整短语添加到短语列表。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与短语完全匹配的项，则不支持识别。
 
 > [!IMPORTANT]
 > 短语列表功能仅以英语提供。
@@ -248,7 +244,7 @@ phraseListGrammar->Clear();
 
 ### <a name="other-options-to-improve-recognition-accuracy"></a>提高识别精确度的其他方式
 
-短语列表只是提高识别准确度的一种方式。 你还可以： 
+短语列表只是提高识别准确度的一种方式。 也可执行以下操作： 
 
 * [使用自定义语音识别提高准确性](../../../how-to-custom-speech.md)
 * [使用租户模型提高准确性](../../../tutorial-tenant-model.md)

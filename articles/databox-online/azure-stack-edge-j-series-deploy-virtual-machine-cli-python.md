@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255522"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500226"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge GPU 设备上部署 VM
 
@@ -60,13 +60,13 @@ ms.locfileid: "89255522"
 
     2. 在网络接口上启用计算。 Azure Stack Edge 创建并管理与该网络接口相对应的虚拟交换机。
 
-    如果决定使用另一计算网络接口，请确保：
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - 删除使用 Azure 资源管理器部署的所有 VM。
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - 删除与此网络接口关联的所有虚拟网络接口和虚拟网络。
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - 现在即可启用另一计算网络接口。
+    - You can now enable another network interface for compute.-->
 
 3. 你已在 Azure Stack Edge 设备和客户端的受信任存储中创建并安装了所有证书。 按照[步骤 2：创建和安装证书](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述过程操作。
 
@@ -342,7 +342,8 @@ ms.locfileid: "89255522"
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   请记下 `id` 和 `tenantId` 值，因为这些值分别对应于 Azure 资源管理器订阅 ID 和 Azure 资源管理器租户 ID，后面的步骤中将用到它们。
+       
    以下环境变量需要设置为作为服务主体运行：
 
    ```
@@ -352,7 +353,7 @@ ms.locfileid: "89255522"
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   Azure 资源管理器租户 ID、Azure 资源管理器客户端 ID 和 Azure 资源管理器订阅 ID 均进行了硬编码，并且在所有 Azure Stack Edge 设备上都具有相同的值。 Azure 资源管理器客户端密码是你设置的 Azure 资源管理器密码。
+   Azure 资源管理器客户端 ID 是硬编码的。 Azure 资源管理器租户 ID 和 Azure 资源管理器订阅 ID 均存在于你先前运行的 `az login` 命令的输出中。 Azure 资源管理器客户端密码是你设置的 Azure 资源管理器密码。
 
    有关详细信息，请参阅 [Azure 资源管理器密码](azure-stack-edge-j-series-set-azure-resource-manager-password.md)。
 

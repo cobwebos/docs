@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将 AWS VM 迁移到 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419004"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651826"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -43,12 +43,17 @@ ms.locfileid: "89419004"
 1. 按照[教程](./tutorial-prepare-physical.md)设置 Azure 并准备 AWS VM 进行评估。 请注意：
 
     - Azure Migrate 在发现 AWS 实例时使用密码验证。 AWS 实例默认不支持密码验证。 需要先启用密码验证，才能发现实例。
-        - 对于 Windows 计算机，请允许 WinRM 端口 5986 (HTTPS) 和 5985 (HTTP)。 这将允许 WMI 调用。 如果设置 
+        - 对于 Windows 计算机，请允许 WinRM 端口 5985 (HTTP)。 这将允许 WMI 调用。
         - 对于 Linux 计算机：
             1. 登录到每台 Linux 计算机。
             2. Open the sshd_config file : vi /etc/ssh/sshd_config
             3. 在文件中，定位到 PasswordAuthentication 行，然后将值改为“yes”。 
             4. 保存文件并将其关闭。 重启 ssh 服务。
+    - 如果使用根用户来发现 Linux VM，请确保 VM 上允许根登录。
+        1. 登录到每台 Linux 计算机
+        2. Open the sshd_config file : vi /etc/ssh/sshd_config
+        3. 在文件中，定位到 PermitRootLogin 行，然后将值改为“yes” 。
+        4. 保存文件并将其关闭。 重启 ssh 服务。
 
 2. 然后，按照此[教程](./tutorial-assess-physical.md)设置 Azure Migrate 项目和设备，以发现和评估 AWS VM。
 

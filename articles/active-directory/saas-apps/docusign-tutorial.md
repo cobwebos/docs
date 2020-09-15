@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/21/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 6736edd615f99ed987e7d1618c449ff7a819c497
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c91f9d38922cc1bddf252fde59291c2f233e1aa2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536047"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650204"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成
 
@@ -47,7 +47,7 @@ ms.locfileid: "88536047"
 * DocuSign 支持**实时**用户预配。
 
 * DocuSign 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
-* 配置 DocuSign 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 DocuSign 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>从库中添加 DocuSign
 
@@ -61,7 +61,7 @@ ms.locfileid: "88536047"
 1. 在结果面板中选择“DocuSign”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>配置并测试 DocuSign 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>配置并测试 DocuSign 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 DocuSign 的 Azure AD SSO。 若要正常使用 SSO，必须在 Azure AD 用户与 DocuSign 中的相应用户之间建立链接关系。
 
@@ -94,9 +94,12 @@ ms.locfileid: "88536047"
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. 在“回复 URL”文本框中，使用以下模式输入 URL：
+    c. 在“回复 URL”文本框中，输入以下任一 URL 模式：
     
-    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
+    | 回复 URL |
+    |-------------|
+    |`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>`|
+    |`https://<subdomain>.docusign.net/SAML/`|
 
     > [!NOTE]
     > 括号中的值是占位符。 请将这些占位符替换为实际登录 URL、标识符和回复 URL。 本教程稍后的“查看 SAML 2.0 终结点”部分将会详细描述相关值。

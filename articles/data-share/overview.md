@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 0dd0fbdd9bcf4d4fab2ffe9f420264ab737a700b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e80ea37409f7b5beb48ba7b8e96aeeda9a5836e5
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511915"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433426"
 ---
 # <a name="what-is-azure-data-share"></a>什么是 Azure Data Share？
 
@@ -45,7 +45,7 @@ Azure Data Share 目前提供基于快照的共享和就地共享。
 
 ![数据共享流](media/data-share-flow.png)
 
-数据使用者在接受数据共享以后，即可在所选数据存储中接收数据。 例如，如果数据提供者使用 Azure Blob 存储共享数据，数据使用者可以在 Azure Data Lake Store 中接收该数据。 同样，如果数据提供者共享 Azure SQL 数据仓库中的数据，则数据使用者可以选择是在 Azure Data Lake Store、Azure SQL 数据库还是 Azure SQL 数据仓库中接收数据。 如果从基于 SQL 的源进行共享，数据使用者还可以选择是在 parquet 还是 csv 中接收数据。 
+数据使用者在接受数据共享以后，即可在所选数据存储中接收数据。 例如，如果数据提供者使用 Azure Blob 存储共享数据，数据使用者可以在 Azure Data Lake Store 中接收该数据。 同样，如果数据提供者共享 Azure Synapse Analytics（旧称 SQL 数据仓库）中的数据，则数据使用者可以选择是在 Azure Data Lake Store、Azure SQL 数据库还是 Azure Synapse Analytics 中接收数据。 如果从基于 SQL 的源进行共享，数据使用者还可以选择是在 parquet 还是 csv 中接收数据。 
 
 通过就地共享，数据提供程序可以共享其所在位置的数据而无需复制数据。 在通过邀请流建立共享关系之后，将在数据提供程序的源数据存储和数据使用者的目标数据存储之间创建一个符号链接。 数据使用者可以使用自己的数据存储实时读取和查询数据。 对源数据存储的更改可立即供数据使用者使用。 Azure 数据资源管理器的就地共享目前为预览版。
 

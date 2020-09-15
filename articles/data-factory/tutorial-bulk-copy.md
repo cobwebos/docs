@@ -1,6 +1,6 @@
 ---
 title: 用 PowerShell 批量复制数据
-description: 了解如何使用 Azure 数据工厂和复制活动将源数据存储中的数据批量复制到目标数据存储。
+description: 使用 Azure 数据工厂和复制活动将源数据存储中的数据批量复制到目标数据存储。
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,25 +11,25 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 4a9aaca8128570af74370213e9848e26dec25156
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251502"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490252"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 通过 Azure 数据工厂批量复制多个表
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
+本教程演示如何将 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics（旧称 SQL 数据仓库）。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 从较高层面讲，本教程涉及以下步骤：
 
 > [!div class="checklist"]
 > * 创建数据工厂。
-> * 创建 Azure SQL 数据库、Azure SQL 数据仓库和 Azure 存储链接服务。
-> * 创建 Azure SQL 数据库和 Azure SQL 数据仓库数据集。
+> * 创建 Azure SQL 数据库、Azure Synapse Analytics 和 Azure 存储链接服务。
+> * 创建 Azure SQL 数据库和 Azure Synapse Analytics 数据集。
 > * 创建一个管道用于查找要复制的表，创建另一个管道用于执行实际复制操作。 
 > * 启动管道运行。
 > * 监视管道和活动运行。
@@ -37,12 +37,12 @@ ms.locfileid: "85251502"
 本教程使用 Azure PowerShell。 若要了解如何使用其他工具/SDK 创建数据工厂，请参阅[快速入门](quickstart-create-data-factory-dot-net.md)。 
 
 ## <a name="end-to-end-workflow"></a>端到端工作流
-在本方案中，Azure SQL 数据库中包含一些我们想要复制到 SQL 数据仓库的表。 下面是管道中发生的工作流中的逻辑步骤顺序：
+在本场景中，Azure SQL 数据库中包含一些表，我们要将其复制到 Azure Synapse Analytics。 下面是管道中发生的工作流中的逻辑步骤顺序：
 
 ![工作流](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * 第一个管道查找需要复制到接收器数据存储的表列表。  也可以维护一个元数据表用于列出要复制到接收器数据存储的所有表。 然后，该管道触发另一个管道，后者循环访问数据库中的每个表并执行数据复制操作。
-* 第二个管道执行实际复制。 它使用表列表作为参数。 对于列表中的每个表，为获得最佳性能，会使用[通过 Blob 存储和 PolyBase 进行的分阶段复制](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)，将 Azure SQL 数据库中的特定表复制到 SQL 数据仓库中的相应表。 在本示例中，第一个管道传递表列表作为参数值。 
+* 第二个管道执行实际复制。 它使用表列表作为参数。 对于列表中的每个表，为获得最佳性能，会使用[通过 Blob 存储和 PolyBase 进行的分阶段复制](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)，将 Azure SQL 数据库中的特定表复制到 Azure Synapse Analytics 中的相应表。 在本示例中，第一个管道传递表列表作为参数值。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -53,23 +53,23 @@ ms.locfileid: "85251502"
 * **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
 * **Azure 存储帐户**。 Azure 存储帐户用作批量复制操作中的过渡 Blob 存储。 
 * **Azure SQL 数据库**。 此数据库包含源数据。 
-* **Azure SQL 数据仓库**。 此数据仓库包含从 SQL 数据库复制的数据。 
+* **Azure Synapse Analytics**。 此数据仓库包含从 SQL 数据库复制的数据。 
 
-### <a name="prepare-sql-database-and-sql-data-warehouse"></a>准备 SQL 数据库和 SQL 数据仓库
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>准备 SQL 数据库和 Azure Synapse Analytics
 
 **准备源 Azure SQL 数据库**：
 
-按照[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据在 Azure SQL 数据库中创建一个数据库。 本教程将此示例数据库中的所有表复制到 SQL 数据仓库。
+按照[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据在 Azure SQL 数据库中创建一个数据库。 本教程将此示例数据库中的所有表复制到 Azure Synapse Analytics。
 
-**准备接收器 Azure SQL 数据仓库**：
+**准备接收器 Azure Synapse Analytics**：
 
-1. 如果没有 Azure SQL 数据仓库，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)一文了解创建数据仓库的步骤。
+1. 如果没有 Azure Synapse Analytics 工作区，请参阅 [Azure Synapse Analytics 入门](..\synapse-analytics\get-started.md)一文了解创建步骤。
 
-2. 在 SQL 数据仓库中创建相应的表架构。 后面的步骤使用 Azure 数据工厂迁移/复制数据。
+2. 在 Azure Synapse Analytics 中创建相应的表架构。 后面的步骤使用 Azure 数据工厂迁移/复制数据。
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服务访问 SQL 服务器
 
-对于 SQL 数据库和 SQL 数据仓库，请允许 Azure 服务访问 SQL 服务器。 确保服务器的“允许访问 Azure 服务”设置已切换为“打开”状态 。 此设置允许数据工厂服务从 Azure SQL 数据库中读取数据，并将数据写入 Azure SQL 数据仓库。 若要验证并启用此设置，请执行以下步骤：
+对于 SQL 数据库和 Azure Synapse Analytics，请允许 Azure 服务访问 SQL Server。 确保服务器的“允许访问 Azure 服务”设置已切换为“打开”状态 。 此设置允许数据工厂服务从 Azure SQL 数据库中读取数据，并将数据写入 Azure Synapse Analytics。 若要验证并启用此设置，请执行以下步骤：
 
 1. 单击左侧的“所有服务”，然后单击“SQL Server”。
 2. 选择服务器，并单击“设置”下的“防火墙”。
@@ -153,7 +153,7 @@ ms.locfileid: "85251502"
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
-### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>创建接收器 Azure SQL 数据仓库链接服务
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>创建接收器 Azure Synapse Analytics 链接服务
 
 1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **AzureSqlDWLinkedService.json** 的 JSON 文件：
 
@@ -263,7 +263,7 @@ ms.locfileid: "85251502"
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>为接收器 SQL 数据仓库创建数据集
+### <a name="create-a-dataset-for-sink-synapse-analytics"></a>为接收器 Synapse Analytics 创建数据集
 
 1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **AzureSqlDWDataset.json** 的 JSON 文件：将“tableName”设置为参数，稍后引用此数据集的复制活动会将实际值传递给数据集。
 
@@ -313,7 +313,7 @@ ms.locfileid: "85251502"
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>创建管道“IterateAndCopySQLTables”
 
-此管道使用表列表作为参数。 对于列表中的每个表，此管道会使用分阶段复制和 PolyBase，将 Azure SQL 数据库中的表的数据复制到 Azure SQL 数据仓库。
+此管道使用表列表作为参数。 对于列表中的每个表，此管道会使用分阶段复制和 PolyBase，将 Azure SQL 数据库中的表的数据复制到 Azure Synapse Analytics。
 
 1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **IterateAndCopySQLTables.json** 的 JSON 文件：
 
@@ -334,7 +334,7 @@ ms.locfileid: "85251502"
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from Azure SQL Database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to Azure Synapse Analytics",
                                 "type": "Copy",
                                 "inputs": [
                                     {
@@ -573,15 +573,15 @@ ms.locfileid: "85251502"
     $result2
     ```
 
-3. 连接到接收器 Azure SQL 数据仓库，并确认是否已正确地从 Azure SQL 数据库复制数据。
+3. 连接到接收器 Azure Synapse Analytics，并确认是否已正确地从 Azure SQL 数据库复制数据。
 
 ## <a name="next-steps"></a>后续步骤
 已在本教程中执行了以下步骤： 
 
 > [!div class="checklist"]
 > * 创建数据工厂。
-> * 创建 Azure SQL 数据库、Azure SQL 数据仓库和 Azure 存储链接服务。
-> * 创建 Azure SQL 数据库和 Azure SQL 数据仓库数据集。
+> * 创建 Azure SQL 数据库、Azure Synapse Analytics 和 Azure 存储链接服务。
+> * 创建 Azure SQL 数据库和 Azure Synapse Analytics 数据集。
 > * 创建一个管道用于查找要复制的表，创建另一个管道用于执行实际复制操作。 
 > * 启动管道运行。
 > * 监视管道和活动运行。

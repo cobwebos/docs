@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 创建 Azure 数据工厂
-description: 创建一个 Azure 数据工厂，将数据从 Azure Blob 存储中的一个位置复制到另一位置。
+description: 创建一个 Azure 数据工厂管道，将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 357026bbe17650464716282608bc316c5d4b055e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 1d1db69215294ac4aa4849bbaa1a886a91f0ba7e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85514871"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439157"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入门：使用 REST API 创建 Azure 数据工厂和管道
 
@@ -28,7 +28,7 @@ ms.locfileid: "85514871"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
+Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure Synapse Analytics [旧称 SQL 数据仓库]），供商业智能 (BI) 应用程序使用。
 
 此快速入门介绍如何使用 REST API 创建 Azure 数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
 

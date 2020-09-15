@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: 813cf91195a43a2fc68236febe114c67eb5a3378
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/02/2020
+ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684603"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398420"
 ---
 # <a name="reservation-recommendations"></a>预留建议
 
@@ -25,6 +25,7 @@ Azure 预留实例 (RI) 购买建议通过 Azure 消耗[预留建议 API](/rest/
 2. 引擎在模拟成本时可以使用预留，也可以不使用预留，具体取决于使用情况数据。
 3. 针对不同数量来模拟成本，建议使用可以将节省最大化的数量。
 4. 如果资源定期关闭，则模拟会找不到任何节省项目，因此不提供购买建议。
+5. 建议考虑了计算包括按需使用率上可能享有的任何特殊折扣。
 
 ## <a name="recommendations-in-the-azure-portal"></a>Azure 门户中的建议
 
@@ -52,11 +53,11 @@ Azure 预留实例 (RI) 购买建议通过 Azure 消耗[预留建议 API](/rest/
 
 Azure 顾问中提供了预留购买建议。 请注意以下几点：
 
-- 顾问只有单一订阅范围的建议。
-- 建议是通过考虑过去 30 天的使用量趋势来计算的。
+- 顾问只有单一订阅范围的建议。 如果要查看针对整个计费范围（计费帐户或计费配置文件）的建议，请转到 Azure 门户并选择“预留”，添加并选择要查看建议的类型。
+- 顾问通过考虑过去 30 天的使用趋势提供了建议。
 - 建议数量和费用节省适用于 3 年期预留（如果可用）。 如果此服务未出售 3 年期预留，则使用 1 年期预留价格计算建议。
-- 建议考虑了按需使用费率可能享有的任何特殊折扣。
-- 如果购买共享范围预留，则顾问预留购买建议最多可能需要 30 天才会消失。
+- 建议考虑了计算包括按需使用率上可能享有的任何特殊折扣。
+- 如果购买共享范围预留，则顾问预留购买建议最多可能需要 5 天才会消失。
 
 ## <a name="other-expected-api-behavior"></a>其他预期的 API 行为
 

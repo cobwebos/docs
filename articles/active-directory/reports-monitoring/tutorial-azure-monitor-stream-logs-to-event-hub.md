@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229372"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469178"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
 
@@ -60,8 +60,8 @@ ms.locfileid: "89229372"
 7. 选择“确定”，退出事件中心配置。
 
 8. 执行下列两项操作或之一：
-    * 若要将审核日志发送到存储帐户，请选中“AuditLogs”复选框。 
-    * 若要将登录日志发送到存储帐户，请选中“SignInLogs”复选框。
+    * 若要将审核日志发送到事件中心，请选中“AuditLogs”复选框。 
+    * 若要将登录日志发送到事件中心，请选中“SignInLogs”复选框。
 
 9. 选择“保存”，保存设置。
 
