@@ -132,7 +132,7 @@ ms.locfileid: "89280020"
 
 接下来，选择要为这些 Api 授予的权限。 展开 " **读取 (1) ** " 权限，并选中 " *读取* " 复选框以授予此应用注册读取器和编写器权限。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text=""请求 API 权限" 页的视图选择 Azure 数字孪生 Api 的 "读取" 权限":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="请求 API 权限 页的视图选择 Azure 数字孪生 Api 的 读取 权限":::
 
 完成后点击 *添加权限* 。
 
@@ -140,13 +140,13 @@ ms.locfileid: "89280020"
 
 返回到 " *API 权限* " 页，验证现在是否存在用于反映读/写权限的 Azure 数字孪生条目：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure AD 应用注册的 API 权限的门户视图，其中显示了 Azure 数字孪生的 "读取/写入访问权限"":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Azure AD 应用注册的 API 权限的门户视图，其中显示了 Azure 数字孪生的 读取/写入访问权限":::
 
 你还可以在应用注册的 *manifest.js*中验证与 Azure 数字孪生的连接，该连接已在添加 API 权限时随 Azure 数字孪生信息自动更新。
 
 为此，请从菜单中选择 " *清单* "，以查看应用注册的清单代码。 滚动到代码窗口的底部，在下查找这些字段 `requiredResourceAccess` 。 值应与以下屏幕截图中的值匹配：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure AD 应用注册清单的门户视图。嵌套在 "requiredResourceAccess" 下，有一个 "resourceAppId" 值为 0b07f429-9f4b 4714-9392-cc5e8e80c8b0，"resourceAccess > id" 值为4589bd03-58cb-4e6c-b17f-b580e39652f8":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Azure AD 应用注册清单的门户视图。嵌套在 requiredResourceAccess 下，有一个 resourceAppId 值为 0b07f429-9f4b 4714-9392-cc5e8e80c8b0，resourceAccess > id 值为4589bd03-58cb-4e6c-b17f-b580e39652f8":::
 
 ### <a name="collect-important-values"></a>收集重要值
 
