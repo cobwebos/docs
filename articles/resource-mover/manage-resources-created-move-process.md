@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 4ff1905eb164d004af69ce5b0df3278bf3a46884
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6d6f56fb47bfdaadc6704e2a13ebcf0e893b8b1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670289"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602347"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>管理为 VM 移动创建的资源
 
@@ -24,13 +24,13 @@ ms.locfileid: "89670289"
 
 手动删除移动集合，并 Site Recovery 为 VM 移动创建的资源。
 
-1. 在移动了 Vm 的源区域中，查看资源组中的资源 ```RegionMoveRG-<sourceregion>-<target-region>``` 。
-2. 检查移动集合中的 VM 和所有其他源资源是否已移动/删除。 这可确保没有任何挂起的资源使用它们。
+1. 查看资源组中的资源 ```ResourceMoverRG-<sourceregion>-<target-region>``` 。
+2. 检查移动集合中的 VM 和所有其他源资源是否已移动/删除。 这可确保没有挂起的资源使用它们。
 2. 删除这些资源。
 
-    - 移动集合的名称为 ```movecollection-<sourceregion>-<target-region>``` 。
-    - 缓存存储帐户名称为 ```resmovecache<guid>```
-    - 保管库名称是 ```ResourceMove-<sourceregion>-<target-region>-GUID``` 。
+    - 移动集合名称为 ```movecollection-<sourceregion>-<target-region>```。
+    - 缓存存储账户名称为 ```resmovecache<guid>```
+    - 保管库名称为 ```ResourceMove-<sourceregion>-<target-region>-GUID```。
 
 ## <a name="next-steps"></a>后续步骤
 

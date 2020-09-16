@@ -8,50 +8,48 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586556"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601072"
 ---
 # <a name="point-in-time-snapshot"></a>时间点快照
 
-Azure 应用配置维护对键值所做更改的记录。 此记录提供键值更改的时间线。 您可以重新构造任何键-值的历史记录，并在关键历史记录期间的任何时刻提供其过去的值 (7 天用于免费层商店，或在30天内提供) 的标准层商店。 使用此功能，可以 "向后移动" 并检索旧的键值。 例如，你可以恢复最新部署之前使用的配置设置，以便将应用程序回滚到以前的配置。
+Azure 应用程序配置将维护键值更改记录。 此记录提供键值更改的时间线。 可以重新构造任何键值的历史记录，并在键值历史记录周期（免费层存储为 7 天，标准层存储为 30 天）内的任何时刻提供其过去的值。 通过此功能，可以向后查看并检索旧的键值。 例如，可以恢复最近部署前使用的配置设置，以便将应用程序回滚到以前的配置。
 
 ## <a name="key-value-retrieval"></a>键值检索
 
-您可以使用 Azure 门户或 CLI 来检索过去的键值。 在 Azure CLI 中，使用 `az appconfig revision list` 添加适当的参数以检索所需的值。  通过提供商店名称 (`--name <app-config-store-name>`) 或使用 () 的连接字符串来指定 Azure 应用配置实例 `--connection-string <your-connection-string>` 。 通过指定 () 的特定时间点 `--datetime` ，并通过指定 () 返回的最大项数来限制输出 `--top` 。
+可以使用 Azure 门户或 CLI 检索过去的键值。 在 Azure CLI 中，使用 `az appconfig revision list`，并添加适当的参数来检索所需的值。  通过提供存储名称 (`--name <app-config-store-name>`) 或使用连接字符串 (`--connection-string <your-connection-string>`) 来指定 Azure 应用程序配置实例。 通过指定特定的时间点 (`--datetime`)，并通过指定要返回的最大项数 (`--top`) 来限制输出。
 
-如果尚未本地安装 Azure CLI，则可以选择使用 Azure Cloud Shell。
+如果尚未本地安装 Azure CLI，则可以选择使用 [Azure Cloud Shell](/azure/cloud-shell/overview)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+检索所记录的所有键值更改。
 
-检索对键值的所有记录的更改。
-
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
-检索密钥和标签的所有记录的更改 `environment` `test` `prod` 。
+检索对键 `environment` 和标签 `test` 和 `prod` 所做的所有记录的更改。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
-检索层次结构密钥空间中所有记录的更改 `environment:prod` 。
+检索层次结构键空间 `environment:prod` 中的所有记录的更改。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
-在特定时间点检索密钥的所有记录的更改 `color` 。
+检索特定时间点的键 `color` 的所有记录的更改。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 
-检索键值的最后10个记录的更改，并只返回 `key` 、 `label` 和时间戳的值 `last_modified` 。
+检索所记录的最近 10 个键值更改，并仅返回 `key`、`label` 和 `last_modified` 时间戳的值。
 
 ```azurecli-interactive
 az appconfig revision list --name <your-app-config-store-name> --top 10 --fields key label last_modified

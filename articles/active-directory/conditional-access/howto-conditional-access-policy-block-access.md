@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049258"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601582"
 ---
 # <a name="conditional-access-block-access"></a>条件访问：阻止访问
 
@@ -40,7 +40,7 @@ ms.locfileid: "89049258"
 
 如果用户不在受信任的网络中，以下步骤将帮助创建条件访问策略来阻止访问除 [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) 之外的所有应用。 将这些策略设置为 [仅限报表模式](howto-conditional-access-insights-reporting.md) ，以便管理员可以确定他们将对现有用户产生的影响。 当管理员确认策略按预期方式应用时，他们可以打开这些策略的开关  。
 
-如果不在受信任的位置上，则第一个策略将阻止访问除 Office 365 应用程序之外的所有应用。
+第一个策略阻止访问除 Microsoft 365 应用程序之外的所有应用（如果不在受信任位置上）。
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
 1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
@@ -64,7 +64,7 @@ ms.locfileid: "89049258"
 1. 确认设置，然后将“启用策略”设置为“仅限报告”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。
 
-下面将创建第二个策略，要求 Office 365 用户使用多重身份验证或合规的设备。
+下面创建了第二个策略来要求 Microsoft 365 的用户使用多重身份验证或兼容的设备。
 
 1. 选择“新策略”  。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。

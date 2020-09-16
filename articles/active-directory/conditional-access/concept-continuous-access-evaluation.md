@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27aabac75516eed2c68b4f14c6593411d0141ef1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437235"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601752"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -48,26 +48,26 @@ ms.locfileid: "89437235"
 - 管理员显式撤销用户的所有刷新令牌
 - Azure AD Identity Protection 检测到提升的用户风险
 
-通过此过程，用户可以在其中一项关键事件发生后，在分钟内失去对组织 SharePoint Online 文件、电子邮件、日历或任务和团队的访问权限。 
+此过程使用户失去了对组织的 SharePoint Online 文件、电子邮件、日历或任务以及团队的访问权限，使其能够在一个或多个关键事件之后 Microsoft 365 的客户端应用。 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件性访问策略评估 (预览) 
 
 Exchange 和 SharePoint 能够同步关键的条件性访问策略，以便可以在服务中对其进行评估。
 
-此过程允许用户在网络位置更改后立即从 O365 客户端应用或 SharePoint Online 中丢失对组织文件、电子邮件、日历或任务的访问权限。
+此过程可让用户在网络位置更改后立即失去对组织文件、电子邮件、日历或任务 Microsoft 365 的客户端应用或 SharePoint Online 的访问权限。
 
 > [!NOTE]
 > 并非所有应用和资源提供程序组合都受支持。 请参阅下表。 Office 指的是 Word、Excel 和 PowerPoint
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | 支持 | 支持 | 不支持 | 不支持 | 支持 |
-| Exchange Online | 支持 | 支持 | 支持 | 支持 | 支持 |
+| **SharePoint Online** | 支持 | 支持 | 不支持 | 不支持 | 支持 |
+| **Exchange Online** | 支持 | 支持 | 支持 | 支持 | 支持 |
 
 | | Office web apps | Office Win32 应用 | 适用于 iOS 的 Office | 适用于 Android 的 Office | Office for Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | 支持 | 支持 | 不支持 | 支持 | 支持 |
-| Exchange Online | 支持 | 支持 | 不支持 | 支持 | 支持 |
+| **SharePoint Online** | 支持 | 支持 | 不支持 | 支持 | 支持 |
+| **Exchange Online** | 支持 | 支持 | 不支持 | 支持 | 支持 |
 
 ### <a name="client-side-claim-challenge"></a>客户端声明质询
 
@@ -157,7 +157,7 @@ Exchange 和 SharePoint 能够同步关键的条件性访问策略，以便可�
 | Office 更新通道 | DisableADALatopWAMOverride | DisableAADWAM |
 | --- | --- | --- |
 | 半年企业频道 | 如果设置为 enabled 或1，则不支持 CAE。 | 如果设置为 enabled 或1，则不支持 CAE。 |
-| 当前频道 <br> or <br> 每月企业频道 | 无论设置如何，都支持 CAE | 无论设置如何，都支持 CAE |
+| 当前频道 <br> 或 <br> 每月企业频道 | 无论设置如何，都支持 CAE | 无论设置如何，都支持 CAE |
 
 有关 office 更新通道的说明，请参阅 [Microsoft 365 应用的更新频道概述](https://docs.microsoft.com/deployoffice/overview-update-channels)。 建议组织不要禁用 (WAM) 的 Web 帐户管理器。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049530"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601997"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止向 Azure AD 进行旧身份验证   
 
@@ -49,7 +49,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 - 旧版 Microsoft Office 应用
 - 使用邮件协议的应用，如 POP、IMAP 和 SMTP
 
-如今，使用单因素身份验证（例如，用户名和密码）还不够安全。 使用密码也不安全，因为它们很容易被猜测到，我们并不擅长选择好密码。 密码也容易受到各种攻击，如网络钓鱼和密码破解。 为了防范密码威胁，最简单的方法之一是 (MFA) 实施多重身份验证。 使用 MFA，即使攻击者拥有用户密码，仅凭密码也不足以成功验证和访问数据。
+如今，使用单因素身份验证（例如，用户名和密码）还不够安全。 使用密码也不安全，因为它们很容易被猜测到，我们并不擅长选择好密码。 密码也容易受到各种攻击，如网络钓鱼和密码破解。 防范密码威胁的最简单措施之一是实现多重身份验证 (MFA)。 使用 MFA，即使攻击者拥有用户密码，仅凭密码也不足以成功验证和访问数据。
 
 如何阻止使用旧身份验证的应用访问租户的资源？ 建议只使用条件访问策略阻止它们。 如有必要，只允许某些用户和特定网络位置使用基于旧身份验证的应用程序。
 
@@ -85,7 +85,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 1. 导航到“Azure 门户” > “Azure Active Directory” > “登录”。  
 1. 如果未显示“客户端应用”列，请单击“列” > “客户端应用”添加该列。 
-1. **添加筛选器**  > **客户端应用**> 选择所有旧的身份验证协议。 选择 "筛选" 对话框外部，以应用所做选择并关闭对话框。
+1. “添加筛选器” > “客户端应用”> 选择所有旧式身份验证协议 。 选择 "筛选" 对话框外部，以应用所做选择并关闭对话框。
 
 筛选将仅显示通过旧式身份验证协议进行的登录尝试。 单击每个单独的登录尝试将显示其他详细信息。 “基本信息”选项卡下的“客户端应用”字段将指示使用了哪个旧式身份验证协议。
 
@@ -93,20 +93,20 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ## <a name="block-legacy-authentication"></a>阻止传统身份验证 
 
-可以通过两种方式来阻止旧身份验证。
+使用条件访问策略来阻止旧式身份验证的方式有两种。
 
-- [直接阻止旧身份验证](#directly-blocking-legacy-authentication)
-- [间接阻止旧身份验证](#indirectly-blocking-legacy-authentication)
+- [直接阻止旧式身份验证](#directly-blocking-legacy-authentication)
+- [间接阻止旧式身份验证](#indirectly-blocking-legacy-authentication)
  
-### <a name="directly-blocking-legacy-authentication"></a>直接阻止旧身份验证
+### <a name="directly-blocking-legacy-authentication"></a>直接阻止旧式身份验证
 
-在整个组织中阻止旧身份验证的最简单方法是配置一个条件性访问策略，该策略专门应用于传统身份验证客户端并阻止访问。 将用户和应用程序分配到策略时，请确保排除仍需使用旧身份验证进行登录的用户和服务帐户。 通过选择 " **Exchange ActiveSync 客户端** 和 **其他客户**端" 配置客户端应用条件。 若要阻止对这些客户端应用的访问，请将访问控制配置为阻止访问。
+在整个组织中阻止旧式身份验证的最简单方法是配置条件访问策略，该策略专门应用于旧式身份验证客户端并阻止访问。 在将用户和应用程序分配到该策略时，请确保排除仍需使用旧式身份验证进行登录的用户和服务帐户。 请通过选择“Exchange ActiveSync 客户端”和“其他客户端”来配置客户端应用条件 。 若要阻止对这些客户端应用的访问，请将访问控制配置为“阻止访问”。
 
-![配置为阻止旧身份验证的客户端应用条件](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
+![配置为阻止旧式身份验证的客户端应用条件](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
-### <a name="indirectly-blocking-legacy-authentication"></a>间接阻止旧身份验证
+### <a name="indirectly-blocking-legacy-authentication"></a>间接阻止旧式身份验证
 
-即使你的组织尚未准备在整个组织中阻止旧身份验证，你也应确保使用旧身份验证的登录不会绕过需要授权控制的策略，例如需要多重身份验证或符合/混合 Azure AD 加入的设备。 在身份验证期间，旧身份验证客户端不支持将 MFA、设备符合性或联接状态信息发送到 Azure AD。 因此，可将策略应用于所有客户端应用程序，以便阻止无法满足授予控制的传统基于身份验证的登录。 随着8月2020的客户端应用条件的公开上市，默认情况下，新创建的条件访问策略将应用于所有客户端应用。
+即使组织尚未准备好在整个组织中阻止旧式身份验证，也应确保使用旧式身份验证的登录不会绕开要求授权控制（例如要求多重身份验证或合规/已加入混合 Azure AD 的设备）的策略。 在身份验证过程中，旧式身份验证客户端不支持将 MFA、设备合规性或加入状态信息发送到 Azure AD。 因此，请将具有授权控制的策略应用于所有客户端应用程序，以便阻止无法满足授权控制要求的基于旧式身份验证的登录。 随着客户端应用条件在 2020 年 8 月正式发布，新创建的条件访问策略会默认应用于所有客户端应用。
 
 ![客户端应用条件默认配置](./media/block-legacy-authentication/client-apps-condition-configured-no.png)
 
@@ -125,4 +125,4 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 - [使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 - 如果你还不熟悉配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用进行多重身份验证 (MFA)](../authentication/tutorial-enable-azure-mfa.md) 的示例。
 - 有关新式身份验证支持的详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](/office365/enterprise/modern-auth-for-office-2013-and-2016) 
-- [如何设置多功能设备或应用程序以使用 Office 365 和 Microsoft 365 发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [如何使用 Microsoft 365 设置多功能设备或应用程序以发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

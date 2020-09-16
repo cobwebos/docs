@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993842"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601803"
 ---
 # <a name="conditional-access-session"></a>条件访问：会话
 
@@ -57,20 +57,20 @@ ms.locfileid: "83993842"
 - Word、Excel、PowerPoint Online
 - OneNote Online
 - Office.com
-- O365 管理门户
+- Microsoft 365 管理门户
 - Exchange Online
 - SharePoint 和 OneDrive
 - Teams Web 客户端
 - Dynamics CRM Online
 - Azure 门户
 
-有关详细信息，请参阅文章[使用条件访问配置身份验证会话管理](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)。
+有关详细信息，请参阅文章 [使用条件访问配置身份验证会话管理](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)。
 
 ## <a name="persistent-browser-session"></a>持久性浏览器会话
 
 持久性浏览器会话可让用户在关闭再重新打开其浏览器窗口后保持登录状态。
 
-有关详细信息，请参阅文章[使用条件访问配置身份验证会话管理](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions)。
+有关详细信息，请参阅文章 [使用条件访问配置身份验证会话管理](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068637"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601463"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -156,12 +156,12 @@ ms.locfileid: "89068637"
 | refreshtoken |
 | request_nonce |
 | resource |
-| 角色 (role) |
+| role |
 | 角色 |
 | scope |
 | scp |
 | sid |
-| 签名 |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
@@ -260,7 +260,7 @@ ms.locfileid: "89068637"
 **数据类型：** 具有一个或多个声明架构条目的 JSON Blob
 
 **摘要：** 此属性定义除了基本声明集与核心声明集之外，在受此策略影响的令牌中存在的声明。
-对于此属性中定义的每个声明架构条目，都需要特定信息。 指定数据的来源位置 (**值**、 **源/ID 对**或 **源/ExtensionID 对**) ，并声明数据作为 (**声明类型**) 发出。
+对于此属性中定义的每个声明架构条目，都需要特定信息。 指定数据来源（“Value”、“Source/ID 对”或“Source/ExtensionID 对”）以及数据作为哪种声明发出（声明类型）。
 
 ### <a name="claim-schema-entry-elements"></a>声明架构条目元素
 
@@ -268,7 +268,7 @@ ms.locfileid: "89068637"
 
 **Source/ID 对：** Source 和 ID 元素定义声明中的数据的来源。
 
-**Source/ExtensionID 对：** 源元素和 ExtensionID 元素定义声明中的数据源自的目录架构扩展属性。 有关详细信息，请参阅 [在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。
+**Source/ExtensionID 对：** Source 元素和 ExtensionID 元素定义声明中的数据源自的目录架构扩展属性。 有关详细信息，请参阅[在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。
 
 将 Source 元素设置为下列值之一：
 
@@ -301,7 +301,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | companyname| 组织名称 |
 | 用户 | streetaddress | 街道地址 |
 | 用户 | postalcode | 邮政编码 |
-| 用户 | preferredlanguange | 首选语言 |
+| 用户 | user.preferredlanguage | 首选语言 |
 | 用户 | onpremisesuserprincipalname | 本地 UPN |*
 | 用户 | mailNickname | 邮件别名 |
 | 用户 | extensionattribute1 | 扩展属性 1 |
@@ -365,7 +365,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |TransformationMethod|预期输入|预期输出|说明|
 |-----|-----|-----|-----|
 |联接|string1、string2、分隔符|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
-|ExtractMailPrefix|电子邮件或 UPN|提取的字符串|ExtensionAttributes 1-15 或任何其他为用户存储 UPN 或电子邮件地址值的架构扩展， johndoe@contoso.com 例如。 提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
+|ExtractMailPrefix|电子邮件或 UPN|提取的字符串|ExtensionAttributes 1-15 或为用户（例如 johndoe@contoso.com）存储 UPN 或电子邮件地址值的任何其他架构扩展。 提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -440,7 +440,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
 > [!NOTE]
-> 创建声明映射策略时，还可以从令牌中的目录架构扩展属性发出声明。 在元素中使用 *ExtensionID* 作为扩展特性而不是 *ID* `ClaimsSchema` 。  有关扩展属性的详细信息，请参阅 [使用目录架构扩展属性](active-directory-schema-extensions.md)。
+> 创建声明映射策略时，还可以根据令牌中的目录架构扩展属性发出声明。 使用与扩展属性对应的 ExtensionID，而不是 `ClaimsSchema` 元素中的 ID。  有关扩展属性的更多信息，请参阅[使用目录架构扩展属性](active-directory-schema-extensions.md)。
 
 #### <a name="prerequisites"></a>先决条件
 
@@ -534,4 +534,4 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ## <a name="see-also"></a>另请参阅
 
 - 若要了解如何通过 Azure 门户自定义 SAML 令牌中颁发的声明，请参阅[如何：为企业应用程序自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)
-- 若要了解有关扩展属性的详细信息，请参阅 [在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。
+- 若要详细了解扩展属性，请参阅[在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。

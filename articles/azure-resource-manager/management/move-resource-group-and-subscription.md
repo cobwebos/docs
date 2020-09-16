@@ -2,14 +2,14 @@
 title: 将资源移动到新的订阅或资源组
 description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b278dae956ec0bd17773badbeaa880b7bf901a5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056624"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603146"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -172,7 +172,7 @@ Authorization: Bearer <access-token>
 
 :::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="已禁用移动选项":::
 
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者分别选择 "资源"。
+若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者分别选择 "资源"。 选择 "资源" 后，"移动" 选项处于启用状态。
 
 :::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="选择资源":::
 
@@ -194,7 +194,7 @@ Authorization: Bearer <access-token>
 
 在验证是否可以移动资源后，会看到一个通知，指示移动操作正在运行。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="提醒":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="通知":::
 
 操作完成后，你会获得结果通知。
 

@@ -1,6 +1,6 @@
 ---
 title: 什么是已加入 Azure AD 的设备？
-description: 了解设备标识管理如何帮助你管理正在访问环境中的资源的设备。
+description: 了解 Azure AD 联接的设备，以及设备标识管理如何帮助您管理在您的环境中访问资源的设备。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923724"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601446"
 ---
 # <a name="azure-ad-joined-devices"></a>已加入 Azure AD 的设备
 
 “Azure AD 加入”面向的是想要云优先或仅使用云的组织。 无论规模或行业，任何组织都可部署已加入 Azure AD 的设备。 即使在混合环境中，也能使用“Azure AD 加入”，从而提供对云和本地应用及资源的访问。
 
-| Azure AD 加入 | 描述 |
+| Azure AD 加入 | 说明 |
 | --- | --- |
 | **定义** | 只需用组织帐户登录到设备即可加入 Azure AD |
 | **主要受众** | 适合仅使用云和使用混合环境的组织。 |
@@ -58,7 +58,7 @@ ms.locfileid: "87923724"
 
 - 要使用 Azure AD 和 MDM（如 Intune）转换到基于云的基础结构。
 - 例如，在需要控制平板电脑和手机等设备时，无法使用本地域加入。
-- 用户主要需要访问 Office 365 或其他与 Azure AD 集成的 SaaS 应用。
+- 用户主要需要访问 Microsoft 365 或其他与 Azure AD 集成的 SaaS 应用。
 - 你需要在 Azure AD 而不是 Active Directory 中管理用户组。 该方案适用于季节工、承包商或学生等群体。
 - 想要向本地基础设施有限的远程分支机构中的员工提供加入功能。
 

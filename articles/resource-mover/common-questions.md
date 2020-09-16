@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
-ms.openlocfilehash: 18de210d817ee309ac4970ecea6b62f6ef03ef02
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530397"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600647"
 ---
 # <a name="common-questions"></a>常见问题
 
@@ -90,6 +90,9 @@ Azure 资源移动器托管标识至少需要以下权限：
 资源移动器托管标识已重置为 *无*。 | 在移动集合 > **标识**中重新启用系统分配的标识。 此外，也可以在 " **添加资源**" 中再次添加资源，这会执行相同的操作。  
 已将订阅移到其他租户。 | 禁用并启用移动集合的托管标识。
 
+### <a name="how-can-i-do-multiple-moves-together"></a>如何将多个移动操作组合在一起？
+
+使用门户中的 "更改" 选项，根据需要更改源/目标组合。
 
 ## <a name="next-steps"></a>后续步骤
 

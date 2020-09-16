@@ -5,14 +5,14 @@ description: 了解如何创建 Intune 自定义配置文件来部署 Azure VPN 
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5a754a14cada1547a83e29d474e9b77aed7a2728
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024343"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602187"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>创建 Intune 配置文件以部署 VPN 客户端配置文件
 
@@ -54,17 +54,7 @@ ms.locfileid: "90024343"
     </VPNProfile>
    ```
 1. ```<ServerUrlList>``` ```</ServerUrlList>``` 用下载的配置文件中的条目修改和之间的条目 ( # A0) 。 更改 "TrustedNetworkDetection" FQDN 以适合您的环境。
-1. 打开 Azure 下载的配置文件 ( # A0) ，将内容复制到剪贴板，只需突出显示文本并按 <ctrl> + C 即可。复制以下 AzVpnProfile 行之间的所有内容，但不要复制 AzVpnProfile 行本身：
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-
-   For example - copy the text in your xml that is located here.
-
-   </AzVpnProfile>
-   ```
+1. 打开 Azure 下载的配置文件 ( # A0) 并将整个内容复制到剪贴板，方法是突出显示文本并按 (ctrl) + C。 
 1. 将上一步中复制的文本粘贴到你在步骤2中创建的标记之间创建的文件 ```<CustomConfiguration>  </CustomConfiguration>``` 。 使用 xml 扩展名保存文件。
 1. 记下标记中的值 ```<name>  </name>``` 。 这是配置文件的名称。 在 Intune 中创建配置文件时，将需要此名称。 关闭文件并记住保存该文件的位置。
 
@@ -87,7 +77,7 @@ ms.locfileid: "90024343"
    选择文件夹图标，并在 [XML](#xml) 步骤中选择在步骤6中保存的文件。 选择 **添加** 。
 
    :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="配置设置" lightbox="./media/create-profile-intune/configuration-settings.png":::
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在 " **分配**" 下，选择要将配置推送到的组。 然后，选择“下一步”。
 1. 适用性规则是可选的。 根据需要定义任何规则，然后选择 " **下一步**"。
 1. 在“查看 + 创建”页面上，选择“创建”。 

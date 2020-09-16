@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228760"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603588"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -147,13 +147,13 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 |经验证的 SMTP| |由 POP 和 IMAP 客户端用来发送电子邮件。|
 |自动发现| |由 Outlook 和 EAS 客户端用来查找和连接 Exchange Online 中的邮箱。|
 |Exchange ActiveSync| |此筛选器显示尝试 EAS 协议的所有登录尝试。|
-|浏览者|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
-|Exchange ActiveSync| | 显示使用客户端应用通过 Exchange ActiceSync 连接到 Exchange Online 的用户进行的所有登录尝试|
+|浏览者|![选中标记](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
+|Exchange ActiveSync| | 显示用户具有使用 Exchange ActiveSync 连接到 Exchange Online 的客户端应用的所有登录尝试|
 |Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
 |Exchange Web 服务| |Outlook、Outlook for Mac 和第三方应用使用的编程接口。|
 |IMAP4| |使用 IMAP 检索电子邮件的旧版邮件客户端。|
 |基于 HTTP 的 MAPI| |由 Outlook 2010 及更高版本使用。|
-|移动应用和桌面客户端|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用移动应用和桌面客户端进行的所有登录尝试。|
+|移动应用和桌面客户端|![蓝色复选标记](./media/concept-sign-ins/check.png)|显示用户使用移动应用和桌面客户端进行的所有登录尝试。|
 |脱机通讯簿| |通过 Outlook 下载并使用的地址列表集合的副本。|
 |Outlook Anywhere（基于 HTTP 的 RPC）| |由 Outlook 2016 及更低版本使用。|
 |Outlook 服务| |由 Windows 10 的邮件和日历应用使用。|
@@ -180,7 +180,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - **成功**：在登录过程中对用户和应用程序应用了一个或多个条件访问策略（但不一定是其他条件）。 
 
-- **失败**：满足至少一个条件性访问策略的用户和应用程序条件，并且未满足或未将授权控件设置为阻止访问。
+- **失败**：登录满足了至少一个条件性访问策略的用户和应用程序条件，授权控件要么未满足，要么设置为阻止访问。
 
 
 
@@ -269,11 +269,11 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 **登录** 选项可提供应用程序的所有登录事件的完整概览。
 
-## <a name="office-365-activity-logs"></a>Office 365 活动日志
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 活动日志
 
-可以从 [Microsoft 365 管理中心](/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 要考虑到 Office 365 活动和 Azure AD 活动日志共享大量的目录资源。 只有 Microsoft 365 管理中心提供 Office 365 活动日志的完整视图。 
+可以从 [Microsoft 365 管理中心](/office365/admin/admin-overview/about-the-admin-center)查看 Microsoft 365 活动日志。 请考虑 Microsoft 365 活动和 Azure AD 活动日志共享大量目录资源的点。 只有 Microsoft 365 管理中心提供 Microsoft 365 活动日志的完整视图。 
 
-还可以使用 [Office 365 管理 API](/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
+你还可以使用 [Office 365 管理 api](/office/office-365-management-api/office-365-management-apis-overview)以编程方式访问 Microsoft 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 

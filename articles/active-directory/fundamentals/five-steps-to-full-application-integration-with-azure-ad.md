@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319740"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601242"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>将所有应用与 Azure AD 集成的五个步骤
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) 包含了包含数千个预先集成的应用�
 
 我们发布了有关如何管理将应用与 Azure AD 集成的业务流程的指南，包括可用于使业务和应用程序所有者了解和感兴趣的 [海报](https://aka.ms/AppOnePager) 和 [演示](https://aka.ms/AppGuideline) 。 你可以使用自己的品牌修改这些示例，并在完成此过程时通过公司门户、新闻稿或其他介质将它们发布到组织。
 
-一个好的起点是评估你使用 (ADFS) Active Directory 联合身份验证服务。 许多组织使用 ADFS 通过 SaaS 应用、自定义业务线应用和 Office 365 和基于 Azure AD 的应用进行身份验证：
+一个好的起点是评估你使用 (ADFS) Active Directory 联合身份验证服务。 许多组织使用 ADFS 通过 SaaS 应用、自定义业务线应用和 Microsoft 365 和基于 Azure AD 的应用进行身份验证：
 
 ![关系图显示本地应用程序、业务线应用程序、SaaS 应用程序，并通过 Azure AD，Office 365 所有都用虚线连接到 Active Directory 和 AD FS。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 

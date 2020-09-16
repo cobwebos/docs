@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948821"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601514"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：要求托管设备使用条件访问访问 cloud app
 
@@ -98,24 +98,24 @@ ms.locfileid: "88948821"
 
 ### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>方案：要求对 iOS 和 Android 设备进行设备注册
 
-在此方案中，Contoso 决定了对 Office 365 资源的所有移动访问都必须使用已注册的设备。 其所有用户已使用 Azure AD 凭据登录，并拥有分配的许可证（包括 Azure AD Premium P1 或 P2 和 Microsoft Intune）。
+在此方案中，Contoso 决定对 Microsoft 365 资源的所有移动访问都必须使用已注册的设备。 其所有用户已使用 Azure AD 凭据登录，并拥有分配的许可证（包括 Azure AD Premium P1 或 P2 和 Microsoft Intune）。
 
 组织必须完成以下步骤才能要求使用注册的移动设备。
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”  。
-1. 选择“新策略”。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
+1. 选择“新策略”  。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
-1. 在“分配”下，选择“用户和组”
+1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择要将此策略应用到的“所有用户”或特定“用户和组”  。 
-   1. 选择“完成”  。
+   1. 选择“完成”。
 1. 在“云应用或操作” > “包括”下，选择“Office 365 (预览版)”。
 1. 在“条件”下，选择“设备平台”。
    1. 将“配置”设置为“是” 。
    1. 包括“Android”和“iOS”。 
 1. 在“访问控制” > “授予”下，选择以下选项：
    - **要求将设备标记为合规**
-1. 确认设置并将“启用策略”设置为“开启”。
+1. 确认设置，然后将“启用策略”设置为“打开”。  
 1. 选择“创建”进行创建并启用策略。
 
 ### <a name="known-behavior"></a>已知行为

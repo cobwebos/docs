@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/06/2020
+ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8598e77940bd2b33a9d8ba2c5a56348be841f7b
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505053"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602925"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建对组和应用程序的访问评审
 
@@ -111,6 +111,8 @@ ms.locfileid: "89505053"
     - **批准访问权限** - 批准用户的访问权限
     - **采用建议** - 根据系统的建议拒绝或批准用户的持续访问权限
 
+    ![创建访问评审 - 高级设置](./media/create-access-review/advanced-settings-preview-new.png)
+
 4.  (预览) 使用 "操作" 应用于 "拒绝的用户"，以指定在来宾用户被拒绝时所发生的情况。
     - **选项 1** 将删除被拒绝的用户对要查看的组或应用程序的访问权限，它们仍将能够登录到租户。 
     - **选项 2** 将阻止拒绝的用户登录到租户，无论他们是否有权访问其他资源。 如果出现错误，或者管理员决定重新启用一次访问，则可以在用户禁用后30天内执行此操作。 如果在禁用的用户上没有执行任何操作，则会从租户中删除这些用户。
@@ -123,8 +125,6 @@ ms.locfileid: "89505053"
 ### <a name="advanced-settings"></a>高级设置
 
 1. 若要指定其他设置，请展开“高级设置”部分。 
-
-    ![创建访问评审 - 高级设置](./media/create-access-review/advanced-settings-preview-new.png)
 
 1. 将“显示建议”设置为“启用”，以基于用户的访问权限信息向评审者显示系统建议。  
 

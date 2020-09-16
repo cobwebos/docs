@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948396"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602058"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -55,9 +55,9 @@ ms.locfileid: "88948396"
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Office 365 Exchange Online
-- Office 365 SharePoint Online
-- Office 365 Yammer
+- Exchange Online
+- SharePoint
+- Yammer
 - Office Delve
 - Office Sway
 - Outlook Groups
@@ -69,7 +69,7 @@ ms.locfileid: "88948396"
 
 ### <a name="office-365-preview"></a>Office 365（预览版）
 
-Office 365 提供基于云的生产力和协作服务，如 Exchange、SharePoint 和 Microsoft Teams。 Office 365 云服务已深度集成，以确保提供顺利的协作体验。 在创建策略时，这种集成可能会造成混淆，因为某些应用（如 Microsoft Teams）依赖于 SharePoint 或 Exchange 等其他一些应用。
+Microsoft 365 提供了基于云的生产力和协作服务，如 Exchange、SharePoint 和 Microsoft 团队。 Microsoft 365 云服务进行了深层集成，以确保顺利且协作体验。 在创建策略时，这种集成可能会造成混淆，因为某些应用（如 Microsoft Teams）依赖于 SharePoint 或 Exchange 等其他一些应用。
 
 在 Office 365（预览版）应用中可以一次性将所有这些服务作为目标。 我们建议使用新的 Office 365（预览版）应用，而不要将单个云应用作为目标，以免[服务依赖关系](service-dependencies.md)出现问题。 将这一组应用程序作为目标有助于避免因策略和依赖关系不一致而导致的问题。
 
@@ -82,10 +82,10 @@ Office 365（预览版）客户端应用中包含的关键应用程序：
    - Microsoft Stream
    - 微软待办
    - Microsoft Teams
-   - Office 365 Exchange Online
-   - Office 365 SharePoint Online
-   - Office 365 Search Service
-   - Office 365 Yammer
+   - Exchange Online
+   - SharePoint Online
+   - Microsoft 365 搜索服务
+   - Yammer
    - Office Delve
    - Office Online
    - Office.com

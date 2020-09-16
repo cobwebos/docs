@@ -6,16 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326913"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602459"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
-在本快速入门中，你将使用 Application Insights 自动检测请求，跟踪依赖项并收集性能计数器、诊断性能问题和异常，并编写代码以跟踪用户对应用执行的操作。
+
+> [!IMPORTANT]
+> 监视 Java 应用程序的建议方法是使用自动检测，无需更改代码。 请按照 [Application Insights Java 3.0 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)的指南进行操作。
+
+在本快速入门中，你将使用 Application Insights SDK 来检测请求、跟踪依赖项和收集性能计数器，诊断性能问题和异常，并编写代码来跟踪用户对应用执行的操作。
 
 Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
@@ -193,22 +197,10 @@ Application Insights SDK 按以下顺序查找密钥：
 
     （此组件启用性能计数器。）
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure 应用服务配置 (Spring Boot)
+## <a name="azure-app-service-aks-vms-config"></a>Azure App Service、AKS、Vm 配置
 
-在 Windows 上运行的 Spring Boot 应用需要额外的配置才能在 Azure 应用服务上运行。 修改 **web.config** 并添加以下配置：
+若要监视任何 Azure 资源提供程序上运行的应用程序，最佳且最简单的方法是通过 [Java 3.0 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)使用 Application Insights 自动检测。
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <handlers>
-            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
-        </handlers>
-        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
-        </httpPlatform>
-    </system.webServer>
-</configuration>
-```
 
 ## <a name="exceptions-and-request-failures"></a>异常和请求失败
 Application Insights Web 筛选器会自动收集未经处理的异常和请求失败。

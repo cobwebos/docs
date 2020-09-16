@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67111ecb215f4976dd8d3bbe0b901e68c3ef10ec
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564060"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602381"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -48,13 +48,13 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 [Azure Arc](../../azure-arc/index.yml)：
 
-- 大规模管理混合服务器- [用于服务器的 Azure Arc (预览) ](../../azure-arc/servers/overview.md)：
-  - [将 Azure 外部的 Windows Server 或 Linux 计算机连接](../../azure-arc/servers/onboard-portal.md)到 Azure 中的委派订阅和/或资源组
+- 大规模管理混合服务器- [启用了 Azure Arc 的服务器 (预览) ](../../azure-arc/servers/overview.md)：
+  - [管理 azure 上的 Windows Server 或 Linux 计算机，这些计算机连接](../../azure-arc/servers/onboard-portal.md) 到 azure 中的委派订阅和/或资源组
   - 使用 Azure 构造（如Azure Policy 和标记）管理连接的计算机
   - 确保跨客户的混合环境应用相同的一组策略
   - 使用 Azure 安全中心监视客户混合环境中的符合性
 - 大规模管理混合 Kubernetes 群集- [启用 Azure Arc 的 Kubernetes (预览) ](../../azure-arc/kubernetes/overview.md)：
-  - 将[Kubernetes 群集连接](../../azure-arc/kubernetes/connect-cluster.md)到 azure 中的委托订阅和/或资源组
+  - 管理连接到 Azure 中的委托订阅和/或资源组[的 Kubernetes 群集](../../azure-arc/kubernetes/connect-cluster.md)
   - 对连接的群集[使用 GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
   - 跨连接群集强制实施策略
 

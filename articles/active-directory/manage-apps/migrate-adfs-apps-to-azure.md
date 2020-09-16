@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641358"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600939"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
@@ -28,14 +28,14 @@ ms.locfileid: "88641358"
 > [!NOTE]
 > 本文重点介绍如何将应用程序身份验证从本地 Active Directory 和 Active Directory 联合身份验证服务迁移到 Azure AD。 有关规划此迁移的概述，请参阅将 [应用程序身份验证迁移到 Azure AD](https://aka.ms/migrateapps/whitepaper) 白皮书。 本白皮书介绍了如何规划迁移、测试和见解。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 如果你的本地目录包含用户帐户，则你可能有许多用户对其进行身份验证的应用程序。 其中每个应用都配置为用户使用其标识进行访问。 
 
 
 用户还可以直接通过本地 Active Directory 进行身份验证。 Active Directory 联合身份验证服务 (AD FS) 是基于标准的本地标识服务。 AD FS 扩展了在可信业务合作伙伴之间使用单一登录 (SSO) 功能的功能，而无需用户单独登录到每个应用程序。 这称为 "联合"。
 
-许多组织的软件即服务 (SaaS) 或自定义业务线 (LOB) 应用直接与 Office 365 和基于 AD FS 的应用联合。 
+许多组织的软件即服务 (SaaS) 或自定义业务线 (LOB) 应用直接与 AD FS 和基于 Microsoft 365 的应用联合。 
 
 ![直接连接到本地的应用程序](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
@@ -455,7 +455,7 @@ AD FS 2016 具有几个内置的访问控制策略，你可以从中进行选择
 
 根据你配置应用的方式，验证 SSO 是否正常工作。 
 
-| 身份验证类型| 测试 |
+| 身份验证类型| 正在测试 |
 | - | - |
 | OAuth/OpenID Connect| 选择 " **企业应用程序" > 权限** ，并确保你同意在你的组织中的应用程序的用户设置中使用该应用程序。  
 ‎ |

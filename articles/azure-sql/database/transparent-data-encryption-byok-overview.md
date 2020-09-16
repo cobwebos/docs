@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318279"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602663"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -93,6 +93,10 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 - 密钥必须处于“已启用”状态。
 
 - 如果将现有的密钥导入 Key Vault，请确保以支持的文件格式（.pfx、.byok 或 .backup）提供该密钥。
+
+> [!NOTE]
+> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能 **公开预览版**。 Azure Key Vault 托管 HSM 是一项完全托管的、高度可用的单租户标准云服务，可让你使用 FIPS 140-2 第3级验证后的 Hsm 保护云应用程序的加密密钥。 详细了解 [托管的 hsm](https://aka.ms/mhsm)。
+
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>有关配置客户管理的 TDE 的建议
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: dcbfd05df84e32423df425f3bdd231a26e4f3bca
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527032"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602025"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -36,21 +36,18 @@ ms.locfileid: "90527032"
 
 下表概述了可用的身份验证方法的安全注意事项。 可用性是指用户可以使用身份验证方法，而不是 Azure AD 中服务可用性的指示：
 
-| 身份验证方法       | 安全性 | 可用性 | Phisable? | 频道 jackable？ | 可用性 |
-|-----------------------------|:--------:|:---------:|:---------:|:-----------------:|:------------:|
-| FIDO2 安全密钥          | 高     | 高      | 否        | 否                | 高         |
-| Microsoft Authenticator 应用 | 高     | 高      | 是       | 否 <sup>1</sup>   | 高         |
-| Windows Hello for Business  | 高     | 高      | 否        | 否                | 高         |
-| 硬件 OATH 令牌        | 中   | 中    | 是       | 否                | 高         |
-| 软件 OATH 令牌        | 中   | 中    | 是       | 否 <sup>2</sup>   | 高         |
-| SMS                         | 中型   | 高      | 是       | 是               | 中型       |
-| 语音                       | 中   | 中    | 是       | 是               | 中型       |
-| 密码                    | 低      | 高      | 是       | 是               | 高         |
+| 身份验证方法          | 安全性 | 可用性 | 可用性 |
+|--------------------------------|:--------:|:---------:|:------------:|
+| Windows Hello for Business     | 高     | 高      | 高         |
+| Microsoft Authenticator 应用    | 高     | 高      | 高         |
+|  (预览版的 FIDO2 安全密钥)    | 高     | 高      | 高         |
+| OATH 硬件令牌（预览版） | 中   | 中    | 高         |
+| OATH 软件令牌           | 中   | 中    | 高         |
+| SMS                            | 中型   | 高      | 中等       |
+| 语音                          | 中   | 中    | 中       |
+| 密码                       | 低      | 高      | 高         |
 
-<sup>1</sup> 在无密码模式下，在将应用注册到特定设备时<br />
-<sup>2</sup> 假设应用需要设备 PIN 才能解锁
-
-有关漏洞和攻击媒介的详细信息，请参阅 [点击劫持和实时网络钓鱼](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
+有关安全性的详细信息，请参阅 [身份验证漏洞和攻击媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
 
 > [!TIP]
 > 为实现灵活性和可用性，我们建议使用 Microsoft Authenticator 应用。 此身份验证方法提供最佳用户体验和多种模式，如无密码、MFA 推送通知和 OATH 代码。
@@ -63,9 +60,9 @@ ms.locfileid: "90527032"
 
 | 方法                         | 主要身份验证 | 辅助身份验证  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| FIDO2 安全密钥（预览版）  | 是                    | MFA                       |
-| Microsoft Authenticator 应用    | 是（预览版）          | MFA 和 SSPR              |
 | Windows Hello for Business     | 是                    | MFA                       |
+| Microsoft Authenticator 应用    | 是（预览版）          | MFA 和 SSPR              |
+|  (预览版的 FIDO2 安全密钥)    | 是                    | MFA                       |
 | OATH 硬件令牌（预览版） | 否                     | MFA                       |
 | OATH 软件令牌           | 否                     | MFA                       |
 | SMS                            | 是（预览版）          | MFA 和 SSPR              |
@@ -76,11 +73,11 @@ ms.locfileid: "90527032"
 
 若要详细了解每种身份验证方法的工作方式，请参阅以下单独的概念文章：
 
-* [FIDO2 安全密钥（预览版）](concept-authentication-passwordless.md#fido2-security-keys)
-* [Microsoft Authenticator 应用](concept-authentication-authenticator-app.md)
 * [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
-* [OATH 软件令牌](concept-authentication-oath-tokens.md#oath-software-tokens)
+* [Microsoft Authenticator 应用](concept-authentication-authenticator-app.md)
+* [ (预览版的 FIDO2 安全密钥) ](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH 硬件令牌（预览版）](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [OATH 软件令牌](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS [登录 (预览) ](howto-authentication-sms-signin.md) 和 [验证](concept-authentication-phone-options.md#mobile-phone-verification)
 * [语音呼叫验证](concept-authentication-phone-options.md)
 * 密码

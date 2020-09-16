@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321712"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601358"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -95,7 +95,7 @@ ms.locfileid: "89321712"
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>本地中断身份验证复原
 
-除了简单的优点和启用泄漏的凭据检测以外，Azure AD 密码哈希同步 (PHS) 和 Azure MFA 允许用户访问 SaaS 应用程序和 Office 365，而不管由于网络攻击这样的本地中断，如 [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)。 同时，还可以使用联合身份验证来启用 PHS。 启用 PHS 允许在联合身份验证服务不可用时回退身份验证。
+除了简单的优点和启用泄漏的凭据检测以外，Azure AD 密码哈希同步 (PHS) 和 Azure MFA 允许用户访问 SaaS 应用程序和 Microsoft 365，因为网络攻击（如 [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)）导致了本地中断。 同时，还可以使用联合身份验证来启用 PHS。 启用 PHS 允许在联合身份验证服务不可用时回退身份验证。
 
 如果本地组织缺乏中断复原策略，或者有一个未与 Azure AD 集成的策略，则应该部署 Azure AD PHS 并定义包含 PHS 的灾难恢复计划。 启用 Azure AD PHS 将允许用户在本地 Active Directory 不可用时，对 Azure AD 进行身份验证。
 
@@ -249,7 +249,7 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 - 具有一小部分可应用于多个应用程序的核心策略
 - 定义空的异常组，并将它们添加到策略中以获得异常策略
 - 规划 [中断玻璃](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) 帐户，无 MFA 控制
-- 通过对 Exchange Online 和 Sharepoint Online 等服务实现一组相同的控件，确保跨 Office 365 客户端应用程序（例如，团队、OneDrive for Business、Outlook 等）保持一致的体验 ) 
+- 通过对 Exchange Online 和 Sharepoint Online 等服务实现一组相同的控件，确保在 Microsoft 365 的客户端应用程序（例如团队、OneDrive、) Outlook 等）上保持一致的体验
 - 应通过组而不是个体来实现策略的分配
 - 定期检查策略中使用的异常组，以限制用户超出安全状态的时间。 如果你拥有 Azure AD P2，则可以使用访问评审来自动执行此过程
 
@@ -302,7 +302,7 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 
 | 资源 | 权限 |
 | :- | :- |
-| Office 365 Exchange Online | EAS.AccessAsUser |
+| Exchange Online | EAS.AccessAsUser |
 | | EWS.AccessAsUser |
 | | Mail.Read |
 | Microsoft Graph API | Mail.Read |
@@ -339,7 +339,7 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 
 #### <a name="group-settings"></a>组设置
 
-**自助服务组管理/用户可以创建安全组/O365 组。** 如果云中没有适用于组的当前自助服务计划，客户可以决定将其关闭，直到它们准备好使用此功能。
+**自助服务组管理/用户可以创建安全组/Microsoft 365 组。** 如果云中没有适用于组的当前自助服务计划，客户可以决定将其关闭，直到它们准备好使用此功能。
 
 #### <a name="groups-recommended-reading"></a>组建议阅读
 
@@ -372,7 +372,7 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 - [Office 365 管理活动 API 参考](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 安全标识基础结构有12个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

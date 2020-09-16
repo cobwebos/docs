@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042473"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601820"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
 在条件访问策略中，管理员可以利用风险、设备平台或位置等条件的信号来增强其策略决策。 
 
-[![定义条件访问策略并指定条件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
+[ ![定义条件访问策略并指定条件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 可以结合多个条件来创建精细且具体的条件访问策略。
 
@@ -30,11 +30,11 @@ ms.locfileid: "88042473"
 
 ## <a name="sign-in-risk"></a>登录风险
 
-对于有权访问[Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将登录风险评估为条件访问策略的一部分。 登录风险表示给定的身份验证请求未由标识所有者授权的概率。 有关登录风险的详细信息，请参阅文章：[风险](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)和[如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
+对于有权访问 [Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将登录风险评估为条件访问策略的一部分。 登录风险表示给定的身份验证请求未由标识所有者授权的概率。 有关登录风险的详细信息，请参阅文章： [风险](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) 和 [如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
 
 ## <a name="user-risk"></a>用户风险 
 
-对于有权访问[Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将用户风险评估为条件访问策略的一部分。 用户风险表示给定给定标识或帐户被泄露的概率。 有关用户风险的详细信息，请参阅文章：[风险](../identity-protection/concept-identity-protection-risks.md#user-risk)和[如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
+对于有权访问 [Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将用户风险评估为条件访问策略的一部分。 用户风险表示给定给定标识或帐户被泄露的概率。 有关用户风险的详细信息，请参阅文章： [风险](../identity-protection/concept-identity-protection-risks.md#user-risk) 和 [如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
 
 ## <a name="device-platforms"></a>设备平台
 
@@ -62,26 +62,26 @@ Azure AD 条件访问支持以下设备平台：
 
 ## <a name="client-apps"></a>客户端应用
 
-默认情况下，所有新创建的条件性访问策略将应用于所有客户端应用类型，即使未配置客户端应用条件。 
+默认情况下，所有新创建的条件访问策略都会应用到所有客户端应用类型，即使未配置客户端应用条件。 
 
 > [!NOTE]
-> 2020年8月更新了客户端应用条件的行为。 如果你有现有的条件性访问策略，它们将保持不变。 但是，如果单击现有策略，则会删除 "配置" 切换，并选中 "应用该策略的客户端应用"。
+> 已于 2020 年 8 月更新了客户端应用条件的行为。 如果你有现有的条件访问策略，这些策略将保持不变。 但是，如果你单击某个现有策略，则会发现“配置”开关已被删除，且该策略所应用到的客户端应用处于选中状态。
 
 > [!IMPORTANT]
-> 来自旧身份验证客户端的登录不支持 MFA，并且不会将设备状态信息传递到 Azure AD，因此，它们将被条件访问授权控制阻止，如需要 MFA 或相容设备。 如果你的帐户必须使用旧身份验证，则必须从策略中排除这些帐户，或将策略配置为仅应用于新式身份验证客户端。
+> 旧身份验证客户端的登录不支持 MFA，不会将设备状态信息传递到 Azure AD，因此会被条件访问授权控制（例如需要 MFA 或合规设备）阻止。 如果你的帐户必须使用旧身份验证，则必须从策略中排除这些帐户，或将策略配置为仅应用于新式身份验证客户端。
 
-如果设置为 **"是"** ，则 "**配置**切换设置" 适用于选中的项。如果设置为 "**否**"，则应用于所有客户端应用，包括新式和旧身份验证客户端 此切换不显示在2020年8月之前创建的策略中。
+在设置为“是”时，“配置”开关适用于勾选的项；在设置为“否”时，该开关适用于所有客户端应用，包括新式的和旧式的身份验证客户端。   此开关不显示在 2020 年 8 月之前创建的策略中。
 
 - 新式身份验证客户端
    - 浏览者
       - 这包括使用 SAML、WS 联合身份验证、OpenID Connect 等协议的基于 Web 的应用程序，或注册为 OAuth 机密客户端的服务。
    - 移动应用和桌面客户端
       -  此选项包括 Office 桌面和手机应用程序等应用程序。
-- 旧身份验证客户端
+- 旧式身份验证客户端
    - Exchange ActiveSync 客户端
-      - 这包括 Exchange ActiveSync (EAS) 协议的所有使用。
+      - 这包括所有使用 Exchange ActiveSync (EAS) 协议的情况。
       - 当策略阻止使用 Exchange ActiveSync 时，受影响的用户将收到一封隔离电子邮件。 此电子邮件将提供受阻原因，并提供修正说明（如果可以修正）。
-      - 管理员只可以通过条件访问 MS 图形 API，将策略应用于 iOS、Android 和 Windows)  (。
+      - 管理员可以通过条件访问 MS Graph API 将策略仅应用到受支持的平台（例如 iOS、Android 和 Windows）。
    - 其他客户端
       - 此选项包括使用那些不支持新式身份验证的基本/旧式身份验证协议的客户端。
          - 经身份验证的 SMTP - 由 POP 和 IMAP 客户端用来发送电子邮件。
@@ -122,7 +122,7 @@ Azure AD 条件访问支持以下设备平台：
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-对于**windows 10 创意者更新 (版本 1703) **或更高版本中的 Chrome 支持，请安装[Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
+对于 **windows 10 创意者更新 (版本 1703) ** 或更高版本中的 Chrome 支持，请安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 如果条件访问策略需要特定于设备的详细信息，则需要此扩展。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
@@ -149,27 +149,27 @@ Azure AD 条件访问支持以下设备平台：
 | 客户端应用 | 目标服务 | 平台 |
 | --- | --- | --- |
 | Dynamics CRM 应用 | Dynamics CRM | Windows 10、Windows 8.1、iOS 和 Android |
-| “邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）| Office 365 Exchange Online | Windows 10 |
+| “邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）| Exchange Online | Windows 10 |
 | 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务 | Android 和 iOS |
 | Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
-| Office 2016 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
-| Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
-| Office 2016（仅限 Word、Excel、PowerPoint、OneNote）。 | Office 365 SharePoint Online | macOS |
-| Office 2019| Office 365 SharePoint Online | Windows 10、macOS |
-| Office 移动应用 | Office 365 SharePoint Online | Android、iOS |
-| Office Yammer 应用 | Office 365 Yammer | Windows 10、iOS、Android |
-| Outlook 2019 | Office 365 SharePoint Online | Windows 10、macOS |
-| Outlook 2016 (Office for macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） | Office 365 Exchange Online | Windows 8.1、Windows 7 |
-| Outlook 移动应用 | Office 365 Exchange Online | Android、iOS |
+| Office 2016 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1、Windows 7 |
+| Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016（仅限 Word、Excel、PowerPoint、OneNote）。 | SharePoint | macOS |
+| Office 2019| SharePoint | Windows 10、macOS |
+| Office 移动应用 | SharePoint | Android、iOS |
+| Office Yammer 应用 | Yammer | Windows 10、iOS、Android |
+| Outlook 2019 | SharePoint | Windows 10、macOS |
+| Outlook 2016 (Office for macOS) | Exchange Online | macOS |
+| Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） | Exchange Online | Windows 8.1、Windows 7 |
+| Outlook 移动应用 | Exchange Online | Android、iOS |
 | Power BI 应用 | Power BI 服务 | Windows 10、Windows 8.1、Windows 7、Android 和 iOS |
-| Skype for Business | Office 365 Exchange Online| Android、iOS |
+| Skype for Business | Exchange Online| Android、iOS |
 | Visual Studio Team Services 应用 | Visual Studio Team Services | Windows 10、Windows 8.1、Windows 7、iOS 和 Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync 客户端
 
 - 组织在将策略分配给用户或组时，只能选择 Exchange ActiveSync 客户端。 选择“所有用户”、“所有来宾和外部用户”或“目录角色”会导致所有用户遭到阻止。  
-- 创建分配给 Exchange ActiveSync 客户端的策略时，**Office 365 Exchange Online** 是唯一可分配给该策略的云应用程序。 
+- 创建分配给 Exchange ActiveSync 客户端的策略时， **Exchange Online** 应该是分配给该策略的唯一云应用程序。 
 - 组织可以使用“设备平台”条件将此策略的范围缩小为特定的平台。
 
 如果分配给策略的访问控制使用“需要已批准的客户端应用”，则会将用户定向到相应的位置让他们安装并使用 Outlook 移动客户端。 如果需要**多重身份验证**，受影响的用户将被阻止，因为基本身份验证不支持多重身份验证。

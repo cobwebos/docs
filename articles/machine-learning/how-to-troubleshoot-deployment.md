@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 4a0601e2821920e7de3b389d9acfd78598ef67ee
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019285"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602627"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>使用 Azure Kubernetes 服务和 Azure 容器实例对模型的 Docker 部署进行故障排除 
 
@@ -24,7 +24,7 @@ ms.locfileid: "90019285"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 * [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
@@ -34,14 +34,12 @@ ms.locfileid: "90019285"
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>机器学习模型的 Docker 部署步骤
 
-在 Azure 机器学习中部署模型时，系统将执行大量任务。
-
-推荐使用的模型部署方法是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](how-to-use-environments.md) 对象作为输入参数。 在这种情况下，服务将在部署阶段创建一个基础 docker 映像，并在一次调用中装载所需的全部模型。 基本部署任务包括：
+在 Azure 机器学习中部署模型时，将使用 [模型。部署 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 和 [环境](how-to-use-environments.md) 对象。 服务在部署阶段创建基本的 docker 映像，并在一次调用中装载所需的模型。 基本部署任务包括：
 
 1. 在工作区模型注册表中注册模型。
 
 2. 定义推理配置：
-    1. 基于你在环境 yaml 文件中指定的依赖项创建一个 [Environment](how-to-use-environments.md) 对象，或者使用我们获得的环境之一。
+    1. 创建 [环境](how-to-use-environments.md) 对象。 此对象可以使用环境 yaml 文件中的依赖项，特选环境之一。
     2. 基于环境和评分脚本创建推理配置（InferenceConfig 对象）。
 
 3. 将模型部署到 Azure 容器实例 (ACI) 服务或 Azure Kubernetes 服务 (AKS)。
@@ -52,7 +50,7 @@ ms.locfileid: "90019285"
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。
 
-假设你使用新的/推荐的部署方法，也就是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](how-to-use-environments.md) 对象作为输入参数，则你的代码可以分为三个主要步骤：
+使用 Model 时，请使用[环境](how-to-use-environments.md)对象作为输入参数[部署 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) ，你的代码可以分为三个主要步骤：
 
 1. 注册模型。 下面是一些示例代码：
 
@@ -95,11 +93,11 @@ ms.locfileid: "90019285"
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-将部署过程分解为单独任务后，可以查看部分最常见的错误。
+将三个部署过程分解成各个任务，可以更轻松地标识一些更常见的错误。
 
 ## <a name="debug-locally"></a>本地调试
 
-如果将模型部署到 ACI 或 AKS 时遇到问题，请尝试将其部署为本地 Web 服务。 使用本地 Web 服务可简化解决问题的过程。 在本地系统上下载并启动包含模型的 Docker 映像。
+如果在将模型部署到 ACI 或 AKS 时遇到问题，请将其部署为本地 web 服务。 使用本地 Web 服务可简化解决问题的过程。
 
 可以在 [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) 存储库中找到示例[本地部署笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以探索可运行的示例。
 
@@ -128,9 +126,9 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-如果定义你自己的 Conda 规范 YAML，则必须将版本大于等于 1.0.45 的 azureml-defaults 作为 pip 依赖项列出。 此包包含将模型作为 Web 服务托管时所需的功能。
+如果要定义自己的 conda 规范 YAML，请列出 azureml-默认版本 >= 1.0.45 作为 pip 依赖项。 需要此包以 web 服务的形式承载模型。
 
-此时，你可以正常使用该服务。 例如，以下代码演示了将数据发送到该服务的过程：
+此时，你可以正常使用该服务。 下面的代码演示如何将数据发送到服务：
 
 ```python
 import json
@@ -189,7 +187,7 @@ print(ws.webservices['mysvc'].get_logs())
  
 ## <a name="container-cannot-be-scheduled"></a>无法计划容器
 
-将服务部署到 Azure Kubernetes Service 计算目标时，Azure 机器学习将尝试使用请求的资源量来计划服务。 如果在 5 分钟后，群集中未提供具有相应的可用资源量的节点，则部署会失败，并显示消息“`Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00`”。 可通过添加更多节点、更改节点的 SKU 或更改服务的资源要求来解决此错误。 
+将服务部署到 Azure Kubernetes Service 计算目标时，Azure 机器学习将尝试使用请求的资源量来计划服务。 如果在5分钟后群集中没有可用的合适资源量的节点，则部署将失败。 失败消息是 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 可以通过添加更多节点、更改节点的 SKU 或更改服务的资源要求来解决此错误。 
 
 该错误消息通常会指示你更需要哪一种资源 - 例如，如果看到一条指示“`0/3 nodes are available: 3 Insufficient nvidia.com/gpu`”的错误消息，则意味着该服务需要 GPU，且群集中有三个节点没有可用的 GPU。 如果使用的是 GPU SKU，则可以通过添加更多节点来解决此问题；如果使用的不是 GPU SKU，则可以通过切换到启用 GPU 的 SKU，或将环境更改为不需要 GPU 来解决此问题。  
 
@@ -239,13 +237,16 @@ def run(input_data):
 
 ## <a name="http-status-code-503"></a>HTTP 状态代码 503
 
-Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持额外的负载。 但是，自动缩放程序旨在处理负载中的逐步更改。 如果每秒收到大量请求，客户端可能会收到 HTTP 状态代码 503。
+Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持额外的负载。 自动缩放程序旨在处理负载中的 **渐变** 更改。 如果每秒收到大量请求，客户端可能会收到 HTTP 状态代码 503。 即使自动缩放程序快速响应，也需要 AKS 大量时间来创建其他容器。
+
+要增加/减少的决策取决于当前容器副本的利用率。 处理请求)  (处理请求的副本数除以当前副本的总数是当前使用率。 如果此数目超过 `autoscale_target_utilization` ，则创建更多副本。 如果它较低，则减少副本。 用于添加副本的决策是预先的，并 (大约1秒钟) 。 若要删除副本，请 (大约1分钟) 。 默认情况下，自动缩放目标利用率设置为 **70%**，这意味着，服务可以处理每秒请求高峰 (RPS) **多达 30%**。
 
 有两种方法可以帮助防止 503 状态代码：
 
-* 更改自动缩放创建新副本的利用率。
-    
-    默认情况下，自动缩放目标利用率设置为 70%，这意味着服务可以处理高达 30% 的大量每秒请求数 (RPS)。 可以通过将 `autoscale_target_utilization` 设置为较低的值来调整利用率目标。
+> [!TIP]
+> 这两种方法可以单独使用，也可以组合使用。
+
+* 更改自动缩放创建新副本的利用率。 可以通过将 `autoscale_target_utilization` 设置为较低的值来调整利用率目标。
 
     > [!IMPORTANT]
     > 该更改不会导致更快创建副本。 而会以较低的利用率阈值创建副本。 可以在利用率达到 30% 时，通过将值改为 30% 来创建副本，而不是等待该服务的利用率达到 70% 时再创建。
@@ -286,7 +287,9 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 ## <a name="advanced-debugging"></a>高级调试
 
-某些情况下，可能需要以交互方式调试包含在模型部署中的 Python 代码。 例如，如果输入脚本失败，并且无法通过其他记录确定原因。 通过使用 Visual Studio Code 和 debugpy，可以附加到在 Docker 容器中运行的代码。 有关详细信息，请访问[在 VS Code 指南中进行交互式调试](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)。
+可能需要以交互方式调试模型部署中包含的 Python 代码。 例如，如果输入脚本失败，并且无法通过其他记录确定原因。 通过使用 Visual Studio Code 和 debugpy，可以附加到在 Docker 容器中运行的代码。
+
+有关详细信息，请访问[在 VS Code 指南中进行交互式调试](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)。
 
 ## <a name="model-deployment-user-forum"></a>[模型部署用户论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
 

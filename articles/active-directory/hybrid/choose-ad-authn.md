@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279340"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602364"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法
 
@@ -86,7 +86,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>云身份验证：密码哈希同步
 
-* **工作量**。 密码哈希同步所需的有关部署、维护和基础结构的工作量最少。  此级别的工作量通常适用于只需用户登录到 Office 365、SaaS 应用以及其他基于 Azure AD 的资源的组织。 启用后，密码哈希同步即是 Azure AD Connect 同步过程的一部分，并且每两分钟运行一次。
+* **工作量**。 密码哈希同步所需的有关部署、维护和基础结构的工作量最少。  这种级别的工作量通常适用于仅需要其用户登录到 Microsoft 365、SaaS 应用和其他基于 Azure AD 的资源的组织。 启用后，密码哈希同步即是 Azure AD Connect 同步过程的一部分，并且每两分钟运行一次。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随密码哈希同步一起部署。 在用户登录时，无缝 SSO 将消除不必要的提示。
 
@@ -203,7 +203,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 2. **本地服务中断生存**。  网络攻击或灾难造成的本地服务中断可能导致从品牌信誉损失到瘫痪的组织无法处理攻击等一系列的严重后果。 最近，许多组织都受到恶意软件（包括有针对性的勒索软件）的攻击，导致其本地服务器停机。 Microsoft 在帮助客户处理这些类型的攻击时发现两种类型的组织：
 
-   * 先前在联合或直通身份验证之上已启用密码哈希同步的组织将其主要身份验证方法更改为使用密码哈希同步。 它们在数小时内即可重新联机。 通过 Office 365 使用对电子邮件的访问权限，可以解决问题并访问其他基于云的工作负荷。
+   * 先前在联合或直通身份验证之上已启用密码哈希同步的组织将其主要身份验证方法更改为使用密码哈希同步。 它们在数小时内即可重新联机。 通过使用通过 Microsoft 365 访问电子邮件，他们可以解决问题并访问其他基于云的工作负荷。
 
    * 先前未启用密码哈希同步的组织必须依靠不受信任的外部使用者电子邮件系统进行通信来解决问题。 在这些情况下，他们花费了数周时间来还原其本地标识基础结构，然后用户才能再次登录到基于云的应用。
 

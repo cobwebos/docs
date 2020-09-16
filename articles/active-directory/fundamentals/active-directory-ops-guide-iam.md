@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321661"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601293"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 标识和访问管理操作参考指南
 
@@ -35,8 +35,8 @@ ms.locfileid: "89321661"
 | :- | :- |
 | 定义创建 Azure 订阅的过程 | 因组织而异 |
 | 决定谁获得企业移动性 + 安全性许可证 | IAM 操作团队 |
-| 决定谁可以获得 Office 365 许可证 | 生产力团队 |
-| 决定谁可以获得其他许可证，例如 Dynamics、VSO | 应用程序所有者 |
+| 决定谁获得 Microsoft 365 许可证 | 生产力团队 |
+| 决定谁可以获得其他许可证，例如 Dynamics、Visual Studio Codespaces | 应用程序所有者 |
 | 分配许可证 | IAM 操作团队 |
 | 排查和修正许可证分配错误 | IAM 操作团队 |
 | 在 Azure AD 中将标识预配到应用程序 | IAM 操作团队 |
@@ -140,7 +140,7 @@ Azure AD Connect 自定义规则提供了控制本地对象和云对象之间的
 
 Azure Active Directory 通过 [基于组](./active-directory-licensing-whatis-azure-portal.md) 的 Microsoft 云服务许可简化对许可证的管理。 通过这种方式，IAM 提供组基础结构，并将这些组委派给组织中的适当团队。 可以通过多种方式在 Azure AD 中设置组的成员身份，包括：
 
-- **从本地** -组同步可能来自本地目录，这对于已建立组管理过程的组织而言，这些组管理过程可以扩展以在 office 365 中分配许可证。
+- **从本地** -组同步可能来自本地目录，这可能适合于已建立组管理过程的组织，这些组管理过程可以扩展以在 Microsoft 365 分配许可证。
 
 - 基于**属性/动态**组可以基于用户属性（例如，部门等于 "销售"）在云中创建。 Azure AD 维护组的成员，使其与定义的表达式一致。 将这种类型的组用于许可证分配可启用基于属性的许可证分配，这适用于在其目录中具有高数据质量的组织。
 
@@ -188,10 +188,10 @@ Azure Active Directory 通过 [基于组](./active-directory-licensing-whatis-az
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect 疑难解答建议阅读
 
-- [使用 IdFix 工具为与 Office 365 同步准备目录属性-Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [使用 IdFix 工具准备用于与 Microsoft 365 同步的目录属性](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect：同步过程中的错误疑难解答](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 安全标识基础结构有五个方面。 此列表将帮助你快速查找和采取必要的措施来保护并管理组织中标识及其权利的生命周期。
 

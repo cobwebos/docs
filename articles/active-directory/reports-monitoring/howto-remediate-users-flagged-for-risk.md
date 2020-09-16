@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231157"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600494"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -42,9 +42,9 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 有关详细信息，请参阅[“已标记为存在风险的用户”安全报告](../identity-protection/overview-identity-protection.md)。
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 客户的 Azure AD 订阅
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Microsoft 365 客户 Azure AD 订阅
 
-还可以使用 Office 365 凭据访问 **Azure 管理中心**。 激活对 Azure AD 的访问权限以后，就会重定向到 Azure AD 门户。 在基本订阅级别，报告中提供的详细信息量是受限制的。 Azure 高级订户可获取其他的数据和分析。
+你还可以使用你的 Microsoft 365 凭据访问 **Azure 管理中心**。 激活对 Azure AD 的访问权限以后，就会重定向到 Azure AD 门户。 在基本订阅级别，报告中提供的详细信息量是受限制的。 Azure 高级订户可获取其他的数据和分析。
 
 若要访问 Microsoft 365 管理中心中 **标记为风险** 报告的用户：
 
@@ -79,7 +79,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
     h. 生成审核日志供管理员查看。
 
-4. 调查 Office 365 租户和其他 IT 基础结构，包括查看所有租户设置、用户帐户以及单个用户的配置设置中是否有可能需要修改的地方。 查看是否存在使用持久性方法的痕迹，以及是否存在入侵者利用初始据点获取 VPN 凭据或访问其他组织资源的痕迹。 
+4. 调查 Microsoft 365 租户和其他 IT 基础结构，包括查看所有租户设置、用户帐户以及每用户的配置设置，以便进行可能的修改。 查看是否存在使用持久性方法的痕迹，以及是否存在入侵者利用初始据点获取 VPN 凭据或访问其他组织资源的痕迹。 
 
 5.  在调查过程中，考虑是否应当通知政府机构，包括执法机构。
 

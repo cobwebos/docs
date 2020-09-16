@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 161b02ec962df5c5e1c8dee7e124ef78b3ca4db3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948447"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601973"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件访问的最佳做法
 
@@ -49,20 +49,20 @@ ms.locfileid: "88948447"
 
 所有策略都是在两个阶段中强制实施的：
 
-- 阶段1：收集会话详细信息 
-   - 收集会话详细信息，如需要进行策略评估的用户位置和设备标识。 
+- 阶段 1：收集会话详细信息 
+   - 收集会话详细信息，例如进行策略评估所需的用户位置和设备标识。 
    - 在此阶段，如果设备符合性是条件访问策略的一部分，用户可能会看到证书提示。 如果设备操作系统不是 Windows 10，浏览器应用可能会显示此提示。 
    - 针对 [仅报告模式下](concept-conditional-access-report-only.md)的已启用策略和策略进行策略评估的阶段1。
-- 阶段2：强制 
-   - 使用在阶段1中收集的会话详细信息来识别尚未满足的任何要求。 
-   - 如果有一个策略配置为阻止访问，则使用阻止访问控制时，将在此处停止强制，并阻止该用户。 
-   - 然后，系统将提示用户完成额外的授权控制要求，这些要求在阶段1期间按以下顺序未满足，直到满足策略：  
+- 阶段 2：强制 
+   - 使用在第 1 阶段收集的会话详细信息来识别尚未满足的任何要求。 
+   - 如果有一个策略配置为阻止访问，则在使用阻止授权控制的情况下，将在此处停止强制，用户会被阻止。 
+   - 然后，系统会提示用户完成额外的授权控制要求（这些要求未在第 1 阶段按以下顺序满足），直到满足策略要求：  
       - 多重身份验证 
       - 批准的客户端应用/应用保护策略 
-      - 托管设备 (相容或混合 Azure AD 加入)  
+      - 受管理设备（合规或混合 Azure AD 加入） 
       - 使用条款 
       - 自定义控件  
-      - 满足授权控制后，应用 (应用的会话控制、Microsoft Cloud App Security 和令牌生存期)  
+      - 在满足授权控制后应用会话控制（应用强制实施、Microsoft Cloud App Security 和令牌生存期） 
    - 针对所有已启用的策略执行策略评估的第 2 阶段。 
 
 ### <a name="how-are-assignments-evaluated"></a>如何计算分配？
@@ -78,7 +78,7 @@ ms.locfileid: "88948447"
 
 如果你因为条件访问策略中的设置不正确而被锁定在 Azure AD 门户之外，则请执行以下操作：
 
-- 检查组织中是否有其他管理员尚未被阻止。 具有对 Azure 门户的访问权限的管理员可以禁用影响你登录的策略。 
+- 检查组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
 - 如果组织中没有管理员可以更新策略，则需提交支持请求。 Microsoft 支持人员可以审核并更新妨碍访问的条件访问策略。
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>如果在 Azure 经典门户和 Azure 门户中配置了策略，会发生什么情况？  
@@ -97,13 +97,13 @@ ms.locfileid: "88948447"
 
 适用，可以在条件访问策略中使用 Exchange ActiveSync。
 
-某些云应用（如 SharePoint Online 和 Exchange Online）也支持旧式身份验证协议。 如果客户端应用可以使用旧式身份验证协议访问云应用，则 Azure AD 无法针对此访问尝试实施条件访问策略。 为了防止客户端应用绕过策略的实施，应该检查它是否能够做到只对受影响的云应用启用新式身份验证。
+一些云应用，如 SharePoint 和 Exchange Online 还支持旧版身份验证协议。 如果客户端应用可以使用旧式身份验证协议访问云应用，则 Azure AD 无法针对此访问尝试实施条件访问策略。 为了防止客户端应用绕过策略的实施，应该检查它是否能够做到只对受影响的云应用启用新式身份验证。
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>应如何使用 Office 365 应用配置条件访问？
+### <a name="how-should-you-configure-conditional-access-with-microsoft-365-apps"></a>如何配置 Microsoft 365 应用的条件性访问？
 
-由于 Office 365 应用是相互连接的，因此建议你在创建策略时将常用应用分配到一起。
+由于 Microsoft 365 的应用相互连接，因此，我们建议在创建策略时将常用的应用分配到一起。
 
-常见的相互连接的应用程序包括 Microsoft Flow、Microsoft Planner、Microsoft Teams、Office 365 Exchange Online、Office 365 SharePoint Online 和 Office 365 Yammer。
+常见的互联应用程序包括 Microsoft Flow、Microsoft Planner、Microsoft 团队、Exchange Online、SharePoint 和 Yammer。
 
 如果访问权限是在会话或任务的开始时控制的，则这对需要用户交互（例如多重身份验证）的策略来说很重要。 如果你不这样做，用户将无法完成应用中的某些任务。 例如，如果你要求在非托管设备上访问 SharePoint 时进行多重身份验证，但不要求在访问电子邮件时这样做，则在电子邮件中工作的用户无法将 SharePoint 文件附加到邮件中。 有关详细信息，可参阅此文：[Azure Active Directory 条件访问中的服务依赖项是什么？](service-dependencies.md)。
 

@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253386"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601956"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的客户端应用进行云应用访问
 
 人们会经常将其移动设备用于个人任务和工作任务。 在确保员工工作效率的同时，组织还需防止可能不安全的应用程序中出现数据丢失的情况。 使用条件访问，组织可以让员工只访问批准的（支持新式身份验证的）客户端应用。
 
-本文介绍了两种方案，用于为 Office 365、Exchange Online 和 SharePoint Online 等资源配置条件访问策略。
+本文介绍了两种方案，用于配置 Microsoft 365、Exchange Online 和 SharePoint Online 等资源的条件性访问策略。
 
-- [方案 1：Office 365 应用需要已批准的客户端应用](#scenario-1-office-365-apps-require-an-approved-client-app)
+- [方案1： Microsoft 365 应用需要批准的客户端应用](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
 - [方案 2：Exchange Online 和 SharePoint Online 需要批准的客户端应用](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 在条件访问中，此功能称为“需要批准的客户端应用”。 有关核准客户端应用程序的列表，请参阅[核准客户端应用程序要求](concept-conditional-access-grant.md#require-approved-client-app)。
@@ -32,9 +32,9 @@ ms.locfileid: "85253386"
 > [!NOTE]
 > 为了要求 iOS 和 Android 设备使用经批准的客户端应用程序，必须首先在 Azure AD 中注册这些设备。
 
-## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>应用场景 1：Office 365 应用需要批准的客户端应用
+## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>方案1： Microsoft 365 应用需要批准的客户端应用
 
-在此方案中，Contoso 规定：使用移动设备的用户只要使用批准的客户端应用（如 Outlook 移动版、OneDrive 和 Microsoft Teams），就可以访问所有 Office 365 服务。 其所有用户已使用 Azure AD 凭据登录，并获得了分配的许可证，其中包括 Azure AD Premium P1 或 P2 以及 Microsoft Intune。
+在此方案中，Contoso 已决定使用移动设备的用户只要使用批准的客户端应用（例如 Outlook mobile、OneDrive 和 Microsoft 团队），就能访问所有 Microsoft 365 的服务。 其所有用户已使用 Azure AD 凭据登录，并获得了分配的许可证，其中包括 Azure AD Premium P1 或 P2 以及 Microsoft Intune。
 
 组织必须完成以下三个步骤才能要求在移动设备上使用批准的客户端应用。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321950"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601295"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 常规操作指南参考
 
@@ -125,9 +125,9 @@ ms.locfileid: "89321950"
 
 ### <a name="notifications"></a>通知
 
-Microsoft 向管理员发送电子邮件通信，通知服务中的各种更改、所需的配置更新以及需要管理员干预的错误。 重要的是，客户必须设置通知电子邮件地址，以便将通知发送到正确的团队成员，这些成员可以确认并操作所有通知。 建议将多个收件人添加到 [Office 365 消息中心](/office365/admin/manage/message-center) ，并请求通知 (包括 Azure AD Connect Health 通知) 发送到通讯组列表或共享邮箱。 如果只有一个具有电子邮件地址的全局管理员帐户，请确保至少配置两个支持电子邮件的帐户。
+Microsoft 向管理员发送电子邮件通信，通知服务中的各种更改、所需的配置更新以及需要管理员干预的错误。 重要的是，客户必须设置通知电子邮件地址，以便将通知发送到正确的团队成员，这些成员可以确认并操作所有通知。 建议将多个收件人添加到 [消息中心](/office365/admin/manage/message-center) ，并请求通知 (包括 Azure AD Connect Health 通知，) 将其发送到通讯组列表或共享邮箱。 如果只有一个具有电子邮件地址的全局管理员帐户，请确保至少配置两个支持电子邮件的帐户。
 
-Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com> ，用于发送 Office 365 消息中心通知; 以及 <azure-noreply@microsoft.com> 发送与以下内容相关的通知：
+Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com> （发送消息中心通知）和 <azure-noreply@microsoft.com> ，后者发送与以下内容相关的通知：
 
 - [Azure AD 访问评审](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com> ，
 | 通知源 | 发送内容 | 检查位置 |
 |:-|:-|:-|
 | 技术联系人 | 同步错误 | Azure 门户-属性边栏选项卡 |
-| Office 365 消息中心 | 标识服务和 O365 后端服务的事件和降级通知 | Office 门户 |
+| 消息中心 | 身份服务和 Microsoft 365 后端服务的事件和降级通知 | Office 门户 |
 | Identity Protection 每周摘要 | Identity Protection 摘要 | Azure AD Identity Protection 边栏选项卡 |
 | Azure AD Connect Health | 警报通知 | Azure 门户-Azure AD Connect Health 边栏选项卡 |
 | 企业应用程序通知 | 证书即将过期时的通知和预配错误 | Azure 门户企业应用程序边栏选项卡 (每个应用程序都有自己的电子邮件地址设置)  |
 
 #### <a name="notifications-recommended-reading"></a>建议阅读通知
 
-- [更改组织的地址、技术联系人和更多-Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [更改组织的地址、技术联系人及更多内容](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>操作外围应用
 
@@ -172,7 +172,7 @@ Active Directory 的管理层模型旨在使用一组缓冲区区域来保护标
 
 使用与域控制器相同的方式锁定对本地标识组件（例如 Azure AD Connect、AD FS 和 SQL 服务）的访问。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 安全标识基础结构有七个方面。 此列表将帮助你查找 Azure Active Directory (Azure AD) 优化操作所需执行的操作。
 

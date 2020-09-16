@@ -7,19 +7,19 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: ddb1c68ab417390987ac4873a16b89757ec24789
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058727"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602279"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支持在 Azure 区域之间移动 Azure Vm
 
 本文汇总了使用资源移动器在 Azure 区域之间移动虚拟机和相关网络资源时的支持和先决条件。
 
 > [!IMPORTANT]
-> Azure 资源移动器当前为预览版。
+> Azure 资源转移器目前提供预览版。
 
 
 ## <a name="windows-vm-support"></a>Windows VM 支持
@@ -114,6 +114,10 @@ RBAC 策略 | 不支持 | 基于角色的访问控制 (在虚拟机上的 RBAC) 
 ## <a name="supported-vm-storage-settings"></a>支持的 VM 存储设置
 
 此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。 请务必遵循适用于 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘限制以及目标，以避免任何性能问题。
+
+> [!NOTE]
+> 目标 VM 大小应等于或大于源 VM 大小。 用于验证的参数包括：数据磁盘计数、Nic 计数、可用 Cpu、内存（GB）。 如果不是，则会发出错误。
+
 
 **组件** | **支持** | **详细信息**
 --- | --- | ---

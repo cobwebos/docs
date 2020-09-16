@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7e394c4227be9ead491fe77457b466b1f62468
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279323"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600790"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 进行强身份验证的四个步骤
 
@@ -46,7 +46,7 @@ Azure AD 使管理员能够向[Azure 门户](https://portal.azure.com/)中的企
 将应用程序添加到 Azure AD 库后，用户可以查看分配给他们的应用，并根据需要搜索和请求其他应用。 Azure AD 为用户提供 [多种方法](../manage-apps/end-user-experiences.md) 来访问其应用：
 
 * 访问面板/应用
-* Office 365 应用程序启动程序
+* Microsoft 365 应用启动器
 * 直接登录联合应用
 * 直接登录链接
 
@@ -115,7 +115,7 @@ Azure AD Connect 在预配过程中扮演着关键角色。 如果同步服务�
 
 在 Azure AD 中为本地目录对象启用云身份验证的最简单和推荐方法是启用 [密码哈希同步](./how-to-connect-password-hash-synchronization.md) (PHS) 。 此外，某些组织可能会考虑启用 (PTA) 的 [传递身份验证](./how-to-connect-pta-quick-start.md) 。
 
-无论你选择 PHS 还是 PTA，别忘了启用 [无缝单一登录](./how-to-connect-sso.md) 以允许用户在使用企业网络中的 Windows 7 和8设备时，无需在应用中不断输入用户名和密码即可访问云应用。 如果没有单一登录，用户必须记住应用程序特定的密码，并登录到每个应用程序。 同样，IT 人员需要创建和更新每个应用程序（如 Office 365、Box 和 Salesforce）的用户帐户。 用户需要记住密码，并花费时间登录每个应用程序。 为整个企业提供标准化的单一登录机制对于获得最佳用户体验、降低风险、报告和管理能力至关重要。
+无论你选择 PHS 还是 PTA，别忘了启用 [无缝单一登录](./how-to-connect-sso.md) 以允许用户在使用企业网络中的 Windows 7 和8设备时，无需在应用中不断输入用户名和密码即可访问云应用。 如果没有单一登录，用户必须记住应用程序特定的密码，并登录到每个应用程序。 同样，IT 人员需要为每个应用程序（例如 Microsoft 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住密码，并花费时间登录每个应用程序。 为整个企业提供标准化的单一登录机制对于获得最佳用户体验、降低风险、报告和管理能力至关重要。
 
 对于已使用 AD FS 或其他本地身份验证提供程序的组织，随着标识提供者迁移到 Azure AD，可以降低复杂性并提高可用性。 除非你有使用联合身份验证的特定用例，否则我们建议从联合身份验证迁移到 PHS 和无缝 SSO 或 PTA 和无缝 SSO，以享受更少的本地占用量和云提供的灵活性，并改善用户体验。 有关详细信息，请参阅 [Azure Active Directory 的从联合迁移到密码哈希同步](./plan-migrate-adfs-password-hash-sync.md)。
 
@@ -156,7 +156,7 @@ Azure 提供可供你和你的组织使用的报表，以确保用户已注册 M
 * 基于属性的使用动态组成员身份
 * 委托给应用所有者
 
-Azure AD 提供使用安全组和 Office 365 组管理资源访问权限的功能。 可以批准或拒绝成员身份请求并委派组成员身份的控制权限的组所有者可以管理这些组。 此功能称为 [自助服务组管理](../users-groups-roles/groups-self-service-management.md)，通过允许没有分配管理角色的组所有者来创建和管理组，而无需依赖管理员来处理其请求，从而节省了时间。
+Azure AD 提供使用安全组和 Microsoft 365 组管理对资源的访问的能力。 可以批准或拒绝成员身份请求并委派组成员身份的控制权限的组所有者可以管理这些组。 此功能称为 [自助服务组管理](../users-groups-roles/groups-self-service-management.md)，通过允许没有分配管理角色的组所有者来创建和管理组，而无需依赖管理员来处理其请求，从而节省了时间。
 
 ## <a name="step-4---operationalize-your-insights"></a>步骤 4-操作你的见解
 
@@ -212,7 +212,7 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 *"借助 Cloud App Security，我们可以快速发现异常并采取措施。"* --- [Eric LePenske，高级经理，信息安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 实现混合标识解决方案有许多方面，但这四个步骤的清单将帮助你快速完成一个标识基础结构，使用户能够更高效、更安全。
 
