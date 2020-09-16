@@ -4,6 +4,8 @@
   href: debug-rendering.md
 - name: 分层状态替代
   href: override-hierarchical-state.md
+- name: 照相机
+  href: camera.md
 - name: 暂存空间
   href: stage-space.md
 - name: 后期阶段重新投影

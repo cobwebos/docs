@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8333de5b0139323b352d43a9259bde9d3b514fbe
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611794"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604438"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上创建 FCI 和 Azure 共享磁盘 (SQL Server) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,13 +33,13 @@ ms.locfileid: "89611794"
 在完成本文中的说明之前，你应该已经：
 
 - Azure 订阅。 [免费试用](https://azure.microsoft.com/free/)。 
-- 在同一[可用性集中](../../../virtual-machines/linux/tutorial-availability-sets.md)，[两个或更多个美国中部准备好的 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)，以及一个在 "容错域" 和 "更新域" 设置为**1**的[情况下创建的可用性](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)集。 
+- [两个或多个 Windows Azure 虚拟机](failover-cluster-instance-prepare-vm.md)。 [可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md) 和 [邻近组](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (支持 PPGs) 。 如果使用 PPG，则所有节点必须位于同一个组中。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - 最新版本的 [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
 
 
 ## <a name="add-azure-shared-disk"></a>添加 Azure 共享磁盘
-部署已启用共享磁盘功能的托管高级 SSD 磁盘。 设置 `maxShares` 为 **2** ，使磁盘可在两个 FCI 节点之间共享。 
+部署已启用共享磁盘功能的托管高级 SSD 磁盘。 设置 `maxShares` 为与 **群集节点的数目一致** ，使磁盘可在所有 FCI 节点之间共享。 
 
 通过执行以下操作添加 Azure 共享磁盘： 
 
@@ -153,10 +153,10 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
 1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在 "**测试选择**" 下，选择 "**存储**"*以外*的所有测试
 
 ## <a name="test-cluster-failover"></a>测试群集故障转移
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>配置连接 
 
-若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 如果使用 SQL Server 2019 和 Windows Server 2016 (或更高版本，则可以创建 [Azure 负载均衡器](hadr-vnn-azure-load-balancer-configure.md) ，) 可以改为预览 [分布式网络名称](hadr-distributed-network-name-dnn-configure.md) 功能。 
+若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 如果使用 SQL Server 2019 CU2 + 和 Windows Server 2016 (或更高版本，则可以创建 [Azure 负载均衡器](hadr-vnn-azure-load-balancer-configure.md) ，) 可以改为预览 [分布式网络名称](hadr-distributed-network-name-dnn-configure.md) 功能。 
 
 ## <a name="limitations"></a>限制
 

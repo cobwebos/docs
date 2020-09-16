@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961561"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605067"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>应用服务环境的可用性区域支持
 
@@ -29,11 +29,15 @@ ms.locfileid: "88961561"
 
 可以在以下任何区域中创建区域性 ILB ASE：
 
+- 澳大利亚东部
+- 巴西南部
+- 加拿大中部
 - 美国中部
 - 美国东部
 - 美国东部 2
 - 美国东部 2 (EUAP) 
 - 法国中部 
+- 德国中西部
 - 日本东部
 - 北欧
 - 西欧

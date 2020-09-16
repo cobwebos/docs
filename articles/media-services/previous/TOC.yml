@@ -47,7 +47,7 @@
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 旧组件
       displayName: 'deprecated, deprecation, retired, retirement, legacy'
@@ -318,33 +318,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: 引用多 DRM 设计
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: 分析
-      href: media-services-analytics-overview.md
-      items:
-        - name: 使用 Azure 门户分析媒体
-          href: media-services-portal-analyze.md
-        - name: 使用 Indexer 2 进行处理
-          href: media-services-process-content-with-indexer2.md
         - name: 使用 Indexer 进行处理
           href: media-services-index-content.md
           items:
             - name: 任务预设
               href: indexer-task-preset.md
-        - name: 使用 Face Detector 进行处理
-          href: media-services-face-and-emotion-detection.md
-        - name: 使用 Motion Detector 进行处理
-          href: media-services-motion-detection.md
         - name: 使用 Face Redactor 进行处理
           href: media-services-face-redaction.md
           items:
             - name: Face Redactor 演练
               href: media-services-redactor-walkthrough.md
-        - name: 使用视频缩略图进行处理
-          href: media-services-video-summarization.md
-        - name: 使用 OCR 进行处理
-          href: media-services-video-optical-character-recognition.md
-        - name: 使用内容审查器进行处理
-          href: media-services-content-moderation.md
     - name: 配置遥测
       href: media-services-telemetry-overview.md
       items:

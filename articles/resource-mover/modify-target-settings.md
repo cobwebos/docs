@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: c58fdd38c4221c03778b2c769620bf7911aaded8
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89670291"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604472"
 ---
 # <a name="modify-target-settings"></a>修改目标设置
 
@@ -42,10 +42,10 @@ ms.locfileid: "89670291"
 **网络资源** | 虚拟网络选项 (Vnet) /network 安全组/网络接口：<br/><br/> -在目标区域中创建同名的新资源。<br/><br/> -在目标区域中创建一个具有不同名称的新资源。<br/><br/> -使用目标区域中的现有网络资源。<br/><br/> 如果创建新的目标资源，但修改的设置除外，则会为其分配与源资源相同的设置。
 **公共 IP 地址名称** | 指定名称。
 **公用 IP 地址 SKU** | 指定 [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)。
-**公共 IP 地址区域** | 指定标准公共 IP 地址的 [区域](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) 。<br/><br/> 如果希望它是区域冗余的，请输入 as **地区性**。
+**公共 IP 地址区域** | 指定标准公共 IP 地址的 [区域](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) 。<br/><br/> 如果希望它是区域冗余，请输入作为 **区域冗余**。
 **负载均衡器名称** | 指定名称。
 **负载平衡器 SKU** | 基本或标准。 建议使用 Standard。
-**负载均衡器区域** | 指定负载平衡器的区域。 <br/><br/> 如果希望它是区域冗余的，请输入 as **地区性**。
+**负载均衡器区域** | 指定负载平衡器的区域。 <br/><br/> 如果希望它是区域冗余，请输入作为 **区域冗余**。
 **资源依赖关系** | 每个依赖项的选项：<br/><br/>-资源使用将移动到目标区域的依赖源资源。<br/><br/> -资源使用位于目标区域中的不同从属资源。 在这种情况下，可以从目标区域中的任何类似资源中进行选择。
 
 ### <a name="edit-vm-target-settings"></a>编辑 VM 目标设置

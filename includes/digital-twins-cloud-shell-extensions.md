@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/31/2020
 ms.author: baanders
-ms.openlocfilehash: 984739a728f6ac5e28eeb561e0d7b6ec0485ca13
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7e43ab6d419d6a08973864838c66aef0941d74f5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496859"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90606942"
 ---
 首先，运行此命令来查看已安装的所有扩展的列表。
 
-```azurecli-interactive
+```azurecli
 az extension list
 ```
 
@@ -23,18 +23,18 @@ az extension list
 使用输出确定要为扩展安装程序运行的以下哪个命令（可以运行多个）。
 * 如果列表包含 `azure-iot`：你已拥有该扩展。 运行此命令以确保你拥有最新更新且没有其他更新可用：
 
-   ```azurecli-interactive
+   ```azurecli
    az extension update --name azure-iot
    ```
 
 * 如果列表不包含 `azure-iot`：需要安装扩展。 使用此命令：
 
-    ```azurecli-interactive
+    ```azurecli
     az extension add --name azure-iot
     ```
 
 * 如果列表包含 `azure-iot-cli-ext`：这是该扩展的旧版本。 一次只能安装该扩展的一个版本，因此应卸载旧扩展。 使用此命令：
 
-   ```azurecli-interactive
+   ```azurecli
    az extension remove --name azure-cli-iot-ext
    ```

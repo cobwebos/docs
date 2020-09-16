@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b214932f43ce20480ee37a7b4edf942f080b38e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce39e23208398f6060103345a6c6cb3541834abc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67172843"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606452"
 ---
 安装客户端证书时，需要使用导出客户端证书时创建的密码。
 
@@ -23,4 +23,4 @@ ms.locfileid: "67172843"
    ![添加证书](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
 3. 输入在导出客户端证书时创建的密码。 该密码用于保护证书的私钥。 单击“确定”完成安装。 
 
-   ![密码](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+   ![屏幕截图显示提示输入密码的对话框。](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

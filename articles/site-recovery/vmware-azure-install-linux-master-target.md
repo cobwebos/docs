@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130141"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604676"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -48,16 +48,7 @@ ms.locfileid: "86130141"
 - **OS 磁盘大小**：100 GB 或更多（用于安装 OS）
 - **保留驱动器的附加磁盘大小**：1 TB
 - **CPU 核心数**：4 个核心或更多
-
-支持以下的 Ubuntu 内核。
-
-
-|内核系列  |最高支持  |
-|---------|---------|
-|4.4      |4.4.0-81-generic         |
-|4.8      |4.8.0-56-generic         |
-|4.10     |4.10.0-24-generic        |
-
+- **内核**： 4.16. *
 
 ## <a name="deploy-the-master-target-server"></a>部署主目标服务器
 
@@ -247,7 +238,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
     ![多路径 ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 格式化驱动器，然后在新驱动器上创建文件系统： **mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **。
+3. 格式化驱动器，然后在新驱动器上创建文件系统：mkfs.ext4 /dev/mapper/\<Retention disk's multipath id>。
     
     ![文件系统](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 

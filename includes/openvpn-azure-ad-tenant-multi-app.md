@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797178"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606857"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.创建 Azure AD 租户
 
@@ -28,7 +28,7 @@ ms.locfileid: "83797178"
 
 ## <a name="2-create-tenant-users"></a><a name="users"></a>2.创建租户用户
 
-在此步骤中，你将创建两个 Azure AD 租户用户：一个全局管理员帐户和一个主用户帐户。 主用户帐户用作你的主嵌入帐户（服务帐户）。 当你创建 Azure AD 租户用户帐户时，将针对要创建的用户类型调整目录角色。 使用[本文](../articles/active-directory/fundamentals/add-users-azure-active-directory.md)中的步骤，为你的 Azure AD 租户至少创建两个用户。 请务必更改目录角色以创建帐户类型：
+在此步骤中，你将创建两个 Azure AD 租户用户：一个全局管理员帐户和一个主用户帐户。 主要用户帐户用作主要嵌入帐户（服务帐户）。 创建 Azure AD 租户用户帐户时，可以根据要创建的用户类型调整目录角色。 使用[此文](../articles/active-directory/fundamentals/add-users-azure-active-directory.md)中的步骤为 Azure AD 租户创建至少两个用户。 若要创建帐户类型，请务必更改“目录角色”：
 
 * 全局管理员
 * 用户
@@ -37,15 +37,15 @@ ms.locfileid: "83797178"
 
 在 Azure AD 租户中注册 VPN 客户端。
 
-1. 找到要用于身份验证的目录的目录 ID。 它列出在“Active Directory”页的“属性”部分。
+1. 找到要用于身份验证的目录的目录 ID。 此 ID 在“Active Directory”页的“属性”部分中列出。
 
     ![Directory ID](./media/openvpn-azure-ad-tenant-multi-app/directory-id.png)
 
-2. 复制目录 ID。
+2. 复制“目录 ID”。
 
-3. 以分配有全局管理员角色的用户登录到 Azure 门户。
+3. 以拥有“全局管理员”角色的用户身份登录到 Azure 门户。
 
-4. 下一步，授予管理员同意。 在浏览器的地址栏中复制并粘贴与你的部署位置相关的 URL：
+4. 接下来，做出管理员许可。 在浏览器的地址栏中复制并粘贴与部署位置相关的 URL：
 
     公共
 
@@ -77,7 +77,7 @@ ms.locfileid: "83797178"
 
 6. 出现提示时选择“接受”。
 
-    ![Accept](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![屏幕截图显示一个窗口，其中包含为你的组织请求接受的消息权限以及有关该请求的信息。](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. 在 Azure AD 下的“企业应用程序”中，你将看到“Azure VPN”已列出 。
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 443649826e821014e0e9918526a363a944b5eceb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659998"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604404"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
@@ -33,6 +33,10 @@ ms.locfileid: "89659998"
 >
 > 有关配置 Azure 防火墙的详细信息，请参阅[部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)。
 
+## <a name="routes"></a>路由
+
+配置包含 Azure 机器学习资源的子网的出站路由时，请使用 " [强制隧道](how-to-secure-training-vnet.md#forced-tunneling) " 一节中的指南来保护培训环境。
+
 ## <a name="microsoft-hosts"></a>Microsoft 主机
 
 如果未正确配置，则防火墙可能会在使用工作区时导致问题。 Azure 机器学习工作区使用各种主机名。
@@ -41,6 +45,8 @@ ms.locfileid: "89659998"
 
 | **主机名** | **用途** |
 | ---- | ---- |
+| **login.microsoftonline.com** | 身份验证 |
+| **management.azure.com** | 用于获取工作区信息 |
 | **\*.batchai.core.windows.net** | 训练群集 |
 | **ml.azure.com** | Azure 机器学习工作室 |
 | **default.exp-tas.com** | 由 Azure 机器学习工作室使用 |
@@ -59,13 +65,16 @@ ms.locfileid: "89659998"
 | **\*.notebooks.azure.net** | Azure 机器学习工作室中的笔记本需要。 |
 | **graph.windows.net** | 笔记本需要 |
 
+> [!TIP]
+> 如果你计划使用联合标识，请遵循 [保护 Active Directory 联合身份验证服务文章的最佳实践](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) 。
+
 ## <a name="python-hosts"></a>Python 主机
 
 本部分中的主机用于安装 Python 包。 开发、训练和部署过程中需要使用它们。 
 
 | **主机名** | **用途** |
 | ---- | ---- |
-| **anaconda.com** | 用于安装默认包。 |
+| **anaconda.com**</br>**\*。 anaconda.com** | 用于安装默认包。 |
 | \*.anaconda.org | 用于获取存储库数据。 |
 | **pypi.org** | 用于列出默认索引的依赖项（如果有），索引不会被用户设置覆盖。 如果索引被覆盖，则还必须允许“\*.pythonhosted.org”。 |
 

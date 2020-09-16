@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763459"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605152"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
 
@@ -32,7 +32,7 @@ ms.locfileid: "84763459"
 
 * **禁止用户同意** - 用户无法向应用程序授予权限。 用户可继续登录到他们之前同意或管理员代表他们同意的应用，但不可自行同意新权限或新应用。 只有被授予目录角色（该角色具有授予同意的权限）的用户才能同意新权限或新应用。
 
-* **用户可同意已验证的发布者提供的应用，但应用仅能获取你选择的权限（预览）** - 所有用户只能同意由[已验证的发布者](../develop/publisher-verification-overview.md)发布的应用以及已在你的租户中注册的应用。 用户只能同意被分类为“影响较低”的权限。
+* **用户可同意已验证的发布者提供的应用，但应用仅能获取你选择的权限（预览）** - 所有用户只能同意由[已验证的发布者](../develop/publisher-verification-overview.md)发布的应用以及已在你的租户中注册的应用。 用户只能同意已分类为 "影响较小" 的权限，也称为 "低风险"。 对于一个组织（例如查看用户电子邮件地址的应用）而言，可能会将其视为高风险，因为这是另一个组织的风险。 出于此原因，租户管理员设置了 "低风险" 权限。
 
   确保[对权限进行分类](#configure-permission-classifications-preview)，选择允许用户同意哪些权限。
 
@@ -56,7 +56,7 @@ ms.locfileid: "84763459"
 
 ### <a name="configure-user-consent-settings-using-powershell"></a>使用 PowerShell 配置用户同意设置
 
-可使用最新的 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)，选择使用哪个同意策略来控制用户对应用程序的同意。
+可使用最新的 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)，选择使用哪个同意策略来控制用户对应用程序的同意。
 
 * **禁止用户同意** - 若要禁止用户同意，请将控制用户同意的同意策略设置为空：
 
@@ -109,7 +109,7 @@ ms.locfileid: "84763459"
 
 ### <a name="classify-permissions-using-powershell"></a>使用 PowerShell 对权限进行分类
 
-可使用最新的 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) 对权限进行分类。 权限分类是在发布权限的 API 的 ServicePrincipal 对象上配置的。
+可使用最新的 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 对权限进行分类。 权限分类是在发布权限的 API 的 ServicePrincipal 对象上配置的。
 
 #### <a name="to-read-the-current-permission-classifications-for-an-api"></a>若要读取 API 的当前权限分类：
 
@@ -196,9 +196,9 @@ ms.locfileid: "84763459"
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>使用 PowerShell 配置组所有者同意
 
-可使用 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) 允许或禁止组所有者同意应用程序访问你组织的数据来查找他们拥有的组。
+可使用 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 允许或禁止组所有者同意应用程序访问你组织的数据来查找他们拥有的组。
 
-1. 请确保使用 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) 模块。 如果同时安装了 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) 模块和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) 模块，则此步骤非常重要。
+1. 请确保使用 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模块。 如果同时安装了 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模块和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模块，则此步骤非常重要。
 
     ```powershell
     Remove-Module AzureAD
@@ -280,7 +280,7 @@ ms.locfileid: "84763459"
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>使用 PowerShell 禁用或重新启用基于风险的升级同意
 
-可使用 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)，以禁用在 Microsoft 检测到风险时需要获得管理员同意的升级，或重新启用此功能（如果之前已禁用）。
+可使用 Azure AD PowerShell 预览版模块 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，以禁用在 Microsoft 检测到风险时需要获得管理员同意的升级，或重新启用此功能（如果之前已禁用）。
 
 为此，可按照与上述相同的步骤[使用 PowerShell 配置组所有者同意](#configure-group-owner-consent-using-powershell)，但替换为其他设置值。 步骤中有 3 点不同： 
 

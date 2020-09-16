@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: ef4f92d2e113e7cd393c50ba4eb8b47eb4ad9d08
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/15/2020
+ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468634"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605169"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -82,7 +82,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 用于订阅级别部署的命令与资源组部署使用的命令不同。
 
-对于 Azure CLI，请使用 [az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)。 以下示例会部署一个模板来创建资源组：
+对于 Azure CLI，请使用 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。 以下示例会部署一个模板来创建资源组：
 
 ```azurecli-interactive
 az deployment sub create \
@@ -162,9 +162,7 @@ New-AzSubscriptionDeployment `
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 请勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 获取在订阅级别部署的资源的资源 ID。
-
-  相反，请使用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函数。
+* 请勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 获取在订阅级别部署的资源的资源 ID。 相反，请使用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函数。
 
   例如，若要获取部署到订阅的策略定义的资源 ID，请使用：
 

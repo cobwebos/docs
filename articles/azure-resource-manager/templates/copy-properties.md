@@ -2,17 +2,19 @@
 title: 定义属性的多个实例
 description: 在资源上创建属性时，可以使用 Azure 资源管理器模板中的复制操作进行多次迭代。
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678454"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605237"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代
 
-本文介绍如何在 Azure 资源管理器 (ARM) 模板中创建一个属性的多个实例。 通过将 **copy** 元素添加到模板中资源的 properties 节，可以在部署过程中动态设置属性的项数。 还可以避免重复模板语法。
+本文介绍如何在 Azure 资源管理器模板 (ARM 模板) 中创建多个属性实例。 通过将 **copy** 元素添加到模板中资源的 properties 节，可以在部署过程中动态设置属性的项数。 还可以避免重复模板语法。
+
+即使将 copy 应用于属性，你也只能使用具有顶级资源的副本。 若要了解如何将子资源更改为顶级资源，请参阅对 [子资源进行迭代](copy-resources.md#iteration-for-a-child-resource)。
 
 还可以将 copy 用于 [resources](copy-resources.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
 

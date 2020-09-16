@@ -103,9 +103,9 @@
           displayName: studio
           href: concept-designer.md
         - name: 算法备忘单
-          href: /azure/machine-learning/algorithm-cheat-sheet
+          href: algorithm-cheat-sheet.md
         - name: 如何选择算法
-          href: /azure/machine-learning/how-to-select-algorithms
+          href: how-to-select-algorithms.md
     - name: 自动化机器学习
       items:
         - name: 自动化 ML 概述

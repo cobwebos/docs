@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d16412e4e35714c840516670f520f77daed1676d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3031ec6ba17c61c780351169c4e8c2e5e94ab257
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80059958"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606352"
 ---
 生成客户端证书时，该证书会自动安装在用于生成它的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，需要导出生成的客户端证书。
 
 1. 若要导出客户端证书，请打开“管理用户证书”  。 生成的客户端证书默认位于“Certificates - Current User\Personal\Certificates”中。 右键单击要导出的客户端证书，单击“所有任务”  ，并单击“导出”  打开“证书导出向导”。 
 
-   ![Export](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
+   ![屏幕截图显示具有所选证书的当前用户的 "证书" 窗口，并显示带有所有任务的上下文菜单，然后选择 "导出"。](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. 在“证书导出向导”中，单击“下一步”以继续。 
 
-   ![Next](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
+   ![屏幕截图显示 "证书导出向导" 欢迎消息。](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
 3. 选择“是，导出私钥”  ，并单击“下一步”  。
 
    ![导出私钥](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
@@ -31,10 +31,10 @@ ms.locfileid: "80059958"
    ![导出文件格式](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
 5. 在“**安全性**”页上，必须保护私钥。 如果选择使用密码，请务必记下或牢记为此证书设置的密码。 然后单击“下一步”。 
 
-   ![security](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
+   ![屏幕截图显示 "证书导出向导" 安全页，其中输入和确认密码并突出显示。](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
 6. 在“要导出的文件”  中，“浏览”  到要将证书导出的目标位置。 在“文件名”  中，为证书文件命名。 然后单击“下一步”。 
 
    ![要导出的文件](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
 7. 单击“完成”  导出证书。
 
-   ![完成](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)
+   ![屏幕截图显示 "证书导出向导" 最后一页，其中包含所选的设置。](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)

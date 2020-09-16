@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: da6554ae3b7df9962e1f57ac652567c282227d64
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bfc285f68e8a44b6b09fc63d9b2775a047955a37
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661651"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604659"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,6 +60,39 @@ ms.locfileid: "89661651"
 
     - 如果要将模型部署到 GPU 节点或 FPGA 节点（或任何特定 SKU），则必须使用该特定 SKU 创建群集。 不支持在现有群集中创建辅助节点池以及在辅助节点池中部署模型。
 
+## <a name="understand-the-deployment-processes"></a>了解部署过程
+
+在 Kubernetes 和 Azure 机器学习中都会用到“部署”一词。 “部署”在这两种上下文中有不同的含义。 在 Kubernetes 中，`Deployment` 是使用声明性 YAML 文件指定的具体实体。 Kubernetes `Deployment` 具有明确的生命周期，并与其他 Kubernetes 实体（如 `Pods` 和 `ReplicaSets`）有具体的关系。 可以从[什么是 Kubernetes？](https://aka.ms/k8slearning)中的文档和视频了解 Kubernetes。
+
+在 Azure 机器学习中，“部署”在更普遍的意义上用于提供和清理项目资源。 Azure 机器学习认为属于部署的步骤包括：
+
+1. 将项目文件夹中的文件压缩，忽略那些在 .amlignore 或 .gitignore 中指定的文件
+1. 纵向扩展计算群集（与 Kubernetes 相关）
+1. 构建 dockerfile 或将其下载到计算节点（与 Kubernetes 相关）
+    1. 系统计算以下各项的哈希： 
+        - 基础映像 
+        - 自定义 Docker 步骤（请参阅[使用自定义 Docker 基础映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
+        - Conda 定义 YAML（请参阅[在 Azure 机器学习中创建和使用软件环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
+    1. 在工作区 Azure 容器注册表 (ACR) 中进行查找时，系统使用此哈希作为键
+    1. 如果找不到该键，系统会在全局 ACR 中寻找匹配项
+    1. 如果找不到，系统将生成一个新的映像， (该映像将缓存并推送到工作区 ACR) 
+1. 将压缩的项目文件下载到计算节点上的临时存储
+1. 将项目文件解压缩
+1. 计算节点执行 `python <entry script> <arguments>`
+1. 将写入 `./outputs` 的日志、模型文件和其他文件保存到与工作区关联的存储帐户
+1. 纵向缩减计算，包括删除临时存储（与 Kubernetes 相关）
+
+### <a name="azure-ml-router"></a>Azure ML 路由器
+
+前端组件 (azureml-fe) ，用于将传入的推理请求路由到部署的服务，并根据需要自动缩放。 对 azureml-fe 的缩放基于 AKS 群集目的和大小) 的节点 (数量。 当你 [创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，将配置群集目的和节点。 每个群集都有一个 azureml-fe 服务，该服务可能在多个 pod 上运行。
+
+> [!IMPORTANT]
+> 当使用配置为 __开发测试__的群集时，将 **禁用**scaler。
+
+Azureml：横向扩展 (纵向) 以使用更多内核，并横向 (水平) 以使用更多的 pod。 决定进行扩展时，将使用路由传入推理请求所用的时间。 如果此时间超过阈值，则会进行扩展。 如果路由传入请求的时间继续超出阈值，则会进行扩展。
+
+当向下缩放时，将使用 CPU 使用情况。 如果满足 CPU 使用率阈值，前端将首先向下缩放。 如果 CPU 使用率降到了缩小阈值，则会发生缩小操作。 仅当有足够的可用群集资源时，才会发生向上扩展和向外扩展。
+
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
 要将模型部署到 Azure Kubernetes 服务，请创建一个描述所需计算资源的部署配置____。 例如，核心和内存的数量。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境____。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
@@ -67,7 +100,9 @@ ms.locfileid: "89661651"
 > [!NOTE]
 > 每个容器)  (每个部署的模型数限制为1000。
 
-### <a name="using-the-sdk"></a>使用 SDK
+<a id="using-the-cli"></a>
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
@@ -91,7 +126,7 @@ print(service.get_logs())
 * [Model.deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 * [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>使用 CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 要使用 CLI 进行部署，请使用以下命令。 将 `myaks` 替换为 AKS 计算目标的名称。 将 `mymodel:1` 替换为注册的模型的名称和版本。 将 `myservice` 替换为要赋予此服务的名称：
 
@@ -103,36 +138,57 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 有关详细信息，请参阅 [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。
 
-### <a name="using-vs-code"></a>使用 VS Code
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 有关如何使用 VS Code 的信息，请参阅[通过 VS Code 扩展部署到 AKS](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
 
 > [!IMPORTANT]
 > 通过 VS Code 进行部署要求提前创建 AKS 群集或将其附加到工作区。
 
-### <a name="understand-the-deployment-processes"></a>了解部署过程
+---
 
-在 Kubernetes 和 Azure 机器学习中都会用到“部署”一词。 “部署”在这两种上下文中有不同的含义。 在 Kubernetes 中，`Deployment` 是使用声明性 YAML 文件指定的具体实体。 Kubernetes `Deployment` 具有明确的生命周期，并与其他 Kubernetes 实体（如 `Pods` 和 `ReplicaSets`）有具体的关系。 可以从[什么是 Kubernetes？](https://aka.ms/k8slearning)中的文档和视频了解 Kubernetes。
+### <a name="autoscaling"></a>自动缩放
 
-在 Azure 机器学习中，“部署”在更普遍的意义上用于提供和清理项目资源。 Azure 机器学习认为属于部署的步骤包括：
+处理 Azure ML 模型部署的自动缩放的组件是 azureml-fe，这是一个智能请求路由器。 由于所有推理请求都将执行，因此它具有必要的数据来自动缩放已部署的模型 () 。
 
-1. 将项目文件夹中的文件压缩，忽略那些在 .amlignore 或 .gitignore 中指定的文件
-1. 纵向扩展计算群集（与 Kubernetes 相关）
-1. 构建 dockerfile 或将其下载到计算节点（与 Kubernetes 相关）
-    1. 系统计算以下各项的哈希： 
-        - 基础映像 
-        - 自定义 Docker 步骤（请参阅[使用自定义 Docker 基础映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
-        - Conda 定义 YAML（请参阅[在 Azure 机器学习中创建和使用软件环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
-    1. 在工作区 Azure 容器注册表 (ACR) 中进行查找时，系统使用此哈希作为键
-    1. 如果找不到该键，系统会在全局 ACR 中寻找匹配项
-    1. 如果找不到匹配项，系统会生成新映像（该映像将会被缓存并注册到工作区 ACR 中）
-1. 将压缩的项目文件下载到计算节点上的临时存储
-1. 将项目文件解压缩
-1. 计算节点执行 `python <entry script> <arguments>`
-1. 将写入 `./outputs` 的日志、模型文件和其他文件保存到与工作区关联的存储帐户
-1. 纵向缩减计算，包括删除临时存储（与 Kubernetes 相关）
+> [!IMPORTANT]
+> * **不要为模型部署启用 Kubernetes 横坐标 Pod 自动缩放程序 (HPA) **。 这样做会导致两个自动缩放组件相互竞争。 Azureml-fe 设计用于自动缩放由 Azure ML 部署的模型，在该模型中，HPA 必须从 CPU 使用情况或自定义指标配置等一般指标推测或估算模型利用率。
+> 
+> * **Azureml-fe 不会扩展 AKS 群集中的节点数**，因为这可能会导致意外的成本增加。 相反，它会在物理群集边界内 **缩放模型的副本数** 。 如果需要缩放群集中的节点数，可以手动缩放群集或 [配置 AKS cluster 自动缩放程序](/azure/aks/cluster-autoscaler)。
 
-使用 AKS 时，Kubernetes 使用按上述方法生成或找到的 dockerfile 来控制计算的纵向扩展和缩减。 
+可以通过 `autoscale_target_utilization` `autoscale_min_replicas` `autoscale_max_replicas` 为 AKS web 服务设置、和来控制自动缩放。 下面的示例演示如何启用自动缩放：
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+要增加/减少的决策取决于当前容器副本的利用率。 处理请求)  (处理请求的副本数除以当前副本的总数是当前使用率。 如果此数目超过 `autoscale_target_utilization` ，则创建更多副本。 如果它较低，则减少副本。 默认情况下，目标利用率为70%。
+
+用于添加副本的决策是预先的，并 (大约1秒钟) 。 若要删除副本，请 (大约1分钟) 。
+
+可以使用以下代码计算所需的副本：
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+有关设置、和的详细信息， `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` 请参阅 [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 模块参考。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控推出（预览版）将模型部署到 AKS
 
@@ -223,7 +279,6 @@ endpoint.wait_for_deployment(true)
 endpoint.delete_version(version_name="versionb")
 
 ```
-
 
 ## <a name="web-service-authentication"></a>Web 服务身份验证
 
