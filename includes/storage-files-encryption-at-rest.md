@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ed061234da27716bfcdaf1cc065568908108f90a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77597767"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563418"
 ---
-使用 Azure 存储服务加密 (SSE) 对存储在 Azure 文件存储中的所有数据进行静态加密。 存储服务加密的工作方式类似于 Windows 上的 BitLocker：在文件系统级别下对数据进行加密。 由于数据在 Azure 文件共享的文件系统下加密，因此，在将数据编码到磁盘时，无需访问客户端上的基础密钥即可读取或写入 Azure 文件共享。
+使用 Azure 存储服务加密 (SSE) 对存储在 Azure 文件存储中的所有数据进行静态加密。 存储服务加密的工作方式类似于 Windows 上的 BitLocker：在文件系统级别下对数据进行加密。 由于数据在 Azure 文件共享的文件系统下加密，因此，在将数据编码到磁盘时，无需访问客户端上的基础密钥即可读取或写入 Azure 文件共享。 静态加密同时适用于 SMB 和 NFS 协议。
 
-默认情况下，使用 Microsoft 托管密钥对存储在 Azure 文件存储中的数据进行加密。 使用 Microsoft 托管的密钥，Microsoft 持有加密/解密数据的密钥，并负责定期循环使用。 还可以选择管理自己的密钥，这样就可以控制轮换过程。 如果选择使用客户托管密钥来加密文件共享，则 Azure 文件存储有权访问你的密钥，以满足来自客户端的读取和写入请求。 使用客户托管密钥，你可以随时撤销此授权，但这意味着无法再通过 SMB 或 FileREST API 对 Azure 文件共享进行访问。
+默认情况下，Azure 文件存储中存储的数据使用 Microsoft 管理的密钥进行加密。 通过 Microsoft 管理的密钥，Microsoft 持有加密/解密数据的密钥，且负责定期轮换这些密钥。 你还选择管理你自己的密钥，这让你能够控制密钥轮换过程。 如果你选择使用客户管理的密钥来加密你的文件共享，则 Azure 文件存储可访问你的密钥来执行来自你的客户端的读取和写入请求。 通过客户管理的密钥，你可随时撤销此授权，但撤销意味着将无法再通过 SMB 或 FileREST API 访问你的 Azure 文件共享。
 
-Azure 文件存储使用与其他 Azure 存储服务（如 Azure Blob 存储）相同的加密方案。 若要详细了解 Azure 存储服务加密 (SSE)，请参阅[静态数据的 Azure 存储加密](../articles/storage/common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+Azure 文件存储预其他 Azure 存储服务（例如 Azure Blob 存储）使用相同的机密方案。 要详细了解 Azure 存储服务加密 (SSE)，请参阅[针对静态数据的 Azure 存储加密](../articles/storage/common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。

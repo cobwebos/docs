@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554641"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705395"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>适用于你的组织的 Azure 多重身份验证概述
 
@@ -34,10 +34,10 @@ ms.locfileid: "85554641"
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 商业版、E3 或 E5
 
-具有 Office 365 的客户可以使用两个选项：
+对于具有 Microsoft 365 的客户，有两个选项：
 
 * 针对所有用户的所有登录事件启用或禁用 Azure 多重身份验证。 无法做到仅为一部分用户或者仅在特定的情况下启用多重身份验证。 管理是通过 Office 365 门户进行的。 
-* 若要改进用户体验，请升级到 Azure AD Premium P1 或 P2 并使用条件访问。 有关详细信息，请参阅“使用多重身份验证保护 Office 365 资源”。
+* 若要改进用户体验，请升级到 Azure AD Premium P1 或 P2 并使用条件访问。 有关详细信息，请参阅使用多重身份验证保护 Microsoft 365 资源。
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 

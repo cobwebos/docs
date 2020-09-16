@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320641"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705480"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什么是 Azure Active Directory 中的标识安全评分？
 
@@ -50,7 +50,7 @@ ms.locfileid: "89320641"
 
 所有版本的 Azure AD 都提供标识安全分数。 组织可以从**Azure 门户**  >  **Azure Active Directory**  >  **安全**  >  **标识安全分数**中访问其标识安全分数。
 
-## <a name="how-does-it-work"></a>它是如何工作的？
+## <a name="how-does-it-work"></a>工作原理
 
 Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳做法进行比较。 根据此评估结果，将为你的目录计算一个新分数。 您的安全配置可能并不完全符合最佳实践指导原则，而且改进操作仅部分得到满足。 在这些情况下，你只会获得可用于控件的最大分数部分。
 
@@ -102,7 +102,7 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 
 若要查看分数历史记录，请转到 [Microsoft 365 安全中心](https://security.microsoft.com/) ，并查看你的总体 Microsoft 安全分数。 您可以查看对整体安全分数的更改单击查看历史记录。 选择特定的日期以查看在该日期启用的控制措施，以及从每个控制措施赢得的积分。
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>标识安全评分与 Office 365 安全评分之间有什么关系？
+### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>标识安全分数与 Microsoft 365 安全分数有何关联？
 
 [Microsoft 安全评分](/office365/securitycompliance/microsoft-secure-score)包含五个不同的控制和评分类别：
 

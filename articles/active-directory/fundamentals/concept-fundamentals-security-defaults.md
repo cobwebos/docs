@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 64ee8f2daddd53d37aeaf0f02208e02500b48f57
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320862"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705327"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -92,7 +92,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 > [!WARNING]
 > 启用安全默认值之前，请确保管理员没有使用旧身份验证协议。 有关详细信息，请参阅[如何弃用旧身份验证](concept-fundamentals-block-legacy-authentication.md)。
 
-- [如何设置多功能设备或应用程序以使用 Office 365 和 Microsoft 365 发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+- [如何使用 Microsoft 365 设置多功能设备或应用程序以发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>保护特权操作
 

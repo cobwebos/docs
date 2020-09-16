@@ -33,6 +33,14 @@
           href: tutorial-ev-routing.md
         - name: 使用 Azure Notebooks 分析天气数据 (Python)
           href: weather-service-tutorial.md
+    - name: 从必应地图迁移
+      items:
+        - name: 从必应地图迁移
+          href: migrate-from-bing-maps.md
+        - name: 迁移 Web 应用
+          href: migrate-from-bing-maps-web-app.md
+        - name: 迁移 Web 服务
+          href: migrate-from-bing-maps-web-services.md
     - name: 从 Google Maps 迁移
       items:
         - name: 从 Google Maps 迁移

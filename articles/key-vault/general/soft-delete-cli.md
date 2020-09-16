@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: da821da08594180b9dd94728252e1a43c04fbde2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662050"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531655"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -39,7 +39,7 @@ Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，�
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
 |清除|永久删除已删除的密钥保管库及其所有内容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-有关权限和访问控制的详细信息，请参阅[保护密钥保管库](secure-your-key-vault.md)。
+有关权限和访问控制的详细信息，请参阅[保护 Key Vault](secure-your-key-vault.md)。
 
 ## <a name="enabling-soft-delete"></a>启用软删除
 
@@ -242,5 +242,5 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 ## <a name="other-resources"></a>其他资源
 
 - 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)。
-- 有关 Azure Key Vault 使用情况的综述，请参阅[什么是 Azure Key Vault？](overview.md)。
+- 有关 Azure Key Vault 使用情况的综述，请参阅[什么是 Azure Key Vault？](overview.md)
 

@@ -9,14 +9,14 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afe7d5ce3dd1756ddb9e33fe402fb2eb699ce8f7
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007411"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086770"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>通过编写代码提取共享访问签名令牌
+# <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>创建 SAS 定义，并通过编写代码提取共享访问签名令牌
 
 你可以使用存储在密钥保险库中的共享访问签名 (SAS) 令牌来管理存储帐户。 有关详细信息，请参阅[使用 SAS 授予对 Azure 存储资源的有限访问权限](../../storage/common/storage-sas-overview.md)。
 
@@ -41,9 +41,9 @@ ms.locfileid: "90007411"
 
 如果共享访问签名令牌即将过期，可以再次获取相同的机密并生成新的令牌。
 
+要了解如何使用从 Key Vault SAS 中检索的令牌访问 Azure 存储服务，请参阅[使用帐户 SAS 访问 Blob 服务](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[使用 SAS 授予对 Azure 存储资源的有限访问权限](../../storage/common/storage-sas-overview.md)。
 - 了解如何[使用密钥保管库和 Azure CLI 管理存储帐户密钥](overview-storage-keys.md)或 [Azure PowerShell](overview-storage-keys-powershell.md)。
-- 请参阅完整的[共享链接](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/)示例。
-- 更多 [Key Vault 示例](https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault)
 - 请参阅[托管存储帐户密钥示例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

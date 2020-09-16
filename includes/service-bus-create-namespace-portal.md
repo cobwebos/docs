@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75928229"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606913"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 门户中创建命名空间
 若要开始在 Azure 中使用服务总线消息实体，必须先使用在 Azure 中唯一的名称创建一个命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
@@ -53,10 +53,10 @@ ms.locfileid: "75928229"
 2. 在命名空间窗口中，单击“共享访问策略”  。
 3. 在“共享访问策略”  屏幕中，单击“RootManageSharedAccessKey”  。
    
-    ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
+    ![屏幕截图显示“共享访问策略”窗口，其中突出显示了策略。](./media/service-bus-create-namespace-portal/connection-info.png)
 4. 在“策略:  RootManageSharedAccessKey”窗口中，单击“主连接字符串”旁边的复制按钮，将连接字符串复制到剪贴板供稍后使用  。 将此值粘贴到记事本或其他某个临时位置。
    
-    ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
+    ![屏幕截图显示了名为 RootManageSharedAccessKey 的 S A S 策略，其中包含密钥和连接字符串。](./media/service-bus-create-namespace-portal/connection-string.png)
 5. 重复上述步骤，将**主键**的值复制和粘贴到临时位置，以供将来使用。
 
 <!--Image references-->

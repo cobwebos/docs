@@ -18,12 +18,32 @@
           href: common-questions-server-migration.md
 - name: 教程
   items:
-    - name: 评估和迁移 VMware VM
+    - name: 发现
       items:
-        - name: 准备 VMware 以进行评估和迁移
-          href: tutorial-prepare-vmware.md
-        - name: 评估 VMware VM 以进行迁移
-          href: tutorial-assess-vmware.md
+        - name: 发现 VMware VM
+          href: tutorial-discover-vmware.md
+        - name: 发现 Hyper-V VM
+          href: tutorial-discover-hyper-v.md
+        - name: 发现物理服务器
+          href: tutorial-discover-physical.md
+        - name: 发现 AWS 实例
+          href: tutorial-discover-aws.md
+        - name: 发现导入的服务器
+          href: tutorial-discover-import.md
+    - name: 评估
+      items:
+        - name: 评估 VMware VM 以便迁移到 Azure VM
+          href: tutorial-assess-vmware-azure-vm.md
+        - name: 评估 VMware VM 以便迁移到 AVS
+          href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: 评估 HYPER-V VM 以便迁移到 Azure
+          href: tutorial-assess-hyper-v.md
+        - name: 评估物理服务器以便迁移到 Azure
+          href: tutorial-assess-physical.md
+        - name: 评估 AWS 实例以便迁移到 Azure
+          href: tutorial-assess-aws.md
+    - name: 迁移
+      items:
         - name: 迁移 VMware VM
           items:
             - name: 关于 VMware VM 的迁移选项
@@ -32,30 +52,12 @@
               href: tutorial-migrate-vmware.md
             - name: 使用基于代理的迁移来迁移 VMware VM
               href: tutorial-migrate-vmware-agent.md
-    - name: 评估和迁移 Hyper-V VM
-      items:
-        - name: 准备 Hyper-V 以进行评估和迁移
-          href: tutorial-prepare-hyper-v.md
-        - name: 评估 HYPER-V VM 以进行迁移
-          href: tutorial-assess-hyper-v.md
         - name: 迁移 Hyper-V VM
           href: tutorial-migrate-hyper-v.md
-    - name: 评估和迁移物理服务器
-      items:
-        - name: 准备物理服务器以进行评估和迁移
-          href: tutorial-prepare-physical.md
-        - name: 评估物理服务器
-          href: tutorial-assess-physical.md
         - name: 迁移物理服务器
           href: tutorial-migrate-physical-virtual-machines.md
-    - name: 评估和迁移 AWS VM
-      items:
-        - name: 发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
+        - name: 迁移 AWS 实例
           href: tutorial-migrate-aws-virtual-machines.md
-    - name: 评估要迁移的已导入服务器
-      items:
-        - name: 评估要迁移的已导入服务器
-          href: tutorial-assess-import.md
 - name: 概念
   items:
     - name: 使用 Azure Migrate 构建迁移计划
@@ -158,7 +160,7 @@
           href: how-to-migrate-at-scale.md
         - name: 迁移示例（Contoso 系列）
           href: contoso-migration-overview.md
-- name: 疑难解答
+- name: 故障排除
   items:
     - name: 排查 Azure Migrate 问题
       href: troubleshoot-general.md

@@ -1,6 +1,6 @@
 ---
 title: 为 B2B 协作配置 SaaS 应用-Azure AD
-description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例
+description: 了解如何配置 SaaS 应用以便 Azure Active Directory B2B 协作并查看其他可用资源。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908327"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705504"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
 
@@ -105,5 +105,5 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 - [什么是 Azure AD B2B 协作？](what-is-b2b.md)
 - [动态组和 B2B 协作](use-dynamic-groups.md)
 - [B2B 协作用户声明映射](claims-mapping.md)
-- [Office 365 外部共享](o365-external-user.md)
+- [Microsoft 365 外部共享](o365-external-user.md)
 

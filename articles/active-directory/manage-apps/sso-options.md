@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469807"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604200"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 中的单一登录选项
 
@@ -24,7 +24,7 @@ ms.locfileid: "89469807"
 
 - 使用单一登录，用户可以使用一个帐户登录一次，即可访问加入域的设备、公司资源、软件即服务 (SaaS) 应用程序和 Web 应用程序。 登录后，用户可以从 Office 365 门户或“我的应用”启动应用程序。 管理员可以集中管理用户帐户，并根据组成员身份自动添加或删除用户对应用程序的访问权限。
 
-- 不使用单一登录，用户必须记住特定于应用程序的密码并登录每个应用程序。 IT 人员需要为每个应用程序（如 Office 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住他们的密码，并且花时间登录每个应用程序。
+- 不使用单一登录，用户必须记住特定于应用程序的密码并登录每个应用程序。 IT 人员需要为每个应用程序（如 Microsoft 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住他们的密码，并且花时间登录每个应用程序。
 
 若要详细了解单一登录，请参阅[什么是单一登录？](what-is-single-sign-on.md)。
 
@@ -137,7 +137,7 @@ Azure AD 管理员管理凭据时：
 
 ### <a name="linked-sign-on-for-application-migration"></a>用于应用程序迁移的链接登录
 
-在一段时间内迁移应用程序时，链接登录可提供一致的用户体验。 如果要将应用程序迁移到 Azure Active Directory，则可以使用链接登录快速地发布指向要迁移的所有应用程序的链接。  用户可以在 [MyApps 门户](../user-help/active-directory-saas-access-panel-introduction.md)或 [Office 365 应用程序启动器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中查找所有的链接。 用户不会知道他们正在访问链接的应用程序或迁移的应用程序。  
+在一段时间内迁移应用程序时，链接登录可提供一致的用户体验。 如果要将应用程序迁移到 Azure Active Directory，则可以使用链接登录快速地发布指向要迁移的所有应用程序的链接。  用户可以在 [MyApps 门户](../user-help/active-directory-saas-access-panel-introduction.md)或 [Microsoft 365 应用程序启动器](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中查找所有的链接。 用户不会知道他们正在访问链接的应用程序或迁移的应用程序。  
 
 用户通过链接的应用程序进行身份验证后，需要先创建帐户记录，然后才能为最终用户提供单一登录访问权限。 预配此帐户记录可以自动完成，也可以由管理员手动完成。
 

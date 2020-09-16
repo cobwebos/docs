@@ -235,7 +235,7 @@
               href: ./hdinsight-cluster-availability.md
             - name: 群集可用性 - Azure Monitor 日志
               href: ./cluster-availability-monitor-logs.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: CPU 核心配额增加请求
               href: ./quota-increase-request.md
@@ -392,14 +392,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: 管理
           items:
+            - name: 管理依赖项
+              items:
+                - name: 管理 Spark 应用程序依赖项
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: 安全地管理 JAR 依赖项
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: 安全地管理 Python 环境
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: 管理群集资源
               href: ./spark/apache-spark-resource-manager.md
             - name: 使用扩展历史记录服务器管理 Apache Spark 应用程序
               href: ./spark/apache-azure-spark-history-server.md
             - name: 使用 IO 缓存启用缓存
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: 管理 Jar 依赖项
-              href: ./spark/manage-jar-dependency.md
             - name: 将笔记本与 Apache Spark 配合使用
               items:
                 - name: 使用本地 Jupyter 笔记本
@@ -408,8 +414,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: 通过单元 Magic 将外部包与 Jupyter 配合使用
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: 使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: 使用 Apache Zeppelin 笔记本
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: 与其他 Azure 服务配合使用
@@ -422,7 +426,7 @@
                   href: ../cosmos-db/lambda-architecture.md
                 - name: 使用 AutoML 运行 Azure ML 工作负荷
                   href: ./spark/apache-spark-run-machine-learning-automl.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 无法创建 Jupyter 笔记本
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
@@ -650,7 +654,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -703,7 +707,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查 Apache HBase 性能问题
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -796,7 +800,7 @@
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: 优化 Apache Hive 查询
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 通过 Apache Hive 设置解决内存不足错误
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -907,7 +911,7 @@
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md

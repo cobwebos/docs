@@ -148,7 +148,7 @@
     - name: Azure 资源管理器
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
       items:
-        - name: 资源管理器模板
+        - name: Resource Manager 模板
           href: template-description.md
     - name: 区域
       href: ../regions.md
@@ -431,7 +431,7 @@
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: migration-classic-resource-manager-community-tools.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 使用映像
       displayName: 'SIG, AMI, image'
@@ -446,7 +446,7 @@
                   items:
                     - name: 从 VM
                       href: ../image-version-vm-powershell.md
-                    - name: 从 VHD 或快照
+                    - name: 从托管磁盘或快照
                       href: ../image-version-snapshot-powershell.md
                     - name: 从托管映像迁移
                       href: ../image-version-managed-image-powershell.md
@@ -468,7 +468,7 @@
                   items:
                     - name: 从 VM
                       href: ../image-version-vm-cli.md
-                    - name: 从 VHD 或快照
+                    - name: 从托管磁盘或快照
                       href: ../image-version-snapshot-cli.md
                     - name: 从托管映像迁移
                       href: ../image-version-managed-image-cli.md
@@ -507,21 +507,33 @@
           items:
             - name: 概述
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 使用 Azure CLI
-              href: image-builder.md
-            - name: 使用 VNET 创建 VM
+            - name: 使用映像生成器
+              items:
+                - name: CLI
+                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: image-builder-powershell.md
+            - name: 使用 VNET
               href: image-builder-vnet.md
-            - name: 使用 Azure PowerShell
-              href: image-builder-powershell.md
+            - name: 网络选项
+              href: ../linux/image-builder-networking.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 配置权限
+              items:
+                - name: CLI
+                  href: ../linux/image-builder-permissions-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: DevOps 任务
+              href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: ARM 模板参考
+              displayName: Azure Resource Manager
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 在映像库中生成映像
               href: image-builder-gallery.md
             - name: 更新现有映像
               href: image-builder-gallery-update-image-version.md
             - name: 存储脚本
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM 模板参考
-              displayName: Azure Resource Manager
-              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 疑难解答
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: 查找和使用映像
@@ -690,7 +702,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 常见问题解答
+            - name: 常见问题
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -749,7 +761,7 @@
                       href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: 自定义字段
                       href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 疑难解答
+            - name: 故障排除
               items:
                 - name: Log Analytics VM 扩展
                   href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -955,7 +967,7 @@
           href: ../extensions/extensions-rmpolicy-howto-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 导出扩展
           href: ../extensions/export-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 疑难解答
+        - name: 故障排除
           href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure 磁盘加密
           href: ../extensions/azure-disk-enc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -1023,7 +1035,7 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
-- name: 疑难解答
+- name: 故障排除
   href: ../troubleshooting/index.yml
 - name: 参考
   items:
@@ -1070,5 +1082,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md

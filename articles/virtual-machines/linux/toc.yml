@@ -108,7 +108,7 @@
           items:
             - name: 使用 Azure Monitor 日志监视 VM
               href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 对 VM 操作系统磁盘进行故障排除
               href: ./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
@@ -418,7 +418,7 @@
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 使用映像
       displayName: 'SIG, AMI, image'
@@ -479,7 +479,7 @@
                   items:
                     - name: 从 VM
                       href: ../image-version-vm-cli.md
-                    - name: 从 VHD 或快照
+                    - name: 从托管磁盘或快照
                       href: ../image-version-snapshot-cli.md
                     - name: 从托管映像迁移
                       href: ../image-version-managed-image-cli.md
@@ -501,7 +501,7 @@
                   items:
                     - name: 从 VM
                       href: ../image-version-vm-powershell.md
-                    - name: 从 VHD 或快照
+                    - name: 从托管磁盘或快照
                       href: ../image-version-snapshot-powershell.md
                     - name: 从托管映像迁移
                       href: ../image-version-managed-image-powershell.md
@@ -542,14 +542,16 @@
               href: image-builder-overview.md
             - name: 使用 Azure CLI
               href: image-builder.md
-            - name: 使用 VNET 创建 VM - CLI
+            - name: 使用 VNET - CLI
               href: image-builder-vnet.md
-            - name: 配置权限 - CLI
-              href: image-builder-permissions-cli.md
-            - name: 配置权限 - PowerShell
-              href: image-builder-permissions-powershell.md
             - name: 网络选项
               href: image-builder-networking.md
+            - name: 配置权限
+              items:
+                - name: CLI
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
             - name: DevOps 任务
               href: image-builder-devops-task.md
             - name: ARM 模板参考
@@ -745,7 +747,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: 常见问题解答
+            - name: 常见问题
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -788,7 +790,7 @@
                       href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: 自定义字段
                       href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: 疑难解答
+            - name: 故障排除
               items:
                 - name: Log Analytics VM 扩展
                   href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -1060,7 +1062,7 @@
           href: ../extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 导出扩展
           href: ../extensions/export-templates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: 疑难解答
+        - name: 故障排除
           href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 启用了 Python 3 的 Linux 系统的问题
           href: ../extensions/issues-using-vm-extensions-python-3.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -1166,7 +1168,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md
-- name: 疑难解答
+- name: 故障排除
   href: ../troubleshooting/index.yml

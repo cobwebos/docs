@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3d4cc17570057f5f37cf38685847afbe38ea6831
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88760564"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606814"
 ---
 | 资源 | 标准文件共享 | 高级文件共享 |
 |----------|---------------|------------------------------------------|
@@ -26,5 +26,6 @@ ms.locfileid: "88760564"
 | 共享快照的最大数目 | 200 个共享快照 | 200 个共享快照 |
 | 最大对象（目录和文件）名称长度 | 2,048 个字符 | 2,048 个字符 |
 | 最大路径名组成部分（在路径 \A\B\C\D 中，每个字母是一个组成部分） | 255 个字符 | 255 个字符 |
+| 硬链接限制（仅限 NFS） | 不可用 | 178 |
 
 \* 标准文件共享的默认值为 5 TiB。若要详细了解如何将标准文件共享纵向扩展到 100 TiB，请参阅[启用和创建大型文件共享](../articles/storage/files/storage-files-how-to-create-large-file-share.md)。
