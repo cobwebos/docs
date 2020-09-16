@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449509"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707996"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中自动缩放预配吞吐量的常见问题解答
 
@@ -27,7 +27,7 @@ ms.locfileid: "84449509"
 
 例如，如果你之前选择了缩放比例为 400 到 4,000 RU/s 的层，则数据库或容器现在将显示具有最大为 4,000 RU/s 的吞吐量，缩放比例为 400 到 4,000 RU/s。 在此处，你可以将最大 RU/s 更改为自定义值以适应你的工作负载。 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>自动缩放根据流量高峰进行增减的速度有多快？
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>自动缩放会根据流量峰值增加速度？
 使用自动缩放，系统根据传入的流量在 `0.1 * Tmax` 和 `Tmax` 范围内上下缩放吞吐量 (RU/s) `T`。 因为缩放是自动且即时的，所以可在任何时间点无延迟地使用吞吐量（最多使用预配的 `Tmax`）。 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>如何确定系统当前缩放到的吞吐量 (RU/s)？

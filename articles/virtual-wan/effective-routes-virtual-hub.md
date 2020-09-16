@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 6592b1a934e732888ef949071d95075d0af61bf6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762260"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708064"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>查看虚拟中心有效路由
 
@@ -39,7 +39,7 @@ ms.locfileid: "88762260"
 
 使用表底部的滚动条查看 "AS Path"。
 
-| **Prefix** |  **下一跃点类型** | **下一跃点** |  **路由源** |**作为路径** |
+| **前缀** |  **下一跃点类型** | **下一跃点** |  **路由源** |**作为路径** |
 | ---        | ---                | ---          | ---               | ---         |
 | 10.2.0.0/24| VPN_S2S_Gateway |/subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw|/subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
@@ -50,6 +50,8 @@ ms.locfileid: "88762260"
 * 编辑虚拟网络连接、VPN 连接或 ExpressRoute 连接时，会在 Azure 虚拟 WAN 门户中查看 " **传播默认路由** " 字段。 此字段指示 **enableInternetSecurity** 标志，该标志对于 EXPRESSROUTE 和 VPN 连接始终默认为 "false"，对于虚拟网络连接始终为 "true"。
 
 * 查看 VM NIC 上的有效路由时，如果将下一跃点视为 "虚拟网络网关"，则在 VM 位于连接到虚拟 WAN 集线器的分支中时，会显示虚拟中心路由器。
+
+* 仅当虚拟中心至少具有一种连接类型（ (VPN/ER/VNET) 连接到它）时，才会填充虚拟中心路由表的有效路由。
 
 ## <a name="next-steps"></a>后续步骤
 

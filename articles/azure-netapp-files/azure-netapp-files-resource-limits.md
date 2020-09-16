@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 60d3c9df270561c94b8eb162595e4fe01713c0b5
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536473"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708098"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -44,7 +44,8 @@ ms.locfileid: "89536473"
 |  单个卷的最大大小     |    100 TiB    |    否    |
 |  单个文件的最大大小     |    16 TiB    |    否    |    
 |  单个目录中目录元数据的最大大小      |    320 MB    |    否    |    
-|  每卷 ([maxfiles](#maxfiles)) 的最大文件数     |    1 亿    |    是    |    
+|  每卷 ([maxfiles](#maxfiles)) 的最大文件数     |    1 亿    |    是    |   
+|  跨区域复制数据保护卷 (目标卷的数量)      |    5    |    是    |     
 
 有关详细信息，请参阅 [容量管理常见问题](azure-netapp-files-faqs.md#capacity-management-faqs)。
 
@@ -83,9 +84,10 @@ Azure NetApp 文件卷具有称为 *maxfiles*的限制。 Maxfiles 限制是卷�
         |  资源  |    父资源      |    请求的新限制     |    配额增加的原因       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  帐户 |  *订阅 ID*   |  *请求的新的最大 **帐户** 编号*    |  *哪个方案或用例提示请求？*  |
-        |  池    |  *订阅 ID，帐户 URI*  |  *请求的新的最大 **池** 编号*   |  *哪个方案或用例提示请求？*  |
-        |  Volume  |  *订阅 ID、帐户 URI、池 URI*   |  *请求的新的最大 **卷** 号*     |  *哪个方案或用例提示请求？*  |
-        |  Maxfiles  |  *订阅 ID、帐户 URI、池 URI、卷 URI*   |  *请求的新的最大 **maxfiles** 数*     |  *哪个方案或用例提示请求？*  |    
+        |  池    |  *订阅 ID，NetApp 帐户 URI*  |  *请求的新的最大 **池** 编号*   |  *哪个方案或用例提示请求？*  |
+        |  Volume  |  *订阅 ID，NetApp 帐户 URI，容量池 URI*   |  *请求的新的最大 **卷** 号*     |  *哪个方案或用例提示请求？*  |
+        |  Maxfiles  |  *订阅 ID，NetApp 帐户 URI，容量池 URI，卷 URI*   |  *请求的新的最大 **maxfiles** 数*     |  *哪个方案或用例提示请求？*  |    
+        |  跨区域复制数据保护卷  |  *订阅 ID、目标 NetApp 帐户 URI、目标容量池 URI、源 NetApp 帐户 URI、源容量池 URI、源卷 URI*   |  *已请求新的 **跨区域复制数据保护卷的最大数目 (目标卷) ***     |  *哪个方案或用例提示请求？*  |    
 
     2. 指定相应的支持方法并提供你的协定信息。
 

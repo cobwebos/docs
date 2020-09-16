@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 90d51d7eb5425530ebad0fc9ac66ba2c95776076
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564836"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708132"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 文件共享协议
 
@@ -55,7 +55,7 @@ Azure 文件提供了两个用于连接和装载 Azure 文件共享的协议。 
 Azure 文件的 NFS 适用于：
 
 - 需要 POSIX 兼容文件共享、区分大小写或 Unix 样式权限的工作负荷 (UID/GID) 。
-- 不需要 SMB 访问的以 Linux 为中心的工作负荷。
+- 不需要 Windows 访问的以 Linux 为中心的工作负荷。
 
 ### <a name="security"></a>安全性
 
