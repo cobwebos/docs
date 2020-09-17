@@ -4,18 +4,18 @@ description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: c64971303a2fefb25a73f0a8e8900c14ef05486c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568908"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603605"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
 在本快速入门中，需将 Python Web 应用部署到 [Linux 上的应用服务](overview.md#app-service-on-linux)，该版本提供了一项高度可缩放、自我修补的 Azure Web 托管服务。 在 Mac、Linux 或 Windows 计算机上使用本地 [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。 配置的 Web 应用使用免费的应用服务层，因此本文中的操作不会产生任何费用。
 
-> [!NOTE]
+> [!TIP]
 > 如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)。
 
 ## <a name="set-up-your-initial-environment"></a>设置初始环境

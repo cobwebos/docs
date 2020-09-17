@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723718"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604795"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>什么是已启用 Azure Arc 的 Kubernetes 预览版？
 
@@ -51,12 +51,15 @@ ms.locfileid: "88723718"
 
 * 使用适用于 Kubernetes 的 Azure Policy 来应用策略。 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>支持的区域 
 
 以下区域目前支持启用 Azure Arc 的 Kubernetes： 
 
 * 美国东部 
 * 西欧
+
 
 ## <a name="next-steps"></a>后续步骤
 

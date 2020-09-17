@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961952"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601344"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
@@ -25,8 +25,6 @@ ms.locfileid: "88961952"
 还可以使用 [Azure PowerShell](quick-create-powershell.md) 或 [Azure CLI](quick-create-cli.md) 完成本快速入门。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -171,7 +169,7 @@ ms.locfileid: "88961952"
 
 2. 运行以下命令以在虚拟机上安装 IIS。 如有必要，请更改 Location 参数： 
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
@@ -196,7 +194,6 @@ ms.locfileid: "88961952"
 4. 在“后端目标”、“目标类型”下，从下拉列表中选择“虚拟机”。
 
 5. 在“目标”下，从下拉列表中选择“myVM”和“myVM2”虚拟机及其关联的网络接口。
-
 
    > [!div class="mx-imgBorder"]
    > ![添加后端服务器](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)

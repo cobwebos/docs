@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: bc045eba331c861801dceef7f00db42e851f8bb2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211378"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662361"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>快速入门：将 Azure Redis 缓存与 .NET Core 应用配合使用
 
@@ -23,7 +23,6 @@ ms.locfileid: "88211378"
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 或更高版本](https://www.microsoft.com/net/download/dotnet-framework-runtime)，这是 StackEdchange.Redis 客户端所需的。
 
 ## <a name="create-a-cache"></a>创建缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -125,7 +124,7 @@ dotnet add package StackExchange.Redis
 using StackExchange.Redis;
 ```
 
-与 Azure Redis 缓存的连接由 `ConnectionMultiplexer` 类管理。 应当在整个客户端应用程序中共享和重用此类。 不要为每个操作创建新连接。 
+与 Azure Redis 缓存的连接由 `ConnectionMultiplexer` 类管理。 应在整个客户端应用程序中共享和重复使用此类。 不要为每个操作创建新连接。 
 
 在 *Program.cs* 中，将以下成员添加到控制台应用程序的 `Program` 类：
 
@@ -192,7 +191,7 @@ static void Main(string[] args)
 }
 ```
 
-保存 *Program.cs*。
+保存 Program.cs。
 
 Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-development-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
 
@@ -294,13 +293,13 @@ dotnet run
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
+登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
-在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
+在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组” 。
 
 ![删除](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
+系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

@@ -12,13 +12,13 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-python
-ms.date: 01/09/2020
-ms.openlocfilehash: 6a93410b40926904a8429b70522eb01ab02f80a7
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 09/14/2020
+ms.openlocfilehash: d5ee18895eeac6c7444e11c3714855bd038b07ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876455"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530465"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入门：控制连接到 IoT 中心的设备 (Python)
 

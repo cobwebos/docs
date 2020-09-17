@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 79f3efad9ba5f6c0378f8b093a2f375275767659
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 15bbce208475a85e7be6efbadebcb4e43c2d8d17
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185836"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029097"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Ruby 连接到 Azure Database for MySQL 并查询其中的数据
 
@@ -72,7 +72,7 @@ ms.locfileid: "88185836"
 ## <a name="connect-and-create-a-table"></a>进行连接并创建表
 使用以下代码进行连接，使用 CREATE TABLE SQL 语句创建表，然后使用 INSERT INTO SQL 语句将行添加到表中。
 
-该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) 类的 .new() 方法连接到适用于 MySQL 的 Azure 数据库。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) 方法多次，以运行 DROP、CREATE TABLE 和 INSERT INTO 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
+该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 类的 .new() 方法连接到适用于 MySQL 的 Azure 数据库。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法多次，以运行 DROP、CREATE TABLE 和 INSERT INTO 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`username` 和 `password` 字符串替换为你自己的值。 
 ```ruby
@@ -117,7 +117,7 @@ end
 ## <a name="read-data"></a>读取数据
 使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 
 
-该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) class.new() 方法连接到 Azure Database for MySQL。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) 方法来运行 SELECT 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
+该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) class.new() 方法连接到 Azure Database for MySQL。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法来运行 SELECT 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`username` 和 `password` 字符串替换为你自己的值。 
 
@@ -156,7 +156,7 @@ end
 ## <a name="update-data"></a>更新数据
 使用以下代码进行连接，并使用 UPDATE SQL 语句更新数据。
 
-该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) 类的 .new() 方法连接到适用于 MySQL 的 Azure 数据库。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) 方法来运行 UPDATE 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
+该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 类的 .new() 方法连接到适用于 MySQL 的 Azure 数据库。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法来运行 UPDATE 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`username` 和 `password` 字符串替换为你自己的值。 
 
@@ -193,7 +193,7 @@ end
 ## <a name="delete-data"></a>删除数据
 使用以下代码进行连接，并使用 DELETE SQL 语句读取数据。 
 
-该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) 类的 .new() 方法连接到适用于 MySQL 的 Azure 数据库。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) 方法来运行 DELETE 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
+该代码使用 [mysql2::client](https://www.rubydoc.info/gems/mysql2) 类的 .new() 方法连接到适用于 MySQL 的 Azure 数据库。 然后，该代码调用 [query()](https://www.rubydoc.info/gems/mysql2#Usage) 方法来运行 DELETE 命令。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`username` 和 `password` 字符串替换为你自己的值。 
 
