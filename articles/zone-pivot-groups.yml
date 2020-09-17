@@ -29,7 +29,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-two
@@ -61,7 +61,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
 - id: programming-languages-set-four
   title: 编程语言
   prompt: 选择编程语言
@@ -95,7 +95,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-seven
@@ -131,7 +131,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-java
     title: Java
   - id: programming-language-other
@@ -145,7 +145,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-eleven
@@ -185,7 +185,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-powershell
     title: PowerShell
   - id: programming-language-python
@@ -203,7 +203,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-other
     title: 其他语言...
 - id: programming-languages-set-diberry-3core
@@ -213,7 +213,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: java-build-tools-set
@@ -309,7 +309,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-eighteen
@@ -335,7 +335,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-more
     title: 更多语言...
 - id: programming-languages-set-two-with-js-spx
@@ -353,7 +353,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-more
     title: 更多语言...
 - id: programming-languages-set-two-with-js-go
@@ -371,7 +371,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-more
     title: 更多语言...
 - id: programming-languages-set-two-with-js-go-spx
@@ -391,7 +391,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-more
     title: 更多语言...
 - id: programming-languages-speech-services-one-nomore
@@ -409,7 +409,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
 - id: programming-languages-speech-services-one-nomore-no-go
   title: 编程语言
   prompt: 选择编程语言
@@ -423,7 +423,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
 - id: programming-languages-speech-services-nomore-variant
   title: 编程语言
   prompt: 选择编程语言
@@ -437,7 +437,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-objectivec
     title: Objective-C
 - id: programming-languages-set-nineteen
@@ -566,10 +566,28 @@ groups:
     title: Java
   - id: programming-language-csharp
     title: C#
+- id: speech-full-stack-go
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-spx
+    title: CLI
 metadata:
-  ms.openlocfilehash: 0659c68f39493c3e3b2e66ebc5a38d96cd13404d
-  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+  ms.openlocfilehash: ea50c8099a3b51a2796f26a8bad31f1209423efe
+  ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/27/2020
-  ms.locfileid: "88998911"
+  ms.lasthandoff: 09/16/2020
+  ms.locfileid: "90707656"
