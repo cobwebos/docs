@@ -223,11 +223,11 @@ namespace SampleFunctionsApp
 
 1. 在 [Azure 门户](https://portal.azure.com) 中打开时序见解实例 (可以在门户搜索栏) 中搜索实例的名称。 访问实例概述中所示的 *时序见解资源管理器 URL* 。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的 "概述" 选项卡中选择 "时序见解资源管理器 URL"":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的 概述 选项卡中选择 时序见解资源管理器 URL":::
 
 2. 在资源管理器中，你将看到从左侧显示的 Azure 数字孪生的三个孪生。 选择 _**thermostat67**_，选择 **温度**，然后单击 " **添加**"。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="选择 * * thermostat67 * *，选择 * * 温度 * *，然后单击 "添加"。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="选择 * * thermostat67 * *，选择 * * 温度 * *，然后单击 添加。":::
 
 3. 你现在应看到恒温器的初始温度读数，如下所示。 将为 *room21* 和 *floor1*更新相同的温度读数，并以串联方式可视化这些数据流。
     
