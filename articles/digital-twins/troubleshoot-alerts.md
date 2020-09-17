@@ -36,7 +36,7 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 
 4. 选择 " _创建警报规则_ " 按钮，创建警报规则。
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="显示 "创建警报规则" 页的屏幕截图，其中包含作用域、条件、操作组和警报规则详细信息的部分" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="显示 创建警报规则 页的屏幕截图，其中包含作用域、条件、操作组和警报规则详细信息的部分" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 有关填写这些字段的指导演练，请参阅 [*Microsoft Azure 中的警报概述*](../azure-monitor/platform/alerts-overview.md)。 下面是 Azure 数字孪生步骤的一些示例。
 
@@ -44,17 +44,17 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 
 下面是 *Select 条件* 过程的摘录，用于说明可用于 Azure 数字孪生的警报信号的类型。 在此页上，您可以筛选信号类型，并从列表中选择所需的信号。
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="显示第一个 "配置信号逻辑" 页的屏幕截图。"信号类型" 框中突出显示了 "指标" 或 "活动日志"，以及可供选择的指标列表。":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="显示第一个 配置信号逻辑 页的屏幕截图。信号类型 框中突出显示了 指标 或 活动日志，以及可供选择的指标列表。":::
 
 选择信号后，系统会要求你配置警报的逻辑。 可以筛选维度，设置警报的阈值，并设置条件检查的频率。 下面是有关在平均路由失败率指标超过5% 时设置警报的示例。
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="显示第二个 "配置信号逻辑" 页的屏幕截图。该页显示了度量值历史记录，其中包含一个用于筛选维度（例如事件网格操作）的区域，以及一个用于定义警报逻辑（如 "average 大于 5"）的部分。":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="显示第二个 配置信号逻辑 页的屏幕截图。该页显示了度量值历史记录，其中包含一个用于筛选维度（例如事件网格操作）的区域，以及一个用于定义警报逻辑（如 average 大于 5）的部分。":::
 
 ### <a name="verify-success"></a>验证是否成功
 
 设置警报后，它们将显示在你的实例的 " *警报* " 页上。
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="显示 "警报" 页和要添加的按钮的屏幕截图。已配置一个警报" lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="显示 警报 页和要添加的按钮的屏幕截图。已配置一个警报" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>后续步骤
 
