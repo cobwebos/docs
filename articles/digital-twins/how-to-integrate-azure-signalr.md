@@ -34,7 +34,7 @@ ms.locfileid: "90564400"
 
 你将通过以下路径将 Azure SignalR 服务连接到 Azure 数字孪生。 关系图中的 A、B 和 C 部分取自 [端到端教程必备组件](tutorial-end-to-end.md)的体系结构关系图。在本操作指南中，你将通过添加第 D 部分来构建。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="在端到端方案中显示 Azure 服务。描述从设备流向 IoT 中心的数据，通过 Azure 函数 (箭头 B) 到 Azure 数字孪生实例 (第一) ，然后通过事件网格向外传递到另一个用于处理 (箭头 C) 的 Azure 函数。第 D 节显示从箭头 C 中的同一事件网格流向 "广播" 的 Azure 函数的数据流。"广播" 与标记为 "协商" 的另一个 Azure 函数通信，"广播" 和 "协商" 与计算机设备通信。" lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="在端到端方案中显示 Azure 服务。描述从设备流向 IoT 中心的数据，通过 Azure 函数 (箭头 B) 到 Azure 数字孪生实例 (第一) ，然后通过事件网格向外传递到另一个用于处理 (箭头 C) 的 Azure 函数。第 D 节显示从箭头 C 中的同一事件网格流向 广播 的 Azure 函数的数据流。广播 与标记为 协商 的另一个 Azure 函数通信，广播 和 协商 与计算机设备通信。" lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
 
 ## <a name="download-the-sample-applications"></a>下载示例应用程序
 
@@ -61,7 +61,7 @@ ms.locfileid: "90564400"
 
 1. 选择图标以复制主连接字符串。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="显示 SignalR 实例的密钥页的 Azure 门户屏幕截图。主连接字符串旁边的 "复制到剪贴板" 图标将突出显示。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="显示 SignalR 实例的密钥页的 Azure 门户屏幕截图。主连接字符串旁边的 复制到剪贴板 图标将突出显示。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
 接下来，启动 Visual Studio (或你选择的另一个代码编辑器) ，然后在 *Azure_Digital_Twins_samples > ADTSampleApp* 文件夹中打开代码解决方案。 然后执行以下步骤来创建函数：
 
@@ -139,11 +139,11 @@ ms.locfileid: "90564400"
 接下来，使用*连接端到端解决方案*教程中的[*发布应用程序*部分](tutorial-end-to-end.md#publish-the-app)中所述的步骤将函数发布到 Azure。 你可以将其发布到端到端教程 prereq 中使用的同一应用服务/函数应用，或创建一个新的应用服务/函数应用，但你可能想要使用同一个应用来最大程度地减少重复。 此外，通过以下步骤完成应用发布：
 1. 收集 *negotiate* 函数的 **HTTP 终结点 URL**。 为此，请在 Azure 门户的 " [函数应用](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) " 页上，从列表中选择函数应用。 在 "应用程序" 菜单中，选择 " *函数* "，然后选择 *negotiate* 函数。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="函数应用的 Azure 门户视图，菜单中突出显示了 "函数"。页面上显示了函数列表，同时还会突出显示 "negotiate" 函数。":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="函数应用的 Azure 门户视图，菜单中突出显示了 函数。页面上显示了函数列表，同时还会突出显示 negotiate 函数。":::
 
     点击 " *获取函数 URL* " 并 **通过 _/api_ 复制值 (不包含最后一个 _/negotiate？_) **。 稍后会用到它。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text=""Negotiate" 函数的 Azure 门户视图。"获取函数 URL" 按钮将突出显示，并从开头到 "/api" 的 URL 部分":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Negotiate 函数的 Azure 门户视图。获取函数 URL 按钮将突出显示，并从开头到 /api 的 URL 部分":::
 
 1. 最后，使用以下 Azure CLI 命令将 Azure SignalR **连接字符串** 从前面添加到该函数的应用设置中。 如果[计算机上安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI，则可在[Azure Cloud Shell](https://shell.azure.com)中或在本地运行该命令：
  
@@ -153,7 +153,7 @@ ms.locfileid: "90564400"
 
     此命令的输出将打印为 Azure 函数设置的所有应用设置。 查找 `AzureSignalRConnectionString` 列表底部的以验证是否已添加。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="命令窗口中的输出摘录，显示名为 "AzureSignalRConnectionString" 的列表项":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="命令窗口中的输出摘录，显示名为 AzureSignalRConnectionString 的列表项":::
 
 #### <a name="connect-the-function-to-event-grid"></a>将函数连接到事件网格
 
@@ -172,7 +172,7 @@ ms.locfileid: "90564400"
     - 填写 **订阅**、 **资源组**、 **函数应用** 和 **函数** (*广播*) 。 在选择订阅后，其中一些可能会自动填充。
     - 点击“确认所选内容”。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="创建事件订阅 Azure 门户视图。上面的字段已填充，并且突出显示了 "确认选择" 和 "创建" 按钮。":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="创建事件订阅 Azure 门户视图。上面的字段已填充，并且突出显示了 确认选择 和 创建 按钮。":::
 
 返回“创建事件订阅”页，点击“创建”。
 
