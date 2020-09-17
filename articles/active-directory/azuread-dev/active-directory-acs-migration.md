@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117781"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706245"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -150,7 +150,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | 功能 | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以[使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](../saas-apps/sharepoint-on-premises-tutorial.md)。 |
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以 [使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](../saas-apps/sharepoint-on-premises-tutorial.md)。 |
 | [应用身份验证 & 本地 SharePoint 中的服务器到服务器身份验证](/SharePoint/security-for-sharepoint-server/authentication-overview) | 不受 ACS 停用的影响；无需更改。 | 
 | [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
 | [SharePoint 云混合搜索](/archive/blogs/spses/cloud-hybrid-search-service-application) | 不受 ACS 停用的影响；无需更改。 |
@@ -173,7 +173,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 #### <a name="migrate-to-azure-active-directory"></a>迁移到 Azure Active Directory
 
-可以考虑的一种途径是将应用和服务直接与 Azure AD 集成。 Azure AD 是 Microsoft 工作或学校帐户的基于云的标识提供者。 Azure AD 是 Office 365、Azure 等的标识提供者。 它提供与访问控制类似的联合身份验证功能，但并不支持所有访问控制功能。 
+可以考虑的一种途径是将应用和服务直接与 Azure AD 集成。 Azure AD 是 Microsoft 工作或学校帐户的基于云的标识提供者。 Azure AD 是 Microsoft 365、Azure 等的标识提供者。 它提供与访问控制类似的联合身份验证功能，但并不支持所有访问控制功能。 
 
 一个主要的例子是与社交标识提供者（如 Facebook、Google 和 Yahoo）联合。 如果用户使用这些类型的凭据进行登录，那么 Azure AD 并不适用。 
 
@@ -316,7 +316,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 #### <a name="migrate-to-azure-active-directory"></a>迁移到 Azure Active Directory
 
-对于这种类型的身份验证流，建议迁移到 [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/)。 Azure AD 是 Microsoft 工作或学校帐户的基于云的标识提供者。 Azure AD 是 Office 365、Azure 等的标识提供者。 
+对于这种类型的身份验证流，建议迁移到 [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/)。 Azure AD 是 Microsoft 工作或学校帐户的基于云的标识提供者。 Azure AD 是 Microsoft 365、Azure 等的标识提供者。 
 
 也可使用 Azure AD 进行服务器间身份验证（通过使用 OAuth 客户端凭据授权的 Azure AD 实现）。 下表对服务器间身份验证中的访问控制功能和 Azure AD 中提供的功能进行了比较。
 

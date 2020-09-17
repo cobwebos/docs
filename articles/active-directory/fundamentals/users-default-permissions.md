@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363068b74bf7639460da4fa80f0e661f3b8a88b9
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5d585ac57a369c994df9871bf731157de7b23212
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568806"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707622"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -36,7 +36,7 @@ ms.locfileid: "89568806"
 组 | <ul><li>创建安全组<li>创建 Microsoft 365 组<li>读取组的所有属性<li>读取非隐藏的组成员身份<li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>管理用户拥有的组的属性、所有权和成员身份<li>将来宾添加到拥有的组<li>管理动态成员身份设置<li>删除拥有的组<li>还原拥有的 Microsoft 365 组</li></ul> | <ul><li>读取所有非隐藏组的属性，包括成员身份和所有权 (即使是未加入的组) <li>读取加入的组的隐藏 Microsoft 365 组成员身份<li>按显示名称或 ObjectId (搜索组（如果允许）) </li></ul> | 无权限
 应用程序 | <ul><li>注册（创建）新应用程序<li>读取已注册的应用程序和企业应用程序的属性<li>管理拥有的应用程序的应用程序属性、分配和凭据<li>创建或删除用户的应用程序密码<li>删除拥有的应用程序<li>还原拥有的应用程序</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性</li></ul> | <ul><li>读取已注册的应用程序和企业应用程序的属性
 设备</li></ul> | <ul><li>读取设备的所有属性<li>管理拥有的设备的所有属性</li></ul> | 无权限 | 无权限
-Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有合作伙伴协定</li></ul> | <ul><li>读取显示名称和已验证的域</li></ul> | <ul><li>读取显示名称和已验证的域</li></ul>
+Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有合作伙伴协定</li></ul> | <ul><li>阅读公司显示名称<li>读取所有域</li></ul> | <ul><li>阅读公司显示名称<li>读取所有域</li></ul>
 角色和范围 | <ul><li>读取所有管理角色和成员身份<li>读取管理单元的所有属性和成员身份</li></ul> | 无权限 | 无权限
 订阅 | <ul><li>读取所有订阅<li>启用服务计划成员</li></ul> | 无权限 | 无权限
 策略 | <ul><li>读取策略的所有属性<li>管理拥有的策略的所有属性</li></ul> | 无权限 | 无权限

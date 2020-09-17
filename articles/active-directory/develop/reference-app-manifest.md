@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115061"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705739"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -78,11 +78,11 @@ ms.locfileid: "88115061"
 
 ### <a name="addins-attribute"></a>addIns 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | addIns | 集合 |
 
-定义自定义行为，供消耗型服务在特定上下文中调用应用。 例如，呈现文件流的应用程序可以设置其“FileHandler”功能的 `addIns` 属性。 此参数将允许 Office 365 等服务在用户正在处理的文档的上下文中调用应用程序。
+定义自定义行为，供消耗型服务在特定上下文中调用应用。 例如，呈现文件流的应用程序可以设置其“FileHandler”功能的 `addIns` 属性。 此参数将允许诸如 Microsoft 365 的服务在用户正在处理的文档的上下文中调用该应用程序。
 
 示例：
 
@@ -103,7 +103,7 @@ ms.locfileid: "88115061"
 
 ### <a name="allowpublicclient-attribute"></a>allowPublicClient 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | allowPublicClient | 布尔 |
 
@@ -117,7 +117,7 @@ ms.locfileid: "88115061"
 
 ### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | availableToOtherTenants | 布尔 |
 
@@ -128,9 +128,9 @@ ms.locfileid: "88115061"
 
 ### <a name="appid-attribute"></a>appId 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| appId | 字符串 |
+| appId | String |
 
 指定由 Azure AD 分配给应用的应用唯一标识符。
 
@@ -142,7 +142,7 @@ ms.locfileid: "88115061"
 
 ### <a name="approles-attribute"></a>appRoles 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
@@ -167,9 +167,9 @@ ms.locfileid: "88115061"
 
 ### <a name="displayname-attribute"></a>displayName 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| displayName | 字符串 |
+| displayName | String |
 
 应用的显示名称。
 
@@ -178,17 +178,17 @@ ms.locfileid: "88115061"
 
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| errorUrl | 字符串 |
+| errorUrl | String |
 
-不支持。
+不受支持。
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-|groupMembershipClaims | 字符串 |
+|groupMembershipClaims | String |
 
 配置应用所需的用户访问令牌或 OAuth 2.0 访问令牌中颁发的 `groups` 声明。 若要设置此属性，请使用以下有效的字符串值之一：
 
@@ -204,9 +204,9 @@ ms.locfileid: "88115061"
 
 ### <a name="homepage-attribute"></a>homepage 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| homepage |字符串 |
+| homepage |String |
 
 应用程序主页的 URL。
 
@@ -215,9 +215,9 @@ ms.locfileid: "88115061"
 
 ### <a name="objectid-attribute"></a>objectId 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-|objectId | 字符串 |
+|objectId | String |
 
 应用在目录中的唯一标识符。
 
@@ -231,9 +231,9 @@ ms.locfileid: "88115061"
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| optionalClaims | 字符串 |
+| optionalClaims | String |
 
 此特定应用的安全令牌服务在令牌中返回的可选声明。
 
@@ -249,7 +249,7 @@ ms.locfileid: "88115061"
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | identifierUris | String Array |
 
@@ -263,9 +263,9 @@ ms.locfileid: "88115061"
 
 ### <a name="informationalurls-attribute"></a>informationalUrls 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| informationalUrls | 字符串 |
+| informationalUrls | String |
 
 指定应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 有关详细信息，请参阅[如何：为已注册的 Azure AD 应用添加服务条款和隐私声明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -282,7 +282,7 @@ ms.locfileid: "88115061"
 
 ### <a name="keycredentials-attribute"></a>keyCredentials 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
@@ -306,7 +306,7 @@ ms.locfileid: "88115061"
 
 ### <a name="knownclientapplications-attribute"></a>knownClientApplications 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | knownClientApplications | String Array |
 
@@ -320,9 +320,9 @@ ms.locfileid: "88115061"
 
 ### <a name="logourl-attribute"></a>logoUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| logoUrl | 字符串 |
+| logoUrl | String |
 
 只读值，指向已在门户中上传的徽标的 CDN URL。
 
@@ -334,9 +334,9 @@ ms.locfileid: "88115061"
 
 ### <a name="logouturl-attribute"></a>logoutUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| logoutUrl | 字符串 |
+| logoutUrl | String |
 
 用于注销应用的 URL。
 
@@ -348,9 +348,9 @@ ms.locfileid: "88115061"
 
 ### <a name="name-attribute"></a>name 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| name | 字符串 |
+| name | String |
 
 应用的显示名称。
 
@@ -362,7 +362,7 @@ ms.locfileid: "88115061"
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | oauth2AllowImplicitFlow | 布尔 |
 
@@ -376,7 +376,7 @@ ms.locfileid: "88115061"
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | 布尔 |
 
@@ -390,7 +390,7 @@ ms.locfileid: "88115061"
 
 ### <a name="oauth2permissions-attribute"></a>oauth2Permissions 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | oauth2Permissions | 集合 |
 
@@ -415,7 +415,7 @@ ms.locfileid: "88115061"
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | oauth2RequiredPostResponse | 布尔 |
 
@@ -429,9 +429,9 @@ ms.locfileid: "88115061"
 
 ### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| parentalControlSettings | 字符串 |
+| parentalControlSettings | String |
 
 - `countriesBlockedForMinors` 指定禁止未成年人使用该应用的国家/地区。
 - `legalAgeGroupRule` 指定适用于应用用户的法定年龄组规则。 可设置为 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。
@@ -447,7 +447,7 @@ ms.locfileid: "88115061"
 
 ### <a name="passwordcredentials-attribute"></a>passwordCredentials 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | passwordCredentials | 集合 |
 
@@ -469,7 +469,7 @@ ms.locfileid: "88115061"
 
 ### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | preAuthorizedApplications | 集合 |
 
@@ -490,7 +490,7 @@ ms.locfileid: "88115061"
 
 ### <a name="publicclient-attribute"></a>publicClient 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | publicClient | 布尔|
 
@@ -500,9 +500,9 @@ ms.locfileid: "88115061"
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| publisherDomain | 字符串 |
+| publisherDomain | String |
 
 应用程序的已验证发布者域。 只读。
 
@@ -514,7 +514,7 @@ ms.locfileid: "88115061"
 
 ### <a name="replyurls-attribute"></a>replyUrls 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | replyUrls | 字符串数组 |
 
@@ -524,7 +524,7 @@ ms.locfileid: "88115061"
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | replyUrlsWithType | 集合 |
 
@@ -549,7 +549,7 @@ ms.locfileid: "88115061"
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -576,9 +576,9 @@ ms.locfileid: "88115061"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| samlMetadataUrl | 字符串 |
+| samlMetadataUrl | String |
 
 应用的 SAML 元数据 URL。
 
@@ -590,9 +590,9 @@ ms.locfileid: "88115061"
 
 ### <a name="signinurl-attribute"></a>signInUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| signInUrl | 字符串 |
+| signInUrl | String |
 
 指定应用主页的 URL。
 
@@ -604,9 +604,9 @@ ms.locfileid: "88115061"
 
 ### <a name="signinaudience-attribute"></a>signInAudience 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| signInAudience | 字符串 |
+| signInAudience | String |
 
 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值是：
 - `AzureADMyOrg` - 在我组织的 Azure AD 租户（例如单租户）中具有 Microsoft 工作或学校帐户的用户
@@ -622,7 +622,7 @@ ms.locfileid: "88115061"
 
 ### <a name="tags-attribute"></a>tags 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | 标记 | String Array  |
 

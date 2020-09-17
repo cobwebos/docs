@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184935"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705531"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
 
@@ -43,7 +43,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 设备尝试身份验证时，会触发活动时间戳的评估。 在以下情况下，Azure AD 会评估活动时间戳：
 
-- 已触发需要[托管设备](../conditional-access/require-managed-devices.md)或批准的[客户端应用](../conditional-access/app-based-conditional-access.md)的条件性访问策略。
+- 已触发需要 [托管设备](../conditional-access/require-managed-devices.md) 或批准的 [客户端应用](../conditional-access/app-based-conditional-access.md) 的条件性访问策略。
 - 已加入 Azure AD 或已加入混合 Azure AD 的 Windows 10 设备在网络中处于活动状态。 
 - Intune 受管理设备已签入服务。
 
@@ -69,7 +69,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 若要更新 Azure AD 中的设备，需要一个具有以下角色之一的帐户：
 
-- 全局管理员角色
+- 全局管理员
 - 云设备管理员
 - Intune 服务管理员
 
@@ -91,7 +91,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 不要删除系统管理的设备。 这些是通常的设备，如 Autopilot。 删除后，这些设备将无法重新预配。 默认情况下，新的 `Get-AzureADDevice` cmdlet 可以排除系统管理的设备。 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>混合 Azure AD 加入设备
+### <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
 加入混合 Azure AD 的设备应该遵循本地陈旧设备管理的策略。 
 
@@ -101,7 +101,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 - **Windows 7/8** -首先在本地 AD 中禁用或删除 Windows 7/8 设备。 无法使用 Azure AD Connect 在 Azure AD 中禁用或删除 Windows 7/8 设备。 相反，当你在本地进行更改时，你必须在 Azure AD 中禁用/删除。
 
 > [!NOTE]
->* 删除本地 AD 或 Azure AD 中的设备不会删除客户端上的注册。 它只会阻止使用设备作为标识 (（例如条件访问) ）访问资源。 阅读有关如何在[客户端上删除注册](faq.md#hybrid-azure-ad-join-faq)的其他信息。
+>* 删除本地 AD 或 Azure AD 中的设备不会删除客户端上的注册。 它只会阻止使用设备作为标识 (（例如条件访问) ）访问资源。 阅读有关如何在 [客户端上删除注册](faq.md#hybrid-azure-ad-join-faq)的其他信息。
 >* 仅在 Azure AD 中删除 Windows 10 设备将使用 Azure AD connect 从本地重新同步设备，但作为 "挂起" 状态的新对象。 设备上需要重新注册。
 >* 从 Windows 10/服务器2016设备的同步作用域中删除设备将删除 Azure AD 设备。 将其添加回同步作用域会将新对象置于 "挂起" 状态。 需要重新注册设备。
 >* 如果不使用 Windows 10 设备 Azure AD Connect 来同步 (例如仅将 AD FS 用于注册) ，则必须管理与 Windows 7/8 设备类似的生命周期。
@@ -129,11 +129,11 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 典型的例程包括以下步骤：
 
-1. 使用[AzureAD](/powershell/module/azuread/connect-azuread) cmdlet 连接到 Azure Active Directory
+1. 使用 [AzureAD](/powershell/module/azuread/connect-azuread) cmdlet 连接到 Azure Active Directory
 1. 获取设备列表
-1. 使用[get-azureaddevice](/powershell/module/azuread/Set-AzureADDevice) cmdlet 禁用设备 (禁用，方法是使用-AccountEnabled 选项) 。 
+1. 使用 [get-azureaddevice](/powershell/module/azuread/Set-AzureADDevice) cmdlet 禁用设备 (禁用，方法是使用-AccountEnabled 选项) 。 
 1. 在删除设备之前，将等待所选天数的宽限期。
-1. 使用[get-azureaddevice](/powershell/module/azuread/Remove-AzureADDevice) cmdlet 删除设备。
+1. 使用 [get-azureaddevice](/powershell/module/azuread/Remove-AzureADDevice) cmdlet 删除设备。
 
 ### <a name="get-the-list-of-devices"></a>获取设备列表
 
@@ -150,7 +150,7 @@ $dt = [datetime]’2017/01/01’
 Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
-## <a name="what-you-should-know"></a>应了解的内容
+## <a name="what-you-should-know"></a>要点
 
 ### <a name="why-is-the-timestamp-not-updated-more-frequently"></a>为何时间戳不经常更新？
 
@@ -175,9 +175,9 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 
 将拒绝使用该设备在 Azure AD 中进行身份验证。 常见示例包括：
 
-- **混合 Azure AD 联接的设备**-用户可以使用设备登录到其本地域。 但是，他们无法访问 Office 365 等 Azure AD 资源。
+- **混合 Azure AD 联接的设备** -用户可以使用设备登录到其本地域。 但是，它们无法访问 Azure AD 资源，如 Microsoft 365。
 - **已加入 Azure AD 的设备** - 用户无法使用该设备登录。 
-- **移动设备** - 用户无法访问 Office 365 等 Azure AD 资源。 
+- **移动设备** -用户无法访问 Azure AD 资源，如 Microsoft 365。 
 
 ## <a name="next-steps"></a>后续步骤
 

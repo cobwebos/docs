@@ -1,6 +1,6 @@
 ---
 title: Microsoft 标识平台的范围、权限和许可
-description: 介绍 Microsoft 标识平台终结点中的授权，包括范围、权限和许可。
+description: 了解 Microsoft 标识平台终结点中的授权，包括范围、权限和许可。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263221"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705684"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -28,11 +28,11 @@ ms.locfileid: "84263221"
 Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是可让第三方应用代表用户访问 Web 托管资源的方法。 与 Microsoft 标识平台集成的任何 Web 托管资源都有一个资源标识符，也称为“应用程序 ID URI”。 例如，Microsoft 的部分 Web 托管资源包括：
 
 * Microsoft Graph： `https://graph.microsoft.com`
-* Office 365 邮件 API：`https://outlook.office.com`
+* Microsoft 365 邮件 API： `https://outlook.office.com`
 * Azure Key Vault：`https://vault.azure.net`
 
 > [!NOTE]
-> 我们强烈建议你使用 Microsoft Graph，而不要使用 Office 365 邮件 API 等。
+> 强烈建议使用 Microsoft Graph，而不是 Microsoft 365 邮件 API 等等。
 
 这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 以上任意资源还可以定义一组可用于将该资源的功能划分成较小区块的权限。 例如， [Microsoft Graph](https://graph.microsoft.com) 已定义执行以下任务及其他任务所需的权限：
 
@@ -68,9 +68,9 @@ Microsoft 标识平台支持两种类型的权限：**委托的权限**和**应�
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect 范围
 
-OpenID connect 的 Microsoft 标识平台实现具有一些定义明确的作用域，这些作用域也在 Microsoft Graph 上托管： `openid` 、 `email` 、 `profile` 和 `offline_access` 。 不支持 `address` 和 `phone` OpenID Connect 范围。
+OpenID Connect 的 Microsoft 标识平台实现具有一些明确定义并托管在 Microsoft Graph 上的作用域：`openid``email`、`profile` 和 `offline_access`。 不支持 `address` 和 `phone` OpenID Connect 范围。
 
-请求 OIDC 作用域，令牌将为你授予调用[用户信息终结点](userinfo.md)所用的令牌。
+请求 OIDC 作用域和令牌将为你提供一个令牌来调用 [UserInfo 终结点](userinfo.md)。
 
 ### <a name="openid"></a>openid
 
@@ -159,14 +159,14 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
-应用程序可以在应用注册门户中记下他们需要（委托和应用程序）的权限。  这允许使用 `/.default` 范围和 Azure 门户的 "授予管理员许可" 选项。  通常，最佳做法是确保为给定应用程序静态定义的权限是它动态/增量请求的权限的超集。
+应用程序可以在应用注册门户中记录 (委托和应用程序) 所需的权限。  这允许使用 `/.default` 范围和 Azure 门户的 "授予管理员许可" 选项。  通常，最佳做法是确保为给定应用程序静态定义的权限是它动态/增量请求的权限的超集。
 
 > [!NOTE]
 >只能使用 [`/.default`](#the-default-scope) 来请求应用程序权限 - 因此，如果应用需要应用程序权限，请确保这些权限已在应用注册门户中列出。
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
-1. 在 Azure 门户中，[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中转到你的应用程序，或[创建应用](quickstart-register-app.md)（如果尚未这样做）。
+1. 在 Azure 门户中， [应用注册](https://go.microsoft.com/fwlink/?linkid=2083908) 体验中转到你的应用程序，或 [创建应用](quickstart-register-app.md) （如果尚未这样做）。
 2. 找到“API 权限”部分，然后在“API 权限”中单击“添加权限”。
 3. 从可用 API 列表中选择 **Microsoft Graph**，然后添加应用所需的权限。
 3. **保存** 应用注册。
@@ -193,11 +193,11 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 参数        | 条件        | 描述                                                                                |
+| 参数        | 条件        | 说明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 必需 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
-| `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `redirect_uri` | 必选 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
+| `tenant` | 必须 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
+| `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
+| `redirect_uri` | 必需 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
 |`scope`        | 必需        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |
 
@@ -215,7 +215,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | 参数 | 说明 |
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
-| `state` | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
+| `state` | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 | `admin_consent` | 将设置为 `True`。 |
 
 #### <a name="error-response"></a>错误响应
@@ -226,7 +226,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 可用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` | 可帮助开发人员识别错误根本原因的具体错误消息。 |

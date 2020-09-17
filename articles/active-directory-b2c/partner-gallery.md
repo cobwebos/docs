@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049854"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706691"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作伙伴
 
@@ -37,6 +37,7 @@ ms.locfileid: "89049854"
 | ![徽标](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一种 ID 验证服务，用于启用实时自动 ID 验证，从而保护客户数据。 |
 | ![徽标](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) 是一种分析和身份验证提供程序，用于验证用户标识，并根据用户设备提供全面的风险评估。 |
 | ![徽标](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) 是一个文档 ID 和面部生物识别验证解决方案，可让公司实时 *了解你的客户* 和标识要求。  |
+| ![徽标](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) 云-本机平台使用智能分析，提供跨应用程序集成，以简化 IT 现代化，提高安全性、治理和合规性。 业务现代化改变了公司查看访问请求、执行访问评审、报告分析和简化认证活动的方式。  |
 | ![徽标](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 集成可帮助你安全登录并启用无密码 authentication、多重身份验证和数字许可证扫描。|
 | ![徽标](./media/partner-gallery/twilio-logo.png) | [Twilio 验证应用程序](./partner-twilio.md) 提供多个解决方案，用于启用多重身份验证 (MFA) 通过 SMS 一次性密码 (OTP) 、基于时间的一次性密码 (TOTP) 和推送通知，以及符合支付服务指令 2 (PSD2) 的 SCA 要求。|
 | ![徽标](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) 是基于用户键入模式的身份验证和验证提供程序，它提供了强制执行多重身份验证的 ID 验证解决方案，有助于满足支付服务指令 2 (PSD2) 的 SCA 要求。 |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 569bc54d262e8611679c8aa86ed4dbfbed61aa79
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442672"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705769"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -155,7 +155,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 > **用户可以将设备加入到 Azure AD** 设置仅适用于 Windows 10 上的 Azure AD 加入。
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 将这些用户添加到 Azure AD 中的 " *设备管理员* " 角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
-- **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOS 设备。 如果选择 " **无**"，则不允许设备注册 Azure AD。 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用********。
+- **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOS 设备。 如果选择 " **无**"，则不允许设备注册 Azure AD。 注册 Microsoft Intune 或移动设备管理 (MDM) Microsoft 365 需要注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用********。
 - **需要多重身份验证才能加入设备** -可以选择是否要求用户提供附加身份验证因素，以将其设备加入 Azure AD。 默认值为 No****。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-howitworks.md)。 
 
 > [!NOTE]

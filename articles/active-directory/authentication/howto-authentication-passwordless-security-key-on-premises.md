@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e1e516986c32e203837f79c83290cc99049e7a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526963"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706330"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用无密码安全密钥登录到本地资源) 
 
@@ -57,7 +57,7 @@ Azure AD Kerberos Server 对象在本地 Active Directory 中创建，然后安�
 
 此方案支持以下两种方案中的单一登录 (SSO) ：
 
-- 适用于 Office 365 和其他启用 SAML 的应用程序的云资源。
+- 适用于云资源，如 Microsoft 365 和其他启用 SAML 的应用程序。
 - 对于本地资源和对网站的 Windows 集成身份验证。 这些资源可能包括需要 IIS 身份验证的网站和 SharePoint 站点，以及使用 NTLM 身份验证的资源。
 
 ### <a name="unsupported-scenarios"></a>不支持的方案
@@ -109,7 +109,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 此命令输出 Azure AD Kerberos 服务器的属性。 您可以查看属性以验证所有内容是否都按正确的顺序进行。
 
-| 属性 | 说明 |
+| Property | 说明 |
 | --- | --- |
 | ID | AD DS DC 对象的唯一 ID。 此 ID 有时称为 "槽" 或它是 "分支 ID"。 |
 | DomainDnsName | Active Directory 域的 DNS 域名。 |

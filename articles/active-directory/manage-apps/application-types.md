@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 955efe45be27fa2f4e738066bb3b69b3604be33a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400715"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707877"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>使用用于标识管理的 Azure AD 租户查看应用
 [有关应用程序管理的快速入门系列](view-applications-portal.md)介绍了基础知识。 在此示例中，你将了解如何使用用于标识管理的 Azure AD 租户查看所有应用。 本文更深入地介绍了深入的应用类型。
@@ -27,7 +27,7 @@ ms.locfileid: "89400715"
    - **Azure AD 应用注册** –使用 Azure AD 门户上的 **应用注册** 选项添加到租户的应用。 通常，使用 Open ID Connect 和 OAuth 标准开发自定义开发的应用程序。
    - **应用程序代理应用程序** - 要从外部向其提供单一登录且在本地环境中运行的应用程序
 - 注册或登录到时，与 Azure Active Directory 集成的第三方应用程序。 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) 就是一个示例。
-- Microsoft 应用，如 Microsoft 365 或 Office 365。
+- Microsoft 应用，如 Microsoft 365。
 - 当通过使用[应用程序注册表](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
 - 当通过使用 [V2.0 应用程序注册门户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
 - 添加应用程序时，使用 Visual Studio 的[ASP.NET 身份验证方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)进行开发

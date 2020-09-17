@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5201d0e31eb6d3b06316b74463dc2b68b33008c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563907"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707962"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查 Azure AD 我的应用登录应用程序时遇到的问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "90563907"
 这些应用程序代表用户在 Azure AD 门户中进行配置。 必须正确配置应用程序，并将其分配给用户或用户所属的组，才能在 "我的应用" 中看到该应用程序。 
 
 用户看到的应用类型分为以下几类：
--   Microsoft 365 和 Office 365 应用程序
+-   Microsoft 365 应用程序
 -   使用基于联合的 SSO 配置的 Microsoft 应用程序与第三方应用程序
 -   基于密码的 SSO 应用程序
 -   使用现有 SSO 解决方案的应用程序
@@ -163,7 +163,7 @@ ms.locfileid: "90563907"
 11. 选择 " **分配** " 按钮，将这些许可证分配给此用户。
 
 ## <a name="troubleshooting-deep-links"></a>深层链接疑难解答
-深层链接或用户访问 URL 是用户可用来直接从其浏览器 URL 栏访问其密码 - SSO 应用程序的链接。 通过导航到此链接，用户将自动登录到应用程序，而无需先转到 "我的应用"。 此链接与用户从 Office 365 应用程序启动器访问这些应用程序时使用的链接相同。
+深层链接或用户访问 URL 是用户可用来直接从其浏览器 URL 栏访问其密码 - SSO 应用程序的链接。 通过导航到此链接，用户将自动登录到应用程序，而无需先转到 "我的应用"。 链接与用户用于从 Microsoft 365 应用程序启动器访问这些应用程序的链接相同。
 
 ### <a name="checking-the-deep-link"></a>检查深层链接
 

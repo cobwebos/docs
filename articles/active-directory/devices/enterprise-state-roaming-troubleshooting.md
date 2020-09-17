@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267235"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705718"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -78,9 +78,9 @@ ms.locfileid: "89267235"
 
 在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档 [KB3193683](https://support.microsoft.com/kb/3193683)。 
 
-**潜在问题**：如果在 Azure Active Directory 门户中将设备配置为需要多重身份验证，则在使用密码登录到 Windows 10 设备时可能无法对设置进行同步。 这种多重身份验证配置旨在保护 Azure 管理员帐户。 通过 Microsoft Passport for Work PIN 或通过访问其他 Azure 服务（如 Office 365）时完成多重身份验证，管理员用户仍能登录到 Windows 10 设备，从而进行同步。
+**潜在问题**：如果在 Azure Active Directory 门户中将设备配置为需要多重身份验证，则在使用密码登录到 Windows 10 设备时可能无法对设置进行同步。 这种多重身份验证配置旨在保护 Azure 管理员帐户。 管理员用户仍可以通过其 Microsoft Passport for Work PIN 登录到其 Windows 10 设备，或在访问其他 Azure 服务（如 Microsoft 365）时完成多重身份验证，从而进行同步。
 
-**潜在问题**：如果管理员配置了 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，同步可能会失败。 确保使用 Microsoft Passport for Work PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
+**潜在问题**：如果管理员配置了 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，同步可能会失败。 在访问其他 Azure 服务（如 Microsoft 365）时，请确保使用 Microsoft Passport for Work PIN 进行登录和注销，或完成多重身份验证。
 
 ### <a name="event-viewer"></a>事件查看器
 

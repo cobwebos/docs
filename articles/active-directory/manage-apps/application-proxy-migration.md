@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641171"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706653"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -32,7 +32,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 通过此表了解如何对威胁管理网关 (TMG)、统一访问网关 (UAG)、Web 应用程序代理 (WAP) 和 Azure AD 应用程序代理 (AP) 进行比较。
 
-| 功能 | TMG | UAG | WAP | AP |
+| Feature | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | 证书身份验证 | 是 | 是 | - | - |
 | 有选择地发布浏览器应用 | 是 | 是 | 是 | 是 |
@@ -59,7 +59,7 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
    - 条件访问和多重身份验证等功能易于启用
 - 外围安全区域中无组件
 - 不需要任何入站连接
-- 你的应用程序页面，你的用户可以从其所有应用程序（包括 O365、Azure AD 集成的 SaaS 应用和本地 web 应用）中转到它们。 
+- 用户可以在 "我的应用" 页上找到其所有应用程序，包括 Microsoft 365、Azure AD 集成的 SaaS 应用和本地 web 应用。 
 
 
 ## <a name="next-steps"></a>后续步骤

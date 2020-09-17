@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e4aa0cb2cc3ff623929222d83a560f66198f13c0
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564264"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707639"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>排查 Linux 中的 Azure 文件问题 (SMB) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "90564264"
 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) 确保 Linux 客户端满足正确的先决条件。 AzFileDiagnostics 自动检测本文中提到的大多数症状。 它有助于设置环境以获得最佳性能。 也可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息。 疑难解答提供了帮助你解决连接、映射和装载 Azure 文件共享问题的步骤。
 
 > [!IMPORTANT]
-> 本文的内容仅适用于 SMB 共享。
+> 本文的内容仅适用于 SMB 共享。 有关 NFS 共享的详细信息，请参阅对 [AZURE NFS 文件共享进行故障排除](storage-troubleshooting-files-nfs.md)。
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>无法连接或装载 Azure 文件共享
 

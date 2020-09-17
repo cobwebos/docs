@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 662bda03fc2d389ed316bd2c7141d5e6a30cef1a
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814585"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706296"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "88814585"
 - 共同客户可以获得分步配置教程。
 - 使用系统进行跨域标识管理 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 的客户可以对同一应用使用预配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 - 对于联合应用程序 (打开 ID 和 SAML/WS 进) ，应用程序必须支持软件即服务 (SaaS) 模型，才能在 Azure AD 应用程序库中列出。 企业库应用程序必须支持多个客户配置，而不是任何特定客户。
 - 对于 Open ID Connect，应用程序必须是 multitenanted 的，并且必须正确地为应用程序实现 [Azure AD 许可框架](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 。 用户可以将登录请求发送到公共终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
@@ -124,7 +124,7 @@ ms.locfileid: "88814585"
 
 ## <a name="update-or-remove-an-existing-listing"></a>更新或删除现有列表
 
-若要更新或删除 Azure AD 应用库中的现有应用程序，首先需要在 [应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 如果没有，请使用您的 Microsoft 帐户（例如 Outlook 或 Hotmail）登录。
+若要更新或删除 Azure AD 应用库中的现有应用程序，首先需要在 [应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交请求。 如果有工作或学校帐户，请使用该帐户登录到此门户。 如果没有，请使用您的 Microsoft 帐户（例如 Outlook 或 Hotmail）登录。
 
 - 选择相应的选项，如下图所示。
 

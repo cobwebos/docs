@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: de6cd4ee2c9800757399b7e32b59d903b817c657
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9a1745aa0e78dafca70ea90d4a5ac92f340312b3
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604387"
+ms.locfileid: "90706937"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -38,18 +38,18 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Locale  | 语言                          | 自定义                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | 阿拉伯语（阿拉伯联合酋长国）                      | 否                                                |
+| `ar-AE` | 阿拉伯 (阿拉伯联合酋长国)      | 语言模型                                    |
 | `ar-BH` | 阿拉伯语(巴林)，现代标准 | 语言模型                                    |
 | `ar-EG` | 阿拉伯语（埃及）                    | 语言模型                                    |
 | `ar-IL` | 阿拉伯语（以色列）                   | 否                                                |
-| `ar-IQ` | 阿拉伯语（伊拉克）                     | 否                                                |
-| `ar-JO` | 阿拉伯语（约旦）                   | 否                                                |
-| `ar-KW` | 阿拉伯语（科威特）                   | 否                                                |
-| `ar-LB` | 阿拉伯语（黎巴嫩）                  | 否                                                |
-| `ar-OM` | 阿拉伯语（阿曼）                     | 否                                                |
-| `ar-PS` | 阿拉伯语（巴勒斯坦）                | 否                                                |
-| `ar-QA` | 阿拉伯语（卡塔尔）                    | 否                                                |
-| `ar-SA` | 阿拉伯语（沙特阿拉伯）             | 否                                                |
+| `ar-IQ` | 阿拉伯语（伊拉克）                     | 语言模型                                    |
+| `ar-JO` | 阿拉伯语（约旦）                   | 语言模型                                    |
+| `ar-KW` | 阿拉伯语(科威特)                   | 语言模型                                    |
+| `ar-LB` | 阿拉伯语（黎巴嫩）                  | 语言模型                                    |
+| `ar-OM` | 阿拉伯语（阿曼）                     | 语言模型                                    |
+| `ar-PS` | Palestine) 的阿拉伯语 (状态       | 否                                                |
+| `ar-QA` | 阿拉伯语（卡塔尔）                    | 语言模型                                    |
+| `ar-SA` | 阿拉伯语（沙特阿拉伯）             | 语言模型                                    |
 | `ar-SY` | 阿拉伯语（叙利亚）                    | 语言模型                                    |
 | `bg-BG` | 保加利亚语(保加利亚)              | 语言模型                                    |
 | `ca-ES` | 加泰罗尼亚语(西班牙)                   | 语言模型                                    |
@@ -103,7 +103,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ko-KR` | 韩语(韩国)                    | 语言模型                                    |
 | `lt-LT` | 立陶宛语（立陶宛）            | 语言模型                                    |
 | `lv-LV` | 拉脱维亚语（拉脱维亚）                  | 语言模型                                    |
-| `mr-IN` | 马拉地语(印度)                   | 语言模型                                    |
+| `mr-IN` | 马拉地语（印度）                   | 语言模型                                    |
 | `mt-MT` | 马耳他语 (马耳他)                     | 语言模型                                    |
 | `nb-NO` | 书面挪威语(挪威)       | 语言模型                                    |
 | `nl-NL` | 荷兰语（荷兰）               | 语言模型                                    |
@@ -117,7 +117,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | 瑞典语（瑞典）                  | 语言模型                                    |
 | `ta-IN` | 泰米尔语（印度）                     | 语言模型                                    |
 | `te-IN` | 泰卢固语（印度）                    | 语言模型                                    |
-| `th-TH` | 泰语（泰国）                   | 否                                                |
+| `th-TH` | 泰语（泰国）                   | 语言模型                                    |
 | `tr-TR` | 土耳其语（土耳其）                  | 语言模型                                    |
 | `zh-CN` | 中文（普通话，简体）    | 声学模型<br>语言模型                  |
 | `zh-HK` | 中文(粤语，繁体)  | 语言模型                                    |

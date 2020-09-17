@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115758"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706177"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -70,13 +70,13 @@ Azure AD 中的应用程序有两种表示形式：
 
 * 当用户登录到与 Azure AD 集成的第三方应用程序时
   * 在登录期间，系统要求用户向应用程序授予访问其配置文件的权限和其他权限。 第一个授权者导致生成一个服务主体，表示要添加到目录中的应用程序。
-* 当用户登录到 [Office 365](https://products.office.com/) 等 Microsoft 联机服务时
-  * 订阅 Office 365 或开始试用时，会在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
-  * 某些 Office 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
+* 当用户登录到 Microsoft 联机服务如 [Microsoft 365](https://products.office.com/)
+  * 当你订阅 Microsoft 365 或开始试用时，将在目录中创建一个或多个服务主体，表示用于传递与 Microsoft 365 相关的所有功能的各种服务。
+  * 某些 Microsoft 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）
 * 添加一个应用程序以使用 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)
 * 连接应用程序，以使用 SAML 或密码单一登录 (SSO) 进行单一登录
-* 通过 Microsoft Graph API 或 PowerShell 以编程方式
+* 通过 Microsoft Graph API 或 PowerShell 以编程方式实现
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>如何将应用程序对象与服务主体彼此相关？
 
@@ -116,7 +116,7 @@ Azure AD 中的应用程序有两种表示形式：
 * 使用联合身份验证或密码的 SSO
 * 用户预配和同步
 * 基于角色的访问控制 - 使用目录定义应用程序角色，以便在应用程序中执行基于角色的授权检查
-* OAuth 授权服务 - Office 365 和其他 Microsoft 应用程序使用这些服务来授予对 API/资源的访问权限
+* OAuth 授权服务-Microsoft 365 和其他 Microsoft 应用程序使用这些服务来授予对 Api/资源的访问权限
 * 应用程序发布和代理 - 将应用程序从专用网络发布到 Internet
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>谁有权向我的 Azure AD 实例添加应用程序？

@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141357"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705888"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -153,7 +153,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>多个租户中的多个层
 
-如果在不同的租户中注册不同的应用程序层，将发生类似的情况。 例如，考虑构建一个调用 Office 365 Exchange Online API 的本机客户端应用程序的情况。 如果要开发该本机应用程序，并让该本机应用程序在客户的租户中运行，必须存在 Exchange Online 服务主体。 在此情况下，开发人员和客户必须购买 Exchange Online，才能在其租户中创建服务主体。
+如果在不同的租户中注册不同的应用程序层，将发生类似的情况。 例如，假设构建调用 Exchange Online API 的本机客户端应用程序。 如果要开发该本机应用程序，并让该本机应用程序在客户的租户中运行，必须存在 Exchange Online 服务主体。 在此情况下，开发人员和客户必须购买 Exchange Online，才能在其租户中创建服务主体。
 
 如果它是由 Microsoft 以外的组织生成的 API，则 API 的开发人员需要提供一个可供其客户许可将其应用程序添加到客户租户中的方式。 对于第三方开发人员，建议的设计是使所生成的 API 能够同时用作 Web 客户端来实现注册。 为此，请按以下步骤操作：
 
@@ -181,7 +181,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用与 Azure AD 之间启用单一登录 (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Office 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要详细了解如何对 Azure AD 和 Office 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问：[Microsoft Graph API][MSFT-Graph-overview]。
+本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 启用应用与 Azure AD 之间 (SSO) 的单一登录后，还可以更新应用程序以访问 Microsoft 资源（如 Microsoft 365）公开的 Api。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要详细了解如何对 Azure AD 和 Microsoft 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
 
 ## <a name="related-content"></a>相关内容
 

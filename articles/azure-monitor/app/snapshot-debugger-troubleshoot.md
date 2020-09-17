@@ -2,15 +2,15 @@
 title: 排查 Azure Application Insights Snapshot Debugger 问题
 description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights 快照调试器时遇到的难题。
 ms.topic: conceptual
-author: brahmnes
+author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671403"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707826"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights 快照调试器，但未看到出现异常的快照，则可以使用以下说明进行故障排除。 可能有许多不同的原因导致未生成快照。 可以运行快照运行状况检查以确定一些可能的常见原因。
@@ -32,6 +32,30 @@ ms.locfileid: "77671403"
 
 请确保在发布的应用程序中使用正确的检测密钥。 通常，从 ApplicationInsights.config 文件中读取检测密钥。 请验证该值是否与在门户中看到的 Application Insights 资源的检测密钥相同。
 
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>检查 SSL 客户端设置 (ASP.NET) 
+
+如果在虚拟机上的 Azure App Service 或 IIS 中承载了 ASP.NET 应用程序，则由于缺少 SSL 安全协议，因此应用程序可能无法连接到 Snapshot Debugger 服务。
+[Snapshot Debugger 终结点需要 TLS 版本 1.2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json)。 SSL 安全协议集是 web.config 的 system.web 节中的 httpRuntime targetFramework 值所启用的一个兼容。如果 httpRuntime targetFramework 为4.5.2 或更低版本，则默认情况下不包含 TLS 1.2。
+
+> [!NOTE]
+> HttpRuntime targetFramework 值独立于构建应用程序时使用的目标框架。
+
+若要检查设置，请打开 web.config 文件，然后找到 "system.web" 部分。 确保将的 `targetFramework` `httpRuntime` 设置为4.6 或更高版本。
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> 修改 httpRuntime targetFramework 值将更改应用于应用程序的运行时特性，并可能会导致其他微妙的行为更改。 做出此更改后，请务必彻底测试您的应用程序。 有关兼容性更改的完整列表，请参阅 https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+
+> [!NOTE]
+> 如果 targetFramework 为4.7 或更高版本，则 Windows 将确定可用协议。 Azure App Service 中提供了 TLS 1.2。 但是，如果你使用的是自己的虚拟机，则可能需要在 OS 中启用 TLS 1.2。
+
 ## <a name="preview-versions-of-net-core"></a>.NET Core 预览版
 如果应用程序使用 .NET Core 预览版，并已通过门户中的 [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了 Snapshot Debugger，则 Snapshot Debugger 可能无法启动。 按照[为其他环境启用 Snapshot Debugger](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) 中的说明首先将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包包含在应用程序中，***另外***通过 [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用。
 
@@ -45,10 +69,10 @@ ms.locfileid: "77671403"
 创建快照后，将在磁盘上创建一个小型转储文件 (.dmp)。 一个单独的上传程序进程会创建该小型转储文件，并将其连同所有关联的 PDB 一起上传到 Application Insights Snapshot Debugger 存储。 成功上传小型转储后，会将其从磁盘中删除。 上传程序进程的日志文件会保留在磁盘上。 在应用服务环境中，可在 `D:\Home\LogFiles` 中找到这些日志。 通过应用服务的 Kudu 管理站点查找这些日志文件。
 
 1. 在 Azure 门户中，打开应用服务应用程序。
-2. 单击“高级工具”  ，或搜索 **Kudu**。
-3. 单击“开始”  。
-4. 在“调试控制台”下拉列表框中，选择“CMD”   。
-5. 单击“日志文件”  。
+2. 单击“高级工具”****，或搜索 **Kudu**。
+3. 单击“转到”****。
+4. 在“调试控制台”下拉列表框中，选择“CMD”********。
+5. 单击“日志文件”****。
 
 应至少看到一个名称以 `Uploader_` 或 `SnapshotUploader_` 开头，且扩展名为 `.log` 的文件。 单击相应图标，下载任意日志文件或在浏览器中打开文件。
 文件名包括可标识应用服务实例的唯一后缀。 如果应用服务实例托管于多台计算机上，则每台计算机都有单独的日志文件。 当上传程序检测到新的小型转储文件时，会将其记录在日志文件中。 下面是成功的快照和上传的示例：
@@ -97,7 +121,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-对于未  托管于应用服务中的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
+对于未__ 托管于应用服务中的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
 
 ## <a name="troubleshooting-cloud-services"></a>云服务故障排除
 对于云服务中的角色而言，默认临时文件夹可能太小，无法容纳小型转储文件，从而导致丢失快照。
@@ -161,13 +185,13 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 - APPDATA
 - TEMP
 
-如果找不到合适的文件夹，则快照收集器将报告一个错误，指出“找不到合适的影子副本文件夹。” 
+如果找不到合适的文件夹，则快照收集器将报告一个错误，指出“找不到合适的影子副本文件夹。”__
 
 如果复制失败，则快照收集器会报告一个 `ShadowCopyFailed` 错误。
 
 如果无法启动上传程序，则快照收集器会报告一个 `UploaderCannotStartFromShadowCopy` 错误。 消息的正文通常包含 `System.UnauthorizedAccessException`。 发生此错误通常是因为应用程序正在权限降低的帐户下运行。 此帐户有权向影子副本文件夹进行写入，但无权执行代码。
 
-因为这些错误通常发生在启动期间，所以它们后面通常会跟有一个 `ExceptionDuringConnect` 错误，指出“上传程序无法启动。” 
+因为这些错误通常发生在启动期间，所以它们后面通常会跟有一个 `ExceptionDuringConnect` 错误，指出“上传程序无法启动。”__
 
 若要解决这些错误，可以通过 `ShadowCopyFolder` 配置选项手动指定影子副本文件夹。 例如，使用 ApplicationInsights.config：
 
@@ -196,7 +220,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>使用 Application Insights 搜索查找附带快照的异常
 
-创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”  ，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
+创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”****，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
 
 1. 在 Azure 门户中浏览到 Application Insights 资源。
 2. 单击 **“搜索”** 。

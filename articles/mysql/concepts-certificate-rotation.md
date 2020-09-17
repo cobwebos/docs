@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: dd009542adffed2f459534c943e3a873678ecd35
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 971554443e5b420cf759f86013445a6ff9069dea
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604914"
+ms.locfileid: "90706871"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>了解 Azure Database for MySQL 的根 CA 更改的更改
 
@@ -28,10 +28,9 @@ Azure Database for MySQL 将更改启用了 SSL 的客户端应用程序/驱动�
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>如何实现知道数据库是否会受到影响？
 
 使用 SSL/TLS 并验证根证书的所有应用程序都需要更新根证书。 通过查看连接字符串，可以确定连接是否验证根证书。
--   如果连接字符串包含 `sslmode=verify-ca` 或 ""
--   如果连接字符串包含 `sslmode=disable` ，则无需更新证书。
--   如果连接字符串包含 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，则无需更新证书。 
--   如果连接字符串不是特定的 sslmode，则无需更新证书。
+-   如果连接字符串包含 `sslmode=verify-ca` 或 `sslmode=verify-full` ，则需要更新证书。
+-   如果连接字符串包括 `sslmode=disable` 、 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，则无需更新证书。 
+-   如果连接字符串未指定 sslmode，则无需更新证书。
 
 如果你使用的客户端将连接字符串提取出来，请查看客户端的文档，以了解它是否验证证书。
 要了解 Azure Database for MySQL sslmode 查看 [SSL 模式说明](concepts-ssl-connection-security.md#ssl-default-settings)。

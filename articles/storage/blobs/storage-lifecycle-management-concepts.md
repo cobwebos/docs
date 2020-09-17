@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: be5d86fe690d60f687622243a2f1d7771b8af7d0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603983"
+ms.locfileid: "90707758"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -87,7 +87,7 @@ ms.locfileid: "90603983"
    > [!IMPORTANT]
    > 上次访问时间跟踪预览版仅适用于非生产。 生产服务级别协议 (SLA) 当前不可用。
    
-   有关 **最后访问** 的选项的详细信息，请参阅 [基于上次访问日期移动数据 (预览) ](#move-data-based-on-last-accessed-date-preview)。
+   若要使用 "**上次访问**时间" 选项，请在 "Azure 门户的"**生命周期管理**"页上选择"**访问跟踪已启用**"。 有关 **最后访问** 的选项的详细信息，请参阅 [基于上次访问日期移动数据 (预览) ](#move-data-based-on-last-accessed-date-preview)。
 
 1. 如果在 "**详细信息**" 页上选择了 "**使用筛选器限制 blob** "，请选择 "**筛选器集**" 添加可选筛选器。 下面的示例筛选 *mylifecyclecontainer* 容器中以 "log" 开头的 blob。
 
@@ -376,6 +376,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 > [!IMPORTANT]
 > 上次访问时间跟踪预览版仅适用于非生产。 生产服务级别协议 (SLA) 当前不可用。
+
+若要使用 "**上次访问**时间" 选项，请在 "Azure 门户的"**生命周期管理**"页上选择"**访问跟踪已启用**"。
 
 #### <a name="how-last-access-time-tracking-works"></a>上次访问时间跟踪的工作原理
 

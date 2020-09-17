@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178818"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705990"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -154,7 +154,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是托管受保护资源的服务器，该服务器能够接受并响应出示[访问令牌](#access-token)的[客户端应用程序](#client-application)发出的受保护资源请求。 它也称为受保护的资源服务器或资源应用程序。
 
-资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 [Microsoft Graph API][Microsoft-Graph]，以及可访问邮件和日历等数据的 Office 365 API。
+资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括 [Microsoft Graph API][Microsoft-Graph] ，该 api 提供对 Azure AD 租户数据的访问，以及提供对诸如邮件和日历等数据的访问的 Microsoft 365 api。
 
 与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的 [注册](#application-registration) 来建立的，可提供应用程序和服务主体对象。 Microsoft 提供的某些 API（例如 Microsoft Graph API）在预配期间将预先注册的服务主体设置为在所有租户中可用。
 
@@ -172,7 +172,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 范围是资源定义的字符串（例如“Mail.Read”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [oauth2Permissions 属性][Graph-Sp-Resource]中。 也可通过 Azure 门户配置用于访问范围的客户端应用程序[委托权限](#permissions)。
 
-命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Microsoft Graph API 公开的范围的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 有关 Office 365 服务公开的范围，请参阅 [Office 365 API permissions reference][O365-Perm-Ref]（Office 365 API 权限参考）。
+命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Microsoft Graph API 公开的范围的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 Microsoft 365 services 公开的作用域，请参阅 [MICROSOFT 365 API 权限参考][O365-Perm-Ref]。
 
 ## <a name="security-token"></a>安全令牌
 
@@ -202,7 +202,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 * 对用户帐户和已注册应用程序进行身份验证
 * 为各种协议（包括 OAuth2 和 SAML）提供支持所需的 REST 终结点，包括[授权终结点](#authorization-endpoint)、[令牌终结点](#token-endpoint)以及[多租户应用程序](#multi-tenant-application)使用的“通用”终结点。
 
-在注册期间创建 Azure AD 租户/将 Azure AD 租户与 Azure 和 Office 365 订阅相关联，以便为该订阅提供标识和访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要详细了解订阅和 Azure AD 租户之间的关系，以及如何向 Azure AD 租户关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户][AAD-How-Subscriptions-Assoc]。
+在注册期间，会创建 Azure AD 租户，并将其与 Azure 关联 Microsoft 365 订阅，为订阅提供标识 & 访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要详细了解订阅和 Azure AD 租户之间的关系，以及如何向 Azure AD 租户关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户][AAD-How-Subscriptions-Assoc]。
 
 ## <a name="token-endpoint"></a>令牌终结点
 

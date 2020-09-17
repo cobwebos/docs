@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226635"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706194"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
@@ -36,7 +36,7 @@ ms.locfileid: "89226635"
 Microsoft 管理两种类型的用户帐户：
 
 - **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人** 用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
-- **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录 Office 365 和 Microsoft 的其他业务服务。
+- **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录到 Microsoft 365 和 Microsoft 的其他业务服务。
 
 Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户直接在 Azure AD 平台) 或从本地目录（如 Windows Server Active Directory）同步到 Azure AD 中的云 (。 Microsoft 是工作或学校帐户的监管员**，但这些帐户由组织所有和控制。
 
@@ -49,7 +49,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 ## <a name="user-account-pictogram"></a>用户帐户象形图
 
-在先前版本的准则中，我们建议使用“蓝色徽章”象形图。 根据用户和开发人员的反馈，我们现在建议改用 Microsoft 徽标。 Microsoft 徽标帮助用户了解，他们可以重用其用于 Office 365 或其他 Microsoft 业务服务的帐户来登录应用。
+在先前版本的准则中，我们建议使用“蓝色徽章”象形图。 根据用户和开发人员的反馈，我们现在建议改用 Microsoft 徽标。 Microsoft 徽标将帮助用户了解，他们可以重用其用于 Microsoft 365 或其他 Microsoft 业务服务的帐户来登录应用。
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>使用 Azure AD 注册和登录
 
@@ -63,13 +63,13 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 “获取应用程序”链接必须将用户重定向到 Azure AD 的访问权限授予（授权）页，以方便组织的管理员对应用程序进行授权，使其有权访问 Microsoft 托管的组织数据。 有关如何请求访问权限的详细信息，请参阅[将应用程序与 Azure Active Directory 集成](./quickstart-register-app.md) 一文。
 
-在管理员同意你的应用程序后，他们可以选择将其添加到其用户的 Office 365 应用程序启动器体验 (可通过 waffle 和 [https://portal.office.com/myapps](https://portal.office.com/myapps)) 访问。 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
+在管理员同意你的应用后，他们可以选择将其添加到其用户的 Microsoft 365 应用启动器体验 (可从 waffle 和 [https://portal.office.com/myapps](https://portal.office.com/myapps)) 访问。 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
 
 ![显示 Microsoft 徽标和“添加到我的组织”文本的按钮](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 但是，我们建议编写说明性的文本而不要依赖于按钮。 例如：
 
-> *如果已使用了 Office 365 或 Microsoft 的其他业务服务，则可以授予 <your_app_name> 对组织数据的访问权限。这样，用户便可以使用其现有工作帐户访问 <your_app_name>。*
+> *如果已使用 Microsoft Microsoft 365 或其他业务服务，则可以授予 <your_app_name> 访问组织的数据。这样，用户便可以使用其现有工作帐户访问 <your_app_name>。*
 
 若要下载官方 Microsoft 徽标以在应用中使用，请右键单击要使用的徽标，然后将其保存到计算机。
 
@@ -102,7 +102,7 @@ Microsoft 徽标和“通过 Microsoft 登录”词语的关联可唯一地将 A
 
 **务必**将“工作或学校帐户”与“通过 Microsoft 登录”按钮结合使用来提供附加说明，以便帮助最终用户识别他们是否可以使用该应用。 **请勿** 使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
 
-**请勿**使用“Office 365 ID”或“Azure ID”。 Office 365 也是 Microsoft 的消费型产品名称，它不使用 Azure AD 进行身份验证。
+**请勿** 使用 "Microsoft 365 ID" 或 "Azure ID"。 Microsoft 365 也是 Microsoft 的使用者产品名称，它不使用 Azure AD 进行身份验证。
 
 **不要** 更改 Microsoft 徽标。
 

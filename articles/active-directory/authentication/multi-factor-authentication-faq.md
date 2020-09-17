@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718860"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706262"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
 
@@ -102,7 +102,7 @@ ms.locfileid: "88718860"
 
 创建按用户或按身份验证计费的 MFA 提供程序时，组织的 Azure 订阅每月根据使用情况计费一次。 此计费模式类似于 Azure 如何使用虚拟机和 Web 应用。
 
-如果购买 Azure 多重身份验证订阅，组织仅支付每个用户每年的许可费用。 MFA 许可证和 Office 365、Azure AD Premium 或企业移动性 + 安全性捆绑包按此方式计费。
+如果购买 Azure 多重身份验证订阅，组织仅支付每个用户每年的许可费用。 MFA 许可证和 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性捆绑以这种方式计费。
 
 有关详细信息，请参阅[如何获取 Azure 多重身份验证](concept-mfa-licensing.md)。
 
