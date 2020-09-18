@@ -90,7 +90,7 @@ Azure NetApp 文件支持 (SMB) 和网络文件系统 (NFS) 共享映射的服�
 
 6. 如果它是 NFS 共享，请添加要从中访问协议类型共享的源 IP 地址。 选择“查看 + 创建”。 
 
-    :::image type="content" source="media/net-app-files/select-volume-details.png" alt-text="选择 "卷详细信息"。":::
+    :::image type="content" source="media/net-app-files/select-volume-details.png" alt-text="选择 卷详细信息。":::
  
     在 Azure 门户中的 Azure NetApp 文件下，你的 NFS 共享已准备就绪，可供使用。
 
