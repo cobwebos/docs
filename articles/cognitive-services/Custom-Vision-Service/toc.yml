@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: 什么是自定义视觉？
-      href: home.md
+      href: overview.md
     - name: 新增功能
       href: whats-new.md
 - name: 快速入门
@@ -49,7 +49,11 @@
           href: custom-vision-onnx-windows-ml.md
         - name: 运行以 Python 编写的 TensorFlow 模型
           href: export-model-python.md
-    - name: 导出或删除帐户数据
+    - name: 集成存储通知
+      href: storage-integration.md
+    - name: 复制和移动项目
+      href: copy-move-projects.md
+    - name: 查看或删除帐户数据
       href: ./export-delete-data.md
     - name: 经应用更新到 3.0 API
       href: ./update-application-to-3.0-sdk.md

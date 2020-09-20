@@ -3,9 +3,11 @@
 - name: 概述
   expanded: true
   items:
-    - name: Azure 认知搜索是什么？
+    - name: 什么是认知搜索？
       href: search-what-is-azure-search.md
-    - name: 新增功能
+    - name: 认知搜索中的功能
+      href: search-features-list.md
+    - name: 认知搜索中的新增功能
       href: whats-new.md
 - name: 快速入门
   items:
@@ -413,25 +415,27 @@
     - name: .NET
       items:
         - name: 搜索 API
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: 管理 API
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: 搜索 API
+          href: /java/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: 搜索 API
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: 搜索 API
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: OData 语言参考
       items:
         - name: 概述
@@ -532,7 +536,7 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 开发人员课程 (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: 常见问题解答
+    - name: 常见问题
       href: search-faq-frequently-asked-questions.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/search/'

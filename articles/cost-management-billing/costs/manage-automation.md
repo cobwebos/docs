@@ -3,17 +3,17 @@ title: 通过自动化功能管理 Azure 成本
 description: 本文介绍如何通过自动化功能管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684399"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526640"
 ---
 # <a name="manage-costs-with-automation"></a>通过自动化功能管理成本
 
@@ -161,6 +161,70 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 ### <a name="automate-budget-creation"></a>自动创建预算
 
 可以使用[预算 API](/rest/api/consumption/budgets) 自动创建预算。 你也可以使用[预算模板](quick-create-budget-template.md)创建预算。 模板是使 Azure 部署标准化同时确保适当配置和强制实施成本控制的简单方法。
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>预算警报电子邮件支持的区域设置
+
+设定预算后，将在超过设定的限额时向你发出警报。 每个预算最多可设置五个电子邮件收件人。 收件人在超过预算限额后 24 小时内收到电子邮件警报。 不过，收件人可能需要接收以其他语言编写的电子邮件。 可以将以下语言区域性代码用于预算 API。 使用 `locale` 参数设置区域性代码，如以下示例所示。
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+区域性代码支持的语言：
+
+| 区域性代码| 语言 |
+| --- | --- |
+| zh-cn | 英语（美国） |
+| ja-jp | 日语（日本） |
+| zh-cn | 中文（简体，中国） |
+| de-de | 德语（德国） |
+| es-es | 西班牙语（西班牙，国际） |
+| fr-fr | 法语（法国） |
+| it-it | 意大利语（意大利） |
+| ko-kr | 韩语(韩国) |
+| pt-br | 葡萄牙语(巴西) |
+| ru-ru | 俄语（俄罗斯） |
+| zh-tw | 中文（繁体，台湾） |
+| cs-cz | 捷克语（捷克共和国） |
+| pl-pl | 波兰语（波兰） |
+| tr-tr | 土耳其语（土耳其） |
+| da-dk | 丹麦语（丹麦） |
+| dn-gb | 英语（英国） |
+| hu-hu | 匈牙利语(匈牙利) |
+| nb-bo | 挪威博克马尔语（挪威） |
+| nl-nl | 荷兰语（荷兰） |
+| pt-pt | 葡萄牙语(葡萄牙) |
+| sv-se | 瑞典语（瑞典） |
 
 #### <a name="common-budgets-api-configurations"></a>常见预算 API 配置
 

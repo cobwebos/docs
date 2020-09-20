@@ -53,6 +53,9 @@
     - name: 删除对委派的访问权限
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
+    - name: Azure Arc 集成
+      displayName: 'server, kubernetes, hybrid, infrastructure'
+      href: ./how-to/manage-hybrid-infrastructure-arc.md
     - name: Azure Monitor 集成
       items:
         - name: 大规模使用 Azure Monitor 日志

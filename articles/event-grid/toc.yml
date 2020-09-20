@@ -48,7 +48,7 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: 触发自动化 Runbook
       href: ensure-tags-exists-on-new-virtual-machines.md
-    - name: 在添加 IoT 中心设备后发送电子邮件
+    - name: 在 IoT 中心设备断开连接时发送电子邮件
       href: publish-iot-hub-events-to-logic-apps.md
     - name: 响应服务总线事件
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json

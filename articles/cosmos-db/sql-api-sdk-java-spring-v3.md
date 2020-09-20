@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b2d474f25209034034db092ca971bff6b78d73a
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
+ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068724"
+ms.lasthandoff: 09/19/2020
+ms.locfileid: "90817864"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>用于核心 (SQL) API 的弹簧数据 Azure Cosmos DB v3：发行说明和资源
 > [!div class="op_single_selector"]
@@ -67,22 +67,10 @@ ms.locfileid: "90068724"
 
 ### <a name="configure-dependencies"></a>配置依赖项
 
-提供两个弹簧数据 Azure Cosmos DB 版本 3 Maven 项目。
-
-- 依赖于春季 Data framework 版本2.2 的项目：
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-2-cosmos</artifactId>
-      <version>latest</version>
-  </dependency>
-  ```
-
-- 依赖于春季 Data framework 版本2.3 的项目：
-  ```xml
-  <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-spring-data-2-3-cosmos</artifactId>
+      <artifactId>azure-spring-data-cosmos</artifactId>
       <version>latest</version>
   </dependency>
   ```
@@ -93,7 +81,7 @@ ms.locfileid: "90068724"
 
 指定 Azure Cosmos DB 帐户和容器详细信息。 春季 Data Azure Cosmos DB 会自动创建客户端并连接到容器。
 
-[application. properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-2-cosmos-java-getting-started/src/main/resources/application.properties)：
+[application. properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties)：
 ```
 cosmos.uri=${ACCOUNT_HOST}
 cosmos.key=${ACCOUNT_KEY}
@@ -108,30 +96,46 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>文档操作
 
-[创建](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java)： [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Create)]
+创建：
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
 
-[删除](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java)： [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Delete)]
+删除：
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
 
 # <a name="query"></a>[查询](#tab/queries)
 
-[查询](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java)： [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-2-3-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
+查询：
+:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
 
 ---
 
 ## <a name="resources"></a>资源
 
-| 资源 | 春季 Data framework 2。2 | 春季 Data framework 2。3 |
-|---|---|
-| **SDK 下载** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-2-cosmos) | [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-2-3-cosmos) |
-|**参与 SDK** | [GitHub 上的弹簧数据 Azure Cosmos DB 存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-2-cosmos) | [GitHub 上的弹簧数据 Azure Cosmos DB 存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-2-3-cosmos) | 
-|**教程**| [GitHub 上的弹簧数据 Azure Cosmos DB 教程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-2-cosmos-java-getting-started) | [GitHub 上的弹簧数据 Azure Cosmos DB 教程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/tree/main/azure-spring-data-2-3-cosmos-java-getting-started) |
+* **参与 SDK**： [GitHub 上的弹簧数据 Azure Cosmos DB](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)存储库
+
+* **教程**：有关 [GitHub 上的春季 Data Azure Cosmos DB 教程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
 ## <a name="release-history"></a>版本历史记录
 
-### <a name="300-beta2-unreleased"></a>3.0.0 (未发布) 
+### <a name="300-beta2-september-17-2020"></a>3.0.0 (2020 年9月17日) 
+
+#### <a name="new-features"></a>新增功能
+
+* 已将项目 id 更新到 `azure-spring-data-cosmos` 。
+* 已更新与的 cosmos 依赖项 `4.5.0` 。
+* `Query Annotation` 支持本机查询。
+* 支持 Java 11。
+* 通过在批注中公开字段，增加了对嵌套分区键的支持 `partitionKeyPath` `@Container` 。
+* 添加了对 `limit` 查询类型的支持 `top` ，以便 `first` 在定义存储库 api 时使用和。
+
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+
+* 修复了用于批注的嵌套分区键错误 `@GeneratedValue` 。
 
 ### <a name="300-beta1-august-17-2020"></a>3.0.0 (8 月17日 2020) 
+
 #### <a name="new-features"></a>新增功能
+
 * 将组 ID 更新到 `com.azure` 。
 * 将项目 ID 更新到 `azure-spring-data-2-3-cosmos` 。
 * 将 azure cosmos SDK 依赖项更新到 `4.3.2-beta.2` 。
@@ -143,7 +147,9 @@ cosmos.queryMetricsEnabled=true
 * `CosmosClientBuilder`作为弹簧 bean 从 AZURE COSMOS DB SDK 公开到 `@Configuration` 类。
 * 更新 `CosmosConfig` 以包含查询指标和响应诊断处理器实现。
 * 添加了对返回 `Optional` 单个结果查询的数据类型的支持。
+
 #### <a name="renames"></a>指
+
 * `CosmosDbFactory` 到 `CosmosFactory` 。
 * `CosmosDBConfig` 到 `CosmosConfig` 。
 * `CosmosDBAccessException` 到 `CosmosAccessException` 。
@@ -151,7 +157,9 @@ cosmos.queryMetricsEnabled=true
 * `DocumentIndexingPolicy` 批注到 `CosmosIndexingPolicy` 批注。
 * `DocumentQuery` 到 `CosmosQuery` 。
 * application. properties 标记 `populateQueryMetrics` 为 `queryMetricsEnabled` 。
+
 #### <a name="key-bug-fixes"></a>关键 Bug 修复
+
 * 将诊断日志记录任务计划给 `Parallel` 线程，以避免阻塞 Netty i/o 线程。
 * 修复删除操作时的乐观锁定。
 * 修复了子句的转义查询问题 `IN` 。
@@ -160,10 +168,12 @@ cosmos.queryMetricsEnabled=true
 * `IgnoreCase` `AllIgnoreCase` 忽略 case 查询的修复和关键字。
 * 自动创建容器时，删除默认请求单位值4000。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
 了解有关 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 的详细信息。
 
 了解有关 [弹簧框架](https://spring.io/projects/spring-framework)的详细信息。

@@ -51,6 +51,18 @@
   href: code-samples.md
 - name: 概念
   items:
+    - name: 比较外部标识的解决方案
+      href: 'https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+    - name: 了解基础知识
+      items:
+        - name: 身份验证和授权
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: 令牌
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: 协议
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
+        - name: 身份验证库
+          href: 'https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json'
     - name: Azure AD B2C 最佳做法
       href: best-practices.md
     - name: 应用程序类型
@@ -304,7 +316,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: 字符串
+                    - name: String
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -341,9 +353,11 @@
                       href: aad-sspr-technical-profile.md
                     - name: 声明转换
                       href: claims-transformation-technical-profile.md
-                    - name: 条件访问技术配置文件
+                    - name: 条件性访问
                       href: conditional-access-technical-profile.md
                       displayName: ca
+                    - name: ID 令牌提示
+                      href: id-token-hint.md
                     - name: JWT 令牌颁发者
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

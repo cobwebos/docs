@@ -27,6 +27,8 @@
       items:
         - name: 规划 Azure 文件部署
           href: storage-files-planning.md
+        - name: 可用的文件共享协议
+          href: storage-files-compare-protocols.md
         - name: 基于标识的身份验证和授权
           href: storage-files-active-directory-overview.md
         - name: 关于直接访问的网络注意事项
@@ -79,12 +81,14 @@
   items:
     - name: 创建
       items:
-        - name: 创建文件共享
+        - name: 创建 SMB 文件共享
           href: storage-how-to-create-file-share.md
         - name: 启用大型文件共享
           href: storage-files-how-to-create-large-file-share.md
         - name: 创建高级文件共享
           href: storage-how-to-create-premium-fileshare.md
+        - name: 创建 NFS 共享
+          href: storage-files-how-to-create-nfs-shares.md
     - name: 部署
       items:
         - name: 部署 Azure 文件
@@ -95,11 +99,13 @@
           href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 装载
       items:
-        - name: 通过 Windows 使用 Azure 文件
+        - name: 将 SMB 文件共享装载到 Windows
           href: storage-how-to-use-files-windows.md
-        - name: 通过 Linux 使用 Azure 文件
+        - name: 将 SMB 文件共享装载到 Linux
           href: storage-how-to-use-files-linux.md
-        - name: 通过 macOS 使用 Azure 文件
+        - name: 将 NFS 文件共享装载到 Linux
+          href: storage-files-how-to-mount-nfs-shares.md
+        - name: 将 SMB 文件共享装载到 macOS
           href: storage-how-to-use-files-mac.md
     - name: 网络
       items:
@@ -269,12 +275,14 @@
           href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 疑难解答
       items:
-        - name: 排查 Windows 上的 Azure 文件问题
+        - name: 排查 Windows 上的 Azure 文件问题 (SMB)
           href: storage-troubleshoot-windows-file-connection-problems.md
-        - name: 排查 Linux 上的 Azure 文件问题
+        - name: 排查 Linux 上的 Azure 文件问题 (SMB)
           href: storage-troubleshoot-linux-file-connection-problems.md
         - name: 排查 Azure 文件存储性能问题
           href: storage-troubleshooting-files-performance.md
+        - name: Linux 上的 Azure 文件存储 (NFS) 故障排除
+          href: storage-troubleshooting-files-nfs.md
         - name: 对 Azure 文件同步进行故障排除
           href: storage-sync-files-troubleshoot.md
         - name: 关于删除 Azure 文件存储的疑难解答

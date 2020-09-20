@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031868"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530975"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -42,7 +42,8 @@ ms.locfileid: "90031868"
 
 ## <a name="samples-strategy"></a>示例策略
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="蓝图示例策略" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="一个图表，描述蓝图示例在体系结构复杂性和符合性要求坐标系中的位置。" border="false":::
+   描述一个坐标系，其中体系结构复杂性位于 X 轴，符合性要求位于 Y 轴。  随着体系结构复杂性和符合性要求的增加，请采用区域 E 中指定的门户中的标准蓝图示例。对于刚开始使用 Azure 的客户，请采用基于云采用框架 (C A F) 的基础和由区域 A 和 B 指定的登陆区域蓝图。剩下的空间归因于由区域 C、D 和 F 的合作伙伴客户创建的自定义蓝图。:::image-end:::
 
 CAF 基础和 CAF 迁移登陆区域蓝图假定客户正在准备一个现有的干净单一订阅，以便将本地资产和工作负荷迁移到 Azure。
 （图中的区域 A 和 B）。  

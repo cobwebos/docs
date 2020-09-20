@@ -12,122 +12,134 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: fe0fc7f20a81d9b887a61ca382dafcb69fc420d2
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 34cb40d385b007f8a41a6700448a1591b714c096
+  ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78187706"
+  ms.lasthandoff: 09/15/2020
+  ms.locfileid: "90562751"
 landingContent:
-- title: 了解基础知识
+- title: Azure AD B2C
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是 Azure AD B2C？
       url: overview.md
+    - text: 比较外部标识的解决方案
+      url: https://docs.microsoft.com/azure/active-directory/b2b/compare-with-b2c?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: Azure AD B2C 入门
+      url: tutorial-create-tenant.md
     - text: 技术和功能概述
       url: technical-overview.md
-  - linkListType: get-started
-    links:
-    - text: 创建 Azure AD B2C 租户
-      url: tutorial-create-tenant.md
-    - text: 注册应用程序
-      url: tutorial-register-applications.md
-    - text: 设置用户流
-      url: tutorial-create-user-flows.md
-  - linkListType: video
-    links:
-    - text: 什么是 Azure AD B2C？ (9:35)
-      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
-- title: 将标识添加到 ASP.NET 应用
+    - text: 定价
+      url: https://azure.microsoft.com/pricing/details/active-directory-b2c/
+- title: 基础
   linkLists:
-  - linkListType: quickstart
+  - linkListType: learn
     links:
-    - text: 设置登录
-      url: quickstart-web-app-dotnet.md
-  - linkListType: tutorial
-    links:
-    - text: 在 .NET Web 应用程序中对用户进行身份验证
-      url: tutorial-web-app-dotnet.md
-    - text: 向 .NET Web 应用程序授予 API 访问权限
-      url: tutorial-web-api-dotnet.md
-    - text: 启用企业和社交登录
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: 适用于 Web 应用和 API 的代码示例
-      url: code-samples.md#web-apps-and-apis
-- title: 将标识添加到单页应用
+    - text: 身份验证和授权
+      url: https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: 令牌
+      url: https://docs.microsoft.com/azure/active-directory/develop/security-tokens?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: 协议
+      url: https://docs.microsoft.com/azure/active-directory/develop/v2-app-types?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: 身份验证库
+      url: https://docs.microsoft.com/azure/active-directory/develop/msal-overview?toc=/azure/active-directory-b2c/TOC.json&bc=/azure/active-directory-b2c/bread/toc.json
+    - text: 构建网站：HTML、CSS、JavaScript
+      url: https://docs.microsoft.com/learn/modules/build-simple-website/
+- title: 常见用例
   linkLists:
-  - linkListType: quickstart
+  - linkListType: how-to-guide
     links:
-    - text: 设置登录
-      url: quickstart-single-page-app.md
-  - linkListType: tutorial
-    links:
-    - text: 在单页应用中对用户进行身份验证
-      url: tutorial-single-page-app.md
-    - text: 向单页应用授予 API 访问权限
-      url: tutorial-single-page-app-webapi.md
-    - text: 启用企业和社交登录
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: 适用于单页应用的代码示例
-      url: code-samples.md#single-page-apps
-- title: 将标识添加到桌面应用
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 设置登录
-      url: quickstart-native-app-desktop.md
-  - linkListType: tutorial
-    links:
-    - text: 在本机客户端中对用户进行身份验证
-      url: tutorial-desktop-app.md
-    - text: 向本机客户端授予 API 访问权限
-      url: tutorial-desktop-app-webapi.md
-    - text: 启用企业和社交登录
-      url: tutorial-add-identity-providers.md
-  - linkListType: download
-    links:
-    - text: 适用于移动应用和桌面应用的代码示例
-      url: code-samples.md
-- title: 配置通用标识方案
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 用户流简介
+    - text: 启用自助登录
       url: user-flow-overview.md
+    - text: 添加社会和工作标识：OIDC/OAuth2/SAML
+      url: tutorial-add-identity-providers.md
+    - text: 启用单一登录 (SSO)
+      url: session-overview.md
+    - text: 自定义 UI/UX
+      url: customize-ui-overview.md
+    - text: 用户和应用迁移
+      url: user-migration.md
+- title: 向应用程序添加登录
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: 快速入门：Web 应用
+      url: quickstart-web-app-dotnet.md
+    - text: 本机/移动应用
+      url: code-samples.md#mobile-and-desktop-apps
+    - text: 单页应用
+      url: code-samples.md#single-page-apps
+    - text: Web 应用
+      url: code-samples.md#web-apps-and-apis
+- title: Authorization:调用和保护 API
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 用户注册和登录
-      url: tutorial-create-user-flows.md
-    - text: 自定义用户界面
-      url: customize-ui-overview.md
-    - text: 允许使用 Facebook 帐户登录
-      url: identity-provider-facebook.md
-  - linkListType: video
-    links:
-    - text: 如何配置基本策略 (9:41)
-      url: https://www.youtube.com/watch?v=nWJ3m82536A
-- title: 构建高级标识方案
+    - text: 请求访问令牌
+      url: access-tokens.md
+    - text: 注册和保护 API
+      url: tutorial-web-api-dotnet.md
+    - text: 示例：Web 应用和 API
+      url: code-samples.md#web-apps-and-apis
+    - text: 与 API 网关集成
+      url: secure-api-management.md?tabs=app-reg-ga
+- title: 安全性、隐私性和符合性
   linkLists:
   - linkListType: concept
     links:
-    - text: 自定义策略简介
-      url: custom-policy-overview.md
+    - text: 管理威胁
+      url: threat-management.md
+    - text: 了解用户数据的存储位置
+      url: data-residency.md
+    - text: 法规
+      url: overview.md
+    - text: 用户访问和使用条款
+      url: manage-user-access.md
+- title: Operations
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 用户注册和登录
-      url: custom-policy-get-started.md
-    - text: 自定义用户界面
-      url: custom-policy-ui-customization.md
-    - text: 允许使用 Azure AD 多租户登录
-      url: identity-provider-azure-ad-multi-tenant-custom.md
-    - text: 使用 REST API 添加自己的业务逻辑
-      url: custom-policy-rest-api-claims-validation.md
-  - linkListType: video
+    - text: CI/CD 管道
+      url: deploy-custom-policies-devops.md
+    - text: 监视
+      url: azure-monitor.md
+    - text: 针对管理员的基于角色的访问
+      url: overview.md
+    - text: 用户管理
+      url: manage-user-accounts-graph-api.md
+    - text: 疑难解答
+      url: troubleshoot-custom-policies.md?tabs-app-reg-ga
+    - text: 最佳做法
+      url: best-practices.md
+- title: 资源
+  linkLists:
+  - linkListType: overview
     links:
-    - text: Azure AD B2C 的高级用例 (4:54)
-      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework
+    - text: GitHub
+      url: https://github.com/azure-ad-b2c/samples
+    - text: YouTube
+      url: https://www.youtube.com/results?search_query=azure+ad+b2c
+    - text: 培训
+      url: solution-articles.md
+    - text: 服务更新
+      url: https://azure.microsoft.com/updates/?product=active-directory-b2c
+    - text: 常见问题
+      url: faq.md
+    - text: Microsoft 支持
+      url: support-options.md
+- title: 常见集成
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Monitor：保留和分析日志
+      url: azure-monitor.md
+    - text: Azure DevOps Services：构建 CI/CD 管道
+      url: deploy-custom-policies-devops.md
+    - text: Application Insights：排除故障和获取用户见解
+      url: troubleshoot-with-application-insights.md
+    - text: 与我们的技术合作伙伴集成
+      url: partner-gallery.md

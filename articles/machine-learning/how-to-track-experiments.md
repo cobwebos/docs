@@ -13,7 +13,7 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
 ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/10/2020
 ms.locfileid: "89650626"

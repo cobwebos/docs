@@ -20,19 +20,11 @@
       href: quickstart-load-balancer-standard-internal-powershell.md
     - name: 创建内部负载均衡器 - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
+    - name: 创建内部负载均衡器 - ARM 模板
+      href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: 教程
   items:
-    - name: Internal 负载均衡器（内部负载均衡器）
-      items:
-        - name: 创建内部负载均衡器 - 门户
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: 创建内部负载均衡器 - Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: 创建内部负载均衡器 - Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: 创建内部负载均衡器 - ARM 模板
-          href: load-balancer-get-started-ilb-arm-template.md
     - name: 跨可用性区域对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡
