@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3f032ca973a188bf294155c73de3ca84f6ee30f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024394"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884164"
 ---
 # <a name="hierarchical-state-override"></a>分层状态替代
 
@@ -45,6 +45,10 @@ ms.locfileid: "90024394"
   ![用于突出显示选定部分的大纲选项](./media/selection-outline.png)
 
 * **`DisableCollision`**：几何图形从 [空间查询](spatial-queries.md)中免除。 该 **`Hidden`** 标志不会影响冲突状态标志，因此，这两个标志通常一起设置。
+
+* **`UseCutPlaneFilterMask`**：使用单个筛选器位掩码来控制切口面选择。 此标志确定是否应使用单个筛选器掩码或从其父筛选器继承。 筛选器位掩码本身通过 `CutPlaneFilterMask` 属性设置。 有关筛选的工作方式的详细信息，请参阅 [选择性剪切平面段落](cut-planes.md#selective-cut-planes)。
+![选择性剪切平面](./media/selective-cut-planes.png)
+
 
 > [!TIP]
 > 作为关闭完整子图的可见性和空间查询的替代方法， `enabled` 可以切换游戏对象的状态。 如果禁用了层次结构，则该层次结构将优先于任何 `HierarchicalStateOverrideComponent` 。

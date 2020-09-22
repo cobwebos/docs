@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2551a3c860dbdf27e7c9473e88c3a3293f575faa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769757"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883951"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>在 Azure 安全中心管理和响应安全警报
 
@@ -28,7 +28,7 @@ ms.locfileid: "84769757"
 * 有关安全中心如何生成警报的概述，请参阅 [Azure 安全中心如何检测和应对威胁](security-center-alerts-overview.md)。
 
 > [!NOTE]
-> 若要启用高级检测，请升级到 Azure 安全中心标准版。 有免费试用版可用。 要升级，请选择 [安全策略](tutorial-security-policy.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
+> 若要启用高级检测，请启用 Azure Defender。 有免费试用版可用。 要升级，请选择 [安全策略](tutorial-security-policy.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
 安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
@@ -60,15 +60,15 @@ ms.locfileid: "84769757"
 
     "安全警报" 页的左窗格显示有关安全警报的高级信息： "标题"、"严重性"、"状态"、"活动时间"、"可疑活动的描述" 和受影响的资源。 与受影响的资源一起，Azure 标记与资源相关。 当调查警报时，使用这些资源来推断资源的组织上下文。
 
-    右窗格包含 "**警报详细信息**" 选项卡，其中包含警报的更多详细信息，以帮助你调查问题： IP 地址、文件、进程等。
+    右窗格包含 " **警报详细信息** " 选项卡，其中包含警报的更多详细信息，以帮助你调查问题： IP 地址、文件、进程等。
      
     ![有关如何处理安全警报的建议](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    同样，在右窗格中是 "**采取操作**" 选项卡。使用此选项卡来执行有关安全警报的进一步操作。 操作，例如：
-    - *缓解威胁*-提供此安全警报的手动修正步骤
-    - *防止未来攻击*-提供安全建议，以帮助减少攻击面，提高安全状况，并防止未来攻击
-    - *触发自动响应*-提供触发逻辑应用作为对此安全警报的响应的选项
-    - *禁止显示类似警报*-如果警报与组织无关，则提供禁止显示具有类似特征的未来警报的选项
+    同样，在右窗格中是 " **采取操作** " 选项卡。使用此选项卡执行有关安全警报的其他操作。 操作，例如：
+    - *缓解威胁* -提供此安全警报的手动修正步骤
+    - *防止未来攻击* -提供安全建议，以帮助减少攻击面，提高安全状况，并防止未来攻击
+    - *触发自动响应* -提供触发逻辑应用作为对此安全警报的响应的选项
+    - *禁止显示类似警报* -如果警报与组织无关，则提供禁止显示具有类似特征的未来警报的选项
 
     ![采用操作选项卡](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 

@@ -33,6 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp 文件网络规划指南
       href: azure-netapp-files-network-topologies.md
+    - name: 跨区域复制
+      items:
+        - name: 了解跨区域复制
+          href: cross-region-replication-introduction.md
+        - name: 跨区域复制的要求和注意事项
+          href: cross-region-replication-requirements-considerations.md
     - name: 解决方案
       items:
         - name: 使用 Azure NetApp 文件的解决方案体系结构
@@ -81,6 +87,16 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: 动态更改卷的服务级别
       href: dynamic-change-volume-service-level.md
+    - name: 管理跨区域复制
+      items:
+        - name: 创建复制对等互连
+          href: cross-region-replication-create-peering.md
+        - name: 显示复制关系的运行状况
+          href: cross-region-replication-display-health-status.md
+        - name: 管理灾难恢复
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: 删除副本
+          href: cross-region-replication-delete.md
     - name: 开发
       items:
         - name: REST API
@@ -91,6 +107,10 @@
           href: azure-netapp-files-sdk-cli.md
         - name: 排查 Azure NetApp 文件资源提供程序错误
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: 疑难解答
+      items:
+        - name: 跨区域复制故障排除
+          href: troubleshoot-cross-region-replication.md
 - name: 参考
   items:
     - name: REST

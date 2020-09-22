@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274537"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884472"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -41,15 +41,15 @@ ms.locfileid: "86274537"
 
 3. 如果没有将 Azure 复制支持至少设置为“副本”，请进行此设置。 选择“保存” 。
 
-   ![Azure Database for PostgreSQL - 复制 - 设置副本并保存](./media/howto-read-replicas-portal/set-replica-save.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL - 复制 - 设置副本并保存":::
 
 4. 通过选择“是”，重启服务器以应用更改。
 
-   ![Azure Database for PostgreSQL - 复制 - 确认重启](./media/howto-read-replicas-portal/confirm-restart.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL - 复制 - 确认重启":::
 
 5. 操作完成后，会收到两个 Azure 门户通知。 一个通知是关于更新服务器参数的。 另一个通知是关于随后立即进行的服务器重启的。
 
-   ![成功通知](./media/howto-read-replicas-portal/success-notifications.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="成功通知":::
 
 6. 刷新 Azure 门户页，更新“复制”工具栏。 现在可以为此服务器创建只读副本。
    
@@ -63,15 +63,15 @@ ms.locfileid: "86274537"
 
 3. 选择“添加副本”。
 
-   ![添加副本](./media/howto-read-replicas-portal/add-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="添加副本":::
 
 4. 输入只读副本的名称。 
 
-    ![为副本命名](./media/howto-read-replicas-portal/name-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="为副本命名":::
 
 5. 选择副本的位置。 默认位置与主服务器的位置相同。
 
-    ![选择位置](./media/howto-read-replicas-portal/location-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="选择位置":::
 
    > [!NOTE]
    > 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。 
@@ -80,11 +80,11 @@ ms.locfileid: "86274537"
 
 创建只读副本后，可以在“复制”窗口中查看它：
 
-![在“复制”窗口中查看新副本](./media/howto-read-replicas-portal/list-replica.png)
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="在“复制”窗口中查看新副本":::
  
 
 > [!IMPORTANT]
-> 查看[读取副本概述](concepts-read-replicas.md#considerations)的 "注意事项" 部分。
+> 查看[“只读副本”概述的注意事项部分](concepts-read-replicas.md#considerations)。
 >
 > 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本与主服务器发生的任何更改保持同步。
 
@@ -102,15 +102,15 @@ ms.locfileid: "86274537"
 
 3. 选择要停止复制的副本服务器。
 
-   ![选择副本](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="选择副本":::
  
 4. 选择“停止复制”。
 
-   ![选择停止复制](./media/howto-read-replicas-portal/select-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="选择停止复制":::
  
 5. 选择“确定”以停止复制。
 
-   ![确认停止复制](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="确认停止复制":::
  
 
 ## <a name="delete-a-master-server"></a>删除主服务器
@@ -123,13 +123,13 @@ ms.locfileid: "86274537"
 
 1. 在 Azure 门户中，选择 Azure Database for PostgreSQL 主服务器。
 
-2. 此时会打开该服务器的“概述”页。 选择“删除”。
+2. 此时会打开该服务器的“概述”页。 选择“删除” 。
 
-   ![在服务器的“概述”页上，选择删除主服务器](./media/howto-read-replicas-portal/delete-server.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="在服务器的“概述”页上，选择删除主服务器":::
  
 3. 输入要删除的主服务器的名称。 选择“删除”以确认删除主服务器。
 
-   ![确认删除主服务器](./media/howto-read-replicas-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="确认删除主服务器":::
  
 
 ## <a name="delete-a-replica"></a>删除副本
@@ -137,7 +137,7 @@ ms.locfileid: "86274537"
 
 - 在 Azure 门户中，打开只读副本的“概述”页。 选择“删除” 。
 
-   ![在副本的“概述”页上，选择删除该副本](./media/howto-read-replicas-portal/delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="在副本的“概述”页上，选择删除该副本":::
  
 也可以在“复制”窗口中遵循以下步骤删除只读副本：
 
@@ -147,15 +147,15 @@ ms.locfileid: "86274537"
 
 3. 选择要删除的只读副本。
 
-   ![选择要删除的副本](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="选择要删除的副本":::
  
 4. 选择“删除副本”。
 
-   ![选择“删除副本”](./media/howto-read-replicas-portal/select-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="选择“删除副本”":::
  
 5. 输入要删除的副本的名称。 选择“删除”以确认删除该副本。
 
-   ![确认删除副本](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="确认删除副本":::
  
 
 ## <a name="monitor-a-replica"></a>监视副本
@@ -168,7 +168,7 @@ ms.locfileid: "86274537"
 
 2.  选择“指标”。 在“指标”窗口中，选择“副本的最大滞后时间”。 
 
-    ![监视副本的最大滞后时间](./media/howto-read-replicas-portal/select-max-lag.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="监视副本的最大滞后时间":::
  
 3.  对于“聚合”，请选择“最大”。 
 
@@ -180,7 +180,7 @@ ms.locfileid: "86274537"
 
 2. 选择“指标”。 在“指标”窗口中，选择“副本滞后时间”。 
 
-   ![监视副本滞后时间](./media/howto-read-replicas-portal/select-replica-lag.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="监视副本滞后时间":::
  
 3. 对于“聚合”，请选择“最大”。  
  

@@ -64,6 +64,8 @@
           href: protect-avs-web-apps-with-app-gateway.md
         - name: 流量管理器
           href: deploy-traffic-manager-to-balance-avs-workloads.md
+        - name: NetApp 文件
+          href: net-app-files.md
     - name: VMware 解决方案
       items:
         - name: 设置 vRealize Operations

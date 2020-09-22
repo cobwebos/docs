@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: 35d5b101f4ad5fe4498c0566227c5f0a9d102b60
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032534"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884322"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>为 Azure Database for PostgreSQL - 超大规模 (Citus) 管理防火墙规则
 服务器级别防火墙规则可用于管理从指定 IP 地址或 IP 地址范围对超大规模 (Citus) 协调器节点的访问。
@@ -24,23 +24,24 @@ ms.locfileid: "90032534"
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
 
 > [!NOTE]
-> 在创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器组的过程中，也可以访问这些设置。 在 " **网络** " 选项卡下，单击 " **公共访问**"。
-> ![Azure 门户 - 网络选项卡](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
+> 在创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器组的过程中，也可以访问这些设置。 在“网络”选项卡下，单击“公共终结点”。
+
+> :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png" alt-text="Azure 门户 - 网络选项卡":::
 
 1. 在 PostgreSQL 服务器组页上的“安全性”标题下，单击“网络”以打开防火墙规则。
 
-   ![Azure 门户 - 单击“网络”](./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure 门户 - 单击“网络”":::
 
 2. 单击 " **添加当前客户端 IP 地址** "，创建一个防火墙规则，其中包含计算机的公共 IP 地址，如 Azure 系统所示。
 
-   ![Azure 门户 - 单击“添加客户端 IP”](./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure 门户 - 单击“添加客户端 IP”":::
 
 或者，单击“+添加 0.0.0.0 - 255.255.255.255”（在选项 B 右侧）不仅允许你的 IP，还允许整个 Internet 访问协调器节点的端口 5432。 在这种情况下，客户端仍必须使用正确的用户名和密码登录才能使用群集。 尽管如此，建议仅在短时间内允许进行全球访问，并且仅允许用于非生产数据库。
 
 3. 验证 IP 地址，并保存配置。 在某些情况下，Azure 门户识别出的 IP 地址与访问 Internet 和 Azure 服务器时所使用的 IP 地址不同。 因此，可能需要更改起始 IP 和结束 IP，以使规则正常工作。
    使用搜索引擎或其他联机工具来查看自己的 IP 地址。 例如，搜索“我的 IP 是多少”。
 
-   ![在必应中搜索“我的 IP 是多少”](./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png)
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="在必应中搜索“我的 IP 是多少”":::
 
 4. 添加其他地址范围。 在防火墙规则中，可以指定单个 IP 地址，也可以指定某个范围的地址。 如果希望将规则限制为单个 IP 地址，请在起始 IP 和结束 IP 字段中输入相同的地址。 打开防火墙会使管理员、用户和应用程序就可以通过端口 5432 访问协调器节点。
 
