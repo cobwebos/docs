@@ -2,19 +2,18 @@
 title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
 description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/16/2020
+ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080807"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894526"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
 本文讨论了一些关于 Microsoft Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)了解常规的 Azure 定价和支持信息。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>关于 Azure 服务总线的一般问题
 ### <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
@@ -30,13 +29,16 @@ ms.locfileid: "88080807"
 主题可被视为队列，使用多个订阅时，它成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
 
 ### <a name="what-is-a-partitioned-entity"></a>什么是分区实体？
-传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 仅在基本和标准消息传送层中受支持，[分区队列或主题](service-bus-partitioning.md)由多个消息代理处理，并存储在多个消息传送存储中。 此功能意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能限制。 而且，消息存储的临时中断不会导致分区的队列或主题不可用。
+传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 仅在基本和标准消息传递层中受支持，[分区队列或主题](service-bus-partitioning.md)由多个消息中转站处理，并存储在多个消息传送存储中。 此功能意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能限制。 此外，消息传送存储的临时中断不会导致分区队列或主题不可用。
 
-使用分区实体时不确保排序。 如果某个分区不可用，仍可从其他分区发送和接收消息。
+使用分区实体时不保证排序。 如果某个分区不可用，仍可从其他分区发送和接收消息。
 
  [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
+### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 服务总线将客户数据存储在何处？
+Azure 服务总线存储客户数据。 服务总线会自动将此数据存储在单个区域中，因此，此服务会自动满足区域数据派驻要求，其中包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)中指定的要求。
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
 
 - 高级消息队列协议 (AMQP)
@@ -48,20 +50,20 @@ ms.locfileid: "88080807"
 | 协议 | 端口 | 详细信息 | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 到 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| SBMP | 9350 到 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>需要向允许列表添加哪些 IP 地址？
-若要查找要添加到连接的允许列表的正确 IP 地址，请执行以下步骤：
+### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>需要将哪些 IP 地址添加到允许列表？
+若要查找要添加到允许列表以进行连接的正确 IP 地址，请执行以下步骤：
 
 1. 从命令提示符处运行以下命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
+2. 记下 `Non-authoritative answer` 中返回的 IP 地址。 
 
-如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
+如果对命名空间使用 **区域冗余** ，则需要执行一些附加步骤： 
 
 1. 首先，在命名空间中运行 nslookup。
 
@@ -77,17 +79,20 @@ ms.locfileid: "88080807"
     ```
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
-### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>在哪里可以找到客户端向/从命名空间发送/接收消息的客户端的 IP 地址？ 
-我们不会记录向/从命名空间发送消息或接收消息的客户端的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看基于角色的访问控制 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) 设置，以确保仅允许的用户或应用程序有权访问该命名空间。 
+    > [!NOTE]
+    > 命令返回的 IP 地址 `nslookup` 不是静态 ip 地址。 但是，在将基础部署删除或移动到其他群集之前，它将保持不变。
 
-如果使用的是**高级**命名空间，请使用[IP 筛选](service-bus-ip-filtering.md)、[虚拟网络服务终结点](service-bus-service-endpoints.md)和[专用终结点](private-link-service.md)限制对命名空间的访问。 
+### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>我可以在哪里找到客户端向命名空间发送/从中接收消息的 IP 地址？ 
+我们不记录客户端向命名空间发送或从中接收消息的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看基于角色的访问控制 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) 设置，以确保仅允许的用户或应用程序可以访问该命名空间。 
+
+如果使用的是高级命名空间，请使用 [IP 筛选](service-bus-ip-filtering.md)、[虚拟网络服务终结点](service-bus-service-endpoints.md)和[专用终结点](private-link-service.md)来限制对命名空间的访问。 
 
 ## <a name="best-practices"></a>最佳实践
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？
 请参阅[使用服务总线改进性能的最佳做法][Best practices for performance improvements using Service Bus] - 此文介绍了如何在交换消息时优化性能。
 
 ### <a name="what-should-i-know-before-creating-entities"></a>创建实体前的须知事项有哪些？
-队列和主题的以下属性是固定不变的。 预配实体时请考虑此限制，因为在不创建新的替换实体的情况下无法修改这些属性。
+队列和主题的以下属性是固定不变的。 预配实体时，请考虑此限制，因为只有创建新的替代实体才可修改这些属性。
 
 * 分区
 * 会话
@@ -104,27 +109,27 @@ ms.locfileid: "88080807"
 ### <a name="how-do-you-charge-for-service-bus"></a>服务总线如何收取费用？
 有关服务总线定价的完整信息，请参阅[服务总线定价][Pricing overview]。 除标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
 
-### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-isnt"></a>服务总线的哪些使用情况受数据传输限制？ 什么是？
+### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-isnt"></a>服务总线的哪些使用情况受数据传输限制？ 哪些不受限制？
 在给定 Azure 区域内的任何数据传输和入站数据传输均不收费。 区域外的数据传输需收取输出费用，详见[此处](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服务总线是否对存储收费？
-不能。 服务总线不对存储收费。 但是，有一种配额限制每个队列/主题可以保留的最大数据量。 请参阅下一个常见问题。
+不能。 服务总线不对存储收费。 但是，对每个队列/主题可以保留的数据最大量设有配额限制。 请参阅下一个常见问题。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有一个服务总线标准命名空间。 为什么我在资源组 '$system' 下看到收费信息？
-Azure 服务总线最近升级了计费组件。 由于此更改，如果你有一个 Service Bus 标准命名空间，则在资源组 "$system" 下，你可能会看到资源 "/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" 的行项。
+Azure 服务总线最近升级了计费组件。 由于此更改，如果你有服务总线标准命名空间，则可能会在资源组 '$system' 下看到资源 '/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system' 的行项目。
 
 这些费用表示已预配服务总线标准命名空间的每个 Azure 订阅的基本费用。 
 
-务必要注意的是，这些费用并不新，也就是说，它们也存在于以前的计费模型中。 唯一的更改是它们现在列在 "$system" 下。 这是因为在 "$system" 资源 ID 下，在新的计费系统中对订阅级别收费进行分组，而不是绑定到特定资源的约束。
+请务必注意，这些费用不是新的，即它们也存在于以前的计费模型中。 唯一的更改是它们现在列在 '$system' 下。 这是由于新的计费系统中的限制所致，新的计费系统将订阅级别的费用分组，而不是绑定到 '$system' 资源 ID 下的特定资源。
 
 ## <a name="quotas"></a>配额
 
 有关服务总线限制和配额的列表，请参阅[服务总线配额概述][Quotas overview]。
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>如何处理大小 > 1 MB 的消息？
-服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 如果要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。
+服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 若要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
 从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 
 
@@ -137,7 +142,7 @@ Azure 服务总线最近升级了计费组件。 由于此更改，如果你有�
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？
 
-可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 命令，将命名空间从一个 Azure 订阅移到另一个 Azure 订阅。 若要执行该操作，命名空间必须已处于活动状态。 执行这些命令的用户必须是源订阅和目标订阅的管理员。
+可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 命令，将命名空间从一个 Azure 订阅移到另一个 Azure 订阅。 若要执行此操作，命名空间必须已处于活动状态。 执行这些命令的用户必须是源订阅和目标订阅的管理员。
 
 #### <a name="portal"></a>门户
 

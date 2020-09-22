@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590228"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894551"
 ---
 # <a name="monitor-identity-and-access"></a>监视标识和访问
 
@@ -66,6 +66,4 @@ ms.locfileid: "88590228"
 ## <a name="next-steps"></a>后续步骤
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下文章：
 
-- [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
 - [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
-- [在 Azure 安全中心保护 Azure SQL 服务和数据](security-center-sql-service-recommendations.md)

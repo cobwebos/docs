@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339206"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893952"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure Data Box Gateway 的访问、电源和连接模式
 
@@ -57,22 +57,22 @@ ms.locfileid: "84339206"
 
 ## <a name="manage-resource-access"></a>管理资源访问
 
-若要创建 Azure Stack Edge/Data Box Gateway、IoT 中心和 Azure 存储资源，需要具有资源组级别的参与者或更高权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要 Azure Active Directory 图形 API 的权限。 以下部分介绍了这些内容。
+若要创建 Azure Stack Edge Pro/Data Box Gateway、IoT 中心和 Azure 存储资源，需要具有资源组级别的参与者或更高级别的权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要 Azure Active Directory 图形 API 的权限。 以下部分介绍了这些内容。
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 权限
 
-为 Azure Stack Edge 设备生成激活密钥，或执行需要凭据的任何操作时，需要具有 Microsoft Graph API 的权限。 需要凭据的操作可以是：
+为 Azure Stack Edge Pro 设备生成激活密钥，或执行需要凭据的任何操作时，需要具有 Microsoft Graph API 的权限。 需要凭据的操作可以是：
 
 -  使用关联的存储帐户创建共享。
 -  创建可访问设备上的共享的用户。
 
-你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge 设备上创建共享的操作都将失败，从而导致用户创建失败。
+你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge Pro 设备上创建共享的操作都将会失败。
 
-有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅[Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
+有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>注册资源提供程序
 
-若要在 Azure 中预配资源（在 Azure 资源管理器模型中），需要一个支持创建该资源的资源提供程序。 例如，要设置虚拟机，订阅中应提供 "Microsoft. 计算" 资源提供程序。
+若要在 azure 资源管理器模型) 的 Azure 中预配资源，需要一个支持创建该资源的资源提供程序 (。 例如，要设置虚拟机，订阅中应提供 "Microsoft. 计算" 资源提供程序。
  
 资源提供程序在订阅级别注册。 默认情况下，任何新的 Azure 订阅都预注册到一组常用的资源提供程序中。 "DataBoxEdge" 的资源提供程序未包含在此列表中。
 
@@ -80,7 +80,7 @@ ms.locfileid: "84339206"
 
 尝试创建任何资源之前，请确保在订阅中注册了资源提供程序。 如果未注册资源提供程序，则需要确保创建新资源的用户具有足够的权限在订阅级别上注册所需的资源提供程序。 如果还没有这样做，则会看到以下错误：
 
-*该订阅无权 \<Subscription name> 注册资源提供程序： DataBoxEdge。*
+*订阅无权 \<Subscription name> 注册资源提供程序 () ： DataBoxEdge。*
 
 
 若要获取当前订阅中已注册资源提供程序的列表，请运行以下命令：
@@ -89,13 +89,13 @@ ms.locfileid: "84339206"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Azure Stack Edge 设备， `Microsoft.DataBoxEdge` 应注册。 若要注册 `Microsoft.DataBoxEdge` ，订阅管理员应运行以下命令：
+对于 Azure Stack Edge Pro 设备， `Microsoft.DataBoxEdge` 应当注册。 若要注册 `Microsoft.DataBoxEdge` ，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-有关如何注册资源提供程序的详细信息，请参阅[解决资源提供程序注册的错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
+有关如何注册资源提供程序的详细信息，请参阅 [解决资源提供程序注册的错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
 
 ## <a name="manage-connectivity-mode"></a>管理连接模式
 

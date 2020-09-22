@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 64be7f01cc9cc7ae77af5386be7a11cd16785dd1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065873"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882396"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的连接体系结构
 本文介绍 Azure Database for PostgreSQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for PostgreSQL 数据库实例。
@@ -19,7 +19,7 @@ ms.locfileid: "88065873"
 ## <a name="connectivity-architecture"></a>连接体系结构
 可以通过网关连接到 Azure Database for PostgreSQL，该网关负责将传入连接路由到服务器在群集中的物理位置。 下图演示了流量流。
 
-![连接体系结构概述](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="连接体系结构概述":::
 
 客户端在连接到数据库时，会获得一个用于连接到网关的连接字符串。 此网关有一个公共 IP 地址，用于侦听端口 5432。 在数据库群集中，流量将转发到相应的 Azure Database for PostgreSQL。 因此，为了通过某种方式（例如，通过公司网络）连接到服务器，必须打开客户端防火墙，使出站流量能够访问我们的网关。 下面是一个按区域分类的可供我们的网关使用的 IP 地址的完整列表。
 

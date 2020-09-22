@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 680fd298f3d772ecb9a4787342d22bf44e74ec78
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651091"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893570"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -184,7 +184,7 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 - 将新模型的输出与旧模型的输出进行比较
 - 使用预定义的条件来确定是否替换旧模型 
 
-上述步骤的一个主旨是，重新训练应该是自动化的，而不是临时性的。 [Azure 机器学习管道](concept-ml-pipelines.md)非常适合用于创建与数据准备、训练、验证和部署相关的工作流。 请阅读[使用 Azure 机器学习设计器重新训练模型（预览版）](how-to-retrain-designer.md)，了解管道和 Azure 机器学习设计器如何适应重新训练方案。 
+上述步骤的一个主旨是，重新训练应该是自动化的，而不是临时性的。 [Azure 机器学习管道](concept-ml-pipelines.md)非常适合用于创建与数据准备、训练、验证和部署相关的工作流。 [使用 Azure 机器学习设计器](how-to-retrain-designer.md)阅读重新训练模型，了解管道和 Azure 机器学习设计器如何适应重新训练方案。 
 
 ## <a name="automate-the-ml-lifecycle"></a>自动化 ML 生命周期 
 

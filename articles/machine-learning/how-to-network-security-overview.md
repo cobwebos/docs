@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 57746b833e238bbd0cc99ba103f710a9239ee5ba
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663837"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893189"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "89663837"
 
 **1. VNet 概述**  >  [2。保护工作区](how-to-secure-workspace-vnet.md)  >  [3。保护定型环境](how-to-secure-training-vnet.md)  >  [4。保护推断环境](how-to-secure-inferencing-vnet.md)  >  [5。启用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 本文假定您已熟悉以下主题：
 + [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -63,22 +63,6 @@ ms.locfileid: "89663837"
 1. 保护 [**推断环境**](#secure-the-inferencing-environment)。
 1. （可选）： [**启用 studio 功能**](#optional-enable-studio-functionality)。
 1. 配置 [**防火墙设置**](#configure-firewall-settings)
-
-> [!TIP]
->  虚拟网络和 Azure 服务的一些组合需要企业版工作区。 若要了解哪些方案需要 Enterprise Edition，请参阅下表：
->
-> | 方案 | Enterprise</br>edition | 基本</br>edition |
-> | ----- |:-----:|:-----:| 
-> | 无虚拟网络或专用链接 | ✔ | ✔ |
-> | 无专用链接的工作区。 虚拟网络中的其他资源（Azure 容器注册表除外） | ✔ | ✔ |
-> | 无专用链接的工作区。 有专用链接的其他资源 | ✔ | |
-> | 有专用链接的工作区。 虚拟网络中的其他资源（Azure 容器注册表除外） | ✔ | ✔ |
-> | 有专用链接的工作区和其他任何资源 | ✔ | |
-> | 有专用链接的工作区。 无专用链接或虚拟网络的其他资源 | ✔ | ✔ |
-> | 虚拟网络中的 Azure 容器注册表 | ✔ | |
-> | 工作区的客户托管密钥 | ✔ | |
->
-
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>保护工作区和关联的资源
 

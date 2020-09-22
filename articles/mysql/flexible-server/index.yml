@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: 灵活服务器文档
+summary: Azure Database for MySQL - 灵活服务器是完全托管的 MySQL 数据库即服务产品，能够处理任务关键型工作负载，并提供可预测的性能和动态可伸缩性。 利用所选的开源工具和平台开发包含 Azure Database for MySQL 的应用程序。 参考我们的快速入门、教程和示例了解如何使用用于 MySQL 的 Azure 数据库。
+metadata:
+  description: Azure Database for MySQL - 灵活服务器是 Microsoft 云中的关系数据库服务，它专为开发人员而构建，由 MySQL 社区版提供支持。
+  author: mksuni
+  ms.author: sumuth
+  ms.date: 09/21/2020
+  ms.service: mysql
+  ms.topic: landing-page
+  ms.openlocfilehash: 09086af6cee517f9e30657802934d0f7fb1b14a9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928682"
+landingContent:
+- title: 关于灵活服务器（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是灵活服务器？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 创建灵活服务器
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 使用灵活服务器创建 PHP 应用
+      url: tutorial-php-database-app.md
+  - linkListType: whats-new
+    links:
+    - text: 查看我们的博客
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+- title: 管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 计算和存储选项
+      url: concepts-compute-storage.md
+    - text: MySQL 版本
+      url: concepts-supported-versions.md
+    - text: 网络
+      url: concepts-networking.md
+    - text: 监视
+      url: concepts-monitoring.md
+    - text: 审核日志
+      url: concepts-audit-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理服务器
+      url: how-to-manage-server-portal.md
+    - text: 停止/启动服务器
+      url: how-to-stop-start-server-portal.md
+    - text: 配置和访问日志
+      url: how-to-configure-slow-query-logs-portal.md
+    - text: 计划维护
+      url: how-to-maintenance-portal.md
+- title: 业务连续性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 业务连续性概述
+      url: concepts-business-continuity.md
+    - text: 高可用性
+      url: concepts-high-availability.md
+    - text: 备份和还原
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: 还原服务器
+      url: how-to-restore-server-portal.md
+- title: 连接
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 PHP 进行连接
+      url: connect-php.md
+    - text: 使用 MySQL Workbench 进行连接
+      url: connect-workbench.md
+    - text: 使用 Python 进行连接
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: 在虚拟网络中连接 Web 应用
+      url: tutorial-webapp-server-vnet.md
+- title: Migrate
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 联机迁移
+      url: ../howto-migrate-online.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI 开发人员参考
+      url: /cli/azure/mysql
+    - text: REST API 开发人员参考
+      url: /rest/api/mysql/
+    - text: Azure 资源管理器模板
+      url: /azure/templates/microsoft.dbformysql/allversions

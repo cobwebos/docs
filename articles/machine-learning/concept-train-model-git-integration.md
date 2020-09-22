@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d9d9f2d7363217ef4e9b13b44d3665af33cb8ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661789"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893561"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -70,12 +70,10 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择工作区。
+1. 从 [studio 门户](https://ml.azure.com)中，选择你的工作区。
 1. 选择“试验”，然后选择一个试验  。
 1. 从“运行号”列中选择一个运行  。
-1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“###\_azure”开头的链接。
-
-    ![门户中的 ###_azure 条目](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. 选择 " __输出 + 日志__"，然后展开 " __日志__ " 和 " __azureml__ " 条目。 选择以“###\_azure”开头的链接。
 
 记录的信息包含类似于以下 JSON 的文本：
 

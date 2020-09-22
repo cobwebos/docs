@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77430935"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894797"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>使用 REST API 在 Azure Policy 中配置安全策略
 
@@ -124,7 +124,7 @@ Azure Policy 中的重要概念：
 |系统更新 |监视 Azure 安全中心内系统更新的缺失情况 |systemUpdatesMonitoringEffect|
 |存储加密 |审核存储帐户是否缺少 blob 加密 |storageEncryptionMonitoringEffect|
 |JIT 网络访问 |监视 Azure 安全中心内可能的网络实时 (JIT) 访问 |jitNetworkAccessMonitoringEffect |
-|自适应应用程序控制 |监视 Azure 安全中心内列入允许列表的可能的应用 |adaptiveApplicationControlsMonitoringEffect|
+|自适应应用程序控制 |在 Azure 安全中心监视可能的应用允许列表 |adaptiveApplicationControlsMonitoringEffect|
 |网络安全组 |监视 Azure 安全中心内规则较宽松的网络访问 |networkSecurityGroupsMonitoringEffect| 
 |安全配置 |监视 Azure 安全中心的 OS 漏洞 |systemConfigurationsMonitoringEffect| 
 |终结点保护 |监视 Azure 安全中心 Endpoint Protection 的缺失情况 |endpointProtectionMonitoringEffect |

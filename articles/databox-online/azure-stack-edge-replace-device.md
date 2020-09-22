@@ -1,6 +1,6 @@
 ---
-title: 替换 Azure Stack 边缘设备 |Microsoft Docs
-description: 描述如何获取 Azure Stack Edge 设备的替换。
+title: 替换 Azure Stack Edge Pro 设备 |Microsoft Docs
+description: 描述如何获取 Azure Stack Edge Pro 设备的替换。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 5d5e8cc3a959c7800019107d2c682e144449b46c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096408"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893890"
 ---
-# <a name="replace-your-azure-stack-edge-device"></a>替换 Azure Stack 边缘设备
+# <a name="replace-your-azure-stack-edge-pro-device"></a>替换 Azure Stack Edge Pro 设备
 
-本文介绍如何获取 Azure Stack Edge 设备的替换。 如果现有设备有硬件故障或需要升级，则需要替换设备。 
+本文介绍如何获取 Azure Stack Edge Pro 设备的替换。 如果现有设备有硬件故障或需要升级，则需要替换设备。 
 
 
 在本文中，学习如何：
@@ -33,7 +33,7 @@ ms.locfileid: "87096408"
 
 如果现有设备有硬件故障，请打开支持票证。 Microsoft 支持部门将确定现场可替换装置 (FRU) 不适用于此情况，或设备需要硬件升级。 无论是哪种情况，支持部门都将订购替换设备。
 
-1. 向 Microsoft 支持部门打开支持票证，表示你希望退回设备。 对于问题类型，选择“Azure Stack Edge 硬件”。
+1. 向 Microsoft 支持部门打开支持票证，表示你希望退回设备。 选择 "问题类型" 作为 **Azure Stack Edge Pro 硬件**"。
 
     ![创建支持票证](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -45,9 +45,9 @@ ms.locfileid: "87096408"
 
 按照以下步骤创建资源。
 
-1. 按照[创建新资源](azure-stack-edge-deploy-prep.md#create-a-new-resource)中的步骤为替代设备创建资源。 
+1. 按照 [创建新资源](azure-stack-edge-deploy-prep.md#create-a-new-resource) 中的步骤为替代设备创建资源。 
 
-2. 请确保选中“我有 Azure Stack Edge 设备”对应的复选框。 
+2. 请确保选中此复选框，使其 **具有 Azure Stack Edge Pro 设备**。 
 
     ![替换设备的资源](media/azure-stack-edge-replace-device/replace-resource-1.png)  
 
@@ -71,4 +71,4 @@ ms.locfileid: "87096408"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[返回 Azure Stack Edge 设备](azure-stack-edge-return-device.md)。
+- 了解如何 [返回 Azure Stack Edge Pro 设备](azure-stack-edge-return-device.md)。

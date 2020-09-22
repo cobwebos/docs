@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276756"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894715"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控件来减少计算机的攻击面
 
@@ -50,8 +50,8 @@ ms.locfileid: "89276756"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式版|
-|计价|标准层|
+|发布状态：|正式发布 (GA)|
+|计价|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |支持的计算机：|![是 ](./media/icons/yes-icon.png) azure 和运行 Windows 和 Linux 的非 azure 计算机<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 计算机|
 |必需的角色和权限：|**安全读者** 和 **读取** 者角色可以查看组和已知安全应用程序的列表<br>**参与者** 和 **安全管理员** 角色可以编辑组和已知安全应用程序的列表|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
@@ -65,7 +65,9 @@ ms.locfileid: "89276756"
 
 选择建议，或打开 "自适应应用程序控制" 页，查看建议的已知安全应用程序和计算机组的列表。
 
-1. 从安全中心的菜单中，选择 " **自适应应用程序控件**"。
+1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件**"。
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="从 Azure 仪表板打开自适应应用程序控件" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     此时将打开 " **自适应应用程序控制** " 页，并将 vm 分组为以下选项卡：
 
@@ -86,7 +88,7 @@ ms.locfileid: "89276756"
       - 它是一个 Windows 计算机，其中包含由 GPO 或本地安全策略启用的预先存在的 [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) 策略
 
       > [!TIP]
-      > 安全中心需要至少两周的数据来定义每组计算机的唯一建议。 最近创建的计算机或属于只有最近启用了标准层的订阅的计算机将显示在 " **无建议** " 选项卡下。
+      > 安全中心需要至少两周的数据来定义每组计算机的唯一建议。 最近创建的计算机，或属于仅最近使用 Azure Defender 启用的订阅的计算机将显示在 " **无建议** " 选项卡下。
 
 
 1. 打开 **建议** 的选项卡。此时会显示具有 "推荐允许列表" 的计算机组。
@@ -121,7 +123,7 @@ ms.locfileid: "89276756"
 
 编辑计算机组的规则：
 
-1. 从安全中心的菜单中，选择 " **自适应应用程序控件**"。
+1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件**"。
 
 1. 从 " **配置** " 选项卡中，选择包含要编辑的规则的组。
 
@@ -169,7 +171,7 @@ ms.locfileid: "89276756"
 
 ## <a name="audit-alerts-and-violations"></a>审核警报和冲突
 
-1. 从安全中心的菜单中，选择 " **自适应应用程序控件**"。
+1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件**"。
 
 1. 若要查看具有最近警报的计算机的组，请查看 " **已配置** " 选项卡中列出的组。
 
@@ -184,6 +186,8 @@ ms.locfileid: "89276756"
 ## <a name="move-a-machine-from-one-group-to-another"></a>将计算机从一个组移到另一个组
 
 将计算机从一个组移到另一个组时，应用于该计算机的应用程序控制策略将更改为您将其移动到的组的设置。 你还可以将计算机从配置的组移动到未配置的组，这样做会删除应用于计算机的任何应用程序控制规则。
+
+1. 打开 Azure Defender 仪表板，并从 "高级保护" 区域中选择 " **自适应应用程序控件**"。
 
 1. 从 " **自适应应用程序控制** " 页上的 " **配置** " 选项卡中，选择包含要移动的计算机的组。
 

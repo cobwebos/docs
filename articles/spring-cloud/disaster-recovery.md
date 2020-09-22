@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076037"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892558"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud 灾难恢复
+
+**本文适用于：** ✔️ Java ✔️ C#
 
 本文介绍了在出现停机时可用于保护 Azure Spring Cloud 应用程序的一些策略。  区域性的灾难可能会给任何区域或数据中心造成停机，但是，精心的规划可以缓解此问题对客户造成的影响。
 
@@ -62,3 +64,8 @@ Azure Spring Cloud 应用程序在特定的区域中运行。  Azure 在世界�
 4. 在 DNS 区域中创建 CNAME 记录：bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net。 
 
 5. 现在，环境已完全设置。 客户应该可以通过 bcdr-test.contoso.com 访问应用了
+
+## <a name="next-steps"></a>后续步骤
+
+* [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
+ 

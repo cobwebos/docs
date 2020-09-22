@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011848"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894806"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -29,9 +29,9 @@ ms.locfileid: "89011848"
 
 不是。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
-- **免费层** – 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 免费层不会产生费用。
+- **Azure Defender off** –安全中心在默认工作区中启用 "SecurityCenterFree" 解决方案。 如果 Azure Defender 处于关闭状态，则不会向你收费。
 
-- **标准层** – 安全中心在默认工作区中启用“Security”解决方案。
+- **Azure Defender on** –安全中心在默认工作区中启用 "安全" 解决方案。
 
 有关详细信息，请参阅[安全中心 定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
@@ -118,7 +118,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
     > [!NOTE]
     > 下拉菜单中只显示用户有权访问且 Azure 订阅包含的工作区。
 
-1. 选择“保存” 。 系统会询问是否要重新配置受监视的 VM。
+1. 选择“保存”。 系统会询问是否要重新配置受监视的 VM。
 
     - 如果只希望在新 VM 上应用新的工作区设置，请选择“否”。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Log Analytics 代理。
     - 如果希望在所有 VM 上应用新的工作区设置，请选择“是”。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
@@ -164,7 +164,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 可以在安全策略中为订阅禁用自动预配，但不建议这样做。 禁用自动预配会限制安全中心的建议和警报。 禁用自动预配的具体步骤：
 
-1. 如果为标准层配置了订阅，请打开该订阅的安全策略，并选择 " **免费** " 层。
+1. 如果订阅已启用 Azure Defender，请打开该订阅的安全策略，并选择 " **Azure defender**"。
 
    ![定价层][1]
 

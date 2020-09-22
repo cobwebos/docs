@@ -3,12 +3,12 @@ title: 在不录制的情况下分析实时视频 - Azure
 description: 使用媒体图，可以仅从实时视频流中提取分析，而不在边缘或云中进行录制。 本文讨论了这一概念。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: d59e2e9e309f0ed6a65e001557dcd9dd8af90da2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566718"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893042"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>在不录制的情况下分析实时视频
 
@@ -40,7 +40,7 @@ ms.locfileid: "89566718"
 增强此示例的一种方法是，在抵达帧速率筛选器处理器节点之前使用动作检测器处理器。 这将减少推理服务上的负载，因为仅在视频中有运动活动时使用它。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.png" alt-text="基于通过外部推理模块实现的运动检测帧的实时视频分析":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="基于通过外部推理模块实现的运动检测帧的实时视频分析":::
 
 ## <a name="next-steps"></a>后续步骤
 
