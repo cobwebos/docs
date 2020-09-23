@@ -1,6 +1,6 @@
 ---
-title: 教程：通过 Azure Stack Edge with GPU 的计算力筛选和分析数据 | Microsoft Docs
-description: 了解如何在 Azure Stack Edge GPU 设备上配置计算角色，并在将数据发送到 Azure 之前，使用该角色转换数据。
+title: 教程：通过 Azure Stack Edge Pro with GPU 的计算力筛选和分析数据 | Microsoft Docs
+description: 了解如何在 Azure Stack Edge Pro GPU 设备上配置计算角色，并在将数据发送到 Azure 之前，使用该角色转换数据。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 92afbf6497ff55fb2c3c4761b6239651d10c08ab
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: 3281642134e7a6a2531f43ad4b3f80cff34d03b6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146090"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890928"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge"></a>教程：使用 Azure Stack Edge 转换数据
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>教程：使用 Azure Stack Edge Pro 转换数据
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本教程介绍如何在Azure Stack Edge 设备上配置计算角色。 配置计算角色后，Azure Stack Edge 可在将数据发送到 Azure 之前转换数据。
+本教程介绍如何在 Azure Stack Edge Pro 设备上配置计算角色。 配置计算角色后，Azure Stack Edge Pro 可在将数据发送到 Azure 之前转换数据。
 
 此过程可能需要大约 10 到 15 分钟才能完成。
 
@@ -36,14 +36,14 @@ ms.locfileid: "89146090"
  
 ## <a name="prerequisites"></a>先决条件
 
-在 Azure Stack Edge 设备上设置计算角色之前，请确保：
+在 Azure Stack Edge Pro 设备上设置计算角色之前，请确保：
 
-- 已按照[激活 Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md) 中所述的内容激活 Azure Stack Edge 设备。
+- 已按照[激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中所述的内容激活 Azure Stack Edge Pro 设备。
 
 
 ## <a name="configure-compute"></a>配置计算
 
-若要在 Azure Stack Edge 上配置计算，必须创建一个 IoT 中心资源。
+若要在 Azure Stack Edge Pro 上配置计算，必须创建一个 IoT 中心资源。
 
 1. 在 Azure Stack Edge 资源的 Azure 门户中，转到“概览”。 在右窗格中的“计算”磁贴上，选择“开始”。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "89146090"
     ![开始使用计算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
-    > 如果在 IoT 中心与 Azure Stack Edge 设备关联之前关闭了“配置计算”对话框，则仍然会创建 IoT 中心，但不会在计算配置中显示该 IoT 中心。 
+    > 如果在 IoT 中心与 Azure Stack Edge Pro 设备关联之前关闭了“配置计算”对话框，则仍然会创建 IoT 中心，但不会在计算配置中显示该 IoT 中心。 
     
     如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 某个 IoT Edge 运行时也在此 IoT Edge 设备上运行。 目前，只有 Linux 平台适用于你的 IoT Edge 设备。
 
@@ -101,7 +101,7 @@ ms.locfileid: "89146090"
     有关 `rsync` 命令的详细信息，请参阅 [Rsync 文档](https://www.computerhope.com/unix/rsync.htm)。
 
     > [!NOTE]
-    > 若要装载 NFS 共享以进行计算，必须在 NFS 虚拟 IP 地址相同的子网上配置计算网络。 若要详细了解如何配置计算网络，请参阅[在 Azure Stack Edge 上启用计算网络](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
+    > 若要装载 NFS 共享以进行计算，必须在 NFS 虚拟 IP 地址相同的子网上配置计算网络。 若要详细了解如何配置计算网络，请参阅[在 Azure Stack Edge Pro 上启用计算网络](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
 
     现已创建 Edge 共享，并且收到了创建成功的通知。 共享列表可能会更新，但必须等待共享创建完成。
 
@@ -117,9 +117,9 @@ ms.locfileid: "89146090"
 
 ## <a name="add-a-module"></a>添加模块
 
-可以添加自定义的或预生成的模块。 此 Edge 设备上不存在自定义模块。 若要了解如何创建自定义模块，请访问[为 Azure Stack Edge 设备开发 C# 模块](azure-stack-edge-j-series-create-iot-edge-module.md)。
+可以添加自定义的或预生成的模块。 此 Edge 设备上不存在自定义模块。 若要了解如何创建自定义模块，请访问[为 Azure Stack Edge Pro 设备开发 C# 模块](azure-stack-edge-j-series-create-iot-edge-module.md)。
 
-在此部分中，我们将向[为 Azure Stack Edge 开发 C# 模块](azure-stack-edge-j-series-create-iot-edge-module.md)中创建的 IoT Edge 设备添加一个自定义模块。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
+在此部分中，我们将向[为 Azure Stack Edge Pro 开发 C# 模块](azure-stack-edge-j-series-create-iot-edge-module.md)中创建的 IoT Edge 设备添加一个自定义模块。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
 
 1. 转到“Edge 计算”>“开始”。 在“添加模块”磁贴上，选择“简单”作为方案类型。******** 选择 **添加** 。
 2. 在“配置和添加模块”边栏选项卡中输入以下值：****
@@ -127,7 +127,7 @@ ms.locfileid: "89146090"
     
     |字段  |值  |
     |---------|---------|
-    |名称     | 模块的唯一名称。 此模块是一个 Docker 容器，可以部署到与 Azure Stack Edge 关联的 IoT Edge 设备。        |
+    |名称     | 模块的唯一名称。 此模块是一个 Docker 容器，可以部署到与 Azure Stack Edge Pro 关联的 IoT Edge 设备。        |
     |映像 URI     | 模块的对应容器映像的映像 URI。        |
     |需要凭据     | 如果选中此项，则会使用用户名和密码来检索具有匹配 URL 的模块。        |
     |输入共享     | 选择一个输入共享。 在本例中，Edge 本地共享是输入共享。 此处使用的模块将文件从 Edge 本地共享移到 Edge 共享，然后，这些文件将从 Edge 共享上传到云中。        |
@@ -181,7 +181,7 @@ ms.locfileid: "89146090"
 > * 添加计算模块
 > * 验证数据转换和传输
 
-若要了解如何管理 Azure Stack Edge 设备，请参阅：
+若要了解如何管理 Azure Stack Edge Pro 设备，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用本地 Web UI 管理 Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [使用本地 Web UI 管理 Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

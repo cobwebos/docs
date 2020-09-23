@@ -4,12 +4,12 @@ description: Application Insights 入门。 分析本地或 Microsoft Azure 应�
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323445"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987158"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
@@ -106,17 +106,17 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 
-可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 您可以快速选择特定的慢速操作并使用[探查器](./profiler.md)使操作缓慢地降低到代码的速度。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
+可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 您可以快速选择特定的慢速操作并使用 [探查器](./profiler.md) 使操作缓慢地降低到代码的速度。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
 
 ![“GET Customers/Details”三个持续时间峰值](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
 若要更好地了解此操作的用户体验，我们可以选择一个更大的时间范围。 然后，还可以缩小操作特别慢的特定时间范围。 在下面的示例中，我们将时间范围从默认的 24 小时切换到了 7 天，然后在周二（12 日）与周三（13 日）之间放大到 9:47 到 12:47。 右侧的持续时间分布和示例数以及探查器跟踪数均已更新。
 
-![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![屏幕截图显示性能 (预览) ，其中三个持续时间峰值为7天，时间范围为](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 为了收缩低性能体验的范围，我们接下来将对介于第 95 个百分位与第 99 个百分位之间的持续时间进行放大。 这些表示有 4% 的用户交互特别慢。
 
-![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![屏幕截图显示 "获取客户/详细信息三个持续时间峰值" 7 天范围，其中包含时间窗口。](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 现在，我们可以通过单击“Samples”按钮来查看有代表性的示例，或者通过单击“Profiler traces”按钮来查看有代表性的探查器跟踪。 在此示例中，在该时间范围和所关注的范围持续时间内，为“GET Customers/Details”收集了四个跟踪。
 
@@ -126,7 +126,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 性能调查体验显示了你决定关注的样本集的相关见解。 查看所有可用洞察信息的最佳方式是切换到一个 30 天时间范围，然后选择“总体”来查看过去一个月的所有操作的洞察信息。
 
-![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![屏幕截图显示性能 (预览) 并选择 "整个" 窗口，并选择 "Insights"。](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤

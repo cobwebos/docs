@@ -1,6 +1,6 @@
 ---
 title: SAP 解决方案提供商的 Azure Monitor |Microsoft Docs
-description: 本文提供有关 Azure monitor for SAP 解决方案的常见问题的解答
+description: 本文提供了有关 Azure monitor for SAP 解决方案提供商的常见问题的解答。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 267d600270e834cf4f1f077452fda7459fac3029
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e18d0b84e987e6c36f3f3b4215743025cac76d45
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525443"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987265"
 ---
-# <a name="azure-monitor-for-sap-solutions-providers-preview"></a>适用于 SAP 解决方案提供商的 Azure monitor （预览版）
+# <a name="azure-monitor-for-sap-solutions-providers-preview"></a>适用于 SAP 解决方案提供商的 Azure monitor (预览版) 
 
 ## <a name="overview"></a>概述  
 
-在 SAP 解决方案 Azure Monitor 的上下文中，*提供程序类型*引用特定的*提供程序*。 例如*SAP HANA*，该配置针对 SAP 布局中的特定组件（如 SAP HANA 数据库）。 提供程序包含相应组件的连接信息，有助于从该组件收集遥测数据。 可以为 SAP 解决方案资源（也称为 SAP 监视器资源）的一个 Azure Monitor 配置同一提供程序类型或多个提供程序类型的多个提供程序的多个提供程序。
+在 SAP 解决方案 Azure Monitor 的上下文中， *提供程序类型* 引用特定的 *提供程序*。 例如 *SAP HANA*，该配置针对 SAP 布局中的特定组件（如 SAP HANA 数据库）。 提供程序包含相应组件的连接信息，有助于从该组件收集遥测数据。 SAP 解决方案资源 (的一个 Azure Monitor 也称为 SAP Monitor 资源) 可以配置同一提供程序类型的多个提供程序或多个提供程序类型的多个提供程序。
    
 客户可以选择配置不同的提供程序类型，以在其 SAP 环境中从相应组件启用数据收集。 例如，客户可以为 SAP HANA 提供程序类型配置一个提供程序，为高可用性群集提供程序类型配置一个提供程序，等等。  
 
@@ -46,14 +46,14 @@ ms.locfileid: "86525443"
 
 ## <a name="provider-type-sap-hana"></a>提供程序类型 SAP HANA
 
-客户可以配置一个或多个提供程序类型的提供程序， *SAP HANA*以启用 SAP HANA 数据库中的数据收集。 SAP HANA 提供程序通过 SQL 端口连接到 SAP HANA 数据库，从数据库中提取遥测数据，并将其推送到客户订阅中的 "Log Analytics" 工作区。 SAP HANA 提供程序从 SAP HANA 数据库每隔1分钟收集一次数据。  
+客户可以配置一个或多个提供程序类型的提供程序， *SAP HANA* 以启用 SAP HANA 数据库中的数据收集。 SAP HANA 提供程序通过 SQL 端口连接到 SAP HANA 数据库，从数据库中提取遥测数据，并将其推送到客户订阅中的 "Log Analytics" 工作区。 SAP HANA 提供程序从 SAP HANA 数据库每隔1分钟收集一次数据。  
 
 在公共预览版中，客户可以使用 SAP HANA 提供程序查看以下数据：底层基础结构利用率、SAP HANA 主机状态、SAP HANA 系统复制和 SAP HANA 备份遥测数据。 若要配置 SAP HANA 提供程序、主机 IP 地址、HANA SQL 端口号和 SYSTEMDB 用户名和密码。 建议客户针对 SYSTEMDB 配置 SAP HANA 提供程序，但可以针对其他数据库租户配置其他提供程序。
 
 ![SAP 解决方案提供商的 Azure Monitor-SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
 ## <a name="provider-type-high-availability-cluster"></a>提供程序类型高可用性群集
-客户可以配置一个或多个提供程序类型的提供程序类型的*高可用性群集*，以便在 SAP 环境内从 Pacemaker 群集进行数据收集。 高可用性群集提供程序使用[ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter)终结点连接到 Pacemaker，从数据库中提取遥测数据，并将其推送到客户订阅中 Log Analytics 工作区。 高可用性群集提供程序从 Pacemaker 每60秒收集数据。  
+客户可以配置一个或多个提供程序类型的提供程序类型的 *高可用性群集* ，以便在 SAP 环境内从 Pacemaker 群集进行数据收集。 高可用性群集提供程序使用 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 终结点连接到 Pacemaker，从数据库中提取遥测数据，并将其推送到客户订阅中 Log Analytics 工作区。 高可用性群集提供程序从 Pacemaker 每60秒收集数据。  
 
 在公共预览版中，客户可以通过高可用性群集提供商查看以下数据：   
  - 群集状态以节点和资源状态的汇总形式表示 
@@ -63,15 +63,15 @@ ms.locfileid: "86525443"
 
 若要配置高可用性群集提供程序，需要执行两个主要步骤： 
 1. 在 Pacemaker 群集中的*每个*节点上安装[ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 
-    - 客户可以使用 Azure 自动化脚本来部署高可用性群集。 脚本将在每个群集节点上安装[ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。  
+    - 客户可以使用 Azure 自动化脚本来部署高可用性群集。 脚本将在每个群集节点上安装 [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) 。  
     - 或客户可以执行手动安装，请按照[此页](https://github.com/ClusterLabs/ha_cluster_exporter)上的步骤进行操作 
-2. 在 Pacemaker 群集中的*每个*节点上配置高可用性群集提供程序  
+2. 在 Pacemaker 群集中的 *每个* 节点上配置高可用性群集提供程序  
   若要配置高可用性群集提供程序，需要 Prometheus URL、群集名称、主机名和系统 ID。   
   建议客户为每个群集节点配置一个提供程序。   
 
 ## <a name="provider-type-microsoft-sql-server"></a>提供程序类型 Microsoft SQL server
 
-客户可以配置一个或多个提供程序类型的提供程序， *Microsoft SQL Server*从[虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)启用数据收集。 SQL Server 提供程序通过 SQL 端口连接到 Microsoft SQL Server，从数据库中提取遥测数据，并将其推送到客户订阅中的 "Log Analytics" 工作区。 必须为 SQL 身份验证配置 SQL Server，并使用 SAP DB 作为提供程序的默认数据库的 SQL Server 登录名进行配置。 SQL Server 提供程序从 SQL Server 每隔60秒收集一次数据。  
+客户可以配置一个或多个提供程序类型的提供程序， *Microsoft SQL Server* 从 [虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)启用数据收集。 SQL Server 提供程序通过 SQL 端口连接到 Microsoft SQL Server，从数据库中提取遥测数据，并将其推送到客户订阅中的 "Log Analytics" 工作区。 必须为 SQL 身份验证配置 SQL Server，并使用 SAP DB 作为提供程序的默认数据库的 SQL Server 登录名进行配置。 SQL Server 提供程序从 SQL Server 每隔60秒收集一次数据。  
 
 在公共预览版中，客户可以使用 SQL Server 提供程序查看以下数据：底层基础结构利用率、顶级 SQL 语句、顶级最大表、SQL Server 错误日志中记录的问题、阻止进程和其他内容。  
 
@@ -82,4 +82,4 @@ ms.locfileid: "86525443"
 ## <a name="next-steps"></a>后续步骤
 
 - 创建适用于 SAP 解决方案资源的第一个 Azure Monitor。
-- 对于 SAP 解决方案 Azure Monitor 是否有疑问？ 检查[FAQ](./azure-monitor-faq.md)部分
+- 对于 SAP 解决方案 Azure Monitor 是否有疑问？ 检查 [FAQ](./azure-monitor-faq.md) 部分

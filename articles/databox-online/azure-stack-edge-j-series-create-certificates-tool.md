@@ -1,34 +1,34 @@
 ---
 title: 使用 Microsoft Azure Stack 集线器就绪检查程序工具创建证书 |Microsoft Docs
-description: 介绍如何使用 Azure Stack 中心就绪检查程序工具创建证书请求，然后在 Azure Stack 边缘 GPU 设备上获取和安装证书。
-services: Azure Stack Edge
+description: 介绍如何使用 Azure Stack 中心就绪检查程序工具创建证书请求，然后在 Azure Stack Edge Pro GPU 设备上获取和安装证书。
+services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267371"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891097"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack 中心就绪检查程序工具为 Azure Stack 边缘创建证书 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack 中心就绪检查程序工具为 Azure Stack Edge Pro 创建证书 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何使用 Azure Stack 中心就绪检查程序工具为 Azure Stack 边缘创建证书。 
+本文介绍如何使用 Azure Stack 中心就绪检查程序工具为 Azure Stack Edge Pro 创建证书。 
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack 集线器就绪检查程序工具
 
-使用 Azure Stack 集线器准备情况检查程序工具为 Azure Stack 边缘设备部署 (Csr) 创建证书签名请求。 你可以在为 Azure Stack Edge 设备放置订单并等待设备到达后创建这些请求。 
+使用 Azure Stack 集线器准备情况检查程序工具来创建证书签名请求 () 用于 Azure Stack 边缘 Pro 设备部署的 Csr。 你可以在为 Azure Stack Edge Pro 设备放置订单并等待设备到达后创建这些请求。 
 
 > [!NOTE]
 > 此工具仅用于测试或开发目的，不适用于生产设备。 
 
-你可以使用 Azure Stack 集线器就绪检查器工具 (AzsReadinessChecker) 来请求以下证书：
+可以使用 Azure Stack Hub 就绪性检查器工具 (AzsReadinessChecker) 请求以下证书：
 
 - Azure 资源管理器证书
 - 本地 UI 证书
@@ -37,12 +37,12 @@ ms.locfileid: "89267371"
 - VPN 证书
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备知识
 
-若要为 Azure Stack Edge 设备部署创建 Csr，请确保： 
+若要为 Azure Stack Edge Pro 设备部署创建 Csr，请确保： 
 
 - 你有运行 Windows 10 或 Windows Server 2016 或更高版本的客户端。 
-- 已从此系统上 [的 PowerShell 库中](https://aka.ms/AzsReadinessChecker) 下载了 Microsoft Azure Stack 集线器就绪检查器工具1.2002.1133.85。 可能需要搜索此包。 只有此版本的工具才能为 Azure Stack 边缘设备创建证书。
+- 已从此系统上 [的 PowerShell 库中](https://aka.ms/AzsReadinessChecker) 下载了 Microsoft Azure Stack 集线器就绪检查器工具1.2002.1133.85。 可能需要搜索此包。 只有此版本的工具才能为 Azure Stack Edge Pro 设备创建证书。
 - 你具有以下证书信息：
   - 设备名称
   - 节点序列号
@@ -50,7 +50,7 @@ ms.locfileid: "89267371"
 
 ## <a name="generate-certificate-signing-requests"></a>生成证书签名请求
 
-使用以下步骤来准备 Azure Stack Edge 设备证书：
+使用以下步骤来准备 Azure Stack Edge Pro 设备证书：
 
 1. 以管理员身份运行 PowerShell (5.1 或更高版本) 。
 2. 安装 Azure Stack 集线器就绪检查程序工具。 在 PowerShell 提示符下，键入： 
@@ -121,15 +121,15 @@ ms.locfileid: "89267371"
     还会看到一个 INF 文件夹。 这包含一个管理。 <边缘-devicename> 信息文件以明文形式说明证书详细信息。  
 
 
-6. 将这些文件提交给证书颁发机构 (内部或公用) 。 确保 CA 使用生成的请求生成证书，该请求符合 [节点证书](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [终结点证书](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本地 UI 证书](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack 边缘证书要求。
+6. 将这些文件提交给证书颁发机构 (内部或公用) 。 请确保你的 CA 使用生成的请求生成证书，该请求符合 [节点证书](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [终结点证书](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本地 UI 证书](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack Edge Pro 证书要求。
 
 ## <a name="prepare-certificates-for-deployment"></a>为部署准备证书
 
-您从证书颁发机构获取的证书文件 (CA) 必须导入和导出，其属性与 Azure Stack Edge 设备证书要求相匹配。 在生成证书签名请求的同一系统上完成以下步骤。
+您从证书颁发机构获取的证书文件 (CA) 必须导入和导出，其属性与 Azure Stack Edge Pro 设备证书要求相匹配。 在生成证书签名请求的同一系统上完成以下步骤。
 
-- 若要导入证书，请按照在 [访问 Azure Stack Edge 设备的客户端上导入证书](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步骤操作。
+- 若要导入证书，请按照在 [访问 Azure Stack Edge Pro 设备的客户端上的 "导入证书](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)" 中的步骤操作。
 
-- 若要导出证书，请按照 [从访问 Azure Stack Edge 设备的客户端](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的 "导出证书" 中的步骤进行操作。
+- 若要导出证书，请按照 [从访问 Azure Stack Edge Pro 设备的客户端](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的 "导出证书" 中的步骤进行操作。
 
 
 ## <a name="validate-certificates"></a>验证证书
@@ -152,4 +152,4 @@ ms.locfileid: "89267371"
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Azure Stack Edge 设备](azure-stack-edge-gpu-deploy-prep.md)
+[部署 Azure Stack Edge Pro 设备](azure-stack-edge-gpu-deploy-prep.md)

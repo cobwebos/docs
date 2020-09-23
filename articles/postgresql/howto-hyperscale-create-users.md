@@ -7,21 +7,21 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825950"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907414"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>在 Azure Database for PostgreSQL-超大规模 (Citus 中创建用户) 
 
 > [!NOTE]
-> 术语 "用户" 指的是超大规模 (Citus) 服务器组内的用户。 若要改为了解 Azure 订阅用户及其权限，请访问 azure [RBAC) 一文中的 azure 基于角色的访问控制 (](../role-based-access-control/built-in-roles.md)或查看[如何自定义角色](../role-based-access-control/custom-roles.md)。
+> 术语 "用户" 指的是超大规模 (Citus) 服务器组内的用户。 若要改为了解 Azure 订阅用户及其权限，请访问 azure [RBAC) 一文中的 azure 基于角色的访问控制 (](../role-based-access-control/built-in-roles.md) 或查看 [如何自定义角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="the-server-admin-account"></a>服务器管理员帐户
 
-PostgreSQL 引擎使用[角色](https://www.postgresql.org/docs/current/sql-createrole.html)来控制对数据库对象的访问，新创建的超大规模 (Citus) 服务器组附带了几个预定义的角色：
+PostgreSQL 引擎使用 [角色](https://www.postgresql.org/docs/current/sql-createrole.html) 来控制对数据库对象的访问，新创建的超大规模 (Citus) 服务器组附带了几个预定义的角色：
 
 * [默认 PostgreSQL 角色](https://www.postgresql.org/docs/current/default-roles.html)
 * `azure_pg_admin`
@@ -46,19 +46,19 @@ PostgreSQL 引擎使用[角色](https://www.postgresql.org/docs/current/sql-crea
 
 如前所述， `citus` 管理员帐户没有创建其他用户的权限。 若要添加用户，请使用 Azure 门户接口。
 
-1. 中转到超大规模服务器组的 "**角色**" 页，然后单击 " **+ 添加**"：
+1. 中转到超大规模服务器组的 " **角色** " 页，然后单击 " **+ 添加**"：
 
-   !["角色" 页](media/howto-hyperscale-create-users/1-role-page.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text=""角色" 页":::
 
 2. 输入 "角色名称" 和 "密码"。 单击“保存”。
 
-   ![添加角色](media/howto-hyperscale-create-users/2-add-user-fields.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="添加角色":::
 
 将在服务器组的协调器节点上创建用户，并将其传播到所有工作节点。 通过 Azure 门户创建的角色具有 `LOGIN` 属性，这意味着它们是可以登录数据库的真实用户。
 
 ## <a name="how-to-modify-privileges-for-user-role"></a>如何修改用户角色的权限
 
-新用户角色通常用于提供具有受限权限的数据库访问权限。 若要修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。  (参阅超大规模 () Citus 中的[psql 连接](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql)) 
+新用户角色通常用于提供具有受限权限的数据库访问权限。 若要修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。  (参阅超大规模 () Citus 中的 [psql 连接](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) ) 
 
 例如，若要允许 `db_user` 读取 `mytable` ，请授予权限：
 
@@ -77,13 +77,13 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 若要更新用户，请访问超大规模服务器组的 "**角色**" 页，然后单击 "用户" 旁边**的省略号 "..."。** 省略号将打开一个菜单以删除用户或重置其密码。
 
-   ![编辑角色](media/howto-hyperscale-create-users/edit-role.png)
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="编辑角色":::
 
 该 `citus` 角色具有特权，不能删除。
 
 ## <a name="next-steps"></a>后续步骤
 
-为新用户计算机的 IP 地址打开防火墙，使其能够连接：[使用 Azure 门户创建和管理超大规模 (Citus) 防火墙规则](howto-hyperscale-manage-firewall-using-portal.md)。
+为新用户计算机的 IP 地址打开防火墙，使其能够连接： [使用 Azure 门户创建和管理超大规模 (Citus) 防火墙规则](howto-hyperscale-manage-firewall-using-portal.md)。
 
 有关数据库用户帐户管理的详细信息，请参阅 PostgreSQL 产品文档：
 

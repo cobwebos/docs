@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 上安装微聚焦企业服务器5.0 和企业开发人员 5.0 |Microsoft Docs
-description: 在 Azure 虚拟机 (Vm) 上使用微焦点开发和测试环境 Rehost IBM z/OS 大型机工作负荷。
+description: 本文介绍如何在 Microsoft Azure 上安装微聚焦企业服务器5.0 和企业开发人员5.0。
 services: virtual-machines-linux
 documentationcenter: ''
 author: maggsl
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 11fde4480f4e2ed9feda00fa2af0e5937a77b9ad
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986878"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>在 Azure 上安装微聚焦企业服务器5.0 和企业开发人员5。0
 
@@ -29,7 +29,7 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
 
 企业服务器的相应开发环境是企业开发人员，在 Microsoft Visual Studio 2017 或更高版本上运行，Visual Studio 社区 (免费下载) 或 Eclipse。 本文介绍如何使用安装了 Visual Studio 2017 或更高版本的 Windows Server 2016 虚拟机来部署它。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 在开始之前，请先查看以下先决条件：
 

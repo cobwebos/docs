@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547675"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884443"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL 中的高可用性–单一服务器
 Azure Database for PostgreSQL –单服务器服务可提供有保证的高级别可用性，其中包含 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 运行时间 (SLA) 的财务支持服务级别协议。 Azure Database for PostgreSQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for PostgreSQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
@@ -29,11 +29,11 @@ Azure Database for PostgreSQL 适合运行对正常运行时间要求很高的�
 ## <a name="planned-downtime-mitigation"></a>缓解计划内停机
 Azure Database for PostgreSQL 设计为在计划内停机操作期间提供高可用性。 
 
-![Azure PostgreSQL 中的弹性缩放的视图](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-elastic-scaling.png" alt-text="Azure PostgreSQL 中的弹性缩放的视图":::
 
-1. 在数秒内扩展和缩减 PostgreSQL 数据库服务器
-2. 充当代理路由客户端的网关连接到正确的数据库服务器
-3. 可以在不停机的情况下执行存储的扩展。 远程存储支持在故障转移后快速分离/重新附加。
+1. 在数秒内纵向扩展和缩减 PostgreSQL 数据库服务器
+2. 充当代理的网关，可以将客户端连接路由到适当的数据库服务器
+3. 可以在不停机的情况下纵向扩展存储。 远程存储支持在故障转移后进行快速拆离/重新附加操作。
 下面是一些计划内维护方案：
 
 | **方案** | **说明**|
@@ -49,19 +49,19 @@ Azure Database for PostgreSQL 设计为在计划内停机操作期间提供高�
 意外的故障（包括基础硬件故障、网络问题和软件 bug）可能会导致计划外停机。 如果数据库服务器意外关闭，则会在数秒内自动预配一个新的数据库服务器。 远程存储会自动附加到新的数据库服务器。 PostgreSQL 引擎使用 WAL 和数据库文件执行恢复操作，并打开数据库服务器以允许客户端进行连接。 未提交的事务将丢失，并且必须由应用程序重试。 虽然计划外停机无法避免，但 Azure Database for PostgreSQL 可以通过在数据库服务器和存储层上自动执行恢复操作来减少停机时间，无需人工干预。 
 
 
-![Azure PostgreSQL 中的高可用性的视图](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL 中的高可用性的视图":::
 
 1. 具有快速缩放功能的 Azure PostgreSQL 服务器。
-2. 充当代理以将客户端连接路由到正确的数据库服务器的网关
-3. 具有三个副本以实现可靠性、可用性和冗余的 Azure 存储。
-4. 远程存储还启用服务器故障转移后的快速分离/重新附加。
+2. 充当代理的网关，可以将客户端连接路由到适当的数据库服务器。
+3. Azure 存储，具有三个副本，可确保可靠性、可用性和冗余。
+4. 远程存储还支持在服务器故障转移后进行快速拆离/重新附加操作。
    
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>计划外停机：故障场景和服务恢复
 下面介绍了一些故障场景以及 Azure Database for PostgreSQL 如何自动恢复：
 
 | **方案** | **自动恢复** |
 | ---------- | ---------- |
-| <B>数据库服务器故障 | 如果数据库服务器由于某些基础硬件故障而关闭，则会丢弃处于活动状态的连接，并中止任何正在进行的事务。 将自动部署新的数据库服务器，并将远程数据存储附加到新的数据库服务器。 在数据库恢复完成后，客户端可以通过网关连接到新的数据库服务器。 <br /> <br />  (RTO) 的恢复时间取决于各种因素，包括发生故障时的活动，例如，在执行数据库服务器启动过程中的大型事务和恢复量。 <br /> <br /> 所构建的使用 PostgreSQL 数据库的应用程序需要能够检测并重试丢弃的连接和失败的事务。  当应用程序重试时，网关会将连接透明地重定向到新创建的数据库服务器。 |
+| <B>数据库服务器故障 | 如果数据库服务器由于某些基础硬件故障而关闭，则会丢弃处于活动状态的连接，并中止任何正在进行的事务。 将自动部署新的数据库服务器，并将远程数据存储附加到新的数据库服务器。 在数据库恢复完成后，客户端可以通过网关连接到新的数据库服务器。 <br /> <br /> 恢复时间 (RTO) 取决于各种因素，包括发生故障时的活动，例如，在数据库服务器启动过程中需执行的大型事务和恢复量。 <br /> <br /> 所构建的使用 PostgreSQL 数据库的应用程序需要能够检测并重试丢弃的连接和失败的事务。  当应用程序重试时，网关会将连接透明地重定向到新创建的数据库服务器。 |
 | <B>存储故障 | 对于任何与存储相关的问题（例如磁盘故障或物理块损坏），应用程序看不到任何影响。 由于数据存储在 3 个副本中，因此将由未发生故障的存储提供数据的副本。 块损坏会自动修复。 如果丢失了数据的副本，则会自动创建数据的新副本。 |
 
 下面是需要用户执行操作来进行恢复的一些故障场景：

@@ -13,42 +13,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076372"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883920"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
-
-本文介绍安全中心的“资源安全性”部分的“网络”页。
 
 有关网络建议的完整列表，请参阅[网络建议](recommendations-reference.md#recs-network)。
 
 本文从网络安全角度介绍适用于 Azure 资源的建议。 网络建议以下一代防火墙、网络安全组、JIT VM 访问过度宽容的入站流量规则等为中心。 有关网络建议和修复操作的列表，请参阅[管理 Azure 安全中心的安全建议](security-center-recommendations.md)。
 
-> [!NOTE]
-> 借助“网络”页，可从网络角度深入了解 Azure 资源运行状况。 网络映射和自适应网络控制仅适用于 Azure 安全中心标准层。 [如果使用免费层，则可以单击按钮查看旧网络并接收网络资源建议](#legacy-networking)。
->
+安全中心的 **网络** 功能包括： 
 
-“网络”页概述了可以深入了解的部分，以获取有关网络资源运行状况的详细信息：
-
-- 网络映射（仅限 Azure 安全中心标准层）
-- 自适应网络强化
-- 网络安全建议。
-- 旧版“网络”边栏选项卡（以前的网络边栏选项卡） 
+- 网络映射 (需要 Azure Defender) 
+- [自适应网络强化](security-center-adaptive-network-hardening.md) (需要 Azure Defender) 
+- 网络安全建议
  
-[![网络窗格](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+## <a name="view-your-networking-resources-and-their-recommendations"></a>查看网络资源及其建议
+
+在 " [资产清单" 页](asset-inventory.md)上，使用 "资源类型" 筛选器选择要调查的网络资源：
+
+:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="资产清单网络资源类型" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
+
 
 ## <a name="network-map"></a>网络映射
+
 交互式网络映射提供了带有安全覆盖的图形视图，提供了强化网络资源的建议和见解。 你可以通过映射查看 Azure 工作负载的拓扑、虚拟机和子网之间的连接、从映射向下钻取特定资源的功能以及这些资源的建议。
 
 打开网络映射：
 
-1. 在“安全中心”的“资源安全机制”下，选择“网络”。
-2. 在“网络映射”下，单击“查看拓扑” 。
+1. 在安全中心的菜单中，打开 "Azure Defender" 仪表板，然后选择 " **网络映射**"。
+
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="从 Azure Defender 仪表板打开网络映射" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+
+1. 选择 " **层** " 菜单选择 " **拓扑**"。
  
 拓扑图的默认视图显示：
 
@@ -63,7 +65,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 ## <a name="understanding-the-network-map"></a>了解网络映射
 
-网络映射可以在“拓扑”视图和“流量”视图中显示 Azure 资源 。 
+网络映射可以在 **拓扑** 视图和 **流量** 视图中显示 Azure 资源。 
 
 ### <a name="the-topology-view"></a>拓扑视图
 
@@ -114,31 +116,8 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 [![网络流量映射](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## <a name="legacy-networking"></a>旧网络 <a name ="legacy-networking"></a>
-
-如果没有安全中心标准层，本部分将介绍如何查看免费网络建议。
-
-要访问此信息，请在“网络”边栏选项卡中单击“查看旧网络”。 
-
-[![旧网络](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
-
-### <a name="internet-facing-endpoints-section"></a>面向 Internet 的终结点部分
-在“面向 Internet 的终结点”部分中，可以查看当前配置了面向 Internet 的终结点的虚拟机及其状态。
-
-此表提供终结点名称、面向 Internet 的 IP 地址，以及网络安全组和 NGFW 建议当前的严重性状态。 此表按严重性排序。
-
-### <a name="networking-topology-section"></a>拓扑部分
-“拓扑”部分提供了资源的分层视图。
-
-此表按严重性排序（虚拟机和子网）。
-
-在此拓扑视图中，第一层级显示 Vnets。 第二层级显示子网，第三层级显示属于这些子网的虚拟机。 右侧一栏显示网络安全组对这些资源的建议的当前状态。
-
-第三层级显示虚拟机，与前面的描述类似。 可以单击任何资源了解详细信息，或应用所需的安全控制或配置。
-
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：
 
-* [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
-* [保护 Azure 安全中心中的 Azure SQL 服务](security-center-sql-service-recommendations.md)
+- [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)

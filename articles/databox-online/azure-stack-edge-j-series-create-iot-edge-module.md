@@ -1,6 +1,6 @@
 ---
-title: 'C # IoT Edge 模块，适用于带有 GPU 的 Azure Stack 边缘 |Microsoft Docs'
-description: '了解如何开发可在 Azure Stack Edge GPU 设备上部署的 c # IoT Edge 模块。'
+title: 'C # IoT Edge 模块，适用于带有 GPU 的 Azure Stack Edge Pro |Microsoft Docs'
+description: '了解如何开发可在 Azure Stack Edge Pro GPU 设备上部署的 c # IoT Edge 模块。'
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,49 +8,49 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c981208438529ec7c23ab3c3089f4d57d77c2714
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268955"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891200"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>开发 c # IoT Edge 模块，以将文件移动到 Azure Stack 边缘
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>开发 c # IoT Edge 模块，以便在 Azure Stack Edge Pro 上移动文件
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文逐步介绍如何创建 IoT Edge 模块，以便与 Azure Stack Edge 设备进行部署。 Azure Stack Edge 是一种存储解决方案，可用于处理数据，并通过网络将数据发送到 Azure。
+本文逐步介绍如何创建 IoT Edge 模块，以便与 Azure Stack Edge Pro 设备进行部署。 Azure Stack Edge Pro 是一种存储解决方案，可用于处理数据，并通过网络将数据发送到 Azure。
 
-可以将 Azure IoT Edge 模块与 Azure Stack 边缘结合使用，以在数据移至 Azure 时转换数据。 本文中使用的模块实现了逻辑，以便将文件从本地共享复制到 Azure Stack 边缘设备上的云共享。
+你可以将 Azure IoT Edge 模块与 Azure Stack Edge Pro 结合使用，以便在数据移动到 Azure 时转换数据。 本文中使用的模块实现了逻辑，以便将文件从本地共享复制到 Azure Stack Edge Pro 设备上的云共享。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 创建容器注册表来存储和管理你的模块（Docker 映像）。
-> * 创建要在 Azure Stack Edge 设备上部署的 IoT Edge 模块。
+> * 创建要在 Azure Stack Edge Pro 设备上部署的 IoT Edge 模块。
 
 
 ## <a name="about-the-iot-edge-module"></a>关于 IoT Edge 模块
 
-Azure Stack 边缘设备可以部署和运行 IoT Edge 模块。 Edge 模块实质上是执行特定任务的 Docker 容器，如从设备引入消息、转换消息，或将消息发送到 IoT 中心。 在本文中，你将创建一个模块，用于将文件从本地共享复制到 Azure Stack 边缘设备上的云共享。
+Azure Stack Edge Pro 设备可以部署和运行 IoT Edge 模块。 Edge 模块实质上是执行特定任务的 Docker 容器，如从设备引入消息、转换消息，或将消息发送到 IoT 中心。 在本文中，你将创建一个模块，用于将文件从本地共享复制到 Azure Stack Edge Pro 设备上的云共享。
 
-1. 文件将写入 Azure Stack 边缘设备上的本地共享。
+1. 文件将写入 Azure Stack Edge Pro 设备上的本地共享。
 2. 文件事件生成器将为写入到本地共享的每个文件创建文件事件。 修改文件时，也会生成文件事件。 随后，将文件事件发送到 IoT Edge 中心（在 IoT Edge 运行时中）。
 3. IoT Edge 自定义模块处理文件事件，来为文件创建还包含文件相对路径的文件事件对象。 该模块将使用相对文件路径生成绝对路径，并将文件从本地共享复制到云共享。 然后，该模块从本地共享中删除文件。
 
-![Azure IoT Edge 模块如何处理 Azure Stack 边缘](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
+![Azure IoT Edge 模块如何在 Azure Stack Edge Pro 上工作](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
 
 文件位于云共享中后，它会自动上传到 Azure 存储帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备知识
 
 在开始之前，请确保：
 
-- 运行的 Azure Stack 边缘设备。
+- 运行的 Azure Stack Edge Pro 设备。
 
     - 该设备还具有一个关联的 IoT 中心资源。
     - 该设备已配置 Edge 计算角色。
-    有关详细信息，请参阅为你的 Azure Stack 边缘 [配置计算](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) 。
+    有关详细信息，请参阅为 Azure Stack Edge Pro [配置计算](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) 。
 
 - 以下开发资源：
 
@@ -77,7 +77,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
       ![创建容器注册表](./media/azure-stack-edge-j-series-create-iot-edge-module/create-container-registry-1.png)
  
-4. 选择“创建”  。
+4. 选择“创建”。
 5. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。****
 
     ![获取访问密钥](./media/azure-stack-edge-j-series-create-iot-edge-module/get-access-keys-1.png)
@@ -278,4 +278,4 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要在 Azure Stack Edge 上部署和运行此模块，请参阅 [添加模块](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)中的步骤。
+若要在 Azure Stack Edge Pro 上部署和运行此模块，请参阅 [添加模块](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)中的步骤。

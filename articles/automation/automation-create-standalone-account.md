@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea0970a672ac8fb15c2e7c6bbb65edf33bd25f04
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186582"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987283"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -31,7 +31,7 @@ ms.locfileid: "86186582"
 若要创建或更新自动化帐户，并完成本文所述的任务，必须具有以下特权和权限：
 
 * 若要创建自动化帐户，必须将 Azure AD 用户帐户添加到一个角色，该角色的权限相当于 `Microsoft.Automation` 资源的所有者角色。 有关详细信息，请参阅 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)。
-* 在 Azure 门户的“Azure Active Directory” > “管理” > “用户设置”下，如果“应用注册”设置为“是”，则 Azure AD 租户中的非管理员用户可以[注册 Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果**应用注册**设置为 "**否**"，则执行此操作的用户在 Azure AD 中必须至少有一个应用程序开发者角色。
+* 在 Azure 门户的“Azure Active Directory” > “管理” > “用户设置”下，如果“应用注册”设置为“是”，则 Azure AD 租户中的非管理员用户可以[注册 Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果“应用注册”设置为“否”，则执行此操作的用户的角色必须至少是 Azure AD 中的应用开发人员 。
 
 如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则将作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”窗格中会显示此消息：`You do not have permissions to create.`
 
@@ -59,7 +59,7 @@ ms.locfileid: "86186582"
    > [!NOTE]
    > 如果“添加自动化帐户”窗格中显示以下消息，则表示你的帐户不是订阅管理员角色成员和订阅的共同管理员。
    >
-   > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="提示 "你没有权限在 Azure Active directory 中创建运行方式帐户" 的屏幕截图。":::
 
 1. 在“添加自动化帐户”窗格的“名称”字段中，输入新自动化帐户的名称。 选择后，将无法更改此名称。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "86186582"
    > [!NOTE]
    > 如果选择不创建运行方式帐户，则选择“否”，“添加自动化帐户”窗格中会显示一条消息。  尽管该帐户是在 Azure 门户中创建的，但它在经典部署模型订阅或 Azure 资源管理器订阅目录服务中没有对应的身份验证标识。 因此，自动化帐户无法访问订阅中的资源。 这会导致引用此帐户的任何 Runbook 无法进行身份验证，也无法针对这些部署模型中的资源执行任务。
    >
-   > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="提示消息 "你已选择不创建运行方式帐户" 的屏幕截图。":::
    >
    > 未创建服务主体时不会分配参与者角色。
    >
@@ -105,4 +105,4 @@ ms.locfileid: "86186582"
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅[教程：创建 PowerShell 工作流 Runbook](learn/automation-tutorial-runbook-textual.md)。
 * 若要开始使用 Python 2 Runbook，请参阅[教程：创建 Python 2 Runbook](learn/automation-tutorial-runbook-textual-python2.md)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)。
