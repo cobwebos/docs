@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547692"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906492"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建超大规模 (Citus) 服务器组
 
@@ -138,6 +138,5 @@ SELECT gu.login, count(*)
 
 在本快速入门中，你已了解如何预配 Hyperscale (Citus) 服务器组。 你已使用 psql 连接到该组，创建了架构并分布了数据。
 
-接下来，请遵循以下教程生成可缩放的多租户应用程序。
-> [!div class="nextstepaction"]
-> [设计多租户数据库](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- 遵循以下教程[生成可缩放的多租户应用程序](https://aka.ms/hyperscale-tutorial-multi-tenant)
+- 确定服务器组的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)

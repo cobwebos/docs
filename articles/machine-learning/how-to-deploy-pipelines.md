@@ -1,7 +1,7 @@
 ---
 title: 发布 ML 管道
 titleSuffix: Azure Machine Learning
-description: 通过机器学习管道和用于 Python 的 Azure 机器学习 SDK 运行机器学习工作流。
+description: 利用机器学习管道和适用于 Python 的 Azure 机器学习 SDK 运行机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,32 +11,32 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 08529d1bb50a1a5d5b3c7d0296aa36f021f45e98
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ddc8186e85001a2a3ed2ed9f57b8f025133ef16a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646086"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897771"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>发布和跟踪机器学习管道
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文将演示如何将机器学习管道与同事或客户共享。
 
-机器学习管道是机器学习任务的可重复使用的工作流。 管道的一个优点是协作增加。 你还可以对管道进行版本处理，以允许客户在使用新版本时使用当前模型。 
+本文将演示如何与同事或客户共享机器学习管道。
 
-## <a name="prerequisites"></a>先决条件
+机器学习管道是用于机器学习任务的可重用工作流。 管道的一个益处是加强了协作。 你也可以对管道进行版本管理，这样客户就可以在你使用新版本的同时使用当前的模型。 
 
-* 创建 [Azure 机器学习工作区](how-to-manage-workspace.md) 以容纳所有管道资源
+## <a name="prerequisites"></a>必备条件
 
-* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 sdk，或使用已安装 sdk 的[Azure 机器学习计算实例](concept-compute-instance.md)
+* 创建用于保留所有管道资源的 [Azure 机器学习工作区](how-to-manage-workspace.md)
 
-* 创建并运行机器学习管道，如以下 [教程：生成用于批处理评分的 Azure 机器学习管道](tutorial-pipeline-batch-scoring-classification.md)。 有关其他选项，请参阅 [AZURE 机器学习 SDK 中创建和运行机器学习管道](how-to-create-your-first-pipeline.md)
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已经安装了该 SDK 的 [Azure 机器学习计算实例](concept-compute-instance.md)
+
+* 创建并运行机器学习管道，例如，按照[教程：生成 Azure 机器学习管道以用于批量评分](tutorial-pipeline-batch-scoring-classification.md)中的说明操作。 对于其他选项，请参阅[使用 Azure 机器学习 SDK 创建并运行机器学习管道](how-to-create-your-first-pipeline.md)
 
 ## <a name="publish-a-pipeline"></a>发布管道
 
-启动并运行管道后，可以发布管道，使其与不同的输入一起运行。 为了使已发布的管道的 REST 终结点接受参数，你必须将管道配置为对 `PipelineParameter` 将发生变化的参数使用对象。
+启动并运行管道之后，你可以发布管道，以便它使用其他输入运行。 若要使已发布的管道的 REST 终结点接受参数，必须将管道配置为对各有差异的参数使用 `PipelineParameter` 对象。
 
 1. 若要创建管道参数，请使用带默认值的 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) 对象。
 
@@ -73,7 +73,7 @@ ms.locfileid: "89646086"
 
 所有已发布的管道都具有 REST 终结点。 使用管道终结点，可以从任何外部系统（包括非 Python 客户端）触发管道运行。 在批量评分和重新训练方案中，此终结点支持“托管可重复性”。
 
-若要调用前面的管道的运行，需要 Azure Active Directory authentication 标头令牌。 若要获取此类令牌，请参阅 [AzureCliAuthentication 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) 参考和 Azure 机器学习笔记本中的 [身份验证](https://aka.ms/pl-restep-auth) 。
+若要调用上述管道的运行，需要 Azure Active Directory 身份验证标头令牌。 [AzureCliAuthentication 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true)参考和 [Azure 机器学习中的身份验证](https://aka.ms/pl-restep-auth)笔记本中介绍了如何获取这样的令牌。
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -87,7 +87,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>创建版本受控的管道终结点
 
-可以创建包含多个已发布管道的管道终结点。 这为你提供了一个固定的 REST 终结点，因为你可以循环访问和更新 ML 管道。
+可以创建包含多个已发布管道的管道终结点。 这样，你在迭代和更新 ML 管道时，就会有一个固定的 REST 终结点。
 
 ```python
 from azureml.pipeline.core import PipelineEndpoint

@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c403398f7320cefa16a4a570645a6d7d750acc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297495"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906864"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>面向 Spring 微服务应用的 Java 和基础操作系统
+
+**本文适用于：** ✔️ Java
+
 以下原则用于维护弹簧微服务应用的正常运行的 Java 和基本操作系统。
 ## <a name="principles-for-healthy-java-and-base-os"></a>正常 Java 和基本操作系统的原则
 * 应为跨层的相同基本操作系统-基本 |标准 |价格.
@@ -52,5 +55,6 @@ Azul 系统将持续扫描基本操作系统的更改，并使最后生成的映
 > ![默认部署](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>后续步骤
-* [快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
+
+* [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
 * [Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)

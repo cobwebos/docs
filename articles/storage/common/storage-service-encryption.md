@@ -4,17 +4,17 @@ description: Azure 存储在将数据保存到云之前会自动对其进行加�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/24/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078191"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985759"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -38,8 +38,8 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 默认情况下，新存储帐户中的数据使用 Microsoft 托管的密钥进行加密。 你可以继续依赖 Microsoft 托管的密钥来加密数据，也可以通过自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，则有两个选择。 你可以使用两种类型的密钥管理，或同时使用这两种类型：
 
-- 你可以为 Azure Key Vault 指定“客户管理的密钥”，以用于加密和解密 Blob 存储和 Azure 文件中的数据。<sup>1,2</sup> 有关客户管理的密钥的详细信息，请参阅[将客户管理的密钥与 Azure Key Vault 配合使用来管理 Azure 存储加密](encryption-customer-managed-keys.md)。
-- 可以在 Blob 存储操作中指定客户提供的密钥。 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)。
+- 可以指定 *客户托管的密钥* ，以用于在 Blob 存储和 Azure 文件中对数据进行加密和解密。<sup>1，</sup> 必须将客户托管的密钥存储在 Azure Key Vault 或 Azure Key Vault 托管的硬件安全模型 (HSM)  (预览版) 。 有关客户管理的密钥的详细信息，请参阅 [使用客户托管密钥进行 Azure 存储加密](encryption-customer-managed-keys.md)。
+- 可以在 Blob 存储操作中指定客户提供的密钥。 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥](../blobs/encryption-customer-provided-keys.md)。
 
 下表比较了 Azure 存储加密的密钥管理选项。
 
@@ -47,7 +47,7 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 |--|--|--|--|
 | 加密/解密操作 | Azure | Azure | Azure |
 | 支持的 Azure 存储服务 | 全部 | Blob 存储，Azure 文件<sup>1，2</sup> | Blob 存储 |
-| 密钥存储 | Microsoft 密钥存储 | Azure Key Vault | 客户自己的密钥存储 |
+| 密钥存储 | Microsoft 密钥存储 | Azure Key Vault 或 Key Vault HSM | 客户自己的密钥存储 |
 | 密钥轮换责任 | Microsoft | 客户 | 客户 |
 | 密钥控制 | Microsoft | 客户 | 客户 |
 
@@ -56,6 +56,14 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 > [!NOTE]
 > Microsoft 托管的密钥根据符合性要求进行适当的轮替。 如果有特定的密钥轮换要求，Microsoft 建议移动到客户管理的密钥，以便您可以自行管理和审核旋转。
+
+## <a name="doubly-encrypt-data-with-infrastructure-encryption"></a>通过基础结构加密对数据进行双重加密
+
+如果客户需要确保数据安全的高级别保证，还可以在 Azure 存储基础结构级别启用256位 AES 加密。 启用基础结构加密后，存储帐户中的数据将在服务级别加密两次， &mdash; 一次 &mdash; 使用两种不同的加密算法和两个不同的密钥在基础结构级别进行加密。 对 Azure 存储数据进行双重加密可防止某个加密算法或密钥泄露的情况。 在这种情况下，额外的加密层将继续保护你的数据。
+
+服务级别加密支持将 Microsoft 管理的密钥或客户托管的密钥用于 Azure Key Vault。 基础结构级别的加密依赖于 Microsoft 托管的密钥并始终使用单独的密钥。
+
+有关如何创建启用基础结构加密的存储帐户的详细信息，请参阅 [创建启用了基础结构加密的存储帐户，以便对数据进行双重加密](infrastructure-encryption-enable.md)。
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密范围（预览）
 
@@ -102,6 +110,5 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)
-- [通过 Azure 门户配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-portal.md)
-- [通过 PowerShell 配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-powershell.md)
-- [通过 Azure CLI 配置客户托管密钥用于 Azure 存储加密](storage-encryption-keys-cli.md)
+- [用于 Azure 存储加密的客户托管密钥](customer-managed-keys-overview.md)
+- [Blob 存储的加密范围（预览）](../blobs/encryption-scope-overview.md)

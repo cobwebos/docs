@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 4315427598d004459862bcf12959e22e83c84d5d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906928"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>将 Azure Spring Cloud 与 Azure 负载均衡解决方案集成
+
+**本文适用于：** ✔️ Java ✔️ C#
 
 Azure 春季云在 Azure 上支持微服务。  提高企业可能需要多个数据中心，管理多个 Azure 春季云实例。
 
@@ -24,7 +26,7 @@ Azure 已提供不同的负载均衡解决方案。 有三个选项可用于将 
 2.  将 Azure 春季 Cloud 与 Azure 应用网关集成
 3.  将 Azure 春季云与 Azure 前门集成
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 * Azure 春季云： [如何创建 azure 春季云服务](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
 * Azure 流量管理器： [如何创建流量管理器](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
@@ -39,7 +41,7 @@ Azure 已提供不同的负载均衡解决方案。 有三个选项可用于将 
 在流量管理器中添加终结点：
 1.  指定要为*外部终结点*的**类型**。
 1.  输入每个 Azure 春季 cloud 公共端点 (FQDN) 的完全限定的域名。
-1. 单击“确定”。
+1. 单击“确定”。 
 
     ![流量管理器 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ 流量管理器2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 9e8798ea1c03ebf4c0d08adfbf5a0ee0755164a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e22881a904ed33214e90604d71489d8691fe820b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137801"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883262"
 ---
 # <a name="multiclass-decision-forest-module"></a>多类决策林模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块，可以根据决策林算法创建机器学习模型。 决策林是一种系综模型，可在从标记数据中学习的同时快速生成一系列决策树。
 

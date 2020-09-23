@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203548"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906694"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>使用 Azure 机器学习 Visual Studio Code 扩展（预览版）训练和部署图像分类 TensorFlow 模型
 
@@ -61,7 +61,7 @@ ms.locfileid: "86203548"
 1. 选择“新建资源组”。 
 1. 将资源组命名为“TeamWorkspace-rg”，然后按 **Enter**。 
 1. 为工作区选择一个位置。 建议你在选择位置时，确保该位置最靠近你计划部署模型的位置。 例如，“美国西部 2”。
-1. 当系统提示选择工作区的类型时，请选择“基本”，创建一个基本工作区。 有关不同工作区产品/服务的详细信息，请参阅 [Azure 机器学习概述](./overview-what-is-azure-ml.md#sku)。
+1. 当系统提示选择工作区类型时，选择“基本”。
 
 此时，系统会向 Azure 发出请求，以便在你的帐户中创建新的工作区。 几分钟后，新工作区会显示在订阅节点中。 
 

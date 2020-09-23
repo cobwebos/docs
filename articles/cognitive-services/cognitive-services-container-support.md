@@ -1,5 +1,5 @@
 ---
-title: 容器支持
+title: Azure 认知服务容器
 titleSuffix: Azure Cognitive Services
 description: 了解 Docker 容器如何使认知服务深入了解你的数据。
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 9/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 141b82467f2b437cfd4a8125d86618b85e48a6ef
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89424629"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906979"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
+# <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
 > [!WARNING]
-> 2020 年 6 月 11 日，Microsoft 宣布在以人权为基础的强有力的法规颁布之前，将不向美国的警察局出售人脸识别技术。 因此，客户不能使用面部识别功能或 Azure 服务中包含的功能（如人脸或视频索引器），如果客户是，或者允许在美国的警察部使用此类服务。
+> 2020 年 6 月 11 日，Microsoft 宣布在以人权为基础的强有力的法规颁布之前，将不向美国的警察局出售人脸识别技术。 同样地，如果客户是美国警察局、由美国警察局准许使用或针对美国警察局使用 Azure 服务，则这些客户不得使用这类服务中包含的人脸识别特性或功能（例如人脸或视频索引器）。
 
 Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择部署和托管随附 [Docker 容器](https://www.docker.com/what-container)的服务的位置。 容器支持目前适用于部分 Azure 认知服务，包括以下部分：
 
@@ -54,20 +54,21 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 
 | 服务 | 支持的定价层 | 容器 | 描述 |
 |--|--|--|--|
-| [异常探测器][ad-containers] | F0、S0 | **异常检测器** | 可以使用异常检测器 API 来监视并检测与机器学习配合使用的时序数据中的异常。<br>[请求访问权限][request-access] |
+| [异常探测器][ad-containers] | F0、S0 | **异常情况-探测器** ([映像](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))   | 可以使用异常检测器 API 来监视并检测与机器学习配合使用的时序数据中的异常。<br>[请求访问权限][request-access] |
 | [计算机视觉][cv-containers] | F0、S1 | **读取** | 从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。 读取容器还可检测图像中的手写文本，并提供 PDF/TIFF/多页支持。<br/><br/>**重要提示：** 读取容器目前仅适用于英语。 |
 | [人脸][fa-containers] | F0、S0 | **人脸** | 检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限][request-access] |
 | [窗体识别器][fr-containers] | F0、S0 | **表单识别器** | 表单理解应用机器学习技术从表单中识别和提取键值对和表。<br>[请求访问权限][request-access] |
 | [LUIS][lu-containers] | F0、S0 | **LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)） | 可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。 |
-| [语音服务 API][sp-containers-stt] | F0、S0 | **语音转文本** | 将连续的实时语音转换为文本。 |
-| [语音服务 API][sp-containers-cstt] | F0、S0 | **自定义语音转文本** | 使用自定义模型将连续的实时语音转录为文本。 |
-| [语音服务 API][sp-containers-tts] | F0、S0 | **文本转语音** | 将文本转换为自然发音的语音。 |
-| [语音服务 API][sp-containers-ctts] | F0、S0 | **自定义文本到语音转换** | 使用自定义模型将文本转换为自然声音。 |
-| [语音服务 API][sp-containers-ntts] | F0、S0 | **神经文本到语音转换** | 使用 deep 神经网络技术将文本转换为自然声音，允许使用更自然的合成语音。 |
+| [语音服务 API][sp-containers-stt] | F0、S0 | **语音到文本** ([图像](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text))  | 将连续的实时语音转换为文本。 |
+| [语音服务 API][sp-containers-cstt] | F0、S0 | **自定义语音到文本** ([图像](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text))  | 使用自定义模型将连续的实时语音转录为文本。 |
+| [语音服务 API][sp-containers-tts] | F0、S0 | **文本到语音** ([图像](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech))  | 将文本转换为自然发音的语音。 |
+| [语音服务 API][sp-containers-ctts] | F0、S0 | **自定义文本到语音** ([图像](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech))  | 使用自定义模型将文本转换为自然声音。 |
+| [语音服务 API][sp-containers-ntts] | F0、S0 | **神经文本到语音** ([图像](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech))  | 使用 deep 神经网络技术将文本转换为自然声音，允许使用更自然的合成语音。 |
 | [文本分析][ta-containers-keyphrase] | F0、S | 关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)）**** | 提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
 | [文本分析][ta-containers-language] | F0、S | 语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)）**** | 针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
 | [文本分析][ta-containers-sentiment] | F0、S | 情绪分析 v3（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） | 分析原始文本，获取正面或负面情绪的线索。 此版本的情绪分析为每个文档以及其中的句子返回情绪标签（例如正面或负面） 。 |
 | [文本分析][ta-containers-health] | F0、S | **运行状况文本分析** | 从非结构化临床文本中提取医疗信息并进行标记。 |
+| [空间分析][spa-containers] | S0 | **空间分析** | 从非结构化临床文本中提取医疗信息并进行标记。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -127,6 +128,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts

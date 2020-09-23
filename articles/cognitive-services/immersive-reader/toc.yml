@@ -1,14 +1,9 @@
 - name: 沉浸式阅读器文档
   href: index.yml
-- name: 概述
-  items:
-    - name: 什么是沉浸式阅读器？
-      href: Overview.md
+- name: 什么是沉浸式阅读器？
+  href: Overview.md
 - name: 快速入门
-  expanded: true
-  items:
-    - name: 使用客户端库
-      href: ./quickstarts/client-libraries.md
+  href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 启动沉浸式阅读器 (Android)

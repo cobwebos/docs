@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 7bfe10ea5e0e95bcabf02243bb8b7172a5aec08d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245700"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906743"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 检测时序数据的异常
 
-参考本快速入门可以开始使用异常检测器 API 的两种检测模式来检测时序数据的异常。 此 Python 应用程序发送两个包含 JSON 格式的时序数据的 API 请求，并获取响应。
+参考本快速入门可以开始使用异常检测器 API 的两种检测模式来检测时序数据的异常。 此 Python 应用程序发送包含 JSON 格式的时序数据的 API 请求，并获取响应。
 
 | API 请求                                        | 应用程序输出                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | 以批的形式检测异常                        | JSON 响应包含时序数据中每个数据点的异常状态（和其他数据），以及检测到的任何异常所在的位置。 |
-| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。                                                                                                                                         |
+| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。|
+| 检测标记新数据趋势的更改点 | 包含时序数据中检测到的更改点的 JSON 响应。 |
 
  虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py) 上找到本快速入门的源代码。
 
@@ -54,6 +55,7 @@ ms.locfileid: "88245700"
     |---------|---------|
     |批量检测    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |对最新数据点进行检测     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    | 更改点检测 | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
@@ -91,6 +93,18 @@ ms.locfileid: "88245700"
 
     [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>检测数据中的更改点
+
+1. 创建名为 `detect_change_point()` 的方法，以批的形式检测整个数据中的异常。 调用在上面使用终结点、URL、订阅密钥和 JSON 数据创建的 `send_request()` 方法。
+
+2. 针对结果调用 `json.dumps()` 以设置其格式，然后将结果输出到控制台。
+
+3. 如果响应包含 `code` 字段，请输出错误代码和错误消息。
+
+4. 否则，请查找异常在数据集中的位置。 响应的 `isChangePoint` 字段包含一个布尔值，该值指示给定的数据点是否为异常。 循环访问该列表，并输出任何 `True` 值的索引。 如果找到任何此类值，这些值对应于趋势更改点的索引。
+
+    [!code-python[detect change points](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectChangePoint)]
+
 ## <a name="send-the-request"></a>发送请求
 
 调用上面创建的异常检测方法。
@@ -102,5 +116,6 @@ ms.locfileid: "88245700"
 成功的响应以 JSON 格式返回。 单击以下链接在 GitHub 上查看 JSON 响应：
 * [批量检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [最新数据点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [更改点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

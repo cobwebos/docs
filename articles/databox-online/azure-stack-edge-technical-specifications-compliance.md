@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge 技术规格和合规性 | Microsoft Docs
-description: 了解 Azure Stack Edge 的技术规格和合规性
+title: Microsoft Azure Stack Edge Pro 技术规格和符合性 |Microsoft Docs
+description: 了解 Azure Stack Edge Pro 的技术规格和符合性
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652040"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883444"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge 技术规格
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro 技术规范
 
-Microsoft Azure Stack Edge 设备的硬件组件遵循本文中概述的技术规格和法规标准。 该技术规格介绍了电源装置 (PSU)、存储容量、机箱和环境标准。
+Microsoft Azure Stack Edge Pro 设备的硬件组件遵循本文中所述的技术规格和法规标准。 该技术规格介绍了电源装置 (PSU)、存储容量、机箱和环境标准。
 
 ## <a name="compute-memory-specifications"></a>计算和内存规格
 
-Azure Stack Edge 设备的计算和内存规格如下：
+Azure Stack Edge Pro 设备具有以下计算和内存规范：
 
 | 规格           | 值                  |
 |-------------------------|----------------------------|
@@ -30,7 +30,7 @@ Azure Stack Edge 设备的计算和内存规格如下：
 
 ## <a name="fpga-specifications"></a>FPGA 规格
 
-每个启用了机器学习 (ML) 方案的 Azure Stack Edge 设备上都包含一个现场可编程门阵列 (FPGA)。
+支持机器学习 (ML) 方案的每个 Azure Stack Edge Pro 设备上都包含了一个现场可编程入口数组 (FPGA) 。
 
 | 规格           | 值                  |
 |-------------------------|----------------------------|
@@ -38,7 +38,7 @@ Azure Stack Edge 设备的计算和内存规格如下：
 
 ## <a name="power-supply-unit-specifications"></a>电源装置规格
 
-Azure Stack Edge 设备具有两个带有高性能风扇的 100-240 V 电源装置 (PSU)。 这两个 PSU 提供了冗余电源配置。 如果 PSU 发生故障，设备将继续在另一个 PSU 上正常运行，直至发生故障的模块得到更换。 下表列出了 PSU 的技术规格。
+Azure Stack Edge Pro 设备具有两个 100-240 V 电源单位， (通电 psu) 与高性能风扇一起提供。 这两个 PSU 提供了冗余电源配置。 如果 PSU 发生故障，设备将继续在另一个 PSU 上正常运行，直至发生故障的模块得到更换。 下表列出了 PSU 的技术规格。
 
 | 规格           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -47,18 +47,18 @@ Azure Stack Edge 设备具有两个带有高性能风扇的 100-240 V 电源装�
 | 电压范围选择 | 自动范围：100-240 V 交流 |
 | 可热插拔           | 是                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>按区域划分的 Azure Stack Edge 电源线规格
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>按区域 Azure Stack 边缘 Pro 电源线规格
 
-Azure Stack Edge 设备需要使用的电源线因 Azure 区域而异。
-有关所有支持的电源线的技术规格，请参阅[按区域划分的 Azure Stack Edge 电源线规格](azure-stack-edge-technical-specifications-power-cords-regional.md)。
+Azure Stack Edge Pro 设备需要电源线，这取决于 Azure 区域。
+有关所有支持的电源线的技术规格，请参阅 [按区域 Azure Stack 边缘 Pro 电源线规格](azure-stack-edge-technical-specifications-power-cords-regional.md)。
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>网络接口规格
 
-Azure Stack Edge 设备具有 6 个网络接口，PORT1 - PORT6。
+Azure Stack Edge Pro 设备有6个网络接口，PORT1-PORT6。
 
 | 规格           | 说明                 |
 |-------------------------|----------------------------|
@@ -66,7 +66,7 @@ Azure Stack Edge 设备具有 6 个网络接口，PORT1 - PORT6。
 
 ## <a name="storage-specifications"></a>存储器规格
 
-Azure Stack Edge 设备具有 9 个 2.5" NVMe SSD，每个 SSD 容量均为 1.6 TB。 在这些 SSD 中，一个为操作系统磁盘，另外八个为数据磁盘。 设备的总可用容量约为 12.5 TB。 下表提供了设备存储容量的详细信息。
+Azure Stack Edge Pro 设备具有 9 X 2.5 "NVMe Ssd，其中每个设备的容量均为 1.6 TB。 在这些 SSD 中，一个为操作系统磁盘，另外八个为数据磁盘。 设备的总可用容量约为 12.5 TB。 下表提供了设备存储容量的详细信息。
 
 |     规格                          |     值             |
 |--------------------------------------------|-----------------------|
@@ -146,4 +146,4 @@ Azure Stack Edge 设备具有 9 个 2.5" NVMe SSD，每个 SSD 容量均为 1.6 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署 Azure Stack Edge](azure-stack-edge-deploy-prep.md)
+- [部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)

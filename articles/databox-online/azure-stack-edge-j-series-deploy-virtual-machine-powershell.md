@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure PowerShell 在 Azure Stack Edge GPU 设备上部署 Vm
-description: 介绍如何使用 Azure PowerShell 在 Azure Stack Edge GPU 设备上创建和管理虚拟机 (Vm) 。
+title: 通过 Azure PowerShell 在 Azure Stack Edge Pro GPU 设备上部署 Vm
+description: 介绍如何使用 Azure PowerShell 在 Azure Stack Edge Pro GPU 设备上创建和管理虚拟机 (Vm) 。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa35111a2fa26b3e4fd5e80a8227b7c244f30e9f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461708"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890698"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge GPU 设备上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
 <!--[!INCLUDE [azure-stack-edge-gateway-deploy-vm-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]-->
 
-本教程介绍如何使用 Azure PowerShell 在 Azure Stack Edge 设备上创建和管理 VM。
+本教程介绍如何使用 Azure PowerShell 在 Azure Stack Edge Pro 设备上创建和管理 VM。
 
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流
 
@@ -27,7 +27,7 @@ ms.locfileid: "89461708"
 
 ![VM 部署工作流](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
@@ -128,7 +128,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> 只能通过 Azure 资源管理器创建本地存储帐户，如本地冗余存储 (Standard_LRS 或 Premium_LRS) 。 若要创建分层存储帐户，请参阅在 [Azure Stack 边缘上的 "添加、连接到存储帐户](azure-stack-edge-j-series-deploy-add-storage-accounts.md)" 中的步骤。
+> 只能通过 Azure 资源管理器创建本地存储帐户，如本地冗余存储 (Standard_LRS 或 Premium_LRS) 。 若要创建分层存储帐户，请参阅 [添加、连接到 Azure Stack Edge Pro 上的存储帐户](azure-stack-edge-j-series-deploy-add-storage-accounts.md)中的步骤。
 
 下面显示了示例输出。
 
@@ -193,7 +193,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 将所有要使用的磁盘映像复制到在前面步骤中创建的本地存储帐户中的页 blob 中。 可以使用 [AzCopy](../storage/common/storage-use-azcopy-v10.md) 等工具将 VHD 上传到在前面步骤中创建的存储帐户。 
 
-使用 AzCopy 之前，请确保已 [正确配置 AzCopy](#configure-azcopy) ，使其与 Azure Stack Edge 设备使用的 blob 存储 REST API 版本结合使用。
+使用 AzCopy 之前，请确保已 [正确配置 AzCopy](#configure-azcopy) ，以便与 Azure Stack Edge Pro 设备使用的 blob 存储 REST API 版本结合使用。
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -445,11 +445,11 @@ The public IP in this case will be the same as the private IP that you passed du
 
 ## <a name="manage-vm"></a>管理 VM
 
-以下部分介绍了将在 Azure Stack Edge 设备上创建的 VM 的一些常见操作。
+以下部分介绍了将在 Azure Stack Edge Pro 设备上创建的 VM 的一些常见操作。
 
 ### <a name="list-vms-running-on-the-device"></a>列出在设备上运行的 Vm
 
-若要返回 Azure Stack Edge 设备上运行的所有 Vm 的列表，请运行以下命令。
+若要返回 Azure Stack Edge Pro 设备上运行的所有 Vm 的列表，请运行以下命令。
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -502,7 +502,7 @@ Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 
 VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 创建的虚拟机大小应适合工作负荷。 尽管所有计算机都将在同一硬件上运行，但计算机大小对磁盘访问具有不同的限制，这可以帮助你管理跨 Vm 的总体磁盘访问。 如果工作负荷增加，也可重设现有虚拟机的大小。
 
-支持在 Azure Stack Edge 设备上创建以下标准 Dv2 系列 Vm。
+支持在 Azure Stack Edge Pro 设备上创建以下标准 Dv2 系列 Vm。
 
 ### <a name="dv2-series"></a>Dv2 系列
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
@@ -547,9 +547,9 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 
 ## <a name="configure-azcopy"></a>配置 AzCopy
 
-安装最新版本的 AzCopy 时，需要配置 AzCopy，以确保它与 Azure Stack Edge 设备的 blob 存储 REST API 版本相匹配。
+安装最新版本的 AzCopy 时，需要配置 AzCopy，以确保它与 Azure Stack Edge Pro 设备的 blob 存储 REST API 版本相匹配。
 
-在用于访问 Azure Stack Edge 设备的客户端上，设置一个全局变量，使其与 blob 存储 REST API 版本相匹配。
+在用于访问 Azure Stack Edge Pro 设备的客户端上，设置一个全局变量，使其与 blob 存储 REST API 版本相匹配。
 
 ### <a name="on-windows-client"></a>在 Windows 客户端上 
 

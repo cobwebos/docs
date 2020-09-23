@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳实践和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985525"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -48,7 +48,7 @@ Azure 备份为 (本地和云) 的各种工作负荷启用数据保护。 它是
 
 ### <a name="management-plane"></a>管理平面
 
-* **访问控制** -恢复服务保管库提供管理功能，可通过 AZURE 门户、SDK、CLI 甚至 REST api 进行访问。 它也是 RBAC 边界，为你提供将访问权限限制为仅授权备份管理员的选项。
+* **访问控制** -保管库 (恢复服务和备份保管库) 提供管理功能，可通过 Azure 门户、备份中心、保管库仪表板、SDK、CLI 甚至 REST api 进行访问。 它也是 RBAC 边界，为你提供将访问权限限制为仅授权备份管理员的选项。
 
 * "**策略管理**" –每个保管库中的 Azure 备份策略定义应该何时触发备份，以及需要保留多长时间。 你还可以管理这些策略，并将它们应用于多个项。
 
@@ -58,7 +58,7 @@ Azure 备份为 (本地和云) 的各种工作负荷启用数据保护。 它是
 
 ## <a name="vault-considerations"></a>保管库注意事项
 
-Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用保管库来存储备份的数据。 有效的保管库设计可帮助组织建立结构，以便在 Azure 中组织和管理备份资产，以支持业务优先级。 创建保管库时，请考虑以下准则：  
+Azure 备份使用保管库 (恢复服务和备份保管库) 来安排和管理备份。 它还使用保管库来存储备份的数据。 有效的保管库设计可帮助组织建立结构，以便在 Azure 中组织和管理备份资产，以支持业务优先级。 创建保管库时，请考虑以下准则：  
 
 ### <a name="align-to-subscription-design-strategy"></a>与订阅设计策略一致
 
@@ -71,7 +71,8 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 * 如果工作负载全部由单个订阅和单个资源管理，则可以使用单个保管库来监视和管理备份空间。
 
 * 如果你的工作负荷分布在多个订阅中，则可以创建多个保管库，每个订阅一个或多个。
-  * 若要简化跨所有保管库、订阅和租户的操作活动的监视，可以使用备份资源管理器和报表。 [在此处了解详细信息](monitor-azure-backup-with-backup-explorer.md) 以获取聚合视图。
+  * 备份中心允许使用单个窗格来管理与备份相关的所有任务。 [在此处了解详细信息]()。
+  * 可以通过工作簿模板自定义视图。 备份资源管理器是 Azure Vm 的一个模板。 [在此处了解详细信息](monitor-azure-backup-with-backup-explorer.md)。
   * 如果你需要跨保管库的一致策略，则可以使用 Azure 策略来跨多个保管库传播备份策略。 可以编写一个自定义的 [Azure 策略定义](../governance/policy/concepts/definition-structure.md) ，该定义使用 ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) 效果跨多个保管库传播备份策略。 分配可将此 Azure 策略定义 [分配](../governance/policy/assign-policy-portal.md) 给特定范围 (订阅或 RG) ，以便将 "备份策略" 资源部署到 Azure 策略分配范围内的所有恢复服务保管库。 备份策略 (的设置，例如备份频率、保留期等) 应由用户指定为 Azure 策略分配中的参数。
 
 * 随着组织的占用量的增长，你可能想要跨订阅移动工作负荷，原因如下：按备份策略、合并保管库、在较低冗余上权衡 (从 GRS 迁移到 LRS) 。  Azure 备份支持在 Azure 订阅之间移动恢复服务保管库，或将其移动到同一订阅中的其他资源组。 [在此处了解详细信息](backup-azure-move-recovery-services-vault.md)。

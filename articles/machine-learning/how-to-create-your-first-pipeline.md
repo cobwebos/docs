@@ -11,24 +11,24 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 968685b64b1412751ca990842d95e9d2ffb251a6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 15e1af35def6a3cb6ffaf5df2db53326fba60bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650551"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883065"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)来创建和运行[机器学习管道](concept-ml-pipelines.md)。 使用 **ML 管道** 创建拼结多个 ML 阶段的工作流。 然后，发布该管道以便以后访问或与他人共享。 跟踪 ML 管道，以了解模型在现实世界中的执行情况，并检测数据偏移。 ML 管道非常适合用于批量评分方案，它们可以使用各种计算，重复使用步骤而不是重新运行步骤，以及与其他人共享 ML 工作流。
+
+本文介绍如何通过使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 来创建并运行[机器学习管道](concept-ml-pipelines.md)。 使用 **ML 管道**来创建将各种不同 ML 阶段拼结在一起的工作流。 然后发布该管道，以便以后访问或与他人共享。 跟踪 ML 管道，以了解模型在实际应用场合的表现并检测数据偏移。 ML 管道非常适合用于批量评分方案，它们可以使用各种计算，重复使用步骤而不是重新运行步骤，以及与其他人共享 ML 工作流。
 
 尽管可以使用一种称作 [Azure 管道](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml)的不同类型的管道来实现 ML 任务的 CI/CD 自动化，但这种类型的管道并不会存储在工作区中。 [比较这些不同的管道](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use)。
 
 Azure 机器学习[工作区](how-to-manage-workspace.md)的成员可以看到创建的 ML 管道。 
 
-ML 管道执行计算目标 (查看 [Azure 机器学习) 中的计算目标](https://docs.microsoft.com/azure/machine-learning/concept-compute-target) 。 管道可在支持的 [Azure 存储](https://docs.microsoft.com/azure/storage/) 位置读取和写入数据。
+ML 管道在计算目标上执行（请参阅 [Azure 机器学习中的计算目标是什么](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)）。 管道可以在支持的 [Azure 存储文档](https://docs.microsoft.com/azure/storage/)位置读取和写入数据。
 
 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
@@ -36,7 +36,7 @@ ML 管道执行计算目标 (查看 [Azure 机器学习) 中的计算目标](htt
 
 * 创建用于保存所有管道资源的 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [配置开发环境](how-to-configure-environment.md) 以安装 Azure 机器学习 sdk，或使用已安装 sdk 的 [Azure 机器学习计算实例](concept-compute-instance.md) 。
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已经安装了 SDK 的 [Azure 机器学习计算实例](concept-compute-instance.md)。
 
 首先附加工作区：
 
@@ -80,12 +80,12 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 步骤通常使用数据并生成输出数据。 步骤可以创建数据，例如模型、包含模型和依赖文件的目录，或临时数据。 然后，此数据可供管道中的其他后续步骤使用。 若要详细了解如何将管道连接到数据，请参阅[如何访问数据](how-to-access-data.md)和[如何注册数据集](how-to-create-register-datasets.md)这两篇文章。 
 
-### <a name="configure-data-with-dataset-and-pipelinedata-objects"></a>用 `Dataset` 和对象配置 `PipelineData` 数据
+### <a name="configure-data-with-dataset-and-pipelinedata-objects"></a>使用 `Dataset` 和 `PipelineData` 对象配置数据
 
 向管道提供数据的首选方法是使用 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) 对象。 `Dataset` 对象指向驻留在数据存储中的或者可从数据存储或 Web URL 访问的数据。 `Dataset` 类是抽象类，因此，你将创建一个 `FileDataset` 的实例（引用一个或多个文件）或一个 `TabularDataset` 的实例（基于一个或多个包含分隔数据列的文件创建）。
 
 
-`Dataset`使用[from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-)或[from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#&preserve-view=truefrom-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)等方法创建。
+使用 [from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) 或 [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#&preserve-view=truefrom-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) 之类的方法来创建 `Dataset`。
 
 ```python
 from azureml.core import Dataset
@@ -110,14 +110,14 @@ output_data1 = PipelineData(
 ## <a name="set-up-a-compute-target"></a>设置计算目标
 
 
-在 Azure 机器学习中，术语“计算”（或“计算目标”）是指在机器学习管道中执行计算步骤的计算机或群集 。   有关计算目标的完整列表，请参阅 [模型定型的计算目标](concept-compute-target.md#train) ，并 [创建计算目标](how-to-create-attach-compute-sdk.md) 以了解如何创建并将其附加到工作区。   无论是定型模型还是运行管道步骤，创建和或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
+在 Azure 机器学习中，术语“计算”（或“计算目标”）是指在机器学习管道中执行计算步骤的计算机或群集 。   请参阅[用于模型训练的计算目标](concept-compute-target.md#train)以获取计算目标的完整列表，并参阅[创建计算目标](how-to-create-attach-compute-sdk.md)以了解如何创建计算目标并将其附加到工作区。   无论是要训练模型还是要运行管道步骤，创建和/或附加计算目标的过程都是相同的。 创建并附加计算目标后，请使用[管道步骤](#steps)中的 `ComputeTarget` 对象。
 
 > [!IMPORTANT]
 > 内部远程作业不支持对计算目标执行管理操作。 由于机器学习管道作为远程作业提交，因此请勿对管道内的计算目标使用管理操作。
 
 ### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
 
-可以创建 Azure 机器学习计算用于运行步骤。 其他计算目标的代码非常相似，但参数略有不同，具体取决于类型。 
+可以创建 Azure 机器学习计算用于运行步骤。 其他计算目标的代码非常相似，参数会因类型的不同而略有差异。 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -173,7 +173,7 @@ else:
         pin_sdk_version=False)
 ```
 
-以上代码显示了处理依赖项的两个选项。 如前所述，当 `USE_CURATED_ENV = True`，配置基于特选环境。 特选环境中“预先准备”有常见的互依赖库，可以大大加快联机速度。 特选环境在 [Microsoft 容器注册表](https://hub.docker.com/publishers/microsoftowner)中具有预先生成的 Docker 映像。 有关详细信息，请参阅 [Azure 机器学习特选的环境](resource-curated-environments.md)。
+以上代码显示了处理依赖项的两个选项。 如前所述，当 `USE_CURATED_ENV = True`，配置基于特选环境。 特选环境中“预先准备”有常见的互依赖库，可以大大加快联机速度。 特选环境在 [Microsoft 容器注册表](https://hub.docker.com/publishers/microsoftowner)中具有预先生成的 Docker 映像。 有关详细信息，请参阅 [Azure 机器学习特选环境](resource-curated-environments.md)。
 
 将 `USE_CURATED_ENV` 更改为 `False` 所采用的路径显示了显式设置依赖项的模式。 在这种情况下，将在资源组内的 Azure 容器注册表中创建和注册新的自定义 Docker 映像（请参阅 [Azure 中的专用 Docker 容器注册表简介](https://docs.microsoft.com/azure/container-registry/container-registry-intro)）。 创建和注册此映像可能需要几分钟的时间。
 
@@ -239,7 +239,7 @@ train_step = PythonScriptStep(
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
 > [!NOTE]
-> 定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习。 调用实验时，会上载文件 [。提交 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)。
+> 定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习。 文件会在你调用 [Experiment.submit()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-) 时上传。
 
 ```python
 # list of steps to run (`compare_step` definition not shown)
@@ -357,8 +357,8 @@ pipeline_run1.wait_for_completion()
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要与同事或客户共享你的管道，请参阅 [发布机器学习管道](how-to-deploy-pipelines.md)
-- 使用 [GitHub 上的这些 Jupyter 笔记本](https://aka.ms/aml-pipeline-readme) 进一步探索机器学习管道
-- 请参阅适用于 [azureml 管道核心](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) 包和 [azureml 管道-步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) 包的 SDK 参考帮助
-- 请参阅操作指南，了解有关 [如何](how-to-debug-pipelines.md) 调试和排查管道问题的提示
+- 若要与同事或客户共享管道，请参阅[发布机器学习管道](how-to-deploy-pipelines.md)
+- 使用 [GitHub 上的这些 Jupyter 笔记本](https://aka.ms/aml-pipeline-readme)来进一步探索机器学习管道
+- 参阅有关 [azureml-pipelines-core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) 包和 [azureml-pipelines-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) 包的 SDK 参考帮助信息
+- 参阅[操作指南](how-to-debug-pipelines.md)，以获取有关调试管道和排查管道问题的提示。
 - 阅读[使用 Jupyter 笔记本探索此服务](samples-notebooks.md)一文，了解如何运行笔记本。

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 边缘 GPU 管理带宽计划 |Microsoft Docs
-description: 描述如何使用 Azure 门户管理 Azure Stack 边缘 GPU 上的带宽计划。
+title: Azure Stack Edge Pro GPU 管理带宽计划 |Microsoft Docs
+description: 介绍如何使用 Azure 门户来管理 Azure Stack Edge Pro GPU 上的带宽计划。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265688"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890667"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>使用 Azure 门户管理 Azure Stack 边缘 GPU 上的带宽计划 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>使用 Azure 门户在 Azure Stack Edge Pro GPU 上管理带宽计划 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何在 Azure Stack 边缘管理带宽计划。 使用带宽计划可以根据多个日期时间计划配置网络带宽用量。 可将这些计划应用到在设备与云之间执行的上传和下载操作。
+本文介绍如何在 Azure Stack Edge Pro 上管理带宽计划。 使用带宽计划可以根据多个日期时间计划配置网络带宽用量。 可将这些计划应用到在设备与云之间执行的上传和下载操作。
 
-可以通过 Azure 门户添加、修改或删除 Azure Stack 边缘的带宽计划。
+可以通过 Azure 门户添加、修改或删除 Azure Stack Edge Pro 的带宽计划。
 
 在本文中，学习如何：
 
@@ -42,9 +42,9 @@ ms.locfileid: "89265688"
 
 3. 在“添加计划”中：**** 
 
-   1. 提供计划的“开始日期”、“结束日期”、“开始时间”和“结束时间”。****************
-   2. 如果此计划应该全天运行，请选中“全天”选项。****
-   3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。**** 为此字段提供一个介于20和2147483647之间的数字。
+   1. 提供计划的 **开始日期**、 **结束日期**、 **开始时间**和 **结束时间** 。
+   2. 如果此计划全天运行，请选中 " **全天** " 选项。
+   3. **带宽速度** 是设备在涉及云的操作中使用的带宽（以兆位/秒为单位） (Mbps) ， (上传和下载) 。 为此字段提供一个介于20和2147483647之间的数字。
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。****
    5. 选择 **添加** 。
 
@@ -73,7 +73,7 @@ ms.locfileid: "89265688"
 
 ## <a name="delete-a-schedule"></a>删除计划
 
-执行以下步骤以删除与 Azure Stack Edge 设备关联的带宽计划。
+执行以下步骤，删除与 Azure Stack Edge Pro 设备关联的带宽计划。
 
 1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后再中转到 " **带宽**"。  
 
