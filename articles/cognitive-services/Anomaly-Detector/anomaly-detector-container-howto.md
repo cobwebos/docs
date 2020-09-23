@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0ae3b66d8093c0498011d9f93cd8d869b85f9003
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903544"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a> (预览安装并运行异常探测器容器) 
+# <a name="install-and-run-anomaly-detector-containers"></a>安装并运行异常检测器容器 
+
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
 异常检测器具有以下容器功能：
 
-| 函数 | 功能 |
+| 功能 | 功能 |
 |--|--|
-| 异常检测器 | <li> 实时检测异常情况。 <li> 在整个数据集中以批处理方式检测异常。 <li> 推断数据的预期正常范围。 <li> 支持异常情况检测敏感度调整，以便更好地适应数据。 |
+| 异常检测器 | <li> 实时检测异常情况。 <li> 在整个数据集中以批处理方式检测异常。 <li> 检测数据集中的趋势更改点作为批次。<li> 推断数据的预期正常范围。 <li> 支持异常情况检测敏感度调整，以便更好地适应数据。 |
 
 有关 Api 的详细信息，请参阅：
 * [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -67,7 +69,7 @@ ms.locfileid: "90530703"
 
 | 容器 | 存储库 |
 |-----------|------------|
-| 认知-服务-异常探测器 | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| 认知-服务-异常探测器 | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +97,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -177,7 +179,7 @@ ApiKey={API_KEY}
 本文介绍了用于下载、安装和运行异常探测器容器的概念和工作流。 综上所述：
 
 * 异常探测器提供了一个适用于 Docker 的 Linux 容器，可通过批处理与流式处理、预期的范围推理和敏感度优化来封装异常检测。
-* 容器映像从专用于容器预览版的专用 Azure 容器注册表下载。
+* 从专用于容器的专用 Azure 容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
 * 您可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用异常探测器容器中的操作。
 * 必须在实例化容器时指定账单信息。

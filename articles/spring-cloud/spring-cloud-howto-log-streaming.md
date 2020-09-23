@@ -7,17 +7,20 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299603"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888496"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>实时流式传输 Azure Spring Cloud 应用日志
+
+**本文适用于：** ✔️ Java ✔️ C#
+
 Azure 春季 Cloud 在 Azure CLI 中启用日志流式处理，以获取实时应用程序控制台日志以进行故障排除。 还可以 [通过诊断设置分析日志和指标](./diagnostic-services.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 * 安装适用于春季 Cloud 的 [Azure CLI 扩展](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) ，最低版本为0.2.0。
 * 带有正在运行的应用程序的 **Azure 春季 cloud** 的实例，例如 " [春季 cloud app](./spring-cloud-quickstart.md)"。

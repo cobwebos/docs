@@ -101,6 +101,8 @@
           href: iot-edge-security-manager.md
         - name: IoT Edge 证书
           href: iot-edge-certs.md
+        - name: 机密计算
+          href: deploy-trusted-applications.md
     - name: 平台支持
       href: support.md
     - name: 生产部署清单

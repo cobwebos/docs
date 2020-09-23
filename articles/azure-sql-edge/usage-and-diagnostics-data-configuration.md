@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: af4353e5b0991f7ce2f6fe8ff940e916717b0579
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650478"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888045"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge 使用情况和诊断数据配置
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 可以使用以下方法之一禁用 Azure SQL Edge 上的使用情况和诊断数据收集。
 
+> [!NOTE]
+> 不能为开发人员版本禁用使用情况和诊断数据。
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>使用环境变量禁用使用情况和诊断
 
 若要在 Azure SQL Edge 上禁用使用情况和诊断数据收集，请添加以下环境变量并将其值设置为 `*False*` 。 有关使用环境变量配置 Azure SQL Edge 的详细信息，请参阅 [使用环境变量配置](configure.md#configure-by-using-environment-variables)。
@@ -68,7 +71,7 @@ group by data_source_type
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE-启用收集使用情况和诊断数据。 这是默认配置。
-- FALSE-禁用收集使用情况和诊断数据
+- FALSE-禁用收集使用情况和诊断数据。
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>使用 mssql. 会议文件禁用使用情况和诊断
 
@@ -99,7 +102,7 @@ Azure SQL Edge 使用情况和诊断数据收集的本地审核组件可以将�
    
      `*MSSQL_TELEMETRY_DIR = <host mount path>/audit*`
    
-   - 使用 mssql. 会议文件-在 mssql. 会议文件中添加以下行，并为审核文件指定目标目录。
+   - 使用 mssql. 会议文件-在 mssql. 会议文件中添加以下行，并指定审核文件的目标目录。
        ```ini
        [telemetry]
        userrequestedlocalauditdirectory  = <host mount path>/audit

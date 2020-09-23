@@ -4,15 +4,16 @@ description: 本文解答了有关 Azure 春季云的常见问题。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322035"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888703"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季云常见问题解答
 
@@ -61,9 +62,11 @@ Azure 春季云具有以下已知限制：
 
 若要快速开始使用 Azure 春季云，请按照 [快速入门：使用 Azure 门户启动 Azure 春季 cloud 应用程序](spring-cloud-quickstart.md)中的说明进行操作。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud 支持哪些 Java 运行时？
 
 Azure Spring Cloud 支持 Java 8 和 11。 请参阅 [Java 运行时和操作系统版本](#java-runtime-and-os-versions)
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>在哪里可以查看春季 Cloud 应用程序日志和指标？
 
@@ -73,18 +76,20 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支持分布式跟踪？
 
-可以。 有关详细信息，请参阅 [教程：在 Azure 春季云中使用分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)。
+是的。 有关详细信息，请参阅 [教程：在 Azure 春季云中使用分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>服务绑定支持哪些资源类型？
 
 目前支持三个服务：
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure Redis 缓存。
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>能否在我的应用程序中查看、添加或移动永久性卷？
 
-可以。
+是的。
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>删除/移动 Azure 春季云服务实例时，是否也会删除/移动其扩展资源？
 
@@ -96,6 +101,7 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java 运行时和操作系统版本
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure 春季云中支持哪些版本的 Java 运行时？
@@ -136,28 +142,30 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 使用最新的 Ubuntu LTS 版本，当前 [ubuntu 20.04 LTS (焦 Fossa) ](https://releases.ubuntu.com/focal/) 为默认操作系统。
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>OS 安全修补程序的应用频率是多少？
+### <a name="how-often-are-os-security-patches-applied"></a>OS 安全修补程序的应用频率是多少？
 
-适用于 Azure 春季云的安全修补程序将在每月的基础推出。
-适用于 Azure 春季的严重安全修补程序 (CVE 分数 >= 9) 将尽快推出。
+适用于 Azure 春季云的安全修补程序每月推出一次生产。
+适用于 Azure 春季的严重安全修补程序 (CVE 评分 >= 9) 尽快推出。
+::: zone-end
 
 ## <a name="deployment"></a>部署
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure 春季云是否支持蓝绿色部署？
-可以。 有关详细信息，请参阅 [设置过渡环境](spring-cloud-howto-staging-environment.md)。
+是的。 有关详细信息，请参阅 [设置过渡环境](spring-cloud-howto-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>是否可以访问 Kubernetes 来操作应用程序容器？
 
-否。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
+不是。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支持从源构建容器？
 
-可以。 有关详细信息，请参阅 [从源代码启动春季云应用程序](spring-cloud-quickstart.md)。
+是的。 有关详细信息，请参阅 [从源代码启动春季云应用程序](spring-cloud-quickstart.md)。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支持应用实例中的自动缩放？
 
-否。
+不是。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有春季 Cloud 微服务迁移到 Azure 春季云的最佳做法是什么？
 
 在将现有春季 Cloud 微服务迁移到 Azure 春季云时，最好遵循以下最佳做法：
@@ -168,8 +176,22 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 * 建议使用正式的、稳定的 Pivotal 弹簧库。 Pivotal 弹簧库的非正式版本、beta 版本或分叉版本没有服务级别协议 (SLA) 支持。
 
 迁移后，监视 CPU/RAM 指标和网络流量，以确保适当地缩放应用程序实例。
+::: zone-end
 
-## <a name="trouble-shooting"></a>故障排除
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core 版本
+
+### <a name="which-net-core-versions-are-supported"></a>支持哪些 .NET Core 版本？
+
+.NET Core 3.1 及更高版本。
+
+### <a name="how-long-will-net-core-31-be-supported"></a>需要多长时间才支持 .NET Core 3.1？
+
+到2022年12月3日。 请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+::: zone-end
+
+
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>服务注册表很少使用会产生什么影响？
 

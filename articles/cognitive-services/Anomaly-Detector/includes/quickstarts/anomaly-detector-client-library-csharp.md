@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 1a46cba6e3b74a2f8d4b63ab631830569c521291
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6f1c016efb300dea2cdef91c84bb901cffd09fa0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246028"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025008"
 ---
 开始使用适用于 .NET 的异常检测器客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -21,8 +21,9 @@ ms.locfileid: "88246028"
 
 * 以批请求的形式检测整个时序数据集中的异常
 * 在时序中检测最新数据点的异常状态
+* 检测数据集中的趋势更改点。
 
-[库参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[库参考文档](https://aka.ms/anomaly-detector-dotnet-ref) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +66,7 @@ Build succeeded.
 在应用程序目录中，使用以下命令安装适用于 .NET 的异常检测器客户端库：
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
+dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.2
 ```
 
 从项目目录中，打开 *Program.cs* 文件，并添加以下 using `directives`：
@@ -78,11 +79,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 
 ## <a name="object-model"></a>对象模型
 
-异常检测器客户端是 [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) 对象，使用包含密钥的 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials) 对 Azure 进行身份验证。 该客户端提供两种异常检测方法：对整个数据集使用 [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync)，对最新数据点使用 [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync)。
+异常检测器客户端是 [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) 对象，使用包含密钥的 [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials) 对 Azure 进行身份验证。 客户端可以使用 [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) 对整个数据集进行异常情况检测，或使用 [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync) 对最新的数据点进行异常情况检测。 [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) 方法可检测在趋势中标记更改的点。
 
 时序数据作为 [Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) 对象中的一系列 [Point](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) 进行发送。 `Request` 对象包含描述数据的属性（例如[Granularity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity)）以及异常检测的参数。
 
-异常检测器响应是 [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse) 或 [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) 对象，具体取决于所使用的方法。
+异常检测器响应是 [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse)、[LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) 或 [changePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) 对象，具体取决于所使用的方法。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -92,6 +93,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 * [从文件加载时序数据集](#load-time-series-data-from-a-file)
 * [在整个数据集中检测异常](#detect-anomalies-in-the-entire-data-set)
 * [检测最新数据点的异常状态](#detect-the-anomaly-status-of-the-latest-data-point)
+* [检测数据集中的更改点](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -125,6 +127,12 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 创建一个方法使用 `Request` 对象调用客户端的 [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) 方法，并等待作为 [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) 对象的响应。 检查响应的 [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) 属性以确定发送的最新数据点是否异常。
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
+
+## <a name="detect-change-points-in-the-data-set"></a>检测数据集中的更改点
+
+创建一个方法，使用 `Request` 对象调用客户端的 [DetectChangePointAsync](https://aka.ms/anomaly-detector-dotnet-ref) 方法，并等待作为 [ChangePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) 对象的响应。 检查响应的 IsChangePoint 值，并打印任何为 `true` 的值。 如果找到任何此类值，这些值对应于趋势更改点。
+
+[!code-csharp[DetectChangePoint() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=changePointExample)]
 
 ## <a name="run-the-application"></a>运行应用程序
 

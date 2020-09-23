@@ -4,12 +4,12 @@ description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azur
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44a7f21c067897b046413851ef5a2c73bfccc24f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252160"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708030"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>教程：创建 Azure 容器注册表并推送容器映像
 
@@ -28,66 +28,7 @@ Azure 容器注册表是你在 Azure 中的专用 Docker 注册表。 本教程�
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
-## <a name="create-azure-container-registry"></a>创建 Azure 容器注册表
-
-在创建容器注册表之前，需要创建一个资源组，以便将容器注册表部署到其中。  资源组是在其中部署和管理所有 Azure 资源的逻辑集合。
-
-使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
-
-```azurecli
-az group create --name myResourceGroup --location eastus
-```
-
-创建资源组后，使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表。 容器注册表名称在 Azure 中必须唯一，并且必须包含 5-50 个字母数字字符。 将 `<acrName>` 替换为注册表的唯一名称：
-
-```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
-```
-
-下面是名为 *mycontainerregistry082* 的新 Azure 容器注册表的示例输出（此处显示的内容已截断）：
-
-```output
-...
-{
-  "creationDate": "2018-03-16T21:54:47.297875+00:00",
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/mycontainerregistry082",
-  "location": "eastus",
-  "loginServer": "mycontainerregistry082.azurecr.io",
-  "name": "mycontainerregistry082",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "sku": {
-    "name": "Basic",
-    "tier": "Basic"
-  },
-  "status": null,
-  "storageAccount": null,
-  "tags": {},
-  "type": "Microsoft.ContainerRegistry/registries"
-}
-```
-
-本教程的余下部分使用 `<acrName>` 作为在此步骤中选择的容器注册表名称的占位符。
-
-## <a name="log-in-to-container-registry"></a>登录到容器注册表
-
-必须先登录到 Azure 容器注册表实例，才能向其推动映像。 使用 [az acr login][az-acr-login] 命令完成此操作。 必须提供创建容器注册表时选择的唯一名称。
-
-```azurecli
-az acr login --name <acrName>
-```
-
-例如：
-
-```azurecli
-az acr login --name mycontainerregistry082
-```
-
-该命令在完成后返回 `Login Succeeded`：
-
-```output
-Login Succeeded
-```
+[!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
 ## <a name="tag-container-image"></a>标记容器映像
 
@@ -125,7 +66,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-使用容器注册表的登录服务器标记 aci-tutorial-app 映像  。 此外，请将 `:v1` 标记添加到映像名称的末尾，指示映像版本号。 将 `<acrLoginServer>` 替换为前面执行的 [az acr show][az-acr-show] 命令的结果。
+使用容器注册表的登录服务器标记 aci-tutorial-app 映像**。 此外，请将 `:v1` 标记添加到映像名称的末尾，指示映像版本号。 将 `<acrLoginServer>` 替换为前面执行的 [az acr show][az-acr-show] 命令的结果。
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -142,7 +83,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-使用专用注册表的完整登录服务器名称标记 aci-tutorial-app 映像后，可以使用 [docker push][docker-push] 命令将该映像推送到注册表  。 将 `<acrLoginServer>` 替换为在前面步骤中获取的完整登录服务器名称。
+使用专用注册表的完整登录服务器名称标记 aci-tutorial-app 映像后，可以使用 [docker push][docker-push] 命令将该映像推送到注册表**。 将 `<acrLoginServer>` 替换为在前面步骤中获取的完整登录服务器名称。
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -182,13 +123,13 @@ Result
 aci-tutorial-app
 ```
 
-若要查看特定映像的标记，请使用 [az acr repository show-tags][az-acr-repository-show-tags] 命令。 
+若要查看特定映像的标记，请使用 [az acr repository show-tags][az-acr-repository-show-tags] 命令。**
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
-会得到类似于下面的输出：
+应该会看到与下面类似的输出：
 
 ```console
 az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table

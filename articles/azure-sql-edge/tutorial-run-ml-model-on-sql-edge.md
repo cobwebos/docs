@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318635"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887462"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>使用 ONNX 在 Azure SQL Edge 上部署 ML 模型 
 
@@ -225,4 +225,4 @@ ms.locfileid: "85318635"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关在 Azure SQL Edge 中使用 ONNX 模型的详细信息，请参阅[在 SQL Edge 中使用 ONNX 实现机器学习和 AI（预览版）](onnx-overview.md)。
+有关在 Azure SQL Edge 中使用 ONNX 模型的详细信息，请参阅[在 SQL Edge 中使用 ONNX 实现机器学习和 AI](onnx-overview.md)。

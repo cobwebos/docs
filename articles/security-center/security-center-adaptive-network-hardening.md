@@ -13,15 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e8aea9b8abb5926fdb73df7c140ecfec1114f7a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378196"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894759"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
 了解如何在 Azure 安全中心内配置自适应网络强化。
+
+## <a name="availability"></a>可用性
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式发布 (GA)|
+|计价|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|必需的角色和权限：|计算机的 Nsg 的写入权限|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
 
 ## <a name="what-is-adaptive-network-hardening"></a>什么是自适应网络强化？
 应用[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) 来筛选发往/来自资源的流量，可以改善网络安全状况。 但是，仍然可能存在一些这样的情况：通过 NSG 流动的实际流量是所定义 NSG 规则的子集。 在这些情况下，可以根据实际流量模式强化 NSG 规则，从而进一步改善安全状况。
@@ -37,15 +46,6 @@ ms.locfileid: "89378196"
 ![“网络强化”视图](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="availability"></a>可用性
-
-|方面|详细信息|
-|----|:----|
-|发布状态：|正式版|
-|计价|标准层|
-|必需的角色和权限：|计算机的 Nsg 的写入权限|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
-|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看“自适应网络强化”警报和规则
@@ -56,7 +56,7 @@ ms.locfileid: "89378196"
    * **未扫描的资源**：由于以下原因之一而无法运行自适应网络强化算法的 VM：
       * **VM 是经典 VM**：只有 Azure 资源管理器 VM 受支持。
       * **没有足够的数据可用**：为了生成准确的流量强化建议，安全中心至少需要 30 天的流量数据。
-      * **VM 未按 ASC 标准进行保护**：仅设置为安全中心标准定价层的 vm 有资格使用此功能。
+      * **VM 未受 Azure defender 保护**：仅使用 [azure defender for Server](defender-for-servers-introduction.md) 保护的 vm 有资格使用此功能。
 
      ![不正常的资源](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -106,14 +106,14 @@ ms.locfileid: "89378196"
 
 1. 若要修改规则的某些参数，请在“规则”选项卡中单击规则行末尾的三个点 (...)，然后单击“编辑”。
 
-   ![编辑规则](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![编辑 s 规则](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. 在“编辑规则”窗口中，更新要更改的详细信息，然后单击“保存”。
 
    > [!NOTE]
-   > 单击“保存”后，便已成功更改了规则。 但尚未将其应用到 NSG。 若要应用该规则，必须在列表中选择该规则，然后单击“强制执行”（如下一步所述）。
+   > 单击“保存”后，便已成功更改了规则。 但尚未将其应用到 NSG。 若要应用该规则，必须在列表中选择规则，并选择 " **强制** ("，如) 的下一步中所述。
 
-   ![编辑规则](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![选择保存](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. 若要应用更新的规则，请从列表中选择更新的规则，然后单击“强制执行”。
 
@@ -150,4 +150,4 @@ ms.locfileid: "89378196"
 
 1. 在“规则”选项卡中单击规则行末尾的三个点 (...)，然后单击“删除”。  
 
-    ![强化规则](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![删除规则](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

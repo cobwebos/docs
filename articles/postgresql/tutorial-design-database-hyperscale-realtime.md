@@ -1,6 +1,6 @@
 ---
 title: 教程：设计实时仪表板 - 超大规模 (Citus) - Azure Database for PostgreSQL
-description: 本教程介绍如何在 Azure Database for PostgreSQL 超大规模 (Citus) 中创建、填充和查询分布式表。
+description: 本教程演示如何使用 Azure Database for PostgreSQL 超大规模 (Citus) 对实时仪表板查询进行并行化。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 41ac1cb856011d9730f7b49bbf85350f4dbccdbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387568"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895231"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：使用 Azure Database for PostgreSQL 设计实时分析仪表板 – Hyperscale (Citus)
 
@@ -226,6 +226,5 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 
 在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 你已使用 psql 连接到该组，创建了架构并分布了数据。 你已了解如何查询原始表单中的数据、定期聚合数据、查询聚合表，并使旧数据过期。
 
-接下来，请了解有关超大规模的概念。
-> [!div class="nextstepaction"]
-> [超大规模节点类型](https://aka.ms/hyperscale-concepts)
+- 了解服务器组[节点类型](https://aka.ms/hyperscale-concepts)
+- 确定服务器组的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)
