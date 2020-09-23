@@ -1,5 +1,5 @@
 ---
-title: 教程：使用设计器预测汽车价格（预览）
+title: 教程：使用设计器预测汽车价格
 titleSuffix: Azure Machine Learning
 description: 了解如何使用拖放式界面来训练、评分和部署机器学习模型。 本教程是有关使用线性回归预测汽车价格的、由两个部分构成的教程系列的第一部分。
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812977"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896694"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
+
 
 本教程分为两部分，介绍如何使用 Azure 机器学习设计器来训练并部署一个可预测汽车价格的机器学习模型。 该设计器是一个拖放式的工具，在其中可以创建机器学习模型，而无需编写任何代码。
 
@@ -49,10 +49,6 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 ### <a name="create-a-new-workspace"></a>创建新的工作区
 
 若要使用设计器，首先需要一个 Azure 机器学习工作区。 工作区是 Azure 机器学习的顶级资源，提供一个中心位置用于处理 Azure 机器学习中创建的所有项目。
-
-如果你已使用企业版创建了一个 Azure 机器学习工作区，请[跳到下一部分](#create-the-pipeline)。
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>创建管道
 
@@ -94,7 +90,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
 此设计器中包含多个示例数据集供你进行试验。 本教程使用“汽车价格数据(原始)”。 
 
-1. 管道画布左侧是数据集和模块的控制板。 选择“数据集”，然后查看“示例”部分以查看可用的示例数据集 。
+1. 管道画布左侧是数据集和模块的控制板。 选择“示例数据集”以查看可用的示例数据集。
 
 1. 选择数据集“汽车价格数据(原始)”，然后将其拖到画布上。
 

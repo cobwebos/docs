@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014585"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982963"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -37,7 +37,7 @@ ms.locfileid: "89014585"
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>检索会话/转换状态失败
 
-发送 REST API 命令过于频繁会导致服务器中止并最终返回故障。 限制情况下的 http 状态代码为 429 ( "请求太多" ) 。 根据经验法则，在 **后续调用之间应有5-10 秒**的延迟。
+发送 REST API 命令过于频繁会导致服务器中止并最终返回故障。 限制情况下的 http 状态代码为 429 ( "请求太多" ) 。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
 
 请注意，此限制不仅影响直接调用时的 REST API 调用，还会影响其 c #/C + + 对应项，例如 `Session.GetPropertiesAsync` 、 `Session.RenewAsync` 或 `Frontend.GetAssetConversionStatusAsync` 。
 
@@ -156,7 +156,8 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>在模型加载后呈现棋盘模式
 
-如果呈现的图像如下所示： ![ 棋盘 ](../reference/media/checkerboard.png) ，呈现器将达到 [标准配置大小的多边形限制](../reference/vm-sizes.md)。 若要缓解这种情况，请切换到 **高级** 配置大小或减少可见多边形的数目。
+如果呈现的图像如下所示： ![ 屏幕截图显示带有 "工具" 菜单的黑色和白色方块网格。](../reference/media/checkerboard.png)
+然后，呈现器将达到 [标准配置大小的多边形限制](../reference/vm-sizes.md)。 若要缓解这种情况，请切换到 **高级** 配置大小或减少可见多边形的数目。
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 中呈现的图像颠倒
 
@@ -216,7 +217,7 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ARR 具有一项功能，用于确定表面是否可以进行 z 抵抗： [棋盘突出显示](../overview/features/z-fighting-mitigation.md)。 您还可以直观地确定导致 z 反击的原因。 下面的第一个动画显示距离中的深度精度丢失示例，第二个动画显示将近共面图面的示例：
 
-![深度-精度-z-反击](./media/depth-precision-z-fighting.gif)  ![共面-z-反击](./media/coplanar-z-fighting.gif)
+![动画显示了距离中的深度精度丢失示例。](./media/depth-precision-z-fighting.gif)  ![动画显示将近共面图面的示例。](./media/coplanar-z-fighting.gif)
 
 将这些示例与 z 进行比较，以确定原因或按顺序执行以下分步工作流：
 

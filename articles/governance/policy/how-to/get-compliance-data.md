@@ -1,14 +1,14 @@
 ---
 title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 57e508048b5e628911db90b0b6835f88b5ebd8fb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648357"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895426"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -30,11 +30,13 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 已分配的策略和计划的评估会在各种事件后发生：
 
-- 最近已将策略或计划分配到某个范围。 需要大约花费 30 分钟将分配应用到定义的范围。 应用分配后，将会针对新分配的策略或计划，对该范围内的资源执行评估周期，同时，会根据策略或计划使用的效果，将资源标记为合规或不合规。 针对大范围的资源评估的大型策略或计划可能需要花费一段时间。 因此，在评估周期何时完成方面，无法预先定义预期目标。 完成评估后，更新的符合性结果会在门户和 SDK 中提供。
+- 最近已将策略或计划分配到某个范围。 需要大约花费 30 分钟将分配应用到定义的范围。 应用后，评估周期将从该范围内的资源开始，并与新分配的策略或计划有关，并根据策略或计划所用的影响，将资源标记为符合、不符合或豁免。 针对大范围的资源评估的大型策略或计划可能需要花费一段时间。 因此，在评估周期何时完成方面，无法预先定义预期目标。 完成评估后，更新的符合性结果会在门户和 SDK 中提供。
 
 - 更新了已分配到某个范围的策略或计划。 此场景的评估周期和计时与新的范围分配相同。
 
 - 资源将通过 Azure 资源管理器、REST API 或受支持的 SDK 部署到包含分配的范围或在其中进行更新。 在此场景中，个体资源的效果事件（追加、审核、拒绝、部署）和符合性状态将在大约 15 分钟后出现在门户与 SDK 中。 此事件不会导致对其他资源进行评估。
+
+- 创建、更新或删除 [策略例外](../concepts/exemption-structure.md) 。 在此方案中，将为定义的免除范围计算相应的分配。
 
 - 标准符合性评估周期。 分配每隔 24 小时自动重新评估一次。 涉及大量资源的大型策略或计划可能需要花费一段时间，因此，在评估周期何时完成方面，无法预先定义预期目标。 完成评估后，更新的符合性结果会在门户和 SDK 中提供。
 
@@ -127,8 +129,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>符合性的工作原理
 
-在分配中，如果某资源不符合策略或计划规则，则该资源不合规。
-下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的：
+在分配中，如果资源不遵循策略或计划规则并且不_例外_，则该资源不**合规**。 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的：
 
 | 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
@@ -137,8 +138,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 | 新建 | Audit、AuditIfNotExist\* | True | 不符合 |
 | 新建 | Audit、AuditIfNotExist\* | False | 符合 |
 
-\*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
-这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
+\* Modify、Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
 
 例如，假设有一个资源组 ContsoRG，其中包含一些向公共网络公开的存储帐户（以红色突出显示）。
 
@@ -146,24 +146,25 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
    显示 Contoso R G 资源组中5个存储帐户的图像的关系图。  存储帐户1和3为蓝色，而存储帐户有两个、四个和五个为红色。
 :::image-end:::
 
-在此示例中，需要慎重考虑安全风险。 创建策略分配后，将会针对 ContosoRG 资源组中的所有存储帐户评估该分配。 它对这三个不合规的存储帐户进行审核，并因此将其状态更改为“不合规”。
+在此示例中，需要慎重考虑安全风险。 创建策略分配后，将针对 ContosoRG 资源组中的所有包含和非例外存储帐户对其进行评估。 它对这三个不合规的存储帐户进行审核，并因此将其状态更改为“不合规”。
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G 资源组中的存储帐户符合性关系图。" border="false":::
    显示 Contoso R G 资源组中5个存储帐户的图像的关系图。 现在有一个和三个存储帐户，它们下面有绿色复选标记，而存储帐户有两个、四个和五个，现在它们下面有红色警告符号。
 :::image-end:::
 
-除“符合”和“不符合”外，政策和资源还有 3 种状态 ：
+除了 **符合** 和 **不符合要求**以外，策略和资源具有四种其他状态：
 
-- **冲突**：两项或多项策略的规则存在冲突。 例如，两项策略向不同的值附加了相同的标记。
+- **豁免**：资源在分配范围内，但具有 [定义的例外](../concepts/exemption-structure.md)。
+- **冲突**：存在两个或多个策略定义，但规则冲突。 例如，两个定义将同一标记追加到不同的值。
 - **未启动**：尚未针对策略或资源启动评估周期。
 - **未注册**：尚未注册 Azure Policy 资源提供程序，或者登录的帐户无权读取符合性数据。
 
-Azure Policy 使用定义中的“类型”和“名称”字段来确定资源是否匹配 。 如果资源匹配，则被视为适用，状态为“符合”或“不符合” 。 如果“类型”或“名称”是定义中的唯一属性，则将所有资源视为适用并对其进行评估 。
+Azure Policy 使用定义中的“类型”和“名称”字段来确定资源是否匹配 。 当资源匹配时，它将被视为适用，并且状态为 " **符合**"、" **不符合**" 或 " **例外**"。 如果 **类型** 或 **名称** 是定义中的唯一属性，则所有包含的和非免除的资源都将被视为适用并进行评估。
 
-符合百分比是合规资源与总资源之比。
-根据定义，总资源是指合规资源、不合规资源和冲突资源的总和  。 整体符合性是不同合规资源的总和除以所有唯一资源。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”。 因此，资源的整体符合性为 95%（19/20）。
+合规性百分比由资源_总量_的**符合**和**免除**资源来确定。 _资源总量_ 定义为 **符合**、 **不符合**、 **例外**和 **冲突** 资源的总和。 总体符合性数字是 **符合** 或 **免除** 的不同资源的总和除以所有不同资源的总和。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”。
+因此，资源的整体符合性为 95%（19/20）。
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="符合性 页中的策略符合性详细信息的屏幕截图。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text=""符合性" 页中的策略符合性详细信息的屏幕截图。" border="false":::
 
 > [!NOTE]
 > Azure 策略中的规章遵从性是一项预览功能。 门户中 SDK 和页面的符合性属性对于已启用的计划有所不同。 有关详细信息，请参阅合规 [性](../concepts/regulatory-compliance.md)
@@ -184,7 +185,7 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 > [!NOTE]
 > 对于 AKS 引擎策略，显示的资源即是资源组。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="符合性详细信息 页上的 事件 选项卡屏幕截图。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text=""符合性详细信息" 页上的 "事件" 选项卡屏幕截图。" border="false":::
 
 对于[资源提供程序模式](../concepts/definition-structure.md#resource-provider-modes)资源，通过在“资源符合性”选项卡上选择资源或右键单击行并选择“查看符合性详细信息”可以打开组件符合性详细信息。 该页面还提供了选项卡，以查看分配给此资源、事件、组件事件和更改历史记录的策略。
 

@@ -4,15 +4,15 @@ description: 了解启用基于工作区的新 Azure Monitor Application Insight
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894548"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>基于工作区的 Application Insights 资源（预览版）
+# <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
 基于工作区的资源支持 Application Insights 与 Log Analytics 之间的完全集成。 你现在可以选择将 Application Insights 遥测数据发送到一个公用 Log Analytics 工作区，这样就可以全权访问 Log Analytics 的所有功能，同时将应用程序、基础结构和平台日志置于单一的合并位置中。
 
@@ -21,7 +21,19 @@ ms.locfileid: "88783835"
 > [!NOTE]
 > 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
 
-若要测试新体验，请登录到 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
+## <a name="new-capabilities"></a>新功能
+
+基于工作区的 Application Insights 允许你利用 Azure Monitor 和 Log Analytics 的最新功能，包括：
+
+* [ (CMK 的客户托管密钥) ](../platform/customer-managed-keys.md) 使用只有你有权访问的加密密钥为你的数据提供静态加密。
+* 通过 [Azure 专用链接](../platform/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
+* [为探查器和 Snapshot Debugger 提供自己的存储 (BYOS) ](./profiler-bring-your-own-storage.md) ，你可以完全控制静态加密策略、生存期管理策略以及与 Application Insights Profiler 和 Snapshot Debugger 相关的所有数据的网络访问。 
+* 与即用即付价格相比，[容量预留层](../platform/manage-cost-storage.md#pricing-model)最多可节省25%。 
+* 通过 Log Analytics 流引入提高数据引入速度。
+
+## <a name="create-workspace-based-resource"></a>创建基于工作区的资源
+
+登录 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
 
 ![基于工作区的 Application Insights 资源](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ ms.locfileid: "88783835"
 单击蓝色链接文本会转到关联的 Log Analytics 工作区，你可以在其中利用新的统一工作区查询环境。
 
 > [!NOTE]
-> 我们仍然针对 Application Insights 体验中的 Application Insights 经典资源查询、工作簿和基于日志的警报提供完全的后向兼容性。 若要根据[新的基于工作区的表结构/架构](apm-tables.md)进行查询/查看，必须先导航到 Log Analytics 工作区。 在预览版期间，从 Application Insights 窗格中选择“日志”即可访问经典 Application Insights 查询体验。
+> 我们仍然针对 Application Insights 体验中的 Application Insights 经典资源查询、工作簿和基于日志的警报提供完全的后向兼容性。 若要根据[新的基于工作区的表结构/架构](apm-tables.md)进行查询/查看，必须先导航到 Log Analytics 工作区。 从 Application Insights 窗格内选择 **日志 (分析) ** 可让你访问经典 Application Insights 查询体验。
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
@@ -185,14 +197,6 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 
 ```
 
-## <a name="new-capabilities"></a>新功能
-
-基于工作区的 Application Insights 允许您充分利用 Azure Monitor 的所有最新功能，包括：
-
-* [ (CMK 的客户托管密钥) ](../platform/customer-managed-keys.md) 使用只有你有权访问的加密密钥为你的数据提供静态加密。
-* 通过 [Azure 专用链接](../platform/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
-* [为探查器和 Snapshot Debugger 提供自己的存储 (BYOS) ](./profiler-bring-your-own-storage.md) ，你可以完全控制静态加密策略、生存期管理策略以及与 Application Insights Profiler 和 Snapshot Debugger 相关的所有数据的网络访问。 
-
 ## <a name="modifying-the-associated-workspace"></a>修改关联的工作区
 
 创建基于工作区的 Application Insights 资源后，可以修改关联的 Log Analytics 工作区。
@@ -207,8 +211,3 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 
 * [探索指标](../platform/metrics-charts.md)
 * [编写分析查询](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

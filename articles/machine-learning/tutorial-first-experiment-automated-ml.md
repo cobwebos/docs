@@ -10,20 +10,17 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047806"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896462"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在本教程中，你将了解如何在 Azure 机器学习工作室中使用自动化机器学习在不编写任何代码行的情况下创建一个基本的分类模型。 此分类模型预测某个金融机构的客户是否会认购定期存款产品。
 
->[!IMPORTANT]
-> Azure 机器学习工作室中的自动化机器学习体验处于预览状态。 某些功能可能不受支持或者受限。
+在本教程中，你将了解如何在 Azure 机器学习工作室中使用自动化机器学习在不编写任何代码的情况下创建一个简单的分类模型。 此分类模型预测某个金融机构的客户是否会认购定期存款产品。
 
 利用自动机器学习，可以自动完成耗时的任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
 
@@ -47,9 +44,9 @@ ms.locfileid: "87047806"
 
 Azure 机器学习工作区是云中的基础资源，用于试验、训练和部署机器学习模型。 它将 Azure 订阅和资源组关联到服务中一个易于使用的对象。 
 
-通过 Azure 门户创建 Enterprise 版工作区，该门户是用于管理 Azure 资源的基于 Web 的控制台。
+通过 Azure 门户创建工作区，该门户是用于管理 Azure 资源的基于 Web 的控制台。
 
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
 > 记下你的工作区和订阅 。 你将需要这些项才能确保在正确的位置创建试验。 

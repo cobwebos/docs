@@ -1,23 +1,23 @@
 ---
-title: 使用用于密钥保管库的 Azure Monitor（预览版）监视密钥保管库 | Microsoft Docs
+title: 监视 Key Vault 的 Azure Monitor Key Vault |Microsoft Docs
 description: 本文介绍用于密钥保管库的 Azure Monitor。
 services: azure-monitor
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: 7b799c462cc683d8d05edc3f10885c458185a843
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.date: 09/10/2020
+ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069792"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894513"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用用于密钥保管库的 Azure Monitor（预览版）监视密钥保管库服务
-用于密钥保管库的 Azure Monitor（预览版）通过提供密钥保管库请求、性能、故障和延迟的统一视图，对密钥保管库进行全面监视。
-本文将帮助你了解如何加入和自定义用于密钥保管库的 Azure Monitor（预览版）的体验。
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>监视 key vault 服务的 Azure Monitor Key Vault
+Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和延迟的统一视图，全面监视密钥保管库。
+本文将帮助你了解如何载入和自定义 Key Vault 的 Azure Monitor 体验。
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>用于密钥保管库的 Azure Monitor（预览版）简介
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>Key Vault Azure Monitor 简介
 
 在深入了解此体验之前，应该了解它如何呈现和可视化信息。
 -    **大规模透视图**：可显示基于请求的性能快照视图、故障详情以及操作和延迟概览。
@@ -49,7 +49,7 @@ ms.locfileid: "90069792"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)
 
-2. 从 Azure 门户的左侧窗格中选择“监视”，然后在“见解”部分下选择“密钥保管库(预览版)” 。
+2. 从 "Azure 门户中的左窗格中选择" **监视器** "，然后在" 见解 "部分，选择" **Key**vault "。
 
 ![“概览”体验的屏幕截图，其中显示了多个关系图](./media/key-vaults-insights-overview/overview.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "90069792"
 
 1. 在 Azure 门户中，选择密钥保管库。
 
-2. 从列表中选择一个密钥保管库。 在“监视”部分选择“见解(预览版)”。
+2. 从列表中选择一个密钥保管库。 在 "监视" 部分，选择 "见解"。
 
 还可以从 Azure Monitor 级别工作簿中选择密钥保管库的资源名称来访问这些视图。
 
@@ -140,7 +140,7 @@ ms.locfileid: "90069792"
 
 你可以将包含多个订阅和密钥保管库的“概览”或“故障”工作簿配置为在每次运行时作用于特定的订阅或密钥保管库，具体操作步骤如下：
 
-1. 从门户中选择“监视”，然后从左侧窗格中选择“密钥保管库(预览版)” 。
+1. 从门户中选择 " **监视器** "，然后从左侧窗格中选择 " **密钥保管库** "。
 2. 在“概览”工作簿上，从命令栏中选择“编辑” 。
 3. 从“订阅”下拉列表中选择要用作默认订阅的一个或多个订阅。 请记住，工作簿最多支持选择 10 个订阅。
 4. 从“密钥保管库”下拉列表中选择要用作默认帐户的一个或多个帐户。 请记住，工作簿最多支持选择 200 个存储帐户。
@@ -150,11 +150,11 @@ ms.locfileid: "90069792"
 
 如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
-本部分将帮助你诊断和排查在使用用于密钥保管库的 Azure Monitor（预览版）时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
+本部分将帮助你诊断和排查在使用 Azure Monitor Key Vault 时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
 ### <a name="resolving-performance-issues-or-failures"></a>解决性能问题或故障
 
-要帮助解决使用用于密钥保管库的 Azure Monitor（预览版）标识的任何密钥保管库相关问题，请参阅 [Azure 密钥保管库文档](../../key-vault/index.yml)。
+若要帮助解决你在 Key Vault 中发现的任何 Azure Monitor 与密钥保管库相关的问题，请参阅 [Azure Key Vault 文档](../../key-vault/index.yml)。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>为什么只能看到 200 个密钥保管库
 

@@ -1,24 +1,24 @@
 ---
-title: 教程：在 Azure 门户中使用 GPU 激活 Azure Stack Edge 设备 | Microsoft Docs
-description: 本教程介绍 Azure Stack Edge GPU 部署方法，指导你激活物理设备。
+title: 教程：在 Azure 门户中使用 GPU 激活 Azure Stack Edge Pro 设备 | Microsoft Docs
+description: 本教程介绍 Azure Stack Edge Pro GPU 部署方法，指导你激活物理设备。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 88be4d9753e48f70dae5666e800a54209ed6ba3f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267932"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903466"
 ---
-# <a name="tutorial-activate-azure-stack-edge-with-gpu"></a>教程：使用 GPU 激活 Azure Stack Edge
+# <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 激活 Azure Stack Edge Pro
 
-本教程介绍如何通过本地 Web UI 使用板载 GPU 激活 Azure Stack Edge 设备。
+本教程介绍如何通过本地 Web UI 使用板载 GPU 激活 Azure Stack Edge Pro 设备。
 
 完成激活过程需要大约 5 分钟。
 
@@ -30,15 +30,15 @@ ms.locfileid: "89267932"
 
 ## <a name="prerequisites"></a>先决条件
 
-在使用 GPU 配置和设置 Azure Stack Edge 设备之前，请确保：
+在使用 GPU 配置和设置 Azure Stack Edge Pro 设备之前，请确保：
 
 * 对于物理设备： 
     
-    - 已根据[安装 Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md) 中详述的内容安装了物理设备。
+    - 已根据[安装 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) 中详述的内容安装了物理设备。
     - 已按[配置网络、计算网络和 Web 代理](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)中详述的内容配置网络和计算网络设置
     - 如果通过“设备”页面更改了设备名称或 DNS 域，则应上传自己的设备证书或在设备上生成设备证书。 如果尚未执行此步骤，则会在设备激活过程中出现错误，并阻止激活。 有关详细信息，请转到[配置证书](azure-stack-edge-gpu-deploy-configure-certificates.md)。
     
-* 已从所创建的用于管理 Azure Stack Edge 设备的 Azure Stack Edge 服务获得激活密钥。 有关详细信息，请转到[准备部署 Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)。
+* 已从所创建的用于管理 Azure Stack Edge Pro 设备的 Azure Stack Edge 服务获得激活密钥。 有关详细信息，请转到[准备部署 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)。
 
 
 ## <a name="activate-the-device"></a>激活设备
@@ -48,7 +48,7 @@ ms.locfileid: "89267932"
 
     ![本地 Web UI“云详细信息”页](./media/azure-stack-edge-gpu-deploy-activate/activate-1.png)
     
-3. 在“激活”窗格中，输入你在[获取 Azure Stack Edge 激活密钥](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)中获取的激活密钥 。
+3. 在“激活”窗格中，输入你在[获取 Azure Stack Edge Pro 激活密钥](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)中获取的激活密钥 。
 
 4. 选择“应用”。 
 
@@ -59,23 +59,25 @@ ms.locfileid: "89267932"
     
     ![本地 Web UI“云详细信息”页](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
-    选择“下载密钥文件”，并将 keys.json 文件保存在设备之外的安全位置。 该密钥文件包含设备上的 OS 磁盘和数据磁盘的恢复密钥。 下面是 keys.json 文件的内容：
+    选择“下载并继续”，并将 device-serial-no.json 文件保存在设备之外的安全位置。 该密钥文件包含设备上的 OS 磁盘和数据磁盘的恢复密钥。 可能需要这些密钥来辅助将来的系统恢复。
+
+    下面是 json 文件的内容：
 
         
     ```json
     {
-      "Id": "1ab3fe39-26e6-4984-bb22-2e02d3fb147e",
+      "Id": "<Device ID>",
       "DataVolumeBitLockerExternalKeys": {
-        "hcsinternal": "C086yg1DrPo0DuZB/a7hUh+kBWj804coJfBA9LDzZqw=",
-        "hcsdata": "8ohX9bG3YSZl9DZmZLkYl//L9dXi1XiQrqza+iSd64Q="
+        "hcsinternal": "<BitLocker key for data disk>",
+        "hcsdata": "<BitLocker key for data disk>"
       },
-      "SystemVolumeBitLockerRecoveryKey": "105347-156739-594473-151107-005082-252604-471955-439395",
-      "ServiceEncryptionKey": "oEwxNJeULzGRFt6DsLgcLw=="
+      "SystemVolumeBitLockerRecoveryKey": "<BitLocker key for system volume>",
+      "ServiceEncryptionKey": "<Azure service encryption key>"
     }
     ```
         
  
-    下表对各项内容进行了说明：
+    下表对各密钥进行了说明：
     
     |字段  |说明  |
     |---------|---------|
@@ -99,7 +101,7 @@ ms.locfileid: "89267932"
 > * 先决条件
 > * 激活物理设备
 
-若要了解如何使用 Azure Stack Edge 设备传输数据，请参阅：
+若要了解如何使用 Azure Stack Edge Pro 设备传输数据，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Stack Edge 传输数据](./azure-stack-edge-j-series-deploy-add-shares.md)
+> [使用 Azure Stack Edge Pro 传输数据](./azure-stack-edge-j-series-deploy-add-shares.md)
