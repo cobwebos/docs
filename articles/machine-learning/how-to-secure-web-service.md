@@ -11,15 +11,15 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f2d874925cdad05ec7979575c9b87608da542927
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b497e0369ab31cc009c9524ffd63ff472013268e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661432"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886029"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何保护通过 Azure 机器学习部署的 Web 服务。
 

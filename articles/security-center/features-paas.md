@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 77bf0f4cd60ba6e85763334a4d864975945ec2c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042350"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894775"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>适用于 Azure PaaS 服务的功能覆盖范围 <a name="paas-services"></a>
 
 下表显示受支持的 Azure PaaS 资源的 Azure 安全中心功能的可用性。
 
-|服务|建议（免费）|安全警报（标准）|漏洞评估（标准）|
+|服务|建议（免费）|Azure Defender)  (安全警报|Azure Defender)  (漏洞评估|
 |:----|:----:|:----:|:----:|
 |Azure 应用服务|✔|✔|-|
 |Azure 自动化帐户|✔|-|-|
@@ -56,4 +56,4 @@ ms.locfileid: "86042350"
 
 \* 预览版目前支持这些功能。
 
-\*\* Azure Active Directory (Azure AD) 建议仅适用于标准订阅。
+\*\* Azure Active Directory (Azure AD) 建议仅适用于已启用 Azure Defender 的订阅。

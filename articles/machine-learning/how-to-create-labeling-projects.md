@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612177"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898007"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在机器学习项目中标记大量的数据通常让人感到头疼。 包含计算机视觉组件的项目（例如图像分类或对象检测）通常需要为数千个图像提供标签。
  
@@ -144,13 +144,7 @@ ms.locfileid: "89612177"
 >[!NOTE]
 > 请务必注意，标记程序可以使用编号键 1-9 选择前 9 个标签。
 
-## <a name="use-ml-assisted-labeling-preview"></a>使用 ML 辅助标记（预览版）
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
-
-> [!IMPORTANT]
-> ML 辅助标记目前提供公共预览版。
-> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="use-ml-assisted-labeling"></a>使用 ML 辅助标记
 
 在“ML 辅助标记”页中可以触发自动机器学习模型，以加速完成标记任务。 在标记项目的开头，图像将按随机顺序排列，以减少潜在的偏差。 但是，数据集中的任何偏差都会反映在训练的模型中。 例如，如果 80% 的图像属于单个类，则用于训练模型的大约 80% 的数据将属于该类。 此训练不包括主动学习。
 
@@ -175,9 +169,6 @@ ms.locfileid: "89612177"
 提交足够的图像标签后，将使用分类模型来预测图像标记。 或者使用对象检测模型来预测边界框。 标记人员现在会看到包含一些页面，其中包含每个图像上存在的预测标签。 对于对象检测，还会显示预测框。 接下来的任务是检查这些预测，并更正任何错误标记的图像，然后提交页面。  
 
 基于手动标记的数据训练机器学习模型后，将会基于手动标记的图像的测试集评估该模型，以根据各种不同的置信度阈值确定其准确度。 此评估过程用于确定置信度阈值，如果超过该阈值，则表示模型足够准确，可以显示预先标签。 然后，将会根据未标记的数据评估模型。 预测结果的置信度高于此阈值的图像将用于预先标记。
-
-> [!NOTE]
-> ML 辅助标记**仅在**企业版工作区中可用。
 
 ## <a name="initialize-the-labeling-project"></a>初始化标记项目
 

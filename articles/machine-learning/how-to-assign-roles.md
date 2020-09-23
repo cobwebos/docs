@@ -11,15 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 235135cbbcc7c622f4dd23c2e4f29cc3636dc1ea
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661932"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893398"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍了如何管理对 Azure 机器学习工作区的访问权限。 使用 azure [RBAC)  (azure 基于角色的访问控制](/azure/role-based-access-control/overview)来管理对 Azure 资源的访问。 Azure Active Directory 中的用户可获得特定角色，这些角色授予了对资源的访问权限。 Azure 提供内置角色和创建自定义角色的功能。
 
@@ -135,7 +134,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 活动 | 订阅级作用域 | 资源组级作用域 | 工作区级作用域 |
 | ----- | ----- | ----- | ----- |
 | 创建新工作区 | 不是必需 | 所有者或参与者 | 不适用（在创建后成为所有者或继承更高作用域角色） |
-| 更新工作区的版本 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/write` |
 | 请求订阅级别 Amlcompute 配额或设置工作区级别配额 | 所有者、参与者或自定义角色 </br>允许 `/locations/updateQuotas/action`</br> （在订阅范围内） | 未授权 | 未授权 |
 | 新建计算群集 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
 | 新建计算实例 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
@@ -301,7 +299,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
     * 创建一个新工作区
     * 分配订阅或工作区级别配额
-    * 升级工作区的版本
 
     工作区管理员也无法创建新的角色， 而只能在其工作区的作用域内分配现有内置角色或自定义角色：
 
@@ -415,11 +412,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 > [!NOTE]
 > 角色更新可能需要花费 15 分钟到一小时才能应用于该作用域中的所有角色分配。
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>问： 是否可以定义阻止更新工作区版本的角色？ 
 
-是，你可以定义阻止更新工作区版本的角色。 由于工作区更新是对工作区对象的 PATCH 调用，因此可以通过在 JSON 定义中的 `"NotActions"` 数组中放置以下操作来实现此目的： 
-
-`"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>问： 在工作区中执行配额操作需要哪些权限？ 
 

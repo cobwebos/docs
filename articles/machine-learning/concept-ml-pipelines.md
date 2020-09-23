@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 机器学习管道
-description: 了解机器学习 (ML) 管道如何帮助您构建、优化和管理机器学习工作流。
+description: 了解如何借助机器学习 (ML) 管道生成、优化和管理机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2232aa46b0586ca62e80c8b9002271a67e4021c1
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b0217766c92ddcd1907eca2c6702d91b02e06c03
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651112"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893640"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
-本文介绍 Azure 机器学习管道如何帮助你构建、优化和管理机器学习工作流。 这些工作流具备多个优点： 
+本文介绍如何借助 Azure 机器学习管道生成、优化和管理机器学习工作流。 这些工作流具备多个优点： 
 
 + 简单
 + Speed
@@ -55,7 +55,7 @@ Azure 机器学习管道是整个机器学习任务的可独立执行的工作�
 
 管道设计好以后，通常会有更多围绕着管道的训练循环进行的优化。 重新运行某个管道时，运行会跳到需要重新运行的步骤（例如，更新后的训练脚本）。 不需要重新运行的步骤则会跳过。 
 
-对于管道，你可以选择对不同任务使用不同的硬件。 Azure 会协调使用的各种 [计算目标](concept-azure-machine-learning-architecture.md) ，因此，中间数据可以无缝地流向下游计算目标。
+通过管道，你可以选择使用不同的硬件来执行不同的任务。 Azure 协调会你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)，因此中间数据可以无缝流向下游计算目标。
 
 可以直接在 Azure 门户中或在[工作区登陆页面（预览）](https://ml.azure.com)[跟踪管道试验的指标](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)。 发布管道之后，可以配置 REST 终结点，这样就能够从任何平台或堆栈重新运行管道。
 
@@ -63,7 +63,7 @@ Azure 机器学习管道是整个机器学习任务的可独立执行的工作�
 
 ### <a name="analyzing-dependencies"></a>分析依赖项
 
-许多编程生态系统都安装了用于协调资源、库或编译依赖项的工具。 通常，这些工具使用文件时间戳来计算依赖项。 文件发生更改时，只更新（下载、重新编译或打包）文件及其依赖项。 Azure ML 管道扩展了此概念。 与传统的生成工具一样，管道会计算各个步骤之间的依赖项，并且只执行必要的重新计算。 
+许多编程生态系统都安装了用于协调资源、库或编译依赖项的工具。 通常，这些工具使用文件时间戳来计算依赖项。 文件发生更改时，只更新（下载、重新编译或打包）文件及其依赖项。 Azure ML 管道丰富了此概念。 与传统的生成工具一样，管道会计算各个步骤之间的依赖项，并且只执行必要的重新计算。 
 
 不过，Azure ML 管道中的依赖项分析比简单的时间戳更为复杂。 每个步骤都可以在不同的硬件和软件环境中运行。 数据准备可能是一个耗时的过程，但不需要在具有强大 GPU 的硬件上运行，某些步骤可能需要特定于操作系统的软件，因此建议使用分布式训练等等。 
 
@@ -95,7 +95,7 @@ Azure ML 管道与 Azure 机器学习工作区相关联，而管道步骤与该�
 
 ### <a name="a-simple-python-pipeline"></a>简单的 Python 管道
 
-此代码片段显示了创建和运行基本 `Pipeline` 所需的对象和调用：
+此代码段显示了创建和运行所需的对象和调用 `Pipeline` ：
 
 ```python
 ws = Workspace.from_config() 
@@ -152,7 +152,7 @@ pipeline_run.wait_for_completion()
 
 ## <a name="next-steps"></a>后续步骤
 
-Azure ML 管道是一个功能强大的工具，可在早期开发阶段开始产生价值。 价值随着团队和项目的发展而增加。 本文介绍了如何通过 Azure 机器学习 Python SDK 指定管道，并在 Azure 上进行协调。 你已了解一些基本的源代码和一些可用的 `PipelineStep` 类。 你应了解何时使用 Azure ML 管道以及 Azure 如何运行这些管道。 
+Azure ML 管道是一个功能强大的工具，可在早期开发阶段开始产生价值。 价值随着团队和项目的发展而增加。 本文介绍了如何通过 Azure 机器学习 Python SDK 指定管道，并在 Azure 上进行协调。 您已经看到了一些简单的源代码，并介绍了一些可用的 `PipelineStep` 类。 你应了解何时使用 Azure ML 管道以及 Azure 如何运行这些管道。 
 
 
 + 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)。

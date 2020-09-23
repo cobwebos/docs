@@ -2,13 +2,13 @@
 title: 常见问题 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288961"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883386"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -55,6 +55,9 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 事件中心将客户数据存储在何处？
+Azure 事件中心存储客户数据。 事件中心会自动将此数据存储在单个区域中，因此，此服务会自动满足区域数据派驻要求，其中包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)中指定的要求。
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
 
@@ -71,16 +74,16 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 | Kafka | 9093 | 请参阅[使用 Kafka 应用程序中的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>需要允许哪些 IP 地址？
-若要查找要添加到连接的允许列表的正确 IP 地址，请执行以下步骤：
+若要查找要添加到允许列表以进行连接的正确 IP 地址，请执行以下步骤：
 
 1. 从命令提示符运行以下命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 记下 `Non-authoritative answer` 中返回的 IP 地址。 只有在你将命名空间还原到另一群集时，它才会更改。
+2. 记下 `Non-authoritative answer` 中返回的 IP 地址。 
 
-如果对命名空间使用区域冗余，则需要执行一些额外步骤： 
+如果对命名空间使用 **区域冗余** ，则需要执行一些附加步骤： 
 
 1. 首先，在命名空间中运行 nslookup。
 
@@ -94,9 +97,12 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > 命令返回的 IP 地址 `nslookup` 不是静态 ip 地址。 但是，在将基础部署删除或移动到其他群集之前，它将保持不变。
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>在哪里可以找到向命名空间发送消息或从命名空间接收消息的客户端 IP？
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>在哪里可以找到客户端 IP 发送或接收到命名空间的消息？
 首先，在命名空间上启用 [IP 筛选](event-hubs-ip-filtering.md)。 
 
 然后，按照[启用诊断日志](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)中的说明，为[事件中心虚拟网络连接事件](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)启用诊断日志。 将看到连接遭到拒绝的 IP 地址。
@@ -197,7 +203,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何创建事件中心专用群集？
 可以通过提交[提高配额支持请求](https://portal.azure.com/#create/Microsoft.Support)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是临时的，直到可通过 Azure 门户提供完整的自助服务为止。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
 分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息，请参阅[分区](event-hubs-features.md#partitions)。
@@ -246,7 +252,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 如需所有事件中心配额的列表，请参阅[配额](event-hubs-quotas.md)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
 从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 

@@ -1,6 +1,6 @@
 ---
-title: 在 Microsoft Azure Stack Edge GPU 设备上运行 GPU 模块 |Microsoft Docs
-description: 描述如何通过 Azure 门户在 Azure Stack 边缘设备上配置和运行 GPU 上的模块。
+title: 在 Microsoft Azure Stack Edge Pro GPU 设备上运行 GPU 模块 |Microsoft Docs
+description: 描述如何通过 Azure 门户在 Azure Stack 边缘 Pro 设备上配置和运行 GPU 上的模块。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266946"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891461"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>在 Azure Stack 边缘设备上的 GPU 上配置和运行模块
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 设备上的 GPU 上配置和运行模块
 
-Azure Stack 边缘设备包含一个或多个图形处理单元 (GPU) 。 Gpu 是 AI 计算的常用选项，因为它们提供并行处理功能，并且在图像呈现时速度比中央处理单元 (Cpu) 的速度更快。 若要详细了解 Azure Stack Edge 设备中包含的 GPU，请参阅 [Azure Stack Edge 设备技术规范](azure-stack-edge-gpu-technical-specifications-compliance.md)。
+Azure Stack Edge Pro 设备包含一个或多个图形处理单元 (GPU) 。 Gpu 是 AI 计算的常用选项，因为它们提供并行处理功能，并且在图像呈现时速度比中央处理单元 (Cpu) 的速度更快。 有关 Azure Stack Edge Pro 设备中包含的 GPU 的详细信息，请参阅 [Azure Stack Edge pro 设备技术规范](azure-stack-edge-gpu-technical-specifications-compliance.md)。
 
-本文介绍如何在 Azure Stack 边缘设备上的 GPU 上配置和运行模块。 在本文中，你将使用为 Nvidia T4 Gpu 编写的公开可用容器模块 **位数** 。 此过程可用于配置 Nvidia 为这些 Gpu 发布的任何其他模块。
+本文介绍如何在 Azure Stack Edge Pro 设备上配置和运行 GPU 上的模块。 在本文中，你将使用为 Nvidia T4 Gpu 编写的公开可用容器模块 **位数** 。 此过程可用于配置 Nvidia 为这些 Gpu 发布的任何其他模块。
 
 
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
-1. 你可以访问已启用 GPU 的1节点 Azure Stack Edge 设备。 此设备已使用 Azure 中的资源激活。  
+1. 你可以访问已启用 GPU 的1节点 Azure Stack Edge Pro 设备。 此设备已使用 Azure 中的资源激活。  
 
 ## <a name="configure-module-to-use-gpu"></a>配置模块以使用 GPU
 
-若要将模块配置为使用 Azure Stack Edge 设备上的 GPU 来运行模块，请执行以下步骤。
+若要将模块配置为使用 Azure Stack Edge Pro 设备上的 GPU 来运行模块，请执行以下步骤。
 
 1. 在 Azure 门户中，请参阅与设备关联的资源。 
 
@@ -54,7 +54,7 @@ Azure Stack 边缘设备包含一个或多个图形处理单元 (GPU) 。 Gpu �
 
     ![配置模块以使用 GPU 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    在右侧窗格中，可以看到与 Azure Stack 边缘设备关联的 IoT Edge 设备。 这对应于在创建 IoT 中心资源时在上一个步骤中创建的 IoT Edge 设备。 
+    在右侧窗格中，可以看到与 Azure Stack Edge Pro 设备关联的 IoT Edge 设备。 这对应于在创建 IoT 中心资源时在上一个步骤中创建的 IoT Edge 设备。 
     
 6. 选择此 IoT Edge 设备。
 

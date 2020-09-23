@@ -12,15 +12,15 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6d0d626fe0720500b436aea73d6df7c8bb08e004
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fc9dee3d4ace5f70c4238cdce5c57696b131bfa9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897305"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)、[机器学习 CLI](reference-azure-machine-learning-cli.md) 和 [Azure 机器学习工作室](https://ml.azure.com)提供多种方法用于监视、组织和管理训练运行与试验运行。
 
@@ -110,7 +110,7 @@ notebook_run.log(name="message", value="Hello from run!")
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
 
-若要开始在设计器（预览版）中提交管道运行，请执行以下步骤：
+若要开始提交管道，请在设计器中执行以下步骤：
 
 1. 为管道设置默认计算目标。
 
@@ -384,7 +384,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>使用 CLI
 
-Azure CLI 支持 [JMESPath](http://jmespath.org) 查询，可以使用这些查询基于属性和标记来筛选运行。 若要在 Azure CLI 中使用 JMESPath 查询，请使用 `--query` 参数指定该查询。 以下示例演示了使用属性和标记的基本查询：
+Azure CLI 支持 [JMESPath](http://jmespath.org) 查询，可以使用这些查询基于属性和标记来筛选运行。 若要在 Azure CLI 中使用 JMESPath 查询，请使用 `--query` 参数指定该查询。 下面的示例演示了一些使用属性和标记的查询：
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'

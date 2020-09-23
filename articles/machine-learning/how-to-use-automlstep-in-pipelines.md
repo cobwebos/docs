@@ -11,15 +11,15 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: eb28ee0adb3c23a44936cbc940ee9bcddfd11141
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647418"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897242"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure 机器学习的自动化 ML 功能可帮助你发现高性能模型，而无需重新实现所有可能的方法。 结合 Azure 机器学习管道，你可以创建可部署的工作流，这些工作流可以快速发现最适合你的数据的算法。 本文将介绍如何有效地将数据准备步骤与自动化 ML 步骤结合起来。 自动化 ML 可以快速发现最适合你的数据的算法，同时让你开始使用 MLOps，并使用管道对生命周期操作进行建模。
 
@@ -29,7 +29,7 @@ Azure 机器学习的自动化 ML 功能可帮助你发现高性能模型，而�
 
 * Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。  
 
-* 基本熟悉 Azure 的[自动化机器学习](concept-automated-ml.md)和[机器学习管道](concept-ml-pipelines.md)设施和 SDK。
+* 熟悉 Azure 的 [自动机器学习](concept-automated-ml.md) 和 [机器学习管道](concept-ml-pipelines.md) 设施和 SDK。
 
 ## <a name="review-automated-mls-central-classes"></a>查看自动化 ML 的中心类
 
@@ -149,7 +149,7 @@ else:
 - 将分类数据转换为整数
 - 删除不打算使用的列
 - 将数据分为训练集和测试集
-- 将转换的数据写入到
+- 将转换的数据写入到任一
     - `PipelineData` 输出路径
 
 ```python
@@ -360,7 +360,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 `AutoMLStep` 本身接受 `AutoMLConfig`，并创建用于保存指标和模型数据的 `PipelineData` 对象作为输出。 
 
 >[!Important]
-> 仅当使用时，才能将 `enable_default_model_output` 和设置 `enable_default_metrics_output`  为 `True`  `AutoMLStepRun` 。
+> 只有在使用 `AutoMLStepRun` 时，才必须将 `enable_default_model_output` 和 `enable_default_metrics_output` 设置为 `True`。
 
 在本例中，自动化 ML 进程将对 `training_data` 执行交叉验证。 可以使用 `n_cross_validations` 参数控制交叉验证次数。 如果已经在数据准备步骤中包含拆分训练数据的过程，可将 `validation_data` 设置为其自身的 `Dataset`。
 
@@ -368,7 +368,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>注册由自动化 ML 生成的模型 
 
-基本 ML 管道的最后一步是注册创建的模型。 将模型添加到工作区的模型注册表中，即可在门户中使用它们，并且可对其进行版本控制。 若要注册模型，请编写另一个采用 `AutoMLStep` 的 `model_data` 输出的 `PythonScriptStep`。
+简单 ML 管道中的最后一个步骤是注册创建的模型。 将模型添加到工作区的模型注册表中，即可在门户中使用它们，并且可对其进行版本控制。 若要注册模型，请编写另一个采用 `AutoMLStep` 的 `model_data` 输出的 `PythonScriptStep`。
 
 ### <a name="write-the-code-to-register-the-model"></a>编写用于注册模型的代码
 

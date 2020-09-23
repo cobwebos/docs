@@ -1,7 +1,7 @@
 ---
 title: '创建定型 & 部署 (Python 计算) '
 titleSuffix: Azure Machine Learning
-description: '使用 Azure 机器学习 Python SDK 创建培训和部署计算资源 (用于机器学习的计算目标) '
+description: 使用 Azure 机器学习 Python SDK 创建用于机器学习的训练和部署计算资源（计算目标）
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,21 +11,19 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: af912838e99e7b36cb29695758108f0a9efeb8ea
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ac440db4c1dbddd317743e2d681a62251624d9bd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561629"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898129"
 ---
-# <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>通过 Python SDK 创建用于模型定型和部署的计算目标
+# <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>使用 Python SDK 创建用于模型训练和部署的计算目标
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
-本文介绍如何使用 Azure 机器学习 Python SDK 来创建和管理计算目标。 还可以通过以下方式创建和管理计算目标：
-* [Azure 机器学习 studio](how-to-create-attach-compute-studio.md)中， 
-* 适用于 Azure 机器学习的[CLI 扩展](reference-azure-machine-learning-cli.md#resource-management)
-* Azure 机器学习的 [VS Code 扩展](how-to-manage-resources-vscode.md#compute-clusters) 。
+本文中使用 Azure 机器学习 Python SDK 创建和管理计算目标。 也可以使用以下工作室与扩展来创建和管理计算目标：
+* [Azure 机器学习工作室](how-to-create-attach-compute-studio.md)， 
+* 用于 Azure 机器学习的 [CLI 扩展](reference-azure-machine-learning-cli.md#resource-management)
+* 用于 Azure 机器学习的 [VS Code 扩展](how-to-manage-resources-vscode.md#compute-clusters)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -81,7 +79,7 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 ## <a name="local-computer"></a><a id="local"></a>本地计算机
 
-使用本地计算机进行 **培训**时，无需创建计算目标。  只需从您的本地计算机 [提交训练运行](how-to-set-up-training-targets.md) 即可。
+使用本地计算机进行 **培训**时，无需创建计算目标。  只需从本地计算机[提交训练运行](how-to-set-up-training-targets.md)。
 
 使用本地计算机进行 **推断**时，必须安装 Docker。 若要执行部署，请使用 [Deploy_configuration LocalWebservice ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) 来定义 web 服务将使用的端口。 然后按照使用 [Azure 机器学习部署模型](how-to-deploy-and-where.md)中所述，使用常规部署过程。
 
@@ -116,9 +114,9 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低计算群集成本
 
-你还可以选择使用 [低优先级 vm](concept-plan-manage-cost.md#low-pri-vm) 来运行部分或全部工作负荷。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。 
+也可以选择使用[低优先级 VM](concept-plan-manage-cost.md#low-pri-vm) 来运行部分或全部工作负载。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。 
 
-使用以下任一方法指定低优先级 VM：
+请使用以下任一方法指定低优先级 VM：
     
 * 在工作室中，在创建 VM 时选择“低优先级”****。
     
@@ -496,7 +494,7 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用计算资源 [提交定型运行](how-to-set-up-training-targets.md)。
+* 使用计算资源来[提交训练运行](how-to-set-up-training-targets.md)。
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
 * 若要构建更好的模型，请了解如何[高效地优化超参数](how-to-tune-hyperparameters.md)。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。

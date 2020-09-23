@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户通过 GPU 对 Azure Stack 边缘进行故障排除 |Microsoft Docs
-description: 介绍如何对 Azure Stack 边缘 GPU 问题进行故障排除。
+title: 使用 Azure 门户通过 GPU 对 Azure Stack Edge Pro 进行故障排除 |Microsoft Docs
+description: 介绍如何对 Azure Stack Edge Pro GPU 问题进行故障排除。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290117"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891554"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>排查 Azure Stack 边缘 GPU 设备上的问题 
+# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>排查 Azure Stack Edge Pro GPU 设备上的问题 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何解决 Azure Stack 边缘 GPU 设备上的问题。 
+本文介绍如何解决 Azure Stack Edge Pro GPU 设备上的问题。 
 
 
 ## <a name="run-diagnostics"></a>运行诊断
@@ -55,7 +55,7 @@ ms.locfileid: "89290117"
 
 ## <a name="gather-advanced-security-logs"></a>收集高级安全日志
 
-高级安全日志可以是 Azure Stack 边缘设备的软件或硬件入侵日志。
+高级安全日志可以是 Azure Stack Edge Pro 设备的软件或硬件入侵日志。
 
 ### <a name="software-intrusion-logs"></a>软件入侵日志
 
@@ -67,7 +67,7 @@ ms.locfileid: "89290117"
 
 - 如果未提供任何特定的包含选项，则会在支持包中将防火墙日志作为默认值提供。
 
-- 在支持包中，firewall 日志是的 `pfirewall.log` ，位于根文件夹中。 下面是 Azure Stack Edge 设备的软件入侵日志的示例。 
+- 在支持包中，firewall 日志是的 `pfirewall.log` ，位于根文件夹中。 下面是 Azure Stack Edge Pro 设备的软件入侵日志的示例。 
 
     ```
     #Version: 1.5
@@ -101,7 +101,7 @@ ms.locfileid: "89290117"
 
 - 如果未提供任何特定的包含选项，则会在支持包中将硬件入侵日志作为默认值提供。
 
-- 在支持包中，硬件入侵日志是的 `HWIntrusion.txt` ，位于根文件夹中。 下面是 Azure Stack Edge 设备的硬件入侵日志的示例。 
+- 在支持包中，硬件入侵日志是的 `HWIntrusion.txt` ，位于根文件夹中。 下面是 Azure Stack Edge Pro 设备的硬件入侵日志的示例。 
 
     ```
     09/04/2019 15:51:23 system Critical The chassis is open while the power is off.
@@ -143,7 +143,7 @@ ms.locfileid: "89290117"
 | **问题/错误** |  **解决方法** | 
 |------------|-----------------|
 |常规问题|<li>[验证边缘设备是否已正确配置](#verify-the-device-is-configured-properly)。<li> [验证是否正确配置了客户端](#verify-the-client-is-configured-properly)|
-|Get-azurermenvironment：发送请求时出错。<br>行：1个字符：1<br>+ Get-azurermenvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此错误表示无法访问或正确配置 Azure Stack Edge 设备。 验证是否正确配置了边缘设备和客户端。 有关指南，请参阅此表中的 **常规问题** 行。|
+|Get-azurermenvironment：发送请求时出错。<br>行：1个字符：1<br>+ Get-azurermenvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此错误表示 Azure Stack Edge Pro 设备无法访问或配置不正确。 验证是否正确配置了边缘设备和客户端。 有关指南，请参阅此表中的 **常规问题** 行。|
 |服务返回了错误。 有关更多详细信息，请检查 InnerException：基础连接已关闭：无法为 SSL/TLS 安全通道建立信任关系。 |   此错误的原因可能是一个或多个自带证书步骤未正确执行。 可在 [此处](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)找到相关指导。 |
 |操作返回了无效的状态代码 "ServiceUnavailable" <br> 响应状态代码不表示成功： 503 (服务不可用) 。 | 此错误可能是任何这些条件的结果。<li>ArmStsPool 处于停止状态。</li><li>Azure 资源管理器/安全令牌服务网站均已关闭。</li><li>Azure 资源管理器群集资源已关闭。</li><br><strong>注意：</strong> 重新启动设备可能会解决问题，但你应收集支持包，以便进一步调试。|
 |AADSTS50126：用户名或密码无效。<br>跟踪 ID：29317da9-52fc-4ba0-9778-446ae5625e5a<br>相关 ID： 1b9752c4-8cbf-4304-a714-8a16527410f4<br>时间戳： 2019-11-15 09：21：57Z：远程服务器返回错误： (400) 错误的请求。<br>行：1个字符：1 |此错误可能是任何这些条件的结果。<li>对于无效的用户名和密码，请按照 [此处](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) 的步骤操作，然后使用正确的密码来验证客户是否已更改了 Azure 门户密码。<li>如果租户 ID 无效，则租户 ID 是固定 GUID 并且应设置为 `c0257de7-538f-415c-993a-1b87a031879d`</li>|
@@ -182,7 +182,7 @@ ms.locfileid: "89290117"
 
 ## <a name="blob-storage-on-device"></a>设备上的 Blob 存储 
 
-下面是与 Azure Stack Edge/Data Box Gateway 设备上的 blob 存储相关的错误。
+下面是与 Azure Stack Edge Pro/Data Box Gateway 设备上的 blob 存储相关的错误。
 
 | **问题/错误** |  **解决方法** | 
 |--------------------|-----------------|
@@ -197,7 +197,7 @@ ms.locfileid: "89290117"
 |显示此错误之前，AzCopy 命令似乎停止响应20分钟： `Error parsing source location… The SSL connection could not be established` 。|将你的设备的 SSL 证书导入到系统的证书存储中。 有关详细信息，请参阅 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。|
 |其中一个 HTTP 标头的值的格式不正确。|Data Box 不支持用于 Python 的 Microsoft Azure 存储库的已安装版本。 请查看 Azure Data Box Blob 存储要求，了解支持的版本。|
 |… [SSL:CERTIFICATE_VERIFY_FAILED] …| 在运行 Python 之前，将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径 (参阅如何 [下载证书](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)。 例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>或者，将证书添加到系统的证书存储中，然后将此环境变量设置为该存储区的路径。 例如，在 Ubuntu 上为：<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|连接超时。|登录到 Azure Stack 边缘，然后检查它是否已解锁。 设备在重启后会保持锁定状态，直到有人登录为止。|
+|连接超时。|登录到 Azure Stack Edge Pro，并检查它是否已解锁。 设备在重启后会保持锁定状态，直到有人登录为止。|
 
 
 ## <a name="next-steps"></a>后续步骤

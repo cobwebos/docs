@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Stack Edge GPU 将数据传输到存储帐户 | Microsoft Docs
-description: 了解如何在 Azure Stack Edge GPU 设备上添加本地和 Edge 存储帐户并与其连接。
+title: 教程：使用 Azure Stack Edge Pro GPU 将数据传输到存储帐户 | Microsoft Docs
+description: 了解如何在 Azure Stack Edge Pro GPU 设备上添加本地和 Edge 存储帐户并与其连接。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256390"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891053"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>教程：使用 Azure Stack Edge GPU 通过存储帐户传输数据 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>教程：使用 Azure Stack Edge Pro GPU 通过存储帐户传输数据 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本教程介绍如何在 Azure Stack Edge 设备上添加存储帐户并与其连接。 添加存储帐户后，Azure Stack Edge 可将数据传输到 Azure。
+本教程介绍如何在 Azure Stack Edge Pro 设备上添加存储帐户并与其连接。 添加存储帐户后，Azure Stack Edge Pro 可将数据传输到 Azure。
 
 此过程可能需要大约 30 分钟才能完成。
 
@@ -33,11 +33,11 @@ ms.locfileid: "89256390"
  
 ## <a name="prerequisites"></a>先决条件
 
-在向 Azure Stack Edge 添加存储帐户之前，请确保：
+在向 Azure Stack Edge Pro 添加存储帐户之前，请确保：
 
-- 已按照[安装 Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md) 中所述安装物理设备。
+- 已按照[安装 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) 中所述安装物理设备。
 
-- 已按照[激活 Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md) 中所述激活物理设备。
+- 已按照[激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中所述激活物理设备。
 
 
 ## <a name="add-an-edge-storage-account"></a>添加 Edge 存储帐户
@@ -135,7 +135,7 @@ key2    6VANuHzHcJV04EFeyPiWRsFWnHPkgmX1+a3bt5qOQ2qIzohyskIF/2gfNMqp9rlNC/w+mBqQ
 
 ### <a name="get-certificate"></a>获取证书
 
-通过 HTTPS 访问 Blob 存储需要设备的 SSL 证书。 此外，还要将此证书作为 .pfx 文件（附加了私钥）上传到 Azure Stack Edge 设备。 有关如何创建（仅用于测试和开发目的）这些证书并将其上传到 Azure Stack Edge 设备的详细信息，请转到：
+通过 HTTPS 访问 Blob 存储需要设备的 SSL 证书。 此外，还要将此证书作为 .pfx 文件（附加了私钥）上传到 Azure Stack Edge Pro 设备。 有关如何创建（仅用于测试和开发目的）这些证书并将其上传到 Azure Stack Edge Pro 设备的详细信息，请转到：
 
 - [创建 blob 终结点证书](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional)。
 - [上传 blob 终结点证书](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)。
@@ -167,15 +167,15 @@ key2    6VANuHzHcJV04EFeyPiWRsFWnHPkgmX1+a3bt5qOQ2qIzohyskIF/2gfNMqp9rlNC/w+mBqQ
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下 Azure Stack Edge 主题：
+本教程介绍了以下 Azure Stack Edge Pro 主题：
 
 > [!div class="checklist"]
 > * 添加存储帐户
 > * 连接到存储帐户
 
-若要了解如何使用 Azure Stack Edge 转换数据，请继续学习下一教程：
+若要了解如何使用 Azure Stack Edge Pro 转换数据，请继续学习下一教程：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Stack Edge 转换数据](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [使用 Azure Stack Edge Pro 转换数据](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

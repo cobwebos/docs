@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004097"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886497"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,8 +30,6 @@ ms.locfileid: "87004097"
 - 帮助满足数据隐私标准和法规符合性要求。
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 - 控制对包含高度敏感数据的数据库的访问并增强其安全性。
-
-数据发现和分类包含在[高级数据安全](advanced-data-security.md)产品/服务中，该产品/服务是高级 Azure SQL 安全功能的统一包。 可通过 Azure 门户的“SQL 高级数据安全”中心部分访问及管理数据发现和分类。
 
 > [!NOTE]
 > 要了解本地 SQL Server，请参阅 [SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
@@ -68,7 +66,7 @@ ms.locfileid: "87004097"
 
 在信息保护的策略管理过程中，可定义自定义标签、对其进行分级，并将其与选定的一组信息类型相关联。 还可以添加自己的自定义信息类型，并使用字符串模式对其进行配置。 这些模式已添加到用于识别数据库中的此类型数据的发现逻辑。
 
-有关详细信息，请参阅[在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)。
+有关详细信息，请参阅 [在 Azure 安全中心中自定义 SQL 信息保护策略 (预览) ](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)。
 
 定义组织范围的策略后，可以继续使用自定义策略对各个数据库进行分类。
 
@@ -79,31 +77,23 @@ ms.locfileid: "87004097"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 转到 Azure SQL 数据库窗格的“安全”标题下的“高级数据安全” 。 选择“高级数据安全”，然后选择“数据发现和分类”卡 。
+1. 请参阅 "Azure SQL 数据库" 窗格中 "安全" 标题下的 " **数据发现" & 分类** 。 "概述" 选项卡包含数据库的当前分类状态的摘要。 该摘要包含所有分类列的详细列表，你还可以对其进行筛选，以便仅显示特定的架构部分、信息类型和标签。 如果尚未对任何列进行分类，请 [跳到步骤 4](#step-4)。
 
-   ![Azure 门户中的“高级数据安全”窗格](./media/data-discovery-and-classification-overview/data_classification.png)
+1. 若要下载 Excel 格式的报表，请选择窗格顶部菜单中的“导出”。
 
-3. “数据发现和分类”页面的“概述”选项卡中有数据库当前分类状态的摘要 。 该摘要包含所有分类列的详细列表，你还可以对其进行筛选，以便仅显示特定的架构部分、信息类型和标签。 如果尚未对任何列进行分类，请[跳到步骤 5](#step-5)。
-
-   ![当前分类状态摘要](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. 若要下载 Excel 格式的报表，请选择窗格顶部菜单中的“导出”。
-
-5. <a id="step-5"></a>若要开始对数据进行分类，请选择“数据发现和分类”页面的“分类”选项卡 。
+1. <a id="step-4"></a>若要开始对数据进行分类，请选择“数据发现和分类”页面的“分类”选项卡 。
 
     分类引擎扫描数据库，寻找包含潜在敏感数据的列，并提供建议的列分类列表。
 
-6. 查看并应用分类建议：
+1. 查看并应用分类建议：
 
    - 若要查看建议的列分类列表，请选择窗格底部的“建议”面板。
 
    - 若要接受针对特定列的建议，请选中相关行左侧列中的复选框。 若要将所有建议标记为已接受，请选中建议表标题中最左侧的复选框。
 
-       ![查看分类建议列表并从中进行选择](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - 若要应用所选建议，请选择“接受所选建议”。
 
-7. 还可以手动对列进行分类，这是基于建议分类的替代选项：
+1. 还可以手动对列进行分类，这是基于建议分类的替代选项：
 
    1. 选择窗格顶部菜单中的“添加分类”。
 
@@ -111,9 +101,7 @@ ms.locfileid: "87004097"
 
    1. 选择上下文窗口底部的“添加分类”。
 
-      ![选择要进行分类的列](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
-
-8. 若要完成分类并永久使用新分类元数据标记数据库列，请在窗口顶部菜单中选择“保存”。
+1. 若要完成分类并永久使用新分类元数据标记数据库列，请在窗口顶部菜单中选择“保存”。
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>审核对敏感数据的访问
 
@@ -137,7 +125,7 @@ ms.locfileid: "87004097"
 - 参与者
 - SQL 安全管理器
 
-详细了解[AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)中基于角色的权限。
+在 [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 中了解有关基于角色的权限的详细信息。
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>管理分类
 
@@ -191,6 +179,5 @@ ms.locfileid: "87004097"
 
 ## <a name="next-steps"></a><a id="next-steps"></a>后续步骤
 
-- 详细了解[高级数据安全](advanced-data-security.md)。
 - 请考虑配置 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)来监视和审核对已分类敏感数据的访问。
-- 对于包含数据发现 & 分类的演示文稿，请参阅[查找、分类、标记 & 保护 SQL 数据 |公开的数据](https://www.youtube.com/watch?v=itVi9bkJUNc)。
+- 对于包含数据发现 & 分类的演示文稿，请参阅 [查找、分类、标记 & 保护 SQL 数据 |公开的数据](https://www.youtube.com/watch?v=itVi9bkJUNc)。

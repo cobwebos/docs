@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079449"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024411"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用专用终结点将数据从 Azure Blob 存储安全复制到 SQL 数据库
 
@@ -57,7 +57,7 @@ ms.locfileid: "89079449"
 
 #### <a name="create-a-sink-sql-table"></a>创建接收器 SQL 表
 
-1. 使用以下 SQL 脚本在 SQL 数据库中创建 **dbo.emp** 表：
+使用以下 SQL 脚本在 SQL 数据库中创建 **dbo.emp** 表：
 
     ```sql
     CREATE TABLE dbo.emp
@@ -70,8 +70,6 @@ ms.locfileid: "89079449"
 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
-
-1. 允许 Azure 服务访问 SQL Server。 确保 SQL Server 的“允许访问 Azure 服务”处于“打开”状态，以便数据工厂可以将数据写入 SQL Server 。 若要验证并启用此设置，请转到“Azure SQL Server” > “概述” > “设置服务器防火墙”  。 将“允许访问 Azure 服务”选项设置为“打开” 。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 在此步骤中，请先创建数据工厂，然后启动数据工厂 UI，在该数据工厂中创建一个管道。
