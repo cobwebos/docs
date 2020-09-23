@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 边缘 GPU 存储帐户管理 |Microsoft Docs
-description: 描述如何使用 Azure 门户管理 Azure Stack 边缘上的存储帐户。
+title: Azure Stack Edge Pro GPU 存储帐户管理 |Microsoft Docs
+description: 介绍如何使用 Azure 门户管理 Azure Stack Edge Pro 上的存储帐户。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904535"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>使用 Azure 门户管理 Azure Stack 边缘上的边缘存储帐户
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>使用 Azure 门户在 Azure Stack Edge Pro 上管理边缘存储帐户
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何在 Azure Stack 边缘管理边缘存储帐户。 您可以通过 Azure 门户或通过本地 web UI 来管理 Azure Stack 边缘。 使用 Azure 门户在设备上添加或删除边缘存储帐户。
+本文介绍如何在 Azure Stack Edge Pro 上管理边缘存储帐户。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户在设备上添加或删除边缘存储帐户。
 
 ## <a name="about-edge-storage-accounts"></a>关于边缘存储帐户
 
-可以通过 SMB、NFS 或 REST 协议从 Azure Stack 边缘设备传输数据。 若要使用 REST Api 将数据传输到 Blob 存储，需要在 Azure Stack 边缘创建边缘存储帐户。 
+可以通过 SMB、NFS 或 REST 协议从 Azure Stack Edge Pro 设备传输数据。 若要使用 REST Api 将数据传输到 Blob 存储，需要在 Azure Stack Edge Pro 上创建边缘存储帐户。 
 
-你添加到 Azure Stack Edge 设备上的边缘存储帐户将映射到 Azure 存储帐户。 写入边缘存储帐户的任何数据都会自动推送到云中。
+在 Azure Stack Edge Pro 设备上添加的边缘存储帐户将映射到 Azure 存储帐户。 写入边缘存储帐户的任何数据都会自动推送到云中。
 
 其中详细介绍了两种类型的帐户，以及如何将这些帐户中的每个帐户流向 Azure，如下所示：
 
@@ -34,13 +34,13 @@ ms.locfileid: "89254283"
 在本文中，学习如何：
 
 > [!div class="checklist"]
-> * 添加边缘存储帐户
+> * 添加 Edge 存储帐户
 > * 删除边缘存储帐户
 
 
-## <a name="add-an-edge-storage-account"></a>添加边缘存储帐户
+## <a name="add-an-edge-storage-account"></a>添加 Edge 存储帐户
 
-若要创建边缘存储帐户，请执行以下步骤：
+若要创建 Edge 存储帐户，请执行以下过程：
 
 [!INCLUDE [Add an Edge storage account](../../includes/azure-stack-edge-gateway-add-storage-account.md)]
 

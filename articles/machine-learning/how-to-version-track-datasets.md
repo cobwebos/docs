@@ -11,15 +11,15 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fe56427e93650fbaca397bbbb27d32f730b1f7f3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651769"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902347"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，你将了解如何对 Azure 机器学习数据集进行版本控制和跟踪，以实现可再现性。 数据集版本控制是为数据状态设置书签的一种方法，方便为将来的试验应用数据集的特定版本。
 

@@ -10,16 +10,16 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 806b25fea208afae63ca6be704b22808578d5ba2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: fa78ab00e337ee6f2a42e23a2899d79a09a7ea3d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090663"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904973"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文提供了用于在 Azure 机器学习管道中的步骤之间导入、转换和移动数据的代码。 有关数据在 Azure 机器学习中的工作原理的概述，请参阅[访问 Azure 存储服务中的数据](how-to-access-data.md)。 有关 Azure 机器学习管道的优点和结构，请参阅[什么是 Azure 机器学习管道？](concept-ml-pipelines.md)。
 

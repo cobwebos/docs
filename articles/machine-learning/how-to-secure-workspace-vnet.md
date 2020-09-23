@@ -11,15 +11,14 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: e718ed13cfd67092b50b42584d861a2bcf5dacc5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4dc1f86ce7dbb060c747c4433f0c2b871ce5582d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907648"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何在虚拟网络中保护 Azure 机器学习工作区及其关联的资源。
 
@@ -38,7 +37,7 @@ ms.locfileid: "89663833"
 > - Azure Key Vault
 > - Azure 容器注册表
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
@@ -173,8 +172,6 @@ Azure 机器学习使用关联 Key Vault 实例存储以下凭据：
 
 若要在虚拟网络中使用 Azure 容器注册表，必须满足以下要求：
 
-* Azure 机器学习工作区必须是 Enterprise Edition。 若要了解如何升级，请参阅[升级到 Enterprise Edition](how-to-manage-workspace.md#upgrade)。
-
 * Azure 容器注册表必须是高级版。 若要详细了解如何升级，请参阅[更改 SKU](/azure/container-registry/container-registry-skus#changing-skus)。
 
 * Azure 容器注册表必须与用于训练或推理的存储帐户和计算目标位于同一虚拟网络和子网中。
@@ -256,8 +253,8 @@ Azure 机器学习使用关联 Key Vault 实例存储以下凭据：
             "type": "SystemAssigned"
         },
         "sku": {
-            "tier": "enterprise",
-            "name": "enterprise"
+            "tier": "basic",
+            "name": "basic"
         },
         "properties": {
             "sharedPrivateLinkResources":

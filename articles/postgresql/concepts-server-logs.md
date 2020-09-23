@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392805"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902706"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 
 ## <a name="configure-logging"></a>配置日志记录 
 可以使用日志记录服务器参数在服务器上配置 Postgres 标准日志记录。 在每个 Azure Database for PostgreSQL 服务器上，默认已启用 `log_checkpoints` 和 `log_connections`。 还有一些其他参数，你可以调整它们来满足你的日志记录需求： 
 
-![Azure Database for PostgreSQL - 日志记录参数](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="Azure Database for PostgreSQL - 日志记录参数":::
 
 若要详细了解 Postgres 日志参数，请访问 Postgres 文档的[何时记录日志](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN)和[记录哪些内容](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT)部分。 可以在 Azure Database for PostgreSQL 中配置大部分（但并非所有）PostgreSQL 日志记录参数。
 

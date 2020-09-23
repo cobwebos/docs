@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure Stack Edge 设备上的 Kubernetes 存储管理 |Microsoft Docs
-description: 介绍如何在 Azure Stack 边缘设备上进行 Kubernetes 存储管理。
+title: 了解 Azure Stack Edge Pro 设备上的 Kubernetes 存储管理 |Microsoft Docs
+description: 介绍如何在 Azure Stack Edge Pro 设备上进行 Kubernetes 存储管理。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268085"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899274"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Azure Stack 边缘 GPU 设备上的 Kubernetes 存储管理
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 Kubernetes 存储管理
 
-在 Azure Stack Edge 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以在 pod 中的 Kubernetes 群集上部署容器化应用程序。 可以通过不同的方式在 Kubernetes 群集中将存储提供给 pod。 
+在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以在 pod 中的 Kubernetes 群集上部署容器化应用程序。 可以通过不同的方式在 Kubernetes 群集中将存储提供给 pod。 
 
-本文介绍一般情况下在 Kubernetes 群集上预配存储的方法，尤其是在 Azure Stack Edge 设备的上下文中。 
+本文介绍一般情况下在 Kubernetes 群集上预配存储的方法，尤其是在 Azure Stack Edge Pro 设备的上下文中。 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>Kubernetes pod 的存储要求
 
@@ -75,9 +75,9 @@ Kubernetes 群集管理员可以通过静态方式预配存储。 为此，他�
 1. **将 Pvc 装载到容器**：将 pvc 绑定到 PV 后，可以使用与静态设置相同的方式将 pvc 装载到路径上，也可以在共享中进行读取或写入。
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Azure Stack Edge 上的存储设置
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的存储设置
 
-在 Azure Stack 边缘设备上，静态预配 `PersistentVolumes` 是使用设备的存储功能创建的。 当你预配共享并 **使用 "使用边缘进行共享计算** " 选项时，此操作会在 Kubernetes 群集中自动创建 PV 资源。
+在 Azure Stack Edge Pro 设备上，静态预配 `PersistentVolumes` 是使用设备的存储功能创建的。 当你预配共享并 **使用 "使用边缘进行共享计算** " 选项时，此操作会在 Kubernetes 群集中自动创建 PV 资源。
 
 ![用于静态预配的 Azure 门户中的本地共享创建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ Kubernetes 群集管理员可以通过静态方式预配存储。 为此，他�
 
 ![用于静态预配的 Azure 门户中的云共享创建](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-你可以创建 SMB 和 NFS 共享，以便在 Azure Stack Edge 设备上以静态方式预配 PVs。 预配 PV 后，你将提交一个 PVC 来声明此存储。 下面是一个 PVC 部署示例 `yaml` ，用于声明存储并使用预配的共享。
+你可以创建 SMB 和 NFS 共享，以便在 Azure Stack Edge Pro 设备上以静态方式预配 PVs。 预配 PV 后，你将提交一个 PVC 来声明此存储。 下面是一个 PVC 部署示例 `yaml` ，用于声明存储并使用预配的共享。
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-有关详细信息，请参阅 [通过 kubectl 在 Azure Stack 边缘通过静态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
+有关详细信息，请参阅 [通过 kubectl 在 Azure Stack Edge Pro 上通过静态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
 
-Azure Stack 边缘还具有一个 `StorageClass` 名为 `ase-node-local` 的内置，它使用附加到 Kubernetes 节点的数据磁盘存储。 这 `StorageClass` 支持动态设置。 您可以 `StorageClass` 在 pod 应用程序中进行引用，并为您自动创建 PV。 有关详细信息，请参阅 [Kubernetes 仪表板](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) 以查询 `ase-node-local StorageClass` 。
+Azure Stack Edge Pro 还具有一个 `StorageClass` 名为 `ase-node-local` 的内置，它使用附加到 Kubernetes 节点的数据磁盘存储。 这 `StorageClass` 支持动态设置。 您可以 `StorageClass` 在 pod 应用程序中进行引用，并为您自动创建 PV。 有关详细信息，请参阅 [Kubernetes 仪表板](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) 以查询 `ase-node-local StorageClass` 。
 
 ![Kubernetes 仪表板中的内置存储类](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-有关详细信息，请参阅 [通过 kuebctl 在 Azure Stack 边缘通过动态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。
+有关详细信息，请参阅 [通过 kuebctl 在 Azure Stack Edge Pro 上通过动态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。
 
 ## <a name="choose-storage-type"></a>选择存储类型
 
@@ -127,8 +127,8 @@ Azure Stack 边缘还具有一个 `StorageClass` 名为 `ase-node-local` 的内�
 
 若要了解如何以静态方式预配 `PersistentVolume` ，请参阅：
 
-- 通过[kubectl 在 Azure Stack 边缘通过静态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
+- 通过[kubectl 在 Azure Stack Edge Pro 上通过静态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
 
 若要了解如何动态预配 `StorageClass` ，请参阅：
 
-- 通过[kuebctl 在 Azure Stack 边缘通过动态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。
+- 通过[kuebctl 在 Azure Stack Edge Pro 上通过动态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。

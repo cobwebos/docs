@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 08859eb87431b59e8be68369ce8f3876aa7d9f21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530295"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907608"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何使用 Visual Studio Code (VS Code) 和 [depugpy](https://github.com/microsoft/debugpy/) 以交互方式调试 Azure 机器学习管道和部署。
 
@@ -109,7 +109,7 @@ ML 管道步骤运行 Python 脚本。 可修改这些脚本来执行以下操�
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-以下 Python 示例演示了用于启用调试的基本 `train.py` 文件：
+以下 Python 示例显示了一个 `train.py` 启用调试的简单文件：
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.

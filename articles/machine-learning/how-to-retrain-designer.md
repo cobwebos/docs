@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 机器学习设计器（预览版）重新训练模型
+title: 使用 Azure 机器学习设计器重新定型模型
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习设计器（预览版）中通过已发布的管道重新训练模型。
+description: 了解如何在 Azure 机器学习设计器中通过已发布的管道重新训练模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 11e04d0aa313a005cfd13bca134c75bb712fd234
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661620"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905681"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器（预览版）重新训练模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>与 Azure 机器学习设计器重新定型模型
+
 
 本操作说明文章介绍了如何使用 Azure 机器学习设计器重新训练机器学习模型。 你将使用已发布的管道自动执行工作流，并设置参数以使用新数据训练模型。 
 
@@ -32,12 +32,12 @@ ms.locfileid: "89661620"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 使用企业 SKU 的 Azure 机器学习工作区。
-* 请完成本操作说明系列的第 1 部分“[在设计器中转换数据](how-to-designer-transform-data.md)”。
+* Azure 机器学习工作区
+* 完成本操作方法系列的第1部分， [在设计器中转换数据](how-to-designer-transform-data.md)
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-本文还假定你已掌握在设计器中生成管道的基本知识。 如需了解引导式简介，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
+本文还假定您已了解如何在设计器中生成管道。 如需了解引导式简介，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
 
 ### <a name="sample-pipeline"></a>示例管道
 

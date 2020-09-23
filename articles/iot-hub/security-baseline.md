@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 314004d2b62d5616c1d7925b82fd9f050d0a1fd0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441793"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906913"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure IoT 中心的 azure 安全基线
 
@@ -20,7 +20,7 @@ Microsoft Azure IoT 中心的 Azure 安全基线包含的建议可帮助你提�
 
 ## <a name="network-security"></a>网络安全性
 
-*有关详细信息，请参阅 [Azure 安全基准：网络安全](../security/benchmarks/security-control-network-security.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
@@ -43,13 +43,13 @@ IoT 中心的功能，包括消息路由、文件上传和批量设备导入/导
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：监视和记录虚拟网络、子网和 NIC 的配置与流量
 
-**指南**：使用 Azure 安全中心并按照网络保护建议来帮助保护 Azure 网络资源。 启用网络安全组流日志，并将日志发送到 Azure 存储帐户进行审核。 你还可以将流日志发送到 Log Analytics 工作区，然后使用流量分析提供对 Azure 云中流量模式的见解。 流量分析的一些优点是可以可视化网络活动、识别热点和安全威胁、了解流量流模式以及查明网络配置错误。
+**指南**：使用 Azure 安全中心并按照网络保护建议来帮助保护 Azure 网络资源。 启用网络安全组流日志，并将日志发送到 Azure 存储帐户进行审核。 你还可以将流日志发送到 Log Analytics 工作区，然后使用流量分析来提供有关 Azure 云中流量模式的见解。 流量分析的优势包括能够可视化网络活动、识别热点和安全威胁、了解通信流模式，以及查明网络不当配置。
  
 - [如何启用网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [如何启用和使用流量分析](../network-watcher/traffic-analytics.md)
  
-- [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
+- [了解 Azure 安全中心提供的网络安全性](../security-center/security-center-network-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -71,7 +71,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 - [IoT 中心 IP 筛选器](iot-hub-ip-filtering.md)
 
-- [用于 IoT 的 Azure 安全中心可疑 IP 地址通信](../asc-for-iot/concept-security-alerts.md)
+- [用于 IoT 的 Azure 安全中心可疑 IP 地址通信](../defender-for-iot/concept-security-alerts.md)
 
 - [管理 Azure DDoS 保护基本](../virtual-network/ddos-protection-overview.md)
 
@@ -91,7 +91,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**：从 Azure Marketplace 中选择一个产品/服务，该产品/服务支持具有负载检查功能的 ID/IPS 功能。  如果不需要进行负载检查，则可以使用 Azure 防火墙威胁情报。 基于 Azure 防火墙威胁智能的筛选用于警报和/或阻止与已知的恶意 IP 地址和域之间的流量。 IP 地址和域源自 Microsoft 威胁智能源。
+**指南**：从 Azure Marketplace 中选择一个产品/服务，该产品/服务支持具有负载检查功能的 ID/IPS 功能。  如果不需要进行有效负载检查，则可以使用 Azure 防火墙威胁情报。 使用基于 Azure 防火墙威胁情报的筛选功能，针对进出已知恶意 IP 地址和域的流量发出警报并/或阻止该流量。 IP 地址和域源自 Microsoft 威胁智能源。
 
 在每个组织的网络边界上部署所选的防火墙解决方案，以检测和/或阻止恶意流量。 
 
@@ -158,7 +158,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅 [Azure 安全基准：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -213,7 +213,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
-**指南**：分析和监视日志中的异常行为，并定期查看 Azure IoT 中心的结果。 使用 Azure Monitor 和 Log Analytics 工作区来查看日志数据并执行查询。
+**指南**：分析和监视日志中的异常行为，并定期查看 Azure IoT 中心的结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
 
 或者，你可以将和机载数据启用到 Azure Sentinel 或第三方 SIEM。 
 
@@ -234,7 +234,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 - [监视 Azure IoT 中心运行状况](iot-hub-monitor-resource-health.md)
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
-- [用于 IoT 警报的 Azure 安全中心](../asc-for-iot/concept-security-alerts.md)
+- [用于 IoT 警报的 Azure 安全中心](../defender-for-iot/concept-security-alerts.md)
 
 - [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
 
@@ -268,7 +268,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-*有关详细信息，请参阅 [Azure 安全基准：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -304,7 +304,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
-**指南**：对于访问 IoT 中心的用户，请使用 Azure Active Directory SSO。 使用 Azure 安全中心标识和访问建议。 
+**指南**：对于访问 IoT 中心的用户，请使用 Azure Active Directory SSO。 请使用 Azure 安全中心标识和访问建议。 
 
 - [了解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -326,9 +326,9 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：对于需要提升权限的管理任务，请使用安全的 Azure 托管的工作站 (也称为特权访问工作站，或 PAW) 。
+**指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-- [了解 Azure 托管的安全工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [了解安全的 Azure 托管工作站](../active-directory/devices/concept-azure-managed-workstation.md)
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -338,7 +338,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：使用 Azure Active Directory 安全报告和监视来检测环境中发生可疑活动或不安全活动的时间。 使用 Azure 安全中心监视标识和访问活动。
+**指导**：使用 Azure Active Directory 安全报告和监视来检测环境中何时发生可疑活动或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
 
 - [如何确定标记为存在风险活动的 Azure AD 用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
@@ -372,12 +372,12 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，还可以使用 Azure AD 的标识和访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 
+**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
 当环境中发生可疑或不安全活动时，使用 Azure AD Privileged Identity Management (PIM) 生成日志和警报。
 
 - [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
-- [如何使用 Azure AD 的标识和访问评审](../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 - [部署 Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 **Azure 安全中心监视**：是
@@ -386,7 +386,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指南**：你有权访问 Azure AD 登录活动、审核和风险事件日志源，这允许你与任何 SIEM/监视工具集成。 
+**指导**：你有权访问 Azure AD 登录活动、审核和风险事件日志源，因此可以与任何 SIEM/监视工具集成。 
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。 
 
@@ -402,7 +402,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：使用 Azure AD Identity Protection 功能配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
+**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
   
 - [ 如何查看 Azure AD 有风险的登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
   
@@ -424,13 +424,13 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ## <a name="data-protection"></a>数据保护
 
-*有关详细信息，请参阅 [Azure 安全基准：数据保护](../security/benchmarks/security-control-data-protection.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
  
-- [ 如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 安全中心监视**：不适用
 
@@ -438,11 +438,11 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指南**：对各个安全域（如环境类型和数据敏感度级别）使用单独的订阅和管理组实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure RBAC 控制对 Azure 资源的访问权限。
+**指导**：使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure RBAC 来控制对 Azure 资源的访问。
   
-- [ 如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
-- [ 如何创建管理组](/azure/governance/management-groups/create)
-- [ 如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 安全中心监视**：不适用
 
@@ -450,9 +450,9 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
-**指南**：在网络外围使用 Azure Marketplace 中的第三方解决方案来监视敏感信息的未授权传输，并在通知信息安全专业人员时阻止此类传输。
+**指导**：利用 Azure 市场中有关网络外围的第三方解决方案，监视并阻止敏感信息的未授权传输，同时提醒信息安全专业人员。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -477,7 +477,7 @@ Azure DDoS 保护基本版已启用，并且在 IoT 中心中不会产生额外�
 
 **指南**： Azure IoT 中心尚不支持数据标识、分类和丢失防护功能。 如果需要，请实现第三方解决方案，以实现符合性。
 
-对于由 Microsoft 管理的底层 Azure 平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于由 Microsoft 管理的底层 Azure 平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -535,7 +535,7 @@ Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在�
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-*有关详细信息，请参阅 [Azure 安全基准：漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 漏洞管理](../security/benchmarks/security-control-vulnerability-management.md)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -553,7 +553,7 @@ Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在�
 
 **责任**：Microsoft
 
-### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件标题部署自动修补程序管理解决方案
+### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动化补丁管理解决方案
 
 **指导**：不适用；此项指导适用于计算资源。
 
@@ -579,7 +579,7 @@ Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在�
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-*有关详细信息，请参阅 [Azure 安全基准：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -601,19 +601,19 @@ Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：在适当的位置使用标记、管理组和单独的订阅来组织和跟踪资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
+**指导**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
   
-- [ 如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
   
-- [ 如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](/azure/governance/management-groups/create)
   
-- [ 如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
+### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准 Azure 资源的清单
 
 **指导**：根据组织需求，创建已获批 Azure 资源以及已获批用于计算资源的软件的清单。
 
@@ -633,7 +633,7 @@ Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [如何通过 Azure 资源关系图资源管理器创建查询](../governance/resource-graph/first-query-portal.md)
+- [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -665,12 +665,12 @@ Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 * 不允许的资源类型
 * 允许的资源类型
 
-此外，还可使用 Azure 资源关系图查询/发现订阅中的资源。
+此外，请使用 Azure Resource Graph 来查询/发现订阅中的资源。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
@@ -715,15 +715,15 @@ Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在�
 
 ## <a name="secure-configuration"></a>安全配置
 
-*有关详细信息，请参阅 [Azure 安全基准：安全配置](../security/benchmarks/security-control-secure-configuration.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
 **指南**：定义和实现 Azure Iot 中心服务的标准安全配置（azure 策略）。 使用 "Microsoft 设备" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制执行 Azure IoT 中心服务的配置。
 
-Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，应查看该模板以确保配置满足组织的安全要求。
+Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，应该对其进行检查，以确保配置满足组织的安全要求。
 
-你还可以使用 Azure 安全中心提供的建议作为你的 Azure 资源的安全配置基线。
+还可以使用来自 Azure 安全中心的建议作为 Azure 资源的安全配置基线。
 
 - [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -747,7 +747,7 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。 此外，还可以使用 Azure 资源管理器模板来维护组织所需的 Azure 资源的安全配置。  
+**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。 此外，你可以使用 Azure 资源管理器模板维护组织所需的 Azure 资源的安全配置。  
  
 - [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 - [创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
@@ -807,7 +807,7 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
 
 **指导**：使用 Azure 安全中心对 Azure 资源执行基线扫描。 此外，使用 Azure Policy 警告和审核 Azure 资源配置。 
  
-- [ 如何修正 Azure 安全中心中的建议](../security-center/security-center-remediate-recommendations.md)
+- [如何在 Azure 安全中心修正建议](../security-center/security-center-remediate-recommendations.md)
 
 **Azure 安全中心监视**：是
 
@@ -841,7 +841,7 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
 
 **指南**： IoT 中心使用安全令牌和共享访问签名 (SAS) 令牌对设备和服务进行身份验证，以避免在网络上发送密钥。 
 
-使用托管标识在 Azure AD 中通过自动管理的标识来提供 Azure 服务。 通过托管标识，你可以对任何支持 Azure AD 身份验证的服务进行身份验证，包括 Key Vault，而无需在代码中包含任何凭据。
+使用托管标识在 Azure AD 中为 Azure 服务提供自动托管标识。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 - [IoT 中心安全令牌](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 - [如何为 IoT 中心配置托管标识](virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
@@ -862,7 +862,7 @@ Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-*有关详细信息，请参阅 [Azure 安全基准：恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 恶意软件防护](../security/benchmarks/security-control-malware-defense.md)。
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -884,7 +884,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **责任**：客户
 
-### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>8.3：确保反恶意软件和签名已更新
+### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
 **指南**：不适用;此基准用于计算资源。 支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
 
@@ -894,7 +894,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ## <a name="data-recovery"></a>数据恢复
 
-*有关详细信息，请参阅 [Azure 安全基准：数据恢复](../security/benchmarks/security-control-data-recovery.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -924,7 +924,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 **指南**： Azure IoT 中心建议辅助 IoT 中心必须包含能够连接到解决方案的所有设备标识。 解决方案应该保留设备标识的异地复制备份，并在切换设备的活动终结点之前将其上传到辅助 IoT 中心。 IoT 中心的设备标识导出功能在此情景中很有用。
 
-定期执行备份中内容的数据还原。 确保可以还原已备份的客户管理的密钥。
+定期执行备份中内容的数据还原。 请确保可以还原已备份的客户管理的密钥。
 
 - [IoT 中心高可用性和灾难恢复](iot-hub-ha-dr.md#achieve-cross-region-ha)
 
@@ -948,7 +948,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ## <a name="incident-response"></a>事件响应
 
-*有关详细信息，请参阅 [Azure 安全基准：事件响应](../security/benchmarks/security-control-incident-response.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -966,7 +966,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在查找或用于发出警报的从分析上中的置信度，以及导致警报的活动的恶意意图的置信度。
+**指导**：Azure 安全中心为每条警报分配严重性，方便你根据优先级来确定应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果或分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
   
  此外，使用标记来标记订阅，并创建命名系统来对 Azure 资源进行标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
@@ -981,7 +981,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。 标识弱点和间隙，然后根据需要修改响应计划。
+**指导**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。 查明弱点和差距，并根据需要修改你的响应计划。
   
 - [ NIST 发布--针对 IT 计划和功能的测试、培训和试验计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -1001,7 +1001,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 azure 资源的风险。 使用连续导出，可以手动或以持续、持续的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议，以便确定 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
   
 - [ 如何配置连续导出](../security-center/continuous-export.md)
  
@@ -1013,7 +1013,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
-**指南**：使用工作流自动化功能 Azure 安全中心自动触发对安全警报和建议的响应，以保护 Azure 资源。
+**指导**：使用 Azure 安全中心的工作流自动化功能，针对安全警报和建议自动触发响应，以保护 Azure 资源。
   
 - [ 如何在安全中心配置工作流自动化](../security-center/workflow-automation.md)
 
@@ -1023,11 +1023,11 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-*有关详细信息，请参阅 [Azure 安全基准：渗透测试和 red 团队练习](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：按照参与 Microsoft 云渗透测试规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
+**指导**：请遵循 Microsoft 云渗透测试互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
 
 - [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

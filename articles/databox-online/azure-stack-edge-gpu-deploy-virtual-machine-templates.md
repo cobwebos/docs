@@ -1,6 +1,6 @@
 ---
-title: 通过模板在 Azure Stack Edge 设备上部署 Vm
-description: 介绍如何使用模板在 Azure Stack Edge 设备上创建和管理虚拟机 (Vm) 。
+title: 通过模板在 Azure Stack Edge Pro 设备上部署 Vm
+description: 介绍如何使用模板在 Azure Stack Edge Pro 设备上创建和管理 (Vm) 的虚拟机。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 4f5fb02239fa48d96b0b779af7c970fc67fbcb99
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899709"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge GPU 设备上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge Pro GPU 设备上部署 Vm
 
-本教程介绍如何使用模板在 Azure Stack Edge 设备上创建和管理 VM。 这些模板 JavaScript 对象表示法 (JSON) 文件，用于定义 VM 的基础结构和配置。 在这些模板中，可以指定要部署的资源以及这些资源的属性。
+本教程介绍如何使用模板在 Azure Stack Edge Pro 设备上创建和管理 VM。 这些模板 JavaScript 对象表示法 (JSON) 文件，用于定义 VM 的基础结构和配置。 在这些模板中，可以指定要部署的资源以及这些资源的属性。
 
 模板在不同环境中是灵活的，因为它们可以在运行时从文件中获取参数作为输入。 标准命名结构 `TemplateName.json` 用于模板和 `TemplateName.parameters.json` 参数文件。 有关 ARM 模板的详细信息，请参阅 [什么是 Azure 资源管理器模板？](../azure-resource-manager/templates/overview.md)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "89419820"
 
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流
 
-若要跨多个设备部署 Azure Stack Edge Vm，你可以将单个经过系统准备 VHD 用于整个汽油，为部署使用相同的模板，并只对该模板的每个部署位置的参数做少许更改 (这些更改可能在此处或以编程方式手动进行。 )  
+若要跨多个设备部署 Azure Stack Edge Pro Vm，你可以将单个经过系统准备 VHD 用于整个汽油，为部署使用相同的模板，并且只需对每个部署位置的模板的参数做少许更改 (这些更改可能在此处进行手动操作，或以编程方式进行。 )  
 
 使用模板的部署工作流的高级摘要如下：
 
@@ -57,13 +57,13 @@ ms.locfileid: "89419820"
 
 ## <a name="device-prerequisites"></a>设备先决条件
 
-在 Azure Stack 边缘设备上配置这些先决条件。
+在 Azure Stack Edge Pro 设备上配置这些先决条件。
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 ## <a name="client-prerequisites"></a>客户端先决条件
 
-在客户端上配置将用于访问 Azure Stack Edge 设备的先决条件。
+在客户端上配置将用于访问 Azure Stack Edge Pro 设备的先决条件。
 
 1. 如果你使用它来上传 VHD，请[下载存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。 或者，你可以下载 AzCopy 来上传 VHD。 如果运行的是较旧版本的 AzCopy，则可能需要在客户端计算机上配置 TLS 1.2。 
 1. 将[VM 模板和参数文件下载](https://aka.ms/ase-vm-templates)到客户端计算机。 将它解压缩到将用作工作目录的目录中。
@@ -108,7 +108,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> 只能通过 Azure 资源管理器创建本地存储帐户，如本地冗余存储 (Standard_LRS 或 Premium_LRS) 。 若要创建分层存储帐户，请参阅在 [Azure Stack 边缘上的 "添加、连接到存储帐户](azure-stack-edge-j-series-deploy-add-storage-accounts.md)" 中的步骤。
+> 只能通过 Azure 资源管理器创建本地存储帐户，如本地冗余存储 (Standard_LRS 或 Premium_LRS) 。 若要创建分层存储帐户，请参阅 [添加、连接到 Azure Stack Edge Pro 上的存储帐户](azure-stack-edge-j-series-deploy-add-storage-accounts.md)中的步骤。
 
 下面显示了示例输出。
 
@@ -145,7 +145,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
-在典型的环境中，你将配置 DNS，以便所有存储帐户都将使用条目指向 Azure Stack Edge 设备 `*.blob.devicename.domainname.com` 。
+在典型的环境中，你将配置 DNS，以便所有存储帐户都指向 Azure Stack Edge Pro 设备，其中包含一个 `*.blob.devicename.domainname.com` 条目。
 
 ### <a name="optional-install-certificates"></a> (可选) 安装证书
 
@@ -185,11 +185,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![连接到 Azure 存储1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 选择“使用存储帐户名称和密钥”****。 选择“**下一步**”。
+5. 选择“使用存储帐户名称和密钥”****。 选择“**下一页**”。
 
     ![连接到 Azure 存储2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称**和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“**下一步**”。
+6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称**和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“**下一页**”。
 
     ![用名称和密钥连接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
@@ -215,7 +215,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 <!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge device.
+Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
 
 ```powershell
@@ -269,7 +269,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
     }
 ```
 
-编辑文件 `CreateImageAndVnet.parameters.json` ，为 Azure Stack 边缘设备包含以下内容：
+编辑文件 `CreateImageAndVnet.parameters.json` ，为 Azure Stack Edge Pro 设备包含以下内容：
 
 1. 提供对应于要上传的 VHD 的操作系统类型。 OS 类型可以是 Windows 或 Linux。
 
@@ -341,7 +341,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 部署模板 `CreateImageAndVnet.json` 。 此模板部署将用于在后面的步骤中创建 Vm 的 VNet 和映像资源。
 
 > [!NOTE]
-> 当你在遇到身份验证错误时部署模板时，此会话的 Azure 凭据可能已过期。 重新运行该 `login-AzureRM` 命令，再次连接到 Azure Stack Edge 设备上的 Azure 资源管理器。
+> 当你在遇到身份验证错误时部署模板时，此会话的 Azure 凭据可能已过期。 重新运行该 `login-AzureRM` 命令，再次连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器。
 
 1. 运行以下命令： 
     
@@ -437,7 +437,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
         }
 ```    
 
-`CreateVM.parameters.json`为 Azure Stack 边缘设备分配适当的参数。
+`CreateVM.parameters.json`为 Azure Stack Edge Pro 设备分配适当的参数。
 
 1. 提供唯一名称、网络接口名称和 ipconfig 名称。 
 1. 输入用户名、密码和受支持的 VM 大小。
@@ -594,7 +594,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 <!--## Manage VM
 
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge device.
+The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
 
 [!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
 
@@ -609,9 +609,9 @@ The following section describes some of the common operations around the VM that
 
 <!--## Configure AzCopy
 
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge device.
+When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
 
-On the client used to access your Azure Stack Edge device, set up a global variable to match the blob storage REST API version.
+On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
 
 ### On Windows client 
 

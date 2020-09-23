@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420883"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907789"
 ---
 # <a name="train-wide--deep-recommender"></a>训练 Wide & Deep 推荐器
-本文介绍了如何使用 Azure 机器学习设计器（预览版）中的“训练 Wide & Deep 推荐器”模块，来训练建议模型。 本模块基于由 Google 提出的 Wide & Deep 学习。
+本文介绍如何使用 Azure 机器学习设计器中的 " **训练范围 & Deep 推荐器** " 模块来训练推荐模型。 本模块基于由 Google 提出的 Wide & Deep 学习。
 
 “训练 Wide & Deep 推荐器”模块读取“用户-项-评分”三元组数据集，以及（可选）某些用户和项特征。 它返回训练后的 Wide & Deep 推荐器。  然后，可以通过[为 Wide and Deep 推荐器评分](score-wide-and-deep-recommender.md)模块使用训练后的模型来生成评分预测或建议。  
 
@@ -84,7 +84,7 @@ Wide & Deep 推荐器将这些方法结合在一起，即结合使用协作筛�
 
 ### <a name="train-the-model"></a>定型模型
 
-1.  在设计器（预览）中将“训练 Wide and Deep 推荐器”模块添加到你的试验，并将其连接到训练数据集。  
+1.  在设计器中将 " **训练范围" 和 "深度推荐器** " 模块添加到实验，并将其连接到定型数据集。  
   
 2. 如果有一个单独的用户特征和/或项目特征的数据集，将它们连接到“训练 Wide and Deep 推荐器”模块。  
   
@@ -105,7 +105,7 @@ Wide & Deep 推荐器将这些方法结合在一起，即结合使用协作筛�
 
     此超参数确定每个训练步骤的步骤大小，同时不断接近损失函数的最小值。 学习速率过高可能导致学习跳升超过最小值，而学习速率过小可能会导致收敛问题。
 
-7.  **交叉功能维度**：通过输入所需的用户 id 和项目 id 功能键入维度。 
+7.  **交叉特征维度**：通过输入所需的用户 ID 和项目 ID 特征来键入此维度。 
 
     默认情况下，Wide & Deep 推荐器对用户 ID 和项目 ID 功能执行跨产品转换。 将根据此数字对交叉结果进行哈希处理，以确保维持该维度。
 

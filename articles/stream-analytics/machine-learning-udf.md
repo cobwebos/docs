@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543429"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901007"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
 
@@ -25,31 +25,47 @@ ms.locfileid: "87543429"
 
 1. 使用 Azure 机器学习[将模型部署为 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
 
-2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md)。 流分析使用该架构来理解 Web 服务的函数签名。 可以使用此[示例 swagger 定义](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)作为参考，以确保已正确设置该定义。
+2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md)。 流分析使用该架构来理解 Web 服务的函数签名。 可以使用此 [示例 swagger 定义](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) 作为参考，以确保已正确设置该定义。
 
 3. 确保 Web 服务接受并返回 JSON 序列化的数据。
 
-4. 在 [Azure Kubernetes 服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)中部署模型，以进行大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，流分析作业的性能将会下降，从而影响延迟。 仅当你使用 Azure 门户时，Azure 容器实例中部署的模型才受支持。 流分析中尚不支持使用[Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)生成的模型。
+4. 在 [Azure Kubernetes 服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)中部署模型，以进行大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，流分析作业的性能将会下降，从而影响延迟。 仅当你使用 Azure 门户时，Azure 容器实例中部署的模型才受支持。 流分析中尚不支持使用 [Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer) 生成的模型。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>将机器学习模型添加到作业
 
-可以直接从 Azure 门户将 Azure 机器学习函数添加到流分析作业。
+可以直接从 Azure 门户或 Visual Studio Code 将 Azure 机器学习函数添加到流分析作业。
 
-1. 在 Azure 门户中导航到你的流分析作业，在“作业拓扑”下选择“函数”。  然后，从“+ 添加”下拉菜单中选择“Azure ML 服务”。 
+### <a name="azure-portal"></a>Azure 门户
 
-   ![添加 Azure ML UDF](./media/machine-learning-udf/add-azureml-udf.png)
+1. 在 Azure 门户中导航到你的流分析作业，在“作业拓扑”下选择“函数”。  然后，从 " **+ 添加**" 下拉菜单中选择 " **Azure 机器学习服务**"。
+
+   ![添加 Azure 机器学习 UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
 2. 在“Azure 机器学习服务函数”窗体中填写以下属性值：
 
-   ![配置 Azure ML UDF](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![配置 Azure 机器学习 UDF](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-下表描述了流分析中 Azure ML 服务函数的每个属性。
+### <a name="visual-studio-code"></a>Visual Studio Code
 
-|properties|说明|
+1. 在 Visual Studio Code 中打开流分析项目，然后右键单击 " **函数** " 文件夹。 然后，选择 " **添加函数**"。 从下拉列表中选择 " **机器学习 UDF** "。
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="在 VS Code 中添加 UDF":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中添加 Azure 机器学习 UDF":::
+
+2. 输入函数名称，并在 CodeLens 中使用 " **从你的订阅中选择** "，在配置文件中填入设置。
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="选择 Azure 机器学习 UDF VS Code":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中配置 Azure 机器学习 UDF":::
+
+下表描述了流分析中 Azure 机器学习服务函数的每个属性。
+
+|属性|说明|
 |--------|-----------|
 |函数别名|输入一个名称以在查询中调用函数。|
 |订阅|你的 Azure 订阅。|
-|Azure ML 工作区|用于将模型部署为 Web 服务的 Azure 机器学习工作区。|
+|Azure 机器学习工作区|用于将模型部署为 Web 服务的 Azure 机器学习工作区。|
 |部署|托管模型的 Web 服务。|
 |函数签名|从 API 的架构规范推理出的 Web 服务签名。 如果签名无法加载，请检查是否已在评分脚本中提供了用于自动生成架构的示例输入和输出。|
 |每个分区的并行请求数|这是一项高级配置，用于优化大规模吞吐量。 此数字表示从作业的每个分区发送到 Web 服务的并发请求数。 具有 6 个或更少流单元 (SU) 的作业有一个分区。 具有 12 个 SU 的作业有两个分区，具有 18 个 SU 的作业有三个分区，依此类推。<br><br> 例如，如果你的作业有两个分区，而你将此参数设置为 4，那么将会有 8 个并发请求从该作业发送到 Web 服务。 在目前的公共预览版中，此值默认为 20，且无法更新。|
@@ -168,4 +184,3 @@ FROM input
 
 * [教程：Azure 流分析 JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)
 * [使用 Azure 机器学习工作室（经典）函数缩放流分析作业](stream-analytics-scale-with-machine-learning-functions.md)
-
