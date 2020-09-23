@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack 边缘，提供 GPU 技术规范和合规性 |Microsoft Docs
-description: 了解具有 GPU 的 Azure Stack Edge 设备的技术规格和符合性
+title: Microsoft Azure Stack 具有 GPU 技术规格和符合性的 Edge Pro |Microsoft Docs
+description: 了解具有 GPU 的 Azure Stack Edge Pro 设备的技术规格和符合性
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266657"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899035"
 ---
-# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>带有 GPU 的 Azure Stack 边缘的技术规格和符合性 
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>具有 GPU 的 Azure Stack Edge Pro 的技术规格和符合性 
 
- (GPU) 的 Azure Stack 边缘的硬件组件，遵循本文中所述的技术规格和法规标准。 技术规范描述硬件、电源单位 (通电 psu) 、存储容量、机箱和环境标准。
+ (GPU) 的 Azure Stack Edge Pro 的硬件组件，包括本文中所述的技术规格和法规标准。 技术规范描述硬件、电源单位 (通电 psu) 、存储容量、机箱和环境标准。
 
 ## <a name="compute-and-memory-specifications"></a>计算和内存规格
 
-Azure Stack Edge 设备的计算和内存规格如下：
+Azure Stack Edge Pro 设备具有以下计算和内存规范：
 
 | 规格           | 值                  |
 |-------------------------|----------------------------|
@@ -31,7 +31,7 @@ Azure Stack Edge 设备的计算和内存规格如下：
 
 ## <a name="compute-acceleration-specifications"></a>计算加速规范
 
-每个 Azure Stack 边缘设备上都包含一个图形处理单元 (GPU) ，可实现 Kubernetes、深度学习和机器学习方案。
+每个支持 Kubernetes、深度学习和机器学习方案的 Azure Stack Edge Pro 设备上都包含一个图形处理单元 (GPU) 。
 
 | 规格           | 值                  |
 |-------------------------|----------------------------|
@@ -40,7 +40,7 @@ Azure Stack Edge 设备的计算和内存规格如下：
 
 ## <a name="power-supply-unit-specifications"></a>电源装置规格
 
-Azure Stack 边缘设备具有两个 100-240 V 电源单位 (通电 psu) ，具有高性能风扇。 这两个 PSU 提供了冗余电源配置。 如果 PSU 发生故障，设备将继续在另一个 PSU 上正常运行，直至发生故障的模块得到更换。 下表列出了 PSU 的技术规格。
+Azure Stack Edge Pro 设备具有两个 100-240 V 电源单位， (通电 psu) 与高性能风扇一起提供。 这两个 PSU 提供了冗余电源配置。 如果 PSU 发生故障，设备将继续在另一个 PSU 上正常运行，直至发生故障的模块得到更换。 下表列出了 PSU 的技术规格。
 
 | 规格           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -52,34 +52,34 @@ Azure Stack 边缘设备具有两个 100-240 V 电源单位 (通电 psu) ，具�
 
 ## <a name="network-interface-specifications"></a>网络接口规格
 
-Azure Stack 边缘设备有六个网络接口，PORT1-PORT6。
+Azure Stack Edge Pro 设备有六个网络接口，PORT1-PORT6。
 
 | 规格           | 说明                 |
 |-------------------------|----------------------------|
 |  网络接口    | **2 X 1 GbE 接口** –1管理接口端口1用于初始设置，默认情况下为静态。 初始设置完成后，可以使用具有任何 IP 地址的数据的接口。 但是，在重置时，接口会恢复为静态 IP。 <br>其他接口端口2是用户可配置的，可用于数据传输，默认情况下为 DHCP。 <br>**4 X 25 GbE 接口** –这些数据接口（端口3到端口6）可以被用户配置为 DHCP (默认) 或静态。 它们还可以用作 10 GbE 接口。  | 
 
-Azure Stack 边缘设备具有以下网络硬件：
+Azure Stack Edge Pro 设备具有以下网络硬件：
 
-* **自定义的 Microsoft Qlogic Cavium 25G NDC 适配器** -端口1到端口4。
-* **Mellanox 双重端口 25G ConnectX-4 通道网络适配器** -端口5和端口6。
+* **自定义 Microsoft Qlogic Cavium 25G NDC 适配器** - 端口 1 到端口 4。
+* **Mellanox 双端口 25G ConnectX-4 通道网络适配器** - 端口 5 和端口 6。
 
 以下是 Mellanox 卡的详细信息：
 
 | 参数           | 说明                 |
 |-------------------------|----------------------------|
-| 型号    | ConnectX®-4 Lx EN 网络接口卡                      |
+| 建模    | ConnectX®-4 Lx EN 网络接口卡                      |
 | 模型说明               | 25GbE 双端口 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 设备部件号 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |
 
-有关这些网卡支持的电缆、交换机和收发器的完整列表，请转到：
+若要查看这些网卡支持的线缆、交换机和收发器的完整列表，请参阅：
 
 - [Qlogic Cavium 25G NDC 适配器互操作性矩阵](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
 - [Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
 
 ## <a name="storage-specifications"></a>存储器规格
 
-Azure Stack 边缘设备有5个 2.5 "NVMe DC P4610 Ssd，每个具有 1.6 TB 的容量。 启动驱动器为 240 GB SATA SSD。 设备的总可用容量约为 8.28 TB。 下表列出了设备的存储容量。
+Azure Stack Edge Pro 设备具有5个 2.5 "NVMe DC P4610 Ssd，每个具有 1.6 TB 的容量。 启动驱动器为 240 GB SATA SSD。 设备的总可用容量约为 8.28 TB。 下表列出了设备的存储容量。
 
 |     规格                          |     值             |
 |--------------------------------------------|-----------------------|
@@ -97,7 +97,7 @@ Azure Stack 边缘设备有5个 2.5 "NVMe DC P4610 Ssd，每个具有 1.6 TB 的
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
 
-Your Azure Stack Edge device also contains the following hardware:
+Your Azure Stack Edge Pro device also contains the following hardware:
 
 * iDRAC baseboard management
 * Performance fans
@@ -172,4 +172,4 @@ Your Azure Stack Edge device also contains the following hardware:
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)
+[部署 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)

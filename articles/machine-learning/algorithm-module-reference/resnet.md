@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ea8c13e134eceeb27bd064e794d46d711092a867
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d8806b8c93f5a8cbceaa6efa16dfff978dda42e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450101"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905197"
 ---
 # <a name="resnet"></a>ResNet
 
-本文介绍如何使用 Azure 机器学习设计器（预览版）中的 ResNet 模块来通过 ResNet 算法创建图像分类模型****。  
+本文介绍如何使用 Azure 机器学习设计器中的 **ResNet** 模块，通过 ResNet 算法创建图像分类模型。  
 
 此分类算法是一种监督式学习方法，需要一个标记的数据集。 若要详细了解如何获取带标记的图像目录，请参阅[转换为图像目录](convert-to-image-directory.md)。 可通过提供模型和带标记的图像目录作为[训练 Pytorch 模型](train-pytorch-model.md)模块的输入来训练模型。 然后，可使用训练后的模型来预测使用[为图像模型评分](score-image-model.md)的新输入示例的值。
 
@@ -34,7 +34,7 @@ ms.locfileid: "84450101"
 
 3.  对于“预先训练”，指定是否使用在 ImageNet 上预先训练的模型****。 如果选择此选项，您可以根据所选的预先训练的模型来微调模型;如果取消选择，则可以从头开始训练。
 
-4.  将**DenseNet**模块、定型和验证图像数据集模块的输出连接到[定型 Pytorch 模型](train-pytorch-model.md)。 
+4.  将 **DenseNet** 模块、定型和验证图像数据集模块的输出连接到 [定型 Pytorch 模型](train-pytorch-model.md)。 
 
 5. 提交管道。
 

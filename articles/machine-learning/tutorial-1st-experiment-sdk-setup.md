@@ -1,7 +1,7 @@
 ---
-title: 教程：在 Jupyter 笔记本中试验 (Python)
-titleSuffix: Machine Learning - Azure
-description: 在本教程中，你将开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。  在第 1 部分中，你将创建一个用于管理试验和 ML 模型的工作区。
+title: 教程：从 Jupyter Notebook (Python) 着手
+titleSuffix: Azure Machine Learning
+description: 针对 Jupyter Notebook 教程进行设置。  创建 Azure 机器学习工作区，将 Jupyter Notebook 克隆到工作区中，并创建在其中运行笔记本的计算实例。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,44 +10,42 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: de52013628f5d02bedcf72a99e0fad25cabe5d8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852712"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896896"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>教程：在 Jupyter Notebook 中开始使用 Azure 机器学习
 
-在本教程中，你将完成端到端的步骤，以开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。 本教程是**由两个部分组成的系列教程的第一部分**，介绍如何设置和配置 Python 环境，以及如何创建工作区来管理试验模型和机器学习模型。 [第二部分](tutorial-1st-experiment-sdk-train.md)是在本文的基础上编写的，介绍如何训练多个机器学习模型，以及如何使用 Azure 机器学习工作室和 SDK 来管理模型。
+在本教程中，你将完成在[托管的基于云的工作站（计算实例）](concept-compute-instance.md)上通过 Jupyter Notebook 开始使用 Azure 机器学习的步骤。 本教程是所有其他 Jupyter Notebook 教程的前提。
 
 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 创建要在下一篇教程中使用的 [Azure 机器学习工作区](concept-workspace.md)。
+> * 创建要在其他 Jupyter Notebook 教程中使用的 [Azure 机器学习工作区](concept-workspace.md)。
 > * 将教程笔记本克隆到工作区中的文件夹。
 > * 创建一个基于云的计算实例，其中已安装并预配置了 Azure 机器学习 Python SDK。
-
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
-Azure 机器学习工作区是云中的基础资源，用于试验、训练和部署机器学习模型。 它将 Azure 订阅和资源组关联到服务中一个易于使用的对象。 
+Azure 机器学习工作区是云中的基础资源，用于试验、训练和部署机器学习模型。 它将 Azure 订阅和资源组关联到服务中一个易于使用的对象。
 
-通过 Azure 门户创建工作区，该门户是用于管理 Azure 资源的基于 Web 的控制台。 
+通过 Azure 门户创建工作区，该门户是用于管理 Azure 资源的基于 Web 的控制台。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 > 记下你的工作区和订阅 。 你将需要这些项才能确保在正确的位置创建试验。 
 
 ## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>在工作区中运行笔记本
 
-本教程使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
+Azure 机器学习在你的工作区中提供了一个云笔记本服务器，实现了免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](tutorial-1st-experiment-sdk-setup-local.md)。
 
- 按照此视频的说明或使用以下详细步骤从工作区克隆和运行教程。 
+ 按照此视频的说明或使用以下详细步骤从工作区克隆和运行教程笔记本。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
@@ -80,12 +78,11 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
     > [!IMPORTANT]
     > 可以查看 **samples** 文件夹中的笔记本，但无法从此文件夹运行笔记本。  若要运行笔记本，请确保在“用户文件”部分打开笔记本的克隆版本。
     
-1. 选择 **tutorials/create-first-ml-experiment** 文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
+1. 在 **tutorials/image-classification-mnist-data** 文件夹中选择 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="打开 tutorials 文件夹":::
 
-
-1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 
+1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。
 
 1. 如果未找到任何 VM，请选择“+ 添加”来创建计算实例 VM。 
 
@@ -107,17 +104,11 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已完成以下任务：
-
-* 创建了 Azure 机器学习工作区。
-* 在工作区中创建并配置了云笔记本服务器。
-
-在本教程的**第二部分**中，你将运行 `tutorial-1st-experiment-sdk-train.ipynb` 中的代码来训练机器学习模型。 
+现在，你已设置了一个开发环境，请继续在 Jupyter Notebook 中训练模型：
 
 > [!div class="nextstepaction"]
-> [教程：训练第一个模型](tutorial-1st-experiment-sdk-train.md)
+> [教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型](tutorial-train-models-with-aml.md)
 
-> [!IMPORTANT]
-> 如果你不打算按照本教程的第 2 部分或任何其他教程进行操作，则应该在不使用云笔记本服务器 VM 时[停止它](tutorial-1st-experiment-sdk-train.md#clean-up-resources)，以降低成本。
+<a name="stop-compute-instance"></a> 如果你现在不打算继续学习任何其他教程，则应该在不使用云笔记本服务器 VM 时停止它，以降低成本：
 
-
+[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]

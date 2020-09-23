@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 14c3bc968da9d398fbc14eda74378047cf28277b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898829"
 ---
 # <a name="clean-missing-data-module"></a>“清理缺失数据”模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块可以删除、替换或推断缺失值。 
 

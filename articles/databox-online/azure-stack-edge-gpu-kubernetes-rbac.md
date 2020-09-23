@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure Stack Edge 设备上基于角色的访问控制 |Microsoft Docs
-description: 描述如何在 Azure Stack 边缘设备上执行基于角色的访问控制 Kubernetes。
+title: 了解 Azure Stack Edge Pro 设备上基于角色的访问控制 Kubernetes |Microsoft Docs
+description: 描述如何在 Azure Stack Edge Pro 设备上执行基于角色的访问控制 Kubernetes。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318958"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899278"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Azure Stack 边缘 GPU 设备上基于角色的访问控制 Kubernetes
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上 Kubernetes 基于角色的访问控制
 
 
-在 Azure Stack 边缘设备上，配置计算角色时，会创建 Kubernetes 群集。 你可以使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制对设备上群集资源的访问。
+在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 你可以使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制对设备上群集资源的访问。
 
-本文概述了 Kubernetes 提供的 RBAC 系统，以及如何在 Azure Stack Edge 设备上实现 Kubernetes RBAC。 
+本文概述了 Kubernetes 提供的 RBAC 系统，以及如何在 Azure Stack Edge Pro 设备上实现 Kubernetes RBAC。 
 
 ## <a name="rbac-for-kubernetes"></a>Kubernetes 的 RBAC
 
@@ -34,7 +34,7 @@ Kubernetes 资源（如 pod 和部署）按逻辑分组到一个命名空间中�
 
 命名空间适用于具有多个用户分布在多个团队或项目中的环境。 有关详细信息，请参阅 [Kubernetes 命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)。
 
-Azure Stack 边缘设备包含以下命名空间：
+Azure Stack Edge Pro 设备具有以下命名空间：
 
 - **系统命名空间** -此命名空间是核心资源所在的位置，例如 DNS 和代理等网络功能，或 Kubernetes 仪表板。 通常不会将应用程序部署到此命名空间中。 使用此命名空间调试任何 Kubernetes 群集问题。 
 
@@ -73,9 +73,9 @@ Kubernetes 具有角色和角色绑定的概念，使你能够在命名空间级
 
 此方法可让你以逻辑方式隔离单个 Kubernetes 群集，并且用户只能访问其已分配命名空间中的应用程序资源。 
 
-## <a name="rbac-on-azure-stack-edge"></a>Azure Stack Edge 上的 RBAC
+## <a name="rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的 RBAC
 
-在 RBAC 的当前实现中，Azure Stack Edge 允许从受限制的 PowerShell 运行空间执行以下操作：
+在 RBAC 的当前实现中，Azure Stack Edge Pro 允许从受限制的 PowerShell 运行空间执行以下操作：
 
 - 创建命名空间。  
 - 创建其他用户。
@@ -83,11 +83,11 @@ Kubernetes 具有角色和角色绑定的概念，使你能够在命名空间级
 - 获取 `kubeconfig` 包含信息的文件以访问 Kubernetes 群集。
 
 
-Azure Stack 边缘设备具有多个系统命名空间，你可以创建具有文件的用户命名空间 `kubeconfig` 来访问这些命名空间。 用户可以完全控制这些命名空间，可以创建或修改用户，也可以授予用户访问权限。 只有群集管理员对系统命名空间和群集范围内的资源具有完全访问权限。 对 `aseuser` 系统命名空间具有只读访问权限。
+Azure Stack Edge Pro 设备具有多个系统命名空间，你可以创建具有文件的用户命名空间 `kubeconfig` 来访问这些命名空间。 用户可以完全控制这些命名空间，可以创建或修改用户，也可以授予用户访问权限。 只有群集管理员对系统命名空间和群集范围内的资源具有完全访问权限。 对 `aseuser` 系统命名空间具有只读访问权限。
 
-下面是描述 Azure Stack 边缘设备上的 RBAC 实现的关系图。
+下面是描述 Azure Stack Edge Pro 设备上的 RBAC 实现的关系图。
 
-![Azure Stack 边缘设备上的 RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Azure Stack Edge Pro 设备上的 RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 在此关系图中，Alice、Bob 和 Chuck 只能访问分配的用户命名空间，在这种情况下，这种命名空间 `ns1` 分别为、 `ns2` 和 `ns3` 。 在这些命名空间内，它们具有管理访问权限。 另一方面，群集管理员可以管理对系统命名空间和群集范围内资源的访问权限。
 
@@ -109,10 +109,10 @@ Azure Stack 边缘设备具有多个系统命名空间，你可以创建具有�
 
 5. 安装 `kubectl` 并开始将应用程序部署到 `kubectl` 。 
 
-有关详细的分步说明，请参阅 [在 Azure Stack 边缘通过 Kuebctl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
+有关详细的分步说明，请参阅 [Azure Stack Edge Pro 上的通过 Kuebctl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
 
 
-在 Azure Stack Edge 设备上使用命名空间和用户时，请注意以下事项：
+在 Azure Stack Edge Pro 设备上使用命名空间和用户时，请注意以下事项：
 
 - 对于任何系统命名空间，不允许执行任何操作，如创建用户、授予或撤消命名空间访问权限。 系统命名空间的示例包括 `kube-system` 、 `metallb-system` 、、 `kubernetes-dashboard` `default` 、 `kube-node-lease` 和 `kube-public` 。 系统命名空间还包括为部署类型保留的命名空间 `iotedge` ，如 (IoT Edge 命名空间) 和 `azure-arc` (Azure Arc 命名空间) 。
 - 你可以创建用户命名空间，并在这些命名空间内创建其他用户，并授予或撤消对这些用户的命名空间访问权限。

@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4edb0f356dd83ab1aa353e0791f619be497a9d91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c44c99016f507214869e45a66bdd27c0a5efec75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166019"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982915"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 [获取令牌](msal-acquire-cache-tokens.md)后，Microsoft 身份验证库 (MSAL) 会缓存该令牌。  在通过其他方法获取令牌之前，应用程序代码应该先尝试从缓存中获取令牌。  本文介绍 MSAL.NET 中令牌缓存的默认序列化和自定义序列化。
@@ -271,7 +271,7 @@ namespace CommonCacheMsalV3
 
 ### <a name="token-cache-for-a-web-app-confidential-client-application"></a>Web 应用（机密客户端应用程序）的令牌缓存
 
-在 web 应用或 web Api 中，缓存可以利用会话、Redis 缓存或数据库。 你应在 web 应用或 web Api 中为每个帐户保留一个令牌缓存。 
+在 Web 应用或 Web API 中，缓存可以利用会话、Redis 缓存或数据库。 在 Web 应用或 Web API 中，应该为每个帐户保留一个令牌缓存。 
 
 对于 Web 应用，令牌缓存应使用帐户 ID 进行键控。
 
@@ -287,7 +287,7 @@ MSAL.NET 在 .NET Framework 和 .NET Core 子平台中提供自定义令牌缓�
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | 令牌缓存将绑定到用户会话。 如果 ID 令牌包含许多声明，则此选项不是理想的选择，因为 Cookie 会变得太大。
 | `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | 令牌缓存是针对 ASP.NET Core `IDistributedCache` 实现的适配器，因此允许你在分布式内存缓存、Redis 缓存、分布式 NCache 或 SQL Server 缓存之间进行选择。 有关 `IDistributedCache` 实现的详细信息，请参阅 https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache 。
 
-下面是一个示例，说明如何在 ASP.NET Core 应用程序中的[Startup](/aspnet/core/fundamentals/startup)类的[ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices)方法中使用内存中缓存：
+下面是一个示例，说明了如何在 ASP.NET Core 应用程序的 [Startup](/aspnet/core/fundamentals/startup) 类的 [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) 方法中使用内存中缓存：
 
 ```C#
 // or use a distributed Token Cache by adding
@@ -333,5 +333,5 @@ services.AddDistributedSqlServerCache(options =>
 
 | 示例 | 平台 | 说明|
 | ------ | -------- | ----------- |
-|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | 桌面 (WPF) | 调用 Microsoft Graph API 的 Windows 桌面 .NET (WPF) 应用程序。 ![拓扑](media/msal-net-token-cache-serialization/topology.png)|
+|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | 桌面 (WPF) | 调用 Microsoft Graph API 的 Windows 桌面 .NET (WPF) 应用程序。 ![关系图显示了一个拓扑，其中包含 P F TodoListClient 流到 Azure A D 的拓扑，方法是以交互方式获取令牌并 Microsoft Graph。](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | 桌面（控制台） | 一组 Visual Studio 解决方案，阐释了如何将 Azure AD v1.0 应用程序（使用 ADAL.NET）迁移到 Microsoft 标识平台应用程序（使用 MSAL.NET）。 如需具体信息，请参阅[令牌缓存迁移](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

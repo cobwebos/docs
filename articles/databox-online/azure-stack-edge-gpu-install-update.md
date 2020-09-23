@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 设备上安装更新 |Microsoft Docs
-description: 描述如何使用 Azure Stack Edge GPU 设备的 Azure 门户和本地 web UI 以及设备上的 Kubernetes 群集应用更新
+title: 在 Azure Stack Edge Pro GPU 设备上安装更新 |Microsoft Docs
+description: 描述如何使用 Azure Stack Edge Pro GPU 设备的 Azure 门户和本地 web UI 以及设备上的 Kubernetes 群集应用更新
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268238"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899502"
 ---
-# <a name="update-your-azure-stack-edge-with-gpu"></a>用 GPU 更新 Azure Stack 边缘 
+# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>用 GPU 更新 Azure Stack Edge Pro 
 
-本文介绍通过本地 web UI 和 Azure 门户在 Azure Stack 边缘上安装更新所需的步骤。 应用软件更新或修补程序，使 Azure Stack 边缘设备和关联的 Kubernetes cluaster 在设备上保持最新。 
+本文介绍通过本地 web UI 和 Azure 门户在 Azure Stack Edge Pro 上安装更新所需的步骤。 应用软件更新或修补程序，使 Azure Stack Edge Pro 设备和关联的 Kubernetes cluaster 在设备上保持最新。 
 
 > [!IMPORTANT]
 > - 更新 **2008** 对应于设备上的 **2.1.1328.1904** software 版本。 有关此更新的信息，请参阅 [发行说明](azure-stack-edge-gpu-2008-release-notes.md)。
 >
-> - 请记住，安装更新或修补程序会重新启动设备。 此更新要求按顺序应用两个更新。 首先应用设备软件更新，然后 Kubernetes 更新。 假设 Azure Stack 边缘是单节点设备，则正在进行的任何 i/o 都将中断，设备软件更新的设备的停机时间最长为30分钟。
+> - 请记住，安装更新或修补程序会重新启动设备。 此更新要求按顺序应用两个更新。 首先应用设备软件更新，然后 Kubernetes 更新。 假设 Azure Stack Edge Pro 是单节点设备，则正在进行的任何 i/o 都将中断，设备软件更新的设备的停机时间最长为30分钟。
 
 若要在设备上安装更新，首先需要配置更新服务器的位置。 配置更新服务器后，可以通过 Azure 门户 UI 或本地 web UI 应用更新。
 
@@ -57,7 +57,7 @@ ms.locfileid: "89268238"
 
 2. 在 " **设备更新** " 边栏选项卡中，检查是否已查看与发行说明中的新功能关联的许可条款。
 
-    您可以选择 **下载和安装更新，** 或仅 **下载** 更新。 然后，可以选择稍后安装这些更新。
+    您可以选择 **下载和安装更新，** 或仅 **下载** 更新。 然后可以选择以后安装这些更新。
 
     ![更新后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
 
@@ -82,7 +82,7 @@ ms.locfileid: "89268238"
 
     ![更新后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    如果选择仅下载更新，则选择该通知即可打开 " **设备更新** " 边栏选项卡。 选择“安装”。
+    如果选择仅下载更新，则选择该通知即可打开 " **设备更新** " 边栏选项卡。 选择“安装”  。
   
     ![更新后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
@@ -159,13 +159,13 @@ ms.locfileid: "89268238"
 
     ![搜索目录](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 号。 例如，输入 **Azure Stack Edge**，然后单击 " **搜索**"。
+2. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 号。 例如，输入 **Azure Stack Edge Pro**"，然后单击" **搜索**"。
    
-    更新列表显示为 **Azure Stack 缘 2006**。
+    更新列表显示为 **Azure Stack Edge Pro 2006**。
    
     ![搜索目录](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
 
-4. 选择“下载”。 有两个文件可供下载，其中 *SoftwareUpdatePackage.exe* 和分别对应于设备软件更新和 Kubernetes 更新的 *Kubernetes_Package.exe* 后缀。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
+4. 选择“下载”  。 有两个文件可供下载，其中 *SoftwareUpdatePackage.exe* 和分别对应于设备软件更新和 Kubernetes 更新的 *Kubernetes_Package.exe* 后缀。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
 ### <a name="install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
@@ -215,4 +215,4 @@ ms.locfileid: "89268238"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [管理 Azure Stack 边缘](azure-stack-edge-manage-access-power-connectivity-mode.md)的详细信息。
+了解有关 [管理 Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)的详细信息。

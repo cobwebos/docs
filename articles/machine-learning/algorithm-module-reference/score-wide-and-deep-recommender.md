@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
-ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192750"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905174"
 ---
 # <a name="score-wide-and-deep-recommender"></a>为 Wide and Deep 推荐器评分
 
-本文介绍如何使用 Azure 机器学习设计器（预览版）中的“为 Wide and Deep 推荐器评分”模块，基于经训练的建议模型和 Google 的 Wide & Deep 学习来创建预测。
+本文介绍如何使用 Azure 机器学习设计器中的 " **评分范围" 和 "深度推荐器** " 模块，基于来自 Google 的广泛 & 深度学习，基于训练的建议模型创建预测。
 
 Wide and Deep 推荐器可生成两种不同类型的预测：
 

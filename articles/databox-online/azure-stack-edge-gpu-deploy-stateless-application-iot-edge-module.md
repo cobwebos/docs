@@ -1,6 +1,6 @@
 ---
-title: 通过 IoT Edge 模块在 Azure Stack 边缘 GPU 上部署 Kubernetes 无状态应用 |Microsoft Docs
-description: 介绍如何使用通过外部 IP 访问的 IoT Edge 模块在 Azure Stack 边缘 GPU 设备上部署 Kubernetes 无状态应用程序。
+title: 通过 IoT Edge 模块在 Azure Stack Edge Pro GPU 上部署 Kubernetes 无状态应用 |Microsoft Docs
+description: 介绍如何使用通过外部 IP 访问的 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上部署 Kubernetes 无状态应用程序。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,42 +8,42 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254162"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899530"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>使用 IoT Edge 模块在 Azure Stack Edge GPU 设备上运行 Kubernetes 无状态应用程序
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>使用 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上运行 Kubernetes 无状态应用程序
 
-本文介绍如何使用 IoT Edge 模块在 Azure Stack Edge 设备上部署无状态应用程序。
+本文介绍如何使用 IoT Edge 模块在 Azure Stack Edge Pro 设备上部署无状态应用程序。
 
 若要部署无状态应用程序，你需要执行以下步骤：
 
 - 在部署 IoT Edge 模块之前，请确保已完成先决条件。
-- 添加 IoT Edge 模块以访问 Azure Stack 边缘上的计算网络。
+- 添加一个 IoT Edge 模块来访问 Azure Stack Edge Pro 上的计算网络。
 - 验证模块是否可以访问已启用的网络接口。
 
 在本操作指南文章中，你将使用 web 服务器应用模块来演示该方案。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备知识
 
 在开始之前，需要：
 
-- Azure Stack 边缘设备。 请确保：
+- Azure Stack Edge Pro 设备。 确保：
 
     - 计算网络设置在设备上进行配置。
     - 根据 [教程：激活你的设备](azure-stack-edge-gpu-deploy-activate.md)中的步骤激活设备。
-- 根据教程完成 **配置计算** 步骤：在设备上的 [Azure Stack Edge 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md) 。 设备应有关联的 IoT 中心资源、IoT 设备和 IoT Edge 设备。
+- 已根据教程完成 **配置计算** 步骤：在设备上的 [Azure Stack Edge Pro 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md) 。 设备应有关联的 IoT 中心资源、IoT 设备和 IoT Edge 设备。
 
 
 ## <a name="add-webserver-app-module"></a>添加 web 服务器应用模块
 
-执行以下步骤，将 web 服务器应用模块添加到 Azure Stack 边缘设备上。
+执行以下步骤，将 web 服务器应用模块添加到 Azure Stack Edge Pro 设备上。
 
 1. 在与设备关联的 IoT 中心资源中，请参阅 **自动设备管理 > IoT Edge**。
-1. 选择并单击与 Azure Stack 边缘设备关联的 IoT Edge 设备。 
+1. 选择并单击与 Azure Stack Edge Pro 设备关联的 IoT Edge 设备。 
 
     ![选择 IoT Edge 设备](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 

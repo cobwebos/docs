@@ -7,14 +7,16 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291290"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904256"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
+
+**本文适用于：** ✔️ Java ✔️ C#
 
 本文介绍如何将 Spring Cloud 配置服务器实例连接到 Azure Spring Cloud 服务。
 
@@ -163,7 +165,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 如果已使用存储库设置编写 YAML 文件，则可以将该文件直接从本地计算机导入到 Azure Spring Cloud。 使用基本身份验证的专用存储库的简单 YAML 文件如下所示：
 
-```yml
+```yaml
 spring:
     cloud:
         config:

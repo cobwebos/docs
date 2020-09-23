@@ -1,6 +1,6 @@
 ---
-title: 记录 Azure Stack Edge、Azure Data Box Gateway 的支持票证 | Microsoft Docs
-description: 了解如何记录与 Azure Stack Edge 或 Data Box Gateway 订单相关的问题的支持请求。
+title: Azure Stack Edge Pro、Azure Data Box Gateway 的日志支持票证 |Microsoft Docs
+description: 了解如何记录与 Azure Stack Edge Pro 或 Data Box Gateway 订单相关的问题的支持请求。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339903"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904524"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>针对 Azure Stack Edge 和 Azure Data Box Gateway 打开支持票证
+# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>为 Azure Stack Edge Pro 和 Azure Data Box Gateway 开支持票证
 
-本文适用于 Azure Stack Edge 和 Azure Data Box Gateway，两者均由 Azure Stack Edge/Azure Data Box Gateway 服务管理。 如果你的服务遇到任何问题，可以为获取技术支持创建服务请求。 本文介绍：
+本文适用于 Azure Stack Edge Pro 和 Azure Data Box Gateway 均由 Azure Stack Edge Pro/Azure Data Box Gateway 服务管理。 如果你的服务遇到任何问题，可以为获取技术支持创建服务请求。 本文介绍：
 
 * 如何创建支持请求。
 * 如何从门户内部管理支持请求生命周期。
@@ -26,13 +26,13 @@ ms.locfileid: "84339903"
 
 可以执行以下步骤来创建支持请求：
 
-1. 转到 Azure Stack Edge 或 Data Box Gateway 订单。 导航到“支持 + 故障排除”部分，然后选择“新建支持请求” 。
+1. 请按照 Azure Stack Edge Pro 或 Data Box Gateway 顺序进行。 导航到“支持 + 故障排除”部分，然后选择“新建支持请求” 。
 
 2. 在“新建支持请求”的“基本”选项卡上，执行以下步骤：
 
     1. 从“颁发类型”下拉列表中，选择“技术” 。
     2. 选择“订阅”。
-    3. 在“服务”下，检查“我的服务”。  从下拉列表中选择“Azure Stack Edge 和 Data Box Gateway”。
+    3. 在“服务”下，检查“我的服务”。  从下拉列表中，选择 " **Azure Stack Edge Pro" 和 "Data Box Gateway**"。
     4. 选择你的“资源”。 这对应于订单的名称。
     5. 提供所遇到的问题的简单“摘要”。 
     6. 选择“问题类型”。
@@ -98,5 +98,5 @@ ms.locfileid: "84339903"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[排查 Azure Stack Edge 相关问题](azure-stack-edge-troubleshoot.md)。
+了解如何 [解决与 Azure Stack Edge Pro 相关的问题](azure-stack-edge-troubleshoot.md)。
 了解如何[排查 Data Box Gateway 相关问题](data-box-gateway-troubleshoot.md)。

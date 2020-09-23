@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4112d26d6a21ac800e20bb67ce24a35ca9d09a13
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477487"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905242"
 ---
 # <a name="preprocess-text"></a>预处理文本
 
-本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用“预处理文本”模块来清理和简化文本。 它支持以下常见文本处理操作：
 

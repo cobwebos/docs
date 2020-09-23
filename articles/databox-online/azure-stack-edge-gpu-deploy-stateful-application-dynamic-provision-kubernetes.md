@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 设备上，使用 kubectl 通过动态预配的共享部署 Kubernetes 有状态应用 |Microsoft Docs
-description: 介绍如何在 Microsoft Azure Stack 边缘 GPU 设备上使用 kubectl 通过动态预配的共享来创建和管理 Kubernetes 有状态应用程序部署。
+title: 使用 kubectl 在 Azure Stack Edge Pro GPU 设备上通过动态预配的共享来部署 Kubernetes 有状态应用 |Microsoft Docs
+description: 介绍如何在 Microsoft Azure Stack Edge Pro GPU 设备上使用 kubectl 通过动态预配的共享来创建和管理 Kubernetes 有状态应用程序部署。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,50 +8,50 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d37152f7dec78d5f5db21fdde9a8ec25c36c4e05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254315"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899470"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>使用 kubectl 在 Azure Stack 边缘 GPU 设备上使用 StorageClass 运行 Kubernetes 有状态应用程序
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>使用 kubectl 在 Azure Stack Edge Pro GPU 设备上使用 StorageClass 运行 Kubernetes 有状态应用程序
 
 本文介绍如何在 Kubernetes 中使用 StorageClass 动态设置存储和部署来部署单实例有状态应用程序。 部署使用 `kubectl` 现有 Kubernetes 群集上的命令并部署 MySQL 应用程序。 
 
-此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md) 并且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)的概念的用户。
+此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md) 并且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)的概念的用户。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备知识
 
 在部署有状态应用程序之前，请确保已在设备和将用于访问设备的客户端上完成以下先决条件：
 
 ### <a name="for-device"></a>对于设备
 
-- 你有 Azure Stack Edge 设备的1节点的登录凭据。
+- 你有 Azure Stack Edge Pro 设备的1个节点的登录凭据。
     - 设备已激活。 请参阅 [激活设备](azure-stack-edge-gpu-deploy-activate.md)。
     - 设备通过 Azure 门户配置了计算角色，并具有 Kubernetes 群集。 请参阅 [配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)。
 
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
-- 你具有将用于访问 Azure Stack Edge 设备的 Windows 客户端系统。
+- 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
     - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
-    - 你已完成在 [Azure Stack Edge 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
+    - 你已完成在 [Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
       - `userns1`通过命令创建命名空间 `New-HcsKubernetesNamespace` 。 
       - 通过命令创建了一个用户 `user1` `New-HcsKubernetesUser` 。 
       - 已通过命令授予对的 `user1` 访问权限 `userns1` `Grant-HcsKubernetesNamespaceAccess` 。       
       - 已 `kubectl` 在客户端上安装，并将 `kubeconfig` 具有用户配置的文件保存到 C： \\ Users \\ &lt; &gt; \\ kube。 
     
-    - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
+    - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
         - 使用 `kubectl version` 检查在客户端上运行的 kubectl 的版本。 记下完整版本。
-        - 在 Azure Stack Edge 设备的本地 UI 中，请参阅 " **概述** " 并记下 "Kubernetes" 软件号码。 
+        - 在 Azure Stack Edge Pro 设备的本地 UI 中，切换到 " **概述** "，并记下 "Kubernetes" 软件号码。 
         - 请验证这两个版本是否与支持的 Kubernetes 版本中提供的映射兼容<!-- insert link-->. 
 
 
-你已准备好在 Azure Stack Edge 设备上部署有状态应用程序。 
+你已准备好在 Azure Stack Edge Pro 设备上部署有状态应用程序。 
 
 
 ## <a name="deploy-mysql"></a>部署 MySQL
@@ -78,7 +78,7 @@ ms.locfileid: "89254315"
 
 1. 你将使用以下 YAML 文件。 该 `mysql-deployment.yml` 文件描述了运行 MySQL 并引用 PVC 的部署。 文件定义了的卷装载 `/var/lib/mysql` ，然后创建了一个 PVC 来寻找 20 GB 的卷。 设置了动态 PV，并将 PVC 绑定到了此 PV。
 
-    将以下文件复制并保存 `mysql-deployment.yml` 到用于访问 Azure Stack Edge 设备的 Windows 客户端上的文件夹中。
+    将以下文件复制并保存 `mysql-deployment.yml` 到 Windows 客户端上用于访问 Azure Stack Edge Pro 设备的文件夹中。
     
     ```yml
     apiVersion: v1
@@ -126,7 +126,7 @@ ms.locfileid: "89254315"
               claimName: mysql-pv-claim-sc
     ```
     
-2. 将保存为文件，并将其另存为 `mysql-pvc.yml` 保存的同一文件夹 `mysql-deployment.yml` 。 若要在附加的数据磁盘上使用 Azure Stack Edge 设备的内置 StorageClass，请将 `storageClassName` PVC 对象中的字段设置为 `ase-node-local` ，并将 accessModes 设置为 `ReadWriteOnce` 。 
+2. 将保存为文件，并将其另存为 `mysql-pvc.yml` 保存的同一文件夹 `mysql-deployment.yml` 。 若要在附加的数据磁盘上使用 Azure Stack Edge Pro 设备的内置 StorageClass，请将 `storageClassName` PVC 对象中的字段设置为 `ase-node-local` ，并将 accessModes 设置为 `ReadWriteOnce` 。 
 
     > [!NOTE] 
     > 请确保 YAML 文件具有正确的缩进。 可以检查 YAML 不 [起毛](http://www.yamllint.com/) 的以验证并保存。
@@ -326,4 +326,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何通过 kubectl 配置网络，请参阅 [在 Azure Stack Edge 设备上部署无状态应用程序](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)
+若要了解如何通过 kubectl 配置网络，请参阅 [在 Azure Stack Edge Pro 设备上部署无状态应用程序](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)

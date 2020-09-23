@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2164f6d6b346eda185e8a38720677ad50f2e8c89
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650681"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889937"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何在使用 Azure 机器学习部署已训练的模型时使用自定义 Docker 基础映像。
 
@@ -184,7 +184,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 
 若要使用自定义映像，需要以下信息：
 
-* 映像名称。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` 是 Microsoft 提供的基础 Docker 映像的路径。
+* 映像名称。 例如， `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` 是 Microsoft 提供的简单 Docker 映像的路径。
 
     > [!IMPORTANT]
     > 对于已创建的自定义映像，请确保包含用于该映像的任何标记。 例如，如果映像是使用特定标记（如 `:v1`）创建的。 如果创建映像时未使用特定标记，则应用标记 `:latest`。
@@ -202,7 +202,7 @@ Microsoft 在可公开访问的存储库中提供了多个 docker 映像，可�
 
 | 映像 | 说明 |
 | ----- | ----- |
-| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure 机器学习的基础映像 |
+| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure 机器学习的核心映像 |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | 包含用于 CPU 推理的 ONNX 运行时 |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | 包含用于 GPU 的 ONNX 运行时和 CUDA |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | 包含用于 GPU 的 ONNX 运行时和 TensorRT |
