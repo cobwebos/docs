@@ -1,18 +1,18 @@
 ---
 title: VPN 网关：用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
-description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
+description: 了解如何使用点到站点 VPN 和 Azure Active Directory 身份验证配置 VPN 客户端以连接到虚拟网络。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 781d3aeea6a5568aec065ec4b1cbcfacb74836a6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434667"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981883"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 身份验证：配置用于 P2S OpenVPN 协议连接的 VPN 客户端
 

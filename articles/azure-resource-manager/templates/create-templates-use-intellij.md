@@ -5,16 +5,16 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973328"
 ---
-# <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ 方法创建和部署 ARM 模板
+# <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ IDEA 创建和部署 ARM 模板
 
-了解如何使用 IntelliJ 创意将 Azure 资源管理器（ARM）模板部署到 Azure，以及如何直接从 IDE 中编辑和更新模板。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模板部署概述](overview.md)。
+了解如何使用 IntelliJ IDEA 将 Azure 资源管理器 (ARM) 模板部署到 Azure，以及如何直接从 IDE 编辑和更新该模板。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模板部署概述](overview.md)。
 
 ![资源管理器模板门户关系图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -60,13 +60,13 @@ ms.locfileid: "87321813"
 
 ## <a name="edit-and-update-an-existing-deployment"></a>编辑和更新现有部署
 
-1. 从右键单击菜单或前面所示的“显示属性”视图中选择“编辑部署”。  此时会打开另一个选项卡视图，其中显示了 Azure 上的部署的模板和参数文件。 若要将这些文件保存到本地，可以单击“导出模板文件”或“导出参数文件”。********
+1. 从右键单击菜单或前面所示的“显示属性”视图中选择“编辑部署”。  此时会打开另一个选项卡视图，其中显示了 Azure 上的部署的模板和参数文件。 若要将这些文件保存到本地文件，可以单击 " **导出模板文件**  " 或 " **导出参数文件**"。
 
     ![资源管理器模板 - 编辑部署](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 
 1. 可在此页上编辑这两个文件，并将更改部署到 Azure。 此处，我们将参数文件中 **storageAccountType** 的值从 `Standard_LRS` 更改为 `Standard_GRS`。 然后，单击底部的“更新部署”并确认更新。 
 
-    ![资源管理器模板 - 编辑部署](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
+    ![屏幕截图显示 "资源管理器" 模板，其中显示了更新部署提示。](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
 1. 完成更新部署后，可在门户中检查创建的存储帐户是否已更改为 `Standard_GRS`。
 

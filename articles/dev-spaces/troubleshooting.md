@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981073"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -27,14 +27,6 @@ ms.locfileid: "88210835"
 在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。 还可以在 `%TEMP%\Azure Dev Spaces` 中浏览更详细的日志。 在 Mac 上，可以通过在终端窗口中运行 `echo $TMPDIR` 来找到 TEMP 目录。 在 Linux 计算机上，TEMP 目录通常为 `/tmp`。 此外，还请验证是否已在 [Azure CLI 配置文件](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)中启用了日志记录。
 
 Azure Dev Spaces 在调试单个实例或 Pod 时也能发挥最佳效果。 `azds.yaml` 文件包含 replicaCount 设置，它指明了 Kubernetes 针对服务运行的 Pod 数。 如果你通过更改 replicaCount 将应用程序配置为针对给定服务运行多个 Pod，调试程序会附加到按字母顺序列出的第一个 Pod。 如果回收原始 Pod，调试程序会附加到其他 pod，这可能会导致意外行为发生。
-
-## <a name="common-issues-when-using-local-process-with-kubernetes"></a>将本地进程用于 Kubernetes 时的常见问题
-
-### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>无法还原群集上的部署的原始配置
-
-将本地过程与 Kubernetes 一起使用时，如果使用 Kubernetes 客户端的本地进程崩溃或突然终止，则使用 Kubernetes 的本地进程的服务可能无法还原到其原始状态。
-
-若要解决此问题，请将服务重新部署到群集。
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>启用 Azure Dev Spaces 时遇到的常见问题
 
@@ -265,7 +257,7 @@ Service cannot be started.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>连接开发计算机时，网络流量不转发到 AKS 群集
 
-在使用 [Azure Dev Spaces 将 AKS 群集连接到开发计算机](https://code.visualstudio.com/docs/containers/local-process-kubernetes)时，可能会遇到下面这样的问题：网络流量没有在开发计算机与 AKS 群集之间进行转发。
+在使用 [Azure Dev Spaces 将 AKS 群集连接到开发计算机](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes)时，可能会遇到下面这样的问题：网络流量没有在开发计算机与 AKS 群集之间进行转发。
 
 将开发计算机连接到 AKS 群集时，Azure Dev Spaces 通过修改开发计算机的 `hosts` 文件，在 AKS 群集与开发计算机之间转发网络流量。 Azure Dev Spaces 在 `hosts` 中创建一个条目，其中包含要替换的 Kubernetes 服务的地址作为主机名。 此条目与端口转发结合使用，以在开发计算机与 AKS 群集之间定向网络流量。 如果开发计算机上的服务与要替换的 Kubernetes 服务的端口发生冲突，Azure Dev Spaces 就无法转发 Kubernetes 服务的网络流量。 例如，Windows BranchCache 服务通常绑定到 0.0.0.0:80，这会导致所有本地 IP 上的端口 80 发生冲突。
 

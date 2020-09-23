@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069572"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974541"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安装并配置 Microsoft Azure 诊断扩展 (WAD)
 [Azure 诊断扩展](diagnostics-extension-overview.md)是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负载以及其他计算资源中收集监视数据。 本文详细介绍如何安装并配置 Windows 诊断扩展，以及如何将数据存储在 Azure 存储帐户中。
@@ -51,7 +51,7 @@ ms.locfileid: "89069572"
 
 6. 在“日志”选项卡中，选择要从虚拟机中收集的日志。 可以将日志发送到存储或事件中心，但不能将其发送到 Azure Monitor。 使用 [Log Analytics 代理](log-analytics-agent.md)将来宾日志收集到 Azure Monitor。
 
-   ![日志](media/diagnostics-extension-windows-install/logs.png)
+   ![屏幕截图显示为虚拟机选择不同日志的日志选项卡。](media/diagnostics-extension-windows-install/logs.png)
 
 7. 在“故障转储”选项卡中，指定在发生故障后用于收集内存转储的任何进程。 数据将写入到存储帐户以进行诊断设置，你可以选择指定 blob 容器。
 
@@ -59,7 +59,7 @@ ms.locfileid: "89069572"
 
 8. 在“接收器”选项卡中，指定是否将数据发送到 Azure 存储以外的位置。 如果选择“Azure Monitor”，则来宾性能数据将发送到 Azure Monitor 指标。 不能使用 Azure 门户配置事件中心接收器。
 
-   ![接收器](media/diagnostics-extension-windows-install/sinks.png)
+   ![屏幕截图显示 "接收器" 选项卡，其中启用了 "将诊断数据发送到 Azure Monitor" 选项。](media/diagnostics-extension-windows-install/sinks.png)
    
    如果尚未启用为虚拟机配置的系统分配的标识，则在使用 Azure Monitor 接收器保存配置时可能会看到以下警告。 单击横幅以启用系统分配的标识。
    
@@ -67,7 +67,7 @@ ms.locfileid: "89069572"
 
 9. 在“代理”中，可以更改存储帐户、设置磁盘配额，并指定是否收集诊断基础结构日志。  
 
-   ![代理](media/diagnostics-extension-windows-install/agent.png)
+   ![屏幕截图显示 "代理" 选项卡，其中包含用于设置存储帐户的选项。](media/diagnostics-extension-windows-install/agent.png)
 
 10. 单击 **保存** 以保存配置。 
 

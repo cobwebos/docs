@@ -1,15 +1,15 @@
 ---
 title: 创建和配置恢复服务保管库
-description: 本文介绍如何创建和配置恢复服务保管库，用于存储备份和恢复点。
+description: 本文介绍如何创建和配置恢复服务保管库，用于存储备份和恢复点。 了解如何使用跨区域还原在次要区域中还原。
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81c6fd47ccea2ea17a20535df04931727c23be6f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177187"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981493"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
 
@@ -30,34 +30,45 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 
 1. 选择存储复制类型，然后选择“保存”。
 
-     ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![设置新保管库的存储配置](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
    - 如果使用 Azure 作为主要备份存储终结点，则我们建议继续使用默认的“异地冗余”设置。
    - 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。
-   - 详细了解[异地冗余](../storage/common/storage-redundancy.md)和[本地冗余](../storage/common/storage-redundancy.md)。
+   - 详细了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)。
+   - 如果需要在某个区域不停机的情况下使用数据，请确保数据驻留，然后选择 " [区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage)"。
 
 >[!NOTE]
 >此保管库的存储复制设置与 Azure 文件共享备份无关，因为当前解决方案基于快照，并且没有数据传输到保管库。 快照存储在与备份文件共享相同的存储帐户中。
 
 ## <a name="set-cross-region-restore"></a>设置跨区域还原
 
-作为还原选项之一，跨区域还原 (CRR) 可让你还原次要区域（[Azure 配对区域](../best-practices-availability-paired-regions.md)）中的 Azure VM。 使用此选项可以：
+还原选项 **跨区域还原 (CRR) ** 使你可以在辅助、 [Azure 配对区域](../best-practices-availability-paired-regions.md)中还原数据。
+
+它支持以下数据源：
+
+- Azure VM
+- 托管在 Azure Vm 上的 SQL 数据库
+- 在 Azure Vm 上托管的 SAP HANA 数据库
+
+使用跨区域还原，可以：
 
 - 存在审核或合规性要求时开展演练
-- 主要区域中发生灾难时还原 VM 或其磁盘。
+- 如果主要区域发生灾难，则还原数据
+
+恢复 VM 时，可以还原 VM 或其磁盘。 如果要从 Azure Vm 上托管的 SQL/SAP HANA 数据库还原，可以还原数据库或其文件。
 
 若要选择此功能，请从 "**备份配置**" 窗格中选择 "**启用跨区域还原**"。
 
-对于此过程，定价会影响到存储级别。
+由于此过程在存储级别，因此存在 [定价影响](https://azure.microsoft.com/pricing/details/backup/)。
 
 >[!NOTE]
 >开始之前：
 >
 >- 有关支持的托管类型和区域的列表，请查看[支持矩阵](backup-support-matrix.md#cross-region-restore)。
->- 所有 Azure 公共区域中现已推出跨区域还原 (CRR) 功能的预览版。
+>- 跨区域还原 (CRR) 功能现已在所有 Azure 公共区域和主权云中预览。
 >- CRR 是保管库级别的选用功能（默认已禁用），适用于任何 GRS 保管库。
 >- 选择启用后，备份项最长可能需要在 48 小时后才出现在次要区域中。
->- 目前仅支持对备份管理类型-ARM Azure VM 的 CRR (不支持经典 Azure VM) 。  如果其他管理类型支持 CRR，则会 **自动** 注册。
+>- 目前仅支持 azure 资源管理器 Azure Vm 的 CRR。 不支持经典 Azure Vm。  如果其他管理类型支持 CRR，则会 **自动** 注册。
 >- 首次启动保护后，不能再将跨区域还原恢复为 GRS 或 LRS。
 
 ### <a name="configure-cross-region-restore"></a>配置跨区域还原
@@ -69,15 +80,13 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 1. 在门户中，转到“恢复服务保管库”>“设置”>“属性”。
 2. 选择 " **在此保管库中启用跨区域还原** " 以启用该功能。
 
-   ![在此保管库中选择 "启用跨区域还原" 之前](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![启用跨区域还原](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-   ![在此保管库中选择 "启用跨区域还原" 后](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+请参阅以下文章，了解有关备份和还原与 CRR 的详细信息：
 
-了解如何[查看次要区域中的备份项](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)。
-
-了解如何[在次要区域中还原](backup-azure-arm-restore-vms.md#restore-in-secondary-region)。
-
-了解如何[监视次要区域还原作业](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)。
+- [Azure Vm 的跨区域还原](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [针对 SQL 数据库的跨区域还原](restore-sql-database-azure-vm.md#cross-region-restore)
+- [跨区域还原 SAP HANA 数据库](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>设置加密设置
 

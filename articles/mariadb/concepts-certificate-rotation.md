@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f35a43e9cbffb2613f7a98e02b03840c774e5999
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: a52dd48bb97c8e7979771bdc2dbb50654493b088
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708149"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972601"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 的根 CA 更改的更改
 
@@ -122,8 +122,28 @@ Azure Database for MariaDB 使用的这些证书由受信任的证书颁发机�
 ### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. 如果我使用的是读取副本，是否只需在主服务器或读取副本上执行此更新？
 由于此更新是客户端更改，因此，如果客户端用于从副本服务器读取数据，则还需要对这些客户端应用更改。
 
-### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. 我们是否有服务器端查询来验证是否正在使用 SSL？
+### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. 如果我使用的是数据复制，是否需要执行任何操作？
+如果使用 [数据复制](concepts-data-in-replication.md) 来连接到 Azure Database for MySQL，则需要考虑以下两个事项：
+*   如果数据复制来自虚拟机 (本地或 Azure 虚拟机) Azure Database for MySQL，则需要检查是否使用了 SSL 来创建副本。 运行 " **显示从属状态** " 并检查以下设置。  
+
+    ```azurecli-interactive
+    Master_SSL_Allowed            : Yes
+    Master_SSL_CA_File            : ~\azure_mysqlservice.pem
+    Master_SSL_CA_Path            :
+    Master_SSL_Cert               : ~\azure_mysqlclient_cert.pem
+    Master_SSL_Cipher             :
+    Master_SSL_Key                : ~\azure_mysqlclient_key.pem
+    ```
+
+    如果你看到为 CA_file 提供了证书，SSL_Cert 和 SSL_Key，则需要通过添加 [新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)更新文件。
+
+*   如果数据复制在两个 Azure Database for MySQL 之间，则需要通过执行调用 MySQL 来重置副本 **。 az_replication_change_master** ，并提供新的双重根证书作为最后一个参数 [master_ssl_ca](howto-data-in-replication.md#link-the-master-and-replica-servers-to-start-data-in-replication)。
+
+### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. 我们是否有服务器端查询来验证是否正在使用 SSL？
 若要验证是否正在使用 SSL 连接连接到服务器，请参阅 [ssl 验证](howto-configure-ssl.md#verify-the-ssl-connection)。
 
-### <a name="13-what-if-i-have-further-questions"></a>13. 如果我有其他问题，该怎么办？
-如果有疑问，请从 [Microsoft Q&的](mailto:AzureDatabaseformariadb@service.microsoft.com)社区专家那里获取答案。 如果你有支持计划并需要技术 [帮助，请联系我们](mailto:AzureDatabaseformariadb@service.microsoft.com)
+### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的证书文件中已有 DigiCertGlobalRootG2，是否需要执行任何操作？
+不是。 如果你的证书文件已有 **DigiCertGlobalRootG2**，则无需执行任何操作。
+
+### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他问题，该怎么办？
+如果有疑问，请从 [Microsoft Q&的](mailto:AzureDatabaseformariadb@service.microsoft.com)社区专家那里获取答案。 如果你有支持计划并需要技术帮助[，请联系我们。](mailto:AzureDatabaseformariadb@service.microsoft.com)

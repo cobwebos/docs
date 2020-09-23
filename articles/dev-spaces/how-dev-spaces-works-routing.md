@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程以及路由的工作原理
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6987bbaaebe342b571d5b19fe0e37bebd5b8b6e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213397"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981312"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>路由如何处理 Azure Dev Spaces
 
@@ -64,11 +64,7 @@ Dev 空间构建在 AKS 之上，并使用相同的 [网络概念](../aks/concep
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看 Azure Dev Spaces 如何使用路由来提供快速迭代和开发的一些示例，请参阅 [使用 Kubernetes 的本地过程如何工作][how-it-works-local-process-kubernetes]， [如何使用 Azure Dev Spaces 进行远程调试，以及如何在][how-it-works-remote-debugging] [Azure Kubernetes 服务中使用 GitHub & 操作][pr-flow]。
+若要查看 Azure Dev Spaces 如何使用路由提供快速迭代和开发的示例，请参阅 [使用 Azure Dev Spaces 远程调试代码的工作原理][how-it-works-remote-debugging]。
 
 
-[helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
-[pr-flow]: how-to/github-actions.md
-[troubleshooting]: troubleshooting.md

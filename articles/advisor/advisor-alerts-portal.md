@@ -3,26 +3,26 @@ title: 使用 Azure 门户为新建议创建 Azure 顾问警报
 description: 为新建议创建 Azure 顾问警报
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507210"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973658"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 门户创建有关新建议的 Azure 顾问警报 
 
 本文介绍如何使用 Azure 门户从 Azure Advisor 设置新建议的警报。 
 
-当 Azure 顾问检测到某个资源的新建议时，会将事件存储在[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。 可以使用特定于建议的警报创建体验，从 Azure Advisor 为这些事件设置警报。 你可以选择一个订阅，还可以选择一个资源组来指定你想要接收警报的资源。 
+当 Azure 顾问检测到针对某项资源的新建议时，将在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中存储一个事件。 可以使用特定于建议的警报创建体验，为来自 Azure 顾问的这些事件设置警报。 可以选择订阅和资源组（可选）来指定想要接收其警报的资源。 
 
-还可以通过使用以下属性来确定建议类型：
+还可以使用以下属性来确定建议类型：
 
 * 类别
 * 影响级别
 * 建议类型
 
-你还可以配置触发警报时将发生的操作：  
+还可通过以下方式配置触发警报时将发生的操作：  
 
 * 选择现有操作组
 * 创建新的操作组
@@ -30,26 +30,26 @@ ms.locfileid: "86507210"
 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
 > [!NOTE] 
-> Advisor 警报目前仅适用于高可用性、性能和成本建议。 不支持安全建议。 
+> 顾问警报目前仅适用于高可用性、性能和成本建议。 不支持安全建议。 
 
 ## <a name="create-alert-rule"></a>创建警报规则
-1. 在**门户**中，选择 " **Azure 顾问**"。
+1. 在 **门户**中，选择 " **Azure 顾问**"。
 
     ![门户中的 Azure 顾问](./media/advisor-alerts/create1.png)
 
-2. 在左侧菜单的 "**监视**" 部分，选择 "**警报**"。 
+2. 在左侧菜单的 " **监视** " 部分，选择 " **警报**"。 
 
     ![Advisor 中的警报](./media/advisor-alerts/create2.png)
 
-3. 选择 "**新顾问警报**"。
+3. 选择 " **新顾问警报**"。
 
     ![新顾问警报](./media/advisor-alerts/create3.png)
 
-4. 在 "**作用域**" 部分中，选择要向其发出警报的订阅和资源组（可选）。 
+4. 在 " **作用域** " 部分中，选择要向其发出警报的订阅和资源组（可选）。 
 
     ![Advisor 警报范围](./media/advisor-alerts/create4.png)
 
-5. 在 "**条件**" 部分中，选择要用于配置警报的方法。 如果要针对某个类别和/或影响级别的所有建议进行警报，请选择 "**类别和影响级别**"。 如果要针对特定类型的所有建议进行警报，请选择 "**建议类型**"。
+5. 在 " **条件** " 部分中，选择要用于配置警报的方法。 如果要针对某个类别和/或影响级别的所有建议进行警报，请选择 " **类别和影响级别**"。 如果要针对特定类型的所有建议进行警报，请选择 " **建议类型**"。
 
     ![Azure Advisor 警报条件](./media/advisor-alerts/create5.png)
 
@@ -57,14 +57,13 @@ ms.locfileid: "86507210"
 
     ![Advisor 警报操作组](./media/advisor-alerts/create6.png)
 
-7. 在 "**操作组**" 部分中，选择 "**添加现有**项" 以使用已创建的操作组，或选择 "**新建**" 以设置新的[操作组](../azure-monitor/platform/action-groups.md)。 
+7. 在 " **操作组** " 部分中，选择 " **添加现有** 项" 以使用已创建的操作组，或选择 " **新建** " 以设置新的 [操作组](../azure-monitor/platform/action-groups.md)。 
 
     ![Advisor 警报添加现有](./media/advisor-alerts/create7.png)
 
-8. 在 "警报详细信息" 部分中，为警报指定名称和简短说明。 如果希望启用警报，请将 "**创建时启用规则**" 选项设置为 **"是"**。 然后选择要将警报保存到的资源组。 这不会影响建议的目标范围。 
+8. 在 "警报详细信息" 部分中，为警报指定名称和简短说明。 如果希望启用警报，请将 " **创建时启用规则** " 选项设置为 **"是"**。 然后选择要将警报保存到的资源组。 这不会影响建议的目标范围。 
 
-    ![Azure 顾问横幅](./media/advisor-alerts/create8.png)
-
+    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text=""警报详细信息" 部分的屏幕截图。":::
 
 
 ## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>将建议警报配置为使用 webhook
@@ -170,11 +169,11 @@ ms.locfileid: "86507210"
 }
 ```
 
-在任一架构中，你都可以通过查找**eventSource** Is `Recommendation` ， **operationName**是，来确定顾问建议事件 `Microsoft.Advisor/recommendations/available/action` 。
+在任一架构中，你都可以通过查找 **eventSource** Is `Recommendation` ， **operationName**  是，来确定顾问建议事件 `Microsoft.Advisor/recommendations/available/action` 。
 
 你可能想要使用的一些其他重要字段是： 
 
-* *alertTargetIDs* （在公用架构中）或*resourceId* （旧架构）
+* 通用架构) 或*resourceId* (旧架构中的*alertTargetIDs* () 
 * *recommendationType*
 * *recommendationName*
 * *recommendationCategory*
@@ -186,13 +185,13 @@ ms.locfileid: "86507210"
 
 在 Azure Advisor 中，可以编辑、删除或禁用和启用建议警报。 
 
-1. 在**门户**中，选择 " **Azure 顾问**"。
+1. 在 **门户**中，选择 " **Azure 顾问**"。
 
-    ![Azure 顾问横幅](./media/advisor-alerts/create1.png)
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="显示选定的 Azure 顾问 Azure 门户菜单的屏幕截图。":::
 
-2. 在左侧菜单的 "**监视**" 部分，选择 "**警报**"。
+2. 在左侧菜单的 " **监视** " 部分，选择 " **警报**"。
 
-    ![Azure 顾问横幅](./media/advisor-alerts/create2.png)
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="显示选定警报的 "Azure 门户" 菜单的屏幕截图。":::
 
 3. 若要编辑警报，请单击警报名称以打开警报，然后编辑要编辑的字段。
 

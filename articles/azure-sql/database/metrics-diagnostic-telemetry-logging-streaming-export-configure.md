@@ -1,6 +1,6 @@
 ---
 title: 配置指标和资源日志的流式导出
-description: 了解如何配置指标和资源日志的流式导出，包括从 Azure SQL 数据库和 Azure SQL 托管实例到所选目标的智能诊断分析，以存储有关资源利用率和查询执行统计信息的信息。
+description: 了解如何配置指标和资源日志的流式导出，包括将 Azure SQL 数据库和 Azure SQL 托管实例中的智能诊断分析导出到所选目标，以存储有关资源利用率和查询执行统计的信息。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: performance
@@ -11,14 +11,14 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085593"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973039"
 ---
-# <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>配置 Azure SQL 数据库和 SQL 托管实例诊断遥测的流式导出
+# <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>配置 Azure SQL 数据库和 Azure SQL 托管实例诊断遥测的流式导出
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 本文介绍可导出到多个目标之一以进行分析的 Azure SQL 数据库性能指标和资源日志。 其中将会介绍如何通过 Azure 门户、PowerShell、Azure CLI、REST API 和 Azure 资源管理器模板配置这些诊断遥测数据的流式导出。
@@ -33,7 +33,7 @@ ms.locfileid: "86085593"
 
 在可导出的诊断遥测数据中，最重要的是智能见解 (SQLInsights) 日志。 [智能见解](intelligent-insights-overview.md)使用内置智能，通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。 检测后，将执行详细分析，并生成包含对问题的智能评估的智能见解日志。 此评估包含对数据库性能问题的根本原因分析，以及为性能改进而提供的可行性建议。 需要配置此日志的流式导出才能查看其内容。
 
-除了流式传输智能见解日志的导出，还可以导出各种性能指标和其他数据库日志。 下表描述了可以配置为流式导出到多个目标之一的性能指标和资源日志。 可为单一数据库、弹性池和共用数据库以及托管实例和实例数据库配置此诊断遥测。
+除了流式导出智能见解日志以外，还可以导出各种性能指标和其他数据库日志。 下表描述了可以配置为流式导出到多个目标之一的性能指标和资源日志。 可为单一数据库、弹性池和共用数据库以及托管实例和实例数据库配置此诊断遥测。
 
 | 数据库的诊断遥测 | Azure SQL 数据库支持 | Azure SQL 托管实例支持 |
 | :------------------- | ----- | ----- |
@@ -41,11 +41,11 @@ ms.locfileid: "86085593"
 | [实例和应用高级指标](#advanced-metrics)：包含所使用的 tempdb 系统数据库数据和日志文件大小以及 tempdb 百分比日志文件。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
-| [Errors](#errors-dataset)：包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
+| [错误](#errors-dataset)：包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
 | [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
 | [Blocks](#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
-| [Deadlocks](#deadlocks-dataset)：包含有关数据库发生的死锁事件的信息。 | 是 | 否 |
+| [死锁数](#deadlocks-dataset)：包含有关数据库发生的死锁事件的信息。 | 是 | 否 |
 | [AutomaticTuning](#automatic-tuning-dataset)：包含有关数据库的自动优化建议的信息。 | 是 | 否 |
 | [SQLInsights](#intelligent-insights-dataset)：包含针对数据库性能的智能见解。 有关详细信息，请参阅[智能见解](intelligent-insights-overview.md)。 | 是 | 是 |
 
@@ -58,21 +58,21 @@ ms.locfileid: "86085593"
 
 - **[Log Analytics 工作区](#stream-into-sql-analytics)**：
 
-  流式传输到[Log Analytics 工作区](../../azure-monitor/platform/resource-logs-collect-workspace.md)的数据可由[SQL Analytics](../../azure-monitor/insights/azure-sql.md)使用。 SQL Analytics 是一种仅限云的监视解决方案，提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 可以使用收集的其他监视数据对流式传输到 Log Analytics 工作区的数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果
+  流式传输到 [Log Analytics 工作区](../../azure-monitor/platform/resource-logs-collect-workspace.md) 的数据可由 [SQL Analytics](../../azure-monitor/insights/azure-sql.md)使用。 SQL Analytics 是一种仅限云的监视解决方案，提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 可以使用收集的其他监视数据对流式传输到 Log Analytics 工作区的数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果
 - **[Azure 事件中心](#stream-into-event-hubs)** ：
 
   将数据流式传输到 [Azure 事件中心](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)可提供以下功能：
 
-  - 将日志流式传输到第三方日志记录和遥测系统：  将所有指标和资源日志流式传输到单个事件中心，以通过管道将日志数据传送到第三方 SIEM 或日志分析工具。
+  - 将日志流式传输到第三方日志记录和遥测系统：将所有指标和资源日志流式传输到单个事件中心，以通过管道将日志数据传送到第三方 SIEM 或日志分析工具。
   - **生成自定义遥测和日志记录平台**：可利用事件中心高度可缩放的发布-订阅功能，灵活地将指标和资源日志引入到自定义遥测平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
-  - **通过将数据流式传输到 Power BI 来查看服务运行状况**：使用事件中心、流分析和 Power BI 将诊断数据转换为 Azure 服务的近乎实时见解。 有关此解决方案的详细信息，请参阅[流分析和 Power BI：用于流式处理数据的实时分析仪表板](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard)。
+  - **通过将数据流式传输到 Power BI 来查看服务运行状况**：使用事件中心、流分析和 Power BI 将诊断数据转换为 Azure 服务的近乎实时见解。 有关此解决方案的详细信息，请参阅 [流分析和 Power BI：用于流式处理数据的实时分析仪表板](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) 。
 - **[Azure 存储](#stream-into-azure-storage)** ：
 
   将数据流式传输到 [Azure 存储](../../azure-monitor/platform/resource-logs-collect-storage.md)可以存档大量诊断遥测数据，并且成本只是前两种流式传输选项的一小部分。
 
 流式传输到这些目标之一的诊断遥测数据可用于度量资源利用率和查询执行统计信息，以便更轻松地监视性能。
 
-![体系结构](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
+![关系图显示了多个托管实例中的多个 SQL 数据库和数据库，将遥测数据发送到 Azure 诊断，后者将信息转发到 Azure SQL Analytics、事件中心和存储。](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>启用和配置诊断遥测数据的流式导出
 
@@ -89,7 +89,7 @@ ms.locfileid: "86085593"
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>配置诊断遥测数据的流式导出
 
-可以使用 Azure 门户中的“诊断设置”菜单来启用和配置诊断遥测数据的流式传输。  此外，还可以使用 PowerShell、Azure CLI、[REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 和[资源管理器模板](../../azure-monitor/platform/diagnostic-settings-template.md)来配置诊断遥测数据的流式传输。 可设置以下目标来流式传输诊断遥测数据：Azure 存储、Azure 事件中心和 Azure Monitor 日志。
+可以使用 Azure 门户中的“诊断设置”菜单来启用和配置诊断遥测数据的流式传输。 此外，还可以使用 PowerShell、Azure CLI、[REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 和[资源管理器模板](../../azure-monitor/platform/diagnostic-settings-template.md)来配置诊断遥测数据的流式传输。 可设置以下目标来流式传输诊断遥测数据：Azure 存储、Azure 事件中心和 Azure Monitor 日志。
 
 > [!IMPORTANT]
 > 默认不会启用诊断遥测数据的流式导出。
@@ -116,18 +116,18 @@ ms.locfileid: "86085593"
 若要为弹性池资源启用诊断遥测流，请执行以下步骤：
 
 1. 在 Azure 门户中转到**弹性池**资源。
-2. 选择“诊断设置”。 
-3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  
+2. 选择“诊断设置”。
+3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置 
 
    ![为弹性池启用诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-enable.png)
 
 4. 输入设置名称供自己参考。
-5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
-6. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者选择现有的工作区。  
+5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。  
+6. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者选择现有的工作区。 
 7. 选中弹性池诊断遥测对应的复选框：**基本**指标。
    ![为弹性池配置诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
-8. 选择“保存”。
+8. 选择“保存” 。
 9. 另外，请为弹性池中需要监视的每个数据库配置诊断遥测数据的流式传输，只需按下一部分所述的步骤操作即可。
 
 > [!IMPORTANT]
@@ -135,7 +135,7 @@ ms.locfileid: "86085593"
 
 ### <a name="databases-in-azure-sql-database"></a>Azure SQL 数据库中的数据库
 
-可以设置数据库资源来收集以下诊断遥测数据：
+可将数据库资源设置为收集以下诊断遥测数据：
 
 | 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
@@ -144,19 +144,19 @@ ms.locfileid: "86085593"
 若要为单一数据库或共用数据库启用诊断遥测数据的流式传输，请执行以下步骤：
 
 1. 转到 Azure **SQL 数据库**资源。
-2. 选择“诊断设置”。 
-3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置   最多可以创建三个并行连接用于流式传输诊断遥测数据。
-4. 选择“添加诊断设置”，以便配置将诊断数据并行流式传输到多个资源。 
+2. 选择“诊断设置”。
+3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  最多可以创建三个并行连接用于流式传输诊断遥测数据。
+4. 选择“添加诊断设置”，以便配置将诊断数据并行流式传输到多个资源。
 
    ![为单一数据库和共用数据库启用诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-enable.png)
 
 5. 输入设置名称供自己参考。
-6. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
-7. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。         
-8. 对于高级的一分钟间隔监视体验，请选中“基本”指标对应的复选框。 
+6. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。  
+7. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。        
+8. 对于高级的一分钟间隔监视体验，请选中“基本”指标对应的复选框。
 
-   ![配置 Azure SQL 数据库的诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
-9. 选择“保存”。
+   ![为 Azure SQL 数据库配置诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
+9. 选择“保存” 。
 10. 针对要监视的每个数据库重复上述步骤。
 
 > [!TIP]
@@ -180,25 +180,25 @@ ms.locfileid: "86085593"
 若要为托管实例资源启用诊断遥测数据的流式传输，请执行以下步骤：
 
 1. 在 Azure 门户中转到**托管实例**资源。
-2. 选择“诊断设置”。 
-3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  
+2. 选择“诊断设置”。
+3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置 
 
    ![为托管实例启用诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-enable.png)
 
 4. 输入设置名称供自己参考。
-5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
-6. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者使用现有的工作区。  
+5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。  
+6. 对于 Log Analytics，请选择“配置”，并通过选择“+创建新工作区”来创建新工作区；或者使用现有的工作区。 
 7. 选中实例诊断遥测对应的复选框：**ResourceUsageStats**。
 
    ![为托管实例配置诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
-8. 选择“保存”。
+8. 选择“保存” 。
 9. 另外，请为托管实例中需要监视的每个实例数据库配置诊断遥测流，只需按下一部分所述的步骤操作即可。
 
 > [!IMPORTANT]
 > 除了为托管实例配置诊断遥测数据，还需为每个实例数据库配置诊断遥测数据。
 
-### <a name="databases-in-azure-sql-managed-instance"></a>Azure SQL 中的数据库托管实例
+### <a name="databases-in-azure-sql-managed-instance"></a>Azure SQL 托管实例中的数据库
 
 可将实例数据库资源设置为收集以下诊断遥测数据：
 
@@ -209,18 +209,18 @@ ms.locfileid: "86085593"
 若要为实例数据库启用诊断遥测数据的流式传输，请执行以下步骤：
 
 1. 转到托管实例中的**实例数据库**资源。
-2. 选择“诊断设置”。 
-3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  
+2. 选择“诊断设置”。
+3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置 
    - 最多可以创建三 (3) 个并行连接用于流式传输诊断遥测数据。
-   - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。 
+   - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。
 
    ![为实例数据库启用诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-enable.png)
 
 4. 输入设置名称供自己参考。
-5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
-6. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。    
+5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。  
+6. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。   
    ![为实例数据库配置诊断](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-selection.png)
-7. 选择“保存”  。
+7. 选择“保存” 。
 8. 针对要监视的每个实例数据库重复上述步骤。
 
 > [!TIP]
@@ -231,7 +231,7 @@ ms.locfileid: "86085593"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受支持，但所有将来的开发都适用于 Az .Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> 仍然支持 PowerShell Azure 资源管理器模块，但是所有未来的开发都是针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 可以使用 PowerShell 启用指标和诊断日志记录。
 
@@ -335,7 +335,7 @@ Azure SQL 数据库和 Azure SQL 托管实例度量值以及流式传输到 Log 
 2. 在解决方案中创建 Log Analytics 工作区。
 3. 将数据库配置为将诊断遥测流式传输到工作区中。
 
-您可以使用 Azure 门户的 "诊断设置" 选项卡中的内置 "**发送到 Log Analytics** " 选项配置此诊断遥测的流式导出。 还可以通过[PowerShell cmdlet](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)或[资源管理器模板](../../azure-monitor/platform/diagnostic-settings-template.md)使用诊断设置，启用到 Log Analytics 工作区的流式传输。
+您可以使用 Azure 门户的 "诊断设置" 选项卡中的内置 " **发送到 Log Analytics** " 选项配置此诊断遥测的流式导出。 还可以通过 [PowerShell cmdlet](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)或 [资源管理器模板](../../azure-monitor/platform/diagnostic-settings-template.md)使用诊断设置，启用到 Log Analytics 工作区的流式传输。
 
 ### <a name="create-an-azure-sql-analytics-resource"></a>创建 Azure SQL Analytics 资源
 
@@ -343,7 +343,7 @@ Azure SQL 数据库和 Azure SQL 托管实例度量值以及流式传输到 Log 
 
    ![在门户中搜索 Azure SQL Analytics](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/sql-analytics-in-marketplace.png)
 
-2. 在解决方案的 "概述" 屏幕上选择 "**创建**"。
+2. 在解决方案的 "概述" 屏幕上选择 " **创建** "。
 
 3. 在“Azure SQL Analytics”窗体中填写所需的附加信息：工作区名称、订阅、资源组、位置和定价层。
 
@@ -353,18 +353,18 @@ Azure SQL 数据库和 Azure SQL 托管实例度量值以及流式传输到 Log 
 
 ### <a name="configure-the-resource-to-record-metrics-and-resource-logs"></a>将资源配置为记录指标和资源日志
 
-需要为单一数据库、共用数据库、弹性池、托管实例和实例数据库单独配置诊断遥测流。 使用 Azure 门户配置资源记录指标的最简单方法。 有关详细步骤，请参阅[配置诊断遥测的流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal#configure-the-streaming-export-of-diagnostic-telemetry)。
+需要为单一数据库、共用数据库、弹性池、托管实例和实例数据库单独配置诊断遥测流。 使用 Azure 门户配置资源记录指标的最简单方法。 有关详细步骤，请参阅 [配置诊断遥测的流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal#configure-the-streaming-export-of-diagnostic-telemetry)。
 
 ### <a name="use-azure-sql-analytics-for-monitoring-and-alerting"></a>使用 Azure SQL Analytics 进行监视和警报
 
 您可以使用 SQL Analytics 作为分层仪表板来查看数据库资源。
 
-- 若要了解如何使用 Azure SQL Analytics，请参阅[使用 SQL Analytics 进行监视](../../azure-monitor/insights/azure-sql.md)。
-- 若要了解如何在 SQL 分析中设置警报，请参阅为[数据库、弹性池和托管实例创建警报](../../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)。
+- 若要了解如何使用 Azure SQL Analytics，请参阅 [使用 SQL Analytics 进行监视](../../azure-monitor/insights/azure-sql.md)。
+- 若要了解如何在 SQL 分析中设置警报，请参阅为 [数据库、弹性池和托管实例创建警报](../../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)。
 
 ## <a name="stream-into-event-hubs"></a>流式传输到事件中心
 
-你可以使用 Azure 门户中的内置**流到事件中心**选项，将 Azure sql 数据库和 azure sql 托管实例度量值和资源日志流式传输到事件中心。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用服务总线规则 ID。 请确保事件中心与数据库和服务器位于同一区域。
+在 Azure 门户中使用内置的“流式传输到事件中心”选项可将 Azure SQL 数据库和 Azure SQL 托管实例指标和资源日志流式传输到事件中心。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用服务总线规则 ID。 请确保事件中心与数据库和服务器位于同一区域。
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>如何处理事件中心内的指标和资源日志
 
@@ -389,7 +389,7 @@ Azure SQL 数据库和 Azure SQL 托管实例度量值以及流式传输到 Log 
 
 ## <a name="stream-into-azure-storage"></a>流式传输到 Azure 存储中
 
-使用 Azure 门户中内置的“存档到存储帐户”选项，可以在 Azure 存储中存储指标和资源日志。  此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用存储。
+使用 Azure 门户中内置的“存档到存储帐户”选项，可以在 Azure 存储中存储指标和资源日志。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用存储。
 
 ### <a name="schema-of-metrics-and-resource-logs-in-the-storage-account"></a>存储帐户中指标和资源日志的架构
 
@@ -424,7 +424,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 > [!IMPORTANT]
 > 与空闲数据相比，工作负荷较重的活动数据库越多，引入的数据就越多。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
-如果使用 Azure SQL Analytics，则可以选择 Azure SQL Analytics 导航菜单上的“OMS 工作区”，然后选择“使用情况”和“预估成本”，来监视数据引入消耗量    。
+如果使用 Azure SQL Analytics，则可以选择 Azure SQL Analytics 导航菜单上的“OMS 工作区”，然后选择“使用情况”和“预估成本”，来监视数据引入消耗量  。
 
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
@@ -455,7 +455,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 |**指标**|**指标显示名称**|**说明**|
 |---|---|---|
-|sqlserver_process_core_percent<sup>1</sup>|SQL process core 百分比|SQL 进程的 CPU 使用率百分比（由操作系统度量）。|
+|sqlserver_process_core_percent<sup>1</sup>|SQL 进程核心百分比|SQL 进程的 CPU 使用率百分比（由操作系统度量）。|
 |sqlserver_process_memory_percent<sup>1</sup> |SQL 进程内存百分比|SQL 进程的内存使用率百分比（由操作系统度量）。|
 |tempdb_data_size<sup>2</sup>| Tempdb 数据文件大小 (KB) |Tempdb 数据文件大小 (KB)。|
 |tempdb_log_size<sup>2</sup>| Tempdb 日志文件大小 (KB) |Tempdb 日志文件大小 (KB)。|
@@ -471,7 +471,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="resource-usage-stats-for-managed-instances"></a>托管实例的资源使用情况统计信息
 
-|Property|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终：Azure|
@@ -585,7 +585,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="errors-dataset"></a>错误数据集
 
-|Property|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终：Azure |
@@ -610,7 +610,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_hash_s|失败查询的查询哈希（如果有） |
 |query_plan_hash_s|失败查询的查询计划哈希（如果有） |
 
-了解有关[SQL 错误消息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)的详细信息。
+详细了解 [SQL 错误消息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)。
 
 #### <a name="database-wait-statistics-dataset"></a>数据库等待统计数据集
 
@@ -643,7 +643,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="time-outs-dataset"></a>超时数据集
 
-|Property|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终：Azure |
@@ -690,7 +690,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="deadlocks-dataset"></a>死锁数据集
 
-|Property|说明|
+|属性|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终：Azure |
