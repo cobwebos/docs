@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049792"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979380"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
 > [!CAUTION]
-> Azure App Service 上的 ASP.NET Core 应用程序正在运行探查器 bug。 我们有一个修补程序，但需要花费几周的时间来部署全球。 可以通过将 Application Insights SDK 添加到应用程序中，使用[此处](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的说明来解决该错误。
+> Azure App Service 上的 ASP.NET Core 应用程序正在运行探查器 bug。 我们有一个修补程序，但需要花费几周的时间来部署全球。 可以通过将 Application Insights SDK 添加到应用程序中，使用 [此处](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的说明来解决该错误。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>常规故障排除
 
@@ -79,12 +79,12 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
    1. 在“工具”菜单中，选择“WebJobs 仪表板” 。  
       “WebJobs”窗格随即打开。 
    
-      ![profiler-webjob]   
+      ![屏幕截图显示 "Web 作业" 窗格，其中显示作业的名称、状态和上次运行时间。][profiler-webjob]   
    
    1. 若要查看 webjob 的详细信息（包括日志），请选择“ApplicationInsightsProfiler3”链接。  
      “连续 WebJob 详细信息”窗格随即打开。
 
-      ![profiler-webjob-log]
+      ![屏幕截图显示连续的 WebJob 详细信息窗格。][profiler-webjob-log]
 
 如果你不明白 Profiler 为何不能正常工作，可以下载日志并将其发送给我们的团队 serviceprofilerhelp@microsoft.com 以获取帮助。 
     
@@ -127,7 +127,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azure 门户](https://portal.azure.com)中打开 Web 应用资源。 在“WebJobs”窗格中，查看 ApplicationInsightsProfiler 的状态 。 如果探查器未运行，请打开“日志”获取详细信息。
 
-## <a name="troubleshoot-vms-and-cloud-services"></a>Vm 和云服务故障排除
+## <a name="troubleshoot-vms-and-cloud-services"></a>对 VM 和云服务进行故障排除
 
 >**云服务 WAD 中附带的探查器中的 bug 已修复。** 用于云服务的最新版本的 WAD (1.12.2.0) 适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但不会立即升级。 若要强制升级，可以重新部署服务或重新启动节点。
 
@@ -140,9 +140,9 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 若要检查用于配置 Azure 诊断的设置：
 
-1. 登录到虚拟机 (VM)，然后打开位于此位置的日志文件。 此插件版本在您的计算机上可能会更高。
+1. 登录到虚拟机 (VM)，然后打开位于此位置的日志文件。 此插件版本在你的计算机上可能会更高。
     
-    对于 Vm：
+    对于 VM：
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
@@ -154,9 +154,9 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 1. 在该文件中，可以搜索字符串“WadCfg”，找到传递给 VM 用于配置 Azure 诊断的设置。 可以检查 Profiler 接收器使用的 iKey 是否正确。
 
-1. 检查用于启动 Profiler 的命令行。 用于启动 Profiler 的参数位于以下文件中。 （驱动器可能为 c：或 d：，目录可能已隐藏。）
+1. 检查用于启动 Profiler 的命令行。 用于启动 Profiler 的参数位于以下文件中。 （驱动器可能是 C: 或 D: 并且可能会隐藏目录。）
 
-    对于 Vm：
+    对于 VM：
     ```
     C:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
@@ -168,9 +168,9 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 1. 确保 Profiler 命令行中的 iKey 是正确的。 
 
-1. 使用前面*config.js*文件中的路径，检查探查器日志文件，名为**BootstrapN**。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
+1. 使用上述 config.json 文件中的路径检查 Profiler 日志文件 BootstrapN.log。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
 
-    对于 Vm，文件通常位于：
+    对于 VM，该文件通常位于此处：
     ```
     C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
     ```

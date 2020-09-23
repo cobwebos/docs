@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970044"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -51,7 +51,7 @@ ms.locfileid: "88958722"
 
 蓝色边框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
 
-![检查定价层](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text=") 选择 (应用服务计划的应用页面左侧导航菜单的屏幕截图。":::
 
 如果应用服务计划不在 **F1** 层中，请关闭“纵向扩展”**** 页并跳转到[购买域](#buy-the-domain)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "88958722"
 
 单击“应用”。
 
-![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="生产类别中的自定义域定价层的屏幕截图，其中突出显示了 "生产" 选项卡、B1 计划和 "应用" 按钮。":::
 
 看到以下通知时，说明缩放操作已完成。
 

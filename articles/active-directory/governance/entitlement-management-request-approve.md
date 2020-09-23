@@ -1,6 +1,6 @@
 ---
-title: 批准或拒绝访问请求-Azure AD 的权利管理
-description: 了解如何使用 "我的访问门户" 批准或拒绝对 Azure Active Directory 授权管理中访问包的请求。
+title: 批准或拒绝访问请求 - Azure AD 权利管理
+description: 了解如何在 Azure Active Directory 权利管理中使用“我的访问权限”门户来批准或拒绝对某个访问包的请求。
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,14 +16,14 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798352"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979795"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中批准或拒绝访问请求
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中批准或拒绝访问请求
 
 可以使用 Azure AD 权利管理来配置策略，要求对访问包进行审批，并选择一个或多个审批者。 本文介绍指定的审批者如何批准或拒绝针对访问包的请求。
 
@@ -43,11 +43,27 @@ ms.locfileid: "87798352"
 
 如果没有电子邮件，可以通过以下步骤来查找待审批的访问请求。
 
-1. 在上登录到 "我的访问门户" [https://myaccess.microsoft.com](https://myaccess.microsoft.com) 。   (美国政府，"我的 Access 门户" 链接中的域将为 `myaccess.microsoft.us` 。 ) 
+1. 在上登录到 "我的访问门户" [https://myaccess.microsoft.com](https://myaccess.microsoft.com) 。  （对于 US Government 版，“我的访问权限”门户链接中的域将是 `myaccess.microsoft.us`。）
 
 1. 在左侧菜单中，单击“审批”即可看到待审批的访问请求列表。****
 
 1. 在“等待处理”选项卡上找到请求。****
+
+## <a name="view-requestors-answers-to-questions-preview"></a> (预览查看请求者的问题答案) 
+
+1. 导航到 "我的 Access" 中的 " **审批** " 选项卡。
+
+1. 前往你要批准的请求，然后单击 " **详细信息**"。 如果已准备好做出决定，还可以单击 " **批准** " 或 " **拒绝** "。
+
+1. 单击 " **请求详细信息**"。
+
+     ![我的访问门户-访问请求-单击请求详细信息](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+
+1. 请求者提供的信息将位于面板的底部。
+
+     ![我的访问权限门户 - 访问请求](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+
+1. 根据请求者提供的信息，你可以随后批准或拒绝该请求。 请参阅批准或拒绝指导请求中的步骤。
 
 ## <a name="approve-or-deny-request"></a>批准或拒绝请求
 

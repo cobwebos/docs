@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0020efea69fc684ff6ebebf286718aa2a720910e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815702"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900798"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -25,10 +25,6 @@ ms.locfileid: "88815702"
 ### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>通过托管标识对 SQL 数据库输出进行身份验证
 
 Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)。 托管标识消除了基于用户的身份验证方法的限制，例如由于密码更改需要重新进行身份验证。 
-
-### <a name="output-to-azure-synapse-analytics"></a>输出到 Azure Synapse Analytics
-
-Azure 流分析作业可以输出到 [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) 中的 SQL 池表，并可处理高达 200 MB/秒的吞吐量速率。这可支持报表和仪表板等工作负载带来的最苛刻的实时分析和热路径数据处理需求。  
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>通过 Azure 机器学习管理的自定义 ML 模型进行实时高性能评分
 
@@ -52,7 +48,7 @@ Azure 流分析通过利用自定义预先训练的机器学习模型（由 Azur
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>适用于 Azure 流分析的 Visual Studio Code
 
-可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)。
+可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](https://docs.microsoft.com/azure/stream-analytics/quick-create-visual-studio-code)。
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>在 Visual Studio Code 中使用实时数据进行本地测试
 

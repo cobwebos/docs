@@ -1,7 +1,7 @@
 ---
-title: 设计器 (预览疑难解答) 模块错误
+title: 设计器模块错误疑难解答
 titleSuffix: Azure Machine Learning
-description: 'Azure 机器学习设计器中的模块错误代码疑难解答 (预览版) '
+description: Azure 机器学习设计器中的模块错误代码疑难解答
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876914"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908089"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览）
+# <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
-本文介绍 Azure 机器学习设计器（预览版）中的错误消息和异常代码，以帮助你排查机器学习管道问题。
+本文介绍 Azure 机器学习设计器中的错误消息和异常代码，以帮助你对机器学习管道进行故障排除。
 
 可以按照以下步骤在设计器中找到错误消息：  
 
@@ -1516,7 +1516,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 提供此错误是为了捕获未通过其他方式处理的内部引擎错误。 因此，导致此错误的原因可能有所不同，具体取决于产生错误的模块。  
 
-若要获得更多帮助，建议你将错误附带的详细消息发布到[Azure 机器学习论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)，同时提供方案说明（包括用作输入的数据）。 此反馈将帮助我们确定错误的优先级，并确定接下来要处理的最重要的问题。  
+若要获得更多帮助，建议你将错误附带的详细消息发布到 [Azure 机器学习论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)，同时提供方案说明（包括用作输入的数据）。 此反馈将帮助我们确定错误的优先级，并确定接下来要处理的最重要的问题。  
 
 |异常消息|
 |------------------------|

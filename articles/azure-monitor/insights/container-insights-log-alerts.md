@@ -1,14 +1,14 @@
 ---
 title: 容器 Azure Monitor 的日志警报 |Microsoft Docs
-description: 本文介绍如何使用用于容器的 Azure Monitor 基于内存和 CPU 利用率的日志查询创建自定义警报。
+description: 本文介绍如何为容器 Azure Monitor 中的内存和 CPU 使用率创建自定义日志警报。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c023471ae041fa524fc4a2164c633ca80bcfdd88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095986"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973725"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何从容器 Azure Monitor 创建日志警报
 
@@ -20,7 +20,7 @@ ms.locfileid: "87095986"
 - “失败”、“挂起”、“未知”、“正在运行”或“成功”Pod 阶段计数    
 - 当群集节点上的可用磁盘空间超过阈值时
 
-若要针对群集节点上的 CPU 或内存利用率过高或可用磁盘空间不足发出警报，请使用提供的查询来创建指标警报或指标度量警报。 虽然指标警报的延迟低于日志警报，但日志警报提供高级查询和更复杂的查询。 日志警报查询通过使用*now*运算符并返回一小时，将日期时间与当前时间进行比较。 （用于容器的 Azure Monitor 以协调世界时 (UTC) 格式存储所有日期。）
+若要针对群集节点上的 CPU 或内存利用率过高或可用磁盘空间不足发出警报，请使用提供的查询来创建指标警报或指标度量警报。 虽然指标警报的延迟低于日志警报，但日志警报提供高级查询和更复杂的查询。 日志警报查询通过使用 *now* 运算符并返回一小时，将日期时间与当前时间进行比较。 （用于容器的 Azure Monitor 以协调世界时 (UTC) 格式存储所有日期。）
 
 如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要详细了解使用日志查询的警报，请参阅 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)。 有关指标警报的详细信息，请参阅 [Azure Monitor 中的指标警报](../platform/alerts-metric-overview.md)。
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
 
-本部分介绍如何使用容器 Azure Monitor 中的性能数据创建指标度量警报规则。 可以将此基本过程用于各种日志查询，以对不同的性能计数器发出警报。 使用之前提供的一个日志搜索查询来开始使用。 若要使用 ARM 模板创建，请参阅[使用 Azure 资源模板创建示例日志警报](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)。
+本部分介绍如何使用容器 Azure Monitor 中的性能数据创建指标度量警报规则。 可以将此基本过程用于各种日志查询，以对不同的性能计数器发出警报。 使用之前提供的一个日志搜索查询来开始使用。 若要使用 ARM 模板创建，请参阅 [使用 Azure 资源模板创建示例日志警报](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)。
 
 >[!NOTE]
 >遵循以下过程针对容器资源利用率创建警报规则需要根据[切换日志警报的 API 首选项](../platform/alerts-log-api-switch.md)中所述，切换到新的日志警报 API。
@@ -284,9 +284,9 @@ InsightsMetrics
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 Azure 门户中，搜索并选择“Log Analytics 工作区”。
 3. 在 Log Analytics 工作区列表中，选择支持容器 Azure Monitor 的工作区。 
-4. 在左侧窗格中，选择 "**日志**" 以打开 "Azure Monitor 日志" 页。 使用此页可以编写和执行 Azure 日志查询。
-5. 在 "**日志**" 页上，将前面提供的[查询](#resource-utilization-log-search-queries)之一粘贴到 "**搜索查询**" 字段，然后选择 "**运行**" 以验证结果。 如果不执行此步骤，则不能选择 " **+ 新建警报**" 选项。
-6. 选择 " **+ 新建警报**" 以创建日志警报。
+4. 在左侧窗格中，选择 " **日志** " 以打开 "Azure Monitor 日志" 页。 使用此页可以编写和执行 Azure 日志查询。
+5. 在 " **日志** " 页上，将前面提供的 [查询](#resource-utilization-log-search-queries) 之一粘贴到 " **搜索查询** " 字段，然后选择 " **运行** " 以验证结果。 如果不执行此步骤，则不能选择 " **+ 新建警报** " 选项。
+6. 选择 " **+ 新建警报** " 以创建日志警报。
 7. 在“条件”部分，选择预定义的自定义日志条件“每当自定义日志搜索为 \<logic undefined> 时” 。 系统会自动选择“自定义日志搜索”信号类型，因为我们要直接从 Azure Monitor 日志页创建警报规则。  
 8. 将前面提供的某个[查询](#resource-utilization-log-search-queries)粘贴到“搜索查询”字段中。
 9. 按如下所述配置警报：
@@ -307,4 +307,4 @@ InsightsMetrics
 
 - 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。
 
-- 若要详细了解 Azure Monitor 以及如何监视 Kubernetes 群集的其他方面，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)和[查看 Kubernetes 群集运行状况](container-insights-health.md)。
+- 若要详细了解 Azure Monitor 以及如何监视 Kubernetes 群集的其他方面，请参阅 [查看 Kubernetes 群集性能](container-insights-analyze.md) 和 [查看 Kubernetes 群集运行状况](container-insights-health.md)。

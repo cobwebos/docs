@@ -1,14 +1,14 @@
 ---
 title: Azure 服务总线故障排除指南 | Microsoft Docs
-description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
+description: 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 09/16/2020
+ms.openlocfilehash: 39d2bf14f88e8efabcddda98268a187009cf029e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067046"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885719"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。 
@@ -16,7 +16,7 @@ ms.locfileid: "88067046"
 ## <a name="connectivity-certificate-or-timeout-issues"></a>连接性、证书或超时问题
 以下步骤可帮助你排查 *.servicebus.windows.net 下所有服务的连接/证书/超时问题。 
 
-- 浏览至 `https://<yournamespace>.servicebus.windows.net/` 或使用 [wget](https://www.gnu.org/software/wget/)。 它有助于检查是否存在 IP 筛选或虚拟网络或证书链问题，这在使用 java SDK 时很常见。
+- 浏览至 `https://<yournamespace>.servicebus.windows.net/` 或使用 [wget](https://www.gnu.org/software/wget/)。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 Java SDK 时常见）。
 
     成功消息的示例：
     
@@ -62,10 +62,10 @@ ms.locfileid: "88067046"
 - 应用程序可能会在几秒内断开与服务的连接。
 
 ### <a name="cause"></a>原因
-后端服务升级并重新启动可能会导致应用程序出现这些问题。
+后端服务升级和重启可能会在应用程序中导致这些问题。
 
 ### <a name="resolution"></a>解决方法
-如果应用程序代码使用 SDK，则重试策略已内置并处于活动状态。 应用程序会重新连接，此操作不会对应用程序/工作流产生重大影响。
+如果应用程序代码使用 SDK，则重试策略已内置且处于活动状态。 应用程序会重新连接，此操作不会对应用程序/工作流产生重大影响。
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>未授权访问：需要发送声明
 
@@ -84,15 +84,15 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 
 要了解如何将权限分配给角色，请参阅[使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源](service-bus-managed-service-identity.md)。
 
-## <a name="service-bus-exception-put-token-failed"></a>服务总线异常： Put 标记失败
+## <a name="service-bus-exception-put-token-failed"></a>服务总线异常：put-token 失败
 
 ### <a name="symptoms"></a>症状
-尝试使用同一服务总线连接发送超过1000条消息时，会收到以下错误消息： 
+尝试使用同一服务总线连接发送超过 1000 条消息时，会收到以下错误消息： 
 
 `Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
 
 ### <a name="cause"></a>原因
-使用单个到服务总线命名空间的连接来发送和接收消息的令牌数量有限制。 它是1000。 
+用来通过单个到服务总线命名空间的连接发送和接收消息的令牌数量存在限制。 该数量限制为 1000。 
 
 ### <a name="resolution"></a>解决方法
 打开到服务总线命名空间的新连接以发送更多消息。

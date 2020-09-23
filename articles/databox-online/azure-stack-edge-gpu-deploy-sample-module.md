@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack 边缘 GPU 设备上部署 GPU 模块 |Microsoft Docs
-description: 描述如何启用计算，并通过本地 UI 使 Azure Stack Edge 设备计算就绪。
+title: 在 Azure Stack Edge Pro GPU 设备上部署 GPU 模块 |Microsoft Docs
+description: 介绍如何启用计算，并通过本地 UI 使 Azure Stack Edge Pro 设备计算就绪。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254553"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899719"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 设备上部署支持 GPU 的 IoT 模块
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上部署支持 GPU 的 IoT 模块
 
-本文介绍如何在 Azure Stack Edge GPU 设备上部署已启用 GPU IoT Edge 模块。 
+本文介绍如何在 Azure Stack Edge Pro GPU 设备上部署已启用 GPU IoT Edge 模块。 
 
 在本文中，学习如何：
-  - 准备 Azure Stack Edge 以运行 GPU 模块。
+  - 准备 Azure Stack Edge Pro 以运行 GPU 模块。
   - 从 Git 存储库下载并安装示例代码。
   - 生成解决方案并生成部署清单。
-  - 将解决方案部署到 Azure Stack Edge 设备。
+  - 将解决方案部署到 Azure Stack Edge Pro 设备。
   - 监视模块输出。
 
 
@@ -31,12 +31,12 @@ ms.locfileid: "89254553"
 
 本文中的 GPU 示例模块包括针对 GPU 的 CPU 的 PyTorch 和 TensorFlow 基准测试示例代码。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备知识
 
 在开始之前，请确保：
 
-- 你可以访问已启用 GPU 的1节点 Azure Stack Edge 设备。 此设备已使用 Azure 中的资源激活。 请参阅 [激活设备](azure-stack-edge-gpu-deploy-activate.md)。
-- 已在此设备上配置计算。 按照 [教程：在 Azure Stack Edge 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的步骤操作。
+- 你可以访问已启用 GPU 的1节点 Azure Stack Edge Pro 设备。 此设备已使用 Azure 中的资源激活。 请参阅 [激活设备](azure-stack-edge-gpu-deploy-activate.md)。
+- 已在此设备上配置计算。 按照 [教程：在 Azure Stack Edge Pro 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的步骤操作。
 - Azure 容器注册表 (ACR) 。 中转到 " **访问密钥** " 边栏选项卡，记下 "ACR 登录服务器"、"用户名" 和 "密码"。 有关详细信息，请参阅 [快速入门：使用 Azure 门户创建专用容器注册表](../container-registry/container-registry-get-started-portal.md#create-a-container-registry)。
 - Windows 客户端上的以下开发资源：
     - [Azure CLI 2.0 或更高版本](https://aka.ms/installazurecliwindows)
@@ -144,9 +144,9 @@ ms.locfileid: "89254553"
 
 1. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。****
 
-2. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。 在这种情况下，请选择用于部署 Azure Stack Edge 设备的订阅，并选择为 Azure Stack 边缘设备创建的 IoT Edge 设备。 在前面的步骤中通过 Azure 门户配置计算时，会发生这种情况。
+2. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。 在这种情况下，请选择用于部署 Azure Stack Edge Pro 设备的订阅，并选择为 Azure Stack Edge Pro 设备创建的 IoT Edge 设备。 在前面的步骤中通过 Azure 门户配置计算时，会发生这种情况。
 
-3. 在 VS Code 资源管理器中，展开 "Azure IoT 中心" 部分。 在 " **设备**" 下，应会看到与 Azure Stack 边缘设备对应的 IoT Edge 设备。 
+3. 在 VS Code 资源管理器中，展开 "Azure IoT 中心" 部分。 在 " **设备**" 下，应会看到与 Azure Stack Edge Pro 设备对应的 IoT Edge 设备。 
 
     1. 选择该设备，右键单击并选择 " **开始监视" "内置事件终结点**"。
   
@@ -156,7 +156,7 @@ ms.locfileid: "89254553"
 
         ![IoT 中心中的模块](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 
-    3. VS Code 终端还应显示 IoT 中心事件作为 Azure Stack Edge 设备的监视输出。
+    3. VS Code 终端还应显示 IoT 中心事件作为 Azure Stack Edge Pro 设备的监视输出。
 
         ![监视输出](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 

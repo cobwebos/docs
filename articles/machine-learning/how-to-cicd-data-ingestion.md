@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228879"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971265"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>数据引入管道的 DevOps
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 此名称对于 ***Dev***、***QA***、***UAT*** 和 ***PROD*** 环境是不同的。 在包含多个活动的复杂管道中，可能存在多个自定义属性。 最好是将所有这些值收集到一个位置，并将其定义为管道变量：
 
-![adf-variables](media/how-to-cicd-data-ingestion/adf-variables.png)
+![屏幕截图显示名为 "PrepareData" 和 "M L execute 管道" 的笔记本，其中包含下面选定的 "变量" 选项卡，其中包含一个用于添加新变量的选项，其中每个都有一个名称、类型和默认值。](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 管道活动在实际使用管道变量时可以引用它们：
 
-![adf-notebook-parameters](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![屏幕截图显示了名为 "PrepareData" 和 "M L execute 管道" 的笔记本，其中包含下面选定的 "设置" 选项卡。](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请将 `"Microsoft.DataFactory/factories/pipelines"` [默认参数化模板](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) 的部分更新为以下代码片段，并将结果 json 文件放置在源文件夹的根目录中：
 

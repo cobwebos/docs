@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814384"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891476"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什么是 Azure Synapse Link for Azure Cosmos DB（预览版）？
 
@@ -40,7 +40,6 @@ Azure Synapse Link for Azure Cosmos DB 是一种云原生混合事务和分析�
 ### <a name="near-real-time-insights-into-your-operational-data"></a>准实时了解操作数据
 
 使用 Azure Synapse Link，现在可以准实时深入了解操作数据。 由于有许多层要提取、转换和加载操作数据，因此基于 ETL 的系统在分析操作数据时往往会产生较高的延迟。 通过 Azure Cosmos DB 分析存储与 Azure Synapse Analytics 的本机集成，可以准实时分析操作数据，从而启用新的业务方案。 
-
 
 ### <a name="no-impact-on-operational-workloads"></a>不会影响操作工作负荷
 
@@ -91,7 +90,7 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 此集成可为不同用户启用以下 HTAP 方案：
 
-* BI 工程师，想要建模和发布报表，以便通过 Synapse SQL 直接访问 Azure Cosmos DB 中的操作数据。
+* 一位 BI 工程师，想要建模和发布 Power BI 报表，以直接通过 Synapse SQL 访问 Azure Cosmos DB 中的实时操作数据。
 
 * 数据分析人员，想要通过使用 Synapse SQL 查询 Azure Cosmos DB 容器中的操作数据来从中获得见解，大规模读取数据并将这些发现与其他数据源合并。
 
@@ -115,16 +114,15 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 如果需要传统的数据仓库要求（例如，高并发、工作负荷管理和跨多个数据源的聚合持久性），则不建议使用 Synapse Link。 有关详细信息，请参阅[可由 Synapse Link for Azure Cosmos DB 提供帮助的常见方案](synapse-link-use-cases.md)。
 
-
 ## <a name="limitations"></a>限制
 
-* 在公共预览版中，仅 Azure Cosmos DB SQL (Core) API 支持 Azure Synapse Link。 对 Azure Cosmos DB 的用于 MongoDB 的 API 和 Cassandra API 的支持当前处于封闭预览阶段。 若要请求对封闭预览版的访问权限，请向 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)发送电子邮件。
+* Azure Cosmos DB SQL (Core) API 和适用于 MongoDB 的 Azure Cosmos DB API 支持 Azure Synapse 链接。 对 Cassandra API 的支持目前位于封闭预览版下。 若要请求对封闭预览版的访问权限，请向 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)发送电子邮件。
 
-* 目前，只能为新容器（在新 Azure Cosmos DB 帐户和现有 Azure Cosmos DB 帐户中）启用分析存储。
-
-* 在预览版中，对于启用了 Synapse Link 的数据库帐户，不支持对容器进行备份和还原。 如果拥有需要备份和还原功能的生产工作负荷，建议不要在这些数据库帐户上启用 Synapse Link。 
+* 目前只能为新容器启用分析存储。 若要对现有容器使用分析存储，请使用 [Azure Cosmos DB 迁移工具](cosmosdb-migrationchoices.md)将数据从现有容器迁移到新容器。 可以在新的和现有 Azure Cosmos DB 帐户上启用 Synapse 链接。
 
 * 通过 Synapse SQL 无服务器访问 Azure Cosmos DB 分析存储当前处于封闭预览阶段。 若要请求访问权限，请向 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)发送电子邮件。
+
+* 在预览版中，对于启用了 Synapse Link 的数据库帐户，不支持对容器进行备份和还原。 如果你的工作负荷需要备份和还原功能，我们建议不要在这些数据库帐户上启用 Synapse 链接。 
 
 * 当前无法访问预配了 Synapse SQL 的 Azure Cosmos DB 分析存储。
 

@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182676"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901815"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Python 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
@@ -46,7 +46,7 @@ ms.locfileid: "88182676"
    
    你还需要管理员密码。 如果忘记，可以从此页重置它。 
    
-   ![Azure Database for PostgreSQL 服务器名称](./media/connect-python/1-connection-string.png)
+   :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="Azure Database for PostgreSQL 服务器名称":::
 
 ## <a name="how-to-run-the-python-examples"></a>如何运行 Python 示例
 
@@ -105,7 +105,7 @@ conn.close()
 
 如果代码成功运行，则会生成以下输出：
 
-![命令行输出](media/connect-python/2-example-python-output.png)
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="命令行输出":::
 
 ## <a name="read-data"></a>读取数据
 下面的代码示例连接到 Azure Database for PostgreSQL 数据库，并使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 和 SQL SELECT 语句来读取数据。 此函数可接受查询，并返回可使用 [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) 循环访问的结果集。 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502998"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969790"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL 托管实例的托管 API 参考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,6 +44,8 @@ ms.locfileid: "87502998"
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|返回有关托管实例的详细信息。|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|设置托管实例的属性。|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|删除托管实例。|
+|[AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)|获取对托管实例或特定操作执行的管理操作的列表。|
+|[停止-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)|取消对托管实例执行的特定管理操作。|
 |[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|创建 SQL 托管实例数据库。|
 |[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|返回有关 SQL 托管实例数据库的信息。|
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|删除 SQL 托管实例数据库。|
@@ -51,7 +53,7 @@ ms.locfileid: "87502998"
 
 ## <a name="azure-cli-create-and-configure-managed-instances"></a>Azure CLI：创建和配置托管实例
 
-若要使用[Azure CLI](/cli/azure)创建和配置托管实例，请[对 SQL 托管实例使用以下 Azure CLI 命令](/cli/azure/sql/mi)。 使用[Azure Cloud Shell](/azure/cloud-shell/overview)在浏览器中运行 CLI，或者在 MacOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。
+若要使用 [Azure CLI](/cli/azure)创建和配置托管实例，请 [对 SQL 托管实例使用以下 Azure CLI 命令](/cli/azure/sql/mi)。 使用 [Azure Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 MacOS、Linux 或 Windows 上 [安装](/cli/azure/install-azure-cli) 它。
 
 > [!TIP]
 > 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 处理 SQL 托管实例](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)。
@@ -63,6 +65,9 @@ ms.locfileid: "87502998"
 |[az sql mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|获取托管实例的详细信息。|
 |[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|更新托管实例。|
 |[az sql mi delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|删除托管实例。|
+|[az sql mi op list](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_list)|获取对托管实例执行的管理操作的列表。|
+|[az sql mi op show](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_show)|获取对托管实例执行的特定管理操作。|
+|[az sql mi op cancel](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|取消对托管实例执行的特定管理操作。|
 |[az sql midb create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |创建托管数据库。|
 |[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|列出可用的托管数据库。|
 |[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|还原托管数据库。|
@@ -80,8 +85,8 @@ ms.locfileid: "87502998"
 
 | 命令 | 说明 |
 | --- | --- |
-|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|在 SQL 托管实例中创建新的实例数据库。 必须连接到 master 数据库才能新建数据库。|
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |修改 SQL 托管实例中的实例数据库。|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|在 SQL 托管实例中创建新的实例数据库。 必须连接到 master 数据库才能新建数据库。|
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |修改 SQL 托管实例中的实例数据库。|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API：创建和配置托管实例
 
@@ -95,6 +100,9 @@ ms.locfileid: "87502998"
 |[托管实例 - 列表](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|返回订阅中的托管实例列表。|
 |[托管实例 - 按资源组列出](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|返回资源组中的托管实例列表。|
 |[托管实例 - 更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|更新托管实例。|
+|[托管实例操作-按托管实例列出](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|获取对托管实例执行的管理操作的列表。|
+|[托管实例操作-获取](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|获取对托管实例执行的特定管理操作。|
+|[托管实例操作-取消](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|取消对托管实例执行的特定管理操作。|
 
 ## <a name="next-steps"></a>后续步骤
 

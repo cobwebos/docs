@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933535"
+ms.locfileid: "90973375"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>将来自不同数据源的数据馈送添加到指标顾问
 
@@ -27,10 +27,10 @@ ms.locfileid: "90933535"
 | ---------------------|-------------|
 |**基本** | 你将需要提供用于访问数据源的基本参数。 例如，连接字符串或键。 数据馈送管理器能够查看这些凭据。 |
 | **AzureManagedIdentity** | Azure 资源的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)是 Azure Active Directory 的一项功能。 它通过 Azure AD 中的自动托管标识提供 Azure 服务。 你可以使用该标识向支持 Azure AD 身份验证的任何服务进行身份验证。|
-| **AzureSQLConnectionString**| 将 AzureSQL 连接字符串存储为指标顾问中的 **身份验证实体** ，并在每次载入度量值数据时直接使用该字符串。 只有身份验证实体的管理员能够查看这些凭据，但允许授权的查看者创建数据馈送，而无需了解凭据的详细信息。 |
-| **DataLakeGen2SharedKey**| 在指标顾问中将 data lake 帐户密钥作为 **身份验证实体** 存储，并在每次载入度量数据时直接使用。 只有身份验证实体的管理员能够查看这些凭据，但允许授权的查看者无需知道凭据详细信息即可创建数据源。|
-| **ServicePrincipal**| 将服务主体存储为指标顾问中的 **身份验证实体** ，并在每次载入度量值数据时直接使用。 只有身份验证实体的管理员才能查看凭据，但允许授权的查看者创建数据馈送，无需知道凭据详细信息。|
-| **ServicePrincipalInKeyVault**|在 KeyVault 中将服务主体存储为指标顾问中的 **身份验证实体** ，并在每次载入度量值数据时直接使用它。 只有 **身份验证实体** 的管理员才能查看凭据，但也会使查看者无需知道详细凭据即可创建数据源。 |
+| **AzureSQLConnectionString**| 将 AzureSQL 连接字符串存储为指标顾问中的 **凭据实体** ，并在每次载入度量值数据时直接使用该字符串。 只有凭据实体的管理员能够查看这些凭据，但允许授权的查看者创建数据馈送，而无需了解凭据的详细信息。 |
+| **DataLakeGen2SharedKey**| 在指标顾问中将 data lake 帐户密钥存储为 **凭据实体** ，并在每次载入度量值数据时直接使用。 只有凭据实体的管理员能够查看这些凭据，但允许授权的查看者创建数据馈送，无需知道凭据详细信息。|
+| **服务主体**| 在指标顾问中将服务主体存储为 **凭据实体** ，并在每次载入度量值数据时直接使用。 只有凭据实体的管理员才能查看凭据，但允许授权的查看者创建数据馈送，无需知道凭据详细信息。|
+| **Key vault 中的服务主体**|将服务主体作为指标顾问存储在密钥保管库中作为 **凭据实体** ，并在每次载入度量值数据时直接使用。 只有 **凭据实体** 的管理员能够查看凭据，但也会使查看者无需知道详细凭据即可创建数据馈送。 |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>支持的数据源和相应的身份验证类型
 
@@ -41,8 +41,8 @@ ms.locfileid: "90933535"
 |[**Azure Blob 存储 (JSON) **](#blob) | 基本<br>对 microsoft.managedidentity|
 |[**Azure Cosmos DB (SQL) **](#cosmosdb) | 基本 |
 |[**Azure 数据资源管理器 (Kusto) **](#kusto) | 基本<br>对 microsoft.managedidentity|
-|[**Azure Data Lake Storage Gen2**](#adl) | 基本<br>DataLakeGen2SharedKey<br>服务主体<br>ServicePrincipalInKeyVault<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | 基本<br>对 microsoft.managedidentity<br>服务主体<br>ServicePrincipalInKeyVault<br>AzureSQLConnectionString
+|[**Azure Data Lake Storage Gen2**](#adl) | 基本<br>DataLakeGen2SharedKey<br>服务主体<br>Key vault 中的服务主体<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | 基本<br>对 microsoft.managedidentity<br>服务主体<br>Key vault 中的服务主体<br>AzureSQLConnectionString
 |[**Azure 表存储**](#table) | 基本 | 
 |[**ElasticSearch**](#es) | 基本 |
 |[**Http 请求**](#http) | 基本 | 
@@ -51,7 +51,7 @@ ms.locfileid: "90933535"
 |[**MySQL**](#mysql) | 基本 |
 |[**PostgreSQL**](#pgsql)| 基本|
 
-创建 **身份验证实体** 并将其用于对数据源进行身份验证。 以下各节指定了 *基本* 身份验证所需的参数。 
+创建 **凭据实体** 并将其用于对数据源进行身份验证。 以下各节指定了 *基本* 身份验证所需的参数。 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

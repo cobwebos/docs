@@ -1,14 +1,14 @@
 ---
 title: DoD 影响级别 5 蓝图示例概述
 description: DoD 影响级别 5 示例的概述。 此蓝图示例可帮助客户评估特定 DoD 影响级别 5 控制要求。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 0889da5f0eb9d177589d8ebc6a9a17b61fec624b
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 15e2c5990ba32363441f8ca7cd19672cadc16d51
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85804361"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978088"
 ---
 # <a name="overview-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影响级别 5 蓝图示例概述
 

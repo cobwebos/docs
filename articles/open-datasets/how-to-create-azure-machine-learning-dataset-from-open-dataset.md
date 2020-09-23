@@ -8,22 +8,21 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 0725a97aecab5d03c2f5e3937c181a95a7b97c2a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902712"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>从 Azure 开放数据集创建 Azure 机器学习数据集
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍了如何将特选扩充数据引入 [Azure 机器学习](../machine-learning/overview-what-is-azure-ml.md) 数据集和 [Azure 开放式数据集](https://docs.microsoft.com/azure/open-datasets/)的本地或远程机器学习试验。 
 
-通过创建 [Azure 机器学习数据集](../machine-learning/how-to-create-register-datasets.md)，你可以创建对数据源位置的引用以及其元数据的副本。 由于数据集是延迟计算的，而数据仍保留在其现有位置，因此你
+通过创建 [Azure 机器学习数据集](../machine-learning/how-to-create-register-datasets.md)，你可以创建对数据源位置的引用以及其元数据的副本。 由于数据集是延迟计算的，并且数据仍保留在其现有位置，因此
 * 不会产生额外的存储成本。
-* 不要无意中更改原始数据源。 
-* 提高 ML 工作流性能速度。
+* 不会无意中更改原始数据源。 
+* 会提高 ML 工作流性能速度。
 
 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据集，请参阅[安全地访问数据](../machine-learning/concept-data.md#data-workflow)一文。
 
@@ -38,7 +37,7 @@ Azure 开放式数据集是特选的公共数据集，可用于添加特定于�
 打开的数据集位于 Microsoft Azure 的云中，同时包含在 [Azure 机器学习 PYTHON SDK](#create-datasets-with-the-sdk) 和 [Azure 机器学习 studio](#create-datasets-with-the-studio)中。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 对于本文，你需要：
 
