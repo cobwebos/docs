@@ -1,6 +1,6 @@
 ---
-title: 在访问 Azure Stack Edge GPU 设备的 Windows 客户端上配置 TLS 1。2
-description: 介绍如何在 Windows 客户端上配置 TLS 1.2，该客户端访问 Azure Stack 边缘 GPU 设备。
+title: 在访问 Azure Stack Edge Pro GPU 设备的 Windows 客户端上配置 TLS 1。2
+description: 介绍如何在 Windows 客户端上配置 TLS 1.2，该客户端访问 Azure Stack Edge Pro GPU 设备。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268496"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891182"
 ---
-# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>在访问 Azure Stack Edge 设备的 Windows 客户端上配置 TLS 1。2
+# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>在访问 Azure Stack Edge Pro 设备的 Windows 客户端上配置 TLS 1。2
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-如果使用 Windows 客户端来访问 Azure Stack Edge 设备，则需要在客户端上配置 TLS 1.2。 本文提供了有关在 Windows 客户端上配置 TLS 1.2 的资源和指南。 
+如果使用 Windows 客户端访问 Azure Stack Edge Pro 设备，则需要在客户端上配置 TLS 1.2。 本文提供了有关在 Windows 客户端上配置 TLS 1.2 的资源和指南。 
 
 此处提供的准则基于在运行 Windows Server 2016 的客户端上执行的测试。
 

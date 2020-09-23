@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析入门 - Azure
 description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568041"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884932"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
@@ -84,6 +84,9 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 如果连接成功，边缘设备列表随即显示。 应该会看到至少一个设备，名为 lva-sample-device。 现在你可以管理 IoT Edge 设备，并通过上下文菜单与 Azure IoT 中心进行交互。 若有查看部署在边缘设备上的模块，请在“lva-sample-device”下，展开“模块”节点。
 
 ![lva-sample-device 节点](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> 如果你自己已在边缘设备（例如 ARM64 设备）上[手动部署了 IoT Edge 上的实时视频分析](deploy-iot-edge-device.md)，则你会在 Azure IoT 中心看到模块显示在该设备下。 你可以选择该模块，然后执行下面的剩余步骤。
 
 ## <a name="use-direct-method-calls"></a>使用直接方法调用
 

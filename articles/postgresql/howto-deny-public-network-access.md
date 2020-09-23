@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 01a256e17b1101782eaee9bebd85f5e7093773d3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1dfc8d473d0cfe663569d2508404bf190f2da841
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901587"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>使用 Azure 门户 Azure Database for PostgreSQL 单个服务器拒绝公共网络访问
 
@@ -27,20 +27,20 @@ ms.locfileid: "87287787"
 
 按照以下步骤设置 PostgreSQL 单一服务器拒绝公共网络访问：
 
-1. 在[Azure 门户](https://portal.azure.com/)中，选择现有 Azure Database for PostgreSQL 单一服务器。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择现有 Azure Database for PostgreSQL 单一服务器。
 
-1. 在 "PostgreSQL 单一服务器" 页上的 "**设置**" 下，单击 "**连接安全性**" 以打开 "连接安全配置" 页。
+1. 在 "PostgreSQL 单一服务器" 页上的 " **设置**" 下，单击 " **连接安全性** " 以打开 "连接安全配置" 页。
 
-1. 在 "**拒绝公共网络访问**" 中，选择 **"是"** 以对 PostgreSQL 的单一服务器启用拒绝公共访问。
+1. 在 " **拒绝公共网络访问**" 中，选择 **"是"** 以对 PostgreSQL 的单一服务器启用拒绝公共访问。
 
-    ![Azure Database for PostgreSQL 单一服务器拒绝网络访问](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access.PNG" alt-text="Azure Database for PostgreSQL 单一服务器拒绝网络访问":::
 
 1. 单击“保存”以保存更改。
 
 1. 此时将显示一则通知，确认已成功启用了连接安全性设置。
 
-    ![Azure Database for PostgreSQL 单一服务器拒绝网络访问成功](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL 单一服务器拒绝网络访问成功":::
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何创建有关指标的警报](howto-alert-on-metric.md)。
+了解 [如何创建有关指标的警报](howto-alert-on-metric.md)。

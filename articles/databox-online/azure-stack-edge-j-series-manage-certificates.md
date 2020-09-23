@@ -1,6 +1,6 @@
 ---
-title: 将证书与 Azure Stack Edge GPU 一起使用 |Microsoft Docs
-description: 描述如何将证书与 Azure Stack Edge GPU 设备一起使用，其中包括使用原因，以及如何在设备上上传证书。
+title: 将证书用于 Azure Stack Edge Pro GPU |Microsoft Docs
+description: 描述如何将证书与 Azure Stack Edge Pro GPU 设备一起使用，包括使用原因、在设备上上传证书的类型和方法。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268870"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890743"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 设备上使用证书
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上使用证书
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍可在 Azure Stack 边缘设备上安装的证书类型。 本文还包括每种证书类型的详细信息，以及安装和标识到期日期的过程。 
+本文介绍可在 Azure Stack Edge Pro 设备上安装的证书类型。 本文还包括每种证书类型的详细信息，以及安装和标识到期日期的过程。 
 
 ## <a name="about-certificates"></a>关于证书
 
 证书在**公钥**和实体之间提供链接 (例如域名) ，由受信任的第三方 (（如**证书颁发机构**) **） (验证**) 。  证书提供了一种方便的方法来分发受信任的公共加密密钥。 因此，证书确保你的通信受到信任，并且你要将加密信息发送到正确的服务器。 
 
-最初配置 Azure Stack Edge 设备时，将自动生成自签名证书。 您也可以选择携带自己的证书。 如果你打算携带自己的证书，则需要遵循一些准则。
+最初配置 Azure Stack Edge Pro 设备时，将自动生成自签名证书。 您也可以选择携带自己的证书。 如果你打算携带自己的证书，则需要遵循一些准则。
 
 ## <a name="types-of-certificates"></a>证书类型
 
-Azure Stack 边缘设备上使用的各种类型的证书如下所示： 
+Azure Stack Edge Pro 设备上使用各种类型的证书，如下所示： 
 - 签名证书
     - 根 CA
     - 中级
@@ -68,7 +68,7 @@ Azure Stack 边缘设备上使用的各种类型的证书如下所示：
 
 ## <a name="node-certificates"></a>节点证书
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> 设备中的所有节点都将持续相互通信，因此需要具有信任关系。 节点证书提供了建立该信任的方法。 使用 https 上的远程 PowerShell 会话连接到设备节点时，节点证书也会发挥作用。
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> 设备中的所有节点都将持续相互通信，因此需要具有信任关系。 节点证书提供了建立该信任的方法。 使用 https 上的远程 PowerShell 会话连接到设备节点时，节点证书也会发挥作用。
 
 ### <a name="caveats"></a>注意事项
 
@@ -121,9 +121,9 @@ Azure Stack 边缘设备上使用的各种类型的证书如下所示：
 
 ## <a name="iot-edge-device-certificates"></a>IoT Edge 设备证书
 
-Azure Stack 边缘设备也是一种 IoT 设备，其计算由连接到它的 IoT Edge 设备启用。 对于此 IoT Edge 设备与可能连接到该设备的下游设备之间的任何安全通信，还可以上传 IoT Edge 证书。 
+Azure Stack Edge Pro 设备也是一个 IoT 设备，其计算由连接到它的 IoT Edge 设备启用。 对于此 IoT Edge 设备与可能连接到该设备的下游设备之间的任何安全通信，还可以上传 IoT Edge 证书。 
 
-如果要仅对设备使用计算方案，则设备具有自签名证书。 如果 Azure Stack 边缘设备已连接到下游设备，则需要携带自己的证书。
+如果要仅对设备使用计算方案，则设备具有自签名证书。 如果 Azure Stack Edge Pro 设备已连接到下游设备，则需要携带自己的证书。
 
 要启用此信任关系，需要安装三个 IoT Edge 证书：
 
@@ -140,7 +140,7 @@ Azure Stack 边缘设备也是一种 IoT 设备，其计算由连接到它的 Io
 
 ## <a name="support-session-certificates"></a>支持会话证书
 
-如果 Azure Stack Edge 设备遇到任何问题，则若要解决这些问题，可以在设备上打开远程 PowerShell 支持会话。 若要在此支持会话中启用安全的加密通信，可以上传证书。
+如果 Azure Stack Edge Pro 设备遇到任何问题，则若要解决这些问题，可以在设备上打开远程 PowerShell 支持会话。 若要在此支持会话中启用安全的加密通信，可以上传证书。
 
 ### <a name="caveats"></a>注意事项
 
@@ -155,7 +155,7 @@ Azure Stack 边缘设备也是一种 IoT 设备，其计算由连接到它的 Io
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-创建证书后，下一步是上传 Azure Stack 边缘设备上的证书
+创建证书后，下一步是在 Azure Stack Edge Pro 设备上上传证书
 
 
 ## <a name="upload-certificates"></a>上传证书 
@@ -370,7 +370,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![导出证书8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. 你会收到一条已成功导出的消息。 选择“确定”  。
+9. 你会收到一条已成功导出的消息。 选择“确定”。
 
     ![导出证书9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 
@@ -401,7 +401,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 ## <a name="supported-certificate-algorithms"></a>支持的证书算法
 
- Azure Stack 边缘设备仅支持 Rivest – Rivest-shamir-adleman – Rivest-shamir-adleman (RSA) 证书。 如果使用了椭圆曲线数字签名算法 (ECDSA) 证书，则设备行为是不确定的。
+ Azure Stack Edge Pro 设备仅支持 Rivest – Rivest-shamir-adleman – Rivest-shamir-adleman (RSA) 证书。 如果使用了椭圆曲线数字签名算法 (ECDSA) 证书，则设备行为是不确定的。
 
  包含 RSA 公钥的证书称为 RSA 证书。 包含椭圆曲线加密 (ECC) 公钥的证书称为 ECDSA (椭圆曲线数字签名算法) 证书。 
 
@@ -418,4 +418,4 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Azure Stack Edge 设备](azure-stack-edge-gpu-deploy-prep.md)
+[部署 Azure Stack Edge Pro 设备](azure-stack-edge-gpu-deploy-prep.md)

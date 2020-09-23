@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037437"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892143"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用 Visual Studio Code 通过实时流输入在本地测试流分析查询
 
@@ -21,39 +21,39 @@ ms.locfileid: "86037437"
 
 * 安装 [.NET Core SDK](https://dotnet.microsoft.com/download) 并重启 Visual Studio Code。
 
-* 使用此[快速入门](quick-create-vs-code.md)了解如何使用 Visual Studio Code 创建流分析作业。
+* 使用此[快速入门](quick-create-visual-studio-code.md)了解如何使用 Visual Studio Code 创建流分析作业。
 
 ## <a name="define-a-live-stream-input"></a>定义实时流输入
 
 1. 右键单击流分析项目中的“输入”文件夹  。 然后从上下文菜单中选择“ASA:  添加输入”。
 
-   ![从“输入”文件夹添加输入](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+   ![从“输入”文件夹添加输入](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
    还可以选择 **Ctrl+Shift+P** 以打开命令面板，然后输入 **ASA:Add Input**。
 
-   ![在 Visual Studio Code 中添加流分析输入](./media/quick-create-vs-code/add-input.png)
+   ![在 Visual Studio Code 中添加流分析输入](./media/quick-create-visual-studio-code/add-input.png)
 
 2. 从下拉列表中选择一个输入源类型。
 
-   ![选择“IoT 中心”作为输入选项](./media/quick-create-vs-code/iot-hub.png)
+   ![选择“IoT 中心”作为输入选项](./media/quick-create-visual-studio-code/iot-hub.png)
 
 3. 如果从命令面板添加了输入，请选择将使用该输入的流分析查询脚本。 该脚本中应会自动填充 myASAproj.asaql 的文件路径  。
 
-   ![在 Visual Studio Code 中选择流分析脚本](./media/quick-create-vs-code/asa-script.png)
+   ![在 Visual Studio Code 中选择流分析脚本](./media/quick-create-visual-studio-code/asa-script.png)
 
 4. 从下拉菜单中选择“从 Azure 订阅中选择”  。
 
-    ![从订阅中选择](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![从订阅中选择](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
 5. 配置新生成的 JSON 文件。 可以借助 CodeLens 功能来输入字符串，从下拉列表中选择值，或者直接在文件中更改文本。 以下屏幕截图显示了“从订阅中选择”示例  。
 
-   ![在 Visual Studio Code 中配置输入](./media/quick-create-vs-code/configure-input.png)
+   ![在 Visual Studio Code 中配置输入](./media/quick-create-visual-studio-code/configure-input.png)
 
 ## <a name="preview-input"></a>预览输入
 
 若要确保输入数据能够到来，请在你的实时输入配置文件中从顶部行中选择“预览数据”  。 某些输入数据来自 IoT 中心，并显示在预览窗口中。 预览可能需要几秒钟才会出现。
 
- ![预览实时输入](./media/quick-create-vs-code/preview-live-input.png)
+ ![预览实时输入](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>在本地运行查询
 

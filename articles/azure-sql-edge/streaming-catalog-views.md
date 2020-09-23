@@ -1,6 +1,6 @@
 ---
-title: 流式处理目录视图 (Transact-SQL) - Azure SQL Edge（预览版）
-description: 了解 Azure SQL Edge（预览版）中可用的流式处理目录视图和动态管理视图
+title: " (Transact-sql) 流式处理目录视图-Azure SQL Edge"
+description: 了解 Azure SQL Edge 中可用的流式处理目录视图和动态管理视图
 keywords: sys.external_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 5b1cd58b8947e376ac70ee307041ae7864ed7e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a8f037cd9923564e2e214e9727ff87d63cca547
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233110"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900525"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>流式处理目录视图 (Transact-SQL)
 

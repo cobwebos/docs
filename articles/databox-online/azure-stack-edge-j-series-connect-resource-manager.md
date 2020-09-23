@@ -1,6 +1,6 @@
 ---
-title: 连接到 Azure Stack Edge GPU 设备上的 Azure 资源管理器
-description: 介绍如何使用 Azure PowerShell 连接到 Azure Stack Edge GPU 上运行的 Azure 资源管理器。
+title: 连接到 Azure Stack Edge Pro GPU 设备上的 Azure 资源管理器
+description: 介绍如何使用 Azure PowerShell 连接到 Azure Stack Edge Pro GPU 上运行的 Azure 资源管理器。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,33 +8,33 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269805"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891267"
 ---
-# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>连接到 Azure Stack Edge 设备上的 Azure 资源管理器
+# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure 资源管理器提供了一个管理层，使你能够在 Azure 订阅中创建、更新和删除资源。 Azure Stack Edge 设备支持相同的 Azure 资源管理器 Api，可用于在本地订阅中创建、更新和删除 Vm。 此支持使你能够以与云一致的方式管理设备。 
+Azure 资源管理器提供了一个管理层，使你能够在 Azure 订阅中创建、更新和删除资源。 Azure Stack Edge Pro 设备支持相同的 Azure 资源管理器 Api 来创建、更新和删除本地订阅中的 Vm。 此支持使你能够以与云一致的方式管理设备。 
 
-本教程介绍如何使用 Azure PowerShell 通过 Azure 资源管理器连接到 Azure Stack 边缘设备上的本地 Api。
+本教程介绍如何使用 Azure PowerShell 通过 Azure 资源管理器连接到 Azure Stack Edge Pro 设备上的本地 Api。
 
 ## <a name="about-azure-resource-manager"></a>关于 Azure 资源管理器
 
-Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge 设备 API，并执行创建、更新和删除 Vm 等操作。 下图详细说明了 Azure 资源管理器的体系结构。
+Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设备 API 并执行创建、更新和删除 Vm 等操作。 下图详细说明了 Azure 资源管理器的体系结构。
 
 ![Azure 资源管理器关系图](media/azure-stack-edge-j-series-connect-resource-manager/edge-device-flow.svg)
 
 
-## <a name="endpoints-on-azure-stack-edge-device"></a>Azure Stack 边缘设备上的终结点
+## <a name="endpoints-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备上的终结点
 
 下表总结了设备上公开的各种终结点、支持的协议以及用于访问这些终结点的端口。 在本文中，你将找到对这些终结点的引用。
 
-| # | 端点 | 支持的协议 | 使用的端口 | 用于 |
+| # | 终结点 | 支持的协议 | 使用的端口 | 用途 |
 | --- | --- | --- | --- | --- |
 | 1. | Azure 资源管理器 | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
 | 2. | 安全令牌服务 | https | 443 | 通过访问和刷新令牌进行身份验证 |
@@ -47,7 +47,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge 设备 A
 
 | 步骤编号 | 你将执行此步骤 .。。 | .. 在此位置。 |
 | --- | --- | --- |
-| 1. | [配置 Azure Stack 边缘设备](#step-1-configure-azure-stack-edge-device) | 本地 Web UI |
+| 1. | [配置 Azure Stack Edge Pro 设备](#step-1-configure-azure-stack-edge-pro-device) | 本地 Web UI |
 | 2. | [创建和安装证书](#step-2-create-and-install-certificates) | Windows 客户端/本地 web UI |
 | 3. | [查看和配置先决条件](#step-3-install-powershell-on-the-client) | Windows 客户端 |
 | 4. | [设置客户端上的 Azure PowerShell](#step-4-set-up-azure-powershell-on-the-client) | Windows 客户端 |
@@ -57,15 +57,15 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge 设备 A
 
 以下部分详细介绍了连接到 Azure 资源管理器的上述每个步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备知识
 
-在开始之前，请确保用于通过 Azure 资源管理器连接到设备的客户端使用的是 TLS 1.2。 有关详细信息，请参阅 [在 Windows 客户端上配置 TLS 1.2 访问 Azure Stack Edge 设备](azure-stack-edge-j-series-configure-tls-settings.md)。
+在开始之前，请确保用于通过 Azure 资源管理器连接到设备的客户端使用的是 TLS 1.2。 有关详细信息，请参阅 [在 Windows 客户端上配置 TLS 1.2，访问 Azure Stack Edge Pro 设备 "](azure-stack-edge-j-series-configure-tls-settings.md)。
 
-## <a name="step-1-configure-azure-stack-edge-device"></a>步骤1：配置 Azure Stack Edge 设备 
+## <a name="step-1-configure-azure-stack-edge-pro-device"></a>步骤1：配置 Azure Stack Edge Pro 设备 
 
-在 Azure Stack Edge 设备的本地 web UI 中执行以下步骤。
+在 Azure Stack Edge Pro 设备的本地 web UI 中执行以下步骤。
 
-1. 完成 Azure Stack Edge 设备的网络设置。 
+1. 完成 Azure Stack Edge Pro 设备的网络设置。 
 
     ![本地 Web UI“网络设置”页](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
@@ -74,7 +74,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge 设备 A
 
 2. 从 " **设备** " 页配置设备名称和 DNS 域。 记下设备名称和 DNS 域，因为稍后将用到它们。
 
-    ![本地 web UI "设备" 页](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
+    ![本地 Web UI“设备”页](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
     > [!IMPORTANT]
     > 设备名称、DNS 域将用于形成公开的终结点。
@@ -83,7 +83,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge 设备 A
 
 ## <a name="step-2-create-and-install-certificates"></a>步骤2：创建和安装证书
 
-证书确保你的通信受到信任。 在 Azure Stack 边缘设备上，自动生成自签名的设备、blob 和 Azure 资源管理器证书。 此外，也可以将自己的已签名 blob 和 Azure 资源管理器证书。
+证书确保你的通信受到信任。 在 Azure Stack Edge Pro 设备上，自动生成自签名的设备、blob 和 Azure 资源管理器证书。 此外，也可以将自己的已签名 blob 和 Azure 资源管理器证书。
 
 当你引入自己的签名证书时，你还需要证书的相应签名链。 对于签名链、Azure 资源管理器和设备上的 blob 证书，你将需要客户端计算机上的相应证书，以便对设备进行身份验证和通信。
 
@@ -255,13 +255,13 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 > [!IMPORTANT]
 > 建议你修改用于终结点名称解析的 DNS 服务器配置。
 
-在用于连接到设备的 Windows 客户端上，执行以下步骤：
+请在用于连接到设备的 Windows 客户端上执行以下步骤：
 
 1. 以管理员身份启动 **记事本** ，然后打开位于 C:\Windows\System32\Drivers\etc. 的 **hosts** 文件。
 
-    ![Windows 资源管理器主机文件](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+    ![Windows 资源管理器 hosts 文件](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
 
-2. 将以下条目添加到 **主机** 文件，并将替换为设备的适当值： 
+2. 将以下条目添加到 hosts 文件，替换为设备的适当值： 
 
     ```
     <Device IP> login.<appliance name>.<DNS domain>
@@ -278,7 +278,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 
 3. 请使用以下图像作为参考。 保存 **hosts** 文件。
 
-    ![在记事本中承载文件](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file-notepad.png)
+    ![记事本中的 hosts 文件](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file-notepad.png)
 
 ## <a name="step-6-verify-endpoint-name-resolution-on-the-client"></a>步骤6：验证客户端上的终结点名称解析
 
@@ -319,9 +319,9 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. 将环境设置为 Azure Stack 边缘，将 Azure 资源管理器调用的端口设置为443。 可以通过两种方式定义环境：
+2. 将环境设置为 Azure Stack Edge Pro，将 Azure 资源管理器调用的端口设置为443。 可以通过两种方式定义环境：
 
-    - 设置环境。 键入下列命令：
+    - 设置环境。 键入以下命令：
 
     ```powershell
     Set-AzureRMEnvironment -Name <Environment Name>
@@ -329,7 +329,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
     
     有关详细信息，请参阅 [get-azurermenvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)。
 
-    - 为您执行的每个 cmdlet 定义内联环境。 这可确保所有 API 调用都通过正确的环境。 默认情况下，调用将通过 Azure 公共，但你希望这些调用通过为 Azure Stack Edge 设备设置的环境完成。
+    - 为您执行的每个 cmdlet 定义内联环境。 这可确保所有 API 调用都通过正确的环境。 默认情况下，调用将通过 Azure 公共，但你希望这些调用通过为 Azure Stack Edge Pro 设备设置的环境完成。
 
     - 有关 [如何切换 AzureRM 环境](#switch-environments)的详细信息，请参阅。
 
@@ -376,7 +376,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 
 
 > [!IMPORTANT]
-> 与 Azure 资源管理器的连接每1.5 小时过期一次，或者 Azure Stack Edge 设备重新启动。 如果发生这种情况，你执行的任何 cmdlet 都将返回错误消息，表明你未连接到 Azure。 你需要重新登录。
+> 与 Azure 资源管理器的连接每1.5 小时过期一次，或者 Azure Stack Edge Pro 设备重新启动。 如果发生这种情况，你执行的任何 cmdlet 都将返回错误消息，表明你未连接到 Azure。 你需要重新登录。
 
 ## <a name="switch-environments"></a>切换环境
 
@@ -460,4 +460,4 @@ ExtendedProperties : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack Edge 设备上部署 vm](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。
+[在 Azure Stack Edge Pro 设备上部署 vm](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。

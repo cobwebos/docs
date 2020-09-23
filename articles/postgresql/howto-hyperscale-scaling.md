@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 8/10/2020
-ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/18/2020
+ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906483"
+ms.locfileid: "90986703"
 ---
 # <a name="server-group-size"></a>服务器组大小
 
@@ -60,9 +60,6 @@ SELECT rebalance_table_shards('distributed_table_name');
 `rebalance_table_shards`函数间重新平衡其参数中命名的表的[归置](concepts-hyperscale-colocation.md)组中的所有表。 因此，您不必为每个分布式表调用函数，只需在每个归置组的代表性表中调用它。
 
 ### <a name="increase-or-decrease-vcores-on-nodes"></a>增加或减少节点上的 Vcore
-
-> [!NOTE]
-> 此功能目前处于预览状态。 若要在 Vcore 中为服务器组中的节点请求更改，请 [联系 Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 除了添加新节点以外，还可以增加现有节点的功能。 向上和向下调整计算容量可用于性能试验，以及对流量需求的短期或长期更改。
 

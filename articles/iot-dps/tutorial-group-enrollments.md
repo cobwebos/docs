@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 43ae9bd0e844a23adabf52e7fbb4b8cd077d23bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 80efd92560bc7fb5c8bf16b524752e7dbfcdc74b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326709"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526657"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>教程：使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
 
@@ -260,4 +260,4 @@ ms.locfileid: "87326709"
 本教程介绍了如何在 Windows 计算机上创建模拟 X.509 设备，以及如何使用 Azure IoT 中心设备预配服务和登记组将其预配到 IoT 中心。 若要了解有关 X.509 设备的详细信息，请继续阅读设备概念。 
 
 > [!div class="nextstepaction"]
-> [IoT 中心设备预配服务设备概念](concepts-device.md)
+> [IoT 中心设备预配服务概念](concepts-service.md)
