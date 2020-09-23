@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8843f24f27f8973ad99989f743d1b3fae568679e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997143"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988043"
 ---
 # <a name="server-sizes"></a>服务器大小
 
@@ -23,7 +23,7 @@ Azure 远程呈现提供两种服务器配置： `Standard` 和 `Premium` 。
 
 当 "标准" 服务器上的呈现器达到此限制时，它将呈现为棋盘背景：
 
-![棋盘](media/checkerboard.png)
+![屏幕截图使用 "工具" 菜单显示黑色和白色正方形的网格。](media/checkerboard.png)
 
 ## <a name="specify-the-server-size"></a>指定服务器大小
 

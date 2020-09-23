@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: f2e067f76d6ed7d89a38e9b8920c407f161969a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17882581c4548996c9a8b2a8670b5f720e64da1e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456772"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898999"
 ---
 # <a name="add-columns-module"></a>“添加列”模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块连接两个数据集。 将指定为输入的两个数据集中的所有列合并，以便创建一个数据集。 如果需要连接两个以上的数据集，请使用“添加列”的多个实例。 
 

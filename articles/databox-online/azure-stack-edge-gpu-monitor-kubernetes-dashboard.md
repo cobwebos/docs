@@ -1,6 +1,6 @@
 ---
-title: 通过 Kubernetes 仪表板监视 Azure Stack Edge 设备 |Microsoft Docs
-description: 描述如何访问和使用 Kubernetes 仪表板监视 Azure Stack Edge 设备。
+title: 通过 Kubernetes 仪表板监视 Azure Stack Edge Pro 设备 |Microsoft Docs
+description: 描述如何访问和使用 Kubernetes 仪表板来监视 Azure Stack Edge Pro 设备。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297806"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899196"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>使用 Kubernetes 仪表板监视 Azure Stack Edge GPU 设备
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>使用 Kubernetes 仪表板监视 Azure Stack Edge Pro GPU 设备
 
-本文介绍如何访问和使用 Kubernetes 仪表板监视 Azure Stack Edge GPU 设备。 若要监视你的设备，你可以在 Azure 门户中使用图表，查看 Kubernetes 仪表板，或者 `kubectl` 通过设备的 PowerShell 界面运行命令。 
+本文介绍如何访问和使用 Kubernetes 仪表板来监视 Azure Stack Edge Pro GPU 设备。 若要监视你的设备，你可以在 Azure 门户中使用图表，查看 Kubernetes 仪表板，或者 `kubectl` 通过设备的 PowerShell 界面运行命令。 
 
 本文仅重点介绍可在 Kubernetes 仪表板上执行的监视任务。
 
@@ -35,7 +35,7 @@ ms.locfileid: "89297806"
 
 Kubernetes 仪表板是一种基于 web 的用户界面，可用于对容器化应用程序进行故障排除。 Kubernetes 仪表板是 Kubernetes 命令行的基于 UI 的替代项 `kubectl` 。 有关详细信息，请参阅 [Kubernetes 仪表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)。 
 
-在 Azure Stack 边缘设备上，你可以在 *只读* 模式下使用 Kubernetes 仪表板来大致了解在 Azure Stack Edge 设备上运行的应用程序，查看 Kubernetes 群集资源的状态，并查看设备上发生的任何错误。
+在 Azure Stack Edge Pro 设备上，你可以在 *只读* 模式下使用 Kubernetes 仪表板来大致了解在 Azure Stack Edge Pro 设备上运行的应用程序，查看 Kubernetes 群集资源的状态，并查看设备上发生的任何错误。
 
 ## <a name="access-dashboard"></a>访问面板
 
@@ -54,19 +54,19 @@ Kubernetes 仪表板为 *只读* ，并在端口31000上的 Kubernetes 主节点
     1. 选择省略号 **...**。浏览并指向 `kubeconfig` 你之前在本地系统上下载的。 选择“登录”。
         ![浏览到 kubeconfig 文件](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. 你现在可以在只读模式下查看 Azure Stack Edge 设备的 Kubernetes 仪表板。
+6. 你现在可以在只读模式下查看 Azure Stack Edge Pro 设备的 Kubernetes 仪表板。
 
     ![Kubernetes 仪表板主页](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>查看模块状态
 
-计算模块是已实现业务逻辑的容器。 你可以使用仪表板来验证是否已在 Azure Stack Edge 设备上成功部署了计算模块。
+计算模块是已实现业务逻辑的容器。 你可以使用仪表板来验证是否已在 Azure Stack Edge Pro 设备上成功部署了计算模块。
 
 若要查看模块状态，请在仪表板上执行以下步骤：
 
 1. 在仪表板的左窗格中，找到 " **命名空间**"。 按 IoT Edge 模块显示的命名空间进行筛选，在本例中为 **iotedge**。
 1. 在左窗格中，中转到 " **工作负载" > 部署**。
-1. 在右侧窗格中，你将看到在设备上部署的所有模块。 在这种情况下，GettingStartedWithGPU 模块部署在 Azure Stack 边缘上。 你可以看到该模块已部署。
+1. 在右侧窗格中，你将看到在设备上部署的所有模块。 在这种情况下，GettingStartedWithGPU 模块部署在 Azure Stack Edge Pro 上。 你可以看到该模块已部署。
 
     ![查看模块部署](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ Kubernetes 仪表板为 *只读* ，并在端口31000上的 Kubernetes 主节点
 
 1. 在仪表板的左窗格中，找到 " **命名空间**"。 按部署外部服务的命名空间（在本例中为 **iotedge**）进行筛选。
 1. 在左窗格中，找到 " **发现和负载平衡 > 服务**"。
-1. 在右侧窗格中，你将看到在 `iotedge` Azure Stack 边缘设备上的命名空间中运行的所有服务。
+1. 在右侧窗格中，你将看到在 `iotedge` Azure Stack Edge Pro 设备上的命名空间中运行的所有服务。
 
     ![获取外部服务的 IP](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ Kubernetes 仪表板为 *只读* ，并在端口31000上的 Kubernetes 主节点
 
 ## <a name="view-cpu-memory-usage"></a>查看 CPU，内存使用情况
 
-Azure Stack Edge 设备的 Kubernetes 仪表板还具有一个 [指标服务器加载项](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) ，用于聚合 Kubernetes 资源中的 CPU 和内存使用情况。
+Azure Stack Edge Pro 设备的 Kubernetes 仪表板还具有一个 [指标服务器加载项](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) ，用于聚合 Kubernetes 资源中的 CPU 和内存使用情况。
  
 例如，你可以查看所有命名空间中的部署所消耗的 CPU 和内存。 
 

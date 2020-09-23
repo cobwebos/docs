@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack 边缘系统要求 |Microsoft Docs
-description: 了解 Azure Stack 边缘的软件和网络要求
+title: Microsoft Azure Stack Edge Pro 系统要求 |Microsoft Docs
+description: 了解 Azure Stack Edge Pro 的软件和网络要求
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7754c57563ec5acb9028c2ace217f318fea5e959
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 091d272ff00982a0d0a5ae44885a04cc62d7a4b4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256255"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899141"
 ---
-# <a name="system-requirements-for-azure-stack-edge-with-gpu"></a>具有 GPU Azure Stack 边缘的系统要求 
+# <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>带有 GPU Azure Stack Edge Pro 的系统要求 
 
-本文介绍 Microsoft Azure Stack Edge 解决方案以及连接到 Azure Stack Edge 的客户端的重要系统要求。 建议你在部署 Azure Stack 边缘之前仔细查看信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
+本文介绍 Microsoft Azure Stack Edge Pro 解决方案以及连接到 Azure Stack Edge Pro 的客户端的重要系统要求。 建议你在部署 Azure Stack Edge Pro 之前仔细查看信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
 
-Azure Stack 边缘的系统要求包括：
+Azure Stack Edge Pro 的系统要求包括：
 
 - **主机的软件要求** - 介绍支持的平台、本地配置 UI 的浏览器、SMB 客户端以及访问设备的客户端的任何其他要求。
 - **设备的网络要求** - 提供有关物理设备运转的网络要求的信息。
@@ -40,9 +40,9 @@ Azure Stack 边缘的系统要求包括：
 
 当通过 Azure Stack 管理时，SMB/NFS/REST 接口支持以下分层存储帐户。
 
-|类型  |存储帐户  |注释  |
+|类型  |存储帐户  |备注  |
 |---------|---------|---------|
-|标准     |GPv1：块 Blob         |         |
+|Standard     |GPv1：块 Blob         |         |
 |    |  Blob 存储：块 Blob       | 仅支持 NAS     |
 
 * Azure Stack 当前不支持页 blob 和 Azure 文件。
@@ -59,9 +59,9 @@ Azure Stack 边缘的系统要求包括：
 
 ## <a name="networking-port-requirements"></a>网络端口要求
 
-### <a name="port-requirements-for-azure-stack-edge"></a>Azure Stack 边缘的端口要求
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 的端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Azure Stack 边缘设备在外部（例如，在 internet 上出站）发送数据的方向。
+下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Azure Stack 边缘 Pro 设备在外部（例如，在 internet 上出站）发送数据的方向。
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 
@@ -79,13 +79,13 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 ## <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
 
-通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 Azure Stack 边缘设备和服务依赖于其他 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 这些更改要求网络管理员根据需要监视和更新 Azure Stack 边缘的防火墙规则。
+通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 Azure Stack Edge Pro 设备和服务依赖于其他 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 这些更改要求网络管理员根据需要监视和更新 Azure Stack Edge Pro 的防火墙规则。
 
-在大多数情况下，我们建议你根据 Azure Stack 边缘固定 IP 地址设置防火墙规则，以实现出站流量。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
+建议在大多数情况下，根据 Azure Stack 边缘 Pro 固定 IP 地址设置防火墙规则，以进行出站流量。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
 > [!NOTE]
 > - 设备（源）IP 应始终设置为所有已启用云的网络接口。
-> - 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
+> - 目标 Ip 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
 
 ### <a name="url-patterns-for-gateway-feature"></a>网关功能的 URL 模式
 
@@ -117,7 +117,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 ## <a name="compute-sizing-considerations"></a>计算大小注意事项
 
-在开发和测试解决方案时使用体验，以确保 Azure Stack Edge 设备上有足够的容量，并获得设备的最佳性能。
+在开发和测试解决方案时使用体验，以确保 Azure Stack Edge Pro 设备上有足够的容量，并获得设备的最佳性能。
 
 应考虑的因素包括：
 
@@ -137,8 +137,8 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 - Azure 门户中可用的计算指标。 中转到 Azure Stack Edge 资源，然后开始 **监视 > 指标**。 查看 **边缘计算内存使用情况** 和 **边缘计算百分比 CPU** ，了解可用资源以及资源的使用情况。
 - 若要监视计算模块并对其进行故障排除，请参阅 [调试 Kubernetes 问题](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge)。
 
-最后，请确保在数据集上验证解决方案并在生产环境中部署之前，量化 Azure Stack Edge 上的性能。
+最后，在生产环境中部署之前，请确保在数据集上验证解决方案并量化 Azure Stack Edge Pro 上的性能。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
-- [部署 Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md)
+- [部署 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)

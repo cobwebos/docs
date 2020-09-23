@@ -10,16 +10,16 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 330c7e01b33cfdf48687c492d09fb7aab8a5e779
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648744"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908029"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的“执行 Python 脚本”模块。
+本文介绍 Azure 机器学习设计器中的 "执行 Python 脚本" 模块。
 
 使用此模块可以运行 Python 代码。 有关 Python 体系结构和设计原理的详细信息，请参阅[如何在 Azure 机器学习设计器中运行 Python 代码](../how-to-designer-python.md)。
 

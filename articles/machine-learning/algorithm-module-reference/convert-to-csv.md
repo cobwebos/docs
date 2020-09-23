@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: fc2a043e8f1565cf5fe45ba0b072ad015076635e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b7c781717952765941acd4ea4aa47593d4b8a0f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477674"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898791"
 ---
 # <a name="convert-to-csv-module"></a>“转换为 CSV”模块
 
-本文介绍了 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块，可以将数据集转换为可下载、导出或与 R 或 Python 脚本模块共享的 CSV 格式。
 

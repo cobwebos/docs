@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 5b46dc0197022aa72b6ca4c206d1da4369234167
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 576ff4eb3a189b27a4c7743966ced0676ec67a9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707673"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978914"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>了解 Azure Database for PostgreSQL 单一服务器的根 CA 更改的更改
 
@@ -126,5 +126,8 @@ Azure Database for PostgreSQL 使用的这些证书由受信任的证书颁发�
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. 我们是否有服务器端查询来验证是否正在使用 SSL？
 若要验证是否正在使用 SSL 连接连接到服务器，请参阅 [ssl 验证](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)。
 
-### <a name="13-what-if-i-have-further-questions"></a>13. 如果我有其他问题，该怎么办？
+### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. 如果我的证书文件中已有 DigiCertGlobalRootG2，是否需要执行操作？
+不是。 如果你的证书文件已有 **DigiCertGlobalRootG2**，则无需执行任何操作。
+
+### <a name="14-what-if-i-have-further-questions"></a>14. 如果我还有其他问题，该怎么办？
 如果有疑问，请从 [Microsoft Q&的](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)社区专家那里获取答案。 如果你有支持计划并需要技术  [帮助，请联系我们](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

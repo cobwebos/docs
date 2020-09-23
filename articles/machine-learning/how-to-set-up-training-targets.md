@@ -1,7 +1,7 @@
 ---
-title: 向计算目标提交定型运行
+title: 将训练运行提交到计算目标
 titleSuffix: Azure Machine Learning
-description: 在各种培训环境上训练机器学习模型， (计算目标) 。 可以轻松地在训练环境之间切换。 在本地开始训练。 如果需要横向扩展，请切换到基于云的计算目标。
+description: 在各种训练环境（计算目标）上训练机器学习模型。 可以轻松地在训练环境之间切换。 在本地开始训练。 如果需要横向扩展，请切换到基于云的计算目标。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,45 +11,43 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: da48b593b8f645566b2f9775fabc5d8e62e625b6
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661576"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907591"
 ---
-# <a name="submit-a-training-run-to-a-compute-target"></a>向计算目标提交定型运行
+# <a name="submit-a-training-run-to-a-compute-target"></a>将训练运行提交到计算目标
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+本文介绍如何使用训练培训环境（[计算目标](concept-compute-target.md)）训练机器学习模型。
 
-本文介绍如何使用各种培训环境 ([计算目标](concept-compute-target.md)) 来训练机器学习模型。
+训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 使用 Azure 机器学习，你可以在各种计算目标上运行脚本，而无需更改训练脚本。
 
-训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 利用 Azure 机器学习，你可以在不同的计算目标上运行脚本，而无需更改定型脚本。
-
-只需为 **脚本运行配置**中的每个计算目标定义环境。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。
+只需在脚本运行配置中为每个计算目标定义环境即可。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
 * [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
-* [Azure 机器学习工作区](how-to-manage-workspace.md)，`ws`
-* 计算目标， `my_compute_target` 。  使用以下内容创建计算目标：
+* [Azure 机器学习工作区](how-to-manage-workspace.md) `ws`
+* 计算目标 `my_compute_target`。  使用以下工具创建计算目标：
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
   * [Azure 机器学习工作室](how-to-create-attach-compute-studio.md)
 
-## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>脚本运行配置是什么？
+## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>什么是脚本运行配置？
 
-您可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 对象提交训练试验。  此对象包含：
+使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 对象提交训练实验。  此对象包含：
 
 * **source_directory**：包含训练脚本的源目录
 * **script**：标识训练脚本
-* **run_config**： [运行配置](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)，该配置又定义了定型发生的位置。 在中， `run_config` 指定运行训练脚本时要使用的计算目标和环境。  
+* **run_config**：[运行配置](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)，其中定义了训练将发生的位置。 在 `run_config` 中指定运行训练脚本时要使用的计算目标和环境。  
 
 ## <a name="whats-an-environment"></a>什么是环境？
 
-Azure 机器学习 [环境](concept-environments.md) 是计算机学习定型发生环境的封装。 此类学习环境指定了与训练和评分脚本有关的 Python 包、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。  
+Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境指定了与训练和评分脚本有关的 Python 包、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。  
 
-环境是在中的对象中指定的  `run_config` `ScriptRunConfig` 。
+环境是在 `ScriptRunConfig` 内的 `run_config` 对象中指定的。
 
 ## <a name="train-your-model"></a><a id="submit"></a>训练模型
 
@@ -57,7 +55,7 @@ Azure 机器学习 [环境](concept-environments.md) 是计算机学习定型发
 
 1. 创建要运行的试验
 1. 创建脚本将在其中运行的环境
-1. 创建一个引用计算目标和环境的脚本运行配置
+1. 创建引用计算目标和环境的脚本运行配置
 1. 提交运行
 1. 等待运行完成
 
@@ -81,7 +79,7 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 
 ## <a name="create-an-environment"></a>创建环境
 
-特选环境包含 Python 包的集合，默认情况下可以在你的工作区中使用。 这些环境由缓存的 Docker 映像支持，降低了运行准备成本。 对于远程计算目标，可以使用以下常用特选环境之一：
+特选环境包含 Python 包的集合，默认情况下可以在你的工作区中使用。 这些环境由缓存的 Docker 映像支持，降低了运行准备成本。 对于远程计算目标，可以从使用以下常用特选环境之一开始：
 
 ```python
 from azureml.core import Workspace, Environment
@@ -90,11 +88,11 @@ ws = Workspace.from_config()
 my_environment = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
-有关环境的详细信息和详细信息，请参阅 [Create & use software 环境 in Azure 机器学习](how-to-use-environments.md)。
+有关环境的更多信息和细节，请参阅[在 Azure 机器学习中创建和使用软件环境](how-to-use-environments.md)。
   
 ### <a name="local-compute-target"></a>本地计算目标
 
-如果计算目标是 **本地计算机**，则需负责确保在运行脚本的 Python 环境中提供所有必需的包。  使用 `python.user_managed_dependencies`) 指定的路径上的当前 Python 环境 (或 python。
+如果计算目标是本地计算机，你需要负责确保所有必需的包在脚本运行于的 Python 环境中可用。  使用 `python.user_managed_dependencies` 来使用当前的 Python 环境（或指定路径上的 Python）。
 
 ```python
 from azureml.core import Environment
@@ -110,7 +108,7 @@ my_environment.python.user_managed_dependencies = True
 
 ## <a name="create-script-run-configuration"></a>创建脚本运行配置
 
-现在，你已经有了计算目标 (`compute_target`) 和环境 (`my_environment`) ，请创建一个脚本运行配置，用于运行你的培训脚本 (`train.py`) 位于你的 `project_folder` 目录中：
+现在，你已经有了一个计算目标 (`compute_target`) 和环境 (`my_environment`)，接下来创建一个脚本运行配置，该配置运行位于 `project_folder` 目录中的培训脚本 (`train.py`)：
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -147,7 +145,7 @@ run = experiment.submit(config=script_run_config)
 >
 > [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 > 
-> 有关快照的详细信息，请参阅 [快照](concept-azure-machine-learning-architecture.md#snapshots)。
+> 有关快照的详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
 
 <a id="gitintegration"></a>

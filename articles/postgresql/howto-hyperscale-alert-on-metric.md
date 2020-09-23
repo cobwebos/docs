@@ -1,22 +1,22 @@
 ---
-title: 配置警报-超大规模（Citus）-Azure Database for PostgreSQL
-description: 本文介绍如何配置和访问 Azure Database for PostgreSQL-超大规模（Citus）的指标警报
+title: 配置警报-超大规模 (Citus) -Azure Database for PostgreSQL
+description: '本文介绍如何配置和访问 Azure Database for PostgreSQL-超大规模 (Citus 的指标警报) '
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 88425e2c875b3cce7c63cd66fd034e5a7af56ec7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5ccd1281e50ca10b8edd7d7567a000b97107901
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117026"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907424"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 门户为 Azure Database for PostgreSQL 超大规模（Citus）的指标设置警报
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 门户设置 Azure Database for PostgreSQL 超大规模 (Citus 的指标警报) 
 
-本文介绍如何使用 Azure 门户设置 Azure Database for PostgreSQL 警报。 你可以收到基于 Azure 服务的[监视指标](concepts-hyperscale-monitoring.md)的警报。
+本文介绍如何使用 Azure 门户设置 Azure Database for PostgreSQL 警报。 你可以收到基于 Azure 服务的 [监视指标](concepts-hyperscale-monitoring.md) 的警报。
 
 我们将设置一个警报，以便在指定指标的值超过阈值时触发。 当首次满足条件时，将触发警报，并在以后继续触发。
 
@@ -35,36 +35,36 @@ ms.locfileid: "86117026"
 
 2. 在边栏的“监视”部分，选择“警报”，如下所示********：
 
-   ![选择“警报规则”](./media/howto-hyperscale-alert-on-metric/2-alert-rules.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/2-alert-rules.png" alt-text="选择警报规则":::
 
 3. 选择“新建警报规则”（+ 图标）。****
 
 4. 随即打开“创建规则”页面，如下所示****。 填写所需信息：
 
-   ![添加指标警报窗体](./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="添加指标警报窗体":::
 
-5. 在 "**条件**" 部分中，选择 "**添加**"。
+5. 在 " **条件** " 部分中，选择 " **添加**"。
 
 6. 从要发出警报的信号列表中选择一个指标。 在此示例中，选择“存储百分比”。
    
-   ![选择指标](./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="选择指标":::
 
 7. 配置警报逻辑：
 
-    * **运算符**（例如 "大于"）
-    * **阈值**（例如 85%）
-    * **聚合粒度**在触发警报前必须满足指标规则的时间长度（例如 "过去30分钟"）
-    * 和**评估频率**（例如 "1 分钟"）
+    * **运算符** (ex "大于" ) 
+    * **阈值** (例如 85%) 
+    * **聚合粒度** 在警报触发之前必须满足指标规则的时间 (例如。 "过去30分钟" ) 
+    * **计算的频率** (例如 "1 分钟" ) 
    
    完成后选择“完成”****。
 
-   ![选择指标](./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png)
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="选择指标":::
 
 8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知********。
 
 9. 使用名称、短名称、订阅和资源组填写“添加操作组”表单。
 
-    ![操作组](./media/howto-hyperscale-alert-on-metric/9-add-action-group.png)
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="操作组":::
 
 10. 配置“电子邮件/短信/推送/语音”操作类型****。
     
@@ -72,11 +72,11 @@ ms.locfileid: "86117026"
    
     完成后选择“确定”****。
 
-    ![操作组](./media/howto-hyperscale-alert-on-metric/10-action-group-type.png)
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="操作组":::
 
 11. 指定预警规则名称、说明和严重性。
 
-    ![操作组](./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png) 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="操作组"::: 
 
 12. 选择“创建警报规则”可以创建警报****。
 
@@ -92,17 +92,17 @@ ms.locfileid: "86117026"
 
 ## <a name="suggested-alerts"></a>建议的警报
 
-### <a name="disk-space"></a>硬盘空间
+### <a name="disk-space"></a>磁盘空间
 
-对于每个生产超大规模（Citus）服务器组，监视和警报都非常重要。 底层 PostgreSQL 数据库要求可用磁盘空间才能正常运行。 如果磁盘已满，则数据库服务器节点将处于脱机状态，并拒绝启动，直到空间可用。 此时，它需要 Microsoft 支持请求来解决这种情况。
+对于每个生产 (超大规模) 服务器组，监视和警报都非常重要。 底层 PostgreSQL 数据库要求可用磁盘空间才能正常运行。 如果磁盘已满，则数据库服务器节点将处于脱机状态，并拒绝启动，直到空间可用。 此时，它需要 Microsoft 支持请求来解决这种情况。
 
 建议在每个服务器组中的每个节点上设置磁盘空间警报，即使对于非生产使用也是如此。 磁盘空间使用情况警报提供干预并使节点保持正常运行所需的高级警告。 为获得最佳结果，请尝试在75%、85% 和95% 使用的一系列警报。 选择的百分比取决于数据引入速度，因为快速数据引入会使磁盘更快地填满。
 
 磁盘接近其空间限制时，可以尝试以下方法获取更多的可用空间：
 
 * 查看数据保留策略。 如果可行，请将较旧的数据移到冷存储。
-* 考虑向服务器组[添加节点](howto-hyperscale-scaling.md#add-worker-nodes)并重新平衡分片。 重新平衡跨多台计算机分散数据。
-* 考虑[增加](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes)辅助角色节点的容量。 每个工作线程最多可以有 2 TiB 的存储空间。 但是，应在调整节点大小时尝试添加节点，因为添加节点的速度更快。
+* 考虑向服务器组 [添加节点](howto-hyperscale-scaling.md#add-worker-nodes) 并重新平衡分片。 重新平衡跨多台计算机分散数据。
+* 考虑 [增加](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) 辅助角色节点的容量。 每个工作线程最多可以有 2 TiB 的存储空间。 但是，应在调整节点大小时尝试添加节点，因为添加节点的速度更快。
 
 ### <a name="cpu-usage"></a>CPU 使用率
 

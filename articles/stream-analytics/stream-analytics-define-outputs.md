@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6576ac53f43a8e176b3d166d5218b0ba9934b856
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068977"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907148"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 流分析的输出
 
@@ -26,7 +26,7 @@ Azure 流分析作业由输入、查询和输出构成。 可以向多个输出�
 |-------------|--------------|----------|
 |[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 用户 </br> MSI|
 |[Azure SQL 数据库](sql-database-output.md)|是，但需要启用。|SQL 用户身份验证 </br> MSI (预览) |
-|[Azure Synapse Analytics（预览）](azure-synapse-analytics-output.md)|否|SQL 用户身份验证|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|否|SQL 用户身份验证|
 |[Blob 存储和 Azure Data Lake 第2代](blob-storage-azure-data-lake-gen2-output.md)|是|MSI </br> 访问密钥|
 |[Azure 事件中心](event-hubs-output.md)|是|访问密钥|
 |[Power BI](power-bi-output.md)|否|Azure Active Directory 用户 </br> MSI|

@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/02/2020
-ms.openlocfilehash: 22a9bec09652b6cbce02fe5a54a319694aaa6911
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 46fa489c5a72c3de923f5281cc9be205925dd42d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421299"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988103"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>使用 Spark 连接器加快实时大数据分析
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Spark 连接器利用 Microsoft JDBC Driver for SQL Server 在 Spark 工作器�
 
 下图演示了此数据流。
 
-   ![体系结构](./media/spark-connector/architecture.png)
+   ![关系图显示了所述的流，其中的主节点直接连接到数据库并连接到三个工作节点（连接到数据库）。](./media/spark-connector/architecture.png)
 
 ### <a name="build-the-spark-connector"></a>生成 Spark 连接器
 

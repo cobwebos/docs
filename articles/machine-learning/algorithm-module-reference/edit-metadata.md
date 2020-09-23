@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
-ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965002"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908039"
 ---
 # <a name="edit-metadata-module"></a>“编辑元数据”模块
 
-本文介绍 Azure 机器学习设计器（预览版）中包含的一个模块。
+本文介绍 Azure 机器学习设计器中包含的模块。
 
 使用“编辑元数据”模块可以更改与数据集中的列关联的元数据。 使用“编辑元数据”模块后，数据集的值和数据类型将会更改。
 

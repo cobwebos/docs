@@ -8,19 +8,19 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843515"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978611"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关 Azure API for FHIR 的常见问题解答
 
 ## <a name="azure-api-for-fhir"></a>适用于 FHIR 的 Azure API
 
 ### <a name="what-is-fhir"></a>什么是 FHIR？
- (FHIR 的快速医疗保健互操作性资源 ) 是一个互操作性标准，旨在允许在不同的运行状况系统之间交换医疗保健数据。 此标准由 HL7 组织开发，由世界各地的医疗保健组织使用。 最新版本的 FHIR 是 R4 (版本 4) 。 适用于 FHIR 的 Azure API 支持 R4，并且还支持早期版本 STU3 (Standard for 试用版 3) 。 有关 FHIR 的详细信息，请访问[HL7.org](http://hl7.org/fhir/summary.html)。
+ (FHIR 的快速医疗保健互操作性资源 ) 是一个互操作性标准，旨在允许在不同的运行状况系统之间交换医疗保健数据。 此标准由 HL7 组织开发，由世界各地的医疗保健组织使用。 最新版本的 FHIR 是 R4 (版本 4) 。 适用于 FHIR 的 Azure API 支持 R4，并且还支持早期版本 STU3 (Standard for 试用版 3) 。 有关 FHIR 的详细信息，请访问 [HL7.org](http://hl7.org/fhir/summary.html)。
 
 ### <a name="is-the-data-behind-the-fhir-apis-stored-in-azure"></a>FHIR Api 是否在 Azure 中存储的数据？
 
@@ -34,7 +34,7 @@ ms.locfileid: "87843515"
 
 我们支持 Azure API for FHIR (PaaS) 和 FHIR Server for Azure (开源) 版本4.0.0 和3.0.1。
 
-有关详细信息，请参阅[支持的功能](fhir-features-supported.md)。 了解[HL7 FHIR 的版本历史记录](https://hl7.org/fhir/R4/history.html)中的不同版本之间的更改。
+有关详细信息，请参阅 [支持的功能](fhir-features-supported.md)。 了解 [HL7 FHIR 的版本历史记录](https://hl7.org/fhir/R4/history.html)中的不同版本之间的更改。
 
 ### <a name="whats-the-difference-between-the-open-source-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>用于 Azure 的开源 Microsoft FHIR 服务器与用于 FHIR 的 Azure API 之间有何区别？
 
@@ -47,9 +47,26 @@ ms.locfileid: "87843515"
 ### <a name="what-is-smart-on-fhir"></a>什么是 FHIR 的智能？
 
 智能 (可在 FHIR 上替换医疗应用程序和可重用技术) ，这是一套开放式规范，可将合作伙伴应用程序与 FHIR 服务器和其他运行状况 IT 系统（如电子健康记录和健康信息交换）集成。 通过创建智能的 FHIR 应用程序，你可以确保你的应用程序可以通过不同系统的很多进行访问和利用。
-用于 FHIR 的身份验证和 Azure API。 若要了解有关智能的详细信息，请访问[智能运行状况](https://smarthealthit.org/)。
+用于 FHIR 的身份验证和 Azure API。 若要了解有关智能的详细信息，请访问 [智能运行状况](https://smarthealthit.org/)。
 
-## <a name="azure-iot-connector-for-fhir-preview"></a>适用于 FHIR 的 Azure IoT 连接器 (预览) 
+### <a name="can-i-create-a-custom-fhir-resource"></a>能否创建自定义 FHIR 资源？
+
+我们不允许自定义 FHIR 资源。 如果需要自定义 FHIR 资源，可以在包含扩展的 [基本资源](http://www.hl7.org/fhir/basic.html) 之上构建自定义资源。 
+
+### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>Azure API for FHIR 是否支持 [扩展](https://www.hl7.org/fhir/extensibility.html) ？
+
+我们允许你将任何有效的 FHIR JSON 数据加载到服务器中。 如果要存储定义扩展的结构定义，则可以将其另存为结构定义资源。 当前无法搜索扩展。
+
+### <a name="what-is-the-limit-on-_count"></a>_Count 的限制是多少？
+
+当前计数限制为100。
+
+### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>组导出功能是否有任何限制？
+
+对于组导出，我们只导出组中包含的引用，而不是 [组资源](https://www.hl7.org/fhir/group.html)的所有特征。
+
+
+## <a name="azure-iot-connector-for-fhir-preview"></a>适用于 FHIR 的 Azure IoT 连接器（预览版）
 
 ### <a name="what-is-iomt"></a>什么是 IoMT？
 IoMT 代表医疗网，它是一类 IoT 设备，可通过网络与其他医疗保健 IT 系统一起捕获和交换健康和 wellness 数据。 IoMT 设备的一些示例包括健身和临床可穿戴设备、监视传感器、活动跟踪器、护理网亭甚至智能药丸。
@@ -88,6 +105,6 @@ Azure IoT Connector for FHIR 目前不支持私有链接功能。 因此，如�
 >[!div class="nextstepaction"]
 >[支持的 FHIR 功能](fhir-features-supported.md)
 
-* 在 Azure 门户中，用于 FHIR 的 Azure IoT 连接器称为 IoT 连接器 (预览版) 。
+*在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。
 
 FHIR 是 HL7 的注册商标，经 HL7 许可使用。

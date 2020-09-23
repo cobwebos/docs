@@ -1,6 +1,6 @@
 ---
-title: 什么是 Azure SQL Edge（预览版）？
-description: 了解 Azure SQL Edge（预览版）
+title: 什么是 Azure SQL Edge？
+description: 了解 Azure SQL Edge
 keywords: SQL Edge 简介, 什么是 SQL Edge, SQL Edge 概述
 services: sql-edge
 ms.service: sql-edge
@@ -9,27 +9,31 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 20e709db9e6992f52b04934cb0f6eb65d3dcb44c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489521"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907117"
 ---
-# <a name="what-is-azure-sql-edge-preview"></a>什么是 Azure SQL Edge（预览版）？
+# <a name="what-is-azure-sql-edge"></a>什么是 Azure SQL Edge？
 
-Azure SQL Edge（预览版）是已针对 IoT 和 IoT Edge 部署进行了优化的关系数据库引擎。 它提供为 IoT 应用程序和解决方案创建高性能数据存储和处理层的功能。 Azure SQL Edge 提供了流式传输、处理和分析关系和非关系数据（如 JSON、图形和时序数据）的功能，这使其成为各种新式 IoT 应用程序的正确选择。
+Azure SQL Edge 是用于 IoT 和 IoT Edge 部署的优化关系数据库引擎。 它提供为 IoT 应用程序和解决方案创建高性能数据存储和处理层的功能。 Azure SQL Edge 提供了流式传输、处理和分析关系和非关系数据（如 JSON、图形和时序数据）的功能，这使其成为各种新式 IoT 应用程序的正确选择。
 
-Azure SQL Edge 是在 Microsoft SQL 数据库引擎 (/sql/sql-server/sql-server-technical-documentation？ toc =/azure/azure-sql-edge/) toc.js的最新版本的基础上构建的，它提供行业领先的性能、安全性和查询处理功能。 由于 Azure SQL Edge 建立在与 [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) 和 [Azure sql](https://docs.microsoft.com/azure/azure-sql/)相同的引擎上，因此它提供了相同的 t-sql 编程外围应用程序，使应用程序或解决方案的开发变得更简单、更快，同时使应用程序或解决方案在 IoT Edge 设备、数据中心和云之间更易于移植。
+Azure SQL Edge 建立在最新版本的 [SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation)中，提供业界领先的性能、安全性和查询处理功能。 由于 Azure SQL Edge 建立在与 [SQL Server](/sql/sql-server/sql-server-technical-documentation) 和 [Azure sql](https://docs.microsoft.com/azure/azure-sql/)相同的引擎上，因此它提供了相同的 transact-sql (t-sql) 编程外围应用程序，使应用程序或解决方案的开发变得更简单、更快，并使应用程序、数据中心和云 IoT Edge 之间的应用程序可移植性。
 
-> [!NOTE]
-> Azure SQL Edge 目前以预览版形式提供，因此不应在生产环境中使用。
+什么是第9频道上的 Azure SQL Edge 视频：
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]
 
 ## <a name="deployment-models"></a>部署模型
 
-Azure SQL Edge 在 Azure 市场中提供，可以部署为 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 模块。 有关详细信息，请参阅[部署 Azure SQL Edge](deploy-portal.md)。<br>
+Azure SQL Edge 支持两种部署模式。
+
+- 通过 Azure IoT Edge 连接的部署： azure SQL Edge 在 Azure Marketplace 中提供，可以部署为 [Azure IoT Edge](../iot-edge/about-iot-edge.md)的模块。 有关详细信息，请参阅[部署 Azure SQL Edge](deploy-portal.md)。<br>
 
 ![SQL Edge 概述关系图](media/overview/overview.png)
+
+- 断开连接的部署：可从 docker 中心拉取 Azure SQL Edge 容器映像，并将其部署为独立的 docker 容器或 kubernetes 群集。 有关详细信息，请参阅 [使用 Docker 部署 AZURE Sql edge](disconnected-deployment.md) 和 [在 Kubernetes 中部署 azure sql edge 容器](deploy-kubernetes.md)。
 
 ## <a name="editions-of-sql-edge"></a>SQL Edge 版本
 
@@ -38,11 +42,11 @@ SQL Edge 有两个不同的版本或软件计划。 这些版本具有相同的�
    |**规划**  |**说明**  |
    |---------|---------|
    |Azure SQL Edge 开发人员  |  仅限开发 SKU，每个 SQL Edge 容器最多只能有 4 个内核和 32 GB 内存  |
-   |Azure SQL Edge    |  生产 SKU，每个 SQL Edge 容器最多只能有 8 个内核和 64 GB 内存。 |
+   |Azure SQL Edge    |  生产 sku，每个 SQL Edge 容器最多只能有8个核心和 64 GB 的内存。 |
 
 ## <a name="pricing-and-availability"></a>定价和可用性
 
-Azure SQL Edge 目前处于预览状态。 有关定价和可用性的详细信息，请参阅 [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/)。
+Azure SQL Edge 现已正式发布。 有关特定区域的定价和可用性的详细信息，请参阅 [AZURE SQL Edge](https://azure.microsoft.com/services/sql-edge/)。
 
 > [!IMPORTANT]
 > 若要了解 Azure SQL Edge 与 SQL Server 的功能差异，以及不同 Azure SQL Edge 选项之间的区别，请参阅[Azure SQL Edge 支持的功能](features.md)。

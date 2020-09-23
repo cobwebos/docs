@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 843bb32a4b5b5e29c4ab7c1dc9ff254a8424ae86
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 61b08514f8d2989736ff2505f0446937757ddb99
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118675"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884682"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL VNet 服务终结点和 VNet 规则
 虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到 Azure Database for MySQL 服务器。 若要概览 Azure Database for MySQL VNet 服务终结点（包括限制），请参阅 [Azure Database for MySQL 服务器 VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for MySQL 的所有支持区域中，VNet 服务终结点均可用。
@@ -32,11 +32,11 @@ ms.locfileid: "86118675"
 
 3. 接下来，单击“+ 添加现有虚拟网络”  。 若无现有 VNet，可以单击“+ 新建虚拟网络”  来创建一个。 请参阅[快速入门：使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)
 
-   ![Azure 门户 - 单击“连接安全性”](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/1-connection-security.png" alt-text="Azure 门户-单击 "连接安全性"":::
 
 4. 输入 VNet 规则名称，选择订阅、虚拟网络和子网名称，再单击“启用”  。 这会使用 Microsoft.SQL  服务标记自动对子网启用 VNet 服务终结点。
 
-   ![Azure 门户 - 配置 VNet](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure 门户 - 配置 VNet":::
 
    该帐户必须拥有创建虚拟网络和服务终结点所需的必要权限。
 
@@ -54,7 +54,7 @@ ms.locfileid: "86118675"
 
 5. 启用后，单击“确定”  即可看到 VNet 服务终结点与 VNet 规则一起启用。
 
-   ![VNet 服务终结点已启用，且 VNet 规则已创建](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="VNet 服务终结点已启用，且 VNet 规则已创建":::
 
 ## <a name="next-steps"></a>后续步骤
 - 同样，可以编写脚本，以[使用 Azure CLI 为 Azure Database for MySQL 启用 VNet 服务终结点并创建 VNET 规则](howto-manage-vnet-using-cli.md)。

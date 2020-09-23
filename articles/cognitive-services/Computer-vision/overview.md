@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: computer vision, computer vision applications, computer vision service
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323070"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907073"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -92,7 +92,11 @@ ms.locfileid: "89323070"
 
 ## <a name="use-containers"></a>使用容器
 
-将标准化的 Docker 容器安装到靠近数据的位置以后，即可在本地[使用计算机视觉容器](computer-vision-how-to-install-containers.md)识别印刷体文本和手写文本。
+通过使用“计算机视觉 Docker”容器，在本地使用服务。 当前有两个容器可用：
+
+* 利用[计算机视觉读取容器](computer-vision-how-to-install-containers.md)，可以识别图像中的打印文本和手写文本。
+
+* 利用[计算机视觉空间分析容器](spatial-analysis-container.md)，可以分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。
 
 ## <a name="image-requirements"></a>图像要求
 

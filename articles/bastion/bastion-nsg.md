@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Bastion 中使用 VM 和 NSG
-description: 可以将网络安全组与 Azure 堡垒配合使用。 了解此配置所需的子网。
+description: 可以将网络安全组与 Azure Bastion 配合使用。 了解此配置所需的子网。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: 563c12f91e9553f802d4cf26519da0550880dfcd
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270523"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987693"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 访问和 Azure Bastion
 
@@ -42,7 +42,7 @@ Azure Bastion 将专门部署到 ***AzureBastionSubnet***。
    * **来自 Azure Bastion 控制平面的入口流量：** 对于控制平面连接，请启用从 GatewayManager 服务标记进行的端口 443 入站。 这使控制平面（即网关管理器）能够与 Azure Bastion 通信。
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="入站":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="屏幕截图显示 Azure 堡垒连接的入站安全规则。":::
 
 * **出口流量：**
 
@@ -50,7 +50,7 @@ Azure Bastion 将专门部署到 ***AzureBastionSubnet***。
    * **流向 Azure 中其他公共终结点的出口流量：** Azure Bastion 需要能够连接到 Azure 中的各种公共终结点，以便执行相应操作（例如，存储诊断日志和计量日志）。 因此，Azure Bastion 需要出站到 443，再到 AzureCloud 服务标记。
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="出站":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="屏幕截图显示 Azure 堡垒连接的出站安全规则。":::
 
 ### <a name="target-vm-subnet"></a>目标 VM 子网
 此子网包含要通过 RDP/SSH 连接到的目标虚拟机。

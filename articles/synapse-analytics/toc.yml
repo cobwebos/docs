@@ -464,13 +464,15 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 连接到 Azure Synapse Link for Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: 使用 Apache Spark for Azure Synapse Analytics 查询 Azure Cosmos DB 分析存储
+            - name: 使用 Apache Spark 查询 Azure Cosmos DB 分析存储
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: 使用 Apache Spark 将数据从 Synapse Link 复制到 SQL 池
               href: ./synapse-link/how-to-copy-to-sql-pool.md
+            - name: 使用按需 SQL 查询 Azure Cosmos DB 分析存储
+              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: 查询存储中的数据
+            - name: 查询外部数据
               items:
                 - name: 概述
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -478,13 +480,15 @@
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查询 Parquet 文件
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 查询 Parquet 嵌套类型
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查询 JSON 文件
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: 查询 Azure Cosmos DB
+                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: 查询嵌套类型
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查询文件夹和多个文件
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 使用文件元数据
+                - name: 使用文件元数据查询分区文件
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 创建和使用视图
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

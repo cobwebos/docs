@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: e1595d7e205c788f90177836f3c0370681b7747b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569078"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907357"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender 高级威胁防护与 Azure 安全中心
 
@@ -28,8 +28,8 @@ Azure 安全中心与 [Microsoft Defender 高级威胁防护 (ATP) ](https://www
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|**正式版**|
-|计价|标准层|
+|发布状态：|正式发布 (GA)|
+|计价|需要 [Azure Defender](security-center-pricing.md)|
 |支持的计算机：|![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure 计算机<br>![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure Arc 计算机|
 |必需的角色和权限：|启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者**或 **订阅参与者**|
 |云：|![是](./media/icons/yes-icon.png) 商业云。<br>![否](./media/icons/no-icon.png) 在公共 Azure 云中运行工作负荷的 GCC 客户<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
@@ -57,7 +57,7 @@ Microsoft Defender ATP 提供：
 
 ## <a name="platform-support"></a>平台支持
 
-安全中心的 Microsoft Defender ATP 支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测。 对于 Azure Vm，你需要标准层订阅，对于非 Azure Vm，你只需在工作区级别使用 "标准" 层。
+安全中心的 Microsoft Defender ATP 支持在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测。 对于 Azure Vm，需要在订阅上启用 Azure Defender; 对于非 Azure Vm，只需在工作区级别启用 Azure Defender。
 
 已为 Office 365 GCC 客户禁用使用此集成的服务器终结点监视。
 
@@ -74,24 +74,25 @@ Microsoft Defender ATP 提供：
 
 1. 在“加入”区域中选择或创建用于存储数据的工作区。
 
-2. 如果看不到所有工作区，原因可能是缺少权限，请确保工作区设置为 "Azure 安全标准" 定价层。 有关详细信息，请参阅 [升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
+2. 如果看不到所有工作区，原因可能是缺少权限，请确保工作区受 Azure Defender 保护。
     
 3. 选择“添加服务器”以查看有关如何安装 Log Analytics 代理的说明。 
 
-4. 加入后，可以在“计算和应用”下监视计算机。
+4. 载入后，您可以监视 [资产清单](asset-inventory.md)中的计算机。
 
    ![加入计算机](media/security-center-wdatp/onboard-computers.png)
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>启用 Microsoft Defender ATP 集成
 
-若要查看是否已启用 Microsoft Defender ATP 集成，请选择“安全中心” > “定价与设置”> 单击你的订阅 。
+若要查看是否已启用 Microsoft Defender ATP 集成，请选择 "**安全中心**  >  **定价" & 设置**> 选择你的订阅。
+
 在此处可以查看当前已启用的集成。
 
   ![Azure 安全中心威胁检测设置页，其中显示已启用 Microsoft Defender ATP 集成](media/security-center-wdatp/enable-integrations.png)
 
-- 如果已将服务器载入 Azure 安全中心标准层，则不需要执行进一步的操作。 Azure 安全中心会自动将服务器加入 Microsoft Defender ATP。 加入过程可能最多需要 24 小时。
+- 如果已启用 Azure Defender，则无需执行其他操作。 Azure 安全中心会自动将服务器加入 Microsoft Defender ATP。 加入过程可能最多需要 24 小时。
 
-- 如果你从未将服务器载入 Azure 安全中心标准层，请照常将它们载入 Azure 安全中心。
+- 如果你从未将服务器载入到 Azure 安全中心，请将它们加入到 Azure 安全中心，并照常启用 Azure Defender。
 
 - 如果通过 Windows Defender ATP 加入了服务器：
   - 请参阅有关[如何卸载服务器计算机](https://go.microsoft.com/fwlink/p/?linkid=852906)的指南文档。
