@@ -11,15 +11,15 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: eefcefbfcfa35aa28545237a179d24d846624971
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 1b322bdb930692d1d43d073d7bff04a4144011ec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647840"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905091"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何使用 Azure 机器学习将模型部署为 Azure 容器实例 (ACI) 上的 Web 服务。 如果满足下列任一条件，请使用 Azure 容器实例：
 
@@ -56,9 +56,9 @@ ms.locfileid: "89647840"
 要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置。 例如，核心数和内存。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 > [!NOTE]
-> * ACI 仅适用于大小低于 1 GB 的小型模型。 
-> * 建议使用单节点 AKS 来开发-测试更大的模型。
-> * 每个容器)  (每个部署的模型数限制为1000。 
+> * ACI 仅适用于大小不到 1 GB 的小模型。 
+> * 建议使用单节点 AKS 对较大的模型进行开发测试。
+> * 要部署的模型数仅限每个部署（每个容器）1,000 个模型。 
 
 ### <a name="using-the-sdk"></a>使用 SDK
 

@@ -1,6 +1,6 @@
 ---
 title: Verizon 中的核心报告 | Microsoft Docs
-description: 可以通过下列报告查看 CDN 的使用模式：带宽报告、已传输数据报告、命中数报告、缓存状态报告、缓存命中率报告、已传输 IPV4/IPV6 数据报告。
+description: 了解如何通过用于 Verizon 配置文件的管理门户访问和查看 Verizon Core 报表。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888437"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985541"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon 中的核心报告
 

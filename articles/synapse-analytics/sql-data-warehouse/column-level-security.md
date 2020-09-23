@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1364da4849a07100ac28644a51409837012f93cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208087"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986217"
 ---
 # <a name="column-level-security"></a>列级别安全性
 
@@ -28,9 +28,9 @@ ms.locfileid: "85208087"
 
 列级别安全性简化了应用程序中的安全性设计和编程，使你能够限制列访问权限以保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层中，而不是在另一个应用层中远离数据。 每当有任何一层的数据访问请求，数据库就会应用访问限制。 此限制会减少整个安全系统的外围应用，从而提高安全措施的可靠性。 此外，使用列级别安全性还无需引入用于筛选掉列的视图以限制用户访问。
 
-可以使用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句实现列级别安全性。 借助此机制，SQL 和 Azure Active Directory (AAD) 身份验证同时受支持。
+可以使用 [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句实现列级别安全性。 对于这种机制，支持 SQL 和 Azure Active Directory (Azure AD) 身份验证。
 
-![cls](./media/column-level-security/cls.png)
+![关系图显示了一个示意表，其中第一列的闭合挂锁及其单元格为橙色颜色，而其他列为空白单元。](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>语法
 

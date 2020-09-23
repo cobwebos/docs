@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246820"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984120"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric 的状态管理
 
@@ -22,11 +22,11 @@ Service Fabric 支持用于状态存储的许多不同选项。 有关状态管�
 
 容器通常使用临时磁盘。 但是，临时磁盘是暂时的，你会获得一个新的临时磁盘并在容器崩溃时丢失信息。 此外，也很难在临时磁盘上与其他容器共享信息。 卷是装载在可用于保留状态的容器实例内的目录。 卷提供常规用途文件存储，并允许使用正常磁盘 I/O 文件 API 读取/写入文件。 卷资源介绍如何装载目录，以及要使用的后备存储。 可以选择 Azure 文件存储或 Service Fabric 卷磁盘来存储数据。
 
-![卷][image3]
+![关系图显示了用于流到卷的服务，该服务将流动到复制的本地磁盘和网络存储上的 Azure 文件卷上 Service Fabric 可靠卷。][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 
-Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 有关示例，请参阅[如何使用 Service Fabric 可靠卷部署应用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
+Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 有关示例，请参阅 [如何使用 Service Fabric 可靠卷部署应用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
 
 ### <a name="azure-files-volume"></a>Azure 文件卷
 

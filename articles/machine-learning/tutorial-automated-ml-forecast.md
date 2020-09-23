@@ -10,20 +10,17 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092270"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896675"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测需求
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 本教程将使用 Azure 机器学习工作室中的自动化机器学习（又称为自动化 ML）创建一个时序预测模型，用于预测单车共享服务的租赁需求。
-
->[!IMPORTANT]
-> Azure 机器学习工作室中的自动化 ML 体验处于预览状态。 某些功能可能不受支持或者受限。
 
 有关分类模型示例，请参阅[教程：使用 Azure 机器学习中的自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)。
 
@@ -38,8 +35,8 @@ ms.locfileid: "87092270"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 企业版 Azure 机器学习工作区。 如果没有工作区，请[创建企业版工作区](how-to-manage-workspace.md)。 
-    * Azure 机器学习工作室中的自动化机器学习仅适用于企业版工作区。 
+* Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 
+
 * 下载 [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) 数据文件
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中开始操作
@@ -128,7 +125,7 @@ ms.locfileid: "87092270"
 
         1. 创建后，从下拉列表中选择新的计算目标。
 
-    1. 选择“**下一步**”。
+    1. 选择“**下一页**”。
 
 ## <a name="select-forecast-settings"></a>选择预测设置
 
@@ -152,7 +149,7 @@ ms.locfileid: "87092270"
     验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：5
     并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;6
     
-    选择“保存” 。
+    选择“保存”。
 
 ## <a name="run-experiment"></a>运行试验
 

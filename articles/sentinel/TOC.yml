@@ -29,6 +29,8 @@
       href: fusion.md
     - name: 跨工作区和租户扩展 Azure Sentinel
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: 跨表规范化数据
+      href: normalization.md
     - name: 安全性
       items:
         - name: 安全基线
@@ -54,17 +56,19 @@
               href: connect-azure-ad-identity-protection.md
             - name: Azure 信息保护
               href: connect-azure-information-protection.md
-            - name: Microsoft Defender ATP
+            - name: Microsoft 365 Defender
+              href: connect-microsoft-365-defender.md
+            - name: 用于终结点的 Microsoft Defender（以前称为 MDATP）
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Azure ATP
+            - name: 用于标识的 Microsoft Defender（以前称为 Azure ATP）
               href: connect-azure-atp.md
             - name: Azure DDoS 防护
               href: connect-azure-ddos-protection.md
             - name: Azure 防火墙
               href: connect-azure-firewall.md
-            - name: Azure 安全中心
+            - name: ASC 中的 Azure Defender 警报
               href: connect-azure-security-center.md
-            - name: 适用于 IoT 的 Azure 安全中心
+            - name: 用于 IoT 的 Azure Defender（以前称为 ASC）
               href: connect-asc-iot.md
             - name: Azure Web 应用程序防火墙 (WAF)
               href: connect-azure-waf.md
@@ -118,6 +122,8 @@
               href: connect-vmware-carbon-black.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
+            - name: 使用 Logstash 进行连接
+              href: connect-logstash.md
             - name: 基于 CEF 的解决方案
               href: connect-common-event-format.md
               items:
@@ -181,6 +187,8 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/securityinsights/'
+    - name: 网络规范化架构
+      href: normalization-schema.md
 - name: 资源
   items:
     - name: 有用的资源

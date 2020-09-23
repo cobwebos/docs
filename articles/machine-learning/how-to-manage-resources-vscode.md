@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/03/2020
-ms.openlocfilehash: 06fc929e0149c48aa75aa87a12e3747ef1df1bf2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440112"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897393"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>使用 VS Code 扩展（预览版）管理 Azure 机器学习资源
 
@@ -44,7 +44,6 @@ ms.locfileid: "89440112"
     1. 选择自己的 Azure 订阅
     1. 选择或创建要在其中预配工作区的新资源组
     1. 选择要在其中预配工作区的位置。
-    1. 在“基本”和“企业”版本之间进行选择。 详细了解不同的 [Azure 机器学习版本](concept-editions.md)。
 
 用于创建工作区的其他方法包括：
 

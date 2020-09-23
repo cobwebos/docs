@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897572"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像 
 
@@ -111,7 +111,7 @@ ms.locfileid: "87307193"
 1. 选择“矩形框”工具 ![矩形框工具](./media/how-to-label-images/rectangular-box-tool.png) 或按“R”。
 3. 在目标中单击并沿对角线拖动以创建大致的边界框。 若要调整边界框，请拖动边或角。
 
-![演示如何创建基本边界框的屏幕截图。](./media/how-to-label-images/bounding-box-sequence.png)
+![创建边界框](./media/how-to-label-images/bounding-box-sequence.png)
 
 若要删除边界框，请在创建后单击边界框旁边显示的 X 形目标。
 

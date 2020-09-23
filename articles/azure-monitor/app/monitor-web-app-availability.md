@@ -4,12 +4,12 @@ description: 在 Application Insights 中设置 Web 测试。 当网站不可用
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310270"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986035"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -78,7 +78,7 @@ ms.locfileid: "87310270"
 
 几分钟之后，单击“刷新”  即可查看测试结果。
 
-![折线图视图](./media/monitor-web-app-availability/availability-refresh-002.png)
+![屏幕截图显示 "刷新" 按钮突出显示的 "可用性" 页。](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 散点图视图显示其中有诊断测试步骤详细信息的测试结果示例。 测试引擎存储已失败的测试的诊断详细信息。 对于成功的测试，将存储执行子集的诊断详细信息。 将鼠标悬停在任何绿点/红点上，可查看测试、测试名称和位置。
 

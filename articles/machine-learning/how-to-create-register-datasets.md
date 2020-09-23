@@ -12,20 +12,22 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 9137c98a2ba0b7356d25a79d3b75c3727fc35fc3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 92394138c5aa20d0abc33387aab1e9c37e6f9cb9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604693"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986391"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何创建 Azure 机器学习数据集，以访问本地或远程试验的数据。 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据集，请参阅[安全地访问数据](concept-data.md#data-workflow)一文。
+
+本文介绍如何创建 Azure 机器学习的数据集，以便使用 Azure 机器学习 Python SDK 访问本地或远程试验的数据。 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据集，请参阅[安全地访问数据](concept-data.md#data-workflow)一文。
 
 通过创建数据集，可以创建对数据源位置的引用及其元数据的副本。 由于数据保留在其现有位置中，因此不会产生额外的存储成本，也不会损害数据源的完整性。 此外，还会对数据集进行延迟计算，从而有助于工作流性能速度。 可以从数据存储、公共 Url 和 [Azure 开放式数据集](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)创建数据集。
+
+对于低代码体验，请[使用 Azure 机器学习 Studio 创建 Azure 机器学习数据集。](how-to-connect-data-ui.md#create-datasets)
 
 使用 Azure 机器学习数据集可以：
 
@@ -72,15 +74,14 @@ ms.locfileid: "90604693"
 
 建议将 FileDataset 用于机器学习工作流，因为源文件可以采用任何格式，因此可以实现更广泛的机器学习方案，包括深度学习。
 
-使用 [Python SDK](#create-a-filedataset) 或 [Azure 机器学习工作室](#create-datasets-in-the-studio)创建 FileDataset
-
+使用 [PYTHON SDK](#create-a-filedataset) 或 [Azure 机器学习 studio](how-to-connect-data-ui.md#create-datasets) 创建 FileDataset。
 ### <a name="tabulardataset"></a>TabularDataset
 
 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 通过分析提供的文件或文件列表来以表格格式表示数据。 这样你就可以将数据具体化为 pandas 或 Spark 数据帧，以便进行熟悉的数据准备并训练库，不需离开笔记本。 可以从 .csv、.tsv、.parquet、.jsonl 文件以及从 [SQL 查询结果](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#&preserve-view=truefrom-sql-query-query--validate-true--set-column-types-none--query-timeout-30-)创建 `TabularDataset` 对象。
 
 使用 TabularDataset 时，可以从数据中的列或者从数据所存储到的任何路径模式指定一个时间戳，以启用时序特征。 此规范允许按时间轻松有效地进行筛选。 有关示例，请参阅[使用 NOAA 天气数据的表格时序相关 API 演示](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)。
 
-使用 [Python SDK](#create-a-tabulardataset) 或 [Azure 机器学习工作室](#create-datasets-in-the-studio)创建 TabularDataset。
+使用 [Python SDK](#create-a-tabulardataset) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md#create-datasets)创建 TabularDataset。
 
 >[!NOTE]
 > 通过 Azure 机器学习工作室生成的 AutoML 工作流目前仅支持 TabularDataset。 
@@ -91,9 +92,9 @@ ms.locfileid: "90604693"
 
 <a name="datasets-sdk"></a>
 
-## <a name="create-datasets-via-the-sdk"></a>通过 SDK 创建数据集
+## <a name="create-datasets"></a>创建数据集
 
- 要使数据可供 Azure 机器学习访问，必须从 [Azure 数据存储](how-to-access-data.md)或公共 Web URL 中的路径创建数据集。 
+要使数据可供 Azure 机器学习访问，必须从 [Azure 数据存储](how-to-access-data.md)或公共 Web URL 中的路径创建数据集。 
 
 若要使用 Python SDK 从 [Azure 数据存储](how-to-access-data.md)创建数据集，请执行以下步骤：
 
@@ -101,7 +102,7 @@ ms.locfileid: "90604693"
 
 2. 通过引用数据存储中的路径创建数据集。 可以从多个数据存储中的多个路径创建数据集。 可以从其创建数据集的文件数量或数据大小没有硬性限制。 
 
-> [!Note]
+> [!NOTE]
 > 对于每个数据路径，会将几个请求发送到存储服务，以检查它是否指向文件或文件夹。 此开销可能会导致性能下降或故障。 数据集引用内含 1000 个文件的文件夹的行为被视为引用一个数据路径。 为了获得最佳性能，建议创建在数据存储中引用不到 100 个路径的数据集。
 
 ### <a name="create-a-filedataset"></a>创建 FileDataset
@@ -120,7 +121,12 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
              'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
+若要跨工作区中的试验重复使用和共享数据集，请 [注册数据集](#register-datasets)。 
 
+> [!TIP] 
+> 从本地目录上传文件，并使用公共预览方法在单个方法中创建 FileDataset [ ( # B1 upload_directory ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py#methods)。 此方法是一种 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。 
+> 
+>  此方法会将数据上传到基础存储，因此会产生存储费用。 
 ### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
 使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。 
@@ -169,7 +175,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
 2|3|True|3|Heikkinen, Miss. Laina|女|26.0|0|0|STON/O2. 3101282|7.9250||S
 
-### <a name="create-a-dataset-from-pandas-dataframe"></a>从 pandas 数据帧创建数据集
+若要跨工作区中的试验重复使用和共享数据集，请 [注册数据集](#register-datasets)。
+
+## <a name="create-a-dataset-from-pandas-dataframe"></a>从 pandas 数据帧创建数据集
 
 若要从内存中 pandas 数据帧创建 TabularDataset，请将数据写入本地文件（例如 csv），然后从该文件创建数据集。 下面的代码演示了此工作流。
 
@@ -180,7 +188,8 @@ titanic_ds.take(3).to_pandas_dataframe()
 from azureml.core import Workspace, Dataset
 local_path = 'data/prepared.csv'
 dataframe.to_csv(local_path)
-upload the local file to a datastore on the cloud
+
+# upload the local file to a datastore on the cloud
 
 subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
 resource_group = 'xxxxxx'
@@ -198,6 +207,11 @@ datastore.upload(src_dir='data', target_path='data')
 dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
 ```
 
+> [!TIP]
+> 使用带有公共预览方法和的单个方法，在内存中 spark 或 pandas 数据帧中创建并注册 TabularDataset [`register_spark_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#methods) [`register_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#methods) 。 这些注册方法为 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。 
+> 
+>  这些方法将数据上传到基础存储，因此会产生存储费用。 
+
 ## <a name="register-datasets"></a>注册数据集
 
 若要完成创建过程，请将数据集注册到工作区。 使用 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#&preserve-view=trueregister-workspace--name--description-none--tags-none--create-new-version-false-) 方法将数据集注册到工作区，以便与其他人共享，并在工作区中的实验中重复使用这些数据集：
@@ -207,26 +221,6 @@ titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',
                                  description='titanic training data')
 ```
-
-<a name="datasets-ui"></a>
-## <a name="create-datasets-in-the-studio"></a>在工作室中创建数据集
-以下步骤和动画演示如何在 [Azure 机器学习工作室](https://ml.azure.com)中创建数据集。
-
-> [!Note]
-> 通过 Azure 机器学习工作室创建的数据集会自动注册到工作区。
-
-![使用 UI 创建数据集](./media/how-to-create-register-datasets/create-dataset-ui.gif)
-
-若要在工作室中创建数据集：
-1. 在 https://ml.azure.com 上登录。
-1. 在左侧窗格的“资产”部分，选择“数据集”。  
-1. 选择“创建数据集”以选择数据集的源。 此源可以是本地文件、数据存储或公共 URL。
-1. 为“数据集类型”选择“表格”或“文件”。 
-1. 选择“下一步”，打开“数据存储和文件选择”窗体。 在此窗体上，可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的具体数据文件。 
-    1. 如果数据位于虚拟网络中，请启用“跳过验证”。 详细了解如何 [在虚拟网络中使用数据集和数据存储](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)。
-1. 选择“下一步”以填充“设置和预览”以及“架构”窗体；它们是根据文件类型智能填充的。在这些窗体上进行创建之前，可以进一步配置数据集。   
-1. 选择“下一步”，查看“确认详细信息”窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。 
-1. 选择“创建”以完成数据集的创建。
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>使用 Azure 开放数据集创建数据集
 

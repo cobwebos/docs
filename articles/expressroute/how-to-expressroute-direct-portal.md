@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: duau
-ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401463"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986364"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 门户创建 ExpressRoute 直接
 
@@ -63,7 +63,7 @@ ms.locfileid: "89401463"
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="查看 + 创建":::
 
-1. 选择“创建” 。 你将看到一条消息，其中指出你的部署正在进行中。 创建资源后，此页面上将显示状态。 
+1. 选择“创建”。 你将看到一条消息，其中指出你的部署正在进行中。 创建资源后，此页面上将显示状态。 
 
 ## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. 更改链接的管理员状态
 
@@ -97,7 +97,7 @@ ms.locfileid: "89401463"
 
 1. 在 "ExpressRoute 直接 **设置** " 部分中，选择 " **线路**"，然后选择 " **+ 添加**"。 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="添加" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="屏幕截图显示已选择线路并突出显示的 ExpressRoute 设置。" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. 配置 " **配置** " 页中的设置。
 
@@ -107,7 +107,7 @@ ms.locfileid: "89401463"
 
    :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="查看 + 创建":::
 
-1. 选择“创建” 。 你将看到一条消息，其中指出你的部署正在进行中。 创建资源后，此页面上将显示状态。 
+1. 选择“创建”。 你将看到一条消息，其中指出你的部署正在进行中。 创建资源后，此页面上将显示状态。 
 
 ## <a name="next-steps"></a>后续步骤
 

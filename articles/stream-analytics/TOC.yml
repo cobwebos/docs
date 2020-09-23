@@ -4,8 +4,8 @@
   items:
     - name: 什么是流分析？
       href: stream-analytics-introduction.md
-    - name: 端到端解决方案模式
-      href: stream-analytics-solution-patterns.md
+    - name: 流分析群集
+      href: cluster-overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: Visual Studio
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: 创建群集
+      items:
+        - name: Azure 门户
+          href: create-cluster.md
 - name: 教程
   items:
     - name: 1 - 创建/管理作业
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: 概念
   items:
+    - name: 端到端解决方案模式
+      href: stream-analytics-solution-patterns.md
     - name: 选择流分析技术
       href: streaming-technologies.md
     - name: 选择作业开发工具
@@ -129,7 +135,7 @@
       href: stream-analytics-window-functions.md
     - name: 地理空间函数
       href: stream-analytics-geospatial-functions.md
-    - name: 兼容级别
+    - name: 兼容性级别
       href: stream-analytics-compatibility-level.md
     - name: 通用查询模式
       href: stream-analytics-stream-analytics-query-patterns.md
@@ -145,6 +151,14 @@
   items:
     - name: 管理
       items:
+        - name: 群集
+          items:
+            - name: 创建和删除专用终结点
+              href: private-endpoints.md
+            - name: 添加和删除作业
+              href: manage-jobs-cluster.md
+            - name: 缩放群集大小
+              href: scale-cluster.md
         - name: 自动缩放作业
           href: stream-analytics-autoscale.md
         - name: 更新凭据
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: 使用 Azure 资源管理器进行导出和部署
           href: resource-manager-export.md
+    - name: 持续集成和持续部署
+      items:
+        - name: CI/CD 概述
+          href: cicd-overview.md
+        - name: 使用 PowerShell 进行构建、测试和部署
+          href: cicd-tools.md
+        - name: 使用 Azure DevOps 设置管道
+          href: set-up-cicd-pipeline.md
     - name: Visual Studio
       items:
         - name: 安装工具
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: 使用作业关系图调试查询
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: 设置 CI/CD 管道
-          href: setup-cicd-vs-code.md
         - name: 探索作业
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json 字段

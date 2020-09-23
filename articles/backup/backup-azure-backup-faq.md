@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986418"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -39,13 +39,13 @@ ms.locfileid: "89017730"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
 
-是。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 
 否。 保管库中存储的备份数据无法移动到不同的保管库。
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>备份后是否可以从 GRS 更改为 LRS？
+### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>能否在备份后更改存储冗余设置？
 
 存储复制类型默认设置为异地冗余存储 (GRS)。 配置备份后，将禁用修改选项且不可更改。
 

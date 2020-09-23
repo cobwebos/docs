@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456057"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905273"
 ---
 # <a name="permutation-feature-importance"></a>排列特征重要性
 
-本文介绍如何在 Azure 机器学习设计器（预览版）中使用排“排列特征重要性”模块计算数据集的一组特征重要性分数。 使用这些分数有助于确定最适合在模型中使用的特征。
+本文介绍如何使用 Azure 机器学习设计器中的 "排列功能重要性" 模块来计算数据集的一组功能重要性分数。 使用这些分数有助于确定最适合在模型中使用的特征。
 
 在本模块中，将对特征值进行随机重排，每次重排一列。 在随机重排前后度量模型的性能。 可以选择其中一个标准指标来度量性能。
 

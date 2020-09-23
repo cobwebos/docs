@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082261"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984881"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -41,10 +41,10 @@ ms.locfileid: "86082261"
     - 通过专用终结点（首选）
 
         1. 选择 Azure-SSIS IR 要联接到的虚拟网络：
-            - 在与托管实例相同的虚拟网络中，具有**不同的子网**。
-            - 在不同于托管实例的虚拟网络中，通过虚拟网络对等互连（由于全局 VNet 对等互连限制，限制为同一区域）或从虚拟网络到虚拟网络的连接。
+            - 在与托管实例相同的虚拟网络中，具有 **不同的子网**。
+            - 在不同于托管实例的虚拟网络中，通过虚拟网络对等互连 (此限制为同一区域，因为存在全局 VNet 对等互连约束) 或从虚拟网络到虚拟网络的连接。
 
-            有关 SQL 托管实例连接的详细信息，请参阅[将应用程序连接到 AZURE SQL 托管实例](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
+            有关 SQL 托管实例连接的详细信息，请参阅 [将应用程序连接到 AZURE SQL 托管实例](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
 
         1. [配置虚拟网络](#configure-virtual-network)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "86082261"
 
         - 当 Azure-SSIS IR 不在虚拟网络中时（首选）
 
-            **SQL 托管实例的入站要求**，允许来自 Azure-SSIS IR 的入站流量。
+            SQL 托管实例的入站要求，以允许来自 Azure-SSIS IR 的入站流量。
 
             | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 |
             |---|---|---|---|---|
@@ -64,9 +64,9 @@ ms.locfileid: "86082261"
 
         - 当 Azure-SSIS IR 在虚拟网络中时
 
-            当 SQL 托管实例位于 Azure-SSIS IR 不支持的区域时，有一种特殊方案，Azure-SSIS IR 是由于全局 VNet 对等互连限制而不支持 VNet 对等互连的虚拟网络中的。 在此方案中，**虚拟网络内部的 Azure-SSIS IR** **通过公共终结点**连接 SQL 托管实例。 使用下面的网络安全组（NSG）规则允许 SQL 托管实例和 Azure-SSIS IR 之间的流量：
+            当 SQL 托管实例位于 Azure-SSIS IR 不支持的区域时，有一种特殊方案，Azure-SSIS IR 是由于全局 VNet 对等互连限制而不支持 VNet 对等互连的虚拟网络中的。 在此方案中， **虚拟网络内部的 Azure-SSIS IR** **通过公共终结点**连接 SQL 托管实例。 使用下面的网络安全组 (NSG) 规则，以允许 SQL 托管实例和 Azure-SSIS IR 之间的流量：
 
-            1. **SQL 托管实例的入站要求**，允许来自 Azure-SSIS IR 的入站流量。
+            1. SQL 托管实例的入站要求，以允许来自 Azure-SSIS IR 的入站流量。
 
                 | 传输协议 | 源 | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|
@@ -76,7 +76,7 @@ ms.locfileid: "86082261"
 
                 | 传输协议 | 源 | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|
-                |TCP|VirtualNetwork|*|[SQL 托管实例公用终结点 IP 地址](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-find-management-endpoint-ip-address)|3342|
+                |TCP|VirtualNetwork|*|[SQL 托管实例公共终结点 IP 地址](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-find-management-endpoint-ip-address)|3342|
 
 ### <a name="configure-virtual-network"></a>配置虚拟网络
 
@@ -102,18 +102,18 @@ ms.locfileid: "86082261"
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 
-    1. 允许网络安全组（NSG）规则上的流量，以允许 SQL 托管实例和 Azure-SSIS IR 之间的流量，以及 Azure-SSIS IR 所需的流量。
-        1. **SQL 托管实例的入站要求**，允许来自 Azure-SSIS IR 的入站流量。
+    1. 允许网络安全组 (NSG) 上流量的规则，以允许 SQL 托管实例和 Azure-SSIS IR 之间的流量，以及 Azure-SSIS IR 所需的流量。
+        1. SQL 托管实例的入站要求，以允许来自 Azure-SSIS IR 的入站流量。
 
             | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
             |---|---|---|---|---|---|
             |TCP|VirtualNetwork|*|VirtualNetwork|1433、11000-11999|如果 SQL 数据库服务器连接策略设置为“代理”（而不是“重定向”），那么只需要端口 1433。|
 
-        1. **Azure-SSIS IR 的出站要求**，允许到 SQL 托管实例的出站流量，以及 Azure-SSIS IR 所需的其他流量。
+        1. Azure-SSIS IR 的出站要求，以允许流向 SQL 托管实例的出站流量，以及 Azure-SSIS IR 所需的其他流量。
 
         | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
         |---|---|---|---|---|---|
-        | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |允许到 SQL 托管实例的出站流量。 如果连接策略设置为“代理”（而不是“重定向”），那么只需要端口 1433。 |
+        | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |允许流向 SQL 托管实例的出站流量。 如果连接策略设置为“代理”（而不是“重定向”），那么只需要端口 1433。 |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | 虚拟网络中的 Azure-SSIS IR 节点使用此端口来访问 Azure 服务，如 Azure 存储和 Azure 事件中心。 |
         | TCP | VirtualNetwork | * | Internet | 80 | （可选）虚拟网络中的 Azure-SSIS IR 节点使用此端口从 Internet 下载证书吊销列表。 如果阻止此流量，可能会在启动 IR 时遇到性能降级，并且无法通过检查证书吊销列表来了解证书使用情况。 若要进一步将目标范围缩小到特定 FQDN，请参阅[使用 Azure ExpressRoute 或用户定义的路由 (UDR)](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#route)。|
         | TCP | VirtualNetwork | * | 存储 | 445 | （可选）只有当你要执行存储在 Azure 文件存储中的 SSIS 包时，才需要此规则。 |
@@ -137,11 +137,11 @@ ms.locfileid: "86082261"
 
 1. 选择 SQL 托管实例专用终结点或公共终结点。
 
-    在 Azure 门户/ADF 应用中[设置 Azure-SSIS IR](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)时，在 "sql 设置" 页上，创建 SSIS 目录（SSISDB）时，请使用 sql 托管实例**专用终结点**或**公共终结点**。
+    在 Azure 门户/ADF 应用中 [设置 Azure-SSIS IR](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime) 时，请在 "sql 设置" 页上，在创建 SSIS 目录 (SSISDB) 时使用 sql 托管实例 **专用终结点** 或 **公共终结点** 。
 
     公共终结点主机名的格式为 <mi_name>.public.<dns_zone>.database.windows.net，用于连接的端口为 3342。  
 
-    ![catalog-public-endpoint](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    ![屏幕截图显示了集成运行时安装，其中选择了 "创建 S" 目录和输入的目录数据库服务器终结点。](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
 
 1. 选择在应用时启用 Azure AD 身份验证。
 
@@ -153,11 +153,11 @@ ms.locfileid: "86082261"
 
     在“高级设置”页上，选择要联接到的虚拟网络和子网。
     
-    与 SQL 托管实例位于同一虚拟网络中时，请选择与 SQL 托管实例**不同的子网**。 
+    如果与 SQL 托管实例位于相同的虚拟网络中，请选择与 SQL 托管实例位于不同的子网中。 
 
     若要详细了解如何将 Azure-SSIS IR 联接到虚拟网络，请参阅[将 Azure-SSIS Integration Runtime 联接到虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
 
-    ![join-virtual-network](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    ![屏幕截图显示集成运行时设置高级设置，你可以在其中选择要加入的运行时的虚拟网络。](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
 
 有关如何创建 Azure-SSIS IR 的详细信息，请参阅[在 Azure 数据工厂中创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)。
 
@@ -173,7 +173,7 @@ SSISDB 日志保留策略由 [catalog.catalog_properties](https://docs.microsoft
 
     操作详细信息和操作消息存储在目录中的天数。 如果值为 -1，保留时段是无限的。 注意：如果无需清理，请将 OPERATION_CLEANUP_ENABLED 设置为 FALSE。
 
-若要删除在管理员设置的保留时段之外的 SSISDB 日志，可以触发存储过程 `[internal].[cleanup_server_retention_window_exclusive]`。 您可以根据需要计划 SQL 托管实例代理作业执行来触发存储过程。
+若要删除在管理员设置的保留时段之外的 SSISDB 日志，可以触发存储过程 `[internal].[cleanup_server_retention_window_exclusive]`。 还可以安排 SQL 托管实例代理作业执行，以触发此存储过程。
 
 ## <a name="next-steps"></a>后续步骤
 

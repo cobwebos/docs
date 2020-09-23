@@ -1,5 +1,5 @@
 ---
-title: 如何使用 WhiteNoise 包保留数据隐私（预览版）
+title: '如何使用 WhiteNoise 包 (预览保留数据隐私) '
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 WhiteNoise 包将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
 services: machine-learning
@@ -11,16 +11,16 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320198"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897682"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习中使用差分隐私（预览版）
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习 (预览版中使用差异隐私) 
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何使用 WhiteNoise Python 包将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
 
@@ -156,7 +156,7 @@ Privacy usage: approximate {
 | Sum           |            | 插补 |
 | 方差/协方差 |      | 转换  |
 
-有关更多详细信息，请参阅[基本数据分析笔记本](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb)。
+有关更多详细信息，请参阅 [数据分析笔记本](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) 。
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>差分隐私版本的大致效用
 

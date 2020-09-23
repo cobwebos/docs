@@ -55,7 +55,7 @@
               href: QuickStarts/CSharp-hand-text.md
             - name: Java
               href: QuickStarts/java-hand-text.md
-            - name: Javascript
+            - name: JavaScript
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
@@ -109,6 +109,22 @@
       href: concept-recognizing-text.md
     - name: 成人内容检测
       href: concept-detecting-adult-content.md
+- name: 负责任的 AI
+  items:
+    - name: 透明度说明
+      items:
+        - name: 空间分析简介
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+        - name: 特征和限制
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+    - name: 符合性、隐私和安全性
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+    - name: AI 部署中负责任的使用
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+    - name: 披露设计准则
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+    - name: 研究见解
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
 - name: 容器
   items:
     - name: 读取 API 容器
@@ -125,6 +141,20 @@
         - name: 使用容器实例
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+    - name: 空间分析容器
+      items:
+        - name: 设置主机并运行容器
+          href: spatial-analysis-container.md
+        - name: 配置操作
+          href: spatial-analysis-operations.md
+        - name: 部署人员计数 Web 应用
+          href: Spatial-analysis-web-app.md
+        - name: 日志记录和故障排除
+          href: spatial-analysis-logging.md
+        - name: 区域和线条放置
+          href: spatial-analysis-zone-line-placement.md
+        - name: 相机放置
+          href: spatial-analysis-camera-placement.md
 - name: 操作指南
   items:
     - name: 调用计算机视觉 API

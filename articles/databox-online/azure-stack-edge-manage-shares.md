@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 边缘共享管理 |Microsoft Docs
-description: 描述如何使用 Azure 门户管理 Azure Stack 边缘上的共享。
+title: Azure Stack Edge Pro 共享管理 |Microsoft Docs
+description: 描述如何使用 Azure 门户管理 Azure Stack Edge Pro 上的共享。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 1aceb9d2fb1d9b5890bc0859d432bc1c5e7e4db4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904478"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>使用 Azure 门户管理 Azure Stack 边缘上的共享
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的共享
 
-本文介绍如何在 Azure Stack 边缘管理共享。 您可以通过 Azure 门户或通过本地 web UI 来管理 Azure Stack 边缘。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
+本文介绍如何在 Azure Stack Edge Pro 上管理共享。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
 
 ## <a name="about-shares"></a>关于共享
 
-若要将数据传输到 Azure，需要在 Azure Stack 边缘上创建共享。 在 Azure Stack Edge 设备上添加的共享可以是本地共享，也可以是将数据推送到云的共享。
+若要将数据传输到 Azure，需要在 Azure Stack Edge Pro 上创建共享。 在 Azure Stack Edge Pro 设备上添加的共享可以是将数据推送到云的本地共享或共享。
 
  - **本地共享**：如果想要在设备上本地处理数据，请使用这些共享。
- - **共享**：如果想要将设备数据自动推送到云中的存储帐户，请使用这些共享。 所有云功能（例如“刷新”和“同步存储密钥”）都适用于这些共享。********
+ - **共享**：如果想要将设备数据自动推送到云中的存储帐户，请使用这些共享。 所有云功能（如 **刷新** 和 **同步存储密钥** ）都适用于共享。
 
 在本文中，学习如何：
 
@@ -39,7 +39,7 @@ ms.locfileid: "84339833"
 
 在 Azure 门户中执行以下步骤，以创建共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 "**网关 > 共享**"。 在命令栏上选择“+ 添加共享”****。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 在命令栏上选择“+ 添加共享”****。
 
     ![选择“添加共享”](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -47,14 +47,14 @@ ms.locfileid: "84339833"
     
     共享名称只能包含数字、小写字母和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
 
-3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。******** SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
+3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
 4. 提供共享所在的**存储帐户**。 如果还没有容器，则使用共享名称在存储帐户中创建一个容器。 如果该容器已存在，则使用现有容器。
 
-5. 在下拉列表中，选择块 Blob、页 Blob 或文件作为“存储服务”。**** 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以块 Blob 的形式驻留在 Azure 中，因此选择“块 Blob”。**** 如果选择“页 Blob”，必须确保数据经过 512 字节对齐。**** 对于始终经过 512 字节对齐的 VHD 或 VHDX，请使用“页 Blob”。****
+5. 从下拉列表中，选择 "块 blob、页 blob 或文件中的 **存储服务** "。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们想要将数据作为块 blob 驻留在 Azure 中，因此我们选择 " **块 blob**"。 如果选择 " **页 Blob**"，则必须确保数据的对齐方式为512字节。 对于始终为512字节的 Vhd 或 VHDX，请使用 **页 blob** 。
 
    > [!IMPORTANT]
-   > 如果你使用的 Azure 存储帐户与 Azure Stack 边缘或 Data Box Gateway 设备一起使用，请确保该帐户不会对其设置永久性策略。 有关详细信息，请参阅[设置和管理 blob 存储的不可变性策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。************ 如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
@@ -72,7 +72,7 @@ ms.locfileid: "84339833"
 
 ## <a name="add-a-local-share"></a>添加本地共享
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 "**网关 > 共享**"。 在命令栏上选择“+ 添加共享”****。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 在命令栏上选择“+ 添加共享”****。
 
    ![选择“添加共享”](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "84339833"
     
     共享名称只能包含数字、小写字母和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
 
-3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。******** SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
+3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
 4. 若要轻松地从 Edge 计算模块访问共享，请使用本地装入点。 选择“将共享与 Edge 计算配合使用”，使 Edge 模块能够将计算与本地装入点配合使用。****
 
@@ -102,9 +102,9 @@ ms.locfileid: "84339833"
 
 ## <a name="mount-a-share"></a>装载共享
 
-如果在 Azure Stack Edge 设备上配置计算之前创建了共享，则需要安装该共享。 通过以下步骤装载共享。
+如果在 Azure Stack Edge Pro 设备上配置计算之前创建了共享，则需要安装该共享。 通过以下步骤装载共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 "**网关 > 共享**"。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。********
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。********
 
    ![选择共享](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -128,11 +128,11 @@ ms.locfileid: "84339833"
 
 在 Azure 门户中执行以下步骤，以卸载共享。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 "**网关 > 共享**"。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。
 
    ![选择共享](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
-2. 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。 选择“卸载”****。
+2. 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。 选择 " **卸载**"。
 
    ![选择卸载](media/azure-stack-edge-manage-shares/select-unmount.png)
 

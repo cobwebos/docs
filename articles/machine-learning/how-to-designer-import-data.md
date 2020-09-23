@@ -1,7 +1,7 @@
 ---
-title: '将数据导入设计器 (预览) '
+title: 将数据导入设计器
 titleSuffix: Azure Machine Learning
-description: 了解如何将数据从各种数据源导入 Azure 机器学习设计器 (预览) 。
+description: 了解如何将数据从各种数据源导入 Azure 机器学习设计器中。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: a7d0a1604b3bea1f11532639dbbc5102f4a243a6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006978"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985613"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>将数据导入到 Azure 机器学习设计器（预览版）
+# <a name="import-data-into-azure-machine-learning-designer"></a>将数据导入 Azure 机器学习设计器
 
 在本文中，你将了解如何在设计器中导入自己的数据，以创建自定义解决方案。 可以通过两种方式将数据导入到设计器中： 
 
@@ -32,7 +32,7 @@ ms.locfileid: "90006978"
 
 ### <a name="register-a-dataset"></a>注册数据集
 
-你可以[使用 SDK 以编程方式](how-to-create-register-datasets.md#datasets-sdk)注册现有数据集，也可以[直观地在 Azure 机器学习工作室](how-to-create-register-datasets.md#datasets-ui)中注册现有数据集。
+你可以[使用 SDK 以编程方式](how-to-create-register-datasets.md#datasets-sdk)注册现有数据集，也可以[直观地在 Azure 机器学习工作室](how-to-connect-data-ui.md#create-datasets)中注册现有数据集。
 
 你还可以将任何设计器模块的输出注册为数据集。
 
@@ -68,7 +68,7 @@ ms.locfileid: "90006978"
 有关如何使用“导入数据”模块的详细信息，请参阅[导入数据引用页](algorithm-module-reference/import-data.md)。
 
 > [!NOTE]
-> 如果数据集包含的列过多，你可能会遇到以下错误：“由于大小限制，验证失败”。 若要避免这种情况，请[在数据集接口中注册数据集](how-to-create-register-datasets.md#datasets-ui)。
+> 如果数据集包含的列过多，你可能会遇到以下错误：“由于大小限制，验证失败”。 若要避免这种情况，请[在数据集接口中注册数据集](how-to-connect-data-ui.md#create-datasets)。
 
 ## <a name="supported-sources"></a>受支持的源
 
@@ -89,10 +89,10 @@ ms.locfileid: "90006978"
 
 设计器在内部可以识别以下数据类型：
 
-* String
+* 字符串
 * Integer
 * 小数
-* 布尔
+* Boolean
 * Date
 
 设计器使用一个内部数据类型在模块之间传递数据。 可使用[转换为数据集](algorithm-module-reference/convert-to-dataset.md)模块将数据显式转换为数据表格式。 接受非内部格式的任何模块都将在不提示的情况对数据进行转换，然后再将其传递给下一个模块。
@@ -107,4 +107,4 @@ ms.locfileid: "90006978"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)了解设计器的基础知识。
+在本教程中学习设计器基础知识 [：通过设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)。

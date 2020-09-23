@@ -1,5 +1,5 @@
 ---
-title: '解释 Python (预览版中的 & 介绍 ML 模型) '
+title: 使用 Python 解释和说明 ML 模型（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解机器学习模型如何确定特征重要性并做出预测。
 services: machine-learning
@@ -11,16 +11,16 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a0853d4a863f6b7677f665513bdac9ca8e6b673
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144100"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897463"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 包在 Python (preview 中 & 预测来说明 ML 模型) 
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解释性包通过 Python 解释 ML 模型和预测（预览版）
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本操作指南介绍如何使用 Azure 机器学习 Python SDK 的可解释性包来执行以下任务：
 
@@ -275,7 +275,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅 [创建具有 PYTHON SDK 的计算目标](how-to-create-attach-compute-sdk.md#amlcompute) 。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
+1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅[使用 Python SDK 创建计算目标](how-to-create-attach-compute-sdk.md#amlcompute)。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
 
 1. 下载本地 Jupyter 笔记本中的解释。
 

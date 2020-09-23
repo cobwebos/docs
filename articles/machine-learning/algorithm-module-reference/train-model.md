@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3080836e8b9ed38e99c691c66e71a4620829c90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84447554"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890207"
 ---
 # <a name="train-model-module"></a>“定型模型”模块
 
-本文介绍了 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块，可以训练分类或回归模型。 训练在你定义模型并设置其参数后进行，并且需要带标记的数据。 你还可以使用**训练模型**来使用新数据重新训练现有模型。 
 
