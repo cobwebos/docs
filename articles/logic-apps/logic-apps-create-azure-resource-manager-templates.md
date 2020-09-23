@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066067"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971789"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以自动化 Azure 逻辑应用的部署
 
@@ -60,14 +60,14 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 1. 若要以最简单的方式从 [PowerShell 库](https://www.powershellgallery.com/packages/LogicAppTemplate)安装 LogicAppTemplate 模块，请运行以下命令：
 
-   ```text
-   PS> Install-Module -Name LogicAppTemplate
+   ```powershell
+   Install-Module -Name LogicAppTemplate
    ```
 
    若要更新到最新版本，请运行以下命令：
 
-   ```text
-   PS> Update-Module -Name LogicAppTemplate
+   ```powershell
+   Update-Module -Name LogicAppTemplate
    ```
 
 或者，若要手动安装，请遵循 GitHub 中适用于[逻辑应用模板创建者](https://github.com/jeffhollan/LogicAppTemplateCreator)的步骤。
@@ -80,28 +80,43 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 ### <a name="generate-template-with-powershell"></a>使用 PowerShell 生成模板
 
-若要在安装 LogicAppTemplate 模块和 [Azure CLI](/cli/azure/?view=azure-cli-latest) 后生成模板，请运行以下 PowerShell 命令：
+若要在安装 LogicAppTemplate 模块和 [Azure CLI](/cli/azure/) 后生成模板，请运行以下 PowerShell 命令：
 
-```text
-PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    Token = (az account get-access-token | ConvertFrom-Json).accessToken
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 若要根据建议从 [Azure 资源管理器客户端工具](https://github.com/projectkudu/ARMClient)以管道方式传送令牌，请运行以下命令，其中的 `$SubscriptionId` 是你的 Azure 订阅 ID：
 
-```text
-PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+armclient token $SubscriptionId | Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 提取后，可运行以下命令基于模板创建参数文件：
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
+```powershell
+Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
 对于包含 Azure Key Vault 引用的提取内容（仅限静态值），请运行以下命令：
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
+```powershell
+Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
 | parameters | 必须 | 说明 |

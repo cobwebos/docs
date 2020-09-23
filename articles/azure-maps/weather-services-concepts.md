@@ -1,29 +1,29 @@
 ---
-title: 天气服务概念 |Microsoft Azure 映射
-description: 在本文中，你将了解适用于 Microsoft Azure 映射天气服务的概念。
+title: Microsoft Azure Maps 中的天气服务概念
+description: 了解适用于 Microsoft Azure 映射天气服务的概念。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132103"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972041"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
 
-本文介绍适用于[Azure Maps 天气服务](https://aka.ms/AzureMapsWeatherService)的概念。 建议在开始使用天气 Api 之前完成本文。 
+本文介绍适用于 [Azure Maps 天气服务](https://aka.ms/AzureMapsWeatherService)的概念。 建议在开始使用天气 Api 之前完成本文。
 
 ## <a name="unit-types"></a>单位类型
 
 某些天气服务 Api 允许用户指定是以公制单位还是以英制单位返回数据。 这些 Api 返回的响应包括 Unittype.pixel 度量和可用于单位转换的数值。 请参阅下表以解释这些值。
 
-|Unittype.pixel 度量|描述         |
+|Unittype.pixel 度量|说明         |
 |--------|--------------------|
 |0       |离                |
 |1       |×              |
@@ -47,7 +47,7 @@ ms.locfileid: "87132103"
 |19      |开氏温度              |
 |20      |%             |
 |21      |FLOAT               |
-|22      |integer             |
+|22      |整型             |
 
 
 ## <a name="weather-icons"></a>天气图标
@@ -63,25 +63,25 @@ ms.locfileid: "87132103"
 | 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | 是 |  否    | 模糊阳光 |
 | 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | 是 |  否    | 主要是云|
 | 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | 是 |  是   | 云 |
-| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | 是 |  是   | Dreary (Overcast)|
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | 是 |  是   | Dreary (Overcast) |
 | 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | 是 |  是   | 雾化|
 | 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | 是 |  是   | 淋浴|
-| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | 是 |  No    | 大多数云与淋浴|
-| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | 是 |  No    | 部分 Sunny 与淋浴|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | 是 |  否    | 大多数云与淋浴|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | 是 |  否    | 部分 Sunny 与淋浴|
 | 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | 是 |  是   | Thunderstorms|
-| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | 是 |  No    | 大多数云与 Thunderstorms|
-| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | 是 |  No    | 部分 Sunny 与 Thunderstorms|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | 是 |  否    | 大多数云与 Thunderstorms|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | 是 |  否    | 部分 Sunny 与 Thunderstorms|
 | 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | 是 |  是   | 采用|
 | 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | 是 |  是   | Flurries|
-| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | 是 |  No    | 大多数云与 Flurries|
-| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | 是 |  No    | 部分 Sunny 与 Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | 是 |  否    | 大多数云与 Flurries|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | 是 |  否    | 部分 Sunny 与 Flurries|
 | 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | 是 |  是   | 雪花|
-| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | 是 |  No    | 大多数具有雪的云|     
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | 是 |  否    | 大多数具有雪的云|     
 | 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | 是 |  是   | Ice |
 | 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | 是 |  是   | Sleet|
 | 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | 是 |  是   | 冻结 Rain|
 | 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | 是 |  是   | Rain 和雪|
-| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | 是 |  是   | 热访问层|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | 是 |  是   | 热|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | 是 |  是   | 冷|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | 是 |  是   | Windy|
 | 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | 否  |  是   | 清除|
@@ -100,7 +100,7 @@ ms.locfileid: "87132103"
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>雷达图和卫星图像色阶
 
-Via[获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles)用户可以请求最新的雷达图和红外卫星映像。 请参阅下面的指南，以帮助解释用于雷达图和卫星磁贴的颜色。
+Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可以请求最新的雷达图和红外卫星映像。 请参阅下面的指南，以帮助解释用于雷达图和卫星磁贴的颜色。
 
 ### <a name="radar-images"></a>雷达图
 
@@ -129,67 +129,67 @@ Via[获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles)用户可以
 
 | **采用**             | **交易**              | **雪花**              | **MIXED**             |
 |----------------------|----------------------|-----------------------|-----------------------|
-| **dBZ** **（彩色）**  | **dBZ** **（彩色）**  | **dBZ** **（彩色）**   | **dBZ** **（彩色）**   |
-| 1.25 （#93C701） | 1.25 （#E6A5C8） | 1.25 （#9EC8F2）  | 1.25 （#C196E6） |
-| 2.5 （#92C201） | 2.5 （#E6A2C6） | 2.5 （#98C5F0）  | 2.5 （#BF92E6） |
-| 3.75 （#92BE01） | 3.75 （#E69FC5） | 3.75 （#93C3EF）  | 3.75 （#BD8EE6） |
-| 5（#92BA02） | 5（#E69DC4） | 5（#8DC1EE）  | 5（#BB8BE6） |
-| 6.25 （#92B502） | 6.25 （#E69AC2） | 6.25 （#88BFEC）  | 6.25 （#BA87E6） |
-| 6.75 （#92B403） | 7.5 （#E697C1）  | 7.5 （#82BDEB）   | 7.5 （#B883E6） |
-| 8（#80AD02） | 8.75 （#E695C0） | 8.75 （#7DBAEA）  | 8.75 （#B680E6） |
-| 9.25 （#6FA602） | 10（#E692BE） | 10（#77B8E8）  | 10（#B47CE6） |
-| 10.5 （#5EA002） | 11.25 （#E68FBD） | 11.25 （#72B6E7）  | 11.25 （#B378E6） |
-| 11.75 （#4D9902） | 12.5 （#E68DBC） | 12.5 （#6CB4E6）  | 12.5 （#B175E6） |
-| 12.25 （#479702） | 13.75 （#E68ABA） | 13.75 （#67B2E5）  | 13.75 （#AF71E6） |
-| 13.5 （#3D9202） | 15（#E687B9） | 15（#61AEE4）  | 15（#AE6EE6） |
-| 14.75 （#338D02） | 16.25 （#E685B8） | 16.25 （#5BABE3）  | 16.25 （#AB6AE4） |
-| 16（#298802）  | 17.5 （#E682B6） | 17.5 （#56A8E2）  | 17.5 （#A967E3） |
-| 17.25 （#1F8302） | 18.75 （#E67FB5） | 18.75 （#50A5E1）  | 18.75 （#A764E2） |
-| 17.75 （#1B8103） | 20（#E67DB4） | 20（#4BA2E0）  | 20（#A560E1） |
-| 19（#187102） | 21.25 （#E275B0） | 21.25 （#459EDF） | 21.25 （#A35DE0） |
-| 20.25 （#166102） | 22.5 （#DF6DAD） | 22.5 （#409BDE）  | 22.5 （#A15ADF） |
-| 20.75 （#165B02） | 23.75 （#DC66AA） | 23.75 （#3A98DD）  | 23.75 （#9F56DE） |
-| 22（#135001） | 25（#D85EA6） | 25（#3595DC）  | 25（#9D53DD） |
-| 23.25 （#114501） | 26.25 （#D556A3） | 26.25 （#2F92DB）  | 26.25 （#9B50DC） |
-| 24.5 （#0F3A01） | 27.5 （#D24FA0） | 27.5 （#2A8FDB）  | 27.5 （#9648DA） |
-| 25.75 （#124C01） | 28.75 （#CE479E） | 28.75 （#2581DE）  | 28.75 （#9241D9） |
-| 27（#114401） | 30（#CB409C） | 30（#2173E2）  | 30（#8E39D8） |
-| 28.25 （#0F3D01） | 31.25 （#C7399A） | 31.25 （#1C66E5）  | 31.25 （#8A32D7） |
-| 28.75 （#0F3A01） | 32.5 （#C43298） | 32.5 （#1858E9）  | 32.5 （#862ED2） |
-| 30（#375401） | 33.75 （#C12B96） | 33.75 （#144BED）  | 33.75 （#832BCE） |
-| 31.25 （#5F6E01） | 35（#BD2494） | 35（#1348EA）  | 35（#7F28C9） |
-| 32.5 （#878801） | 36.25 （#BA1D92） | 36.25 （#1246E7）  | 36.25 （#7C25C5） |
-| 33.75 （#AFA201） | 37.5 （#B71691） | 37.5 （#1144E4）  | 37.5 （#7822C1） |
-| 35（#D7BC01） | 38.75 （#B51690） | 38.75 （#1142E1）  | 38.75 （#751FBC） |
-| 36.25 （#FFD701） | 40（#B3168F） | 40（#1040DE）  | 40（#711CB8） |
-| 37.5 （#FEB805） | 41.25 （#B1168E） | 41.25 （#0F3EDB）  | 41.25 （#6E19B4） |
-| 38.75 （#FCAB06） | 42.5 （#AF168D） | 42.5 （#0F3CD8）  | 42.5 （#6D18B4） |
-| 40（#FA9E07） | 43.75 （#AD168C） | 43.75 （#0E3AD5）  | 43.75 （#6D17B4） |
-| 41.25 （#F89209） | 45（#AB168B） | 45（#0D38D2）  | 45（#6D16B4） |
-| 42.5 （#F05514） | 46.25 （#A9168A） | 46.25 （#0C36CF）  | 46.25 （#6C15B4） |
-| 43.75 （#E74111） | 47.5 （#A81689） | 47.5 （#0C34CC）  | 47.5 （#6C14B5） |
-| 45（#DF2D0F） | 48.75 （#A61688） | 48.75 （#0B32C9）  | 48.75 （#6C13B5） |
-| 45.5 （#DC250E） | 50（#A41687） | 50（#0A30C6）  | 50（#6B12B5） |
-| 46.75 （#D21C0C） | 51.25 （#A21686） | 51.25 （#0A2EC4）  | 51.25 （#6B11B5） |
-| 48（#C9140A） | 52.5 （#A01685） | 52.5 （#092BC1）  | 52.5 （#6B10B6） |
-| 49.25 （#BF0C09） | 53.75 （#9E1684） | 53.75 （#0929BF）  | 53.75 （#6A0FB6） |
-| 50（#BA0808） | 55（#9C1683） | 55（#0826BC）  | 55（#6A0EB6） |
-| 56.25 （#6f031b） | 56.25 （#9B1682） | 56.25 （#0824BA）  | 56.25 （#6A0DB6） |
-| 57.5 （#9f0143） | 57.5 （#981580） | 57.5 （#0721B7）  | 57.5 （#690CB6） |
-| 58.75 （#c10060） | 58.75 （#96157F） | 58.75 （#071FB5）  | 58.75 （#690CB7） |
-| 60（#e70086） | 60（#94157E） | 60（#071DB3）  | 60（#690BB7） |
-| 61.25 （#e205a0） | 61.25 （#92157D） | 61.25 （#061AB0）  | 61.25 （#680AB7） |
-| 62.5 （#cc09ac） | 62.5 （#90157C） | 62.5 （#0618AE）  | 62.5 （#6809B7） |
-| 63.75 （#b50eb7） | 63.75 （#8D157A） | 63.75 （#0515AB）  | 63.75 （#6808B8） |
-| 65（#9315c8） | 65（#8B1579） | 65（#0513A9）  | 65（#6707B8） |
-| 66.25 （#8f21cc） | 66.25 （#891578） | 66.25 （#0410A6）  | 66.25 （#6706B8） |
-| 67.5 （#983acb） | 67.5 （#871577） | 67.5 （#040EA4）  | 67.5 （#6705B8） |
-| 68.75 （#9d49cb） | 68.75 （#851576） | 68.75 （#040CA2）  | 68.75 （#6604B8） |
-| 70（#a661ca） | 70（#821574） | 70（#03099F）  | 70（#6603B9） |
-| 71.25 （#ad72c9） | 71.25 （#801573） | 71.25 （#03079D）  | 71.25 （#6602B9） |
-| 72.5 （#b78bc6） | 72.5 （#7E1572） | 72.5 （#02049A）  | 72.5 （#6501B9） |
-| 73.75 （#bf9bc4） | 73.75 （#7C1571） | 73.75 （#020298）  | 73.75 （#6500B9） |
-| 75（#c9b5c2） | 75（#7A1570） | 75（#020096）  | 75（#6500BA） |
+| **dBZ** ** (颜色) **  | **dBZ** ** (颜色) **  | **dBZ** ** (颜色) **   | **dBZ** ** (颜色) **   |
+| 1.25 ( # 93C701)  | 1.25 ( # E6A5C8)  | 1.25 ( # 9EC8F2)   | 1.25 ( # C196E6)  |
+| 2.5 ( # 92C201)  | 2.5 ( # E6A2C6)  | 2.5 ( # 98C5F0)   | 2.5 ( # BF92E6)  |
+| 3.75 ( # 92BE01)  | 3.75 ( # E69FC5)  | 3.75 ( # 93C3EF)   | 3.75 ( # BD8EE6)  |
+| 5 ( # 92BA02)  | 5 ( # E69DC4)  | 5 ( # 8DC1EE)   | 5 ( # BB8BE6)  |
+| 6.25 ( # 92B502)  | 6.25 ( # E69AC2)  | 6.25 ( # 88BFEC)   | 6.25 ( # BA87E6)  |
+| 6.75 ( # 92B403)  | 7.5 ( # E697C1)   | 7.5 ( # 82BDEB)    | 7.5 ( # B883E6)  |
+| 8 ( # 80AD02)  | 8.75 ( # E695C0)  | 8.75 ( # 7DBAEA)   | 8.75 ( # B680E6)  |
+| 9.25 ( # 6FA602)  | 10 ( # E692BE)  | 10 ( # 77B8E8)   | 10 ( # B47CE6)  |
+| 10.5 ( # 5EA002)  | 11.25 ( # E68FBD)  | 11.25 ( # 72B6E7)   | 11.25 ( # B378E6)  |
+| 11.75 ( # 4D9902)  | 12.5 ( # E68DBC)  | 12.5 ( # 6CB4E6)   | 12.5 ( # B175E6)  |
+| 12.25 ( # 479702)  | 13.75 ( # E68ABA)  | 13.75 ( # 67B2E5)   | 13.75 ( # AF71E6)  |
+| 13.5 ( # 3D9202)  | 15 ( # E687B9)  | 15 ( # 61AEE4)   | 15 ( # AE6EE6)  |
+| 14.75 ( # 338D02)  | 16.25 ( # E685B8)  | 16.25 ( # 5BABE3)   | 16.25 ( # AB6AE4)  |
+| 16 ( # 298802)   | 17.5 ( # E682B6)  | 17.5 ( # 56A8E2)   | 17.5 ( # A967E3)  |
+| 17.25 ( # 1F8302)  | 18.75 ( # E67FB5)  | 18.75 ( # 50A5E1)   | 18.75 ( # A764E2)  |
+| 17.75 ( # 1B8103)  | 20 ( # E67DB4)  | 20 ( # 4BA2E0)   | 20 ( # A560E1)  |
+| 19 ( # 187102)  | 21.25 ( # E275B0)  | 21.25 ( # 459EDF)  | 21.25 ( # A35DE0)  |
+| 20.25 ( # 166102)  | 22.5 ( # DF6DAD)  | 22.5 ( # 409BDE)   | 22.5 ( # A15ADF)  |
+| 20.75 ( # 165B02)  | 23.75 ( # DC66AA)  | 23.75 ( # 3A98DD)   | 23.75 ( # 9F56DE)  |
+| 22 ( # 135001)  | 25 ( # D85EA6)  | 25 ( # 3595DC)   | 25 ( # 9D53DD)  |
+| 23.25 ( # 114501)  | 26.25 ( # D556A3)  | 26.25 ( # 2F92DB)   | 26.25 ( # 9B50DC)  |
+| 24.5 ( # 0F3A01)  | 27.5 ( # D24FA0)  | 27.5 ( # 2A8FDB)   | 27.5 ( # 9648DA)  |
+| 25.75 ( # 124C01)  | 28.75 ( # CE479E)  | 28.75 ( # 2581DE)   | 28.75 ( # 9241D9)  |
+| 27 ( # 114401)  | 30 ( # CB409C)  | 30 ( # 2173E2)   | 30 ( # 8E39D8)  |
+| 28.25 ( # 0F3D01)  | 31.25 ( # C7399A)  | 31.25 ( # 1C66E5)   | 31.25 ( # 8A32D7)  |
+| 28.75 ( # 0F3A01)  | 32.5 ( # C43298)  | 32.5 ( # 1858E9)   | 32.5 ( # 862ED2)  |
+| 30 ( # 375401)  | 33.75 ( # C12B96)  | 33.75 ( # 144BED)   | 33.75 ( # 832BCE)  |
+| 31.25 ( # 5F6E01)  | 35 ( # BD2494)  | 35 ( # 1348EA)   | 35 ( # 7F28C9)  |
+| 32.5 ( # 878801)  | 36.25 ( # BA1D92)  | 36.25 ( # 1246E7)   | 36.25 ( # 7C25C5)  |
+| 33.75 ( # AFA201)  | 37.5 ( # B71691)  | 37.5 ( # 1144E4)   | 37.5 ( # 7822C1)  |
+| 35 ( # D7BC01)  | 38.75 ( # B51690)  | 38.75 ( # 1142E1)   | 38.75 ( # 751FBC)  |
+| 36.25 ( # FFD701)  | 40 ( # B3168F)  | 40 ( # 1040DE)   | 40 ( # 711CB8)  |
+| 37.5 ( # FEB805)  | 41.25 ( # B1168E)  | 41.25 ( # 0F3EDB)   | 41.25 ( # 6E19B4)  |
+| 38.75 ( # FCAB06)  | 42.5 ( # AF168D)  | 42.5 ( # 0F3CD8)   | 42.5 ( # 6D18B4)  |
+| 40 ( # FA9E07)  | 43.75 ( # AD168C)  | 43.75 ( # 0E3AD5)   | 43.75 ( # 6D17B4)  |
+| 41.25 ( # F89209)  | 45 ( # AB168B)  | 45 ( # 0D38D2)   | 45 ( # 6D16B4)  |
+| 42.5 ( # F05514)  | 46.25 ( # A9168A)  | 46.25 ( # 0C36CF)   | 46.25 ( # 6C15B4)  |
+| 43.75 ( # E74111)  | 47.5 ( # A81689)  | 47.5 ( # 0C34CC)   | 47.5 ( # 6C14B5)  |
+| 45 ( # DF2D0F)  | 48.75 ( # A61688)  | 48.75 ( # 0B32C9)   | 48.75 ( # 6C13B5)  |
+| 45.5 ( # DC250E)  | 50 ( # A41687)  | 50 ( # 0A30C6)   | 50 ( # 6B12B5)  |
+| 46.75 ( # D21C0C)  | 51.25 ( # A21686)  | 51.25 ( # 0A2EC4)   | 51.25 ( # 6B11B5)  |
+| 48 ( # C9140A)  | 52.5 ( # A01685)  | 52.5 ( # 092BC1)   | 52.5 ( # 6B10B6)  |
+| 49.25 ( # BF0C09)  | 53.75 ( # 9E1684)  | 53.75 ( # 0929BF)   | 53.75 ( # 6A0FB6)  |
+| 50 ( # BA0808)  | 55 ( # 9C1683)  | 55 ( # 0826BC)   | 55 ( # 6A0EB6)  |
+| 56.25 ( # 6f031b)  | 56.25 ( # 9B1682)  | 56.25 ( # 0824BA)   | 56.25 ( # 6A0DB6)  |
+| 57.5 ( # 9f0143)  | 57.5 ( # 981580)  | 57.5 ( # 0721B7)   | 57.5 ( # 690CB6)  |
+| 58.75 ( # c10060)  | 58.75 ( # 96157F)  | 58.75 ( # 071FB5)   | 58.75 ( # 690CB7)  |
+| 60 ( # e70086)  | 60 ( # 94157E)  | 60 ( # 071DB3)   | 60 ( # 690BB7)  |
+| 61.25 ( # e205a0)  | 61.25 ( # 92157D)  | 61.25 ( # 061AB0)   | 61.25 ( # 680AB7)  |
+| 62.5 ( # cc09ac)  | 62.5 ( # 90157C)  | 62.5 ( # 0618AE)   | 62.5 ( # 6809B7)  |
+| 63.75 ( # b50eb7)  | 63.75 ( # 8D157A)  | 63.75 ( # 0515AB)   | 63.75 ( # 6808B8)  |
+| 65 ( # 9315c8)  | 65 ( # 8B1579)  | 65 ( # 0513A9)   | 65 ( # 6707B8)  |
+| 66.25 ( # 8f21cc)  | 66.25 ( # 891578)  | 66.25 ( # 0410A6)   | 66.25 ( # 6706B8)  |
+| 67.5 ( # 983acb)  | 67.5 ( # 871577)  | 67.5 ( # 040EA4)   | 67.5 ( # 6705B8)  |
+| 68.75 ( # 9d49cb)  | 68.75 ( # 851576)  | 68.75 ( # 040CA2)   | 68.75 ( # 6604B8)  |
+| 70 ( # a661ca)  | 70 ( # 821574)  | 70 ( # 03099F)   | 70 ( # 6603B9)  |
+| 71.25 ( # ad72c9)  | 71.25 ( # 801573)  | 71.25 ( # 03079D)   | 71.25 ( # 6602B9)  |
+| 72.5 ( # b78bc6)  | 72.5 ( # 7E1572)  | 72.5 ( # 02049A)   | 72.5 ( # 6501B9)  |
+| 73.75 ( # bf9bc4)  | 73.75 ( # 7C1571)  | 73.75 ( # 020298)   | 73.75 ( # 6500B9)  |
+| 75 ( # c9b5c2)  | 75 ( # 7A1570)  | 75 ( # 020096)   | 75 ( # 6500BA)  |
 
 
 
@@ -215,7 +215,7 @@ Via[获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles)用户可以
 
 红外卫星磁贴的详细调色板如下所示。
 
-|**Temp （K）**|**十六进制颜色代码**|
+|**Temp (K) **|**十六进制颜色代码**|
 |--------|--------------|
 |198     |#fe050505     |
 |198.43  |#fe120505     |
@@ -472,3 +472,169 @@ Via[获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles)用户可以
 |307.57  |#02555555     |
 |308     |#00525252     |
 |308     |#00525252     |
+
+## <a name="index-ids-and-index-groups-ids"></a>索引 Id 和索引组 Id
+
+[获取每日索引 API](https://aka.ms/AzureMapsWeatherDailyIndices) 允许用户将返回的结果限制为特定的索引类型或索引组。
+
+下面是一个表，其中列出了可用的索引 Id、它们的名称以及指向它们的范围集的链接。 下表列出了列出各种索引组的表。
+
+  Index Name |  ID  | 值范围
+  -------------------------- |---|-----
+  Arthritis 难点             |21 | [有利-面临极大风险](#beneficial-at-extreme-risk)
+  Asthma                     |23|  [有利-面临极大风险](#beneficial-at-extreme-risk)
+  海滩 & 池               |10| [不良-优秀1](#poor-excellent-1)
+  Bicycling                  |4| [不良-优秀1](#poor-excellent-1)
+  常见冷                |25|  [有利-面临极大风险](#beneficial-at-extreme-risk)
+  Composting                 |38| [不良-优秀1](#poor-excellent-1)
+  建筑               |14| [不良-优秀1](#poor-excellent-1)
+  COPD                       |44|  [有利-面临极大风险](#beneficial-at-extreme-risk)
+  狗浏览        |43| [不良-优秀1](#poor-excellent-1)
+  驾车                    |40|  [不良-优秀2](#poor-excellent-2)
+  灰尘 & Dander              |18| [低-至尊1](#low-extreme-1)
+  现场准备情况            |32| [不良-优秀1](#poor-excellent-1)
+  钓鱼                    |13| [不良-优秀1](#poor-excellent-1)
+  航班延迟              |-3|  [极不可能-很可能是2](#very-unlikely-very-likely-2)
+  流感                        |26|  [有利-面临极大风险](#beneficial-at-extreme-risk)
+  飞行旅行索引        |31| [极佳-差](#excellent-poor)
+  燃油经济               |37| [不良-优秀1](#poor-excellent-1)
+  高尔夫天气               |5| [不良-优秀1](#poor-excellent-1)
+  草地成长              |33| [不良-优秀1](#poor-excellent-1)
+  头发 Frizz                 |42| [不太可能-紧急事件](#unlikely-emergency)
+  健康      |16| [不良-优秀1](#poor-excellent-1)
+  徒步旅行                     |3| [不良-优秀1](#poor-excellent-1)
+  家庭能源效率     |36| [不良-优秀1](#poor-excellent-1)
+  搜寻                    | 20| [不良-优秀1](#poor-excellent-1)
+  室内活动            | -2| [不良-优秀1](#poor-excellent-1)
+  Jogging                    |2| [不良-优秀1](#poor-excellent-1)
+  Kite 飞行                |9| [不良-优秀1](#poor-excellent-1)
+  草地 Mowing                |28| [不良-优秀1](#poor-excellent-1)
+  Migraine 麻烦          |27|  [有利-面临极大风险](#beneficial-at-extreme-risk)
+  早上 School 客车         |35| [不良-优秀1](#poor-excellent-1)
+  Mosquito 活动          |17|[低-至尊1](#low-extreme-1)
+  户外活动           |29| [不良-优秀1](#poor-excellent-1)
+  户外 Barbecue           |24| [不良-优秀1](#poor-excellent-1)
+  户外音乐会            |8| [不良-优秀1](#poor-excellent-1)
+  运行                    |1|  [不良-优秀1](#poor-excellent-1)
+  搭档                     |6| [不良-优秀1](#poor-excellent-1)
+  Thirst                     |41| [低-至尊2](#low-extreme-2)
+  航海                    |11| [不良-优秀1](#poor-excellent-1)
+  购物                   |39| [不良-优秀1](#poor-excellent-1)
+  Sinus 麻烦             |30|  [有利-面临极大风险](#beneficial-at-extreme-risk)
+  Skateboarding              | 7| [不良-优秀1](#poor-excellent-1)
+  滑雪天气                | 15| [不良-优秀1](#poor-excellent-1)
+  雪天                  | 19| [极不可能-很可能](#very-unlikely-very-likely)
+  土料湿气              | 34| [不良-优秀1](#poor-excellent-1)
+  Stargazing                 | 12| [不良-优秀1](#poor-excellent-1)
+
+下表列出了可用的索引组 (indexGroupId) ：
+
+  ID   | 组名 | 此组中的索引 |
+  -------- | ------------------|------
+  1       |全部 | 全部
+  2       |Aches 和难题 | Arthritis 难点 (21)  </br> Migraine 难题 (27)  </br> Sinus 的麻烦 (30) 
+  3       |Respiratory | Asthma (23)  </br> 常见冷 (25)  </br> 流感预测 (26) 
+  4       |园 | 现场就绪 (32)  </br> 草地 Mowing (28)  </br> 土潮湿 (34) </br>
+  5       |保护 | 合成 (38)  </br> 家庭能源效率 (36)  </br> 37 (燃料经济) 
+  6       |户外生活 | 户外 Barbecue (24)  </br> Mosquito 活动 (17) 
+  7       |海滩和海军 | 海滩 & 池 (10)  </br> 钓鱼 (13)  </br> 航海 (11) 
+  8       |Sportsman | 钓鱼 (13)  </br> 搜寻 (20)  </br> 户外活动 (29) </br>
+  9       |场 |  现场就绪 (32)  </br>  土潮湿 (34) 
+  10      |健康产业 | Arthritis 难点 (21)  </br> Asthma (23)  </br> 常见冷 (25)  </br> 灰尘 & Dander (18)  </br> 流感 (26)  </br> 健康 (16)  </br> Migraine 难题 (27) 
+  11      |户外 | 户外 Barbecue (24)  </br> 海滩 & 池 (10)  </br> Bicycling (4)  </br> 户外音乐会 (8)  </br>  现场就绪 (32)  </br> 钓鱼 (13)  </br> 高尔夫天气 (5)  </br> 徒步旅行 (3)  </br> 搜寻 (20)  </br> Jogging (2)  </br> Kite 飞行 (9)  </br> Mosquito 活动 (17) </br> 草地 Mowing (28)  </br> 户外活动 (29)  </br> 运行 (1)  </br> 航海 (11)  </br> Skateboarding (7)  </br> 滑雪天气 (15)  </br>  土潮湿 (34) </br> Stargazing (12)  </br> 网球 (6) 
+  12      |运动 | Bicycling (4)  </br> 高尔夫天气 (5)  </br> 徒步旅行 (3)  </br>  Jogging (2)  </br> 运行 (1)  </br> Skateboarding (7)  </br> 滑雪天气 (15)  </br>网球 (6) 
+  13      |主页 | 家庭能源效率 (36)  </br> 37 (燃料经济)  </br> 室内活动 (-2) 
+
+## <a name="daily-index-range-sets"></a>每日索引范围集
+
+[获取每日索引 API](https://aka.ms/AzureMapsWeatherDailyIndices) 将返回每个索引 ID 的范围值及其关联的类别名称。 所有索引的范围集不同。 下表显示了 [索引 id 和索引组 id](#index-ids-and-index-groups-ids)中列出的支持索引所使用的各种范围集。 若要找出哪些索引使用哪些范围集，请参阅本文档的 [索引 id 和索引组 id](#index-ids-and-index-groups-ids) 部分。
+
+### <a name="poor-excellent-1"></a>不良-优秀1
+
+  | Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  差              |  0 |                2.99
+  一般              |  3  |               4.99
+  好              |  5  |              6.99
+  非常好         |  7  |               8.99
+  优秀         |  9  |               10
+
+### <a name="poor-excellent-2"></a>不良-优秀2
+
+ | Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  差           |0              |  3
+  一般           |3.01           |  6
+  好           |6.01           |  7.5
+  非常好      |7.51           |  8.99
+  优秀      |9              |  10
+
+### <a name="excellent-poor"></a>极佳-差
+
+ | Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  优秀      |     0.00        |    1.00
+  非常好        |   1.01          |  3.00
+  好             |   3.01          |  5.00
+  一般             |   5.01          |  7.00
+  差             |   7.01          |  10.00
+
+### <a name="low-extreme-1"></a>低-至尊1
+
+   | Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  低                |  0         |        1.99
+  适中           |  2         |        3.99
+  高               |  4         |        5.99
+  很高          |  6         |        7.99
+  极高            |  8         |        10
+
+### <a name="low-extreme-2"></a>低-至尊2
+
+   | Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  低                |  0            |      2.99
+  适中           |  3            |      4.99
+  高               |  5            |      6.99
+  很高          |  7            |      8.99
+  极高            |  9            |      10
+
+### <a name="very-unlikely-very-likely"></a>极不可能-很可能
+
+ | Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  很少      | 0     |           1.99
+  具备           | 2     |           3.99
+  尽量           | 4     |           5.99
+  越大             | 6     |           7.99
+  很可能        | 8     |           10
+
+### <a name="very-unlikely-very-likely-2"></a>极不可能-很可能是2
+
+ | Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  很少      |  0.00     |         1.00
+  具备           |  1.01     |         3.00
+  尽量           |  3.01     |         5.00
+  越大             |  5.01     |         7.00
+  很可能        |  7.01     |         10.00
+
+### <a name="unlikely-emergency"></a>不太可能-紧急事件
+
+| Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  具备         |  0     |          2.99
+  监视            |  3     |          4.99
+  公告         |  5     |          6.99
+  警告          |  7     |          8.99
+  紧急情况        |  9     |          10
+
+### <a name="beneficial-at-extreme-risk"></a>有利-面临极大风险
+
+| Category Name | 开始范围 | 结束范围 |
+  ----------------|--------------|------------
+  有所        |    0        |        1.99
+  中立           |    2        |        3.99
+  存在风险           |    4        |        5.99
+  高风险      |    6        |        7.99
+  面临极大风险   |    8        |        10

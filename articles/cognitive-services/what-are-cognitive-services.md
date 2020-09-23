@@ -5,23 +5,31 @@ description: Azure 认知服务是包含 REST API 和客户端库 SDK 的云服�
 services: cognitive-services
 author: nitinme
 manager: nitinme
-keywords: cognitive services, cognitive intelligence, cognitives services, ai as a service, cognitive solutions, cognitive artificial intelligence, cognitive software, ai services, cognitive ai, cognitive understanding
+keywords: cognitive services, cognitive intelligence, cognitive solutions, ai services, cognitive understanding, cognitive features
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3d7f5926991239786d9b37dffecc05cd8983bf3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89381282"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894437"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
-Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮助开发人员生成认知智能应用程序，而无需具备直接的人工智能 (AI) 或数据科学技能或知识。 开发人员使用 Azure 认知服务能够轻松地将认知功能添加到其应用程序中。 Azure 认知服务的目标是帮助开发人员创建可以看、听、说、理解甚至开始推理的应用程序。 Azure 认知服务中的服务目录可分为五大主要支柱类别：视觉、语音、语言、Web 搜索和决策。
+Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮助开发人员将认知智能内置于应用程序，而无需具备直接的人工智能 (AI) 或数据科学技能或知识。 借助 Azure 认知服务，开发人员可以通过能够看、听、说、理解甚至开始推理的认知解决方案，轻松将认知功能添加到他们的应用程序中。
+
+提供认知理解功能的 AI 服务主要分为五大类：
+
+* 影像
+* 语音
+* 语言
+* Web 搜索
+* 决策
 
 当前的新文档列表可在[认知服务的新增功能文档](whats-new-docs.md)中找到。
 
@@ -80,7 +88,17 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮�
 |:-----------|:------------------|
 |[异常探测器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "异常检测器")（预览版）|使用异常检测器可以监视并检测时序数据中的异常。|
 |[内容审查器](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。|
+|[指标顾问](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor)（预览版） | 指标顾问提供可自定的多变量时序数据义异常情况检测，并提供一个功能齐全的 Web 门户来帮助使用该服务。
 |[个性化体验创建服务](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "个性化体验创建服务")|个性化体验创建服务可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。|
+
+## <a name="learn-with-the-quickstarts"></a>通过快速入门学习
+
+了解如何使用以下内容，通过实操性快速入门创建认知服务资源：
+
+* [Azure 门户](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure 门户")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK 客户端库](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
+* [Azure 资源管理器 (ARM) 模板](resource-manager-template.md?tabs=portal "Azure 资源管理器 (ARM) 模板")
 
 ## <a name="subscription-management"></a>订阅管理
 
@@ -119,6 +137,9 @@ Azure 认知服务提供了分层的安全模型，包括通过 Azure Active Dir
 ## <a name="support"></a>支持
 
 认知服务提供多个[支持选项](cognitive-services-support-options.md "支持选项")。
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

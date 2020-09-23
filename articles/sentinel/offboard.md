@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/29/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 0d918de4669e1b4bac6c1775a813eb1d224f39cf
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662017"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885836"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>从工作区中删除 Azure Sentinel
 
@@ -48,13 +48,13 @@ ms.locfileid: "89662017"
 
 -   AWS
 
--   Microsoft 服务安全警报： Microsoft Defender for Identity (*以前的 AZURE ATP*) ，Microsoft Cloud App Security 包括 CLOUD DISCOVERY 影子 IT 报告、Azure AD Identity Protection、microsoft Defender for Endpoint (*以前的 microsoft defender ATP*) 、azure Defender (*以前的 azure 安全中心*) 
+-   Microsoft 服务安全警报： Microsoft Defender for Identity (*以前的 AZURE ATP*) ，Microsoft Cloud App Security 包括 CLOUD DISCOVERY 影子 IT 报告、Azure AD Identity Protection、microsoft Defender for Endpoint (*以前的 microsoft defender ATP*) 、azure Defender 警报（来自 azure 安全中心）
 
 -   威胁智能
 
--   常见安全日志 (包括基于 CEF 的日志、Barracuda 和 Syslog)  (如果你有 Azure Defender，将继续收集这些日志。 ) 
+-   常见安全日志 (包括基于 CEF 的日志、Barracuda 和 Syslog)  (如果从 Azure 安全中心获得 Azure Defender 警报，将继续收集这些日志。 ) 
 
--   Windows 安全事件 (如果你有 Azure Defender，将继续收集这些日志。 ) 
+-   Windows 安全事件 (如果从 Azure 安全中心获得 Azure Defender 警报，将继续收集这些日志。 ) 
 
 在前48小时内，数据和分析规则 (包括实时自动化配置) 在 Azure Sentinel 中将不再可访问或可查询。
 

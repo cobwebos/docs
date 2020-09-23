@@ -1,6 +1,6 @@
 ---
-title: 在授权管理中创建 & 管理资源目录-Azure AD
-description: 了解如何在 Azure Active Directory 的权利管理中创建新的资源容器和访问包。
+title: 在权利管理中创建和管理资源目录 - Azure AD
+description: 了解如何在 Azure Active Directory 权利管理中创建资源和访问包的新容器。
 services: active-directory
 documentationCenter: ''
 author: barclayn
@@ -16,14 +16,14 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783529"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980046"
 ---
-# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中创建和管理资源的目录
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建和管理资源目录
 
 ## <a name="create-a-catalog"></a>创建目录
 
@@ -53,13 +53,13 @@ ms.locfileid: "88783529"
 
 ### <a name="creating-a-catalog-programmatically"></a>以编程方式创建目录
 
-你还可以使用 Microsoft Graph 创建目录。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [创建 accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
+还可以使用 Microsoft Graph 创建目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[创建 accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
 
 ## <a name="add-resources-to-a-catalog"></a>将资源添加到目录
 
-若要在访问包中包含资源，这些资源必须存在于目录中。 可添加的资源类型包括组、应用程序和 SharePoint Online 站点。 这些组可以是云创建 Microsoft 365 组或云创建 Azure AD 安全组。 应用程序可以是 Azure AD 企业应用程序，包括 SaaS 应用程序，以及你自己的已联合到 Azure AD 的应用程序。 站点可以是 SharePoint Online 站点或 SharePoint Online 站点集合。
+若要在访问包中包含资源，这些资源必须存在于目录中。 可添加的资源类型包括组、应用程序和 SharePoint Online 站点。 组可以是云创建的 Microsoft 365 组，或者云创建的 Azure AD 安全组。 应用程序可以是 Azure AD 企业应用程序，包括 SaaS 应用程序，以及你自己的已联合到 Azure AD 的应用程序。 站点可以是 SharePoint Online 站点或 SharePoint Online 站点集合。
 
-**必备角色：** 查看 [将资源添加到目录的所需角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
+**必备角色：** 请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -69,7 +69,7 @@ ms.locfileid: "88783529"
 
 1. 单击“添加资源”。****
 
-1. 单击资源类型： **组和团队**、 **应用程序**或 **SharePoint 站点**。
+1. 单击某个资源类型：“组和团队”、“应用程序”或“SharePoint 站点”。  
 
     如果未看到所要添加的资源或无法添加资源，请确保具有所需的 Azure AD 目录角色和权利管理角色。 可能需要求助某个具有所需角色的人员将资源添加到目录。 有关详细信息，请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
@@ -83,13 +83,13 @@ ms.locfileid: "88783529"
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>以编程方式将资源添加到目录
 
-你还可以使用 Microsoft Graph 将资源添加到目录。  具有委托权限的应用程序 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)，相应角色中的用户或目录和资源所有者。
+还可以使用 Microsoft Graph 将资源添加到目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户或目录和资源所有者可以调用 API 来[创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-resources-from-a-catalog"></a>从目录中删除资源
 
 可以从目录中删除资源。 如果资源未在目录的任何访问包中使用时，才能从该目录中删除该资源。
 
-**必备角色：** 查看 [将资源添加到目录的所需角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
+**必备角色：** 请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -101,11 +101,12 @@ ms.locfileid: "88783529"
 
 1. 单击“删除”（或单击省略号 (**...**)，然后单击“删除资源”）。********
 
+
 ## <a name="add-additional-catalog-owners"></a>添加其他目录所有者
 
-创建目录的用户将成为第一个目录所有者。 若要委派管理目录，请将用户添加到目录所有者角色。 这有助于共享目录管理责任。 
+创建了目录的用户将成为第一个目录所有者。 若要委托目录的管理，请将用户添加到目录所有者角色。 这有助于共享目录管理责任。 
 
-按照以下步骤将用户分配到目录所有者角色：
+遵循以下步骤将用户分配到目录所有者角色：
 
 **必备角色：** 全局管理员、用户管理员或目录所有者
 
@@ -117,7 +118,7 @@ ms.locfileid: "88783529"
 
     ![目录角色和管理员](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
-1. 单击 " **添加所有者** "，选择这些角色的成员。
+1. 单击“添加所有者者”，以选择这些角色的成员。
 
 1. 单击“选择”以添加这些成员。****
 
@@ -133,11 +134,11 @@ ms.locfileid: "88783529"
 
 1. 在该目录的“概述”页上单击“编辑”。********
 
-1. 编辑目录的 "名称"、"说明" 或 "已启用" 设置。
+1. 编辑目录的名称、说明或启用的设置。
 
     ![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 单击“保存”  。
+1. 单击“保存”。
 
 ## <a name="delete-a-catalog"></a>删除目录
 
@@ -155,8 +156,8 @@ ms.locfileid: "88783529"
 
 ### <a name="deleting-a-catalog-programmatically"></a>以编程方式删除目录
 
-你还可以使用 Microsoft Graph 删除目录。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [删除 accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
+还可以使用 Microsoft Graph 删除目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[删除 accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [委托访问控制以访问包管理器](entitlement-management-delegate-managers.md)
+- [将访问权限管理委托给访问包管理者](entitlement-management-delegate-managers.md)

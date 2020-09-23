@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 62716d5061d7c5e6ed8c64a0ce00a780f35c10be
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017993"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979839"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教程：配置 SAP SuccessFactors 以 Active Directory 用户预配 
 本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory (AD) 和 Azure AD 时需要执行的步骤，并提供 SuccessFactors 的可选回发电子邮件地址。 
@@ -234,7 +234,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
    
 1. 请打开“服务”管理单元来验证是否已安装代理并确保其正在运行，并查找名为“Microsoft Azure AD Connect 预配代理”的服务
   
-   ![服务中运行的 Microsoft Azure AD 连接预配代理的屏幕截图](./media/workday-inbound-tutorial/services.png)
+   ![在服务中运行的 Microsoft Azure AD 连接预配代理的屏幕截图。](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>第3部分：在预配应用程序中，配置与 SuccessFactors 和 Active Directory 的连接
 在此步骤中，我们将在 Azure 门户中建立与 SuccessFactors 和 Active Directory 的连接。 

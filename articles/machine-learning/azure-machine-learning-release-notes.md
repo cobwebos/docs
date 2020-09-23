@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 245b977e0aeda3df933b6ab4b27735264444c4df
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 022040f4fa7f70dd5fc7677ce969ee9acbe7bcbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659171"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886423"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -22,6 +22,54 @@ ms.locfileid: "89659171"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
+## <a name="2020-09-21"></a>2020-09-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1140"></a>用于 Python 的 Azure 机器学习 SDK 1.14。0
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + 从 SDK 中删除了网格分析，但不支持更长的时间。
+  + **azureml-accel-models**
+    + 加速-模型包现在支持 Tensorflow 2。x
+  + **azureml-automl-core**
+    + Get_output 在 pandas/spark-sklearn 的本地版本与定型期间使用的版本不匹配的情况下，添加了错误处理
+  + **azureml-automl-runtime**
+    + 修复了一个 bug，其中 AutoArima 迭代将失败，并出现 PredictionException 和消息： "预测期间发生了缄默错误"。
+  + **azureml-cli-common**
+    + 从 SDK 中删除了网格分析，但不支持更长的时间。
+  + **contrib-服务器**
+    + Pypi 概述页的包更新说明。
+  + **azureml-core**
+    + 从 SDK 中删除的网格分析功能不再受支持。
+    + 减少工作区检索失败时的错误消息数。
+    + 提取元数据失败时不显示警告
+    + New Kusto 步骤和 Kusto 计算目标。
+    + 更新 sku 参数的文档。 在 CLI 和 SDK 的工作区更新功能中删除 sku。
+    + Pypi 概述页的包更新说明。
+    + 已更新 AzureML 环境的文档。
+    + 在 SDK 中公开 AML 工作区的服务托管资源设置。
+  + **azureml-dataprep**
+    + 为数据集装载启用对文件的 execute 权限。
+  + **azureml-mlflow**
+    + 已更新的 AzureML MLflow 文档和笔记本示例 
+    + 新支持具有 AzureML 后端的 MLflow 项目
+    + MLflow 模型注册表支持
+    + 为 AzureML-MLflow 操作添加了 RBAC 支持 
+    
+  + **azureml-pipeline-core**
+    + 改进了 parse_ PipelineOutputFileDataset * 方法的文档。
+    + New Kusto 步骤和 Kusto 计算目标。
+    + 通过该用户提供的管道终结点实体的 Swaggerurl 属性可以查看已发布管道终结点的架构定义。
+  + **azureml-pipeline-steps**
+    + New Kusto 步骤和 Kusto 计算目标。
+  + **azureml-telemetry**
+    + Pypi 概述页的包更新说明。
+  + **azureml-定型**
+    + Pypi 概述页的包更新说明。
+  + **azureml-train-automl-client**
+    + Get_output 在 pandas/spark-sklearn 的本地版本与定型期间使用的版本不匹配的情况下，添加了错误处理
+  + **azureml-train-core**
+    + Pypi 概述页的包更新说明。
+    
 ## <a name="2020-08-31"></a>2020-08-31
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>用于 Python 的 Azure 机器学习 SDK 1.13。0
@@ -81,49 +129,49 @@ ms.locfileid: "89659171"
   + "我信任此文件的内容" 在第一次后自动选中
   + 改进冲突解决对话框，其中包含新的 "创建副本" 选项
   
-## <a name="2020-08-17"></a>2020-08-17
+## <a name="2020-08-17"></a>2020 年 8 月 17 日
 
-### <a name="azure-machine-learning-sdk-for-python-v1120"></a>用于 Python 的 Azure 机器学习 SDK 1.12。0
+### <a name="azure-machine-learning-sdk-for-python-v1120"></a>用于 Python 的 Azure 机器学习 SDK v1.12.0
 
 + **Bug 修复与改进**
   + **azure-cli-ml**
-    + 将 image_name 和 image_label 参数添加到 Model ( # A1，以启用重命名已生成的包映像。
+    + 已将 image_name 和 image_label 参数添加到 Model.package()，以便能够重命名生成的包映像。
   + **azureml-automl-core**
-    + 如果在读取内容时修改内容，AutoML 将从 dataprep 引发新的错误代码。
+    + 如果在读取内容的同时修改内容，AutoML 将从 dataprep 引发新的错误代码。
   + **azureml-automl-runtime**
-    + 当数据包含缺失值但特征化已关闭时，为用户添加了警报。
-    + 修复了当数据包含 nan 并且特征化已关闭时的子运行失败。
-    + 如果在读取内容时修改内容，AutoML 将从 dataprep 引发新的错误代码。
-    + 更新了用于预测指标的规范化以获得粒度。
-    + 在禁用 lookback 功能时，改进了预测分位数的计算。
-    + 修复了 AutoML 之后计算解释时的 bool 稀疏矩阵处理。
+    + 为用户添加了在数据包含缺失值但特征化已关闭时发出的警报。
+    + 修复了在数据包含 nan 且特征化已关闭时的子运行失败。
+    + 如果在读取内容的同时修改内容，AutoML 将从 dataprep 引发新的错误代码。
+    + 更新了归一化以使预测指标按粒度发生。
+    + 改进了在回看功能已禁用时预测分位数的计算。
+    + 修复了在 AutoML 之后计算解释时的布尔稀疏矩阵处理。
   + **azureml-core**
-    + 新方法 `run.get_detailed_status()` 现在显示当前运行状态的详细说明。 它当前仅显示状态的说明 `Queued` 。
-    + 将 image_name 和 image_label 参数添加到 Model ( # A1，以启用重命名已生成的包映像。
-    + `set_pip_requirements()`用于一次设置整个 pip 部分的新方法 [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py&preserve-view=true) 。
-    + 允许注册不 ADLS Gen2 数据存储的无凭据。
-    + 改进了尝试下载或装载不正确的数据集类型时的错误消息。
+    + 新方法 `run.get_detailed_status()` 现在显示当前运行状态的详细解释。 当前它仅显示 `Queued` 状态的解释。
+    + 已将 image_name 和 image_label 参数添加到 Model.package()，以便能够重命名生成的包映像。
+    + 新方法 `set_pip_requirements()`，用于一次性设置 [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py&preserve-view=true) 中的整个 pip 部分。
+    + 支持注册无凭据的 ADLS Gen2 数据存储。
+    + 改进了在尝试下载或装载不正确的数据集类型时出现的错误消息。
     + 更新时序数据集筛选器示例笔记本，其中包含提供筛选优化 partition_timestamp 的更多示例。
     + 更改 sdk 和 CLI，以在删除专用终结点连接时接受 subscriptionId、resourceGroup、workspaceName、peConnectionName 作为参数而不是 ArmResourceId。
-    + 试验性修饰器显示类名称以便于识别。
-    + 不会再根据运行自动生成模型内的资产的描述。
+    + 试验性修饰器显示类名称以便更易于识别。
+    + 不再根据运行自动生成模型内资产的描述。
   + **azureml-datadrift**
-    + 将 DataDriftDetector 中的 API create_from_model 标记为已弃用。
+    + 已将 DataDriftDetector 中的 create_from_model API 标记为待弃用。
   + **azureml-dataprep**
-    + 改进了尝试下载或装载不正确的数据集类型时的错误消息。
+    + 改进了在尝试下载或装载不正确的数据集类型时出现的错误消息。
   + **azureml-pipeline-core**
     + 修复了对包含已注册数据集的管道图形进行反序列化时的 bug。
   + **azureml-pipeline-steps**
-    + RScriptStep 支持 RSection。
-    + 已从公共 API 中删除 passthru_automl_config 参数 `AutoMLStep` ，并将其转换为仅限内部参数。
+    + RScriptStep 支持来自 azureml.core.environment 的 RSection。
+    + 从 `AutoMLStep` 公共 API 中删除了 passthru_automl_config 参数，并将其转换为仅内部使用的参数。
   + **azureml-train-automl-client**
-    + 删除了本地异步托管环境，从 AutoML 运行。 所有本地运行都将在启动运行的环境中运行。
-    + 修复了提交 AutoML 运行时未提供用户提供脚本的快照问题。
-    + 修复了当数据包含 nan 并且特征化已关闭时的子运行失败。
+    + 从 AutoML 中删除了本地异步托管环境运行。 所有本地运行都将在启动运行的环境中运行。
+    + 修复了在没有用户提供的脚本的情况下提交 AutoML 运行时的快照问题。
+    + 修复了在数据包含 nan 且特征化已关闭时的子运行失败。
   + **azureml-train-automl-runtime**
-    + 如果在读取内容时修改内容，AutoML 将从 dataprep 引发新的错误代码。
-    + 修复了提交 AutoML 运行时未提供用户提供脚本的快照问题。
-    + 修复了当数据包含 nan 并且特征化已关闭时的子运行失败。
+    + 如果在读取内容的同时修改内容，AutoML 将从 dataprep 引发新的错误代码。
+    + 修复了在没有用户提供的脚本的情况下提交 AutoML 运行时的快照问题。
+    + 修复了在数据包含 nan 且特征化已关闭时的子运行失败。
   + **azureml-train-core**
     + 添加了对指定 pip 选项的支持 (例如，将 pip 要求文件中的额外索引 url) 传递给 [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) 通过 `pip_requirements_file` 参数。
 
@@ -592,9 +640,9 @@ ms.locfileid: "89659171"
 
 从工作室访问以下基于 Web 的创作工具：
     
-| 基于 Web 的工具  |     说明  | 版本 | 
-|---|---|---|
-| Azure 机器学习工作室笔记本   |     笔记本文件的一流创作工具，支持 Azure ML Python SDK 中提供的所有操作。 | 基本和企业版  |   
+| 基于 Web 的工具  |     说明  |
+|---|---|
+| Azure 机器学习工作室笔记本   |     笔记本文件的一流创作工具，支持 Azure ML Python SDK 中提供的所有操作。 | 
 
 ## <a name="2020-04-27"></a>2020-04-27
 
@@ -1098,17 +1146,17 @@ ms.locfileid: "89659171"
 
 ### <a name="web-experience"></a>Web 体验
 
-位于 [https://ml.azure.com](https://ml.azure.com) 的协作工作区登陆页已增强，已更名为“Azure 机器学习工作室（预览版）”。
+的协作工作区登陆页面已 [https://ml.azure.com](https://ml.azure.com) 增强，并且更名为 Azure 机器学习 studio。
 
 在工作室中，可以训练、测试、部署和管理数据集、管道、模型、终结点等 Azure 机器学习资产。
 
 从工作室访问以下基于 Web 的创作工具：
 
-| 基于 Web 的工具 | 说明 | 版本 |
+| 基于 Web 的工具 | 说明 | 
 |-|-|-|
-| 笔记本 VM（预览版） | 完全托管的基于云的工作站 | 基本和企业版 |
-| [自动化机器学习](tutorial-first-experiment-automated-ml.md)（预览版） | 没有可用于自动化机器学习模型开发的代码体验 | Enterprise |
-| [设计器](concept-designer.md)（预览版） | 以前称为“设计器”的拖放式机器学习建模工具 | Enterprise |
+| 笔记本 VM（预览版） | 完全托管的基于云的工作站 | 
+| [自动化机器学习](tutorial-first-experiment-automated-ml.md)（预览版） | 没有可用于自动化机器学习模型开发的代码体验 | 
+| [Designer](concept-designer.md) | 拖放机器学习建模工具（以前称为可视界面） | 
 
 
 ### <a name="azure-machine-learning-designer-enhancements"></a>Azure 机器学习设计器增强

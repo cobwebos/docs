@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539894"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980476"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威胁建模工具入门
 
@@ -80,7 +80,7 @@ Microsoft Threat Modeling Tool 2018 在 2018 年 9 月作为 GA 发布，是免�
 > - 他们正向我们的 Web 服务器发送命令—圆圈
 > - Web 服务器正向数据库发出请求（两条平行线）
 
-什么是 Ricardo 的 Cristina 是一种 DFD，这是数据流**[关系图](https://en.wikipedia.org/wiki/Data_flow_diagram)** 的简短。 威胁建模工具可使用户指定信任边界（用红色虚线显示），以显示不同的实体被控制的位置。 例如，IT 管理员需要 Active Directory 系统以进行身份验证，因此 Active Directory 是不受其控制的。
+什么是 Ricardo 的 Cristina 是一种 DFD，这是数据流 **[关系图](https://en.wikipedia.org/wiki/Data_flow_diagram)** 的简短。 威胁建模工具可使用户指定信任边界（用红色虚线显示），以显示不同的实体被控制的位置。 例如，IT 管理员需要 Active Directory 系统以进行身份验证，因此 Active Directory 是不受其控制的。
 
 > Cristina：我觉得没问题。 关于威胁呢？
 > Ricardo：让我给你看一下。
@@ -97,7 +97,7 @@ Ricardo 先从选择列表上的第一项开始。 下面是发生的具体情�
 
 首先，两个模具之间的交互得到了增强
 
-![交互](./media/threat-modeling-tool-getting-started/interaction.png)
+![屏幕截图显示两个模具，并以较粗的线权重连接曲线。](./media/threat-modeling-tool-getting-started/interaction.png)
 
 其次，有关威胁的其他信息显示在威胁属性窗口中
 

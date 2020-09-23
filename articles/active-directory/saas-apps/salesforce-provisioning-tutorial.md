@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 66bba0d4825300a6cead2453a67518af631234b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543498"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979771"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -67,7 +67,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 4. 将“预配模式”设置为“自动”。
 
-    ![预配](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "Salesforce 设置" 页，预配模式设置为 "自动"，可以设置其他值。](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. 在“管理员凭据”**** 部分中，提供以下配置设置：
 
@@ -97,7 +97,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 13. 在“通知电子邮件”**** 字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-14. 单击“保存”。  
+14. 单击“保存”   
 
 15. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce”****。
 
@@ -105,7 +105,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 17. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”**** 更改为“启用”****
 
-18. 单击“保存”。
+18. 单击“保存” 
 
 > [!NOTE]
 > 在 Salesforce 应用程序中设置用户后，管理员需要为其配置特定于语言的设置。 有关语言配置的更多详细信息，请参阅 [此](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) 文。
