@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 51b478e5184c79e11d95ff004a652b2e5298558f
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402612"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884909"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 Query Performance Insight
 
@@ -51,7 +51,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 可以在图表中单击并拖动以缩小到特定的时间窗口。 或者，使用“放大”和“缩小”图标分别查看更小或更大的时间段。
 
-![Query Performance Insight 长时间运行的查询](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Query Performance Insight 长时间运行的查询"::: 
 
 ### <a name="wait-statistics"></a>等待统计信息
 
@@ -64,7 +64,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 “等待统计信息”视图中显示的查询按指定时间间隔内显示最大等待时间的查询进行分组。
 
-![Query Performance Insight 等待统计信息](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight 等待统计信息":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1899baa927bffdaedd1d7ee00f442c449480fc04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533863"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986844"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>快速入门：创建 SQL 托管实例的托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -124,7 +124,7 @@ ms.locfileid: "87533863"
 > 3. 选择正在进行的 SQL 托管实例部署操作。
 
 > [!IMPORTANT]
-> - 创建 SQL 托管实例是一种长时间运行的操作，可能一次需要数个小时，具体取决于特定情况。 请参阅[管理操作持续时间](management-operations-overview.md#management-operations-duration)以了解典型创建时间。
+> - 创建 SQL 托管实例是一种长时间运行的操作，可能一次需要数个小时，具体取决于特定情况。 请参阅[管理操作持续时间](management-operations-overview.md#duration)以了解典型创建时间。
 > - 当存在其他冲突操作（例如，在同一子网中的其他托管实例上长时间运行的还原或缩放操作）时，SQL 托管实例创建的开始可能会延迟。 若要了解详细信息，请参阅[管理操作交叉影响](management-operations-overview.md#management-operations-cross-impact)。
 > - 若要获取托管实例创建状态，需要有资源组的**读取权限**。 如果没有此权限，或者在托管实例创建过程中将其撤消，则可能会导致 SQL 托管实例在资源组部署列表中不可见。
 >

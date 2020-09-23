@@ -3,12 +3,12 @@ title: Azure Application Insights 概览仪表板 | Microsoft 文档
 description: 使用 Azure Application Insights 概览仪表板功能来监控应用程序。
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322527"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970608"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
 
@@ -36,7 +36,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 若要访问默认仪表板，请选择  左上角的“应用程序仪表板”。
 
-![仪表板视图](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![屏幕截图显示突出显示的 "应用程序仪表板" 按钮。](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 如果这是你第一次访问仪表板，它将启动默认视图：
 

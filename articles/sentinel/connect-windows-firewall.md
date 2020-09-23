@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: 5804dcc840eb666c1d43ea7d7ed7640b8f7ff371
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657446"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883811"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>将具有高级安全性的 Windows Defender 防火墙连接到 Azure Sentinel
 
@@ -31,9 +31,9 @@ ms.locfileid: "89657446"
 > [!NOTE]
 > - 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
 >
-> - 如果将 Azure Sentinel 和 Azure Defender (以前的 Azure 安全中心) 收集到同一个工作区，则无需通过此连接器启用 Windows 防火墙解决方案。 如果仍启用此功能，则不会导致重复的数据。 
+> - 如果已将 azure 安全中心的 Azure Defender 警报收集到 Azure Sentinel 工作区，则无需通过此连接器启用 Windows 防火墙解决方案。 但是，如果启用了此操作，则不会导致重复的数据。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 - 您必须具有对要监视的计算机连接到的工作区的读取和写入权限。
 
@@ -47,40 +47,37 @@ ms.locfileid: "89657446"
 
 ### <a name="instructions-tab"></a>说明选项卡
 
-在 " **说明** " 选项卡上完成以下步骤。
+- **如果 Windows 计算机位于 Azure 中：**
 
-- **如果 Windows 计算机位于 Azure 中，请完成以下步骤：**
+    1. 选择 **"在 Azure Windows 虚拟机上安装代理"**。
 
-   1. 选择 **"在 Azure Windows 虚拟机上安装代理"**。
-   
-   1. 单击 " **下载 & 适用于 Azure Windows 虚拟机的代理 >** " 链接 "。
-   
-   1. 在 " **虚拟机** " 列表中，选择要流式传输到 Azure Sentinel 的 Windows 计算机。  (可以在 OS 列筛选器中选择 **windows** ，以确保仅) 显示 windows vm。
-   
-   1. 在为该 VM 打开的窗口中，单击 " **连接**"。
-   
-   1. 返回到 " **虚拟机** " 窗格，并为要连接的任何其他 vm 重复上述两个步骤。 完成后，返回到 " **Windows 防火墙** " 窗格。
+    1. 单击 " **下载 & 适用于 Azure Windows 虚拟机的代理 >** " 链接 "。
 
-- **如果 Windows 计算机不是 Azure VM，请完成以下步骤：**
-   
-   1. 选择 **"在非 Azure Windows 计算机上安装代理"**。
-   
-   1. 单击 " **下载 & 非 Azure Windows 计算机的安装代理" >** 出现的链接。
-   
-   1. 在 " **代理管理** " 窗格中，根据需要选择 " **下载 windows 代理 (64 位) ** 或 **下载 windows 代理 (32") **。
-   
-   1. 将 **工作区 ID**、 **主键**和 **辅助密钥** 字符串复制到文本文件。 将该文件和下载的安装文件复制到 Windows 计算机。 运行安装文件，并在出现提示时，在安装过程中输入文本文件中的 ID 和密钥字符串。
-   
-   1. 返回到 " **Windows 防火墙** " 窗格。
+    1. 在 " **虚拟机** " 列表中，选择要流式传输到 Azure Sentinel 的 Windows 计算机。  (可以在 OS 列筛选器中选择 **windows** ，以确保仅) 显示 windows vm。
 
-完成 " **说明** " 选项卡上的步骤后，单击 " **安装解决方案**"。
+    1. 在为该 VM 打开的窗口中，单击 " **连接**"。
+
+    1. 返回到 " **虚拟机** " 窗格，并为要连接的任何其他 vm 重复上述两个步骤。 完成后，返回到 " **Windows 防火墙** " 窗格。
+
+- **如果 Windows 计算机不是 Azure VM：**
+
+    1. 选择 **"在非 Azure Windows 计算机上安装代理"**。
+
+    1. 单击 " **下载 & 非 Azure Windows 计算机的安装代理" >** 出现的链接。
+
+    1. 在 " **代理管理** " 窗格中，根据需要选择 " **下载 windows 代理 (64 位) ** 或 **下载 windows 代理 (32") **。
+
+    1. 将 **工作区 ID**、 **主键**和 **辅助密钥** 字符串复制到文本文件。 将该文件和下载的安装文件复制到 Windows 计算机。 运行安装文件，并在出现提示时，在安装过程中输入文本文件中的 ID 和密钥字符串。
+
+    1. 返回到 " **Windows 防火墙** " 窗格。
+
+1. 单击 " **安装解决方案**"。
 
 ### <a name="next-steps-tab"></a>后续步骤选项卡
 
-- 若要深入了解 Windows 防火墙日志数据，请参阅与 **Windows 防火墙** 数据连接器捆绑在一起的可用建议工作簿和查询示例。
+- 查看与 **Windows 防火墙** 数据连接器捆绑的可用建议工作簿和查询示例，以了解 windows 防火墙日志数据。
 
 - 若要在 **日志**中查询 Windows 防火墙数据，请在 "查询" 窗口中键入 **windows 防火墙** 。
-
 
 ## <a name="validate-connectivity"></a>验证连接
  

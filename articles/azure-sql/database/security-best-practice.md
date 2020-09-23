@@ -1,21 +1,21 @@
 ---
 title: 用于解决常见安全要求的 playbook
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: 本文提供 Azure SQL 数据库和 Azure SQL 托管实例中的常见安全要求和最佳实践。
+description: 本文介绍了 Azure SQL 数据库和 Azure SQL 托管实例中的常见安全要求和最佳做法。
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e720a95007ff06a954affe03f43f386be3bed39f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442099"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885167"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -291,7 +291,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 - 识别有权访问系统的用户（和自动化过程）的综合层次结构。
 
 - 根据所需的用户组创建角色，并将权限分配给角色。
-  - 对于 Azure 门户或通过 PowerShell 实现的管理级任务，请使用 Azure 角色。 查找符合要求的内置角色，或者使用可用权限创建 Azure 自定义角色
+  - 对于通过 Azure 门户或 PowerShell 自动化完成的管理级任务，请使用 Azure 角色。 查找符合要求的内置角色，或者使用可用权限创建 Azure 自定义角色
   - 在托管实例中为服务器范围的任务（创建新的登录名和数据库）创建服务器角色。
   - 为数据库级任务创建数据库角色。
 
@@ -318,7 +318,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 当内置角色授予的权限过多或不足时，创建并使用用户定义的角色。
 
-- 还可在 T-sql 中的 SQL 代理作业步骤中或对 Azure 角色使用 Azure PIM，暂时（也称为) 动态划分职责 (DSD）。
+- 还可以通过 T-SQL 的 SQL 代理作业步骤或适用于 Azure 角色的 Azure PIM 暂时执行角色分配（也称为动态职责分离 (DSD)）。
 
 - 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 [ (EKM) 使用可扩展的密钥管理](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以使此分离更容易实现。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可用于实现 EKM。
 
@@ -647,7 +647,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 **最佳做法**：
 
-- 为特定服务器或托管实例配置[高级数据安全 (ADS)](advanced-data-security.md#getting-started-with-ads) 。 还可以通过切换到 [Azure 安全中心标准层](../../security-center/security-center-pricing.md)，为订阅中的所有服务器和托管实例配置 ADS。
+- 为特定服务器或托管实例配置适用于 SQL 的[Azure Defender](azure-defender-for-sql.md)   。 通过切换到 [Azure 安全中心标准层](../../security-center/security-center-pricing.md)，还可以为订阅中的所有服务器和托管实例配置 azure DEFENDER for SQL。
 
 - 若要获得完整的调查体验，建议启用  [SQL 数据库审核](../../azure-sql/database/auditing-overview.md)。 使用审核可以跟踪数据库事件，并将这些事件写入到 Azure 存储帐户或 Azure Log Analytics 工作区中的审核日志。
 

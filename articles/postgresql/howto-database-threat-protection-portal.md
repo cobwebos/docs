@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: d94170ade3de7e7fc128fe85437db59822694add
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117808"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901672"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 单服务器的高级威胁防护
 
@@ -27,14 +27,14 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
 > Azure 中的所有区域均提供此功能，其中 Azure Database for PostgreSQL 部署用于常规用途和内存优化服务器。
 
 ## <a name="set-up-threat-detection"></a>设置威胁检测
-1. 启动 Azure 门户 [https://portal.azure.com](https://portal.azure.com) 。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
 2. 导航到要保护的 Azure Database for PostgreSQL 服务器的配置页。 在安全设置中，选择“高级威胁防护(预览版)”****。
 3. 在“高级威胁防护(预览版)”配置页上****：
 
    - 在服务器上启用高级威胁防护。
-   - 在“高级威胁防护设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时接收安全警报的电子邮件列表********。
+   - 在“高级威胁防护设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时接收安全警报的电子邮件列表 。
   
-   ![设置威胁检测](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="设置威胁检测":::
 
 ## <a name="explore-anomalous-database-activities"></a>浏览异常数据库活动
 
@@ -42,23 +42,23 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
     
 1. 单击电子邮件中“查看最近的警报”**** 链接，以启动 Azure 门户并显示“Azure 安全中心警报”页，可概要查看在 SQL 数据库上检测到的活动威胁。
     
-    ![异常活动报告](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="异常活动报告":::
 
     查看活动威胁：
 
-    ![活动威胁](./media/howto-database-threat-protection-portal/active-threats.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="活动威胁":::
 
 2. 单击特定警报可获得其他详细信息以及用于调查此威胁和解决潜在威胁的操作。
     
-    ![特定警报](./media/howto-database-threat-protection-portal/specific-alert.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="特定警报":::
 
 ## <a name="explore-threat-detection-alerts"></a>浏览威胁检测警报
 
-高级威胁防护将其警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 
+高级威胁防护将其警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 
 
 单击“威胁防护”**** 下的“安全警报”**** 以启动“Azure 安全中心警报”页，并概要查看在数据库中检测到的活动 SQL 威胁。
 
-  ![威胁防护 asc](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="威胁防护 asc":::
 
 ## <a name="next-steps"></a>后续步骤
 

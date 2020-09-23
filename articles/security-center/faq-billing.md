@@ -13,21 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 214b5eea6f8de2d59869f7279aa17bcd786d8742
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82462af3f1fc939cb30730360f75303cb1be9432
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77913831"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901178"
 ---
 # <a name="billing-questions"></a>计费问题
 
 ## <a name="how-does-billing-work-for-azure-security-center"></a>Azure 安全中心如何计费？
-安全中心分两个层提供：
+安全中心提供和不带 Azure Defender：
 
-- “免费层”提供了对 Azure 资源、基本安全策略、安全建议以及与合作伙伴的安全产品和服务集成的安全状态的可见性。
+- 如果**没有 Azure Defender**，安全中心可以查看 Azure 资源的安全状态、基本安全策略、安全建议，以及与合作伙伴提供的安全产品和服务的集成。
 
-- “标准层”添加了威胁防护功能，包括安全警报、威胁情报、行为分析、异常检测和威胁归属报告。 可以启动标准层免费试用版。 若要升级，请选择安全策略中的[定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+- **Azure Defender** 添加了威胁防护功能，其中包括安全警报、威胁情报、行为分析、异常检测和威胁归属报告。 你可以开始使用 Azure Defender 的30天免费试用版。 若要升级，请选择安全策略中的[定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
-## <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>如何跟踪哪个组织用户在 Azure 安全中心执行了定价层更改
-Azure 订阅可能有多个管理员具有更改定价层的权限。 若要找出哪些用户执行了定价层更改，请使用 Azure 活动日志。 有关详细信息，请参阅[此文](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)。
+## <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>如何在 Azure 安全中心中跟踪组织中启用了 Azure Defender 更改的人员
+Azure 订阅可能有多个管理员，具有更改定价设置的权限。 若要找出执行更改的用户，请使用 Azure 活动日志。 
+
+有关详细信息，请参阅[此文](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)。

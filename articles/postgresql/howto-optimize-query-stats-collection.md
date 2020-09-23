@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: a4c2051a3f52ae363d8dc704aef790d8ce77efbd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc731f6f6a5a60bce0851bf8fe5874f7149f3899
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116193"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901462"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器上优化查询统计信息集合
 本文介绍如何在 Azure Database for PostgreSQL 服务器上优化查询统计信息集合。
@@ -27,7 +27,7 @@ Pg_stat_statements 是 PostgreSQL 扩展，默认情况下在 Azure Database for
 
 - 在 Azure 门户中，转到 [PostgreSQL 资源管理页面并选择服务器参数边栏选项卡](howto-configure-server-parameters-using-portal.md)。
 
-  ![PostgreSQL 服务器参数边栏选项卡](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
+  :::image type="content" source="./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png" alt-text="PostgreSQL 服务器参数边栏选项卡":::
 
 - 使用 [Azure CLI](howto-configure-server-parameters-using-cli.md) az postgres server configuration set `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE`。
 

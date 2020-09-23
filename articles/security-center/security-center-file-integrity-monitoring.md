@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 910d98558e5b949a76202cce48c2a210531d5c35
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9e8bd56655adfa1f7cdb769ac6cd282193b1bcf2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901363"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -28,8 +28,8 @@ ms.locfileid: "89459787"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式版|
-|计价|标准层|
+|发布状态：|正式发布 (GA)|
+|计价|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |必需的角色和权限：|**工作区所有者** 可以启用/禁用 FIM (有关详细信息，请参阅 [Log Analytics) 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles) 。<br>**读者** 可以查看结果。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
 |||
@@ -50,7 +50,7 @@ ms.locfileid: "89459787"
 安全中心会建议要监视的、可以轻松对其启用 FIM 的实体。 你也可以定义自己的 FIM 策略或要监视的实体。 本演练会演示这些操作。
 
 > [!NOTE]
-> 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机和 Vm，并且在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
+> 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机和 Vm，仅当启用了 **Azure Defender for server** 时才可用。 若要了解详细信息，请参阅 [定价](security-center-pricing.md) 。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
 
 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，会获得一个“解决方案”类型的“更改跟踪”资源 。 有关数据收集频率的详细信息，请参阅 Azure 更改跟踪的[更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
@@ -94,13 +94,18 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile|
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
-## <a name="using-file-integrity-monitoring"></a>使用文件完整性监视
-1. 打开“安全中心”仪表板。
-2. 在左窗格中的“高级云防御”下，选择“文件完整性监视”。 
-![安全中心仪表板][1]
 
-此时会打开“文件完整性监视”。
-  ![安全中心仪表板][2]
+## <a name="using-file-integrity-monitoring"></a>使用文件完整性监视
+
+1. 打开 " **Azure Defender** " 仪表板。
+
+1. 从 " **高级保护** " 区域中，选择 " **文件完整性监视**"。
+
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="启动 FIM" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+
+
+    此时会打开“文件完整性监视”。
+    ![安全中心仪表板][2]
 
 为每个工作区提供了以下信息：
 
@@ -112,26 +117,28 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 可能还会显示工作区对应的以下按钮：
 
 - ![启用图标][3] 指示未对工作区启用 FIM。 选择工作区可在该工作区中的所有计算机上启用 FIM。
-- ![升级计划图标 ][4] 表明工作区或订阅未在安全中心的标准层上运行。 若要使用 FIM 功能，订阅必须运行标准层。  选择工作区可以升级到标准层。 若要了解有关标准层和如何升级的详细信息，请参阅 [升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
+- ![升级计划图标][4] 指示工作区或订阅不受 Azure Defender 保护。 若要使用 FIM 功能，你的订阅必须受 Azure Defender 保护。  选择工作区可进行升级。
 - 空白（没有任何按钮）表示已对工作区启用 FIM。
 
-在“文件完整性监视”下，可以选择某个工作区以便对其启用 FIM、查看该工作区的“文件完整性监视”仪表板工作区，或者将该工作区[升级](security-center-pricing.md)到标准层。
+在 " **文件完整性监视**" 下，你可以选择一个工作区以为该工作区启用 FIM，查看该工作区的文件完整性监视仪表板，或 [升级](security-center-pricing.md) 工作区以使用 Azure Defender。
 
 ## <a name="enable-fim"></a>启用 FIM
 若要对工作区启用 FIM：
 
 1. 在“文件完整性监视”下，选择附带“启用”按钮的工作区。 
-2. 此时会打开“启用文件完整性监视”，其中显示了该工作区中的 Windows 和 Linux 计算机数目。
+
+1. 此时会打开“启用文件完整性监视”，其中显示了该工作区中的 Windows 和 Linux 计算机数目。
 
    ![启用文件完整性监视][5]
 
    此外，还会列出适用于 Windows 和 Linux 的建议设置。  展开“Windows 文件”、“注册表”和“Linux 文件”查看建议项的完整列表。  
 
-3. 请取消选中不想要对其应用 FIM 的所有建议实体。
-4. 选择“应用文件完整性监视”以启用 FIM。
+1. 请取消选中不想要对其应用 FIM 的所有建议实体。
+
+1. 选择“应用文件完整性监视”以启用 FIM。
 
 > [!NOTE]
-> 随时可以更改设置。 有关详细信息，请参阅下面的“编辑受监视的实体”。
+> 随时可以更改设置。 请参阅下面的 [编辑监视的实体](#edit-monitored-entities) 以了解详细信息。
 
 
 ## <a name="view-the-fim-dashboard"></a>查看 FIM 仪表板

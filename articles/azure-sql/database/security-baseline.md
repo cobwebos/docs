@@ -4,15 +4,15 @@ description: 适用于 Azure SQL 数据库和 Azure SQL 的 azure 安全基线�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231021"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885205"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>适用于 Azure SQL 数据库的 azure 安全基线 & SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -259,7 +259,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 **指南**：将 Azure SQL 数据库日志存储在 Log Analytics 工作区中时，请根据组织的符合性法规设置日志保持期。
 
-如何设置日志保留参数： 
+如何设置日志保持参数：
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：针对异常活动启用警报
 
-**指南**：对 Azure SQL 数据库使用 Azure 安全中心高级威胁防护，以便在异常活动上进行监视和警报。 为 SQL 数据库启用高级数据安全性。 高级数据安全性包括用于发现和分类敏感数据、呈现和缓解潜在的数据库漏洞以及检测可能指示数据库威胁的异常活动的功能。
+**指南**：对 Azure SQL 数据库使用 Azure 安全中心高级威胁防护，以便在异常活动上进行监视和警报。 为 SQL 数据库启用适用于 SQL 的 Azure Defender。 适用于 SQL 的 Azure Defender 包含一些功能，用于呈现和缓解潜在的数据库漏洞，以及检测可能指示数据库威胁的异常活动。
 
 了解 Azure SQL 数据库的高级威胁防护和警报：
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-如何为 Azure SQL Database 启用高级数据安全：
+如何启用适用于 Azure SQL 数据库的 Azure Defender for SQL：
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 如何在 Azure 安全中心管理警报：
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： AZURE ACTIVE DIRECTORY (AAD) 具有必须显式分配且可查询的内置角色。 使用 AAD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
+**指导**：Azure Active Directory (Azure AD) 具有必须显式分配且可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
 如何使用 PowerShell 获取 Azure AD 中的目录角色：
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指南**：启用 AZURE ACTIVE DIRECTORY (AAD) 多因素身份验证 (MFA) 并遵循 Azure 安全中心的标识和访问管理建议。
+**指南**：启用 Azure Active Directory (Azure AD) 多重身份验证 (MFA) 并遵循 Azure 安全中心的标识和访问管理建议。
 
 如何在 Azure 中启用 MFA：
 
@@ -445,13 +445,13 @@ https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-over
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：为服务器 (AAD) 管理员创建 Azure Active Directory。
+**指南**：为服务器) 管理员创建 Azure Active Directory (Azure AD。
 
 如何配置和管理 Azure SQL Azure Active Directory 身份验证：
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-如何创建和配置 AAD 实例：
+如何创建和配置 Azure AD 实例：
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**： AZURE ACTIVE DIRECTORY (AAD) 提供了日志来帮助发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才能持续拥有访问权限。
+**指导**：Azure Active Directory (Azure AD) 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才能持续拥有访问权限。
 
 如何使用 Azure 标识访问评审：
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
 
-**指南**：使用 Azure SQL 配置 AZURE ACTIVE DIRECTORY (AAD) 身份验证，并为 Azure Active Directory 用户帐户创建诊断设置，将审核日志和登录日志发送到 Log Analytics 工作区。 在 Log Analytics 工作区中配置所需的警报。
+**指南**：配置 Azure Active Directory (Azure AD 使用 Azure SQL) 身份验证，并创建 Azure Active Directory 用户帐户的诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区。 在 Log Analytics 工作区中配置所需的警报。
 
 如何配置和管理 Azure SQL Azure Active Directory 身份验证：
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AAD) Identity Protection 和风险检测来配置对检测到的与用户标识相关的可疑操作的自动响应。 此外，可将数据引入 Azure Sentinel 以做进一步调查。
+**指南**：使用 Azure Active Directory (Azure AD) 标识保护和风险检测来配置对检测到的与用户标识相关的可疑操作的自动响应。 此外，可将数据引入 Azure Sentinel 以做进一步调查。
 
 如何查看 Azure AD 风险登录：
 
@@ -533,7 +533,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应由 Vnet/子网进行分隔，对其进行适当标记，并在 NSG 或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在 Vnet 中部署 Azure SQL 数据库，并使用专用终结点进行私下连接。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 资源应由 Vnet/子网进行分隔，对其进行适当标记，并在 NSG 或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在 Vnet 中部署 Azure SQL 数据库，并使用专用终结点进行私下连接。
 
 如何创建其他 Azure 订阅：
 
@@ -559,7 +559,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-over
 
 **指南**：对于 Azure SQL 数据库中的数据库，存储或处理敏感信息，使用标记将数据库和相关资源标记为敏感。 在 Azure SQL 数据库实例上，将专用链接配置为结合网络安全组服务标记，以防止渗透敏感信息。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
 
 如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透：
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AAD) 验证和控制对 Azure SQL 数据库实例的访问权限。
+**指南**：使用 Azure Active Directory (Azure AD) 来验证和控制对 Azure SQL 数据库实例的访问权限。
 
 如何将 Azure SQL 数据库与用于身份验证的 Azure Active Directory 集成：
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
-**指南**：为 Azure SQL 数据库启用高级数据安全，并根据 Azure 安全中心的建议，在服务器上执行漏洞评估。
+**指南**：为 Azure sql 数据库启用 azure DEFENDER for sql，并遵循 Azure 安全中心的建议，在服务器上执行漏洞评估。
 
 如何对 Azure SQL 数据库运行漏洞评估：
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-如何启用高级数据安全：
+如何启用适用于 SQL 的 Azure Defender：
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 如何实现 Azure 安全中心漏洞评估建议：
 
@@ -719,7 +719,7 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure 资源关系图查询和发现所有资源 (包括订阅 () 中的 Azure SQL 数据库) 。  确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指南**：使用 Azure 资源关系图查询和发现所有资源 (包括订阅 () 中的 Azure SQL 数据库) 。  确保你在租户中拥有适当（读取）权限，并且能够枚举所有 Azure 订阅以及订阅中的资源。
 
 尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
@@ -993,13 +993,13 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**：使用托管标识，通过 AZURE ACTIVE DIRECTORY (AAD) 中的自动托管标识提供 Azure 服务。 通过托管标识，你可以向支持 AAD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，而无需在代码中包含任何凭据。
+**指南**：使用托管标识，通过 Azure Active Directory (Azure AD) 中的自动托管标识提供 Azure 服务。 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Azure Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
 教程：使用 Windows VM 系统分配的托管标识访问 Azure SQL：
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql
 
-如何配置托管标识：
+如何配置托管标识： 
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
@@ -1087,7 +1087,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指南**：确保能够定期执行 Azure 备份中的内容数据还原。 如有必要，请测试将内容还原到隔离的 VLAN 中。 测试已备份客户托管密钥的还原。
+**指导**：确保能够定期在 Azure 备份中执行内容数据还原。 如有必要，请测试将内容还原到隔离的 VLAN 中。 测试对备份的客户管理的密钥进行还原。
 
 如何在 Azure 中还原 Key Vault 密钥：
 

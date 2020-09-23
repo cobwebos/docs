@@ -1,28 +1,28 @@
 ---
 title: 静态加密应用程序源
-description: 加密 Azure 存储中的应用程序数据，并将其部署为包文件。
+description: 了解如何加密 Azure 存储中的应用程序数据并将其部署为包文件。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 7e5e809fe8b670ae6ec5bfd15e54f9a8019e76d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79408737"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978487"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥进行静态加密
+# <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户托管密钥进行静态加密
 
 静态加密 web 应用的应用程序数据需要 Azure 存储帐户和 Azure Key Vault。 从部署包运行应用时，将使用这些服务。
 
   - [Azure 存储提供静态加密](../storage/common/storage-service-encryption.md)。 你可以使用系统提供的密钥或自己的密钥（客户管理的密钥）。 当应用程序数据未在 Azure 中的 web 应用中运行时，会将其存储在其中。
-  - [从部署包运行](deploy-run-package.md)是应用服务的一项部署功能。 借助此功能可以使用共享访问签名 (SAS) URL 从 Azure 存储帐户部署站点内容。
+  - [从部署包运行](deploy-run-package.md)是应用服务的部署功能。 借助此功能可以使用共享访问签名 (SAS) URL 从 Azure 存储帐户部署站点内容。
   - [Key Vault 引用](app-service-key-vault-references.md)是应用服务的一项安全功能。 借助此功能可以在运行时将机密作为应用程序设置导入。 使用此机密可以加密 Azure 存储帐户的 SAS URL。
 
 ## <a name="set-up-encryption-at-rest"></a>设置静态加密
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-首先，[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)，并[使用客户管理的密钥对其进行加密](../storage/common/encryption-customer-managed-keys.md)。 创建存储帐户后，使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传包文件。
+首先， [创建一个 Azure 存储帐户](../storage/common/storage-account-create.md) ，并 [使用客户管理的密钥对其进行加密](../storage/common/encryption-customer-managed-keys.md)。 创建存储帐户后，使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传包文件。
 
 接下来，使用存储资源管理器[生成 SAS](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)。 
 

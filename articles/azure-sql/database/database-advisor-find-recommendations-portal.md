@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921208"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970679"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "87921208"
 
 ## <a name="viewing-recommendations"></a>查看建议
 
-若要查看和应用性能建议，需要 azure 中的[AZURE RBAC) 权限的正确 azure 基于角色的访问控制 (](../../role-based-access-control/overview.md) 。 查看建议需要“读取者”、“SQL DB 参与者”权限，执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。   
+若要查看和应用性能建议，需要 Azure 中相应的 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 权限。 查看建议需要“读取者”、“SQL DB 参与者”权限，执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。   
 
 在 Azure 门户中使用以下步骤查找性能建议：
 
@@ -35,7 +35,7 @@ ms.locfileid: "87921208"
 
 性能建议会显示在类似于下图所示的表中：
 
-![建议](./media/database-advisor-find-recommendations-portal/recommendations.png)
+![屏幕截图显示带有操作和建议说明的表中的性能建议。](./media/database-advisor-find-recommendations-portal/recommendations.png)
 
 按其对性能的潜在影响将建议分为以下类别：
 
@@ -172,4 +172,4 @@ Azure SQL 数据库提供可提高数据库性能的建议。 通过提供 T-SQL
 
 * [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Azure RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/overview.md)
+* [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)
