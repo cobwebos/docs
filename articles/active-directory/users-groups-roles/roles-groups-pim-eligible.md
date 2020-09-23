@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 中的 Privileged Identity Management 将角色分配给组 |Microsoft Docs
-description: 预览用于委托标识管理的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色。
+title: 在 Azure AD 中使用 Privileged Identity Management 将角色分配给组 | Microsoft Docs
+description: 了解如何使用 Azure AD Privileged Identity Management (PIM) 将 Azure Active Directory (Azure AD) 角色分配给组。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,52 +13,52 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343da87048cf43c04a137376e9a7f24270ce729a
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475983"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971165"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 将角色分配给组
 
-本文介绍如何使用 Azure AD Privileged Identity Management （PIM）将 Azure Active Directory （Azure AD）角色分配给组。
+本文介绍如何使用 Azure AD Privileged Identity Management (PIM) 将 Azure Active Directory (Azure AD) 角色分配给组。
 
 > [!NOTE]
-> 必须使用 Privileged Identity Management 的更新版本才能使用 PIM 将组分配给 Azure AD 角色。 如果 Azure AD 组织利用 Privileged Identity Management API，你可能会在较旧版本的 PIM。 如果是这样，请联系别名 pim_preview@microsoft.com 以移动组织并更新 API。 有关详细信息[，请参阅 AZURE AD PIM 中的角色和功能](../privileged-identity-management/azure-ad-roles-features.md)。
+> 必须使用 Privileged Identity Management 的更新版本才能使用 PIM 将组分配给 Azure AD 角色。 如果你的 Azure AD 组织使用的是 Privileged Identity Management API，则你可能使用的是旧版本的 PIM。 如果是这样，请联系别名 pim_preview@microsoft.com 来移动你的组织并更新你的 API。 有关详细信息，请参阅 [PIM 中的 Azure AD 角色和功能](../privileged-identity-management/azure-ad-roles-features.md)。
 
 ## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 管理中心
 
-1. 以特权角色管理员或组织中的全局管理员身份登录到[Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) 。
+1. 作为组织中的特权角色管理员或全局管理员登录到 [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)。
 
-1. 选择**Privileged Identity Management**  >  **Azure AD 角色**  >  **角色**  >  **添加分配**
+1. 选择“Privileged Identity Management” > “Azure AD 角色” > “角色” > “添加分配”   
 
-1. 选择一个角色，然后选择一个组。 仅显示符合角色分配（角色可分配的组）的组，而不显示所有组。
+1. 选择一个角色，然后选择一个组。 仅显示符合角色分配条件的组（可分配角色的组），而不是所有组。
 
     ![选择要分配到该角色的用户](./media/roles-groups-pim-eligible/select-member.png)
 
-1. 选择所需的成员资格设置。 对于需要激活的角色，请选择 "**符合条件**"。 默认情况下，该用户是永久有资格的，但你也可以为用户的资格设置开始时间和结束时间。 完成后，请单击 "保存" 并添加来完成角色分配。
+1. 选择所需的成员资格设置。 对于需要激活的角色，请选择“符合条件的”。 默认情况下，用户将是永久符合条件的，但你也可以为用户的资格设置开始和结束时间。 完成后，单击“保存”并“添加”以完成角色分配。
 
     ![选择要分配到该角色的用户](./media/roles-groups-pim-eligible/set-assignment-settings.png)
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
-### <a name="download-the-azure-ad-preview-powershell-module"></a>下载 Azure AD 预览 PowerShell 模块
+### <a name="download-the-azure-ad-preview-powershell-module"></a>下载 Azure AD 预览版 PowerShell 模块
 
-若要安装 Azure AD #PowerShell 模块，请使用以下 cmdlet：
+若要安装 Azure AD #PowerShell 模块，请使用以下 cmdlets：
 
 ```powershell
 install-module azureadpreview
 import-module azureadpreview
 ```
 
-若要验证该模块是否可供使用，请使用以下 cmdlet：
+若要验证模块是否可供使用，请运行以下 cmdlets：
 
 ```powershell
 get-module azureadpreview
 ```
 
-### <a name="assign-a-group-as-an-eligible-member-of-a-role"></a>将组分配为角色的合格成员
+### <a name="assign-a-group-as-an-eligible-member-of-a-role"></a>将组分配为角色的符合条件的成员
 
 ```powershell
 $schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule

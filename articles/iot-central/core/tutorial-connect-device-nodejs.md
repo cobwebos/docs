@@ -7,13 +7,16 @@ ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 92b28b89d181de368ef1e39eb695be2e1fad6c37
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom:
+- mqtt
+- device-developer
+- devx-track-javascript
+ms.openlocfilehash: 7eba6adffcdd3dab3263e82faf51ac90bae79b89
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423516"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968161"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -335,12 +338,12 @@ node environmentalSensor.js
 
 ## <a name="next-steps"></a>后续步骤
 
-作为设备开发人员，现在你已了解了有关使用 Node.js 创建设备的基础知识，建议执行的后续步骤是：
-
-* 要详细了解在实现设备代码时设备模板的作用，请阅读[什么是设备模板？](./concepts-device-templates.md)。
-* 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
-
 若要继续浏览 IoT Central 系列教程并详细了解如何构建 IoT Central 解决方案，请参阅：
 
 > [!div class="nextstepaction"]
 > [创建网关设备模板](./tutorial-define-gateway-device-type.md)
+
+作为设备开发人员，现在你已了解了有关使用 Node.js 创建设备的基础知识，建议执行的后续步骤是：
+
+* 要详细了解在实现设备代码时设备模板的作用，请阅读[什么是设备模板？](./concepts-device-templates.md)。
+* 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。

@@ -7,18 +7,76 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293993"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908287"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>将分布式跟踪与 Azure Spring Cloud 配合使用
 
 使用 Azure Spring Cloud 中的分布式跟踪工具，可以轻松地调试和监视复杂问题。 Azure Spring Cloud 将 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 与 Azure 的 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 集成。 这种集成可以通过 Azure 门户提供强大的分布式跟踪功能。
 
-本文介绍如何执行以下操作：
+::: zone pivot="programming-language-csharp"
+本文介绍如何使 .NET Core Steeltoe 应用程序使用分布式跟踪。
+
+## <a name="prerequisites"></a>必备知识
+
+若要执行这些过程，需要一个已 [准备好部署到 Azure 春季云](spring-cloud-tutorial-prepare-app-deployment.md)的 Steeltoe 应用。
+
+## <a name="dependencies"></a>依赖项
+
+安装以下 NuGet 包
+
+* [Steeltoe. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+* [Steeltoe. ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
+
+## <a name="update-startupcs"></a>更新 Startup.cs
+
+1. 在 `ConfigureServices` 方法中，调用 `AddDistributedTracing` 和 `AddZipkinExporter` 方法。
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration);
+       services.AddZipkinExporter(Configuration);
+   }
+   ```
+
+1. 在 `Configure` 方法中调用 `UseTracingExporter` 方法。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+        app.UseTracingExporter();
+   }
+   ```
+
+## <a name="update-configuration"></a>更新配置
+
+将以下设置添加到在 Azure 春季云中运行应用时将使用的配置源：
+
+1. 将 `management.tracing.alwaysSample` 设置为 true。
+
+2. 如果要查看在 Eureka 服务器、配置服务器和用户应用之间发送的跟踪跨越，请将设置 `management.tracing.egressIgnorePattern` 为 "/api/v2/spans |/v2/apps/.*/permissions |/eureka/.*|/oauth/.*".
+
+例如， * 上的appsettings.js* 将包括以下属性：
+ 
+```json
+"management": {
+    "tracing": {
+      "alwaysSample": true,
+      "egressIgnorePattern": "/api/v2/spans|/v2/apps/.*/permissions|/eureka/.*|/oauth/.*"
+    }
+  }
+```
+
+有关 .NET Core Steeltoe apps 中的分布式跟踪的详细信息，请参阅 Steeltoe 文档中的 [分布式跟踪](https://steeltoe.io/docs/3/tracing/distributed-tracing) 。
+::: zone-end
+::: zone pivot="programming-language-java"
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中启用分布式跟踪。
@@ -28,8 +86,8 @@ ms.locfileid: "89293993"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成这些过程，需要一个已预配且正在运行的 Azure Spring Cloud 服务。 完成[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart.md)，了解如何预配并运行 Azure Spring Cloud 服务。
-    
+若要完成这些过程，需要一个已预配且正在运行的 Azure Spring Cloud 服务。 完成 [部署第一个 Azure 春季 cloud 应用程序](spring-cloud-quickstart.md) 快速入门，预配和运行 Azure 春季云服务。
+
 ## <a name="add-dependencies"></a>添加依赖项
 
 1. 将以下行添加到 application.properties 文件：
@@ -73,6 +131,7 @@ spring.sleuth.sampler.probability=0.5
 ```
 
 如果已生成并部署应用程序，则可修改采样率。 为此，可在 Azure CLI 或 Azure 门户中添加上一行作为环境变量。
+::: zone-end
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure AD 应用进行 Azure 磁盘加密的先决条件（早期版本）
-description: 本文提供了对 IaaS VM 使用 Microsoft Azure 磁盘加密所要满足的先决条件。
+description: 本文提供了对适用于 Linux Vm 的 Azure 磁盘加密的补充，还提供了 Azure AD 的 Azure 磁盘加密的其他要求和先决条件。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c85d362f7295e8edef1b4070a779c6aa99c3991f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b258d499c78aa5fb734cbee01fb753c292bf2678
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372631"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970876"
 ---
-# <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Active Directory （AD）的 Azure 磁盘加密（以前的版本）
+# <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>使用 Azure Active Directory (AD) 进行的 Azure 磁盘加密（以前的版本）
 
 新版本的 Azure 磁盘加密无需提供 Azure Active Directory (Azure AD) 应用程序参数即可启用 VM 磁盘加密。 使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。 所有新 VM 都必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。 有关如何使用新版本来启用 VM 磁盘加密的说明，请参阅[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)。 已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。
 

@@ -9,14 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9b7abc39bf50a61b7b52bc4027c6d845728c3874
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419259"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972268"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 基于角色的访问控制 (预览版，提供对 Key Vault 密钥、证书和机密的访问权限) 
+
+> [!NOTE]
+> Key Vault 资源提供程序支持两种资源类型： **保管库** 和 **托管的 hsm**。 本文中所述的访问控制仅适用于 **保管库**。 若要了解有关托管 HSM 的访问控制的详细信息，请参阅 [托管 hsm 访问控制](../managed-hsm/access-control.md)。
 
 Azure RBAC) 的 azure 基于角色的访问控制 (是在 [azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 上构建的授权系统，可提供对 azure 资源的精细访问管理。
 
@@ -61,10 +64,6 @@ Azure RBAC 模型提供了在不同的作用域级别上设置权限的功能：
 Key vault 的新 Azure RBAC 权限模型提供保管库访问策略权限模型的替代方法。 
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>启用 Key Vault 上的 Azure RBAC 权限
-
-预览期间，必须使用 Azure RBAC 功能标记 (Microsoft_Azure_KeyVault_RBACEnabled = true) 查看新的权限模型选项。
-
-https://portal.azure.com/?Microsoft_Azure_KeyVault_RBACEnabled=true#home
 
 > [!IMPORTANT]
 > 设置 Azure RBAC 权限模型会使所有访问策略权限失效。 当未分配等效的 Azure 角色时，它可能会导致中断。
@@ -216,7 +215,7 @@ az role definition create --role-definition '{ \
 
 -   角色分配延迟：达到当前预期性能时，将需要10分钟 (600 秒) 更改角色分配以应用角色
 
-## <a name="learn-more"></a>了解更多信息
+## <a name="learn-more"></a>了解详细信息
 
 - [Azure RBAC 概述](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [自定义角色教程](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)

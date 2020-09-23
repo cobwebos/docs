@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018138"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969594"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
 
@@ -62,7 +62,7 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 1. 依次单击应用程序和“所有者”，检查你是否为应用程序的所有者。 在以下屏幕截图中，“Contoso 管理员”是 **contoso-rm4** 应用程序的所有者：
 
-    ![所有者](media/iot-accelerators-remote-monitoring-rbac/owners.png)
+    ![屏幕截图显示 "管理所有者" 选项，该选项显示 contoso r m 4 应用程序的所有者。](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     如果你不是所有者，则需要请求现有的所有者将你添加到列表。 只有所有者才能将“管理员”或“只读”等应用程序角色分配到其他用户。 
 

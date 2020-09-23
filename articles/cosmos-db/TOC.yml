@@ -768,6 +768,8 @@
                   href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
                 - name: 迁移后指南
                   href: mongodb-post-migration.md
+            - name: 从 MongoDB 3.2 升级到 3.6
+              href: mongodb-version-upgrade.md
             - name: 获取连接字符串
               href: connect-mongodb-account.md
             - name: 使用 Studio 3T 进行连接
@@ -944,7 +946,7 @@
               href: table-sdk-python.md
             - name: 表存储 REST API
               href: /rest/api/storageservices/table-service-rest-api
-    - name: Etcd API
+    - name: etcd API
       items:
         - name: 概述
           items:
@@ -1108,7 +1110,7 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: 更改源 - Async Java 示例
           href: create-sql-api-java-changefeed.md
-    - name: 使用 Azure Synapse Link 进行分析
+    - name: 使用 Azure Synapse Link 实现分析和 BI
       items:
         - name: 配置 Azure Synapse Link
           href: configure-synapse-link.md
@@ -1116,6 +1118,8 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 使用 Azure Synapse Spark 进行查询
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 将 Power BI 与 Synapse Link 一起使用
+          href: synapse-link-power-bi.md
     - name: 将内置分析功能与 Apache Spark 配合使用
       items:
         - name: Azure Databricks Spark 连接器
@@ -1198,12 +1202,16 @@
           href: monitor-cosmos-db-reference.md
         - name: 使用逻辑应用进行应用程序日志记录
           href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: 本地开发
+    - name: 通过仿真器在本地开发
       items:
-        - name: 使用模拟器
+        - name: 安装和使用仿真器
           href: local-emulator.md
-        - name: 导出证书
+        - name: 导出仿真器证书
           href: local-emulator-export-ssl-certificates.md
+        - name: 仿真器命令行参数
+          href: emulator-command-line-parameters.md
+        - name: 仿真器故障排除
+          href: troubleshoot-local-emulator.md
         - name: Visual Studio Code 扩展
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: 设置 Azure DevOps CI/CD 管道

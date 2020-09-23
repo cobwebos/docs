@@ -2,13 +2,13 @@
 title: 扩展资源类型
 description: 列出用于扩展其他资源类型的功能的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 09/22/2020
+ms.openlocfilehash: 8b80c63d361f3ad8199fd669178f7bf88dabe02e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374008"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969740"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>用于扩展其他资源的功能的资源类型
 
@@ -21,6 +21,8 @@ ms.locfileid: "87374008"
 - Microsoft.Advisor/suppressions
 - Microsoft.AlertsManagement/alerts
 - Microsoft.AlertsManagement/alertsSummary
+- Microsoft. Authorization/accessReviewScheduleDefinitions
+- Microsoft. Authorization/accessReviewScheduleSettings
 - Microsoft.Authorization/checkAccess
 - Microsoft.Authorization/denyAssignments
 - Microsoft.Authorization/findOrphanRoleAssignments
@@ -28,12 +30,13 @@ ms.locfileid: "87374008"
 - Microsoft.Authorization/permissions
 - Microsoft.Authorization/policyAssignments
 - Microsoft.Authorization/policyDefinitions
-- Microsoft. Authorization/policyExemptions
+- Microsoft.Authorization/policyExemptions
 - Microsoft.Authorization/policySetDefinitions
 - Microsoft. Authorization/privateLinkAssociations
 - Microsoft.Authorization/roleAssignments
 - Microsoft.Authorization/roleAssignmentsUsageMetrics
 - Microsoft.Authorization/roleDefinitions
+- Automanage/configurationProfileAssignments
 - Microsoft.Billing/billingPeriods
 - Microsoft.Billing/billingPermissions
 - Microsoft.Billing/billingRoleAssignments
@@ -47,24 +50,24 @@ ms.locfileid: "87374008"
 - Microsoft.Consumption/Budgets
 - Microsoft.Consumption/Charges
 - Microsoft.Consumption/CostTags
+- Microsoft.Consumption/credits
+- Microsoft.Consumption/events
 - Microsoft.Consumption/Forecasts
+- Microsoft.Consumption/lots
 - Microsoft.Consumption/Marketplaces
 - Microsoft.Consumption/OperationResults
 - Microsoft.Consumption/OperationStatus
 - Microsoft.Consumption/Pricesheets
+- Microsoft.Consumption/products
 - Microsoft.Consumption/ReservationDetails
 - ReservationRecommendationDetails/
 - Microsoft.Consumption/ReservationRecommendations
 - Microsoft.Consumption/ReservationSummaries
 - Microsoft.Consumption/ReservationTransactions
 - Microsoft.Consumption/Tags
+- Microsoft.Consumption/tenants
 - Microsoft.Consumption/Terms
 - Microsoft.Consumption/UsageDetails
-- Microsoft.Consumption/credits
-- Microsoft.Consumption/events
-- Microsoft.Consumption/lots
-- Microsoft.Consumption/products
-- Microsoft.Consumption/tenants
 - Microsoft.ContainerInstance/serviceAssociationLinks
 - Microsoft.CostManagement/Alerts
 - Microsoft.CostManagement/Budgets
@@ -73,6 +76,7 @@ ms.locfileid: "87374008"
 - Microsoft.CostManagement/Exports
 - Microsoft.CostManagement/ExternalSubscriptions
 - Microsoft.CostManagement/Forecast
+- CostManagement/Insights
 - Microsoft.CostManagement/Query
 - Microsoft.CostManagement/Reportconfigs
 - Microsoft.CostManagement/Reports
@@ -93,17 +97,19 @@ ms.locfileid: "87374008"
 - microsoft.insights/diagnosticSettingsCategories
 - microsoft.insights/eventtypes
 - microsoft.insights/extendedDiagnosticSettings
+- microsoft insights/generateLiveToken
 - microsoft.insights/guestDiagnosticSettingsAssociation
 - microsoft.insights/logDefinitions
 - microsoft.insights/logs
+- microsoft.insights/metricbaselines
 - microsoft.insights/metricDefinitions
 - microsoft.insights/metricNamespaces
-- microsoft.insights/metricbaselines
 - microsoft.insights/metrics
 - microsoft.insights/myWorkbooks
 - microsoft.insights/topology
 - microsoft.insights/transactions
 - microsoft.insights/vmInsightsOnboardingStatuses
+- KubernetesConfiguration/扩展
 - Microsoft.KubernetesConfiguration/sourceControlConfigurations
 - Microsoft.Maintenance/applyUpdates
 - Microsoft.Maintenance/configurationAssignments
@@ -113,7 +119,7 @@ ms.locfileid: "87374008"
 - Microsoft.ManagedServices/registrationDefinitions
 - Microsoft.OperationalInsights/storageInsightConfigs
 - Microsoft.OperationsManagement/managementassociations
-- PolicyInsights/证明
+- Microsoft.PolicyInsights/attestations
 - Microsoft.PolicyInsights/policyEvents
 - Microsoft.PolicyInsights/policyStates
 - Microsoft.PolicyInsights/policyTrackedResources
@@ -128,20 +134,22 @@ ms.locfileid: "87374008"
 - Microsoft.ResourceHealth/notifications
 - Microsoft.Resources/links
 - Microsoft.Resources/tags
-- Microsoft.Security/Compliances
-- Microsoft.Security/InformationProtectionPolicies
 - Microsoft.Security/adaptiveNetworkHardenings
 - Microsoft.Security/advancedThreatProtectionSettings
 - Microsoft.Security/assessmentMetadata
 - Microsoft.Security/assessments
 - Microsoft.Security/complianceResults
+- Microsoft.Security/Compliances
 - Microsoft.Security/dataCollectionAgents
 - Microsoft.Security/deviceSecurityGroups
-- Microsoft. Security/jitPolicies
+- Microsoft.Security/InformationProtectionPolicies
+- Microsoft. Security/iotSensors
+- Microsoft.Security/jitPolicies
 - Microsoft.Security/serverVulnerabilityAssessments
+- Microsoft. Security/sqlVulnerabilityAssessments
 - Microsoft.SecurityInsights/aggregations
-- Microsoft.SecurityInsights/alertRuleTemplates
 - Microsoft.SecurityInsights/alertRules
+- Microsoft.SecurityInsights/alertRuleTemplates
 - SecurityInsights/automationRules
 - Microsoft.SecurityInsights/bookmarks
 - Microsoft.SecurityInsights/cases
@@ -153,6 +161,7 @@ ms.locfileid: "87374008"
 - Microsoft.SecurityInsights/officeConsents
 - Microsoft.SecurityInsights/settings
 - SecurityInsights/threatIntelligence
+- SecurityInsights/watchlists
 - Microsoft.SoftwarePlan/hybridUseBenefits
 - Microsoft.Subscription/CreateSubscription
 - microsoft.support/supporttickets
@@ -164,4 +173,4 @@ ms.locfileid: "87374008"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要在 Azure 资源管理器模板中获取扩展资源的资源 ID，请使用 [extensionResourceId](../templates/template-functions-resource.md#extensionresourceid)。
-- 有关在模板中创建扩展资源的示例，请参阅[事件网格事件订阅](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)。
+- 有关在模板中创建扩展资源的示例，请参阅 [事件网格事件订阅](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)。

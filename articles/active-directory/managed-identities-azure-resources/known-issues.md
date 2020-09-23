@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0d8c835cdc501061607dc05d0b40ebf95deb36a8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969158"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -33,34 +33,32 @@ ms.locfileid: "89260214"
 > [!NOTE]
 > Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新名称。
 
-
 ### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>如何查找具有托管标识的资源？
 
-可以通过使用以下 Azure CLI 命令来查找具有系统分配的托管标识的资源列表： 
+可通过使用以下 Azure CLI 命令来查找具有系统分配的托管标识的资源列表： 
 
-`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
-
-
-
+```azurecli-interactive
+az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
+```
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>托管标识是否具有后备应用对象？
 
-不是。 托管标识和 Azure AD 应用注册在目录中是不同的。 
+不能。 托管标识和 Azure AD 应用注册在目录中是不同的。 
 
-应用注册有两个组件：应用程序对象和服务主体对象。 Azure 资源的托管标识只有其中一个组件：服务主体对象。 
+应用注册有两个组件：应用程序对象和服务主体对象。 Azure 资源的托管标识仅包含以下组件之一：一个服务主体对象。 
 
-托管标识没有目录中的应用程序对象，该对象通常用于授予 MS graph 的应用权限。 相反，托管标识的 MS graph 权限需要直接授予服务主体。  
+托管标识在目录中没有通常用于授予 MS Graph 应用权限的应用程序对象。 需要直接将托管标识的 MS Graph 权限授予服务主体。  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure 资源托管标识可以用于 Azure 云服务吗？
 
 否，Azure 云服务中没有支持 Azure 资源托管标识的计划。
 
-### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>什么是与托管标识关联的凭据？ 它有多长时间有效以及轮换的频率如何？
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>与托管标识关联的凭据是什么？ 它的有效时间有多长？其轮换频率有多高？
 
 > [!NOTE]
-> 托管标识身份验证的方式是内部实现详细信息，如有更改，恕不另行通知。
+> 托管标识的身份验证方式属于在内部具体实施的措施，可能会在不通知的情况下更改。
 
-托管标识使用基于证书的身份验证。 每个托管标识的凭据的有效期为90天，并且会在45天后滚动。
+托管标识使用基于证书的身份验证。 每个托管标识的凭据的有效期为 90 天，在 45 天后轮换。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什么是 Azure 资源托管标识的安全边界？
 
@@ -72,11 +70,9 @@ ms.locfileid: "89260214"
 - 如果未启用系统分配的托管标识并且仅存在一个用户分配的托管标识，则 IMDS 将默认采用该单一用户分配的托管标识。 
 - 如果未启用系统分配的托管的标识，并且存在多个用户分配的托管标识，则必须在请求中指定一个托管标识。
 
-
-
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
 
-不是。 如果将订阅移动到另一个目录，则必须手动重新创建订阅并再次授予 Azure 角色分配。
+否。 如果将订阅移到另一个目录中，则必须手动重新创建托管标识并重新向它们授予 Azure 角色分配。
 - 对于系统分配的托管标识：禁用并重新启用。 
 - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
@@ -88,7 +84,6 @@ ms.locfileid: "89260214"
 
 - 系统分配的托管标识：需要针对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 此操作包含在特定于资源的内置角色（如[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)）中。
 - 用户分配的托管标识：需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 除了针对托管标识分配的[托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色外。
-
 
 
 ## <a name="known-issues"></a>已知问题
@@ -112,7 +107,7 @@ Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）当前不�
 在 VM 上触发更新，以便它可以获取正确的 Azure 资源托管标识的值。 可以更改 VM 属性，从而更新对 Azure 资源托管标识的标识的引用。 例如，可以运行下列命令，在 VM 上设置新的标记值：
 
 ```azurecli-interactive
- az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
+az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
 此命令在 VM 上设置值为 1 的新标记“fixVM”。 
@@ -124,8 +119,6 @@ Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）当前不�
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-
-
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>在 Azure AD 目录之间转移订阅
 

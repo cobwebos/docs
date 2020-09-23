@@ -1,18 +1,18 @@
 ---
-title: 已启用 Azure Arc 的服务器 (预览版) 代理的新增功能
-description: 本文提供了适用于 Azure Arc 的服务器 (预览版) 代理的发行说明。 对于许多汇总问题，还提供了其他详细信息的链接。
+title: 启用 Azure Arc 服务器代理的新增功能
+description: 本文提供了适用于 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，还提供了其他详细信息的链接。
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 3b739401603f6dc18b9f48fb3cb6e28023a051ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532165"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908162"
 ---
-# <a name="whats-new-with-azure-arc-enabled-servers-preview-agent"></a>已启用 Azure Arc 的服务器 (预览版) 代理的新增功能
+# <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>启用 Azure Arc 服务器代理的新增功能
 
-已启用 Azure Arc 的服务器 (预览版) 连接的计算机代理不断地获得改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
+已启用 Azure Arc 的服务器连接的计算机代理不断地获得改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
 - 最新版本
 - 已知问题
@@ -60,4 +60,4 @@ ms.locfileid: "90532165"
 
 ## <a name="next-steps"></a>后续步骤
 
-在为多台混合计算机评估或启用已启用 Arc 的服务器（预览版）之前，请查看[连接的计算机代理概述](agent-overview.md)，了解要求、有关代理的技术详细信息以及部署方法。
+在为多台混合计算机评估或启用已启用 Arc 的服务器之前，请查看[连接的计算机代理概述](agent-overview.md)，了解要求、有关代理的技术详细信息以及部署方法。
