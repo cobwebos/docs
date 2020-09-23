@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 中的操作规则是什么，以及如何配�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723da36093c895a3a4aefbe66c2d8ca2ac0cba32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045726"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983146"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "87045726"
 
 ## <a name="configuring-an-action-rule"></a>配置操作规则
 
-### <a name="portal"></a>[门户](#tab/portal)
+### <a name="portal"></a>[Portal](#tab/portal)
 
 在 Azure Monitor 中的“警报”登陆页上选择“管理操作”可以访问该功能。******** 然后选择“操作规则(预览版)”。**** 在警报登陆页的仪表板中选择“操作规则(预览版)”可以访问规则。****
 
@@ -44,17 +44,17 @@ ms.locfileid: "87045726"
 
 选择“+ 新建操作规则”。****
 
-![添加新的操作规则](media/alerts-action-rules/action-rules-new-rule.png)
+![屏幕截图显示 "管理操作" 页，其中突出显示了 "新建操作规则" 按钮。](media/alerts-action-rules/action-rules-new-rule.png)
 
 或者，也可以在配置警报规则时创建操作规则。
 
-![添加新的操作规则](media/alerts-action-rules/action-rules-alert-rule.png)
+![屏幕截图显示 "创建规则" 页，其中突出显示了 "创建操作规则" 按钮。](media/alerts-action-rules/action-rules-alert-rule.png)
 
 此时应会看到用于创建操作规则的流程页。 配置以下元素：
 
 ![新建操作规则的流程](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>作用域
 
 首先选择范围（Azure 订阅、资源组或目标资源）。 还可以多重选择单个订阅中的范围组合。
 
@@ -66,13 +66,13 @@ ms.locfileid: "87045726"
 
 可用的筛选器包括：
 
-* **严重性**：选择一个或多个警报严重性的选项。 **严重性 = Sev1** 表示该操作规则适用于设置为 Sev1 的所有警报。
-* **监视服务**：基于发起监视服务的筛选器。 此筛选器也是多选的。 例如，**监视服务 =“Application Insights”** 表示该操作规则适用于所有基于 Application Insights 的警报。
-* **资源类型**：基于特定资源类型的筛选器。 此筛选器也是多选的。 例如，**资源类型 =“虚拟机”** 表示该操作规则适用于所有虚拟机。
-* **警报规则 ID**：使用警报规则资源管理器 ID 筛选特定警报规则的选项。
-* **监视条件**：对警报实例的筛选器，该筛选器**触发**或**解析**为监视条件。
-* **说明**：对定义为警报规则的一部分的说明定义字符串匹配的正则表达式匹配。 例如，**“说明”包含“prod”** 将匹配其说明中包含字符串“prod”的所有警报。
-* **警报上下文（负载）**：一个 regex 匹配，用于根据警报的有效负载的警报上下文字段定义字符串匹配。 例如，**“警报上下文(有效负载)”包含“computer-01”** 将匹配其负载包含字符串“computer-01”的所有警报。
+* **严重性**：用于选择一个或多个警报严重性的选项。 **严重性 = Sev1** 表示该操作规则适用于设置为 Sev1 的所有警报。
+* **监视服务**：根据原始监视服务进行筛选。 此筛选器也是多选的。 例如，**监视服务 =“Application Insights”** 表示该操作规则适用于所有基于 Application Insights 的警报。
+* **资源类型**：根据特定的资源类型进行筛选。 此筛选器也是多选的。 例如，**资源类型 =“虚拟机”** 表示该操作规则适用于所有虚拟机。
+* **警报规则 ID**：用于使用警报规则的资源管理器 ID 筛选特定警报规则的选项。
+* **监视条件**：使用“已触发”或“已解决”作为监视条件来筛选警报实例。 
+* **说明**：针对定义为警报规则的一部分的说明定义字符串匹配项的 regex（正则表达式）匹配。 例如，**“说明”包含“prod”** 将匹配其说明中包含字符串“prod”的所有警报。
+* **警报上下文(有效负载)** ：针对警报有效负载的警报上下文字段定义字符串匹配的 regex 匹配。 例如，**“警报上下文(有效负载)”包含“computer-01”** 将匹配其负载包含字符串“computer-01”的所有警报。
 
 这些筛选器相互结合应用。 例如，如果设置 **“资源类型”= 虚拟机**，**“严重性”= Sev0**，则只会在 VM 上筛选所有的 **Sev0** 警报。
 
@@ -85,9 +85,9 @@ ms.locfileid: "87045726"
 #### <a name="suppression"></a>禁止
 
 如果选择“消除”，请配置消除操作和通知的持续时间。**** 选择以下选项之一：
-* **从现在（总是）**：无限期地取消所有通知。
-* **在计划时间：在**限制的持续时间内取消通知。
-* **定期**执行：取消每日、每周或每月计划的定期通知。
+* **从现在起(始终)** ：无限期消除所有通知。
+* **在计划时间**：在有限的持续时间内消除通知。
+* **重复**：按每日、每周或每月重复计划消除通知。
 
 ![操作规则 - 消除](media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
 
@@ -105,11 +105,11 @@ ms.locfileid: "87045726"
 最后，配置操作规则的以下详细信息
 * 名称
 * 该规则要保存到的资源组
-* 描述
+* 说明
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-您可以使用[az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create)命令通过 Azure CLI 来创建操作规则。  `az monitor action-rule`引用只是 Azure Monitor 的许多[Azure CLI 引用](/cli/azure/azure-cli-reference-for-monitor)之一。
+可使用 Azure CLI 中的 [az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) 命令创建操作规则。  `az monitor action-rule` 参考只是众多[适用于 Azure Monitor 的 Azure CLI 参考](/cli/azure/azure-cli-reference-for-monitor)中的一种。
 
 ### <a name="prepare-your-environment"></a>准备环境
 
@@ -117,13 +117,13 @@ ms.locfileid: "87045726"
 
    如果愿意，还可以使用 Azure Cloud Shell 来完成本文中的步骤。  Azure Cloud Shell 是一种通过浏览器使用的交互式 Shell 环境。  使用以下方法之一开始 Cloud Shell：
 
-   - 通过转到打开 Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+   - 通过转到打开 Cloud Shell [https://shell.azure.com](https://shell.azure.com)
 
    - 选择菜单栏上[Azure 门户](https://portal.azure.com)中右上角的 " **Cloud Shell** " 按钮
 
 1. 登录。
 
-   如果使用的是 CLI 的本地安装，请使用[az login](/cli/azure/reference-index#az-login)命令登录。  遵循终端中显示的步骤完成身份验证过程。
+   如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az-login) 命令登录。  遵循终端中显示的步骤完成身份验证过程。
 
     ```azurecli
     az login
@@ -131,23 +131,23 @@ ms.locfileid: "87045726"
 
 1. 安装 `alertsmanagement` 扩展
 
-   `az monitor action-rule`命令是核心 Azure CLI 的实验性扩展。 详细了解[Azure CLI 中使用](/cli/azure/azure-cli-extensions-overview?)的扩展引用。
+   `az monitor action-rule` 命令是核心 Azure CLI 的实验性扩展。 在[将扩展与 Azure CLI 结合使用](/cli/azure/azure-cli-extensions-overview?)中详细了解扩展参考。
 
    ```azurecli
    az extension add --name alertsmanagement
    ```
 
-   应为以下警告。
+   预期会出现以下警告。
 
    ```output
    The installed extension `alertsmanagement` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
-### <a name="create-action-rules-with-the-azure-cli"></a>创建具有 Azure CLI 的操作规则
+### <a name="create-action-rules-with-the-azure-cli"></a>使用 Azure CLI 创建操作规则
 
-请参阅 Azure CLI 引用[az monitor 操作的内容-规则创建](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create)，了解必需和可选参数。
+查适关于 [az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) 的 Azure CLI 参考内容，了解必需参数和可选参数。
 
-创建操作规则以禁止显示资源组中的通知。
+创建操作规则以消除资源组中的通知。
 
 ```azurecli
 az monitor action-rule create --resource-group MyResourceGroupName \
@@ -162,7 +162,7 @@ az monitor action-rule create --resource-group MyResourceGroupName \
                                --monitor-service Equals "Log Analytics"
 ```
 
-创建操作规则，以便在每个周末为订阅中的所有 Vm 取消所有 Sev4 警报的通知。
+创建操作规则，以在每个周末消除订阅中所有 VM 上的所有 Sev4 警报的通知。
 
 ```azurecli
 az monitor action-rule create --resource-group MyResourceGroupName \
@@ -185,33 +185,33 @@ az monitor action-rule create --resource-group MyResourceGroupName \
 
 ## <a name="example-scenarios"></a>示例方案
 
-### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>方案1：根据严重性禁止显示警报
+### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>应用场景 1：根据严重性消除警报
 
 Contoso 希望在每个周末消除其订阅 **ContosoSub** 中所有 VM 上的所有 Sev4 警报的通知。
 
-**解决方案：** 使用以下内容创建操作规则：
+**解决方案：** 使用以下设置创建一个操作规则：
 * 范围 = **ContosoSub**
 * 筛选器
     * 严重性 = **Sev4**
     * 资源类型 = **虚拟机**
 * 消除重复周期设置为“每周”，并选中“星期六”和“星期日”********
 
-### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>方案2：根据警报上下文抑制警报（有效负载）
+### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>应用场景 2：根据警报上下文（有效负载）消除警报
 
 Contoso 希望无限期消除针对 **ContosoSub** 中 **Computer-01** 生成的所有日志警报的通知，因为该计算机即将接受维护。
 
-**解决方案：** 使用以下内容创建操作规则：
+**解决方案：** 使用以下设置创建一个操作规则：
 * 范围 = **ContosoSub**
 * 筛选器
     * 监视服务 = **Log Analytics**
     * 警报上下文（有效负载）包含 **Computer-01**
 * 消除时间设置为“从现在起(始终)”****
 
-### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>方案3：在资源组中定义的操作组
+### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>应用场景 3：在资源组中定义的操作组
 
 Contoso [在订阅级别定义了一个指标警报](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。 但是，Contoso 想要定义专用针对其资源组 **ContosoRG** 生成的警报触发的操作。
 
-**解决方案：** 使用以下内容创建操作规则：
+**解决方案：** 使用以下设置创建一个操作规则：
 * 范围 = **ContosoRG**
 * 无筛选器
 * 操作组设置为 **ContosoActionGroup**
@@ -221,7 +221,7 @@ Contoso [在订阅级别定义了一个指标警报](./alerts-metric-overview.md
 
 ## <a name="managing-your-action-rules"></a>管理操作规则
 
-### <a name="portal"></a>[门户](#tab/portal)
+### <a name="portal"></a>[Portal](#tab/portal)
 
 可以通过列表视图查看和管理操作规则：
 
@@ -231,7 +231,7 @@ Contoso [在订阅级别定义了一个指标警报](./alerts-metric-overview.md
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-你可以使用 Azure CLI 中的[az monitor 操作规则](/cli/azure/ext/alertsmanagement/monitor)命令查看和管理操作规则。
+可以使用 Azure CLI 中的 [az monitor action-rule](/cli/azure/ext/alertsmanagement/monitor) 命令查看和管理操作规则。
 
 在使用 Azure CLI 管理操作规则之前，请使用[配置操作规则](#configuring-an-action-rule)中提供的说明来准备环境。
 
@@ -255,33 +255,33 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 结合[“结果数”](alerts-unified-log.md)选项创建的日志警报会使用整个搜索结果生成单个警报实例（可能跨多台计算机）。 在此方案中，如果操作规则使用“警报上下文(有效负载)”筛选器，则只要有匹配项，该规则就会作用于警报实例。**** 在上述方案 2 中，如果生成的日志警报的搜索结果包含 **Computer-01** 和 **Computer-02**，则会消除整个通知。 完全不会为 **Computer-02** 生成通知。
 
-![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
+![关系图显示已突出显示单个警报实例的操作规则和日志警报。](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
 若要充分利用日志警报和操作规则，请使用[“指标度量”](alerts-unified-log.md)选项创建日志警报。 此选项会根据定义的组字段生成单独的警报实例。 然后，在方案 2 中，将为 **Computer-01** 和 **Computer-02** 生成单独的警报实例。 由于该方案中所述的操作规则，只会消除 **Computer-01** 的通知。 **Computer-02** 的通知会继续照常激发。
 
 ![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>FAQ
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>在配置操作规则时，我希望看到所有可能重叠的操作规则，以避免收到重复通知。 可以做到这一点吗？
 
 在配置操作规则时定义范围后，可以看到在同一范围重叠的操作规则列表（如果有）。 这种重叠可能属于以下情况之一：
 
-* 完全匹配：例如，要定义的操作规则和重叠操作规则位于同一个订阅中。
-* 子集：例如，要定义的操作规则位于订阅上，重叠操作规则位于订阅内的资源组中。
-* 超集：例如，要定义的操作规则位于资源组上，重叠操作规则位于包含资源组的订阅上。
-* 交集：例如，要定义的操作规则在**VM1**和**VM2**上，重叠操作规则在**VM2**和**VM3**上。
+* 完全匹配：例如，你定义的操作规则和重叠的操作规则在同一订阅中。
+* 子集：例如，你定义的操作规则在某个订阅中，而重叠的操作规则在该订阅的某个资源组中。
+* 超集：例如，你定义的操作规则在某个资源组中，而重叠的操作规则在包含该资源组的订阅中。
+* 交集：例如，你定义的操作规则在 **VM1** 和 **VM2** 中，而重叠的操作规则在 **VM2** 和 **VM3** 中。
 
-![重叠的操作规则](media/alerts-action-rules/action-rules-overlapping.png)
+![屏幕截图显示 "新建操作规则" 页，其中显示了在相同作用域窗口中定义的操作规则中显示的重叠操作规则。](media/alerts-action-rules/action-rules-overlapping.png)
 
 ### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>在配置警报规则时，能够知道是否已存在可能作用于我所定义的警报规则的任何操作规则吗？
 
 为警报规则定义目标资源后，可以选择“操作”部分下的“查看配置的操作”，来查看在同一范围发生作用的操作列表（如果有）。******** 此列表是根据以下范围方案填充的：
 
-* 完全匹配：例如，要定义的警报规则和操作规则位于同一个订阅中。
-* 子集：例如，要定义的警报规则在订阅上，而操作规则位于订阅内的资源组中。
-* 超集：例如，要定义的警报规则在资源组中，而操作规则位于包含资源组的订阅上。
-* 交集：例如，要定义的警报规则在**VM1**和**VM2**上，而操作规则位于**VM2**和**VM3**。
+* 完全匹配：例如，你定义的警报规则和操作规则在同一订阅中。
+* 子集：例如，你定义的警报规则在某个订阅中，而操作规则在该订阅的某个资源组中。
+* 超集：例如，你定义的警报规则在某个资源组中，而操作规则在包含该资源组的订阅中。
+* 交集：例如，你定义的警报规则在 **VM1** 和 **VM2** 中，而操作规则在 **VM2** 和 **VM3** 中。
 
 ![重叠的操作规则](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 

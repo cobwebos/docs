@@ -1,6 +1,6 @@
 ---
-title: Date_Bucket (Transact-SQL) - Azure SQL Edge（预览版）
-description: 了解如何在 Azure SQL Edge（预览版）中使用 Date_Bucket
+title: Date_Bucket (Transact-sql) -Azure SQL Edge
+description: 了解如何在 Azure SQL Edge 中使用 Date_Bucket
 keywords: Date_Bucket, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 63b7ad84b0866c91e84007a188b82de65983790f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458844"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886834"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 

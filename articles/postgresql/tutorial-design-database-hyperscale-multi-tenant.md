@@ -1,6 +1,6 @@
 ---
 title: 教程：设计多租户数据库 - 超大规模 (Citus) - Azure Database for PostgreSQL
-description: 本教程介绍如何在 Azure Database for PostgreSQL 超大规模 (Citus) 中创建、填充和查询分布式表。
+description: 本教程演示如何使用 Azure Database for PostgreSQL 超大规模 (Citus) 支持可缩放的多租户应用程序。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: bc7891e157bbffa386396a352fd1d48e4559ecdc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386380"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895262"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)设计多租户数据库
 
@@ -275,6 +275,5 @@ SELECT id
 
 在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 你已使用 psql 连接到该组，创建了架构并分布了数据。 你已了解如何在租户中和租户之间查询数据，以及如何自定义每租户架构。
 
-接下来，请了解有关超大规模的概念。
-> [!div class="nextstepaction"]
-> [超大规模节点类型](https://aka.ms/hyperscale-concepts)
+- 了解服务器组[节点类型](https://aka.ms/hyperscale-concepts)
+- 确定服务器组的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)

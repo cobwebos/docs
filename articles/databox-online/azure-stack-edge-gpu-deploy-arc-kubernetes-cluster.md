@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 设备上的 Kubernetes 上启用 Azure Arc |Microsoft Docs
-description: 介绍如何在 Azure Stack 边缘 GPU 设备上的现有 Kubernetes 群集上启用 Azure Arc。
+title: Azure Stack Edge Pro GPU 设备上的 Kubernetes 上启用 Azure Arc |Microsoft Docs
+description: 介绍如何在 Azure Stack Edge Pro GPU 设备上的现有 Kubernetes 群集上启用 Azure Arc。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322018"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903198"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>在 Azure Stack 边缘 GPU 设备上的 Kubernetes 群集上启用 Azure Arc
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上的 Kubernetes 群集上启用 Azure Arc
 
-本文介绍如何在 Azure Stack 边缘设备上的现有 Kubernetes 群集上启用 Azure Arc。 
+本文介绍如何在 Azure Stack Edge Pro 设备上的现有 Kubernetes 群集上启用 Azure Arc。 
 
-此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
+此过程适用于已 [在 Azure Stack Edge Pro 设备上查看了 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
-在 Kubernetes 群集上启用 Azure Arc 之前，请确保已在 Azure Stack 边缘设备和将用于访问设备的客户端上完成以下先决条件：
+在 Kubernetes 群集上启用 Azure Arc 之前，请确保已在 Azure Stack Edge Pro 设备和将用于访问设备的客户端上完成以下先决条件：
 
 ### <a name="for-device"></a>对于设备
 
-1. 你有 Azure Stack Edge 设备的1节点的登录凭据。
+1. 你有 Azure Stack Edge Pro 设备的1个节点的登录凭据。
     1. 设备已激活。 请参阅 [激活设备](azure-stack-edge-gpu-deploy-activate.md)。
     1. 设备通过 Azure 门户配置了计算角色，并具有 Kubernetes 群集。 请参阅 [配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)。
 
@@ -37,19 +37,19 @@ ms.locfileid: "89322018"
 
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
-1. 你具有将用于访问 Azure Stack Edge 设备的 Windows 客户端系统。
+1. 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
     - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
-1. 你已完成在 [Azure Stack Edge 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
+1. 你已完成在 [Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
     
     - 安装 `kubectl` 在客户端上  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
+    - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
       - 使用 `kubectl version` 检查在客户端上运行的 kubectl 的版本。 记下完整版本。
-      - 在 Azure Stack Edge 设备的本地 UI 中，请参阅 " **软件更新** "，并记下 Kubernetes 服务器版本号。 
+      - 在 Azure Stack Edge Pro 设备的本地 UI 中，切换到 " **软件更新** "，并记下 Kubernetes 服务器版本号。 
     
         ![验证 Kubernetes 服务器版本号](media/azure-stack-edge-gpu-connect-powershell-interface/verify-kubernetes-version-1.png)      
       
@@ -142,9 +142,9 @@ ms.locfileid: "89322018"
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    若要在 Azure Stack Edge 设备上部署 Azure Arc，请确保使用 [受支持的 Azure arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。Azure Arc 目前为预览版。 你还可以使用命令来确定要在 cmdlet 中传递的区域的确切名称 `az account list-locations` 。
+    若要在 Azure Stack Edge Pro 设备上部署 Azure Arc，请确保使用 [受支持的 Azure arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。Azure Arc 目前为预览版。 你还可以使用命令来确定要在 cmdlet 中传递的区域的确切名称 `az account list-locations` 。
     
-    下面是一个示例：
+    以下是示例：
    
     ```powershell
     [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
@@ -224,4 +224,4 @@ ms.locfileid: "89322018"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何运行 Azure Arc 部署，请参阅 [使用 Redis 通过 GitOps 在 Azure Stack Edge 设备上部署无状态 PHP 留言簿应用程序](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)
+若要了解如何运行 Azure Arc 部署，请参阅 [在 Azure Stack Edge Pro 设备上通过 GitOps 部署无状态 PHP 留言簿应用程序](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

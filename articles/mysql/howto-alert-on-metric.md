@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: c20177b3dceca3b32cf8f2e2f8f60fa4227e2082
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b7054b520d31c6c5363c8784bb9a4839e9249c88
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112711"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902879"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
 
@@ -34,25 +34,25 @@ ms.locfileid: "86112711"
 
 2. 在边栏的“监视”部分，选择“警报”，如下所示   ：
 
-   ![选择“警报规则”](./media/howto-alert-on-metric/2-alert-rules.png)
+   :::image type="content" source="./media/howto-alert-on-metric/2-alert-rules.png" alt-text="选择警报规则":::
 
 3. 选择“添加指标警报”（+ 图标）****。
 
 4. 随即打开“创建规则”页面，如下所示  。 填写所需信息：
 
-   ![添加指标警报窗体](./media/howto-alert-on-metric/4-add-rule-form.png)
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="添加指标警报窗体":::
 
 5. 在“条件”部分中，选择“添加条件”   。
 
 6. 从要发出警报的信号列表中选择一个指标。 在此示例中，选择“存储百分比”。
    
-   ![选择指标](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="选择指标":::
 
-7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟"）和**频率**。
+7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率**。
    
    完成后选择“完成”  。
 
-   ![选择指标](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="选择指标":::
 
 8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知   。
 
@@ -66,11 +66,11 @@ ms.locfileid: "86112711"
 
     完成后选择“确定”  。
 
-    ![操作组](./media/howto-alert-on-metric/10-action-group-type.png)
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="操作组":::
 
 11. 指定预警规则名称、说明和严重性。
 
-    ![操作组](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="操作组"::: 
 
 12. 选择“创建警报规则”可以创建警报  。
 

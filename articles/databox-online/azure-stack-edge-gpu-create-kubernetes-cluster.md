@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 设备上创建和管理 Kubernetes 群集 |Microsoft Docs
-description: 介绍如何通过 Windows PowerShell 界面在 Azure Stack Edge GPU 设备上创建和管理 Kubernetes 群集。
+title: 在 Azure Stack Edge Pro GPU 设备上创建和管理 Kubernetes 群集 |Microsoft Docs
+description: 介绍如何通过 Windows PowerShell 界面在 Azure Stack Edge Pro GPU 设备上创建和管理 Kubernetes 群集。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267952"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903204"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>通过 Azure Stack 边缘 GPU 设备上的 kubectl 连接和管理 Kubernetes 群集
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>通过 Azure Stack Edge Pro GPU 设备上的 kubectl 连接并管理 Kubernetes 群集
 
-在 Azure Stack Edge 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以通过本机工具（如 *kubectl*），从客户端计算机本地连接和管理群集。
+在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以通过本机工具（如 *kubectl*），从客户端计算机本地连接和管理群集。
 
-本文介绍如何连接到 Azure Stack 边缘设备上的 Kubernetes 群集，然后使用 *kubectl*对其进行管理。 
+本文介绍如何连接到 Azure Stack Edge Pro 设备上的 Kubernetes 群集，然后使用 *kubectl*对其进行管理。 
 
 
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
-1. 你可以访问 Azure Stack Edge 设备。
+1. 你可以访问 Azure Stack Edge Pro 设备。
 
-2. 已激活 Azure Stack Edge 设备，如 [激活 Azure Stack 边缘](azure-stack-edge-gpu-deploy-activate.md)中所述。
+2. 已按照[激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中所述的内容激活 Azure Stack Edge Pro 设备。
 
-3. 已在设备上启用了计算角色。 根据在 [Azure Stack Edge 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的说明，在设备上配置计算时，还会在设备上创建 Kubernetes 群集。
+3. 已在设备上启用了计算角色。 根据在 [Azure Stack Edge Pro 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的说明，在设备上配置计算时，还会在设备上创建 Kubernetes 群集。
 
 4. 你已访问运行 PowerShell 5.0 或更高版本的 Windows 客户端系统来访问设备。 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "89267952"
 
 创建 Kubernetes 群集后，可以使用 *kubectl* via cmdline 访问该群集。 
 
-在此方法中，您将创建命名空间和用户。 然后，将用户与命名空间相关联。 还需要获取 *配置* 文件，该文件允许你使用 Kubernetes 客户端直接与你创建的 Kubernetes 群集通信，而无需连接到 Azure Stack Edge 设备的 PowerShell 接口。
+在此方法中，您将创建命名空间和用户。 然后，将用户与命名空间相关联。 还需要获取 *配置* 文件，该文件允许你使用 Kubernetes 客户端直接与你创建的 Kubernetes 群集通信，而无需连接到 Azure Stack Edge Pro 设备的 PowerShell 接口。
 
 1. 创建命名空间。 键入：
 
@@ -66,7 +66,7 @@ ms.locfileid: "89267952"
     `New-HcsKubernetesUser -UserName <string>`
 
     > [!NOTE]
-    > 不能使用 *aseuser* 作为用户名，因为它是为与 IoT 命名空间相关联 Azure Stack Edge 的默认用户保留的。
+    > 不能使用 *aseuser* 作为用户名，因为它是为与 IoT 命名空间关联的默认用户保留的 Azure Stack Edge Pro。
 
     下面是配置文件的示例输出：
    
@@ -113,7 +113,7 @@ ms.locfileid: "89267952"
 
     `[10.100.10.10]: PS>Grant-HcsKubernetesNamespaceAccess -Namespace "myasetest1" -UserName "aseuser1"`
 
-    有了配置文件后，就不需要对群集进行物理访问。 如果客户端可以 ping Azure Stack Edge 设备 IP，则应该可以使用 *kubectl* 命令定向群集。
+    有了配置文件后，就不需要对群集进行物理访问。 如果客户端可以对 Azure Stack Edge Pro 设备 IP 进行 ping 操作，则应该可以使用 *kubectl* 命令定向群集。
 
 6. 在客户端上启动新的 PowerShell 会话。 不需要连接到设备接口。 你现在可以 `kubectl` 使用以下命令在客户端上安装：
 
@@ -125,7 +125,7 @@ ms.locfileid: "89267952"
     例如，如果 Kubernetes 主节点正在运行 v 1.15.2，请在客户端上安装 v 1.15.2。
 
     > [!IMPORTANT]
-    > 下载客户端，该客户端不会从主节点中倾斜多个次要版本。 客户端版本，但最多只能有一个次要版本。 例如，v2.0 master 应该适用于1.1、1.2 和1.3 版节点，并且应该适用于 v2.0、v1.0 和 v2.0 客户端。 有关 Kubernetes 客户端版本的详细信息，请参阅 [Kubernetes 版本和版本歪斜支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 有关 Azure Stack Edge 上的 Kubernetes 服务器版本的详细信息，请转到获取 Kubernetes 服务器版本。<!-- insert link-->
+    > 下载客户端，该客户端不会从主节点中倾斜多个次要版本。 客户端版本，但最多只能有一个次要版本。 例如，v2.0 master 应该适用于1.1、1.2 和1.3 版节点，并且应该适用于 v2.0、v1.0 和 v2.0 客户端。 有关 Kubernetes 客户端版本的详细信息，请参阅 [Kubernetes 版本和版本歪斜支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)。 有关 Azure Stack Edge Pro 上的 Kubernetes 服务器版本的详细信息，请转到获取 Kubernetes 服务器版本。<!-- insert link-->
     > 有时， `kubectl` 如果运行用于 Windows 的 Docker 或其他工具，则会在系统上预安装。 必须下载 `kubectl` 此部分中所述的特定版本，才能使用此 kubernetes 群集。 
 
     安装过程将花费几分钟时间。
@@ -172,4 +172,4 @@ ms.locfileid: "89267952"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure Stack 边缘部署无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [在 Azure Stack Edge Pro 上部署无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。

@@ -2,22 +2,40 @@
 title: 身份验证、请求和响应
 description: 了解 Azure Key Vault 如何使用 JSON 格式的请求和响应，以及使用密钥保管库所需的身份验证。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191798"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983252"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
+
+Azure Key Vault 提供了两种类型的容器来存储和管理云应用程序的机密：
+
+|容器类型|支持的对象类型|数据平面终结点|
+|--|--|--|
+| **保管库**|<ul><li>受软件保护的密钥</li><li>与高级 SKU (的 HSM 保护密钥) </li><li>证书</li><li>存储帐户密钥</li></ul> | https：//{保管库名称}。
+|**托管 HSM** |<ul><li>HSM 保护的密钥</li></ul> | https：//{hsm-name}. managedhsm
+
+下面是用于访问每个对象类型的 URL 后缀
+
+|对象类型|URL 后缀|
+|--|--|
+|受软件保护的密钥| /keys |
+|HSM 保护的密钥| /keys |
+|机密|/secrets|
+|证书| /certificates|
+|存储帐户密钥|/storageaccounts
+||
 
 Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求会与部分 URL 参数、JSON 编码的请求和响应正文一起定向到使用 HTTPS 的有效 Azure Key Vault URL。
 
@@ -36,7 +54,9 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 
 - 若要在 Key Vault 中使用名为 TESTKEY 的密钥签名摘要，请使用 - `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  对 Key Vault 请求的授权始终如下所示：`https://{keyvault-name}.vault.azure.net/`  
+- 对 Key Vault 请求的授权始终如下所示：
+  - 对于保管库： `https://{keyvault-name}.vault.azure.net/`
+  - 对于托管的 Hsm： `https://{HSM-name}.managedhsm.azure.net/`
 
   密钥始终存储在 /keys 路径下，机密始终存储在 /secrets 路径下。  
 
@@ -65,7 +85,7 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 
 - 3xx - 重定向：可能返回 304“未修改”以满足条件性 GET。 未来可能会使用其他 3xx 代码，以指示 DNS 和路径更改。  
 
-- 4xx - 客户端错误：用于错误请求、缺少密钥、语法错误、参数无效、身份验证错误等。响应正文包含详细的错误说明。  
+- 4xx –客户端错误：用于错误请求、缺少密钥、语法错误、参数无效、身份验证错误，等等。响应正文将包含详细的错误说明。  
 
 - 5xx - 服务器错误：用于内部服务器错误。 响应正文包含汇总的错误信息。  
 
@@ -113,5 +133,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可用于获取请求访问令牌的 OAuth2 授权服务的地址。  
 
--   resource：要在授权请求中使用的资源 (`https://vault.azure.net`) 的名称。  
+-   资源： `https://vault.azure.net` 要在授权请求中使用的资源 () 的名称。  
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325519"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983596"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -21,7 +21,7 @@ ms.locfileid: "87325519"
 ## <a name="workbooks"></a>工作簿
 [工作簿](./platform/workbooks-overview.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
 
-![工作簿](media/visualizations/workbook.png)
+![关系图显示工作簿中多个页面的屏幕截图，包括分析页面视图、使用情况和页面上所用的时间。](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>优点
 - 支持指标和日志。
@@ -39,7 +39,7 @@ ms.locfileid: "87325519"
 ## <a name="azure-dashboards"></a>Azure 仪表板
 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)是 Azure 的主要仪表板技术。 这种在 Azure 基础结构和服务上提供的单一管理平台，在实现快速识别重要问题方面尤其有用。
 
-![仪表板](media/visualizations/dashboard.png)
+![屏幕截图显示包含可自定义信息的 Azure 仪表板的示例。](media/visualizations/dashboard.png)
 
 下面是有关创建仪表板的视频演练。
 
@@ -88,7 +88,7 @@ ms.locfileid: "87325519"
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) 是一个适用于操作仪表板的开放平台。 它尤其适用于检测、隔离和归类操作事件。 你可以将 [Grafana Azure Monitor 数据源插件](platform/grafana-plugin.md)添加到 Azure 订阅中，使其可视化 Azure 指标数据。
 
-![Grafana](media/visualizations/grafana.png)
+![屏幕截图显示 Grafana 的可视化效果。](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>优点
 - 丰富的可视化效果。
@@ -120,7 +120,7 @@ ms.locfileid: "87325519"
 借助 [Azure Monitor 中的视图](platform/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 
 
-![查看](media/visualizations/view.png)
+![屏幕截图显示 "容器监视解决方案" 磁贴以及在选择它时打开的详细 Azure Monitor 视图。](media/visualizations/view.png)
 
 ### <a name="advantages"></a>优点
 - 为日志数据提供了丰富的可视化效果。

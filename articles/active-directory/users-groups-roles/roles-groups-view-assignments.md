@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 中查看分配给组的角色 |Microsoft Docs
-description: 预览用于委托标识管理的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色。
+title: 查看分配给 Azure Active Directory 中的组的角色 | Microsoft 文档
+description: 了解如何使用 Azure AD 管理中心来查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,22 +13,22 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7613fb70299a70e4389b97c2647a26cb7c3374
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0c0a34b3861c82b3d2ef54a36108f9ea522d716d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475980"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983099"
 ---
-# <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中查看分配给组的角色
+# <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>查看分配给 Azure Active Directory 中的组的角色
 
-本部分介绍如何使用 Azure AD 管理中心来查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
+本部分介绍如何使用 Azure AD 管理中心查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
 
-1. 用任何非管理员或管理员凭据登录到[Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 使用任何非管理员或管理员凭据登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 
-1. 选择你感兴趣的组。
+1. 选择所需的组。
 
-1. 选择 "**分配的角色**"。 你现在可以查看分配给此组的所有 Azure AD 角色。
+1. 选择“分配的角色”。 你现在可以查看分配给此组的所有 Azure AD 角色。
 
    ![查看分配给所选组的所有角色](./media/roles-groups-view-assignments/view-assignments.png)
 
