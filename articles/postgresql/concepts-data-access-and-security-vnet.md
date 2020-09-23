@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 56b2fd7d78d95978b2e822f2d18160013d17eb15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d7ad1116f7c0168181dbf5b43f8f1595ce250949
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433613"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903918"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>对 Azure Database for PostgreSQL（单一数据库）使用虚拟网络服务终结点和规则
 
@@ -19,7 +19,7 @@ ms.locfileid: "89433613"
 
 若要创建虚拟网络规则，首先必须存在可供规则引用的[虚拟网络][vm-virtual-network-overview] (VNet) 和[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。 下图说明了虚拟网络服务终结点如何与 Azure Database for PostgreSQL 配合使用：
 
-![VNet 服务终结点的工作原理示例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="VNet 服务终结点的工作原理示例":::
 
 > [!NOTE]
 > Azure 公有云中的所有区域均提供此功能，其中 Azure Database for PostgreSQL 部署用于常规用途和内存优化服务器。
@@ -86,7 +86,7 @@ RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-你可以选择使用 azure 中 [基于角色的访问控制 (AZURE RBAC) ][rbac-what-is-813s] 在 azure 中创建只具有必要的功能子集的单个自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+可以选择在 Azure 中使用 [Azure 基于角色的访问控制 (Azure RBAC)][rbac-what-is-813s]，创建一个只有部分必需功能的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
 > 在某些情况下，Azure Database for PostgreSQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：

@@ -8,16 +8,16 @@ ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4ad0ce1aef45dc4126d3ce17c7093b885f1b8bd7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aa188babf56d4a825059fe6103e2e07745eb134f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933506"
+ms.locfileid: "90974135"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a> (预览版的托管磁盘的性能层) 
 
-Azure 磁盘存储当前提供内置突发功能，以实现更高的性能，以便处理短期的意外流量。 高级 Ssd 可以灵活地提高磁盘性能，而无需增加实际磁盘大小，使你能够满足工作负荷性能需求并降低成本。 这非常适合于暂时要求更高级别的性能的事件，例如假期购物、性能测试或运行培训环境。 若要处理这些事件，可以根据需要选择较高的性能级别，并在不再需要更多性能时返回原始层。
+Azure 磁盘存储当前提供内置突发功能，以实现更高的性能，以便处理短期的意外流量。 高级 Ssd 可以灵活地提高磁盘性能，而无需增加实际磁盘大小，使你能够满足工作负荷性能需求并降低成本，此功能目前处于预览阶段。 这非常适合于暂时要求更高级别的性能的事件，例如假期购物、性能测试或运行培训环境。 若要处理这些事件，可以根据需要选择较高的性能级别，并在不再需要更多性能时返回原始层。
 
 ## <a name="how-it-works"></a>工作原理
 

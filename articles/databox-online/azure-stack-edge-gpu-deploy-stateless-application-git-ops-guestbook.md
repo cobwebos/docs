@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 设备上的启用 Arc 的 Kubernetes 上部署 PHP 留言簿应用 |Microsoft Docs
-description: 介绍如何在 Azure Stack Edge 设备的启用了 Arc 的 Kubernetes 群集上，使用 GitOps 部署具有 Redis 的 PHP 留言簿无状态应用程序。
+title: Azure Stack Edge Pro GPU 设备上的启用 Arc 的 Kubernetes 上部署 PHP 留言簿应用 |Microsoft Docs
+description: 介绍如何在 Azure Stack Edge Pro 设备的启用了 Arc 的 Kubernetes 群集上，使用 GitOps 来部署 PHP 留言簿无状态应用程序。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319286"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899564"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>在 Azure Stack 边缘 GPU 上启用启用了 Kubernetes 群集的 PHP 留言簿无状态应用程序
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上启用启用了 Arc 的 Kubernetes 群集的 PHP 留言簿无状态应用程序
 
 本文说明如何使用 Kubernetes 和 Azure Arc 构建和部署简单的多层 web 应用程序。此示例包含以下组件：
 
@@ -23,41 +23,41 @@ ms.locfileid: "89319286"
 - 用于为读取提供服务的多个复制 Redis 实例
 - 多个 web 前端实例
 
-部署是使用 Azure Stack 边缘设备上启用了 Arc 的 Kubernetes 群集上的 GitOps 来完成的。 
+部署是使用 Azure Stack Edge Pro 设备上启用了 Arc 的 Kubernetes 群集上的 GitOps 来完成的。 
 
-此过程适用于已 [在 Azure Stack Edge 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
+此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 在部署无状态应用程序之前，请确保已在设备和将用于访问该设备的客户端上完成以下先决条件：
 
 ### <a name="for-device"></a>对于设备
 
-1. 你有 Azure Stack Edge 设备的1节点的登录凭据。
+1. 你有 Azure Stack Edge Pro 设备的1个节点的登录凭据。
     1. 设备已激活。 请参阅 [激活设备](azure-stack-edge-gpu-deploy-activate.md)。
     1. 设备通过 Azure 门户配置了计算角色，并具有 Kubernetes 群集。 请参阅 [配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)。
 
-1. 已在设备上的现有 Kubernetes 群集上启用了 Azure Arc，并在 Azure 门户中具有相应的 Azure Arc 资源。 有关详细步骤，请参阅 [在 Azure Stack Edge 设备上启用 Azure Arc](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。
+1. 已在设备上的现有 Kubernetes 群集上启用了 Azure Arc，并在 Azure 门户中具有相应的 Azure Arc 资源。 有关详细步骤，请参阅 [在 Azure Stack Edge Pro 设备上启用 Azure Arc](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。
 
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
-1. 你具有将用于访问 Azure Stack Edge 设备的 Windows 客户端系统。
+1. 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
     - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
     
-1. 你已完成在 [Azure Stack Edge 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
+1. 你已完成在 [Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
     
     - 安装 `kubectl` 在客户端上  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
+    - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
       - 使用 `kubectl version` 检查在客户端上运行的 kubectl 的版本。 记下完整版本。
-      - 在 Azure Stack Edge 设备的本地 UI 中，请参阅 " **概述** " 并记下 "Kubernetes" 软件号码。 
+      - 在 Azure Stack Edge Pro 设备的本地 UI 中，切换到 " **概述** "，并记下 "Kubernetes" 软件号码。 
       - 请验证这两个版本是否与支持的 Kubernetes 版本中提供的映射兼容 <!--insert link-->.
 
-1. 有一个 [可用于运行 Azure Arc 部署的 GitOps 配置](https://github.com/kagoyal/dbehaikudemo)。 在此示例中，你将使用以下 `yaml` 文件在 Azure Stack Edge 设备上部署。
+1. 有一个 [可用于运行 Azure Arc 部署的 GitOps 配置](https://github.com/kagoyal/dbehaikudemo)。 在此示例中，你将使用以下 `yaml` 文件在 Azure Stack Edge Pro 设备上进行部署。
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -176,4 +176,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何 [使用 Kubernetes 仪表板监视 Azure Stack 边缘设备上的部署](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)
+了解如何 [使用 Kubernetes 仪表板监视 Azure Stack Edge Pro 设备上的部署](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

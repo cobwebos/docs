@@ -7,20 +7,17 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f901833caf0623de643e0372c53658fa7da8c8be
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 09/22/2020
+ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463430"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971415"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>通过受信任的服务异常安全访问存储帐户中的数据
 
 访问存储帐户中数据的索引器可以利用 [受信任的服务异常](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) 功能来安全地访问数据。 此机制为无法 [通过 IP 防火墙规则授予索引器访问](search-indexer-howto-access-ip-restricted.md) 权限的客户提供了一种简单、安全和免费的替代方法来访问存储帐户中的数据。
-
-> [!NOTE]
-> 通过系统分配的搜索服务标识访问存储帐户仍处于预览阶段。 提供此预览功能不带服务级别协议，不建议用于生产工作负荷。
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>步骤1：通过标识配置到存储帐户的连接
 

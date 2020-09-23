@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076399"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901082"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，您将学习如何执行以下操作：
@@ -32,7 +32,7 @@ ms.locfileid: "87076399"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
-要逐步执行本教程中介绍的功能，你必须位于安全中心的标准定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
+若要逐步执行本教程中介绍的功能，需要启用 Azure Defender。 可以免费试用 Azure Defender。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 可通过快速入门内容“[安全中心入门](security-center-get-started.md)”了解如何升级。
 
 ## <a name="scenario"></a>方案
 Contoso 最近向 Azure 迁移了部分本地资源，包括基于虚拟机的一些业务线工作负荷和 SQL 数据库。 目前，Contoso 的核心计算机安全事件响应团队 (CSIRT) 无法调查安全问题，因为其当前的事件响应工具尚未集成安全智能。 由于没有集成，检测阶段以及评估和诊断阶段都出现了问题（误报过多）。 在此次迁移过程中，他们决定加入安全中心计划，以便解决此问题。
@@ -68,13 +68,13 @@ Sam 是安全分析师，其职责包括：
 
    ![安全警报](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
-2. 在警报列表中单击某个安全事件（警报的集合），详细了解该事件。 此时会打开“检测到的安全事件”。
+2. 在警报列表中选择某个安全事件（警报的集合），详细了解该事件。 此时会打开“检测到的安全事件”。
 
-   ![安全事件](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![检测到安全事件](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. 此屏幕顶部为安全事件说明，底部为此事件包含的警报的列表。 单击要进一步调查的警报可获取更多信息。
 
-   ![安全事件](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![事件警报详细信息](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
    警报类型可能多种多样。请阅读[了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)一文，详细了解警报类型以及可能的修正步骤。 对于可以安全消除的警报，可右键单击警报，然后选择“消除”选项：
 
@@ -99,23 +99,22 @@ Sam 是安全分析师，其职责包括：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本系列中的其他快速入门和教程是在本快速入门的基础上制作的。 如果打算继续学习后续的快速入门和教程，请继续运行标准层并让自动预配保持启用状态。 如果不打算继续或想要返回到“免费”层，请执行以下操作：
+本系列中的其他快速入门和教程是在本快速入门的基础上制作的。 如果打算继续学习后续的快速入门和教程，请让自动预配和 Azure Defender 保持启用状态。 如果不打算继续或希望禁用 Azure Defender：
 
-1. 返回到安全中心主菜单，选择“安全策略”。
-2. 选择要返回到“免费”层的订阅或策略。 此时会打开“安全策略”。
-3. 在“策略组件”下选择“定价层”。
-4. 选择“免费”以将订阅从“标准”层更改为“免费”层。
-5. 选择“保存” 。
+1. 返回到“安全中心”主菜单，选择“定价和设置”。
+1. 选择要降级的订阅。
+1. 将“Azure Defender”设置为“关闭”。
+1. 选择“保存”。
 
 如果希望禁用自动预配，请执行以下操作：
 
 1. 返回到安全中心主菜单，选择“安全策略”。
 2. 选择希望禁用自动设置的订阅。
 3. 在“安全策略 - 数据收集”下的“载入”下选择“关闭”，禁用自动预配。
-4. 选择“保存” 。
+4. 选择“保存”。
 
 >[!NOTE]
-> 禁用自动预配不会从已预配 Log Analytics 代理的 Azure VM 中删除该代理。 禁用自动设置会限制对资源的安全监视。
+> 禁用自动预配不会从已预配代理的 Azure VM 中删除 Log Analytics 代理。 禁用自动设置会限制对资源的安全监视。
 >
 
 ## <a name="next-steps"></a>后续步骤

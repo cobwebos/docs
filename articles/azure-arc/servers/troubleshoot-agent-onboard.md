@@ -1,18 +1,18 @@
 ---
-title: 排查 Azure Arc 已启用服务器 (预览) 代理连接问题
-description: 本文介绍如何在尝试连接到服务时，排除启用了 Azure Arc 的服务器 (预览) 的连接计算机代理的问题并解决这些问题。
-ms.date: 07/20/2020
+title: 排查启用了 Azure Arc 的服务器代理连接问题
+description: 本文说明如何在尝试连接到服务时，排除启用了 Azure Arc 的服务器的已连接计算机代理的问题并解决这些问题。
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213537"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900672"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>排查连接的计算机代理连接问题
 
-本文提供了有关故障排除和解决在尝试配置支持 Azure Arc 的服务器 (预览) 用于 Windows 或 Linux 的连接计算机代理时可能出现的问题的信息。 包括配置与服务的连接时的交互式和大规模安装方法。 有关一般信息，请参阅 [启用 Arc 的服务器概述](./overview.md)。
+本文提供了有关故障排除和解决在尝试配置适用于 Windows 或 Linux 的已连接 Azure Arc 服务器的服务器时可能发生的问题的信息。 包括配置与服务的连接时的交互式和大规模安装方法。 有关一般信息，请参阅 [启用 Arc 的服务器概述](./overview.md)。
 
 ## <a name="agent-verbose-log"></a>代理详细日志
 
@@ -67,7 +67,7 @@ azcmagent connect \
 
 下表列出了一些已知错误以及有关如何排查和解决问题的建议。
 
-|消息 |错误 |可能的原因 |解决方案 |
+|Message |错误 |可能的原因 |解决方案 |
 |--------|------|---------------|---------|
 |未能获取授权令牌设备流 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |无法访问 `login.windows.net` 终结点 | 验证与终结点的连接。 |
 |未能获取授权令牌设备流 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |代理或防火墙正在阻止对 `login.windows.net` 终结点的访问。 | 验证与终结点的连接，并且它未被防火墙或代理服务器阻止。 |

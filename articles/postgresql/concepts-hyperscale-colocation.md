@@ -1,5 +1,5 @@
 ---
-title: Table 归置-超大规模（Citus）-Azure Database for PostgreSQL
+title: Table 归置-超大规模 (Citus) -Azure Database for PostgreSQL
 description: 如何将相关信息存储在一起以实现更快的查询
 author: jonels-msft
 ms.author: jonels
@@ -7,22 +7,22 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74967331"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884426"
 ---
-# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>表归置 in Azure Database for PostgreSQL –超大规模（Citus）
+# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>表归置 in Azure Database for PostgreSQL –超大规模 (Citus) 
 
 归置表示将相关信息一起存储在相同的节点上。 当所有必要的数据都可用且没有任何网络流量时，查询的速度会加快。 不同节点上的归置相关数据允许查询在每个节点上并行运行。
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>哈希分布式表的数据归置
 
-在 Azure Database for PostgreSQL –超大规模（Citus）中，如果分布列中的值的哈希值在分片的哈希范围内，则该行存储在分片中。 具有相同哈希范围的分片始终放置在同一个节点上。 分布列值相等的行始终在表中的相同节点上。
+在 Azure Database for PostgreSQL-超大规模 (Citus) 中，如果分布列中的值的哈希值在分片的哈希范围内，则该行存储在分片中。 具有相同哈希范围的分片始终放置在同一个节点上。 分布列值相等的行始终在表中的相同节点上。
 
-![分片](media/concepts-hyperscale-colocation/colocation-shards.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-shards.png" alt-text="分片":::
 
 ## <a name="a-practical-example-of-colocation"></a>归置的一个实际示例
 
@@ -62,13 +62,13 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-只要该查询的[工作集](https://en.wikipedia.org/wiki/Working_set)适合内存，单服务器表就是一个合适的解决方案。 让我们考虑一下，通过超大规模（Citus）部署选项缩放数据模型的机会。
+只要该查询的 [工作集](https://en.wikipedia.org/wiki/Working_set) 适合内存，单服务器表就是一个合适的解决方案。 让我们考虑一下，通过超大规模 (Citus) 部署选项缩放数据模型的机会。
 
 ### <a name="distribute-tables-by-id"></a>按 ID 分配表
 
 当租户数和为每个租户存储的数据增长时，单服务器查询开始减速。 工作集在内存中停止占用，CPU 成为瓶颈。
 
-在这种情况下，我们可以使用超大规模（Citus）在多个节点上分片数据。 当我们决定分片是分布列时，我们需要做的第一个也是最重要的选择。 让我们从 `event_id` 对事件表和表的简单选择开始 `page_id` `page` ：
+在这种情况下，我们可以使用超大规模 (Citus) 在多个节点上分片数据。 当我们决定分片是分布列时，我们需要做的第一个也是最重要的选择。 让我们从 `event_id` 对事件表和表的简单选择开始 `page_id` `page` ：
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -96,7 +96,7 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 运行查询必须查阅分散在节点上的分片中的数据。
 
-![低效的查询](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="低效的查询":::
 
 在这种情况下，数据分布产生了重大的缺点：
 
@@ -109,7 +109,7 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 ### <a name="distribute-tables-by-tenant"></a>按租户分发表
 
-在超大规模（Citus）中，具有相同分布列值的行保证位于同一个节点上。 从开始，我们可以创建 `tenant_id` 作为分布列的表。
+在超大规模 (Citus) 中，具有相同分布列值的行保证在同一节点上。 从开始，我们可以创建 `tenant_id` 作为分布列的表。
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -117,7 +117,7 @@ SELECT create_distributed_table('event', 'tenant_id');
 SELECT create_distributed_table('page', 'tenant_id', colocate_with => 'event');
 ```
 
-现在，超大规模（Citus）可以在不修改的情况下应答原始单服务器查询（Q1）：
+现在，超大规模 (Citus) 在第) 一季度 (，无需修改即可应答原始单服务器查询：
 
 ```sql
 SELECT page_id, count(event_id)
@@ -132,12 +132,12 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-由于 tenant_id 上的筛选器和联接，超大规模（Citus）知道可以使用包含该特定租户的数据的一组协同工作分片来回答整个查询。 单个 PostgreSQL 节点可以通过单个步骤来回答查询。
+由于 tenant_id 上的筛选器和联接，超大规模 (Citus) 知道可以使用包含该特定租户的数据的一组协同工作分片来回答整个查询。 单个 PostgreSQL 节点可以通过单个步骤来回答查询。
 
-![更好的查询](media/concepts-hyperscale-colocation/colocation-better-query.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="更好的查询":::
 
 在某些情况下，必须更改查询和表架构以在 unique 约束和联接条件中包含租户 ID。 此更改通常非常简单。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[多租户教程](tutorial-design-database-hyperscale-multi-tenant.md)中的租户数据的协同工作方式。
+- 请参阅 [多租户教程](tutorial-design-database-hyperscale-multi-tenant.md)中的租户数据的协同工作方式。

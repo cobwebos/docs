@@ -6,17 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: 50881071380bbe5d245ed458d162e62bfabd108a
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.custom: references_regions
+ms.openlocfilehash: a375656f579e626d8f41afe49adc3f2ebdb3b27d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061489"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891695"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 
 Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处理 (HTAP) 功能，可用于在 Azure Cosmos DB 中对操作数据运行准实时分析。 Synapse Link 在 Azure Cosmos DB 和 Azure Synapse Analytics 之间建立紧密的无缝集成。
-
 
 > [!IMPORTANT]
 > 若要使用 Azure Synapse 链接，请确保在一个支持的区域中预配 Azure Cosmos 帐户 & Azure Synapse Analytics 工作区。 Azure Synapse 链接目前在以下 Azure 区域中提供：美国西部、美国东部、西2、北欧、西欧、美国中南部、东南亚、澳大利亚东部、东 U2、英国南部。
@@ -26,7 +26,9 @@ Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处�
 * [为 Azure Cosmos 帐户启用 Synapse Link](#enable-synapse-link)
 * [创建启用了分析存储的 Azure Cosmos 容器](#create-analytical-ttl)
 * [将 Azure Cosmos 数据库连接到 Synapse 工作区](#connect-to-cosmos-database)
-* [使用 Synapse Spark 查询分析存储](#query-analytical-store)
+* [使用 Synapse Spark 查询分析存储](#query-analytical-store-spark)
+* [使用 Synapse SQL 无服务器查询分析存储](#query-analytical-store-sql-on-demand)
+* [使用 Synapse SQL 无服务器来分析和可视化 Power BI 中的数据](#analyze-with-powerbi)
 
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-accounts"></a><a id="enable-synapse-link"></a>启用 Azure Synapse Link for Azure Cosmos 帐户
 
@@ -207,9 +209,20 @@ container.replace(containerProperties).block();
 
 使用[连接到 Azure Synapse Link](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md) 中的说明，了解如何使用 Azure Synapse Link 从 Azure Synapse Analytics Studio 访问 Azure Cosmos DB 数据库。
 
-## <a name="query-using-synapse-spark"></a><a id="query-analytical-store"></a> 使用 Synapse Spark 进行查询
+## <a name="query-analytical-store-using-apache-spark-for-azure-synapse-analytics"></a><a id="query-analytical-store-spark"></a> 使用 Azure Synapse Analytics 的 Apache Spark 查询分析存储
 
 使用[查询 Azure Cosmos DB 分析存储](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)文章中的说明，了解如何使用 Synapse Spark 进行查询。 这篇文章提供了一些示例，说明如何通过 Synapse 笔势与分析存储交互。 右键单击某个容器时，即可看到这些笔势。 借助笔势，可以快速生成代码，并根据需要进行调整。 它们还适用于只需单击一下即可发现数据的功能。
+
+## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> 使用 Synapse SQL 无服务器查询分析存储
+
+Synapse SQL 无服务器 (预览功能，该功能以前称为 " **SQL 点播"**) 使你可以查询和分析使用 Azure Synapse 链接启用的 Azure Cosmos DB 容器中的数据。 你可以近实时分析数据，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询分析存储中的数据，并通过 T-sql 接口集成到各种 BI 和即席查询工具。 若要了解详细信息，请参阅 [使用 SYNAPSE SQL 无服务器的查询分析存储](../synapse-analytics/sql/on-demand-workspace-overview.md) 一文。
+
+> [!NOTE]
+> 将 Azure Cosmos DB 分析存储与 Synapse SQL 无服务器配合使用当前位于封闭预览版下。 若要请求访问权限，请联系 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)。
+
+## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>使用 Synapse SQL 无服务器来分析和可视化 Power BI 中的数据
+
+可以生成 Synapse SQL 无服务器数据库，并通过 Synapse 链接查看 Azure Cosmos DB。 稍后，你可以查询 Azure Cosmos 容器，然后生成一个模型，该模型通过这些视图 Power BI 来反映该查询。 若要了解详细信息，请参阅如何使用 [SYNAPSE SQL 无服务器通过 Synapse 链接分析 Azure Cosmos DB 数据](synapse-link-power-bi.md) 。
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
@@ -217,7 +230,7 @@ container.replace(containerProperties).block();
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Azure Synpase Link 入门 - 示例
 
-可以在 [GitHub](https://aka.ms/cosmosdb-synapselink-samples) 上找到有关 Azure Synapse Link 入门的示例。 这些示例展示了物联网和零售场景的端到端解决方案。
+可以在 [GitHub](https://aka.ms/cosmosdb-synapselink-samples) 上找到有关 Azure Synapse Link 入门的示例。 其中展示了具有 IoT 和零售方案的端到端解决方案。 你还可以在 [mongodb](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/MongoDB) 文件夹下的相同存储库中找到与 MONGODB Azure Cosmos DB API 对应的示例。 
 
 ## <a name="next-steps"></a>后续步骤
 
