@@ -1,6 +1,6 @@
 ---
-title: 监视 Azure Stack Edge 设备 | Microsoft Docs
-description: 介绍了如何使用 Azure 门户和本地 Web UI 监视 Azure Stack Edge。
+title: 监视 Azure Stack Edge Pro 设备 |Microsoft Docs
+description: 描述如何使用 Azure 门户和本地 web UI 监视 Azure Stack Edge Pro。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339546"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904404"
 ---
-# <a name="monitor-your-azure-stack-edge"></a>监视 Azure Stack Edge
+# <a name="monitor-your-azure-stack-edge-pro"></a>监视 Azure Stack Edge Pro
 
-本文介绍了如何监视 Azure Stack Edge。 若要监视设备，可以使用 Azure 门户或本地 Web UI。 使用 Azure 门户查看设备事件、配置和管理警报，以及查看指标。 使用物理设备上的本地 Web UI 查看各种设备组件的硬件状态。
+本文介绍如何监视 Azure Stack Edge Pro。 若要监视设备，可以使用 Azure 门户或本地 Web UI。 使用 Azure 门户查看设备事件、配置和管理警报，以及查看指标。 使用物理设备上的本地 Web UI 查看各种设备组件的硬件状态。
 
 在本文中，学习如何：
 

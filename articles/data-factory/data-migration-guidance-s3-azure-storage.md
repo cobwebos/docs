@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984891"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
 
@@ -37,7 +37,7 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构，�
 
 客户已成功将由数亿个文件组成的 PB 级数据从 Amazon S3 迁移到 Azure Blob 存储，同时保持 2 GBps 或更高的吞吐量。 
 
-![性能](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![关系图显示一个 W S S3 存储中的多个文件分区，其中包含关联的复制操作到 Azure Blob 存储 A D L S Gen2。](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 上图演示了如何通过不同的并行度实现极佳的数据移动速度：
  
@@ -61,7 +61,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 通过公共 Internet 迁移数据：
 
-![solution-architecture-public-network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![关系图显示了通过 Internet 从 A W S S3 存储通过 Internet 进行的迁移，通过将 Azure 存储中的 Azure Integration Runtime 到 Azure 存储空间。 运行时具有包含数据工厂的控制通道。](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
 - 在此体系结构中，将通过公共 Internet 使用 HTTPS 安全传输数据。 
 - 源 Amazon S3 和目标 Azure Blob 存储或 Azure Data Lake Storage Gen2 配置为允许来自所有网络 IP 地址的流量。  请参阅下面的第二种体系结构来了解如何将网络访问限制在特定的 IP 范围内。 
@@ -70,7 +70,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 通过专用链路迁移数据： 
 
-![solution-architecture-private-network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![关系图显示了通过 Azure 虚拟机上的自承载集成运行时，将 Azure 虚拟机上的自承载集成运行时通过专用对等互连连接到 Azure 存储空间的迁移。 运行时具有包含数据工厂的控制通道。](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - 在此体系结构中，数据迁移是通过 AWS Direct Connect 与 Azure Express Route 之间的专用对等互连链路完成的，因此，数据永远不会遍历公共 Internet。  它需要使用 AWS VPC 和 Azure 虚拟网络。 
 - 需要在 Azure 虚拟网络中的 Windows VM 上安装 ADF 自承载集成运行时才能实现此体系结构。  可以手动纵向扩展自承载 IR VM 或横向扩展为多个 VM（最多 4 个节点），以充分利用网络和存储 IOPS/带宽。 
@@ -122,7 +122,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 假设构造了以下管道用于将数据从 S3 迁移到 Azure Blob 存储： 
 
-![pricing-pipeline](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![关系图显示了用于迁移数据的管道，其中手动触发器流向了 Lookup，流向了 ForEach，并流向了包含复制到存储过程的复制的每个分区的子管道。 在管道外部，存储过程流向 Azure SQL D B，后者流向查找，而 W S S3 流向将流复制到 Blob 存储。](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
 假设条件如下： 
 
@@ -135,7 +135,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 下面是根据上述假设估算出的价格： 
 
-![pricing-table](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![表的屏幕截图显示了预估价格。](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>其他参考 
 - [Amazon 简单存储服务连接器](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)

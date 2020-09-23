@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge 计算管理 |Microsoft Docs
-description: 介绍如何通过 Azure Stack 边缘上的 Azure 门户管理边缘计算设置，如触发器、模块、视图计算配置、删除配置。
+title: Azure Stack Edge Pro 计算管理 |Microsoft Docs
+description: 介绍如何管理边缘计算设置，如触发器、模块、视图计算配置、通过 Azure Stack Edge Pro 上的 Azure 门户删除配置。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339818"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904428"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge"></a>管理 Azure Stack 边缘上的计算
+# <a name="manage-compute-on-your-azure-stack-edge-pro"></a>在 Azure Stack Edge Pro 上管理计算
 
-本文介绍如何在 Azure Stack 边缘管理计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
+本文介绍如何在 Azure Stack Edge Pro 上管理计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
 
 在本文中，学习如何：
 
@@ -28,7 +28,7 @@ ms.locfileid: "84339818"
 
 ## <a name="manage-triggers"></a>管理触发器
 
-事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Azure Stack 边缘，触发器可以响应文件事件或计划。
+事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Azure Stack Edge Pro，触发器可以响应文件事件或计划。
 
 - **文件**：这些触发器用于响应文件事件，如创建文件、修改文件。
 - **计划**：这些触发器是对你可以用开始日期、开始时间和重复间隔定义的计划的响应。
@@ -38,7 +38,7 @@ ms.locfileid: "84339818"
 
 在 Azure 门户中执行以下步骤可以创建触发器。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后切换到**edge 计算 > 触发器**。 在命令栏上选择“+ 添加触发器”****。
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后切换到 **edge 计算 > 触发器**。 在命令栏上选择“+ 添加触发器”****。
 
     ![选择“添加触发器”](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "84339818"
 
     ![选择触发器](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
-2. 单击右键并选择“删除”****。
+2. 右键单击，然后选择 " **删除**"。
 
     ![选择“删除”](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -82,13 +82,13 @@ ms.locfileid: "84339818"
 
 ## <a name="manage-compute-configuration"></a>管理计算配置
 
-使用 Azure 门户查看计算配置、删除现有的计算配置，或刷新计算配置以同步 IoT 设备的访问密钥，并为 Azure Stack 边缘 IoT Edge 设备。
+使用 Azure 门户查看计算配置、删除现有的计算配置，或刷新计算配置以同步 IoT 设备的访问密钥，并为 Azure Stack Edge Pro IoT Edge 设备。
 
 ### <a name="view-compute-configuration"></a>查看计算配置
 
 在 Azure 门户中执行以下步骤可以查看设备的计算配置。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后中转到 "**边缘计算 > 模块**"。 在命令栏上选择“查看计算”。****
+1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后中转到 " **边缘计算 > 模块**"。 在命令栏上选择“查看计算”。****
 
     ![选择“查看计算”](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "84339818"
 
 在 Azure 门户中执行以下步骤可以删除设备的现有 Edge 计算配置。
 
-1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 "**边缘计算" > "入门**"。 在命令栏上选择“删除计算”。****
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 " **边缘计算" > "入门**"。 在命令栏上选择“删除计算”。****
 
     ![选择“删除计算”](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
@@ -111,15 +111,15 @@ ms.locfileid: "84339818"
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>同步 IoT 设备和 IoT Edge 设备的访问密钥
 
-在 Azure Stack 边缘配置计算时，会创建 IoT 设备和 IoT Edge 设备。 系统会自动为这些设备分配对称访问密钥。 最佳安全做法是通过 IoT 中心服务定期轮换这些密钥。
+在 Azure Stack Edge Pro 上配置计算时，会创建 IoT 设备和 IoT Edge 设备。 系统会自动为这些设备分配对称访问密钥。 最佳安全做法是通过 IoT 中心服务定期轮换这些密钥。
 
 若要轮换这些密钥，可以转到创建的 IoT 中心服务，并选择该 IoT 设备或 IoT Edge 设备。 每个设备都有一个主要访问密钥和辅助访问密钥。 将主要访问密钥分配到辅助访问密钥，然后重新生成主要访问密钥。
 
-如果 IoT 设备和 IoT Edge 设备密钥已经旋转，则需要刷新 Azure Stack 边缘的配置以获取最新的访问密钥。 同步可帮助设备获取 IoT 设备和 IoT Edge 设备的最新密钥。 Azure Stack 边缘仅使用主访问密钥。
+如果 IoT 设备和 IoT Edge 设备密钥已经旋转，则需要刷新 Azure Stack Edge Pro 上的配置以获取最新的访问密钥。 同步可帮助设备获取 IoT 设备和 IoT Edge 设备的最新密钥。 Azure Stack Edge Pro 只使用主访问密钥。
 
 在 Azure 门户中执行以下步骤可以同步设备的访问密钥。
 
-1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 "**边缘计算" > "入门**"。 在命令栏上选择“刷新配置”。****
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到 " **边缘计算" > "入门**"。 在命令栏上选择“刷新配置”。****
 
     ![选择“刷新配置”](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 
@@ -131,4 +131,4 @@ ms.locfileid: "84339818"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[通过 Azure 门户管理边缘计算网络](azure-stack-edge-extend-compute-access-modules.md)。
+- 了解如何 [通过 Azure 门户管理边缘计算网络](azure-stack-edge-extend-compute-access-modules.md)。

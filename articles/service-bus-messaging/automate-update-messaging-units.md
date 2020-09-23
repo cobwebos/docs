@@ -1,176 +1,144 @@
 ---
 title: Azure 服务总线 - 自动更新消息传送单元
-description: 本文介绍如何使用 Azure 自动化 runbook 自动更新服务总线命名空间的消息传送单元。
+description: 本文介绍如何使用自动更新 Service Bus 命名空间的消息传送单元。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 52f5b13b482739bfa56ff606f684fd5a9c7d3b6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: 0a72cc991e768a7bed01762d984cc56238ae0ad0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341487"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984839"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>自动更新 Azure 服务总线命名空间的消息传送单元。 
-本文介绍如何根据资源（CPU 或内存）使用情况自动更新服务总线命名空间的[消息传送单元](service-bus-premium-messaging.md)。 
+自动缩放是指在处理应用程序负载时让适当数量的资源运行。 当负载增加时，它可以添加资源来处理增加的负载；当资源空闲时，它可以删除资源以节省资金。 请参阅 [Microsoft Azure 中的自动缩放概述](../azure-monitor/platform/autoscale-overview.md) ，了解有关 Azure Monitor 的自动缩放功能的详细信息。 
 
-本文中的示例介绍如何在命名空间的 CPU 使用率超过 75% 时增加服务总线命名空间的消息传送单元。 大致步骤如下所示：
+服务总线高级消息传送在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 **消息传送单元**。 若要详细了解消息传送单元，请参阅 [服务总线高级消息传送](service-bus-premium-messaging.md)。 
 
-1. 使用 PowerShell 脚本创建 Azure 自动化 runbook，以便为服务总线命名空间纵向扩展（增加）消息传送单元。 
-2. 在服务总线命名空间上创建 CPU 使用率警报，当命名空间 CPU 使用率超过 75% 时，将调用 PowerShell 脚本。 
+通过使用服务总线高级命名空间的自动缩放功能，你可以指定最小和最大 [消息传送单元](service-bus-premium-messaging.md) 数，并基于一组规则自动添加或删除消息传送单元。 
+
+例如，你可以使用自动缩放功能为服务总线命名空间实现以下缩放方案。 
+
+- 当命名空间的 CPU 使用率超过75% 时，为服务总线命名空间增加消息传送单元。 
+- 如果命名空间的 CPU 使用率低于25%，则减少服务总线命名空间的消息传送单元。 
+- 在工作时间内使用更多消息传送单元，在休息时间更少。 
+
+本文介绍如何在 Azure 门户中自动缩放服务总线命名空间 (更新 [消息单元](service-bus-premium-messaging.md)) 。 
 
 > [!IMPORTANT]
 > 本文仅适用于 Azure 服务总线的高级层。 
 
+## <a name="autoscale-setting-page"></a>"自动缩放设置" 页
+首先，按照以下步骤导航到服务总线命名空间的 " **自动缩放设置** " 页。
 
-## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
-创建高级层服务总线命名空间。 按照[在 Azure 门户中创建命名空间](service-bus-quickstart-portal.md#create-a-namespace-in-the-azure-portal)一文中的步骤创建命名空间。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+2. 在搜索栏中键入 " **服务总线**"，从下拉列表中选择 " **服务总线** "，然后按 **enter**。 
+1. 从命名空间列表中选择 **高级命名空间** 。 
+1. 切换到 " **缩放** " 页。 
 
-## <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
-按照[创建 Azure 自动化帐户](../automation/automation-quickstart-create-account.md)一文中的说明创建 Azure 自动化帐户。 
+    :::image type="content" source="./media/automate-update-messaging-units/scale-page.png" alt-text="服务总线命名空间-缩放页":::
 
-## <a name="import-azservice-module-from-gallery"></a>从库中导入 Az.Service 模块
-将 `Az.Accounts` 和 `Az.ServiceBus` 模块从库导入到自动化帐户。 `Az.ServiceBus` 模块依赖于 `Az.Accounts` 模块，因此必须先安装它。 
+## <a name="manual-scale"></a>手动缩放 
+此设置允许您为命名空间设置固定的消息传送单元数。 
 
-有关分步说明，请参阅[从模块库导入模块](../automation/automation-runbook-gallery.md#import-a-module-from-the-module-gallery-with-the-azure-portal)。
+1. 在 " **自动缩放设置** " 页上，选择 " **手动缩放** " （如果尚未选择）。 
+1. 对于 " **消息单元** " 设置，请从下拉列表中选择消息传送单元数。
+1. 在工具栏上选择“保存”，保存该设置。 
 
-## <a name="create-and-publish-a-powershell-runbook"></a>创建并发布 PowerShell runbook
+    :::image type="content" source="./media/automate-update-messaging-units/manual-scale.png" alt-text="手动缩放消息单元":::       
 
-1. 按照[创建 PowerShell runbook](../automation/automation-quickstart-create-runbook.md) 一文中的说明创建 PowerShell runbook。 
 
-    下面是一个示例 PowerShell 脚本，可用于为服务总线命名空间增加消息传送单元。 自动化 runbook 中的此 PowerShell 脚本将 MU 从 1 增至 2、从 2 增至 4 或从 4 增至 8。 此属性的允许值为：1、2、4 和 8. 你可以创建另一个 runbook 来减少消息传送单元。
+## <a name="custom-autoscale---default-condition"></a>自定义自动缩放-默认条件
+可以通过使用条件来配置消息传送单元的自动缩放。 当没有其他缩放条件匹配时，将执行此缩放条件。 可以通过以下方式之一来设置默认条件：
 
-    namespaceName 和 resourceGroupName 参数用于独立于警报场景测试脚本 。 
+- 基于指标 (例如 CPU 或内存使用率）进行缩放) 
+- 缩放到特定的消息传送单元数
+
+不能将计划设置为在特定日期或日期范围内自动缩放的默认条件。 当具有计划的其他缩放条件都不匹配时，将执行此缩放条件。 
+
+### <a name="scale-based-on-a-metric"></a>基于指标进行缩放
+下面的过程演示了如何添加一个条件，以便在 cpu 使用率大于75% 时，自动增加 (scale out) 的消息传送单元，并减小当 CPU 使用率低于25% 时 (缩放) 的消息单元。 增量是从1到2、2到4和4到8完成的。 同样，减量的实现方式为8到4，4到2，2到1。 
+
+1. 在 "**自动缩放设置**" 页上，为 "**选择如何缩放资源**" 选项选择 "**自定义自动缩放**"。 
+1. 在页面的 " **默认** " 部分中，指定默认条件的 **名称** 。 选择 **铅笔** 图标以编辑文本。 
+1. 选择 "基于**缩放模式**的**指标缩放"** 。 
+1. 选择“+ 添加规则”。 
+
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-add-rule-link.png" alt-text="默认值-根据指标缩放":::    
+1. 在 " **缩放规则** " 页上，执行以下步骤：
+    1. 从 " **指标名称** " 下拉列表中选择一个度量值。 在此示例中，它是 **CPU**。 
+    1. 选择运算符和阈值。 在此示例中，它们 **大于** ， **75** 用于 **触发缩放操作的指标阈值**。 
+    1. 在 "**操作**" 部分中选择**操作**。 在此示例中，它设置为 " **增加**"。 
+    1. 然后选择 "**添加**"
     
-    WebHookData 参数用于警报在运行时传递资源组名称、资源名称等信息。 
+        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="默认-如果 CPU 使用率大于75%，则向外缩放":::       
 
-    ```powershell
-    [OutputType("PSAzureOperationResponse")]
-    param
-    (
-        [Parameter (Mandatory=$false)]
-        [object] $WebhookData,
-    
-        [Parameter (Mandatory = $false)]
-        [String] $namespaceName,
-    
-        [Parameter (Mandatory = $false)]
-        [String] $resourceGroupName
-    )
-    
-    
-    if ($WebhookData)
-    {
-        # Get the data object from WebhookData
-        $WebhookBody = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
-    
-        # Get the alert schema ID
-        $schemaId = $WebhookBody.schemaId
+        > [!NOTE]
+        > 如果在此示例中总体 CPU 使用率超过75%，则自动缩放功能将增加命名空间的消息传送单元。 增量是从1到2、2到4和4到8完成的。 
+1. 再次选择 " **+ 添加规则** "，然后在 " **缩放规则** " 页上执行以下步骤：
+    1. 从 " **指标名称** " 下拉列表中选择一个度量值。 在此示例中，它是 **CPU**。 
+    1. 选择运算符和阈值。 在此示例中，它们 **小于** 和 **25** 的 **指标阈值触发缩放操作**。 
+    1. 在 "**操作**" 部分中选择**操作**。 在此示例中，它设置为 " **减小**"。 
+    1. 然后选择 "**添加**" 
 
-        # If it's a metric alert
-        if ($schemaId -eq "AzureMonitorMetricAlert") {
+        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="默认-如果 CPU 使用率小于25%，则放大":::       
 
-            # Get the resource group name from the alert context
-            $resourceGroupName = $WebhookBody.resourceGroupName
-            
-            # Get the namespace name from the alert context
-            $namespaceName = $WebhookBody.resourceName
-        }
-    }
+        > [!NOTE]
+        > 如果在此示例中总体 CPU 使用率低于25%，则自动缩放功能会减少命名空间的消息传送单元。 减量的实现方式为8到4，4到2，2到1。 
+1. 设置消息传送单元的 **最小** 值和 **最大** 值以及 **默认** 数量。
+
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="基于指标的默认规则":::
+1. 选择工具栏上的 " **保存** " 以保存自动缩放设置。 
+        
+### <a name="scale-to-specific-number-of-messaging-units"></a>缩放到特定的消息传送单元数
+请按照以下步骤进行操作，将该规则配置为缩放命名空间以使用特定数量的消息传送单元。 同样，如果其他任何缩放条件都不匹配，则会应用默认条件。 
+
+1. 在 "**自动缩放设置**" 页上，为 "**选择如何缩放资源**" 选项选择 "**自定义自动缩放**"。 
+1. 在页面的 " **默认** " 部分中，指定默认条件的 **名称** 。 
+1. 选择缩放**模式**的 "**缩放到特定消息单元**"。 
+1. 对于 " **消息传送单元**"，选择默认消息传送单元数。 
+
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-messaging-units.png" alt-text="默认值-缩放到特定消息传送单元":::       
+
+## <a name="custom-autoscale---additional-conditions"></a>自定义自动缩放-其他条件
+上一部分说明了如何添加自动缩放设置的默认条件。 本部分说明如何将更多条件添加到自动缩放设置。 对于这些额外的非默认条件，可以基于特定的一周或某个日期范围设置计划。 
+
+### <a name="scale-based-on-a-metric"></a>基于指标进行缩放
+1. 在 "**自动缩放设置**" 页上，为 "**选择如何缩放资源**" 选项选择 "**自定义自动缩放**"。 
+1. 选择 "在**默认**块下**添加缩放条件**"。 
+
+    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="自定义-添加缩放条件链接":::    
+1. 指定条件的 **名称** 。 
+1. 确认已选择 " **基于指标缩放** " 选项。 
+1. 选择 " **+ 添加规则** "，添加一个规则，以便在总体 CPU 使用率超过75% 时增加消息单元。 按照 " [默认条件](#custom-autoscale---default-condition) " 部分中的步骤进行操作。 
+5. 设置消息传送单元的 **最小** 值和 **最大** 值以及 **默认** 数量。
+6. 您还可以在自定义条件 (上设置计划，而不是在默认条件) 上设置 **计划** 。 您可以为条件指定开始日期和结束日期 (或者) 选择 (星期一、星期二等的特定日期。 ) 一周。 
+    1. 如果选择 " **指定开始/结束日期**"，请选择 " **时区**"、" **开始日期** " 和 "时间" 和 " **结束日期和时间** " (，如下图所示) 条件生效。 
+
+       :::image type="content" source="./media/automate-update-messaging-units/custom-min-max-default.png" alt-text="消息传送单元数的最小值、最大值和默认值":::
+    1. 如果选择 " **重复特定日期**"，请选择应应用该条件的星期几、时区、开始时间和结束时间。 
+
+        :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days.png" alt-text="重复特定日":::
+  
+### <a name="scale-to-specific-number-of-messaging-units"></a>缩放到特定的消息传送单元数
+1. 在 "**自动缩放设置**" 页上，为 "**选择如何缩放资源**" 选项选择 "**自定义自动缩放**"。 
+1. 选择 "在**默认**块下**添加缩放条件**"。 
+
+    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="自定义-添加缩放条件链接":::    
+1. 指定条件的 **名称** 。 
+2. 选择**缩放模式**的 "**缩放到特定消息单元**" 选项。 
+1. 从下拉列表中选择 **消息传送单元** 数。 
+6. 对于 " **计划**"，为条件指定开始日期和结束日期 (或) 选择 " (" 星期一 "、" 星期二 "等的特定日期。 ) 周和时间。 
+    1. 如果选择 " **指定开始/结束日期**"，请选择要生效的条件的 **时区**、 **开始日期和时间** 以及 **结束日期和时间** 。 
     
-    # Connect to Azure account
-    $connection = Get-AutomationConnection -Name AzureRunAsConnection
+    :::image type="content" source="./media/automate-update-messaging-units/scale-specific-messaging-units-start-end-dates.png" alt-text="缩放到特定消息传送单元-开始和结束日期":::        
+    1. 如果选择 " **重复特定日期**"，请选择应应用该条件的星期几、时区、开始时间和结束时间。
     
-    while(!($connectionResult) -And ($logonAttempt -le 10))
-    {
-        $LogonAttempt++
-        # Logging in to Azure...
-        $connectionResult =    Connect-AzAccount `
-                                    -ServicePrincipal `
-                                    -Tenant $connection.TenantID `
-                                    -ApplicationId $connection.ApplicationID `
-                                    -CertificateThumbprint $connection.CertificateThumbprint
-    
-        Start-Sleep -Seconds 30
-    }
-    
-    # Get the current capacity (number of messaging units) of the namespace
-    $sbusns=Get-AzServiceBusNamespace `
-        -Name $namespaceName `
-        -ResourceGroupName $resourceGroupName
-    
-    $currentCapacity = $sbusns.Sku.Capacity
-    
-    # Increase the capacity
-    # Capacity can be one of these values: 1, 2, 4, 8
-    if ($currentCapacity -eq 1) {
-        $newMU = 2
-    }
-    elseif ($currentCapacity -eq 2) {
-        $newMU = 4
-    }
-    elseif ($currentCapacity -eq 4) {
-        $newMU = 8    
-    }
-    else {
-    
-    }
-    
-    # Update the capacity of the namespace
-    Set-AzServiceBusNamespace `
-            -Location eastus `
-            -SkuName Premium `
-            -Name $namespaceName `
-            -SkuCapacity $newMU `
-            -ResourceGroupName $resourceGroupName
+    :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="缩放到特定消息传送单元-重复特定天数":::
 
-    ```
-2. 通过指定 namespaceName 和 resourceGroupName 参数的值来[测试工作簿](../automation/manage-runbooks.md#test-a-runbook) 。 确认已更新命名空间上的消息传送单元。 
-3. 测试成功后，请[发布工作簿](..//automation/manage-runbooks.md#publish-a-runbook)，以便稍后可将其添加为命名空间上的警报的操作。 
-
-## <a name="create-an-alert-on-the-namespace-to-trigger-the-runbook"></a>在命名空间上创建警报以触发 runbook
-请参阅[使用警报触发 Azure 自动化 runbook](../automation/automation-create-alert-triggered-runbook.md)一文，以便在服务总线命名空间上配置警报，以触发你创建的自动化 runbook。 例如，可以针对每个命名空间的 CPU 使用率或每个命名空间的内存大小使用情况指标创建警报，并添加操作以触发创建的自动化 runbook 。 有关这些指标的详细信息，请参阅[资源使用情况指标](service-bus-metrics-azure-monitor.md#resource-usage-metrics)。
-
-以下过程显示了如何创建警报，该警报将在命名空间 CPU 使用率超过 75% 时触发自动化 runbook 。
-
-1. 在命名空间的“服务总线命名空间”页上，在左侧菜单上选择“警报”，然后在工具栏上选择“+新建警报规则”  。 
-    
-    ![“警报”页 -“新建警报规则”按钮](./media/automate-update-messaging-units/alerts-page.png)
-2. 在“创建警报规则”页上，单击“选择条件” 。 
-
-    ![“创建警报规则”页 - 选择条件](./media/automate-update-messaging-units/alert-rule-select-condition.png) 
-3. 在“配置信号逻辑”页上，为信号选择“CPU” 。 
-
-    ![配置信号逻辑 - 选择 CPU](./media/automate-update-messaging-units/configure-signal-logic.png)
-4. 输入“阈值”（本例为 75%），然后选择“完成”  。 
-
-    ![配置 CPU 信号](./media/automate-update-messaging-units/cpu-signal-configuration.png)
-5. 现在，在“创建警报”页上，单击“选择操作组” 。
-    
-    ![选择操作组](./media/automate-update-messaging-units/select-action-group-button.png)
-6. 在工具栏上选择“创建操作组”按钮。 
-
-    ![“创建操作组”按钮](./media/automate-update-messaging-units/create-action-group-button.png)
-7. 在“添加操作组”页上执行以下步骤：
-    1. 为操作组输入“名称”。 
-    2. 为操作组输入“短名称”。
-    3. 选择要在其中创建此操作组的“订阅”。
-    4. 选择“资源组”。 
-    5. 在“操作”部分，输入“操作的名称”，并为“操作类型”选择“自动化 Runbook”   。 
-
-        ![“添加操作组”页](./media/automate-update-messaging-units/add-action-group-page.png)
-8. 在“配置 Runbook”页上执行以下步骤：
-    1. 选择“用户”作为“Runbook 源” 。 
-    2. 对于“订阅”，请选择包含自动化帐户的 Azure 订阅 。 
-    3. 对于“自动化帐户”，请选择你的自动化帐户 。
-    4. 对于“Runbook”，请选择你的 runbook。 
-    5. 在“配置 Runbook”页上选择“确定” 。 
-        ![配置 runbook](./media/automate-update-messaging-units/configure-runbook.png)
-9. 在“添加操作组”页面上选择“确定” 。 
-5. 现在，在“创建警报规则”页上输入“规则的名称”，然后选择“创建警报规则”  。 
-    ![创建警报规则](./media/automate-update-messaging-units/create-alert-rule.png)
-
-    > [!NOTE]
-    > 现在，当命名空间 CPU 使用率超过 75 时，警报会触发自动化 runbook，这会增加服务总线命名空间的消息传送单元。 同样，可以为另一个自动化 runbook 创建警报，如果命名空间 CPU 使用率低于 25，则会减少消息传送单元。 
+> [!IMPORTANT]
+> 若要详细了解自动缩放设置的工作原理，尤其是它如何选择配置文件或条件并评估多个规则的详细信息，请参阅 [了解自动缩放设置](../azure-monitor/platform/autoscale-understanding-settings.md)。          
 
 ## <a name="next-steps"></a>后续步骤
 若要了解消息传送单元，请参阅[高级消息传送](service-bus-premium-messaging.md)
+

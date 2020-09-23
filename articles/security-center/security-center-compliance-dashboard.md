@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519637"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895810"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 ---
@@ -35,8 +35,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要逐步执行本教程中介绍的功能，必须有安全中心的“标准”定价层。 可以免费试用安全中心标准版。
-若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](https://docs.microsoft.com/azure/security-center/security-center-get-started)”详细介绍了如何升级到标准版。
+若要逐步执行本教程中介绍的功能，必须启用 [Azure Defender](azure-defender.md)。 可以免费试用 Azure Defender 30 天。
 
 ##  <a name="assess-your-regulatory-compliance"></a>评估合规性
 
@@ -72,13 +71,13 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 1.  可以选择特定的资源来查看更多的详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 标准”选项卡中，  可以单击建议“需要安全地传输到存储帐户”。
 
-    ![符合性建议](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![选择建议“需要安全地传输到存储帐户”](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
 1. 一路单击，直至出现建议信息，然后选择一个运行不正常的资源，此时就会直接转到在 Azure 门户中启用“安全的存储传输”这一体验。
 
     有关如何应用建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
-    ![符合性建议](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![存储帐户配置](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  在采取行动解决与建议相关的问题以后，就会在合规性仪表板报告中看到相关影响，因为你的符合性分数提高了。
 

@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 3efd0303b447242c0229bc71720e55c8aa3a2f2d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566244"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889037"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入门：载入 Azure Sentinel
 
 在本快速入门中，了解如何载入 Azure Sentinel。 
 
-若要载入 Azure Sentinel，首先需要启用 Azure Sentinel，然后再连接到数据源。 Azure Sentinel 随附许多适用于 Microsoft 解决方案的开箱即用的连接器，提供实时集成，包括 Microsoft 威胁防护解决方案、Microsoft 365 源（包括 Office 365）、Azure AD、Azure ATP 和 Microsoft Cloud App Security 等。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 (CEF)、Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。  
+若要载入 Azure Sentinel，首先需要启用 Azure Sentinel，然后再连接到数据源。 Azure Sentinel 随附许多适用于 Microsoft 解决方案的开箱即用的连接器，提供实时集成，包括 Microsoft 365 Defender（之前称为 Microsoft 威胁防护）解决方案、Microsoft 365 源（包括 Office 365）、Azure AD、Microsoft Defender for Identity（之前称为 Azure ATP）、Microsoft Cloud App Security 和 Azure 安全中心的 Azure Defender 警报等。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 (CEF)、Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。 
 
 连接数据源后，从熟练地创建的工作簿的库中进行选择，这些工作簿基于你的数据呈现见解。 可以根据需要轻松地自定义这些工作簿。
 
@@ -45,13 +45,13 @@ ms.locfileid: "88566244"
 
 1. 搜索“Azure Sentinel”并将其选中。
 
-   ![搜索](./media/quickstart-onboard/search-product.png)
+   ![服务搜索](./media/quickstart-onboard/search-product.png)
 
 1. 选择 **添加** 。
 
 1. 选择要使用的工作区，或创建新工作区。 可以在多个工作区上运行 Azure Sentinel，但将数据隔离到单个工作区。
 
-   ![搜索](./media/quickstart-onboard/choose-workspace.png)
+   ![选择工作区](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Azure 安全中心创建的默认工作区将不会显示在列表中；无法在其上安装 Azure Sentinel。
@@ -64,7 +64,6 @@ ms.locfileid: "88566244"
    >   如果已移动工作区，请禁用“分析”下的所有活动规则，并在五分钟后重新启用这些规则。 重申一下，这在大多数情况下应该是有效的，但不支持这样做，风险由你自己承担。
 
 1. 选择“添加 Azure Sentinel”。
-  
 
 ## <a name="connect-data-sources"></a>连接数据源
 

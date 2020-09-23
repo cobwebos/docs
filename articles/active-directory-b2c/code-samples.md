@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181152"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029012"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 代码示例
 
@@ -26,7 +26,7 @@ ms.locfileid: "82181152"
 | 示例 | 说明 |
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | 用 Swift 编写的一个 iOS 示例，它使用 OAuth 2.0 对 Azure AD B2C 用户进行身份验证并调用一个 API |
-| [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | 一个简单的 Android 应用，它展示了如何使用 MSAL 来通过 Azure Active Directory B2C 对用户进行身份验证，并使用生成的令牌访问一个 Web API。 |
+| [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | 一个简单的 Android 应用，它展示了如何使用 MSAL 来通过 Azure Active Directory B2C 对用户进行身份验证，并使用生成的令牌访问一个 Web API。 |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | 此示例展示了如何利用第三方库来使用 Objective-C 开发 iOS 应用程序，用以通过我们的 Azure AD B2C 标识服务对 Microsoft 标识用户进行身份验证。 |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | 此示例展示了如何利用第三方库来开发 Android 应用程序，用以通过我们的 B2C 标识服务对 Microsoft 标识用户进行身份验证并使用 OAuth 2.0 访问令牌调用一个 Web API。 |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | 此示例展示了 Windows Desktop .NET (WPF) 应用程序如何使用 Azure AD B2C 完成用户登录，使用 MSAL.NET 获取访问令牌，并调用一个 API。 |

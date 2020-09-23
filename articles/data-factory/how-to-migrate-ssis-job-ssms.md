@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82627579"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984901"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 将 SQL Server 代理作业迁移到 ADF
 
@@ -46,7 +46,7 @@ ms.locfileid: "82627579"
 ## <a name="migrate-ssis-jobs-to-adf"></a>将 SSIS 作业迁移到 ADF
 
 1. 在 SSMS 的对象资源管理器中依次选择“SQL Server 代理”、“作业”，然后右键单击并选择“将 SSIS 作业迁移到 ADF”****。
-![菜单](media/how-to-migrate-ssis-job-ssms/menu.png)
+![屏幕截图显示 SQL Server Management Studio 对象资源管理器，你可以在其中选择作业，然后将作业迁移到 D F。](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. 登录到 Azure，依次选择“Azure 订阅”、“数据工厂”、“Integration Runtime”。 “Azure 存储”为可选。如果要迁移的 SSIS 作业具有 SSIS 文件系统包，在包位置映射步骤中将使用 Azure 存储。
 ![菜单](media/how-to-migrate-ssis-job-ssms/step1.png)
@@ -57,28 +57,28 @@ ms.locfileid: "82627579"
     1. 更新源文件夹路径。 有效的路径是包的文件夹路径或父文件夹路径。
     1. 更新目标文件夹路径。 默认路径是在步骤 1 中选择的默认存储帐户的相对路径。
     1. 通过“删除映射”删除选定的映射****。
-![步骤 2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![步骤 2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![屏幕截图显示 "映射 S s 包和配置路径" 页，您可以在其中添加映射。 ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![屏幕截图显示 "映射 S s 包和配置路径" 页，您可以在其中更新源和目标文件夹路径。](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. 选择要迁移的适用作业，并配置相应的“已执行的 SSIS 包活动”的设置**。
 
     - 默认设置：在默认情况下应用到所有选定步骤**。 有关每个属性的详细信息，请查看当包位置为“文件系统(包)”时与“[执行 SSIS 包活](how-to-invoke-ssis-package-ssis-activity.md)动”操作对应的“设置”选项卡** **。
-    ![步骤 3-1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    ![屏幕截图显示了 "选择我的工作" 页，您可以在其中配置相应的已执行 SSIS 包活动的设置。](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - 步骤设置：配置选定步骤的设置**。
         
         **应用默认设置**：默认已选中。 如果取消选择此选项，则只配置选定步骤的设置。  
         有关其他属性的详细信息，请查看当包位置为“文件系统(包)”时与“[执行 SSIS 包活](how-to-invoke-ssis-package-ssis-activity.md)动”操作对应的“设置”选项卡** **。
-    ![步骤 3-2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+    ![屏幕截图显示了 "选择我的作业" 页面，您可以在其中应用默认设置。](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. 生成并部署 ARM 模板。
     1. 选择或输入已迁移的 ADF 管道的 ARM 模板的输出路径。 系统会自动创建文件夹（如果不存在）。
     2. 选择选项“将 ARM 模板部署到数据工厂”****：
         - 默认未选中。 以后可以手动部署生成的 ARM 模板。
         - 选择将生成的 ARM 模板直接部署到数据工厂。
-    ![步骤 4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    ![屏幕截图显示 "配置迁移" 页，你可以在其中选择或输入已迁移 ADF 管道的 ARM 模板的输出路径，并选择 "将 ARM 模板部署到你的数据工厂" 选项。](media/how-to-migrate-ssis-job-ssms/step4.png)
 
 1. 迁移，然后检查结果。
-![步骤 5](media/how-to-migrate-ssis-job-ssms/step5.png)
+![屏幕截图显示 "迁移结果" 页面，该页面显示迁移的进度。](media/how-to-migrate-ssis-job-ssms/step5.png)
 
 ## <a name="next-steps"></a>后续步骤
 

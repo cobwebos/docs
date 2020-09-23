@@ -1,32 +1,29 @@
 ---
-title: 为块 blob 启用和管理时间点还原（预览版）
+title: 对块 blob 数据执行时间点还原
 titleSuffix: Azure Storage
-description: 了解如何使用时间点还原 (预览) 将一组块 blob 还原为以前的状态。
+description: 了解如何使用时间点还原在给定的时间点将一组块 blob 还原到其以前的状态。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 140e1203a29dcebec9d6483e73e906591b2213fb
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068467"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984376"
 ---
-# <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>为块 blob 启用和管理时间点还原（预览版）
+# <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
-可以使用时间点还原 (预览) 将一组块 blob 还原为以前的状态。 本文介绍了如何使用 PowerShell 为存储帐户启用时间点还原。 它还展示了如何使用 PowerShell 执行还原操作。
+可以使用时间点还原将一个或多个块 blob 集还原到以前的状态。 本文介绍如何为存储帐户启用时间点还原，以及如何执行还原操作。
 
-有关详细信息以及如何注册预览版的信息，请参阅[块 blob 的时间点还原（预览版）](point-in-time-restore-overview.md)。
+若要了解有关时间点还原的详细信息，请参阅 [块 blob 的时间点还原](point-in-time-restore-overview.md)。
 
 > [!CAUTION]
-> 时间点还原仅支持对块 blob 执行还原操作。 无法还原对容器的操作。 在时间点还原预览版期间，如果你通过调用[删除容器](/rest/api/storageservices/delete-container)操作从存储帐户中删除了容器，将无法使用还原操作来还原该容器。 在预览版期间，如果希望能够还原，请不要删除容器，而是删除各个 blob。
-
-> [!IMPORTANT]
-> 此时间点还原预览版仅适用于非生产用途。
+> 时间点还原仅支持对块 blob 执行还原操作。 无法还原对容器的操作。 如果通过调用 [删除容器](/rest/api/storageservices/delete-container) 操作从存储帐户中删除容器，则无法使用还原操作来还原该容器。 如果你可能希望还原各个 blob，则不会删除容器。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>启用和配置时间点还原
 
@@ -35,6 +32,9 @@ ms.locfileid: "90068467"
 - [为 blob 启用软删除](soft-delete-enable.md)
 - [启用和禁用更改源](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [启用和管理 blob 版本控制](versioning-enable.md)
+
+> [!IMPORTANT]
+> 启用软删除、更改源和 blob 版本控制可能会产生额外费用。 有关详细信息，请参阅 [blob 的软删除](soft-delete-blob-overview.md)、 [Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)和 [Blob 版本控制](versioning-overview.md)。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -52,23 +52,9 @@ ms.locfileid: "90068467"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 配置时间点还原，请首先安装 Az. Storage preview module version 1.14.1-preview 或更高版本的预览版模块。 删除其他版本的 Az.Storage 模块。
+若要通过 PowerShell 配置时间点还原，请首先安装 [Az. Storage](https://www.powershellgallery.com/packages/Az.Storage) module 版本2.6.0 或更高版本。 然后调用 AzStorageBlobRestorePolicy 命令为存储帐户启用时间点还原。
 
-验证是否已安装 PowerShellGet 版本2.2.4.1 或更高版本。 若要确定当前安装的版本，请运行以下命令：
-
-```powershell
-Get-InstalledModule PowerShellGet
-```
-
-接下来，安装 Az preview 模块。 以下命令将安装 Az [2.5.2](https://www.powershellgallery.com/packages/Az.Storage/2.5.2-preview) 模块的版本：
-
-```powershell
-Install-Module -Name Az.Storage -RequiredVersion 2.5.2-preview -AllowPrerelease
-```
-
-有关安装 Azure PowerShell 的详细信息，请参阅 [安装 powershellget](/powershell/scripting/gallery/installing-psget) 并 [通过 PowerShellGet 安装 Azure PowerShell](/powershell/azure/install-az-ps)。
-
-若要使用 PowerShell 配置 Azure 时间点还原，请调用 Enable-AzStorageBlobRestorePolicy 命令。 以下示例启用软删除并设置软删除保留期，启用更改源，然后启用时间点还原。 运行此示例之前，还需要使用 Azure 门户或 Azure 资源管理器模板来启用 blob 版本控制。
+以下示例启用软删除并设置软删除保留期，启用更改源，然后启用时间点还原。 运行此示例之前，还需要使用 Azure 门户或 Azure 资源管理器模板来启用 blob 版本控制。
 
 运行此示例时，请务必将尖括号中的值替换为你自己的值：
 
@@ -116,7 +102,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 可以还原 `$root` 和 `$web` 容器中的 blob，方法是：在传递给还原操作的范围中显式指定它们。 `$root` 和 `$web` 容器只有在显式指定的情况下才会进行还原。 无法还原其他系统容器。
 
-仅还原块 blob。 还原操作中不包含页 blob 和追加 blob。 有关与追加 blob 相关的限制的详细信息，请参阅 [已知问题](#known-issues)。
+仅还原块 blob。 还原操作中不包含页 blob 和追加 blob。 有关与追加 blob 相关的限制的详细信息，请参阅 [块 blob 的时间点还原](point-in-time-restore-overview.md)。
 
 > [!IMPORTANT]
 > 执行还原操作时，Azure 存储会阻止在操作期间还原的范围内的 blob 上的数据操作。 读取、写入和删除操作在主位置中被阻止。 出于此原因，在执行还原操作时，Azure 门户中的操作（如列出容器）可能不会按预期执行。
@@ -141,13 +127,30 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要通过 PowerShell 还原存储帐户中的所有容器和 blob，请调用 **AzStorageBlobRange** 命令，忽略 `-BlobRestoreRange` 参数。 下面的示例将存储帐户中的容器还原到当前时间后推 12 小时的状态：
+若要通过 PowerShell 还原存储帐户中的所有容器和 blob，请调用 **AzStorageBlobRange** 命令。 默认情况下， **AzStorageBlobRange** 命令以异步方式运行，并返回 **PSBlobRestoreStatus** 类型的对象，您可以使用该对象来检查还原操作的状态。
+
+下面的示例将存储帐户中的容器异步还原到当前时间之前的12小时，并检查还原操作的某些属性：
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the restore point in UTC time.
+$restoreOperation.Parameters.TimeToRestore
+```
+
+若要同步运行还原操作，请在命令中包含 **-WaitForComplete** 参数。 存在 **-WaitForComplete** 参数时，PowerShell 会显示一条消息，其中包含操作的还原 ID，然后在还原操作完成前阻止执行。 请记住，还原操作所需的时间长度取决于要还原的数据量，较大的还原操作可能需要长达一小时才能完成。
+
+```powershell
+Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
 
 ---
@@ -184,18 +187,18 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要还原单个范围的 blob，请调用 **AzStorageBlobRange** 命令，并为参数指定字典和 blob 名称的字典范围 `-BlobRestoreRange` 。 例如，若要还原名为 sample-container 的单个容器中的 blob，可以指定以 *sample-container* 开头且以 *sample-container1* 结尾的范围。 不要求在开始和结束范围中指定的容器存在。 因为不包括范围的结束值，所以即使存储帐户包含名为 *sample-container1* 的容器，也只会还原名为 *sample-container* 的容器：
+若要还原单个范围的 blob，请调用 **AzStorageBlobRange** 命令，并为参数指定字典和 blob 名称的字典范围 `-BlobRestoreRange` 。 例如，若要还原名为 *container1*的单个容器中的 blob，可以指定一个以 *container1* 开头的范围，并以 *container2*结尾。 不要求在开始和结束范围中指定的容器存在。 因为范围的结尾是独占的，即使存储帐户包含名为 *container2*的容器，也只会还原名为 *container1* 的容器：
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container `
-    -EndRange sample-container1
+$range = New-AzStorageBlobRangeToRestore -StartRange container1 `
+    -EndRange container2
 ```
 
 若要指定要还原的容器中的 blob 子集，请使用正斜杠 (/) 将容器名称与 blob 前缀模式分隔开。 例如，下面的范围选择单个容器中名称以字母 *d* 到 *f* 开头的 blob：
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d `
-    -EndRange sample-container/g
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
+    -EndRange container1/g
 ```
 
 接下来，为 **AzStorageBlobRange** 命令提供范围。 通过为 `-TimeToRestore` 参数提供一个 UTC **日期/时间**值来指定还原点。 下面的示例将指定范围内的 blob 还原到当前时间后推 3 天的状态：
@@ -208,7 +211,15 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddDays(-3)
 ```
 
-若要还原多个范围的块 blob，请为 `-BlobRestoreRange` 参数指定一个范围数组。 下面的示例指定两个范围来还原 *container1* 和 *container4*的完整内容：
+默认情况下， **AzStorageBlobRange** 命令以异步方式运行。 异步启动还原操作时，PowerShell 会立即显示此操作的属性表：  
+
+```powershell
+Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges
+------     ---------                            ------------- ------------------------     ---------------------
+InProgress 459c2305-d14a-4394-b02c-48300b368c63               2020-09-15T23:23:07.1490859Z ["container1/d" -> "container1/g"]
+```
+
+若要还原多个范围的块 blob，请为 `-BlobRestoreRange` 参数指定一个范围数组。 下面的示例指定两个范围，以将 *container1* 和 *container4* 的完整内容还原到其状态24小时之前，并将结果保存到变量：
 
 ```powershell
 # Specify a range that includes the complete contents of container1.
@@ -218,43 +229,26 @@ $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 `
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 `
     -EndRange container5
 
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-30) `
+    -TimeToRestore (Get-Date).AddHours(-24) `
     -BlobRestoreRange @($range1, $range2)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the blob ranges specified for the operation.
+$restoreOperation.Parameters.BlobRanges
 ```
+
+若要同步运行还原操作并在执行完成后阻止执行，请在命令中包含 **-WaitForComplete** 参数。
 
 ---
 
-### <a name="restore-block-blobs-asynchronously-with-powershell"></a>通过 PowerShell 异步还原块 blob
-
-若要异步运行还原操作，请将 `-AsJob` 参数添加到对 **AzStorageBlobRange** 的调用，并将调用结果存储在变量中。 **AzStorageBlobRange**命令返回**AzureLongRunningJob**类型的对象。 您可以检查此对象的 **State** 属性以确定还原操作是否已完成。 **State**属性的值可以是 "**正在运行**" 或 "**已完成**"。
-
-下面的示例演示如何以异步方式调用还原操作：
-
-```powershell
-$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
-    -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-5) `
-    -AsJob
-
-# Check the state of the job.
-$job.State
-```
-
-若要在还原操作运行之后等待完成，请调用 [wait](/powershell/module/microsoft.powershell.core/wait-job) 命令，如以下示例中所示：
-
-```powershell
-$job | Wait-Job
-```
-
-## <a name="known-issues"></a>已知问题
-
-对于存在追加 blob 的还原操作子集，还原操作将失败。 如果帐户中存在追加 blob，Microsoft 建议你在预览期间不要执行时间点还原。
-
 ## <a name="next-steps"></a>后续步骤
 
-- [块 blob 的时间点还原（预览版）](point-in-time-restore-overview.md)
+- [块 blob 的时间点还原](point-in-time-restore-overview.md)
 - [软删除](soft-delete-overview.md)
-- [更改源（预览版）](storage-blob-change-feed.md)
+- [更改源](storage-blob-change-feed.md)
 - [Blob 版本控制](versioning-overview.md)

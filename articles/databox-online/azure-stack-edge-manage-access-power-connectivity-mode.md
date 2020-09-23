@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 边缘设备访问、电源和连接模式 |Microsoft Docs
-description: 描述如何管理可帮助将数据传输到 Azure 的 Azure Stack Edge 设备的访问、电源和连接模式
+title: Azure Stack Edge Pro 设备访问、电源和连接模式 |Microsoft Docs
+description: 描述如何管理可帮助将数据传输到 Azure 的 Azure Stack Edge Pro 设备的访问、电源和连接模式
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079789"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904416"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>为 Azure Stack 边缘管理访问、电源和连接模式
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 的访问、电源和连接模式
 
-本文介绍如何管理 Azure Stack 边缘的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
+本文介绍如何管理 Azure Stack Edge Pro 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
 
 在本文中，学习如何：
 
@@ -29,7 +29,7 @@ ms.locfileid: "89079789"
 
 ## <a name="manage-device-access"></a>管理对设备的访问
 
-对 Azure Stack Edge 设备的访问通过使用设备密码进行控制。 可以通过本地 web UI 更改密码。 你还可以在 Azure 门户中重置设备密码。
+可以通过使用设备密码来控制对 Azure Stack Edge Pro 设备的访问。 可以通过本地 web UI 更改密码。 你还可以在 Azure 门户中重置设备密码。
 
 ### <a name="change-device-password"></a>更改设备密码
 
@@ -61,12 +61,12 @@ ms.locfileid: "89079789"
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 权限
 
-为 Azure Stack Edge 设备生成激活密钥，或执行需要凭据的任何操作时，需要具有 Azure Active Directory 图形 API 的权限。 需要凭据的操作可以是：
+为 Azure Stack Edge Pro 设备生成激活密钥，或执行需要凭据的任何操作时，需要具有 Azure Active Directory 图形 API 的权限。 需要凭据的操作可以是：
 
 -  使用关联的存储帐户创建共享。
 -  创建可访问设备上的共享的用户。
 
-你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、创建 Azure Stack 边缘设备上的共享、创建用户、配置边缘计算角色、重置设备密码的操作都将失败。
+你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge Pro 设备上创建共享、创建用户、配置边缘计算角色、重置设备密码的操作都将失败。
 
 有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "89079789"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Azure Stack Edge 设备， `Microsoft.DataBoxEdge` 应注册。 若要注册 `Microsoft.DataBoxEdge` ，订阅管理员应运行以下命令：
+对于 Azure Stack Edge Pro 设备， `Microsoft.DataBoxEdge` 应当注册。 若要注册 `Microsoft.DataBoxEdge` ，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

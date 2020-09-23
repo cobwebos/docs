@@ -3,12 +3,12 @@ title: 准备 DPM 服务器以备份工作负荷
 description: 本文介绍如何使用 Azure 备份服务准备将 System Center Data Protection Manager (DPM) 备份到 Azure。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021028"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975461"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>使用 System Center DPM 准备将工作负载备份到 Azure
 
@@ -61,7 +61,7 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 
 - 默认情况下，保管库具有异地冗余存储。
 - 如果保管库是主要备份，请将选项保持设置为异地冗余存储。 如果想要一个更便宜、但持久性不太高的选项，请使用以下过程配置本地冗余存储。
-- 了解 [Azure 存储](../storage/common/storage-redundancy.md)，以及[异地冗余](../storage/common/storage-redundancy.md)和[本地冗余](../storage/common/storage-redundancy.md)存储选项。
+- 了解 [Azure 存储空间](../storage/common/storage-redundancy.md)，以及 [异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)的 [本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage) 存储和 [区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage) 存储选项。
 - 在初始备份之前修改存储设置。 如果已备份某个项，请先停止在保管库备份该项，再修改存储设置。
 
 若要编辑存储复制设置，请执行以下操作：
@@ -165,7 +165,7 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 
 7. 选择 " **注册** " 以向保管库注册 DPM 服务器。
 
-将服务器成功注册到保管库后，便可以开始备份到 Microsoft Azure。 需要在 DPM 控制台中配置保护组，以将工作负荷备份到 Azure。 [了解如何](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)部署保护组。
+将服务器成功注册到保管库后，便可以开始备份到 Microsoft Azure。 需要在 DPM 控制台中配置保护组，以将工作负荷备份到 Azure。 [了解如何](/system-center/dpm/create-dpm-protection-groups)部署保护组。
 
 ## <a name="troubleshoot-vault-credentials"></a>对保管库凭据进行故障排除
 

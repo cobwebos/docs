@@ -1,7 +1,7 @@
 ---
-title: 教程：使用设计器部署 ML 模型（预览版）
+title: 教程：使用设计器部署 ML 模型
 titleSuffix: Azure Machine Learning
-description: 此教程介绍如何在 Azure 机器学习设计器中生成预测分析解决方案。 通过使用拖放式模块定型、评分和部署机器学习模型。
+description: 本教程介绍如何在 Azure 机器学习设计器中生成预测分析解决方案。 通过使用拖放式模块定型、评分和部署机器学习模型。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 453971d776a0953a344d147bca387a81f65ac73c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287987"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896637"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教程：使用设计器部署机器学习模型（预览版）
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
+
 
 可以部署在[本教程第一部分](tutorial-designer-automobile-price-train-score.md)开发的预测模型供其他人使用。 在第一部分中，你已定型了模型。 现在，让我们基于用户输入生成新的预测。 本教程的此部分介绍如何：
 

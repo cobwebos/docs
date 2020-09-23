@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ed73c4781b9fd9926e12910ca1eb2f71d2b99245
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067216"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904819"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
-Azure 安全中心使用 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)，它提供可分配给 Azure 中的用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。
+Azure 安全中心使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/role-assignments-portal.md)，它提供可分配给 Azure 中的用户、组和服务的 [内置角色](../role-based-access-control/built-in-roles.md) 。
 
 安全中心会评估资源的配置以识别安全问题和漏洞。 如果分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
 
@@ -44,9 +44,9 @@ Azure 安全中心使用 azure [RBAC)  (azure 基于角色的访问控制](../ro
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |编辑安全策略|-|✔|-|-|✔|
 |添加/分配计划 (包括) 法规符合性标准) |-|-|-|-|✔|
-|更改订阅定价层|-|✔|-|-|✔|
+|启用/禁用 Azure Defender|-|✔|-|-|✔|
 |启用/禁用自动预配|-|✔|-|✔|✔|
-|应用资源的安全建议</br>  (和使用[快速修复！](security-center-remediate-recommendations.md#quick-fix-remediation)) |-|-|✔|✔|✔|
+|应用资源的安全建议</br>  (和使用 [快速修复！](security-center-remediate-recommendations.md#quick-fix-remediation)) |-|-|✔|✔|✔|
 |消除警报|-|✔|-|✔|✔|
 |查看警报和建议|✔|✔|✔|✔|✔|
 

@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892178"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985003"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -149,9 +149,9 @@ Azure 备份添加了跨区域还原功能来增强数据可用性和复原能�
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域。  |
-| MARS 代理/本地 | 否                                                           | 不适用               |
-| SQL/SAP HANA          | 否                                                           | 空值               |
+| Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域和主权云。  |
+| SQL/SAP HANA | 是                                                          | 所有 Azure 公共区域和主权云。             |
+| MARS 代理/本地  | 否                                                           | 空值               |
 | AFS                    | 否                                                           | 空值               |
 
 ## <a name="next-steps"></a>后续步骤

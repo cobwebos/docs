@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务 v3 配置脱机 PlayReady 流式处理
-description: 本文介绍如何配置 Azure 媒体服务帐户，以便对适用于 Windows 10 的 PlayReady 进行脱机流式处理。
+description: 本文介绍如何为 Windows 10 脱机版的流式处理 PlayReady 配置 Azure 媒体服务 v3 帐户。
 services: media-services
 keywords: DASH, DRM, Widevine 脱机模式, ExoPlayer, Android
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e0c4daeae9884bdb5feaceccc23046866f0d59c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 19c930915de20d7f3a8938570e074458b32a8efb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266674"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975672"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒体服务 v3 进行适用于 Windows 10 的 PlayReady 脱机流式处理
 
