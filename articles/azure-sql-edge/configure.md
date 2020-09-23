@@ -1,6 +1,6 @@
 ---
-title: 配置 Azure SQL Edge（预览版）
-description: 了解如何配置 Azure SQL Edge (预览) 。
+title: 配置 Azure SQL Edge
+description: 了解如何配置 Azure SQL Edge。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -8,15 +8,15 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816875"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888379"
 ---
-# <a name="configure-azure-sql-edge-preview"></a>配置 Azure SQL Edge（预览版）
+# <a name="configure-azure-sql-edge"></a>配置 Azure SQL Edge
 
 Azure SQL Edge 通过以下两个选项之一进行配置：
 
@@ -30,6 +30,15 @@ Azure SQL Edge 通过以下两个选项之一进行配置：
 
 Azure SQL Edge 公开了几个不同的环境变量，她们可用于配置 SQL Edge 容器。 这些环境变量是可用于 Linux 上的 SQL Server 的一个子集。 有关 Linux 上的 SQL Server 环境变量的详细信息，请参阅 [环境变量](/sql/linux/sql-server-linux-configure-environment-variables/)。
 
+已将以下新环境变量添加到 Azure SQL Edge。 
+
+| 环境变量 | 说明 | 值 |     
+|-----|-----| ---------- |   
+| **MSSQL_TELEMETRY_ENABLED** | 启用或禁用使用情况和诊断数据收集。 | TRUE 或 FALSE |  
+| **MSSQL_TELEMETRY_DIR** | 设置使用情况和诊断数据收集审核文件的目标目录。 | SQL Edge 容器中的文件夹位置。 可以使用装入点或数据卷将此文件夹映射到主机卷。 | 
+| **MSSQL_PACKAGE** | 指定要部署的 dacpac 或 bacpac 包的位置。 | 文件夹、文件或包含 dacpac 或 bacpac 包的 SAS URL。 有关详细信息，请参阅 [在 Sql Edge 中部署 Sql 数据库 DACPAC 和 BACPAC 包](deploy-dacpac.md)。 |
+
+
 Azure SQL Edge 不支持以下 Linux 上的 SQL Server 环境变量。 如果已定义，则在容器初始化过程中将忽略此环境变量。
 
 | 环境变量 | 说明 |
@@ -38,9 +47,6 @@ Azure SQL Edge 不支持以下 Linux 上的 SQL Server 环境变量。 如果已
 
 > [!IMPORTANT]
 > SQL Edge 的 MSSQL_PID 环境变量仅接受 Premium 和 Developer 作为有效值。 Azure SQL Edge 不支持使用产品密钥进行初始化。
-
-> [!NOTE]
-> 下载适用于 Azure SQL Edge 的 [Microsoft 软件许可条款](https://go.microsoft.com/fwlink/?linkid=2128283) 。
 
 ### <a name="specify-the-environment-variables"></a>指定环境变量
 
@@ -53,6 +59,9 @@ Azure SQL Edge 不支持以下 Linux 上的 SQL Server 环境变量。 如果已
 在 **容器创建选项**中添加值。
 
 ![使用容器创建选项设置](media/configure/set-environment-variables-using-create-options.png)
+
+> [!NOTE]
+> 在断开连接的部署模式下，可以使用 `-e` 或命令的或选项指定环境变量 `--env` `--env-file` `docker run` 。
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>使用 mssql. 会议文件进行配置
 
@@ -70,6 +79,13 @@ Azure SQL Edge 不包含 [mssql 会议配置实用工具](/sql/linux/sql-server-
       }
     }
 ```
+
+为 Azure SQL Edge 添加了以下新的 mssql。 
+
+|选项|说明|
+|:---|:---|
+|**customerfeedback** | 选择是否 SQL Server 向 Microsoft 发送反馈。 有关详细信息，请参阅 [禁用使用情况和诊断数据收集](usage-and-diagnostics-data-configuration.md#disable-usage-and-diagnostic-data-collection)|      
+|**userrequestedlocalauditdirectory** | 设置使用情况和诊断数据收集审核文件的目标目录。 有关详细信息，请参阅 [使用情况和诊断数据收集的本地审核](usage-and-diagnostics-data-configuration.md#local-audit-of-usage-and-diagnostic-data-collection) |        
 
 以下 mssql 方案选项不适用于 SQL Edge：
 
@@ -116,7 +132,7 @@ traceflag2 = 1204
 
 ## <a name="run-azure-sql-edge-as-non-root-user"></a>以非根用户身份运行 Azure SQL Edge
 
-从 Azure SQL Edge CTP 2.2 开始，SQL Edge 容器可以使用非根用户/组运行。 在通过 Azure Marketplace 部署时，除非指定了不同的用户/组，否则 SQL Edge 容器将作为 mssql (非根) 用户启动。 若要在部署过程中指定其他非根用户，请 `*"User": "<name|uid>[:<group|gid>]"*` 在 "容器创建选项" 下添加键/值对。 在下面的示例中，SQL Edge 配置为以用户身份启动 `*IoTAdmin*` 。
+默认情况下，Azure SQL Edge 容器使用非根用户/组运行。 当通过 Azure Marketplace 部署 (或使用 docker 运行) 时，除非指定了其他用户/组，否则 SQL 边缘容器将作为 mssql (非根) 用户启动。 若要在部署过程中指定其他非根用户，请 `*"User": "<name|uid>[:<group|gid>]"*` 在 "容器创建选项" 下添加键/值对。 在下面的示例中，SQL Edge 配置为以用户身份启动 `*IoTAdmin*` 。
 
 ```json
 {
@@ -140,7 +156,7 @@ chown -R 10001:0 <database file dir>
 
 ### <a name="upgrading-from-earlier-ctp-releases"></a>从早期 CTP 版本升级
 
-早期 CTP 的 Azure SQL Edge 已配置为以根用户身份运行。 从早期版本的 CTP 升级时，以下选项可用：
+Azure SQL Edge 的早期 Ctp 配置为以根用户身份运行。 从早期 Ctp 升级时，可以使用以下选项。
 
 - 继续使用 root 用户-若要继续使用 root 用户，请 `*"User": "0:0"*` 在容器创建选项下添加键值对。
 - 使用默认 mssql 用户-若要使用默认 mssql 用户，请按照以下步骤操作
@@ -154,7 +170,7 @@ chown -R 10001:0 <database file dir>
     sudo chmod -R g=u /var/lib/docker/volumes/kafka_sqldata/
     ```
 - 使用其他非根用户帐户-使用不同的非根用户帐户
-  - 更新容器创建选项以指定 `*"User": "user_name | user_id*` 容器创建选项下的添加键值对。 请将 user_name 或 user_id 替换为 docker 主机中的实际 user_name 或 user_id。 
+  - 更新容器创建选项以指定 `*"User": "user_name | user_id*` 容器创建选项下的添加键值对。 将 user_name 或 user_id 替换为 docker 主机中的实际 user_name 或 user_id。 
   - 更改目录/装入卷的权限。
 
 ## <a name="persist-your-data"></a> 保留数据
@@ -169,11 +185,11 @@ chown -R 10001:0 <database file dir>
 第一种方法是在主机上将目录作为容器中的数据卷装载。 为此，请将 `docker run` 命令与 `-v <host directory>:/var/opt/mssql` 标志配合使用。 这允许在容器执行之间还原数据。
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 借助此方法，还能共享和查看 Docker 外部的主机上的文件。
@@ -189,11 +205,11 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 14
 第二种方法是使用数据卷容器。 可通过指定卷名（而不是包含 `-v` 参数的主机目录）来创建数据卷容器。 以下示例创建名为 **sqlvolume** 的共享数据卷。
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 > [!NOTE]

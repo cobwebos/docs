@@ -11,15 +11,15 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4b2b435be2a39b6e31a7f44fa6acbe7e1bc9c2c0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d60a963f8ad4b29d3c282d30e6aca9973208860b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661664"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905149"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 > [!IMPORTANT]
 > “检测数据集中的数据偏移”功能目前为公共预览版。
@@ -37,9 +37,6 @@ Azure 机器学习数据集监视器（预览版）具有以下功能：
 使用 [Azure 机器学习数据集](how-to-create-register-datasets.md)来创建监视器。 此数据集必须包含一个时间戳列。
 
 可以在 Python SDK 或 Azure 机器学习工作室中查看数据偏移指标。  可以通过与 Azure 机器学习工作区关联的 [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 资源获取其他指标和见解。
-
-> [!Important]
-> 在所有版本中都可以通过 SDK 监视数据偏移。 不过，通过 Web 上的工作室监视数据偏移的功能仅在企业版中可用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -135,7 +132,6 @@ dset = dset.register(ws, 'target')
 有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)或[数据集 SDK 文档](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure 机器学习工作室
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 如果使用 Azure 机器学习工作室创建数据集，请确保数据的路径包含时间戳信息（其中包括包含数据的所有子文件夹），并设置分区格式。
 
@@ -209,15 +205,13 @@ monitor = monitor.enable_schedule()
 有关设置 `timeseries` 数据集和数据偏移检测器的完整示例，请参阅我们的[示例笔记本](https://aka.ms/datadrift-notebook)。
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure 机器学习工作室
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-若要在数据集监视器中设置警报，要为其创建监视器的数据集所在的工作区必须具有企业版功能。
+1. 导航到 [工作室的主页](https://ml.azure.com)。
+1. 选择左侧的 " **数据集** " 选项卡。 
+1. 选择“数据集监视器”。
+   ![监视器列表](./media/how-to-monitor-datasets/monitor-list.png)
 
-确认工作区功能后，导航到[工作室的主页](https://ml.azure.com)，然后选择左侧的“数据集”选项卡。 选择“数据集监视器”。
-
-![监视器列表](./media/how-to-monitor-datasets/monitor-list.png)
-
-单击“+创建监视器”按钮，然后单击“下一步”继续完成向导。   
+1. 单击“+创建监视器”按钮，然后单击“下一步”继续完成向导。   
 
 :::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="创建监视器向导":::
 

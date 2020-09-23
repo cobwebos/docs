@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: a68622a921bb58513c7bb2154ccee81162a59c53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934413"
+ms.locfileid: "90977789"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>操作说明：配置警报并使用挂钩获取通知
 
@@ -23,12 +23,12 @@ ms.locfileid: "90934413"
 
 ## <a name="create-a-hook"></a>创建挂钩
 
-指标顾问支持三种不同类型的挂钩：电子邮件挂钩、web 挂钩和 Azure DevOps。 您可以选择适用于您的特定方案的应用程序。 
+指标顾问支持三种不同类型的挂钩：电子邮件挂钩、web 挂钩和 Azure DevOps。 您可以选择适用于您的特定方案的应用程序。       
 
 ### <a name="email-hook"></a>电子邮件挂钩
 
 > [!Note]
-> 指标顾问资源管理员需要配置 **电子邮件设置**，并在指标顾问中输入 SMTP 相关信息，然后才能发送异常警报。
+> 指标顾问资源管理员需要配置电子邮件设置，并在指标顾问中输入 SMTP 相关信息，然后才能发送异常警报。 资源组管理员或订阅管理员需要在指标顾问资源的 "访问控制" 选项卡中分配至少一个 *认知服务指标顾问管理员* 角色。 
 
 若要创建电子邮件挂钩，可使用以下参数： 
 

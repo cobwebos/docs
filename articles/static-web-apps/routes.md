@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518769"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906781"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
 
@@ -26,13 +26,13 @@ Azure 静态 Web 应用中的路由为静态内容和 Api<sup>1</sup>定义后�
 
 路由主题明显与身份验证和授权概念重叠。 务必要阅读[身份验证和授权](authentication-authorization.md)指南以及本文。
 
-有关详细信息，请参阅[示例路由文件](#example-route-file)。
+有关详细信息，请参阅 [示例路由文件](#example-route-file) 。
 
 ## <a name="location"></a>位置
 
 routes.json 文件必须存在于应用生成工件文件夹的根目录中。 如果 Web 应用包含将生成的文件从特定文件夹复制到生成工件文件夹的生成步骤，则 routes.json 文件需要存在于该特定文件夹中。
 
-下表列出了在其中放置若干前端 JavaScript 框架和库的 routes.json 文件的相应位置。
+下表列出了在文件中放置多个前端框架和库的 _routes.js_ 的相应位置。
 
 |框架/库 | 位置  |
 |---------|----------|
@@ -40,6 +40,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | React   | _public_  |
 | Svelte  | _public_   |
 | Vue     | _public_ |
+| Blazor  | _wwwroot_ |
+
+上述表格仅代表一些与 Azure 静态 Web 应用兼容的框架和库。 有关详细信息，请参阅 [配置前端框架和库](./front-end-frameworks.md) 。
 
 ## <a name="defining-routes"></a>定义路由
 
@@ -48,7 +51,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | 规则属性  | 必选 | 默认值 | 注释                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | 是      | 不适用          | 调用方请求的路由模式。<ul><li>路由路径的末尾支持[通配符](#wildcards)。 例如，路由 admin/\* 与 admin 路径下的任何路由匹配。<li>路由的默认文件为 index.html。</ul>|
-| `serve`        | 否       | 不适用          | 定义从请求返回的文件或路径。 文件路径和名称可以不同于所请求的路径。 如果 `serve` 未定义值，则使用请求的路径。 不支持 Querystring 参数;`serve`值必须指向实际文件。  |
+| `serve`        | 否       | 不适用          | 定义从请求返回的文件或路径。 文件路径和名称可以不同于所请求的路径。 如果 `serve` 未定义值，则使用请求的路径。 不支持 Querystring 参数; `serve` 值必须指向实际文件。  |
 | `allowedRoles` | 否       | 匿名     | 角色名称数组。 <ul><li>有效字符包括 `a-z`、`A-Z`、`0-9` 和 `_`。<li>内置角色 `anonymous` 适用于所有未经身份验证的用户。<li>内置角色 `authenticated` 适用于任何已登录的用户。<li>用户必须至少属于一个角色。<li>角色在 OR 基础上进行匹配。 如果用户处于列出的任何角色中，则授予访问权限。<li>单个用户通过[邀请](authentication-authorization.md)关联到角色。</ul> |
 | `statusCode`   | 否       | 200           | 响应请求的 [HTTP 状态代码](https://wikipedia.org/wiki/List_of_HTTP_status_codes)。 |
 
@@ -106,7 +109,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 
 ## <a name="fallback-routes"></a>回退路由
 
-前端 JavaScript 框架或库通常依赖于 Web 应用导航的客户端路由。 这些客户端路由规则无需向服务器发回请求即可更新浏览器的窗口位置。 如果刷新页面，或直接导航到客户端路由规则生成的位置，则需要服务器端回退路由来提供相应的 HTML 页面。
+单页面应用程序，无论使用的是前端 JavaScript 框架还是库或 WebAssembly 平台（如 Blazor），通常都依赖于客户端路由来实现 web 应用导航。 这些客户端路由规则无需向服务器发回请求即可更新浏览器的窗口位置。 如果刷新页面，或直接导航到客户端路由规则生成的位置，则需要服务器端回退路由来提供相应的 HTML 页面。
 
 下面的示例演示了一个常见的回退路由：
 
@@ -169,7 +172,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 
 ## <a name="custom-mime-types"></a>自定义 mime 类型
 
-与该 `mimeTypes` 数组在同一级别上列出的对象 `routes` 允许您将[MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)与文件扩展名关联。
+与该 `mimeTypes` 数组在同一级别上列出的对象 `routes` 允许您将 [MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) 与文件扩展名关联。
 
 ```json
 {
@@ -187,9 +190,12 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 - 键不能为 null 或空，也不能超过50个字符
 - 值不能为 null 或空，也不能超过1000个字符
 
+> [!NOTE]
+> 静态 Web 应用了解 Blazor 应用程序以及 WASM 和 DLL 文件的预期 MIME 类型，无需为这些文件添加映射。
+
 ## <a name="default-headers"></a>默认标头
 
-与该 `defaultHeaders` 数组在同一级别上列出的对象可 `routes` 用于添加、修改或删除[响应标头](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
+与该 `defaultHeaders` 数组在同一级别上列出的对象可 `routes` 用于添加、修改或删除 [响应标头](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
 
 为标头提供值可以添加或修改标头。 提供空值后，会删除为客户端提供的标头。
 
@@ -212,7 +218,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 - 如果为 Null 或空值，则从处理中删除标头。
 - 键或值不能超过8000个字符。
 - 定义的标头将为所有请求提供服务。
-- 在routes.js中定义_的_标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应标头。
+- 在routes.js中定义 _ 的_ 标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应标头。
 
 ## <a name="example-route-file"></a>路由文件示例
 
@@ -284,9 +290,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | 请求... | 结果为... |
 |--|--|--|
 | /profile | 向经过身份验证的用户提供 /profile/index.html 文件。 未经身份验证的用户重定向到 /login。 |
-| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 不在_管理员_角色中的经过身份验证的用户将被提供401错误<sup>2</sup>。 未经身份验证的用户重定向到 /login。 |
+| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 不在 _管理员_ 角色中的经过身份验证的用户将被提供401错误<sup>2</sup>。 未经身份验证的用户重定向到 /login。 |
 | /api/admin | 将经过身份验证的管理员角色用户发出的请求发送到 API。 经过身份验证的非管理员角色的用户，和未经身份验证的用户将收到 401 错误。 |
-| /customers/contoso | 属于 "_管理员_" 或 "_客户" \_ contoso_角色的经过身份验证的用户提供 _/customers/contoso/index.html_文件<sup>2</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
+| /customers/contoso | 属于 " _管理员_ " 或 " _客户" \_ contoso_ 角色的经过身份验证的用户提供 _/customers/contoso/index.html_ 文件<sup>2</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
 | /login | 未经身份验证的用户将面临在 GitHub 中进行身份验证的挑战。 |
 | /.auth/login/twitter | 已禁用通过 Twitter 的授权。 服务器响应时出现 404 错误。 |
 | /logout | 用户已注销任何身份验证提供程序。 |
@@ -297,16 +303,16 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 
 所有响应都包含 `content-security-policy` 值为的标头 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
 
-<sup>1</sup> API 函数的路由规则仅支持[重定向](#redirects)和[保护具有角色的路由](#securing-routes-with-roles)。
+<sup>1</sup> API 函数的路由规则仅支持 [重定向](#redirects) 和 [保护具有角色的路由](#securing-routes-with-roles)。
 
-<sup>2</sup>你可以通过 `Unauthorized_MissingRoles` 在数组中定义规则来提供自定义错误页 `platformErrorOverrides` 。
+<sup>2</sup> 你可以通过 `Unauthorized_MissingRoles` 在数组中定义规则来提供自定义错误页 `platformErrorOverrides` 。
 
 ## <a name="restrictions"></a>限制
 
 - routes.json 文件不能超过 100 KB
 - routes.json 文件最多支持 50 个不同的角色
 
-有关一般限制和限制，请参阅[配额一文](quotas.md)。
+有关一般限制和限制，请参阅 [配额一文](quotas.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 

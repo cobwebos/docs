@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923469"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904360"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>教程：使用 Azure Data Box Gateway 传输数据
 
@@ -57,7 +57,7 @@ ms.locfileid: "87923469"
 
     3. 提供一个可供共享驻留在其中的存储帐户。 如果容器尚不存在，系统会使用新创建的共享名称在存储帐户中创建一个容器。 如果容器已存在，则使用该容器。
        > [!IMPORTANT]
-       > 确保所用的 Azure 存储帐户没有设置不可变策略（如果要将它用于 Azure Stack Edge 或 Data Box Gateway 设备）。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+       > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
     
     4. 从块 Blob、页 Blob 或文件中选择“存储服务”。  所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
    
@@ -115,7 +115,7 @@ ms.locfileid: "87923469"
 
 ### <a name="connect-to-an-nfs-share"></a>连接到 NFS 共享
 
-在连接到 Azure Stack Edge 设备的 Linux 客户端上，执行以下过程：
+在连接到 Azure Stack Edge Pro 设备的 Linux 客户端上，执行以下过程：
 
 1. 确保此客户端已安装 NFSv4 客户端。 若要安装 NFS 客户端，请使用以下命令：
 

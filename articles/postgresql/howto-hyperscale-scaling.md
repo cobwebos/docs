@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 10d253b3e470ea009944d4ccd756d4bbbe3766e7
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029811"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906483"
 ---
 # <a name="server-group-size"></a>服务器组大小
 
@@ -42,7 +42,7 @@ Azure Database for PostgreSQL-超大规模 (Citus) 提供自助扩展，以处�
 
 若要添加节点，请在超大规模 (Citus) 服务器组中转到 " **计算 + 存储** " 选项卡。  拖动 **辅助节点计数** 的滑块将更改该值。
 
-![资源滑块](./media/howto-hyperscale-scaling/01-sliders-workers.png)
+:::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="资源滑块":::
 
 单击 " **保存** " 按钮以使更改的值生效。
 

@@ -3,16 +3,16 @@ title: Azure Defender 和可用计划概述
 description: 了解 Azure Defender 的计划、保护和警报。 然后继续在订阅上启用 Azure Defender。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 627fc52043054557ca6f6baf9827da22d2af5139
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb1c1e6443b5087b48aad7c3171bef557707adb1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933557"
+ms.locfileid: "90977289"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -21,7 +21,7 @@ Azure 安全中心的功能涵盖了云安全性的两大主要要素：
 - **云安全状况管理 (CSPM) **
 - **云工作负荷保护 (CWP) **
 
-安全中心的 CSPM 功能（例如安全分数、Windows 和 Linux Azure 计算机中的安全错误配置）都是所有 Azure 用户可用的免费安全中心体验的一部分。 使用这些 CSPM 功能增强你的状况，确保法规遵从性， 
+安全中心的 CSPM 功能（例如安全分数、Windows 和 Linux Azure 计算机中的安全错误配置）都是所有 Azure 用户可用的免费安全中心体验的一部分。 使用这些 CSPM 功能来增强你的状况，并确保法规遵从性。
 
 **Azure Defender** 是 (CWPP) 集成在安全中心内的云工作负荷保护平台，用于对 Azure 和混合工作负荷进行高级、智能、保护。
 

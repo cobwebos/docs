@@ -86,12 +86,18 @@
     - name: 了解效果
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: 范围
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
     - name: 计划结构
       displayName: 'parameters, groups, domains, policies'
       href: ./concepts/initiative-definition-structure.md
     - name: 分配结构
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: 例外结构
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: 评估新策略的影响
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
@@ -233,7 +239,7 @@
           href: /rest/api/policy-insights/remediations
         - name: 来宾配置
           href: /rest/api/guestconfiguration/
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       items:
         - name: 分配
           href: /azure/templates/microsoft.authorization/policyassignments

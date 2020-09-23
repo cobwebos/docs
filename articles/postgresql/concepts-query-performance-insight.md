@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7573e99de96e3d13509056c49bc24be7fe166bf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906532"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -30,9 +30,9 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 在 Azure Database for PostgreSQL 服务器的门户页中，选择菜单栏的 "**智能性能**" 部分下的 "**查询性能见解**"。
 
-![Query Performance Insight 长时间运行的查询](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-landing-page.png" alt-text="Query Performance Insight 长时间运行的查询":::
 
-"**长时间运行的查询**" 选项卡按每次执行的平均持续时间（按15分钟的间隔聚合）显示前5个查询。 您可以通过从 "**查询数**" 下拉箭头中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
+" **长时间运行的查询** " 选项卡按每次执行的平均持续时间（按15分钟的间隔聚合）显示前5个查询。 您可以通过从 " **查询数** " 下拉箭头中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
 
 可以在图表中单击并拖动以缩小到特定的时间窗口。 或者，使用放大和缩小图标分别查看更短或更长的时间段。
 
@@ -40,10 +40,10 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 选择“等待统计信息”选项卡以查看服务器中等待次数的相应可视化效果。
 
-![Query Performance Insight 等待统计信息](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight 等待统计信息":::
 
 ## <a name="considerations"></a>注意事项
-* Query Performance Insight 不适用于[读取副本](concepts-read-replicas.md)。
+* Query Performance Insight 不适用于 [读取副本](concepts-read-replicas.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关如何在 Azure Database for PostgreSQL 中进行[监视和优化](concepts-monitoring.md)的详细信息。

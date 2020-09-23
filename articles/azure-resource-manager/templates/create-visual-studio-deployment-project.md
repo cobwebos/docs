@@ -3,12 +3,12 @@ title: 创建和部署 Visual Studio 资源组项目
 description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76152725"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985247"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
@@ -23,7 +23,7 @@ ms.locfileid: "76152725"
 1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”。
 1. 选择“Azure 资源组”项目模板和“下一步”   。
 
-    ![创建项目](./media/create-visual-studio-deployment-project/create-project.png)
+    ![屏幕截图显示 "使用 Azure 资源组创建新的项目" 窗口，并突出显示 "下一步" 按钮。](./media/create-visual-studio-deployment-project/create-project.png)
 
 1. 为你的项目命名。 其他默认设置可能没问题，但请查看它们，使它们适用于你的环境。 完成后，选择“创建”。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "76152725"
 
 1. 可以通过选择“JSON 大纲”窗口顶部的“添加资源”  按钮，或右键单击“资源”  ，并选择“添加新资源”  ，来添加资源。
 
-   ![添加资源](./media/create-visual-studio-deployment-project/add-resource.png)
+   ![屏幕截图显示 "JSON 大纲" 窗口，其中突出显示了 "添加新资源" 选项。](./media/create-visual-studio-deployment-project/add-resource.png)
 
 1. 选择“存储帐户”  并为其命名。 提供一个名称，该名称不超过 11 个字符，并且只包含数字和小写字母。
 
@@ -189,7 +189,7 @@ ms.locfileid: "76152725"
 
 1. 现在，需要确保资源组项目与此新项目之间建立链接。 返回到资源组项目 (ExampleAppDeploy)。 右键单击“引用”  ，选择“添加引用”  。
 
-    ![添加引用](./media/create-visual-studio-deployment-project/add-new-reference.png)
+    ![屏幕截图显示 "ExampleAppDeploy" 菜单，其中突出显示了 "添加引用" 选项。](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
 1. 选择创建的 Web 应用项目。
 
@@ -364,7 +364,7 @@ ms.locfileid: "76152725"
 
 1. 部署完成后，请在门户中查看你的仪表板。 选择“仪表板”  并选择你部署的仪表板。
 
-   ![自定义仪表板](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
+   ![屏幕截图显示 "仪表板" 页，其中突出显示了一个自定义仪表板。](./media/create-visual-studio-deployment-project/view-custom-dashboards.png)
 
 1. 可看到自定义的仪表板。
 

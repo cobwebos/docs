@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 07/6/2020
-ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c6c878aa0e4a9d5caa22f7cd94c438f22a81d2ab
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108781"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881870"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
@@ -57,7 +57,7 @@ Azure 流分析易于入门。 只需点击几下鼠标即可连接到多个源�
 
 ## <a name="programmer-productivity"></a>程序员工作效率
 
-Azure 流分析使用简单的基于 SQL 的查询语言，该语言已使用强大的时态约束进行强化，可以分析动态数据。 若要定义作业转换，请使用简单的声明性[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)，以便通过简单的 SQL 构造创作复杂的时态查询和分析。 由于流分析查询语言与 SQL 语言相一致，因此，熟悉 SQL 就足以开始创建作业。 也可使用 Azure PowerShell、[流分析 Visual Studio 工具](stream-analytics-tools-for-visual-studio-install.md)、[流分析 Visual Studio Code 扩展](quick-create-vs-code.md)或 Azure 资源管理器模板等开发人员工具来创建作业。 可以使用开发人员工具来脱机开发转换查询，然后使用 [CI/CD 管道](stream-analytics-tools-for-visual-studio-cicd.md)将作业提交到 Azure。
+Azure 流分析使用简单的基于 SQL 的查询语言，该语言已使用强大的时态约束进行强化，可以分析动态数据。 若要定义作业转换，请使用简单的声明性[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)，以便通过简单的 SQL 构造创作复杂的时态查询和分析。 由于流分析查询语言与 SQL 语言相一致，因此，熟悉 SQL 就足以开始创建作业。 也可使用 Azure PowerShell、[流分析 Visual Studio 工具](stream-analytics-tools-for-visual-studio-install.md)、[流分析 Visual Studio Code 扩展](quick-create-visual-studio-code.md)或 Azure 资源管理器模板等开发人员工具来创建作业。 可以使用开发人员工具来脱机开发转换查询，然后使用 [CI/CD 管道](stream-analytics-tools-for-visual-studio-cicd.md)将作业提交到 Azure。
 
 流分析查询语言提供各种用于分析和处理流数据的功能。 此查询语言支持简单的数据操作、聚合和分析函数、[地理空间函数](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions)、[模式匹配](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)和[异常情况检测](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)。 可以在门户中编辑查询，然后使用从实时流中提取的示例数据来测试它们。
 
@@ -106,4 +106,4 @@ Azure 流分析遵循多个符合性认证，如 [Azure 符合性概述](https:/
 * [使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)。
 * [使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)。
 * [使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)。
-* [使用 Visual Studio Code 创建流分析作业](quick-create-vs-code.md)。
+* [使用 Visual Studio Code 创建流分析作业](quick-create-visual-studio-code.md)。

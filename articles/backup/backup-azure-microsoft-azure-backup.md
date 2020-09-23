@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备份服务器 (MABS) 来保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181691"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975530"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -59,7 +59,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 | Windows Server 2019 |64 位 |Standard、Datacenter、Essentials |
 | Windows Server 2016 和最新的 SP |64 位 |Standard、Datacenter、Essentials  |
 
-可以使用 Windows Server 重复数据删除来删除 DPM 存储中的重复数据。 了解有关在 Hyper-V VM 中部署时 [DPM 和重复数据删除](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019)如何配合工作的详细信息。
+可以使用 Windows Server 重复数据删除来删除 DPM 存储中的重复数据。 了解有关在 Hyper-V VM 中部署时 [DPM 和重复数据删除](/system-center/dpm/deduplicate-dpm-storage)如何配合工作的详细信息。
 
 > [!NOTE]
 > Azure 备份服务器设计为在专用的单一用途服务器上运行。 无法在上安装 Azure 备份服务器：
@@ -80,7 +80,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 ### <a name="set-storage-replication"></a>设置存储复制
 
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy.md)和[本地冗余](../storage/common/storage-redundancy.md)存储选项。
+存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 有关详细信息，请参阅[Azure 存储复制概述](../storage/common/storage-redundancy.md)中[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)的[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -89,7 +89,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 3. 选择存储复制类型，然后选择“保存”。
 
-     ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![设置新保管库的存储配置](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
 ## <a name="software-package"></a>软件包
 
@@ -199,7 +199,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![提供文件安装位置](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅 [准备数据存储](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)。
+    备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅 [准备数据存储](/system-center/dpm/plan-long-and-short-term-data-storage)。
 5. 为受限制的本地用户帐户提供强密码，然后选择 " **下一步**"。
 
     ![提供强密码](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -355,14 +355,14 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 4. 备份应会继续，而无需重启生产服务器。
 5. 现在，可以开始保护数据。 如果要升级到新式备份存储，同时保护，你还可以选择要在其中存储备份的卷，并在预配空间下检查。 [了解详细信息](backup-mabs-add-storage.md)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果 Microsoft Azure 备份服务器在安装阶段（或者备份或还原时）失败并出现错误，请参阅此[错误代码文档](https://support.microsoft.com/kb/3041338)以获取详细信息。
 此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-可以在此处获取有关[为 DPM 准备环境](/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019)的详细信息。 其中还包含有关可在其上部署和使用 Azure 备份服务器的受支持配置的信息。 可以使用一系列 [PowerShell cmdlet](/powershell/module/dataprotectionmanager/) 来执行各种操作。
+可以在此处获取有关[为 DPM 准备环境](/system-center/dpm/prepare-environment-for-dpm)的详细信息。 其中还包含有关可在其上部署和使用 Azure 备份服务器的受支持配置的信息。 可以使用一系列 [PowerShell cmdlet](/powershell/module/dataprotectionmanager/) 来执行各种操作。
 
 请参阅这些文章，以深入了解如何使用 Microsoft Azure 备份服务器来保护工作负荷。
 

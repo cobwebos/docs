@@ -3,12 +3,12 @@ title: 在 Azure Application Insights 中监视 Docker 应用程序 | Microsoft 
 description: Docker 性能计数器、事件和异常可连同容器化应用发送的遥测数据一起显示在 Application Insights 中。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324414"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977574"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights 中监视 Docker 应用程序（已弃用）
 
@@ -61,7 +61,7 @@ ms.locfileid: "87324414"
     <Add type="com.microsoft.applicationinsights.extensibility.initializer.docker.DockerContextInitializer"/> 
 ```
 
-这会将容器和主机 ID 等 Docker 信息添加到应用发送的每个遥测项中。
+这会将 Docker 信息（如容器和主机 ID）添加到从应用发送的每个遥测项。
 
 ## <a name="view-your-telemetry"></a>查看遥测数据
 返回到 Azure 门户中的 Application Insights 资源。
@@ -71,17 +71,17 @@ ms.locfileid: "87324414"
 片刻之后，就能看到来自 Docker 应用的数据，尤其是 Docker 引擎上有其他容器运行时。
 
 ### <a name="docker-container-events"></a>Docker 容器事件
-![示例](./media/docker/13.png)
+![屏幕截图显示了 "选择搜索"，其中包含一个从自定义事件指向带有自定义数据的窗口的箭头的诊断搜索结果窗口。](./media/docker/13.png)
 
 若要调查单个事件，请单击 [搜索](./diagnostic-search.md)。 通过搜索和筛选找到所需的事件。 单击任一事件可查看详细信息。
 
 ### <a name="exceptions-by-container-name"></a>按容器名称列出的异常
-![示例](./media/docker/14.png)
+![屏幕截图显示 "指标资源管理器" 页，其中选择了一个图表，并在右侧打开 "图表详细信息" 窗口。](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>已添加到应用遥测的 Docker 上下文
 从使用 AI SDK 检测的应用程序发送的请求遥测数据，已使用 Docker 上下文信息进行补充。
 
-## <a name="q--a"></a>问与答
+## <a name="q--a"></a>问题解答
 *Application Insights 提供 Docker 所不能提供的哪些功能？*
 
 * 按容器和映像提供性能计数器详细剖析。

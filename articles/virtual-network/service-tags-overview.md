@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ce4c44ef17f456a776fde3addc5ec4ed29c8ebbd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434446"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983695"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -67,7 +67,7 @@ ms.locfileid: "89434446"
 | **AzureInformationProtection** | Azure 信息保护。<br/><br/>*注意：* 此标记依赖于 AzureActiveDirectory、AzureFrontDoor.Frontend 和 AzureFrontDoor.FirstParty 标记  。 | 出站 | 否 | 否 |
 | **AzureIoTHub** | Azure IoT 中心。 | 出站 | 否 | 否 |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory** 标记。 | 出站 | 是 | 是 |
-| **AzureLoadBalancer** | Azure 基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 这不包括到 Azure 负载均衡器资源的流量。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 推送、请求和匿名 | 否 | 否 |
+| **AzureLoadBalancer** | Azure 基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 这只包括探测流量，而不包括到后端资源的实际流量。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureMachineLearning** | Azure 机器学习。 | 推送、请求和匿名 | 否 | 是 |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（GiG 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记依赖于 Storage 标记。 | 出站 | 否 | 是 |
 | **AzureOpenDatasets** | Azure 开放数据集。<br/><br/>*注意：* 此标记依赖于 AzureFrontDoor.Frontend 和 Storage 标记 。 | 出站 | 否 | 否 |

@@ -1,6 +1,6 @@
 ---
-title: '用保留策略管理历史数据-Azure SQL Edge (预览版) '
-description: '了解如何通过 Azure SQL Edge 中的保留策略管理历史数据 (预览) '
+title: 用保留策略管理历史数据-Azure SQL Edge
+description: 了解如何通过 Azure SQL Edge 中的保留策略管理历史数据
 keywords: SQL 边缘，数据保留
 services: sql-edge
 ms.service: sql-edge
@@ -9,22 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9acec467819f159623176edf2f3f763a55019eb4
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550618"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888136"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>用保留策略管理历史数据
 
 数据保留可以在数据库和任何基础表上单独启用，从而允许用户为其表和数据库创建灵活的老化策略。 应用数据保留很简单：只需在创建表或更改表操作期间设置一个参数。 
 
-在定义数据库和基础表的数据保留策略后，将运行后台时间计时器任务，以从表中删除任何已过时的记录以进行数据保留。 在计划并由系统运行的后台任务中，标识匹配行及其从表中删除的操作以透明方式进行。 表行的期限条件根据用作表定义中的列进行检查 `filter_column` 。 例如，如果保留期设置为一周，则符合以下条件的表行可满足以下条件： 
+在定义数据库和基础表的数据保留策略后，将运行后台时间计时器任务，以从表中删除任何已过时的记录以进行数据保留。 在计划并由系统运行的后台任务中，标识匹配行及其从表中删除的操作以透明方式进行。 表行的期限条件根据用作表定义中的列进行检查 `filter_column` 。 例如，如果保留期设置为一周，则符合清除条件的表行满足以下条件之一： 
 
-```sql
-filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
-```
+- 如果筛选列使用 DATETIMEOFFSET 数据类型，则条件为 `filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())`
+- 否则，条件为 `filter_column < DATEADD(WEEK, -1, SYSDATETIME())`
 
 ## <a name="data-retention-cleanup-phases"></a>数据保留清理阶段
 
@@ -37,7 +36,7 @@ filter_column < DATEADD(WEEK, -1, SYSUTCDATETIME())
 
 ## <a name="manual-cleanup"></a>手动清理
 
-根据表中的数据保留设置和数据库的工作负荷的性质，在运行期间，自动清理线程可能无法完全删除所有过时的行。 为了协助此操作并允许用户手动删除过时的行，已 `sys.sp_cleanup_data_retention` 在 AZURE SQL Edge (预览) 中引入了该存储过程。 
+根据表中的数据保留设置和数据库的工作负荷的性质，在运行期间，自动清理线程可能无法完全删除所有过时的行。 为了协助此操作并允许用户手动删除过时的行，已 `sys.sp_cleanup_data_retention` 在 AZURE SQL Edge 中引入了该存储过程。 
 
 此存储过程采用三个参数。 
     - 架构名称-表的所属架构的名称。 这是必需参数。 
@@ -67,7 +66,7 @@ select @rowcnt
 
 ## <a name="monitoring-data-retention-cleanup"></a>监视数据保持清除
 
-可以使用 Azure SQL Edge (预览) 中的扩展事件 (XEvents) 监视数据保留策略清理操作。 有关扩展事件的详细信息，请参阅 [XEvents 概述](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)。
+可以使用 Azure SQL Edge (XEvents) 中的扩展事件监视数据保留策略清理操作。 有关扩展事件的详细信息，请参阅 [XEvents 概述](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)。 
 
 下面六个扩展事件有助于跟踪清理操作的状态。 
 
@@ -78,7 +77,9 @@ select @rowcnt
 | data_retention_task_exception  | 在特定于表的保留清理过程外，用保留策略清理表的后台任务失败时发生。 |
 | data_retention_cleanup_started  | 当启动带有数据保留策略的表的清理过程开始时发生。 |
 | data_retention_cleanup_exception  | 出现保留策略的表的清理过程失败。 |
-| data_retention_cleanup_completed  | 当包含数据保留策略的表的清理过程结束时发生。 |
+| data_retention_cleanup_completed  | 当包含数据保留策略的表的清理过程结束时发生。 |  
+
+此外，名为的新环形缓冲区类型已 `RING_BUFFER_DATA_RETENTION_CLEANUP` 添加到 sys.databases dm_os_ring_buffers 动态管理视图。 此视图可用于监视数据保留清理操作。 
 
 
 ## <a name="next-steps"></a>后续步骤

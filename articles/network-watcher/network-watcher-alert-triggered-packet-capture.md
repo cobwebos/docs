@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738050"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975073"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -30,7 +30,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
 在 Azure 生态系统中使用网络观察程序、警报和函数，可以主动使用数据和工具做出响应，解决网络中的问题。
 
-![方案][scenario]
+![关系图显示了虚拟机上的网络观察程序扩展，该扩展流到发送到 T C P 段 > 100 错误，该错误流向 Azure Functions，后者流向网络观察程序扩展。][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

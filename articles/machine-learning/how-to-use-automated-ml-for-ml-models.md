@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904938"
+ms.locfileid: "90985569"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 
@@ -86,7 +86,7 @@ ms.locfileid: "90904938"
             
         选择“下一步”。
 
-    1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](#profile)。
+    1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 
         选择“**下一页**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
@@ -111,7 +111,7 @@ ms.locfileid: "90904938"
     选择“创建”。 创建新计算可能需要花费几分钟时间。
 
     >[!NOTE]
-    > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](#profile)部分）。
+    > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](how-to-connect-data-ui.md#profile)部分）。
 
     选择“**下一页**”。
 
@@ -144,32 +144,6 @@ ms.locfileid: "90904938"
 1. （可选）查看特征化设置：如果选择在“其他配置设置”窗体中启用“自动特征化”，则会应用默认的特征化技术 。 在“查看特征化设置”中，可以更改这些默认设置并相应地进行自定义。 了解如何[自定义特征化](#customize-featurization)。 
 
     ![Azure 机器学习工作室任务类型窗体](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
-
-<a name="profile"></a>
-
-## <a name="data-profiling--summary-stats"></a>数据分析和摘要统计信息
-
-可以获取整个数据集的各种摘要统计信息，以验证该数据集是否随时可在机器学习中使用。 对于非数字列，仅包括最小值、最大值和误差计数等基本统计信息。 对于数字列，还可以查看其统计时刻和估算的分位数。 具体而言，我们的数据配置文件包括：
-
->[!NOTE]
-> 对于具有不相关类型的特征，将显示空白条目。
-
-统计信息|说明
-------|------
-Feature| 正在汇总的列的名称。
-配置文件| 基于推理的类型显示的内联可视化效果。 例如，字符串、布尔值和日期包含值计数，而小数（数字）则包含近似的直方图。 这样，就可以快速了解数据的分布。
-类型分布| 列中类型的内联值计数。 Null 是其自身的类型，因此，此可视化效果可用于检测反常值或缺失值。
-类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
-Min| 列的最小值。 对于其类型不采用固有顺序（例如布尔值）的特征，将显示空白条目。
-Max| 列的最大值。 
-Count| 列中缺失和未缺失条目的总数。
-非缺失计数| 列中未缺失的条目数。 空字符串和误差被视为值，因此它们不会计入“未缺少计数”。
-分位数| 每个分位数中的近似值，用于提供数据分布的概观。
-平均值| 列的算术中间值或平均值。
-标准偏差| 此列数据的离散量或差异量的度量。
-Variance| 此列数据与其平均值之间的分散程度度量。 
-倾斜| 此列数据与正态分布之间的差异程度度量。
-峰度| 此列数据与正态分布相比的落后程度度量。
 
 ## <a name="customize-featurization"></a>自定义特征化
 
