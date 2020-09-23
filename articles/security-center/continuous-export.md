@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 4d5cff416c1ac54e54d06e8def121db65bb7d191
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433920"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905622"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>导出安全警报和建议
 
@@ -33,8 +33,8 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式版|
-|计价|免费层|
+|发布状态：|正式发布 (GA)|
+|计价|免费|
 |必需的角色和权限：|资源组上的**安全管理员角色** (或**所有者**) <br>还必须对目标资源具有写入权限|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中国 Gov (到事件中心) ，其他 Gov|
 |||
@@ -89,7 +89,7 @@ API 提供 Azure 门户中没有的其他功能，例如：
 * **更具针对性的作用域** -API 为导出配置的作用域提供更精细的级别。 使用 API 定义导出时，可以在资源组级别执行此操作。 如果在安全中心的门户 UI 中使用 **连续导出** 页面，则必须在订阅级别定义它。
 
     > [!TIP]
-    > 如果使用 API 设置了多个导出配置，或者如果使用了仅限 API 的参数，则这些额外功能不会显示在安全中心 UI 中。 相反，会出现一个横幅，通知您存在其他配置。
+    > 如果已使用 API 设置了多个导出配置，或者如果使用了仅限 API 的参数，则这些额外的功能不会在安全中心 UI 中显示。 相反，会出现一个横幅，通知您存在其他配置。
 
 在 [REST API 文档](https://docs.microsoft.com/rest/api/securitycenter/automations)中了解有关自动化 API 的详细信息。
 
@@ -123,13 +123,13 @@ Azure 事件中心是一种很好的解决方案，可用于以编程方式使�
 
 ## <a name="continuous-export-to-a-log-analytics-workspace"></a>连续导出到 Log Analytics 工作区
 
-如果要在 Log Analytics 工作区内分析 Azure 安全中心数据或将 Azure 警报与安全中心一起使用，请将 "连续导出" 设置为 Log Analytics 工作区。
+如果要在 Log Analytics 工作区内分析 Azure 安全中心数据，或者将 Azure 警报与安全中心一起使用，请将 "连续导出" 设置为 Log Analytics 工作区。
 
-若要导出到 Log Analytics 工作区，必须在工作区中启用安全中心的 Log Analytics 解决方案。 如果你使用的是 Azure 门户，则当你启用连续导出时，将自动启用安全中心的免费层解决方案。 但是，如果要以编程方式配置连续导出设置，则必须从 **定价 & 设置**中手动选择所需工作区的 "免费" 或 "标准" 定价层。  
+若要导出到 Log Analytics 工作区，必须在工作区中启用安全中心的 Log Analytics 解决方案。 如果你使用的是 Azure 门户，则当你启用连续导出时，将自动启用安全中心的免费解决方案。 但是，如果你以编程方式配置连续导出设置，则必须从 **定价 & 设置** "页中手动打开或关闭 Azure Defender。
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 表和架构
 
-安全警报和建议分别存储在 *SecurityAlert* 和 *SecurityRecommendations* 表中。 包含这些表的 Log Analytics 解决方案的名称取决于你是在 "免费" 层还是 "标准" 层 (请参阅 [定价](security-center-pricing.md)) ：安全 ( "安全和审核" ) 或 SecurityCenterFree。
+安全警报和建议分别存储在 *SecurityAlert* 和 *SecurityRecommendations* 表中。 包含这些表的 Log Analytics 解决方案的名称取决于是否已启用 Azure Defender：安全 ( "安全和审核" ) 或 SecurityCenterFree。
 
 ![Log Analytics 中的 * SecurityAlert * 表](./media/continuous-export/log-analytics-securityalert-solution.png)
 

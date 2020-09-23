@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：配置对等互连： PowerShell
-description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍如何检查状态，以及如何更新或删除线路的对等互连。
+description: 了解如何使用 PowerShell 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: e1f1a36e84567a56ddb25366f96d1b2dba1d82fb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2c29dc051780b15fb55d446d3f4002c3870fb529
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395564"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968391"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 

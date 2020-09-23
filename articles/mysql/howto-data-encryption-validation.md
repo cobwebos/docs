@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 9cd1db0365cdc4f834516fd4efb0d80dacc75eca
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e7b747bd2babeeccb210bb30c3eb28f22d4befe7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118522"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905796"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>验证 Azure Database for MySQL 的数据加密
 
@@ -25,23 +25,23 @@ ms.locfileid: "86118522"
 
     * 在 Azure 门户中，导航到**Azure Key Vault**  ->  **键**
     * 选择用于服务器加密的密钥。
-    * 将 "**已启用**密钥" 的状态设置为 "**否**"。
+    * 将 " **已启用** 密钥" 的状态设置为 " **否**"。
   
-       经过一段时间（**大约15分钟**）后，Azure Database for MySQL 服务器**状态**应为 "**不可访问**"。 对服务器所做的任何 i/o 操作都将失败，验证服务器确实已用客户密钥进行了加密，并且密钥当前无效。
+       经过一段时间后 (**~ 15 分钟**) ，Azure Database for MySQL 服务器 **状态** 应为 " **不可访问**"。 对服务器所做的任何 i/o 操作都将失败，验证服务器确实已用客户密钥进行了加密，并且密钥当前无效。
     
-       为了使服务器**可用于**，可以重新验证密钥。 
+       为了使服务器 **可用于** ，可以重新验证密钥。 
     
     * 将 Key Vault 中的项的状态设置为 **"是"**。
-    * 在 "服务器**数据加密**" 中，选择 "重新**验证密钥**"。
-    * 成功重新验证密钥后，服务器**状态**将更改为 "**可用**"。
+    * 在 "服务器 **数据加密**" 中，选择 "重新 **验证密钥**"。
+    * 成功重新验证密钥后，服务器 **状态** 将更改为 " **可用**"。
 
 2. 在 Azure 门户上，如果你可以确保设置加密密钥，则使用 Azure 门户中使用的客户密钥对数据进行加密。
 
-  ![访问策略概述](media/concepts-data-access-and-security-data-encryption/byok-validate.png)
+  :::image type="content" source="media/concepts-data-access-and-security-data-encryption/byok-validate.png" alt-text="访问策略概述":::
 
 ### <a name="from-cli"></a>从 CLI
 
-1. 我们可以使用*AZ CLI*命令验证 Azure Database for MySQL 服务器所使用的关键资源。
+1. 我们可以使用 *AZ CLI* 命令验证 Azure Database for MySQL 服务器所使用的关键资源。
 
     ```azurecli-interactive
    az mysql server key list --name  '<server_name>'  -g '<resource_group_name>'
@@ -55,4 +55,4 @@ ms.locfileid: "86118522"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关数据加密的详细信息，请参阅[Azure Database for MySQL 通过客户托管的密钥进行数据加密](concepts-data-encryption-mysql.md)。
+若要了解有关数据加密的详细信息，请参阅 [Azure Database for MySQL 通过客户托管的密钥进行数据加密](concepts-data-encryption-mysql.md)。

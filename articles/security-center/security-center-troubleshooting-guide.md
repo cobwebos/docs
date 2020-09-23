@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: f5e71697ca6ce9e2585bbb903ad8c46744e05e13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462388"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904744"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -132,7 +132,7 @@ ms.locfileid: "89462388"
 
 ## <a name="contacting-microsoft-support"></a>请联系 Microsoft 支持人员
 
-可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-security-center.html)中查找所记录的其他问题。 但是，如果需要进一步故障排除，则可使用 Azure 门户打开新的支持请求，如下所示：
+某些问题可以使用本文中提供的指导原则来确定，其他人也可以在安全中心公共 [Microsoft Q&页面](https://docs.microsoft.com/answers/topics/azure-security-center.html)上找到。 但是，如果需要进一步故障排除，则可使用 Azure 门户打开新的支持请求，如下所示：
 
 ![Microsoft 支持部门](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

@@ -10,17 +10,16 @@ ms.author: laobri
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: cad1c8b7250ddf1e675145e764abcc90b4db9d86
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 616cdb1d0940ea6f64c3be3d687adaa9c2a98cc2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661727"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889973"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)和[Azure 机器学习设计器 (预览) ](https://docs.microsoft.com/azure/machine-learning/concept-designer)中排除和调试[机器学习管道](concept-ml-pipelines.md)。 
+本文介绍如何在[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)和[Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)中对[计算机学习管道](concept-ml-pipelines.md)进行调试和故障排除。 本文提供了有关如何执行以下操作的信息：
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
@@ -29,23 +28,23 @@ ms.locfileid: "89661727"
 | 问题 | 可能的解决方法 |
 |--|--|
 | 无法将数据传递给 `PipelineData` 字典 | 确保已在脚本中创建了一个目录，该目录对应于管道预期步骤要将数据输出到的位置。 大多数情况下，输入参数将定义输出目录，然后你需要显式创建该目录。 使用 `os.makedirs(args.output_dir, exist_ok=True)` 创建输出目录。 有关演示此设计模式的评分脚本示例，请参阅[该教程](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)。 |
-| 依赖项 bug | 如果你看到远程管道中的依赖关系错误在本地测试时未发生，请确认你的远程环境依赖项和版本与测试环境中的相同。 请参阅[生成、缓存和重复使用环境](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
-| 计算目标出现不明确的错误 | 请尝试删除并重新创建计算目标。 重新创建计算目标非常快速，可以解决某些暂时性问题。 |
+| 依赖项 bug | 如果在远程管道中看到在本地测试时未发生的依赖项错误，请确认远程环境依赖项和版本与测试环境中的依赖项和版本匹配。 请参阅[生成、缓存和重复使用环境](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
+| 计算目标出现不明确的错误 | 请尝试删除并重新创建计算目标。 重新创建计算目标是很快的，并且可以解决某些暂时性问题。 |
 | 管道未重复使用步骤 | 默认已启用步骤重复使用，但是，请确保未在管道步骤中禁用它。 如果已禁用重复使用，则步骤中的 `allow_reuse` 参数将设置为 `False`。 |
-| 管道不必要地重新运行 | 若要确保步骤仅在基础数据或脚本更改时重新运行，请为每个步骤分离源代码目录。 如果对多个步骤使用同一个源目录，则可能会遇到不必要的重新运行。 在管道步骤对象中使用 `source_directory` 参数以指向该步骤的隔离目录，并确保未对多个步骤使用同一个 `source_directory` 路径。 |
+| 管道不必要地重新运行 | 为了确保步骤只在其基础数据或脚本发生更改时才重新运行，请分离每个步骤的源代码目录。 如果对多个步骤使用同一个源目录，则可能会遇到不必要的重新运行。 在管道步骤对象中使用 `source_directory` 参数以指向该步骤的隔离目录，并确保未对多个步骤使用同一个 `source_directory` 路径。 |
 | 逐步降低定型时期或其他循环行为 | 尝试将所有文件写入（包括日志记录）从转换 `as_mount()` 为 `as_upload()` 。 **装载**模式使用远程虚拟文件系统，并在每次将其追加到时上载整个文件。 |
 
-## <a name="debugging-techniques"></a>调试技术
+## <a name="debugging-techniques"></a>调试方法
 
-有三种用于调试管道的主要方法： 
+调试管道有三种主要方法： 
 
-* 调试本地计算机上的单个管道步骤
-* 使用日志记录和 Application Insights 来隔离并诊断问题的根源
-* 将远程调试器附加到在 Azure 中运行的管道
+* 在本地计算机上调试单个管道步骤
+* 使用日志记录和 Application Insights 来隔离并诊断问题根源
+* 将远程调试器附加到 Azure 中运行的管道
 
-### <a name="debug-scripts-locally"></a>本地调试脚本
+### <a name="debug-scripts-locally"></a>在本地调试脚本
 
-管道中最常见的失败之一是域脚本不按预期运行，或者包含难以调试的远程计算上下文中的运行时错误。
+管道中最常见的失败情形之一是，域脚本未按预期运行，或者在难以调试的远程计算上下文中包含运行时错误。
 
 管道本身无法在本地运行，但在本地计算机上的隔离位置运行脚本可以更快地进行调试，因为无需等待计算和环境生成过程完成。 执行此操作需要完成一些开发工作：
 
@@ -108,31 +107,7 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-### <a name="finding-and-reading-pipeline-log-files"></a>查找和读取管道日志文件
-
-日志文件 `70_driver_log.txt` 包含： 
-
-* 脚本执行期间输出的所有语句
-* 脚本的堆栈跟踪 
-
-若要在门户中查找此日志文件和其他日志文件，请先单击工作区中的管道运行。
-
-![管道运行列表页](./media/how-to-debug-pipelines/pipelinerun-01.png)
-
-导航到管道运行详细信息页。
-
-![管道运行详细信息页](./media/how-to-debug-pipelines/pipelinerun-02.png)
-
-单击特定步骤的模块。 导航到“日志”选项卡。其他日志包含有关环境映像生成过程和步骤准备脚本的信息。
-
-![管道运行详细信息页日志选项卡](./media/how-to-debug-pipelines/pipelinerun-03.png)
-
-> [!TIP]
-> 可以在工作区中的“终结点”选项卡中找到“已发布的管道”的运行。 可以在“试验”或“管道”中找到“未发布的管道”的运行。 
-
-有关从中进行日志记录和跟踪的详细信息 `ParallelRunStep` ，请参阅 [ParallelRunStep 的调试和故障排除](how-to-debug-parallel-run-step.md)。
-
-## <a name="logging-in-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器中登录 (预览版) 
+## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
 对于在设计器中创建的管道，可以在创作页或管道运行详细信息页中找到 70_driver_log 文件。
 

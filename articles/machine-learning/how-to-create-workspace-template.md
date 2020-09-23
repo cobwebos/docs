@@ -10,16 +10,16 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 674baaaec4e11c5e4e750ccd14bbe5762dcbc09a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 1feb4432111ce517d49396eb2cb516b0463268d8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181063"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883036"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 <br>
 
 本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment `
 默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，你也可以选择使用现有资源。 可以通过向模板提供其他参数来使用现有资源。 例如，如果你想要使用现有的存储帐户，请将 **storageAccountOption** 值设置为 **existing**，并在 **storageAccountName** 参数中提供存储帐户的名称。
 
 > [!IMPORTANT]
-> 若要使用现有 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储和分层命名空间。 工作区的 _默认_ 存储帐户不支持高级存储或分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
+> 若要使用现有 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储和分层命名空间。 工作区的默认存储帐户不支持高级存储和分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -167,7 +167,7 @@ New-AzResourceGroupDeployment `
 > 在使用此模板之前，订阅必须满足一些特定要求：
 > * 你必须具有包含加密密钥的现有 Azure Key Vault。
 > * Azure Key Vault 必须位于计划创建 Azure 机器学习工作区的同一区域。
-> * 你必须指定 Azure Key Vault 的 ID 和加密密钥的 URI。
+> * 必须指定 Azure Key Vault 的 ID 和加密密钥的 URI。
 
 要获取此模板所需的 `cmk_keyvault`（Key Vault 的 ID）和 `resource_cmk_uri`（密钥 URI）参数的值，请执行以下操作：    
 
@@ -208,7 +208,7 @@ New-AzResourceGroupDeployment `
 > [!IMPORTANT]  
 > 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
 
-若要允许使用客户托管的密钥，请在部署模板时设置以下参数：
+若要允许使用客户管理的密钥，请在部署该模板时设置以下参数：
 
 * 将 **encryption_status** 设置为 **Enabled**。
 * 将 **cmk_keyvault** 设置为在前面的步骤中获取的 `cmk_keyvault` 值。
@@ -644,25 +644,25 @@ New-AzResourceGroupDeployment `
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
     ```
 
-### <a name="virtual-network-not-linked-to-private-dns-zone"></a>虚拟网络未链接到专用 DNS 区域
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>未链接到专用 DNS 区域的虚拟网络
 
-使用专用终结点创建工作区时，模板会创建一个名为 __privatelink.api.azureml.ms__的专用 DNS 区域。 __虚拟网络链接__自动添加到此专用 DNS 区域。 仅为在资源组中创建的第一个工作区和专用终结点添加链接;如果使用同一资源组中的专用终结点创建另一个虚拟网络和工作区，则可能无法将第二个虚拟网络添加到专用 DNS 区域。
+创建具有专用终结点的工作区时，该模板会创建一个名为“privatelink.api.azureml.ms”的专用 DNS 区域。 一个虚拟网络链接会自动添加到此专用 DNS 区域。 该链接只为在资源组中创建的第一个工作区和专用终结点添加；如果在同一资源组中创建另一个具有专用终结点的虚拟网络和工作区，第二个虚拟网络添可能不会被添加到专用 DNS 区域。
 
-若要查看专用 DNS 区域已存在的虚拟网络链接，请使用以下 Azure CLI 命令：
+若要查看对于专用 DNS 区域已存在的虚拟网络链接，请使用以下 Azure CLI 命令：
 
 ```azurecli
 az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
 ```
 
-若要添加包含其他工作区和专用终结点的虚拟网络，请使用以下步骤：
+若要添加包含另一工作区和专用终结点的虚拟网络，请执行以下步骤：
 
-1. 若要查找要添加的网络的虚拟网络 ID，请使用以下命令：
+1. 若要查找需要添加的网络的虚拟网络 ID，请使用以下命令：
 
     ```azurecli
     az network vnet show --name myvnet --resource-group myresourcegroup --query id
     ```
     
-    此命令返回类似于 ""/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet "" 的值。 保存此值并在下一步中使用它。
+    此命令返回一个类似于“"/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"”的值。 请保存此值并在下一步中使用它。
 
 2. 若要将虚拟网络链接添加到 privatelink.api.azureml.ms 专用 DNS 区域，请使用以下命令。 对于 `--virtual-network` 参数，请使用上一命令的输出：
 

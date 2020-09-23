@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 8ebb524a5297380fca575ce6849fe4c5f15507cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903998"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
 
@@ -105,15 +105,15 @@ ms.locfileid: "88168212"
 
    若要在 MySQL Workbench 中创建复制角色，请在“管理”面板中打开“用户和特权”面板。  然后单击“添加帐户”。 
  
-   ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
+   :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="用户和特权":::
 
    在“登录名称”字段中键入用户名。 
 
-   ![同步用户](./media/howto-data-in-replication/syncuser.png)
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="同步用户":::
  
    单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属实例”。   然后单击“应用”，创建复制角色。
 
-   ![复制从属实例](./media/howto-data-in-replication/replicationslave.png)
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="复制从属实例":::
 
 1. 将主服务器设置为只读模式
 
@@ -133,7 +133,7 @@ ms.locfileid: "88168212"
    ```
    结果应如下所示。 确保记下此二进制文件名，因为在后面的步骤中会用到它。
 
-   ![主机状态结果](./media/howto-data-in-replication/masterstatus.png)
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="主机状态结果":::
  
 ## <a name="dump-and-restore-master-server"></a>转储并还原主服务器
 
@@ -202,13 +202,13 @@ ms.locfileid: "88168212"
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
       ```
 
-1. 筛选 
+1. Filtering 
  
-   如果要跳过从主副本复制某些表，请更新 `replicate_wild_ignore_table` 副本服务器上的 server 参数。 您可以使用以逗号分隔的列表提供多个表模式。
+   如果要跳过从主副本复制某些表的操作，请更新副本服务器上的 `replicate_wild_ignore_table` 服务器参数。 可以使用逗号分隔的列表提供多个表模式。
 
    查看 [MySQL 文档](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)详细了解此参数。 
     
-   若要更新参数，可以使用 [Azure 门户](howto-server-parameters.md) 或 [Azure CLI](howto-configure-server-parameters-using-cli.md)。
+   若要更新该参数，可以使用 [Azure 门户](howto-server-parameters.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md)。
 
 1. 启动复制
 

@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fc681b57824f5db7b6a24fbd55351f774dc515da
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: e1285d62d036ebda46348ae1c1a3f8aa0db50243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89668865"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882736"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何创建和管理 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)。 使用环境可以在项目软件依赖项演化时对其进行跟踪和再现。
 
@@ -230,7 +230,7 @@ run.wait_for_completion(show_output=True)
 
 如果某个包已在 Conda 包存储库中提供，则相较于 pip 安装，我们更建议使用 Conda 安装。 Conda 包通常附带预生成的二进制文件，能提高安装的可靠性。
 
-下面的示例将添加到环境 `myenv` 中。 它添加了 1.17.0 版的 `numpy`。 它还会添加 `pillow` 包。 该示例分别使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#&preserve-view=trueadd-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#&preserve-view=trueadd-pip-package-pip-package-) 方法。
+以下示例将其添加到环境 `myenv`。 它添加了 1.17.0 版的 `numpy`。 它还添加 `pillow` 包。 该示例分别使用 [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#&preserve-view=trueadd-conda-package-conda-package-) 方法和 [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#&preserve-view=trueadd-pip-package-pip-package-) 方法。
 
 ```python
 from azureml.core.environment import Environment
@@ -319,14 +319,14 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
-可以首先使用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-local-workspace--platform-none----kwargs-) 方法在本地生成映像。 若要生成 docker 映像，请设置可选参数 `useDocker=True` 。 若要将生成的映像推送到 AzureML 工作区容器注册表，请设置 `pushImageToWorkspaceAcr=True` 。
+可以首先使用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-local-workspace--platform-none----kwargs-) 方法在本地生成映像。 若要生成 docker 映像，请设置可选参数 `useDocker=True`。 若要将生成的映像推送到 AzureML 工作区容器注册表，请设置 `pushImageToWorkspaceAcr=True`。
 
 ```python
 build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=True)
 ```
 
 > [!WARNING]
->  更改环境中的依赖项或通道的顺序将产生新的环境，并将需要新的映像生成。 此外， `build()` 如果存在新版本，则为现有映像调用方法将更新其依赖项。 
+>  更改环境中的依赖项或通道的顺序将产生新的环境，并将需要新的映像生成。 此外，如果存在新版本，则为现有映像调用 `build()` 方法将更新其依赖项。 
 
 ## <a name="use-environments-for-training"></a>使用环境进行训练
 
@@ -405,7 +405,7 @@ service = Model.deploy(
 
 ## <a name="create-and-manage-environments-with-the-cli"></a>使用 CLI 创建和管理环境
 
-[Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) 具备 Python SDK 的大部分功能。 可以使用它来创建和管理环境。 本部分所讨论的命令演示了基本功能。
+[Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) 具备 Python SDK 的大部分功能。 可以使用它来创建和管理环境。 本节中讨论的命令演示了基本功能。
 
 以下命令为指定目录中的默认环境定义创建基架文件。 这些文件是 JSON 文件。 其工作方式类似于 SDK 中的相应类。 可以使用这些文件创建采用自定义设置的新环境。 
 

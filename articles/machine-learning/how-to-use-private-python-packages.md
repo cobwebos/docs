@@ -10,15 +10,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 2af6749565a7fefd2892b82bcd5dff203eccdedc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 0f6f5d0ca757b10a16b31864124f1bcf1190674a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896919"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>将专用 Python 包与 Azure 机器学习一起使用
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何在 Azure 机器学习内安全地使用专用 Python 包。 专用 Python 包的用例包括：
 
@@ -50,7 +50,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Azure 机器学习服务在内部将 URL 替换为安全的 SAS URL，使 wheel 文件保持专用和安全。
 
-## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>使用 Azure DevOps 源中的包存储库
+## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>从 Azure DevOps 源使用包的存储库
 
 如果正积极开发机器学习应用程序的 Python 包，可以将它们作为项目托管在 Azure DevOps 存储库，并将其作为源发布。 此方法可让你集成 DevOps 工作流，以便通过 Azure 机器学习工作区生成包。 若要了解如何使用 Azure DevOps 设置 Python 源，请阅读 [Azure Artifacts 中的 Python 包入门](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops)
 
@@ -87,16 +87,16 @@ Azure 机器学习服务在内部将 URL 替换为安全的 SAS URL，使 wheel 
 
 环境现在已准备就绪，可用于训练运行或 Web 服务终结点部署。 构建环境时，Azure 机器学习服务使用 PAT 通过匹配的基 URL 对源进行身份验证。
 
-## <a name="use-a-repository-of-packages-from-private-storage"></a>使用专用存储中的包存储库
+## <a name="use-a-repository-of-packages-from-private-storage"></a>从专用存储使用包的存储库
 
-可以在组织的防火墙内使用 Azure 存储帐户的包。 存储帐户可以包含一组特选的包，也可以包含一个可公开使用的包的内部镜像。
+可以在组织的防火墙内使用 Azure 存储帐户的包。 该存储帐户可以包含一组特选包，或者可公开使用的包的内部镜像。
 
 若要设置此类专用存储，请参阅 [保护 Azure 机器学习工作区和关联的资源](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)。 还必须在 [VNet 后面放置 Azure 容器注册表 (ACR) ](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
 
 > [!IMPORTANT]
-> 您必须完成此步骤才能使用专用包存储库定型或部署模型。
+> 必须完成此步骤才能使用专用包存储库训练或部署模型。
 
-完成这些配置后，可以通过 Azure blob 存储中的完整 URL 引用 Azure 机器学习环境定义中的包。
+完成这些部署后，便可以通过 Azure Blob 存储中的完整 URL 引用 Azure 机器学习环境定义中的包。
 
 ## <a name="next-steps"></a>后续步骤
 

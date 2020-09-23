@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f20abffa429add8edcbffba16529c467cb9506fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 21153d3c914864966106bf66edccb3c549398bc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651110"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898227"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>计划和管理 Azure 机器学习成本
 
@@ -49,7 +49,7 @@ ms.locfileid: "89651110"
 
 向工作区添加新资源时，请返回到此计算器，并在此处添加相同资源来更新成本估算。
 
-Enterprise 版预览版无 ML 附加费用。 Enterprise 版正式发布后，将收取附加费（用于训练和推理）。  有关详细信息，请参阅 [Azure 机器学习定价](https://azure.microsoft.com/pricing/details/machine-learning/)。
+有关详细信息，请参阅 [Azure 机器学习定价](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
 ## <a name="get-cost-alerts"></a>获取成本警报
 

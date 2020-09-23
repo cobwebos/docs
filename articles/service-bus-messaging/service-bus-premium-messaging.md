@@ -3,12 +3,12 @@ title: Azure 服务总线高级层和标准层
 description: 本文介绍 Azure 服务总线的标准层和高级层。 比较这些层并提供技术差异。
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386344"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90966780"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -24,7 +24,7 @@ ms.locfileid: "87386344"
 | 可预测性能 |可变滞后时间 |
 | 固定定价 |即用即付可变定价 |
 | 增加和减少工作负荷的能力 |空值 |
-| 消息大小最大为 1 MB。 此限制可能会在将来引发。 有关服务的最新重要更新，请参阅[Azure 博客上的消息传送](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog)。 |消息大小最大为 256 KB |
+| 消息大小最大为 1 MB。 此上限将来可能会提高。 有关服务的最新重要更新，请参阅 [Azure 上的消息传送博客](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog)。 |消息大小最大为 256 KB |
 
 **服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2、4 或 8 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，可以随意更改消息传送单元数。 这会为基于服务总线的解决方案提供可预测和稳定的性能。
 
@@ -36,11 +36,11 @@ ms.locfileid: "87386344"
 
 ### <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
-高级消息传送不支持分区的队列和主题。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
+高级消息传送不支持分区队列和主题。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
 
 ### <a name="express-entities"></a>快速实体
 
-由于高级消息传送在隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
+由于高级消息传送在一个隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
 
 如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
 
@@ -51,9 +51,9 @@ ms.locfileid: "87386344"
 - 运行时操作（发送和接收消息）
 - 监视操作和警报
 
-但额外的 CPU 和内存使用不会定价。 对于高级消息传送层，消息单位有单个价格。
+但是，额外的 CPU 和内存使用量并不额外定价。 对于“高级消息传送”层，消息单元有一个单价。
 
-由于以下原因，将跟踪并显示 CPU 和内存使用情况： 
+由于以下原因，系统会跟踪并显示 CPU 和内存使用情况： 
 
 - 让你透彻了解系统内部情况
 - 让你了解所购资源的容量。
@@ -72,7 +72,7 @@ ms.locfileid: "87386344"
     - 如果 CPU 使用率低于 20%，则可纵向缩减分配给命名空间的消息传送单元数。
     - 如果 CPU 使用率超过 70%，则以纵向扩展的方式增加分配给命名空间的消息传送单元数将有益于应用程序。
 
-可以使用[Azure 自动化 runbook](../automation/automation-quickstart-create-runbook.md)自动执行将分配给服务总线命名空间的资源进行扩展的过程。
+若要了解如何将服务总线命名空间配置为自动缩放 (增加或减少消息传送单元) ，请参阅 [自动更新消息传送单元](automate-update-messaging-units.md)。
 
 > [!NOTE]
 > **缩放**分配给命名空间的资源的操作可以抢先进行，也可以被动进行。
@@ -86,7 +86,7 @@ ms.locfileid: "87386344"
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 
-高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。  单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
+高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。 单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
 
 ![create-premium-namespace][create-premium-namespace]
 
@@ -96,10 +96,9 @@ ms.locfileid: "87386344"
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下链接：
 
-* [Azure 服务总线高级消息传送简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Azure 服务总线高级消息传送简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [服务总线消息传送概述](service-bus-messaging-overview.md)
-* [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
+- [自动更新消息传送单元](automate-update-messaging-units.md)。
+- [Azure 服务总线高级消息传送简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+- [Azure 服务总线高级消息传送简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 
 <!--Image references-->
 

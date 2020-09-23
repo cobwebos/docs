@@ -372,6 +372,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: 体系结构中心
       href: /azure/architecture/
+    - name: Azure 混合权益
+      href: azure-hybrid-benefit-linux.md
 - name: 操作指南
   items:
     - name: 创建 VM

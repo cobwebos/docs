@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20e6d26808964c8e697c694bd796af2851e7ca48
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 61339a22fc3823325ff5356112c2df8a800010a0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449929"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985201"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>将动态组与更新管理配合使用
 
@@ -19,7 +19,7 @@ ms.locfileid: "87449929"
 > [!NOTE]
 > 动态组不适用于经典 VM。
 
-你可以通过 Azure 门户中的更新管理为 Azure 或非 Azure 计算机定义动态组。 请参阅[管理 vm 的更新](update-mgmt-manage-updates-for-vm.md)。
+你可以通过 Azure 门户中的更新管理为 Azure 或非 Azure 计算机定义动态组。 请参阅[管理 VM 的更新](update-mgmt-manage-updates-for-vm.md)。
 
 动态组由 Azure 自动化在部署时计算的查询定义。 即使动态组查询检索到大量计算机，Azure 自动化一次最多只能处理 1000 台计算机。 请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#update-management)。
 
@@ -45,8 +45,8 @@ ms.locfileid: "87449929"
 
 非 Azure 计算机的动态组使用保存的搜索，也称为计算机组。 若要了解如何创建保存的搜索，请参阅[创建计算机组](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group)。 创建保存的搜索后，可以从 Azure 门户“更新管理”中的保存的搜索列表中选择它。 单击“预览”，可预览保存的搜索中的计算机。
 
-![选择组](./media/update-mgmt-groups/select-groups-2.png)
+![屏幕截图显示了非 Azure (预览的 "选择组" 页面) 和右侧的预览窗格。](./media/update-mgmt-groups/select-groups-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-可以[查询 Azure Monitor 日志](update-mgmt-query-logs.md)来分析更新评估、部署和其他相关的管理任务。 它包含预定义的查询来帮助您入门。
+可[查询 Azure Monitor 日志](update-mgmt-query-logs.md)来分析更新评估、部署和其他相关管理任务。 它包含预定义的查询，可帮助你入门。

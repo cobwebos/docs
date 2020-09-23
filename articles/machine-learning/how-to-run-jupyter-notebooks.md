@@ -11,15 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: a59905c1d410ae0ffd4520f3b61fd37e649012e7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650923"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897389"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何直接在 Azure 机器学习工作室中的工作区中运行 Jupyter 笔记本。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
 
@@ -121,7 +121,7 @@ ms.locfileid: "89650923"
 1. 运行所有笔记本单元。
 1. 选择包含想要新笔记本运行的代码的单元格。 例如，提交实验的代码或可能注册模型的代码。
 1. 选择显示在 "单元格" 工具栏上的 " **集合** " 图标。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="屏幕截图：选择 收集 图标":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="屏幕截图：选择 "收集" 图标":::
 1. 输入新的 "收集的" 笔记本的名称。  
 
 新笔记本只包含代码单元，所有单元格都需要生成与你为收集所选单元产生的结果相同的结果。
@@ -166,7 +166,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 1. 选择笔记本工具栏中的“+”。 
 2. 为计算命名，并在“虚拟机大小”中选择一个大小。 
-3. 选择“创建” 。
+3. 选择“创建”。
 4. 计算实例会自动连接到笔记本，现在就可以运行单元格了。
 
 只有本人可以查看和使用自己创建的计算实例。  用户文件与 VM 分开存储，并在工作区中的所有计算实例之间共享。
@@ -224,7 +224,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|Color |计算状态 |
+|颜色 |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
 | Red |计算失败 | 
@@ -234,7 +234,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|Color |内核状态 |
+|颜色 |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |

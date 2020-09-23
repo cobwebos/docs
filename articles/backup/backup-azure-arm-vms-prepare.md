@@ -3,12 +3,12 @@ title: 将 Azure VM 备份到恢复服务保管库中
 description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145648"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986513"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -41,10 +41,11 @@ ms.locfileid: "89145648"
 
 ### <a name="modify-storage-replication"></a>修改存储复制
 
-默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md)。
+默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)。
 
 * 如果保管库是你的主要备份机制，则建议使用 GRS。
-* 可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) ，以提供更便宜的选项。
+* 可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage) ，以提供更便宜的选项。
+* [区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage) 在 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中复制数据，从而在同一区域中保证数据的驻留和复原能力。
 
 按如下所示修改存储复制类型：
 
@@ -80,7 +81,7 @@ ms.locfileid: "89145648"
 
       ![添加虚拟机](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. 将打开“选择虚拟机”窗格。 使用策略选择要备份的 Vm。 然后选择“确定”。
+1. 将打开“选择虚拟机”窗格。 使用策略选择要备份的 Vm。 然后选择“确定”。 
 
    * 随后将验证选定的 VM。
    * 只能选择与保管库位于同一区域中的 VM。
@@ -128,7 +129,7 @@ ms.locfileid: "89145648"
 2. 在 " **备份项目**" 中，选择 " **Azure 虚拟机**"。
 3. 在 " **备份项** " 列表中，选择省略号 ( ") "。
 4. 选择 " **立即备份**"。
-5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后选择“确定”。
+5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后选择“确定”。 
 6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 ## <a name="verify-backup-job-status"></a>验证备份作业状态

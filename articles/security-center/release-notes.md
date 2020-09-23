@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/12/2020
+ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e4a0dfb658bb9388aa43b568fe0d28576026d1e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569248"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905597"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -33,7 +33,16 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 ## <a name="september-2020"></a>2020 年 9 月
 
 9月的更新包括：
-
+- [安全中心获得新的外观！](#security-center-gets-a-new-look)
+- [Azure Defender 已发布](#azure-defender-released)
+- [Azure Defender for Key Vault 现已正式发布](#azure-defender-for-key-vault-is-generally-available)
+- [用于文件和 ADLS Gen2 的存储保护的 Azure Defender 已公开发布](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
+- [资产清单工具现已正式发布](#asset-inventory-tools-are-now-generally-available)
+- [禁用查找容器注册表和虚拟机扫描的特定漏洞](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
+- [从建议中免除资源](#exempt-a-resource-from-a-recommendation)
+- [安全中心的 AWS 和 GCP 连接器带来了多云体验](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
+- [Kubernetes 工作负荷保护建议捆绑](#kubernetes-workload-protection-recommendation-bundle)
+- [Azure Defender 中 iot 威胁防护的增强功能](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [漏洞评估发现现在提供连续导出](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [在创建新资源时强制建议来防止安全错误配置](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [网络安全组建议改进](#network-security-group-recommendations-improved)
@@ -41,6 +50,127 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 - [已改进 Azure 安全中心发送的电子邮件通知](#email-notifications-from-azure-security-center-improved)
 - [安全分数不包括预览建议](#secure-score-doesnt-include-preview-recommendations)
 - [建议现在包含严重性指示器和新鲜度时间间隔](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+
+### <a name="security-center-gets-a-new-look"></a>安全中心获得新的外观！
+
+我们已发布安全中心门户页面的刷新 UI。 新页包括新的 "概述" 页以及用于安全分数、资产清单和 Azure Defender 的仪表板。
+
+重新设计的 "概述" 页现在包含一个磁贴，用于访问安全分数、资产清单和 Azure Defender 仪表板。 它还会有一个链接到合规性仪表板的磁贴。
+
+了解有关 " [概述" 页](overview-page.md)的详细信息。
+
+
+### <a name="azure-defender-released"></a>Azure Defender 已发布
+
+**Azure Defender** 是 (CWPP) 集成在安全中心内的云工作负荷保护平台，用于对 Azure 和混合工作负荷进行高级、智能、保护。 它取代了安全中心的标准定价层选项。 
+
+当你从 Azure 安全中心的 " **定价和设置** " 区域启用 azure Defender 时，将同时启用以下 Defender 计划，并为环境中的计算、数据和服务层提供综合防御：
+
+- [适用于服务器的 Azure Defender](defender-for-servers-introduction.md)
+- [适用于应用服务的 Azure Defender](defender-for-app-service-introduction.md)
+- [适用于存储的 Azure Defender](defender-for-storage-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
+- [适用于 IoT 的 Azure Defender](defender-for-iot-introduction.md)
+- [适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
+- [适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
+- [适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)
+
+其中每个计划分别在安全中心文档中进行了介绍。
+
+通过其专用仪表板，Azure Defender 为虚拟机、SQL 数据库、容器、web 应用程序和网络等提供安全警报和高级威胁防护。
+
+[了解有关 Azure Defender 的详细信息](azure-defender.md)
+
+### <a name="azure-defender-for-key-vault-is-generally-available"></a>Azure Defender for Key Vault 现已正式发布
+
+Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（例如证书、连接字符串和密码）。 
+
+**Azure Defender for Key Vault** 为 Azure Key Vault 提供 azure 本机的高级威胁防护，同时提供额外的安全智能层。 通过扩展，Azure Defender for Key Vault 因此可保护依赖于 Key Vault 帐户的多个资源。
+
+可选计划现已正式发布。 此功能作为 "高级威胁防护 Azure Key Vault" 提供。
+
+此外，Azure 门户中的 Key Vault 页面现在包含一个专用 **安全** 页面，用于 **安全中心** 建议和警报。
+
+在 [Azure Defender 中了解 Key Vault 的](defender-for-key-vault-introduction.md)详细信息。
+
+
+### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>用于文件和 ADLS Gen2 的存储保护的 Azure Defender 已公开发布 
+
+**用于存储的 Azure Defender** 检测到你的 azure 存储帐户有潜在有害的活动。 无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。
+
+[Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)和[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)的支持现已正式发布。
+
+从 10 2020 月1日起，我们将开始充电以保护这些服务的资源。
+
+在 [Azure Defender 中了解有关存储的](defender-for-storage-introduction.md)详细信息。
+
+
+### <a name="asset-inventory-tools-are-now-generally-available"></a>资产清单工具现已正式发布
+
+Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。
+
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。
+
+当任何资源具有未完成的建议时，它们将显示在清单中。
+
+有关详细信息，请参阅 [利用资产清单和管理工具浏览和管理资源](asset-inventory.md)。
+
+
+
+### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>禁用查找容器注册表和虚拟机扫描的特定漏洞
+
+Azure Defender 包含用于扫描 Azure 容器注册表和虚拟机中的映像的漏洞扫描程序。
+
+如果组织需要忽略查找而不是对其进行修正，则可以选择禁用它。 禁用的结果不会影响安全分数或产生不需要的噪音。
+
+当查找与在禁用规则中定义的条件相匹配时，它不会显示在结果列表中。
+
+此选项在的 "建议详细信息" 页中提供：
+
+- **应修正 Azure 容器注册表映像中的漏洞**
+- **应修正虚拟机中的漏洞**
+
+详细了解如何 [禁用容器映像的特定发现](defender-for-container-registries-usage.md#disable-specific-findings-preview) 并 [禁用虚拟机的特定发现](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview)。
+
+
+### <a name="exempt-a-resource-from-a-recommendation"></a>从建议中免除资源
+
+有时，资源会在特定建议 (中列为不正常，因此降低安全分数) ，即使您认为不应如此。 它可能已被安全中心未跟踪的进程修正。 或者，您的组织可能决定接受该特定资源的风险。 
+
+在这种情况下，你可以创建例外规则，并确保将来不会在不正常的资源中列出资源。 这些规则可以包括如下所述的记录的理由。
+
+详细了解如何 [从建议和安全分数中排除资源](exempt-resource.md)。
+
+
+### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>安全中心的 AWS 和 GCP 连接器带来了多云体验
+
+云工作负荷通常跨多个云平台，云安全服务必须执行相同的操作。
+
+Azure 安全中心现在保护 Azure 中的工作负荷，Amazon Web Services (AWS) ，并 Google Cloud Platform (GCP) 。
+
+将 AWS 和 GCP 帐户加入安全中心，将 AWS 安全中心、GCP Security 命令和 Azure 安全中心集成在一起。 
+
+有关详细信息，请参阅 [将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md) 和 [将 GCP 帐户连接到 azure 安全中心](quickstart-onboard-gcp.md)。
+
+
+### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Kubernetes 工作负荷保护建议捆绑
+
+为了确保 Kubernetes 工作负荷在默认情况下是安全的，安全中心添加了 Kubernetes 级别强化建议，其中包括具有 Kubernetes 许可控制的强制选项。
+
+在 AKS 群集上安装了适用于 Kubernetes 的 Azure 策略外接程序后，将针对 Kubernetes API 服务器的每个请求进行监视，然后再将其保存到群集。 然后，你可以将配置为强制实施最佳实践，并为未来的工作负荷进行强制。
+
+例如，你可以规定不应创建特权容器，以后的任何请求都将被阻止。
+
+有关详细信息，请参阅 [使用 Kubernetes 许可控制的工作负荷保护最佳实践](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)。
+
+
+### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>Azure Defender 中 iot 威胁防护的增强功能
+
+由于包含 CyberX 无代理技术，Azure Defender for IoT 提供了更多威胁防护功能。 这为) 环境（例如制造、构建管理系统 (BMS) 、生命科学、能源和水设施、石油 & 气体和后勤） (的操作技术中使用的非托管要重建 mqtt 设备提供了安全保护。
+
+了解 [Azure Defender For IoT 简介](defender-for-iot-introduction.md)中的详细信息。
+
 
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>漏洞评估发现现在提供连续导出
 
@@ -55,7 +185,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 相关页面：
 
 - [Azure 虚拟机安全中心的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)
-- [Azure 容器注册表映像的安全中心集成漏洞评估解决方案](monitor-container-security.md)
+- [Azure 容器注册表映像的安全中心集成漏洞评估解决方案](defender-for-container-registries-usage.md)
 - [连续导出](continuous-export.md)
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>在创建新资源时强制建议来防止安全错误配置
@@ -257,20 +387,18 @@ Pod 安全策略 (预览版) 功能，已设置为弃用，在2020年10月15日�
 
 从此更新中，已删除该检查，你现在可以将漏洞评估工具部署到 "自定义" Windows 和 Linux 计算机。 自定义映像是你从 marketplace 默认值修改的映像。
 
-尽管你现在可以在多台计算机上部署 (由 Qualys 提供支持的集成漏洞评估扩展) ，但仅当你使用的操作系统[部署到标准层 vm](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms)时，才提供支持。
+尽管你现在可以在多台计算机上部署 (由 Qualys 提供支持的集成漏洞评估扩展) ，但仅当你使用的操作系统[部署到标准层 vm](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-your-vms)时，才提供支持。
 
-详细了解 [虚拟机的集成漏洞扫描器 (仅) 标准层 ](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
+详细了解 [虚拟机的集成漏洞扫描器 (需要 Azure Defender) ](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
 
-若要详细了解如何在 [部署合作伙伴漏洞扫描解决方案](deploy-vulnerability-assessment-vm.md)中使用 Qualys 或 Rapid7 中的专用许可漏洞评估解决方案。
+若要详细了解如何在 [部署合作伙伴漏洞扫描解决方案](deploy-vulnerability-assessment-vm.md)中使用 Qualys 或 Rapid7 中的你自己的私下许可漏洞评估解决方案。
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 (预览版) 
 
 Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活动。 当安全中心检测到访问或利用存储帐户的尝试时，会显示警报。 
 
-无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。 
-
-详细了解 [Azure 存储的威胁保护](threat-protection.md#threat-protection-for-azure-storage-)。
+无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。
 
 
 
@@ -386,13 +514,13 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 高级数据安全为 SQL 计算机提供漏洞评估和高级威胁防护，无论它们位于何处。
 
-安装程序涉及两个步骤：
+设置涉及两个步骤：
 
 1. 将 Log Analytics 代理部署到 SQL Server 的主机计算机，以提供与 Azure 帐户的连接。
 
 1. 在安全中心的 "定价和设置" 页中启用可选捆绑。
 
-详细了解 [SQL 虚拟机的高级数据安全性](security-center-iaas-advanced-data.md)。
+详细了解 [SQL 虚拟机的高级数据安全性](defender-for-sql-usage.md)。
 
 
 
@@ -551,7 +679,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 要详细了解安全控件，请参阅 [Azure 安全中心的安全功能分数增强版（预览版）](secure-score-security-controls.md)。
 
-!["分组依据控件" 切换建议](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text=""分组依据" 控件切换建议":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>扩展了“实现安全最佳做法”这一安全控件 
 

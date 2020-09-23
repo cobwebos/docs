@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a89115d69943ff63d403edff942677b134e7f2a8
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024377"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905744"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -63,7 +63,6 @@ ms.locfileid: "90024377"
 | ---- |:----:|:----:|:----:|
 | 创建工作区 | ✓ | ✓ | |
 | 共享工作区 | ✓ | |  |
-| 将工作区升级到企业版 | ✓ | |
 | 创建计算目标 | ✓ | ✓ | |
 | 附加计算目标 | ✓ | ✓ | |
 | 附加数据存储 | ✓ | ✓ | |
@@ -99,13 +98,13 @@ ms.locfileid: "90024377"
 
 不建议管理员撤销托管标识对上表中所述资源的访问权限。 可以使用重新同步密钥操作来恢复访问权限。
 
-对于每个工作区区域，Azure 机器学习将在订阅中创建一个拥有参与者级别访问权限的附加应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头）。 例如，在同一订阅中，如果在美国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 Azure 机器学习可以通过这些应用程序来帮助你管理计算资源。
+Azure 机器学习将在订阅中为每个工作区区域创建一个额外的应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头），该应用程序具有参与者级别的访问权限。 例如，在同一订阅中，如果在美国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 通过这些应用程序，Azure 机器学习可帮助管理计算资源。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可以在虚拟网络中创建这些计算目标。 例如，可以使用 Azure Data Science Virtual Machine 来训练模型，然后将模型部署到 AKS。  
 
-有关详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
+有关详细信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 
 还可以为工作区启用 Azure 专用链接。 通过专用链接，你可以限制从 Azure 虚拟网络到工作区的通信。 有关详细信息，请参阅[如何配置专用链接](how-to-configure-private-link.md)。
 
@@ -121,7 +120,7 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 > [!IMPORTANT]
 > 如果工作区包含敏感数据，我们建议在创建工作区时设置 [hbi_workspace 标志](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 只能在创建工作区时设置 `hbi_workspace` 标志。 不能更改现有工作区的这个标志。
 
-该 `hbi_workspace` 标志控制 [microsoft 出于诊断目的收集的数据](#microsoft-collected-data) 量，并 [在 microsoft 管理的环境中启用其他加密功能](../security/fundamentals/encryption-atrest.md)。 此外，该标志启用以下操作：
+`hbi_workspace` 标志控制 [Microsoft 为诊断而收集的数据](#microsoft-collected-data)量，并[在 Microsoft 托管环境中启用其他加密](../security/fundamentals/encryption-atrest.md)。 此外，该标志启用以下操作：
 
 * 开始加密 Azure 机器学习计算群集中的本地暂存磁盘，前提是尚未在该订阅中创建任何以前的群集。 否则，需要提供支持票证来启用对计算群集的暂存磁盘的加密 
 * 在不同运行之间清理本地暂存磁盘
