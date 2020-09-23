@@ -1,19 +1,19 @@
 ---
 title: 创建并安装 P2S VPN 客户端配置文件：证书身份验证
 titleSuffix: Azure VPN Gateway
-description: 为 P2S 证书身份验证配置创建并安装 Windows、Linux、Linux (strongSwan) 和 Mac OS X VPN 客户端配置文件。
+description: 创建和安装 Windows、Linux、Linux (strongSwan) 和 macOS X VPN 客户端配置文件，用于 P2S 证书身份验证。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420772"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986643"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -96,7 +96,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了�
 
    “接口”值为“VPN”，“VPN 类型”值为“IKEv2”。   在“服务名称”字段中为配置文件指定一个名称，单击“创建”创建 VPN 客户端连接配置文件。  
 
-   ![网络](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![屏幕截图显示 "网络" 窗口，其中包含用于选择接口的选项，请选择 "VPN 类型"，然后输入服务名称。](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. 从 **Generic** 文件夹中的 **VpnSettings.xml** 文件复制 **VpnServer** 标记值。 将该值粘贴到配置文件的“服务器地址”和“远程 ID”字段中。  
 
    ![服务器信息](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,14 +106,14 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了�
 
    * 对于 Catalina，请选择“无”，然后选择“证书”。   **选择**正确的证书：
    
-   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+   ![屏幕截图显示未选择 "身份验证设置" 和 "证书" 的 "网络" 窗口。](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
 6. 单击“选择…”  选择要用于身份验证的客户端证书。 这是你在步骤 2 中安装的证书。
 
-   ![证书](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![屏幕截图显示具有身份验证设置的网络窗口，你可以在其中选择证书。](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. “选择标识”会显示可供选择的证书列表。  选择适当的证书，单击“继续”  。
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![屏幕截图显示 "选择标识" 对话框，你可以在其中选择正确的证书。](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. 在“本地 ID”  字段中，指定证书的名称（见步骤 6）。 在本示例中，该名称为“ikev2Client.com”。 然后单击“应用”按钮保存所做的更改。 
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -213,4 +213,4 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了�
 若要对 P2S 连接进行故障排除，请参阅以下文章：
 
   * [对 Azure 点到站点连接进行故障排除](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-  * [对 Mac OS X VPN 客户端的 VPN 连接进行故障排除](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+  * [排查来自 macOS X VPN 客户端的 VPN 连接问题](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)

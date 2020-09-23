@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753890"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898602"
 ---
 # <a name="convert-word-to-vector-module"></a>“将单词转换为矢量”模块
 
-本文介绍如何使用 Azure 机器学习设计器（预览版）中的“将单词转换为矢量”模块执行以下任务：
+本文介绍如何使用 Azure 机器学习设计器中的 "转换 Word 到矢量" 模块来执行以下任务：
 
 - 将各种 Word2Vec 模型（Word2Vec、FastText、GloVe 预训练模型）应用到指定为输入的文本语料库。
 - 生成具有单词嵌入的词汇表。
@@ -33,7 +33,7 @@ ms.locfileid: "84753890"
 
 单词嵌入技术多种多样，在此模块中，我们实现三种广泛使用的方法。 两种（Word2Vec 和 FastText）是在线训练模型。 另一种是预训练模型，即 glove-wiki-gigaword-100。 
 
-在线训练模型针对输入数据进行训练。 对于较大的文本语料库（例如，维基百科、Google 新闻），预先训练模型以脱机的模式进行脱机训练，通常包含大约100000000000个字。 单词嵌入在单词矢量化期间保持不变。 预训练单词模型可带来减少训练时间、更好地对单词矢量进行编码以及提高整体性能等好处。
+在线训练模型针对输入数据进行训练。 预先训练模型以脱机模式在较大的文本语料库 (例如，维基百科、Google 新闻) ，通常包含大约100000000000个字。 单词嵌入在单词矢量化期间保持不变。 预训练单词模型可带来减少训练时间、更好地对单词矢量进行编码以及提高整体性能等好处。
 
 下面是有关方法的一些信息：
 
@@ -93,7 +93,7 @@ ms.locfileid: "84753890"
 
 + **具有嵌入的词汇表**：包含生成的词汇表以及每个单词的嵌入。 一个维度占用一列。
 
-以下示例演示了“将单词转换为矢量”模块的工作原理。 它将此模块（采用默认设置）应用于 Azure 机器学习（预览版）中提供的经过预处理的维基百科 SP 500 数据集。
+以下示例演示了“将单词转换为矢量”模块的工作原理。 它将此模块和默认设置应用到 Azure 机器学习提供的预处理的维基百科 SP 500 数据集。
 
 ### <a name="source-dataset"></a>源数据集
 
@@ -149,4 +149,4 @@ loop|-0.391421|0.52366|0.141503|-0.105423|0.084503|-0.018424|...|-0.0521
 
 请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
 
-如需特定于设计器（预览版）模块的错误列表，请参阅[机器学习错误代码](designer-error-codes.md)。
+有关特定于设计器模块的错误列表，请参阅 [机器学习错误代码](designer-error-codes.md)。

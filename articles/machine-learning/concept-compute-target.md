@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 08f1d1e0ca1936b30db968dde5d7f6f2e6104cf8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3e1832d656ea2bad772a686e52a357c1daf0ded5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651212"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883203"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 
@@ -33,7 +33,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-详细了解如何 [使用计算目标进行模型定型](how-to-set-up-training-targets.md)。
+详细了解如何[使用计算目标进行模型训练](how-to-set-up-training-targets.md)。
 
 ## <a name="deployment-targets"></a><a name="deploy"></a>部署目标
 
@@ -48,7 +48,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 托管计算资源是由 Azure 机器学习创建和管理的。 此计算针对机器学习工作负荷进行了优化。 Azure 机器学习计算群集和[计算实例](concept-compute-instance.md)是仅有的托管计算。 
 
-可以从以下内容创建 Azure 机器学习计算实例或计算群集：
+可以通过以下方法创建 Azure 机器学习计算实例或计算群集：
 * [Azure 机器学习工作室](how-to-create-attach-compute-studio.md)
 * Azure 门户
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) 类
@@ -68,7 +68,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 
 > [!NOTE]
-> 当计算群集处于空闲状态时，它将自动缩放到 0 个节点，因此在不使用它时你无需付费。  但是，计算实例始终处于启用状态，并且不会自动缩放。  不使用计算实例时，应[停止计算实例](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)，以免产生额外费用。 
+> 当计算群集处于空闲状态时，它将自动缩放到 0 个节点，因此在不使用它时你无需付费。  但是，计算实例始终处于启用状态，并且不会自动缩放。  不使用计算实例时，应[停止计算实例](concept-compute-instance.md#managing-a-compute-instance)，以免产生额外费用。 
 
 ### <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
 
@@ -107,5 +107,5 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 ## <a name="next-steps"></a>后续步骤
 
 了解如何：
-* [使用计算目标为模型定型](how-to-set-up-training-targets.md)
+* [使用计算目标训练模型](how-to-set-up-training-targets.md)
 * [将模型部署到计算目标](how-to-deploy-and-where.md)

@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824026"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986494"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -35,18 +35,22 @@ Azure 备份可以备份数据、计算机状态，以及本地计算机和 Azur
 
 ## <a name="where-is-data-backed-up"></a>数据备份到何处？
 
-Azure 备份将备份的数据存储在恢复服务保管库中。 保管库是 Azure 中的联机存储实体，用于保存备份副本、恢复点和备份策略等数据。
+Azure 备份将备份数据存储在保管库-恢复服务保管库和备份保管库中。 保管库是 Azure 中的联机存储实体，用于保存备份副本、恢复点和备份策略等数据。
 
-恢复服务保管库具有以下功能：
+保管库具有以下功能：
 
 - 使用保管库可以方便地组织备份数据，并将管理开销降至最低。
-- 在每个 Azure 订阅中，最多可以创建 500 个保管库。
 - 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
 - 可以使用 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/role-assignments-portal.md)来管理保管库访问权限。
 - 指定如何复制保管库中的数据以实现冗余：
-  - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](../storage/common/storage-redundancy.md)。
-  - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](../storage/common/storage-redundancy.md)。
+  - **本地冗余存储 (LRS) **：若要防止数据中心出现故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](../storage/common/storage-redundancy.md#locally-redundant-storage)。
+  - **异地冗余存储 (GRS) **：若要防止区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](../storage/common/storage-redundancy.md#geo-redundant-storage)。
+  - **区域冗余存储 (ZRS) **：在 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中复制数据，从而在同一区域中保证数据的驻留和复原能力。 [了解详细信息](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - 恢复服务保管库默认使用 GRS。
+
+恢复服务保管库具有以下附加功能：
+
+- 在每个 Azure 订阅中，最多可以创建 500 个保管库。
 
 ## <a name="backup-agents"></a>备份代理
 
@@ -64,8 +68,8 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 **备份类型** | **详细信息** | **使用情况**
 --- | --- | ---
 **完整** | 完整备份包含整个数据源。 占用的网络带宽比差异或增量备份更多。 | 用于初始备份。
-**差异** |  差异备份存储自初始完整备份以来发生更改的块。 使用较少的网络带宽和存储量，且不保留未更改数据的冗余副本。<br/><br/> 效率不高，因为需要传输并存储每次后续备份之后未发生更改的数据块。 | Azure 备份不使用此备份类型。
-**增量** | 增量备份仅存储自上次备份以来发生更改的数据块。 存储和网络效率高。 <br/><br/> 使用增量备份时，无需使用完整备份进行补充。 | DPM/MABS 使用此备份类型来备份磁盘，备份到 Azure 的所有方案都使用此备份类型。 不用于 SQL Server 备份。
+**时差** |  差异备份存储自初始完整备份以来发生更改的块。 使用较少的网络带宽和存储量，且不保留未更改数据的冗余副本。<br/><br/> 效率不高，因为需要传输并存储每次后续备份之后未发生更改的数据块。 | Azure 备份不使用此备份类型。
+**式** | 增量备份仅存储自上次备份以来发生更改的数据块。 存储和网络效率高。 <br/><br/> 使用增量备份时，无需使用完整备份进行补充。 | DPM/MABS 使用此备份类型来备份磁盘，备份到 Azure 的所有方案都使用此备份类型。 不用于 SQL Server 备份。
 
 ## <a name="sql-server-backup-types"></a>SQL Server 备份类型
 

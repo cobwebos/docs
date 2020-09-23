@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f29f43234f1541abeb448e722d0b72ef7c0221c9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401718"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986580"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>配置自定义警报来监视播发路由
 
@@ -299,7 +299,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 在工作流配置结束时，可以通过多次运行工作流来检查重复频率的一致性，然后在“运行历史记录”中验证结果。
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="定期" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="屏幕截图显示重复间隔和频率值。" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3.创建作业
 
@@ -320,7 +320,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 5. 在“创建作业”页上，服务主体应在承载自动化帐户的**资源组**上具有“读取者”角色，并在**自动化帐户**上具有“自动化作业操作员”角色。 此外，请验证是否已将“Runbook 名称”添加为新参数。
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="角色" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="屏幕截图显示在 "重复周期" 中创建作业值，你可以在其中验证 Runbook 名称。" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4.获取作业输出
 
@@ -343,7 +343,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 3. 在“内容”框中单击。 当“动态内容”列表出现时，选择“内容”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="内容" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="屏幕截图显示 "分析 JSON" 对话框，其中包含所选内容。" lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. 分析 JSON 需要一个架构。 可以使用自动化 runbook 的输出来生成架构。 打开一个新的 Web 浏览器会话，运行自动化 runbook 并捕获输出。 返回到“逻辑应用的分析 JSON 数据操作”操作。 在页面底部，选择“使用示例有效负载生成架构”。
 
@@ -363,7 +363,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 1. 在“获取作业输出”操作下，选择“新建步骤”。  在搜索框中找到并选择“变量”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="变量":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="屏幕截图显示在 "搜索" 框中包含变量的 "选择操作" 对话框和所选变量。":::
 
 2. 在“操作”列表中，选择“初始化变量”操作。 
 
@@ -371,7 +371,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 3. 指定变量的名称。 对于“类型”，请选择“字符串” 。 稍后将在工作流中分配变量的**值**。
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="字符串" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="屏幕截图显示了与 Initialize 变量关联的 Parse JSON，你可以在其中输入名称、类型和值。" lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7.创建“For each”操作
 
@@ -379,7 +379,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 1. 在“初始化变量”下，选择“添加操作”。 在搜索框中键入“for each”作为筛选器。
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="控制":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="屏幕截图显示 "选择操作" 对话框，其中每个在搜索框和控件中都处于选定状态。":::
 
 2. 从“操作”列表中选择“For each - 控制”操作。
 
@@ -387,7 +387,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 3. 单击“从先前的步骤中选择一个输出”文本框。 当“动态内容”列表出现时，请选择“正文”，这是分析的 JSON 的输出。 
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="正文":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="屏幕截图显示了与 For each 关联的初始化变量，其中包含 "从前面的步骤中选择一个输出" 文本框。":::
 
 4. 对于 JSON 正文的每个元素，我们需要设置一个条件。 从操作组中选择“控制”。
 

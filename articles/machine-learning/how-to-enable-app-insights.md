@@ -11,15 +11,15 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f497bf5374dd6f621a6b48bae245e5efb1505a19
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603061"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897653"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何从部署到 Azure Kubernetes Service 中的 web 服务终结点 (AKS) 或 (ACI) Azure 容器实例中的模型收集数据。 使用 [Azure 应用程序 Insights](../azure-monitor/app/app-insights-overview.md) 从终结点收集以下数据：
 * 输出数据

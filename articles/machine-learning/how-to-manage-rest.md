@@ -10,16 +10,16 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8c97ee9782f728e39175ed2517b64020ca4169f4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649405"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897361"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 可通过多种方式管理 Azure ML 资源。 可以使用[门户](https://portal.azure.com/)、[命令行接口](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。 或者，可以选择 REST API。 REST API 使用 HTTP 谓词以标准方式创建、检索、更新和删除资源。 REST API 适用于可发出 HTTP 请求的任何语言或工具。 REST 具有简单的结构，因此它往往是适合脚本编写环境和 MLOps 自动化的良好选择。 
 
@@ -423,5 +423,5 @@ Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作
 ## <a name="next-steps"></a>后续步骤
 
 - 浏览完整的 [AzureML REST API 参考](https://docs.microsoft.com/rest/api/azureml/)。
-- 了解如何在工作室和设计器中[使用设计器（预览版）预测汽车价格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
+- 了解如何使用设计器 [预测汽车价格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
 - [使用 Jupyter 笔记本探索 Azure 机器学习](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)。

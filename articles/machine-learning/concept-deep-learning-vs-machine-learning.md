@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414578"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905126"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 
@@ -96,7 +96,7 @@ ms.locfileid: "81414578"
 
 ### <a name="feedforward-neural-network"></a>前馈神经网络
 
-前馈神经网络是最基本的人工神经网络类型。 在前馈网络中，信息只朝一个方向移动：从输入层移向输出层。 前馈神经网络通过使某个输入经历一系列隐藏层来转换该输入。 每个层由一组神经元组成，每个层完全连接到前一层中的所有神经元。 最后一个完全连接的层（输出层）代表生成的预测。
+Feedforward 神经网络是最简单类型的人工神经网络。 在前馈网络中，信息只朝一个方向移动：从输入层移向输出层。 前馈神经网络通过使某个输入经历一系列隐藏层来转换该输入。 每个层由一组神经元组成，每个层完全连接到前一层中的所有神经元。 最后一个完全连接的层（输出层）代表生成的预测。
 
 ### <a name="recurrent-neural-network"></a>递归神经网络
 

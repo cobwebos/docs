@@ -1,15 +1,15 @@
 ---
 title: 创建个性化体验创建服务资源
-description: 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
+description: 本文介绍如何在 Azure 门户中为每个反馈循环创建 personalizer 资源。
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ebd5496eb45ed007f47cd34761800f8b54e5a5a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7965fb1eaa3efbe1f47db4eedd88e4444b0e610b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501246"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985835"
 ---
 # <a name="create-a-personalizer-resource"></a>创建 Personalizer 资源
 
@@ -28,13 +28,13 @@ Personalizer 资源与 Personalizer 学习循环是相同的。 为每个使用�
     > [!div class="mx-imgBorder"]
     > ![使用 Azure 门户创建 Personalizer 资源（也称为学习循环）。](./media/how-to-create-resource/how-to-create-personalizer-resource-learning-loop.png)
 
-1. 选择 "**创建**" 以创建资源。
+1. 选择 " **创建** " 以创建资源。
 
-1. 部署资源后，请选择 "**中转到资源**" 按钮，以跳到 Personalizer 资源。
+1. 部署资源后，请选择 " **中转到资源** " 按钮，以跳到 Personalizer 资源。
 
-1. 选择资源的 "**快速启动**" 页，然后复制终结点和键的值。 需要使用 "资源终结点" 和 "密钥" 才能使用排名和奖励 Api。
+1. 选择资源的 " **快速启动** " 页，然后复制终结点和键的值。 需要使用 "资源终结点" 和 "密钥" 才能使用排名和奖励 Api。
 
-1. 选择新资源的 "**配置**" 页，[配置学习循环](how-to-settings.md)。
+1. 选择新资源的 " **配置** " 页， [配置学习循环](how-to-settings.md)。
 
 ## <a name="create-a-resource-with-the-azure-cli"></a>使用 Azure CLI 创建资源
 
@@ -53,7 +53,7 @@ Personalizer 资源与 Personalizer 学习循环是相同的。 为每个使用�
         --location westus2
     ```
 
-1. 使用以下命令为现有资源组创建新的 Personalizer 资源、_学习循环_。
+1. 使用以下命令为现有资源组创建新的 Personalizer 资源、 _学习循环_。
 
     ```azurecli-interactive
     az cognitiveservices account create \
@@ -65,9 +65,9 @@ Personalizer 资源与 Personalizer 学习循环是相同的。 为每个使用�
         --yes
     ```
 
-    这将返回一个 JSON 对象，其中包含**资源终结点**。
+    这将返回一个 JSON 对象，其中包含 **资源终结点**。
 
-1. 使用以下 Azure CLI 命令获取你的**资源键**。
+1. 使用以下 Azure CLI 命令获取你的 **资源键**。
 
     ```azurecli-interactive
         az cognitiveservices account keys list \
@@ -79,4 +79,4 @@ Personalizer 资源与 Personalizer 学习循环是相同的。 为每个使用�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [配置](how-to-settings.md)Personalizer 学习循环
+* [配置](how-to-settings.md) Personalizer 学习循环

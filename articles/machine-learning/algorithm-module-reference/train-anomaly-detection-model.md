@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749611"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905731"
 ---
 # <a name="train-anomaly-detection-model-module"></a>“训练异常情况检测模型”模块
 
-本文介绍如何在 Azure 机器学习设计器（预览版）中使用“训练异常情况检测模型”模块来创建已训练的异常情况检测模型。
+本文介绍如何使用 Azure 机器学习设计器中的 "训练异常检测模型" 模块来创建定型的异常情况检测模型。
 
 该模块将异常情况检测模型和未标记数据集的一组参数作为输入。 它将返回已训练的异常情况检测模型，以及训练数据的一组标签。  
 
@@ -53,5 +53,5 @@ ms.locfileid: "84749611"
 
 请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
 
-有关特定于设计器模块的错误列表，请参阅[设计器（预览版）的异常和错误代码](designer-error-codes.md)。
+有关特定于设计器模块的错误列表，请参阅 [设计器的异常和错误代码](designer-error-codes.md) 。
 '

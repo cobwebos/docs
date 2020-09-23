@@ -9,20 +9,25 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 4c33952ed56399b94a7db1088cb60919a4f88137
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b9452baf0301233a1cd6e05621a89d013d32c9e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108894"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906021"
 ---
-填写并提交[认知服务容器请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。
+填写并提交[认知服务容器请求表单](https://aka.ms/cognitivegate)以请求访问容器。
+通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队可以检查它，确保你满足访问专用容器注册表的条件。
 
-[!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
+> [!IMPORTANT]
+> * 在窗体上，必须使用与 Azure 订阅 ID 关联的电子邮件地址。
+> * 用于运行容器的 Azure 资源必须已使用已批准的 Azure 订阅 ID 创建。 
+> * 检查 "收件箱" 和 "垃圾邮件" 文件夹 () 有关 Microsoft 应用程序状态的更新的电子邮件。
 
 将 docker login 命令与载入电子邮件中提供的凭据结合使用，以连接到认知服务容器的专用容器注册表。
 
-```bash
+
+```Docker
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 

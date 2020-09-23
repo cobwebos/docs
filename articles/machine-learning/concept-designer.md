@@ -1,5 +1,5 @@
 ---
-title: '利用设计器 (预览生成 ML 模型) '
+title: 用设计器生成 ML 模型
 titleSuffix: Azure Machine Learning
 description: 了解组成 Azure 机器学习设计器的术语、概念和工作流。
 services: machine-learning
@@ -10,15 +10,15 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 788eebaf28a768acbdb5b1eb778f196fe05dc3e3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651216"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883120"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="what-is-azure-machine-learning-designer"></a>什么是 Azure 机器学习设计器？ 
+
 
 使用 Azure 机器学习设计器，能够在交互式画布上直观地连接[数据集](#datasets)和[模块](#module)，以创建机器学习模型。 若要了解如何开始使用设计器，请参阅[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
 
@@ -118,5 +118,5 @@ ms.locfileid: "89651216"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关预测分析和机器学习的基本知识，请参阅[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
+* 使用以下教程了解有关预测分析和机器学习的基础知识 - [教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
 * 了解如何根据自己的需求修改现有的[设计器示例](samples-designer.md)。

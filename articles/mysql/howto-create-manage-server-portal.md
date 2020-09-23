@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: dfca1eb2eebe4418880be9da67e250bbc6e380a9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a9dba7c85ded7add1a9f1494d88a3f8a1f62f175
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882458"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MySQL 服务器
 
@@ -37,7 +37,7 @@ ms.locfileid: "88852168"
 
 2. 选择“常规用途”或“内存优化”，具体取决于你要缩放到哪一层。  
 
-   ![用于在 Azure Database for MySQL 中选择基本、常规用途或内存优化层的 Azure 门户屏幕截图](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中选择“基本”、“常规用途”或“内存优化”层":::
 
    > [!NOTE]
    > 更改层级导致服务器重启。
@@ -50,7 +50,7 @@ ms.locfileid: "88852168"
 
 2. 通过将滑块移动到所需的值来更改“vCore”  设置。
 
-    ![Azure 门户在 Azure Database for MySQL 中选择 vCore 选项的屏幕截图](./media/howto-create-manage-server-portal/scaling-compute.png)
+    :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中选择 vCore 选项":::
 
     > [!NOTE]
     > 缩放 vCore 会导致服务器重启。
@@ -63,7 +63,7 @@ ms.locfileid: "88852168"
 
 2. 通过将滑块向上移动到所需的值来更改“存储”  设置。
 
-   ![用于在 Azure Database for MySQL 中选择存储比例的 Azure 门户屏幕截图](./media/howto-create-manage-server-portal/scaling-storage.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中选择存储规模":::
 
    > [!NOTE]
    > 存储无法纵向缩减。
@@ -76,11 +76,11 @@ ms.locfileid: "88852168"
 
 1. 在 Azure 门户中选择服务器。 在“概览”窗口中，选择“重置密码”   。
 
-   ![用于重置密码的 Azure 门户屏幕截图 Azure Database for MySQL](./media/howto-create-manage-server-portal/overview-reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中重置密码":::
 
 2. 输入新密码并确认。 文本框会就密码复杂性要求提示你。
 
-   ![用于重置密码并保存的 Azure 门户屏幕截图 Azure Database for MySQL](./media/howto-create-manage-server-portal/reset-password.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中重置密码并进行保存":::
 
 3. 选择“确定”以保存新密码。 
 
@@ -90,11 +90,11 @@ ms.locfileid: "88852168"
 
 1. 在 Azure 门户中选择服务器。 在“概览”窗口中，选择“删除”。  
 
-   ![用于删除服务器的 Azure 门户屏幕截图 Azure Database for MySQL](./media/howto-create-manage-server-portal/overview-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中删除服务器":::
 
 2. 在输入框中键入服务器名称，确认这是要删除的服务器。
 
-   ![用于确认服务器删除的 Azure 门户屏幕截图 Azure Database for MySQL](./media/howto-create-manage-server-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中确认服务器删除操作":::
 
    > [!NOTE]
    > 删除服务器的操作不可逆。
