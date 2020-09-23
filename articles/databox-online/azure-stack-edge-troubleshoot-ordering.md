@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户解决 Azure Stack Edge 排序问题 |Microsoft Docs
-description: 介绍如何对 Azure Stack 边缘排序问题进行故障排除。
+title: 使用 Azure 门户解决 Azure Stack Edge Pro 排序问题 |Microsoft Docs
+description: 介绍如何对 Azure Stack Edge Pro 排序问题进行故障排除。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c42ee867bdd20de64fa1c603de47b5f1e7bdb39
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055939"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903638"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>排查 Azure Stack 边缘排序问题
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>排查 Azure Stack Edge Pro 排序问题
 
-本文介绍如何解决 Azure Stack 边缘排序问题。
+本文介绍如何解决 Azure Stack Edge Pro 排序问题。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -59,7 +59,7 @@ Microsoft 可能会根据具体情况，允许订阅类型的升级。 请与 [M
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>DataBoxEdge 未注册订阅
 
-**错误：** 在 Azure 门户中，选择要用于 Azure Stack 边缘或 Data Box Gateway 的订阅，并收到以下错误：
+**错误：** 在 Azure 门户中，选择要用于 Azure Stack Edge Pro 或 Data Box Gateway 的订阅，并收到以下错误：
 
 *资源提供程序 () ： DataBoxEdge 未注册订阅 &lt; 订阅名称 &gt; ，并且您没有为订阅 &lt; 订阅名称 &gt; 注册资源提供程序的权限*。
 
@@ -75,4 +75,4 @@ Microsoft 可能会根据具体情况，允许订阅类型的升级。 请与 [M
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关如何 [排查 Azure Stack 边缘问题](azure-stack-edge-troubleshoot.md)的详细信息。
+* 了解有关如何 [排查 Azure Stack Edge Pro 问题](azure-stack-edge-troubleshoot.md)的详细信息。

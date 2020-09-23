@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067165"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967207"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
 
@@ -94,13 +94,19 @@ ms.locfileid: "88067165"
 
 * `deduplicateMaterials` - 此参数可允许或禁止对共享相同属性和纹理的材料进行自动去重。 在进行材料覆盖后进行去重。 默认启用。
 
+* 即使在重复数据删除后，模型的材料超过65535，该服务也会尝试合并具有相似属性的材料。 作为最后一种方法，超过该限制的任何材料将替换为红色错误材料。
+
+![Image 显示了两个由68921彩色三角形组成的多维数据集。](media/mat-dedup.png?raw=true)
+
+两个彩色三角形为68921的多维数据集。 Left：消除68921颜色材料的重复数据。 Right：消除了64000颜色材料后的重复数据。 限制为65535。  (参阅 [限制](../../reference/limits.md)。 ) 
+
 ### <a name="color-space-parameters"></a>颜色空间参数
 
 呈现引擎期待颜色值处于线性空间内。
 如果模型是使用伽玛空间定义的，则应将这些选项设置为 true。
 
 * `gammaToLinearMaterial` - 将材料颜色从伽玛空间转换为线性空间
-* `gammaToLinearVertex`-将 :::no-loc text="vertex"::: 颜色从伽玛空间转换为线性空间
+* `gammaToLinearVertex` -将 :::no-loc text="vertex"::: 颜色从伽玛空间转换为线性空间
 
 > [!NOTE]
 > 对于 FBX 文件，这些设置默认设置为 `true`。 对于所有其他文件类型，默认值为 `false`。
@@ -139,11 +145,11 @@ ms.locfileid: "88067165"
 
 ### <a name="node-meta-data"></a>节点元数据
 
-* `metadataKeys`-用于指定要保留在转换结果中的节点元数据属性的键。 可以指定精确的密钥或通配符。 通配符的格式为 "ABC *"，并与以 "ABC" 开头的任何密钥匹配。 支持的元数据值类型为 `bool` 、、 `int` `float` 和 `string` 。
+* `metadataKeys` -用于指定要保留在转换结果中的节点元数据属性的键。 可以指定精确的密钥或通配符。 通配符的格式为 "ABC *"，并与以 "ABC" 开头的任何密钥匹配。 支持的元数据值类型为 `bool` 、、 `int` `float` 和 `string` 。
 
-    对于 GLTF 文件，此数据来自[节点上的额外对象](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 对于 FBX 文件，此数据来自中的 `Properties70` 数据 `Model nodes` 。 有关更多详细信息，请参阅你的3D 资产工具的文档。
+    对于 GLTF 文件，此数据来自 [节点上的额外对象](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 对于 FBX 文件，此数据来自中的 `Properties70` 数据 `Model nodes` 。 有关更多详细信息，请参阅你的3D 资产工具的文档。
 
-### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::形式
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: 形式
 
 可以调整 :::no-loc text="vertex"::: 网格的格式，以节省内存的交易精度。 占用内存较低，可以加载更大的模型或获得更好的性能。 但是，根据具体数据，格式错误可能会显著影响呈现质量。
 
@@ -194,7 +200,7 @@ ms.locfileid: "88067165"
 
 各种格式的内存占用量如下：
 
-| 格式 | 说明 | 字节/:::no-loc text="vertex"::: |
+| 格式 | 说明 | 字节/ :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|双组件全浮点精度|8
 |16_16_FLOAT|双组件半浮点精度|4
@@ -233,34 +239,34 @@ ms.locfileid: "88067165"
 
 如果在源文件中相应地标记了部件，转换服务将考虑实例化。 但是，转换不执行网格数据的其他深入分析来识别可重复使用的部分。 因此，内容创建工具及其导出管道是正确的实例化设置的决定性条件。
 
-测试在转换过程中是否保留实例化信息的简单方法是查看[输出统计](get-information.md#example-info-file)信息，尤其是 `numMeshPartsInstanced` 成员。 如果的值大于 `numMeshPartsInstanced` 零，则表示网格在各个实例之间共享。
+测试在转换过程中是否保留实例化信息的简单方法是查看 [输出统计](get-information.md#example-info-file)信息，尤其是 `numMeshPartsInstanced` 成员。 如果的值大于 `numMeshPartsInstanced` 零，则表示网格在各个实例之间共享。
 
 #### <a name="example-instancing-setup-in-3ds-max"></a>示例：3ds 中的实例化设置最大值
 
-[Autodesk 3Ds Max](https://www.autodesk.de/products/3ds-max)具有不同的对象克隆模式 **`Copy`** ， **`Instance`** **`Reference`** 这种模式的行为与导出文件中的实例化的行为不同 `.fbx` 。
+[Autodesk 3Ds Max](https://www.autodesk.de/products/3ds-max) 具有不同的对象克隆模式 **`Copy`** ， **`Instance`** **`Reference`** 这种模式的行为与导出文件中的实例化的行为不同 `.fbx` 。
 
 ![最大3ds 克隆](./media/3dsmax-clone-object.png)
 
-* **`Copy`**：在此模式下，将克隆网格，因此不会使用 (`numMeshPartsInstanced` = 0) 的实例。
-* **`Instance`**：这两个对象共享同一网格，因此 (`numMeshPartsInstanced` = 1) 使用实例化。
-* **`Reference`**：不同的修饰符可应用于几何图形，因此导出程序选择保守方法，而不使用实例 (`numMeshPartsInstanced` = 0) 。
+* **`Copy`** ：在此模式下，将克隆网格，因此不会使用 (`numMeshPartsInstanced` = 0) 的实例。
+* **`Instance`** ：这两个对象共享同一网格，因此 (`numMeshPartsInstanced` = 1) 使用实例化。
+* **`Reference`** ：不同的修饰符可应用于几何图形，因此导出程序选择保守方法，而不使用实例 (`numMeshPartsInstanced` = 0) 。
 
 
 ### <a name="depth-based-composition-mode"></a>基于深度的组合模式
 
-如果需要考虑内存问题，请使用[基于深度的组合模式](../../concepts/rendering-modes.md#depthbasedcomposition-mode)配置呈现器。 在此模式下，GPU 负载分布于多个 Gpu。
+如果需要考虑内存问题，请使用 [基于深度的组合模式](../../concepts/rendering-modes.md#depthbasedcomposition-mode)配置呈现器。 在此模式下，GPU 负载分布于多个 Gpu。
 
 ### <a name="decrease-vertex-size"></a>减小顶点大小
 
-如 "[组件格式更改的最佳实践](configure-model-conversion.md#best-practices-for-component-format-changes)" 一节中所述，调整顶点格式可以减少内存占用量。 但是，此选项应该是最后的手段。
+如 " [组件格式更改的最佳实践](configure-model-conversion.md#best-practices-for-component-format-changes) " 一节中所述，调整顶点格式可以减少内存占用量。 但是，此选项应该是最后的手段。
 
 ### <a name="texture-sizes"></a>纹理大小
 
 根据方案的类型，纹理数据量可能超出网格数据所用的内存量。 Photogrammetry 模型是候选。
-转换配置不提供自动缩减纹理的方式。 如有必要，纹理缩放必须作为客户端预处理步骤完成。 不过，转换步骤会选取合适的[纹理压缩格式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
+转换配置不提供自动缩减纹理的方式。 如有必要，纹理缩放必须作为客户端预处理步骤完成。 不过，转换步骤会选取合适的 [纹理压缩格式](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
 
-* `BC1`对于不透明颜色纹理
-* `BC7`对于带有 alpha 通道的源颜色纹理
+* `BC1` 对于不透明颜色纹理
+* `BC7` 对于带有 alpha 通道的源颜色纹理
 
 由于 `BC7` 与相比，格式具有内存占用空间的两倍 `BC1` ，因此请务必确保输入纹理不会不必要地提供 alpha 通道。
 
@@ -295,7 +301,7 @@ ms.locfileid: "88067165"
 * 打光通常是应用程序不可分割的一部分，因此必须生成冲突网格。
 * 启用 `opaqueMaterialDefaultSidedness` 标志可美化剪切平面。
 
-## <a name="deprecated-features"></a>弃用的功能
+## <a name="deprecated-features"></a>已弃用的功能
 
 仍支持使用非特定于模型的文件名来提供设置 `conversionSettings.json` ，但不推荐使用。
 请改用特定于模型的文件名 `<modelName>.ConversionSettings.json` 。

@@ -1,6 +1,6 @@
 ---
-title: 连接并查询 Azure SQL Edge（预览版）
-description: 了解如何连接到 Azure SQL Edge 并进行查询（预览）。
+title: 连接和查询 Azure SQL Edge
+description: 了解如何连接到 Azure SQL Edge 并进行查询。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373107"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888236"
 ---
-# <a name="connect-and-query-azure-sql-edge-preview"></a>连接并查询 Azure SQL Edge（预览版）
+# <a name="connect-and-query-azure-sql-edge"></a>连接和查询 Azure SQL Edge
 
 在 Azure SQL Edge 中，部署容器后，可以从以下任意位置连接到数据库引擎：
 
@@ -37,7 +37,7 @@ ms.locfileid: "87373107"
 若要从网络计算机连接到 Azure SQL Edge 数据库引擎，需要以下各项：
 
 - **主机的 IP 地址或网络名称**：这是运行 Azure SQL Edge 容器的主机。
-- **AZURE SQL Edge 容器主机端口映射**：这是 Docker 容器端口到主机端口的映射。 在容器中，Azure SQL Edge 始终映射到端口1433。 如果需要，可以对此进行更改。 若要更改端口号，请在 Azure IoT Edge 中更新 Azure SQL Edge 模块的**容器创建选项**。 在以下示例中，容器上的端口1433映射到主机上的端口1600。
+- **AZURE SQL Edge 容器主机端口映射**：这是 Docker 容器端口到主机端口的映射。 在容器中，Azure SQL Edge 始终映射到端口1433。 如果需要，可以对此进行更改。 若要更改端口号，请在 Azure IoT Edge 中更新 Azure SQL Edge 模块的 **容器创建选项** 。 在以下示例中，容器上的端口1433映射到主机上的端口1600。
 
     ```JSON
     {
@@ -64,7 +64,7 @@ ms.locfileid: "87373107"
     ```
 
     > [!TIP]
-    > 并非始终需要指定整个容器 ID。 只需指定能够唯一标识它的足够字符即可。 在此示例中，可以使用 `e6` 或 `e69` ，而不是完整的 ID。
+    > 并非始终需要指定完整的容器 ID。 只需指定能够唯一标识它的足够字符即可。 在此示例中，可以使用 `e6` 或 `e69` ，而不是完整的 ID。
 
 2. 在容器中时，请用 sqlcmd 本地连接。 默认情况下，Sqlcmd 不在路径中，因此需要指定完整路径。
 
@@ -78,7 +78,7 @@ ms.locfileid: "87373107"
 
 ## <a name="connect-to-azure-sql-edge-from-another-container-on-the-same-host"></a>从同一主机上的另一个容器连接到 Azure SQL Edge
 
-由于同一主机上运行的两个容器位于同一 Docker 网络上，因此可以使用服务的容器名称和端口地址轻松访问这些容器。 例如，如果要从同一主机上的另一个 python 模块（容器）连接到 Azure SQL Edge 的实例，则可以使用类似于下面的连接字符串。 （此示例假定 Azure SQL Edge 配置为侦听默认端口。）
+由于同一主机上运行的两个容器位于同一 Docker 网络上，因此可以使用服务的容器名称和端口地址轻松访问这些容器。 例如，如果要从同一主机上 (容器) 的其他 python 模块连接到 Azure SQL Edge 的实例，则可以使用类似于下面的连接字符串。  (此示例假设 Azure SQL Edge 配置为侦听默认端口。 ) 
 
 ```python
 
@@ -94,7 +94,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>从另一台网络计算机连接到 Azure SQL Edge
 
-你可能需要从网络上的另一台计算机连接到 Azure SQL Edge 的实例。 为此，请使用 Docker 主机的 IP 地址和 Azure SQL Edge 容器映射到的主机端口。 例如，如果 Docker 主机的 IP 地址是*xxx.xxx.xxx.xxx*，而 Azure sql edge 容器映射到主机端口*1600*，则 azure sql edge 实例的服务器地址将为 xxx。 xxx *，1600*。 更新的 python 脚本是：
+你可能需要从网络上的另一台计算机连接到 Azure SQL Edge 的实例。 为此，请使用 Docker 主机的 IP 地址和 Azure SQL Edge 容器映射到的主机端口。 例如，如果 Docker 主机的 IP 地址是 *xxx.xxx.xxx.xxx*，而 Azure sql edge 容器映射到主机端口 *1600*，则 azure sql edge 实例的服务器地址将为 xxx。 xxx *，1600*。 更新的 python 脚本是：
 
 ```python
 
@@ -108,11 +108,11 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ```
 
-若要使用 Windows 计算机上运行 SQL Server Management Studio 连接到 Azure SQL Edge 的实例，请参阅[SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms)。
+若要使用 Windows 计算机上运行 SQL Server Management Studio 连接到 Azure SQL Edge 的实例，请参阅 [SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms)。
 
-若要使用 Windows、Mac 或 Linux 计算机上的 Visual Studio Code 连接到 Azure SQL Edge 的实例，请参阅[Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)。
+若要使用 Windows、Mac 或 Linux 计算机上的 Visual Studio Code 连接到 Azure SQL Edge 的实例，请参阅 [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)。
 
-若要使用 Windows、Mac 或 Linux 计算机上的 Azure Data Studio 连接到 Azure SQL Edge 的实例，请参阅[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server)。
+若要使用 Windows、Mac 或 Linux 计算机上的 Azure Data Studio 连接到 Azure SQL Edge 的实例，请参阅 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server)。
 
 ## <a name="next-steps"></a>后续步骤
 

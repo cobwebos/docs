@@ -3,16 +3,16 @@ title: 商业应用商店政策和条款，Azure Marketplace
 description: Microsoft 商业市场政策和条款适用于 Azure Marketplace 中的所有发布者和产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: reference
+ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: cd936307eaacc7b2a46bac23c8fcfc9e2769135c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006714"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974841"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商业市场策略和条款
 
@@ -25,12 +25,11 @@ ms.locfileid: "90006714"
 
 ## <a name="policies-and-terms"></a>策略和条款
 
-* [商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)
+- [商业市场认证策略](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
+- [Microsoft AppSource 和 Azure Marketplace 审查策略](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
+- [Azure 市场参与政策](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
+- [Azure 市场条款](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
-* [分级和评审策略](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
+## <a name="next-step"></a>下一步
 
-* [Azure 市场条款](https://docs.microsoft.com/legal/marketplace/terms)
-
-## <a name="next-step"></a>后续步骤
-
-请访问 [商业 marketplace 发布指南](./marketplace-publishers-guide.md) 页。
+请访问 [商业 marketplace 发布指南](marketplace-publishers-guide.md) 页。

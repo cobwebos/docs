@@ -6,39 +6,39 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213680"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903887"
 ---
 # <a name="logical-decoding"></a>逻辑解码
  
 使用 [PostgreSQL 中的逻辑解码](https://www.postgresql.org/docs/current/logicaldecoding.html)可将数据更改流式传输到外部使用者。 逻辑解码广泛用于事件流和变更数据捕获方案。
 
-逻辑解码使用一个输出插件将 Postgres 的预写日志 (WAL) 转换为可读格式。 Azure Database for PostgreSQL 提供了输出插件[wal2json](https://github.com/eulerto/wal2json)、 [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html)和 pgoutput。 pgoutput 可由 Postgres 版本10和更高版本中的 Postgres 提供。
+逻辑解码使用一个输出插件将 Postgres 的预写日志 (WAL) 转换为可读格式。 Azure Database for PostgreSQL 提供以下输出插件：[wal2json](https://github.com/eulerto/wal2json)、[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) 和 pgoutput。 pgoutput 由 Postgres 10 及更高版本中的 Postgres 提供。
 
-有关 Postgres 逻辑解码工作原理的概述，请[访问我们的博客](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)。 
+有关 Postgres 逻辑解码工作原理的概述，请 [访问我们的博客](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)。 
 
 > [!NOTE]
 > Azure Database for PostgreSQL - 单一服务器上的逻辑解码目前为公共预览版。
 
 
 ## <a name="set-up-your-server"></a>设置服务器 
-逻辑解码和[读取副本](concepts-read-replicas.md)都依赖于 Postgres 写入日志（WAL）来获取详细信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要比读取副本更高的日志记录级别。
+逻辑解码和[只读副本](concepts-read-replicas.md)都依赖于 Postgres 预写日志 (WAL) 来获取信息。 这两个功能需要使用来自 Postgres 的不同级别的日志记录。 逻辑解码需要的日志记录的级别比只读副本需要的更高。
 
 若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
 
-* **Off** -将最少的信息放在 WAL 中。 在大多数 Azure Database for PostgreSQL 服务器上，此设置不可用。  
-* **副本**-比**Off**更详细。 这是[读取副本](concepts-read-replicas.md)运行所需的最小日志记录级别。 在大多数服务器上，此设置是默认设置。
-* **逻辑**上比**副本**更详细。 这是要运行的逻辑解码的最小日志记录级别。 读取副本也可以通过此设置运行。
+* **关闭** - 在 WAL 中包含最少的信息。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
+* **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
 
-需要在更改此参数后重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
+更改此参数后，需要重启服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-1. 将 replication_support 设置为 `logical` 。
+1. 将 azure.replication_support 设置为 `logical`。
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
@@ -50,13 +50,13 @@ ms.locfileid: "85213680"
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-1. 将 Azure 复制支持设置为**逻辑**。 选择“保存”。
+1. 将 Azure 复制支持设置为“逻辑”。 选择“保存” 。
 
-   ![Azure Database for PostgreSQL 复制-Azure 复制支持](./media/concepts-logical/replication-support.png)
+   :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL - 复制 - Azure 复制支持":::
 
-2. 通过选择 **"是"** 重新启动服务器以应用更改。
+2. 通过选择“是”，重启服务器以应用更改。
 
-   ![Azure Database for PostgreSQL-复制-确认重新启动](./media/concepts-logical/confirm-restart.png)
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL - 复制 - 确认重启":::
 
 
 ## <a name="start-logical-decoding"></a>开始逻辑解码
@@ -145,7 +145,7 @@ pg_replication_slots 视图中的“active”列指示是否有使用者连接�
 SELECT * FROM pg_replication_slots;
 ```
 
-请针对“已用存储”和“副本的最大滞后时间”指标[设置警报](howto-alert-on-metric.md)，以便在值超过正常阈值时收到通知。   
+请针对“已用存储”和“副本的最大滞后时间”指标[设置警报](howto-alert-on-metric.md)，以便在值超过正常阈值时收到通知。  
 
 > [!IMPORTANT]
 > 必须删除未使用的复制槽。 否则可能会导致服务器不可用。

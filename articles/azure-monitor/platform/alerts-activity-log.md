@@ -4,12 +4,12 @@ description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322408"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983087"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -111,7 +111,7 @@ ms.locfileid: "87322408"
 
 1. 在 Azure 门户中，选择“监视” > “警报”。  在窗口的左上角选择“管理警报规则”。
 
-    ![管理警报规则](media/alerts-activity-log/manage-alert-rules.png)
+    ![屏幕截图显示具有突出显示的 "搜索" 框的活动日志。](media/alerts-activity-log/manage-alert-rules.png)
 
     此时将显示可用规则的列表。
 
@@ -204,8 +204,8 @@ ms.locfileid: "87322408"
 
   > [!NOTE]
   > 
-  > 请注意，可以将最高级别的活动日志警报定义为 "订阅"。
-  > 也就是说，没有用于定义两个订阅的警报的选项，因此，每个订阅的定义应为警报。
+  > 请注意，可以定义的最高级别的活动日志警报是订阅。
+  > 这意味着没有定义针对几个订阅的警报的选项，因此定义应该是针对每个订阅的警报。
 
 以下字段是可以在 Azure 资源管理器模板中用于条件字段的选项：请注意，“资源运行状况”、“顾问”和“服务运行状况”有额外的属性字段，这是它们的特殊字段。 
 1. resourceId：应该对其生成警报的活动日志事件中受影响资源的资源 ID。

@@ -1,6 +1,6 @@
 ---
-title: CREATE EXTERNAL STREAM (Transact-SQL) - Azure SQL Edge（预览版）
-description: 了解 Azure SQL Edge（预览版）中的 CREATE EXTERNAL STREAM 语句
+title: CREATE EXTERNAL STREAM (Transact-sql) -Azure SQL Edge
+description: 了解如何在 Azure SQL Edge 中创建外部流语句
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 17783662ba91f227a7b0bf69203bf21dd8342277
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489538"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888167"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 
@@ -90,7 +90,7 @@ WITH  ( <with_options> )
 ); 
 ```
 
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
 
 - [DATA_SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql/)
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
@@ -100,7 +100,7 @@ WITH  ( <with_options> )
    - 对于 Azure Blob 存储流对象位置，指的是要在 Blob 容器中使用的路径模式。 有关此功能的详细信息，请参阅 (/articles/stream-analytics/stream-analytics-define-outputs.md # blob-gen2) 
 
 - **INPUT_OPTIONS**：为作为流式处理查询的输入的服务（如 Kafka、IoT Edge 集线器）指定选项作为键值对
-    - 分区：为主题定义的分区数
+    - 分区：为主题定义的分区数。 可使用的最大分区数限制为32。
       - 适用于 Kafka 输入流
     - CONSUMER_GROUP：事件中心和 IoT 中心限制一个使用者组中的读者数量（最多 5 个）。 将此字段留空将使用“$Default”使用者组。
       - 保留供将来使用。 不适用于 Azure SQL Edge。  
@@ -247,6 +247,5 @@ WITH
 
 ## <a name="see-also"></a>另请参阅
 
-- [ALTER EXTERNAL STREAM (Transact-SQL)](alter-external-stream-transact-sql.md) 
 - [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md) 
 

@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903791"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用 Visual Studio Code 通过示例数据在本地测试流分析查询
 
@@ -21,7 +21,7 @@ ms.locfileid: "86044356"
 
 * 安装 [.NET core SDK](https://dotnet.microsoft.com/download) 并重启 Visual Studio Code。
 
-* 使用此[快速入门](quick-create-vs-code.md)了解如何使用 Visual Studio Code 创建流分析作业。
+* 使用此[快速入门](quick-create-visual-studio-code.md)了解如何使用 Visual Studio Code 创建流分析作业。
 
 ## <a name="prepare-sample-data"></a>准备示例数据
 
@@ -31,17 +31,17 @@ ms.locfileid: "86044356"
 
 2. 在数据显示后，单击“另存为”  将数据保存到一个本地文件。
 
- ![预览实时输入](./media/quick-create-vs-code/preview-live-input.png)
+ ![预览实时输入](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="define-a-local-input"></a>定义本地输入
 
 1. 右键单击流分析项目中“输入”文件夹下的 **input.json**。 然后从顶部行中选择“添加本地输入”。 
 
-    ![从项目中添加本地输入](./media/quick-create-vs-code/add-input-from-project.png)
+    ![从项目中添加本地输入](./media/quick-create-visual-studio-code/add-input-from-project.png)
 
     你还可以使用 **Ctrl+Shift+P** 打开命令面板，然后输入 **ASA:Add Input**。
 
-   ![在 VS Code 中添加流分析输入](./media/quick-create-vs-code/add-input.png)
+   ![在 VS Code 中添加流分析输入](./media/quick-create-visual-studio-code/add-input.png)
 
 2. 选择“本地输入”  。
 

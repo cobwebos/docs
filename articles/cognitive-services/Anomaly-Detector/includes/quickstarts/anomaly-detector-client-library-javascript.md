@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/10/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 836582003c4b4bd47d2b90b845ae414210d16edd
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4a4b6d02845c9767b7ab668dd172da38150fc89e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246539"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024897"
 ---
 适用于 JavaScript 的异常检测器客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -22,8 +22,9 @@ ms.locfileid: "88246539"
 
 * 以批请求的形式检测整个时序数据集中的异常
 * 在时序中检测最新数据点的异常状态
+* 检测数据集中的趋势更改点。
 
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
+[库参考文档](https://go.microsoft.com/fwlink/?linkid=2090788) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,18 +65,18 @@ npm init
 安装 `ms-rest-azure` 和 `azure-cognitiveservices-anomalydetector` NPM 包。 此快速入门中也使用了 csv-parse 库：
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
+npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 ```
 
 应用的 `package.json` 文件将使用依赖项进行更新。
 
 ## <a name="object-model"></a>对象模型
 
-异常检测器客户端是 [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 对象，该对象使用你的密钥向 Azure 进行身份验证。 该客户端提供两种异常检测方法：对整个数据集使用 [entireDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)，对最新数据点使用 [LastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-)。 
+异常检测器客户端是 [AnomalyDetectorClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) 对象，该对象使用你的密钥向 Azure 进行身份验证。 客户端可以使用 [entireDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--) 对整个数据集进行异常情况检测，或使用 [LastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 对最新的数据点进行异常情况检测。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) 方法可检测在趋势中标记更改的点。 
 
 时序数据作为 [Request](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) 对象中的一系列 [Point](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) 进行发送。 `Request` 对象包含描述数据的属性（例如[Granularity](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity)）以及异常检测的参数。 
 
-异常检测器响应是 [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) 或 [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 对象，具体取决于所使用的方法。 
+异常检测器响应是 [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)、[EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) 或 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) 对象，具体取决于所使用的方法。 
 
 ## <a name="code-examples"></a>代码示例 
 
@@ -85,6 +86,7 @@ npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-pars
 * [从文件加载时序数据集](#load-time-series-data-from-a-file)
 * [在整个数据集中检测异常](#detect-anomalies-in-the-entire-data-set) 
 * [检测最新数据点的异常状态](#detect-the-anomaly-status-of-the-latest-data-point)
+* [检测数据集中的更改点](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -116,6 +118,12 @@ npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-pars
 调用异常检测器 API，以便使用客户端的 [lastDetect()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) 方法确定最新数据点是否异常，并存储返回的 [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) 对象。 响应的 `isAnomaly` 值是一个布尔值，用于指定该点的异常状态。  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
+
+## <a name="detect-change-points-in-the-data-set"></a>检测数据集中的更改点
+
+调用 API，以使用客户端的 [detectChangePoint()](https://go.microsoft.com/fwlink/?linkid=2090788) 方法检测时序中的更改点。 存储返回的 [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) 对象。 循环访问响应的 `isChangePoint` 列表，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于趋势更改点的索引。
+
+[!code-javascript[detect change points](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=changePointDetection)]
 
 ## <a name="run-the-application"></a>运行应用程序
 

@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.topic: how-to
+ms.openlocfilehash: dfba8bc1713e14099413a6c01d0af8508ba0eb73
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181097"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895185"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>利用资产清单和管理工具浏览和管理资源
 
@@ -25,20 +25,23 @@ Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已�
 
 使用此视图及其筛选器来解决此类问题：
 
-- 哪些标准层订阅中有未完成的建议？
+- 哪些订阅启用了 Azure Defender？
 - 标记为 "生产" 的计算机中哪些计算机缺少 Log Analytics 代理？
-- 标记有特定标记的计算机有多少具有未完成的建议？
+- 有多少个具有特定标记的计算机有未完成的建议？
 - 特定资源组中有多少个资源从漏洞评估服务获得了安全发现？
 
 此工具的资产管理可能是巨大的，并会持续增长。 
+
+> [!TIP]
+> 安全建议与“建议”页上的相同，但此处会将其筛选为所选的特定资源类型。 有关如何解决建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
 
 ## <a name="availability"></a>可用性
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|预览|
-|计价|Free|
+|发布状态：|正式发布 (GA)|
+|计价|免费|
 |必需的角色和权限：|所有用户|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
 |||
@@ -56,7 +59,7 @@ Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已�
 
 - **筛选器** -页面顶部的多个筛选器提供了一种方法，可根据要尝试回答的问题快速优化资源列表。 例如，如果你想要回答*标记为 "生产" 的计算机中缺少 Log Analytics 代理*的问题，则**可以将****代理监视**筛选器与 tag 筛选器组合起来，如下面的代码片段所示：
 
-    ![筛选到未监视的生产资源](./media/asset-inventory/filtering-to-prod-unmonitored.gif)
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="筛选到未监视的生产资源":::
 
     应用筛选器后，汇总值将更新以与查询结果相关。 
 
@@ -69,8 +72,9 @@ Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已�
 
 - **资产管理选项** -库存使你可以执行复杂的发现查询。 如果找到了与查询匹配的资源，则清单将提供操作的快捷方式，例如：
 
-    - 将标记分配给筛选的资源-选择要标记的资源旁的复选框
-    - 将新服务器加入安全中心-使用 " **添加非 Azure 服务器** " 工具栏按钮
+    - 将标记分配给筛选的资源-选择要标记的资源旁的复选框。
+    - 将新服务器加入安全中心-使用 " **添加非 Azure 服务器** " 工具栏按钮。
+    - 使用 Azure 逻辑应用自动执行工作负荷-使用 " **触发器逻辑应用** " 按钮在一个或多个资源上运行逻辑应用。 逻辑应用必须提前准备，并接受相关的触发器类型 (HTTP 请求) 。 [了解有关逻辑应用的详细信息](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
 
 
 ## <a name="how-does-asset-inventory-work"></a>资产清单如何工作？
@@ -86,11 +90,11 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 
 1. 从安全中心的边栏中选择 " **清点**"。
 
-1. （可选）若要显示特定资源，请在 " **按名称筛选** " 框中输入名称。
+1. 使用 " **按名称筛选** " 框显示特定资源，或使用如下所述的筛选器。
 
 1. 在筛选器中选择相关选项以创建要执行的特定查询。
 
-    ![库存筛选器](./media/asset-inventory/inventory-filters.png)
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="库存筛选选项" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     默认情况下，资源按活动安全建议的数量进行排序。
 
@@ -106,19 +110,24 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
     > [!TIP]
     > **安全发现包含**和**标记**筛选器仅接受单个值。 若要按多个筛选，请使用 " **添加筛选器**"。
 
-1. 若要使用 " **定价层** " 筛选器，请选择一个或多个选项 (可用、部分或标准) ：
+1. 若要使用 **Azure Defender** 筛选器，请选择一个或多个选项 (Off、On 或 Partial) ：
 
-    - **免费** -免费定价层上的资源
-    - **标准** -标准定价层上的资源
-    - **部分** -这适用于标准定价层上的订阅，但禁用了某些可选的安全计划。 例如，以下订阅在标准层上，但禁用了标准层的五个元素。 
+    - 不受 Azure Defender 计划保护**的非资源**。 你可以右键单击其中的任何一种并升级它们：
 
-        ![标准 (分部) 定价层上的订阅](./media/asset-inventory/pricing-tier-partial.png)
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="使用右键单击将资源升级到 Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+
+    - 受 Azure Defender 计划**保护的资源**
+    - **部分** -这适用于已禁用某些但并非所有 Azure Defender 计划的 **订阅** 。 例如，以下订阅禁用了五个 Azure Defender 计划。 
+
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="部分订阅 Azure Defender":::
 
 1. 若要进一步检查查询的结果，请选择你感兴趣的资源。
 
-1. 还可以选择 " **资源图资源管理器" 中** 的 "查看"，以在资源图形资源管理器中打开查询
+1. 若要在 Resource Graph 资源管理器中以查询形式查看当前所选筛选选项，请选择 " **资源图形资源管理器中的视图**"。
 
     ![ARG 中的清单查询](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+
+1. 使用运行先前定义的逻辑应用 
 
 1. 如果已定义了一些筛选器并使页面保持打开状态，则安全中心不会自动更新结果。 除非手动重新加载页面或选择 **刷新**，否则对资源所做的任何更改都不会影响显示的结果。
 
@@ -127,22 +136,19 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>为什么所有订阅、计算机、存储帐户等都未显示？
 
-清单视图列出了云安全状况管理的资源 (CSPM) 透视。 筛选器不返回环境中的每个资源;只有具有未处理 (或 "活动" 的文件 ) 建议。 
+清单视图从云安全状况管理中列出安全中心连接的资源 (CSPM) 透视。 筛选器不返回环境中的每个资源;只有具有未处理 (或 "活动" 的文件 ) 建议。 
 
-例如，如果你有九个订阅，但目前只有八个建议，则当你按 **资源类型 = 订阅** 进行筛选时，你只会看到具有活动建议的八个订阅：
+例如，以下屏幕截图显示有权访问38订阅但目前只有10个订阅的用户。 因此，当它们按 **资源类型 = 订阅**进行筛选时，只会在清单中显示具有活动建议的10个订阅：
 
-![如果没有活动的建议，则不返回所有的 sub](./media/asset-inventory/filtered-subscriptions-some.png)
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="如果没有活动的建议，则不返回所有的 sub":::
 
-
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-pricing-or-agent-monitoring-columns"></a>为什么某些资源在 "定价" 或 "代理" 监视列中显示空值？
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>为什么某些资源在 Azure Defender 或代理监视列中显示空值？
 
 并非所有安全中心监视的资源都有代理。 例如，Azure 存储帐户或 PaaS 资源（例如磁盘、逻辑应用、Data Lake 分析和事件中心）。
 
 当定价或代理监视与资源无关时，清单列中将不会显示任何内容。
 
-![某些资源在代理监视或定价列中显示空白信息](./media/asset-inventory/agent-pricing-blanks.png)
-
-
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="某些资源在代理监视或 Azure Defender 列中显示空白信息":::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -151,5 +157,4 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 有关相关工具的详细信息，请参阅以下页面：
 
 - [Azure 资源关系图 (ARG) ](https://docs.microsoft.com/azure/governance/resource-graph/)
-
 - [Kusto 查询语言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)

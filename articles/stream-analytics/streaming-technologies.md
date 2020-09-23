@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a204aacc0061091e0a273581e766bb669d191f0b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75860242"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903698"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>在 Azure 上选择实时分析和流式处理技术
 
@@ -55,4 +55,4 @@ Azure 流分析是 Microsoft 的专属技术，只能在 Azure 上使用。 如�
 * [使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
 * [使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
 * [使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
-* [使用 Visual Studio Code 创建流分析作业](quick-create-vs-code.md)
+* [使用 Visual Studio Code 创建流分析作业](quick-create-visual-studio-code.md)
