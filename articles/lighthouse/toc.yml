@@ -101,6 +101,8 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./samples/policy-reference.md
+    - name: Terraform
+      href: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
 - name: 资源
   items:
     - name: 有关 Azure Lighthouse 的 Microsoft Q&A

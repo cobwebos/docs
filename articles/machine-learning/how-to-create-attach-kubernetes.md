@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: cac14d5995042847bc98e47e50ea2d188382fd2a
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 034fbf991c97ba7b9f51b5508c35df1889280562
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564332"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897888"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure 机器学习可以将训练的机器学习模型部署到 Azure Kubernetes 服务。 但是，必须首先从 Azure ML 工作区中 __创建__ Azure Kubernetes SERVICE (AKS) 群集，或者 __附加__ 现有的 AKS 群集。 本文提供有关创建和附加群集的信息。
 
@@ -35,11 +34,11 @@ Azure 机器学习可以将训练的机器学习模型部署到 Azure Kubernetes
 
 - 如果需要 **标准负载均衡器 (SLB) ** 部署在群集中，而不是 (BLB) 的基本负载均衡器，请在 AKS 门户/CLI/SDK 中创建群集，并 **将其附加** 到 AML 工作区。
 
-- 如果你的 Azure 策略限制了公共 IP 地址的创建，则 AKS 群集的创建将失败。 AKS 需要公共 IP 才能 [传出流量](/azure/aks/limit-egress-traffic)。 有关出口流量的文章还提供了通过公共 IP 锁定群集传出流量的指导，只需几个完全限定的域名。 可通过两种方法启用公共 IP：
-    - 群集可以将默认创建的公共 IP 与 BLB 或 SLB 一起使用，或者
+- 如果你的 Azure 策略限制了公共 IP 地址的创建，则 AKS 群集的创建将失败。 AKS 需要一个公共 IP 用于[出口流量](/azure/aks/limit-egress-traffic)。 有关出口流量的文章还提供了通过公共 IP 锁定群集传出流量的指导，只需几个完全限定的域名。 启用公共 IP 有两种方法：
+    - 群集可以使用在默认情况下与 BLB 或 SLB 一起创建的公共 IP，或者
     - 可以不使用公共 IP 创建群集，然后使用具有用户定义的路由的防火墙配置公共 IP。 有关详细信息，请参阅 [使用用户定义的路由自定义群集传出](/azure/aks/egress-outboundtype)。
     
-    AML 控制平面不与此公共 IP 通信。 它与部署的 AKS 控制平面通信。 
+    AML 控制平面不会与此公共 IP 通信。 它与 AKS 控制平面通信以便进行部署。 
 
 - 如果 **附加** 的 AKS 群集 [启用了授权 IP 范围以访问 API 服务器](/azure/aks/api-server-authorized-ip-ranges)，请为 AKS 群集启用 AML 控制平面 IP 范围。 AML 控制平面跨配对区域部署，并在 AKS 群集上部署推理 pod。 如果没有访问 API 服务器，则无法部署推理 pod。 在 AKS 群集中启用 IP 范围时，请对两个[配对区域](/azure/best-practices-availability-paired-regions)都使用 [IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=56519)。
 
@@ -197,7 +196,7 @@ az ml computetarget create aks -n myaks
 
 有关详细信息，请参阅 [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 有关在门户中创建 AKS 群集的信息，请参阅 [在 Azure 机器学习 studio 中创建计算目标](how-to-create-attach-compute-studio.md#inference-clusters)。
 
@@ -274,7 +273,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 有关详细信息，请参阅 [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) 参考文档。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 有关在门户中附加 AKS 群集的信息，请参阅 [在 Azure 机器学习 studio 中创建计算目标](how-to-create-attach-compute-studio.md#inference-clusters)。
 

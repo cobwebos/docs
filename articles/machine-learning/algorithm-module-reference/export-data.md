@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/28/2020
-ms.openlocfilehash: d0fd11ce5b25b8796b07176a4ba83091a8f7cc0b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 5964ed9773d45b809fc79252eabc754b1b04af84
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461011"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907989"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块将管道中的结果、中间数据和工作数据保存到云存储目标中。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "87461011"
 1. 对于“数据存储”，请从下拉列表中选择现有数据存储。 还可以创建新的数据存储。 通过访问[访问 Azure 存储服务中的数据](../how-to-access-data.md)来查看方法。
 
     > [!NOTE]
-    > 不支持将特定数据类型的数据导出到指定为其他数据类型的 SQL 数据库列。 目标表不需要先存在。
+    > 不支持将某种数据类型的数据导出到指定为另一种数据类型的 SQL 数据库列。 目标表不需要先存在。
 
 1. 复选框“重新生成输出”决定是否在运行时执行模块以重新生成输出。 
 

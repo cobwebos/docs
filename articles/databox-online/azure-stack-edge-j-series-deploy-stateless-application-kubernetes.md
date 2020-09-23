@@ -1,6 +1,6 @@
 ---
-title: 使用 kubectl 在 Azure Stack Edge GPU 设备上部署 Kubernetes 无状态应用程序 |Microsoft Docs
-description: 介绍如何在 Microsoft Azure Stack 边缘设备上使用 kubectl 创建和管理 Kubernetes 无状态应用程序部署。
+title: 使用 kubectl 在 Azure Stack Edge Pro GPU 设备上部署 Kubernetes 无状态应用程序 |Microsoft Docs
+description: 介绍如何在 Microsoft Azure Stack Edge Pro 设备上使用 kubectl 创建和管理 Kubernetes 无状态应用程序部署。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268853"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890735"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>通过 Azure Stack Edge GPU 设备上的 kubectl 部署 Kubernetes 无状态应用程序
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>通过 Azure Stack Edge Pro GPU 设备上的 kubectl 部署 Kubernetes 无状态应用程序
 
 本文介绍如何在现有的 Kubernetes 群集上使用 kubectl 命令部署无状态应用程序。 本文还逐步讲解如何在无状态应用程序中创建和设置 pod。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备知识
 
 在创建 Kubernetes 群集并使用 `kubectl` 命令行工具之前，需要确保：
 
-- 你有 Azure Stack Edge 设备的1节点的登录凭据。
+- 你有 Azure Stack Edge Pro 设备的1个节点的登录凭据。
 
-- Windows PowerShell 5.0 或更高版本安装在 Windows 客户端系统上，用于访问 Azure Stack Edge 设备。 您也可以将任何其他客户端与支持的操作系统结合使用。 本文介绍使用 Windows 客户端的过程。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+- Windows PowerShell 5.0 或更高版本安装在 Windows 客户端系统上，用于访问 Azure Stack Edge Pro 设备。 您也可以将任何其他客户端与支持的操作系统结合使用。 本文介绍使用 Windows 客户端的过程。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
 
-- Azure Stack 边缘设备上启用了计算。 若要启用计算，请在设备的本地 UI 中转到 " **计算** " 页。 然后选择要为计算启用的网络接口。 选择“启用”。 启用计算会导致在设备上的网络接口上创建虚拟交换机。 有关详细信息，请参阅 [在 Azure Stack 边缘启用计算网络](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
+- Azure Stack Edge Pro 设备上启用了计算。 若要启用计算，请在设备的本地 UI 中转到 " **计算** " 页。 然后选择要为计算启用的网络接口。 选择“启用”。 启用计算会导致在设备上的网络接口上创建虚拟交换机。 有关详细信息，请参阅 [在 Azure Stack Edge Pro 上启用计算网络](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
 
-- Azure Stack 边缘设备有一个运行的 Kubernetes 群集服务器，该服务器的版本为 v2.0 或更高版本。 有关详细信息，请参阅 [在 Microsoft Azure Stack Edge 设备上创建和管理 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
+- Azure Stack Edge Pro 设备的运行的群集服务器为版本 v4.0 或更高版本。 有关详细信息，请参阅 [在 Microsoft Azure Stack Edge Pro 设备上创建和管理 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
 
 - 已安装 `kubectl` 。
 
@@ -43,7 +43,7 @@ ms.locfileid: "89268853"
 4. 将用户配置保存到 `C:\Users\<username>\.kube` 。
 5. 已安装 `kubectl` 。
 
-现在，你可以开始在 Azure Stack 边缘设备上运行和管理无状态应用程序部署。 在开始使用之前 `kubectl` ，你需要验证的版本是否正确 `kubectl` 。
+现在，你可以开始在 Azure Stack Edge Pro 设备上运行和管理无状态应用程序部署。 在开始使用之前 `kubectl` ，你需要验证的版本是否正确 `kubectl` 。
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>验证 kubectl 的版本是否正确并设置配置
 
@@ -109,7 +109,7 @@ Pod 是 Kubernetes 应用程序的基本执行单位，是您创建或部署的 
 
 你创建的无状态应用程序的类型是 nginx web 服务器部署。
 
-用于创建和管理无状态应用程序部署的所有 kubectl 命令都需要指定与该配置关联的命名空间。 连接到在 [Microsoft Azure Stack Edge 设备上创建和管理 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md) 教程中的 Azure Stack 群集时，创建了命名空间 `New-HcsKubernetesNamespace` 。
+用于创建和管理无状态应用程序部署的所有 kubectl 命令都需要指定与该配置关联的命名空间。 连接到在 [Microsoft Azure Stack Edge pro 设备上创建和管理 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md) 教程中的 Azure Stack 群集时，创建了命名空间 `New-HcsKubernetesNamespace` 。
 
 若要在 kubectl 命令中指定命名空间，请使用 `kubectl <command> -n <namespace-string>` 。
 

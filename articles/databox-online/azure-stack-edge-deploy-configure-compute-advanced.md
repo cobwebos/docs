@@ -1,6 +1,6 @@
 ---
-title: 教程：通过 Azure Stack Edge 的计算力筛选和分析用于高级部署的数据 | Microsoft Docs
-description: 了解如何在 Azure Stack Edge 中配置计算角色，以及如何在向 Azure 发送数据前使用该角色转换用于高级部署流的数据。
+title: 教程：通过 Azure Stack Edge Pro 的计算力筛选和分析用于高级部署的数据 | Microsoft Docs
+description: 了解如何在 Azure Stack Edge Pro 中配置计算角色，以及如何在向 Azure 发送数据前使用该角色转换用于高级部署流的数据。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903683"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>教程：使用 Azure Stack Edge 转换用于高级部署流的数据
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>教程：使用 Azure Stack Edge Pro 转换用于高级部署流的数据
 
-本教程介绍如何在 Azure Stack Edge 设备上配置用于高级部署流的计算角色。 配置计算角色后，Azure Stack Edge 可在将数据发送到 Azure 之前转换数据。
+本教程介绍如何在 Azure Stack Edge Pro 设备上配置用于高级部署流的计算角色。 配置计算角色后，Azure Stack Edge Pro 可在将数据发送到 Azure 之前转换数据。
 
 可在设备上为简单或高级部署流配置计算。
 
@@ -43,14 +43,14 @@ ms.locfileid: "86080356"
  
 ## <a name="prerequisites"></a>先决条件
 
-在 Azure Stack Edge 设备上设置计算角色之前，请确保：
+在 Azure Stack Edge Pro 设备上设置计算角色之前，请确保：
 
-- 已按照[连接、设置和激活 Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md) 中所述激活了 Azure Stack Edge 设备。
+- 已按照[连接、设置和激活 Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md) 中所述激活了 Azure Stack Edge Pro 设备。
 
 
 ## <a name="configure-compute"></a>配置计算
 
-若要在 Azure Stack Edge 上配置计算，必须创建一个 IoT 中心资源。
+若要在 Azure Stack Edge Pro 上配置计算，必须创建一个 IoT 中心资源。
 
 1. 在 Azure Stack Edge 资源的 Azure 门户中，转到“概览”。 在右窗格中的“计算”磁贴上，选择“开始”。 
 
@@ -150,9 +150,9 @@ ms.locfileid: "86080356"
 
 ## <a name="add-a-module"></a>添加模块
 
-此 Edge 设备上不存在自定义模块。 可以添加自定义的或预生成的模块。 若要了解如何创建自定义模块，请访问[为 Azure Stack Edge 设备开发 C# 模块](azure-stack-edge-create-iot-edge-module.md)。
+此 Edge 设备上不存在自定义模块。 可以添加自定义的或预生成的模块。 若要了解如何创建自定义模块，请访问[为 Azure Stack Edge Pro 设备开发 C# 模块](azure-stack-edge-create-iot-edge-module.md)。
 
-在此部分中，我们将向[为 Azure Stack Edge 开发 C# 模块](azure-stack-edge-create-iot-edge-module.md)中创建的 IoT Edge 设备添加一个自定义模块。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
+在此部分中，我们将向[为 Azure Stack Edge Pro 开发 C# 模块](azure-stack-edge-create-iot-edge-module.md)中创建的 IoT Edge 设备添加一个自定义模块。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
 
 1. 转到“Edge 计算”>“开始”。 在“添加模块”磁贴上，选择“高级”作为方案类型 。 选择“转到 IoT 中心”。
 
@@ -175,7 +175,7 @@ ms.locfileid: "86080356"
 4. 在“添加模块”下执行以下操作：
 
     1. 输入自定义模块的容器注册表设置的名称、地址、用户名和密码。
-    名称、地址和所列的凭据用于检索具有匹配 URL 的模块。 若要部署此模块，请在“部署模块”下选择“IoT Edge 模块”。  此 IoT Edge 模块是一个 Docker 容器，可以部署到与 Azure Stack Edge 设备关联的 IoT Edge 设备。
+    名称、地址和所列的凭据用于检索具有匹配 URL 的模块。 若要部署此模块，请在“部署模块”下选择“IoT Edge 模块”。  此 IoT Edge 模块是一个 Docker 容器，可以部署到与 Azure Stack Edge Pro 设备关联的 IoT Edge 设备。
 
         ![“设置模块”页](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -183,7 +183,7 @@ ms.locfileid: "86080356"
      
         |字段  |值  |
         |---------|---------|
-        |名称     | 模块的唯一名称。 此模块是一个 Docker 容器，可以部署到与 Azure Stack Edge 关联的 IoT Edge 设备。        |
+        |名称     | 模块的唯一名称。 此模块是一个 Docker 容器，可以部署到与 Azure Stack Edge Pro 关联的 IoT Edge 设备。        |
         |映像 URI     | 模块的对应容器映像的映像 URI。        |
         |需要凭据     | 如果选中此项，则会使用用户名和密码来检索具有匹配 URL 的模块。        |
     
@@ -270,7 +270,7 @@ ms.locfileid: "86080356"
 > * 添加计算模块
 > * 验证数据转换和传输
 
-若要了解如何管理 Azure Stack Edge 设备，请参阅：
+若要了解如何管理 Azure Stack Edge Pro 设备，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用本地 Web UI 管理 Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [使用本地 Web UI 管理 Azure Stack Edge Pro](azure-stack-edge-manage-access-power-connectivity-mode.md)

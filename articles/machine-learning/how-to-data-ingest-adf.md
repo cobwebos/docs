@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852848"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986402"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure 数据工厂进行数据引入
 
@@ -35,7 +35,7 @@ ms.locfileid: "87852848"
 
 ## <a name="adf-with-azure-functions"></a>ADF 与 Azure Functions 相结合
 
-![adf-function](media/how-to-data-ingest-adf/adf-function.png)
+![关系图显示了 azure 数据工厂管道、Azure 函数和运行 M L 管道，以及使用定型模型的 Azure 机器学习管道，以及如何与原始数据和准备的数据进行交互。](media/how-to-data-ingest-adf/adf-function.png)
 
 Azure Functions 允许运行小段代码（函数），且不需要担心应用程序基础结构。 使用此选项时，数据将通过包装在 Azure 函数中的自定义 Python 代码进行处理。 
 
@@ -51,7 +51,7 @@ Azure Functions 允许运行小段代码（函数），且不需要担心应用�
 
 ## <a name="adf-with-custom-component-activity"></a>ADF 与自定义组件活动相结合
 
-![adf-customcomponent](media/how-to-data-ingest-adf/adf-customcomponent.png)
+![关系图显示了一个 Azure 数据工厂管道，其中包含一个自定义组件并运行 M L 管道，以及一个带有定型模型的 Azure 机器学习管道，以及如何与原始数据和准备好的数据进行交互。](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
 使用此选项时，数据将通过包装在可执行文件中的自定义 Python 代码进行处理。 该可执行文件是使用 [ADF 自定义组件活动](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)调用的。 与前面的方法相比，此方法更适合较大的数据。
 
@@ -64,7 +64,7 @@ Azure Functions 允许运行小段代码（函数），且不需要担心应用�
 
 ## <a name="adf-with-azure-databricks-python-notebook"></a>ADF 与 Azure Databricks Python 笔记本相结合
 
-![adf-databricks](media/how-to-data-ingest-adf/adf-databricks.png)
+![关系图显示了一个 Azure 数据工厂管道，其中包含 Azure Databricks Python 和运行 M L 管道，以及一个带有定型模型的 Azure 机器学习管道，以及如何与原始数据和准备好的数据进行交互。](media/how-to-data-ingest-adf/adf-databricks.png)
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) 是 Microsoft 云中基于 Apache Spark 的分析平台。
 
@@ -82,23 +82,23 @@ Azure Functions 允许运行小段代码（函数），且不需要担心应用�
 
 ## <a name="consuming-data-in-azure-machine-learning-pipelines"></a>在 Azure 机器学习管道中使用数据
 
-![aml-dataset](media/how-to-data-ingest-adf/aml-dataset.png)
+![关系图显示了一个 Azure 数据工厂管道和一个 Azure 机器学习管道，以及它们如何与原始数据和准备的数据进行交互。 数据工厂管道将数据馈送到准备好的数据数据库，该数据库将数据存储在机器学习工作区中馈送数据集。](media/how-to-data-ingest-adf/aml-dataset.png)
 
-从 ADF 管道转换的数据将保存到数据存储（例如 Azure Blob）。 Azure 机器学习可以使用[数据存储](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)和[数据集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)访问此数据。
+从 ADF 管道转换的数据将保存到数据存储 (如 Azure Blob) 。 Azure 机器学习可以使用 [数据存储](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) 和 [数据集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)访问此数据。
 
-每次运行 ADF 管道时，数据将保存到存储中的不同位置。 若要将位置传递给 Azure 机器学习，ADF 管道需调用 Azure 机器学习管道。 调用 ML 管道时，数据位置和运行 ID 将作为参数发送。 然后，ML 管道可以使用数据位置来创建数据存储/数据集。 
+每次运行 ADF 管道时，数据将保存到存储中的不同位置。 若要将位置传递到 Azure 机器学习，ADF 管道将调用 Azure 机器学习管道。 调用 ML 管道时，数据位置和运行 ID 作为参数发送。 然后，ML 管道可以使用数据位置创建数据存储/数据集。 
 
 > [!TIP]
-> 数据集[支持版本控制](https://docs.microsoft.com/azure/machine-learning/how-to-version-track-datasets)，因此 ML 管道可以注册指向 ADF 管道中最新数据的新数据集版本。
+> 数据集 [支持版本控制](https://docs.microsoft.com/azure/machine-learning/how-to-version-track-datasets)，因此 ML 管道可以注册一个新版本的数据集，该数据集指向 ADF 管道中的最新数据。
 
-可通过数据存储或数据集访问数据后，可以使用这些数据来训练 ML 模型。 训练过程可能是从 ADF 中调用的同一 ML 管道的一部分。 或者，它可能是一个单独的过程，例如 Jupyter 笔记本中的试验。
+数据可通过数据存储或数据集访问后，可以使用它来训练 ML 模型。 训练过程可能是从 ADF 中调用的同一 ML 管道的一部分。 或者，它可能是一个单独的进程，如 Jupyter 笔记本中的试验。
 
-由于数据集支持版本控制，并且每次从管道运行都会创建一个新版本，因此，很容易就知道使用了哪个数据版本来训练模型。
+由于数据集支持版本控制，每次从管道运行时都会创建一个新版本，因此很容易理解哪个版本的数据用于训练模型。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [在 Azure 数据工厂中运行 Databricks 笔记本](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)
 * [访问 Azure 存储服务中的数据](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)
-* [在 Azure 机器学习中使用数据集训练模型](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
+* [Azure 机器学习中的数据集定型模型](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
 * [数据引入管道的 DevOps](https://docs.microsoft.com/azure/machine-learning/how-to-cicd-data-ingestion)
 

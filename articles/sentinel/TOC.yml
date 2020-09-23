@@ -29,6 +29,10 @@
       href: fusion.md
     - name: 跨工作区和租户扩展 Azure Sentinel
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: 通过 UEBA 识别高级威胁
+      href: identify-threats-with-entity-behavior-analytics.md
+    - name: 将威胁情报导入 Azure Sentinel
+      href: import-threat-intelligence.md
     - name: 跨表规范化数据
       href: normalization.md
     - name: 安全性
@@ -162,6 +166,8 @@
           href: connect-threat-intelligence.md
         - name: 连接 Azure Stack VM
           href: connect-azure-stack.md
+    - name: 启用用户和实体行为分析
+      href: enable-entity-behavior-analytics.md
     - name: 与多个租户一起工作 (MSSP)
       href: multiple-tenants-service-providers.md
     - name: 处理多个工作区中的事件

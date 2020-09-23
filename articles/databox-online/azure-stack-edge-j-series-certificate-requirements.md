@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 边缘的证书要求和故障排除 |Microsoft Docs
-description: 描述证书要求以及对 Azure Stack Edge 设备的证书错误进行故障排除。
+title: Azure Stack Edge Pro 的证书要求和故障排除 |Microsoft Docs
+description: 描述证书要求和排查 Azure Stack Edge Pro 设备的证书错误。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b24b745a53b632ce32cda37058363bf974d400b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268256"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891378"
 ---
 # <a name="certificate-requirements"></a>证书要求
 
-本文介绍在 Azure Stack 边缘设备上安装证书之前必须满足的证书要求。 要求与 PFX 证书、颁发机构、证书使用者名称和使用者备用名称以及受支持的证书算法相关。
+本文介绍证书要求，必须满足这些要求，然后才能将证书安装到 Azure Stack Edge Pro 设备上。 要求与 PFX 证书、颁发机构、证书使用者名称和使用者备用名称以及受支持的证书算法相关。
 
 ## <a name="certificate-issuing-authority"></a>证书颁发机构
 
@@ -64,13 +64,13 @@ ms.locfileid: "89268256"
     
 ## <a name="pfx-certificate"></a>PFX 证书
 
-Azure Stack Edge 设备上安装的 PFX 证书应满足以下要求：
+Azure Stack Edge Pro 设备上安装的 PFX 证书应满足以下要求：
 
 * 当你从 SSL 颁发机构获取证书时，请确保你获取证书的完整签名链。
 
 * 导出 PFX 证书时，请确保已选择 " **包括证书链中的所有证书（如果可能）** " 选项。
 
-* 为终结点、本地 UI、节点、VPN 和 Wi-fi 使用 PFX 证书，因为 Azure Stack 边缘都需要公钥和私钥。 私钥必须设置本地计算机密钥属性。
+* 为终结点、本地 UI、节点、VPN 和 Wi-fi 使用 PFX 证书，因为 Azure Stack Edge Pro 需要使用公钥和私钥。 私钥必须设置本地计算机密钥属性。
 
 * 证书的 PFX 加密应当为 3DES。 这是从 Windows 10 客户端或 Windows Server 2016 证书存储导出时使用的默认加密。 有关与3DES 相关的详细信息，请参阅 [三重 DES](https://en.wikipedia.org/wiki/Triple_DES)。
 
@@ -78,7 +78,7 @@ Azure Stack Edge 设备上安装的 PFX 证书应满足以下要求：
 
 * 在 "*增强型密钥用法*" 字段中，证书 PFX 文件必须具有*服务器身份验证 (1.3.6.1.5.5.7.3.1) *和*客户端身份验证 (1.3.6.1.5.5.7.3.2) *的值。
 
-* 如果使用的是 Azure Stack 准备情况检查程序工具，则在部署时所有证书 PFX 文件的密码必须相同。 有关详细信息，请参阅 [使用 Azure Stack 中心就绪检查程序工具为 Azure Stack Edge 创建证书](azure-stack-edge-j-series-create-certificates-tool.md)。
+* 如果使用的是 Azure Stack 准备情况检查程序工具，则在部署时所有证书 PFX 文件的密码必须相同。 有关详细信息，请参阅 [使用 Azure Stack 中心就绪检查程序工具为 Azure Stack Edge Pro 创建证书](azure-stack-edge-j-series-create-certificates-tool.md)。
 
 * 证书 PFX 的密码必须是复杂密码。 请记下此密码，因为它用作部署参数。
 
@@ -86,9 +86,9 @@ Azure Stack Edge 设备上安装的 PFX 证书应满足以下要求：
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack 边缘使用证书](azure-stack-edge-j-series-manage-certificates.md)
+[在 Azure Stack Edge Pro 中使用证书](azure-stack-edge-j-series-manage-certificates.md)
 
-[使用 Azure Stack 中心就绪检查程序工具为 Azure Stack 边缘创建证书](azure-stack-edge-j-series-create-certificates-tool.md)
+[使用 Azure Stack 中心就绪检查程序工具为 Azure Stack Edge Pro 创建证书](azure-stack-edge-j-series-create-certificates-tool.md)
 
 [导出具有私钥的 PFX 证书](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
 

@@ -1,6 +1,6 @@
 ---
-title: 返回 Azure Stack 边缘设备 |Microsoft Docs
-description: 了解如何擦除数据并返回 Azure Stack 边缘设备，并删除与设备关联的资源。
+title: 返回 Azure Stack Edge Pro 设备 |Microsoft Docs
+description: 了解如何擦除数据并返回 Azure Stack Edge Pro 设备，并删除与设备关联的资源。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923945"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903671"
 ---
-# <a name="return-your-azure-stack-edge-device"></a>返回 Azure Stack 边缘设备
+# <a name="return-your-azure-stack-edge-pro-device"></a>返回 Azure Stack Edge Pro 设备
 
-本文介绍如何擦除数据，然后退回 Azure Stack Edge 设备。 返回设备后，还可以删除与设备关联的资源。
+本文介绍如何擦除数据，然后返回 Azure Stack Edge Pro 设备。 返回设备后，还可以删除与设备关联的资源。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
 >
 > * 擦除设备上数据磁盘中的数据
-> * 在 Azure 门户中启动设备返回
+> * 在 Azure 门户中开始设备退回
 > * 打包设备并安排取件
 > * 删除 Azure 门户中的资源
 
@@ -59,13 +59,13 @@ ms.locfileid: "87923945"
 
 若要开始退回过程，请执行以下步骤。
 
-1. 在 Azure 门户中转到 Azure Stack Edge/Data Box Gateway 资源。 在 "**概述**" 中，在右窗格中转到命令栏，然后选择 "**返回设备**"。 
+1. 在 Azure 门户中转到 Azure Stack Edge Pro/Data Box Gateway 资源。 在 " **概述**" 中，在右窗格中转到命令栏，然后选择 " **返回设备**"。 
 
     ![返回设备1](media/azure-stack-edge-return-device/return-device-1.png)  
 
-2. 在 "**返回设备**" 边栏选项卡的 "**基本详细信息**" 下：
+2. 在 " **返回设备** " 边栏选项卡的 " **基本详细信息**" 下：
 
-    1. 提供设备的序列号。 若要获取设备序列号，请转到设备的本地 web UI，然后转到 "**概述**"。  
+    1. 提供设备的序列号。 若要获取设备序列号，请转到设备的本地 web UI，然后转到 " **概述**"。  
     
     ![设备序列号1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
@@ -77,24 +77,24 @@ ms.locfileid: "87923945"
 
     ![返回设备2](media/azure-stack-edge-return-device/return-device-2.png) 
 
-3. 在 "**发货详细信息**" 下：
+3. 在 " **发货详细信息**" 下：
 
     1. 提供姓名、公司名称和完整公司地址。 输入包含区号的工作电话和通知的电子邮件 ID。
     2. 如果需要退货箱，可以发送请求。 对于问题“需要一个空箱进行退货”，回答“是” 。
 
     ![返回设备3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. 查看**隐私条款**，并根据说明选中此复选框，并同意隐私条款。
+4. 查看 **隐私条款** ，并根据说明选中此复选框，并同意隐私条款。
 
-5. 选择 "**启动返回**"。
+5. 选择 " **启动返回**"。
 
     ![返回设备4](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. 捕获设备返回详细信息后，可以通过电子邮件通知 Azure Stack Edge 运营团队。 你可以使用电子邮件应用程序，前提是已安装并配置了电子邮件应用程序。 还可以复制数据来创建和发送电子邮件。
+6. 捕获设备返回详细信息后，可以通过电子邮件通知 Azure Stack Edge Pro 运营团队。 你可以使用电子邮件应用程序，前提是已安装并配置了电子邮件应用程序。 还可以复制数据来创建和发送电子邮件。
 
     ![返回设备5](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Azure Stack Edge 运营团队收到电子邮件后，他们会向你发送一个反转发货标签。 当你收到此标签时，你可以通过电信公司计划设备装货。 
+7. Azure Stack Edge Pro 运营团队收到电子邮件后，他们会向你发送一个反转发货标签。 当你收到此标签时，你可以通过电信公司计划设备装货。 
 
 ## <a name="schedule-a-pickup"></a>安排取件
 
@@ -111,20 +111,20 @@ ms.locfileid: "87923945"
     2. 在通话中，引用反向装运跟踪号码，如打印的标签上所示。
     3. 如果未引用跟踪号码，UPS 将在取件时要求你支付额外费用。
 
-    如果不安排取件，也可以在最近的卸货位置放置 Azure Stack Edge。
+    你还可以将 Azure Stack Edge Pro 置于最近的放置位置，而不是计划分拣。
 
 ## <a name="delete-the-resource"></a>删除资源
 
 在 Azure 数据中心接收到设备后，会检查设备是否损坏或是否有任何篡改迹象。
 
-- 如果设备完好无损并处于良好的形状，则该资源的计费指示器将停止。 Azure Stack Edge 运营团队将与你联系，以确认返回了设备。 然后，你可以在 Azure 门户中删除与该设备关联的资源。
+- 如果设备完好无损并处于良好的形状，则该资源的计费指示器将停止。 Azure Stack Edge Pro 运营团队将与你联系，以确认返回了设备。 然后，你可以在 Azure 门户中删除与该设备关联的资源。
 - 如果设备严重损坏，可能会收取罚款。 有关详细信息，请参阅[有关设备丢失或损坏的 FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) 和[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)。  
 
 
 可以在以下时段从 Azure 门户删除设备：
 
 - 下订单后，在 Microsoft 准备好设备之前。
-- 将设备返回给 Microsoft 后，它会通过 Azure 数据中心的物理检测，并 Azure Stack Edge 运营团队调用以确认返回了设备。
+- 将设备返回给 Microsoft 后，它会通过 Azure 数据中心的物理检测，并 Azure Stack Edge Pro 操作团队调用以确认是否返回了设备。
 
 如果你已针对其他订阅或位置激活了设备，Microsoft 将在一个工作日内将你的订单转移到新的订阅或位置。 移动订单后，可以删除此资源。
 
@@ -144,4 +144,4 @@ ms.locfileid: "87923945"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[获取 Azure Stack Edge 设备的替换](azure-stack-edge-replace-device.md)。
+- 了解如何 [获取 Azure Stack Edge Pro 设备的替换](azure-stack-edge-replace-device.md)。

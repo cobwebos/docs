@@ -7,23 +7,25 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037757"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892862"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>了解 Azure Spring Cloud 中的应用状态
 
-Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。  订阅中的每个资源组都有一个**应用**选项，其中显示了应用程序类型的常规状态。  对于每种应用程序类型，都显示了**应用程序实例**。
+**本文适用于：** ✔️ Java ✔️ C#
+
+Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。  订阅中的每个资源组都有一个 **应用** 选项，其中显示了应用程序类型的常规状态。  对于每种应用程序类型，都显示了 **应用程序实例**。
 
 ## <a name="apps-status"></a>应用状态
-若要查看应用程序类型的常规状态，请在资源组的左侧导航窗格中选择 "**应用**"。 结果显示已部署的应用的状态：
+若要查看应用程序类型的常规状态，请在资源组的左侧导航窗格中选择 " **应用** "。 结果显示已部署的应用的状态：
 
-* **预配状态**显示部署的预配状态
-* **正在运行的实例**显示正在运行的应用实例数/所需的应用实例数。 如果应用应停止，此列将显示 "*已停止*"。
-* **已注册实例**显示了向 eureka 注册了多少应用实例，以及需要多少应用实例。 如果应用应停止，此列将显示 "*已停止*"。
+* **预配状态** 显示部署的预配状态
+* **正在运行的实例** 显示正在运行的应用实例数/所需的应用实例数。 如果应用应停止，此列将显示 " *已停止*"。
+* **已注册实例** 显示了向 eureka 注册了多少应用实例，以及需要多少应用实例。 如果应用应停止，此列将显示 " *已停止*"。
 
 
  ![应用状态](media/spring-cloud-concept-app-status/apps-ui-status.png)
@@ -42,7 +44,7 @@ Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。 
 | Creating | 正在创建资源。 |
 | 更新 | 正在更新资源。 |
 | 成功 | 已成功提供资源并部署二进制文件。 |
-| 失败 | 未能实现*成功*目标。 |
+| Failed | 未能实现 *成功* 目标。 |
 | 正在删除 | 正在删除资源。 这会阻止操作，并且资源在此状态下不可用。 |
 
 ## <a name="app-instances-status"></a>应用程序实例状态
@@ -59,7 +61,7 @@ Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。 
 |:--:|:----------------:|
 | 正在启动 | 该二进制文件已成功部署到给定的实例。 启动 jar 文件的实例可能会失败，因为 jar 无法正常运行。 |
 | 运行 | 实例有效。 |
-| 失败 | 应用实例多次重试后未能启动用户的二进制文件。 |
+| Failed | 应用实例多次重试后未能启动用户的二进制文件。 |
 | 因 | 正在关闭应用程序实例。 |
 
 **实例的发现状态将报告为以下值之一：**
@@ -71,5 +73,5 @@ Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。 
 | DOWN | 应用程序实例未注册到 Eureka 或已注册但无法接收流量。 |
 
 
-## <a name="see-also"></a>另请参阅
-* [准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序](spring-cloud-tutorial-prepare-app-deployment.md)
+## <a name="see-also"></a>请参阅
+* [准备春季或 Steeltoe 应用程序以在 Azure 春季云中部署](spring-cloud-tutorial-prepare-app-deployment.md)

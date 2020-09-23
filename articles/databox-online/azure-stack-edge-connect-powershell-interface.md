@@ -1,6 +1,6 @@
 ---
-title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Stack Edge 设备 |Microsoft Docs
-description: 描述如何通过 Windows PowerShell 界面连接到 Azure Stack 边缘并进行管理。
+title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Stack Edge Pro 设备 |Microsoft Docs
+description: 描述如何通过 Windows PowerShell 界面连接到 Azure Stack Edge Pro 并进行管理。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313217"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894431"
 ---
-# <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge 设备
+# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro 设备
 
-Azure Stack Edge 解决方案使你能够处理数据，并通过网络将数据发送到 Azure。 本文介绍 Azure Stack Edge 设备的一些配置和管理任务。 你可以使用 Azure 门户、本地 web UI 或 Windows PowerShell 界面来管理你的设备。
+Azure Stack Edge Pro 解决方案允许处理数据，并通过网络将数据发送到 Azure。 本文介绍 Azure Stack Edge Pro 设备的一些配置和管理任务。 你可以使用 Azure 门户、本地 web UI 或 Windows PowerShell 界面来管理你的设备。
 
 本文重点介绍使用 PowerShell 接口执行的任务。 
 
@@ -43,7 +43,7 @@ Azure Stack Edge 解决方案使你能够处理数据，并通过网络将数据
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-你还可以上传 IoT Edge 证书，以在你的 IoT Edge 设备与可能连接到该设备的下游设备之间启用安全连接。 需要安装三个 IoT Edge 证书（*pem*格式）：
+还可上传 IoT Edge 证书，在 IoT Edge 设备和可能与其进行连接的下游设备之间启用安全连接。 需要安装以下三个 IoT Edge *证书 () * 格式：
 
 - 根 CA 证书或所有者 CA
 - 设备 CA 证书
@@ -56,7 +56,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 ```
 运行此 cmdlet 时，系统将提示你提供网络共享的密码。
 
-有关证书的详细信息，请参阅[Azure IoT Edge 证书](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs)"或[" 在网关上安装证书 "](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway)。
+有关证书的详细信息，请参阅 [Azure IoT Edge 证书](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) "或 [" 在网关上安装证书 "](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway)。
 
 ## <a name="view-device-information"></a>查看设备信息
  
@@ -94,4 +94,4 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 
 ## <a name="next-steps"></a>后续步骤
 
-- 将[Azure Stack Edge](azure-stack-edge-deploy-prep.md)部署 Azure 门户。
+- 在 Azure 门户中部署 [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)。

@@ -10,21 +10,20 @@ author: saachigopal
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2289a761d4e266c305c2868e9f234871624ae528
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661323"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893116"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>使用自定义 Docker 映像为模型定型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何在使用 Azure 机器学习训练模型时使用自定义 Docker 映像。 
 
 本文中的示例脚本用于通过创建卷积神经网络来分类宠物映像。 
 
-虽然 Azure 机器学习提供默认 Docker 基本映像，但你也可以使用 Azure 机器学习环境来指定特定的基本映像，例如一组维护的 [AZURE ML 基础映像](https://github.com/Azure/AzureML-Containers) 或你自己的 [自定义映像](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)。 自定义基本映像使你能够在执行训练作业时，严密管理依赖关系，并保持对组件版本的更紧密控制。 
+虽然 Azure 机器学习提供默认 Docker 基本映像，但你也可以使用 Azure 机器学习环境来指定特定的基本映像，例如一组维护的 [AZURE ML 基础映像](https://github.com/Azure/AzureML-Containers) 或你自己的 [自定义映像](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)。 自定义基本映像使你能够在执行训练作业时，严密管理依赖关系，并保持对组件版本的更紧密控制。 
 
 ## <a name="prerequisites"></a>先决条件 
 在以下任一环境中运行此代码：
@@ -101,11 +100,11 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
 
 ### <a name="create-or-attach-existing-amlcompute"></a>创建或附加现有 AmlCompute
-需要为模型定型创建 [计算目标](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#compute-target) 。 在本教程中，将创建 AmlCompute 作为训练计算资源。
+需要为模型定型创建 [计算目标](concept-azure-machine-learning-architecture.md#compute-targets) 。 在本教程中，将创建 AmlCompute 作为训练计算资源。
 
 创建 AmlCompute 需要花费大约 5 分钟。 如果工作区中已存在具有该名称的 AmlCompute，则此代码将跳过创建进程。
 
-与其他 Azure 服务一样，某些资源的限制 (例如，与 Azure 机器学习服务相关联的 AmlCompute) 。 请阅读 [此文](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas) ，了解默认限制以及如何请求更多配额。 
+与其他 Azure 服务一样，某些资源的限制 (例如，与 Azure 机器学习服务相关联的 AmlCompute) 。 请阅读 [此文](how-to-manage-quotas.md) ，了解默认限制以及如何请求更多配额。 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -132,7 +131,7 @@ print(compute_target.get_status().serialize())
 ```
 
 ### <a name="create-a-scriptrunconfig"></a>创建 ScriptRunConfig
-此 ScriptRunConfig 将配置作业以在所需的 [计算目标](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets#compute-targets-for-training)上执行。
+此 ScriptRunConfig 将配置作业以在所需的 [计算目标](how-to-set-up-training-targets.md)上执行。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -160,4 +159,4 @@ run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用自定义 Docker 映像对模型进行训练。 有关 Azure 机器学习的详细信息，请参阅以下其他文章。
 * 在定型期间[跟踪运行指标](how-to-track-experiments.md)
-* 使用自定义 Docker 映像[部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)。
+* 使用自定义 Docker 映像[部署模型](how-to-deploy-custom-docker-image.md)。

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373498"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981463"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>在 Azure 门户中启用自动优化以监视查询并提高工作负载性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 
 若要在 Azure SQL 数据库中的[服务器](logical-servers.md)上启用自动优化，请在 Azure 门户中导航到该服务器，然后在菜单中选择“自动优化”。
 
-![服务器](./media/automatic-tuning-enable/server.png)
+![屏幕截图显示 Azure 门户中的自动优化，你可以在其中对服务器应用选项。](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下打开。 高级和业务关键服务层不支持删除未使用的索引。
@@ -77,7 +77,7 @@ Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在
 
 可以为每个数据库单独配置各自的自动优化设置。 可以手动配置单个自动优化选项，或指定选项从服务器继承其设置。
 
-![数据库](./media/automatic-tuning-enable/database.png)
+![屏幕截图显示 Azure 门户中的自动优化，你可以在其中对单个数据库应用选项。](./media/automatic-tuning-enable/database.png)
 
 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用。
 
@@ -117,13 +117,13 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="permissions"></a>权限
 
-由于自动优化是一项 Azure 功能，使用它时，需要使用 Azure 的内置角色。 若要使用 Azure 门户中的功能，仅使用 SQL 身份验证还不够。
+由于自动调整是 Azure 功能，因此若要使用它，需使用 Azure 的内置角色。 若要使用 Azure 门户中的功能，仅使用 SQL 身份验证还不够。
 
 若要使用自动优化，必须为用户授予权限，最低必需权限是 Azure 的内置 [SQL 数据库参与者](../../role-based-access-control/built-in-roles.md#sql-db-contributor)角色。 也可考虑使用特权较高的角色，例如 SQL Server 参与者、SQL 托管实例参与者、参与者和所有者。
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
 
-请参阅[自动优化电子邮件通知](automatic-tuning-email-notifications-configure.md)指南。
+请参阅 [自动优化电子邮件通知](automatic-tuning-email-notifications-configure.md) 指南。
 
 ## <a name="next-steps"></a>后续步骤
 

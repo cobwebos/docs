@@ -38,6 +38,8 @@
       href: concepts-upgrades.md
 - name: 操作指南
   items:
+    - name: 启用 Azure VMware 解决方案
+      href: enable-azure-vmware-solution.md
     - name: 迁移评估
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: 设置 HCX
