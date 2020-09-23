@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936599"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974035"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "88936599"
 
 如果所有组件都是单个的 Application Insights 资源中的角色，则不需要此发现步骤。 这样的应用程序的初始负载将具有所有组件。
 
-![应用程序映射屏幕截图](media/app-map/app-map-001.png)
+![屏幕截图显示应用程序映射的示例。](media/app-map/app-map-001.png)
 
 使用此体验的主要目标之一是能够实现可视化效果具有数百个组件的复杂拓扑。
 

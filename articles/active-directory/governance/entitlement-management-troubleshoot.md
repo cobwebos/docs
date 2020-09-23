@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460790"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979416"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -75,7 +75,7 @@ ms.locfileid: "89460790"
 
 ### <a name="view-a-requests-delivery-errors"></a>查看请求的传递错误
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -103,7 +103,7 @@ ms.locfileid: "89460790"
 
 - 如果在试用时段内未修复错误，则请求状态可能为“传递失败”或“已部分传递”。 然后，你可以使用“重新处理”按钮。 你将有 7 天时间来重新处理请求。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -121,7 +121,7 @@ ms.locfileid: "89460790"
 
 你只能取消尚未传递或传递已失败的挂起请求。否则，“取消”按钮将灰显。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

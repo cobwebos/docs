@@ -4,12 +4,12 @@ description: 由 Trace、NLog 或 Log4Net 生成的搜索日志。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: c17f1f4eb8d2fb680f31a42009247b25c74941c9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ab3b12bf0401c4060823c6ed1d20dd6385cc397f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936446"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973842"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 和 Python 跟踪日志
 
@@ -50,20 +50,20 @@ ms.locfileid: "88936446"
 3. 搜索“Application Insights”。
 4. 选择以下包之一：
 
-   - 对于 ILogger：[Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-   - 对于 NLog：[Microsoft.ApplicationInsights.NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-   - 对于 Log4Net：[Microsoft.ApplicationInsights.Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-   - 对于 System.Diagnostics：[Microsoft.ApplicationInsights.TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-   - [Microsoft.ApplicationInsights.DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-   - [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
-[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - 对于 ILogger： [applicationinsights.config](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/) 
+ [ ![ NuGet ILogger 横幅](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - 对于 NLog： [NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/) 
+ [ ![ NuGet NLog 横幅](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - 对于 Log4Net： [Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/) 
+ [ ![ NuGet Log4Net 横幅](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - 对于[applicationinsights.config： TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) 
+ [ ![ NuGet 系统。诊断横幅](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - [Applicationinsights.config. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) 
+[ ![ NuGet 诊断源侦听器横幅](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Applicationinsights.config. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) 
+[ ![ NuGet Etw 收集器横幅](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Applicationinsights.config. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) 
+[ ![ NuGet 事件源侦听器横幅](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 NuGet 包安装必要的程序集，并在适用情况下修改 web.config 或 app.config。
 
@@ -205,7 +205,7 @@ logger.warning('Hello, World!')
 * 确保已安装最新版本的 Application Insights。 在 Visual Studio中，转到“工具” > “扩展和更新”，并打开“更新”选项卡  。如果“Developer Analytics Tools”在此处，请选择以更新它。
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>遇到“检测密钥不能为空”错误消息
-可能在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。 在解决方案资源管理器中，右键单击“ApplicationInsights.config”，然后选择“更新 Application Insights”。 系统将提示你登录到 Azure 并创建 Application Insights 资源或重复使用现有资源。 这会解决此问题。
+您可能安装了日志记录适配器 NuGet 包，但没有安装 Application Insights。 在解决方案资源管理器中，右键单击“ApplicationInsights.config”，然后选择“更新 Application Insights”。 系统将提示你登录到 Azure 并创建 Application Insights 资源或重复使用现有资源。 这会解决此问题。
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>我可以在诊断搜索中看到跟踪，但看不到其他事件
 所有事件和请求都通过管道可能需要一些时间。

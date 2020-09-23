@@ -4,12 +4,12 @@ description: 使用 Azure 备份与 PowerShell 备份和还原 Azure VM 中的 S
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 37e2336b262311ea00e833ad91fe5e8c5c1ddf1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004980"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975189"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 备份和还原 Azure VM 中的 SQL 数据库
 
@@ -102,7 +102,7 @@ ms.locfileid: "89004980"
 
 3. 指定保管库存储使用的冗余类型。
 
-    * 可以使用[本地冗余存储](../storage/common/storage-redundancy.md)或[异地冗余存储](../storage/common/storage-redundancy.md)。
+    * 可以使用 [本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage) 存储或 [区域冗余存储](../storage/common/storage-redundancy.md#zone-redundant-storage) 。
     * 以下示例针对 **testvault** 设置为 **GeoRedundant** 的 [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) 命令设置 **-BackupStorageRedundancy** 选项。
 
     ```powershell

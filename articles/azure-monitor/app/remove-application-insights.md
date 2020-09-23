@@ -3,12 +3,12 @@ title: 在 Visual Studio 中删除 Application Insights - Azure Monitor
 description: 如何在 Visual Studio 中删除用于 ASP.NET 和 ASP.NET Core 的 Application Insights SDK。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049776"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981475"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>如何在 Visual Studio 中删除 Application Insights
 
@@ -66,11 +66,11 @@ ms.locfileid: "87049776"
 
 1. 选择“卸载” 。
     
-    ![选中“删除依赖项”，然后卸载](./media/remove-application-insights/uninstall-framework.png)
+    ![屏幕截图显示 Applicationinsights.config 窗口，其中突出显示了删除依赖项并突出显示了卸载。](./media/remove-application-insights/uninstall-framework.png)
 
     随即出现一个对话框，显示要从应用程序中删除的所有依赖项。 选择“确定”以卸载 ****  。
     
-    ![选中“删除依赖项”，然后卸载](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![屏幕截图显示一个对话框，其中包含要删除的依赖项。](./media/remove-application-insights/preview-uninstall-framework.png)
     
 1.  卸载所有内容后，可能仍会在“解决方案资源管理器”中看到“ApplicationInsights.config”和“AiHandleErrorAttribute.cs” ** 。 可手动删除这两个文件。
 

@@ -3,12 +3,12 @@ title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892365"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987097"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -42,10 +42,10 @@ ms.locfileid: "88892365"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md) 或 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md)。 下面的示例演示了将*testVault*的 **-BackupStorageRedundancy**选项设置为**GeoRedundant**。
+4. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#geo-redundant-storage) 或 [区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage)。 下面的示例显示了 **-BackupStorageRedundancy** 选项，适用于 *TestVault* 设置为 **GeoRedundant**。
 
    > [!TIP]
-   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，可以方便地将备份恢复服务保管库对象存储在变量中。
+   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，可方便地在变量中存储备份恢复服务保管库对象。
    >
    >
 

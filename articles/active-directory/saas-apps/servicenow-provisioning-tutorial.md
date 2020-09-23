@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 218a3ad04d4f7366604784e06c558a9c568ad77e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b4ee17ba6587c38efb6da15117a5c55dc5abb873
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528057"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979728"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -101,7 +101,7 @@ ms.locfileid: "88528057"
 
 5. 在“管理员凭据”部分中，输入 ServiceNow 管理员凭据和用户名。 单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow。 如果连接失败，请确保 ServiceNow 帐户具有管理员权限，然后重试。
 
-    ![预配](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "服务设置" 页，您可以在其中输入管理凭据。](./media/servicenow-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

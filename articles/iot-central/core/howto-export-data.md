@@ -1,29 +1,29 @@
 ---
-title: 从 Azure IoT Central (preview) 导出数据 |Microsoft Docs
+title: 从 Azure IoT Central 导出数据 |Microsoft Docs
 description: 如何使用新的数据导出将 IoT 数据导出到 Azure 和自定义云目标。
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/02/2020
+ms.date: 09/15/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 0a07d7e57ced5e2cd9457dc51ebcd355306fc48e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461929"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974402"
 ---
-# <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>使用数据导出 (预览将 IoT 数据导出到云目标) 
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
 
 > [!Note]
-> 本文介绍 IoT Central 中的预览数据导出功能。
+> 本文介绍 IoT Central 中的数据导出功能。
 >
 > - 有关旧数据导出功能的信息，请参阅 [使用数据导出将 IoT 数据导出到云目标 (旧) ](./howto-export-data-legacy.md)。
-> - 若要了解预览版数据导出功能和旧数据导出功能之间的差异，请参阅下表中的 [比较表](#comparison-of-legacy-data-export-and-preview-data-export) 。
+> - 若要了解数据导出功能和旧数据导出功能之间的差异，请参阅下表中的 [比较表](#comparison-of-legacy-data-export-and-data-export) 。
 
-本文介绍如何使用 Azure 中的新数据导出预览功能 IoT Central。 使用此功能可以从您的 IoT Central 应用程序持续导出已筛选和增加的 IoT 数据。 数据导出会将接近实时的更改推送到云解决方案的其他部分，以获取热路径见解、分析和存储。
+本文介绍如何使用 Azure 中的新数据导出功能 IoT Central。 使用此功能可以从您的 IoT Central 应用程序持续导出已筛选和增加的 IoT 数据。 数据导出会将接近实时的更改推送到云解决方案的其他部分，以获取热路径见解、分析和存储。
 
 例如，你能够：
 
@@ -35,9 +35,9 @@ ms.locfileid: "89461929"
 > [!Tip]
 > 当你打开数据导出时，你只会获得那一刻的数据。 当前，数据导出关闭时无法检索数据。 若要保留更多的历史数据，请及早打开数据导出。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
-若要使用预览数据导出功能，你必须具有 [V3 应用程序](howto-get-app-info.md)，并且必须具有 [数据导出](howto-manage-users-roles.md) 权限。
+若要使用数据导出功能，您必须具有 [V3 应用程序](howto-get-app-info.md)，并且您必须具有 [数据导出](howto-manage-users-roles.md) 权限。
 
 ## <a name="set-up-export-destination"></a>设置导出目标
 
@@ -63,7 +63,12 @@ ms.locfileid: "89461929"
     - 选择 " **设置" > 共享访问策略**"。
     - 创建新的密钥或选择具有 " **发送** " 权限的现有密钥。
     - 复制主连接字符串或辅助连接字符串。 使用此连接字符串在 IoT Central 中设置新的目标。
-
+    - 或者，您可以为整个事件中心命名空间生成连接字符串：
+        1. 在 Azure 门户中转到事件中心命名空间。
+        2. 在 "**设置**" 下，选择 "**共享访问策略**"
+        3. 创建新的密钥或选择具有 " **发送** " 权限的现有密钥。
+        4. 复制主连接字符串或辅助连接字符串
+        
 ### <a name="create-a-service-bus-queue-or-topic-destination"></a>创建服务总线队列或主题目标
 
 如果当前没有可导出到的服务总线命名空间，请执行以下步骤：
@@ -78,6 +83,11 @@ ms.locfileid: "89461929"
     - 选择 " **设置"/"共享访问策略**"。
     - 创建新的密钥或选择具有 " **发送** " 权限的现有密钥。
     - 复制主连接字符串或辅助连接字符串。 使用此连接字符串在 IoT Central 中设置新的目标。
+    - 或者，您可以为整个 Service Bus 命名空间生成连接字符串：
+        1. 在 Azure 门户中，转到“服务总线命名空间”。
+        2. 在 "**设置**" 下，选择 "**共享访问策略**"
+        3. 创建新的密钥或选择具有 " **发送** " 权限的现有密钥。
+        4. 复制主连接字符串或辅助连接字符串
 
 ### <a name="create-an-azure-blob-storage-destination"></a>创建 Azure Blob 存储目标
 
@@ -87,9 +97,9 @@ ms.locfileid: "89461929"
 
     |性能层|帐户类型|
     |-|-|
-    |标准|常规用途 V2|
-    |标准|常规用途 V1|
-    |标准|Blob 存储|
+    |Standard|常规用途 V2|
+    |Standard|常规用途 V1|
+    |Standard|Blob 存储|
     |高级|块 Blob 存储|
 
 1. 若要在存储帐户中创建容器，请使用存储帐户。 在“Blob 服务”下选择“浏览 Blob”********。 选择顶部的“+ 容器”以创建新容器。****
@@ -109,10 +119,10 @@ ms.locfileid: "89461929"
 
 1. 登录到 IoT Central 应用程序。
 
-1. 在左窗格中，选择 " **数据导出 (预览") **。
+1. 在左窗格中，选择 " **数据导出**"。
 
     > [!Tip]
-    > 如果在左窗格中看不到 " **数据导出 (预览") ** ，则无权在应用中配置数据导出。 请与管理员联系以设置数据导出。
+    > 如果左窗格中未显示 " **数据导出** "，则没有权限在应用中配置数据导出。 请与管理员联系以设置数据导出。
 
 1. 选择 " **+ 新建导出**"。
 
@@ -127,9 +137,10 @@ ms.locfileid: "89461929"
 
 1. （可选）添加筛选器以减少导出的数据量。 每种数据导出类型都有不同类型的筛选器：
 
-    若要筛选遥测数据，请使用：
+    若要筛选遥测，可以：
 
-    - **功能筛选器**：如果在 " **名称** " 下拉列表中选择遥测项，则导出的流只包含符合筛选条件的遥测。 如果在 " **名称** " 下拉列表中选择 "设备" 或 "云" 属性项，则导出的流只包含其属性与筛选条件相匹配的设备的遥测数据。
+    - **筛选** 导出的流，使其仅包含与设备名称、设备 ID 和设备模板筛选条件匹配的设备中的遥测。
+    - **筛选** 功能：如果在 " **名称** " 下拉列表中选择了遥测项，则导出的流只包含符合筛选条件的遥测。 如果在 " **名称** " 下拉列表中选择 "设备" 或 "云" 属性项，则导出的流只包含其属性与筛选条件相匹配的设备的遥测数据。
     - **消息属性筛选器**：使用设备 sdk 的设备可以在每个遥测消息上发送 *消息属性* 或 *应用程序属性* 。 属性是使用自定义标识符对消息进行标记的键值对包。 若要创建消息属性筛选器，请输入所需的消息属性键，并指定条件。 仅导出属性与指定筛选条件匹配的遥测消息。 支持以下字符串比较运算符：等于、不等于、包含、不包含、存在、不存在。 [详细了解 IoT 中心文档中的应用程序属性](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
     若要筛选属性更改，请使用 **功能筛选器**。 选择下拉列表中的属性项。 导出的流只包含所选属性的更改，这些更改符合筛选条件。
@@ -143,10 +154,10 @@ ms.locfileid: "89461929"
 
     - **目标名称**： IoT Central 中目标的显示名称。
     - **目标类型**：选择目标的类型。 如果尚未设置目标，请参阅 [设置导出目标](#set-up-export-destination)。
-    - 对于 Azure 事件中心、Azure 服务总线队列或主题，请粘贴资源的连接字符串。
-    - 对于 Azure Blob 存储，请粘贴资源的连接字符串，并输入区分大小写的容器名称。
+    - 对于 Azure 事件中心、Azure 服务总线队列或主题，请粘贴资源的连接字符串，并根据需要输入区分大小写的事件中心、队列或主题名称。
+    - 对于 Azure Blob 存储，请粘贴资源的连接字符串，并根据需要输入区分大小写的容器名称。
     - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。
-    - 选择“创建” 。
+    - 选择“创建”。
 
 1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
 
@@ -185,7 +196,7 @@ ms.locfileid: "89461929"
 - `enrichments`：导出时设置的任何根据。
 - `messageProperties`：设备随消息一起发送的附加属性。 这些属性有时称为 *应用程序属性*。 [了解 IoT 中心文档中的详细信息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
-对于事件中心和服务总线，IoT Central 在接收到来自设备的消息之后迅速导出一条新消息。
+对于事件中心和服务总线，IoT Central 在接收到来自设备的消息之后迅速导出一条新消息。 在用户属性中 (也称为应用程序属性) 每条消息， `iotcentral-device-id` `iotcentral-application-id` `iotcentral-message-source` 自动包含、和。
 
 对于 Blob 存储，将每分钟分批和导出一次消息。
 
@@ -197,7 +208,7 @@ ms.locfileid: "89461929"
     "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
     "messageSource": "telemetry",
     "deviceId": "1vzb5ghlsg1",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:26:55.455Z",
     "telemetry": {
@@ -232,7 +243,7 @@ ms.locfileid: "89461929"
 - `templateId`：与设备关联的设备模板的 ID。
 - `enrichments`：导出时设置的任何根据。
 
-对于事件中心和服务总线，IoT Central 会以近乎实时的时间将新的消息数据导出到事件中心、服务总线队列或主题。
+对于事件中心和服务总线，IoT Central 会以近乎实时的时间将新的消息数据导出到事件中心、服务总线队列或主题。 在用户属性中 (也称为应用程序属性) 每条消息， `iotcentral-device-id` `iotcentral-application-id` 自动包括、、 `iotcentral-message-source` 和 `iotcentral-message-type` 。
 
 对于 Blob 存储，将每分钟分批和导出一次消息。
 
@@ -244,11 +255,11 @@ ms.locfileid: "89461929"
     "messageSource": "properties",
     "messageType": "cloudPropertyChange",
     "deviceId": "18a985g1fta",
-    "schema": "default@preview",
+    "schema": "default@v1",
     "templateId": "urn:qugj6vbw5:___qbj_27r",
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
-        "fieldName": "MachineSerialNumber",
+        "name": "MachineSerialNumber",
         "value": "abc"
     }],
     "enrichments": {
@@ -257,9 +268,9 @@ ms.locfileid: "89461929"
 }
 ```
 
-## <a name="comparison-of-legacy-data-export-and-preview-data-export"></a>旧数据导出和预览数据导出的比较
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>旧数据导出和数据导出的比较
 
-下表显示了 [旧的数据导出](howto-export-data-legacy.md) 和预览数据导出功能之间的差异：
+下表显示了 [旧的数据导出](howto-export-data-legacy.md) 功能和新的数据导出功能之间的差异：
 
 | 功能  | 旧数据导出 | 新数据导出 |
 | :------------- | :---------- | :----------- |

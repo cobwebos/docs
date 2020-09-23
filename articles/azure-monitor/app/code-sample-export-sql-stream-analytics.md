@@ -3,15 +3,15 @@ title: 从 Azure Application Insights 导出到 SQL | Microsoft Docs
 description: 使用流分析将 Application Insights 数据连续导出到 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311222"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979449"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
-本文介绍如何使用[连续导出][export]和[azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从[AZURE 应用程序 Insights][start]移入 azure SQL 数据库。 
+本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
 
 连续导出以 JSON 格式将遥测数据移入 Azure 存储。 我们将使用 Azure 流分析来分析 JSON 对象，并在数据库表中创建行。
 
@@ -64,13 +64,13 @@ ms.locfileid: "87311222"
 1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../platform/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
-2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。  在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
+2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
    
     ![在 Visual Studio 中，依次打开“Server Browser”、“Azure”、“存储”](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
     记下派生自应用程序名称和检测密钥的路径名称的共同部分。 
 
-事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 我们可以对数据执行各种操作，但我们目前的计划是使用流分析将数据移动到 SQL 数据库。 这样做可以轻松运行许多微妙的查询。
+事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析将数据移到 SQL 数据库。 这样做可以轻松运行许多微妙的查询。
 
 ## <a name="create-an-azure-sql-database"></a>创建 Azure SQL 数据库
 再次从 [Azure 门户][portal]中的订阅开始，创建要向其写入数据的数据库以及一个新服务器（除非已有一个）。
@@ -133,21 +133,21 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
-![流分析设置](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![屏幕截图显示 "创建" 按钮突出显示的 "流分析作业" 页。](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![新的流分析作业](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 创建新作业后，选择“转到资源”。
 
-![流分析设置](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![屏幕截图显示 "部署成功" 消息和 "中转到资源" 按钮。](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>添加新输入
 
-![流分析设置](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![屏幕截图显示 "输入" 页，其中选择了 "添加" 按钮。](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
 将此位置设置为从连续导出 Blob 接收输入：
 
-![流分析设置](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![屏幕截图显示新的输入窗口，其中选择了 "输入别名"、"源" 和 "存储帐户" 下拉菜单选项。](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
 现在需要使用存储帐户的主访问密钥（前面已记下此密钥）。 将此密钥设置为存储帐户密钥。
 

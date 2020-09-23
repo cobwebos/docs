@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893469"
+ms.locfileid: "90976786"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 
-本文介绍如何通过 Azure 机器学习数据存储连接到 Azure 存储服务。 数据存储可安全地连接到 Azure 存储服务，而不会损害你的身份验证凭据以及原始数据源的完整性。 它们会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 可以使用 [Azure 机器学习 Python SDK](#python) 或 [Azure 机器学习工作室](#studio)来创建和注册数据存储。
+本文介绍如何通过 Azure 机器学习数据存储连接到 Azure 存储服务。 数据存储可安全地连接到 Azure 存储服务，而不会损害你的身份验证凭据以及原始数据源的完整性。 它们会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 可以使用 [Azure 机器学习 Python SDK](#python) 或 [Azure 机器学习工作室](how-to-connect-data-ui.md)来创建和注册数据存储。
 
 如果希望使用 Azure 机器学习 VS Code 扩展来创建和管理数据存储，请访问 [VS Code 资源管理操作指南](how-to-manage-resources-vscode.md#datastores)以了解详细信息。
 
@@ -92,7 +92,7 @@ ms.locfileid: "90893469"
 
 ### <a name="access-validation"></a>访问验证
 
-在初始的数据存储创建和注册过程中，Azure 机器学习会自动验证基础存储服务是否存在，以及用户提供的主体（用户名、服务主体或 SAS 令牌）是否有权访问指定的存储。
+在**初始数据存储创建和注册过程**中，Azure 机器学习会自动验证基础存储服务是否存在，用户提供的主体 (用户名、服务主体或 SAS 令牌) 是否有权访问指定的存储。
 
 创建数据存储后，此验证只针对要求访问基础存储容器的方法执行，而不是每次检索数据存储对象时都执行 。 例如，如果要从数据存储中下载文件，则会进行验证，但如果只想更改默认数据存储，则不会进行验证。
 
@@ -117,7 +117,7 @@ ms.locfileid: "90893469"
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>通过 SDK 创建和注册数据存储
+## <a name="create-and-register-datastores"></a>创建并注册数据存储
 
 将 Azure 存储解决方案注册为数据存储时，会自动创建数据存储并将其注册到特定的工作区。 查看 [存储访问 & 权限](#storage-access-and-permissions) 部分，了解有关虚拟网络方案的指导，以及在哪里可以找到所需的身份验证凭据。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "90893469"
 
  若要为其他受支持的存储服务创建数据存储，请参阅[适用的 `register_azure_*` 方法的参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods)。
 
-如果你更喜欢使用低代码体验，请参阅[在 Azure 机器学习工作室中创建数据存储](#studio)。
+如果你更喜欢使用低代码体验，请参阅 [使用 Azure 机器学习 Studio 连接到数据](how-to-connect-data-ui.md)。
 
 > [!NOTE]
 > 数据存储名称应仅包含小写字母、数字和下划线。 
@@ -199,25 +199,6 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_id=client_id, # client id of service principal
                                                              client_secret=client_secret) # the secret of service principal
 ```
-
-<a name="studio"></a>
-
-
-## <a name="create-datastores-in-the-studio"></a>在工作室中创建数据存储 
-
-在 Azure 机器学习工作室中通过几个步骤创建新的数据存储。
-
-> [!IMPORTANT]
-> 如果数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保工作室可以访问你的数据。 请参阅 [在 Azure 虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md) ，以确保应用适当的配置步骤。 
-
-1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
-1. 在左窗格中的“管理”下，选择“数据存储” 。
-1. 选择“+ 新建数据存储”。
-1. 填写新数据存储的表单。 该表单会根据你选择的 Azure 存储类型和身份验证类型智能地进行更新。 请参阅[存储访问和权限部分](#access-validation)，了解在哪里可以找到填充此窗体所需的身份验证凭据。
-
-下面的示例展示了创建 **Azure Blob 数据存储**时窗体的外观： 
-    
-![新数据存储的表单](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>使用数据存储中的数据

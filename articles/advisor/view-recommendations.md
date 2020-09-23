@@ -3,12 +3,12 @@ title: 查看对你重要的 Azure 顾问建议
 description: 查看和筛选 Azure 顾问建议以减少干扰。
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422372"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986859"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>查看对你重要的 Azure 顾问建议
 
@@ -22,19 +22,19 @@ Azure 顾问提供的建议可用于优化 Azure 部署。 在 Azure 顾问中�
 
 1. 在 Azure 门户中打开 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
 
-1. 在菜单中选择“配置”  。
+1. 在菜单中选择“配置”。
 
    ![Azure 顾问配置菜单](./media/view-recommendations/configuration.png)
 
-1. 对于需要接收 Azure 顾问建议的订阅或资源组，请勾选“包括”列中的框。  如果禁用此框，则可能无权在该订阅或资源组上进行配置更改。 详细了解[Azure 顾问中的权限](permissions.md)。
+1. 对于需要接收 Azure 顾问建议的订阅或资源组，请勾选“包括”列中的框。 如果禁用此框，则可能无权在该订阅或资源组上进行配置更改。 详细了解 [Azure 顾问中的权限](permissions.md)。
 
-1. 进行更改后，单击底部的“应用”。****
+1. 进行更改后，单击底部的“应用”。
 
 ## <a name="filtering-your-view-in-the-azure-portal"></a>在 Azure 门户中筛选视图
 
 配置设置在更改前保持活动状态 若要对建议视图进行限制以启用单一视图，可以使用在 Azure 顾问面板顶部提供的下拉列表。 在“概览”、“高可用性”、“安全性”、“性能”、“成本”、“所有建议”面板中，可以选择要查看的订阅、资源类型以及建议状态。
 
-   ![Azure 顾问筛选菜单](./media/view-recommendations/filtering.png)
+   :::image type="content" source="./media/view-recommendations/filtering.png" alt-text="显示筛选选项的 Azure 顾问的屏幕截图。":::
 
 ## <a name="dismissing-and-postponing-recommendations"></a>关闭和推迟建议
 
@@ -47,7 +47,7 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 1. 选择建议列表中的建议
 1. 针对要推迟或关闭的建议选择“推迟”或“关闭”
 
-     ![Azure 顾问筛选菜单](./media/view-recommendations/postpone-dismiss.png)
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text=""使用托管磁盘" 窗口的屏幕截图，其中显示了一个建议突出显示的 "选择列" 和 "延迟" 和 "取消" 操作。":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>在 Azure 门户中推迟或关闭多个建议
 
@@ -55,9 +55,9 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 1. 选择一个用于查看建议的建议类别。
 1. 选择建议列表中的建议。
 1. 针对需要推迟或关闭建议的所有资源，选择行左侧的复选框。
-1. 选择表左上的“推迟”或“关闭”。********
+1. 选择表左上的“推迟”或“关闭”。 
 
-     ![Azure 顾问筛选菜单](./media/view-recommendations/postpone-dismiss-multiple.png)
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text=""使用托管磁盘" 窗口的屏幕截图，其中突出显示了表左上角的 "选择列" 和 "延迟" 和 "取消" 操作。":::
 
 > [!NOTE]
 > 需要参与者或所有者权限才能关闭或推迟建议。 详细了解 Azure 顾问中的权限。
@@ -71,17 +71,17 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 
 1. 在 Azure 门户中打开 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
 
-1. 在“概览”面板上将筛选器更改为“已推迟”。**** Azure 顾问然后会显示已推迟或关闭的建议。
+1. 在“概览”面板上将筛选器更改为“已推迟”。 Azure 顾问然后会显示已推迟或关闭的建议。
 
-    ![Azure 顾问筛选菜单](./media/view-recommendations/activate-postponed.png)
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="显示选定的已推迟下拉菜单的 Azure 顾问窗口的屏幕截图。":::
 
-1. 选择一个用于查看“已推迟”或“已关闭”建议的类别。********
+1. 选择一个用于查看“已推迟”或“已关闭”建议的类别。 
 
-1. 选择建议列表中的建议。 这样就会打开“已推迟和已关闭”选项卡已处于选中状态的建议，显示已推迟或关闭此建议的资源。****
+1. 选择建议列表中的建议。 这样就会打开“已推迟和已关闭”选项卡已处于选中状态的建议，显示已推迟或关闭此建议的资源。
 
-1. 单击行尾的“激活”****。 单击后，该资源的建议处于活动状态，并会从此表中删除。 现在，建议在“活动”选项卡中处于可见状态。****
+1. 单击行尾的“激活”。 单击后，该资源的建议处于活动状态，并会从此表中删除。 现在，建议在“活动”选项卡中处于可见状态。
  
-     ![Azure 顾问筛选菜单](./media/view-recommendations/activate-postponed-2.png)
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text=""启用软删除" 窗口的屏幕截图，其中突出显示了 "激活" 操作的 "已延迟 & 关闭" 选项卡。":::
 
 ## <a name="next-steps"></a>后续步骤
 

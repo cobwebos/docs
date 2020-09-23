@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186327"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987319"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
 
@@ -61,7 +61,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 参数集用于定义会接受特定 cmdlet 的值的必需参数和可选参数。 所有 cmdlet 都至少有一个参数集，有些有多个参数集。 如果 cmdlet 有多个参数集，必须先选择要使用的参数集，然后才能配置参数。 通过依次选择“参数集”和另一个参数集，可以更改活动使用的参数集。 在这种情况下，你已经配置的任何参数值都会丢失。
 
-在下面的示例中，[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 有三个参数集。 此示例使用一个名为 ListVirtualMachineInResourceGroupParamSet 的参数集（其中带有一个可选参数），用于返回资源组中的所有虚拟机。 此示例还使用 GetVirtualMachineInResourceGroupParamSet 参数集，用于指定要返回的虚拟机。 此参数集有两个强制参数和一个可选参数。
+在下面的示例中，[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) cmdlet 有三个参数集。 此示例使用一个名为 ListVirtualMachineInResourceGroupParamSet 的参数集（其中带有一个可选参数），用于返回资源组中的所有虚拟机。 此示例还使用 GetVirtualMachineInResourceGroupParamSet 参数集，用于指定要返回的虚拟机。 此参数集有两个强制参数和一个可选参数。
 
 ![参数集](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -91,11 +91,11 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 对活动启用重试时，可以设置延迟和条件。 延迟是 Runbook 再次运行活动之前等待的时间（以秒或分钟为单位）。 如果没有指定延迟，则活动在完成后立即再次运行。
 
-![活动重试延迟](media/automation-graphical-authoring-intro/retry-delay.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-delay.png" alt-text="启用重试功能设置的屏幕截图。":::
 
 重试条件是在每次活动运行后计算的 PowerShell 表达式。 如果表达式解析为 True，则活动再次运行。 如果表达式解析为 False，则活动不会再次运行，且 Runbook 转移到下一个活动。
 
-![活动重试延迟](media/automation-graphical-authoring-intro/retry-condition.png)
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="显示 "重试" 直到此条件为 true 字段的屏幕截图，以及可在重试条件中使用的 PowerShell 表达式的示例。":::
 
 重试条件可以使用名为 `RetryData` 的变量，此变量提供对活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
@@ -435,4 +435,4 @@ Azure 自动化中的每个图形 Runbook 都有草稿版和发布版。 只能�
 * 若要开始使用图形 Runbook，请参阅[教程：创建图形 Runbook](learn/automation-tutorial-runbook-graphical.md)。
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。
 * 若要了解如何使用自动化运行方式帐户进行身份验证，请参阅[运行方式帐户](automation-security-overview.md#run-as-account)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)。

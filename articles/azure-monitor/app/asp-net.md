@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | M
 description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475526"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973795"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -42,7 +42,7 @@ Application Insights 配置屏幕：
 
 选择“入门”。
 
-![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00004-start-free.png)
+![屏幕截图显示 "Application Insights" 页和 "开始" 按钮。](./media/asp-net/00004-start-free.png)
 
 如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。 资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
 
@@ -115,7 +115,7 @@ Visual Studio 中会显示已记录的事件数。
 
 * [发行说明](./release-notes.md)
 
-若要升级到 SDK 的新版本，请打开**NuGet 包管理器**并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。
+若要升级到 SDK 的新版本，请打开 **NuGet 包管理器**并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。
 
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本。 然后，将更改合并到新版本中。
 

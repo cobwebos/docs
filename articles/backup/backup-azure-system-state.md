@@ -3,12 +3,12 @@ title: 将 Windows 系统状态备份到 Azure
 description: 了解如何将 Windows Server 计算机的系统状态备份到 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 10d37bbafab6aa96986a5d7af88a509d4c8eac25
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376484"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975489"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>将 Windows 系统状态备份到 Azure
 
@@ -40,7 +40,7 @@ ms.locfileid: "89376484"
 
     ![存储配置选择](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”****。 如果不使用 Azure 作为主要备份存储终结点，则选择“本地冗余” ，以减少 Azure 存储成本。 请在此[存储冗余概述](../storage/common/storage-redundancy.md)中深入了解[异地冗余](../storage/common/storage-redundancy.md)和[本地冗余](../storage/common/storage-redundancy.md)存储选项。
+    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”****。 如果不使用 Azure 作为主要备份存储终结点，则选择“本地冗余” ，以减少 Azure 存储成本。 在此[存储冗余概述](../storage/common/storage-redundancy.md)中了解有关[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)的[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage)存储选项的详细信息。
 
 创建保管库之后，即可对其进行配置，以便备份 Windows 系统状态。
 
@@ -152,7 +152,7 @@ ms.locfileid: "89376484"
 
 5. 选择 " **系统状态** "，然后选择 **"确定"**。
 
-6. 选择“**下一步**”。
+6. 选择“**下一页**”。
 
 7. 在后续页中选择系统状态备份所需的备份频率和保留策略。
 

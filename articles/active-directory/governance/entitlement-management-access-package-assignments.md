@@ -1,6 +1,6 @@
 ---
-title: 查看、添加和删除 Azure AD 权利管理中的访问包的分配-Azure Active Directory
-description: 了解如何在 Azure Active Directory 权限管理中查看、添加和删除访问包的分配。
+title: 在 Azure AD 权利管理中查看、添加和删除访问包的分配 - Azure Active Directory
+description: 了解如何在 Azure Active Directory 权利管理中查看、添加和删除访问包的分配。
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,27 +16,27 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783546"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980064"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看、添加和删除访问包的分配
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中查看、添加和删除访问包的分配
 
-在 Azure AD 授权管理中，你可以看到已分配了哪些人员来访问包、其策略和状态。 如果访问包具有适当的策略，还可以直接将用户分配到访问包。 本文介绍如何查看、添加和删除访问包的分配。
+在 Azure AD 权利管理中，可以看到哪一用户已分配到访问包，这些包的策略以及状态。 如果访问包具有相应的策略，也可以直接将用户分配到访问包。 本文介绍如何查看、添加和删除访问包的分配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要使用 Azure AD 的权利管理并分配用户访问包，你必须具有以下许可证之一：
+若要使用 Azure AD 权利管理并将用户分配到访问包，必须具有以下许可证之一：
 
 - Azure AD Premium P2
 - 企业移动性 + 安全性 (EMS) E5 许可证
 
 ## <a name="view-who-has-an-assignment"></a>查看谁具有分配
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -44,7 +44,7 @@ ms.locfileid: "88783546"
 
 1. 单击“分配”查看活动分配的列表。****
 
-    ![访问包的分配列表](./media/entitlement-management-access-package-assignments/assignments-list.png)
+    ![访问包分配情况的列表](./media/entitlement-management-access-package-assignments/assignments-list.png)
 
 1. 单击特定的分配可查看更多详细信息。
 
@@ -58,13 +58,13 @@ ms.locfileid: "88783546"
 
 ### <a name="viewing-assignments-programmatically"></a>以编程方式查看分配
 
-你还可以使用 Microsoft Graph 在访问包中检索分配。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [列出 accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
+你也可以使用 Microsoft Graph 在访问包中检索分配。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[列出 accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
 
 ## <a name="directly-assign-a-user"></a>直接分配用户
 
 在某些情况下，你可能希望直接将特定的用户分配到访问包，使其不必要完成请求访问包的过程。 若要直接分配用户，访问包必须有一个允许管理员直接分配的策略。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -76,11 +76,11 @@ ms.locfileid: "88783546"
 
     ![分配 - 将用户添加到访问包](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. 单击 " **添加用户** " 以选择要向其分配此访问包的用户。
+1. 单击“添加用户”，以选择要将此访问包分配到的用户。
 
-1. 在 " **选择策略** " 列表中，选择将由用户的未来请求和生命周期控制和跟踪的策略。 如果你希望所选用户具有不同的策略设置，你可以单击 " **创建新策略** " 来添加新策略。
+1. 在“选择策略”列表中，选择将会控制和跟踪用户的未来请求和生命周期的策略。 如果希望所选用户具有不同的策略设置，可单击“创建新策略”来添加新策略。
 
-1. 设置所选用户的分配开始与结束日期和时间。 如果未提供结束日期，则将使用该策略的生命周期设置。
+1. 设置所选用户的分配开始与结束日期和时间。 如果未提供结束日期，将使用该策略的生命周期设置。
 
 1. （可选）为直接分配提供理由，以保留记录。
 
@@ -88,13 +88,13 @@ ms.locfileid: "88783546"
 
     片刻之后，单击“刷新”查看“分配”列表中的用户。****
 
-### <a name="directly-assigning-users-programmatically"></a>直接以编程方式分配用户
+### <a name="directly-assigning-users-programmatically"></a>以编程方式直接分配用户
 
-你还可以使用 Microsoft Graph 直接将用户分配到访问包。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [创建 accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
+你也可以使用 Microsoft Graph 直接将用户分配到访问包。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[创建 accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-an-assignment"></a>删除分配
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -102,13 +102,13 @@ ms.locfileid: "88783546"
 
 1. 在左侧菜单中单击“分配”。****
  
-1. 单击要删除其分配的用户旁边的复选框。 
+1. 单击要从访问包中删除其分配的用户旁边的复选框。 
 
-1. 单击左侧窗格顶部附近的 " **删除** " 按钮。 
+1. 单击左侧窗格顶部附近的“删除”按钮。 
  
-    ![分配-从 access 包中删除用户](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+    ![分配 - 从访问包中删除用户](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
 
-    将显示一条通知，告知你分配已删除。 
+    将会显示通知，告知该分配已被删除。 
 
 ## <a name="next-steps"></a>后续步骤
 

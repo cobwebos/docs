@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: b7ca679be0edb4177a883abfac361f9554f0d555
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934425"
+ms.locfileid: "90983030"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遥测和故障排除
 
@@ -74,7 +74,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 "telegraf": { 
   "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/spatial-analysis/telegraf:1.0",
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
   "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
@@ -136,7 +136,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 ```json
 "diagnostics": {  
   "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/spatial-analysis/diagnostics:1.0",
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
   "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
   }
 ```    
@@ -306,6 +306,15 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 如果提取日志的行、时间和大小正确，请将 ***DoPost*** 替换为， `true` 并将具有相同筛选器的日志推送到目标。 
 
 解决问题时，可以从 Azure Blob 存储导出日志。 
+
+## <a name="common-issues"></a>常见问题
+
+如果你在模块日志中看到以下消息，则可能表示你的 Azure 订阅需要获得批准： 
+
+"容器处于无效状态。 订阅验证失败，状态为 "不匹配"。 Api 密钥不适用于给定的容器类型。 "
+
+有关详细信息，请参阅 [请求批准以运行容器](spatial-analysis-container.md#request-approval-to-run-the-container)。 
+
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Azure Stack 边缘设备的疑难解答
 

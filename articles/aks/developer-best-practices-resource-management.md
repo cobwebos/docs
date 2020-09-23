@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005306"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986779"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -22,7 +22,7 @@ ms.locfileid: "88005306"
 
 > [!div class="checklist"]
 > * pod 资源请求和限制是什么
-> * 使用 Dev Spaces 与 Visual Studio Code 开发和部署应用程序的方法
+> * 通过 Bridge 开发和部署应用程序并将其部署到 Kubernetes 和 Visual Studio Code 的方法
 > * 如何使用 `kube-advisor` 工具检查部署问题
 
 ## <a name="define-pod-resource-requests-and-limits"></a>定义 pod 资源请求和限制
@@ -35,7 +35,7 @@ ms.locfileid: "88005306"
     * 当 Kubernetes 计划程序尝试在节点上放置 Pod 时，将使用 Pod 请求来确定哪个节点有足够的可用资源进行计划。
     * 如果未设置 Pod 请求，则默认情况下会将其设置为定义的限制。
     * 必须监视应用程序的性能并调整这些请求，这很重要。 如果发出的请求不足，应用程序可能会因节点计划过度而导致性能下降。 如果估算的请求数过高，则应用程序可能会更加难以进行计划。
-* **Pod CPU/内存限制**是 Pod 可以使用的最大 CPU 和内存量。 内存限制有助于定义因资源不足而发生节点不稳定时应终止的 pod。 如果没有适当的限制，则会终止固定的 Pod，直到解除资源压力。 Pod 在一段时间内可能会超出 CPU 限制，但不会因超出 CPU 限制而终止 pod。 
+* **Pod CPU/内存限制**是 Pod 可以使用的最大 CPU 和内存量。 内存限制有助于定义因资源不足而导致节点不稳定时应终止的 Pod。 如果没有适当的限制，则会终止固定的 Pod，直到解除资源压力。 Pod 在一段时间内不一定能够超过 CPU 限制，但是 Pod 不会因超过 CPU 限制而被终止。 
     * Pod 限制有助于定义 Pod 何时失去对资源消耗的控制。 超出限制时，会首先终止该 Pod 来维护节点运行状况，最大程度地减少对共享节点的 Pod 的影响。
     * 如果未设置 Pod 限制，则会将其默认设置为给定节点上的最高可用值。
     * 设置的 pod 限制不应超过节点可以支持的限制。 每个 AKS 节点将为核心 Kubernetes 组件保留一定的 CPU 和内存量。 应用程序可能会尝试消耗节点上的大量资源，使其他 pod 能够成功运行。
@@ -74,13 +74,13 @@ spec:
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>针对 AKS 群集开发和调试应用程序
 
-**最佳做法指导** - 开发团队应该使用 Dev Spaces 针对 AKS 群集进行部署和调试。 此开发模型确保在将应用部署到生产环境之前，实现基于角色的访问控制 (RBAC) 、网络或存储需求。
+**最佳做法指南** -开发团队应使用 Bridge 到 Kubernetes 部署和调试 AKS 群集。
 
-使用 Azure Dev Spaces 直接针对 AKS 群集开发、调试和测试应用程序。 在整个应用程序生命周期，团队中的开发人员共同协作进行生成和测试。 可以继续使用现有的工具，例如 Visual Studio 或 Visual Studio Code。 已为 Dev Spaces 安装扩展，该扩展提供用于在 AKS 群集中运行和调试应用程序的选项。
+使用 Bridge 到 Kubernetes，可以直接针对 AKS 群集开发、调试和测试应用程序。 在整个应用程序生命周期，团队中的开发人员共同协作进行生成和测试。 可以继续使用现有的工具，例如 Visual Studio 或 Visual Studio Code。 为桥接 Kubernetes 安装了一个扩展，可让你直接在 AKS 群集中进行开发。
 
-这种使用 Dev Spaces 的集成式开发和测试过程减少了对 [minikube][minikube] 等本地测试环境的需求。 可以针对 AKS 群集进行开发和测试。 可根据前面有关使用命名空间逻辑隔离群集的部分中所述保护和隔离此群集。 当准备好将应用部署到生产环境时，可以放心地进行部署，因为针对真正 AKS 群集的所有开发工作均已完成。
+这一与 Kubernetes 的集成开发和测试过程可减少对本地测试环境（如 [minikube][minikube]）的需求。 可以针对 AKS 群集进行开发和测试。 可根据前面有关使用命名空间逻辑隔离群集的部分中所述保护和隔离此群集。
 
-Azure Dev Spaces 适用于在 Linux Pod 和节点上运行的应用程序。
+桥 to Kubernetes 适用于在 Linux pod 和节点上运行的应用程序。
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>使用适用于 Kubernetes 的 Visual Studio Code 扩展
 
@@ -106,7 +106,7 @@ kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux �
 
 若要实施其中的某些最佳做法，请参阅以下文章：
 
-* [使用 Dev Spaces 进行开发][dev-spaces]
+* [通过桥与 Kubernetes 进行开发][btk]
 * [使用 kube-advisor 检查问题][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -117,7 +117,7 @@ kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux �
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
+[btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors
