@@ -11,15 +11,14 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: c897cb513745669523daea0a850e20715de4676b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5dce7cde3c46fbcf3f764819f730f42cace4a74c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663847"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897526"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习 studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何在虚拟网络中使用 Azure 机器学习 studio。 学习如何：
 
@@ -39,7 +38,7 @@ ms.locfileid: "89663847"
 > 尽管大部分工作室都适用于虚拟网络中存储的数据，但集成笔记本 __不会__。 集成笔记本不支持使用虚拟网络中的存储。 但你可以从计算实例使用 Jupyter Notebook。 有关详细信息，请参阅[访问计算实例笔记本中的数据]()部分。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) ，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 

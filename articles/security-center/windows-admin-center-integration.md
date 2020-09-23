@@ -8,20 +8,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277487"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906322"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>利用安全中心保护 Windows 管理中心资源
 
 Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一个位置为系统管理员提供可访问的大部分常用管理工具。 从 Windows 管理中心内可直接将本地服务器加入到 Azure 安全中心。 然后，可以直接体验在 Windows 管理中心中查看安全建议和警报的摘要。
 
 > [!NOTE]
-> Azure 订阅和相关的 Log Analytics 工作区都需要启用安全中心的标准层，以便实现 Windows 管理中心集成。
-> 如果之前未在订阅和工作区中使用过标准层，则可在前 30 天内免费使用。 有关详细信息，请参阅[定价信息页](security-center-pricing.md)。
+> 你的 Azure 订阅和关联的 Log Analytics 工作区都需要启用 Azure Defender 才能实现 Windows 管理中心集成。
+> 如果你之前未在订阅和工作区中使用，Azure Defender 将在前30天免费。 有关详细信息，请参阅[定价信息页](security-center-pricing.md)。
 >
 
 成功将服务器从 Windows 管理中心加入到 Azure 安全中心后，你可以：
@@ -46,8 +46,8 @@ Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一�
 1. 按照说明将服务器连接到安全中心。 输入必要的详细信息并进行确认后，安全中心会进行必要的配置更改，以确保满足以下所有条件：
     * 已注册 Azure 网关。
     * 服务器有可报告的工作区以及关联订阅。
-    * 安全中心的标准层 Log Analytics 解决方案已在工作区中启用。 此解决方案为向此工作区报告的 *所有* 服务器和虚拟机提供安全中心的标准层功能。
-    * 面向虚拟机的安全中心标准层定价已在订阅上启用。
+    * 安全中心的 Log Analytics 解决方案在工作区中启用。 此解决方案为向此工作区报告的 *所有* 服务器和虚拟机提供 Azure Defender 功能。
+    * 在订阅上启用了用于服务器的 Azure Defender。
     * Log Analytics 代理已安装在服务器上并配置为向所选工作区报告。 如果服务器已向另一个工作区报告，则将其配置为也向新选中的工作区报告。
 
     > [!NOTE]
@@ -63,12 +63,8 @@ Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一�
 ## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>在安全中心查看 Windows 管理中心托管服务器的安全建议和警报
 在 Azure 安全中心中：
 
-* 若要查看所有 Windows 管理中心服务器的安全建议，请打开“计算和应用”并单击“VM 和计算机”选项卡 。按资源“服务器”筛选列表，如下所示：
-
-    [![查看 Windows 管理中心托管的服务器的安全建议](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
+* 若要查看所有 Windows 管理中心服务器的安全建议，请打开 " [资产清单](asset-inventory.md) " 并筛选到要调查的计算机类型。 选择 " **vm 和计算机** " 选项卡。
 
 * 若要查看所有 Windows 管理中心服务器的安全警报，请打开“安全警报”。 单击“筛选”并确保仅选中“非 Azure” ：
 
-    ![筛选 Windows 管理中心托管的服务器的安全警报](./media/windows-admin-center-integration/filtering-alerts-to-non-azure.png)
-
-    [![查看 Windows 管理中心托管的服务器的安全警报](media/windows-admin-center-integration/viewing-alerts-wac.png)](media/windows-admin-center-integration/viewing-alerts-wac.png#lightbox)
+    :::image type="content" source="./media/windows-admin-center-integration/filtering-alerts-by-environment.png" alt-text="筛选 Windows 管理中心托管的服务器的安全警报" lightbox="./media/windows-admin-center-integration/filtering-alerts-by-environment.png":::

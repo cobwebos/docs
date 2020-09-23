@@ -1,16 +1,16 @@
 ---
 title: 在 3ds Max 中设置 PBR 材料
 description: 说明如何在 3ds Max 中设置基于物理的渲染材料，并将其导出为 FBX 格式。
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: ac0f4ee8f06982126d2ae30bed01716b287e8993
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078037"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084458"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>教程：在 3ds Max 中设置基于物理的渲染材料
 

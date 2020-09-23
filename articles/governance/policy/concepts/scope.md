@@ -3,12 +3,12 @@ title: 了解 Azure 策略中的作用域
 description: 介绍 Azure 资源管理器中范围的概念，以及如何将其应用于 Azure 策略来控制 Azure 策略评估的资源。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dee5d2bdbcb5aa86e293652af3bc5008f56b7877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934693"
+ms.locfileid: "90984440"
 ---
 # <a name="understand-scope-in-azure-policy"></a>了解 Azure 策略中的作用域
 
@@ -34,6 +34,8 @@ Azure 策略使用的第一个实例范围是在创建策略定义时。 定义�
 - 包含-应通过定义评估资源层次结构或单个资源的符合性。 `properties.scope`赋值对象上的属性确定要包含的内容并评估其符合性。 有关详细信息，请参阅 [分配定义](./assignment-structure.md)。
 
 - 排除-不应根据定义评估资源层次结构或单个资源的符合性。 `properties.notScopes`赋值对象的_数组_属性确定要排除的内容。 不会在符合性计数中评估或包含这些范围内的资源。 有关详细信息，请参阅 [分配定义-排除的作用域](./assignment-structure.md#excluded-scopes)。
+
+除了策略分配上的属性，还是 [策略例外](./exemption-structure.md) 对象。 免除通过提供一种方法来识别不计算的赋值部分，从而增强范围。
 
 - 豁免 (**预览版** 功能) -资源层次结构或单个资源应该按定义评估符合性，但不会因某个原因（例如，通过另一种方法进行弃权或通过其他方法缓解）进行评估。 处于此状态的资源显示为在相容性报告中 **免除** ，以便可以对其进行跟踪。 豁免对象在资源层次结构或单个资源上创建为子对象，该对象确定免除的范围。 资源层次结构或单个资源可以免除多个分配。 可以通过使用属性将豁免配置为按计划过期 `expiresOn` 。 有关详细信息，请参阅 [例外定义](./exemption-structure.md)。
 
