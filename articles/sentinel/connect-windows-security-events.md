@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2020
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 6cd69d1f5330e4967a31ac77359e046f461270cf
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657499"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883713"
 ---
 # <a name="connect-windows-security-events"></a>连接 Windows 安全事件 
 
@@ -43,10 +43,10 @@ ms.locfileid: "89657499"
     | **通用** | 1、299、300、324、340、403、404、410、411、412、413、431、500、501、1100、1102、1107、1108、4608、4610、4611、4614、、、、、、、、4622，4624，4625，4634，4647，4648，4649，4657，4661，4662，4663，4665，4666，4667，4688，4670，4672，4673，4674，4675，4689，4697，4700，4702，4704，4705，4716，4717，4718，4719，4720，4722，4723，4724，4725，4726，4727，4728，4729，、4733、4732、4735、4737、4738、4739、4740、4742、4744、4745、4746、4750、4751、4752、4754、4755、4756、4757、4760、4761、4762、4764、、、、、、、、4767，4768，4771，4774，4778，4779，4781，4793，4797，4798，4799，4800，4801，4802，4803，4825，4826，4870，4886，4887，4888，4893，4898，4902，4904，4905，4907，4931，4932，4933，4946，4948，4956，4985，5024，5033，5059，5136，5137，，5140，5145，5632，6144，6145，6272，6273，6278，6416，6423，6424，8001，8002，8003，8004，8005，8006，8007，8222，26401，30004，，，， |
 
 > [!NOTE]
-> 可从 Azure Defender (以前的 Azure 安全中心) 或 Azure Sentinel 配置单个工作区上下文中的安全事件集合，但不能同时配置两者。 如果要在已运行 Azure Defender 的工作区中加入 Azure Sentinel，并将设置为收集安全事件，则有两个选项：
-> - 在 Azure Defender 中将安全事件集合保留原样。 你将能够在 Azure Sentinel 以及 Azure Defender 中查询和分析这些事件。 但是，你将不能监视连接器的连接状态或在 Azure Sentinel 中更改其配置。 如果这对您很重要，请考虑第二种选择。
+> 可从 Azure 安全中心或 Azure Sentinel 配置单个工作区上下文中的安全事件集合，但不能同时配置两者。 如果要在已从 Azure 安全中心获得 Azure Defender 警报的工作区中加入 Azure Sentinel，并将设置为收集安全事件，则有两个选择：
+> - 保持 Azure 安全中心的安全事件集合不动。 你将能够在 Azure Sentinel 以及 Azure Defender 中查询和分析这些事件。 但是，你将不能监视连接器的连接状态或在 Azure Sentinel 中更改其配置。 如果这对您很重要，请考虑第二种选择。
 >
-> - 禁用 Azure Defender 中的[安全事件集合](../security-center/security-center-enable-data-collection.md)，然后在 azure Sentinel 中添加安全事件连接器。 与第一个选项一样，你将能够在 Azure Sentinel 和 Azure Defender 中查询和分析事件，但现在你将能够监视连接器的连接状态或在中更改其配置，并且只能在 Azure 上的 Sentinel 中更改其配置。
+> - 禁用 Azure 安全中心的[安全事件集合](../security-center/security-center-enable-data-collection.md)，然后在 azure Sentinel 中添加安全事件连接器。 与第一个选项一样，你将能够在 Azure Sentinel 和 Azure Defender/ASC 中查询和分析事件，但现在你将能够监视连接器的连接状态或在中更改其配置，且仅在 Azure Sentinel 中更改其配置。
 
 ## <a name="set-up-the-windows-security-events-connector"></a>设置 Windows 安全事件连接器
 

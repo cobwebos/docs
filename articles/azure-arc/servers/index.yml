@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Arc 服务器（预览版）
-summary: Azure Arc 服务器
+title: 已启用 Azure Arc 的服务器
+summary: 已启用 Azure Arc 的服务器
 metadata:
-  title: Azure Arc 服务器
+  title: 已启用 Azure Arc 的服务器
   description: 了解如何管理 Azure 中的本地计算机
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: f03e869e884fff8a1d196817b658c28bbdc55ca9
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763731"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90908112"
 landingContent:
 - title: 使用已启用 Azure Arc 的服务器将计算机连接到 Azure
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: 什么是已启用 Azure Arc 的服务器？
       url: overview.md
-  - linkListType: quickstart
+  - linkListType: get-started
     links:
     - text: 从 Azure 门户将计算机连接到 Azure Arc
       url: onboard-portal.md
@@ -30,3 +30,9 @@ landingContent:
       url: onboard-service-principal.md
     - text: 通过 PowerShell DSC 将计算机连接到 Azure
       url: onboard-dsc.md
+- title: 10 分钟快速入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 部署支持 Arc 的服务器代理
+      url: ./learn/quick-enable-hybrid-vm.md

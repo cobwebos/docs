@@ -1,5 +1,5 @@
 ---
-title: 使用设计器中的辅助功能（预览版）
+title: 使用设计器中的辅助功能
 titleSuffix: Azure Machine Learning
 description: 了解设计器中提供的键盘快捷方式和屏幕阅读器辅助功能。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210377"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893417"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>通过键盘使用 Azure 机器学习设计器（预览版）
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>使用键盘 Azure 机器学习设计器
 
 了解如何通过键盘和屏幕阅读器来使用 Azure 机器学习设计器。 有关 Azure 门户中的所有地方可用的键盘快捷方式的列表，请参阅 [Azure 门户中的键盘快捷方式](../azure-portal/azure-portal-keyboard-shortcuts.md)
 

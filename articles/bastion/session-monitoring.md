@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: charwen
-ms.openlocfilehash: 5974ebe7960eec1ca3bb8610f66061395fea64d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744096"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980719"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure Bastion 的会话监视和管理
 
@@ -22,13 +22,13 @@ ms.locfileid: "84744096"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure Bastion 资源并从 Azure Bastion 页面选择“会话”。
 
-   ![会话](./media/session-monitoring/sessions.png)
+   ![屏幕截图显示选定会话 Azure 门户菜单设置。](./media/session-monitoring/sessions.png)
 2. 在“会话”页面上，可以在右侧看到正在进行的远程会话。
 
    ![查看会话](./media/session-monitoring/view-session.png)
 3. 选择“刷新”以查看远程会话的更新列表。 选择“刷新”时，Azure Bastion 将获取最新的监视信息并在门户中刷新。
 
-   ![refresh](./media/session-monitoring/refresh.png)
+   ![屏幕截图显示了一个会话，该会话使用 "刷新" 选项突出显示的 Azure 堡垒。](./media/session-monitoring/refresh.png)
 
 
 ## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>删除或强制断开正在进行的远程会话
@@ -37,16 +37,16 @@ ms.locfileid: "84744096"
 
 1. 导航到 Azure Bastion 资源并从 Azure Bastion 页面选择“会话”。
 
-   ![导航](./media/session-monitoring/navigate.png)
+   ![屏幕截图显示在 "设置" 下选择了会话的 Azure 门户。](./media/session-monitoring/navigate.png)
 2. 选择会话后，可看到远程会话列表。
 
    ![列出会话](./media/session-monitoring/list.png)
 3. 选择特定的远程会话，然后选择会话行右端的省略号，再选择“删除”。
 
-   ![delete](./media/session-monitoring/delete.png)
+   ![屏幕截图显示了在选择了 "删除" 图标的情况 Azure 门户显示会话。](./media/session-monitoring/delete.png)
 4. 选择“删除”时，远程会话将断开连接，用户可在远程会话中看到“已断开连接”消息。
 
-   ![断开连接](./media/session-monitoring/disconnect.png)
+   ![屏幕截图显示一条消息，确认已断开连接。](./media/session-monitoring/disconnect.png)
 
 ## <a name="next-steps"></a>后续步骤
 

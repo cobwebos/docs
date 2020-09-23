@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
+ms.date: 09/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 982073c77a7e876611f753c716f55c50df8b0817
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935154"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971396"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -50,41 +50,41 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)（预览版）
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL 数据库和 SQL 托管实例](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
 ## <a name="indexer-stages"></a>索引器阶段
 
-在首次运行时，当索引为空时，索引器将读取表或容器中提供的所有数据。 在后续运行中，索引器通常可以只检测并检索已更改的数据。 对于 blob 数据，更改检测是自动进行的。 对于其他数据源（如 Azure SQL 或 Cosmos DB），必须启用更改检测。
+在首次运行时，如果索引为空，索引器将读取表或容器中提供的所有数据。 在后续运行中，索引器通常可以只检测并检索已更改的数据。 对于 blob 数据，更改检测是自动进行的。 对于其他数据源（如 Azure SQL 或 Cosmos DB），必须启用更改检测。
 
-对于它引入的每个文档，索引器实现或协调多个步骤，从文档检索到最终搜索引擎 "移交" 进行索引。 （可选）索引器还有助于驱动技能组合执行和输出，假设定义了技能组合。
+对于它引入的每个文档，索引器将执行或协调多个步骤来编制索引，从文档检索到最终的搜索引擎“移交”。 （可选）如果定义了技能组，索引器还有助于推动技能组的执行和输出。
 
 ![索引器阶段](./media/search-indexer-overview/indexer-stages.png "索引器阶段")
 
-### <a name="stage-1-document-cracking"></a>阶段1：文档破解
+### <a name="stage-1-document-cracking"></a>第 1 阶段：文档破解
 
-文档破解是打开文件和提取内容的过程。 根据数据源的类型，索引器将尝试执行不同的操作来提取可能可索引的内容。  
+文档破解是打开文件并提取内容的过程。 根据数据源的类型，索引器将尝试执行不同的操作来提取可能可索引的内容。  
 
 示例：  
 
-* 当该文档是 [AZURE SQL 数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的记录时，该索引器将提取该记录的每个字段。
+* 如果文档是 [Azure SQL 数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的记录，则索引器将提取记录中的每个字段。
 * 如果文档是 [Azure Blob 存储数据源](search-howto-indexing-azure-blob-storage.md)中的 PDF 文件，则索引器将提取该文件的文本、图像和元数据。
-* 如果文档是 [Cosmos DB 数据源](search-howto-index-cosmosdb.md)中的记录，则索引器将从 Cosmos DB 文档中提取字段和子字段。
+* 如果文档是 [Cosmos DB 数据源](search-howto-index-cosmosdb.md)中的记录，则索引器将提取 Cosmos DB 文档中的字段和子字段。
 
-### <a name="stage-2-field-mappings"></a>阶段2：字段映射 
+### <a name="stage-2-field-mappings"></a>第 2 阶段：字段映射 
 
-索引器从源字段中提取文本，并将其发送到索引或知识库中的目标字段。 当字段名称和类型一致时，路径会被清除。 不过，您可能希望输出中有不同的名称或类型，在这种情况下，您需要告诉索引器如何映射字段。 此步骤在文档破解后、转换之前、在索引器读取源文档时出现。 定义 [字段映射](search-indexer-field-mappings.md)时，源字段的值将按原样发送到目标字段，而不做任何修改。 字段映射是可选的。
+索引器提取源字段中的文本，并将其发送到索引或知识存储中的目标字段。 当字段名称和类型一致时，路径会被清除。 不过，如果希望输出中有不同的名称或类型，则需要告知索引器如何映射字段。 当索引器从源文档读取时，此步骤需在文档破解后、转换之前进行。 在定义[字段映射](search-indexer-field-mappings.md)时，源字段的值将按原样发送到目标字段，而不进行任何修改。 字段映射是可选的。
 
-### <a name="stage-3-skillset-execution"></a>阶段3：技能组合执行
+### <a name="stage-3-skillset-execution"></a>第 3 阶段：技能组执行
 
-技能组合执行是一个可选步骤，用于调用内置或自定义 AI 处理。 对于光学字符识别，您可能需要用到图像分析形式 (OCR) ，否则可能需要语言翻译。 无论是哪种转换，技能组合执行都是扩充发生的位置。 如果索引器是管道，则可以将 [技能组合](cognitive-search-defining-skillset.md) 视为 "管道内的管道"。 技能组合有自己的一系列称为技能的步骤。
+技能组执行是一个可选步骤，它调用内置或自定义 AI 处理。 你可能需要它以图像分析的形式进行光学字符识别 (OCR)，或者可能需要语言翻译。 无论是哪种转换，技能组执行都是扩充的途径。 如果索引器是管道，则可将[技能组](cognitive-search-defining-skillset.md)视为“管道内的管道”。 技能组有自己的一系列步骤，称为技能。
 
-### <a name="stage-4-output-field-mappings"></a>阶段4：输出字段映射
+### <a name="stage-4-output-field-mappings"></a>阶段 4：输出字段映射
 
-技能组合的输出实际上是一棵称为 "扩充的文档" 的信息树。 通过输出字段映射，可以选择此树中要映射到索引中的字段的部分。 了解如何 [定义输出字段映射](cognitive-search-output-field-mapping.md)。
+技能组的输出实际上是一棵称为“扩充文档”的信息树。 通过输出字段映射，可以选择此树中哪些部分要映射到索引中的字段。 了解如何[定义输出字段映射](cognitive-search-output-field-mapping.md)。
 
-与将原义值从源字段关联的字段映射一样，输出字段映射会告知索引器如何将已放大文档中的已转换值关联到索引中的目标字段。 与被视为可选的字段映射不同，你始终需要为需要驻留在索引中的任何已转换内容定义输出字段映射。
+就像将源字段中的原义值关联到目标字段的字段映射一样，输出字段映射会告知索引器如何将扩充文档中的已转换值关联到索引中的目标字段。 与被视为可选的字段映射不同，你始终需要为需要驻留在索引中的任何已转换内容定义输出字段映射。
 
 下图显示了索引器阶段的示例索引器 [调试会话](cognitive-search-debug-session.md) 表示形式： "文档破解"、"字段映射"、"技能组合执行" 和 "输出字段映射"。
 

@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure Stack 边缘设备上的 Kubernetes 网络 |Microsoft Docs
-description: 描述 Kubernetes 网络在 Azure Stack 边缘设备上的工作方式。
+title: 了解 Azure Stack Edge Pro 设备上的 Kubernetes 网络 |Microsoft Docs
+description: 介绍 Kubernetes 网络如何在 Azure Stack Edge Pro 设备上工作。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268119"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899317"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Azure Stack 边缘 GPU 设备中的 Kubernetes 网络
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备中的 Kubernetes 网络
 
-在 Azure Stack Edge 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以在 pod 中的 Kubernetes 群集上部署容器化应用程序。 在 Kubernetes 群集中，可以通过不同的方式来使用网络箱。 
+在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以在 pod 中的 Kubernetes 群集上部署容器化应用程序。 在 Kubernetes 群集中，可以通过不同的方式来使用网络箱。 
 
-本文大致介绍了 Kubernetes 群集中的网络，特别是在 Azure Stack Edge 设备的上下文中。 
+本文大致介绍了 Kubernetes 群集中的网络，特别是在 Azure Stack Edge Pro 设备的上下文中。 
 
 ## <a name="networking-requirements"></a>网络要求
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Azure Stack Edge 上的 Kubernetes 网络
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上的 Kubernetes 网络
 
-Calico、Metallb 和 Core DNS 是安装在 Azure Stack 边缘上用于网络的所有组件。 
+"Calico"、"Metallb" 和 "核心" DNS 是安装在 Azure Stack Edge Pro 上的所有组件。 
 
 - **Calico** 将专用 ip 范围中的 ip 地址分配给每个 pod，并为这些 pod 配置网络，以便一个节点上的 pod 可以与另一个节点上的 pod 通信。 
 - **Metallb** 在群集中的 pod 上运行，并将 IP 地址分配给类型为负载均衡器的服务。 负载均衡器 IP 地址是从通过本地 UI 提供的服务 Ip 范围中选择的。 
@@ -80,8 +80,8 @@ IP 分配适用于：
 
 ## <a name="next-steps"></a>后续步骤
 
-若要在 Azure Stack 边缘配置 Kubernetes 网络，请参阅：
+若要在 Azure Stack Edge Pro 上配置 Kubernetes 网络，请参阅：
 
-- [通过 IoT Edge 在 Azure Stack 边缘外部公开无状态应用程序](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)。
+- [通过 IoT Edge 在 Azure Stack Edge Pro 的外部公开无状态应用程序](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)。
 
-- [通过 kuebctl 在 Azure Stack 边缘外部公开无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [通过 kuebctl 在 Azure Stack Edge Pro 上从外部公开无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。

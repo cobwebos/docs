@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 1e66774d4239bdad6c8af426a28af6081bb0da3c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782169"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907739"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>“双类提升决策树”模块
 
-本文介绍了 Azure 机器学习设计器（预览版）中的一个模块。
+本文介绍 Azure 机器学习设计器中的模块。
 
 使用此模块，可以根据提升决策树算法创建机器学习模型。 
 

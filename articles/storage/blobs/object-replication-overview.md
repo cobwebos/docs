@@ -10,12 +10,12 @@ ms.date: 09/08/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0d03b2708bfd4aac2565b303ddce44f50be65ef9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ee76c1692049d5b25e85b6780fbcf78f7ebfdd2f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612344"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987046"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -68,7 +68,7 @@ ms.locfileid: "89612344"
 
 源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，目标容器变为只读。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 但是，可以对目标容器中的 blob 调用 " [设置 Blob 层](/rest/api/storageservices/set-blob-tier) " 操作，以将其移动到 "存档" 层。 有关存档层的详细信息，请参阅 [Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](storage-blob-storage-tiers.md#archive-access-tier)。
 
-## <a name="billing"></a>计费 
+## <a name="billing"></a>计费
 
 对于源帐户和目标帐户，对象复制会产生额外的成本，以及将数据从源帐户复制到目标帐户以及读取计费以处理更改源的传出费用。
 

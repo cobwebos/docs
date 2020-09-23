@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bed0f6cc32c25563d322da77193c5a3b6072902
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052273"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970661"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure 多重身份验证的数据驻留和客户数据
 
@@ -24,13 +24,12 @@ ms.locfileid: "90052273"
 
 基于云的 Azure 多重身份验证和 Azure 多重身份验证服务器会处理和存储一些个人数据和组织数据。 本文简要介绍了存储哪些数据及存储在何处。
 
-以下多重身份验证活动目前源自美国数据中心，特别说明的除外：
+Azure 多重身份验证服务在美国、欧洲和亚太有数据中心。 以下活动源自地区数据中心，但以下情况除外：
 
-* 使用电话或短信进行的双重身份验证通常源自美国数据中心，由全球提供商进行路由。
-    * 来自其他区域（例如欧洲或澳大利亚）的常规用途的用户身份验证请求目前由该区域的数据中心处理。 其他事件，例如自助式密码重置、Azure B2C 事件或者使用 NPS 扩展或 AD FS 适配器的混合方案，目前都由美国数据中心处理。
-* 使用 Microsoft Authenticator 应用的推送通知源自美国数据中心。 此外，设备供应商特定的服务也可能来自其他区域。
-* 目前，OATH 代码在美国通常是有效的。
-    * 同样，源自其他区域（如欧洲或澳大利亚）的常规用途的用户身份验证事件由该区域的数据中心处理。 其他事件目前由美国数据中心进行处理。
+* 使用电话呼叫的多重身份验证源自美国数据中心，由全局提供商路由。
+* 根据用户的位置，当前正在处理来自其他区域（如欧洲或澳大利亚）的常规用途用户身份验证请求。
+* 使用 Microsoft Authenticator 应用推送通知将根据用户的位置发起区域数据中心。
+    * 特定于设备供应商的服务（如 Apple 推送通知）可能位于用户位置之外。
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>通过 Azure 多重身份验证存储的个人数据
 

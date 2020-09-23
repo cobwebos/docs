@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 878b3d4a522fd2b7567ed6005283d041064d9fe5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885989"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何向 Azure 机器学习工作区进行身份验证，以及如何向部署为 Web 服务的模型进行身份验证。
 
@@ -38,7 +38,7 @@ ms.locfileid: "87904532"
 ## <a name="interactive-authentication"></a>交互式身份验证
 
 > [!IMPORTANT]
-> 交互式身份验证使用浏览器，需要 cookie (包括第三方 cookie) 。 如果已禁用 cookie，则可能会收到错误，如 "我们无法登录"。 如果启用了[Azure 多重身份验证](/azure/active-directory/authentication/concept-mfa-howitworks)，则也可能发生此错误。
+> 交互式身份验证使用浏览器并需要 Cookie（包括第三方 Cookie）。 如果已禁用 Cookie，则可能会收到“我们无法为你登录”之类的错误。 如果已启用 [Azure 多重身份验证](/azure/active-directory/authentication/concept-mfa-howitworks)，则也可能出现此错误。
 
 文档和样本中的大多数示例都使用交互式身份验证。 例如，当使用 SDK 时，有两个函数调用会自动提示你使用基于 UI 的身份验证流：
 

@@ -15,21 +15,28 @@
 - name: 教程
   expanded: true
   items:
-    - name: Python SDK
+    - name: Python（第 1 天）
       expanded: true
       items:
-        - name: 创建首个 ML 试验
-          items:
-            - name: 1. 设置工作区和开发环境
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. 训练你的第一个模型
-              href: tutorial-1st-experiment-sdk-train.md
+        - name: 1. 设置本地计算机
+          href: tutorial-1st-experiment-sdk-setup-local.md
+        - name: 2. Hello world
+          href: tutorial-1st-experiment-hello-world.md
+        - name: 3. 训练模型
+          href: tutorial-1st-experiment-sdk-train.md
+        - name: 4. 自带数据
+          href: tutorial-1st-experiment-bring-data.md
+    - name: Jupyter Notebook
+      expanded: true
+      items:
         - name: 图像分类（MNIST 数据）
           items:
-            - name: 1. 训练模型
+            - name: 1. 设置计算实例
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. 训练模型
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 2. 部署模型
+            - name: 3. 部署模型
               href: tutorial-deploy-models-with-aml.md
         - name: 通过自动化 ML 进行回归分析（NYC 出租车数据）
           items:
@@ -92,8 +99,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: 概念
   items:
-    - name: 企业版与基本版
-      href: concept-editions.md
     - name: 计划和管理成本
       displayName: low priority VM
       href: concept-plan-manage-cost.md
@@ -201,6 +206,9 @@
         - name: 安全编码
           href: concept-secure-code-best-practice.md
           displayName: security threat
+        - name: 审核和管理合规性
+          href: how-to-integrate-azure-policy.md
+          displayName: policy
     - name: 负责的 ML
       items:
         - name: “负责的 ML”概述
@@ -287,12 +295,15 @@
               href: how-to-designer-import-data.md
         - name: 访问数据
           items:
-            - name: 连接到 Azure 存储
+            - name: 连接到 Azure 存储 (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: 从数据存储中获取数据
+            - name: 从数据存储中获取数据 (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
+            - name: 连接到数据 (UI)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore, dataset, data set'
+              href: how-to-connect-data-ui.md
         - name: 管理并使用数据
           items:
             - name: 使用数据集进行训练
@@ -448,6 +459,9 @@
         - name: 配置文件模型
           displayName: profile resource requirement
           href: how-to-deploy-profile-model.md
+        - name: 部署设计器模型
+          displayName: 'designer, studio'
+          href: how-to-deploy-model-designer.md
         - name: （预览）无代码部署
           displayName: no code
           href: how-to-deploy-no-code-deployment.md

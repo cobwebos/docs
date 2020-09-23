@@ -1,6 +1,6 @@
 ---
-title: '启用和禁用数据保留策略-Azure SQL Edge (预览) '
-description: '了解如何在 Azure SQL Edge (预览中启用和禁用数据保留策略) '
+title: 启用和禁用数据保留策略-Azure SQL Edge
+description: 了解如何启用和禁用 Azure SQL Edge 中的数据保留策略
 keywords: SQL 边缘，数据保留
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9787f2cfa87a16d9e7dd1753e4389977c6753b81
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89550611"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902494"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>启用和禁用数据保留策略
 
@@ -23,9 +23,6 @@ ms.locfileid: "89550611"
 ## <a name="enable-data-retention-for-a-database"></a>启用数据库的数据保留
 
 下面的示例演示如何使用 [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)启用数据保留。
-
-> [!NOTE]
-> 若要在 Azure SQL Edge 中启用数据保留功能 (预览) ，请启用 TF 12825 作为启动选项，或使用 DBCC TRACEON 命令。 有关如何使用 mssql. 会议文件启用跟踪标志的详细信息，请参阅 [使用 mssql. 会议文件进行配置](configure.md#configure-by-using-an-mssqlconf-file)。 
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -64,7 +61,7 @@ CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_cod
     - DateTime
     - DateTime2
     - DateTimeOffset
-- RETENTION_PERIOD-一个整数值，后跟一个单元说明符。 允许的单位为 "天"、"周"、"月" 和 "年"。
+- RETENTION_PERIOD-一个整数值，后跟一个单元说明符。 允许的单位为 "天"、"天"、"周"、"月"、"月" 和 "年"。
 
 下面的示例演示如何使用 [Alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)对表启用数据保留。  
 
@@ -98,9 +95,9 @@ and object_id = object_id(N'dbo.data_retention_table', N'U')
 |数据库选项 | 表选项 | 行为 |
 |----------------|--------------|----------|
 | OFF | OFF | 禁用了数据保留策略，并禁用了对过时记录的自动和手动清除。|
-| OFF | ON  | 为表启用了数据保留策略，但会禁用对过期记录的自动和手动清除。 |
+| OFF | ON  | 为表启用了数据保留策略。 已禁用过时记录的自动清除，但手动清理方法可用于清除过时的记录。 |
 | ON | OFF | 在数据库级别启用了数据保留策略。 但是，由于在表级别禁用了选项，因此不会清除过时行。|
-| ON | ON | 同时为数据库和表启用了数据保留策略。 已启用过时记录的自动/手动清理 |
+| ON | ON | 同时为数据库和表启用了数据保留策略。 已启用过时记录的自动清理。 |
 
 ## <a name="disable-data-retention-on-a-table"></a>禁用表的数据保留 
 

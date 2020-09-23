@@ -1,19 +1,19 @@
 ---
-title: 使用 .Net SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
+title: 使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
 description: 了解如何通过生成 .NET 控制台应用程序将数据导入或引入到 Azure Cosmos DB 来优化导入数据所需的预配吞吐量 (RU/s)
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019243"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981934"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
 
@@ -86,7 +86,7 @@ ms.locfileid: "89019243"
 1.  导航到 Azure Cosmos 帐户。
 1.  打开“键”窗格，复制帐户的 URI 和主键    。
 
-如果使用 Azure Cosmos DB 模拟器，请获取[本文中的模拟器凭据](local-emulator.md#authenticating-requests)。
+如果使用 Azure Cosmos DB 模拟器，请获取[本文中的模拟器凭据](local-emulator.md#authenticate-requests)。
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>步骤 5：初始化具有批量执行支持的 CosmosClient 对象
 

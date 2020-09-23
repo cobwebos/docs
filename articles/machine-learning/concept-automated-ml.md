@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: eef8abebde2578ac549b2facfc1317a90ecc7fb5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658563"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886376"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -78,8 +78,6 @@ ms.locfileid: "89658563"
 
    * 如果你的编程经验有限或者没有经验，请在 [https://ml.azure.com](https://ml.azure.com/) 上尝试使用 Azure 机器学习工作室 Web 体验  
    * Python 开发人员请查看 [Azure 机器学习 Python SDK](how-to-configure-auto-train.md) 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **指定已标记训练数据的源和格式**：Numpy 数组或 Pandas 数据帧
 
@@ -172,25 +170,25 @@ ms.locfileid: "89658563"
 
 ### <a name="feature-availability"></a>功能可用性 
 
- 使用远程计算时，有更多的功能可用，如下表中所示。 其中一些功能仅在企业工作区中可用。
+ 使用远程计算时，有更多的功能可用，如下表中所示。 
 
-| Feature                                                    | Remote | Local | 需要 <br>企业工作区 |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | ✓                             |
-| 基于 DNN-BERT 的文本特征化和训练             | ✓      |       | ✓                             |
-| 现成的 GPU 支持（训练和推理）        | ✓      |       | ✓                             |
-| 图像分类和标记支持                  | ✓      |       | ✓                             |
-| 用于预测的 Auto-ARIMA、Prophet 和 ForecastTCN 模型 | ✓      |       | ✓                             |
-| 并行执行多个运行/迭代                       | ✓      |       | ✓                             |
-| 在 AutoML 工作室 Web 体验 UI 中创建具有可解释性的模型      | ✓      |       | ✓                             |
-| 工作室 Web 体验 UI 中的特征工程自定义                        | ✓      |       | ✓                              |
-| Azure ML 超参数优化                             | ✓      |       |                               |
-| Azure ML 管道工作流支持                         | ✓      |       |                               |
-| 继续运行                                             | ✓      |       |                               |
-| 预测                                                | ✓      | ✓     | ✓                             |
-| 在笔记本中创建和运行试验                    | ✓      | ✓     |                               |
-| 在 UI 中注册和可视化试验的信息与指标 | ✓      | ✓     |                               |
-| 数据护栏                                            | ✓      | ✓     |                               |
+| Feature                                                    | Remote | Local | 
+|------------------------------------------------------------|--------|-------|
+| 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | 
+| 基于 DNN-BERT 的文本特征化和训练             | ✓      |       |
+| 现成的 GPU 支持（训练和推理）        | ✓      |       |
+| 图像分类和标记支持                  | ✓      |       |
+| 用于预测的 Auto-ARIMA、Prophet 和 ForecastTCN 模型 | ✓      |       | 
+| 并行执行多个运行/迭代                       | ✓      |       |
+| 在 AutoML 工作室 Web 体验 UI 中创建具有可解释性的模型      | ✓      |       |
+| 工作室 Web 体验 UI 中的特征工程自定义| ✓      |       |
+| Azure ML 超参数优化                             | ✓      |       |
+| Azure ML 管道工作流支持                         | ✓      |       |
+| 继续运行                                             | ✓      |       |
+| 预测                                                | ✓      | ✓     |
+| 在笔记本中创建和运行试验                    | ✓      | ✓     |
+| 在 UI 中注册和可视化试验的信息与指标 | ✓      | ✓     |
+| 数据护栏                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>多模型 
 

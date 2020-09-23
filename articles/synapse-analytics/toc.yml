@@ -10,24 +10,34 @@
       items:
         - name: 简介
           href: get-started.md
+          displayName: 'get, started'
         - name: 1 创建 Synapse 工作区
           href: get-started-create-workspace.md
+          displayName: 'get, started'
         - name: 2 使用 SQL 池进行分析
           href: get-started-analyze-sql-pool.md
+          displayName: 'get, started'
         - name: 3 使用 Spark 进行分析
           href: get-started-analyze-spark.md
+          displayName: 'get, started'
         - name: 4 使用按需 SQL 进行分析
           href: get-started-analyze-sql-on-demand.md
+          displayName: 'get, started'
         - name: 5 分析存储帐户中的数据
           href: get-started-analyze-storage.md
+          displayName: 'get, started'
         - name: 6 通过管道进行编排
           href: get-started-pipelines.md
+          displayName: 'get, started'
         - name: 7 使用 Power BI 进行可视化
           href: get-started-visualize-power-bi.md
+          displayName: 'get, started'
         - name: 8 监视
           href: get-started-monitor.md
+          displayName: 'get, started'
         - name: 9 查看知识中心
           href: get-started-knowledge-center.md
+          displayName: 'get, started'
     - name: 备忘单
       href: overview-cheat-sheet.md
     - name: 常见问题解答
@@ -48,16 +58,16 @@
       href: quickstart-power-bi.md
     - name: 创建池
       items:
-        - name: 使用 Web 工具创建 Apache Spark 笔记本
-          href: quickstart-apache-spark-notebook.md
-        - name: 使用 Azure 门户创建 Apache Spark 池
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: 使用 Synapse Studio 创建 Apache Spark 池
-          href: quickstart-create-apache-spark-pool-studio.md
-        - name: 使用 Azure 门户创建 SQL 池
-          href: quickstart-create-sql-pool-portal.md
         - name: 使用 Synapse Studio 创建 SQL 池
           href: quickstart-create-sql-pool-studio.md
+        - name: 使用 Azure 门户创建 SQL 池
+          href: quickstart-create-sql-pool-portal.md
+        - name: 创建笔记本
+          href: quickstart-apache-spark-notebook.md
+        - name: 使用 Azure 门户创建 Spark 池
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: 使用 Synapse Studio 创建 Spark 池
+          href: quickstart-create-apache-spark-pool-studio.md
     - name: 使用 SQL 池加载数据
       items:
         - name: COPY 语句

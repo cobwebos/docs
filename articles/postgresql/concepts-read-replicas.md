@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f093d9b1a67d5e6836fc7f760b0336c9923f5186
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611120"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902074"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -38,7 +38,7 @@ ms.locfileid: "88611120"
 
 可以在任何 [Azure Database for PostgreSQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中设置主服务器。 主服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
 
-[ ![只读副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="读取副本区域":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 无论主服务器位于何处，始终可以在以下任何区域中创建读取副本。 下面是通用副本区域：
@@ -166,15 +166,15 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 创建副本时或之后，防火墙规则、虚拟网络规则和参数设置不会从主服务器继承到副本服务器。
 
 ### <a name="scaling"></a>扩展
-缩放 Vcore 或常规用途与内存优化：
-* PostgreSQL 要求 `max_connections` 辅助服务器上的设置 [大于或等于主服务器上的设置](https://www.postgresql.org/docs/current/hot-standby.html)，否则，辅助服务器将无法启动。
-* 在 Azure Database for PostgreSQL 中，每台服务器允许的最大连接数已固定到计算 sku，因为连接占用了内存。 你可以了解 [max_connections 和计算 sku 之间的映射](concepts-limits.md)的详细信息。
-* **向上缩放**：首先向上扩展副本的计算，然后向上扩展主副本。 此顺序可防止错误违反 `max_connections` 要求。
-* **缩小**：首先缩小主副本的计算，然后缩小副本。 如果尝试缩放低于主副本的副本，则会出现错误，因为这违反了 `max_connections` 要求。
+缩放 vCore 或者在“常规用途”和“内存优化”之间缩放：
+* PostgreSQL 要求辅助服务器上的 `max_connections` 设置[大于或等于主服务器上的设置](https://www.postgresql.org/docs/current/hot-standby.html)，否则辅助服务器将不会启动。
+* 在 Azure Database for PostgreSQL 中，所允许的每台服务器的最大连接数已固定到计算 sku，因为连接会占用内存。 可以详细了解 [max_connections 与计算 sku 之间的映射](concepts-limits.md)。
+* 纵向扩展：先纵向扩展副本的计算，然后纵向扩展主服务器。 此顺序可防止因违反 `max_connections` 要求而出现错误。
+* 纵向缩减：先纵向缩减主服务器的计算，然后纵向缩减副本。 如果尝试将副本缩放至低于主服务器的级别，将会出现错误，因为这样会违反 `max_connections` 要求。
 
 缩放存储：
-* 所有副本都启用了存储自动增长，以防止从存储空间的副本复制问题。 无法禁用此设置。
-* 你还可以手动扩展存储，就像在任何其他服务器上一样
+* 所有副本都启用了存储自动增长，以防止存储空间已满的副本出现复制问题。 无法禁用此设置。
+* 你也可以手动纵向扩展存储，就像在任何其他服务器上一样
 
 
 ### <a name="basic-tier"></a>基本层
