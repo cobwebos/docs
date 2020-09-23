@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU 管理用户 |Microsoft Docs
-description: 描述如何使用 Azure 门户管理 Azure Stack 边缘 GPU 上的用户。
+title: Azure Stack Edge Pro GPU 管理用户 |Microsoft Docs
+description: 介绍如何使用 Azure 门户来管理 Azure Stack Edge Pro GPU 上的用户。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8400f134c7a2b9da32c04e15e42a54f697b9cea6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254179"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904502"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge"></a>使用 Azure 门户管理 Azure Stack 边缘上的用户
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的用户
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何在 Azure Stack 边缘上管理用户。 您可以通过 Azure 门户或通过本地 web UI 来管理 Azure Stack 边缘。 使用 Azure 门户来添加、修改或删除用户。
+本文介绍如何在 Azure Stack Edge Pro 上管理用户。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
 
 在本文中，学习如何：
 
@@ -42,7 +42,7 @@ ms.locfileid: "89254179"
 
 在 Azure 门户中执行以下步骤可以添加用户。
 
-1. 在 Azure 门户中，请前往 Azure Stack Edge 资源，然后 **> "用户**"。 选择命令栏上的“+ 添加用户”****。
+1. 在 Azure 门户中，请前往 Azure Stack Edge 资源，然后 **> "用户**"。 在命令栏上选择 " **+ 添加用户** "。
 
     ![选择“添加用户”](media/azure-stack-edge-j-series-manage-users/add-user-1.png)
 

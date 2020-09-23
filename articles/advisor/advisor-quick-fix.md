@@ -4,12 +4,12 @@ description: 使用顾问中的快速修复执行批量修正
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518056"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968589"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>顾问的快速修复修正
 通过**快速修复**，可以更快、更轻松地根据建议对多个资源进行修正。 它提供了对资源批量修正的功能，并通过对资源进行大规模修正来帮助你更快地优化订阅。
@@ -20,13 +20,13 @@ ms.locfileid: "86518056"
 
 1. 在带有“快速修复”标签的建议列表中，单击建议。
 
-   ![顾问快速修复](./media/quick-fix-1.png)
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Azure Advisor 屏幕截图，其中显示了建议中的 "快速修复" 标签。":::
    
    图像中的价格仅用于示例
 
 2. 在“建议详细信息”页上，你会看到具有此建议的资源的列表。 选择要根据此建议进行修正的所有资源。
 
-   ![顾问快速修复](./media/quick-fix-2.png)
+   :::image type="content" source="./media/quick-fix-2.png" alt-text=""受影响的资源" 窗口的屏幕截图，其中突出显示了列表项和 "快速修复" 按钮。":::
    
    图像中的价格仅用于示例
 

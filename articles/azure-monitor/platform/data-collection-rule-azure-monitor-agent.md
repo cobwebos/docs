@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640831"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968403"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>配置 Azure Monitor agent (预览版的数据收集) 
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据并指定应发送到的位置。 本文介绍如何创建数据收集规则，以便使用 Azure Monitor 代理从虚拟机收集数据。
@@ -26,7 +26,7 @@ ms.locfileid: "88640831"
 
 例如，假设某个环境具有一组运行业务线应用程序的虚拟机，另一个虚拟机运行 SQL Server。 你可能有一个适用于所有虚拟机的默认数据收集规则，以及单独收集用于业务线应用程序和 SQL Server 的数据的单独数据收集规则。 虚拟机与数据收集规则的关联将如下图所示。
 
-![关联](media/data-collection-rule-azure-monitor-agent/associations.png)
+![关系图显示了托管业务线应用程序和 SQL Server 的虚拟机，这些虚拟机与名为 "central-i t-默认" 的数据收集规则和 "用于业务线的应用程序的数据收集规则"、"SQL Server 中"、"中"、"中"、"中"](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>使用 Azure 门户进行创建
 你可以使用 Azure 门户来创建数据收集规则并将你的订阅中的虚拟机关联到该规则。 将自动安装 Azure Monitor 代理，并为尚未安装的任何虚拟机创建托管标识。

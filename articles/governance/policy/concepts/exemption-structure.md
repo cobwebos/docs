@@ -3,12 +3,12 @@ title: 策略例外结构的详细信息
 description: 介绍 Azure 策略使用的策略免除定义，使资源免于评估计划或定义。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933612"
+ms.locfileid: "90968047"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure 策略免除结构
 
@@ -99,11 +99,12 @@ Azure 策略免除 (预览版) 功能用于从计划或定义的评估中 _免�
 
 如果 `policyAssignmentId` 适用于计划分配，则 `policyDefinitionReferenceIds` 可以使用属性来指定在主题资源对其具有豁免的计划中 () 的策略定义。 由于可以从包含的一个或多个策略定义中免除资源，因此此属性是一个 _数组_。 这些值必须与字段的计划定义中的值匹配 `policyDefinitions.policyDefinitionReferenceId` 。
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="exemption-category"></a>豁免类别
 
-管理策略例外对象所需的 Azure RBAC 权限位于 `Microsoft.Authorization/policyExemptions` 操作组中。 内置角色 [资源策略参与者](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) 和 [安全管理员](../../../role-based-access-control/built-in-roles.md#security-admin) 都具有 `read` 和 `write` 权限，并且 [ (预览) ](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) 具有 `read` 权限。
+存在两个例外类别，并用于将免除分组：
 
-免除包含附加的安全措施，因为这会影响对豁免的授权。 除了要求 `Microsoft.Authorization/policyExemptions/write` 对资源层次结构或单个资源的操作，例外的创建者必须在 `exempt/Action` 目标分配上具有谓词。
+- **缓解**：授予免除，因为策略意向是通过另一种方法实现的。
+- **弃权**：已授予免除，因为暂时接受资源的不符合性状态。 使用此类别的另一个原因是，应该排除在某个计划中的一个或多个定义中的资源或资源层次结构，但不能将其从整个计划中排除。
 
 ## <a name="expiration"></a>过期时间
 
@@ -111,6 +112,12 @@ Azure 策略免除 (预览版) 功能用于从计划或定义的评估中 _免�
 
 > [!NOTE]
 > 到达日期时，不会删除策略例外 `expiresOn` 。 保留对象用于记录保留，但免除不再有效。
+
+## <a name="required-permissions"></a>所需的权限
+
+管理策略例外对象所需的 Azure RBAC 权限位于 `Microsoft.Authorization/policyExemptions` 操作组中。 内置角色 [资源策略参与者](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor) 和 [安全管理员](../../../role-based-access-control/built-in-roles.md#security-admin) 都具有 `read` 和 `write` 权限，并且 [ (预览) ](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) 具有 `read` 权限。
+
+免除包含附加的安全措施，因为这会影响对豁免的授权。 除了要求 `Microsoft.Authorization/policyExemptions/write` 对资源层次结构或单个资源的操作，例外的创建者必须在 `exempt/Action` 目标分配上具有谓词。
 
 ## <a name="next-steps"></a>后续步骤
 

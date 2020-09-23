@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 51b05ea016880d04fd6a2123962afefbdb229be1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 69368500a99b47238e74a960fdd5381c0339430a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101777"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905861"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问慢查询日志
 
@@ -28,7 +28,7 @@ ms.locfileid: "86101777"
 2. 选择 Azure Database for MySQL 服务器。
 
 3. 在边栏中的“监视”部分下，选择“服务器日志”   。 
-   ![“服务器日志”选项的屏幕截图](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="“服务器日志”选项的屏幕截图":::
 
 4. 若要查看服务器参数，请选择“单击此处以启用日志并配置日志参数”  。
 
@@ -53,7 +53,7 @@ ms.locfileid: "86101777"
 
 3. 在边栏中的“监视”部分下，选择“服务器日志”   。 此页将显示日志文件列表。
 
-   ![“服务器日志”页的屏幕截图，其中突出显示了日志列表](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="“服务器日志”页的屏幕截图，其中突出显示了日志列表":::
 
    > [!TIP]
    > 日志命名约定是 mysql-slow-< your server name>-yyyymmddhh.log  。 文件名中使用的日期和时间是发布日志的时间。 日志文件每 24 小时或每 7.5 GB 轮换一次（以先达到的条件为准）。 
@@ -62,23 +62,23 @@ ms.locfileid: "86101777"
 
 5. 若要下载单个日志文件，请选择表行中每个日志文件旁边的向下箭头图标。
 
-   ![“服务器日志”页的屏幕截图，其中突出显示了向下箭头图标](./media/howto-configure-server-logs-in-portal/5-download.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-download.png" alt-text="“服务器日志”页的屏幕截图，其中突出显示了向下箭头图标":::
 
 ## <a name="set-up-diagnostic-logs"></a>设置诊断日志
 
 1. 在边栏中的“监视”  部分下，选择“诊断设置”   > “添加诊断设置”  。
 
-   ![“诊断设置”选项的屏幕截图](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="“诊断设置”选项的屏幕截图":::
 
 1. 提供诊断设置名称。
 
 1. 指定向哪些数据接收器（存储帐户、事件中心或 Log Analytics 工作区）发送慢查询日志。
 
 1. 选择 **MySqlSlowLogs** 作为日志类型。
-![“诊断设置配置”选项的屏幕截图](./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="“诊断设置配置”选项的屏幕截图":::
 
 1. 配置可以通过管道向其传送慢查询日志的数据接收器后，选择“保存”。 
-![“诊断设置配置”选项的屏幕截图，其中突出显示了“保存”](./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="“诊断设置配置”选项的屏幕截图，其中突出显示了“保存”":::
 
 1. 可以通过在配置的数据接收器中浏览慢查询日志来对其进行访问。 最多需要等待 10 分钟的时间，这些日志就会出现。
 

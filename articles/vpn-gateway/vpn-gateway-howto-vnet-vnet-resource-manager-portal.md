@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: b14f3c241fd21d3d4f9c4e17ae95d8048139cec1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 12ab54e51b26c4b3d77f5518d4e4f44efe34affd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442865"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983308"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -178,7 +178,7 @@ ms.locfileid: "89442865"
    ![验证连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "验证连接")
 3. 在 " **名称** " 列下，选择其中一个连接以查看详细信息。 数据开始流动后，会看到“输入数据”和“输出数据”的值。********
 
-   ![Status](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "状态")
+   ![屏幕截图显示了一个资源组，其中包含数据的值和输出数据。](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "状态")
 
 ## <a name="add-additional-connections"></a>添加其他连接
 

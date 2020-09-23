@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9fbd63e1b46b837350be720fadf68777927f9bff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516293"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904753"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>为安全警报设置电子邮件通知 
 
@@ -39,8 +39,8 @@ ms.locfileid: "88516293"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式版|
-|计价|免费层|
+|发布状态：|正式发布 (GA)|
+|计价|免费|
 |必需的角色和权限：|**安全管理员**<br>**订阅所有者** |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png)  (部分) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
 |||

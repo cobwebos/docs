@@ -8,26 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a364588d77fb24e96c831ce541c5bb4e63d93e98
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922338"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904576"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常
 
-参考本快速入门可以开始使用异常检测器 API 的两种检测模式来检测时序数据的异常。 此 C# 应用程序发送两个包含 JSON 格式的时序数据的 API 请求，并获取响应。
+参考本快速入门可以开始使用异常检测器 API 来检测时序数据的异常。 此 C# 应用程序发送包含 JSON 格式的时序数据的 API 请求，并获取响应。
 
 | API 请求                                        | 应用程序输出                                                                                                                                         |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 以批的形式检测异常                        | JSON 响应包含时序数据中每个数据点的异常状态（和其他数据），以及检测到的任何异常所在的位置。 |
-| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。                                        |
+| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。 |
+| 检测标记新数据趋势的更改点 | 包含时序数据中检测到的更改点的 JSON 响应。 |
 
- 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs) 上找到本快速入门的源代码。
+虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs) 上找到本快速入门的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,6 +62,7 @@ ms.locfileid: "88922338"
     |------------------------------------|--------------------------------------------------|
     | 批量检测                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | 对最新数据点进行检测 | `/anomalydetector/v1.0/timeseries/last/detect`   |
+    | 更改点检测 | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
@@ -95,6 +97,18 @@ ms.locfileid: "88922338"
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>检测数据中的更改点
+
+1. 创建名为 `detectChangePoints()` 的新函数。 通过终结点、批量异常检测的 URL、订阅密钥以及时序数据调用 `Request()` 函数，构造并发送请求。
+
+2. 反序列化 JSON 对象，并将其写入控制台。
+
+3. 如果响应包含 `code` 字段，请输出错误代码和错误消息。
+
+4. 否则，请查找更改点在数据集中的位置。 响应的 `isChangePoint` 字段包含布尔值数组，其中每个值都指示数据点是否被识别为更改点。 使用响应对象的 `ToObject<bool[]>()` 函数将其转换为字符串数组。 循环访问该数组，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于趋势更改点的索引。
+
+    [!code-csharp[Detect change points](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectChangePoints)]
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>加载时序数据并发送请求
 
 1. 在应用程序的 main 方法中，使用 `File.ReadAllText()` 加载 JSON 时序数据。
@@ -108,5 +122,6 @@ ms.locfileid: "88922338"
 成功的响应以 JSON 格式返回。 单击以下链接在 GitHub 上查看 JSON 响应：
 * [批量检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [最新数据点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [更改点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

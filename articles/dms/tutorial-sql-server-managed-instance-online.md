@@ -1,5 +1,5 @@
 ---
-title: 教程：将 SQL Server online 迁移到 SQL 托管实例
+title: 教程：将 SQL Server 联机迁移到 SQL 托管实例
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 托管实例的联机迁移。
 services: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 08/04/2020
-ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553301"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984331"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 托管实例
 
@@ -35,7 +35,7 @@ ms.locfileid: "87553301"
 
 > [!IMPORTANT]
 > 若要使用 Azure 数据库迁移服务从 SQL Server 联机迁移到 SQL 托管实例，必须在 SMB 网络共享中提供完整的数据库备份和后续日志备份，供服务用来迁移数据库。 Azure 数据库迁移服务不启动任何备份，而是使用现有备份进行迁移。你可能已经在灾难恢复计划中有了这些备份。
-> 确保[使用 WITH CHECKSUM 选项进行备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)。 另外，请确保不要将多个备份（即完整备份和 t-log 备份）追加到单个备份介质中；请在单独的备份文件上进行每一次备份。 最后，可以使用压缩的备份来减少遇到与迁移大型备份相关的潜在问题的可能性。
+> 确保[使用 WITH CHECKSUM 选项进行备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017&preserve-view=true)。 另外，请确保不要将多个备份（即完整备份和 t-log 备份）追加到单个备份介质中；请在单独的备份文件上进行每一次备份。 最后，可以使用压缩的备份来减少遇到与迁移大型备份相关的潜在问题的可能性。
 
 > [!NOTE]
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
@@ -54,10 +54,10 @@ ms.locfileid: "87553301"
 
 要完成本教程，需要：
 
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 [了解使用 Azure 数据库迁移服务迁移 SQL 托管实例的网络拓扑](https://aka.ms/dmsnetworkformi)。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 [了解使用 Azure 数据库迁移服务迁移 SQL 托管实例的网络拓扑](https://aka.ms/dmsnetworkformi)。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网中：
+    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务 [终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 添加到将在其中预配服务的子网中：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -90,7 +90,7 @@ ms.locfileid: "87553301"
 * 创建或记下可让 DMS 服务将数据库备份文件上传到的并可用来迁移数据库的**标准性能层** Azure 存储帐户。  请务必在创建 Azure 数据库迁移服务实例的同一区域创建 Azure 存储帐户。
 
   > [!NOTE]
-  > 使用联机迁移将受[透明数据加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)保护的数据库迁移到托管实例时，必须在还原数据库之前迁移本地或 Azure VM SQL Server 实例中的相应证书。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)。
+  > 使用联机迁移选项将[透明数据加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)保护的数据库迁移到托管实例时，必须先迁移本地或 Azure VM SQL Server 实例中的相应证书，再还原数据库。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
@@ -245,7 +245,7 @@ ms.locfileid: "87553301"
 
     可以进一步展开数据库和登录类别，以监视相应服务器对象的迁移状态。
 
-   ![正在进行的迁移活动](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
+   ![迁移活动状态](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>执行迁移交接
 
@@ -264,7 +264,7 @@ ms.locfileid: "87553301"
     ![准备完成交接](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
     > [!IMPORTANT]
-    > 在转换后，具有业务关键服务层的 SQL 托管实例的可用性所需的时间可能会远远超过常规用途，因为必须为 AlwaysOn 高可用性组创建三个辅助副本的种子。 此操作的持续时间取决于数据的大小，有关详细信息，请参阅[管理操作持续时间](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration)。
+    > 交接后，具有业务关键服务层的 SQL 托管实例只能用比具有常规用途服务层的 SQL 托管实例更长的时间才能使用，因为必须为 AlwaysOn 高可用性组设定三个辅助副本的种子。 此操作持续时间取决于数据的大小，有关详细信息，请参阅[管理操作持续时间](../azure-sql/managed-instance/management-operations-overview.md#duration)。
 
 5. 当数据库迁移状态显示为“已完成”后，请将应用程序连接到 SQL 托管实例的新目标实例。
 
@@ -272,6 +272,6 @@ ms.locfileid: "87553301"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关演示如何使用 T-sql RESTORE 命令将数据库迁移到 SQL 托管实例的教程，请参阅[使用 restore 命令还原备份到 sql 托管实例](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
-* 有关 SQL 托管实例的信息，请参阅[什么是 sql 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
-* 有关将应用连接到 SQL 托管实例的信息，请参阅[连接应用程序](../azure-sql/managed-instance/connect-application-instance.md)。
+* 有关介绍如何使用 T-SQL RESTORE 命令将数据库迁移到 SQL 托管实例的教程，请参阅[使用存储命令将备份还原到 SQL 托管实例](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
+* 有关 SQL 托管实例的信息，请参阅[什么是 SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
+* 若要了解如何将应用连接到 SQL 托管实例，请参阅[连接应用程序](../azure-sql/managed-instance/connect-application-instance.md)。

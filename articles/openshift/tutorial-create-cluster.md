@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1ba383b99b8265e01cf757bfb1589a86a934e0e3
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503782"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053865"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -104,20 +104,22 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **创建资源组。**
+2. **创建资源组。**
 
-    Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。
     
-> [!NOTE]
+> [!NOTE] 
 > Azure Red Hat OpenShift 并非在可以创建 Azure 资源组的所有区域中可用。 有关支持 Azure Red Hat OpenShift 的位置的信息，请参阅[可用区域](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)。
 
-    ```azurecli-interactive
-    az group create --name $RESOURCEGROUP --location $LOCATION
-    ```
+```azurecli-interactive
+az group create \
+  --name $RESOURCEGROUP \
+  --location $LOCATION
+```
 
-    The following example output shows the resource group created successfully:
+以下示例输出显示已成功创建资源组：
 
-    ```json
+```json
     {
     "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
     "location": "eastus",
@@ -128,24 +130,24 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
     },
     "tags": null
     }
-    ```
+```
 
-2. **创建虚拟网络。**
+3. **创建虚拟网络。**
 
-    运行 OpenShift 4 的 Azure Red Hat OpenShift 群集需要一个包含两个空子网（用于主节点和工作器节点）的虚拟网络。
+运行 OpenShift 4 的 Azure Red Hat OpenShift 群集需要一个包含两个空子网（用于主节点和工作器节点）的虚拟网络。
 
-    在之前创建的同一资源组中创建新的虚拟网络：
+在之前创建的同一资源组中创建新的虚拟网络：
 
-    ```azurecli-interactive
-    az network vnet create \
-    --resource-group $RESOURCEGROUP \
-    --name aro-vnet \
-    --address-prefixes 10.0.0.0/22
-    ```
+```azurecli-interactive
+az network vnet create \
+   --resource-group $RESOURCEGROUP \
+   --name aro-vnet \
+   --address-prefixes 10.0.0.0/22
+```
 
-    以下示例输出显示已成功创建了虚拟网络：
+以下示例输出显示已成功创建了虚拟网络：
 
-    ```json
+```json
     {
     "newVNet": {
         "addressSpace": {
@@ -161,9 +163,9 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
         "type": "Microsoft.Network/virtualNetworks"
     }
     }
-    ```
+```
 
-3. 为主节点添加一个空子网。
+4. 为主节点添加一个空子网。
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -174,7 +176,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-4. 为工作器节点添加一个空子网。
+5. 为工作器节点添加一个空子网。
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -185,7 +187,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. 在主子网上[禁用子网专用终结点策略](../private-link/disable-private-link-service-network-policy.md)。 为了能够连接和管理群集，必须执行此操作。
+6. 在主子网上[禁用子网专用终结点策略](../private-link/disable-private-link-service-network-policy.md)。 为了能够连接和管理群集，必须执行此操作。
 
     ```azurecli-interactive
     az network vnet subnet update \

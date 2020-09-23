@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 9673b3260425fd9244c635beaf77d367a14cac54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809914"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890262"
 ---
 # <a name="split-image-directory"></a>拆分图像目录
 
-本主题介绍如何使用 Azure 机器学习设计器（预览版）中的“拆分图像目录”模块将图像目录的图像划分为两个不同的集。
+本主题介绍如何使用 Azure 机器学习设计器中的 "拆分映像目录" 模块将图像目录的图像划分为两个不同的集。
 
 当需要将图像数据划分为训练集和测试集时，此模块特别有用。 
 
@@ -35,19 +35,19 @@ ms.locfileid: "84809914"
 
 ### <a name="expected-inputs"></a>预期输入
 
-| 名称                  | 类型           | 描述              |
+| 名称                  | 类型           | 说明              |
 | --------------------- | -------------- | ------------------------ |
 | 输入图像目录 | ImageDirectory | 要拆分的图像目录 |
 
 ### <a name="module-parameters"></a>模块参数
 
-| 名称                                   | 类型  | 范围 | 可选 | 描述                            | 默认 |
+| 名称                                   | 类型  | 范围 | 可选 | 说明                            | 默认 |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | 第一个输出中的图像比例 | Float | 0-1   | 必须 | 第一个输出中的图像比例 | 0.9     |
 
 ### <a name="outputs"></a>Outputs
 
-| 名称                    | 类型           | 描述                              |
+| 名称                    | 类型           | 说明                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | 输出图像目录 1 | ImageDirectory | 包含所选图像的图像目录 |
 | 输出图像目录 2 | ImageDirectory | 包含所有其他图像的图像目录 |

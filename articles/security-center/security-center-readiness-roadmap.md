@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771353"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904719"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -29,12 +29,12 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 使用以下资源，开始使用安全中心。
 
 项目
-* [Azure 安全中心简介](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Azure 安全中心快速入门指南](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Azure 安全中心简介](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure 安全中心快速入门指南](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
 视频
-* [简介视频](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [安全中心的防护、检测和响应功能概述](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
+- [简介视频](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [安全中心的防护、检测和响应功能概述](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>规划和操作
 
@@ -42,20 +42,16 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 在规划和操作过程中，请参考以下资源。
 
-项目
-* [Azure 安全中心规划和操作指南](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Azure 安全中心规划和操作指南](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>将计算机载入到安全中心
-安全中心将自动检测未启用安全中心标准层的所有 Azure 订阅或工作区。 其中包括使用安全中心免费层的 Azure 订阅和未启用安全解决方案的工作区。
+安全中心会自动检测 azure Defender 未保护的任何 Azure 订阅或工作区。 这包括使用安全中心免费版和未启用安全解决方案的工作区的 Azure 订阅。
 
 在载入过程中，请参考以下资源。
 
-项目
-* [载入到 Azure 安全中心标准层以增强安全性](https://docs.microsoft.com/azure/security-center/security-center-onboarding)
-
-视频
-* [Azure Security Center Hybrid - Overview](https://youtu.be/NMa4L_M597k)（Azure 安全中心混合层 - 概述）
+- [载入非 Azure 计算机](quickstart-onboard-machines.md)
+- [Azure Security Center Hybrid - Overview](https://youtu.be/NMa4L_M597k)（Azure 安全中心混合层 - 概述）
 
 ## <a name="mitigating-security-issues-using-security-center"></a>使用安全中心缓解安全问题
 安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。
@@ -63,14 +59,13 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 若要管理安全警报和保护资源，请参考以下资源。
 
 项目    
-* [在 Azure 安全中心进行安全运行状况监视](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
-* [保护 Azure 安全中心中的网络](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [在 Azure 安全中心保护 Azure SQL 服务和数据](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [在 Azure 安全中心进行安全运行状况监视](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+- [保护 Azure 安全中心中的网络](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [在 Azure 安全中心保护 Azure SQL 服务和数据](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
 视频    
-* [Mitigating Security Issues using Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)（使用 Azure 安全中心缓解安全问题）
+- [Mitigating Security Issues using Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)（使用 Azure 安全中心缓解安全问题）
 
 ### <a name="security-center-for-incident-response"></a>负责事件响应的安全中心
 为降低成本并减少破坏，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。
@@ -119,6 +114,4 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 ## <a name="community-resources"></a>社区资源
 
 * [安全中心 UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [适用于云服务的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [问答&安全中心页面](https://docs.microsoft.com/answers/topics/azure-security-center.html)

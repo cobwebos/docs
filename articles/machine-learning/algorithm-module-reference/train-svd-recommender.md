@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477402"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890248"
 ---
 # <a name="train-svd-recommender"></a>训练 SVD 推荐器
 
-本文介绍了如何使用 Azure 机器学习设计器（预览版）中的“训练 SVD 推荐器”模块。 使用此模块，可以基于奇异值分解 (SVD) 算法训练建议模型。  
+本文介绍如何在 Azure 机器学习设计器中使用训练 SVD 推荐器模块。 使用此模块，可以基于奇异值分解 (SVD) 算法训练建议模型。  
 
 “训练 SVD 推荐器”模块读取“用户-项目-评级”三元组的数据集。 它返回训练后的 SVD 推荐器。 然后，可以通过[为 SVD 推荐器评分](score-svd-recommender.md)模块使用训练后的模型来预测评级或生成建议。  
 

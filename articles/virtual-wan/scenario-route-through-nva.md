@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46ffb5bfe52fe4f398594a1dfed76a6ea6c0fd81
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530788"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976262"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>方案：通过 NVA 路由流量
 
@@ -39,7 +39,7 @@ ms.locfileid: "90530788"
 
 **连接矩阵**
 
-| 从             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
+| 来自             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
 |---|---|---|---|---|---|
 | **NVA 轮辐**   | &#8594; | 0/0 UDR  |  对等互连 |   0/0 UDR    |  0/0 UDR  |
 | **NVA Vnet**    | &#8594; |   静态 |      X   |        X     |      X    |

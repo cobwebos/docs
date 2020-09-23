@@ -1,14 +1,14 @@
 ---
 title: 服务运行状况概述 | Microsoft Docs
-description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
+description: 了解服务运行状况如何为你提供可自定义的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089594"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967790"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
@@ -21,7 +21,7 @@ ms.locfileid: "87089594"
 1. **服务问题** - Azure 服务中目前已经造成了影响的问题。 
 2. **计划内维护** - 即将进行的且将来可能会影响服务可用性的维护。  
 3. **运行状况通告** - Azure 服务中发生的、需要引以注意的更改。 示例包括弃用 Azure 功能或升级要求（如升级到受支持的 PHP 框架）。
-4. **安全建议**-安全相关通知或冲突，可能会影响 Azure 服务的可用性。
+4. **安全公告** - 可能会影响 Azure 服务可用性的安全相关通知或违规。
 
 > [!NOTE]
 > 若要查看服务运行状况事件，必须授予用户对订阅的[读者角色](../role-based-access-control/role-assignments-portal.md)。
@@ -74,4 +74,4 @@ ms.locfileid: "87089594"
 
 ## <a name="next-steps"></a>后续步骤
 
-设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[设置 Azure 服务运行状况警报的最佳实践](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 
+设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅 [设置 Azure 服务运行状况警报的最佳实践](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 

@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375255"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904650"
 ---
-# <a name="workflow-automation"></a>工作流自动化
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>通过工作流自动化创建对警报和建议的自动响应
 
 每个安全计划都包含事件响应的多个工作流。 这些流程可能包含通知相关利益干系人、启动更改管理进程，以及应用特定的修正步骤。 安全专家建议你尽可能多地将这些流程自动化。 自动化可降低开销。 它还可以确保按照预定义的要求快速、一致地执行过程步骤，从而提高安全性。
 
@@ -30,8 +30,8 @@ ms.locfileid: "89375255"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式版|
-|计价|免费层|
+|发布状态：|正式发布 (GA)|
+|计价|免费|
 |必需的角色和权限：|资源组上的**安全管理员角色**或**所有者**<br>还必须对目标资源具有写入权限<br><br>若要使用 Azure 逻辑应用工作流，还必须具有以下逻辑应用角色/权限：<br> - [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 权限是必需的或逻辑应用读取/触发器访问 (此角色无法创建或编辑逻辑应用;仅 *运行* 现有) <br> - 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的<br>如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务 (例如，Outlook/团队/时差实例) |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中国 Gov，其他 Gov|
 |||
@@ -42,7 +42,7 @@ ms.locfileid: "89375255"
 
 1. 从安全中心的边栏中选择 " **工作流自动化**"。
 
-    [![工作流自动化列表](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流自动化列表":::
 
     在此页上，你可以创建新的自动化规则，还可以启用、禁用或删除现有的规则。
 
@@ -53,7 +53,7 @@ ms.locfileid: "89375255"
     1. 将启动此自动工作流的触发器。 例如，你可能想要在生成包含 "SQL" 的安全警报时运行逻辑应用。
     1. 满足触发条件时将运行的逻辑应用。 
 
-        [![工作流自动化列表](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="添加 workflow 自动化窗格":::
 
 1. 在 "操作" 部分中，单击 " **新建** " 以开始创建逻辑应用过程。
 
@@ -101,7 +101,7 @@ ms.locfileid: "89375255"
 
 本文介绍了如何创建逻辑应用，如何在安全中心自动执行这些应用并手动运行它们。 
 
-有关其他相关材料，请参阅： 
+有关相关材料，请参阅： 
 
 - [有关如何使用工作流自动化来自动执行安全响应的 Microsoft Learn 模块](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure 安全中心的安全建议](security-center-recommendations.md)

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 请参阅如何从 IoT 中心摄取设备遥测消息。
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 8/11/2020
+ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7e6c200f0bec90fb73122e50885f2e6ad7420aeb
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564383"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983384"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>将 IoT 中心遥测数据引入 Azure 数字孪生
 
@@ -22,7 +22,7 @@ Azure 数字孪生由 IoT 设备和其他来源的数据驱动。 要在 Azure �
 
 本操作方法文档演练如何编写可从 IoT 中心引入遥测数据的 Azure 函数。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 继续此示例之前，需要将以下资源设置为系统必备组件：
 * **IoT 中心**。 有关说明，请参阅[此 Iot 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)中的*创建 iot 中心*部分。
@@ -31,20 +31,20 @@ Azure 数字孪生由 IoT 设备和其他来源的数据驱动。 要在 Azure �
 
 ### <a name="example-telemetry-scenario"></a>遥测方案示例
 
-本操作指南概述了如何使用 Azure 函数将消息从 IoT 中心发送到 Azure 数字孪生。 有许多可能的配置和匹配策略可用于此操作，但本文的示例包含以下部分：
-* IoT 中心的温度计设备，具有已知的设备 ID。
+本操作指南概述了如何使用 Azure 函数将消息从 IoT 中心发送到 Azure 数字孪生。 可以使用多个可能的配置和匹配策略来发送消息，但本文的示例包含以下部分：
+* IoT 中心中具有已知设备 ID 的温度计设备
 * 用于表示设备的数字克隆，具有匹配 ID
 
 > [!NOTE]
 > 此示例在设备 ID 与相应的数字克隆的 ID 之间使用简单的 ID 匹配，但可以提供更复杂的映射，从设备到其克隆 (如) 的映射表。
 
-当温度计设备发送温度遥测事件时，数字克隆的 *温度* 属性应该会更新。 下图中概述了此方案：
+每当恒温器设备发送温度遥测事件时，Azure 函数都会处理遥测数据，而数字克隆的 *温度* 属性应该会更新。 下图中概述了此方案：
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="显示流程图的关系图。在此图表中，IoT 中心设备通过 IoT 中心将温度遥测发送到 Azure 功能，该功能可更新 Azure 数字孪生中的克隆温度属性。" border="false":::
 
 ## <a name="add-a-model-and-twin"></a>添加模型和克隆
 
-需要使用一个克隆来更新 IoT 中心信息。
+你可以使用以下 CLI 命令添加/上传模型，然后使用此模型创建一个克隆，此模型将使用 IoT 中心提供的信息进行更新。
 
 模型如下所示：
 ```JSON
@@ -129,7 +129,9 @@ await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 
 ### <a name="update-your-azure-function-code"></a>更新 Azure function 代码
 
-现在，你已了解之前示例中的代码，请打开 Visual Studio，并将 Azure 函数的代码替换为此示例代码。
+现在，你已了解先前示例中的代码，请从 Visual Studio 中的 " [*先决条件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) " 部分打开 Azure 函数。  (如果没有 Azure 函数，请访问先决条件中的链接立即创建一个) 。
+
+将 Azure 函数的代码替换为此示例代码。
 
 ```csharp
 using System;
@@ -191,21 +193,52 @@ namespace IotHubtoTwins
     }
 }
 ```
+保存函数代码，并将函数应用发布到 Azure。 为此，请参阅[*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)的[*"发布 Function App"*](https://docs.microsoft.com/azure/digital-twins/how-to-create-azure-function#publish-the-function-app-to-azure)部分。
+
+成功发布后，将在 Visual Studio 命令窗口中看到输出，如下所示：
+
+```cmd
+1>------ Build started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
+1>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
+2>------ Publish started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
+2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
+2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\Out\
+2>Publishing C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\adtIngestFunctionSample - 20200911112545669.zip to https://adtingestfunctionsample20200818134346.scm.azurewebsites.net/api/zipdeploy...
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Publish: 1 succeeded, 0 failed, 0 skipped ==========
+```
+你还可以在 [Azure 门户](https://portal.azure.com/)中验证发布过程的状态。 搜索 _资源组_ 并导航到 " _活动日志_ "，并在列表中查找 " _获取 web 应用发布配置文件_ "，并验证状态是否为 "成功"。
+
+:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="显示发布过程状态的 Azure 门户的屏幕截图。":::
 
 ## <a name="connect-your-function-to-iot-hub"></a>将函数连接到 IoT 中心
 
-1. 设置中心数据的事件目标。 在 [Azure 门户](https://portal.azure.com/)中，导航到 IoT 中心实例。 在 " **事件**" 下，为 Azure 函数创建订阅。 
+设置中心数据的事件目标。
+在 [Azure 门户](https://portal.azure.com/)中，导航到在 " [*先决条件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) " 部分中创建的 IoT 中心实例。 在 " **事件**" 下，为 Azure 函数创建订阅。
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="显示添加事件订阅的 Azure 门户屏幕截图。":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="显示添加事件订阅的 Azure 门户屏幕截图。":::
 
-2. 在 " **创建事件订阅** " 页中，按如下所示填写字段：
-    1. 在 " **名称**" 下，将订阅命名为你所需的名称。
-    2. 在 " **事件架构**" 下，选择 " **事件网格架构**"。
-    3. 在 " **系统主题名称**" 下，选择唯一名称。
-    4. 在 " **事件类型**" 下，选择 " **设备遥测** " 作为要筛选的事件类型。
-    5. 在 " **终结点详细信息**" 下，选择 Azure 函数作为终结点。
+在 " **创建事件订阅** " 页中，按如下所示填写字段：
+  1. 在 " **名称**" 下，将订阅命名为你所需的名称。
+  2. 在 " **事件架构**" 下，选择 " _事件网格架构_"。
+  3. 在 " **事件类型**" 下，选择 " _设备遥测_ " 复选框，并取消选中其他事件类型。
+  4. 在 " **终结点类型**" 下，选择 " _Azure function_"。
+  5. 在 " **终结点**" 下，选择 " _选择终结点_ " 链接来创建终结点。
+    
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="用于创建事件订阅详细信息 Azure 门户的屏幕截图":::
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="显示事件订阅详细信息 Azure 门户的屏幕截图":::
+在打开的 " _选择 Azure 函数_ " 页上，验证以下详细信息。
+ 1. **订阅**： Azure 订阅
+ 2. **资源组**：资源组
+ 3. **函数应用**：函数应用名称
+ 4. **槽**： _生产_
+ 5. **函数**：从下拉列表中选择 Azure 函数。
+
+选择 " _确认选择_ " 按钮保存详细信息。            
+      
+:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="用于选择 Azure 函数的 Azure 门户屏幕截图":::
+
+选择 " _创建_ " 按钮创建事件订阅。
 
 ## <a name="send-simulated-iot-data"></a>发送模拟 IoT 数据
 

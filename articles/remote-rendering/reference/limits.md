@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566040"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976569"
 ---
 # <a name="limitations"></a>限制
 
@@ -28,7 +28,7 @@ ms.locfileid: "88566040"
 
 ## <a name="geometry"></a>几何结构
 
-* 资产中允许的材料总数：65,535。
+* 资产中允许的材料总数：65,535。 有关详细信息，请参阅 [材料重复数据](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) 消除。
 * 单个纹理的最大尺寸： 16384 x 16384。 转换过程会缩减更大的源纹理。
 
 ## <a name="overall-number-of-polygons"></a>多边形总数
