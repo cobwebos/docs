@@ -10,15 +10,15 @@ ms.author: larryfr
 author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
-ms.openlocfilehash: 88dde6e3deeebcb93da3fcd278721a0f5d4bf900
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 101a27e12239394abb1bd79176c4509278d67a81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646046"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886084"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>部署用于认知搜索的模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何使用 Azure 机器学习部署用于 [Azure 认知搜索](../search/search-what-is-azure-search.md)的模型。
 

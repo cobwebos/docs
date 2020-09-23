@@ -1,25 +1,22 @@
 ---
-title: 使用托管标识设置到存储帐户的连接（预览）
+title: 使用托管标识设置与存储帐户的连接
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用托管标识设置到 Azure 存储帐户的索引器连接（预览）
+description: 了解如何使用托管标识设置到 Azure 存储帐户的索引器连接
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917969"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971521"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用托管标识设置到 Azure 存储帐户的连接（预览）
-
-> [!IMPORTANT] 
-> 目前提供了有关使用托管标识建立与数据源的连接的支持。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用托管标识设置到 Azure 存储帐户的连接
 
 本页介绍如何使用托管标识设置到 Azure 存储帐户的索引器连接，而不是在数据源对象连接字符串中提供凭据。
 
@@ -64,11 +61,11 @@ ms.locfileid: "88917969"
 
     Azure 表存储的示例：
 
-    ![添加读者和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读者和数据访问角色分配")
+    ![添加读取器和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读取器和数据访问角色分配")
 
 ### <a name="3---create-the-data-source"></a>3 - 创建数据源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引存储帐户中的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引存储帐户中的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
 
 从存储帐户编制索引时，数据源必须具有以下必需属性：
 
@@ -150,6 +147,7 @@ Blob 索引器的索引器定义示例：
 ## <a name="see-also"></a>另请参阅
 
 详细了解 Azure 存储索引器：
+
 * [Azure Blob 索引器](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 索引器](search-howto-index-azure-data-lake-storage.md)
 * [Azure 表索引器](search-howto-indexing-azure-tables.md)

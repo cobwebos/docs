@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: bdf3863ae4683c6ef0e8dd3dd67a952bebf62d52
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463435"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971423"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>通过专用终结点访问安全资源
 
@@ -35,10 +35,10 @@ Azure 认知搜索通过搜索管理 API 提供的功能，可以 [创建或更�
 | Azure 存储-Blob (或) ADLS 第2代 | `blob`|
 | Azure 存储-表 | `table`|
 | Azure Cosmos DB-SQL API | `Sql`|
-| Azure SQL 数据库 | `sqlServer`|
+| Azure SQL Database | `sqlServer`|
 | Azure Database for MySQL (预览版)  | `mysqlServer`|
 | Azure Key Vault | `vault` |
-| Azure 函数 (预览)  | `sites` |
+| Azure Functions (预览版)  | `sites` |
 
 还可以通过 [列表支持的 API](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/listsupported)查询支持出站专用终结点连接的 Azure 资源的列表。
 

@@ -1,25 +1,22 @@
 ---
-title: 使用托管标识设置到 Cosmos DB 帐户的连接（预览）
+title: 使用托管标识建立与 Cosmos DB 帐户的连接
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用托管标识设置到 Cosmos DB 帐户的索引器连接（预览）
+description: 了解如何使用托管标识设置与 Cosmos DB 帐户的索引器连接
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: df37b7f1c5b1ed35b6c3779eea470b2fb0936ecf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936650"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971649"
 ---
-# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>使用托管标识设置到 Cosmos DB 数据库的索引器连接（预览）
-
-> [!IMPORTANT] 
-> 目前提供了有关使用托管标识建立与数据源的连接的支持。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
+# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>使用托管标识设置与 Cosmos DB 数据库的索引器连接
 
 本页描述如何使用托管标识设置到 Azure Cosmos DB 数据库的索引器连接，而不是在数据源对象连接字符串中提供凭据。
 
@@ -57,7 +54,7 @@ ms.locfileid: "88936650"
 
 ### <a name="3---create-the-data-source"></a>3 - 创建数据源
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引 Cosmos DB 的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
+[REST API](/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](/dotnet/api/microsoft.azure.search.models.datasource)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引 Cosmos DB 的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
 
 使用托管标识进行身份验证时， **凭据** 将不包括帐户密钥。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 9ac30bdcb137afb26a8461f98a36b568ebe179b0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459005"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988364"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -74,15 +74,17 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
     关于 AD 站点和服务，请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
-<!--
-* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
+* 可以通过选中 "[联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **aes 加密**" 框为 SMB 卷启用 aes 加密。 Azure NetApp 文件支持从最低到最安全的)  (DES、Kerberos AES 128 和 Kerberos AES 256 加密类型。 如果启用 AES 加密，则用于联接 Active Directory 的用户凭据必须具有与为 Active Directory 启用的功能匹配的最高对应帐户选项。    
 
-    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
+    例如，如果 Active Directory 只有 AES-128 功能，则必须为用户凭据启用 AES-128 帐户选项。 如果 Active Directory 具有 256 AES 功能，则必须启用 "AES-256 帐户" 选项，该选项也支持 AES 128)  (。 如果 Active Directory 没有任何 Kerberos 加密功能，则默认情况下，Azure NetApp 文件使用 DES。  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
+    你可以在 Active Directory 用户和计算机 "的" 属性 "" 用户和计算机 " (MMC) 中启用帐户选项：   
 
-    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
--->
+    ![Active Directory 用户和计算机 MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
+* Azure NetApp 文件支持 [ldap 签名](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)，这使得可以在 Azure NetApp 文件服务与目标 [Active Directory 域控制器](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)之间安全传输 ldap 通信。 如果遵循 Microsoft [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) for LDAP 签名指南，则应通过选中 "[联接 Active Directory](#create-an-active-directory-connection) " 窗口中的 " **ldap 签名**" 框，在 Azure NetApp 文件中启用 ldap 签名功能。 
+
+    [LDAP 通道绑定](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) 配置对 Azure NetApp 文件服务没有影响。 
 
 有关其他 AD 信息，请参阅 Azure NetApp 文件 [SMB 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)。 
 
@@ -144,7 +146,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
     * **AD DNS 域名**  
         这是你要联接的 Active Directory 域服务的域名。
     * **AD 站点名称**  
-        这是域控制器发现将限制为的站点名称。
+        这是域控制器发现将被限制到的站点名称。
     * **SMB 服务器(计算机帐户)前缀**  
         这是 Active Directory 中计算机帐户的命名前缀，Azure NetApp 文件将用于创建新帐户。
 
@@ -160,8 +162,56 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
 
         如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，组织单位路径为 `OU=AADDC Computers`。
 
+    ![加入 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+
+    * **AES 加密**   
+        选中此复选框可为 SMB 卷启用 AES 加密。 请参阅要求 [Active Directory 连接的要求](#requirements-for-active-directory-connections) 。 
+
+        ![Active Directory AES 加密](../media/azure-netapp-files/active-directory-aes-encryption.png)
+
+        **AES 加密**功能目前处于预览阶段。 如果这是你第一次使用此功能，请在使用此功能前注册它： 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+
+        检查功能注册的状态： 
+
+        > [!NOTE]
+        > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+        
+        你还可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+
+    * **LDAP 签名**   
+        选中此复选框可启用 LDAP 签名。 此功能在 Azure NetApp 文件服务和用户指定的 [Active Directory 域服务域控制器](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services)之间启用安全 LDAP 查找。 有关详细信息，请参阅 [ADV190023 |用于启用 LDAP 通道绑定和 LDAP 签名的 Microsoft 指导](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)。  
+
+        ![Active Directory LDAP 签名](../media/azure-netapp-files/active-directory-ldap-signing.png) 
+
+        **LDAP 签名**功能目前处于预览阶段。 如果这是你第一次使用此功能，请在使用此功能前注册它： 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+
+        检查功能注册的状态： 
+
+        > [!NOTE]
+        > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态 **注册** 后再继续。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+        
+        你还可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
+
      * **备份策略用户**  
         你可以包含其他帐户，这些帐户要求对创建用于 Azure NetApp 文件的计算机帐户具有提升的权限。 将允许指定的帐户在文件或文件夹级别更改 NTFS 权限。 例如，你可以指定一个非特权服务帐户，用于将数据迁移到 Azure NetApp 文件中的 SMB 文件共享。  
+
+        ![Active Directory 备份策略用户](../media/azure-netapp-files/active-directory-backup-policy-users.png)
 
         **备份策略用户**功能目前处于预览阶段。 如果这是你第一次使用此功能，请在使用此功能前注册它： 
 
@@ -178,11 +228,11 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        你还可以使用 Azure CLI 命令 [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) 并 [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) 注册功能并显示注册状态。 
+        你还可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
 
     * 凭证，包括“用户名”和“密码” 
 
-    ![加入 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+        ![Active Directory 凭据](../media/azure-netapp-files/active-directory-credentials.png)
 
 3. 单击“加入” 。  
 

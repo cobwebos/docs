@@ -8,17 +8,18 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935375"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971630"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存
 
 > [!IMPORTANT] 
-> 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview 和 2020-06-30-Preview](search-api-preview.md) 提供此功能。 目前不支持门户或 .NET SDK。
+> 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> [REST API 预览版本](search-api-preview.md) 提供此功能。 目前不支持门户或 .NET SDK。
 
 “增量扩充”是一项针对[技能组](cognitive-search-working-with-skillsets.md)的功能。 它利用 Azure 存储保存扩充管道发出的处理输出，方便在将来的索引器运行中重复使用。 索引器会尽可能重复使用任何仍有效的缓存输出。 
 
@@ -166,7 +167,7 @@ REST API 版本 `2020-06-30-Preview` 通过索引器中的附加属性提供增�
 
 ## <a name="next-steps"></a>后续步骤
 
-增量扩充是非常强大的功能，可将更改跟踪扩展到技能集和 AI 扩充。 当你迭代技能集设计时，AIncremental 扩充可让你重复使用现有的已处理内容。
+增量扩充是非常强大的功能，可将更改跟踪扩展到技能集和 AI 扩充。 通过增量扩充，可以在循环访问技能组合设计时重复使用现有已处理的内容。
 
 接下来，请对现有的索引器启用缓存，或者在定义新索引器时添加缓存。
 

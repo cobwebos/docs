@@ -1,6 +1,6 @@
 ---
-title: 教程：准备 Azure 门户、数据中心环境以便部署 Azure Stack Edge | Microsoft Docs
-description: 本文是介绍如何部署 Azure Stack Edge 的第一篇教程，涉及如何准备 Azure 门户。
+title: 教程：准备 Azure 门户、数据中心环境以便部署 Azure Stack Edge Pro | Microsoft Docs
+description: 本文是介绍如何部署 Azure Stack Edge Pro 的第一篇教程，涉及如何准备 Azure 门户。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131831"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894137"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>教程：准备部署 Azure Stack Edge  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教程：准备部署 Azure Stack Edge Pro  
 
-本文是完整部署 Azure Stack Edge 时必读的部署教程系列的第一篇教程。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。
+本文是完整部署 Azure Stack Edge Pro 时必读的部署教程系列的第一篇教程。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。
 
 需要有管理员权限才能完成安装和配置过程。 门户准备只需不到 10 分钟的时间。
 
@@ -33,21 +33,21 @@ ms.locfileid: "87131831"
 
 ## <a name="get-started"></a>入门
 
-若要部署 Azure Stack Edge，请按指定顺序参阅以下教程。
+若要部署 Azure Stack Edge Pro，请按指定顺序参阅以下教程。
 
 | **#** | **此步骤的内容** | **使用这些文档** |
 | --- | --- | --- | 
-| 1. |**[在 Azure 门户中做好部署 Azure Stack Edge 的准备](azure-stack-edge-deploy-prep.md)** |在安装 Azure Stack Edge 物理设备之前创建并配置 Azure Stack Edge 资源。 |
-| 2. |**[安装 Azure Stack Edge](azure-stack-edge-deploy-install.md)**|将 Azure Stack Edge 物理设备拆包、装入机架并布线。  |
-| 3. |**[连接、设置并激活 Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md)** |连接到本地 Web UI，完成设备设置，然后激活设备。 现已准备好在设备设置 SMB 或 NFS 共享。  |
-| 4. |**[使用 Azure Stack Edge 传输数据](azure-stack-edge-deploy-add-shares.md)** |添加共享，并通过 SMB 或 NFS 连接到共享。 |
-| 5. |**[使用 Azure Stack Edge 转换数据](azure-stack-edge-deploy-configure-compute.md)** |在设备上配置计算模块，以便在将数据移到 Azure 时转换数据。 |
+| 1. |[在 Azure 门户中做好部署 Azure Stack Edge Pro 的准备](azure-stack-edge-deploy-prep.md) |在安装 Azure Stack Edge 物理设备之前创建并配置 Azure Stack Edge 资源。 |
+| 2. |[安装 Azure Stack Edge Pro](azure-stack-edge-deploy-install.md)|将 Azure Stack Edge Pro 物理设备拆包、装入机架并布线。  |
+| 3. |[连接、设置并激活 Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md) |连接到本地 Web UI，完成设备设置，然后激活设备。 现已准备好在设备设置 SMB 或 NFS 共享。  |
+| 4. |[使用 Azure Stack Edge Pro 传输数据](azure-stack-edge-deploy-add-shares.md) |添加共享，并通过 SMB 或 NFS 连接到共享。 |
+| 5. |[使用 Azure Stack Edge Pro 转换数据](azure-stack-edge-deploy-configure-compute.md) |在设备上配置计算模块，以便在将数据移到 Azure 时转换数据。 |
 
 现在可以开始设置 Azure 门户。
 
 ## <a name="prerequisites"></a>先决条件
 
-下面是 Azure Stack Edge 资源、Azure Stack Edge 设备和数据中心网络的配置先决条件。
+下面是 Azure Stack Edge 资源、Azure Stack Edge Pro 设备和数据中心网络的配置先决条件。
 
 ### <a name="for-the-azure-stack-edge-resource"></a>对于 Azure Stack Edge 资源
 
@@ -66,7 +66,7 @@ ms.locfileid: "87131831"
 * 具有 Microsoft Azure 存储帐户和访问凭据。
 * 你未被系统管理员设置的任何 Azure 策略阻止。 有关策略的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)。
 
-### <a name="for-the-azure-stack-edge-device"></a>对于 Azure Stack Edge 设备
+### <a name="for-the-azure-stack-edge-pro-device"></a>对于 Azure Stack Edge Pro 设备
 
 在部署物理设备之前，请确保：
 
@@ -80,9 +80,9 @@ ms.locfileid: "87131831"
 
 在开始之前，请确保：
 
-* 按你的 Azure Stack Edge 设备的网络要求配置数据中心内的网络。 有关详细信息，请参阅 [Azure Stack Edge 系统要求](azure-stack-edge-system-requirements.md)。
+* 按你的 Azure Stack Edge Pro 设备的网络要求配置数据中心内的网络。 有关详细信息，请参阅 [Azure Stack Edge Pro 系统要求](azure-stack-edge-system-requirements.md)。
 
-* 若要使 Azure Stack Edge 正常运行，请做好以下准备：
+* 若要使 Azure Stack Edge Pro 正常运行，请做好以下准备：
 
   * 使用至少 10 Mbps 的下载带宽以确保设备更新。
   * 使用至少 20 Mbps 的专用上传和下载带宽传输文件。
@@ -99,11 +99,11 @@ ms.locfileid: "87131831"
     - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
 
 2. 在左窗格中，选择“+ 创建资源”。 搜索并选择“Azure Stack Edge/Data Box Gateway”。 选择“创建”。
-3. 选取要用于 Azure Stack Edge 设备的订阅。 选择要部署 Azure Stack Edge 资源的区域。 有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
+3. 选取要用于 Azure Stack Edge Pro 设备的订阅。 选择要部署 Azure Stack Edge 资源的区域。 有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
 
     选择离要部署设备的地理区域最近的位置。 该区域只存储用于设备管理的元数据。 实际数据可以存储在任何存储帐户中。
     
-    在“Azure Stack Edge”选项中，选择“创建” 。
+    在“Azure Stack Edge Pro”选项中，选择“创建” 。
 
     ![搜索 Azure Stack Edge 服务](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -125,7 +125,7 @@ ms.locfileid: "87131831"
 
 5. 在完成时选择“下一步:送货地址”。
 
-    - 如果你已有一个设备，请选择与“我有 Azure Stack Edge 设备”对应的组合框。
+    - 如果你已有一个设备，请选择与“我有 Azure Stack Edge Pro 设备”对应的组合框。
     - 如果这是你订购的新设备，请输入联系人姓名、公司、寄送设备的地址，以及联系人信息。
 
     ![新设备的送货地址](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -144,11 +144,11 @@ ms.locfileid: "87131831"
 
 在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
 
-![关于审核 Azure Stack Edge 订单的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+![关于审核 Azure Stack Edge Pro 订单的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
 
 ## <a name="get-the-activation-key"></a>获取激活密钥
 
-在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
+在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge Pro 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
 1. 选择所创建的资源。 选择“概述”，然后选择“设备设置” 。
 
@@ -165,14 +165,14 @@ ms.locfileid: "87131831"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解了以下 Azure Stack Edge 主题：
+在本教程中，你已了解了以下 Azure Stack Edge Pro 主题：
 
 > [!div class="checklist"]
 >
 > * 创建新资源
 > * 获取激活密钥
 
-请继续学习下一教程，了解如何安装 Azure Stack Edge。
+请继续学习下一教程，了解如何安装 Azure Stack Edge Pro。
 
 > [!div class="nextstepaction"]
-> [安装 Azure Stack Edge](./azure-stack-edge-deploy-install.md)
+> [安装 Azure Stack Edge Pro](./azure-stack-edge-deploy-install.md)

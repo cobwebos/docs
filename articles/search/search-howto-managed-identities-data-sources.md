@@ -1,25 +1,22 @@
 ---
-title: 使用托管标识设置到数据源的连接（预览版）
+title: 使用托管标识建立与数据源的连接
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用托管标识设置到数据源的索引器连接（预览版）
+description: 了解如何使用托管标识设置与数据源的索引器连接
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936582"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971541"
 ---
-# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>使用托管标识设置到数据源的索引器连接（预览版）
-
-> [!IMPORTANT] 
-> 目前提供了有关使用托管标识建立与数据源的连接的支持。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
+# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>使用托管标识设置与数据源的索引器连接
 
 Azure 认知搜索中的[索引器](search-indexer-overview.md)是一种爬网程序，它提供了一种方法，用于将数据源中的数据提取到 Azure 认知搜索中。 索引器从你创建的数据源对象获取数据源连接。 数据源对象通常包含目标数据源的凭据。 例如，如果要为 blob 存储容器中的数据编制索引，数据源对象可能包含 Azure 存储帐户密钥。
 

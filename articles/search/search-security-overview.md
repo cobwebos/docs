@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928762"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979606"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
 本文介绍 Azure 认知搜索中可以保护内容和操作的关键安全功能。
 
-+ 在存储层上，静态加密是为保存到磁盘的所有服务托管内容内置的，包括索引、同义词映射以及索引器、数据源和技能集的定义。 Azure 认知搜索还支持添加客户托管的密钥 (CMK) ，用于对索引内容进行补充加密。 对于8月 1 2020 日后创建的服务，CMK 加密扩展到临时磁盘上的数据，以对索引内容进行完全双重加密。
++ 在存储层上，对保存到磁盘的所有服务托管内容（包括索引、同义词映射以及索引器、数据源和技能组的定义）都内置了静态加密。 Azure 认知搜索还支持添加客户管理的密钥 (CMK)，以对索引内容进行双重加密。 对于 2020 年 8 月 1 日后创建的服务，CMK 加密延伸到临时磁盘上的数据，以对索引内容进行完全双重加密。
 
 + 入站安全性通过不断提升的安全性级别来保护搜索服务终结点：从请求所使用的 API 密钥到防火墙中的入站规则，再到全面保护服务不受公共 Internet 影响的专用终结点。
 
@@ -34,31 +34,31 @@ ms.locfileid: "88928762"
 
 ## <a name="encrypted-transmissions-and-storage"></a>加密的传输和存储
 
-在 Azure 认知搜索中，加密从连接和传输开始，并扩展到磁盘上存储的内容。 对于公共 Internet 上的搜索服务，Azure 认知搜索会侦听 HTTPS 端口 443。 客户端到服务的所有连接都使用 TLS 1.2 加密。 不支持更早的版本（1.0 或 1.1）。
+在 Azure 认知搜索中，加密从连接和传输开始，一直延伸到磁盘上存储的内容。 对于公共 Internet 上的搜索服务，Azure 认知搜索会侦听 HTTPS 端口 443。 客户端到服务的所有连接都使用 TLS 1.2 加密。 不支持更早的版本（1.0 或 1.1）。
 
 对于由搜索服务在内部处理的数据，下表介绍了 [数据加密模型](../security/fundamentals/encryption-models.md)。 某些功能（如知识库、增量扩充和基于索引器的索引）、对其他 Azure 服务中的数据结构进行读取或写入。 这些服务独立于 Azure 认知搜索提供自己的加密支持级别。
 
-| 模型 | 键&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 适用于 |
+| 建模 | 密钥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 适用于 |
 |------------------|-------|-------------|--------------|------------|
-| 服务器端加密 | Microsoft 管理的密钥 | 无 (内置)  | 无，适用于所有区域，适用于 24 2018 年1月之后创建的内容。 | 内容 (索引和同义词映射) 和定义 (索引器、数据源、技能集)  |
-| 服务器端加密 | 客户管理的密钥 | Azure Key Vault | 适用于所有区域中的可计费层，适用于2019年1月之后创建的内容。 | 数据磁盘) 内容 (索引和同义词映射 |
-| 服务器端双加密 | 客户管理的密钥 | Azure Key Vault | 1 2020 年8月之后，在所选区域中的 "搜索服务" 上提供计费层。 | 内容 (索引和同义词映射) 数据磁盘和临时磁盘 |
+| 服务器端加密 | Microsoft 管理的密钥 | 无（内置） | 无，可在所有层级、所有区域使用，适用于 2018 年 1 月 24 日后创建的内容。 | 内容（索引和同义词映射）和定义（索引器、数据源、技能组） |
+| 服务器端加密 | 客户管理的密钥 | Azure Key Vault | 可在计费层级、所有区域使用，适用于 2019 年 1 月后创建的内容。 | 数据磁盘上的内容（索引和同义词映射） |
+| 服务器端双重加密 | 客户管理的密钥 | Azure Key Vault | 可在计费层级、所选区域使用，适用于 2020 年 8 月 1 日后的搜索服务。 | 数据磁盘和临时磁盘上的内容（索引和同义词映射） |
 
 ### <a name="service-managed-keys"></a>服务托管的密钥
 
-服务托管加密是一项基于 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)、使用256位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)的 Microsoft 内部操作。 它会自动对所有索引编制，包括对未完全加密 (在) 2018 年1月之前创建的索引的增量更新。
+服务托管加密是一种基于 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)的 Microsoft 内部操作，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。
 
-### <a name="customer-managed-keys-cmk"></a>客户管理的密钥 (CMK) 
+### <a name="customer-managed-keys-cmk"></a>客户管理的密钥 (CMK)
 
-客户托管的密钥需要额外的可计费服务，Azure Key Vault，它可以位于不同的区域，但在 Azure 认知搜索的同一订阅下。 启用 CMK 加密会增加索引大小并降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。 有关详细信息，请参阅 [在 Azure 中配置客户管理的加密密钥认知搜索](search-security-manage-encryption-keys.md)。
+客户管理的密钥需要额外的计费服务 Azure Key Vault，它与 Azure 认知搜索可以位于不同区域，但需位于同一订阅下。 启用 CMK 加密会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。 有关详细信息，请参阅[在 Azure 认知搜索中配置客户管理的加密密钥](search-security-manage-encryption-keys.md)。
 
 <a name="double-encryption"></a>
 
 ### <a name="double-encryption"></a>双重加密
 
-在 Azure 认知搜索中，双加密是 CMK 的扩展。 它被理解为 CMK 的两倍加密 (一次，并再次通过服务托管的密钥) 和全面的作用域，其中包含写入到数据磁盘的长期存储以及写入临时磁盘的短期存储。 CMK 在 1 2020 年8月之前之间的差异，以及在 Azure 认知搜索中使 CMK 成为双重加密功能，这是临时磁盘上的静态数据加密。
+在 Azure 认知搜索中，双重加密是 CMK 的扩展。 可理解为双层加密（先通过 CMK 加密，然后再由服务托管的密钥加密），其使用范围广泛，包含写入数据磁盘的长期存储以及写入临时磁盘的短期存储。 CMK 在 2020 年 8 月 1 日之前和之后的差异在于，该日期之后，它将对临时磁盘上的静态数据进行额外加密，这也是使 CMK 成为 Azure 认知搜索中双重加密功能的原因。
 
-在8月1日之后，当前在这些区域中创建的新服务中提供双加密：
+对于 8 月 1 日后在这些区域中创建的新服务，目前可以使用双重加密：
 
 + 美国西部 2
 + 美国东部
@@ -94,7 +94,7 @@ ms.locfileid: "88928762"
 
 可以使用门户[配置入站访问](service-configure-firewall.md)。
 
-或者，可以使用管理 REST API。 带有 [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) 参数的 API 版本 2020-03-13 允许你标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内），通过这种方式限制对该服务的访问。
+或者，可以使用管理 REST API。 从 API 版本2020-03-13 开始，使用 [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) 参数，你可以通过标识你想要授予对搜索服务的访问权限的 IP 地址，限制对服务的访问。
 
 ### <a name="private-endpoint-no-internet-traffic"></a>专用终结点 (无 Internet 流量) 
 
@@ -123,11 +123,11 @@ Azure 认知搜索的 [专用终结点](../private-link/private-endpoint-overvie
 | 方法 | 说明 |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
-|[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |
+|[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 本文展开了前面一篇文章，其中提供了从 Azure Active Directory (Azure AD) （Azure 云平台中的一个 [免费服务](https://azure.microsoft.com/free/) ）检索标识的步骤。 |
 
 ## <a name="administrative-rights"></a>管理权限
 
-Azure [RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，Azure 角色分配将确定谁可以执行这些任务，无论他们使用的是 [门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是 [管理 REST api](/rest/api/searchmanagement/search-howto-management-rest-api)。
+[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 是基于 [Azure 资源管理器](../azure-resource-manager/management/overview.md)构建的授权系统，用于预配 Azure 资源。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，Azure 角色分配将确定谁可以执行这些任务，无论他们使用的是 [门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是 [管理 REST api](/rest/api/searchmanagement/search-howto-management-rest-api)。
 
 相反，对服务上托管的内容（如创建或删除索引的能力）的管理权限是授予，如 [前一部分](#index-access)中所述。
 

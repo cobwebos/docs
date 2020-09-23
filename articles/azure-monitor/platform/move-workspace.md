@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566278"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979691"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移到其他订阅或资源组
 
@@ -40,9 +40,9 @@ ms.locfileid: "88566278"
 
 >[!IMPORTANT]
 > **Azure Sentinel 客户：**
-> - 一旦部署到工作区上，Azure Sentinel **目前不支持** 将该工作区移动到其他资源组或订阅。 
+> - 部署到工作区后，Azure Sentinel 当前不支持将该工作区移至其他资源组或订阅。 
 >
->   如果已移动工作区，请禁用 **分析** 下的所有活动规则，并在五分钟后重新启用它们。 但在大多数情况下，这应该是有效的，但它不受支持，并且会自行承担。
+>   如果已移动工作区，请禁用“分析”下的所有活动规则，并在五分钟后重新启用这些规则。 重申一下，这在大多数情况下应该是有效的，但不支持这样做，风险由你自己承担。
 
 ### <a name="delete-solutions-in-azure-portal"></a>在 Azure 门户中删除解决方案
 在 Azure 门户中使用以下过程删除解决方案：
@@ -96,7 +96,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 4. 选择目标“订阅”和“资源组”。  如果将工作区移到同一订阅中的另一个资源组，则看不到“订阅”选项。
 5. 单击“确定”以移动工作区和所选资源。
 
-    ![门户](media/move-workspace/portal.png)
+    ![屏幕截图显示 "Log Analytics" 工作区中的 "概述" 窗格，其中包含用于更改资源组和订阅名称的选项。](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 若要使用 PowerShell 移动工作区，请按以下示例中所示使用 [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource)：

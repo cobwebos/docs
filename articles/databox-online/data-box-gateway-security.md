@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195873"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893863"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway 安全和数据保护
 
@@ -38,7 +38,7 @@ Data Box Gateway 服务是托管在 Azure 中的一项管理服务。 服务用�
 
 Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中预配的虚拟设备。 设备可帮助将数据发送到 Azure。 你的设备：
 
-- 需要激活密钥才能访问 Azure Stack Edge/Data Box Gateway 服务。
+- 需要激活密钥才能访问 Azure Stack Edge Pro/Data Box Gateway 服务。
 - 由设备密码始终受保护。
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
@@ -49,25 +49,25 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 
 [!INCLUDE [data-box-edge-gateway-activation-key](../../includes/data-box-edge-gateway-activation-key.md)]
 
-有关详细信息，请参阅[获取激活密钥](data-box-gateway-deploy-prep.md#get-the-activation-key)。
+有关详细信息，请参阅 [获取激活密钥](data-box-gateway-deploy-prep.md#get-the-activation-key)。
 
 ### <a name="protect-the-device-via-password"></a>通过密码保护设备
 
 密码确保只有经过授权的用户才能访问数据。 Data Box Gateway 设备启动时处于锁定状态。
 
-你可以：
+您可以：
 
 - 通过浏览器连接到设备的本地 web UI，然后提供用于登录设备的密码。
-- 通过 HTTP 远程连接到设备的 PowerShell 接口。 默认情况下启用远程管理。 然后，你可以提供用于登录设备的设备密码。 有关详细信息，请参阅[远程连接到 Data Box Gateway 设备](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface)。
+- 通过 HTTP 远程连接到设备的 PowerShell 接口。 默认情况下启用远程管理。 然后，你可以提供用于登录设备的设备密码。 有关详细信息，请参阅 [远程连接到 Data Box Gateway 设备](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface)。
 
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- 使用本地 web UI[更改密码](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 如果更改了密码，请务必通知所有远程访问用户，使其在登录时不会出现问题。
+- 使用本地 web UI [更改密码](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 如果更改了密码，请务必通知所有远程访问用户，使其在登录时不会出现问题。
 
 ## <a name="protect-your-data"></a>保护数据
 
 本节介绍保护传输中数据和存储数据的 Data Box Gateway 安全功能。
 
-### <a name="protect-data-at-rest"></a>保护静止的数据
+### <a name="protect-data-at-rest"></a>保护静态数据
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
 
@@ -79,7 +79,7 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
 
-- 定期轮换[存储帐户密钥](data-box-gateway-manage-shares.md#sync-storage-keys)并对其进行同步，以帮助保护你的存储帐户不受未经授权的用户的保护。
+- 定期轮换 [存储帐户密钥](data-box-gateway-manage-shares.md#sync-storage-keys) 并对其进行同步，以帮助保护你的存储帐户不受未经授权的用户的保护。
 
 ### <a name="protect-the-device-data-using-bitlocker"></a>使用 BitLocker 保护设备数据
 
@@ -94,9 +94,9 @@ Data Box Gateway 服务在以下情况下收集个人信息：
 
 [!INCLUDE [data-box-edge-gateway-manage-personal-data](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-若要查看可访问或删除共享的用户的列表，请按照[管理 Data Box Gateway 上的共享](data-box-gateway-manage-shares.md)中的步骤操作。
+若要查看可访问或删除共享的用户的列表，请按照 [管理 Data Box Gateway 上的共享](data-box-gateway-manage-shares.md)中的步骤操作。
 
-有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
+有关详细信息，请在 [信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
 
 ## <a name="next-steps"></a>后续步骤
 

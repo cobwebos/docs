@@ -11,15 +11,15 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 2b944f6207ecc47df4176a512a900e08e6b0d643
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650612"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885942"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#submit)轻松地将训练脚本提交到[各种计算目标](how-to-set-up-training-targets.md)。 该模式提供了很强的灵活性和最大程度的控制度。
 
@@ -29,7 +29,7 @@ ms.locfileid: "89650612"
 ## <a name="train-with-an-estimator"></a>使用估算器进行训练
 
 创建[工作区](concept-workspace.md)并设置[开发环境](how-to-configure-environment.md)后，在 Azure 机器学习中训练模型包括以下步骤：  
-1.  (创建 [远程计算目标](how-to-create-attach-compute-sdk.md) ，或者也可以使用本地计算机作为计算目标) 
+1. 创建[远程计算目标](how-to-create-attach-compute-sdk.md)（也可将本地计算机用作计算目标）
 2. 将[训练数据](how-to-access-data.md)上传到数据存储（可选）
 3. 创建[训练脚本](tutorial-train-models-with-aml.md#create-a-training-script)
 4. 创建 `Estimator` 对象

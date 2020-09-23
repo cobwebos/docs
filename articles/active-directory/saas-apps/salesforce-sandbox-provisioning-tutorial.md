@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 4666768d7e975e976601810bbbfadb1685fa91ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5fa40e954c84d4d2d70974bc799a198c6bf7d3e9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543517"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979761"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
 
@@ -63,7 +63,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 将“预配模式”设置为“自动”。
 
-    ![预配](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "Salesforce 沙盒预配" 页，预配模式设置为 "自动"，可以设置其他值。](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 1. 在“管理员凭据”**** 部分中，提供以下配置设置：
    
@@ -91,7 +91,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在“通知电子邮件”**** 字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中复选框。
 
-1. 单击“保存”。  
+1. 单击“保存”   
     
 1.  在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce Sandbox”****。
 
@@ -99,7 +99,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 若要为 Salesforce Sandbox 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”**** 更改为“启用”****
 
-1. 单击“保存”。
+1. 单击“保存” 
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce Sandbox。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”**** 部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Salesforce Sandbox 应用执行的所有操作。
 

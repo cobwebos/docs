@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896675"
+ms.locfileid: "90979080"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测需求
 
@@ -236,7 +236,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
 + 详细了解[特征化](how-to-configure-auto-features.md#featurization)。
-+ 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。
++ 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 
 >[!NOTE]
 > 此单车共享数据集已根据本教程修改。 此数据集是作为 [Kaggle 竞赛](https://www.kaggle.com/c/bike-sharing-demand/data)的一部分提供的，最初通过 [Capital Bikeshare](https://www.capitalbikeshare.com/system-data) 提供。 也可以在 [UCI 机器学习数据库](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)中找到它。<br><br>
