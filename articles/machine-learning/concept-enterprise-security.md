@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905744"
+ms.locfileid: "90988072"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -361,6 +361,17 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 * 此外，将遥测推送到 Microsoft/Azure 订阅。
 
 [![推理工作流](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
+
+## <a name="audit-and-manage-compliance"></a>审核和管理符合性
+
+[Azure 策略](/azure/governance/policy) 是一种管理工具，可让你确保 Azure 资源符合你的策略。 通过 Azure 机器学习，您可以分配以下策略：
+
+* **客户托管的密钥**：审核或强制工作区是否必须使用客户管理的密钥。
+* **专用链接**：审核工作区是否使用专用终结点与虚拟网络通信。
+
+有关 Azure 策略的详细信息，请参阅 [Azure 策略文档](/azure/governance/policy/overview)。
+
+有关特定于 Azure 机器学习的策略的详细信息，请参阅 [通过 Azure 策略审核和管理符合性](how-to-integrate-azure-policy.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

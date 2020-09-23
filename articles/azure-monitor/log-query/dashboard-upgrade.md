@@ -1,23 +1,23 @@
 ---
 title: 升级 Log Analytics 仪表板可视化效果
-description: 可以从启动查询，并根据需要进行修改
+description: 了解如何通过可提供强大见解的查询升级 Log Analytics 仪表板的可视化效果。
 ms.subservice: logs
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505765"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988253"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>升级 Log Analytics 仪表板可视化效果
 
 2020年2月，我们引入了改进的可视化技术。 提高和增强你的可视化查询结果的可视化能力，并快速获得强大的见解。 
 
-有关此升级的详细信息，请参阅此[Azure 更新](https://azure.microsoft.com/updates/azure-monitor-log-analytics-upgraded-results-visualization/)。 
+有关此升级的详细信息，请参阅此 [Azure 更新](https://azure.microsoft.com/updates/azure-monitor-log-analytics-upgraded-results-visualization/)。 
 
 这一新的可视化技术存在了新的和改进的查询结果集体验。 
 
@@ -25,24 +25,24 @@ ms.locfileid: "86505765"
 
 Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法。 它们旨在为你的 Azure 房地产状态提供单个窗格，并允许使用多种快捷方式执行常见操作。 
 
-有关详细信息，请参阅[Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)
+有关详细信息，请参阅 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>升级 Log Analytics 面板部件
 
 新的可视化技术解决了旧实现的一些常见问题，并引入了一些新的功能来固定 Log Analytics 部分： 
 
-- **相同的可用类型**-在 "仪表板" 上，Log Analytics 中的所有可视化效果类型都作为固定部分提供。
+- **相同的可用类型** -在 "仪表板" 上，Log Analytics 中的所有可视化效果类型都作为固定部分提供。
 
-- **一致的外观**-对于固定的部分，可视化效果外观与 Log Analytics 中的外观几乎相同。 不同之处在于优化要求视觉对象的数据内容之间的差异。 若要深入了解这些差异，请参阅本文档的注意事项部分。
+- **一致的外观** -对于固定的部分，可视化效果外观与 Log Analytics 中的外观几乎相同。 不同之处在于优化要求视觉对象的数据内容之间的差异。 若要深入了解这些差异，请参阅本文档的注意事项部分。
 
-- **工具提示和标签**-新固定 Log Analytics 可视化效果支持工具提示。 饼图和圆环图现在支持标签。
+- **工具提示和标签** -新固定 Log Analytics 可视化效果支持工具提示。 饼图和圆环图现在支持标签。
 
-- **交互式图例**–单击可视化效果图例可在 Log Analytics 中添加/删除固定视觉对象中的维度。
+- **交互式图例** –单击可视化效果图例可在 Log Analytics 中添加/删除固定视觉对象中的维度。
 
 ## <a name="stage-1---opt-in-upgrade-message"></a>阶段 1-选择加入升级消息
 
-当可以升级 Log Analytics 固定部件时，将在仪表板中 Log Analytics 固定部分显示新的*选择加入*通知，以允许用户升级其视觉对象。 如果要体验新的可视化效果，以便在其仪表板中升级选定的可视化效果。
+当可以升级 Log Analytics 固定部件时，将在仪表板中 Log Analytics 固定部分显示新的 *选择加入* 通知，以允许用户升级其视觉对象。 如果要体验新的可视化效果，以便在其仪表板中升级选定的可视化效果。
 
  
 ![边栏](media/dashboard-upgrade/update-message-1.png)
