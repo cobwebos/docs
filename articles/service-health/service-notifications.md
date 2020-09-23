@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 门户查看服务运行状况通知
-description: 借助服务运行状况通知，可以查看由 Microsoft Azure 发布的服务运行状况消息。
+description: 在 Azure 门户中查看服务运行状况通知。 服务运行状况通知由 Azure 基础结构发布到 Azure 活动日志中。
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 9f8297ae708d3f4e7921221f2c4bacee12a7a2b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 615d08b6a04aef9e8ef2033154da8ff8caeebe04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089560"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967777"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 

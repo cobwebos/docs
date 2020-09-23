@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 45d3ec8dc5d819464046e40bab22491a4bccde63
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461317"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904842"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -120,7 +120,7 @@ Jeff（工作负荷所有者）
 - [数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理预配和数据收集设置。
 - [安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)：可以通过 [Azure Policy](../governance/policy/overview.md) 来决定安全中心所监视和建议的控件，还可以通过 Azure Policy 来创建新的定义、定义其他策略，以及跨管理组分配策略。
 - [电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)：安全联系人和通知设置。
-- [定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)：在选择定价时，可以选择“免费”或“标准”，这决定了相应范围内的资源可以使用哪些安全中心功能（可以针对订阅、资源组和工作区进行指定）。
+- [定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)：使用或不使用 Azure Defender 确定哪些安全中心功能适用于作用域中的资源 (可为订阅、资源组和工作区) 指定。
 
 > [!NOTE]
 > 指定安全联系人可以确保在发生安全事件时，Azure 能够联系到贵组织中的合适人员。 若要详细了解如何启用此建议，请阅读 [Provide security contact details in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) （在 Azure 安全中心提供安全方面的联系细节）。
@@ -158,12 +158,12 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 对于 Azure 安全中心创建的工作区，数据将保留 30 天。 对于现有工作区，保留期取决于工作区定价层。 还可以根据需要使用现有工作区。
 
 > [!NOTE]
-> Microsoft 坚决承诺保护此类数据的隐私和安全性。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。 有关数据处理和隐私的详细信息，请参阅 [Azure 安全中心数据安全](security-center-data-security.md)。
+> Microsoft 作出了强承诺来保护此数据的隐私和安全性。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。 有关数据处理和隐私的详细信息，请参阅 [Azure 安全中心数据安全](security-center-data-security.md)。
 >
 
 ## <a name="onboarding-non-azure-resources"></a>载入非 Azure 资源
 
-安全中心可以监视非 Azure 计算机的安全状态，但首先需要载入这些资源。 请阅读[载入到 Azure 安全中心标准层以增强安全性](https://docs.microsoft.com/azure/security-center/security-center-onboarding#onboard-non-azure-computers)，详细了解如何载入非 Azure 资源。
+安全中心可以监视非 Azure 计算机的安全状态，但首先需要载入这些资源。 有关如何载入非 Azure 资源的详细信息，请参阅 [板载非 azure 计算机](quickstart-onboard-machines.md) 。
 
 ## <a name="ongoing-security-monitoring"></a>持续安全监视
 对安全中心建议进行初始配置和应用以后，下一步是考虑安全中心的操作过程。
@@ -191,7 +191,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 在进行安全操作时，还应采取预防性措施，限制对 VM 的访问，并控制在 VM 上运行的应用程序。 锁定到 Azure VM 的入站流量即可降低受攻击的风险，同时可以轻松进行访问，视需要连接到 VM。 使用[实时 VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) 访问功能，以强化 VM 访问控制。
 
-可以使用[自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)来限制可在 Azure 中的 VM 上运行的应用程序。 除其他优势外，这种控制还强化了 VM 抵御恶意软件侵害的能力。 安全中心可以使用机器学习分析在 VM 中运行的进程，以帮助创建允许列表规则。
+可以使用[自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)来限制可在 Azure 中的 VM 上运行的应用程序。 除其他优势外，这种控制还强化了 VM 抵御恶意软件侵害的能力。 使用机器学习，安全中心会分析在 VM 中运行的进程，以帮助创建允许列表规则。
 
 
 ## <a name="incident-response"></a>事件响应
@@ -199,7 +199,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 尽管本文不能帮助你创建自己的事件响应计划，但我们将在云生命周期中使用 Microsoft Azure 安全响应作为事件响应阶段的基础。 下图显示了这些阶段：
 
-![可疑活动](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![云生命周期中的事件响应阶段](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > 若要构建自己的事件响应计划，用户可以使用国家标准和技术协会 (NIST) 提供的 [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) （计算机安全事件处理指南）作为参考。

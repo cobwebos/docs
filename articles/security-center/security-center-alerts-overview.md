@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278133"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905476"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
 在 Azure 安全中心，针对许多不同的资源类型提供多种不同的警报。 安全中心为部署在 Azure 上的资源以及部署在本地和混合云环境中的资源生成警报。
 
-安全警报由高级检测触发，仅在 Azure 安全中心的标准层中可用。 有免费试用版可用。 你可以从 **定价 & 设置** "页升级。 了解有关 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)的详细信息。
+安全警报由高级检测触发，仅适用于 Azure Defender。 有免费试用版可用。 你可以从 **定价 & 设置** "页升级。 了解有关 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)的详细信息。
 
 ## <a name="respond-to-todays-threats"></a>应对今天的威胁<a name="respond-threats"> </a>
 
@@ -45,7 +45,7 @@ ms.locfileid: "89278133"
 
 ## <a name="how-does-security-center-detect-threats"></a>安全中心如何检测威胁？ <a name="detect-threats"> </a>
 
-Microsoft 安全研究人员始终在不断地寻找威胁。 由于 Microsoft 在云中和本地广泛存在，因此他们可以访问大量遥测数据。 由于能够广泛访问和收集各种数据集，可以通过本地消费者产品和企业产品以及联机服务发现新的攻击模式和趋势。 因此，当攻击者发布新的越来越复杂的漏斗利用方式时，安全中心就可以快速更新其检测算法。 此方法可以让用户始终跟上变化莫测的威胁环境。
+Microsoft 安全研究人员始终在不断地寻找威胁。 由于我们在云中和本地都有全球存在，因此我们可以访问一组大规模的遥测数据。 使用范围广泛且多样化的数据集，我们可以发现整个本地消费者和企业产品以及我们的联机服务的新攻击模式和趋势。 因此，当攻击者发布新的越来越复杂的漏斗利用方式时，安全中心就可以快速更新其检测算法。 此方法可以让用户始终跟上变化莫测的威胁环境。
 
 为了检测真实威胁和减少误报，安全中心自动收集、分析和集成来自 Azure 资源和网络的日志数据。 它还适用于连接的合作伙伴解决方案，如防火墙和终结点保护解决方案。 安全中心分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。
 
@@ -90,6 +90,5 @@ Azure 安全中心受益于在整个 Microsoft 有安全研究和数据科学团
 
 本文介绍了安全中心的各类警报。 有关详细信息，请参阅：
 
-* [Azure 安全中心中的威胁防护](threat-protection.md) - 有关 Azure 安全中心显示的安全警报来源的简短说明 
-* Azure 活动日志中的安全警报 - 安全警报和事件除了在 Azure 门户中或以编程方式提供之外，还会作为 [Azure 活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)中的事件进行审核。 有关事件架构的详细信息，请参阅 [Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)
+- Azure 活动日志中的安全警报 - 安全警报和事件除了在 Azure 门户中或以编程方式提供之外，还会作为 [Azure 活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)中的事件进行审核。 有关事件架构的详细信息，请参阅 [Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)
 

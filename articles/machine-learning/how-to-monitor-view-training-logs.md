@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 642186ef4af43127ba0d6eb6950f09e069eb79ca
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649281"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905002"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>监视和查看 ML 运行日志与指标
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何监视 Azure 机器学习运行并查看其日志。 在查看日志之前，必须先启用它们。 有关详细信息，请参阅[在 Azure 机器学习训练运行中启用日志记录](how-to-track-experiments.md)。
 
@@ -129,7 +129,7 @@ RunDetails(run).show()
 
 尝试执行以下后续步骤，了解如何使用 Azure 机器学习：
 
-* 了解如何[在 Azure 机器学习设计器（预览版）中跟踪试验并启用日志](how-to-track-designer-experiments.md)。
+* 了解如何 [在 Azure 机器学习设计器中跟踪试验和启用日志](how-to-track-designer-experiments.md)。
 
 * 查看教程[使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)中的示例，了解如何注册和部署最佳模型。
 

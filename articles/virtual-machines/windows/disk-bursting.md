@@ -3,16 +3,17 @@ title: 托管磁盘突发
 description: 了解 Azure 磁盘的磁盘突发和 Azure 虚拟机的磁盘突发
 author: albecker1
 ms.author: albecker
-ms.date: 04/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594361"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889099"
 ---
 # <a name="disk-bursting"></a>磁盘突发
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -20,6 +21,10 @@ ms.locfileid: "82594361"
 ## <a name="virtual-machine-level-bursting"></a>虚拟机级突发
 在公有云中的所有区域中，已在以下受支持大小的 VM 上启用了 VM 级突发支持： 
 - [Lsv2 系列](../lsv2-series.md)
+
+对于以下受支持的大小，还可在美国西部提供 VM 级别的突发：
+- [Dsv3 系列](../dv3-dsv3-series.md)
+- [Esv3 系列](../ev3-esv3-series.md)
 
 默认情况下会为支持突发的虚拟机启用突发。
 

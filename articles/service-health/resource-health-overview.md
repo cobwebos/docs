@@ -1,14 +1,14 @@
 ---
 title: Azure 资源运行状况概述
-description: Azure 资源运行状况概述
+description: 了解 Azure 资源运行状况如何帮助你诊断和获取影响 Azure 资源的服务问题。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041568"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967872"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
  
@@ -18,7 +18,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ## <a name="resource-definition-and-health-assessment"></a>资源定义和运行状况评估
 
-*资源*是 Azure 服务的特定实例，如虚拟机、web 应用或 SQL 数据库。 资源运行状况依赖于各种 Azure 服务发出的信号来评估资源是否正常运行。 如果资源运行不正常，资源运行状况将分析其他信息以确定问题根源。 它还会报告 Microsoft 采取的用于解决此问题的操作或可以采取的用于解决问题的措施。
+资源是 Azure 服务中的一个特定实例，例如虚拟机、Web 应用或 SQL 数据库。 资源运行状况依赖于各种 Azure 服务发出的信号来评估资源是否正常运行。 如果资源运行不正常，资源运行状况将分析其他信息以确定问题根源。 它还会报告 Microsoft 采取的用于解决此问题的操作或可以采取的用于解决问题的措施。
 
 有关如何评估运行状况的详细信息，请参阅 [Azure 资源运行状况](resource-health-checks-resource-types.md)中的资源类型和运行状况检查列表。
 
@@ -38,7 +38,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 #### <a name="platform-events"></a>平台事件
 
-平台事件是由 Azure 基础结构的多个组件触发的。 它们包括计划的操作（例如计划内维护）和意外事件（例如，在指定的时间范围内预测为失败的计划外主机重启或降级主机硬件）。
+平台事件是由 Azure 基础结构的多个组件触发的。 它们包括计划的操作（例如，计划内维护）和意外事件（例如，计划外主机重启或预计在指定的时间段后会发生故障的已降级主机硬件）。
 
 资源运行状况提供了有关事件和恢复过程的更多详细信息。 还可以通过它联系 Microsoft 支持人员，即使你没有有效的支持协议。
 
@@ -54,7 +54,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 “未知”表示资源运行状况未收到此资源的相关信息已超过 10 分钟**。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。
 
-如果资源按预期运行，则在几分钟后资源的状态将更改为 "*可用*"。
+如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。
 
 如果资源遇到问题，“未知”运行状态可能意味着平台中的事件正在影响资源**。
 
@@ -76,7 +76,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ## <a name="history-information"></a>历史记录信息
 
-可以在资源运行状况的 "**运行状况历史记录**" 部分中访问最多30天的历史记录。
+可在资源运行状况的“运行状况历史记录”部分中访问最多 30 天的历史记录。
 
 ![过去两周内的“资源运行状况”事件列表](./media/resource-health-overview/history-blade.png)
 

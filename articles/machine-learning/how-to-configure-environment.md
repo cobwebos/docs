@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ad22abdf17c68c93a6189db839fe357e7acc91e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650832"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898277"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何将开发环境配置为使用 Azure 机器学习。 Azure 机器学习不区分平台。 开发环境的唯一要求是提供 Python 3。 另外建议提供一个隔离的环境，例如 Anaconda 或 Virtualenv。
 
@@ -61,7 +61,7 @@ Azure 机器学习 [计算实例](concept-compute-instance.md) 是一种基于�
 
 若要了解计算实例的详细信息（包括如何安装包），请参阅[计算实例](concept-compute-instance.md)。
 
-若要避免产生计算费用，请[停止计算实例](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
+若要避免产生计算费用，请[停止计算实例](tutorial-1st-experiment-bring-data.md#clean-up-resources)。
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
@@ -309,7 +309,7 @@ Azure Databricks 如何使用 Azure 机器学习：
    |对于包含自动化<br> ML 功能的 Databricks| 上传 Python Egg 或 PyPI | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > 无法安装其他 SDK 附加项。 仅选择上述选项之一 [ `databricks` ] 或 [ `automl` ]。
+   > 无法安装其他 SDK 附加项。 请仅选择上述选项中的一个，即 [`databricks`] 或 [`automl`]。
 
    * 不要选择“自动附加到所有群集”。
    * 选择群集名称旁边的“附加”。

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge 管理用户 |Microsoft Docs
-description: 描述如何使用 Azure 门户管理 Azure Stack 边缘上的用户。
+title: Azure Stack Edge Pro 管理用户 |Microsoft Docs
+description: 描述如何使用 Azure 门户来管理 Azure Stack Edge Pro 上的用户。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339631"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904392"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>使用 Azure 门户管理 Azure Azure Stack 边缘上的用户
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Azure Stack Edge Pro 上的用户
 
-本文介绍如何在 Azure Stack 边缘上管理用户。 您可以通过 Azure 门户或通过本地 web UI 来管理 Azure Stack 边缘。 使用 Azure 门户来添加、修改或删除用户。
+本文介绍如何在 Azure Stack Edge Pro 上管理用户。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
 
 在本文中，学习如何：
 
@@ -39,7 +39,7 @@ ms.locfileid: "84339631"
 
 在 Azure 门户中执行以下步骤可以添加用户。
 
-1. 在 Azure 门户中，请前往 Azure Stack Edge 资源，然后 **> "用户**"。 选择命令栏上的“+ 添加用户”****。
+1. 在 Azure 门户中，请前往 Azure Stack Edge 资源，然后 **> "用户**"。 在命令栏上选择 " **+ 添加用户** "。
 
     ![选择“添加用户”](media/azure-stack-edge-manage-users/add-user-1.png)
 

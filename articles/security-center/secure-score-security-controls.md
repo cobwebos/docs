@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 91935e8c052a9130d0a40ed292ca466bc1ab5427
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567618"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905574"
 ---
-# <a name="enhanced-secure-score-in-azure-security-center"></a>Azure 安全中心的增强安全分数
+# <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
 ## <a name="introduction-to-secure-score"></a>安全评分简介
 
@@ -95,12 +95,11 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
 
 只有内置建议才会影响安全评分。
 
-此外，标记为 **预览版** 的建议不包含在安全分数的计算中。 它们应尽可能进行修正，以便在预览期结束时，它们会给你评分。
+安全分数计算中不包括标记为 **预览版** 的建议。 它们应尽可能进行修正，以便在预览期结束时，它们会给你评分。
 
 预览建议的示例如下：
 
 :::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
-
 
 ## <a name="improve-your-secure-score"></a>提高安全分数
 
@@ -137,7 +136,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">修正漏洞（最高 6 分）</p></strong>漏洞是攻击者可用来破坏资源机密性、可用性或完整性的薄弱环节。 <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt">管理漏洞</a>可以减少组织暴露、强化终结点外围应用、提高组织复原能力以及减少资源的受攻击面。 威胁和漏洞管理可显示错误的软件和安全配置，并提供缓解建议。</td>
-    <td class="tg-lboi"; width=55%>- 应在 SQL 数据库上启用高级数据安全性<br>- 应修正 Azure 容器注册表映像中的漏洞<br>- 应修正 SQL 数据库中的漏洞<br>- 应通过漏洞评估解决方案修正漏洞<br>- 应在 SQL 托管实例上启用漏洞评估<br>- 应对 SQL Server 启用漏洞评估<br>- 应在虚拟机上安装漏洞评估解决方案</td>
+    <td class="tg-lboi"; width=55%>- 应在 SQL 数据库上启用高级数据安全性<br>- 应修正 Azure 容器注册表映像中的漏洞<br>- 应修正 SQL 数据库中的漏洞<br>- 应通过漏洞评估解决方案修正漏洞<br>- 应在 SQL 托管实例上启用漏洞评估<br>- 应对 SQL Server 启用漏洞评估<br>- 应在虚拟机上安装漏洞评估解决方案<br>- 容器映像只应从受信任的注册表部署 (预览) <br>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序， (预览) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">启用静态加密（最高 4 分）</p></strong><a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">静态加密</a>为已存储的数据提供数据保护。 对静态数据进行的攻击包括试图获得对存储数据的硬件的物理访问权限。 Azure 使用对称加密来加密和解密大量静态数据。 将使用对称加密密钥在将数据写入到存储时对数据进行加密。 该加密密钥还用于解密准备在内存中使用的数据。 必须将密钥存储在实施了基于标识的访问控制和审核策略的安全位置。 Azure 密钥保管库就是这样的安全位置。 如果攻击者获取了加密数据但未获取加密密钥，则攻击者必须破解加密才能访问数据。</td>
@@ -149,15 +148,15 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">管理访问和权限（最高 4 分）</p></strong>安全程序的核心是确保用户具有完成其工作（但仅限于此）所需的访问权限：<a href="https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小特权访问模型</a>。<br>使用<a href="https://docs.microsoft.com/azure/role-based-access-control/overview">基于角色的访问控制 (RBAC)</a> 来创建角色分配，以此控制对资源的访问。 角色分配由三个元素组成：<br>- <strong>安全主体</strong>：用户请求访问的对象<br>- <strong>角色定义</strong>：他们的权限<br>- <strong>作用域</strong>：权限适用于的资源集</td>
-    <td class="tg-lboi"; width=55%>- 应从订阅中删除弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的外部帐户(预览版)<br>- 应从订阅中删除拥有写入权限的外部帐户(预览版)<br>- 应向订阅分配多个所有者<br>- 应在 Kubernetes 服务上使用基于角色的访问控制(RBAC)(预览版)<br>- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br>- 应使用服务主体来保护订阅，而不是管理证书</td>
+    <td class="tg-lboi"; width=55%>- 应从订阅中删除弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的弃用帐户(预览版)<br>- 应从订阅中删除拥有所有者权限的外部帐户(预览版)<br>- 应从订阅中删除拥有写入权限的外部帐户(预览版)<br>- 应向订阅分配多个所有者<br>- 应在 Kubernetes 服务上使用基于角色的访问控制(RBAC)(预览版)<br>- Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证<br>- 应使用服务主体来保护订阅，而不是管理证书<br>- 应为容器 (预览提供最低权限的 Linux 功能) <br>- (只读) 应为容器 () 预览的根文件系统强制执行<br>- 应避免 (预览中进行特权升级的容器) <br>- 应避免 (预览，以根用户身份运行容器) <br>- 应避免 (预览中共享敏感主机命名空间的容器) <br>- 应将 pod HostPath 卷装载的使用限制为已知列表 (预览) <br>- 应避免 (预览的特权容器) <br>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序， (预览) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">修正安全配置（最高 4 分）</p></strong>配置错误的 IT 资产受到攻击的风险更高。 当部署资产并且必须在截止日期之前完成时，通常会忘记基本的强化措施。 错误的安全配置可能出现在基础结构中的任何级别：从操作系统和网络设备到云资源。<br>Azure 安全中心会不断将资源的配置与行业标准、法规和基准中的要求进行比较。 配置了对组织而言很重要的相关“合规性包”（标准和基线）后，任何差距都会产生安全建议，其中包括 CCEID 以及对潜在安全影响的说明。<br>常用包为 <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure 安全基准</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基础基准版本 1.1.0</a></td>
-    <td class="tg-lboi"; width=55%>- 应修正容器安全配置中的漏洞<br>- 应修正计算机上安全配置中的漏洞<br>- 应修正虚拟机规模集上安全配置中的漏洞<br>- 应在虚拟机上安装监视代理<br>- 应在计算机上安装监视代理<br>- Log Analytics 代理应在基于 Windows 的 Azure Arc 计算机上安装 (预览版) <br>- Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上 (预览版) <br>- 应在虚拟机规模集上安装监视代理<br>- 应在计算机上解决监视代理运行状况问题</td>
+    <td class="tg-lboi"; width=55%>- 应修正容器安全配置中的漏洞<br>- 应修正计算机上安全配置中的漏洞<br>- 应修正虚拟机规模集上安全配置中的漏洞<br>- 应在虚拟机上安装监视代理<br>- 应在计算机上安装监视代理<br>- Log Analytics 代理应在基于 Windows 的 Azure Arc 计算机上安装 (预览版) <br>- Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上 (预览版) <br>- 应在虚拟机规模集上安装监视代理<br>- 应在计算机上解决监视代理运行状况问题<br>- 重写或禁用容器 AppArmor 配置文件应 (预览进行限制) <br>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序， (预览) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">限制未经授权的网络访问（最高 4 分）</p></strong>组织内的终结点提供从虚拟网络到受支持的 Azure 服务的直接连接。 子网中的虚拟机可以与所有资源通信。 若要限制与子网内资源的通信，请创建一个网络安全组并将其关联到子网。 组织可以通过创建入站和出站规则来限制和防范未经授权的流量。</td>
-    <td class="tg-lboi"; width=55%>- 应禁用虚拟机上的 IP 转发<br>- 应在 Kubernetes 服务上定义已授权 IP 范围(预览版)<br>- (已弃用)应限制对应用服务的访问(预览版)<br>- (已弃用)应加强 IaaS NSG 上 Web 应用程序的规则<br>- 虚拟机应与网络安全组关联<br>- CORS 不应允许所有资源都能访问 API 应用<br>- CORS 不应允许所有资源都能访问函数应用<br>- CORS 不应允许所有资源都能访问 Web 应用程序<br>- 应为 API 应用禁用远程调试<br>- 应为函数应用禁用远程调试<br>- 应为 Web 应用程序禁用远程调试<br>- 应限制许可网络安全组(包含面向 Internet 的 VM)的访问<br>- 应强化面向 Internet 的虚拟机的网络安全组规则</td>
+    <td class="tg-lboi"; width=55%>- 应禁用虚拟机上的 IP 转发<br>- 应在 Kubernetes 服务上定义已授权 IP 范围(预览版)<br>- (已弃用)应限制对应用服务的访问(预览版)<br>- (已弃用)应加强 IaaS NSG 上 Web 应用程序的规则<br>- 虚拟机应与网络安全组关联<br>- CORS 不应允许所有资源都能访问 API 应用<br>- CORS 不应允许所有资源都能访问函数应用<br>- CORS 不应允许所有资源都能访问 Web 应用程序<br>- 应为 API 应用禁用远程调试<br>- 应为函数应用禁用远程调试<br>- 应为 Web 应用程序禁用远程调试<br>- 应限制许可网络安全组(包含面向 Internet 的 VM)的访问<br>- 应强化面向 Internet 的虚拟机的网络安全组规则<br>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序， (预览) <br>- 容器只应侦听 (预览中允许的端口) <br>- 服务应仅在 (预览中侦听允许的端口) <br>- 应 (预览版限制主机网络和端口的使用) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">应用自适应应用程序控制（最高 3 分）</p></strong>自适应应用程序控制 (AAC) 是一种智能的、自动化的端到端解决方案，可用于控制哪些应用程序可以在 Azure 计算机和非 Azure 计算机上运行。 它还有助于强化计算机免受恶意软件的侵害。<br>安全中心使用机器学习为一组计算机创建一系列已知安全的应用程序。<br>经批准的应用程序列表的这一创新方法可提供安全优势，而无需管理复杂性。<br>AAC 尤其适用于需要运行一组特定应用程序的专用服务器。</td>
@@ -169,7 +168,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">保护应用程序免受 DDoS 攻击（最高 2 分）</p></strong>分布式拒绝服务 (DDoS) 攻击会使资源瘫痪，导致应用程序无法使用。 可使用 <a href="https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview">Azure DDoS 防护标准</a>保护组织免受三种主要的 DDoS 攻击：<br>- <strong>容量耗尽攻击</strong>利用合法流量淹没网络。 DDoS 防护标准通过自动吸收或清理来缓解这些攻击。<br>- <strong>协议攻击</strong>通过利用第 3 层和第 4 层协议堆栈中的漏洞，使目标无法访问。 DDoS 防护标准通过阻止恶意流量来缓解这些攻击。<br>- <strong>资源（应用程序）层攻击</strong>以 Web 应用程序数据包为目标。 可使用 Web 应用程序防火墙和 DDoS 防护标准来防御此类攻击。</td>
-    <td class="tg-lboi"; width=55%>- 应启用 DDoS 防护标准</td>
+    <td class="tg-lboi"; width=55%>- 应启用 DDoS 防护标准<br>- 应 (预览中强制容器 CPU 和内存限制) <br>- 应在群集上安装和启用适用于 Kubernetes 的 Azure 策略外接程序， (预览) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">启用 Endpoint Protection（最高 2 分）</p></strong>为确保终结点免受恶意软件的侵害，行为传感器会从终结点的操作系统收集数据并加以处理，然后将此数据发送到私有云进行分析。 安全分析利用大数据、机器学习和其他来源针对威胁提出响应建议。 例如，<a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection">Microsoft Defender ATP</a> 使用威胁情报来识别攻击方法并生成安全警报。<br>安全中心支持以下终结点保护解决方案：Windows Defender、System Center Endpoint Protection、Trend Micro、Symantec v12.1.1.1100、适用于 Windows 的 McAfee v10、适用于 Linux 的 McAfee v10 和适用于 Linux 的 Sophos v9。 如果安全中心检测到以上任一解决方案，则不再显示安装 Endpoint Protection 的建议。</td>
@@ -202,10 +201,10 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
 安全中心切换到了增强的安全评分，其中包括计算评分的方式的变化。 现在，必须解决某个资源的所有建议才能获得分数。 分数范围也变为 0-10。
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果仅处理某个安全控制四分之三的建议，安全评分是否会变化？
-否。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
+不是。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>是否仍然可以使用以前的安全评分体验？ 
-否。 在一段时间内，它们可以轻松地进行转换。 以前的模型现在已弃用。 
+不是。 在一段时间内，它们可以轻松地进行转换。 以前的模型现在已弃用。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果某个建议对我不适用，我在策略中禁用它，我能否达到安全控制的要求，我的安全评分是否会更新？
 是的。 如果建议不适用于你的环境，建议禁用它们。 有关如何禁用特定建议的说明，请参阅[禁用安全策略](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。

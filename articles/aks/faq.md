@@ -3,12 +3,12 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927141"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905336"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -79,7 +79,7 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>是否可以修改节点资源组中 AKS 资源的标记和其他属性？
 
-如果修改或删除节点资源组中 Azure 创建的标记和其他资源属性，可能会出现意外的结果，例如缩放和升级错误。 使用 AKS 可以创建和修改最终用户创建的自定义标记，还可以在[创建节点池](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)时添加这些标记。 例如，可以创建或修改标记，以分配业务单位或成本中心。 这还可以通过使用托管资源组上的作用域创建 Azure 策略来实现。
+如果修改或删除节点资源组中 Azure 创建的标记和其他资源属性，可能会出现意外的结果，例如缩放和升级错误。 使用 AKS 可以创建和修改最终用户创建的自定义标记，还可以在 [创建节点池](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)时添加这些标记。 例如，可以创建或修改标记，以分配业务单位或成本中心。 这也可以通过在托管资源组上创建具有作用域的 Azure 策略来实现。
 
 但是，在 AKS 群集中的节点资源组下修改任何 Azure 在资源中创建的标记是不受支持的操作，会中断服务级别目标 (SLO)。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
 
@@ -135,7 +135,7 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AKS 中使用的 VM 大小购买了 [Azure 预留][reservation-discounts]，这些折扣会自动应用。
 
-## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>是否可以在 Azure 租户之间移动/迁移群集？
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租户之间移动/迁移群集吗？
 
 当前不支持在租户之间移动 AKS 群集。
 
@@ -175,6 +175,10 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 请确认服务主体是否已过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)。
 
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>能否将 AKS 群集扩展为零？
+可以完全 [停止正在运行的 AKS 群集](start-stop-cluster.md)，并保存各自的计算成本。 此外，还可以选择 [缩放或自动缩放所有或特定的 `User` 节点池](scale-cluster.md#scale-user-node-pools-to-0) 为0，只维护必要的群集配置。
+不能直接将 [系统节点池](use-system-pools.md) 缩放为0。
+
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>是否可以使用虚拟机规模集 API 手动进行缩放？
 
 否。使用虚拟机规模集 API 进行的缩放操作不受支持。 请使用 AKS API (`az aks scale`)。
@@ -193,7 +197,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否将任何客户数据存储在群集区域之外？
 
-用于在单个区域中存储客户数据的功能当前仅在亚太地理 (新加坡) 的东南部区域提供。 对于所有其他区域，客户数据存储在异地。
+用于在单个区域中存储客户数据的功能当前仅在亚太地理 (新加坡) 的东南部区域提供。 对于其他所有区域，客户数据存储在以下地域。
 
 <!-- LINKS - internal -->
 

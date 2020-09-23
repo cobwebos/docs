@@ -11,22 +11,19 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 429471c2a24b90f14241bf54197c4baecb27e5c0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660429"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904938"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 本文介绍如何在不编写任何代码的情况下，在 Azure 机器学习工作室中创建、探索和部署自动化机器学习模型。
 
->[!IMPORTANT]
-> Azure 机器学习工作室中的自动化 ML 体验处于预览状态。 某些功能可能不受支持或者受限。
-
- 自动化机器学习是一个为你选择要用于特定数据的最佳机器学习算法的过程。 通过此过程可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
+自动化机器学习是一个为你选择要用于特定数据的最佳机器学习算法的过程。 通过此过程可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
  
 对于端到端示例，请试用[使用 Azure 机器学习的自动化 ML 界面创建分类模型教程](tutorial-first-experiment-automated-ml.md)。 
 
@@ -36,7 +33,7 @@ ms.locfileid: "89660429"
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-* **企业版**类型的 Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。  若要将现有的工作区升级到企业版，请参阅[升级到企业版](how-to-manage-workspace.md#upgrade)。
+* Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 
 
 ## <a name="get-started"></a>入门
 
@@ -159,13 +156,13 @@ ms.locfileid: "89660429"
 
 统计信息|说明
 ------|------
-功能| 正在汇总的列的名称。
+Feature| 正在汇总的列的名称。
 配置文件| 基于推理的类型显示的内联可视化效果。 例如，字符串、布尔值和日期包含值计数，而小数（数字）则包含近似的直方图。 这样，就可以快速了解数据的分布。
 类型分布| 列中类型的内联值计数。 Null 是其自身的类型，因此，此可视化效果可用于检测反常值或缺失值。
 类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
 Min| 列的最小值。 对于其类型不采用固有顺序（例如布尔值）的特征，将显示空白条目。
 Max| 列的最大值。 
-计数| 列中缺失和未缺失条目的总数。
+Count| 列中缺失和未缺失条目的总数。
 非缺失计数| 列中未缺失的条目数。 空字符串和误差被视为值，因此它们不会计入“未缺少计数”。
 分位数| 每个分位数中的近似值，用于提供数据分布的概观。
 平均值| 列的算术中间值或平均值。
@@ -186,7 +183,7 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 特征类型| 更改选定列的值类型。
 插补值| 选择数据中用于插补缺失值的值。
 
-![Azure 机器学习工作室任务类型窗体](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
+![Azure 机器学习 studio 自定义特征化](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>运行试验并查看结果
 

@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 73769a5f8a677f5e08610560db1e5d90dd5b7c3a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645608"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905119"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure 应用服务（预览版）
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 了解如何从 Azure 机器学习将模型部署为 Azure 应用服务中的 Web 应用。
 
@@ -54,7 +54,7 @@ ms.locfileid: "89645608"
 
 ## <a name="prepare-for-deployment"></a>准备部署
 
-在部署之前，必须确定将模型作为 Web 服务运行所需的内容。 以下列表描述了部署所需的基本项：
+在部署之前，必须确定将模型作为 Web 服务运行所需的内容。 以下列表描述了部署所需的主要项：
 
 * 一个入口脚本____。 此脚本接受请求，使用模型为请求评分并返回结果。
 

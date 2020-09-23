@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 006aab66eb220c3bb74794ba78bf1495583b653e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0dcede7e6c15fbc0bae39370431d14696cb4026e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648310"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905665"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure 机器学习部署现有模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何注册和部署在 Azure 机器学习外部训练的机器学习模型。 可以将其部署为 Web 服务或部署到 IoT Edge 设备。  部署后，可以在 Azure 机器学习中监视模型并检测数据偏移。 
 
@@ -274,7 +274,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 ## <a name="request-response-consumption"></a>请求-响应的使用
 
-部署完成后将显示评分 URI。 客户端可使用此 URI 将请求提交到服务。 以下示例是一个基本 Python 客户端，该客户端将数据提交到服务并显示响应：
+部署完成后将显示评分 URI。 客户端可使用此 URI 将请求提交到服务。 下面的示例是一个简单的 Python 客户端，它将数据提交到服务并显示响应：
 
 ```python
 import requests

@@ -1,7 +1,7 @@
 ---
 title: 部署 IPv6 双堆栈应用程序 - 基本负载均衡器 - CLI
 titlesuffix: Azure Virtual Network
-description: 本文介绍如何使用 Azure CLI 在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序。
+description: 了解如何使用 Azure CLI 通过基本负载均衡器部署双堆栈 (IPv4 + IPv6) 应用程序。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 885d36786c804de069a9d1e6ebf031e9ffc3d32a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2746397e2aa97f3c8c3b98d1c7be65b083dcc425
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086481"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983825"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>部署使用基本负载均衡器的 IPv6 双堆栈应用程序 - CLI
 

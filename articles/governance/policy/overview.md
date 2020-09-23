@@ -1,14 +1,14 @@
 ---
 title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
-ms.date: 06/17/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044186"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905960"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -18,8 +18,7 @@ Azure Policy 的常见用例包括实施监管来满足资源一致性、法规�
 
 ## <a name="overview"></a>概述
 
-Azure Policy 通过将 Azure 中资源的属性与业务规则进行比较，来评估这些资源。 以 [JSON 格式](./concepts/definition-structure.md)描述的这些业务规则称为[策略定义](#policy-definition)。 为了简化管理，可以组合多个业务规则来构成一个[策略计划](#initiative-definition)（有时称为“策略集”）。 构成业务规则后，策略定义或计划将[分配](#assignments)到 Azure 支持的任何资源范围，例如[管理组](../management-groups/overview.md)、订阅、[资源组](../../azure-resource-manager/management/overview.md#resource-groups)或单个资源。 分配会应用到该分配的[范围](../../azure-resource-manager/management/overview.md#understand-scope)内的所有资源。
-必要时可以排除子范围。
+Azure Policy 通过将 Azure 中资源的属性与业务规则进行比较，来评估这些资源。 以 [JSON 格式](./concepts/definition-structure.md)描述的这些业务规则称为[策略定义](#policy-definition)。 为了简化管理，可以组合多个业务规则来构成一个[策略计划](#initiative-definition)（有时称为“策略集”）。 构成业务规则后，策略定义或计划将[分配](#assignments)到 Azure 支持的任何资源范围，例如[管理组](../management-groups/overview.md)、订阅、[资源组](../../azure-resource-manager/management/overview.md#resource-groups)或单个资源。 分配应用于该分配的[资源管理器作用域](../../azure-resource-manager/management/overview.md#understand-scope)内的所有资源。 必要时可以排除子范围。 有关详细信息，请参阅 [Azure Policy 中的作用域](./concepts/scope.md)。
 
 Azure Policy 使用 [JSON 格式](./concepts/definition-structure.md)构成评估机制用来确定某个资源是否合规的逻辑。 定义包括元数据和策略规则。 定义的规则可以使用与所需方案完全匹配的函数、参数、逻辑运算符、条件和属性[别名](./concepts/definition-structure.md#aliases)。 策略规则确定要评估分配范围内的哪些资源。
 

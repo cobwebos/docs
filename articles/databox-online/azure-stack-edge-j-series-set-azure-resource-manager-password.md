@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge GPU 设备上设置 Azure 资源管理器密码
-description: 介绍如何使用 Azure PowerShell 连接到 Azure Stack Edge GPU 上运行的 Azure 资源管理器。
+title: 在 Azure Stack Edge Pro GPU 设备上设置 Azure 资源管理器密码
+description: 介绍如何使用 Azure PowerShell 连接到 Azure Stack Edge Pro GPU 上运行的 Azure 资源管理器。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a59510b342f7ebd3969a4bb4fcfd75fffd04804
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254145"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904493"
 ---
-# <a name="set-azure-resource-manager-password-on-azure-stack-edge-gpu-device"></a>在 Azure Stack Edge GPU 设备上设置 Azure 资源管理器密码
+# <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上设置 Azure 资源管理器密码
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -122,7 +122,7 @@ ms.locfileid: "89254145"
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    在 AzDataBoxEdgeUser cmdlet 中使用上述生成的安全字符串作为参数来重置密码。 使用创建 Azure Stack Edge/Data Box Gateway 资源时使用的同一资源组。
+    在 AzDataBoxEdgeUser cmdlet 中使用上述生成的安全字符串作为参数来重置密码。 使用创建 Azure Stack Edge Pro/Data Box Gateway 资源时使用的同一资源组。
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

@@ -1,14 +1,14 @@
 ---
 title: 还原 Azure VM 上的 SQL Server 数据库
-description: 本文介绍如何还原 Azure VM 上运行的、使用 Azure 备份服务备份的 SQL Server 数据库。
+description: 本文介绍如何还原 Azure VM 上运行的、使用 Azure 备份服务备份的 SQL Server 数据库。 你还可以使用跨区域还原将数据库还原到次要区域。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: afb3ef7ac1d161c073ef715a9f7b1ec83bd8410a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377975"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985434"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -23,14 +23,14 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 - 使用事务日志备份还原到特定的日期或时间（精确到秒）。 Azure 备份可自动确定相应的完整备份、差异备份和日志链备份，这些是根据所选时间进行还原所必需的。
 - 还原特定的完整备份或差异备份，这样就可以还原到特定的恢复点。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 在还原数据库之前，请注意以下事项：
 
 - 可将数据库还原到同一 Azure 区域中的 SQL Server 实例。
 - 目标服务器必须注册到与源服务器相同的保管库。
 - 若要将 TDE 加密的数据库还原到另一个 SQL Server，需先[将证书还原到目标服务器](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。
-- 应使用 "[还原为文件](#restore-as-files)" 选项还原已启用[CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15)的数据库。
+- 应使用 "[还原为文件](#restore-as-files)" 选项还原已启用[CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)的数据库。
 - 在还原“master”数据库之前，请使用启动选项 **-m AzureWorkloadBackup** 在单用户模式下启动 SQL Server 实例。
   - **-M**的值是客户端的名称。
   - 只能使用指定的客户端名称打开连接。
@@ -130,7 +130,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     >- 将备份保管库中的文件作为路径进行还原 `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
     可以从 [Sysinternals](/sysinternals/downloads/psexec) 页下载 PsExec。
 
-1. 选择“确定” 。
+1. 选择“确定”。
 
     ![选择“作为文件还原”](./media/backup-azure-sql-database/restore-as-files.png)
 
@@ -150,7 +150,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     ![打开日历](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. 选择日期后，时间线图会显示连续范围内的可用恢复点。
-1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择“确定”。
+1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择“确定”。 
 
 ### <a name="restore-to-a-specific-restore-point"></a>还原到特定还原点
 
@@ -168,6 +168,51 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 如果数据库中文件的总字符串大小超过 [特定限制](backup-sql-server-azure-troubleshoot.md#size-limit-for-files)，Azure 备份会将数据库文件的列表存储在不同的 pit 组件中，因此在还原操作过程中无法设置目标还原路径。 文件将还原到 SQL 默认路径。
 
   ![还原包含大文件的数据库](./media/backup-azure-sql-database/restore-large-files.jpg)
+
+## <a name="cross-region-restore"></a>跨区域还原
+
+作为还原选项之一，跨区域还原 (CRR) 使你可以还原托管在辅助区域中的 Azure Vm 上的 SQL 数据库，这是一个 Azure 配对区域。
+
+若要在预览版期间加入此功能，请阅读[“准备阶段”部分](./backup-create-rs-vault.md#set-cross-region-restore)。
+
+若要查看是否启用了 CRR，请按照[配置跨区域还原](backup-create-rs-vault.md#configure-cross-region-restore)中的说明进行操作
+
+### <a name="view-backup-items-in-secondary-region"></a>查看次要区域中的备份项
+
+如果启用了 CRR，则可以查看次要区域中的备份项。
+
+1. 从门户中转到 "**恢复服务保管库**  >  **备份项**"。
+1. 选择 **次要区域** ，查看次要区域中的项目。
+
+>[!NOTE]
+>只有支持 CRR 功能的备份管理类型才会显示在列表中。 目前，只允许将辅助区域数据还原到次要区域。
+
+![辅助区域中的备份项](./media/backup-azure-sql-database/backup-items-secondary-region.png)
+
+![辅助区域中的数据库](./media/backup-azure-sql-database/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>在次要区域中进行还原
+
+次要区域还原用户体验将类似于主要区域还原用户体验。 在 "还原配置" 窗格中配置详细信息以配置还原时，系统将提示您仅提供辅助区域参数。
+
+![在何处以及如何还原](./media/backup-azure-sql-database/restore-secondary-region.png)
+
+>[!NOTE]
+>次要区域中的虚拟网络需要单独分配，并且不能用于该资源组中的任何其他 Vm。
+
+![“正在触发还原”通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>- 触发还原并在数据传输阶段中，无法取消还原作业。
+>- 在次要区域中恢复所需的 Azure 角色与主要区域中的角色相同。
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>监视次要区域还原作业
+
+1. 在门户中，转到“恢复服务保管库” > “备份作业”**** ****
+1. 选择 **次要区域** ，查看次要区域中的项目。
+
+    ![筛选的备份作业](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>后续步骤
 
