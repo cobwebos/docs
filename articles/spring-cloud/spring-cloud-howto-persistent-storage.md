@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1ff09941d07ecd6d62483b1fca59c9003ddbd159
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9d769cb6e2cc33df259da46a82ad27a8bfd9e74b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496264"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888520"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中使用永久性存储
+
+**本文适用于：** ✔️ Java ✔️ C#
 
 Azure 春季云为应用程序提供了两种类型的存储：持久的和临时的。
 
@@ -30,23 +32,23 @@ Azure 春季云为应用程序提供了两种类型的存储：持久的和临�
 
 ## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>使用 Azure 门户启用持久存储
 
-1. 在 Azure 门户的**主页**中，选择 "**所有资源**"。
+1. 在 Azure 门户的 **主页** 中，选择 " **所有资源**"。
 
     >![查找 "所有资源" 图标](media/portal-all-resources.jpg)
 
-1. 选择需要永久存储的 Azure 春季云资源。 在此示例中，所选应用程序名为**upspring**。
+1. 选择需要永久存储的 Azure 春季云资源。 在此示例中，所选应用程序名为 **upspring**。
 
     > ![选择应用程序](media/select-service.jpg)
 
-1. 在 "**设置**" 标题下，选择 "**应用**"。
+1. 在 " **设置** " 标题下，选择 " **应用**"。
 
-1. Azure 春季云服务显示在表中。  选择要将持久存储添加到的服务。 在此示例中，选择了**网关**服务。
+1. Azure 春季云服务显示在表中。  选择要将持久存储添加到的服务。 在此示例中，选择了 **网关** 服务。
 
     > ![选择服务](media/select-gateway.jpg)
 
 1. 从服务的配置页中，选择 "**配置**"
 
-1. 选择 "**永久存储**" 选项卡，然后选择 "**启用**"。
+1. 选择 " **永久存储** " 选项卡，然后选择 " **启用**"。
 
     > ![启用持久性存储](media/enable-persistent-storage.jpg)
 
@@ -84,5 +86,5 @@ az extension add --name spring-cloud
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[应用程序和服务配额](spring-cloud-quotas.md)。
-* 了解如何[手动缩放应用程序](spring-cloud-tutorial-scale-manual.md)。
+* 了解 [应用程序和服务配额](spring-cloud-quotas.md)。
+* 了解如何 [手动缩放应用程序](spring-cloud-tutorial-scale-manual.md)。

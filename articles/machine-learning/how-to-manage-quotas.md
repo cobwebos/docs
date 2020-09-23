@@ -11,15 +11,15 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141119"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897422"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增加 Azure 机器学习资源的配额
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文将介绍 [Azure 机器学习](overview-what-is-azure-ml.md)订阅的针对 Azure 资源的预配置限制以及你可以管理的配额。 这些限制用于防止由于欺诈导致的预算超支，并且符合 Azure 容量限制。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "88141119"
 | 单个 Azure 机器学习计算 (AmlCompute) 资源中的最大节数点 | 100 个节点 |
 | 每个节点的最大 GPU MPI 进程数 | 1-4 |
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
-| 最长作业生存期 | 21天<sup>1</sup> |
+| 最长作业生存期 | 21 天<sup>1</sup> |
 | 低优先级节点上的最大作业生存期 | 7 天<sup>2</sup> |
 | 每个节点的最大参数服务器数 | 1 |
 
@@ -99,15 +99,13 @@ ms.locfileid: "88141119"
 
 
 > [!NOTE]
-> 这只是企业版功能。 如果订阅中有[基本版和企业版](overview-what-is-azure-ml.md#sku)工作区，则可以使用此方法仅对企业工作区设置配额。 基本工作区将继续具有订阅级别配额，这是默认行为。
->
 > 需要拥有订阅级别的权限才能在工作区级别设置配额。 这是一项强制性的要求，目的是避免单个工作区所有者编辑或提高其配额，然后开始侵占为其他工作区预留的资源。 因此，最适合由订阅管理员分配这些配额并将其分摊到各个工作区。
 
 
 
 ## <a name="view-your-usage-and-quotas"></a>查看使用情况和配额
 
-订阅上 Azure 机器学习的计算配额与其他 Azure 资源配额分开管理。 若要查看此配额，需要向下钻取到机器学习服务。  
+订阅中的 Azure 机器学习计算配额与其他 Azure 资源配额分开管理。 若要查看此配额，需要向下钻取到机器学习服务。  
 
 1. 在左窗格中，选择“机器学习服务”，然后从显示的列表中选择任何工作区。
 
@@ -126,7 +124,7 @@ ms.locfileid: "88141119"
 
 2. 从订阅列表中选择要查找其配额的订阅。
 
-3. 选择 "**使用情况 + 配额**" 以查看当前配额限制和使用情况。 使用筛选器选择提供程序和位置。 
+3. 选择“使用情况 + 配额”以查看当前的配额限制和使用情况。 使用筛选器选择提供者和位置。 
 
 ## <a name="request-quota-increases"></a>请求增加配额
 

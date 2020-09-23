@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 5d281bf33542354e2904805deed2f1deaf2725a2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 04c315f593b90204faaeaec562c18e9e4be301d8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875601"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90881893"
 ---
-# <a name="azure-synapse-analytics-output-from-azure-stream-analytics-preview"></a>Azure Synapse Analytics 从 Azure 流分析输出 (预览) 
+# <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure 流分析中的 azure Synapse Analytics 输出
 
 [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics)（旧称为 SQL 数据仓库）是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 
 
@@ -44,4 +44,4 @@ SQL 池表必须存在，然后才能将其作为输出添加到流分析作业�
 * [快速入门：使用 ARM 模板创建 Azure 流分析作业](quick-create-azure-resource-manager.md)
 * [快速入门：使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
 * [快速入门：使用 Visual Studio 创建 Azure 流分析作业](stream-analytics-quick-create-vs.md)
-* [快速入门：在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-vs-code.md)
+* [快速入门：在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-visual-studio-code.md)

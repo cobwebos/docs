@@ -8,22 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759200"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904094"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="spatial-analysis-container-preview"></a>空间分析容器预览版
+
+[空间分析容器](spatial-analysis-container.md)现处于预览版状态。 利用计算机视觉的空间分析功能，可以分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。 空间分析是可以在本地使用的一种 Docker 容器。 
+
+### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>读取 API v3.1 公共预览版添加了日语的 OCR
+计算机视觉的读取 API v3.1 公共预览版添加了以下功能：
+* 日语的 OCR
+* 对于每个文本行，指示呈现效果是手写体还是打印样式，并随附置信度评分（仅限拉丁语言）。
+* 对于多页文档，仅提取所选页面或页面范围的文本。
+
+* 此预览版本的读取 API 支持英语、荷兰语、法语、德语、意大利语、日语、葡萄牙语、简体中文和西班牙语。
+
+若要了解详细信息，请参阅[读取 API 概述](concept-recognizing-text.md)。
+
+> [!div class="nextstepaction"]
+> [详细了解读取 API v3.1 公共预览版 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
+
 ## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>读取 API v3.1 公共预览版添加了对简体中文的支持
+### <a name="read-api-v31-public-preview-with-ocr-for-simplified-chinese"></a>读取 API v3.1 公共预览版包含简体中文的 OCR
 计算机视觉的读取 API v3.1 公共预览版添加了对简体中文的支持。
 
 * 此预览版本的读取 API 支持英语、荷兰语、法语、德语、意大利语、葡萄牙语、简体中文和西班牙语。
@@ -31,7 +50,7 @@ ms.locfileid: "87759200"
 若要了解详细信息，请参阅[读取 API 概述](concept-recognizing-text.md)。
 
 > [!div class="nextstepaction"]
-> [详细了解读取 API v3.1 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [详细了解读取 API v3.1 公共预览版 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020 年 5 月
 计算机视觉 API v3.0 正式发布，并对[读取 API](concept-recognizing-text.md) 进行了更新：

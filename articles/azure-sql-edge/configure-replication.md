@@ -1,6 +1,6 @@
 ---
-title: 配置到 Azure SQL Edge（预览版）的复制
-description: 了解如何配置 Azure SQL Edge （预览版）的复制。
+title: 配置到 Azure SQL Edge 的复制
+description: 了解如何配置 Azure SQL Edge 复制。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282766"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888427"
 ---
-# <a name="configure-replication-to-azure-sql-edge-preview"></a>配置到 Azure SQL Edge（预览版）的复制 
+# <a name="configure-replication-to-azure-sql-edge"></a>配置到 Azure SQL Edge 的复制 
 
 可以将 Azure SQL Edge 的实例配置为推送订阅服务器，以便进行单向事务复制或快照复制。 此实例不能充当事务复制配置的发布服务器或分发服务器。 请注意，Azure SQL Edge 不支持合并复制、对等复制或 Oracle 发布。
 
@@ -30,13 +30,13 @@ ms.locfileid: "87282766"
 - 不能将分发数据库和复制代理放置在 Azure SQL Edge 的实例上。  
 
 > [!NOTE]
-> 如果尝试使用不受支持的版本配置复制，可能会收到以下两个错误： MSSQL_REPL20084 （"进程无法连接到订阅服务器。"）和 MSSQL_REPL40532 （"无法打开 \<name> 登录所请求的服务器。 登录失败。 "）。  
+> 如果尝试使用不受支持的版本配置复制，可能会收到以下两个错误： "进程无法连接到订阅服务器" MSSQL_REPL20084 (。) 和 MSSQL_REPL40532 ( "无法打开 \<name> 该登录请求的服务器。 登录失败。 ") 。  
 
 ## <a name="remarks"></a>备注
 
 在配置复制时，必须了解以下要求和最佳做法：
 
-- 您可以使用[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)配置复制。 还可以通过在发布服务器上运行 Transact-sql 语句来执行此操作，方法是使用 SQL Server Management Studio 或[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)。
+- 您可以使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)配置复制。 还可以通过在发布服务器上运行 Transact-sql 语句来执行此操作，方法是使用 SQL Server Management Studio 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)。
 - 若要复制到 Azure SQL Edge 的实例，必须使用 SQL Server 身份验证登录。
 - 复制的表必须有主键。
 - SQL Server 上的单一发布可以支持 Azure SQL Edge 和 SQL Server（本地 SQL Server 以及 Azure 虚拟机中的 SQL Server）订阅服务器。  
@@ -44,14 +44,14 @@ ms.locfileid: "87282766"
 - 仅支持推送 Azure SQL Edge 订阅。  
 - `@subscriber_type = 0`AZURE SQL Edge 的存储过程仅支持 `sp_addsubscription` 。  
 - Azure SQL Edge 不支持双向、即时、可更新或对等复制。
-- Azure SQL Edge 仅支持 SQL Server 或 SQL 托管实例中可用功能的子集。 如果尝试复制包含一个或多个不支持的功能的数据库（或数据库中的对象），则尝试将失败。 例如，如果尝试复制的数据库包含具有空间数据类型的对象，则会收到错误。 有关详细信息，请参阅[AZURE SQL Edge 支持的功能](features.md)。
+- Azure SQL Edge 仅支持 SQL Server 或 SQL 托管实例中可用功能的子集。 如果尝试将数据库 (或包含一个或多个不受支持的功能的数据库) 中的对象复制，则尝试将失败。 例如，如果尝试复制的数据库包含具有空间数据类型的对象，则会收到错误。 有关详细信息，请参阅 [AZURE SQL Edge 支持的功能](features.md)。
 
 ## <a name="initialize-reference-data-on-an-instance-of-azure-sql-edge"></a>在 Azure SQL Edge 的实例上初始化引用数据
 
 您可能想要用随时间变化的引用数据初始化实例。 例如，你可能想要在 Azure SQL Edge 的实例上更新机器学习模型，并在 SQL Server 实例上训练它们。 下面是在这种情况下初始化实例的方法：
 
 1. 在 SQL Server 数据库上创建事务复制发布。  
-2. 在 SQL Server 实例上，使用**新建订阅向导**或 transact-sql 语句来创建对 Azure SQL Edge 的订阅的推送。  
+2. 在 SQL Server 实例上，使用 **新建订阅向导** 或 transact-sql 语句来创建对 Azure SQL Edge 的订阅的推送。  
 3. 你可以使用快照代理生成的快照在 Azure SQL Edge 上初始化复制的数据库，并由分发代理分发和传递。 或者，您可以通过使用发布服务器上的数据库备份来进行初始化。 请记住，如果数据库备份包含 Azure SQL Edge 不支持的对象或功能，则还原操作将失败。
 
 ## <a name="limitations"></a>限制
@@ -83,14 +83,14 @@ Azure SQL Edge 订阅不支持以下选项：
 创建发布和推送订阅。 有关详细信息，请参阅：
   
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- 使用 Azure SQL Edge 服务器名称和 IP 作为订阅服务器（例如， **myEdgeinstance，1433**），并将 Azure sql edge 实例上的数据库名称用作目标数据库（例如**AdventureWorks**）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)。  
+- [Create a push subscription](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)使用 Azure sql edge 服务器名称和 IP 作为订阅服务器 (例如， **myEdgeinstance，1433**) ，并将 azure sql edge 实例上的数据库名称用作目标数据库 (例如， **AdventureWorks**) 。  
 
 ## <a name="next-steps"></a>后续步骤  
 
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [监视（复制）](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
+- [监视 (复制) ](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [初始化订阅](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
 
 

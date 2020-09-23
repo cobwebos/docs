@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: f8156b01244012d78214f2ba8c49ed76dbceed6d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eb5c4e4c4dfb73b2f7c9dc9f2629296790790885
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118777"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896137"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>使用 Azure 门户拒绝 Azure Database for MySQL 中的公共网络访问
 
@@ -29,18 +29,18 @@ ms.locfileid: "86118777"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择现有 Azure Database for MySQL 服务器。
 
-1. 在 "MySQL 服务器" 页上的 "**设置**" 下，单击 "**连接安全性**" 以打开 "连接安全配置" 页。
+1. 在 MySQL 服务器页上的“设置”下，单击“连接安全性”，打开连接安全性配置页 。
 
-1. 在 "**拒绝公共网络访问**" 中，选择 **"是"** 为你的 MySQL 服务器启用拒绝公共访问。
+1. 在 " **拒绝公共网络访问**" 中，选择 **"是"** 为你的 MySQL 服务器启用拒绝公共访问。
 
-    ![Azure Database for MySQL 拒绝网络访问](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG" alt-text="Azure Database for MySQL 拒绝网络访问":::
 
 1. 单击“保存”以保存更改。
 
-1. 通知会确认已成功启用连接安全设置。
+1. 此时将显示一则通知，确认已成功启用了连接安全性设置。
 
-    ![Azure Database for MySQL 拒绝网络访问成功](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png" alt-text="Azure Database for MySQL 拒绝网络访问成功":::
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何基于指标创建警报](howto-alert-on-metric.md)。
+了解 [如何创建有关指标的警报](howto-alert-on-metric.md)。

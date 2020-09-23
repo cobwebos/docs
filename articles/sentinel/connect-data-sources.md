@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 4618bb4ba65c48808bc738b51c90a6fd04f0eca3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659624"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895808"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -38,6 +38,7 @@ ms.locfileid: "89659624"
 
    ![连接器的后续步骤](./media/collect-data/data-insights.png)
  
+
 ## <a name="data-connection-methods"></a>数据连接方法
 
 Azure Sentinel 支持以下数据连接方法：
@@ -49,7 +50,7 @@ Azure Sentinel 支持以下数据连接方法：
     - [Azure AD 标识保护](connect-azure-ad-Identity-protection.md)
     - [Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure 高级威胁防护) 
     - [Azure 信息保护](connect-azure-information-protection.md)
-    - [Azure Defender](connect-azure-security-center.md) (以前的 Azure 安全中心) 
+    - [Azure 安全中心](connect-azure-security-center.md) -来自 azure Defender 解决方案的警报
     - [Cloud App Security](connect-cloud-app-security.md)
     - [域名服务器](connect-dns.md)
     - [Office 365](connect-office-365.md)
@@ -135,7 +136,7 @@ Azure Sentinel 支持以下数据连接方法：
 | WindowsFirewall | [连接 Windows 防火墙](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [连接 Azure AD 标识保护](connect-azure-ad-identity-protection.md)  | &#10003; | |
 | AATP SecurityAlert  | [将 Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure ATP)  | &#10003; | |
-| ASC SecurityAlert  | [将 Azure Defender](connect-azure-security-center.md) (以前的 Azure 安全中心连接)   | &#10003; | |
+| ASC SecurityAlert  | 从 Azure 安全中心[连接 Azure Defender 警报](connect-azure-security-center.md)  | &#10003; | |
 | MCAS SecurityAlert  | [连接 Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon（事件） | [连接 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [连接 Windows 事件](../azure-monitor/platform/data-sources-windows-events.md) <br> [获取 Sysmon 分析程序](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 默认情况下，虚拟机上未安装 Sysmon 集合。 有关如何安装 Sysmon 代理的详细信息，请参阅 [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon)。 |

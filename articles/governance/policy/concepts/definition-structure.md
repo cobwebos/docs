@@ -1,14 +1,14 @@
 ---
 title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81e08e07236d445a4ca351a7d93e7851cad69ace
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648723"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895372"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -206,8 +206,10 @@ strongType 的非资源类型允许值包括：
 
 如果定义位置是：
 
-- **订阅** - 只能将该订阅中的资源分配给策略。
-- **管理组** - 只能将子管理组和子订阅中的资源分配给策略。 如果计划将策略定义应用于多个订阅，则位置必须是包含订阅的管理组。
+- 只能**为订阅中**的资源分配策略定义。
+- 仅限**管理组**-可以为子管理组和子订阅中的资源分配策略定义。 如果计划将策略定义应用于多个订阅，则该位置必须是包含每个订阅的管理组。
+
+有关详细信息，请参阅 [了解 Azure 策略中的作用域](./scope.md#definition-location)。
 
 ## <a name="policy-rule"></a>策略规则
 
@@ -430,7 +432,7 @@ strongType 的非资源类型允许值包括：
 
 使用修订后的策略规则，`if()` 会先检查名称的长度，然后尝试在少于三个字符的值上获取 `substring()`。 如果名称太短，则会改为返回“不是以 abc 开头”的值，并将其与 abc 进行比较。 短名称不是以 abc 开头的资源仍会导致策略规则失败，但在评估过程中不会再造成错误。
 
-### <a name="count"></a>计数
+### <a name="count"></a>Count
 
 计算资源有效负载中陈列有多少成员符合条件表达式的条件，可以使用 Count 表达式来构成。 常见的方案是检查“其中至少一个”、“只有一个”、“全部”或“没有”数组成员符合条件。 Count 会计算条件表达式每个 [\[\*\] 别名](#understanding-the--alias)数组成员，并加总 true 结果，然后将结果与表达式运算符进行比较。 “Count”表达式最多可添加到单个 policyRule 定义 3 次 。
 
@@ -576,16 +578,16 @@ Azure Policy 支持以下类型的效果：
 以下函数可在策略规则中使用，但与在 Azure 资源管理器模板（ARM 模板）中使用不同：
 
 - `utcNow()` - 与 ARM 模板不同，该属性可以在 defaultValue 之外使用。
-  - 以通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”返回一个设置为当前日期和时间的字符串
+  - 返回一个字符串，该字符串设置为采用通用 ISO 8601 DateTime 格式的当前日期和时间 `yyyy-MM-ddTHH:mm:ss.fffffffZ` 。
 
 以下函数仅适用于策略规则：
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - dateTime：[必需] 字符串 - 通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”的字符串
-  - numberOfDaysToAdd：[必需] 整数 - 要增加的天数
+  - **dateTime**： [Required] 采用通用 ISO 8601 dateTime 格式的字符串字符串 `yyyy-MM-ddTHH:mm:ss.fffffffZ` 。
+  - **numberOfDaysToAdd**： [必需] 要添加的星期数。
 - `field(fieldName)`
   - fieldName：[必需] 字符串 - 要检索的[字段](#fields)名称
-  - 从 If 条件计算的资源中返回该字段的值
+  - 返回由 If 条件计算的资源中该字段的值。
   - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 - `requestContext().apiVersion`
   - 返回已触发策略评估的请求的 API 版本（示例：`2019-09-01`）。

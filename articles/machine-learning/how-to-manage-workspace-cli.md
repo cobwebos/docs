@@ -10,15 +10,15 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cd9b891212010d7e61c4a4eb64d8bf0660bbd69a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661634"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897343"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 本文介绍如何使用 Azure CLI 创建 Azure 机器学习工作区。 Azure CLI 提供用于管理 Azure 资源的命令。 CLI 的机器学习扩展提供用于处理 Azure 机器学习资源的命令。
 
@@ -35,7 +35,7 @@ ms.locfileid: "89661634"
 > [!IMPORTANT]
 > 如果使用的是 Azure Cloud Shell，可跳过此部分。 Cloud Shell 会使用你登录 Azure 订阅所用的帐户自动对你进行身份验证。
 
-可使用多种方法通过 CLI 对 Azure 订阅进行身份验证。 最基本的方法是使用浏览器进行交互式身份验证。 若要以交互方式进行身份验证，请打开命令行或终端，然后使用以下命令：
+可使用多种方法通过 CLI 对 Azure 订阅进行身份验证。 最简单的方法是使用浏览器进行交互式身份验证。 若要以交互方式进行身份验证，请打开命令行或终端，然后使用以下命令：
 
 ```azurecli-interactive
 az login
@@ -109,9 +109,6 @@ az group create --name <resource-group-name> --location <location>
 
 若要创建将在其中自动创建服务的新工作区，请使用以下命令：
 
-> [!TIP]
-> 本部分中的命令创建一个基本版工作区。 若要创建企业版工作区，请在 `az ml workspace create` 命令中使用 `--sku enterprise` 开关。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
-
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
@@ -153,7 +150,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 * `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
 * `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
-* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
+* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
 
 有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 
@@ -161,7 +158,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 默认情况下，工作区的指标和元数据存储在 Microsoft 维护的 Azure Cosmos DB 实例中。 此数据使用 Microsoft 托管的密钥进行加密。 
 
-如果正在创建 Azure 机器学习的 __企业__ 版，则可以使用提供自己的密钥。 这样做会创建在 Azure 订阅中存储指标和元数据的 Azure Cosmos DB 实例。 使用 `--cmk-keyvault` 参数指定包含密钥的 Azure Key Vault，并 `--resource-cmk-uri` 指定保管库中密钥的 URL。
+你可以使用 "提供你自己的密钥"，而不是使用 Microsoft 托管密钥。 这样做会创建在 Azure 订阅中存储指标和元数据的 Azure Cosmos DB 实例。 使用 `--cmk-keyvault` 参数指定包含密钥的 Azure Key Vault，并 `--resource-cmk-uri` 指定保管库中密钥的 URL。
 
 > [!IMPORTANT]
 > 使用 `--cmk-keyvault` 和参数之前 `--resource-cmk-uri` ，必须先执行以下操作：

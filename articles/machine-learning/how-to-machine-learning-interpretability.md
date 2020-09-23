@@ -11,15 +11,15 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d30fe5f8adccba81baf8bfe1070f95a890d1dc7a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649434"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897438"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>模型 interpretability Azure 机器学习 (预览版) 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 ## <a name="overview-of-model-interpretability"></a>模型可解释性概述
 

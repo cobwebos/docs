@@ -10,15 +10,15 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 808f71ae138922b93e3742f7ff2f526e419cf58c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645881"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897496"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在 Application Insights 中收集用于警报和调试的机器学习管道日志文件
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 可以通过脚本使用 [OpenCensus](https://opencensus.io/quickstart/python/) Python 库将日志路由到 Application Insights。 在一个位置聚合管道运行发出的日志可以生成查询和诊断问题。 使用 Application Insights 可以跟踪一段时间内的日志，并比较各个运行的管道日志。
 

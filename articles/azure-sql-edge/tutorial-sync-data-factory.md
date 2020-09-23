@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂从 Azure SQL Edge（预览）同步数据
-description: 了解如何在 Azure SQL Edge（预览）与 Azure Blob 存储之间同步数据
+title: 使用 Azure 数据工厂从 Azure SQL Edge 同步数据
+description: 了解如何在 Azure SQL Edge 与 Azure Blob 存储之间同步数据
 keywords: SQL Edge, 从 SQL Edge 同步数据, SQL Edge 数据工厂
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255426"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904162"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>教程：使用 Azure 数据工厂将数据从 SQL Edge 同步到 Azure Blob 存储
 

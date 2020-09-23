@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070490"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967467"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
 
-Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 你还可以选择使用客户管理的密钥来加密队列或表数据。 若要对队列和表使用客户托管的密钥，必须首先创建一个存储帐户，该帐户使用范围限定为帐户的加密密钥，而不是使用服务。 创建使用帐户加密密钥作为队列和表数据的帐户后，可以使用该存储帐户的 Azure Key Vault 来配置客户管理的密钥。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 你还可以选择使用客户管理的密钥来加密队列或表数据。 若要对队列和表使用客户托管的密钥，必须首先创建一个存储帐户，该帐户使用范围限定为帐户的加密密钥，而不是使用服务。 在创建了使用帐户加密密钥作为队列和表数据的帐户后，可以为该存储帐户配置客户管理的密钥。
 
 本文介绍如何创建一个存储帐户，该帐户依赖于该帐户的作用域。 首次创建帐户时，Microsoft 使用帐户密钥对帐户中的数据进行加密，而 Microsoft 管理密钥。 接下来，你可以为帐户配置客户管理的密钥，以利用这些权益，包括提供你自己的密钥、更新密钥版本、轮换密钥和吊销访问控制。
 
@@ -215,11 +215,7 @@ az storage account create \
 
 ---
 
-创建了依赖于帐户加密密钥的帐户后，请参阅以下文章之一，使用 Azure Key Vault 配置客户托管的密钥：
-
-- [通过 Azure 门户使用 Azure Key Vault 配置客户管理的密钥](storage-encryption-keys-portal.md)
-- [通过 PowerShell 使用 Azure Key Vault 配置客户管理的密钥](storage-encryption-keys-powershell.md)
-- [通过 Azure CLI 使用 Azure Key Vault 配置客户管理的密钥](storage-encryption-keys-cli.md)
+创建了依赖于帐户加密密钥的帐户之后，可以配置 Azure Key Vault 中或 Key Vault 托管硬件安全模型中存储的客户托管的密钥， (HSM)  (预览版) 。 若要了解如何将客户托管的密钥存储在密钥保管库中，请参阅 [使用 Azure Key Vault 中存储的客户托管密钥配置加密](customer-managed-keys-configure-key-vault.md)。 若要了解如何在托管 HSM 中存储客户管理的密钥，请参阅 [使用 Azure Key Vault 托管 hsm (预览版) 中存储的客户托管密钥配置加密 ](customer-managed-keys-configure-key-vault-hsm.md)。
 
 ## <a name="verify-the-account-encryption-key"></a>验证帐户加密密钥
 
@@ -254,5 +250,6 @@ az storage account show /
 
 ## <a name="next-steps"></a>后续步骤
 
-- [静态数据的 Azure 存储加密](storage-service-encryption.md) 
+- [静态数据的 Azure 存储加密](storage-service-encryption.md)
+- [用于 Azure 存储加密的客户托管密钥](customer-managed-keys-overview.md)
 - [什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

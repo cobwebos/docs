@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299501"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904286"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>使用 Azure Spring Boot Actuator 管理和监视应用
 
+**本文适用于：** ✔️ Java
+
 将新的二进制文件部署到应用后，可能需要检查功能并查看有关正在运行的应用程序的信息。 本文介绍如何从 Azure 春季云中提供的测试终结点访问 API，并公开应用的生产就绪功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 本文假设你有一个春季 Boot 2.x 应用程序，该应用程序可以在 Azure 春季云服务上成功部署和启动。  请参阅 [快速入门：使用 Azure 门户启动现有的 Azure 春季云应用程序](spring-cloud-quickstart.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>通过测试终结点验证应用
@@ -73,5 +75,7 @@ ms.locfileid: "89299501"
 若要查看内置的所有终结点，请参阅 [公开终结点](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints)
 
 ## <a name="next-steps"></a>后续步骤
+
 * [了解 Azure 春季云的指标](spring-cloud-concept-metrics.md)
-* [了解 Azure 春季云中的应用状态](spring-cloud-concept-app-status.md)) 
+* [了解 Azure Spring Cloud 中的应用状态](spring-cloud-concept-app-status.md)
+
