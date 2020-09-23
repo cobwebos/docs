@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Stack Edge GPU 传输要共享的数据 | Microsoft Docs
-description: 了解如何在 Azure Stack Edge GPU 设备上添加共享并与其连接。
+title: 教程：使用 Azure Stack Edge Pro GPU 传输要共享的数据 | Microsoft Docs
+description: 了解如何在 Azure Stack Edge Pro GPU 设备上添加共享并与其连接。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4d7453ba34a7bc1dd26d0201f604c9028974c1a2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 3c0a72c9daa72cffcfe2e5e45bbb6214a13e0a7f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268921"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891100"
 ---
-# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-gpu"></a>教程：使用 Azure Stack Edge GPU 通过共享传输数据
+# <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教程：使用 Azure Stack Edge Pro GPU 通过共享传输数据
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文介绍如何在 Azure Stack Edge 设备上添加共享并与其连接。 添加共享后，Azure Stack Edge 可将数据传输到 Azure。
+本教程介绍如何在 Azure Stack Edge Pro 设备上添加共享并与其连接。 添加共享后，Azure Stack Edge Pro 可将数据传输到 Azure。
 
 此过程可能需要大约 10 分钟来完成。
 
@@ -33,11 +33,11 @@ ms.locfileid: "89268921"
 
 ## <a name="prerequisites"></a>先决条件
 
-在向 Azure Stack Edge 添加共享之前，请确保：
+在向 Azure Stack Edge Pro 添加共享之前，请确保：
 
-* 已按照[安装 Azure Stack Edge](azure-stack-edge-gpu-deploy-install.md) 中所述安装物理设备。
+* 已按照[安装 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) 中所述安装物理设备。
 
-* 已按照[激活 Azure Stack Edge](azure-stack-edge-gpu-deploy-activate.md) 中所述激活物理设备。
+* 已按照[激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中所述激活物理设备。
 
 ## <a name="add-a-share"></a>添加共享
 
@@ -66,7 +66,7 @@ ms.locfileid: "89268921"
     所选服务类型取决于数据需要在 Azure 中采用何种格式。 在此示例中，我们希望数据以块 Blob 的形式存储在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，请确保数据按 512 字节对齐。  例如，VHDX 始终按 512 字节对齐。
 
    > [!IMPORTANT]
-   > 确保所用的 Azure 存储帐户没有设置不可变策略（如果要将它用于 Azure Stack Edge 或 Data Box Gateway 设备）。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
     e. 创建新的 Blob 容器，或使用下拉列表中的现有容器。 如果创建 Blob 容器，请提供容器名称。 如果容器尚不存在，系统会使用新创建的共享名称在存储帐户中创建一个容器。
    
@@ -120,7 +120,7 @@ ms.locfileid: "89268921"
 
 ### <a name="connect-to-an-smb-share"></a>连接到 SMB 共享
 
-在连接到 Azure Stack Edge 设备的 Windows Server 客户端上输入以下命令，以便连接到 SMB 共享：
+在连接到 Azure Stack Edge Pro 设备的 Windows Server 客户端上输入以下命令，以便连接到 SMB 共享：
 
 
 1. 在命令窗口中键入以下命令：
@@ -158,7 +158,7 @@ ms.locfileid: "89268921"
 
 ### <a name="connect-to-an-nfs-share"></a>连接到 NFS 共享
 
-在连接到 Azure Stack Edge 设备的 Linux 客户端上，执行以下过程：
+在连接到 Azure Stack Edge Pro 设备的 Linux 客户端上，执行以下过程：
 
 1. 确保此客户端已安装 NFSv4 客户端。 若要安装 NFS 客户端，请使用以下命令：
 
@@ -166,7 +166,7 @@ ms.locfileid: "89268921"
 
     有关详细信息，请转到[安装 NFSv4 客户端](https://help.ubuntu.com/community/NFSv4Howto)。
 
-2. 安装 NFS 客户端后，使用以下命令将创建的 NFS 共享装载到 Azure Stack Edge 设备上：
+2. 安装 NFS 客户端后，使用以下命令将创建的 NFS 共享装载到 Azure Stack Edge Pro 设备上：
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
 
@@ -176,7 +176,7 @@ ms.locfileid: "89268921"
     > 在装载共享时使用 `sync` 选项可以改进大文件的传输速率。
     > 装载共享之前，请确保已创建要在本地计算机上充当装入点的目录。 这些目录不应包含任何文件或子文件夹。
 
-    以下示例演示如何通过 NFS 连接到 Azure Stack Edge 设备上的共享。 设备 IP 为 `10.10.10.60`。 共享 `mylinuxshare2` 装载在 ubuntuVM 上。 共享装入点为 `/home/azurestackedgeubuntuhost/edge`。
+    以下示例演示如何通过 NFS 连接到 Azure Stack Edge Pro 设备上的共享。 设备 IP 为 `10.10.10.60`。 共享 `mylinuxshare2` 装载在 ubuntuVM 上。 共享装入点为 `/home/azurestackedgeubuntuhost/edge`。
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/azurestackedgeubuntuhost/Edge`
 
@@ -188,15 +188,15 @@ ms.locfileid: "89268921"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下 Azure Stack Edge 主题：
+本教程介绍了以下 Azure Stack Edge Pro 主题：
 
 > [!div class="checklist"]
 > * 添加共享
 > * 连接到共享
 
-若要了解如何使用 Azure Stack Edge 转换数据，请继续学习下一教程：
+若要了解如何使用 Azure Stack Edge Pro 转换数据，请继续学习下一教程：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Stack Edge 转换数据](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [使用 Azure Stack Edge Pro 转换数据](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

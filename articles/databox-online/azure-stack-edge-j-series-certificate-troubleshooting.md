@@ -1,6 +1,6 @@
 ---
-title: 带有 GPU 的 Azure Stack 边缘的证书疑难解答 |Microsoft Docs
-description: 介绍如何排查 Azure Stack Edge GPU 设备的证书错误。
+title: 通过带 GPU Azure Stack Edge Pro 的证书疑难解答 |Microsoft Docs
+description: 介绍如何排查 Azure Stack Edge Pro GPU 设备的证书错误。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891326"
 ---
 # <a name="troubleshooting-certificate-errors"></a>证书错误疑难解答
 
-本文提供在将证书安装到 Azure Stack Edge 设备时常见证书错误的疑难解答。
+本文提供在将证书安装到 Azure Stack Edge Pro 设备时常见证书错误的疑难解答。
 
 ## <a name="common-certificate-errors"></a>常见证书错误
 

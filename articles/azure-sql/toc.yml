@@ -51,8 +51,8 @@
               href: database/security-baseline.md
             - name: 安全属性
               href: database/security-controls.md
-            - name: 高级数据安全
-              href: database/advanced-data-security.md
+            - name: Azure Defender for SQL
+              href: database/azure-defender-for-sql.md
             - name: 高级威胁防护
               href: database/threat-detection-overview.md
             - name: 数据发现和分类
@@ -712,6 +712,10 @@
           items:
             - name: 概述
               href: managed-instance/management-operations-overview.md
+            - name: 监视操作
+              href: managed-instance/management-operations-monitor.md
+            - name: 取消操作
+              href: managed-instance/management-operations-cancel.md
             - name: API 参考
               href: managed-instance/api-references-create-manage-instance.md
         - name: 机器学习服务

@@ -1,6 +1,6 @@
 ---
-title: 教程：安装 Azure Stack Edge 物理设备（拆包、装机和布线）| Microsoft Docs
-description: 有关 Azure Stack Edge 安装的第二篇教程涉及物理设备的拆包、装机和布线。
+title: 教程：安装 Azure Stack Edge Pro 物理设备（拆包、装机和布线）| Microsoft Docs
+description: 有关 Azure Stack Edge Pro 安装的第二篇教程，涉及物理设备的拆包、装机和布线。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 429fe0c4db4a7825a6a98aa5d2cd6af609a34a61
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564985"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894198"
 ---
-# <a name="tutorial-install-azure-stack-edge"></a>教程：安装 Azure Stack Edge
+# <a name="tutorial-install-azure-stack-edge-pro"></a>教程：安装 Azure Stack Edge Pro
 
-本教程介绍如何安装 Azure Stack Edge 物理设备。 安装过程包括设备的拆包、装机和布线。 
+本教程介绍如何安装 Azure Stack Edge Pro 物理设备。 安装过程包括设备的拆包、装机和布线。 
 
 安装可能需要大约两小时才能完成。
 
@@ -37,12 +37,12 @@ ms.locfileid: "82564985"
 
 在开始之前，请确保：
 
-* 已完成[准备部署 Azure Stack Edge](azure-stack-edge-deploy-prep.md) 中的所有步骤。
+* 已完成[准备部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md) 中的所有步骤。
     * 已创建用于部署设备的 Azure Stack Edge 资源。
     * 已生成用于通过 Azure Stack Edge 资源激活设备的激活密钥。
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>对于 Azure Stack Edge 物理设备
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>对于 Azure Stack Edge Pro 物理设备
 
 在部署设备之前：
 
@@ -58,7 +58,7 @@ ms.locfileid: "82564985"
 
 开始之前：
 
-- 查看部署 Azure Stack Edge 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Azure Stack Edge 网络要求](azure-stack-edge-system-requirements.md#networking-port-requirements)。
+- 查看部署 Azure Stack Edge Pro 的网络要求，并根据要求配置数据中心网络。 有关详细信息，请参阅 [Azure Stack Edge Pro 网络要求](azure-stack-edge-system-requirements.md#networking-port-requirements)。
 
 - 请确保最小 Internet 带宽为 20 Mbps，以便实现设备的理想运行。
 
@@ -70,12 +70,12 @@ ms.locfileid: "82564985"
 1. 将箱子放在平坦的水平表面上。
 2. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开包装。 请联系 Microsoft 支持部门，帮助你评估设备是否处于良好的工作状态。
 3. 打开箱子。 打开包装箱后，请确保有：
-    - 一个单机箱 Azure Stack Edge 设备
+    - 一个单机箱 Azure Stack Edge Pro 设备
     - 两根电源线
     - 一个导轨套装件
     - 一本“安全、环保和法规信息”小册子
 
-如果上述任一部件缺失，请联系 Azure Stack Edge 支持部门。 接下来是安装设备的机架。
+如果上述任一部件缺失，请联系 Azure Stack Edge Pro 支持部门。 接下来是安装设备的机架。
 
 
 ## <a name="rack-the-device"></a>将设备装入机架
@@ -83,7 +83,7 @@ ms.locfileid: "82564985"
 必须在标准的 19 英寸机架上安装设备。 使用以下过程将设备安装在标准的 19 英寸机架中。
 
 > [!IMPORTANT]
-> Azure Stack Edge 设备必须安装在机架中才能正常工作。
+> Azure Stack Edge Pro 设备必须安装在机架中才能正常工作。
 
 
 ### <a name="prerequisites"></a>先决条件
@@ -157,11 +157,11 @@ ms.locfileid: "82564985"
 
 ## <a name="cable-the-device"></a>为设备布线
 
-敷设电缆，然后将电缆连接到设备。 以下过程说明如何为 Azure Stack Edge 设备排布电源线和网线。
+敷设电缆，然后将电缆连接到设备。 以下过程说明如何为 Azure Stack Edge Pro 设备排布电源线和网线。
 
 在开始为设备布线之前，需要符合以下先决条件：
 
-- 已拆包并装入机架的 Azure Stack Edge 物理设备。
+- 已拆包并装入机架的 Azure Stack Edge Pro 物理设备。
 - 两根电源线。
 - 至少一根用于连接管理接口的 1-GbE RJ-45 网线。 设备上有两个 1-GbE 网络接口：一个用于管理，一个用于数据。
 - 一根 25-GbE SFP+ 铜缆用于配置每个数据网络接口。 至少需要将一个数据网络接口（端口 2、端口 3、端口 4、端口 5 或端口 6）连接到 Internet（在连接到 Azure 的情况下）。  
@@ -170,9 +170,9 @@ ms.locfileid: "82564985"
 > [!NOTE]
 > - 如果仅连接一个数据网络接口，我们建议使用 25/10-GbE 网络接口（例如端口 3、端口 4、端口 5 或端口 6）将数据发送到 Azure。 
 > - 为获得最佳性能并处理大量数据，请考虑连接所有数据端口。
-> - Azure Stack Edge 设备应连接到数据中心网络，这样才能从数据源服务器引入数据。
+> - Azure Stack Edge Pro 设备应连接到数据中心网络，这样才能从数据源服务器引入数据。
 
-在 Azure Stack Edge 设备上：
+在 Azure Stack Edge Pro 设备上：
 
 - 前面板有磁盘驱动器和电源按钮。
 
@@ -213,7 +213,7 @@ ms.locfileid: "82564985"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了 Azure Stack Edge 主题，例如如何执行以下操作：
+本教程介绍了 Azure Stack Edge Pro 主题，例如如何执行以下操作：
 
 > [!div class="checklist"]
 > * 拆开设备包装
@@ -223,4 +223,4 @@ ms.locfileid: "82564985"
 请继续学习下一教程，了解如何连接、设置和激活设备。
 
 > [!div class="nextstepaction"]
-> [连接并设置 Azure Stack Edge](./azure-stack-edge-deploy-connect-setup-activate.md)
+> [连接并设置 Azure Stack Edge Pro](./azure-stack-edge-deploy-connect-setup-activate.md)

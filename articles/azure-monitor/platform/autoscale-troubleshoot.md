@@ -4,12 +4,12 @@ description: 追查到 Service Fabric、虚拟机、Web 应用和云服务中使
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751336"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979045"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>排查 Azure 自动缩放问题
  
@@ -47,7 +47,7 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
 
 让我们查看自动缩放服务提供的指标。
  
-![虚拟机规模集 CPU 利用率百分比示例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![屏幕截图显示了虚拟机规模集百分比 CPU 示例。](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![虚拟机规模集 CPU 利用率百分比示例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
@@ -72,7 +72,7 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
 
 在这种情况下，自动缩放引擎的“观察到的指标值”的计算方式是将实际指标值除以实例数。 如果观察到的指标值小于阈值，则不启动横向扩展操作。 
  
-![虚拟机规模集自动缩放指标图表示例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![屏幕截图显示 "平均出站流" 页，其中包含虚拟机规模集自动缩放指标图表的示例。](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![虚拟机规模集自动缩放指标图表示例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 

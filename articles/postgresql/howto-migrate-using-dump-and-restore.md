@@ -5,15 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/24/2019
-ms.openlocfilehash: b7ecdd110458c64be9890762d515ecebe3d67acd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/22/2020
+ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112351"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902666"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原迁移 PostgreSQL 数据库
+[!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
+
 可以使用 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 将 PostgreSQL 数据库提取到转储文件，并使用 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 从 pg_dump 创建的存档文件中还原 PostgreSQL 数据库。
 
 ## <a name="prerequisites"></a>先决条件
@@ -37,8 +39,9 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb
 ## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>使用 pg_restore 将数据还原到目标 Azure Database for PostgreSQL
 创建目标数据库后，可以使用 pg_restore 命令和 -d、--dbname 参数将数据从转储文件还原到目标数据库。
 ```bash
-pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
+pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user-name> --dbname=<target database name> <database>.dump
 ```
+
 包括 --no-owner 参数会导致还原过程中创建的所有对象由使用 --username 指定的用户拥有。 有关详细信息，请参阅有关 [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) 的正式 PostgreSQL 文档。
 
 > [!NOTE]
@@ -47,10 +50,19 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 > 在 Windows 命令行中，在运行 pg_restore 命令之前运行命令 `SET PGSSLMODE=require`。 在 Linux 或 Bash 中，在运行 pg_restore 命令之前运行命令 `export PGSSLMODE=require`。
 >
 
-在此示例中，将数据从转储文件 **testdb.dump** 还原到目标服务器 **mydemoserver.postgres.database.azure.com** 上的数据库 **mypgsqldb**。 
+在此示例中，将数据从转储文件 **testdb.dump** 还原到目标服务器 **mydemoserver.postgres.database.azure.com** 上的数据库 **mypgsqldb**。
+
+下面是有关如何将此 **pg_restore** 用于 **单一服务器**的示例：
+
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
+下面是有关如何将此 **pg_restore** 用于 **灵活的服务器**的示例：
+
+```bash
+pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin --dbname=mypgsqldb testdb.dump
+```
+---
 
 ## <a name="optimizing-the-migration-process"></a>优化迁移过程
 
@@ -63,8 +75,8 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 ### <a name="for-the-backup"></a>对于备份
 - 使用 -Fc 交换机进行备份，以便能够并行执行还原以提高速度。 例如：
 
-    ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
+    ```bash
+    pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databasename -f Z:\Data\Backups\my-database-backup.dump
     ```
 
 ### <a name="for-the-restore"></a>对于还原
@@ -74,16 +86,21 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - 使用 -Fc 和 -j *#* 交换机进行并行还原。 *#* 是目标服务器上的内核数。 你还可以尝试将 *#* 设置为目标服务器内核数的两倍，以查看产生的影响。 例如：
 
-    ```
-    pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
-    ```
+下面是有关如何将此 **pg_restore** 用于 **单一服务器**的示例：
+```bash
+ pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
+```
+下面是有关如何将此 **pg_restore** 用于 **灵活的服务器**的示例：
+```bash
+ pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
+ ```
 
 - 此外，还可以通过在开头添加 *set synchronous_commit = off;* 命令并在末尾添加 *set synchronous_commit = on;* 命令来编辑转储文件。 如果在应用更改数据之前未在末尾打开该功能，可能会导致随后的数据丢失。
 
 - 在目标 Azure Database for PostgreSQL 服务器上，请考虑在还原之前执行以下操作：
     - 关闭查询性能跟踪，因为迁移期间不需要这些统计信息。 可以通过将 pg_stat_statements.track、pg_qs.query_capture_mode 和 pgms_wait_sampling.query_capture_mode 设置为 NONE 来完成此操作。
 
-    - 使用高计算和高内存 sku（如 32 vCore 内存优化）来加速迁移。 完成还原操作后，可以轻松缩回到所需的 sku。 sku 越高，通过增加 pg_restore 命令中相应的 `-j` 参数就可以实现越多的并行性。 
+    - 使用高计算和高内存 sku（如 32 vCore 内存优化）来加速迁移。 完成还原操作后，可以轻松缩回到所需的 sku。 sku 越高，通过增加 pg_restore 命令中相应的 `-j` 参数就可以实现越多的并行性。
 
     - 通过增加目标服务器上的 IOPS 可以提高还原性能。 你可以通过增加服务器的存储大小来预配更多 IOPS。 此设置不可逆，但要考虑的一点是，更高的 IOPS 是否在将来有益于你的实际工作负荷。
 

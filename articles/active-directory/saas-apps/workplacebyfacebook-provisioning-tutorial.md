@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4b4953cbca4d08e911fd043413387a1602bd8e08
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006068"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973868"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -89,7 +89,7 @@ ms.locfileid: "90006068"
 
 5. 在 " **管理员凭据** " 部分中，单击 " **授权**"。 你将被重定向到 Workplace by Facebook 的授权页。 输入 Workplace by Facebook 用户名，并单击 " **继续** " 按钮。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Workplace by Facebook。 如果连接失败，请确保 Workplace by Facebook 帐户具有管理员权限，然后重试。
 
-    ![预配](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示具有授权选项的 "管理员凭据" 对话框。](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
     ![授权](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "90006068"
    |userName|字符串|
    |displayName|字符串|
    |活动|Boolean|
-   |title|布尔|
+   |title|Boolean|
    |emails[type eq "work"].value|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
@@ -125,15 +125,15 @@ ms.locfileid: "90006068"
    |phoneNumbers[type eq "fax"].value|字符串|
    |externalId|字符串|
    |preferredLanguage|字符串|
-   |urn： scim：架构：扩展： enterprise： 1.0. manager|String|
-   |urn： scim：架构：扩展： enterprise： 1.0. 部门|String|
-   |urn： scim：架构：扩展： enterprise：1。0|String|
-   |urn： scim：架构：扩展： enterprise： 1.0. 组织|String|
-   |urn： scim：架构：扩展： enterprise： 1.0. costCenter|String|
-   |urn： scim：架构：扩展： enterprise： 1.0. employeeNumber|String|
-   |urn： scim：架构：扩展： facebook： auth_method：1.0： auth_method|String|
-   |urn： scim：架构：扩展： facebook：前端：1.0。 is_frontline|布尔|
-   |urn： scim：架构：扩展： facebook： starttermdates：1.0。开始日期|Integer|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|字符串|
+   |urn:scim:schemas:extension:enterprise:1.0.department|String|
+   |urn:scim:schemas:extension:enterprise:1.0.division|String|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|String|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
+   |urn： scim：架构：扩展： facebook： auth_method：1.0： auth_method|字符串|
+   |urn： scim：架构：扩展： facebook：前端：1.0。 is_frontline|Boolean|
+   |urn： scim：架构：扩展： facebook： starttermdates：1.0。开始日期|整数|
 
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -157,7 +157,7 @@ ms.locfileid: "90006068"
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 *  如果你看到某个用户未成功创建，并且存在代码为 "1789003" 的审核日志事件，则表示该用户来自未经验证的域。

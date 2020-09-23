@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: c6a35d9ba2d2f1c762f44b3792792401565c4804
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421078"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902792"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
 
@@ -32,7 +32,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 通过 Azure 门户创建服务器时，在“定价层”窗口中为服务器选择是进行**本地冗余**备份还是**异地冗余**备份。 也在此窗口中选择“备份保留期” - 希望存储服务器备份多长时间（天数）。
 
-   ![定价层 - 选择备份冗余](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="定价层 - 选择备份冗余":::
 
 有关在创建过程中设置这些值的详细信息，请参阅 [Azure Database for MySQL 服务器快速入门](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
@@ -41,7 +41,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 2. 选择 Azure Database for MySQL 服务器。 此操作将打开“概述”页。
 3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改**备份保留期**（7 天到 35 天）。
 在下面的屏幕截图中，该项已增加到 34 天。
-![增加的备份保留期](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="增加的备份保留期":::
 
 4. 单击“确定”确认更改。
 
@@ -57,11 +57,11 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 2. 在服务器“概述”页的工具栏中，选择“还原” 。
 
-   ![Azure Database for MySQL - 概述 -“还原”按钮](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL - 概述 -“还原”按钮":::
 
 3. 使用必需信息填写“还原”窗体：
 
-   ![Azure Database for MySQL - 还原信息](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL - 还原信息":::
    - **还原点**：选择要还原到的时间点。
    - **目标服务器**：提供新服务器的名称。
    - **位置**：不可选择区域。 默认情况下，此值与源服务器相同。

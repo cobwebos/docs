@@ -9,17 +9,42 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/04/2020
-ms.openlocfilehash: a2d27f892e79d99f515032b72e1ec090ab1f6a31
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500345"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900591"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
 本文介绍 Azure SQL Edge 的每个新版本的新增功能和变化。
+
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM) 
+
+### <a name="sql-engine-build-number---15020001549"></a>SQL 引擎内部版本号-15.0.2000.1549
+
+### <a name="whats-new"></a>新增功能
+1. 基于 Ubuntu 18.04 的容器映像。 
+2. 和函数的支持 `IGNORE NULL` 和 `RESPECT NULL` 语法 `LAST_VALUE()` `FIRST_VALUE()` 。 
+3. 通过 ONNX 预测的可靠性改进。
+4. 支持基于数据保留策略的清理。      
+   - 支持优化清理聚集列存储索引。
+5. 新功能支持 
+   - 快速恢复
+   - 自动优化查询
+
+### <a name="fixes"></a>修复项
+1. 用于对 TSQL 流式处理操作进行疑难解答的其他错误消息和详细信息。 
+2. 改进以保持空闲模式下的电池寿命。 
+3. TSQL 流式处理引擎修复： 
+   - 清除已停止流式处理作业 
+   - 用于本地化和 unicode 处理改进的修补程序
+4. 基于数据保留策略的清除
+   - 保留策略创建和清理方案的修补程序。
+5. 修复了后台计时器任务，以提高低功耗模式下的节能能力。
+
 
 ## <a name="ctp-23"></a>CTP 2.3
 ### <a name="sql-engine-build-number---15020001549"></a>SQL 引擎内部版本号-15.0.2000.1549
@@ -33,7 +58,7 @@ ms.locfileid: "89500345"
 
 ### <a name="fixes"></a>修复项
 1. 用于对 TSQL 流式处理操作进行疑难解答的其他错误消息和详细信息。 
-2. Imporvements 以保持处于空闲模式的电池寿命。 
+2. 改进以保持空闲模式下的电池寿命。 
 3. TSQL 流式处理引擎修复： 
    - 解决 substreamed 跳跃窗口的停滞水印问题 
    - 修复框架异常处理，以确保将其收集为用户可操作错误

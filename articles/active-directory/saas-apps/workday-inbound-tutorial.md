@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 0a025ad7857594b3117b1703a0e19ae47407d0fd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018095"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974367"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -373,7 +373,7 @@ ms.locfileid: "90018095"
 1. 请打开“服务”管理单元来验证是否已安装代理并确保其正在运行，并查找名为“Microsoft Azure AD Connect 预配代理”的服务
 
    >[!div class="mx-imgBorder"]
-   >![服务中运行的 Microsoft Azure AD 连接预配代理的屏幕截图](./media/workday-inbound-tutorial/services.png)
+   >![在服务中运行的 Microsoft Azure AD 连接预配代理的屏幕截图。](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在预配应用中，配置与 Workday 和 Active Directory 的连接
 在此步骤中，我们将在 Azure 门户中建立与 Workday 和 Active Directory 的连接。 
