@@ -1,0 +1,55 @@
+- name: 指标顾问
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是指标顾问？
+      href: overview.md
+- name: 快速入门
+  items:
+    - name: 浏览演示站点
+      href: quickstarts/explore-demo.md
+    - name: 使用 Web 门户
+      href: quickstarts/web-portal.md
+    - name: 使用 REST API
+      href: quickstarts/rest-api.md
+- name: 操作指南
+  items:
+    - name: 载入数据
+      href: how-tos/onboard-your-data.md
+    - name: 连接不同的数据馈送源
+      href: data-feeds-from-different-sources.md
+    - name: 管理数据馈送
+      href: how-tos/manage-data-feeds.md
+    - name: 配置指标并微调检测配置
+      href: how-tos/configure-metrics.md
+    - name: 配置警报并使用挂钩获取通知
+      href: how-tos/alerts.md
+    - name: 诊断事件
+      href: how-tos/diagnose-incident.md
+    - name: 使用反馈调整异常检测
+      href: how-tos/anomaly-feedback.md
+    - name: 生成指标图
+      href: how-tos/metrics-graph.md
+- name: 参考
+  items:
+    - name: 术语表
+      href: glossary.md
+    - name: 常见问题解答
+      href: faq.md
+    - name: 指标顾问 API
+      href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
+    - name: Azure CLI 参考
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: PowerShell 参考
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+- name: 资源
+  items:
+    - name: 定价
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: encryption.md

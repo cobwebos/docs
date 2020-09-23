@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908014"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
 
-本文介绍如何使用“执行 R 脚本”模块在 Azure 机器学习设计器（预览版）管道中运行 R 代码。
+本文介绍如何使用 "执行 R 脚本" 模块在 Azure 机器学习设计器管道中运行 R 代码。
 
 使用 R，可以执行现有模块当前不支持的任务，例如： 
 - 创建自定义数据转换
@@ -121,7 +121,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="access-to-registered-dataset"></a>访问已注册的数据集
 
-可以参考以下示例代码，访问工作区中[已注册的数据集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script)：
+可以参阅以下示例代码，在工作区中[访问已注册的数据集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script)：
 
 ```R
         azureml_main <- function(dataframe1, dataframe2){
@@ -194,11 +194,11 @@ azureml_main <- function(dataframe1, dataframe2){
     > [!NOTE]
     > 现有 R 代码可能需要稍做更改才能在设计器管道中运行。 例如，以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用。 R 语言中使用的数据和列类型与在设计器中使用的数据和列类型在某些方面也有所不同。
 
-    如果脚本大于16KB，请使用**脚本捆绑**端口来避免错误，如*命令行数超过16597个字符的限制*。 
+    如果脚本大于 16KB，请使用脚本包端口以避免错误，如命令行超过 16597 个字符的限制。 
     
-    将脚本和其他自定义资源捆绑到一个 zip 文件，然后将 zip 文件作为**文件数据集**上传到工作室。 然后，可以从 "设计器创作" 页左侧模块窗格中的 "*我的数据集*" 列表中拖动数据集模块。 将数据集模块连接到**执行 R 脚本**模块的**脚本捆绑**端口。
+    将脚本和其他自定义资源捆绑到一个 zip 文件，然后将该 zip 文件作为文件数据集上传到工作室。 然后可以从设计器创作页面左侧模块窗格中的“我的数据集”列表中拖取数据集模块。 将数据集模块连接到“执行 R 脚本”模块的“脚本包”端口。
     
-    下面是使用脚本捆绑中的脚本的示例代码：
+    下面是使用脚本包中的脚本的示例代码：
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -340,7 +340,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 添加“执行 R 脚本”模块的第二个实例，并将其连接到以前模块的输出端口。
 
-1. 在 " **R 脚本**" 文本框中键入以下代码，以 `A` 从输入数据表提取对象。 
+1. 在 " **R 脚本** " 文本框中键入以下代码，以 `A` 从输入数据表提取对象。 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){

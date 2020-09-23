@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 9b3e1916301d6346defd6ebeab2f3784882f2d5f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c390c64db8c5833f5bc5bf2be3367cb63127a0f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902649"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for PostgreSQL 服务器
 
@@ -34,17 +34,17 @@ ms.locfileid: "88798850"
 2. 选择“数据库” > “用于 PostgreSQL 的 Azure 数据库”。
 
    > [!div class="mx-imgBorder"]
-   > ![显示菜单上的“Azure Database for PostgreSQL”的屏幕截图。](./media/quickstart-create-database-portal/1-create-database.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="显示菜单上的“Azure Database for PostgreSQL”的屏幕截图。":::
 
 3. 选择“单个服务器”部署选项。
 
    > [!div class="mx-imgBorder"]
-   > ![为 Azure Database for PostgreSQL 选择单个服务器部署选项的屏幕截图。](./media/quickstart-create-database-portal/select-deployment-option.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="为 Azure Database for PostgreSQL 选择单个服务器部署选项的屏幕截图。":::
 
 4. 用以下信息填写“基本”表单。
 
    > [!div class="mx-imgBorder"]
-   > ![显示创建单个服务器的基本选项卡的屏幕截图。](./media/quickstart-create-database-portal/create-basics.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="显示创建单个服务器的基本选项卡的屏幕截图。":::
 
    设置|建议的值|说明
    ---|---|---
@@ -71,7 +71,7 @@ ms.locfileid: "88798850"
 默认情况下，你创建的服务器不可公开访问。 需要向你的 IP 地址授予权限。 请转到 Azure 门户中的服务器资源，然后从左侧菜单中为服务器资源选择“连接安全性”。 如果你不确定如何找到资源，请参阅[打开资源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
 
 > [!div class="mx-imgBorder"]
-> ![显示连接安全的防火墙规则的屏幕截图。](./media/quickstart-create-database-portal/add-current-ip-firewall.png)
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="显示连接安全的防火墙规则的屏幕截图。":::
   
 选择“添加当前客户端 IP 地址”，然后选择“保存” 。 你可以添加更多 IP 地址或提供一个 IP 范围，从该范围中的 IP 地址连接到服务器。 有关详细信息，请参阅 [Azure Database for PostgreSQL 中的防火墙规则](./concepts-firewall-rules.md)。
    
@@ -90,7 +90,7 @@ ms.locfileid: "88798850"
    > 如果你是第一次打开 Cloud Shell，你将看到创建资源组和存储帐户的提示。 这是一个一次性步骤，将来会针对所有会话自动附加。 
 
    > [!div class="mx-imgBorder"]
-   > ![显示服务器信息和用于打开 Azure Cloud Shell 的图标的屏幕截图。](media/quickstart-create-database-portal/use-in-cloud-shell.png)
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="显示服务器信息和用于打开 Azure Cloud Shell 的图标的屏幕截图。":::
 
 3. 在 Azure Cloud Shell 终端中运行以下命令。 将值替换为实际的服务器名称和管理员用户登录名。 以管理员用户的身份使用空数据库 postgres，格式如下：`<admin-username>@<servername>`。
 
@@ -143,7 +143,7 @@ ms.locfileid: "88798850"
 若要删除服务器，请在服务器的“概述”页面上选择“删除”按钮 ：
 
 > [!div class="mx-imgBorder"]
-> ![显示用于删除服务器的按钮的屏幕截图。](media/quickstart-create-database-portal/12-delete.png)
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="显示用于删除服务器的按钮的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

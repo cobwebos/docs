@@ -4,35 +4,75 @@
   expanded: true
   items:
     - name: 关于安全中心
-      href: security-center-intro.md
-    - name: 支持的平台
-      href: security-center-os-coverage.md
-    - name: 安全中心功能
       items:
+        - name: 什么是 Azure 安全中心？
+          href: security-center-introduction.md
+        - name: 受支持的平台
+          displayName: coverage
+          href: security-center-os-coverage.md
         - name: 适用于 VM 的功能覆盖范围
           href: security-center-services.md
         - name: 适用于 Azure PaaS 资源的功能覆盖范围
           href: features-paas.md
     - name: 安全中心的新增功能
+      displayName: release notes
       href: release-notes.md
-    - name: 安全建议
-      href: recommendations-reference.md
-    - name: 安全警报和意向攻击链
-      href: alerts-reference.md
-    - name: 权限
-      href: security-center-permissions.md
+    - name: 安全中心基础知识
+      items:
+        - name: 安全中心概述页面
+          href: overview-page.md
+        - name: 安全建议
+          href: recommendations-reference.md
+        - name: 安全警报和意向攻击链
+          href: alerts-reference.md
+        - name: Microsoft 如何保护客户数据
+          href: security-center-data-security.md
+        - name: 权限
+          href: security-center-permissions.md
+    - name: Azure Defender 的高级安全
+      items:
+        - name: Azure Defender 概述
+          href: azure-defender.md
+        - name: 适用于服务器的 Azure Defender
+          href: defender-for-servers-introduction.md
+        - name: 适用于应用服务的 Azure Defender
+          href: defender-for-app-service-introduction.md
+        - name: 适用于存储的 Azure Defender
+          href: defender-for-storage-introduction.md
+        - name: 适用于 SQL 的 Azure Defender
+          href: defender-for-sql-introduction.md
+        - name: 适用于 IoT 的 Azure Defender
+          href: defender-for-iot-introduction.md
+        - name: 适用于 Key Vault 的 Azure Defender
+          displayName: KV
+          href: defender-for-key-vault-introduction.md
+        - name: 适用于 Kubernetes 的 Azure Defender
+          displayName: 'clusters, k8s'
+          href: defender-for-kubernetes-introduction.md
+        - name: 适用于容器注册表的 Azure Defender
+          displayName: 'ACR, registry, images'
+          href: defender-for-container-registries-introduction.md
+        - name: 其他威胁防护
+          href: other-threat-protections.md
+    - name: 安全中心的容器安全功能
+      href: container-security.md
     - name: 定价
       href: security-center-pricing.md
 - name: 快速入门
   items:
-    - name: Azure 订阅
+    - name: 入门
       href: security-center-get-started.md
-    - name: Windows 计算机
-      href: quick-onboard-windows-computer.md
-    - name: Linux 计算机
-      href: quick-onboard-linux-computer.md
-    - name: Azure Stack 虚拟机
-      href: quick-onboard-azure-stack.md
+    - name: 连接非 Azure 计算机
+      displayName: 'azure stack, windows, linux'
+      href: quickstart-onboard-machines.md
+    - name: 连接 AWS 和 GCP 帐户
+      items:
+        - name: 连接 AWS 帐户
+          displayName: 'hybrid, multicloud, amazon'
+          href: quickstart-onboard-aws.md
+        - name: 连接 GCP 帐户
+          displayName: 'hybrid, multicloud, google'
+          href: quickstart-onboard-gcp.md
     - name: 使用 PowerShell 自动加入
       href: security-center-powershell-onboarding.md
     - name: 配置数据收集
@@ -53,85 +93,29 @@
       href: security-center-compliance-dashboard.md
 - name: 概念
   items:
-    - name: 安全分数、建议和策略
+    - name: 云安全状态管理
       items:
+        - name: 使用资产清单管理资源
+          href: asset-inventory.md
         - name: 安全功能分数
           href: secure-score-security-controls.md
         - name: 安全性建议的概述
           href: security-center-recommendations.md
         - name: 安全策略概述
           href: tutorial-security-policy.md
+        - name: 内置安全策略
+          displayName: 'samples, policy'
+          href: ./policy-reference.md
         - name: 使用建议增强安全性
           href: security-center-using-recommendations.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 威胁防护和安全警报
-      items:
-        - name: 安全中心的威胁防护概述
-          href: threat-protection.md
-        - name: 安全警报概述
-          href: security-center-alerts-overview.md
-        - name: 警报参考列表
-          href: alerts-reference.md
-        - name: 警报架构
-          href: alerts-schemas.md
-        - name: 安全事件概述
-          href: security-center-alerts-cloud-smart.md
-    - name: 数据安全
-      href: security-center-data-security.md
-    - name: 恰时 VM 访问
-      href: just-in-time-explained.md
-    - name: 跨租户管理
-      href: security-center-cross-tenant-management.md
-    - name: 容器安全性
-      items:
-        - name: 容器安全性概述
-          href: container-security.md
-        - name: 与 Azure 容器注册表集成
-          href: azure-container-registry-integration.md
-        - name: 与 Azure Kubernetes 服务集成
-          href: azure-kubernetes-service-integration.md
-- name: 操作指南
-  items:
-    - name: 升级到高级安全
-      href: security-center-onboarding.md
-    - name: 配置安全策略和符合性标准
-      items:
-        - name: 创建自定义安全策略
-          href: custom-security-policies.md
-        - name: 使用 Azure 策略 REST API 管理策略
-          href: configure-security-policy-azure-policy.md
-        - name: 为符合性仪表板选择标准
-          href: update-regulatory-compliance-packages.md
-    - name: 扫描 VM 中的漏洞
-      items:
-        - name: 将集成的漏洞扫描程序部署到 VM
-          href: deploy-vulnerability-assessment-vm.md
-        - name: 将 BYOL 漏洞解决方案部署到 VM
-          href: deploy-vulnerability-assessment-byol-vm.md
-        - name: 评审和修正 VM 上的漏洞
-          href: remediate-vulnerability-findings-vm.md
-    - name: 配置威胁防护并处理警报
-      items:
-        - name: 管理安全警报
-          href: security-center-managing-and-responding-alerts.md
-        - name: 创建和管理警报抑制规则
-          href: alerts-suppression-rules.md
-        - name: 为 Azure Key Vault 设置高级威胁防护
-          href: advanced-threat-protection-key-vault.md
-        - name: 管理安全事件
-          href: security-center-incident.md
-        - name: 生成威胁情报报表
-          href: security-center-threat-report.md
-        - name: 验证警报配置（EICAR 测试文件）
-          href: security-center-alert-validation.md
-        - name: 使用 Azure VM 上的 SQL 高级数据安全
-          href: security-center-iaas-advanced-data.md
-        - name: 自动响应警报
-          href: workflow-automation.md
-        - name: 导出警报
-          displayName: continuous
-          href: continuous-export.md
+        - name: 跨租户管理
+          href: security-center-cross-tenant-management.md
+        - name: 保护 Windows 管理中心服务器
+          href: windows-admin-center-integration.md
+        - name: 集成安全解决方案和数据源
+          href: security-center-partner-integration.md
     - name: 使用安全建议来提高安全性
       items:
         - name: 修正建议
@@ -140,51 +124,111 @@
           displayName: recommendations
           href: prevent-misconfigurations.md
         - name: 加强安全态势
-          displayName: recommendations
           href: security-center-monitoring.md
         - name: 建议的参考列表
           href: recommendations-reference.md
-        - name: 保护计算机和应用
-          href: security-center-virtual-machine-protection.md
         - name: 保护网络资源
           href: security-center-network-recommendations.md
-        - name: 保护数据和存储服务
-          href: security-center-sql-service-recommendations.md
         - name: 保护标识和访问权限
           href: security-center-identity-access.md
-        - name: 自动响应建议
+        - name: 管理安全建议
+          items:
+            - name: 自动响应建议
+              href: workflow-automation.md
+            - name: 导出建议
+              href: continuous-export.md
+            - name: 从建议中免除资源
+              href: exempt-resource.md
+    - name: Azure Defender 警报
+      items:
+        - name: Azure Defender 警报概述
+          href: security-center-alerts-overview.md
+        - name: 警报参考列表
+          href: alerts-reference.md
+        - name: 警报架构
+          href: alerts-schemas.md
+        - name: 安全事件概述
+          href: security-center-alerts-cloud-smart.md
+- name: 操作指南
+  items:
+    - name: 使用 Azure Defender 仪表板
+      href: azure-defender-dashboard.md
+    - name: 配置安全策略和符合性标准
+      items:
+        - name: 创建自定义安全策略
+          href: custom-security-policies.md
+        - name: 使用 Azure 策略 REST API 管理策略
+          href: configure-security-policy-azure-policy.md
+        - name: 为符合性仪表板选择标准
+          displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, Benchmark, Azure Security Benchmark, HIPAA'
+          href: update-regulatory-compliance-packages.md
+    - name: 使用适用于服务器的 Azure Defender
+      items:
+        - name: 适用于 VM 的漏洞扫描
+          items:
+            - name: 通过集成 VA 解决方案扫描 VM
+              displayName: 'qualys, vulnerability'
+              href: deploy-vulnerability-assessment-vm.md
+            - name: 通过 BYOL VA 解决方案扫描 VM
+              displayName: 'qualys, rapid7, vulnerability'
+              href: deploy-vulnerability-assessment-byol-vm.md
+            - name: 评审和修正 VM 上的漏洞
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md
+        - name: 使用实时 VM 访问保护管理端口
+          items:
+            - name: 实时 VM 访问概述
+              displayName: 'jit, management'
+              href: just-in-time-explained.md
+            - name: 管理实时访问
+              displayName: 'jit, management'
+              href: security-center-just-in-time.md
+        - name: 管理自适应应用程序控制
+          href: security-center-adaptive-application.md
+        - name: 使用文件完整性监视
+          items:
+            - name: 文件完整性监视概述
+              href: security-center-file-integrity-monitoring.md
+            - name: 使用文件完整性监视比较基线
+              href: security-center-file-integrity-monitoring-baselines.md
+        - name: 管理自适应网络强化
+          href: security-center-adaptive-network-hardening.md
+        - name: 集成 Microsoft Defender ATP
+          href: security-center-wdatp.md
+        - name: 强化 Docker 主机
+          displayName: containers
+          href: harden-docker-hosts.md
+    - name: 使用适用于 SQL 的 Azure Defender
+      items:
+        - name: 在 Azure VM 上配置适用于 SQL 的 Azure Defender
+          href: defender-for-sql-usage.md
+        - name: 自定义信息保护策略
+          href: security-center-info-protection-policy.md
+    - name: 使用适用于容器注册表的 Azure Defender
+      displayName: 'ACR, registry, images'
+      href: defender-for-container-registries-usage.md
+    - name: 处理 Azure Defender 警报
+      items:
+        - name: 管理安全警报
+          href: security-center-managing-and-responding-alerts.md
+        - name: 创建和管理警报抑制规则
+          href: alerts-suppression-rules.md
+        - name: 响应适用于 Key Vault 的 Azure Defender 警报
+          href: defender-for-key-vault-usage.md
+        - name: 管理安全事件
+          href: security-center-incident.md
+        - name: 生成威胁情报报表
+          href: security-center-threat-report.md
+        - name: 验证警报配置（EICAR 测试文件）
+          href: security-center-alert-validation.md
+        - name: 自动响应警报
           href: workflow-automation.md
-        - name: 导出建议
+        - name: 导出警报
           displayName: continuous
           href: continuous-export.md
-    - name: 使用资产清单管理资源
-      href: asset-inventory.md
-    - name: 与其他工具和服务集成
-      items:
-        - name: 保护 Windows 管理中心服务器
-          href: windows-admin-center-integration.md
-        - name: 保护 Azure 应用服务 web 应用和 API
-          href: security-center-app-services.md
-        - name: 与 Microsoft Defender ATP 集成
-          href: security-center-wdatp.md
-        - name: 集成安全解决方案和数据源
-          href: security-center-partner-integration.md
-    - name: 应用云防御措施
-      items:
-        - name: 管理实时访问
-          href: security-center-just-in-time.md
-        - name: 自适应应用程序控制
-          href: security-center-adaptive-application.md
-        - name: 文件完整性监视
-          href: security-center-file-integrity-monitoring.md
-        - name: 使用文件完整性监视比较基线
-          href: security-center-file-integrity-monitoring-baselines.md
-        - name: 自适应网络强化
-          href: security-center-adaptive-network-hardening.md
-    - name: 监视容器
-      href: monitor-container-security.md
-    - name: 自定义信息保护策略
-      href: security-center-info-protection-policy.md
+    - name: 保护 Kubernetes 工作负载
+      displayName: 'k8s, containers'
+      href: kubernetes-workload-protections.md
     - name: 管理调查用户数据
       href: security-center-investigation-user-data.md
     - name: 获取租户范围内的可见性
@@ -215,16 +259,13 @@
       href: security-center-features-retirement-july2019.md
     - name: 终结点保护评估和建议
       href: security-center-endpoint-protection.md
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?term=securityS
     - name: 管理用户数据
       href: security-center-privacy.md
-    - name: 适用于 IoT 的 Azure 安全中心文档
+    - name: 适用于 IoT 的 Azure Defender 文档
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: Azure 安全文档
       href: /azure/security/
@@ -232,12 +273,12 @@
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: 就绪情况路线图
       href: security-center-readiness-roadmap.md
-    - name: Azure 安全性、隐私性与合规性博客
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+    - name: Azure 安全中心技术社区博客
+      href: 'https://techcommunity.microsoft.com/t5/azure-security-center/bg-p/AzureSecurityCenterBlog'
     - name: Stack Overflow 上的 Azure 安全中心
       href: 'https://stackoverflow.com/search?q=azure-security-center'
-    - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
+    - name: ASCinTheField YouTube 视频
+      href: 'https://www.youtube.com/results?search_query=%23ASCInTheField'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: 区域可用性

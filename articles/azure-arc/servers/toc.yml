@@ -47,12 +47,12 @@
       items:
         - name: 代理连接问题
           href: troubleshoot-agent-onboard.md
-    - name: 参考
-      items:
-        - name: 区域可用性和数据驻留
-          href: data-residency.md
-        - name: REST
-          href: /rest/api/hybridcompute
-        - name: Azure Policy 内置策略定义
-          displayName: 'samples, policies, definitions'
-          href: policy-reference.md
+- name: 参考
+  items:
+    - name: 数据驻留
+      href: data-residency.md
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

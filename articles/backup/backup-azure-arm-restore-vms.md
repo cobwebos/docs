@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure 门户还原 VM
-description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
+description: 使用 Azure 门户（包括跨区域还原功能）从恢复点还原 Azure 虚拟机。
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050414"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986548"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -138,18 +138,21 @@ Azure 备份提供多种方法用于还原 VM。
 
 若要在预览版期间加入此功能，请阅读[“准备阶段”部分](./backup-create-rs-vault.md#set-cross-region-restore)。
 
-若要查看是否启用了 CRR，请按照[配置跨区域还原](backup-create-rs-vault.md#configure-cross-region-restore)中的说明进行操作
+若要查看是否启用了 CRR，请按照 [配置跨区域还原](backup-create-rs-vault.md#configure-cross-region-restore)中的说明进行操作。
 
 ### <a name="view-backup-items-in-secondary-region"></a>查看次要区域中的备份项
 
 如果启用了 CRR，则可以查看次要区域中的备份项。
 
-1. 在门户中，转到“恢复服务保管库” > “备份项”。**** ****
+1. 从门户中转到 "**恢复服务保管库**  >  **备份项**"。
 1. 选择 **次要区域** ，查看次要区域中的项目。
 
-    ![次要区域中的虚拟机](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+>[!NOTE]
+>只有支持 CRR 功能的备份管理类型才会显示在列表中。 目前，只允许将辅助区域数据还原到次要区域。
 
-    ![选择“次要区域”](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![次要区域中的虚拟机](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![选择“次要区域”](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>在次要区域中进行还原
 

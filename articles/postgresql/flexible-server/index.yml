@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: 灵活服务器（预览版）文档
+summary: Azure Database for PostgreSQL - 灵活服务器（预览版）是完全托管的 PostgreSQL 数据库即服务产品，能够处理任务关键型工作负载，并提供可预测的性能和动态可伸缩性。 利用所选的开源工具和平台开发包含用于 PostgreSQL 的 Azure 数据库的应用程序。 通过我们的快速入门、教程和示例了解如何使用灵活服务器。
+metadata:
+  title: Azure Database for PostgreSQL - 灵活服务器（预览版）
+  description: Azure Database for PostgreSQL - 灵活服务器（预览版）是 Microsoft 云中的关系数据库服务，它专为开发人员而构建，由 PostgreSQL 社区版提供支持。
+  author: rachel-msft
+  ms.author: raagyema
+  ms.date: 09/22/2020
+  ms.service: postgresql
+  ms.topic: landing-page
+  ms.openlocfilehash: 7c214662a37083708b0a38148382e16b553145c4
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928704"
+landingContent:
+- title: 关于灵活服务器（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是灵活服务器？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 创建灵活服务器
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 使用灵活服务器创建 Django 应用
+      url: tutorial-django-app-service-postgres.md
+  - linkListType: whats-new
+    links:
+    - text: 查看我们的博客
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: 管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 计算和存储选项
+      url: concepts-compute-storage.md
+    - text: 网络
+      url: concepts-networking.md
+    - text: Postgres 版本
+      url: concepts-supported-versions.md
+    - text: 扩展
+      url: concepts-extensions.md
+    - text: 监视
+      url: concepts-monitoring.md
+    - text: 逻辑复制
+      url: concepts-logical.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理服务器
+      url: how-to-manage-server-portal.md
+    - text: 停止/启动服务器
+      url: how-to-stop-start-server-portal.md
+    - text: 纵向扩展
+      url: how-to-scale-compute-storage-portal.md
+    - text: 重启服务器
+      url: how-to-restart-server-portal.md
+    - text: 配置和访问日志
+      url: howto-configure-and-access-logs.md
+    - text: 计划维护
+      url: how-to-maintenance-portal.md
+- title: 业务连续性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 业务连续性概述
+      url: concepts-business-continuity.md
+    - text: 高可用性
+      url: concepts-high-availability.md
+    - text: 备份和还原
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理高可用性
+      url: how-to-manage-high-availability-portal.md
+    - text: 还原服务器
+      url: how-to-restore-server-portal.md
+- title: 连接
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Python 进行连接
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: 在虚拟网络中连接 Web 应用
+      url: tutorial-webapp-server-vnet.md
+- title: Migrate
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 pg_dump 和 pg_restore 迁移数据库
+      url: ../howto-migrate-using-dump-and-restore.md
+    - text: 联机迁移
+      url: ../howto-migrate-online.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI 开发人员参考
+      url: /cli/azure/postgres
+    - text: REST API 开发人员参考
+      url: /rest/api/postgresql/
+    - text: Azure 资源管理器模板
+      url: /azure/templates/microsoft.dbforpostgresql/allversions

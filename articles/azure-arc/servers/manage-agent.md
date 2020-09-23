@@ -1,18 +1,40 @@
 ---
-title: " (预览版) 代理管理启用了 Azure Arc 的服务器"
-description: 本文介绍了在支持 Azure Arc 的服务器的生命周期中通常会执行的不同管理任务， (预览) 连接的计算机代理。
-ms.date: 07/30/2020
+title: 管理启用了 Azure Arc 的服务器代理
+description: 本文介绍了在支持 Azure Arc 的服务器连接的计算机代理的生命周期中通常会执行的不同管理任务。
+ms.date: 09/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 146d5e3595e95df3b59b9cb4c0c05f9cc478eb82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213134"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902531"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
-初始部署启用了 Azure Arc 的服务器后 (预览) 连接的计算机代理（适用于 Windows 或 Linux），如果已在其生命周期内达到停用阶段，你可能需要重新配置并升级代理，或将其从计算机中删除。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
+初始部署启用了 Azure Arc 的服务器（适用于 Windows 或 Linux）的已连接计算机代理后，你可能需要重新配置代理、进行升级，或者从计算机中删除它（如果它已在其生命周期中的停用阶段）。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
+
+## <a name="before-uninstalling-agent"></a>卸载代理之前
+
+在从启用了 Arc 的服务器中删除已连接的计算机代理之前，请考虑以下内容，以避免添加到 Azure 帐单的意外问题或成本：
+
+* 如果已将 Azure VM 扩展部署到已启用的服务器，并且删除了该资源组中表示启用了 Arc 的服务器的资源，则这些扩展将继续运行并执行其正常操作。
+
+* 如果在资源组中删除表示启用了 Arc 的服务器的资源，但不卸载 VM 扩展，则在重新注册计算机时，将无法管理已安装的 VM 扩展。
+
+对于不再希望在启用了 Azure Arc 的服务器的情况下管理的服务器或计算机，必须执行以下步骤来成功停止管理该服务器：
+
+1. 从计算机或服务器中删除 VM 扩展。 下面提供了一些步骤。
+
+2. 使用以下方法之一从 Azure Arc 断开计算机连接：
+
+    * 正在 `azcmagent disconnect` 计算机或服务器上运行命令。
+
+    * 通过从顶部栏中选择 " **删除** "，从 Azure 门户中选择的已启用 Arc 的服务器。
+
+    * 使用 [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) 或 [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource)。 对于 `ResourceType` 参数，请使用 `Microsoft.HybridCompute/machines` 。
+
+3. 从计算机或服务器中卸载代理。 请遵循以下步骤进行操作。
 
 ## <a name="upgrading-agent"></a>升级代理
 
@@ -120,7 +142,7 @@ ms.locfileid: "88213134"
 
 ## <a name="about-the-azcmagent-tool"></a>关于 Azcmagent 工具
 
-Azcmagent 工具 ( # A0) 用于在安装过程中配置启用了 Azure Arc 的服务器 (预览) 连接的计算机代理，或在安装后修改代理的初始配置。 Azcmagent.exe 提供了用于自定义代理及查看其状态的命令行参数：
+Azcmagent 工具 ( # A0) 用于在安装期间配置启用了 Azure Arc 的服务器连接的计算机代理，或在安装之后修改代理的初始配置。 Azcmagent.exe 提供了用于自定义代理及查看其状态的命令行参数：
 
 * **Connect** - 将计算机连接到 Azure Arc
 
@@ -136,16 +158,16 @@ Azcmagent 工具 ( # A0) 用于在安装过程中配置启用了 Azure Arc 的�
 
 * **-v or --verbose** - 启用详细日志记录
 
-你可以在以交互方式登录时手动执行“Connect”、“Disconnect”和“Reconnect”，也可以使用用于加入多个代理的相同服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)自动执行这些参数  。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机 (预览) ，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
+你可以在以交互方式登录时手动执行“Connect”、“Disconnect”和“Reconnect”，也可以使用用于加入多个代理的相同服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)自动执行这些参数  。 如果未使用服务主体向启用了 Azure Arc 的服务器注册计算机，请参阅以下 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 创建服务主体。
 
 >[!NOTE]
 >若要运行**azcmagent**，必须具有 Linux 计算机上的*根*访问权限。
 
 ### <a name="connect"></a>连接
 
-此参数指定 Azure 资源管理器中的资源，该资源表示已在 Azure 中创建计算机。 资源位于指定的订阅和资源组中，有关计算机的数据存储在由 `--location` 设置指定的 Azure 区域中。 如果未指定，则此计算机的主机名为默认资源名。
+此参数指定 Azure 资源管理器中的资源，该资源表示已在 Azure 中创建计算机。 资源位于指定的订阅和资源组中，有关计算机的数据存储在由 `--location` 设置指定的 Azure 区域中。 如果未指定，则默认资源名称是计算机的主机名。
 
-然后，将下载与系统分配的计算机标识相对应的证书，并将其存储在本地。 完成此步骤后，Azure 连接的计算机元数据服务和来宾配置代理将开始与启用了 Azure Arc 的服务器同步， (预览) 。
+然后，将下载与系统分配的计算机标识相对应的证书，并将其存储在本地。 完成此步骤后，Azure 连接的计算机元数据服务和来宾配置代理将开始与启用了 Azure Arc 的服务器同步。
 
 若要使用服务主体进行连接，请运行以下命令：
 
@@ -161,7 +183,10 @@ Azcmagent 工具 ( # A0) 用于在安装过程中配置启用了 Azure Arc 的�
 
 ### <a name="disconnect"></a>断开连接
 
-此参数指定 Azure 资源管理器中的资源，该资源表示已在 Azure 中删除计算机。 它不会从计算机中删除代理，必须使用一个单独的步骤来删除代理。 断开计算机的连接后，如果想要将其重新注册到启用了 Azure Arc 的服务器 (预览) ，请使用， `azcmagent connect` 以便在 Azure 中为其创建新资源。
+此参数指定 Azure 资源管理器中的资源，该资源表示已在 Azure 中删除计算机。 它不会从计算机中删除代理，必须使用一个单独的步骤来删除代理。 计算机断开连接后，如果想要使用启用了 Azure Arc 的服务器重新注册它，请使用， `azcmagent connect` 以便在 azure 中为其创建新资源。
+
+> [!NOTE]
+> 如果已将一个或多个 Azure VM 扩展部署到启用了 Arc 的服务器，并且在 Azure 中删除了其注册，则仍将安装这些扩展。 了解这一点非常重要，具体取决于所安装的扩展，它正在主动执行其功能。 如果要停用或不再由启用了 Arc 的服务器管理的计算机，则在从 Azure 中删除其注册之前，必须先删除这些扩展。
 
 若要使用服务主体断开连接，请运行以下命令：
 
@@ -180,7 +205,7 @@ Azcmagent 工具 ( # A0) 用于在安装过程中配置启用了 Azure Arc 的�
 > [!WARNING]
 > `reconnect`命令已弃用，不应使用。 此命令将在将来的代理版本中删除，并且现有的代理将无法完成重新连接请求。 相反，请 [断开](#disconnect) 计算机的 [连接](#connect) ，然后重新连接。
 
-此参数将已注册或已连接的计算机与启用了 Azure Arc 的服务器重新连接 (预览) 。 如果计算机已关闭（至少 45 天）从而导致其证书过期，则可能需要执行此参数。 此参数使用提供的身份验证选项来检索与表示此计算机的 Azure 资源管理器资源相对应的新凭据。
+此参数将已注册或已连接的计算机与启用了 Azure Arc 的服务器重新连接。 如果计算机已关闭（至少 45 天）从而导致其证书过期，则可能需要执行此参数。 此参数使用提供的身份验证选项来检索与表示此计算机的 Azure 资源管理器资源相对应的新凭据。
 
 此命令需要高于 [Azure Connected Machine 加入](agent-overview.md#required-permissions)角色的权限。
 
@@ -198,7 +223,7 @@ Azcmagent 工具 ( # A0) 用于在安装过程中配置启用了 Azure Arc 的�
 
 ## <a name="remove-the-agent"></a>删除代理
 
-执行以下方法之一，从计算机中卸载 Windows 或 Linux Connected Machine 代理。 删除代理不会在已启用 Arc 的服务器 (预览) 中取消注册计算机，这是在不再需要在 Azure 中管理计算机时执行的单独过程。
+执行以下方法之一，从计算机中卸载 Windows 或 Linux Connected Machine 代理。 删除代理不会注销启用了 Arc 的服务器的计算机，也不会删除已安装的 Azure VM 扩展。 当不再需要在 Azure 中管理计算机时，需要单独执行这些步骤，并且应在卸载代理之前完成这些步骤。
 
 ### <a name="windows-agent"></a>Windows 代理
 
@@ -267,9 +292,9 @@ Azcmagent 工具 ( # A0) 用于在安装过程中配置启用了 Azure Arc 的�
 
 ## <a name="unregister-machine"></a>注销计算机
 
-如果计划在 Azure 中停止管理具有支持服务的计算机，请执行以下步骤，以通过启用了 Arc 的服务器取消注册计算机 (预览) 。 可在从计算机中删除 Connected Machine 代理之前或之后执行这些步骤。
+如果计划在 Azure 中停止管理具有支持的服务的计算机，请执行以下步骤以取消注册启用了 Arc 的服务器的计算机。 可在从计算机中删除 Connected Machine 代理之前或之后执行这些步骤。
 
-1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)，打开启用了 Azure Arc 的服务器 (预览) 。
+1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)打开启用了 Azure Arc 的服务器。
 
 2. 在列表中选择计算机，选择省略号图标 ( **...** )，然后选择“删除”。
 
@@ -317,4 +342,4 @@ sudo azcmagent_proxy remove
 
 - 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
 
-- 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 如果希望主动监视计算机上运行的 OS 和工作负载，使用自动化 runbook 或更新管理等功能对其进行管理，或使用其他 Azure 服务（如 [Azure 安全中心](../../security-center/security-center-intro.md)），则需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
+- 了解有关 [[Log Analytics agent] 的](../../azure-monitor/platform/log-analytics-agent.md)详细信息。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。

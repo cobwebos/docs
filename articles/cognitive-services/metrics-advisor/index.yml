@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: 指标顾问文档
+summary: 指标顾问是一个时序监视平台，它提供一组用于数据引入、异常检测和诊断的 API，无需了解机器学习即可使用它们。
+metadata:
+  title: 指标顾问文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: 指标顾问是一个时序监视平台，它提供一组用于数据引入、异常检测和诊断的 API，无需了解机器学习即可使用它们。
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: metrics-advisor
+  ms.topic: landing-page
+  ms.date: 08/13/2020
+  ms.author: aahi
+  ms.openlocfilehash: f30f45b8a683d9403973517ee4558be9cd4be664
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928694"
+landingContent:
+- title: 关于指标顾问
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是指标顾问？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 浏览演示站点
+      url: quickstarts/explore-demo.md
+    - text: 监视你关于 web 的第一个指标
+      url: quickstarts/web-portal.md
+    - text: 使用 REST API 自定义解决方案
+      url: quickstarts/rest-api.md
+- title: 操作方法文章
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 载入数据
+      url: how-tos/onboard-your-data.md
+    - text: 连接不同的数据馈送源
+      url: data-feeds-from-different-sources.md
+    - text: 管理数据馈送
+      url: how-tos/manage-data-feeds.md
+    - text: 配置指标并微调检测配置
+      url: how-tos/configure-metrics.md
+    - text: 配置警报并使用挂钩获取通知
+      url: how-tos/alerts.md
+    - text: 诊断事件
+      url: how-tos/diagnose-incident.md
+    - text: 使用反馈调整异常检测
+      url: how-tos/anomaly-feedback.md
+    - text: 生成指标图
+      url: how-tos/metrics-graph.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 术语表
+      url: glossary.md
+    - text: 指标顾问 API
+      url: https://go.microsoft.com/fwlink/?linkid=2141634
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest

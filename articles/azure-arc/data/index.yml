@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: 已启用 Azure Arc 的数据服务
+summary: 在你选择的基础结构上使用 Kubernetes 在本地、边缘和多云环境中运行 Azure 数据服务。
+metadata:
+  title: 已启用 Azure Arc 的数据服务（预览）
+  description: 在你选择的基础结构上使用 Kubernetes 在本地、边缘和多云环境中运行 Azure 数据服务。
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3ef94bfc9d3870c4c91116fb2aaf26387999a8da
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928686"
+landingContent:
+- title: 关于
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是已启用 Azure Arc 的数据服务？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 连接模式和要求
+      url: connectivity.md
+    - text: 存储配置
+      url: storage-configuration.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建数据控制器
+      url: create-data-controller.md
+    - text: 安装客户端工具
+      url: install-client-tools.md
+- title: 已启用 Azure Arc 的 PostgreSQL 超大规模（预览）
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建
+      url: create-postgresql-hyperscale-server-group.md
+    - text: 连接
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: Migrate
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: 还原
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: 已启用 Azure Arc 的 SQL 托管实例（预览）
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建
+      url: create-sql-managed-instance.md
+    - text: 连接
+      url: connect-managed-instance.md
+    - text: Migrate
+      url: migrate-to-managed-instance.md
+    - text: 还原
+      url: restore-adventureworks-sample-db.md

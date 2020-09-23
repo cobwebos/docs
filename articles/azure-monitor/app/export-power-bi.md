@@ -3,12 +3,12 @@ title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324363"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979169"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](./app-insights-overview.md) 的数据。
@@ -67,11 +67,11 @@ ms.locfileid: "87324363"
 
    将导出的 M 语言脚本粘贴到高级编辑器中。 
 
-   ![Power BI Desktop 的屏幕截图，其中突出显示了“高级编辑器”](./media/export-power-bi/advancedquery.png)
+   ![屏幕截图显示 Power BI Desktop，并突出显示高级编辑器](./media/export-power-bi/advancedquery.png)
 
 4. 从查询中选择项并选择“漏斗图可视化效果”。
 
-   ![Power BI Desktop 可视化选项的屏幕截图](./media/export-power-bi/selectsequence.png)
+   ![屏幕截图显示 Power BI Desktop 漏斗图可视化选项](./media/export-power-bi/selectsequence.png)
 
 5. 更改标题使其有意义，并将报表发布到 Power BI 云工作区。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "87324363"
 
 1. 登录 Azure 门户，确保可访问资源。
 2. 尝试刷新仪表板的凭据。
-3. 尝试从 PowerBI Desktop 清除缓存。
+3. 尝试从 Power BI Desktop 中清除缓存。
 
 
    如果具有访问权限且刷新凭据不起作用，请开具支持票证。
@@ -98,7 +98,7 @@ ms.locfileid: "87324363"
 
 1. 创建 [API 密钥](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 通过将 Azure 资源管理器 URL 替换为 Application Insights API，更新从分析中导出的 Power BI M 脚本。
-   * 替换**https： \/ /management.azure.com/subscriptions/**
+   * 替换 **https： \/ /management.azure.com/subscriptions/**
    * 替换为 **https:\//api.applicationinsights.io/beta/apps/...**
 3. 最后，将凭据更新为基本凭据，再使用 API 密钥。
 
@@ -121,14 +121,14 @@ ms.locfileid: "87324363"
 1. 登录 [Power BI](https://app.powerbi.com/)。
 2. 打开“获取数据”![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，然后选择“服务” 。
 
-    ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/002.png)
+    ![屏幕截图显示 "服务" 窗口中的 "获取" 按钮。](./media/export-power-bi/002.png)
 
 3. 选择 Application Insights 下的“立即获取”。
 
    ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/003.png)
 4. 提供 Application Insights 资源的详细信息，然后**登录**。
 
-    ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/005.png)
+    ![屏幕截图显示连接到 Application Insights 窗口。](./media/export-power-bi/005.png)
 
      可以在 Application Insights 概述窗格中找到此信息：
 
