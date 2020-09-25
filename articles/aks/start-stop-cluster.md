@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 author: palma21
-ms.openlocfilehash: a743a6c30d5ce8bcaf275bf1a658f8343de4d4fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278560"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止并启动 Azure Kubernetes 服务 (AKS) 群集 (预览) 
 
@@ -69,7 +69,7 @@ az provider register --namespace Microsoft.ContainerService
 az aks stop --name myAKSCluster --resource-group myResourceGroup
 ```
 
-你可以使用 [az aks show] [az] 命令来验证群集停止的时间，并在 `powerState` `Stopped` 以下输出中确认显示内容：
+你可以使用 [az aks show][az-aks-show] 命令来验证群集停止的时间，并在 `powerState` `Stopped` 以下输出中确认显示内容：
 
 ```json
 {
@@ -100,7 +100,7 @@ az aks stop --name myAKSCluster --resource-group myResourceGroup
 az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
-可以使用 [az aks show] [az] 命令来验证群集的启动时间，并 `powerState` `Running` 在以下输出中确认显示内容：
+可以使用 [az aks show][az-aks-show] 命令来验证群集的启动时间，并 `powerState` `Running` 在以下输出中确认显示内容：
 
 ```json
 {
@@ -136,3 +136,4 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 [az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az_aks_show

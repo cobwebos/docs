@@ -3,34 +3,35 @@ title: Azure 混合权益和 Linux Vm
 description: Azure 混合权益允许在 Azure 上运行的 Linux 虚拟机上节省资金。
 services: virtual-machines
 documentationcenter: ''
-author: asinn826
+author: mathapli
 manager: westonh
-editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: a9ea3b21908d1f461745ffe2689b36f8efcb6f89
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279767"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure 混合权益–它如何应用于 Linux 虚拟机
+# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>预览： Azure 混合权益-它如何应用于 Linux 虚拟机
 
 ## <a name="overview"></a>概述
 
-Azure 混合权益使你可以通过使用自己预先存在的 Red Hat 或 SUSE 软件订阅，更轻松地将本地 Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise (SLES) 服务器迁移到 Azure。 利用此权益，你只需为 VM 的基础结构成本付费，因为你的 RHEL 或 SLES 订阅会涵盖软件费用。 该权益适用于所有 RHEL 和 SLES Marketplace 即用即付 (PAYG) 映像。
+Azure 混合权益使你可以通过使用自己预先存在的 Red Hat 或 SUSE 软件订阅，更轻松地将本地 Red Hat Enterprise Linux (RHEL) 并 SUSE Linux Enterprise Server (的虚拟机) 到 Azure。 利用此权益，你只需为 VM 的基础结构成本付费，因为你的 RHEL 或 SLES 订阅会涵盖软件费用。 该权益适用于所有 RHEL 和 SLES Marketplace 即用即付 (PAYG) 映像。
+
+> [!IMPORTANT]
+> 适用于 Linux Vm 的 Azure 混合权益目前为公共预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="benefit-description"></a>权益说明
 
 通过 Azure 混合权益，你可以更轻松地将本地 RHEL 和 SLES 服务器迁移到 Azure，方法是将 Azure 上的现有 RHEL 和 SLES PAYG Vm 转换为自带订阅 (BYOS) 计费。 通常，从 Azure 上的 PAYG 映像部署的 Vm 将同时收取基础结构费用和软件费用。 使用 Azure 混合权益，可以在不重新部署的情况下将 PAYG Vm 转换为 BYOS 计费模型，以避免任何停机风险。
 
-![Linux Vm 上的 Azure 混合权益成本可视化](./media/ahb-linux/azure-hybrid-benefit-cost.png)
+:::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Azure 混合权益 Linux Vm 的成本可视化。":::
 
 启用 RHEL 或 SLES VM 权益后，你将不再需要支付 PAYG VM 上通常产生的额外软件费用。 相反，你的 VM 会开始发出 BYOS 费用，这只包括计算硬件费用和不收取软件费用。
 

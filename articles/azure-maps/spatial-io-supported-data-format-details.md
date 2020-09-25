@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310163"
 ---
 # <a name="supported-data-format-details"></a>支持的数据格式详细信息
 
@@ -23,7 +23,7 @@ ms.locfileid: "87127921"
 
 空间 IO 模块支持以下命名空间中的 XML 标记。
 
-| 命名空间前缀 | 命名空间 URI   | 注释                                                                    |
+| 命名空间前缀 | 命名空间 URI   | 说明                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | GeoRSS 文件中的只读支持。           |
@@ -45,7 +45,7 @@ ms.locfileid: "87127921"
 
 空间 IO 模块支持以下 KML 元素。
 
-| 元素名称         | 读取    | 写入   | 注释                                                                                                                      |
+| 元素名称         | 读取    | 写入   | 说明                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | 部分 | 是     | 对象经过分析，但不用于定位形状。                                                                    |
 | `AddressDetails`     | 部分 | 否      | 对象经过分析，但不用于定位形状。                                                                    |
@@ -68,7 +68,7 @@ ms.locfileid: "87127921"
 | `extrude`            | 部分 | 部分 | 仅多边形支持。 具有不同高度的多边形的 MultiGeometry 将被分解为单独的功能。 不支持线条样式。 海拔高度为0的多边形将呈现为平面多边形。 在读取时，外部环中第一个坐标的海拔将作为多边形的 height 属性添加。 然后，第一个坐标的海拔将用于呈现地图上的多边形。 |
 | `fill`               | 是     | 是     |                                                                                                                            |
 | `Folder`             | 是     | 是     |                                                                                                                            |
-| `GroundOverlay`      | 是     | 是     | `color`不受支持                                                                                                   |
+| `GroundOverlay`      | 是     | 是     | `color` 不受支持                                                                                                   |
 | `heading`            | 部分 | 否      | 分析但不呈现 `SimpleDataLayer` 。 仅当数据存储在形状的属性中时才写入。                 |
 | `hotSpot`            | 是     | 部分 | 仅当数据存储在形状的属性中时才写入。 仅将单元输出为 "像素"。                         |
 | `href`               | 是     | 是     |                                                                                                                            |
@@ -99,7 +99,7 @@ ms.locfileid: "87127921"
 | `Point`              | 是     | 是     |                                                                                                                            |
 | `Polygon`            | 是     | 是     |                                                                                                                            |
 | `PolyStyle`          | 是     | 是     |                                                                                                                            |
-| `Region`             | 部分 | 部分 | `LatLongBox`在文档级别支持。                                                                      |
+| `Region`             | 部分 | 部分 | `LatLongBox` 在文档级别支持。                                                                      |
 | `rotation`           | 否      | 否      |                                                                                                                            |
 | `rotationXY`         | 否      | 否      |                                                                                                                            |
 | `scale`              | 否      | 否      |                                                                                                                            |
@@ -111,7 +111,7 @@ ms.locfileid: "87127921"
 | `SimpleData`         | 是     | 是     |                                                                                                                            |
 | `SimpleField`        | 是     | 是     |                                                                                                                            |
 | `size`               | 否      | 否      |                                                                                                                            |
-| `Snippet`            | 部分 | 部分 | `maxLines`特性被忽略。                                                                                  |
+| `Snippet`            | 部分 | 部分 | `maxLines` 特性被忽略。                                                                                  |
 | `south`              | 是     | 是     |                                                                                                                            |
 | `Style`              | 是     | 是     |                                                                                                                            |
 | `StyleMap`           | 部分 | 否      | 仅支持中的正常样式 `StyleMap` 。                                                                        |
@@ -131,7 +131,7 @@ ms.locfileid: "87127921"
 
 空间 IO 模块支持以下 GeoRSS 元素。
 
-| 元素名称             | 读取    | 写入 | 注释                                                                                          |
+| 元素名称             | 读取    | 写入 | 说明                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | 是     | 是   |                                                                                                |
 | `atom:category`          | 是     | 是   |                                                                                                |
@@ -203,7 +203,7 @@ ms.locfileid: "87127921"
 
 空间 IO 模块支持以下 GML 元素。 
 
-| 元素名称            | 读取 | 写入 | 注释                                                                                  |
+| 元素名称            | 读取 | 写入 | 说明                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | 是  | 否    | 编写为 `gml:posList` 。                                                              |
 | `gml:curveMember`       | 是  | 否    |                                                                                        |
@@ -225,12 +225,12 @@ ms.locfileid: "87127921"
 | `gml:LineString`        | 是  | 是   |                                                                                        |
 | `gml:lineStringMember`  | 是  | 是   |                                                                                        |
 | `gml:lineStringMembers` | 是  | 否    |                                                                                        |
-| `gml:MultiCurve`        | 是  | 否    | 仅读取 `gml:LineString` 成员。 编写方式`gml.MultiLineString`                  |
+| `gml:MultiCurve`        | 是  | 否    | 仅读取 `gml:LineString` 成员。 编写方式 `gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | 部分  | 部分   | 仅读取 FeatureCollection。                                              |
 | `gml:MultiLineString`   | 是  | 是   |                                                                                        |
 | `gml:MultiPoint`        | 是  | 是   |                                                                                        |
 | `gml:MultiPolygon`      | 是  | 是   |                                                                                        |
-| `gml:MultiSurface`      | 是  | 否    | 仅读取 `gml:Polygon` 成员。 编写方式`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | 是  | 否    | 仅读取 `gml:Polygon` 成员。 编写方式 `gml.MultiPolygon`                        |
 | `gml:name`              | 是  | 是   |                                                                                        |
 | `gml:outerBoundaryIs`   | 是  | 否    | 使用编写 `gml.exterior` 。                                                          |
 | `gml:Point`             | 是  | 是   |                                                                                        |
@@ -246,7 +246,7 @@ ms.locfileid: "87127921"
 #### <a name="additional-notes"></a>其他说明
 
 - 将搜索成员元素，查找可能在子元素中隐藏的几何图形。 此搜索操作是必需的，因为从 GML 扩展的 XML 格式不能将几何图形作为成员元素的直接子级。
-- `srsName`部分支持 WGS84 坐标和以下代码：[EPSG： 4326](https://epsg.io/4326)）、web Mercator （[EPSG： 3857](https://epsg.io/3857)或其替代代码之一。 任何其他坐标系统都将按原样分析为 WGS84。
+- `srsName` 部分支持 WGS84 坐标和以下代码：[EPSG： 4326](https://epsg.io/4326)) 和 web Mercator ([EPSG： 3857](https://epsg.io/3857) 或其替代代码之一。 任何其他坐标系统都将按原样分析为 WGS84。
 - 除非在读取 XML 源时指定，否则，将根据 XML 源中的提示来确定轴顺序。 为 "纬度，经度" 轴顺序提供了一个首选项。
 - 除非在写入 GML 文件时为属性指定了自定义 GML 命名空间，否则将不会添加其他属性信息。
 
@@ -254,7 +254,7 @@ ms.locfileid: "87127921"
 
 空间 IO 模块支持以下 .GPX) 元素。
 
-| 元素名称             | 读取    | 写入   | 注释                                                                                       |
+| 元素名称             | 读取    | 写入   | 说明                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | 是     | 是     |                                                                                             |
 | `gpx:author`             | 是     | 是     |                                                                                             |
@@ -343,7 +343,7 @@ ms.locfileid: "87127921"
 
 ## <a name="delimited-spatial-data-support"></a>分隔空间数据支持
 
-分隔空间数据（如逗号分隔值文件（CSV））通常具有包含空间数据的列。 例如，可能存在包含纬度和经度信息的列。 在已知文本格式中，可能有包含空间几何数据的列。
+分隔空间数据（如逗号分隔值文件 (CSV) ）通常包含包含空间数据的列。 例如，可能存在包含纬度和经度信息的列。 在已知文本格式中，可能有包含空间几何数据的列。
 
 ### <a name="spatial-data-column-detection"></a>空间数据列检测
 
@@ -389,7 +389,7 @@ ms.locfileid: "87127921"
 
 ### <a name="delimited-data-column-types"></a>分隔的数据列类型
 
-在扫描标题行时，将提取列名中的任何类型信息，并将其用于转换列中的单元格。 下面是一个类型值为 "ColumnName （typeName）" 的列名称的示例。 支持以下不区分大小写的类型名称：
+在扫描标题行时，将提取列名中的任何类型信息，并将其用于转换列中的单元格。 下面是一个类型值为 "ColumnName (typeName) " 的列名称的示例。 支持以下不区分大小写的类型名称：
 
 #### <a name="numbers"></a>数字
 
@@ -398,7 +398,7 @@ ms.locfileid: "87127921"
 - long
 - edm。 double
 - FLOAT
-- Double
+- double
 - 数字
 
 #### <a name="booleans"></a>布尔型
@@ -431,5 +431,4 @@ ms.locfileid: "87127921"
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
-> [!div class="nextstepaction"]
-> [读取和写入空间数据](spatial-io-read-write-spatial-data.md)
+[读取和写入空间数据](spatial-io-read-write-spatial-data.md)

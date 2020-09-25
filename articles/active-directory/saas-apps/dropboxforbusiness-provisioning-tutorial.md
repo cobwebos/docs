@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: e3dd0a31e23418c5871ac3db80b2ba1543576fac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1ad698ccacc2fee94c797a20a43744d4cafba76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305630"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>教程：为 Dropbox for Business 配置自动用户预配
 
@@ -91,15 +91,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”**** 部分下，单击“授权”****。 随即将在新的浏览器窗口中打开 Dropbox for Business 登录对话框。
 
-    ![设置 ](common/provisioning-oauth.png)
+    ![预配 ](common/provisioning-oauth.png)
 
 6. 在 " **登录到 dropbox For business 以与 Azure AD 对话链接** " 对话框中，登录到 Dropbox for business 租户并验证身份。
 
@@ -107,7 +107,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 7. 完成步骤5和6后，单击 " **测试连接** " 以确保 Azure AD 可以连接到 Dropbox for Business。 如果连接失败，请确保你的 Dropbox for Business 帐户具有管理员权限，然后重试。
 
-    ![标记](common/provisioning-testconnection-oauth.png)
+    ![令牌](common/provisioning-testconnection-oauth.png)
 
 8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
