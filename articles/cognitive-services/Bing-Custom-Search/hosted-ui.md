@@ -10,13 +10,13 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 857195e0befb95035572b5b52a01d151b332518e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 4a63a54f5ad4d1bcccecb1d1a4892ef55c238b92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319174"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 
@@ -36,7 +36,7 @@ ms.locfileid: "87406344"
   
 4. 选择布局。
 
-    - 搜索栏和结果（默认值）：在其下方显示搜索结果的搜索框。
+    - 搜索栏和结果 (默认) ：在其下方显示搜索结果的搜索框。
     - 仅结果：仅显示搜索结果，不显示搜索框。 使用此布局时，必须提供搜索查询 (`&q=<query string>`)。 将查询参数添加到 JavaScript 代码片段或 HTML 终结点链接中的请求 URL。
     - 弹出式窗口：提供搜索框并在滑动叠加中显示搜索结果。
 
@@ -95,20 +95,20 @@ ms.locfileid: "87406344"
 
 ### <a name="web-search-configurations"></a>Web 搜索配置
 
-- 启用 web 结果：确定是否启用 web 搜索（你将在页面顶部看到 "Web" 选项卡）
-- Enable 自动建议：确定是否已启用自定义自动建议（请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)以获得额外费用）。
-- 每页的 web 结果：要一次显示的 web 搜索结果数（每页最大值为50结果）。
+- 启用 web 结果：确定是否启用 web 搜索 (你将在页面顶部看到 "Web" 选项卡) 
+- Enable 自动建议：确定是否已启用自定义自动建议 (查看其他成本) 的 [定价](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) 。
+- 每页 web 结果数：每次显示的 web 搜索结果数 (最大值为每页50的结果) 。
 - 图像标题：确定图像是否显示在搜索结果中。
 
 单击“显示高级配置”时将显示以下配置****：
 
 - 突出显示单词：确定是否以粗体显示搜索结果。
-- 链接目标：确定当用户单击搜索结果时，网页是在新的浏览器选项卡（空白）还是在同一浏览器选项卡（self）中打开。
+- 链接目标：确定是在新的浏览器选项卡中打开网页 (空白) 还是在用户单击搜索结果时 (自行) 的相同浏览器选项卡。
 
 ### <a name="image-search-configurations"></a>图像搜索配置
 
-- 启用图像结果：确定是否启用了图像搜索（你将在页面顶部看到 "映像" 选项卡）。
-- 每页的图像结果数：每次显示的图像搜索结果数（每页最大值为150结果）。
+- 启用图像结果：确定是否启用了图像搜索 (你将在页面顶部看到 "映像" 选项卡) 。
+- 每页的图像结果数：每次显示的图像搜索结果数 (最大值为每页150的结果) 。
 
 单击“显示高级配置”时将显示以下配置****。  
   
@@ -116,8 +116,8 @@ ms.locfileid: "87406344"
 
 ### <a name="video-search-configurations"></a>视频搜索配置
 
-- 启用视频结果：确定是否启用视频搜索（你将在页面顶部看到 "视频" 选项卡）。
-- 每页的视频结果：要一次显示的视频搜索结果数（每页最大值为150结果）。
+- 启用视频结果：确定是否启用视频搜索 (你将在页面顶部看到 "视频" 选项卡) 。
+- 每页视频结果：每次显示的视频搜索结果数 (最大值为每页150的结果) 。
 
 单击“显示高级配置”时将显示以下配置****。  
   
@@ -125,10 +125,10 @@ ms.locfileid: "87406344"
 
 ### <a name="miscellaneous-configurations"></a>其他配置
 
-- 页面标题：在 "搜索结果" 页的标题区中显示的文本（不适用于弹出式布局）。
+- 页面标题：在 "搜索结果" 页的标题区中显示的文本， (不用于弹出布局) 。
 - 工具栏主题：确定 "搜索结果" 页的标题区的背景色。
 
-如果单击 "**显示高级配置**"，则会显示以下配置。  
+如果单击 " **显示高级配置**"，则会显示以下配置。  
 
 |Column1  |Column2  |
 |---------|---------|

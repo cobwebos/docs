@@ -1,6 +1,6 @@
 ---
 title: 使用 Azurite 模拟器进行本地 Azure 存储开发
-description: Azurite 开源模拟器提供了一个免费的本地环境，用于测试 Azure 存储应用程序。
+description: Azurite 开源模拟器提供一个免费的本地环境，用于测试 Azure 存储应用程序。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/15/2020
@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001903"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331567"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>将 Azurite 模拟器用于本地 Azure 存储开发
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模拟器进行本地 Azure 存储开发
 
-Azurite 开源模拟器提供了一个免费的本地环境，用于测试 Azure blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 macOS 上提供跨平台支持。
+Azurite 开源模拟器提供一个免费的本地环境，用于测试 Azure Blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 macOS 上提供跨平台支持。
 
 Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿真器](storage-use-emulator.md)。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。
 
@@ -66,7 +66,7 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
    - **Azurite:队列主机** - 队列服务的侦听终结点。 默认设置为 127.0.0.1。
    - **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
    - **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false**秒。
-   - **Azurite：跳过 Api 版本检查** -跳过请求 api 版本检查。 默认值是 **false**秒。
+   - **Azurite:跳过 API 版本检查** - 跳过请求 API 版本检查。 默认值是 **false**秒。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
@@ -313,7 +313,7 @@ Azurite 通过为 `--oauth` 开关指定 `basic` 参数来支持基本身份验�
 
 ### <a name="skip-api-version-check"></a>跳过 API 版本检查
 
-**可选** -启动时，Azurite 检查请求的 API 版本是否有效。 以下命令跳过 API 版本检查：
+**可选** - 启动时，Azurite 会检查请求的 API 版本是否有效。 以下命令会跳过 API 版本检查：
 
 ```console
 azurite --skipApiVersionCheck
@@ -556,6 +556,12 @@ Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，�
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
+### <a name="table-support"></a>表支持
+
+目前正在开发对 Azurite 中表的支持，并公开发布内容！ 要获得最新进度，请检查 [Azurite V3 表](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) 项目。
+
+支持持久函数需要表。
+
 ## <a name="azurite-is-open-source"></a>Azurite 是开源的
 
 欢迎为 Azurite 贡献作品和提出建议。 请访问 Azurite [GitHub 项目](https://github.com/Azure/Azurite/projects)页或 [GitHub 问题](https://github.com/Azure/Azurite/issues)了解产品里程碑，以及我们针对即将推出的功能和 bug 修复正在跟进的工作项。 GitHub 中也列出了详细的工作项。
@@ -563,4 +569,4 @@ Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，�
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md) ，使旧的 Azure 存储模拟器被 Azurite 取代。
-- [配置 Azure 存储连接字符串](storage-configure-connection-string.md) 说明了如何汇编有效的 Azure 存储连接字符串。
+- [配置 Azure 存储连接字符串](storage-configure-connection-string.md)介绍了如何汇编有效的 Azure 存储连接字符串。

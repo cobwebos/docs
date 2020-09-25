@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030821"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263770"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -38,6 +38,14 @@ Azure Monitor 代理会将 Azure Monitor 当前使用的以下代理替换为从
 - 诊断扩展具有每个虚拟机的配置。 这可以轻松定义不同虚拟机的独立定义，但难以集中管理。 它只能将数据发送到 Azure Monitor 指标、Azure 事件中心或 Azure 存储。 对于 Linux 代理，需要开源 Telegraf 代理才能将数据发送到 Azure Monitor 指标。
 
 Azure Monitor 代理使用 [ (DCR) 的数据收集规则 ](data-collection-rule-overview.md) 来配置要从每个代理收集的数据。 数据收集规则实现了大规模的集合设置的可管理性，同时还为计算机的子集启用了唯一的作用域配置。 它们独立于工作区，并且独立于虚拟机，这允许定义一次并在计算机和环境中重复使用。 请参阅 [配置 Azure Monitor 代理的数据收集 (预览版) ](data-collection-rule-azure-monitor-agent.md)。
+
+## <a name="should-i-switch-to-azure-monitor-agent"></a>我应该切换到 Azure Monitor 代理吗？
+Azure Monitor 代理使用 Azure Monitor 的 [通用代理进行](agents-overview.md)共存，但在 Azure Monitor 代理公共预览版期间，你可能会考虑将 vm 转换为非当前代理。 做出此决定时，请考虑以下因素。
+
+- **环境要求。** Azure Monitor 代理的受支持的操作系统、环境和网络要求比当前代理要多。 将来的环境支持，例如新的操作系统版本和网络要求类型，最有可能只在 Azure Monitor 代理中提供。 你应通过 Azure Monitor 代理评估你的环境是否受支持。 如果没有，则需要保留当前代理。 如果 Azure Monitor 代理支持你当前的环境，则应考虑转换到它。
+- **公共预览版风险容差。** 虽然已针对当前支持的方案全面测试 Azure Monitor 代理，但代理仍处于公共预览阶段。 版本更新和功能改进会频繁发生，并可能引入 bug。 你应在 Vm 上评估可能会停止数据收集的 bug 的风险。 如果数据收集的空白不会对服务造成重大影响，请继续 Azure Monitor 代理。 如果对任何不稳定具有低容差，则应该一直使用正式可用的代理，直至 Azure Monitor 代理达到此状态。
+- **当前和新功能要求。** Azure Monitor 代理引入了几种新功能，如筛选、范围和多宿主，但目前还没有用于其他功能（例如自定义日志收集和与解决方案集成）的当前代理的奇偶校验。 Azure Monitor 中的大多数新功能仅适用于 Azure Monitor 代理，因此，超过时间的功能将仅在新代理中可用。 你应考虑 Azure Monitor 代理是否具有你所需的功能，以及你是否可以在不获取新代理中的其他重要功能的情况下临时执行的某些功能。 如果 Azure Monitor 代理具有所需的所有核心功能，请考虑将其转换为。 如果有需要的重要功能，请继续运行当前的代理，直至 Azure Monitor 代理达到奇偶校验。
+- **改编的容差。** 如果你正在使用部署脚本和载入模板等资源设置新环境，你应考虑在 Azure Monitor 代理公开发布后是否能够对其进行改编。 如果这种改编的工作量很小，请立即与当前代理保持同步。 如果需要大量工作，请考虑使用新的代理设置新环境。 Azure Monitor 代理应公开上市，并且为2021中的 Log Analytics 代理发布了弃用日期。 一旦开始，最新的代理将支持几年。
 
 
 
@@ -76,24 +84,8 @@ Azure Monitor 代理会将数据发送到 Azure Monitor 指标或支持 Azure Mo
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-Azure Monitor 代理目前支持以下操作系统。
+有关 Log Analytics 代理当前支持的 Windows 和 Linux 操作系统版本的列表，请参阅 [支持的操作系统](agents-overview.md#supported-operating-systems) 。
 
-### <a name="windows"></a>Windows 
-  - Windows Server 2019
-  - Windows Server 2016
-  - Windows Server 2012
-  - Windows Server 2012 R2
-
-### <a name="linux"></a>Linux
-  - CentOS 6<sup>1</sup>，7
-  - Debian 9、10
-  - Oracle Linux 6<sup>1</sup>，7
-  - RHEL 6<sup>1</sup>、7
-  - SLES 11、12、15
-  - Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS
-
-> [!IMPORTANT]
-> <sup>1</sup>对于这些分发用于发送 Syslog 数据，必须在安装代理后一次重启 rsyslog 服务。
 
 
 ## <a name="security"></a>安全性
@@ -105,7 +97,7 @@ Azure Monitor 代理支持 Azure 服务标记 (需要) AzureMonitor 和 AzureRes
 ## <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
 使用下表中的详细信息将 Azure Monitor 代理实现为 [AZURE VM 扩展](../../virtual-machines/extensions/overview.md) 。 
 
-| 属性 | Windows | Linux |
+| properties | Windows | Linux |
 |:---|:---|:---|
 | 发布者 | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
 | 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |

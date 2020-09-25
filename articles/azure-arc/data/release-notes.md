@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5908083be4e6ed389b606754ffef41a4a371c3e3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934165"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319718"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明-启用了 Azure Arc 的数据服务 (预览) 
 
@@ -29,18 +29,26 @@ ms.locfileid: "90934165"
 
 有关说明，请参阅 [什么是启用了 Azure Arc 的数据服务？](overview.md)
 
+### <a name="known-issues"></a>已知问题
+
+以下问题适用于此版本：
+
+* **正在删除 PostgreSQL 超大规模服务器组**：如果更改了服务器组或实例的配置，请等待编辑操作完成，然后再删除 PostgreSQL 超大规模服务器组。
+
+* ** `azdata notebook run` 可能会失败**：若要解决此问题，请 `azdata notebook run` 在 Python 虚拟环境中运行。 如果尝试使用 Azure Data Studio 部署向导创建 SQL 托管实例或 PostgreSQL 超大规模服务器组失败，也会出现此问题。 在这种情况下，你可以打开笔记本，并单击笔记本顶部的 " **全部运行** " 按钮。
+
 ## <a name="next-steps"></a>后续步骤
 
 > 想尝试一下吗？  
-> 在 Azure Kubernetes Service 上快速开始使用 [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) (AKS) 、AWS 弹性 Kubernetes SERVICE (EKS) 、Google Cloud Kubernetes ENGINE (GKE) 或 Azure VM。
+> 在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes 服务 (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中，通过 [Azure Arc 快速入门](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)快速开始操作。
 
 [安装客户端工具](install-client-tools.md)
 
-[创建 Azure Arc 数据控制器](create-data-controller.md) (需要先安装客户端工具) 
+[创建 Azure Arc 数据控制器](create-data-controller.md)（首先需要安装客户端工具）
 
-[在 Azure arc 上创建 AZURE SQL 托管实例](create-sql-managed-instance.md) (要求首先创建 azure arc 数据控制器) 
+[在 Azure Arc 上创建 Azure SQL 托管实例](create-sql-managed-instance.md)（首先需要创建 Azure Arc 数据控制器）
 
-[在 Azure arc 上创建 Azure Database for PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md) ， (需要首先创建 azure arc 数据控制器) 
+[在 Azure Arc 上创建 Azure Database for PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md)（首先需要创建 Azure Arc 数据控制器）
 
 ## <a name="known-limitations-and-issues"></a>已知限制和问题
 

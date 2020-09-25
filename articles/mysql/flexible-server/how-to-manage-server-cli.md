@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 3798396c72bc01bc20f1b4ee3ee66961fe33bff5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7701fe91d0e3f78f9596687bf945ba4b11c2d199
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331686"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure Database for MySQL 灵活的服务器 (预览版) 
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>缩放计算和存储
 
-可以使用以下命令轻松增加计算层、Vcore 和存储空间。 你可以查看所有服务器操作，你可以执行 [az mysql 挠性 server server 概述](/cli/azure/mysql/server)
+可以使用以下命令轻松增加计算层、Vcore 和存储空间。 你可以查看所有服务器操作，你可以执行 [az mysql 灵活的服务器更新](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update)
 
 ```azurecli-interactive
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v4 --storage-size 6144
@@ -64,10 +64,10 @@ storage-size | 6144 | 服务器的存储容量（以 MB 为单位）。 最小51
 
 | Cmdlet | 使用情况| 说明 |
 | --- | ---| --- |
-|[az mysql 挠性-server db create](/cli/azure/sql/db#az-mysql-flexible-server-db-create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |创建数据库|
-|[az mysql 挠性-server db 删除](/cli/azure/sql/db#az-mysql-flexible-server-db-delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|从服务器中删除数据库。 此命令不会删除你的服务器。 |
-|[az mysql 挠性-server db 列表](/cli/azure/sql/db#az-mysql-flexible-server-db-list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|列出服务器上的所有数据库|
-|[az mysql 挠性-server db show](/cli/azure/sql/db#az-mysql-flexible-server-db-show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|显示数据库的更多详细信息|
+|[az mysql 挠性-server db create](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |创建数据库|
+|[az mysql 挠性-server db 删除](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|从服务器中删除数据库。 此命令不会删除你的服务器。 |
+|[az mysql 挠性-server db 列表](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|列出服务器上的所有数据库|
+|[az mysql 挠性-server db show](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|显示数据库的更多详细信息|
 
 ## <a name="update-admin-password"></a>更新管理员密码
 可以通过以下命令更改管理员角色的密码
@@ -80,7 +80,7 @@ az mysql flexible-server update --resource-group myresourcegroup --name mydemose
 > 密码必须包含以下类别中的三类：英文大写字母、英文小写字母、数字和非字母数字字符。
 
 ## <a name="delete-a-server"></a>删除服务器
-如果要删除 MySQL 灵活服务器，可以运行 [az MySQL 挠性 server server delete](/cli/azure/mysql/server#az-mysql-flexible-server-delete) 命令。
+如果要删除 MySQL 灵活服务器，可以运行 [az MySQL 挠性 server server delete](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete) 命令。
 
 ```azurecli-interactive
 az mysql flexible-server delete --resource-group myresourcegroup --name mydemoserver

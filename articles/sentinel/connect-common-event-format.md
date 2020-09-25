@@ -14,30 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 51e6c74a8b80b94ca552645cfbb76bd4e162a62b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650054"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320381"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式连接外部解决方案
 
 
 当你连接用于发送 CEF 消息的外部解决方案时，使用 Azure Sentinel 连接三个步骤：
 
-步骤1： [通过部署代理连接 CEF](connect-cef-agent.md) 步骤2： [执行特定于解决方案的步骤](connect-cef-solution-config.md) 步骤3： [验证连接性](connect-cef-verify.md)
+步骤1： [通过部署 Syslog/CEF 转发器步骤2连接 CEF](connect-cef-agent.md) ： [执行特定于解决方案的步骤](connect-cef-solution-config.md) 步骤3： [验证连接性](connect-cef-verify.md)
 
-本文介绍了连接的工作原理，提供了先决条件，并为你提供了在安全解决方案上部署代理的步骤，这些解决方案将在 Syslog 之上发送常见事件格式 (CEF) 消息。 
+本文介绍了连接的工作原理，提供了先决条件，并提供了在安全解决方案上部署代理的步骤，这些解决方案将在 Syslog 之上发送常见事件格式 (CEF) 消息。 
 
 > [!NOTE] 
 > 数据存储在运行 Azure Sentinel 的工作区的地理位置。
 
-若要进行此连接，需要在专用 Linux 计算机 (VM 或本地) 上部署代理，以支持设备与 Azure Sentinel 之间的通信。 下图说明了 Azure 中 Linux VM 的情况下的设置。
+若要进行此连接，需要部署 Syslog 转发器服务器，以支持设备与 Azure Sentinel 之间的通信。  服务器由专用 Linux 计算机 (VM 或本地) ，其中安装了适用于 Linux 的 Log Analytics 代理。 
+
+下图说明了 Azure 中 Linux VM 的情况下的设置：
 
  ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
-或者，如果你在其他云中或本地计算机中使用 VM，则会存在此设置。 
+或者，如果你在另一个云中或在本地计算机上使用 VM，则会存在此设置： 
 
  ![本地 CEF](./media/connect-cef/cef-syslog-onprem.png)
 
@@ -46,7 +48,7 @@ ms.locfileid: "88650054"
 
 请确保根据组织的安全策略配置计算机的安全性。 例如，你可以将网络配置为与你的企业网络安全策略一致，并更改守护程序中的端口和协议以符合你的要求。 你可以使用以下说明来改善计算机安全配置：  [Azure 中的安全 VM](../virtual-machines/security-policy.md)、 [网络安全的最佳做法](../security/fundamentals/network-best-practices.md)。
 
-若要在安全解决方案和 Syslog 计算机之间使用 TLS 通信，需要将 Syslog 守护程序 (rsyslog 或 syslog-ng) 配置为在 TLS 中通信： [使用 Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，使用 [tls 加密日志消息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
+若要在 Syslog 源和 Syslog 转发器之间使用 TLS 通信，则需要将 Syslog 守护程序 (rsyslog 或 syslog-ng) 配置为在 TLS 中进行通信： [使用 Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，使用 [tls 加密日志消息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
 ## <a name="prerequisites"></a>先决条件

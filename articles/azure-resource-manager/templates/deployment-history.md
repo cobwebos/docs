@@ -3,13 +3,13 @@ title: 部署历史记录
 description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure Resource Manager 部署操作。
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284612"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
 
@@ -21,9 +21,9 @@ ms.locfileid: "84117836"
 
 ## <a name="get-deployments-and-correlation-id"></a>获取部署和相关 ID
 
-可通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看部署详细信息。 每个部署都有一个相关 ID，用于跟踪相关的事件。 与技术支持人员合作排查部署问题时，它非常有用。
+可通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看部署详细信息。 每个部署都有一个相关 ID，用于跟踪相关的事件。 如果 [创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)，则支持人员可能会要求你提供相关 ID。 支持人员使用相关 ID 识别失败部署的操作。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 选择要检查的资源组。
 
@@ -61,13 +61,13 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要列出资源组部署，请使用 [az 部署组列表](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list)。
+若要列出资源组部署，请使用 [az 部署组列表](/cli/azure/group/deployment#az-deployment-group-list)。
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-若要获取特定部署，请使用 [az 部署组显示](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show)。
+若要获取特定部署，请使用 [az 部署组显示](/cli/azure/group/deployment#az-deployment-group-show)。
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -115,7 +115,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 每个部署可能包括多个操作。 若要查看某个部署的更多详细信息，请参阅部署操作。 当部署失败时，部署操作会包含一条错误消息。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在部署的摘要上，选择“操作详细信息”。****
 

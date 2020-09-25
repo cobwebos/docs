@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331771"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -234,6 +234,7 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 9033：无法发现，因为 VM 用户名包含无效字符。     |   在用户名中检测到无效字符。   |   请再次提供 VM 凭据，确保不存在无效字符。
 9034：提供的用户名不是 UPN 格式。    |   用户名不是 UPN 格式。  |   确保用户名 (UPN) 格式为用户主体名称。
 9035：无法发现，因为 Powershell 语言模式未设置为 "完全语言"。  |   来宾 VM 中的 Powershell 的语言模式未设置为 "完全语言"。   |   确保将 PowerShell 语言模式设置为 "完整语言"。
+9037：数据收集暂时暂停，因为 VM 响应时间太高。    |   发现的 VM 的响应时间太长     |   无需采取措施。 将在24小时内尝试进行一次重试，以便进行应用程序发现，使用3小时进行依赖关系分析 (无代理) 。
 10000：不支持操作系统类型。   |   服务器上运行的操作系统既不是 Windows 也不是 Linux。    |   受支持的操作系统类型仅为 Windows 和 Linux。
 10001：在设备上找不到服务器发现脚本。    |   发现未按预期方式工作。   |   若要解决此问题，请联系 Microsoft 支持部门。
 10002：发现任务未按时完成。     |   发现代理未按预期方式工作。     |   此问题应在24小时内自动解决。 如果问题持续出现，请联系 Microsoft 支持。

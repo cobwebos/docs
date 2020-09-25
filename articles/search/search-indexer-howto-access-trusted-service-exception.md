@@ -8,16 +8,19 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971415"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320466"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>通过受信任的服务异常安全访问存储帐户中的数据
 
 访问存储帐户中数据的索引器可以利用 [受信任的服务异常](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) 功能来安全地访问数据。 此机制为无法 [通过 IP 防火墙规则授予索引器访问](search-indexer-howto-access-ip-restricted.md) 权限的客户提供了一种简单、安全和免费的替代方法来访问存储帐户中的数据。
+
+> [!NOTE]
+> 支持通过受信任的服务例外访问存储帐户中的数据仅限于 Azure Blob 存储和 Azure Data Lake Gen2 存储。 不支持 Azure 表存储。
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>步骤1：通过标识配置到存储帐户的连接
 

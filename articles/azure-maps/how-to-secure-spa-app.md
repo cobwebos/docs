@@ -5,17 +5,17 @@ description: 如何使用非交互式 Azure AD 基于角色的访问控制和 Az
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: devx-track-js
+ms.openlocfilehash: e49954065f8a4ec03eb54d7333a3fff34bafb143
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319650"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
 
@@ -30,15 +30,15 @@ ms.locfileid: "88006411"
 
 创建安全的 web 服务应用程序，该应用程序负责 Azure AD 的身份验证。 
 
-1. 在 Azure 门户中创建函数。 有关详细信息，请参阅[Create Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)。
+1. 在 Azure 门户中创建函数。 有关详细信息，请参阅 [Create Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)。
 
-2. 在 Azure 函数上配置 CORS 策略，使其可供单个页面 web 应用程序访问。 这将使浏览器客户端安全地成为你的 web 应用程序的允许来源。 请参阅[添加 CORS 功能](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality)。
+2. 在 Azure 函数上配置 CORS 策略，使其可供单个页面 web 应用程序访问。 这将使浏览器客户端安全地成为你的 web 应用程序的允许来源。 请参阅 [添加 CORS 功能](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality)。
 
 3. 在 Azure 函数中[添加系统分配的标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)，以允许创建服务主体，以便对 Azure AD 进行身份验证。  
 
-4. 向 Azure Maps 帐户授予对系统分配的标识的基于角色的访问权限。 有关详细信息，请参阅[授予基于角色的访问权限](#grant-role-based-access)。
+4. 向 Azure Maps 帐户授予对系统分配的标识的基于角色的访问权限。 有关详细信息，请参阅 [授予基于角色的访问权限](#grant-role-based-access) 。
 
-5. 编写 Azure 函数的代码，以使用系统分配的标识和支持的机制之一或 REST 协议获取 Azure Maps 访问令牌。 请参阅[获取 Azure 资源的令牌](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+5. 编写 Azure 函数的代码，以使用系统分配的标识和支持的机制之一或 REST 协议获取 Azure Maps 访问令牌。 请参阅 [获取 Azure 资源的令牌](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
 
     示例 REST 协议示例：
 
@@ -102,19 +102,19 @@ ms.locfileid: "88006411"
 
 ## <a name="grant-role-based-access"></a>授予基于角色的访问权限
 
-可以通过将系统分配的标识分配给一个或多个 Azure 角色定义，将*基于角色的访问控制授予 AZURE RBAC) access (* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请**访问 (IAM) 的 "访问控制**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。
+可以通过将系统分配的标识分配给一个或多个 Azure 角色定义，将 *基于角色的访问控制授予 AZURE RBAC) access (* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请 **访问 (IAM) 的 "访问控制 **"。 选择 " **角色**"，然后搜索以 *Azure Maps*开头的角色。
 
-1. 中转到你的**Azure Maps 帐户**。 ** (IAM) **  >  **角色分配**选择 "访问控制"。
+1. 中转到你的 **Azure Maps 帐户**。 ** (IAM) **  >  **角色分配**选择 "访问控制"。
 
     > [!div class="mx-imgBorder"]
     > ![使用 Azure RBAC 授予访问权限](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择**Function App**。 按名称选择主体。 再选择“保存”。
+2. 在 " **角色分配** " 选项卡上的 " **角色**" 下，选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者**。 在 " **分配访问权限**" 下，选择 **Function App**。 按名称选择主体。 再选择“保存”。
 
-   * 有关[添加或删除角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的详细信息，请参阅。
+   * 有关 [添加或删除角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的详细信息，请参阅。
 
 > [!WARNING]
-> Azure Maps 内置角色定义提供对许多 Azure Maps REST Api 的一种非常大的授权访问权限。 若要限制对 Api 的访问权限，请参阅[创建自定义角色定义和将系统分配的标识分配](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)给自定义角色定义。 这将允许应用程序访问 Azure Maps 所需的最小特权。
+> Azure Maps 内置角色定义提供对许多 Azure Maps REST Api 的一种非常大的授权访问权限。 若要限制对 Api 的访问权限，请参阅 [创建自定义角色定义和将系统分配的标识分配](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) 给自定义角色定义。 这将允许应用程序访问 Azure Maps 所需的最小特权。
 
 ## <a name="next-steps"></a>后续步骤
 

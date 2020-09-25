@@ -4,12 +4,12 @@ description: 使用 Azure Resource Manager 将资源移到新的资源组或订�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319548"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -34,6 +34,10 @@ ms.locfileid: "90603146"
    * [网络移动指南](./move-limitations/networking-move-limitations.md)
    * [恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)
+
+1. 如果将已分配 Azure 角色的资源直接分配给资源 (或子资源) ，则不会移动角色分配，也不会将其变成孤立角色。 移动之后，必须重新创建角色分配。 最终，将自动删除孤立角色分配，但最佳做法是在移动资源之前删除角色分配。
+
+    有关如何管理角色分配的信息，请参阅 [列出 azure 角色分配](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) 以及 [添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
 
 1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”  作为问题类型。
 
@@ -194,7 +198,7 @@ Authorization: Bearer <access-token>
 
 在验证是否可以移动资源后，会看到一个通知，指示移动操作正在运行。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="通知":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="提醒":::
 
 操作完成后，你会获得结果通知。
 

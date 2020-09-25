@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263583"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教程：将 Azure SQL 数据库添加到自动故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "87496332"
 
 使用 Azure 门户创建故障转移组，并将数据库添加到其中。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果**AZURE sql**不在列表中，请选择 "**所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **AZURE sql** 不在列表中，请选择 " **所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择在第1部分中创建的数据库，例如 `mySampleDatabase` 。
 1. 可以在服务器级别配置故障转移组。 在**服务器名称**下选择服务器的名称以打开服务器的设置。
 
@@ -163,7 +163,7 @@ ms.locfileid: "87496332"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| Command | 注释 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 在 Azure SQL 数据库中创建托管单一数据库和弹性池的的服务器。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为 Azure SQL 数据库中的服务器创建防火墙规则。 |
@@ -211,7 +211,7 @@ ms.locfileid: "87496332"
 
 使用 Azure 门户测试故障转移。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果**AZURE sql**不在列表中，请选择 "**所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **AZURE sql** 不在列表中，请选择 " **所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择在第2部分中创建的数据库，例如 `mySampleDatbase` 。
 1. 在**服务器名称**下选择服务器的名称以打开服务器的设置。
 
@@ -286,7 +286,7 @@ ms.locfileid: "87496332"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| Command | 注释 |
+| 命令 | 注释 |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 执行 Azure SQL 数据库故障转移组的故障转移。 |
@@ -355,7 +355,7 @@ ms.locfileid: "87496332"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| Command | 注释 |
+| 命令 | 注释 |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 |
 

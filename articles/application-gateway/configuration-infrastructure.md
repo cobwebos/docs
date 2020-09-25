@@ -7,23 +7,23 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ce0e03407349505d54aeb22b164fa8593446967d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652778"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319786"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>应用程序网关基础结构配置
 
-应用程序网关基础结构包括虚拟网络、子网、网络安全组和用户定义的路由。
+应用程序网关基础结构包括虚拟网络、子网、网络安全组和用户定义路由。
 
 ## <a name="virtual-network-and-dedicated-subnet"></a>虚拟网络和专用子网
 
-应用程序网关是虚拟网络中的专用部署。 需要在虚拟网络中为应用程序网关配置一个专用子网。 在子网中，可以创建给定应用程序网关部署的多个实例。 还可以在该子网中部署其他应用程序网关。 但不能在应用程序网关子网中部署其他任何资源。
+应用程序网关是虚拟网络中的专用部署。 需要在虚拟网络中为应用程序网关配置一个专用子网。 在子网中，可以创建给定应用程序网关部署的多个实例。 还可以在该子网中部署其他应用程序网关。 但不能在应用程序网关子网中部署其他任何资源。 不能在同一子网中混合使用 Standard_v2 和 Standard Azure 应用程序网关。
 
 > [!NOTE]
-> 不能在同一子网中混合使用 Standard_v2 和 Standard Azure 应用程序网关。
+> [虚拟网络服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md) 当前在应用程序网关子网中不受支持。
 
 ### <a name="size-of-the-subnet"></a>子网的大小
 
@@ -50,7 +50,7 @@ ms.locfileid: "89652778"
 
 - 必须允许目标子网为“任意”的 AzureLoadBalancer 标记的流量 。
 
-### <a name="allow-access-to-a-few-source-ips"></a>允许访问一些源 Ip
+### <a name="allow-access-to-a-few-source-ips"></a>允许访问少量源 IP
 
 对于此方案，请在应用程序网关子网中使用 NSG。 按以下优先顺序对子网施加以下限制：
 

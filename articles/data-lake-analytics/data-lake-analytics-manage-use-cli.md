@@ -6,12 +6,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: d4b9a7be36bd4c0a4044f3e76b96b21a16eb80de
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320840"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
 
@@ -141,7 +141,7 @@ Data Lake Analytics 目前支持以下两个数据源：
    az dla account blob-storage list --account "<Data Lake Analytics account name>"
    ```
 
-![Data Lake Analytics 列表数据源](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
+![显示 Azure C L I 并突出显示 "dataLakeStoreAccounts：" 信息的屏幕截图。](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>删除数据源：
 
@@ -185,7 +185,7 @@ Data Lake Analytics 目前支持以下两个数据源：
 >    ```
 
 ### <a name="cancel-jobs"></a>取消作业
-使用 list 命令查找作业 ID，并使用 cancel 来取消相应作业。
+使用 list 命令查找作业 ID，然后使用 "取消" 来取消该作业。
 
    ```azurecli
    az dla job cancel --account "<Data Lake Analytics account name>" --job-identity "<Job Id>"

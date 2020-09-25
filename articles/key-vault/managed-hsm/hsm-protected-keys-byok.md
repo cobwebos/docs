@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320619"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>将受 HSM 保护的密钥导入到托管 HSM (BYOK) 
 
- Azure Key Vault 托管 HSM 支持导入内部硬件安全模块中生成的密钥 (HSM) ;密钥永远不会离开 HSM 保护边界。 此场景通常被称为创建自己的密钥 (BYOK)。 托管 HSM 使用 (FIPS 140-2 第3级验证) 的 Hsm 的 nCipher nShield 系列来保护密钥。
+ Azure Key Vault 托管 HSM 支持导入内部硬件安全模块中生成的密钥 (HSM) ;密钥永远不会离开 HSM 保护边界。 此场景通常被称为创建自己的密钥 (BYOK)。 托管 HSM 使用 Marvell LiquidSecurity HSM 适配器 (FIPS 140-2 第3级验证的) 来保护密钥。
 
 使用本文中的信息来帮助你规划、生成并传输自己的受 HSM 保护的密钥，以便与托管 HSM 一起使用。
 
@@ -72,7 +72,7 @@ az login
 
 |项名|密钥类型|密钥大小|源|说明|
 |---|---|---|---|---|
-|密钥交换密钥 (KEK)|RSA| 2,048 位<br />3,072 位<br />4,096 位|托管 HSM|托管 HSM 中生成的支持 HSM 的 RSA 密钥对|
+|密钥交换密钥 (KEK)|RSA| 2,048 位<br />3,072 位<br />4,096 位|托管的 HSM|托管 HSM 中生成的支持 HSM 的 RSA 密钥对|
 |目标密钥|RSA|2,048 位<br />3,072 位<br />4,096 位|供应商 HSM|要传输到托管 HSM 的密钥|
 
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>生成密钥并将其传输到托管 HSM

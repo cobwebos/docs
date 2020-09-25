@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: e4d3a594011cb57ce6dfd951215d0ae7471ae7c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331669"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>网络概述-Azure Database for PostgreSQL-灵活服务器
 
@@ -62,7 +62,7 @@ ms.locfileid: "90933335"
 
    PostgreSQL 灵活的服务器必须位于为 PostgreSQL 灵活服务器仅 **委派** 的子网中。 这种委托意味着只有 Azure Database for PostgreSQL 灵活的服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。 可以通过将子网分配为 DBforPostgreSQL/flexibleServers，来委托子网。
 
-了解如何在 [Azure 门户](how-to-manage-virtual-network-portal.md) 或 [Azure CLI](how-to-manage-virtual-network-cli.md)中创建具有私有访问权限的灵活服务器 (VNet 集成) 。
+* ** (NSG 的网络安全组) ** 网络安全组中的安全规则使你可以筛选可以流入和流出虚拟网络子网和网络接口的网络流量类型。 有关详细信息，请参阅 [网络安全组概述](../../virtual-network/network-security-groups-overview.md) 。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不受支持的虚拟网络方案
@@ -71,6 +71,7 @@ ms.locfileid: "90933335"
 * 如果子网中存在资源，则不能增加 (地址空间) 的子网大小
 * 不支持跨区域的对等互连 Vnet
 
+了解如何在 [Azure 门户](how-to-manage-virtual-network-portal.md) 或 [Azure CLI](how-to-manage-virtual-network-cli.md)中创建具有私有访问权限的灵活服务器 (VNet 集成) 。
 
 ## <a name="public-access-allowed-ip-addresses"></a>公共访问（允许的 IP 地址）
 公共访问方法的特征包括：
@@ -107,12 +108,9 @@ ms.locfileid: "90933335"
 ## <a name="hostname"></a>主机名
 无论你选择哪种网络选项，我们都建议你始终使用完全限定的域名 (FQDN) 在连接到灵活的服务器时使用主机名。 不保证服务器的 IP 地址保持静态。 使用 FQDN 有助于避免更改连接字符串。 
 
-IP 更改的一种情况是，如果使用的是区域冗余 HA，并且主数据库和辅助数据库之间发生故障转移。 使用 FQDN 意味着可以使用相同的连接字符串无缝重试连接。
-
 示例
 * 您 `hostname = servername.postgres.database.azure.com`
-* 避免使用 `hostname = 10.0.0.4` (专用地址) 或 `hostname = 40.2.45.67` (公共地址) 
-
+* 如果可能，请避免使用 `hostname = 10.0.0.4` (专用地址) 或 `hostname = 40.2.45.67` (公共地址) 
 
 
 ## <a name="tls-and-ssl"></a>TLS 和 SSL

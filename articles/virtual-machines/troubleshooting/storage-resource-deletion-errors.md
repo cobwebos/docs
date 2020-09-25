@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure 中 Linux VM 上的存储资源删除错误 | Microsoft Docs
-description: 在删除含有附加 VHD 的存储资源时如何进行故障排除。
+description: 了解如何在删除包含附加 Vhd 的存储资源时对 Linux Vm 的问题进行故障排除。
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320075"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>排查存储资源删除错误
 

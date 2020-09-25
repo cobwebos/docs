@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923018"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331635"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接到 Azure SQL 内容并为其编制索引
 
@@ -74,7 +74,9 @@ ms.locfileid: "88923018"
     }
    ```
 
-   可从 [Azure 门户](https://portal.azure.com)获取连接字符串；请使用 `ADO.NET connection string` 选项。
+   连接字符串可遵循以下格式之一：
+    1. 可从 [Azure 门户](https://portal.azure.com)获取连接字符串；请使用 `ADO.NET connection string` 选项。
+    1. 不包含采用以下格式的帐户密钥的托管标识连接字符串： `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;` 。 若要使用此连接字符串，请按照有关 [使用托管标识设置到 AZURE SQL 数据库的索引器连接](search-howto-managed-identities-sql.md)的说明进行操作。
 
 2. 创建目标 Azure 认知搜索索引（如果还没有）。 可以使用[门户](https://portal.azure.com)或[创建索引 API](/rest/api/searchservice/Create-Index) 创建索引。 确保目标索引的架构与源表的架构兼容 - 请参阅 [SQL 和 Azure 认知搜索数据类型之间的映射](#TypeMapping)。
 
@@ -380,7 +382,7 @@ SQL 索引器公开多个配置设置：
 
 如果尝试在只读副本上使用 rowversion，则会看到以下错误： 
 
-在辅助 (只读) 可用性副本上，不支持使用更改跟踪的 rowversion 列。 请更新数据源并指定与主可用性副本的连接。当前数据库 "可更新性" 属性为 "READ_ONLY"。
+“辅助(只读)可用性副本不支持使用 rowversion 列进行更改跟踪。 请更新数据源并指定与主可用性副本的连接。当前数据库的 'Updateability' 属性为 'READ_ONLY'”。
 
 **问：是否可以使用替代的非 rowversion 列进行高使用标记更改跟踪？**
 

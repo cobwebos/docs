@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: be124e7677774cbe6b4a0a2730c662f25b619ee0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9907be0e7cd14876964b820d9b267f279fc50d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331448"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
 如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Linux VM 来修复所有错误，然后重新创建原始 VM。
@@ -28,7 +28,7 @@ ms.locfileid: "86525970"
 1. 停止受影响的 VM。
 1. 为 VM 的 OS 磁盘拍摄快照。
 1. 从快照创建虚拟硬盘。
-1. 将虚拟硬盘附加并装入到另一个 Windows VM，以便进行故障排除。
+1. 将虚拟硬盘附加并装入到另一个 Linux VM，以便进行故障排除。
 1. 连接到故障排除 VM。 编辑文件或运行任何工具以修复原始虚拟硬盘上的问题。
 1. 从故障排除 VM 卸载并分离虚拟硬盘。
 1. 交换 VM 的 OS 磁盘。
@@ -57,7 +57,7 @@ ms.locfileid: "86525970"
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 若要从快照创建磁盘，请执行以下步骤：
 
-1. 从 Azure 门户中选择**Cloud Shell** 。
+1. 从 Azure 门户中选择 **Cloud Shell** 。
 
     ![有关打开 Cloud Shell 的图像](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
 1. 运行以下 PowerShell 命令从快照创建托管磁盘。 应将这些示例名称替换为相应的名称。
@@ -95,12 +95,12 @@ ms.locfileid: "86525970"
 ## <a name="attach-disk-to-another-vm"></a>将磁盘附加到另一个 VM
 在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后，可以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM，请执行以下步骤：
 
-1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”****、“编辑”****，然后单击“添加数据磁盘”****：
+1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”  、“编辑”  ，然后单击“添加数据磁盘”  ：
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 在“数据磁盘”**** 列表中，选择所标识的 VM 的 OS 磁盘。 如果看不到 OS 磁盘，请确保故障排除 VM 和 OS 磁盘位于同一区域（位置）。 
-3. 选择“保存”应用所做的更改。****
+2. 在“数据磁盘”  列表中，选择所标识的 VM 的 OS 磁盘。 如果看不到 OS 磁盘，请确保故障排除 VM 和 OS 磁盘位于同一区域（位置）。 
+3. 选择“保存”应用所做的更改。 
 
 ## <a name="mount-the-attached-data-disk"></a>装载附加的数据磁盘
 
@@ -158,7 +158,7 @@ ms.locfileid: "86525970"
     sudo umount /dev/sdc1
     ```
 
-2. 现在从 VM 中分离虚拟硬盘。 在门户中选择 VM，然后单击“磁盘”。**** 选择现有的虚拟硬盘，并单击“分离”：****
+2. 现在从 VM 中分离虚拟硬盘。 在门户中选择 VM，然后单击“磁盘”。  选择现有的虚拟硬盘，并单击“分离”： 
 
     ![分离现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
@@ -168,8 +168,8 @@ ms.locfileid: "86525970"
 
 Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请按照下列步骤进行操作：
 
-1. 请参阅[Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。****
-1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。********
+1. 转到 [Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。 
+1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。  
         ![有关在 Azure 门户中交换 OS 磁盘的插图](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
 1. 选择已修复的新磁盘，然后键入 VM 的名称以确认更改。 如果在列表中看不到该磁盘，请在从故障排除 VM 中分离磁盘后等待 10 到 15 分钟。 另外，请确保该磁盘与 VM 位于同一位置。
@@ -178,4 +178,4 @@ Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请按照下列步�
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅[排查 Linux VM 上的应用程序连接问题](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
 
-有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

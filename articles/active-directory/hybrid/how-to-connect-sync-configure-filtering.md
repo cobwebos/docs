@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084832"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319973"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Microsoft 365 工作负荷（如 Exchange Online 和 Skype for Business）的用户将受益于完整的全局地址列表，以便他们能够发送电子邮件并呼叫所有人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -113,7 +113,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
    ![连接器属性](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. 单击“配置目录分区”  。
 5. 在“选择目录分区”列表中，根据需要选择和取消选择域。  确认只选择了想要同步的分区。  
-   ![分区](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   ![在 "属性" 窗口中显示目录分区的屏幕截图。](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    如果更改了本地 Active Directory 基础结构并在林中添加或删除了域，请单击“刷新”按钮以获取更新的列表。  刷新时，系统将要求提供凭据。 请提供具有 Windows Server Active Directory 读取权限的任何凭据。 不一定要使用对话框中预先填充的用户。  
    ![需要刷新](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. 完成后，请单击“确定”关闭“属性”对话框。   如果在林中删除了域，屏幕上会弹出消息，指出已删除域且将清除配置。

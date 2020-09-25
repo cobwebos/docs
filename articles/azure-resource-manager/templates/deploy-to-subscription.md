@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: cd1d0a05fc1039d8e99b0af6fc8019face4516bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605169"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284782"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -62,7 +62,7 @@ ms.locfileid: "90605169"
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
-### <a name="schema"></a>架构
+## <a name="schema"></a>架构
 
 用于订阅级别部署的架构不同于资源组部署的架构。
 
@@ -77,6 +77,20 @@ https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTem
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>部署范围
+
+部署到订阅时，可以将一个订阅和订阅中的任何资源组作为目标。 无法部署到与目标订阅不同的订阅。 部署模板的用户必须有权访问指定的作用域。
+
+将对订阅应用模板的资源部分中定义的资源。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+若要以订阅中的资源组为目标，请添加嵌套部署并包括 `resourceGroup` 属性。 在以下示例中，嵌套部署以名为 `rg2` 的资源组为目标。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+本文介绍如何将资源部署到不同范围的模板。 对于创建资源组并向其部署存储帐户的模板，请参阅 [创建资源组和资源](#create-resource-group-and-resources)。 对于创建资源组的模板，对其应用锁，并为资源组分配角色，请参阅 [访问控制](#access-control)。
 
 ## <a name="deployment-commands"></a>部署命令
 
@@ -112,49 +126,6 @@ New-AzSubscriptionDeployment `
 可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
-
-## <a name="deployment-scopes"></a>部署范围
-
-部署到订阅时，可以将一个订阅和订阅中的任何资源组作为目标。 无法部署到与目标订阅不同的订阅。 部署模板的用户必须有权访问指定的作用域。
-
-将对订阅应用模板的资源部分中定义的资源。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        subscription-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-若要以订阅中的资源组为目标，请添加嵌套部署并包括 `resourceGroup` 属性。 在以下示例中，嵌套部署以名为 `rg2` 的资源组为目标。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedDeployment",
-            "resourceGroup": "rg2",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resource-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-本文介绍如何将资源部署到不同范围的模板。 对于创建资源组并向其部署存储帐户的模板，请参阅 [创建资源组和资源](#create-resource-group-and-resources)。 对于创建资源组的模板，对其应用锁，并为资源组分配角色，请参阅 [访问控制](#access-control)。
 
 ## <a name="use-template-functions"></a>使用模板函数
 

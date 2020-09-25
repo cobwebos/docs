@@ -7,17 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.custom: devx-track-js
+ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331856"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
-[设置 Azure 数字孪生实例和身份验证](how-to-set-up-instance-scripted.md)后，可以创建将用于与实例进行交互的客户端应用程序。 设置入门客户端项目后，本文将介绍 **如何在该客户端应用程序中编写代码，以便** 对 Azure 数字孪生实例进行身份验证。
+[设置 Azure 数字孪生实例和身份验证](how-to-set-up-instance-portal.md)后，可以创建将用于与实例进行交互的客户端应用程序。 设置入门客户端项目后，本文将介绍 **如何在该客户端应用程序中编写代码，以便** 对 Azure 数字孪生实例进行身份验证。
 
 本文提供了两种方法来示例代码。 您可以根据自己的选择，使用最适合自己的语言：
 * 示例代码的第一部分使用 Azure 数字孪生 .NET (c # ) SDK。 SDK 是适用于 .NET 的 Azure SDK 的一部分，位于： [*适用于 .net 的 Azure IoT 数字克隆客户端库*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。
@@ -27,7 +27,7 @@ ms.locfileid: "89614004"
 
 ## <a name="prerequisites"></a>先决条件
 
-首先，请完成 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中的设置步骤。 这将确保你有 Azure 数字孪生实例，你的用户具有访问权限，并且已为客户端应用程序设置了权限。 完成此设置后，就可以编写客户端应用代码了。
+首先，请完成 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的设置步骤。 这将确保你有 Azure 数字孪生实例，你的用户具有访问权限，并且已为客户端应用程序设置了权限。 完成此设置后，就可以编写客户端应用代码了。
 
 若要继续，你需要一个客户端应用程序项目，可在其中编写代码。 如果尚未设置客户端应用程序项目，请使用与本教程一起使用的所选语言创建基本项目。
 
@@ -45,13 +45,13 @@ ms.locfileid: "89614004"
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
-若要使用 .NET SDK 进行身份验证，请使用在 [Azure](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) 中定义的凭据获取方法之一。 下面是在同一应用程序) 中经常使用的两个 (：
+若要使用 .NET SDK 进行身份验证，请使用在 [Azure](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) 中定义的凭据获取方法之一。 下面是在同一应用程序) 中经常使用的两个 (：
 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) 非常适合于需要 (MSI) 的托管标识，这是使用 Azure Functions
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) 非常适合于需要 (MSI) 的托管标识，这是使用 Azure Functions
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
-[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法适用于交互式应用程序，并将打开一个 web 浏览器用于身份验证。
+[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)方法适用于交互式应用程序，并将打开一个 web 浏览器用于身份验证。
 
 若要使用交互式浏览器凭据创建经过身份验证的 SDK 客户端，请添加以下代码：
 
@@ -81,7 +81,7 @@ try
 > 虽然你可以将客户端 ID、租户 ID 和实例 URL 直接放置在代码中（如上所示），但最好是让你的代码从配置文件或环境变量获取这些值。
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential 方法
- 如果需要[ (MSI) 的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)（例如，使用 Azure Functions 时）， [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet)方法非常有用。
+ 如果需要[ (MSI) 的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)（例如，使用 Azure Functions 时）， [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)方法非常有用。
 在 Azure 函数中，可以使用如下所示的托管标识凭据：
 
 ```csharp

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f570f13fd39bd25b37c35a2c823e64eaa02fef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295390"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
@@ -39,8 +39,8 @@ Azure 存储提供以下类型的复制：
 
 | 切换 | …到 LRS | …到 GRS/RA-GRS | ...到 ZRS | ...to GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br /> 或 <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
-| <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br /> 或 <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> 请求实时迁移 |
+| <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
+| <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 |
 | <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> |
 | <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 | 执行手动迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
@@ -48,11 +48,11 @@ Azure 存储提供以下类型的复制：
 <sup>2</sup> 在以下区域中不支持从 ZRS 到 GZRS/RA-GZRS，反之亦然：，反之亦然。
 
 > [!CAUTION]
-> 如果为 (RA ) GRS 或 (RA-) GZRS 帐户执行 [帐户故障转移](storage-disaster-recovery-guidance.md) ，则在故障转移后，该帐户在新的主要区域中为本地冗余。 不支持通过故障转移导致的 LRS 帐户的实时迁移到 ZRS 或 GZRS。 你将需要执行 [手动迁移](#perform-a-manual-migration-to-zrs) 到 ZRS 或 GZRS。
+> 如果为 (RA ) GRS 或 (RA-) GZRS 帐户执行 [帐户故障转移](storage-disaster-recovery-guidance.md) ，则在故障转移后，该帐户在新的主要区域中为本地冗余。 不支持通过故障转移导致的 LRS 帐户的实时迁移到 ZRS 或 GZRS。 即使是所谓的故障回复操作，也是如此。 例如，如果你执行从 GZRS 到次要区域中的 LRS 的帐户故障转移，然后再次将其配置为 RA-GRS 并执行另一个帐户故障转移到原始的主要区域，则你无法与主要区域中的 RA-GZRS 联系支持。 相反，你需要执行手动迁移到 ZRS 或 GZRS。
 
 ## <a name="change-the-replication-setting"></a>更改复制设置
 
-只要不更改在主要区域中复制数据的方式，就可以使用 Azure 门户、PowerShell 或 Azure CLI 更改存储帐户的复制设置。 如果要从主要区域中的 LRS 迁移到主要区域中的 ZRS，则必须执行 [手动迁移](#perform-a-manual-migration-to-zrs) 或 [实时迁移](#request-a-live-migration-to-zrs)。
+只要不更改在主要区域中复制数据的方式，就可以使用 Azure 门户、PowerShell 或 Azure CLI 更改存储帐户的复制设置。 如果要从主要区域中的 LRS 迁移到主要区域中的 ZRS，则必须执行手动迁移或实时迁移。
 
 更改存储帐户的复制方式不会导致应用程序停机。
 
@@ -89,7 +89,7 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>执行手动迁移到 ZRS
+## <a name="perform-a-manual-migration-to-zrs-gzrs-or-ra-gzrs"></a>执行到 ZRS、GZRS 或 GZRS 的手动迁移
 
 如果要更改存储帐户中的数据在主要区域中的复制方式，可通过从 LRS 移动到 ZRS，反之亦然。 手动迁移比实时迁移更灵活。 可以控制手动迁移的时间，因此，如果需要在特定日期完成迁移，请使用此选项。
 
@@ -102,9 +102,11 @@ az storage account update \
 - 使用现有工具（如 AzCopy、Azure 存储客户端库之一或可靠的第三方工具）复制数据。
 - 如果你熟悉 Hadoop 或 HDInsight，则可以将源存储帐户和目标存储帐户帐户附加到群集。 然后使用 DistCp 等工具来并行化数据复制过程。
 
-## <a name="request-a-live-migration-to-zrs"></a>请求实时迁移到 ZRS
+## <a name="request-a-live-migration-to-zrs-gzrs-or-ra-gzrs"></a>请求实时迁移到 ZRS、GZRS 或 GZRS
 
-如果需要在不应用程序停机的情况下将存储帐户从 LRS 或 GRS 迁移到主区域中的 ZRS，则可以从 Microsoft 请求实时迁移。 在实时迁移期间，你可以访问你的存储帐户中的数据，并且不会损失持久性或可用性。 Azure 存储 SLA 在迁移过程中保留。 实时迁移不会造成数据丢失。 迁移后，服务终结点、访问密钥、共享访问签名和其他帐户选项保持不变。
+如果需要在不停机的情况下将存储帐户从 LRS 迁移到主要区域中的 ZRS，则可以从 Microsoft 请求实时迁移。 若要从 LRS 迁移到 GZRS 或 GZRS，请首先切换到 GRS 或 RA-GRS，然后请求实时迁移。 同样，你可以请求从 GRS 或 GRS 到 GZRS 或 GZRS 的实时迁移。 若要从 GRS 或 GRS 迁移到 ZRS，请首先切换到 LRS，然后请求实时迁移。
+
+在实时迁移期间，你可以访问存储帐户中的数据，而不会丢失持久性或可用性。 Azure 存储 SLA 在迁移过程中保留。 实时迁移不会造成数据丢失。 迁移后，服务终结点、访问密钥、共享访问签名和其他帐户选项保持不变。
 
 ZRS 仅支持常规用途 v2 帐户，因此请确保在将实时迁移请求提交到 ZRS 之前升级存储帐户。 有关详细信息，请参阅[升级到常规用途 v2 存储帐户](storage-account-upgrade.md)。 存储帐户必须包含要通过实时迁移来迁移的数据。
 
@@ -123,16 +125,16 @@ ZRS 仅支持常规用途 v2 帐户，因此请确保在将实时迁移请求提
 
 1. 选择 **新的支持请求**
 2. 根据帐户信息填写“基本信息”。**** 在“服务”部分，选择“存储帐户管理”以及要转换为 ZRS 的资源。********
-3. 选择“**下一页**”。
+3. 选择“**下一步**”。
 4. 在“问题”部分指定以下值：****
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。****
     - **类别**：选择 **迁移到 ZRS**。
     - **标题**：键入描述性的标题，例如“ZRS 帐户迁移”。****
     - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，我想要从区域中的 [LRS，GRS] 迁移到 ZRS \_ \_ 。
-5. 选择“**下一页**”。
+5. 选择“**下一步**”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。****
-7. 选择“创建”。
+7. 选择“创建” 。
 
 支持人员将与你取得联系，并提供所需的任何帮助。
 
@@ -158,7 +160,7 @@ ZRS 经典版仅适用于常规用途 V1 (GPv1) 存储帐户中的**块 Blob**�
 
 你还可以使用 ZRS 提供的区域中的 Azure 门户、PowerShell 或 Azure CLI 将 ZRS 经典存储帐户升级到 ZRS。
 
-# <a name="portal"></a>[Portal](#tab/portal)
+# <a name="portal"></a>[门户](#tab/portal)
 
 若要升级到 Azure 门户中的 ZRS，请导航到该帐户的 **配置** 设置，然后选择 " **升级**"：
 

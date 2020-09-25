@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 4e7d75bc1a2acd805e573d4c6ad80f9892045551
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5cd35b896419dd30a8a4a18056ac1ccd48d7df6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331703"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 为 Azure Database for MySQL 灵活的服务器创建和管理虚拟网络
 
@@ -33,17 +33,17 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 
 若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以在单独的浏览器标签页中通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 打开 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后选择 Enter 来运行它。  
 
-如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令登录账户。 请注意 **ID** 属性，它是指 Azure 帐户的 **订阅 id** 。
+需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登录账户。 请注意 **ID** 属性，它是指 Azure 帐户的 **订阅 id** 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) 命令选择帐户下的特定订阅。 记下**az login**输出中的**ID**值，以用作命令中的 "**订阅**参数" 的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)。
+使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下**az login**输出中的**ID**值，以用作命令中的 "**订阅**参数" 的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -56,7 +56,7 @@ az account set --subscription <subscription id>
 > 使用此命令会将子网委托给 **DBforMySQL/flexibleServers**。 该委派意味着只有 Azure Database for MySQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。
 >
 
-请参阅 Azure CLI 参考文档 <!--FIXME --> 以获取可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
+请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
 
 - 使用默认的虚拟网络、具有默认地址前缀的子网创建灵活的服务器
     ```azurecli-interactive
@@ -77,7 +77,7 @@ az account set --subscription <subscription id>
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --vnet-address-prefix 10.0.0.0/24 --subnet mySubnet --subnet-address-prefix 10.0.0.0/24
     ```-->
-请参阅 Azure CLI 参考文档 <!--FIXME --> 以获取可配置 CLI 参数的完整列表。
+请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。
 
 
 ## <a name="next-steps"></a>后续步骤

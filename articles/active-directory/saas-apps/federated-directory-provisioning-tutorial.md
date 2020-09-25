@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: c083b0ca7fa506bb951a9ef27d2af04d61482eda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555151"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319939"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>教程：为自动用户预配配置联合目录
 
@@ -128,11 +128,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![预配选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分下，在“租户 URL”中输入 `https://api.federated.directory/v2/`。 输入先前从 " **机密令牌**" 中的联合目录检索并保存的值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到联合目录。 如果连接失败，请确保联合目录帐户具有管理员权限，然后重试。
 

@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319990"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中运行微聚焦企业服务器5。0
 
@@ -27,7 +27,7 @@ Docker 增加了应用程序的可移植性和隔离性。 例如，你可以将
 
 本教程通过 Azure Marketplace 安装 **带有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含 **Docker 18.09.0**。 下面的步骤演示了如何部署容器，运行它，然后使用3270模拟器连接到该容器。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请先查看以下先决条件：
 
@@ -121,9 +121,9 @@ Docker 增加了应用程序的可移植性和隔离性。 例如，你可以将
 
 1.  若要启动企业服务器5.0 和 acctdemo 应用程序，请在命令提示符下键入：
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  安装3270终端模拟器（如 [x3270](http://x3270.bgp.nu/) ），并使用它将端口9040附加到运行的映像。
 
@@ -133,15 +133,15 @@ Docker 增加了应用程序的可移植性和隔离性。 例如，你可以将
 
     2.  若要获取 acctdemo 容器的 IP 地址，请使用上一步中的容器 ID，如下所示：
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
     例如：
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. 请注意 acctdemo 映像的 IP 地址。 例如，以下输出中的地址为172.19.202.52。
 

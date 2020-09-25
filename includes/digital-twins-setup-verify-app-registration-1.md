@@ -5,13 +5,17 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 041c8851fc5535b9c4494bc5aae618bfbc762086
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9d09f29dc5fbe6ed6a358c37a6064319c28e35f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320756"
 ---
-若要检查权限是否已正确配置，请单击[以下链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)以导航到 Azure 门户中的 "Azure AD 应用注册概述" 页。 此页显示已在你的订阅中创建的所有应用程序注册。
+若要检查权限是否已正确配置，请导航到 Azure 门户中的 " [Azure AD 应用注册概述" 页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) 。 可以通过在门户搜索栏中搜索 *应用注册* 来自行访问此页。
 
-你应该会在 "概述" 列表中看到你刚刚创建的应用注册。 选择它以打开其详细信息。
+切换到 " *所有应用程序* " 选项卡以查看已在订阅中创建的所有应用程序注册。
+
+你应在列表中看到刚刚创建的应用注册。 选择它以打开其详细信息。
+
+:::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/app-registrations.png" alt-text="Azure 门户中的应用注册页":::

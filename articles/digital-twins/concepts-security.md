@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331873"
 ---
 # <a name="secure-azure-digital-twins"></a>保护 Azure 数字孪生
 
@@ -83,7 +83,7 @@ Azure 数字孪生提供静态数据和传输中的数据加密，因为它是�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅操作 [*方法：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中的操作中的这些概念。
+* 请参阅操作 [*方法：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的操作中的这些概念。
 
 * 请参阅如何 [*：编写应用身份验证代码*](how-to-authenticate-client.md)中的客户端应用程序代码中的这些概念的交互。
 

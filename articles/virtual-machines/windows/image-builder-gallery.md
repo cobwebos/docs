@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 07b9e3e7529aa867a4baf51ffe5c4bbf23599d32
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320058"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像并将其分发到共享映像库 
 
@@ -22,7 +22,7 @@ ms.locfileid: "87836184"
 
 此模板使用 [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) 作为模板的 `distribute` 部分的值，以便将映像分发到共享映像库。
 
-Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一个通用的 sysprep 命令，如有必要你可以[重写](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully)它。 
+Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一个通用的 sysprep 命令，如有必要你可以[重写](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully)它。 
 
 请注意层自定义的次数。 最多可以对单个 Windows 映像运行 Sysprep 命令 8 次。 运行 Sysprep 8 次后，必须重新创建 Windows 映像。 有关详细信息，请参阅[有关 Sysprep 可运行次数的限制](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
 

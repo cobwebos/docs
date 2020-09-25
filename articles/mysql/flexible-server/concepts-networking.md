@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 4eb9ffceada245f7a7f4b2631a79330fb497a452
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331720"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版的连接和网络概念) 
 
@@ -62,6 +62,8 @@ Azure Database for MySQL 灵活的服务器有两个网络选项。 这两个选
 
    MySQL 灵活的服务器必须位于为 **仅用于 MySQL** 灵活服务器的子网中。 该委派意味着只有 Azure Database for MySQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。 可以通过将子网分配为 DBforMySQL/flexibleServers，来委托子网。
 
+* ** (NSG 的网络安全组) ** 网络安全组中的安全规则使你可以筛选可以流入和流出虚拟网络子网和网络接口的网络流量类型。 有关详细信息，请参阅 [网络安全组概述](../../virtual-network/network-security-groups-overview.md) 。
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不受支持的虚拟网络方案
 * 公共终结点 (或公共 IP 或 DNS) -部署到虚拟网络的灵活服务器不能有公共终结点
@@ -108,11 +110,9 @@ Azure Database for MySQL 灵活的服务器有两个网络选项。 这两个选
 ## <a name="hostname"></a>主机名
 无论你选择哪种网络选项，我们都建议你始终使用完全限定的域名 (FQDN) 在连接到灵活的服务器时使用主机名。 不保证服务器的 IP 地址保持静态。 使用 FQDN 有助于避免更改连接字符串。 
 
-IP 更改的一种情况是，如果使用的是区域冗余 HA，并且主数据库和辅助数据库之间发生故障转移。 使用 FQDN 意味着可以使用相同的连接字符串无缝重试连接。
-
 示例
 * 您 `hostname = servername.mysql.database.azure.com`
-* 避免使用 `hostname = 10.0.0.4`) 或 `hostname = 40.2.45.67` (公共 IP (专用地址) 
+* 如果可能，请避免使用 `hostname = 10.0.0.4`) 或 `hostname = 40.2.45.67` (公共 IP (专用地址) 
 
 
 

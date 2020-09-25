@@ -1,25 +1,19 @@
 ---
 title: 将 Azure 中继与 Azure 专用链接服务集成
 description: 了解如何将 Azure 中继与 Azure 专用链接服务集成
-ms.date: 06/23/2020
+ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719421"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263826"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>与 Azure 中继与 Azure 专用链接（预览版）集成
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如，Azure 中继、Azure 服务总线、Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户/合作伙伴服务。 有关详细信息，请参阅[什么是 Azure 专用链接（预览版）？](../private-link/private-link-overview.md)
 
 专用终结点是一个网络接口，它允许在虚拟网络中运行的工作负荷以私密方式安全地连接到具有专用链接资源的服务（例如，中继命名空间）。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute、VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以通过允许连接到特定的 Azure 中继命名空间来提供访问控制的粒度级别。 
-
-
-> [!IMPORTANT]
-> 此功能目前为预览版。 
->
-> 我们当前支持发送方客户端上的专用链接的连接。 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户添加专用终结点
@@ -161,7 +155,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 | 服务操作 | 服务使用者专用终结点状态 | 说明 |
 |--|--|--|
 | 无 | 挂起的 | 连接是手动创建的，正等待 Azure 中继命名空间所有者的批准。 |
-| 审批 | 已批准 | 连接已自动或手动批准，可供使用。 |
+| 审批 | 已批准 | 连接已自动或手动批准，随时可供使用。 |
 | 拒绝 | 已拒绝 | Azure 中继命名空间所有者拒绝了连接。 |
 | 删除 | 已断开连接 | 连接已被 Azure 中继命名空间所有者删除，专用终结点仅供参考，应将其删除以清理资源。 |
  

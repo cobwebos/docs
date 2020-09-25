@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319854"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从以前版本升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。
@@ -106,7 +106,7 @@ ms.locfileid: "89277198"
 
 1. 在升级过程中，取消选中“在配置完成后启动同步流程”选项   。 这将禁用同步计划程序，并防止在替代移除之前自动进入同步周期。
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![屏幕截图，突出显示需要清除的 "配置完成后启动同步过程" 选项。](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. 升级完成后，运行以下 cmdlet，找出添加的替代：`Get-ADSyncSchedulerConnectorOverride | fl`
 

@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 09/09/2020
-ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/15/2020
+ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331652"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客户密码箱
 
@@ -32,22 +32,23 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
 - API 管理
 - Azure 应用服务
-- Azure Database for MySQL
-- Azure Databricks
-- Azure Synapse Analytics
 - 认知服务
 - 容器注册表
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Data Box
+- Azure 数据资源管理器
 - Azure 数据工厂
 - Azure Database for PostgreSQL
-- Azure Kubernetes 服务
-- Azure Data Box
+- Azure Functions
 - HDInsight
-- 函数
+- Azure Kubernetes 服务
+- Azure Monitor
 - Azure 存储
 - Azure SQL DB
-- Azure 数据资源管理器
-- 虚拟机 (现在还包括对内存转储和托管磁盘的访问权限) 
 - Azure 订阅传输
+- Azure Synapse Analytics
+- 虚拟机 (现在还包括对内存转储和托管磁盘的访问权限) 
 
 若要为组织的这些预览版提供客户密码箱，请注册 [Azure 公共预览版客户密码箱](https://aka.ms/customerlockbox/insiderprogram)。
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320517"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
@@ -98,7 +98,7 @@ YAML 文件用于指定：
 演练中提供的其他示例演示了适用于**具体方案**的操作过程的所有步骤。 [示例演练](walkthroughs.md)一文列出了相关步骤并以缩略图说明的形式提供了链接。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。
 
 > [!NOTE]
-> 对于使用 Azure 机器学习工作室的部署，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
+> 对于使用 Azure 机器学习工作室的部署，请参阅[部署 Azure 机器学习 Web 服务](../classic/deploy-a-machine-learning-web-service.md)。
 >
 >
 
@@ -111,5 +111,3 @@ YAML 文件用于指定：
 [跟踪数据科学项目的进度](track-progress.md)介绍了数据科学家可通过哪些方式跟踪数据科学项目的进度。
 
 [模型操作和 CI/CD](ci-cd-flask.md) 展示如何使用开发模型执行 CI/CD。
-
-

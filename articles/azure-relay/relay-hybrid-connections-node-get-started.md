@@ -3,13 +3,13 @@ title: Azure 中继混合连接 - 节点中的 WebSocket
 description: 为 Azure 中继混合连接 Websocket 编写 Node.js 控制台应用程序
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: devx-track-js
+ms.openlocfilehash: b362caa6570d4a8e212ff7adf4310a0c63e8b755
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263702"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>开始在 Node.js 中使用中继混合连接 WebSocket
 
