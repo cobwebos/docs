@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c1c882694f6ae3d8a3b217ed5e7e3d6050189135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855455"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257175"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
@@ -27,9 +27,18 @@ ms.locfileid: "88855455"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
+## <a name="microsoftidentityweb"></a>Web.config
+
+Microsoft 建议你在开发 ASP.NET Core 受保护的 API 调用下游 web Api 时使用 [microsoft. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet 包。 请参阅 [受保护的 WEB API：代码配置 |](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) 用于在 WEB API 的上下文中快速显示该库的 web。
+
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-假设你的 web API 现在调用下游 web API，则需要在 *appsettings.js* 的文件中提供客户端密码或客户端证书。
+鉴于 Web API 现在调用了下游 Web API，你需要在 appsettings.json 文件中提供客户端密码或客户端证书。 你还可以添加一个指定以下内容的部分：
+
+- 下游 web API 的 URL
+- 调用 API 所需的范围
+
+在下面的示例中， `GraphBeta` 节指定了这些设置。
 
 ```JSON
 {
@@ -37,16 +46,20 @@ ms.locfileid: "88855455"
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
    "ClientCertificates": [
   ]
- }
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
-你可以提供客户端证书，而不是客户端密钥。 以下代码片段演示如何使用存储在 Azure Key Vault 中的证书。
+你可以提供客户端证书，而不是客户端密码。 以下代码片段演示如何使用存储在 Azure Key Vault 中的证书。
 
 ```JSON
 {
@@ -54,7 +67,7 @@ ms.locfileid: "88855455"
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientCertificates": [
       {
@@ -62,37 +75,101 @@ ms.locfileid: "88855455"
         "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
         "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
       }
-  ]
- }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
 }
 ```
 
-Microsoft 提供了多种方法来通过配置或代码描述证书。 有关详细信息，请参阅 GitHub 上的 [Microsoft 使用证书](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates) 。
+Microsoft.Identity.Web 提供了多种通过配置或代码描述证书的方法。 有关详细信息，请参阅 GitHub 上的 [Microsoft.Identity.Web wiki - 使用证书](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates)。
 
 ## <a name="startupcs"></a>Startup.cs
 
-使用 Startup.cs，如果你希望 Web API 调用下游 web Api，请在 `.EnableTokenAcquisitionToCallDownstreamApi()` 后面添加行 `.AddMicrosoftIdentityWebApi(Configuration)` ，然后选择令牌缓存实现，例如 `.AddInMemoryTokenCaches()` ，在*Startup.cs*中：
+Web API 需要获取下游 API 的令牌。 可以通过在后添加行来指定它 `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` 。 此行公开 `ITokenAcquisition` 服务，可在控制器/页面操作中使用。 不过，正如您将在接下来的两个项目符号点中看到的那样，您可以执行更简单的操作。 还需要选择一个令牌缓存实现，例如 `.AddInMemoryTokenCaches()` ，在 *Startup.cs*中：
 
 ```csharp
 using Microsoft.Identity.Web;
 
 public class Startup
 {
-  ...
+  // ...
   public void ConfigureServices(IServiceCollection services)
   {
-   // ...
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
-                .EnableTokenAcquisitionToCallDownstreamApi()
-                .AddInMemoryTokenCaches();
   // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+            .AddInMemoryTokenCaches();
+   // ...
   }
   // ...
 }
 ```
 
-对于 web 应用，你可以选择各种令牌缓存实现。 有关详细信息，请参阅 GitHub 上的 [Microsoft 标识 web wiki-令牌缓存序列化](https://aka.ms/ms-id-web/token-cache-serialization) 。
+如果你不想亲自获取令牌，则 *Microsoft* 将提供两种机制用于从另一个 api 调用下游 Web API。 选择的选项取决于您是要调用 Microsoft Graph 还是调用另一个 API。
+
+### <a name="option-1-call-microsoft-graph"></a>选项1：调用 Microsoft Graph
+
+如果要调用 Microsoft Graph，则可以 `GraphServiceClient` 在 API 操作中直接使用由 MICROSOFT GRAPH SDK) 公开的 (。 公开 Microsoft Graph：
+
+1. 将 [Microsoft.azure.webjobs.extensions.microsoftgraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包添加到项目。
+1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` 在*Startup.cs*文件中添加 after。 `.AddMicrosoftGraph()` 具有多个重写。 使用将配置节作为参数的替代，代码变为：
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>选项2：调用下游 web API，而不是 Microsoft Graph
+
+若要调用 Microsoft Graph 以外的下游 *API，* `.AddDownstreamWebApi()` 请提供，它会请求令牌并调用下游 Web API。
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+与 Web 应用一样，你可以选择各种令牌缓存实现。 有关详细信息，请参阅 GitHub 上的 [Microsoft 标识 Web 令牌缓存序列化](https://aka.ms/ms-id-web/token-cache-serialization) 。
+
+下图显示了*Startup.cs* *的各种可能性及其对*文件的影响：
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="创建 web api 时，可以选择调用下游 api 和令牌缓存实现。":::
+
+> [!NOTE]
+> 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖关系注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="java"></a>[Java](#tab/java)
 

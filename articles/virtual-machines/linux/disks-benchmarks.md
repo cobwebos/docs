@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 磁盘存储上对应用程序进行基准测试
-description: 了解在 Azure 上对应用程序进行基准测试的过程。
+description: 请查看以下示例，这些示例对使用 Azure 高级存储磁盘预配的标准 DS14 VM 进行基准测试。
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 293164413c4c8ecec0295152cb6db3d73718e00d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: cc17ce49517a7af22dcc357fa5f050d28a8ed551
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690776"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279682"
 ---
-# <a name="benchmark-your-application-on-azure-disk-storage"></a>对应用程序进行基准测试 Azure 磁盘存储
+# <a name="benchmark-your-application-on-azure-disk-storage"></a>在 Azure 磁盘存储上对应用程序进行基准测试
 
 基准测试是指模拟应用程序的不同工作负荷，针对每个工作负荷来测量应用程序性能这样一个过程。 按照[为实现高性能而设计](../premium-storage-performance.md)一文中描述的步骤操作。 通过在托管应用程序的 VM 上运行基准测试工具，可以确定应用程序在高级存储中能够达到的性能级别。 在本文中，我们提供了如何对预配了 Azure 高级存储磁盘的标准 DS14 VM 进行基准测试的示例。
 

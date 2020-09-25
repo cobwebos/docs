@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dcf377797709b56b4db735dabf4d48cfae4fc06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885066"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257157"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>方案：调用 Web API 的 Web API
 
@@ -24,7 +24,7 @@ ms.locfileid: "80885066"
 
 ## <a name="prerequisites"></a>先决条件
 
-此方案（受保护的 Web API 调用 Web API）基于“保护 Web API”方案。 若要详细了解此基础方案，请参阅[方案：受保护的 Web API](scenario-protected-web-api-overview.md)。
+这种情况下，受保护的 web API 会调用其他 web Api，这种情况在 [方案：受保护的 WEB api](scenario-protected-web-api-overview.md)上构建。
 
 ## <a name="overview"></a>概述
 

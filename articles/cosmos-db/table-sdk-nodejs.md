@@ -1,6 +1,6 @@
 ---
 title: 用于 Node.js 的 Azure Cosmos DB 表 API
-description: 了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。
+description: 了解有关 Node.js 的 Azure Cosmos DB 表 API 的所有信息，包括发布日期、停用日期和每个版本之间所做的更改。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 4bcc0559e5b4d3fafe1f83a1850cdda2d9d1fdfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261781"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>用于 Node.js 的 Azure Cosmos DB 表 API：发行说明和资源
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

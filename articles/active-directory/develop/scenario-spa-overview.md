@@ -11,31 +11,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257310"
 ---
 # <a name="scenario-single-page-application"></a>方案：单页应用程序
 
 了解生成单页应用程序 (SPA) 所需的一切。
 
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>入门
 
-可以按 JavaScript SPA 快速入门创建第一个应用程序：
+如果尚未这样做，请先完成 JavaScript SPA 快速入门：
 
-> [!div class="nextstepaction"]
-> [快速入门：单页应用程序](./quickstart-v2-javascript.md)
+[快速入门：单页应用程序](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>概述
 
-许多新式 Web 应用程序都是作为客户端单页应用程序构建的。 开发人员使用 JavaScript 或 SPA 框架（如 "角度"、"Vue" 和 "响应"）编写它们。 这些应用程序在 Web 浏览器上运行，与传统的服务器端 Web 应用程序相比，它们具有不同的身份验证特征。 
+许多新式 Web 应用程序都是作为客户端单页应用程序构建的。 开发人员使用 JavaScript 或 SPA 框架（如 "角度"、"Vue" 和 "响应"）编写它们。 这些应用程序在 Web 浏览器上运行，与传统的服务器端 Web 应用程序相比，它们具有不同的身份验证特征。
 
 Microsoft 标识平台提供了 **两个** 选项，使单页应用程序可以登录用户并获取用于访问后端服务或 web api 的令牌：
 
@@ -56,6 +51,10 @@ Microsoft 标识平台提供了 **两个** 选项，使单页应用程序可以�
 * 通过 Azure Active Directory (Azure AD) 进行应用程序注册。 在隐式授权流和授权代码流之间，注册步骤不同。
 * 应用程序配置，其中包含已注册的应用程序属性，如应用程序 ID。
 * 使用适用于 JavaScript 的 Microsoft 身份验证库 ( # A0) 执行身份验证流以登录和获取令牌。
+
+## <a name="recommended-reading"></a>推荐阅读内容
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

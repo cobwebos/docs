@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058409"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257123"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>方案：调用 Web API 的 Web 应用
 
@@ -24,12 +24,7 @@ ms.locfileid: "87058409"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
-此方案假设你已完成以下方案：
-
-> [!div class="nextstepaction"]
-> [用于登录用户的 Web 应用](scenario-web-app-sign-user-overview.md)
+此方案假设已完成 [登录用户的应用场景： Web 应用](scenario-web-app-sign-user-overview.md)。
 
 ## <a name="overview"></a>概述
 
@@ -49,8 +44,12 @@ ms.locfileid: "87058409"
 
 此方案的开发涉及以下具体任务：
 
-- 在[应用程序注册](scenario-web-app-call-api-app-registration.md)过程中，必须提供要与 Azure AD 共享的回复 URI、机密或证书。 如果你将应用程序部署到多个位置，则将为每个位置提供一个回复 URI。
+- 在[应用程序注册](scenario-web-app-call-api-app-registration.md)过程中，必须提供要与 Azure AD 共享的回复 URI、机密或证书。 如果将应用部署到多个位置，需为每个位置提供回复 URI。
 - [应用程序配置](scenario-web-app-call-api-app-configuration.md)必须提供已在注册应用程序期间与 Azure AD 共享的客户端凭据。
+
+## <a name="recommended-reading"></a>推荐阅读内容
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

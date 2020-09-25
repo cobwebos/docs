@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: abf805d24d164ba31daa4d77d6360629632bfcf0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279784"
 ---
-# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>适用于 Linux Vm 的 Azure 磁盘加密示例脚本
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密示例脚本
 
 本文提供了用于准备预加密 VHD 和其他任务的示例脚本。
 
@@ -136,7 +136,7 @@ ms.locfileid: "89072700"
 
   转到 [Azure 资源浏览器](https://resources.azure.com/)，然后在左侧的选择面板中展开此层次结构：
 
-  ~~~~
+  ```
   |-- subscriptions
      |-- [Your subscription]
           |-- resourceGroups
@@ -146,7 +146,7 @@ ms.locfileid: "89072700"
                               |-- virtualMachines
                                    |-- [Your virtual machine]
                                         |-- InstanceView
-  ~~~~                
+  ```                
 
   在 InstanceView 中，向下滚动以查看驱动器的加密状态。
 

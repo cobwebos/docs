@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 44fbbbdb1c36f74a4131d4e5a82de6ef058381f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 547712d16cb6a7504d1a875b6155a587746d86bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279189"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>使用专用化映像创建 VM 
 
-从共享映像库中存储的专用化映像版本创建 VM。 如果要使用通用化映像版本创建 VM，请参阅[使用一般化映像创建 vm](vm-generalized-image-version-powershell.md)。
+从共享映像库中存储的专用化映像版本创建 VM。 要使用通用化映像版本创建 VM，请参阅[使用通用化映像创建 VM](vm-generalized-image-version-powershell.md)。
 
 获得专用化映像版本后，可以创建一个或多个新 VM。 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) cmdlet。 
 
@@ -124,7 +124,7 @@ Add-AzVMDataDisk `
 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 映像生成器（预览版）](./linux/image-builder-overview.md)可帮助自动创建映像版本，甚至还可以使用它来更新[现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器 (预览版) ](./linux/image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
@@ -133,4 +133,4 @@ Add-AzVMDataDisk `
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-有关共享映像库的详细信息，请参阅[概述](./windows/shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](./windows/troubleshooting-shared-images.md)。
+有关共享映像库的详细信息，请参阅[概述](./windows/shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。

@@ -1,5 +1,5 @@
 ---
-title: 从 Web 应用登录用户-Microsoft 标识平台 |Microsoft
+title: 从 Web 应用登录用户 - Microsoft 标识平台 | Azure
 description: 了解如何构建用于登录用户的 Web 应用（概述）
 services: active-directory
 author: jmprieur
@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 52e33177b5fc6c68f615b8eb7738e66b18a1763a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7cadb4784cbf90d283f64e12edc155d4430fab06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257056"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>方案：用于登录用户的 Web 应用
 
 了解生成一个可以通过 Microsoft 标识平台登录用户的 Web 应用所需的一切。
-
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>入门
 
@@ -60,7 +56,7 @@ ms.locfileid: "88118700"
 
 ## <a name="overview"></a>概述
 
-向 Web 应用添加身份验证，使之可以登录用户。 添加身份验证以后，Web 应用即可访问受限制的配置文件信息，以便自定义用户的体验。 
+向 Web 应用添加身份验证，使之可以登录用户。 添加身份验证以后，Web 应用即可访问受限制的配置文件信息，以便自定义用户的体验。
 
 Web 应用可对 Web 浏览器中的用户进行身份验证。 在此方案中，Web 应用指示用户的浏览器让用户登录到 Azure Active Directory (Azure AD)。 Azure AD 通过用户的浏览器返回一个登录响应，该响应在一个安全令牌中包含了关于用户的声明。 登录用户会利用 [Open ID Connect](./v2-protocols-oidc.md) 标准协议，该协议已通过使用中间件[库](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)简化。
 
@@ -76,6 +72,10 @@ Web 应用可对 Web 浏览器中的用户进行身份验证。 在此方案中�
 - 在应用程序注册期间，需提供一个回复 URI，或多个回复 URI（如果将应用部署到多个位置）。 在某些情况下 (ASP.NET 和 ASP.NET Core)，需启用 ID 令牌。 最后需设置注销 URI，方便应用程序响应用户注销。
 - 在应用程序代码中，需提供方便 Web 应用向其委托登录的机构。 可能需要自定义令牌验证（尤其是在合作伙伴方案中）。
 - Web 应用程序支持任何帐户类型。 有关详细信息，请参阅[支持的帐户类型](v2-supported-account-types.md)。
+
+## <a name="recommended-reading"></a>推荐阅读内容
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

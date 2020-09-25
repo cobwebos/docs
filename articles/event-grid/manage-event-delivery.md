@@ -3,21 +3,21 @@ title: 死信和重试策略 - Azure 事件网格
 description: 介绍了如何自定义事件网格的事件传递设置。 设置死信目标并指定重试传递的时间间隔。
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261798"
 ---
-# <a name="dead-letter-and-retry-policies"></a>死信与重试策略
+# <a name="set-dead-letter-location-and-retry-policy"></a>设置死信位置和重试策略
 
 创建事件订阅时，可以自定义每个事件传递的设置。 本文介绍如何设置死信位置和自定义重试设置。 有关这些功能的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 若要了解消息传递、重试和死信，请参阅概念文章：[事件网格消息传递和重试]()。
+> 若要了解消息传送、重试和死信，请参阅概念文章：[事件网格消息传送和重试]()。
 
 ## <a name="set-dead-letter-location"></a>设置死信位置
 
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
 ```
 
 > [!NOTE]
-> 如果同时设置 `event-ttl` 和 `max-deliver-attempts`，则事件网格使用先到期的项来确定何时停止事件传递。 例如，如果将30分钟设置为生存时间（TTL）和10次最大传递尝试次数。 如果在30分钟后（或）未在10分钟后传递事件（或者）在尝试10分钟后未送达，则以先发生的次数为准。  
+> 如果同时设置 `event-ttl` 和 `max-deliver-attempts`，则事件网格使用先到期的项来确定何时停止事件传递。 例如，如果将“生存时间(TTL)”设置为 30 分钟，将最大传递尝试次数设置为 10，那么， 如果事件在 30 分钟后未传递或在 10 次尝试后未传递（以先发生的为准），则会将该事件视为死信事件。  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -128,7 +128,7 @@ New-AzEventGridSubscription `
 ```
 
 > [!NOTE]
-> 如果同时设置 `event-ttl` 和 `max-deliver-attempts`，则事件网格使用先到期的项来确定何时停止事件传递。 例如，如果将30分钟设置为生存时间（TTL）和10次最大传递尝试次数。 如果在30分钟后（或）未在10分钟后传递事件（或者）在尝试10分钟后未送达，则以先发生的次数为准。  
+> 如果同时设置 `event-ttl` 和 `max-deliver-attempts`，则事件网格使用先到期的项来确定何时停止事件传递。 例如，如果将“生存时间(TTL)”设置为 30 分钟，将最大传递尝试次数设置为 10，那么， 如果事件在 30 分钟后未传递或在 10 次尝试后未传递（以先发生的为准），则会将该事件视为死信事件。  
 
 ## <a name="next-steps"></a>后续步骤
 

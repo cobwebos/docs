@@ -2,18 +2,18 @@
 title: Azure 托管磁盘的服务器端加密 - Azure CLI
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 你可以使用客户管理的密钥来管理使用你自己的密钥进行加密，也可以依赖于 Microsoft 托管的密钥来加密托管磁盘。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d2c1103ab58379781aa13bd9e90e01c474c3b6e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816892"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279750"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
@@ -44,6 +44,10 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 - 如果为磁盘启用了此功能，则无法禁用它。
     如果需要解决此问题，则必须[复制所有数据](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)到完全不同的托管磁盘（未使用客户托管密钥）。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>支持的区域
+
+客户管理的密钥在托管磁盘可用的所有区域中都可用。
 
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再工作。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。

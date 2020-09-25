@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261866"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用连接的工厂解决方案加速器仪表板中的功能
+
+> [!IMPORTANT]
+> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
 
 [部署基于云的解决方案来管理工业 IoT 设备](quickstart-connected-factory-deploy.md)快速入门演示了如何导航仪表板并响应警报。 本操作说明演示一些可用于监视和管理工业 IoT 设备的其他仪表板功能。
 
@@ -66,7 +69,7 @@ ms.locfileid: "73820174"
 
 1. 浏览到要发布的 OPC UA 服务器浏览器树中的某个节点。
 
-1. 右键单击该节点。 单击 "**发布**"：
+1. 右键单击该节点。 单击 " **发布**"：
 
     [![已连接的工厂解决方案加速器发布节点](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
 
