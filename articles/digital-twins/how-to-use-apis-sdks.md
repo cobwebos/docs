@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: aac5c937ab2f80dcbe1567a3817b056a6285cf17
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086668"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252657"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -61,6 +61,8 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
 * 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
    - 可以从 npm 中查看和安装包： [适用于 JavaScript 的 Azure Azure 数字孪生客户端库](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)。
    - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)。
+* 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
+   - 可以从 Maven 查看和安装包： [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
 * 可以使用 AutoRest 为其他语言生成 SDK。 按照 [*如何：创建适用于 Azure 数字孪生的自定义 Sdk AutoRest*](how-to-create-custom-sdks.md)中的说明进行操作。
 
 还可以通过 [CLI](how-to-use-cli.md)与 Azure 数字孪生交互，来运用日期平面 api。
@@ -291,14 +293,14 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 在门户主页上，搜索 Azure 数字孪生实例以提取其详细信息。 从 Azure 数字孪生实例的菜单中选择 " **指标** " 选项，打开 " *指标* " 页。
 
-:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 指标 页的屏幕截图":::
+:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 "指标" 页的屏幕截图":::
 
 在此处，你可以查看实例的度量值并创建自定义视图。
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何使用 Api 设置 Azure 数字孪生实例和身份验证：
-* [*操作说明：设置实例和身份验证*](how-to-set-up-instance-scripted.md)
+* [*操作说明：设置实例和身份验证*](how-to-set-up-instance-portal.md)
 
 或者，逐步完成创建客户端应用程序的步骤，如下所述：
 * [*教程：* 为客户端应用编写代码](tutorial-code.md)

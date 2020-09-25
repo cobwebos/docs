@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/28/2020
+ms.date: 09/24/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6a716aef65cc81c5558a214c1ee5f93180810977
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266677"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>隔离状态的应用程序设置
 
@@ -45,6 +45,7 @@ Azure AD 预配服务监视配置的运行状况，并将不正常的应用置�
   - 请确保已在应用程序的设置配置中指定了有效的 **通知电子邮件** 。
   - 请确保在通知电子邮件收件箱中没有垃圾邮件筛选。
   - 请确保未从电子邮件取消订阅。
+  - 检查电子邮件来自 azure-noreply@microsoft.com
 
 ## <a name="why-is-my-application-in-quarantine"></a>为什么应用程序在隔离中？
 

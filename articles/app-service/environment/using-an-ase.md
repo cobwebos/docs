@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: ca333115b8a0588f781b93e0d8a9279ab9c7928c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255156"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
@@ -196,7 +196,7 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 **创建警报**
 
-若要针对日志创建警报，请按[使用 Azure Monitor 创建、查看和管理日志警报][logalerts]中的说明操作。 简单地说：
+若要针对日志创建警报，请按[使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/platform/alerts-log.md)中的说明操作。 简单地说：
 
 * 在 ASE 门户中打开“警报”页面
 * 选择“新建警报规则”
@@ -218,7 +218,7 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 1. 请参阅 resources.azure.com，然后用 Azure 帐户登录。
 1. 浏览资源到订阅 \/ \[ 订阅名称 \] \/ resourceGroups \/ \[ 资源组名称 \] \/ 提供程序 \/ \/ hostingEnvironments \/ \[ ASE 名称 \] 。
 1. 在顶部选择 " **读/写** "。
-1. 选择“编辑”  。
+1. 选择“编辑”。
 1. 将 **upgradePreference** 设置为所需的三个值中的任何一个。
 1. 选择 " **修补**"。
 

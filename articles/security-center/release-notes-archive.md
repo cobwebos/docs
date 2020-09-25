@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 2012f590aa833bea1b49955958095917a6479665
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438562"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289797"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -76,7 +76,7 @@ Azure 安全中心正在扩展其容器安全功能，现可保护 Azure Kuberne
 - **安全建议** - 帮助你遵守 AKS 安全最佳做法的可操作建议。 这些建议包含在安全功能分数中，确保被视为组织的安全状态的一部分。 你可能会看到的一个与 AKS 相关的建议示例是，“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”。
 - **威胁防护** - 通过对 AKS 部署的持续分析，Azure 安全中心会提醒你注意在主机和 AKS 群集级别检测到的威胁和恶意活动。
 
-详细了解 [Azure Kubernetes 服务与安全中心的集成](azure-kubernetes-service-integration.md)。
+详细了解 [Azure Kubernetes 服务与安全中心的集成](defender-for-kubernetes-introduction.md)。
 
 详细了解[安全中心内的容器安全功能](container-security.md)。
 
@@ -96,7 +96,7 @@ Azure 安全中心正在扩展其容器安全功能，现可保护 Azure Kuberne
 即将弃用下面两项与 Web 应用相关的安全建议： 
 
 - 应加强 IaaS NSG 上 Web 应用的规则。
-    （相关策略：应加强 IaaS 上 Web 应用的 NSG 规则）
+    （相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）
 
 - 应限制对应用服务的访问。
     （相关策略：应限制对应用服务的访问 [预览版]）

@@ -1,6 +1,6 @@
 ---
 title: 本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理 | Microsoft Docs
-description: 了解如何配置联接到混合 Azure Active Directory 的设备。
+description: 了解如何通过配置混合 Azure Active Directory 联接设备来扩展 SSO 体验。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256456"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
 
-已加入 Azure Active Directory (Azure AD) 的设备为租户的云应用提供单一登录 (SSO) 体验可能并不意外。 如果你的环境有本地 Active Directory （AD），可以将这些设备上的 SSO 体验扩展到依赖于本地 AD 的资源和应用程序。 
+已加入 Azure Active Directory (Azure AD) 的设备为租户的云应用提供单一登录 (SSO) 体验可能并不意外。 如果你的环境有本地 Active Directory (AD) ，则可以将这些设备上的 SSO 体验扩展到依赖于本地 AD 的资源和应用程序。 
 
 本文介绍它的工作原理。
 
@@ -30,19 +30,19 @@ ms.locfileid: "86024037"
 
 ## <a name="how-it-works"></a>工作原理 
 
-使用已加入 Azure AD 的设备，用户已在环境享有云应用的 SSO 体验。 如果你的环境有 Azure AD 和本地 AD，你可能想要将 SSO 体验范围扩展到本地业务线（LOB）应用、文件共享和打印机。
+使用已加入 Azure AD 的设备，用户已在环境享有云应用的 SSO 体验。 如果你的环境有 Azure AD 和本地 AD，你可能想要将 SSO 体验的范围扩展到本地业务线 (LOB) 应用、文件共享和打印机。
 
 已加入 Azure AD 的设备不了解你的本地 AD 环境，因为它们未加入其中。 但是，可以使用 Azure AD Connect 向这些设备提供本地 AD 的其他信息。
 
 同时具有 Azure AD 和本地 AD 的环境被称为混合环境。 如果具有混合环境，很可能已部署 Azure AD Connect 以将本地标识信息同步到云。 作为同步过程的一部分，Azure AD Connect 将本地用户信息同步到 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
 
 1. Azure AD 将用户的本地域的详细信息连同[主刷新令牌](concept-primary-refresh-token.md)一起发送回设备
-1. 本地安全机构（LSA）服务在设备上启用 Kerberos 和 NTLM 身份验证。
+1. 本地安全机构 (LSA) 服务在设备上启用 Kerberos 和 NTLM 身份验证。
 
 在尝试访问用户本地环境中请求 Kerberos 或 NTLM 的资源期间，设备：
 
 1. 向找到的 DC 发送本地域信息和用户凭据，以对用户进行身份验证。
-1. 基于本地资源或应用程序支持的协议接收 Kerberos[票证授予票证（TGT）](/windows/desktop/secauthn/ticket-granting-tickets)或 NTLM 令牌。 如果尝试获得域的 Kerberos TGT 或 NTLM 令牌失败（相关 Dc 定位程序超时可能会导致延迟），则会尝试使用凭据管理器条目，或者用户可能会收到针对目标资源请求凭据的身份验证弹出窗口。
+1. 基于本地资源或应用程序支持的协议，接收 Kerberos [票证授予票证 (TGT) ](/windows/desktop/secauthn/ticket-granting-tickets) 或 NTLM 令牌。 如果尝试获取域的 Kerberos TGT 或 NTLM 令牌失败 (相关的 Dc 定位程序超时可能会导致延迟) 、凭据管理器条目被尝试，或者用户可能会收到针对目标资源请求凭据的身份验证弹出窗口。
 
 当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO****。
 

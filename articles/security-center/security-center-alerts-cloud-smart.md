@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60798ad1fab0ed66f3d4a39b2fd7faf79fd515e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73686488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268054"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure 安全中心中的云智能警报关联（事件）
 
@@ -38,5 +38,5 @@ Fusion 分析将安全域知识与 AI 相结合，用于分析警报，发现新
 
 ![检测到的安全事件报告的屏幕截图](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-若要更好地了解安全事件，请参阅[如何处理 Azure 安全中心中的安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)。
+若要更好地了解安全事件，请参阅[如何处理 Azure 安全中心中的安全事件](security-center-incident.md)。
 

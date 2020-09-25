@@ -3,13 +3,13 @@ title: Azure 中继混合连接 - 使用 Node 的 HTTP 请求
 description: 使用 Node 为 Azure 中继混合连接 HTTP 请求编写 Node.js 控制台应用程序。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ff6b4e6b99299091910df537bf90984f493405e3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 249b4fa231cd54a1a8054b32985ed0e48fcc16f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263753"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>开始在 Node 中使用中继混合连接 HTTP 请求
 

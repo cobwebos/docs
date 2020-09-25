@@ -1,8 +1,8 @@
 ---
 title: Python ADAL 到 MSAL 的迁移指南 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何将 Azure Active Directory 身份验证库 (ADAL) Python 应用迁移到适用于 Python 的 Microsoft 身份验证库 (MSAL)。
 services: active-directory
-titleSuffix: Microsoft identity platform
 author: rayluo
 manager: CelesteDG
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: Python
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
-ms.reviewer: rayluo, nacanuma, twhitney
+ms.reviewer: rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 574615a6b6e4b399605ca1863c0f764f814b2bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119906"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258296"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>适用于 Python 的 ADAL 到 MSAL 迁移指南
 
@@ -73,7 +73,7 @@ ADAL Python 获取资源的令牌，而 MSAL Python 则是获取范围的令牌�
 
 ## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>迁移 MSAL Python 的现有刷新令牌
 
-Microsoft 身份验证库 (MSAL) 已将刷新令牌的概念抽象化。 MSAL Python 默认提供内存中令牌缓存，因此你无需存储、查找或更新刷新令牌。 用户看到的登录提示更少，因为刷新令牌通常无需用户的干预即可更新。 有关令牌缓存的详细信息，请参阅[适用于 Python 的 MSAL 中的自定义令牌缓存序列化](msal-python-token-cache-serialization.md)。
+Microsoft 身份验证库 (MSAL) 将刷新令牌的概念抽象化。 MSAL Python 默认提供内存中令牌缓存，因此你无需存储、查找或更新刷新令牌。 用户看到的登录提示更少，因为刷新令牌通常无需用户的干预即可更新。 有关令牌缓存的详细信息，请参阅[适用于 Python 的 MSAL 中的自定义令牌缓存序列化](msal-python-token-cache-serialization.md)。
 
 以下代码可帮助你迁移由另一个 OAuth2 库（包括但不限于 ADAL Python）管理的刷新令牌，使之由适用于 Python 的 MSAL 管理。 迁移这些刷新令牌的一个原因是，在将应用迁移到适用于 Python 的 MSAL 时，避免现有用户再次登录。
 

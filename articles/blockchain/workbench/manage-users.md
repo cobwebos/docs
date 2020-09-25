@@ -4,12 +4,12 @@ description: 如何在 Azure Blockchain Workbench 中管理用户。
 ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 541d5b2fa3d1a0cd5c4beba65cfe5ff3bdc3124a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263005"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理用户
 
@@ -25,11 +25,11 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 在向应用程序和角色分配 Blockchain Workbench 用户之前，该用户必须存在于 Azure AD 租户中。 若要向 Azure AD 添加用户，请执行以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在右上角选择帐户，然后切换到与 Blockchain Workbench 关联的 Azure AD 租户。
 1. 选择“Azure Active Directory”>“用户”。**** 此时会看到目录中用户的列表。
 1. 若要向目录添加用户，请选择“新用户”。**** 对于外部用户，请选择“新来宾用户”。****
-1. 完成新用户的必填字段。 选择“创建”。
+1. 完成新用户的必填字段。 选择“创建” 。
 
 若要更详细地了解如何管理 Azure AD 中的用户，请访问 [Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) 文档。
 
@@ -39,10 +39,10 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 若要向**** Azure AD 目录中的“管理员”组添加用户，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在右上角选择帐户，验证自己是否存在于与 Blockchain Workbench 关联的 Azure AD 租户中。
-1. 选择**Azure Active Directory > 企业应用程序**。
-1. 将 "**应用程序类型**" 下拉筛选器更改为 "**所有应用程序**" 并选择 "**应用**"。
+1. 选择 **Azure Active Directory > 企业应用程序**。
+1. 将 " **应用程序类型** " 下拉筛选器更改为 " **所有应用程序** " 并选择 " **应用**"。
 1. 选择适用于 Azure 区块链工作台的 Azure AD 客户端应用程序
 
     ![所有企业应用程序注册](./media/manage-users/select-blockchain-client-app.png)
@@ -53,7 +53,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
     ![添加分配](./media/manage-users/add-user-assignment.png)
 
 1. 验证是否已将“角色”设置为“管理员”********
-1. 选择“分配”。 添加的用户显示在列表中，已向其分配管理员角色。
+1. 选择“分配”。  添加的用户显示在列表中，已向其分配管理员角色。
 
     ![区块链客户端应用用户](./media/manage-users/blockchain-admin-list.png)
 
@@ -77,11 +77,11 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 #### <a name="add-member-to-application"></a>将成员添加到应用程序
 
 1. 选择成员磁贴，以便显示当前成员的列表。
-1. 选择“添加成员”****。
+1. 选择“添加成员”。
 
-    ![添加成员](./media/manage-users/application-add-members.png)
+    ![屏幕截图显示 "应用程序成员身份" 窗口，其中突出显示了 "添加成员" 按钮。](./media/manage-users/application-add-members.png)
 
-1. 搜索用户的名称。  只会列出 Blockchain Workbench 租户中存在的 Azure AD 用户。 如果找不到用户，则需要[添加 Azure AD 用户](#add-azure-ad-users)。
+1. 搜索用户的名称。  只会列出 Blockchain Workbench 租户中存在的 Azure AD 用户。 如果找不到用户，则需要 [添加 Azure AD 用户](#add-azure-ad-users)。
 
     ![添加成员](./media/manage-users/find-user.png)
 
@@ -89,7 +89,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
     ![选择角色成员](./media/manage-users/application-select-role.png)
 
-1. 选择“添加”，将具有关联角色的成员添加到应用程序。****
+1. 选择“添加”，将具有关联角色的成员添加到应用程序。 
 
 #### <a name="remove-member-from-application"></a>从应用程序中删除成员
 

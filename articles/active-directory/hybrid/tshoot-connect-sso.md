@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016259"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294812"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -37,6 +37,7 @@ ms.locfileid: "90016259"
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-the-feature)该功能。
 - 将 Azure AD 服务 URL (`https://autologon.microsoftazuread-sso.com`) 添加到 "受信任的站点" 区域而非 "本地 intranet" 区域会 *阻止用户登录*。
 - 无缝 SSO 支持 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密类型。 建议将 AzureADSSOAcc $ 帐户的加密类型设置为 AES256_HMAC_SHA1，或将其中一个 AES 类型与 RC4 进行加密以提高安全性。 加密类型存储在 Active Directory 中的帐户的 Msds-supportedencryptiontypes 属性上。  如果 "AzureADSSOAcc $ 帐户加密类型" 设置为 "RC4_HMAC_MD5"，并且你想要将其更改为其中一个 AES 加密类型，请确保首先滚动 AzureADSSOAcc $ 帐户的 Kerberos 解密密钥，如相关问题下的 [FAQ 文档](how-to-connect-sso-faq.md) 中所述，否则不会出现无缝 SSO。
+-  如果有多个林具有林信任，请在其中一个林中启用 SSO，并在所有受信任林中启用 SSO。 如果在已启用 SSO 的林中启用 SSO，则会出现一条错误消息，指出已在林中启用了 SSO。
 
 ## <a name="check-status-of-feature"></a>检查功能状态
 

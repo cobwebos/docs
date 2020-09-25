@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c64a42c66a3b1c1810c17347e18979d599b36b6f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8dd6ab5bcb42765c995e8cd767358be5e62aa0b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933585"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288387"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>在 Azure Synapse 中使用 SQL 点播查询 Azure Cosmos DB 数据 (预览版) 
 
-SQL 无服务器 (以前的 SQL 点播) 使你能够以近乎实时的方式分析通过 [Azure Synapse 链接](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询 [分析存储](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的数据，并通过 t-sql 接口集成到各种 BI 和即席查询工具。
+SQL 无服务器 (以前的 SQL 点播) 使你能够在接近实时的情况下，分析通过 [Azure Synapse 链接](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询 [分析存储](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的数据，并通过 t-sql 接口集成到各种 BI 和即席查询工具。
 
 > [!NOTE]
 > 支持按需查询 Azure Cosmos DB 分析存储，当前提供的是封闭预览版。 
@@ -71,7 +71,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-在上面的示例中，我们将指导 SQL 点播连接到 `covid` 使用 Azure Cosmos DB 密钥在 Azure Cosmos DB 帐户中进行身份验证的客户端， `MyCosmosDbAccount`) 上述示例中 (虚拟。 然后，我们将访问该容器的 `EcdcCases` 分析存储区 `West US 2` 。 由于没有特定属性的投影，因此 `OPENROWSET` 函数将返回 Azure Cosmos DB 项中的所有属性。
+在上面的示例中，我们将指导 SQL 点播连接到 `covid` 使用 Azure Cosmos DB 密钥在 Azure Cosmos DB 帐户中进行身份验证的客户端， `MyCosmosDbAccount` (在上面的示例中) 为虚拟。 接下来，我们将访问 `EcdcCases` 该容器的分析存储区 `West US 2` 。 由于没有特定属性的投影，因此 `OPENROWSET` 函数将返回 Azure Cosmos DB 项中的所有属性。
 
 如果需要从同一个 Azure Cosmos DB 数据库的另一个容器浏览数据，则可以使用相同的连接字符串，并将所需的容器引用为第三个参数：
 
@@ -85,9 +85,9 @@ FROM OPENROWSET(
 
 ## <a name="explicitly-specify-schema"></a>显式指定架构
 
-虽然中的自动架构推理功能 `OPENROWSET` 提供了简单易用的 querience，但你的业务方案可能要求你显式指定架构，以便仅读取 Azure Cosmos DB 数据的相关属性。
+虽然中的自动架构推理功能 `OPENROWSET` 提供了简单易用的 querience，但你的业务方案可能要求你将架构从 Azure Cosmos DB 数据显式指定为只读相关属性。
 
-`OPENROWSET` 允许您显式指定要从容器中的数据读取哪些属性以及指定其数据类型。 假设我们已从 [ECDC COVID 数据集](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) 将一些数据导入到 Azure Cosmos DB 中的以下结构：
+`OPENROWSET` 允许您显式指定要从容器中的数据读取哪些属性以及指定其数据类型。 假设我们已从 [ECDC COVID 数据集将](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) 一些数据导入到 Azure Cosmos DB 中的以下结构：
 
 ```json
 {"date_rep":"2020-08-13","cases":254,"countries_and_territories":"Serbia","geo_id":"RS"}
@@ -118,7 +118,7 @@ FROM OPENROWSET(
 
 ## <a name="querying-nested-objects-and-arrays"></a>查询嵌套对象和数组
 
-Azure Cosmos DB 允许通过将数据模型作为嵌套对象或数组进行组合来表示更复杂的数据模型。 Azure Cosmos DB 的 "Synapse" 链接的自动同步功能可用于管理分析存储中的架构表示形式，其中包括处理嵌套数据类型，允许从 SQL 按需进行丰富的查询。
+Azure Cosmos DB 允许通过将数据模型作为嵌套对象或数组进行组合来表示更复杂的数据模型。 用于 Azure Cosmos DB 的 Synapse 链接的 autosync 功能管理现成的分析存储中的架构表示形式，其中包括处理嵌套数据类型，允许根据需要从 SQL 进行丰富的查询。
 
 例如，" [缆线-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) " 数据集具有以下结构的 JSON 文档：
 
@@ -179,7 +179,7 @@ FROM
 
 ## <a name="flattening-nested-arrays"></a>平展嵌套数组
 
-Azure Cosmos DB 数据可能包含嵌套的子数组，如来自 [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 数据集的作者数组：
+Azure Cosmos DB 数据可能包含嵌套的子数组，如来自 [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 数据集的作者的数组：
 
 ```json
 {
@@ -236,18 +236,18 @@ FROM
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB 到 SQL 类型的映射
 
-首先要注意的是，虽然 Azure Cosmos DB 事务性存储区与架构无关，但分析存储架构化以优化分析查询性能。 通过 Synapse 链接的自动同步功能，Azure Cosmos DB 可以在不存在的情况下管理分析存储中的架构表示形式，其中包括处理嵌套的数据类型。 由于 SQL 按需查询分析存储区，因此必须了解如何将 Azure Cosmos DB 输入数据类型映射到 SQL 数据类型。
+首先要注意的是，虽然 Azure Cosmos DB 事务性存储区与架构无关，但分析存储架构化以优化分析查询性能。 利用 Synapse 链接的 autosync 功能，Azure Cosmos DB 可以在不存在的情况下管理分析存储中的架构表示形式，其中包括处理嵌套的数据类型。 由于 SQL 按需查询分析存储区，因此必须了解如何将 Azure Cosmos DB 输入数据类型映射到 SQL 数据类型。
 
 Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、boolean、null、嵌套对象或数组的 JSON 属性类型。 如果在中使用子句，则需要选择与这些 JSON 类型匹配的 SQL 类型 `WITH` `OPENROWSET` 。 请参阅下面的 SQL 列类型，它们应该用于 Azure Cosmos DB 中的不同属性类型。
 
 | Azure Cosmos DB 属性类型 | SQL 列类型 |
 | --- | --- |
-| Boolean | bit |
-| 整数 | bigint |
+| 布尔 | bit |
+| Integer | bigint |
 | 小数 | FLOAT |
-| 字符串 | varchar (UTF8 数据库排序规则)  |
+| String | varchar (UTF8 数据库排序规则)  |
 |  (ISO 格式字符串的日期时间)  | varchar (30)  |
-| Unix 时间戳 (日期时间 )  | bigint |
+| Unix 时间戳 (日期时间)  | bigint |
 | Null | `any SQL type` 
 | 嵌套的对象或数组 | varchar (max)  (UTF8 数据库排序规则) ，序列化为 JSON 文本 |
 

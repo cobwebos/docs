@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b8673dd98ab66714c54720ea1d909a90e117c18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970661"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266422"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure 多重身份验证的数据驻留和客户数据
 
@@ -28,7 +28,7 @@ Azure 多重身份验证服务在美国、欧洲和亚太有数据中心。 以�
 
 * 使用电话呼叫的多重身份验证源自美国数据中心，由全局提供商路由。
 * 根据用户的位置，当前正在处理来自其他区域（如欧洲或澳大利亚）的常规用途用户身份验证请求。
-* 使用 Microsoft Authenticator 应用推送通知将根据用户的位置发起区域数据中心。
+* 使用 Microsoft Authenticator 应用的推送通知当前在区域数据中心基于用户位置进行处理。
     * 特定于设备供应商的服务（如 Apple 推送通知）可能位于用户位置之外。
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>通过 Azure 多重身份验证存储的个人数据

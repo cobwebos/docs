@@ -3,16 +3,16 @@ title: 设置 Azure VMware 解决方案的 Azure 备份服务器
 description: 使用 Azure 备份服务器设置 Azure VMware 解决方案环境以备份虚拟机。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 516f4a2fa92740897e186a782e276fc6d40fc925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255003"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>设置 Azure VMware 解决方案的 Azure 备份服务器
 
-Azure 备份服务器是一种强健的企业备份和恢复系统，可为业务连续性和灾难恢复提供 (BCDR) 策略。 在 Azure VMware 解决方案预览期间，只能使用 Azure 备份服务器 (VM) 级备份来配置虚拟机。 
+Azure 备份服务器是一种强健的企业备份和恢复系统，可为业务连续性和灾难恢复提供 (BCDR) 策略。 在 Azure VMware 解决方案中，你只能使用 Azure 备份服务器 (VM) 级备份来配置虚拟机。 
 
 Azure 备份服务器可以将备份数据存储到：
 
@@ -34,7 +34,7 @@ Azure 备份服务器可以将备份数据存储到：
 - **无代理备份：** Azure 备份服务器不需要在 vCenter 或 ESXi 服务器上安装代理来备份虚拟机。 相反，只需提供 IP 地址或完全限定的域名 (FQDN) ，以及用于通过 Azure 备份服务器对 VMware 服务器进行身份验证的登录凭据。
 - **云集成的备份：** Azure 备份服务器保护工作负荷到磁盘和云。 Azure 备份服务器的备份和恢复工作流有助于管理长期保留和非现场备份。
 - **检测并保护 vCenter 管理的 vm：** Azure 备份服务器检测并保护在 vCenter 或 ESXi 服务器上部署的 Vm。 Azure 备份服务器还会检测由 vCenter 管理的 Vm，以便可以保护大型部署。
-- **文件夹级 start-autoprotection：** vCenter 允许在 vm 文件夹中组织 vm。 Azure 备份服务器检测这些文件夹，你可以使用它来保护文件夹级别的 Vm，其中包括所有子文件夹。 保护文件夹时，Azure 备份服务器不仅保护该文件夹中的 Vm，还保护稍后添加的 Vm。 Azure 备份服务器每日检测新 Vm 并自动保护它们。 当你在递归文件夹中组织 Vm 时，Azure 备份服务器会自动检测并保护递归文件夹中部署的新 Vm。
+- **文件夹级 start-autoprotection：** vCenter 允许在 vm 文件夹中组织 vm。 Azure 备份服务器检测这些文件夹。 可以使用它来保护文件夹级别的 Vm，其中包括所有子文件夹。 保护文件夹时，Azure 备份服务器不仅保护该文件夹中的 Vm，还保护稍后添加的 Vm。 Azure 备份服务器每日检测新 Vm 并自动保护它们。 当你在递归文件夹中组织 Vm 时，Azure 备份服务器会自动检测并保护递归文件夹中部署的新 Vm。
 - **Azure 备份服务器继续保护群集中的 Vmotion vm：** 当 Vm 在群集内 Vmotion 进行负载平衡时，Azure 备份服务器会自动检测并继续 VM 保护。
 - **更快恢复所需的文件：** Azure 备份服务器可以从 Windows VM 恢复文件或文件夹，而无需恢复整个 VM。
 
@@ -68,7 +68,7 @@ Azure 备份服务器部署为 Azure 基础结构即服务 (IaaS) VM 来保护 A
 
 ### <a name="determine-the-size-of-the-virtual-machine"></a>确定虚拟机的大小
 
-你必须在之前步骤中创建的虚拟网络中创建 Windows 虚拟机。 选择用于运行 Azure 备份服务器的服务器时，请从 Windows Server 2019 Datacenter 的库映像开始。 本教程 [在 Azure 门户中创建你的第一个 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md) ，你可以开始使用 azure 中的建议 VM，即使你从未使用过 azure 也是如此。
+在之前步骤中创建的虚拟网络中创建 Windows 虚拟机。 选择用于运行 Azure 备份服务器的服务器时，请从 Windows Server 2019 Datacenter 的库映像开始。 本教程 [在 Azure 门户中创建你的第一个 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md) ，你可以开始使用 azure 中的建议 VM，即使你从未使用过 azure 也是如此。
 
 下表汇总了每个 Azure 备份服务器虚拟机大小的受保护工作负荷的最大数目。 该信息基于内部性能以及使用工作负荷大小和改动的规范值进行的规模测试。 实际工作负荷大小可以更大，但应由附加到 Azure 备份服务器虚拟机的磁盘容纳。
 
@@ -140,7 +140,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 
 1. 在左侧菜单中，选择“所有服务”。
 
-   ![在左侧菜单中，选择 "所有服务"。](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![在左侧菜单中，选择“所有服务”。](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. 在 " **所有服务** " 对话框中，输入 **恢复服务** ，并从列表中选择 " **恢复服务保管库** "。
 
@@ -183,8 +183,6 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 1. 在“设置”下，选择“属性”********。 在 " **备份配置**" 下，选择 " **更新**"。
 
 1. 选择存储复制类型，然后选择“保存”。
-
-   ![设置新保管库的存储配置。](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>下载并安装软件包
 
@@ -309,7 +307,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
    * **数据库**： **DatabaseName**应为**ReportServer $ \<SQLInstanceName> **。
    * **Web 门户 URL**：应**Reports_ \<SQLInstanceName> ****虚拟目录**。
 
-   [详细了解](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 配置。
+   了解有关 [SSRS 配置](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode)的详细信息。
 
    > [!NOTE]
    > [Microsoft Online Services 条款](https://www.microsoft.com/licensing/product-licensing/products) (OST) 控制用作 Azure 备份服务器数据库的 SQL Server 的许可。 根据 OST，与 Azure 备份服务器捆绑 SQL Server 只能用作 Azure 备份服务器的数据库。

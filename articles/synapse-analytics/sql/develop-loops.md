@@ -10,21 +10,21 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289049"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 循环
 本文提供了有关在 Synapse SQL 中使用 T-sql 循环、替换游标和开发相关解决方案的重要提示。
 
 ## <a name="purpose-of-while-loops"></a>WHILE 循环的用途
 
-Synapse SQL 支持重复执行语句块的[WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15)循环。 只要指定的条件都成立，或者在代码专门使用 BREAK 关键字终止循环之前，此 WHILE 循环将一直继续。 
+Synapse SQL 支持重复执行语句块的 [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) 循环。 只要指定的条件都成立，或者在代码专门使用 BREAK 关键字终止循环之前，此 WHILE 循环将一直继续。 
 
-SQL 池中的循环用于替换 SQL 代码中定义的游标。 幸运的是，几乎所有以 SQL 代码编写的游标都是快进的只读变体。 因此，[WHILE] 循环是替换游标的极佳替代方法。
+SQL 池中的循环用于替换 SQL 代码中定义的游标。 幸运的是，几乎所有以 SQL 代码编写的游标都是快进的只读变体。 因此，WHILE 循环是用于替换游标的绝佳替代方案。
 
 ## <a name="replace-cursors-in-sql-pool"></a>替换 SQL 池中的游标
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264365"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -185,16 +185,16 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表显示了支持的日志类型和说明： 
 
-| 日志类型 | Windows 支持 | Linux (Docker) 支持 | 说明 |
-|-|-|-|
-| AppServiceConsoleLogs | TBA | 是 | 标准输出和标准错误 |
-| AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |
-| AppServiceEnvironmentPlatformLogs | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
-| AppServiceAuditLogs | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
-| AppServiceFileAuditLogs | 是 | TBD | 对网站内容所做的文件更改;仅适用于高级层和更高版本 |
-| AppServiceAppLogs | TBA | Java SE 和 Tomcat | 应用程序日志 |
-| AppServiceIPSecAuditLogs  | 是 | 是 | 来自 IP 规则的请求 |
-| AppServicePlatformLogs  | TBA | 是 | 容器日志 |
+| 日志类型 | Windows | Windows 容器 | Linux | Linux 容器 | 说明 |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | TBA | TBA | 是 | 是 | 标准输出和标准错误 |
+| AppServiceHTTPLogs | 是 | TBA | 是 | 是 | Web 服务器日志 |
+| AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
+| AppServiceAuditLogs | 是 | TBA | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
+| AppServiceFileAuditLogs | 是 | TBA | TBA | TBA | 对网站内容所做的文件更改;仅适用于高级层和更高版本 |
+| AppServiceAppLogs | ASP .NET | TBA | Java SE 和 Tomcat | Java SE 和 Tomcat | 应用程序日志 |
+| AppServiceIPSecAuditLogs  | 是 | TBA | 是 | 是 | 来自 IP 规则的请求 |
+| AppServicePlatformLogs  | TBA | TBA | 是 | 是 | 容器操作日志 |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
 * [使用 Azure Monitor 查询日志](../azure-monitor/log-query/log-query-overview.md)

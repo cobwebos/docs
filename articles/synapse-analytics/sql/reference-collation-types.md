@@ -8,23 +8,23 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288063"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL 的数据库排序规则支持
 
-排序规则为基于字符的数据类型提供区域设置、代码页、排序顺序和字符敏感度规则。 选择以后，需要排序规则信息的所有列和表达式会从数据库设置中继承所选排序规则。 可以重写默认继承，只需为基于字符的数据类型显式声明另一个排序规则即可。
+排序规则提供基于字符的数据类型的区域设置、代码页、排序顺序和字符敏感度规则。 选择以后，需要排序规则信息的所有列和表达式会从数据库设置中继承所选排序规则。 可以重写默认继承，只需为基于字符的数据类型显式声明另一个排序规则即可。
 
 创建新的 SQL 池数据库时，可以从 Azure 门户更改默认数据库排序规则。 利用此功能，可以更轻松地使用 3800 个受支持的数据库排序规则之一创建新数据库。
 
 您可以在创建时使用 CREATE DATABASE 语句指定默认的 Synapse SQL 按需数据库排序规则。
 
 ## <a name="change-collation"></a>更改排序规则
-若要更改 SQL 池数据库的默认排序规则，您可以简单地更新设置体验中的排序规则字段。 例如，如需将默认排序规则更改为区分大小写，只需将“排序规则”从 SQL_Latin1_General_CP1_CI_AS 重命名为 SQL_Latin1_General_CP1_CS_AS 即可。 
+若要更改 SQL 池数据库的默认排序规则，请更新预配体验中的排序规则字段。 例如，如果要将默认排序规则更改为区分大小写，请将排序规则从 SQL_Latin1_General_CP1_CI_AS 重命名为 SQL_Latin1_General_CP1_CS_AS。 
 
 若要更改 SQL 按需数据库的默认排序规则，您可以使用 ALTER DATABASE 语句。
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561527"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258670"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -262,7 +262,7 @@ CA 策略是 if-then 语句：如果满足分配条件，则应用这些访问�
 
 * 何时应用（如果适用）
 
-![命名标准](media/plan-conditional-access/11.png)
+![显示策略命名标准的屏幕截图。](media/plan-conditional-access/11.png)
 
 示例：对于从外部网络访问 Dynamics CRP 应用的营销用户要求 MFA 的策略可能是：
 

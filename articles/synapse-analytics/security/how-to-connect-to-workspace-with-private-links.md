@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea791e4fc1031c0a5c041119c409f8623ce7aee9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260370"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>使用专用链接连接到 Azure Synapse 工作区（预览版）
 
@@ -21,7 +21,7 @@ ms.locfileid: "87005967"
 
 ## <a name="step-1-register-network-resource-provider"></a>步骤 1：注册网络资源提供程序
 
-如果尚未注册网络资源提供程序，请注册它。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)时，从资源提供程序列表中选择“Microsoft.Network”。 如果已注册网络资源提供程序，则继续执行步骤 2。
+注册网络资源提供程序（如果尚未这样做）。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)时，从资源提供程序列表中选择“Microsoft.Network”。 如果已注册网络资源提供程序，则继续执行步骤 2。
 
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>步骤 2：在 Azure 门户中打开 Azure Synapse 工作区
@@ -34,7 +34,7 @@ ms.locfileid: "87005967"
 在“创建专用终结点”窗口中的“基本信息”选项卡下，选择“订阅”和“资源组”   。 为要创建的专用终结点指定“名称”。 选择要在其中创建专用终结点的“区域”。
 
 在子网中创建专用终结点。 所选的订阅、资源组和区域将筛选专用终结点子网。 在完成时选择“下一步:资源”。
-![选择订阅和区域详细信息](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-2.png)
+![选择订阅和区域详细信息1](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-2.png)
 
 ## <a name="step-4-select-your-azure-synapse-workspace-details"></a>步骤 4：选择 Azure Synapse 工作区详细信息
 
@@ -43,17 +43,17 @@ ms.locfileid: "87005967"
 选择 Azure Synapse 工作区作为“资源”。 每个 Azure Synapse 工作区都具有三个可以在其中创建专用终结点的“目标子资源”：Sql、SqlOnDemand 和 Dev。
 
 在完成时选择“下一步:配置”以进入设置的下一部分。
-![选择订阅和区域详细信息](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)
+![选择订阅和区域详细信息2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)
 
 在“配置”选项卡中，选择要在其中创建专用终结点的“虚拟网络”和“子网”  。 还需要创建映射到专用终结点的 DNS 记录。
 
 为“与专用 DNS 区域集成”选择“是”，以将专用终结点与专用 DNS 区域集成 。 如果没有与 Microsoft Azure 虚拟网络关联的专用 DNS 区域，则会创建一个新的专用 DNS 区域。 完成时选择“查看 + 创建”。
 
-![选择订阅和区域详细信息](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
+![选择订阅和区域详细信息3](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
 部署完成后，在 Azure 门户中打开 Azure Synapse 工作区，并选择“专用终结点连接”。 将显示新专用终结点和与专用终结点关联的专用终结点连接名称。
 
-![选择订阅和区域详细信息](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-5.png)
+![选择订阅和区域详细信息4](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-5.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,18 +6,18 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: a83a050b65f5673a86dd07ec13842f6009d2c8dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f24696c0db3155a59106e1361b01454b9ac16a20
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267748"
 ---
 # <a name="azure-path-selection-across-multiple-isp-links"></a>跨多个 ISP 链接选择 Azure 路径
 
-Azure 虚拟 WAN 为用户提供在 VPN 站点中包含链接信息的功能，从而实现了这样的情况： VPN/SD WAN 设备解决方案可以对特定于分支的策略进行编程，以跨多个链接将流量传输到 Azure。 这称为**Azure 路径选择**。
+Azure 虚拟 WAN 为用户提供在 VPN 站点中包含链接信息的功能，从而实现了这样的情况： VPN/SD WAN 设备解决方案可以对特定于分支的策略进行编程，以跨多个链接将流量传输到 Azure。 这称为 **Azure 路径选择**。
 
 ## <a name="architecture"></a>体系结构
 
@@ -31,7 +31,7 @@ VPN 站点表示本地 SD-WAN/VPN 设备，其中包含公共 IP、设备型号�
 
 此图显示了在连接到 Azure 虚拟 WAN 的站点上的多链路。 在此图中：
 
-* 本地分支有两个 ISP 链接（VPN/SD-WAN 设备）。 每个 ISP 链接都对应一个链接连接。
+* 本地分支有两个 ISP 链接 (VPN/SD-WAN 设备) 。 每个 ISP 链接都对应一个链接连接。
 
 * 假设本地客户管理器 VPN/SD-WAN 设备支持 IKEv1 或 IKEv2 IPsec。
 
@@ -41,8 +41,8 @@ VPN 站点表示本地 SD-WAN/VPN 设备，其中包含公共 IP、设备型号�
 
 * 提供路径选择的分支设备可以在分支管理解决方案中启用适当的策略，以跨多个链接连接到 Azure。 例如，"ISP 1" 链接可用于更高优先级的流量，"ISP 2" 链接可用作备份。
 
-* 务必要注意的是，虚拟中心 VPN 跨所有终止隧道使用 ECMP （同等开销多路径路由）。
+* 需要注意的一点是，虚拟中心 VPN 使用 ECMP (相等的成本多路径路由) 跨所有终止隧道。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[AZURE 常见问题解答](virtual-wan-faq.md)。
+请参阅 [AZURE 常见问题解答](virtual-wan-faq.md)。

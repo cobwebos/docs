@@ -12,38 +12,28 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257548"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>方案：用于调用 Web API 的 桌面应用
 
 了解构建用于调用 Web API 的桌面应用所需的一切。
 
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="get-started"></a>入门
 
-如果尚未创建第一个应用程序，请按照 .NET 桌面快速入门、通用 Windows 平台 (UWP) 快速入门或 macOS 本机应用程序快速入门进行创建：
+如果尚未创建第一个应用程序，请先完成快速入门：
 
-> [!div class="nextstepaction"]
-> [快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API](./quickstart-v2-windows-desktop.md)
-
-
-> [!div class="nextstepaction"]
-> [快速入门：获取令牌并从 UWP 应用中调用 Microsoft Graph API](./quickstart-v2-uwp.md)
-
-> [!div class="nextstepaction"]
-> [快速入门：获取令牌并从 macOS 本机应用中调用 Microsoft Graph API](./quickstart-v2-ios.md)
+- [快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API](./quickstart-v2-windows-desktop.md)
+- [快速入门：获取令牌并从 UWP 应用中调用 Microsoft Graph API](./quickstart-v2-uwp.md)
+- [快速入门：获取令牌并从 macOS 本机应用中调用 Microsoft Graph API](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>概述
 
-编写桌面应用程序后，想要将用户登录到应用程序，并调用 Web API，如 Microsoft Graph、其他 Microsoft API 或自己的 Web API。 有几种可能的选择：
+编写桌面应用程序后，想要将用户登录到应用程序，并调用 Web API，如 Microsoft Graph、其他 Microsoft API 或自己的 Web API。 有几种选项：
 
 - 可以使用交互式令牌获取：
 
@@ -64,6 +54,10 @@ ms.locfileid: "83771853"
 ## <a name="specifics"></a>特性
 
 桌面应用程序具有很多特性。 它们主要取决于你的应用程序是否使用交互式身份验证。
+
+## <a name="recommended-reading"></a>推荐阅读内容
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,16 +12,16 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258330"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>将应用标记为“发布者已验证”
 
-当应用程序标记为“发布者已验证”时，表示发布者已使用 Microsoft 合作伙伴网络 (MPN) 帐户验证了身份，并将此 MPN 帐户与其应用程序注册相关联。 本文介绍如何完成 [发布服务器验证](publisher-verification-overview.md) 过程。
+当应用注册具有已验证的发布者时，这意味着应用的发布者已使用其 Microsoft 合作伙伴网络 (MPN) 帐户 [验证](/partner-center/verification-responses) 其身份，并将此 MPN 帐户与其应用注册关联。 本文介绍如何完成 [发布服务器验证](publisher-verification-overview.md) 过程。
 
 ## <a name="quickstart"></a>快速入门
 如果已注册 Microsoft 合作伙伴网络 (MPN)，并且已经满足[先决条件](publisher-verification-overview.md#requirements)，则可以立即开始： 
@@ -42,9 +42,9 @@ ms.locfileid: "90085699"
 
 1. 确保你已使用 [多重身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) 登录到组织的 (Azure AD) 帐户，该帐户有权更改应用 () 你希望标记为已验证的发布者，并在合作伙伴中心的 MPN 帐户中。
 
-    - 在 Azure AD 此用户必须是以下角色之一的成员： "应用程序管理员"、"云应用程序管理员" 和 "全局管理员"。 
+    - 在 Azure AD 此用户必须是以下 [角色](../users-groups-roles/directory-assign-admin-roles.md)之一的成员： "应用程序管理员"、"云应用程序管理员" 和 "全局管理员"。 
 
-    - 在合作伙伴中心中，该用户必须拥有以下角色之一：MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。 
+    - 在合作伙伴中心，该用户必须拥有以下[角色](/partner-center/permissions-overview)之一。MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。 
 
 1. 导航到应用注册门户：  
 

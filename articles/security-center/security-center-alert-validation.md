@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: ac76ce5d4fb788e6c2fb3dc9ec01c8d88bfb55cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268060"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -62,16 +62,16 @@ ms.locfileid: "89180467"
 
 ## <a name="validate-alerts-on-kubernetes"></a>在 Kubernetes 上验证警报 <a name="validate-kubernetes"></a>
 
-如果使用的是集成 Azure Kubernetes 服务的安全中心预览功能，请运行以下 kubectl 命令来测试警报是否正常工作：
+如果已将 Azure Kubernetes Service 与安全中心集成，则可以使用以下 kubectl 命令测试警报：
 
 ```kubectl get pods --namespace=asc-alerttest-662jfi039n```
 
-有关将 Azure Kubernetes 服务与 Azure 安全中心集成的详细信息，请参阅[本文](azure-kubernetes-service-integration.md)。
+有关保护 Kubernetes 节点和群集的详细信息，请参阅 [Azure Defender For Kubernetes 简介](defender-for-kubernetes-introduction.md)
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了警报验证过程。 熟悉该验证以后，请尝试阅读以下文章：
 
 * [Validating Azure Key Vault Threat Detection in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)（在 Azure 安全中心验证 Azure Key Vault 威胁检测）
-* [管理和响应 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) - 了解如何管理和响应安全中心的安全事件。
+* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全中心的安全事件。
 * [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
-* [了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) - 了解各种类型的安全警报。
+* [了解 Azure 安全中心的安全警报](security-center-alerts-type.md) - 了解各种类型的安全警报。

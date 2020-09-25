@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b7acb1ad6fbe0beb4d79ee2a833561f0829664c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296189"
 ---
 # <a name="options"></a>选项 #
 
@@ -22,7 +22,7 @@ Azure Media Player 嵌入代码只是一个 HTML5 视频标记，因此对于很
 
 `<video controls autoplay ...>`
 
-此外，还可以使用数据安装属性提供[JSON](http://json.org/example.html)格式的选项。 这也是如何设置不标准给视频标记的选项的方式。
+此外，还可以使用数据安装属性提供 [JSON](http://json.org/example.html) 格式的选项。 这也是如何设置不标准给视频标记的选项的方式。
 
 `<video data-setup='{ "controls": true, "autoplay": false }'...>`
 
@@ -36,7 +36,7 @@ Azure Media Player 嵌入代码只是一个 HTML5 视频标记，因此对于很
 ## <a name="individual-options"></a>单个选项 ##
 
 > [!NOTE]
->视频标记属性只能为 true 或 false （布尔值），只需包含属性（不带等号）即可将其打开，或排除它以将其关闭。 例如，若要打开控件：错误 `<video controls="true" ...>` 正确 `<video controls ...>` 的用户遇到的最大问题是，使用 false 作为值（如 controls = "false"），该值实际执行相反的操作，并将值设置为 true，因为属性仍包含在内。
+>视频标记特性只能为 true 或 false (布尔) ，你只需包含特性 (没有等于符号) 即可将其打开，或排除它以将其关闭。 例如，若要打开控件：错误 `<video controls="true" ...>` 正确 `<video controls ...>` 的人遇到的最大问题是，使用 false 作为值 (例如 controls = "false" ) ，这种情况下，它会进行相反的操作，并将该值设置为 true，因为该属性仍包含在内。
 
 ### <a name="controls"></a>controls ###
 
@@ -46,12 +46,12 @@ Azure Media Player 嵌入代码只是一个 HTML5 视频标记，因此对于很
 
 ### <a name="autoplay"></a>autoplay ###
 
-如果自动播放为 true，则在页面加载后（无需任何用户交互），视频将立即开始播放。
+如果自动播放为 true，则在加载页面后，视频会立即开始播放 (没有用户) 的任何交互。
 
 > [!NOTE]
-> Windows Phone、Apple iOS 和 Android 等移动设备不支持此选项。 移动设备阻止自动播放功能，以防止使用者的每月数据计划（通常是昂贵的）。 在这种情况下，用户需要按下 "触摸/单击" 才能启动视频。
+> Windows Phone、Apple iOS 和 Android 等移动设备不支持此选项。 移动设备阻止自动播放功能，以防止过度使用使用者的每月数据计划 (通常会消耗大量资源) 。 在这种情况下，用户需要按下 "触摸/单击" 才能启动视频。
 
-`<video autoplay ...>`或`{ "autoplay": true }`
+`<video autoplay ...>`或 `{ "autoplay": true }`
 
 ### <a name="poster"></a>广告 ###
 海报属性设置视频开始播放前显示的图像。 这通常是视频或自定义标题屏幕的帧。 一旦用户单击 "播放"，图像就会消失。
@@ -76,7 +76,7 @@ Width 属性设置视频的显示宽度。
 
    `<video... data-setup='{plugins: { "contentTitle": {"name": "Azure Medi Services Overview"}}}'...>`
 
-有关插件开发和使用的详细信息，请参阅[编写插件](azure-media-player-writing-plugins.md)
+有关插件开发和使用的详细信息，请参阅 [编写插件](azure-media-player-writing-plugins.md)
 
 ### <a name="other-options"></a>其他选项 ###
 
@@ -93,16 +93,16 @@ Width 属性设置视频的显示宽度。
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`选项替代显式 `width` 和 `height` 设置。 此选项仅在 Azure Media Player 版本 `2.0.0` 及更高版本中可用。
+`fluid` 选项替代显式 `width` 和 `height` 设置。 此选项仅在 Azure Media Player 版本 `2.0.0` 及更高版本中可用。
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`选项控制用户可使用的 playbackSpeed 控件和播放速度设置集。 `playbackSpeed`采用对象。 若要在控件条上启用播放速度控制， `enabled` 需要将对象的属性设置为 true。 启用标记的播放速度的示例：
+`playbackSpeed` 选项控制用户可使用的 playbackSpeed 控件和播放速度设置集。 `playbackSpeed` 采用对象。 若要在控件条上启用播放速度控制， `enabled` 需要将对象的属性设置为 true。 启用标记的播放速度的示例：
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-该设置的其他属性 `playbackSpeed` 由[PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)对象提供。
+该设置的其他属性 `playbackSpeed` 由 [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) 对象提供。
 
 在 JavaScript 中设置播放速度选项的示例：
 

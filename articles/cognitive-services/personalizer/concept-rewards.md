@@ -1,14 +1,16 @@
 ---
 title: 奖励评分 - 个性化体验创建服务
 description: 奖励评分指示为用户生成的个性化选项 (RewardActionID) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。 个性化体验创建服务通过评估奖励来训练其机器学习模型。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 58ce4d7593b23807f4b31e3e71cbfdcd873b1fcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253490"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>奖励评分表示个性化的成败
 
@@ -16,11 +18,11 @@ ms.locfileid: "79219364"
 
 个性化体验创建服务通过评估奖励来训练其机器学习模型。
 
-了解[如何](how-to-settings.md#configure-rewards-for-the-feedback-loop)在 Personalizer 资源的 Azure 门户中配置默认奖励分数。
+了解 [如何](how-to-settings.md#configure-rewards-for-the-feedback-loop) 在 Personalizer 资源的 Azure 门户中配置默认奖励分数。
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>使用奖励 API 向个性化体验创建服务发送奖励评分
 
-奖励由[奖励 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 发送到个性化体验创建服务。 通常，奖励是0到1之间的数字。 在某些情况下，可以使用值为-1 的负奖励，只应在有强化学习（RL）的情况下使用。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
+奖励由[奖励 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 发送到个性化体验创建服务。 通常，奖励是0到1之间的数字。 在某些情况下，可以使用值为-1 的负奖励，只应在有强化学习 (RL) 时使用。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
 
 发生用户行为（这可能是几天以后的事）后，将发送奖励。 如果发生事件之前个性化体验创建服务等待了最长允许时间，则视为没有奖励。可以在 Azure 门户中使用[奖励等待时间](#reward-wait-time)配置默认奖励。
 
@@ -79,13 +81,13 @@ ms.locfileid: "79219364"
 
 ## <a name="best-practices-for-calculating-reward-score"></a>有关计算奖励评分的最佳做法
 
-* **考虑成功的个性化设置的真正指示符**：可以很容易地在单击中进行考虑，但最好是根据您希望用户*实现*的，而不是您希望用户执行的*操作*。  例如，基于点击数的奖励可能会导致诱导性点击。
+* **考虑成功的个性化设置的真正指示符**：可以很容易地在单击中进行考虑，但最好是根据您希望用户 *实现* 的，而不是您希望用户执行的 *操作*。  例如，基于点击数的奖励可能会导致诱导性点击。
 
 * **使用奖励评分来了解个性化设置的工作原理**：个性化电影建议会使用户观看电影并为其提供高评级。 由于电影评级取决于许多因素（例如演技、用户的心情等），因此，这种奖励不能很好地反映个性化的效果。** 但是，观看电影前几分钟的用户也许可以更好地反映个性化的效果，在 5 分钟后发送奖励评分 1 是一个更好的信号。
 
 * **奖励仅适用于 RewardActionID**： Personalizer 应用回报以了解 RewardActionID 中指定的操作的效力。 如果你选择显示其他操作，而用户单击了这些操作，则奖励应该为 0。
 
-* **考虑意想不到的后果**：创建奖励功能，使[道德和责任使用](ethics-responsible-use.md)成为责任。
+* **考虑意想不到的后果**：创建奖励功能，使 [道德和责任使用](ethics-responsible-use.md)成为责任。
 
 * **使用增量奖励**：为较小的用户行为添加部分奖励有助于 Personalizer 获得更好的回报。 此增量奖励可让算法知道它即将在最终的所需行为中与用户互动。
     * 如果你正在显示电影列表，而用户将鼠标悬停在第一部电影上片刻时间以查看详细信息，则可以确定发生了某种用户互动。 可为该行为提供奖励评分 0.1。

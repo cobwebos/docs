@@ -3,18 +3,24 @@ title: Azure Service Fabric - 使用 Service Fabric 应用程序 KeyVault 引用
 description: 本文介绍如何使用应用程序机密的 Service Fabric KeyVaultReference 支持。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261135"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 应用程序的 KeyVaultReference 支持（预览版）
+# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 应用程序的 KeyVaultReference 支持（预览版）
 
 构建云应用程序时，一个常见的难题是如何安全存储应用程序所需的机密。 例如，你可能想要将容器存储库凭据存储在 keyvault 中，并在应用程序清单中引用它。 Service Fabric KeyVaultReference 使用 Service Fabric 托管标识，并为引用 keyvault 机密提供方便。 本文的余下内容将详细介绍如何使用 Service Fabric KeyVaultReference，并提供一些典型用法。
 
-## <a name="prerequisites"></a>必备条件
+> [!IMPORTANT]
+> 不建议在生产环境中使用此预览功能。
+
+> [!NOTE]
+> KeyVault 参考预览功能仅支持 [版本控制](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) 的机密。 不支持 Versionless 机密。
+
+## <a name="prerequisites"></a>先决条件
 
 - 应用程序的托管标识 (MIT)
     
@@ -22,7 +28,7 @@ ms.locfileid: "86246157"
 
 - 中心机密存储 (CSS)。
 
-    中心机密存储 (CSS) 是 Service Fabric 的已加密本地机密缓存。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。 KeyVaultReference 在提取后会缓存在 CSS 中。
+    中央机密存储 (CSS) 是 Service Fabric 的加密本地机密缓存。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。 KeyVaultReference 在提取后会缓存在 CSS 中。
 
     将以下内容添加到群集配置中的 `fabricSettings` 下，即可为 KeyVaultReference 支持启用所需的所有功能。
 
@@ -69,7 +75,7 @@ ms.locfileid: "86246157"
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，forceRestart 是基本设置；请对其余设置使用你的现有值。
+若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，forceRestart 是基本设置;对其余设置使用现有值。
 ```json
 "upgradeDescription": {
     "forceRestart": true,

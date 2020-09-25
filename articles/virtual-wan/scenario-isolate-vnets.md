@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267629"
 ---
 # <a name="scenario-isolating-vnets"></a>方案：隔离 Vnet
 
@@ -24,7 +24,7 @@ ms.locfileid: "89400035"
 
 在此方案中，某个 VNet 内的工作负荷保持隔离，并且无法与其他 Vnet 通信。 但是，Vnet 需要访问所有分支 (VPN、ER 和用户 VPN) 。 为了确定需要多少个路由表，你可以构建一个连接矩阵。 对于这种情况，它将如下表所示，其中每个单元表示 (行) 的源是否可以与目标 (列) ：
 
-| 从 |   功能 |  *Vnet* | *分支* |
+| 源 |   功能 |  *Vnet* | *分支* |
 | -------------- | -------- | ---------- | ---|
 | VNet     | &#8594;|           |     X    |
 | 分支   | &#8594;|    X     |     X    |

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254068"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遥测和故障排除
 
@@ -313,8 +313,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 "容器处于无效状态。 订阅验证失败，状态为 "不匹配"。 Api 密钥不适用于给定的容器类型。 "
 
-有关详细信息，请参阅 [请求批准以运行容器](spatial-analysis-container.md#request-approval-to-run-the-container)。 
-
+有关详细信息，请参阅 [请求批准以运行容器](spatial-analysis-container.md#request-approval-to-run-the-container)。
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Azure Stack 边缘设备的疑难解答
 
@@ -337,7 +336,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 1. 以管理员身份运行 Windows PowerShell 会话。 
     1. 请确保 Windows 远程管理服务在客户端上运行。 在命令提示符处，键入 `winrm quickconfig`。
 
-2. 为设备 IP 地址分配变量。 例如，`$ip = "<device-ip-address>"` 。
+2. 为设备 IP 地址分配变量。 例如 `$ip = "<device-ip-address>"`。
 
 3. 使用以下命令将设备的 IP 地址添加到客户端的受信任主机列表。 
 
@@ -401,7 +400,7 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 ### <a name="useful-commands"></a>有用的命令
 
-|命令  |说明  |
+|Command  |说明  |
 |---------|---------|
 |`Get-HcsKubernetesUserConfig -AseUser`     | 生成 Kubernetes 配置文件。 使用命令时，将信息复制到名为 *config*的文件中。不要使用文件扩展名保存该文件。        |
 | `Get-HcsApplianceInfo` | 返回有关设备的信息。 |

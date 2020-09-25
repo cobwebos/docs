@@ -1,6 +1,6 @@
 ---
 title: 获取 Azure Active Directory 的 AppSource 认证 |Microsoft Docs
-description: 详细说明如何使应用程序 AppSource 通过 Azure Active Directory 的认证。
+description: 了解有关如何将应用程序 AppSource 认证 Azure Active Directory 的详细信息。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 08acaf4f0171e586ff2cc3f52134395fb5925df7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 65d6151536eb92e2ab9b740a99984fb0b5977cab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256868"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>获取 Azure Active Directory 的 AppSource 认证
 
@@ -50,11 +50,11 @@ ms.locfileid: "88118801"
 
 客户导向型试用是 AppSource 所推荐的体验，因为它提供对应用程序的单击访问。 以下示例显示了此体验的外观：
 
-1.  用户在 AppSource 网站中找到你的应用程序，然后选择 "**免费试用**" 选项。
+1.  用户在 AppSource 网站中找到你的应用程序，然后选择 " **免费试用** " 选项。
 
     ![显示客户 led 试用体验的免费试用版](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png)
 
-2.  AppSource 将用户重定向到你的网站中的 URL。 你的网站将在页面加载) 上自动启动*单一登录*过程 (。
+2.  AppSource 将用户重定向到你的网站中的 URL。 你的网站将在页面加载) 上自动启动 *单一登录* 过程 (。
 
     ![显示如何将用户重定向到你的网站中的 URL](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "88118801"
 
 需要执行手动或长期操作来预配用户/公司（例如，应用程序需要预配虚拟机、数据库实例或耗费大量时间才可完成的操作）时，可以使用合作伙伴试用体验。 在这种情况下，用户选择“请求试用”按钮并填写表单后，AppSource 将向你发送用户的联系信息****。 收到此信息后，需预配环境并就如何访问试用体验向用户发送说明：<br/><br/>
 
-1. 用户在 AppSource 网站中找到你的应用程序，然后选择 "**与我联系**"。
+1. 用户在 AppSource 网站中找到你的应用程序，然后选择 " **与我联系**"。
 
     ![显示与我联系以获取合作伙伴 led 的试用体验](./media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png)
 

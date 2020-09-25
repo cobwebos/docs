@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 6c8be6e67b1d7b919d6ea221c473c8975e559658
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293894"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>Sql Edge 中的 SQL 数据库 DACPAC 和 BACPAC 包
 
 Azure SQL Edge 是已针对 IoT 和边缘部署进行了优化的关系数据库引擎。 它基于 Microsoft SQL 数据库引擎的最新版本，提供业界领先的性能、安全性和查询处理功能。 除了具有 SQL Server 的业界领先的关系数据库管理功能外，Azure SQL Edge 还提供了内置的流式处理功能，可用于实时分析和复杂事件处理。
 
-Azure SQL Edge 还提供 SqlPackage.exe 的本机实现，使你能够在 SQL Edge 部署过程中部署 [Sql 数据库 DACPAC 和 BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) 包。 
+Azure SQL Edge 提供本机机制，使你能够在过程中或在部署 SQL Edge 之后部署 [Sql 数据库 DACPAC 和 BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) 包。
 
 可以使用环境变量将 SQL 数据库 dacpac 和 bacpac 包部署到 SQL Edge `MSSQL_PACKAGE` 。 可以通过以下任一方式配置环境变量。  
 - SQL 容器内包含 dacpac 和 bacpac 文件的本地文件夹位置。 可以使用装入点或数据卷容器将此文件夹映射到主机卷。 
@@ -64,6 +64,10 @@ Azure SQL Edge 还提供 SqlPackage.exe 的本机实现，使你能够在 SQL Ed
 5. 模块更新后，会下载、解压缩包文件，然后针对 SQL Edge 实例部署包文件。
 
 在每次重新启动 Azure SQL Edge 容器时，SQL Edge 都会尝试下载压缩的文件包并评估更改。 如果遇到了新版 dacpac 文件，这些更改就会部署到 SQL Edge 中的数据库。
+
+## <a name="known-issue"></a>已知问题
+
+在某些 DACPAC 或 BACPAC 部署过程中，用户可能会遇到命令超时，导致 DACPAC 部署操作失败。 如果遇到此问题，请使用 SQLPackage.exe (或 SQL 客户端工具) 应用 DACPAC 或 BACPAC maually。 
 
 ## <a name="next-steps"></a>后续步骤
 

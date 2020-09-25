@@ -1,6 +1,6 @@
 ---
 title: 保存管理员凭据时出现问题配置 Azure AD 库应用
-description: 当为在 Azure AD 应用程序库中列出的某个应用程序配置用户预配时，如何解决面对的常见问题
+description: 了解如何对在将用户预配配置为 Azure Active Directory 库应用程序时保存管理员凭据时面临的问题进行故障排除。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 02/21/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 4f47954f3f4943846cab2dd9a38fd310abce3469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a3340e72499087dce7773264272601dfce8a50f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266776"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>配置 Azure Active Directory 库应用程序的用户预配时保存管理员凭据时遇到问题 
 

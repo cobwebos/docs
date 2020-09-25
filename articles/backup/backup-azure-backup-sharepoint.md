@@ -3,12 +3,12 @@ title: 使用 DPM 将 SharePoint 场备份到 Azure
 description: 本文概述如何在 Azure 中使用 DPM/Azure 备份服务器保护 SharePoint 场
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: a667626fb53920150a4b5a16759228aacbfae75d
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254425"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 将 SharePoint 场备份到 Azure
 
@@ -18,7 +18,7 @@ ms.locfileid: "89375238"
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint 支持的版本与相关保护方案
 
-有关支持的 SharePoint 和用于进行备份的 DPM 的版本的列表，请参阅 [DPM 可以备份什么？](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup)
+有关支持的 SharePoint 和用于进行备份的 DPM 的版本的列表，请参阅 [DPM 可以备份什么？](/system-center/dpm/dpm-protection-matrix#applications-backup)
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -28,19 +28,19 @@ ms.locfileid: "89375238"
 
 在继续之前，请确保符合使用 Microsoft Azure 备份保护工作负荷的所有[先决条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 先决条件包括如下任务：创建备份保管库、下载保管库凭据、安装 Azure 备份代理，以及在保管库中注册 DPM/Azure 备份服务器。
 
-有关其他先决条件和限制，可参阅 DPM 上的 [备份 SharePoint 一](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) 文。
+有关其他先决条件和限制，可参阅 DPM 上的 [备份 SharePoint 一](/system-center/dpm/back-up-sharepoint#prerequisites-and-limitations) 文。
 
 ## <a name="configure-backup"></a>配置备份
 
-要备份 SharePoint 场，则使用 ConfigureSharePoint.exe 配置 SharePoint 保护，然后在 DPM 中创建保护组。 有关说明，请参阅 DPM 文档中的 [配置备份](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) 。
+要备份 SharePoint 场，则使用 ConfigureSharePoint.exe 配置 SharePoint 保护，然后在 DPM 中创建保护组。 有关说明，请参阅 DPM 文档中的 [配置备份](/system-center/dpm/back-up-sharepoint#configure-backup) 。
 
 ## <a name="monitoring"></a>监视
 
-若要监视备份作业，请按照[监视 DPM 备份](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring)中的说明进行操作
+若要监视备份作业，请按照[监视 DPM 备份](/system-center/dpm/back-up-sharepoint#monitoring)中的说明进行操作
 
 ## <a name="restore-sharepoint-data"></a>还原 SharePoint 数据
 
-若要了解如何使用 DPM 从磁盘还原 SharePoint 项，请参阅 [还原 sharepoint 数据](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)。
+若要了解如何使用 DPM 从磁盘还原 SharePoint 项，请参阅 [还原 sharepoint 数据](/system-center/dpm/back-up-sharepoint#restore-sharepoint-data)。
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>使用 DPM 从 Azure 还原 SharePoint 数据库
 
@@ -71,7 +71,7 @@ ms.locfileid: "89375238"
 
 ## <a name="switching-the-front-end-web-server"></a>切换前端 Web 服务器
 
-如果有多个前端 web 服务器，并且想要切换 DPM 用于保护场的服务器，请按照 [切换前端 Web 服务器](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)中的说明进行操作。
+如果有多个前端 web 服务器，并且想要切换 DPM 用于保护场的服务器，请按照 [切换前端 Web 服务器](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)中的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

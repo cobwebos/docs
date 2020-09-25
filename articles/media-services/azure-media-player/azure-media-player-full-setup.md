@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296240"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure Media Player 完全设置 #
 
@@ -24,7 +24,7 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
 使用 Azure Media Player，你可以访问 CDN 托管版本中的脚本。 通常建议在结束正文标记之前放置 JavaScript `<body>` ，而不是将其放 `<head>` 在结尾处，但 Azure Media Player 包含 "HTML5 Shiv"，它需要位于旧版 IE 版本的开头，才能将视频标记视为有效元素。
 
 > [!NOTE]
-> 如果已在使用 HTML5 shiv （如[Modernizr](https://modernizr.com/) ），则可以在任意位置包含 Azure Media Player JavaScript。 但请确保 Modernizr 的版本包含视频的 shiv。
+> 如果已在使用 HTML5 shiv （如 [Modernizr](https://modernizr.com/) ），则可以在任意位置包含 Azure Media Player JavaScript。 但请确保 Modernizr 的版本包含视频的 shiv。
 
 ### <a name="cdn-version"></a>CDN 版本 ###
 
@@ -37,7 +37,7 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
 >  不应当在生产中使用`latest`版本，因为此版本可能会根据需要进行更改。 替换 `latest` 为 Azure Media Player 的版本。 例如，将 `latest` 替换为 `2.1.1`。 可以从[此处](azure-media-player-changelog.md)查询 Azure Media Player 版本。
 
 > [!NOTE]
-> 自 `1.2.0` 发布后，不再需要将位置包括到回退方面（它会自动从 azuremediaplayer.min.js 文件的相对路径中选取位置）。 您可以通过在上述脚本后面的中添加以下脚本来修改回退方面的位置 `<head>` 。
+> 自 `1.2.0` 发布后，不再需要将位置包括到回退方面 (它会自动从 azuremediaplayer.min.js 文件) 的相对路径中选取位置。 您可以通过在上述脚本后面的中添加以下脚本来修改回退方面的位置 `<head>` 。
 
 > [!NOTE]
 > 由于 Flash 和 Silverlight 插件的性质，swf 和 xap 文件应在域中托管，而不包含任何敏感信息或数据，这会自动为你处理 Azure CDN 托管版本。
@@ -53,15 +53,15 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
 
 使用 Azure Media Player，可以使用 HTML5 视频标记嵌入视频。 然后，Azure Media Player 将读取标记并使其在所有浏览器中工作，而不只是支持 HTML5 视频的浏览器。 除了基本标记外，Azure Media Player 需要一些额外的部分。
 
-1. `<data-setup>`上的属性 `<video>` 指示 Azure Media Player 在页面准备就绪时自动设置视频，并从属性读取任何（JSON 格式）。
+1. `<data-setup>`上的属性 `<video>` 指示 Azure Media Player 在页面准备就绪时自动设置视频，并从属性读取 JSON) 格式的任何 (。
 1. `id`对于同一页面上的每个视频，都应使用属性：。
 1. 该 `class` 属性包含两个类：
-    - `azuremediaplayer`应用 Azure Media Player UI 功能所需的样式
-    - `amp-default-skin`将默认外观应用于 HTML5 控件
+    - `azuremediaplayer` 应用 Azure Media Player UI 功能所需的样式
+    - `amp-default-skin` 将默认外观应用于 HTML5 控件
 1. `<source>`包含两个必需的属性
-    - `src`属性可以包括从 Azure 媒体服务中添加的 **. ism/清单*文件，Azure Media Player 自动向播放机添加破折号、光滑和 HLS 的 url
-    - `type`特性是所需的流 MIME 类型。 与 *". ism/manifest"* 关联的 MIME 类型是 *"application/vnd.apple.mpegurl. vnd.ms-sstr + xml"*
-1. 上的*可选* `<data-setup>` 属性 `<source>` 会告诉 Azure Media Player 是否有来自 Azure 媒体服务的流的任何唯一传递策略，包括但不限于加密类型（AES 或 PlayReady、Widevine 或 FairPlay）和令牌。
+    - `src` 属性可以包括从 Azure 媒体服务中添加的 **. ism/清单* 文件，Azure Media Player 自动向播放机添加破折号、光滑和 HLS 的 url
+    - `type` 特性是所需的流 MIME 类型。 与 *". ism/manifest"* 关联的 MIME 类型是 *"application/vnd.apple.mpegurl. vnd.ms-sstr + xml"*
+1. 上的 *可选* `<data-setup>` 属性 `<source>` 会告诉 Azure Media Player 是否有来自 Azure 媒体服务的流的任何唯一传递策略（包括但不限于加密类型 (AES 或 PlayReady、Widevine 或 FairPlay) 和令牌）。
 
 包含/排除属性、设置、源和跟踪，与 HTML5 视频完全相同。
 
@@ -78,7 +78,7 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
 
 ### <a name="alternative-setup-for-dynamically-loaded-html"></a>动态加载的 HTML 的替代设置 ###
 
-如果网页或应用程序动态加载视频标记（ajax、appendChild 等），使页面加载时可能不存在，则需要手动设置播放机，而不是依赖于数据安装属性。 若要执行此操作，请首先从标记中删除数据安装属性，这样就不会在播放机初始化时产生混淆。 接下来，请在加载 Azure Media Player JavaScript 之后、视频标记加载到 DOM 之后，运行以下 JavaScript。
+如果网页或应用程序 (ajax、appendChild 等 ) 动态加载视频标记，使页面加载时可能不存在，则需要手动设置播放机，而不是依赖于数据安装属性。 若要执行此操作，请首先从标记中删除数据安装属性，这样就不会在播放机初始化时产生混淆。 接下来，请在加载 Azure Media Player JavaScript 之后、视频标记加载到 DOM 之后，运行以下 JavaScript。
 
 ```javascript
     var myPlayer = amp('vid1', { /* Options */

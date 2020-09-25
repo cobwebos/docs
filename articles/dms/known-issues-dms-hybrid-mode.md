@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291837"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>使用混合模式时的已知问题/迁移限制
 
@@ -24,15 +24,15 @@ ms.locfileid: "84196280"
 
 ## <a name="installer-fails-to-authenticate"></a>安装程序无法进行身份验证
 
-将证书上传到 AdApp 后，最多需要几分钟的时间才能使用 Azure 进行身份验证。 安装程序将尝试重试一段延迟，但传播延迟可能比重试长，你会看到一条**FailedToGetAccessTokenException**消息。 如果证书已上传到正确的 AdApp 并且 dmsSettings.js中提供了正确的 AppId，请尝试再次运行安装命令。
+将证书上传到 AdApp 后，最多需要几分钟的时间才能使用 Azure 进行身份验证。 安装程序将尝试重试一段延迟，但传播延迟可能比重试长，你会看到一条 **FailedToGetAccessTokenException** 消息。 如果证书已上传到正确的 AdApp 并且 dmsSettings.js中提供了正确的 AppId，请尝试再次运行安装命令。
 
 ## <a name="service-offline-after-successful-installation"></a>成功安装后，服务 "脱机"
 
 如果在安装过程成功完成后服务显示为 "脱机"，请尝试执行以下步骤。
 
-1. 在 Azure 门户的 Azure 数据库迁移服务实例中，导航到 "**混合**设置" 选项卡，然后验证是否通过检查已注册辅助角色的网格来注册辅助角色。
+1. 在 Azure 门户的 Azure 数据库迁移服务实例中，导航到 " **混合** 设置" 选项卡，然后验证是否通过检查已注册辅助角色的网格来注册辅助角色。
 
-    此工作线程的状态应为 "**联机**"，但如果出现问题，它可能会显示为 "**脱机**"。
+    此工作线程的状态应为 " **联机**"，但如果出现问题，它可能会显示为 " **脱机** "。
 
 2. 在辅助计算机上，通过运行以下 PowerShell 命令来检查服务的状态：
 
@@ -51,7 +51,7 @@ ms.locfileid: "84196280"
 3. 如果 Windows 服务在 "正在运行" 和 "已停止" 之间循环，则辅助角色在启动时遇到问题。 请检查 Azure 数据库迁移服务混合辅助角色日志来确定问题。
 
     - 安装过程日志存储在运行安装程序可执行文件的文件夹内的 "日志" 文件夹中。
-    - Azure 数据库迁移服务混合辅助角色日志存储在安装了辅助角色的文件夹中的**WorkerLogs**文件夹中。 混合辅助角色日志文件的默认位置为**C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**。
+    - Azure 数据库迁移服务混合辅助角色日志存储在安装了辅助角色的文件夹中的 **WorkerLogs** 文件夹中。 混合辅助角色日志文件的默认位置为 **C:\Program Files\DatabaseMigrationServiceHybrid\WorkerLogs**。
 
 ## <a name="using-your-own-signed-certificate"></a>使用你自己的签名证书
 
@@ -65,7 +65,7 @@ ms.locfileid: "84196280"
 
 2. 更新服务以使用不同的登录帐户。
 
-3. 在 "本地计算机证书的 certmgr.msc" 中，为**Dms 混合应用密钥**和**Dms 方案引擎密钥对**证书的新帐户提供私钥权限。
+3. 在 "本地计算机证书的 certmgr.msc" 中，为 **Dms 混合应用密钥** 和 **Dms 方案引擎密钥对** 证书的新帐户提供私钥权限。
 
     a. 打开 certmgr.msc 以查看以下项：
 
@@ -73,21 +73,21 @@ ms.locfileid: "84196280"
     - DMS 混合辅助角色安装密钥
     - DMS 方案引擎密钥对
 
-    b. 右键单击 " **DMS 混合应用密钥**" 条目，指向 "**所有任务**"，然后选择 "**管理私钥**"。
+    b. 右键单击 " **DMS 混合应用密钥** " 条目，指向 " **所有任务**"，然后选择 " **管理私钥**"。
 
-    c. 在 "**安全**" 选项卡上，选择 "**添加**"，然后输入帐户名称。
+    c. 在 " **安全** " 选项卡上，选择 " **添加**"，然后输入帐户名称。
 
-    d. 使用相同的步骤为新帐户授予对**DMS 方案引擎密钥对**证书的私钥权限。
+    d. 使用相同的步骤为新帐户授予对 **DMS 方案引擎密钥对** 证书的私钥权限。
 
 ## <a name="unregistering-the-worker-manually"></a>手动注销辅助角色
 
 如果你不再有权访问该辅助角色计算机，可以通过执行以下步骤，取消注册该工作线程并重复使用 Azure 数据库迁移服务实例：
 
-1. 在 Azure 门户中，转到你的 Azure 数据库迁移服务实例，然后导航到**混合**设置页。
+1. 在 Azure 门户中，转到你的 Azure 数据库迁移服务实例，然后导航到 **混合** 设置页。
 
-   辅助角色条目将显示在列表中，状态显示为 "**脱机**"。
+   辅助角色条目将显示在列表中，状态显示为 " **脱机**"。
 
-2. 在辅助角色条目列表的最右侧，选择省略号，然后选择 "**注销**"。
+2. 在辅助角色条目列表的最右侧，选择省略号，然后选择 " **注销**"。
 
 ## <a name="addressing-issues-for-specific-migration-scenarios"></a>解决特定迁移方案的问题
 

@@ -3,12 +3,12 @@ title: 管理 Azure 实验室服务中的教室实验室 | Microsoft Docs
 description: 了解如何创建和配置教室实验室、如何查看所有教室实验室、如何与实验室用户共享注册链接，或者如何删除实验室。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251671"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
@@ -32,7 +32,7 @@ ms.locfileid: "85445383"
     1. 查看页面上显示的“每小时总价”。 
     1. 选择“保存”。
 
-        ![“新建实验室”窗口](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![显示 "新建实验室" 窗口的屏幕截图。](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > 如果实验室帐户配置为[允许实验室创建者选取实验室位置](allow-lab-creator-pick-lab-location.md)选项，则会显示一个用于选择实验室位置的选项。 

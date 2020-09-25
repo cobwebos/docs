@@ -10,20 +10,34 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/03/2020
-ms.openlocfilehash: 83927c9df9a4f1a6ab32c15c481898ec68f53c4c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: 619960238125191e7bd4e702a49016c8fd58c847
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898153"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296648"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a> (预览版为 Azure 机器学习工作区配置 Azure 专用链接) 
 
 本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 有关为 Azure 机器学习设置虚拟网络的信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
 
 > [!IMPORTANT]
-> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在 **美国东部**、 **美国中南部** 和 **美国西部 2** 区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在以下区域提供：
+>
+> * **美国东部**
+> * **美国中南部**
+> * **美国西部**
+> * **美国西部 2**
+> * **加拿大中部**
+> * **Southeast Asia**
+> * **Japan East**
+> * **北欧**
+> * **澳大利亚东部**
+> * **英国南部**
+>
+> 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用链接有助于降低数据外泄风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
@@ -34,6 +48,10 @@ ms.locfileid: "90898153"
 
 > [!TIP]
 > Azure 机器学习计算实例可以与工作区和专用终结点一起使用。 此功能目前在 **美国东部**、 **美国中南部** 和 **美国西部 2** 区域公开预览版。
+
+## <a name="prerequisites"></a>先决条件
+
+如果计划将启用了专用链接的工作区与客户托管的密钥配合使用，则必须使用支持票证请求此功能。 有关详细信息，请参阅 [管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>创建使用专用终结点的工作区
 

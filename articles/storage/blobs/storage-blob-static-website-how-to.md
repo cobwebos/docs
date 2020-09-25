@@ -7,13 +7,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289865"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -21,11 +21,14 @@ ms.locfileid: "87432565"
 
 本文介绍如何使用 Azure 门户、Azure CLI 或 PowerShell 启用静态网站托管。
 
+> [!NOTE]
+> 确保创建常规用途 v2 标准存储帐户。 静态网站在任何其他类型的存储帐户中都不可用。
+
 ## <a name="enable-static-website-hosting"></a>启用静态网站托管
 
 静态网站托管是必须在存储帐户上启用的一项功能。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)即可开始操作。
 
@@ -43,7 +46,7 @@ ms.locfileid: "87432565"
 
    当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
 
-7. 单击“保存” 。 Azure 门户现在会显示静态网站终结点。 
+7. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。 
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -51,11 +54,11 @@ ms.locfileid: "87432565"
 
 <a id="cli"></a>
 
-可以使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 启用静态网站托管。
+可以使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 来启用静态网站托管。
 
 1. 首先，打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或者，如果已在本地[安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
 
-2. 如果你的标识已关联到多个订阅，请将活动订阅设置为将托管你的静态网站的存储帐户的订阅。
+2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -97,7 +100,7 @@ ms.locfileid: "87432565"
    Connect-AzAccount
    ```
 
-4. 如果你的标识已关联到多个订阅，请将活动订阅设置为将托管你的静态网站的存储帐户的订阅。
+4. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
@@ -131,7 +134,7 @@ ms.locfileid: "87432565"
 
 ## <a name="upload-files"></a>上传文件 
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 这些说明介绍如何使用 Azure 门户中出现的存储资源管理器版本来上传文件。 不过，也可以使用在 Azure 门户之外运行的[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)版本。 可以使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或可将文件上传到帐户的 $web 容器的任何自定义应用程序。 有关使用 Visual Studio Code 上传文件的分步教程，请参阅[教程：在 Blob 存储上托管静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)。
 
@@ -161,7 +164,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 ```
 
 > [!NOTE] 
-> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `--content-type 'text/html; charset=utf-8'` 追加到命令。 
+> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `--content-type 'text/html; charset=utf-8'` 追加到命令中。 
 
 * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 

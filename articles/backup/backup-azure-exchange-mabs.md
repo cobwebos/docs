@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务器将 Exchange Server 备份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262988"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 
@@ -23,8 +23,8 @@ ms.locfileid: "89377619"
 
 若要在 Exchange Server 上安装 MABS 保护代理，请遵循以下步骤：
 
-1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
-2. 在 Exchange 服务器上安装代理，方法是选择 " **管理" > 代理 ">** 在 MABS 管理员控制台中安装。 有关详细步骤，请参阅[安装 MABS 保护代理](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)。
+1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](/system-center/dpm/configure-firewall-settings-for-dpm)。
+2. 在 Exchange 服务器上安装代理，方法是选择 " **管理" > 代理 ">** 在 MABS 管理员控制台中安装。 有关详细步骤，请参阅[安装 MABS 保护代理](/system-center/dpm/deploy-dpm-protection-agent)。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>为 Exchange Server 创建保护组
 

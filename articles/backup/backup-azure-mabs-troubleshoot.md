@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 70431ee42566d1cbba5ed239b9da55c2ff7a2afe
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d3b2ee87dda09fe1b5611d00ce567304aec33a6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298365"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -71,7 +71,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 备份 | 副本不一致 | 检查是否已在保护组向导中启用自动一致性检查选项。 若要详细了解复制选项和一致性检查，请参阅[这篇文章](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。<br> <ol><li> 对于系统状态/BMR 备份，验证是否在受保护的服务器上安装了 Windows Server 备份。</li><li> 检查 DPM/Microsoft Azure 备份服务器上的 DPM 存储池中是否存在空间相关的问题，并根据需要分配存储。</li><li> 检查受保护服务器上卷影复制服务的状态。 如果它处于禁用状态，请将其设置为手动启动。 在服务器上启动该服务。 然后返回到 DPM/Microsoft Azure 备份服务器控制台，开始与一致性检查作业同步。</li></ol>|
+| 备份 | 副本不一致 | 检查是否已在保护组向导中启用自动一致性检查选项。 若要详细了解复制选项和一致性检查，请参阅[这篇文章](/system-center/dpm/create-dpm-protection-groups)。<br> <ol><li> 对于系统状态/BMR 备份，验证是否在受保护的服务器上安装了 Windows Server 备份。</li><li> 检查 DPM/Microsoft Azure 备份服务器上的 DPM 存储池中是否存在空间相关的问题，并根据需要分配存储。</li><li> 检查受保护服务器上卷影复制服务的状态。 如果它处于禁用状态，请将其设置为手动启动。 在服务器上启动该服务。 然后返回到 DPM/Microsoft Azure 备份服务器控制台，开始与一致性检查作业同步。</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>在线恢复点创建失败
 
@@ -95,7 +95,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 将代理推送到受保护的服务器 | 代理操作失败，因为 \<ServerName> 上的 DPM 代理协调器服务出现通信错误。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <ul><li> 如果要从不受信任的域附加计算机，请执行 [以下步骤](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)。 <br> （或者） </li><li> 如果要附加受信任域中的计算机，请使用 [此博客](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中所述的步骤进行故障排除。 <br>（或者）</li><li> 尝试禁用防病毒软件以进行故障排除。 如果解决了问题，可根据[此文](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)中的建议修改防病毒软件设置。</li></ul> |
+| 将代理推送到受保护的服务器 | 代理操作失败，因为 \<ServerName> 上的 DPM 代理协调器服务出现通信错误。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <ul><li> 如果要从不受信任的域附加计算机，请执行 [以下步骤](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)。 <br> （或者） </li><li> 如果要附加受信任域中的计算机，请使用 [此博客](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中所述的步骤进行故障排除。 <br>（或者）</li><li> 尝试禁用防病毒软件以进行故障排除。 如果解决了问题，可根据[此文](/system-center/dpm/run-antivirus-server)中的建议修改防病毒软件设置。</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>安装程序无法更新注册表元数据
 
@@ -108,7 +108,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 将代理推送到受保护的服务器 | 为服务器指定的凭据无效。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <br> 尝试根据[此文](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)中的说明，在生产服务器上手动安装保护代理。|
+| 将代理推送到受保护的服务器 | 为服务器指定的凭据无效。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <br> 尝试根据[此文](/system-center/dpm/deploy-dpm-protection-agent)中的说明，在生产服务器上手动安装保护代理。|
 | Azure 备份代理无法连接到 Azure 备份服务 (ID: 100050) | Azure 备份代理无法连接到 Azure 备份服务。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <br>1.在权限提升的提示符下运行以下命令：**psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**。 此命令会打开 Internet Explorer 窗口。 <br/> 2.转到“工具” > “Internet 选项” > “连接” > “局域网设置”。 <br/> 3.更改设置以使用代理服务器。 然后提供代理服务器详细信息。<br/> 4.如果计算机的 Internet 访问受限，请确保计算机或代理上的防火墙设置允许这些 [URL](install-mars-agent.md#verify-internet-access) 和 [IP 地址](install-mars-agent.md#verify-internet-access)。|
 | Azure 备份代理安装失败 | Microsoft Azure 恢复服务安装失败。 通过 Microsoft Azure 恢复服务安装对系统所做的所有更改都已回滚。 (ID:4024) | 手动安装 Azure 代理。
 
@@ -117,8 +117,8 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
 | 配置保护组 | DPM 无法枚举受保护计算机（受保护计算机名称）上的应用程序组件。 | 在相关数据源/组件级别的“配置保护组”UI 屏幕上选择“刷新”。 |
-| 配置保护组 | 无法配置保护 | 如果受保护的服务器是 SQL Server，请根据[此文](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)中所述，检查是否已在受保护计算机上将 sysadmin 角色权限提供给系统帐户 (NTAuthority\System)。
-| 配置保护组 | 此保护组的存储池中没有足够的可用空间。 | 添加到存储池的磁盘[不应包含分区](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 删除磁盘上的所有现有卷。 然后将磁盘添加到存储池。|
+| 配置保护组 | 无法配置保护 | 如果受保护的服务器是 SQL Server，请根据[此文](/system-center/dpm/back-up-sql-server)中所述，检查是否已在受保护计算机上将 sysadmin 角色权限提供给系统帐户 (NTAuthority\System)。
+| 配置保护组 | 此保护组的存储池中没有足够的可用空间。 | 添加到存储池的磁盘[不应包含分区](/system-center/dpm/create-dpm-protection-groups)。 删除磁盘上的所有现有卷。 然后将磁盘添加到存储池。|
 | 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请在一段时间后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | 原因：<br/>在以下三种情况下会发生此错误：当启用安全设置时，如果尝试将保留期减小到前面指定的最小值以下，则会出现此错误。  (不受支持的版本低于 Microsoft Azure 备份服务器版本2.0.9052 和 Azure 备份服务器 update 1。 )  <br/>**建议的操作：**<br/> 若要继续执行策略相关的更新，请将保留期设置为高于指定的最短保留期。 （每日、每周、每月和每年备份的最短保留期分别为 7 天、4 周、3 个月和 1 年）。 <br><br>（可选）另一种首选方法是更新备份代理和 Azure 备份服务器，以利用所有安全更新。 |
 
 ## <a name="backup"></a>Backup
@@ -129,7 +129,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | 备份 | 如果只备份系统状态，请验证受保护计算机上是否有足够的可用空间来存储系统状态备份。 | <ol><li>检查是否已在受保护计算机上安装 Windows Server 备份。</li><li>检查受保护计算机上是否存在用于系统状态的足够空间。 执行此项检查的最简单方法是转到受保护的计算机，打开“Windows Server 备份”并单击相关选项，然后选择“BMR”。 UI 会告知需要多少空间。 打开“WSB” > “本地备份” > “备份计划” > “选择备份配置” > “完整服务器”（大小已显示）。 使用该大小进行验证。</li></ol>
 | 备份 | BMR 备份失败 | 如果 BMR 很大，可将某些应用程序文件移到 OS 驱动器，并重试。 |
 | 备份 | 在新的 Microsoft Azure 备份服务器上重新保护 VMware VM 的选项未显示为可添加。 | VMware 属性指向已停用的旧 Microsoft Azure 备份服务器实例。 若要解决此问题，请执行下列操作：<br><ol><li>在 VCenter（类似的程序为 SC-VMM）中，转到“摘要”选项卡，然后选择“自定义属性”。 </li>  <li>从 **DPMServer** 值中删除旧的 Microsoft Azure 备份服务器名称。</li>  <li>返回到新的 Microsoft Azure 备份服务器并修改 PG。  选择“刷新”按钮后，将显示带有复选框的 VM，可将其添加到保护列表。</li></ol> |
-| 备份 | 访问文件/共享文件夹时出错 | 尝试按照此文（[在 DPM 服务器上运行防病毒软件](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)）中的建议修改防病毒设置。|
+| 备份 | 访问文件/共享文件夹时出错 | 尝试按照此文（[在 DPM 服务器上运行防病毒软件](/system-center/dpm/run-antivirus-server)）中的建议修改防病毒设置。|
 
 ## <a name="change-passphrase"></a>更改通行短语
 
@@ -142,7 +142,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 使用 Office 365 帐户设置电子邮件通知 |错误 ID：2013| **原因：**<br> 尝试使用 Office 365 帐户 <br>**建议的操作：**<ol><li> 首先要确保已在 Exchange 上为 DPM 服务器设置“在接收连接器上允许匿名中继”。 若要详细了解如何配置此设置，请参阅[在接收连接器上允许匿名中继](/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为[使用 IIS 将 SMTP 中继到 O365](/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)。<br><br>  请务必使用 user\@domain.com 格式，而不要使用“域\用户”格式。<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> 当你更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保它反映新的值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程期间，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。
+| 使用 Office 365 帐户设置电子邮件通知 |错误 ID：2013| **原因：**<br> 尝试使用 Office 365 帐户 <br>**建议的操作：**<ol><li> 首先要确保已在 Exchange 上为 DPM 服务器设置“在接收连接器上允许匿名中继”。 若要详细了解如何配置此设置，请参阅[在接收连接器上允许匿名中继](/exchange/mail-flow/connectors/allow-anonymous-relay)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为 [使用 IIS 将 SMTP 中继到 O365](/exchange/mail-flow/test-smtp-with-telnet)。<br><br>  请务必使用 user\@domain.com 格式，而不要使用“域\用户”格式。<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> 当你更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保它反映新的值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程期间，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。
 
 ## <a name="common-issues"></a>常见问题
 

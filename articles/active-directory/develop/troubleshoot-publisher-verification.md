@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256885"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
@@ -59,7 +59,7 @@ ms.locfileid: "90088317"
 
 - **我收到了与多重身份验证相关的错误。我该怎么办？** 
     请确保已启用 [多因素身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) ，并且在此方案中登录的用户需要该身份验证。 例如，MFA 可以是：
-    - 你正在登录的用户始终需要
+    - 你用来登录的用户始终需要
     - [Azure 管理是必需的](../conditional-access/howto-conditional-access-policy-azure-management.md)。
     - [需要为](../conditional-access/howto-conditional-access-policy-admin-mfa.md) 你用来登录的管理员类型。
 
@@ -150,31 +150,45 @@ HTTP/1.1 200 OK
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-提供的 MPN ID (<MPNID>) 不存在，或你无权访问它。 提供有效的 MPN ID，然后重试。 
+提供的 MPN ID (<MPNID>) 不存在，或你无权访问它。 提供有效的 MPN ID，然后重试。
+    
+最常见的原因是，已登录用户不是合作伙伴中心中 MPN 帐户的正确角色的成员-请参阅符合条件的角色列表的 [要求](publisher-verification-overview.md#requirements) ，并查看有关详细信息的 [常见问题](#common-issues) 。 还可能是由于应用注册的租户未添加到 MPN 帐户，或者是无效的 MPN ID。
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。 
+提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。
+    
+最常见的原因是，提供的 MPN ID 与 (PLA) 的伙伴位置帐户相对应。 仅支持合作伙伴全局帐户。 有关更多详细信息，请参阅 [合作伙伴中心帐户结构](/partner-center/account-structure) 。
 
 ### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
 
-提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。 
+提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。
+    
+最常见的原因是提供了错误的 MPN ID。
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 提供的 MPN ID (<MPNID>) 未完成审核过程。 请在合作伙伴中心中完成此过程，然后重试。 
+    
+最常见的原因是 MPN 帐户未完成 [验证](/partner-center/verification-responses) 过程。
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。 
+   
+最常见的原因是提供了错误的 MPN ID。
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
 
-提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。 
+提供的 MPN ID (<MPNID>) 无效。 提供有效的 MPN ID，然后重试。
+    
+最常见的原因是提供了错误的 MPN ID。
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-找不到目标应用程序 (<AppId>)。 提供有效的应用程序 ID，然后重试。 
+找不到目标应用程序 (<AppId>)。 提供有效的应用程序 ID，然后重试。
+    
+最常见的原因是通过图形 API 执行验证，而提供的应用程序的 id 不正确。 注意-必须提供应用程序的 id，而不是 AppId/ClientId。
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Azure AD B2C 租户不支持此功能。
 
 目标应用程序 (\<AppId\>) 必须具有发布服务器域集。 设置发布者域，然后重试。
 
+如果未在应用上配置 [发布服务器域](howto-configure-publisher-domain.md) ，则发生此事件。
+
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 目标应用程序的发布者域 (<publisherDomain>) 与用于在合作伙伴中心内执行电子邮件验证的域 (<pcDomain>) 不一致。 请确保这两个域一致，然后重试。 
+    
+当应用程序的 [发布服务器域](howto-configure-publisher-domain.md) 和添加到 Azure AD 租户的某个 [自定义域](../fundamentals/add-custom-domain.md) 都不匹配用于在合作伙伴中心执行电子邮件验证的域时，将发生此事件。
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 你无权设置此应用程序 (<AppId>) 的已验证发布者属性 
+  
+最常见的原因是，已登录的用户不是 Azure AD 中 MPN 帐户的正确角色的成员，请参阅符合条件的角色列表的 [要求](publisher-verification-overview.md#requirements) ，并查看有关详细信息的 [常见问题](#common-issues) 。
 
 ### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
 
@@ -202,7 +222,11 @@ Azure AD B2C 租户不支持此功能。
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-Microsoft 使用者帐户不支持此功能。 仅支持由 Azure AD 用户在 Azure AD 中注册的应用程序。 
+Microsoft 使用者帐户不支持此功能。 仅支持由 Azure AD 用户在 Azure AD 中注册的应用程序。
+
+### <a name="interactionrequired"></a>InteractionRequired
+
+在尝试将已验证的发布服务器添加到应用之前未执行多重身份验证时发生。 有关详细信息，请参阅 [常见问题](#common-issues) 。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -216,4 +240,4 @@ Microsoft 使用者帐户不支持此功能。 仅支持由 Azure AD 用户在 A
 - 注册应用的 TenantId
 - MPN ID
 - 进行 REST 请求 
-- 返回错误代码和消息 
+- 返回错误代码和消息

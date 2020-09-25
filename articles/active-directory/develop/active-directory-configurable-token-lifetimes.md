@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258400"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
@@ -84,20 +84,20 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 令牌生存期策略是一种策略对象，其中包含令牌生存期规则。 使用策略的属性控制指定的令牌生存期。 如果未设置策略，系统将强制实施默认生存期值。
 
 ### <a name="configurable-token-lifetime-properties"></a>可配置的令牌生存期属性
-| Property | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
+| properties | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 访问令牌生存期 |AccessTokenLifetime<sup>2</sup> |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
 | 单因素刷新令牌最大期限 |MaxAgeSingleFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
-| 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
-| 单因素会话令牌最大期限 |MaxAgeSessionSingleFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |180 天<sup>1</sup> |
-| 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |180 天<sup>1</sup> |
+| 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） | 180 天 |10 分钟 |直到吊销<sup>1</sup> |
+| 单因素会话令牌最大期限 |MaxAgeSessionSingleFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
+| 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor |会话令牌（持久性和非持久性） | 180 天 |10 分钟 |直到吊销<sup>1</sup> |
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
 * <sup>2</sup>若要确保 Microsoft 团队 Web 客户端工作，建议将 AccessTokenLifetime 保留为大于15分钟的 Microsoft 团队。
 
 ### <a name="exceptions"></a>异常
-| Property | 影响 | 默认 |
+| properties | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
 | 刷新令牌最大非活动时间（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |90 天 |
@@ -394,7 +394,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |包含所有策略规则的字符串化 JSON 的数组。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
@@ -411,7 +411,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 Get-AzureADPolicy
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [可选] |**ObjectId (** 所需策略的 ID) 。 |`-Id <ObjectId of Policy>` |
 
@@ -424,7 +424,7 @@ Get-AzureADPolicy
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (** 所需策略的 ID) 。 |`-Id <ObjectId of Policy>` |
 
@@ -437,7 +437,7 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (** 所需策略的 ID) 。 |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
@@ -455,7 +455,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (** 所需策略的 ID) 。 | `-Id <ObjectId of Policy>` |
 
@@ -471,7 +471,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -485,7 +485,7 @@ Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectI
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
 
@@ -498,7 +498,7 @@ Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
@@ -515,7 +515,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -529,7 +529,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
 
@@ -542,7 +542,7 @@ Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| 参数 | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |

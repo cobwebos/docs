@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261594"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>什么是连接的工厂 IoT 解决方案加速器？
+
+> [!IMPORTANT]
+> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
 
 连接的工厂是 Microsoft 的 Azure 工业 IoT 参考体系结构的实现，打包为开源解决方案。 可以使用它作为商业产品的起点。 可以通过 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/#solutions/types/CF)将连接的工厂解决方案的预构建版本部署到 Azure 订阅。
 
@@ -65,4 +68,4 @@ ms.locfileid: "73820109"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关已连接工厂解决方案加速器的详细信息，请参阅快速入门[尝试使用基于云的解决方案来管理我的工业 IoT 设备](quickstart-connected-factory-deploy.md)。
+若要了解有关已连接工厂解决方案加速器的详细信息，请参阅快速入门 [尝试使用基于云的解决方案来管理我的工业 IoT 设备](quickstart-connected-factory-deploy.md)。

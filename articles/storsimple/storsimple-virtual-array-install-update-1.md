@@ -1,6 +1,6 @@
 ---
 title: 在 StorSimple Virtual Array 上安装 Update 1.0 | Microsoft Docs
-description: 介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新
+description: 介绍如何使用 StorSimple Virtual Array web UI，使用 Azure 门户和修复方法来应用更新1.0。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295560"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 1.0
 
@@ -59,7 +59,7 @@ ms.locfileid: "85508089"
 * 安装更新或修补程序
 
 > [!IMPORTANT] 
-> **仅当你运行更新0.6 （10.0.10293.0）时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上[安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
+> **仅在运行更新 0.6 (10.0.10293.0) 时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上 [安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
 
 ### <a name="download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
@@ -100,7 +100,7 @@ ms.locfileid: "85508089"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 web UI 中，请参阅**维护**  >  **软件更新**。 记下运行的软件版本。 **仅当你运行更新0.6 （10.0.10293.0）时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上[安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
+1. 在本地 web UI 中，请参阅**维护**  >  **软件更新**。 记下运行的软件版本。 **仅在运行更新 0.6 (10.0.10293.0) 时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上 [安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update1m.png)
 

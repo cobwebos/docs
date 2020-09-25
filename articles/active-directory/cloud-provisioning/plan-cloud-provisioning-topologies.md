@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 172e836a212f9ce097c2c4e392a7386a510c2c6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526844"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266286"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 云预配支持的拓扑和方案
 本文介绍使用 Azure AD Connect 云预配 Azure AD) 拓扑的各种本地和 Azure Active Directory (。 本文仅包括支持的配置和方案。
@@ -34,7 +34,7 @@ ms.locfileid: "90526844"
 - 不能更改用于源锚点的属性。
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>单个林，单个 Azure AD 租户
-![单个林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/single-forest.png)
+![显示单个林和单个租户的拓扑的关系图。](media/plan-cloud-provisioning-topologies/single-forest.png)
 
 最简单的拓扑是具有一个或多个域的单个本地林，以及单个 Azure AD 租户。  有关此方案的示例，请参阅 [教程：包含单个 Azure AD 租户的单个林](tutorial-single-forest.md)
 
@@ -45,7 +45,7 @@ ms.locfileid: "90526844"
 常见拓扑是一个多个 AD 林，其中包含一个或多个域，一个 Azure AD 租户。  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的现有林，具有云预配的新林
-![单个林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+![显示现有林和新林的拓扑的关系图。](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
 这种情况下，拓扑类似于多林方案，但这种情况涉及到现有 Azure AD Connect 环境，然后使用 Azure AD Connect 云预配引入新的林。  有关此方案的示例，请参阅 [教程：包含单个 Azure AD 租户的现有林](tutorial-existing-forest.md)
 

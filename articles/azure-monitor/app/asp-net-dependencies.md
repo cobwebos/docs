@@ -4,12 +4,12 @@ description: 使用 Application Insights 监视来自本地或 Microsoft Azure W
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936531"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263923"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -101,9 +101,10 @@ services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o)
 | 平台 | 获取完整 SQL 查询所要执行的步骤 |
 | --- | --- |
 | Azure Web 应用 |在 Web 应用控制面板中，[打开“Application Insights”边栏选项卡](../../azure-monitor/app/azure-web-apps.md)并启用“.NET”下的“SQL 命令” |
-| IIS 服务器（Azure VM、本地服务器，等等。） | 使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包或使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)并重启 IIS。 |
+| IIS 服务器（Azure VM、本地服务器，等等。） | 使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包或使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine)并重启 IIS。 |
 | Azure 云服务 | 添加[启动任务以安装 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 应通过为 [ASP.NET](./asp-net.md) 或 [ASP.NET Core](./asp-net-core.md) 应用程序安装 NuGet 包，在生成应用时将其加入 ApplicationInsights SDK |
 | IIS Express | 使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包。
+| Azure Web 作业 | 使用 [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包。
 
 除了上述平台特定的步骤之外，还必须通过使用以下命令修改 applicationInsights.config 文件来显式选择启用 SQL 命令集合：
 

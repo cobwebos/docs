@@ -2,19 +2,19 @@
 title: 部署资源的多个实例
 description: 在 Azure 资源管理器模板中使用复制操作和数组多次部署资源类型。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293962"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
 本文介绍如何在 Azure 资源管理器 (ARM) 模板中创建一个资源的多个实例。 通过将 **copy** 元素添加到模板的 resources 节，可以动态设置要部署的资源数。 还可以避免重复模板语法。
 
-还可以将 copy 用于 [properties](copy-properties.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
+你还可以使用具有 [属性](copy-properties.md)、 [变量](copy-variables.md)和 [输出](copy-outputs.md)的副本。
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
@@ -155,6 +155,8 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 默认情况下，资源管理器并行创建资源。 除了模板中 800 个资源的总限制外，它对并行部署的资源数量没有限制。 不会保证它们的创建顺序。
 
 但是，你可能希望将资源指定为按顺序部署。 例如，在更新生产环境时，可能需要错开更新，使任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+
+的值 `batchSize` 不能超过 `count` 复制元素中的的值。
 
 例如，若要按顺序一次部署两个存储帐户，请使用：
 

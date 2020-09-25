@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262342"
 ---
-# <a name="receipt-concepts"></a>接收概念
+# <a name="receipt-concepts"></a>回执概念
 
 Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接收方 API 从销售收据提取关键信息，如商家名称、交易日期、交易总计、行项等。 
 
@@ -29,7 +29,7 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 
 使用光学字符识别 (OCR) 和预生成的接收模型，接收 API 可实现这些接收处理方案，并从收据中提取数据，例如商人名称、提示、总计、行项等等。 使用此 API 时，无需对模型进行定型，只需将收据发送到分析回执 API 并提取数据。
 
-![示例回执](./media/contoso-receipt-small.png)
+![收据示例](./media/contoso-receipt-small.png)
 
 ## <a name="what-does-the-receipt-api-do"></a>回执 API 有什么作用？ 
 
@@ -74,14 +74,11 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
   > 语言输入 
   >
   > 预生成的收条2.1 版-预览版。1包含一个可选的 request 参数，用于指定来自其他英语市场的回执区域设置。 对于澳大利亚英语 (EN-US) 、加拿大 (EN-CA) 、英国 () 和印度 (EN-US) 中的销售收据，可以指定区域设置以获得改进的结果。 如果未在 v 2.1-preview. 1 中指定区域设置，则模型将默认为 EN-US 模型。
-  
- ### <a name="input-requirements"></a>输入要求 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>分析回执操作
 
-[分析收据](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)采用收据的图像或 PDF 作为输入，并提取 intrest 和 text 的值。 调用返回一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的结果 ID。
+[分析收据](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)采用收据的图像或 PDF 作为输入，并提取相关值和文本。 调用返回一个名为的响应标头字段 `Operation-Location` 。 `Operation-Location`该值是一个 URL，其中包含要在下一步中使用的结果 ID。
 
 |响应标头| 结果 URL |
 |:-----|:----|
@@ -456,7 +453,10 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请按照快速入门中的步骤开始 [接收 API Python 快速入门](./quickstarts/python-receipts.md)。
-- 了解 [窗体识别器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)。
-- 详细了解 [窗体识别器](overview.md)。
+- 完成 [表单识别器客户端库快速入门](quickstarts/client-library.md) ，开始使用所选语言的窗体识别器编写收据处理应用。
+- 或者，按照 [收条 API Python 快速入门](./quickstarts/python-receipts.md) ，使用 REST API 来识别收入。
 
+## <a name="see-also"></a>请参阅
+
+* [什么是表单识别器？](./overview.md)
+* [REST API 参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)

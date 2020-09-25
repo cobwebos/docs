@@ -1,7 +1,7 @@
 ---
 title: 使用自定义策略在客户注册期间禁用电子邮件验证
 titleSuffix: Azure AD B2C
-description: 了解客户在 Azure Active Directory B2C 中注册期间如何禁用电子邮件验证。
+description: 了解如何在 Azure Active Directory B2C 中使用自定义策略在客户注册过程中禁用电子邮件验证。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29426f8e3797c89deb712e89e0d972dd1ac8028e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9372a9caff5aefb53bfa8adf7eb1c68d2a3b7b2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259605"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略在客户注册期间禁用电子邮件验证
 
@@ -60,4 +60,4 @@ ms.locfileid: "85389303"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 IEF 参考中的[自断言技术配置文件](self-asserted-technical-profile.md)。
+- 详细了解 IEF 参考中的 [自断言技术配置文件](self-asserted-technical-profile.md) 。

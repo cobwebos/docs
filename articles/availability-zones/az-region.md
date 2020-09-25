@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: d7a158d91295aedc14f1f913ae152c496066fab5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b2143e4a9e4c24291ca2840f51e1b63c12017b04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264230"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>支持在 Azure 中可用性区域的区域
 
@@ -35,7 +35,7 @@ ms.locfileid: "90891682"
 | **存储** |  |  |  |  |
 | 托管磁盘                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 区域冗余存储             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **网络** |  |  |  |  |
+| **联网** |  |  |  |  |
 | 标准 IP 地址                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 标准负载均衡器             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | VPN 网关                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -44,8 +44,8 @@ ms.locfileid: "90891682"
 | Azure 防火墙                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **数据库** |  |  |  |  |
 | Azure 数据资源管理器                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL 数据库                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ： heavy_check_mark： (预览版)  | :heavy_check_mark: |
-| Azure Redis 缓存              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| SQL 数据库                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 用于 Redis 的 Azure 缓存              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |  |
 | 事件中心                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -68,7 +68,7 @@ ms.locfileid: "90891682"
 | **存储** |  |  |  |  |
 | 托管磁盘                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 区域冗余存储             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **网络** |  |  |  |  |
+| **联网** |  |  |  |  |
 | 标准 IP 地址                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 标准负载均衡器             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | VPN 网关                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -77,8 +77,8 @@ ms.locfileid: "90891682"
 | Azure 防火墙                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **数据库** |  |  |  |  |
 | Azure 数据资源管理器                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL 数据库                       | :heavy_check_mark: | ： heavy_check_mark： (预览版)  | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Redis 缓存              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| SQL 数据库                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 用于 Redis 的 Azure 缓存              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |  |
 | 事件中心                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -101,7 +101,7 @@ ms.locfileid: "90891682"
 | **存储** |  |  |  |
 | 托管磁盘                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 区域冗余存储             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **网络** |  |  |  |
+| **联网** |  |  |  |
 | 标准 IP 地址                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 标准负载均衡器             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | VPN 网关                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -111,7 +111,7 @@ ms.locfileid: "90891682"
 | **数据库** |  |  |  |
 | Azure 数据资源管理器                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | SQL 数据库                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Redis 缓存              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 用于 Redis 的 Azure 缓存              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |
 | 事件中心                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

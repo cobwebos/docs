@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ab9bc0159528446a9de95769f1e433f03acb56
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 03069bc37333cbd26dfe4f40ce4496f3afe768ed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266036"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：要求应用保护策略和核准的客户端设备通过条件访问来访问云应用
 
@@ -51,7 +51,7 @@ ms.locfileid: "90601939"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择要将此策略应用到的“所有用户”或特定“用户和组”  。 
    1. 选择“完成”。
-1. 在“云应用或操作” > “包括”下，选择“Office 365 (预览版)”。
+1. 在 "**云应用或操作**  >  **包括**" 下，选择 " **Office 365**"。
 1. 在“条件”下，选择“设备平台”。
    1. 将“配置”设置为“是” 。
    1. 包括“Android”和“iOS”。 
@@ -102,7 +102,7 @@ ms.locfileid: "90601939"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择要将此策略应用到的“所有用户”或特定“用户和组”  。 
    1. 选择“完成”。
-1. 在“云应用或操作” > “包括”下，选择“Office 365 (预览版)”。
+1. 在 "**云应用或操作**  >  **包括**" 下，选择 " **Office 365**"。
 1. 在“条件”下，选择“设备平台”。
    1. 将“配置”设置为“是” 。
    1. 包括“Android”和“iOS”。 

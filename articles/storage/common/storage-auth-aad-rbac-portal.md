@@ -1,31 +1,31 @@
 ---
-title: 使用 Azure 门户分配 Azure 角色以进行数据访问
+title: 使用 Azure 门户为数据访问分配 Azure 角色
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure 门户通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储通过 Azure AD 支持用于身份验证的内置和 Azure 自定义角色。
+description: 了解如何使用 Azure 门户通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和 Azure 自定义角色进行身份验证。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 21120239c44dbdd812dfb3d3208990db4372ec29
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7c463beb7874e0b66e2a45a1675484f19c4fab34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249649"
 ---
-# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure 门户分配 Azure 角色以访问 blob 和队列数据
+# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure 门户为 blob 和队列数据分配 Azure 角色
 
-Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的访问控制](../../role-based-access-control/overview.md)来授予对受保护资源的访问权限。 Azure 存储空间定义一组 Azure 内置角色，这些角色包含用于访问 blob 或队列数据的公用权限集。
+Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 Azure 角色，它们包含用于访问 Blob 或队列数据的通用权限集。
 
-将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+将 Azure 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文介绍如何使用 Azure 门户分配 Azure 角色。 Azure 门户提供了一个简单的接口，用于分配 Azure 角色并管理对存储资源的访问。 你还可以使用 Azure 命令行工具或 Azure 存储管理 Api 为 blob 和队列资源分配 Azure 角色。 有关存储资源的 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 验证对 azure blob 和队列的访问权限](storage-auth-aad.md)。
+本文介绍如何使用 Azure 门户分配 Azure 角色。 Azure 门户提供一个简单的界面用于分配 Azure 角色，以及管理对存储资源的访问权限。 也可以使用 Azure 命令行工具或 Azure 存储管理 API 来为 Blob 和队列资源分配 Azure 角色。 有关存储资源的 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 验证对 Azure Blob 和队列的访问](storage-auth-aad.md)。
 
-## <a name="azure-roles-for-blobs-and-queues"></a>适用于 blob 和队列的 Azure 角色
+## <a name="azure-roles-for-blobs-and-queues"></a>Blob 和队列的 Azure 角色
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -37,14 +37,14 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的�
 
 在确定角色分配的适当范围以后，请导航到 Azure 门户中的该资源。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配： 
 
-1. 分配适当的 Azure 存储空间 Azure 角色以授予对 Azure AD 安全主体的访问权限。
+1. 分配适当的 Azure 存储 Azure 角色，以便授予对 Azure AD 安全主体的访问权限。
 
 1. 可将 Azure 资源管理器[读取者](../../role-based-access-control/built-in-roles.md#reader)角色分配给需要通过 Azure 门户使用其 Azure AD 凭据访问容器或队列的用户。 
 
 以下各部分更详细地说明了其中的每个步骤。
 
 > [!NOTE]
-> 作为 Azure 存储帐户的所有者，系统不会自动向你分配数据访问权限。 必须为自己显式分配 azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+> 作为 Azure 存储帐户的所有者，系统不会自动向你分配数据访问权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
 >
 > 如果存储帐户启用了分层命名空间，则不能分配限定于容器或队列的角色。
 
@@ -59,16 +59,16 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的�
 1. 找到要针对其分配角色的容器，并显示该容器的设置。
 1. 选择“访问控制(IAM)”以显示容器的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
 
-    ![显示容器访问控制设置的屏幕截图](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/portal-access-control-container.png" alt-text="显示容器访问控制设置的屏幕截图":::
 
 1. 单击“添加角色分配”  按钮以添加一个新角色。
 1. 在“添加角色分配”窗口中，选择要分配的 Azure 存储角色  。 然后通过搜索找到要为其分配该角色的安全主体。
 
-    ![显示如何分配 Azure 角色的屏幕截图](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="显示如何分配 Azure 角色的屏幕截图":::
 
 1. 单击“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示添加的用户现在对名为 *sample-container* 的容器中的数据具有读取权限。
 
-    ![显示已分配到某个角色的用户列表的屏幕截图](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="显示已分配到某个角色的用户列表的屏幕截图":::
 
 可以遵循类似的步骤来分配限定为存储帐户、资源组或订阅范围的角色。
 
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的�
 
 但是，如果 Mary 希望在 Azure 门户中查看某个 Blob，“存储 Blob 数据参与者”角色本身无法提供足够的权限用于在门户中导航，因此 Mary 无法查看该 Blob。  必须拥有其他 Azure AD 权限才能在门户中导航和查看门户中显示的其他资源。
 
-如果用户需要能够访问 Azure 门户中的 blob，请在存储帐户或更高级别为这些用户分配其他 Azure 角色、"[读取](../../role-based-access-control/built-in-roles.md#reader)者" 角色和其他用户。 “读取者”角色是一个 Azure 资源管理器角色，可让用户查看存储帐户资源，但不允许修改这些资源。  该角色不提供对 Azure 存储中的数据的读取权限，而只提供对帐户管理资源的读取权限。
+如果用户需要在 Azure 门户中访问 Blob，请在存储帐户或更高的级别向这些用户分配一个额外的 Azure 角色：[读取者](../../role-based-access-control/built-in-roles.md#reader)角色。 “读取者”角色是一个 Azure 资源管理器角色，可让用户查看存储帐户资源，但不允许修改这些资源。  该角色不提供对 Azure 存储中的数据的读取权限，而只提供对帐户管理资源的读取权限。
 
 请遵循以下步骤分配“读取者”角色，使用户能够在 Azure 门户中访问 Blob。  在此示例中，分配范围限定为存储帐户：
 
@@ -97,9 +97,9 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关存储资源的 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 验证对 azure blob 和队列的访问权限](storage-auth-aad.md)。 
-- 若要了解有关 RBAC 的详细信息，请参阅[什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
-- 若要了解如何分配和管理 Azure PowerShell、Azure CLI 或 REST API 的 Azure 角色分配，请参阅以下文章：
+- 有关存储资源的 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 验证对 Azure Blob 和队列的访问](storage-auth-aad.md)。 
+- 若要详细了解 RBAC，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)。
+- 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 分配和管理 Azure 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 管理基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-powershell.md)
     - [使用 Azure CLI 管理基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-cli.md)
     - [使用 REST API 管理基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-rest.md)

@@ -1,6 +1,6 @@
 ---
 title: 有关如何配置 Azure-SSIS 集成运行时以加入虚拟网络的教程
-description: 了解如何将 Azure-SSIS Integration Runtime 加入 Azure 虚拟网络。
+description: 了解如何加入 Azure SSIS 集成运行时，加入 Azure 虚拟网络。
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292296"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>配置 Azure SQL Server Integration Services (SSIS) 集成运行时 (IR) 以加入虚拟网络
 

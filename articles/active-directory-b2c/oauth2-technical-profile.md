@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b45f5ae64a7b8fd97d5242c82fb90ee6c57286ac
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 35b1f57a2361c5a4360e2ff1944b93e767168799
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433884"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259384"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
@@ -75,7 +75,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>元数据
 
 | Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
@@ -98,7 +98,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 | ExtraParamsInClaimsEndpointRequest | 否 | 包含可在某些标识提供者的 **ClaimsEndpoint** 请求中返回的附加参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 | ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
-|token_endpoint_auth_method| 否| 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值： `client_secret_post` (默认) 和 `client_secret_basic` (公共预览) 。 有关详细信息，请参阅 [OpenID connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
+|token_endpoint_auth_method| 否| 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
@@ -110,23 +110,8 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 OAuth2 协议标识提供者
 
 ## <a name="redirect-uri"></a>重定向 URI
 
-配置标识提供者的重定向 URL 时，请输入 `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`。 确保将 **tenant** 替换为租户名称（例如 contosob2c.onmicrosoft.com），将 **policyId** 替换为策略的标识符（例如 b2c_1a_policy）。 重定向 URI 需要采用全小写形式。
-
-如果使用 **b2clogin.com** 域而不是 **login.microsoftonline.com**，请确保使用 b2clogin.com 而不是 login.microsoftonline.com。
+配置标识提供者的重定向 URI 时，请输入 `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp`。 请确保将替换为 `{tenant-name}` 你的租户名称 (例如 contosob2c) 。 重定向 URI 需要采用全小写形式。
 
 示例：
 
 - [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](identity-provider-google-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

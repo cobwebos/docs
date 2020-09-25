@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267493"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>方案：通过 Nva、自定义 (预览路由流量) 
 
@@ -33,12 +33,12 @@ ms.locfileid: "89400001"
 
 **连接矩阵**
 
-| 从          | 到:|*NVA 轮辐*|*服务 VNet*|*DMZ VNet*|*分支静态*|
+| 源          | 到:|*NVA 轮辐*|*服务 VNet*|*DMZ VNet*|*分支静态*|
 |---|---|---|---|---|---|
-| **NVA 轮辐**| &#8594;|      X |            X |   对等互连 |    静态    |
+| **NVA 轮辐**| &#8594;|      X |            X |   对等互连 |    Static    |
 | **服务 VNet**| &#8594;|    X |            X |      X    |      X       |
 | **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
-| **分支** | &#8594;|  静态 |            X |      X    |      X       |
+| **分支** | &#8594;|  Static |            X |      X    |      X       |
 
 连接矩阵中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、行标题) 了解流的 "To" 端 (目标前缀、特定流量流的斜体) 中的列标题。 "X" 表示虚拟 WAN 在本机提供连接，而 "静态" 表示虚拟 WAN 使用静态路由提供连接。 让我们详细了解不同的行：
 

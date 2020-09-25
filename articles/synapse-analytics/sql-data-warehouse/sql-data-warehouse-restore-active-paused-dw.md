@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8dc7be63506e586b90d1e389d26ac591dce9c3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62db1acd704aeb563c5644d7c963c65a3abdfd0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289644"
 ---
 # <a name="restore-an-existing-sql-pool"></a>还原现有的 SQL 池
 
@@ -24,7 +24,7 @@ ms.locfileid: "87075877"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个池都由具有默认 DTU 配额的[逻辑 SQL server](../../azure-sql/database/logical-servers.md) （例如，myserver.database.windows.net）托管。 验证该服务器的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
+**验证 DTU 容量。** 每个池由 [逻辑 SQL server](../../azure-sql/database/logical-servers.md) (（例如，具有默认 DTU 配额的 myserver.database.windows.net) 。 验证该服务器的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -69,7 +69,7 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName $SubscriptionName
 
 # Or list all restore points
-Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
+Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
 # Get the specific database to restore
 $Database = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName

@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265675"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审对组和应用程序的访问权限
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 1. 查找要求你执行访问评审的 Microsoft 电子邮件。 以下示例电子邮件要求评审对某个组的访问权限。
 
-    ![要求评审对某个组的访问权限的 Microsoft 示例电子邮件](./media/perform-access-review/access-review-email.png)
+    ![显示 Microsoft 的示例电子邮件以查看对组的访问权限的屏幕截图。](./media/perform-access-review/access-review-email.png)
 
 1. 单击“开始评审”链接打开访问评审。
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
         > [!NOTE]
         > 如果“访问评审”磁贴不可见，则表明该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-        ![应用和组的待处理访问评审列表](./media/perform-access-review/access-reviews-list.png)
+        ![显示应用和组的挂起访问评审列表的屏幕截图。](./media/perform-access-review/access-reviews-list.png)
 
     1. 单击你要执行的访问评审对应的“开始评审”链接。
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 1. 在页面底部的蓝色栏中，单击“接受建议”。
 
-    ![打开访问评审列表，其中会显示“接受建议”按钮](./media/perform-access-review/accept-recommendations.png)
+    ![显示 "打开访问评审" 列表并选择 "接受建议" 按钮的屏幕截图。](./media/perform-access-review/accept-recommendations.png)
 
     你将看到建议操作的摘要。
 
@@ -126,7 +126,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 3. 单击 " **试用"！** 在页面顶部的横幅中。 这会将你转到新的 "我的访问" 体验。
   
-### <a name="email"></a>Email
+### <a name="email"></a>电子邮件
 
   >[!IMPORTANT]
 > 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 添加 azure-noreply@microsoft.com 到安全收件人列表，确保收到所有电子邮件。

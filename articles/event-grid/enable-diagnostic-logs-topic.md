@@ -3,12 +3,12 @@ title: Azure 事件网格 - 为主题或域启用诊断日志
 description: 本文提供了有关如何为 Azure 事件网格主题启用诊断日志的分步说明。
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297515"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域启用诊断日志
 诊断设置允许事件网格用户在以下任一位置捕获和查看“发布和传递失败”**** 日志：存储帐户、事件中心或 Log Analytics 工作区。 本文提供了有关如何为事件网格主题启用这些设置的分步说明。
@@ -28,7 +28,7 @@ ms.locfileid: "86114697"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到要为其启用诊断日志设置的事件网格主题。 
-    1. 在顶部的搜索栏中，搜索 "**事件网格主题**"。 
+    1. 在顶部的搜索栏中，搜索“事件网格主题”。 
     
         ![搜索自定义主题](./media/enable-diagnostic-logs-topic/search-custom-topics.png)
     1. 从列表中选择要为其配置诊断设置的**主题**。 
@@ -37,38 +37,38 @@ ms.locfileid: "86114697"
     
     ![“添加诊断设置”按钮](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. 为诊断设置指定一个名称。**** 
-7. 在“日志”**** 部分中选择 **DeliveryFailures** 和 **PublishFailures** 选项。 
+6. 在“日志”**** 部分中选择 **DeliveryFailures** 和 **PublishFailures** 选项。 
     ![选择具体的失败](./media/enable-diagnostic-logs-topic/log-failures.png)
-6. 为日志启用一个或多个捕获目标，然后通过选择以前创建的捕获资源对其进行配置。 
+7. 为日志启用一个或多个捕获目标，然后通过选择以前创建的捕获资源对其进行配置。 
     - 如果选择“存档到存储帐户”****，请选择“存储帐户 - 配置”****，然后选择你的 Azure 订阅中的存储帐户。 
 
-        ![存档到 Azure 存储帐户](./media/enable-diagnostic-logs-topic/archive-storage.png)
+        ![屏幕截图显示 "诊断设置" 页，其中包含 "存档到 Azure 存储帐户"，并选择存储帐户。](./media/enable-diagnostic-logs-topic/archive-storage.png)
     - 如果选择“流式传输到事件中心”****，请选择“事件中心 - 配置”****，然后选择事件中心命名空间、事件中心和访问策略。 
-        ![流式传输到事件中心](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+        ![显示 "诊断设置" 页并选中 "流到事件中心" 的屏幕截图。](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - 如果选择“发送到 Log Analytics”****，请选择 Log Analytics 工作区。
-        ![发送到 Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
+        ![显示 "诊断设置" 页的屏幕截图，并选中 "发送到 Log Analytics"。](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
 8. 选择“保存” 。 然后，选择右上角的 X**** 以关闭页面。 
 9. 现在，返回“诊断设置”**** 页面，确认在“诊断设置”**** 表中看到了一个新条目。 
-    ![列表中的诊断设置](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+    ![显示 "诊断设置" 页的屏幕截图，其中显示了 "诊断设置" 表中突出显示的新项。](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      你还可以为主题启用所有指标的收集。 
 
-## <a name="enable-diagnostic-logs-for-a-system-topic"></a>为系统启用诊断日志主题
+## <a name="enable-diagnostic-logs-for-a-system-topic"></a>为系统主题启用诊断日志
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到要为其启用诊断日志设置的事件网格主题。 
-    1. 在顶部的搜索栏中，搜索 "**事件网格系统主题**"。 
+    1. 在顶部的搜索栏中，搜索“事件网格系统主题”。 
     
         ![搜索系统主题](./media/enable-diagnostic-logs-topic/search-system-topics.png)
     1. 选择要为其配置诊断设置的**系统主题**。 
     
         ![选择系统主题](./media/enable-diagnostic-logs-topic/select-system-topic.png)
-3. 在左侧菜单中选择 "**监视**" 下的 "**诊断设置**"，然后选择 "**添加诊断设置**"。 
+3. 在左侧菜单中的“监视”下选择“诊断设置”，然后选择“添加诊断设置”。 
 
-    ![添加诊断设置-按钮](./media/enable-diagnostic-logs-topic/system-topic-add-diagnostic-settings-button.png)
+    ![添加诊断设置 - 按钮](./media/enable-diagnostic-logs-topic/system-topic-add-diagnostic-settings-button.png)
 4. 为诊断设置指定一个名称。**** 
-7. 选择 "**日志**" 部分中的**DeliveryFailures** 。 
-    ![选择传递失败](./media/enable-diagnostic-logs-topic/system-topic-select-delivery-failures.png)
+7. 在“日志”部分中选择“DeliveryFailures”。 
+    ![选择“传递失败”](./media/enable-diagnostic-logs-topic/system-topic-select-delivery-failures.png)
 6. 为日志启用一个或多个捕获目标，然后通过选择以前创建的捕获资源对其进行配置。 
     - 如果选择“发送到 Log Analytics”****，请选择 Log Analytics 工作区。
         ![发送到 Log Analytics](./media/enable-diagnostic-logs-topic/system-topic-select-log-workspace.png) 
@@ -81,9 +81,9 @@ ms.locfileid: "86114697"
 9. 现在，返回“诊断设置”**** 页面，确认在“诊断设置”**** 表中看到了一个新条目。 
     ![列表中的诊断设置](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
 
-     你还可以为系统主题启用所有**指标**的收集。
+     还可以为系统主题启用收集所有指标的功能。
 
-    ![系统主题-启用所有指标](./media/enable-diagnostic-logs-topic/system-topics-metrics.png)
+    ![系统主题 - 启用所有指标](./media/enable-diagnostic-logs-topic/system-topics-metrics.png)
 
 ## <a name="view-diagnostic-logs-in-azure-storage"></a>查看 Azure 存储中的诊断日志 
 

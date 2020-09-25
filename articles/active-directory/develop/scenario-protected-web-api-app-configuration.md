@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257446"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
@@ -111,6 +111,12 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 对包含 **[Authorize]** 属性的控制器操作调用某个应用时，ASP.NET 和 ASP.NET Core 将从 Authorization 标头的持有者令牌中提取访问令牌。 然后，该访问令牌将转发到 JwtBearer 中间件，而该中间件会调用适用于 .NET 的 Microsoft IdentityModel 扩展。
 
+#### <a name="microsoftidentityweb"></a>Web.config
+
+Microsoft 建议你在使用 ASP.NET Core 开发 web API 时使用 [Microsoft](https://www.nuget.org/packages/Microsoft.Identity.Web) web.config NuGet 包。
+
+_Microsoft_ 在 ASP.NET Core、身份验证中间件以及用于 .NET [ (MSAL) 的 Microsoft 身份验证库 ](msal-overview.md) 之间提供粘附。 它允许更清晰、更可靠的开发人员体验，并利用 Microsoft 标识平台和 Azure AD B2C 的强大功能。
+
 #### <a name="using-microsoftidentityweb-templates"></a>使用 Microsoft.Identity.Web 模板
 
 可以通过使用 Microsoft.Identity.Web 项目模板从头开始创建一个 Web API。 有关详细信息，请参阅 [Microsoft.Identity.Web - Web API 项目模板](https://aka.ms/ms-id-web/webapi-project-templates)
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 他们不会通过个人帐户登录用户。 但是，你可以通过使用以 NuGet 包形式提供的 [microsoft](https://www.nuget.org/packages/Microsoft.Identity.Web)标识平台终结点将模板更改为使用 microsoft 标识平台终结点，替换 *Startup.cs*中的代码：
+ 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 他们不会通过个人帐户登录用户。 但是，你可以通过使用*Startup.cs*替换以下代码，将模板更改为使用[microsoft 标识](https://www.nuget.org/packages/Microsoft.Identity.Web)平台终结点：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -150,7 +156,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-还可以编写以下 (，这等同于) 
+你也可以编写以下内容（这是等效的）
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -169,7 +175,7 @@ services.AddControllers();
 > - 在所有其他情况下（用于 v1.0 [访问令牌](access-tokens.md)），使用 `$"api://{ClientId}`。
 > 有关详细信息，请参阅 Microsoft.Identity.Web [源代码](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)。
 
-前面的代码段摘自 [ASP.NET Core Web API 增量教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)。 AddMicrosoftIdentityWebApiAuthentication 中提供了有关**AddMicrosoftIdentityWebApiAuthentication**的详细[信息。](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27) 此方法调用 [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)，后者会指示中间件如何验证令牌。 有关详细信息，请参阅其[源代码](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122)。
+前面的代码段摘自 [ASP.NET Core Web API 增量教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)。 [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27) 中提供了 AddMicrosoftIdentityWebApiAuthentication 的详细信息。 此方法调用 [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)，后者会指示中间件如何验证令牌。 有关详细信息，请参阅其[源代码](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122)。
 
 ## <a name="token-validation"></a>令牌验证
 

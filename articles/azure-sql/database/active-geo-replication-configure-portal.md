@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1beb2065f1823135981545e42d499c5429b87c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7e4da2051ab84cebff5aae857c02907f7b58e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263617"
 ---
-# <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>教程：在 Azure 门户中配置活动异地复制和故障转移（Azure SQL Database）
+# <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>教程：在 Azure 门户中配置活动异地复制和故障转移（Azure SQL 数据库）
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文介绍如何使用[Azure 门户](https://portal.azure.com)为[Azure SQL 数据库配置活动异地复制](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
+本文说明如何使用 [Azure 门户](https://portal.azure.com)为 [Azure SQL 数据库配置活动异地复制](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
 
-有关使用自动故障转移组的最佳做法，请参阅[AZURE Sql 数据库的最佳实践](auto-failover-group-overview.md#best-practices-for-sql-database)和[azure Sql 托管实例的最佳实践](auto-failover-group-overview.md#best-practices-for-sql-managed-instance)。 
+有关使用自动故障转移组的最佳做法，请参阅 [Azure SQL 数据库最佳做法](auto-failover-group-overview.md#best-practices-for-sql-database)和 [Azure SQL 托管实例最佳做法](auto-failover-group-overview.md#best-practices-for-sql-managed-instance)。 
 
 
 
@@ -32,10 +32,10 @@ ms.locfileid: "84031608"
 
 若要使用 Azure 门户配置活动异地复制，需要以下资源：
 
-* Azure SQL 数据库中的数据库：要复制到不同地理区域的主数据库。
+* Azure SQL 数据库中的数据库：要复制到其他地理区域的主数据库。
 
 > [!Note]
-> 如果使用 Azure 门户，仅可在与主要数据库相同的订阅内创建辅助数据库。 如果辅助数据库需要位于不同的订阅中，请使用[Create database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)或[ALTER database transact-sql API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)。
+> 如果使用 Azure 门户，仅可在与主要数据库相同的订阅内创建辅助数据库。 如果辅助数据库需要位于其他订阅中，请使用 [Create Database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) 或 [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)。
 
 ## <a name="add-a-secondary-database"></a>添加辅助数据库
 
@@ -50,17 +50,17 @@ ms.locfileid: "84031608"
 > 如果合作伙伴数据库已存在（例如，在终止之前的异地复制关系的情况下），命令会失败。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到需要设置以便进行异地复制的数据库。
-2. 在 "SQL 数据库" 页上，选择 "**异地复制**"，然后选择要创建辅助数据库的区域。 你可以选择除托管主数据库的区域以外的任何区域，但我们建议[配对区域](../../best-practices-availability-paired-regions.md)。
+2. 在 SQL 数据库页上，选择“异地复制”，并选择要创建辅助数据库的区域。 可以选择除托管主数据库的区域以外的任何区域，但我们建议选择 [配对的区域](../../best-practices-availability-paired-regions.md)。
 
     ![配置异地复制](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. 选择或配置辅助数据库的服务器和定价层。
 
-    ![配置辅助数据库](./media/active-geo-replication-configure-portal/create-secondary.png)
-4. 可以选择性地将辅助数据库添加到弹性池。 如果要在池中创建辅助数据库，请单击“弹性池” **** ，并在目标服务器上选择池。 池必须已在目标服务器上存在。 此工作流不会创建池。
-5. 单击“创建”**** 添加辅助数据库。
+    ![创建辅助窗体](./media/active-geo-replication-configure-portal/create-secondary.png)
+4. 可以选择性地将辅助数据库添加到弹性池。 如果要在池中创建辅助数据库，请单击“弹性池”  ，并在目标服务器上选择池。 池必须已在目标服务器上存在。 此工作流不会创建池。
+5. 单击“创建”添加辅助数据库。
 6. 此时会创建辅助数据库，种子设定过程开始。
 
-    ![配置辅助数据库](./media/active-geo-replication-configure-portal/seeding0.png)
+    ![辅助映射](./media/active-geo-replication-configure-portal/seeding0.png)
 7. 完成种子设定过程时，辅助数据库会显示其状态。
 
     ![种子设定完成](./media/active-geo-replication-configure-portal/seeding-complete.png)
@@ -70,11 +70,11 @@ ms.locfileid: "84031608"
 辅助数据库可以通过切换变为主数据库。  
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到异地复制合作关系中的主数据库。
-2. 在 SQL 数据库边栏选项卡中，选择“所有设置”**** > “异地复制”****。
-3. 在“辅助数据库”**** 列表中，选择想要其成为新的主数据库的数据库并单击“强制故障转移”****。
+2. 在 SQL 数据库边栏选项卡中，选择“所有设置” > “异地复制”。
+3. 在“辅助数据库”列表中，选择想要其成为新的主数据库的数据库并单击“强制故障转移”。
 
     ![故障转移](./media/active-geo-replication-configure-portal/secondaries.png)
-4. 单击“是”**** 开始故障转移。
+4. 单击“是”开始故障转移。
 
 该命令会立即将辅助数据库切换为主数据库角色。 此过程通常会在 30 秒或更短的时间内完成。
 
@@ -88,12 +88,12 @@ ms.locfileid: "84031608"
 此操作会永久终止到辅助数据库的复制，并会将辅助数据库的角色更改为常规的读写数据库。 如果与辅助数据库的连接断开，命令会成功，但辅助数据库必须等到连接恢复后才会变为可读写。  
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到异地复制合作关系中的主数据库。
-2. 在 SQL 数据库页上，选择“异地复制”。****
-3. 在“辅助数据库”**** 列表中，选择需要从异地复制合作关系中删除的数据库。
-4. 单击“停止复制”****。
+2. 在 SQL 数据库页上，选择“异地复制”。
+3. 在“辅助数据库”列表中，选择需要从异地复制合作关系中删除的数据库。
+4. 单击“停止复制”。
 
     ![删除辅助数据库](./media/active-geo-replication-configure-portal/remove-secondary.png)
-5. 确认窗口随即打开。 单击“是”从异地复制合作关系中删除数据库。**** （将其设置为不属于任何复制的读写数据库。）
+5. 确认窗口随即打开。 单击“是”从异地复制合作关系中删除数据库。 （将其设置为不属于任何复制的读写数据库。）
 
 ## <a name="next-steps"></a>后续步骤
 

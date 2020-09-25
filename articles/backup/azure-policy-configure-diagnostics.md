@@ -3,12 +3,12 @@ title: 大规模配置保管库诊断设置
 description: 使用 Azure Policy 为给定范围内的所有保管库配置 Log Analytics 诊断设置
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293078"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大规模配置保管库诊断设置
 
@@ -34,7 +34,7 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 
 1. 登录到 Azure 门户并导航到“策略”仪表板。
 2. 在左边的菜单中选择“定义”以获取跨 Azure 资源的所有内置策略的列表。
-3. 筛选“类别=监视”的列表。 找到名为 **[Preview]：将恢复服务保管库的诊断设置部署到 Log Analytics 工作区以获取特定于资源的类别**。
+3. 在列表中筛选“类别=备份”的项。 找到名为 **[Preview]：将恢复服务保管库的诊断设置部署到 Log Analytics 工作区以获取特定于资源的类别**。
 
     ![策略定义窗格](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
