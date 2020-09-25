@@ -3,12 +3,12 @@ title: 服务总线队列和主题作为 Azure 事件网格事件的事件处理
 description: 介绍如何将服务总线队列和主题用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 00f937a66ff17c2d5f502fe976675c999ee02a58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270162"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>服务总线队列和主题作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 服务总线是其中之一。 
@@ -51,7 +51,7 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="message-properties"></a>消息属性
-如果使用服务总线主题或队列作为事件网格事件的事件处理程序，请设置以下消息标头： 
+如果使用 **服务总线主题或队列** 作为事件网格事件的事件处理程序，则这些是在消息头中接收的属性： 
 
 | 属性名称 | 说明 |
 | ------------- | ----------- | 
@@ -156,6 +156,9 @@ az eventgrid event-subscription create \
     }
 }
 ```
+
+> [!NOTE]
+> 不支持将事件传递到 **另一个租户** 中的 Azure 服务总线队列或主题。 
 
 ## <a name="next-steps"></a>后续步骤
 如需支持的事件处理程序的列表，请参阅[事件处理程序](event-handlers.md)一文。 

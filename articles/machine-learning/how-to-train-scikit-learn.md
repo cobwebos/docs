@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7b63ef36d7df43168ed132a740bab026e6e00f3f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e2f1eb50f6d878eecb4b5c448e683a3024e8c396
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897235"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250838"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 scikit-learn 模型
 
@@ -166,7 +166,7 @@ model = run.register_model(model_name='sklearn-iris',
 
 ### <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
 
-除了传统的部署路由，还可以使用无代码部署功能 (预览) 来了解 scikit-learn。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
+除了传统的部署路由，还可以使用无代码部署功能 (预览) 来了解 scikit-learn。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

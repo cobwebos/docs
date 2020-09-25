@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e72875135243733a6acf03bb3aa6fb9405392d9d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a7fb97f1036515f82fa3e61c18f95eadf0af704d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934745"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301697"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes 简介
 
@@ -29,9 +29,9 @@ Azure 安全中心和 AKS 构成了最佳的云本地 Kubernetes 安全产品和
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|**Azure Defender For Kubernetes**按[定价页](security-center-pricing.md)中所示计费|
-|必需的角色和权限：|**安全管理员** 可以解除警报。<br>**安全读取者**可以查看结果。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|定价：|**Azure Defender For Kubernetes**按[定价页](security-center-pricing.md)中所示计费|
+|所需角色和权限：|**安全管理员** 可以解除警报。<br>**安全读取者**可以查看结果。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes 有哪些好处？
@@ -44,14 +44,14 @@ Azure 安全中心和 AKS 构成了最佳的云本地 Kubernetes 安全产品和
 
 - **Azure defender 为服务器提供的主机级别 () ** -使用安全中心在其他 vm 上使用的同一个 Log Analytics 代理，Azure Defender 会监视你的 Linux AKS 节点中是否存在可疑活动，如 web shell 检测和与已知的可疑 IP 地址的连接。 此代理还监视容器特定的分析，如特权容器的创建、对 API 服务器的可疑访问以及安全外壳在 Docker 容器中运行 (SSH) 服务器。
 
-    有关 AKS 主机级别警报的列表，请参阅警报的 [引用表](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)。
+    有关 AKS 主机级别警报的列表，请参阅警报的 [引用表](alerts-reference.md#alerts-containerhost)。
 
     >[!IMPORTANT]
     > 如果你选择不在主机上安装代理，则只能收到一部分威胁防护权益和安全警报。 你仍会收到与网络分析以及与恶意服务器通信相关的警报。
 
 - **Azure Defender 为 Kubernetes) 提供 AKS 群集级别 (** -在群集级别，威胁防护基于分析 Kubernetes 审核日志。 若要启用此 **无代理** 监视，请启用 Azure Defender。 为了在此级别生成警报，安全中心将使用 AKS 检索到的日志来监视 AKS 管理的服务。 此级别的事件示例包括公开 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装入点。
 
-    有关 AKS 群集级别的警报列表，请参阅[警报参考表](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)。
+    有关 AKS 群集级别的警报列表，请参阅[警报参考表](alerts-reference.md#alerts-akscluster)。
 
     >[!NOTE]
     > 安全中心针对在订阅设置中启用“Kubernetes”选项后发生的 Azure Kubernetes 服务操作和部署生成安全警报。 

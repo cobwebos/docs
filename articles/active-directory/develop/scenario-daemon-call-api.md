@@ -1,6 +1,6 @@
 ---
 title: 从守护程序应用调用 Web API - Microsoft 标识平台 | Azure
-description: 了解如何构建用于调用 Web API 的守护程序应用
+description: 了解如何生成可调用 web API 的守护程序应用。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7319aacabd2c479c578fbb71ae0bc9fbb2dee9f2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 576eaf2ad9350651e4400d980e6fedce236dfa57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119124"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257599"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>调用 Web API 的守护程序应用 - 从应用调用 Web API
 

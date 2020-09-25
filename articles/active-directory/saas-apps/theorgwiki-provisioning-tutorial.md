@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 5959ccd2699ef1162779a4a1d90ab6bb8af1bbbf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544839"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255766"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>教程：为 TheOrgWiki 配置自动用户预配
 
@@ -55,23 +55,23 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [TheOrgWiki 管理控制台](https://www.theorgwiki.com/login/)。 单击 " **管理控制台**"。
 
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/login.png)
+    ![组织 Wiki 的屏幕截图，其中包含用户头像和称为的管理控制台。](media/theorgwiki-provisioning-tutorial/login.png)
 
 2. 在管理员控制台中，单击 " **设置" 选项卡**。 
 
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/settings.png)
+    ![带有 "设置" 选项卡的 "设置" 选项卡的屏幕截图。](media/theorgwiki-provisioning-tutorial/settings.png)
     
 3. 导航到 " **服务帐户**"。
 
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
+    ![组织 Wiki 管理员控制台中的 "服务帐户" 页的屏幕截图。](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
 4. 单击 " **+ 服务帐户**"。 在 " **服务帐户类型**" 下，选择 " **基于令牌**"。 单击“ **保存**”。
 
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/auth.png)
+    ![新的 "服务帐户" 对话框的屏幕截图，其中包含 "服务帐户类型"、"基于标记" 和 "保存" 选项。](media/theorgwiki-provisioning-tutorial/auth.png)
 
 5.  复制 **活动标记**。 此值将在 Azure 门户的 TheOrgWiki 应用程序的 "预配" 选项卡的 "机密令牌" 字段中输入。
      
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/token.png)
+    !["管理用于 S I M 设置的令牌" 对话框的屏幕截图。](media/theorgwiki-provisioning-tutorial/token.png)
 
 ## <a name="add-theorgwiki-from-the-gallery"></a>从库中添加 TheOrgWiki
 
@@ -95,15 +95,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 5. 选择 " **注册 TheOrgWiki** " 按钮，该按钮会将你重定向到 TheOrgWiki 的登录页。 
 
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/image00.png)
+    ![带有称为 URL 的 "组织 Wiki 登录" 页的屏幕截图](media/theorgwiki-provisioning-tutorial/image00.png)
 
 6.  在右上角，选择 " **登录**"。
 
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/image02.png)
+    ![登录页右上角的屏幕截图，其中的 "登录" 选项称为 "out"。](media/theorgwiki-provisioning-tutorial/image02.png)
 
 7. 由于 TheOrgWiki 是一个 OpenIDConnect 应用，因此请选择使用你的 Microsoft 工作帐户登录到 OrgWiki。
 
-    ![TheOrgWiki 添加 SCIM](media/theorgwiki-provisioning-tutorial/image03.png)
+    !["组织 Wiki 登录" 页的屏幕截图，其中的 Microsoft 登录选项称为 "out"。](media/theorgwiki-provisioning-tutorial/image03.png)
     
 8. 身份验证成功后，应用程序将自动添加到你的租户，你会被重定向到你的 TheOrgWiki 帐户。
 
@@ -126,11 +126,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` **租户 URL**"。 
 
@@ -147,7 +147,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“保存” 。
+8. 单击“ **保存**”。
 
 9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 TheOrgWiki**"。
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269703"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关 Azure API for FHIR 的常见问题解答
 
@@ -65,6 +65,23 @@ ms.locfileid: "90978611"
 
 对于组导出，我们只导出组中包含的引用，而不是 [组资源](https://www.hl7.org/fhir/group.html)的所有特征。
 
+### <a name="can-i-post-a-bundle-to-the-azure-api-for-fhir"></a>是否可以将捆绑发布到 Azure API for FHIR？
+
+我们目前支持发布 [批处理捆绑包](https://www.hl7.org/fhir/valueset-bundle-type.html) ，但不支持在用于 FHIR 的 Azure API 中发布事务捆绑。 你可以使用由 SQL 支持的开源 FHIR 服务器来发布事务包。
+
+### <a name="how-can-i-get-all-resources-for-a-single-patient-in-the-azure-api-for-fhir"></a>如何在用于 FHIR 的 Azure API 中获取单个患者的所有资源？
+
+我们支持在用于 FHIR 的 Azure API 中 [搜索隔离舱](https://www.hl7.org/fhir/compartmentdefinition.html) 。 这允许你获取与特定患者相关的所有资源。 请注意，现在的隔离舱包含与患者相关的所有资源，但不包括患者本身，因此，如果您的结果中需要患者资源，还需要搜索以获取患者。
+
+下面是此操作的一些示例：
+
+* 获取患者/<id>/*
+* 获取患者/ <id> /Observation
+* 获取患者/ <id> /Observation？代码 = 8302-2
+
+### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>在何处可查看在工作流中使用 Azure API for FHIR 的一些示例？
+
+我们有一系列参考体系结构，它在 [运行状况体系结构 GitHub 页](https://github.com/microsoft/health-architectures)上提供。
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>适用于 FHIR 的 Azure IoT 连接器（预览版）
 

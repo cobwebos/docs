@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255226"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -54,6 +54,10 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 
 启用区域 VNet 集成后，应用通过往常所用的通道对 Internet 进行出站调用。 应用属性门户中列出的出站地址是应用仍然在使用的地址。 就应用而言，变化在于：对服务终结点保护服务的调用或者 RFC 1918 地址进入 VNet 中。 如果 WEBSITE_VNET_ROUTE_ALL 设置为 1，所有出站流量都可以被发送到 VNet 中。
 
+> [!NOTE]
+> `WEBSITE_VNET_ROUTE_ALL` Windows 容器当前不支持。
+> 
+
 此功能仅支持每个辅助角色一个虚拟接口。 每个辅助角色一个虚拟接口意味着每个应用服务计划一个区域 VNet 集成。 同一个应用服务计划中的所有应用都可以使用相同的 VNet 集成。 如果需要使用一个应用来连接其他 VNet，你需要另外创建一个应用服务计划。 使用的虚拟接口不是客户可直接访问的资源。
 
 由于此技术的性质，用于 VNet 集成的流量不显示在 Azure 网络观察程序或 NSG 流日志中。
@@ -72,7 +76,8 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 需要网关的 VNet 集成不可用于：
 
 * 通过 Azure ExpressRoute 连接的 VNet。
-* 从 Linux 应用
+* 从 Linux 应用程序。
+* 从 [Windows 容器](quickstart-custom-container.md)。
 * 访问服务终结点保护的资源。
 * 既支持 ExpressRoute，也支持点到站点 VPN 或站点到站点 VPN 的共存网关。
 
@@ -173,7 +178,7 @@ Commands:
     list : List the virtual network integrations used in an appservice plan.
 ```
 
-还提供了对区域 VNet 集成的 Powershell 支持，但你必须使用子网 resourceID 的属性数组创建通用资源
+还提供了对区域 VNet 集成的 PowerShell 支持，但你必须使用子网 resourceID 的属性数组创建通用资源
 
 ```azurepowershell
 # Parameters

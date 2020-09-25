@@ -4,12 +4,12 @@ description: 概述了为何使用微服务方法生成云应用程序对于开�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300762"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>为何使用微服务方法构建应用程序？
 
@@ -35,7 +35,7 @@ ms.locfileid: "86246014"
 
 这类单一式设计方法有一些优点。 单一式应用程序的设计通常更为简单，组件之间通常通过进程间通信 (IPC) 进行调用，因此调用更快。 此外，每个人都只测试单一产品，人力资源运用更有效率。 缺点是分层之间紧密耦合，无法缩放单独组件。 如果需要执行修复或升级，必须等待其他人完成其测试， 因此更难以发挥灵活性。
 
-微服务解决了这些缺点，更密切配合上述业务要求。 但它们本身也有优缺点。 微服务的好处是，每个用户通常封装更简单的业务功能，你可以单独扩展或实现、测试、部署和管理。 微服务方法的一个重要优点是团队更倾向于以业务方案为导向，而非以技术为导向。 较小的团队可以根据客户方案开发微服务，使用他们所需的任何技术。
+微服务解决了这些缺点，更密切配合上述业务要求。 但它们本身也有优缺点。 微服务的优点是通常各自封装较为简单的业务功能，可独立进行横向缩放、测试、部署和管理。 微服务方法的一个重要优点是团队更倾向于以业务方案为导向，而非以技术为导向。 较小的团队可以根据客户方案开发微服务，使用他们所需的任何技术。
 
 换句话说，组织不需要为了维护微服务应用程序而将技术标准化。 拥有服务的单个团队可以根据团队的专业知识，或什么最适合解决问题，各自发挥所长。 实际上，最好使用一组建议的技术，例如特定的 NoSQL 存储或 Web 应用程序框架。
 
@@ -131,13 +131,16 @@ ms.locfileid: "86246014"
 
 ## <a name="guidance-for-designing-microservices-on-azure"></a>在 Azure 上设计微服务的指南
 
-请访问 Azure 体系结构中心，获取有关在[Azure 上设计和构建微服务](/azure/architecture/microservices/)的指导。
+请访问 Azure 体系结构中心，获取有关在 [Azure 上设计和构建微服务](/azure/architecture/microservices/)的指导。
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric 作为微服务平台
 
 当 Microsoft 从交付盒装产品（通常是单一的产品）转换到交付服务时，会出现 Azure Service Fabric。 构建和运营 Azure SQL 数据库和 Azure Cosmos DB 等大型服务的经验造就了 Service Fabric。 该平台随着越来越多服务采用它而不断发展变化。 Service Fabric 不仅要在 Azure 中运行，还要在独立的 Windows Server 部署中运行。
 
 Service Fabric 旨在解决构建和运行服务方面的难题，并有效地使用基础结构资源，使团队可以使用微服务方法来解决业务问题。
+
+以下简短视频介绍了 Service Fabric 和微服务：
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 Service Fabric 可帮助你构建使用微服务方法的应用程序，它提供：
 

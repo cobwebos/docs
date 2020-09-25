@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 01f1b291fee57d94b95bdeeef5f9f24b011e9fca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255037"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -48,8 +48,8 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 - Windows Server 2012 R2 及更高版本（包括 Windows Server Core）
 - Ubuntu 16.04 和 18.04 LTS (x64) 
-- CentOS Linux 7 (x64) 
-- SUSE Linux Enterprise Server (SLES) 15 (x64) 
+- CentOS Linux 7 (x64)
+- SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64) 
 - Amazon Linux 2 (x64) 
 
@@ -130,6 +130,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ## <a name="installation-and-configuration"></a>安装和配置
 
 可以根据要求使用不同的方法，将混合环境中的计算机直接连接到 Azure。 下表详细介绍了每种方法，让你确定最适合组织的方法。
+
+> [!IMPORTANT]
+> 无法在 Azure Windows 虚拟机上安装连接的计算机代理。 如果尝试，安装将检测到此情况并回滚。
 
 | 方法 | 说明 |
 |--------|-------------|
@@ -228,7 +231,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |/opt/logs/dsc.log |记录 DSC 服务活动的详细信息，<br> 特别是 himds 服务与 Azure Policy 之间的连接。|
     |/opt/logs/dsc.telemetry.txt |记录有关 DSC 服务遥测和详细日志记录的详细信息。|
     |/var/lib/GuestConfig/ext_mgr_logs |记录有关扩展代理组件的详细信息。|
-    |/var/log/GuestConfig/extension_logs|记录安装的扩展中的详细信息。|
+    |/var/lib/GuestConfig/extension_logs|记录安装的扩展中的详细信息。|
 
 * 安装代理期间，将创建以下环境变量。 这些变量在 `/lib/systemd/system.conf.d/azcmagent.conf` 中设置。
 
@@ -244,4 +247,6 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始评估启用了 Azure Arc 的服务器，请按照将 [混合计算机连接到 azure 中的 Azure 门户](onboard-portal.md)一文。
+* 若要开始评估启用了 Azure Arc 的服务器，请按照将 [混合计算机连接到 azure 中的 Azure 门户](onboard-portal.md)一文。
+
+* 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。

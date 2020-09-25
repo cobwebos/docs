@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269720"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a> (预览中创建自动化任务来管理 Azure 资源和监视成本) 
 
@@ -30,6 +30,7 @@ ms.locfileid: "90994191"
 | 所有 Azure 资源 | **每月发送资源成本** |
 | Azure 虚拟机 | 此外： <p>- **关闭虚拟机** <br>- **启动虚拟机** |
 | Azure 存储帐户 | 此外： <p>- **删除旧 blob** |
+| Azure Cosmos DB | 另外， <p>- **通过电子邮件发送查询结果** |
 |||
 
 本文介绍如何完成以下任务：
@@ -40,11 +41,13 @@ ms.locfileid: "90994191"
 
 * [编辑任务](#edit-task) ，以便可以更新任务，或在逻辑应用设计器中自定义任务的基础工作流。
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>自动化任务如何不同于 Azure 自动化？
 
-目前，只能在资源级别创建自动化任务，查看任务的运行历史记录，并编辑由 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 服务提供支持的任务的基础逻辑应用工作流。
+目前，只能在资源级别创建自动化任务，查看任务的运行历史记录，并编辑由 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 服务提供支持的任务的基础逻辑应用工作流。 自动化任务比 [Azure 自动化](../automation/automation-intro.md)更基本、更轻型。
 
-[Azure 自动化](../automation/automation-intro.md) 是一项基于云的自动化和配置服务，支持跨 azure 和非 Azure 环境进行一致的管理。 该服务通过使用[runbook](../automation/automation-runbook-execution.md)、配置管理[和更改跟踪和清单](../automation/change-tracking.md)、更新管理、共享功能和异类功能，[来协调处理流程](../automation/automation-intro.md#process-automation)。 在部署、操作和解除工作负荷与资源期间，自动化可以提供全面的控制。
+相比之下，Azure 自动化是一项基于云的自动化和配置服务，支持跨 Azure 和非 Azure 环境进行一致的管理。 该服务通过使用[runbook](../automation/automation-runbook-execution.md)、配置管理[和更改跟踪和清单](../automation/change-tracking.md)、更新管理、共享功能和异类功能，[来协调处理流程](../automation/automation-intro.md#process-automation)。 在部署、操作和解除工作负荷与资源期间，自动化可以提供全面的控制。
 
 ## <a name="prerequisites"></a>先决条件
 

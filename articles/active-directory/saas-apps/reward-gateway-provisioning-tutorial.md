@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f908e37c7785744c2f26b6a9cd542ccde228eb38
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255720"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>教程：为自动用户预配配置奖励网关
 
@@ -53,15 +53,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [奖励网关管理员控制台](https://rewardgateway.photoshelter.com/login/)。 单击“集成”****。
 
-    ![奖励网关管理控制台](media/reward-gateway-provisioning-tutorial/image00.png)
+    ![具有称为 "集成" 选项的 "奖励网关" 管理控制台屏幕截图。](media/reward-gateway-provisioning-tutorial/image00.png)
 
 2.  选择 **"我的集成"**。
 
-    ![奖励网关管理控制台](media/reward-gateway-provisioning-tutorial/image001.png)
+    ![这两个集成选项的屏幕截图，"我的集成" 选项称为 "我的集成"。](media/reward-gateway-provisioning-tutorial/image001.png)
 
 3.  将 SCIM URL 的值复制 ** (v2) ** 和 **OAuth 持有者令牌**。 这些值将输入到 "租户 URL" 中的 "租户 URL" 和 "机密令牌" 字段中的 "设置" 选项卡上的 "Azure 门户中。
 
-    ![奖励网关管理控制台](media/reward-gateway-provisioning-tutorial/image03.png)
+    !["我的集成" 面板的屏幕截图，其中包含称为 "OAuth 持有者令牌" 文本框。](media/reward-gateway-provisioning-tutorial/image03.png)
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>从库中添加 Reward Gateway
 
@@ -104,11 +104,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 "**管理员凭据**" 部分下，输入**SCIM URL (v2) **并分别在 "**租户 URL** " 和 "**机密令牌**" 中检索**OAuth 持有者令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到奖励网关。 如果连接失败，请确保你的奖励网关帐户具有管理员权限，然后重试。
 
@@ -118,15 +118,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到奖励网关**"。
 
-    ![奖励网关管理控制台](media/reward-gateway-provisioning-tutorial/user-mappings.png)
+    !["映射" 部分的屏幕截图，其中包含 "同步 Azure Active Directory 用户到奖励网关" 选项。](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到奖励网关的用户属性。 选为 " **匹配** " 属性的属性用于匹配奖励网关中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![奖励网关管理控制台](media/reward-gateway-provisioning-tutorial/user-attributes.png)
+    ![显示了六个映射的 "属性映射" 部分的屏幕截图。](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

@@ -3,16 +3,16 @@ title: 适用于服务器的 Azure Defender-优点和功能
 description: 了解适用于服务器的 Azure Defender 的优势和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 29f15aa7d1cbcd260ce44f6083138681ceb9fd79
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301663"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Azure Defender for server 简介
 
@@ -31,7 +31,7 @@ Azure Defender for server 提供的威胁检测和保护功能包括：
 
     Qualys "扫描程序" 是在 Azure 虚拟机中实时识别漏洞的一项领先工具。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 [了解详细信息](deploy-vulnerability-assessment-vm.md)。
 
-- 实时** (JIT) VM 访问**-威胁参与者主动使用打开的管理端口（如 RDP 或 SSH）寻找可访问的计算机。 所有虚拟机都是攻击的潜在目标。 VM 成功泄露后，将用作攻击环境中进一步资源的入口点。
+- 实时** (JIT) VM 访问**-威胁参与者主动使用打开的管理端口（如 RDP 或 SSH）寻找可访问的计算机。 你的所有虚拟机都是潜在的攻击目标。 VM 在被成功入侵后将会用作进一步攻击环境中资源的入口点。
 
     为服务器启用 Azure Defender 时，可以使用实时 VM 访问权限，以将入站流量锁定到 Vm，降低遭受攻击的可能性，同时提供轻松访问 Vm （如果需要）。 [了解详细信息](just-in-time-explained.md)。
 
@@ -81,9 +81,9 @@ Azure Defender for server 提供的威胁检测和保护功能包括：
 
 可以通过下载以下行动手册之一来模拟警报：
 
-- 对于 Windows： [Azure 安全中心操作手册：安全警报](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+- 对于 Windows： [Azure 安全中心操作手册：安全警报](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Security%20Alerts%20Playbook_v2.pdf)
 
-- 对于 Linux： [Azure 安全中心操作手册： Linux 检测](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)。
+- 对于 Linux： [Azure 安全中心操作手册： Linux 检测](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Linux%20Detections_v2.pdf)。
 
 
 

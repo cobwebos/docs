@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: ad6b24c4bbfc2e117c010b99247cb8eb9925ff3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255815"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>教程：配置 Oracle 合成 ERP 以实现自动用户预配
 
@@ -108,11 +108,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` **租户 URL**"。 在 " **管理员用户名** " 和 " **密码** " 字段中输入之前检索到的管理员用户名和密码。 单击 Azure AD 和 Oracle 合成 ERP 之间的 " **测试连接** "。 
 
@@ -122,7 +122,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Oracle 合成 ERP**"。
 

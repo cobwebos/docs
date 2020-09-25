@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中启用适用于 Linux 的图形远程桌面 |
 description: 了解如何在 Azure 实验室服务的实验室中启用适用于 Linux 虚拟机的远程桌面。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251603"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>在 Azure 实验室服务中启用适用于 Linux 虚拟机的图形远程桌面
 本文演示如何完成以下任务：
@@ -46,7 +46,7 @@ X2Go 使用已为 SSH 启用的相同端口。  因此，无需进行额外配�
 
 1.  在实验室创建期间，讲师可以选择“启用远程桌面连接”。  讲师必须**启用**此选项才能打开 Linux VM 上 RDP 远程桌面会话所需的端口。  否则，如果禁用此选项，则仅会打开用于 SSH 的端口。
   
-    ![为 Linux 映像启用远程桌面连接](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![使用 "启用远程桌面连接" 选项显示 "新建实验室" 窗口的屏幕截图。](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. 在“启用远程桌面连接”消息框中，选择“继续启用远程桌面”。 
 

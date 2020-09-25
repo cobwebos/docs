@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256750"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
 
@@ -117,6 +117,9 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 在此流中，应用会在用户登录时接收来自 Microsoft 标识平台终结点的授权代码。 授权代码表示应用有权代表登录用户调用后端服务。 应用可以通过在后台交换授权代码获得 OAuth 2.0 访问令牌和刷新令牌。 应用可以使用访问令牌在 HTTP 请求中向 Web API 进行身份验证，并可以在旧的访问令牌过期时，用刷新令牌获取新的访问令牌。
 
 ![显示本机应用身份验证流](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> 如果应用程序使用默认系统 web 视图，请在 [Azure AD 身份验证和授权错误代码](reference-aadsts-error-codes.md)中检查有关 "确认我的登录" 功能和错误代码 AADSTS50199 的信息。
 
 ## <a name="daemons-and-server-side-apps"></a>守护程序和服务器端应用
 

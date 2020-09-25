@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900279"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253184"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB 分析存储（预览版）是什么？
 
@@ -60,7 +60,7 @@ Azure Cosmos DB 分析存储解决了传统 ETL 管道所具有的复杂和延�
 
 ### <a name="auto-sync"></a>自动同步
 
-自动同步是指 Azure Cosmos DB 的完全托管功能，对操作数据执行的插入、更新、删除将以接近实时的速度（在 5 分钟内）自动从事务性存储同步到分析存储。
+自动同步是指 Azure Cosmos DB 的完全托管功能，在此功能中，操作数据的插入、更新和删除操作将以近乎实时的形式自动同步到分析存储。 自动同步滞后时间通常在2分钟内。 对于包含大量容器的共享吞吐量数据库，每个容器的自动同步延迟可能会更高，最多需要5分钟。 我们想要详细了解此延迟如何适应你的方案。 为此，请联系 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)。
 
 自动同步功能与分析存储一起提供了以下主要优势：
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-`streetName`嵌套对象中的叶属性 `address` 将在分析存储架构中表示为列 `address.object.streetName.int32` 。 数据类型作为后缀添加到列中。 这样一来，如果将其他文档添加到 "叶" 属性的值 `streetNo` 为 "123" (注意，它是一个字符串) ，则分析存储的架构将自动演变，而不会改变以前写入的列的类型。 添加到分析存储中的新列， `address.object.streetName.string` 其中存储了此值 "123"。
+`streetNo`嵌套对象中的叶属性 `address` 将在分析存储架构中表示为列 `address.object.streetNo.int32` 。 数据类型作为后缀添加到列中。 这样一来，如果将其他文档添加到 "叶" 属性的值 `streetNo` 为 "123" (注意，它是一个字符串) ，则分析存储的架构将自动演变，而不会改变以前写入的列的类型。 添加到分析存储中的新列， `address.object.streetNo.string` 其中存储了此值 "123"。
 
 **要映射到后缀的数据类型**
 
@@ -146,14 +146,14 @@ salary: 1000000
 
 |原始数据类型  |Suffix  |示例  |
 |---------|---------|---------|
-| 双精度 |  "float64" |    24.99|
-| 数组 | "array" |    ["a"，"b"]|
+| Double |  "float64" |    24.99|
+| Array | "array" |    ["a"，"b"]|
 |二进制 | "binary" |0|
-|Boolean    | "bool"   |True|
+|布尔    | "bool"   |True|
 |Int32  | "int32"  |123|
 |Int64  | "int64"  |255486129307|
 |Null   | "null"   | null|
-|字符串|    "string" | "ABC"|
+|String|    "string" | "ABC"|
 |时间戳 |    "timestamp" |  Timestamp (0，0) |
 |DateTime   |"date"    | ISODate ( "2020-08-21T07：43： 07.375 Z" ) |
 |ObjectId   |"objectId"    | ObjectId ( "5f3f7b59330ec25c132623a2" ) |

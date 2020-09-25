@@ -1,14 +1,14 @@
 ---
 title: 将混合计算机大规模连接到 Azure
 description: 本文介绍如何使用服务主体使用启用了 Azure Arc 的服务器将计算机连接到 Azure。
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 545d8abd6dd17e1e413852735c096ddc9261b972
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5976e2ff9aef5f68d119a5fdf5f7d4d4345287a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254935"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 
@@ -139,6 +139,8 @@ azcmagent connect \
 
 ## <a name="next-steps"></a>后续步骤
 
+* 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
+
 - 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
 
-- 了解有关 [[Log Analytics agent] 的](../../azure-monitor/platform/log-analytics-agent.md)详细信息。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。
+- 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。

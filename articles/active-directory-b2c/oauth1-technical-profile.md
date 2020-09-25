@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259418"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https://tools.ietf.org/html/rfc5849)标识提供者的支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 OAuth1 技术配置文件，可以与基于 OAuth1 的标识提供者（如 Twitter）联合。 与标识提供者联合允许用户用其现有的社交或企业标识登录。
+Azure Active Directory B2C (Azure AD B2C) 提供对 [OAuth 1.0 协议](https://tools.ietf.org/html/rfc5849) 标识提供者的支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 OAuth1 技术配置文件，可以与基于 OAuth1 的标识提供者（如 Twitter）联合。 与标识提供者联合允许用户用其现有的社交或企业标识登录。
 
 ## <a name="protocol"></a>协议
 
@@ -66,7 +66,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>元数据
+## <a name="metadata"></a>Metadata
 
 | Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
@@ -82,29 +82,14 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   |
 
 ## <a name="redirect-uri"></a>重定向 URI
 
-配置标识提供者的重定向 URL 时，请输入 `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`。 确保将 **tenant** 替换为租户名称（例如 contosob2c.onmicrosoft.com），将 **policyId** 替换为策略的标识符（例如 b2c_1a_policy）。 重定向 URI 需要采用全小写形式。 添加使用标识提供者登录名的所有策略的重定向 URL。
-
-如果使用 **b2clogin.com** 域而不是 **login.microsoftonline.com**，请确保使用 b2clogin.com 而不是 login.microsoftonline.com。
+配置标识提供者的重定向 URI 时，请输入 `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/{policy-id}/oauth1/authresp`。 请确保将替换为 `{tenant-name}` 你的租户名称 (例如，contosob2c) ，并 `{policy-id}` 将替换为你的策略的标识符 (例如，b2c_1a_policy) 。 重定向 URI 需要采用全小写形式。 添加使用标识提供者登录名的所有策略的重定向 URL。
 
 示例：
 
 - [使用自定义策略添加 Twitter 作为 OAuth1 标识提供者](identity-provider-twitter-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

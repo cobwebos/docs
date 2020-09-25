@@ -3,12 +3,12 @@ title: 使用托管标识进行身份验证
 description: 通过使用用户分配或系统分配的托管 Azure 标识，提供对专用容器注册表中映像的访问。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253456"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
@@ -230,6 +230,8 @@ az acr login --name myContainerRegistry
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> 系统分配的托管服务标识可用于与 Acr 交互，应用服务可以使用系统分配的托管服务标识。 但是，不能将它们组合在一起，因为应用服务无法使用 MSI 来与 ACR 通信。 唯一的方法是为 ACR 启用管理员，并使用管理员用户名/密码。
 
 ## <a name="next-steps"></a>后续步骤
 

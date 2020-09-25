@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 17cde20d69fbf7d135fe48c9e285ccf348b4b58c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252946"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
@@ -53,7 +53,7 @@ var helloWorldStoredProc = {
 
 存储过程还包含一个用于设置说明的参数（一个布尔值）。 如果该参数设置为 true，同时缺少说明，则存储过程将引发异常。 否则，存储过程的剩余部分将继续运行。
 
-以下示例存储过程使用新的 Azure Cosmos 项的数组作为输入，将其插入 Azure Cosmos 容器，并返回插入项的计数。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例
+以下示例存储过程采用新 Azure Cosmos 项的数组作为输入，将其插入 Azure Cosmos 容器，然后返回插入项的计数。 此示例利用[快速入门 .NET SQL API](create-sql-api-dotnet.md) 中的 ToDoList 示例
 
 ```javascript
 function createToDoItems(items) {

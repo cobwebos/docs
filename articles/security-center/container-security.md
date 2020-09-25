@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: cbea99b08ed0cbcc1125d15c78119a509b6dcc48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3edd7ddf79f8400462b52f964b7677840a7e86df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977265"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301952"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全性
 
@@ -58,7 +58,7 @@ Azure 安全中心是用于保护容器安全的 Azure 本机解决方案。
 
 Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的 Linux 计算机上承载的非托管容器。 安全中心会持续评估这些容器的配置。 然后，它会将其与 [Internet 安全中心 (CIS) 的 Docker 基准](https://www.cisecurity.org/benchmark/docker/)进行比较。
 
-安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 在发现错误配置时，安全中心会生成安全建议。 请使用**建议页面**来查看建议和修正问题。 也可在“容器”选项卡上查看建议，该选项卡会显示使用 Docker 部署的所有虚拟机。 CI 基准检查不会在 AKS 管理的实例或 Databricks 托管的 Vm 上运行。
+安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 在发现错误配置时，安全中心会生成安全建议。 使用安全中心的 **建议页** 可以查看建议和修正问题。 CI 基准检查不会在 AKS 管理的实例或 Databricks 托管的 Vm 上运行。
 
 若要详细了解可能会针对此功能显示的相关的安全中心建议，请参阅建议参考表的[容器部分](recommendations-reference.md#recs-containers)。
 

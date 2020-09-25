@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 按需流式处理操作导入 Postman 集合
-description: 本文提供了用于 Azure 媒体服务 REST 调用的 Postman 集合的定义。
+description: 了解 Postman 集合，该集合包含调用 Azure 媒体服务 REST Api 的分组 HTTP 请求。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f5f7a40cb72e1ae58f7962c4c8b80195a82ebdc5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3927133b9cbd59a5d085e7406d9dceb177a47637
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259262"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268632"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合
 

@@ -3,12 +3,12 @@ title: 存储队列作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将 Azure 存储队列用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fdbc292f066a3eb06f17fd144d26d484d2a25f21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270179"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>存储队列作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 多个 Azure 服务已自动配置为处理事件，Azure 队列存储就是其中之一。 
@@ -136,6 +136,9 @@ ms.locfileid: "86105636"
     }
 }
 ```
+
+> [!NOTE]
+> 不支持将事件传递到 **另一个租户** 中的 Azure 存储队列。 
 
 ## <a name="next-steps"></a>后续步骤
 如需支持的事件处理程序的列表，请参阅[事件处理程序](event-handlers.md)一文。 

@@ -3,17 +3,17 @@ title: Azure Defender for SQL-权益和功能
 description: 了解适用于 SQL 的 Azure Defender 的优势和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e76fd33ccca73394c4ee48b3737db8b93a990659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dcdbc3efba53f78890816721b6659aa69553d6ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301595"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL 简介
 
@@ -24,8 +24,8 @@ ms.locfileid: "90934742"
 |方面|详细信息|
 |----|:----|
 |发布状态：|**适用于 AZURE SQL 数据库服务器的 Azure Defender** -正式发布 (GA) <br>**适用于计算机上的 SQL server 的 Azure Defender** -预览|
-|计价|构成**Azure Defender FOR SQL**的两个计划按[定价页](security-center-pricing.md)中所示的方式计费|
-|受保护的 SQL 版本：|Azure SQL Database <br>Azure SQL 托管实例<br>Azure Synapse Analytics（以前称为 SQL DW）<br> (所有受支持的版本的 SQL Server) |
+|定价：|构成**Azure Defender FOR SQL**的两个计划按[定价页](security-center-pricing.md)中所示的方式计费|
+|受保护的 SQL 版本：|Azure SQL 数据库 <br>Azure SQL 托管实例<br>Azure Synapse Analytics（以前称为 SQL DW）<br> (所有受支持的版本的 SQL Server) |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
 |||
 

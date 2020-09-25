@@ -3,16 +3,16 @@ title: 如何响应 Azure Defender Key Vault 警报
 description: 了解响应 Azure Defender 中 Key Vault 的警报所需的步骤。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a3f47f00b171601e73ea4668286adf944f48459f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd153eb1b0e96165bccc807a72bc3614ded49428
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301680"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>响应适用于 Key Vault 的 Azure Defender 警报
 收到来自 Azure Defender for Key Vault 的警报时，建议你按下述方式调查和响应警报。 Azure Defender for Key Vault 保护应用程序和凭据，因此即使你熟悉触发警报的应用程序或用户，也必须验证每个警报的情况。  

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395428"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252623"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -60,7 +60,7 @@ ms.locfileid: "89395428"
 
 可以查看专用、公共和 Microsoft 对等互连的指标（以位/秒为单位）。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="每对等互连指标":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="每个对等互连的指标":::
 
 ### <a name="bgp-availability---split-by-peer"></a>BGP 可用性 - 按对等机拆分  
 
@@ -114,17 +114,17 @@ ms.locfileid: "89395428"
 
 ## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute 虚拟网络网关指标
 
-### <a name="cpu-utilization---split-instance"></a>CPU 利用率-拆分实例
+### <a name="cpu-utilization---split-instance"></a>CPU 使用率 - 拆分实例
 
 可以查看网关实例的 CPU 使用率。
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="CPU 拆分":::
 
-### <a name="packets-per-second---split-by-instance"></a>每秒数据包数-按实例拆分
+### <a name="packets-per-second---split-by-instance"></a>每秒数据包数 - 按实例拆分
 
-可以查看每秒遍历网关的数据包。
+可以查看每秒遍历网关的数据包数。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="每秒数据包数-拆分":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="每秒数据包数 - 拆分":::
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute 网关连接（以位/秒为单位）
 
@@ -132,7 +132,7 @@ ms.locfileid: "89395428"
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute 网关连接的警报
 
-1. 若要配置警报，请导航到 **Azure Monitor**，然后选择 " **警报**"。
+1. 若要配置警报，请导航到 **Azure Monitor**，然后选择“警报”。
 
    :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="alerts":::
 2. 单击“+选择目标”****，然后选择 ExpressRoute 网关连接资源。
@@ -154,6 +154,19 @@ ms.locfileid: "89395428"
 在**警报条件**中，可以选择“活动日志”**** 作为信号类型并选择“信号”。
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="活动日志":::
+
+## <a name="additional-metrics-in-log-analytics"></a>Log Analytics 中的其他度量值
+
+还可以通过导航到 ExpressRoute 线路资源并选择 " *日志* " 选项卡来查看 expressroute 指标。对于查询的任何指标，输出将包含下面的列。
+
+|**列**|**类型**|**说明**|
+| --- | --- | --- |
+|TimeGrain|string|PT1M (度量值每分钟推送) |
+|Count|real|通常等于 2 (每个 MSEE 每分钟推送一个指标值) |
+|最小值|real|由两个 Msee 推送的两个指标值的最小值|
+|最大值|real|由两个 Msee 推送的两个指标值的最大|
+|平均值|real|等于 (最小 + 最大) /2|
+|总计|real|这两个 Msee 中的两个指标值的总和 (主值以针对所查询的度量) |
   
 ## <a name="next-steps"></a>后续步骤
 

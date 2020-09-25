@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 30f9f1998ee133c2546c9f4de7a99c51feb8740f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258279"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
 本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 初始化公共客户端和机密客户端应用程序。  若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
@@ -137,7 +137,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzurePublic, tenantId)
+        .WithAuthority(AzureCloudInstance.AzurePublic, tenantId)
         .Build();
 ```
 
@@ -146,7 +146,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
+        .WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
 ```
 

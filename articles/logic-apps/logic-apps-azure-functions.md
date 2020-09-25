@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e853255f0fc1bc95a4a7fb1658fc41d4fe705c41
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420050"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269295"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 
@@ -147,7 +147,7 @@ function convertToDateString(request, response){
 
 1. 在“请求正文”框中，提供函数的输入，其格式必须为 JavaScript 对象表示法 (JSON) 对象。
 
-   此输入是逻辑应用发送到函数的上下文对象或消息。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌。 本示例指定上下文有效负载包含一个名为 `content` 的属性，该属性具有来自电子邮件触发器的 **From** 标记的值。
+   此输入是逻辑应用发送到函数的上下文对象或消息。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌。 此示例指定上下文有效负载包含名为 `content` 的属性，其中有来自电子邮件触发器的“发件人”标记的值。
 
    ![“请求正文”示例 - 上下文对象有效负载](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -287,7 +287,7 @@ function convertToDateString(request, response){
 
    ![查看身份验证和授权设置](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
 
-1. 将“应用服务身份验证”设置更改为“打开”。  在“请求未经身份验证时需执行的操作”列表中，选择“使用 Azure Active Directory 登录” 。 在“验证提供程序”下，选择“Azure Active Directory” 。
+1. 将“应用服务身份验证”设置更改为“打开”。  在“请求未经身份验证时需执行的操作”列表中，选择“使用 Azure Active Directory 登录” 。 在“身份验证提供程序”下，选择“Azure Active Directory”。
 
    ![打开使用 Azure AD 进行身份验证](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 如何从 Twilio (.NET) 发起电话呼叫 | Microsoft Docs
-description: 了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫和发送短信。 采用 .NET 编写的代码示例。
+description: 了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫。 采用 .NET 编写的代码示例。
 services: ''
 documentationcenter: .net
 author: mimckitt
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 90e7bafab3fb9658cd9e11d0417f84269adcfa13
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268479"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>如何在 Azure 的 Web 角色中使用 Twilio 发起电话呼叫
 本指南演示如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序提示用户使用给定的号码和消息进行呼叫，如下面的屏幕截图中所示。

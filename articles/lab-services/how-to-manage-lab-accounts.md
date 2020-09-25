@@ -3,12 +3,12 @@ title: 管理 Azure 实验室服务中的实验室帐户 | Microsoft Docs
 description: 了解如何在 Azure 订阅中创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251654"
 ---
 # <a name="create-and-manage-lab-accounts"></a>创建和管理实验室帐户
 在 Azure 实验室服务中，实验室帐户是托管实验室类型（如课堂实验室）的容器。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -43,7 +43,7 @@ ms.locfileid: "85445485"
         ![创建实验室帐户 -> 高级](./media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
 6. 在页面底部选择“下一步:标记”，以切换到“标记”选项卡。添加要与实验室帐户关联的任何标记。 标记是名称/值对，通过将相同的标记应用到多个资源和资源组，可以对资源进行分类并查看合并的账单。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
-    ![创建实验室帐户 -> 标记](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+    ![显示 "创建实验室帐户" 页面并突出显示 "标签" 选项卡的屏幕截图。](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. 选择此页底部的“查看 + 创建”，切换到“查看 + 创建”选项卡。 
 4. 查看此页上的摘要信息，并选择“创建”。 
 

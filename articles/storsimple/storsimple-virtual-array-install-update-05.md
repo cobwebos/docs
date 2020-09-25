@@ -1,6 +1,6 @@
 ---
 title: 在 StorSimple Virtual Array 上安装 Update 0.5 | Microsoft Docs
-description: 介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新
+description: 介绍如何使用 StorSimple Virtual Array web UI，使用 Azure 门户和修复方法来应用更新0.5。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300593"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 0.5
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258619"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
@@ -31,11 +31,11 @@ ms.locfileid: "90601631"
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 策略是否也适用于 OneDrive for Business？
 
-是的。 SharePoint Online 策略也适用于 OneDrive for Business。 有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365-preview)。
+是的。 SharePoint Online 策略也适用于 OneDrive for Business。 有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365)。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>为何无法对诸如 Word 或 Outlook 等客户端应用直接设置策略？
 
-条件访问策略设置访问服务的要求。 它在对该服务执行身份验证时执行。 不在客户端应用程序上直接设置策略。 相反，在客户端调用服务时应用策略。 例如，在 SharePoint 上设置的策略适用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略适用于 Outlook。 有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365-preview)。
+条件访问策略设置访问服务的要求。 它在对该服务执行身份验证时执行。 不在客户端应用程序上直接设置策略。 相反，在客户端调用服务时应用策略。 例如，在 SharePoint 上设置的策略适用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略适用于 Outlook。 有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365)。
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>条件访问策略是否应用于服务帐户？
 
@@ -53,7 +53,7 @@ Microsoft Teams 还在条件访问策略中作为云应用单独受到支持。 
 
 适用于 Windows 和 Mac 的 Microsoft Teams 桌面客户端支持新式身份验证。 新式身份验证将基于 Azure Active Directory 身份验证库 (ADAL) 的登录引入 Microsoft Office 客户端应用程序。
 
-有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365-preview)。
+有关详细信息，请参阅[条件访问服务依赖项](service-dependencies.md)一文，并考虑改将策略定向到 [Office 365 应用](concept-conditional-access-cloud-apps.md#office-365)。
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>启用条件访问策略后，为什么某些选项卡在 Microsoft Teams 中无法正常运行？
 

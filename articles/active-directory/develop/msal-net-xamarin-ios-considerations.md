@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f550cb4e9069055da6569492b35fc7fe75d70980
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594044"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258053"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>将 Xamarin iOS 与 MSAL.NET 配合使用时的注意事项
 
@@ -81,7 +81,7 @@ var builder = PublicClientApplicationBuilder
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>启用 iOS 应用程序之间的令牌缓存共享
 
-从 MSAL 2.x 开始，可以指定一个密钥链访问组，用于在多个应用程序之间保留令牌缓存。 此设置可让你在使用相同密钥链访问组的多个应用程序之间共享令牌缓存。 可以在使用 [ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 或 [MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc) 开发的 [ADAL.NET](https://aka.ms/adal-net) 应用程序、MSAL.NET Xamarin.iOS 应用程序与本机 iOS 应用程序之间共享令牌缓存。
+从 MSAL 2.x 开始，可以指定一个密钥链访问组，用于在多个应用程序之间保留令牌缓存。 此设置可让你在使用相同密钥链访问组的多个应用程序之间共享令牌缓存。 可以在 [ADAL.NET](https://aka.ms/adal-net) 应用程序、MSAL.NET Xamarin ios 应用程序和 [objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 或 [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)开发的本机 iOS 应用程序之间共享令牌缓存。
 
 通过共享令牌缓存，可以在使用相同密钥链访问组的所有应用程序之间实现单一登录 (SSO)。
 
@@ -97,7 +97,7 @@ var builder = PublicClientApplicationBuilder
 应用程序可以使用 Microsoft Authenticator 作为 broker 来实现以下操作：
 
 - **Sso**：启用 sso 后，用户无需登录到每个应用程序。
-- **设备标识**：通过访问设备证书，使用设备标识进行身份验证。 当设备加入工作区时，会在设备上创建此证书。 如果租户管理员启用了与设备相关的条件性访问，你的应用程序将准备就绪。
+- **设备标识**：通过访问设备证书，使用设备标识进行身份验证。 当设备加入工作区时，将在设备上创建此证书。 如果租户管理员启用了与设备相关的条件性访问，你的应用程序将准备就绪。
 - **应用程序标识验证**：应用程序在调用中介时会传递其重定向 URL。 Broker 验证重定向 URL。
 
 有关如何启用代理的详细信息，请参阅 [在 Xamarin iOS 和 Android 应用程序上使用 Microsoft Authenticator 或 Microsoft Intune 公司门户](msal-net-use-brokers-with-xamarin-apps.md)。

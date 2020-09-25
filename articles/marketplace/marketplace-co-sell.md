@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268717"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
 
@@ -36,7 +36,7 @@ ms.locfileid: "90984643"
 * Marketplace 服务费用从20% 减少到10%。 此折扣适用于通过商业市场销售的 IaaS 或 SaaS 产品/服务。 有关更多详细信息，请参阅 [降低服务费用](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) 。
 * 云解决方案提供商 (CSP) 合作伙伴获得10% 的激励，以销售 IaaS 或 SaaS 产品/服务。 在 [云解决方案提供商计划](cloud-solution-providers.md)中了解有关 CSP 计划的详细信息。
 * 通过商业市场提供的产品/服务的销售人员将对客户的 Azure 消耗承诺做出贡献。 符合条件的客户将在 Azure 门户中看到产品/服务标记为 **"azure 权益资格"** 。 有关更多详细信息，请参阅 [Azure 消耗承诺权益](azure-consumption-commitment-benefit.md) 。
-* 你的产品/服务将在商店中收到 **"首选解决方案"** 徽章。 徽章可在特定行业或解决方案领域中的产品/服务的质量、性能和能力，以满足客户需求。 有关详细信息 [，请参阅 Microsoft AppSource 和 Azure Marketplace 中的首选解决方案](preferred-solutions.md)。
+* 产品/服务可实现 **AZURE IP 共同销售 incentivized** 或 **Business Applications 共同销售 incentivized** 状态将在商店中收到 **"首选解决方案"** 徽章。 徽章在特定行业垂直或解决方案领域提升产品/服务的质量、性能和满足客户需求的能力。 有关详细信息 [，请参阅 Microsoft AppSource 和 Azure Marketplace 中的首选解决方案](preferred-solutions.md)。
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>共同销售发布步骤和要求
 

@@ -10,16 +10,40 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271165"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="general-api-updates"></a>常规 API 更新
+
+* 为文本分析3.1 公共预览版发布新 URL，以支持对以下命名实体识别 v3 终结点进行更新： 
+    * `/pii` 现在，终结点 `redactedText` 在响应 JSON 中包含新的属性，其中，在输入文本中检测到的 PII 实体将替换 `*` 为这些实体中的每个字符的。
+    * `/linking` 现在，终结点在 `bingID` 响应 JSON 中包括链接实体的属性。
+* 以下文本分析预览版 API 终结点于2020年9月4日停用：
+    * ws 2.1-预览
+    * v3.0-preview
+    * 3.0-预览。1
+    
+> [!div class="nextstepaction"]
+> [详细了解文本分析 API 3.1 版-预览版2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+
+### <a name="text-analytics-for-health-container-updates"></a>运行状况容器更新的文本分析
+
+以下更新仅特定于运行状况容器文本分析的九月版本。
+* 已将带有新型号版本的标记的新容器映像 `1.1.013530001-amd64-preview` `2020-09-03` 发布到 containerpreview 存储库。 
+* 此模型版本提供实体识别、缩写检测和延迟增强功能的改进。
+
+> [!div class="nextstepaction"]
+> [详细了解文本分析的运行状况](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -31,7 +55,7 @@ ms.locfileid: "88930904"
 * 对于超过已发布 [数据限制](concepts/data-limits.md)的 v3 API 请求，将返回 HTTP 400 错误。 
 * 返回偏移量的终结点现在支持可选的 `stringIndexType` 参数，该参数将调整返回的 `offset` `length` 值和值，以匹配支持的 [字符串索引方案](concepts/text-offsets.md)。
 
-### <a name="text-analytics-for-health-container-august-updates"></a>运行状况容器的文本分析8月更新
+### <a name="text-analytics-for-health-container-updates"></a>运行状况容器更新的文本分析
 
 以下更新仅特定于运行状况容器文本分析的8月发行版。
 
@@ -141,7 +165,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 * 以下常规实体类型的识别仅 (英语) ：
     * PersonType
-    * 产品
+    * Products
     * 事件
     * 地缘政治实体 (GPE) 作为 "位置" 下的子类型
     * 技能
@@ -153,7 +177,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 日期作为 DateTime 下的子类型
     * 电子邮件 
     * 电话号码 (仅限我们) 
-    * 代码
+    * URL
     * IP 地址
 
 > [!div class="nextstepaction"]

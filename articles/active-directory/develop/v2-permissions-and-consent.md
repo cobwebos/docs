@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5d1aa4ff87b272911e4e39076f337ea249b962d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256596"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -48,15 +48,15 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 * 使用 `Calendars.ReadWrite`
 * 使用 `Mail.Send`
 
-应用往往是通过在发往 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高特权权限只能通过管理员许可来授予，并且是使用[管理员许可终结点](v2-permissions-and-consent.md#admin-restricted-permissions)来请求/授予的。 请继续阅读了解更多信息。
+应用往往是通过在发往 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高特权权限只能通过管理员许可来授予，并且是使用[管理员许可终结点](#admin-restricted-permissions)来请求/授予的。 请继续阅读了解更多信息。
 
 ## <a name="permission-types"></a>权限类型
 
 Microsoft 标识平台支持两种类型的权限：**委托的权限**和**应用程序权限**。
 
-* **委托的权限**由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对目标资源发出调用时，该应用可充当登录的用户。 某些委托的权限可由非管理用户许可，但某些更高特权的权限需要[管理员许可](v2-permissions-and-consent.md#admin-restricted-permissions)。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
+* **委托的权限**由包含登录用户的应用使用。 对于这些应用，用户或管理员需许可应用请求的权限，并向应用授予委托的权限，以便在对目标资源发出调用时，该应用可充当登录的用户。 某些委托的权限可由非管理用户许可，但某些更高特权的权限需要[管理员许可](#admin-restricted-permissions)。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
 
-* **应用程序权限**由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。  应用程序权限只能[由管理员许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
+* **应用程序权限**由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。  应用程序权限只能[由管理员许可](#requesting-consent-for-an-entire-tenant)。
 
 有效权限是应用在对目标资源发出请求时拥有的权限。 在对目标资源发出调用时，必须了解应用授予的委托权限和应用程序权限与其有效权限之间的差别。
 
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 这将产生显示所有已注册权限（如果根据许可和 `/.default` 的上述说明适用）的许可屏幕，然后返回 id_token，而不是访问令牌。  此行为针对从 ADAL 迁移到 MSAL 的某些旧客户端存在，并且**不应**由面向 Microsoft 标识平台终结点的新客户端使用。
 
+### <a name="client-credentials-grant-flow-and-default"></a>客户端凭据授予流和/.default
+
+的另一个用途 `./default` 是在非交互式应用程序（如使用客户端凭据授予流的守护程序应用使用[客户端凭据](v2-oauth2-client-creds-grant-flow.md)授予流）中请求应用程序权限时)  (或*角色*。
+
+若要为 web API 创建 (角色) 应用程序权限，请参阅 [如何：在应用程序中添加应用程序角色](howto-add-app-roles-in-azure-ad-apps.md)。
+
+客户端应用程序中的客户端凭据请求 **必须** 包括 `scope={resource}/.default` ，其中 `{resource}` 是你的应用程序打算调用的 web API。 **不**支持使用单独的应用程序权限发出客户端凭据请求 (角色) 。 为该 web API 授予的 (角色) 的所有应用程序权限都将包含在返回的访问令牌中。
+
+若要授予对所定义的应用程序权限的访问权限，包括授予对应用程序的管理员同意，请参阅 [快速入门：配置客户端应用程序以访问 WEB API](quickstart-configure-app-access-web-apis.md)。
+
 ### <a name="trailing-slash-and-default"></a>尾部斜杠和 /.default
 
 某些资源 URI 包含尾部斜杠（`https://contoso.com/` 而不是 `https://contoso.com`），这可能导致验证令牌时出现问题。  这种情况主要发生在请求 Azure 资源管理 (`https://management.azure.com/`) 的令牌时。资源管理的资源 URI 包含一个尾部斜杠，请求令牌时需要提供此斜杠。  因此，在请求 `https://management.azure.com/` 的令牌和使用 `/.default` 时，必须请求 `https://management.azure.com//.default` - 注意双斜杠！
@@ -311,3 +321,8 @@ response_type=token            //code or a hybrid flow is also possible here
 ## <a name="troubleshooting-permissions-and-consent"></a>权限和许可故障排除
 
 如果你或应用程序的用户在许可过程中看到意外的错误，请参阅以下文章获取故障排除步骤：[对应用程序执行许可时发生意外错误](../manage-apps/application-sign-in-unexpected-user-consent-error.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+* [ID 标记 |Microsoft 标识平台](id-tokens.md)
+* [访问令牌 |Microsoft 标识平台](access-tokens.md)

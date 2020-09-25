@@ -4,14 +4,14 @@ description: 了解如何查询和访问嵌套的 JSON 属性并在 Azure Cosmos
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270844"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的 JSON
 
@@ -138,6 +138,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>Null 和 undefined 之间的差异
+
+如果未在项中定义属性，则其值为 `undefined` 。 必须显式定义具有值的属性 `null` ，并为其分配 `null` 值。
+
+例如，请看下面的示例项：
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+在此示例中，属性的 `isRegistered` 值为， `undefined` 因为它已从项中省略。 属性 `creationDate` 具有 `null` 值。
+
+Azure Cosmos DB 支持两个有用的类型检查系统函数用于 `null` 和 `undefined` 属性：
+
+* [IS_NULL](sql-query-is-null.md) -检查属性值是否为 `null`
+* [IS_DEFINED](sql-query-is-defined.md) -检查是否定义了属性值
+
+可以了解支持的 [运算符](sql-query-operators.md) 及其和值的行为 `null` `undefined` 。
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON 中的保留关键字和特殊字符
 

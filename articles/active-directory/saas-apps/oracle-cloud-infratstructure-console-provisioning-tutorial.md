@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c3d68698621fe963074c7216e4636208d93deca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7efe58081604708ff090d28f7274c738406c5007
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255877"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Oracle 云基础结构控制台
 
@@ -100,13 +100,13 @@ ms.locfileid: "88543861"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分中，输入格式为的 **租户 URL** `https://<IdP ID>.identity.oraclecloud.com/admin/v1` 。 例如 `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Oracle 云基础结构控制台。 如果连接失败，请确保你的 Oracle 云基础结构控制台帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入格式为的 **租户 URL** `https://<IdP ID>.identity.oraclecloud.com/admin/v1` 。 例如，`https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Oracle 云基础结构控制台。 如果连接失败，请确保你的 Oracle 云基础结构控制台帐户具有管理员权限，然后重试。
 
     ![预配](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "88543861"
 
       |Attribute|类型|
       |---|---|
-      |displayName|String|
+      |displayName|字符串|
       |userName|字符串|
       |活动|Boolean|
       |title|字符串|

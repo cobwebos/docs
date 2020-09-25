@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/19/2020
+ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269159"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -75,6 +75,8 @@ Azure 逻辑应用依赖 [Azure 存储](../storage/index.yml)来存储和自动[
 | `sig` | 指定用于对触发器访问进行身份验证的签名。 此签名是使用 SHA256 算法生成的，所有 URL 路径和属性中都包含机密访问密钥。 该密钥永远不会公开或发布，而是一直处于加密状态并存储在逻辑应用中。 逻辑应用仅向那些包含有效签名（使用密钥创建）的触发器授权。 |
 |||
 
+对请求终结点的入站调用只能使用一个授权方案，即 SAS 或 [Azure Active Directory 开放身份验证](#enable-oauth)。 尽管使用一个方案不会禁用另一个方案，但同时使用这两种方案会导致错误，因为服务不知道要选择哪种方案。
+
 有关使用 SAS 保护访问的详细信息，请参阅本主题中的以下部分：
 
 * [重新生成访问密钥](#access-keys)
@@ -121,62 +123,62 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>启用 Azure Active Directory 开放式身份验证 (Azure AD OAuth)
 
-如果逻辑应用是使用 [请求触发器](../connectors/connectors-native-reqres.md)启动的，则可以通过定义或添加对请求触发器的入站调用的授权策略，启用 [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml) 。
+对于由基于请求的触发器创建的终结点的入站调用，你可以通过为逻辑应用定义或添加授权策略来启用 [Azure Active Directory 开放身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml) 。 这样，入站调用就使用 OAuth [访问令牌](../active-directory/develop/access-tokens.md) 进行授权。
 
-在启用此身份验证之前，请查看以下注意事项：
+逻辑应用收到包含 OAuth 访问令牌的入站请求时，Azure 逻辑应用服务会将令牌的声明与每个授权策略指定的声明进行比较。 如果令牌的声明与至少一个策略中的所有声明之间存在匹配项，则入站请求的授权成功。 令牌的声明数可以大于授权策略指定的声明数。
 
-* 对 Request 触发器的入站调用只能使用一个授权方案，即使用身份验证令牌 Azure AD OAuth，该令牌仅支持请求触发器，或者使用 [共享访问签名 (SAS) URL](#sas) 不能同时使用这两种方案。
+在启用 Azure AD OAuth 之前，请查看以下注意事项：
 
-  尽管使用一个方案不会禁用另一个方案，但同时使用这两种方案会导致错误，因为服务不知道要选择哪种方案。 而且，只有请求触发器支持的 OAuth 身份验证令牌仅支持 [持有者类型](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授权方案。 身份验证令牌必须 `Bearer-type` 在授权标头中指定。
+* 对请求终结点的入站调用只能使用 Azure AD OAuth 或 [共享访问签名 (SAS) ](#sas)的一个授权方案。 尽管使用一个方案不会禁用另一个方案，但同时使用这两种方案会导致错误，因为逻辑应用服务不知道要选择哪种方案。
+
+* Azure AD 的 OAuth 访问令牌仅支持 [持有者类型](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授权方案，这意味着 `Authorization` 访问令牌的标头必须指定 `Bearer` 类型。
 
 * 逻辑应用限制为最大授权策略数。 每个授权策略还具有最大[声明](../active-directory/develop/developer-glossary.md#claim)数。 有关详细信息，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)。
 
-* 授权策略必须至少包含颁发者声明，该声明具有作为 Azure AD 颁发者 ID 的以 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 开头的值。 有关访问令牌的详细信息，请参阅 [Microsoft 标识平台访问令牌](../active-directory/develop/access-tokens.md)。
+* 授权策略必须至少包含 **颁发者** 声明，该声明的值以 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 作为 Azure AD 颁发者 ID。
 
-逻辑应用收到包含 OAuth 身份验证令牌的入站请求时，Azure 逻辑应用会对照每个授权策略中的声明来比较令牌的声明。 如果令牌的声明与至少一个策略中的所有声明之间存在匹配项，则入站请求的授权成功。 令牌的声明数可以大于授权策略指定的声明数。
+  例如，假定逻辑应用有一个需要两个声明类型、 **受众** 和 **颁发者**的授权策略。 解码的访问令牌的此示例 [负载部分](../active-directory/develop/access-tokens.md#payload-claims) 包括两个声明类型，其中 `aud` ，是 **受众** 值， `iss` 是 **颁发者** 值：
 
-例如，假定逻辑应用有一个需要两个声明类型、 **颁发者** 和 **受众**的授权策略。 此示例解码的[访问令牌](../active-directory/develop/access-tokens.md)包括以下声明类型：
-
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -190,14 +192,14 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![选择“授权”>“添加策略”](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. 在对请求触发器的每次入站调用提供的身份验证令牌中，逻辑应用需要一些[声明类型](../active-directory/develop/developer-glossary.md#claim)和值，通过指定这些声明类型和值来提供有关授权策略的信息：
+1. 通过指定在访问令牌中逻辑应用需要的 [声明类型](../active-directory/develop/developer-glossary.md#claim) 和值，提供有关授权策略的信息。
 
    ![提供授权策略的信息](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
-   | 属性 | 必选 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | 策略名称 | 是 | 要用于授权策略的名称 |
-   | **申请** | 是 | 逻辑应用从入站调用接受的声明类型和值。 下面是可用的声明类型： <p><p>- 颁发者 <br>- 受众 <br>- **主题** <br>- JWT ID（JSON Web 令牌 ID） <p><p>**声明**列表中至少必须包含**颁发者**声明，该声明的值以 `https://sts.windows.net/` 或开头 `https://login.microsoftonline.com/` 为 Azure AD 颁发者 ID。 有关这些声明类型的详细信息，请参阅 [Azure AD 安全令牌中的声明](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 你还可以指定自己的声明类型和值。 |
+   | **申请** | 是 | 逻辑应用从入站调用接受的声明类型和值。 下面是可用的声明类型： <p><p>- 颁发者 <br>- 受众 <br>- **主题** <br>- JWT ID（JSON Web 令牌 ID） <p><p>**声明**列表必须至少包含**颁发者**声明，该声明的值以 `https://sts.windows.net/` 或开头 `https://login.microsoftonline.com/` 为 Azure AD 颁发者 ID。 有关这些声明类型的详细信息，请参阅 [Azure AD 安全令牌中的声明](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 你还可以指定自己的声明类型和值。 |
    |||
 
 1. 若要添加其他声明，请从以下选项中进行选择：
@@ -210,14 +212,27 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 完成后，选择“保存”。
 
+1. 若要 `Authorization` 在基于请求的触发器输出中包含访问令牌中的标头，请参阅 [在请求触发器输出中包含 "Authorization" 标头](#include-auth-header)。
+
 <a name="define-authorization-policy-template"></a>
 
 #### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中定义授权策略
 
-若要在 ARM 模板中启用 Azure AD OAuth 用于部署逻辑应用，请在 `properties` [逻辑应用的资源定义](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)部分中，添加一个 `accessControl` 对象（如果不存在），其中包含 `triggers` 对象。 在 `triggers` 对象中，按照 `openAuthenticationPolicies` 以下语法，添加一个可定义一个或多个授权策略的对象：
+若要在 ARM 模板中启用 Azure AD OAuth 用于部署逻辑应用，请执行以下步骤和以下语法：
 
-> [!NOTE]
-> `claims`数组必须至少包含 `iss` 声明，该声明具有以或开头的值 `https://sts.windows.net/` `https://login.microsoftonline.com/` 作为 Azure AD 颁发者 ID。 有关这些声明类型的详细信息，请参阅 [Azure AD 安全令牌中的声明](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 你还可以指定自己的声明类型和值。
+1. 在 `properties` [逻辑应用的资源定义](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)部分中，添加一个 `accessControl` 对象（如果不存在），其中包含 `triggers` 对象。
+
+   有关对象的详细信息 `accessControl` ，请参阅 [限制 Azure 资源管理器模板中的入站 IP 范围](#restrict-inbound-ip-template) 和 [Microsoft. 逻辑工作流模板引用](/azure/templates/microsoft.logic/2019-05-01/workflows)。
+
+1. 在 `triggers` 对象中，添加一个 `openAuthenticationPolicies` 对象，该对象包含 `policies` 在其中定义一个或多个授权策略的对象。
+
+1. 提供授权策略的名称，将策略类型设置为 `AAD` ，并包含一个 `claims` 指定一个或多个声明类型的数组。
+
+   `claims`数组必须至少包含颁发者声明类型，在这种情况下，你可以将声明的 `name` 属性设置为， `iss` 并将设置 `value` 为以 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` Azure AD 颁发者 ID 开头。 有关这些声明类型的详细信息，请参阅 [Azure AD 安全令牌中的声明](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 你还可以指定自己的声明类型和值。
+
+1. 若要 `Authorization` 在基于请求的触发器输出中包含访问令牌中的标头，请参阅 [在请求触发器输出中包含 "Authorization" 标头](#include-auth-header)。
+
+下面是要遵循的语法：
 
 ```json
 "resources": [
@@ -256,7 +271,30 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 ],
 ```
 
-有关部分的详细信息 `accessControl` ，请参阅 [限制 Azure 资源管理器模板中的入站 IP 范围](#restrict-inbound-ip-template) 和 [Microsoft. 逻辑工作流模板引用](/azure/templates/microsoft.logic/2019-05-01/workflows)。
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>在请求触发器输出中包含 "Authorization" 标头
+
+对于 [启用 Azure Active Directory 开放身份验证 (Azure AD OAuth) ](#enable-oauth) 的逻辑应用，以便授权入站调用访问基于请求的触发器，你可以启用请求触发器或 HTTP Webhook 触发器输出，使其包含 `Authorization` OAuth 访问令牌中的标头。 在触发器的基础 JSON 定义中，添加属性，并将其设置 `operationOptions` 为 `IncludeAuthorizationHeadersInOutputs` 。 下面是请求触发器的示例：
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+有关详细信息，请参阅以下主题：
+
+* [触发器和操作类型的架构引用-请求触发器](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [触发器和操作类型的架构引用-HTTP Webhook 触发器](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [触发器和操作类型的架构引用-操作选项](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
 <a name="azure-api-management"></a>
 
@@ -823,7 +861,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于向这些终结点�
 
 如果[基本](../active-directory-b2c/secure-rest-api.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必选 | Value | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 基本 | 要使用的身份验证类型 |
 | **用户名** | `username` | 是 | <*user-name*>| 用于对目标服务终结点访问进行身份验证的用户名 |
@@ -854,7 +892,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于向这些终结点�
 
 如果[客户端证书](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必选 | Value | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 可使用的身份验证类型。 可以使用 [Azure API 管理](../api-management/api-management-howto-mutual-certificates.md)来管理证书。 <p></p>**注意**：对于入站和出站调用，自定义连接器不支持基于证书的身份验证。 |
 | **Pfx** | `pfx` | 是 | <*encoded-pfx-file-content*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以使用 PowerShell 并执行以下步骤： <p>1.将证书内容保存到某个变量中： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.使用 `ToBase64String()` 函数转换证书内容，并将该内容保存到某个文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -893,14 +931,14 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于向这些终结点�
 
 在请求触发器上，你可以使用 [Azure Active Directory 开放身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，以便在为逻辑应用 [设置 Azure AD 授权策略](#enable-oauth) 后对传入呼叫进行身份验证。 对于提供 Active Directory OAuth 身份验证类型供你选择的所有其他触发器和操作，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必选 | Value | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循 [OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
-| 颁发机构 | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
+| 颁发机构 | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供访问令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
 | 租户 | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
 | **受众** | `audience` | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
-| 凭据类型 | `credentialType` | 是 | 证书 <br>或 <br>Secret | 客户端用来请求授权的凭据类型。 此属性和值不会显示在逻辑应用的基础定义中，但确定了为选定凭据类型显示的属性。 |
+| 凭据类型 | `credentialType` | 是 | 证书 <br>或 <br>机密 | 客户端用来请求授权的凭据类型。 此属性和值不会显示在逻辑应用的基础定义中，但确定了为选定凭据类型显示的属性。 |
 | **机密** | `secret` | 是，但仅适用于“机密”凭据类型 | <*client-secret*> | 用于请求授权的客户端密码 |
 | **Pfx** | `pfx` | 是，但仅适用于“证书”凭据类型 | <*encoded-pfx-file-content*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
 | **密码** | `password` | 是，但仅适用于“证书”凭据类型 | <*password-for-pfx-file*> | 用于访问 PFX 文件的密码 |
@@ -947,7 +985,7 @@ Authorization: OAuth realm="Photos",
 
 在支持原始身份验证的触发器或操作中指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必选 | Value | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 原始 | 要使用的身份验证类型 |
 | **值** | `value` | 是 | <*authorization-header-value*> | 要用于身份验证的授权标头值 |
@@ -982,7 +1020,7 @@ Authorization: OAuth realm="Photos",
 
 1. 在要使用托管标识的触发器或操作中，指定以下属性值：
 
-   | 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
+   | 属性（设计器） | 属性 (JSON) | 必选 | Value | 说明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **身份验证** | `type` | 是 | **托管标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
    | **托管标识** | `identity` | 是 | * 系统分配的托管标识 <br>或 <br>`SystemAssigned` <p><p>* <user-assigned-identity-name> | 要使用的托管标识 |

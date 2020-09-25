@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0eed3b6d68e8bfe62e9589b2ef4074df92445095
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258773"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>信任关系如何作用于 Azure Active Directory 域服务中的资源林
 
@@ -29,7 +29,7 @@ Net Logon 服务使用经过身份验证的远程过程调用 (RPC) 与受信任
 
 有关信任如何应用于 Azure AD DS 的概述，请参阅[资源林概念和功能][create-forest-trust]。
 
-若要开始在 Azure AD DS 中使用信任，请[创建使用林信任的托管域][tutorial-create-advanced]。
+若要在 Azure AD DS 中开始使用信任，请[创建使用林信任的托管域][tutorial-create-advanced]。
 
 ## <a name="trust-relationship-flows"></a>信任关系流
 
@@ -99,12 +99,12 @@ AD DS 林中的所有域信任都是双向可传递信任。 创建新的子域�
 需要确认你拥有正确的域名系统 (DNS) 基础结构，然后才能创建林信任。 仅当以下 DNS 配置之一可用时，才能创建林信任：
 
 * 有一个根 DNS 服务器是两个林 DNS 命名空间的根 DNS 服务器 - 根区域包含每个 DNS 命名空间的委派，所有 DNS 服务器的根提示都包括根 DNS 服务器。
-* 如果没有共享的根 DNS 服务器，并且每个林 DNS 命名空间的根 DNS 服务器使用 DNS 条件转发器，让每个 DNS 命名空间路由对其他命名空间中名称的查询。
+* 如果没有共享的根 DNS 服务器，并且每个林 DNS 命名空间中的根 DNS 服务器使用 DNS 条件转发器，让每个 DNS 命名空间路由对其他命名空间中名称的查询。
 
     > [!IMPORTANT]
     > Azure AD 域服务资源林必须使用此 DNS 配置。 承载除资源林 DNS 命名空间之外的 DNS 命名空间不是 Azure AD 域服务的功能。 条件转发器是正确的配置。
 
-* 如果没有共享的根 DNS 服务器，并且每个林 DNS 命名空间的根 DNS 服务器使用 DNS 辅助区域，让每个 DNS 命名空间路由对其他命名空间中名称的查询。
+* 如果没有共享根 DNS 服务器，并且每个林 DNS 命名空间中的根 DNS 服务器使用 DNS 辅助区域，则会在每个 DNS 命名空间中配置 DNS 辅助区域以路由其他命名空间中的名称查询。
 
 若要创建林信任，你必须是（林根域中的）“域管理员”组或 Active Directory 中的“企业管理员”组的成员。 为每个信任分配一个密码，这两个林中的管理员都必须知道该密码。 两个林中的“企业管理员”成员可以同时在这两个林中创建信任，在这种情况下，会自动为这两个林生成并写入随机加密的密码。
 
@@ -132,7 +132,7 @@ Kerberos 协议还使用信任，以实现跨领域票证授予服务 (TGS)，�
 
 2. 当前域与信任路径上的下一个域之间是否存在可传递信任关系？
     * 如果是，则向客户端发送对信任路径上的下一个域的引用。
-    * 如果不是，则向客户端发送登录拒绝的消息。
+    * 如果不是，则向客户端发送拒绝登录消息。
 
 ### <a name="ntlm-referral-processing"></a>NTLM 引用处理
 
@@ -156,7 +156,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客�
 
 第一次建立林信任时，每个林都会收集其伙伴林中的所有受信任命名空间，并将信息存储在[受信任的域对象](#trusted-domain-object)中。 受信任的命名空间包括在另一个林中使用的域树名称、用户主体名称 (UPN) 后缀、服务主体名称 (SPN) 后缀和安全 ID (SID) 命名空间。 会将 TDO 对象复制到全局目录。
 
-必须先将资源计算机的服务主体名称 (SPN) 解析为另一个林中的位置，身份验证协议才能遵循林信任路径。 SPN 可以是以下名称之一：
+必须先将资源计算机的服务主体名称 (SPN) 解析为另一个林中的位置，身份验证协议才能遵循林信任路径。 SPN 可以是下列名称之一：
 
 * 主机的 DNS 名称。
 * 域的 DNS 名称。
@@ -168,7 +168,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客�
 
 ![林信任中 Kerberos 过程的示意图](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
-1. *User1*使用*europe.tailspintoys.com*域中的凭据登录到*Workstation1* 。 然后，该用户尝试访问 usa.wingtiptoys.com 林中 FileServer1 上的共享资源。 
+1. User1 使用来自 europe.tailspintoys.com 域的凭据登录到 Workstation1  。 然后，该用户尝试访问 usa.wingtiptoys.com 林中 FileServer1 上的共享资源。 
 
 2. Workstation1 联系其域 ChildDC1 中域控制器上的 Kerberos KDC，并为 FileServer1 SPN 请求服务票证。  
 
@@ -176,7 +176,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客�
 
     然后，全局目录将检查其数据库，查找与其林建立的任何林信任的相关信息。 如果找到，它会将林信任受信任的域对象 (TDO) 中列出的名称后缀与目标 SPN 的后缀进行比较，以查找匹配项。 找到匹配项后，全局目录会反过来向 ChildDC1 提供路由提示。
 
-    路由提示有助于向目标林进行直接身份验证请求。 仅在所有传统身份验证通道（例如本地域控制器和全局编录）无法找到 SPN 时使用提示。
+    路由提示有助于向目标林进行直接身份验证请求。 仅当所有传统身份验证通道（例如本地域控制器和全局目录）都找不到 SPN 时才使用提示。
 
 4. ChildDC1 反过来向 Workstation1 发送对其父域的引用。 
 
@@ -232,7 +232,7 @@ TDO 中包含的信息取决于 TDO 是由域信任还是林信任创建的。
 
 如果使用新密码进行的身份验证由于密码无效而失败，则信任域控制器会尝试使用旧密码进行身份验证。 如果它通过旧密码成功完成身份验证，它将在 15 分钟内继续密码更改过程。
 
-信任密码更新需要在 30 天内复制到信任双方的域控制器。 如果在30天后更改了信任密码，并且域控制器只包含 N-2 个密码，则它无法使用信任端的信任，因而无法在受信任端创建安全通道。
+信任密码更新需要在 30 天内复制到信任双方的域控制器。 如果在 30 天后更改了信任密码，并且域控制器只拥有 N-2 密码，则它不能在信任端使用信任，也不能在受信任端创建安全通道。
 
 ## <a name="network-ports-used-by-trusts"></a>信任使用的网络端口
 
@@ -261,7 +261,7 @@ Net Logon 服务维护从基于 Windows 的计算机到 DC 的安全通道。 �
 
 * 传递验证– Net Logon 处理其他域中用户的凭据。 当信任域需要验证用户的身份时，它会将用户的凭据通过 Net Logon 传递到受信任的域进行验证。
 
-* 特权属性证书（PAC）验证–当使用 Kerberos 协议进行身份验证的服务器需要在服务票证中验证 PAC 时，它会将 PAC 发送到其域控制器，以便进行验证。
+* 特权属性证书 (PAC) 验证–当使用 Kerberos 协议进行身份验证的服务器需要在服务票证中验证 PAC 时，它会将 PAC 发送到其域控制器进行验证。
 
 ### <a name="local-security-authority"></a>本地安全机构
 
@@ -280,7 +280,7 @@ LSA 安全子系统在内核模式和用户模式下提供服务，用于验证�
 
 若要了解有关资源林的详细信息，请参阅[林信任如何在 Azure AD DS 中发挥作用？][concepts-trust]
 
-若要开始使用资源林创建托管域，请参阅[创建和配置 Azure AD DS 托管域][tutorial-create-advanced]。 然后，你可以[创建到本地域的出站林信任][create-forest-trust]。
+若要开始使用资源林创建托管域，请参阅[创建和配置 Azure AD DS 托管域][tutorial-create-advanced]。 随后可以[创建到本地域的出站林信任][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

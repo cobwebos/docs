@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 305a369733ce0435b5f892efd0d447b0940143fc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd5a0e05b303d6fc7a5cfa012f49fab99828e8a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300062"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Brivo Onair 标识连接器
 
@@ -54,7 +54,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
    ![Brivo Onair 标识连接器管理控制台](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2. 单击 **Azure AD** "选项卡。在 " **Azure AD** 详细信息页上，重新输入高级管理员帐户的密码。 单击 " **提交**"。
+2. 单击 **Azure AD** "选项卡。在 " **Azure AD** 详细信息页上，重新输入高级管理员帐户的密码。 单击“提交”。
 
    ![Brivo Onair Identity Connector azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
@@ -100,11 +100,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://scim.brivo.com/ActiveDirectory/v2/` **租户 URL**"。 输入先前在**机密令牌**中检索到的**SCIM Authentication 令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Brivo Onair 标识连接器。 如果连接失败，请确保 Brivo Onair 标识连接器帐户具有管理员权限，然后重试。
 

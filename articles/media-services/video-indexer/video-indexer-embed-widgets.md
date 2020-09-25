@@ -10,13 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/10/2020
 ms.author: juliako
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js
+ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268615"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在应用程序中嵌入视频索引器小组件
 
@@ -34,7 +34,7 @@ ms.locfileid: "89011797"
 |---|---|---|
 |`widgets` | 用逗号分隔的字符串 | 允许您控制要呈现的见解。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` 仅呈现人员和关键字 UI insights。<br/>可用选项：人脉、animatedCharacters、关键字、标签、情绪、情感、主题、关键帧、脚本、ocr、发言人、场景和 namedEntities。|
 |`controls`|用逗号分隔的字符串|允许您控制要呈现的控件。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` 仅呈现搜索选项和 "下载" 按钮。<br/>可用选项： "搜索"、"下载"、"预设" 和 "语言"。|
-|`language`| (语言名称的短语言代码) |控制见解语言。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`| (语言名称的短语言代码) |控制见解语言。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 短语言代码 | 控制 UI 的语言。 默认值为 `en`。 <br/>示例：`locale=de`。|
 |`tab` | 默认选定的选项卡 | 控制默认呈现的 " **见解** " 选项卡。 <br/>示例： `tab=timeline` 在选择 " **时间线** " 选项卡的情况上呈现见解。|
 |`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则 `trial` 应将其用于位置值。 `trial` 参数的默认值 `location` 。| 

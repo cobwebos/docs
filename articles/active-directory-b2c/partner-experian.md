@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259367"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>有关配置 Experian 与 Azure Active Directory B2C 的教程
 
@@ -77,7 +77,7 @@ Experian 集成包括以下组件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-将提供的 API 代码部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) 部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
@@ -117,7 +117,7 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 ### <a name="part-5---replace-the-configuration-values"></a>第5部分-替换配置值
 
-在提供的自定义策略中，查找以下占位符，并将替换为实例中的相应值
+在提供的 [自定义策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)中，查找以下占位符，并将替换为实例中的相应值
 
 |                      占位符                       |                                   替换为值                                 |                   示例                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |

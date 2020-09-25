@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302088"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
-默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
+默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
 
 下面的代码获取 `titanic_ds` 数据集的版本 1。
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 对于每个机器学习试验，可以通过试验 `Run` 对象轻松跟踪用作输入的数据集。
 
-下面的代码使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--) 方法跟踪试验运行时使用哪些输入数据集：
+下面的代码使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) 方法跟踪试验运行时使用哪些输入数据集：
 
 ```Python
 # get input datasets

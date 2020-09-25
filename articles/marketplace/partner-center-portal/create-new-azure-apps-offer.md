@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 512f901c33ebce4fef06629fe78976a071820c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251416"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -197,7 +197,7 @@ ms.locfileid: "89646938"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
+1. 标题
 2. 说明
 3. 有用的链接
 4. 屏幕截图
@@ -559,7 +559,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 * **Azure AD 租户 ID** (必需) –输入 AZURE ACTIVE DIRECTORY (AD) [租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择“属性”，然后查找列出的“目录 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 你还可以在以下位置使用域名 URL 查找组织的租户 ID：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 * Azure AD 租户名称（Dynamic 365 需要）– 输入 Azure Active Directory (AD) 名称。 若要找到此名称，请登录 [Azure 门户](https://portal.azure.com/)，租户名称将在右上角的帐户名称下列出。
 * **Azure AD 应用 ID** (必需) –输入 Azure Active Directory () AD) [应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧导航菜单中选择“Active Directory”选项卡，选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
-* **Azure Active Directory 应用程序客户端机密** (必需) –输入 Azure AD 应用程序 [客户端密钥](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)) 。 若要找到此值，请登录 [Azure 门户](https://portal.azure.com/)。 在左侧导航菜单中选择“Azure Active Directory”选项卡，选择“应用注册”，然后选择体验版应用。 接下来，选择“证书和密码”，选择“新建客户端密码”，输入说明，在“过期”下选择“从不”，然后选择“添加”。 请确保在离开此页之前复制值。）
+* **Azure Active Directory 应用程序客户端机密** (必需) –输入 Azure AD 应用程序 [客户端密钥](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) 。 若要找到此值，请登录 [Azure 门户](https://portal.azure.com/)。 在左侧导航菜单中选择“Azure Active Directory”选项卡，选择“应用注册”，然后选择体验版应用。 接下来，选择“证书和密码”，选择“新建客户端密码”，输入说明，在“过期”下选择“从不”，然后选择“添加”。 请确保在离开此页之前复制值。）
 
 选择“保存草稿”，然后继续。
 

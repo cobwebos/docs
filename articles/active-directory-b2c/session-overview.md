@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C 中的 SSO 会话 | Microsoft Docs
-description: 在 Azure Active Directory B2C 中配置会话行为。
+description: 在 Azure Active Directory B2C 中配置会话行为的概述。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258959"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C 会话
 
@@ -30,7 +30,7 @@ ms.locfileid: "82927031"
 与 Azure AD B2C 的集成涉及到三种类型的 SSO 会话：
 
 - **Azure AD B2C** - 由 Azure AD B2C 管理的会话
-- **联合标识提供程序**-由标识提供程序管理的会话，例如 Facebook、Salesforce 或 Microsoft 帐户
+- **联合标识提供程序** -由标识提供程序管理的会话，例如 Facebook、Salesforce 或 Microsoft 帐户
 - **应用程序** - 由 Web、移动或单页应用程序管理的会话
 
 ![SSO 会话](media/session-overview/sso-session-types.png)
@@ -76,7 +76,7 @@ ms.locfileid: "82927031"
 
 ### <a name="keep-me-signed-in"></a>使我保持登录状态
 
-"[使我保持登录](custom-policy-keep-me-signed-in.md)" 功能通过使用永久性 cookie 延长会话生存期。 在用户关闭并重新打开浏览器后，会话将保持活动状态。 仅当用户注销时，才会撤销会话。“使我保持登录状态”功能仅适用于使用本地帐户进行的登录。
+" [使我保持登录](custom-policy-keep-me-signed-in.md) " 功能通过使用永久性 cookie 延长会话生存期。 在用户关闭并重新打开浏览器后，会话将保持活动状态。 仅当用户注销时，才会撤销会话。“使我保持登录状态”功能仅适用于使用本地帐户进行的登录。
 
 “使我保持登录状态”功能优先于会话生存时间的设置。 如果启用了“使我保持登录状态”功能，并且用户选择了此功能，则此功能将决定会话何时会过期。 
 

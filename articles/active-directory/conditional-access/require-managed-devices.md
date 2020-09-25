@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c9cdf01c9dac3c37b3af7b07adb8d202761e7640
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258636"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：要求托管设备使用条件访问访问 cloud app
 
@@ -109,7 +109,7 @@ ms.locfileid: "90601514"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择要将此策略应用到的“所有用户”或特定“用户和组”  。 
    1. 选择“完成”。
-1. 在“云应用或操作” > “包括”下，选择“Office 365 (预览版)”。
+1. 在 "**云应用或操作**  >  **包括**" 下，选择 " **Office 365**"。
 1. 在“条件”下，选择“设备平台”。
    1. 将“配置”设置为“是” 。
    1. 包括“Android”和“iOS”。 

@@ -3,16 +3,16 @@ title: 如何对容器注册表使用 Azure Defender
 description: 了解如何使用 Azure Defender 容器注册表来扫描注册表中的映像
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 18fa1b14bb20bbb2805eee2ec663d1316f787950
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04a7b7f40e1591a919668e940a883dde9a6f4689
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302003"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用 Azure Defender 容器注册表来扫描映像是否存在漏洞
 
@@ -27,10 +27,10 @@ ms.locfileid: "90934747"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|**容器注册表的 Azure Defender**按[定价页](security-center-pricing.md)中所示的方式计费|
+|定价：|**容器注册表的 Azure Defender**按[定价页](security-center-pricing.md)中所示的方式计费|
 |支持的注册表和映像：|![是 ](./media/icons/yes-icon.png) 可以从公共 internet 访问并提供外壳访问的 Linux 托管 ACR 注册表。<br>![无 ](./media/icons/no-icon.png) Windows 承载的 ACR 注册表。<br>![无 ](./media/icons/no-icon.png) "专用" 注册表项-安全中心要求可以从公共 internet 访问注册表。 安全中心当前无法使用防火墙、服务终结点或专用终结点（如 Azure Private Link）连接或扫描访问权限。<br>![没有任何 ](./media/icons/no-icon.png) 超级最简单映像（例如 [Docker 暂存](https://hub.docker.com/_/scratch/) 映像）或仅包含应用程序和其运行时依赖项的 "Distroless" 映像，无需包管理器、shell 或 OS。|
-|必需的角色和权限：|**安全读取器** 和 [Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|所需角色和权限：|**安全读取器** 和 [Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 

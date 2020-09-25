@@ -11,31 +11,31 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170048"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259062"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>将 Twilio 验证应用与 Azure Active Directory B2C 集成
 
 在本演练中，了解如何使用 Twilio Verify API 将 Azure Active Directory B2C (Azure AD B2C) 中的联机支付应用集成。 通过使用 Twilio 验证应用，Azure AD B2C 客户可以通过动态链接和强大的客户身份验证满足 PSD2 (付款服务指令 2) 事务要求。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 链接到 Azure 订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)。
-* Twilio 上的[试用帐户](https://www.twilio.com/try-twilio)。
+* Twilio 上的 [试用帐户](https://www.twilio.com/try-twilio) 。
 
 ## <a name="scenario-description"></a>方案描述
 
 以下组件组成了 Twilio 解决方案：
 
-- .NET PSD2 演示 web 应用程序，它提供登录或注册的功能，并执行一个虚拟的高风险事务。
-- Azure AD B2C 组合登录和注册策略。
+- .NET [PSD2 演示 web 应用程序](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)，它提供登录或注册的功能，并执行一个虚拟的高风险事务。
+- Azure AD B2C 组合 [登录和注册策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy)。
 - 与 Twilio 集成的 Azure AD B2C 策略使用验证 API `id_token_hint` 。
 - .NET Web 应用，该应用程序承载 `.well-known` OpenIdConnect 终结点以允许验证 `id_token_hint` 。
 
@@ -54,11 +54,11 @@ ms.locfileid: "86170048"
 
 ## <a name="onboard-with-twilio"></a>内置 Twilio
 
-1. 在 Twilio 获取[试用帐户](https://www.twilio.com/try-twilio)。
+1. 在 Twilio 获取 [试用帐户](https://www.twilio.com/try-twilio) 。
 
 2. 按照[此文](https://support.twilio.com/hc/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console)中所述，在 Twilio 购买电话号码
 
-3. 在 Twilio 控制台导航到 "[验证 API](https://www.twilio.com/console/verify/services) "，并按照[说明](https://www.twilio.com/docs/verify/verifying-transactions-psd2)创建服务并启用 PSD2 选项。  
+3. 在 Twilio 控制台导航到 " [验证 API](https://www.twilio.com/console/verify/services) "，并按照 [说明](https://www.twilio.com/docs/verify/verifying-transactions-psd2) 创建服务并启用 PSD2 选项。  
 
 ## <a name="configure-the-psd2-demo-app"></a>配置 PSD2 演示应用
 
@@ -73,8 +73,8 @@ ms.locfileid: "86170048"
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. Web 应用还承载 ID 令牌提示生成器和元数据终结点。
-   - 按照此[示例说明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate)中所述创建签名证书。
+2. [Web 应用](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)还承载 ID 令牌提示生成器和元数据终结点。
+   - 按照此 [示例说明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate)中所述创建签名证书。
    - 根据 web.config 中的证书更新以下行：
    
    ```xml
@@ -86,7 +86,7 @@ ms.locfileid: "86170048"
 
 4. 通过添加与托管应用程序的 URL 等效的回复 URL 来更新 Azure AD B2C 应用程序注册。
 
-5. 打开策略文件，将的所有实例替换  `contoso` 为你的租户名称。
+5. 打开 [策略文件](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy) ，将的所有实例替换  `contoso` 为你的租户名称。
 
 6. 查找 Twilio REST API 技术配置文件的 **自定义-SMS-注册**。 将  `ServiceURL`   替换为你的 Twilio AccountSID，并将 "从" 数字更新为你购买的电话号码。
 
@@ -104,9 +104,9 @@ ms.locfileid: "86170048"
 
 4. 导航到 " **Azure AD B2C**  >  **标识体验框架**" "  >  **策略密钥**"。
 
-5. 添加名为**B2cRestTwilioClientId**的新项。 选择 " **手动**"，并提供 Twilio AccountSID 的值。
+5. 添加名为 **B2cRestTwilioClientId**的新项。 选择 " **手动**"，并提供 Twilio AccountSID 的值。
 
-6. 添加名为**B2cRestTwilioClientSecret**的新项。 选择 " **手动**"，并提供 TWILIO 身份验证令牌的值。
+6. 添加名为 **B2cRestTwilioClientSecret**的新项。 选择 " **手动**"，并提供 TWILIO 身份验证令牌的值。
 
 7. 将所有策略文件上传到租户。
 

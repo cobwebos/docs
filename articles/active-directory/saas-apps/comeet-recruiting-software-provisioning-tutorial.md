@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5165c3f03d51403a978ad3574306bc27d931e1d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 37a446d721b7353c647d7d7e26de79e7038d1a3f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299896"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Comeet 招聘软件
 
@@ -90,11 +90,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分下，输入 Comeet 招聘软件帐户的 **租户 URL** 和 **机密令牌** ，如步骤6中所述。
 
@@ -104,13 +104,13 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 7. 填充步骤5中所示的字段后，请单击 " **测试连接** " 以确保 Azure AD 可以连接到 Comeet 招聘软件。 如果连接失败，请确保 Comeet 招聘软件帐户具有管理员权限，然后重试。
 
-    ![标记](common/provisioning-testconnection-token.png)
+    ![令牌](common/provisioning-testconnection-token.png)
 
 8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“保存” 。
+9. 单击“ **保存**”。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Comeet**"。
 

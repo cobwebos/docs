@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 82462af3f1fc939cb30730360f75303cb1be9432
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cf90065ad40ca46068700473ad71b598619764ec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901178"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301459"
 ---
 # <a name="billing-questions"></a>计费问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "90901178"
 
 - 如果**没有 Azure Defender**，安全中心可以查看 Azure 资源的安全状态、基本安全策略、安全建议，以及与合作伙伴提供的安全产品和服务的集成。
 
-- **Azure Defender** 添加了威胁防护功能，其中包括安全警报、威胁情报、行为分析、异常检测和威胁归属报告。 你可以开始使用 Azure Defender 的30天免费试用版。 若要升级，请选择安全策略中的[定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+- **Azure Defender** 添加了威胁防护功能，其中包括安全警报、威胁情报、行为分析、异常检测和威胁归属报告。 你可以开始使用 Azure Defender 的30天免费试用版。 [了解有关升级的详细信息](security-center-pricing.md)。
 
 ## <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>如何在 Azure 安全中心中跟踪组织中启用了 Azure Defender 更改的人员
 Azure 订阅可能有多个管理员，具有更改定价设置的权限。 若要找出执行更改的用户，请使用 Azure 活动日志。 

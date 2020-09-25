@@ -8,18 +8,18 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302037"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>利用资产清单和管理工具浏览和管理资源
 
 Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。 
 
-安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。
 
 当任何资源具有未完成的建议时，它们将显示在清单中。
 
@@ -41,9 +41,9 @@ Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已�
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|免费|
-|必需的角色和权限：|所有用户|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|定价：|免费|
+|所需角色和权限：|所有用户|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 
@@ -54,7 +54,7 @@ Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已�
 - **摘要** -在定义任何筛选器之前，清单视图顶部的一个突出显示的值块显示：
 
     - **资源总数**：连接到安全中心的资源总数。
-    - 不**正常资源**：具有有效安全建议的资源。 [详细了解安全建议](https://docs.microsoft.com/azure/security-center/security-center-recommendations)。
+    - 不**正常资源**：具有有效安全建议的资源。 [详细了解安全建议](security-center-recommendations.md)。
     - 未**监视的资源**：具有代理监视问题的资源-已部署 Log Analytics 代理，但代理未发送数据或存在其他运行状况问题。
 
 - **筛选器** -页面顶部的多个筛选器提供了一种方法，可根据要尝试回答的问题快速优化资源列表。 例如，如果你想要回答*标记为 "生产" 的计算机中缺少 Log Analytics 代理*的问题，则**可以将****代理监视**筛选器与 tag 筛选器组合起来，如下面的代码片段所示：

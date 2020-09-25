@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 997a6941e2ccc26dabe1a593fe938094099bc98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259588"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略
 
@@ -41,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) 可让标识开发人员在用户旅�
 ```json
 {
     "objectId": "User objectId",
-    "language": "Current UI language"
+    "lang": "Current UI language"
 }
 ```
 

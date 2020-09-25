@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486711"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259537"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -34,13 +34,13 @@ ms.locfileid: "87486711"
 使用 [Azure 门户](tutorial-customize-ui.md)配置用户流的 UI 自定义。
 
 > [!TIP]
-> 如果只想修改用户流页的横幅徽标、背景图像和背景色，可以试用本文稍后介绍的[公司品牌(预览)](#company-branding-preview) 功能。
+> 如果只希望修改用户流页面的标题徽标、背景图像和背景色，则可以尝试本文后面所述的 [公司品牌](#company-branding) 功能。
 
 ### <a name="custom-policies"></a>自定义策略
 
-如果要使用[自定义策略](custom-policy-overview.md)在应用程序中提供注册或登录、密码重置或配置文件编辑，请使用[策略文件来自定义 UI](custom-policy-ui-customization.md)。
+如果要使用 [自定义策略](custom-policy-overview.md) 在应用程序中提供注册或登录、密码重置或配置文件编辑，请使用 [策略文件来自定义 UI](custom-policy-ui-customization.md)。
 
-如果需要根据客户的决定提供动态内容，请使用可以根据在查询字符串中发送的参数[动态更改页面内容](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)的自定义策略。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
+如果需要根据客户的决定提供动态内容，请使用可以根据在查询字符串中发送的参数 [动态更改页面内容](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) 的自定义策略。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
 ### <a name="javascript"></a>Javascript
 
@@ -48,7 +48,7 @@ ms.locfileid: "87486711"
 
 ### <a name="sign-in-only-ui-customization"></a>仅登录 UI 自定义
 
-如果你仅提供登录，同时提供其随附的密码重置页面和验证电子邮件，请使用用于[Azure AD 登录页](../active-directory/fundamentals/customize-branding.md)的相同自定义步骤。
+如果你仅提供登录，同时提供其随附的密码重置页面和验证电子邮件，请使用用于 [Azure AD 登录页](../active-directory/fundamentals/customize-branding.md)的相同自定义步骤。
 
 如果客户尝试在登录之前编辑其配置文件，则会将其重定向到你使用用于自定义 Azure AD 登录页的相同步骤自定义的页面。
 
@@ -95,7 +95,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 重要的一点是，你将内容托管在一个[启用了 CORS](https://enable-cors.org/server.html) 且公开可用的 HTTPS 终结点上。 在内容中指定绝对 URL 时，必须使用绝对 URL。
 
 > [!NOTE]
-> 有关创建 HTML 内容、将内容上载到 Azure Blob 存储和配置 CORS 的详细信息，请参阅 UI 自定义文章中的[自定义页面内容演练](custom-policy-ui-customization.md#custom-page-content-walkthrough)部分。
+> 有关创建 HTML 内容、将内容上载到 Azure Blob 存储和配置 CORS 的详细信息，请参阅 UI 自定义文章中的 [自定义页面内容演练](custom-policy-ui-customization.md#custom-page-content-walkthrough) 部分。
 
 ## <a name="get-started-with-custom-html-and-css"></a>自定义 HTML 和 CSS 入门
 
@@ -158,27 +158,25 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 | 多重身份验证 | 用户可以在注册或登录期间（使用文字或语音）验证其电话号码。 |
 | 错误 | 向客户提供错误信息。 |
 
-## <a name="company-branding-preview"></a>公司品牌（预览版）
+## <a name="company-branding"></a>公司品牌
 
-您可以使用横幅徽标、背景图像和背景色自定义用户流页面，方法是使用 Azure Active Directory[公司品牌](../active-directory/fundamentals/customize-branding.md)。
+您可以使用横幅徽标、背景图像和背景色自定义用户流页面，方法是使用 Azure Active Directory [公司品牌](../active-directory/fundamentals/customize-branding.md)。
 
 若要自定义用户流页面，请先在 Azure Active Directory 中配置公司品牌，然后在 Azure AD B2C 中用户流的页面布局中启用它。
 
-[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
-
 ### <a name="configure-company-branding"></a>配置公司品牌
 
-首先在**公司品牌**内设置横幅徽标、背景图像和背景色。
+首先在 **公司品牌**内设置横幅徽标、背景图像和背景色。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
-1. 在 "**管理**" 下，选择 "**公司品牌**"。
-1. 按照[将品牌添加到组织的 Azure Active Directory 登录页](../active-directory/fundamentals/customize-branding.md)中的步骤进行操作。
+1. 在 " **管理**" 下，选择 " **公司品牌**"。
+1. 按照 [将品牌添加到组织的 Azure Active Directory 登录页](../active-directory/fundamentals/customize-branding.md)中的步骤进行操作。
 
 在 Azure AD B2C 中配置公司品牌时，请牢记以下事项：
 
-* Azure AD B2C 中的公司品牌目前仅限于**背景图像**、**横幅徽标**和**背景色**自定义。 *不支持*"公司品牌" 窗格中的其他属性，例如 "**高级设置**" 中的属性。
+* Azure AD B2C 中的公司品牌目前仅限于 **背景图像**、 **横幅徽标**和 **背景色** 自定义。 *不支持*"公司品牌" 窗格中的其他属性，例如 "**高级设置**" 中的属性。
 * 在用户流页面中，在加载背景图像之前显示背景色。 建议选择与背景图像中的颜色最接近的背景色，以获得更流畅的加载体验。
 * 当用户启动注册用户流时，会向用户发送的验证电子邮件中显示横幅徽标。
 
@@ -189,15 +187,15 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 1. 在 Azure 门户的左侧菜单中，选择 " **Azure AD B2C**"。
 1. 在“策略”下，选择“用户流(策略)”。 
 1. 选择要为其启用公司品牌的用户流。 标准*登录*和标准*配置文件编辑*用户流类型**不支持**公司品牌。
-1. 在 "**自定义**" 下，选择 "**页面布局**"，然后选择想要品牌的布局。 例如，选择 "**统一注册" 或 "登录" 页**。
-1. 对于 "**页面布局版本（预览）**"，选择 "版本**1.2.0** " 或更高版本。
+1. 在 " **自定义**" 下，选择 " **页面布局**"，然后选择想要品牌的布局。 例如，选择 " **统一注册" 或 "登录" 页**。
+1. 对于 " **页面布局版本 (预览") **，选择 "版本 **1.2.0** " 或更高版本。
 1. 选择“保存”。
 
 如果要在用户流中标记所有页面，请在用户流中为每个页面布局设置页面布局版本。
 
 ![页面布局选择 Azure AD B2C 的 Azure 门户](media/customize-ui-overview/portal-02-page-layout-select.png)
 
-此带批注的示例显示了使用海洋蓝模板的*注册和登录*用户流页上的自定义横幅徽标和背景图像：
+此带批注的示例显示了使用海洋蓝模板的 *注册和登录* 用户流页上的自定义横幅徽标和背景图像：
 
 ![Azure AD B2C 提供的品牌注册/登录页面](media/customize-ui-overview/template-ocean-blue-branded.png)
 
@@ -210,7 +208,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 <img data-tenant-branding-logo="true" alt="Company Logo" />
 ```
 
-图像源被替换为背景图像和横幅徽标的图像源。 如[自定义 HTML 和 CSS 入门](#get-started-with-custom-html-and-css)部分中所述，在页面上使用 CSS 类来对资产进行样式和定位。
+图像源被替换为背景图像和横幅徽标的图像源。 如 [自定义 HTML 和 CSS 入门](#get-started-with-custom-html-and-css) 部分中所述，在页面上使用 CSS 类来对资产进行样式和定位。
 
 ## <a name="localize-content"></a>本地化内容
 
@@ -241,6 +239,6 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 - 如果使用**用户流**，可以根据教程开始自定义 UI：
 
     [在 Azure Active Directory B2C 中自定义应用程序的用户界面](tutorial-customize-ui.md)。
-- 如果使用的是**自定义策略**，则可以使用以下文章开始自定义 UI：
+- 如果使用的是 **自定义策略**，则可以使用以下文章开始自定义 UI：
 
     [使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面](custom-policy-ui-customization.md)。

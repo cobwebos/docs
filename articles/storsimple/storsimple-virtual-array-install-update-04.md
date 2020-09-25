@@ -1,6 +1,6 @@
 ---
 title: 在 StorSimple Virtual Array 上安装更新 | Microsoft 文档
-description: 介绍如何使用 StorSimple Virtual Array Web UI，通过 Azure 门户和修补程序方法应用更新
+description: 介绍如何使用 StorSimple Virtual Array web UI，使用 Azure 门户和修复方法来应用更新0.4。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: f68abf6315c1ca344f90dec55bf8cdc813e58823
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 529b93e7754df7aa0a981f4389108b8f53b4be2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300558"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 0.4
 
@@ -58,9 +58,9 @@ ms.locfileid: "85513696"
    
     ![搜索目录](./media/storsimple-virtual-array-install-update-04/download1.png)
 
-4. 单击“添加” 。 该更新随即添加到购物篮中。
+4. 单击“添加”。 该更新随即添加到购物篮中。
 
-5. 单击 "**查看购物篮**"。
+5. 单击 " **查看购物篮**"。
 
 6. 单击“下载”。 指定或**浏览**到下载项要保存到的本地位置。 更新随即会下载到指定的位置，放置在与更新名称相同的子文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
 

@@ -3,28 +3,30 @@ title: Azure Kubernetes 服务 (AKS) 中的群集配置
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置群集
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255292"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
 在创建 AKS 群集的过程中，你可能需要自定义群集配置来满足你的需求。 本文介绍了几个用于自定义 AKS 群集的选项。
 
-## <a name="os-configuration-preview"></a>OS 配置（预览版）
+## <a name="os-configuration"></a>操作系统配置
 
-AKS 现在支持 Ubuntu 18.04 作为预览版中的节点操作系统 (OS)。 在预览版期间，Ubuntu 16.04 和 Ubuntu 18.04 都可用。
+AKS 现在支持 Ubuntu 18.04 作为节点操作系统 (操作系统) 在 kubernetes 版本高于1.18.8 中的群集。 对于小于 1.18. x 的版本，AKS Ubuntu 16.04 仍是默认的基本映像。 从 kubernetes v 1.18. x 开始，默认基是 AKS Ubuntu 18.04。
 
 > [!IMPORTANT]
-> 在 Kubernetes v 1.18 或更高版本上创建的节点池是所需的 `AKS Ubuntu 18.04` 节点映像。 在支持的 Kubernetes 版本上，节点池小于1.18 的接收 `AKS Ubuntu 16.04` 节点映像，但在将 `AKS Ubuntu 18.04` 节点池 Kubernetes 版本更新为 v 1.18 或更高版本后，将更新为。
+> 在 Kubernetes v 1.18 或更高版本上创建的节点池 `AKS Ubuntu 18.04` 。 在支持的 Kubernetes 版本上，节点池小于1.18 的接收 `AKS Ubuntu 16.04` 节点映像，但在将 `AKS Ubuntu 18.04` 节点池 Kubernetes 版本更新为 v 1.18 或更高版本后，将更新为。
 > 
 > 强烈建议在1.18 或更高版本上使用群集之前，在 AKS Ubuntu 18.04 节点池上测试工作负荷。 了解如何 [测试 Ubuntu 18.04 节点池](#use-aks-ubuntu-1804-existing-clusters-preview)。
+
+以下部分将介绍在尚未使用 kubernetes 版本 1.18. x 或更高版本的群集上使用和测试 AKS Ubuntu 18.04 的情况，或在此功能正式发布之前，通过使用 OS 配置预览进行创建。
 
 必须已安装以下资源：
 
@@ -44,13 +46,13 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令来检查注册状态：
+状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令来检查注册状态：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令来检查注册状态：
+状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令来检查注册状态：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Azure 支持 [第2代 (Gen2) 虚拟机 (vm) ](../virtual-machines/windows/genera
 第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。
 只有特定的 Sku 和大小支持 Gen2 Vm。 查看 [受支持的大小列表](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)，查看你的 SKU 是否支持或需要 Gen2。
 
-此外，并非所有 VM 映像都支持 Gen2，在 AKS Gen2 Vm 上，将使用新的 [AKS Ubuntu 18.04 映像](#os-configuration-preview)。 此映像支持所有 Gen2 Sku 和大小。
+此外，并非所有 VM 映像都支持 Gen2，在 AKS Gen2 Vm 上，将使用新的 [AKS Ubuntu 18.04 映像](#os-configuration)。 此映像支持所有 Gen2 Sku 和大小。
 
 若要在预览期间使用 Gen2 Vm，你将需要：
 - `aks-preview`CLI 扩展已安装。
@@ -191,13 +193,13 @@ Azure 支持 [第2代 (Gen2) 虚拟机 (vm) ](../virtual-machines/windows/genera
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令来检查注册状态：
+状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令来检查注册状态：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令来检查注册状态：
+状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令来检查注册状态：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+临时操作系统至少需要0.4.63 版本的 aks CLI 扩展。
 
 若要安装 aks CLI 扩展，请使用以下 Azure CLI 命令：
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>在新群集上使用临时 OS (预览) 
 
-将群集配置为在创建群集时使用临时 OS 磁盘。 使用 " `--aks-custom-headers` 标志" 将 "暂时操作系统" 设置为新群集的 os 磁盘类型。
+将群集配置为在创建群集时使用临时 OS 磁盘。 使用 " `--node-osdisk-type` 标志" 将 "暂时操作系统" 设置为新群集的 os 磁盘类型。
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-如果要使用网络连接的 OS 磁盘创建常规群集，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。 还可以选择添加更多的临时 OS 节点池，如下所示。
+如果要使用网络连接的 OS 磁盘创建常规群集，可以通过省略自定义标记或指定来创建常规群集 `--node-osdisk-type` `--node-osdisk-type=Managed` 。 还可以选择添加更多的临时 OS 节点池，如下所示。
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>在现有群集上使用暂时 OS (预览) 
-配置一个新的节点池以使用临时 OS 磁盘。 使用 `--aks-custom-headers` 标志设置作为该节点池的 os 磁盘类型。
+配置一个新的节点池以使用临时 OS 磁盘。 使用 `--node-osdisk-type` 标志设置作为该节点池的 os 磁盘类型。
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > 通过暂时操作系统，可将 VM 和实例映像部署到 VM 缓存大小。 在 AKS 情况下，默认节点 OS 磁盘配置使用100GiB，这意味着需要的 VM 大小的缓存大于 100 GiB。 默认 Standard_DS2_v2 的缓存大小为 86 GiB，这不太大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 还可以通过使用降低 OS 磁盘的默认大小 `--node-osdisk-size` 。 AKS 图像的最小大小为30GiB。 
 
-如果要创建包含网络附加 OS 磁盘的节点池，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。
+如果要创建包含网络附加 OS 磁盘的节点池，可以通过省略自定义标记来执行此操作 `--node-osdisk-type` 。
 
 ## <a name="custom-resource-group-name"></a>自定义资源组名称
 

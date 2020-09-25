@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure AD 注册设备？
-description: 了解设备标识管理如何帮助你管理正在访问环境中的资源的设备。
+description: 了解 Azure AD 注册的设备如何向用户提供对自带设备 (BYOD) 或移动设备方案的支持。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256432"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 注册设备
 
-Azure AD 注册设备的目标是向用户提供对自带设备（BYOD）或移动设备方案的支持。 在这些情况下，用户可以使用个人设备访问组织的 Azure Active Directory 控制资源。
+Azure AD 注册设备的目标是向用户提供对自带设备的支持 (BYOD) 或移动设备方案。 在这些情况下，用户可以使用个人设备访问组织的 Azure Active Directory 控制资源。
 
-| 已注册 Azure AD | 描述 |
+| 已注册 Azure AD | 说明 |
 | --- | --- |
 | **定义** | 已注册到 Azure AD，无需组织帐户即可登录到设备 |
 | **主要受众** | 适用于具有以下条件的所有用户： |
@@ -30,7 +30,7 @@ Azure AD 注册设备的目标是向用户提供对自带设备（BYOD）或移�
 |   | 移动设备 |
 | **设备所有权** | 用户或组织 |
 | **操作系统** | Windows 10、iOS、Android 和 MacOS |
-| **预配** | Windows 10 –设置 |
+| **Provisioning** | Windows 10 –设置 |
 |   | iOS/Android –公司门户或 Microsoft Authenticator 应用 |
 |   | MacOS –公司门户 |
 | **设备登录选项** | 最终用户本地凭据 |
@@ -49,7 +49,7 @@ Azure AD 注册设备的目标是向用户提供对自带设备（BYOD）或移�
 
 Azure AD 注册的设备使用本地帐户（例如 Windows 10 设备上的 Microsoft 帐户）登录，但另外还附加了 Azure AD 帐户来访问组织资源。 可根据 Azure AD 帐户和设备标识所应用的条件访问策略，进一步限制对组织中的资源的访问。
 
-管理员可以使用 Microsoft Intune 等移动设备管理（MDM）工具来保护这些 Azure AD 注册的设备，并进一步控制这些设备。 MDM 提供一种方式来强制实施组织必需的配置，例如需要对存储进行加密、密码复杂性和安全软件更新。 
+管理员可以使用移动设备管理来保护这些 Azure AD 注册的设备，并 (MDM) 工具，如 Microsoft Intune。 MDM 提供一种方式来强制实施组织必需的配置，例如需要对存储进行加密、密码复杂性和安全软件更新。 
 
 首次访问工作应用程序或手动使用 Windows 10 设置菜单时，可以完成 Azure AD 注册。 
 

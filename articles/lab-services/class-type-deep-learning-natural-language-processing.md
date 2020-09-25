@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 实验室服务设置专注于深度学习的实验室 | Microsoft Docs
-description: 了解如何设置一个实验室来讲解 Linux 上的 shell 脚本编写。
+description: 了解如何使用 Azure 实验室服务在自然语言处理 (NLP) 中设置以深度学习为中心的实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c5ac93109d24c0d5936c8f271276c02e4e6f6c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01199e76b7b9cb1a6360b5aba010d0cfd8936c23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251450"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>使用 Azure 实验室服务设置专注于自然语言处理中的深度学习的实验室
 本文介绍如何使用 Azure 实验室服务来设置一个专注于自然语言处理 (NLP) 中的深度学习的实验室。 自然语言处理 (NLP) 是某种形式的人工智能 (AI)，可在计算机中实现翻译、语音识别和其他语言理解功能。  
@@ -28,7 +28,7 @@ ms.locfileid: "85443938"
 
 | 实验室设置 | 值/说明 | 
 | ------------ | ------------------ |
-| 虚拟机 (VM) 大小 | **小型 GPU （计算）**。 此大小最适用于计算密集型和网络密集型应用程序（如人工智能和深度学习）。 |
+| 虚拟机 (VM) 大小 | **小型 GPU (计算) **。 此大小最适用于计算密集型和网络密集型应用程序（如人工智能和深度学习）。 |
 | VM 映像 | [用于 Linux (Ubuntu)的 Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 此映像提供机器学习和数据科学深度学习框架和工具。 若要查看此映像上安装的工具的完整列表，请参阅以下文章：[DSVM 中包含哪些组件？](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)。 |
 | 启用远程桌面连接 | <p>数据科学映像已配置为使用 X2Go，使教师和学生能够使用 GUI 远程桌面进行连接。  X2Go 不要求启用“启用远程桌面连接”设置。  仅当你要改用 RDP 时，才需要启用此设置。
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259214"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>有关配置 Onfido 与 Azure Active Directory B2C 的教程
 
@@ -94,7 +94,7 @@ Onfido 集成包括以下组件：
 
 1. [在存储帐户中设置 blob 存储容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 
-2. 将 ui 文件从 UI 文件夹存储到 blob 容器。
+2. 将 ui 文件从 [ui 文件夹](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) 存储到 blob 容器。
 
 3. 按照以下说明允许 CORS 对所创建存储容器的访问权限：
 
@@ -124,7 +124,7 @@ Onfido 集成包括以下组件：
 
 #### <a name="replace-the-configuration-values"></a>替换配置值
 
-在提供的自定义策略中，查找以下占位符，并将替换为您的实例中的相应值。
+在提供的 [自定义策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)中，查找以下占位符，并将替换为您的实例中的相应值。
 
 | 占位符 | 替换为值 | 示例  |
 |:---------------|:----------------|:-------------------|

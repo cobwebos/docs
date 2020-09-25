@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172081"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269754"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>阻止 Azure 逻辑应用中的连接器创建的连接
 
@@ -21,7 +21,7 @@ ms.locfileid: "87172081"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果没有订阅，请在开始之前 [创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/) 。
 
 * 要阻止的连接器的引用 ID。 有关详细信息，请参阅[查找连接器引用 ID](#connector-reference-ID)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "87172081"
 
 1. 在“策略定义”下，根据该示例下所述的属性，提供策略定义的信息：
 
-   ![策略定义属性](./media/block-connections-connectors/policy-definition-create-connections-1.png)
+   ![显示 "策略定义" 属性的屏幕截图。](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
    | 属性 | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
@@ -155,7 +155,7 @@ ms.locfileid: "87172081"
    | `mode` | `All` | 一个模式，用于确定策略所评估的资源类型。 <p><p>此方案将 `mode` 设置为 `All`，这会将策略应用于 Azure 资源组、订阅和所有资源类型。 <p><p>有关详细信息，请参阅[策略定义结构 - 模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 一个条件，用于确定何时强制实施策略规则 <p><p>在这种情况下，`{condition-to-evaluate}` 确定 `Microsoft.Web/connections/api.id` 中的 `api.id` 值是否与指定了通配符 (*) 值的 `*managedApis/{connector-name}` 匹配。 <p><p>有关详细信息，请参阅[策略定义结构 - 策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `field` | `Microsoft.Web/connections/api.id` | 要与条件进行比较的 `field` 值 <p><p>在这种情况下，`field` 使用[别名](../governance/policy/concepts/definition-structure.md#aliases) `Microsoft.Web/connections/api.id` 来访问连接器属性 `api.id` 中的值。 |
-   | `like` | `*managedApis/{connector-name}` | 用于比较 `field` 值的逻辑运算符和值 <p><p>在这种情况下，`like` 运算符和通配符 (*) 字符都确保规则的工作方式与区域无关，而字符串 `*managedApis/{connector-name}` 是要匹配的值，其中，`{connector-name}` 是要阻止的连接器的 ID。 <p><p>例如，假设要阻止创建到社交媒体平台或数据库的连接： <p><p>Twitter`twitter` <br>Instagram`instagram` <br>Facebook`facebook` <br>Pinterest`pinterest` <br>- SQL Server 或 Azure SQL：`sql` <p><p>若要查找这些连接器 ID，请参阅本主题上文中的[查找连接器引用 ID](#connector-reference-ID)。 |
+   | `like` | `*managedApis/{connector-name}` | 用于比较 `field` 值的逻辑运算符和值 <p><p>在这种情况下，`like` 运算符和通配符 (*) 字符都确保规则的工作方式与区域无关，而字符串 `*managedApis/{connector-name}` 是要匹配的值，其中，`{connector-name}` 是要阻止的连接器的 ID。 <p><p>例如，假设要阻止创建到社交媒体平台或数据库的连接： <p><p>Twitter `twitter` <br>Instagram `instagram` <br>Facebook `facebook` <br>Pinterest `pinterest` <br>- SQL Server 或 Azure SQL：`sql` <p><p>若要查找这些连接器 ID，请参阅本主题上文中的[查找连接器引用 ID](#connector-reference-ID)。 |
    | `then` | `{effect-to-apply}` | 满足 `if` 条件时要应用的效果 <p><p>在这种情况下，`{effect-to-apply}` 会阻止不符合策略的请求或操作并让其失败。 <p><p>有关详细信息，请参阅[策略定义结构 - 策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `effect` | `deny` | `effect` 将阻止请求，即阻止创建指定的连接 <p><p>有关详细信息，请参阅[了解 Azure Policy 效果 - 拒绝](../governance/policy/concepts/effects.md#deny)。 |
    ||||
@@ -180,7 +180,7 @@ ms.locfileid: "87172081"
 
    下面是“策略规则”框的显示方式：
 
-   ![策略定义规则](./media/block-connections-connectors/policy-definition-create-connections-2.png)
+   ![显示带有策略规则示例的 "策略规则" 框的屏幕截图。](./media/block-connections-connectors/policy-definition-create-connections-2.png)
 
    对于多个连接器，可以添加更多条件，例如：
 
@@ -240,11 +240,11 @@ ms.locfileid: "87172081"
 
    ![选择“定义”>“+ 策略定义”](./media/block-connections-connectors/add-new-policy-definition.png)
 
-1. 在 "**策略定义**" 下，根据示例中描述的属性提供策略定义的信息，并使用 Instagram 作为示例继续操作：
+1. 在 " **策略定义**" 下，根据示例中描述的属性提供策略定义的信息，并使用 Instagram 作为示例继续操作：
 
    ![策略定义属性](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1.若要查找你的订阅，请选择省略号 ( **...** ) 按钮。 <br>2.在“订阅”列表中找到并选择你的订阅。 <br>3.完成后，选择“选择”。 |
    | **名称** | 是 | <policy-definition-name> | 用于策略定义的名称 |
@@ -276,7 +276,7 @@ ms.locfileid: "87172081"
    | `mode` | `All` | 一个模式，用于确定策略所评估的资源类型。 <p><p>在此情况下会将 `mode` 设置为 `All`，这会将策略应用于 Azure 资源组、订阅和所有资源类型。 <p><p>有关详细信息，请参阅[策略定义结构 - 模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 一个条件，用于确定何时强制实施策略规则 <p><p>在此情况下，`{condition-to-evaluate}` 确定 `[string(field('Microsoft.Logic/workflows/parameters'))]` 的字符串输出是否包含字符串 `{connector-name}`。 <p><p>有关详细信息，请参阅[策略定义结构 - 策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `value` | `[string(field('Microsoft.Logic/workflows/parameters'))]` | 要与条件进行比较的值 <p><p>在此情况下，`value` 是 `[string(field('Microsoft.Logic/workflows/parameters'))]` 的字符串输出，它将 `Microsoft.Logic/workflows/parameters` 对象中的 `$connectors` 对象转换为字符串。 |
-   | `contains` | `{connector-name}` | 用于与 `value` 属性进行比较的逻辑运算符和值 <p><p>在此情况下，`contains` 运算符确保规则正常工作，而不管 `{connector-name}` 出现在何处，其中，字符串 `{connector-name}` 是要限制或阻止的连接器的 ID。 <p><p>例如，假设要阻止使用连接到社交媒体平台或数据库： <p><p>Twitter`twitter` <br>Instagram`instagram` <br>Facebook`facebook` <br>Pinterest`pinterest` <br>- SQL Server 或 Azure SQL：`sql` <p><p>若要查找这些连接器 ID，请参阅本主题上文中的[查找连接器引用 ID](#connector-reference-ID)。 |
+   | `contains` | `{connector-name}` | 用于与 `value` 属性进行比较的逻辑运算符和值 <p><p>在此情况下，`contains` 运算符确保规则正常工作，而不管 `{connector-name}` 出现在何处，其中，字符串 `{connector-name}` 是要限制或阻止的连接器的 ID。 <p><p>例如，假设要阻止使用连接到社交媒体平台或数据库： <p><p>Twitter `twitter` <br>Instagram `instagram` <br>Facebook `facebook` <br>Pinterest `pinterest` <br>- SQL Server 或 Azure SQL：`sql` <p><p>若要查找这些连接器 ID，请参阅本主题上文中的[查找连接器引用 ID](#connector-reference-ID)。 |
    | `then` | `{effect-to-apply}` | 满足 `if` 条件时要应用的效果 <p><p>在这种情况下，`{effect-to-apply}` 会阻止不符合策略的请求或操作并让其失败。 <p><p>有关详细信息，请参阅[策略定义结构 - 策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `effect` | `deny` | `effect` 将`deny`或阻止请求，即阻止保存使用指定连接的逻辑应用 <p><p>有关详细信息，请参阅[了解 Azure Policy 效果 - 拒绝](../governance/policy/concepts/effects.md#deny)。 |
    ||||
@@ -329,7 +329,7 @@ ms.locfileid: "87172081"
 
 1. 在“基本信息”下，为策略分配提供以下信息：
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **范围** | 是 | 要在其中强制实施策略分配的资源。 <p><p>1.在“作用域”框旁边，选择省略号 ( **...** ) 按钮。 <br>2.在“订阅”列表中选择 Azure 订阅。 <br>3.（可选）在“资源组”列表中选择资源组。 <br>4.完成后，选择“选择”。 |
    | **排除项** | 否 | 要从策略分配中排除的任何 Azure 资源。 <p><p>1.在“排除项”框旁边，选择省略号 ( **...** ) 按钮。 <br>2.从“资源”列表中选择相应资源 >“添加到所选作用域”。 <br>3.完成后，选择“保存”。 |

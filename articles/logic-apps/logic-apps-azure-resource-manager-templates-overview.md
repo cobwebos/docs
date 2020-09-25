@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269040"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -34,12 +34,14 @@ ms.locfileid: "88871456"
 * [Azure 资源管理器模板最佳做法](../azure-resource-manager/templates/template-best-practices.md)
 * [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
+有关特定于逻辑应用、集成帐户、集成帐户项目和 integration services 环境的模板资源信息，请参阅 [Microsoft. 逻辑资源类型](/azure/templates/microsoft.logic/allversions)。
+
 有关示例逻辑应用模板，请参阅以下示例：
 
 * 本主题的示例使用的[完整模板](#full-example-template)
 * GitHub 中的[示例快速入门逻辑应用模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
 
-有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
+REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/api/logic)开始。
 
 <a name="template-structure"></a>
 
@@ -280,7 +282,7 @@ ms.locfileid: "88871456"
 
 ### <a name="logic-app-resource-definition"></a>逻辑应用资源定义
 
-逻辑应用的资源定义从 `properties` 对象开始，该对象包含以下信息：
+模板中逻辑应用的 [工作流资源定义](/azure/templates/microsoft.logic/workflows) 从 `properties` 对象开始，其中包含以下信息：
 
 * 逻辑应用在部署时的状态
 * 逻辑应用使用的任何集成帐户的 ID
@@ -325,7 +327,7 @@ ms.locfileid: "88871456"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必需 | 类型 | 描述 |
+| 属性 | 必需 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
@@ -334,7 +336,31 @@ ms.locfileid: "88871456"
 | `accessControl` | 否 | Object | 用于指定逻辑应用的安全属性，例如限制对请求触发器或运行历史记录输入和输出的 IP 访问。 有关详细信息，请参阅[保护对逻辑应用的访问](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
 ||||
 
-有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
+有关这些逻辑应用对象的资源定义的详细信息，请参阅 [Microsoft. 逻辑资源类型](/azure/templates/microsoft.logic/allversions)：
+
+* [工作流资源定义](/azure/templates/microsoft.logic/workflows)
+* [Integration service 环境资源定义](/azure/templates/microsoft.logic/integrationserviceenvironments)
+* [Integration service 环境托管 API 资源定义](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
+
+* [集成帐户资源定义](/azure/templates/microsoft.logic/integrationaccounts)
+
+* 集成帐户项目：
+
+  * [协议资源定义](/azure/templates/microsoft.logic/integrationaccounts/agreements)
+
+  * [程序集资源定义](/azure/templates/microsoft.logic/integrationaccounts/assemblies)
+
+  * [批处理配置资源定义](/azure/templates/microsoft.logic/integrationaccounts/batchconfigurations)
+
+  * [证书资源定义](/azure/templates/microsoft.logic/integrationaccounts/certificates)
+
+  * [映射资源定义](/azure/templates/microsoft.logic/integrationaccounts/maps)
+
+  * [伙伴资源定义](/azure/templates/microsoft.logic/integrationaccounts/partners)
+
+  * [架构资源定义](/azure/templates/microsoft.logic/integrationaccounts/schemas)
+
+  * [会话资源定义](/azure/templates/microsoft.logic/integrationaccounts/sessions)
 
 <a name="workflow-definition-parameters"></a>
 

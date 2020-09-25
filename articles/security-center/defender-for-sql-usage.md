@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 76015602cbf949b166c4067ad72bace5d355d70b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301646"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -31,7 +31,7 @@ ms.locfileid: "90933555"
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览|
-|计价|**计算机上适用于 SQL server 的 Azure Defender**按[定价页](security-center-pricing.md)中所示的方式计费|
+|定价：|**计算机上适用于 SQL server 的 Azure Defender**按[定价页](security-center-pricing.md)中所示的方式计费|
 |受保护的 SQL 版本：|Azure SQL Server (Microsoft 支持涵盖的所有版本) |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
 |||
@@ -79,7 +79,7 @@ ms.locfileid: "90933555"
 
 
 1. 还可以配置安全警报的电子邮件通知。 
-    可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接链接，以及所有的相关详细信息。 有关详细信息，请参阅 [设置安全警报的电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)。
+    可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接链接，以及所有的相关详细信息。 有关详细信息，请参阅 [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
 
 
 
@@ -121,7 +121,7 @@ ms.locfileid: "90933555"
     * 启用 SQL Server 的审核功能以进一步调查。 如果你是 Azure Sentinel 用户，则可以将 SQL 审核日志从 Windows 安全日志事件上传到 Sentinel，并享受内容丰富的调查体验。 [了解 SQL Server 审核的详细信息](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15)。
     * 若要改善安全状况，请采纳每个警报中针对主机的安全中心建议。 这将降低未来攻击的风险。 
 
-    [详细了解如何管理和响应警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。
+    [详细了解如何管理和响应警报](security-center-managing-and-responding-alerts.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

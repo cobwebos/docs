@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/08/2020
+ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad5c2ad76f9ab98a6ad284a0bb50f3a611dc9a00
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257667"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -34,7 +34,7 @@ ms.locfileid: "88206039"
 
 ## <a name="configure-the-authority"></a>配置颁发机构
 
-守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，其支持的帐户类型不能是任何组织目录中的帐户，也不能是任何个人 Microsoft 帐户 (例如 Skype、Xbox、Outlook.com) 。 无租户管理员可以向 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择“我的组织中的帐户”** 或“任何组织中的帐户”**。
+守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，其支持的帐户类型不能是任何组织目录中的帐户，也不能是任何个人 Microsoft 帐户 (例如 Skype、Xbox、Outlook.com) 。 无租户管理员可以向 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择“我的组织中的帐户”  或“任何组织中的帐户”  。
 
 因此，在应用程序配置中指定的颁发机构应该是租户的（指定租户 ID 或者与组织相关联的域名）。
 
@@ -51,16 +51,13 @@ ms.locfileid: "88206039"
 
 配置文件定义：
 
-- 颁发机构或者云实例和租户 ID。
+- 共同构成 *机构*的云实例和租户 ID。
 - 通过应用程序注册获得的客户端 ID。
 - 客户端机密或证书。
 
-> [!NOTE]
-> 本文的其余部分中的 .Net 代码段是[dotnetcore](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)示例中的[配置](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs)。
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)，来自 [.NET Core 控制台守护程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)示例。
+下面是在文件的 [*appsettings.js*](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) 中定义配置的示例。 此示例摘自 GitHub 上的 [.Net Core 控制台后台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) 程序代码示例。
 
 ```json
 {
@@ -124,9 +121,9 @@ ms.locfileid: "88206039"
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-向应用程序添加 [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 包。
+向应用程序中 [添加 ""](https://www.nuget.org/packages/Microsoft.Identity.Client) ，然后 `using` 在代码中添加一个指令以引用它。
+
 在 MSAL.NET 中，机密客户端应用程序通过 `IConfidentialClientApplication` 接口表示。
-在源代码中使用 MSAL.NET 命名空间。
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -167,6 +164,23 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
+```
+
+`Authority`是云实例和租户 ID 的串联，例如 `https://login.microsoftonline.com/contoso.onmicrosoft.com` 或 `https://login.microsoftonline.com/eb1ed152-0000-0000-0000-32401f3f9abd` 。 在 "[配置文件](#configuration-file)" 部分中显示的 " *appsettings.js*文件" 部分中，这些 `Instance` `Tenant` 值分别由和值表示。
+
+在取自上一个代码段的代码示例中， `Authority` 是  [AuthenticationConfig](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/ffc4a9f5d9bdba5303e98a1af34232b434075ac7/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs#L61-L70) 类的属性，定义如下：
+
+```csharp
+/// <summary>
+/// URL of the authority
+/// </summary>
+public string Authority
+{
+    get
+    {
+        return String.Format(CultureInfo.InvariantCulture, Instance, Tenant);
+    }
+}
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -264,7 +278,7 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高级方案：实例化包含客户端断言的机密客户端应用程序
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高级方案：使用客户端断言实例化机密客户端应用程序
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 

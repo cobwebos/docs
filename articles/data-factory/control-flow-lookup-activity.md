@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: e75921e5ee5b148d81c637800f46403d3d410f42
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.date: 09/23/2020
+ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270434"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 
@@ -31,7 +31,7 @@ ms.locfileid: "89613485"
 
 查找活动支持以下数据源。 
 
-Lookup 活动最多可以返回5000行;如果结果集包含更多记录，将返回前5000行。 查找活动输出支持最大大小为 2 MB，如果大小超过限制，则活动将失败。 目前，查找活动在超时前的最长持续时间为 1 小时。
+查找活动最多可以返回 5000 行；如果结果集包含的记录超过此范围，将返回前 5000 行。 查找活动输出支持的大小最大为 4 MB，如果大小超过限制，则活动将失败。 目前，查找活动在超时前的最长持续时间为 1 小时。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -60,7 +60,7 @@ Lookup 活动最多可以返回5000行;如果结果集包含更多记录，将�
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
 source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
-firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否。 默认为 `true`。
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不是。 默认为 `true`。
 
 > [!NOTE]
 > 
@@ -72,7 +72,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 
 查找结果会返回到活动运行结果的 `output` 节。
 
-* **当 `firstRowOnly` 设置为 `true`（默认值）时**，输出格式如以下代码所示。 查找结果位于固定的 `firstRow` 键下。 若要在后续活动中使用结果，请使用的模式  `@{activity('LookupActivity').output.firstRow.table` 。
+* **当 `firstRowOnly` 设置为 `true`（默认值）时**，输出格式如以下代码所示。 查找结果位于固定的 `firstRow` 键下。 若要在后续活动中使用该结果，请使用 `@{activity('LookupActivity').output.firstRow.table` 模式。
 
     ```json
     {
@@ -107,7 +107,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 
 ## <a name="example"></a>示例
 
-在此示例中，管道包含两个活动： **查找** 和 **复制**。 复制活动将数据从 Azure SQL 数据库实例中的 SQL 表复制到 Azure Blob 存储。 SQL 表的名称存储在 Blob 存储的 JSON 文件中。 查找活动在运行时查找表名。 使用此方法动态修改 JSON。 不需要重新部署管道或数据集。 
+在此示例中，管道包含两个活动：查找和复制 。 复制活动将 Azure SQL 数据库实例的 SQL 表中的数据复制到 Azure Blob 存储。 SQL 表的名称存储在 Blob 存储的 JSON 文件中。 查找活动在运行时查找表名。 使用此方法动态修改 JSON。 不需要重新部署管道或数据集。 
 
 本示例演示如何只查找第一行。 若要查找所有行并将结果与 ForEach 活动链接，请参阅[使用 Azure 数据工厂批量复制多个表](tutorial-bulk-copy.md)中的示例。
 
@@ -115,7 +115,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 ### <a name="pipeline"></a>管道
 
 - 查找活动配置为使用 **LookupDataset**，该项引用 Azure Blob 存储中的一个位置。 查找活动在此位置从 JSON 文件读取 SQL 表名称。 
-- 复制活动使用查找活动的输出，该输出是 SQL 表的名称。 **SourceDataset** 中的 **tableName** 属性配置为使用查找活动的输出。 复制活动将数据从 SQL 表复制到 Azure Blob 存储中的一个位置。 该位置由 **SinkDataset** 属性指定。 
+- 复制活动使用查找活动的输出，即 SQL 表的名称。 **SourceDataset** 中的 **tableName** 属性配置为使用查找活动的输出。 复制活动将数据从 SQL 表复制到 Azure Blob 存储中的一个位置。 该位置由 **SinkDataset** 属性指定。 
 
 ```json
 {
@@ -244,7 +244,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 
 ### <a name="lookup-dataset"></a>查找数据集
 
-**查找**数据集是**AzureBlobStorageLinkedService**类型指定的 Azure 存储查找文件夹中的文件**上的sourcetable.js** 。 
+查找数据集是指由 AzureBlobStorageLinkedService 类型指定的 Azure 存储查找文件夹中的 sourcetable.json 文件  。 
 
 ```json
 {
@@ -306,7 +306,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 
 ### <a name="sink-dataset-for-copy-activity"></a>复制活动的**接收器**数据集
 
-复制活动将数据从 SQL 表复制到 Azure 存储中 **csv** 文件夹下的 **filebylookup.csv** 文件。 该文件由 **AzureBlobStorageLinkedService** 属性指定。 
+复制活动将数据从 SQL 表复制到 Azure 存储中 **csv** 文件夹下的 **filebylookup.csv** 文件。 该文件由 AzureBlobStorageLinkedService 属性指定。 
 
 ```json
 {
@@ -346,7 +346,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 
 ### <a name="sourcetablejson"></a>sourcetable.json
 
-对于文件 **sourcetable.js** ，可以使用以下两种格式。
+可将以下两种格式用于 sourcetable.json 文件。
 
 #### <a name="set-of-objects"></a>对象集
 

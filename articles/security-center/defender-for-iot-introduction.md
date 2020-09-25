@@ -3,16 +3,16 @@ title: 适用于 IoT 的 Azure Defender
 description: 了解用于 IoT 的 Azure Defender
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 67bb01092cb6171ae56b8ab8b308e0c2ea3bece0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 307916680d9a05a5083aea057b2ef4b855a4ff57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934605"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301799"
 ---
 # <a name="introduction-to-azure-defender-for-iot"></a>Azure Defender for IoT 简介
 
@@ -30,9 +30,9 @@ Azure Defender for IoT 提供：
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|需要 [Azure Defender](security-center-pricing.md)|
-|必需的角色和权限：|计算机的 Nsg 的写入权限|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|定价：|需要 [Azure Defender](security-center-pricing.md)|
+|所需角色和权限：|计算机的 Nsg 的写入权限|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 ## <a name="what-devices-can-azure-defender-for-iot-secure"></a>哪些设备可以保护 Azure Defender 的 IoT？
@@ -58,6 +58,6 @@ SecOps 团队可以：
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在 Azure 安全中心中获取用于 IoT 的 Azure Defender。 有关详细信息，请参见:
+本文介绍了如何在 Azure 安全中心中获取用于 IoT 的 Azure Defender。 有关详细信息，请参阅：
 
 - [适用于 IoT 的 Azure 安全中心简介](../asc-for-iot/overview.md)

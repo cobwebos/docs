@@ -3,16 +3,16 @@ title: 将 AWS 帐户连接到 Azure 安全中心
 description: 监视 Azure 安全中心的 AWS 资源
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ee1b8fe6ed97f3b71cda418cce9e432f7c045447
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 33ff6748eba9d0349df244e70f07ad178f258373
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250278"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>将 AWS 帐户连接到 Azure 安全中心
 
@@ -40,9 +40,9 @@ Azure 安全中心保护 Azure 中的工作负荷，Amazon Web Services (AWS) �
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览|
-|计价|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
-|必需的角色和权限：|相关 Azure 订阅的**所有者**或**参与者**|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|所需角色和权限：|相关 Azure 订阅的**所有者**或**参与者**|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 
@@ -81,7 +81,7 @@ Azure 安全中心保护 Azure 中的工作负荷，Amazon Web Services (AWS) �
     - **需要外部 ID** -应选择
     - **外部 ID** -输入订阅 ID，如安全中心的 AWS 连接器页中所示 
 
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 1. 在 " **附加权限策略** " 部分中，选择以下策略：
 
     - SecurityAudit
@@ -89,7 +89,7 @@ Azure 安全中心保护 Azure 中的工作负荷，Amazon Web Services (AWS) �
     - AWSSecurityHubReadOnlyAccess
 
 1. 选择性地添加标记。 将标记添加到用户不会影响连接。
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 
 1. 在 "角色" 列表中，选择你创建的角色
 
@@ -137,7 +137,7 @@ AWS Systems Manager 是在 AWS 资源中自动执行任务所必需的。 如果
             OR
 
         - 选择 " **凭据** "，并将 " **访问密钥** **" 和 "密钥"** 粘贴到在 [安全中心的 "创建 AWS 用户](#create-an-aws-user-for-security-center)" 中保存的 .csv 文件。
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 1. 在 " **Azure Arc 配置** " 选项卡中配置选项：
 
     安全中心发现连接的 AWS 帐户中的 EC2 实例，并使用 SSM 将它们加入 Azure Arc。 

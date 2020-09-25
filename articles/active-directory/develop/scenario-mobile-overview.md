@@ -13,35 +13,28 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257531"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>方案：用于调用 Web API 的移动应用程序
 
 了解如何构建用于调用 Web API 的移动应用。
 
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>入门
 
-创建第一个移动应用程序并尝试快速入门。
+如果尚未创建第一个应用程序，请先完成快速入门：
 
-> [!div class="nextstepaction"]
-> [快速入门：获取令牌并从 Android 应用中调用 Microsoft Graph API](./quickstart-v2-android.md)
->
-> [快速入门：获取令牌并从 iOS 应用中调用 Microsoft Graph API](./quickstart-v2-ios.md)
->
-> [快速入门：获取令牌并从 Xamarin iOS 和 Android 应用中调用 Microsoft Graph API](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+- [快速入门：获取令牌并从 Android 应用中调用 Microsoft Graph API](./quickstart-v2-android.md)
+- [快速入门：获取令牌并从 iOS 应用中调用 Microsoft Graph API](./quickstart-v2-ios.md)
+- [快速入门：从 Xamarin iOS 和 Android 应用 (GitHub 获取令牌并调用 MICROSOFT GRAPH API](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)) 
 
 ## <a name="overview"></a>概述
 
-个性化无缝用户体验对于移动应用很重要。  移动开发人员可以通过 Microsoft 标识平台为 iOS 和 Android 用户创建该体验。 您的应用程序可以 Azure Active Directory （Azure AD）用户、个人 Microsoft 帐户用户和 Azure AD B2C 用户登录。 它还可以获取令牌，代表这些用户来调用 Web API。 为了实现这些流，我们将使用 Microsoft 身份验证库 (MSAL)。 MSAL 用于实现行业标准 [OAuth2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
+个性化无缝用户体验对于移动应用很重要。  移动开发人员可以通过 Microsoft 标识平台为 iOS 和 Android 用户创建该体验。 应用程序可以 Azure Active Directory (Azure AD) 用户、个人 Microsoft 帐户用户和 Azure AD B2C 用户进行登录。 它还可以获取令牌，代表这些用户来调用 Web API。 为了实现这些流，我们将使用 Microsoft 身份验证库 (MSAL)。 MSAL 用于实现行业标准 [OAuth2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
 ![守护程序应用](./media/scenarios/mobile-app.svg)
 
@@ -59,6 +52,10 @@ ms.locfileid: "80882567"
 - 该用户第一次登录时，可能需要完成某些用户交互，具体取决于平台。 例如，在首次通过 Microsoft Authenticator（以及 Android 上的 Intune 公司门户）使用 SSO 时，iOS 会要求应用显示用户交互。
 - 在 iOS 和 Android 上，MSAL 可以使用外部浏览器来登录用户。 外部浏览器可能显示在应用顶端。
 - 不要在移动应用程序中使用机密。 在这些应用程序中，所有用户都可以访问机密。
+
+## <a name="recommended-reading"></a>推荐阅读内容
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

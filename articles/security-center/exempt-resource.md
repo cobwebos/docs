@@ -3,16 +3,16 @@ title: 免除 Azure 安全中心安全建议和安全分数的资源
 description: 了解如何根据安全建议和安全分数免除资源
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b4d043812800bec1070624382755aeb355ea595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301527"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>从建议和安全分数中免除资源
 
@@ -31,9 +31,9 @@ ms.locfileid: "90934732"
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览|
-|计价|这是一种高级 Azure 策略功能，适用于无需额外费用的 Azure Defender 客户。 对于其他用户，将来可能会收取费用。|
-|必需的角色和权限：|用于创建例外的**订阅所有者**或**策略参与者**<br>若要创建规则，需要在 Azure 策略中编辑策略的权限。<br>有关详细信息，请参阅 [Azure 策略中的 RBAC 权限](../governance/policy/overview.md#rbac-permissions-in-azure-policy)。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|定价：|这是一种高级 Azure 策略功能，适用于无需额外费用的 Azure Defender 客户。 对于其他用户，将来可能会收取费用。|
+|所需角色和权限：|用于创建例外的**订阅所有者**或**策略参与者**<br>若要创建规则，需要在 Azure 策略中编辑策略的权限。<br>有关详细信息，请参阅 [Azure 策略中的 RBAC 权限](../governance/policy/overview.md#rbac-permissions-in-azure-policy)。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 
@@ -62,7 +62,7 @@ ms.locfileid: "90934732"
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="修改例外":::
 
-    表中包含每个例外的原因。 
+    每个例外的原因包括在表 (1) 中。
 
     若要修改或删除例外，请选择省略号菜单 ( "..." ) 如 (2) 所示。
 

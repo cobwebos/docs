@@ -1,50 +1,50 @@
 ---
 title: 配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
-description: 了解如何为 Azure Cosmos 帐户启用 Azure Synapse Link，创建启用了分析存储的容器，将 Azure Cosmos 数据库连接到 Synapse 工作区，并运行查询。
+description: 了解如何为 Azure Cosmos DB 帐户启用 synapse 链接，创建启用了分析存储的容器，将 Azure Cosmos 数据库连接到 synapse 工作区，并运行查询。
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a375656f579e626d8f41afe49adc3f2ebdb3b27d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 559c596ed9b7412b277fbfc1cf30cad15e852cef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253150"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 
 Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处理 (HTAP) 功能，可用于在 Azure Cosmos DB 中对操作数据运行准实时分析。 Synapse Link 在 Azure Cosmos DB 和 Azure Synapse Analytics 之间建立紧密的无缝集成。
 
 > [!IMPORTANT]
-> 若要使用 Azure Synapse 链接，请确保在一个支持的区域中预配 Azure Cosmos 帐户 & Azure Synapse Analytics 工作区。 Azure Synapse 链接目前在以下 Azure 区域中提供：美国西部、美国东部、西2、北欧、西欧、美国中南部、东南亚、澳大利亚东部、东 U2、英国南部。
+> 若要使用 Azure Synapse 链接，请确保在一个受支持区域 & Azure Synapse Analytics 工作区中预配 Azure Cosmos DB 帐户。 Azure Synapse 链接目前在以下 Azure 区域中提供：美国西部、美国东部、西2、北欧、西欧、美国中南部、东南亚、澳大利亚东部、东 U2、英国南部。
 
-使用以下步骤，通过 Azure Synapse Link for Azure Cosmos 运行分析查询：
+Azure Synapse 链接可用于 Azure Cosmos DB SQL API 容器 Azure Cosmos DB 或 Mongo DB 集合的 API。 使用以下步骤，通过用于 Azure Cosmos DB 的 Azure Synapse 链接运行分析查询：
 
-* [为 Azure Cosmos 帐户启用 Synapse Link](#enable-synapse-link)
-* [创建启用了分析存储的 Azure Cosmos 容器](#create-analytical-ttl)
-* [将 Azure Cosmos 数据库连接到 Synapse 工作区](#connect-to-cosmos-database)
+* [为 Azure Cosmos DB 帐户启用 Synapse 链接](#enable-synapse-link)
+* [创建 Azure Cosmos DB 容器启用的分析存储](#create-analytical-ttl)
+* [将 Azure Cosmos DB 数据库连接到 Synapse 工作区](#connect-to-cosmos-database)
 * [使用 Synapse Spark 查询分析存储](#query-analytical-store-spark)
 * [使用 Synapse SQL 无服务器查询分析存储](#query-analytical-store-sql-on-demand)
 * [使用 Synapse SQL 无服务器来分析和可视化 Power BI 中的数据](#analyze-with-powerbi)
 
-## <a name="enable-azure-synapse-link-for-azure-cosmos-accounts"></a><a id="enable-synapse-link"></a>启用 Azure Synapse Link for Azure Cosmos 帐户
+## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>启用 Azure Cosmos DB 帐户的 Azure Synapse 链接
 
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
+1. [创建新的 Azure 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos DB 帐户。
 
-1. 导航到你的 Azure Cosmos 帐户，打开“功能”**** 窗格。
+1. 导航到 Azure Cosmos DB 帐户并打开 " **功能** " 窗格。
 
 1. 从“功能”列表选择“Synapse Link”****。
 
    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="查找 Synapse Link 预览功能":::
 
-1. 接下来，它会提示你在帐户上启用 Synapse Link。 选择“启用”。
+1. 接下来，它会提示你在帐户上启用 Synapse Link。 选择“启用”。 完成此过程可能需要1到5分钟。
 
    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="启用 Synapse Link 功能":::
 
@@ -64,15 +64,17 @@ Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处�
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)或 [Azure Cosmos 资源管理器](https://cosmos.azure.com/)。
 
-1. 导航到你的 Azure Cosmos 帐户，打开“数据资源管理器”**** 选项卡。
+1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
 1. 选择“新容器”****，并输入数据库、容器、分区键和吞吐量详细信息的名称。 打开“分析存储”**** 选项。 启用分析存储后，它将创建一个容器，该容器的 `AnalyicalTTL` 属性设置为默认值 -1（无限保留期）。 此分析存储保留所有记录的历史版本。
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="启用 Azure Cosmos 容器的分析存储":::
 
-1. 如果你以前未在此帐户上启用 Synapse Link，系统将提示你执行此操作，因为它是创建启用了分析存储的容器的先决条件。 如果系统提示，请选择“启用 Synapse Link”****。
+1. 如果你以前未在此帐户上启用 Synapse Link，系统将提示你执行此操作，因为它是创建启用了分析存储的容器的先决条件。 如果系统提示，请选择“启用 Synapse Link”****。 完成此过程可能需要1到5分钟。
 
 1. 选择“确定”****，创建启用了分析存储的 Azure Cosmos 容器。
+
+1. 创建容器后，验证是否已启用分析存储区，方法是单击 " **设置**"，然后在数据资源管理器中的 "文档" 下，检查 " **分析存储的生存时间** " 选项是否已打开。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -170,14 +172,14 @@ except exceptions.CosmosResourceExistsError:
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)或 [Azure Cosmos 资源管理器](https://cosmos.azure.com/)。
 
-1. 导航到你的 Azure Cosmos 帐户，打开“数据资源管理器”选项卡。
+1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
 1. 选择已启用分析存储的现有容器。 展开容器并修改以下值：
 
   * 打开“规模和设置”窗口。****
   * 在“设置”**** 下，找到“分析存储生存时间”。
   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值**** ****
-  * 单击“保存” **** 以保存更改。
+  * 单击“保存”以保存更改。
 
 #### <a name="net-sdk"></a>.NET SDK
 
@@ -215,7 +217,7 @@ container.replace(containerProperties).block();
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> 使用 Synapse SQL 无服务器查询分析存储
 
-Synapse SQL 无服务器 (预览功能，该功能以前称为 " **SQL 点播"**) 使你可以查询和分析使用 Azure Synapse 链接启用的 Azure Cosmos DB 容器中的数据。 你可以近实时分析数据，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询分析存储中的数据，并通过 T-sql 接口集成到各种 BI 和即席查询工具。 若要了解详细信息，请参阅 [使用 SYNAPSE SQL 无服务器的查询分析存储](../synapse-analytics/sql/on-demand-workspace-overview.md) 一文。
+Synapse SQL 无服务器 (预览功能，该功能以前称为 " **SQL 点播"**) 使你可以查询和分析使用 Azure Synapse 链接启用的 Azure Cosmos DB 容器中的数据。 你可以近实时分析数据，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询分析存储中的数据，并通过 T-sql 接口集成到各种 BI 和即席查询工具。 若要了解详细信息，请参阅 [使用 SYNAPSE SQL 无服务器的查询分析存储](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) 一文。
 
 > [!NOTE]
 > 将 Azure Cosmos DB 分析存储与 Synapse SQL 无服务器配合使用当前位于封闭预览版下。 若要请求访问权限，请联系 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)。
@@ -226,7 +228,7 @@ Synapse SQL 无服务器 (预览功能，该功能以前称为 " **SQL 点播"**
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
-[Azure 资源管理器模板](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store)为 SQL API 创建启用了 Synapse Link 的 Azure Cosmos 帐户。 此模板在一个区域中创建一个 Core (SQL) API 帐户，其中包含配置了启用分析 TTL 的容器和一个选择使用手动或自动缩放吞吐量的选项。 若要部署此模板，请在自述文件页上单击“部署到 Azure”****。
+[Azure 资源管理器模板](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store)为 SQL API Azure Cosmos DB 帐户创建启用 Synapse 链接。 此模板在一个区域中创建一个 Core (SQL) API 帐户，其中包含配置了启用分析 TTL 的容器和一个选择使用手动或自动缩放吞吐量的选项。 若要部署此模板，请在自述文件页上单击“部署到 Azure”****。
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Azure Synpase Link 入门 - 示例
 

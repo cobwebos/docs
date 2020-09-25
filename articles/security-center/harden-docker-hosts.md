@@ -7,18 +7,18 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 25d8d3dee8810311ae25f54c0e51e34bdf918c09
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3f59bae9864e533270b0bfea829f64ccf541a8a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933373"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301425"
 ---
 # <a name="harden-your-docker-hosts"></a>强化 Docker 主机
 
 Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的 Linux 计算机上承载的非托管容器。 安全中心会持续评估这些容器的配置。 然后，它会将其与 [Internet 安全中心 (CIS) 的 Docker 基准](https://www.cisecurity.org/benchmark/docker/)进行比较。
 
-安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 在发现错误配置时，安全中心会生成安全建议。 请使用**建议页面**来查看建议和修正问题。 也可在“容器”选项卡上查看建议，该选项卡会显示使用 Docker 部署的所有虚拟机。 
+安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 在发现错误配置时，安全中心会生成安全建议。 使用安全中心的 **建议页** 可以查看建议和修正问题。
 
 发现漏洞后，它们会组合在单个建议内。
 
@@ -30,9 +30,9 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
-|必需的角色和权限：|主机连接到的工作区中的**读取器**|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|所需角色和权限：|主机连接到的工作区中的**读取器**|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>识别和修正 Docker 配置中的安全漏洞

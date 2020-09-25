@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 332c33ce46298e5338587cd4d001466d30c1a9e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 138b3b35633b432193a1972421f05d0a8e52b90a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301347"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -36,10 +36,10 @@ ms.locfileid: "90933370"
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览|
-|计价|免费|
-|必需的角色和权限：|用于编辑分配的**所有者**或**安全管理员**<br>查看建议的**读者**|
+|定价：|免费|
+|所需角色和权限：|用于编辑分配的**所有者**或**安全管理员**<br>查看建议的**读者**|
 |支持的群集|需要 Kubernetes v 1.14 (或更高版本) <br>群集上没有 PodSecurityPolicy 资源 (旧的 PSP 模型) <br>不支持 Windows 节点|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 
@@ -95,11 +95,15 @@ Azure 安全中心包含一系列建议，这些建议可在安装 **适用于 K
     1. 选择“保存”。
 
 
-1. 若要强制实施任何建议，请在安全中心的安全策略**参数**选项卡中将其设置为 "**拒绝**"：
+1. 若要强制实施任何建议， 
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure 策略参数的拒绝选项":::
+    1. 打开 "建议详细信息" 页，然后选择 " **拒绝**"：
 
-    这会拒绝 AKS 群集的任何不符合请求
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure 策略参数的拒绝选项":::
+
+        这会打开窗格，你可以在其中设置作用域。 
+
+    1. 设置作用域后，选择 " **更改为拒绝**"。
 
 1. 查看适用于群集的建议：
 

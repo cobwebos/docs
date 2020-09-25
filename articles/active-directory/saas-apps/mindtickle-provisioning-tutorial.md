@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3cac57e0f205da7a39447ddd48810b8fd120ab58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549052"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256426"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>教程：为 MindTickle 配置自动用户预配
 
@@ -97,11 +97,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://admin.mindtickle.com/scim` **租户 URL**"。 输入在 "机密令牌前面检索到的 **jwt 令牌** 值" 文本框中，输入 MindTickle 支持团队提供的 **jwt 令牌** 值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 myPolicies。 如果连接失败，请确保 MindTickle 帐户具有管理员权限，然后重试。
 
@@ -111,7 +111,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 MindTickle**"。
 

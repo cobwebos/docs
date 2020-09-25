@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 742d230d6ed1535bada9c35219d2ddf68fd64ae1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6254b78ad19e7034f78f7891d57a3474fee0c602
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977155"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301911"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container 注册表简介
 
@@ -64,14 +64,11 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 安全中心会对扫描程序的扫描结果进行筛选和分类。 当映像正常运行时，安全中心会将其标为正常。 安全中心仅为存在待解决问题的映像生成安全建议。 安全中心仅在出现问题时发出通知，这样会降低发送不必要的信息警报的可能性。
 
-### <a name="how-often-does-security-center-scan-my-images"></a>安全中心扫描图像的频率如何？
-每次推送或导入都会触发映像扫描，如果在过去的30天内请求映像，则为。 
-
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可以通过 REST API 获取扫描结果？
 是的。 结果位于[子评估 Rest API](/rest/api/securitycenter/subassessments/list/) 下。 此外，还可以对所有资源使用 Azure Resource Graph (ARG)，一个类似于 Kusto 的 API：查询可以提取特定扫描。
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>扫描哪些注册表类型？ 哪些类型会计费？
-可用性部分列出了 Azure Defender 为容器注册表支持的容器注册表类型。 
+有关 Azure Defender 为容器注册表支持的容器注册表类型的列表，请参阅 [可用性](defender-for-container-registries-usage.md#availability)。
 
 如果将不受支持的注册表连接到 Azure 订阅，则不会对其进行扫描，也不会向你收费。
 
