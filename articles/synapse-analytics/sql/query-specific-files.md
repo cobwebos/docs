@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.reviewer: jrasnick
+ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055560"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288097"
 ---
 # <a name="use-file-metadata-in-queries"></a>在查询中使用文件元数据
 
@@ -22,7 +22,7 @@ ms.locfileid: "89055560"
 
 有时，可能会需要知道哪个文件或文件夹源与结果集中的某个特定行相关。
 
-可以使用函数 `filepath` 和 `filename` 在结果集中返回文件名称和/或路径。 或者，可以使用它们根据文件名和/或文件夹路径来筛选数据。 语法部分 [filename 函数](query-data-storage.md#filename-function)和 [filepath 函数](query-data-storage.md#filepath-function)中对这些函数进行了介绍。 以下提供了简短说明和相关示例。
+可以使用函数 `filepath` 和 `filename` 在结果集中返回文件名称和/或路径。 或者，可以使用它们根据文件名和/或文件夹路径来筛选数据。 语法部分 [filename 函数](query-data-storage.md#filename-function)和 [filepath 函数](query-data-storage.md#filepath-function)中对这些函数进行了介绍。 在以下部分中，你将找到有关示例的简短说明。
 
 ## <a name="prerequisites"></a>先决条件
 

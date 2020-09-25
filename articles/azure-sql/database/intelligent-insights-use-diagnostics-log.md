@@ -1,6 +1,6 @@
 ---
 title: 智能见解性能诊断日志
-description: 智能见解提供 Azure SQL 数据库的诊断日志和 Azure SQL 托管实例性能问题
+description: 智能见解提供 Azure SQL 数据库和 Azure SQL 托管实例性能问题的诊断日志
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: performance
@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 398a96dc505309e565b13cb42f610d8571b9413e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334967"
 ---
-# <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>使用 Azure SQL 数据库和 Azure SQL 托管实例的智能见解性能诊断日志来解决性能问题
+# <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>使用有关 Azure SQL 数据库和 Azure SQL 托管实例性能问题的智能见解性能诊断日志
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本页提供有关如何使用 Azure SQL 数据库[智能见解](intelligent-insights-overview.md)生成的性能诊断日志和 azure sql 托管实例性能问题、其格式以及它所包含的数据，以满足您的自定义开发需求。 可以将此诊断日志发送到[Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [azure 存储](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页介绍如何使用[智能见解](intelligent-insights-overview.md)生成的有关 Azure SQL 数据库和 Azure SQL 托管实例性能问题的性能诊断日志，以及其格式和它为满足自定义开发需求所包含的数据。 可以将此诊断日志发送到 [Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [azure 存储](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
 
 > [!NOTE]
 > 智能见解是一项预览功能，在以下区域中不可用：西欧、北欧、美国西部1和美国东部1。
@@ -30,7 +30,7 @@ ms.locfileid: "85986317"
 
 诊断日志使用 JSON 标准格式输出 Intelligent Insights 的发现成果。 访问 Intelligent Insights 日志的确切类别属性是固定值“SQLInsights”。
 
-日志的标头很常见，由时间戳 (TimeGenerated) 组成，它显示条目的创建时间。 它还包括一个资源 ID （ResourceId），该 ID 引用与该项相关的特定数据库。 类别 (Category)、级别 (Level) 和操作名称 (OperationName) 为固定属性，其值不会改变。 它们指示日志项目是信息性的，并表示日志项目来自 Intelligent Insights (SQLInsights)。
+日志的标头很常见，由时间戳 (TimeGenerated) 组成，它显示条目的创建时间。 它还包括一个引用条目所涉及的特定数据库的资源 ID (ResourceId)。 类别 (Category)、级别 (Level) 和操作名称 (OperationName) 为固定属性，其值不会改变。 它们指示日志项目是信息性的，并表示日志项目来自 Intelligent Insights (SQLInsights)。
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -105,7 +105,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 
 Intelligent Insights 日志的下一部分提供关于受检测到的性能问题影响的特定查询信息。 此信息公开为嵌入 impact_s 属性的一组对象。 影响属性包含实体和指标。 实体引用特定查询（类型：Query）。 唯一的查询哈希值在值 (Value) 属性下公开。 此外，每个公开的查询后跟指标和值，指示检测到的性能问题。
 
-在以下日志示例中，使用哈希 0x9102EXZ4 的 查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
+在以下日志示例中，使用哈希 0x9102EXZ4 的查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
 
 ```json
 "impact" : [{
@@ -138,11 +138,11 @@ Intelligent Insights 性能日志的最后部分是对已确定的性能下降�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-可以将智能见解性能日志与[Azure Monitor 日志]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或第三方解决方案结合使用，以实现自定义 DevOps 警报和报告功能。
+可以将智能见解性能日志与 [Azure Monitor 日志]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) 或第三方解决方案结合使用，以实现自定义 DevOps 警报和报告功能。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解有关 [Intelligent Insights](intelligent-insights-overview.md) 的概念。
-- 了解如何[通过智能见解排查性能问题](intelligent-insights-troubleshoot-performance.md)。
-- 了解如何[使用 Azure SQL Analytics 来监视性能问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
+- 了解如何[使用智能见解排查性能问题](intelligent-insights-troubleshoot-performance.md)。
+- 了解如何 [使用 Azure SQL Analytics 来监视性能问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
 - 了解如何[从 Azure 资源收集和使用日志数据](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。

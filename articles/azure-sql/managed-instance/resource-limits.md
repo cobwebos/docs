@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, jovanpop, sachinp, sstein
+ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c563862c777dd9b5bf4c9f31155aa65c430acd1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323229"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,8 +76,8 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
 | 每个实例的数据库文件数上限 | 除非已达到实例存储大小或 [Azure 高级磁盘存储分配空间](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)限制，否则最大为 280。 | 除非已达到实例存储大小限制，否则为每个数据库 32,767 个文件。 |
 | 最大数据文件大小 | 限制为当前可用的实例存储大小（最大 2 TB - 8 TB）和 [Azure 高级磁盘存储分配空间](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)。 | 限制为当前可用的实例存储大小（最大为 1 TB - 4 TB）。 |
 | 最大日志文件大小 | 限制为 2 TB 和当前可用的实例存储大小。 | 限制为 2 TB 和当前可用的实例存储大小。 |
-| 数据/日志 IOPS（近似值） | 每个实例最多 30-40 K IOPS*，每个文件 500 - 7500<br/>\*[增加文件大小以获得更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 K - 200 K (2500 IOPS/vCore)<br/>添加更多 Vcore 以获得更好的 IO 性能。 |
-| 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/s | 4 MB/s（每个 vCore）<br/>最大 48 MB/s |
+| 数据/日志 IOPS（近似值） | 每个实例最多 30-40 K IOPS*，每个文件 500 - 7500<br/>\*[增加文件大小以获得更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (4000 IOPS/vCore) <br/>添加更多 Vcore 以获得更好的 IO 性能。 |
+| 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>每个实例最大 120 MB/秒<br/>每个数据库 22-65 MB/秒<br/>\*[增加文件大小以获得更好的 IO 性能](#file-io-characteristics-in-general-purpose-tier) | 4 MB/s（每个 vCore）<br/>最大 96 MB/秒 |
 | 数据吞吐量（近似值） | 100 - 250 MB/s（每个文件）<br/>\*[增加文件大小以获得更好的 IO 性能](#file-io-characteristics-in-general-purpose-tier) | 无限制。 |
 | 存储 IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
 | 内存中 OLTP | 不支持 | [可用大小取决于 vCore 数](#in-memory-oltp-available-space) |

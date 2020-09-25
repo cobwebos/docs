@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 5d9bf672aae3cf55ae7cf22aa1437f01ced99901
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e034149372ba061ec958e0c1e22187d33009080c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265827"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -225,3 +225,4 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 * 若要使用密码设置服务主体，请参阅[使用 Azure PowerShell 创建 Azure 服务主体](/powershell/azure/create-azure-service-principal-azureps)。
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
 * 有关 Azure AD 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](./authentication-vs-authorization.md)。
+* 有关使用 **Microsoft Graph**使用应用注册的信息，请参阅 [应用程序](/graph/api/resources/application) API 参考。

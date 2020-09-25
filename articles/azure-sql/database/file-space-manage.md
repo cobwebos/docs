@@ -9,26 +9,26 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335061"
 ---
-# <a name="manage-file-space-for-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中数据库的文件空间
+# <a name="manage-file-space-for-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的数据库的文件空间
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文介绍适用于 Azure SQL 数据库中的数据库的不同类型的存储空间，以及在需要显式管理分配的文件空间时可以采取的步骤。
+本文介绍 Azure SQL 数据库中不同类型的存储空间，以及当需要显式管理分配的文件空间时可以执行的步骤。
 
 > [!NOTE]
 > 本文不适用于 Azure SQL 托管实例。
 
 ## <a name="overview"></a>概述
 
-使用 Azure SQL 数据库时，有一些工作负荷模式，在这种模式下，数据库的基础数据文件分配可能会变得大于使用的数据页量。 如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。 这是因为分配的文件空间不会自动回收。
+使用 Azure SQL 数据库，在某些工作负载模式下，数据库的基础数据文件的分配可能会大于已使用数据页的数量。 如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。 这是因为分配的文件空间不会自动回收。
 
 在以下情况下，可能需要监视文件空间用量并收缩数据文件：
 
@@ -50,10 +50,10 @@ Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用
 
 ### <a name="shrinking-data-files"></a>收缩数据文件
 
-由于对数据库性能有潜在影响，Azure SQL 数据库不会自动收缩数据文件以回收未使用的已分配空间。  但是，客户可以按照[回收未使用的已分配空间](#reclaim-unused-allocated-space)中所述的步骤，在选择时通过自助服务缩减数据文件。
+由于对数据库性能的潜在影响，Azure SQL 数据库不会自动收缩数据文件以回收已分配但未使用的空间。  但是，客户可遵循[回收未使用的分配空间](#reclaim-unused-allocated-space)中所述的步骤，在其选定的时间通过自助式操作收缩数据文件。
 
 > [!NOTE]
-> 与数据文件不同，Azure SQL Database 会自动收缩日志文件，因为该操作不会影响数据库性能。
+> 与数据文件不同，Azure SQL 数据库会自动收缩日志文件，因为该操作不会影响数据库的性能。
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>了解数据库存储空间的类型
 
@@ -148,7 +148,7 @@ ORDER BY end_time DESC
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
-PowerShell 脚本需要 SQL Server PowerShell 模块 - 请参阅[下载 PowerShell 模块](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)进行安装。
+PowerShell 脚本需要 SQL Server PowerShell 模块–请参阅 [下载 PowerShell 模块](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) 进行安装。
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -237,7 +237,7 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
 - 有关数据库最大大小的信息，请参阅：
   - [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](resource-limits-vcore-single-databases.md)
   - [使用基于 DTU 的购买模型的单一数据库的资源限制](resource-limits-dtu-single-databases.md)
-  - [Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制](resource-limits-vcore-elastic-pools.md)
+  - [适用于弹性池的 Azure SQL 数据库基于 vCore 的购买模型限制](resource-limits-vcore-elastic-pools.md)
   - [使用基于 DTU 的购买模型的弹性池的资源限制](resource-limits-dtu-elastic-pools.md)
 - 有关 `SHRINKDATABASE` 命令的详细信息，请参阅 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
 - 有关碎片和重新生成索引的详细信息，请参阅[重新组织和重新生成索引](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。

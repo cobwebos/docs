@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: ab4eaf5ad40b5ef8bee68ef0e56ab8f53db8a8a2
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8173037c79635a8523a90a187be7661da0e7503a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533829"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325124"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 托管实例长期备份保留 (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "87533829"
 在 Azure SQL 托管实例中，可以配置[长期备份保留](../database/long-term-retention-overview.md#sql-managed-instance-support)策略 (LTR)，这是一项有限的公共预览版功能。 这样就可以在单独的 Azure Blob 存储容器中自动将数据库备份保留长达 10 年的时间。 然后，可以通过 PowerShell 使用这些备份来恢复数据库。
 
    > [!IMPORTANT]
-   > 对于托管实例，LTR 目前为功能有限的预览版，可根据具体情况用于 EA 和 CSP 订阅。 若要请求注册，请创建 [Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 对于 "问题类型"，请选择 "服务" "服务"，选择 "SQL 数据库托管实例" 和 "对于问题类型"，选择 "**备份"、"还原" 和 "业务连续性/长期备份保留**。 在你的请求中，请陈述你希望在面向托管实例的按范围有限的公共预览版中进行注册。
+   > 对于托管实例，LTR 目前为功能有限的预览版，可根据具体情况用于 EA 和 CSP 订阅。 若要请求注册，请创建 [Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 对于 "问题类型"，请选择 "服务" "服务"，选择 "SQL 数据库托管实例" 和 "对于问题类型"，选择 " **备份"、"还原" 和 "业务连续性/长期备份保留**。 在你的请求中，请陈述你希望在面向托管实例的按范围有限的公共预览版中进行注册。
 
 以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure SQL 存储中的备份，以及从 Azure SQL 存储中的备份进行还原。
 
@@ -140,7 +140,7 @@ Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $ltrBacku
 ```
 
 > [!IMPORTANT]
-> 若要在删除实例后从 LTR 备份进行还原，必须有实例订阅范围内的权限，并且该订阅必须处于活动状态。 此外，还必须省略可选的 -ResourceGroupName 参数。
+> 若要在删除实例后从 LTR 备份进行还原，必须有实例订阅范围内的权限，并且该订阅必须处于活动状态。 还必须省略可选的 -ResourceGroupName 参数。
 
 > [!NOTE]
 > 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，执行所需任务，例如从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原的数据库重命名为现有数据库名。 请参阅[时间点还原](../database/recovery-using-backups.md#point-in-time-restore)。

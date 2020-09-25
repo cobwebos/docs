@@ -1,6 +1,6 @@
 ---
-title: 配置 & 管理内容引用
-description: 查找内容参考，了解如何配置和管理 Azure SQL 数据库。
+title: 配置和管理内容参考信息
+description: 查找内容参考信息，了解如何配置和管理 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa79af1047862e8694fa6342942ffd0793bafcb6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334994"
 ---
-# <a name="configure-and-manage-content-reference---azure-sql-database"></a>配置和管理内容引用-Azure SQL 数据库
+# <a name="configure-and-manage-content-reference---azure-sql-database"></a>配置和管理内容参考信息 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在本文中，可以找到可帮助你管理和配置 Azure SQL 数据库的各种指南、脚本和说明的内容引用。 
+本文介绍可帮助你管理和配置 Azure SQL 数据库的各种指南、脚本和说明的内容参考信息。 
 
 ## <a name="load-data"></a>加载数据
 
@@ -35,9 +35,9 @@ ms.locfileid: "84324381"
 
 ## <a name="configure-features"></a>配置功能
 
-- [配置 Azure Active Directory （Azure AD）身份验证](authentication-aad-configure.md)
+- [配置 Azure Active Directory (Azure AD) 身份验证](authentication-aad-configure.md)
 - [配置条件访问](conditional-access-configure.md)
-- [多重身份验证 Azure AD](authentication-mfa-ssms-overview.md)
+- [多重 Azure AD 身份验证](authentication-mfa-ssms-overview.md)
 - [配置多重身份验证](authentication-mfa-ssms-configure.md)
 - [配置时态保留策略](temporal-tables-retention-policy.md)
 - [为 TDE 配置 BYOK](transparent-data-encryption-byok-configure.md)
@@ -50,7 +50,7 @@ ms.locfileid: "84324381"
 - [配置动态数据掩码](dynamic-data-masking-configure-portal.md)来保护敏感数据。
 - 为数据库[配置备份保留](long-term-backup-retention-configure.md)以在 Azure Blob 存储上保留备份。 
 - [配置异地复制](active-geo-replication-overview.md)以将数据库副本保留在另一个区域中。
-- [配置地理副本的安全性](active-geo-replication-security-configure.md)。
+- [为异地副本配置安全性](active-geo-replication-security-configure.md)。
 
 ## <a name="monitor-and-tune-your-database"></a>监视和优化数据库
 
@@ -77,7 +77,7 @@ ms.locfileid: "84324381"
 
 - 跨多个数据库[查询垂直分区的数据](elastic-query-getting-started-vertical.md)。
 - [跨横向扩展的数据层进行报告](elastic-query-horizontal-partitioning.md)。
-- [跨具有不同架构的表进行查询](elastic-query-vertical-partitioning.md)。
+- [在具有不同架构的表中进行查询](elastic-query-vertical-partitioning.md)。
 
 ### <a name="data-sync"></a>数据同步
 
@@ -90,7 +90,7 @@ ms.locfileid: "84324381"
 
 ## <a name="elastic-database-jobs"></a>弹性数据库作业
 
-- [创建和管理](elastic-jobs-powershell-create.md)使用 PowerShell 的弹性数据库作业。
+- 使用 PowerShell [创建和管理](elastic-jobs-powershell-create.md)弹性数据库作业。
 - 使用 Transact-SQL [创建和管理](elastic-jobs-tsql-create-manage.md)弹性数据库作业。
 - [从旧的弹性作业进行迁移](elastic-jobs-migrate.md)。
 
@@ -113,7 +113,7 @@ ms.locfileid: "84324381"
 
 - [连接](connect-query-content-reference-guide.md#libraries)
 - [使用 Spark 连接器](spark-connector.md)
-- [应用身份验证](application-authentication-get-client-id-keys.md)
+- [对应用进行身份验证](application-authentication-get-client-id-keys.md)
 - [使用批处理提高性能](../performance-improve-use-batching.md)
 - [连接指南](troubleshoot-common-connectivity-issues.md)
 - [DNS 别名](dns-alias-overview.md)
@@ -124,11 +124,11 @@ ms.locfileid: "84324381"
 
 ## <a name="design-applications"></a>设计应用程序
 
-- [灾难恢复设计](designing-cloud-solutions-for-disaster-recovery.md)
-- [弹性池设计](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
-- [应用升级设计](manage-application-rolling-upgrade.md)
+- [设计灾难恢复](designing-cloud-solutions-for-disaster-recovery.md)
+- [设计弹性池](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+- [设计应用升级](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>设计多租户软件即服务（SaaS）应用程序
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a> (SaaS) 应用程序设计多租户软件即服务
 
 - [SaaS 设计模式](saas-tenancy-app-design-patterns.md)
 - [SaaS 视频索引器](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
@@ -136,4 +136,4 @@ ms.locfileid: "84324381"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[AZURE SQL 托管实例操作指南的](../managed-instance/how-to-content-reference-guide.md)详细信息
+- 详细了解 [Azure SQL 托管实例操作指南](../managed-instance/how-to-content-reference-guide.md)

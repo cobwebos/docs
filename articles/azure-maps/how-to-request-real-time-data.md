@@ -4,33 +4,33 @@ description: 了解如何在传输停止时请求实时公共传输数据，如�
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/06/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 71dc67d4c142f6fb84458cd6cd0b33452f2217b3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6f0cf663b42c8487495602e4cdbf1a88427f9daf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310928"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求实时公共传输数据
 
-本文介绍如何使用 Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)来请求实时公共传输数据。
+本文介绍如何使用 Azure Maps [移动服务](https://aka.ms/AzureMapsMobilityService) 来请求实时公共传输数据。
 
 在本文中，你将学习如何请求到达给定停止处的所有行的下一个实时到达
 
 ## <a name="prerequisites"></a>先决条件
 
-首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)创建 Azure Maps 帐户中的说明进行操作。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
+首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照 [创建帐户](quick-demo-map-app.md#create-an-azure-maps-account) 创建 Azure Maps 帐户中的说明进行操作。 按照 [获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account) 中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>请求停止的实时到达
 
-为了请求特定公用传输停止的实时到达数据，需要向 Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)的[实时到达 API](https://aka.ms/AzureMapsMobilityRealTimeArrivals)发出请求，。 需要**metroID**和**stopID**来完成请求。 若要详细了解如何请求这些参数，请参阅有关如何[请求公用传输路由](https://aka.ms/AMapsHowToGuidePublicTransitRouting)的指南。
+为了请求特定公用传输停止的实时到达数据，需要向 Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)的[实时到达 API](https://aka.ms/AzureMapsMobilityRealTimeArrivals)发出请求，。 需要 **metroID** 和 **stopID** 来完成请求。 若要详细了解如何请求这些参数，请参阅有关如何 [请求公用传输路由](https://aka.ms/AMapsHowToGuidePublicTransitRouting)的指南。
 
 让我们使用 "522" 作为地铁 ID，这是 "西雅图– Tacoma – Bellevue，WA" 领域的地铁 ID。 使用 "522---2060603" 作为 "stop ID"，此总线将停止在 "Ne 24 日 St & 162nd，Bellevue WA"。 若要请求接下来的五个实时到达数据，则在此停止时，请完成以下步骤：
 
@@ -40,7 +40,7 @@ ms.locfileid: "88037280"
 
     ![在 Postman 中创建请求](./media/how-to-request-transit-data/postman-new.png)
 
-3. 在 "生成器" 选项卡上选择 "**获取**HTTP" 方法，然后输入以下 URL 创建 GET 请求。 `{subscription-key}`将替换为 Azure Maps 的主键。
+3. 在 "生成器" 选项卡上选择 " **获取** HTTP" 方法，然后输入以下 URL 创建 GET 请求。 `{subscription-key}`将替换为 Azure Maps 的主键。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus

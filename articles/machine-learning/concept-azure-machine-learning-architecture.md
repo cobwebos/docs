@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886316"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276078"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -102,24 +102,17 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 [工作区](#workspace) > [试验](#experiments) > [运行](#runs) > **运行配置**
 
-运行配置是一组指令，用于定义如何在指定的计算目标中运行脚本。 该配置包括一组广泛的行为定义，例如，是使用现有 Python 环境还是使用根据规范构建的 Conda 环境。
+运行配置定义了应如何在指定的计算目标中运行脚本。 使用该配置来指定要在其上运行的脚本、计算目标和 Azure ML 环境、任何特定于作业的特定配置以及其他一些属性。 有关运行的一组完整可配置选项的详细信息，请参阅 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)。
 
 运行配置可以保存到包含训练脚本的目录内的文件中，   或构造为内存中对象以及用于提交运行。
 
-如需示例运行配置，请参阅[使用计算目标来训练模型](how-to-set-up-training-targets.md)。
-
-### <a name="estimators"></a>估算器
-
-为了便于使用流行框架进行模型训练，可以通过估算器类轻松构造运行配置。 可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true)来提交使用所选任何学习框架（例如 scikit-learn）的训练脚本。
-
-有关估算器的详细信息，请参阅[使用估算器训练 ML 模型](how-to-train-ml-models.md)。
+有关运行配置的示例，请参阅 [配置训练运行](how-to-set-up-training-targets.md)。
 
 ### <a name="snapshots"></a>快照
 
 [工作区](#workspace) > [试验](#experiments) > [运行](#runs) > **快照**
 
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
-
 
 ### <a name="logging"></a>日志记录
 
@@ -133,7 +126,7 @@ Azure 机器学习会自动为你记录标准运行指标。 不过，也可以 
 
 ### <a name="git-tracking-and-integration"></a>Git 跟踪与集成
 
-如果以本地 Git 存储库作为源目录开始训练运行，有关存储库的信息将存储在运行历史记录中。 这适用于使用估算器、ML 管道或脚本运行提交的运行。 此外，还适用于从 SDK 或机器学习 CLI 提交的运行。
+如果以本地 Git 存储库作为源目录开始训练运行，有关存储库的信息将存储在运行历史记录中。 这适用于使用脚本运行配置或 ML 管道提交的运行。 此外，还适用于从 SDK 或机器学习 CLI 提交的运行。
 
 有关详细信息，请参阅 [Azure 机器学习的 Git 集成](concept-train-model-git-integration.md)。
 

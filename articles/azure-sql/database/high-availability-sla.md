@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: sashan
 ms.author: sashan
-ms.reviewer: carlrab, sashan
+ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 16e15976c6f09881b75dcec207833f48aa1c4e7a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fd470180e17bd64990c1e657a6614fc2e0ef71d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437660"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335018"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -106,7 +106,7 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 |托管实例|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[托管实例 - 故障转移](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
-> 故障转移命令不适用于超大规模数据库的可读辅助副本。
+> 故障转移命令不可用于超大规模数据库的可读次要副本。
 
 ## <a name="conclusion"></a>结论
 
@@ -117,5 +117,5 @@ Azure SQL 数据库和 Azure SQL 托管实例提供与 Azure 平台深度集成�
 - 了解 [Azure 可用性区域](../../availability-zones/az-overview.md)
 - 了解 [Service Fabric](../../service-fabric/service-fabric-overview.md)
 - 了解 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)
-- 了解 [如何在 SQL 托管实例上启动手动故障转移](../managed-instance/user-initiated-failover.md)
+- 了解[如何在 SQL 托管实例上发起手动故障转移](../managed-instance/user-initiated-failover.md)
 - 有关高可用性和灾难恢复的更多选项，请参阅[业务连续性](business-continuity-high-availability-disaster-recover-hadr-overview.md)

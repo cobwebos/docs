@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325209"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何缩放托管实例？
 
-可以从 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) 或 [ARM 模板](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)缩放托管实例。
+可以从 [Azure 门户](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) 或 [ARM 模板](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)缩放托管实例。
 
 是否可以将托管实例从一个区域移动到另一个区域？
 
@@ -102,7 +102,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何删除托管实例？
 
-可以通过 Azure 门户 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) 或 [资源管理器 REST api](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)删除托管实例。
+可以通过 Azure 门户 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) 或 [资源管理器 REST api](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)删除托管实例。
 
 创建或更新实例或还原数据库需要多长时间？
 
@@ -135,9 +135,9 @@ SQL 托管实例部署是否有配额限制？
 
 一种做法是[将数据库导出到 BACPAC](../database/database-export.md)，然后[导入 BACPAC 文件](../database/database-import.md)。 如果数据库小于 100 GB，则建议使用此方法。
 
-如果数据库中的所有表具有主键，并且数据库中没有内存中 OLTP 对象，则可以使用[事务复制](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017)。
+如果数据库中的所有表具有主键，并且数据库中没有内存中 OLTP 对象，则可以使用[事务复制](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)。
 
-由于托管实例的数据库版本高于 SQL Server，因此无法将从托管实例创建的本机 COPY_ONLY 备份还原到 SQL Server。 有关更多详细信息，请参阅[仅复制备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。
+由于托管实例的数据库版本高于 SQL Server，因此无法将从托管实例创建的本机 COPY_ONLY 备份还原到 SQL Server。 有关更多详细信息，请参阅[仅复制备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)。
 
 如何将 SQL Server 实例迁移到 SQL 托管实例？
 
@@ -184,11 +184,11 @@ SQL 托管实例部署是否有配额限制？
 
 是否可以使用 SQL Profiler 进行性能跟踪？
 
-是的，SQL 托管实例支持 SQL Profiler。 有关详细信息，请参阅 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)。
+是的，SQL 托管实例支持 SQL Profiler。 有关详细信息，请参阅 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true)。
 
 托管实例数据库是否支持数据库顾问和 Query Performance Insight？
 
-不支持。 可以将 [DMV](../database/monitoring-with-dmvs.md) 和[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) 与 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) 和 [XEvent](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) 结合使用来监视数据库。
+不支持。 可以将 [DMV](../database/monitoring-with-dmvs.md) 和[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) 与 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) 和 [XEvent](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) 结合使用来监视数据库。
 
 是否可以在 SQL 托管实例上创建指标警报？
 
@@ -228,7 +228,7 @@ SQL 托管实例的存储大小取决于所选的服务层级（“常规用途�
 
 是否支持按需备份？
 
-是的，可以在其 Azure Blob 存储中创建仅复制完整备份，但它只能在托管实例中进行还原。 有关详细信息，请参阅[仅复制备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。 但是，如果数据库通过服务管理的 TDE 进行加密，则无法进行仅复制备份，因为用于加密的证书不可访问。 在这类情况下，使用时间点还原功能将数据库移到另一个 SQL 托管实例或切换到客户管理的密钥。
+是的，可以在其 Azure Blob 存储中创建仅复制完整备份，但它只能在托管实例中进行还原。 有关详细信息，请参阅[仅复制备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)。 但是，如果数据库通过服务管理的 TDE 进行加密，则无法进行仅复制备份，因为用于加密的证书不可访问。 在这类情况下，使用时间点还原功能将数据库移到另一个 SQL 托管实例或切换到客户管理的密钥。
 
 是否支持本机还原（从 .bak 文件）到托管实例？
 
@@ -390,7 +390,7 @@ SQL 托管实例是否支持透明数据加密？
 
 是否可以对 TDE 使用“创建自己的密钥”模型？
 
-是的，适用于 BYOK 的 Azure Key Vault 方案可用于 Azure SQL 托管实例。 有关详细信息，请参阅[使用客户管理的密钥进行透明数据加密](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)。
+是的，适用于 BYOK 的 Azure Key Vault 方案可用于 Azure SQL 托管实例。 有关详细信息，请参阅[使用客户管理的密钥进行透明数据加密](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true)。
 
 是否可以迁移加密 SQL Server 数据库？
 
@@ -509,6 +509,10 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 
 ## <a name="service-updates"></a>服务更新
+
+**& SQL 托管实例的 Azure SQL 数据库的根 CA 更改是什么？**
+
+请参阅 [AZURE Sql 数据库 & SQL 托管实例的证书轮换](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring)。 
 
 **什么是 SQL 托管实例的计划内维护事件？**
 

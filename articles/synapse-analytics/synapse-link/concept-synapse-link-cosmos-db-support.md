@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0cdc9e242c2254cafaf0af75bcb8f8879cf3eb58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287819"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Synapse Link for Azure Cosmos DB（预览版）支持的特性
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 中有两种类型的容器：
 > [!IMPORTANT]
 > 对于未启用托管虚拟网络的 Synapse 工作区，当前支持 Azure Cosmos DB 的 Azure Synapse 链接。 
 
-可以在不启用 Synapse Link 的情况下连接到 Azure Cosmos DB 容器，在这种情况下，只能读取/写入事务存储。 下面是 Azure Cosmos DB 的 Synapse 链接中当前支持的功能的列表。 
+无需启用 Synapse 链接即可连接到 Azure Cosmos DB 容器。 在这种情况下，只能读取/写入事务存储区。 下面是 Azure Cosmos DB 的 Synapse 链接中当前支持的功能的列表。 
 
 | 类别              | 说明 |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL 无服务器](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
@@ -39,9 +39,9 @@ Azure Cosmos DB 中有两种类型的容器：
 | **读取**    | 可读取 Azure Cosmos DB 容器的类型 | OLTP / HTAP | HTAP  |
 | **写入**   | 可以使用 Azure Synapse 运行时将数据写入 Azure Cosmos DB 容器 | 是 | 否 |
 
-* 如果将数据从 Spark 写入 Azure Cosmos DB 容器，则会通过 Azure Cosmos DB 的事务存储进行，并会影响 Azure Cosmos DB 上的事务工作负荷的性能并使用请求单位。
-* 当前不支持通过外部表的 Synapse SQL 池集成。
-
+* 如果将数据从 Spark 写入 Azure Cosmos DB 容器，则会通过 Azure Cosmos DB 的事务存储进行此过程。 它将通过使用请求单位来影响 Azure Cosmos DB 的事务性能。
+* 目前不支持通过外部表进行 SQL 池集成。
+ 
 ## <a name="supported-code-generated-actions-for-spark"></a>支持的 Spark 代码生成的操作
 
 | 手势              | 说明 |OLTP |HTAP  |
@@ -51,7 +51,6 @@ Azure Cosmos DB 中有两种类型的容器：
 | 将数据帧写入容器 |将数据写入容器|✓| ✓ |
 | 加载容器中的流式处理数据帧 |使用 Azure Cosmos DB 更改源流式处理数据|✓| ✓ |
 | 将流式处理数据帧写入容器 |使用 Azure Cosmos DB 更改源流式处理数据|✓| ✓ |
-
 
 
 ## <a name="supported-code-generated-actions-for-sql-serverless"></a>SQL 无服务器支持的代码生成操作

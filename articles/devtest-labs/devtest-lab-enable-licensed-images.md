@@ -3,12 +3,12 @@ title: 启用 Azure 开发测试实验室中自己的实验室中的已授权映
 description: 了解如何使用 Azure 门户在 Azure 开发测试实验室中启用已授权映像
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276350"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 
@@ -17,9 +17,9 @@ ms.locfileid: "87286506"
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>确定已授权映像是否对用户可用
 允许用户从已授权映像创建 VM 的第一步是确保已接受已授权映像的条款和条件。 以下步骤显示如何查看已授权映像的产品/服务状态，必要时接受其条款和条件。
 
-1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
+1. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
 
 1. 从实验室列表，选择所需的实验室。  
 
@@ -47,7 +47,7 @@ ms.locfileid: "87286506"
 
 1. 确定你希望用户可以访问但尚未接受其条款的已授权映像。 例如，你可能会看到显示“已接受条款”**** 或“需要评审条款”**** 状态的数据科学虚拟机。
 
-    ![配置编程部署窗口](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![显示产品/服务状态为 "已接受条款" 和 "需要字词审查" Data Science Virtual Machine 图像的屏幕截图](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
    > 数据科学 VM 是 Azure 虚拟机映像，通过数种常用于数据分析、机器学习和 AI 训练的工具进行预安装、配置和测试。 [适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介](../machine-learning/data-science-virtual-machine/overview.md)提供了有关 DSVM 的大量信息。
@@ -66,7 +66,7 @@ ms.locfileid: "87286506"
    >
 
 
-1. 选择“保存” 。 
+1. 选择“保存”。 
 
     在市场映像列表中，该映像现在显示“已接受条款”**** 且可供用户用于创建虚拟机。
 
