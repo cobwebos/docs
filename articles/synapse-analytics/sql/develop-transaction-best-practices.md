@@ -1,6 +1,6 @@
 ---
 title: 优化 SQL 池的事务
-description: 了解如何在尽量降低长时间回退风险的情况下优化 SQL 池（数据仓库）中事务性代码的性能。
+description: 了解如何在 SQL 池中优化事务性代码的性能。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288641"
 ---
 # <a name="optimize-transactions-in-sql-pool"></a>优化 SQL 池中的事务
 
@@ -23,9 +23,9 @@ ms.locfileid: "87503185"
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
 
-事务是关系数据库引擎的一个重要组成部分。 SQL 池在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。
+事务是关系数据库引擎的一个重要组成部分。 SQL 池在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元中的情况。
 
-SQL 池使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
+SQL 池使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 但是，虽然此过程可保证写入，但它确实会在系统中引入开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
 
 * 尽可能使用最少日志记录构造
 * 使用限定范围的批来处理数据，避免单数形式的长时运行事务
@@ -84,7 +84,7 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 ## <a name="optimize-deletes"></a>优化删除
 
-DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 操作使用新创建的表将旧表交换出来。
+DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 操作使用新创建的表将旧表交换出来。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.

@@ -1,6 +1,6 @@
 ---
 title: 媒体服务事件的 Azure 事件网格架构
-description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
+description: 了解通过 Azure 事件网格为 Media Services 事件提供的属性。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f7c9f3b000973868c003477e58de14634b139cae
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 47ba1af15101ae68cf5311ed73f7078bf9fc7f35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267660"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336422"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
 
@@ -136,7 +136,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | previousState | string | 事件发生前的作业状态。 |
 | state | string | 此事件中通知的作业的新状态。 例如，“已计划：作业已准备就绪”或“已完成：作业已完成。”|
@@ -206,7 +206,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | outputs | Array | 获取作业输出。|
 
@@ -322,7 +322,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | ingestUrl | string | 直播活动提供的引入 URL。 |  
@@ -358,7 +358,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
 | ingestUrl | string | 直播活动提供的引入 URL。 |
@@ -392,7 +392,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | ingestUrl | string | 直播活动提供的引入 URL。 |  
@@ -442,7 +442,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | string | 轨道类型（音频/视频）。 |
 | trackName | string | 轨道名称。 |
@@ -482,7 +482,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | string | 轨道类型（音频/视频）。 |
 | trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -521,7 +521,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | minLastTimestamp | string | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
 | typeOfTrackWithMinLastTimestamp | string | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
@@ -557,7 +557,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | firstTimestamp | string | 收到视频类型的某个轨迹/质量级别的时间戳。 |
 | firstDuration | string | 具有第一个时间戳的数据区块的持续时间。 |
@@ -599,7 +599,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | string | 轨道类型（音频/视频）。 |
 | trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -643,7 +643,7 @@ ms.locfileid: "89267660"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | string | 轨道类型（音频/视频）。 |
 | trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -664,7 +664,7 @@ ms.locfileid: "89267660"
 | eventType | string | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
 | EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| data | object | 媒体服务事件数据。 |
+| 数据 | object | 媒体服务事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 

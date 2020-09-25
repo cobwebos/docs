@@ -6,20 +6,29 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 09/22/2020
+ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325532"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
 可以根据需要为 Windows 或 Linux 虚拟机装载或卸载卷。  Azure NetApp 文件上提供了 Linux 虚拟机的装载说明。  
 
-> [!IMPORTANT] 
-> 必须至少有一个导出策略才能访问 NFS 卷。
+## <a name="requirements"></a>要求 
+
+* 必须至少有一个导出策略才能访问 NFS 卷。
+* 若要成功装载 NFS 卷，请确保在客户端和 NFS 卷之间打开以下 NFS 端口：
+    * 111 = `RPCBIND/Portmapper`
+    * 635 = `mountd`
+    * 2049 = `nfs`
+    * 4045 = `nlockmgr` 仅)  (NFSv3
+    * 4046 = `status` 仅)  (NFSv3
+
+## <a name="steps"></a>步骤
 
 1. 单击 " **卷** " 边栏选项卡，然后选择要装入的卷。 
 2. 单击所选卷中的 " **装载说明** "，然后按照说明来装载卷。 

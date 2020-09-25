@@ -4,21 +4,21 @@ description: Azure 安全基准 V2 管理和策略
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e8a5196bf71712caae1218933ed13345f4cecd99
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059161"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336218"
 ---
-# <a name="security-control-governance-and-strategy"></a>安全控制：监管和策略
+# <a name="security-control-v2-governance-and-strategy"></a>安全控制 V2：监管和策略
 
-备份和恢复涵盖了控制，以确保执行、验证和保护不同服务层上的数据和配置备份。
+调控和策略提供的指导可确保一致的安全策略和记录的管理方法来指导和维持安全保障，包括为不同的云安全功能、统一的技术策略和支持策略和标准建立角色和责任。
 
-## <a name="gs-1-define-asset-management-and-protection-strategy"></a>GS-1：定义资产管理和保护策略
+## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定义资产管理和数据保护策略
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
@@ -44,47 +44,70 @@ ms.locfileid: "90059161"
 
 -   适当的加密标准
 
-注意：针对云和本地的资产管理和保护方法可能会有所不同，具体取决于多个因素，如应用程序服务/托管模型、业务风险和合规性要求。 
-
+有关详细信息，请参阅以下资源：
 - [Azure 安全体系结构建议-存储、数据和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
 
 - [Azure 安全性基础知识-Azure 数据安全、加密和存储](../fundamentals/encryption-overview.md)
 
 - [云采用框架-Azure 数据安全和加密最佳实践](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure 安全基准-资产管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全基准-资产管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
 
-- [Azure 安全基准-数据保护](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全基准-数据保护](/azure/security/benchmarks/security-benchmark-v2-data-protection)
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-2-define-security-posture-management-strategy"></a>GS-2：定义安全状态管理策略
+## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定义企业分段策略
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-2 | 20、3、5 | RA、CM、SC |
+| GS-2 | 4，9，16 | AC、CA、SC |
+
+建立企业范围的策略，以便使用标识、网络、应用程序、订阅、管理组和其他控件的组合对资产进行分段。
+
+仔细权衡安全分离需求与实现需要彼此通信和访问数据的系统日常操作的需求。
+
+确保跨控件类型（包括网络安全、标识和访问模型以及应用程序权限/访问模型以及人机处理控件）一致地实现分段策略。
+
+- [有关 Azure 中的分段策略的指南 (视频) ](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+
+- [有关 Azure 中的分段策略的指南 (文档) ](/security/compass/governance#enterprise-segmentation-strategy)
+
+- [使网络分段与企业分段策略相匹配](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
+
+**责任**：客户
+
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+
+- [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
+
+## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定义安全状态管理策略
+
+| Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
+|--|--|--|--|
+| GS-3 | 20、3、5 | RA、CM、SC |
 
 持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和高度暴露的攻击面，例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等。
 
-- [Azure 安全基准-状况和漏洞管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全基准-状况和漏洞管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-3-align-organization-roles-responsibilities-and-accountabilities"></a>GS-3：协调组织角色、职责和责任
+## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：协调组织角色、职责和责任
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-3 | 空值 | PL，PM |
+| GS-4 | 空值 | PL，PM |
 
-确保为安全组织中的角色和责任记录并传达清晰的策略。 为安全决策提供明确的责任，为共享责任模型提供教育，并为云安全技术教育提供明确的优先级。 
+确保为安全组织中的角色和责任记录并传达清晰的策略。 为安全决策提供明确的责任，为每个人提供对共享责任模型的培训，并向技术团队培训技术团队以保护云。
 
 - [Azure 安全最佳做法 1-人员：教育团队开展云安全旅程](https://aka.ms/AzSec1)
 
@@ -94,15 +117,15 @@ ms.locfileid: "90059161"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-4-define-network-security-strategy"></a>GS-4：定义网络安全策略
+## <a name="gs-5-define-network-security-strategy"></a>GS-5：定义网络安全策略
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-4 | 9 | CA，SC |
+| GS-5 | 9 | CA，SC |
 
 建立 Azure 网络安全方法，作为组织整体安全访问控制策略的一部分。  
 
@@ -120,11 +143,11 @@ ms.locfileid: "90059161"
 
 -   最新的网络安全项目 (例如网络关系图、引用网络体系结构) 
 
-注意：适用于云和本地的网络安全方法可能会有所不同，具体取决于多个因素，如应用程序服务模式、威胁泄密和混合网络设置。
+有关详细信息，请参阅以下资源：
 
 - [Azure 安全最佳实践 11-体系结构。单一统一安全策略](https://aka.ms/AzSec11)
 
-- [Azure 安全基准-网络安全](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure 安全基准-网络安全](/azure/security/benchmarks/security-benchmark-v2-network-security)
 
 - [Azure 网络安全概述](../fundamentals/network-overview.md)
 
@@ -132,15 +155,15 @@ ms.locfileid: "90059161"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-5-define-identity-and-privileged-access-strategy"></a>GS-5：定义标识和特权访问策略
+## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定义标识和特权访问策略
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-5 | 16，4 | AC、AU、SC |
+| GS-6 | 16，4 | AC、AU、SC |
 
 建立 Azure 标识和特权访问方法，作为组织整体安全访问控制策略的组成部分。  
 
@@ -156,11 +179,11 @@ ms.locfileid: "90059161"
 
 -   用户标识和访问评审和协调过程
 
-注意：针对云和本地的标识和特权访问方法可能会有所不同，具体取决于多个因素，如数据/应用程序访问路径、服务模型和客户/合作伙伴访问策略。
+有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准-标识管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全基准-标识管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
 
-- [Azure 安全基准-特权访问](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure 安全基准-特权访问](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
 
 - [Azure 安全最佳实践 11-体系结构。单一统一安全策略](https://aka.ms/AzSec11)
 
@@ -168,15 +191,15 @@ ms.locfileid: "90059161"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-6-define-logging-and-threat-response-strategy"></a>GS-6：定义日志记录和威胁响应策略
+## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7：定义日志记录和威胁响应策略
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-6 | 19 | IR，AU，RA，SC |
+| GS-7 | 19 | IR，AU，RA，SC |
 
 建立日志记录和威胁响应策略，以快速检测和修正威胁，同时满足合规性要求。 确定提供具有高质量警报和无缝体验的分析师的优先级，以便他们能够专注于威胁而不是集成和手动步骤。 
 
@@ -196,11 +219,10 @@ ms.locfileid: "90059161"
 
 -   处理事件和事件后活动的过程，如经验教训和证据保留期
 
-注意：适用于云和本地的日志记录和威胁检测方法可能会因多种因素而异，例如符合性要求、威胁形势以及检测和修正功能。 
+有关详细信息，请参阅以下资源：
+- [Azure 安全基准-记录和威胁检测](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
 
-- [Azure 安全基准-记录和威胁检测](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
-
-- [Azure 安全基准-事件响应](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全基准-事件响应](/azure/security/benchmarks/security-benchmark-v2-incident-response)
 
 - [Azure 安全最佳实践 4-过程。更新云的事件响应过程](https://aka.ms/AzSec11)
 
@@ -210,15 +232,15 @@ ms.locfileid: "90059161"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-7-define-backup-and-recovery-strategy"></a>GS-7：定义备份和恢复策略
+## <a name="gs-8-define-backup-and-recovery-strategy"></a>GS-8：定义备份和恢复策略
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-7 | 10 | CP |
+| GS-8 | 10 | CP |
 
 为组织建立 Azure 备份和恢复策略。 
 
@@ -230,9 +252,8 @@ ms.locfileid: "90059161"
 
 -   使用访问控制和数据加密保护备份
 
-注意：针对云和本地的备份和恢复方法可能会有所不同，具体取决于多个因素，如基础结构冗余、应用程序服务/托管模型和合规性要求。
-
-- [Azure 安全基准-备份和恢复](/azure/security/benchmarks/security-controls-v2-backup-recovery)
+有关详细信息，请参阅以下资源：
+- [Azure 安全基准-备份和恢复](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
 
 - [Azure 良好体系结构框架-Azure 应用程序的备份和灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)
 
@@ -240,7 +261,7 @@ ms.locfileid: "90059161"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有利益干系人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 

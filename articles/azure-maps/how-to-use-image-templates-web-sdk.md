@@ -4,17 +4,17 @@ description: 了解如何使用 Azure Maps Web SDK 将图像图标和图案填�
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: d6c7ba255b0dcec280d05eab36be71b8c9a726ae
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335545"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 
@@ -122,7 +122,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 | 名称 | 返回类型 | 说明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 向塔命名空间添加自定义 SVG 图像模板。 |
-|  `getImageTemplate(templateName: string, scale?: number)`| 字符串 | 按名称检索 SVG 模板。 |
+|  `getImageTemplate(templateName: string, scale?: number)`| string | 按名称检索 SVG 模板。 |
 | `getAllImageTemplateNames()` | string[] |  按名称检索 SVG 模板。 |
 
 SVG 图像模板支持以下占位符值：

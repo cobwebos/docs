@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335963"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的直通身份验证
 
@@ -160,7 +160,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 有关详细信息，请参阅[配置已加入混合 Azure AD 的设备](../devices/hybrid-azuread-join-plan.md)。
 
-#### <a name="branding"></a>署名
+#### <a name="branding"></a>品牌打造
 
 如果你的组织已[自定义 AD FS 登录页](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以使显示的内容与组织更相关，请考虑[在 Azure AD 登录页中使用类似的自定义项](../fundamentals/customize-branding.md)。
 
@@ -201,7 +201,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 * 使用 **Convert-MSOLDomainToFederated** cmdlet 将托管域转换为联合域。
 * 根据需要配置其他声明规则。
 
-### <a name="plan-communications"></a>规划沟通
+### <a name="plan-communications"></a>计划通信
 
 规划部署和支持的一个重要组成部分是确保主动通知最终用户将要发生哪些变化。 用户应该提前知道他们可能会遇到哪种情况，以及需要做些什么。
 
@@ -283,9 +283,9 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 
 4. 运行身份验证代理安装。 在安装过程中，必须输入全局管理员帐户的凭据。
 
-   ![显示 Microsoft Azure AD Connect“身份验证代理包”页上的“安装”按钮的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![显示用于运行 Microsoft Azure AD 连接身份验证代理包的 "安装" 按钮的屏幕截图。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![显示登录页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![显示 Microsoft 登录页的屏幕截图。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. 安装身份验证代理后，可以返回到直通身份验证代理运行状况页，以检查附加代理的状态。
 
@@ -327,7 +327,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
    * “无缝单一登录”设置为“已启用”。********
    * “直通身份验证”设置为“已启用”。********
    
-   ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![屏幕截图，显示用户登录部分中要验证的设置。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. 选择 " **直通身份验证** "，并验证状态是否为 " **活动**"。<br />
    
    如果身份验证代理不处于活动状态，请先完成某些[故障排除步骤](./tshoot-connect-pass-through-authentication.md)，然后继续在下一步骤进行域转换过程。 在验证直通身份验证代理是否已成功安装并且其在 Azure 门户中的状态显示为“活动”之前，如果转换域，可能存在身份验证中断的风险。****
@@ -368,7 +368,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
    * “无缝单一登录”设置为“已启用”。********
    * “直通身份验证”设置为“已启用”。********<br />
 
-   ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![在 Azure AD 门户的 "用户登录" 部分中显示设置的屏幕截图。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>测试和后续步骤
 

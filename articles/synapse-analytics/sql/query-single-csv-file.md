@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489701"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288284"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
@@ -29,7 +29,7 @@ ms.locfileid: "87489701"
 
 ## <a name="quickstart-example"></a>快速入门示例
 
-`OPENROWSET`函数可以通过提供文件的 URL 来读取 CSV 文件的内容。
+`OPENROWSET` 函数可以通过提供文件的 URL 来读取 CSV 文件的内容。
 
 ### <a name="read-a-csv-file"></a>读取 csv 文件
 
@@ -44,7 +44,7 @@ from openrowset(
     firstrow = 2 ) as rows
 ```
 
-选项 `firstrow` 用于跳过在这种情况下表示标头的 CSV 文件中的第一行。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+选项 `firstrow` 用于跳过在这种情况下表示标头的 CSV 文件中的第一行。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为 [sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 ### <a name="data-source-usage"></a>数据源使用情况
 
@@ -68,11 +68,11 @@ from openrowset(
     ) as rows
 ```
 
-如果使用 SAS 密钥或自定义标识来保护数据源，则可以[使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+如果使用 SAS 密钥或自定义标识来保护数据源，则可以 [使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
 
 ### <a name="explicitly-specify-schema"></a>显式指定架构
 
-`OPENROWSET`使您能够使用子句显式指定要读取的列 `WITH` ：
+`OPENROWSET` 使您能够使用子句显式指定要读取的列 `WITH` ：
 
 ```sql
 select top 10 *

@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489718"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288318"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）查询 JSON 文件
 
-在本文中，你将了解如何在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）编写查询。 查询的目标是使用[OPENROWSET](develop-openrowset.md)读取 JSON 文件。 
+在本文中，你将了解如何在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）编写查询。 查询的目标是使用 [OPENROWSET](develop-openrowset.md)读取 JSON 文件。 
 - 将多个 JSON 文档存储为 JSON 数组的标准 JSON 文件。
 - 行分隔的 JSON 文件，其中 JSON 文档用换行符分隔。 这些类型的文件的常见扩展为 `jsonl` 、 `ldjson` 和 `ndjson` 。
 
 ## <a name="read-json-documents"></a>读取 JSON 文档
 
-查看 JSON 文件内容的最简单方法是提供要函数的文件 URL `OPENROWSET` ，指定 csv `FORMAT` ，并 `0x0b` 为和设置值 `fieldterminator` `fieldquote` 。 如果需要读取行分隔的 JSON 文件，这就足够了。 如果你有经典 JSON 文件，则需要为设置值 `0x0b` `rowterminator` 。 `OPENROWSET`函数将分析 JSON 并返回以下格式的每个文档：
+查看 JSON 文件内容的最简单方法是提供函数的文件 URL `OPENROWSET` ，指定 csv `FORMAT` ，并 `0x0b` 为和设置值 `fieldterminator` `fieldquote` 。 如果需要读取行分隔的 JSON 文件，这就足够了。 如果你有经典 JSON 文件，则需要为设置值 `0x0b` `rowterminator` 。 `OPENROWSET` 函数将分析 JSON 并返回以下格式的每个文档：
 
 | 文档 |
 | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "87489718"
 |{"date_rep"： "2020-26"、"day"：26、"month"：7、"year"：2020、"事例"：4，"deaths"：0，"geo_id"： "AF"}|
 |{"date_rep"： "2020-27"，"day"：27，"month"：7，"year"：2020，"事例"：8，"deaths"：0，"geo_id"： "AF"}|
 
-如果该文件公开可用，或者您的 Azure AD 标识可以访问此文件，则您应该能够使用类似于下面的示例中所示的查询查看该文件的内容。
+如果该文件公开可用，或者您的 Azure AD 标识可以访问此文件，则应使用类似于下面的示例中所示的查询来查看文件的内容。
 
 ### <a name="read-json-files"></a>读取 JSON 文件
 
@@ -58,11 +58,11 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-此查询将每个 JSON 文档作为结果集的单独行返回。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。 
+此查询将每个 JSON 文档作为结果集的单独行返回。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为 [sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。 
 
 ### <a name="data-source-usage"></a>数据源使用情况
 
-前面的示例使用文件的完整路径。 作为替代方法，你可以创建一个外部数据源，其中包含指向存储根文件夹的位置，并使用该数据源和函数中的文件的相对路径 `OPENROWSET` ：
+前面的示例使用文件的完整路径。 作为替代方法，可以创建一个外部数据源，其中包含指向存储根文件夹的位置，并使用该数据源和函数中的文件的相对路径 `OPENROWSET` ：
 
 ```sql
 create external data source covid
@@ -88,7 +88,7 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-如果使用 SAS 密钥或自定义标识来保护数据源，则可以[使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+如果使用 SAS 密钥或自定义标识来保护数据源，则可以 [使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
 
 在以下部分中，可以了解如何查询各种类型的 JSON 文件。
 
@@ -105,7 +105,7 @@ from openrowset(
 
 ### <a name="sample-json-document"></a>示例 JSON 文档
 
-查询示例读取包含具有以下结构的文档的*json*文件：
+查询示例读取包含具有以下结构的文档的 *json* 文件：
 
 ```json
 {
@@ -126,7 +126,7 @@ from openrowset(
 
 ### <a name="query-json-files-using-json_value"></a>使用 JSON_VALUE 查询 JSON 文件
 
-下面的查询演示了如何使用[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)从 JSON 文档中检索标量值（标题、发布者）：
+下面的查询演示了如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 从 JSON 文档 (标题、发布者) 检索标量值：
 
 ```sql
 select

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b4a0a411f51eed3a262ee59eb8e93b983755af3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2499a89907eb63f01adbc80a6d206911c09c1259
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265946"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件访问：阻止传统身份验证
 
@@ -26,7 +26,7 @@ ms.locfileid: "90601548"
 
 以下步骤将帮助创建条件访问策略以阻止旧身份验证请求。 此策略启动时设为[仅限报告模式](howto-conditional-access-insights-reporting.md)，以便管理员确定他们对现有用户的影响。 当管理员认为策略按预期方式应用时，可以通过添加特定组并排除其他组来切换到“开”或暂存部署。
 
-1. 以全局管理员身份登录到 **Azure 门户**。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure 门户。
 1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”。
 1. 为策略指定一个名称。 建议组织创建一个有意义的策略名称标准。

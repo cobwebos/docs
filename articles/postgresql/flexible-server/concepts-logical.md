@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336320"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器中的逻辑复制和逻辑解码
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
-Azure Database for PostgreSQL 灵活的服务器支持 PostgreSQL 的逻辑复制和逻辑解码功能。
+对于 Postgres 版本11，Azure Database for PostgreSQL 灵活的服务器支持 PostgreSQL 的逻辑复制和逻辑解码功能。
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>比较逻辑复制和逻辑解码
 逻辑复制和逻辑解码具有几个不同之处。 它们
@@ -43,7 +43,11 @@ Azure Database for PostgreSQL 灵活的服务器支持 PostgreSQL 的逻辑复�
 1. 将服务器参数设置 `wal_level` 为 `logical` 。
 2. 重新启动服务器以应用 `wal_level` 更改。
 3. 确认 PostgreSQL 实例允许来自连接资源的网络流量。
-4. 执行复制命令时，请使用管理员用户。
+4. 授予管理员用户复制权限。
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>使用逻辑复制和逻辑解码
 
@@ -54,7 +58,7 @@ Azure Database for PostgreSQL 灵活的服务器支持 PostgreSQL 的逻辑复�
 
 下面是可用于尝试逻辑复制的一些示例代码。
 
-1. 连接到发布服务器。 创建表并添加一些数据。
+1. 连接到发布服务器数据库。 创建表并添加一些数据。
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ Azure Database for PostgreSQL 灵活的服务器支持 PostgreSQL 的逻辑复�
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. 连接到订阅服务器。 使用与发布服务器相同的架构创建一个表。
+3. 连接到订阅服务器数据库。 使用与发布服务器相同的架构创建一个表。
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. 创建将连接到之前创建的发布的订阅。
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. 你现在可以在订阅服务器上查询表。 你会看到它已从发布服务器接收数据。
@@ -170,8 +174,9 @@ SELECT * FROM pg_replication_slots;
 
 针对**使用的最大事务 id**和**存储**[设置警报](howto-alert-on-metrics.md)，以在值超过正常阈值时通知你。 
 
-## <a name="read-replicas"></a>只读副本
-灵活的服务器当前不支持 Azure Database for PostgreSQL 读取副本。
+## <a name="limitations"></a>限制
+* **读取副本** -对灵活的服务器当前不支持 Azure Database for PostgreSQL 读取副本。
+* **槽和 HA 故障转移** -主服务器上的逻辑复制槽在辅助 AZ 中的备用服务器上不可用。 如果服务器使用区域冗余高可用性选项，则此选项适用于你。 如果故障转移到备用服务器，则不会在备用服务器上使用逻辑复制槽。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关[网络选项](concepts-networking.md)的详细信息

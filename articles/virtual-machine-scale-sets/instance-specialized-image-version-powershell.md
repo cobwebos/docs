@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 8ba9379125917c482ce12cb28b6fa6e5be809203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fd23e52f045ba007d4b3b48b5e2e4269df53975
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336099"
 ---
 # <a name="create-a-scale-set-from-a-specialized-image-using-powershell"></a>使用 PowerShell 从专用化映像创建规模集 
 
@@ -134,7 +134,7 @@ New-AzVmss `
 创建和配置所有的规模集资源和 VM 需要几分钟时间。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 映像生成器（预览版）](../virtual-machines/linux/image-builder-overview.md)可帮助自动创建映像版本，甚至还可以使用它来更新[现有映像版本并创建新的映像版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。  
+[Azure 映像生成器 (预览版) ](../virtual-machines/linux/image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。  
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
@@ -142,5 +142,5 @@ New-AzVmss `
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。
+有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../virtual-machines/troubleshooting-shared-images.md)。
 

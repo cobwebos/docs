@@ -1,5 +1,5 @@
 ---
-title: 服务器参数–超大规模 (超大规模 (Citus) -Azure Database for PostgreSQL
+title: 服务器参数–超大规模 (Citus) -Azure Database for PostgreSQL
 description: 超大规模中的参数 (Citus) SQL API
 author: jonels-msft
 ms.author: jonels
@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 2b4d3d44cb4e78f52ab03f31e58df5e66118ae25
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441504"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336235"
 ---
 # <a name="server-parameters"></a>服务器参数
 
 有多种服务器参数会影响超大规模 (Citus) 的行为，无论是标准 PostgreSQL，还是特定于超大规模 (Citus) 。
 可以在超大规模 (Citus) 服务器组的 Azure 门户中设置这些参数。 在 " **设置** " 类别下，选择 **辅助角色节点** 参数或 **协调器节点参数**。 这些页允许为所有辅助角色节点设置参数，或仅为协调器节点设置参数。
 
-## <a name="hyperscale-parameters"></a>超大规模参数
+## <a name="hyperscale-citus-parameters"></a>超大规模 (Citus) 参数
 
 > [!NOTE]
 >
-> 运行旧版本的 Citus 引擎的超大规模服务器组可能不提供以下列出的所有参数。
+> 运行旧版 Citus 引擎的超大规模 (Citus) 服务器组可能不提供以下列出的所有参数。
 
 ### <a name="general-configuration"></a>常规配置
 
@@ -53,7 +53,7 @@ ms.locfileid: "89441504"
 
 #### <a name="citusdistributed_deadlock_detection_factor-floating-point"></a>citus \_ 浮点 (分布式死锁 \_ 检测 \_ 因子) 
 
-设置在检查分布式死锁之前要等待的时间。 特别要等待的时间将是此值乘以 PostgreSQL \' s [死锁 \_ 超时](https://www.postgresql.org/docs/current/static/runtime-config-locks.html) 设置。 默认值是 `2`。 值 `-1` 禁用分布式死锁检测。
+设置在检查分布式死锁之前要等待的时间。 特别要等待的时间将是此值乘以 PostgreSQL \' s [死锁 \_ 超时](https://www.postgresql.org/docs/current/static/runtime-config-locks.html) 设置。 默认值为 `2`。 值 `-1` 禁用分布式死锁检测。
 
 #### <a name="citusnode_connection_timeout-integer"></a>citus \_ 连接 \_ 超时 (整数) 
 

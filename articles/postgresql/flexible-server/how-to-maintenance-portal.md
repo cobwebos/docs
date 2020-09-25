@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b06120437555ec71bc431cb1429120cb5e1987f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be6040b8b84a4b86746d62bd2f1c07f0ffea0a3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336286"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--flexible-server"></a>管理 Azure Database for PostgreSQL –灵活服务器的计划维护设置
  
@@ -31,9 +31,9 @@ ms.locfileid: "90934241"
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>有关计划的维护事件的通知
  
-你可以使用 Azure 服务运行状况来查看有关即将发生的 [通知](/azure/service-health/service-notifications.md) 并在你的灵活的服务器上执行计划的维护。 还可以在 Azure 服务运行状况中 [设置](/azure/service-health/resource-health-alert-monitor-guide.md) 警报，以获取有关维护事件的通知。
+你可以使用 Azure 服务运行状况来查看有关即将发生的 [通知](../../service-health/service-notifications.md) 并在你的灵活的服务器上执行计划的维护。 还可以在 Azure 服务运行状况中 [设置](../../service-health/resource-health-alert-monitor-guide.md) 警报，以获取有关维护事件的通知。
  
 ## <a name="next-steps"></a>后续步骤  
  
 * 了解 [Azure Database for PostgreSQL-灵活服务器中的计划内维护](concepts-maintenance.md)
-* 了解 [Azure 服务运行状况](/azure/service-health/overview.md)
+* 了解 [Azure 服务运行状况](../../service-health/overview.md)

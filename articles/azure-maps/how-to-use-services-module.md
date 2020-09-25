@@ -4,17 +4,17 @@ description: 了解 Azure Maps 服务模块。 请参阅如何加载和使用此
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0daa56c03f2a841d59e73d5f47f67a84370ea972
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 4368e71e0ae6185214a0e3e15773fbe1aef375de
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086294"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335307"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 

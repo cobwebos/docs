@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288607"
 ---
 # <a name="use-transactions-in-sql-pool"></a>在 SQL 池中使用事务
 
@@ -29,10 +29,10 @@ ms.locfileid: "87500753"
 
 SQL 池实现 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITTED。  你可以通过在连接到主数据库时为用户数据库打开 READ_COMMITTED_SNAPSHOT 数据库选项，将默认的隔离级别更改为 READ COMMITTED SNAPSHOT ISOLATION。  
 
-启用后，将在 READ COMMITTED SNAPSHOT ISOLATION 下执行此数据库中的所有事务，并且将不接受会话级别的设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)。
+启用后，将在 READ COMMITTED SNAPSHOT ISOLATION 下执行此数据库中的所有事务，并且将不接受会话级别的设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="transaction-size"></a>事务大小
-单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，通过将限制乘以分发数，可得总分配额。 
+单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，可以通过将限制乘以分布计数来计算总分配量。 
 
 要预计事务中的最大行数，请将分发上限除以每一行的总大小。 对于可变长度列，考虑采用平均的列长度而不使用最大大小。
 
@@ -81,7 +81,7 @@ SQL 池实现 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITT
 
 事务大小限制按每个事务或操作进行应用。 不会跨所有当前事务进行应用。 因此，允许每个事务向日志写入此数量的数据。
 
-为优化和最大程度减少写入到日志中的数据量，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。
+若要优化和最大程度减少写入到日志中的数据量，请参阅 [事务最佳实践](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 一文。
 
 > [!WARNING]
 > 最大事务大小仅可在哈希或者 ROUND_ROBIN 分布式表（其中数据均匀分布）中实现。 如果事务以偏斜方式向分布写入数据，那么更有可能在达到最大事务大小之前达到该限制。
@@ -134,11 +134,11 @@ SELECT @xact_state AS TransactionState;
 
 前面的代码提供以下错误消息：
 
-Msg 111233, Level 16, State 1, Line 1 111233；当前事务已中止，所有挂起的更改都已回退。 原因：仅回退状态的事务未在 DDL、DML 或 SELECT 语句之前显式回退。
+Msg 111233, Level 16, State 1, Line 1 111233；当前事务已中止，所有挂起的更改都已回退。 原因：仅回滚状态的事务未在 DDL、DML 或 SELECT 语句之前显式回滚。
 
 不会获得 ERROR_* 函数的输出值。
 
-在 SQL 池中，该代码需要稍做更改：
+在 SQL 池中，代码需要稍作更改：
 
 ```sql
 SET NOCOUNT ON;
@@ -181,21 +181,19 @@ SELECT @xact_state AS TransactionState;
 
 ## <a name="error_line-function"></a>Error_Line() 函数
 
-另外值得注意的是，SQL 池不实现或支持 ERROR_LINE() 函数。 如果代码中包含此函数，需要将它删除才能符合 SQL 池的要求。 请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [LABEL](develop-label.md) 一文。
+另外值得注意的是，SQL 池不实现或支持 ERROR_LINE() 函数。 如果代码中包含此函数，则需要将其删除才能符合 SQL 池。 请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [标签](develop-label.md) 文章。
 
 ## <a name="use-of-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 
 THROW 是在 SQL 池中引发异常的新式做法，但也支持 RAISERROR。 不过，有些值得注意的差异。
 
-* 对于 THROW，用户定义的错误消息数目不能在 100,000 - 150,000 的范围内
+* 用户定义的错误消息数目不能在 100000-150000 范围内用于 THROW
 * RAISERROR 错误消息固定为 50,000
 * 不支持 sys.messages
 
 ## <a name="limitations"></a>限制
 
-SQL 池有一些与事务相关的其他限制。
-
-这些限制如下：
+SQL 池有一些与事务相关的其他限制。 这些限制如下：
 
 * 无分布式事务
 * 不允许嵌套事务

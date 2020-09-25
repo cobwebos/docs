@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601667"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265929"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
@@ -89,6 +89,8 @@ ms.locfileid: "90601667"
 
 > [!WARNING]
 > 如果使用的是公共预览版中的 [可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md) 功能，请注意，我们不支持为同一用户或应用组合创建两种不同的策略：一个使用此功能，另一个具有可配置的令牌生存期功能。 Microsoft 计划在 2020 5 月1日停用可配置的令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
+>
+> 在启用登录频率之前，请确保租户中禁用了其他重新身份验证设置。 如果已启用 "记住受信任的设备上的 MFA"，请确保在使用登录频率之前禁用该功能，因为这两个设置一起使用可能会导致用户意外提示。 若要了解有关重新验证提示和会话生存期的详细信息，请参阅文章： [优化重新验证提示和了解 Azure 多重身份验证的会话生存期](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
 ### <a name="policy-1-sign-in-frequency-control"></a>策略1：登录频率控制
 

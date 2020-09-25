@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325566"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "89662456"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-否。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+不是。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅 [Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "89662456"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>能否为 Azure NetApp 文件卷设置或选择自己的 IP 地址？  
 
-否。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
+不是。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp 文件是否支持双堆栈 (IPv4 和 IPv6) VNet？
 
@@ -132,6 +132,12 @@ Azure NetApp 文件支持 NFSv3 和 NFSv 4.1。 可以使用任一 NFS 版本 [�
 
 你可以使用卷的导出策略指定根帐户是否可以访问该卷。 有关详细信息，请参阅 [配置 NFS 卷的导出策略](azure-netapp-files-configure-export-policy.md) 。
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>能否为多个卷 (卷创建令牌) 使用相同的文件路径？
+
+可以。 但是，文件路径必须在不同的订阅或不同的区域中使用。   
+
+例如，创建一个名为的卷 `vol1` 。 然后，在同一订阅和区域中创建另一个也被称为 `vol1` 不同容量池中的卷。 在这种情况下，使用相同的卷名称 `vol1` 将导致错误。 若要使用相同的文件路径，名称必须在不同的区域或订阅中。
+
 ## <a name="smb-faqs"></a>SMB 常见问题解答
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Azure NetApp 文件支持哪些 SMB 版本？
@@ -163,12 +169,6 @@ Azure NetApp 文件支持 Windows Server 2008r2SP1-2019 版本的 Active Directo
 SMB 客户端报告的卷大小是 Azure NetApp 文件量可以增长到的最大大小。 SMB 客户端上显示的 Azure NetApp 文件卷的大小不会反映卷的配额或大小。 可以通过 Azure 门户或 API 获取 Azure NetApp 文件的容量或配额。
 
 <!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
-
-<!--
 ### Does Azure NetApp Files support LDAP signing? 
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
@@ -196,7 +196,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-否。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+不是。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何实现确定目录是否接近限制大小？
 
@@ -253,11 +253,11 @@ NetApp 提供基于 SaaS 的解决方案，即 [Netapp 云同步](https://cloud.
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-否。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+不是。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-否。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+不是。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

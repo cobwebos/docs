@@ -5,12 +5,12 @@ description: 了解如何安装和配置 NGINX 入口控制器，该控制器使
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 452e7d1e8dad0a3ae3d6393598f5f24ef2153aa8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 30fb0d000a64c7e460dd0ccf7e7eaf4b67957c8c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335562"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -32,7 +32,7 @@ ms.locfileid: "88855926"
 
 本文还假定你在 AKS 群集所在的资源组中有一个包含[DNS 区域][dns-zone]的[自定义域][custom-domain]。
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用最新版本的 Helm，并且有权访问 *nginx* 和 *jetstack* Helm 存储库。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用最新版本的 Helm，并且有权访问 ingress-nginx 和 jetstack Helm 存储库 。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -84,7 +84,7 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name '*' \
+    --record-set-name * \
     --ipv4-address MY_EXTERNAL_IP
 ```
 

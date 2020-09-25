@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288301"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）查询 Parquet 文件
 
@@ -22,7 +22,7 @@ ms.locfileid: "87496230"
 
 ## <a name="quickstart-example"></a>快速入门示例
 
-`OPENROWSET`函数可以通过提供文件的 URL 来读取 parquet 文件的内容。
+`OPENROWSET` 函数可以通过提供文件的 URL 来读取 parquet 文件的内容。
 
 ### <a name="read-parquet-file"></a>读取 parquet 文件
 
@@ -35,7 +35,7 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-请确保访问此文件。 如果文件受 SAS 密钥或自定义 Azure 标识保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+请确保访问此文件。 如果文件受 SAS 密钥或自定义 Azure 标识保护，则需要为 [sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 ### <a name="data-source-usage"></a>数据源使用情况
 
@@ -53,11 +53,11 @@ from openrowset(
     ) as rows
 ```
 
-如果使用 SAS 密钥或自定义标识来保护数据源，则可以[使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+如果使用 SAS 密钥或自定义标识来保护数据源，则可以 [使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
 
 ### <a name="explicitly-specify-schema"></a>显式指定架构
 
-`OPENROWSET`使您能够使用子句显式指定要读取的列 `WITH` ：
+`OPENROWSET` 使您能够使用子句显式指定要读取的列 `WITH` ：
 
 ```sql
 select top 10 *
@@ -161,7 +161,7 @@ Parquet 文件包含每一列的类型说明。 下表介绍了如何将 Parquet
 | --- | --- | --- |
 | BOOLEAN | | bit |
 | BINARY/BYTE_ARRAY | | varbinary |
-| DOUBLE | | float |
+| DOUBLE | | FLOAT |
 | FLOAT | | real |
 | INT32 | | int |
 | INT64 | | bigint |

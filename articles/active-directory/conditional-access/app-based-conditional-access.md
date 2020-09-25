@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266133"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的客户端应用进行云应用访问
 
@@ -47,7 +47,7 @@ ms.locfileid: "90601956"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
    1. 选择“完成”  。
-1. 在“云应用或操作”   >   “包括”下，选择“Office 365 (预览版)”。 
+1. 在 "**云应用或操作**  >  **包括**" 下，选择 " **Office 365**"。
 1. 在“条件”下，选择“设备平台”。  
    1. 将“配置”设置为“是”。  
    1. 包括 Android 和 iOS。  

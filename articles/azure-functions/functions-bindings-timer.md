@@ -7,16 +7,16 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325787"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
+# <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器
 
-本文介绍如何在 Azure Functions 中使用计时器触发器。 计时器触发器可以按计划运行函数。 
+本文介绍如何在 Azure Functions 中使用计时器触发器。 计时器触发器可以按计划运行函数。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -80,6 +80,21 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+以下示例函数的触发和执行间隔为 5 分钟。 函数上的 `@TimerTrigger` 注释使用与 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)相同的字符串格式定义计划。
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [计时器对象](#usage)将传递到函数中。
@@ -111,9 +126,44 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下面的示例演示如何在[PowerShell](./functions-reference-powershell.md)中配置计时器触发器的*function.js*和*run.ps1*文件。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "Timer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    }
+  ]
+}
+```
+
+```powershell
+# Input bindings are passed in via param block.
+param($Timer)
+
+# Get the current universal time in the default string format.
+$currentUTCtime = (Get-Date).ToUniversalTime()
+
+# The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
+if ($Timer.IsPastDue) {
+    Write-Host "PowerShell timer is running late!"
+}
+
+# Write an information log with the current time.
+Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
+```
+
+[Timer 对象](#usage)的实例作为第一个参数传递给函数。
+
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例使用计时器触发器绑定，其配置在 *function.json* 文件中进行了描述。 使用绑定的实际 [Python 函数](functions-reference-python.md)在 init.py 文件中进行了描述**____。 传入函数的对象的类型为 [azure.functions.TimerRequest 对象](/python/api/azure-functions/azure.functions.timerrequest)。 函数逻辑将写入日志，以指示当前调用是由于错过了计划发生时间。 
+以下示例使用计时器触发器绑定，其配置在 *function.json* 文件中进行了描述。 使用绑定的实际 [Python 函数](functions-reference-python.md)在 init.py 文件中进行了描述**____。 传入函数的对象的类型为 [azure.functions.TimerRequest 对象](/python/api/azure-functions/azure.functions.timerrequest)。 函数逻辑将写入日志，以指示当前调用是由于错过了计划发生时间。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -145,21 +195,6 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-以下示例函数的触发和执行间隔为 5 分钟。 函数上的 `@TimerTrigger` 注释使用与 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)相同的字符串格式定义计划。
-
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>特性和注释
@@ -188,14 +223,6 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支持特性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 不支持特性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 函数上的 `@TimerTrigger` 注释使用与 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)相同的字符串格式定义计划。
@@ -210,6 +237,18 @@ public void keepAlive(
      context.getLogger().info("Timer is triggered: " + timerInfo);
 }
 ```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支持属性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 不支持特性。
 
 ---
 
@@ -229,7 +268,7 @@ public void keepAlive(
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> 在生产中不建议将 runOnStartup 设置为 `true`。 使用此设置会使代码在非常不可预测的时间执行。 在某些生产设置中，这些额外执行可能会导致消耗计划中托管的应用产生明显更高的成本。 例如，启用 **runOnStartup** 后，只要缩放函数应用，就会调用触发器。 在生产中启用 runOnStartup 之前，请确保完全了解函数的生产行为。   
+> 在生产中不建议将 runOnStartup 设置为 `true`。 使用此设置会使代码在非常不可预测的时间执行。 在某些生产设置中，这些额外执行可能会导致消耗计划中托管的应用产生明显更高的成本。 例如，启用 **runOnStartup** 后，只要缩放函数应用，就会调用触发器。 在生产中启用 runOnStartup 之前，请确保完全了解函数的生产行为。
 
 ## <a name="usage"></a>使用情况
 
@@ -250,8 +289,7 @@ public void keepAlive(
 
 如果当前函数调用晚于计划时间，则 `IsPastDue` 属性为 `true`。 例如，函数应用重新启动可能会导致调用被错过。
 
-
-## <a name="ncrontab-expressions"></a>NCRONTAB 表达式 
+## <a name="ncrontab-expressions"></a>NCRONTAB 表达式
 
 Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来解释 NCRONTAB 表达式。 NCRONTAB 表达式类似于 CRON 表达式，不同之处在于它在开头包含额外的第六个字段，用于以秒为单位的时间精度：
 
@@ -300,12 +338,12 @@ CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 �
 
 以字符串表示，当 `hh` 小于 24 时，`TimeSpan` 格式为 `hh:mm:ss`。 当前两个数字是 24 或更大的数字时，格式为 `dd:hh:mm`。 下面是一些示例：
 
-|示例 |何时触发  |
-|---------|---------|
-|"01:00:00" | 每小时        |
-|"00:01:00"|每分钟         |
-|"24:00:00" | 每 24 天        |
-|"1.00:00:00" | 每天        |
+| 示例      | 何时触发 |
+|--------------|----------------|
+| "01:00:00"   | 每小时     |
+| "00:01:00"   | 每分钟   |
+| "24:00:00"   | 每 24 天  |
+| "1.00:00:00" | 每天      |
 
 ## <a name="scale-out"></a>横向扩展
 
