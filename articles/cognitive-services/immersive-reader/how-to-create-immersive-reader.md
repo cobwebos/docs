@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9dcbfa8234aea2c558df107fc919dc74f7b4f39a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639795"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324495"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>创建沉浸式读者资源并配置 Azure Active Directory 身份验证
 
@@ -157,7 +157,7 @@ ms.locfileid: "88639795"
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
-      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
     ```
 
     | 参数 | 注释 |
@@ -170,7 +170,7 @@ ms.locfileid: "88639795"
     | ResourceGroupName |资源是在订阅中的资源组中创建的。 提供现有资源组的名称。 如果资源组不存在，则将创建一个具有此名称的新资源组。 |
     | ResourceGroupLocation |如果资源组不存在，则需要提供要在其中创建组的位置。 若要查找位置列表，请运行 `az account list-locations` 。 使用 *名称* 属性 (在返回的结果中不包含空格) 。 如果资源组已存在，则此参数是可选的。 |
     | AADAppDisplayName |Azure Active Directory 应用程序的显示名称。 如果未找到现有 Azure AD 应用程序，则将创建一个具有此名称的新应用程序。 如果 Azure AD 应用程序已存在，则此参数是可选的。 |
-    | AADAppIdentifierUri |Azure AD 应用程序的 URI。 如果未找到现有 Azure AD 应用，将创建一个具有此 URI 的新应用。 例如，`https://immersivereaderaad-mycompany`。 |
+    | AADAppIdentifierUri |Azure AD 应用程序的 URI。 如果未找到现有 Azure AD 应用，将创建一个具有此 URI 的新应用。 例如 `https://immersivereaderaad-mycompany`。 |
     | AADAppClientSecret |创建的密码，稍后在获取用于启动沉浸式读取器的令牌时进行身份验证。 密码长度必须至少为16个字符，至少包含1个特殊字符，且至少包含1个数字字符。 若要在创建此资源之后管理 Azure AD 应用程序客户端机密，请访问 https://portal.azure.com "> Azure Active Directory > 应用注册-> `[AADAppDisplayName]` > 证书和机密" 边栏选项卡，> 客户端密钥 "部分 (，如下面 Azure AD 的" 管理) 应用程序机密 "屏幕截图所示。 |
     | AADAppClientSecretExpiration |截止日期或日期时间，在该日期或日期时间之后 `[AADAppClientSecret]` 将过期 (例如 "2020-12-31T11：59： 59 + 00： 00" 或 "2020-12-31" ) 。 |
 

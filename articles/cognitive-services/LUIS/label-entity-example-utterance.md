@@ -1,14 +1,16 @@
 ---
 title: 标记实体示例言语
 description: 了解如何在 LUIS 门户的意向详细信息页中使用子实体在示例查询文本中标记计算机学习实体。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303720"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>在示例查询文本中标记计算机学习实体
 
@@ -30,14 +32,14 @@ ms.locfileid: "85610483"
 ## <a name="two-techniques-to-label-entities"></a>标记实体的两种方法
 
 "目的详细信息" 页支持两种标记技术。
-* 选择 "实体"[调色板](#label-with-the-entity-palette-visible)中的 "实体" 或 "子实体"，然后选择 "查询文本文本"。 这是建议的方法，因为您可以根据自己的架构，直观地验证您使用的是正确的实体还是子实体。
-* 在示例中选择 "查询文本"。 执行此操作时，将显示[标记选项](#how-to-label-entity-from-in-place-menu)的弹出菜单。
+* 选择 "实体" [调色板](#label-with-the-entity-palette-visible) 中的 "实体" 或 "子实体"，然后选择 "查询文本文本"。 这是建议的方法，因为您可以根据自己的架构，直观地验证您使用的是正确的实体还是子实体。
+* 在示例中选择 "查询文本"。 执行此操作时，将显示 [标记选项](#how-to-label-entity-from-in-place-menu) 的弹出菜单。
 
 ## <a name="label-with-the-entity-palette-visible"></a>显示实体调色板的标签
 
-在[规划了包含实体的架构](luis-how-plan-your-app.md)后，在标记时保持**实体调色板**可见。 **实体调色板**提醒您计划提取的实体。
+在 [规划了包含实体的架构](luis-how-plan-your-app.md)后，在标记时保持 **实体调色板** 可见。 **实体调色板**提醒您计划提取的实体。
 
-若要访问**实体调色板**，请在 " **@** 示例查询文本" 列表上方的上下文工具栏中选择符号。
+若要访问 **实体调色板**，请在 " **@** 示例查询文本" 列表上方的上下文工具栏中选择符号。
 
 > [!div class="mx-imgBorder"]
 > ![意向详细信息页上的实体调色板的屏幕截图。](media/label-utterances/entity-palette-from-tool-bar.png)
@@ -53,7 +55,7 @@ ms.locfileid: "85610483"
 3. 在示例言语中，用光标绘制  实体。
 
     > [!div class="mx-imgBorder"]
-    > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+    > ![屏幕截图显示了用光标绘制的实体。](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
 ## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>将实体作为功能添加到实体调色板
 
@@ -64,7 +66,7 @@ ms.locfileid: "85610483"
 
 ## <a name="labeling-entity-roles"></a>标记实体角色
 
-实体角色使用**实体调色板**进行标记。
+实体角色使用 **实体调色板**进行标记。
 
 1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”****。
 1. 在实体调色板打开后，从实体列表中选择实体。
@@ -91,7 +93,7 @@ ms.locfileid: "85610483"
 
 ## <a name="confirm-predicted-entity"></a>确认预测的实体
 
-如果在文本范围内有一个虚线框，则表示文本已预测但_尚未标记_。 若要将预测转换为标签，请选择 "查询文本" 行，然后从上下文工具栏中选择 "**确认实体**"。
+如果在文本范围内有一个虚线框，则表示文本已预测但 _尚未标记_。 若要将预测转换为标签，请选择 "查询文本" 行，然后从上下文工具栏中选择 " **确认实体** "。
 
 ## <a name="relabeling-over-existing-entities"></a>在现有实体上重新标记
 
@@ -99,7 +101,7 @@ ms.locfileid: "85610483"
 
 ## <a name="labeling-for-punctuation"></a>为标点符号标记
 
-不需要为标点符号添加标签。 使用[应用程序设置](luis-reference-application-settings.md)来控制标点如何影响查询文本预测。
+不需要为标点符号添加标签。 使用 [应用程序设置](luis-reference-application-settings.md) 来控制标点如何影响查询文本预测。
 
 ## <a name="unlabel-entities"></a>取消标记实体
 
@@ -125,7 +127,7 @@ ms.locfileid: "85610483"
 
 意向预测错误表明，假设当前训练的应用程序的示例查询文本不会预测目的。
 
-了解如何在意向详细信息页上[查看这些错误](luis-how-to-add-intents.md#intent-prediction-errors)。
+了解如何在意向详细信息页上 [查看这些错误](luis-how-to-add-intents.md#intent-prediction-errors) 。
 
 ## <a name="entity-prediction-errors"></a>实体预测错误
 

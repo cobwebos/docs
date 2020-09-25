@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
-ms.reviewer: carlrab,vanto
+ms.reviewer: sstein,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 4a1cfcbf110ab375a0fb357c1856fd0567a1c57a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: aa4bcee7a2eaf5e6ec11b9066ed6eca6b33bdba1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459413"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284113"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -296,7 +296,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>其他资源调控错误消息表
 
-| 错误代码 | severity | 说明 |
+| 错误代码 | 严重性 | 说明 |
 | ---:| ---:|:--- |
 | 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[单一数据库和共用数据库的 SQL 数据库资源限制](resource-limits-logical-server.md)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。 |
 | 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。 有关详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。 <br/>否则，请稍后再试。 |
@@ -311,7 +311,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 以下错误与创建和使用弹性池有关：
 
-| 错误代码 | severity | 说明 | 纠正措施 |
+| 错误代码 | 严重性 | 说明 | 纠正措施 |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 到达弹性池的存储限制时，尝试向数据库写入数据。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)。 <br/> |在可能的情况下，考虑增加弹性池的 DTU 数并/或将存储添加到弹性池，以便提高其存储限制、减少弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 有关弹性池缩放的信息，请参阅[缩放弹性池资源](elastic-pool-scale.md)。|
 | 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)。 <br/> 否则，请稍后再试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |

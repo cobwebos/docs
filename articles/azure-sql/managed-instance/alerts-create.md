@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48dfc456616fa4876b7053483f7377eda21aabde
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283813"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 托管实例创建警报
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本文说明如何使用 Azure 门户为 Azure SQL 托管实例数据库中的数据库设置警报。 警报可以向你发送电子邮件，呼叫 web 挂钩，执行 Azure 功能，runbook，调用外部 ITSM 兼容票证系统，在手机上呼叫你，或在某个指标（例如实例存储大小或 CPU 使用率）达到预定义阈值时发送短信。 本文还提供了设置警报期限的最佳做法。
+本文说明如何使用 Azure 门户为 Azure SQL 托管实例数据库中的数据库设置警报。 当某个指标（例如实例存储大小或 CPU 使用率）达到预定义阈值时，警报可以向你发送电子邮件、调用 webhook、执行 Azure 函数、runbook、调用外部 ITSM 兼容票证系统、在手机上呼叫你或是发送短信。 本文还提供了设置警报期限的最佳做法。
 
 
 ## <a name="overview"></a>概述
@@ -41,7 +41,7 @@ ms.locfileid: "84695688"
 * 调用 Azure runbook
 * 调用外部票证 ITSM 兼容系统
 
-您可以使用[Azure 门户、PowerShell 或 Azure CLI](../../azure-monitor/platform/alerts-classic-portal.md)或[Azure Monitor REST API](/rest/api/monitor/alertrules)来配置和获取有关警报规则的信息。 
+可以使用 [Azure 门户、PowerShell 或 Azure CLI](../../azure-monitor/platform/alerts-classic-portal.md) 或者 [Azure Monitor REST API](/rest/api/monitor/alertrules) 来配置和获取警报规则的相关信息。 
 
 ## <a name="alerting-metrics-available-for-managed-instance"></a>适用于托管实例的警报指标
 
@@ -62,9 +62,9 @@ ms.locfileid: "84695688"
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 门户创建指标的警报规则
 
-1. 在 Azure[门户](https://portal.azure.com/)中，找到你想要监视的托管实例，并将其选中。
+1. 在 Azure [门户](https://portal.azure.com/)中，查找想要监视的托管实例，并选择该实例。
 
-2. 在监视部分中选择“指标”菜单项****。
+2. 在监视部分中选择“指标”菜单项。
 
    ![监视](./media/alerts-create/mi-alerting-menu-annotated.png)
   
@@ -72,9 +72,9 @@ ms.locfileid: "84695688"
 
 4. 选择聚合时间段 - 在给定时间段内达到的平均值、最小值或最大值（Avg、Min 或 Max）。 
 
-5. 选择“新建警报规则”****
+5. 选择“新建警报规则”
 
-6. 在“创建警报规则”窗格中，单击“条件名称”（示例中显示了已使用的存储空间）****
+6. 在“创建警报规则”窗格中，单击“条件名称”（示例中显示了已使用的存储空间）
 
    ![定义条件](./media/alerts-create/mi-create-metrics-alert-smaller-annotated.png)
 
@@ -90,11 +90,11 @@ ms.locfileid: "84695688"
 
 8. 设置评估期 - 聚合粒度（以分钟为单位）和评估频率。 评估频率指示警报系统定期检查阈值条件是否满足的检查时间。
 
-9. 选择操作组。 随即显示“操作组”窗格，通过该窗格可以选择现有操作或创建新操作。 此操作定义将在触发警报时（例如，发送电子邮件、通过电话呼叫你、执行 webhook、Azure 函数或 runbook）。
+9. 选择操作组。 随即显示“操作组”窗格，通过该窗格可以选择现有操作或创建新操作。 此操作定义将在触发警报后发生 (例如，发送电子邮件、在电话上呼叫、执行 webhook、Azure 函数或 runbook，例如) 。
 
    ![Select_action_group](./media/alerts-create/mi-select-action-group-smaller-annotated.png)
 
-   * 若要创建新的操作组，请选择“+ 创建操作组”****
+   * 若要创建新的操作组，请选择“+ 创建操作组”
 
       ![Create_action_group_alerts](./media/alerts-create/mi-create-alert-action-group-smaller-annotated.png)
    
@@ -106,7 +106,7 @@ ms.locfileid: "84695688"
 
       ![Rule_description](./media/alerts-create/mi-rule-details-complete-smaller-annotated.png)
 
-   * 单击“创建警报规则”按钮，完成警报规则的创建****。
+   * 单击“创建警报规则”按钮，完成警报规则的创建。
 
 新的警报规则将在几分钟内激活，并根据设置触发。
 
@@ -119,7 +119,7 @@ ms.locfileid: "84695688"
 
    ![alert_example](./media/alerts-create/mi-email-alert-example-smaller-annotated.png)
 
-电子邮件显示警报名称、阈值的详细信息以及触发警报的原因，可帮助你验证警报并对警报进行故障排除。 可以使用“在 Azure 门户中查看”按钮查看通过 Azure 门户中的电子邮件接收的警报****。 
+电子邮件显示警报名称、阈值的详细信息以及触发警报的原因，可帮助你验证警报并对警报进行故障排除。 可以使用“在 Azure 门户中查看”按钮查看通过 Azure 门户中的电子邮件接收的警报。 
 
 ## <a name="view-suspend-activate-modify-and-delete-existing-alert-rules"></a>查看、暂停、激活、修改和删除现有警报规则
 

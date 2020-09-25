@@ -4,12 +4,12 @@ description: 本文介绍如何配置 Azure 事件网格主题或域的专用终
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508832"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324138"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置专用终结点
 你可以使用 [专用终结点](../private-link/private-endpoint-overview.md) 将事件直接从你的虚拟网络直接发送到你的主题和域， [而无需](../private-link/private-link-overview.md) 通过公共 internet。 专用终结点使用来自你的主题或域的 VNet 地址空间中的 IP 地址。 有关更多概念信息，请参阅 [网络安全](network-security.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "88508832"
         3. 根据你) 选择的资源类型，确认 **目标 subresource** 设置为 " **主题** " 或 " **域** ("。    
         4. 在页面底部选择“下一步:配置 >”按钮。 
 
-            ![专用终结点-资源页](./media/configure-private-endpoints/resource-page.png)
+            ![显示 "创建专用终结点-资源" 页的屏幕截图。](./media/configure-private-endpoints/resource-page.png)
     2. 如果选择 " **使用资源 ID 或别名连接到资源**"，请执行以下步骤：
         1. 输入资源的 ID。 例如：`/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
         2. 对于 " **资源**"，请输入 **主题** 或 **域**。 
@@ -70,9 +70,9 @@ ms.locfileid: "88508832"
 
 | 服务操作 | 服务使用者专用终结点状态 | 说明 |
 |--|--|--|
-| 无 | 挂起的 | 将手动创建连接，并等待私有链接资源所有者进行审批。 |
-| 审批 | 已批准 | 连接已自动或手动批准，可供使用。 |
-| 拒绝 | 已拒绝 | 连接被专用链接资源所有者拒绝。 |
+| 无 | 挂起 | 将手动创建连接，并等待私有链接资源所有者进行审批。 |
+| 审批 | 已批准 | 连接已自动或手动批准，随时可供使用。 |
+| 拒绝 | 已拒绝 | 连接已被专用链接资源所有者拒绝。 |
 | 删除 | 已断开连接 | 连接已被专用链接资源所有者删除，专用终结点仅供参考，应将其删除以清理资源。 |
  
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>如何管理专用终结点连接
@@ -108,7 +108,7 @@ ms.locfileid: "88508832"
 
 1. 选择要拒绝的 **专用终结点** ，然后在工具栏上选择 " **拒绝** "。
 
-    ![私有终结点-拒绝](./media/configure-private-endpoints/reject-button.png)
+    ![屏幕截图，显示 "网络专用终结点连接 (预览") "已选择" 拒绝 "。](./media/configure-private-endpoints/reject-button.png)
 1. 在 " **拒绝连接** " 对话框中，输入注释 (可选) ，然后选择 **"是"**。 
 
     ![私有终结点-拒绝](./media/configure-private-endpoints/reject.png)

@@ -1,15 +1,17 @@
 ---
 title: 有关生成 LUIS 应用的最佳做法
 description: 学习最佳做法以从 LUIS 应用的模型中获取最佳结果。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 6ab7b8db3e1bc1b1134c0e7ab6c14bd17f819935
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324869"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
 使用应用创作过程生成 LUIS 应用：
@@ -46,12 +48,12 @@ ms.locfileid: "83683757"
 开始构建应用的架构之前，应确定计划使用此应用的内容和位置。 您的计划越彻底和具体，应用就越好。
 
 * 调查目标用户
-* 定义端到端角色以表示你的应用程序-语音、头像、问题处理（主动、被动）
-* 标识用户交互（文本和语音），通道用于处理现有解决方案或为此应用创建新的解决方案
+* 定义端到端的角色，以表示应用程序的语音、头像、问题处理 (前瞻性) 
+* 标识用户交互 (文本、语音) ，并通过通道将其交付到现有解决方案或为此应用创建新的解决方案
 * 端到端用户旅程
     * 此应用应如何操作？ * 其工作原理的优先级是什么？
     * 主要用例有哪些？
-* 收集数据-[了解](data-collection.md)收集和准备数据
+* 收集数据- [了解](data-collection.md) 收集和准备数据
 
 ## <a name="do-define-distinct-intents"></a>应定义不同的意向
 确保每个意向的词汇特定于该意向，而不会与其他意向的词汇重叠。 例如，如果要创建一款处理行程安排（例如航班和酒店）的应用，可以选择将这些主题领域视作彼此独立的意向或视为同一意向，其中包含话语中特定数据的实体。
@@ -80,7 +82,7 @@ ms.locfileid: "83683757"
 
 计算机学习的实体可以使用其他实体作为功能。 这些其他实体可以是自定义实体（如正则表达式实体或列表实体），也可以使用预生成实体作为功能。
 
-了解[有效的机器学习实体](luis-concept-entity-types.md#effective-machine-learned-entities)。
+了解 [有效的机器学习实体](luis-concept-entity-types.md#effective-machine-learned-entities)。
 
 <a name="#do-build-the-app-iteratively"></a>
 
@@ -108,9 +110,9 @@ ms.locfileid: "83683757"
 继续通过以下方式分解这些元素：
 * 作为正则表达式实体添加邮政编码的必需功能。
 * 将街道地址分解到各个部分：
-    * 具有编号的预生成实体的所需功能的**街道号**。
+    * 具有编号的预生成实体的所需功能的 **街道号** 。
     * **街道名称**。
-    * 具有列表实体所需功能的**街道类型**，其中包括 "公路"、"圆形"、"道路" 和 "路线" 等词。
+    * 具有列表实体所需功能的 **街道类型** ，其中包括 "公路"、"圆形"、"道路" 和 "路线" 等词。
 
 可以使用 V3 创作 API 进行模型分解。
 
@@ -146,10 +148,10 @@ ms.locfileid: "83683757"
 
 ## <a name="dont-publish-too-quickly"></a>发布速度太快
 
-如果你的应用程序发布速度过快，无需进行[适当的规划](#do-plan-your-schema)，则可能会导致一些问题，例如：
+如果你的应用程序发布速度过快，无需进行 [适当的规划](#do-plan-your-schema)，则可能会导致一些问题，例如：
 
 * 在实际方案中，你的应用程序将无法正常运行。
-* 架构（意向和实体）不合适，如果在架构后开发了客户端应用逻辑，则可能需要从头开始重新编写。 这会导致意外的延迟，并为正在处理的项目带来额外的费用。
+* 架构 (意向和实体) 并不合适，如果在架构后开发了客户端应用逻辑，则可能需要从头开始重新编写。 这会导致意外的延迟，并为正在处理的项目带来额外的费用。
 * 添加到模型中的最谈话可能会导致难以调试和确定的示例查询文本集。 它还会在您提交到某个架构后消除歧义。
 
 ## <a name="dont-add-many-example-utterances-to-intents"></a>请勿将许多话语示例添加到意向
@@ -182,7 +184,7 @@ LUIS 会预期一个意向的话语会存在变体。 在总体意思相同的�
 
 ## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>请勿使用所有可能的值创建短语列表
 
-提供[短语列表](luis-concept-feature.md)中的几个示例，而不是每个单词或短语。 LUIS 会对上下文进行一般化并将其纳入考虑。
+提供 [短语列表](luis-concept-feature.md) 中的几个示例，而不是每个单词或短语。 LUIS 会对上下文进行一般化并将其纳入考虑。
 
 ## <a name="dont-add-many-patterns"></a>请勿添加许多模式
 

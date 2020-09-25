@@ -7,17 +7,17 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c562708dcf554afc8dfe4acf6b525db1db677f40
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.custom: devx-track-js
+ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89564896"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324223"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
-目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 Sdk 仅适用于 .NET (c # ) 和 JavaScript。 有关这些 Sdk 的信息，请参阅 [*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)中的常规 api。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 按你选择的语言生成自己的数据平面 SDK。
+目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 Sdk 仅适用于 .NET (c # ) 、JavaScript 和 Java。 有关这些 Sdk 的信息，请参阅 [*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)中的常规 api。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 按你选择的语言生成自己的数据平面 SDK。
 
 >[!NOTE]
 > 如果需要，还可以使用 AutoRest 生成控制平面 SDK。 为此，请使用 [控制平面 Swagger (OpenAPI) 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) 而不是数据平面来完成本文中的步骤。

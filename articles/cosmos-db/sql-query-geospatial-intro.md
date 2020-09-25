@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302925"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
 
@@ -24,13 +24,13 @@ ms.locfileid: "87420084"
 
 ## <a name="spatial-data-use-cases"></a>空间数据用例
 
-地理空间数据通常涉及邻近查询，例如 "查找位于当前位置附近的所有咖啡厅"。 常见的用例包括：
+地理空间数据通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。 常见用例包括：
 
-* 地理位置分析，推动特定的市场营销计划。
-* 基于位置的个性化，适用于多个行业，如零售和医疗保健。
-* 用于传输优化的后勤增强。
-* 风险分析，特别是对于保险和金融公司。
-* 针对警报和通知的形势认知。
+* 地理位置分析，用于推动特定位置市场营销计划。
+* 基于位置的个性化，适用于零售和医疗保健等多个行业。
+* 物流增强，用于优化运输。
+* 风险分析，特别适用于保险和金融公司。
+* 态势感知，用于发出警报和通知。
 
 ## <a name="introduction-to-spatial-data"></a>空间数据简介
 

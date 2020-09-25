@@ -7,16 +7,16 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334593"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 IBM DB2 资源
 
-通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[IBM DB2 连接器](/connectors/db2/)，你可以根据存储在 DB2 数据库中的资源创建自动化任务和工作流。 工作流可以连接到数据库中的资源、读取和列出数据库表、添加行、更改行、删除行，以及执行其他操作。 可在逻辑应用中包含操作，用于从数据库获取响应，并使输出可供其他操作使用。
+通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和 [IBM DB2 连接器](/connectors/db2/)，你可以根据存储在 DB2 数据库中的资源创建自动化任务和工作流。 工作流可以连接到数据库中的资源、读取和列出数据库表、添加行、更改行、删除行，以及执行其他操作。 可在逻辑应用中包含操作，用于从数据库获取响应，并使输出可供其他操作使用。
 
 本文介绍如何创建一个可执行各种数据库操作的逻辑应用。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
@@ -24,7 +24,7 @@ ms.locfileid: "87284041"
 
 DB2 连接器包含一个可以通过 TCP/IP 网络来与远程 DB2 服务器通信的 Microsoft 客户端。 此连接器可用于访问云数据库，如在 Azure 虚拟化中运行的用于 Windows 的 IBM DB2。 此外，可在[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-connection.md)之后访问本地 DB2 数据库。
 
-IBM DB2 连接器支持以下 IBM DB2 平台和版本，以及支持分布式关系数据库体系结构（DRDA） SQL 访问管理器（SQLAM）版本10和11的 IBM DB2 兼容产品：
+IBM DB2 连接器支持以下 IBM db2 平台和版本，以及支持分布式关系数据库体系结构的 IBM DB2 兼容产品 (DRDA) SQL Access Manager (SQLAM) 版本10和11：
 
 | 平台 | 版本 | 
 |----------|---------|
@@ -80,7 +80,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 若要设置连接，请按提示提供以下连接详细信息，选择“创建”，然后保存逻辑应用：****
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 |----------|----------|-------------|
 | **通过本地网关连接** | 否 | 仅适用于本地连接。 |
 | **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” |
@@ -100,7 +100,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 在创建连接之前，必须已安装本地数据网关。 否则无法完成连接设置。 如果已安装网关，请继续提供这些连接详细信息，然后选择“创建”。****
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 |----------|----------|-------------|
 | **通过本地网关连接** | 是 | 适用于创建本地连接，将显示本地连接属性。 |
 | **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” | 
@@ -151,13 +151,13 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 1. 指定所有必需属性 (*) 的值。 选择一个表后，该操作会显示特定于该表中的记录的相关属性。
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 包含所需记录的表，在本示例中为“AREA” |
    | **地区 ID** | 是 | 所需记录的 ID，在本示例中为“99999” |
    ||||
 
-   ![选择表](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![屏幕截图，显示 "获取行 () 预览" 操作，该操作具有打开的 "表名称" 列表和所选的 "区域" 值。](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. 完成后，请在设计器工具栏上选择“保存”****。
 
@@ -192,7 +192,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 1. 打开“表名称”列表，然后选择所需的表，在本示例中为“AREA”：****
 
-   ![选择表](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![屏幕截图，显示 "获取行 () 预览" 操作，并在 "表名" 列表中选择 "区域" 值。](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. 若要指定筛选器或查询结果，请选择“显示高级选项”。****
 
@@ -231,7 +231,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要将记录添加到的表，例如“AREA” |
    | **地区 ID** | 是 | 要添加的地区的 ID，例如“99999” |
@@ -241,7 +241,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    例如：
 
-   ![选择表](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![显示逻辑应用设计器的屏幕截图，其中包含 "插入行 (预览) " 操作和示例属性值。](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. 完成后，请在设计器工具栏上选择“保存”****。
 
@@ -278,7 +278,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要在其中更新记录的表，例如“AREA” |
    | **行 ID** | 是 | 要更新的记录的 ID，例如“99999” |
@@ -289,7 +289,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    例如：
 
-   ![选择表](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![屏幕截图，显示逻辑应用设计器，其中包含 "更新行 (预览") "操作，可在其中选择一个表。](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. 完成后，请在设计器工具栏上选择“保存”****。
 
@@ -326,7 +326,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要在其中删除记录的表，例如“AREA” |
    | **行 ID** | 是 | 要删除的记录的 ID，例如“99999” |
@@ -334,7 +334,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    例如：
 
-   ![选择表](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![屏幕截图，显示逻辑应用设计器，其中包含 "删除行 (预览") "操作，你可以在其中选择要删除的表。](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. 完成后，请在设计器工具栏上选择“保存”****。
 
@@ -362,7 +362,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/db2/)。
 
 > [!NOTE]
-> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的基于 ise 标记的版本改为使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
 ## <a name="next-steps"></a>后续步骤
 

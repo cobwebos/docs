@@ -7,6 +7,10 @@
       items:
         - name: 什么是 Azure Stack Edge Pro with GPU？
           href: azure-stack-edge-gpu-overview.md
+    - name: 快速入门
+      items:
+        - name: 入门
+          href: azure-stack-edge-gpu-quickstart.md
     - name: 教程
       items:
         - name: 0 - 获取清单
@@ -151,7 +155,7 @@
               href: azure-stack-edge-monitor.md
             - name: 使用 Kubernetes 仪表板
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 设备问题
               href: azure-stack-edge-gpu-troubleshoot.md

@@ -4,13 +4,13 @@ description: 使用以太坊的证书颁发机构协会解决方案在 Azure 上
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: devx-track-js
+ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283422"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 
@@ -135,7 +135,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 ---|---|---|---|---
 F1|标准 SSD|low|low|high
 D2_v3|标准 SSD|中|中|中
-F16s|高级·SSD|high|high|low
+F16s|高级 SSD|high|high|low
 
 选择“确定”  。
 
@@ -174,7 +174,7 @@ F16s|高级·SSD|high|high|low
 
 选择“确定”  。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 
 单击摘要以查看指定的输入，并运行基本的部署前验证。 在部署之前，您可以下载模板和参数。
 
@@ -687,7 +687,7 @@ Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使�
 
 新部署的 PoA 网络上已启用了 WebAssembly 支持。 它允许以任何转换为 Web-Assembly (Rust、C、C++) 的语言进行智能合同开发。 有关详细信息，请参阅： [WebAssembly 的奇偶校验概述](https://wiki.parity.io/WebAssembly-Home) 和 [奇偶校验技术教程](https://github.com/paritytech/pwasm-tutorial)
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 ### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>我注意到，网络上存在许多未发送的事务。 这些事务来自哪里？
 

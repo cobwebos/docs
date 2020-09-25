@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323648"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -40,7 +40,7 @@ ms.locfileid: "90883928"
 安全中心还为以下内容提供漏洞分析：
 
 * SQL 数据库 - 请参阅[在漏洞评估仪表板中浏览漏洞评估报告](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
-* Azure 容器注册表映像 - 请参阅 [Azure 容器注册表与安全中心（预览版）的集成](azure-container-registry-integration.md)
+* Azure 容器注册表映像-请参阅 [使用 Azure Defender 容器注册表扫描映像中的漏洞](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
 从安全中心部署的 Azure 安全解决方案是自动连接的。 还可以连接其他安全数据源，包括在本地或其他云中运行的计算机。

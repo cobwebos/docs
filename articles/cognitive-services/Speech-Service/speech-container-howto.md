@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: b51319716035cc4f59d50922846b067f4eda31d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6a1f8cc9526d1f8393f8e7aa434587d8e4c0e979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334662"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器 
 
@@ -37,12 +37,12 @@ ms.locfileid: "90900473"
 >
 > 若要使用语音容器，你必须提交联机请求并获得批准。 有关详细信息，请参阅下面的 " **运行容器的请求批准"** 部分。
 
-| 功能 | 功能 | 最新 |
+| 容器 | 功能 | 最新 |
 |--|--|--|
-| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.3.1 |
-| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.3.1 |
-| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.5.0 |
-| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.5.0 |
+| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.5.0 |
+| 自定义语音转文本 | 使用 [自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.5.0 |
+| 文本转语音 |  (SSML) ，以纯文本输入或语音合成标记语言将文本转换为自然声音。 | 1.7.0 |
+| 自定义文本到语音转换 | 使用 [自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.7.0 |
 | 语音语言检测 | 检测音频文件中的语言。 | 1.0 |
 | 神经文本到语音转换 | 使用 deep 神经网络技术将文本转换为自然声音，允许使用更自然的合成语音。 | 1.1.0 |
 
@@ -96,7 +96,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ## <a name="request-approval-to-the-run-the-container"></a>请求批准运行容器
 
-填写并提交 [请求窗体](https://aka.ms/cognitivegate) ，请求对容器的访问权限。 
+填写并提交 [请求窗体](https://aka.ms/csgate) ，请求对容器的访问权限。 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -468,7 +468,7 @@ ApiKey={API_KEY}
 * 如果先前已下载自定义模型， `ModelId` 则将忽略。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-# <a name="language-detection"></a>[语言检测](#tab/lid)
+# <a name="speech-language-detection"></a>[语音语言检测](#tab/lid)
 
 若要运行 *Speech 语言检测* 容器，请执行以下 `docker run` 命令。
 
@@ -482,7 +482,7 @@ ApiKey={API_KEY}
 
 此命令： 
 
-* 从容器映像运行语音语言检测容器。
+* 从容器映像运行语音语言检测容器。 目前，你不需要支付运行此映像的费用。 
 * 分配1个 CPU 核心和 1 gb (GB) 内存。
 * 公开 TCP 端口5003，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
@@ -509,7 +509,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 | 容器 | SDK 主机 URL | 协议 |
 |--|--|--|
 | 标准语音到文本和自定义语音到文本 | `ws://localhost:5000` | WS |
-| 文本到语音 (包括标准、自定义和神经) 、语言检测 | `http://localhost:5000` | HTTP |
+| 文本到语音 (包括标准、自定义和神经) 、语音语言检测 | `http://localhost:5000` | HTTP |
 
 有关使用 WSS 和 HTTPS 协议的详细信息，请参阅 [容器安全性](../cognitive-services-container-support.md#azure-cognitive-services-container-security)。
 

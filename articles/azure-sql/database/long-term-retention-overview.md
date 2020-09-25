@@ -10,20 +10,20 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c4c19850cda158afdb888188d3f99b7d93195aa5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808841"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334848"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>长期保留 - Azure SQL 数据库和 Azure SQL 托管实例
 
 出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库和 Azure SQL 托管实例的[自动备份](automated-backups-overview.md)功能提供的过去 7-35 天的数据库备份。 通过使用长期保留 (LTR) 功能，可以将指定的 SQL 数据库和 Azure SQL 托管实例完整备份存储在可以进行读取访问异地冗余存储的 Azure Blob 存储中长达 10 年。 然后，可以将任何备份还原为新数据库。
 
-此外，SQL 托管实例引入了[可配置的备份存储冗余](automated-backups-overview.md#backup-storage-redundancy)，这使你可以灵活地在本地冗余 (LRS) 、区域冗余 (ZRS) 或异地冗余 (GRS) [存储 blob](../../storage/common/storage-redundancy.md)之间进行选择。 此选项当前仅在创建托管实例过程中可用，并且在资源预配后无法更改。
+此外，SQL 托管实例引入了 [可配置的备份存储冗余](automated-backups-overview.md#backup-storage-redundancy) ，这使你可以灵活地在本地冗余 (LRS) 、区域冗余 (ZRS) 或异地冗余 (GRS) [存储 blob](../../storage/common/storage-redundancy.md)之间进行选择。 此选项目前仅在创建托管实例的过程中可用，在资源预配后无法更改。
 
 可以为 Azure SQL 数据库启用长时间保留。Azure SQL 托管实例的长期保留功能以有限的公共预览版形式提供。 本文提供长期保留的概念概述。 要配置长期保留，请参阅[配置 Azure SQL 数据库 LTR](long-term-backup-retention-configure.md) 和[配置 Azure SQL 托管实例 LTR](../managed-instance/long-term-backup-retention-configure.md)。 
 
@@ -86,7 +86,7 @@ W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekO
 - **受限公共预览版** - 此预览版仅适用于 EA 订阅和云解决方案提供商订阅，并受到有限可用性的限制。  
 - [仅限 PowerShell](../managed-instance/long-term-backup-retention-configure.md) - 目前不支持 Azure 门户。 必须使用 PowerShell 启用 LTR。 
 
-若要请求注册，请创建 [Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 对于 "问题类型"，请选择 "服务" "服务" "SQL 托管实例"，对于 "问题类型"，请选择 "**备份"、"还原" 和 "业务连续性/长期备份保留"**。 在你的请求中，请陈述你希望注册到托管实例的 LTR 公共预览中，以便进行 SQL。
+若要请求注册，请创建 [Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 对于 "问题类型"，请选择 "服务" "服务" "SQL 托管实例"，对于 "问题类型"，请选择 " **备份"、"还原" 和 "业务连续性/长期备份保留"**。 在你的请求中，请陈述你希望注册到托管实例的 LTR 公共预览中，以便进行 SQL。
 
 ## <a name="configure-long-term-backup-retention"></a>配置长期备份保留
 

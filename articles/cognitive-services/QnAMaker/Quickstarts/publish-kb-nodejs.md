@@ -3,14 +3,14 @@ title: 快速入门： Node.js 的 REST Api QnA Maker
 description: 本快速入门介绍如何开始使用适用于 Node.js 的 QnA Maker REST API。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, devx-track-javascript
+ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 67c4711d74bdeb970a706eabf795e8f9bdcbbded
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324597"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入门： Node.js 的 QnA Maker REST Api
 

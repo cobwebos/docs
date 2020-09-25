@@ -10,15 +10,15 @@ ms.custom: sqldbrb=2
 ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 0f0dde0da69ad225e39292681fc079aba4b81203
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf228d31180f5c2223fde7433d2d9b335e2b8853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885145"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284153"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>适用于 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的高级威胁防护
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

@@ -1,6 +1,6 @@
 ---
 title: 滚动应用程序升级
-description: 了解如何使用 Azure SQL 数据库异地复制来支持云应用程序的滚动升级
+description: 了解如何使用 Azure SQL 数据库的异地复制来支持云应用程序的滚动升级
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334877"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -92,7 +92,7 @@ ms.locfileid: "84031938"
 
 1. 在主要区域中部署 Web 应用的过渡环境 (6)。
 2. 在主 Azure 区域中创建辅助数据库 (7)。 配置 Web 应用的过渡环境以便与它建立连接。 
-3. 通过在主要区域中复制辅助数据库，在备份区域中创建另一异地冗余的辅助数据库。 （此方法称为“链接的异地复制”）(8)。**
+3. 通过在主要区域中复制辅助数据库，在备份区域中创建另一异地冗余的辅助数据库。 （此方法称为“链接的异地复制”）(8)。
 4. 在备份区域中部署 Web 应用实例的过渡环境 (9)，并将其配置为连接在 (8) 中创建的异地冗余辅助数据库。
 
 > [!NOTE]
@@ -145,14 +145,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 此方法的主要缺点是它需要每个应用程序组件的双倍冗余，因此会导致更高的成本。 它还涉及更复杂的工作流。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文中所述的两种升级方法具有不同的复杂性和成本，但它们都注重于最小化用户仅限于执行只读操作的时间。 该时间由升级脚本的持续时间直接定义。 该时间不依赖于数据库大小、所选的服务层级、网站配置或你无法轻松控制的其他因素。 所有准备步骤都从升级步骤中分离出来，不影响生产应用程序。 升级脚本的效率是决定升级期间的用户体验的关键因素。 因此，改进体验的最佳做法是将工作重心放在尽可能提高升级脚本的效率上。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
-* 若要了解有关 Azure SQL 数据库活动异地复制的信息，请参阅[使用活动异地复制创建可读辅助数据库](active-geo-replication-overview.md)。
+* 若要了解 Azure SQL 数据库活动异地复制，请参阅[使用活动异地复制创建可读辅助数据库](active-geo-replication-overview.md)。
 * 若要了解 Azure SQL 数据库自动故障转移组，请参阅[使用自动故障转移组实现多个数据库的透明、协调式故障转移](auto-failover-group-overview.md)。
 * 若要了解 Azure 应用服务中的过渡环境，请参阅[在 Azure 应用服务中设置过渡环境](../../app-service/deploy-staging-slots.md)。
 * 若要了解 Azure 流量管理器配置文件，请参阅[管理 Azure 流量管理器配置文件](../../traffic-manager/traffic-manager-manage-profiles.md)。

@@ -411,7 +411,7 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
@@ -438,7 +438,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
-      href: /cli/azure/backup?view=azure-cli-latest
+      href: /cli/azure/backup
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: PowerShell – Azure 备份代理

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
 ms.author: ninarn
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7fff2fdc4f1f8a39a807ceb6e7c33f3acf388df1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284187"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>排查 SQL 数据库和 SQL 托管实例中的临时连接错误
 
@@ -105,7 +105,7 @@ ms.locfileid: "87003910"
 - 通过使用“Console.ReadLine”  方法或具有“确定”按钮的对话框暂停进一步执行。 将计算机接入网络后，用户按 Enter 键。
 - 重新尝试连接，预期会成功。
 
-#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>通过在连接时拼错用户名来测试
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>通过在连接时拼错用户名进行测试
 
 在首次连接尝试之前，程序可以故意拼错用户名。 错误为：
 
@@ -148,8 +148,8 @@ ms.locfileid: "87003910"
 
 **ConnectRetryCount** 和 **ConnectRetryInterval** 参数使 **SqlConnection** 对象在重试连接操作时不用通知或麻烦你的程序（例如，将控制权返还给你的程序）。 在以下情况下可能会进行重试：
 
-- SqlConnection。开放式方法调用
-- SqlConnection.Exe可爱的方法调用
+- SqlConnection.Open 方法调用
+- SqlConnection.Execute 方法调用
 
 有个很微妙的地方。 如果正在执行查询时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是， **SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题， **SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
 

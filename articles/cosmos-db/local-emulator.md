@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16448706b7167f55f31c7603676010e4ad30166f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303083"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>安装并使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -104,11 +104,16 @@ Azure Cosmos 模拟器提供 Azure Cosmos DB 服务的高保真模拟。 它支�
 
    # <a name="command-line"></a>[命令行](#tab/cli)
 
-   ```cmd
+   ```bash
 
    md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
    docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
+   ```
+   基于 windows 的 Docker 映像通常不与每个 Windows 主机操作系统兼容。 例如，默认的 Azure Cosmos 模拟器映像仅兼容于 Windows 10 和 Windows Server 2016。 如果需要与 Windows Server 2019 兼容的映像，请改为运行以下命令：
+
+   ```bash
+   docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%hostDirectory%,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/winsrv2019/azure-cosmos-emulator:latest
    ```
 
    # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -123,7 +128,7 @@ Azure Cosmos 模拟器提供 Azure Cosmos DB 服务的高保真模拟。 它支�
 
    响应类似于以下内容：
 
-   ```cmd
+   ```bash
    Starting emulator
    Emulator Endpoint: https://172.20.229.193:8081/
    Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
@@ -143,7 +148,7 @@ Azure Cosmos 模拟器提供 Azure Cosmos DB 服务的高保真模拟。 它支�
 
    # <a name="command-line"></a>[命令行](#tab/cli)
 
-   ```cmd
+   ```bash
    cd  %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
    powershell .\importcert.ps1
    ```
@@ -223,7 +228,7 @@ services:
 
 1. 在 Windows 虚拟机中运行以下命令，并记下 IPv4 地址：
 
-   ```cmd
+   ```bash
    ipconfig.exe
    ```
 
@@ -231,7 +236,7 @@ services:
 
 1. 通过 Windows VM，使用以下选项从命令行启动 Azure Cosmos 模拟器。 有关命令行支持的参数的详细信息，请参阅 [模拟器命令行工具参考](emulator-command-line-parameters.md)：
 
-   ```cmd
+   ```bash
    Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM +4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    ```
 

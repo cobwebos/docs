@@ -1,15 +1,17 @@
 ---
 title: 常见问题解答 (FAQ) - LUIS
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ff7beff6682d594f9b9fc1901d396d29028ec989
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054825"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334695"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -53,9 +55,9 @@ ms.locfileid: "86054825"
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>示例表述的变体是否应包括标点？
 使用以下任一解决方案：
-* 忽略[标点符号](luis-reference-application-settings.md#punctuation-normalization)
-* 将不同的变体（例如最谈话）添加到目的
-* 用语法添加示例查询文本模式，[以忽略](luis-concept-patterns.md#pattern-syntax)标点符号。
+* 忽略[标点](luis-reference-application-settings.md#punctuation-normalization)
+* 将不同的变体作为示例言语添加到意图
+* 在示例言语模式上添加[要忽略的语法](luis-concept-patterns.md#pattern-syntax)标点符号。
 
 ### <a name="does-luis-currently-support-cortana"></a>LUIS 目前是否支持 Cortana？
 
@@ -66,7 +68,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成实体在示例话语中标记，而不是在我的自定义实体中标记。 如何修复此问题？
 
-在 LUIS 门户中，可以为要提取的确切实体标记文本。 如果 LUIS 门户未显示正确的实体预测，则您可能需要添加更多最谈话并在文本中添加实体或添加功能。
+在 LUIS 门户中，可以为你感兴趣提取的确切实体标记文本。 如果 LUIS 门户没有显示正确的实体预测，你可能需要添加更多的语句，并在文本中标记实体，或者添加一个特性。
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入应用或版本文件，但收到了错误，发生了什么情况？
 
@@ -123,7 +125,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何创建并分配 LUIS 终结点密钥？
-根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在 " **[Azure 资源](luis-how-to-azure-subscription.md)**" 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-how-to-azure-subscription.md)。
+根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在 [Azure 资源](luis-how-to-azure-subscription.md)页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-how-to-azure-subscription.md)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？
 系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据有助于提高最可能意向的[分数](luis-concept-prediction-score.md)。
@@ -163,7 +165,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 请参阅[实体最佳做法](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)。
 
 ### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>短语列表的数目和大小限制是多少？
-有关[词组列表](./luis-concept-feature.md)的最大长度，请参阅[边界](luis-limits.md)引用。
+若要了解[短语列表](./luis-concept-feature.md)的最大长度，请查看[边界](luis-limits.md)参考文档。
 
 ### <a name="what-are-the-limits-on-example-utterances"></a>示例表述有哪些限制？
 请查看[边界](luis-limits.md)参考文档。
@@ -210,11 +212,11 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>我收到有关超出配额的错误。 如何解决问题？
 
-请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)以了解详细信息。
+请参阅修复 HTTP 状态代码 [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) 和 [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) 了解详细信息。
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>我需要处理更多的终结点查询。 我该怎么做？
 
-请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)以了解详细信息。
+请参阅修复 HTTP 状态代码 [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) 和 [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) 了解详细信息。
 
 ### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我创建了创作密钥，但它没有显示在 LUIS 门户中。 发生了什么情况？
 
@@ -333,4 +335,4 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 若要了解有关 LUIS 的详细信息，请参阅以下资源：
 * [标记了 LUIS 的 Stack Overflow 问题](https://stackoverflow.com/questions/tagged/luis)
-* [Microsoft Q&MSDN 语言理解智能服务（LUIS）的问题页](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [MSDN 语言理解智能服务 (LUIS) 的 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

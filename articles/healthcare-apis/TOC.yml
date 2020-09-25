@@ -80,7 +80,7 @@
     - name: 导出数据
       expanded: false
       items:
-        - name: 去标识化导出
+        - name: 导出数据
           href: export-data.md
     - name: 查找标识对象 ID
       href: find-identity-object-ids.md

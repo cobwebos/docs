@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
-ms.custom: seodec18, devx-track-javascript
-ms.openlocfilehash: eb91b6108cedd12299fcb3cfa89bf2cc91bcd69f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: seodec18, devx-track-js
+ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324546"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 

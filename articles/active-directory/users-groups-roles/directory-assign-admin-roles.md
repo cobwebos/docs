@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a861a038cefec56dfaaed1aca443f494dc82680
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304214"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -61,7 +61,7 @@ ms.locfileid: "90055752"
 > [!IMPORTANT]
 > 这种例外情况意味着，你仍可以许可对其他应用（例如，非 Microsoft 应用或已注册应用）的权限，但不能许可 Azure AD 本身的权限。 仍可以在应用注册过程中请求这些权限，但授予（即许可）这些权限需要拥有 Azure AD 管理员权限。 这意味着，恶意用户无法通过某些方式轻松提升其权限，例如，通过创建并许可可写入整个目录的应用，然后通过该应用的权限将自己提升为全局管理员。
 >
->此角色授予管理应用程序凭据这一功能。 分配有此角色的用户可以将凭据添加到应用程序，并使用这些凭据模拟应用程序的标识。 如果已向应用程序的标识授予对资源的访问权限（例如创建或更新用户或其他对象的能力），则分配给此角色的用户可以在模拟应用程序时执行这些操作。 模拟应用程序标识的这一功能可能是用户通过其角色分配可以执行的操作的提升权限。 请务必了解，向用户分配应用程序管理员角色，会赋予其模拟应用程序标识的能力。
+>此角色授予管理应用程序凭据这一功能。 分配有此角色的用户可以将凭据添加到应用程序，并使用这些凭据模拟应用程序的标识。 如果已向应用程序的标识授予资源访问权限，例如创建或更新用户或其他对象，那么分配到此角色的用户在模拟应用程序时可以执行这些操作。 这种模拟应用程序标识的能力可能是用户在角色分配的基础上的权限提升。 请务必了解，向用户分配应用程序管理员角色，会赋予其模拟应用程序标识的能力。
 
 ### <a name="application-developer"></a>[应用程序开发人员](#application-developer-permissions)
 
@@ -121,7 +121,7 @@ ms.locfileid: "90055752"
 充当此角色的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 此角色授予创建和管理企业应用程序和应用程序注册的所有方面的权限。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
 > [!IMPORTANT]
-> 此角色授予管理应用程序凭据这一功能。 分配有此角色的用户可以将凭据添加到应用程序，并使用这些凭据模拟应用程序的标识。 如果已向应用程序的标识授予对资源的访问权限（例如创建或更新用户或其他对象的能力），则分配给此角色的用户可以在模拟应用程序时执行这些操作。 模拟应用程序标识的这一功能可能是用户通过其角色分配可以执行的操作的提升权限。 请务必了解，向用户分配云应用程序管理员角色，会赋予其模拟应用程序标识的能力。
+> 此角色授予管理应用程序凭据这一功能。 分配有此角色的用户可以将凭据添加到应用程序，并使用这些凭据模拟应用程序的标识。 如果已向应用程序的标识授予资源访问权限，例如创建或更新用户或其他对象，那么分配到此角色的用户在模拟应用程序时可以执行这些操作。 这种模拟应用程序标识的能力可能是用户在角色分配的基础上的权限提升。 请务必了解，向用户分配云应用程序管理员角色，会赋予其模拟应用程序标识的能力。
 
 
 ### <a name="cloud-device-administrator"></a>[云设备管理员](#cloud-device-administrator-permissions)
@@ -155,8 +155,6 @@ In | 有权执行的操作
 ### <a name="conditional-access-administrator"></a>[条件访问管理员](#conditional-access-administrator-permissions)
 
 具有此角色的用户能够管理 Azure Active Directory 条件访问设置。
-> [!NOTE]
-> 若要在 Azure 中部署 Exchange ActiveSync 条件访问策略，用户还必须是全局管理员。
 
 ### <a name="customer-lockbox-access-approver"></a>[客户密码箱访问审批者](#customer-lockbox-access-approver-permissions)
 
@@ -309,7 +307,7 @@ In | 有权执行的操作
 
 此角色中的用户可以在已配置的服务（如 Exchange、Intune 和 Microsoft 团队）上监视 [消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) 中的通知和通知运行状况更新。 消息中心读者收到张贴内容的每周电子邮件摘要、更新，并可以在 Microsoft 365 中共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
 
-### <a name="modern-commerce-user"></a>[新式商务用户](#modern-commerce-user-permissions)
+### <a name="modern-commerce-user"></a>[现代商业用户](#modern-commerce-user-permissions)
 
 请勿使用。 此角色是从“商务”自动分配的，不可用于其他任何用途。 请查看下面的详细信息。
 
@@ -1942,7 +1940,7 @@ Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
 消息中心隐私读取者 | 消息中心隐私读取者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 消息中心读取者 | 消息中心读取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-新式商务用户 | 新式商务用户 | d24aef57-1500-4070-84db-2666f29cf966
+现代商业用户 | 现代商业用户 | d24aef57-1500-4070-84db-2666f29cf966
 网络管理员 | 网络管理员 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office 应用管理员 | Office 应用管理员 | 2b745bdf-0803-4d80-aa65-822c4493daac
 合作伙伴一线支持人员 | 不显示，因为不应使用它 | 4ba39ca4-527c-499a-b93d-d9b492c50246
@@ -1996,12 +1994,12 @@ CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](direct
 设备用户 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 目录同步帐户 | 未显示，因为不应使用它 | [目录同步帐户文档](directory-assign-admin-roles.md#directory-synchronization-accounts)
 目录编写人员 | 未显示，因为不应使用它 | [目录写入者文档](directory-assign-admin-roles.md#directory-writers)
-来宾用户 | 未显示，因为无法使用它  | 不可用
+来宾用户 | 未显示，因为无法使用它  | NA
 Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
-受限来宾用户 | 未显示，因为无法使用它 | 不可用
-用户 | 未显示，因为无法使用它 | 不可用
+受限来宾用户 | 未显示，因为无法使用它 | NA
+用户 | 未显示，因为无法使用它 | NA
 工作区设备联接 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤

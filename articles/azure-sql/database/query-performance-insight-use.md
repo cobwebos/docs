@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 0805ea3c18525cd4a7491b7b74d8a3cd1a01c6ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334904"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,14 +32,14 @@ Query Performance Insight 为单一数据库和共用数据库提供了智能查
 
 ## <a name="prerequisites"></a>先决条件
 
-查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 默认情况下，会自动为 Azure SQL 数据库中的所有数据库启用该功能。 如果查询存储未运行，Azure 门户将提示你启用它。
+查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 默认情况下，会自动为 Azure SQL 数据库中的所有数据库启用查询存储。 如果查询存储未运行，Azure 门户将提示你启用它。
 
 > [!NOTE]
 > 如果门户中显示“未在此数据库中正确配置查询存储”消息，请参阅[优化查询存储的配置](#optimize-the-query-store-configuration)。
 
 ## <a name="permissions"></a>权限
 
-需要以下[基于角色的 azure 访问控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)使用 Query Performance Insight 的权限：
+需要拥有以下 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 权限才能使用 Query Performance Insight：
 
 * 需要拥有“读取者”、“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限才能查看资源消耗量靠前的查询和图表。    
 * 需要具备**所有者**、**参与者**、**SQL DB 参与者**或 **SQL Server 参与者**权限才能查看查询文本。
@@ -278,4 +278,4 @@ Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑使用[Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)对大量的单一数据库和池数据库、弹性池、托管实例和实例数据库进行高级性能监视。
+请考虑使用 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 对大量的单一数据库和池数据库、弹性池、托管实例和实例数据库进行高级性能监视。

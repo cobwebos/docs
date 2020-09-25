@@ -7,16 +7,16 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334576"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Common Data Service 中的记录
 
-通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Common Data Service 连接器](/connectors/commondataservice/)，你可以构建管理[Common Data Service](/powerapps/maker/common-data-service/data-platform-intro)数据库中的记录的自动化工作流。 这些工作流可以创建记录、更新记录和执行其他操作。 你还可以从 Common Data Service 数据库中获取信息，并使输出可用于在逻辑应用中使用的其他操作。 例如，在 Common Data Service 数据库中更新记录时，可以使用 Office 365 Outlook connector 发送电子邮件。
+通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和 [Common Data Service 连接器](/connectors/commondataservice/)，你可以构建管理 [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) 数据库中的记录的自动化工作流。 这些工作流可以创建记录、更新记录和执行其他操作。 你还可以从 Common Data Service 数据库中获取信息，并使输出可用于在逻辑应用中使用的其他操作。 例如，在 Common Data Service 数据库中更新记录时，可以使用 Office 365 Outlook connector 发送电子邮件。
 
 本文介绍如何构建逻辑应用，以便在每次创建新的潜在客户记录时创建任务记录。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87284109"
   * [了解： Common Data Service 入门](/learn/modules/get-started-with-powerapps-common-data-service/)
   * [Power Platform-环境概述](/power-platform/admin/environments-overview)
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)和逻辑应用的基本知识，你需要从该位置访问 Common Data Service 数据库中的记录。 若要使用 Common Data Service 触发器启动逻辑应用，需要使用空白逻辑应用。 如果不熟悉 Azure 逻辑应用，请查看[快速入门：使用 Azure 逻辑应用创建第一个工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 有关 [如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 和逻辑应用的基本知识，你需要从该位置访问 Common Data Service 数据库中的记录。 若要使用 Common Data Service 触发器启动逻辑应用，需要使用空白逻辑应用。 如果不熟悉 Azure 逻辑应用，请查看 [快速入门：使用 Azure 逻辑应用创建第一个工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="add-common-data-service-trigger"></a>添加 Common Data Service 触发器
 
@@ -49,9 +49,9 @@ ms.locfileid: "87284109"
 
    ![用于监视环境的触发器信息](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
-   | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅[Power Platform-环境概述](/power-platform/admin/environments-overview)。 |
+   | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅 [Power Platform-环境概述](/power-platform/admin/environments-overview)。 |
    | **实体名称** | 是 | 要监视的实体，例如 "Lead" |
    | **范围** | 是 | 创建新记录的源，例如，业务部门中的用户或组织中的任何用户。 此示例使用 "Business unit"。 |
    ||||
@@ -60,7 +60,7 @@ ms.locfileid: "87284109"
 
 现在添加一个 Common Data Service 操作，该操作可为新的 "潜在顾客" 记录创建任务记录。
 
-1. 在 "**创建记录时**" 触发器下，选择 "**新建步骤**"。
+1. 在 " **创建记录时** " 触发器下，选择 " **新建步骤**"。
 
 1. 在搜索框中输入 `common data service`。 在操作列表中选择以下操作：“创建新记录”****
 
@@ -70,20 +70,20 @@ ms.locfileid: "87284109"
 
    ![要在其中创建记录的环境的操作信息](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的环境，该记录在触发器中不必是相同的环境，而是在此示例中为 "Fabrikam 销售生产" |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
    | **主题** | 是，基于在此示例中选择的实体 | 有关此任务的目标的简短说明 |
    ||||
 
-   1. 对于 "**主题**" 属性，请输入以下文本，其中包含尾随空格：
+   1. 对于 " **主题** " 属性，请输入以下文本，其中包含尾随空格：
 
       `Follow up with new lead:`
 
-   1. 将指针保留在 "**主题**" 框中，使动态内容列表保持可见。
+   1. 将指针保留在 " **主题** " 框中，使动态内容列表保持可见。
    
-   1. 在列表中，在 "**创建记录**" 部分中，选择要包括在任务记录中的触发器输出，例如：
+   1. 在列表中，在 " **创建记录** " 部分中，选择要包括在任务记录中的触发器输出，例如：
 
       ![选择要在任务记录中使用的触发器输出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
@@ -98,49 +98,49 @@ ms.locfileid: "87284109"
 
    ![已完成 "创建新记录" 操作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
-1. 若要手动启动逻辑应用，请在设计器工具栏上选择 "**运行**"。 若要测试逻辑应用，请创建新的 "潜在顾客" 记录。
+1. 若要手动启动逻辑应用，请在设计器工具栏上选择 " **运行**"。 若要测试逻辑应用，请创建新的 "潜在顾客" 记录。
 
 ## <a name="trigger-only-on-updated-attributes"></a>仅在更新的属性上触发
 
-对于在记录更新时运行的触发器（例如，**当记录更新时**），可以使用筛选器属性，以便仅在更新指定属性时才运行逻辑应用。 此功能可帮助防止不必要的逻辑应用运行。
+对于在记录更新时运行的触发器（例如， **当记录更新时** ），可以使用筛选器属性，以便仅在更新指定属性时才运行逻辑应用。 此功能可帮助防止不必要的逻辑应用运行。
 
-1. 在触发器的 "**添加新参数**" 列表中，选择 "**属性筛选器**"。
+1. 在触发器的 " **添加新参数** " 列表中，选择 " **属性筛选器**"。
 
-   ![添加 "属性筛选器" 属性](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   ![屏幕截图，显示 "更新记录时" 操作和已打开的 "添加新参数" 列表（选中 "属性筛选器" 属性）。](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
-1. 对于 "每个**属性筛选器项**"，请选择要监视其更新的属性，例如：
+1. 对于 "每个 **属性筛选器项**"，请选择要监视其更新的属性，例如：
 
    ![添加 "属性筛选器" 属性](./media/connect-common-data-service/when-record-updated-trigger-select-attribute-filter.png)
 
 ## <a name="list-records-based-on-a-filter"></a>基于筛选器列出记录
 
-对于返回记录的操作（如**List 记录**操作），可以使用基于指定筛选器返回记录的 ODATA 查询。 例如，您只具有活动帐户的记录。
+对于返回记录的操作（如 **List 记录** 操作），可以使用基于指定筛选器返回记录的 ODATA 查询。 例如，您只具有活动帐户的记录。
 
-1. 在操作中，打开 "**添加新参数**" 列表，然后选择 "**筛选查询**" 属性。
+1. 在操作中，打开 " **添加新参数** " 列表，然后选择 " **筛选查询** " 属性。
 
    ![添加 "筛选查询" 属性](./media/connect-common-data-service/list-records-action-filter-query.png)
 
-1. 在现在显示在 "操作" 中的 "**筛选器查询**" 属性中，输入以下 ODATA 筛选器查询：`statuscode eq 1`
+1. 在现在显示在 "操作" 中的 " **筛选器查询** " 属性中，输入以下 ODATA 筛选器查询： `statuscode eq 1`
 
    ![输入用于筛选记录的 ODATA 筛选器查询](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-有关 `$filter` 系统查询选项的详细信息，请参阅[Common Data Service-Filter results](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
+有关 `$filter` 系统查询选项的详细信息，请参阅 [Common Data Service-Filter results](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
 
 ## <a name="list-records-based-on-an-order"></a>基于订单列出记录
 
-对于返回记录的操作（如**List 记录**操作），可以使用按指定顺序返回记录的 ODATA 查询，该查询根据操作返回的记录而变化。 例如，你可以让操作根据帐户名称列出记录。
+对于返回记录的操作（如 **List 记录** 操作），可以使用按指定顺序返回记录的 ODATA 查询，该查询根据操作返回的记录而变化。 例如，你可以让操作根据帐户名称列出记录。
 
-1. 在操作中，打开 "**添加新参数**" 列表，然后选择 "**排序依据**" 属性。
+1. 在操作中，打开 " **添加新参数** " 列表，然后选择 " **排序依据** " 属性。
 
    ![添加 "Order by" 属性](./media/connect-common-data-service/list-records-action-order-by.png)
 
-1. 在现在出现在操作中的**Order By**属性中，输入以下 ODATA 筛选器查询：`name`
+1. 在现在出现在操作中的 **Order By** 属性中，输入以下 ODATA 筛选器查询： `name`
 
    ![输入用于对记录进行排序的 ODATA 筛选器查询](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-有关 `$orderby` 系统查询选项的详细信息，请参阅[Common Data Service 顺序结果](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
+有关 `$orderby` 系统查询选项的详细信息，请参阅 [Common Data Service 顺序结果](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
 
 ## <a name="field-data-types"></a>字段数据类型
 
@@ -156,17 +156,17 @@ ms.locfileid: "87284109"
 | 引用其他实体记录的字段 | 主密钥 | 要求使用记录 ID （如 GUID）和查找类型，这意味着动态内容列表中的值将不起作用，例如，以下属性： <p><p>- **所有者**：必须是有效的用户 id 或团队记录 ID。 <br>- **所有者类型**：必须分别是查找类型，如 `systemusers` 或 `teams` 。 <p><p>- **相关**：必须是有效的记录 id，如帐户 id 或联系人记录 id。 <br>- **相关类型**：必须分别是查找类型，如 `accounts` 或 `contacts` 。 <p><p>- **Customer**：必须是有效的记录 id，如帐户 id 或联系人记录 id。 <br>- **Customer type**：必须分别是查找类型，如 `accounts` 或 `contacts` 。 |
 ||||
 
-此示例演示了 "**创建新记录**" 操作如何创建与其他实体记录关联的新 "任务" 记录，特别是用户记录和帐户记录。 操作通过使用与相关属性的预期数据类型匹配的值来指定这些实体记录的 Id 和查找类型。
+此示例演示了 " **创建新记录** " 操作如何创建与其他实体记录关联的新 "任务" 记录，特别是用户记录和帐户记录。 操作通过使用与相关属性的预期数据类型匹配的值来指定这些实体记录的 Id 和查找类型。
 
 * "所有者" 属性（指定 "用户 ID"）和 "**所有者类型**" 属性（指定查找类型）基于 "**所有者**" 属性，该 `systemusers` 操作将新的 "任务" 记录与特定用户相关联。
 
-* 基于**相关**属性（指定记录 ID）和 "**相关类型**" 属性（指定 `accounts` 查找类型），操作将新 "任务" 记录与特定帐户关联。
+* 基于 **相关** 属性（指定记录 ID）和 " **相关类型** " 属性（指定 `accounts` 查找类型），操作将新 "任务" 记录与特定帐户关联。
 
 ![创建与 Id 和查找类型关联的 "任务" 记录](./media/connect-common-data-service/create-new-record-task-properties.png)
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关基于连接器的 Swagger 说明的技术信息，如触发器、操作、限制和其他详细信息，请参阅[连接器的参考页](/connectors/commondataservice/)。
+有关基于连接器的 Swagger 说明的技术信息，如触发器、操作、限制和其他详细信息，请参阅 [连接器的参考页](/connectors/commondataservice/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,24 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225727"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284272"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>复制 Azure SQL 数据库中数据库的事务一致性副本
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL 数据库提供多种方法，用于在同一服务器或不同服务器上创建现有 [数据库](single-database-overview.md) 的副本。 您可以使用 Azure 门户、PowerShell、Azure CLI 或 T-sql 来复制数据库。
+通过 Azure SQL 数据库，可以以多种方式在相同或不同的服务器上创建现有[数据库](single-database-overview.md)的副本。 可以使用 Azure 门户、PowerShell、Azure CLI 或 T-SQL 复制数据库。
 
 ## <a name="overview"></a>概述
 
-数据库副本是源数据库的事务一致的快照，在开始复制请求之后的某个时间点。 可以为副本选择同一服务器或其他服务器。 还可以选择保留源数据库的服务层和计算大小，或在相同或不同的服务层中使用不同的计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 复制的数据库中的登录名、用户和权限独立于源数据库进行管理。 使用异地复制技术创建副本。 完成副本种子设定后，会自动终止异地复制链接。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](active-geo-replication-overview.md)。
+数据库副本是源数据库在发起复制请求后的某个时间点的事务一致快照。 可以为副本选择同一服务器或其他服务器。 也可以选择保留源数据库的服务层级和计算大小，或在相同或不同的服务层级中使用其他计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 复制的数据库中的登录名、用户和权限独立于源数据库进行管理。 副本使用异地复制技术创建。 副本种子设定完成后，异地复制链接会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](active-geo-replication-overview.md)。
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 
@@ -155,7 +155,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-若要在门户上的资源组中查看部署下的操作，请在多个资源提供程序（包括 SQL 操作）中执行操作，你将需要这些额外的 Azure 角色：
+若要查看门户上资源组中部署下的操作、跨多个资源提供程序的操作（包括 SQL 操作），还需要以下 Azure 角色：
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334831"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -252,9 +252,9 @@ ms.locfileid: "89394612"
 
 支持性文档：
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure 安全中心监视**：是
 
@@ -760,9 +760,9 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文档](/azure/devops/repos/index)
 
 **Azure 安全中心监视**：不适用
 
@@ -818,7 +818,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 - [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何对 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
+* [如何向 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
 
 * [如何分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
@@ -914,7 +914,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：测试已备份客户托管密钥的还原。
 
-- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure 安全中心监视**：不适用
 
