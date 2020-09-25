@@ -1,16 +1,16 @@
 ---
 title: Azure 事件网格资源的网络安全
-description: 本文介绍如何配置专用终结点的访问权限
+description: 本文介绍如何使用服务标记进行出口，使用 IP 防火墙规则进行入口，并使用 Azure 事件网格引入专用终结点。
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326450"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure 事件网格资源的网络安全
 本文介绍如何将以下安全功能与 Azure 事件网格配合使用： 
@@ -35,10 +35,10 @@ Azure 事件网格支持对发布到主题和域进行基于 IP 的访问控制�
 
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问主题和域。 使用 IP 防火墙，可以将其进一步限制为采用 [CIDR（无类别域际路由选择）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法的一组 IP 地址或 IP 地址范围。 来自任何其他 IP 地址的发布者都将被拒绝，并将收到 403（禁止）响应。
 
-有关为主题和域配置 IP 防火墙的分步说明，请参阅[配置 ip 防火墙](configure-firewall.md)。
+有关为主题和域配置 IP 防火墙的分步说明，请参阅 [配置 ip 防火墙](configure-firewall.md)。
 
 ## <a name="private-endpoints"></a>专用终结点
-你可以使用[专用终结点](../private-link/private-endpoint-overview.md)将事件直接从你的虚拟网络直接发送到你的主题和域，[而无需](../private-link/private-link-overview.md)通过公共 internet。 专用终结点是用于 VNet 中的 Azure 服务的特殊网络接口。 为主题或域创建专用终结点时，它会在 VNet 上的客户端与事件网格资源之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点与事件网格服务之间的连接使用安全的专用链接。
+你可以使用 [专用终结点](../private-link/private-endpoint-overview.md) 将事件直接从你的虚拟网络直接发送到你的主题和域， [而无需](../private-link/private-link-overview.md) 通过公共 internet。 专用终结点是用于 VNet 中的 Azure 服务的特殊网络接口。 为主题或域创建专用终结点时，它会在 VNet 上的客户端与事件网格资源之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点与事件网格服务之间的连接使用安全的专用链接。
 
 ![体系结构关系图](./media/network-security/architecture-diagram.png)
 
@@ -96,8 +96,8 @@ Azure 事件网格支持对发布到主题和域进行基于 IP 的访问控制�
 事件网格的基本层和高级层都提供 IP 防火墙**** 功能。 我们最多允许每个主题或域创建 16 条 IP 防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
-你可以将事件网格资源的 IP 防火墙配置为仅允许从一组选择的 IP 地址或 IP 地址范围通过公共 internet 进行访问。 有关分步说明，请参阅[配置 IP 防火墙](configure-firewall.md)。
+你可以将事件网格资源的 IP 防火墙配置为仅允许从一组选择的 IP 地址或 IP 地址范围通过公共 internet 进行访问。 有关分步说明，请参阅 [配置 IP 防火墙](configure-firewall.md)。
 
-你可以配置专用终结点，以仅从所选的虚拟网络中限制访问。 有关分步说明，请参阅[配置专用终结点](configure-private-endpoints.md)。
+你可以配置专用终结点，以仅从所选的虚拟网络中限制访问。 有关分步说明，请参阅 [配置专用终结点](configure-private-endpoints.md)。
 
-若要解决网络连接问题，请参阅[排查网络连接问题](troubleshoot-network-connectivity.md)
+若要解决网络连接问题，请参阅 [排查网络连接问题](troubleshoot-network-connectivity.md)

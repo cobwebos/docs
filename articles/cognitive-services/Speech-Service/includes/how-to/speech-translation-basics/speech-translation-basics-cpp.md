@@ -4,20 +4,30 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 9b5d1421c36fa5d0568985b7792715533d2540ee
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b8cbbbb24293a3ae931a55299a3a97411e74c910
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326884"
 ---
+语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
+
+* 将语音翻译为文本
+* 将语音翻译为多种目标语言
+* 直接进行语音转语音翻译
+
+## <a name="skip-to-samples-on-github"></a>跳转到 GitHub 上的示例
+
+如果要直接跳到示例代码，请参阅 GitHub 上的 [c + + 快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/translate-speech-to-text) 。
+
 ## <a name="prerequisites"></a>先决条件
 
-本文假设已有一个 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，可[免费试用语音服务](../../../get-started.md)。
+本文假定你有 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，[可以免费试用语音服务](../../../get-started.md)。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，请按照_关于语音 sdk_一文的 " <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> 获取语音 sdk</a> " 一节中的说明进行操作。
+需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，按照“关于语音 SDK”一文的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> 部分中的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -48,10 +58,10 @@ auto SPEECH__SERVICE__REGION = getenv("SPEECH__SERVICE__REGION");
 
 ## <a name="create-a-speech-translation-configuration"></a>创建语音翻译配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechTranslationConfig`][config]。 此类包含有关订阅的信息，例如密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechTranslationConfig`][config]。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
 
 > [!TIP]
-> 无论是要执行语音识别、语音合成、翻译还是意向识别，都需要创建一个配置。
+> 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
 
 可以通过以下几种方法初始化 [`SpeechTranslationConfig`][config]：
 
@@ -96,7 +106,7 @@ void translateSpeech() {
 
 ## <a name="add-translation-language"></a>添加翻译语言
 
-语音翻译的另一项常见任务是指定目标翻译语言，至少需要一种语言，但支持多种语言。 以下代码片段将法语和德语设置为翻译语言目标。
+语音翻译的另一项常见任务是指定目标翻译语言，至少需要一种语言，但支持多种语言。 以下代码片段将法语和德语设置成了目标翻译语言。
 
 ```cpp
 void translateSpeech() {

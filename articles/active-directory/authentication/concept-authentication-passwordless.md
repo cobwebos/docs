@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266609"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -82,7 +82,7 @@ Windows Hello 企业版 [规划指南](/windows/security/identity-protection/hel
 
 ## <a name="fido2-security-keys"></a>FIDO2 安全密钥
 
-FIDO（线上快速身份验证）联盟可帮助推广开放式身份验证标准，并减少将密码作为用户身份验证方式的情况。 FIDO2 是采用了 Web 身份验证 (WebAuthn) 标准的最新标准。
+FIDO (快速标识联机) 联盟有助于提高开放式身份验证标准并减少使用密码作为身份验证形式。 FIDO2 是采用了 Web 身份验证 (WebAuthn) 标准的最新标准。
 
 FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，可采用任何形式。 快速标识在线 (FIDO) 是用于无密码 authentication 的开放标准。 FIDO 允许用户和组织利用标准登录到其资源，而无需使用外部安全密钥或设备内置的平台密钥。
 

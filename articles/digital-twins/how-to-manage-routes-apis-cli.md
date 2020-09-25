@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 27b745353521a44733c46170a5f5952c194c2343
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2cde352738c1aa545c77cbcf5d974030cd75b1e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326518"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "89293500"
 ## <a name="prerequisites"></a>先决条件
 
 * 你将需要一个 **Azure 帐户** (你可以在 [此处](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免费设置一个帐户) 
-* 你将需要 Azure 订阅中的 **Azure 数字孪生实例** 。 如果尚未安装实例，则可以使用 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中的步骤创建一个实例。 将安装程序中的以下值用于本文后面的内容：
+* 你将需要 Azure 订阅中的 **Azure 数字孪生实例** 。 如果尚未安装实例，则可以使用 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的步骤创建一个实例。 将安装程序中的以下值用于本文后面的内容：
     - 实例名称
     - 资源组
     
@@ -44,7 +44,7 @@ ms.locfileid: "89293500"
 
 ### <a name="create-an-event-grid-endpoint"></a>创建事件网格端点
 
-下面的示例演示如何使用 Azure CLI 创建事件网格类型终结点。 你可以使用 [Azure Cloud Shell](https://shell.azure.com)，或 [在本地安装 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+下面的示例演示如何使用 Azure CLI 创建事件网格类型终结点。 你可以使用 [Azure Cloud Shell](https://shell.azure.com)，或 [在本地安装 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 首先，创建一个事件网格主题。 可以使用以下命令，或通过访问事件网格*自定义事件*快速入门中[的 *"创建自定义主题*" 部分](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)更详细地查看这些步骤。
 

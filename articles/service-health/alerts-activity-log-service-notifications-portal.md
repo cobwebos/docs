@@ -1,25 +1,25 @@
 ---
 title: 使用 Azure 门户接收有关 Azure 服务通知的活动日志警报
-description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 接收通知。
+description: 了解如何使用 Azure 门户通过使用 Azure 门户为服务运行状况通知设置活动日志警报。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289780"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>使用 Azure 门户创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
 
 本文介绍如何使用 Azure 门户为服务运行状况通知设置活动日志警报。  
 
-服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。 由于活动日志中存储了大量信息，因此提供了一个单独的用户界面，用于更轻松地查看和设置有关服务运行状况通知的警报。 
+服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。 鉴于活动日志中存储的信息量很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。 
 
 当 Azure 将服务运行状况通知发送到 Azure 订阅时，可以收到警报。 可以基于以下内容配置警报：
 
-- 服务运行状况通知的类别（服务问题、计划内维护、运行状况通报、安全公告）。
+- 服务运行状况通知的类别（服务问题、计划内维护、运行状况公告、安全公告）。
 - 受影响的订阅。
 - 受影响的服务。
 - 受影响的区域。
@@ -53,16 +53,16 @@ ms.locfileid: "87499245"
 
     ![“创建服务运行状况警报”命令](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. 选择要向其发出警报的**订阅**、**服务**和**区域**。
+1.   选择要针对其发出警报的“订阅”、“服务”和“区域”。
 
     [![“添加活动日志警报”对话框](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png#lightbox)
 
 > [!NOTE]
 >此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-5. 选择要向你发出警报的**事件类型**：*服务问题*、*计划内维护*、*运行状况通报*和*安全建议*。
+5. 选择要针对其发出警报的**事件类型**：   服务问题、计划内维护、运行状况公告和安全公告。
 
-6. 单击 "**选择操作组**" 以选择现有操作组或创建新的操作组。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+6. 单击“选择操作组”以选择现有操作组或创建新的操作组。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
 
 7. 通过输入**警报规则名称**和**说明**定义警报详细信息。

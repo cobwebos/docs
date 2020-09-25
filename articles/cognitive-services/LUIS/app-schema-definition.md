@@ -1,14 +1,16 @@
 ---
 title: 应用架构定义
 description: LUIS 应用使用 `.json` 或 `.lu` 表示，并且包括所有意向、实体、示例言语、功能和设置。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
-ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327317"
 ---
 # <a name="app-schema-definition"></a>应用架构定义
 
@@ -63,7 +65,7 @@ LUIS 应用使用 `.json` 或 `.lu` 表示，并且包括所有意向、实体�
 }
 ```
 
-| element                  | 评论                              |
+| element                  | 注释                              |
 |--------------------------|--------------------------------------|
 | "hierarchicals": [],     | 弃用，请使用 [机器学习实体](luis-concept-entity-types.md)。   |
 | "复合"： []，        | 弃用，请使用 [机器学习实体](luis-concept-entity-types.md)。 [复合实体](reference-entity-composite.md) 引用。 |

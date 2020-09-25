@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 438595096e808646da990e1871cab07d1a795372
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
-ms.translationtype: MT
+ms.openlocfilehash: fa457bf930978965b7ad37ea032e6517bda2e9d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291191"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -46,11 +46,11 @@ ms.locfileid: "87499069"
 
     另请注意，目标 Azure Database for PostgreSQL 版本必须等于或晚于本地 PostgreSQL 版本。 例如，PostgreSQL 9.6 只能迁移到 Azure Database for PostgreSQL 9.6、10 或 11，而不能迁移到 Azure Database for PostgreSQL 9.5。
 
-* [在 Azure Database for PostgreSQL 中创建实例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)，或[创建 Azure Database for PostgreSQL-超大规模（Citus）服务器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* [在 Azure Database for PostgreSQL 中创建一个实例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) ，或 [创建 Azure Database for PostgreSQL () 服务器的超大规模](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网中：
+    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务 [终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 添加到将在其中预配服务的子网中：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -100,7 +100,7 @@ ms.locfileid: "87499069"
 
 2. 在目标环境中创建一个空数据库，即 Azure Database for PostgreSQL。
 
-    有关如何连接和创建数据库的详细信息，请参阅文章[在 Azure 门户中创建 Azure Database for PostgreSQL 服务器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或[在 Azure 门户中创建 Azure Database for PostgreSQL-超大规模（Citus）服务器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
+    有关如何连接和创建数据库的详细信息，请参阅文章 [在 Azure 门户中创建 Azure Database for PostgreSQL 服务器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) 或 [在) 中创建 Azure Database for PostgreSQL 超大规模 (Citus Azure 门户服务器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
 
 3. 通过还原架构转储文件，将架构导入已创建的目标数据库。
 

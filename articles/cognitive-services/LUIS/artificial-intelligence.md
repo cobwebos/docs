@@ -2,14 +2,16 @@
 title: 人工智能 (AI)
 description: LUIS 根据你定义的架构，使用人工智能 (AI) 为数据提供语言理解。
 ms.topic: conceptual
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bdcede01ec6bab5f8b43d89ff40d588a011d5dfb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327198"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>语言理解 (LUIS) 中的人工智能
 
@@ -39,7 +41,7 @@ LUIS 使用人工智能 (AI) 根据你定义的架构，为你的数据提供自
 * 其他[认知服务](../Welcome.md)提供的查询言语的预处理或后期处理，例如：
     * [翻译](../translator/translator-info-overview.md)
 
-## <a name="natural-language-understanding-nlu"></a>自然语言理解 (NLU) 
+## <a name="natural-language-understanding-nlu"></a>自然语言理解 (NLU)
 
 NLU 功能可用于将口语语句转换为可让你自然地理解用户意思的表示形式。 自然语言理解仍是一个极具挑战性的问题，被定义为一个 AI 难题。
 
