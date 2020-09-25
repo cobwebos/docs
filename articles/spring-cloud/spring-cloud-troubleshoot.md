@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336150"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure 春季云问题
 
@@ -131,7 +131,7 @@ Azure 春季云服务实例的名称将用于请求下的子域名称 `azureapps
 
 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)部署应用程序包时，Azure CLI 会定期轮询部署进度，并在最终显示部署结果。
 
-确保应用程序以正确的 *.zip* 文件格式打包。 如果未正确打包，则进程会挂起，否则你将收到一条错误消息。
+确保应用程序以正确的 *.zip* 文件格式打包。 如果未正确打包，进程将停止响应，否则你将收到一条错误消息。
 ::: zone-end
 
 ::: zone pivot="programming-language-java"

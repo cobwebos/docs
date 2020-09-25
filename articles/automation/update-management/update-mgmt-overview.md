@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4a753cd139db9dec23c82346704382979aeaa0de
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 314012467da532002529a3f561b192876602b46e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976994"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335426"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -59,7 +59,7 @@ ms.locfileid: "90976994"
 
 可以创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
 
-计划的部署定义哪些目标计算机接收适用的更新。 它通过以下某种方式来实现此目的：显式指定特定的计算机，或选择基于一组特定计算机的日志搜索（或基于根据指定条件动态选择 Azure VM 的 [Azure 查询]update-mgmt-view-logs.md）的[计算机组](../../azure-monitor/platform/computer-groups.md)。 这些组与[范围配置](../../azure-monitor/insights/solution-targeting.md)不同，后者用于控制接收配置以启用更新管理的目标计算机。 这会阻止它们执行和报告更新符合性，并安装已批准的所需更新。
+计划的部署定义哪些目标计算机接收适用的更新。 它通过以下某种方式来实现此目的：显式指定特定的计算机，或选择基于特定计算机集的日志搜索（或基于根据指定条件动态选择 Azure VM 的 [Azure 查询](update-mgmt-query-logs.md)）的[计算机组](../../azure-monitor/platform/computer-groups.md)。 这些组与[范围配置](../../azure-monitor/insights/solution-targeting.md)不同，后者用于控制接收配置以启用更新管理的目标计算机。 这会阻止它们执行和报告更新符合性，并安装已批准的所需更新。
 
 定义部署时，还可以指定要批准的计划，并设置可以安装更新的一个时段。 此时段称为维护时段。 假设需要重启，并选择了相应的重启选项，则会预留 20 分钟的维护时段进行重启。 如果修补时间比预期时间长且维护时段少于 20 分钟，则不会进行重启。
 

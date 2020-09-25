@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sstein
+ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84028368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325311"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84028368"
 > [!NOTE]
 > 若要在恢复应用程序时尽可能将 RPO 和 RTO 降到最低，请使用异地复制，而不是异地还原。
 
-本教程将探讨还原和遣返工作流。 您将学习如何：
+本教程将探讨还原和遣返工作流。 学习如何：
 > [!div class="checklist"]
 > 
 > * 将数据库和弹性池配置信息同步到租户目录中。
@@ -43,7 +43,7 @@ ms.locfileid: "84028368"
 
 开始本教程之前，需具备以下先决条件：
 * 部署 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序](saas-dbpertenant-get-started-deploy.md)。 
-* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅[Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)入门。
+* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)入门。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>异地还原恢复模式简介
 
@@ -106,7 +106,7 @@ ms.locfileid: "84028368"
 > [!IMPORTANT]
 > 为简单起见，在这些示例中，同步进程以及其他长时间运行的恢复和遣返进程将作为以客户端用户身份运行的本地 PowerShell 作业或会话来实现。 几小时后，登录时颁发的身份验证令牌将会过期，因而作业将会失败。 在生产场景中，长时间运行的进程应作为以服务主体身份运行的某种可靠 Azure 服务来实现。 请参阅[使用 Azure PowerShell 创建具有证书的服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。 
 
-1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm1 文件。 将第 10 行和第 11 行中的 `<resourcegroup>` 和 `<user>` 替换为部署应用时使用的值。 保存该文件。
+1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm1 文件。 将第 10 行和第 11 行中的 `<resourcegroup>` 和 `<user>` 替换为部署应用时使用的值。 保存文件。
 
 2. 在 PowerShell ISE 中，打开 ...\Learning Modules\Business Continuity 和 Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 脚本。
 
@@ -184,7 +184,7 @@ ms.locfileid: "84028368"
 
 3. 在 PowerShell 窗口中监视恢复进程的状态。
 
-    ![恢复进程](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![恢复过程](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > 要了解恢复作业的代码，请查看 ...\Learning Modules\Business Continuity 和 Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs 文件夹中的 PowerShell 脚本。
@@ -198,11 +198,11 @@ ms.locfileid: "84028368"
 
   * 请注意，尚未还原的租户标记为脱机且不可选择。   
  
-    ![恢复进程](./media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)  
+    ![恢复过程](./media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)  
 
   * 如果在租户脱机时直接打开租户的事件页，页面将显示租户脱机通知。 例如，在 Contoso Concert Hall 处于脱机状态时，尝试打开 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall。
 
-    ![恢复进程](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![恢复过程](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>在恢复区域中预配新租户
 即使未还原租户数据库，也可以在恢复区域中预配新租户。 在恢复区域中预配的新租户数据库稍后将与恢复的数据库一起遣返。   
@@ -365,7 +365,7 @@ ms.locfileid: "84028368"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > 
 > * 使用租户目录保存定期更新的配置信息，以允许在其他区域中创建镜像恢复环境。

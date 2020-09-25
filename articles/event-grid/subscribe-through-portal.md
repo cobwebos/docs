@@ -3,12 +3,12 @@ title: 通过门户创建 Azure 事件网格订阅
 description: 本文介绍如何使用 Azure 门户为支持的源（如 Azure Blob 存储）创建事件网格订阅。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308497"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
@@ -40,7 +40,7 @@ ms.locfileid: "90526453"
 
 1. 提供关于事件订阅的其他详细信息，例如，用于处理事件的终结点以及订阅名称。
 
-   ![提供订阅详细信息](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![屏幕截图，显示 "终结点详细信息" 和 "事件订阅详细信息" 部分，其中包含已输入的 "订阅名称" 值。](./media/subscribe-through-portal/provide-subscription-details.png)
 
 1. 若要启用死信和自定义重试策略，请选择“其他功能”****。
 

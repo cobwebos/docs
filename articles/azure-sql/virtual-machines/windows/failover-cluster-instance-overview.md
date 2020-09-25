@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
-ms.translationtype: MT
+ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272499"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>在 Azure 虚拟机上具有 SQL Server 的故障转移群集实例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,7 @@ Azure Vm 上的 SQL Server 使用 Windows Server 故障转移群集 (WSFC) 功�
 
 Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转移群集实例的共享存储解决方案： 
 
-||[Azure 共享磁盘](../../../virtual-machines/windows/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure 共享磁盘](../../../virtual-machines/windows/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[存储空间直通 (S2D) ](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**最低操作系统版本**| 全部 |Windows Server 2012|Windows Server 2016|
 |**最低 SQL Server 版本**|全部|SQL Server 2012|SQL Server 2016|

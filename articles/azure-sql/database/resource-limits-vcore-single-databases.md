@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/21/2020
-ms.openlocfilehash: bb69d48fe4e65d0fc27db027aecab0f1a745e8d5
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e67675d0d3fb5f96b35eba0085003b00595d8214
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325269"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的单一数据库的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ ms.locfileid: "88566176"
 
 \* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
-### <a name="gen5-compute-generation-part-3"></a>Gen5 计算生成 (第3部分) 
+### <a name="gen5-compute-generation-part-3"></a>第 5 代计算（第 3 部分）
 
 |计算大小（服务目标）|GP_S_Gen5_18|GP_S_Gen5_20|GP_S_Gen5_24|GP_S_Gen5_32|GP_S_Gen5_40|
 |:--- | --: |--: |--: |--: |--:|
@@ -140,7 +140,7 @@ ms.locfileid: "88566176"
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负荷还使用远程[页服务器](service-tier-hyperscale.md#page-server) IO。 有效 IOPS 取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 ### <a name="gen4-compute-generation-part-2"></a>第 4 代计算（第 2 部分）
 
@@ -167,7 +167,7 @@ ms.locfileid: "88566176"
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负荷还使用远程[页服务器](service-tier-hyperscale.md#page-server) IO。 有效 IOPS 取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>超大规模 - 预配的计算 - Gen5
 
@@ -196,7 +196,7 @@ ms.locfileid: "88566176"
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负荷还使用远程[页服务器](service-tier-hyperscale.md#page-server) IO。 有效 IOPS 取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -223,13 +223,13 @@ ms.locfileid: "88566176"
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负荷还使用远程[页服务器](service-tier-hyperscale.md#page-server) IO。 有效 IOPS 取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 #### <a name="notes"></a>注释
 
 **注释 1**：超大规模是具有单独计算和存储组件的多层体系结构：[“超大规模”服务层级体系结构](service-tier-hyperscale.md#distributed-functions-architecture)
 
-**备注 2**：对于本地计算副本 SSD 上的数据，延迟为1-2 毫秒，这将缓存最常使用的数据页。 从页面服务器检索数据的延迟更长。
+**注释 2**：对于本地计算副本 SSD 上的数据，延迟为 1-2 ms，这缓存最常用的数据页。 从页面服务器检索数据的延迟更长。
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>常规用途 - 预配的计算 - Gen4
 

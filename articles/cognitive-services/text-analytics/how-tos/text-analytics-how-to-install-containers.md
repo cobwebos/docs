@@ -11,24 +11,24 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906061"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309297"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
 > [!NOTE]
 > * 情绪分析 v3 的容器现已公开发布。 关键短语提取和语言检测容器以非封闭公开预览版的形式发布。
 > * 实体链接和 NER 当前不可用作容器。
-> * 访问运行状况容器的文本分析需要 [请求窗体](https://aka.ms/cognitivegate)。 目前，不会向你收费。
+> * 访问运行状况容器的文本分析需要 [请求窗体](https://aka.ms/csgate)。 目前，不会向你收费。
 > * 容器映像位置最近可能已更改。 阅读本文，查看此容器的更新位置。
 
 容器使你能够在自己的环境中运行文本分析 API，最适合特定安全性和数据管理要求。 文本分析容器提供对原始文本的高级自然语言处理，并且包含三项主要功能：情绪分析、关键短语提取和语言检测。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 > [!IMPORTANT]
 > 免费帐户限制为每月5000个事务，并且只有**免费**和**标准**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定价层 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>对容器有效。 有关事务请求费率的更多信息，请参阅[数据限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。

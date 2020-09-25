@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: c889b2c7b11c5e649045e34cdac9e50a3a242b6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cf71246caef377fb607a9ca7a765ec9ca5999744
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88524440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285894"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>教程：为 Storegate 配置自动用户预配
 
@@ -130,11 +130,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://dialpad.com/scim` **租户 URL**"。 输入先前从 Storegate 中的 " **机密令牌**" 中检索并保存的值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Storegate。 如果连接失败，请确保 Storegate 帐户具有管理员权限，然后重试。
 

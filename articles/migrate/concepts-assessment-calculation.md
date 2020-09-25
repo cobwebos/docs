@@ -3,12 +3,12 @@ title: Azure Migrate 服务器评估中的 Azure VM 评估
 description: 了解 Azure Migrate 服务器评估中的评估
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275517"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>服务器评估概述 (迁移到 Azure Vm) 
 
@@ -80,7 +80,7 @@ ms.locfileid: "88261848"
     - **Hyper-v vm**：每30秒收集一次示例点。
     - **物理服务器**：每五分钟收集一次示例点。
 
-1. 设备将示例点组合起来，每10分钟创建一个数据点。 为了创建数据点，设备从所有示例中选择最大值。 然后，它将数据点发送到 Azure。
+1. 该设备将示例点组合在一起，为 VMware 和 Hyper-v 服务器创建每10分钟一次的数据点，为物理服务器创建每5分钟一次。 为了创建数据点，设备从所有示例中选择最大值。 然后，它将数据点发送到 Azure。
 1. 服务器评估存储上个月的10分钟数据点。
 1. 创建评估时，服务器评估会确定要用于合理精简的相应数据点。 标识基于 *性能历史记录* 和 *百分比利用率*的百分位值。
 
@@ -123,7 +123,7 @@ ms.locfileid: "88261848"
 **百分位使用率** | 用于基于性能的大小调整。 百分点利用率指定用于合理精简的性能示例的百分位数值。
 **VM 系列** | 要用于合理精简的 Azure VM 系列。 例如，如果你没有需要在 Azure 中使用 A 系列 Vm 的生产环境，则可以从序列列表中排除 A 系列。
 **舒适因子** | 评估过程中使用的缓冲区。 它适用于 Vm 的 CPU、RAM、磁盘和网络数据。 它可解决季节性使用情况、简短性能历史记录等问题，并可能会在将来的使用量上增加。<br/><br/> 例如，利用率为20% 的10核 VM 通常会产生两核 VM。 如果使用的是2.0，则结果是一个四核 VM。
-**产品/服务** | 你注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 服务器评估将估计该产品/服务的成本。
+**产品** | 你注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 服务器评估将估计该产品/服务的成本。
 **货币** | 帐户的计费货币。
 **折扣 (%)** | 在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。
 **VM 运行时间** | 不连续运行的 Azure Vm 每月的持续时间（以天为单位）和每天的小时数。 成本估算基于该持续时间。<br/><br/> 默认值为每月31天，每天24小时。

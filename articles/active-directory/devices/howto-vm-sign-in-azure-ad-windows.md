@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287094"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
 
@@ -49,7 +49,7 @@ ms.locfileid: "89259364"
 - Windows 10 1809 及更高版本
 
 > [!IMPORTANT]
-> 仅允许从 Azure AD 加入或混合 Azure AD 加入到 VM 的 **同一** 目录中的 Windows 10 电脑连接到连接到 Azure AD 的 vm 的远程连接。 
+> 仅允许从 Azure AD 注册 (启动 Windows 10 20H1) ，Azure AD 加入或混合 Azure AD 加入与 VM **相同** 的目录的 Windows 10 电脑进行远程连接到 Azure AD 的连接。 
 
 下面是目前（此功能的预览期间）受支持的 Azure 区域：
 
@@ -224,7 +224,7 @@ az role assignment create \
 > [!NOTE]
 > 可以保存。RDP 文件本地计算机上用于启动到虚拟机的远程桌面连接，而无需导航到 Azure 门户中的虚拟机概述页面并使用连接选项。
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 ### <a name="troubleshoot-deployment-issues"></a>排查部署问题
 

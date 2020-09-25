@@ -1,5 +1,5 @@
 ---
-title: 将虚拟机移动到另一个区域（Azure Site Recovery）
+title: '将虚拟机移动到另一个区域 (Azure Site Recovery) '
 description: 了解如何在 Azure 中将 SQL Server 虚拟机从一个区域迁移到另一个区域。
 services: virtual-machines-windows
 documentationcenter: na
@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851795"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298569"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 将 SQL Server VM 移到 Azure 中的另一个区域
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -126,12 +126,12 @@ ms.locfileid: "85851795"
    ![启动故障转移](./media/move-sql-vm-different-region/initiate-failover.png)
 
 1. 在“恢复点”下选择“最新的应用一致”恢复点 。 
-1. 选中 "**在开始故障转移之前关闭计算机**" 旁边的复选框。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关闭失败，故障转移也仍会继续。 
+1. 选中 " **在开始故障转移之前关闭计算机**" 旁边的复选框。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关闭失败，故障转移也仍会继续。 
 1. 选择“确定”以启动故障转移。
 1. 可以从上一节中监视故障转移测试时查看的同一“Site Recovery 作业”页监视故障转移过程。 
 1. 该作业完成后，检查 SQL Server VM 是否按预期显示在目标区域中。 
 1. 导航回保管库，依次选择“复制的项”、“SQL Server VM”和“提交”以完成到目标区域的移动过程 。 请等待提交作业完成。 
-1. 将 SQL Server VM 注册到 SQL VM 资源提供程序，以在 Azure 门户中启用 SQL 虚拟机可管理性以及与资源提供程序关联的功能。 有关详细信息，请参阅[向 SQL VM 资源提供程序注册 SQL Server VM](sql-vm-resource-provider-register.md)。 
+1. 将 SQL Server VM 注册到 SQL VM 资源提供程序，以在 Azure 门户中启用 SQL 虚拟机可管理性以及与资源提供程序关联的功能。 有关详细信息，请参阅 [向 SQL VM 资源提供程序注册 SQL Server VM](sql-vm-resource-provider-register.md)。 
 
   > [!WARNING]
   > 只有应用一致的快照才能保证 SQL Server 数据一致性。 最新处理的快照不能用于 SQL Server 故障转移，因为故障恢复快照不能保证 SQL Server 数据一致性。 

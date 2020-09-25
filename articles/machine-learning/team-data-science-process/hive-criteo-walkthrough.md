@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336643"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>操作中的团队数据科学过程-使用 1 TB 数据集上的 Azure HDInsight Hadoop 群集
 
@@ -67,7 +67,7 @@ Criteo 数据是一个单击预测数据集，包含 370 GB 的 gzip 压缩 TSV 
 
    * 在创建 HDInsight 群集时将其与在步骤 1 中创建的存储帐户相链接。 此存储帐户用于访问可在群集中处理的数据。
    * 创建群集后，启用对其头节点的远程访问。 请记住在此处指定的远程访问凭据（与创建群集时指定的凭据不同）：完成以下过程。
-3. [创建 Azure 机器学习工作室（经典）工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
+3. [创建 Azure 机器学习工作室（经典）工作区](../classic/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>从公共源获取和使用数据
 可以通过单击链接、接受使用条款并提供名称来访问 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集。 快照如下所示：
@@ -695,4 +695,3 @@ Web 服务发布后，会重定向到一个如下所示的页面：
 对于在 Python 脚本 JSON 框架中询问的两个测试示例，会以“评分标签，评分概率”的形式得到返回答案。 在本例中，已选择固有代码提供的默认值（所有数值列为 0，所有分类列为字符串“value”）。
 
 总而言之，本演练现展示如何使用 Azure 机器学习处理大规模数据集。 我们从 1 TB 的数据开始，构建了一个预测模型，并在云中将其部署为 Web 服务。
-

@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284476"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
@@ -23,17 +23,23 @@ ms.locfileid: "90900591"
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM) 
 
-### <a name="sql-engine-build-number---15020001549"></a>SQL 引擎内部版本号-15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>SQL 引擎内部版本号-15.0.2000.1552
 
 ### <a name="whats-new"></a>新增功能
 1. 基于 Ubuntu 18.04 的容器映像。 
 2. 和函数的支持 `IGNORE NULL` 和 `RESPECT NULL` 语法 `LAST_VALUE()` `FIRST_VALUE()` 。 
 3. 通过 ONNX 预测的可靠性改进。
-4. 支持基于数据保留策略的清理。      
-   - 支持优化清理聚集列存储索引。
+4. 支持基于数据保留策略的清理。
+   - 用于故障排除的保留清理任务的环形缓冲区支持。
 5. 新功能支持 
    - 快速恢复
    - 自动优化查询
+   - 启用并行执行方案
+6. 低能耗模式的节能改善
+7. 流式处理新功能支持 
+   - [快照窗口](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) ：新的窗口类型允许按事件完全相同的时间进行分组。 
+   - 将 [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) 和 [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) 启用为分析函数，这将允许返回由所选列排序的记录，而无需成为窗口的一部分。 
+   - 对 [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)的改进。 
 
 ### <a name="fixes"></a>修复项
 1. 用于对 TSQL 流式处理操作进行疑难解答的其他错误消息和详细信息。 
@@ -41,9 +47,13 @@ ms.locfileid: "90900591"
 3. TSQL 流式处理引擎修复： 
    - 清除已停止流式处理作业 
    - 用于本地化和 unicode 处理改进的修补程序
+   - 提高有利的边缘 TSQL 流式处理，允许用户从 get_streaming_job 查询作业失败错误。
 4. 基于数据保留策略的清除
    - 保留策略创建和清理方案的修补程序。
 5. 修复了后台计时器任务，以提高低功耗模式下的节能能力。
+
+### <a name="known-issues"></a>已知问题 
+1. 不能在计算列中使用 Date_Bucket T-sql 函数。
 
 
 ## <a name="ctp-23"></a>CTP 2.3

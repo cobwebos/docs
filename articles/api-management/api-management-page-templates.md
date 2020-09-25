@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的页模板 | Microsoft Docs
-description: 了解如何在 Azure API 管理中使用一组模板自定义开发人员门户页面的内容。
+description: 了解如何在 Azure API 管理中自定义开发人员门户页面模板的内容。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 78866804f10d12beda46f1fab9c8c78509a5a0b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24d026785025dba4ae45de404edec67c2cf3871a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335579"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ac1df12b10e32f35e8edbd52c3488b2d38db638a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: df9447160fe6a0aa2a3ae001ad8a337c3ff488f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275937"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
 
@@ -83,7 +83,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 由文件更改触发的管道可能比基于时间的计划更有效。 例如，你可能需要在文件更改时或者在将新文件添加到数据目录时执行预处理步骤。 可以监视对数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，该目录的子目录中的更改将不会触发运行。
 
-若要创建响应文件的 `Schedule`，必须在对 [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
+若要创建响应文件的 `Schedule`，必须在对 [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
 
 `polling_interval` 参数可用于指定检查数据存储更改的频率（分钟）。
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308429"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
 
@@ -28,7 +28,7 @@ ms.locfileid: "87924999"
 
 是的。 专用区域支持在跨 Azure 区域的虚拟网络之间进行 DNS 解析。 即使未显式建立虚拟网络对等互连，专用区域也能正常工作。 所有虚拟网络都必须链接到专用 DNS 区域。
 
-## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>专用区域是否需要在虚拟网络与 Internet 之间建立连接？
+## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>是否从专用区域所需的虚拟网络连接到 internet？
 
 不是。 专用区域配合虚拟网络工作。 你可在虚拟网络内部或跨虚拟网络管理虚拟机的域或其他资源。 无需建立 Internet 连接即可进行名称解析。
 
@@ -38,11 +38,19 @@ ms.locfileid: "87924999"
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>属于不同订阅的虚拟网络是否可以链接到专用区域？
 
-是的。 你必须对虚拟网络和专用 DNS 区域拥有写入操作权限。 可以向多个 Azure 角色授予写入权限。 例如，经典网络参与者 Azure 角色对虚拟网络具有写入权限，专用 DNS 区域参与者角色对专用 DNS 区域具有写入权限。 有关 Azure 角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)。
+是的。 你必须对虚拟网络和专用 DNS 区域拥有写入操作权限。 可以向多个 Azure 角色授予写入权限。 例如，经典网络参与者 Azure 角色对虚拟网络具有写入权限，专用 DNS 区域参与者角色对专用 DNS 区域具有写入权限。 有关 Azure 角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/overview.md)。
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>删除虚拟机后，是否会自动删除在专用区域中自动注册的虚拟机 DNS 记录？
 
 是的。 如果在已启用自动注册的情况下删除链接的虚拟网络中的虚拟机，则会自动删除已注册的记录。
+
+## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>我已经在虚拟机中重新配置了 OS，使其具有新的主机名或静态 IP 地址。 为什么看不到此更改反映在专用区域中？
+
+专用区域的记录由 Azure DHCP 服务填充;将忽略客户端注册消息。 如果已通过配置静态 IP 地址禁用了 VM 中的 DHCP 客户端支持，则对 VM 中的主机名或静态 IP 的更改不会反映在该区域中。
+
+## <a name="i-have-configured-a-preferred-dns-suffix-in-my-windows-virtual-machine-why-are-my-records-still-registered-in-the-zone-linked-to-the-virtual-network"></a>我在 Windows 虚拟机中配置了首选 DNS 后缀。 为什么我的记录仍在链接到虚拟网络的区域中注册？
+
+当注册专用 DNS 区域时，Azure DHCP 服务将忽略任何 DNS 后缀。 例如，如果将虚拟机配置为 `contoso.com` 作为主 dns 后缀，但虚拟网络链接到 `fabrikam.com` 专用 dns 区域，则虚拟机的注册将出现在 `fabrikam.com` 专用 dns 区域中。
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>是否可以手动删除从链接的虚拟网络的专用区域中自动注册的虚拟机记录？
 
@@ -58,7 +66,7 @@ ms.locfileid: "87924999"
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>删除链接到专用区域的链接虚拟网络时会发生什么情况？ 是否必须手动更新专用区域，才能从该区域中取消已链接虚拟网络的链接？
 
-否。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除对 DNS 区域的链接。
+不是。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除对 DNS 区域的链接。
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>使用默认 FQDN (internal.cloudapp.net 的 DNS 解析) 仍然有效，即使在专用区域 (例如，private.contoso.com) 是否已链接到虚拟网络？
 
@@ -66,7 +74,7 @@ ms.locfileid: "87924999"
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>链接的虚拟网络中虚拟机上的 DNS 后缀是否会更改为专用区域的 DNS 后缀？
 
-否。 链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
+不是。 链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
 有关如何更改此后缀的指导，请参阅 [使用动态 DNS 在自己的 DNS 服务器中注册主机名](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS 专用区域有哪些使用限制？

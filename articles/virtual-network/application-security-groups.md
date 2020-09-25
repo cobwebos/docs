@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3542ae2e94c2fa3d3e9d6100738b2aabded94d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78274705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306661"
 ---
 # <a name="application-security-groups"></a>应用程序安全组
 
@@ -26,7 +26,7 @@ ms.locfileid: "78274705"
 
 ![应用程序安全组](./media/security-groups/application-security-groups.png)
 
-在上图中，*NIC1* 和 *NIC2* 是 *AsgWeb* 应用程序安全组的成员。 *NIC3* 是 *AsgLogic* 应用程序安全组的成员。 *NIC4* 是 *AsgDb* 应用程序安全组的成员。 虽然此示例中的每个网络接口只是一个应用程序安全组的成员，但实际上一个网络接口可以是多个应用程序安全组的成员，具体取决于 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 这些网络接口都没有关联的网络安全组。 *NSG1* 关联到两个子网，包含以下规则：
+在上图中，*NIC1* 和 *NIC2* 是 *AsgWeb* 应用程序安全组的成员。 *NIC3* 是 *AsgLogic* 应用程序安全组的成员。 *NIC4* 是 *AsgDb* 应用程序安全组的成员。 尽管本示例中的每个网络接口都只是一个网络安全组的成员，但网络接口可以是多个应用程序安全组的成员，最多可达 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 这些网络接口都没有关联的网络安全组。 *NSG1* 关联到两个子网，包含以下规则：
 
 ## <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 

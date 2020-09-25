@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660840"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306389"
 ---
 # <a name="risky-ip-report-public-preview"></a> (公开预览版的有风险 IP 报表) 
 AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为最终用户提供身份验证服务，以访问 SaaS 应用程序，如 Microsoft 365。 在这种情况下，恶意参与者可能会尝试登录 AD FS 系统，用猜测最终用户密码的方式获得应用程序资源的访问权限。 AD FS 提供 Extranet 帐户锁定功能，可以防止这些类型的攻击，自 AD FS 出现在 Windows Server 2012 R2 中以后就是这样。 如果所用版本较低，强烈建议将 AD FS 系统升级到 Windows Server 2016。 <br />
@@ -39,7 +39,7 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 > 
 
 ## <a name="what-is-in-the-report"></a>报表中有哪些内容？
-失败的登录活动客户端 IP 地址通过 Web 应用程序代理服务器进行聚合。 “风险 IP”报表中的每个项目都会显示有关失败的 AD FS 登录活动（失败次数超出指定阈值）的聚合信息。 它提供以下信息：![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4a.png)
+失败的登录活动客户端 IP 地址通过 Web 应用程序代理服务器进行聚合。 “风险 IP”报表中的每个项目都会显示有关失败的 AD FS 登录活动（失败次数超出指定阈值）的聚合信息。 它提供以下信息： ![ 屏幕截图，显示列标题突出显示的有风险 IP 报表。](./media/how-to-connect-health-adfs/report4a.png)
 
 | 报告项 | 说明 |
 | ------- | ----------- |
@@ -52,7 +52,7 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 
 例如，下面的报表项表明，在 2018/02/28 下午 6 点到 7 点这段时间，IP 地址 <i>104.2XX.2XX.9</i> 没有出现“密码不正确”错误，但出现 284 次“Extranet 锁定”错误。 符合条件的 14 个唯一用户受影响。 活动事件超出指定的报表小时阈值。 
 
-![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4b.png)
+![显示有风险的 IP 报表项示例的屏幕截图。](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - 只有那些超出指定阈值的活动才会显示在报表列表中。 
@@ -60,7 +60,7 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 > - 此警报报表不显示 Exchange IP 地址或专用 IP 地址。 它们仍包括在导出列表中。 
 >
 
-![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4c.png)
+![显示具有 "下载"、"通知设置" 和 "阈值设置" 的有风险 IP 报表的屏幕截图。](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>列表中的负载均衡器 IP 地址
 负载均衡器聚合失败的登录活动并命中警报阈值。 如果出现负载均衡器 IP 地址，很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。 请正确配置负载均衡器，使之传递转发客户端 IP 地址。 
@@ -97,7 +97,7 @@ AD FS 客户可能会向 internet 公开密码身份验证终结点，以便为�
 >
 >
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 **为何在报表中发现专用 IP 地址范围？**  <br />
 专用 IP 地址) <i>&</i> (8.x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x x 如果看到专用 IP 地址范围，则很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1013e7f7fa824a7fef0535b8ab599e2a4e786b40
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 95ee630c1190167227a4ab3514a0c36db0401e45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273358"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Coda
 
@@ -85,11 +85,11 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分下，输入你在步骤2中先前检索到的 CODA 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Coda。 如果连接失败，请确保 Coda 帐户具有管理员权限，然后重试。
 

@@ -3,7 +3,7 @@ title: 在 Azure Linux 虚拟机上实现 Oracle Data Guard | Microsoft Docs
 description: 快速部署 Oracle Data Guard 并使其在 Azure 环境中运行。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: f8a40f87b8fdaa2adf445392bd598dd8133aae4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335895"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本文将介绍如何使用 Azure CLI 从 Azure 市场映像部署 Oracle Database 12c 数据库。 本文将分步演示如何在 Azure 虚拟机 (VM) 上安装和配置 Data Guard。
 
-开始之前，请先确保已安装 Azure CLI。 有关详细信息，请参阅[Azure CLI 安装指南](/cli/azure/install-azure-cli)。
+开始之前，请先确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>准备环境
 ### <a name="assumptions"></a>假设
@@ -282,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-启用闪回（这可以简化恢复），并将 "备用 \_ 文件 \_ 管理" 设置为 "自动"。退出 SQL * Plus。
+启用闪回 (这会使恢复过程更容易) 并将备用 \_ 文件 \_ 管理设置为 "自动"。退出 SQL * 并在之后退出。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -512,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1（主 VM）上配置 Data Guard 代理
 
-启动 Data Guard Manager，并使用 SYS 和密码登录。 （请勿使用 OS 身份验证。）执行以下操作：
+启动 Data Guard Manager，并使用 SYS 和密码登录。  (不使用 OS 身份验证。 ) 执行以下操作：
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

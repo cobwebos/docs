@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 映像生成器（预览版）从现有映像版本创建新的 VM 映像版本
-description: 使用 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本。
+title: '使用 Azure 映像生成器 (预览版从现有映像版本创建新的 VM 映像版本) '
+description: 使用 Linux 中的 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2020
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: f233a6fc557d9dbb62585e8cca85f175b3bc3e26
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 142b4a85826b9e9a95b17dc631045aab603f3859
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307324"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>预览：使用 Linux 中的 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本
 
-本文介绍如何使用[共享映像库](shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
+本文介绍如何使用 [共享映像库](shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 
 我们将使用一个示例 .json 模板来配置映像。 此处使用的 json 文件是： [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)。 
 
@@ -56,7 +56,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="set-variables-and-permissions"></a>设置变量和访问权限
 
-如果使用了[创建图像并将其分发给共享映像库](image-builder-gallery.md)来创建共享映像库，则已创建了所需的一些变量。 如果没有，请设置要用于此示例的一些变量。
+如果使用了 [创建图像并将其分发给共享映像库](image-builder-gallery.md) 来创建共享映像库，则已创建了所需的一些变量。 如果没有，请设置要用于此示例的一些变量。
 
 
 ```console
@@ -98,7 +98,7 @@ sigDefImgVersionId=$(az sig image-version list \
 imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
 
-如果已经有了自己的共享映像库，但没有按前面的示例进行操作，则需要为映像生成器分配权限以访问资源组，以便可以访问该资源组。 请查看[创建映像和分发到共享图像库](image-builder-gallery.md)示例中的步骤。
+如果已经有了自己的共享映像库，但没有按前面的示例进行操作，则需要为映像生成器分配权限以访问资源组，以便可以访问该资源组。 请查看 [创建映像和分发到共享图像库](image-builder-gallery.md) 示例中的步骤。
 
 
 ## <a name="modify-helloimage-example"></a>修改 helloImage 示例
@@ -185,4 +185,4 @@ az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o t
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解本文中使用的 json 文件的组件，请参阅[图像生成器模板参考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要详细了解本文中使用的 json 文件的组件，请参阅 [图像生成器模板参考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

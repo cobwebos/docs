@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971649"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275279"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>使用托管标识设置与 Cosmos DB 数据库的索引器连接
 
@@ -136,6 +136,14 @@ api-key: [admin key]
 有关创建索引器 API 的更多详细信息，请参阅[创建索引器](/rest/api/searchservice/create-indexer)。
 
 有关定义索引器计划的详细信息，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+
+## <a name="troubleshooting"></a>疑难解答
+
+如果发现无法索引数据，请考虑以下各项 Cosmos DB：
+
+1. 如果最近旋转了 Cosmos DB 帐户密钥，则需要等待15分钟，以便托管标识连接字符串工作。
+
+1. 查看 Cosmos DB 帐户的访问权限是否受到限制，无法选择网络。 如果是这样，请参阅 [使用 Azure 网络安全功能索引器访问数据源](search-indexer-securing-resources.md)。
 
 ## <a name="see-also"></a>另请参阅
 

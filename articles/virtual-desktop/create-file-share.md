@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825437"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287315"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件和 AD DS 创建配置文件容器
 
@@ -54,13 +54,13 @@ ms.locfileid: "88825437"
 
 若要创建文件共享，请执行以下操作：
 
-1. 选择“转到资源”。 
+1. 选择“转到资源”。
 
 2. 在 "概述" 页上，选择 " **文件共享**"。
 
 3. 选择 " **+ 文件共享**"，创建一个名为 " **配置文件**" 的新文件共享，然后输入相应的配额，或者将该字段留空，不使用配额。
 
-4. 选择“创建”  。
+4. 选择“创建” 。
 
 ## <a name="enable-active-directory-authentication"></a>启用 Active Directory 身份验证
 
@@ -131,7 +131,7 @@ ms.locfileid: "88825437"
     - `/`用反斜杠替换正斜杠 `\` 。
     - 将在 [创建 Azure 文件共享](#create-an-azure-file-share) 中创建的文件共享的名称添加到 UNC 末尾。
 
-        例如：`\\customdomain.file.core.windows.net\<fileshare-name>`
+        例如： `\\customdomain.file.core.windows.net\<fileshare-name>`
 
 ### <a name="get-the-storage-account-key"></a>获取存储帐户密钥
 
@@ -154,7 +154,7 @@ ms.locfileid: "88825437"
 2. 运行以下命令以装载 Azure 文件共享，并为其分配一个驱动器号：
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. 运行以下命令，查看对 Azure 文件共享的访问权限：
@@ -212,7 +212,7 @@ ms.locfileid: "88825437"
 
 6. 重启 VM。
 
-## <a name="testing"></a>测试
+## <a name="testing"></a>正在测试
 
 安装并配置 FSLogix 后，可以通过使用已分配了主机池上的应用组或桌面的用户帐户登录来测试部署。 确保你登录所用的用户帐户具有对文件共享的权限。
 
