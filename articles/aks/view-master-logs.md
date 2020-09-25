@@ -4,12 +4,12 @@ description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kuber
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4d4485848bb81f9b745081bd999b3cd3e8101b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299065"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -30,7 +30,7 @@ Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS �
 1. 选择 AKS 群集（如 *myAKSCluster*），然后选择 " **添加诊断设置**"。
 1. 输入名称（例如 myAKSClusterLogs），然后选择“发送到 Log Analytics”选项。
 1. 选择现有工作区或者创建新的工作区。 如果创建工作区，请提供工作区名称、资源组和位置。
-1. 在可用日志列表中，选择要启用的日志。 在此示例中，启用 *kube-audit* 日志。 常见日志包括 kube-apiserver、kube-controller-manager 和 kube-scheduler。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
+1. 在可用日志列表中，选择要启用的日志。 对于本示例，请启用 kube-audit 日志。 常见日志包括 kube-apiserver、kube-controller-manager 和 kube-scheduler。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
 1. 准备就绪后，选择“保存”以启用收集选定日志。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>在 AKS 群集上计划测试 pod
@@ -67,21 +67,23 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-启用并显示诊断日志可能需要几分钟时间。 在 Azure 门户中，导航到 AKS 群集，并选择左侧的 " **日志** "。 如果出现 " *示例查询* " 窗口，则将其关闭。
+可能需要等待几分钟，诊断日志才会启用并显示。 在 Azure 门户中导航到 AKS 群集，然后选择左侧的“日志”。 关闭“示例查询”窗口（如果出现了此窗口）。
 
-在左侧选择“日志”。 若要查看 *kube-audit* 日志，请在文本框中输入以下查询：
-
-```
-KubePodInventory
-| where TimeGenerated > ago(1d)
-```
-
-许多日志可能会返回。 若要将查询范围缩小到查看有关上一步骤中创建的 NGINX pod 的日志，请添加其他 *where* 语句来搜索 *NGINX* ，如下面的示例查询中所示：
+在左侧选择“日志”。 若要查看 kube-audit 日志，请在文本框中输入以下查询：
 
 ```
-KubePodInventory
-| where TimeGenerated > ago(1d)
-| where Name contains "nginx"
+AzureDiagnostics
+| where Category == "kube-audit"
+| project log_s
+```
+
+可能会返回多个日志。 若要缩小查询范围，以便查看上一步骤中创建的 NGINX pod 的相关日志，请额外添加一个 where 语句来搜索 nginx，如以下示例查询所示：
+
+```
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
 ```
 
 有关如何查询和筛选日志数据的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据][analyze-log-analytics]。
@@ -91,6 +93,7 @@ KubePodInventory
 AKS 记录以下事件：
 
 * [AzureActivity][log-schema-azureactivity]
+* AzureDiagnostics
 * [AzureMetrics][log-schema-azuremetrics]
 * [ContainerImageInventory][log-schema-containerimageinventory]
 * [ContainerInventory][log-schema-containerinventory]
@@ -133,6 +136,7 @@ AKS 记录以下事件：
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azurediagnostics]: /azure/azure-monitor/reference/tables/azurediagnostics
 [log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
 [log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
 [log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory

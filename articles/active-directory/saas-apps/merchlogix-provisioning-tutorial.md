@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547988"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273341"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>教程：为 MerchLogix 配置自动用户预配
 
@@ -55,7 +55,7 @@ ms.locfileid: "88547988"
 
 5. 在结果面板中，选择 " **MerchLogix**"，然后单击 " **添加** " 按钮将 MerchLogix 添加到 SaaS 应用程序列表。
 
-    ![MerchLogix 预配][4]
+    ![从条带区添加的屏幕截图，其 "输入名称" 文本框称为 "out"。][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>将用户分配到 MerchLogix
 
@@ -88,7 +88,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 4. 将“预配模式”设置为“自动”。
 
-    ![MerchLogix 预配](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![MerchLogix-Prisioning 部分的屏幕截图，其中预配选项称为 out，预配模式设置为 "自动"，而 "测试连接" 选项称为 "out"。](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. 在 " **管理员凭据** " 部分下：
 

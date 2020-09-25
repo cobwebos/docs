@@ -1,5 +1,5 @@
 ---
-title: CLI 示例-Enable BYOK TDE-Azure SQL 托管实例
+title: CLI 示例 - 启用 BYOK TDE - Azure SQL 托管实例
 description: 了解如何配置 Azure SQL 托管实例，以开始使用 BYOK 透明数据加密 (TDE) 通过 PowerShell 进行静态加密。
 services: sql-database
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.devlang: azurecli
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto
 ms.date: 11/05/2019
-ms.openlocfilehash: 08f0531a99a7e0af42332e349989ce12722be42c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b948161633569d629dfb048a7d7dee6a9946f43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323628"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用 Azure Key Vault 中自己的密钥管理托管实例中的透明数据加密
 
@@ -28,7 +28,7 @@ ms.locfileid: "86518786"
 
 ### <a name="prerequisites"></a>先决条件
 
-现有托管实例，请参阅[使用 Azure CLI 创建 AZURE SQL 托管实例](sql-database-create-configure-managed-instance-cli.md)。
+现有托管实例，请参阅[使用 Azure CLI 创建 Azure SQL 托管实例](sql-database-create-configure-managed-instance-cli.md)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -56,7 +56,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 描述 |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | 数据库命令。 |
 | [az sql failover-group](/cli/azure/sql/failover-group) | 故障转移组命令。 |

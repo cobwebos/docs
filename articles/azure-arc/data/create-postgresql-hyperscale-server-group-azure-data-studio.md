@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: af0cdb814433b739b15d79bec9cb399cf0a2fef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273001"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>使用 Azure Data Studio 创建启用了 Azure Arc 的 PostgreSQL 超大规模
 
@@ -42,6 +42,19 @@ Password:
 Namespace: arc
 Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
 ```
+
+## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>仅适用于 OpenShift 用户的初始和临时步骤
+
+在转到下一步之前实现此步骤。 若要将 PostgreSQL 超大规模服务器组部署到非默认项目中的 Red Hat OpenShift，需要针对群集执行以下命令，以更新安全约束。 此命令为将运行 PostgreSQL 超大规模服务器组的服务帐户授予必要的权限。  (SCC) 的安全上下文约束是在部署 Azure **_arc 数据控制器_** 时添加的。
+
+```console
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
+```
+
+_**服务器组名称** 是将在下一步中部署的服务器组的名称。_
+   
+有关 OpenShift 中 Scc 的更多详细信息，请参阅 [OpenShift 文档](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)。
+你现在可以实现下一步。
 
 ## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -80,6 +93,5 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 
 - [横向扩展 Azure Database for PostgreSQL 超大规模服务器组](scale-out-postgresql-hyperscale-server-group.md)
 - [存储配置和 Kubernetes 存储概念](storage-configuration.md)
-- [扩展永久性卷声明](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes 资源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

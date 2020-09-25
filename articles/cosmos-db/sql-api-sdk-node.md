@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-js
+ms.openlocfilehash: 8334f8bbbdb6cad210839fc724c46834f559bf91
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324361"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -471,7 +471,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | [1.0.1](#1.0.1) |2015年 5 月 15日 |2020 年 8 月 30 日 |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |2020 年 8 月 30 日 |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

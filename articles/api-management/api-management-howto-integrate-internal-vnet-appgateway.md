@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321877"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
@@ -91,7 +91,7 @@ ms.locfileid: "87025109"
 > 
 > 应用程序网关 WAF 规则可能会中断门户的功能，其中包括：
 > 
-> - `920330`，，，，，，，，，， `931130` `942100` `942110` `942180` `942200` `942260` `942370` `949110` `980130` 用于管理模式
+> - `920300`，，，，，，，，，， `920330` `931130` `942100` `942110` `942180` `942200` `942260` `942340` `942370` 用于管理模式
 > - `942200``942260` `942370` `942430` `942440` 对于发布的门户，，，，
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组

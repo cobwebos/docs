@@ -12,13 +12,13 @@ ms.date: 03/13/2020
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-- devx-track-javascript
-ms.openlocfilehash: e1df4387b5617e9aebb4045bdf19c8df628b56ef
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 1d6a51e2e9c052be0c59435b287c5fdde459f55d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334185"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -134,7 +134,7 @@ ms.locfileid: "87423654"
 
 ### <a name="connect-the-sensor-to-pi"></a>将传感器连接到 Pi
 
-使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有该传感器，请[跳过此部分](#connect-pi-to-the-network)。
+使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有该传感器，请 [跳过此部分](#connect-pi-to-the-network)。
 
 ![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 

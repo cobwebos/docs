@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 08ede149c24d8ba4921c0e0b75f5e6eff3f2250f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0aa6a9114635ddc7935f7923a1552ad1583625ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299062"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>用于 Azure 虚拟机（资源管理器）的自动备份 v2
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -159,7 +159,7 @@ $resourcegroupname = "resourcegroupname"
 (Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions 
 ```
 
-如果已安装 SQL Server IaaS 代理扩展，其应作为“SqlIaaSAgent”或“SQLIaaSExtension”列出。 此外，该扩展的“ProvisioningState”应显示“成功”。 
+如果已安装 SQL Server IaaS 代理扩展，应会看到其列为“SqlIaaSAgent”或“SQLIaaSExtension”。 此外，该扩展的“ProvisioningState”应显示“成功”。 
 
 如果未安装或未能预配该扩展，可使用以下命令进行安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 ( **$region**)。
 

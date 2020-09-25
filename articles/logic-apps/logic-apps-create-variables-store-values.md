@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333896"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用变量来存储和管理值
 
@@ -22,7 +22,7 @@ ms.locfileid: "84753256"
 * 获取或引用变量的值。
 * 按常量值增大或减小变量，也称为递增和递减。  
 * 将不同的值赋给变量。
-* 将变量的值插入或*追加*到字符串或数组中的最后一项。
+* 将变量的值插入或 *追加* 到字符串或数组中的最后一项。
 
 变量只在创建它们的逻辑应用实例中存在并保持全局性。 另外，不管在逻辑应用实例中进行什么循环迭代，它们都会保留。 引用变量时，请使用变量的名称作为令牌，而不要使用操作的名称。操作名称通常用于引用操作的输出。
 
@@ -31,7 +31,7 @@ ms.locfileid: "84753256"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，请[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果没有订阅，请 [注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 要在其中创建变量的逻辑应用
 
@@ -55,7 +55,7 @@ ms.locfileid: "84753256"
 
    * 若要在最后一个步骤下添加操作，请选择“新建步骤”。 
 
-     ![添加操作](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![显示在 "逻辑应用设计器" 页上选择的 "新步骤" 操作的屏幕截图。](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * 若要在步骤之间添加操作，请将鼠标移到连接箭头上方，以显示加号 ( **+** )。 选择加号，然后选择“添加操作”。 
 

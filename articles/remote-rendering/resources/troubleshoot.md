@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322183"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -23,11 +23,7 @@ ms.locfileid: "90982963"
 
 ## <a name="client-cant-connect-to-server"></a>客户端无法连接到服务器
 
-确保防火墙（在设备上、路由器内部等）未阻止以下端口：
-
-* 50051 (TCP) - 初始连接（HTTP 握手）需要
-* 8266 (TCP+UDP) - 数据传输需要
-* 5000 (TCP)、5433 (TCP)、8443 (TCP) - [ArrInspector](tools/arr-inspector.md) 需要
+请确保你的防火墙 (在设备上、在路由器内部，等等 ) 不会阻止 [系统要求](../overview/system-requirements.md#network-ports)中提到的端口。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>错误 " `Disconnected: VideoFormatNotAvailable` "
 
@@ -152,7 +148,7 @@ Unity 渲染管道不包含渲染挂钩：
 
 Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合成，并执行重新投影。 若要验证这些挂钩是否存在，请打开菜单 *:::no-loc text="Window > Analysis > Frame debugger":::* 。 启用它并确保管道中的 `HolographicRemotingCallbackPass` 有两个条目：
 
-![Unity 帧调试器](./media/troubleshoot-unity-pipeline.png)
+![Unity 呈现管道](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>在模型加载后呈现棋盘模式
 
@@ -184,6 +180,12 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>由于缺少 AudioPluginMsHRTF.dll，Unity 项目的 Arm64 生成失败
 
 `AudioPluginMsHRTF.dll`已将 Arm64 的添加到*Windows Mixed Reality* (包 *) *版本3.0.1 中的 windowsmr。 确保已通过 Unity 包管理器安装了版本3.0.1 或更高版本。 从 Unity 菜单栏中，导航到 " *窗口 >" 包管理器* "，并查找" *Windows Mixed Reality* "包。
+
+## <a name="native-c-based-application-does-not-compile"></a>基于本机 c + + 的应用程序不编译
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP 应用程序或 Dll 的 "找不到库" 错误
+
+在 c + + Nuget 包中，有 `microsoft.azure.remoterendering.Cpp.targets` 一个文件文件用于定义要使用的二进制口味。 若要确定 `UWP` ，文件中检查的条件 `ApplicationType == 'Windows Store'` 。 因此，需要确保在项目中设置此类型。 这应该是通过 Visual Studio 的项目向导创建 UWP 应用程序或 Dll 时的情况。
 
 ## <a name="unstable-holograms"></a>不稳定全息影像
 

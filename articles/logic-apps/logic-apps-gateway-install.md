@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660475"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322506"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -114,7 +114,7 @@ ms.locfileid: "89660475"
 
    请注意选项“添加到现有网关群集”。在为[高可用性方案](#high-availability)安装其他网关时，需选择此选项。
 
-1. 检查网关安装使用的网关云服务和 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)的区域。 默认情况下，此区域与 Azure 帐户的 Azure AD 租户位于同一位置。
+1. 检查网关云服务和网关安装使用的 [Azure 服务总线消息传送实例](../service-bus-messaging/service-bus-messaging-overview.md) 的区域。 默认情况下，此区域与 Azure 帐户的 Azure AD 租户位于同一位置。
 
    ![确认网关服务和服务总线的区域](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "89660475"
 
 ## <a name="check-or-adjust-communication-settings"></a>检查或调整通信设置
 
-本地数据网关依赖使用 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)来建立云连接，以及与网关关联的 Azure 区域建立相应的出站连接。 如果工作环境要求流量通过代理或防火墙来访问 Internet，此限制可能会阻止本地数据网关连接到网关云服务和 Azure 服务总线。 网关有多个可以调整的通信设置。 有关详细信息，请参阅以下主题：
+本地数据网关依赖于 [Azure 服务总线消息传送](../service-bus-messaging/service-bus-messaging-overview.md) 进行云连接，并建立与网关关联的 azure 区域的相应出站连接。 如果你的工作环境要求流量通过代理或防火墙来访问 internet，则此限制可能会阻止本地数据网关连接到网关云服务和 Azure 服务总线消息传送。 网关有多个可以调整的通信设置。 有关详细信息，请参阅以下主题：
 
 * [调整本地数据网关的通信设置](/data-integration/gateway/service-gateway-communication)
 * [配置本地数据网关的代理设置](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ ms.locfileid: "89660475"
 
 网关有助于促进更快速、更安全的后台通信。 此通信在云中的用户、网关云服务和本地数据源之间流动。 网关云服务可加密和存储数据源凭据与网关详细信息。 该服务还会在用户、网关与本地数据源之间路由查询及其结果。
 
-网关可与防火墙配合使用，只使用出站连接。 所有流量最初都是网关代理的安全出站流量。 网关通过 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)中继来自加密频道上的本地源的数据。 此服务总线在网关与调用方服务之间创建通道，但不存储任何数据。 通过网关的所有数据经过加密。
+网关可与防火墙配合使用，只使用出站连接。 所有流量最初都是网关代理的安全出站流量。 网关通过 [Azure 服务总线消息传送](../service-bus-messaging/service-bus-messaging-overview.md)在加密通道上从本地源发送数据。 此服务总线在网关与调用方服务之间创建通道，但不存储任何数据。 通过网关的所有数据经过加密。
 
 ![本地数据网关的体系结构](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ ms.locfileid: "89660475"
 
 1. 云服务将创建查询，并为数据源创建加密的凭据。 然后，该服务将查询和凭据发送到网关队列进行处理。
 
-1. 网关云服务分析该查询，并将请求推送到 Azure 服务总线。
+1. 网关云服务将分析该查询，并将请求推送到 Azure 服务总线消息传送。
 
-1. Azure 服务总线将等待中的请求发送到网关。
+1. Azure 服务总线消息传送会将挂起的请求发送到网关。
 
 1. 网关获取查询，对凭据进行解密，并使用这些凭据连接到一个或多个数据源。
 

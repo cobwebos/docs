@@ -4,14 +4,14 @@ description: 了解如何与 Kubernetes 资源交互，以从 Azure 门户管理
 services: container-service
 author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335596"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>访问 Azure 门户 (预览版中的 Kubernetes 资源) 
 
@@ -75,11 +75,25 @@ Kubernetes 资源视图还包括一个 YAML 编辑器。 内置的 YAML 编辑�
 
 若要访问 Kubernetes 资源，你必须有权访问 AKS 群集、Kubernetes API 和 Kubernetes 对象。 确保你是群集管理员或具有访问 AKS 群集的适当权限的用户。 有关群集安全性的详细信息，请参阅 [AKS 的访问和标识选项][concepts-identity]。
 
+>[!NOTE]
+> Azure 门户中的 kubernetes 资源视图仅受 [托管的启用 aad 的群集](managed-aad.md) 或未启用 aad 的群集支持。 如果你使用的是已启用托管 AAD 的群集，则你的 AAD 用户或标识除了需要请求[用户 `kubeconfig` ](control-kubeconfig-access.md)的权限外，还需要具有各自的角色/角色绑定来访问 kubernetes API。
+
 ### <a name="enable-resource-view"></a>启用资源视图
 
 对于现有群集，可能需要启用 Kubernetes 资源视图。 若要启用资源视图，请按照群集的门户中的提示进行操作。
 
 :::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure 门户消息启用 Kubernetes 资源视图。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+
+> [!TIP]
+> 可以添加 [API 服务器已授权 IP 范围](api-server-authorized-ip-ranges.md) AKS 功能，以便限制 API 服务器仅访问防火墙的公共终结点。 此类群集的另一个选项是进行更新 `--api-server-authorized-ip-ranges` ，以包括从其浏览)  (的本地客户端计算机或 IP 地址范围的访问权限。 要允许此访问，需要计算机的公共 IPv4 地址。 可以通过以下命令找到此地址，或在 internet 浏览器中搜索 "我的 IP 地址是什么"。
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
 
 ## <a name="next-steps"></a>后续步骤
 

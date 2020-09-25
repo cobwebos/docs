@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272061"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server VM (RP) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: c5e81b07bf43b86543af546ab5453563e7cf4004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3194198447f024154c369d519d6ff55ee8ee699
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296681"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -179,8 +179,29 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 在自动化和优化过程中，自动化机器学习会尝试各种模型和算法。 用户不需要指定算法。 
 
-三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用类似的算法池作为 `regression` 任务）确定要应用的算法模型的列表。 使用 `allowed_models` 或 `blocked_models` 参数通过要包含或排除的可用模型来进一步修改迭代。 可以在[分类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[预测](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和[回归](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)的 [SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)中找到支持的模型的列表。
+这三个不同的 `task` 参数值决定了要应用的算法或模型的列表。 使用 `allowed_models` 或 `blocked_models` 参数通过要包含或排除的可用模型来进一步修改迭代。 
 
+下表按任务类型汇总了支持的模型。 
+
+> [!NOTE]
+> 如果你计划将自动化 ML 创建的模型导出为 [ONNX 模型](concept-onnx.md)，只有标有 * 的算法才能转换为 ONNX 格式。 详细了解[如何将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另请注意，ONNX 目前只支持分类和回归任务。 
+
+分类 | 回归 | 时序预测
+|-- |-- |--
+[逻辑回归](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[梯度提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[梯度提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[决策树](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)* |[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K 最近的邻域](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 最近的邻域](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[支持矢量分类 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[平均感知器分类器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[在线梯度下降回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速线性回归量](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[线性 SVM 分类器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
 
 ### <a name="primary-metric"></a>主要指标
 `primary metric` 参数决定了将在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
@@ -329,7 +350,6 @@ run = experiment.submit(automl_config, show_output=True)
 ## <a name="register-and-deploy-models"></a>注册和部署模型
 
 有关如何下载或注册模型以便部署到 Web 服务的详细信息，请参阅[如何部署模型以及在何处部署模型](how-to-deploy-and-where.md)。
-
 
 <a name="explain"></a>
 

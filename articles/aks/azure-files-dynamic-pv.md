@@ -5,12 +5,12 @@ description: 了解如何使用 Azure 文件动态创建永久性卷，以便与
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299258"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -33,6 +33,7 @@ ms.locfileid: "88611392"
 * *Standard_ZRS* - 标准区域冗余存储 (ZRS)
 * *Standard_RAGRS* - 标准读取访问异地冗余存储 (RA-GRS)
 * *Premium_LRS* - 高级本地冗余存储 (LRS)
+* *Premium_ZRS* 高级区域冗余存储 (ZRS) 
 
 > [!NOTE]
 > Azure 文件存储在运行 Kubernetes 1.13 或更高版本的 AKS 群集中支持高级存储，最小高级文件共享为 100GB

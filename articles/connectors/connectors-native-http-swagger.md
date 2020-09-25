@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271182"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
@@ -54,17 +54,17 @@ ms.locfileid: "87281457"
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![输入 Swagger 终结点的 URL](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![显示逻辑应用设计器的屏幕截图，其中 "H T T P + Swagger" 触发器和 "Swagger Endpoint U R L" 属性设置为 U R L 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. 当设计器显示了 Swagger 文件描述的操作时，请选择要使用的操作。
 
-   ![Swagger 文件中的操作](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![屏幕截图，显示具有 "H T P + Swagger" 触发器的逻辑应用设计器和显示 Swagger 操作的列表。](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. 提供要包含在终结点调用中的触发器参数的值（根据所选的操作而异）。 设置重复周期，以确定触发器调用终结点的频率。
 
    此示例将触发器重命名为“HTTP + Swagger trigger:Face - Detect”，使步骤名称更具描述性。
 
-   ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![显示逻辑应用设计器的屏幕截图，其中 "H T T P + Swagger" 触发器显示 "面部检测" 操作。](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. 要添加其他可用参数，请打开“添加新参数”列表，然后选择所需参数。
 

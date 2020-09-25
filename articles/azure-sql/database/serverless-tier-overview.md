@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321401"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 在无服务器数据库和预配的计算数据库中，如果使用了所有可用内存，则可能会逐出缓存条目。
 
-请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，可能会有额外的延迟，因为响应先前用户活动会定期后台进程。  例如，"删除" 操作将生成标记为删除的虚影记录，但不会在物理上删除，直到虚影清除进程运行，这可能涉及到将数据页读入缓存。
+请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有额外的延迟，因为后台进程会定期响应先前的用户活动。  例如，"删除操作" 和 "QDS 清除任务" 生成标记为删除的虚影记录，但在虚影清除进程运行之前不会将其物理删除，这可能涉及到将数据页读入缓存。
 
 #### <a name="cache-hydration"></a>缓存合成
 
@@ -120,7 +120,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 - 长期备份保留 (LTR)。
 - SQL 数据同步中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
 - DNS 别名
-- 弹性作业中使用的作业数据库 (预览) 。
+- 弹性作业（预览版）中使用的作业数据库。
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4599346cd4538151f6c758253f1f1bf29bafdcbf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9faa9dcd664f5dc8b7b0b633eedd19431a4b826
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322200"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>了解 Azure Database for MySQL 的根 CA 更改的更改
 
@@ -30,6 +30,7 @@ Azure Database for MySQL 将更改启用了 SSL 的客户端应用程序/驱动�
 使用 SSL/TLS 并验证根证书的所有应用程序都需要更新根证书。 通过查看连接字符串，可以确定连接是否验证根证书。
 -   如果连接字符串包含 `sslmode=verify-ca` 或 `sslmode=verify-full` ，则需要更新证书。
 -   如果连接字符串包括 `sslmode=disable` 、 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，则无需更新证书。 
+-  如果使用 Java 连接器，并且连接字符串包含 useSSL = false 或 requireSSL = false，则无需更新证书。
 -   如果连接字符串未指定 sslmode，则无需更新证书。
 
 如果你使用的客户端将连接字符串提取出来，请查看客户端的文档，以了解它是否验证证书。

@@ -4,19 +4,16 @@ description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271369"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>针对 Azure 虚拟机的选择性磁盘备份和还原
 
 Azure 备份支持使用虚拟机备份解决方案，将 VM 中的所有磁盘 () 的操作系统和数据一起备份。 现在，使用选择性磁盘备份和还原功能，可以备份 VM 中的数据磁盘子集。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点只包含备份操作中包含的磁盘。 这会进一步使你可以在还原操作过程中从给定的恢复点还原磁盘的子集。 这适用于从快照和保管库还原。
-
->[!NOTE]
->针对 Azure 虚拟机的选择性磁盘备份和还原在所有区域均为公共预览版。
 
 ## <a name="scenarios"></a>方案
 
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 如果 VM 不在与保管库相同的资源组中，则 **ResourceGroup** 是指在其中创建了保管库的资源组。 提供 VM ID，而不是 VM 名称，如下所示。
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>修改对已备份 Vm 的保护，并提供 Azure CLI
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>用 Azure CLI 还原磁盘
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>仅还原带有 Azure CLI 的 OS 磁盘
@@ -289,11 +286,32 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 
 对于启用了选择性磁盘备份功能的 VM，不支持用于 **创建新 vm** 和 **替换现有** vm 的还原选项。
 
+目前，Azure VM 备份不支持将超磁盘或共享磁盘连接到 Vm。 在这种情况下不能使用选择性磁盘备份，这会排除磁盘并备份 VM。
+
 ## <a name="billing"></a>计费
 
 Azure 虚拟机备份遵循现有的定价模型，此处将对 [此](https://azure.microsoft.com/pricing/details/backup/)进行详细说明。
 
-仅当选择使用**Os 磁盘**选项进行备份时，才会为 OS 磁盘计算**受保护的实例 (PI) 开销**。  如果配置备份并选择至少一个数据磁盘，则会为附加到 VM 的所有磁盘计算 PI 成本。 **备份存储成本** 仅基于包含的磁盘来计算，因此你可以节省存储成本。 始终为 VM 中的所有磁盘计算**快照成本**， (包含的磁盘和已排除的磁盘) 。  
+仅当选择使用**Os 磁盘**选项进行备份时，才会为 OS 磁盘计算**受保护的实例 (PI) 开销**。  如果配置备份并选择至少一个数据磁盘，则会为附加到 VM 的所有磁盘计算 PI 成本。 **备份存储成本** 仅基于包含的磁盘来计算，因此你可以节省存储成本。 始终为 VM 中的所有磁盘计算**快照成本**， (包含的磁盘和已排除的磁盘) 。
+
+如果已选择 "跨区域还原 (CRR) 功能"，则在排除磁盘后， [CRR 定价](https://azure.microsoft.com/pricing/details/backup/) 适用于备份存储开销。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>受保护实例是如何在 Windows 和 Linux 中仅为 OS 磁盘备份计算 (PI) 成本？
+
+PI 成本根据 VM) 大小使用的实际 (进行计算。
+
+- 对于 Windows：已用空间计算基于存储操作系统的驱动器（通常为 C： ) ） (。
+- 对于 Linux：已用空间计算基于装入根文件系统 (/) 的设备。
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>我仅配置了 OS 磁盘备份，原因是所有磁盘都发生了快照？
+
+选择性磁盘备份功能可通过强化作为备份一部分的包含磁盘来节省备份保管库的存储成本。 但是，会为附加到 VM 的所有磁盘拍摄快照。 因此，会始终为 VM 中的所有磁盘计算快照成本， (包含的磁盘和已排除的磁盘) 。 有关详细信息，请参阅 [计费](#billing)。
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>无法为 Azure 虚拟机配置备份，只需要排除超磁盘或附加到 VM 的共享磁盘
+
+选择性磁盘备份功能是在 Azure 虚拟机备份解决方案之上提供的一项功能。 目前，Azure VM 备份不支持将超磁盘或共享磁盘连接到 Vm。
 
 ## <a name="next-steps"></a>后续步骤
 

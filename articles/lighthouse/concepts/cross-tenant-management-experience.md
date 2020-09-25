@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336626"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -48,7 +48,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 [Azure Arc](../../azure-arc/index.yml)：
 
-- 大规模管理混合服务器- [启用了 Azure Arc 的服务器 (预览) ](../../azure-arc/servers/overview.md)：
+- 大规模管理混合服务器- [启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)：
   - [管理 azure 上的 Windows Server 或 Linux 计算机，这些计算机连接](../../azure-arc/servers/onboard-portal.md) 到 azure 中的委派订阅和/或资源组
   - 使用 Azure 构造（如Azure Policy 和标记）管理连接的计算机
   - 确保跨客户的混合环境应用相同的一组策略

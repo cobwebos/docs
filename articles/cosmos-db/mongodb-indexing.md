@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-js
+ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324402"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 利用 Azure Cosmos DB 的核心索引
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>适用于 MongoDB 服务器版本 3.6 的索引编制功能
 
-Azure Cosmos DB 的用于 MongoDB 服务器版本 3.6 的 API 会自动为无法删除的 `_id` 字段编制索引。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 在 Azure Cosmos DB 的 MongoDB API 中，分片和索引是单独的概念。 无需为分片键编制索引。 但是，与文档中的任何其他属性一样，如果此属性是查询中的常见筛选器，我们建议为分片键编制索引。
+Azure Cosmos DB 的用于 MongoDB 服务器版本 3.6 的 API 会自动为无法删除的 `_id` 字段编制索引。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 在 Azure Cosmos DB 的用于 MongoDB 的 API 中，分片和编制索引是不同的概念。 你无需为分片键编制索引。 但是，与文档中的任何其他属性一样，如果此属性是查询中的常用筛选器，则我们建议为分片编制索引。
 
 若要为其他字段编制索引，请应用 MongoDB 索引管理命令。 与在 MongoDB 中一样，Azure Cosmos DB 的用于 MongoDB 的 API 仅自动为 `_id` 字段编制索引。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
 
@@ -79,9 +79,9 @@ Azure Cosmos DB 的用于 MongoDB 的 API 目前支持文本索引。 要对字�
 
 ## <a name="wildcard-indexes"></a>通配符索引
 
-您可以使用通配符索引来支持针对未知字段的查询。 假设有一个集合，其中包含有关系列的数据。
+可以使用通配符索引来支持针对未知字段的查询。 假设你有一个包含有关家庭的数据的集合。
 
-下面是该集合中的示例文档的一部分：
+以下是该集合中的示例文档的一部分：
 
 ```json
   "children": [
@@ -92,7 +92,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 目前支持文本索引。 要对字�
   ]
 ```
 
-下面是另一个示例，这一次使用的属性集略有不同 `children` ：
+以下是另一个示例，此示例的 `children` 中有一组略有不同的属性：
 
 ```json
   "children": [
@@ -110,38 +110,38 @@ Azure Cosmos DB 的用于 MongoDB 的 API 目前支持文本索引。 要对字�
   ]
 ```
 
-在此集合中，文档可以有许多不同的可能属性。 如果要对数组中的所有数据编制索引 `children` ，可以使用两个选项：为每个单独的属性创建单独的索引，或者为整个数组创建一个通配符索引 `children` 。
+在此集合中，文档可以拥有许多不同的可能属性。 如果要为 `children` 数组中的所有数据编制索引，则有两个选择：为每个单独的属性创建单独的索引，或为整个 `children` 数组创建一个通配符索引。
 
 ### <a name="create-a-wildcard-index"></a>创建通配符索引
 
-以下命令对中的任何属性创建一个通配符索引 `children` ：
+以下命令在 `children` 内的任何属性上创建通配符索引：
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-**与 MongoDB 不同，通配符索引可以在查询谓词中支持多个字段**。 如果使用一个通配符索引，而不是为每个属性创建一个单独的索引，则不会对查询性能产生差别。
+与在 MongoDB 中不同，通配符索引可以在查询谓词中支持多个字段。 如果使用一个通配符索引，而不是为每个属性创建单独的索引，查询性能不会有差异。
 
-您可以使用通配符语法创建以下索引类型：
+可以使用通配符语法创建以下索引类型：
 
 - 单个字段
 - 地理空间
 
 ### <a name="indexing-all-properties"></a>为所有属性编制索引
 
-下面介绍了如何对所有字段创建通配符索引：
+在所有字段上创建通配符索引的方法如下：
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-开始开发时，对所有字段创建通配符索引可能会很有用。 随着文档中索引的属性的增多，请求单位 (RU) 的写入和更新的费用将增加。 因此，如果您有一个写繁重的工作负荷，则应该选择单独索引路径，而不是使用通配符索引。
+开始开发时，在所有字段上创建通配符索引可能会很有用。 随着在文档中为更多属性编制索引，用于编写和更新文档的请求单位 (RU) 费用将增加。 因此，如果有写入密集型工作负荷，则应选择单独的索引路径，而不要使用通配符索引。
 
 ### <a name="limitations"></a>限制
 
-通配符索引不支持以下任何一种索引类型或属性：
+通配符索引不支持以下任何索引类型或属性：
 
 - 复合
 - TTL
 - 唯一
 
-**不同于 mongodb**，在 AZURE COSMOS DB 的 API for mongodb 中，**不能**将通配符索引用于：
+与在 MongoDB 中不同，在 Azure Cosmos DB 的用于 MongoDB 的 API 中，不能使用通配符索引进行以下操作：
 
 - 创建包含多个特定字段的通配符索引
 
@@ -167,7 +167,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 目前支持文本索引。 要对字�
     }
 )`
 
-作为替代方法，可以创建多个通配符索引。
+作为替代方法，你可以创建多个通配符索引。
 
 ## <a name="index-properties"></a>索引属性
 
@@ -354,12 +354,12 @@ Azure Cosmos DB 的用于 MongoDB 的 API 版本 3.6 支持使用 `currentOp()` 
 
 复合索引包含对文档多个字段的引用。 若要创建复合索引，请通过提出[支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)升级到版本 3.6。
 
-### <a name="wildcard-indexes-version-32"></a> (版本 3.2) 的通配符索引
+### <a name="wildcard-indexes-version-32"></a>通配符索引（版本 3.2）
 
-若要创建通配符索引，请通过存档[支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来升级到版本3.6。
+若要创建通配符索引，请通过提出[支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)升级到版本 3.6。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Cosmos DB 中的索引](../cosmos-db/index-policy.md)
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)
-* 若要了解分区与索引之间的关系，请参阅如何[查询 Azure Cosmos 容器一](how-to-query-container.md)文。
+* 若要了解分区和编制索引之间的关系，请参阅如何[查询 Azure Cosmos 容器](how-to-query-container.md)一文。

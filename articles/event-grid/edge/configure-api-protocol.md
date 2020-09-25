@@ -1,18 +1,18 @@
 ---
 title: 配置 API 协议-Azure 事件网格 IoT Edge |Microsoft Docs
-description: 配置 IoT Edge 上的事件网格公开的 API 协议。
+description: 了解事件网格模块的可能的协议配置。
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: 801a320fbd66b4b8a46757ba90881da54b2721de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a9cf6088201ffeaed76d99a9b211e5bcd1ea139a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322574"
 ---
 # <a name="configure-event-grid-api-protocols"></a>配置事件网格 API 协议
 
@@ -23,7 +23,7 @@ ms.locfileid: "86171714"
 | HTTP | 5888 | 默认情况下关闭。 仅在测试过程中有用。 不适用于生产工作负荷。
 | HTTPS | 4438 | 默认
 
-有关所有可能的配置，请参阅[安全性和身份验证](security-authentication.md)指南。
+有关所有可能的配置，请参阅 [安全性和身份验证](security-authentication.md) 指南。
 
 ## <a name="expose-https-to-iot-modules-on-the-same-edge-network"></a>在同一边缘网络上向 IoT 模块公开 HTTPS
 
@@ -96,7 +96,7 @@ ms.locfileid: "86171714"
  ```
 
 >[!NOTE]
-> 默认情况下，每个 IoT 模块都是 bridge 网络创建的 IoT Edge 运行时的一部分。 它允许同一网络上的不同 IoT 模块相互通信。 **PortBindings**允许将容器内部端口映射到主机计算机上，从而使任何人都能够从外部访问事件网格模块的端口。
+> 默认情况下，每个 IoT 模块都是 bridge 网络创建的 IoT Edge 运行时的一部分。 它允许同一网络上的不同 IoT 模块相互通信。 **PortBindings** 允许将容器内部端口映射到主机计算机上，从而使任何人都能够从外部访问事件网格模块的端口。
 
 >[!IMPORTANT]
 > 尽管可以在 IoT Edge 网络外部使端口可访问，但客户端身份验证会强制实际允许其调用模块的用户。

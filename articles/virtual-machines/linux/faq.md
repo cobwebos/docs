@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 71bffacb3f865ffe487ebdd4bee0c0c229be332d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84cb9860f247610621bff130aff155abf222f3c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830319"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274888"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
 本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -30,12 +30,12 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何访问我的虚拟机？
 使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或[从 Linux 和 Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增加此数量。
 
-如果遇到问题，请查看[安全外壳 (SSH) 连接的疑难解答](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
+如果遇到问题，请查看 [安全外壳 (SSH) 连接的疑难解答](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>我是否可以使用临时磁盘 (/dev/sdb1) 存储数据？
 不要使用临时磁盘 (/dev/sdb1) 存储数据。 它只是用于临时存储。 有丢失无法恢复的数据的风险。
 
-## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>可否复制或克隆现有的 Azure VM？
+## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>我是否可以复制或克隆现有的 Azure VM？
 是的。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure Resource Manager 中看不到加拿大中部和加拿大东部区域？
@@ -64,7 +64,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 - `admin`
 - `admin1`
 - `admin2`
--`administrator`
+- `administrator`
 - `aspnet`
 - `backup`
 - `console`
@@ -96,8 +96,8 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 根据所使用的工具，有不同的密码长度要求：
  - 门户 - 12 到 72 个字符之间
  - PowerShell - 8 到 123 个字符之间
- - CLI-介于 12-123 个字符之间
- - Azure 资源管理器 (ARM) 模板-不允许使用 12-72 字符和控制字符
+ - CLI - 12 到 123 个字符之间
+ - Azure 资源管理器 (ARM) 模板 - 12 到 72 个字符，不允许使用控制字符
  
 
 密码还必须满足以下 4 个复杂性要求中的 3 个要求：

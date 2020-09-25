@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4c6b8b0bfa78dca5ca32c8c72edcc463ebb9057a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322132"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
 
@@ -58,7 +58,7 @@ Jeff 执行以下任务：
 
 2. Jeff 查看“安全功能分数”，以全面了解订阅的安全状态，看到分数是 548。
 
-3. Jeff 必须决定要首先处理哪些建议。 那么，Jeff 单击安全分数，开始根据其 [安全分数](secure-score-security-controls.md)的提高程度来处理建议。
+3. Jeff 必须决定要首先处理哪些建议。 因此，Jeff 单击“安全功能分数”并开始根据其提高[安全功能分数](secure-score-security-controls.md)的程度来处理建议。
 
 4. 由于 Jeff 有很多连接的 Vm，李明决定将精力集中在 [资产清单](asset-inventory.md)中的计算机上。
 

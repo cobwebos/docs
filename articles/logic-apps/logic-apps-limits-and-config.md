@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/03/2020
-ms.openlocfilehash: d5db970d4ed3c3988c96a2c0c33775bcbfb00d92
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/16/2020
+ms.openlocfilehash: 41a43abc3ebae0dad6892bebd06cf995cce143f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322404"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -241,7 +241,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 > [!NOTE]
 > 免费层仅用于探索场景，不用于生产场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
 
-| 项目 | 免费 | 基本 | Standard |
+| 项目 | 免费 | 基本 | 标准 |
 |----------|------|-------|----------|
 | EDI 贸易协议 | 10 | 1 | 1,000 |
 | EDI 参与方 | 25 | 2 | 1,000 |
@@ -267,7 +267,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-| 运行时终结点 | 免费 | 基本 | Standard | 说明 |
+| 运行时终结点 | 免费 | 基本 | 标准 | 说明 |
 |------------------|------|-------|----------|-------|
 | 每 5 分钟读取调用 | 3,000 | 30,000 | 60,000 | 此限制适用于从逻辑应用的运行历史记录获取原始输入和输出的调用。 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用调用 | 3,000 | 30,000 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
@@ -283,7 +283,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 | 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
-| AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | 适用于解码和编码 |
+| AS2 | v2 - 100 MB<br>v1-25 MB | v2 - 200 MB <br>v1-25 MB | 适用于解码和编码 |
 | X12 | 50 MB | 50 MB | 适用于解码和编码 |
 | EDIFACT | 50 MB | 50 MB | 适用于解码和编码 |
 ||||

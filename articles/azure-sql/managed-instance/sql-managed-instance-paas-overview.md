@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 3d8bf3f087592a7d629a247b1c10721237699fdc
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ce86f4e6ed5f29be3e36959e0f9db76edaab4982
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273018"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL 托管实例是一种智能、可伸缩的云数据库服务，它将最广泛的 SQL Server 数据库引擎兼容性与完全托管和最长的平台即服务的所有优势相结合。 SQL 托管实例具有与最新 SQL Server (Enterprise Edition) 数据库引擎近 100% 的兼容性，提供解决常见安全问题的本机[虚拟网络 (VNet)](../../virtual-network/virtual-networks-overview.md) 实现，并提供现有 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，SQL 托管实例保留了所有 PaaS 功能（自动修补和版本更新、[自动备份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)），可大幅降低管理开销和总拥有成本。
+Azure SQL 托管实例是一种智能、可缩放的云数据库服务；它将最广泛的 SQL Server 数据库引擎兼容性与完全托管且经久不衰的平台即服务的所有优势相结合。 SQL 托管实例具有与最新 SQL Server (Enterprise Edition) 数据库引擎近 100% 的兼容性，提供解决常见安全问题的本机[虚拟网络 (VNet)](../../virtual-network/virtual-networks-overview.md) 实现，并提供现有 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，SQL 托管实例保留了所有 PaaS 功能（自动修补和版本更新、[自动备份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)），可大幅降低管理开销和总拥有成本。
 
 如果不熟悉 Azure SQL 托管实例，请参阅我们的深层[AZURE sql 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的*azure sql 托管实例*视频：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
@@ -230,7 +230,7 @@ SQL 托管实例可以减少系统管理员花费在管理任务上的时间，�
 
 下表显示了可通过 Transact-SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用 SQL 托管实例以及检索重要属性。
 
-|属性|值|注释|
+|属性|Value|注释|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 此值**并不**表示 SQL 引擎版本 12 (SQL Server 2014)。 SQL 托管实例始终运行最新稳定的 SQL 引擎版本，此版本与最新可用的 SQL Server RTM 版本相同或更高。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|

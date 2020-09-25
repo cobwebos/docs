@@ -1,6 +1,6 @@
 ---
 title: Azure ExpressRoute：配置 ExpressRoute Global Reach： CLI
-description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络并启用 Global Reach。
+description: 了解如何将 ExpressRoute 线路链接在一起以在本地网络之间建立专用网络，以及如何使用 Azure CLI 启用 Global Reach。
 services: expressroute
 author: duongau
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/12/2018
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20ec5bb565a506d935ef7de6475e5062a21faa22
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322489"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Global Reach
 

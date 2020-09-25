@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320806"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上 Kubernetes 基于角色的访问控制
 
@@ -42,7 +42,7 @@ Azure Stack Edge Pro 设备具有以下命名空间：
     - kube-系统
     - metallb-系统
     - dbe-命名空间
-    - 默认值
+    - default
     - kubernetes-dashboard
     - kube-租赁
     - kube-公共
@@ -91,25 +91,7 @@ Azure Stack Edge Pro 设备具有多个系统命名空间，你可以创建具�
 
 在此关系图中，Alice、Bob 和 Chuck 只能访问分配的用户命名空间，在这种情况下，这种命名空间 `ns1` 分别为、 `ns2` 和 `ns3` 。 在这些命名空间内，它们具有管理访问权限。 另一方面，群集管理员可以管理对系统命名空间和群集范围内资源的访问权限。
 
-你可以使用 `kubectl` 命令创建命名空间和用户、将用户分配到命名空间或 `kubeconfig` 下载文件。 下面是高级工作流：
-
-1. 创建命名空间和用户。  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. 创建用户。  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. 将命名空间与您创建的用户关联。  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. 将用户配置保存到 `C:\Users\<username>\.kube` 。  
-
-5. 安装 `kubectl` 并开始将应用程序部署到 `kubectl` 。 
-
-有关详细的分步说明，请参阅 [Azure Stack Edge Pro 上的通过 Kuebctl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
+用户可以创建命名空间和用户、将用户分配到命名空间或下载 `kubeconfig` 文件。 有关详细的分步说明，请参阅 [Azure Stack Edge Pro 上的通过 Kuebctl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
 
 
 在 Azure Stack Edge Pro 设备上使用命名空间和用户时，请注意以下事项：

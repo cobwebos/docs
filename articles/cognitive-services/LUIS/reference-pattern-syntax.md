@@ -1,19 +1,21 @@
 ---
 title: 模式语法参考 - LUIS
 description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 提取的数据由客户端应用程序使用。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322812"
 ---
 # <a name="pattern-syntax"></a>模式语法
 
-模式语法是一个话语模板。 模板应包含要匹配的字词和实体，以及要忽略的字词和[标点](luis-reference-application-settings.md#punctuation-normalization)。 它不是一个正则表达式  。
+模式语法是一个话语模板。 模板应包含要匹配的字词和实体，以及要忽略的字词和 [标点](luis-reference-application-settings.md#punctuation-normalization) 。 它不是一个正则表达式  。
 
 > [!CAUTION]
 > 模式仅包括机器学习实体父项，而不包括子实体。
@@ -136,7 +138,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 详细了解模式：
 
 * [如何添加模式](luis-how-to-model-intent-pattern.md)
-* [如何添加模式。任何实体](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [如何添加 pattern.any 实体](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [模式概念](luis-concept-patterns.md)
 
-了解如何在 json 响应中返回[情绪](luis-reference-prebuilt-sentiment.md)。
+了解如何在 json 响应中返回 [情绪](luis-reference-prebuilt-sentiment.md) 。

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e79135ccf672fa057d9e88fc91fa72b7826ba71e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 75b193017bbfccbae0f299c0a1db2fe0e34f1810
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321792"
 ---
 # <a name="add-a-simple-data-layer"></a>添加简单的数据层
 
@@ -114,7 +114,7 @@ Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同
 
 还会使用气泡层呈现分类。 默认情况下，群集的 radius 设置为 `16` 。 群集的颜色因群集中的点数而异，如下所示：
 
-| 点数 | Color    |
+| 点数 | 颜色    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

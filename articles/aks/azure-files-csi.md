@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d845e7589b57bf76d3da48c48fa0a520b09e1f94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299300"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>使用 azure 文件容器存储接口 (CSI) Azure Kubernetes Service 中的驱动程序 (AKS)  (预览版) 
 
@@ -194,16 +194,98 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+
+## <a name="nfs-file-shares"></a>NFS 文件共享
+[Azure 文件现在提供对 NFS v2.0 协议的支持](../storage/files/storage-files-how-to-create-nfs-shares.md)。 NFS 4.1 对 Azure 文件的支持为你提供了一个完全托管的 NFS 文件系统，它是基于高度可用且高度持久的分布式弹性存储平台构建的服务。
+
+ 此选项针对使用就地数据更新的随机访问工作负荷进行了优化，并提供完整的 POSIX 文件系统支持。 本部分介绍如何在 AKS 群集上通过 Azure 文件 CSI 驱动程序使用 NFS 共享。
+
+请确保在预览阶段检查 [限制](../storage/files/storage-files-compare-protocols.md#limitations) 和 [区域可用性](../storage/files/storage-files-compare-protocols.md#regional-availability) 。
+
+### <a name="register-the-allownfsfileshares-preview-feature"></a>注册 `AllowNfsFileShares` 预览功能
+
+若要创建利用 NFS 4.1 的文件共享，必须 `AllowNfsFileShares` 在订阅上启用功能标志。
+
+`AllowNfsFileShares`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
+```
+
+状态显示为“已注册”需要几分钟时间**。 使用 [az feature list][az-feature-list] 命令验证注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，请使用[az provider register][az-provider-register]命令刷新*Microsoft 存储*资源提供程序的注册：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Storage
+```
+
+### <a name="create-a-storage-account-for-the-nfs-file-share"></a>创建 NFS 文件共享的存储帐户
+
+[创建一个 `Premium_LRS`](../storage/files/storage-how-to-create-premium-fileshare.md)具有以下配置的 Azure 存储帐户支持 NFS 共享：
+- 帐户类型： FileStorage
+- 需要安全传输 (仅启用 HTTPS 流量) ： false
+- 选择防火墙和虚拟网络中代理节点的虚拟网络
+
+### <a name="create-nfs-file-share-storage-class"></a>创建 NFS 文件共享存储类
+
+在编辑相应的占位符后，保存 `nfs-sc.yaml` 包含清单的文件。
+
+```yml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azurefile-csi
+provisioner: file.csi.azure.com
+parameters:
+  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
+  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
+  protocol: nfs
+```
+
+编辑并保存文件后，使用 [kubectl apply][kubectl-apply] 命令创建存储类：
+
+```console
+$ kubectl apply -f nfs-sc.yaml
+
+storageclass.storage.k8s.io/azurefile-csi created
+```
+
+### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>使用支持 NFS 的文件共享创建部署
+可以[stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` 通过使用[kubectl apply][kubectl-apply]命令部署以下命令，部署将时间戳保存到文件中的示例有状态集：
+
+ ```console
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+
+statefulset.apps/statefulset-azurefile created
+```
+
+通过运行以下内容来验证卷的内容：
+
+```console
+$ kubectl exec -it statefulset-azurefile-0 -- df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+...
+/dev/sda1                                                                                 29G   11G   19G  37% /etc/hosts
+accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
+...
+```
+
 ## <a name="windows-containers"></a>Windows 容器
 
-Azure 文件 CSI 驱动程序还支持 Windows 节点和容器。 如果要使用 Windows 容器，请遵循 [windows 容器教程](windows-container-cli.md) 来添加 windows 节点池。
+Azure 文件 CSI 驱动程序还支持 Windows 节点和容器。 如果要使用 Windows 容器，请按照 [windows 容器教程](windows-container-cli.md) 添加 windows 节点池。
 
 使用 Windows 节点池后，请使用内置的存储类，例如 `azurefile-csi` 或创建自定义的存储类。 你可以部署 [基于 Windows 的有状态集](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) 示例，该程序集 `data.txt` 通过使用 [kubectl apply][kubectl-apply] 命令部署以下命令将时间戳保存到文件中：
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
-statefulset.apps/busybox-azuredisk created
+statefulset.apps/busybox-azurefile created
 ```
 
 通过运行以下内容来验证卷的内容：
@@ -248,10 +330,10 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md

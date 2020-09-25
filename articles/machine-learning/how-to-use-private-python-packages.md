@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 0f6f5d0ca757b10a16b31864124f1bcf1190674a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1afa9173c2ca3704bf4408c271e3cf950ef79077
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896919"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302210"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>将专用 Python 包与 Azure 机器学习一起使用
 
@@ -36,7 +36,7 @@ ms.locfileid: "90896919"
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>使用少量包进行开发和测试
 
-对于单个工作区的少量专用包，请使用静态 [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) 方法。 此方法可让你快速地将专用包添加到工作区，并且非常适用于开发和测试目的。
+对于单个工作区的少量专用包，请使用静态 [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) 方法。 此方法可让你快速地将专用包添加到工作区，并且非常适用于开发和测试目的。
 
 将文件路径参数指向本地 wheel 文件，然后运行 ```add_private_pip_wheel``` 命令。 该命令返回用于跟踪工作区中包位置的 URL。 捕获存储 URL，并将其传递给 `add_pip_package()` 方法。
 
@@ -52,13 +52,13 @@ Azure 机器学习服务在内部将 URL 替换为安全的 SAS URL，使 wheel 
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>从 Azure DevOps 源使用包的存储库
 
-如果正积极开发机器学习应用程序的 Python 包，可以将它们作为项目托管在 Azure DevOps 存储库，并将其作为源发布。 此方法可让你集成 DevOps 工作流，以便通过 Azure 机器学习工作区生成包。 若要了解如何使用 Azure DevOps 设置 Python 源，请阅读 [Azure Artifacts 中的 Python 包入门](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops)
+如果正积极开发机器学习应用程序的 Python 包，可以将它们作为项目托管在 Azure DevOps 存储库，并将其作为源发布。 此方法可让你集成 DevOps 工作流，以便通过 Azure 机器学习工作区生成包。 若要了解如何使用 Azure DevOps 设置 Python 源，请阅读 [Azure Artifacts 中的 Python 包入门](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops&preserve-view=true)
 
 此方法使用个人访问令牌对存储库进行身份验证。 同样的方法适用于采用基于令牌的身份验证的其他存储库，如专用 GitHub 存储库。 
 
- 1. 为 Azure DevOps 实例[创建个人访问令牌 (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page#create-a-pat)。 将令牌的范围设为 Packaging > Read。 
+ 1. 为 Azure DevOps 实例[创建个人访问令牌 (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat)。 将令牌的范围设为 Packaging > Read。 
 
- 2. 使用 [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) 方法添加 Azure DevOps URL 和 PAT 作为工作区属性。
+ 2. 使用 [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) 方法添加 Azure DevOps URL 和 PAT 作为工作区属性。
 
      ```python
     from azureml.core import Workspace

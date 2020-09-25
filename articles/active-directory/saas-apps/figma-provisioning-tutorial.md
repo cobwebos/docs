@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555114"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322022"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>教程：为 Figma 配置自动用户预配
 
@@ -110,11 +110,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分，在 " `https://www.figma.com/scim/v2/<TenantID>` **租户 URL** " 中输入 TenantID，其中 **TenantID** 是你之前从 Figma 中检索到的值。 输入**机密令牌**中的**API 令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Figma。 如果连接失败，请确保 Figma 帐户具有管理员权限，然后重试。
 
@@ -124,7 +124,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“保存” 。
+9. 单击“ **保存**”。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Figma**"。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: f64f9b612ff47fb5c0b6e6202ad87f7660959100
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320789"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备上的 Kubernetes 工作负荷管理
 
@@ -29,7 +29,7 @@ ms.locfileid: "90899190"
 
     你可以创建 Kubernetes 部署，以便在群集上部署无状态应用程序。 
 
-- 有**状态应用程序**要求保存其状态。 有状态应用程序使用持久存储（例如永久卷）保存数据，供服务器或其他用户使用。 有状态应用程序的示例包括 MongoDB 之类的数据库。
+- 有**状态应用程序**要求保存其状态。 有状态应用程序使用持久存储（例如永久卷）保存数据，供服务器或其他用户使用。 有状态应用程序的示例包括 [AZURE SQL Edge](../azure-sql-edge/overview.md) 和 MongoDB 之类的数据库。
 
     你可以创建 Kubernetes 部署来部署有状态应用程序。 
 

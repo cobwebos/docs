@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77648506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297464"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务监视迁移活动
 本文介绍如何在数据库级别和表级别监视迁移进度。

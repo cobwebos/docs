@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e0fadf4ac8cea1c8804b17f5549a99bc360e2950
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334287"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
 
@@ -85,9 +85,11 @@ ms.locfileid: "90531706"
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为 XmlReadSettings。 | 是      |
 | validationMode | 指定是否要验证 XML 架构。<br>允许的值为 none（默认值、无验证）、xsd（使用 XSD 验证）以及 dtd （使用 DTD 验证）  。 | 否 |
+| namespaces | 解析 XML 文件时是否启用命名空间。 允许的值是：true（默认）、false。 | 否 |
 | namespacePrefixes | 命名空间 URI 到前缀的映射，用于在分析 xml 文件时为字段命名。<br/>如果 XML 文件具有命名空间，且已启用命名空间，则默认情况下，字段名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName`。 | 否 |
+| detectDataType | 是否检测整数、双精度值和布尔值数据类型。 允许的值是：true（默认）、false。| 否 |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
-| preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type`) `ZipDeflateReadSettings` *  | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>-如果设置为 **true (默认) **，数据工厂会将解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-当设置为 **false**时，数据工厂会将解压缩的文件直接写入到 `<path specified in dataset>` 中。 请确保在不同的源 zip 文件中没有重复的文件名，以免出现赛车或意外的行为。  | 否 |
+| preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type`) `ZipDeflateReadSettings` *  | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/`。<br>- 当设置为 false 时，数据工厂会直接将未解压缩的文件写入 `<path specified in dataset>`。 请确保在不同的源 zip 文件中没有重复的文件名，以免出现赛车或意外的行为。  | 否 |
 | preserveCompressionFileNameAsFolder<br> (*下 `compressionProperties` -> `type`) `TarGZipReadSettings` * | 当输入数据集配置了 **TarGzip** 压缩时适用。 指示是否在复制过程中将源压缩文件名保留为文件夹结构。<br>-如果设置为 **true (默认) **，数据工厂会将解压缩的文件写入 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-当设置为 **false**时，数据工厂会将解压缩的文件直接写入到 `<path specified in dataset>` 中。 请确保在不同的源文件中没有重复的文件名，以免产生赛车或意外的行为。 | 否 |
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
@@ -109,6 +111,7 @@ ms.locfileid: "90531706"
 | 验证模式 | 指定是否要验证 XML 架构。 | 否 | `None` (默认情况下，不验证) <br>`xsd` 使用 XSD)  (验证<br>`dtd` 使用 DTD)  (验证。 | validationMode |
 | 命名空间 | 解析 XML 文件时是否启用命名空间。 | 否 | `true` (默认) 或 `false` | namespaces |
 | 命名空间前缀对 | 命名空间 URI 到前缀的映射，用于在分析 xml 文件时为字段命名。<br/>如果 XML 文件具有命名空间，且已启用命名空间，则默认情况下，字段名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName`。 | 否 | 带有模式的数组`['URI1'->'prefix1','URI2'->'prefix2']` | namespacePrefixes |
+| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="xml-source-script-example"></a>XML 源脚本示例
 
@@ -139,7 +142,7 @@ source(allowSchemaDrift: true,
 
 - XML 属性：
 
-    - 元素的特性在层次结构中被分析为元素的子字段。
+    - 元素的属性将被分析为层次结构中元素的子字段。
     - 属性字段的名称遵循模式 `@attributeName`。
 
 - XML 架构验证：

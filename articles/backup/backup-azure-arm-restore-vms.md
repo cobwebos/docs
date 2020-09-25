@@ -4,12 +4,12 @@ description: 使用 Azure 门户（包括跨区域还原功能）从恢复点还
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 90179ee78569f1c7b0a7bdf4b4da031c26f01783
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271862"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -163,9 +163,6 @@ Azure 备份提供多种方法用于还原 VM。
 ![选择还原点](./media/backup-azure-arm-restore-vms/sec-rp.png)
 
 ![还原配置](./media/backup-azure-arm-restore-vms/rest-config.png)
-
->[!NOTE]
->次要区域中的虚拟网络需要单独分配，并且不能用于该资源组中的任何其他 Vm。
 
 ![“正在触发还原”通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 

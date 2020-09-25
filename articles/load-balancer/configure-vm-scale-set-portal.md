@@ -1,17 +1,17 @@
 ---
 title: 配置包含现有 Azure 负载均衡器的虚拟机规模集 - Azure 门户
-description: 了解如何配置包含现有 Azure 负载均衡器的虚拟机规模集。
+description: 了解如何使用 Azure 门户通过现有的 Azure 负载均衡器来配置虚拟机规模集。
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e12532107ed554385ccf38531bb95b7b70298934
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809447"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333879"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集
 
@@ -49,11 +49,11 @@ ms.locfileid: "84809447"
     | 资源组                 | 选择“新建”，输入 myResourceGroup，然后选择“确定”；或选择现有的资源组。  |
     | **规模集详细信息**          |                                                                                                       |
     | 虚拟机规模集名称 | 输入 myVMSS                                                                                       |
-    | 区域                         | 选择**美国东部 2**                                                                                    |
-    | 可用性区域              | 选择**无**                                                                                       |
+    | 区域                         | 选择 **美国东部 2**                                                                                    |
+    | 可用性区域              | 选择“无”                                                                                       |
     | **实例详细信息**           |                                                                                                       |
     | 映像                          | 选择“Ubuntu Server 18.04 LTS”                                                                     |
-    | Azure 点实例            | 选择**否**                                                                                         |
+    | Azure Spot 实例            | 请选择“否”                                                                                         |
     | 大小                           | 保留默认值                                                                                      |
     | **管理员帐户**      |                                                                                                       |
     | 身份验证类型            | 选择“密码”                                                                                    |

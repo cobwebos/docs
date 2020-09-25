@@ -1,23 +1,26 @@
 ---
 title: 使用 Azure Policy 实现 Azure Cosmos DB 资源的治理和控制
 description: 了解如何使用 Azure Policy 来实现 Azure Cosmos DB 资源的治理和控制。
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320891"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>使用 Azure Policy 实现 Azure Cosmos DB 资源的治理和控制
 
 [Azure Policy](../governance/policy/overview.md) 有助于强制实施组织治理标准、评估资源符合性并实现自动修复。 常见的用例包括安全性、成本管理和配置一致性。
 
 Azure Policy 提供内置策略定义。 可以为内置策略定义未解决的方案创建自定义策略定义。 有关更多详细信息，请参阅 [Azure Policy 文档](../governance/policy/overview.md)。
+
+> [!IMPORTANT]
+> Azure 策略是在 Azure 服务的资源提供程序级别上强制实施的。 Cosmos DB Sdk 可以对数据库、容器和吞吐量资源执行大多数管理操作，这些操作会绕过 Cosmos DB 资源提供程序，因此忽略使用 Azure 策略创建的任何策略。 若要确保强制执行策略，请参阅 [阻止 Azure Cosmos DB sdk 中的更改](role-based-access-control.md#prevent-sdk-changes)
 
 ## <a name="assign-a-built-in-policy-definition"></a>分配内置策略定义
 

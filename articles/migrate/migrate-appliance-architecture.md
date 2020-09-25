@@ -3,12 +3,12 @@ title: Azure Migrate 设备体系结构
 description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设备。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322251"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 设备体系结构
 
@@ -72,7 +72,7 @@ Azure Migrate 设备用于以下应用场景。
 2. **收集元数据和性能数据**：
     - 设备使用 (CIM) 会话的通用信息模型从端口5985上的 Hyper-v 主机收集 Hyper-v VM 数据。
     - 默认情况下，设备与端口443通信，以便从 vCenter Server 收集 VMware VM 数据。
-3. **发送数据**：设备将收集的数据发送到 Azure Migrate 服务器评估，并通过 SSL 端口 443 Azure Migrate 服务器迁移。 设备可以通过 internet 连接到 Azure，也可以将 ExpressRoute 用于公共/Microsoft 对等互连。
+3. **发送数据**：设备将收集的数据发送到 Azure Migrate 服务器评估，并通过 SSL 端口 443 Azure Migrate 服务器迁移。 设备可以通过 internet 或 ExpressRoute 连接到 Azure (需要 Microsoft 对等互连) 。
     - 对于性能数据，设备会收集实时利用率数据。
         - 对于 VMware，每隔20秒收集一次性能数据，对于每个性能指标，将每30秒收集一次。
         - 收集的数据将汇总到10分钟后创建单个数据点。

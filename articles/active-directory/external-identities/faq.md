@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 09/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908286"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274038"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -84,7 +84,7 @@ ms.locfileid: "87908286"
  
 * 使用 Microsoft 帐户（例如 guestuser@live.com）登录的来宾用户可以使用 Microsoft 帐户自助密码重置 (SSPR) 来重置其自己的密码。 请参阅[如何重置 Microsoft 帐户密码](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)。
 * 使用 Google 帐户或其他外部标识提供者登录的来宾用户可以使用其标识提供者的 SSPR 方法来重置自己的密码。 例如，使用 Google 帐户 guestuser@gmail.com 的来宾用户可以遵照[更改或重置密码](https://support.google.com/accounts/answer/41078)中的说明重置其密码。
-* 如果标识租户是实时 (JIT) 或“病毒性”租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织会接管在员工使用其工作电子邮件地址注册服务时创建[的病毒租户的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
+* 如果标识租户是实时 (JIT) 或“病毒性”租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织会接管在员工使用其工作电子邮件地址注册服务时创建 [的病毒租户的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) 。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
 
 * 如果来宾用户的主目录是 Azure AD 租户，则你可以重置该用户的密码。 例如，你可能在本地 Active Directory 中创建了用户或同步了用户，并将其 UserType 设置为 Guest。 由于此用户位于你的目录中，因此，可以从 Azure 门户重置其密码。
 
@@ -116,6 +116,9 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Azure AD B2B 是否不接受 gmail.com 和 outlook.com 电子邮件地址，此类帐户是否使用 B2C？
 我们将去除 B2B 和企业对消费者 (B2C) 的协作在所支持的标识这方面的差异。 根据所使用的标识决定使用 B2B 还是 B2C 并不是一个合理的原因。 有关选择协作选项的信息，请参阅[在 Azure Active Directory 中比较 B2B 协作和 B2C](compare-with-b2c.md)。
+
+### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>是否可以将 Azure AD B2C 本地帐户邀请到 Azure AD 租户进行 B2B 协作？
+不是。 只能使用 Azure AD B2C 本地帐户登录到 Azure AD B2C 租户。 帐户不能用于登录 Azure AD 租户。 不支持将 Azure AD B2C 本地帐户邀请到 Azure AD 租户进行 B2B 协作。
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>哪些应用程序和服务支持 Azure B2B 来宾用户？
 所有与 Azure AD 集成的应用程序都可以支持 Azure B2B 来宾用户，但必须使用设置为租户的终结点对来宾用户进行身份验证。 可能还需要在来宾用户对应用进行身份验证时颁发的 SAML 令牌中[自定义声明](claims-mapping.md)。 

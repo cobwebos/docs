@@ -9,23 +9,23 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8ba9edc129cc169ccc146c7bc314d8f5ffe573b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84038768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321639"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>使用 Azure SQL 数据库弹性池的应用程序的灾难恢复策略
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL 数据库提供了多项功能，可在发生灾难性事件时提供应用程序的业务连续性。 [弹性池](elastic-pool-overview.md)和单一数据库支持相同类型的灾难恢复 (DR) 功能。 本文介绍了使用这些 Azure SQL 数据库业务连续性功能的弹性池的多个 DR 策略。
+Azure SQL 数据库具备许多功能，可在发生灾难性事件时保证应用程序的业务连续性。 [弹性池](elastic-pool-overview.md)和单一数据库支持相同类型的灾难恢复 (DR) 功能。 本文介绍了几种针对利用这些 Azure SQL 数据库业务连续性功能的弹性池的 DR 策略。
 
 本文使用以下规范 SaaS ISV 应用程序模式：
 
-基于云的新式 web 应用程序为每位最终用户预配一个数据库。 ISV 拥有大量客户，因此会使用多个数据库，称为租户数据库。 由于租户数据库的活动模式通常不可预测，因此 ISV 通常使用弹性池，以使数据库成本在很长时间段内具有高度可预测性。 弹性池还简化了用户活动达到高峰时的性能管理。 除租户数据库之外，应用程序还使用多个数据库来管理用户配置文件、安全性、收集使用模式等。单个租户的可用性不会影响整个应用程序的可用性。 但是，管理数据库的可用性和性能对应用程序的功能至关重要，如果管理数据库处于脱机状态，则整个应用程序也同样处于脱机状态。
+基于现代云的 Web 应用程序为每位最终用户都预配了一个数据库。 ISV 拥有大量客户，因此会使用多个数据库，称为租户数据库。 由于租户数据库的活动模式通常不可预测，因此 ISV 通常使用弹性池，以使数据库成本在很长时间段内具有高度可预测性。 弹性池还简化了用户活动达到高峰时的性能管理。 除租户数据库之外，应用程序还使用多个数据库来管理用户配置文件、安全性、收集使用模式等。各个租户的可用性整体上不会影响应用程序的可用性。 但是，管理数据库的可用性和性能对应用程序的功能至关重要，如果管理数据库处于脱机状态，则整个应用程序也同样处于脱机状态。
 
 本文将通过各种方案（从节约成本的启动应用程序到具有严格可用性要求的应用程序）讨论 DR 策略。
 
@@ -64,9 +64,9 @@ Azure SQL 数据库提供了多项功能，可在发生灾难性事件时提供�
 
 ![图 3](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
 
-### <a name="benefit"></a>好处
+### <a name="benefit"></a>优势
 
-此策略的主要 优点 在于数据层冗余的持续低成本。 Azure SQL 数据库会自动备份数据库，而无需重新编写应用程序，而无需额外付费。 仅在还原弹性数据库时才产生成本。 
+此策略的主要优点在于数据层冗余的持续低成本。 Azure SQL 数据库会自动备份数据库，且无需支付任何额外成本、无需应用程序重写。 仅在还原弹性数据库时才产生成本。 
 
 ### <a name="trade-off"></a>权衡
 
@@ -97,7 +97,7 @@ Azure SQL 数据库提供了多项功能，可在发生灾难性事件时提供�
 
 此时，应用程序便已在 DR 区域中恢复为在线状态。 所有付费客户均可访问其数据，而试用客户则会在访问数据时遇到延迟。
 
-在 DR 区域中还原了应用程序 *之后* ，如果 Azure 恢复了主要区域，则可以决定在该区域继续运行应用程序或故障回复到主要区域。 如果在故障转移过程完成之前恢复了主要区域，请考虑立即进行故障回复。  此故障回复采用下图所示的步骤：
+在 DR 区域中还原了应用程序 *之后* ，如果 Azure 恢复了主要区域，则可以决定在该区域继续运行应用程序或故障回复到主要区域。 如果在故障转移过程完成之前恢复了主要区域，请考虑立即进行故障回复。 此故障回复采用下图所示的步骤：
 
 ![图 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
@@ -112,9 +112,9 @@ Azure SQL 数据库提供了多项功能，可在发生灾难性事件时提供�
 > [!NOTE]
 > 故障转移是异步操作。 为了最大限度缩短恢复时间，请务必按每批至少 20 个数据库执行租户数据库的故障转移命令。
 
-### <a name="benefit"></a>好处
+### <a name="benefit"></a>优势
 
-该策略的主要 优点 在于它为付费客户提供了最高的 SLA。 它还确保一旦创建了试用 DR 池，系统会取消阻止新试用。 
+该策略的主要优点在于它为付费客户提供了最高的 SLA。 它还确保一旦创建了试用 DR 池，系统会取消阻止新试用。 
 
 ### <a name="trade-off"></a>权衡
 
@@ -163,9 +163,9 @@ Azure SQL 数据库提供了多项功能，可在发生灾难性事件时提供�
 * 将 DR 池中已更新的数据库复制到主池 (13)。
 * 删除 DR 池 (14)。
 
-### <a name="benefit"></a>好处
+### <a name="benefit"></a>优势
 
-该策略的主要 优点 有：
+该策略的主要优点有：
 
 * 它支持针对付费客户的最佳性能的 SLA，因为它可确保中断对租户数据库产生的影响不会超过 50%。
 * 它还确保恢复期间一旦创建了试用 DR 池，系统将取消阻止新试用。
@@ -173,7 +173,7 @@ Azure SQL 数据库提供了多项功能，可在发生灾难性事件时提供�
 
 ### <a name="trade-offs"></a>权衡
 
-主要 权衡 有：
+主要权衡有：
 
 * 针对管理数据库的 CRUD 操作延迟，连接到区域 A 的最终用户比连接到区域 B 的最终用户遇到的延迟时间更短，因为他们将对管理数据库的主数据库执行该操作。
 * 它需要对管理数据库进行更复杂的设计。 例如，每个租户记录具有在故障转移和故障回复期间进行更改的位置标记。  
@@ -185,7 +185,7 @@ Azure SQL 数据库提供了多项功能，可在发生灾难性事件时提供�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解 Azure SQL 数据库自动备份，请参阅[AZURE Sql 数据库自动备份](automated-backups-overview.md)。
+* 若要了解 Azure SQL 数据库的自动备份，请参阅 [Azure SQL 数据库自动备份](automated-backups-overview.md)。
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 * 若要了解如何使用自动备份进行恢复，请参阅 [从服务启动的备份中还原数据库](recovery-using-backups.md)。
 * 要了解更快的恢复选项，请参阅[活动异地复制](active-geo-replication-overview.md)和[自动故障转移组](auto-failover-group-overview.md)。

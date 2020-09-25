@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: d89107a795c658161c2b543f2aacfb37398efb3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3990f9533aa6746011b1f070139b39ec884711c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305828"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>教程：为 Airstack 配置自动用户预配
 
@@ -103,11 +103,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://api-as.lenovosoftware.com/0/as/common/scim` **租户 URL**"。 输入先前在**机密令牌**中检索到的**SCIM Authentication 令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Airstack。 如果连接失败，请确保 Airstack 帐户具有管理员权限，然后重试。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/29/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320823"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>使用 Kubernetes 仪表板监视 Azure Stack Edge Pro GPU 设备
 
@@ -114,9 +114,9 @@ Azure Stack Edge Pro 设备的 Kubernetes 仪表板还具有一个 [指标服务
 
 ![查看 Azure Arc 部署的 CPU 和内存使用情况](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
 
-Kubernetes 指标服务器提供类似于 [水平 Pod 自动缩放程序](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)的自动缩放管道。
+Kubernetes 指标服务器提供自动缩放管道，如 [水平 Pod 自动缩放程序](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何对 Kubernetes 问题进行故障排除 <!--insert link-->.
+了解如何 [排查设备问题](azure-stack-edge-gpu-troubleshoot.md)。

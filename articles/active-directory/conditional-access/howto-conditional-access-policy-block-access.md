@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601582"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265980"
 ---
 # <a name="conditional-access-block-access"></a>条件访问：阻止访问
 
@@ -38,7 +38,7 @@ ms.locfileid: "90601582"
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
-如果用户不在受信任的网络中，以下步骤将帮助创建条件访问策略来阻止访问除 [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) 之外的所有应用。 将这些策略设置为 [仅限报表模式](howto-conditional-access-insights-reporting.md) ，以便管理员可以确定他们将对现有用户产生的影响。 当管理员确认策略按预期方式应用时，他们可以打开这些策略的开关  。
+如果用户不在受信任的网络中，以下步骤将帮助创建条件访问策略来阻止访问除 [Office 365](concept-conditional-access-cloud-apps.md#office-365) 之外的所有应用。 将这些策略设置为 [仅限报表模式](howto-conditional-access-insights-reporting.md) ，以便管理员可以确定他们将对现有用户产生的影响。 当管理员确认策略按预期方式应用时，他们可以打开这些策略的开关  。
 
 第一个策略阻止访问除 Microsoft 365 应用程序之外的所有应用（如果不在受信任位置上）。
 
@@ -52,7 +52,7 @@ ms.locfileid: "90601582"
    1. 选择“完成”  。
 1. 在“云应用或操作”  下，选择以下选项：
    1. 在“包括”下，选择“所有云应用”。  
-   1. 在“排除”  下，依次选择“Office 365 (预览版)”  、“选择”  、“完成”  。
+   1. 在 " **排除**" 下，选择 **Office 365**，选择 " **选择**"，然后选择 " **完成**"。
 1. 在“条件”  下，执行以下操作：
    1. 在“条件”   >   “位置”下，
       1. 将“配置”设置为“是”  
@@ -72,7 +72,7 @@ ms.locfileid: "90601582"
    1. 在“包括”下，选择“所有用户”。  
    1. 在“排除”下  选择“用户和组”  ，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成”  。
-1. 在“云应用或操作”   >   “包括”下，依次选择“选择应用”、“Office 365 (预览版)”、“选择”、“完成”。    
+1. 在 "**云应用或操作**  >  **包括**" 下，选择 "**选择应用**"，选择**Select**" **Office 365**"，然后选择 "**完成**"。
 1. 在“访问控制”   >   “授权”下，选择“授权访问”。 
    1. 选中“需要多重身份验证”  和“要求将设备标记为合规”  ，然后选择“选择”。 
    1. 确保选中“需要所有已选控件”  。

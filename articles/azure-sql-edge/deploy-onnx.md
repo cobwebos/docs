@@ -1,5 +1,6 @@
 ---
 title: 部署并通过 ONNX 进行预测
+titleSuffix: SQL machine learning
 description: 了解如何定型模型，如何将其转换为 ONNX，将其部署到 Azure SQL Edge 或 Azure SQL 托管实例 (preview) ，然后使用上传的 ONNX 模型对数据运行本机预测。
 keywords: 部署 SQL Edge
 ms.prod: sql
@@ -8,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886829"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298899"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>使用 ONNX 模型进行部署和预测
 

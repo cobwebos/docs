@@ -3,7 +3,7 @@ title: 用于在 Azure 虚拟机上部署 Oracle 应用程序的体系结构 |Mi
 description: 应用程序体系结构，用于将 Oracle 应用（包括电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft）部署到 Azure 中的数据库或 Oracle 云基础结构 (OCI) 中 Microsoft Azure 虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rgardler
+author: dbakevlar
 manager: ''
 tags: ''
 ms.service: virtual-machines
@@ -11,22 +11,22 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: rogardle
+ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 9fe6886f368d053af919b326fabf1ad4c3066717
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 838bd2014f543747a3c3ec7edee7b278f5f4d8df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274596"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>用于在 Azure 上部署 Oracle 应用程序的体系结构
 
-Microsoft 和 Oracle 共同合作，使客户能够在云中部署 oracle 电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft 等 Oracle 应用程序。 随着在 Microsoft Azure 和 Oracle 云基础结构 (OCI) 之间引入预览版[专用网络互连](configure-azure-oci-networking.md)，现在可以在 azure 中部署 Oracle 应用程序，并将其后端数据库部署在 AZURE 或 OCI 中。 Oracle 应用程序也可以与 Azure Active Directory 集成，使你能够设置单一登录，使用户能够使用其 Azure Active Directory (Azure AD) 凭据登录到 Oracle 应用程序。
+Microsoft 和 Oracle 共同合作，使客户能够在云中部署 oracle 电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft 等 Oracle 应用程序。 随着在 Microsoft Azure 和 Oracle 云基础结构 (OCI) 之间引入预览版 [专用网络互连](configure-azure-oci-networking.md) ，现在可以在 azure 中部署 Oracle 应用程序，并将其后端数据库部署在 AZURE 或 OCI 中。 Oracle 应用程序也可以与 Azure Active Directory 集成，使你能够设置单一登录，使用户能够使用其 Azure Active Directory (Azure AD) 凭据登录到 Oracle 应用程序。
 
 OCI 提供了针对 Oracle 应用程序的多个 Oracle 数据库选项，包括 DBaaS、Exadata 云服务、Oracle RAC 以及基础结构即服务 (IaaS) 。 目前，Oracle 应用程序不支持自治数据库后端。
 
-可以使用[多个选项](oracle-overview.md)在 Azure 中部署 Oracle 应用程序，包括高度可用且安全的方式。 如果选择完全在 Azure 上运行 Oracle 应用程序，Azure 还提供可部署的[oracle 数据库 VM 映像](oracle-vm-solutions.md)。
+可以使用 [多个选项](oracle-overview.md) 在 Azure 中部署 Oracle 应用程序，包括高度可用且安全的方式。 如果选择完全在 Azure 上运行 Oracle 应用程序，Azure 还提供可部署的 [oracle 数据库 VM 映像](oracle-vm-solutions.md) 。
 
 以下部分概述了 Microsoft 和 Oracle 部署 Oracle 电子商务套件、JD Edwards EnterpriseOne 和 PeopleSoft，以及完全在 Azure 中的架构建议。 Microsoft 和 Oracle 已对这些应用程序进行了测试，并确认了性能符合 Oracle 为这些应用程序设置的标准。
 
@@ -34,7 +34,7 @@ OCI 提供了针对 Oracle 应用程序的多个 Oracle 数据库选项，包括
 
 Oracle 应用程序由多个服务组成，这些服务可以托管在 Azure 中的相同或多个虚拟机上，也可以选择在 OCI 中。 
 
-可以设置应用程序实例的私有或公共终结点。 Microsoft 和 Oracle 建议使用单独的子网中的公共 IP 地址设置*堡垒主机 VM* ，以管理应用程序。 然后，仅将专用 IP 地址分配给其他计算机，包括数据库层。 
+可以设置应用程序实例的私有或公共终结点。 Microsoft 和 Oracle 建议使用单独的子网中的公共 IP 地址设置 *堡垒主机 VM* ，以管理应用程序。 然后，仅将专用 IP 地址分配给其他计算机，包括数据库层。 
 
 在跨云的体系结构中设置应用程序时，需要规划以确保 Azure 虚拟网络中的 IP 地址空间不与 OCI 虚拟云网络中的专用 IP 地址空间重叠。
 
@@ -83,7 +83,7 @@ Microsoft 和 Oracle 建议高可用性设置。 Azure 中的高可用性可以�
 
 标识层包含 EBS Asserter VM。 EBS Asserter 使你可以从 Oracle 标识云服务 (IDCS) 和 Azure AD 同步标识。 EBS Asserter 是必需的，因为 EBS 不支持单一登录协议（如 SAML 2.0 或 OpenID Connect）。 EBS Asserter 使用 OpenID connect 令牌 (由 IDCS) 生成，对其进行验证，然后为 EBS 中的用户创建一个会话。 
 
-尽管此体系结构显示了 IDCS 集成，但也可以使用 oracle Internet 目录或 Oracle 统一目录通过 Oracle Access Manager 启用 Azure AD 统一访问和单一登录。 有关详细信息，请参阅[通过 IDCS 集成部署 ORACLE ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_idcs.pdf)或[部署具有 Tld-oa-oam 集成的 oracle ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_oam.pdf)白皮书。
+尽管此体系结构显示了 IDCS 集成，但也可以使用 oracle Internet 目录或 Oracle 统一目录通过 Oracle Access Manager 启用 Azure AD 统一访问和单一登录。 有关详细信息，请参阅 [通过 IDCS 集成部署 ORACLE ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_idcs.pdf) 或 [部署具有 Tld-oa-oam 集成的 oracle ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_oam.pdf)白皮书。
 
 为实现高可用性，建议在多个可用性区域中部署 EBS Asserter 的冗余服务器，并在其前面部署负载均衡器。
 
@@ -119,9 +119,9 @@ Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集�
 
 此层的组件如下所示：
     
- - **设置服务器**-此服务器用于对应用程序的不同组件进行端到端部署。 它与其他层中的实例通信，包括数据库层中的实例（通过端口22）。 它承载了用于 JD Edwards EnterpriseOne 的服务器管理器控制台。
- - **部署服务器**-此服务器主要需要安装 JD Edwards EnterpriseOne。 在安装过程中，此服务器充当所需文件和安装包的中央存储库。 该软件会分发或部署到此服务器上的其他服务器和客户端。
- - **开发客户端**-此服务器包含在 web 浏览器和本机应用程序中运行的组件。
+ - **设置服务器** -此服务器用于对应用程序的不同组件进行端到端部署。 它与其他层中的实例通信，包括数据库层中的实例（通过端口22）。 它承载了用于 JD Edwards EnterpriseOne 的服务器管理器控制台。
+ - **部署服务器** -此服务器主要需要安装 JD Edwards EnterpriseOne。 在安装过程中，此服务器充当所需文件和安装包的中央存储库。 该软件会分发或部署到此服务器上的其他服务器和客户端。
+ - **开发客户端** -此服务器包含在 web 浏览器和本机应用程序中运行的组件。
 
 ### <a name="presentation-tier"></a>呈现层
 
@@ -134,7 +134,7 @@ Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集�
 - **BI Publisher Server (BIP) ** -此服务器根据 JD Edwards EnterpriseOne 应用程序收集的数据提供报表。 您可以根据不同的模板来设计和控制报表显示数据的方式。
 - **业务服务服务器 (BSS) ** -bss 允许信息交换和与其他 Oracle 应用程序的互操作性。
 - **实时事件服务器 (rte) ** -rte 服务器允许您设置 JDE EnterpriseOne 系统中发生的事务的外部系统通知。 它使用订阅者模型，并允许第三方系统订阅事件。 若要对两个 RTE 服务器的请求进行负载均衡，请确保服务器位于群集中。
-- **应用程序开发框架 (adf) 服务器**-adf 服务器用于运行使用 Oracle ADF 开发的 JD Edwards EnterpriseOne 应用程序。 这是使用 ADF 运行时部署在 Oracle WebLogic 服务器上的。
+- **应用程序开发框架 (adf) 服务器** -adf 服务器用于运行使用 Oracle ADF 开发的 JD Edwards EnterpriseOne 应用程序。 这是使用 ADF 运行时部署在 Oracle WebLogic 服务器上的。
 
 ### <a name="middle-tier"></a>中间层
 
@@ -144,8 +144,8 @@ Oracle 的 JD Edwards EnterpriseOne 是综合性企业资源规划软件的集�
 
 中间层中有以下两个组件：
 
-- **逻辑服务器**-包含业务逻辑或业务职能。
-- **批处理服务器**-用于批处理
+- **逻辑服务器** -包含业务逻辑或业务职能。
+- **批处理服务器** -用于批处理
 
 [!INCLUDE [virtual-machines-oracle-applications-database](../../../../includes/virtual-machines-oracle-applications-database.md)]
 
@@ -191,6 +191,6 @@ PeopleTools 客户端用于执行管理活动，如开发、迁移和升级。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[Terraform 脚本](https://github.com/microsoft/azure-oracle)在 Azure 中设置 Oracle 应用，并建立与 OCI 的跨云连接。
+使用 [Terraform 脚本](https://github.com/microsoft/azure-oracle) 在 Azure 中设置 Oracle 应用，并建立与 OCI 的跨云连接。
 
 有关 OCI 的详细信息和白皮书，请参阅 [Oracle 云](https://docs.cloud.oracle.com/iaas/Content/home.htm)文档。

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 81c4558bde3ffdbec72a756562b972c2eed4a1ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273035"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
@@ -45,7 +45,7 @@ ms.locfileid: "90934621"
 > [!NOTE]
 > 如果在 Azure 上使用 Red Hat OpenShift 容器平台，建议使用最新的可用版本。
 
-根据你选择的选项，某些工具是 _必需_的，但建议在开始创建 Azure Arc 数据控制器之前 [安装所有客户端工具](install-client-tools.md) 。
+根据你选择的选项，某些工具是 _必需_的，但建议在开始创建 Azure Arc 数据控制器之前 [安装所有客户端工具](./install-client-tools.md) 。
 
 无论你选择哪种选项，在创建过程中，你都需要提供以下信息：
 
@@ -53,7 +53,7 @@ ms.locfileid: "90934621"
 - **数据控制器用户名** -数据控制器管理员用户的任何用户名。
 - **数据控制器密码** -数据控制器管理员用户的密码。
 - **Kubernetes 命名空间的名称** -要在其中创建数据控制器的 Kubernetes 命名空间的名称。
-- **连接模式** -群集的 [连接模式](connectivity.md) 。 目前仅支持 "间接"。
+- **连接模式** -群集的 [连接模式](./connectivity.md) 。 目前仅支持 "间接"。
 - **Azure 订阅 ID** -你希望在 azure 中创建数据控制器资源的 AZURE 订阅 GUID。
 - **Azure 资源组名称** -要在 Azure 中创建数据控制器资源的资源组的名称。
 - **Azure location** -数据控制器资源元数据将存储在 azure 中的 azure 位置。 有关可用区域的列表，请参阅 [Azure 全球基础结构/产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)）。
@@ -68,5 +68,5 @@ ms.locfileid: "90934621"
 - [使用 Azure 数据 CLI 创建数据控制器 (azdata) ](create-data-controller-using-azdata.md)
 - [使用 Azure Data Studio 创建数据控制器](create-data-controller-azure-data-studio.md)
 - [通过 Azure Data Studio 中的 Jupyter 笔记本创建 Azure 门户的数据控制器](create-data-controller-resource-in-azure-portal.md)
-- [使用 Kubernetes 工具（如 kubectl 或 oc）创建数据控制器](create-data-controller-using-k8s-native-tools.md)
+- [使用 Kubernetes 工具（如 kubectl 或 oc）创建数据控制器](create-data-controller-using-kubernetes-native-tools.md)
 - [使用 Azure Arc Jumpstart 创建数据控制器以加速测试部署的体验](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)

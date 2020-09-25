@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f53a08a12c5afda8dbc3f25d9102f52b870ceea4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321656"
 ---
 # <a name="performing-disaster-recovery-drills"></a>执行灾难恢复演练
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84344571"
 * 恢复
 * 验证恢复后的应用程序完整性
 
-根据[针对业务连续性设计应用程序](business-continuity-high-availability-disaster-recover-hadr-overview.md)的方式，用于执行演练的工作流会有所不同。 本文讨论在 Azure SQL 数据库上下文中执行灾难恢复演练的最佳实践。
+根据[针对业务连续性设计应用程序](business-continuity-high-availability-disaster-recover-hadr-overview.md)的方式，用于执行演练的工作流会有所不同。 本文介绍在 Azure SQL 数据库上下文中执行灾难恢复演练的最佳做法。
 
 ## <a name="geo-restore"></a>异地还原
 
@@ -50,7 +50,7 @@ ms.locfileid: "84344571"
 
 ## <a name="failover-groups"></a>故障转移组
 
-对于使用故障转移组保护的数据库，演练过程包括按计划故障转移到辅助服务器。 计划的故障转移可确保在切换角色后，故障转移组中的主数据库和辅助数据库保持同步。 与非计划的故障转移不同，此操作不会导致数据丢失，因此可以在生产环境中执行演练。
+对于使用故障转移组保护的数据库，演练过程包括按计划故障转移到辅助服务器。 计划的故障转移可确保在切换角色后故障转移组中的主数据库和辅助数据库保持同步。 与非计划的故障转移不同，此操作不会导致数据丢失，因此可以在生产环境中执行演练。
 
 ### <a name="outage-simulation"></a>中断模拟
 
@@ -59,16 +59,16 @@ ms.locfileid: "84344571"
 ### <a name="recovery"></a>恢复
 
 * 确保 DR 区域中的应用程序配置指向以前的辅助数据库，故障转移后，该数据库将成为完全可访问的新主数据库。
-* 从辅助服务器启动故障转移组的[计划故障转移](scripts/setup-geodr-and-failover-database-powershell.md)。
-* 根据在[恢复后配置数据库](disaster-recovery-guidance.md)指南完成恢复。
+* 启动故障转移组从辅助服务器进行的[计划内故障转移](scripts/setup-geodr-and-failover-database-powershell.md)。
+* 按照[在恢复后配置数据库](disaster-recovery-guidance.md)指南完成恢复。
 
 ### <a name="validation"></a>验证
 
-通过验证恢复后的应用程序完整性（包括连接性、基本功能测试或验收过程所需的其他验证部分）来完成演练。
+通过验证恢复后的应用程序完整性（包括连接性、基本功能测试，或演练验收所需的其他验证）来完成演练。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解业务连续性方案，请参阅[连续性方案](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
-* 若要了解 Azure SQL 数据库自动备份的信息，请参阅 [SQL 数据库自动备份](automated-backups-overview.md)
+* 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](automated-backups-overview.md)
 * 若要了解如何使用自动备份进行恢复，请参阅 [从服务启动的备份中还原数据库](recovery-using-backups.md)。
 * 要了解更快的恢复选项，请参阅[活动异地复制](active-geo-replication-overview.md)和[自动故障转移组](auto-failover-group-overview.md)。

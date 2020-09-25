@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295016"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -125,7 +125,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 1. 打开“组策略管理编辑器”工具。
 2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
 3. 浏览到**用户配置**  >  **策略**  >  **管理模板**  >  **Windows 组件**  >  **internet Explorer**  >  **internet 控制面板**  >  **安全性页**。 然后选择“站点到区域分配列表”****。
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso6.png)
+    ![屏幕截图显示了 "安全页"，其中选择了 "站点到区域分配列表"。](./media/how-to-connect-sso-quick-start/sso6.png)
 4. 启用策略，然后在对话框中输入以下值：
    - **** 值名称：要将 Kerberos 票证转发到的 Azure AD URL。
    - **** 值（数据）：**** 1 指示 Intranet 区域。
@@ -142,15 +142,15 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 5. 选择“确定”  ，然后再次选择“确定”  。
 
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![显示选定区域分配的 "显示内容" 窗口的屏幕截图。](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. 浏览到**用户配置**  >  **策略**  >  **管理模板**  >  **Windows 组件**  >  **internet Explorer**  >  **internet 控制面板**  >  **安全页**  >  **Intranet 区域**。 然后选择“允许通过脚本更新状态栏”****。
 
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![显示 "Intranet 区域" 页面的屏幕截图，其中选中了 "允许通过脚本更新状态栏"。](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. 启用策略设置，然后选择“确定”****。
 
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![显示 "允许通过脚本更新状态栏" 窗口的屏幕截图（启用了策略设置）。](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>“组策略首选项”选项 - 详细步骤
 
@@ -158,7 +158,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
 3. 浏览到**用户配置**  >  **首选项**  >  **Windows 设置**  >  **注册表**  >  **新**  >  **注册表项**。
 
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![屏幕截图显示选定的 "注册表" 和 "注册表项"。](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. 在相应字段中输入以下值，然后单击“确定”****。
    - **密钥路径**：Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon******
@@ -166,7 +166,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
    - **值类型**： ***REG_DWORD***
    - **值数据**： ***00000001***
  
-     ![单一登录](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![显示 "新建注册表属性" 窗口的屏幕截图。](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![单一登录](./media/how-to-connect-sso-quick-start/sso17.png)
 

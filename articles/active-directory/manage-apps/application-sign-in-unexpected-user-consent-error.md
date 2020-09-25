@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321940"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
@@ -39,7 +39,7 @@ ms.locfileid: "87499494"
 
 如果 Microsoft 检测到权限请求存在风险而阻止用户许可应用程序，则也可能会发生此错误。 在这种情况下，还将记录一个审核事件，其“类别”为“ApplicationManagement”、“活动类型”为“许可应用程序”、“状态原因”为“检测到风险应用程序”。
 
-可能发生此错误的另一种情况是，应用程序需要用户分配，但未提供管理员同意。 在这种情况下，管理员必须先提供管理员同意。   
+可能发生此错误的另一种情况是，应用程序需要用户分配，但未获得管理员同意。 在这种情况下，必须先获得管理员同意。   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
 * **AADSTS90093：** &lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;name of app&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
@@ -77,6 +77,14 @@ ms.locfileid: "87499494"
     -   通过 Azure 门户授予应用程序权限
 
     -   从 Azure AD 应用程序库添加应用程序
+
+## <a name="risky-app-error-and-warning"></a>风险应用错误和警告
+* 此应用程序可能会有风险。 如果信任此应用，请让管理员授予你访问权限。
+* 此应用程序可能会有风险。 仅当你信任此应用时才继续。
+
+当 Microsoft 确定同意请求可能会有风险时，将显示这两条消息。 在许多其他因素中，如果已 [验证的发布者](../develop/publisher-verification-overview.md) 尚未添加到应用注册中，则可能会发生这种情况。 禁用 [管理员同意工作流](configure-admin-consent-workflow.md) 时，会向最终用户显示第一条消息。 当管理员同意工作流启用和管理员时，第二条消息会显示给最终用户。 
+
+最终用户将无法向检测到风险的应用授予许可。 管理员可以，但应评估应用非常 carefuly，并继续小心。 如果在进一步审查时应用看起来可疑，可以通过同意屏幕向 Microsoft 报告。 
 
 ## <a name="next-steps"></a>后续步骤 
 
