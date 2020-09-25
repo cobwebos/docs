@@ -4,20 +4,20 @@ description: 你可以使用 Azure 门户来管理你的 Microsoft Azure Maps �
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: dce65eaf4ac9b7918b1217a268bedf807d4253ce
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8e62734e039d0f6ceff836947519ef71ee9b8497
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311047"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>管理 Azure Maps 帐户的定价层
 
-可以通过 Azure 门户管理 Azure Maps 帐户的定价层。 你还可以在创建[帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)后查看或更改帐户的定价层。
+可以通过 Azure 门户管理 Azure Maps 帐户的定价层。 你还可以在创建 [帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)后查看或更改帐户的定价层。
 
 获取有关[在 Azure Maps 中选择适当的定价层](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)的详细信息。
 

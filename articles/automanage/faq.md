@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: ed97f7861f5dd959fd41ac22b4e497f492dbc3a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934701"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311540"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for Vm 常见问题
 
@@ -36,7 +36,9 @@ ms.locfileid: "90934701"
 
 **启用 Automanage 需要哪些 RBAC 权限？**
 
-用户必须拥有 "所有者" 角色。 或者，用户可以将 "参与者" 角色和 "用户访问管理员" 角色一起应用 Automanage。
+如果要在具有现有 Automanage 帐户的 VM 上启用 Automanage，则需要具有 VM 所在的资源组的参与者角色。 
+
+如果在启用时使用的是新的 Automanage 帐户，则用户必须拥有 "所有者" 角色，或者拥有订阅的 "参与者" 和 "用户访问管理员" 角色。
 
 
 **哪些区域受支持？**
@@ -82,6 +84,11 @@ Automanage 在 VM 的整个生命周期中注册、配置和监视 [此处](virt
 **什么是 Automanage 帐户？**
 
 Automanage 帐户是一个 MSI (托管服务标识) ，它提供了用于执行自动操作的安全上下文或标识。
+
+
+**启用 Automanage 时，它是否会影响除 VM 之外的任何其他 Vm) 是否选择了 VM (？**
+
+如果 VM 已链接到现有 Log Analytics 工作区，我们将重复使用该工作区来应用这些解决方案：更改跟踪、清点和更新管理。 连接到该工作区的所有 Vm 都将启用这些解决方案。 
 
 
 **能否更改 VM 的配置文件？**

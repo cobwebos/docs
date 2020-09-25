@@ -1,6 +1,6 @@
 ---
 title: 停用和删除 StorSimple 8000 系列设备 | Microsoft Docs
-description: 介绍了如何使用该服务通过先停用再删除 StorSimple 设备的方式来删除该设备。
+description: 了解如何停用和删除连接到 StorSimple 设备管理器服务的 StorSimple 设备。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64163011506380eec87457a2d8a2f699ec56dc68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249631"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>停用和删除 StorSimple 设备
 
@@ -41,7 +41,7 @@ ms.locfileid: "85514033"
 >
 > - 停用 StorSimple 物理设备或云设备之前，请停止或删除依赖于该设备的客户端与主机。
 >
-> - 如果在从设备中删除数据之前已经删除了与卷容器关联的存储帐户中的存储帐户或容器，则将收到错误，并且可能无法删除数据。 建议删除设备上的数据，然后删除其中的存储帐户。 但是，在这种情况下，你必须继续执行设备停用和删除操作，前提是已将数据从存储帐户中删除。
+> - 如果在从设备中删除数据之前，存储帐户 (s) 或与卷容器关联的存储帐户中的容器已被删除，则你将收到一个错误，并且可能无法删除数据。 建议删除设备上的数据，然后删除其中的存储帐户。 但是，在这种情况下，你必须继续执行设备停用和删除操作，前提是已将数据从存储帐户中删除。
 
 阅读本教程之后，能够：
 

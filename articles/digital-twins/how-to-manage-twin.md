@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282368"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -166,14 +166,14 @@ object result = await client.GetDigitalTwin(id);
 数字克隆的已定义属性在数字克隆上作为顶级属性返回。 不属于 DTDL 定义的元数据或系统信息将以 `$` 前缀返回。 元数据属性包括：
 * 此 Azure 数字孪生实例中数字输出的 ID，如 `$dtId` 。
 * `$etag`，由 web 服务器分配的标准 HTTP 字段
-* 节中的其他属性 `$metadata` 。 这些方法包括：
+* 节中的其他属性 `$metadata` 。 其中包括：
     - 数字克隆的模型的 DTMI。
     - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，在设备处于) 脱机状态时，服务和设备可能会 (分叉状态。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的 [此 IoT 中心教程](../iot-hub/tutorial-device-twins.md) 。
     - 服务特定的元数据，如 IoT 中心或 Azure 数字孪生。 
 
 您可以使用所选的 JSON 分析库（如）分析返回的 JSON `System.Text.Json` 。
 
-你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 下面是一个示例：
+你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 以下是示例：
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
@@ -275,7 +275,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
 
 仅当修补程序修改的数字克隆符合新的模型时，此操作才会成功。 
 
-请看下面的示例：
+请考虑以下示例：
 1. 假设有一个数字克隆，其型号为 *foo_old*。 *foo_old* 定义所需的属性 *质量*。
 2. 新模型 *foo_new* 定义属性质量并添加新的必需属性 *温度*。
 3. 修补后，数字克隆必须同时具有质量和温度属性。 
@@ -383,6 +383,17 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 还可以使用 Azure 数字孪生 CLI 管理孪生。 有关命令，请参阅 [*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
+## <a name="view-all-digital-twins"></a>查看所有数字孪生
+
+若要查看实例中的所有数字孪生，请使用 [查询](how-to-query-graph.md)。 您可以使用 [查询 api](how-to-use-apis-sdks.md) 或 [CLI 命令](how-to-use-cli.md)来运行查询。
+
+下面是基本查询的正文，该查询将返回实例中所有数字孪生的列表：
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="next-steps"></a>后续步骤
 

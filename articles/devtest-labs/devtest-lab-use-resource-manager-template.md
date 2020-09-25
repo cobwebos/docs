@@ -3,12 +3,12 @@ title: 查看并使用虚拟机的 Azure 资源管理器模板
 description: 了解如何使用虚拟机的 Azure 资源管理器模板创建其他 VM
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282487"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 
@@ -23,9 +23,9 @@ ms.locfileid: "87272685"
 
 - 使用 Microsoft.DevTestLab/labs/virtualmachines 资源类型（在模板中的“资源”属性中声明）的 Resource Manager 模板可以预配单个实验室 VM。 在开发测试实验室虚拟机列表中，每个 VM 显示为单个项：
 
-   ![在开发测试实验室虚拟机列表中将 VM 列为单个项](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
+   ![在开发测试实验室虚拟机列表中显示虚拟机列表作为单个项的屏幕截图。](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   此类型的资源管理器模板可以通过 Azure PowerShell **AzResourceGroupDeployment**命令进行预配，也可以通过 Azure CLI 命令**az group deployment create**进行设置。 此操作需要管理员权限，因此已分配开发测试实验室用户角色的用户无法执行该部署。 
+   此类型的资源管理器模板可以通过 Azure PowerShell **AzResourceGroupDeployment** 命令进行预配，也可以通过 Azure CLI 命令 **az group deployment create**进行设置。 此操作需要管理员权限，因此已分配开发测试实验室用户角色的用户无法执行该部署。 
 
 - 使用 Microsoft.Compute / virtualmachines 资源类型的 Resource Manager 模板可以将多个 VM 预配为开发测试实验室虚拟机列表中的单个环境：
 
@@ -40,7 +40,7 @@ ms.locfileid: "87272685"
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>查看和保存虚拟机的 Resource Manager 模板
 1. 请遵循[在实验室中创建你的第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)中的步骤，开始创建虚拟机。
 1. 输入虚拟机所需的信息并添加要用于此 VM 的任何项目。
-1. 开关到 "**高级设置**" 选项卡。 
+1. 切换到 " **高级设置** " 选项卡。 
 1. 在配置设置窗口的底部，选择“查看 ARM 模板”****。
 1. 复制并保存 Resource Manager 模板，以便稍后用于创建另一个虚拟机。
 
@@ -53,7 +53,7 @@ ms.locfileid: "87272685"
 资源管理器模板现在已准备好用来[创建 VM](devtest-lab-create-environment-from-arm.md)。
 
 ## <a name="set-expiration-date"></a>设置过期日期
-在定型、演示和试验等方案中，您可能需要创建虚拟机并在固定的持续时间后自动将其删除，以免产生不必要的成本。 可以通过为 VM 指定**expirationDate**属性，来创建具有到期日期的实验室 VM。 查看[GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)中的相同资源管理器模板。
+在定型、演示和试验等方案中，您可能需要创建虚拟机并在固定的持续时间后自动将其删除，以免产生不必要的成本。 可以通过为 VM 指定 **expirationDate** 属性，来创建具有到期日期的实验室 VM。 查看 [GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)中的相同资源管理器模板。
 
 
 

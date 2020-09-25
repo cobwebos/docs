@@ -4,16 +4,16 @@ description: 了解如何将形状添加到地图。 请参阅使用 Azure Maps 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9dd8718a6a96627781a578edb514d797e40f01fb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311302"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 将形状添加到地图 Android SDK
 
@@ -21,14 +21,14 @@ ms.locfileid: "88037416"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本文中的过程，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
+若要完成本文中的过程，需要安装 [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 来加载地图。
 
 
 ## <a name="add-a-line-to-the-map"></a>向地图添加线条
 
-您可以使用**线条层**向地图添加线条，按照以下步骤在地图上添加一行。
+您可以使用 **线条层**向地图添加线条，按照以下步骤在地图上添加一行。
 
-1. 编辑**res > 布局 > activity_main.xml**如下所示：
+1. 编辑 **res > 布局 > activity_main.xml** 如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ ms.locfileid: "88037416"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到类的**onCreate ( # B1**方法 `MainActivity.java` 。
+2. 将以下代码片段复制到类的 **onCreate ( # B1 ** 方法 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,7 +76,7 @@ ms.locfileid: "88037416"
 
     ```
     
-    上面的代码段首先使用**onReady ( # B1**回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后创建**点**对象的列表。 将从点列表创建**LineString** ，并将其添加到数据源。 **线条层**将在地图上的数据源中换行对象。 然后创建一个线条层并将数据源添加到其中。
+    上面的代码段首先使用 **onReady ( # B1 ** 回调方法获取 Azure Maps 映射控件实例。 然后，它使用 **DataSource** 类创建数据源对象并将其添加到地图中。 然后创建 **点** 对象的列表。 将从点列表创建 **LineString** ，并将其添加到数据源。 **线条层**将在地图上的数据源中换行对象。 然后创建一个线条层并将数据源添加到其中。
 
     添加上述代码片段后，应如下 `MainActivity.java` 所示：
     
@@ -183,9 +183,9 @@ ms.locfileid: "88037416"
 
 ## <a name="add-a-polygon-to-the-map"></a>将多边形添加到地图
 
-利用**多边形层**，您可以将多边形的面积渲染到地图中。 按照以下步骤在地图上添加多边形。
+利用 **多边形层** ，您可以将多边形的面积渲染到地图中。 按照以下步骤在地图上添加多边形。
 
-1. 编辑**res > 布局 > activity_main.xml**如下所示：
+1. 编辑 **res > 布局 > activity_main.xml** 如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ ms.locfileid: "88037416"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到类的**onCreate ( # B1**方法 `MainActivity.java` 。
+2. 将以下代码片段复制到类的 **onCreate ( # B1 ** 方法 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -238,7 +238,7 @@ ms.locfileid: "88037416"
     });
     ```
 
-    上面的代码段首先使用**onReady ( # B1**回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，将从**点**对象的列表创建**多边形**对象并将其添加到数据源。 **多边形层**将在地图上的数据源中呈现数据。 然后，它创建一个多边形层，用于呈现多边形区域并向其中添加数据源。 **线条层**用于呈现在数据源中换行的行对象。 代码段的最后一部分将创建一个线条层，用于呈现多边形的轮廓并向其添加数据源。
+    上面的代码段首先使用 **onReady ( # B1 ** 回调方法获取 Azure Maps 映射控件实例。 然后，它使用 **DataSource** 类创建数据源对象并将其添加到地图中。 然后，将从**点**对象的列表创建**多边形**对象并将其添加到数据源。 **多边形层**将在地图上的数据源中呈现数据。 然后，它创建一个多边形层，用于呈现多边形区域并向其中添加数据源。 **线条层**用于呈现在数据源中换行的行对象。 代码段的最后一部分将创建一个线条层，用于呈现多边形的轮廓并向其添加数据源。
 
     添加上述代码片段后，应如下 `MainActivity.java` 所示：
 

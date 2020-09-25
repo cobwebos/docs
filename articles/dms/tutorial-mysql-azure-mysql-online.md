@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 2ea351fb6b88a020a466849181fed0381baa7f04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.openlocfilehash: b7e9491f3ddc49d49cf5301bba9d4f51fc9dd008
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282334"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 
@@ -51,10 +51,10 @@ ms.locfileid: "87087741"
 
 * 下载并安装 [MySQL 社区版](https://dev.mysql.com/downloads/mysql/) 5.6 或 5.7。 本地 MySQL 版本必须与 Azure Database for MySQL 版本相符。 例如，MySQL 5.6 只能迁移到 Azure Database for MySQL 5.6，不能升级到 5.7。
 * [在 Azure Database for MySQL 中创建一个实例](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)。 有关如何使用 Azure 门户连接和创建数据库的详细信息，请参阅[使用 MySQL Workbench 进行连接并查询数据](https://docs.microsoft.com/azure/mysql/connect-workbench)一文。  
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供与本地源服务器的站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供与本地源服务器的站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在 virtual networkNet 安装过程中，如果将 ExpressRoute 用于网络对等互连，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网中：
+    > 在 virtual networkNet 安装过程中，如果将 ExpressRoute 用于网络对等互连，请将以下服务 [终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 添加到将在其中预配服务的子网中：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -78,8 +78,8 @@ ms.locfileid: "87087741"
 * 通过以下配置在源数据库的 my.ini (Windows) 或 my.cnf (Unix) 文件中启用二进制日志记录。
 
   * **server_id** = 1 或更高版本（仅适用于 MySQL 5.6）
-  * **日志-bin** = \<path>（仅适用于 MySQL 5.6）   例如：登录-bin = E:\ MySQL_logs \BinLog
-  * **binlog_format** = 行
+  * **log-bin** =\<path>（仅适用于 MySQL 5.6）。例如：log-bin = E:\MySQL_logs\BinLog
+  * **binlog_format** = row
   * **Expire_logs_days** = 5（建议不要使用零；仅适用于 MySQL 5.6）
   * **Binlog_row_image** = full（仅适用于 MySQL 5.6）
   * **log_slave_updates** = 1
@@ -94,7 +94,7 @@ ms.locfileid: "87087741"
 
 若要完成所有数据库对象（例如表架构、索引和存储过程），需从源数据库提取架构并将其应用到此数据库。 若要提取架构，可以将 mysqldump 与 `--no-data` 参数配合使用。
 
-假设本地系统中有 MySQL Employees 示例数据库，则使用 mysqldump 进行架构迁移时所需的命令如下****：
+假设本地系统中有 MySQL Employees 示例数据库，则使用 mysqldump 进行架构迁移时所需的命令如下  ：
 
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
@@ -141,8 +141,8 @@ SET group_concat_max_len = 8192;
 运行查询结果中的 DROP FOREIGN KEY（第二列），以便删除外键。
 
 > [!NOTE]
-> Azure DMS 不支持级联引用操作，这有助于在父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参阅 MySQL 文档中的 "引用操作"[部分。](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
-> Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果工作负载依赖于通过此引用操作更新相关子表，则建议改为执行[转储和还原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
+> Azure DMS 不支持 CASCADE 引用操作，这有助于在父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参见 MySQL 文档中的[外键约束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)一文中的“引用操作”部分。
+> Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果你的工作负载依赖于通过此引用操作更新相关子表，我们建议你改为执行[转储并还原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
 
 
 > [!IMPORTANT]
@@ -210,7 +210,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
 3. 选择“+ 新建迁移项目”。
 4. 在“新建迁移项目”**** 屏幕上指定项目名称，在“源服务器类型”**** 文本框中选择“MySQL”****，在“目标服务器类型”**** 文本框中选择“AzureDbForMySQL”****。
-5. 在 "**选择活动类型**" 部分中，选择 "**联机数据迁移**"。
+5. 在“选择活动类型”部分选择“联机数据迁移”。 
 
     ![创建数据库迁移服务项目](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)
 
@@ -237,7 +237,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     ![映射到目标数据库](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > 尽管可以在此步骤中选择多个数据库，但 Azure 数据库迁移服务的每个实例最多支持四个数据库以进行并发迁移。 此外，订阅中每个区域的 Azure 数据库迁移服务有两个实例的限制。 例如，如果你要迁移40个数据库，则仅可以同时迁移其中的8个，并且仅当你创建了两个 Azure 数据库迁移服务实例时。
+   > 尽管可以在此步骤中选择多个数据库，但 Azure 数据库迁移服务的每个实例最多支持四个数据库进行并发迁移。 此外，订阅中每个区域的 Azure 数据库迁移服务有两个实例的限制。 例如，如果有 40 个数据库要迁移，那么只能同时迁移其中的 8 个，而且只有在已创建了两个 Azure 数据库迁移服务实例的情况下才能如此。
 
 3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符  。
 
@@ -247,7 +247,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
 * 选择“运行迁移”。
 
-    此时将显示 "迁移活动" 窗口，并且会**初始化**活动的**状态**。
+    迁移活动窗口随即出现，活动的“状态”为“正在初始化” 。
 
 ## <a name="monitor-the-migration"></a>监视迁移
 
@@ -267,7 +267,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
 完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。
 
-1. 如果准备完成数据库迁移，请选择“启动直接转换”。
+1. 如果准备完成数据库迁移，请选择“启动直接转换”。 
 
     ![启动直接转换](media/tutorial-mysql-to-azure-mysql-online/dms-start-cutover.png)
 

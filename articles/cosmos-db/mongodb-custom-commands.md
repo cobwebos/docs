@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 4b069dea3f07477fcbca21e08166cdfad8cad2cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326722"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理存储在 MongoDB Azure Cosmos DB 的 API 中的数据 
 
 以下文档包含特定于 Azure Cosmos DB API for MongoDB 的自定义操作命令。 这些命令可用来创建和获取特定于 [Azure Cosmos DB 容量模型](databases-containers-items.md)的数据库资源。
 
-通过使用 Azure Cosmos DB 的适用于 MongoDB 的 API，你可以享受多种优势 Cosmos DB 例如：全局分发、自动分片、高可用性、延迟保证、自动、静态加密和备份等，同时保留你在 MongoDB 应用中的投资。 可以通过使用任何开源[MongoDB 客户端驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 AZURE COSMOS DB 的 API 进行通信。 使用 Azure Cosmos DB 的 MongoDB API，可以通过遵守[mongodb 线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)使用现有的客户端驱动程序。
+通过使用 Azure Cosmos DB 的适用于 MongoDB 的 API，你可以享受多种优势 Cosmos DB 例如：全局分发、自动分片、高可用性、延迟保证、自动、静态加密和备份等，同时保留你在 MongoDB 应用中的投资。 可以通过使用任何开源 [MongoDB 客户端驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 AZURE COSMOS DB 的 API 进行通信。 使用 Azure Cosmos DB 的 MongoDB API，可以通过遵守 [mongodb 线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)使用现有的客户端驱动程序。
 
 ## <a name="mongodb-protocol-support"></a>MongoDB 协议支持
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 的 MongoDB API 与 MongoDB 服务器版本3.2 和3.6 兼容。 
 * [更新集合](#update-collection)
 * [获取集合](#get-collection)
 
-## <a name="create-database"></a><a id="create-database"></a>创建数据库
+## <a name="create-database"></a><a id="create-database"></a> 创建数据库
 
 “创建数据库”扩展命令可创建新的 MongoDB 数据库。 可以从 `use database` 命令设置的数据库上下文使用数据库名称。 下表描述了该命令中的参数：
 
@@ -86,7 +86,7 @@ use test
 db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughput: 20000 } });
 ```
 
-## <a name="update-database"></a><a id="update-database"></a>更新数据库
+## <a name="update-database"></a><a id="update-database"></a> 更新数据库
 
 “更新数据库”扩展命令可更新与指定的数据库相关联的属性。 下表描述了该命令中的参数：
 
@@ -129,7 +129,7 @@ db.runCommand({customAction: "UpdateDatabase", autoScaleSettings: { maxThroughpu
 ```
 
 
-## <a name="get-database"></a><a id="get-database"></a>获取数据库
+## <a name="get-database"></a><a id="get-database"></a> 获取数据库
 
 “获取数据库”扩展命令返回数据库对象。 数据库名称取自该命令所针对的数据库上下文。
 
@@ -195,7 +195,7 @@ db.runCommand({customAction: "GetDatabase"});
 }
 ```
 
-## <a name="create-collection"></a><a id="create-collection"></a>创建集合
+## <a name="create-collection"></a><a id="create-collection"></a> 创建集合
 
 “创建集合”扩展命令可创建新的 MongoDB 集合。 数据库名称将在 `use database` 命令设置的数据库上下文中使用。 CreateCollection 命令的格式如下：
 
@@ -288,7 +288,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", shardKey: "a.b", autoScaleSettings: { maxThroughput: 20000 }});
 ```
 
-## <a name="update-collection"></a><a id="update-collection"></a>更新集合
+## <a name="update-collection"></a><a id="update-collection"></a> 更新集合
 
 “更新集合”扩展命令可更新与指定的集合相关联的属性。
 
@@ -324,7 +324,7 @@ use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a name="get-collection"></a><a id="get-collection"></a>获取集合
+## <a name="get-collection"></a><a id="get-collection"></a> 获取集合
 
 “获取集合”自定义命令返回集合对象。
 
@@ -413,7 +413,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 ```
 
 
-## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a>自定义命令的默认输出
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a> 自定义命令的默认输出
 
 如果未指定，则自定义响应包含带有以下字段的文档：
 

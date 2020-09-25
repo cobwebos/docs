@@ -9,28 +9,31 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a0c5c601b0d3bc0d862ea4984ee2c6d4b76d13ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282062"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>从头开始部署 OPC 克隆模块和依赖项
 
+> [!IMPORTANT]
+> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+
 OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服务提供多个边缘服务。 
 
-有几个选项可用于将模块部署到[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)网关，其中包括
+有几个选项可用于将模块部署到 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 网关，其中包括
 
 - [从 Azure 门户的 IoT Edge 边栏选项卡进行部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
 - [使用 AZ CLI 进行部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
 
 > [!NOTE]
-> 有关部署详细信息和说明的详细信息，请参阅 GitHub[存储库](https://github.com/Azure/azure-iiot-components)。
+> 有关部署详细信息和说明的详细信息，请参阅 GitHub [存储库](https://github.com/Azure/azure-iiot-components)。
 
 ## <a name="deployment-manifest"></a>部署清单
 
-所有模块都是使用部署清单部署的。  下面显示了用于部署[Opc 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)和[opc](https://github.com/Azure/azure-iiot-opc-twin-module)克隆的示例清单。
+所有模块都是使用部署清单部署的。  下面显示了用于部署 [Opc 发布服务器](https://github.com/Azure/iot-edge-opc-publisher) 和 [opc](https://github.com/Azure/azure-iiot-opc-twin-module) 克隆的示例清单。
 
 ```json
 {
@@ -112,9 +115,9 @@ OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服�
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 部署 OPC 克隆[依赖项](howto-opc-twin-deploy-dependencies.md)并获取生成的 `.env` 文件。 请注意， `hub name` 生成的 `PCS_IOTHUBREACT_HUB_NAME` 文件中的变量已部署 `.env` 。
+1. 部署 OPC 克隆 [依赖项](howto-opc-twin-deploy-dependencies.md) 并获取生成的 `.env` 文件。 请注意， `hub name` 生成的 `PCS_IOTHUBREACT_HUB_NAME` 文件中的变量已部署 `.env` 。
 
-2. 注册并启动[Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)或[Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 的网关，并记下其 `device id` 。
+2. 注册并启动 [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 或 [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 的网关，并记下其 `device id` 。
 
 ### <a name="deploy-to-an-edge-device"></a>部署到边缘设备
 
@@ -126,15 +129,15 @@ OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服�
 
 4. 选择“设置模块”  。
 
-5. 在页面的 "**部署模块**" 部分，选择 "**添加**并**IoT Edge 模块"。**
+5. 在页面的 " **部署模块** " 部分，选择 " **添加** 并 **IoT Edge 模块"。**
 
-6. 在 " **IoT Edge 自定义模块**" 对话框中 `opctwin` ，将其用作模块的名称，然后将容器*映像 URI*指定为
+6. 在 " **IoT Edge 自定义模块** " 对话框中 `opctwin` ，将其用作模块的名称，然后将容器 *映像 URI* 指定为
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   对于*容器创建选项*，请使用以下 JSON：
+   对于 *容器创建选项*，请使用以下 JSON：
 
    ```json
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
@@ -142,21 +145,21 @@ OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服�
 
    必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。
 
-7. 选择 "**保存**"，然后重复步骤**5**。  
+7. 选择 " **保存** "，然后重复步骤 **5**。  
 
-8. 在 "IoT Edge 自定义模块" 对话框中，使用 `opcpublisher` as name 作为模块，并将容器*映像 URI*用作 
+8. 在 "IoT Edge 自定义模块" 对话框中，使用 `opcpublisher` as name 作为模块，并将容器 *映像 URI* 用作 
 
    ```bash
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   对于*容器创建选项*，请使用以下 JSON：
+   对于 *容器创建选项*，请使用以下 JSON：
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
-9. 选择 "**保存**"，然后选择 "**下一步**" 继续执行路由部分。
+9. 选择 " **保存** "，然后选择 " **下一步** " 继续执行路由部分。
 
 10. 在 "路由" 选项卡中，粘贴以下 
 
@@ -171,7 +174,7 @@ OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服�
 
     然后选择 "**下一步**"
 
-11. 查看部署信息和清单。  它应类似于上面的部署清单。  选择“提交”。
+11. 查看部署信息和清单。  它应类似于上面的部署清单。  选择“提交”。 
 
 12. 将模块部署到设备之后，即可在门户的“设备详细信息”页中查看所有模块****。 此页面显示每个已部署模块的名称，以及部署状态和退出代码等有用信息。
 
@@ -179,7 +182,7 @@ OPC 克隆模块在 IoT Edge 上运行，并向 OPC 设备克隆和注册表服�
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 从[此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)安装最新版本的[Azure 命令行接口（AZ）](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 。
+1. 从[此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)安装最新版本的[Azure 命令行界面 (AZ) ](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 。
 
 ### <a name="quickstart"></a>快速入门
 

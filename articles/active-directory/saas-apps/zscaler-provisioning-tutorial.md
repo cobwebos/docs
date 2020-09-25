@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a3424a42e86b47d4103dd41ca143b5bc7be3796a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 52c18f8d51f18b9bc167a99fbafda2365824dfc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312067"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教程：为 Zscaler 配置自动用户预配
 
@@ -92,63 +92,63 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 选择“预配”选项卡。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
+    ![突出显示预配选项的 Zscaler-预配企业应用程序边栏屏幕截图。](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
+    ![设置模式设置为 "自动" 的设置页的屏幕截图。](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
 5. 在 " **管理员凭据** " 部分下，输入 Zscaler 帐户的 **租户 URL** 和 **机密令牌** ，如步骤6中所述。
 
 6. 若要获取**租户 URL**和**机密令牌**，请在 Zscaler 门户用户界面中导航到 "**管理" > "身份验证设置**"，然后单击 "**身份验证类型**" 下的 " **SAML** "。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/secret-token-1.png)
+    ![身份验证设置页的屏幕截图。](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
     单击 " **配置 saml** " 打开 " **配置 saml** 选项"。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/secret-token-2.png)
+    !["配置 S A M L" 对话框的屏幕截图，其中包含 "Base U R L" 和 "持有者令牌" 文本框（称为 out）。](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
     选择 " **启用基于 SCIM 的设置** " 以检索 **基 URL** 和 **持有者令牌**，并保存设置。 将 **基 url** 复制到 **租户 url**，并将 **持有者令牌**  复制到 Azure 门户中的 **机密令牌** 。
 
 7. 填充步骤5中所示的字段后，单击 " **测试连接** " 以确保 Azure AD 可以连接到 Zscaler。 如果连接失败，请确保 Zscaler 帐户具有管理员权限，然后重试。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/test-connection.png)
+    !["管理员凭据" 部分的屏幕截图，其中的测试连接选项称为 "out"。](./media/zscaler-provisioning-tutorial/test-connection.png)
 
 8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/notification.png)
+    ![通知电子邮件文本框的屏幕截图。](./media/zscaler-provisioning-tutorial/notification.png)
 
 9. 单击“ **保存**”。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Zscaler**"。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/user-mappings.png)
+    !["映射" 部分的屏幕截图，其中突出显示了 "Synchronize Azure Active Directory Users to Zscaler" 选项。](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
 11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Zscaler 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Zscaler 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
+    ![显示了7个映射的 "属性映射" 部分的屏幕截图。](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
 12. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Zscaler**"。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/group-mappings.png)
+    ![突出显示了 "将 Azure Active Directory 组同步到 Zscaler" 选项的 "映射" 部分的屏幕截图。](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
 13. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Zscaler 的组属性。 选为 " **匹配** " 属性的特性用于匹配 Zscaler 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
+    ![显示了三个映射的 "属性映射" 部分的屏幕截图。](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
 14. 若要配置范围筛选器，请参阅[范围筛选器教程](./../active-directory-saas-scoping-filters.md)中提供的以下说明。
 
 15. 若要为 Zscaler 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/provisioning-status.png)
+    ![设置为 On 的设置状态选项的屏幕截图。](./media/zscaler-provisioning-tutorial/provisioning-status.png)
 
 16. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 Zscaler 的用户和/或组。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/scoping.png)
+    ![突出显示 "仅同步分配的用户和组" 选项的作用域设置屏幕截图。](./media/zscaler-provisioning-tutorial/scoping.png)
 
 17. 已准备好预配时，单击“保存”。
 
-    ![Zscaler 预配](./media/zscaler-provisioning-tutorial/save-provisioning.png)
+    ![Zscaler-预配企业应用程序边栏选项的屏幕截图，其中的 Save 选项称为 out。](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步********。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 " **同步详细信息** " 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 Zscaler 执行的所有操作。
 

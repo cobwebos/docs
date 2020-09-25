@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 989496885445a8a0a8d3bbc1a789975a2875c6e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934616"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311523"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>创建 SQL 托管实例-使用 Azure Data Studio 的 Azure Arc
 
@@ -48,7 +48,8 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - 启动 Azure Data Studio
 - 在 "连接" 选项卡上，单击左上角的三个点，然后选择 "新建部署"
 - 从 "部署选项" 中，选择 " **AZURE SQL 托管实例-Azure Arc** " 
-  > **注意：** 如果当前未安装 azdata CLI，系统可能会提示您安装它。
+  > [!NOTE]
+  > 如果当前未安装 azdata CLI，系统可能会提示您安装它。
 - 接受隐私和许可条款，并单击底部的 " **选择** "
 
 

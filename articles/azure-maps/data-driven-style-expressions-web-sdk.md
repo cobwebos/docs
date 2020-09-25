@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089439"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311370"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Web SDK (的数据驱动样式表达式) 
 
@@ -89,7 +89,7 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | 从数组中检索项。 |
-| `['geometry-type']` | 字符串 | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
+| `['geometry-type']` | string | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
 | `['get', string]` | 值 | 从当前功能的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['get', string, object]` | 值 | 从提供的对象的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['has', string]` | boolean | 确定功能的属性是否具有指定的属性。 |
@@ -98,6 +98,8 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 | `['length', string | array]` | 数字 | 获取字符串或数组的长度。 |
 | `['in', boolean | string | number, array]` | boolean | 确定某一项是否存在于数组中 |
 | `['in', substring, string]` | boolean | 确定字符串中是否存在子字符串 |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | 数字 | 返回可在数组中找到项的第一个位置，或者如果找不到输入，则可以在字符串中找到子字符串 `-1` 。 接受从其开始搜索的可选索引。 |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|数组 | 返回来自指定开始索引的字符串中的数组或子字符串的项，如果已设置，则从开始索引和结束索引之间返回。 返回值包含开始索引，但不包含在结束索引中。 |
 
 **示例**
 
@@ -151,8 +153,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 //Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
 ['at', 1, ['at', 0, ['get', 'array2d']]]
 
-//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+//Check to see if a value is in an array "properties.abcArray.indexOf('a') !== -1" = true
 ['in', 'a', ['get', 'abcArray']]
+
+//Gets the index of the value 'b' in an array "properties.abcArray.indexOf('b')" = 1
+['index-of', 'b', ['get', 'abcArray']]
 
 //Get the length of an array "properties.abcArray.length" = 3
 ['length', ['get', 'abcArray']]
@@ -162,6 +167,12 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 //Check that "fillColor" exists as a subproperty of "_style".
 ['has', 'fillColor', ['get', '_style']]
+
+//Slice an array starting at index 2 "properties.abcArray.slice(2)" = ['c']
+['slice', ['get', 'abcArray'], 2]
+
+//Slice a string from index 0 to index 4 "properties.entityType.slice(0, 4)" = 'rest'
+['slice', ['get', 'entityType'], 0, 4]
 ```
 
 ## <a name="math-expressions"></a>数学表达式
@@ -225,8 +236,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | 逻辑求反。 `true`如果输入为，则返回 `false` ; `false` 如果输入为，则返回 `true` 。 |
-| `['!= ', value, value]` | boolean | `true`如果输入值不相等，则返回 `false` ; 否则返回。 |
+| `['!', boolean]` | boolean | 逻辑求反。 `true`如果输入为，则返回 `false` ; `false` 如果输入为，则返回 `true` 。 |
+| `['!=', value, value]` | boolean | `true`如果输入值不相等，则返回 `false` ; 否则返回。 |
 | `['<', value, value]` | boolean | `true`如果第一个输入严格小于第二个输入，则返回 `false` ; 否则返回。 参数需要同时为字符串和/或数字。 |
 | `['<=', value, value]` | boolean | `true`如果第一个输入小于或等于第二个输入，则返回 `false` ; 否则返回。 参数需要同时为字符串和/或数字。 |
 | `['==', value, value]` | boolean | `true`如果输入值相等，则返回 `false` ; 否则返回。 参数需要同时为字符串和/或数字。 |
@@ -429,12 +440,12 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| 对象 | 返回文本数组或对象值。 使用此表达式可防止将数组或对象作为表达式进行计算。 当表达式需要返回数组或对象时，这是必需的。 |
-| `['image', string]` | 字符串 | 检查是否已将指定的映像 ID 加载到 maps 图像 sprite。 如果为，则返回 ID，否则返回 null。 |
+| `['image', string]` | string | 检查是否已将指定的映像 ID 加载到 maps 图像 sprite。 如果为，则返回 ID，否则返回 null。 |
 | `['to-boolean', value]` | boolean | 将输入值转换为布尔值。 `false`如果输入为空字符串、、、或，则结果为 `0` `false` `null` `NaN` ; 否则为 `true` 。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 将输入值转换为颜色。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 数字 | 如果可能，将输入值转换为数字。 如果输入为 `null` 或 `false` ，则结果为0。 如果输入为 `true` ，则结果为1。 如果输入是字符串，则使用 ECMAScript 语言规范的 [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) 字符串函数将其转换为数字。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
-| `['to-string', value]` | 字符串 | 将输入值转换为字符串。 如果输入为 `null` ，则结果为 `""` 。 如果输入为布尔值，则结果为 `"true"` 或 `"false"` 。 如果输入是一个数字，则使用 ECMAScript 语言规范的 [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色，则将其转换为 CSS RGBA 颜色字符串 `"rgba(r,g,b,a)"` 。 否则，使用 ECMAScript 语言规范的 [json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) 函数将输入转换为字符串。 |
-| `['typeof', value]` | 字符串 | 返回一个字符串，该字符串描述给定值的类型。 |
+| `['to-string', value]` | string | 将输入值转换为字符串。 如果输入为 `null` ，则结果为 `""` 。 如果输入为布尔值，则结果为 `"true"` 或 `"false"` 。 如果输入是一个数字，则使用 ECMAScript 语言规范的 [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色，则将其转换为 CSS RGBA 颜色字符串 `"rgba(r,g,b,a)"` 。 否则，使用 ECMAScript 语言规范的 [json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) 函数将输入转换为字符串。 |
+| `['typeof', value]` | string | 返回一个字符串，该字符串描述给定值的类型。 |
 
 > [!TIP]
 > 如果 `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` 浏览器控制台中出现类似于的错误消息，则表示代码中的某个位置有一个数组，该表达式的第一个值没有字符串。 如果希望表达式返回数组，请使用表达式包装数组 `literal` 。 下面的示例 `offset` 通过使用表达式，根据 `match` 点功能的属性的值在两个偏移值之间进行选择，设置符号层的图标选项，该选项必须是包含两个数字的数组  `entityType` 。
@@ -492,9 +503,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | 字符串 | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `to-string` 类型表达式将其他值类型转换为字符串。 |
-| `['downcase', string]` | 字符串 | 将指定的字符串转换为小写。 |
-| `['upcase', string]` | 字符串 | 将指定的字符串转换为大写。 |
+| `['concat', string, string, …]` | string | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `to-string` 类型表达式将其他值类型转换为字符串。 |
+| `['downcase', string]` | string | 将指定的字符串转换为小写。 |
+| `['upcase', string]` | string | 将指定的字符串转换为大写。 |
 
 **示例**
 

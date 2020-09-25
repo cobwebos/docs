@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282606"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图
 Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 本文介绍如何在用于 Visual Studio 的 Azure Data Lake 工具中使用作业浏览器和作业视图查找历史作业消息。 
@@ -38,7 +38,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     
       作业状态会概述作业阶段：
     
-      ![Azure Data Lake Analytics 作业阶段状态](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![显示 Azure Data Lake Analytics 作业阶段的屏幕截图。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * 正在准备：将脚本上传到云，使用编译服务编译和优化脚本。
     * 已排队：作业排队等待足够资源，或作业超出每个帐户的最大并发作业数限制。 优先级设置决定排队作业的顺序 - 编号越低，优先级越高。
@@ -50,7 +50,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     
       “作业摘要”窗格的下半部分会显示基本作业信息。
     
-      ![Azure Data Lake Analytics 作业阶段状态](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![屏幕截图，其中显示了包含文本框中说明的作业摘要。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
     * 作业结果：成功或失败。 作业在任何阶段都可能失败。
     * 总持续时间：提交时间和结束时间之间的时钟时间（持续时间）。
@@ -60,10 +60,10 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     * 帐户：用于运行作业的 Data Lake Analytics 帐户。
     * 作者：提交作业的用户，可以是真正的用户帐户，也可以是系统帐户。
     * 优先级：作业优先级。 编号越低，优先级越高。 仅影响作业在队列中的顺序。 设置更高优先级不能优先于正在运行的作业。
-    * 并行度：请求的 Azure Data Lake Analytics 单元 (ADLAUs) 最大并发数，又称顶点。 目前，一个顶点等同于一台配有两个虚拟核心和 6 GB RAM 的 VM，但将来可在 Data Lake Analytics 更新中对此进行升级。
+    * 并行度：请求的最大并发 Azure Data Lake Analytics 单位数 (ADLAUs) ，也称为顶点。 目前，一个顶点等同于一台配有两个虚拟核心和 6 GB RAM 的 VM，但将来可在 Data Lake Analytics 更新中对此进行升级。
     * 剩余字节数：作业完成前需处理的字节数。
     * 读取/写入字节数：自作业开始运行起，已读取/写入的字节数。
-    * 顶点总数：作业分成了多项工作，每项工作称为顶点。 此值说明作业包含的工作数。 可将一个顶点看作一个基本进程单元（也称 Azure Data Lake Analytics 单元 (ADLAU)），顶点可以并行运行。 
+    * 顶点总数：作业分成了多项工作，每项工作称为顶点。 此值说明作业包含的工作数。 可以将顶点视为基本进程单元（也称为 Azure Data Lake Analytics Unit (ADLAU) ），顶点可以并行运行。 
     * 已完成/正在运行/失败：已完成/正在运行/失败顶点的计数。 顶点可能因用户代码和系统故障而失败，但系统会自动重试几次失败的顶点。 如果重试后，顶点仍失败，则整个作业会失败。
 * 作业图
   
@@ -71,7 +71,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
   
     ![Azure Data Lake Analytics 作业阶段状态](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    作业分成了多项工作。 每项工作称为顶点。 顶点分组为超级顶点（又称阶段），并可视化为作业图。 作业图中的绿色阶段标牌显示各个阶段。
+    作业分成了多项工作。 每项工作称为顶点。 顶点被分组为超级顶点 (也称为舞台) ，并作为作业图进行可视化。 作业图中的绿色阶段标牌显示各个阶段。
   
     同一阶段内的每个顶点使用相同数据的不同片段执行相同类型的工作。 例如，如果有一个含 1 TB 数据的文件，有数百个顶点从中读取数据，则每个顶点各读取一个区块。 这些顶点在同一阶段内分组，并对同一输出文件的不同区块执行相同工作。
   
@@ -165,6 +165,6 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
 
 ## <a name="next-steps"></a>后续步骤
 * 若要记录诊断信息，请参阅[访问 Azure Data Lake Analytics 的诊断日志](data-lake-analytics-diagnostic-logs.md)
-* 若要查看更复杂的查询，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
+* 若要查看更复杂的查询，请参阅 [使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
 * 若要使用顶点执行视图，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 

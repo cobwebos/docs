@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 05f81e4d93244db854bf8d0ec254ee647f81d9cc
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069163"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326671"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB 核心 (SQL) API Apache Spark 连接器：发行说明和资源
 > [!div class="op_single_selector"]
@@ -56,12 +56,20 @@ ms.locfileid: "90069163"
 
 | 资源 | 链接 |
 |---|---|
-| **SDK 下载** | [从 Apache Spark 下载](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) |
+| **SDK 下载** | [下载最新 .jar](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)， [Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) |
 |**API 文档** | [Spark 连接器参考]() |
 |**参与 SDK** | [GitHub 上适用于 Apache Spark 的 Azure Cosmos DB 连接器](https://github.com/Azure/azure-cosmosdb-spark) | 
 |**入门** | [使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析](https://docs.microsoft.com/azure/cosmos-db/spark-connector#bk_working_with_connector) <br> [将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用](https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>版本历史记录
+
+### <a name="330"></a>3.3.0
+#### <a name="new-features"></a>新增功能
+- 添加新的 config 选项， `changefeedstartfromdatetime` 该选项可用于指定处理 changefeed 时的开始时间。 有关详细信息，请参阅 [Config options](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)。
+
+### <a name="320"></a>3.2.0
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+- 修复了导致大型结果集在执行器中占用过多内存的回归 (例如，使用数百万行) ，最终导致错误 `java.lang.OutOfMemoryError: GC overhead limit exceeded` 。
 
 ### <a name="311"></a>3.1.1
 #### <a name="key-bug-fixes"></a>关键 bug 修复
@@ -74,7 +82,7 @@ ms.locfileid: "90069163"
 * 当使用长 (Unix epoch) 作为值时，添加对时间戳类型的支持。
 
 ### <a name="308"></a>3.0.8
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复了在使用配置时发生的转换异常 `WriteThroughputBudget` 。
 
 ### <a name="307"></a>3.0.7
@@ -98,18 +106,18 @@ ms.locfileid: "90069163"
 * 修复了一个 bug，该 bug 导致为 readStream 提供的自定义架构被忽略。
 
 ### <a name="302"></a>3.0.2
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复了一个回归 (unshaded JAR 包括) 的所有着色依赖关系，并将生成时间增加50%。
 
 ### <a name="301"></a>3.0.1
-#### <a name="key-bug-fixes"></a>关键 bug 修复
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
 * 修复了导致 TCP 直接传输通过 RequestTimeoutException 失败的依赖项问题。
 
 ### <a name="300"></a>3.0.0
 #### <a name="new-features"></a>新增功能
 * 改进连接管理和连接池，以减少元数据调用次数。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 将文件上传到媒体服务帐户 | Microsoft Docs
-description: 了解如何通过创建和上传资产将媒体内容加入媒体服务。
+description: 了解如何通过使用 .NET 创建和上传资产将媒体内容引入媒体服务。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51f6b40fc4cafad16ef6f6ca92fafa7ba1378c4a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255930"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250516"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户
 
@@ -171,7 +171,7 @@ ms.locfileid: "89255930"
 * 将 ParallelTransferThreadCount 保留为默认值 10。
 
 ## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产
-上传大型资产文件可能在资产创建过程中形成瓶颈。 批量引入资产（简称“批量引入”）涉及将资产创建过程与上传过程分离。 若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。 然后，可以使用所选上传方法将关联的文件上传到该清单的 Blob 容器。 Microsoft Azure 媒体服务会监视与清单关联的 Blob 容器。 文件上传到 Blob 容器后，Microsoft Azure 媒体服务将基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
+上传大型资产文件可能在资产创建过程中形成瓶颈。 批量引入资产（简称“批量引入”）涉及到将资产创建过程与上传过程分离。 若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。 然后，可以使用所选上传方法将关联的文件上传到该清单的 Blob 容器。 Microsoft Azure 媒体服务会监视与清单关联的 Blob 容器。 文件上传到 Blob 容器后，Microsoft Azure 媒体服务将基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
 
 若要创建新的 IngestManifest，请调用通过 CloudMediaContext 中的 IngestManifests 集合公开的 Create 方法。 此方法将使用所提供的清单名称创建一个新的 IngestManifest。
 

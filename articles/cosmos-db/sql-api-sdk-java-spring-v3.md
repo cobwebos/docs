@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
-ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
+ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2020
-ms.locfileid: "90817864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326654"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>用于核心 (SQL) API 的弹簧数据 Azure Cosmos DB v3：发行说明和资源
 > [!div class="op_single_selector"]
@@ -96,17 +96,6 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>文档操作
 
-创建：
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
-
-删除：
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
-
-# <a name="query"></a>[查询](#tab/queries)
-
-查询：
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
-
 ---
 
 ## <a name="resources"></a>资源
@@ -115,58 +104,7 @@ cosmos.queryMetricsEnabled=true
 
 * **教程**：有关 [GitHub 上的春季 Data Azure Cosmos DB 教程](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
-## <a name="release-history"></a>版本历史记录
-
-### <a name="300-beta2-september-17-2020"></a>3.0.0 (2020 年9月17日) 
-
-#### <a name="new-features"></a>新增功能
-
-* 已将项目 id 更新到 `azure-spring-data-cosmos` 。
-* 已更新与的 cosmos 依赖项 `4.5.0` 。
-* `Query Annotation` 支持本机查询。
-* 支持 Java 11。
-* 通过在批注中公开字段，增加了对嵌套分区键的支持 `partitionKeyPath` `@Container` 。
-* 添加了对 `limit` 查询类型的支持 `top` ，以便 `first` 在定义存储库 api 时使用和。
-
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
-
-* 修复了用于批注的嵌套分区键错误 `@GeneratedValue` 。
-
-### <a name="300-beta1-august-17-2020"></a>3.0.0 (8 月17日 2020) 
-
-#### <a name="new-features"></a>新增功能
-
-* 将组 ID 更新到 `com.azure` 。
-* 将项目 ID 更新到 `azure-spring-data-2-3-cosmos` 。
-* 将 azure cosmos SDK 依赖项更新到 `4.3.2-beta.2` 。
-* 添加对审核实体的支持：自动管理 `createdBy` 、 `createdDate` 、 `lastModifiedBy` 和 `lastModifiedDate` 批注字段。
-* 为 `@GeneratedValue` 类型为的 id 字段的自动生成 id 添加批注支持 `String` 。
-* 为具有多个数据库的单个 Azure Cosmos DB 帐户和多个具有多个数据库的 Azure Cosmos DB 帐户添加多数据库配置支持。
-* 添加对 `@Version` 任何字符串字段的批注的支持。
-* 将同步 API 返回类型更新为 `Iterable` 类型而不是 `List` 。
-* `CosmosClientBuilder`作为弹簧 bean 从 AZURE COSMOS DB SDK 公开到 `@Configuration` 类。
-* 更新 `CosmosConfig` 以包含查询指标和响应诊断处理器实现。
-* 添加了对返回 `Optional` 单个结果查询的数据类型的支持。
-
-#### <a name="renames"></a>指
-
-* `CosmosDbFactory` 到 `CosmosFactory` 。
-* `CosmosDBConfig` 到 `CosmosConfig` 。
-* `CosmosDBAccessException` 到 `CosmosAccessException` 。
-* `Document` 批注到 `Container` 批注。
-* `DocumentIndexingPolicy` 批注到 `CosmosIndexingPolicy` 批注。
-* `DocumentQuery` 到 `CosmosQuery` 。
-* application. properties 标记 `populateQueryMetrics` 为 `queryMetricsEnabled` 。
-
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
-
-* 将诊断日志记录任务计划给 `Parallel` 线程，以避免阻塞 Netty i/o 线程。
-* 修复删除操作时的乐观锁定。
-* 修复了子句的转义查询问题 `IN` 。
-* 通过允许 `long` 的数据类型解决了问题 `@Id` 。
-* 通过允许 `boolean` 、 `long` 、 `int` 和 `double` 作为批注的数据类型，修复了问题 `@PartitionKey` 。
-* `IgnoreCase` `AllIgnoreCase` 忽略 case 查询的修复和关键字。
-* 自动创建容器时，删除默认请求单位值4000。
+[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
 ## <a name="faq"></a>常见问题解答
 

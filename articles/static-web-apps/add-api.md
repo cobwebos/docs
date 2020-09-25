@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250141"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -222,7 +222,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 1. 单击“创建资源”
 1. 搜索 **静态 Web 应用**
 1. 单击 " **静态 Web 应用 (预览") **
-1. 单击“创建”
+1. 单击“创建” 
 
 接下来，添加特定于应用的设置。
 

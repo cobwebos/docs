@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249580"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>排查 Linux 中的 Azure 文件问题 (SMB) 
 
@@ -49,7 +49,7 @@ ms.locfileid: "90707639"
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请使用 [Troubleshooting tool for Azure Files mounting errors on Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)（用于 Linux 上 Azure 文件装载错误的故障排除工具）。 此工具：
+若要解决此问题，请使用 [Troubleshooting tool for Azure Files mounting errors on Linux](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux)（用于 Linux 上 Azure 文件装载错误的故障排除工具）。 此工具：
 
 * 有助于验证客户端运行环境。
 * 可检测导致 Azure 文件访问失败的不兼容客户端配置。

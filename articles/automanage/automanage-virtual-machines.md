@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311557"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
 
@@ -37,18 +37,17 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 最后，体验非常简单。
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 在虚拟机上尝试启用 Azure Automanage 之前，需要考虑几个先决条件。
 
 - 仅限 Windows Server Vm
 - Vm 必须正在运行
-- 仅限非规模集 Vm
 - Vm 必须位于受支持的区域
 - 用户必须具有正确的权限
 - Vm 不得链接到不同订阅中的 log analytics 工作区
 
-若要启用 Automanage： **Owner** 角色或 **参与者** 以及 **用户访问管理员** 角色，需要以下 RBAC 权限。
+你需要具有 " **参与者** " 角色才能使用现有的 Automanage 帐户来启用 Automanage。 如果要使用新的 Automanage 帐户启用 Automanage，需要具有以下权限： **所有者** 角色或 **参与者** 以及 **用户访问管理员** 角色。
 
 另外，请务必注意，Automanage 仅支持位于以下区域的 Windows Vm：西欧、美国东部、美国西部2、加拿大中部、美国西部。
 
@@ -105,7 +104,7 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 在 Azure 门户体验中，当你在 Vm 上启用 Automanage 时，" **启用 AZURE VM 最佳做法** " 边栏选项卡上提供了一个高级下拉列表，可用于分配或手动创建 Automanage 帐户。
 
 > [!NOTE]
-> 若要启用 Automanage： **Owner** 角色或 **参与者** 以及 **用户访问管理员** 角色，需要以下 RBAC 权限。
+> 你需要具有 " **参与者** " 角色才能使用现有的 Automanage 帐户来启用 Automanage。 如果要使用新的 Automanage 帐户启用 Automanage，需要具有以下权限： **所有者** 角色或 **参与者** 以及 **用户访问管理员** 角色。
 
 
 ## <a name="status-of-vms"></a>Vm 的状态
@@ -130,9 +129,9 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 
 若要在 Azure 门户中执行此操作，请参阅 **Automanage – Azure 虚拟机最佳实践** 页面，其中列出了所有自动管理的 vm。 选择要从 Automanage 禁用的虚拟机旁边的复选框，然后单击 " **禁用 automanagment** " 按钮。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="禁用虚拟机上的 Automanage。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="在虚拟机上禁用自动管理。":::
 
-在同意 **禁用**之前，请仔细阅读生成的弹出窗口中的消息。
+在同意“禁用”之前，请仔细阅读生成的弹出窗口中的消息。
 
 ```
 Disabling automanagement in a VM results in the following behavior:

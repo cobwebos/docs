@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326773"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用自动完成 SQL 数据库的工作流
 
@@ -44,7 +44,7 @@ ms.locfileid: "87288181"
 
 <a name="multi-tenant-or-ise"></a>
 
-* 根据你的逻辑应用是要在全球、多租户 Azure 还是[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中运行，以下是连接到本地 SQL Server 的其他要求：
+* 根据逻辑应用是要在全局、多租户 Azure 还是 [integration service 环境中运行 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，以下是连接到本地 SQL Server 的其他要求：
 
   * 对于全局多租户 Azure 中连接到本地 SQL Server 的逻辑应用，你需要在本地计算机上安装[本地数据网关](../logic-apps/logic-apps-gateway-install.md)，并且需要具有[已在 Azure 中创建的数据网关资源](../logic-apps/logic-apps-gateway-connection.md)。
 
@@ -79,13 +79,13 @@ ms.locfileid: "87288181"
 
    此示例将继续使用 **Azure AD 集成**：
 
-   ![选择要使用的身份验证类型](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
+   ![屏幕截图，显示已打开 "身份验证类型" 列表并选择 "Azure AD 集成" 的 "SQL Server" 连接窗口。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
 1. 在选择“Azure AD 集成”后，选择“登录”。 根据你使用的是 Azure SQL 数据库还是 Azure SQL 托管实例，选择用于身份验证的用户凭据。
 
 1. 为你的数据库选择以下值：
 
-   | 属性 | 必须 | 描述 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **服务器名称** | 是 | 你的 SQL Server 的地址，例如 `Fabrikam-Azure-SQL.database.windows.net` |
    | **数据库名称** | 是 | 你的 SQL 数据库的名称，例如 `Fabrikam-Azure-SQL-DB` |
@@ -127,7 +127,7 @@ ms.locfileid: "87288181"
 
 1. 为你的 SQL 数据库选择或提供以下值：
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **SQL Server 名称** | 是 | 你的 SQL Server 的地址，例如 `Fabrikam-Azure-SQL.database.windows.net` |
    | **SQL 数据库名称** | 是 | 你的 SQL Server 数据库的名称，例如 `Fabrikam-Azure-SQL-DB` |

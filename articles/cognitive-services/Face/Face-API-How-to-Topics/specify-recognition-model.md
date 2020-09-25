@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283031"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
@@ -35,10 +35,11 @@ Azure 面部服务具有三个可用的识别模式。  (发布的 2017) 和_rec
 
 ## <a name="prerequisites"></a>先决条件
 
-读者应该熟悉 AI 人脸检测和识别的概念。 否则请先阅读以下操作指南：
+读者应该熟悉 AI 人脸检测和识别的概念。 如果你没有，请先参阅以下指南：
 
+* [人脸检测的概念](../concepts/face-detection.md)
+* [人脸识别的概念](../concepts/face-recognition.md)
 * [如何检测图像中的人脸](HowtoDetectFacesinImage.md)
-* [如何识别图像中的人脸](HowtoIdentifyFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>使用指定的模型检测人脸
 

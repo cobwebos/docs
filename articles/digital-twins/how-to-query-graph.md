@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282300"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -25,6 +25,15 @@ ms.locfileid: "89468702"
 ## <a name="query-syntax"></a>查询语法
 
 本部分包含的示例查询阐释了查询语言结构并在 [数字孪生](concepts-twins-graph.md)上执行可能的查询操作。
+
+### <a name="show-all-existing-digital-twins"></a>显示所有现有数字孪生
+
+下面是一个基本查询，它将返回实例中所有数字孪生的列表：
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>选择顶级项
 
@@ -208,8 +217,8 @@ AND Room.$dtId IN ['room1', 'room2']
 
 | 函数 | 说明 |
 | -------- | ----------- |
-| STARTS_WITH(x, y) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。 |
-| ENDS_WITH(x, y) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。 |
+| STARTSWITH (x、y)  | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。 |
+| ENDSWITH (x、y)  | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。 |
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 调用运行查询
 

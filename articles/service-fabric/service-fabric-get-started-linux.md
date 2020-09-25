@@ -3,13 +3,13 @@ title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 420284a512147d729db23f3b71cbe8e9f6f050d9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249988"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "87429040"
 
 支持使用以下操作系统版本进行开发。
 
-* Ubuntu 16.04 （ `Xenial Xerus` ）、18.04 （ `Bionic Beaver` ）
+* Ubuntu 16.04 (`Xenial Xerus`)、18.04 (`Bionic Beaver`)
 
     确保已安装 `apt-transport-https` 包。
          
@@ -62,14 +62,14 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 
 1. 打开终端。
 
-2. 将存储库添加 `dotnet` 到对应于你的分发的源列表。
+2. 将 `dotnet` 存储库添加到与发行版相对应的源列表。
 
     ```bash
     wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. 向 APT keyring 添加新的 MS Open Tech Gnu 隐私防护（GnuPG 或 GPG）密钥。
+3. 向 APT Keyring 添加新的 MS Open Tech Gnu 隐私防护（GnuPG 或 GPG）密钥。
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -

@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307922"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282017"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>生成并部署 OPC 保管库证书管理服务
+
+> [!IMPORTANT]
+> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
 
 本文介绍如何在 Azure 中部署 OPC 保管库证书管理服务。
 
@@ -28,12 +31,12 @@ ms.locfileid: "84307922"
 
 当前，生成和部署操作仅限于 Windows。
 这些示例都是用 c # 编写的 .NET Standard，需要为部署生成服务和示例。
-.NET Standard 所需的所有工具都附带 .NET Core 工具。 请参阅[.Net Core 入门](https://docs.microsoft.com/dotnet/articles/core/getting-started)。
+.NET Standard 所需的所有工具都附带 .NET Core 工具。 请参阅 [.Net Core 入门](https://docs.microsoft.com/dotnet/articles/core/getting-started)。
 
 1. [安装 .Net Core 2.1 +][dotnet-install]。
-2. [安装 Docker][docker-url] （仅当需要本地 Docker 生成时才需要）。
-4. 安装[适用于 PowerShell 的 Azure 命令行工具][powershell-install]。
-5. 注册[Azure 订阅][azure-free]。
+2. 仅当需要) 本地 Docker 生成时，才能[安装 Docker][docker-url] (可选的。
+4. 安装 [适用于 PowerShell 的 Azure 命令行工具][powershell-install]。
+5. 注册 [Azure 订阅][azure-free]。
 
 ### <a name="clone-the-repository"></a>克隆存储库
 
@@ -75,22 +78,22 @@ cd azure-iiot-opc-vault-service
    > [!NOTE]
    > 如果出现问题，请参阅本文后面的 "部署失败疑难解答" 一节。
 
-8. 打开你最喜欢的浏览器，然后打开应用程序页：`https://myResourceGroup.azurewebsites.net`
+8. 打开你最喜欢的浏览器，然后打开应用程序页： `https://myResourceGroup.azurewebsites.net`
 8. 在部署后，为 web 应用和 OPC 保管库微服务几分钟的时间。 在您获取第一个响应之前，web 主页可能会在首次使用时停止响应。
-11. 若要查看 Swagger API，请打开：`https://myResourceGroup-service.azurewebsites.net`
+11. 若要查看 Swagger API，请打开： `https://myResourceGroup-service.azurewebsites.net`
 13. 若要使用 dotnet 启动本地 GDS 服务器，请启动 `.\myResourceGroup-gds.cmd` 。 对于 Docker，请启动 `.\myResourceGroup-dockergds.cmd` 。
 
-可以使用完全相同的设置重新部署生成。 请注意，此类操作将续订所有应用程序机密，并可能会重置 Azure Active Directory （Azure AD）应用程序注册中的某些设置。
+可以使用完全相同的设置重新部署生成。 请注意，此类操作将续订所有应用程序机密，并可能会将 Azure Active Directory 中的某些设置重置 (Azure AD) 应用程序注册。
 
 还可以仅重新部署 web 应用二进制文件。 对于参数 `-onlyBuild 1` ，会将服务和应用程序的新的 zip 包部署到 web 应用程序。
 
-成功部署后，可以开始使用服务。 请参阅[管理 OPC 保管库证书管理服务](howto-opc-vault-manage.md)。
+成功部署后，可以开始使用服务。 请参阅 [管理 OPC 保管库证书管理服务](howto-opc-vault-manage.md)。
 
 ## <a name="delete-the-services-from-the-subscription"></a>从订阅中删除服务
 
-下面介绍如何操作：
+方法如下：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 中转到部署了该服务的资源组。
 3. 选择“删除资源组”并进行确认。
 4. 一小段时间后，所有已部署的服务组件都将被删除。
@@ -112,7 +115,7 @@ cd azure-iiot-opc-vault-service
 
 ### <a name="azure-ad-registration"></a>Azure AD 注册 
 
-部署脚本尝试在 Azure AD 中注册三个 Azure AD 应用程序。 根据所选 Azure AD 租户中的权限，此操作可能会失败。 共有两个选项：
+部署脚本尝试在 Azure AD 中注册三个 Azure AD 应用程序。 根据所选 Azure AD 租户中的权限，此操作可能会失败。 有两个选项：
 
 - 如果从租户列表中选择 Azure AD 租户，请重新启动脚本，然后从列表中选择另一个。
 - 或者，在另一个订阅中部署私有 Azure AD 租户。 重新启动脚本，并选择使用它。

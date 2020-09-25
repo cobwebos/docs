@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311591"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
@@ -36,6 +36,8 @@ ms.locfileid: "84804399"
 
 * 新的 v2 网关使用新的公共和专用 IP 地址。 无法将与现有 v1 网关关联的 IP 地址无缝移动到 v2。 但是，可将现有的（未分配的）公共或专用 IP 地址分配到新的 v2 网关。
 * 必须为 v1 网关所在的虚拟网络中的另一个子网提供 IP 地址空间。 该脚本无法在已有 v1 网关的任何现有子网中创建 v2 网关。 但是，如果现有子网已包含 v2 网关，只要该子网具有足够的 IP 地址空间，它就仍可正常运行。
+* 如果你具有与 v2 网关子网关联的网络安全组或用户定义的路由，请确保它们符合[NSG 要求](../application-gateway/configuration-infrastructure.md#network-security-groups)，并满足成功迁移的[UDR 要求](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes)
+* [虚拟网络服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md) 当前在应用程序网关子网中不受支持。
 * 若要迁移 TLS/SSL 配置，必须指定 v1 网关中使用的所有 TLS/SSL 证书。
 * 如果为 v1 网关启用了 FIPS 模式，该网关不会迁移到新的 v2 网关。 v2 不支持 FIPS 模式。
 * v2 不支持 IPv6，因此不会迁移启用了 IPv6 的 v1 网关。 如果运行该脚本，它可能不会完成。
@@ -156,17 +158,17 @@ ms.locfileid: "84804399"
 * **自定义 DNS 区域（例如 contoso.com）指向与 Standard v1 或 WAF v1 网关关联的前端 IP 地址（使用 A 记录）** 。
 
     可以更新 DNS 记录，使其指向与 Standard_v2 应用程序网关关联的前端 IP 或 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
-* **一个自定义 dns 区域（例如 contoso.com），指向与 v1 网关关联的 dns 标签（例如： *myappgw.eastus.cloudapp.azure.com* ，使用 CNAME 记录）**。
+* **自定义 dns 区域 (例如，指向 DNS 标签 (的 contoso.com) 例如： *myappgw.eastus.cloudapp.azure.com* 使用与 v1 网关关联的 CNAME 记录) **。
 
    有两种选择：
 
   * 如果在应用程序网关上使用公共 IP 地址，则可以使用流量管理器配置文件执行受控的粒度迁移，以增量方式将流量路由到新的 v2 网关（加权流量路由方法）。
 
-    为此，可以将 v1 和 v2 应用程序网关的 DNS 标签添加到[流量管理器配置文件](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，并将自定义 DNS 记录（例如， `www.contoso.com` ） CNAMEing 到流量管理器域（例如，contoso.trafficmanager.net）。
+    为此，可以将 v1 和 v2 应用程序网关的 DNS 标签添加到 [流量管理器配置文件](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，并 CNAMEing 自定义 DNS 记录 (例如， `www.contoso.com`) 到流量管理器域 (例如，contoso.trafficmanager.net) 。
   * 或者，可以更新自定义域的 DNS 记录，使其指向新 v2 应用程序网关的 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
 * **客户端连接到应用程序网关的前端 IP 地址**。
 
-   更新客户端，以使用与新建的 v2 应用程序网关关联的 IP 地址。 我们建议不要直接使用 IP 地址。 请考虑使用与你的应用程序网关关联的 DNS 名称标签（例如，yourgateway.eastus.cloudapp.azure.com），可以将其 CNAME 到你自己的自定义 DNS 区域（例如，contoso.com）。
+   更新客户端，以使用与新建的 v2 应用程序网关关联的 IP 地址。 我们建议不要直接使用 IP 地址。 请考虑使用 DNS 名称标签 (例如，与你的应用程序网关关联的 yourgateway.eastus.cloudapp.azure.com) ，你可以将其 CNAME 到你自己的自定义 DNS 区域 (例如，contoso.com) 。
 
 ## <a name="common-questions"></a>常见问题
 

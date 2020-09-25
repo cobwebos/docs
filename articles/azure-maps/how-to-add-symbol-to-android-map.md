@@ -4,16 +4,16 @@ description: 了解如何向地图添加标记。 查看一个示例，该示例
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311268"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加符号层 Android SDK
 
@@ -21,7 +21,7 @@ ms.locfileid: "88037382"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完全按照本文中的步骤进行操作，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
+若要完全按照本文中的步骤进行操作，需要安装 [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 来加载地图。
 
 ## <a name="add-a-symbol-layer"></a>添加符号层
 
@@ -50,7 +50,7 @@ ms.locfileid: "88037382"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到类的**onCreate ( # B1**方法 `MainActivity.java` 。
+2. 将以下代码片段复制到类的 **onCreate ( # B1 ** 方法 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,7 +72,7 @@ ms.locfileid: "88037382"
     
     ```
     
-    上面的代码段首先使用**onReady ( # B1**回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，它将包含点几何图形的功能添加到该**功能**中。 然后，将红色标记图像设置为符号的图标。 **符号层**使用文本或图标将基于点的数据作为地图上的符号在数据源中进行包装。 然后创建一个符号层，然后将数据源传递给它以呈现，然后将其添加到地图的层中。
+    上面的代码段首先使用 **onReady ( # B1 ** 回调方法获取 Azure Maps 映射控件实例。 然后，它使用 **DataSource** 类创建数据源对象并将其添加到地图中。 然后，它将包含点几何图形的功能添加到该 **功能** 中。 然后，将红色标记图像设置为符号的图标。 **符号层**使用文本或图标将基于点的数据作为地图上的符号在数据源中进行包装。 然后创建一个符号层，然后将数据源传递给它以呈现，然后将其添加到地图的层中。
     
     添加上述代码片段后，应如下 `MainActivity.java` 所示：
     

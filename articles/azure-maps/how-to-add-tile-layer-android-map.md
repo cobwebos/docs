@@ -4,16 +4,16 @@ description: 了解如何向地图添加图块层。 请参阅使用 Azure Maps 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311081"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加图块层 Android SDK
 
@@ -35,11 +35,11 @@ ms.locfileid: "88037348"
 * `{z}` - 图块的缩放级别。 还需要 `{x}` 和 `{y}`。
 * `{quadkey}` - 基于必应地图图块系统命名约定的图块 quadkey 标识符。
 * `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
-* `{subdomain}`-子域值的占位符（如果指定了子域值）。
+* `{subdomain}` -子域值的占位符（如果指定了子域值）。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本文中的过程，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
+若要完成本文中的过程，需要安装 [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 来加载地图。
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>向地图添加图块层
@@ -48,7 +48,7 @@ ms.locfileid: "88037348"
 
 可以按照以下步骤向地图中添加图块层。
 
-1. 编辑**res > 布局 > activity_main.xml**如下所示：
+1. 编辑 **res > 布局 > activity_main.xml** 如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ ms.locfileid: "88037348"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到类的**onCreate ( # B1**方法 `MainActivity.java` 。
+2. 将以下代码片段复制到类的 **onCreate ( # B1 ** 方法 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,7 +84,7 @@ ms.locfileid: "88037348"
     });
     ```
     
-    上面的代码段首先使用**onReady ( # B1**回调方法获取 Azure Maps 映射控件实例。 然后，它创建一个 `TileLayer` 对象，并将带格式的**xyz**磁贴 URL 传递到 `tileUrl` 选项中。 层的不透明度设置为 `0.8` ，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递到 `tileSize` 选项中。 然后，将图块层传递到地图层管理器中。
+    上面的代码段首先使用 **onReady ( # B1 ** 回调方法获取 Azure Maps 映射控件实例。 然后，它创建一个 `TileLayer` 对象，并将带格式的 **xyz** 磁贴 URL 传递到 `tileUrl` 选项中。 层的不透明度设置为 `0.8` ，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递到 `tileSize` 选项中。 然后，将图块层传递到地图层管理器中。
 
     添加上述代码片段后，应如下 `MainActivity.java` 所示：
     

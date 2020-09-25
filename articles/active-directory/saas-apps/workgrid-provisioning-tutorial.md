@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 28efbb605221b9f613b39c2a72d47c7606afb67e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312215"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>教程：为 Workgrid 配置自动用户预配
 
@@ -54,15 +54,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 Workgrid。 导航到 " **用户" > "用户设置**"。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/user.png)
+    ![Workgrid U I 和用户预配选项的屏幕截图。](media/Workgrid-provisioning-tutorial/user.png)
 
 2. 在 " **帐户管理 API**" 下，单击 " **创建凭据**"。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/scim.png)
+    !["帐户管理" P I 部分的屏幕截图，其中包含 "创建凭据" 选项。](media/Workgrid-provisioning-tutorial/scim.png)
 
 3. 复制 " **SCIM 终结点** " 和 " **访问令牌** " 值。 它们将输入到 Azure 门户中 Workgrid 应用程序的 "设置" 选项卡上的 " **租户 URL** " 和 " **机密令牌** " 字段中。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/token.png)
+    ![使用 S I M 终结点管理 P I 部分的帐户管理的屏幕截图和称为的访问令牌。](media/Workgrid-provisioning-tutorial/token.png)
 
 
 ## <a name="add-workgrid--from-the-gallery"></a>从库中添加 Workgrid
@@ -106,11 +106,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 "管理员凭据" 部分下，输入在**租户 URL**和**机密令牌**中更早检索到的 " **SCIM 终结点**" 和 "**访问令牌**" 值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Workgrid。 如果连接失败，请确保 Workgrid 帐户具有管理员权限，然后重试。
 
@@ -120,11 +120,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Workgrid**"。
 
-    ![Workgrid 用户映射](media/Workgrid-provisioning-tutorial/usermapping.png)
+    !["映射" 部分的屏幕截图，其中包含 Synchronize Azure Active Directory 用户到 Workgrid 选项。](media/Workgrid-provisioning-tutorial/usermapping.png)
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Workgrid 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Workgrid 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
@@ -132,11 +132,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Workgrid** "
 
-    ![Workgrid 用户映射](media/Workgrid-provisioning-tutorial/groupmapping.png)
+    !["映射" 部分的屏幕截图，其中包含 Synchronize Azure Active Directory 组到 Workgrid 选项。](media/Workgrid-provisioning-tutorial/groupmapping.png)
 
 12. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Workgrid 的组属性。 选为 " **匹配** " 属性的特性用于匹配 Workgrid 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![Workgrid 用户映射](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![显示了三个映射的 "属性映射" 部分的屏幕截图。](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
 13. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
