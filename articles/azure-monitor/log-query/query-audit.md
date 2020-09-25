@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285054"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a> (预览版 Azure Monitor 日志中审核查询) 
 日志查询审核日志提供有关 Azure Monitor 中运行的日志查询的遥测。 这包括如下所述的信息：运行查询、运行查询的人员、使用的工具、查询文本，以及描述查询执行的性能统计信息。
@@ -64,6 +64,7 @@ ms.locfileid: "89458631"
 
 ## <a name="considerations"></a>注意事项
 
+- 仅当在用户上下文中执行时才记录查询。 不会记录 Azure 中的服务到服务。 此排除的两个主要查询集包括计费计算和自动执行警报。 对于警报，将只记录计划的警报查询本身;警报创建屏幕中的初始执行警报在用户上下文中执行，并可用于审核目的。 
 - 性能统计信息不适用于来自 Azure 数据资源管理器代理的查询。 这些查询的所有其他数据仍将填充。
 - [进行模糊处理字符串文本](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)的字符串上的*h*提示不会影响查询审核日志。 将完全按提交方式捕获查询，而不会对字符串进行模糊处理。 应确保只有具有相容性权限才能查看此数据的用户才能使用 Log Analytics 工作区中提供的各种 RBAC 模式来完成此操作。
 - 对于包含多个工作区中数据的查询，只能在用户有权访问的工作区中捕获查询。

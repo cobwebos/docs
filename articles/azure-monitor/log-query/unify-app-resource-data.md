@@ -7,12 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 40ce2844e33c9a71f87e434a6a3e9f8e0f7e3cc6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322102"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330887"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
 本文介绍如何在一个位置查询和查看所有 Application Insights 日志数据（即使这些数据位于不同 Azure 订阅），可作为弃用 Application Insights 连接器的替换方式。 可以在单个查询中包含的 Application Insights 资源的数量限制为 100。
@@ -57,7 +57,7 @@ applicationsScoping
 ![跨查询结果示例](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](./cross-workspace-query.md)。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 你可以创建[跨资源查询](./cross-workspace-query.md)日志警报规则，而无需使用[ScheduledQueryRules api 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)进行切换–但此警报规则可通过[scheduledQueryRules api](/rest/api/monitor/scheduledqueryrules)而不是从 Azure 门户管理。
+>仅当前[SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)支持日志警报中的[跨资源查询](./cross-workspace-query.md)。 如果使用的是旧的 Log Analytics 警报 API，则需要 [切换到当前 API](../platform/alerts-log-api-switch.md)。 [请参阅示例模板](../platform/alerts-log-create-templates.md)。
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights 和 Log Analytics 工作区的架构差异
 下表显示了 Log Analytics 和 Application Insights 之间的架构差异。  

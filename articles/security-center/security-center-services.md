@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cece53544bfc8287f6ef542575d92b05032991f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318035"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
-下面的两个选项卡显示了可用于 Windows 和 Linux 虚拟机和服务器的 Azure 安全中心的功能。
+下面的两个选项卡显示了可用于 Windows 和 Linux 虚拟机和服务器的 Azure 安全中心功能。
 
 ## <a name="supported-features-for-virtual-machines-and-servers"></a>虚拟机和服务器支持的功能 <a name="vm-server-features"></a>
 
@@ -31,7 +31,7 @@ ms.locfileid: "90904707"
 |**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 虚拟机**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
-|[虚拟机行为分析 (和安全警报) ](alerts-reference.md)|✔|✔|✔|是|
+|[虚拟机行为分析（和安全警报）](alerts-reference.md)|✔|✔|✔|是|
 |[无文件安全警报](alerts-reference.md#alerts-windows)|✔|✔|✔|是|
 |[基于网络的安全警报](other-threat-protections.md#network-layer)|✔|✔|-|是|
 |[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|是|
@@ -40,12 +40,12 @@ ms.locfileid: "90904707"
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|是|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|是|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
-|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
+|[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|-|-|-|是|
 |缺少 OS 修补程序评估|✔|✔|✔|Azure：免费<br><br>非 Azure：是|
 |安全配置错误评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|磁盘加密评估|✔|✔|-|免费|
+|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|免费|
 |第三方漏洞评估|✔|-|-|免费|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
 
@@ -55,7 +55,7 @@ ms.locfileid: "90904707"
 |**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 虚拟机**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|是|
-|[虚拟机行为分析 (和安全警报) ](security-center-alerts-iaas.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
+|[虚拟机行为分析（和安全警报）](security-center-alerts-iaas.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
 |[无文件安全警报](alerts-reference.md#alerts-windows)|-|-|-|是|
 |[基于网络的安全警报](other-threat-protections.md#network-layer)|✔|✔|-|是|
 |[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|是|
@@ -64,12 +64,12 @@ ms.locfileid: "90904707"
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|是|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|是|
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
-|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
+|[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|✔|✔|✔|是|
 |缺少 OS 修补程序评估|✔|✔|✔|Azure：免费<br><br>非 Azure：是|
 |安全配置错误评估|✔|✔|✔|Azure：免费<br><br>非 Azure：是|
 |[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免费|
-|磁盘加密评估|✔|✔|-|免费|
+|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|免费|
 |第三方漏洞评估|✔|-|-|免费|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
 
@@ -102,7 +102,7 @@ ms.locfileid: "90904707"
  **\*** 覆盖状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中提供。 这些数据不会在 Azure 安全中心门户中反映。
 
 > [!NOTE]
-> Windows Server 2008 R2 虚拟机上的 System Center Endpoint Protection (SCEP) 检测要求在 PowerShell (3.0 版或更高版本的) 后安装 SCEP。
+> 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell（v3.0 或更高版本）之后安装 SCEP。
 
 
 ## <a name="next-steps"></a>后续步骤

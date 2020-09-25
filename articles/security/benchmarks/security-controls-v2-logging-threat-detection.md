@@ -4,17 +4,17 @@ description: Azure 安全基准 V2 日志记录和威胁检测
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295458"
 ---
-# <a name="security-control-logging-and-threat-detection"></a>安全控制：日志记录和威胁检测
+# <a name="security-control-v2-logging-and-threat-detection"></a>安全控制 V2：日志记录和威胁检测
 
 日志记录和威胁检测涵盖用于检测 Azure 上的威胁以及为 Azure 服务启用、收集和存储审核日志的控制。 这包括启用检测、调查和修正过程，使控件能够在 Azure 服务中生成具有本机威胁检测功能的高质量警报;它还包括 Azure Monitor 收集日志，通过 Azure Sentinel、时间同步和日志保留来集中进行安全分析。 
 
@@ -40,11 +40,11 @@ ms.locfileid: "90059170"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [ (SecOps 的安全操作) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -77,11 +77,11 @@ Azure 安全中心还可以针对某些可疑活动（如过量身份验证尝�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [ (SecOps 的安全操作) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -111,11 +111,11 @@ Azure 安全中心还可以针对某些可疑活动（如过量身份验证尝�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [ (SecOps 的安全操作) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -129,7 +129,7 @@ Azure 安全中心还可以针对某些可疑活动（如过量身份验证尝�
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8。8 | AU-3，AU-12 |
 
-为 Azure 资源启用日志记录，以满足符合性、威胁检测和调查以及威胁搜寻的要求。 
+为 Azure 资源启用日志记录，以满足符合性、威胁检测、搜寻和事件调查的要求。 
 
 可以使用 Azure 安全中心和 Azure 策略来启用资源日志，并在 Azure 资源上收集日志数据，以便访问审核、安全和资源日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 
 
@@ -141,9 +141,9 @@ Azure 安全中心还可以针对某些可疑活动（如过量身份验证尝�
 
 **责任**：共享
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [ (SecOps 的安全操作) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 基础结构和终结点安全性 
 
@@ -159,7 +159,7 @@ Azure 安全中心还可以针对某些可疑活动（如过量身份验证尝�
 
 集中记录存储和分析以启用关联。 对于每个日志源，请确保已分配一个数据所有者、访问指南、存储位置、用于处理和访问数据的工具以及数据保留要求。
 
-确保将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户长期和存档存储。
+确保将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
 此外，启用数据并将数据集成到 Azure Sentinel 或第三方 SIEM。
 
@@ -171,7 +171,7 @@ Azure 安全中心还可以针对某些可疑活动（如过量身份验证尝�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -185,25 +185,25 @@ Azure 安全中心还可以针对某些可疑活动（如过量身份验证尝�
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3，AU-11 |
 
-根据你的符合性、法规和其他要求配置日志保留。 
+根据你的符合性、法规和业务要求配置日志保留。 
 
 在 Azure Monitor 中，可以根据组织的符合性法规来设置 Log Analytics 工作区保持期。 使用 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期和存档存储。
 
 - [更改 Log Analytics 中的数据保留期](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-如何配置 Azure 存储帐户日志的保留策略： ttps://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Azure 安全中心警报和建议导出](../../security-center/continuous-export.md)
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [ (SecOps 的安全操作) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [安全性和符合性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -225,7 +225,7 @@ Azure 中的资源生成的所有日志都提供了时间戳，并在默认情�
 
 **责任**：共享
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [策略和标准](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

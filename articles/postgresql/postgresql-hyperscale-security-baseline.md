@@ -1,22 +1,22 @@
 ---
-title: 适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模
-description: Azure Database for PostgreSQL 超大规模安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+title: '适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) '
+description: Azure Database for PostgreSQL-超大规模 (Citus) 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318120"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) 
 
-适用于 Azure Database for PostgreSQL 的 Azure 安全基线包含有助于改进部署安全状况的建议。
+适用于 Azure Database for PostgreSQL (Citus) 的 Azure 安全基线包含的建议可帮助你提高部署的安全状况。
 
 此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
@@ -273,7 +273,7 @@ ms.locfileid: "89231293"
 
 **责任**：客户
 
-### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帐户登录行为偏差时发出警报
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
 **指南**：使用 Azure Active Directory 的标识保护和风险检测功能来配置自动响应 AZURE ACTIVE DIRECTORY (AD) 级别上检测到的可疑操作。 可以通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
 

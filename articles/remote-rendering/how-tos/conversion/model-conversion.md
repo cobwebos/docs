@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506655"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318052"
 ---
 # <a name="convert-models"></a>转换模型
 
@@ -21,9 +21,8 @@ Azure 远程呈现允许您呈现非常复杂的模型。 若要获得最大性�
 
 转换服务支持以下格式：
 
-- **FBX**  (版本2011及更高版本) 
-- **GLTF** (版本 2.x) 
-- **GLB**  (版本 2.x) 
+- **FBX**  (版本2011到版本 2020) 
+- **GLTF** /**GLB** (版本 2.x) 
 
 与材料属性转换有关的格式之间存在细微差异，如 [模型格式的章节材料映射](../../reference/material-mapping.md)中所述。
 

@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8acd19408c328ef3f534ba7bc41c96e395f768be
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318069"
 ---
 # <a name="laying-out-files-for-conversion"></a>为转换设计文件布局
 
@@ -28,6 +28,10 @@ ms.locfileid: "89510967"
 
 > [!Note]
 > 建议将文件放入输入容器，使文件的相对位置与创建资产时的位置相同。
+
+> [!Note]
+> 更倾向于创建携带相对路径的资产。
+> 有关 [设置3Ds 最大资料](../../tutorials/modeling/3dsmax-material-setup.md) 的教程提供了有关如何确保资产使用相对路径的最大3ds 示例。
 
 ## <a name="finding-textures"></a>查找纹理
 

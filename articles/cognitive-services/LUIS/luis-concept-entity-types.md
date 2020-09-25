@@ -1,14 +1,16 @@
 ---
 title: 实体类型 - LUIS
 description: 实体可以在预测运行时从用户言语中提取数据。 一个可选的辅助用途是通过用作特征的实体促进意向或其他实体的预测。__
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316556"
 ---
 # <a name="extract-data-with-entities"></a>通过实体提取数据
 
@@ -16,11 +18,11 @@ ms.locfileid: "88207734"
 
 有多种类型的实体：
 
-* [机器学习实体](reference-entity-machine-learned-entity.md) -这是主实体。 在使用其他实体之前，应使用此实体类型设计架构。
-* 用于作为必需 [功能](luis-concept-feature.md) 的非计算机学习-精确文本匹配、模式匹配或预生成实体检测
+* [机器学习实体](reference-entity-machine-learned-entity.md) - 这是主要实体。 在使用其他实体之前，应使用此实体类型设计架构。
+* 用作必要[特征](luis-concept-feature.md)的非机器学习实体 - 由预生成实体用于精确文本匹配、模式匹配或检测
 * [Pattern.any](#patternany-entity) - 从[模式](reference-entity-pattern-any.md)中提取自由格式的文本，例如书籍标题
 
-机器学习实体提供最广泛的数据提取选择。 非机器学习实体按文本匹配工作，并用作机器学习实体或意向的 [必需功能](#design-entities-for-decomposition) 。
+机器学习实体提供最广泛的数据提取选项。 非机器学习实体通过文本匹配发挥作用，充当机器学习实体或意图的[必要特征](#design-entities-for-decomposition)。
 
 ## <a name="entities-represent-data"></a>实体表示数据
 
@@ -62,13 +64,13 @@ ms.locfileid: "88207734"
 
 ## <a name="design-entities-for-decomposition"></a>设计分解实体
 
-利用机器学习实体，你可以设计用于分解的应用架构，将大型概念分解为子实体。
+借助机器学习实体，可以设计用于分解的应用架构，将一个大的概念分解成子实体。
 
 分解设计可使 LUIS 向客户端应用程序返回深度的实体解析。 这样，客户端应用程序便可以专注于业务规则，让 LUIS 来处理数据解析。
 
 机器学习实体根据通过示例言语习得的上下文触发。
 
-[**机器学习实体**](tutorial-machine-learned-entity.md) 是顶级提取器。 子实体是机器学习实体的子实体。
+[机器学习实体](tutorial-machine-learned-entity.md)是顶级提取程序。 子实体是机器学习实体的子实体。
 
 ## <a name="effective-machine-learned-entities"></a>有效的机器学习实体
 
@@ -80,9 +82,9 @@ ms.locfileid: "88207734"
 
 ## <a name="effective-prebuilt-entities"></a>有效的预生成实体
 
-若要生成可提取常见数据的有效实体（例如，预先生成的 [实体](luis-reference-prebuilt-entities.md)提供的数据），建议执行以下过程。
+若要生成可提取常见数据（例如由[预生成实体](luis-reference-prebuilt-entities.md)提供的数据）的有效实体，建议采用以下流程。
 
-通过将您自己的数据作为功能引入到实体中，改进数据的提取。 这样，你的数据中的所有其他标签都将了解在应用程序中存在人员姓名的位置的上下文。
+通过将自己的数据作为特征引入到实体中来改进数据的提取。 这样，你数据中的所有附加标签都会了解人名在应用程序中存在的上下文。
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -93,13 +95,13 @@ ms.locfileid: "88207734"
 
 ## <a name="types-of-entities"></a>实体类型
 
-父代的子实体应该是机器学习实体。 子实体可以使用非计算机学习实体作为 [功能](luis-concept-feature.md)。
+父代的子实体应是机器学习实体。 子实体可以使用一个非机器学习实体作为[特征](luis-concept-feature.md)。
 
 请根据数据的提取方式以及提取后的数据表示方式，来选择实体。
 
 |实体类型|目的|
 |--|--|
-|[**计算机学习**](tutorial-machine-learned-entity.md)|提取从标记的示例中学习的嵌套的复杂数据。 |
+|[**机器学习**](tutorial-machine-learned-entity.md)|从标记的示例中提取嵌套的、复杂的数据。 |
 |[**列表**](reference-entity-list.md)|使用**精确文本匹配**提取的项列表及其同义词。|
 |[**Pattern.any**](#patternany-entity)|由于属于自由格式而难以确定末尾部分的实体。 仅在[模式](luis-concept-patterns.md)中可用。|
 |[**预生成**](luis-reference-prebuilt-entities.md)|已经过训练，可以提取特定类型的数据，例如 URL 或电子邮件。 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。|
@@ -112,7 +114,7 @@ ms.locfileid: "88207734"
 
 可以通过多种方法将解析引入到提取中，但应注意，这会限制应用防范变异和错误的能力。
 
- (文本匹配) 实体的列表实体和正则表达式可用作子实体的 [所需功能](luis-concept-feature.md#required-features) ，并充当提取的筛选器。 应谨慎使用此功能，不要妨碍应用的预测功能。
+可以将列表实体和正则表达式（文本匹配）实体用作子实体的[必要特征](luis-concept-feature.md#required-features)，让子实体充当所提取内容的筛选器。 应谨慎使用此功能，不要妨碍应用的预测功能。
 
 ## <a name="extracting-contextually-related-data"></a>提取上下文相关的数据
 
@@ -127,9 +129,9 @@ ms.locfileid: "88207734"
 <a name="using-component-constraints-to-help-define-entity"></a>
 <a name="using-subentity-constraints-to-help-define-entity"></a>
 
-### <a name="using-required-features-to-constrain-entities"></a>使用所需功能来约束实体
+### <a name="using-required-features-to-constrain-entities"></a>使用必要特征来约束实体
 
-了解有关[所需功能](luis-concept-feature.md)的详细信息
+详细了解[必要特征](luis-concept-feature.md)
 
 ## <a name="patternany-entity"></a>Pattern.any 实体
 
@@ -150,7 +152,7 @@ Pattern.any 仅在[模式](luis-concept-patterns.md)中可用。
 
 使用此信息可使用以下一项或多项解决实体错误：
 * 突出显示的文本为网文。 修复、查看、更正和重新训练。 
-* 为实体创建 [功能](luis-concept-feature.md) 以帮助标识实体的概念
+* 为实体创建一个有助于确定实体概念的[特征](luis-concept-feature.md)
 * 添加更多[示例言语](luis-concept-utterance.md)并使用实体进行标记
 * 对于在预测终结点上收到的任何言语，[查看有效的学习建议](luis-concept-review-endpoint-utterances.md)，以便确定实体的概念。
 
@@ -160,5 +162,5 @@ Pattern.any 仅在[模式](luis-concept-patterns.md)中可用。
 
 请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
 
-请参阅 [教程：从用户查询文本中提取结构化数据语言理解 (LUIS) 中的机器学习实体 ](tutorial-machine-learned-entity.md) 了解如何使用机器学习实体从查询文本提取结构化数据。
+请参阅[教程：在语言理解 (LUIS) 中使用机器学习实体从用户言语中提取结构化数据](tutorial-machine-learned-entity.md)，学习如何使用机器学习实体从言语中提取结构化数据。
 

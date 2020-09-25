@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 40549fa8880fb4dc4d29046b0037621610f0b130
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331149"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为 Foodee 配置自动用户预配
 
@@ -75,7 +75,7 @@ Azure AD 使用称为 " *分配* " 的概念来确定哪些用户应收到对所
 
     ![Azure Active Directory 命令](common/select-azuread.png)
 
-1. 选择 "**企业应用程序**" "  >  **所有应用程序**"。
+1. 选择“企业应用程序” > “所有应用程序”   。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -106,11 +106,11 @@ Azure AD 使用称为 " *分配* " 的概念来确定哪些用户应收到对所
 
 1. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 1. 在 " **预配模式** " 下拉列表中，选择 " **自动**"。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 1. 在 " **管理员凭据**" 下，执行以下操作：
 

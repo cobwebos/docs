@@ -1,18 +1,20 @@
 ---
 title: 应用程序设置 - LUIS
 description: Azure 认知服务语言理解应用的应用程序设置存储在应用和门户中。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/04/2020
-ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0578e3c3c952a475c6beb01ffcf354e19eda6e26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590973"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319157"
 ---
 # <a name="app-and-version-settings"></a>应用和版本设置
 
-这些设置存储在[导出](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)的应用中，并通过 REST API 或 LUIS 门户更新。
+这些设置存储在[导出的](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)应用中，并使用 REST API 或 LUIS 门户进行更新。
 
 更改应用版本设置会将应用训练状态重置为“未训练”。
 
@@ -21,8 +23,8 @@ ms.locfileid: "83590973"
 
 文本参考和示例包括：
 
-* [标点符号](#punctuation-normalization)
-* [语音](#diacritics-normalization)
+* [标点](#punctuation-normalization)
+* [音调符号](#diacritics-normalization)
 
 ## <a name="diacritics-normalization"></a>音调符号规范化
 

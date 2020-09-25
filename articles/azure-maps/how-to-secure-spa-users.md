@@ -5,17 +5,17 @@ description: 如何配置单个页面应用程序，该应用程序支持 Azure 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 72fe4d897c9c202e0c4cd5861525093760036d26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285656"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319684"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>使用用户登录保护单页面应用程序
 
@@ -32,19 +32,19 @@ ms.locfileid: "87285656"
     > [!div class="mx-imgBorder"]
     > ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 
-2. 输入**名称**，选择 "**支持帐户类型**"，提供 "重定向 URI"，它表示 Azure AD 将颁发令牌的 url，它是用于托管地图控件的 url。 有关详细示例，请参阅[Azure Maps Azure AD 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant)。 然后选择“注册”。  
+2. 输入 **名称**，选择 " **支持帐户类型**"，提供 "重定向 URI"，它表示 Azure AD 将颁发令牌的 url，它是用于托管地图控件的 url。 有关详细示例，请参阅 [Azure Maps Azure AD 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant)。 然后选择“注册”。  
 
-3. 若要将委派的 API 权限分配到 Azure Maps，请访问应用程序。 然后，在 "**应用注册**" 下，选择 " **API 权限**" "  >  **添加权限**"。 在 "**我的组织使用的 api**" 下，搜索并选择 " **Azure Maps**"。
+3. 若要将委派的 API 权限分配到 Azure Maps，请访问应用程序。 然后，在 "**应用注册**" 下，选择 " **API 权限**" "  >  **添加权限**"。 在 " **我的组织使用的 api**" 下，搜索并选择 " **Azure Maps**"。
 
     > [!div class="mx-imgBorder"]
     > ![添加应用 API 权限](./media/how-to-manage-authentication/app-permissions.png)
 
-4. 选中 " **Access Azure Maps**旁边的复选框，然后选择"**添加权限**"。
+4. 选中 " **Access Azure Maps**旁边的复选框，然后选择" **添加权限**"。
 
     > [!div class="mx-imgBorder"]
     > ![选择应用 API 权限](./media/how-to-manage-authentication/select-app-permissions.png)
 
-5. 启用 `oauth2AllowImplicitFlow`。 若要启用它，请在应用注册的**清单**部分中将设置 `oauth2AllowImplicitFlow` 为 `true` 。
+5. 启用 `oauth2AllowImplicitFlow`。 若要启用它，请在应用注册的 **清单** 部分中将设置 `oauth2AllowImplicitFlow` 为 `true` 。
 
 6. 从应用注册中复制 Azure AD 应用 ID 和 Azure AD 租户 ID，以便在 Web SDK 中使用。 将 Azure AD 应用注册详细信息，并将 `x-ms-client-id` 从 Azure 映射帐户添加到 WEB SDK。
 
@@ -67,7 +67,7 @@ ms.locfileid: "87285656"
         </script>   
     ```
 
-7. 为用户或组配置基于 Azure 角色的访问控制。 请参阅[以下部分，启用 RBAC](#grant-role-based-access-for-users-to-azure-maps)。
+7. 为用户或组配置基于 Azure 角色的访问控制。 请参阅 [以下部分，启用 RBAC](#grant-role-based-access-for-users-to-azure-maps)。
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

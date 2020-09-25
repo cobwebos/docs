@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: bcc7ebd8d9a6e61425ba7cd980a400c3fe756492
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 47a280a46cbc0650efb9a7576bb21bb31d1d2613
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330411"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
 
@@ -52,6 +52,7 @@ ms.locfileid: "88762328"
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
+-   [HDFS](connector-hdfs.md)
 
 ## <a name="syntax"></a>语法
 
@@ -83,7 +84,7 @@ ms.locfileid: "88762328"
 
 ## <a name="type-properties"></a>Type 属性
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必须 |
 | --- | --- | --- |
 | dataset | 提供数据集引用以确定要删除的文件或文件夹 | 是 |
 | recursive | 表明从子文件夹中以递归方式删除数据，还是只从指定文件夹中删除数据。  | 否。 默认为 `false`。 |
@@ -119,7 +120,7 @@ ms.locfileid: "88762328"
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete 活动的示例日志文件
 
-| 名称 | Category | 状态 | 错误 |
+| 名称 | 类别 | 状态 | 错误 |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | 文件 | Deleted |  |
 | test2/hello789.txt | 文件 | Deleted |  |
@@ -764,7 +765,7 @@ Copy 活动用于数据目标的数据集。
 
 -   Delete 活动不支持删除通配符描述的文件夹列表。
 
--   在 delete 活动中使用文件属性筛选器时： modifiedDatetimeStart 和 modifiedDatetimeEnd 若要选择要删除的文件，请务必在 "删除活动" 中设置 "wildcardFileName"： "*"。
+-   在删除活动中使用文件属性筛选器 modifiedDatetimeStart 和 modifiedDatetimeEnd 选择要删除的文件时，请务必在删除活动中设置 "wildcardFileName": "*"。
 
 ## <a name="next-steps"></a>后续步骤
 

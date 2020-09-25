@@ -2,13 +2,13 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/24/2020
+ms.openlocfilehash: af75e4f0e51ac685986e57b3b92a23dd37174460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284753"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
@@ -42,7 +42,7 @@ ms.locfileid: "89468549"
 * [说明](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
-### <a name="schema"></a>架构
+## <a name="schema"></a>架构
 
 用于租户部署的架构与资源组部署的架构不同。
 
@@ -78,11 +78,23 @@ Azure Active Directory 的全局管理员不自动拥有分配角色的权限。
 
 主体现已具有部署模板所需的权限。
 
+## <a name="deployment-scopes"></a>部署范围
+
+部署到租户时，可以将租户或管理组、订阅和资源组定位到租户中。 部署模板的用户必须有权访问指定的作用域。
+
+在模板的资源部分中定义的资源将应用于租户。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+若要以租户内的管理组为目标，请添加嵌套部署并指定 `scope` 属性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+
 ## <a name="deployment-commands"></a>部署命令
 
 用于租户部署的命令与资源组部署使用的命令不同。
 
-对于 Azure CLI，请使用 [az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)：
+对于 Azure CLI，请使用 [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)：
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -109,56 +121,6 @@ New-AzTenantDeployment `
 可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
-
-## <a name="deployment-scopes"></a>部署范围
-
-部署到租户时，可以将租户或租户中的管理组、订阅和资源组作为目标。 部署模板的用户必须有权访问指定的作用域。
-
-在模板的资源部分中定义的资源将应用于租户。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        tenant-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-若要以租户内的管理组为目标，请添加嵌套部署并指定 `scope` 属性。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedMG",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
 
 ## <a name="use-template-functions"></a>使用模板函数
 

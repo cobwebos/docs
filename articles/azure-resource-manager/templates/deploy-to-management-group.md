@@ -2,13 +2,13 @@
 title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: 0c5ed8d2427a9e0329db6ebd7f0aa48aa4912a48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284816"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 
@@ -45,7 +45,7 @@ ms.locfileid: "90605220"
 
 * [标记](/azure/templates/microsoft.resources/tags)
 
-### <a name="schema"></a>架构
+## <a name="schema"></a>架构
 
 用于管理组部署的架构不同于资源组部署的架构。
 
@@ -60,6 +60,30 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>部署范围
+
+部署到管理组时，你可以将部署命令中指定的管理组设定为目标，也可以选择租户中的其他管理组。
+
+将通过部署命令对管理组应用模板的资源部分中定义的资源。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+若要以另一个管理组为目标，请添加嵌套部署并指定 `scope` 属性。 将 `scope` 属性设置为格式的值 `Microsoft.Management/managementGroups/<mg-name>` 。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+还可以将管理组中的订阅或资源组作为目标。 部署模板的用户必须有权访问指定的作用域。
+
+若要以管理组中的订阅为目标，请使用嵌套部署和 `subscriptionId` 属性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+若要以订阅中的资源组为目标，请添加另一个嵌套部署和 `resourceGroup` 属性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+若要使用管理组部署在订阅中创建资源组，并将存储帐户部署到该资源组，请参阅 [部署到订阅和资源组](#deploy-to-subscription-and-resource-group)。
 
 ## <a name="deployment-commands"></a>部署命令
 
@@ -94,97 +118,6 @@ New-AzManagementGroupDeployment `
 可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
-
-## <a name="deployment-scopes"></a>部署范围
-
-部署到管理组时，可以将部署命令中指定的管理组或租户中的其他管理组作为目标。 还可以将管理组中的订阅或资源组作为目标。 部署模板的用户必须有权访问指定的作用域。
-
-将通过部署命令对管理组应用模板的资源部分中定义的资源。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        management-group-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-若要以另一个管理组为目标，请添加嵌套部署并指定 `scope` 属性。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "nestedDeployment",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-different-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-若要以管理组中的订阅为目标，请使用嵌套部署和 `subscriptionId` 属性。 若要以订阅中的资源组为目标，请添加另一个嵌套部署和 `resourceGroup` 属性。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "westus2",
-      "subscriptionId": "00000000-0000-0000-0000-000000000000",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedRG",
-              "resourceGroup": "rg2",
-              "properties": {
-                "mode": "Incremental",
-                "template": {
-                  nested-template-with-resources-in-resource-group
-                }
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-若要使用管理组部署在订阅中创建资源组，并将存储帐户部署到该资源组，请参阅 [部署到订阅和资源组](#deploy-to-subscription-and-resource-group)。
 
 ## <a name="use-template-functions"></a>使用模板函数
 

@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 将 Windows VM 迁移到 Azure 高级存储
-description: 使用 Site Recovery 将现有虚拟机迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
+description: 了解如何使用 Azure Site Recovery 将 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 author: luywang
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 51fa0c063de106f627fc097910514e7c5416ee51
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320092"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -129,7 +129,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
 ![“目标”窗格][10]
 
-Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
+Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
 
 > [!NOTE]
 > 如果使用高级存储帐户保存复制的数据，则需要设置附加的标准存储帐户来存储复制日志。
@@ -160,7 +160,7 @@ Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网�
    4. 在步骤 3 中，按 IP 地址添加受保护的 VM。 （要找到它们可能需要用到内部 IP 地址。）
    5. 在步骤 4 中，通过选择前面在进程服务器上设置的帐户来配置属性。
    6. 在步骤 5 中，选择前面在“步骤 5：设置复制设置”中创建的复制策略。
-   7. 选择“确定” 。
+   7. 选择“确定”  。
 
    > [!NOTE]
    > 解除分配并再次启动 Azure VM 后，无法保证它会获得相同的 IP 地址。 如果配置服务器/进程服务器或受保护 Azure VM 的 IP 地址发生变化，此方案中的复制可能无法正常工作。
@@ -202,7 +202,7 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 3. **清理 Azure Site Recovery 基础结构**。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 * [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [有关 Microsoft Azure Site Recovery 的 Microsoft 问答页](/answers/topics/azure-site-recovery.html)
@@ -215,7 +215,7 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 * [创建 Windows Server VHD 并将其上传到 Azure](upload-generalized-managed.md)
 * [将虚拟机从 Amazon AWS 迁移到 Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-另请参阅以下资源，深入了解 Azure 存储和 Azure 虚拟机：
+另请参阅以下资源，以了解有关 Azure 存储和 Azure 虚拟机的详细信息：
 
 * [Azure 存储](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)

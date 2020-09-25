@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329748"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 支持
 
@@ -38,8 +38,7 @@ ms.locfileid: "88037501"
 ## <a name="marketing-resources"></a>市场营销资源  
 
 | 支持渠道 | 说明 | 可用性 |  
-|:--- |:--- |:--- |  
-| 电子邮件： [cosell@microsoft.com](mailto:cosell@microsoft.com) | 针对载入流程以及与共同销售计划相关的问题提供支持。 | 基于太平洋时区。 |  
+|:--- |:--- |:--- |
 | 电子邮件： [gtm@microsoft.com](mailto:gtm@microsoft.com) | 支持享受 GTM 权益和提出程序问题。 | 营业时间基于太平洋时区。 |  
 | 电子邮件： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 解答有关 Azure 徽标使用和品牌推广的问题。 |  |  
 

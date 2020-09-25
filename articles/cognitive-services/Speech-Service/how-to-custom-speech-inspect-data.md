@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319092"
 ---
 # <a name="inspect-custom-speech-data"></a>检查自定义语音识别数据
 
@@ -79,11 +79,13 @@ ms.locfileid: "90604730"
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>通过倾听音频来编辑脚本
 
-数据上传成功后，单击每个项目名称以查看数据的详细信息。 详细信息页将列出数据集中的所有文件，并可单击到所需的查询文本。 对于每个查询文本，可以播放音频并检查脚本，并在发现任何插入、删除或替换错误时编辑转录。 有关错误类型的详细信息，请参阅 [数据计算操作方法](how-to-custom-speech-evaluate-data.md) 。
+数据上传成功后，单击每个项目名称以查看数据的详细信息。 还可以使用 " **上一** 步" 和 " **下一步** " 在每个文件之间移动。
+
+详细信息页列出了每个音频文件中的所有段，并且您可以单击到所需的查询文本。 对于每个查询文本，可以播放音频并检查脚本，并在发现任何插入、删除或替换错误时编辑转录。 有关错误类型的详细信息，请参阅 [数据计算操作方法](how-to-custom-speech-evaluate-data.md) 。
 
 ![编辑器页](media/custom-speech/custom-speech-editor.png)
 
-如果音频文件过长，会自动将其分段为较小的部分。 您可以使用 " **上一** 步" 和 " **下一步** " 逐个编辑它们。 完成编辑后，单击 " **保存** " 按钮。
+完成编辑后，单击 " **保存** " 按钮。
 
 ### <a name="export-datasets-from-the-editor"></a>从编辑器导出数据集
 

@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317610"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](reference-connect-version-history.md)一起推出的。  此功能已在[内部版本 1.1.561](reference-connect-version-history.md) 中更新，现在支持以前不支持的其他方案。
@@ -63,8 +63,8 @@ ms.locfileid: "88053280"
 
 然后，确保已在代理或防火墙中打开所需的 URL。 自动更新正在使用 Azure AD Connect Health，情形如[概述](#overview)中介绍的那样。 如果使用代理，请确保 Health 已配置为使用[代理服务器](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。 另请测试 [Health 的连接](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)（连接到 Azure AD）。
 
-确认与 Azure AD 建立了连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源 Azure AD Connect 升级和事件 ID 范围 300-399 添加事件日志筛选器。   
-![用于自动升级的事件日志筛选器](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+确认与 Azure AD 建立了连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源 **Azure AD Connect 升级** 和事件 ID 范围 **300-399**添加 eventlog 筛选器。  
+![屏幕截图显示 "筛选当前日志" 窗口，其中包含 "事件源"，突出显示 "包括/排除" 事件 Id 框。](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 此时可以看到与自动升级状态关联的事件日志。  
 ![用于自动升级的事件日志筛选器](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  

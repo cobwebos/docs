@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e45afed3332d26006cf0b4296986edb6f6588962
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421724"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329153"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell
 
@@ -24,8 +24,9 @@ P2S VPN 连接是从 Windows 和 Mac 设备启动的。 连接方客户端可以
 
 * RADIUS 服务器
 * VPN 网关本机证书身份验证
+* 仅限 Windows 10 (本机 Azure Active Directory 身份验证) 
 
-借助本文可以配置一个使用 RADIUS 服务器进行身份验证的 P2S 配置。 如果想要改用生成的证书和 VPN 网关本机证书身份验证进行身份验证，请参阅[使用 VPN 网关本机证书身份验证配置 VNet 的点到站点连接](vpn-gateway-howto-point-to-site-rm-ps.md)。
+借助本文可以配置一个使用 RADIUS 服务器进行身份验证的 P2S 配置。 如果要使用生成的证书和 VPN 网关本机证书身份验证进行身份验证，请参阅 [使用 VPN 网关本机证书身份验证配置与 VNet 的点到站点连接](vpn-gateway-howto-point-to-site-rm-ps.md) 或创建用于 Azure Active Directory 身份验证的 [P2S OpenVPN 协议连接的 Azure Active Directory 租户](openvpn-azure-ad-tenant.md) 。
 
 ![连接关系图 - RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
@@ -40,7 +41,7 @@ P2S VPN 连接是从 Windows 和 Mac 设备启动的。 连接方客户端可以
 P2S 连接有以下要求：
 
 * RouteBased VPN 网关。 
-* 用于处理用户身份验证的 RADIUS 服务器。 可将 RADIUS 服务器部署在本地或 Azure VNet 中。
+* 用于处理用户身份验证的 RADIUS 服务器。 可将 RADIUS 服务器部署在本地或 Azure VNet 中。 你还可以配置两个 RADIUS 服务器以实现高可用性。
 * 要连接到 VNet 的 Windows 设备的 VPN 客户端配置包。 VPN 客户端配置包提供 VPN 客户端通过 P2S 进行连接所需的设置。
 
 ## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>关于 P2S VPN 的 Active Directory (AD) 域身份验证
@@ -221,6 +222,17 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol @( "SSTP", "IkeV2" ) `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
+    ```
+
+   若要指定 **两个** RADIUS 服务器 ** (预览版) ** 使用以下语法。 根据需要修改 **-VpnClientProtocol** 值
+
+    ```azurepowershell-interactive
+    $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.15 -RadiusServerSecret $radiuspd -RadiusServerScore 30
+    $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.16 -RadiusServerSecret $radiuspd -RadiusServerScore 1
+
+    $radiusServers = @( $radiusServer1, $radiusServer2 )
+
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
     ```
 
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6.<a name="vpnclient"></a>下载 VPN 客户端配置包并设置 VPN 客户端

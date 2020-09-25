@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319905"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同步 V2 终结点 API（公共预览版） 
 Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Active Directory 的同步服务操作性能。 通过利用新的 V2 终结点，导出或导入 Azure AD 时的性能会有显著提升。 这一新终结点支持以下功能：
@@ -116,12 +116,12 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 1. 打开 Azure AD 同步规则编辑器 
 2. 在编辑器中，选择方向“出站” 
 3. 单击“出站到 AAD - 组加入”同步规则 
-4. 单击“编辑”按钮 ![编辑同步规则](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. 单击 " **编辑** " 按钮 ![ 屏幕截图，其中已选中 "Out To AAD-Group Join"。](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. 单击“确定”按钮，禁用默认规则并创建可编辑的副本。
- ![编辑同步规则](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![屏幕截图，显示 "编辑保留的规则确认" 窗口，并选中 "是" 按钮。](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. 在弹出窗口的“说明”页面中，将优先级设置为介于 1 到 99 之间的可用值 ![编辑同步规则](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. 在 " **说明** " 页上的弹出窗口中，将优先级设置为介于1和99屏幕快照之间的可用值， ![ 这将显示 "编辑出站同步规则" 窗口，其中突出显示了 "优先级"。](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. 在“转换”页面上，更新“成员”转换的“源”值，将 50000 替换为介于 50001 和 250000 之间的值  。 此替换会增加将同步到 Azure AD 的组的最大成员身份大小。 建议从 10 万开始，以了解同步大型组将对同步性能产生的影响。 
  

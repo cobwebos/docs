@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662503"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319888"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect 同步：为 Microsoft 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) 连接同步中配置首选数据位置的属性。当某人使用 Microsoft 365 中的多地理功能时，可以使用此属性来指定用户的 Microsoft 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -44,7 +44,7 @@ ms.locfileid: "89662503"
 | --- | --- |
 | 亚太区 | APC |
 | 澳大利亚 | AUS |
-| 加拿大 | CAN |
+| Canada | CAN |
 | 欧盟 | EUR |
 | 法国 | FRA |
 | 印度 | IND |
@@ -118,7 +118,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 4. 确保在属性列表中选中你选择使用的源属性。 如果未看到该属性，请选择“全部显示”复选框。****
 5. 若要保存，请选择“确定”。****
 
-![Synchronization Service Manager 和“属性”对话框的屏幕截图](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![屏幕截图，显示突出显示 "属性" 列表的 "Synchronization Service Manager" 和 "属性" 对话框。](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
 ## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步骤4：将 **PreferredDataLocation** 添加到 Azure AD 连接器架构
 **仅当运行 Connect 版本1.3.21 或更低版本时，才需要执行此步骤。如果处于1.4.18 或更新版本，请跳到步骤5。**  
@@ -140,7 +140,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 若要创建新的入站规则，请选择“添加新规则”按钮。****
 4. 在“说明”选项卡下面提供以下配置：
 
-    | Attribute | 值 | 详细信息 |
+    | Attribute | Value | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
     | 说明 | *提供自定义说明* |  |
@@ -169,7 +169,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 选择“添加新规则”****。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | Attribute | 值 | 详细信息 |
+    | Attribute | Value | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
     | 说明 | *提供说明* ||
@@ -181,7 +181,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 5. 中转到 " **范围筛选器** " 选项卡，并添加包含两个子句的单个范围筛选器组：
 
-    | Attribute | 运算符 | 值 |
+    | Attribute | 运算符 | Value |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | 用户 |
     | cloudMastered | NOTEQUAL | True |

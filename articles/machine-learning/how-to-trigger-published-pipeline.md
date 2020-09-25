@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324244"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318290"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>从逻辑应用触发机器学习管道的运行
 
@@ -94,3 +94,14 @@ ms.locfileid: "87324244"
     > ![HTTP 设置](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. 选择“保存”，你的计划现已准备就绪。
+
+## <a name="next-steps"></a>后续步骤
+
+有关详细信息，请参阅：
+
+> [!div class="nextstepaction"]
+> [使用 Azure 机器学习管道进行批量评分](tutorial-pipeline-batch-scoring-classification.md)
+
+* 详细了解[管道](concept-ml-pipelines.md)
+* 详细了解如何[通过 Jupyter 探索 Azure 机器学习](samples-notebooks.md)
+

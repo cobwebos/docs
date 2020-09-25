@@ -11,16 +11,16 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319837"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中规划用户主体名称更改并进行故障排除
 
- (UPN) 的用户主体名称是用户帐户的 internet 通信标准属性。 UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀使用 "@" 符号联接后缀。 例如，someone@example.com。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
+ (UPN) 的用户主体名称是用户帐户的 internet 通信标准属性。 UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀使用 "@" 符号联接后缀。 例如 someone@example.com。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
 
 **本文假设你使用 UPN 作为用户标识符。它用于规划 UPN 更改，并从可能由 UPN 更改引起的问题进行恢复。**
 
@@ -57,9 +57,9 @@ Bsimon@contoso.com到Britta.Simon@contoso.com
 
     例如，如果某个人更改了部门，则可以更改其域： 
 
-   * Britta.Simon@contoso.com 至 Britta.Simon@contosolabs.com <br>
-     Or<br>
-    * Britta.Simon@corp.contoso.com 至 Britta.Simon@labs.contoso.com 
+   * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
+     或<br>
+    * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
 
 建议在每次更新用户的主要电子邮件地址时更改用户的 UPN。
 
@@ -94,7 +94,7 @@ username@labs.contoso.com.
 
 将用户帐户从 Active Directory 同步到 Azure AD 时，请确保 Active Directory 中的 Upn 映射到 Azure AD 中的已验证域。
 
-![已验证域的屏幕截图](./media/howto-troubleshoot-upn-changes/verified-domains.png)
+![显示映射到已验证 Azure D 域的 Upn 示例的屏幕截图。](./media/howto-troubleshoot-upn-changes/verified-domains.png)
 
 如果 userPrincipalName 属性的值不对应于 Azure AD 中的已验证域，则同步过程会将后缀替换为 onmicrosoft.com 值。
 
@@ -113,7 +113,7 @@ username@labs.contoso.com.
 
 [软件即服务 (SaaS) ](https://azure.microsoft.com/overview/what-is-saas/) 和业务线 (LoB) 应用程序通常依赖于 upn 查找用户并存储用户配置文件信息，包括角色。 当用户首次登录到应用时，使用实时 [预配](../app-provisioning/user-provisioning.md) 创建用户配置文件的应用程序可能会受到 UPN 更改的影响。
 
-**已知问题**<br>
+ 已知问题<br>
 更改用户的 UPN 可能会破坏 Azure AD 用户与在应用程序上创建的用户配置文件之间的关系。 如果应用程序使用实时  [预配](../app-provisioning/user-provisioning.md)，则它可能会创建全新的用户配置文件。 这将要求应用程序管理员进行手动更改来修复此关系。
 
 **解决方法**<br>

@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330275"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -17,7 +17,7 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 
 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 也可要求资源使用特定的标记。 策略分配由子资源继承。 如果将策略分配应用到资源组，则会将其应用到该资源组中的所有资源。
 
-此处提供策略定义 _policyRule_ 架构： [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+策略定义“policyRule”架构可在此处找到：[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
@@ -102,16 +102,19 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 有一个例外情况，就是资源组和订阅。 策略定义若在资源组或订阅上强制执行位置或标记，则应将“模式”设为 `all`，并明确以 `Microsoft.Resources/subscriptions/resourceGroups` 或 `Microsoft.Resources/subscriptions` 类型为目标。 有关示例，请参阅[模式：标记 - 示例 #1](../samples/pattern-tags.md)。 有关支持标记的资源列表，请参阅[有关 Azure 资源的标记支持](../../../azure-resource-manager/management/tag-support.md)。
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>资源提供程序模式（预览版）
+### <a name="resource-provider-modes"></a>资源提供程序模式
 
-在预览版期间，目前支持以下资源提供程序模式：
+完全支持以下资源提供程序节点：
 
-- `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的定义 **必须** 使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式将被弃用。
 - `Microsoft.Kubernetes.Data`，用于在 Azure 上或外部管理 Kubernetes 群集。 使用该资源提供程序模式的定义使用效果“审核”、“拒绝”和“已禁用”  。 不_推荐_使用[EnforceOPAConstraint](./effects.md#enforceopaconstraint)效果。
+
+目前支持以下资源提供程序模式作为 **预览**：
+
+- `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的定义 **必须** 使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式已 _弃用_。
 - `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。
 
 > [!NOTE]
-> 资源提供程序模式仅支持内置策略定义，且在预览版期间暂不支持计划。
+> 资源提供程序模式仅支持内置策略定义。
 
 ## <a name="metadata"></a>Metadata
 
@@ -256,7 +259,7 @@ strongType 的非资源类型允许值包括：
 },
 ```
 
-### <a name="conditions"></a>Conditions
+### <a name="conditions"></a>条件
 
 条件用于评估 **field** 或 **value** 访问器是否符合特定标准。 支持的条件有：
 
@@ -347,7 +350,7 @@ strongType 的非资源类型允许值包括：
 }
 ```
 
-### <a name="value"></a>值
+### <a name="value"></a>Value
 
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。 **value** 可与任何支持的[条件](#conditions)配对。
 
@@ -551,10 +554,10 @@ Azure Policy 支持以下类型的效果：
 - AuditIfNotExists：如果相关资源不存在，则会在活动日志中生成一个警告事件
 - Deny：会在活动日志中生成一个事件，并使请求失败
 - DeployIfNotExists：如果相关资源不存在，则部署该资源
-- Disabled：不评估资源是否符合策略规则
-- EnforceOPAConstraint（预览版）：针对 Azure 上的自托管 Kubernetes 群集，配置 Open Policy Agent 许可控制器与 Gatekeeper v3（预览版）
-- EnforceRegoPolicy（预览版）：在 Azure Kubernetes 服务中，配置 Open Policy Agent 许可控制器与 Gatekeeper v2
-- Modify：添加、更新或删除资源中已定义的标记
+- **Disabled**：不评估资源是否符合策略规则
+- **Modify**：在资源中添加、更新或删除定义的标记
+- **EnforceOPAConstraint** (弃用) ：为 Azure 上的自托管 Kubernetes 群集配置打开策略代理招生控制器和网关控制器 v3
+- **EnforceRegoPolicy** (弃用) ：在 Azure Kubernetes 服务中配置打开策略代理招生控制器和网关守卫 v2
 
 有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解 Azure Policy 效果](effects.md)。
 
@@ -592,6 +595,18 @@ Azure Policy 支持以下类型的效果：
 - `requestContext().apiVersion`
   - 返回已触发策略评估的请求的 API 版本（示例：`2019-09-01`）。
     该值是 PUT/PATCH 请求中用于对资源创建/更新进行评估的 API 版本。 在对现有资源进行符合性评估时，将会一律使用最新的 API 版本。
+- `policy()`
+  - 返回有关正在评估的策略的下列信息。 可以从返回的对象访问属性， (例如： `[policy().assignmentId]`) 。
+  
+  ```json
+  {
+    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+    "definitionReferenceId": "StorageAccountNetworkACLs"
+  }
+  ```
+  
   
 #### <a name="policy-function-example"></a>策略函数示例
 
@@ -621,7 +636,7 @@ Azure Policy 支持以下类型的效果：
 
   使用[适用于 Visual Studio Code 的 Azure Policy 扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="用于 Visual Studio Code 的 Azure 策略扩展的屏幕截图，用于显示别名的属性。" border="false":::
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure Policy 扩展的屏幕截图，鼠标悬停在属性上以显示别名。" border="false":::
 
 - Azure Resource Graph
 
@@ -655,7 +670,7 @@ Azure Policy 支持以下类型的效果：
   ```
 
   > [!NOTE]
-  > 若要查找可用于 [修改](./effects.md#modify) 效果的别名，请在 Azure PowerShell **4.6.0** 或更高版本中使用以下命令：
+  > 若要查找可用于[修改](./effects.md#modify)效果的别名，请在 Azure PowerShell 4.6.0 或更高版本中使用以下命令：
   >
   > ```azurepowershell-interactive
   > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }

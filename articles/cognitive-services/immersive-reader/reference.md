@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73322cdee151969e6e765690284bbffc1c871f4e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330598"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>沉浸式读者 JavaScript SDK 参考 (1.1) 
 
@@ -45,9 +45,9 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
-| `token` | 字符串 | Azure AD 身份验证令牌。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
-| `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
-| `content` | [内容](#content) | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
+| `token` | string | Azure AD 身份验证令牌。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
+| `subdomain` | string | Azure 中沉浸式读者资源的自定义子域。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
+| `content` | 内容  | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
 | `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |
 
 #### <a name="returns"></a>返回
@@ -87,7 +87,7 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 `immersive-
 | Attribute | 说明 |
 | --------- | ----------- |
 | `data-button-style` | 设置按钮的样式。 可以是 `icon`、`text` 或 `iconAndText`。 默认为 `icon`。 |
-| `data-locale` | 设置区域设置。  例如 `en-US` 或 `fr-FR`。 默认为英语 `en` 。 |
+| `data-locale` | 设置区域设置。 例如，`en-US` 或 `fr-FR`。 默认为英语 `en` 。 |
 | `data-icon-px-size` | 设置图标的大小（以像素为单位）。 默认值为20px。 |
 
 <br>
@@ -192,7 +192,7 @@ Required: false
 
 ## <a name="types"></a>类型
 
-### <a name="content"></a>Content
+### <a name="content"></a>内容
 
 包含要在沉浸式阅读器中显示的内容。
 
@@ -244,7 +244,7 @@ Default value: null
 | ---- | ---- |------------ |
 | 内容 | String | 包含发送到沉浸式读者的内容的字符串。 |
 | lang | String | 文本的语言，值为 IETF BCP 47 language 标记格式，如 en、es。 如果未指定，将自动检测语言。 请参阅 [支持的语言](#supported-languages)。 |
-| mimeType | 字符串 | 支持纯文本、MathML、HTML & Microsoft Word .DOCX 格式。 有关更多详细信息，请参阅 [支持的 MIME 类型](#supported-mime-types) 。 |
+| mimeType | string | 支持纯文本、MathML、HTML & Microsoft Word .DOCX 格式。 有关更多详细信息，请参阅 [支持的 MIME 类型](#supported-mime-types) 。 |
 
 ##### `-content`
 ```Parameters
@@ -429,7 +429,7 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions 参数
 
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
 | 语言 | String | 设置转换语言，值为 IETF BCP 47 language 标记格式，例如 fr，es-mx，zh-chs-Hans-CN。 要求自动启用 word 或文档翻译。 |
 | autoEnableDocumentTranslation | 布尔 | 自动翻译整篇文档。 |
@@ -514,7 +514,7 @@ enum CookiePolicy { Disable, Enable }
 
 ## <a name="supported-languages"></a>支持的语言
 
-沉浸式阅读器的翻译功能支持多种语言。 有关更多详细信息，请参阅[此文](https://www.onenote.com/learningtools/languagesupport)。
+沉浸式阅读器的翻译功能支持多种语言。 有关更多详细信息，请参阅 [语言支持](./language-support.md) 。
 
 <br>
 

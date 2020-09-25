@@ -1,26 +1,26 @@
 ---
 title: 安全概述
-description: 有关启用了 Azure Arc 的服务器的安全信息 (预览版) 。
+description: 有关启用了 Azure Arc 的服务器的安全信息。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 17641fab9933d9d6a60c2b21912f755acc01a6dd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/23/2020
+ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329034"
 ---
-# <a name="azure-arc-for-servers-preview-security-overview"></a>适用于服务器 (预览版的 Azure Arc) 安全性概述
+# <a name="azure-arc-for-servers-security-overview"></a>适用于服务器的 Azure Arc 安全概述
 
 本文介绍在企业中部署启用了 Azure Arc 的服务器之前应评估的安全配置和注意事项。
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-每个启用 Azure Arc 的服务器都有一个托管标识，作为 Azure 订阅中的资源组的一部分，该资源组表示在本地或其他云环境中运行的服务器。 对此资源的访问权限由标准 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)来控制。 从 Azure 门户中的 " [**访问控制 (" IAM) **](../../role-based-access-control/role-assignments-portal.md#access-control-iam) "页上，可以验证谁有权访问启用了 Azure Arc 的服务器。
+每个启用了 Azure Arc 的服务器都有一个托管标识作为 Azure 订阅中的资源组的一部分，此标识表示在本地或其他云环境中运行的服务器。 对此资源的访问权限由标准 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)来控制。 从 Azure 门户中的 " [**访问控制 (" IAM) **](../../role-based-access-control/role-assignments-portal.md#access-control-iam) "页上，可以验证谁有权访问启用了 Azure Arc 的服务器。
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="启用了 Azure Arc 的服务器访问控制" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
-授予了对资源的 [参与者](../../role-based-access-control/built-in-roles.md#contributor) 或管理员角色访问权限的用户和应用程序可以对资源进行更改，包括在计算机上部署或删除 [扩展](manage-vm-extensions.md) 。 扩展可以包含在特权上下文中运行的任意脚本，因此请考虑将 Azure 资源上的任何参与者作为非 Azure 服务器的间接管理员。
+授予了对资源的 [参与者](../../role-based-access-control/built-in-roles.md#contributor) 或管理员角色访问权限的用户和应用程序可以对资源进行更改，包括在计算机上部署或删除 [扩展](manage-vm-extensions.md) 。 扩展可以包含在特权上下文中运行的任意脚本，因此请考虑将 Azure 资源上的任何参与者作为服务器的间接管理员。
 
 **Azure 连接的计算机加入**角色可用于大规模载入，只能在 Azure 中读取或创建启用了新 Arc 的服务器。 它不能用于删除已注册或管理扩展的服务器。 作为最佳做法，我们建议仅将此角色分配到 Azure Active Directory (Azure AD 用于扩展计算机的) 服务主体。
 
@@ -28,9 +28,9 @@ ms.locfileid: "89447746"
 
 ## <a name="agent-security-and-permissions"></a>代理安全性和权限
 
-若要管理 Azure 连接的计算机代理 (azcmagent) ，请在 Windows 上，你的用户帐户必须是本地管理员组的成员，而在 Linux 上，你必须具有根访问权限。
+若要在 Windows 上管理 Azure 连接的计算机代理 (azcmagent) ，你的用户帐户必须是本地管理员组的成员。 在 Linux 上，你必须具有根访问权限。
 
-Azure 连接的计算机代理由三个在计算机上运行的服务组成。
+Azure 连接的计算机代理由三个服务组成，这些服务在计算机上运行。
 
 * 混合实例元数据服务 (himds) 服务负责 Arc 的所有核心功能。这包括向 Azure 发送检测信号，为其他应用公开本地实例元数据服务，以了解计算机的 Azure 资源 ID，并检索 Azure AD 令牌以便向其他 Azure 服务进行身份验证。 此服务作为无特权虚拟服务帐户在 Windows 上运行，在 Linux 上作为 **himds** 用户运行。
 
@@ -56,4 +56,4 @@ Azure 连接的计算机代理使用公钥身份验证与 Azure 服务进行通�
 
 ## <a name="next-steps"></a>后续步骤
 
-在为多台混合计算机评估或启用已启用 Arc 的服务器（预览版）之前，请查看[连接的计算机代理概述](agent-overview.md)，了解要求、有关代理的技术详细信息以及部署方法。
+在为多台混合计算机评估或启用已启用 Arc 的服务器之前，请查看[连接的计算机代理概述](agent-overview.md)，了解要求、有关代理的技术详细信息以及部署方法。
