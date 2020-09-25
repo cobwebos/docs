@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 467f7b3525883e16e57a06ff97cf4fd386279d22
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b38ba59b3efc7e5869eecbc84879a6c0a4ce7369
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958229"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360202"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -32,7 +32,7 @@ ms.locfileid: "88958229"
 出现这种症状的主要原因是，应用程序实例已达到以下限制之一，因此无法与外部终结点打开新的连接：
 
 * TCP 连接数：可以建立的出站连接数有限制。 此数字与所用辅助角色的大小相关联。
-* SNAT 端口数：如 [Azure中的出站连接](../load-balancer/load-balancer-outbound-connections.md)中所述，Azure 使用源网络地址转换 (SNAT) 和负载均衡器（不向客户公开）在公共 IP 地址空间中与 Azure 外部的终结点通信。 最初为 Azure 应用服务中的每个实例预分配了 128 个 SNAT 端口。  该限制会影响与同一个主机/端口组合打开的连接数。 如果应用与混合的地址/端口组合建立了连接，则不会用尽 SNAT 端口。 重复调用同一个地址/端口组合时，会用尽 SNAT 端口。 释放某个端口以后，即可根据需要重复使用该端口。 只有在等待 4 分钟后，Azure 网络负载均衡器才会从关闭的连接回收 SNAT 端口。
+* SNAT 端口：如 Azure 中的 [出站连接](../load-balancer/load-balancer-outbound-connections.md)中所述，azure 使用源网络地址转换 (SNAT) 和负载均衡器 (不向客户公开，) 在公共 IP 地址空间中与 azure 外部的终结点进行通信，以及未利用服务终结点的 azure 内部点。 最初为 Azure 应用服务中的每个实例预分配了 128 个 SNAT 端口。  该限制会影响与同一个主机/端口组合打开的连接数。 如果应用与混合的地址/端口组合建立了连接，则不会用尽 SNAT 端口。 重复调用同一个地址/端口组合时，会用尽 SNAT 端口。 释放某个端口以后，即可根据需要重复使用该端口。 只有在等待 4 分钟后，Azure 网络负载均衡器才会从关闭的连接回收 SNAT 端口。
 
 当应用程序或功能快速打开新的连接时，它们可能很快就会耗尽预分配的配额（128 个端口）。 然后，应用程序或功能会一直受到阻止，直到通过动态分配额外的 SNAT 端口或者通过重复使用回收的 SNAT 端口提供了新的 SNAT 端口为止。 由于无法创建新连接而被阻止的应用程序或功能将开始遇到本文的“症状”部分所述的一种或多种问题。 
 

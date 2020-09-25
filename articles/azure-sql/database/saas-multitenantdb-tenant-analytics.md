@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 446517f56d1f5ba6fa32408489f07411ee1a3e02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356791"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用提取的数据运行跨租户分析 - 多租户应用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "89442899"
 > - 查询分析数据库。
 > - 使用 Power BI 进行数据可视化，以突出显示租户数据的趋势并提出改进建议。
 
-![architectureOverView](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![关系图显示了用于本文的体系结构的概述。](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>脱机租户分析模式
 
@@ -53,7 +53,7 @@ ms.locfileid: "89442899"
 
 将中心事实数据表与维度表相结合，可以实现高效的分析处理。 下图显示了本教程中使用的星型架构：
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![数据库关系图显示了连接到中央数据库对象的四个数据库对象。](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 最后，查询星型架构表。 查询结果以可视形式显示，其中突出显示了租户的行为及其对应用程序的用法的见解。 使用此星型架构，可以运行查询来帮助发现如下所述的项：
 
@@ -64,7 +64,7 @@ ms.locfileid: "89442899"
 
 了解每个租户如何一致使用服务提供了根据需要创建服务计划的机会。 本教程提供从租户数据收集见解的基本示例。
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -111,7 +111,7 @@ ms.locfileid: "89442899"
 - 星型架构表为 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
 - sp_ShredRawExtractedData**** 存储过程用于在星型架构表中填充来自原始数据表的数据。
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![屏幕截图显示了 analytics store 节点对象资源管理器，其中包括表、视图和节点。](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>数据提取 
 
@@ -139,7 +139,7 @@ ms.locfileid: "89442899"
 4. 按 **F5** 运行用于创建和运行从每个租户数据库提取票证和客户数据的作业的脚本。 该作业会将数据保存到分析存储中。
 5. 查询 tenantanalytics 数据库中的 TicketsRawData 表，确保该表中已填充来自所有租户的门票信息。
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![屏幕截图显示 ExtractTickets 数据库，并在对象资源管理器中选择 TicketsRawData d b o。](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 重复上述步骤，但这一次请将 **\ExtractTickets.sql** 替换为步骤 2 中的 **\ExtractVenuesEvents.sql**。
 
@@ -159,7 +159,7 @@ ms.locfileid: "89442899"
 4. 请耐心等待，让作业成功运行。
     - 在 jobs.jobs_execution 表的 **Lifecycle** 列中检查作业状态。 确保作业的状态为 **Succeeded**，然后继续。 如果运行成功，将显示类似于以下图表所示的数据：
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![屏幕截图显示运行 sp_ShredRawExtractedData 过程的成功结果。](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>数据研究
 
@@ -174,25 +174,25 @@ ms.locfileid: "89442899"
 3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。****
 4. 在 "数据库登录" 窗口中，输入服务器名称 (目录 \<User\> database.windows.net) 。 为“数据连接模式”选择“导入”，单击“确定”。******** 
 
-    ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![屏幕截图显示 SQL Server 数据库 "对话框，你可以在其中输入服务器和数据库。](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择左窗格中的 " **数据库** "，然后输入 "用户名 = *开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”  。  
+5. 选择左窗格中的 " **数据库** "，然后输入 "用户名 = *开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”。  
 
-    ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![屏幕截图显示 "SQL Server 数据库" 对话框，您可以在其中输入用户名和密码。](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. 在“导航器”窗格中的分析数据库下，选择以下星型架构表：fact_Tickets、dim_Events、dim_Venues、dim_Customers 和 dim_Dates。**** 然后选择“加载”。**** 
 
-祝贺你！ 数据已成功载入 Power BI。 现在，可以开始探索有趣的可视化效果，以帮助自己深入了解租户。 本教程接下来逐步讲解如何使用分析向 Wingtip Tickets 业务团队提供数据驱动的建议。 借助建议可以优化业务模型和客户体验。
+祝贺！ 数据已成功载入 Power BI。 现在，可以开始探索有趣的可视化效果，以帮助自己深入了解租户。 本教程接下来逐步讲解如何使用分析向 Wingtip Tickets 业务团队提供数据驱动的建议。 借助建议可以优化业务模型和客户体验。
 
 首先，请分析门票销售数据，查看不同会场的服务使用差异。 在 Power BI 中选择以下选项，绘制每个会场售出的门票总数的条形图。 由于门票生成器中存在随机变化，你的结果可能与图中不同。
  
-![TotalTicketsByVenues](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![屏幕截图显示了一个 Power B I 可视化和控件，用于显示右侧的数据可视化效果。](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 上面的绘图确认，每个会场售出的门票数有差异。 门票销量较大的会场对服务的使用程度比销量较小的会场要高。 此处也许可以根据不同的租户需求定制资源分配。
 
 可以进一步分析数据，确定门票销量在各时间的变化。 在 Power BI 中选择以下选项，绘制 60 天内每天售出的门票总数。
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![屏幕截图显示了名为 "票证销售分发" 和 "销售日期" 的 Power B 我的可视化](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 上面的图表显示某些会场的门票销售高峰期。 这些峰值强化了这样一种印象：某些会场消耗的系统资源可能不成比例。 到目前为止，何时出现高峰并没有明显的模式。
 
@@ -228,7 +228,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > - 部署包含预定义星型架构表的租户分析数据库
@@ -237,7 +237,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 > - 查询分析数据库 
 > - 使用 Power BI 进行数据可视化，以观察租户数据的趋势 
 
-祝贺你！
+祝贺！
 
 ## <a name="additional-resources"></a>其他资源
 

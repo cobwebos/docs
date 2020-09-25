@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 3f2fd9f2b75faeeb2d40bd71d074a929e86eebdf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358366"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>适用于 SMB 访问的 Azure 文件基于标识的身份验证选项概述
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "90561817"
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) 是 Microsoft 的基于云的多租户目录和标识管理服务。 Azure AD 将核心目录服务、应用程序访问管理和标识保护融入一个解决方案中。 Azure AD 联接的 Windows 虚拟机 (Vm) 可以使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息，请参阅 [什么是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
+    Azure Active Directory (Azure AD) 是 Microsoft 的基于云的多租户目录和标识管理服务。 Azure AD 将核心目录服务、应用程序访问管理和标识保护融入一个解决方案中。 Azure AD 联接的 Windows 虚拟机 (Vm) 可以使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息，请参阅[什么是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure Active Directory 域服务 (Azure AD DS)**
 
@@ -46,7 +46,7 @@ ms.locfileid: "90561817"
 
 -   **Azure 基于角色的访问控制 (Azure RBAC)**
 
-    Azure RBAC) 的 azure 基于角色的访问控制可用于对 Azure 进行细致的访问管理 (。 使用 RBAC，可通过向用户授予执行其作业所需的最少权限来管理对资源的访问权限。 有关 RBAC 的详细信息，请参阅 azure [RBAC 在 azure 中的基于角色的访问控制 (azure RBAC) ？](../../role-based-access-control/overview.md)。
+    Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可通过向用户授予执行其作业所需的最少权限来管理对资源的访问权限。 有关 RBAC 的详细信息，请参阅 azure [RBAC 在 azure 中的基于角色的访问控制 (azure RBAC) ？](../../role-based-access-control/overview.md)。
 
 ## <a name="common-use-cases"></a>常见用例
 
@@ -114,7 +114,7 @@ Azure 文件共享利用 Kerberos 协议在本地 AD DS 或 Azure AD DS 进行�
 
 - 首先，无需在 Azure AD DS 中创建标识来表示存储帐户。 这是在后台启用过程中执行的。
 
-- 其次，Azure AD 中的所有用户都可以进行身份验证和授权。 用户可以仅限云或混合。 从 Azure AD 到 Azure AD DS 的同步由平台管理，无需任何用户配置。 但是，客户端必须已加入到 Azure AD DS 的域，不能 Azure AD 加入或注册。 
+- 其次，Azure AD 中存在的所有用户都可以进行身份验证和授权。 用户可以仅限云或混合。 从 Azure AD 到 Azure AD DS 的同步由平台管理，无需任何用户配置。 但是，客户端必须已加入到 Azure AD DS 的域，不能 Azure AD 加入或注册。 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="关系图":::
 

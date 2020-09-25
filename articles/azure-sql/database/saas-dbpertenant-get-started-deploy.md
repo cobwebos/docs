@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356819"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的每租户数据库模式的多租户 SaaS 应用
 
@@ -38,7 +38,7 @@ ms.locfileid: "87542240"
 
 可通过观看[相关教程系列](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，了解各种 SaaS 设计和管理模式。 除了初始部署相关内容，这些教程还提供其他丰富的内容延展。 使用这些教程时，可以观察所提供的脚本来了解不同的 SaaS 模式是如何实现的。 脚本演示 SQL 数据库的功能如何简化 SaaS 应用程序的开发。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "87542240"
 
 1. 若要在 Azure 门户中打开 Wingtip Tickets SaaS“每租户一个数据库”部署模板，请选择“部署到 Azure”。****
 
-   [![显示标记为 "部署到 Azure" 按钮的图像。](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
+   [![图像显示标记为“部署到 Azure”的按钮。](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. 在模板中输入必需参数的值。
 
@@ -86,7 +86,7 @@ ms.locfileid: "87542240"
 > 从外部源下载 zip 文件并将其解压缩时，可执行内容（脚本和 DLL）可能会被 Windows 阻止。 在提取脚本前，请执行相关步骤来取消阻止 .zip 文件。 取消阻止可确保允许运行这些脚本。
 
 1. 浏览到[WingtipTicketsSaaS-DbPerTenant GitHub 存储库][github-wingtip-dpt]。
-1. 选择“克隆或下载”****。
+1. 选择“克隆或下载”  。
 1. 选择“下载 ZIP”，然后保存文件****。
 1. 右键单击“WingtipTicketsSaaS-DbPerTenant-master.zip”文件，然后选择“属性”********。
 1. 在“常规”选项卡上，选择“取消阻止” > “应用”。************
@@ -104,7 +104,7 @@ ms.locfileid: "87542240"
 
 几乎每个脚本中都会引用这些值。
 
-## <a name="run-the-application"></a>运行应用程序
+## <a name="run-the-application"></a>运行此应用程序
 
 举办活动的应用展示场所。 场所类型包括音乐厅、爵士乐俱乐部和运动俱乐部。 在 Wingtip Tickets 中，场所注册为租户。 注册为租户可让场所轻松列出活动，以及向其客户销售门票。 每个场所有个性化的网站用于列出其活动和售票。
 
@@ -212,7 +212,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载**。 以下步骤
 - 已初始化。
 - 已在目录中注册。
 
-成功预配后，新租户的 "*事件*" 站点将显示在浏览器中。
+成功预配后，新租户的 " *事件* " 站点将显示在浏览器中。
 
 ![新租户](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
@@ -225,7 +225,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载**。 以下步骤
 1. 在  [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后打开 **catalog-dpt-&lt;USER&gt;** 服务器。
     - 目录服务器包含两个数据库：**tenantcatalog** 和 **basetenantdb**（为了创建新租户而复制的模板数据库）。
 
-   ![数据库](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![屏幕截图显示具有两个数据库的 "目录服务器概述" 页。](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. 返回到 SQL 服务器列表。
 
@@ -270,7 +270,7 @@ LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始�
 > - 如何通过查看池使用率来监视租户活动。
 > - 如何删除示例资源以停止相关计费。
 
-接下来，请尝试[预配和编录教程](saas-dbpertenant-provision-and-catalog.md)。
+接下来，请尝试 [预配和编录教程](saas-dbpertenant-provision-and-catalog.md)。
 
 <!-- Link references. -->
 

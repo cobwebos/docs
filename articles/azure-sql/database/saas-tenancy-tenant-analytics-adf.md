@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66f22fa2781fb4c0f4caa07323b3de8cac1ef9fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437439"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361103"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>了解 Azure SQL 数据库、Azure Synapse 分析、数据工厂和 Power BI 的 SaaS 分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 
 本教程提供了基本示例，演示可从 Wingtip Tickets 数据中收集的见解。 例如，如果 Wingtip Tickets 供应商了解每个会场使用该服务的方式，则他们就能思考如何针对或多或少的活跃会场运用不同的服务计划。
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -111,7 +111,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
     1. 星型架构表为 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
     1. 存储过程 **sp_transformExtractedData** 用于转换数据并将其载入星型架构表。
 
-![DWtables](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
+![屏幕截图显示了对象资源管理器，其中展开了显示各种数据库对象的表。](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob 存储
 
@@ -167,7 +167,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
   
 ### <a name="data-warehouse-pattern-overview"></a>数据仓库模式概述
 
-Azure Synapse (以前的 SQL 数据仓库) 用作分析存储，以对租户数据执行聚合。 在此示例中，PolyBase 用于将数据加载到数据仓库中。 原始数据载入临时表，这些表中包含一个标识列，用于跟踪已转换为星型架构表的行。 下图显示了加载模式：![loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (以前的 SQL 数据仓库) 用作分析存储，以对租户数据执行聚合。 在此示例中，PolyBase 用于将数据加载到数据仓库中。 原始数据载入临时表，这些表中包含一个标识列，用于跟踪已转换为星型架构表的行。 下图显示了加载模式： " ![ 关系图" 显示了数据库表的加载模式。](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 本示例使用了渐变维度 (SCD) 类型 1 维度表。 每个维度具有一个使用标识列定义的代理键。 为了节省时间，日期维度表已预先填充，这也是一种最佳做法。 对于其他维度表，CREATE TABLE AS SELECT ... (CTAS) 语句用于创建一个临时表，其中包含现有的已修改行和非修改行以及代理键。 这是使用 IDENTITY_INSERT=ON 实现的。 然后，使用 IDENTITY_INSERT=OFF 将新行插入表中。 为了方便回滚，现有维度表已重命名，并且临时表也已重命名，成为新的维度表。 在每次运行之前，会删除旧维度表。
 
@@ -181,14 +181,14 @@ Azure Synapse (以前的 SQL 数据仓库) 用作分析存储，以对租户数�
 
 1. 在 ADF 用户界面的“创作”选项卡上，从左窗格中选择“SQLDBToDW”管道。********
 1. 单击“触发器”，并在下拉菜单中单击“立即触发”。******** 此操作会立即运行管道。 在生产场景中，请定义一个时间表用于运行管道，以按计划刷新数据。
-  ![adf_trigger](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
+  ![屏幕截图显示名为 "Q L D B 到 D W" 的管道的工厂资源，其中 "触发器" 选项展开并触发了 "立即选择"。](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
 1. 在“管道运行”页上单击“完成”。********
 
 ### <a name="monitor-the-pipeline-run"></a>监视管道运行
 
 1. 在 ADF 用户界面中，通过左侧菜单切换到“监视”选项卡。****
 1. 不断地单击“刷新”，直到 SQLDBToDW 管道的状态显示为“成功”。********
-  ![adf_monitoring](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
+  ![屏幕截图显示状态为 "成功" 的 "Q L D B 到 D W" 管道。](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
 1. 使用 SSMS 连接到数据仓库并查询星型架构表，验证数据是否已载入这些表中。
 
 完成管道后，事实数据表会保存所有会场的门票销量数据，并且维度表中会填充相应的会场、活动和客户。
@@ -208,13 +208,13 @@ Azure Synapse (以前的 SQL 数据仓库) 用作分析存储，以对租户数�
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics-adf/powerBISignIn.PNG)
 
-5. 选择左窗格中的 " **数据库** "，然后输入 "用户名 = *开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”  。  
+5. 选择左窗格中的 " **数据库** "，然后输入 "用户名 = *开发人员*"，并输入 password = *P \@ ssword1*。 单击“连接”。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics-adf/databaseSignIn.PNG)
 
 6. 在 " **导航器** " 窗格中的 "分析" 数据库下，选择星型架构表： **fact_Tickets**、 **dim_Events**、 **dim_Venues**、 **dim_Customers** 和 **dim_Dates**。 然后选择“加载”。****
 
-祝贺你！ 数据已成功载入 Power BI。 现在，请浏览有趣的可视化效果，以深入了解租户。 本教程将逐步讲解分析功能如何向 Wingtip Tickets 业务团队提供一些数据驱动的建议。 借助建议可以优化业务模型和客户体验。
+祝贺！ 数据已成功载入 Power BI。 现在，请浏览有趣的可视化效果，以深入了解租户。 本教程将逐步讲解分析功能如何向 Wingtip Tickets 业务团队提供一些数据驱动的建议。 借助建议可以优化业务模型和客户体验。
 
 首先，请分析门票销售数据，查看不同会场的服务使用差异。 在 Power BI 中选择下图所示的选项，绘制每个会场售出的门票总数的条形图。 （由于门票生成器中存在随机变化，你的结果可能与图中不同。）
 
@@ -262,7 +262,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -272,7 +272,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 > - 查询分析数据仓库。
 > - 使用 Power BI 进行数据可视化，以突出显示租户数据的趋势并提出改进建议。
 
-祝贺你！
+祝贺！
 
 ## <a name="additional-resources"></a>其他资源
 

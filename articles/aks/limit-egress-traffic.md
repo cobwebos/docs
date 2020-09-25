@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361035"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -134,7 +134,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 |--------------------------------------------------------------------------------|---------------|----------|
 | **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
 
-如果选择阻止/不允许这些 Fqdn，则节点将仅在你进行 [节点映像升级](node-image-upgrade.md) 或 [群集升级](upgrade-cluster.md)时接收 OS 更新。
+如果选择阻止/不允许这些 FQDN，则仅当进行[节点映像升级](node-image-upgrade.md)或[群集升级](upgrade-cluster.md)时，节点才会接收 OS 更新。
 
 ## <a name="gpu-enabled-aks-clusters"></a>启用 GPU 的 AKS 群集
 
@@ -228,7 +228,7 @@ Azure 防火墙提供 Azure Kubernetes 服务 (`AzureKubernetesService`) FQDN �
 > [!NOTE]
 > FQDN 标记包含上面列出的所有 FQDN，并自动保持最新。
 >
-> 对于生产方案，我们建议在 Azure 防火墙上至少具有20个前端 Ip，以避免出现 SNAT 端口耗尽问题。
+> 对于生产方案，建议在 Azure 防火墙上至少具有 20 个前端 IP，以避免出现 SNAT 端口耗尽问题。
 
 下面是部署的示例体系结构：
 
@@ -413,7 +413,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>创建有权在现有虚拟网络中进行预配的服务主体
 
-AKS 使用服务主体来创建群集资源。 创建时传递的服务主体用于创建 AKS 所使用的基本 AKS 资源（例如存储资源、Ip 和负载均衡器） (你也可以改为使用 [托管标识](use-managed-identity.md)) 。 如果未授予以下适当的权限，则无法预配 AKS 群集。
+AKS 使用服务主体来创建群集资源。 创建时传递的服务主体用于创建底层 AKS 资源，例如 AKS 使用的存储资源、IP 和负载均衡器（还可以改为使用[托管标识](use-managed-identity.md)）。 如果未授予以下适当的权限，则无法预配 AKS 群集。
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network
@@ -763,10 +763,10 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 
 在浏览器中导航到 Azure 防火墙前端 IP 地址来验证连接。
 
-应看到 AKS 投票应用程序。 在此示例中，防火墙公共 IP 为 `52.253.228.132` 。
+应看到 AKS 投票应用程序。 此示例中，防火墙公共 IP 为 `52.253.228.132`。
 
 
-![aks-vote](media/limit-egress-traffic/aks-vote.png)
+![屏幕截图显示了一个具有猫、狗、重置和总计按钮的 K S 投票应用程序。](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>清理资源

@@ -1,15 +1,17 @@
 ---
 title: 开发人员资源 - 语言理解
 description: SDK、REST API、CLI 用于以编程语言开发语言理解 (LUIS) 应用。 管理 Azure 资源和 LUIS 预测。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/19/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 43c9ca244f02ffe1485fbd7316901d607d6e2479
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e4e43ead957bb6feca09fc8b2a8c16e37821c9b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327164"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 

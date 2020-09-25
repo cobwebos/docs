@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321639"
+ms.locfileid: "91357774"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>使用 Azure SQL 数据库弹性池的应用程序的灾难恢复策略
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Azure SQL 数据库具备许多功能，可在发生灾难性事件时保证应�
 
 若要支持此方案，请通过将试用租户和付费租户放入不同的弹性池以将二者分开。 试用客户获得的每租户 eDTU 或 vCore 较低，SLA 较低且恢复需要更长的时间。 付费客户会被分入具有较高的每租户 eDTU 或 vCore 的池中并且 SLA 较高。 为了保证最短的恢复时间，请对付费客户的租户数据库进行异地复制。 下图说明了此配置。
 
-![图 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![关系图显示了一个主要区域和一个 D R 区域，这些区域在管理数据库与 "付费客户" 主池和辅助池之间使用异地复制，试用客户池没有复制。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 如方案一所示，管理数据库将会非常活跃，因此应该为其使用异地复制的单一数据库 (1)。 这可以确保新的客户订阅、配置文件更新和其他管理操作具有可预测的性能。 管理数据库的主数据库所在的区域将会成为主要区域，而管理数据库的辅助数据库所在的区域则会成为 DR 区域。
 
@@ -86,7 +86,7 @@ Azure SQL 数据库具备许多功能，可在发生灾难性事件时保证应�
 
 如果主要区域发生中断，可以使用下图中的恢复步骤恢复应用程序的在线状态：
 
-![图 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![关系图显示了主要区域的服务中断，故障转移到管理数据库，付费的客户辅助池，以及创建和还原试用客户。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * 立即将管理数据库故障转移到 DR 区域 (3)。
 * 更改应用程序的连接字符串，使其指向 DR 区域。 现在会在 DR 区域中创建所有新帐户和租户数据库。 现有试用客户的数据将暂时不可用。
@@ -99,7 +99,7 @@ Azure SQL 数据库具备许多功能，可在发生灾难性事件时保证应�
 
 在 DR 区域中还原了应用程序 *之后* ，如果 Azure 恢复了主要区域，则可以决定在该区域继续运行应用程序或故障回复到主要区域。 如果在故障转移过程完成之前恢复了主要区域，请考虑立即进行故障回复。 此故障回复采用下图所示的步骤：
 
-![图 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![关系图显示了恢复主要区域后要实现的故障回复步骤。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * 取消所有未完成的异地还原请求。
 * 故障转移管理数据库 (8)。 区域恢复后，旧的主数据库便已自动成为辅助数据库。 现在，它再次成为主数据库。  
@@ -128,7 +128,7 @@ Azure SQL 数据库具备许多功能，可在发生灾难性事件时保证应�
 
 为了保证中断期间最短的恢复时间，请使用这两个区域的任一个主数据库的 50% 对付费客户的租户数据库进行异地复制。 同样，每个区域会占用辅助数据库的 50%。 这样，如果区域处于离线状态，则只有 50% 付费客户的数据库会受到影响且必须进行故障转移。 其他数据库将保持不变。 下图说明了此配置：
 
-![图 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![关系图显示名为区域 A 和次要区域的主要区域，这些区域在管理数据库和已付费客户的主池和辅助池之间使用异地复制，试用客户池没有复制。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 如前面的方案所示，管理数据库将会非常活跃，因此应该将其配置为异地复制的单一数据库 (1)。 这可以确保新的客户订阅、配置文件更新和其他管理操作具有可预测的性能。 区域 A 将是管理数据库的主要区域，而区域 B 将用于恢复管理数据库。
 
@@ -136,7 +136,7 @@ Azure SQL 数据库具备许多功能，可在发生灾难性事件时保证应�
 
 下图说明了区域 A 发生中断时要采取的恢复步骤。
 
-![图 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![关系图显示了主要区域的中断，并故障转移到管理数据库、付费客户辅助池，以及为试用客户创建和还原到区域 B。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * 立即将管理数据库故障转移到区域 B (3)。
 * 更改应用程序的连接字符串，使其指向区域 B 的管理数据库。修改管理数据库以确保会在区域 B 中创建新的帐户和租户数据库，同时确保可在此处找到现有租户数据库。 现有试用客户的数据将暂时不可用。
@@ -152,7 +152,7 @@ Azure SQL 数据库具备许多功能，可在发生灾难性事件时保证应�
 
 恢复区域 A 时，需要决定想要为试用客户使用区域 B 还是进行故障回复以在区域 A 中使用试用客户池。其中一个条件就是自恢复以来修改的试用租户数据库的百分比。 不管做出何种决定，都需要重新均衡两个池的付费租户。 下图说明了当试用租户数据库故障回复到区域 A 的过程。  
 
-![图 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![关系图显示了还原区域 A 后要实现的故障回复步骤。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * 取消所有未完成的异地还原请求以试用 DR 池。
 * 故障转移管理数据库 (8)。 区域恢复后，旧的主数据库便已自动成为辅助数据库。 现在，它再次成为主数据库。  

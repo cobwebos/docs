@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357567"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "88661514"
 
 **问：如果想要使用基线模型，从何处开始？**
 
-**答**：首先，获取[订阅密钥](get-started.md)。 如果想要对预先部署的基线模型进行 REST 调用，请参阅 [REST API](rest-apis.md)。 如果想要使用 WebSocket，请[下载 SDK](speech-sdk.md)。
+**答**：首先，获取[订阅密钥](overview.md#try-the-speech-service-for-free)。 如果想要对预先部署的基线模型进行 REST 调用，请参阅 [REST API](rest-apis.md)。 如果想要使用 WebSocket，请[下载 SDK](speech-sdk.md)。
 
 **问：是否始终需要生成自定义语音识别模型？**
 
@@ -75,7 +75,7 @@ ms.locfileid: "88661514"
 
 **问：我的请求是否受到限制？**
 
-**答**：请参阅 [语音服务配额和限制](speech-services-quotas-and-limits.md)。
+**答**：请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。
 
 **问：双声道音频如何收费？**
 
@@ -85,14 +85,14 @@ ms.locfileid: "88661514"
 > 如果有禁止使用自定义语音识别服务的其他隐私问题，请联系其中一个支持渠道。
 
 ## <a name="increasing-concurrency"></a>提高并发性
-请参阅 [语音服务配额和限制](speech-services-quotas-and-limits.md)。
+请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。
 
 
 ## <a name="importing-data"></a>导入数据
 
 **问：数据集大小的限制是什么？为何限制？**
 
-**答**：由于 HTTP 上传的文件大小限制，限制。 请参阅 [语音服务配额和](speech-services-quotas-and-limits.md) 实际限制的限制。
+**答**：之所以有此限制，是由于 HTTP 上传文件大小存在限制。 有关实际限制，请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。
 
 **问：是否可以压缩文本文件，以便上传更大的文本文件？**
 

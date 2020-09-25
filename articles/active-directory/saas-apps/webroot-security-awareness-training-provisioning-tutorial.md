@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 31c0e9a690bde7a52a32fd9194afda76e1aaba8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5bdcf197b4e8a619e55895faf7637ebac0ac12ae
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329102"
+ms.locfileid: "91361120"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Webroot 安全意识培训
 
@@ -106,7 +106,7 @@ ms.locfileid: "91329102"
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://awarenessapi.webrootanywhere.com/api/v2/scim` **租户 URL**"。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Webroot 安全意识培训。 如果连接失败，请确保 Webroot 安全意识培训帐户具有管理员权限，然后重试。
 
-    ![预配](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

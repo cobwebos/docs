@@ -6,24 +6,24 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361086"
 ---
 # <a name="create-an-azure-vm-assessment"></a>创建 Azure VM 评估
 
 本文介绍如何使用 Azure Migrate：服务器评估为本地 VMware Vm 或 Hyper-v Vm 创建 Azure VM 评估。
 
-[Azure Migrate](migrate-services-overview.md)可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。 
+[Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。 
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
-- 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
-- 如果已创建项目，请确保已[添加](how-to-assess.md)Azure Migrate： Server 评估工具。
-- 若要创建评估，需要为[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)设置 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
+- 请确保已 [创建](how-to-add-tool-first-time.md) Azure Migrate 项目。
+- 如果已创建项目，请确保已 [添加](how-to-assess.md) Azure Migrate： Server 评估工具。
+- 若要创建评估，需要为 [VMware](how-to-set-up-appliance-vmware.md) 或 [hyper-v](how-to-set-up-appliance-hyper-v.md)设置 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
 
 
 ## <a name="azure-vm-assessment-overview"></a>Azure VM 评估概述
@@ -43,19 +43,19 @@ ms.locfileid: "85549835"
 1. 查看有关创建评估的[最佳做法](best-practices-assessment.md)。
 2. 在“服务器”选项卡上的“Azure Migrate: 服务器评估”磁贴中，单击“评估”。
 
-    ![评估](./media/how-to-create-assessment/assess.png)
+    ![屏幕截图显示在 "评估工具" 下选择了评估的 Azure Migrate 服务器。](./media/how-to-create-assessment/assess.png)
 
-3. 在 "**评估服务器**" 中，选择 "评估类型" 作为 "Azure VM"，选择发现源并指定评估名称。
+3. 在“评估服务器”中，将评估类型选择为“Azure VM”，选择发现源并指定评估名称。
 
-    ![评估基础知识](./media/how-to-create-assessment/assess-servers-azurevm.png)
+    ![评估基本信息](./media/how-to-create-assessment/assess-servers-azurevm.png)
 
 4. 单击“全部查看”查看评估属性。
 
     ![评估属性](./media/how-to-create-assessment//view-all.png)
 
-5. 单击 "**下一步**" 以**选择要评估的计算机**。 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+5. 单击“下一步”以转到“选择要评估的计算机” 。 在“选择或创建组”中，选择“新建”并指定组名称。 组将要评估的一个或多个 VM 集合到一起。
 6. 在“将计算机添加到组”中，选择要添加到该组的 VM。
-7. 单击 "**下一步**"**查看 "+ 创建评估**" 以查看评估详细信息。
+7. 单击“下一步”以转到“查看 + 创建评估”以查看评估详细信息 。
 8. 单击“创建评估”以创建该组，并运行评估。
 
     ![创建评估](./media/how-to-create-assessment//assessment-create.png)
@@ -67,7 +67,7 @@ ms.locfileid: "85549835"
 
 ## <a name="review-an-azure-vm-assessment"></a>查看 Azure VM 评估
 
-Azure VM 评估介绍：
+Azure VM 评估说明：
 
 - **Azure 迁移就绪性**：VM 是否适合迁移到 Azure。
 - **每月成本估算**：在 Azure 中运行 VM 的估算每月计算和存储成本。
@@ -132,5 +132,5 @@ Azure VM 评估介绍：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[依赖关系映射](how-to-create-group-machine-dependencies.md)创建高可信度组。
+- 了解如何使用 [依赖关系映射](how-to-create-group-machine-dependencies.md) 创建高可信度组。
 - [详细了解](concepts-assessment-calculation.md)如何计算评估。

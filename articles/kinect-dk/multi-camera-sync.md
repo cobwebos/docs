@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 彩色, RGB, IMU, 阵列, 多, 同步
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78402886"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361154"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>同步多个 Azure Kinect DK 设备
 
@@ -26,7 +26,7 @@ ms.locfileid: "78402886"
 
 - 填补遮挡区域。 尽管 Azure Kinect DK 数据转换生成的是单个图像，但两个相机（深度和 RGB 相机）实际上保持着较小的一段距离。 这种偏移使得遮挡成为可能。 遮挡是指前景对象阻挡了设备上两个相机之一的背景对象的部分视角。 在生成的彩色图像中，前景对象看上去像是在背景对象上投射了一个阴影。  
    例如，在下图中，左侧相机可看到灰色像素“P2”。 但是，白色的前景对象阻挡了右侧相机的红外光束。 右侧相机无法获取“P2”的数据。  
-   ![遮蔽](./media/occlusion.png)  
+   ![关系图显示两个照相机，其中一个已阻止。](./media/occlusion.png)  
    附加的同步设备可以提供遮挡的数据。
 - 扫描三维对象。
 - 将有效帧速率提升至 30 帧/秒 (FPS) 以上的值。

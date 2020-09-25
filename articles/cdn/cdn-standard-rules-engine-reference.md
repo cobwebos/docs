@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327487"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的标准规则引擎参考
 
@@ -40,7 +40,7 @@ ms.locfileid: "89661758"
 
 每个 Azure CDN 端点最多可以有25个规则。 每个规则最多可以有10个匹配条件和五个操作。 规则引擎的定价遵循以下尺寸： 
 - 规则：每个规则每月 $1 
-- 处理的请求数： $0.60/百万 requets
+- 处理的请求数：每百万个请求 $0.60
 - 前5个规则将继续可用
 
 ## <a name="syntax"></a>语法

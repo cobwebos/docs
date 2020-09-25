@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 986e4fd8c7043f5c01868302ffc2b554e2ce76f7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f778e996eeda0f2b850864c9c90cd522c411b032
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328014"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -82,6 +82,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 09/02/2020：在[适用的 sku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)中为 b-hli 添加新的认证 sku 
 - 09/08/2020：在 [SLES 上的 Azure vm 上更改 SAP HANA 的高可用性](./sap-hana-high-availability.md) ，以阐明 stonith 定义
 - 09/03/2020：在 [SAP HANA Azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 中进行更改，以便通过超磁盘适应每 1 GB 容量的最小 2 IOPS
 - 09/02/2020：在 [适用于 b-hli 的 sku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 中进行更改，以便在 SKU 经过 HANA 认证时获得更大的透明度

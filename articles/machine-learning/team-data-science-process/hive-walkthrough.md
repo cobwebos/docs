@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273908"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336507"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
 
-有关演示如何处理更大数据集的演练，请参阅[团队数据科学过程-在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)。
+有关演示如何处理更大数据集的演练，请参阅 [团队数据科学过程-在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)。
 
 还可以使用 IPython 笔记本完成使用 1 TB 数据集的演练中介绍的任务。 有关详细信息，请参阅[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)。
 
@@ -89,7 +89,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
    
    * 创建 HDInsight 群集时，请记住将其与步骤 1 中创建的存储帐户相链接。 此存储帐户访问在该群集中处理的数据。
    * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”**** 选项卡，并选择“启用远程”****。 此步骤指定用于远程登录的用户凭据。
-3. [创建 Azure 机器学习工作区](../studio/create-workspace.md)：此工作区用于生成机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
+3. [创建 Azure 机器学习工作区](../classic/create-workspace.md)：此工作区用于生成机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>从公共源获取数据
 > [!NOTE]
@@ -820,7 +820,7 @@ hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名称为**abc123**，则使用： https： \/ /abc123.azurehdinsight.net。
+**HCatalog 服务器 URI**：如果群集名称为 **abc123**，则使用： https： \/ /abc123.azurehdinsight.net。
 
 **Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 
@@ -915,7 +915,7 @@ hdfs dfs -ls wasb:///D.db/T
   此处，决定系数是 0.709，这意味着模型系数解释了大约 71% 的方差。
 
 > [!IMPORTANT]
-> 若要深入了解机器学习及其访问和使用方式，请参阅[什么是机器学习](../studio/what-is-machine-learning.md)。 此外，[Azure AI 库](https://gallery.cortanaintelligence.com/)涵盖了各类试验，并提供对机器学习功能范围的全面介绍。
+> 若要深入了解机器学习及其访问和使用方式，请参阅[什么是机器学习](../classic/index.yml)。 此外，[Azure AI 库](https://gallery.cortanaintelligence.com/)涵盖了各类试验，并提供对机器学习功能范围的全面介绍。
 > 
 > 
 
@@ -937,6 +937,3 @@ hdfs dfs -ls wasb:///D.db/T
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
