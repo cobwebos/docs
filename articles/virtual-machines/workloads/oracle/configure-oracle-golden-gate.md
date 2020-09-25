@@ -3,7 +3,7 @@ title: 在 Azure Linux VM 上实现 Oracle Golden Gate | Microsoft Docs
 description: 在 Azure 环境中快速建立 Oracle Golden Gate 并运行。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274786"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
@@ -31,7 +31,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 ## <a name="prepare-the-environment"></a>准备环境
 
-若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 Vm 的 Marketplace 映像是**oracle： oracle-数据库-Ee：12.1.0.2：最新版本**。
+若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 Vm 的 Marketplace 映像是 **oracle： oracle-数据库-Ee：12.1.0.2：最新版本**。
 
 还需要熟悉 Unix 编辑器 vi 并基本了解 x11 (X Windows)。
 
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
 
 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组。
 
@@ -396,7 +396,7 @@ SQL> EXIT;
 3. 在 PuTTY 密钥生成器中：
 
    - 若要生成密钥，请选择“生成”按钮。****
-   - 复制密钥的内容（**Ctrl + C**）。
+   - 将密钥内容复制 (**Ctrl + C**) 。
    - 选择“保存私钥”按钮。****
    - 忽略显示的警告，并选择“确定”。****
 
@@ -410,7 +410,7 @@ SQL> EXIT;
    $ cd .ssh
    ```
 
-5. 创建一个名为**authorized_keys**的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
+5. 创建一个名为 **authorized_keys**的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
 
    > [!NOTE]
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
@@ -432,18 +432,18 @@ SQL> EXIT;
 
 若要安装 Oracle Golden Gate，请完成以下步骤：
 
-1. 以 oracle 身份登录。 （你应该能够在不提示输入密码的情况下登录。）在开始安装之前，请确保 Xming 正在运行。
+1. 以 oracle 身份登录。  (你应该能够在不提示输入密码的情况下登录。 ) 确保在开始安装之前运行 Xming。
 
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
 
-2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择 "**下一步**" 继续。
+2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择 " **下一步** " 继续。
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续操作。
+3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 
@@ -732,7 +732,7 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>设置复制（myVM1 和 myVM2）
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制（复制）
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制 (复制) 
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -755,7 +755,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 （主）上设置复制
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 上设置复制 (主) 
 
 启动初始加载，并检查错误：
 
@@ -766,7 +766,7 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制（复制）
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制 (复制) 
 
 使用之前获取的编号更改 SCN 编号：
 
@@ -781,7 +781,7 @@ GGSCI> VIEW REPORT INITEXT
 
 ### <a name="view-job-status-and-troubleshooting"></a>查看作业状态和故障排除
 
-#### <a name="view-reports"></a>查看报告
+#### <a name="view-reports"></a>查看报表
 若要在 myVM1 上查看报告，请运行以下命令：
 
   ```bash

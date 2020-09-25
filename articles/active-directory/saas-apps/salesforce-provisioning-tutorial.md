@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Active Directory 为 Salesforce 配置自动用户预配 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Salesforce 之间配置单一登录。
+description: 了解在 Salesforce 中执行所需的步骤，并 Azure AD 自动预配和取消预配从 Azure AD 到 Salesforce 的用户帐户。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: db94c868daecdd82bcf7749f17fc6fde86fac963
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273290"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 

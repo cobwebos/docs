@@ -12,23 +12,27 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e6686c69eb6dababb577e9c556a8a13ec42485a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273851"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
 本文档逐步讲解如何安装和配置 Azure AD Connect Health 代理。 可以从 [此处](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)下载代理。
 
 ## <a name="requirements"></a>要求
+
+
+> [!IMPORTANT]
+> 不支持在 Windows Server Core 上安装 Azure AD Connect Health 代理。
 
 下表是使用 Azure AD Connect Health 的要求列表。
 
@@ -48,7 +52,7 @@ ms.locfileid: "89296458"
 
 > [!NOTE]
 > 如果有高度锁定的环境，则需要添加下面的服务终结点列表中提到的 Url，以及上述 "允许的 IE 增强的安全配置" 中列出的 Url。 
->
+
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure 服务终结点的出站连接
 
@@ -259,7 +263,7 @@ ms.locfileid: "89296458"
 ### <a name="quick-agent-installation-in-multiple-servers"></a>在多个服务器中安装快速代理
 
 1. 使用密码在 Azure AD 中创建用户帐户。
-2. 通过门户为 Azure AD Connect Health 中的本地 AAD 帐户分配 **所有者** 角色。 请按照 [此处](how-to-connect-health-operations.md#manage-access-with-azure-rbac)的步骤操作。 将角色分配给所有服务实例。 
+2. 通过门户为 Azure AD Connect Health 中的本地 AAD 帐户分配 **所有者** 角色。 按照[此处](how-to-connect-health-operations.md#manage-access-with-azure-rbac)的步骤操作。 将角色分配给所有服务实例。 
 3. 在本地域控制器中下载 .exe MSI 文件以进行安装。
 4. 运行以下脚本以进行注册。 将参数替换为创建的新用户帐户及其密码。 
 

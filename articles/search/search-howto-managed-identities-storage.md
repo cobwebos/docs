@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275126"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用托管标识设置到 Azure 存储帐户的连接
 
@@ -61,7 +61,7 @@ ms.locfileid: "90971521"
 
     Azure 表存储的示例：
 
-    ![添加读取器和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读取器和数据访问角色分配")
+    ![添加读取器和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读者和数据访问角色分配")
 
 ### <a name="3---create-the-data-source"></a>3 - 创建数据源
 
@@ -142,7 +142,11 @@ Blob 索引器的索引器定义示例：
 
 有关创建索引器 API 的更多详细信息，请参阅[创建索引器](/rest/api/searchservice/create-indexer)。
 
-有关定义索引器计划的详细信息，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>访问存储帐户中的安全数据
+
+可使用防火墙和虚拟网络进一步保护 Azure 存储帐户。 如果要从 blob 存储帐户或使用防火墙或虚拟网络保护的 Data Lake Gen2 存储帐户中编制内容的索引，请按照 [通过受信任的服务异常安全地访问存储帐户中的数据中](search-indexer-howto-access-trusted-service-exception.md)的说明进行操作。
 
 ## <a name="see-also"></a>另请参阅
 

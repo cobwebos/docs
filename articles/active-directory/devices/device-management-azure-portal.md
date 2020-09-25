@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278850"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
 Azure AD 提供了一个用于管理设备标识的中心位置。
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**  >  **设备**"。
-
-[![Azure 门户中的 "所有设备" 视图](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
 通过 " **所有设备** " 页，您可以：
 
@@ -38,6 +33,13 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 - 配置设备标识设置。
 - 启用或禁用企业状态漫游。
 - 查看与设备相关的审核日志
+
+[![Azure 门户中的 "所有设备" 视图](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
+
+你可以使用以下步骤访问设备门户：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 浏览到**Azure Active Directory**  >  **设备**"。
 
 ## <a name="manage-devices"></a>管理设备
 
@@ -116,7 +118,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 若要查看或复制 BitLocker 密钥，你需要是设备所有者或者是至少分配了以下一个角色的用户：
 
 - 云设备管理员
-- 全局管理员
+- 全局管理员角色
 - 支持管理员
 - Intune 服务管理员
 - 安全管理员
@@ -130,14 +132,14 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 - 相容状态
 - 联接类型 (Azure AD 联接，混合 Azure AD 联接，Azure AD 注册) 
 - 活动时间戳
-- (OS)
+- OS
 - 设备类型 (打印机、安全 Vm、共享设备、已注册设备) 
 
 若要在 " **所有设备** " 视图中启用预览筛选功能：
 
 ![启用筛选预览功能](./media/device-management-azure-portal/device-filter-preview-enable.png)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure Active Directory**  >  **设备**"。
 1. 选择显示的标题， **尝试新的设备筛选改进。单击以启用预览。**
 
@@ -146,6 +148,13 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 ## <a name="configure-device-settings"></a>配置设备设置
 
 若要使用 Azure AD 门户管理设备标识，需要将这些设备 [注册或联接](overview.md) 到 Azure AD。 作为管理员，你可以通过配置以下设备设置来控制注册和加入设备的过程。
+
+若要查看或管理 Azure 门户中的设备设置，您必须分配有以下角色之一：
+
+- 全局管理员
+- 云设备管理员
+- 全局读取者
+- 目录读取器
 
 ![与 Azure AD 相关的设备设置](./media/device-management-azure-portal/device-settings-azure-portal.png)
 

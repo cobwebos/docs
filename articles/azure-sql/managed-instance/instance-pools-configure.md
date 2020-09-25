@@ -1,7 +1,7 @@
 ---
 title: 将 SQL 托管实例部署到实例池
 titleSuffix: Azure SQL Managed Instance
-description: 本文介绍如何创建和管理 Azure SQL 托管实例池（预览版）。
+description: 本文介绍如何 (预览版) 创建和管理 Azure SQL 托管实例池。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,28 +10,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5ee1f1fbd55bfa44f78f2d1f0129b60be8ea34c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325175"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>将 Azure SQL 托管实例部署到实例池
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本文提供了有关如何创建[实例池](instance-pools-overview.md)并向其部署 Azure SQL 托管实例的详细信息。 
+本文提供了有关如何创建 [实例池](instance-pools-overview.md) 并向其部署 Azure SQL 托管实例的详细信息。 
 
 ## <a name="instance-pool-operations"></a>实例池操作
 
 下表显示了与实例池相关的可用操作及其在 Azure 门户和 PowerShell 中的可用性。
 
-|命令|Azure 门户|PowerShell|
+|Command|Azure 门户|PowerShell|
 |:---|:---|:---|
 |创建实例池|否|是|
-|更新实例池（属性数量限制）|否 |是 |
+| (有限数量的属性更新实例池) |否 |是 |
 |检查实例池使用情况和属性|否|是 |
 |删除实例池|否|是|
 |在实例池中创建托管实例|否|是|
@@ -41,7 +41,7 @@ ms.locfileid: "86498387"
 |在池中的实例中创建数据库|是|是|
 |从 SQL 托管实例删除数据库|是|是|
 
-可用的[PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)：
+可用的 [PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)：
 
 |Cmdlet |说明 |
 |:---|:---|
@@ -52,24 +52,24 @@ ms.locfileid: "86498387"
 |[AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | 返回有关 SQL 托管实例池使用情况的信息。 |
 
 
-若要使用 PowerShell，请[安装最新版本的 Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)，并按照说明[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+若要使用 PowerShell，请 [安装最新版本的 Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)，并按照说明 [安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-对于与池中的实例和单个实例相关的操作，请使用标准[托管实例命令](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)，但在对池中的实例使用这些命令时，必须填充 "*实例池名称*" 属性。
+对于与池中的实例和单个实例相关的操作，请使用标准 [托管实例命令](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)，但在对池中的实例使用这些命令时，必须填充 " *实例池名称* " 属性。
 
 ## <a name="deployment-process"></a>部署过程
 
-若要将托管实例部署到实例池中，必须首先部署实例池，这是一个运行时间长的操作，该操作的持续时间与部署[在一个空子网中创建的单个实例](sql-managed-instance-paas-overview.md#management-operations)的时间相同。 之后，你可以将托管实例部署到池中，这是一个相对较快的操作，通常需要长达五分钟的时间。 在此操作过程中，必须显式指定实例池参数。
+若要将托管实例部署到实例池中，必须首先部署实例池，这是一个运行时间长的操作，该操作的持续时间与部署 [在一个空子网中创建的单个实例](sql-managed-instance-paas-overview.md#management-operations)的时间相同。 之后，你可以将托管实例部署到池中，这是一个相对较快的操作，通常需要长达五分钟的时间。 在此操作过程中，必须显式指定实例池参数。
 
 在公共预览版中，仅支持使用 PowerShell 和 Azure 资源管理器模板进行这两项操作。 Azure 门户体验当前不可用。
 
-将托管实例部署到池后，你*可以*使用 Azure 门户在 "定价层" 页上更改其属性。
+将托管实例部署到池后，你 *可以* 使用 Azure 门户在 "定价层" 页上更改其属性。
 
 ## <a name="create-a-virtual-network-with-a-subnet"></a>创建带子网的虚拟网络 
 
 若要在同一虚拟网络中放置多个实例池，请参阅以下文章：
 
 - [为 AZURE SQL 托管实例确定 VNet 子网大小](vnet-subnet-determine-size.md)。
-- 使用[Azure 门户模板](virtual-network-subnet-create-arm-template.md)创建新的虚拟网络和子网，或者按照[准备现有虚拟网络](vnet-existing-add-subnet.md)的说明进行操作。
+- 使用 [Azure 门户模板](virtual-network-subnet-create-arm-template.md) 创建新的虚拟网络和子网，或者按照 [准备现有虚拟网络](vnet-existing-add-subnet.md)的说明进行操作。
  
 
 ## <a name="create-an-instance-pool"></a>创建实例池 
@@ -166,7 +166,7 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 
 
 > [!NOTE]
-> 每个池的数据库数限制为100（不是每个实例）。
+> 每个池的数据库数限制为100， (每个实例不) 。
 
 
 ## <a name="scale"></a>缩放 
@@ -193,7 +193,7 @@ $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-n
 若要连接到池中的托管实例，需要以下两个步骤：
 
 1. [为实例启用公共终结点](#enable-the-public-endpoint)。
-2. [将入站规则添加到网络安全组（NSG）](#add-an-inbound-rule-to-the-network-security-group)。
+2. [将入站规则添加到网络安全组 (NSG) ](#add-an-inbound-rule-to-the-network-security-group)。
 
 完成这两个步骤后，可以使用在实例创建过程中提供的公共终结点地址、端口和凭据连接到该实例。 
 
@@ -212,7 +212,7 @@ $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndp
 
 可以通过 Azure 门户或使用 PowerShell 命令来完成此步骤，并且可以在为托管实例准备子网后随时执行此步骤。
 
-有关详细信息，请参阅[允许网络安全组上的公共终结点流量](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)。
+有关详细信息，请参阅 [允许网络安全组上的公共终结点流量](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)。
 
 
 ## <a name="move-an-existing-single-instance-to-a-pool"></a>将现有的单个实例移到池中
@@ -256,8 +256,8 @@ $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndp
 ## <a name="next-steps"></a>后续步骤
 
 - 有关功能和比较列表，请参阅 [SQL 常用功能](../database/features-comparison.md)。
-- 有关 VNet 配置的详细信息，请参阅[SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
+- 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅[使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
-- 有关定价信息，请参阅[SQL 托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
+- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅 [使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
+- 有关定价信息，请参阅 [SQL 托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324034"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
 
@@ -33,7 +33,7 @@ ms.locfileid: "87422753"
 
 | 名称                     | 值                      |
 | ------------------------ | --------------------------- |
-| Color                    | 白、红、蓝            |
+| 颜色                    | 白、红、蓝            |
 | 亮度               | 0 到 100                    |
 | 估计剩余生命 | 从 10,000 小时开始倒计数 |
 
@@ -65,7 +65,7 @@ ms.locfileid: "87422753"
 
 | 名称                     | 值 |
 | ------------------------ | -------|
-| 初始颜色            | 白种人  |
+| 初始颜色            | White  |
 | 初始亮度       | 75     |
 | 初始剩余生命   | 10,000 |
 | 初始遥测状态 | "on"   |
@@ -81,10 +81,10 @@ ms.locfileid: "87422753"
 
 按照本操作方法指南操作需要：
 
-* Visual Studio Code。 可以[下载适用于 Mac、Linux 和 Windows 的 Visual Studio Code](https://code.visualstudio.com/download)。
+* Visual Studio Code。 可以 [下载适用于 Mac、Linux 和 Windows 的 Visual Studio Code](https://code.visualstudio.com/download)。
 * .NET Core。 可以下载[适用于 Mac、Linux 和 Windows 的 .NET Core](https://www.microsoft.com/net/download)。
 * [用于 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Postman。 可以下载[适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
+* Postman。 可以下载 [适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署到 Azure 订阅的 IoT 中心](../../articles/iot-hub/iot-hub-create-through-portal.md)。 需要 IoT 中心的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 * 使用 SQL API 且配置为[强一致性](../../articles/cosmos-db/how-to-manage-database-account.md)的 Cosmos DB 数据库。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 
@@ -100,7 +100,7 @@ ms.locfileid: "87422753"
 
 ### <a name="download-the-microservices"></a>下载微服务
 
-从 GitHub 下载[远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)，并将其解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **remote-monitoring-services-dotnet-master**。
+从 GitHub 下载 [远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) ，并将其解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **remote-monitoring-services-dotnet-master**。
 
 从 GitHub 下载[设备模拟微服务](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)并将其解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **device-simulation-dotnet-master**。
 
@@ -108,11 +108,11 @@ ms.locfileid: "87422753"
 
 在 Visual Studio Code 中打开 remote-monitoring-services-dotnet-master\storage-adapter 文件夹****。 单击任意“还原”按钮，修复任何未解决的依赖项****。
 
-打开**存储适配器/WebService/appsettings.ini**文件，并将 Cosmos DB 连接字符串分配给**documentDBConnectionString**变量。
+打开 **存储适配器/WebService/appsettings.ini** 文件，并将 Cosmos DB 连接字符串分配给 **documentDBConnectionString**  变量。
 
 要在本地运行微服务，请单击“调试”>“启动调试”****。
 
-Visual Studio Code 中的**终端**窗口显示正在运行的微服务的输出，包括 web 服务运行状况检查的 URL： [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) 。 导航到此地址时，状态应显示为“正常: 活动且正常”。
+Visual Studio Code 中的 **终端** 窗口显示正在运行的微服务的输出，包括 web 服务运行状况检查的 URL： [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) 。 导航到此地址时，状态应显示为“正常: 活动且正常”。
 
 在完成后续步骤时，让存储适配器微服务继续在 Visual Studio Code 的此实例中运行。
 
@@ -425,7 +425,7 @@ Visual Studio Code 中的**终端**窗口显示正在运行的微服务的输出
 
 在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹****。 单击任意“还原”按钮，修复任何未解决的依赖项****。
 
-打开**WebService/appsettings.ini**文件，将 Cosmos DB 连接字符串分配到**documentdb_connstring**变量，并按如下所述修改设置：
+打开 **WebService/appsettings.ini** 文件，将 Cosmos DB 连接字符串分配到 **documentdb_connstring** 变量，并按如下所述修改设置：
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -465,11 +465,11 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 单击“文件”>“导入”****。 然后单击“选择文件”****。
 
-1. 导航到 device-simulation-dotnet-master/docs/postman 文件夹****。 选择 " **Azure Iot 设备模拟解决方案加速器" postman_collection**和**Azure iot 设备模拟解决方案加速器。 postman_environment**并单击 "**打开**"。
+1. 导航到 device-simulation-dotnet-master/docs/postman 文件夹****。 选择 " **Azure Iot 设备模拟解决方案加速器" postman_collection** 和 **Azure iot 设备模拟解决方案加速器。 postman_environment** 并单击 " **打开**"。
 
 1. 将“Azure IoT 设备模拟解决方案加速器”展开到可以发送的请求****。
 
-1. 单击 "**无环境**" 并选择 " **Azure IoT 设备模拟解决方案加速器**"。
+1. 单击 " **无环境** " 并选择 " **Azure IoT 设备模拟解决方案加速器**"。
 
 现在，已在 Postman 工作区中加载可用于与设备模拟微服务进行交互的集合和环境。
 

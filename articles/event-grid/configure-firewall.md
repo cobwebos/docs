@@ -3,12 +3,12 @@ title: 为 Azure 事件网格主题或域配置 IP 防火墙
 description: 本文介绍如何配置事件网格主题或域的防火墙设置。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324155"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置 IP 防火墙 
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问主题和域。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。 来自任何其他 IP 地址的发布者都将被拒绝，并将收到 403（禁止）响应。 有关事件网格支持的网络安全功能的详细信息，请参阅 [事件网格的网络安全](network-security.md)。
@@ -23,7 +23,7 @@ ms.locfileid: "88509412"
 
     可以使用基于 IP 的防火墙规则限制流量。 在无类别的域间路由 (CIDR) 表示法中指定单个 IPv4 地址或一系列 IP 地址。 
 
-    ![公用网络页面](./media/configure-firewall/public-networks-page.png)
+    ![屏幕截图，显示 "公用网络访问" 页面并选中 "公用网络"。](./media/configure-firewall/public-networks-page.png)
 3. **仅**允许专用终结点连接访问此资源。 使用此页上的 " **专用终结点连接** " 选项卡可管理连接。 
 
     ![公用网络页面](./media/configure-firewall/private-endpoints-page.png)

@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 创建内容密钥
-description: 本文演示如何创建提供对资产的安全访问的内容密钥。
+description: 本文演示如何使用 .NET 创建内容密钥。 这些密钥提供对资产的安全访问。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9bfbe19c2ee3f6c05c337bebe58f4c48f0fb7f29
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d5efbc30c80a0052ed99cb129c2e5f9030482012
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261220"
 ---
 # <a name="create-contentkeys-with-net"></a>使用 .NET 创建内容密钥
 
@@ -34,14 +34,14 @@ ms.locfileid: "89263699"
 
 媒体服务允许创建资产和传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
 
-创建新资产时（例如，[上传文件](media-services-dotnet-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
+创建新资产时（例如，[上载文件](media-services-dotnet-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
 
 将资产传送到客户端时，可以使用以下两个加密选项之一[将资产配置为动态加密](media-services-dotnet-configure-asset-delivery-policy.md)：**DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
 
 加密的资产必须与 **ContentKey** 关联。 本文介绍如何创建内容密钥。
 
 > [!NOTE]
-> 使用媒体服务 .NET SDK 创建新的 **StorageEncrypted** 资产时，会自动创建 **ContentKey** 并将其链接到资产。
+> 在使用媒体服务 .NET SDK 创建新的 **StorageEncrypted** 资产时，会自动创建 **ContentKey** 并将其链接到资产。
 > 
 > 
 

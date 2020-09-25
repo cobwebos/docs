@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324053"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -79,7 +79,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-可以。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
+是的。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>路由规则的处理顺序是什么？
 
@@ -99,6 +99,31 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
     > 前端的后端 IP 空间可能会更改，但在此之前，我们将确保我们已与 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)集成。 建议订阅 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519) 以进行任何更改或更新。
 
 -    使用 API 版本或更高版本对前门执行 GET 操作 `2020-01-01` 。 在 API 调用中，查找 " `frontdoorID` 字段"。 筛选由前门发送到后端的传入标头 "**X-FDID**"，其值与字段的值相同 `frontdoorID` 。 你还可以 `Front Door ID` 在前门门户页面的 "概述" 部分下找到值。 
+
+- 应用后端 web 服务器中的规则筛选，基于生成的 "FDID" 标头值限制流量。
+
+  下面是 [Microsoft Internet Information Services (IIS) ](https://www.iis.net/)的示例：
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>可播 IP 是否可以在前端的生存期内更改？
 
@@ -132,6 +157,10 @@ Azure 前门 (AFD) 需要公共 IP 或可公开解析的 DNS 名称来路由流�
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure 前门有哪些不同的超时和限制？
 
 了解 Azure 前门的所有已记录的 [超时和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)。
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>将规则添加到前门规则引擎后，规则需要多长时间？
+
+规则引擎配置需要大约10到15分钟的时间来完成更新。 当更新完成后，你可能会希望该规则生效。 
 
 ## <a name="performance"></a>性能
 

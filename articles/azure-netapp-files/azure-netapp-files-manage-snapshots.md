@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459045"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325683"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
@@ -65,7 +65,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-你还可以使用 Azure CLI 命令 [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) 并 [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) 注册功能并显示注册状态。 
+你还可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` 并 `az feature show` 注册功能并显示注册状态。 
 
 ### <a name="create-a-snapshot-policy"></a>创建快照策略 
 
@@ -97,7 +97,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![每月快照策略](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  单击“保存” 。  
+4.  单击“ **保存**”。  
 
 如果需要创建其他快照策略，请重复步骤3。
 创建的策略将显示在 "快照策略" 页中。
@@ -151,7 +151,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
     ![将快照还原到新卷](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 3. 在 "创建卷" 窗口中，为新卷提供以下信息：  
-    * **名称**   
+    * **Name**   
         指定要创建的卷的名称。  
         
         名称在资源组中必须唯一。 它的长度必须至少为三个字符。  它可以使用任何字母数字字符。
@@ -161,7 +161,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![还原到新卷](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 单击 " **查看 + 创建**"。  单击**创建**。   
+4. 单击 " **查看 + 创建**"。  单击“创建”。   
     新卷使用的协议与快照使用的协议相同。   
     快照还原到的新卷将显示在“卷”边栏选项卡中。
 
@@ -221,6 +221,6 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解 Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)
+* [快照策略疑难解答](troubleshoot-snapshot-policies.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
 * [Azure NetApp 文件快照101视频](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

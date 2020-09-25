@@ -5,20 +5,20 @@ description: 了解如何使用 Linux Data Science Virtual Machine 执行多种�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/17/2020
+ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816212"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275976"
 ---
-# <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Ubuntu Data Science Virtual Machine 进行数据科学
+# <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Ubuntu Data Science Virtual Machine 完成数据科学任务
 
-本演练演示如何使用 Ubuntu Data Science Virtual Machine (DSVM) 完成几个常见的数据科学任务。 Ubuntu DSVM 是 Azure 中提供的虚拟机映像，预安装了一系列用于数据分析和机器学习的工具。 [预配 Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md)中详细列出了重要软件组件。 DSVM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 可以根据需要轻松扩展 DSVM，还可以在不使用时将其停用。 DSVM 资源既具有弹性，又具有成本效益。
+本演练介绍如何使用 Ubuntu Data Science Virtual Machine (DSVM) 完成多项常见数据科学任务。 Ubuntu DSVM 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md) 中逐项列出了主要的软件组件。 DSVM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 可以根据需要轻松扩展 DSVM，还可以在不使用时将其停用。 DSVM 资源既具有弹性，又具有成本效益。
 
 在本演练中，我们对 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集进行了分析。 Spambase 是一组标记为 spam 或 ham（非 spam）的电子邮件。 Spambase 还包含有关电子邮件内容的一些统计信息。 我们稍后将在本演练中讨论这些统计信息。
 
@@ -28,7 +28,7 @@ ms.locfileid: "88816212"
 
 * **Azure 订阅**。 若要获取 Azure 订阅，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 有关设置虚拟机的信息，请参阅 [预配 Ubuntu Data Science Virtual Machine](linux-dsvm-intro.md)。
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 有关预配虚拟机的信息，请参阅[预配 Ubuntu Data Science Virtual Machine](linux-dsvm-intro.md)。
 * 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 有关详细信息，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#x2go)。
 * 为获得更流畅的滚动体验，请在 DSVM 的 Firefox Web 浏览器中切换 `about:config` 中的 `gfx.xrender.enabled` 标记。 [了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 此外，考虑将 `mousewheel.enable_pixel_scrolling` 设置为 `False`。 [了解详细信息](https://support.mozilla.org/questions/981140)。
 

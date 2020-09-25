@@ -1,16 +1,16 @@
 ---
-title: Azure 事件网格中的 CloudEvents 1.0 版架构
-description: 说明如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 该服务支持 Cloud Events 的 JSON 实现中的事件。
+title: 将 CloudEvents v1.0 架构与 Azure 事件网格配合使用
+description: 介绍如何将 CloudEvents v1.0 架构用于 Azure 事件网格中的事件。 该服务支持 Cloud Events 的 JSON 实现中的事件。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1c6085c0397f23d44cf11d43a3e1da71f0e728bb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d17e92c28784ca31f3c9809c93e885b22c6a38d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324172"
 ---
-# <a name="cloudevents-v10-schema-with-azure-event-grid"></a>Azure 事件网格中的 CloudEvents 1.0 版架构
+# <a name="cloudevents-v10-schema-with-azure-event-grid"></a>将 CloudEvents v1.0 架构与 Azure 事件网格配合使用
 
 除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 实现](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 

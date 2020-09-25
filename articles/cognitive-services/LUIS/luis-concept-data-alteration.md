@@ -1,15 +1,17 @@
 ---
 title: 数据更改 - LUIS
 description: 了解如何在语言理解 (LUIS) 得出预测之前更改数据
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f3eb30662cae5f117942db6322b27491670abb1b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934661"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324835"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
 LUIS 提供在预测之前或预测期间操作陈述的方法。 其中包括 [修复拼写](luis-tutorial-bing-spellcheck.md)和修复预生成的 [datetimeV2](luis-reference-prebuilt-datetimev2.md)的时区问题。
@@ -29,7 +31,7 @@ LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更�
 
 终结点需要两个参数以进行拼写更正：
 
-|Param|值|
+|Param|Value|
 |--|--|
 |`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 终结点密钥|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 83b2a497cbeda188a4329e634256746f48984a89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a67d61c5a7c8861b1e4462586e1e4dca9149ab4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305437"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教程：为 Hootsuite 配置自动用户预配
 
@@ -78,13 +78,13 @@ ms.locfileid: "88521927"
 
 3. 选择“预配”选项卡。单击“入门”。
 
-    ![预配选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
     ![“开始”边栏选项卡](./media/hootsuite-provisioning-tutorial/get-started.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![预配选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分下，在“租户 URL”中输入 `https://platform.hootsuite.com/scim/v2`。 输入前面在“步骤 2”中检索到的长生存期机密令牌值。 单击“测试连接”以确保 Azure AD 可以连接到 Hootsuite。 如果连接失败，请确保 Hootsuite 帐户具有管理员权限，然后重试。
 

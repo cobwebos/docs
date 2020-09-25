@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 751fbbb83f1ccb75cb84453f8c03296f6d1a786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275773"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Azure 虚拟机映像验证
 
@@ -20,7 +20,7 @@ ms.locfileid: "89647818"
 
 在提交 VM 产品/服务之前，请先完成以下步骤：
 
-- 使用通用映像部署 Azure VM。
+- 使用通用映像部署 Azure VM。 有关 [一般化映像](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-vm-technical-asset#generalize-the-image)的详细信息，请参阅此处。
 - 运行验证。
 
 ## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>使用通用映像部署 Azure VM
@@ -31,7 +31,7 @@ ms.locfileid: "89647818"
 
 本部分介绍如何创建和部署用户提供的虚拟机 (VM) 映像。 为此，可以从 Azure 部署的虚拟硬盘提供操作系统和数据磁盘 VHD 映像。 这些步骤使用通用 VHD 部署 VM。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 将通用操作系统 VHD 和数据磁盘 Vhd 上传到 Azure 存储帐户。
 3. 在主页上，选择 " **创建资源**"，搜索 "模板部署"，然后选择 " **创建**"。
 4. 选择“在编辑器中生成自己的模板”。
@@ -599,7 +599,9 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
 
 使用最后一个屏幕可以提供详细信息，例如 Linux VM 映像的 SSH 访问信息，以及在查找异常时对任何失败评估的说明。
 
-最后，请选择“生成报告”下载已执行的测试案例的测试结果和日志文件，以及调查表的答案。 将结果保存在与 VHD 相同的容器中。
+最后，请选择“生成报告”下载已执行的测试案例的测试结果和日志文件，以及调查表的答案。 
+> [!Note]
+> 几个出版商的情况下，需要锁定 Vm，因为 VM 上安装了防火墙等软件。 在这种情况下，发布者可以在此处下载[认证的测试工具](https://aka.ms/AzureCertificationTestTool)，并在[Marketplace 发布者支持](https://aka.ms/marketplacepublishersupport)中提供报表
 
 ## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>如何使用 PowerShell 来使用自测 API
 
@@ -734,6 +736,6 @@ CURL POST -H “Content-Type:application/json”
 
 ![来自卷调用的 JSON 结果。](media/vm/test-results-json-viewer-3.png)
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - 阅读 [常见的 SAS URI 问题和修补程序](common-sas-uri-issues.md)。

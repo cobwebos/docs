@@ -2,22 +2,24 @@
 title: 指定 Service Fabric 服务终结点
 description: 如何在服务清单中描述终结点资源，包括如何设置 HTTPS 终结点
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.openlocfilehash: 8fdd95a7c0390c987b7c59663e0ee12e4a4a968e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267799"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
-服务清单允许声明或更改服务要使用的资源而无需更改已编译的代码。 Service Fabric 支持对服务的终结点资源进行配置。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定资源的访问。 资源的声明允许在部署时更改这些资源，这意味着服务不需要引入新的配置机制。 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
+使用清单文件定义和版本控制 Service Fabric 的应用程序和服务。 有关 ServiceManifest.xml 和 ApplicationManifest.xml 的更高级别概述，请参阅 [Service Fabric 应用程序清单和服务清单](service-fabric-application-and-service-manifests.md)。
+
+服务清单允许声明或更改服务要使用的资源而无需更改已编译的代码。 Service Fabric 支持对服务的终结点资源进行配置。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定资源的访问。 资源的声明允许在部署时更改这些资源，这意味着服务不需要引入新的配置机制。 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*，并在 [servicefabricservicemodel.xsd 架构文档](service-fabric-service-model-schema.md)中进行了介绍。
 
 ## <a name="endpoints"></a>终结点
 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 例如，可以查看本段落后面提供的清单代码段中指定的终结点 *ServiceEndpoint1* 。 此外，服务还可以请求在资源中使用特定端口。 在不同群集节点上运行的服务副本可以分配不同的端口号，而运行在同一节点上的服务副本共享同一个端口。 之后服务副本可根据需要将这些端口用于复制和侦听客户端请求。
 
-激活指定 https 终结点的服务后，Service Fabric 将设置端口的访问控制项，将指定的服务器证书绑定到端口，还会向证书的私钥授予该服务作为权限运行的标识。 每次启动 Service Fabric 时，或通过升级更改应用程序的证书声明时，都会调用激活流。 还会监视终结点证书的更改/续订，并根据需要定期重新应用相应的权限。
+激活指定 https 终结点的服务时，Service Fabric 会设置该端口的访问控制项，将指定的服务器证书绑定到该端口，还会授予该服务作为证书私钥的权限运行的标识。 每次启动 Service Fabric 时，或通过升级更改应用程序的证书声明时，都会调用激活流。 还会监视端点证书的更改/续订，并根据需要定期重新应用权限。
 
 服务终止后，Service Fabric 会清理终结点访问控制条目，并删除证书绑定。 但是，任何应用于证书私钥的权限都不会被清除。
 
@@ -155,14 +157,16 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 
 对于 Linux 群集，**MY** 存储默认为文件夹 **/var/lib/sfcerts**。
 
-## <a name="port-acling-for-http-endpoints"></a>HTTP 终结点的端口 Acl
-默认情况下，Service Fabric 将自动使用指定的 ACL HTTP （S）终结点。 如果终结点没有关联的[SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) ，且 Service Fabric 配置为使用具有管理员权限的帐户运行，则**不**会执行自动 acl。
+有关使用 HTTPS 终结点的完整应用程序的示例，请参阅 [使用 Kestrel 将 https 终结点添加到 ASP.NET Core WEB API 前端服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest)。
+
+## <a name="port-acling-for-http-endpoints"></a>HTTP 终结点的端口 ACL 操作
+Service Fabric 将对默认指定的 HTTP(S) 终结点自动执行 ACL。 如果终结点没有关联的[SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) ，且 Service Fabric 配置为使用具有管理员权限的帐户运行，则**不**会执行自动 acl。
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>重写 ServiceManifest.xml 中的终结点
 
-在 ApplicationManifest 中，添加一个 ResourceOverrides 部分，作为 ConfigOverrides 部分的同级。 在本部分中，可以为服务清单中指定的资源部分中的终结点部分指定替代。 运行时 5.7.217/SDK 2.7.217 及更高版本支持替代终结点。
+在 Applicationmanifest.xml 中，添加 ResourceOverrides 节，这将是 ConfigOverrides 节的同级。 在本部分中，可以为服务清单中指定的资源部分中的终结点部分指定替代。 运行时 5.7.217/SDK 2.7.217 及更高版本支持替代终结点。
 
-若要使用 ApplicationParameter 重写 ServiceManifest 中的终结点，请更改 ApplicationManifest，如下所示：
+若要使用 ApplicationParameters 重写 Servicemanifest.xml 中的终结点，请更改 Applicationmanifest.xml，如下所示：
 
 在 ServiceManifestImport 部分添加一个新部分“ResourceOverrides”。
 
@@ -194,13 +198,13 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
   </Parameters>
 ```
 
-部署应用程序时，可以传入这些值作为 ApplicationParameter。  例如：
+部署应用程序时，可以将这些值作为 ApplicationParameters 传入。  例如：
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-注意：如果为 ApplicationParameters 提供的值为空，将返回到 ServiceManifest 中为对应 EndPointName 提供的默认值。
+注意：如果为给定的 ApplicationParameter 提供的值为空，则返回到 Servicemanifest.xml 中为相应的终结点提供的默认值。
 
 例如：
 
@@ -214,6 +218,18 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
   </Resources>
 ```
 
-并且应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 仍由 ServiceFabric 决定端口。 而协议将为 TCP。
+假设应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 端口将由 ServiceFabric 决定，协议为 tcp。
 
-假设指定了错误值。 例如，对于“端口”，指定了字符串值“Foo”而不是 int。New-ServiceFabricApplication 命令将失败并返回错误：“ResourceOverrides”节中名为“ServiceEndpoint1”的替代参数的属性“Port1”无效。 指定的值为“Foo”，而要求的值为“int”。
+假设指定了错误值。 假设端口指定了字符串值 "Foo" 而不是 int。 Get-servicefabricapplication 命令将失败并出现错误： `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+
+## <a name="next-steps"></a>后续步骤
+
+本文介绍了如何在 Service Fabric 的服务清单中定义终结点。 有关更多详细示例，请参阅：
+
+> [!div class="nextstepaction"]
+> [应用程序和服务清单示例](https://docs.microsoft.com/azure/service-fabric/service-fabric-manifest-examples.md)
+
+有关在 Service Fabric 群集上打包和部署现有应用程序的演练，请参阅：
+
+> [!div class="nextstepaction"]
+> [打包现有可执行文件并将其部署到 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-existing-app.md)

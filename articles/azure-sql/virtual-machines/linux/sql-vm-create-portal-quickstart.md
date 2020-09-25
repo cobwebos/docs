@@ -5,17 +5,17 @@ services: virtual-machines-linux
 author: MashaMSFT
 ms.date: 10/22/2019
 tags: azure-service-management
-ms.topic: conceptual
+ms.topic: quickstart
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: MT
+ms.openlocfilehash: e1a9d2722987464b1bb3c8b1489a2d1258a41d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273074"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,7 +72,7 @@ ms.locfileid: "87284347"
 1. 然后键入或选择以下值：
    * **区域**：选择合适的 Azure 区域。
    * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
-   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅[vm 大小](../../../virtual-machines/sizes.md)。
+   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [VM 大小](../../../virtual-machines/sizes.md)。
 
      ![选择 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "87284347"
 
 1. 在后面的其他选项卡中对设置进行任何所需的更改，或保留默认设置。
     * **磁盘**
-    * **网络**
+    * **联网**
     * **Management**
     * **来宾配置**
     * **标记**

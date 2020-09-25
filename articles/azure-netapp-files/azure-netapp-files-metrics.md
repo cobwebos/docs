@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707775"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325549"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp 文件的指标
 
@@ -38,20 +38,23 @@ Azure NetApp 文件提供了有关已分配存储、实际存储使用情况、�
     容量池中的所有卷使用的逻辑空间 () 。  
 
 - *池的总快照大小*    
-    池中所有卷的快照大小之和。
+    池内所有卷的快照大小之和。
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>卷的使用情况指标
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- *卷分配大小*   
+    卷的预配大小
+- *卷配额大小*    
+    ) 为卷设置 (配额大小。   
 - *卷消耗大小*   
-    卷中使用的总逻辑空间 (GiB) 。  
+    卷的逻辑大小 (使用的字节数) 。  
     此大小包括活动文件系统和快照使用的逻辑空间。  
 - *卷快照大小*   
-   卷中的快照使用的增量逻辑空间。  
+   卷中所有快照的大小。  
 
 ## <a name="performance-metrics-for-volumes"></a>卷的性能指标
 
@@ -63,11 +66,28 @@ Azure NetApp 文件提供了有关已分配存储、实际存储使用情况、�
     每秒读取到卷的次数。
 - *写入 IOPS*   
     每秒向卷进行写入的次数。
+- *读取 MiB/秒*   
+    读取吞吐量（以字节/秒为单位）。
+- *写入 MiB/秒*   
+    写入吞吐量（以字节/秒为单位）。
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>卷复制指标
 
 - *卷复制状态是否正常*   
-    复制关系的条件。 
+    复制关系的条件。 正常状态表示为 `1` 。 不正常状态表示为 `0` 。
 
 - *卷复制传输*    
     卷复制的状态是否为 "正在传输"。 

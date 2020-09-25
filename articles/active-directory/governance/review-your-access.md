@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292718"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274004"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审自己对组或应用程序的访问权限
 
@@ -65,13 +65,13 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
     如果请求是评审他人的访问权限，则页面内容会有所不同。 有关详细信息，请参阅[评审对组或应用程序的访问权限](perform-access-review.md)。
 
-    ![打开访问评审，系统会询问你是否仍需访问某个组](./media/review-your-access/perform-access-review.png)
+    ![屏幕截图，显示打开的访问评审，询问是否仍需要访问组。](./media/review-your-access/perform-access-review.png)
 
 1. 单击“是”保留访问权限，或者单击“否”删除访问权限。
 
 1. 如果单击“是”，你可能需要在“原因”框中指出原因。 
 
-    ![完成访问评审，系统会询问你是否仍需访问某个组](./media/review-your-access/perform-access-review-submit.png)
+    ![屏幕截图，显示已完成的访问评审，询问你是否仍需要访问组，并选择 "是"。](./media/review-your-access/perform-access-review-submit.png)
 
 1. 单击“提交” 。
 
@@ -103,7 +103,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
 4. 继续**执行访问评审**部分
 
-### <a name="email"></a>Email
+### <a name="email"></a>电子邮件
 
 >[!IMPORTANT]
 > 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 添加 azure-noreply@microsoft.com 到安全收件人列表，确保收到所有电子邮件。

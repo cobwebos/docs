@@ -2,20 +2,20 @@
 title: Azure 托管磁盘的服务器端加密 - PowerShell
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 可以使用 Microsoft 托管密钥加密你的托管磁盘，也可以使用客户托管密钥以通过自己的密钥管理所做的加密。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815583"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274769"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>适用于 PowerShell 的 Azure 磁盘存储服务器端加密
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>针对 PowerShell 的 Azure 磁盘存储的服务器端加密
 
 服务器端加密 (SSE) 可保护数据，并帮助实现组织安全性和符合性承诺。 将存储在 Azure 托管磁盘（OS 和数据磁盘）上的数据保存到云时，SSE 在默认情况下会自动对这些数据进行静态加密。 
 
@@ -47,6 +47,10 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 - 如果为磁盘启用了此功能，则无法禁用它。
     如果需要解决此问题，则必须[复制所有数据](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)到完全不同的托管磁盘（未使用客户托管密钥）。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>支持的区域
+
+客户管理的密钥在托管磁盘可用的所有区域中都可用。
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>主机加密 - VM 数据的端到端加密
 

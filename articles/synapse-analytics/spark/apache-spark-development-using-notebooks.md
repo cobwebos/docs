@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 0f6f193f531be746d3ef4920b86855ffa49efda2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260438"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio (预览版) 笔记本
 
@@ -34,7 +34,7 @@ Synapse Studio (预览版) 笔记本是一个 web 界面，用于创建包含实
 
 可通过两种方法创建笔记本。 可以从“对象资源管理器”创建新笔记本或将现有笔记本导入到 Azure Synapse 工作区。 Azure Synapse Studio 笔记本可识别标准 Jupyter Notebook IPYNB 文件。
 
-![synapse-create-import-notebook](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![创建导入笔记本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
 ## <a name="develop-notebooks"></a>开发笔记本
 
@@ -80,7 +80,7 @@ Azure Synapse Studio 笔记本支持四种 Apache Spark 语言：
 
 下图是一个示例，说明如何在 Spark(Scala) 笔记本中使用 %%pyspark magic 命令编写 PySpark 查询，或使用 %%sql magic 命令编写 SparkSQL 查询  。 请注意，笔记本的主要语言设置为 pySpark。
 
-   ![synapse-spark-magics](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![Synapse spark 幻命令](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>使用临时表跨语言引用数据
 
@@ -125,12 +125,12 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
 可以使用文本单元格工具栏中的格式按钮执行常见的 markdown 操作。 它包括将文本设为粗体、将文本设为斜体、插入代码片段、插入未排序列表、插入已排序列表以及插入 URL 中的图像。
 
-  ![synapse-text-cell-toolbar](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![Synapse 文本单元工具栏](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
 ### <a name="undo-cell-operations"></a>撤消单元格操作
-单击“撤消”按钮或按 Ctrl+Z 可撤消最近的单元格操作 。 现在可以撤销最近的 20 个历史单元格操作。 
+选择 " **撤消** " 按钮或按 **Ctrl + Z** 撤销最近的单元格操作。 现在可以撤销最近的 20 个历史单元格操作。 
 
-   ![synapse-undo-cells](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+   ![Synapse 撤消单元](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
 ### <a name="move-a-cell"></a>移动单元格
 
@@ -149,13 +149,13 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
    ![delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
 ### <a name="collapse-a-cell-input"></a>折叠单元格输入
-单击当前单元格底部的箭头按钮，将其折叠。 要展开，请在单元格处于折叠状态时单击箭头按钮。
+选择当前单元格底部的箭头按钮以将其折叠。 若要展开它，请在折叠单元格时选择箭头按钮。
 
    ![collapse-cell-input](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
 ### <a name="collapse-a-cell-output"></a>折叠单元格输出
 
-单击当前单元格输出左上角的“折叠输出”按钮，将其折叠。 要展开，请在单元格输出处于折叠状态时单击“显示单元格输出”。
+选择当前单元格输出的左上角的 " **折叠输出** " 按钮，以将其折叠。 若要展开它，请选择 "在单元格输出处于折叠状态时 **显示单元格输出** "。
 
    ![collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
@@ -180,7 +180,7 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
 
 ### <a name="run-all-cells"></a>运行所有单元格
-单击“全部运行”按钮，按顺序运行当前笔记本中的所有单元格。
+选择 " **全部运行** " 按钮以按顺序运行当前笔记本中的所有单元格。
 
    ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
@@ -192,7 +192,7 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
 
 ### <a name="cancel-all-running-cells"></a>取消所有正在运行的单元
-单击 " **全部取消** " 按钮可取消正在运行的单元格或在队列中等待的单元格。 
+选择 " **全部取消** " 按钮可取消正在运行的单元格或在队列中等待的单元格。 
    ![全部取消单元](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 ### <a name="cell-status-indicator"></a>单元格状态指示器
@@ -204,7 +204,7 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 ### <a name="spark-progress-indicator"></a>Spark 进度指示器
 
 Azure Synapse Studio 笔记本仅基于 Spark。 代码单元格在 Spark 池上远程执行。 Spark 作业进度指示器提供有实时进度栏，可帮助你了解作业执行状态。
-每个作业或阶段的任务数有助于识别 spark 作业的并行级别。 还可以通过单击作业 (或阶段) 名称上的链接，深入了解特定作业 (或阶段) 的 Spark UI。
+每个作业或阶段的任务数有助于识别 spark 作业的并行级别。 你还可以通过选择作业 (或阶段) 名称上的链接，深入了解特定作业 (或阶段) 的 Spark UI。
 
 
 ![spark-progress-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -215,7 +215,7 @@ Azure Synapse Studio 笔记本仅基于 Spark。 代码单元格在 Spark 池上
 
 [![会话管理](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
-Spark 会话推荐器现可用于 spark 会话配置面板。 你可以直接从 "会话配置" 面板中选择一个 spark 池，并查看正在使用的节点数以及剩余的执行器数量。 这些信息可帮助你适当地设置会话大小，而不是来回修改会话大小。
+Spark 会话推荐器现已在 Spark 会话配置面板上提供。 你可以直接从 "会话配置" 面板中选择一个 Spark 池，并查看正在使用的节点数以及剩余的执行器数量。 此信息可帮助你设置适当的会话大小，而不是来回修改它。
 
 ![会话-建议](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
@@ -277,23 +277,24 @@ df = spark.read.option("header", "true") \
 
 表格结果视图附带了创建条形图、折线图、饼图、散点图和分区图的选项。 无需编写代码即可可视化数据。 可以在“图表选项”中自定义这些图表。 
 
-默认情况下，在呈现的表视图中显示 %%sql magic 命令的输出。 您可以调用 <code>display(df)</code> Spark DataFrames 或弹性分布式数据集 (RDD) 函数来生成呈现的表视图。
+默认情况下，在呈现的表视图中显示 %%sql magic 命令的输出。 可以 <code>display(df)</code> 在 Spark DataFrames、Pandas DataFrames、List 或弹性分布式数据集上调用， (RDD) 函数生成呈现的表视图。
 
    [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
 ### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>可视化大型数据集中的内置图表 
 
-默认情况下，该 <code>display(df)</code> 函数将只接受数据的前1000行来呈现图表。 检查 **所有结果的聚合** ，并单击 " **应用** " 按钮，将从整个数据集中应用图表生成。 当图表设置发生更改时，将触发 spark 作业，完成计算并呈现图表需要一段时间。 
+默认情况下，该 <code>display(df)</code> 函数将只接受数据的前1000行来呈现图表。 选中 "对 **所有结果的聚合** " 并选择 " **应用** " 按钮，将从整个数据集中应用图表生成。 当图表设置发生更改时，将触发 spark 作业，完成计算并呈现图表需要一段时间。 
     [![内置-图表-聚合-全部](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
 
 
+
 ### <a name="visualize-data-statistic-information"></a>可视化数据统计信息
-你可以使用 <code>display(df, summary = true)</code> 来检查给定 Spark 数据帧的统计信息摘要，其中包括列名、列类型、唯一值和每个列的缺失值。 您还可以选择特定列，查看其最小值、最大值、平均值和标准偏差。
+你可以使用 <code>display(df, summary = True)</code> 来检查给定 Spark 数据帧的统计信息摘要，其中包括列名、列类型、唯一值和每个列的缺失值。 您还可以选择特定列，查看其最小值、最大值、平均值和标准偏差。
     [![内置-图表-摘要 ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
 
 ### <a name="render-html-or-interactive-libraries"></a>呈现 HTML 或交互式库
 
-可以使用 displayHTML() 来呈现 HTML 或交互库，如 bokeh 。
+使用**displayHTML ( # B1 **，可以呈现 HTML 代码（包括 JAVASCRIPT、CSS、D3 或交互式库，如**bokeh**）。
 
 下图是使用 bokeh 在地图上绘制字形的示例。
 
@@ -349,7 +350,7 @@ displayHTML(html)
    ![notebook-properties](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>magic 命令
-可以在 Azure Synapse Studio 笔记本中使用熟悉的 Jupyter magic 命令。 查看以下列表了解当前可用的 magic 命令。 告诉我们 [GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new) ，以便我们可以继续构建更复杂的命令来满足你的需求。
+可以在 Azure Synapse Studio 笔记本中使用熟悉的 Jupyter 幻命令。 查看以下列表作为当前可用的幻命令。 告诉我们 [GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new) ，以便我们可以继续构建更复杂的命令来满足你的需求。
 
 可用行 magic： [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)， [% time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
@@ -360,9 +361,9 @@ displayHTML(html)
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>向管道添加笔记本
 
-单击右上角的 " **添加到管道** " 按钮，将笔记本添加到现有管道或创建新管道。
+选择右上角的 " **添加到管道** " 按钮，将笔记本添加到现有管道或创建新管道。
 
-![添加到管道](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+![将笔记本添加到管道](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>指定参数单元
 
@@ -370,13 +371,13 @@ displayHTML(html)
 
 ![切换-参数](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
-Azure 数据工厂将查找参数单元，并将此单元格视为执行时传入的参数的默认值。 执行引擎将使用输入参数在参数单元的下方添加一个新的单元格，以便覆盖默认值。 如果未指定参数单元，则插入的单元格将插入笔记本的顶部。
+Azure 数据工厂将查找参数单元，并将此单元格视为执行时传入的参数的默认值。 执行引擎将使用输入参数在参数单元下面添加一个新的单元格，以覆盖默认值。 如果未指定参数单元，则插入的单元格将插入笔记本的顶部。
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>从管道分配参数值
 
 创建带参数的笔记本后，可以使用 Azure Synapse 笔记本活动通过管道执行此操作。 将活动添加到管道画布后，你将能够在 "**设置**" 选项卡上的 "**基本参数**" 部分下设置参数值。 
 
-![赋值-参数](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+![分配参数](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
 分配参数值时，可以使用 [管道表达式语言](../../data-factory/control-flow-expression-language-functions.md) 或 [系统变量](../../data-factory/control-flow-system-variables.md)。
 
@@ -386,11 +387,11 @@ Azure 数据工厂将查找参数单元，并将此单元格视为执行时传�
 
 与 Jupyter Notebooks 类似，Azure Synapse Studio 笔记本具有模式用户界面。 键盘根据笔记本单元格的具体模式执行不同的任务。 Synapse Studio 笔记本支持给定代码单元格的以下两种模式：命令模式和编辑模式。
 
-1. 当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 按 `ESC` 或使用鼠标单击单元格编辑器区域外部，进入命令模式。
+1. 当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 通过按 `ESC` 或使用鼠标在单元格的编辑器区域外选择来进入命令模式。
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，您可以在单元格中键入。 按 `Enter` 或使用鼠标单击单元格编辑器区域，进入编辑模式。
+2. 编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，您可以在单元格中键入。 按下 `Enter` 或使用鼠标在单元格的编辑器区域中进行选择，以进入编辑模式。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

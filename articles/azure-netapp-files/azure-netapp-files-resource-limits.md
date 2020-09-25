@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325481"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -44,7 +44,9 @@ ms.locfileid: "90708098"
 |  单个卷的最大大小     |    100 TiB    |    否    |
 |  单个文件的最大大小     |    16 TiB    |    否    |    
 |  单个目录中目录元数据的最大大小      |    320 MB    |    否    |    
-|  每卷 ([maxfiles](#maxfiles)) 的最大文件数     |    1 亿    |    是    |   
+|  每卷 ([maxfiles](#maxfiles)) 的最大文件数     |    1 亿    |    是    |    
+|  手动 QoS 卷的最小分配吞吐量     |    1 MiB/秒   |    否    |    
+|  手动 QoS 卷的最大分配吞吐量     |    4500 MiB/秒    |    否    |    
 |  跨区域复制数据保护卷 (目标卷的数量)      |    5    |    是    |     
 
 有关详细信息，请参阅 [容量管理常见问题](azure-netapp-files-faqs.md#capacity-management-faqs)。

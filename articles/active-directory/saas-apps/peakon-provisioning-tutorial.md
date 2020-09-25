@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: b16ca0c396e2c406677af351cf6b1de2a3499353
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 06fca39b1170d36f22040ccf48eb02f948e47e41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543663"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304628"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>教程：为 Peakon 配置自动用户预配
 
@@ -56,11 +56,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 2.  选择 " **集成**"。
     
-    ![Peakon-设置](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
+    ![带有称为 "集成" 选项的配置选项的屏幕截图。](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
 3.  启用 **员工预配**。
 
-    ![Peakon-设置](media/Peakon-provisioning-tutorial/peakon05.png)
+    !["员工预配" 部分的屏幕截图，其中启用了 "启用" 选项。](media/Peakon-provisioning-tutorial/peakon05.png)
 
 4.  复制 **SCIM 2.0 URL** 和 **OAuth 持有者令牌**的值。 这些值将输入到 Azure 门户中的 Peakon 应用程序的 "设置" 选项卡上的 " **租户 URL** " 和 " **机密令牌** " 字段。
 
@@ -105,11 +105,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 "**管理员凭据**" 部分中，输入前面的**租户 URL**和**机密令牌**中检索到的**SCIM 2.0 URL**和**OAuth 持有者令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Peakon。 如果连接失败，请确保 Peakon 帐户具有管理员权限，然后重试。
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“保存” 。
+8. 单击“ **保存**”。
 
 9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Peakon**"。
 

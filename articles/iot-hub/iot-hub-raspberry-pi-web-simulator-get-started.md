@@ -1,5 +1,5 @@
 ---
-title: 将 Raspberry Pi web 模拟器连接到 Azure IoT 中心（Node.js）
+title: '将 Raspberry Pi web 模拟器连接到 Azure IoT 中心 ( # A0) '
 description: 将 Raspberry Pi Web 模拟器连接到 Azure IoT 中心，以供 Raspberry Pi 将数据发送到 Azure 云。
 author: wesmc7777
 manager: philmea
@@ -12,13 +12,13 @@ ms.date: 04/11/2018
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-- devx-track-javascript
-ms.openlocfilehash: d1b3858e62902a5c1c841de7618966e695b66425
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 702dee108577665eded6dd1a92203236d74e866e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308324"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心 (Node.js)
 

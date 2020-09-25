@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 963f89c99d71afbebbe122e3c7d8b3227dc4a8be
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278883"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>教程：为 RFPIO 配置自动用户预配
 
@@ -66,11 +66,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 4.  确保启用了 **自动用户预配** 。 单击 " **生成 SCIM API 令牌**"。
 
-    ![RFPIO 创建令牌](media/rfpio-provisioning-tutorial/generate.png)
+    ![S C I M 部分的屏幕截图，其中包含生成的 C I M A P I TOKEN 选项，称为 out。](media/rfpio-provisioning-tutorial/generate.png)
 
 5.  保存 **SCIM API 令牌** ，因为出于安全目的，将不再显示此令牌。 此值将在 Azure 门户的 RFPIO 应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。
 
-    ![RFPIO 创建令牌](media/rfpio-provisioning-tutorial/auth.png)
+    ![S C I M 部分的屏幕截图，其中显示了选择 "提交" 后显示的警告对话框。](media/rfpio-provisioning-tutorial/auth.png)
 
 ## <a name="add-rfpio-from-the-gallery"></a>从库中添加 RFPIO
 
@@ -113,11 +113,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` **租户 URL**"。 例如，值为 `https://Azure-test1.rfpio.com/rfpserver/scim/v2` 。 输入先前在**机密令牌**中检索到的**SCIM API 标记**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 RFPIO。 如果连接失败，请确保 RFPIO 帐户具有管理员权限，然后重试。
 

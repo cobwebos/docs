@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325617"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFSv 4.1 默认域
 
@@ -35,7 +35,7 @@ NFSv4 介绍身份验证域的概念。 Azure NetApp 文件目前支持从服务
 ## <a name="steps"></a>步骤 
 
 1. `/etc/idmapd.conf`在 NFS 客户端上编辑文件。   
-    取消注释行 `#Domain` （即， `#` 从行中删除），并将值更改 `localdomain` 为 `defaultv4iddomain.com` 。 
+    取消注释行 `#Domain` (即， `#` 从行) 中删除，并将值更改 `localdomain` 为 `defaultv4iddomain.com` 。 
 
     初始配置： 
     
@@ -47,30 +47,30 @@ NFSv4 介绍身份验证域的概念。 Azure NetApp 文件目前支持从服务
 
 2. 卸载任何当前装载的 NFS 卷。
 3. 更新 `/etc/idmapd.conf` 文件。
-4. 重新启动 `rpcbind` 主机上的服务（ `service rpcbind restart` ），或只重启主机。
+4. `rpcbind`请在主机上重新启动服务 (`service rpcbind restart`) ，或者只是重新启动主机。
 5. 根据需要装载 NFS 卷。   
 
-    请参阅[装入或卸载 Windows 或 Linux 虚拟机的卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 
+    请参阅 [装入或卸载 Windows 或 Linux 虚拟机的卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 
 
 以下示例显示了生成的用户/组更改： 
 
-![NFSv 4.1 的生成配置](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![显示生成的用户/组更改示例的屏幕截图。](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
 如示例所示，用户/组现在已从更改 `nobody` 为 `root` 。
 
-## <a name="behavior-of-other-non-root-users-and-groups"></a>其他（非根）用户和组的行为
+## <a name="behavior-of-other-non-root-users-and-groups"></a>其他 (非根) 用户和组的行为
 
-Azure NetApp 文件支持在 NFSv 4.1 卷中具有与文件或文件夹关联的权限的本地用户（在主机上创建的用户）。 但是，该服务目前不支持将用户/组映射到多个节点。 因此，在一个主机上创建的用户在默认情况下不会映射到在另一台主机上创建的用户。 
+Azure NetApp 文件支持本地用户 (用户本地创建的用户) 在该主机上具有与 NFSv 4.1 卷中的文件或文件夹相关联的权限。 但是，该服务目前不支持将用户/组映射到多个节点。 因此，在一个主机上创建的用户在默认情况下不会映射到在另一台主机上创建的用户。 
 
-在下面的示例中， `Host1` 有三个现有的测试用户帐户（ `testuser01` 、 `testuser02` 、 `testuser03` ）： 
+在下面的示例中， `Host1` 有三个现有的测试用户帐户 (`testuser01` 、 `testuser02` `testuser03`) ： 
 
-![NFSv 4.1 的生成配置](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![显示 Host1 有三个现有测试用户帐户的屏幕截图。](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
 在上 `Host2` ，请注意，尚未创建测试用户帐户，但这两个主机上装载了相同的卷：
 
 ![NFSv 4.1 的生成配置](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
 
-## <a name="next-step"></a>后续步骤 
+## <a name="next-step"></a>下一步 
 
 [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 

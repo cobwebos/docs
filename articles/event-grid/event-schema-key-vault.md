@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: f6e2bdfb2000f3a4c4a8f91eee23348d9cc9c766
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324070"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
@@ -78,17 +78,12 @@ Azure Key Vault 帐户生成以下事件类型：
 |标题  |说明  |
 |---------|---------|
 | [通过 Azure 事件网格监视 Key Vault 事件](../key-vault/general/event-grid-overview.md) | 概述 Key Vault 与事件网格的集成。 |
-| [教程：用事件网格创建和监视 Key Vault 事件](../key-vault/general/event-grid-tutorial.md) | 了解如何为 Key Vault 设置事件网格通知。 |
+| [教程：用事件网格创建和监视 Key Vault 事件](../key-vault/general/event-grid-logicapps.md) | 了解如何为 Key Vault 设置事件网格通知。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
 * 有关如何创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-* 若要了解有关 Key Vault 与事件网格集成的详细信息，请参阅 [通过 Azure 事件网格监视 Key Vault](../key-vault/general/event-grid-overview.md)。
-* 有关 Key Vault 与事件网格集成的教程，请参阅 [使用 Azure 事件网格接收和响应 Key Vault 通知](../key-vault/general/event-grid-tutorial.md)。
-* 若要获取有关 Key Vault 和 Azure 自动化的其他指南，请参阅：
-    - [什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
-    - [通过 Azure 事件网格监视 Key Vault](../key-vault/general/event-grid-overview.md)
-    - [通过 Azure 事件网格接收和响应 Key Vault 通知](../key-vault/general/event-grid-tutorial.md)
-    - [Azure 自动化概述](../automation/index.yml)
+* 有关密钥保管库的详细信息，请参阅 [什么是 Azure Key Vault？](../key-vault/general/overview.md)
+

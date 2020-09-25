@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261373"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业应用商店合作伙伴和客户使用情况归属
 
@@ -268,39 +268,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>获取支持
 
-根据你面临的问题，我们提供了两个支持通道。
-
-如果在合作伙伴中心遇到任何问题，如查看客户使用情况归因报告或登录问题，请在此处创建面向合作伙伴中心支持团队的支持请求：[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
-
-![获取支持页的屏幕截图](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-如果你需要有关市场加入和/或客户使用情况归因的常规帮助（例如，如何设置客户使用情况归因），请遵循以下步骤：
-
-1. 转到[支持页](https://go.microsoft.com/fwlink/?linkid=844975)。
-
-1. 在“问题类型”下，选择“市场加入”。 
-
-1. 选择问题的“类别”：
-
-   - 对于使用情况关联的问题，请选择“其他”。
-   - 有关 Azure Marketplace 的访问问题，请选择 " **访问问题**"。
-
-     ![选择问题类别](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. 选择“开始请求”。
-
-1. 在下一页上输入所需的值。 选择“继续”。
-
-1. 在下一页上输入所需的值。
-
-   > [!IMPORTANT]
-   > 在“事件标题”框中，输入“ISV 使用情况跟踪”。  请详细描述问题。
-
-   ![在事件标题中输入“ISV 使用情况跟踪”](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. 填写表单，然后选择“提交”。
-
-你还可以从 Microsoft 合作伙伴技术顾问那里获得有关技术预销售、部署和应用开发方案的技术指导，以了解并纳入客户使用情况归因。
+请在 [合作伙伴中心的支持商业市场计划](./partner-center-portal/support.md)中了解商用 marketplace 中的支持选项。
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>如何提交技术咨询请求
 

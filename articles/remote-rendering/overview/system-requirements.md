@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323719"
 ---
 # <a name="system-requirements"></a>系统要求
 
@@ -64,12 +64,23 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 
 有关网络问题的疑难解答，请参阅 [故障排除指南](../resources/troubleshoot.md#unstable-holograms)。
 
+### <a name="network-ports"></a>网络端口
+
+确保防火墙（在设备上、路由器内部等）未阻止以下端口：
+
+| 端口              | 协议 | 允许    | 说明 |
+|-------------------|----------|----------|-------------|
+| 50051             | TCP      | 传出 | 初始连接 (HTTP 握手)  |
+| 8266              | UDP      | 传出 | 数据传输 |
+| 5000、5433、8443  | TCP      | 传出 | [ArrInspector 工具](../resources/tools/arr-inspector.md)必需的|
+
+
 ## <a name="software"></a>软件
 
 必须安装以下软件：
 
 * 最新版本的 **Visual Studio 2019** [ (下载) ](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [适用于混合现实的 Visual Studio Tools](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
+* [适用于混合现实的 Visual Studio tools](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
   * **使用 C++ 的桌面开发**
   * **通用 Windows 平台 (UWP) 开发**
 * **Windows SDK 10.0.18362.0** [ (下载) ](https://developer.microsoft.com/windows/downloads/windows-10-sdk)

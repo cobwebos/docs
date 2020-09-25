@@ -54,6 +54,7 @@
     - name: 企业客户的使用情况数据
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: 操作指南
+  expanded: true
   items:
     - name: 确定要购买的内容
       items:

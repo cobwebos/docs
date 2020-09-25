@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324325"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 
@@ -124,31 +124,35 @@ ms.locfileid: "89440535"
 
 ## <a name="staged-copy"></a>暂存复制
 
-将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 暂存在以下情况下特别有用：
+将数据从源数据存储复制到接收器数据存储时，可以选择使用 Azure Blob 存储或 Azure Data Lake Storage Gen2 作为临时过渡存储。 暂存在以下情况下特别有用：
 
-- **你要通过 PolyBase 将数据从各种数据存储引入 Azure Synapse Analytics（以前称为 SQL 数据仓库）。** Azure Synapse Analytics 使用 PolyBase 作为高吞吐量机制，将大量数据加载到 Azure Synapse Analytics 中。 源数据必须位于 Blob 存储或 Azure Data Lake Store 中，并且必须满足其他条件。 从 Blob 存储或 Azure Data Lake Store 以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，Azure 数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据有效地加载到 Azure Synapse Analytics 中。 有关详细信息，请参阅 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)中。
+- **你希望通过 PolyBase 将数据从各种数据存储引入 Azure Synapse Analytics (以前的 SQL 数据仓库) ，从/向雪花复制数据，或从 Amazon Redshift/HDFS 之前引入数据。** 了解更多详细信息：
+  - [使用 PolyBase 将数据加载到 Azure Synapse Analytics 中](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)。
+  - [雪花型连接器](connector-snowflake.md)
+  - [Amazon Redshift 连接器](connector-amazon-redshift.md)
+  - [HDFS 连接器](connector-hdfs.md)
+- **由于企业 IT 策略，不希望在防火墙中打开除端口 80 和端口 443 以外的端口。** 例如，将数据从本地数据存储复制到 Azure SQL 数据库或 Azure Synapse Analytics 时，需要为 Windows 防火墙和企业防火墙激活端口1433上的出站 TCP 通信。 在这种情况下，暂存复制可以利用自承载集成运行时，先在端口443上通过 HTTP 或 HTTPS 将数据复制到暂存存储，然后将数据从过渡加载到 SQL 数据库或 Azure Synapse Analytics 中。 在此流中，不需要启用端口 1433。
 - **有时，通过速度慢的网络连接执行混合数据移动（即从本地数据存储复制到云数据存储）需要一段时间。** 为了提高性能，可以使用暂存复制来压缩本地数据，缩短将数据移动到云中的暂存数据存储的时间。 然后，可先在暂存存储中解压缩数据，再将它们加载到目标数据存储。
-- **由于企业 IT 策略，不希望在防火墙中打开除端口 80 和端口 443 以外的端口。** 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure Synapse Analytics 接收器时，需要为 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，暂存复制可以利用自承载集成运行时首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，它可以将数据从 Blob 暂存存储加载到 SQL 数据库或 Azure Synapse Analytics 中。 在此流中，不需要启用端口 1433。
 
 ### <a name="how-staged-copy-works"></a>暂存复制的工作原理
 
-激活暂存功能时，首先将数据从源数据存储复制到暂存 Blob 存储（自带）。 然后，将数据从暂存数据存储复制到接收器数据存储。 Azure 数据工厂自动管理两阶段流。 数据移动完成后，Azure 数据工厂还将清除暂存存储中的临时数据。
+激活暂存功能时，首先将数据从源数据存储复制到过渡存储 (自带 Azure Blob 或 Azure Data Lake Storage Gen2) 。 接下来，将数据从过渡复制到接收器数据存储。 Azure 数据工厂复制活动会自动管理两阶段流，还会在数据移动完成后从临时存储中清除临时数据。
 
 ![暂存复制](media/copy-activity-performance/staged-copy.png)
 
-使用暂存存储激活数据移动时，可指定是否要先压缩数据，再将数据从源数据存储移动到过渡数据存储或暂存数据存储，然后先解压缩数据，再将数据从过渡数据存储或暂存数据移动到接收器数据存储。
+使用临时存储激活数据移动时，可以指定是否要在将数据从源数据存储移至过渡存储之前压缩数据，然后在将数据从临时或暂存数据存储移到接收器数据存储之前解压缩数据。
 
 目前，无论是否使用暂存复制，都无法在通过不同自承载 IR 连接的两个数据存储之间复制数据。 对于这种情况，可以配置两个显式链接的复制活动，将数据从源复制到暂存存储，然后从暂存存储复制到接收器。
 
 ### <a name="configuration"></a>配置
 
-在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 `TRUE` 时，请指定下表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务用于暂存。
+在复制活动中配置 **enableStaging** 设置，以指定是否在将数据加载到目标数据存储之前，将数据暂存到存储中。 将 **enableStaging** 设置为 `TRUE` 时，请指定下表中列出的其他属性。 
 
-| 属性 | 说明 | 默认值 | 必须 |
+| properties | 说明 | 默认值 | 必须 |
 | --- | --- | --- | --- |
 | enableStaging |指定是否要通过过渡暂存存储复制数据。 |False |否 |
-| linkedServiceName |指定 [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 Azure Synapse Analytics。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| path |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |空值 |否 |
+| linkedServiceName |指定 [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties) 或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 链接服务的名称，这指用作过渡暂存存储的存储实例。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
+| path |指定要包含暂存数据的路径。 如果不提供路径，该服务将创建容器以存储临时数据。 |空值 |否 |
 | enableCompression |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
 
 >[!NOTE]
@@ -159,25 +163,24 @@ ms.locfileid: "89440535"
 ```json
 "activities":[
     {
-        "name": "Sample copy activity",
+        "name": "CopyActivityWithStaging",
         "type": "Copy",
         "inputs": [...],
         "outputs": [...],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "OracleSource",
             },
             "sink": {
-                "type": "SqlSink"
+                "type": "SqlDWSink"
             },
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 },
-                "path": "stagingcontainer/path",
-                "enableCompression": true
+                "path": "stagingcontainer/path"
             }
         }
     }

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325398"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 
@@ -47,18 +47,29 @@ ms.locfileid: "85483493"
 
    * **服务级别**   
      此字段显示容量池的目标性能。  
-     指定容量池的服务级别： " [**Ultra**](azure-netapp-files-service-levels.md#Ultra)"、"[**高级**](azure-netapp-files-service-levels.md#Premium)" 或 "[**标准**](azure-netapp-files-service-levels.md#Standard)"。
+     指定容量池的服务级别： " [**Ultra**](azure-netapp-files-service-levels.md#Ultra)"、" [**高级**](azure-netapp-files-service-levels.md#Premium)" 或 " [**标准**](azure-netapp-files-service-levels.md#Standard)"。
 
-   * **规格**     
+    * **规格**     
      指定你购买的容量池的大小。        
      最小容量池大小是 4 TiB。 可以创建大小为 4 TiB 的倍数的池。   
-      
-     ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. 单击 **“确定”** 。
+   * **QoS**   
+     指定容量池是否应使用 **手动** 或 **自动** QoS 类型。  
+
+     请参阅 [存储层次结构](azure-netapp-files-understand-storage-hierarchy.md) 和 [性能注意事项](azure-netapp-files-performance-considerations.md) ，了解 QoS 类型。  
+
+     > [!IMPORTANT] 
+     > 将 **QoS 类型** 设置为 " **手动** " 是永久性的。 不能转换手动 QoS 容量池以使用自动 QoS。 但是，可以转换自动 QoS 容量池以使用手动 QoS。 请参阅 [更改容量池以使用手动 QoS](manage-manual-qos-capacity-pool.md#change-to-qos)。   
+     > 为容量池使用手动 QoS 类型需要注册。 请参阅 [管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md#register-the-feature)。 
+
+    ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+
+4. 单击“创建”。
 
 ## <a name="next-steps"></a>后续步骤 
 
+- [存储层次结构](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md)
-- 有关不同服务级别的价格，请参阅 [Azure NetApp 文件定价页](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Azure NetApp 文件定价页](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md)
 - [将子网委派给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)

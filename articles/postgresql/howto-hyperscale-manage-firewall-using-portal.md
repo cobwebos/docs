@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884322"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275415"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>为 Azure Database for PostgreSQL - 超大规模 (Citus) 管理防火墙规则
 服务器级别防火墙规则可用于管理从指定 IP 地址或 IP 地址范围对超大规模 (Citus) 协调器节点的访问。
@@ -49,7 +49,7 @@ ms.locfileid: "90884322"
 
 ## <a name="connecting-from-azure"></a>从 Azure 连接
 
-有一种简单方法可授予针对 Azure 上托管的应用程序（例如，Azure Web 应用应用程序或在 Azure VM 中运行的应用程序）的超大规模数据库访问权限。 只需在门户中，从“网络”窗格将“允许 Azure 服务和资源访问此服务器组”选项设置“是”，然后点击“保存”即可。
+有一种简单的方法可以向超大规模 () Citus 授予对 (Azure 上托管的应用程序的访问权限，例如 Azure Web Apps 应用程序或在 Azure VM) 中运行的应用程序。 只需在门户中，从“网络”窗格将“允许 Azure 服务和资源访问此服务器组”选项设置“是”，然后点击“保存”即可。
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。

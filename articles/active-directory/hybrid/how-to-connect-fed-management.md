@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274106"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。
@@ -52,11 +52,11 @@ ms.locfileid: "89661256"
    ![修复 AAD 和 ADFS 信任](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. 在“连接到 Azure AD”  页上，提供 Azure AD 的全局管理员凭据，并单击“下一步”  。
-   ![连接到 Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![屏幕截图，显示 "连接到 Azure AD" 页，其中包含输入的示例凭据。](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. 在“远程访问凭据”  页上，输入域管理员的凭据。
 
-   ![远程访问凭据](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![屏幕截图，显示 "远程访问凭据" 页，其中包含输入的示例凭据。](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     单击“下一步”后，Azure AD Connect 会检查证书运行状况，并显示任何问题。 
 
@@ -64,7 +64,7 @@ ms.locfileid: "89661256"
 
     “已准备好配置”页会显示为修复信任而将要执行的操作列表。 
 
-    ![已准备好配置](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![屏幕截图，显示 "准备好配置" 页以及操作列表。](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. 单击“安装”  修复信任。
 
@@ -98,7 +98,7 @@ ms.locfileid: "89661256"
 
 2. 在“连接到 Azure AD”页上，输入 Azure AD 的全局管理员凭据，并单击“下一步”。  
 
-   ![连接到 Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![屏幕截图，显示已输入示例凭据的 "连接到 Azure AD" 页面。](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. 提供域管理员凭据。
 
@@ -106,9 +106,9 @@ ms.locfileid: "89661256"
 
 4. Azure AD Connect 会要求你提供在使用 Azure AD Connect 配置新的 AD FS 场时提供的 PFX 文件的密码。 单击“输入密码”  提供 PFX 文件的密码。
 
-   ![证书密码](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![屏幕截图显示 "指定 SSL 证书" 页，其中打开了 "证书密码" 窗口。](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![指定 TLS/SSL 证书](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![输入 PFX 文件的密码后显示 "指定 SSL 证书" 页的屏幕截图。](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. 在“AD FS 服务器”  页上，输入要添加到 AD FS 场的服务器名称或 IP 地址。
 
@@ -116,9 +116,9 @@ ms.locfileid: "89661256"
 
 6. 单击“下一步”并完成最终“配置”页。   Azure AD Connect 完成将服务器添加到 AD FS 场后，将提供验证连接性的选项。
 
-   ![已准备好配置](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![显示 "准备好配置" 页的屏幕截图，其中包含单击 "安装" 后要完成的操作的列表。](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![安装完成](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![显示 "安装完成" 页的屏幕截图，其中显示了 "已成功验证 Intranet 配置" 消息。 ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>添加 AD FS WAP 服务器 
 
@@ -131,7 +131,7 @@ ms.locfileid: "89661256"
 
 2. 提供 Azure 全局管理员凭据。
 
-   ![连接到 Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![屏幕截图，显示 "连接到 Azure AD" 页，其中包含一个输入的示例用户名和密码。](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. 在“指定 SSL 证书”页上，为使用 Azure AD Connect 配置 AD FS 场时提供的 PFX 文件提供密码。 
    ![证书密码](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ ms.locfileid: "89661256"
 
 6. 在“已准备好配置  ”页上，向导显示要执行的操作列表。
 
-   ![已准备好配置](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![显示 "准备好配置" 页的屏幕截图，其中包含要执行的操作的列表。](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. 单击“安装”  完成配置。 完成配置后，向导提供验证到服务器的连接性的选项。 单击“验证”  检查连接性。
 

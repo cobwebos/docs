@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: e7d424435c29eb3e7a6779a7036816a7bedd2085
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278288"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp 文件卷的跨区域复制
 
@@ -45,6 +45,7 @@ Azure NetApp 文件卷复制当前提供以下固定区域对：
 * 日本东部和日本西部
 * 英国南部和德国中西部
 * 东南亚和澳大利亚东部
+* 印度中部和印度南部
 
 ## <a name="service-level-objectives"></a>服务级别目标
 
@@ -110,8 +111,8 @@ Azure NetApp 文件卷复制当前提供以下固定区域对：
 
 ## <a name="next-steps"></a>后续步骤
 * [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
-* [创建复制对等](cross-region-replication-create-peering.md)
-* [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)
+* [创建复制对等互连](cross-region-replication-create-peering.md)
+* [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)

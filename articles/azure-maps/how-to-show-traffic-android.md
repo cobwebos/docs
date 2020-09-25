@@ -4,16 +4,16 @@ description: 在本文中，你将学习如何使用 Microsoft Azure map Android
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272950"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 显示地图上的流量数据 Android SDK
 
@@ -21,7 +21,7 @@ ms.locfileid: "87126391"
 
 ## <a name="prerequisites"></a>先决条件
 
-你需要[创建 Azure 帐户](quick-demo-map-app.md#create-an-azure-maps-account)并[获取订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，然后才能在地图上显示流量。 然后，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)并加载地图。
+你需要 [创建 Azure 帐户](quick-demo-map-app.md#create-an-azure-maps-account)并 [获取订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，然后才能在地图上显示流量。 然后，需要安装 [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 并加载地图。
 
 ## <a name="incidents-traffic-data"></a>事件流量数据
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 使用以下代码片段设置流量流数据。 与上一节中的代码类似，我们将方法的返回值传递 `flow` 给 `setTraffic` 方法。 有四个可传递到的值 `flow` ，每个值都将触发 `flow` 以返回各自的值。 然后，将的返回值 `flow` 作为参数传递给 `setTraffic` 。 请参阅下表中的以下四个值：
 
-|流值 | 描述|
+|流值 | 说明|
 | :-- | :-- |
 | TrafficFlow | 不显示地图上的流量数据 |
 | TrafficFlow | 显示相对于旅途的自由流动速度的流量数据 |
@@ -96,7 +96,7 @@ protected void onCreate(Bundle savedInstanceState) {
    </FrameLayout>
    ```
 
-2. 将以下代码添加到**MainActivity**文件。 默认情况下包含包，因此请确保将包置于顶部。
+2. 将以下代码添加到 **MainActivity** 文件。 默认情况下包含包，因此请确保将包置于顶部。
 
    ```java
    package <yourpackagename>;
@@ -221,7 +221,7 @@ protected void onCreate(Bundle savedInstanceState) {
    }
    ```
 
-3. 在应用程序中合并上述代码后，你将能够单击功能并查看流量事件的详细信息。 根据你在**activity_main.xml**文件中使用的纬度、经度和缩放级别值，你将看到类似于下图的结果：
+3. 在应用程序中合并上述代码后，你将能够单击功能并查看流量事件的详细信息。 根据你在 **activity_main.xml** 文件中使用的纬度、经度和缩放级别值，你将看到类似于下图的结果：
 
    <center>
 

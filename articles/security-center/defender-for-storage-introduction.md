@@ -3,16 +3,16 @@ title: 用于存储的 Azure Defender-优点和功能
 description: 了解 Azure Defender 用于存储的优势和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 31d1bde1555f98164ccba32d4615ba51837c5ef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c47c1cd464c9dc0ac8dc78f5d6f91f33481922a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934807"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307511"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Azure Defender for Storage 简介
 
@@ -26,7 +26,7 @@ ms.locfileid: "90934807"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|**Azure Defender For Storage**按[定价页](security-center-pricing.md)中所示方式计费|
+|定价：|**Azure Defender For Storage**按[定价页](security-center-pricing.md)中所示方式计费|
 |受保护的存储类型|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
 |||

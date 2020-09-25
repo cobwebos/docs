@@ -1,18 +1,18 @@
 ---
 title: 如何使用多租户托管权限在 Azure 上部署 Windows 10
-description: 了解如何充分利用 Windows 软件保障权益将本地许可证引入到 Azure 中
+description: 了解如何利用 Windows 软件保障权益将本地许可证引入到具有多租户托管权限的 Azure。
 author: xujing
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077429"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279019"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 有关详细信息，请参阅 [Multitenant Hosting for Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)（Windows 10 多租户托管）。
@@ -26,7 +26,7 @@ ms.locfileid: "87077429"
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>通过 Azure 市场部署 Windows 10 映像 
 对于 Powershell、CLI 和 Azure 资源管理器模板部署，可使用以下 publishername、产品/服务及 sku 找到 Windows 10 映像。
 
-| (OS)  |      PublisherName      |  产品/服务 | SKU |
+| OS  |      PublisherName      |  产品/服务 | SKU |
 |:----------|:-------------:|:------|:------|
 | Windows 10 专业版    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 专业版 N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
@@ -49,7 +49,7 @@ if($adminAccount.Disabled)
     $adminAccount.Put()
 }
 ```
-更多相关信息： 
+参考信息： 
 * [如何将 VHD 上传到 Azure](upload-generalized-managed.md)
 * [如何准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md)
 
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 可以阅读有关[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
+**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 可以阅读有关[创作 Azure Resource Manager 模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
 ```json
 "properties": {
     "licenseType": "Windows_Client",

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305624"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教程：为自动用户预配配置工具
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
    a. 在 " **名称** " 框中，为密钥提供名称。  
    b. 在 " **继承自** " 下拉列表中，选择一个选项。 
    
-1. 选择“提交”。
+1. 选择“提交”。 
 
 1. 复制 **密钥** 以便以后在本教程中使用。
 
@@ -82,7 +82,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-1. 选择 "**企业应用程序**" "  >  **所有应用程序**"。
+1. 选择“企业应用程序” > “所有应用程序”   。
 
     ![“所有应用程序”链接](common/enterprise-applications.png)
 
@@ -126,7 +126,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. 在 " **租户 URL** " 框中，输入 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 。  
+   a. 在 " **租户 URL** " 框中，输入 **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** 。 登录到工具后，可以在浏览器中从 URL 获取工具的帐户 ID。
    b. 在 " **机密令牌** " 框中，输入你在 "设置用于预配的工具" 部分的步骤6中保存的 SCIM Authentication 令牌值。  
    c. 选择 " **测试连接** " 以确保 Azure AD 可以连接到工具。 如果连接失败，请确保你的工具帐户具有 *管理员* 权限，然后重试。
 

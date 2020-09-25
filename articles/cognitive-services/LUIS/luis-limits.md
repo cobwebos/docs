@@ -1,14 +1,16 @@
 ---
 title: 限制 - LUIS
 description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制。 LUIS 有几个限制区。 模型限制可控制 LUIS 中的意向、实体和功能。 基于密钥类型的配额限制。 键盘组合可控制 LUIS 网站。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324699"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制
 LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 限制的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。
@@ -37,9 +39,9 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 | [预生成的实体](./luis-prebuilt-entities.md) | 无限制|
 | [正则表达式实体](./luis-concept-entity-types.md)|20 个实体<br>每个正则表达式实体模式 最多 500 个字符|
 | [角色](luis-concept-roles.md)|每个应用程序 300 个角色。 每个实体 10 个角色|
-| [话语][utterances] | 500 个字符<br><br>如果文本长度超过此字符限制，则需要在输入到 LUIS 之前将查询文本分段，并按段接收单个意向响应。 您可以使用明显的中断，如语音中的标点符号和长时间停顿。|
-| [查询文本示例][utterances] | 每个应用程序 15,000 条 - 对每个意向的话语数量没有限制<br><br>如果需要使用更多示例来定型应用程序，请使用 [dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) 模型方法。 可以使用一个或多个意向定型单个 LUIS 应用（称为父调度应用的子应用），然后定型调度应用，该应用从每个 LUIS 子应用的言语中采样，以将预测请求定向到正确的子应用。 |
-| [早期](luis-concept-version.md)| 每个应用程序 100 个版本 |
+| [话语][utterances] | 500 个字符<br><br>如果文本长度超过此字符限制，则需要在输入 LUIS 之前对话语进行分段，并且每个分段都会收到单独的意向响应。 你可以处理一些明显的中断，比如标点符号和言语中的长停顿。|
+| [言语示例][utterances] | 每个应用程序 15,000 条 - 对每个意向的话语数量没有限制<br><br>如果需要使用更多示例来定型应用程序，请使用 [dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) 模型方法。 可以使用一个或多个意向定型单个 LUIS 应用（称为父调度应用的子应用），然后定型调度应用，该应用从每个 LUIS 子应用的言语中采样，以将预测请求定向到正确的子应用。 |
+| [版本](luis-concept-version.md)| 每个应用程序 100 个版本 |
 | [版本名称][luis-how-to-manage-versions] | 128 个字符 |
 
 *默认最大字符长度为 50 个字符。
@@ -100,7 +102,7 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 
 ### <a name="speech-integration"></a>语音集成
 
-[语音集成](../speech-service/how-to-recognize-intents-from-speech-csharp.md)提供每个单位成本1000终结点请求。
+[语音集成](../speech-service/how-to-recognize-intents-from-speech-csharp.md)每单位成本提供 1 千个终结点请求。
 
 [详细了解定价。][pricing]
 

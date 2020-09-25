@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306882"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
@@ -34,7 +34,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 由于 SAC 的屏幕缓冲受限，因此，在本地文本编辑器中键入较长的命令，然后将其粘贴到 SAC 中可能会更方便。
 
-## <a name="view-and-edit-windows-registry-settings"></a>查看和编辑 Windows 注册表设置
+## <a name="view-and-edit-windows-registry-settings-using-cmd"></a>使用 CMD 查看和编辑 Windows 注册表设置
 ### <a name="verify-rdp-is-enabled"></a>验证是否已启用 RDP
 `reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections`
 
@@ -49,7 +49,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 仅当已配置相关的组策略设置时，才需要第二个键（在 \Policies 下）。 下一次刷新组策略时，将重写值（如果已在组策略中配置此设置）。
 
-## <a name="manage-windows-services"></a>管理 Windows 服务
+## <a name="manage-windows-services-using-cmd"></a>使用 CMD 管理 Windows 服务
 
 ### <a name="view-service-state"></a>查看服务状态
 `sc query termservice`
@@ -70,16 +70,16 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="start-service"></a>启动服务
 `net start termservice`
 
-or
+或
 
 `sc start termservice`
 ### <a name="stop-service"></a>停止服务
 `net stop termservice`
 
-or
+或
 
 `sc stop termservice`
-## <a name="manage-networking-features"></a>管理网络功能
+## <a name="manage-networking-features-using-cmd"></a>使用 CMD 管理网络功能
 ### <a name="show-nic-properties"></a>显示 NIC 属性
 `netsh interface show interface`
 ### <a name="show-ip-properties"></a>显示 IP 属性
@@ -120,7 +120,7 @@ or
 故障排除时，可以使用此命令暂时排除 Windows 防火墙。 它将在下一次重新启动时或使用以下命令启用它时启用。 不要通过停止 Windows 防火墙服务 (MPSSVC) 或基本筛选引擎 (BFE) 服务来排除 Windows 防火墙。 停止 MPSSVC 或 BFE 会导致所有连接被阻止。
 ### <a name="enable-windows-firewall"></a>启用 Windows 防火墙
 `netsh advfirewall set allprofiles state on`
-## <a name="manage-users-and-groups"></a>管理用户和组
+## <a name="manage-users-and-groups-using-cmd"></a>使用 CMD 管理用户和组
 ### <a name="create-local-user-account"></a>创建本地用户帐户
 `net user /add <username> <password>`
 ### <a name="add-local-user-to-local-group"></a>将本地用户添加到本地组
@@ -150,7 +150,7 @@ or
 
 ### <a name="view-local-groups"></a>查看本地组
 `net localgroup`
-## <a name="manage-the-windows-event-log"></a>管理 Windows 事件日志
+## <a name="manage-the-windows-event-log-using-cmd"></a>使用 CMD 管理 Windows 事件日志
 ### <a name="query-event-log-errors"></a>查询事件日志错误
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
@@ -165,7 +165,7 @@ or
 使用 `604800000` 查看过去 7 天而不是 24 小时的事件。
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>按事件 ID、提供程序和 EventData 查询过去 7 天的事件日志
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>查看或删除已安装的应用程序
+## <a name="view-or-remove-installed-applications-using-cmd"></a>使用 CMD 查看或删除已安装的应用程序
 ### <a name="list-installed-applications"></a>列出已安装的应用程序
 `wmic product get Name,InstallDate | sort /r | more`
 
@@ -175,7 +175,7 @@ or
 
 将 `<name>` 替换为上述命令中针对所要删除的应用程序返回的名称。
 
-## <a name="file-system-management"></a>文件系统管理
+## <a name="file-system-management-using-cmd"></a>使用 CMD 进行文件系统管理
 ### <a name="get-file-version"></a>获取文件版本
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
@@ -206,7 +206,7 @@ or
 ## <a name="manage-group-policy"></a>管理组策略
 ### <a name="force-group-policy-update"></a>强制组策略更新
 `gpupdate /force /wait:-1`
-## <a name="miscellaneous-tasks"></a>其他任务
+## <a name="miscellaneous-tasks-using-cmd"></a>使用 CMD 的其他任务
 ### <a name="show-os-version"></a>显示 OS 版本
 `ver`
 
@@ -222,7 +222,7 @@ or
 ### <a name="view-os-install-date"></a>查看 OS 安装日期
 `systeminfo | find /i "original"`
 
-or
+或
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>查看上次启动时间
@@ -230,7 +230,7 @@ or
 ### <a name="view-time-zone"></a>查看时区
 `systeminfo | find /i "time zone"`
 
-or
+或
 
 `wmic timezone get caption,standardname /format:list`
 ### <a name="restart-windows"></a>重启 Windows
@@ -259,7 +259,7 @@ or
 
 `remove-module psreadline`
 
-## <a name="view-and-edit-windows-registry-settings"></a>查看和编辑 Windows 注册表设置
+## <a name="view-and-edit-windows-registry-settings-using-powershell"></a>使用 PowerShell 查看和编辑 Windows 注册表设置
 ### <a name="verify-rdp-is-enabled"></a>验证是否已启用 RDP
 `get-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections'`
 
@@ -272,7 +272,7 @@ or
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
 仅当已配置相关的组策略设置时，才需要第二个键（在 \Policies 下）。 下一次刷新组策略时，将重写值（如果已在组策略中配置此设置）。
-## <a name="manage-windows-services"></a>管理 Windows 服务
+## <a name="manage-windows-services-using-powershell"></a>使用 PowerShell 管理 Windows 服务
 ### <a name="view-service-details"></a>查看服务详细信息
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
@@ -291,11 +291,11 @@ or
 `start-service termservice`
 ### <a name="stop-service"></a>停止服务
 `stop-service termservice`
-## <a name="manage-networking-features"></a>管理网络功能
+## <a name="manage-networking-features-using-powershell"></a>使用 PowerShell 管理网络功能
 ### <a name="show-nic-properties"></a>显示 NIC 属性
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-or
+或
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
@@ -305,7 +305,7 @@ or
 ### <a name="enable-nic"></a>启用 NIC
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | enable-netadapter`
 
-or
+或
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
@@ -322,7 +322,7 @@ or
 > [!NOTE]
 > 写入进度 cmdlet 可能不适用于此命令。 作为缓解措施，可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中运行以禁用进度栏。
 
-or
+或
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
@@ -330,7 +330,7 @@ or
 ### <a name="port-ping"></a>端口 Ping
 `test-netconnection -ComputerName bing.com -Port 80`
 
-or
+或
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
@@ -338,7 +338,7 @@ or
 ### <a name="test-dns-name-resolution"></a>测试 DNS 名称解析
 `resolve-dnsname bing.com`
 
-or
+或
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
@@ -348,7 +348,7 @@ or
 ### <a name="show-windows-firewall-rule-by-port"></a>按端口显示 Windows 防火墙规则
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
-or
+或
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
@@ -357,13 +357,13 @@ or
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
 `Set-NetFirewallProfile` 适用于 2012+ 和更高版本。 对于 2008R2，请使用前面“CMD”部分中提到的 `netsh advfirewall`。
-## <a name="manage-users-and-groups"></a>管理用户和组
+## <a name="manage-users-and-groups-using-powershell"></a>使用 PowerShell 管理用户和组
 ### <a name="create-local-user-account"></a>创建本地用户帐户
 `new-localuser <name>`
 ### <a name="verify-user-account-is-enabled"></a>验证是否已启用用户帐户
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-or
+或
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -377,7 +377,7 @@ or
 ### <a name="view-user-account-properties"></a>查看用户帐户属性
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-or
+或
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
@@ -386,7 +386,7 @@ or
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
 `Get-LocalUser` 适用于 2012+ 和更高版本。 对于 2008R2，请使用 `Get-WmiObject`。
-## <a name="manage-the-windows-event-log"></a>管理 Windows 事件日志
+## <a name="manage-the-windows-event-log-using-powershell"></a>使用 PowerShell 管理 Windows 事件日志
 ### <a name="query-event-log-errors"></a>查询事件日志错误
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
@@ -401,12 +401,12 @@ or
 使用 `604800000` 查看过去 7 天而不是 24 小时的事件。 |
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>按事件 ID、提供程序和 EventData 查询过去 7 天的事件日志
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>查看或删除已安装的应用程序
+## <a name="view-or-remove-installed-applications-using-powershell"></a>使用 PowerShell 查看或删除已安装的应用程序
 ### <a name="list-installed-software"></a>列出已安装的软件
 `get-wmiobject win32_product | select installdate,name | sort installdate -descending | more`
 ### <a name="uninstall-software"></a>卸载软件
 `(get-wmiobject win32_product -filter "Name='<name>'").Uninstall()`
-## <a name="file-system-management"></a>文件系统管理
+## <a name="file-system-management-using-powershell"></a>使用 PowerShell 进行文件系统管理
 ### <a name="get-file-version"></a>获取文件版本
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
@@ -415,7 +415,7 @@ or
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
 此示例创建 `c:\bin` 文件夹，然后下载 Sysinternals 工具套件并将其提取到 `c:\bin`。
-## <a name="miscellaneous-tasks"></a>其他任务
+## <a name="miscellaneous-tasks-using-powershell"></a>使用 PowerShell 的其他任务
 ### <a name="show-os-version"></a>显示 OS 版本
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>查看 OS 安装日期

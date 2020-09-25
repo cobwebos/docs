@@ -3,13 +3,13 @@ title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/21/2020
+ms.openlocfilehash: a99d391b34ff1ad783ba4cb7b746760835bd3f43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278798"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -74,11 +74,19 @@ CloudMonix 为 Microsoft Azure 平台提供监视、自动化和自我修复服�
 
 ![DataDog 徽标](./media/partners/datadog.png)
 
-Datadog 是世界领先的监视服务，适用于云规模的应用程序。 它将服务器、数据库、工具和服务的数据汇集在一起，提供整个堆栈的统一视图。 这些功能在基于 SaaS 的数据分析平台上提供。 开发和运营团队可以通过此服务进行协作，避免停机，解决性能问题，确保开发和部署周期按时完成。 可以通过集成 Datadog 和 Azure 来收集和查看整个基础结构的指标。 将 VM 指标与应用程序级指标相关联。 使用属性和自定义标记的任意组合，对指标进行切片和切块操作。
+Azure 使客户能够将其应用程序迁移并现代化，以便与许多合作伙伴解决方案一起在云中运行。 这类合作伙伴是 Datadog，它为用户提供可观察性和安全工具，以便在混合环境和多云环境中了解应用程序的运行状况和性能。  但配置所需的集成通常需要在 Azure 门户和 Datadog 之间导航。  这增加了复杂性，需要时间，并在工作不正常的情况下进行故障排除。  为了降低跨多个门户进行管理的负担，Microsoft 使用 Datadog 在 Azure 云平台上创建集成的 Datadog 解决方案。  此解决方案可通过 Azure Marketplace 提供，提供在 Azure 中使用 Datadog 的云监视解决方案的无缝体验。  
 
-[查看相关文档。][datadog-doc]
+利用新的 Azure Datadog 集成，组织现在可以完全映射其传统的和基于云的系统，在云过渡的每个阶段监视实时数据，并确保迁移的应用程序满足性能目标。 此集成结合了 Azure 的全局存在、灵活性、安全性和符合性 Datadog 的日志记录和监视功能，为企业创造最佳体验。 通过这种统一体验，你将能够： 
 
-Datadog 的新 Azure marketplace 集成计划于 10 2020 月提前发布。 发布时，将在此处添加一个链接。 
+- 预配新的 Datadog 组织，并配置其 Azure 资源，以将日志和指标发送到 Datadog，这是一种完全托管的设置，无可供客户设置和操作的基础结构。  
+- 无缝地将日志和指标发送到 Datadog。 日志转发过程已完全自动完成;只需单击几下鼠标，就能只是使用诊断设置、事件中心和功能来构建日志转发管道。
+-   通过单击即可轻松地在 VM 主机上安装 Datadog 代理。
+-   简化单一登录 (SSO) 到 Datadog-不再需要来自 Datadog 门户的单独登录。 
+-   通过 Azure 订阅开票获取 Datadog 服务的统一计费。
+
+注册 Azure 的新 Datadog 集成的 [公共预览版](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) 。  从10月2020开始，Azure Marketplace 提供公共预览版。
+
+如果仍在使用以前手动配置的集成，请参阅 [DataDog 网站上的文档][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
 

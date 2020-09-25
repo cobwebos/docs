@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 5f88b4755c7b4c0b20f27065cf9de2351251bc1c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: edfebe3d9470defbe70b3694d5574e58ca3b5938
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325515"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Azure NetApp 文件的性能考虑因素
 
-卷的[吞吐量限制](azure-netapp-files-service-levels.md)由分配给卷的配额和所选服务级别的组合决定。 当你制定有关 Azure NetApp 文件的性能计划时，需要了解几个注意事项。 
+具有自动 QoS 的卷的 [吞吐量限制](azure-netapp-files-service-levels.md) 是通过分配给卷的配额和所选服务级别的组合确定的。 对于具有手动 QoS 的卷，可以单独定义吞吐量限制。 当你制定有关 Azure NetApp 文件的性能计划时，需要了解几个注意事项。 
 
 ## <a name="quota-and-throughput"></a>配额和吞吐量  
 
@@ -31,19 +31,25 @@ ms.locfileid: "87513870"
 
 典型的存储性能注意事项，包括读取和写入混合、传输大小、随机或顺序模式以及许多其他因素将影响提供的总性能。  
 
-测试中已观察到的最大实际吞吐量为 4500 MiB/s。  在高级存储层，70.31 TiB 的卷配额将预配吞吐量限制，此限制足以实现此性能级别。  
+测试中已观察到的最大实际吞吐量为 4500 MiB/s。  在高级存储层，70.31 TiB 的自动 QoS 卷配额将预配吞吐量限制，此限制足以实现此性能级别。  
 
-如果考虑将卷配额量分配到 70.31 TiB 以上，可以为卷分配额外的配额，以存储其他数据。 但是，增加的配额不会导致实际吞吐量增加。  
+在自动 QoS 卷的情况下，如果考虑将卷配额量分配到 70.31 TiB 以上，则可以将额外的配额分配给卷以存储额外的数据。 但是，增加的配额不会导致实际吞吐量增加。  
 
-## <a name="overprovisioning-the-volume-quota"></a>过度预配卷配额
+同一经验率上限适用于具有手动 QoS 的卷。 可分配给卷的最大吞吐量为 4500 MiB/s。
 
-如果工作负荷的性能限制为吞吐量限制，则可以 overprovision 卷配额，以设置更高的吞吐量级别并实现更高的性能。  
+## <a name="automatic-qos-volume-quota-and-throughput"></a>自动 QoS 卷配额和吞吐量
 
-例如，如果高级存储层中的某个卷只有 500 GiB 的数据，但需要 128 MiB/秒的吞吐量，则可以将配额设置为 2 TiB，以便相应地设置吞吐量级别（64 MiB/每 TB * 2 TiB = 128 MiB/秒）。  
+本部分介绍具有自动 QoS 类型的卷的配额管理和吞吐量。
 
-如果你一直 overprovision 一个卷来实现更高的吞吐量，请考虑改用较高的服务级别。  在上面的示例中，你可以通过使用 Ultra 存储层（128 MiB/s，每个 TiB * 1 TiB = 128 MiB/秒）实现与卷配额一半相同的吞吐量限制。
+### <a name="overprovisioning-the-volume-quota"></a>过度预配卷配额
 
-## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>动态增加或减少卷配额
+如果工作负荷的性能限制为吞吐量限制，则可以 overprovision 自动 QoS 卷配额，以设置更高的吞吐量级别并实现更高的性能。  
+
+例如，如果高级存储层中的自动 QoS 卷只包含 500 GiB 的数据，但需要 128 MiB/秒的吞吐量，则可以将配额设置为 2 TiB，以便相应地设置吞吐量级别 (64 MiB/每 TB * 2 TiB = 128 MiB/秒) 。  
+
+如果你一直 overprovision 一个卷来实现更高的吞吐量，请考虑改用手动 QoS 卷或使用更高的服务级别。  在上面的示例中，你可以通过使用 Ultra 存储层来实现与自动 QoS 卷配额的一半相同的吞吐量限制，方法是使用 TiB * 1 TiB = 128 MiB/s)  (128 MiB/s。
+
+### <a name="dynamically-increasing-or-decreasing-volume-quota"></a>动态增加或减少卷配额
 
 如果性能要求在本质上是暂时的，或者如果在固定时间段内增加了性能需求，则可以动态增加或减少卷配额，以即时调整吞吐量限制。  请注意以下事项： 
 
@@ -55,9 +61,14 @@ ms.locfileid: "87513870"
 
     此更改不会中断或影响卷访问或 i/o。  
 
-* 调整卷配额需要更改容量池大小。  
+* 调整卷配额可能需要更改容量池大小。  
 
     可以动态调整容量池大小，而不会影响卷的可用性或 i/o。
+
+## <a name="manual-qos-volume-quota-and-throughput"></a>手动 QoS 卷配额和吞吐量 
+
+如果使用手动 QoS 卷，则不必 overprovision 卷配额来实现更高的吞吐量，因为可以独立地将吞吐量分配给每个卷。 但仍需确保容量池预配有足够的吞吐量，以满足你的性能需求。 容量池的吞吐量是根据其大小和服务级别进行预配的。 有关更多详细信息，请参阅 [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md) 。
+
 
 ## <a name="next-steps"></a>后续步骤
 
