@@ -3,13 +3,13 @@ title: 适用于 JavaScript Web 应用的 Azure Application Insights
 description: 获取页面视图和会话计数、Web 客户端数据、单页应用程序 (SPA)，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js
+ms.openlocfilehash: ddbdeaed1cf3f69c20c272ea3e9dde405119bc24
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89656939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328898"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -220,7 +220,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | [React Native](javascript-react-native-plugin.md)|
 | [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
-## <a name="correlation"></a>相关性
+## <a name="correlation"></a>Correlation
 
 支持客户端到服务器端的相关：
 

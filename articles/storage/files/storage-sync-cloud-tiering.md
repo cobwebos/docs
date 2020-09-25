@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329306"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -40,7 +40,7 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>文件对层的最小文件大小是多少？
 
-对于代理版本9和更高版本，文件到层级的最小文件大小基于文件系统群集大小。 适用于云分层的最小文件大小以2倍的群集大小计算，最低 8 KB 计算。 下表根据卷群集大小说明了可以分层的最小文件大小：
+对于代理版本12和更高版本，文件到层级的最小文件大小基于文件系统群集大小。 适用于云分层的最小文件大小以2倍的群集大小计算，最低 8 KB 计算。 下表根据卷群集大小说明了可以分层的最小文件大小：
 
 |卷群集大小 (字节)  |此大小或更大的文件可以分层  |
 |----------------------------|---------|
@@ -48,9 +48,9 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 |8 KB (8192)                  | 16 KB   |
 |16 KB (16384)                | 32 KB   |
 |32 KB (32768)                | 64 KB   |
-|64 KB (65536)                | 128 KB  |
+|64 KB (65536) 及更大    | 128 KB  |
 
-对于 Windows Server 2019 和 Azure 文件同步代理版本12和更高版本，还支持最大为 2 MB 的群集大小，并以相同的方式对这些较大的群集大小进行分层。 较早的 OS 或代理版本支持最大为 64 KB 的群集大小。
+对于 Windows Server 2019 和 Azure 文件同步代理版本12和更高版本，还支持最大为 2 MB 的群集大小，并以相同的方式对这些较大的群集大小进行分层。 较早的 OS 或代理版本支持最大为 64 KB 的群集大小，但不支持云分层。
 
 Windows 使用的所有文件系统将基于群集大小的硬盘组织 (也称为分配单元大小) 。 群集大小表示可用于保存文件的最小磁盘空间量。 如果文件大小不能超过群集大小的偶数倍，则必须使用额外的空间来保存到群集大小的下一个多个空间。
 
@@ -85,11 +85,23 @@ NTFS 存储极小的文件（1 KB 到 4 KB 大小的文件）的方式中提供�
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>日期分层策略如何与卷可用空间分层策略配合工作？ 
 针对服务器终结点启用云分层时，可以设置卷可用空间策略。 此策略始终优先于其他任何策略，包括日期策略。 （可选）可以为该卷上的每个服务器终结点启用日期策略。 此策略管理仅将访问 (的文件（在此策略描述的天数内读取或写入) ）保存在本地。 不会按指定的天数访问文件，将对其进行分层。 
 
-云分层使用 "上次访问时间" 来确定应分层哪些文件。 云分层筛选器驱动程序 ( # A0) 会跟踪上次访问时间，并将信息记录在云分层热存储中。 你可以使用本地 PowerShell cmdlet 查看热度商店。
+云分层使用 "上次访问时间" 来确定应分层哪些文件。 云分层筛选器驱动程序 ( # A0) 会跟踪上次访问时间，并将信息记录在云分层热存储中。 你可以使用服务器本地 PowerShell cmdlet 检索热度存储并将其保存到 CSV 文件中。
 
 ```powershell
+# There is a single heat store for files on a volume / server endpoint / individual file.
+# The heat store can get very large. If you only need to retrieve the "coolest" number of items, use -Limit and a number
+
+# Import the PS module:
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
-Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+
+# VOLUME FREE SPACE: To get the order in which files will be tiered using the volume free space policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrder
+
+# DATE POLICY: To get the order in which files will be tiered using the date policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrderV2
+
+# Find the heat store information for a particular file:
+Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
 ```
 
 > [!IMPORTANT]
@@ -123,13 +135,13 @@ Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
    *  **查看文件上的文件属性。**
      右键单击文件，转到“详细信息”****，再向下滚动到“属性”**** 属性。 分层的文件具有以下属性集：     
         
-        | 属性字母 | 属性 | 定义 |
+        | 属性字母 | Attribute | 定义 |
         |:----------------:|-----------|------------|
-        | A | 存档 | 指示备份软件应备份此文件。 无论文件被分层还是完全存储在磁盘上，始终都会设置此属性。 |
+        | 包含当前请求的 URL 的 | 存档 | 指示备份软件应备份此文件。 无论文件被分层还是完全存储在磁盘上，始终都会设置此属性。 |
         | P | 稀疏文件 | 指示该文件为稀疏文件。 稀疏文件是 NTFS 提供的专用化文件类型，用于在占用空间流上的文件几乎为空时提高使用效率。 Azure 文件同步将使用稀疏文件，因为文件会被完全分层或部分召回。 在完全分层文件中，文件流存储在云中。 在部分召回的文件中，文件的一部分已在磁盘上。 如果文件被完全召回到磁盘，Azure 文件同步会将其从稀疏文件转换为常规文件。 此属性仅在 Windows Server 2016 及更低版本上设置。|
         | M | 回调数据访问 | 指示文件的数据不会在本地存储上全部显示。 读取文件将导致至少从服务器终结点所连接到的 Azure 文件共享提取一些文件内容。 仅在 Windows Server 2019 上设置此属性。 |
         | L | 重分析点 | 指示该文件包含重分析点。 重分析点是供文件系统筛选器使用的特殊指针。 Azure 文件同步使用重分析点来定义 Azure 文件同步文件系统筛选器 (StorageSync.sys) 存储文件的云位置。 这样即可支持无缝访问。 用户无需知道是否使用了 Azure 文件同步或如何获取在 Azure 文件共享中的文件访问权限。 如果文件被完全召回，则 Azure 文件同步将从此文件中删除重分析点。 |
-        | O | 脱机 | 指示文件的部分或全部内容未存储在磁盘上。 如果文件被完全召回，Azure 文件同步将删除此属性。 |
+        | O | Offline | 指示文件的部分或全部内容未存储在磁盘上。 如果文件被完全召回，Azure 文件同步将删除此属性。 |
 
         ![文件的“属性”对话框（“详细信息”选项卡被选中）](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
@@ -158,10 +170,10 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 可选参数：
-* `-Order CloudTieringPolicy`将首先撤回最近修改或访问的文件，并由当前分层策略允许。 
+* `-Order CloudTieringPolicy` 将首先撤回最近修改或访问的文件，并由当前分层策略允许。 
     * 如果配置了卷可用空间策略，则在达到 "卷可用空间" 策略设置之前，将会重新调用文件。 例如，如果 "批量可用" 策略设置为20%，则一旦卷可用空间达到20%，撤回就会停止。  
     * 如果配置了卷可用空间和日期策略，则在达到 "卷可用空间或日期" 策略设置之前，将会重新调用文件。 例如，如果 "批量可用" 策略设置为20%，日期策略为7天，则当卷可用空间达到20% 或在7天内访问或修改的所有文件均为本地时，撤回将停止。
-* `-ThreadCount`确定可并行回调的文件数。
+* `-ThreadCount` 确定可并行回调的文件数。
 * `-PerFileRetryCount`确定尝试重新调用当前被阻止的文件的频率。
 * `-PerFileRetryDelaySeconds`确定两次重试回调尝试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
 
@@ -176,7 +188,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCoun
 >- 如果承载服务器的本地卷没有足够可用空间可用于召回所有分层数据，则 `Invoke-StorageSyncFileRecall` cmdlet 会失败。  
 
 <a id="sizeondisk-versus-size"></a>
-### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>为什么在使用 Azure 文件同步后，文件的*磁盘上的大小*不与*size*属性匹配？ 
+### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>为什么在使用 Azure 文件同步后，文件的 *磁盘上的大小* 不与 *size* 属性匹配？ 
 Windows 文件资源管理器公开了两个属性来表示文件的大小：即“大小”**** 和“占用空间”****。 这些属性的含义略有不同。 “大小”**** 表示文件的完整大小。 “占用空间”**** 表示存储在磁盘上的文件流的大小。 这些属性的值可能因多种原因而异，例如压缩、使用重复数据删除或使用 Azure 文件同步进行云分层。如果将文件分层到 Azure 文件共享，则磁盘上的大小为零，因为文件流存储在 Azure 文件共享中，而不是存储在磁盘上。 另外，文件也可能会被部分分层（或部分召回）。 在部分分层文件中，该文件的一部分位于磁盘上。 应用程序（例如，多媒体播放器或压缩工具）对文件进行了部分读取时可能会发生此情况。 
 
 <a id="afs-force-tiering"></a>
@@ -196,14 +208,14 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>为什么分层文件在 Windows 资源管理器中未显示缩略图或预览？
 对于分层文件，不会在服务器终结点显示缩略图和预览。 此行为是预期行为，因为 Windows 中的缩略图缓存功能有意跳过读取具有脱机属性的文件。 启用云分层后，通过分层文件读取将导致下载 (撤回) 。
 
-此行为并不特定于 Azure 文件同步，Windows 资源管理器会为设置了脱机属性的任何文件显示 "灰色 X"。 通过 SMB 访问文件时，你将看到 X 图标。 有关此行为的详细说明，请参阅[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+此行为并不特定于 Azure 文件同步，Windows 资源管理器会为设置了脱机属性的任何文件显示 "灰色 X"。 通过 SMB 访问文件时，你将看到 X 图标。 有关此行为的详细说明，请参阅 [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 <a id="afs-tiering-disabled"></a>
 ### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>我禁用了云分层，为什么服务器终结点位置中存在分层文件？
 
 有两个原因会导致分层文件存在于服务器终结点位置：
 
-- 向现有同步组添加新的服务器终结点时，元数据首先将同步到服务器，然后将文件下载到后台服务器。 在本地下载文件之前，这些文件将显示为已分层。 若要在将新服务器添加到同步组时提高文件下载性能，请使用[StorageSyncFileRecall](storage-sync-cloud-tiering.md#afs-recall-file) cmdlet。
+- 向现有同步组添加新的服务器终结点时，元数据首先将同步到服务器，然后将文件下载到后台服务器。 在本地下载文件之前，这些文件将显示为已分层。 若要在将新服务器添加到同步组时提高文件下载性能，请使用 [StorageSyncFileRecall](storage-sync-cloud-tiering.md#afs-recall-file) cmdlet。
 
 - 如果已在服务器终结点上启用云分层，然后禁用，则文件在被访问之前将保持分层。
 

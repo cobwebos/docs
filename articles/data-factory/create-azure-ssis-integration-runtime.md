@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 07cfb0048e6027b0bac219b3fe28018db2d10257
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d193438a232cc6bc113efb31ce4276117a366add
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185258"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276843"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 
@@ -43,15 +43,15 @@ ms.locfileid: "88185258"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 订阅**。 如果还没有订阅，可以创建一个[免费试用](https://azure.microsoft.com/pricing/free-trial/)帐户。
+- **Azure 订阅**。 如果还没有订阅，可以创建一个 [免费试用](https://azure.microsoft.com/pricing/free-trial/) 帐户。
 
-- **AZURE Sql Database 服务器或 SQL 托管实例 (可选) **。 如果还没有数据库服务器或托管实例，请在开始之前在 Azure 门户中创建一个。 数据工厂进而会在此数据库服务器上创建一个 SSISDB 实例。 
+- Azure SQL 数据库服务器或 SQL 托管实例（可选）。 如果还没有数据库服务器或托管实例，请在启动之前在 Azure 门户中创建一个。 数据工厂进而会在此数据库服务器上创建一个 SSISDB 实例。 
 
   建议在集成运行时所在的同一 Azure 区域中创建数据库服务器或托管实例。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。
 
   请记住以下几点：
 
-  - SSISDB 实例可以代表单一数据库创建，作为弹性池的一部分，或在托管实例中创建。 可以在公用网络中访问或者通过加入虚拟网络来访问该实例。 有关在 SQL 数据库和 SQL 托管实例之间进行选择以托管 SSISDB 的指南，请参阅本文中的[比较 Sql 数据库和 sql 托管实例](#comparison-of-sql-database-and-sql-managed-instance)部分。 
+  - 系统可以代表你创建 SSISDB 实例作为单一数据库、创建此实例作为弹性池的一部分，或者在托管实例中创建。 可以在公用网络中访问或者通过加入虚拟网络来访问该实例。 有关在 SQL 数据库与 SQL 托管实例之间进行选择以托管 SSISDB 的指导，请参阅本文中的[比较 SQL 数据库与 SQL 托管实例](#comparison-of-sql-database-and-sql-managed-instance)部分。 
   
     如果将具有 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器或带有专用终结点的 SQL 托管实例用于托管 SSISDB，或者需要访问本地数据而不配置自承载 IR，则需要将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
 
@@ -77,14 +77,14 @@ ms.locfileid: "88185258"
 
 ### <a name="comparison-of-sql-database-and-sql-managed-instance"></a>比较 SQL 数据库和 SQL 托管实例
 
-下表对 Azure SQL 数据库服务器和 SQL 托管实例的某些功能进行了比较，因为它们与 SSIR IR 相关：
+下表比较了 Azure SQL 数据库服务器和 SQL 托管实例与 Azure-SSIR IR 相关的某些功能：
 
 | 功能 | SQL 数据库| SQL 托管实例 |
 |---------|--------------|------------------|
 | **计划** | SQL Server 代理不可用。<br/><br/>请参阅[在数据工厂管道中计划包执行](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)。| 可以使用托管实例代理。 |
 | **身份验证** | 可以使用包含的数据库用户创建 SSISDB 实例。该用户是 **db_owner** 角色的成员，代表具有数据工厂托管标识的任意 Azure AD 组。<br/><br/>请参阅[在 Azure SQL 数据库服务器中启用 Azure AD 身份验证以创建 SSISDB](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)。 | 可以使用代表数据工厂托管标识的包含的数据库用户创建 SSISDB 实例。 <br/><br/>请参阅[在 Azure SQL 托管实例中启用 Azure AD 身份验证以创建 SSISDB](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance)。 |
 | **服务层** | 在 Azure SQL 数据库服务器上创建 Azure-SSIS IR 时，可以选择 SSISDB 的服务层级。 有多个服务层级。 | 在托管实例上创建 Azure-SSIS IR 时，无法选择 SSISDB 的服务层级。 托管实例上的所有数据库共享分配给该实例的相同资源。 |
-| **虚拟网络** | 如果使用具有 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器，则 Azure-SSIS IR 可以加入 Azure 资源管理器虚拟网络。 | 如果将托管实例用于专用终结点，则 Azure-SSIS IR 可以加入 Azure 资源管理器虚拟网络。 在未为托管实例启用公共终结点的情况下，虚拟网络是必需的。<br/><br/>如果将 Azure-SSIS IR 加入与托管实例相同的虚拟网络，请确保 Azure-SSIS IR 与托管实例位于不同的子网中。 如果将 Azure-SSIS IR 加入与托管实例不同的虚拟网络，我们建议使用虚拟网络对等互连或网络间的连接。 请参阅[将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。 |
+| **虚拟网络** | 如果使用具有 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器，则 Azure-SSIS IR 可以加入 Azure 资源管理器虚拟网络。 | 如果将托管实例用于专用终结点，则 Azure-SSIS IR 可以加入 Azure 资源管理器虚拟网络。 在未为托管实例启用公共终结点的情况下，虚拟网络是必需的。<br/><br/>如果将 Azure-SSIS IR 加入与托管实例相同的虚拟网络，请确保 Azure-SSIS IR 与托管实例位于不同的子网中。 如果将 Azure-SSIS IR 加入与托管实例不同的虚拟网络，我们建议使用虚拟网络对等互连或网络间的连接。 请参阅 [将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。 |
 | **分布式事务** | 通过弹性事务支持此功能。 不支持 Microsoft 分布式事务处理协调器 (MSDTC) 事务。 如果 SSIS 包使用 MSDTC 协调分布式事务，请考虑迁移到 Azure SQL 数据库弹性事务。 有关详细信息，请参阅[跨云数据库的分布式事务](../sql-database/sql-database-elastic-transactions-overview.md)。 | 不支持。 |
 | | | |
 
@@ -114,31 +114,33 @@ ms.locfileid: "88185258"
 
    1. 对于“名称”，请输入集成运行时的名称。
 
-   1. 对于“说明”，请输入集成运行时的说明。
+   2. 对于“说明”，请输入集成运行时的说明。
 
-   1. 对于“位置”，请选择集成运行时的位置。 界面上仅显示支持的位置。 建议选择承载 SSISDB 所需的数据库服务器的位置。
+   3. 对于“位置”，请选择集成运行时的位置。 界面上仅显示支持的位置。 建议选择承载 SSISDB 所需的数据库服务器的位置。
 
-   1. 对于“节点大小”，请选择集成运行时群集中的节点大小。 仅显示支持的节点大小。 如果需要运行多个计算密集型或内存密集型包，请选择较大的节点大小（纵向扩展）。
+   4. 对于“节点大小”，请选择集成运行时群集中的节点大小。 仅显示支持的节点大小。 如果需要运行多个计算密集型或内存密集型包，请选择较大的节点大小（纵向扩展）。
+   > [!NOTE]
+   > 如果需要 [计算隔离](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)，请选择 **Standard_E64i_v3** 的节点大小。 此节点大小代表了使用其整个物理主机的隔离虚拟机，并提供某些工作负载所需的隔离级别（如美国国防部的影响级别 5 (IL5) 工作负荷。
+   
+   5. 对于“节点数”，请选择集成运行时群集中的节点数。 仅显示支持的节点数。 如果需要并行运行多个包，请选择包含许多节点的大型群集（横向扩展）。
 
-   1. 对于“节点数”，请选择集成运行时群集中的节点数。 仅显示支持的节点数。 如果需要并行运行多个包，请选择包含许多节点的大型群集（横向扩展）。
+   6. 对于“版本/许可证”，请选择集成运行时的 SQL Server 版本：“标准”或“企业”。 如果需要在集成运行时上使用高级功能，请选择“Enterprise”。
 
-   1. 对于“版本/许可证”，请选择集成运行时的 SQL Server 版本：“标准”或“企业”。 如果需要在集成运行时上使用高级功能，请选择“Enterprise”。
+   7. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。
 
-   1. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。
-
-   1. 选择“**下一页**”。
+   8. 选择“**下一步**”。
 
 #### <a name="deployment-settings-page"></a>“部署设置”页
 
-在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上，你可以选择创建 SSISDB 和或 Azure-SSIS IR 包存储区。
+在“集成运行时设置”窗格的“部署设置”页中，你可以选择创建 SSISDB 和/或 Azure-SSIS IR 包存储 。
 
-##### <a name="creating-ssisdb"></a>正在创建 SSISDB
+##### <a name="creating-ssisdb"></a>创建 SSISDB
 
-在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上，如果要将包部署到 SSISDB (项目部署模型) 中，请选中 "**创建 SSIS 目录 (SSISDB) 托管托管实例的 ssisdb"，以存储项目/包/环境/执行日志**复选框。 或者，如果你想要将包部署到文件系统、Azure 文件或 SQL Server 数据库 (MSDB) 由 Azure SQL 托管实例 (包部署模型) ，则无需创建 SSISDB，也不选中该复选框。
+在“集成运行时设置”窗格的“部署设置”页中，如果要将包部署到 SSISDB（项目部署模型），请选中“创建由 Azure SQL 数据库服务器/托管实例托管的 SSIS 目录 (SSISDB) 来存储项目/包/环境/执行日志”复选框  。 或者，如果要将包部署到由 Azure SQL 托管实例（包部署模型）托管的文件系统、Azure 文件存储或 SQL Server 数据库 (MSDB) 中，则无需创建 SSISDB 或选中该复选框。
 
-无论你采用哪种部署模型，如果你想要使用 Azure SQL 托管实例托管的 SQL Server 代理来协调/计划包执行，则它是由 SSISDB 启用的，因此，请选中该复选框。 有关详细信息，请参阅[通过 Azure SQL 托管实例代理来安排 SSIS 包执行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent)。
+无论采用哪种部署模型，如果要使用由 Azure SQL 托管实例托管的 SQL Server 代理来协调/安排包执行，请选中该复选框，因为它已由 SSISDB 启用。 有关详细信息，请参阅[通过 Azure SQL 托管实例代理来安排 SSIS 包执行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent)。
    
-如果选中该复选框，请完成以下步骤，以使您自己的数据库服务器托管 SSISDB，我们将代表您创建和管理这些 SSISDB。
+如果选中该复选框，请完成以下步骤以提供你自己的数据库服务器来承载我们将代表你创建和管理的 SSISDB。
 
    ![SSISDB 的部署设置](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
    
@@ -152,7 +154,7 @@ ms.locfileid: "88185258"
 
       如果选择具有 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器或具有专用终结点的托管实例来承载 SSISDB，或者需要在未配置自承载 IR 的情况下访问本地数据，则需要将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[在虚拟网络中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
 
-   1. 选中 "**将 Azure AD authentication 用于您的 ADF 的托管标识**" 复选框，以便为您的数据库服务器选择用于托管 SSISDB 的身份验证方法。 选择使用数据工厂的托管标识进行 SQL 身份验证或 Azure AD 身份验证。
+   1. 选中“结合 ADF 的托管标识使用 Azure AD 身份验证”复选框，选择数据库服务器用来承载 SSISDB 的身份验证方法。 选择使用数据工厂的托管标识进行 SQL 身份验证或 Azure AD 身份验证。
 
       如果选中该复选框，需将数据工厂的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
    
@@ -164,9 +166,9 @@ ms.locfileid: "88185258"
 
 如果适用，请选择“测试连接”，如果成功，请选择”下一步” 。
 
-##### <a name="creating-azure-ssis-ir-package-stores"></a>创建 Azure-SSIS IR 包存储区
+##### <a name="creating-azure-ssis-ir-package-stores"></a>创建 Azure-SSIS IR 包存储
 
-在 "**集成运行时设置**" 窗格的 "**部署设置**" 页上，如果要管理部署到 MSDB、文件系统或 azure 文件中的包 (包部署模型) 与 Azure-SSIS IR 包存储区，请选择 "**创建包存储区以管理部署到文件系统/azure 文件中的包"/"SQL SERVER 数据库 (使用 azure SQL) MSDB**托管实例" 复选框。
+在“集成运行时设置”窗格的“部署设置”页中，如果要使用 Azure-SSIS IR 包存储来管理部署到 MSDB、文件系统或 Azure 文件存储中的包（包部署模型），请选中“创建包存储以管理部署到由 Azure SQL 托管实例托管的文件系统/Azure 文件/SQL Server 数据库 (MSDB) 中的包”复选框  。
    
 借助 Azure-SSIS IR 包存储，你可以通过与[旧版 SSIS 包存储](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)类似的 SSMS 导入/导出/删除/运行包以及监视/停止正在运行的包。 有关详细信息，请参阅[使用 Azure-SSIS IR 包存储管理 SSIS 包](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store)。
    

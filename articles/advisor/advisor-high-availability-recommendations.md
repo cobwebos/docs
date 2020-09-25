@@ -3,12 +3,12 @@ title: 利用 Advisor 提高应用程序的可靠性
 description: 使用 Azure 顾问确保并提高业务关键 Azure 部署的可靠性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264586"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 提高应用程序的可靠性
 
@@ -76,7 +76,7 @@ Azure 顾问检查是否有任何使用基本 SKU 的 VPN 网关，并建议改�
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
-Azure 顾问检测到其条件部分中指定了无效查询的警报规则。 可以在 Azure Monitor 中创建日志警报规则，并使用这些规则按指定的时间间隔运行分析查询。 查询的结果确定是否需要触发警报。 分析查询可能会因为引用的资源、表或命令的更改而在一段时间内变得无效。 顾问建议你更正警报规则中的查询，以防止它被自动禁用，并确保在 Azure 中监视资源。 [了解有关排除警报规则的详细信息。](https://aka.ms/aa_logalerts_queryrepair)
+Azure 顾问检测到在 "条件" 部分中指定了无效查询的日志警报规则。 Azure Monitor 日志警报规则按指定的频率运行查询，并基于结果激发警报。 由于引用的资源、表或命令发生了变化，查询可能会因时间而变得无效。 顾问建议对警报查询进行更正，以防止自动禁用规则并确保监视范围。 有关详细信息，请参阅 [警报规则疑难解答](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>在 Azure Cosmos DB 集合中配置一致的索引模式
 

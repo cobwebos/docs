@@ -4,17 +4,17 @@ description: Azure 安全基准 V2 网络安全
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184416794011d259af3568c81e4648d822a2c4a5
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329425"
 ---
-# <a name="security-control-network-security"></a>安全控制：网络安全
+# <a name="security-control-v2-network-security"></a>安全控制 V2：网络安全
 
 网络安全包括用于保护和保护 Azure 网络的控件。 这包括保护虚拟网络、建立专用连接、阻止和减少外部攻击以及保护 DNS。
 
@@ -30,15 +30,19 @@ ms.locfileid: "90059181"
 
 使用 Azure 安全中心自适应网络强化建议网络安全组配置，这些配置基于对外部网络流量规则的引用限制端口和源 Ip。
 
+使用 Azure Sentinel 发现旧的不安全协议，如 SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、未签名的 LDAP 绑定和 Kerberos 中的弱密码。
+
 - [如何创建包含安全规则的网络安全组](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [如何部署和配置 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Azure 安全中心内的自适应网络强化](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Azure Sentinel 不安全协议工作簿](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -54,7 +58,7 @@ ms.locfileid: "90059181"
 
 使用 Azure ExpressRoute 或 Azure 虚拟专用网络 (VPN) 在归置环境中的 Azure 数据中心和本地基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 internet，它们提供比典型 internet 连接更高的可靠性、更快的速度和更低的延迟。 对于点到站点 VPN 和站点到站点 VPN，你可以使用这些 VPN 选项和 Azure ExpressRoute 的任意组合将本地设备或网络连接到虚拟网络。
 
-若要将 Azure 中的两个或多个虚拟网络连接在一起，请使用虚拟网络对等互连。 对等互连虚拟网络之间的网络流量是专用的，保存在 Azure 主干网络上。 
+若要将 Azure 中的两个或多个虚拟网络连接在一起，请使用虚拟网络对等互连或专用链接。 对等互连虚拟网络之间的网络流量是专用的，保存在 Azure 主干网络上。 
 
 - [ExpressRoute 连接模型是什么](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +66,11 @@ ms.locfileid: "90059181"
 
 - [虚拟网络对等](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure 专用链接](../../private-link/private-link-service-overview.md)
+
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -88,7 +94,7 @@ ms.locfileid: "90059181"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -108,6 +114,7 @@ ms.locfileid: "90059181"
 -   使用 Web 应用程序防火墙 (WAF) 功能 Azure 应用程序网关、Azure 前门和 Azure 内容分发网络 (CDN) 来保护应用程序、服务和 Api，防范应用程序层攻击。 
 
 -   通过在 Azure 虚拟网络上启用 DDoS 标准保护，保护资产免受 DDoS 攻击。 
+-   使用 Azure 安全中心来检测与上述相关的配置错误的风险。 
 
 - [Azure 防火墙文档](/azure/firewall/)
 
@@ -117,7 +124,7 @@ ms.locfileid: "90059181"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 无
 
@@ -139,7 +146,7 @@ ms.locfileid: "90059181"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -165,7 +172,7 @@ ms.locfileid: "90059181"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -191,7 +198,7 @@ ms.locfileid: "90059181"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

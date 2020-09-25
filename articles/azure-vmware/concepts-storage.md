@@ -1,16 +1,16 @@
 ---
 title: 概念-存储
-description: 了解 Azure VMware 解决方案预览私有云中的主要存储功能。
+description: 了解 Azure VMware 解决方案私有云中的主要存储功能。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316811"
 ---
-# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware 解决方案预览存储概念
+#  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware 解决方案存储概念
 
 Azure VMware 解决方案私有云提供了本机的群集范围内的群集存储。 群集中每个主机的所有本地存储都用于 vSAN 数据存储，并且默认情况下，静态数据加密是可用的。 可以使用 Azure 存储资源扩展私有云的存储功能。
 
@@ -28,9 +28,9 @@ Azure VMware 解决方案私有云提供了本机的群集范围内的群集存�
 
 ## <a name="data-at-rest-encryption"></a>静态数据加密
 
-默认情况下，vSAN 数据存储使用静态数据加密。 加密解决方案基于 KMS，并支持用于密钥管理的 vCenter 操作。 密钥加密密钥存储在 Azure Key Vault 中，当主机由于任何原因从群集中删除时，Ssd 上的数据会立即失效。
+默认情况下，vSAN 数据存储使用静态数据加密。 加密解决方案基于 KMS，并支持用于密钥管理的 vCenter 操作。 密钥以加密方式存储，并由基于 HSM 的 Azure Key Vault 主密钥包装。 出于任何原因从群集中删除主机时，Ssd 上的数据会立即失效。
 
-## <a name="scaling"></a>扩展
+## <a name="scaling"></a>缩放
 
 通过将主机添加到群集来扩展本机群集存储容量。 对于使用他的主机的群集，每个额外主机的原始群集范围容量增加了 15.4 TB。 使用 GP 主机构建的群集的原始容量增加了 7.7 TB，每增加一台主机。 在这两种类型的群集中，主机需要大约10分钟才能添加到群集。 有关缩放群集的说明，请参阅 [扩展私有云教程][tutorial-scale-private-cloud] 。
 

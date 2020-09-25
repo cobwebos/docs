@@ -1,5 +1,5 @@
 ---
-title: 在管理单元中添加、删除和列出组（预览版）- Azure Active Directory | Microsoft Docs
+title: 在管理单元中添加、删除和列出组-Azure Active Directory |Microsoft Docs
 description: 在 Azure Active Directory 中对管理单元中的组及其角色权限的管理
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 06/23/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 324d0ff0659270c6f2e90c0456ded83344f73936
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264983"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中对管理单元中的组的添加和管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "85850926"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在预览版中，只能将组一个个地分配给管理单元。 无法将组批量地分配给管理单元。 在门户中，可通过以下两种方式之一，将向管理单元分配组：
+只能将组单独分配给管理单元。 没有向管理单元批量分配组的选项。 在门户中，可通过以下两种方式之一，将向管理单元分配组：
 
 1. 通过“Azure AD”>“组”页
 

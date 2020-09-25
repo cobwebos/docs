@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316726"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -105,7 +105,7 @@ ms.locfileid: "89376173"
 
 发生此错误的原因是 VSS 编写器处于错误的状态。 Azure 备份扩展与 VSS 编写器进行交互，以拍摄磁盘快照。 若要解决此问题，请执行以下步骤：
 
-请重启处于错误状态的 VSS 编写器。
+步骤1：重新启动处于错误状态的 VSS 编写器。
 - 在提升的命令提示符处，运行 ```vssadmin list writers```。
 - 输出包含所有 VSS 编写器及其状态。 对于状态不 **稳定为 [1]** 的每个 vss 编写器，请重新启动相应的 vss 编写器服务。 
 - 若要重新启动该服务，请从提升的命令提示符运行以下命令：
@@ -117,12 +117,20 @@ ms.locfileid: "89376173"
 > 重新启动某些服务可能会影响你的生产环境。 请确保遵循审批过程，并在计划的停机时间重启服务。
  
    
-如果重新启动 VSS 编写器未解决此问题，并且问题仍然存在，原因是超时，则：
-- 在提升的命令提示符下运行以下命令-prompt (作为管理员) 阻止为 blob 快照创建线程。
+步骤2：如果重新启动 VSS 编写器未解决此问题，请从提升的命令提示符下运行以下命令-prompt (作为管理员) ，以防为 blob 快照创建线程。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+步骤3：如果步骤1和2未解决此问题，则可能是由于不同的 IOPS 而导致 VSS 编写器超时。<br>
+
+若要验证，请导航到 " ***系统" 和 "事件查看器应用程序日志*** "，然后检查以下错误消息：<br>
+*将写入操作保存到卷影复制的卷时，卷影副本提供程序超时。这可能是由应用程序或系统服务在卷上发生过多活动。请稍后在卷上的活动减少时重试。*<br>
+
+解决方案：
+- 检查在 VM 磁盘上分配负载的可能性。 这会减少单个磁盘上的负载。 可以 [通过在存储级别启用诊断指标来检查 IOPs 限制](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)。
+- 将备份策略更改为在非高峰时段执行备份，此时 VM 上的负载最低。
+- 升级 Azure 磁盘以支持更高的 IOPs。 [在此处了解详细信息](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState-由于 VSS (卷影复制) 服务处于错误状态，快照操作失败
 
@@ -245,7 +253,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤：
 
-* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>or
+* 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>或
 * 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
 
 ### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-由于存储帐户中的可用空间不足，无法复制虚拟机的快照
@@ -306,6 +314,13 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 | 备份未能取消作业： <br>请等待作业完成。 |无 |
 
 ## <a name="restore"></a>还原
+
+#### <a name="disks-appear-offline-after-file-restore"></a>文件还原后磁盘显示脱机
+
+如果还原后发现磁盘处于脱机状态，请执行以下操作： 
+* 验证执行脚本的计算机是否满足操作系统要求。 [了解详细信息](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements)。  
+* 请确保不会还原到相同的源， [了解详细信息](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)。
+
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |

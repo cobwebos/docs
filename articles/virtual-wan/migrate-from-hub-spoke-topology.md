@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8dfcdd8195824cb732df2c0c70c338e69630c5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329238"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>迁移到 Azure 虚拟 WAN
 
@@ -234,7 +234,7 @@ Contoso 现已按照本文前面部分讨论的要求验证了所有分支与 VN
 ![通过 Azure 防火墙进行的安全和策略控制](./media/migrate-from-hub-spoke-topology/security-policy.png)
 **插图：虚拟 WAN（安全虚拟中心）中的 Azure 防火墙**
 
-若要将 Azure 防火墙引入虚拟 WAN 中心以启用统一的策略控制点，需要执行以下高级步骤。 有关此过程的详细信息以及安全虚拟中心的概念，请参阅[Azure 防火墙管理器](../firewall-manager/index.yml)。
+若要将 Azure 防火墙引入虚拟 WAN 中心以启用统一的策略控制点，需要执行以下高级步骤。 有关此过程的详细信息以及安全虚拟中心的概念，请参阅 [Azure 防火墙管理器](../firewall-manager/index.yml)。
 
 1. 创建 Azure 防火墙策略。
 2. 将防火墙策略链接到 Azure 虚拟 WAN 中心。 此步骤允许现有的虚拟 WAN 中心充当安全虚拟中心，并部署所需的 Azure 防火墙资源。

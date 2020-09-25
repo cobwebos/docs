@@ -3,13 +3,13 @@ title: 用于处理自定义事件和指标的 Application Insights API | Micros
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264127"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 

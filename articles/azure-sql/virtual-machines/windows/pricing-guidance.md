@@ -8,19 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316930"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的定价指南
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "88141952"
 | SQL Server 版本 | 工作负载 |
 |-----|-----|
 | Web | 小型网站 |
-| Standard | 中小型工作负荷 |
+| 标准 | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。 
@@ -167,7 +167,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/manage/getting-started.md)。 有关最新的 Azure 虚拟机定价，包括 SQL Server，请参阅适用于[Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)和[Linux Vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虚拟机定价页。
+有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/manage/getting-started.md)。 有关最新的 Azure 虚拟机定价，包括 SQL Server，请参阅适用于 [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux Vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虚拟机定价页。
 
 有关 Azure 虚拟机上的 SQL Server 的概述，请参阅以下文章：
 

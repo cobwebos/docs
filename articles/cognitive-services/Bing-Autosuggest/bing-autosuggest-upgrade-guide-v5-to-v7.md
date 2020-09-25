@@ -1,7 +1,7 @@
 ---
 title: 将必应自动推荐 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
-description: 发现需要更新为使用版本 7 的应用部分。
+description: 标识你需要更新以使用版本7的必应自动建议应用程序部分。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5249a3a1f51eea2ecd0999d71c6b08fdacf37a34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65498e25108a28183ae6596a8a7288c071ef1147
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68405415"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277506"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>自动推荐 API 升级指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "68405415"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如，https：\//api.cognitive.microsoft.com/bing/\*\*7.0 * */Suggestions。
+- 终结点的版本号已从 v5 更改为 v7。 例如，https： \/ /api.cognitive.microsoft.com/bing/ \* \* 7.0 * */Suggestions。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -54,7 +54,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-禁用|InsufficientAuthorization.AuthorizationDisabled
+已禁用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing

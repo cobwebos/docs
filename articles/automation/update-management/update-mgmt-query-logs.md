@@ -3,14 +3,14 @@ title: 查询 Azure 自动化更新管理日志
 description: 本文介绍如何在 Log Analytics 工作区中查询更新管理的日志。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449909"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264297"
 ---
 # <a name="query-update-management-logs"></a>查询更新管理日志
 
@@ -38,7 +38,7 @@ ms.locfileid: "87449909"
 | SourceSystem | *OperationsManager* |
 | TenantId | 表示组织的 Azure Active Directory 实例的唯一标识符。 |
 | TimeGenerated | 创建记录的日期和时间。 |
-| 类型 | *更新* |
+| 类型 | *Update* |
 | UpdateClassification | 指示可应用的更新类型。 对于 Windows：<br> 关键更新<br> *安全更新*<br> 更新汇总<br> 功能包<br> 服务包<br> 定义更新<br> *工具*<br> 更新。 对于 Linux：<br> 关键和安全更新<br> *其他* |
 | UpdateSeverity | 漏洞的严重性分级。 值为：<br> *严重*<br> 重要说明<br> 中<br> *低* |
 | UpdateTitle | 更新的标题。|
@@ -110,25 +110,25 @@ ms.locfileid: "87449909"
 | Computer | 报告计算机的完全限定域名。 |
 | ComputerEnvironment | 环境。 值为 Azure 或 Non-Azure。 |
 | CorrelationId | 用于该更新的 Runbook 作业运行的唯一标识符。 |
-| EndTime | 结束同步过程的时间。 |
+| EndTime | 结束同步过程的时间。 *当前未使用此属性。请参阅 TimeGenerated。* |
 | ErrorResult | 无法安装更新时生成的 Windows 更新错误代码。 |
 | InstallationStatus | 客户端计算机上可能的更新安装状态：<br> `NotStarted` - 作业尚未触发。<br> `FailedToStart` - 无法在计算机上启动作业。<br> `Failed` - 作业已启动，但失败并发生异常。<br> `InProgress` - 作业正在进行。<br> `MaintenanceWindowExceeded` - 执行尚未完成，但已达到维护时段间隔。<br> `Succeeded` - 作业成功。<br> `InstallFailed` - 无法成功安装更新。<br> `NotIncluded`<br> `Excluded` |
 | KBID | Windows 更新的知识库文章 ID。 |
 | ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | OSType | 操作系统的类型。 值为 Windows 或 Linux。 |
-| 产品 | 该更新所适用的产品。 |
+| Products | 该更新所适用的产品。 |
 | 资源 | 资源的名称。 |
 | ResourceId | 与记录关联的资源的唯一标识符。 |
 | ResourceProvider | 资源提供程序。 |
 | ResourceType | 资源类型。 |
 | SourceComputerId | 表示源计算机的唯一标识符。 |
-| SourceSystem | 记录的源系统。 值为 `OperationsManager`。 |
-| StartTime | 计划要安装更新的时间。 |
-| SubscriptionId | Azure 订阅的唯一标识符。 | 
+| SourceSystem | 记录的源系统。 该值为 `OperationsManager`。 |
+| StartTime | 计划要安装更新的时间。 *当前未使用此属性。请参阅 TimeGenerated。* |
+| SubscriptionId | Azure 订阅的唯一标识符。 |
 | SucceededOnRetry | 该值指示是否首次尝试执行更新时失败，以及当前操作是否为重试。 |
 | TimeGenerated | 创建记录的日期和时间。 |
 | 标题 | 更新的标题。 |
-| 类型 | 更新的类型。 值为 `UpdateRunProgress`。 |
+| 类型 | 更新的类型。 该值为 `UpdateRunProgress`。 |
 | UpdateId | 软件更新的唯一标识符。 |
 | VMUUID | 虚拟机的唯一标识符。 |
 | ResourceId | 与记录关联的资源的唯一标识符。 |
@@ -137,7 +137,7 @@ ms.locfileid: "87449909"
 
 一条 `UpdateSummary` 类型的记录会被创建，以便按计算机提供更新摘要。 这些记录的属性在下表中列出：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |----------|-------------|
 | Computer | 报告计算机的完全限定域名。 |
 | ComputerEnvironment | 环境。 值为 Azure 或 Non-Azure。 |
@@ -156,7 +156,7 @@ ms.locfileid: "87449909"
 | RestartPending | 如果正在等待重启，则为 True，否则为 False。 |
 | SecurityUpdatesMissing | 适用的缺失安全更新计数。|
 | SourceComputerId | 虚拟机的唯一标识符。 |
-| SourceSystem | 记录的源系统。 值为 `OpsManager`。 |
+| SourceSystem | 记录的源系统。 该值为 `OpsManager`。 |
 | SubscriptionId | Azure 订阅的唯一标识符。 |
 | TimeGenerated | 创建记录的日期和时间。 |
 | TotalUpdatesMissing | 适用的缺失更新总数。 |

@@ -1,14 +1,14 @@
 ---
 title: 使用 Windows PowerShell DSC 安装连接的计算机代理
 description: 本文介绍如何使用 Windows PowerShell DSC 使用启用了 Azure Arc 的服务器将计算机连接到 Azure。
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5349ff870be324c0137d2adcaf201ecdac286cbc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2c36a79790f3e31e897dfe750f430f05eaa34d04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329051"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安装连接的计算机代理
 
@@ -86,6 +86,8 @@ PowerShell 库中的 [CompositeResource](https://www.powershellgallery.com/packa
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
+* 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
 
-- 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
+* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
+
+* 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。

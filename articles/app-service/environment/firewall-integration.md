@@ -4,15 +4,15 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 782074fc491c0b5e03ced36563bafa8679e78330
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264654"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -155,6 +155,9 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |wdcpalt.microsoft.com:443 |
 |wdcp.microsoft.com:443 |
 |ocsp.msocsp.com:443 |
+|ocsp.msocsp.com:80 |
+|oneocsp.microsoft.com:80 |
+|oneocsp.microsoft.com:443 |
 |mscrl.microsoft.com:443 |
 |mscrl.microsoft.com:80 |
 |crl.microsoft.com:443 |
@@ -162,6 +165,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |www.thawte.com:443 |
 |crl3.digicert.com:80 |
 |ocsp.digicert.com:80 |
+|ocsp.digicert.com:443 |
 |csc3-2009-2.crl.verisign.com:80 |
 |crl.verisign.com:80 |
 |ocsp.verisign.com:80 |
@@ -225,7 +229,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |gr-Prod-\*.cloudapp.net:443 |
 | \*.management.azure.com:443 |
@@ -281,7 +285,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 
-| 端点 |
+| 终结点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -289,7 +293,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 端点 | 详细信息 |
+| 终结点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
@@ -350,10 +354,9 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 |management.core.usgovcloudapi.net:80 |
 |management.usgovcloudapi.net:80 |
 |maupdateaccountff.blob.core.usgovcloudapi.net:80 |
-|mscrl.microsoft.com
-|ocsp.digicert.0 |
-|ocsp.msocsp.co|
-|ocsp.verisign.0 |
+|mscrl.microsoft.com:80
+|ocsp.digicert.com:80 |
+|ocsp.verisign.com:80 |
 |rteventse.trafficmanager.net:80 |
 |settings-n.data.microsoft.com:80 |
 |shavamafestcdnprod1.azureedge.net:80 |
@@ -392,6 +395,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 |definitionupdates.microsoft.com:443 |
 |download.windowsupdate.com:443 |
 |fairfax.warmpath.usgovcloudapi.net:443 |
+|gcs.monitoring.core.usgovcloudapi.net:443 |
 |flighting.cp.wd.microsoft.com:443 |
 |gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:443 |
 |gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
@@ -411,6 +415,9 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 |mscrl.microsoft.com:443 |
 |ocsp.digicert.com:443 |
 |ocsp.msocsp.com:443 |
+|ocsp.msocsp.com:80 |
+|oneocsp.microsoft.com:80 |
+|oneocsp.microsoft.com:443 |
 |ocsp.verisign.com:443 |
 |rteventservice.trafficmanager.net:443 |
 |settings-win.data.microsoft.com:443 |

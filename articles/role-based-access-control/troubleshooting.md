@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329498"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -52,18 +52,18 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Azure 角色分配问题
 
 - 如果你因为“添加” > “添加角色分配”选项被禁用或者因为收到权限错误“具有此对象 id 的客户端无权执行操作”而无法在 Azure 门户中的“访问控制(IAM)”上添加角色分配，请检查你当前登录时使用的用户是否为在你尝试分配角色的范围中具有 `Microsoft.Authorization/roleAssignments/write` 权限的角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)。
-- 如果要使用服务主体来分配角色，可能会收到错误 "权限不足，无法完成操作"。 例如，假设你有一个服务主体，该服务主体已被分配为 "所有者" 角色，并且你尝试使用 Azure CLI 创建以下角色分配作为服务主体：
+- 如果使用服务主体来分配角色，可能会收到错误信息：“权限不足，无法完成操作”。 例如，假设你有一个服务主体，并对其分配了“所有者”角色，并且你尝试使用 Azure CLI 创建以下角色分配作为服务主体：
 
     ```azurecli
     az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
     az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
 
-    如果收到错误 "权限不足，无法完成操作"，则很可能是因为 Azure CLI 尝试在 Azure AD 中查找工作负责人标识，并且服务主体在默认情况下无法读取 Azure AD。
+    如果收到错误“权限不足，无法完成操作”，则很可能是因为 Azure CLI 尝试在 Azure AD 中查找被分派人标识，但服务主体在默认情况下无法读取 Azure AD。
 
-    有两种方法可以解决此错误。 第一种方法是将[目录读取器](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。
+    可通过两种方式解决此错误。 第一种方法是将[目录读取器](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。
 
-    解决此错误的第二种方法是使用 `--assignee-object-id` 参数而不是创建角色分配 `--assignee` 。 使用 `--assignee-object-id` 会跳过 Azure AD 查找 Azure CLI。 需要获取要为其分配角色的用户、组或应用程序的对象 ID。 有关详细信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md#new-service-principal)。
+    第二种方法是使用 `--assignee-object-id` 参数而不是 `--assignee` 来创建角色分配。 通过使用 `--assignee-object-id`，Azure CLI 将跳过 Azure AD 查找。 你需要获取要为其分配角色的用户、组或应用程序的对象 ID。 有关详细信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md#new-service-principal)。
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>将订阅转移到另一目录
 
-- 如需了解将订阅转移到另一 Azure AD 目录的步骤，请参阅[将 Azure 订阅所有权转移到另一帐户](../cost-management-billing/manage/billing-subscription-transfer.md)。
+- 如果需要有关如何将订阅传输到不同 Azure AD 目录的步骤，请参阅将 [Azure 订阅转移到不同的 Azure AD 目录 (预览) ](transfer-subscription.md)。
 - 如果将订阅转移到另一 Azure AD 目录，所有角色分配将从源 Azure AD 目录中永久删除，而不会迁移到目标 Azure AD 目录。 必须在目标目录中重新创建角色分配。 此外，还需手动重新创建 Azure 资源的托管标识。 有关详细信息，请参阅[托管标识的 FAQ 和已知问题](../active-directory/managed-identities-azure-resources/known-issues.md)。
 - 如果你是 Azure AD 全局管理员并且在目录之间转移某个订阅后对其没有访问权限，请使用“Azure 资源的访问权限管理”开关暂时[提升你的访问权限](elevate-access-global-admin.md)来获取对订阅的访问权限。
 
@@ -99,11 +99,17 @@ $ras.Count
 - 如果尝试创建资源时收到权限错误“具有此对象 id 的客户端无权在此作用域内执行操作(代码:AuthorizationFailed)”，请检查你当前登录时使用的用户是否分配有在所选作用域内对资源具有写入权限的角色。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅 [Azure 内置角色](built-in-roles.md)。
 - 如果尝试创建或更新支持票证时收到权限错误“无权创建支持票证”，请检查你当前登录时使用的用户是否分配有具有 `Microsoft.Support/supportTickets/write` 权限的角色，例如[支持请求参与者](built-in-roles.md#support-request-contributor)。
 
+## <a name="move-resources-with-role-assignments"></a>移动资源并分配角色
+
+如果将已分配 Azure 角色的资源直接分配给资源 (或子资源) ，则不会移动角色分配，也不会将其变成孤立角色。 移动之后，必须重新创建角色分配。 最终，将自动删除孤立角色分配，但最佳做法是在移动资源之前删除角色分配。
+
+有关如何移动资源的信息，请参阅 [将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+
 ## <a name="role-assignments-with-identity-not-found"></a>未找到标识的角色分配
 
 在 Azure 门户的角色分配列表中，你可能会注意到安全主体（用户、组、服务主体或托管标识）列为“未找到标识”，类型为“未知” 。
 
-![Web 应用程序资源组](./media/troubleshooting/unknown-security-principal.png)
+![Azure 角色分配中未找到标识](./media/troubleshooting/unknown-security-principal.png)
 
 找不到标识的原因有两个：
 

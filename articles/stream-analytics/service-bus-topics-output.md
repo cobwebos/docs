@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ef5802d0c5e35b9c12db1f40782ba5f190ad1883
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261032"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>来自 Azure 流分析的服务总线主题输出
 
@@ -46,6 +46,22 @@ ms.locfileid: "90907195"
 ## <a name="custom-metadata-properties-for-output"></a>输出的自定义元数据属性
 
 可将查询列作为用户属性附加到传出的消息。 这些列不会进入有效负载。 这些属性以字典形式在输出消息中提供。 键是列名，值是属性字典中的列值。  支持除“记录”和“数组”以外的其他所有流分析数据类型。
+
+在下面的示例中，字段 `DeviceId` 和 `DeviceStatus` 添加到元数据。
+
+1. 使用以下查询：
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. `DeviceId,DeviceStatus`在输出中将配置为属性列。
+
+   :::image type="content" source="media/service-bus-topics-output/property-columns.png" alt-text="属性列":::
+
+下图是使用 [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)在 EventHub 中检查的预期输出消息属性。
+
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="事件自定义属性":::
 
 ## <a name="system-properties"></a>系统属性
 

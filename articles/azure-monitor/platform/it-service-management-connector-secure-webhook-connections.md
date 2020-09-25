@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 39f277fffbb9a76a4be4bfa8aaedeaf3479a989f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328847"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全导出将 Azure 连接到 ITSM 工具
 
@@ -107,16 +107,18 @@ ITSMC 使用用户名和密码凭据。 安全导出具有更强的身份验证�
 
 以下部分提供有关如何在 Azure 中连接 BMC Helix 产品和安全导出的详细信息。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 确保满足以下先决条件：
 
 * 已注册 Azure AD。
-* 你具有受支持的 BMC Helix 版本20.02 或更高版本 (版本或更高版本) 。
+* 你具有受支持的 BMC Helix 版本19.08 或更高版本 (版本或更高版本) 。
 
 ### <a name="configure-the-bmc-helix-connection"></a>配置 BMC Helix 连接
 
-1. 按照 [为版本20.02 启用预构建与 Azure Monitor 的集成](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)中的说明进行操作。
+1. 按照 accoring 中的说明进行操作：
+   * 正在[为版本20.02 启用预置与 Azure Monitor 的集成](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)。
+   * 正在[为版本19.11 启用预置与 Azure Monitor 的集成](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html)。
 
 1. 在 BMC Helix 中的连接配置过程中，请进入你的集成 BMC 实例，并按照以下说明进行操作：
 
@@ -138,4 +140,4 @@ ITSMC 使用用户名和密码凭据。 安全导出具有更强的身份验证�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+* [根据 Azure 警报日志创建 ITSM 工作项](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)

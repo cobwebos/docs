@@ -2,21 +2,25 @@
 title: 教程：配置 Webroot 安全意识培训以 Azure Active Directory 的自动用户预配 |Microsoft Docs
 description: 了解如何从 Azure AD 自动预配和取消预配用户帐户，以 Webroot 安全意识培训。
 services: active-directory
+documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: CelesteDG
+manager: beatrizd
+ms.assetid: 455f4396-930e-4db5-a167-d3ea6a860a17
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9345aaac306c8c009d6fc0a01c57beed3a22b10b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 31c0e9a690bde7a52a32fd9194afda76e1aaba8c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329102"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Webroot 安全意识培训
 
@@ -94,11 +98,11 @@ ms.locfileid: "88523467"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://awarenessapi.webrootanywhere.com/api/v2/scim` **租户 URL**"。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Webroot 安全意识培训。 如果连接失败，请确保 Webroot 安全意识培训帐户具有管理员权限，然后重试。
 

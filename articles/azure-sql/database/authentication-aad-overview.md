@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8221c77c0e6adeabe869a088089733d289a2f6ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277925"
 ---
 # <a name="use-azure-active-directory-authentication"></a>使用 Azure Active Directory 身份验证
 
@@ -168,7 +168,7 @@ Azure AD 服务器主体（登录名）支持以下身份验证方法：
 - 有关 SQL 数据库中登录名、用户、数据库角色和权限的概述，请参见[登录名、用户、数据库角色和权限](logins-create-manage.md)。
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
-- 有关为 SQL 托管实例创建 Azure AD 服务器主体（登录名）的语法，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
+- 有关为 SQL 托管实例创建 Azure AD 服务器主体（登录名）的语法，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](firewall-configure.md)。
 
 <!--Image references-->

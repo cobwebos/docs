@@ -3,12 +3,12 @@ title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316829"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -33,7 +33,7 @@ ms.locfileid: "89376530"
 * 该插件会直接将数据发送到恢复服务保管库，从而无需暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
 * 数据传输完成后，协调器通过备份服务确认提交。
 
-  ![SQL 备份体系结构](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![SQL 备份体系结构](./media/backup-azure-sql-database/azure-backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -66,11 +66,11 @@ ms.locfileid: "89376530"
 
       ![在“登录名 - 新建”对话框中选择“搜索”](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc。 输入“输入要选择的对象名称”中显示的帐户名。 选择“检查名称”以解析名称。 选择“确定” 。
+  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc。 输入“输入要选择的对象名称”中显示的帐户名。 选择“检查名称”以解析名称。 选择“确定”  。
 
       ![选择“检查名称”以解析未知的服务名称](./media/backup-azure-sql-database/check-name.png)
 
-  5. 在“服务器角色”中，确保“sysadmin”角色已选中。  选择“确定” 。 现在，所需的权限应会存在。
+  5. 在“服务器角色”中，确保“sysadmin”角色已选中。  选择“确定”  。 现在，所需的权限应会存在。
 
       ![确保 sysadmin 服务器角色已选中](./media/backup-azure-sql-database/sysadmin-server-role.png)
 

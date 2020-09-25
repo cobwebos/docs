@@ -8,18 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316998"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>配置 FCI 的分布式网络名称 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -145,7 +145,7 @@ Start-ClusterResource -Name dnn-demo
 若要测试故障转移，请执行以下步骤： 
 
 1. 使用 RDP 连接到 SQL Server 群集节点之一。
-1. 打开“故障转移群集管理器”。 选择“角色”。 观察哪个节点拥有 SQL Server FCI 角色。
+1. 打开“故障转移群集管理器”。 选择“角色”  。 观察哪个节点拥有 SQL Server FCI 角色。
 1. 右键单击“SQL Server FCI”角色。 
 1. 选择“移动”，再选择“最佳节点” 。
 

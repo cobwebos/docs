@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277285"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a> (预览中安装并运行空间分析容器) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "90987186"
 
 ### <a name="spatial-analysis-container-requirements"></a>空间分析容器要求
 
-若要运行空间分析容器，需要具有 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/)的计算设备。 建议你使用 GPU 加速 [Azure Stack 边缘](https://azure.microsoft.com/products/azure-stack/edge/) ，但该容器在满足最低要求的任何其他台式计算机上运行。 我们会将此设备称为 "主计算机"。
+若要运行空间分析容器，需要具有 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/)的计算设备。 建议你使用 GPU 加速 [Azure Stack 边缘](https://azure.microsoft.com/products/azure-stack/edge/) ，但该容器在满足最低要求的任何其他台式计算机上运行。 我们会将此设备称为 "主计算机"。
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack 边缘设备](#tab/azure-stack-edge)
 
@@ -71,7 +71,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
 ## <a name="request-approval-to-run-the-container"></a>请求批准以运行容器
 
-填写并提交 [请求表单](https://aka.ms/cognitivegate) ，请求批准以运行容器。 
+填写并提交 [请求表单](https://aka.ms/csgate) ，请求批准以运行容器。
 
 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交该表单后，Azure 认知服务团队将会对其进行评审，并通过一种决定向你发送电子邮件。
 
@@ -116,7 +116,8 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 如果在 Edge 设备上设置了 Edge 计算角色，则会创建两个设备：一个 IoT 设备，一个 IoT Edge 设备。 可在 IoT 中心资源中查看这两个设备。 Azure IoT Edge 运行时将已在 IoT Edge 设备上运行。            
 
 > [!NOTE]
-> 目前只有 Linux 平台可用于 IoT Edge 设备。 有关对 Azure Stack Edge 设备进行故障排除的帮助，请参阅 [日志记录和故障排除](spatial-analysis-logging.md) 一文。
+> * 目前 IoT Edge 设备仅支持 Linux 平台。 有关对 Azure Stack Edge 设备进行故障排除的帮助，请参阅 [日志记录和故障排除](spatial-analysis-logging.md) 一文。
+> * 若要详细了解如何配置 IoT Edge 设备以便通过代理服务器进行通信，请参阅 [将 IoT Edge 设备配置为通过代理服务器进行通信](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>在 Azure Stack 边缘上启用 MPS 
 
@@ -260,13 +261,14 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-如果主机不是 Azure Stack Edge 设备，则需要安装 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 版本1.0.8。 请按照以下步骤下载正确的版本： Ubuntu Server 18.04：
+如果主机不是 Azure Stack Edge 设备，则需要安装 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 版本1.0.8。 请按照以下步骤下载正确的版本：
+
+Ubuntu Server 18.04：
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
 ```
 
 复制生成的列表。
-
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 ```
@@ -316,7 +318,7 @@ sudo systemctl restart iotedge
 
 下表显示 IoT Edge 模块使用的各种环境变量。 你还可以使用中的属性在上面链接的部署清单中设置它们 `env` `spatialanalysis` ：
 
-| 设置名称 | 值 | 说明|
+| 设置名称 | Value | 说明|
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | 信息详细 | 日志记录级别，请选择以下两个值之一|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | 不修改|
@@ -324,8 +326,8 @@ sudo systemctl restart iotedge
 | ARCHON_NODES_LOG_LEVEL | 信息详细 | 日志记录级别，请选择以下两个值之一|
 | OMP_WAIT_POLICY | 活动 | 不修改|
 | QT_X11_NO_MITSHM | 1 | 不修改|
-| API_KEY | 你的 API 密钥| 从计算机视觉资源 Azure 门户收集此值。 你可以在资源的 " **密钥和终结点** " 部分中找到它，在 Azure 门户中。 |
-| BILLING_ENDPOINT | 终结点 URI| 从计算机视觉资源 Azure 门户收集此值。 你可以在资源的 " **密钥和终结点** " 部分中找到它，在 Azure 门户中。|
+| API_KEY | 你的 API 密钥| 从计算机视觉资源 Azure 门户收集此值。 可以在资源的 " **密钥和终结点** " 部分中找到它。 |
+| BILLING_ENDPOINT | 终结点 URI| 从计算机视觉资源 Azure 门户收集此值。 可以在资源的 " **密钥和终结点** " 部分中找到它。|
 | EULA | accept | 要使容器运行，需要将此值设置为 " *接受* " |
 | DISPLAY | ：1 | 此值需要与主计算机上的的输出相同 `echo $DISPLAY` 。 Azure Stack 边缘设备没有显示。 此设置不适用|
 
@@ -339,7 +341,6 @@ sudo systemctl restart iotedge
 az login
 az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
-
 ```
 
 |参数  |说明  |

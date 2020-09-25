@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329476"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure 认知搜索中的全文搜索
 
@@ -51,7 +51,7 @@ ms.locfileid: "88917952"
 
 以下示例是可以使用 [REST API](/rest/api/searchservice/search-documents) 发送到 Azure 认知搜索的一个搜索请求。  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 对于此请求，搜索引擎将执行以下操作：
 
@@ -76,9 +76,9 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 如前所述，查询字符串是请求的第一行： 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 查询分析器会将运算符（例如本示例中的 `*` 和 `+`）与搜索词区分开来，并将搜索查询解构成受支持类型的*子查询*： 
 
@@ -104,9 +104,9 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 如果 `searchMode=any`（默认设置），则 spacious 与 air-condition 之间的空间分隔符为 OR (`||`)，因此，示例查询文本等效于： 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 显式运算符（例如 `+"Ocean view"` 中的 `+`）在布尔查询构造中没有歧义（*必须*匹配字词）。 剩余字词的解释方式不太明确：spacious 和 air-condition。 搜索引擎是否应该根据 ocean view *和* spacious *和* air-condition 查找匹配项？ 或者，是否应该查找 ocean view 加上*任何一个*剩余的字词？ 
 
@@ -114,9 +114,9 @@ Spacious,||air-condition*+"Ocean view"
 
 假设我们现在设置为 `searchMode=all`。 在这种情况下，空格被解释为“and”运算。 文档中必须包含每个剩余的字词，才能将该文档视为匹配项。 生成的示例查询将按以下方式解释： 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 此查询的修改查询树如下所示，其中的匹配文档是所有三个子查询的交集： 
 
@@ -152,16 +152,16 @@ Spacious,||air-condition*+"Ocean view"
 
 可以使用[分析 API](/rest/api/searchservice/test-analyzer) 测试分析器的行为。 提供要分析的文本，查看给定的分析器会生成哪些字词。 例如，若要查看标准分析器如何处理文本“air-condition”，可以发出以下请求：
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 标准分析器会将输入文本分解成以下两个标记，使用起始和结束偏移（用于命中项突出显示）以及文本的位置（用于短语匹配）等属性来批注输入文本：
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ Spacious,||air-condition*+"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Spacious,||air-condition*+"Ocean view"
 
 文档检索是否在索引中查找包含匹配词的文档。 最好是通过一个示例来理解此阶段。 我们从一个采用以下简单架构的酒店索引着手： 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Spacious,||air-condition*+"Ocean view"
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 进一步假设此索引包含以下四个文档： 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Spacious,||air-condition*+"Ocean view"
         }
     ]
 }
-~~~~
+```
 
 **字词的索引编制方式**
 
@@ -239,7 +239,7 @@ Spacious,||air-condition*+"Ocean view"
 要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作：
 
 1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作。 
-2. *标记* 是词法分析的输出。
+2. 令牌是词法分析的输出。
 3. 将词语添加到索引。
 
 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
@@ -321,10 +321,12 @@ Spacious,||air-condition*+"Ocean view"
 ### <a name="scoring-example"></a>评分示例
 
 回想一下与示例查询匹配的三个文档：
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 文档 1 与查询的匹配程度最高，因为其说明字段中同时出现了字词 *spacious* 和所需的短语 *ocean view*。 后面的两个文档仅匹配短语 *ocean view*。 你可能会感到惊讶，尽管文档 2 和 3 都匹配相同的查询短语，但它们的相关性评分却不相同。 这是因为，评分公式除了包含 TF/IDF 以外，还包含其他组成部分。 在本例中，为文档 3 分配的评分略高，因为其说明更短。 请学习 [Lucene 的实际评分公式](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)，了解字段长度和其他因素如何影响相关性评分。
 

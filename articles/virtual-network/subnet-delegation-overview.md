@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2019
 ms.author: kumud
-ms.openlocfilehash: b33ff808b802b6848e2d5debaf515a73bf21a1bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbb683754aed5b2a2e6e9c022713b7e87ad9ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74281332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329201"
 ---
 # <a name="what-is-subnet-delegation"></a>什么是子网委托？
 
@@ -51,10 +51,11 @@ ms.locfileid: "74281332"
 - 指定委托子网中的最小 IP 地址数。
 - 指定委托子网中来自专用 IP 地址空间（10.0.0.0/8、192.168.0.0/16、172.16.0.0/12）的 IP 地址空间。
 - 指定自定义 DNS 配置包含 Azure DNS 条目。
+- 需要删除委派，然后才能删除子网或虚拟网络。
 
 注入的服务也可以添加自身的策略，如下所述：
-- **安全策略**：给定服务正常运行所需的安全规则集合。
-- **路由策略**：给定服务正常运行所需的路由集合。
+- **安全策略**：收集给定服务工作所需的安全规则的集合。
+- **路由策略**：给定服务工作所需的路由的集合。
 
 ## <a name="what-subnet-delegation-does-not-do"></a>子网委托无法实现的目的
 

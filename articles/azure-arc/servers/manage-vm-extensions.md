@@ -1,14 +1,14 @@
 ---
 title: 启用了 Azure Arc 的服务器的 VM 扩展管理
 description: 启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展提供部署后配置和自动化任务和非 Azure Vm。
-ms.date: 09/02/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329068"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>启用了 Azure Arc 服务器的虚拟机扩展管理
 
@@ -34,9 +34,9 @@ VM 扩展功能仅在 [受支持区域](overview.md#supported-regions)的列表�
 
 ## <a name="extensions"></a>扩展
 
-在此预览版中，我们在 Windows 和 Linux 计算机上支持以下 VM 扩展。
+在此版本中，我们在 Windows 和 Linux 计算机上支持以下 VM 扩展。
 
-|扩展 |OS |Publisher |其他信息 |
+|扩展 |OS |发布者 |其他信息 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 扩展](../../virtual-machines/extensions/dsc-windows.md)|
@@ -51,7 +51,7 @@ VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShel
 
 若要了解有关 Azure 连接的计算机代理包以及有关扩展代理组件的详细信息，请参阅 [代理概述](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 
@@ -66,10 +66,7 @@ VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShel
 
 验证计算机是否与支持 Azure 连接的计算机代理的 Windows 和 Linux 操作系统的 [支持版本](agent-overview.md#supported-operating-systems) 相匹配。
 
-此功能支持的已连接计算机代理的最低版本为：
-
-* Windows-0.7. x
-* Linux-0.8. x
+Windows 和 Linux 上此功能支持的已连接计算机代理的最低版本为1.0 版。
 
 若要将计算机升级到所需的代理版本，请参阅 [升级代理](manage-agent.md#upgrading-agent)。
 
@@ -77,7 +74,7 @@ VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShel
 
 VM 扩展可通过 Azure 门户应用服务器托管计算机的 Arc。
 
-1. 在浏览器中转到 [Azure 门户](https://aka.ms/arcserver-preview)。
+1. 在浏览器中转到 [Azure 门户](https://portal.azure.com)。
 
 2. 在门户中，浏览到 " **服务器-Azure Arc** "，然后从列表中选择你的混合计算机。
 
@@ -719,22 +716,10 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 4. 选择 " **卸载** "，并在出现提示时选择 **"是"** 以继续。
 
-## <a name="troubleshooting"></a>疑难解答
-
-可以从 Azure 门户检索有关扩展部署状态的数据。
-
-以下故障排除步骤适用于所有 VM 扩展。
-
-1. 若要检查来宾代理日志，请查看在中 `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` 为 Windows 和 Linux 设置你的扩展时的活动 `/var/lib/GuestConfig/ext_mgr_logs` 。
-
-2. 有关 Windows 中的更多详细信息，请查看特定扩展的扩展日志 `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` 。 对于安装在 Linux 下的每个扩展，会将扩展输出记录到文件中 `/var/lib/GuestConfig/extension_logs` 。
-
-3. 检查扩展特定的文档故障排除部分，了解错误代码、已知问题等。有关每个扩展的其他疑难解答信息，请参阅扩展概述中的 **故障排除和支持** 部分。 这包括写入日志的错误代码的说明。 本文前面的 [扩展表](#extensions) 中链接了扩展文章。
-
-4. 查看系统日志。 检查其他可能影响了扩展的操作，例如，长时间安装另一个需要包管理器独占访问权限的应用程序。
-
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
+* 疑难解答信息可在 [VM 扩展疑难解答指南](troubleshoot-vm-extensions.md)中找到。
 
-- 了解有关 [[Log Analytics agent] 的](../../azure-monitor/platform/log-analytics-agent.md)详细信息。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。
+* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
+
+* 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 需要收集操作系统和工作负荷监视数据、使用自动化 runbook 或功能（如更新管理）管理该数据，或使用 [Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务时，需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。

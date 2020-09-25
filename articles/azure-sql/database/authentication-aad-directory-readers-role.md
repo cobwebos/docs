@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Azure Active Directory 中的目录读者角色
-description: Azure AD 应用程序 () 支持 Azure AD 用户在 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 中创建
+title: Azure SQL 的 Azure Active Directory 中的目录读取者角色
+description: 了解 Azure SQL Azure AD 中的目录读者角色。
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
@@ -9,14 +9,14 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: a517a4b14a64be2b9bf12270eef3d08e14d8f3c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a6fb2c1c539c5b8e353f5c3720cb9d001dcbbc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277931"
 ---
-# <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL Azure Active Directory 中的目录读者角色
+# <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL 的 Azure Active Directory 中的目录读取者角色
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
@@ -39,9 +39,9 @@ ms.locfileid: "88556214"
 
 若要将 [**目录读取**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 者角色分配给某个标识，需要具有 [全局管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) 或 [特权角色管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) 权限的用户。 经常管理或部署 SQL 数据库、SQL 托管实例或 Azure Synapse 的用户可能无权访问这些高特权角色。 这通常会导致创建未计划的 Azure SQL 资源的用户的复杂性，或者需要在大型组织中经常无法访问的高特权角色成员提供帮助。
 
-对于 SQL 托管实例，必须先将 **目录读取** 者角色分配给托管实例标识，然后才能 [为托管实例设置 Azure AD 管理员](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。 
+对于 SQL 托管实例，必须先将目录读取者角色分配给托管实例标识，然后才能[为托管实例设置 Azure AD 管理员](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。 
 
-为逻辑服务器设置 Azure AD 管理员时，SQL 数据库或 Azure Synapse 不需要将 **目录读取** 者角色分配给服务器标识。 但是，若要在 SQL 数据库或 Azure Synapse 中代表 Azure AD 应用程序启用 Azure AD 对象创建，则需要 **目录读取** 者角色。 如果未将该角色分配给 SQL 逻辑服务器标识，则在 Azure SQL 中创建 Azure AD 用户将失败。 有关详细信息，请参阅[使用 Azure SQL 的 Azure Active Directory 服务主体](authentication-aad-service-principal.md)。
+为逻辑服务器设置 Azure AD 管理员时，SQL 数据库或 Azure Synapse 不需要向服务器标识分配目录读取者角色。 但是，若要在 SQL 数据库或 Azure Synapse 中代表 Azure AD 应用程序启用 Azure AD 对象创建，则需要目录读取者角色。 如果未将该角色分配给 SQL 逻辑服务器标识，则在 Azure SQL 中创建 Azure AD 用户将失败。 有关详细信息，请参阅[使用 Azure SQL 的 Azure Active Directory 服务主体](authentication-aad-service-principal.md)。
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>向 Azure AD 组授予目录读者角色
 
@@ -52,4 +52,4 @@ ms.locfileid: "88556214"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：将目录读取者角色分配到 Azure AD 组和管理角色分配](authentication-aad-directory-readers-role-tutorial.md)
+> [教程：将目录读取者角色分配到 Azure AD 组并管理角色分配](authentication-aad-directory-readers-role-tutorial.md)

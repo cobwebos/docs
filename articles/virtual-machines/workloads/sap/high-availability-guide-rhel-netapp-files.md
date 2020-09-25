@@ -1,6 +1,6 @@
 ---
 title: Azure 虚拟机上的 SAP NW 高可用性与 Azure NetApp 文件 |Microsoft Docs
-description: Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
+description: 在 Azure 虚拟机上通过 Azure NetApp 文件 (Vm) RHEL 为 SAP NW 建立高可用性。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 51da96ab5c42c0b48f53969139bd8b87690b8319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329272"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>适用于 sap NetWeaver 的 azure 虚拟机高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux
 

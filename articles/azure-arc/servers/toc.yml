@@ -47,6 +47,8 @@
       items:
         - name: 代理连接问题
           href: troubleshoot-agent-onboard.md
+        - name: VM 扩展问题
+          href: troubleshoot-vm-extensions.md
 - name: 参考
   items:
     - name: 数据驻留

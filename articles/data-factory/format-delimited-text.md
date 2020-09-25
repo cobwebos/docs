@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 1793517a76fce3c252c95fb73299d4c4e8c5a216
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ac6540dfd86430aab518b145ed391d1d6283219e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276571"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure 数据工厂中带分隔符的文本格式
 
@@ -32,7 +32,7 @@ ms.locfileid: "90531808"
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的类型属性必须设置为 **DelimitedText**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。  | 是      |
-| columnDelimiter  | 用于分隔文件中的列的字符。 <br>默认值为“逗号(`,`)”。 如果将列分隔符定义为空字符串（表示没有分隔符），则将整行作为单列。<br>目前，仅支持映射数据流而不支持复制活动的列分隔符作为空字符串或多字符。  | 否       |
+| columnDelimiter  | 用于分隔文件中的列的字符。 <br>默认值为“逗号(`,`)”。 当列分隔符定义为空字符串（意味着没有分隔符）时，整行将被视为单个列。<br>目前，仅支持映射数据流而不支持复制活动的列分隔符作为空字符串或多字符。  | 否       |
 | rowDelimiter     | 用于分隔文件中的行的单个字符或“\r\n”。 <br>由映射数据流和复制活动读取或写入时，默认值分别为以下任一值：["\r\n", "\r", "\n"]，以及“\n”或“\r\n” 。 <br>当行分隔符设置为“无分隔符”（空字符串）时，列分隔符也必须设置为“无分隔符”（空字符串），这意味着将整个内容视为单个值。<br>目前，仅支持将行分隔符作为空字符串用于映射数据流，但不支持复制活动。 | 否       |
 | quoteChar        | 当列包含列分隔符时，用于括住列值的单个字符。 <br>默认值为**双引号** `"`。 <br>对于映射数据流，`quoteChar` 不能为空字符串。 <br>对于复制活动，当 `quoteChar` 定义为空字符串时，表示不使用引号字符且不用引号括住列值，`escapeChar` 用于转义列分隔符和值本身。 | 否       |
 | escapeChar       | 用于转义括住值中的引号的单个字符。<br>默认值为**反斜杠`\`** 。 <br>对于映射数据流，`escapeChar` 不能为空字符串。 <br/>对于复制活动，当 `escapeChar` 定义为空字符串时，`quoteChar` 也必须设置为空字符串，在这种情况下，应确保所有列值不包含分隔符。 | 否       |
@@ -91,7 +91,7 @@ ms.locfileid: "90531808"
 | type          | formatSettings 的类型必须设置为 **DelimitedTextReadSettings**。 | 是      |
 | skipLineCount | 指示从输入文件读取数据时要跳过的非空行数  。 <br>如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 | 否       |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
-| preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type`) `ZipDeflateReadSettings` * |  当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>-如果设置为 **true (默认) **，数据工厂会将解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-当设置为 **false**时，数据工厂会将解压缩的文件直接写入到 `<path specified in dataset>` 中。 请确保在不同的源 zip 文件中没有重复的文件名，以免出现赛车或意外的行为。  | 否 |
+| preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type`) `ZipDeflateReadSettings` * |  当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/`。<br>- 当设置为 false 时，数据工厂会直接将未解压缩的文件写入 `<path specified in dataset>`。 请确保在不同的源 zip 文件中没有重复的文件名，以免出现赛车或意外的行为。  | 否 |
 | preserveCompressionFileNameAsFolder<br> (*下 `compressionProperties` -> `type`) `TarGZipReadSettings` *  | 当输入数据集配置了 **TarGzip** 压缩时适用。 指示是否在复制过程中将源压缩文件名保留为文件夹结构。<br>-如果设置为 **true (默认) **，数据工厂会将解压缩的文件写入 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-当设置为 **false**时，数据工厂会将解压缩的文件直接写入到 `<path specified in dataset>` 中。 请确保在不同的源文件中没有重复的文件名，以免产生赛车或意外的行为。 | 否 |
 
 ```json
@@ -137,7 +137,7 @@ ms.locfileid: "90531808"
 | 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **DelimitedTextWriteSettings**。 | 是                                                   |
-| fileExtension | 用于命名输出文件的文件扩展名，例如， `.csv` `.txt` 。 未在 DelimitedText 输出数据集中指定 `fileName` 时，必须指定该扩展名。 如果在输出数据集中配置了文件名，则它将其用作接收器文件名，并且将忽略文件扩展名设置。  | 未在输出数据集中指定文件名时为“是” |
+| fileExtension | 用来为输出文件命名的扩展名，例如 `.csv`、`.txt`。 未在 DelimitedText 输出数据集中指定 `fileName` 时，必须指定该扩展名。 如果在输出数据集中配置了文件名，则它将其用作接收器文件名，并且将忽略文件扩展名设置。  | 未在输出数据集中指定文件名时为“是” |
 | maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
 | fileNamePrefix | 在配置时适用 `maxRowsPerFile` 。<br> 在将数据写入多个文件时指定文件名前缀，导致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，则将自动生成文件名前缀。 当源是基于文件的存储或 [启用了分区选项的数据存储](copy-activity-performance-features.md)时，此属性不适用。  | 否 |
 
@@ -151,13 +151,14 @@ ms.locfileid: "90531808"
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
 | 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
 | 多行行 | 源文件是否包含跨多行的行。 多行值必须用引号引起来。 | 否 `true` 或 `false` | multiLineRow |
 | 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例
 

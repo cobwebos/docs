@@ -2,13 +2,13 @@
 title: 为 Azure VMware 解决方案设置 vRealize 操作
 description: 了解如何为 Azure VMware 解决方案私有云设置 vRealize 操作。
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 729ee5c64776d7d04f702af62451175f7c53421b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 06b88eb610c4633018889315ab1cfd340d3f4b57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293133"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>为 Azure VMware 解决方案设置 vRealize 操作
 
@@ -21,7 +21,7 @@ vRealize Operations Manager 是一种操作管理平台，可让 VMware 基础�
 > * [用于管理 Azure VMware 解决方案部署的本地 vRealize 操作](#on-premises-vrealize-operations-managing-azure-vmware-solution-deployment)
 > * [Azure VMware 解决方案部署上运行的 vRealize 操作](#vrealize-operations-running-on-azure-vmware-solution-deployment)
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 * 查看 [vRealize Operations Manager 产品文档](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) ，了解如何部署 vRealize 操作。 
 * 查看基本的 Azure VMware 解决方案软件定义的 Datacenter (SDDC) [教程系列](tutorial-network-checklist.md)。
 * （可选）查看用于管理 Azure VMware 解决方案部署选项的本地 vRealize 操作的 [VRealize 操作远程控制器](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) 产品文档。 
@@ -58,7 +58,23 @@ vRealize Operations Manager 是一种操作管理平台，可让 VMware 基础�
 > 有关安装 vRealize Operations Manager 的循序渐进指南，请参阅 [VMware 文档](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) 。
 
 
+## <a name="known-limitations"></a>已知的限制
 
+- **cloudadmin@vsphere.local**Azure VMware 解决方案中的用户拥有[有限的特权](concepts-rbac.md)。 Azure VMware 解决方案 (Vm) 的虚拟机不支持使用 VMware 工具进行来宾内内存收集。 在这种情况下，活动和消耗的内存使用率将继续工作。
+- 基于主机的业务意向的工作负载优化不起作用，因为 Azure VMware 解决方案管理群集配置，包括 DRS 设置。
+- 在 vRealize Operations Manager 8.0 和更高版本中，完全支持使用基于群集的业务意向在 SDDC 中放置跨群集的工作负荷。 但是，工作负荷优化并不知道资源池，而是将虚拟机放置在群集级别。 用户可以在 Azure VMware 解决方案 vCenter Server 界面中手动更正此项。
+- 你无法使用 Azure VMware 解决方案 vCenter Server 凭据登录到 vRealize Operations Manager。 
+- Azure VMware 解决方案不支持 vRealize Operations Manager 插件。
+
+使用 vCenter Server 的云帐户将 Azure VMware 解决方案 vCenter 连接到 vRealize Operations Manager 时，你将遇到以下警告：
+
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="警告适配器实例创建成功":::
+
+由于 **cloudadmin@vsphere.local** Azure VMware 解决方案中的用户没有足够的权限来执行注册所需的所有 vCenter Server 操作，因此会出现警告。 但是，这些权限足以使适配器实例进行数据收集，如下所示：
+
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="要执行数据收集的适配器实例":::
+
+有关详细信息，请参阅 [配置 VCenter 适配器实例所需的特权](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html)。
 
 <!-- LINKS - external -->
 
