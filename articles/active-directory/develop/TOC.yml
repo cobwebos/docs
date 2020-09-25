@@ -445,7 +445,7 @@
           href: supported-accounts-validation.md
         - name: 单租户和多租户应用
           href: single-and-multi-tenant-apps.md
-        - name: 发布者验证（预览版）
+        - name: 发布者验证
           href: publisher-verification-overview.md
     - name: 权限和许可
       displayName: Scopes
@@ -553,9 +553,9 @@
           href: howto-add-terms-of-service-privacy-statement.md
         - name: 为应用配置发布者验证
           items:
-            - name: 将应用标记为“已经验证发布者”（预览版）
+            - name: 将应用标记为“发布者已验证”
               href: mark-app-as-publisher-verified.md
-            - name: 排查发布者验证问题（预览版）
+            - name: 排查发布者验证问题
               href: troubleshoot-publisher-verification.md
     - name: 使用 Microsoft 身份验证库
       displayName: MSAL

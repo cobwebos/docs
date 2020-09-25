@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure Key Vault 托管的 HSM 文档
+summary: 了解如何使用托管的 HSM 来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。
+metadata:
+  title: Azure 托管的 HSM 文档
+  description: 了解如何使用托管的 HSM 来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/15/2020
+  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991948"
+landingContent:
+- title: 关于 Azure Key Vault 托管的 HSM（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Key Vault 托管的 HSM？
+      url: overview.md
+    - text: REST API 概述
+      url: ../general/about-keys-secrets-certificates.md
+    - text: 支持的密钥和算法
+      url: ../keys/about-keys.md
+- title: 概念
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 托管 HSM 最佳实践
+      url: best-practices.md
+    - text: 托管 HSM 访问控制
+      url: access-control.md
+    - text: 安全域
+      url: security-domain.md
+    - text: 本地 RBAC 内置角色
+      url: built-in-roles.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure 资源管理器
+      url: quick-create-template.md
+- title: 操作方法指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure CLI 进行管理
+      url: key-management.md
+    - text: 托管的 HSM 角色管理
+      url: role-management.md
+    - text: 安全访问托管的 HSM
+      url: secure-your-managed-hsm.md
+- title: 教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 备份和还原
+      url: backup-restore.md
+    - text: 灾难恢复
+      url: disaster-recovery-guide.md
+    - text: 导入受 HSM 保护的密钥（概述）
+      url: hsm-protected-keys-byok.md
+    - text: 配置托管的 HSM 的日志记录
+      url: logging.md
+- title: 有关 Key Vault 的详细信息
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault 概述
+      url: ../general/overview.md
+    - text: 密钥保管库基本概念
+      url: ../general/basic-concepts.md
+    - text: 软删除概述
+      url: ../general/soft-delete-overview.md
+    - text: 安全概述
+      url: ../general/overview-security.md

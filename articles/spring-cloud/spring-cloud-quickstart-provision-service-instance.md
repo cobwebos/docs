@@ -5,23 +5,94 @@ author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 08/03/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c91237e3a14c60e477f58be0bf62f634b462960b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 16d40c334d51a66df4a4d2d56e2fa2379dda3726
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951668"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905406"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>快速入门：预配 Azure Spring Cloud 服务
 
+::: zone pivot="programming-language-csharp"
+在本快速入门中，你将使用 Azure CLI 预配 Azure Spring Cloud 服务的实例。
+
+## <a name="prerequisites"></a>先决条件
+
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 Azure Spring Cloud 服务支持 .NET Core 3.1 及更高版本。
+* [Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* [Git](https://git-scm.com/)。
+
+## <a name="install-azure-cli-extension"></a>安装 Azure CLI 扩展
+
+验证 Azure CLI 版本是否为 2.0.67 或更高版本：
+
+```azurecli
+az --version
+```
+
+使用以下命令安装用于 Azure CLI 的 Azure Spring Cloud 扩展：
+
+```azurecli
+az extension add --name spring-cloud
+```
+
+## <a name="log-in-to-azure"></a>登录 Azure
+
+1. 登录 Azure CLI。
+
+    ```azurecli
+    az login
+    ```
+
+1. 如果有多个订阅，请选择要用于本快速入门的订阅。
+
+   ```azurecli
+   az account list -o table
+   ```
+
+   ```azurecli
+   az account set --subscription <Name or ID of a subscription from the last step>
+   ```
+
+## <a name="provision-an-instance-of-azure-spring-cloud"></a>预配 Azure Spring Cloud 的实例
+
+1. 创建可包含 Azure Spring Cloud 服务的[资源组](../azure-resource-manager/management/overview.md)。 资源组名称可包含字母数字、下划线、括号、连字符、句点（位于末尾的除外）以及 Unicode 字符。
+
+   ```azurecli
+   az group create --location eastus --name <resource group name>
+   ```
+
+1. 预配 Azure Spring Cloud 服务的实例。 服务名称必须是唯一的，长度为 4 到 32 个字符，只能包含小写字母、数字及连字符。 服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
+
+    ```azurecli
+    az spring-cloud create -n <service instance name> -g <resource group name>
+    ```
+
+    此命令可能需要几分钟才能完成。
+
+1. 设置默认资源组名称和服务实例名称，这样就不必在后续命令中重复指定这些值。
+
+   ```azurecli
+   az configure --defaults group=<resource group name>
+   ```
+
+   ```azurecli
+   az configure --defaults spring-cloud=<service instance name>
+   ```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 可以使用 Azure 门户或 Azure CLI 实例化 Azure Spring Cloud。  以下过程介绍了这两种方法。
 ## <a name="prerequisites"></a>先决条件
 
-* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [注册 Azure 订阅](https://azure.microsoft.com/free/)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
 * （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>预配 Azure Spring Cloud 的实例
@@ -59,7 +130,7 @@ ms.locfileid: "88951668"
 
 以下过程使用 Azure CLI 扩展来预配 Azure Spring Cloud 的实例。
 
-1. 登录到 Azure CLI 并选择你的有效订阅。 请务必选择已列入 Azure Spring Cloud 允许列表的有效订阅
+1. 登录到 Azure CLI 并选择你的有效订阅。
 
     ```azurecli
     az login
@@ -85,9 +156,25 @@ ms.locfileid: "88951668"
 
     部署服务实例需要大约五分钟时间。
 ---
+::: zone-end
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果打算继续学习本系列的下一个快速入门，请跳过此步骤。
+
+在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，并认为将来不需要这些资源，请通过门户删除资源组，或通过在 Cloud Shell 中运行以下命令：
+
+```azurecli
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
+```
+
+在本快速入门中，你还设置了默认资源组名称。 如果不打算继续学习下一个快速入门，请通过运行以下 CLI 命令清除该默认名称：
+
+```azurecli
+az configure --defaults group=
+```
 
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"]
 > [设置配置服务器](spring-cloud-quickstart-setup-config-server.md)
-
-

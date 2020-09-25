@@ -60,7 +60,7 @@
               href: entitlement-management-catalog-create.md
             - name: 委托给访问包管理者
               href: entitlement-management-delegate-managers.md
-        - name: 访问包管理者
+        - name: 访问包管理人员和访问包分配管理人员
           items:
             - name: 创建新的访问包
               href: entitlement-management-access-package-create.md
@@ -68,8 +68,10 @@
               href: entitlement-management-access-package-settings.md
             - name: 更改资源角色
               href: entitlement-management-access-package-resources.md
-            - name: 更改请求和审批设置
+            - name: 更改请求设置
               href: entitlement-management-access-package-request-policy.md
+            - name: 更改审批设置
+              href: entitlement-management-access-package-approval-policy.md
             - name: 更改生命周期设置
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: 查看请求

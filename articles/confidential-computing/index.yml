@@ -1,0 +1,115 @@
+### YamlMime:Landing
+title: Azure 机密计算文档
+summary: 在云中处理敏感数据时，可以使用 Azure 机密计算提供的解决方案隔离这些数据。 通过阅读概念、完成教程和使用代码示例，了解如何基于机密计算基础结构创建和部署应用程序。 使用基于机密计算生成的 Microsoft 产品，尽可能确保工作负荷的安全。
+metadata:
+  title: Azure 机密计算
+  description: 了解 Azure 机密计算如何保护正在使用的数据，并了解如何在云中生成机密工作负荷。
+  ms.service: virtual-machines
+  ms.subservice: workloads
+  ms.topic: landing-page
+  author: JBCook
+  ms.author: jencook
+  ms.date: 09/22/2020
+  ms.openlocfilehash: abe5104ff5425103baaca72efdc960a34ffc6a73
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991950"
+landingContent:
+- title: 关于 Azure 机密计算
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 机密计算？
+      url: overview.md
+    - text: 方案
+      url: use-cases-scenarios.md
+  - linkListType: concept
+    links:
+    - text: 虚拟机
+      url: confidential-computing-enclaves.md
+    - text: AKS 上的容器计算
+      url: confidential-containers.md
+    - text: 应用程序开发
+      url: application-development.md
+    - text: 证明
+      url: attestation.md
+  - linkListType: reference
+    links:
+    - text: Intel SGX 虚拟机
+      url: ../virtual-machines/dcv2-series.md
+- title: 虚拟机
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Intel SGX 虚拟机
+      url: confidential-computing-enclaves.md
+  - linkListType: concept
+    links:
+    - text: 有关虚拟机的解决方案
+      url: virtual-machine-solutions.md
+  - linkListType: quickstart
+    links:
+    - text: 部署在 Azure 门户中
+      url: quick-create-portal.md
+    - text: 部署在 Azure 市场中
+      url: quick-create-marketplace.md
+  - linkListType: reference
+    links:
+    - text: 机密计算虚拟机常见问题解答
+      url: faq.md
+    - text: 定价
+      url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
+    - text: 可用性
+      url: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines
+- title: 容器计算
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Kubernetes 服务 (AKS) 机密计算节点（预览版）
+      url: confidential-nodes-aks-overview.md
+  - linkListType: concept
+    links:
+    - text: 机密容器
+      url: confidential-containers.md
+    - text: Enclave 感知容器
+      url: enclave-aware-containers.md
+    - text: 进程外证明
+      url: confidential-nodes-out-of-proc-attestation.md
+  - linkListType: quickstart
+    links:
+    - text: AKS 上的简单 enclave 容器应用
+      url: confidential-nodes-aks-get-started.md
+  - linkListType: sample
+    links:
+    - text: 机密容器示例（SGX 上未修改的容器）
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Enclave 感知容器示例
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: AKS 机密节点常见问题解答
+      url: confidential-nodes-aks-overview.md
+    - text: 关于 Azure Kubernetes 服务 (AKS)
+      url: ../aks/intro-kubernetes.md
+- title: 机密云服务
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Microsoft Azure 证明
+      url: ../attestation/overview.md
+    - text: 机密推理 ONNX 运行时
+      url: https://aka.ms/confidentialinference
+- title: 使用机密计算生成
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: AKS 上的机密医疗保健演示
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: AKS 上开放式 Enclave 的已证明相互 TLS
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: 开放式 Enclave (OE) SDK
+      url: https://aka.ms/oesdkGitHubRepo

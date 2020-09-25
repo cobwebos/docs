@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Spring Cloud 文档
-summary: Azure Spring Cloud 提供了一种托管服务，使 Java 开发人员能够在 Azure 上轻松生成和运行基于 Spring Boot 的微服务，而无需进行任何代码更改。
+summary: Azure Spring Cloud 提供了一种托管服务，通过该服务可在 Azure 上使用 Spring-boot 或 Steeltoe（预览）运行微服务，而无需更改代码。
 metadata:
   title: Azure Spring Cloud
-  description: Azure Spring Cloud 提供了一种托管服务，使 Java 开发人员能够在 Azure 上轻松生成和运行基于 Spring Boot 的微服务，而无需进行任何代码更改。
+  description: Azure Spring Cloud 提供了一种托管服务，通过该服务可在 Azure 上使用 Spring-boot 或 Steeltoe（预览）运行微服务，而无需更改代码。
   services: spring-cloud
   ms.service: spring-cloud
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: bmitchell287
   ms.author: brendm
   ms.date: 09/26/2019
-  ms.openlocfilehash: 277d058427cc9527e6ed71ed252a4930489353fd
-  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+  ms.openlocfilehash: 1c1f45ab0f589634446a7d329f69609797071b36
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/28/2020
-  ms.locfileid: "89049887"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90902958"
 landingContent:
 - title: 关于 Azure Spring Cloud
   linkLists:
@@ -32,11 +32,11 @@ landingContent:
     links:
     - text: 快速入门 - 部署第一个 Azure Spring Cloud 应用程序
       url: spring-cloud-quickstart.md
-    - text: 介绍 Piggy Metrics 示例应用
+    - text: 介绍 PiggyMetrics 示例应用
       url: spring-cloud-quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
-    - text: 准备 Java Spring 应用以进行部署
+    - text: 准备 Spring 或 Steeltoe 应用以进行部署
       url: spring-cloud-tutorial-prepare-app-deployment.md
 - title: 配置服务
   linkLists:

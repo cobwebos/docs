@@ -132,6 +132,8 @@
       items:
         - name: 缩放 AKS 群集
           href: scale-cluster.md
+        - name: 停止 AKS 群集（预览版）
+          href: start-stop-cluster.md
         - name: 升级 AKS 群集
           href: upgrade-cluster.md
         - name: 使用运行时间 SLA
@@ -307,8 +309,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: 开发和运行应用程序
       items:
-        - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: 将 Kubernetes 桥接用于 Visual Studio Code
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: 将 Kubernetes 桥接用于 Visual Studio
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: 通过 Helm 安装现有应用程序
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
@@ -412,5 +416,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md

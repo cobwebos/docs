@@ -7,14 +7,14 @@ ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
-ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.reviewer: sourabha, sstein
+ms.date: 09/22/2020
+ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235025"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886485"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>设置 IoT Edge 模块和连接
 
@@ -22,39 +22,6 @@ ms.locfileid: "84235025"
 
 - Azure SQL Edge
 - 数据生成器 IoT Edge 模块
-
-## <a name="create-azure-stream-analytics-module"></a>创建 Azure 流分析模块
-
-创建将在本教程中使用的 Azure 流分析模块。 若要详细了解如何在 SQL Edge 中使用流式处理作业，请参阅[在 SQL Edge 中使用流式处理作业](stream-analytics.md)。
-
-创建 Azure 流分析作业，并将托管环境设置为 Edge 后，应设置该教程的输入和输出。
-
-1. 若要创建“输入”，请单击“+ 添加流输入”。 使用以下信息填写详细信息部分：
-
-   字段|值
-   -----|-----
-   事件序列化格式|JSON
-   编码|UTF-8
-   事件压缩类型|无
-
-2. 若要创建“输出”，请单击“+ 添加”，然后选择 SQL 数据库。 使用以下信息填写详细信息部分：
-
-   > [!NOTE]
-   > 在“部署 Azure SQL Edge 模块”部分中部署 SQL Edge 模块时，需要在此部分中为 SQL SA 指定密码。
-
-   字段|值
-   -----|-----
-   数据库|IronOreSilicaPrediction
-   服务器名称|tcp:.,1433
-   用户名|sa
-   密码|指定强密码
-   表|IronOreMeasurements1
-
-3. 导航至“查询”部分，然后按以下步骤设置查询：
-
-   `SELECT * INTO <name_of_your_output_stream> FROM <name_of_your_input_stream>`
-   
-4. 在“配置”下，选择“发布”，然后选择“发布”按钮。 保存 SAS URI 以用于 SQL Database Edge 模块。
 
 ## <a name="specify-container-registry-credentials"></a>指定容器注册表凭据
 
@@ -84,10 +51,12 @@ ms.locfileid: "84235025"
   
 ## <a name="deploy-the-data-generator-module"></a>部署数据生成器模块
 
-1. 在“IoT Edge 模块” 部分中，单击“+ 添加”并选择“IoT Edge 模块”。
+1. 在“自动设备管理”下的“IoT Edge”部分，单击“设备 ID”。 在本教程中，ID 为 `IronOrePredictionDevice`，然后单击“设置模块”。
 
-2. 提供 IoT Edge 模块名称和映像 URI。
-   可在资源组中的容器注册表中找到映像 URI。 选择“服务”下的“存储库”部分。 对于本教程，请选择名为 `silicaprediction` 的存储库。 选择相应标记。 映像 URI 的格式为：
+2.  在“在设备上设置模块：”页的“IoT Edge 模块”部分下，单击“+ ADD”并选择“IoT Edge 模块”   。
+
+3. 为 IoT Edge 模块提供有效的名称和映像 URI。
+   可以在本教程第一部分中创建的资源组的容器注册表中找到映像 URI。 选择“服务”下的“存储库”部分。 对于本教程，请选择名为 `silicaprediction` 的存储库。 选择相应标记。 映像 URI 的格式为：
 
    containerregistry 登录服务器/存储库名称:标记名称
 
@@ -97,36 +66,142 @@ ms.locfileid: "84235025"
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
    ```
 
-3. 单击“添加”。
+4. 按原样保留“重启策略”和“所需状态”字段 。
+
+5. 单击“添加”  。
+
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>部署 Azure SQL Edge 模块
 
-1. 按照[部署 Azure SQL Edge（预览版）](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)中列出的步骤来部署 Azure SQL Edge 模块。
+1. 通过依次单击“+ 添加”和“市场模块”部署 Azure SQL Edge 模块 。 
 
-2. 在“设置模块”页面的“指定路由”上，按如下所示为模块指定到 IoT Edge 中心通信的路由。 
+2. 在“IoT Edge 模块市场”边栏选项卡上，搜索“Azure SQL Edge”并选择“Azure SQL Edge 开发人员” 。 
+
+3. 单击“IoT Edge 模块”下新添加的“Azure SQL Edge”模块，以配置 Azure SQL Edge 模块。 有关配置选项的详细信息，请参阅[部署 Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)。
+
+4. 将 `MSSQL_PACKAGE` 环境变量添加到 Azure SQL Edge 模块部署中，并指定在本教程[第一部分](tutorial-deploy-azure-resources.md)的步骤 8 中创建的数据库 dacpac 文件的 SAS URL。
+
+5. 单击“更新”
+
+6. 在“在设备上设置模块”页上 **，单击“下一步：路由 >”** 。
+
+7. 在“在设备上设置模块”页的路由窗格上，按如下所述为模块指定到 IoT Edge 中心通信的路由。 请确保更新下面路由定义中的模块名称。
 
    ```
-   FROM /messages/modules/<your_data_generator_module>/outputs/<your_output_stream_name> INTO
-   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/<your_input_stream_name>")
+   FROM /messages/modules/<your_data_generator_module>/outputs/IronOreMeasures INTO
+   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
    例如：
 
    ```
-   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/Input1")
+   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
    ```
 
-3. 在“模块孪生”设置中，确保 SQLPackage 和 ASAJonInfo 通过在本教程前面保存的相关 SAS URL 进行更新。
 
-   ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+7. 在“在设备上设置模块”页上 **，单击“下一步：查看 + 创建 >”**
+
+8. 在“在设备上设置模块”页上，单击“创建” 
+
+## <a name="create-and-start-the-t-sql-streaming-job-in-azure-sql-edge"></a>在 Azure SQL Edge 中创建并启动 T-SQL 流式处理作业。
+
+1. 打开 Azure Data Studio。
+
+2. 在“欢迎使用”选项卡中，使用以下详细信息启动一个新连接：
+
+   |_字段_|_值_|
+   |-------|-------|
+   |连接类型| Microsoft SQL Server|
+   |服务器|为此演示创建的 VM 中提及的公共 IP 地址|
+   |用户名|sa|
+   |密码|创建 Azure SQL Edge 实例时使用的强密码|
+   |数据库|默认|
+   |服务器组|默认|
+   |名称（可选）|提供可选名称|
+
+3. 单击“连接”
+
+4. 在“文件”菜单选项卡中，打开一个新笔记本或使用键盘快捷方式 Ctrl + N。
+
+5. 在新的查询窗口中，执行以下脚本以创建 T-SQL 流式处理作业。 在执行脚本之前，请确保更改以下变量。 
+   - SQL_SA_Password：部署 Azure SQL Edge 模块时指定的 MSSQL_SA_PASSWORD 值。 
+   
+   ```sql
+   Use IronOreSilicaPrediction
+   Go
+
+   Declare @SQL_SA_Password varchar(200) = '<SQL_SA_Password>'
+   declare @query varchar(max) 
+
+   /*
+   Create Objects Required for Streaming
+   */
+
+   CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MyStr0ng3stP@ssw0rd';
+
+   If NOT Exists (select name from sys.external_file_formats where name = 'JSONFormat')
+   Begin
+      CREATE EXTERNAL FILE FORMAT [JSONFormat]  
+      WITH ( FORMAT_TYPE = JSON)
+   End 
+
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'EdgeHub')
+   Begin
+      Create EXTERNAL DATA SOURCE [EdgeHub] 
+      With(
+         LOCATION = N'edgehub://'
+      )
+   End 
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreInput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreInput WITH 
+      (
+         DATA_SOURCE = EdgeHub,
+         FILE_FORMAT = JSONFormat,
+         LOCATION = N'IronOreMeasures'
+       )
+   End
+
+
+   If NOT Exists (select name from sys.database_scoped_credentials where name = 'SQLCredential')
+   Begin
+       set @query = 'CREATE DATABASE SCOPED CREDENTIAL SQLCredential
+                 WITH IDENTITY = ''sa'', SECRET = ''' + @SQL_SA_Password + ''''
+       Execute(@query)
+   End 
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'LocalSQLOutput')
+   Begin
+      CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
+      LOCATION = 'sqlserver://tcp:.,1433',CREDENTIAL = SQLCredential)
+   End
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreOutput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreOutput WITH 
+      (
+         DATA_SOURCE = LocalSQLOutput,
+         LOCATION = N'IronOreSilicaPrediction.dbo.IronOreMeasurements'
+      )
+   End
+
+   EXEC sys.sp_create_streaming_job @name=N'IronOreData',
+   @statement= N'Select * INTO IronOreOutput from IronOreInput'
+
+   exec sys.sp_start_streaming_job @name=N'IronOreData'
    ```
+
+6. 使用以下查询验证数据生成器模块中的数据是否正在流式传输到数据库中。 
+
+   ```sql
+   Select Top 10 * from dbo.IronOreMeasurements
+   order by timestamp desc
+   ```
+
+
+在本教程中，我们部署了数据生成器模块和 SQL Edge 模块。 然后，我们创建了一个流式处理作业，将数据生成器模块生成的数据流式传输到 SQL。 
 
 ## <a name="next-steps"></a>后续步骤
 

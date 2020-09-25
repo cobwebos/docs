@@ -1,27 +1,65 @@
 - name: Azure 机密计算
-  href: overview.md
+  href: ./index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 欢迎使用 Azure 机密计算
+      href: overview.md
+    - name: 用例和方案
+      href: use-cases-scenarios.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 在 Azure 门户中创建
-      href: quick-create-portal.md
-    - name: 通过市场创建
-      href: quick-create-marketplace.md
+    - name: 虚拟机
+      items:
+        - name: 在 Azure 门户中创建
+          href: quick-create-portal.md
+        - name: 通过市场创建
+          href: quick-create-marketplace.md
+    - name: Azure Kubernetes 服务 (AKS)
+      items:
+        - name: AKS 机密节点概览
+          href: confidential-nodes-aks-overview.md
+        - name: 使用 Azure CLI 创建机密节点
+          href: confidential-nodes-aks-get-started.md
+        - name: AKS 机密节点常见问题解答
+          href: confidential-nodes-aks-faq.md
 - name: 概念
   expanded: true
   items:
-    - name: 有关虚拟机的解决方案
-      href: virtual-machine-solutions.md
+    - name: 虚拟机 (VM)
+      items:
+        - name: Enclave 感知虚拟机
+          href: confidential-computing-enclaves.md
+        - name: 有关虚拟机的解决方案
+          href: virtual-machine-solutions.md
+        - name: 机密计算VM 常见问题解答
+          href: faq.md
+    - name: 容器计算
+      expanded: true
+      items:
+        - name: 机密容器（直接迁移）
+          items:
+            - name: 入门
+              href: confidential-containers.md
+        - name: Enclave 感知容器
+          items:
+            - name: 入门
+              href: enclave-aware-containers.md
+    - name: 证明
+      href: attestation.md
+    - name: 应用程序开发
+      href: application-development.md
 - name: 操作方式
-  expanded: true
   items:
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
-- name: 资源
-  expanded: true
+- name: 参考
   items:
-    - name: 常见问题解答
-      href: faq.md
+    - name: SGX 引用帮助程序功能
+      href: confidential-nodes-out-of-proc-attestation.md
+- name: 资源
+  items:
     - name: 机密计算反馈
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow

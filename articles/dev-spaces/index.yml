@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: ac8900298670323551a25d4ef7ac3f7b44249c5a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: 0100ace6dcf4701a8491f034f36075dc483849ec
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209893"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90970073"
 landingContent:
 - title: 关于 Azure Dev Spaces
   linkLists:
@@ -46,13 +46,11 @@ landingContent:
       url: how-to/ingress-https-traefik.md
     - text: 将 NGINX 用于自定义入口和 HTTPS
       url: how-to/ingress-https-nginx.md
-- title: 预览功能
+- title: Bridge to Kubernetes
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 将 GitHub 操作与 Azure Dev Spaces 配合使用
-      url: how-to/github-actions.md
-    - text: 在 Visual Studio Code 中使用 Local Process with Kubernetes
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: 在 Visual Studio 中使用 Local Process with Kubernetes
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: 将 Kubernetes 桥接用于 Visual Studio Code
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: 将 Kubernetes 桥接用于 Visual Studio
+      url: /visualstudio/containers/bridge-to-kubernetes

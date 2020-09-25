@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: 诊断 VM 网络流量筛选器问题
       href: network-watcher-ip-flow-verify-overview.md
+    - name: 诊断 NSG 规则和流量筛选
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: 诊断 VM 路由问题
       href: network-watcher-next-hop-overview.md
     - name: 诊断出站 VM 通信问题

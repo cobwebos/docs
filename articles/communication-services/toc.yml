@@ -1,0 +1,88 @@
+- name: Azure 通信服务文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是 Azure 通信服务？
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 创建通信服务资源
+      href: quickstarts/create-communication-resource.md
+    - name: 创建和管理访问令牌
+      href: quickstarts/access-tokens.md
+    - name: 聊天
+      items:
+        - name: 向应用添加聊天
+          href: quickstarts/chat/get-started.md
+    - name: 电话服务和短信
+      items:
+        - name: 获取电话号码
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: 发送短信
+          href: quickstarts/telephony-sms/send.md
+        - name: 处理短信事件
+          href: quickstarts/telephony-sms/handle-sms-events.md
+    - name: 语音和视频呼叫
+      items:
+        - name: 在应用中添加语音呼叫
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: 使用呼叫客户端库
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+- name: 教程
+  expanded: false
+  items:
+    - name: 使用 Azure Functions 生成可信的身份验证服务
+      href: tutorials/trusted-service-tutorial.md
+- name: 概念
+  expanded: false
+  items:
+    - name: 聊天
+      items:
+        - name: 聊天客户端概述
+          href: concepts/chat/sdk-features.md
+        - name: 聊天概念
+          href: concepts/chat/concepts.md
+    - name: 电话服务和短信
+      items:
+        - name: 短信客户端概述
+          href: concepts/telephony-sms/sdk-features.md
+        - name: 短信概念
+          href: concepts/telephony-sms/concepts.md
+        - name: 规划电话和短信解决方案
+          href: concepts/telephony-sms/plan-solution.md
+    - name: 语音和视频呼叫
+      items:
+        - name: 呼叫客户端概述
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: 语音和视频概念
+          href: concepts/voice-video-calling/about-call-types.md
+    - name: 客户端和服务器体系结构
+      href: concepts/client-and-server-architecture.md
+    - name: 呼叫流
+      href: concepts/call-flows.md
+    - name: 客户端库和 REST API
+      href: concepts/sdk-options.md
+    - name: 定价模型
+      href: concepts/pricing.md
+    - name: 身份验证
+      href: concepts/authentication.md
+    - name: 事件处理
+      href: concepts/event-handling.md
+    - name: 通知
+      href: concepts/notifications.md
+- name: 示例
+  items:
+    - name: 出色的分组呼叫示例
+      href: samples/calling-hero-sample.md
+    - name: 分组聊天英雄示例
+      href: samples/chat-hero-sample.md
+- name: 参考
+  items:
+    - name: REST API 文档
+      href: 'https://docs.microsoft.com/rest/api/azure/'
+- name: 资源
+  items:
+    - name: 发行说明
+      href: release-notes.md

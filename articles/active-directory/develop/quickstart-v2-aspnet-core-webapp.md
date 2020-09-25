@@ -1,5 +1,6 @@
 ---
-title: 向 ASP.NET Core Web 应用添加 Microsoft 登录功能 - Microsoft 标识平台 | Azure
+title: 向 ASP.NET Core Web 应用添加 Microsoft 登录功能 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何使用 OpenID Connect 在 ASP.NET Core Web 应用上实现 Microsoft 登录
 services: active-directory
 author: jmprieur
@@ -8,18 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: fdc1f0db956d0f64938b6a0433fda21dc4462ced
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691318"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902364"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
+
 在本快速入门中，你将通过代码示例了解 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录个人帐户（hotmail.com、outlook.com 和其他）以及工作和学校帐户。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
+
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：
@@ -37,18 +40,18 @@ ms.locfileid: "88691318"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要注册应用程序并将应用的注册信息手动添加到解决方案，请执行以下步骤：
 >
-> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-> 1. 选择“新注册”。
-> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
->    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AspNetCore-Quickstart`。
->    - 在“重定向 URI”中添加 `https://localhost:44321/`，然后选择“注册”。
-> 1. 选择“身份验证”菜单，然后添加以下信息：
->    - 在“重定向 URI”中添加 `https://localhost:44321/signin-oidc`，然后选择“保存”。
->    - 在“高级设置”部分，将“注销 URL”设置为 `https://localhost:44321/signout-oidc`。
->    - 在“隐式授权”下，勾选“ID 令牌”。
->    - 选择“保存”。
+> 1. 登录 [Azure 门户](https://portal.azure.com)。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册”，然后选择“新建注册”  。
+> 1. 输入应用程序的名称（例如 `AspNetCore-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 输入 `https://localhost:44321/` 的“重定向 URI”
+> 1. 选择“注册”  。
+> 1. 在“管理”下，选择“身份验证”。 
+> 1. 在“重定向 URI”下，选择“添加 URI”，然后输入 `https://localhost:44321/signin-oidc` 
+> 1. 输入 `https://localhost:44321/signout-oidc` 的“注销 URL”
+> 1. 选择“隐式授权”下的“ID 令牌”。
+> 1. 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -62,12 +65,13 @@ ms.locfileid: "88691318"
 #### <a name="step-2-download-your-aspnet-core-project"></a>步骤 2：下载 ASP.NET Core 项目
 
 > [!div renderon="docs"]
-> [下载 ASP.NET Core 解决方案](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [下载 ASP.NET Core 解决方案](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1.zip)
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > 运行该项目。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+
+> [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
+> [下载代码示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
@@ -76,28 +80,35 @@ ms.locfileid: "88691318"
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
-> #### <a name="step-3-run-your-aspnet-core-project"></a>步骤 3：运行 ASP.NET Core 项目
-> 1. 将 zip 文件提取到根文件夹中的本地文件夹（例如，**C:\Azure-Samples**）
-> 1. 在 IDE 中打开解决方案
-> 1. 编辑 **appsettings.json** 文件。 查找 `ClientId` 并使用你注册的应用程序的“应用程序 (客户端) ID”值更新 `ClientId` 的值。
+> #### <a name="step-3-configure-your-aspnet-core-project"></a>步骤 3：配置 ASP.NET Core 项目
+> 1. 将 .zip 存档解压缩到驱动器根附近的本地文件夹中。 例如，解压缩到 C:\Azure-Samples。
+> 1. 在 Visual Studio 2019 中打开该解决方案。
+> 1. 打开 appsettings.json 文件，并修改以下内容：
 >
 >    ```json
->    "ClientId": "Enter_the_Application_Id_here"
->    "TenantId": "Enter_the_Tenant_Info_Here"
+>    "ClientId": "Enter_the_Application_Id_here",
+>    "TenantId": "common",
 >    ```
-
-
-
-> [!div renderon="docs"]
-> 其中：
-> - `Enter_the_Application_Id_here` - 在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
-> - `Enter_the_Tenant_Info_Here` - 以下选项之一：
->   - 如果应用程序支持“仅限此组织目录中的帐户”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
->   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
->   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为`common`
 >
-> > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
+>    - 将 `Enter_the_Application_Id_here` 替换为在 Azure 门户中注册的应用程序的应用程序(客户端) ID。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
+>    - 将 `common` 替换为以下内容之一：
+>       - 如果应用程序仅支持此组织目录中的帐户，请将此值替换为目录（租户）ID (GUID) 或租户名称（例如，`contoso.onmicrosoft.com`）  。 你可以在应用的概述页面上找到目录（租户）ID 。
+>       - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
+>       - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值保留为 `common`
+>
+> 在此快速入门中，请不要更改 appsettings.json 文件中的任何其他值。
+>
+> #### <a name="step-4-build-and-run-the-application"></a>步骤 4：生成并运行应用程序
+>
+> 通过选择“调试”菜单 >“开始调试”，或按 `F5` 键在 Visual Studio 中构建和运行应用 。
+>
+> 系统会提示你输入凭据，然后要求你同意应用所需的权限。 在同意提示上选择“接受”。
+>
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-01-consent.png" alt-text="“同意”对话框，显示应用从 > 用户请求的权限":::
+>
+> 同意请求的权限后，应用将显示你已使用 Azure Active Directory 凭据成功登录。
+>
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Web 浏览器显示正在运行的 web 应用和登录的用户":::
 
 ## <a name="more-information"></a>详细信息
 
@@ -108,64 +119,46 @@ ms.locfileid: "88691318"
 
 ### <a name="startup-class"></a>Startup 类
 
-Microsoft.AspNetCore.Authentication 中间件使用主机进程初始化时执行的 Startup 类：
+Microsoft.AspNetCore.Authentication 中间件使用主机进程初始化时执行的 `Startup` 类：
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-  services.Configure<CookiePolicyOptions>(options =>
+  public void ConfigureServices(IServiceCollection services)
   {
-    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-    options.CheckConsentNeeded = context => true;
-    options.MinimumSameSitePolicy = SameSiteMode.None;
-  });
+      services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
-  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
-          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
-
-  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-  {
-    options.Authority = options.Authority + "/v2.0/";         // Microsoft identity platform
-
-    options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
-  });
-
-  services.AddMvc(options =>
-  {
-     var policy = new AuthorizationPolicyBuilder()
-                     .RequireAuthenticatedUser()
-                     .Build();
-     options.Filters.Add(new AuthorizeFilter(policy));
-  })
-  .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-}
+      services.AddControllersWithViews(options =>
+      {
+          var policy = new AuthorizationPolicyBuilder()
+              .RequireAuthenticatedUser()
+              .Build();
+          options.Filters.Add(new AuthorizeFilter(policy));
+      });
+      services.AddRazorPages()
+          .AddMicrosoftIdentityUI();
+  }
 ```
 
-方法 `AddAuthentication` 配置该服务以添加基于 Cookie 的身份验证，此身份验证在浏览器方案中使用，并用于设置 OpenID Connect 质询。
+方法 `AddAuthentication()` 配置该服务以添加基于 Cookie 的身份验证，此身份验证在浏览器方案中使用，并用于设置 OpenID Connect 质询。
 
-包含 `.AddAzureAd` 的行可向应用程序添加 Microsoft 标识平台身份验证。 然后，它会被配置为使用 Microsoft 标识平台终结点登录。
+包含 `.AddMicrosoftIdentityWebApp` 的行可向应用程序添加 Microsoft 标识平台身份验证。 然后将其配置为，基于 appsettings.json 配置文件 `AzureAD` 部分中的信息，使用 Microsoft 标识平台终结点进行登录：
 
-> |其中 | 说明 |
-> |---------|---------|
-> | ClientId  | Azure 门户中注册的应用程序的应用程序（客户端）ID。 |
-> | 颁发机构 | 用户要进行身份验证的 STS 终结点。 对于公有云，此项通常为 `https://login.microsoftonline.com/{tenant}/v2.0`，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
-> | TokenValidationParameters | 用于令牌验证的参数列表。 在这种情况下，`ValidateIssuer` 设置为 `false`，以指示它可以接受来自任何个人或工作或学校帐户的登录。 |
+| *appsettings.json* 密钥 | 说明                                                                                                                                                          |
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ClientId`             | Azure 门户中注册的应用程序的应用程序（客户端）ID。                                                                                       |
+| `Instance`             | 用户进行身份验证时使用的安全令牌服务 (STS) 终结点。 此值通常为 `https://login.microsoftonline.com/`，指示 Azure 公有云。 |
+| `TenantId`             | 租户的名称或其租户 ID (GUID)，或使用工作帐户或学校帐户或 Microsoft 个人帐户进行用户登录时常用的名称。                             |
 
-
-> [!NOTE]
-> 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际应用程序中，需验证颁发者。
-> 查看示例，了解如何执行该操作。
->
-> 另请注意 `Configure` 方法，其中包含两个重要方法：`app.UseCookiePolicy()` 和 `app.UseAuthentication()`
+`Configure()` 方法包含两个重要的方法 `app.UseCookiePolicy()` 和 `app.UseAuthentication()`，这些方法实现了命名功能。
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-    // more core
-    app.UseCookiePolicy();
+    // more code
     app.UseAuthentication();
-    // more core
+    app.UseAuthorization();
+    // more code
 }
 ```
 
@@ -177,7 +170,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅此 ASP.NET Core 教程的 GitHub 存储库，了解有关详细信息，包括各种说明，即，如何向全新 ASP.NET Core Web 应用程序添加身份验证、如何调用 Microsoft Graph 和其他 Microsoft API、如何调用你自己的 API、如何添加授权、如何通过国家/地区云或社交标识等方式使用户登录：
+包含此 ASP.NET Core 教程的 GitHub 存储库包含说明和更多代码示例，这些示例向你展示如何：
+
+- 向新的 ASP.NET Core Web 应用程序添加身份验证
+- 调用 Microsoft Graph、其他 Microsoft API 或你自己的 Web API
+- 添加授权
+- 在国家云中或使用社会标识实现用户登录
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web 应用教程](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [GitHub 上的 ASP.NET Core Web 应用教程](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

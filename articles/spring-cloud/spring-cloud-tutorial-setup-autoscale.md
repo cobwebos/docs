@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905387"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>教程：为微服务应用程序设置自动缩放功能
+
+本文适用于：✔️ Java ✔️ C#
+
 自动缩放是 Azure Spring Cloud 的一种内置功能，可帮助微服务应用程序在需求更改时发挥最佳性能。 这包括修改虚拟 CPU、内存和应用实例的数量。 本文介绍如何适用 Microsoft Azure 门户或 Azure CLI 中为应用程序设置自动缩放设置。
 
 ## <a name="prerequisites"></a>先决条件
@@ -68,4 +71,4 @@ ms.locfileid: "87449378"
 ## <a name="next-steps"></a>后续步骤
 
 * [Microsoft Azure 自动缩放概述](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Azure CLI 监视自动缩放](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Azure CLI 监视自动缩放](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

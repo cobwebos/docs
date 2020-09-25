@@ -165,18 +165,24 @@
           href: directory-manage-roles-portal.md
         - name: 自定义角色
           items:
-            - name: 自定义角色
+            - name: 自定义角色概述
               href: roles-custom-overview.md
             - name: 创建自定义角色
               href: roles-create-custom.md
             - name: 查看自定义角色分配
               href: roles-view-assignments.md
-            - name: 在 Azure AD 管理中心分配角色
+            - name: 在 Azure 门户中分配自定义角色
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: 使用 PowerShell 分配自定义角色
               href: roles-assign-powershell.md
+            - name: 为企业应用分配自定义角色
+              href: custom-enterprise-apps.md
             - name: 自定义角色权限
-              href: roles-custom-available-permissions.md
+              items:
+                - name: 应用注册权限
+                  href: roles-custom-available-permissions.md
+                - name: 企业应用权限
+                  href: custom-enterprise-app-permissions.md
             - name: 委托应用管理权限
               href: roles-delegate-app-roles.md
         - name: 通过组来管理角色分配

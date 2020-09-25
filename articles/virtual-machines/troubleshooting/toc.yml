@@ -234,6 +234,12 @@
           items:
             - name: 如何使用 PerfInsights
               href: how-to-use-perfinsights-linux.md
+- name: 排查共享映像库问题
+  items:
+    - name: 排查共享映像库问题 - Windows
+      href: ../windows/troubleshooting-shared-images.md
+    - name: 排查共享映像库问题 - Linux
+      href: ../linux/troubleshooting-shared-images.md
 - name: VM 扩展问题
   items:
     - name: Azure 扩展概述
@@ -293,7 +299,7 @@
       items:
         - name: 概述
           href: ../windows/disk-encryption-overview.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ../windows/disk-encryption-troubleshooting.md
         - name: 常见问题
           href: ../windows/disk-encryption-faq.md
@@ -301,7 +307,7 @@
       items:
         - name: 概述
           href: ../linux/disk-encryption-overview.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ../linux/disk-encryption-troubleshooting.md
         - name: 常见问题解答
           href: ../linux/disk-encryption-faq.md

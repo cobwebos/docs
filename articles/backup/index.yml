@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: f78a311125340f447cb0f2dda960e34c289c123a
-  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+  ms.openlocfilehash: eeca42ea748c10970f312a84ea32c53fb904344a
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88650836"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90974442"
 landingContent:
 - title: 了解 Azure 备份
   linkLists:
@@ -56,12 +56,14 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 备份中心
+      url: backup-center-overview.md
+    - text: 备份 Azure Database for PostgreSQL
+      url: backup-azure-database-postgresql.md
     - text: Azure 备份的软删除
       url: backup-azure-security-feature-cloud.md
     - text: 将 Azure VM 上的 SQL Server 还原为文件
       url: restore-sql-database-azure-vm.md#restore-as-files
-    - text: 备份 Azure VM 上的 SAP HANA 数据库
-      url: backup-azure-sap-hana-database.md
 - title: 备份 Azure VM
   linkLists:
   - linkListType: concept
@@ -134,6 +136,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: 使用备份中心进行大规模管理
+      url: backup-center-monitor-operate.md
     - text: 使用 Azure Policy 进行大规模治理
       url: backup-azure-auto-enable-backup.md
     - text: 使用备份资源管理器进行大规模监视和操作

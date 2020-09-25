@@ -1,27 +1,27 @@
 ---
-title: 通过 Azure CLI 和 Python 在 Azure Stack Edge 设备 GPU 上部署 VM
-description: 介绍如何使用 Azure CLI 和 Python 在 Azure Stack Edge GPU 设备上创建和管理虚拟机 (VM)。
+title: 通过 Azure CLI 和 Python 在 Azure Stack Edge Pro 设备 GPU 上部署 VM
+description: 介绍如何使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上创建和管理虚拟机 (VM)。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500226"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890714"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge GPU 设备上部署 VM
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
-本教程介绍如何使用 Azure 命令行接口 (CLI) 和 Python 在 Azure Stack Edge 设备上创建和管理 VM。
+本教程介绍如何使用 Azure 命令行接口 (CLI) 和 Python 在 Azure Stack Edge Pro 设备上创建和管理 VM。
 
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流
 
@@ -43,13 +43,13 @@ ms.locfileid: "89500226"
 10. 创建 VNet
 11. 使用 VNet 子网 ID 创建 VNIC
 
-有关工作流图表的详细说明，请参阅[使用 Azure PowerShell 在 Azure Stack Edge 设备上部署 VM](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。 有关如何连接到 Azure 资源管理器的信息，请参阅[使用 Azure PowerShell 连接到 Azure 资源管理器](azure-stack-edge-j-series-connect-resource-manager.md)。
+有关工作流图表的详细说明，请参阅[使用 Azure PowerShell 在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。 有关如何连接到 Azure 资源管理器的信息，请参阅[使用 Azure PowerShell 连接到 Azure 资源管理器](azure-stack-edge-j-series-connect-resource-manager.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
-在开始使用 Azure CLI 和 Python 在 Azure Stack Edge 设备上创建和管理 VM 之前，你需要确保已完成以下步骤中列出的先决条件：
+在开始使用 Azure CLI 和 Python 在 Azure Stack Edge Pro 设备上创建和管理 VM 之前，你需要确保已完成以下步骤中列出的先决条件：
 
-1. 已完成 Azure Stack Edge 设备上的网络设置，如[步骤 1：配置 Azure Stack Edge 设备](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)中所述。
+1. 已完成 Azure Stack Edge Pro 设备上的网络设置，如[步骤 1：配置 Azure Stack Edge Pro 设备](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述。
 
 2. 已启用计算网络接口。 此网络接口 IP 用于为 VM 部署创建虚拟交换机。 下列步骤将为你演示此过程：
 
@@ -58,7 +58,7 @@ ms.locfileid: "89500226"
         > [!IMPORTANT] 
         > 只能为计算配置一个端口。
 
-    2. 在网络接口上启用计算。 Azure Stack Edge 创建并管理与该网络接口相对应的虚拟交换机。
+    2. 在网络接口上启用计算。 Azure Stack Edge Pro 创建并管理与该网络接口相对应的虚拟交换机。
 
     <!--If you decide to use another network interface for compute, make sure that you:
 
@@ -68,9 +68,9 @@ ms.locfileid: "89500226"
 
     - You can now enable another network interface for compute.-->
 
-3. 你已在 Azure Stack Edge 设备和客户端的受信任存储中创建并安装了所有证书。 按照[步骤 2：创建和安装证书](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述过程操作。
+3. 你已在 Azure Stack Edge Pro 设备和客户端的受信任存储中创建并安装了所有证书。 按照[步骤 2：创建和安装证书](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述过程操作。
 
-4. 你已为 Azure Stack Edge 设备创建了 Base 64 编码的 .cer 证书（PEM 格式）。 此证书已作为签名链上传到设备，并安装到了客户端上受信任的根存储中。 还需要 pem 格式的此证书，这样 Python 才能在此客户端上工作。
+4. 你已为 Azure Stack Edge Pro 设备创建了 Base-64 编码的 .cer 证书（PEM 格式）。 此证书已作为签名链上传到设备，并安装到了客户端上受信任的根存储中。 还需要 pem 格式的此证书，这样 Python 才能在此客户端上工作。
 
     使用 `certutil` 命令将此证书转换为 pem 格式。 必须在包含证书的目录中运行此命令。
 
@@ -199,7 +199,7 @@ ms.locfileid: "89500226"
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-### <a name="trust-the-azure-stack-edge-ca-root-certificate"></a>信任 Azure Stack Edge CA 根证书
+### <a name="trust-the-azure-stack-edge-pro-ca-root-certificate"></a>信任 Azure Stack Edge Pro CA 根证书
 
 1. 在计算机上找到证书位置。 该位置可能因安装 `az cli` 的位置而异。 以管理员身份运行 Windows PowerShell。 切换到指向 `az cli` 安装 Python 的位置的路径：`C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe`。
 
@@ -219,7 +219,7 @@ ms.locfileid: "89500226"
       
     记下该位置，因为稍后会用到 - `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`
 
-2. 信任 Azure Stack Edge CA 根证书，方法是将其追加到现有 Python 证书。 需要提供指向之前保存 PEM 证书的位置的路径。
+2. 信任 Azure Stack Edge Pro CA 根证书，方法是将其追加到现有 Python 证书。 需要提供指向之前保存 PEM 证书的位置的路径。
 
     ```powershell
     $pemFile = "<Path to the pem format certificate>"
@@ -252,12 +252,12 @@ ms.locfileid: "89500226"
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
     
-    Write-Host "Python Cert store was updated to allow the Azure Stack Edge CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Edge Pro CA root certificate"
     ```
     
-### <a name="connect-to-azure-stack-edge"></a>连接到 Azure Stack Edge
+### <a name="connect-to-azure-stack-edge-pro"></a>连接到 Azure Stack Edge Pro
 
-1. 通过运行 `az cloud register` 命令注册 Azure Stack Edge 环境。
+1. 通过运行 `az cloud register` 命令注册 Azure Stack Edge Pro 环境。
 
     在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，az cloud register 命令可能会失败并出现错误，例如\"无法从云中获取终结点。\"若要解决此错误，请在 Windows PowerShell 中设置以下环境变量：
 
@@ -266,7 +266,7 @@ ms.locfileid: "89500226"
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. 为 Azure 资源管理器终结点的脚本设置环境变量、创建资源的位置以及指向源 VHD 所在位置的路径。 资源的位置在所有 Azure Stack Edge 设备上都是固定的，并且设置为 `dbelocal`。 还需要指定地址前缀和专用 IP 地址。 以下所有环境变量的值都取决于你的值，但 `AZURE_RESOURCE_LOCATION` 除外，它应该硬编码为 `"dbelocal"`。
+2. 为 Azure 资源管理器终结点的脚本设置环境变量、创建资源的位置以及指向源 VHD 所在位置的路径。 资源的位置在所有 Azure Stack Edge Pro 设备上都是固定的，并且设置为 `dbelocal`。 还需要指定地址前缀和专用 IP 地址。 以下所有环境变量的值都取决于你的值，但 `AZURE_RESOURCE_LOCATION` 除外，它应该硬编码为 `"dbelocal"`。
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -308,7 +308,7 @@ ms.locfileid: "89500226"
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. 使用 `az login` 命令登录到 Azure Stack Edge 环境。 你可以以用户或[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)身份登录到 Azure Stack Edge 环境。
+4. 使用 `az login` 命令登录到 Azure Stack Edge Pro 环境。 你可以以用户或[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)身份登录到 Azure Stack Edge Pro 环境。
 
    若要以用户身份登录，请按照以下步骤操作：
 

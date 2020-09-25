@@ -50,6 +50,8 @@
       items:
         - name: Azure 备份支持矩阵
           href: backup-support-matrix.md
+        - name: 备份中心支持矩阵
+          href: backup-center-support-matrix.md
         - name: Azure VM 备份支持矩阵
           href: backup-support-matrix-iaas.md
         - name: DPM/Azure 备份服务器 (MABS) 支持矩阵
@@ -68,6 +70,8 @@
       items:
         - name: 常见问题解答 - 恢复服务保管库
           href: backup-azure-backup-faq.md
+        - name: 常见问题解答 - 备份中心
+          href: backup-center-faq.md
         - name: 常见问题解答 - Azure VM 备份
           href: backup-azure-vm-backup-faq.md
         - name: 常见问题解答 - MARS 代理
@@ -88,18 +92,36 @@
       href: guidance-best-practices.md
 - name: 操作方法指南
   items:
-    - name: 恢复服务保管库
+    - name: 保管库
+      items:
+        - name: 恢复服务保管库
+          items:
+            - name: 概述
+              href: backup-azure-recovery-services-vault-overview.md
+            - name: 创建
+              href: backup-create-rs-vault.md
+            - name: 删除
+              href: backup-azure-delete-vault.md
+            - name: 移动
+              href: backup-azure-move-recovery-services-vault.md
+            - name: 管理
+              href: backup-azure-manage-windows-server.md
+        - name: 备份保管库
+          items:
+            - name: 概述
+              href: backup-vault-overview.md
+    - name: 备份中心
       items:
         - name: 概述
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: 创建
-          href: backup-create-rs-vault.md
-        - name: 删除
-          href: backup-azure-delete-vault.md
-        - name: 移动
-          href: backup-azure-move-recovery-services-vault.md
-        - name: 管理
-          href: backup-azure-manage-windows-server.md
+          href: backup-center-overview.md
+        - name: 监视和运营
+          href: backup-center-monitor-operate.md
+        - name: 获取见解
+          href: backup-center-obtain-insights.md
+        - name: 治理环境
+          href: backup-center-govern-environment.md
+        - name: 执行操作
+          href: backup-center-actions.md
     - name: Azure VM 备份
       items:
         - name: 概述
@@ -150,6 +172,10 @@
           href: restore-sql-database-azure-vm.md
         - name: 管理
           href: manage-monitor-sql-database-backup.md
+    - name: Azure Database for PostgreSQL 备份
+      items:
+        - name: 备份
+          href: backup-azure-database-postgresql.md
     - name: 使用 MARS 代理的 Windows 备份
       items:
         - name: 概述

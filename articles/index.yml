@@ -13,12 +13,12 @@ metadata:
   ms.date: 09/10/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: ae4e327b7b4d230bd89baccdd27d5ac416ebb6cb
-  ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+  ms.openlocfilehash: aec131b8c7a3e5092b6b090668fb0eb006b079a3
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90087943"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90904131"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -36,7 +36,7 @@ highlightedContent:
 productDirectory:
   title: 浏览 Azure 产品
   items:
-  - title: 异常探测器（预览版）
+  - title: 异常检测器
     summary: 将异常情况检测功能轻松添加到应用
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
     azureCategories:
@@ -144,6 +144,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/bing-web-search/overview.md
+  - title: 通信服务
+    summary: 向应用添加实时语音、视频和电话服务
+    imageSrc: ./media/index/communication-services.svg
+    azureCategories:
+    - web
+    - mobile
+    url: communication-services/overview.md
   - title: 计算机视觉
     summary: 从图像中提取可操作信息
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -610,7 +617,7 @@ productDirectory:
     azureCategories:
     - databases
     url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge（预览版）
+  - title: Azure SQL Edge
     summary: 已经过边缘优化的小型数据引擎，带有内置 AI
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:

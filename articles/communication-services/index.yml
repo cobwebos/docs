@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure 通信服务
+summary: Azure 通信服务是一项基于云的通信服务，借助该服务，你可以向应用添加语音、视频、聊天和电话服务。 请注意，Azure 通信服务目前提供公共预览版。
+metadata:
+  title: Azure 通信服务
+  description: Azure 通信服务是一项基于云的通信服务，借助该服务，你可以向应用添加语音、视频、聊天和电话服务。 请注意，Azure 通信服务目前提供公共预览版。
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 6081063605439982e29984cc4378ec3aee7ac08a
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928700"
+landingContent:
+- title: 关于 Azure 通信服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 通信服务？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 客户端库选项
+      url: concepts/sdk-options.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建通信服务资源
+      url: quickstarts/create-communication-resource.md
+    - text: 创建和管理用户访问令牌
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: 客户端和服务器体系结构
+      url: concepts/client-and-server-architecture.md
+    - text: 身份验证和授权
+      url: concepts/authentication.md
+    - text: 事件处理
+      url: concepts/event-handling.md
+    - text: 通知
+      url: concepts/notifications.md
+- title: 语音和视频呼叫
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 向应用添加语音和视频呼叫
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: 使用呼叫客户端库
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: 语音和视频概念
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: 呼叫客户端概述
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: 呼叫流
+      url: concepts/call-flows.md
+- title: 电话服务和短信
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 获取电话号码
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: 发送短信
+      url: quickstarts/telephony-sms/send.md
+    - text: 处理短信事件
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: 短信概念
+      url: concepts/telephony-sms/concepts.md
+    - text: 短信客户端概述
+      url: concepts/telephony-sms/sdk-features.md
+    - text: 呼叫概述
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: 规划电话和短信解决方案
+      url: concepts/telephony-sms/plan-solution.md
+- title: 聊天
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 向应用添加聊天
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: 聊天概念
+      url: concepts/chat/concepts.md
+    - text: 聊天客户端库概述
+      url: concepts/chat/sdk-features.md
+- title: 示例
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 分组呼叫英雄示例入门
+      url: samples/calling-hero-sample.md
+    - text: 聊天英雄示例入门
+      url: samples/chat-hero-sample.md

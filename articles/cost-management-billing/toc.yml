@@ -180,6 +180,8 @@
               href: manage/grant-access-to-create-subscription.md
             - name: 导出订阅信息
               href: manage/export-subscriptions.md
+            - name: 删除 Azure 账单付款方式
+              href: manage/delete-azure-payment-method.md
             - name: 更改信用卡
               href: manage/change-credit-card.md
             - name: 更改管理员

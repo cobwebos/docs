@@ -1,0 +1,80 @@
+- name: 托管的 HSM 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于托管的 HSM
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: Azure 资源管理器模板
+      href: quick-create-template.md
+- name: 教程
+  items:
+    - name: 使用 Azure CLI 进行管理
+      href: key-management.md
+    - name: 托管的 HSM 角色管理
+      href: role-management.md
+    - name: 安全访问托管的 HSM
+      href: secure-your-managed-hsm.md
+    - name: 为托管的 HSM 设置日志记录
+      href: logging.md
+    - name: 灾难恢复
+      href: disaster-recovery-guide.md
+    - name: 将受 HSM 保护的密钥导入托管的 HSM
+      href: hsm-protected-keys-byok.md
+    - name: 备份和还原
+      href: backup-restore.md
+- name: 概念
+  items:
+    - name: 安全域
+      href: security-domain.md
+    - name: 最佳做法
+      href: best-practices.md
+    - name: 访问控制
+      href: access-control.md
+    - name: 本地 RBAC 内置角色
+      href: built-in-roles.md
+- name: 操作指南
+  items: null
+- name: 参考
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/distaster-recoveryeyvault/?view=azps-1.2.0#key_vault
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: 资源
+  items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-key-vault
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: 服务级别协议 (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: 服务限制
+      href: ../general/service-limits.md
+    - name: 服务状态
+      href: 'https://azure.microsoft.com/status/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: 博客
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: 产品反馈
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

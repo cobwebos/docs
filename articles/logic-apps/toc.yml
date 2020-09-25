@@ -61,10 +61,14 @@
       items:
         - name: 从预构建的模板创建
           href: logic-apps-create-logic-apps-from-templates.md
+        - name: 通过创建自动化任务来管理 Azure 资源
+          href: create-automation-tasks-azure-resources.md
         - name: 从 BizTalk 服务迁移
           href: logic-apps-move-from-mabs.md
         - name: 从 Power Automate 导出流并将其部署到 Azure 逻辑应用
           href: export-from-microsoft-flow-logic-app-template.md
+        - name: 在 Visual Studio Code 中创建有状态或无状态工作流
+          href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: 控制工作流执行
           items:
             - name: 条件语句
@@ -166,8 +170,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: 处理包含 UNH2.5 段的 EDIFACT 文件
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: 交换 RosettaNet 消息
-          href: logic-apps-enterprise-integration-rosettanet.md
+            - name: 交换 RosettaNet 消息
+              href: logic-apps-enterprise-integration-rosettanet.md
         - name: 交换 X12 消息
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -312,7 +316,7 @@
         - name: 管理逻辑应用 - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: 管理集成帐户
-          href: ./logic-apps-enterprise-integration-create-integration-account.md
+          href: logic-apps-enterprise-integration-create-integration-account.md
         - name: 管理集成服务环境
           href: ise-manage-integration-service-environment.md
         - name: 移动逻辑应用资源

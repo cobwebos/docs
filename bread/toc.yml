@@ -102,6 +102,9 @@
         - name: 移动应用
           tocHref: /azure/app-service-mobile/
           topicHref: /azure/app-service-mobile/
+    - name: Azure 自动管理
+      tocHref: /azure/automanage/
+      topicHref: /azure/automanage/
     - name: 静态 Web 应用
       tocHref: /azure/static-web-apps/
       topicHref: /azure/static-web-apps/
@@ -429,6 +432,9 @@
         - name: 沉浸式阅读器
           tocHref: /azure/cognitive-services/immersive-reader/
           topicHref: /azure/cognitive-services/immersive-reader/
+    - name: 通信服务
+      tocHref: /azure/communication-services/
+      topicHref: /azure/communication-services/
     - name: 连接器
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
@@ -564,6 +570,9 @@
         - name: 机密
           tocHref: /azure/key-vault/secrets/
           topicHref: /azure/key-vault/secrets/
+        - name: 托管的 HSM
+          tocHref: /azure/key-vault/managed-hsm/
+          topicHref: /azure/key-vault/managed-hsm/
     - name: Azure Kinect DK
       tocHref: /azure/kinect-dk/
       topicHref: /azure/kinect-dk/

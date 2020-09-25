@@ -7,14 +7,17 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290321"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885681"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>将现有自定义域映射到 Azure Spring Cloud
+
+本文适用于：✔️ Java ✔️ C#
+
 域名服务 (DNS) 是将网络节点名称存储在整个网络中的一种技术。 本教程使用 CNAME 记录来映射域（例如 www.contoso.com）。 本教程将使用证书保护自定义域，并介绍如何强制实施传输层安全性 (TLS)（也称为安全套接字层 (SSL)）。 
 
 证书用于对 Web 流量进行加密。 可将这些 TLS/SSL 证书存储在 Azure Key Vault 中。 

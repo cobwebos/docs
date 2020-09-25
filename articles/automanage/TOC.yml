@@ -1,0 +1,28 @@
+- name: Azure 自动管理
+  href: automanage-virtual-machines.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 在 Azure 门户中的 VM 上启用
+      href: quick-create-virtual-machines-portal.md
+- name: 概念
+  expanded: true
+  items:
+    - name: 虚拟机
+      href: automanage-virtual-machines.md
+    - name: VM 的最佳做法
+      href: virtual-machines-best-practices.md
+- name: 如何
+  expanded: true
+  items:
+    - name: 创建自定义首选项
+      href: virtual-machines-custom-preferences.md
+    - name: 通过 Azure Policy 在 VM 上启用
+      href: virtual-machines-policy-enable.md
+- name: 资源
+  expanded: true
+  items:
+    - name: 常见问题
+      href: faq.md
+    - name: 云采用框架
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'
