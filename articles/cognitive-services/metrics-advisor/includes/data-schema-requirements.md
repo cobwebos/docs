@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: a64bb5b28a06d9a013d59e022047f5e2841126ab
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 33bc52d3c334919a9e93d9666a24d85e3fe158b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377277"
 ---
 指标监视器是一种用于时序异常检测、诊断和分析的服务。 作为由 AI 提供支持的服务，它使用你的数据来训练所使用的模型。 服务接受具有以下各列的聚合数据表：
 

@@ -13,8 +13,6 @@
       href: deploy-service-catalog-quickstart.md
 - name: 教程
   items:
-    - name: 发布市场应用程序
-      href: publish-marketplace-app.md
     - name: 创建包含自定义提供程序的托管应用程序
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: 示例
@@ -41,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: 测试门户界面
           href: test-createuidefinition.md
+        - name: 创建 Azure 应用程序产品/服务
+          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: 请求实时访问
           href: request-just-in-time-access.md
         - name: 使用现有虚拟网络

@@ -3,18 +3,18 @@ title: 安装 VMware HCX
 description: 为 Azure VMware 解决方案私有云设置 VMware HCX 解决方案
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: cdeffa41db5aac597d8dfcf3a735cbeb7f0d8a8e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356547"
+ms.locfileid: "91370838"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安装适用于 Azure VMware 解决方案的 HCX
 
 在本文中，我们将逐步介绍为 Azure VMWare 解决方案私有云设置 VMWare HCX 解决方案的过程。 HCX 允许将 VMware 工作负荷迁移到云，并通过各种内置 HCX 支持的迁移类型迁移到其他连接的站点。
 
-HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连接。 如果需要三个以上的站点连接，客户可以选择通过支持（当前为预览版）启用 HCX Enterprise 外接程序。 正式发布 (GA) 之后，HCX Enterprise 会向客户收取额外费用，但是会提供[其他功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
+HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连接。 如果需要三个以上的站点连接或 HCX [企业功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) ，客户可以选择通过支持（当前为预览版）启用 HCX Enterprise 外接程序。 使用 AVS 作为预览功能/服务的 HCX EE。 尽管 AVS 的 HCX EE 处于预览状态，但它是免费的功能/服务，并受预览版服务条款和条件的约束。 HCX EE 服务正式发布后，你将获得30天的通知，计费将会切换。 你还可以选择关闭/退出服务。
 
 
 首先，请仔细查看[开始之前](#before-you-begin)、[软件版本要求](#software-version-requirements)和[先决条件](#prerequisites)。 
@@ -63,17 +63,15 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 * 本地 HCX IX 和 NE 设备应该能够访问 vCenter 和 ESXi 基础结构。
 
-* 若要部署 WAN 互连设备，除了在 Azure 门户中用于 SDDC 部署的 /22 CIDR 网络地址块以外，HCX 还需要一个 /29 块。 请确保将此要求分解为网络规划。
+* 若要部署 WAN 互连设备，已从客户提供的用于私有云创建的 \ 22 的特定 CIDR 范围。
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>在本地部署 VMware HCX OVA
 
 1. 在 `https://x.x.x.9` 端口443上，用 **cloudadmin** 用户凭据登录到 AZURE VMware 解决方案 HCX Manager，然后继续 **支持**。
 
-1. 选择 VMware HCX .OVA 文件的 "下载" 链接。 
+1. 选择要部署到 vCenter 的 VMware HCX .OVA 文件的 "下载" 链接。
 
-1. 登录到 Azure VMware 解决方案 SDDC vCenter，然后选择 **HCX**。
-   
-1. 中转到本地 vCenter，并选择要部署到本地 vCenter 的 OVF 模板。  
+1. 中转到本地 vCenter，然后选择要部署到本地 vCenter 的新下载的 OVF 模板。  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="接下来，请前往本地 vCenter，选择要部署到本地 vCenter 的 OVF 模板。":::
 

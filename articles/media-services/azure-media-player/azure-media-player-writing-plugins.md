@@ -6,13 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: da827b994685e95baf28e3ad34072642c24fa510
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: c1a64bff8b81735d9c4c9a14d2c1e12bd0bfe57e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296155"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>正在为 Azure Media Player 编写插件 #
 
@@ -36,7 +36,7 @@ ms.locfileid: "87422600"
 
 您可以直接在 HTML 页的 `<script>` 标记或外部 JavaScript 文件中编写代码。 如果执行后一项操作，请确保在您的 HTML 页面的中包含 JavaScript 文件，然后再添加 `<head>` AMP 脚本。 *after*
 
-例如：
+示例：
 
 ```javascript
     <!--*****START OF Azure Media Player Scripts*****-->
@@ -77,14 +77,14 @@ ms.locfileid: "87422600"
 
 不需要插件选项，其中包括仅允许开发人员使用插件配置其行为，而无需更改源代码。
 
-有关创建插件的灵感和更多示例，请查看我们的[库](azure-media-player-plugin-gallery.md)
+有关创建插件的灵感和更多示例，请查看我们的 [库](azure-media-player-plugin-gallery.md)
 
 >[!NOTE]
 > 插件代码在查看器的播放机体验的生存期内动态更改 DOM 中的项，而永远不会对播放机的源代码进行永久更改。 这就是了解浏览器的开发人员工具的便利。 例如，如果想要更改播放机中某个元素的外观，可以通过其类名称找到其 HTML 元素，然后添加或更改其中的属性。 下面是有关[更改 HTML 属性](http://www.w3schools.com/js/js_htmldom_html.asp)的有用资源。
 
 ### <a name="integrated-plugins"></a>集成插件 ###
 
- 目前有两个融入到 AMP 的插件：[时间提示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)和[热键](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)。 这些插件最初开发为播放机的模块化插件，但现在已包含在播放机源代码中。
+ 目前有两个融入到 AMP 的插件： [时间提示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) 和 [热键](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)。 这些插件最初开发为播放机的模块化插件，但现在已包含在播放机源代码中。
 
 ### <a name="plugin-gallery"></a>插件库 ###
 

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377205"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,13 +33,13 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理调用客户端库的 Azure 通信服务的一些主要功能：
+以下类和接口处理 Azure 通信服务呼叫客户端库的某些主要功能：
 
 | 名称                             | 说明                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient 是调用客户端库的主入口点。                                                                       |
-| CallAgent                        | CallAgent 用于启动和管理调用。                                                                                            |
-| AzureCommunicationUserCredential | AzureCommunicationUserCredential 类实现 CommunicationUserCredential 接口，该接口用于实例化 CallAgent。 |
+| CallClient                       | CallClient 是呼叫客户端库的主入口点。                                                                       |
+| CallAgent                        | CallAgent 用于启动和管理呼叫。                                                                                            |
+| AzureCommunicationUserCredential | AzureCommunicationUserCredential 类实现用于实例化 CallAgent 的 CommunicationUserCredential 接口。 |
 
 
 ## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>初始化 CallClient、create CallAgent 和 access DeviceManager
@@ -80,11 +80,11 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>使用 with 视频相机发出1:1 呼叫
+### <a name="place-a-11-call-with-video-camera"></a>使用摄像机发出1:1 呼叫
 > [!WARNING]
 > 当前可以有一个以上的传出本地视频流。
 若要进行视频呼叫，必须使用 deviceManager API 枚举本地相机 `getCameraList` 。
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ const call = callClient.call(['acsUserId'], placeCallOptions);
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 你可以访问调用属性并在调用以管理与视频和音频相关的设置期间执行各种操作。
 
 ### <a name="call-properties"></a>调用属性
-* 获取此调用的唯一 Id。
+* 获取此调用 (字符串) 的唯一 ID。
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* 若要了解调用中的其他参与者，请检查 `remoteParticipant` 该实例上的集合 `call` 。
+* 若要了解调用中的其他参与者，请检查 `remoteParticipant` 该实例上的集合 `call` 。 数组包含 list `RemoteParticipant` 对象
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* 如果调用是传入的，则为调用方的标识。
+* 如果调用是传入的，则为调用方的标识。 标识是 `Identifier` 类型之一
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * 获取调用的状态。
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 这会返回表示调用的当前状态的字符串：
@@ -153,35 +153,34 @@ const callState: CallState = call.state;
 * 若要查看给定调用结束的原因，请检查 `callEndReason` 属性。
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* 若要了解当前调用是否为传入调用，请检查 `isIncoming` 属性，返回 `Boolean` 。
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  若要检查当前麦克风是否静音，请检查 `muted` 属性，返回 `Boolean` 。
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* 若要了解当前调用是否为传入调用，请检查 `isIncoming` 属性
+* 若要查看是否正在从给定的终结点发送屏幕共享流，请检查 `isScreenSharingOn` 属性，返回 `Boolean` 。
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  若要检查当前麦克风是否静音，请检查 `muted` 属性：
+* 若要检查活动视频流，请检查 `localVideoStreams` 集合，其中包含 `LocalVideoStream` 对象
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* 若要查看是否正在从给定的终结点发送屏幕共享流，请查看 `isScreenSharingOn` 属性：
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* 若要检查活动视频流，请检查 `localVideoStreams` 集合：
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ await call.unmute();
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,49 +253,49 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 * 获取此远程参与者的标识符。
 标识是 "标识符" 类型之一：
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * 获取此远程参与者的状态。
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 状态可以是
 * "空闲"-初始状态
 * 参与者连接到呼叫时的 "正在连接"-转换状态
 * "已连接"-参与者已连接到呼叫
 * "保持"-参与者处于暂停状态
-* "EarlyMedia"-参与者连接到呼叫之前播放公告
+* "EarlyMedia"-在参与者连接到呼叫之前播放公告
 * "断开连接"-最终状态-参与者已与呼叫断开连接
 
 若要了解参与者离开呼叫的原因，请检查 `callEndReason` 属性：
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* 若要检查此远程参与者是否已静音，请检查 `isMuted` 属性，返回 `Boolean`
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* 若要检查此远程参与者是否正在通话，请检查 `isSpeaking` 它返回的属性 `Boolean`
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* 若要检查此远程参与者是否已静音，请检查 `isMuted` 属性：
+* 若要检查给定参与者在此调用中发送的所有视频流，请选中 `videoStreams` "集合"，其中包含 `RemoteVideoStream` 对象
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* 若要检查此远程参与者是否正在通话，请检查 `isSpeaking` 属性：
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* 若要检查给定参与者在此调用中发送的所有视频流，请选中 " `videoStreams` 收集"：
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,13 +311,12 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>从呼叫中删除参与者
 
 若要从调用中删除参与者 (可以调用的用户或电话号码) `removeParticipant` 。
-必须传递 "identifier" 类型之一，这会在从调用中删除参与者后异步解决。
+必须传递 "Identifier" 类型之一，这会在从调用中删除参与者后异步解决。
 还将从集合中删除该参与者 `remoteParticipants` 。
 
 ```js
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 若要列出视频流和远程参与者的屏幕共享流，请检查 `videoStreams` 集合：
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```
@@ -365,12 +362,12 @@ if (remoteParticipantStream.isAvailable) {
 ### <a name="remote-video-stream-properties"></a>远程视频流属性
 远程视频流具有以下属性：
 
-* `Id` -远程视频流的 Id
+* `Id` -远程视频流的 ID
 ```js
 const id: number = remoteVideoStream.id;
 ```
 
-* `StreamSize` -size ( 远程视频流的宽度/高度 ) 
+* `StreamSize` -size (远程视频流的宽度/高度) 
 ```js
 const size: {width: number; height: number} = remoteVideoStream.size;
 ```

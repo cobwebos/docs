@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181436"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296444"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>虚拟机认证过程中的问题和解决方案 
 
@@ -21,7 +21,7 @@ ms.locfileid: "89181436"
 本文介绍了 VM 映像发布期间的常见错误消息，以及相关解决方案。
 
 > [!NOTE]
-> 如果你有疑问或反馈，请联系 [合作伙伴中心支持](https://partner.microsoft.com/support/v2/?stage=1)部门。
+> 如果你有任何问题或反馈，请联系 [合作伙伴中心支持](https://partner.microsoft.com/support/v2/?stage=1)部门。
 
 ## <a name="approved-base-image"></a>批准的基本映像
 
@@ -29,10 +29,13 @@ ms.locfileid: "89181436"
 
 当使用属于另一发布服务器的基本映像并且已更新该映像时，将发生此错误。 在这种情况下，你将不能发布映像。
 
-若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅下列文章：
+若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅以下文章：
 
 - [Linux 映像](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows 映像](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
+
+> [!Note]
+> 如果使用的是不是从 Marketplace 获取的 Linux 基础映像，则可以将第一个分区偏移 2048 KB。 这允许使用未格式化的空间来添加新的计费信息，并允许 Azure 将 VM 发布到 Marketplace。  
 
 ## <a name="vm-extension-failure"></a>VM 扩展失败
 
@@ -94,7 +97,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Linux 测试用例。 说明中说明了测试验证。
 
-|方案|测试用例|描述|
+|方案|测试用例|说明|
 |---|---|---|
 |1|Bash 历史记录|在创建 VM 映像之前，应清除 Bash 历史记录文件。|
 |2|Linux 代理版本|应安装 Azure Linux 代理2.2.41 或更高版本。|
@@ -122,7 +125,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 下表列出了工具包将运行的 Windows 测试用例，以及测试验证的说明：
 
-|方案 |测试事例|描述|
+|方案 |测试事例|说明|
 |---|---|---|---|
 |1|OS 体系结构|Azure 仅支持64位操作系统。|
 |2|用户帐户依赖项|应用程序的执行不应依赖于管理员帐户。|
@@ -207,9 +210,9 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
-||18.10|4.18.0-1023|
-||19.04|5.0.0-1010|
-||19.04|5.3.0-1004|
+||18.10 |4.18.0-1023|
+||19.04 |5.0.0-1010|
+||19.04 |5.3.0-1004|
 |RHEL 和美分 OS|6.10|2.6.32-754.15。3|
 ||7.2|3.10.0-327.79。2|
 ||7.3|3.10.0-514.66。2|
@@ -270,9 +273,12 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 |6|HTTP 条件头|SAS URL 无效。|获取正确的 SAS URL。|
 |7|VHD 名称无效|检查 VHD 名称中是否存在任何特殊字符，如百分号 (% ) 或引号 ( ") 。|通过删除特殊字符来重命名 VHD 文件。|
 
-## <a name="first-1-mb-partition"></a>前 1 MB 分区
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>第一 MB (2048 KB) 分区 (仅适用于 Linux) 
 
-提交 VHD 时，请确保 VHD 的第一个 1 MB 分区为空。 否则，你的请求将失败。
+提交 VHD 时，请确保 VHD 的第一个 2048 KB 为空。 否则，你的请求将失败。
+
+>[!NOTE]
+>* 对于某些特殊的映像，例如从 Azure Marketplace 获取的 Azure Windows 基准映像的基础，我们将检查计费标记，如果计费标记存在并且与我们的内部可用值匹配，则忽略 MB 分区。
 
 ## <a name="default-credentials"></a>默认凭据
 

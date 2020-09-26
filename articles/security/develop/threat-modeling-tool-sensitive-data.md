@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1de363e66a4d5780258b75d777a95318f36333fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 3ee0a376b28676e3f74ac2e53010c2c953ad9d7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000492"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317814"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |

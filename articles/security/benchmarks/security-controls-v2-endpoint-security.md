@@ -4,17 +4,17 @@ description: Azure 安全准则 V2 Endpoint Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c04e4233ded34ceaeec9cd9afb240d3d1ac864e0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 3eab0080f80b26fc7074d8a64885148c0568d8b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059141"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280607"
 ---
-# <a name="security-control-endpoint-security"></a>安全控制：终结点安全
+# <a name="security-control-v2-endpoint-security"></a>安全控制 V2：终结点安全
 
 Endpoint Security 涵盖终结点检测和响应中的控件。 这包括在 Azure 环境中使用终结点检测和响应 (EDR) 和反恶意软件服务。
 
@@ -36,7 +36,7 @@ Microsoft Defender 高级威胁防护在企业终结点安全平台中提供了 
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -64,7 +64,7 @@ Azure 安全中心可以自动标识用于虚拟机的多个常用反恶意软�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -88,7 +88,7 @@ Azure 安全中心可以自动标识用于虚拟机的多个常用反恶意软�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 

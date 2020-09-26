@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f39aa76e4bd2ce3d298e555f56b09d0218ef0862
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318817"
 ---
-# <a name="client-libraries-and-rest-apis"></a>客户端库和 REST Api
+# <a name="client-libraries-and-rest-apis"></a>客户端库和 REST API
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -28,16 +28,16 @@ Azure 通信服务功能在概念上分为六个区域。 某些区域具有完�
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure 资源管理器 | REST | 打开            | Azure 的通信 | 设置和管理通信服务资源             |
 | 通用                 | REST | 打开               | Azure。公共          | 提供其他客户端库的基类型 |
-| 管理         | REST |                | Azure. 管理  | 管理用户、访问令牌和电话号码，分配符合标准的 STUN 并打开服务器 |
+| 管理         | REST | 打开               | Azure. 管理  | 管理用户、访问令牌和电话号码，分配符合标准的 STUN 并打开服务器 |
 | 聊天                   | 带有专有信的 REST | 打开并关闭源信令包    | Azure 通信            | 向应用程序添加实时的基于文本的聊天  |
-| SMS                    | REST | 打开              | Azure. Communication             | 发送和接收短信消息 |
+| SMS                    | REST | 打开              | Azure. Communication             | 发送和接收短信 |
 | 调用                | 专用传输 | 已关闭 |Azure 通信。调用         | 利用语音、视频、屏幕共享和其他实时数据通信功能          |
 
 ### <a name="client-library-language-support"></a>客户端库语言支持
 
 下面详细介绍了单独的客户端库包的可用性指南和时间线。 [Azure 路线图](https://azure.microsoft.com/updates/)提供有关即将推出的功能的其他信息。
 
-| 区域           | Javascript | .NET | Python | Java | Swift 或 Obj-C | Java (Android) | 其他                          |
+| 区域           | JavaScript | .NET | Python | Java | Swift 或 Obj-C | Java (Android) | 其他                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure 资源管理器 | ✔️         | ✔️    | ✔️      | -    | -              | *尚不支持*  | *目前尚不支持*Azure CLI |
 | 通用         | ✔️         | ✔️    | -      | ✔️   | ✔️            | ✔️             | -                              |
@@ -56,7 +56,7 @@ Azure 通信服务功能在概念上分为六个区域。 某些区域具有完�
 | Python         | Windows & Linux 服务器              | Pypi      |
 | Java (J2EE)     | Windows 或 Linux 服务器上的 JVM      | Maven     |
 | Java (Android) | Android 客户端应用程序          | Maven     |
-| Javascript     | 浏览器客户端应用程序和节点 | Npm       |
+| JavaScript     | 浏览器客户端应用程序和节点 | Npm       |
 
 ## <a name="rest-apis"></a>REST API
 

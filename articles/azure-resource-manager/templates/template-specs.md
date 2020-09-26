@@ -1,35 +1,35 @@
 ---
 title: 模板规格概述
-description: 描述如何创建模板规范并将其与组织中的其他用户共享。
+description: 介绍如何创建模板规格并与组织中的其他用户共享。
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fad7ca60e98dcaabc5f6fc106e0d2c1b77085d67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0516947ff134992d684aa6826999c4d65bba1457
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369070"
 ---
-# <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格 (预览版) 
+# <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格（预览版）
 
-模板规范是用于在 Azure 中存储 Azure 资源管理器模板 (ARM) 模板以供以后部署的新资源类型。 此资源类型使你可以与组织中的其他用户共享 ARM 模板。 就像任何其他 Azure 资源一样，你可以使用基于角色的访问控制 (RBAC) 来共享模板规范。
+模板规格是一种新资源类型，用于在 Azure 中存储 Azure 资源管理器模板（ARM 模板），以便之后进行部署。 通过该资源类型，你可以与组织中的其他用户共享 ARM 模板。 就像任何其他 Azure 资源一样，你可以使用 Azure 基于角色的访问控制 (Azure RBAC) 来共享模板规范。
 
-对于模板规格，" **templateSpecs** " 是新的资源类型。 它包含主模板和任意数量的链接模板。 Azure 将模板规范安全地存储在资源组中。 模板规范支持 [版本控制](#versioning)。
+Microsoft.Resources/templateSpecs 是模板规格的新资源类型。 它包含一个主模板和任意数量的链接模板。 Azure 将模板规格安全存储在资源组中。 模板规格支持[版本控制](#versioning)。
 
-若要部署模板规范，请使用 Azure 等标准 Azure 工具、Azure CLI、Azure 门户、REST 以及其他受支持的 Sdk 和客户端。 使用与模板相同的命令。
+若要部署模板规格，请使用标准 Azure 工具（如 PowerShell）、Azure CLI、Azure 门户、REST 和其他受支持的 SDK 和客户端。 请使用针对模板使用的相同命令。
 
 > [!NOTE]
 > 模板规格当前提供预览版。 若要使用它，必须[注册等待列表](https://aka.ms/templateSpecOnboarding)。
 
-## <a name="why-use-template-specs"></a>为什么使用模板规范？
+## <a name="why-use-template-specs"></a>为什么使用模板规格？
 
-如果你当前在 GitHub 存储库或存储帐户中使用了模板，则在尝试共享和使用模板时遇到几个难题。 要使用户部署该模板，模板必须为本地模板或模板的 URL 必须可公开访问。 若要绕过此限制，你可以与需要部署模板的用户共享模板的副本，或打开存储库或存储帐户的访问权限。 如果用户拥有模板的本地副本，这些副本最终可能会与原始模板分离。 当你公开访问存储库或存储帐户时，可能会允许非预期用户访问该模板。
+如果 GitHub 存储库或存储帐户中当前有模板，在尝试共享和使用这些模板时会遇到一些困难。 如果用户要部署这些模板，要么模板必须是本地模板，要么它的 URL 必须是可公开访问的。 为应对此限制，你可能要与需要部署模板的用户共享该模板的副本，或者开放对存储库或存储帐户的访问权限。 如果用户拥有模板的本地副本，这些副本最终可能会与原始模板有所不同。 当将存储库或存储帐户设置为可公开访问时，可能会导致非预期用户能够访问模板。
 
-使用模板规范的好处是，你可以创建规范模板并将其与组织中的团队共享。 模板规范是安全的，因为它们适用于 Azure 资源管理器进行部署，但没有 RBAC 权限的用户无法访问。 用户只需要对模板规范的 "读取" 访问权限来部署模板，因此你可以共享模板，而无需允许其他人修改它。
+使用模板规格的好处是，可以创建规范化的模板并与组织中的团队共享。 模板规范是安全的，因为它们适用于 Azure 资源管理器进行部署，但没有 Azure RBAC 权限的用户无法访问。 用户只需具有模板规格的读取访问权限即可部署模板，因此可以在不允许其他人进行修改的情况下共享该模板。
 
-你的模板规范中包含的模板应由组织中的管理员验证，以遵循组织的要求和指导。
+模板规格中包含的模板应由组织中的管理员按照组织的要求和指南进行验证。
 
 ## <a name="create-template-spec"></a>创建模板规格
 
@@ -66,9 +66,9 @@ ms.locfileid: "89227876"
 }
 ```
 
-创建模板规范时，会将主模板文件传递给 PowerShell 或 CLI 命令。 如果主模板引用链接的模板，则命令将查找并打包它们以创建模板规范。若要了解详细信息，请参阅 [使用链接模板创建模板规范](#create-a-template-spec-with-linked-templates)。
+创建模板规格时，会将 PowerShell 或 CLI 命令传递给主模板文件。 如果主模板引用链接模板，则命令将查找并打包它们以创建模板规格。若要了解详细信息，请参阅[创建具有链接模板的模板规格](#create-a-template-spec-with-linked-templates)。
 
-使用以下内容创建模板规范：
+使用以下命令创建模板规格：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -89,7 +89,7 @@ az ts create \
 
 ---
 
-你可以通过使用查看订阅中的所有模板规范：
+可以使用以下命令查看订阅中的所有模板规格：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -105,7 +105,7 @@ az ts list
 
 ---
 
-可以查看模板规范的详细信息，包括其版本：
+可以使用以下命令查看模板规格的详细信息（包括其版本）：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -126,15 +126,15 @@ az ts show \
 
 ## <a name="deploy-template-spec"></a>部署模板规格
 
-创建模板规范后，具有模板规范的 **读取** 访问权限的用户可以对其进行部署。 有关授予访问权限的信息，请参阅 [教程：使用 Azure PowerShell 向组授予对 Azure 资源的访问权限](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)。
+创建模板规格后，具有对模板规格的读取访问权限的用户可以部署它。 有关授予访问权限的信息，请参阅[教程：使用 Azure PowerShell 授予组对 Azure 资源的访问权限](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)。
 
-可以通过门户、PowerShell、Azure CLI 或更大模板部署中的链接模板来部署模板规范。 组织中的用户可以将模板规范部署到 Azure (资源组、订阅、管理组或租户) 中的任何范围。
+可通过门户、PowerShell、Azure CLI 部署模板规格，或者在更大型的模板部署中将其作为链接模板进行部署。 组织中的用户可以将模板规格部署到 Azure 中的任何范围（资源组、订阅、管理组或租户）。
 
-可以通过提供其资源 ID 来部署模板规范，而不是传入模板的路径或 URI。 资源 ID 的格式如下：
+可通过提供模板规格的资源 ID 来部署该模板规格，而无需传递模板的路径或 URI。 资源 ID 采用以下格式：
 
-**/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Resources/templateSpecs/{template-spec-name}/versions/{template-spec-version}**
+/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Resources/templateSpecs/{template-spec-name}/versions/{template-spec-version}
 
-请注意，资源 ID 包括模板规范的版本号。
+请注意，资源 ID 包括模板规格的版本号。
 
 例如，使用以下命令部署模板规范。
 
@@ -160,7 +160,7 @@ az deployment group create \
 
 ---
 
-在实践中，您通常会运行 `Get-AzTemplateSpec` 以获取您要部署的模板规范的 ID。
+实际上，通常需要运行 `Get-AzTemplateSpec` 来获取要部署的模板规格的 ID。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,7 +186,7 @@ az deployment group create \
 
 ## <a name="parameters"></a>参数
 
-向模板规范传递参数与将参数传递给 ARM 模板完全相同。 以内联方式或在参数文件中添加参数值。
+将参数传递到模板规格与将参数传递到 ARM 模板的过程是完全相同的。 以内联方式添加参数值或将参数值添加到参数文件中。
 
 若要以内联方式传递参数，请使用：
 
@@ -224,7 +224,7 @@ az deployment group create \
 }
 ```
 
-然后，将该参数文件传递给：
+并使用以下命令传递该参数文件：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -246,11 +246,11 @@ az deployment group create \
 
 ---
 
-## <a name="create-a-template-spec-with-linked-templates"></a>使用链接模板创建模板规范
+## <a name="create-a-template-spec-with-linked-templates"></a>创建具有链接模板的模板规格
 
-如果模板规范的主模板引用了链接模板，则 PowerShell 和 CLI 命令可以自动查找并打包本地驱动器中的链接模板。 无需手动配置存储帐户或存储库即可托管模板规范-模板规范资源中的所有内容都是自包含的。
+如果模板规格的主模板引用了链接模板，则 PowerShell 和 CLI 命令可以自动查找并打包本地驱动器中的链接模板。 无需手动配置存储帐户或存储库即可托管模板规格 - 模板规格资源中包含了所有内容。
 
-下面的示例包含具有两个链接模板的主模板。 该示例只是模板的摘录。 请注意，它使用名为的属性 `relativePath` 链接到其他模板。 你必须 `apiVersion` `2020-06-01` 为部署资源使用或更高版本。
+以下示例中包含了具有两个链接模板的主模板。 该示例只是模板的摘录。 请注意，它使用名为 `relativePath` 的属性链接到其他模板。 必须为部署资源使用 `2020-06-01` 的 `apiVersion` 或更高版本。
 
 ```json
 {
@@ -284,17 +284,17 @@ az deployment group create \
 }
 ```
 
-如果对前面的示例执行了创建模板规范的 PowerShell 或 CLI 命令，该命令将查找三个文件-主模板、web 应用模板 (`webapp.json`) 和数据库模板 (`database.json`) 并将其打包到模板规范。
+在上一个示例中执行用于创建模板规格的 PowerShell 或 CLI 命令时，该命令会查找三个文件 - 主模板、Web 应用模板 (`webapp.json`) 和数据库模板 (`database.json`) - 并将它们打包到模板规格中。
 
-有关详细信息，请参阅 [教程：使用链接模板创建模板规范](template-specs-create-linked.md)。
+有关详细信息，请参阅[教程：创建具有链接模板的模板规格](template-specs-create-linked.md)。
 
-## <a name="deploy-template-spec-as-a-linked-template"></a>将模板规范部署为链接模板
+## <a name="deploy-template-spec-as-a-linked-template"></a>将模板规格部署为链接模板
 
-一旦创建了模板规范，就可以轻松地从 ARM 模板或另一个模板规范重复使用它。可以通过将其资源 ID 添加到模板来链接到模板规范。 部署主模板时，会自动部署链接模板规范。 此行为允许你开发模块化模板规范并根据需要重复使用。
+创建模板规格之后，可以轻松从 ARM 模板或其他模板规格中重复使用它。可以通过将模板规格的资源 ID 添加到模板来链接该模板规范。 部署主模板时，会自动部署链接的模板规格。 此行为使你能够开发模块化模板规范并根据需要重复利用。
 
-例如，你可以创建一个部署网络资源的模板规范，以及另一个部署存储资源的模板规范。 在 ARM 模板中，你可以在任何需要配置网络或存储资源的情况下链接到这两个模板规范。
+例如，可以创建一个用于部署网络资源的模板模板规格和一个用于部署存储资源的模板规格。 在 ARM 模板中，可随时在需要配置网络或存储资源时链接到这两个模板规格。
 
-下面的示例与前面的示例类似，但使用 `id` 属性链接到模板规范，而不是链接 `relativePath` 到本地模板的属性。 用于 `2020-06-01` 部署资源的 API 版本。 在此示例中，模板规范位于名为 **templateSpecsRG**的资源组中。
+以下示例与前面的示例的类似，不同的是使用 `id` 属性链接到模板规格，而不是使用 `relativePath` 属性链接到本地模板。 使用 `2020-06-01` 作为部署资源的 API 版本。 在此示例中，模板规格位于名为 templateSpecsRG 的资源组中。
 
 ```json
 {
@@ -330,16 +330,16 @@ az deployment group create \
 }
 ```
 
-有关链接模板规范的详细信息，请参阅 [教程：将模板规范部署为链接模板](template-specs-deploy-linked-template.md)。
+有关链接模板规格的详细信息，请参阅[教程：将模板规格部署为链接模板](template-specs-deploy-linked-template.md)。
 
 ## <a name="versioning"></a>版本控制
 
-创建模板规范时，为其提供版本号。 当你循环访问模板代码时，你可以更新现有版本 (用于修补程序) 或发布新版本。 版本为文本字符串。 你可以选择遵循任何版本控制系统，包括语义版本控制。 模板规范的用户可以提供要在部署时使用的版本号。
+创建模板规格时，需要为其提供版本号。 循环访问模板代码时，可以更新现有版本（获取修补程序）或发布新版本。 版本是文本字符串。 可以选择遵循任意版本控制系统，包括语义化版本控制。 模板规格的用户可以提供部署模板规格时要使用的版本号。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要创建和部署模板规范，请参阅 [快速入门：创建和部署模板规范](quickstart-create-template-specs.md)。
+* 若要创建和部署模板规格，请参阅[快速入门：创建和部署模板规格](quickstart-create-template-specs.md)。
 
-* 有关模板规范中链接模板的详细信息，请参阅 [教程：使用链接模板创建模板规范](template-specs-create-linked.md)。
+* 有关链接模板规格中的模板的详细信息，请参阅[教程：创建具有链接模板的模板规格](template-specs-create-linked.md)。
 
-* 有关将模板规范部署为链接模板的详细信息，请参阅 [教程：将模板规范部署为链接模板](template-specs-deploy-linked-template.md)。
+* 有关将模板规格部署为链接模板的详细信息，请参阅[教程：将模板规格部署为链接模板](template-specs-deploy-linked-template.md)。

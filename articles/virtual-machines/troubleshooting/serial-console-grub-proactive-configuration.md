@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831356"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360542"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>主动确保你能够访问 GRUB 和 sysrq，可以节省大量停机时间
 
@@ -210,11 +210,11 @@ Ubuntu 12.04 将允许访问串行控制台，但不提供交互功能。 未显
 
 选择 Ubuntu 的高级选项，然后按 Enter
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![屏幕截图显示选定 Ubuntu 的高级选项的串行控制台。](./media/virtual-machines-serial-console/ubunturec1.png)
 
 选择显示“(恢复模式)”的行，请勿按“enter”，而是按“e”
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![屏幕截图显示已选择恢复模式版本的串行控制台。](./media/virtual-machines-serial-console/ubunturec2.png)
 
 找到将加载内核的行，并将目标 console=ttyS0 替换为最后一个参数 nomodeset 
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![屏幕截图显示具有更改值的串行控制台。](./media/virtual-machines-serial-console/ubunturec3.png)
 
 按“Ctrl-x”以启动并加载内核。
 如果一切顺利，你将看到这些附加选项，这可以帮助执行其他恢复选项
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![屏幕截图显示 "恢复" 菜单上的串行控制台，其中提供了其他恢复选项。](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat GRUB 配置
@@ -337,11 +337,11 @@ terminal --timeout=5 serial console
 
 通过添加显示 5 秒的“按任意键继续”的提示，最后一行“terminal –-timeout=5 serial console”将进一步增加 GRUB 超时 
 
-![rh6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![屏幕截图显示带有输出的控制台。](./media/virtual-machines-serial-console/rh6-1.png)
 
 GRUB 菜单应针对配置的 timeout=15 显示在屏幕上，而无需按 Esc。请确保在浏览器的控制台中单击以激活菜单并选择所需的内核
 
-![rh6-2](./media/virtual-machines-serial-console/rh6-2.png)
+![屏幕截图显示具有两个 Linux 选项的控制台。](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ kernel /boot/vmlinuz-3.0.101-108.74-default root=/dev/disk/by-uuid/ab6b62bb--
 通过访问 GRUB 可以中断初始化过程，这种交互对于许多恢复过程非常有用。
 如果你没有根密码，并且单个用户要求你具有根密码，你可以启动内核，用 bash 提示替换 init 程序 - 此中断可以通过将 init_/bin/bash 追加到内核启动行来实现
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![屏幕截图显示具有更新的引导线路的控制台。](./media/virtual-machines-serial-console/bash1.png)
 
 使用以下命令重新装载 / (root) 文件系统 RW
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![屏幕截图显示了具有重新装入操作的控制台。](./media/virtual-machines-serial-console/bash2.png)
 
 
 现在，你可以执行根密码更改或许多其他 Linux 配置更改
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![屏幕截图显示一个控制台，你可以在其中更改根密码和其他配置。](./media/virtual-machines-serial-console/bash3.png)
 
 使用以下命令重启 VM 
 

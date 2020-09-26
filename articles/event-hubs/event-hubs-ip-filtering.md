@@ -3,12 +3,12 @@ title: Azure 事件中心防火墙规则 | Microsoft Docs
 description: 使用防火墙规则允许从特定 IP 地址到 Azure 事件中心的链接。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: fbf3e67cdde43dbe3d5e02cd4b044d5473f409ac
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ab7f835187a33b5e4d95c160831337172a5ed74e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318528"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允许从特定 IP 地址或范围访问 Azure 事件中心命名空间
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
@@ -16,35 +16,35 @@ ms.locfileid: "88185122"
 在仅应从某些知名站点访问 Azure 事件中心的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route][express-route] 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
 
 >[!IMPORTANT]
-> 启用事件中心命名空间的防火墙规则会阻止默认情况下的传入请求，除非请求源自从允许的公共 IP 地址进行操作的服务。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 
+> 默认情况下，除非请求源自从允许的公共 IP 地址运行的服务，否则，为事件中心命名空间启用防火墙规则会阻止传入请求。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 
 >
-> 在启用 IP 筛选后，某些服务无法访问事件中心资源。 请注意，此列表并**不**详尽。
+> 下面是一些在启用 IP 筛选后无法访问事件中心资源的服务。 请注意，该列表并未囊括所有方式。
 >
 > - Azure 流分析
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
 > - Azure 事件网格
-> - Azure Monitor (诊断设置) 
+> - Azure Monitor（诊断设置）
 >
-> 例外情况是，即使在启用了 IP 筛选功能的情况下，也可以允许从某些受信任的服务访问事件中心资源。 有关受信任服务的列表，请参阅[受信任的 Microsoft 服务](#trusted-microsoft-services)。
+> 例外情况是，可以允许从某些受信任的服务访问事件中心资源，即使在启用了 IP 筛选功能时也是如此。 有关受信任服务的列表，请参阅[受信任的 Microsoft 服务](#trusted-microsoft-services)。
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
-IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规则适用于来自使用任何受支持协议的客户端的所有连接。 从与事件中心命名空间中允许的 IP 规则不匹配的 IP 地址进行的任何连接尝试被拒绝为未授权。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
+IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本部分演示如何使用 Azure 门户为事件中心命名空间创建 IP 防火墙规则。 
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到“事件中心命名空间”。
-4. 在左侧菜单的 "**设置**" 下选择 "**网络**"。 只会看到**标准**命名空间或**专用**命名空间的 "**网络**" 选项卡。 
+4. 在左侧“设置”下选择“网络” 。 只会为“标准”或“专用”命名空间显示“网络”选项卡。 
     > [!NOTE]
-    > 默认情况下，将选择所**选网络**选项，如下图所示。 如果未在此页上指定 IP 防火墙规则或添加虚拟网络，则可以使用访问密钥) 通过**公共 internet** (访问该命名空间。  
+    > 默认情况下，“所选网络”选项处于选中状态，如下图所示。 如果未在此页上指定 IP 防火墙规则或添加虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。  
 
-    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="网络选项卡-所选网络选项" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="网络选项卡 -“所选网络”选项" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
-    如果选择 "**所有网络**" 选项，则事件中心接受来自任何 IP 地址的连接 (使用访问密钥) 。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
+    如果选择“所有网络”选项，则事件中心接受来自任何 IP 地址的连接（使用访问密钥）。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
 
-    ![防火墙 - 选中了“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. 若要限制对特定 IP 地址的访问，请确认已选择 "**所选网络**" 选项。 在“防火墙”部分中执行以下步骤：
+    ![显示 "防火墙和虚拟网络" 页的屏幕截图，其中选择了 "所有网络" 选项。](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. 若要将访问范围限制为特定 IP 地址，请确认“所选网络”选项处于选中状态。 在“防火墙”部分中执行以下步骤：
     1. 选择“添加客户端 IP 地址”选项，使当前客户端 IP 可以访问命名空间。 
     2. 对于“地址范围”，请输入某个特定的 IPv4 地址或以 CIDR 表示法表示的 IPv4 地址范围。 
 3. 指定是否要“允许受信任的 Microsoft 服务绕过此防火墙”。 有关详细信息，请参阅[受信任的 Microsoft 服务](#trusted-microsoft-services)。 

@@ -2,13 +2,13 @@
 title: Azure 事件网格中的系统主题
 description: 介绍 Azure 事件网格中的系统主题。
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/24/2020
+ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297277"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件网格中的系统主题
 事件网格中的系统主题表示由 Azure 服务（如 Azure 存储和 Azure 事件中心）发布的一个或多个事件。 例如，一个系统主题可以表示已为特定存储帐户发布的所有 Blob 事件或仅“Blob 已创建”和“Blob 已删除”事件  。 在此示例中，当 Blob 上传到存储帐户时，Azure 存储服务会将“Blob 已创建”事件发布到事件网格中的系统主题，然后，事件网格会将该事件转发给接收和处理该事件的主题[订阅服务器](event-handlers.md)。 
@@ -22,6 +22,7 @@ ms.locfileid: "89019090"
 - [Azure 应用配置](event-schema-app-configuration.md)
 - [Azure 应用服务](event-schema-app-service.md)
 - [Azure Blob 存储](event-schema-blob-storage.md)
+- [Azure 通信服务](event-schema-communication-services.md) 
 - [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)

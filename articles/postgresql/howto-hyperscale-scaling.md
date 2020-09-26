@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295708"
 ---
 # <a name="server-group-size"></a>服务器组大小
 
@@ -26,13 +26,13 @@ ms.locfileid: "90986703"
 
 对于从现有的单节点 PostgreSQL 数据库实例迁移到超大规模 (Citus) 的迁移程序，我们建议选择一个群集，其中 "工作线程数" 和 "RAM 总数" 等于原始实例的数目。 在这种情况下，我们已了解到2倍的性能改进，因为分片可提高资源利用率，并允许较小的索引等等。
 
-协调器节点所需的 Vcore 数取决于现有工作负荷 (写入/读取吞吐量) 。 协调器节点不需要像辅助角色节点一样多的 RAM，但根据 vCore 计数确定 RAM 分配 (如 [超大规模配置) 选项](concepts-hyperscale-configuration-options.md) 中所述，因此 vCore 计数实质上是真正的决策。
+协调器节点所需的 Vcore 数取决于现有工作负荷 (写入/读取吞吐量) 。 协调器节点不需要像辅助角色节点一样多的 RAM，但 RAM 分配根据 vCore 计数来确定 (如 [超大规模 (Citus) 配置选项](concepts-hyperscale-configuration-options.md)) 中所述，因此，vCore 计数实质上是真正的决策。
 
 ### <a name="real-time-analytics-use-case"></a>实时分析用例
 
 Total Vcore：当工作数据适合 RAM 时，超大规模 (Citus 的线性性能提高) 与辅助角色内核数成正比。 若要根据需要确定正确的 Vcore 数，请考虑单节点数据库中查询的当前延迟，以及超大规模 (Citus) 中所需的延迟时间。 将当前延迟除以必需延迟，对结果进行舍入。
 
-辅助角色 RAM：最佳情况是提供足够的内存，使大部分工作集可容纳在内存中。 应用程序使用的查询类型会影响内存要求。 您可以运行对查询进行分析，以确定其所需的内存量。 请记住，Vcore 和 RAM 按 [超大规模配置选项](concepts-hyperscale-configuration-options.md) 一文中所述进行扩展。
+辅助角色 RAM：最佳情况是提供足够的内存，使大部分工作集可容纳在内存中。 应用程序使用的查询类型会影响内存要求。 您可以运行对查询进行分析，以确定其所需的内存量。 请记住，Vcore 和 RAM 按 [超大规模 (Citus) 配置选项](concepts-hyperscale-configuration-options.md) "一文中所述进行扩展。
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>缩放超大规模 (Citus) 服务器组
 

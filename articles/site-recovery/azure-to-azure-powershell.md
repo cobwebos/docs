@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 182b4f262361db001dcb6d47bf3e8f2aac6bc9b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307545"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
@@ -170,7 +170,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 - 每个区域只能创建一个结构对象。
 - 如果之前已在 Azure 门户中为 VM 启用了 Site Recovery 复制，则 Site Recovery 会自动创建结构对象。 如果区域存在结构对象，则无法创建新结构对象。
 
-在开始之前，请了解 Site Recovery 操作以异步方式执行。 启动操作时，将提交 Azure Site Recovery 作业，并返回跟踪对象的作业。 使用作业跟踪对象获得最新的状态作业 (`Get-AzRecoveryServicesAsrJob`) 和监视操作状态。
+在开始之前，应明白 Site Recovery 操作以异步方式执行。 启动操作时，将提交 Azure Site Recovery 作业，并返回跟踪对象的作业。 使用作业跟踪对象获得最新的状态作业 (`Get-AzRecoveryServicesAsrJob`) 和监视操作状态。
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -623,7 +623,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 可以使用 `Remove-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 禁用复制。
 
 ```azurepowershell
-Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
 ## <a name="next-steps"></a>后续步骤

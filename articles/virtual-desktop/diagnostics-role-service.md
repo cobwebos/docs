@@ -3,31 +3,31 @@ title: Windows 虚拟桌面诊断问题 - Azure
 description: 如何使用 Windows 虚拟桌面诊断功能来诊断问题。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121402"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279852"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>确定和诊断 Windows 虚拟桌面问题
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。
 
-Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 若要了解有关 Windows 虚拟桌面诊断功能的详细信息，请参阅[将 Log Analytics 用于诊断功能](diagnostics-log-analytics.md)。
+Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 若要了解有关 Windows 虚拟桌面诊断功能的详细信息，请参阅 [将 Log Analytics 用于诊断功能](diagnostics-log-analytics.md)。
 
 由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 当最终用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
 
 ## <a name="common-error-scenarios"></a>常见错误方案
 
-错误方案分类为服务的内部和 Windows 虚拟桌面的外部。
+WVDErrors 表跟踪所有活动类型的错误。 名为 "ServiceError" 的列提供了标记为 "True" 或 "False" 的其他标志。 此标志将告知错误是否与服务相关。
 
-* 内部问题：指定客户无法缓解的方案，需要将这些方案解析为支持问题。 当通过[Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)提供反馈时，请包含问题发生时的相关 ID 和大致时间范围。
-* 外部问题：与可由客户缓解的方案相关。 这些问题发生在 Windows 虚拟桌面的外部。
+* 如果该值为 "True"，则服务团队可能已调查此问题。 如果这会影响用户体验并显示较长的时间，我们建议为 Windows 虚拟桌面提交支持票证。
+* 如果值为 "False"，则这可能是一种配置错误，您可以自行解决。 错误消息可为您显示有关从何处开始的线索。
 
 下表列出了管理员可能会遇到的常见错误。
 
@@ -46,7 +46,7 @@ Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个
 |未能从应用程序组中取消分配用户|无法取消发布用户的应用组。 查看 Azure AD 上的用户是否可用。 查看用户是否属于应用组发布到的用户组。 |
 |检索可用位置时出错 |检查在创建主机池向导中使用的 VM 的位置。 如果映像在该位置不可用，请在该位置添加映像，或者选择其他 VM 位置。 |
 
-### <a name="external-connection-error-codes"></a>外部连接错误代码
+### <a name="connection-error-codes"></a>连接错误代码
 
 |数字代码|错误代码|建议的解决方案|
 |---|---|---|
