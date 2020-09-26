@@ -1,6 +1,6 @@
 ---
 title: 排查 StorSimple 虚拟阵列问题 | Microsoft 文档
-description: 介绍 StorSimple Device Manager 诊断功能并说明如何使用它来排查 StorSimple 虚拟阵列问题。
+description: 了解 StorSimple 设备管理器服务中提供的自助服务故障排除功能。
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249529"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务排查 StorSimple 虚拟阵列问题
 ## <a name="overview"></a>概述

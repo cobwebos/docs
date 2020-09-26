@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f539786de589dbab3a191a5343ba315349533447
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360984"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -34,7 +34,7 @@ ms.locfileid: "86505357"
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
-- 云服务必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
+- 云服务必须位于 [支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>预配云服务和存储帐户 
 
@@ -46,7 +46,7 @@ ms.locfileid: "86505357"
 
 ## <a name="create-a-service-principal"></a>创建服务主体 
 
-按照使用门户中的说明创建[可访问资源的 Azure Active Directory 应用程序和服务主体，](../../active-directory/develop/howto-create-service-principal-portal.md)在 Azure Active Directory 租户中创建服务主体。 在完成此过程时请注意以下几点： 
+按照使用门户中的说明创建 [可访问资源的 Azure Active Directory 应用程序和服务主体，](../../active-directory/develop/howto-create-service-principal-portal.md)在 Azure Active Directory 租户中创建服务主体。 在完成此过程时请注意以下几点： 
 
 - 可以输入任何 URL 作为登录 URL。  
 - 为此应用创建新的客户端机密。  
@@ -173,7 +173,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 1. 转到 Azure 门户。 
 
-   ![指标 Azure 门户](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![屏幕截图显示具有监视器的 Azure 门户，然后选择 "指标"。](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
 2. 在左侧菜单中，选择“监视”。
 
@@ -187,7 +187,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 可以使用维度筛选和拆分功能查看特定角色或角色实例使用的总内存。 
 
- ![指标 Azure 门户](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![屏幕截图显示度量值数据。](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
 ## <a name="next-steps"></a>后续步骤
 

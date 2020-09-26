@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081275"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360797"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -217,7 +217,7 @@ ms.locfileid: "86081275"
 
    可能提高 DTP 的并行运行 SAP 工作进程数：
 
-   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![屏幕截图显示并行处理的设置，您可以在其中为 D P P 选择并行进程数。](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. 在进程链中计划 DTP。
 
@@ -269,7 +269,7 @@ SAP Open Hub 目标不是受数据市场控制的数据目标（自 2015 年开�
 
 若要将增量 DTP 的状态设置为“已提取”，可以使用以下选项来手动运行增量 DTP： 
 
-*无数据传输;源中的增量状态：已获取*
+没有数据传输；源中的增量状态：已提取
 
 ## <a name="next-steps"></a>后续步骤
 

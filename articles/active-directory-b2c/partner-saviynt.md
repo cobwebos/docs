@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d80a1ba515aa137eba57051f080b4a2b4f311072
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259130"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>有关配置 Saviynt 与 Azure Active Directory B2C 的教程
 
-在此示例教程中，我们提供了有关如何将 Azure Active Directory (AD) B2C 与 [Saviynt](https://saviynt.com/)集成的指导。 Saviynt 的安全管理器平台在一个统一的平台中提供当今企业所需的可见性、安全性和监管。 Saviynt 包含应用程序风险和监管、基础结构管理、特权帐户管理和客户风险分析。
+在此示例教程中，我们提供了有关如何将 Azure Active Directory (AD) B2C 与 [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/)集成的指导。 Saviynt 的安全管理器平台在一个统一的平台中提供当今企业所需的可见性、安全性和监管。 Saviynt 包含应用程序风险和监管、基础结构管理、特权帐户管理和客户风险分析。
 
 在此示例教程中，你将设置 Saviynt，以便为 Azure AD B2C 用户提供基于委派管理的精细访问控制。 Saviynt 执行以下检查来确定用户是否有权管理 Azure AD B2C 的用户。
 
@@ -46,7 +46,7 @@ Saviynt 集成包括以下组件：
 
 - [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) –作为一项服务的企业到客户身份，可对客户注册、登录和管理其配置文件的方式进行自定义控制。
 
-- [Saviynt](https://saviynt.com/) –标识调控平台，为用户的生命周期管理和 Azure AD B2C 访问管理提供精细的委派管理。  
+- [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) –标识调控平台，为用户的生命周期管理和 Azure AD B2C 访问管理提供精细的委派管理。  
 
 - [MICROSOFT GRAPH api](https://docs.microsoft.com/graph/use-the-api) –此 api 提供用于 Saviynt 的接口，用于管理 Azure AD B2C 用户及其在 Azure AD B2C 中的访问权限。
 
@@ -73,9 +73,9 @@ Saviynt 集成包括以下组件：
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>配置 Saviynt Azure AD B2C
 
-### <a name="creating-an-azure-ad-application-for-saviynt"></a>为 Saviynt 创建 Azure AD 应用程序
+### <a name="create-an-azure-ad-application-for-saviynt"></a>为 Saviynt 创建 Azure AD 应用程序
 
-1. 登录 [Azure 门户](https://portal.azure.com/#home)。
+1. 登录到 [Azure 门户](https://portal.azure.com/#home)。
 
 2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
 
@@ -108,7 +108,7 @@ Saviynt 集成包括以下组件：
 
 15. 需要租户 ID、客户端 ID 和客户端机密才能完成 Saviynt 中的设置。
 
-### <a name="enabling-saviynt-to-delete-users"></a>启用 Saviynt 以删除用户
+### <a name="enable-saviynt-to-delete-users"></a>启用 Saviynt 以删除用户
 
 以下步骤说明了如何启用 Saviynt 以 Azure AD B2C 中执行用户删除操作。
 

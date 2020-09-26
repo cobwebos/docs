@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287281"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Windows 虚拟机主机池
 
@@ -109,7 +109,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 1. 用创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 下载并安装 Windows 虚拟桌面代理。
    - 下载 [Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)。
-   - 运行安装程序。 当安装程序要求你提供注册令牌时，请输入从**AzWvdRegistrationInfo** cmdlet 获取的值。
+   - 运行安装程序。 当安装程序要求你提供注册令牌时，请输入从 **AzWvdRegistrationInfo** cmdlet 获取的值。
 3. 下载并安装 Windows 虚拟桌面代理引导加载程序。
    - 下载 [Windows 虚拟桌面代理引导加载程序](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH)。
    - 运行安装程序。
@@ -127,20 +127,20 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 更新代理：
 
 1. 以管理员身份登录到 VM。
-2. 请先执行 "**服务**"，然后停止**Rdagent**和**远程桌面代理加载**器进程。
-3. 接下来，查找代理和加载程序 Msi。 它们将位于**C:\DeployAgent**文件夹中或在安装时保存到的任何位置。
+2. 请先执行 " **服务**"，然后停止 **Rdagent** 和 **远程桌面代理加载** 器进程。
+3. 接下来，查找代理和加载程序 Msi。 它们将位于 **C:\DeployAgent** 文件夹中或在安装时保存到的任何位置。
 4. 找到以下文件并将其卸载：
      
      - RDInfra. RDAgent-x64-verx. x
      - RDInfra. RDAgentBootLoader-x64
 
-   若要卸载这些文件，请右键单击每个文件名，然后选择 "**卸载**"。
+   若要卸载这些文件，请右键单击每个文件名，然后选择 " **卸载**"。
 5. 还可以选择删除以下注册表设置：
      
      - 计算机 \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
      - 计算机 \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
 
-6. 卸载这些项后，这会删除与旧主机池的所有关联。 如果要将此主机重新注册到服务，请按照将[虚拟机注册到 WIndows 虚拟机主机池](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的说明进行操作。
+6. 卸载这些项后，这会删除与旧主机池的所有关联。 如果要将此主机重新注册到服务，请按照将 [虚拟机注册到 Windows 虚拟机主机池](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的说明进行操作。
 
 
 ## <a name="next-steps"></a>后续步骤

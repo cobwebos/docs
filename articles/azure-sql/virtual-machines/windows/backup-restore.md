@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 49c1c8ad80b7be0cbca7ceb76eb1e38e1c091cf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91293384"
+ms.locfileid: "91360780"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 中 SQL Server 的备份和还原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -129,23 +129,23 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 | 选项 | 自动备份 | 适用于 SQL 的 Azure 备份 | 手动备份 |
 |---|---|---|---|
-| 需要额外的 Azure 服务 |   | ![是](./media/backup-restore/yes.png) |   |
-| 在 Azure 门户中配置备份策略 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |   |
-| 在 Azure 门户中还原数据库 |   | ![是](./media/backup-restore/yes.png) |   |
-| 在一个仪表板中管理多个服务器 |   | ![是](./media/backup-restore/yes.png) |   |
-| 时点还原 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |
-| 15 分钟恢复点目标 (RPO) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |
-| 短期备份保留策略（天） | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |   |
-| 长期备份保留策略（月、年） |   | ![是](./media/backup-restore/yes.png) |   |
-| 对 SQL Server Always On 的内置支持 |   | ![是](./media/backup-restore/yes.png) |   |
-| 备份到 Azure 存储帐户 | ![是](./media/backup-restore/yes.png)（自动） | ![是](./media/backup-restore/yes.png)（自动） | ![是](./media/backup-restore/yes.png)（由客户管理） |
-| 存储和备份文件的管理 | | ![是](./media/backup-restore/yes.png) |  |
-| 备份到 VM 上附加的磁盘 |   |   | ![是](./media/backup-restore/yes.png) |
-| 集中式可自定义备份报告 |   | ![是](./media/backup-restore/yes.png) |   |
-| 合并的故障电子邮件警报 |   | ![是](./media/backup-restore/yes.png) |   |
-| 基于 Azure Monitor 日志的自定义监视 |   | ![是](./media/backup-restore/yes.png) |   |
-| 使用 SSMS 或 Transact-SQL 脚本监视备份作业 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |
-| 使用 SSMS 或 Transact-SQL 脚本还原数据库 | ![是](./media/backup-restore/yes.png) |   | ![是](./media/backup-restore/yes.png) |
+| 需要额外的 Azure 服务 |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 在 Azure 门户中配置备份策略 | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 在 Azure 门户中还原数据库 |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 在一个仪表板中管理多个服务器 |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 时点还原 | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) |
+| 15 分钟恢复点目标 (RPO) | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) |
+| 短期备份保留策略（天） | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 长期备份保留策略（月、年） |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 对 SQL Server Always On 的内置支持 |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 备份到 Azure 存储帐户 | ![绿色复选标记。](./media/backup-restore/yes.png)（自动） | ![绿色复选标记。](./media/backup-restore/yes.png)（自动） | ![绿色复选标记。](./media/backup-restore/yes.png)（由客户管理） |
+| 存储和备份文件的管理 | | ![绿色复选标记。](./media/backup-restore/yes.png) |  |
+| 备份到 VM 上附加的磁盘 |   |   | ![绿色复选标记。](./media/backup-restore/yes.png) |
+| 集中式可自定义备份报告 |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 合并的故障电子邮件警报 |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 基于 Azure Monitor 日志的自定义监视 |   | ![绿色复选标记。](./media/backup-restore/yes.png) |   |
+| 使用 SSMS 或 Transact-SQL 脚本监视备份作业 | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) | ![绿色复选标记。](./media/backup-restore/yes.png) |
+| 使用 SSMS 或 Transact-SQL 脚本还原数据库 | ![绿色复选标记。](./media/backup-restore/yes.png) |   | ![绿色复选标记。](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>后续步骤
 

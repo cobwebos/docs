@@ -1,52 +1,72 @@
 ---
 title: 存储概述 - Azure 时序见解第 2 代 | Microsoft Docs
 description: 了解 Azure 时序见解第 2 代中的数据存储。
-author: esung22
-ms.author: elsung
-manager: diviso
+author: lyrana
+ms.author: lyhughes
+manager: deepakpalled
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287521"
 ---
 # <a name="data-storage"></a>数据存储
 
-创建 Azure 时序见解第 2 代环境时，你将创建两个 Azure 资源：
+本文介绍 Azure 时序见解 Gen2 中的数据存储。 它涵盖了热和冷、数据可用性和最佳实践。
 
-* 可为暖数据存储配置的 Azure 时序见解第 2 代环境。
-* 用于冷数据存储的 Azure 存储帐户。
+## <a name="provisioning"></a>预配
 
-你的热存储中的数据仅可通过 [时序查询 api](./time-series-insights-update-tsq.md) 和 [Azure 时序见解资源管理器](./time-series-insights-update-explorer.md)使用。 暖存储会包含在创建 Azure 时序见解第 2 代环境时选择的[保留期](./time-series-insights-update-plan.md#the-preview-environment)内的近期数据。
+创建 Azure 时序见解 Gen2 环境时，可以使用以下选项：
 
-Azure 时序见解第 2 代以 [Parquet 文件格式](#parquet-file-format-and-folder-structure)将冷存储数据保存到 Azure Blob 存储中。 Azure 时序见解第 2 代以独占方式管理此冷存储数据，但允许将这些数据作为标准 Parquet 文件直接进行读取。
+* 冷数据存储：
+   * 在你为环境选择的订阅和区域中创建新的 Azure 存储资源。
+   * 附加预先存在的 Azure 存储帐户。 此选项仅可通过从 Azure 资源管理器 [模板](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)进行部署，并且在 Azure 门户中不可见。
+* 热数据存储：
+   * 温存储是可选的，可以在预配期间或之后禁用或禁用。 如果你决定稍后启用热存储且你的冷存储中已有数据， [请查看以下](concepts-storage.md#warm-store-behavior) 部分以了解预期的行为。 热存储数据保留时间可以配置为7到31天，也可以根据需要进行调整。
+
+当某个事件处于引入状态时，它会在温存储 (中编制索引（如果启用) 和冷存储）。
+
+[![存储概述](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
+
 
 > [!WARNING]
 > 冷存储数据所在 Azure Blob 存储帐户的所有者对该帐户中的所有数据拥有完全访问权限。 此访问权限包括“写入”和“删除”权限。 请不要编辑或删除 Azure 时序见解第 2 代写入的数据，否则可能导致数据丢失。
 
 ## <a name="data-availability"></a>数据可用性
 
-为了实现最佳查询性能，Azure 时序见解第 2 代会将数据分区并为其编制索引。 为数据编制索引后，就可以从暖存储（如果已启用）和冷存储中查询数据。 正在引入的数据量可能会影响此可用性。
+为了实现最佳查询性能，Azure 时序见解第 2 代会将数据分区并为其编制索引。 为数据编制索引后，就可以从暖存储（如果已启用）和冷存储中查询数据。 正在引入的数据量以及每个分区的吞吐量速率可能会影响可用性。 查看事件源 [吞吐量限制](./concepts-streaming-ingress-throughput-limits.md) 和 [最佳实践](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) 以获得最佳性能。 你还可以配置 lag [警报](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) ，以便在你的环境在处理数据时遇到问题时收到通知。
 
 > [!IMPORTANT]
 > 最长可能需要等待 60 秒才能看到数据。 如果出现超过 60 秒的明显延迟，请通过 Azure 门户提交支持票证。
 
-## <a name="azure-storage"></a>Azure 存储
+## <a name="warm-store"></a>热存储
+
+你的热存储中的数据只能通过 [时序查询 api](./time-series-insights-update-tsq.md)、 [AZURE 时序见解 TSI 资源管理器](./time-series-insights-update-explorer.md)或 [Power BI 连接器](./how-to-connect-power-bi.md)提供。 温存储查询免费，无配额，但并发请求数 [限制为 30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) 。
+
+### <a name="warm-store-behavior"></a>热存储行为 
+
+* 启用后，流式传输到您的环境中的所有数据都将路由到您的热存储区，而不考虑事件时间戳。 请注意，流式处理引入管道是为近乎实时的流式处理生成的， [不支持](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)引入的历史事件。
+* 保持期基于事件在温存储中的索引时间，而不是事件时间戳。 这意味着，在保持期结束后，即使事件时间戳适用于未来，数据在热存储中也不再可用。
+  - 示例：包含10天天气预测的事件在配置了7天保留期的热存储容器中引入并编制索引。 7天后，不能再在温存储中访问预测，但可以从冷查询进行查询。 
+* 请注意，如果在现有环境中启用了热存储，而该环境已将最近的数据编入索引，则请注意，不会使用此数据填充你的热存储。
+* 如果只是启用了热存储，但在浏览器中查看最近的数据时遇到问题，则可以暂时关闭热存储查询：
+
+   [![禁用热查询](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
+
+## <a name="cold-store"></a>冷存储
 
 此部分介绍与 Azure 时序见解第 2 代相关的 Azure 存储详细信息。
 
 有关 Azure Blob 存储的全面介绍，请阅读[存储 Blob 简介](../storage/blobs/storage-blobs-introduction.md)。
 
-### <a name="your-storage-account"></a>你的存储帐户
-
-创建 Azure 时序见解第 2 代环境时，会创建一个 Azure 存储帐户作为长期冷存储。  
+### <a name="your-cold-storage-account"></a>冷存储帐户
 
 Azure 时序见解第 2 代在 Azure 存储帐户中为每个事件保留最多两个副本。 一个副本存储按引入时间排序的事件，始终允许按时序访问事件。 随着时间的推移，Azure 时序见解第 2 代还会创建数据的重新分区的副本，通过优化实现高性能查询。
 

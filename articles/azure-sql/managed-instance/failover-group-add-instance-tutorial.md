@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: a6f400db2a068953080e734148e024b575e3e1e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325243"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "89070847"
 
     ![选择 SQL 托管实例](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. 在 " **创建 AZURE SQL 托管实例** " 页上的 " **基本** 信息" 选项卡上：
+1. 在“创建 Azure SQL 托管实例”页面的“基本信息”选项卡上： 
     1. 在“项目详细信息”下，从下拉列表中选择你的订阅，然后选择“创建新资源组”。   键入资源组的名称，例如 `myResourceGroup`。 
     1. 在“SQL 托管实例详细信息”下，提供托管实例的名称以及要将该实例部署到的区域。 将“计算 + 存储”保留为默认值。 
     1. 在“管理员帐户”下，提供管理员登录名（例如 `azureuser`）和复杂的管理员密码。 
@@ -426,7 +426,7 @@ ms.locfileid: "89070847"
 
    下表显示了辅助虚拟网络所需的值：
 
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **名称** |  辅助托管实例要使用的虚拟网络的名称，例如 `vnet-sql-mi-secondary`。 |
     | **地址空间** | 虚拟网络的地址空间，例如 `10.128.0.0/16`。 | 
@@ -465,7 +465,7 @@ ms.locfileid: "89070847"
 
    下表显示了辅助托管实例所需的值：
  
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **资源组**| 主托管实例所在的资源组。 |
@@ -759,7 +759,7 @@ ms.locfileid: "89070847"
 
    下表显示了主托管实例的网关所需的值：
  
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称，例如 `primary-mi-gateway`。 | 
@@ -840,7 +840,7 @@ ms.locfileid: "89070847"
 
    下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | 值 |
+   | **字段** | Value |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 | 
@@ -848,7 +848,7 @@ ms.locfileid: "89070847"
    | **网关类型** | 选择“VPN”。 |
    | **VPN 类型** | 选择“基于路由”。 |
    | **SKU**| 保留默认值 `VpnGw1`。 |
-   | **虚拟网络**| 选择辅助托管实例的虚拟网络，例如 `vnet-sql-mi-secondary` 。 |
+   | **虚拟网络**| 为辅助托管实例选择虚拟网络，例如 `vnet-sql-mi-secondary`。 |
    | **公共 IP 地址**| 选择“新建”。 |
    | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
@@ -921,12 +921,12 @@ ms.locfileid: "89070847"
 1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源”。
 1. 在搜索框中键入 `connection`，然后按 Enter 进行搜索；随后你会转到 Microsoft 发布的“连接”资源。
 1. 选择“创建”以创建连接。 
-1. 在 " **基本** 信息" 页上，选择以下值，然后选择 **"确定"**。 
+1. 在“基本信息”页上选择以下值，然后选择“确定”。  
     1. 为“连接类型”选择 `VNet-to-VNet`。 
     1. 从下拉列表中选择订阅。 
     1. 在下拉列表中选择 SQL 托管实例的资源组。 
     1. 在下拉列表中选择主托管实例的位置。 
-1. 在 " **设置** " 页上，选择或输入以下值，然后选择 **"确定"**：
+1. 在“设置”页上选择或输入以下值，然后选择“确定”： 
     1. 为“第一个虚拟网络网关”选择主网络网关，例如 `primaryGateway`。  
     1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `secondaryGateway`。 
     1. 选中“建立双向连接”旁边的复选框。 
@@ -938,7 +938,7 @@ ms.locfileid: "89070847"
 
     
 
-1. 在 " **查看** " 和 "创建" 页上，查看双向连接的设置，然后选择 **"确定"** 以创建连接。 
+1. 在“查看 + 创建”页上查看双向连接的设置，然后选择“确定”以创建连接。  
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -1115,7 +1115,7 @@ Write-host "Removing residual resources and resource group..."
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add SQL Managed Instance to a failover group")]
 
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
 
 | Command | 说明 |
 |---|---|

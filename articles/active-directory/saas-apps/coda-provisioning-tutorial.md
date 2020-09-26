@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: 95ee630c1190167227a4ab3514a0c36db0401e45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce70a4df50be9004182e80711de449bab146a800
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273358"
+ms.locfileid: "91360899"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Coda
 
@@ -93,7 +93,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 5. 在 " **管理员凭据** " 部分下，输入你在步骤2中先前检索到的 CODA 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Coda。 如果连接失败，请确保 Coda 帐户具有管理员权限，然后重试。
 
-    ![预配](./media/coda-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

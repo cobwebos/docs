@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15d9504e2a886a66eeb429151305b885275b1f23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3d10480f8668576b4a8c755d6a3aa48603ca61bf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265484"
+ms.locfileid: "91361069"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>教程：为 Envoy 配置自动用户预配
 
@@ -100,7 +100,7 @@ ms.locfileid: "91265484"
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://app.envoy.com/scim/v2` **租户 URL**"。 输入先前在**机密令牌**中检索到的**OAUTH 持有者令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Envoy。 如果连接失败，请确保 Envoy 帐户具有管理员权限，然后重试。
 
-   ![预配](./media/envoy-tutorial/provisioning.png)
+   ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/envoy-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

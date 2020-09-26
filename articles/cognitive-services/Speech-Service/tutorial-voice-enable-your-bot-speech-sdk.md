@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360950"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -75,7 +75,7 @@ ms.locfileid: "88934457"
    * 输入 **资源组**的名称。 建议 **SpeechEchoBotTutorial**。
    * 从 " **区域** " 下拉箭头中，选择 " **美国西部**"。
 1. 单击“审阅并创建”。 应该会看到一个横幅，其中显示了已 **通过的验证**。
-1. 单击“创建”。  创建资源组可能需要几分钟的时间。
+1. 单击“创建”。 创建资源组可能需要几分钟的时间。
 1. 与稍后在本教程中创建的资源一样，最好将此资源组固定到仪表板以便于访问。 如果要固定此资源组，请单击资源组名称右侧的固定图标。
 
 ### <a name="choosing-an-azure-region"></a>选择 Azure 区域
@@ -124,7 +124,7 @@ ms.locfileid: "88934457"
    * 对于 " **区域**"，选择 " **美国西部**"。
    * 对于 " **定价层**"，请确保选择 " **标准 S1** "。 这应该是默认值。 如果不是这样，请确保将 **操作系统** 设置为 **Windows** ，如上所述。
 5. 单击“审阅并创建”。 应该会看到一个横幅，其中显示了已 **通过的验证**。
-6. 单击“创建”。  创建资源组可能需要几分钟的时间。
+6. 单击“创建”。 创建资源组可能需要几分钟的时间。
 
 此时，请检查资源组 (**SpeechEchoBotTutorial-ResourceGroup**) 是否有两个资源：
 
@@ -158,7 +158,7 @@ ms.locfileid: "88934457"
 4. 加载项目后，按 <kbd>F5</kbd> 生成并运行项目。
 5. 浏览器将启动，您将看到类似于下面的屏幕。
     > [!div class="mx-imgBorder"]
-    > [![echobot-在本地主机上运行](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上运行的 EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
+    > [![屏幕截图显示 "EchoBot" 页，其中显示了机器人已准备就绪！](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上运行的 EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>用 Bot Framework 模拟器测试机器人示例
 
@@ -174,7 +174,7 @@ ms.locfileid: "88934457"
    ```
    然后按 "连接"。
 4. 机器人应 fibonacci 你的 "Hello and 欢迎！" 。 键入任何短信，确认从机器人获得响应。
-5. 与 Echo Bot 实例通信的交换方式如下：  [![机器人-框架模拟器](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "机器人框架模拟器")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
+5. 与 Echo Bot 实例通信的交换方式如下：  [![屏幕截图显示机器人框架模拟器。](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "机器人框架模拟器")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>将机器人部署到 Azure App Service
 
@@ -201,7 +201,7 @@ ms.locfileid: "88934457"
    * 对于 "**订阅**"，将其设置为 "**免费试用**"
    * 对于 " **资源组**"，选择 **SpeechEchoBotTutorial**
    * 对于 **托管计划**，请选择 **SpeechEchoBotTutorial-AppServicePlan**
-1. 单击“创建”。  在向导的最后一个屏幕上，单击 " **完成**"。
+1. 单击“创建”。 在向导的最后一个屏幕上，单击 " **完成**"。
 1. 单击 "发布" 屏幕右侧的 " **发布** "。 Visual Studio 将机器人部署到 Azure。
 1. 在 Visual Studio 的输出窗口中应会看到如下所示的成功消息：
 
@@ -323,7 +323,7 @@ Windows 语音助手客户端具有一个简单的 UI，可用于配置与机器
 
 如果在主应用窗口中收到错误消息，请使用此表来确定并解决该错误：
 
-| 错误 | 该怎么办？ |
+| 错误 | 你应该如何操作？ |
 |-------|----------------------|
 |AuthenticationFailure)  (错误： WebSocket 升级失败，出现身份验证错误 (401) 。 检查正确的订阅密钥 (或授权令牌) 和区域名称| 在应用的 "设置" 页中，确保已正确输入语音订阅密钥及其区域。<br>请确保正确输入了语音密钥和密钥区域。 |
 |ConnectionFailure)  (错误：连接已被远程主机关闭。 错误代码：1011。 错误详细信息：无法在发送消息之前连接到机器人 | 请确保[已选中 "启用流式处理终结点"](#register-the-direct-line-speech-channel)框和/或将[ **Web 套接字**切换](#enable-web-sockets)到 "打开"。<br>请确保 Azure App Service 正在运行。 如果已启动，请尝试重新启动应用服务。|
@@ -465,14 +465,14 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 
 1. 从 " [Azure 门户](https://portal.azure.com)中，单击" **Azure 服务**"导航中的"**资源组**"。
 2. 找到名为 " **SpeechEchoBotTutorial**" 的资源组。 单击 )  ( 三个点。
-3. 选择“删除资源组”  。
+3. 选择“删除资源组”****。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [通过语音 SDK 构建你自己的客户端应用](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * 部署到 [附近的 Azure 区域](https://azure.microsoft.com/global-infrastructure/locations/) ，查看机器人响应时间改进
 * 部署到 [支持高质量神经 TTS 声音的 Azure 区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

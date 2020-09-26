@@ -4,17 +4,17 @@ description: 加密作用域提供在容器或单个 blob 级别管理加密的�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 041b0bf57f57fd8ddd74c8330888d75e31aacc83
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326110"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密范围（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "90994202"
 
 默认情况下，存储帐户使用作用域为整个存储帐户的密钥进行加密。 使用加密范围，可以指定一个或多个容器使用仅限于那些容器的密钥进行加密。
 
-你可以选择使用 Microsoft 托管的密钥或存储在 Azure Key Vault 中的客户托管的密钥或 Key Vault 托管的硬件安全模型 (HSM)  (预览版) 来保护和控制对加密数据的密钥的访问权限。 同一存储帐户上的不同加密范围可以使用 Microsoft 管理的密钥或客户管理的密钥。
+你可以选择使用 Microsoft 管理的密钥或存储在 Azure Key Vault 中的客户管理的密钥来保护和控制对用于加密数据的密钥的访问。 同一存储帐户上的不同加密范围可以使用 Microsoft 管理的密钥或客户管理的密钥。
 
 创建加密范围后，可以对创建容器或 Blob 的请求指定加密范围。 有关如何创建加密范围的详细信息，请参阅[创建和管理加密范围（预览）](encryption-scope-manage.md)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "90994202"
 
 禁用加密范围后，将不再为此付费。 禁用不需要的任何加密范围以避免不必要的费用。
 
-如果你的加密作用域是通过客户托管的密钥保护的，则还可以删除密钥保管库或托管 HSM 中的关联密钥，以便禁用加密作用域。 请记住，客户托管的密钥受密钥保管库或托管 HSM 中的软删除和清除保护保护，而已删除的密钥受这些属性定义的行为的限制。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
+如果你的加密作用域是通过客户托管的密钥保护的，则还可以删除密钥保管库中的关联密钥，以便禁用加密作用域。 请记住，客户托管的密钥受密钥保管库中的软删除和清除保护保护，而已删除的密钥受这些属性定义的行为的约束。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
 
 - [如何在 PowerShell 中使用软删除](../../key-vault/general/soft-delete-powershell.md)
 - [如何在 CLI 中使用软删除](../../key-vault/general/soft-delete-cli.md)

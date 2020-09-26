@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e2c487b62813bc4480786daa08666fe6471bd18d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325702"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -255,7 +255,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
 
         卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 你可以使用任何字母数字字符。   
 
-        不能将 `default` 用作卷名称。
+        不能将 `default` 或 `bin` 用作卷名称。
 
     * **容量池**  
         指定要在其中创建卷的容量池。
@@ -264,6 +264,11 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
         指定分配给卷的逻辑存储量。  
 
         “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
+
+    * **吞吐量 (MiB/秒) **   
+        如果在手动 QoS 容量池中创建了卷，请指定要用于卷的吞吐量。   
+
+        如果卷是在自动 QoS 容量池中创建的，则此字段中显示的值为 (配额 x 服务级别吞吐量) 。   
 
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (VNet)。  
