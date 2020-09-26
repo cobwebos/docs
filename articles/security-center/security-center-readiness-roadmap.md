@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314481"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -29,8 +29,8 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 使用以下资源，开始使用安全中心。
 
 项目
-- [Azure 安全中心简介](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- [Azure 安全中心快速入门指南](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Azure 安全中心简介](security-center-introduction.md)
+- [Azure 安全中心快速入门指南](security-center-get-started.md)
 
 视频
 - [简介视频](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
@@ -42,7 +42,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 在规划和操作过程中，请参考以下资源。
 
-- [Azure 安全中心规划和操作指南](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>将计算机载入到安全中心
