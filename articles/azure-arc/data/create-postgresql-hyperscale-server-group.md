@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e845136c4fed5a3d2e6863fdab0aa9f70fb30b5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934617"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317338"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -59,7 +59,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 在转到下一步之前实现此步骤。 若要将 PostgreSQL 超大规模服务器组部署到非默认项目中的 Red Hat OpenShift，需要针对群集执行以下命令，以更新安全约束。 此命令为将运行 PostgreSQL 超大规模服务器组的服务帐户授予必要的权限。  (SCC) 的安全上下文约束是在部署 Azure **_arc 数据控制器_** 时添加的。
 
 ```console
-oc adm policy add-scc-to-group arc-data-scc -z <server-group-name> -n <namespace name>
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
 _**服务器组名称** 是将在下一步中创建的服务器组的名称。_
@@ -72,7 +72,7 @@ _**服务器组名称** 是将在下一步中创建的服务器组的名称。_
 若要在 Azure Arc 上创建 Azure Database for PostgreSQL 超大规模服务器组，请使用以下命令：
 
 ```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
 
 #Example
 #azdata arc postgres server create -n postgres01 --workers 2
@@ -80,25 +80,14 @@ azdata arc postgres server create -n <name> --workers 2 --storage-class-data <st
 
 > [!NOTE]
 > - **还有其他可用的命令行参数。 通过运行查看选项的完整列表 `azdata arc postgres server create --help` 。**
-> - 在预览版中，你必须在创建服务器组时指示用于备份的存储类 (_scb_) ，以便能够进行备份和还原。
+> - 用于备份 (存储类- _-scb_) 默认为数据控制器的数据存储类（如果未提供）。
 > - --Volume-* 参数所接受的单位是 Kubernetes 的资源数量， (整数后跟其中一个 SI 后缀 (T，G，M，K，m) 或它们的两个等效项 (Ti，Gi，Mi，Ki) # A5。
-> - 名称长度不能超过10个字符，且符合 DNS 命名约定。
+> - 名称长度必须小于或等于12个字符，并且符合 DNS 命名约定。
 > - 系统将提示你输入 _postgres_ 标准管理用户的密码。  在运行 create 命令之前，可以通过设置 `AZDATA_PASSWORD` 会话环境变量来跳过交互式提示。
-> - 如果在同一终端会话中使用 AZDATA_USERNAME 和 AZDATA_PASSWORD 部署了数据控制器，则 AZDATA_USERNAME 和 AZDATA_PASSWORD 的值也将用于部署 PostgreSQL 超大规模服务器组。 PostgreSQL 超大规模数据库引擎的默认管理员用户的名称为 _PostgreSQL_ ，此时无法对其进行更改。
+> - 如果使用 AZDATA_USERNAME 部署了数据控制器并在同一终端会话中 AZDATA_PASSWORD 会话环境变量，则 AZDATA_PASSWORD 的值也将用于部署 PostgreSQL 超大规模服务器组。 如果你想要使用另一个密码，则 (1) 更新 AZDATA_PASSWORD 或 (2 的值) 删除 AZDATA_PASSWORD 环境变量，或在创建服务器组时，提示删除其值以交互方式输入密码。
+> - PostgreSQL 超大规模数据库引擎的默认管理员用户的名称为 _postgres_ ，此时无法对其进行更改。
 > - 在 Azure 中创建 PostgreSQL 超大规模服务器组不会立即注册资源。 在将 [资源清单](upload-metrics-and-logs-to-azure-monitor.md)  或 [使用情况数据](view-billing-data-in-azure.md) 上传到 azure 的过程中，将在 azure 中创建资源，你将能够在 Azure 门户中查看资源。
-> - 此时无法更改--port 参数。
-> - 如果 Kubernetes 群集中没有默认存储类，则需要使用参数--metadataStorageClass 来指定一个。 不这样做将导致 create 命令失败。 若要验证是否已在 Kubernetes 群集上声明了默认存储类，请 rung 以下命令： 
->
->   ```console
->   kubectl get sc
->   ```
->
-> - 如果有配置为默认存储类的存储类，将看到 ** (默认值 ** 附加到存储类的名称) 。 例如：
->
->   ```output
->   NAME                       PROVISIONER                        AGE
->   local-storage (default)    kubernetes.io/no-provisioner       4d18h
->   ```
+
 
 
 ## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>列出在弧线设置中创建的 Azure Database for PostgreSQL 服务器组

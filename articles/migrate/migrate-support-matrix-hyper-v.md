@@ -3,12 +3,12 @@ title: Azure Migrate 中的 Hyper-v 评估支持
 description: 了解 Azure Migrate Server 评估的 Hyper-v 评估支持
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318171"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-v 评估的支持矩阵
 
@@ -46,7 +46,7 @@ ms.locfileid: "88641817"
 | :----------------------------- | :------------------- |
 | **操作系统** | 所有操作系统都可以进行迁移评估。  |
 | **Integration Services**       | [Hyper-v Integration Services](/virtualization/hyper-v-on-windows/reference/integration-services) 必须在你评估的 vm 上运行，才能捕获操作系统信息。 |
-
+| **存储** | 本地磁盘，DAS，JBOD，存储空间，CSV，SMB。 支持在其上存储 VHD/VHDX 的 Hyper-v 主机存储。 <br/> 支持 IDE 和 SCSI 虚拟控制器| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 设备要求
 

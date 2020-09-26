@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032106"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369716"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>有关 Microsoft 商用 marketplace 的常见问题
 
@@ -229,7 +229,7 @@ Microsoft AppSource 支持信用卡付款。 Azure 市场支持信用卡付款�
 
 客户可以在全球 141 个国家/地区的商业市场购买解决方案。
 
-要查看位置列表，请转至[商业市场发布者的税项详细信息](partner-center-portal/tax-details-paid-transactions.md)。
+要查看位置列表，请转至[商业市场发布者的税项详细信息](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context)。
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>商业市场支持哪些货币？
 
@@ -274,32 +274,32 @@ Microsoft AppSource 支持信用卡付款。 Azure 市场支持信用卡付款�
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>我多久会收到通过商业市场销售的付款？
 
-付款每月支付一次。 有关付款计划的详细信息，请在合作伙伴中心查找即将发布的付款，以及我们如何处理客户非付款情况，请参阅 [策略详细信息](partner-center-portal/payout-policy-details.md)。
+付款每月支付一次。 有关付款计划的详细信息，请在合作伙伴中心查找即将发布的付款，以及我们如何处理客户非付款情况，请参阅 [策略详细信息](/partner-center/payout-policy-details?context=/azure/marketplace/context/context)。
 
 - 对于客户使用企业协议的事务，付款将在下一次付出的支出周期中发出。 
 - 对于客户使用信用卡的交易，在我们收到付款后，还会有30天的额外确认期，以确保资金清晰，并且没有退款或嫌疑欺诈行为。
 
 仅当 sales 达到最小组合值 $50.00 时才发出付款。
 
-有关详细信息，请参阅[付款阈值、方法和期限](partner-center-portal/payment-thresholds-methods-timeframes.md)。
+有关详细信息，请参阅[付款阈值、方法和期限](/partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context)。
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>可以代表我管理哪些国家/地区的税款？
 
 客户可以从世界各地的商业市场查找解决方案，并在许多位置管理税款。 
 
-要查看完整的位置列表，请转至[商业市场发布者的税项详细信息](partner-center-portal/tax-details-paid-transactions.md)。
+要查看完整的位置列表，请转至[商业市场发布者的税项详细信息](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context)。
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>我可以在何处找到商业市场的付款报告？
 
 在合作伙伴中心，具有所有者或财务参与者权限的用户可以访问付款报告。 这些用户可以通过选择显示持有帐单的手型图标来访问右上角的报告。
 
-有关详细信息，请参阅[付款报告](partner-center-portal/payout-summary.md)。
+有关详细信息，请参阅增加 [报表的比率](/partner-center/payout-statement?context=/azure/marketplace/context/context)。
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>如何配置我的付款方式和目的地？
 
 在合作伙伴中心，具有所有者权限的用户可以设置付款帐户和纳税表单。 用户可以通过选择右上方的“设置”按钮（齿轮图标）来执行此操作。
 
-有关详细信息，请转至[付款帐户和纳税表单](partner-center-portal/set-up-your-payout-account-tax-forms.md)。
+有关详细信息，请参阅 [设置您的帐户和税务窗体](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context)。
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>商业市场是否支持退货和退款？
 

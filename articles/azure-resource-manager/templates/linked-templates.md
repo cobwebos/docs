@@ -3,12 +3,12 @@ title: 用于部署的链接模板
 description: 介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369308"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -369,7 +369,7 @@ ms.locfileid: "89535552"
 
 ## <a name="template-specs"></a>模板规格
 
-您可以创建将主模板及其链接模板打包到可部署的单个实体的 [模板规范](template-specs.md) ，而不是在可访问的终结点上维护链接的模板。 模板规范是 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用基于角色的访问控制 (RBAC) 授予对模板规范的访问权限。此功能目前处于预览阶段。
+您可以创建将主模板及其链接模板打包到可部署的单个实体的 [模板规范](template-specs.md) ，而不是在可访问的终结点上维护链接的模板。 模板规范是 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用 azure RBAC)  (Azure 基于角色的访问控制来授予对模板规范的访问权限。此功能目前处于预览阶段。
 
 有关详细信息，请参阅：
 
@@ -731,7 +731,7 @@ done
 目前，无法链接到位于 [Azure 存储防火墙](../../storage/common/storage-network-security.md)后面的存储帐户中的模板。
 
 > [!IMPORTANT]
-> 请考虑创建 [模板规范](template-specs.md)，而不是使用 SAS 令牌保护链接模板。模板规范将主模板及其链接模板安全地存储为 Azure 订阅中的资源。 使用 RBAC 向需要部署模板的用户授予访问权限。
+> 请考虑创建 [模板规范](template-specs.md)，而不是使用 SAS 令牌保护链接模板。模板规范将主模板及其链接模板安全地存储为 Azure 订阅中的资源。 使用 Azure RBAC 向需要部署模板的用户授予访问权限。
 
 以下示例演示在链接到模板时如何传递 SAS 令牌：
 

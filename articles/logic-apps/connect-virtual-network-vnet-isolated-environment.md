@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/25/2020
+ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647554"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369002"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -168,6 +168,8 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 * [ISE 区域的逻辑应用入站和出站地址](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
 
+* [ISE 区域中的连接器的 Azure IP 地址，位于此下载文件中](https://www.microsoft.com/download/details.aspx?id=56519)
+
 * 需要为 Azure SQL、存储、服务总线和事件中心启用服务终结点，因为不能通过防火墙将流量发送到这些服务。
 
 <a name="create-environment"></a>
@@ -186,7 +188,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的新的或现有的 Azure 资源组 |
@@ -282,6 +284,21 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    > [!IMPORTANT]
    > 创建 ISE 后可用的托管 ISE 连接器不会自动出现在逻辑应用设计器的连接器选择器中。 必须手动[将 ISE 连接器添加到 ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)，使其出现在逻辑应用设计器中，才能使用这些连接器。
+
+   > [!IMPORTANT]
+   > 托管 ISE 连接器目前不支持 [标记](../azure-resource-manager/management/tag-support.md)。 如果设置了强制执行标记的策略，请尝试添加 ISE 连接器  
+   > 可能会失败并出现类似于以下示例的错误： 
+   > 
+   > ```json
+   > {
+   >    "error": { 
+   >       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+   >       "message": "The tags are not supported in the managed API 'azureblob'."
+   >    }
+   > }
+   > ```
+   > 若要添加 ISE 连接器，必须禁用或删除策略。
+   > 
 
 ## <a name="next-steps"></a>后续步骤
 

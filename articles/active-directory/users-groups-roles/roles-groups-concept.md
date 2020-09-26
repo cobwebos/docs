@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053763"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317406"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory（预览版）中的角色分配
 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) 即将引入公共预览，可在其中向 Azu
   - 角色分配的结束时间可能显示错误。
   - 在 PIM 门户中，“我的角色”只能显示一个角色分配，而不管通过多少方法授予分配（通过一个或多个组直接进行）。
 - 仅限 Azure AD P2 授权客户。即使删除该组，它仍会在 PIM UI 中显示该角色的合格成员。 在功能上没有问题；这只是 Azure 门户中的缓存问题。  
-- Exchange 管理中心尚无法通过组识别角色成员身份，但 PowerShell cmdlet 将起作用。
+- 通过组成员身份将新的 [Exchange 管理中心](https://admin.exchange.microsoft.com/) 用于角色分配。 旧的 Exchange 管理中心目前尚不支持此功能。 Exchange PowerShell cmdlet 将按预期方式工作。
 - Azure 信息保护门户 (经典门户) 不通过组识别角色成员身份。 你可以 [迁移到统一的灵敏度标签平台](/azure/information-protection/configure-policy-migrate-labels) ，然后使用 Office 365 Security & 相容性中心来使用组分配来管理角色。
 
 我们正在解决这些问题。

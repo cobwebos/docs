@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 310a7578fe9d3af8c4600968178cb677658feaa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 326d3a4783b058855d86e17198cbe8d7492feba2
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254323"
+ms.locfileid: "91370634"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安装和运行读取容器（预览版）
 
@@ -172,11 +172,11 @@ ApiKey={API_KEY}
 
 # <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-1)
 
-为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` 。
+为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` 。
 
 # <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
-为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` 。
+为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` 。
 
 ---
 

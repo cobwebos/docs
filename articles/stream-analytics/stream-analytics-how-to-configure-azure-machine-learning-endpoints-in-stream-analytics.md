@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 33d1e73523ca85a21c032729b6537ee3297ea23e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f54245013b6a57c02120c0e97ecf5f39094148b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020825"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317729"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>流分析中的 Azure 机器学习工作室（经典）集成（预览）
 流分析支持调用 Azure 机器学习工作室（经典）终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了对此功能的 REST API 支持。 本文提供在流分析中成功实现此功能所需的补充信息。 也可在 [此处](stream-analytics-machine-learning-integration-tutorial.md)获取已发布的教程。
@@ -25,7 +25,7 @@ Microsoft Azure 机器学习工作室（经典）提供一个协作型拖放式�
 * **终结点**：终结点是 Azure 机器学习工作室（经典）对象，用于以特征作为输入、应用指定的机器学习模型并返回已评分输出。
 * **评分 Web 服务**：评分 Web 服务是终结点的集合，如上所述。
 
-每个终结点都具有适用于批处理执行和同步执行的 API。 流分析使用同步执行。 在 Azure 机器学习工作室（经典）中，将特定的服务命名为[请求/响应服务](../machine-learning/studio/consume-web-services.md)。
+每个终结点都具有适用于批处理执行和同步执行的 API。 流分析使用同步执行。 在 Azure 机器学习工作室（经典）中，将特定的服务命名为[请求/响应服务](../machine-learning/classic/consume-web-services.md)。
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>流分析作业所需的机器学习资源
 若要处理流分析作业，必须具有请求/响应终结点、 [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)和 swagger 定义才能成功执行。 流分析拥有其他终结点，可构造 swagger 终结点的 URL、查找接口以及向用户返回默认 UDF 定义。

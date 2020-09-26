@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8101c01762749c2ceb085516936fa0c421fdb5f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318392"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义页面
 
@@ -161,7 +161,7 @@ npm start
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快禁用它](../security/fundamentals/network-best-practices.md)。
+    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH， [应尽快禁用它](../security/fundamentals/network-best-practices.md)。
 
 1. 使用 Azure 门户或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 查找虚拟机的名称和公共 IP 地址。 例如：
 
@@ -194,4 +194,4 @@ npm start
 
 现在已定义了页，下一步是[向远程监视解决方案加速器 Web UI 添加自定义服务](iot-accelerators-remote-monitoring-customize-service.md)，该服务检索要在 UI 中显示的数据。
 
-有关远程监视解决方案加速器的更多概念信息，请参阅[远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)。
+有关远程监视解决方案加速器的更多概念信息，请参阅 [远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)。

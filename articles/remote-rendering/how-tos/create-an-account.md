@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057664"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318086"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>创建“Azure 远程渲染”帐户
 
@@ -28,13 +28,13 @@ ms.locfileid: "86057664"
     1. 将“资源名称”设置为帐户的名称
     1. 如有必要，更新“订阅”
     1. 将“资源组”设置为所选的资源组
-    1. 从 "位置" 下拉列表中选择要在其中创建此资源的区域。 请参阅下面的[帐户区域](create-an-account.md#account-regions)中的备注。
+    1. 从 "位置" 下拉列表中选择要在其中创建此资源的区域。 请参阅下面的 [帐户区域](create-an-account.md#account-regions) 中的备注。
 1. 创建帐户后，导航到该帐户，然后执行以下操作：
     1. 在“概述”选项卡中，记下“帐户 ID”
     1. 在“设置”>“访问密钥”选项卡中，记下“主密钥”，它是帐户的机密帐户密钥
 
 ### <a name="account-regions"></a>帐户区域
-帐户创建过程中在帐户创建期间指定的位置确定帐户资源分配到的区域。 创建后无法更改此。 但是，无论帐户的位置如何，都可以使用该帐户连接到任何[受支持的区域](./../reference/regions.md)中的远程呈现会话。
+帐户创建过程中在帐户创建期间指定的位置确定帐户资源分配到的区域。 创建后无法更改此。 但是，无论帐户的位置如何，都可以使用该帐户连接到任何 [受支持的区域](./../reference/regions.md)中的远程呈现会话。
 
 ### <a name="retrieve-the-account-information"></a>检索帐户信息
 
@@ -83,7 +83,7 @@ ms.locfileid: "86057664"
 
  单击“添加角色分配”磁贴中的“添加”按钮，添加第一个角色：
 
-![存储帐户 IAM](./media/azure-add-role-assignment.png)
+![存储帐户 IAM 添加角色分配](./media/azure-add-role-assignment.png)
 
 * 要分配的第一个角色是“所有者”，如上面的屏幕截图中所示。
 * 在“访问权限分配对象”下拉列表中，选择“远程渲染帐户” 。
@@ -100,6 +100,8 @@ ms.locfileid: "86057664"
 与第一步一样，选择其他下拉列表。
 
 如果你已添加全部三个角色，则 Azure 远程渲染帐户可以使用系统分配的托管服务标识访问你的存储帐户。
+> [!IMPORTANT]
+> Azure 角色分配由 Azure 存储缓存，因此，在你授予远程呈现帐户的访问权限以及可用于访问你的存储帐户时，可能会有最多30分钟的延迟。 有关详细信息，请参阅 [角色基本访问控制文档](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) 。
 
 ## <a name="next-steps"></a>后续步骤
 

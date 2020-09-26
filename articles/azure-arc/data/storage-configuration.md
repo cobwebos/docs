@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317321"
 ---
 # <a name="storage-configuration"></a>存储配置
 
@@ -151,10 +151,11 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 - **必须**使用远程的共享存储类才能确保数据持续性，因此，如果在安装了 pod 后，pod 或节点出现故障，则可以再次连接到永久性卷。
 - 写入控制器 SQL 实例、指标 DB 和日志数据库的数据通常非常低，对延迟不敏感，因此，超高性能存储并不重要。 如果用户使用的是 Grafana 和 Kibana 接口，并且有大量的数据库实例，则用户可以更快地执行存储。
-- 所需的存储容量是可变的，因为已部署的数据库实例数是为每个数据库实例收集的日志和指标。 数据会在日志和指标 DB 中保留2周后才会被清除。 TODO：每个数据库实例需要多少存储空间？
+- 所需的存储容量是可变的，因为已部署的数据库实例数是为每个数据库实例收集的日志和指标。 数据会在日志和指标 DB 中保留2周后才会被清除。 
 - 更改存储类后期部署非常困难，未记录并且不受支持。 请确保在部署时正确选择存储类。
 
-> **注意：** 如果未指定存储类，将使用默认的存储类。 每个 Kubernetes 群集只能有一个默认的存储类。 您可以 [更改默认的存储类](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)。
+> [!NOTE]
+> 如果未指定存储类，将使用默认的存储类。 每个 Kubernetes 群集只能有一个默认的存储类。 您可以 [更改默认的存储类](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)。
 
 ### <a name="database-instance-storage-configuration"></a>数据库实例存储配置
 
@@ -162,7 +163,8 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 使用或命令创建实例 `azdata arc sql mi create` 时 `azdata arc postgres server create` ，可以使用两个参数来设置存储类：
 
-> **注意：** 其中一些参数正在开发中，将在 `azdata arc sql mi create` 和 `azdata arc postgres server create` 即将发布的版本中使用。
+> [!NOTE]
+> 其中一些参数正在开发中，将在 `azdata arc sql mi create` 和 `azdata arc postgres server create` 即将发布的版本中使用。
 
 |参数名称，短名称|用途|
 |---|---|

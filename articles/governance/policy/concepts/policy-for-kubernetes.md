@@ -3,12 +3,12 @@ title: 了解适用于 Kubernetes 的 Azure 策略
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322455"
+ms.locfileid: "91369988"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -85,9 +85,6 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 ## <a name="install-azure-policy-add-on-for-aks"></a>为 AKS 安装 Azure Policy 加载项
 
 在安装 Azure Policy 加载项或启用任何服务功能之前，订阅必须启用“Microsoft.ContainerService”和“Microsoft.PolicyInsights”资源提供程序。
-
-> [!IMPORTANT]
-> AKS 上的 Azure 策略的公开上市 (GA) 在所有区域中主动发布。 GA 版本的预期全球完成为9/29/2020。 如果区域中没有 GA 版本，则需要预览注册步骤。 但是，这会在该区域中可用时自动更新为 GA 版本。
 
 1. 需要安装并配置 Azure CLI 版本2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 

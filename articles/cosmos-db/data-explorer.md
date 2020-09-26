@@ -4,14 +4,14 @@ description: Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261879"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318800"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 资源管理器处理数据 
 
@@ -25,7 +25,7 @@ Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和�
 
 ## <a name="access-azure-cosmos-db-explorer"></a>访问 Azure Cosmos DB 资源管理器
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。 
+1. 登录到 [Azure 门户](https://portal.azure.com/)。 
 
 2. 从“所有资源”中，查找并导航到 Azure Cosmos DB 帐户，然后选择“密钥”并复制“主连接字符串”********。  
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和�
 
    **读取** - 与其他用户共享只读 URL 时，他们可以查看与该特定帐户关联的数据库、集合、查询和其他资源。 例如，如果想与无权访问 Azure 门户或 Azure Cosmos DB 帐户的团队成员分享查询结果，可以向他们提供此 URL。
 
-   选择打开帐户时使用的访问权限类型，并单击“打开”****。 打开资源管理器后，体验与 Azure 门户中的“数据资源管理器”选项卡相同。   
+   选择打开帐户时使用的访问权限类型，并单击“打开”****。 打开资源管理器后，体验与 Azure 门户中的“数据资源管理器”选项卡相同。
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="打开 Azure Cosmos DB 资源管理器":::
 
@@ -49,7 +49,10 @@ Azure Cosmos DB Gremlin 和 Table API 帐户目前尚不支持允许共享临时
 
 目前数据资源管理器中不支持查看包含 UUID 的文档。 这不会影响加载集合，只查看包含这些文档的单个文档或查询。 若要查看和管理这些文档，用户应继续使用最初用于创建这些文档的工具。
 
+收到 HTTP-401 错误的客户可能是由于客户的 Azure 帐户的 RBAC 权限不足引起的，尤其是在帐户具有自定义 RBAC 角色的情况下。 `Microsoft.DocumentDB/databaseAccounts/listKeys/*`如果使用其 Azure Active Directory 凭据进行登录，则任何自定义角色都必须具有操作才能使用数据资源管理器。
+
 ## <a name="next-steps"></a>后续步骤
+
 现已了解了如何开始使用 Azure Cosmos DB 资源管理器来管理数据，接下来可以：
 
 * 开始使用 SQL 语法定义[查询](sql-api-query-reference.md)，并使用存储过程、UDF 和触发器执行[服务器端编程](stored-procedures-triggers-udfs.md)。 

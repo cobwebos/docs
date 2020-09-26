@@ -4,13 +4,13 @@ description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-js
+ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055322"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317170"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -184,9 +184,9 @@ module.exports = async function (context, req) {
 
 ## <a name="context-object"></a>上下文对象
 
-运行时使用 `context` 对象向函数和运行时传递数据。 用于读取和设置绑定中的数据，并用于写入日志， `context` 对象始终是传递到函数的第一个参数。
+运行时使用 `context` 对象将数据传入和传出函数和运行时。 `context` 对象用于从绑定读取和设置数据并用于写入日志，它始终是传递到函数的第一个参数。
 
-对于采用同步代码的函数，上下文对象包括在 `done` 函数完成处理时调用的回调。 `done`编写异步代码时，无需显式调用; 将 `done` 隐式调用回调。
+对于具有同步代码的函数，上下文对象包括在函数完成处理时调用的 `done` 回叫。 编写异步代码时，无需显式调用 `done`；`done` 回叫是隐式调用的。
 
 ```javascript
 module.exports = (context) => {
@@ -199,7 +199,7 @@ module.exports = (context) => {
 };
 ```
 
-传递到函数的上下文公开一个 `executionContext` 属性，该属性是一个具有以下属性的对象：
+传递到函数的上下文公开了一个 `executionContext` 属性，该属性是一个具有以下属性的对象：
 
 | 属性名称  | 类型  | 说明 |
 |---------|---------|---------|
@@ -207,7 +207,7 @@ module.exports = (context) => {
 | `functionName` | String | 提供正在运行的函数的名称 |
 | `functionDirectory` | String | 提供函数应用目录。 |
 
-下面的示例演示如何返回 `invocationId` 。
+以下示例演示如何返回 `invocationId`。
 
 ```javascript
 module.exports = (context, req) => {

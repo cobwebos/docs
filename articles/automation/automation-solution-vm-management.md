@@ -3,20 +3,20 @@ title: Azure 自动化“在空闲时间启动/停止 VM”的概述
 description: 本文介绍“在空闲时间启动/停止 VM”功能，该功能按计划启动或停止 VM 并主动通过 Azure Monitor 日志监视这些 VM。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/04/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317355"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
 在空闲时间启动/停止 VM 功能启动或停止启用的 Azure Vm。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。 
 
-此功能使用[new-azvm](/powershell/module/az.compute/start-azvm) cmdlet 来启动 vm。 它使用[new-azvm](/powershell/module/az.compute/stop-azvm)停止 vm。
+此功能使用 [new-azvm](/powershell/module/az.compute/start-azvm) cmdlet 来启动 vm。 它使用 [new-azvm](/powershell/module/az.compute/stop-azvm) 停止 vm。
 
 > [!NOTE]
 > 当 runbook 已更新为使用新的 Azure Az module cmdlet 时，它们使用 AzureRM 前缀别名。
@@ -37,19 +37,21 @@ ms.locfileid: "87064452"
 
 ## <a name="prerequisites"></a>先决条件
 
-“在空闲时间启动/停止 VM”功能的 runbook 使用 [Azure 运行方式帐户](./manage-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
+- “在空闲时间启动/停止 VM”功能的 runbook 使用 [Azure 运行方式帐户](./manage-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
-对于为“在空闲时间启动/停止 VM”功能启用的 VM，建议使用单独的自动化帐户。 Azure 模块版本经常升级，其参数可能会更改。 此功能不按照与之相同的频率升级，所以可能不适用于它所使用的较新版本的 cmdlet。 建议先在测试自动化帐户中测试模块更新，再将其导入生产自动化帐户。
+- 链接的自动化帐户和 Log Analytics 的工作区必须位于同一资源组中。
+
+- 对于为“在空闲时间启动/停止 VM”功能启用的 VM，建议使用单独的自动化帐户。 Azure 模块版本经常升级，其参数可能会更改。 此功能不按照与之相同的频率升级，所以可能不适用于它所使用的较新版本的 cmdlet。 建议先在测试自动化帐户中测试模块更新，再将其导入生产自动化帐户。
 
 ## <a name="permissions"></a>权限
 
-需要具有特定权限才能为“在空闲时间启动/停止 VM”功能启用 VM。 所需权限会有所不同，具体取决于此功能是使用预创建的自动化帐户和 Log Analytics 工作区，还是会创建一个新帐户和一个工作区。 
+需要具有特定权限才能为“在空闲时间启动/停止 VM”功能启用 VM。 所需权限会有所不同，具体取决于此功能是使用预创建的自动化帐户和 Log Analytics 工作区，还是会创建一个新帐户和一个工作区。
 
 如果你是订阅的参与者和 Azure Active Directory (AD) 租户中的全局管理员，则无需配置相关权限。 如果你没有这些权限或需要配置自定义角色，请确保具有下述权限。
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>适用于预先存在的自动化帐户和 Log Analytics 工作区的权限
 
-若要使用现有的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM，需要对资源组作用域具有以下权限。 若要了解有关角色的详细信息，请参阅[Azure 自定义角色](../role-based-access-control/custom-roles.md)。
+若要使用现有的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM，需要对资源组作用域具有以下权限。 若要了解有关角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 | 权限 | 范围|
 | --- | --- |
@@ -107,7 +109,7 @@ ms.locfileid: "87064452"
 |Runbook | 参数 | 说明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 Auto-Stop 方案按每个资源创建警报。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList`以逗号分隔的 Vm 列表（不含空格），例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可实现对 runbook 逻辑进行验证但不执行。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList` 是一个逗号分隔的 Vm 列表，其中包含没有空格) 的 Vm (，例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可实现对 runbook 逻辑进行验证但不执行。|
 |AutoStop_Disable | 无 | 禁用 Auto-Stop 警报和默认计划。|
 |AutoStop_VM_Child | WebHookData | 从父 runbook 调用。 警报规则调用此 runbook 以停止经典 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |从父 runbook 调用。 警报规则调用此 runbook 以停止 VM。  |
@@ -173,7 +175,7 @@ ms.locfileid: "87064452"
 如果每个云服务有超过 20 个 VM，请参考以下建议：
 
 * 使用父 runbook ScheduledStartStop_Parent 创建多个计划，并为每个计划指定 20 个 VM。 
-* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表（无空格）。 
+* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表， (不) 空格。 
 
 否则，如果此功能的自动化作业运行超过三个小时，将根据[公平份额](automation-runbook-execution.md#fair-share)限制暂时将其卸载或停止。
 
