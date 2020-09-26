@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74185882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362191"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-v 复制的工作原理
 
@@ -30,11 +30,11 @@ Azure Migrate Server 迁移是一种用于将本地工作负荷和基于云的 V
 
 ## <a name="architectural-components"></a>体系结构组件
 
-![体系结构](./media/hyper-v-replication-architecture/architecture.png)
+![关系图显示了一个源 Hyper-v 网络，其中包含一个用于 Microsoft Azure 的 H T T P S 数据通道，其中详细说明了表中的详细信息。](./media/hyper-v-replication-architecture/architecture.png)
 
 
 
-组件 | **部署** | 
+**组件** | **部署** | 
 --- | --- 
 **复制提供程序** | Microsoft Azure Site Recovery 提供程序安装在 Hyper-v 主机上，并已注册到 Azure 迁移服务器迁移。<br/> 提供程序会协调 Hyper-v Vm 的复制。
 **恢复服务代理** | Microsoft Azure 恢复服务代理处理数据复制。 它与提供程序协同工作，以将数据从 Hyper-v Vm 复制到 Azure。<br/> 复制的数据将上传到 Azure 订阅中的存储帐户。 服务器迁移工具处理复制的数据，并将其应用于订阅中的副本磁盘。 在迁移时，将使用副本磁盘创建 Azure Vm。
@@ -49,7 +49,7 @@ Azure Migrate Server 迁移是一种用于将本地工作负荷和基于云的 V
 1. 为 Hyper-v VM 启用复制后，初始复制开始。
 2. 将创建一个 Hyper-v VM 快照。
 3. VM 上的 Vhd 逐个复制，直到它们都复制到 Azure。 初始复制时间取决于 VM 大小和网络带宽。
-4. 使用 Hyper-v 副本跟踪初始复制期间发生的磁盘更改，并将其存储在日志文件（hrl 文件）中。
+4. 使用 Hyper-v 副本跟踪在初始复制期间发生的磁盘更改，并将其存储在日志文件中 (hrl files) 。
     - 日志文件位于与磁盘相同的文件夹中。
     - 每个磁盘都有一个关联的 hrl 文件，该文件将发送到辅助存储。
     - 当初始复制正在进行时，快照和日志将占用磁盘资源。
@@ -59,9 +59,9 @@ Azure Migrate Server 迁移是一种用于将本地工作负荷和基于云的 V
 
 ## <a name="performance-and-scaling"></a>性能和缩放
 
-Hyper-v 的复制性能受到各种因素的影响，这些因素包括 VM 大小、Vm 的数据更改率（改动）、Hyper-v 主机上用于日志文件存储的可用空间、上传复制数据的带宽，以及 Azure 中的目标存储。
+Hyper-v 的复制性能受到各种因素的影响，这些因素包括： VM 大小、数据更改率 (变动) ，Hyper-v 主机上用于日志文件存储的可用空间，上传复制数据的带宽，以及 Azure 中的目标存储。
 
-- 如果要同时复制多台计算机，请使用适用于 Hyper-v 的[Azure Site Recovery 部署规划器](../site-recovery/hyper-v-deployment-planner-overview.md)来帮助优化复制。
+- 如果要同时复制多台计算机，请使用适用于 Hyper-v 的 [Azure Site Recovery 部署规划器](../site-recovery/hyper-v-deployment-planner-overview.md) 来帮助优化复制。
 - 按照容量规划 Hyper-v 复制，并在 Azure 存储帐户上分配复制。
 
 ### <a name="control-upload-throughput"></a>控制上传吞吐量
@@ -70,9 +70,9 @@ Hyper-v 的复制性能受到各种因素的影响，这些因素包括 VM 大�
 
 
 1. 登录到 Hyper-v 主机或群集节点。
-2. 运行**C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**，以打开 Microsoft AZURE Backup mmc 管理单元。
-3. 在该管理单元中，选择“更改属性”。****
-4. 在 "**限制**" 中，选择 "**为备份操作启用 internet 带宽使用限制**"。 设置工作和非工作小时数限制。 有效范围为 512 Kbps 到 1,023 Mbps。
+2. 运行 **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**，以打开 Microsoft AZURE Backup mmc 管理单元。
+3. 在该管理单元中，选择“更改属性”。 
+4. 在 " **限制**" 中，选择 " **为备份操作启用 internet 带宽使用限制**"。 设置工作和非工作小时数限制。 有效范围为 512 Kbps 到 1,023 Mbps。
 I
 
 ### <a name="influence-upload-efficiency"></a>影响上传效率
@@ -88,4 +88,4 @@ I
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 Azure Migrate Server 迁移尝试[hyper-v 迁移](tutorial-migrate-hyper-v.md)。
+使用 Azure Migrate Server 迁移尝试 [hyper-v 迁移](tutorial-migrate-hyper-v.md) 。

@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 7b1030c816bff5b50c0c47a16fa5f1812bb16b15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250821"
+ms.locfileid: "91362510"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>基于 Azure 机器学习事件 (预览版触发应用程序、进程或 CI/CD 工作流) 
 
@@ -126,7 +126,7 @@ Azure 事件网格允许客户生成可由 Azure 机器学习事件触发的反�
 
 1. 选择要将事件发布到的终结点。 以下屏幕截图中选择的终结点是“事件中心”：
 
-    ![事件处理程序](./media/how-to-use-event-grid/select-event-handler.png)
+    ![屏幕截图显示 "创建事件订阅" 窗格，并打开 "选择事件中心"。](./media/how-to-use-event-grid/select-event-handler.png)
 
 确认选择后，请单击“创建”。 配置后，这些事件将被推送到终结点。
 
@@ -164,15 +164,15 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 在 Azure 门户中转到 Azure 机器学习工作区，并从左侧栏中选择“事件”选项卡。 在此处选择“逻辑应用”。 
 
-    ![选择逻辑应用](./media/how-to-use-event-grid/select-logic-ap.png)
+    ![屏幕截图显示了具有逻辑应用的机器学习工作区事件 "页。](./media/how-to-use-event-grid/select-logic-ap.png)
 
 1. 登录到逻辑应用 UI，并选择机器学习服务作为主题类型。 
 
-    ![主题-类型](./media/how-to-use-event-grid/select-topic-type.png)
+    ![屏幕截图显示将机器学习选为资源类型的 "发生资源事件时" 对话框。](./media/how-to-use-event-grid/select-topic-type.png)
 
 1. 选择要进行通知的事件。 例如，以下屏幕截图中选择的是“RunCompleted”。
 
-    ![选择-事件-运行-完成](./media/how-to-use-event-grid/select-event-runcomplete.png)
+    ![屏幕截图显示 "发生资源事件时" 对话框，其中包含选定的事件类型。](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
 1. 你可以使用上一部分中的筛选方法，或者添加筛选器以仅对部分事件类型触发逻辑应用。 在以下屏幕截图中，使用了前缀筛选器 /datadriftID/runs/ 。
 
@@ -180,15 +180,15 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 接下来添加一个使用此事件的步骤并搜索电子邮件。 可以使用多个不同的电子邮件帐户来接收事件。 还可以配置发送电子邮件警报的时间。
 
-    ![电子邮件-操作](./media/how-to-use-event-grid/select-email-action.png)
+    ![屏幕截图显示 "选择操作" 对话框，其中包含在搜索行中输入的电子邮件。](./media/how-to-use-event-grid/select-email-action.png)
 
 1. 选择“发送电子邮件”并填写参数。 可以在主题中包含“事件类型”和“主题”来帮助筛选事件 。 还可以在邮件正文中包含指向工作区页面的链接。 
 
-    ![配置-电子邮件](./media/how-to-use-event-grid/configure-email-body.png)
+    ![屏幕截图显示 "发送电子邮件" 对话框，其中包含主题和添加到主题行的事件类型。](./media/how-to-use-event-grid/configure-email-body.png)
 
 1. 若要保存此操作，请选择页面左上角的“另存为”。 在出现的右侧栏中，确认已创建此操作。
 
-    ![确认-逻辑应用-创建](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![屏幕截图显示逻辑应用设计器中的 "另存为" 和 "创建" 按钮。](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
 ### <a name="example-data-drift-triggers-retraining"></a>示例：重新训练数据偏移触发器
@@ -204,7 +204,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 此示例中使用的是简单的数据工厂管道，用于将文件复制到 blob 存储区，并运行已发布的机器学习管道。 有关此方案的详细信息，请参阅如何设置 [Azure 数据工厂中的机器学习步骤](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)
 
-![adf-mlpipeline](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![屏幕截图显示了工厂资源中的培训管道，其中的 "复制 data1" 执行 Pipeline1。](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
 1. 首先，创建逻辑应用。 转到 [Azure 门户](https://portal.azure.com)，搜索逻辑应用并选择“创建”。
 
@@ -212,31 +212,31 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 填写所需信息。 若要简化此过程，请使用与 Azure 数据工厂管道和 Azure 机器学习工作区相同的订阅和资源组。
 
-    ![设置逻辑应用-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![屏幕截图显示逻辑应用创建窗格。](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
 1. 创建逻辑应用后，选择“当事件网格资源事件发生时”。 
 
-    ![eventgrid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![屏幕截图显示逻辑应用设计器，并以常见触发器选项开始，包括事件网格资源事件发生的时间。](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
 1. 登录并填写事件的详细信息。 将“资源名称”设为工作区名称。 将“事件类型”设为 DatasetDriftDetected 。
 
-    ![登录添加事件](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![屏幕截图显示在选中事件类型项时发生资源事件的时间。](./media/how-to-use-event-grid/login-and-add-event.png)
 
 1. 添加新步骤并搜索“Azure 数据工厂”。 选择“创建管道运行”。 
 
-    ![创建-adf-运行](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![屏幕截图显示 "选择操作" 窗格并选择 "创建管道运行"。](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
 1. 登录并指定要运行的已发布的 Azure 数据工厂管道。
 
-    ![指定-adfpipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![屏幕截图显示 "创建具有各种值的管道运行" 窗格。](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
 1. 使用页面左上角的“保存”按钮保存并创建逻辑应用。 要查看创建的应用，请在 [Azure 门户](https://portal.azure.com)中转到自己的工作区并单击“事件”。
 
-    ![逻辑应用-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![屏幕截图显示逻辑应用突出显示的事件。](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
 现在，只要发生偏移，就会触发数据工厂管道。 在[新的工作区门户](https://ml.azure.com)上查看数据偏移运行和机器学习管道的详细信息。 
 
-![视图-工作区](./media/how-to-use-event-grid/view-in-workspace.png)
+![屏幕截图显示管道终结点。](./media/how-to-use-event-grid/view-in-workspace.png)
 
 ### <a name="example-deploy-a-model-based-on-tags"></a>示例：基于标记部署模型
 

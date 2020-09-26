@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362259"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
 
@@ -56,11 +56,11 @@ WHERE request_id  = <'request_id'>;
 
 下面是在禁用结果集缓存的情况上执行的某个查询的示例输出。
 
-![Query-steps-with-rsc-disabled](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+![屏幕截图显示查询结果，其中包括位置类型和命令。](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
 
 下面是在启用结果集缓存的情况上执行的某个查询的示例输出。
 
-![Query-steps-with-rsc-enabled](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
+![屏幕截图显示查询结果，其中的命令已选中 * from [D W ResultCache D b] 点 D b o 称为 out。](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>何时使用缓存结果
 

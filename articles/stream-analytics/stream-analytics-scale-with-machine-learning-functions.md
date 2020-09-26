@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300303"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 
@@ -25,7 +25,7 @@ ms.locfileid: "86037403"
 
 流分析中机器学习函数的用法与流分析查询语言中常规函数调用的用法类似。 但在幕后，函数调用实际上是 Azure 机器学习 Web 服务请求。
 
-可以通过在同一个 Web 服务 API 调用中“批处理”多个行来提高机器学习 Web 服务请求的吞吐量。 这种分组称为微型批。 有关详细信息，请参阅 [Azure 机器学习工作室（经典）Web 服务](../machine-learning/studio/consume-web-services.md)。 流分析中对 Azure 机器学习工作室（经典）的支持处于预览状态。
+可以通过在同一个 Web 服务 API 调用中“批处理”多个行来提高机器学习 Web 服务请求的吞吐量。 这种分组称为微型批。 有关详细信息，请参阅 [Azure 机器学习工作室（经典）Web 服务](../machine-learning/classic/consume-web-services.md)。 流分析中对 Azure 机器学习工作室（经典）的支持处于预览状态。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用机器学习函数配置流分析作业
 
@@ -58,7 +58,7 @@ ms.locfileid: "86037403"
 
 还可以在机器学习 Web 服务中配置“最大并发调用数”。 建议将此参数设置为最大值（目前为 200）。
 
-有关此设置的详细信息，请参阅[机器学习 Web 服务的缩放文章](../machine-learning/studio/create-endpoint.md)。
+有关此设置的详细信息，请参阅[机器学习 Web 服务的缩放文章](../machine-learning/classic/create-endpoint.md)。
 
 ## <a name="example--sentiment-analysis"></a>示例 – 情绪分析
 以下示例包括具有情绪分析机器学习函数的流分析作业，如[流分析机器学习集成教程](stream-analytics-machine-learning-integration-tutorial.md)所述。
@@ -140,7 +140,7 @@ ms.locfileid: "86037403"
 2. 运行流分析作业允许延迟（因而影响了机器学习 Web 服务的批大小）。
 3. 预配的流分析 SU 和机器学习 Web 服务请求数（与函数相关的额外成本）。
 
-用作示例的是完全分区的流分析查询。 如果需要更复杂的查询，[有关 Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)是一项绝佳资源，可以获取流分析团队的额外帮助。
+以完全分区的流分析查询为例。 如果需要更复杂的查询，[有关 Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)是一项绝佳资源，可以获取流分析团队的额外帮助。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解流分析的更多内容，请参阅：

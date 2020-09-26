@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361760"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>了解 NoSQL 数据库与关系数据库之间的差别
 
@@ -21,11 +21,11 @@ ms.locfileid: "85113682"
 
 ## <a name="high-throughput"></a>高吞吐量
 
-在维护关系数据库系统时，最突出的难题之一是，大多数关系引擎都会应用闩锁机制来实施严格的 [ACID 语义](https://en.wikipedia.org/wiki/ACID)。 这种做法的优点是可以确保数据库中数据的一致状态。 但是，它在并发性、延迟和可用性方面也会带来严重的弊端。 由于存在这种根本性的体系结构限制，在事务量较高时，可能需要手动将数据分片。 实现手动分片可能很耗时且非常棘手。
+维护关系数据库系统时最明显的难题之一是大多数关系引擎都应用锁和闩锁来强制实施严格的 [ACID 语义](https://en.wikipedia.org/wiki/ACID)。 这种做法的优点是可以确保数据库中数据的一致状态。 但是，它在并发性、延迟和可用性方面也会带来严重的弊端。 由于存在这种根本性的体系结构限制，在事务量较高时，可能需要手动将数据分片。 实现手动分片可能很耗时且非常棘手。
 
-针对这种情况，[分布式数据库](https://en.wikipedia.org/wiki/Distributed_database)可提供更具伸缩性的解决方案。 但是，维护过程仍可能成本高昂且很耗时。 管理员可能需要执行额外的工作来确保系统分布性是透明的。 它们还可能需要考虑数据库的 "断开连接" 特性。
+在这些情况下， [分布式数据库](https://en.wikipedia.org/wiki/Distributed_database) 可以提供更可伸缩的解决方案。 但是，维护过程仍可能成本高昂且很耗时。 管理员可能需要执行额外的工作来确保系统分布性是透明的。 它们还可能需要考虑数据库的 "断开连接" 特性。
 
-[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction)通过在所有 Azure 区域中进行全球部署，简化了这些难题。 可以动态划分分区范围，使数据库随着应用程序的扩展而无缝增长，同时保持高可用性。 精细粒度的多租户功能以及严格受控的云原生资源监管功能有助于提供[令人惊叹的延迟保证](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs#consistency-levels-and-latency)和可预测的性能。 分区是完全托管式的，因此管理员无需编写代码或管理分区。
+[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction) 通过在所有 Azure 区域中进行全球部署，简化了这些难题。 可以动态划分分区范围，使数据库随着应用程序的扩展而无缝增长，同时保持高可用性。 精细粒度的多租户功能以及严格受控的云原生资源监管功能有助于提供[令人惊叹的延迟保证](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs#consistency-levels-and-latency)和可预测的性能。 分区是完全托管式的，因此管理员无需编写代码或管理分区。
 
 如果事务量达到极限（例如，每秒数千个事务），则应考虑采用分布式 NoSQL 数据库。 若要实现最大效率、简化维护和降低总拥有成本，请考虑采用 Azure Cosmos DB。
 
@@ -33,11 +33,11 @@ ms.locfileid: "85113682"
 
 ## <a name="hierarchical-data"></a>分层数据
 
-在大量的用例中，数据库中的事务可能包含许多父子关系。 随着时间的推移，这些关系可能会急剧增加，最终变得难以管理。 [分层数据库](https://en.wikipedia.org/wiki/Hierarchical_database_model)形式在上世纪 80 年代即已出现，但由于存储效率低下而并未普及。 由于[李小明 Codd 的关系模型](https://en.wikipedia.org/wiki/Relational_model)成为了几乎所有主流数据库管理系统所使用的事实标准，因此它们也失去了吸引力。
+在大量的用例中，数据库中的事务可能包含许多父子关系。 随着时间的推移，这些关系可能会急剧增加，最终变得难以管理。 [层次结构数据库](https://en.wikipedia.org/wiki/Hierarchical_database_model)的窗体在 20-20 中出现，但由于存储效率低下而不受欢迎。 由于 [李小明 Codd 的关系模型](https://en.wikipedia.org/wiki/Relational_model) 成为了几乎所有主流数据库管理系统所使用的事实标准，因此它们也失去了吸引力。
 
 但如今，文档式数据库的普及性已得到大幅提高。 这种数据库可被视为分层数据库范型的重新改造。由于解除了在磁盘上存储数据造成的成本忧虑，此类数据库让人随心所欲。 因此，相较于面向文档的新式方法，在关系数据库中维护许多复杂父子实体关系现在可被视为一种反模式。
 
-[面向对象的设计](https://en.wikipedia.org/wiki/Object-oriented_design)的出现，以及将它与关系模型相结合时所发生的[阻抗失配](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch)，在某些用例中也突出了关系数据库中的反模式。 因此可能会造成隐含的但往往很高昂的维护成本。 尽管 [ORM 方法](https://en.wikipedia.org/wiki/Object-relational_mapping)已有演进，可在一定程度上缓解此问题，但面向文档的数据库与面向对象的方法的融合度要好得多。 利用此方法，开发人员无需致力于开发 ORM 驱动程序，也无需定制语言特定的 [OO 数据库引擎](https://en.wikipedia.org/wiki/Object_database)。 如果数据包含许多父子关系和深度的层次级别，可以考虑使用 NoSQL 文档数据库，例如 [Azure Cosmos DB SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction)。
+[面向对象的设计](https://en.wikipedia.org/wiki/Object-oriented_design)的出现以及将其与关系模型组合时所发生的[阻抗不匹配](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch)，还在关系数据库中突出显示某些用例的反模式。 因此可能会造成隐含的但往往很高昂的维护成本。 尽管 [ORM 方法](https://en.wikipedia.org/wiki/Object-relational_mapping) 已演变为部分缓解这一点，但面向文档的数据库仍可使用面向对象的方法更好地结合。 利用这种方法，开发人员不会被强制提交到 ORM 驱动程序或订购语言特定的 [OO 数据库引擎](https://en.wikipedia.org/wiki/Object_database)。 如果数据包含许多父子关系和深度的层次级别，可以考虑使用 NoSQL 文档数据库，例如 [Azure Cosmos DB SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction)。
 
 :::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
 
@@ -49,7 +49,7 @@ ms.locfileid: "85113682"
 
 如果在数据库中维护复杂的关系网络，可以考虑使用图形数据库（例如 [Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)）来管理此类数据。
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="图表":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="数据库关系图显示多个相互连接的员工和部门。":::
 
 Azure Cosmos DB 是一个多模型数据库服务，它为所有主要 NoSQL 模型类型（列系列、文档、图形和键-值）提供 API 投影。 [Gremlin（图形）](https://docs.microsoft.com/azure/cosmos-db/gremlin-support)和 SQL（核心）文档 API 层完全可互操作。 其优点是可以在编程级别切换不同的模型。 可以通过复杂的网络遍历以及建模为同一存储中的文档记录的事务来查询图形存储。
 
@@ -61,7 +61,7 @@ Azure Cosmos DB 是一个多模型数据库服务，它为所有主要 NoSQL 模
 
 ## <a name="microservices"></a>微服务
 
-近年来，[微服务](https://en.wikipedia.org/wiki/Microservices)模式已得到长足发展。 此模式根植于[面向服务的体系结构](https://en.wikipedia.org/wiki/Service-oriented_architecture)。 在这些新式微服务体系结构中，数据传输的事实标准是 [JSON](https://en.wikipedia.org/wiki/JSON)，而 JSON 也正好是绝大多数面向文档的 NoSQL 数据库的存储媒介。 JSON 大大提高了 NoSQL 文档存储的无缝吻合性，可在复杂的微服务实施方案中实现持久性和同步（通过[事件寻源模式](https://en.wikipedia.org/wiki/Event-driven_architecture)）。 在这些体系结构中维护较传统的关系数据库可能要复杂得多。 这是因为，在 API 之间维护状态和同步需要更多的转换。 具体而言，相比 NoSQL 数据库，Azure Cosmos DB 提供许多功能来进一步提高基于 JSON 的微服务体系结构的无缝吻合度：
+[微服务](https://en.wikipedia.org/wiki/Microservices)模式在最近几年中已大幅增加。 此模式在 [面向服务的体系结构](https://en.wikipedia.org/wiki/Service-oriented_architecture)中具有其根。 这些新式微服务体系结构中的数据传输事实上的标准是 [JSON](https://en.wikipedia.org/wiki/JSON)，这也是大多数面向文档的 NoSQL 数据库的存储介质。 这使 NoSQL 文档存储在复杂微服务实现中使用 [事件源模式](https://en.wikipedia.org/wiki/Event-driven_architecture)) 的持久性和同步 (的更紧密。 在这些体系结构中维护较传统的关系数据库可能要复杂得多。 这是因为，在 API 之间维护状态和同步需要更多的转换。 具体而言，相比 NoSQL 数据库，Azure Cosmos DB 提供许多功能来进一步提高基于 JSON 的微服务体系结构的无缝吻合度：
 
 * 丰富的纯 JSON 数据类型
 * 内置于数据库中的 JavaScript 引擎和[查询 API](https://docs.microsoft.com/azure/cosmos-db/javascript-query-api)。

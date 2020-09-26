@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134819"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361477"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理配置服务器以便进行 VMware VM/物理服务器灾难恢复
 
@@ -71,7 +71,7 @@ ms.locfileid: "86134819"
 
 1. 在[登录](#access-configuration-server)后，选择“管理虚拟机凭据”。
 2. 单击“添加虚拟机凭据”。
-    ![添加虚拟机凭据](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![屏幕截图显示 "管理虚拟机凭据" 窗格和 "添加虚拟机凭据" 链接。](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. 输入新凭据，单击“添加”。
 
 还可以通过 CSPSConfigtool.exe 添加凭据。
@@ -138,7 +138,7 @@ ms.locfileid: "86134819"
    ```
 
     >[!NOTE]
-    >若要从配置服务器向横向扩展进程服务器**拉取最新证书**，请执行命令 *" \<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe> "--registermt*
+    >若要从配置服务器向横向扩展进程服务器 **拉取最新证书** ，请执行命令 *" \<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe> "--registermt*
 
 8. 最后，通过执行以下命令重启 obengine。
    ```

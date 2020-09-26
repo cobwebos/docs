@@ -9,16 +9,19 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67080483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290716"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义连接的工厂解决方案如何显示来自 OPC UA 服务器的数据
 
-连接的工厂解决方案将聚合并显示来自连接到解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅[连接工厂常见问题解答](iot-accelerators-faq-cf.md)。
+> [!IMPORTANT]
+> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+
+连接的工厂解决方案将聚合并显示来自连接到解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅 [连接工厂常见问题解答](iot-accelerators-faq-cf.md)。
 
 解决方案中聚合数据的示例包括设备综合效率 (OEE) 和关键性能指标 (KPI)，可在工厂的仪表板、生产线和工作站级别查看这些数据。 以下屏幕截图显示慕尼黑工厂中生产线 1 上装配工作站的 OEE 和 KPI 值************：
 
@@ -56,7 +59,7 @@ ms.locfileid: "67080483"
 
     ![已发布的项目][img-published]
 
-1. 如果你是解决方案中的*管理员*，可以选择发布数据项，使其在已连接的工厂解决方案中可用。 管理员还可在 OPC UA 服务器中更改数据项目的值以及调用方法。
+1. 如果你是解决方案中的 *管理员* ，可以选择发布数据项，使其在已连接的工厂解决方案中可用。 管理员还可在 OPC UA 服务器中更改数据项目的值以及调用方法。
 
 ## <a name="map-the-data"></a>映射数据
 
@@ -71,7 +74,7 @@ ms.locfileid: "67080483"
 
 ## <a name="deploy-the-changes"></a>部署更改
 
-完成对文件的**ContosoTopologyDescription.js**的更改后，必须将已连接的工厂解决方案重新部署到 Azure 帐户。
+完成对文件的 **ContosoTopologyDescription.js** 的更改后，必须将已连接的工厂解决方案重新部署到 Azure 帐户。
 
 azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚本可用于重新构建并部署解决方案********。
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852355"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361494"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
@@ -26,7 +26,7 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 * 安装机器学习 Python 客户端库
 * 访问和上传数据集，包括如何获取授权以从本地 Python 环境访问 Azure 机器学习数据集的说明
 * 从实验访问中间数据集
-* 使用 Python 客户端库枚举数据集、访问元数据、读取数据集的内容、创建新的数据集和更新现有数据集
+* 使用 Python 客户端库枚举数据集、访问元数据、读取数据集内容、创建新的数据集及更新现有数据集
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>先决条件
 已在以下环境下测试 Python 客户端库：
@@ -71,7 +71,7 @@ Azure 机器学习工作室（经典）提供的用于 Python 客户端库的代
 
 出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 在“设置”下“用户”页面上的 Azure 机器学习工作室（经典）中会显示你的角色。
 
-![安全性][security]
+![屏幕截图显示 Azure 机器学习 Studio 的 "用户" 页中的设置。][security]
 
 如果角色未设置为**所有者**，可以请求重新邀请为所有者，或询问工作区所有者以提供代码片段。
 
@@ -92,7 +92,7 @@ Azure 机器学习工作室（经典）提供的用于 Python 客户端库的代
 2. 选择想要访问的数据集。 可以从“我的数据集”列表或“示例”列表中选择任一数据集。
 3. 从底部工具栏，单击“生成数据访问代码”。 如果数据格式与 Python 客户端库不兼容，则禁用此按钮。
    
-    ![数据集][datasets]
+    ![屏幕截图显示具有生成数据访问代码的数据集。][datasets]
 4. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
    
     ![“生成数据访问代码”按钮][dataset-access-code]

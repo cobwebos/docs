@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362242"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 
@@ -80,7 +80,7 @@ ms.locfileid: "90985569"
         列标题| 指示如何处理数据集的标头（如果有）。
         跳过行 | 指示要跳过数据集中的多少行（如果有）。
     
-        选择“**下一页**”。
+        选择“**下一步**”。
 
     1. “架构”窗体是基于“设置和预览”窗体中所做的选择智能填充的。  在此处，请配置每个列的数据类型，检查列名称，并选择“不包含”哪些列进行试验。 
             
@@ -88,7 +88,7 @@ ms.locfileid: "90985569"
 
     1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 
-        选择“**下一页**”。
+        选择“**下一步**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
 
 1. 在“配置运行”窗体中，输入唯一的试验名称。
@@ -113,7 +113,7 @@ ms.locfileid: "90985569"
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](how-to-connect-data-ui.md#profile)部分）。
 
-    选择“**下一页**”。
+    选择“**下一步**”。
 
 1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
@@ -143,7 +143,7 @@ ms.locfileid: "90985569"
 
 1. （可选）查看特征化设置：如果选择在“其他配置设置”窗体中启用“自动特征化”，则会应用默认的特征化技术 。 在“查看特征化设置”中，可以更改这些默认设置并相应地进行自定义。 了解如何[自定义特征化](#customize-featurization)。 
 
-    ![Azure 机器学习工作室任务类型窗体](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
+    ![屏幕截图显示了 "选择任务类型" 对话框，其中包含名为 "特征化" 的查看设置。](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 ## <a name="customize-featurization"></a>自定义特征化
 
@@ -196,7 +196,7 @@ ms.locfileid: "90985569"
 
 1. 填充“部署模型”窗格。
 
-    字段| 值
+    字段| Value
     ----|----
     名称| 输入部署的唯一名称。
     说明| 输入说明，以更清楚地指出此部署的用途。

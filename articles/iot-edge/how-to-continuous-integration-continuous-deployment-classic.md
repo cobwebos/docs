@@ -1,19 +1,19 @@
 ---
 title: 持续集成和持续部署 Azure IoT Edge 设备 (经典编辑器) -Azure IoT Edge
 description: 使用经典编辑器 Azure IoT Edge 与 Azure DevOps 配合使用来设置持续集成和持续部署 Azure Pipelines
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 427d72b2a8531fa4dafa0040266249b138b6edf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291072"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>持续集成和持续部署 Azure IoT Edge 设备 (经典编辑器) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "90033483"
  | 生成部署清单 | 对文件和变量使用 deployment.template.js，然后生成最终的 IoT Edge 部署清单文件。 |
  | 部署到 IoT Edge 设备 | 创建 IoT Edge 部署到一个或多个 IoT Edge 设备。 |
 
-除非另行指定，否则本文中的过程不会浏览通过任务参数提供的所有功能。 有关详细信息，请参阅以下部分：
+除非另行指定，否则本文中的过程不会浏览通过任务参数提供的所有功能。 有关详细信息，请参阅以下主题：
 
 * [任务版本](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
 * **高级** -如果适用，请指定不想生成的模块。

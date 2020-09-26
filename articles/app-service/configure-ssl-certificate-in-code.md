@@ -2,15 +2,15 @@
 title: 在代码中使用 TLS/SSL 证书
 description: 了解如何在代码中使用客户端证书。 使用客户端证书向远程资源进行身份验证，或使用这些证书运行加密任务。
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311812"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务中通过代码使用 TLS/SSL 证书
 
@@ -107,29 +107,6 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 对于不支持或不充分支持 Windows 证书存储的语言，请参阅[从文件加载证书](#load-certificate-from-file)。
 
-## <a name="load-certificate-in-linux-apps"></a>在 Linux 应用中加载证书
-
-`WEBSITE_LOAD_CERTIFICATES`应用设置使指定的证书可供 Linux 托管应用访问 (包括) 为文件的自定义容器应用。 这些文件位于以下目录中：
-
-- 专用证书- `/var/ssl/private` ( `.p12` 文件) 
-- 公共证书- `/var/ssl/certs` ( `.der` 文件) 
-
-证书文件名是证书指纹。 以下 c # 代码演示了如何在 Linux 应用程序中加载公共证书。
-
-```csharp
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-
-...
-var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
-var cert = new X509Certificate2(bytes);
-
-// Use the loaded certificate
-```
-
-若要查看如何从 Node.js、PHP、Python、Java 或 Ruby 中的文件加载 TLS/SSL 证书，请参阅相应语言或 web 平台的文档。
-
 ## <a name="load-certificate-from-file"></a>从文件加载证书
 
 例如，如需加载手动上传的证书文件，则最好是使用 [FTPS](deploy-ftp.md) 而不是 [Git](deploy-local-git.md) 上传证书。 应将专用证书之类的敏感信息置于源代码管理之外。
@@ -152,6 +129,39 @@ using System.Security.Cryptography.X509Certificates;
 
 ...
 var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+若要查看如何从 Node.js、PHP、Python、Java 或 Ruby 中的文件加载 TLS/SSL 证书，请参阅相应语言或 web 平台的文档。
+
+## <a name="load-certificate-in-linuxwindows-containers"></a>在 Linux/Windows 容器中加载证书
+
+`WEBSITE_LOAD_CERTIFICATES`应用设置使指定的证书可供你的 Windows 或 Linux 容器应用程序访问 (包括内置 Linux 容器) 为文件。 这些文件位于以下目录中：
+
+| 容器平台 | 公用证书 | 私有证书 |
+| - | - | - |
+| Windows 容器 | `C:\appservice\certificates\public` | `C:\appservice\certificates\private` |
+| Linux 容器 | `/var/ssl/certs` | `/var/ssl/private` |
+
+证书文件名是证书指纹。 
+
+> [!NOTE]
+> 应用服务将证书路径作为以下环境变量（、和）注入到 Windows 容器中 `WEBSITE_PRIVATE_CERTS_PATH` `WEBSITE_INTERMEDIATE_CERTS_PATH` `WEBSITE_PUBLIC_CERTS_PATH` `WEBSITE_ROOT_CERTS_PATH` 。 最好用环境变量引用证书路径，而不是硬编码证书路径，以防以后证书路径更改。
+>
+
+此外， [Windows Server Core 容器](configure-custom-container.md#supported-parent-images) 自动将证书加载到 **LocalMachine\My**中的证书存储中。 若要加载证书，请遵循与 [Windows 应用中的加载证书](#load-certificate-in-windows-apps)相同的模式。 对于基于 Windows Nano 的容器，请使用上面提供的文件路径 [直接从文件加载证书](#load-certificate-from-file)。
+
+以下 c # 代码演示了如何在 Linux 应用程序中加载公共证书。
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate

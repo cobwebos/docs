@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301442"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答 - 关于 Azure 安全中心的一般问题
 
@@ -29,7 +29,7 @@ Azure 安全中心有助于预防、检测和响应威胁，同时增加资源�
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>如何获取Azure 安全中心？
-Azure 安全中心通过你的 Microsoft Azure 订阅启用，并从[Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问。 若要访问它，请[登录门户](https://portal.azure.com)，选择“浏览”，并滚动到“安全中心” 。
+Azure 安全中心通过你的 Microsoft Azure 订阅启用，并从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问。 若要访问它，请[登录门户](https://portal.azure.com)，选择“浏览”，并滚动到“安全中心” 。
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>哪些 Azure 资源由 Azure 安全中心监视？
@@ -53,7 +53,7 @@ Azure 安全中心中启用的安全策略将使用安全建议和监视。 若�
 
 
 ## <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？
-若要修改安全策略，你必须是**安全管理员**或该订阅的**所有者**。
+若要修改安全策略，你必须是 **安全管理员** 或该订阅的 **所有者** 。
 
 若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](tutorial-security-policy.md)。
 
@@ -70,7 +70,6 @@ Azure 安全中心可分析 Azure 资源的安全状态。 发现潜在的安全
 安全策略中仅已启用的推荐操作会显示在此处。
 
 
-
 ## <a name="what-triggers-a-security-alert"></a>什么会触发安全警报？
 Azure 安全中心自动从 Azure 资源、网络和合作伙伴解决方案（例如恶意软件和防火墙）收集、分析和融合数据。 检测到威胁时会创建安全警报。 示例中包括的检测项：
 
@@ -78,10 +77,6 @@ Azure 安全中心自动从 Azure 资源、网络和合作伙伴解决方案（�
 * 使用 Windows 错误报告检测到的高级恶意软件
 * 对虚拟机的暴力破解攻击
 * 来自集成合作伙伴解决方案（例如反恶意软件或 Web 应用程序防火墙）的安全警报
-
-
-## <a name="why-did-secure-score-values-change"></a>安全功能分数值为何会有变化？ <a name="secure-score-faq"></a>
-从 2019 年 2 月开始，安全中心调整了某些建议的评分，使之与严重性更相符。 做出此项调整后，总体安全功能分数值可能会有变化。  有关安全分数的详细信息，请参阅[Azure 安全中心的增强安全分数](secure-score-security-controls.md)。
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Microsoft 安全响应中心与 Azure 安全中心检测和警示的威胁之间有何区别？

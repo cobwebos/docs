@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289899"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -110,7 +110,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。
 
-安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。
 
 当任何资源具有未完成的建议时，它们将显示在清单中。
 
@@ -180,7 +180,7 @@ Azure 安全中心现在保护 Azure 中的工作负荷，Amazon Web Services (A
 
 当你选择建议并启用 " **包括安全发现** " 选项时，现在可以通过连续导出导出安全结果。
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在连续导出配置中包括安全发现切换" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在连续导出配置中包括安全结果开关" :::
 
 相关页面：
 
@@ -239,11 +239,11 @@ Pod 安全策略 (预览版) 功能，已设置为弃用，在2020年10月15日�
 
 安全中心会持续评估资源、订阅和组织的安全问题。 然后，它将所有调查结果汇总成一个分数，让你可以一目了然地了解当前的安全状况：分数越高，识别出的风险级别就越低。
 
-发现新的威胁后，安全中心会提供新的安全建议。 为了避免意外更改你的安全分数，并提供一个宽限期，在此期间你可以在影响你的评分之前探索新建议，已标记为 **预览版** 的建议将不再包含在安全分数的计算中。 它们应尽可能进行修正，以便在预览期结束时，它们会给你评分。
+发现新的威胁后，安全中心会提供新的安全建议。 为了避免意外更改你的安全分数，并提供一个宽限期，在此期间你可以在影响你的评分之前探索新建议，已标记为 **预览版** 的建议将不再包含在安全分数的计算中。 但仍应尽可能按这些建议进行修正，这样在预览期结束时，它们会有助于提升分数。
 
 此外， **预览** 建议不会呈现资源 "不正常"。
 
-预览建议的示例如下：
+预览建议示例如下：
 
 :::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
 
@@ -273,7 +273,7 @@ Pod 安全策略 (预览版) 功能，已设置为弃用，在2020年10月15日�
 
 安全中心的资产清单 (当前为预览版) 提供一种方法来查看已连接到安全中心的资源的安全状况。
 
-安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
 
 您可以使用视图及其筛选器来浏览您的安全状况数据，并根据您的发现采取更多操作。
 
@@ -288,7 +288,7 @@ Pod 安全策略 (预览版) 功能，已设置为弃用，在2020年10月15日�
 
 安全中心在标识 Azure 订阅时，无论是否启用了安全默认设置，现在都提供安全建议。 到目前为止，安全中心建议使用条件性访问启用多重身份验证，这是 Azure Active Directory (AD) premium 许可证的一部分。 对于使用 Azure AD 免费版的客户，我们现在建议启用安全默认设置。 
 
-我们的目标是鼓励更多客户通过 MFA 保护其云环境，并缓解最高的风险，这也是最有影响力的 [安全分数](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)。
+我们的目标是鼓励更多客户通过 MFA 保护其云环境，并缓解最高的风险，这也是最有影响力的 [安全分数](secure-score-security-controls.md)。
 
 详细了解 [安全默认值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)。
 
@@ -310,7 +310,7 @@ Pod 安全策略 (预览版) 功能，已设置为弃用，在2020年10月15日�
 
 为了确保所有用户都能获得一致的体验，无论他们使用哪种扫描仪类型，都可以将四个建议合并为以下两个：
 
-|统一建议|更改说明|
+|统一建议|更改描述|
 |----|:----|
 |**应在虚拟机上启用漏洞评估解决方案**|替换以下两个建议：<br> **•** 在虚拟机上启用内置漏洞评估解决方案 (由 "标准" 层附带的 "Qualys (支持的)  (") <br> **•** 漏洞评估解决方案应安装在虚拟机上 (现已弃用)  (标准和免费层) |
 |**应修正虚拟机中的漏洞**|替换以下两个建议：<br>**•** 更正虚拟机上发现的 (由 Qualys) 支持的漏洞， (现已弃用) <br>**•** 漏洞评估解决方案应修正的漏洞 (现已弃用) |
@@ -416,7 +416,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 - **应对 Azure Key Vault 的保管库启用高级威胁防护**
 - **应对 Azure Kubernetes 服务的群集启用高级威胁防护**
 - **应对 Azure 存储帐户启用高级威胁防护**
-- **应在虚拟机上启用高级威胁防护**
+- 应对虚拟机启用高级威胁防护
 
 这些新建议属于 " **启用高级威胁防护** " 安全控制。
 
@@ -429,7 +429,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 有关详细信息，请 [参阅安全建议参考页](recommendations-reference.md)。
 
-详细了解 [Azure 安全中心的威胁防护](https://docs.microsoft.com/azure/security-center/threat-protection)。
+详细了解 [Azure 安全中心的威胁防护](azure-defender.md)。
 
 
 
@@ -442,13 +442,13 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 若要详细了解安全中心的容器安全性，请参阅以下文章：
 
-- [安全中心容器安全功能概述](https://docs.microsoft.com/azure/security-center/container-security)
-- [与 Azure 容器注册表集成的详细信息](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [与 Azure Kubernetes 服务集成的详细信息](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [如何扫描注册表并强化 Docker 主机](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [来自 Azure Kubernetes 服务群集的威胁防护功能的安全警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [来自 Azure Kubernetes 服务主机的威胁防护功能的安全警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [容器的安全性建议](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [安全中心容器安全功能概述](container-security.md)
+- [与 Azure 容器注册表集成的详细信息](defender-for-container-registries-introduction.md)
+- [与 Azure Kubernetes 服务集成的详细信息](defender-for-kubernetes-introduction.md)
+- [如何扫描注册表并强化 Docker 主机](container-security.md)
+- [来自 Azure Kubernetes 服务群集的威胁防护功能的安全警报](alerts-reference.md#alerts-akscluster)
+- [来自 Azure Kubernetes 服务主机的威胁防护功能的安全警报](alerts-reference.md#alerts-containerhost)
+- [容器的安全性建议](recommendations-reference.md#recs-containers)
 
 
 
@@ -500,7 +500,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 ### <a name="secure-score-api-preview"></a>安全评分 API (预览) 
 
-你现在可以通过 [安全分数 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (当前在预览版) 中来访问你的评分。 利用 API 方法可以灵活地查询数据，并在一段时间内构建你自己的安全评分报表机制。 例如，可以使用 **安全评分** API 来获取特定订阅的分数。 此外，你可以使用 **安全分数控制** API 列出你的订阅的安全控制和当前分数。
+你现在可以通过 [安全分数 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (当前在预览版) 中来访问你的评分。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，可以使用安全功能分数 API 来获取特定订阅的分数。 此外，还可以使用安全功能分数控件 API 列出安全控件和订阅的当前分数。
 
 有关安全分数 API 可以实现外部工具的示例，请参阅 [GitHub 社区的 secure 评分区](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
 
@@ -528,8 +528,8 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 添加了两个新建议来帮助你将 [Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) 部署到 azure Arc 计算机，并确保它们受 Azure 安全中心保护：
 
-- **Log Analytics 代理应在基于 Windows 的 Azure Arc 计算机上安装 (预览版) **
-- **Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上 (预览版) **
+- Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上(预览)
+- Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上(预览)
 
 这些新建议将与与现有 (相关的) 建议相同的四个安全控件中出现，并且 **应在计算机上安装监视代理**：修正安全配置、应用自适应应用程序控制、应用系统更新和启用 endpoint protection。
 
@@ -537,10 +537,9 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 在 [计算和应用建议](recommendations-reference.md#recs-computeapp) 表中了解有关这两个新建议的详细信息。
 
-若要详细了解 Azure 安全中心如何使用代理，请参阅 [什么是 Log Analytics 代理？](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)。
+若要详细了解 Azure 安全中心如何使用代理，请参阅 [什么是 Log Analytics 代理？](faq-data-collection-agents.md#what-is-the-log-analytics-agent)。
 
-了解有关 [Azure Arc 计算机扩展的](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)详细信息。
-
+了解有关 [Azure Arc 计算机扩展的](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)详细信息。
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>用于大规模创建连续导出和工作流自动化配置的新策略
@@ -597,7 +596,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 | [应在虚拟机上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-详细了解 [Azure 安全中心的威胁防护](https://docs.microsoft.com/azure/security-center/threat-protection)。
+详细了解 [Azure 安全中心的威胁防护](azure-defender.md)。
 
 
 
@@ -721,7 +720,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>故障转储分析功能正在迁至无文件攻击检测中 
 
-我们正在将 Windows 故障转储分析 (CDA) 检测功能集成到[无文件攻击检测](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)中。 无文件攻击检测分析改进了 Windows 计算机的以下安全警报：“发现代码注入”、“检测到伪装 Windows 模块”、“发现 Shellcode”和“检测到可疑的代码段”。
+我们正在将 Windows 故障转储分析 (CDA) 检测功能集成到[无文件攻击检测](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)中。 无文件攻击检测分析改进了 Windows 计算机的以下安全警报：“发现代码注入”、“检测到伪装 Windows 模块”、“发现 Shellcode”和“检测到可疑的代码段”。
 
 该转换的一些优势如下：
 

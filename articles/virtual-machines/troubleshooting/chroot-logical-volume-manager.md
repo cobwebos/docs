@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361460"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局正在使用 LVM (逻辑卷管理器时，Linux VM 的故障排除) 
+# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM（逻辑卷管理器）时，对 Linux VM 进行故障排除
 
 本故障排除指南可帮助解决以下场景中出现的问题：Linux VM 不启动、无法建立 SSH 连接，并且在底层文件系统布局中配置了 LVM（逻辑卷管理器）。
 
@@ -143,7 +143,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 命令可用于安装、删除和更新软件。 对 VM 进行故障排除以修复错误。
 
 
-执行 lsblk 命令。/rescue 现在为 /，而 /rescue/boot 为 /boot ![已完成 Chroot](./media/chroot-logical-volume-manager/chrooted.png)
+执行 lsblk 命令，/rescue 现在为/，/rescue/boot 为/boot ![ 屏幕快照显示一个控制台窗口，其中包含 l s blk 命令及其输出树。](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>执行修复
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *演练*
 
 **grep** 命令列出 **grub.cfg** 能够识别的内核。
-![内核](./media/chroot-logical-volume-manager/kernels.png)
+![屏幕截图显示一个控制台窗口，其中显示了内核的 grep 搜索结果。](./media/chroot-logical-volume-manager/kernels.png)
 
 **grub2-editenv list** 显示下一次启动时要加载的内核 ![内核默认值](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 退出 **chroot** 环境并装载所需的 **LV**
 
-![高级](./media/chroot-logical-volume-manager/advanced.png)
+![屏幕截图显示一个控制台窗口，其中包含一个 l v s 命令，然后装载 L V。](./media/chroot-logical-volume-manager/advanced.png)
 
 现在，运行以下命令再次访问 **chroot** 环境
 
@@ -204,8 +204,8 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ![高级](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-可根据需要删除或升级**内核**
-![高级](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+如果需要，请删除或升级**内核** 
+ ![ 高级](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>示例 3-启用串行控制台
@@ -213,8 +213,8 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>示例 4-具有有问题的 LVM 交换卷的内核加载
 
-VM 可能无法完全启动并进入**dracut**提示符。
-有关失败的更多详细信息，可从 Azure 串行控制台定位，或导航到 Azure 门户 > 启动诊断-> 串行日志
+VM 可能无法完全启动，因此会进入 **dracut** 提示。
+有关故障的更多详细信息，可从 Azure 串行控制台查找，也可导航到 Azure 门户 -> 启动诊断 -> 串行日志进行查找
 
 
 可能出现类似于下面的错误：
@@ -225,14 +225,14 @@ VM 可能无法完全启动并进入**dracut**提示符。
 Warning: /dev/VG/SwapVol does not exist
 ```
 
-在此示例中配置了 grub，以加载名称为 " **VG/SwapVol** " 且 VM 无法找到此项的 LV。 此行显示了如何加载内核引用 LV SwapVol
+在此示例中配置了 grub.cfg，以加载名为 **rd.lvm.lv=VG/SwapVol** 的 LV，VM 无法找到此项。 此行显示了如何加载引用 LV SwapVol 的内核
 
 ```
 [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
 [    0.000000] e820: BIOS-provided physical RAM map:
 ```
 
- 从/etc/default/grub 配置中删除有问题的 LV 并重建 grub2
+ 从 /etc/default/grub 配置中删除有问题的 LV 并重新生成 grub2.cfg
 
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>退出 chroot 并交换 OS 磁盘
@@ -252,8 +252,8 @@ umount /rescue
 
 从救援 VM 中分离磁盘，并执行磁盘交换。
 
-从门户**磁盘**中选择 VM，并选择 "**分离** 
- ![ 分离磁盘"](./media/chroot-logical-volume-manager/detach-disk.png) 
+在门户的“磁盘”中选择 VM，然后选择“分离”
+![分离磁盘](./media/chroot-logical-volume-manager/detach-disk.png)******** 
 
 保存更改![保存分离结果](./media/chroot-logical-volume-manager/save-detach.png) 
 
@@ -262,7 +262,7 @@ umount /rescue
 在 Azure 门户中导航到出现故障的 VM，并选择 "**磁盘**" "  ->  **交换 OS 磁盘** 
  ![ 交换磁盘"](./media/chroot-logical-volume-manager/swap-disk.png) 
 
-填写字段。在“选择磁盘”中选择刚刚在上一步骤中分离的快照磁盘。**** 受影响 VM 的名称也是必填的。然后选择“确定”****
+填写字段。在“选择磁盘”中选择刚刚在上一步骤中分离的快照磁盘。  受影响 VM 的名称也是必填的。然后选择“确定” 
 
 ![新 OS 磁盘](./media/chroot-logical-volume-manager/new-osdisk.png) 
 
