@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f2dcefa8ed2f4b80ec66851cdc67ee2283a6ac7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
-ms.translationtype: HT
+ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362038"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何创建使用 Azure Cosmos DB SQL API 和更改源处理器的 Java 应用
 
@@ -110,11 +110,11 @@ mvn clean package
 
 1. 现在，请在数据资源管理器中导航到“InventoryContainer-pktype”>“项”。 这是具体化视图 - 此容器中的项是 InventoryContainer 的镜像，因为它们是由更改源以编程方式插入的。 记下分区键 (```type```)。 因此，此具体化视图已针对 ```type``` 查询筛选进行优化，但它在 InventoryContainer 中效率不高，因为此容器是按 ```id``` 分区的。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="具体化视图":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="屏幕截图显示具有选定项的 Azure Cosmos D B 帐户的 "数据资源管理器" 页。":::
 
 1. 我们将同时从 InventoryContainer 和 InventoryContainer-pktype 删除某个文档，只需使用一个 ```upsertItem()``` 调用即可。  首先，查看 Azure 门户上的数据资源管理器。 我们将删除 ```/type == "plums"``` 的文档；下面以红框突出显示了此项
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="具体化视图":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="屏幕截图显示了 Cosmos D B 帐户的 "数据资源管理器" 页，其中包含选定的特定项。":::
 
     再次按 Enter，以调用示例代码中的函数 ```deleteDocument()```。 此函数（如下所示）更新插入 ```/ttl == 5``` 的文档的新版本，这会将该文档的生存时间 (TTL) 设置为 5 秒。 
     

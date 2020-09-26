@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361919"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -514,11 +514,11 @@ Microsoft Azure 虚拟机使用不同的存储类型。 在 Azure 虚拟机服�
 部署 VM 后，Azure VM 提供非永久磁盘。 如果 VM 重启，这些驱动器上的所有内容将被擦除。因此，数据库的数据文件和日志/重做文件决不能放置在这些非永久性驱动器上。 但一些数据库例外，在此情况下，这些非永久性驱动器对于 tempdb 和临时表空间可能是适合的。 但是，应避免将这些驱动器用于 A 系列 VM，因为这些非永久性驱动器在该 VM 系列中的吞吐量有限。 有关进一步详细信息，请参阅[了解 Azure 中 Windows VM 上的临时驱动器](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)一文
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > Azure VM 中的驱动器 D:\ 是一个非持久性驱动器，由 Azure 计算节点上的部分本地磁盘提供支持。 非持久性意味着，当 VM 重新启动时，将丢失对 D:\ 驱动器上的内容所做的任何更改。 “任何更改”是指已存储的文件、已创建的目录、已安装的应用程序等等。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > Linux Azure VM 会在 /mnt/resource 上自动装载一个非持久性驱动器，该驱动器由 Azure 计算节点上的本地磁盘提供支持。 非持久性意味着，当 VM 重新启动时，将丢失对 /mnt/resource 中的内容所做的任何更改。 “任何更改”是指已存储的文件、已创建的目录、已安装的应用程序等等。
 >
@@ -774,12 +774,12 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 由于 OS 或 DBMS 版本存在特定的修补程序要求，Azure 市场中提供的映像可能并不符合需要。 因此，可能需要使用自己的、以后可以多次部署的“专用”OS/DBMS VM 映像创建一个 VM。 若要准备这样一个可供复制的专用映像，必须考虑以下要素：
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 有关详细信息，请参阅：<https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed>Windows 设置（例如 Windows SID 和主机名）必须通过 sysprep 命令在本地 VM 抽象化/通用化。
 >
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 请遵循这些 [SUSE][virtual-machines-linux-create-upload-vhd-suse]、[Red Hat][virtual-machines-linux-redhat-create-upload-vhd] 或 [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle] 文章中所述的步骤，以准备要上传到 Azure 的 VHD。
 >
@@ -809,13 +809,13 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 添加其他本地帐户，因为特定的部署方案可能需要这些帐户。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 在此方案中，无需通用化 (sysprep) VM 就能在 Azure 中上传和部署该 VM。
 > 确保驱动器 D:\ 未被使用。
 > 按照本文档的[为附加的磁盘设置自动装载][planning-guide-5.5.3]一章中所述，为附加磁盘设置磁盘自动装载。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 在此方案中，无需通用化 ( waagent -deprovision) VM 就能在 Azure 中上传和部署该 VM。
 > 请确保 /mnt/resource 未被使用，并已通过 uuid 装载所有磁盘。 对于 OS 磁盘，请确保引导加载程序条目也反映了基于 uuid 的装载。
@@ -836,11 +836,11 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 如果映像包含 SAP NetWeaver 的安装，并且可能在部署 Azure 时重命名主机名的原始名称，则建议将最新版 SAP Software Provisioning Manager DVD 复制到模板。 这样，便可以轻松地使用 SAP 提供的重命名功能来修改已更改的主机名，和/或在启动新副本之后，更改已部署 VM 映像中 SAP 系统的 SID。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 确保驱动器 D:\ 未被使用。按照本文档的[为附加的磁盘设置自动装载][planning-guide-5.5.3]一章中所述，为附加的磁盘设置磁盘自动装载。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 请确保 /mnt/resource 未被使用，并已通过 uuid 装载所有磁盘。 对于 OS 磁盘，请确保引导加载程序条目也反映了基于 uuid 的装载。
 >
@@ -854,13 +854,13 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 ##### <a name="generalizing-a-vm"></a>通用化 VM
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 最后一步是使用管理员帐户登录到 VM。 以管理员身份打开 Windows 命令窗口。 转到 %windir%\windows\system32\sysprep 并执行 sysprep.exe。
 > 此时会出现一个小窗口中。 必须选中“通用化”选项（默认情况下未选中），并将“关机选项”从默认的“重新启动”更改为“关机”。 此过程假设 sysprep 进程在 VM 的来宾 OS 中本地运行。
 > 如要针对已在 Azure 中运行的 VM 执行该过程，请遵循[此文](../../windows/capture-image-resource.md)中所述的步骤。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > [如何捕获可用作资源管理器模板的 Linux 虚拟机][capture-image-linux-step-2-create-vm-image]
 >
@@ -1123,13 +1123,13 @@ az storage blob show --name <target blob name> --container <target container nam
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 在许多客户那里，我们看到了类似于这样的配置：SAP 和 DBMS 二进制文件并未安装在 OS 所安装到的 C:\ 驱动器上。 采用这种配置的原因多种多样，但是，如果我们回过头来分析根本原因，通常会发现这些驱动器都很小，并且早在 10-15 年以前，就需要提供额外的空间来进行 OS 升级。 时至今日，这两种情况再也不那么常见了。 当今的 C:\ 驱动器可以映射到大型卷磁盘或 VM 上。 为了保持部署结构的简单性，建议为 Azure 中的 SAP NetWeaver 系统采用以下部署模式
 >
 > Windows 操作系统页面文件应该位于 D: 驱动器（非持久性磁盘）上
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 将 Linux 交换文件放在 Linux 上的 /mnt /mnt/resource 下，如[此文][virtual-machines-linux-agent-user-guide]所述。 可以在 Linux 代理 /etc/waagent.conf 的配置文件中配置交换文件。 添加或更改以下设置：
 >
@@ -1156,11 +1156,11 @@ sudo service waagent restart
 * 不同数据文件的 IOPS 流量不一定相同，因为现有的客户系统可能有代表其 SAP 数据库的不同大小的数据文件。 因此，最好在多个磁盘上使用 RAID 配置，以放置从中分割出的数据文件 LUN。 有时（特别是针对 Azure 标准存储）IOPS 速率达到单个磁盘对 DBMS 事务日志的配额。 在此情况下，建议使用高级存储，或者使用软件条带聚合多个标准存储磁盘。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > * [Azure 虚拟机中 SQL Server 的性能最佳实践][virtual-machines-sql-server-performance-best-practices]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > * [在 Linux 上配置软件 RAID][virtual-machines-linux-configure-raid]
 > * [在 Azure 中的 Linux VM 上配置 LVM][virtual-machines-linux-configure-lvm]
@@ -1189,13 +1189,13 @@ sudo service waagent restart
 **重要说明**：对于 Azure 标准存储，请**不要**使用主机缓存。 因此，应该将“主机缓存首选项”保留为默认值“无”。 使用 Azure 高级存储时，如果 I/O 特征大多数读取为类似对数据库数据文件的一般 I/O 流量，则应该启用“读取缓存”。 在数据库事务日志文件中，不建议使用缓存。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > [如何在 Azure 门户中附加数据磁盘][virtual-machines-linux-attach-disk-portal]
 >
 > 如果附加了磁盘，则需要登录到 VM 以打开 Windows 磁盘管理器。 如果未按照[为附加的磁盘设置自动装载][planning-guide-5.5.3]一章中的建议启用自动装载，则需要重新联机并初始化新附加的卷。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 如果已附加磁盘，则需要如[此文][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]中所述登录到 VM 并初始化磁盘
 >
@@ -1212,7 +1212,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 
 #### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>为附加的磁盘设置自动装载
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 对于从自有的映像或磁盘创建的 VM，需要检查并最终设置自动装载参数。 通过设置此参数，VM 在重新启动或者重新部署到 Azure 中后，可以自动重新装载附加的/装载的驱动器。
 > 该参数是针对 Microsoft 在 Azure 市场中提供的映像设置的。
@@ -1226,7 +1226,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 >
 > 如果附加了磁盘，则需要登录到 VM 以打开 Windows 磁盘管理器。 如果未按照[为附加的磁盘设置自动装载][planning-guide-5.5.3]一章中的建议启用自动装载，则需要重新联机并初始化新附加的卷。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 需要如[此文][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]中所述，初始化新附加的空磁盘。
 > 还需要将新磁盘添加到 /etc/fstab。
@@ -1264,7 +1264,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 可能需要在虚拟机上配置防火墙，以允许 SAP 系统的入站流量。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 默认情况下，已打开 Azure 所部署的 VM 中的 Windows 防火墙。 现在，需要允许打开 SAP 端口，否则 SAP GUI 将无法连接。
 > 为此，请按以下步骤操作：
@@ -1281,7 +1281,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 >
 > ![端口规则定义][planning-guide-figure-1600]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 默认情况下，Azure 市场中的 Linux 映像未启用 iptables 防火墙，而 SAP 系统的连接应该运行正常。 如果启用 iptables 或其他防火墙，请参阅 iptables 或所用防火墙的文档，以允许发往端口 32xx 入站 TCP 流量（其中 xx 是 SAP 系统的系统编号）。
 >
@@ -1588,7 +1588,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 在 Azure VM 中设置基于本地 TCP/IP 的打印机的操作总体上与在企业网络中的操作相同，但假设前提是你确实已经建立了 VPN 站点到站点隧道或 ExpressRoute 连接。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 为此，请按以下步骤操作：
 >
@@ -1599,7 +1599,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 > * 选择打印机端口标准 9100
 > * 如果需要，请手动安装适当的打印机驱动程序。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > * 与 Windows 一样，只需遵循标准过程来安装网络打印机
 > * 只需遵循 [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) 或 [Red Hat 和 Oracle Linux](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration) 的 Linux 公开指南，了解如何添加打印机。
@@ -1623,13 +1623,13 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 如何：
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 共享本地打印机。
 > 在 Azure VM 中打开 Windows 资源管理器，并键入打印机共享名称。
 > 打印机安装向导将引导完成整个安装过程。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 下面是有关在 Linux 中配置网络打印机的一些文档示例，或者有关在 Linux 中进行打印的章节。 只要 VM 是 VPN 的一部分，打印机就能在 Azure Linux VM 中以相同的方式工作：
 >
@@ -1644,7 +1644,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 在 Azure 中，远程桌面服务功能可让用户在一个不可用的远程会话中访问其本地打印机设备。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 有关使用 Windows 打印的更多详细信息，请参阅此处：<https://technet.microsoft.com/library/jj590748.aspx>。
 >
@@ -1890,7 +1890,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的容错和升�
 仅限非托管磁盘：当部署许多 SAP 系统，并且所部署的 VM 数目将超过每个订阅的存储帐户上限时，可能需要稍微折衷以下所述的概念。 在此情况下，VM 的 VHD 需要合并到一个存储帐户中。 通常你会通过合并不同 SAP 系统的 SAP 应用程序层 VM 的 VHD 来实现此目的。  也可以将不同 SAP 系统的不同 DBMS VM 的不同 VHD 合并到一个 Azure 存储帐户中。 由此记住 Azure 存储帐户 的 IOPS 限制 (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
-##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] Windows 上的 HA
+##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows 徽标。][Logo_Windows] Windows 上的 HA
 
 ![Azure IaaS 中包含 SQL Server 的 SAP NetWeaver 应用程序 HA 体系结构][planning-guide-figure-3200]
 
@@ -1912,7 +1912,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的容错和升�
 
 ![Azure IaaS 中包含 SQL Server 的 SAP NetWeaver 应用程序 HA 体系结构][planning-guide-figure-3201]
 
-##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] Linux 上的 HA
+##### <a name="linux-logologo_linux-ha-on-linux"></a>![Linux 徽标。][Logo_Linux] Linux 上的 HA
 
 Azure 上 Linux 的 SAP HA 体系结构基本上与上述 Windows 相同。 有关支持的高可用性解决方案的列表，请参阅 SAP 说明 [1928533]。
 
@@ -1963,7 +1963,7 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 > [!NOTE]
 > 截至 2015 年 12 月，使用 VM 备份并不保留用于 SAP 许可的唯一 VM ID。 这意味着，从 VM 备份还原需要安装新的 SAP 许可证密钥，因为还原的 VM 被视为新的 VM，而不是替代以前保存的旧版。
 >
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 理论上，如果 DBMS 系统支持 Windows VSS（卷影复制服务 <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>），就能以一致的方式备份运行数据库的 VM（比如 SQL Server 就可以）。
 > 不过请注意，无法根据 Azure VM 备份时间点来还原数据库。 因此，建议使用 DBMS 功能执行数据库备份，而不要依赖于 Azure VM 备份。
@@ -1972,7 +1972,7 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 >
 > 也可以结合使用安装在 Azure VM 中的 Microsoft Data Protection Manager 及 Azure 备份来备份/还原数据库。 可在此处找到更多信息：<https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction>。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > Windows VSS 在 Linux 中没有等效功能。 因此，只能执行文件一致性备份，而无法执行应用程序一致性备份。 SAP DBMS 备份应该使用 DBMS 功能来执行。 例如，可以使用 tar 来保存包含 SAP 相关数据的文件系统，如此处所述：<https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
@@ -1984,7 +1984,7 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 
 <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> 博客中详细介绍了如何部署此解决方案。
 
-## <a name="summary"></a>总结
+## <a name="summary-for-high-availability-for-sap-systems"></a>SAP 系统的高可用性摘要
 
 Azure 中 SAP 系统的高可用性要点如下：
 

@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361324"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 
 Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装和 DBMS 的基础。
@@ -114,7 +114,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 选择存储空间直通时，请考虑以下用例：
 
 - 需要在 Azure 可用性集中部署用于构建存储空间直通群集的虚拟机。
-- 对于存储空间直通群集的灾难恢复，可以使用[Azure Site Recovery 服务](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)。
+- 对于存储空间直通群集的灾难恢复，可以使用 [Azure Site Recovery 服务](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)。
 - 不支持将存储空间直通群集延伸到不同的 Azure 可用性区域。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中的横向扩展文件共享的 SAP 先决条件
@@ -137,7 +137,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 * 若要获得良好的 VM 间网络性能以顺利进行存储空间直通磁盘同步，请使用至少能够提供“高”网络带宽的 VM 类型。
     有关详细信息，请参阅 [DSv2 系列][dv2-series]和 [DS 系列][ds-series]规格。
 * 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息，请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
-* 不需要为横向扩展文件共享网络名称（例如）配置 Azure 内部负载均衡器 \<SAP global host\> 。 对于 \<ASCS/SCS virtual host name\> SAP ASCS/SCS 实例或 DBMS，此操作可实现。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP global host\>使用所有群集节点的本地 IP 地址。
+* 不需要为横向扩展文件共享网络名称（例如）配置 Azure 内部负载均衡器 \<SAP global host\> 。 对于 \<ASCS/SCS virtual host name\> SAP ASCS/SCS 实例或 DBMS，此操作可实现。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP global host\> 使用所有群集节点的本地 IP 地址。
 
 
 > [!IMPORTANT]

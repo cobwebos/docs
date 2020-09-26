@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361409"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -59,7 +59,7 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 ## <a name="outbound-connectivity-using-service-tags"></a>使用服务标记的出站连接
 
-如果使用 NSG 来控制出站连接，则需要允许这些服务标记。
+如果使用 NSG 来控制出站连接，需要允许这些服务标记。
 
 - 对于源区域中的存储帐户：
     - 为源区域创建基于[存储服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则。
@@ -82,15 +82,15 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 1. 基于 NSG 规则为“Storage.EastUS”创建出站 HTTPS (443) 安全规则，如以下屏幕截图所示。
 
-      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![屏幕截图显示存储点东 U S 的网络安全组的 "添加出站安全规则"。](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. 基于 NSG 规则为“AzureActiveDirectory”创建出站 HTTPS (443) 安全规则，如以下屏幕截图所示。
 
-      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![屏幕截图显示了 Azure A 的网络安全组的 "添加出站安全规则"。](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS () 443 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
 
-4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
+4. 在 NSG 上为“AzureSiteRecovery”创建出站 HTTPS (443) 安全规则。 这样就可以在任何区域访问 Site Recovery 服务。
 
 ### <a name="nsg-rules---central-us"></a>NSG 规则 - 美国中部
 
@@ -102,7 +102,7 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 3. 与上面的安全规则类似，为与源位置对应的 NSG 上的 "EastUS" 创建出站 HTTPS (443) 安全规则。 这样就可以访问 Site Recovery 监视功能。
 
-4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS (443) 安全规则。 这允许访问任何区域中的 Site Recovery 服务。
+4. 在 NSG 上为“AzureSiteRecovery”创建出站 HTTPS (443) 安全规则。 这样就可以在任何区域访问 Site Recovery 服务。
 
 ## <a name="network-virtual-appliance-configuration"></a>网络虚拟设备配置
 

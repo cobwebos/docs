@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361528"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>绘图转换错误和警告
 
@@ -35,9 +35,9 @@ ms.locfileid: "83682001"
 
 * 下面的两幅图展示了自相交多边形的示例。
 
-     ![自相交多边形的示例](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![自相交多边形的示例，示例1。](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![自相交多边形的示例](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![自相交多边形的示例，示例二。](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * 下图展示了非闭合折线。 假设图层只支持闭合几何图形。
 

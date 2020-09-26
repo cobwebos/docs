@@ -1,18 +1,18 @@
 ---
 title: 使用 CLI 进行外部流量重定向 - Azure 应用程序网关
-description: 了解如何创建应用程序网关，将内部 web 流量重定向到相应的池中使用 Azure CLI。
+description: 了解如何创建应用程序网关，以便使用 Azure CLI 将外部 web 流量重定向到适当的池。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a8d7aff6a030b3adbb5370caa166bbd290e09bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331040"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -131,8 +131,4 @@ az network application-gateway rule create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
-
-> * 设置网络
-> * 创建侦听器和重定向规则
-> * 创建应用程序网关
+- [使用 Azure CLI 创建支持内部重定向的应用程序网关](redirect-internal-site-cli.md)

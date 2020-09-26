@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: aa875877d4017409b961eedda2af281622c45cf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb4dd6646eceaa6028dca4e04e9cddced487de3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312329"
+ms.locfileid: "91361660"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教程：为 Juno Journey 配置自动用户预配
 
@@ -85,7 +85,7 @@ ms.locfileid: "91312329"
 
 5. 在“管理员凭据”部分下的“租户 URL”中，输入之前检索到的租户 URL 值。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击“测试连接”以确保 Azure AD 可以连接到 Juno Journey。 如果连接失败，请确保 Juno Journey 帐户具有管理员权限，然后重试。
 
-    ![预配](./media/juno-journey-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/juno-journey-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

@@ -8,16 +8,16 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 6962198fbce3b46a8310d39cf3aa3f78ed0a130b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 434115ce6da775c4c8719081ad149e436de03b56
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341681"
+ms.locfileid: "91362276"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+**适用于：** ![绿色复选标记。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ X，指示没有。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 
 
