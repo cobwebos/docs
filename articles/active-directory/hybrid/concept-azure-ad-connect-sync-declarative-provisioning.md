@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60246288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313614"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步：了解声明性预配
 本主题介绍 Azure AD Connect 中的配置模型。 该模型称为声明性预配，让用户能够轻松地更改配置。 本主题介绍的许多内容都是高级内容，在大部分客户方案中并非必要。
@@ -29,11 +29,11 @@ ms.locfileid: "60246288"
 ## <a name="overview"></a>概述
 声明性预配处理源连接目录传入的对象，并确定如何将对象和属性从源转换到目标。 对象在同步管道中进行处理，入站和出站规则的管道相同。 入站规则是从连接器空间到 metaverse，而出站规则是从 metaverse 到连接器空间。
 
-![同步管道](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![显示同步管道示例的关系图。](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
 管道有多个不同的模块。 每个模块负责对象同步中的一个概念。
 
-![同步管道](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![显示管道中的模块的关系图。](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
 * 源：源对象
 * [范围](#scope)：查找范围内的所有同步规则
@@ -44,7 +44,7 @@ ms.locfileid: "60246288"
 
 ## <a name="scope"></a>范围
 范围模块会计算对象，并确定在范围内且应纳入处理的规则。 根据对象的属性值，不同同步规则的计算结果都是在范围内。 例如，没有 Exchange 邮箱的已禁用用户拥有与具有邮箱的已启用用户不同的规则。  
-![范围](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![显示对象的作用域模块的关系图。](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 范围可定义为组和子句。 子句位于组内。 逻辑 AND 用于组中的所有子句之间。 例如，(department =IT AND country = Denmark)。 逻辑 OR 用于组之间。
 
@@ -78,7 +78,7 @@ ms.locfileid: "60246288"
 此图中的联接会从上到下进行处理。 同步管道首先查看是否有 employeeID 的匹配项。 如果没有，第二个规则会查看是否可以使用帐户名来将对象联接在一起。 如果也不是匹配项，则第三个（最后一个）规则会使用用户名查找更模糊的匹配项。
 
 如果已对所有联接规则进行计算，但没有完全相符的匹配项，则会使用“说明”页上的“链接类型”。   如果此选项设置为“预配”，则会在目标中创建新对象。   
-![预配或联接](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+![显示 "链接类型" 下拉菜单打开的屏幕截图。](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 一个对象应该只有一个同步规则具有在范围内的联接规则。 如果有多个同步规则定义了联接，那么会出错。 优先级不用于解决联接冲突。 对象必须具有在范围内的联接规则，属性才能以相同的入站/出站方向流动。 如果需要让属性以入站和出站方式流动到同一对象，则联接必须具有入站和出站同步规则。
 
@@ -101,7 +101,7 @@ ms.locfileid: "60246288"
 ### <a name="merging-attribute-values"></a>合并属性值
 在属性流中，有一个设置可用于确定是否应从多个不同的连接器合并多值属性。 默认值为“Update”  ，表示应采用具有最高优先级的同步规则。
 
-![合并类型](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![显示 "添加转换" 部分的屏幕截图，其中 "合并类型" 下拉菜单打开。](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 此外，还有“Merge”  和“MergeCaseInsensitive”。  这些选项让用户能够合并来自不同源的值。 例如，它可用于合并来自多个不同林的成员或 proxyAddresses 属性。 使用此选项时，对象范围内的所有同步规则都必须使用相同的合并类型。 不能定义从一个连接器“Update”，从另一个连接器“Merge”。   如果尝试此操作，将收到错误。
 
@@ -146,7 +146,7 @@ ms.locfileid: "60246288"
 
 ### <a name="multiple-objects-from-the-same-connector-space"></a>相同连接器空间中的多个对象
 如果在联接到同一 metaverse 对象的同一连接器空间中有多个对象，则必须调整优先级。 如果多个对象都在同一同步规则的范围内，则同步引擎无法确定优先级。 应该向 metaverse 提供值的源对象不明确。 即使源中的属性具有相同的值，此配置仍会报告为不明确。  
-![多个对象联接到同一 mv 对象](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+![显示多个对象联接到同一 mv 对象并带有透明红色 X 覆盖的关系图。 ](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
 对于此方案，需要更改同步规则的范围，让源对象在范围内具有不同的同步规则。 这样可以定义不同的优先级。  
 ![多个对象联接到同一 mv 对象](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  

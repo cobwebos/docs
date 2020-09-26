@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/21/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71c470bd1bb71b55d6643ac6305a054f1c934948
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 88349e90102bf3b0e4dc2868d5f65d476aac51f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280362"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>) 递归方式设置访问控制列表 (Acl Azure Data Lake Storage Gen2
 
@@ -55,7 +55,7 @@ ACL 继承已可用于在父目录下创建的新子项目。 你现在还可以
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   若要升级 PowerShell 版本，请参阅[升级现有的 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
+   若要升级 PowerShell 版本，请参阅[升级现有的 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell)
     
 3. 安装最新版本的 PowershellGet 模块。
 
@@ -71,7 +71,7 @@ ACL 继承已可用于在父目录下创建的新子项目。 你现在还可以
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   有关如何安装 PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+   有关如何安装 PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -279,7 +279,9 @@ except Exception as e:
 
 ## <a name="set-an-acl-recursively"></a>以递归方式设置 ACL
 
-可以递归设置 Acl。  
+*设置*acl 时，将**替换**整个 acl，包括它的所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为 *更新* acl。 若要更新 ACL 而不是替换它，请参阅本文的 " [以递归方式更新 acl](#update-an-acl-recursively) " 部分。   
+
+本部分包含有关如何设置 ACL 的示例 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -367,13 +369,17 @@ def set_permission_recursively():
 
 ## <a name="update-an-acl-recursively"></a>以递归方式更新 ACL
 
-可以递归更新现有 ACL。
+*更新*acl 时，将修改 acl，而不是替换 acl。 例如，你可以将新的安全主体添加到 ACL，而不会影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是对其进行更新，请参阅本文的 [设置 acl 递归](#set-an-acl-recursively) 部分。 
+
+若要更新 ACL，请使用要更新的 ACL 项创建一个新的 ACL 对象，然后在 "更新 ACL" 操作中使用该对象。 不要获取现有 ACL，只需提供要更新的 ACL 项。
+
+本部分包含有关如何更新 ACL 的示例。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用  **AzDataLakeGen2AclRecursive** cmdlet 以递归方式更新 ACL。 
 
-此示例将更新具有写入权限的 ACL 条目。
+此示例将更新具有写入权限的 ACL 条目。 
 
 ```powershell
 $filesystemName = "my-container"
@@ -445,7 +451,9 @@ def update_permission_recursively():
 
 ## <a name="remove-acl-entries-recursively"></a>以递归方式删除 ACL 项
 
-可以以递归方式删除一个或多个 ACL 条目。
+可以以递归方式删除一个或多个 ACL 条目。 若要删除 ACL 条目，请为要删除的 ACL 条目创建新的 ACL 对象，然后在 "删除 ACL" 操作中使用该对象。 不要获取现有 ACL，只需提供要删除的 ACL 项。 
+
+本部分包含有关如何删除 ACL 的示例。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

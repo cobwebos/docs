@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Active Directory 为 Workplace by Facebook 配置自动用户预配 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Workplace by Facebook 间配置单一登录。
+description: 了解需要在 Workplace by Facebook 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973868"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321891"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -81,11 +81,11 @@ ms.locfileid: "90973868"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，单击 " **授权**"。 你将被重定向到 Workplace by Facebook 的授权页。 输入 Workplace by Facebook 用户名，并单击 " **继续** " 按钮。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Workplace by Facebook。 如果连接失败，请确保 Workplace by Facebook 帐户具有管理员权限，然后重试。
 
@@ -108,7 +108,7 @@ ms.locfileid: "90973868"
    |userName|字符串|
    |displayName|字符串|
    |活动|Boolean|
-   |title|Boolean|
+   |title|布尔|
    |emails[type eq "work"].value|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
@@ -124,16 +124,16 @@ ms.locfileid: "90973868"
    |phoneNumbers[type eq "mobile"].value|字符串|
    |phoneNumbers[type eq "fax"].value|字符串|
    |externalId|字符串|
-   |preferredLanguage|字符串|
+   |preferredLanguage|String|
    |urn:scim:schemas:extension:enterprise:1.0.manager|字符串|
    |urn:scim:schemas:extension:enterprise:1.0.department|String|
    |urn:scim:schemas:extension:enterprise:1.0.division|String|
    |urn:scim:schemas:extension:enterprise:1.0.organization|String|
    |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
-   |urn： scim：架构：扩展： facebook： auth_method：1.0： auth_method|字符串|
-   |urn： scim：架构：扩展： facebook：前端：1.0。 is_frontline|Boolean|
-   |urn： scim：架构：扩展： facebook： starttermdates：1.0。开始日期|整数|
+   |urn： scim：架构：扩展： facebook： auth_method：1.0： auth_method|String|
+   |urn： scim：架构：扩展： facebook：前端：1.0。 is_frontline|布尔|
+   |urn： scim：架构：扩展： facebook： starttermdates：1.0。开始日期|Integer|
 
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。

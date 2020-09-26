@@ -3,16 +3,16 @@ title: SKU 不可用错误
 description: 介绍在使用 Azure 资源管理器部署资源时如何解决 SKU 不可用错误。
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37ad70093cce4cea6689fecbc3b6ccb91db5017b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78942725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333216"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
-本文介绍如何解决 SkuNotAvailable 错误  。 如果在该区域/区域中找不到合适的 SKU 或满足业务需求的备用区域/区域，请将[SKU 请求](https://aka.ms/skurestriction)提交到 Azure 支持。
+本文介绍如何解决 SkuNotAvailable 错误  。 如果在该区域/区域中找不到合适的 SKU 或满足业务需求的备用区域/区域，请将 [SKU 请求](https://aka.ms/skurestriction) 提交到 Azure 支持。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -30,11 +30,11 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 当所选的资源 SKU（如 VM 大小）不可用于所选的位置时，会收到此错误。
 
-如果要部署 Azure 点 VM 或点规模集实例，此位置中的 Azure 位置没有任何容量。 有关详细信息，请参阅[污点错误消息](../../virtual-machines/error-codes-spot.md)。
+如果要部署 Azure 点 VM 或点规模集实例，此位置中的 Azure 位置没有任何容量。 有关详细信息，请参阅 [污点错误消息](../../virtual-machines/error-codes-spot.md)。
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
-若要确定区域/区域中可用的 Sku，请使用[AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku)命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
+若要确定区域/区域中可用的 Sku，请使用 [AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) 命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
@@ -78,7 +78,6 @@ virtualMachines  southcentralus  Standard_F2                ...             None
 virtualMachines  southcentralus  Standard_F4                ...             None
 ...
 ```
-
 
 ## <a name="solution-3---azure-portal"></a>解决方案 3 - Azure 门户
 
