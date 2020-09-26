@@ -49,7 +49,7 @@ ms.locfileid: "91334576"
 
    ![用于监视环境的触发器信息](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 说明 |
    |----------|----------|-------------|
    | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅 [Power Platform-环境概述](/power-platform/admin/environments-overview)。 |
    | **实体名称** | 是 | 要监视的实体，例如 "Lead" |
@@ -70,7 +70,7 @@ ms.locfileid: "91334576"
 
    ![要在其中创建记录的环境的操作信息](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 说明 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的环境，该记录在触发器中不必是相同的环境，而是在此示例中为 "Fabrikam 销售生产" |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dc3e128ac1c611a8527c3044bfac566edc24c74
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341646"
+ms.locfileid: "91361783"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虚拟机的可用性
 
@@ -36,7 +36,7 @@ ms.locfileid: "91341646"
 
 * 使用可用性区域防止数据中心故障
 * 在可用性集中配置多个虚拟机以确保冗余
-* 为可用性集中的 Vm 使用托管磁盘]
+* 为可用性集中的 VM 使用托管磁盘
 * 使用计划事件主动响应影响事件的 VM
 * 将每个应用程序层配置到不同的可用性集中
 * 将负载均衡器与可用性区域或可用性集组合在一起

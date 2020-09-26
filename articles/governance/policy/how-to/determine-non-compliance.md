@@ -197,7 +197,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改 Azure 资源管理器属性时会触发更改检测。
 
-1. 在 Azure 门户中选择“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务 。
+1. 在 Azure 门户中选择“所有服务”，然后搜索并选择“Policy”，启动 Azure Policy 服务。 
 
 1. 在“概览”或“符合性”页，选择任一“符合性状态”策略  。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 8917343175dd5ed8f82c1929683de98034323163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8548e6c4c3e2b31d9fb16273bcc441ca38127831
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321909"
+ms.locfileid: "91361817"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：为 PureCloud by Genesys 配置自动用户预配
 
@@ -88,7 +88,7 @@ ms.locfileid: "91321909"
 
 5. 在 " **管理员凭据** " 部分下，分别在 " **租户 URL** " 和 " **机密令牌** " 字段中输入 PureCloud By Genesys API URL 和 Oauth 令牌。 API URL 将 `{{API Url}}/api/v2/scim/v2` 使用 [PureCloud 开发人员中心](https://developer.mypurecloud.com/api/rest/index.html)的 PURECLOUD 区域的 api url 作为构造。 单击 " **测试连接** " 以确保 Azure AD 可以通过 Genesys 连接到 PureCloud。 如果连接失败，请确保 PureCloud by Genesys 帐户具有管理员权限，然后重试。
 
-    ![预配](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

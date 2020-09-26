@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362531"
 ---
 # <a name="configure-rules"></a>配置规则
 
@@ -33,7 +33,7 @@ IoT Central 中的规则充当可自定义的响应工具，针对已连接设�
 
 在下面的屏幕截图中，条件检查何时温度大于 70&deg; F 且湿度小于 10。 当这两个语句都为 true 时，规则的结果为 true，并触发操作。
 
-![条件](media/howto-configure-rules/conditions.png)
+![屏幕截图显示了一个冰箱监视器，其中包含为温度和湿度指定的条件。](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>在值字段中使用云属性
 
