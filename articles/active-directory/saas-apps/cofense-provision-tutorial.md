@@ -1,6 +1,6 @@
 ---
-title: 教程：为 Cofense 配置自动用户预配 Azure Active Directory |Microsoft Docs
-description: 了解如何自动将用户 Azure AD 帐户预配到 Cofense 以及取消其预配。
+title: 教程：为 Cofense 收件人同步配置 Azure Active Directory 的自动用户预配 |Microsoft Docs
+description: 了解如何从 Azure AD 自动预配和取消预配用户帐户。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: d1ef09e34e44a8a4f39fb5e9c140f138d3da8d86
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: 53176114e8236ac8d8d38b1cf4c7472b0c18c08d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305590"
 ---
-# <a name="tutorial-configure-cofense-for-automatic-user-provisioning"></a>教程：为 Cofense 配置自动用户预配
+# <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Cofense 收件人同步
 
-本教程介绍了需要在 Cofense 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动预配用户并将其取消预配到 [Cofense](https://cofense.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在 Cofense 收件人同步和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置后，Azure AD 会自动预配用户并取消其预配，使其能够使用 Azure AD 预配服务进行 [Cofense 的收件人同步](https://cofense.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
-> * 在 Cofense 中创建用户
-> * 当用户不再需要访问权限时，删除 Cofense 中的用户
-> * 使用户属性在 Azure AD 和 Cofense 之间保持同步
+> * 在 Cofense 中创建用户同步收件人同步
+> * 如果用户不再需要访问，请在 Cofense 收件人同步中删除用户
+> * 使用户属性在 Azure AD 和 Cofense 收件人同步之间保持同步
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,44 +44,44 @@ ms.locfileid: "90761465"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要 [在 Azure AD 与 Cofense 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+3. 确定 [Azure AD 和 Cofense 收件人同步之间要映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-cofense-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Cofense 以支持 Azure AD 的预配
+## <a name="step-2-configure-cofense-recipient-sync-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Cofense 收件人同步，以支持 Azure AD 的预配
 
-1. 登录到 Cofense PhishMe。 导航到收件人 "> 收件人同步"。 
-2. 接受条款和条件，然后单击 "开始"。
+1. 登录到 Cofense PhishMe。 导航到收件人 " **> 收件人同步**"。 
+2. 接受条款和条件，然后单击 " **开始**"。
 
     ![收件人同步 tnc](media/cofense-provisioning-tutorial/recipient-sync-toc.png)
 
-3. 复制 "URL" 和 "令牌" 字段中的值。
+3. 复制 " **URL** " 和 " **令牌" 字段**中的值。
 
     ![收件人同步](media/cofense-provisioning-tutorial/recipient-sync-getting-started.png)
 
 
-## <a name="step-3-add-cofense-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Cofense
+## <a name="step-3-add-cofense-recipient-sync-from-the-azure-ad-application-gallery"></a>步骤 3. 添加 Azure AD 应用程序库中的 Cofense 收件人同步
 
-从 Azure AD 应用程序库中添加 Cofense，开始管理预配到 Cofense。 如果以前为 SSO 设置了 Cofense，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
+添加 Azure AD 应用程序库中的 Cofense 收件人同步，开始管理预配到 Cofense 收件人同步。如果你以前为 SSO 设置 Cofense 收件人同步，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到 Cofense 时，必须选择 " **默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 Cofense 收件人同步时，你必须选择 "默认" **访问权限**以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-cofense"></a>步骤 5。 配置 Cofense 的自动用户预配 
+## <a name="step-5-configure-automatic-user-provisioning-to-cofense-recipient-sync"></a>步骤 5。 将自动用户预配配置为 Cofense 收件人同步 
 
-本部分将指导你完成配置 Azure AD 预配服务以基于 Azure AD 中的用户在 Cofense 中创建、更新和禁用用户的步骤。
+本部分将指导你完成配置 Azure AD 预配服务，以便在基于 Azure AD 中的用户的 Cofense 收件人同步中创建、更新和禁用用户的步骤。
 
-### <a name="to-configure-automatic-user-provisioning-for-cofense-in-azure-ad"></a>若要在 Azure AD 中配置 Cofense 的自动用户预配：
+### <a name="to-configure-automatic-user-provisioning-for-cofense-recipient-sync-in-azure-ad"></a>若要为 Azure AD 中的 Cofense 收件人同步配置自动用户预配，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 " **Cofense**"。
+2. 在应用程序列表中，选择 " **Cofense 收件人同步**"。
 
     ![应用程序列表中的 Cofense 链接](common/all-applications.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "90761465"
 
     ![自动设置选项卡](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分中，输入之前从步骤2中检索到的 **SCIM 2.0 基 Url 和 SCIM Authentication 令牌** 值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Cofense。 如果连接失败，请确保 Cofense 帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入之前从步骤2中检索到的 **SCIM 2.0 基 Url 和 SCIM Authentication 令牌** 值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Cofense 收件人同步。如果连接失败，请确保 Cofense 收件人同步帐户具有管理员权限，然后重试。
 
     ![租户 URL 标记](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -103,9 +103,9 @@ ms.locfileid: "90761465"
 
 7. 选择“保存”。
 
-8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Cofense**"。
+8. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 用户" 以 Cofense 收件人同步**。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Cofense 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Cofense 中的用户帐户以执行更新操作。  选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Cofense 收件人同步的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Cofense 收件人 Sync 中的用户帐户以执行更新操作。  选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
@@ -135,8 +135,8 @@ ms.locfileid: "90761465"
    |电子邮件 [类型 eq "home"]。值|String|
    |电子邮件 [type eq "other"]。值|字符串|
    |preferredLanguage|字符串|
-   |昵称|String|
-   |userType|字符串|
+   |nickName|String|
+   |userType|String|
    |区域设置|字符串|
    |timezone|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
@@ -148,7 +148,7 @@ ms.locfileid: "90761465"
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-11. 若要为 Cofense 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+11. 若要为 Cofense 收件人同步启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 

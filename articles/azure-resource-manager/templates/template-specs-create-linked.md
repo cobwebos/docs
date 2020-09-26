@@ -1,18 +1,18 @@
 ---
-title: 使用链接模板创建模板规范
-description: 了解如何创建具有链接模板的模板规范。
+title: 创建具有链接模板的模板规格
+description: 了解如何创建具有链接模板的模板规格。
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: f1808be73981c3ab4d53fd2a651822b93b5fb790
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: df3403fea47f31481f4b3c6d1292749d69f2f584
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369172"
 ---
-# <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教程：使用链接模板创建模板规范 (预览) 
+# <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教程：创建具有链接模板的模板规格（预览）
 
-了解如何创建具有[链接模板](linked-templates.md#linked-template)的[模板规范](template-specs.md)。 使用模板规范与组织中的其他用户共享 ARM 模板。 本文介绍如何使用 `relativePath` [部署资源](/azure/templates/microsoft.resources/deployments)的新属性来创建模板规范以打包主模板及其链接的模板。
+了解如何创建具有[链接模板](linked-templates.md#linked-template)的[模板规格](template-specs.md)。 使用模板规格与组织中的其他用户共享 ARM 模板。 本文介绍如何使用 `relativePath` [部署资源](/azure/templates/microsoft.resources/deployments)的新属性来创建模板规范以打包主模板及其链接的模板。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,19 +23,19 @@ ms.locfileid: "89227995"
 
 ## <a name="create-linked-templates"></a>创建链接模板
 
-创建主模板和链接的模板。
+创建主模板和链接模板。
 
 若要链接模板，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 `templateLink` 属性中，根据父模板的路径指定链接模板的相对路径。
 
-链接模板在 ** 上linkedTemplate.js**调用，并存储在存储主模板的路径中名为 " **项目** " 的子文件夹中。  可以对 relativePath 使用以下值之一：
+该链接模板名为 linkedTemplate.json，存储在主模板所在的路径中名为 artifacts 的子文件夹中 。  你可以使用 relativePath 的以下值之一：
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-`relativePath`属性始终相对于在其中声明的模板文件 `relativePath` ，因此，如果在上的 linkedTemplate.js中调用了另一个 linkedTemplate2.js，并将上的 linkedTemplate2.js存储在同一项目子文件夹中，则在 linkedTemplate.js上指定的 relativePath 就是 `linkedTemplate2.json` 。
+`relativePath` 属性始终与声明 `relativePath` 的模板文件相关，因此，如果有另一个 linkedTemplate2.json 从 linkedTemplate.json 调用，并且 linkedTemplate2.json 存储在相同的 artifacts 子文件夹中，则在 linkedTemplate.json 中指定的 relativePath 仅仅是 `linkedTemplate2.json`。
 
-1. 创建具有以下 JSON 的主模板。 将主模板azuredeploy.js保存到本地计算机 ** 上** 。 本教程假定你已保存到 **c:\Templates\linkedTS\azuredeploy.js的** 路径，但你可以使用任何路径。
+1. 使用以下 JSON 创建主模板。 将主模板作为 azuredeploy.json 保存到本地计算机。 本教程假设你已将主模板保存到路径 c:\Templates\linkedTS\azuredeploy.json，但你可以使用任何路径。
 
     ```json
     {
@@ -102,10 +102,10 @@ ms.locfileid: "89227995"
     ```
 
     > [!NOTE]
-    > 的 apiVersion `Microsoft.Resources/deployments` 必须是2020-06-01 或更高版本。
+    > `Microsoft.Resources/deployments` 的 apiVersion 必须是 2020-06-01 或更高版本。
 
-1. 在保存主模板的文件夹中创建一个名为 " **项目** " 的目录。
-1. 用以下 JSON 创建链接模板：
+1. 在保存主模板的文件夹中创建名为 artifacts 的目录。
+1. 使用以下 JSON 创建链接模板：
 
     ```json
     {
@@ -158,11 +158,11 @@ ms.locfileid: "89227995"
     }
     ```
 
-1. 将模板另存为**项目**文件夹中的**linkedTemplate.js** 。
+1. 将模板作为 linkedTemplate.json 保存在 artifacts 文件夹中 。
 
 ## <a name="create-template-spec"></a>创建模板规格
 
-模板规范存储在资源组中。  创建资源组，然后使用以下脚本创建模板规范。 模板规范名称为 **webSpec**。
+模板规格存储在资源组中。  创建资源组，然后使用以下脚本创建模板规格。 模板规格的名称为 webSpec。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -176,7 +176,7 @@ New-AzTemplateSpec `
   -Version "1.0.0.0" `
   -ResourceGroupName templateSpecRG `
   -Location westus2 `
-  -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
+  -TemplateFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -196,7 +196,7 @@ az ts create \
 
 ---
 
-完成后，可以从 Azure 门户或使用以下 cmdlet 查看模板规范：
+完成后，可以从 Azure 门户或使用以下 cmdlet 查看模板规格：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -223,7 +223,7 @@ New-AzResourceGroup `
   -Name webRG `
   -Location westus2
 
-$id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name webSpec -Version "1.0.0.0").Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name webSpec -Version "1.0.0.0").Versions.Id
 
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
@@ -245,10 +245,10 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> 获取模板规范 ID 并将其分配到 Windows PowerShell 中的变量时存在一个已知问题。
+> 获取模板规格 ID 并将其分配到 Windows PowerShell 中的变量时存在一个已知问题。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何将模板规范部署为链接模板，请参阅 [教程：将模板规范部署为链接模板](template-specs-deploy-linked-template.md)。
+若要了解如何将模板规格部署为链接模板，请参阅[教程：将模板规格部署为链接模板](template-specs-deploy-linked-template.md)。
