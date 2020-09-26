@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317219"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -365,7 +365,7 @@ public class HttpTriggerQueueOutput {
 
 # <a name="python"></a>[Python](#tab/python)
 
-有两个选项可用于从函数输出事件中心消息：
+有两个选项可用于从函数输出队列消息：
 
 - **返回值**：将 `name` *function.js上* 的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为队列存储消息。
 
@@ -373,11 +373,11 @@ public class HttpTriggerQueueOutput {
 
 # <a name="java"></a>[Java](#tab/java)
 
-可通过两个选项使用 [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注释从函数输出事件中心消息：
+可以通过以下两个选项使用 [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) 批注从函数输出队列消息：
 
-- **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为事件中心消息。
+- **返回值**：通过将批注应用于函数本身，函数的返回值将持久保存为队列消息。
 
-- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向方法传递值会 `setValue` 将值作为队列消息保留。
 
 ---
 

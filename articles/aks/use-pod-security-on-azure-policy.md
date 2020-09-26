@@ -5,21 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299147"
+ms.locfileid: "91368849"
 ---
 # <a name="secure-pods-with-azure-policy"></a>带有 Azure 策略的安全箱
 
 若要提高 AKS 群集的安全性，可以控制要授予哪些功能，以及根据公司策略运行的任何功能。 此访问通过 [用于 AKS 的 Azure 策略外接程序][kubernetes-policy-reference]提供的内置策略定义。 通过提供对 pod 规范安全方面（如 root 权限）的更多控制，可实现更严格的安全遵从性并了解群集中部署的内容。 如果 pod 不满足策略中指定的条件，Azure 策略可以禁止 pod 启动或标记冲突。 本文介绍如何使用 Azure 策略来限制 AKS 中 pod 的部署。
 
 ## <a name="before-you-begin"></a>开始之前
-
-> [!IMPORTANT]
-> AKS 上的 Azure 策略的公开上市 (GA) 在所有区域中主动发布。 GA 版本的预期全球完成为9/29/2020。 如果区域中没有 GA 版本，则需要预览注册步骤。 但是，这会在该区域中可用时自动更新为 GA 版本。
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
