@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331193"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
 
@@ -91,7 +91,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 ## <a name="plan-an-azure-ad-reporting-and-monitoring-deployment"></a>规划 Azure AD 报告和监视部署
 
-报告和监视用于满足你的业务要求，深入了解使用模式，并实现组织的安全状况。
+报告和监视用于满足你的业务需求，深入了解使用模式，并提高组织的安全状况。
 
 ### <a name="business-use-cases"></a>业务用例
 

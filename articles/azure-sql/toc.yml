@@ -1081,7 +1081,7 @@
               href: ./database/policy-reference.md
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
@@ -1117,7 +1117,7 @@
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/linux/frequently-asked-questions-faq.md
             - name: “Linux 上的 SQL Server”文档
               href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
@@ -1200,7 +1200,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md
@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: 服务更新
       items:
+        - name: SSL 根证书即将过期
+          href: updates/ssl-root-certificate-expiring.md
         - name: 网关 IP 地址更新
           href: database/gateway-migration.md
         - name: 定期维护事件

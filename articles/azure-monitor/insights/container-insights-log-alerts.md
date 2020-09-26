@@ -3,12 +3,12 @@ title: 容器 Azure Monitor 的日志警报 |Microsoft Docs
 description: 本文介绍如何为容器 Azure Monitor 中的内存和 CPU 使用率创建自定义日志警报。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294540"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何从容器 Azure Monitor 创建日志警报
 
@@ -275,13 +275,13 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
 
-本部分介绍如何使用容器 Azure Monitor 中的性能数据创建指标度量警报规则。 可以将此基本过程用于各种日志查询，以对不同的性能计数器发出警报。 使用之前提供的一个日志搜索查询来开始使用。 若要使用 ARM 模板创建，请参阅 [使用 Azure 资源模板创建示例日志警报](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)。
+本部分介绍如何使用容器 Azure Monitor 中的性能数据创建指标度量警报规则。 可以将此基本过程用于各种日志查询，以对不同的性能计数器发出警报。 使用之前提供的一个日志搜索查询来开始使用。 若要使用 ARM 模板创建，请参阅 [使用 Azure 资源模板创建日志警报的示例](../platform/alerts-log-create-templates.md)。
 
 >[!NOTE]
 >遵循以下过程针对容器资源利用率创建警报规则需要根据[切换日志警报的 API 首选项](../platform/alerts-log-api-switch.md)中所述，切换到新的日志警报 API。
 >
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在 Azure 门户中，搜索并选择“Log Analytics 工作区”。
 3. 在 Log Analytics 工作区列表中，选择支持容器 Azure Monitor 的工作区。 
 4. 在左侧窗格中，选择 " **日志** " 以打开 "Azure Monitor 日志" 页。 使用此页可以编写和执行 Azure 日志查询。

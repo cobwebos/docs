@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314691"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
@@ -35,6 +35,8 @@ ms.locfileid: "90979606"
 ## <a name="encrypted-transmissions-and-storage"></a>加密的传输和存储
 
 在 Azure 认知搜索中，加密从连接和传输开始，一直延伸到磁盘上存储的内容。 对于公共 Internet 上的搜索服务，Azure 认知搜索会侦听 HTTPS 端口 443。 客户端到服务的所有连接都使用 TLS 1.2 加密。 不支持更早的版本（1.0 或 1.1）。
+
+:::image type="content" source="media/search-security-overview/encryption-at-rest-cmk.png" alt-text="描述每个服务协定的不同类型的安全性的关系图":::
 
 对于由搜索服务在内部处理的数据，下表介绍了 [数据加密模型](../security/fundamentals/encryption-models.md)。 某些功能（如知识库、增量扩充和基于索引器的索引）、对其他 Azure 服务中的数据结构进行读取或写入。 这些服务独立于 Azure 认知搜索提供自己的加密支持级别。
 
@@ -92,6 +94,8 @@ ms.locfileid: "90979606"
 
 为了进一步控制对搜索服务的访问，可以创建入站防火墙规则，以允许访问特定 IP 地址或某个范围的 IP 地址。 所有客户端连接必须通过允许的 IP 地址建立，否则连接将被拒绝。
 
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="ip 限制访问的示例体系结构示意图":::
+
 可以使用门户[配置入站访问](service-configure-firewall.md)。
 
 或者，可以使用管理 REST API。 从 API 版本2020-03-13 开始，使用 [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) 参数，你可以通过标识你想要授予对搜索服务的访问权限的 IP 地址，限制对服务的访问。
@@ -101,6 +105,8 @@ ms.locfileid: "90979606"
 Azure 认知搜索的 [专用终结点](../private-link/private-endpoint-overview.md) 允许 [虚拟网络](../virtual-network/virtual-networks-overview.md) 上的客户端通过 [专用链接](../private-link/private-link-overview.md)安全访问搜索索引中的数据。
 
 专用终结点使用虚拟网络地址空间中的 IP 地址来连接到搜索服务。 客户端与搜索服务之间的网络流量将在 Microsoft 主干网络上遍历虚拟网络和专用链接，从而消除了公共 internet 的泄露。 VNET 允许在资源之间通过本地网络和 Internet 进行安全通信。
+
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="专用终结点访问的示例体系结构关系图":::
 
 虽然这种解决方案是最安全的，但使用其他服务是一项额外的成本，因此请确保你清楚地了解其中的好处。 有关成本的详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/private-link/)。 有关这些组件如何协同工作的详细信息，请观看本文顶部的视频。 专用终结点选项的范围从5:48 开始到视频。 有关如何设置终结点的说明，请参阅 [为 Azure 认知搜索创建专用终结点](service-create-private-endpoint.md)。
 

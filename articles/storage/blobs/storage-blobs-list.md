@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280090"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 blob
 
@@ -59,7 +59,7 @@ ms.locfileid: "89009536"
 
 ### <a name="filter-results-with-a-prefix"></a>使用前缀筛选结果
 
-若要筛选容器列表，请为 `prefix` 参数指定一个字符串。 前缀字符串可以包含一个或多个字符。 然后，Azure 存储只返回其名称以该前缀开头的 Blob。
+若要筛选 blob 列表，请指定参数的字符串 `prefix` 。 前缀字符串可以包含一个或多个字符。 然后，Azure 存储只返回其名称以该前缀开头的 Blob。
 
 ### <a name="return-metadata"></a>返回元数据
 

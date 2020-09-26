@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4fe353467a11e9581db76ec495194878414f4dfb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280141"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -133,6 +133,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 - 表存储：`https://*mystorageaccount*.table.core.windows.net`
 - 队列存储：`https://*mystorageaccount*.queue.core.windows.net`
 - Azure 文件存储：`https://*mystorageaccount*.file.core.windows.net`
+- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [专门针对大数据进行优化的 ABFS 驱动程序](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)。 ) 
 
 > [!NOTE]
 > 块 blob 和 blob 存储帐户仅公开 Blob 服务终结点。

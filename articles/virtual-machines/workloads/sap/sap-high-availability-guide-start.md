@@ -1,6 +1,6 @@
 ---
 title: SAP NetWeaver 的 Azure Vm 高可用性 |Microsoft Docs
-description: Azure 虚拟机 (VM) 上的 SAP NetWeaver 的高可用性指南
+description: 本文介绍 SAP NetWeaver 的 Azure 虚拟机高可用性。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a0ac9ab349cfe8bef8e33d3f533bc5942e6323
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6591f23a0a29b477ab921791ab0dd53c070325a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77623833"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313975"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机高可用性
 
@@ -197,7 +197,7 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
     >
 * 以下操作系统上的 SAP 高可用性：
   * ![Windows][Logo_Windows]  **Windows**，使用 **Windows Server 故障转移群集 (WSFC)**
-  * ![Linux ][Logo_Linux] **linux**，使用**linux 群集框架**
+  * ![Linux ][Logo_Linux] **linux**，使用 **linux 群集框架**
 
 这些文章介绍帮助保护单一故障点 (SPOF) 组件，例如 SAP 中心服务 (ASCS/SCS) 和数据库管理系统 (DBMS)。 此外，还介绍 Azure 中的冗余组件，例如 SAP 应用程序服务器。
 
