@@ -1,7 +1,17 @@
 - name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 商业市场
+      tocHref: /azure/marketplace/
+      topicHref: /azure/marketplace/index
+- name: Azure
   tocHref: /legal/
   topicHref: /azure/index
   items:
     - name: 商业市场
       tocHref: /legal/marketplace/
       topicHref: /azure/marketplace/index
+- name: Azure
+  tocHref: /partner-center/
+  topicHref: /azure/index

@@ -10,12 +10,12 @@ metadata:
   author: MGoedtel
   ms.author: magoedte
   ms.date: 09/23/2020
-  ms.openlocfilehash: ea57cbb94a45339c6de58ba1abdaa864ddc43186
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: 2ebc8329466df4fba7963a2838c19e2b7a1c539f
+  ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91317236"
+  ms.locfileid: "91357822"
 highlightedContent:
   items:
   - title: 关于 Azure Arc
@@ -32,7 +32,7 @@ highlightedContent:
     url: ./data/overview.md
   - title: 已启用 Azure Arc 的 SQL Server（预览）
     itemType: overview
-    url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
+    url: /sql/sql-server/azure-arc/overview
 productDirectory:
   title: 已启用 Azure Arc 的服务
   summary: 查看如何随处运行服务。
@@ -48,7 +48,7 @@ productDirectory:
       text: 通过 PowerShell DSC 将计算机连接到 Azure
     - url: ./servers/index.yml
       text: 查看更多…
-  - title: 已启用 Azure Arc 的 Kubernetes
+  - title: 启用了 Azure Arc 的 Kubernetes（预览版）
     imageSrc: ./media/01088-icon-arc-kubernetes-menu.svg
     links:
     - url: ./kubernetes/connect-cluster.md
@@ -71,9 +71,9 @@ productDirectory:
   - title: 已启用 Azure Arc 的 SQL Server（预览）
     imageSrc: ./media/01850-icon-arc-sql-server-menu.svg
     links:
-    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/assess
+    - url: /sql/sql-server/azure-arc/assess
       text: 评估 SQL 实例
-    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
+    - url: /sql/sql-server/azure-arc/overview
       text: 查看更多…
 conceptualContent:
   title: 入门

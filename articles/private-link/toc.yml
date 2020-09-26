@@ -24,6 +24,10 @@
     - name: 创建专用链接服务 - ARM 模板
       displayName: Resource Manager
       href: create-private-link-service-template.md
+- name: 教程
+  items:
+    - name: 连接到存储帐户
+      href: tutorial-private-endpoint-storage-portal.md
 - name: 概念
   items:
     - name: 专用终结点
@@ -38,8 +42,6 @@
           href: security-baseline.md
 - name: 如何
   items:
-    - name: 专门连接到存储帐户
-      href: create-private-endpoint-storage-portal.md
     - name: 专门连接到 Cosmos DB 帐户
       href: create-private-endpoint-cosmosdb-portal.md
     - name: 私密连接到 Web 应用
@@ -96,5 +98,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 常见问题
+    - name: 常见问题解答
       href: private-link-faq.md

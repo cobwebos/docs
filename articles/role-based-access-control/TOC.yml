@@ -28,7 +28,7 @@
       href: tutorial-custom-role-cli.md
 - name: 概念
   items:
-    - name: 最佳实践
+    - name: 最佳做法
       href: best-practices.md
     - name: 用于 Azure 管理的条件访问
       href: conditional-access-azure-management.md
@@ -112,7 +112,7 @@
     - name: 资源提供程序操作
       href: resource-provider-operations.md
     - name: Azure RBAC 限制
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

@@ -90,6 +90,8 @@
       href: service-bus-throttling.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 身份验证和授权
           href: service-bus-authentication-and-authorization.md
           items:
@@ -229,7 +231,7 @@
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 故障排除指南
           href: service-bus-troubleshooting-guide.md
