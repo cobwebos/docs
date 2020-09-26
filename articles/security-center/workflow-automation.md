@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904650"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322149"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>通过工作流自动化创建对警报和建议的自动响应
 
@@ -31,8 +31,8 @@ ms.locfileid: "90904650"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|免费|
-|必需的角色和权限：|资源组上的**安全管理员角色**或**所有者**<br>还必须对目标资源具有写入权限<br><br>若要使用 Azure 逻辑应用工作流，还必须具有以下逻辑应用角色/权限：<br> - [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 权限是必需的或逻辑应用读取/触发器访问 (此角色无法创建或编辑逻辑应用;仅 *运行* 现有) <br> - 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的<br>如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务 (例如，Outlook/团队/时差实例) |
+|定价：|免费|
+|所需角色和权限：|资源组上的**安全管理员角色**或**所有者**<br>还必须具有对目标资源的写入权限<br><br>若要使用 Azure 逻辑应用工作流，还必须具有以下逻辑应用角色/权限：<br> - [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 权限是必需的或逻辑应用读取/触发器访问 (此角色无法创建或编辑逻辑应用;仅 *运行* 现有) <br> - 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的<br>如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务 (例如，Outlook/团队/时差实例) |
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中国 Gov，其他 Gov|
 |||
 
@@ -67,11 +67,9 @@ ms.locfileid: "90904650"
 
     在逻辑应用设计器中，支持安全中心连接器中的以下触发器：
 
-    * **创建或触发 Azure 安全中心建议时**
-    * **创建或触发 Azure 安全中心警报时** 
-    
-    > [!TIP]
-    > 你可以自定义触发器，使其仅与你感兴趣的严重性级别相关的警报相关联。
+    * **创建或触发 Azure 安全中心建议时** -如果逻辑应用依赖于不推荐使用或已替换的建议，则自动化将停止工作，并且需要更新触发器。 若要跟踪对建议的更改，请参阅 [Azure 安全中心发行说明](release-notes.md)。
+
+    * **当创建或触发 Azure 安全中心警报时** ，你可以自定义触发器，使其仅与你感兴趣的严重性级别的警报相关。
     
     > [!NOTE]
     > 如果在触发对 Azure 安全中心警报的响应时使用旧触发器，则不会通过工作流自动化功能启动逻辑应用。 请改用以上所述的任一触发器。 

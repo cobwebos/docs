@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498610"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322081"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -34,7 +34,7 @@ ms.locfileid: "87498610"
 **缓存存储帐户** | 源网络中需要一个缓存存储帐户。 在复制期间，VM 更改将存储在缓存中，然后再发送到目标存储。  缓存存储帐户必须是标准存储帐户。<br/><br/> 使用缓存可确保尽量减少对 VM 上运行的生产应用程序造成的影响。<br/><br/> [详细了解](azure-to-azure-support-matrix.md#cache-storage)缓存存储要求。 
 **目标资源** | 在复制期间以及发生故障转移时将使用目标资源。 Site Recovery 默认可以设置目标资源，你也可以自行创建/自定义目标资源。<br/><br/> 在目标区域中，请检查是否能够创建 VM，以及你的订阅是否有足够的资源用于支持目标区域中所需的 VM 大小。 
 
-![显示源和目标复制的关系图。](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![此图显示了源和目标副本。](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>目标资源
 
@@ -55,7 +55,7 @@ ms.locfileid: "87498610"
 可按如下所述管理目标资源：
 
 - 启用复制时可以修改目标设置。
-- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 无法更新的资源是可用性类型（单实例、集或区域）。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
+- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 无法更新的资源是 (单实例、集或区域) 的可用性类型。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
 
 
 ## <a name="replication-policy"></a>复制策略 
@@ -104,7 +104,7 @@ Site Recovery 按如下所述创建快照：
 
 **说明** | **详细信息** | 建议
 --- | --- | ---
-应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   2) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存中的数据刷新到磁盘。<br/><br/>   3) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
+应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用 "仅复制备份" (VSS_BT_COPY 不更改 Microsoft SQL 事务日志备份时间和序列号的) 方法 </br></br> 2) 启动快照时，VSS 在卷上执行写入时复制 (牛) 操作。<br/><br/>   3) 在执行牛之前，VSS 会通知计算机上的每个应用程序需要将内存驻留数据刷新到磁盘。<br/><br/>   4) VSS 之后，在这种情况下，备份/灾难恢复应用程序 (Site Recovery) 读取快照数据并继续操作。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
 
 ## <a name="replication-process"></a>复制过程
 
@@ -116,7 +116,7 @@ Site Recovery 按如下所述创建快照：
 4. Site Recovery 处理缓存中的数据，并将其发送到目标存储帐户或副本托管磁盘。
 5. 处理数据后，每隔五分钟生成崩溃一致性恢复点。 根据复制策略中指定的设置生成应用一致性恢复点。
 
-![显示复制过程，步骤2的关系图。](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![此图显示了复制过程第 2 步。](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **复制过程**
 
@@ -128,7 +128,7 @@ Site Recovery 按如下所述创建快照：
 
 如果使用 URL 控制 VM 的出站访问，请允许这些 URL。
 
-| **Name**                  | **商用**                               | **Government**                                 | **说明** |
+| **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
@@ -140,7 +140,7 @@ Site Recovery 按如下所述创建快照：
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
 若要使用 IP 地址控制 VM 的出站连接，请允许这些地址。
-请注意，可以在 "[网络" 白皮书](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到网络连接要求的详细信息 
+请注意，可以在[网络白皮书](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到网络连接要求的详细信息 
 
 #### <a name="source-region-rules"></a>源区域规则
 
@@ -191,7 +191,7 @@ Site Recovery 按如下所述创建快照：
 
 如果启动故障转移，系统会在目标资源组、目标虚拟网络、目标子网和目标可用性集中创建 VM。 可在故障转移过程中使用任意恢复点。
 
-![显示源和目标环境的故障转移过程的示意图。](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![此图显示了源环境和目标环境故障转移过程。](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

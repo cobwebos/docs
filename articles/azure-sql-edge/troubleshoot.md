@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934432"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333097"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>排查 Azure SQL Edge 部署问题 
 
@@ -138,32 +138,12 @@ docker exec -it <Container ID> /bin/bash
 
 现在，可以像在容器内的终端上那样运行这些命令。 完成后，键入 `exit`。 这将退出交互式命令会话，但容器会继续运行。
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>数据流式处理问题疑难解答
-
-默认情况下，Azure SQL Edge 流式处理引擎日志将写入到 `current` **/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000** 目录下的一个名为的文件中。 可以通过映射的卷或数据卷容器直接访问该文件，也可以通过启动与 SQL Edge 容器交互的命令提示符会话来访问该文件。 
-
-此外，如果您能够使用客户端工具连接到 SQL Edge 实例，则可以使用以下 T-sql 命令来访问当前的流引擎日志。 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>启用详细日志记录
 
 如果流式处理引擎的默认日志级别没有提供足够的信息，则可以在 SQL Edge 中启用流式处理引擎的调试日志记录。 若要启用调试日志记录，请将 `RuntimeLogLevel=debug` 环境变量添加到 SQL Edge 部署。 启用调试日志记录后，尝试重现该问题，并检查日志中是否有任何相关的消息或异常。 
 
+> [!NOTE]
+> "详细日志记录" 选项应仅用于故障排除，不适用于常规生产工作负荷。 
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 17a3d0364f3085e4baf4e0faa40f117d9fbbb04f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268156"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控件来减少计算机的攻击面
 
@@ -51,10 +51,10 @@ ms.locfileid: "90894715"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|计价|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |支持的计算机：|![是 ](./media/icons/yes-icon.png) azure 和运行 Windows 和 Linux 的非 azure 计算机<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 计算机|
-|必需的角色和权限：|**安全读者** 和 **读取** 者角色可以查看组和已知安全应用程序的列表<br>**参与者** 和 **安全管理员** 角色可以编辑组和已知安全应用程序的列表|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|所需角色和权限：|**安全读者** 和 **读取** 者角色可以查看组和已知安全应用程序的列表<br>**参与者** 和 **安全管理员** 角色可以编辑组和已知安全应用程序的列表|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 
@@ -229,4 +229,4 @@ REST API 提供的一些函数：
 本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制来定义允许在 Azure 和非 Azure 计算机上运行的应用程序列表。 若要详细了解安全中心的某些其他云工作负荷保护功能，请参阅：
 
 * [了解实时 (JIT) VM 访问](just-in-time-explained.md)
-* [保护 Azure Kubernetes 群集](azure-kubernetes-service-integration.md)
+* [保护 Azure Kubernetes 群集](defender-for-kubernetes-introduction.md)

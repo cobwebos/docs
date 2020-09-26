@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332672"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -67,6 +67,15 @@ MARS 代理需要以下 URL 的访问权限：
 
 对上面列出的所有 URL 和 IP 地址的访问都使用端口 443 上的 HTTPS 协议。
 
+使用 MARS 代理在 Azure Vm 中备份文件和文件夹时，还需要将 Azure 虚拟网络配置为允许访问。 如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD (*AzureActiveDirectory*) 和 Azure 存储 (*存储*) 创建类似的[NSG 规则](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags)，以允许进行身份验证和数据传输连接。 以下步骤介绍了为 Azure 备份标记创建规则的过程：
+
+1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
+2. 在“设置”下选择“出站安全规则”。
+3. 选择“添加”  。 根据[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
+4. 选择 " **添加** " 以保存新创建的出站安全规则。
+
+同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 
 可以使用公共对等互连（适用于旧线路）和 Microsoft 对等互连通过 Azure ExpressRoute 备份数据。 不支持通过专用对等互连进行备份。
@@ -81,11 +90,11 @@ MARS 代理需要以下 URL 的访问权限：
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 
+- Azure 备份 (根据恢复服务保管库的位置) 
 - Azure Active Directory (12076:5060)
-- Microsoft Azure 区域（根据恢复服务保管库的位置）
 - Azure 存储（根据恢复服务保管库的位置）
 
-有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。
+有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md#bgp)。
 
 >[!NOTE]
 >对于新线路，公共对等互连已弃用。
@@ -98,7 +107,7 @@ MARS 代理需要以下 URL 的访问权限：
 
 如果在向保管库注册了 MARS 代理后，删除该保管库的专用终结点，则需要使用保管库重新注册该容器。 不需要停止对它们的保护。
 
-阅读有关[Azure 备份的专用终结点的](private-endpoints.md)详细信息。
+阅读有关 [Azure 备份的专用终结点的](private-endpoints.md)详细信息。
 
 ### <a name="throttling-support"></a>限制支持
 
@@ -136,9 +145,9 @@ Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | - .NET
 
 以下操作系统已结束支持，强烈建议升级操作系统以继续保持受保护状态。
 
-如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure Vm 并利用 Azure VM 备份来继续保护。 有关迁移 Windows server 的详细信息，请访问[此处的迁移页面](https://azure.microsoft.com/migration/windows-server/)。
+如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure Vm 并利用 Azure VM 备份来继续保护。 有关迁移 Windows server 的详细信息，请访问 [此处的迁移页面](https://azure.microsoft.com/migration/windows-server/) 。
 
-对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问[FAQ 页面](https://www.microsoft.com/windows-server/extended-security-updates)了解更多。
+对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问 [FAQ 页面](https://www.microsoft.com/windows-server/extended-security-updates) 了解更多。
 
 | **操作系统**                                       | **文件/文件夹** | **系统状态** | **软件/模块要求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
@@ -166,7 +175,7 @@ Windows 7| 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
-类型 | **支持**
+**类型** | **支持**
 --- | ---
 过<sup>*</sup>| 。
 Compressed | 。
@@ -180,7 +189,7 @@ Compressed | 。
 OneDrive（同步的文件是稀疏流）| 不支持。
 已启用 DFS 复制的文件夹 | 不支持。
 
-\*确保 MARS 代理有权访问所需的证书来访问加密的文件。 将跳过不可访问的文件。
+\* 确保 MARS 代理有权访问所需的证书来访问加密的文件。 将跳过不可访问的文件。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支持备份的驱动器或卷
 

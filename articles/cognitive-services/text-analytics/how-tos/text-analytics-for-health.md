@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300062"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309194"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
@@ -73,7 +73,7 @@ ms.locfileid: "89300062"
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-填写并提交[认知服务容器请求表单](https://aka.ms/cognitivegate)以请求访问容器。 目前，将不会对健康状况文本分析容器的使收费。 
+填写并提交[认知服务容器请求表单](https://aka.ms/csgate)以请求访问容器。 目前，将不会对健康状况文本分析容器的使收费。 
 
 [!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
 

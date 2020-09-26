@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b0547ba25f6534593a0a016ebfa5cbe4d2be2e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934824"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331006"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>获取已启用 Arc 的连接终结点和窗体连接字符串 PostgreSQL 超大规模服务器组
 
@@ -77,7 +77,7 @@ postgres=#
 ```
 > [!NOTE]
 >
-> - 在名为 "_Postgresql Instance_ " 的终结点中指示的_postgresql_用户的密码是在创建服务器组时选择的密码。
+> - 在名为 "_PostgreSQL Instance_" 的终结点中指示的_postgres_用户的密码是在部署服务器组时选择的密码。
 > - 关于 azdata：与连接关联的租约持续大约10个小时。 完成后，需要重新连接。 如果你的租约已过期，当你尝试执行命令时，如果你尝试执行的命令的 azdata (不是 azdata login) ： _error： (401) _ 
 >  _原因：未经授权_的 
 >  _HTTP 响应标头： HTTPHeaderDict ( {"Date"： "Sun，06： 2020 16:58:38 GMT"，"content-type-长度"： "0"，"WWW-身份验证"： "基本_ 

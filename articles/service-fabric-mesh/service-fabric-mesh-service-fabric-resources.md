@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354864"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric 资源模型简介
 
@@ -66,7 +66,7 @@ Service Fabric 资源模型描述了一种定义包含 Service Fabric 网格应�
 
 容器通常会提供临时磁盘。 但是，临时磁盘是暂时的，你会获得一个新的临时磁盘并在容器崩溃时丢失信息。 此外，也很难在临时磁盘上与其他容器共享信息。 卷是装载在可用于保留状态的容器实例内的目录。 卷提供常规用途文件存储，并允许使用正常磁盘 I/O 文件 API 读取/写入文件。 卷资源是一种声明性方式，描述装载目录的方式以及目录的存储备份方式（Azure 文件卷或 Service Fabric Reliable Volume）。  有关详细信息，请参阅[存储状态](service-fabric-mesh-storing-state.md#volumes)。
 
-![卷][Image3]
+![关系图显示了流向磁盘卷的服务，该服务流向 Service Fabric 可靠卷，然后流向复制的本地磁盘、Azure 文件卷和网络存储。][Image3]
 
 ## <a name="programming-models"></a>编程模型
 服务资源只需要运行与其关联的代码包中引用的容器映像。 可以使用容器内的任何框架运行以任何语言编写的代码，而无需了解或使用 Service Fabric 网格特定的 API。 
@@ -75,7 +75,7 @@ Service Fabric 资源模型描述了一种定义包含 Service Fabric 网格应�
 
 ## <a name="packaging-and-deployment"></a>打包和部署
 
-基于资源模型的 Service Fabric 网格应用程序打包为 Docker 容器。  Service Fabric 网格是共享的多租户环境，容器可提供高级别的隔离。  使用 JSON 格式或 YAML 格式（随后将其转换为 JSON）描述这些应用程序。 将网格应用程序部署到 Azure Service Fabric 网格时，用于描述应用程序的 JSON 是 Azure 资源管理器模板。 资源将映射到 Azure 资源。  将网格应用程序部署到 Service Fabric 群集（独立或 Azure 托管）时，用于描述应用程序的 JSON 的格式类似于 Azure 资源管理器模板。  部署后，可通过 HTTP 接口或 Azure CLI 管理网格应用程序。 
+基于资源模型的 Service Fabric 网格应用程序打包为 Docker 容器。  Service Fabric 网格是共享的多租户环境，容器可提供高级别的隔离。  使用 JSON 格式或 YAML 格式（随后将其转换为 JSON）描述这些应用程序。 将网格应用程序部署到 Azure Service Fabric 网格时，用于描述应用程序的 JSON 是 Azure 资源管理器模板。 资源将映射到 Azure 资源。  将网格应用程序部署到 Service Fabric 群集 (独立或 Azure 托管) 时，用于描述应用程序的 JSON 的格式与 Azure 资源管理器模板类似。  部署后，可通过 HTTP 接口或 Azure CLI 管理网格应用程序。 
 
 
 ## <a name="next-steps"></a>后续步骤 

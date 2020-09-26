@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531213"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320964"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -212,13 +212,17 @@ ms.locfileid: "90531213"
 * 你使用自动化 CI/CD，想要在部署资源管理器期间更改某些属性，但这些属性在默认情况下不会参数化。
 * 工厂太大，包含的参数数目超过了允许的最大数目 (256)，以致默认的资源管理器模板无效。
 
-若要替代默认的参数化模板，请在 git 分支的根文件夹中创建名为 **arm-template-parameters-definition.json** 的文件。 必须使用这个具体的文件名。
+若要重写默认参数化模板，请在 "源代码管理" 部分中转到管理中心，并选择 " **参数化模板** "。 选择 " **编辑模板** "，打开参数化模板代码编辑器。 
 
-   ![自定义参数文件](media/continuous-integration-deployment/custom-parameters.png)
+![管理自定义参数](media/author-management-hub/management-hub-custom-parameters.png)
+
+创建自定义参数化模板将在 git 分支的根文件夹中创建一个名为 **arm-template-parameters-definition.js** 的文件。 必须使用这个具体的文件名。
+
+![自定义参数文件](media/continuous-integration-deployment/custom-parameters.png)
 
 从协作分支发布时，数据工厂将读取此文件，并使用其配置来生成参数化的属性。 如果找不到文件，则使用默认模板。
 
-导出资源管理器模板时，数据工厂将从当前正在处理的任何分支读取此文件，而不只是从协作分支读取。 可以在某个专用分支中创建或编辑文件，在此文件中，可以通过选择 UI 中的“导出 ARM 模板”来测试更改。 然后，可将该文件合并到协作分支。
+导出资源管理器模板时，数据工厂从你当前正在处理的分支读取此文件，而不是协作分支。 可以在某个专用分支中创建或编辑文件，在此文件中，可以通过选择 UI 中的“导出 ARM 模板”来测试更改。 然后，可将该文件合并到协作分支。
 
 > [!NOTE]
 > 自定义参数化模板不会更改 ARM 模板参数限制 256。 它允许选择和减少参数化属性的数目。

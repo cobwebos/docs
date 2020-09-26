@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 68484d2047e09dc82d44e15e86b13c4c54c49b03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533787"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285910"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>教程：为 StarLeaf 配置自动用户预配
 
@@ -52,15 +52,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [StarLeaf 管理控制台](https://portal.starleaf.com/#page=login)。 导航到 "**集成**" "  >  **添加集成**"。
 
-    ![StarLeaf 添加 SCIM](media/starleaf-provisioning-tutorial/image00.png)
+    ![StarLeaf 管理控制台的屏幕截图，其中包含集成并添加了称为 out 的集成选项。](media/starleaf-provisioning-tutorial/image00.png)
 
 2. 选择要 Microsoft Azure Active Directory 的 **类型** 。 在 " **名称**" 中输入合适的名称。 单击“应用”。
 
-    ![StarLeaf 添加 SCIM](media/starleaf-provisioning-tutorial/image01.png)
+    ![带有称为 "类型" 和 "名称" 文本框的 "添加集成" 对话框的屏幕截图。](media/starleaf-provisioning-tutorial/image01.png)
 
 3.  然后，将显示 " **SCIM 基本 URL** " 和 " **访问令牌** " 值。 这些值将在 Azure 门户的 StarLeaf 应用程序的 "设置" 选项卡的 " **租户 URL** " 和 " **机密令牌** " 字段中输入。 
 
-    ![StarLeaf 创建令牌](media/starleaf-provisioning-tutorial/image02.png)
+    ![带有称为 "类型"、"名称" 和 "SCIM 基 URL" 文本框的 "编辑集成" 对话框的屏幕截图。](media/starleaf-provisioning-tutorial/image02.png)
 
 ## <a name="add-starleaf-from-the-gallery"></a>从库中添加 StarLeaf
 
@@ -97,11 +97,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 "管理员凭据" 部分下，输入在 "**租户 url** " 和 "**机密令牌**" 中更早检索到的**SCIM 基本 URL**和**访问令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 StarLeaf。 如果连接失败，请确保 StarLeaf 帐户具有管理员权限，然后重试。
 
@@ -111,15 +111,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 StarLeaf**"。
 
-    ![StarLeaf 创建令牌](media/starleaf-provisioning-tutorial/usermapping.png)
+    !["映射" 部分的屏幕截图，其中显示了 "将 Azure Active Directory 用户同步到 StarLeaf" 选项。](media/starleaf-provisioning-tutorial/usermapping.png)
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 StarLeaf 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 StarLeaf 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![StarLeaf 创建令牌](media/starleaf-provisioning-tutorial/userattribute.png)
+    ![显示九个映射的 "属性映射" 部分的屏幕截图。](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。

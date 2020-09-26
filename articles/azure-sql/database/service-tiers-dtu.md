@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/26/2019
-ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321350"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "87541696"
 |**目标工作负荷**|开发和生产|开发和生产|开发和生产|
 |**运行时间 SLA**|99.99%|99.99%|99.99%|
 |**最大备份保留期**|7 天|35 天|35 天|
-|CPU|低|低、中、高|中、高|
+|**CPU**|低|低、中、高|中、高|
 |**IO 吞吐量（近似）** |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |**IO 延迟（近似）**|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |**列存储索引** |空值|S3 及更高版本|支持|
@@ -118,7 +118,7 @@ ms.locfileid: "87541696"
 | Update Heavy |UPDATE；大多数不在内存中；读写 |
 | Insert Lite |INSERT；在内存中；读写 |
 | Insert Heavy |INSERT；大多数不在内存中；读写 |
-| 删除 |DELETE；在内存中和不在内存中的组合；读写 |
+| Delete |DELETE；在内存中和不在内存中的组合；读写 |
 | CPU Heavy |SELECT；在内存中；相对较高的 CPU 负载；只读 |
 
 ### <a name="workload-mix"></a>工作负荷组合

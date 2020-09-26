@@ -3,12 +3,12 @@ title: 指定 Service Fabric 服务终结点
 description: 如何在服务清单中描述终结点资源，包括如何设置 HTTPS 终结点
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: 8fdd95a7c0390c987b7c59663e0ee12e4a4a968e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267799"
+ms.locfileid: "91354753"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -227,9 +227,9 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 本文介绍了如何在 Service Fabric 的服务清单中定义终结点。 有关更多详细示例，请参阅：
 
 > [!div class="nextstepaction"]
-> [应用程序和服务清单示例](https://docs.microsoft.com/azure/service-fabric/service-fabric-manifest-examples.md)
+> [应用程序和服务清单示例](service-fabric-manifest-examples.md)
 
 有关在 Service Fabric 群集上打包和部署现有应用程序的演练，请参阅：
 
 > [!div class="nextstepaction"]
-> [打包现有可执行文件并将其部署到 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-existing-app.md)
+> [打包现有可执行文件并将其部署到 Service Fabric](service-fabric-deploy-existing-app.md)
