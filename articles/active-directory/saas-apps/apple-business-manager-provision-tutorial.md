@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: c4ac4a17e577ea69f4359e1e9b321e5fcc839697
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: 7d946c2b1d6e13897667fd58b784575e6f44aa1d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333507"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>教程：为 Apple Business Manager 配置自动用户预配
 
@@ -50,7 +50,7 @@ ms.locfileid: "90761477"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定 [Azure AD 和 Apple 业务经理之间要映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-apple-business-manager-to-support-provisioning-with-azure-ad"></a>步骤 2。 将 Apple Business Manager 配置为支持预配 Azure AD
+## <a name="step-2-configure-apple-business-manager-to-support-provisioning-with-azure-ad"></a>步骤 2. 将 Apple Business Manager 配置为支持预配 Azure AD
 
 1. 在 Apple Business Manager 中，使用具有管理员或人员经理角色的帐户登录。
 2. 单击侧栏底部的 "设置"，单击 "组织设置" 下方的 "数据源"，然后单击 "连接到数据源"。
@@ -62,7 +62,7 @@ ms.locfileid: "90761477"
 > [!NOTE]
 > 不应与 Azure AD 管理员之外的任何人共享机密令牌。
 
-## <a name="step-3-add-apple-business-manager-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Apple Business Manager
+## <a name="step-3-add-apple-business-manager-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Apple Business Manager
 
 从 "Azure AD" 应用程序库中添加 Apple Business Manager，开始将预配预配到 Apple 业务经理。 如果你以前为 SSO 安装了 Apple Business Manager，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。
 
@@ -103,7 +103,7 @@ ms.locfileid: "90761477"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Apple 业务经理**"。
 
@@ -116,7 +116,7 @@ ms.locfileid: "90761477"
    |name.givenName|字符串|
    |name.familyName|字符串|
    |name.givenName|字符串|
-   |externalId|字符串|
+   |externalId|String|
    |区域设置|字符串|
    |timezone|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
@@ -158,7 +158,8 @@ ms.locfileid: "90761477"
 * [删除 Apple Business Manager 中显示 Azure AD 帐户](URL=https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
 * [在 Apple Business Manager 中查看 SCIM 活动](URL=https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
 * [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](URL=https://support.apple.com/guide/apple-business-manager/apdc9a823611)
-* [断开 Apple Business Manager](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61) *  中的 SCIM 连接[在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
+* [断开 Apple Business Manager 中的 SCIM 连接](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61)
+* [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
 * [Apple Business Manager 中的 SCIM 连接疑难解答](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>后续步骤

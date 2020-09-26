@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure 文件存储网络终结点 | Microsoft Docs
-description: Azure 文件存储的网络选项概述。
+description: 了解如何配置 Azure 文件网络终结点。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a38528e32061f57e3239ef4be26cdd437f4f8746
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4e08c74e1fbc3da1ed11d6a2f7faeb26780d2a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333539"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>配置 Azure 文件存储网络终结点
 
@@ -138,7 +138,7 @@ Address: 192.168.0.5
 
 禁止对公共终结点的访问时，仍可通过存储帐户的专用终结点来访问该存储帐户。 否则，将拒绝对存储帐户的公共终结点的有效请求，除非它们来自 [特定允许的源](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks)。 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

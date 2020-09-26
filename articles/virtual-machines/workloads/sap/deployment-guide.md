@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359604"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -543,11 +543,11 @@ ms.locfileid: "88653505"
 为 Linux 创建专用映像时使用的步骤不同于为 Windows 创建专用映像时使用的步骤。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > 若要准备可用来部署多台虚拟机的 Windows 映像，必须在本地 VM 上抽象化或通用化 Windows 设置（例如 Windows SID 和主机名）。 可以使用 [sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) 来执行此操作。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > 若要准备可用来部署多台虚拟机的 Linux 映像，必须在本地 VM 上抽象化或通用化某些 Linux 设置。 可以使用 `waagent -deprovision` 来执行此操作。 有关详细信息，请参阅[捕获在 Azure 上运行的 Linux 虚拟机][virtual-machines-linux-capture-image]和 [Azure Linux 代理用户指南][virtual-machines-linux-agent-user-guide-command-line-options]。
 >
@@ -683,11 +683,11 @@ ms.locfileid: "88653505"
 有关 Azure VM 代理的详细信息，请参阅以下资源。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 > [Azure 虚拟机代理概述][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 >
 > [Azure Linux 代理用户指南][virtual-machines-linux-agent-user-guide]
 >
@@ -1309,7 +1309,7 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 > [!NOTE]
 > VM 扩展有两个版本。 本章介绍了默认的 VM 扩展。 如果已安装新的 VM 扩展，请参阅 [排查 Azure 的新 Azure 扩展问题][deployment-guide-5.3-new]一章。
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure 性能计数器根本未显示
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows 徽标。][Logo_Windows] Azure 性能计数器根本未显示
 
 AzureEnhancedMonitoring Windows 服务在 Azure 中收集性能度量值。 如果该服务未正确安装或者未在 VM 中运行，则无法收集任何性能度量值。
 
@@ -1350,13 +1350,13 @@ Windows 服务 AzureEnhancedMonitoring 存在并已启用，但无法启动。 �
 
 配置不正确。 根据[配置适用于 SAP 的 Azure 扩展][deployment-guide-4.5]中所述，重启 VM 中的适用于 SAP 的 Azure 扩展。
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 缺少某些 Azure 性能计数器
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows 徽标。][Logo_Windows] 缺少某些 Azure 性能计数器
 
 AzureEnhancedMonitoring Windows 服务在 Azure 中收集性能度量值。 该服务从多个来源获取数据。 某些配置数据是从本地收集的，某些性能度量值是从 Azure 诊断读取的。 存储计数器通过日志记录在存储订阅级别使用。
 
 如果使用 SAP 说明 [1999351] 进行故障排除没有解决问题，请重新运行 `Set-AzVMAEMExtension` 配置脚本。 可能必须要等待一小时，因为在启用存储分析或诊断计数器后可能不会立即创建这些计数器。 如果问题依然存在，请为 Windows 虚拟机组件 BC-OP-NT-AZR 或 Linux 虚拟机组件 BC-OP-LNX-AZR 创建一条 SAP 客户支持消息。
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure 性能计数器根本未显示
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux 徽标。][Logo_Linux] Azure 性能计数器根本未显示
 
 Azure 中的性能度量值是由某个守护程序收集的。 如果该守护程序未运行，则无法收集任何性能度量值。
 
@@ -1389,7 +1389,7 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 之所以出现这些消息，是因为标准托管磁盘未提供适用于 SAP 的 SAP 扩展检查标准 Azure 存储帐户的统计信息时需使用的 API。 这不是一个值得关注的问题。 引入标准磁盘存储帐户的收集数据的原因是限制频繁发生的输入和输出。 托管磁盘会通过限制存储帐户中的磁盘数避免这类限流。 因此，没有该类型的数据并不重要。
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 缺少某些 Azure 性能计数器
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux 徽标。][Logo_Linux] 缺少某些 Azure 性能计数器
 
 Azure 中的性能度量值是由某个守护程序收集的，该守护程序从多个来源获取数据。 某些配置数据是从本地收集的，某些性能度量值是从 Azure 诊断读取的。 存储计数器来自存储订阅中的日志。
 
@@ -1402,7 +1402,7 @@ Azure 中的性能度量值是由某个守护程序收集的，该守护程序�
 > [!NOTE]
 > VM 扩展有两个版本。 本章介绍了新的 VM 扩展。 如果已安装默认 VM 扩展，请参阅 [排查适用于 SAP 的 Azure 扩展][deployment-guide-5.3]的章节。
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure 性能计数器根本未显示
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows 徽标。][Logo_Windows] Azure 性能计数器根本未显示
 
 AzureEnhancedMonitoring 进程在 Azure 中收集性能指标。 如果该进程未在 VM 中运行，则无法收集任何性能指标。
 
@@ -1416,13 +1416,13 @@ AzureEnhancedMonitoring 进程在 Azure 中收集性能指标。 如果该进程
 
 未安装该扩展。 确定这是否为代理问题（如前文所述）。 可能需要重新启动计算机或重新安装 VM 扩展。
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 缺少某些 Azure 性能计数器
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows 徽标。][Logo_Windows] 缺少某些 Azure 性能计数器
 
 AzureEnhancedMonitoring Windows 进程在 Azure 中收集性能指标。 此过程从多个源中获取数据。 某些配置数据是在本地收集的，某些性能度量值是从 Azure Monitor 中读取的。
 
 如果使用 SAP 说明 [1999351] 进行故障排除不能解决此问题，请在组件 BC-操作-Bc-op-nt-azr for WINDOWS 或组件 BC-OP-LNX-AZR 创建-Bc-op-nt-azr for Linux 虚拟机上打开 SAP 客户支持消息。 请将日志文件 C： \\ 程序包 \\ 插件 \\ MonitorX64Windows \\ &lt;>logapp.txt 附加 \\ 到事件。
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure 性能计数器根本未显示
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux 徽标。][Logo_Linux] Azure 性能计数器根本未显示
 
 Azure 中的性能度量值是由某个守护程序收集的。 如果该守护程序未运行，则无法收集任何性能度量值。
 
@@ -1436,7 +1436,7 @@ Azure 中的性能度量值是由某个守护程序收集的。 如果该守护�
 
 未安装该扩展。 确定这是否为代理问题（如前文所述）。 你可能需要重新启动计算机并/或重新安装 VM 扩展。
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 缺少某些 Azure 性能计数器
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux 徽标。][Logo_Linux] 缺少某些 Azure 性能计数器
 
 Azure 中的性能度量值是由某个守护程序收集的，该守护程序从多个来源获取数据。 某些配置数据是在本地收集的，某些性能度量值是从 Azure Monitor 中读取的。
 

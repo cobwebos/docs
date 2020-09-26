@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061149"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331958"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "90061149"
 | type             | 数据集的 type 属性必须设置为“Excel”。   | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 | 是      |
 | sheetName        | 要读取数据的 Excel 工作表名称。                       | 是      |
-| range            | 给定工作表中的单元格范围，用于查找选择性数据，例如：<br>-未指定：从第一个非空行和列中读取整个工作表作为表<br>- `A3`：读取从给定单元格开始的表，动态检测下面的所有行和右侧的所有列<br>- `A3:H5`：以表的形式读取此固定范围<br>- `A3:A3`：读取此单个单元 | 否       |
+| range            | 给定工作表中用于定位选择性数据的单元格范围，例如：<br>- 未指定：以表的形式从第一个非空行和列读取整个工作表<br>- `A3`：读取从给定单元格开始的表，动态检测下面的所有行和右侧的所有列<br>- `A3:H5`：以表的形式读取此固定范围<br>- `A3:A3`：读取此单个单元格 | 否       |
 | firstRowAsHeader | 指定是否要将给定工作表/范围内的第一行视为带有列名的标题行。<br>允许的值为 **true** 和 **true**（默认值）。 | 否       |
 | nullValue        | 指定 null 值的字符串表示形式。 <br>默认值为**空字符串**。 | 否       |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
@@ -106,14 +106,15 @@ ms.locfileid: "90061149"
 
 下表列出了 Excel 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。使用内联数据集时，你将看到其他文件设置，这些设置与 " [数据集属性](#dataset-properties) " 部分中描述的属性相同。
 
-| “属性”                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
+| 名称                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
-| 通配符路径           | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否       | String[]                                                  | wildcardPaths                     |
+| 通配符路径           | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否       | string[]                                                  | wildcardPaths                     |
 | 分区根路径       | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否       | String                                                    | partitionRootPath                 |
 | 文件列表             | 你的源是否指向列出要处理的文件的文本文件 | 否       | `true` 或 `false`                                         | fileList                          |
 | 要存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | String                                                    | rowUrlColumn                      |
 | 完成后          | 在处理后删除或移动文件。 文件路径从容器根开始 | 否       | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | 按上次修改时间筛选   | 选择根据文件上次更改时间筛选文件 | 否       | 时间戳                                                 | ModifiedAfter <br> modifiedBefore |
+| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例
 

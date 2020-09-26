@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258e05b135195004fec628936bb458ea8f1dc7b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 98af7725e1929637228c6cadd7ee2dc856bd4e8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419982"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331280"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure AD 角色配置安全警报
 
@@ -32,7 +32,7 @@ ms.locfileid: "87419982"
 1. 以具有[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的用户身份登录到 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。  如果在概述页的顶部有横幅，请按照本文“新版本”选项卡中的说明进行操作  。 否则，请按照“先前版本”选项卡中的说明操作  。
 
-  [![选择 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+  [![选择“Azure AD”>“Privileged Identity Management”。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 按照本文中的步骤，调查 Azure AD 角色的安全警报。
 
@@ -82,12 +82,12 @@ ms.locfileid: "87419982"
 
 | | |
 | --- | --- |
-| **严重性** | 中型 |
+| **严重性** | 中 |
 | **为何收到此警报？** | 具有特权角色的帐户在过去 90 天内未更改密码。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **防护** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
-| **最佳做法** | 使用密码进行身份验证并分配给高特权管理角色（如全局管理员或安全管理员）的共享帐户、服务帐户和紧急访问帐户应针对以下情况轮换其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [了解有关保护帐户的详细信息](../users-groups-roles/directory-admin-roles-secure.md) |
+| **最佳实践** | 使用密码进行身份验证并分配给高特权管理角色（如全局管理员或安全管理员）的共享帐户、服务帐户和紧急访问帐户应针对以下情况轮换其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [了解有关保护帐户的详细信息](../users-groups-roles/directory-admin-roles-secure.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>在 Privileged Identity Management 之外分配角色
 
@@ -108,8 +108,8 @@ ms.locfileid: "87419982"
 | **如何修复？** | 查看列表中的用户，删除不是绝对需要“全局管理员”角色的所有用户。 </br>改为这些用户分配特权更低的角色。 |
 | **防护** | 为用户分配他们所需的最低特权角色。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
-| **触发器** | 如果满足两个不同的条件并且可以同时配置这两个条件，将触发此警报。 首先，需要达到全局管理员的某个特定阈值。 其次，总角色分配的特定百分比必须是全局管理员。 如果只满足其中一个度量，不会显示该警报。 |
-| **全局管理员的最少数目** | 此设置指定的全局管理员数量（2 到 100）你认为对你的 Azure AD 组织来说太少。 |
+| **触发器** | 如果满足两个不同的条件并且可以同时配置这两个条件，将触发此警报。 首先，需要达到特定阈值的全局管理员角色分配。 其次，总角色分配的特定百分比必须是全局管理员。 如果只满足其中一个度量，不会显示该警报。 |
+| **全局管理员的最少数目** | 此设置指定你认为对于你的 Azure AD 组织而言太少的全局管理员角色分配数（从2到100）。 |
 | **全局管理员百分比** | 此设置指定属于全局管理员的管理员的最小百分比（0% 到 100%），你不希望你的 Azure AD 组织降到该值之下。 |
 
 ### <a name="roles-are-being-activated-too-frequently"></a>角色激活过于频繁
@@ -120,26 +120,26 @@ ms.locfileid: "87419982"
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **防护** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>针对其帐户由多个管理员共享的特权角色[要求执行多重身份验证](pim-how-to-change-default-settings.md)。 |
-| **门户中的缓解措施** | 空值 |
+| **门户中的缓解措施** | 不适用 |
 | **触发器** | 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。 |
 | **激活续订时间范围** | 此设置以天、小时、分钟和秒为单位指定要用于跟踪可疑续订的时间段。 |
 | **激活续订次数** | 此设置指定你希望在所选时间范围内获得通知的激活次数（2 到 100）。 可通过移动滑块或在文本框中键入数字更改此设置。 |
 
-## <a name="configure-security-alert-settings"></a>配置安全警报设置
+## <a name="customize-security-alert-settings"></a>自定义安全警报设置
 
-从“警报”页转到“设置”****。
+在 " **警报** " 页上，选择 " **设置**"。
 
 ![突出显示了“设置”的“警报”页](media/pim-how-to-configure-security-alerts/alert-settings.png)
 
 在各个警报上自定义设置以适应你的环境和安全目标。
 
-![警报的“设置”页，用于启用和配置设置](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![警报的“设置”页，用于启用和配置设置](media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 # <a name="previous-version"></a>[先前版本](#tab/previous)
 
-![列出警报和严重性的“Azure AD 角色 - 警报”窗格](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD 角色-警报窗格列出警报和严重性](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
-## <a name="security-alerts"></a>安全警报
+## <a name="security-alert-details"></a>安全警报详细信息
 
 本部分列出 Azure AD 角色的所有安全警报，以及如何修复和防止这些警报。 严重性的含义如下：
 
@@ -181,12 +181,12 @@ ms.locfileid: "87419982"
 
 | | |
 | --- | --- |
-| **严重性** | 中型 |
+| **严重性** | 中 |
 | **为何收到此警报？** | 具有特权角色的帐户在过去 90 天内未更改密码。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **防护** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
-| **最佳做法** | 使用密码进行身份验证并分配给高特权管理角色（如全局管理员或安全管理员）的共享帐户、服务帐户和紧急访问帐户应针对以下情况轮换其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [了解详细信息](https://aka.ms/breakglass) |
+| **最佳实践** | 使用密码进行身份验证并分配给高特权管理角色（如全局管理员或安全管理员）的共享帐户、服务帐户和紧急访问帐户应针对以下情况轮换其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [了解详细信息](https://aka.ms/breakglass) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>在 Privileged Identity Management 之外分配角色
 
@@ -219,7 +219,7 @@ ms.locfileid: "87419982"
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **防护** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>针对其帐户由多个管理员共享的特权角色[要求执行多重身份验证](pim-how-to-change-default-settings.md)。 |
-| **门户中的缓解措施** | 空值 |
+| **门户中的缓解措施** | 不适用 |
 | **触发器** | 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。 |
 | **激活续订时间范围** | 此设置以天、小时、分钟和秒为单位指定要用于跟踪可疑续订的时间段。 |
 | **激活续订次数** | 此设置指定你希望在所选时间范围内获得通知的激活次数（2 到 100）。 可通过移动滑块或在文本框中键入数字更改此设置。 |

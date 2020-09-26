@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359148"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
 
@@ -83,13 +83,13 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 > [!NOTE]
 > 目前，全局 VNet 对等互连在使用专用 HSM 的跨区域连接方案中不可用，为此应改用 VPN 网关。 
 
-![global-vnet](media/networking/global-vnet.png)
+![关系图显示两个由两个 V P N 网关连接的区域。 每个区域包含对等互连虚拟网络。](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [常见问题解答](faq.md)
 - [可支持性](supportability.md)
-- 高可用性
+- [高可用性](high-availability.md)
 - [物理安全性](physical-security.md)
-- [Monitoring](monitoring.md)
+- [监视](monitoring.md)
 - [部署体系结构](deployment-architecture.md)
