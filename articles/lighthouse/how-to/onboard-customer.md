@@ -1,14 +1,14 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
-ms.date: 08/20/2020
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0b941c82c2ba0e98f524587f5ef4c4ecf86249eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336541"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -19,7 +19,7 @@ ms.locfileid: "89483790"
 
 你可以为多个客户重复执行载入过程。 当具有适当权限的用户登录到你的管理租户时，该用户可以在客户租户范围内获得授权，以执行管理操作，而无需登录到每个单独的客户租户。
 
-若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 需要在服务提供商租户中执行此关联。 建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并在每次加入客户时包含该服务主体。 有关详细信息，请参阅将 [合作伙伴 ID 链接到委托资源的合作伙伴获得的信用额度](partner-earned-credit.md)。
+若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 需要在服务提供商租户中执行此关联。 建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并在每次加入客户时包含该服务主体。 有关详细信息，请参阅 [将合作伙伴 ID 链接到委托资源的伙伴获得的信用额度。
 
 > [!NOTE]
 > 当客户购买托管服务产品) /服务时，也可以载入 Azure Lighthouse， (公开 [发布到 Azure Marketplace](publish-managed-services-offers.md)。 你还可以在发布到 Azure Marketplace 的产品/服务中使用此处所述的载入过程。
@@ -33,9 +33,6 @@ ms.locfileid: "89483790"
 - 服务提供商租户的租户 ID（要在其中管理客户的资源）
 - 客户租户的租户 ID（具有由服务提供商管理的资源）
 - 客户租户中由服务提供商管理的每个特定订阅的订阅 ID（或包含将由服务提供商管理的资源组的订阅 ID）。
-
-> [!NOTE]
-> 即使你只希望加入订阅中的一个或多个资源组，也必须在订阅级别执行部署，因此你将需要使用订阅 ID。
 
 如果尚未准备好这些 ID 值，可通过以下方式之一进行检索。 确保在部署中使用这些确切的值。
 
@@ -128,6 +125,11 @@ az role definition list --name "<roleName>" | grep name
 
 加入过程需要 Azure 资源管理器模板（在[示例存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中提供）以及相应的参数文件（可修改此文件，使其与你的配置匹配并定义你的授权）。
 
+> [!IMPORTANT]
+> 此处所述的过程需要对每个要载入的订阅进行单独部署，即使你是在同一客户租户中加入订阅。 如果要在同一客户租户中加入不同订阅中的多个资源组，也需要单独部署。 但是，可在一个部署中载入单个订阅中的多个资源组。
+>
+> 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName**。
+
 所选的模板取决于你是要加入整个订阅，还是要加入订阅中的一个资源组或多个资源组。 我们还提供了一个模板，可供购买了你发布 Azure 市场的托管服务产品/服务的客户使用；如果你偏向于按此方式载入其资源，则可使用它。
 
 |加入此内容  |使用此 Azure 资源管理器模板  |修改此参数文件 |
@@ -137,10 +139,8 @@ az role definition list --name "<roleName>" | grep name
 |订阅内的多个资源组   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |订阅（使用发布到 Azure 市场的产品/服务时）   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
-> [!IMPORTANT]
-> 此处所述的过程需要对每个要载入的订阅进行单独部署，即使你是在同一客户租户中加入订阅。 如果要在同一客户租户中加入不同订阅中的多个资源组，也需要单独部署。 但是，可在一个部署中载入单个订阅中的多个资源组。
->
-> 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName**。
+> [!TIP]
+> 虽然无法在一个部署中载入整个管理组，但可以 [在管理组级别部署策略](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)。 此策略将检查管理组中的每个订阅是否已委派给指定的管理租户，如果不是，则将基于你提供的值创建分配。
 
 以下示例显示了一个修改后的 **delegatedResourceManagement.parameters.json** 文件，该文件可用于加入订阅。 资源组参数文件（位于 [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) 文件夹）很类似，但还带有一个 rgName 参数，它用于标识要载入的特定资源组。
 

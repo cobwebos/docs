@@ -4,20 +4,20 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘动态创建永久性卷
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/21/2020
+ms.openlocfilehash: fd2bc698a107599dccf8f142b0d318400b40aaf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299317"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
 永久性卷表示已经过预配可以用于 Kubernetes Pod 的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 本文介绍如何使用 Azure 磁盘动态创建永久性卷，以供 Azure Kubernetes 服务 (AKS) 群集中的单个 Pod 使用。
 
 > [!NOTE]
-> Azure 磁盘只能使用“访问模式”类型 ReadWriteOnce 装载，这使其只可供 AKS 中的单个 Pod 使用。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件存储][azure-files-pvc]。
+> Azure 磁盘只能装载 *Access 模式* 类型 *ReadWriteOnce*，使其可用于 AKS 中的一个节点。 如果需要跨多个节点共享持久卷，请使用 [Azure 文件][azure-files-pvc]。
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 

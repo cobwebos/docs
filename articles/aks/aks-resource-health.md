@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358247"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>检查影响 AKS 群集 (预览版资源运行状况事件) 
 
@@ -33,7 +33,7 @@ ms.locfileid: "88752707"
 - 选择左侧导航栏中的 " **资源运行状况** "。
 - 选择订阅，并将资源类型设置为 Azure Kubernetes Service (AKS) 。
 
-![资源运行状况-检查](./media/aks-resource-health/resource-health-check.png)
+![屏幕截图显示 A K S 群集的资源运行状况。](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>检查运行状况状态
 

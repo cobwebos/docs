@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260149"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保护 Synapse 工作区（预览）
 
@@ -97,8 +97,8 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 
 - 打开 Azure 门户
 - 转到 WS1
-- 在“设置”下，单击“SQL Active Directory 管理员”
-- 单击“设置管理员”，然后选择“WS1\_SQLAdmins”
+- 在 " **设置**" 下，选择 **SQL Active Directory 管理**
+- 选择 " **设置管理员** "，然后选择 WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>步骤6：维护访问控制
 
@@ -123,8 +123,9 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 
 > [!NOTE]
 > [1] 若要创建 SQL 或 Spark 池，用户至少必须在 Synapse 工作区上有“参与者”角色。
-> [!TIP]
 >
+ 
+>[!TIP]
 > - 有些步骤是故意不允许执行的，具体视角色而定。
 > - 请注意，如果没有完全配置安全性，有些任务可能会失败。 表中注明了这些任务。
 

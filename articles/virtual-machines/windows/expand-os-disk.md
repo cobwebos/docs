@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335997"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -30,7 +30,7 @@ ms.locfileid: "89469201"
 - 若要从本地迁移具有较大 OS 驱动器的物理电脑或 VM，请使用。
 
 > [!IMPORTANT]
-> 若要调整 Azure 虚拟机的 OS 磁盘大小，需要解除分配虚拟机。
+> 若要调整 Azure 虚拟机的操作系统或数据磁盘的大小，需要释放虚拟机。
 >
 > 扩展磁盘后，需要[扩展 OS 中的卷](#expand-the-volume-within-the-os)才能使用更大的磁盘。
 > 
@@ -40,16 +40,16 @@ ms.locfileid: "89469201"
 1. 在 [Azure 门户](https://portal.azure.com)中，请前往要在其中扩展磁盘的虚拟机。 选择 " **停止** " 以解除分配 VM。
 2. VM 停止后，请在 " **设置**" 下的左侧菜单中选择 " **磁盘**"。
 
-    :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="屏幕截图，显示在菜单的 设置 部分中选择的 磁盘 选项。":::
+    :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="屏幕截图，显示在菜单的 "设置" 部分中选择的 "磁盘" 选项。":::
 
  
 3. 在 " **磁盘名称**" 下，选择要调整大小的磁盘。
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="屏幕截图，显示选中了磁盘名称的 磁盘 窗格。":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="屏幕截图，显示选中了磁盘名称的 "磁盘" 窗格。":::
 
 4. 在左侧菜单中的 " **设置**" 下，选择 " **配置**"。
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="屏幕截图，显示在菜单的 设置 部分中选择的配置选项。":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="屏幕截图，显示在菜单的 "设置" 部分中选择的配置选项。":::
 
 5. 在 " **大小 (GiB") **中，选择所需的磁盘大小。
    
@@ -57,11 +57,11 @@ ms.locfileid: "89469201"
    > 新大小应该大于现有磁盘大小。 对于 OS 磁盘，允许的最大值为 2048 GB。  (可以将 VHD blob 扩展到该大小以上，但 OS 仅适用于前 2048 GB 空间。 ) 
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="显示所选磁盘大小的 配置 窗格的屏幕截图。":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="显示所选磁盘大小的 "配置" 窗格的屏幕截图。":::
 
 6. 选择“保存”。
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="屏幕截图，显示已选中 保存 按钮的配置窗格。":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="屏幕截图，显示已选中 "保存" 按钮的配置窗格。":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>使用 PowerShell 调整托管磁盘的大小

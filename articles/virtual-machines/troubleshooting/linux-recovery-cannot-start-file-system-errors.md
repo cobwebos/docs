@@ -1,6 +1,6 @@
 ---
 title: 排查由于文件系统错误而导致的 Linux VM 启动问题 |Microsoft Docs
-description: 解释 Linux VM 为何无法启动，以及如何解决此问题。
+description: 了解如何排查由于文件系统错误导致的 Linux VM 启动问题
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f12b88a0ddbc6ae31f40ab31b0126e4fd66b1a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325940"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>排查文件系统错误导致的 Linux VM 启动问题
 
@@ -88,7 +88,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的发行版�
 
 2. 选择电源图标按钮，然后选择 "重新启动 VM"。  (如果串行控制台未启用或未成功连接，则不会看到按钮。 ) 
 
-   ![IMAGE](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
+   ![图像](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
 3. 在紧急模式下启动 VM。
 

@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432973"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326161"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>为 Azure 静态 Web 应用预览设置本地开发
 
@@ -65,7 +65,7 @@ Azure 静态 Web 应用实例由两种不同类型的应用程序组成。 第�
 
 #### <a name="create-a-repository"></a>创建存储库
 
-1. 请确保已登录到 GitHub 并 [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) 使用此模板导航到名为**vanilla 的**新 GitHub 项目。
+1. 请确保已登录到 GitHub 并 [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) 使用此模板导航到名为 **vanilla 的**新 GitHub 项目。
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub“新建存储库”窗口":::
 

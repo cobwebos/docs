@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299759"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -98,13 +98,13 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在安装 Azure AD Connect Health 代理期间，是否必须重新启动服务器？**
 
-否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
 **问：Azure AD Connect Health 是否通过直通型 HTTP 代理进行工作？**
 
-可以。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
+是的。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
 阅读有关 [为 Health 代理配置 HTTP 代理的](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)详细信息。
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
@@ -115,7 +115,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-否。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
@@ -128,6 +128,10 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 可能会使用相同的详细信息（例如计算机名称）重置服务器的映像或创建新服务器。 如果没有从 Azure AD Connect Health 门户中删除已注册服务器，而是在新服务器上安装了代理，则会看到两个服务器条目具有同一名称。
 
 在这种情况下，请手动删除属于较旧服务器的条目。 此服务器的数据会过期。
+
+**问：我是否能在 Windows Server Core 上安装 Azure AD Connect health 代理？**
+
+不是。  不支持在 Server Core 上安装。
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Health 代理注册和数据刷新
 
@@ -198,6 +202,7 @@ CheckForMS17-010
 
 **问：代理证书在过期之前是否自动续订？**
 代理证书将在到期日期前 **6 个月** 自动续订。 如果未续订，请确保该代理的网络连接稳定。 重新启动代理服务或更新到最新版本也可以解决此问题。
+
 
 
 ## <a name="related-links"></a>相关链接

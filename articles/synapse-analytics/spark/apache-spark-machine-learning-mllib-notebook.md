@@ -4,21 +4,21 @@ description: 了解如何使用 Apache Spark MLlib 创建机器学习应用，�
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259979"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
-本文介绍如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 创建机器学习应用程序，该应用程序对 Azure 开放数据集执行简单的预测分析。 Spark 提供内置机器学习库。 此示例通过逻辑回归使用分类。
+本文介绍如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 创建在 Azure 开放式数据集上执行简单的预测分析的机器学习应用程序。 Spark 提供内置机器学习库。 此示例通过逻辑回归使用分类。
 
 MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实用工具，包括适用于以下任务的实用工具：
 
@@ -96,7 +96,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
     display(sampled_taxi_df)
     ```
 
-4. 根据生成的数据集大小和多次试验或运行笔记本的需要，建议在工作区本地缓存数据集。 可以通过三种方式执行显式缓存：
+4. 根据所生成的数据集大小的大小，以及你需要多次尝试或运行笔记本，可能建议在工作区中本地缓存数据集。 可以通过三种方式执行显式缓存：
 
    - 将数据帧作为文件本地保存
    - 将数据帧另存为临时表或视图
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>创建逻辑回归模型
 
-最后一项任务是将标签数据转换为逻辑回归可分析的格式。 逻辑回归算法的输入需是一组标签特征矢量对，其中特征矢量是表示输入点的数字矢量 。 因此，需要将分类列转换为数字。 `trafficTimeBins` 和 `weekdayString` 列需要转换为整数表示形式。 有多种方法可执行转换，但在此示例中采用常用方法 OneHotEncoding。
+最后一项任务是将标签数据转换为逻辑回归可分析的格式。 逻辑回归算法的输入需是一组标签特征矢量对，其中特征矢量是表示输入点的数字矢量 。 因此，需要将分类列转换为数字。 `trafficTimeBins`和 `weekdayString` 列需要转换为整数表示形式。 有多种方法可执行转换，但在此示例中采用常用方法 OneHotEncoding。
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-这会生成一个新的数据帧，其中所有列都采用正确的格式来训练模型。
+此操作将生成一个新的数据帧，其中所有列都采用正确的格式来训练模型。
 
 ## <a name="train-a-logistic-regression-model"></a>训练逻辑回归模型
 

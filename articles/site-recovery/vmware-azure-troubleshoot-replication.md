@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336199"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -77,7 +77,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
     - 导航到受影响的复制计算机的“磁盘”边栏选项卡，并复制副本磁盘名称
     - 导航到此副本托管磁盘
     - 可能会在“概述”边栏选项卡上看到一个横幅，指出已生成 SAS URL。 单击此横幅并取消导出。 如果看不到横幅，请忽略此步骤。
-    - 一旦将 SAS URL 吊销，请在托管磁盘中转到 "配置" 边栏选项卡，增加大小，以便 Azure Site Recovery 支持在源磁盘上观察到的变动率
+    - 撤销 SAS URL 后，请转至托管磁盘的“配置”边栏选项卡并增加大小，以便 Azure Site Recovery 支持源磁盘上观察到的变动率
 - 如果观测到的改动率是暂时性的，请等待几个小时，让等待中的数据跟上上传进度并创建恢复点。
 - 如果磁盘包含非关键数据（如临时日志、测试数据等），请考虑将此数据移到其他位置，或者从复制中完全排除此磁盘
 - 如果问题持续出现，请使用 Site Recovery [部署规划器](site-recovery-deployment-planner.md#overview)来帮助规划复制。
@@ -95,16 +95,16 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
    - InMage Scout 应用程序服务
 4. 在源计算机上，检查位于以下位置的日志以查看错误详细信息：
 
-    *C:\Program Files （X86） \Microsoft Azure \* Site Recovery\agent\svagents*
+    C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents\*.log
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>进程服务器无检测信号 [错误 806]
 如果进程服务器 (PS) 未发出检测信号，请检查：
 1. PS VM 已启动并正在运行
 2. 检查 PS 上的以下日志以查看错误详细信息：
 
-    *C:\ProgramData\ASR\home\svsystems\eventmanager \**\
-    与
-    *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* .log*
+    C:\ProgramData\ASR\home\svsystems\eventmanager\*.log\
+    and\
+    C:\ProgramData\ASR\home\svsystems\monitor_protection\*.log
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>主目标服务器无检测信号 [错误 78022]
 
@@ -117,8 +117,8 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
     - 验证 svagents 服务是否正在运行。 如果正在运行，请重启服务
     - 检查位于以下位置的日志以查看错误详细信息：
 
-        *C:\Program Files （X86） \Microsoft Azure \* Site Recovery\agent\svagents*
-3. 若要将主目标注册到配置服务器，请导航到文件夹“%PROGRAMDATA%\ASR\Agent”，并在命令提示符上运行以下命令：
+        C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents\*.log
+3. 若要将主目标注册到配置服务器，请导航到文件夹 %PROGRAMDATA%\ASR\Agent，并在命令提示符下运行以下命令：
    ```
    cmd
    cdpcli.exe --registermt
@@ -146,14 +146,14 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知问题
 **如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
-#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4：在 Linux 服务器上未启用应用一致性
-**如何修复**：针对 Linux 操作系统的 Azure Site Recovery 支持应用程序自定义脚本以实现应用程序一致性。 使用 pre 和 post 选项的自定义脚本将由 Azure Site Recovery 移动代理用于应用程序一致性。 [下面](./site-recovery-faq.md#replication)是启用该方法的步骤。
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因 4：Linux 服务器上未启用应用一致性
+**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](./site-recovery-faq.md#replication)是启用此功能的步骤。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS 相关问题的更多原因：
 
 若要进一步排除故障，请检查源计算机上的文件，获取故障的具体错误代码：
 
-*C:\Program Files （x86） \Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
+C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 如何在文件中查找错误？
 在编辑器中打开 vacp.log 文件，搜索字符串“vacpError”
@@ -164,34 +164,52 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164
 
-*如何解决*：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果未安装 VSS 提供程序服务，应用程序一致性快照创建将失败，并出现错误 ID 0x80040154 "类未注册"。 </br>
+*如何解决*：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
 请参阅[有关 VSS 编写器安装故障排除的文章](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
-**如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务处于禁用状态，则应用程序一致性快照创建将失败，并出现错误 ID "指定的服务已禁用且无法启动（0x80070422）"。 </br>
+**如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现错误“指定的服务已禁用，无法启动(0x80070422)”。 </br>
 
 - 如果已禁用 VSS，
-    - 验证 VSS 提供程序服务的启动类型是否设置为“自动”。
+    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
 
-####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - 错误 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
 
 **如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。
-检查是否已安装 Azure Site Recovery VSS 提供程序服务。 </br>
+检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
 
 - 使用以下命令重试提供程序安装：
 - 卸载现有提供程序：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
 - 重新安装：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
 
-验证 VSS 提供程序服务的启动类型是否设置为“自动”。
+确认 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
+
+## <a name="error-id-95001---insufficient-permissions-found"></a>错误 ID 95001-未找到足够的权限
+
+尝试启用复制时，如果应用程序文件夹没有足够的权限，则会出现此错误。
+
+**如何修复**：若要解决此问题，请确保 IUSR 用户具有以下所有提到文件夹的所有者角色-
+
+- *C\ProgramData\Microsoft Azure Site Recovery\private*
+- 安装目录。 例如，如果安装目录为 F 驱动器，则为-
+    - *F:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems*
+- 安装目录中的 *\pushinstallsvc* 文件夹。 例如，如果安装目录为 F 驱动器，请提供对-
+    - *F:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc*
+- 安装目录中的 *\etc* 文件夹。 例如，如果安装目录为 F 驱动器，请提供对-
+    - *F:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems\etc*
+- *C:\Temp*
+- *C:\thirdparty\php5nts*
+- 以下路径下的所有项-
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
 
 ## <a name="next-steps"></a>后续步骤
 

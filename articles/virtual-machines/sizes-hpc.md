@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 2a06c182f1f37942ac0921db254bf63bf177fec2
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595727"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325957"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
 
-Azure H 系列虚拟机 (Vm) 旨在为各种真实的 HPC 工作负荷提供领先的性能、MPI 可伸缩性和成本效益。
+Azure H 系列虚拟机 (Vm) 旨在为各种真实的 HPC 工作负荷提供领导级的性能、可伸缩性和成本效益。
 
 [HBv2 系列](hbv2-series.md) Vm 针对内存带宽驱动的应用程序进行了优化，例如流体 dynamics、有限元素分析和容器模拟。 HBv2 Vm 功能 120 AMD EPYC 7742 处理器核心，每个 CPU 核心 4 GB RAM，无并发多线程处理。 每个 HBv2 VM 提供高达 340 GB/秒的内存带宽和最多4个兆次的 FP64 计算。
 
@@ -31,22 +31,23 @@ HBv2 Vm 功能 200 Gb/秒，而 HB-ACCT-WC 和 HC 系列 Vm 功能 100 Gb/秒，
 [H 系列](h-series.md) Vm 针对按 CPU 频率高的应用程序或每个核心要求提供较大内存的应用程序进行了优化。 H 系列 Vm 的功能8或 16 Intel 至强 E5 2667 v3 处理器核心、7或 14 GB 的 RAM/CPU 核心，无超线程。 H 系列功能 56 Gb/秒，FDR 不会阻止 fat 树配置，以实现一致的 RDMA 性能。 H 系列 Vm 支持 Intel MPI 1.x 和 MS-CHAP。
 
 > [!NOTE]
-> A8 – A11 VM 计划于 2021 年 3 月停用。 有关详细信息，请参阅 [HPC 迁移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
+> [A8 – A11 vm](./sizes-previous-gen.md#a-series---compute-intensive-instances)计划于3/2021 停用。 有关详细信息，请参阅 [HPC 迁移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
 
 ## <a name="rdma-capable-instances"></a>支持 RDMA 的实例
 
-大多数 HPC VM 大小 (HBv2、HB-ACCT-WC、HC、H16r、H16mr、A8 和 A9) 为远程直接内存访问提供网络接口， (RDMA) 连接性。 选定的 [N 系列](./nc-series.md) 大小用 "r" 指定 (ND40rs_v2、ND24rs、NC24rs_v3、NC24rs_v2 和 NC24r) 也支持 RDMA 功能。 此接口是对其他 VM 大小中可用的标准 Azure 网络接口的补充。
+大多数 HPC VM 大小 (HBv2、HB-ACCT-WC、HC、H16r、H16mr、A8 和 A9) 为远程直接内存访问提供网络接口， (RDMA) 连接性。 选定的 [N 系列](./nc-series.md) 大小用 "r" 指定 (ND40rs_v2、ND24rs、NC24rs_v3、NC24rs_v2 和 NC24r) 也支持 RDMA 功能。 此接口是对其他 VM 大小中可用的标准 Azure 以太网网络接口的补充。
 
 此接口允许支持 RDMA 的实例通过一种不合格的 (IB) 网络，以 HBv2、HB-ACCT-WC、HC、NDv2、FDR 速率为 H16r、H16mr 和其他支持 RDMA 的 N 系列虚拟机进行通信，并为 A8 和 A9 Vm 提供 QDR 速率。 这些 RDMA 功能可以提高某些消息传递接口 (MPI) 应用程序的可伸缩性和性能。
 
 > [!NOTE]
 > 在 Azure HPC 中，有两类 Vm，具体取决于虚拟机是否已启用 SR-IOV。 目前，启用了允许的虚拟机的 SR-IOV 为： HBv2、HB-ACCT-WC、HC、NCv3 和 NDv2。 目前未启用启用了虚拟机的虚拟机。
-> 支持 RDMA 的所有 Vm 都支持 RDMA over IB。
+> RDMA 仅在 (IB) 网络上启用并且支持所有支持 RDMA 的 Vm。
 > 仅支持 SR-IOV 的 Vm 上的 IP over IB。
+> 不通过以太网网络启用 RDMA。
 
 - **操作系统** -适用于 HPC vm 的 Linux 非常受支持;通常使用发行版，例如 CentOS、RHEL、Ubuntu 和 SUSE。 对于 Windows 支持，所有 HPC 系列 Vm 都支持 Windows Server 2016 和更高版本。 Windows Server 2012 R2 和 Windows Server 2012 在非 SR-IOV 启用的 Vm (H16r、H16mr、A8 和 A9) 上都受支持。 请注意， [在 HBv2 和具有超过 64 (虚拟或物理) 内核的其他 vm 上不支持 Windows Server 2012 R2](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。 请参阅 [VM 映像](./workloads/hpc/configure.md) ，获取 Marketplace 上支持的 vm 映像列表，以及如何对其进行相应的配置。
 
-- **无限和 RDMA 驱动程序** -在启用了支持的 vm 上，需要适当的驱动程序才能启用 RDMA。 在 Linux 上，对于启用 SR-IOV 和非 SR-IOV 虚拟机的 Vm，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用 [此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 请参阅 [配置和优化 LINUX OS 的 vm](./workloads/hpc/configure.md) ，详细了解可用的 VM linux os 映像。
+- **无限和驱动程序** -在启用了允许的虚拟机上，需要适当的驱动程序才能启用 RDMA。 在 Linux 上，对于启用 SR-IOV 和非 SR-IOV 虚拟机的 Vm，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用 [此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 请参阅 [配置和优化 LINUX OS 的 vm](./workloads/hpc/configure.md) ，详细了解可用的 VM linux os 映像。
 
    在 Linux 上，可以使用 [INFINIBANDDRIVERLINUX VM 扩展](./extensions/hpc-compute-infiniband-linux.md) 安装 Mellanox OFED 驱动程序，并在启用 Sr-iov 的 H 和 N 系列 vm 上启用不受支持。 详细了解如何在 [HPC 工作负荷](./workloads/hpc/enable-infiniband.md)的支持 RDMA 的 vm 上启用允许。
 

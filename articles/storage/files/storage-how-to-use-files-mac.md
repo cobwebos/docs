@@ -1,30 +1,21 @@
 ---
 title: 在 macOS 中通过 SMB 装载 Azure 文件共享 | Microsoft Docs
 description: 了解如何使用 macOS 和终端通过 SMB 装载 Azure 文件共享。 Azure 文件是 Microsoft 推出的易用云文件系统。
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/19/2017
-ms.author: renash
+ms.date: 09/23/2020
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2cddf8a7d3dbc7abcc25fb76aba8a0af1790fe4d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 119f4c0ea434bc431b40c905d9142e187b7d9474
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034441"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326059"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>在 macOS 中通过 SMB 装载 Azure 文件共享
-[Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以通过 macOS El Capitan 10.11+ 使用标准的 SMB 3 协议进行装载。 本文介绍如何使用两种不同的方法通过 Finder UI 和 Terminal 在 macOS 中装载 Azure 文件共享。
-
-> [!Note]  
-> 通过 SMB 装载 Azure 文件共享之前，建议禁用 SMB 数据包签名。 如果不这样做，则从 macOS 访问 Azure 文件共享时，可能会导致性能不佳。 SMB 连接会加密，因此这不会影响连接的安全性。 在 Terminal 中，以下命令会禁用 SMB 数据包签名，详见这篇[有关如何禁用 SMB 数据包签名的 Apple 支持文章](https://support.apple.com/HT205926)：  
->    ```
->    sudo -s
->    echo "[default]" >> /etc/nsmb.conf
->    echo "signing_required=no" >> /etc/nsmb.conf
->    exit
->    ```
+[Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以通过 macOS 高塞拉利昂 10.13 + 将 Azure 文件共享与行业标准 SMB 3 协议一起装入。 本文介绍如何使用两种不同的方法通过 Finder UI 和 Terminal 在 macOS 中装载 Azure 文件共享。
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>在 macOS 中装载 Azure 文件共享的先决条件
 * **存储帐户名称**：需提供存储帐户的名称才能装载 Azure 文件共享。
@@ -46,10 +37,10 @@ ms.locfileid: "88034441"
     ![已装载 Azure 文件共享的快照](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>通过 Terminal 装载 Azure 文件共享
-1. 将 `<storage-account-name>` 替换为存储帐户的名称。 在系统提示时提供存储帐户密钥作为密码。 
+1.  `<storage-account-name>`将、 `<storage-account-key>` 和替换 `<share-name>`   为环境的相应值。
 
     ```
-    mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>
+    open smb://<storage-account-name>:<storage-account-key>@<storage-account-name>.file.core.windows.net/<share-name>
     ```
 
 2. **根据需要使用 Azure 文件共享**：Azure 文件共享将装载到上一命令指定的装载点。  
@@ -57,9 +48,4 @@ ms.locfileid: "88034441"
     ![已装载 Azure 文件共享的快照](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下链接，获取有关 Azure 文件的更多信息。
-
-* [Apple 支持文章 - 如何使用 Mac 上的“文件共享”进行连接](https://support.apple.com/HT204445)
-* [常见问题](../storage-files-faq.md)
-* [在 Windows 上进行故障排除](storage-troubleshoot-windows-file-connection-problems.md)      
-* [在 Linux 上进行故障排除](storage-troubleshoot-linux-file-connection-problems.md)    
+* [将 Mac 连接到共享计算机和服务器-Apple 支持](https://support.apple.com/guide/mac-help/connect-mac-shared-computers-servers-mchlp1140/mac)

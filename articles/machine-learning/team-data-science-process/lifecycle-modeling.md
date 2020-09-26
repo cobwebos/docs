@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336439"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期建模阶段
 
@@ -41,9 +41,9 @@ ms.locfileid: "76720463"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决了三个主要任务：
 
-  * **功能设计**：从原始数据创建数据功能，以实现模型定型。
+  * **特征工程**：从原始数据创建数据特征，以实现模型定型。
   * **模型定型**：通过比较模型的成功指标，找出最能准确回答问题的模型。
-  * 确定模型是否适用于生产。 
+  * 确定模型是否适用于生产。
 
 ### <a name="feature-engineering"></a>特性工程
 功能设计包括对原始变量的涵盖、聚合和转换，以创建分析中使用的功能。 若要深入了解模型的驱动因素，则需要了解这些功能彼此间的关系，以及使用这些功能的机器学习算法方式。 
@@ -53,14 +53,14 @@ ms.locfileid: "76720463"
 有关使用各种 Azure 数据技术时的功能设计的相关技术指导，请参阅[数据科学过程中的功能设计](create-features.md)。 
 
 ### <a name="model-training"></a>模型定型
-根据所要回答的问题类型，会有许多可用的建模算法。 有关选择算法的指南，请参阅[如何选择 Microsoft Azure 机器学习的算法](../studio/algorithm-choice.md)。 尽管本文使用的是 Azure 机器学习，但所述指南也适用于其他任何机器学习项目。 
+根据所要回答的问题类型，会有许多可用的建模算法。 有关选择算法的指南，请参阅[如何选择 Microsoft Azure 机器学习的算法](../how-to-select-algorithms.md)。 尽管本文使用的是 Azure 机器学习，但所述指南也适用于其他任何机器学习项目。 
 
 模型定型的过程包括以下步骤： 
 
-   * 随机拆分输入数据，以建模成定型数据集和测试数据集  。
-   * 使用定型数据集生成模型  。
-   * 评估定型数据集和测试数据集  。 使用一系列竞争机器学习算法，以及关联的各种优化参数（称为“参数整理”），这些参数适用于回答与当前数据相关的问题  。
-   * 比较备用方法的成功指标，确定可回答问题的“最佳”解决方案  。
+   * 随机拆分输入数据，以建模成定型数据集和测试数据集。
+   * 使用定型数据集生成模型。
+   * 评估定型数据集和测试数据集。 使用一系列竞争机器学习算法，以及关联的各种优化参数（称为“参数整理”），这些参数适用于回答与当前数据相关的问题。
+   * 比较备用方法的成功指标，确定可回答问题的“最佳”解决方案。
 
 > [!NOTE]
 > **避免泄漏**：若添加定型数据集外部数据，则会导致数据泄漏，因为此类数据允许模型或机器学习算法做出不切实际的良好预测。 泄露是数据科学家获得好到不真实的预测结果时会紧张的常见原因。 很难检测到这些依赖项。 为避免泄漏，通常需要在生成分析数据集、创建模型和评估结果准确性之间进行循环。 
@@ -72,7 +72,7 @@ ms.locfileid: "76720463"
 ## <a name="artifacts"></a>项目
 在此阶段中生成的项目包括：
 
-   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：“数据定义”报表的“功能集”部分介绍了为建模开发的功能   。 它包括指向代码以生成功能的指针，以及说明如何生成功能的描述。
+   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：“数据定义”报表的“功能集”部分介绍了为建模开发的功能 。 它包括指向代码以生成功能的指针，以及说明如何生成功能的描述。
    * [模型报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md)：对于尝试过的每个模型，都会根据模板生成一个标准报表，用于详细介绍每次试验。
    * **检查点决策**：评估模型是否足以用于生产。 要提出的一些关键问题有：
      * 在给定测试数据的情况下，模型是否能充分地回答问题？ 

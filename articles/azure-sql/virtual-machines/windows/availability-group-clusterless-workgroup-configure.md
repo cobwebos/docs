@@ -8,17 +8,17 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298821"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -130,7 +130,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-a-cloud-witness"></a>创建云见证 
 
-在此步骤中，配置云共享见证。 如果你不熟悉这些步骤，请参阅[为故障转移群集部署云见证](/windows-server/failover-clustering/deploy-cloud-witness)。 
+在此步骤中，配置云共享见证。 如果你不熟悉这些步骤，请参阅 [为故障转移群集部署云见证](/windows-server/failover-clustering/deploy-cloud-witness)。 
 
 ## <a name="enable-the-availability-group-feature"></a>启用可用性组功能 
 
@@ -286,7 +286,7 @@ GO
 
 ## <a name="configure-a-load-balancer"></a>配置负载均衡器
 
-在最后一步中，使用[Azure 门户](availability-group-load-balancer-portal-configure.md)或[PowerShell](availability-group-listener-powershell-configure.md)配置负载均衡器。
+在最后一步中，使用 [Azure 门户](availability-group-load-balancer-portal-configure.md) 或 [PowerShell](availability-group-listener-powershell-configure.md)配置负载均衡器。
 
 
 ## <a name="next-steps"></a>后续步骤

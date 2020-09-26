@@ -4,25 +4,25 @@ description: 了解如何使用 Azure Maps Web SDK 提供的空间 IO 模块。 
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/28/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f848274f67b5ebf5349cbef24a769aaae39b9955
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335290"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>如何使用 Azure Maps 空间 IO 模块
 
-Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 TypeScript 将空间数据与 AZURE MAPS Web SDK 集成。 此模块中的强大功能使开发人员能够：
+Azure Maps Web SDK 提供 **空间 IO 模块**，该模块使用 JavaScript 或 TypeScript 将空间数据与 AZURE MAPS Web SDK 集成。 此模块中的强大功能使开发人员能够：
 
-- [读取和写入公用空间数据文件](spatial-io-read-write-spatial-data.md)。 支持的文件格式包括： KML、KMZ、.GPX)、GeoRSS、GML、GeoJSON 和包含包含空间信息的列的 CSV 文件。 还支持熟知文本（WKT）。
-- [连接到开放地理空间信息联盟（OGC）服务并与 Azure Maps WEB SDK 集成。覆盖 Web 地图服务（WMS）和 Web 地图磁贴服务（WMTS）作为地图上的层](spatial-io-add-ogc-map-layer.md)。
-- [查询 Web 功能服务中的数据（wf）](spatial-io-connect-wfs-service.md)。
+- [读取和写入公用空间数据文件](spatial-io-read-write-spatial-data.md)。 支持的文件格式包括： KML、KMZ、.GPX) 、GeoRSS、GML、GeoJSON 和包含包含空间信息的列的 CSV 文件。 还支持 WKT) 的熟知文本 (。
+- [连接到开放地理空间信息联盟 (OGC) 服务并与 Azure Maps WEB SDK 集成。覆盖 Web 地图服务 (WMS) 和 Web 地图磁贴服务 (WMTS) 作为地图上的层](spatial-io-add-ogc-map-layer.md)。
+- [ (wf) 中查询 Web 功能服务中的数据 ](spatial-io-connect-wfs-service.md)。
 - [覆盖包含样式信息的复杂数据集，并让它们使用最少的代码自动呈现](spatial-io-add-simple-data-layer.md)。
 - [利用高速 XML 和带分隔符的文件读取器和编写器类](spatial-io-core-operations.md)。
 
@@ -38,9 +38,9 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
 > [!WARNING]
 > 仅使用来自你信任的源的数据和服务，尤其是在从另一个域中引用它的情况下。 空间 IO 模块执行一些步骤来最大程度地降低风险，不过，最安全的方法不允许将任何 danagerous 的数据从开始到你的应用程序。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-使用空间 IO 模块之前，需要先[创建一个 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account)，并[获取帐户的主要订阅密钥](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)。
+使用空间 IO 模块之前，需要先 [创建一个 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) ，并 [获取帐户的主要订阅密钥](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)。
 
 ## <a name="installing-the-spatial-io-module"></a>安装空间 IO 模块
 
@@ -52,7 +52,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-* 可在本地加载[azure maps-空间 io](https://www.npmjs.com/package/azure-maps-spatial-io)的源代码，并将其托管在应用中。 此程序包还包括了 TypeScript 定义。 对于此选项，请使用以下命令安装包：
+* 可在本地加载 [azure maps-空间 io](https://www.npmjs.com/package/azure-maps-spatial-io) 的源代码，并将其托管在应用中。 此程序包还包括了 TypeScript 定义。 对于此选项，请使用以下命令安装包：
 
     ```sh
     npm install azure-maps-spatial-io
@@ -68,7 +68,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
 
 1. 创建新的 HTML 文件。
 
-2. 加载 Azure Maps Web SDK 并初始化地图控件。 请参阅[Azure Maps map control](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) guide 获取详细信息。 完成此步骤后，HTML 文件应如下所示：
+2. 加载 Azure Maps Web SDK 并初始化地图控件。 请参阅 [Azure Maps map control](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) guide 获取详细信息。 完成此步骤后，HTML 文件应如下所示：
 
     ```html
     <!DOCTYPE html>
@@ -134,7 +134,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
     var datasource, layer;
     ```
 
-    和
+    以及
 
     ```javascript
     //Create a data source and add it to the map.
