@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926580"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363216"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>如何保护专用 DNS 区域和记录
 
@@ -20,11 +20,11 @@ ms.locfileid: "87926580"
 
 专用 DNS 区域和记录是关键资源。 删除 DNS 区域或单个 DNS 记录可能导致服务中断。 重要的是保护 DNS 区域和记录，防止未经授权的或意外的更改。
 
-本文介绍如何通过 Azure DNS 来保护专用 DNS 区域和记录，使之避免受到此类更改。  我们应用 Azure 资源管理器提供的两项强大的证券功能： azure RBAC) 和[资源锁](../azure-resource-manager/management/lock-resources.md) [ (基于角色的访问控制](../role-based-access-control/overview.md)。
+本文介绍如何通过 Azure DNS 来保护专用 DNS 区域和记录，使之避免受到此类更改。  我们应用了 Azure 资源管理器提供的两个强大的安全功能：[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 和[资源锁](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure RBAC)  (azure 基于角色的访问控制，为 Azure 用户、组和资源启用精细的访问管理。 使用 RBAC，可以授予用户所需的访问权限级别。 有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
+Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组和资源进行精细的访问管理。 使用 RBAC，可以授予用户所需的访问权限级别。 如需了解 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。
 
 ### <a name="the-private-dns-zone-contributor-role"></a>“专用 DNS 区域参与者”角色
 
@@ -102,9 +102,9 @@ az role assignment create \
 
 记录集级别的 RBAC 权限可在 Azure 门户中使用记录集页面中的“访问控制(标识和访问管理)”按钮进行配置： 
 
-![使用 Azure 门户的记录集级别 RBAC](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![屏幕截图显示了 " (I A M) " 按钮的访问控制。](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![使用 Azure 门户的记录集级别 RBAC](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![屏幕截图显示所选添加角色分配的访问控制。](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
 也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予记录集级别 RBAC 权限：
 
@@ -168,7 +168,7 @@ az role assignment create \
 * `Microsoft.Network/privateDNSZones/read` 授予读取 DNS 专用区域的权限，但不能修改它们，可查看创建 CNAME 的区域。
 
 > [!NOTE]
-> 使用 Azure 自定义角色阻止删除记录集，同时仍允许更新记录不是有效的控件。 此方法仅可防止记录集被删除，但不会阻止它们被修改。  允许的修改包括添加和删除记录集中的记录，还包括删除所有记录，只留下空记录集。 这与从 DNS 解析视点中删除记录集具有相同的效果。
+> 使用 Azure 自定义角色防止删除记录集的同时仍允许它们更新，这不是一种有效的控制方式。 此方法仅可防止记录集被删除，但不会阻止它们被修改。  允许的修改包括添加和删除记录集中的记录，还包括删除所有记录，只留下空记录集。 这与从 DNS 解析视点中删除记录集具有相同的效果。
 
 当前无法通过 Azure 门户定义自定义角色定义。 可以使用 Azure PowerShell 创建基于此角色定义的自定义角色：
 

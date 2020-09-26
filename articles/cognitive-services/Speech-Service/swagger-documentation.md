@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e42d9713d1d61bb681c0ee51e46cc52eb0bcc807
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77430799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363182"
 ---
 # <a name="swagger-documentation"></a>Swagger 文档
 
@@ -47,4 +47,4 @@ ms.locfileid: "77430799"
 ## <a name="next-steps"></a>后续步骤
 
 * [GitHub 上的语音服务示例](https://aka.ms/csspeech/samples)。
-* [免费获取语音服务订阅密钥](get-started.md)
+* [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
