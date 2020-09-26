@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ef879806555634598d5de999bcd9fc01c050d60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314549"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -117,21 +117,21 @@ Jeff（工作负荷所有者）
 安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在安全中心内，可以定义 Azure 订阅策略，即根据工作负载类型或数据机密性量身定制。
 
 安全中心策略由以下部分组成：
-- [数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理预配和数据收集设置。
-- [安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)：可以通过 [Azure Policy](../governance/policy/overview.md) 来决定安全中心所监视和建议的控件，还可以通过 Azure Policy 来创建新的定义、定义其他策略，以及跨管理组分配策略。
-- [电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)：安全联系人和通知设置。
-- [定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)：使用或不使用 Azure Defender 确定哪些安全中心功能适用于作用域中的资源 (可为订阅、资源组和工作区) 指定。
+- [数据收集](security-center-enable-data-collection.md)：代理预配和数据收集设置。
+- [安全策略](tutorial-security-policy.md)：可以通过 [Azure Policy](../governance/policy/overview.md) 来决定安全中心所监视和建议的控件，还可以通过 Azure Policy 来创建新的定义、定义其他策略，以及跨管理组分配策略。
+- [电子邮件通知](security-center-provide-security-contact-details.md)：安全联系人和通知设置。
+- [定价层](security-center-pricing.md)：使用或不使用 Azure Defender 确定哪些安全中心功能适用于作用域中的资源 (可为订阅、资源组和工作区) 指定。
 
 > [!NOTE]
-> 指定安全联系人可以确保在发生安全事件时，Azure 能够联系到贵组织中的合适人员。 若要详细了解如何启用此建议，请阅读 [Provide security contact details in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) （在 Azure 安全中心提供安全方面的联系细节）。
+> 指定安全联系人可以确保在发生安全事件时，Azure 能够联系到贵组织中的合适人员。 若要详细了解如何启用此建议，请阅读 [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) （在 Azure 安全中心提供安全方面的联系细节）。
 
 ### <a name="security-policies-definitions-and-recommendations"></a>安全策略定义和建议
 安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略，也可以使用 Azure Policy 创建新的定义、定义其他策略、跨管理组（可以代表整个组织、组织中的某个业务部门，等等）分配策略，以及跨相应范围监视对这些策略的遵循情况。
 
-在配置安全策略之前，请查看每项 [安全建议](https://docs.microsoft.com/azure/security-center/security-center-recommendations)，确定这些策略是否适合各种订阅和资源组。 此外，请务必了解解决安全建议应采取的行动，以及组织中负责采纳新建议并采取必要措施的人员。
+在配置安全策略之前，请查看每项 [安全建议](security-center-recommendations.md)，确定这些策略是否适合各种订阅和资源组。 此外，请务必了解解决安全建议应采取的行动，以及组织中负责采纳新建议并采取必要措施的人员。
 
 ## <a name="data-collection-and-storage"></a>数据收集和存储
-Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用此代理）从虚拟机中收集安全数据。 通过此代理[收集的数据](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)将存储在 Log Analytics 工作区中。
+Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用此代理）从虚拟机中收集安全数据。 通过此代理[收集的数据](security-center-enable-data-collection.md)将存储在 Log Analytics 工作区中。
 
 ### <a name="agent"></a>Agent
 
@@ -189,9 +189,9 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 ### <a name="hardening-access-and-applications"></a>强化对访问权限和应用程序的控制
 
-在进行安全操作时，还应采取预防性措施，限制对 VM 的访问，并控制在 VM 上运行的应用程序。 锁定到 Azure VM 的入站流量即可降低受攻击的风险，同时可以轻松进行访问，视需要连接到 VM。 使用[实时 VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) 访问功能，以强化 VM 访问控制。
+在进行安全操作时，还应采取预防性措施，限制对 VM 的访问，并控制在 VM 上运行的应用程序。 锁定到 Azure VM 的入站流量即可降低受攻击的风险，同时可以轻松进行访问，视需要连接到 VM。 使用实时 [VM 访问](security-center-just-in-time.md) 权限功能来强化 vm 的访问权限。
 
-可以使用[自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)来限制可在 Azure 中的 VM 上运行的应用程序。 除其他优势外，这种控制还强化了 VM 抵御恶意软件侵害的能力。 使用机器学习，安全中心会分析在 VM 中运行的进程，以帮助创建允许列表规则。
+你可以使用 [自适应应用程序控制](security-center-adaptive-application.md) 来限制哪些应用程序可以在 Azure 中的 vm 上运行。 除其他优势外，这种控制还强化了 VM 抵御恶意软件侵害的能力。 使用机器学习，安全中心会分析在 VM 中运行的进程，以帮助创建允许列表规则。
 
 
 ## <a name="incident-response"></a>事件响应
