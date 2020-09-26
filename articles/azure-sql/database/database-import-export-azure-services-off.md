@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7d36984e7117305b22381e4266575e998c080ae5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360185"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,14 +29,14 @@ ms.locfileid: "87543752"
 
 ## <a name="create-the-azure-virtual-machine"></a>创建 Azure 虚拟机
 
-通过选择 "**部署到 azure** " 按钮，创建 Azure 虚拟机。
+通过选择“部署到 Azure”按钮来创建 Azure 虚拟机。
 
-此模板允许你使用最新的修补版本，为 Windows 版本使用几个不同的选项部署简单的 Windows 虚拟机。 这会在资源组位置中部署 A2 大小 VM，并返回 VM 的完全限定域名。
+借助此模板，可以使用 Windows 版本（最新补丁版本）适用的其他一些选项来部署简单的 Windows 虚拟机。 这会在资源组位置部署 A2 大小 VM，并返回 VM 的完全限定的域名。
 <br><br>
 
-[![显示标记为 "部署到 Azure" 按钮的图像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
+[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
-有关详细信息，请参阅[WINDOWS VM 的非常简单的部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
+有关详细信息，请参阅 [Windows VM 的极简部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 
@@ -44,7 +44,7 @@ ms.locfileid: "87543752"
 
 1. 部署完成后，转到虚拟机资源。
 
-   ![VM](./media/database-import-export-azure-services-off/vm.png)  
+   ![屏幕截图显示 "虚拟机概述" 页和 "连接" 按钮。](./media/database-import-export-azure-services-off/vm.png)  
 
 2. 选择“连接” 。
 
@@ -77,7 +77,7 @@ ms.locfileid: "87543752"
 
 以下步骤针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，并启用从虚拟机的连接。
 
-1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。  此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称（例如**servername.database.windows.net**），并提供了进一步配置的选项。
+1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。  此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称 (例如 **servername.database.windows.net**) 并提供了进一步配置的选项。
 
 2. 请复制此完全限定的服务器名称，以便在连接到服务器及其数据库时使用。
 

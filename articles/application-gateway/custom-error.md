@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360151"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>创建应用程序网关自定义错误页
 
@@ -48,7 +48,7 @@ ms.locfileid: "88934814"
 
 1. 在门户中导航到“应用程序网关”，并选择一个应用程序网关。
 
-    ![ag-overview](media/custom-error/ag-overview.png)
+    ![屏幕截图显示应用程序网关的 "概述" 页。](media/custom-error/ag-overview.png)
 2. 单击“侦听器”**** 并导航到你要在其中指定错误页的特定侦听器。
 
     ![应用程序网关侦听器](media/custom-error/ag-listener.png)

@@ -3,16 +3,16 @@ title: 将非 Azure 计算机连接到 Azure 安全中心
 description: 了解如何将非 Azure 计算机连接到安全中心
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2602df2e8a2699914ee32138a8aeba31d7f58cdb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 82b8161f92f337002e9d8bbdc45cd53d5921fc00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280668"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>将非 Azure 计算机连接到安全中心
 
@@ -21,7 +21,7 @@ ms.locfileid: "90933552"
 ## <a name="add-non-azure-computers"></a>添加非 Azure 计算机 
 
 1. 在安全中心的菜单中，打开 " **入门** " 页。
-1. 选择“入门”  选项卡。
+1. 选择“入门”选项卡。
 
     :::image type="content" source="./media/security-center-onboarding/onboarding-get-started-tab.png" alt-text=""入门" 页中的 "入门" 选项卡" lightbox="./media/security-center-onboarding/onboarding-get-started-tab.png":::
 
@@ -89,7 +89,7 @@ ms.locfileid: "90933552"
 
 
 ## <a name="verifying"></a>验证
-祝贺你！ 现在，你可以在同一个位置查看 Azure 和非 Azure 计算机。 打开 " [资产清单" 页](asset-inventory.md) ，并筛选到相关的资源类型。 这两个图标区分类型：
+祝贺！ 现在，你可以在同一个位置查看 Azure 和非 Azure 计算机。 打开 " [资产清单" 页](asset-inventory.md) ，并筛选到相关的资源类型。 这两个图标区分类型：
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 计算机
 

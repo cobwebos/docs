@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 网关：配置强制隧道 - 站点到站点连接：经典
-description: 如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。
+description: 了解如何配置使用经典部署模型创建的虚拟网络的强制隧道。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5999ef8431ce1e128c3775450eedf13644505918
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313529"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
 

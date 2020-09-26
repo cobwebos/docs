@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359675"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -48,7 +48,7 @@ Azure 机器学习使你可以轻松连接到云中的数据。  它在基础存
 
 下图提供了此建议的工作流的直观演示。
 
-![Data-concept-diagram](./media/concept-data/data-concept-diagram.svg)
+![关系图显示了流到数据存储中的 Azure 存储服务，该数据流入到数据集。 数据集流入模型定型，后者流到数据偏移，后者流回数据集。](./media/concept-data/data-concept-diagram.svg)
 
 ## <a name="datastores"></a>数据存储
 
@@ -67,19 +67,19 @@ Azure 中支持的基于云的存储服务，可注册为数据存储：
 
 ## <a name="datasets"></a>数据集
 
-Azure 机器学习数据集是指向存储服务中数据的引用。 它们不是 dataBy 创建 Azure 机器学习数据集的副本，而是创建对数据源位置的引用以及其元数据的副本。 
+Azure 机器学习数据集是指向存储服务中数据的引用。 它们不是数据的副本。创建 Azure 机器学习数据集时，将会创建对数据源位置的引用及其元数据的副本。 
 
-由于数据集是延迟计算的，而数据仍保留在其现有位置，因此你
+由于数据集是延迟计算的，并且数据仍保留在其现有位置，因此
 
 * 不会产生额外的存储成本。
-* 不要无意中更改原始数据源。
-* 提高 ML 工作流性能速度。
+* 不会无意中更改原始数据源。
+* 会提高 ML 工作流性能速度。
 
 若要与存储中的数据进行交互，请[创建一个数据集](how-to-create-register-datasets.md)以将数据打包成机器学习任务可用的对象。 将数据集注册到工作区可在不同的试验中共享和重用该数据集，而不会造成数据引入复杂性。
 
 可以从本地文件、公共 URL、[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)或经由数据存储的 Azure 存储服务创建数据集。 
 
-有2种类型的数据集： 
+有两种类型的数据集： 
 
 + [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) 引用数据存储或公共 URL 中的单个或多个文件。 如果数据已被清理并且可用于训练试验，则可以[下载或装载 FileDataset 引用的文件](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)到计算目标。
 

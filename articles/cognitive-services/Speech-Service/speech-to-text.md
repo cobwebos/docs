@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
-keywords: 语音到文本、语音到文本软件
-ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+keywords: 语音转文本, 语音转文本软件
+ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359930"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
@@ -58,5 +58,5 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [免费获取语音服务订阅密钥](get-started.md)
+- [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
 - [获取语音 SDK](speech-sdk.md)
