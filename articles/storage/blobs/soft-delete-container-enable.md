@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280294"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>为容器 (预览) 启用和管理软删除
 
@@ -28,7 +28,7 @@ ms.locfileid: "89230069"
 
 可以通过使用 Azure 门户或 Azure 资源管理器模板，随时为存储帐户启用或禁用容器软删除。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要使用 Azure 门户为存储帐户启用容器软删除，请执行以下步骤：
 
@@ -93,7 +93,7 @@ ms.locfileid: "89230069"
 可以在保留期内还原软删除容器及其内容。 若要还原 Azure 门户中软删除的容器，请执行以下步骤：
 
 1. 在 Azure 门户中导航到存储帐户，并查看容器的列表。
-1. 显示要删除的容器的上下文菜单，然后从菜单中选择 " **撤消删除** "。
+1. 显示要还原的容器的上下文菜单，然后从菜单中选择 " **撤消删除** "。
 
     :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="显示如何在 Azure 门户中还原软删除容器的屏幕截图":::
 

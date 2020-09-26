@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294855"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -55,7 +55,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 策略 | 优点 | 缺点 |
 | --- | --- | --- |
 | **云标识** |在小型组织中易于管理。 <br> 没有要本地安装的内容。 无需其他任何硬件<br>用户离职时轻松禁用其帐户 |用户访问云中的工作负荷时需要登录 <br> 云和本地标识的密码可以相同，也可以不同 |
-| **已同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
+| **已同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |某些客户可能不愿意将其目录与云相关的特定公司政策同步 |
 | **联合** |用户可以执行单一登录 (SSO) <br>如果用户被辞退或离职，可以立即禁用其帐户并吊销其访问权限。<br> 支持同步所不能实现的高级方案 |设置和配置步骤较多 <br> 更多的维护工作 <br> 可能需要额外的硬件来部署 STS 服务器。 <br> 可能需要额外的硬件来安装联合服务器。 如果使用 AD FS，则需要额外的软件 <br> 需要进行大量的设置才能使用 SSO <br> 严重的缺点是，联合身份验证服务器关闭时用户无法进行身份验证 |
 
 ### <a name="client-experience"></a>客户端体验
@@ -193,9 +193,9 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 用户位置 | 首选设计选项 |
 | --- | --- |
 | Azure Active Directory |云中的多重身份验证 |
-| Azure AD 和使用 AD FS 联合身份验证的本地 AD |两者 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |两者 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |两者 |
+| Azure AD 和使用 AD FS 联合身份验证的本地 AD |双向 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |双向 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |双向 |
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]

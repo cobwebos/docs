@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: abb6f8bcaa3b8e356bea00185702bc0ae783e071
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/25/2020
+ms.openlocfilehash: 1f67d7228da8529699a26539f20efd55f9a20c27
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270218"
+ms.locfileid: "91370974"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>在 Azure 逻辑应用 Visual Studio Code 中创建有状态或无状态的工作流 (预览版) 扩展
 
@@ -72,11 +72,11 @@ Azure 逻辑应用 (预览版) 扩展可在 Visual Studio Code 中为你的本�
 
 * *无状态*
 
-  如果不需要保存、查看或引用以前事件中的数据，请创建无状态逻辑应用。 这些逻辑应用保留每个操作的输入和输出，并将其工作流状态仅保留在内存中，而不是将此信息传输到外部存储。 因此，无状态逻辑应用程序的运行时间通常不超过5分钟，更快的响应时间更快，吞吐量较高，降低了运行成本，因为运行详细信息和历史记录不会保存在外部存储中。 但是，如果发生中断，中断的运行将不会自动还原，因此调用方需要手动重新提交中断的运行。 为了更轻松地进行调试，可以为无状态逻辑应用 [启用运行历史记录](#run-history) 。
+  如果不需要保存、查看或引用外部存储中以前事件的数据以供以后查看，请创建无状态逻辑应用。 这些逻辑应用保留每个操作的输入和输出，并将其工作流状态仅保留在内存中，而不是将此信息传输到外部存储。 因此，无状态逻辑应用程序的运行时间通常不超过5分钟，更快的响应时间更快，吞吐量较高，降低了运行成本，因为运行详细信息和历史记录不会保存在外部存储中。 但是，如果发生中断，中断的运行将不会自动还原，因此调用方需要手动重新提交中断的运行。 这些逻辑应用只能以同步方式运行，若要更轻松地进行调试，你可以 [启用运行历史记录](#run-history)，这会对性能产生影响。
 
   无状态工作流目前只支持 [托管连接器](../connectors/apis-list.md#managed-api-connectors)的操作，而不支持触发器。 若要启动工作流，请选择 [内置请求、事件中心或服务总线触发器](../connectors/apis-list.md#built-ins)。 有关不支持的触发器、操作和连接器的详细信息，请参阅 [不支持的功能](#unsupported)。
 
-有关嵌套逻辑应用在有状态和无状态逻辑应用之间的行为的差异，请参阅有 [状态和无状态逻辑应用之间的嵌套行为差异](#nested-behavior)。
+有关嵌套的逻辑应用在有状态和无状态逻辑应用之间的行为方式的信息，请参阅有 [状态和无状态逻辑应用之间的嵌套行为差异](#nested-behavior)。
 
 <a name="pricing-model"></a>
 
@@ -424,7 +424,7 @@ Azure 逻辑应用 (预览版) 扩展可在 Visual Studio Code 中为你的本�
 
    ![显示逻辑应用设计器的屏幕截图，其中包含 Office 365 Outlook "发送电子邮件" 操作的详细信息。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
-   | properties | 必选 | Value | 说明 |
+   | properties | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **收件人** | 是 | <*your-email-address*> | 电子邮件收件人，可以是你的电子邮件地址，用于测试目的。 此示例使用虚构电子邮件 `sophiaowen@fabrikam.com` 。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |
@@ -918,7 +918,7 @@ Azure 逻辑应用 (预览版) 扩展可在 Visual Studio Code 中为你的本�
 
 ## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>有状态和无状态逻辑应用之间的嵌套行为差异
 
-可以通过使用[请求](../connectors/connectors-native-reqres.md)触发器、 [HTTP Webhook](../connectors/connectors-native-webhook.md)触发器或具有[APICONNECTIONWEHOOK 类型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)并且可以接收 HTTPS 请求的托管连接器触发器来[使逻辑应用工作流](../logic-apps/logic-apps-http-endpoint.md)可从其他逻辑应用工作流调用。
+可以通过使用[请求](../connectors/connectors-native-reqres.md)触发器、 [HTTP Webhook](../connectors/connectors-native-webhook.md)触发器或具有[APICONNECTIONWEHOOK 类型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)并且可以接收 HTTPS 请求的托管连接器触发器，[使逻辑应用工作流](../logic-apps/logic-apps-http-endpoint.md)可从同一逻辑应用中存在的其他逻辑应用工作流调用， ** (预览) **资源。
 
 下面是嵌套的逻辑应用工作流在父工作流调用子工作流之后可遵循的行为模式：
 
@@ -930,7 +930,7 @@ Azure 逻辑应用 (预览版) 扩展可在 Visual Studio Code 中为你的本�
 
   子元素通过立即返回响应来确认调用 `202 ACCEPTED` ，而父级将继续执行下一个操作，而不会等待子中的结果。 相反，父项在子节点完成运行时接收结果。 不包括响应操作的子状态工作流始终遵循同步模式。 对于子状态工作流，可以使用运行历史记录查看。
 
-  若要启用此行为，请在工作流的 JSON 定义中，将 `OperationOptions` 属性设置为 `DisableAsyncPattern` 。 有关详细信息，请参阅 [触发器和操作类型-操作选项](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)。
+  若要启用此行为，请在工作流的 JSON 定义中，将 `operationOptions` 属性设置为 `DisableAsyncPattern` 。 有关详细信息，请参阅 [触发器和操作类型-操作选项](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)。
 
 * 触发器并等待
 
@@ -966,7 +966,9 @@ Azure 逻辑应用 (预览版) 扩展可在 Visual Studio Code 中为你的本�
 
 *  (预览创建新的 **逻辑应用) ** 资源当前在 macOS 上不可用。
 
-* 此预览版不支持自定义连接器、基于 webhook 的触发器和滑动窗口触发器。 对于无状态逻辑应用工作流，只能添加 [托管连接器](../connectors/apis-list.md#managed-api-connectors)的操作，而不是触发器的操作。 若要启动工作流，请使用 [内置请求、事件中心或服务总线触发器](../connectors/apis-list.md#built-ins)。
+* 若要启动工作流，请使用 [请求、HTTP、事件中心或服务总线触发器](../connectors/apis-list.md)。 目前，在此预览版中， [企业连接器](../connectors/apis-list.md#enterprise-connectors)、 [本地数据网关触发器](../connectors/apis-list.md#on-premises-connectors)、基于 Webhook 的触发器、滑动窗口触发器、 [自定义连接器](../connectors/apis-list.md#custom-apis-and-connectors)、集成帐户、项目和 [其连接器](../connectors/apis-list.md#integration-account-connectors) 不受支持。 "调用 Azure function" 功能不可用，因此目前请使用 HTTP *操作* 调用 Azure 函数的请求 URL。
+
+  无状态逻辑应用工作流只能对 [托管连接器](../connectors/apis-list.md#managed-api-connectors)使用操作，而不能使用触发器。 除了之前指定的触发器，有状态工作流可以同时使用托管连接器的触发器和操作。
 
 * 你可以将新的 **逻辑应用 (预览版仅) ** 资源类型部署到 [Azure 中的高级或应用服务托管计划](#publish-azure) ，或部署到 [Docker 容器](#deploy-docker)，而不是 [集成服务环境 (ISEs) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 **消耗** 托管计划不受支持，也不能用于部署此资源类型。
 

@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319871"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![显示同步 Service Manager 屏幕截图。](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 “连接器”选项卡可用于管理同步引擎连接的所有系统。
 
@@ -47,7 +47,7 @@ ms.locfileid: "85357250"
 
 ### <a name="delete"></a>删除
 删除操作适用于两种不同的用途。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![屏幕截图，显示 "删除连接器" 窗口，并选中 "仅删除连接器空间"。](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 “仅删除连接器空间”选项会删除所有数据，但保留配置。 
 
@@ -58,17 +58,17 @@ ms.locfileid: "85357250"
 ### <a name="configure-run-profiles"></a>配置运行配置文件
 此选项可让你查看为连接器配置的运行配置文件。
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![显示 "配置运行配置文件" 窗口的屏幕截图，其中选择了 "增量导入"。](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>搜索连接器空间
 查找对象和排查数据问题时，搜索连接器空间操作非常有用。
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![显示 "搜索连接器空间" 窗口的屏幕截图。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 先选择一个“范围”。  可以基于数据（RDN、DN、定位点、子树）或对象状态（所有其他选项）进行搜索。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+![显示 "范围" 下拉菜单的屏幕截图。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 例如，如果进行子树搜索，将获取某个 OU 中的所有对象。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+![显示 "子树" 搜索示例的屏幕截图。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 可以从此网格中选择一个对象，选择“属性”  ，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](tshoot-connect-object-not-syncing.md)。
 
 ### <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码

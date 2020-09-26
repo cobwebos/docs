@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258705"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -115,6 +115,9 @@ Azure AD 条件访问支持以下设备平台：
 | Windows Server 2012 R2 | Internet Explorer |
 | Windows Server 2008 R2 | Internet Explorer |
 | macOS | Chrome、Safari |
+
+> [!NOTE]
+> Edge 85 + 要求用户登录到浏览器，以正确传递设备标识。 否则，它的行为类似于 Chrome，无需帐户扩展。 在混合 Azure AD 联接方案中，此登录可能不会自动发生。 
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>为何我在浏览器中看到证书提示
 

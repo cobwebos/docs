@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602058"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258738"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -31,9 +31,9 @@ ms.locfileid: "90602058"
 
 许多现有 Microsoft 云应用程序都包含在可供选择的应用程序的列表中。 
 
-管理员可以向 Microsoft 提供的以下云应用分配条件访问策略。 某些应用（例如 Office 365 预览版和 Microsoft Azure 管理）包含多个相关子应用或服务。 以下列表并不完整，且随时可能会更改。
+管理员可以向 Microsoft 提供的以下云应用分配条件访问策略。 某些应用（如 Office 365 和 Microsoft Azure 管理）包含多个相关的子应用或服务。 以下列表并不完整，且随时可能会更改。
 
-- [Office 365（预览版）](#office-365-preview)
+- [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL 数据库和数据仓库](../../azure-sql/database/conditional-access-configure.md)
@@ -67,15 +67,15 @@ ms.locfileid: "90602058"
 - 虚拟专用网络 (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365（预览版）
+### <a name="office-365"></a>Office 365
 
 Microsoft 365 提供了基于云的生产力和协作服务，如 Exchange、SharePoint 和 Microsoft 团队。 Microsoft 365 云服务进行了深层集成，以确保顺利且协作体验。 在创建策略时，这种集成可能会造成混淆，因为某些应用（如 Microsoft Teams）依赖于 SharePoint 或 Exchange 等其他一些应用。
 
-在 Office 365（预览版）应用中可以一次性将所有这些服务作为目标。 我们建议使用新的 Office 365（预览版）应用，而不要将单个云应用作为目标，以免[服务依赖关系](service-dependencies.md)出现问题。 将这一组应用程序作为目标有助于避免因策略和依赖关系不一致而导致的问题。
+Office 365 应用使你可以一次同时定位这些服务。 建议使用新的 Office 365 应用，而不是面向单个云应用，以避免 [服务依赖项](service-dependencies.md)的问题。 将这一组应用程序作为目标有助于避免因策略和依赖关系不一致而导致的问题。
 
-如果需要，管理员可以选择从策略中排除特定的应用，只需在策略中包含 Office 365（预览版）应用，并排除所选的特定应用即可。
+管理员可以选择从策略中排除特定的应用（如果需要），只需包含 Office 365 应用，并排除其在策略中选择的特定应用即可。
 
-Office 365（预览版）客户端应用中包含的关键应用程序：
+Office 365 客户端应用程序中包含的关键应用程序：
 
    - Microsoft Flow
    - Microsoft Forms

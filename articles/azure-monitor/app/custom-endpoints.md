@@ -3,13 +3,13 @@ title: Azure Application Insights 替代默认 SDK 终结点
 description: 修改 Azure 政府等区域的默认 Azure Monitor Application Insights SDK 终结点。
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions, devx-track-javascript
-ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: references_regions, devx-track-js
+ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373124"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333284"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>替代默认终结点的 Application Insights
 
@@ -77,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-对于 Azure Functions 现在建议使用在函数的应用程序设置中设置的[连接字符串](./sdk-connection-string.md?tabs=net)。 若要从“函数”窗格中访问函数的应用程序设置，请选择“设置” > “配置” > “应用程序设置”。 
+对于 Azure Functions 现在建议使用在函数的应用程序设置中设置的 [连接字符串](./sdk-connection-string.md?tabs=net) 。 若要从“函数”窗格中访问函数的应用程序设置，请选择“设置” > “配置” > “应用程序设置”。 
 
 姓名：`APPLICATIONINSIGHTS_CONNECTION_STRING` 值：`Connection String Value`
 
@@ -150,7 +150,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 # <a name="python"></a>[Python](#tab/python)
 
-有关修改 opencensus SDK 的引入终结点的指南，请参阅 opencensus 存储库[。](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
+有关修改 opencensus SDK 的引入终结点的指南，请参阅 opencensus 存储库 [。](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
 
 ---
 
@@ -167,7 +167,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 | Azure Government | QuickPulse（实时指标） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | 配置文件查询 |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
-如果你当前使用的是通常通过 "api.applicationinsights.io" 访问的[Application Insights REST API](https://dev.applicationinsights.io/
+如果你当前使用的是通常通过 "api.applicationinsights.io" 访问的 [Application Insights REST API](https://dev.applicationinsights.io/
 ) ，你将需要使用区域的本地终结点：
 
 |区域 |  终结点名称 | Value |

@@ -1,18 +1,18 @@
 ---
 title: Azure 文件同步的网络注意事项 | Microsoft Docs
-description: Azure 文件同步的网络选项概述。
+description: 了解如何配置网络以使用 Azure 文件同步在本地缓存文件。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267782"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure 文件同步的网络注意事项
 可以通过两种方式连接到 Azure 文件共享：

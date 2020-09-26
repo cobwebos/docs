@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 74656401d7b0ef12cf509674921a6a5153ce992d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282912"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>使用映射数据流中的列模式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-多个映射数据流转换允许您基于模式而不是硬编码的列名称引用模板列。 此匹配称为 *列模式*。 您可以根据名称、数据类型、流或位置定义模式来匹配列，而不需要精确的字段名。 在以下两种情况下，列模式很有用：
+多个映射数据流转换允许您基于模式而不是硬编码的列名称引用模板列。 此匹配称为 *列模式*。 您可以根据名称、数据类型、流、源或位置定义模式来匹配列，而不需要精确的字段名。 在以下两种情况下，列模式很有用：
 
 * 如果传入源字段经常更改，例如更改文本文件或 NoSQL 数据库中的列的大小写。 此方案称为 [架构偏差](concepts-data-flow-schema-drift.md)。
 * 如果要对一大组列执行常见操作， 例如，想要将其列名中包含 "total" 的每个列转换为 double。
@@ -31,7 +31,7 @@ ms.locfileid: "90531130"
 
 ![列模式](media/data-flow/add-column-pattern.png "列模式")
 
-使用 " [表达式生成器](concepts-data-flow-expression-builder.md) " 输入匹配条件。 基于列的、、和创建与列匹配的布尔表达式 `name` `type` `stream` `position` 。 此模式将影响任何偏移或定义的列，其中条件返回 true。
+使用 " [表达式生成器](concepts-data-flow-expression-builder.md) " 输入匹配条件。 基于列的、、、和创建与列匹配的布尔表达式 `name` `type` `stream` `origin` `position` 。 此模式将影响任何偏移或定义的列，其中条件返回 true。
 
 Match 条件下的两个表达式框指定受影响的列的新名称和值。 用于 `$$` 引用匹配字段的现有值。 左侧表达式框定义名称，右侧表达式框定义值。
 
@@ -45,7 +45,7 @@ Match 条件下的两个表达式框指定受影响的列的新名称和值。 �
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Select 和 sink 中基于规则的映射
 
-映射源中的列并选择转换时，可以添加固定映射或基于规则的映射。 根据 `name` 列的、 `type` 、 `stream` 和进行匹配 `position` 。 可以有固定和基于规则的映射的任意组合。 默认情况下，每列大于50的所有投影都将默认为基于规则的映射，该映射在每个列上都匹配并输出输入名称。 
+映射源中的列并选择转换时，可以添加固定映射或基于规则的映射。 根据列的、、、 `name` `type` `stream` `origin` 和进行匹配 `position` 。 可以有固定和基于规则的映射的任意组合。 默认情况下，每列大于50的所有投影都将默认为基于规则的映射，该映射在每个列上都匹配并输出输入名称。 
 
 若要添加基于规则的映射，请单击 " **添加映射** "，然后选择 " **基于规则的映射**"。
 
@@ -82,6 +82,7 @@ Match 条件下的两个表达式框指定受影响的列的新名称和值。 �
 * `type` 表示每个传入列的数据类型
 * `stream` 表示与流中的每个流或转换相关联的名称。
 * `position` 是数据流中列的序号位置
+* `origin` 用于生成或上次更新列的转换
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关数据转换的映射数据流 [表达式语言](data-flow-expression-functions.md) 的详细信息

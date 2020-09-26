@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294522"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
@@ -68,14 +68,14 @@ Python2 可执行文件必须化名为 *python*。 下面是可以用来设置�
 ## <a name="supported-linux-hardening"></a>支持的 Linux 强化
 OMS 代理对 Linux 提供了有限的自定义支持。 
 
-目前支持以下各项： 
-- FIPs
+当前支持以下内容： 
+- FIPS
 
-以下项已计划，但尚不受支持：
+以下内容已计划，但尚不受支持：
 - CIS
 - SELINUX
 
-其他强化和自定义方法不受支持，也不会计划用于 OMS 代理。  
+OMS 代理不支持且未计划使用其他强化和自定义方法。  
 
 ## <a name="agent-prerequisites"></a>代理必备组件
 
@@ -86,7 +86,7 @@ OMS 代理对 Linux 提供了有限的自定义支持。
 |Glibc |    GNU C 库 | 2.5-12 
 |Openssl    | OpenSSL 库 | 1.0.x 或 1.1.x |
 |Curl | cURL Web 客户端 | 7.15.5 |
-|Python | | 2.6 + 或 3.3 +
+|Python | | 2.6+ 或 3.3+
 |Python-ctype | | 
 |PAM | 可插入验证模块 | | 
 
@@ -102,10 +102,10 @@ OMS 代理对 Linux 提供了有限的自定义支持。
 
 **包** | **版本** | **说明**
 ----------- | ----------- | --------------
-omsagent | 1.12.15 | 适用于 Linux 的 Log Analytics 代理
+omsagent | 1.13.9 | 适用于 Linux 的 Log Analytics 代理
 omsconfig | 1.1.1 | Log Analytics 代理的配置代理
-omi | 1.6.3 | Open Management Infrastructure (OMI) - 一款轻型 CIM 服务器。 请注意，OMI 要求拥有 root 访问权限，以运行所需的 cron 作业来使服务正常工作
-scx | 1.6.3 | 操作系统性能指标的 OMI CIM 提供程序
+omi | 1.6.4 | Open Management Infrastructure (OMI) - 一款轻型 CIM 服务器。 请注意，OMI 要求拥有 root 访问权限，以运行所需的 cron 作业来使服务正常工作
+scx | 1.6.4 | 操作系统性能指标的 OMI CIM 提供程序
 apache-cimprov | 1.0.1 | OMI 的 Apache HTTP 服务器性能监视提供程序。 仅当检测到 Apache HTTP 服务器时才安装。
 mysql-cimprov | 1.0.1 | OMI 的 MySQL 服务器性能监视提供程序。 仅当检测到 MySQL/MariaDB 服务器时才安装。
 docker-cimprov | 1.0.0 | OMI 的 Docker 提供程序。 仅当检测到 Docker 时才安装。

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372657"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -34,7 +34,7 @@ ms.locfileid: "88587219"
 
 使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消耗计划中，函数执行在可配置的时间段后超时。
 
-账单将基于执行数量、执行时间和所用内存。 账单是基于函数应用内的所有函数聚合而生成的。 有关详细信息，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
+账单将基于执行数量、执行时间和所用内存。 在函数应用内的所有函数中聚合使用情况。 有关详细信息，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
 
 消耗计划是默认的托管计划，它提供了以下优势：
 
@@ -58,7 +58,7 @@ ms.locfileid: "88587219"
 
 若要了解如何在高级计划中创建函数应用，请参阅 [Azure Functions 高级计划](functions-premium-plan.md)。
 
-高级计划的计费不是每次执行和内存计费，而是基于所需和预准备好实例使用的核心秒数和内存。 每个计划至少必须有一个实例处于热状态。 这意味着，每个活动计划的每月成本最低，而不考虑执行次数。 请记住，高级计划中的所有 function app 共享准备好和活动实例。
+高级计划的计费不是每次执行和内存计费，而是基于实例间分配的核心秒数和内存。  高级计划不会执行任何操作。 每个计划至少必须分配一个实例。 这会导致每个活动计划的每月成本最低，而不考虑该函数是处于活动状态还是处于空闲状态。 请记住，高级计划中的所有 function app 共享分配的实例。
 
 在以下情况下，请考虑 Azure Functions 高级计划：
 
@@ -79,12 +79,12 @@ ms.locfileid: "88587219"
 
 应用服务计划中函数应用的费用与其他应用服务资源（例如 Web 应用）的费用相同。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。
 
-借助应用服务计划，可通过添加更多 VM 实例手动进行横向扩展。 也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/manage-scale-up.md)。 
+使用应用服务计划，可以通过添加更多 VM 实例来手动扩大。 你还可以启用自动缩放，不过，自动缩放速度要慢于高级计划的弹性缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/manage-scale-up.md)。 
 
 在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#choose-single-vcpu-app-service-plans)。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-在[应用服务环境](../app-service/environment/intro.md) (ASE) 中运行可以完全隔离函数并利用高缩放性。
+在 [应用服务环境](../app-service/environment/intro.md) (ASE) ，可以完全隔离函数并利用比应用服务计划更多的实例。
 
 ### <a name="always-on"></a><a name="always-on"></a> Always On
 
@@ -122,6 +122,12 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。
 
+### <a name="in-region-data-residency"></a>区域中数据驻留
+
+如果需要将所有客户数据保留在单个区域内，与 function app 关联的存储帐户必须是包含 [在区域冗余中](../storage/common/storage-redundancy.md)的存储帐户。  还需要将区域中冗余存储帐户与 [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) 结合使用才能 Durable Functions。
+
+其他平台管理的客户数据将仅在托管在内部负载均衡器应用服务环境 (或 ILB ASE) 时存储在该区域中。  有关详细信息，请参阅 [ASE 区域冗余](../app-service/environment/zone-redundancy.md#in-region-data-residency)。
+
 ## <a name="how-the-consumption-and-premium-plans-work"></a>消耗计划和高级计划的工作原理
 
 在消耗和高级计划中，Azure Functions 基础结构通过基于其函数触发的事件数来添加其他函数主机实例，从而缩放 CPU 和内存资源。 消耗计划中托管的每个函数实例限制为 1.5 GB 的内存和一个 CPU。  主机实例是整个函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  在高级计划中，计划大小将确定该实例上该计划中的所有应用程序的可用内存和 CPU。  
@@ -144,7 +150,7 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 缩放可根据多种因素而异，可根据选定的触发器和语言以不同的方式缩放。 需要注意缩放行为的以下几个细节：
 
-* 单个函数应用最多只能横向扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。  你可以根据需要指定下限为 "限制" [的 "最大值](#limit-scale-out) "。
+* 单个函数应用最多只能横向扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。  可根据需要[指定一个较低的最大值](#limit-scale-out)来限制缩放。
 * 对于 HTTP 触发器，将最多每隔 1 秒分配一次新实例。
 * 对于非 HTTP 触发器，将最多每隔 30 秒分配一次新实例。 在 [高级计划](#premium-plan)中运行时，缩放速度会更快。
 * 对于服务总线触发器，请使用资源的_管理_权限，以实现最有效的缩放。 使用_侦听_权限时，由于队列长度不能用于通知缩放决策，缩放不够准确。 若要详细了解如何在服务总线访问策略中设置权限，请参阅[共享访问授权策略](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)。
@@ -152,7 +158,7 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 ### <a name="limit-scale-out"></a>限制横向扩展
 
-你可能希望限制应用扩展到的实例数。  最常见的情况是，下游组件（如数据库）的吞吐量有限。  默认情况下，消耗计划函数将扩展到最多200个实例，高级计划函数将扩展到最多100个实例。  您可以通过修改值来指定特定应用程序的最大值 `functionAppScaleLimit` 。  `functionAppScaleLimit`对于 "无限制"，可以设置为0或 null，或者为介于1和应用最大值之间的有效值。
+建议限制应用可横向扩展的实例数。  最常见的情况是下游组件（如数据库）的吞吐量有限。  默认情况下，消耗计划函数将扩展到最多200个实例，高级计划函数将扩展到最多100个实例。  可修改 `functionAppScaleLimit` 值来指定特定应用的较低最大值。  若要不受限制，可将 `functionAppScaleLimit` 设置为 0 或 null，或介于 1 和应用最大值之间的有效值。
 
 ```azurecli
 az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
@@ -185,7 +191,7 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 |**[消耗计划](#consumption-plan)**| 在函数运行时自动缩放，你只需为计算资源付费。 在消耗计划中，会根据传入事件数动态添加和删除 Functions 主机的实例。<br/> ✔ 默认托管计划。<br/>✔ 仅当函数运行时才产生费用。<br/>✔ 即使是在负载较高期间也可自动横向扩展。|  
 |**[高级计划](#premium-plan)**|尽管自动根据需求进行缩放，但请使用准备好工作人员在空闲后无延迟运行应用程序，在功能更强大的实例上运行，并连接到 Vnet。 除了应用服务计划的所有功能之外，还请考虑在以下情况下 Azure Functions 高级计划： <br/>✔函数应用连续运行，或几乎连续运行。<br/>✔您的小型执行数量很大，并且在消耗计划中有高执行帐单但低达 GB 的费用。<br/>✔需要比消耗计划所提供的更多的 CPU 或内存选项。<br/>✔你的代码所需的运行时间超过消耗计划允许的最长执行时间。<br/>✔需要的功能仅适用于高级计划，如虚拟网络连接。|  
 |**[专用计划](#app-service-plan)** <sup>1</sup>|在应用服务计划中以定期应用服务计划费率运行你的函数。 非常适合长时间运行的操作，以及需要更具预测性的缩放和成本的情况。 对于以下情况，可以考虑使用应用服务计划：<br/>✔ 具有已运行其他应用服务实例的、未充分利用的现成 VM。<br/>✔ 需要提供用于运行函数的自定义映像。|  
-|**[ASE](#app-service-plan)** <sup>1</sup>|应用服务环境 (ASE) 是一项应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。 ASE 适用于有以下要求的应用程序工作负荷： <br/>✔ 极高的缩放性。<br/>✔ 隔离和安全的网络访问。<br/>✔ 高内存利用率。|  
+|**[ASE](#app-service-plan)** <sup>1</sup>|应用服务环境 (ASE) 是一项应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。 ASE 适用于有以下要求的应用程序工作负荷： <br/>✔ 极高的缩放性。<br/>✔完全计算隔离和安全网络访问。<br/>✔ 高内存利用率。|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes 提供了一个在 Kubernetes 平台之上运行的完全隔离的专用环境。  Kubernetes 适用于有以下要求的应用程序工作负荷： <br/>✔ 自定义硬件要求。<br/>✔ 隔离和安全的网络访问。<br/>✔ 能够在混合或多云环境中运行。<br/>✔ 与现有的 Kubernetes 应用程序和服务一起运行。|  
 
 <sup>1</sup> 有关各种应用服务计划选项的特定限制，请参阅[应用服务计划限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。

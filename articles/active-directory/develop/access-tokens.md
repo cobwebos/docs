@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258515"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -31,7 +31,7 @@ ms.locfileid: "90053202"
 请参阅以下部分，了解资源如何验证和使用访问令牌中的声明。
 
 > [!IMPORTANT]
-> 访问令牌是根据令牌的受众（即，拥有令牌中范围的应用程序）创建的。  这就是将[应用部件清单](reference-app-manifest.md#manifest-reference)中的资源设置 `accessTokenAcceptedVersion` 设置为 `2` 以允许调用 v1.0 终结点的客户端接收 v2.0 访问令牌的方式。  同样，这就是为什么更改客户端的访问令牌[可选声明](active-directory-optional-claims.md)不会更改为 `user.read` 请求令牌时收到的访问令牌的原因，该令牌归资源所有。
+> 访问令牌是根据令牌的受众（即，拥有令牌中范围的应用程序）创建的。  这就是将[应用部件清单](reference-app-manifest.md#manifest-reference)中的资源设置 `accessTokenAcceptedVersion` 设置为 `2` 以允许调用 v1.0 终结点的客户端接收 v2.0 访问令牌的方式。  同样，这就是为什么更改客户端的访问令牌[可选声明](active-directory-optional-claims.md)不会更改在 `user.read` 请求令牌时接收到的访问令牌，该令牌由资源所有。
 > 同样的道理，使用个人帐户（例如 hotmail.com 或 outlook.com）测试客户端应用程序时，你可能会发现客户端收到的访问令牌是不透明的字符串。 这是因为，所访问的资源请求了已加密的旧式 MSA（Microsoft 帐户）票证，而客户端无法识别这些票证。
 
 ## <a name="sample-tokens"></a>示例令牌
@@ -155,7 +155,7 @@ JWT（JSON Web 令牌）拆分成三个部分：
 
 Microsoft 标识可以通过与应用程序相关的不同方式进行身份验证。 `amr` 声明是可以包含多个项（例如 `["mfa", "rsa", "pwd"]`）的数组，适用于使用密码和 Authenticator 应用的身份验证。
 
-| 值 | 说明 |
+| Value | 说明 |
 |-----|-------------|
 | `pwd` | 密码身份验证，用户的 Microsoft 密码或应用的客户端机密。 |
 | `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 [Microsoft Authenticator 应用](https://aka.ms/AA2kvvu)。 这包括，身份验证是否是使用服务拥有的 X509 证书通过自签名的 JWT 执行的。 |
@@ -266,9 +266,17 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 管理员[通过 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 撤销用户的所有刷新令牌 | 已撤销 | 已撤销 |已撤销 | 已撤销 | 已撤销 |
 | Web 上的单一注销（[v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、[v2.0](v2-protocols-oidc.md#single-sign-out)） | 已撤销 | 一直有效 | 已撤销 | 一直有效 | 一直有效 |
 
+#### <a name="non-password-based"></a>非基于密码
+
+*基于非密码*的登录名，其中用户没有键入密码即可获取密码。 基于非密码的登录的示例包括：
+
+- 将你的面孔用于 Windows Hello
+- FIDO2 键
+- SMS
+- 语音
+- PIN 
+
 > [!NOTE]
-> “不基于密码”登录是指用户在未键入密码的情况下登录。 例如，在 Windows Hello 中使用人脸登录、使用 FIDO2 密钥或 PIN 登录。
->
 > Windows 10 上的主刷新令牌 (PRT) 基于凭据进行隔离。 例如，Windows Hello 和密码有各自的 PRT，彼此隔离。 当用户使用 Hello 凭据（PIN 或生物识别）登录，然后更改密码时，先前获得的基于密码的 PRT 将被撤销。 使用密码重新登录会使旧的 PRT 无效，并请求一个新的 PRT。
 >
 > 在用于提取新访问令牌和刷新令牌时，刷新令牌不会失效或撤销。  但是，你的应用应该在使用旧令牌后立即丢弃它，并将其替换为新令牌，因为新令牌中有一个新的过期时间。 

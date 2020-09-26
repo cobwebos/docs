@@ -5,15 +5,15 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314668"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>监视指标 Azure Database for PostgreSQL-灵活服务器
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>监视 Azure Database for PostgreSQL 灵活服务器上的指标
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
@@ -29,6 +29,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 
 |指标|指标显示名称|计价单位|说明|
 |---|---|---|---|
+| active_connections | 活动连接数 | Count | 与服务器的连接数。 | 
 | backup_storage_used | 使用的备份存储 | 字节 | 使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份所消耗的存储的总和。 备份的频率为服务管理。 对于异地冗余存储，备份存储使用率是本地冗余存储的两倍。 |
 | connections_failed | 失败的连接数 | Count | 连接失败。 |
 | connections_succeeded | 成功连接数 | 计数 | 已成功连接。 |

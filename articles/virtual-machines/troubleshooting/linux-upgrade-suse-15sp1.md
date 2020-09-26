@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
 ms.author: arremana
-ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed355f82b88f460ff4b372484a690f166a15550
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359505"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>将 Azure VM 的 SLES 12 升级到 SLES 15 SP1
 
@@ -66,11 +66,11 @@ ms.locfileid: "84449237"
 
 6. 转到 [Azure 门户](https://portal.azure.com)，选择 VM，然后选择“串行控制台”。 系统会在“reboot: Restarting system”处停止。 此过程大约需要 15 到 45 分钟。 对于第 2 代 VM，它可能会在“reboot: Restarting system”屏幕上卡住。 在这种情况下，请等待 45 分钟。 如果之后仍无进展，请转到 Azure 门户中 VM 的“概述”页，停止 VM，然后重启 VM。
 
-     ![有关串行控制台中消息的屏幕截图](./media/linux-upgrade-suse-15sp1/reboot-message.png)
+     ![有关串行控制台中的消息的屏幕截图。](./media/linux-upgrade-suse-15sp1/reboot-message.png)
 
 8. 使用新内核重启系统后，将看到以下消息。
 
-     ![有关串行控制台中消息的屏幕截图](./media/linux-upgrade-suse-15sp1/output-message.png)
+     ![在系统重新启动后，与新内核有关的消息的屏幕截图。](./media/linux-upgrade-suse-15sp1/output-message.png)
 9. 验证内核和操作系统版本以检查系统是否已成功升级。
 
     ```

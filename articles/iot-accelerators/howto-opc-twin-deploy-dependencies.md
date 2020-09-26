@@ -8,20 +8,23 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73824101"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282096"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>部署本地开发的依赖项
+
+> [!IMPORTANT]
+> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
 
 本文介绍如何仅部署进行本地开发和调试所需的 Azure 平台服务。   最后，你将部署一个资源组，其中包含本地开发和调试所需的一切。
 
 ## <a name="deploy-azure-platform-services"></a>部署 Azure 平台服务
 
-1. 请确保已安装 PowerShell 和[AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)扩展。  打开命令提示符或终端并运行：
+1. 请确保已安装 PowerShell 和 [AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 扩展。  打开命令提示符或终端并运行：
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
@@ -32,7 +35,7 @@ ms.locfileid: "73824101"
    deploy -type local
    ```
 
-2. 按照提示为部署分配资源组的名称。  此脚本仅在 Azure 订阅中部署此资源组的依赖项，但不会部署微服务。  该脚本还会在 Azure Active Directory 中注册应用程序。  这是支持基于 OAUTH 的身份验证所必需的。  部署可能需要几分钟的时间。
+2. 按照提示为部署分配资源组的名称。  此脚本仅在 Azure 订阅中部署此资源组的依赖项，但不会部署微服务。  该脚本还会在 Azure AD 中注册应用程序。  这是支持基于 OAUTH 的身份验证所必需的。  部署可能需要几分钟的时间。
 
 3. 脚本完成后，您可以选择保存 env 文件。  Env 环境文件是要在开发计算机上运行的所有服务和工具的配置文件。  
 
@@ -42,12 +45,12 @@ ms.locfileid: "73824101"
 
 请确保使用简短且简单的资源组名称。  该名称还用于命名资源，因为它必须符合资源命名要求。  
 
-### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory （AAD）注册
+### <a name="azure-active-directory-ad-registration"></a>Azure Active Directory (AD) 注册
 
-部署脚本尝试在 Azure Active Directory 中注册 AAD 应用程序。  根据你对所选 AAD 租户的权限，这可能会失败。   有三个选项：
+部署脚本尝试在 Azure AD 中注册 Azure AD 应用程序。  根据你对所选 Azure AD 租户的权限，这可能会失败。 有三个选项：
 
-1. 如果从租户列表中选择了 AAD 租户，请重新启动脚本，然后从列表中选择另一个。
-2. 或者，部署私有 AAD 租户，重新启动脚本并选择使用它。
+1. 如果从租户列表中选择 Azure AD 租户，请重新启动脚本，然后从列表中选择一个不同的租户。
+2. 或者，部署私有 Azure AD 租户，重新启动脚本并选择使用它。
 3. 继续而不进行身份验证。  由于你在本地运行微服务，因此可以接受，但不会模拟生产环境。  
 
 ## <a name="next-steps"></a>后续步骤

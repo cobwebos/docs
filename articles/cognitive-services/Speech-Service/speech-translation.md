@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 语音翻译
-ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e4bc2f07fce3917bfa59f79305498bb91889344d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359794"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
 
@@ -63,5 +63,5 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 ## <a name="next-steps"></a>后续步骤
 
 * 完成语音翻译[快速入门](get-started-speech-translation.md)
-* [免费获取语音服务订阅密钥](get-started.md)
+* [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
 * [获取语音 SDK](speech-sdk.md)

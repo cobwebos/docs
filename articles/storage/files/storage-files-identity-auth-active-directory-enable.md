@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64cad731998fefb2cfa694314e42f0dfb629eb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322064"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
@@ -24,7 +24,7 @@ ms.locfileid: "90563397"
 
 - 用于本地 Azure 文件 AD DS 身份验证的 AD DS 标识必须同步到 Azure AD。 密码哈希同步是可选的。 
 - 支持 Azure 文件同步管理的 Azure 文件共享。
-- 支持通过具有 RC4-HMAC 和 AES 256 加密的 AD 进行 Kerberos 身份验证。 目前尚不支持 AES 128 Kerberos 加密。
+- 支持通过具有 RC4-HMAC 和 [AES 256 加密](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)的 AD 进行 Kerberos 身份验证。 目前尚不支持 AES 128 Kerberos 加密。
 - 支持单一登录体验。
 - 仅支持在版本低于 Windows 7 或 Windows Server 2008 R2 的操作系统版本上运行的客户端。
 - 仅支持将存储帐户注册到的 AD 林。 默认情况下，只能使用单个林中的 AD DS 凭据访问 Azure 文件共享。 如果需要从其他林访问 Azure 文件共享，请确保配置了正确的林信任，有关详细信息，请参阅 [常见问题解答](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) 。

@@ -3,12 +3,12 @@ title: Azure 服务总线异地灾难恢复 | Microsoft 文档
 description: 如何使用地理区域进行故障转移并在 Azure 服务总线中执行灾难恢复
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372517"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
@@ -149,7 +149,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 > [!NOTE]
 > 尝试将具有专用终结点的主命名空间与某个辅助命名空间配对时，验证过程仅检查辅助命名空间上是否存在专用终结点。 它不会检查在故障转移后终结点是否正常工作或是否将正常工作。 你需要负责确保在故障转移后，具有专用终结点的辅助命名空间能够按预期工作。
 >
-> 若要测试专用终结点配置是否相同，请从虚拟网络外部向辅助命名空间发送[获取队列](/rest/api/servicebus/queues/get)请求，并验证是否收到来自服务的错误消息。
+> 若要测试专用终结点配置是否相同，请从虚拟网络外部向辅助命名空间发送[获取队列](/rest/api/servicebus/stable/queues/get)请求，并验证是否收到来自服务的错误消息。
 
 ### <a name="existing-pairings"></a>现有配对
 如果主命名空间和辅助命名空间之间已存在配对，则在主命名空间上创建专用终结点将失败。 若要解决此问题，请首先在辅助命名空间上创建专用终结点，然后为主命名空间创建专用终结点。
@@ -179,7 +179,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅此处的异地灾难恢复 [REST API 参考](/rest/api/servicebus/disasterrecoveryconfigs)。
+- 请参阅此处的异地灾难恢复 [REST API 参考](/rest/api/servicebus/stable/disasterrecoveryconfigs)。
 - 在 GitHub 上运行异地灾难恢复[示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2)。
 - 请参阅异地灾难恢复[将消息发送到别名的示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1)。
 

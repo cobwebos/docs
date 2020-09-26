@@ -1,6 +1,6 @@
 ---
 title: 适用于 Linux 的 Azure VM 扩展和功能
-description: 了解可为 Azure 虚拟机提供哪些扩展，这些虚拟机扩展按它们提供或改进的功能进行分组。
+description: 了解 Linux 上适用于 Azure 虚拟机的扩展，这些扩展按它们提供或改进的内容分组。
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336116"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -71,7 +71,7 @@ Linux 代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加
 
 ## <a name="discover-vm-extensions"></a>发现 VM 扩展
 
-有许多不同的 VM 扩展可与 Azure VM 配合使用。 若要查看完整列表，请使用 [az vm extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list)。 以下示例列出了*westus*位置中的所有可用扩展：
+有许多不同的 VM 扩展可与 Azure VM 配合使用。 若要查看完整列表，请使用 [az vm extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list)。 以下示例列出了 *westus* 位置中的所有可用扩展：
 
 ```azurecli
 az vm extension image list --location westus --output table
@@ -115,9 +115,9 @@ info:    vm extension set command OK
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自部署一组负载均衡的 Vm 和 Azure SQL 数据库的资源管理器模板，然后在每个 VM 上安装 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自一个资源管理器模板，该模板会在每个 VM 上部署一组负载均衡的 VM、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
 
-有关详细信息，请参阅完整[资源管理器模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
+有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
 ```json
 {
@@ -231,7 +231,7 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 
 #### <a name="agent-updates"></a>代理更新
 
-Linux VM 代理将预配代理代码和扩展处理代码包含在一个包中，不能分开****。 如果要使用 cloud-init 在 Azure 上预配，可以禁用预配代理**。 若要执行此操作，请参阅[使用 cloud-init](../linux/using-cloud-init.md)。
+Linux VM 代理在一个包中包含 *预配代理代码* 和 *扩展处理代码*  ，这种代码不能分隔。 如果要使用 cloud-init 在 Azure 上预配，可以禁用预配代理**。 若要执行此操作，请参阅[使用 cloud-init](../linux/using-cloud-init.md)。
 
 代理的受支持版本可以使用自动更新。 唯一可以更新的代码是扩展处理代码，不是预配代码**。 预配代理代码是一次性运行的代码**。
 
