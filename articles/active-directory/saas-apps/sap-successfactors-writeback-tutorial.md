@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286513"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教程：配置从 Azure AD 到 SAP SuccessFactors 的属性回写
 本教程的目的是介绍将 Azure AD 的属性写回到 SAP SuccessFactors Employee Central 的步骤。 
@@ -125,68 +125,97 @@ ms.locfileid: "90017925"
 
 ## <a name="preparing-for-successfactors-writeback"></a>准备 SuccessFactors 写回
 
-SuccessFactors 写回预配应用程序使用特定的 *代码* 值在 Employee Central 中设置电子邮件和电话号码。 这些 *代码* 值在属性映射表中设置为常量值，每个 SuccessFactors 实例都是不同的。 本部分使用 [Postman](https://www.postman.com/downloads/) 提取代码值。 您可以使用 [卷](https://curl.haxx.se/)、 [Fiddler](https://www.telerik.com/fiddler) 或任何其他类似的工具来发送 HTTP 请求。 
+SuccessFactors 写回预配应用程序使用特定的 *代码* 值在 Employee Central 中设置电子邮件和电话号码。 这些 *代码* 值在属性映射表中设置为常量值，每个 SuccessFactors 实例都是不同的。 本部分提供了捕获这些 *代码* 值的步骤。
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>下载 Postman 并将其配置为 SuccessFactors 租户
+   > [!NOTE]
+   > 请在 SuccessFactors 管理员完成本部分中的步骤。 
 
-1. 下载 [Postman](https://www.postman.com/downloads/)
-1. 在 Postman 应用程序中创建 "New Collection"。 将其称为 "SuccessFactors"。 
+### <a name="identify-email-and-phone-number-picklist-names"></a>确定电子邮件和电话号码选择列表名称 
+
+在 SAP SuccessFactors 中， *选择列表* 是一组可配置的选项，用户可以从中进行选择。 不同类型的电子邮件和电话号码 (例如，企业、个人、其他) 使用选择列表表示。 在此步骤中，我们将标识在你的 SuccessFactors 租户中配置的选择列表来存储电子邮件和电话号码值。 
+ 
+1. 在 SuccessFactors 管理中心，搜索 " *管理业务配置*"。 
 
    > [!div class="mx-imgBorder"]
-   > ![新建 Postman 集合](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![管理业务配置](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. 在 "授权" 选项卡中，输入在上一节中配置的 API 用户的凭据。 将类型配置为 "基本身份验证"。 
+1. 在 " **HRIS 元素**" 下，选择 " **emailInfo** "，然后单击 "**电子邮件类型**" 字段的*详细信息*。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 授权](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![获取电子邮件信息](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. 保存配置。 
+1. 在 **电子邮件类型** 详细信息页上，记下与此字段关联的选择列表的名称。 默认情况下，它是 **ecEmailType**。 但你的租户可能会有所不同。 
+
+   > [!div class="mx-imgBorder"]
+   > ![确定电子邮件选择列表](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. 在 " **HRIS 元素**" 下，选择 " **phoneInfo** "，然后单击 "**电话类型**" 字段的*详细信息*。
+
+   > [!div class="mx-imgBorder"]
+   > ![获取电话信息](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. 在 " **电话类型** 详细信息" 页上，记下与此字段关联的选择列表的名称。 默认情况下，它是 **ecPhoneType**。 但你的租户可能会有所不同。 
+
+   > [!div class="mx-imgBorder"]
+   > ![标识电话选择列表](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>检索 emailType 的常量值
 
-1. 在 Postman 中，单击与 SuccessFactors 集合关联的省略号 ( ... ) 并添加名为 "获取电子邮件类型" 的 "新请求"，如下所示。 
+1. 在 SuccessFactors 管理中心，搜索并打开 " *选择列表中心*"。 
+1. 使用上一节中捕获的电子邮件选择列表的名称 (例如 ecEmailType) 查找电子邮件选择列表。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 电子邮件请求 ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![查找电子邮件类型选择列表](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. 打开 "获取电子邮件类型" 请求面板。 
-1. 在 "获取 URL" 中，添加以下 URL，并将替换为 `successFactorsAPITenantName` SuccessFactors 实例的 API 租户。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. 打开活动的电子邮件选择列表。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 获取电子邮件类型](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![打开活动电子邮件类型选择列表](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. "授权" 选项卡将继承为集合配置的身份验证。 
-1. 单击 "发送" 以调用 API 调用。 
-1. 在响应正文中，查看 JSON 结果集，并查找与对应的 ID `externalCode = B` 。 
+1. 在 "电子邮件类型选择列表" 页上，选择 " *企业* 电子邮件" 类型。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 电子邮件类型响应](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![选择业务电子邮件类型](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. 记下此值作为属性映射表中用于 *emailType* 的常量。
+1. 记下与*业务*电子邮件关联的**选项 ID** 。 这是将在属性映射表中用于 *emailType* 的代码。
+
+   > [!div class="mx-imgBorder"]
+   > ![获取电子邮件类型代码](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > 在复制值时删除逗号字符。 例如，如果 **选项 ID** 值为 *8448*，则将 Azure AD 中的 *emailType* 设置为常量 number *8448* (，不) 逗号字符。 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>检索 phoneType 的常量值
 
-1. 在 Postman 中，单击与 SuccessFactors 集合关联的省略号 ( ... ) 并添加名为 "获取电话类型" 的 "新请求"，如下所示。 
+1. 在 SuccessFactors 管理中心，搜索并打开 " *选择列表中心*"。 
+1. 使用从上一节捕获的电话选择列表的名称查找电话选择列表。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 电话请求](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![查找电话类型选择列表](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. 打开 "获取电话类型" 请求面板。 
-1. 在 "获取 URL" 中，添加以下 URL，并将替换为 `successFactorsAPITenantName` SuccessFactors 实例的 API 租户。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. 打开活动的手机选择列表。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 获取电话类型](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![打开活动手机类型选择列表](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. "授权" 选项卡将继承为集合配置的身份验证。 
-1. 单击 "发送" 以调用 API 调用。 
-1. 在响应正文中，查看 JSON 结果集，并查找与和对应的 *ID* `externalCode = B` `externalCode = C` 。 
+1. 在 "电话类型选择列表" 页上，查看 " **选择列表值**" 下列出的不同电话类型。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-电话](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![查看电话类型](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. 请记下这些值，作为要用于属性映射表中的 *businessPhoneType* 和 *cellPhoneType* 的常量。
+1. 记下与*业务*电话关联的**选项 ID** 。 这是将在属性映射表中用于 *businessPhoneType* 的代码。
+
+   > [!div class="mx-imgBorder"]
+   > ![获取业务电话号码](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. 记下*与手机关联*的**选项 ID** 。 这是将在属性映射表中用于 *cellPhoneType* 的代码。
+
+   > [!div class="mx-imgBorder"]
+   > ![获取单元格电话号码](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > 在复制值时删除逗号字符。 例如，如果 **选项 ID** 值为 *10606*，则将 Azure AD 中的 *cellPhoneType* 设置为常量 number *10606* (，不) 逗号字符。 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>配置 SuccessFactors 写回应用
 
@@ -246,18 +275,18 @@ SuccessFactors 写回预配应用程序使用特定的 *代码* 值在 Employee 
 
 1. 在 " **属性映射** " 部分下的 "映射" 表中，您可以将以下 Azure Active Directory 特性映射到 SuccessFactors。 下表提供了有关如何映射回写属性的指导。 
 
-   | \# | Azure AD 属性 | SuccessFactors 特性 | 备注 |
+   | \# | Azure AD 属性 | SuccessFactors 特性 | 注解 |
    |--|--|--|--|
    | 1 | employeeId | personIdExternal | 默认情况下，此属性是匹配的标识符。 你可以使用任何其他 Azure AD 属性，而不是使用雇员可在 SuccessFactors 中存储等于 personIdExternal 的值。    |
    | 2 | mail | 电子邮件 | 地图电子邮件属性源。 出于测试目的，可以将 userPrincipalName 映射到电子邮件。 |
    | 3 | 8448 | emailType | 此常数值是与业务电子邮件关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为 [EmailType 检索常数值](#retrieve-constant-value-for-emailtype) 部分。 |
-   | 4 | true | emailIsPrimary | 使用此属性将业务电子邮件设置为 SuccessFactors 中的主电子邮件。 如果业务电子邮件不是主电子邮件，请将此标志设置为 false。 |
+   | 4 | 是 | emailIsPrimary | 使用此属性将业务电子邮件设置为 SuccessFactors 中的主电子邮件。 如果业务电子邮件不是主电子邮件，请将此标志设置为 false。 |
    | 5 | userPrincipalName | [custom01 – custom15] | 使用 " **添加新映射**"，可以选择将 userPrincipalName 或任何 Azure AD 属性写入 SuccessFactors 用户对象中提供的自定义属性。  |
    | 6 | 本地-samAccountName | username | 使用 " **添加新映射**"，可以选择将本地 samAccountName 映射到 SuccessFactors username 属性。 |
    | 7 | SSO | loginMethod | 如果为 [部分 SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)设置 SuccessFactors 租户，然后使用 "添加新映射"，则可以选择将 loginMethod 设置为常量值 "SSO" 或 "PWD"。 |
    | 8 | telephoneNumber | businessPhoneNumber | 使用此映射可将 *telephoneNumber* 从 Azure AD 流到 SuccessFactors 业务/工作电话号码。 |
    | 9 | 10605 | businessPhoneType | 此常数值是与 business phone 关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为 [PhoneType 检索常数值](#retrieve-constant-value-for-phonetype) 部分。 |
-   | 10 | true | businessPhoneIsPrimary | 使用此属性设置业务电话号码的主要标志。 有效值为 true 或 false。 |
+   | 10 | 是 | businessPhoneIsPrimary | 使用此属性设置业务电话号码的主要标志。 有效值为 true 或 false。 |
    | 11 | mobile | cellPhoneNumber | 使用此映射可将 *telephoneNumber* 从 Azure AD 流到 SuccessFactors 业务/工作电话号码。 |
    | 12 | 10606 | cellPhoneType | 此常数值是与手机关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为 [PhoneType 检索常数值](#retrieve-constant-value-for-phonetype) 部分。 |
    | 13 | false | cellPhoneIsPrimary | 使用此属性设置手机号码的主要标志。 有效值为 true 或 false。 |

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334877"
+ms.locfileid: "91355612"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "91334877"
 > [!NOTE]
 > 这些准备步骤不会影响生产环境，该环境可以在完全访问模式下正常运行。
 
-![可实现云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option1-1.png)
+![关系图显示了用于云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option1-1.png)
 
 完成准备步骤后，应用程序就可以进行真正的升级了。 下图演示了升级过程所涉及的步骤：
 
@@ -48,7 +48,7 @@ ms.locfileid: "91334877"
 2. 使用计划的终止模式断开辅助数据库的连接 (4)。 此操作会创建主数据库的完全同步独立副本。 将升级该数据库。
 3. 将辅助数据库切换为读写模式，并运行升级脚本 (5)。
 
-![可实现云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option1-2.png)
+![关系图显示运行升级脚本的云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option1-2.png)
 
 如果升级成功完成，则现在可将用户切换到应用程序的已升级副本，该副本现在是生产环境。 如下图所示，该切换涉及到其他几个步骤：
 
@@ -67,7 +67,7 @@ ms.locfileid: "91334877"
 > [!NOTE]
 > 回滚操作不需要 DNS 更改，因为尚未执行交换操作。
 
-![可实现云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option1-4.png)
+![关系图显示已取消暂存环境的云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option1-4.png)
 
 此选项的主要优点是可以使用一系列简单步骤升级单个区域中的应用程序。 此升级的费用成本相对较低。 
 
@@ -98,7 +98,7 @@ ms.locfileid: "91334877"
 > [!NOTE]
 > 这些准备步骤不会影响生产环境中的应用程序。 该应用程序将在读写模式下完全正常运行。
 
-![可实现云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option2-1.png)
+![关系图显示了使用应用程序的完全同步副本实现的云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option2-1.png)
 
 完成准备步骤后，可以升级过渡环境。 下图演示了这些升级步骤：
 
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. 针对 `contoso-1-staging.azurewebsites.net`、`contoso-dr-staging.azurewebsites.net` 和过渡主数据库运行升级脚本 (12)。 数据库更改会自动复制到过渡辅助数据库。
 
-![可实现云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option2-2.png)
+![关系图显示了针对云灾难恢复的 SQL 数据库异地复制配置，并将数据库更改复制到过渡环境。](./media/manage-application-rolling-upgrade/option2-2.png)
 
 如果升级成功完成，则现在可将用户切换到应用程序的 V2 版本。 下图演示了涉及的步骤：
 
 1. 激活在主要区域 (13) 和备份区域 (14) 的 Web 应用的生产环境和过渡环境之间进行的交换操作。 应用程序的 V2 现在变为生产环境，在备份区域中有冗余副本。
 2. 如果不再需要 V1 应用程序（15 和 16），则可以解除过渡环境。
 
-![可实现云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option2-3.png)
+![关系图显示了云灾难恢复的 SQL 数据库异地复制配置，并提供了暂存环境的可选解除授权。](./media/manage-application-rolling-upgrade/option2-3.png)
 
 如果升级过程不成功（例如，由于升级脚本中出现错误），可认为过渡环境处于不一致状态。 若要将应用程序回滚到升级前的状态，请在生产环境中重新使用 V1 应用程序。 所需步骤如下图所示：
 
@@ -139,7 +139,7 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 > [!NOTE]
 > 回滚操作不需要 DNS 更改，因为尚未执行交换操作。
 
-![可实现云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option2-4.png)
+![关系图显示了在升级过程回滚后用于云灾难恢复的 SQL 数据库异地复制配置。](./media/manage-application-rolling-upgrade/option2-4.png)
 
 此升级方法的主要优点是可以同时升级应用程序及其异地冗余副本，并且不会在升级过程中破坏业务连续性。
 

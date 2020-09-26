@@ -3,12 +3,12 @@ title: 有关 Azure Migrate 服务器迁移的常见问题
 description: 获取有关使用 Azure Migrate 服务器迁移迁移计算机的常见问题的解答。
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b0ae28fc387125b198bed202d857c3b9ecdd44bb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050652"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275534"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 迁移：常见问题
 
@@ -18,6 +18,28 @@ ms.locfileid: "89050652"
 - 关于[Azure Migrate 设备](common-questions-appliance.md)的问题
 - 有关[发现、评估和依赖项可视化](common-questions-discovery-assessment.md)的问题
 - 在[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)中获取问题答案
+
+## <a name="does-azure-migrate-convert-uefi-based-machines-to-bios-based-machines-and-migrate-them-to-azure-as-azure-generation-1-vms"></a>Azure Migrate 是否将基于 UEFI 的计算机转换为基于 BIOS 的计算机并将其作为 Azure 第1代 Vm 迁移到 Azure？
+Azure Migrate：服务器迁移工具将所有基于 UEFI 的计算机迁移到 azure，作为 Azure 第2代 Vm。 我们不再支持将基于 UEFI 的 Vm 转换为基于 BIOS 的 Vm。 请注意，所有基于 BIOS 的计算机仅迁移到 Azure 作为 Azure 第1代 Vm。
+
+## <a name="how-can-i-migrate-uefi-based-machines-to-azure-as-azure-generation-1-vms"></a>如何将基于 UEFI 的计算机迁移到 Azure 作为 Azure 第1代 Vm？
+Azure Migrate：服务器迁移工具将基于 UEFI 的计算机迁移到 Azure，作为 Azure 第2代 Vm。 如果要将其迁移到 Azure 第1代 Vm，请在开始复制前将启动类型转换为 BIOS，然后使用 Azure Migrate： Server 迁移工具迁移到 Azure。
+ 
+## <a name="which-operating-systems-are-supported-for-migration-of-uefi-based-machines-to-azure"></a>哪些操作系统支持将基于 UEFI 的计算机迁移到 Azure？
+
+| **基于 UEFI 的计算机支持的操作系统** | **无代理 VMware 到 Azure**                                                                                                             | **无代理 Hyper-v 到 Azure** | **基于代理的 VMware、物理和其他云到 Azure** |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
+| Windows Server 2019、2016、2012 R2、201                 | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows 10 专业版、Windows 10 企业版                   | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| Ubuntu Server 16.04、18.04、19.04、19.10                | Y                                                                                                                                         | Y                              | Y                                                          |
+| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、1。x        | Y<br>                 _RHEL 8.x 需要 [手动准备](https://go.microsoft.com/fwlink/?linkid=2143939)_   | Y                              | Y                                                          |
+| O o 8.1、8.0、7.7、7.6、7.5、7.4、1。x               | Y<br>_% O o 8. x 需要 [手动准备](https://go.microsoft.com/fwlink/?linkid=2143939)_ | Y                              | Y                                                          |
+| Oracle Linux 7.7、7.7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
+
+## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>能否使用由 Azure Migrate 创建的恢复服务保管库用于灾难恢复方案？
+建议不要使用由 Azure Migrate 创建的恢复服务保管库来实现灾难恢复方案。 这样做可能会导致在 Azure Migrate 中开始复制失败。 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>应将复制设备安装在何处才能进行基于代理的迁移？
 
@@ -30,7 +52,7 @@ ms.locfileid: "89050652"
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>能否迁移运行 Amazon Linux 操作系统的 AWS Vm？
 
 运行 Amazon Linux 的 Vm 不能按原样迁移，因为 Amazon Linux OS 仅在 AWS 上受支持。
-若要迁移在 Amazon Linux 上运行的工作负荷，可以在 Azure 中启动 CentOS/RHEL VM，并使用相关的工作负荷迁移方法迁移 AWS Linux 计算机上运行的工作负荷。 例如，根据工作负荷，可能有特定于工作负荷的工具可帮助进行迁移，例如在 web 服务器的情况下针对数据库或部署工具。
+若要迁移在 Amazon Linux 上运行的工作负载，可以在 Azure 中启动 CentOS/RHEL VM，并使用相关的工作负载迁移方法迁移在 AWS Linux 计算机上运行的工作负载。 例如，根据工作负载，通过特定于工作负载的工具来帮助迁移（例如使用数据库工具迁移数据库，或者使用部署工具迁移 Web 服务器）。
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>哪些地理区域支持 Azure Migrate 迁移？
 
@@ -200,11 +222,6 @@ Azure Migrate server 迁移功能，支持类似于目前的迁移。 在迁移�
 
 无代理复制会导致对 VMware vCenter 服务器和 VMware ESXi 主机的性能影响。 由于无代理复制使用快照，因此它将消耗存储空间，因此需要某些 IOPS 存储带宽。 如果对环境中的存储或 IOPs 有限制，我们不建议使用无代理复制。
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>是否可以进行 UEFI Vm 到 Azure 第2代的无代理迁移？
-
-不是。 你可以使用 [基于 VMware 代理的迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)、 [hyper-v 迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)或 [物理服务器迁移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) 选项将这些虚拟机迁移到第2代 Azure vm。
-
-***注意：*** 请确保在 Azure 中选择支持第2代 UEFI 的适当 VM 大小。
 
 ## <a name="next-steps"></a>后续步骤
 

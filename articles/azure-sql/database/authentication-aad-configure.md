@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: f354cb25c93826b50c0094e75ef7a1756f7625b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278169"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -89,19 +89,19 @@ SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组�
 
 3. 导航到要用于 Azure AD 集成的 SQL 托管实例。
 
-   ![aad](./media/authentication-aad-configure/aad.png)
+   ![显示为所选 SQL 托管实例打开的 Active Directory 管理页的 Azure 门户屏幕截图。](./media/authentication-aad-configure/aad.png)
 
 4. 选择“Active Directory 管理员”页顶部的横幅，并为当前用户授予权限。
 
-    ![授予权限 - 门户](./media/authentication-aad-configure/grant-permissions.png)
+    ![用于授予对用于访问 Active Directory 的 SQL 托管实例的权限的对话框屏幕截图。 已选择 "授予权限" 按钮。](./media/authentication-aad-configure/grant-permissions.png)
 
 5. 成功完成操作后，右上角会显示以下通知：
 
-    ![success](./media/authentication-aad-configure/success.png)
+    ![确认已成功更新托管实例的 active directory 读取权限的通知屏幕截图。](./media/authentication-aad-configure/success.png)
 
 6. 现在即可为 SQL 托管实例选择 Azure AD 管理员。 为此，请在“Active Directory 管理员”页上选择“设置管理员”命令。
 
-    ![设置管理员](./media/authentication-aad-configure/set-admin.png)
+    ![屏幕截图，显示在所选 SQL 托管实例的 Active Directory 管理 "页上突出显示的" 设置管理员 "命令。](./media/authentication-aad-configure/set-admin.png)
 
 7. 在“Azure AD 管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。
 
@@ -111,7 +111,7 @@ SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组�
 
 8. 在“Active Directory 管理员”页顶部，选择“保存”。
 
-    ![保存](./media/authentication-aad-configure/save.png)
+    !["设置管理员" 和 "删除管理员" 按钮旁边的第一行中的 "保存" 按钮的 "Active Directory 管理" 页的屏幕截图。](./media/authentication-aad-configure/save.png)
 
     更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”框中。
 

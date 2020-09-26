@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/04/2020
+ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 25c231265bb4ec497af5559624b7228167add76d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483450"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275262"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -113,7 +113,9 @@ ms.locfileid: "89483450"
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **区块链** |  |  |
+> | [架构注册表参与者 (预览) ](#schema-registry-contributor-preview) | 读取、写入和删除架构注册表组和架构。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
+> | [架构注册表读取器 (预览) ](#schema-registry-reader-preview) | 阅读并列出架构注册表组和架构。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
+> | 区块链 |  |  |
 > | [区块链成员节点访问（预览版）](#blockchain-member-node-access-preview) | 允许对区块链成员节点的访问 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | AI + 机器学习 |  |  |
 > | [认知服务参与者](#cognitive-services-contributor) | 允许创建、读取、更新、删除和管理认知服务的密钥。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -153,15 +155,15 @@ ms.locfileid: "89483450"
 > | [Azure Sentinel 参与者](#azure-sentinel-contributor) | Azure Sentinel 参与者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel 读取者](#azure-sentinel-reader) | Azure Sentinel 读取者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel 响应方](#azure-sentinel-responder) | Azure Sentinel 响应方 | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [Key Vault 管理员 (预览版) ](#key-vault-administrator-preview) | 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理 key vault 资源或管理角色分配。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [ (预览版 Key Vault 证书官员) ](#key-vault-certificates-officer-preview) | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
-> | [密钥保管库参与者](#key-vault-contributor) | 管理密钥保管库，但不允许在 Azure RBAC 中分配角色，而且不允许你访问机密、密钥或证书。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [ (预览版 Key Vault 加密官) ](#key-vault-crypto-officer-preview) | 对密钥保管库的密钥执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Key Vault 加密服务加密 (预览版) ](#key-vault-crypto-service-encryption-preview) | 读取密钥的元数据并执行包装/解包操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [Key Vault 加密用户 (预览版) ](#key-vault-crypto-user-preview) | 使用密钥执行加密操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [Key Vault Reader (预览版) ](#key-vault-reader-preview) | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料之类的敏感值。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
-> | [ (预览版 Key Vault 秘密专员) ](#key-vault-secrets-officer-preview) | 对密钥保管库的密码执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-> | [Key Vault 机密用户 (预览版) ](#key-vault-secrets-user-preview) | 读取机密内容。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。 | 4633458b-17de-408a-b874-0445c86b69e6 |
+> | [密钥保管库管理员（预览版）](#key-vault-administrator-preview) | 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [密钥保管库证书管理人员（预览版）](#key-vault-certificates-officer-preview) | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [密钥保管库参与者](#key-vault-contributor) | 管理密钥保管库，但不允许在 Azure RBAC 中分配角色，也不允许访问机密、密钥或证书。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [密钥保管库加密管理人员（预览版）](#key-vault-crypto-officer-preview) | 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [密钥保管库加密服务加密（预览版）](#key-vault-crypto-service-encryption-preview) | 读取密钥的元数据并执行包装/解包操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [密钥保管库加密用户（预览版）](#key-vault-crypto-user-preview) | 使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [密钥保管库读取者（预览版）](#key-vault-reader-preview) | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [密钥保管库机密管理人员（预览版）](#key-vault-secrets-officer-preview) | 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [密钥保管库机密用户（预览版）](#key-vault-secrets-user-preview) | 读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [安全管理员](#security-admin) | 查看和更新安全中心的权限。 与安全读取者角色具有相同的权限，还可以更新安全策略并关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [安全评估参与者](#security-assessment-contributor) | 允许你将评估推送到安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -3849,6 +3851,7 @@ ACR 隔离数据编写器
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [/Locations/administratorAzureAsyncOperation/read](resource-provider-operations.md#microsoftsql) |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
@@ -3886,6 +3889,8 @@ ACR 隔离数据编写器
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | 创建和管理 SQL 服务器安全警报策略 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [/Servers/administrators/read](resource-provider-operations.md#microsoftsql) | 获取特定的 Azure Active Directory 管理员对象 |
+> | [/Servers/azureADOnlyAuthentications/*](resource-provider-operations.md#microsoftsql) |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -3910,6 +3915,7 @@ ACR 隔离数据编写器
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
         "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
@@ -3946,7 +3952,9 @@ ACR 隔离数据编写器
         "Microsoft.Sql/servers/read",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.Sql/servers/administrators/read",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4005,6 +4013,8 @@ ACR 隔离数据编写器
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | 编辑 SQL 服务器安全警报策略 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
+> | [/Servers/azureADOnlyAuthentications/delete](resource-provider-operations.md#microsoftsql) | 删除特定服务器仅限 Azure Active Directory 的身份验证对象 |
+> | [/Servers/azureADOnlyAuthentications/write](resource-provider-operations.md#microsoftsql) | 添加或更新特定服务器仅限 Azure Active Directory 的身份验证对象 |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -4060,7 +4070,9 @@ ACR 隔离数据编写器
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/*",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
-        "Microsoft.Sql/servers/vulnerabilityAssessments/*"
+        "Microsoft.Sql/servers/vulnerabilityAssessments/*",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/delete",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/write"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4503,6 +4515,88 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
     }
   ],
   "roleName": "Log Analytics Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-contributor-preview"></a>架构注册表参与者 (预览) 
+
+读取、写入和删除架构注册表组和架构。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [/Namespaces/schemagroups/*](resource-provider-operations.md#microsofteventhub) |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [/Namespaces/schemas/*](resource-provider-operations.md#microsofteventhub) |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read, write, and delete Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "name": "5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Contributor (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-reader-preview"></a>架构注册表读取器 (预览) 
+
+阅读并列出架构注册表组和架构。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [/Namespaces/schemagroups/read](resource-provider-operations.md#microsofteventhub) | 获取 SchemaGroup 资源说明列表 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [/Namespaces/schemas/read](resource-provider-operations.md#microsofteventhub) | 检索架构 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read and list Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "name": "2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Reader (Preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5376,7 +5470,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
 > | --- | --- |
-> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | 获取 Azure Stack Edge 订阅的属性 |
+> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | 获取 Azure Stack 市场产品的属性 |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | 获取 Azure Stack 注册的属性 |
@@ -6151,6 +6245,7 @@ Azure Sentinel 读者 [了解更多](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 检查用户授权和许可证 |
+> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | 查询威胁情报指示器 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 查看日志分析数据 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | 获取给定工作区下的链接服务。 |
@@ -6185,6 +6280,7 @@ Azure Sentinel 读者 [了解更多](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -6222,6 +6318,12 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 检查用户授权和许可证 |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
+> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | 将标记追加到威胁情报指示器 |
+> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | 查询威胁情报指示器 |
+> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/bulkTag/action | 批量标记威胁情报 |
+> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | 将标记追加到威胁情报指示器 |
+> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/replaceTags/action | 替换威胁情报指标的标记 |
+> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | 查询威胁情报指示器 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 查看日志分析数据 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 获取工作区下面的数据源。 |
@@ -6258,6 +6360,12 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
@@ -6284,9 +6392,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-administrator-preview"></a>Key Vault 管理员 (预览版) 
+### <a name="key-vault-administrator-preview"></a>密钥保管库管理员（预览版）
 
-对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理 key vault 资源或管理角色分配。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6296,15 +6404,15 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6343,9 +6451,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-certificates-officer-preview"></a> (预览版 Key Vault 证书官员) 
+### <a name="key-vault-certificates-officer-preview"></a>密钥保管库证书管理人员（预览版）
 
-对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6355,16 +6463,16 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificatecas/* |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificates/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificatecas/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/certificates/* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6406,7 +6514,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-contributor"></a>密钥保管库参与者
 
-管理密钥保管库，但不允许在 Azure RBAC 中分配角色，而且不允许你访问机密、密钥或证书。 [了解详细信息](../key-vault/general/secure-your-key-vault.md)
+管理密钥保管库，但不允许在 Azure RBAC 中分配角色，也不允许访问机密、密钥或证书。 [了解详细信息](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6420,6 +6528,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | **不操作** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/deletedVaults/purge/action | 清除软删除的密钥保管库 |
 > | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
+> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHsms/* |  |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -6445,7 +6554,8 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       ],
       "notActions": [
         "Microsoft.KeyVault/locations/deletedVaults/purge/action",
-        "Microsoft.KeyVault/hsmPools/*"
+        "Microsoft.KeyVault/hsmPools/*",
+        "Microsoft.KeyVault/managedHsms/*"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -6457,9 +6567,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-crypto-officer-preview"></a> (预览版 Key Vault 加密官) 
+### <a name="key-vault-crypto-officer-preview"></a>密钥保管库加密管理人员（预览版）
 
-对密钥保管库的密钥执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6469,15 +6579,15 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6516,9 +6626,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-preview"></a>Key Vault 加密服务加密 (预览版) 
+### <a name="key-vault-crypto-service-encryption-preview"></a>密钥保管库加密服务加密（预览版）
 
-读取密钥的元数据并执行包装/解包操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+读取密钥的元数据并执行包装/展开操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6527,9 +6637,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。 对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。 永远不会公开私钥和对称密钥。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。 对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。 永远不会公开私钥和对称密钥。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6559,9 +6669,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-crypto-user-preview"></a>Key Vault 加密用户 (预览版) 
+### <a name="key-vault-crypto-user-preview"></a>密钥保管库加密用户（预览版）
 
-使用密钥执行加密操作。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6570,15 +6680,15 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。 对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。 永远不会公开私钥和对称密钥。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/update/action | 更新与给定密钥关联的指定属性。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | 创建密钥的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的密钥。 可能存在限制。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | 使用密钥加密纯文本。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | 使用密钥解密加密文本。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | 使用密钥签名哈希。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | 验证哈希。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。 对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。 永远不会公开私钥和对称密钥。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/update/action | 更新与给定密钥关联的指定属性。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | 创建密钥的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的密钥。 可能存在限制。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | 使用密钥加密纯文本。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | 使用密钥解密加密文本。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | 使用密钥签名哈希。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | 验证哈希。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6614,9 +6724,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-reader-preview"></a>Key Vault Reader (预览版) 
+### <a name="key-vault-reader-preview"></a>密钥保管库读取者（预览版）
 
-读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料之类的敏感值。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6626,16 +6736,16 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6675,9 +6785,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-secrets-officer-preview"></a> (预览版 Key Vault 秘密专员) 
+### <a name="key-vault-secrets-officer-preview"></a>密钥保管库机密管理人员（预览版）
 
-对密钥保管库的密码执行任何操作（"管理权限" 除外）。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6687,15 +6797,15 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/checkNameAvailability/read | 检查密钥保管库名称是否有效且未被使用 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | 查看软删除的密钥保管库的属性 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | 列出可对 Microsoft.KeyVault 资源提供程序执行的操作 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6734,9 +6844,9 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-secrets-user-preview"></a>Key Vault 机密用户 (预览版) 
+### <a name="key-vault-secrets-user-preview"></a>密钥保管库机密用户（预览版）
 
-读取机密内容。 仅适用于使用 "Azure 基于角色的访问控制" 权限模型的密钥保管库。
+读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6745,8 +6855,8 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/getSecret/action | 获取机密值。 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/getSecret/action | 获取机密值。 |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -6785,6 +6895,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | 创建和管理策略分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | 创建和管理策略定义 |
+> | [/PolicyExemptions/*](resource-provider-operations.md#microsoftauthorization) |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | 创建和管理策略集 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
@@ -6814,6 +6925,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
         "Microsoft.Authorization/*/read",
         "Microsoft.Authorization/policyAssignments/*",
         "Microsoft.Authorization/policyDefinitions/*",
+        "Microsoft.Authorization/policyExemptions/*",
         "Microsoft.Authorization/policySetDefinitions/*",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Management/managementGroups/read",
@@ -8483,6 +8595,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/read | 获取有关策略分配的信息。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/read | 获取有关策略定义的信息。 |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/read | 获取有关策略豁免的信息。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/read | 获取有关策略集定义的信息。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -8505,6 +8618,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
       "actions": [
         "Microsoft.Authorization/policyassignments/read",
         "Microsoft.Authorization/policydefinitions/read",
+        "Microsoft.Authorization/policyexemptions/read",
         "Microsoft.Authorization/policysetdefinitions/read"
       ],
       "notActions": [],
@@ -8531,6 +8645,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | */read | 读取除密码外的所有类型的资源。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | 创建和管理策略分配 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | 创建和管理策略定义 |
+> | [/Policyexemptions/*](resource-provider-operations.md#microsoftauthorization) |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | 创建和管理策略集 |
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
@@ -8555,6 +8670,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
         "*/read",
         "Microsoft.Authorization/policyassignments/*",
         "Microsoft.Authorization/policydefinitions/*",
+        "Microsoft.Authorization/policyexemptions/*",
         "Microsoft.Authorization/policysetdefinitions/*",
         "Microsoft.PolicyInsights/*",
         "Microsoft.Support/*"
