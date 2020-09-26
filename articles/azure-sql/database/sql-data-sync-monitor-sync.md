@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd2f0a3e41508dd41dc0e5b62532e21677987845
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343228"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332927"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 SQL 数据同步 
 
@@ -27,7 +27,7 @@ ms.locfileid: "84343228"
 有关 SQL 数据同步的概述，请参阅[使用 Azure 中的 SQL 数据同步跨多个云和本地数据库同步数据](sql-data-sync-data-sql-server-sql-database.md)。
 
 > [!IMPORTANT]
-> 目前 SQL 数据同步**不支持 AZURE** SQL 托管实例。
+> 目前，SQL 数据同步不支持 Azure SQL 托管实例。
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>所有同步组的监视仪表板 
 
@@ -37,7 +37,7 @@ ms.locfileid: "84343228"
 
 ## <a name="automated-email-notifications"></a>自动电子邮件通知
 
-不再需要在 Azure 门户中手动或通过 PowerShell、REST API 检查日志。 使用[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)，可以创建警报，这些警报直接发送到发生错误时需要查看的人员的电子邮件地址。
+不再需要在 Azure 门户中手动或通过 PowerShell、REST API 检查日志。 使用 [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)，可以创建警报，这些警报直接发送到发生错误时需要查看的人员的电子邮件地址。
 
 ![数据同步电子邮件通知](./media/sql-data-sync-monitor-sync/sync-email-notifications.png)
 
@@ -73,19 +73,19 @@ ms.locfileid: "84343228"
 
 使用托管在 Azure 自动化中的 PowerShell runbook 提取 SQL 数据同步日志数据，并将其发送到 Azure Monitor 日志。 已包含示例脚本。 作为先决条件，需要有一个 Azure 自动化帐户。 然后，你需要创建 runbook 并安排它运行。 
 
-### <a name="create-a-runbook"></a>创建 Runbook
+### <a name="create-a-runbook"></a>创建 runbook
 
 有关创建 runbook 的详细信息，请参阅[我的第一个 PowerShell runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell)。
 
 1.  在 Azure 自动化帐户下，请选择“流程自动化”下的****“Runbook”选项卡。
 
-2.  在 "Runbook" 页的左上角选择 "**添加 Runbook** "。
+2.  在 "Runbook" 页的左上角选择 " **添加 Runbook** "。
 
 3.  选择“导入现有的 Runbook”。****
 
 4.  **** 在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将****“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择“创建”。 现在你拥有了一个 runbook。
+5.  选择“创建” 。 现在你拥有了一个 runbook。
 
 6.  在 Azure 自动化帐户下，请选择“共享资源”下的****“变量”选项卡。
 
@@ -101,7 +101,7 @@ ms.locfileid: "84343228"
 
     2.  同步组信息。
 
-    3.  Azure Monitor 日志信息。 在 Azure 门户中查找此信息 |设置 |连接的源。 有关将数据发送到 Azure Monitor 日志的详细信息，请参阅[通过 HTTP 数据收集器 API （预览版）将数据发送到 Azure Monitor 日志](../../azure-monitor/platform/data-collector-api.md)。
+    3.  Azure Monitor 日志信息。 在 Azure 门户中查找此信息 |设置 |连接的源。 有关将数据发送到 Azure Monitor 日志的详细信息，请参阅 [通过 HTTP 数据收集器 API 将数据发送到 Azure Monitor 日志 (预览) ](../../azure-monitor/platform/data-collector-api.md)。
 
 11. 在“测试”窗格中运行 runbook。 检查以确保它已运行成功。
 
@@ -117,13 +117,13 @@ ms.locfileid: "84343228"
 
 2.  在“计划”**** 页上选择“添加计划”。
 
-3.  选择 "将**计划链接到 runbook**"。
+3.  选择 "将 **计划链接到 runbook**"。
 
-4.  选择 "**创建新计划"。**
+4.  选择 " **创建新计划"。**
 
 5.  **** 将“定期”设置为“重复执行”，并设置所需间隔。 请在脚本中使用相同的间隔，并在 Azure Monitor 日志中使用相同的间隔。
 
-6.  选择“创建”。
+6.  选择“创建” 。
 
 ### <a name="check-the-automation"></a>检查自动化
 
@@ -149,7 +149,7 @@ ms.locfileid: "84343228"
 
 5.  在“操作”下，将“电子邮件通知”设置为“是”********。 输入所需的电子邮件收件人。
 
-6.  单击“保存” 。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
+6.  单击“ **保存**”。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
 
 ## <a name="create-an-azure-monitor-view-for-monitoring"></a>创建用于监视的 Azure Monitor 视图
 
@@ -163,7 +163,7 @@ ms.locfileid: "84343228"
 
 若要配置 Azure Monitor 视图，请执行以下操作：
 
-1.  在 "Log Analytics 工作区" 主页上，选择左侧的加号，打开 "**视图设计器**"。
+1.  在 "Log Analytics 工作区" 主页上，选择左侧的加号，打开 " **视图设计器**"。
 
 2.  在视图设计器的顶部栏中选择****“导入”。 然后选择“DataSyncLogOMSView”示例文件。
 
@@ -187,7 +187,7 @@ ms.locfileid: "84343228"
 
 **** Azure 自动化：Azure 自动化帐户可能会产生成本，具体要取决于你的使用情况。 每月前 500 分钟的作业运行时间是免费的。 在大多数情况下，此解决方案预计每个月使用不到 500 分钟。 为了避免收费，请计划 Runbook 以两个小时或更长的间隔运行。 有关详细信息，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
-**Azure Monitor 日志：** Azure Monitor 日志可能会产生费用，具体取决于你的使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果每天使用超过 500 MB，请升级到付费层，以避免在达到限制时停止分析的风险。 有关详细信息，请参阅[Azure Monitor 日志定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
+**Azure Monitor 日志：** Azure Monitor 日志可能会产生费用，具体取决于你的使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果每天使用超过 500 MB，请升级到付费层，以避免在达到限制时停止分析的风险。 有关详细信息，请参阅 [Azure Monitor 日志定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 ## <a name="code-samples"></a>代码示例
 
@@ -202,15 +202,15 @@ ms.locfileid: "84343228"
 
 -   概述 - [使用 Azure 中的 SQL 数据同步跨多个云和本地数据库同步数据](sql-data-sync-data-sql-server-sql-database.md)
 -   设置数据同步
-    - 在门户中-[教程：设置在 AZURE SQL 数据库和 SQL Server 之间同步数据的 SQL 数据同步](sql-data-sync-sql-server-configure.md)
+    - 在门户中 - [教程：设置 SQL 数据同步，以在 Azure SQL 数据库和 SQL Server 之间同步数据](sql-data-sync-sql-server-configure.md)
     - 使用 PowerShell
         -  [使用 PowerShell 在 Azure SQL 数据库中的多个数据库之间进行同步](scripts/sql-data-sync-sync-data-between-sql-databases.md)
-        -  [使用 PowerShell 在 Azure SQL 数据库中的数据库和 SQL Server 实例中的数据库之间进行同步](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+        -  [使用 PowerShell 在 Azure SQL 数据库中的数据库与 SQL Server 实例中的数据库之间进行同步](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [Azure 中 SQL 数据同步的 Data Sync Agent](sql-data-sync-agent-overview.md)
 -   最佳做法 - [Azure 中 SQL 数据同步的最佳做法](sql-data-sync-best-practices.md)
 -   故障排除 - [排查 Azure 中的 SQL 数据同步问题](sql-data-sync-troubleshoot.md)
 -   更新同步架构
-    -   通过 Transact-sql-[自动复制 Azure 中 SQL 数据同步中的架构更改](sql-data-sync-update-sync-schema.md)
+    -   使用 Transact-SQL - [在 Azure 中的 SQL 数据同步中自动复制架构更改](sql-data-sync-update-sync-schema.md)
     -   使用 PowerShell - [使用 PowerShell 更新现有同步组中的同步架构](scripts/update-sync-schema-in-sync-group.md)
 
 有关 SQL 数据库的详细信息，请参阅：

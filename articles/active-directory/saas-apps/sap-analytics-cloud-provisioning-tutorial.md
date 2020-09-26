@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: f56aac256407b179dae2ef421217658ac102bbb4
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 5f549cce9116975521675e9e38c9793f1209862c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333454"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>教程：为 SAP Analytics Cloud 配置自动用户预配
 
@@ -101,11 +101,11 @@ ms.locfileid: "89458835"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分下的“租户 URL”中，输入之前检索到的租户 URL 值。 输入先前在 **机密令牌**中检索到的访问令牌值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 InVision。 如果连接失败，请确保 SAP 分析云帐户具有管理员权限，然后重试。
 

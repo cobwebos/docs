@@ -8,13 +8,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: devx-track-js
+ms.openlocfilehash: 84e3ced20b828087cd3f2b9e7534826debf1706a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279971"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式
 
@@ -289,7 +289,7 @@ DATEDIFF 是一种特定于日期的函数，用于比较并返回两个 DateTim
 
 ## <a name="data-aggregation-over-time"></a>随时间的数据聚合
 
-若要计算某个时间范围内的信息，可以将数据聚合在一起。 在此示例中，对每个特定汽车发出的过去10秒的时间计算一次计数。
+若要计算某个时间范围内的信息，可以将数据聚合在一起。 在此示例中，计数是根据过去 10 秒内每家特定汽车制造商计算的。
 
 **输入**：
 

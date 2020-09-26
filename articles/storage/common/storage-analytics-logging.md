@@ -1,6 +1,6 @@
 ---
 title: Azure 存储分析日志记录
-description: 使用存储分析记录有关 Azure 存储请求的详细信息。 查看记录了哪些请求，如何存储日志，如何启用存储日志记录等。
+description: 使用存储分析记录有关 Azure 存储请求的详细信息。 了解记录了哪些请求、如何存储日志，如何启用存储日志记录，等等。
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b4e2fa95b9a5eebf393d7c64feecd3997b7ecfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021164"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280022"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -137,7 +137,7 @@ ms.locfileid: "89021164"
 
 ### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 启用存储日志记录  
 
- 你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储日志记录，方法是使用 Azure PowerShell cmdlet **AzStorageServiceLoggingProperty** 检索当前设置，并使用 cmdlet **AzStorageServiceLoggingProperty** 更改当前设置。  
+ 可在本地计算机上使用 PowerShell 在存储帐户中配置存储日志记录，方法是：使用 Azure PowerShell cmdlet **Get-AzStorageServiceLoggingProperty** 检索当前设置，使用 cmdlet **Set-AzStorageServiceLoggingProperty** 更改当前设置。  
 
  控制存储日志记录的 cmdlet 使用 LoggingOperations 参数，该参数是一个字符串，包含要记录的请求类型的逗号分隔列表。 三种可能的请求类型是“读取”、“写入”和“删除”  。 要关闭日志记录，请对 LoggingOperations 参数使用值“无” 。  
 
@@ -206,7 +206,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Log
 
 要了解有关如何下载特定文件的详细信息，请参阅[下载特定文件](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)。
 
-下载了日志数据后，你可以在文件中查看日志条目。 这些日志文件采用很多日志读取工具可分析的分隔文本格式，这些工具包括 Microsoft Message Analyzer（有关详细信息，请参阅[对 Microsoft Azure 存储进行监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting.md)指南）。 不同工具使用不同设施对日志文件内容进行格式化、筛选、排序和搜索。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)和[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
+下载日志数据后，可以查看文件中的日志条目。 这些日志文件使用一种分隔文本格式，其中许多日志读取工具都能够分析 (。有关详细信息，请参阅 Microsoft Azure 存储) 的 [监视、诊断和疑难解答](storage-monitoring-diagnosing-troubleshooting.md) 。 不同的工具提供不同的功能用于筛选、排序和搜索日志文件的内容及设置其格式。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)和[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 
 ## <a name="next-steps"></a>后续步骤
 

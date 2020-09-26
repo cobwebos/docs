@@ -1,19 +1,19 @@
 ---
 title: 使用 CLI 进行 HTTP 到 HTTPS 重定向
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure CLI 创建应用程序网关并为 TLS 终端添加证书。
+description: 了解如何创建 HTTP 到 HTTPS 重定向并使用 Azure CLI 添加 TLS 终止证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331023"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -223,13 +223,6 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 创建自签名证书
-> * 设置网络
-> * 使用证书创建应用程序网关
-> * 添加侦听器和重定向规则
-> * 使用默认后端池创建虚拟机规模集
+- [使用 Azure CLI 创建支持内部重定向的应用程序网关](redirect-internal-site-cli.md)
 
 

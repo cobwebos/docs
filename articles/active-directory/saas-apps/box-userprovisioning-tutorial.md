@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312900"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>教程：为 Box 配置自动用户预配
 
@@ -93,23 +93,23 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 4. 将“预配模式”设置为“自动”。 
 
-    ![预配](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Azure 门户中 Box 的 "设置" 选项卡的屏幕截图。 预配模式设置为 "自动"，并且 "管理员凭据" 中突出显示了 "授权"。](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. 在“管理员凭据”**** 部分单击“授权”****，在新的浏览器窗口中打开 Box 登录对话框。
 
 6. 在“登录以授予对 Box 的访问权限”**** 页上，提供所需的凭据，然后单击“授权”****。 
    
-    ![启用自动预配](./media/box-userprovisioning-tutorial/IC769546.png "启用自动预配")
+    ![登录以向 box 屏幕授予访问权限的屏幕截图，其中显示了电子邮件和密码的条目，以及 "授权" 按钮。](./media/box-userprovisioning-tutorial/IC769546.png "启用自动预配")
 
 7. 单击“授予对 Box 的访问权限”**** 对此操作授权，然后返回到 Azure 门户。 
    
-    ![启用自动预配](./media/box-userprovisioning-tutorial/IC769549.png "启用自动预配")
+    !["授权访问" 屏幕的屏幕截图，显示说明性消息和 "授予访问权限" 框按钮。](./media/box-userprovisioning-tutorial/IC769549.png "启用自动预配")
 
 8. 在 Azure 门户中单击“测试连接”****，确保 Azure AD 可以连接到 Box 应用。 如果连接失败，请确保 Box 帐户具有团队管理员权限，并重试“授权”**** 步骤。
 
 9. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框****。
 
-10. 单击“保存”。
+10. 单击“保存” 
 
 11. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Box”****。
 
@@ -117,7 +117,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 13. 若要为 Box 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”**** 更改为“启用”****
 
-14. 单击“保存”。
+14. 单击“保存” 
 
 这会开始“用户和组”部分中分配给 Box 的任何用户和/或组的初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”**** 部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Box 应用执行的所有操作。
 

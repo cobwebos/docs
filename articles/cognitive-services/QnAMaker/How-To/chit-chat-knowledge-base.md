@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330632"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
@@ -22,7 +22,7 @@ ms.locfileid: "87124419"
 
 此数据集具有大约100的 chit 方案-在多个角色（如专业、友好和 Witty）的语音中聊天。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。
 
-下面是一些不同个性的示例。 你可以看到所有的个性[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)以及个性的详细信息。
+下面是一些不同个性的示例。 你可以看到所有的个性 [数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) 以及个性的详细信息。
 
 对于的用户查询 `When is your birthday?` ，每个用户都有一个有样式的响应：
 
@@ -41,7 +41,7 @@ ms.locfileid: "87124419"
 
 Chit-支持以下语言的聊天数据集：
 
-|Language|
+|语言|
 |--|
 |中文|
 |英语|
@@ -49,7 +49,7 @@ Chit-支持以下语言的聊天数据集：
 |德国|
 |意大利语|
 |日语|
-|韩语|
+|朝鲜语|
 |葡萄牙语|
 |西班牙语|
 
@@ -67,12 +67,12 @@ Chit-支持以下语言的聊天数据集：
 
 ![编辑聊天内容 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-若要查看元数据，请在工具栏中选择 "**查看选项**"，然后选择 "**显示元数据**"。
+若要查看元数据，请在工具栏中选择 " **查看选项** "，然后选择 " **显示元数据**"。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
 可以添加不在预定义数据集中的新 chit/聊天 QnA 对。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。**** 若要确保 ranker 了解这是 chit 聊天，请添加元数据键/值对 "社论： chitchat"，如下图所示：
 
-![![Add chit-chat Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+:::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="添加聊天内容 QnA" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>从现有 KB 中删除聊天内容
 选择 KB，导航到“设置”页。**** 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。

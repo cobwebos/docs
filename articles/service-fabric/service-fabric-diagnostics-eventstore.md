@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354813"
 ---
 # <a name="eventstore-overview"></a>EventStore 概述
 
@@ -26,7 +26,7 @@ EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 �
 * 确认正在正确处理对群集执行的管理操作
 * 获取 Service Fabric 如何与特定实体进行交互的“快照”
 
-![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![屏幕截图显示 "节点" 窗格中多个事件（包括 NodeDown 事件）的 "事件" 选项卡。](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 若要查看 EventStore 中可用的事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
@@ -76,7 +76,7 @@ EventStore 服务还能够将群集中的事件相关联。 通过查看在同�
 
 ### <a name="azure-cluster-version-64"></a>Azure 群集版本 6.4
 
-如果使用的是版本 6.4，则可以编辑 Azure 资源管理器模板，以启用 EventStore 服务。 这是通过执行[群集配置升级](service-fabric-cluster-config-upgrade-azure.md)并添加以下代码来完成的：你可以使用 PlacementConstraints 将 EventStore 服务的副本放在特定的 NodeType 上，例如，针对系统服务的节点。 `upgradeDescription` 部分配置配置升级，以触发节点上的重新启动。 可以在其他更新中删除该部分。
+如果使用的是版本 6.4，则可以编辑 Azure 资源管理器模板，以启用 EventStore 服务。 这是通过执行 [群集配置升级](service-fabric-cluster-config-upgrade-azure.md) 并添加以下代码来完成的：你可以使用 PlacementConstraints 将 EventStore 服务的副本放在特定的 NodeType 上，例如，针对系统服务的节点。 `upgradeDescription` 部分配置配置升级，以触发节点上的重新启动。 可以在其他更新中删除该部分。
 
 ```json
     "fabricSettings": [

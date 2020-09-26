@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268294"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
@@ -147,7 +147,7 @@ Azure 认知搜索允许通过附加的 indexAnalyzer 和 searchAnalyzer 字段�
 * 在这种情况下，自定义分析器为“my_analyzer”，它将反过来使用自定义的标准分词器“my_standard_tokenizer”和两个词元筛选器：小写的自定义 asciifolding 筛选器“my_asciifolding”。
 * 它还定义了 2 个自定义字符型筛选器“map_dash”和“remove_whitespace”。 第一个使用下划线替换所有破折号，而第二个用于删除所有空格。 空间需要在映射规则中进行 UTF-8 编码。 字符型筛选器在标记化之前进行应用并将影响生成的标记（标准 tokenizer 在破折号和空格上中断，但不会在下划线上中断）。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ Azure 认知搜索允许通过附加的 indexAnalyzer 和 searchAnalyzer 字段�
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ Azure 认知搜索允许通过附加的 indexAnalyzer 和 searchAnalyzer 字段�
 
 “分析器”元素逐字段替代标准分析器。 不能全局替代。 在本例中，`text1` 使用 Pattern 分析器和 `text2`，它不指定分析器，仅使用默认值。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ Azure 认知搜索允许通过附加的 indexAnalyzer 和 searchAnalyzer 字段�
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ Azure 认知搜索允许通过附加的 indexAnalyzer 和 searchAnalyzer 字段�
 API 包括为索引和搜索指定不同分析器的其他索引属性。 必须以对的形式指定 **searchAnalyzer** 和 **indexAnalyzer** 属性，并替换单个 **analyzer** 属性。
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 包含其他语言字符串的字段可使用语言分析器，而其他字段将保留默认值（或使用某些其他预定义或自定义分析器）。 如果使用语言分析器，则必须将其同时用于索引和搜索操作。 使用语言分析器的字段不得对索引和搜索使用不同的分析器。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C# 示例
 

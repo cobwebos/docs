@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: be7b6349a7bf51a4fb99e3604a04f9d95403b74f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442796"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359318"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
 
@@ -34,7 +34,7 @@ ms.locfileid: "89442796"
 4. **本地 ID** 应与客户端证书的**使用者**相同。
 5. 单击“身份验证设置”  以打开“身份验证设置”页。
 
-   ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
+   ![屏幕截图显示已选择证书的 "身份验证设置" 对话框。](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
 6. 确认已从下拉列表中选择了“证书”  。
 7. 单击“选择”  按钮，并确认已选择正确的证书。 单击“确定”  保存所有更改。
 
@@ -48,7 +48,7 @@ ms.locfileid: "89442796"
 4. **本地 ID** 可以为空。
 5. 单击“身份验证设置”  按钮，并确认已从下拉列表中选择了“用户名”。
 
-   ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
+   ![屏幕截图显示了一个 "身份验证设置" 对话框，其中已选中用户名。](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. 请确保输入了正确的凭据。
 
 ## <a name="additional-steps"></a><a name="additional"></a>其他步骤
