@@ -6,17 +6,17 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358775"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
 
 > [!NOTE]
-> 如前所述[，Azure Monitor](monitoring-classic-retirement.md)中的经典警报已停用，但对于尚不支持新警报的资源仍处于有限使用。 这些警报的停用日期已进一步延长。 新日期即将发布。
+> 如前所述 [，Azure Monitor](monitoring-classic-retirement.md)中的经典警报已停用，但对于尚不支持新警报的资源仍处于有限使用。 这些警报的停用日期已进一步延长。 新日期即将发布。
 >
 
 如果你选择自愿将经典警报规则迁移到新的警报规则，请注意，这两个系统存在一些差异。 本文将会解释这些差异以及如何做好相应的准备。
@@ -32,7 +32,7 @@ ms.locfileid: "87843379"
 |REST API     | [microsoft insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [引用](/powershell/module/az.monitor/add-azmetricalertrule)       |  [引用](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager 模板 | [经典警报](./alerts-enable-template.md)|[新指标警报](./alerts-metric-create-templates.md)|
+| Azure 资源管理器模板 | [经典警报](./alerts-enable-template.md)|[新指标警报](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>通知有效负载更改
 
@@ -43,7 +43,7 @@ ms.locfileid: "87843379"
 | 通知终结点类型 | 经典警报 | 新指标警报 |
 | -------------------------- | -------------- | ----------------- |
 |警报是否已激活或解决？    | **status**       | **data.status** |
-|有关警报的上下文信息     | **上下文**        | **data.context**        |
+|有关警报的上下文信息     | **上下文**        | **数据。上下文**        |
 |激活或解决警报时的时间戳     | **context.timestamp**       | **data.context.timestamp**        |
 | 警报规则 ID | **context.id** | **data.context.id** |
 | 预警规则名称 | **context.name** | **data.context.name** |
@@ -70,13 +70,13 @@ ms.locfileid: "87843379"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改逻辑应用以接收指标警报通知
 
-如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤:
+如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤：
 
 1. 创建新的逻辑应用。
 
 1. 使用“Azure Monitor - 指标警报处理程序”模板。 此模板包含一个定义了相应架构的 **HTTP 请求**触发器。
 
-    ![逻辑应用-模板](media/alerts-migration/logic-app-template.png "指标警报模板")
+    ![屏幕截图显示了两个按钮：空白逻辑应用和 Azure Monitor –指标警报处理程序。](media/alerts-migration/logic-app-template.png "指标警报模板")
 
 1. 添加用于托管处理逻辑的操作。
 

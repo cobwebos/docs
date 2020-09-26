@@ -1,6 +1,6 @@
 ---
-title: 如何安装和使用 log analytics 视图 |Microsoft Docs
-description: 了解如何安装和使用 log analytics 视图进行 Azure Active Directory
+title: 如何安装并使用日志分析视图 | Microsoft Docs
+description: 了解如何安装并使用用于 Azure Active Directory 的日志分析视图
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,21 +17,21 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358893"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的日志分析视图
 
 Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD 租户中的 Azure AD 活动日志。 Azure AD 活动日志包括：
 
-* 审核日志：通过 " [审核日志活动" 报表](concept-audit-logs.md) ，您可以访问在租户中执行的每个任务的历史记录。
-* 登录日志：对于 " [登录活动" 报表](concept-sign-ins.md)，你可以确定谁执行了审核日志中报告的任务。
+* 审核日志：可通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+* 登录日志：可通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用日志分析视图，需要执行以下操作：
 
@@ -56,7 +56,7 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 
 3. 选择其中一个视图，跳转到各个报表。 此外，还可以设置有关任何报表参数的警报。 例如，针对每次登录错误设置警报。 若要执行此操作，首先选择“登录事件”视图，选择“随着时间推移发生的登录错误”报表，然后选择“分析”，打开详细信息页面，其中包含报表中的实际查询************。 
 
-    ![详细信息](./media/howto-install-use-log-analytics-views/details.png)
+    ![屏幕截图显示了分析详细信息页，其中包含报表查询。](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. 选择“设置警报”，然后选择“警报条件”部分下的“每当自定义日志搜索为逻辑未定义”&lt;&gt;************。 由于我们希望在每当发生登录错误时发出警报，因此将默认警报逻辑的阈值设置为 1 并选择“完成”************。 
@@ -67,7 +67,7 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 
     ![创建规则](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. 选择要发出警报的操作组。 一般情况下，这可能是你想要通过电子邮件或短信通知的团队，也可以是使用 webhook、runbook、函数、逻辑应用或外部 ITSM 解决方案的自动执行的任务。 了解如何 [在 Azure 门户中创建和管理操作组](../../azure-monitor/platform/action-groups.md)。
+6. 选择要发出警报的操作组。 一般情况下，这可能是你想要通过电子邮件或短信通知的团队，也可以是使用 webhook、runbook、函数、逻辑应用或外部 ITSM 解决方案的自动执行的任务。 了解如何[在 Azure 门户中创建和管理操作组](../../azure-monitor/platform/action-groups.md)。
 
 7. 选择“创建警报规则”可以创建警报****。 现在，每当出现登录错误时都会发出警报。
 

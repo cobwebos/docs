@@ -115,8 +115,6 @@
     - name: 对内容进行编码
       href: media-services-encode-asset.md
       items:
-        - name: 比较编码器
-          href: media-services-compare-encoders.md
         - name: 管理编码的速度和并发
           href: media-services-manage-encoding-speed.md
         - name: Media Encoder Standard (MES)
@@ -205,20 +203,6 @@
                   href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
                 - name: 适用于 Android 的 H264 单比特率低品质 SD
                   href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
-        - name: 媒体编码器高级工作流
-          items:
-            - name: 媒体编码器高级工作流格式和编解码器
-              href: media-services-premium-workflow-encoder-formats.md
-            - name: 使用媒体编码器高级工作流进行编码
-              items:
-                - name: 媒体编码器高级工作流
-                  href: media-services-encode-with-premium-workflow.md
-                - name: 媒体编码器高级工作流教程
-                  href: media-services-media-encoder-premium-workflow-tutorials.md
-                - name: 使用工作流设计器创建高级编码工作流
-                  href: media-services-workflow-designer.md
-                - name: 使用多个输入的高级工作流
-                  href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
         - name: 创建生成 fMP4 区块的任务
           href: media-services-generate-fmp4-chunks.md
         - name: 媒体处理器
@@ -412,7 +396,7 @@
           href: media-services-dotnet-check-job-progress-with-queues.md
         - name: 使用 Webhook 监视作业通知
           href: media-services-dotnet-check-job-progress-with-webhooks.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: media-services-frequently-asked-questions.md

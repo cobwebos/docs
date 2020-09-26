@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328485"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>将 Azure 数字孪生实例移动到不同的 Azure 区域
 
@@ -100,7 +100,7 @@ ms.locfileid: "89443035"
  
 然后，按 "*图形视图*" 框中的 "*导出关系图*" 图标。
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在 关系图视图 框中，将突出显示图标。它会显示一个指向云的下拉箭头。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在 "关系图视图" 框中，将突出显示图标。它会显示一个指向云的下拉箭头。" lightbox="media/how-to-move-regions/export-graph.png":::
 
 这将在*图形视图*中启用 "*下载*" 链接。 选择此项可下载基于 JSON 的查询结果表示形式，包括模型、孪生和关系。 这应该 *将一个文件中的* 文件下载到你的计算机。
 
@@ -113,7 +113,7 @@ ms.locfileid: "89443035"
 
 ### <a name="create-a-new-instance"></a>创建新实例
 
-首先， **在目标区域中创建 Azure 数字孪生的新实例**。 为此，请执行 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中的步骤，记住以下这些指针：
+首先， **在目标区域中创建 Azure 数字孪生的新实例**。 为此，请执行 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的步骤，记住以下这些指针：
 * **如果**新实例位于不同的资源组中，则可以为其保留相同的名称。 如果需要使用包含原始实例的相同资源组，则新实例将需要其自己的不同名称。
 * 当系统提示输入位置时，输入目标新区域。
 * 无 **需** 重新创建应用注册。 新实例可以重复使用已有的应用注册。
@@ -168,7 +168,7 @@ ADT 资源管理器现在会将模型和图形 () 添加到新的 Azure 数字�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="指示关系图导入成功的对话框。它读取 导入成功。已导入2个模型。4孪生已导入。已导入2个关系。 " lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="指示关系图导入成功的对话框。它读取 "导入成功"。已导入2个模型。4孪生已导入。已导入2个关系。 "" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ ADT 资源管理器现在会将模型和图形 () 添加到新的 Azure 数字�
 
 若要验证是否已成功上传所有内容，请点击 "*图形资源管理器*" 框中的 "*运行查询*" 按钮，以运行在图形中显示所有孪生和关系的默认查询。 这也会在 *模型视图*中刷新模型列表。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="在窗口顶部附近的 运行查询 按钮周围突出显示" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="在窗口顶部附近的 "运行查询" 按钮周围突出显示" lightbox="media/how-to-move-regions/run-query.png":::
 
 应该会看到图形，其中显示了 " *图形资源管理器* " 框中显示的所有孪生和关系。 您还应在 " *模型视图* " 框中看到您的模型。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="ADT 资源管理器的视图，显示在 模型视图 框中突出显示的2个模型，在 Graph 资源管理器 框中突出显示了图形" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="ADT 资源管理器的视图，显示在 "模型视图" 框中突出显示的2个模型，在 "Graph 资源管理器" 框中突出显示了图形" lightbox="media/how-to-move-regions/post-upload.png":::
 
 这会确认已将模型、孪生和 graph 重新上传到目标区域中的新实例。
 
@@ -234,4 +234,4 @@ ADT 资源管理器现在会将模型和图形 () 添加到新的 Azure 数字�
 
 点击 " *删除* " 按钮，并按照提示完成删除操作。
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure 门户的 概述 选项卡上的 Azure 数字孪生实例详细信息的视图。突出显示 删除 按钮":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure 门户的 "概述" 选项卡上的 Azure 数字孪生实例详细信息的视图。突出显示 "删除" 按钮":::

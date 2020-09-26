@@ -1,6 +1,6 @@
 ---
-title: Azure 上的 Oracle WebLogic 服务器解决方案
-description: 了解如何在 Microsoft Azure 上运行 Oracle WebLogic Server。
+title: 什么是在 Azure 虚拟机上运行 Oracle WebLogic Server 的解决方案
+description: 了解如何在 Microsoft Azure 虚拟机上运行 Oracle WebLogic Server。
 services: virtual-machines-linux
 documentationcenter: ''
 author: rezar
@@ -11,16 +11,16 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2020
+ms.date: 09/23/2020
 ms.author: rezar
-ms.openlocfilehash: e408f9e245fb78b475a194bc0db6f1edfdf85b41
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274361"
 ---
-# <a name="solutions-for-running-oracle-weblogic-server-on-azure"></a>在 Azure 上运行 Oracle WebLogic Server 的解决方案
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>在 Azure 虚拟机上运行 Oracle WebLogic Server 的解决方案是什么？
 
 本页介绍了在 Azure 虚拟机上运行 Oracle WebLogic Server (WLS) 的解决方案。 这些解决方案由 Oracle 和 Microsoft 共同开发。
 
