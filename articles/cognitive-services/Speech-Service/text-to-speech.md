@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
-keywords: 文本到语音转换
-ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+keywords: 文本转语音
+ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357448"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -77,5 +77,5 @@ GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取免费语音服务订阅](get-started.md)
+- [获取免费语音服务订阅](overview.md#try-the-speech-service-for-free)
 - [获取语音 SDK](speech-sdk.md)

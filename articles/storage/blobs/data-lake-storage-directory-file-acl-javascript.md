@@ -8,13 +8,13 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 648a47b451e8857c1cd84c2bcecdaae7fcaa065d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: c3285e66f1422e2a333be190083dadfc932bf322
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333590"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -95,7 +95,7 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 容器充当文件的文件系统。 可以通过获取 **FileSystemClient** 实例，然后调用 **FileSystemClient.Create** 方法来创建一个。
 
-此示例创建一个名为的容器 `my-file-system` 。 
+此示例创建一个名为 `my-file-system` 的容器。 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -113,7 +113,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 可以通过获取 **DirectoryClient** 实例，然后调用 **DirectoryClient.create** 方法来创建目录引用。
 
-此示例将一个名为 `my-directory` 的目录添加到容器中。 
+此示例将名为 `my-directory` 的目录添加到容器中。 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -220,7 +220,7 @@ async function ManageDirectoryACLs(fileSystemClient) {
 }
 ```
 
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串（）传递给 `/` **DataLakeFileSystemClient. getDirectoryClient**方法。
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串 (`/`) 传递到“DataLakeFileSystemClient.getDirectoryClient”方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 

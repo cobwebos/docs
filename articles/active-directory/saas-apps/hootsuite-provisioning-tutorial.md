@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: a67d61c5a7c8861b1e4462586e1e4dca9149ab4f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4c040c6d5b8eb4041db3ffaaab58657a9f9c7da
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305437"
+ms.locfileid: "91358043"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教程：为 Hootsuite 配置自动用户预配
 
@@ -88,7 +88,7 @@ ms.locfileid: "91305437"
 
 5. 在“管理员凭据”部分下，在“租户 URL”中输入 `https://platform.hootsuite.com/scim/v2`。 输入前面在“步骤 2”中检索到的长生存期机密令牌值。 单击“测试连接”以确保 Azure AD 可以连接到 Hootsuite。 如果连接失败，请确保 Hootsuite 帐户具有管理员权限，然后重试。
 
-    ![预配](./media/hootsuite-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/hootsuite-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

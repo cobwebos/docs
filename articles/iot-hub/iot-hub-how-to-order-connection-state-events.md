@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356190"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 
@@ -227,11 +227,11 @@ ms.locfileid: "87488122"
 
 5. 选择“添加新参数”。 在显示的下拉列表中，选中“分区键”和“存储过程的参数”旁边的框，然后单击屏幕上的其他任何位置；此时将为分区键值添加一个字段，并为存储过程的参数添加一个字段。 
 
-   ![填充逻辑应用操作](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![屏幕截图显示 "执行存储过程" 项，其中选择了 "添加新参数"。](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. 现在，如下所示输入分区键值和参数。 请务必如图中所示添加方括号和双引号。 你可能必须单击“添加动态内容”来获取可在此处使用的有效值。
 
-   ![填充逻辑应用操作](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![屏幕截图显示具有输入参数的执行存储过程项。](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
 7. 在显示了“For Each”的窗格顶部，在“选择前面步骤的输出”下，确保“正文”已选中。  
 

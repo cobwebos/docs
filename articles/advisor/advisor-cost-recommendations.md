@@ -3,12 +3,12 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654032"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325838"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -20,7 +20,7 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 
 建议的操作是关闭或重设大小，特定于正在评估的资源。
 
-如果这两个语句都为 true，则 Advisor 中的高级评估模型考虑关闭虚拟机： 
+当所有这些语句都为 true 时，顾问中的高级评估模型考虑关闭虚拟机： 
 - 最大 CPU 使用率最大值的 P95th 小于3%。 
 - 在七天内，网络使用率低于2%。
 - 内存压力低于阈值

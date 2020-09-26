@@ -10,19 +10,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 5d91fc0d5dd51ea5ef766f23519f38202b24a337
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17838d4a652be3a1b50da56812731e0f634a0c08
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323118"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>为 Azure SQL 托管实例配置现有虚拟网络
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-必须在 Azure[虚拟网络](../../virtual-network/virtual-networks-overview.md)中部署 azure SQL 托管实例，并将专用于仅用于托管实例的子网。 如果基于[SQL 托管实例虚拟网络要求](connectivity-architecture-overview.md#network-requirements)配置了现有虚拟网络和子网，则可以使用该虚拟网络和子网。
+Azure SQL 托管实例必须仅部署在专用于托管实例的 Azure [虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网中。 如果现有虚拟网络和子网是根据 [SQL 托管实例虚拟网络要求](connectivity-architecture-overview.md#network-requirements)配置的，则可以使用现有虚拟网络和子网。
 
 如果存在以下情况，可以使用本文中所述的脚本来验证和修改网络：
 
@@ -31,13 +31,13 @@ ms.locfileid: "84711300"
 - 进行更改后想要检查子网是否仍符合[网络要求](connectivity-architecture-overview.md#network-requirements)。
 
 > [!Note]
-> 只能在通过 Azure 资源管理器部署模型创建的虚拟网络中创建托管实例。 不支持通过经典部署模型创建的 Azure 虚拟网络。 按照[确定 SQL 托管实例的子网大小一](vnet-subnet-determine-size.md)文中的准则计算子网大小。 在子网中部署资源后，无法调整子网大小。
+> 只能在通过 Azure 资源管理器部署模型创建的虚拟网络中创建托管实例。 不支持通过经典部署模型创建的 Azure 虚拟网络。 根据[确定 SQL 托管实例的子网大小](vnet-subnet-determine-size.md)一文中的指导计算子网大小。 在子网中部署资源后，无法调整子网大小。
 >
 > 创建托管实例后，不支持将实例或 VNet 移到另一个资源组或订阅。
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>验证并修改现有虚拟网络
 
-如果要在现有子网中创建托管实例，建议使用以下 PowerShell 脚本来准备子网：
+如果希望在现有子网内创建托管实例，建议使用以下 PowerShell 脚本来准备子网：
 
 ```powershell
 $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
@@ -54,12 +54,12 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delega
 
 该脚本通过三个步骤来准备子网：
 
-1. Validate：验证所选的虚拟网络和子网的 SQL 托管实例网络要求。
-2. 确认：向用户显示为 SQL 托管实例部署准备子网所需的一组更改。 同时请求用户同意。
+1. 验证：根据 SQL 托管实例的网络要求验证所选虚拟网络和子网。
+2. 确认：向用户显示为 SQL 托管实例部署准备子网而需要执行的一组更改。 同时请求用户同意。
 3. 准备：正确配置虚拟网络和子网。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关概述，请参阅[什么是 SQL 托管实例？](sql-managed-instance-paas-overview.md)。
-- 有关演示如何创建虚拟网络、创建托管实例和从数据库备份还原数据库的教程，请参阅[创建托管实例](instance-create-quickstart.md)。
+- 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关 DNS 问题，请参阅[配置自定义 DNS](custom-dns-configure.md)。

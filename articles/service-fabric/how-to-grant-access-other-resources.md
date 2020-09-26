@@ -1,16 +1,16 @@
 ---
-title: 向应用程序授予其他 Azure 资源的访问权限
+title: 为应用程序授予对其他 Azure 资源的访问权限
 description: 本文介绍如何为启用了托管标识的 Service Fabric 应用程序授予对支持基于 Azure Active Directory 身份验证的其他 Azure 资源的访问权限。
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a1d963c49f9522000028b00c138b2e5731a9ccca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333624"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>为 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限（预览）
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>向 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限
 
 在应用程序可以使用其托管标识访问其他资源之前，必须为该标识授予对所要访问的受保护 Azure 资源的权限。 授予权限通常是 Azure 服务的“控制平面”中执行的一项管理操作，该服务拥有通过 Azure 资源管理器路由的受保护资源。这会强制实施任何适用的基于角色的访问检查。
 

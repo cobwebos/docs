@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04942c745548903a5f8092bc5b04ea2152029726
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44616d5d90f9c5c3a4f3abf8b8cf2128dc4f0585
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885930"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333794"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型的超参数
 
@@ -167,7 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 优化运行以最大化“准确性”。  确保在训练脚本中记录此值。
 
-### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> 指定主要指标
+### <a name="log-metrics-for-hyperparameter-tuning"></a><a name="log-metrics-for-hyperparameter-tuning"></a>记录用于超参数优化的指标
 
 模型的训练脚本必须在模型训练过程中记录相关指标。 配置超参数优化时，指定要用于评估运行性能的主要指标。 （请参阅[指定要优化的主要指标](#specify-primary-metric-to-optimize)。）必须在训练脚本中记录此指标，以便将其用于超参数优化过程。
 
@@ -190,11 +190,11 @@ run_logger.log("accuracy", float(val_accuracy))
 * `evaluation_interval`：应用策略的频率。 每次训练脚本都会将主要指标计数记录为一个间隔。 因此，如果 `evaluation_interval` 为 1，则训练脚本每次报告主要指标时，都会应用策略。 如果 `evaluation_interval` 为 2，则训练脚本每两次报告主要指标时会应用策略。 如果未指定，则默认将 `evaluation_interval` 设置为 1。
 * `delay_evaluation`：将第一个策略评估延迟指定的间隔数。 这是一个可选参数，可让所有配置运行初始设置的最小间隔数，避免训练运行过早终止。 如果已指定，则每隔大于或等于 delay_evaluation 的 evaluation_interval 倍数应用策略。
 
-Azure 机器学习支持以下提前终止策略。
+Azure 机器学习支持以下早期终止策略。
 
 ### <a name="bandit-policy"></a>老虎机策略
 
-[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#&preserve-view=truedefinition) 是基于可宽延时间因子/可宽延时间量和评估间隔的终止策略。 如果主要指标不在与最佳性能训练运行相关的指定松驰因子/松驰数量范围内，则此策略会提前终止任何运行。 此策略采用以下配置参数：
+[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py&preserve-view=true#&preserve-view=truedefinition) 是基于可宽延时间因子/可宽延时间量和评估间隔的终止策略。 如果主要指标不在与最佳性能训练运行相关的指定松驰因子/松驰数量范围内，则此策略会提前终止任何运行。 此策略采用以下配置参数：
 
 * `slack_factor` 或 `slack_amount`：在最佳性能训练运行方面允许的松驰。 `slack_factor` 以比率的形式指定允许的松驰。 `slack_amount` 以绝对数量（而不是比率）的形式指定允许的松驰。
 
@@ -285,29 +285,29 @@ max_concurrent_runs=4
 
 ## <a name="configure-experiment"></a>配置试验
 
-使用上述部分中定义的超参数搜索空间、提前终止策略、主要指标和资源分配来[配置超参数优化](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true)试验。 此外，提供将结合采样的超参数调用的 `estimator`。 `estimator` 描述运行的训练脚本、每个作业的资源（单个或多个 GPU）以及要使用的计算目标。 由于超参数优化试验的并发性受可用资源限制，所以请确保 `estimator` 中指定的计算目标能够为所需的并发性提供足够的资源。 （有关估算器的详细信息，请参阅[如何训练模型](how-to-train-ml-models.md)。）
+使用上述部分中定义的超参数搜索空间、提前终止策略、主要指标和资源分配来[配置超参数优化](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true)试验。 此外，请提供 `src` 将用抽样超参数调用的运行的 ScriptRunConfig。 ScriptRunConfig 定义要运行的训练脚本、每个作业 (单个或多节点) 的资源，以及要使用的计算目标。 由于超参数优化试验的并发功能已在可用资源上封闭，因此请确保中指定的计算目标 `src` 具有足够的资源来满足所需的并发性。  (有关 ScriptRunConfig 的详细信息，请参阅 [配置训练运行](how-to-set-up-training-targets.md)。 ) 
 
 配置超参数优化试验：
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
-                          hyperparameter_sampling=param_sampling, 
-                          policy=early_termination_policy,
-                          primary_metric_name="accuracy", 
-                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-                          max_total_runs=100,
-                          max_concurrent_runs=4)
+hd_config = HyperDriveConfig(run_config=src,
+                             hyperparameter_sampling=param_sampling,
+                             policy=early_termination_policy,
+                             primary_metric_name="accuracy",
+                             primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                             max_total_runs=100,
+                             max_concurrent_runs=4)
 ```
 
 ## <a name="submit-experiment"></a>提交试验
 
-定义超参数优化配置后，请[提交试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)：
+定义超参数优化配置后，请[提交试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truesubmit-config--tags-none----kwargs-)：
 
 ```Python
 from azureml.core.experiment import Experiment
 experiment = Experiment(workspace, experiment_name)
-hyperdrive_run = experiment.submit(hyperdrive_run_config)
+hyperdrive_run = experiment.submit(hd_config)
 ```
 
 `experiment_name` 是要分配给超参数优化试验的名称，`workspace` 是要在其中创建试验的工作区（有关试验的详细信息，请参阅 [Azure 机器学习的工作原理](concept-azure-machine-learning-architecture.md)）
@@ -341,15 +341,15 @@ child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
-                          hyperparameter_sampling=param_sampling, 
-                          policy=early_termination_policy,
-                          resume_from=warmstart_parents_to_resume_from, 
-                          resume_child_runs=child_runs_to_resume,
-                          primary_metric_name="accuracy", 
-                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-                          max_total_runs=100,
-                          max_concurrent_runs=4)
+hd_config = HyperDriveConfig(run_config=src,
+                             hyperparameter_sampling=param_sampling,
+                             policy=early_termination_policy,
+                             resume_from=warmstart_parents_to_resume_from,
+                             resume_child_runs=child_runs_to_resume,
+                             primary_metric_name="accuracy",
+                             primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                             max_total_runs=100,
+                             max_concurrent_runs=4)
 ```
 
 ## <a name="visualize-experiment"></a>将实验可视化
@@ -377,7 +377,7 @@ RunDetails(hyperdrive_run).show()
 
 ## <a name="find-the-best-model"></a>找到最佳模型
 
-完成所有超参数优化运行后，[识别性能最佳的配置](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-)和对应的超参数值：
+完成所有超参数优化运行后，[识别性能最佳的配置](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-)和对应的超参数值：
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
@@ -393,7 +393,7 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="sample-notebook"></a>示例 Notebook
 请参阅以下文件夹中 train-hyperparameter-* 笔记本：
-* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
+* [how-to-use-azureml/ml-frameworks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a44ead4f0e7c9fcd8dfd19f562b453e600ed6a31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333745"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>将模型部署到生产中，使这些模型在制定业务决策方面能够发挥积极作用
 
@@ -34,12 +34,12 @@ ms.locfileid: "76722231"
 >
 
 >[!NOTE]
->对于使用 Azure 机器学习工作室的部署，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
+>对于使用 Azure 机器学习工作室的部署，请参阅[部署 Azure 机器学习 Web 服务](../classic/deploy-a-machine-learning-web-service.md)。
 >
 
 ## <a name="ab-testing"></a>A/B 测试
 
-当生产中有多个模型时，可以使用[A/B 测试](https://en.wikipedia.org/wiki/A/B_testing)来比较模型的性能。 
+当生产中有多个模型时，可以使用 [A/B 测试](https://en.wikipedia.org/wiki/A/B_testing) 来比较模型的性能。 
  
 ## <a name="next-steps"></a>后续步骤
 

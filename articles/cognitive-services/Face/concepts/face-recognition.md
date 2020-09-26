@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73743075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323016"
 ---
 # <a name="face-recognition-concepts"></a>人脸识别的概念
 
@@ -69,6 +69,6 @@ ms.locfileid: "73743075"
 
 ## <a name="next-steps"></a>后续步骤
 
-熟悉人脸识别的概念后，接下来请了解如何编写一个可以针对训练的 PersonGroup 识别人脸的脚本。
+现在，你熟悉了人脸识别概念，编写了一个脚本，用于识别训练有素的 Person group 的人脸。
 
-* [识别图像中的人脸](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [面部客户端库快速入门](../Quickstarts/client-libraries.md)

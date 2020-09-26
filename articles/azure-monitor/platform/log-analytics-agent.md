@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309993"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理会从 Windows 和 Linux 虚拟机中收集遥测数据，这些虚拟机在任何云、本地计算机上以及通过 [System Center Operations Manager](/system-center/scom/) 监视，并将其收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](../../security-center/index.yml)和 [Azure 自动化](../../automation/automation-intro.md)。 本文详细概述了代理、系统和网络要求以及部署方法。
@@ -59,7 +59,7 @@ Log Analytics 代理将数据发送到 Azure Monitor 中的 Log Analytics 工作
 
 * 即使连接到 System Center Operations Manager 管理组，Windows 代理也可以连接到最多四个工作区。
 * Linux 代理不支持多宿主，只能连接到单个工作区或管理组。
-  
+
 
 ## <a name="security-limitations"></a>安全限制
 
@@ -69,6 +69,8 @@ Log Analytics 代理将数据发送到 Azure Monitor 中的 Log Analytics 工作
 ## <a name="installation-options"></a>安装选项
 
 可通过多种方法安装 Log Analytics 代理并将计算机连接到 Azure Monitor，具体取决于你的要求。 以下部分列出了不同类型的虚拟机的可能方法。
+> [!NOTE]
+> 不支持克隆已配置 Log Analytics 代理的计算机。 如果该代理已与工作区关联，则此操作将不适用于 "黄金映像"。
 
 ### <a name="azure-virtual-machine"></a>Azure 虚拟机
 
@@ -126,7 +128,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 
 `[protocol://][user:password@]proxyhost[:port]`
 
-|属性| 说明 |
+|properties| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

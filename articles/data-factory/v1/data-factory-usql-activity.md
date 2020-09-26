@@ -1,6 +1,6 @@
 ---
 title: 使用 U-SQL 脚本转换数据-Azure
-description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
+description: 了解如何通过在 Azure Data Lake Analytics 计算服务-版本1上运行 U SQL 脚本来处理或转换数据。
 services: data-factory
 documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: a4ae575984badb2b03f72a77aaf580012a1fc002
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997126"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322609"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -92,8 +92,8 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 | properties | 说明 | 必需 |
 |:--- |:--- |:--- |
-| **授权** | 单击数据工厂编辑器中的“授权”**** 按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 适合 |
-| **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 适合 |
+| **授权** | 单击数据工厂编辑器中的“授权”**** 按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
+| **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
 **示例：用户凭据身份验证**
 ```json

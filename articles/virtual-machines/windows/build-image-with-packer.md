@@ -1,6 +1,6 @@
 ---
-title: PowerShell-如何通过 Packer 创建 VM 映像
-description: 了解如何使用 Packer 和 PowerShell 在 Azure 中创建虚拟机的映像
+title: PowerShell - 如何使用 Packer 创建 VM 映像
+description: 了解如何使用 Packer 和 PowerShell 在 Azure 中创建虚拟机映像
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 16d0a4ea2353778b16803bd9b92a7f8af6e4ba88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325906"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell：如何使用 Packer 在 Azure 中创建虚拟机映像
 Azure 中的每个虚拟机 (VM) 都是基于定义 Windows 分发和操作系统版本的映像创建的。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
-本文最后一次在8/5/2020 上使用 [Packer](https://www.packer.io/docs/install) 版本1.6.1 进行测试。
+本文最后一次使用 [Packer](https://www.packer.io/docs/install) 版本 1.6.1 于 2020 年 8 月 5 日进行了测试。
 
 > [!NOTE]
 > Azure 现推出一项服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器基于 Packer 构建，因此你可以将现有 Packer shell 配置程序脚本与之配合使用。 若要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 Windows VM](image-builder.md)。
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>创建 Azure 凭据
 使用服务主体通过 Azure 对 Packer 进行身份验证。 Azure 服务主体是可与应用、服务和自动化工具（如 Packer）结合使用的安全性标识。 用户控制和定义服务主体可在 Azure 中执行的操作的权限。
 
-使用 [AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)创建服务主体。 `-DisplayName` 的值必须唯一；请根据需要将其替换为你自己的值。  
+使用 [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) 创建服务主体。 `-DisplayName` 的值必须唯一；请根据需要将其替换为你自己的值。  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerSP$(Get-Random)"
@@ -103,7 +103,7 @@ Get-AzSubscription
         "task": "Image deployment"
     },
 
-    "location": "East US",
+    "build_resource_group_name": "myPackerGroup",
     "vm_size": "Standard_D2_v2"
   }],
   "provisioners": [{
@@ -121,7 +121,7 @@ Get-AzSubscription
 
 此模板将生成 Windows Server 2016 VM，安装 IIS，然后用 Sysprep 一般化 VM。 IIS 安装展示了如何使用 PowerShell 预配程序来运行其他命令。 最终的 Packer 映像包括必需的软件安装和配置。
 
-Windows 来宾代理参与 Sysprep 进程。 必须完全安装代理，然后才能执行 sysprep VM。 若要确保这一点属实，所有代理服务都必须在执行 sysprep.exe 之前运行。 上述 JSON 代码片段演示了在 PowerShell 配置程序中执行此操作的一种方法。 仅当 VM 配置为安装代理（默认值）时，才需要此代码段。
+Windows 来宾代理参与 Sysprep 过程。 必须先完全安装代理，然后才能对 VM 执行 sysprep。 若要确保这一点，则在执行 sysprep.exe 之前，所有代理服务必须都在运行。 上述 JSON 代码片段显示了在 PowerShell 配置程序中执行此操作的一种方法。 仅当将 VM 配置为安装代理（默认设置）时，才需要此代码片段。
 
 
 ## <a name="build-packer-image"></a>生成 Packer 映像

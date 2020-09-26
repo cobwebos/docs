@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356360"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -54,7 +54,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -94,7 +94,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 
 现在，请创建一个集合用于保存电子商务站点事件。 当某个用户查看商品、将商品添加到购物车或购买商品时，该集合将会收到一条记录，其中包含操作（“已查看”、“已添加”或“已购买”）、涉及的商品名称、涉及的商品价格和涉及的用户购物车的 ID 编号。
 
-1. 中转到[Azure 门户](https://portal.azure.com/)并找到模板部署创建的**Azure Cosmos DB 帐户**。  
+1. 中转到 [Azure 门户](https://portal.azure.com/) 并找到模板部署创建的 **Azure Cosmos DB 帐户** 。  
 
 2. 在“数据资源管理器”窗格中，选择“新建集合”并在表单中填写以下详细信息：********  
 
@@ -118,7 +118,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>获取 Azure Cosmos DB 连接字符串
 
-1. 中转到[Azure 门户](https://portal.azure.com/)并找到模板部署创建的**Azure Cosmos DB 帐户**。  
+1. 中转到 [Azure 门户](https://portal.azure.com/) 并找到模板部署创建的 **Azure Cosmos DB 帐户** 。  
 
 2. 导航到“密钥”窗格，将“主连接字符串”复制到记事本，或复制到可在整个实验室中访问的另一个文档。**** 应将其标记为“Cosmos DB 连接字符串”。**** 稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
 
@@ -178,7 +178,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
  
 6. 等待程序运行。 出现星星表示数据正在传入！ 让程序保持运行 - 必须收集大量的数据。  
 
-7. 如果导航到[Azure 门户](https://portal.azure.com/)，然后转到资源组中的 Cosmos DB 帐户，然后**数据资源管理器**，则会看到在**changefeedlabcollection**中导入的随机数据。
+7. 如果导航到 [Azure 门户](https://portal.azure.com/) ，然后转到资源组中的 Cosmos DB 帐户，然后 **数据资源管理器**，则会看到在 **changefeedlabcollection** 中导入的随机数据。
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="门户中生成的数据":::
 
@@ -186,7 +186,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 Azure 流分析是实时处理流数据的完全托管式云服务。 在此实验室中，我们将使用流分析来处理事件中心发来的新事件（即，查看了商品、将商品添加到了购物车，或购买了商品）、将这些事件合并到实时数据分析，然后将其发送到 Power BI 进行可视化。
 
-1. 在[Azure 门户](https://portal.azure.com/)中，导航到资源组，然后导航到**streamjob1** （在 prelab 中创建的流分析作业）。  
+1. 在 [Azure 门户](https://portal.azure.com/)中，导航到资源组， **然后 (在** prelab) 中创建的流分析作业。  
 
 2. 按如下所示选择“输入”。****  
 
@@ -209,7 +209,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
 
 5. 导航回到流分析作业页，并选择“输出”。****  
 
-6. 选择“+ 添加”。 然后，从下拉菜单中选择“Power BI”。****  
+6. 选择“+ 添加”  。 然后，从下拉菜单中选择“Power BI”。****  
 
 7. 若要创建新的 Power BI 输出来可视化平均价格，请执行以下操作：
 
@@ -251,7 +251,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
  
 5. 从“你的数据集”中选择“averagePrice”，然后选择“下一步”************。  
 
-6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。******** 在“轴”下面添加操作。**** 跳过“图例”，不要添加任何内容。**** 然后，在下一个名为**Value**的节下，添加**avg**。选择 "**下一步**"，然后为图表标题，并选择 "**应用**"。 仪表板上应会出现一个新图表！  
+6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。******** 在“轴”下面添加操作。**** 跳过“图例”，不要添加任何内容。**** 然后，在下一个名为 **Value**的节下，添加 **avg**。选择 " **下一步**"，然后为图表标题，并选择 " **应用**"。 仪表板上应会出现一个新图表！  
 
 7. 现在，若要可视化更多的指标，可以返回到“streamjob1”，并使用以下字段额外创建三个输出。****
 
@@ -315,13 +315,13 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
    包含这些图表的仪表板示例如下所示：
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="可视化效果":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="屏幕截图显示了一个示例仪表板，其中包含按操作、唯一访问者、收入和购买的前5项列出的项目平均价格。":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>可选：在电子商务站点中进行可视化
 
-现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 为了构建电子商务网站，请使用 Azure Cosmos 数据库来存储产品类别列表（女性、男士、中性）、产品目录和最受欢迎的项目列表。
+现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 为了构建电子商务网站，请使用 Azure Cosmos 数据库来存储产品类别列表， (女性、男士、中性) 、产品目录和最受欢迎的项目列表。
 
-1. 导航回[Azure 门户](https://portal.azure.com/)，然后导航到**Cosmos DB 帐户**，并**数据资源管理器**。  
+1. 导航回 [Azure 门户](https://portal.azure.com/)，然后导航到 **Cosmos DB 帐户**，并 **数据资源管理器**。  
 
    将两个集合**changefeedlabdatabase**添加  -  到具有固定存储容量的 changefeedlabdatabase**产品**和**类别**下。
 
@@ -391,7 +391,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 ## <a name="delete-the-resources"></a>删除资源
 
-若要删除在此实验室中创建的资源，请导航到[Azure 门户](https://portal.azure.com/)上的资源组，然后从页面顶部的菜单中选择 "**删除资源组**"，并按照提供的说明进行操作。
+若要删除在此实验室中创建的资源，请导航到 [Azure 门户](https://portal.azure.com/)上的资源组，然后从页面顶部的菜单中选择 " **删除资源组** "，并按照提供的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤 
   

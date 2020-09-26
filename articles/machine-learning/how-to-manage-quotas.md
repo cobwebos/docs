@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a25dcc187c1bb172106a3972c1cb57dfd473bc2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322370"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增加 Azure 机器学习资源的配额
 
@@ -136,6 +136,29 @@ ms.locfileid: "90897422"
 
 > [!NOTE]
 > [免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合增加限制或配额的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级到即用即付订阅](../billing/billing-upgrade-azure-subscription.md)和[免费试用版订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
+
+## <a name="private-endpoint-and-private-dns-quota-increases"></a>专用终结点和专用 DNS 配额增加
+
+可在订阅中创建的专用终结点和专用 DNS 区域的数目存在限制。 尽管 Azure 机器学习会在 (customer) 订阅中创建资源，但在某些情况下，会在 Microsoft 拥有的订阅中创建资源。 在以下方案中，可能需要在 Microsoft 拥有的订阅中请求配额限制：
+
+* __启用了专用链接的工作区，其中包含客户托管的密钥 (CMK) __
+* __虚拟网络后的工作区的 Azure 容器注册表__
+* 将__启用了专用链接的 Azure Kubernetes Service 群集附加到你的工作区__。
+
+若要请求对这些方案进行限制，请使用以下步骤：
+
+1. [创建 Azure 支持请求](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) ，并从 " __基本__ 信息" 部分中选择以下选项：
+
+    | 字段 | 选择 |
+    | ----- | ----- |
+    | 问题类型 | 技术 |
+    | 服务 | 我的服务。 在下拉列表中选择 " __机器学习__ "。 |
+    | 问题类型 | 工作区设置、SDK 和 CLI |
+    | 问题子类型 | 预配或管理工作区时出现问题 |
+
+2. 在 __详细信息__ 部分中，使用 " __说明__ " 字段提供要使用的 Azure 区域以及计划使用的方案。 如果需要为多个订阅请求配额增加，还请在此字段中列出订阅 Id。
+
+3. 使用 __create__ 创建请求。
 
 ## <a name="next-steps"></a>后续步骤
 

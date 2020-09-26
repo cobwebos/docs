@@ -3,12 +3,12 @@ title: 向 Azure 开发测试实验室中的实验室添加 VM | Microsoft 文�
 description: 了解如何使用 Azure 门户将虚拟机添加到 Azure 开发测试实验室中的实验室。 您可以选择作为自定义图像或公式的基。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c61e6e685a52ac3658cb9b9ca37f64fc51f3ce1e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270710"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297617"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 如果已[创建第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)，则很可能从预加载的[市场映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
@@ -16,7 +16,7 @@ ms.locfileid: "88270710"
 本文还演示了如何在实验室中管理 VM 的项目。
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM 的步骤
-1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，然后在“DEVOPS”**** 部分中选择“开发测试实验室”****。 如果在“DEVOPS”**** 部分中选择了“开发测试实验室”**** 旁边的 *（星号）， 此操作会将“开发测试实验室”**** 添加到左侧导航菜单中，以便你下次可以轻松访问它。 然后，可以在左侧导航菜单中选择“开发测试实验室”****。
 
     ![所有服务 - 选择“开发测试实验室”](./media/devtest-lab-create-lab/all-services-select.png)
@@ -30,7 +30,7 @@ ms.locfileid: "88270710"
     2. 输入在虚拟机上被授予了管理员权限的**用户名**。 使用唯一的自动生成名称预先填充计算机的“用户名”****。 该名称对应于电子邮件地址中的用户名。 此功能可节省每次创建新计算机时确定用户名的时间。 同样，如果愿意，可以用自己选择的用户名替代此自动填充的字段。 若要替代用户名的自动填充值，请在“用户名”文本框中输入值****。 此用户在虚拟机上被授予了管理员权限****。
     3. 如果要在实验室中创建第一个 VM，请输入用户的密码****。 若要将此密码保存为与实验室关联的 Azure Key Vault 中的默认密码，请选择“另存为默认密码”****。 默认密码保存在名为“VmPassword”的密钥保管库中****。 尝试在实验室中创建后续 VM 时，会自动选择“VmPassword”作为密码********。 若要替代该值，请清除“使用已保存的机密”复选框，然后输入密码****。
 
-        ![选择一个库](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![显示 "创建实验室资源" 页的屏幕截图，其中选择了 "基本设置"，并输入了 "用户设置" 值。](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
         还可以先在密钥保管库中保存机密，然后在实验室中创建 VM 时使用它。 有关详细信息，请参阅[在密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。 若要使用在密钥保管库中存储的密码，请选择“使用已保存的机密”，并指定与机密（密码）对应的密钥值****。
     4. 在“更多选项”**** 部分中，选择“更改大小”****。 选择指定了要创建的 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。
@@ -59,7 +59,7 @@ ms.locfileid: "88270710"
 
 若要了解如何创建项目，请参阅文章[了解如何创建自己的项目以用于开发测试实验室](devtest-lab-artifact-author.md)。
 
-1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表中，选择要处理的 VM 所在的实验室。
 1. 选择“我的虚拟机”。****

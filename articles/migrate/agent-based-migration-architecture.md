@@ -6,41 +6,41 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357159"
 ---
 # <a name="agent-based-migration-architecture"></a>基于代理的迁移体系结构
 
-本文概述了使用[Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具对 VMware vm 进行基于代理的复制所使用的体系结构和过程。
+本文概述了使用 [Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-assessment-tool) 工具对 VMware vm 进行基于代理的复制所使用的体系结构和过程。
 
 使用 Azure Migrate：服务器迁移，你可以使用以下几个选项复制 VMware Vm：
 
 - 使用基于代理的复制迁移 Vm，如本文所述。
 - 使用无代理复制迁移 VMware Vm。 这会迁移 Vm，而无需在其上安装任何内容。
 
-详细了解如何[选择和比较](server-migrate-overview.md)VMware vm 的迁移方法。 
+详细了解如何 [选择和比较](server-migrate-overview.md) VMware vm 的迁移方法。 
 
 
 ## <a name="agent-based-migration"></a>基于代理的迁移
 
-基于代理的迁移用于将本地 VMware Vm 和物理服务器迁移到 Azure。 它还可用于迁移其他本地虚拟化服务器，以及私有和公有云 Vm，包括 AWS 实例和 GCP Vm。 Azure Migrate 中的基于代理的迁移使用[Azure Site Recovery](../site-recovery/site-recovery-overview.md)服务的一些后端功能。
+基于代理的迁移用于将本地 VMware Vm 和物理服务器迁移到 Azure。 它还可用于迁移其他本地虚拟化服务器，以及私有和公有云 Vm，包括 AWS 实例和 GCP Vm。 Azure Migrate 中的基于代理的迁移使用 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 服务的一些后端功能。
 
 
 ## <a name="architectural-components"></a>体系结构组件
 
 此图说明了基于代理的迁移中涉及的组件。
 
-![体系结构](./media/agent-based-replication-architecture/architecture.png)
+![关系图显示了基于代理的迁移的组件，这些组件在表中进行了介绍。](./media/agent-based-replication-architecture/architecture.png)
 
 该表汇总了用于基于代理的迁移的组件。
 
 **组件** | **详细信息** | **安装**
 --- | --- | ---
-**复制设备** | 复制设备（配置服务器/进程服务器）是一个本地计算机，它充当本地环境和服务器迁移之间的桥梁。 设备会发现本地计算机清单，使服务器迁移能够协调复制和迁移。 设备有两个组件：<br/><br/> **配置服务器**：连接到服务器迁移并协调复制。<br/> **进程服务器**：处理数据复制。 进程服务器接收计算机数据，对其进行压缩和加密，并发送到 Azure。 在 Azure 中，服务器迁移将数据写入托管磁盘。 | 默认情况下，进程服务器与复制设备上的配置服务器一起安装。
+**复制设备** | 复制设备 (配置服务器/进程服务器) 是在本地环境和服务器迁移之间充当桥梁的本地计算机。 设备会发现本地计算机清单，使服务器迁移能够协调复制和迁移。 设备有两个组件：<br/><br/> **配置服务器**：连接到服务器迁移并协调复制。<br/> **进程服务器**：处理数据复制。 进程服务器接收计算机数据，对其进行压缩和加密，并发送到 Azure。 在 Azure 中，服务器迁移将数据写入托管磁盘。 | 默认情况下，进程服务器与复制设备上的配置服务器一起安装。
 **移动服务** | 移动服务是在想要复制和迁移的每台计算机上安装的代理。 它将复制数据从计算机发送到进程服务器。 | 不同版本的移动服务的安装文件位于复制设备上。 根据要复制的计算机的操作系统和版本，下载并安装所需的代理。
 
 ## <a name="mobility-service-installation"></a>移动服务安装
@@ -60,7 +60,7 @@ ms.locfileid: "77425845"
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
 - C:\Program Files (x86)\Microsoft Azure Site Recovery
-- C:\ProgramData\ASR\agent （在安装了移动服务的 Windows 计算机上）
+- 安装了移动服务的 Windows 计算机上的 C:\ProgramData\ASR\agent () 
 
 ## <a name="replication-process"></a>复制过程
 
@@ -86,13 +86,13 @@ ms.locfileid: "77425845"
 
 ### <a name="plan-vmware-deployment"></a>规划 VMware 部署
 
-如果要复制 VMware Vm，可以使用[vmware 的 Site Recovery 部署规划器](../site-recovery/site-recovery-deployment-planner.md)来帮助确定性能要求，包括每日数据更改率以及所需的进程服务器。
+如果要复制 VMware Vm，可以使用 [vmware 的 Site Recovery 部署规划器](../site-recovery/site-recovery-deployment-planner.md)来帮助确定性能要求，包括每日数据更改率以及所需的进程服务器。
 
 ### <a name="replication-appliance-capacity"></a>复制设备容量
 
 使用此表中的值确定在部署中是否需要额外的进程服务器。
 
-- 如果每日更改率（变动率）超过 2 TB，则部署其他进程服务器。
+- 如果每日更改率 (变动率) 大于 2 TB，则部署其他进程服务器。
 - 如果要复制的计算机超过200，请部署附加的复制设备。
 
 **CPU** | **内存** | **可用空间-数据缓存** | **变动率** | **复制限制**
@@ -109,7 +109,7 @@ ms.locfileid: "77425845"
 --- | --- | --- | --- 
 4 个 vCPU（2 个插槽 * 2 个核心 \@ 2.5 GHz），8 GB 内存 | 300 GB | 250 GB 或更少 | 最多85台计算机 
 8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz），12 GB 内存 | 600 GB | 251 GB 到 1 TB    | 86-150 台计算机。
-12个 vcpu （2个插槽 * 6 个核心 \@ 2.5 GHz），24 GB 内存 | 1 TB | 1-2 TB | 151-225 台计算机。
+12个 vcpu (2 个插槽 * 6 \@ 个核心 2.5 GHz) ，24 GB 内存 | 1 TB | 1-2 TB | 151-225 台计算机。
 
 ## <a name="throttle-upload-bandwidth"></a>限制上载带宽。
 
@@ -119,8 +119,8 @@ ms.locfileid: "77425845"
 - 此外，可以限制进程服务器计算机上的带宽，如下所示：
 
     1. 在进程服务器计算机上，打开 Azure 备份 MMC 管理单元。 C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 中有一个快捷方式， 
-    2. 在该管理单元中，选择“更改属性”。****
-    3. 在 "**限制**" 中，选择 "**为备份操作启用 internet 带宽使用限制**"。 设置工作和非工作小时数限制。 有效范围为 512 Kbps 到 1,023 Mbps。
+    2. 在该管理单元中，选择“更改属性”。 
+    3. 在 " **限制**" 中，选择 " **为备份操作启用 internet 带宽使用限制**"。 设置工作和非工作小时数限制。 有效范围为 512 Kbps 到 1,023 Mbps。
 
 
 ## <a name="next-steps"></a>后续步骤

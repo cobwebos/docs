@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26052441d19abb6a0c423a3b3d6f6c2d21478814
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272049"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>连接到 Azure 上的 SQL Server 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84667411"
 
 | 选项 | 说明 |
 |---|---|
-| **公共** | 通过 Internet 连接到 SQL Server。 |
+| 公共 | 通过 Internet 连接到 SQL Server。 |
 | 专用 | 连接到同一虚拟网络中的 SQL Server。 |
 | 本地 | 在同一虚拟机上本地连接到 SQL Server。 | 
 
@@ -49,7 +49,7 @@ ms.locfileid: "84667411"
 
 ## <a name="connect-to-sql-server-over-the-internet"></a>通过 Internet 连接到 SQL Server
 
-如果要通过 Internet 连接到 SQL Server 数据库引擎，请在预配过程中，在门户中为“SQL 连接”类型选择“公共”。 门户将自动执行以下步骤：
+如果要通过 Internet 连接到 SQL Server 数据库引擎，请在预配过程中，在门户中为“SQL 连接”类型选择“公共”。 门户自动执行以下步骤：
 
 * 为 SQL Server 启用 TCP/IP 协议。
 * 配置防火墙规则以打开 SQL Server TCP 端口（默认值为 1433）。
@@ -83,7 +83,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 专用连接通常与[虚拟网络](../../../virtual-network/virtual-networks-overview.md)结合使用，从而支持多个方案。 可以连接同一虚拟网络中的 VM，即使这些 VM 位于不同的资源组中。 使用[站点到站点 VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)，可以创建连接 VM 与本地网络和计算机的混合体系结构。
 
-虚拟网络还可将 Azure VM 加入域。 这是对 SQL Server 使用 Windows 身份验证的唯一方式。 其他连接方案需要使用用户名和密码进行 SQL 身份验证。
+虚拟网络还允许将 Azure VM 加入域。 这是对 SQL Server 使用 Windows 身份验证的唯一方式。 其他连接方案需要使用用户名和密码进行 SQL 身份验证。
 
 假设已在虚拟网络中配置 DNS，则可在连接字符串中指定 SQL Server VM 计算机名来连接 SQL Server 实例。 以下示例还假定已配置 Windows 身份验证，并且用户已获得访问 SQL Server 实例的权限。
 
@@ -123,7 +123,7 @@ Server=mysqlvm;Integrated Security=true
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-with-ssms"></a>与 SSMS 连接
+## <a name="connect-with-ssms"></a>使用 SSMS 进行连接
 
 以下步骤演示如何为 Azure VM 创建可选 DNS 标签，然后与 SQL Server Management Studio (SSMS) 进行连接。
 

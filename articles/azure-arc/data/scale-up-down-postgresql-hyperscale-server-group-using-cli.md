@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b96f38d04fe3e3cb59fa75424ae588fe0e38f510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285309"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>使用 CLI (azdata 或 kubectl，向上和向下缩放 Azure Database for PostgreSQL 超大规模服务器组) 
 
@@ -84,7 +84,7 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 
 要设置的设置必须在为 Kubernetes 群集设置的配置中考虑。 请确保未设置 Kubernetes 群集无法满足的值。 这可能导致错误或不可预测的行为。 例如，如果在更改配置后，服务器组的状态长时间处于 " _正在更新_ " 状态，则可能表示将以下参数设置为 Kubernetes 群集无法满足的值。 如果是这种情况，请还原更改或读取 _troubleshooting_section。
 
-假设你要将服务器组的定义向上扩展到：
+例如，假设你要将服务器组的定义向上扩展到：
 
 - 最小 vCore = 2
 - Max vCore = 4
@@ -94,6 +94,13 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 您可以使用以下方法之一：
 
 ### <a name="cli-with-azdata"></a>CLI 和 azdata
+
+```console
+azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
+```
+
+> [!CAUTION]
+> 下面是一个示例，说明如何使用命令。 在执行 "编辑" 命令之前，请确保将参数设置为 Kubernetes 群集可以遵循的值。
 
 ```console
 azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
@@ -116,6 +123,10 @@ kubectl edit postgresql-12/<server group name> [-n <namespace name>]
 
 这会将你带到 vi 编辑器中，你可以在其中导航和更改配置。 使用以下内容将所需的设置映射到该规范中的字段名称：
 
+> [!CAUTION]
+> 下面是一个示例，演示了如何编辑配置。 在更新配置之前，请确保将参数设置为 Kubernetes 群集可以遵循的值。
+
+例如：
 - Min vCore = 2-> scheduling\default\resources\requests\cpu
 - Max vCore = 4-> scheduling\default\resources\limits\cpu
 - 最小内存 = 512Mb-> scheduling\default\resources\requests\cpu

@@ -1,27 +1,27 @@
 ---
 title: 创建存储帐户
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure 门户、Azure PowerShell 或 Azure CLI 创建存储帐户。 Azure 存储帐户在 Microsoft Azure 中提供唯一的命名空间来存储和访问数据。
+description: 了解如何创建存储帐户以存储 blob、文件、队列和表。 Azure 存储帐户在 Microsoft Azure 中提供唯一的命名空间，用于读取和写入数据。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333573"
 ---
-# <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
+# <a name="create-a-storage-account"></a>创建存储帐户
 
 Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
 
-本操作指南文章介绍如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 或 [Azure 资源管理器模板](../../azure-resource-manager/management/overview.md)创建存储帐户。  
+本操作指南文章介绍如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure) 或 [Azure 资源管理器模板](../../azure-resource-manager/management/overview.md)创建存储帐户。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ### <a name="install-the-cli-locally"></a>在本地安装 CLI
 
-也可在本地安装和使用 Azure CLI。 本操作指南文章要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+也可在本地安装和使用 Azure CLI。 本文中的示例需要 Azure CLI 版本2.0.4 或更高版本。 运行 `az --version` 来查找已安装的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 # <a name="template"></a>[模板](#tab/template)
 
@@ -104,13 +104,11 @@ az login
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-现在可以创建存储帐户。
-
 每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新资源组。
 
-可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘****。 本文所述的步骤将创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。
+可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘****。 本文所述的步骤将创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。 有关存储帐户类型和其他存储帐户设置的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> 如果计划使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `--enable-hierarchical-namespace true` 在此参数列表中包含。 
+> 如果计划使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `--enable-hierarchical-namespace true` 在此参数列表中包含。
 
 若要使用不同的复制选项创建常规用途 v2 存储帐户，请将 **sku** 参数替换为下表中的所需值。
 
@@ -231,13 +229,11 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 ---
 
-有关可用的复制选项的详细信息，请参阅[存储复制选项](storage-redundancy.md)。
-
 ## <a name="delete-a-storage-account"></a>删除存储帐户
 
 删除存储帐户将删除整个帐户，包括该帐户中的所有数据，并且该操作无法撤销。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 导航到 [Azure 门户](https://portal.azure.com)中的存储帐户。
 1. 单击 **“删除”** 。
@@ -287,26 +283,6 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ## <a name="next-steps"></a>后续步骤
 
-在本操作指南文章中，你已创建一个常规用途 v2 标准存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门之一。
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [通过 Azure 门户使用 Blob](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [通过 PowerShell 使用 Blob](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [通过 Azure CLI 使用 Blob](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[模板](#tab/template)
-
-> [!div class="nextstepaction"]
-> [通过 Azure 门户使用 Blob](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [存储帐户概述](storage-account-overview.md)
+- [升级到常规用途 v2 存储帐户](storage-account-upgrade.md)
+- [将 Azure 存储帐户移到另一个区域](storage-account-move.md)

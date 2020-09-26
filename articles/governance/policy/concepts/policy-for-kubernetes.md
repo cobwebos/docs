@@ -1,16 +1,16 @@
 ---
-title: 预览版 - 了解适用于 Kubernetes 的 Azure Policy
-description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。 这是预览功能。
-ms.date: 08/07/2020
+title: 了解适用于 Kubernetes 的 Azure 策略
+description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645592"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322455"
 ---
-# <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解适用于 Kubernetes 群集的 Azure Policy（预览版）
+# <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
 Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3，这是一个用于 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) 的许可控制器 Webhook，它以集中、一致的方式对群集应用大规模操作和安全措施。 借助 Azure Policy，可以从一个位置管理和报告 Kubernetes 群集的符合性状态。 该加载项制定以下功能：
 
@@ -25,7 +25,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 - [AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> 适用于 Kubernetes 的 Azure Policy 为预览版，仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 不_推荐_使用**EnforceOPAConstraint**和**EnforceRegoPolicy**效果和相关**Kubernetes 服务**类别的有限预览策略定义。 请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
+> AKS 引擎和启用了 Arc 的 Kubernetes 的外接程序处于 **预览**状态。 适用于 Kubernetes 的 Azure 策略仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 不_推荐_使用**EnforceOPAConstraint**和**EnforceRegoPolicy**效果和相关**Kubernetes 服务**类别的有限预览策略定义。 请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
 
 ## <a name="overview"></a>概述
 
@@ -45,29 +45,57 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
 1. [等待验证](#policy-evaluation)
 
+## <a name="limitations"></a>限制
+
+以下一般限制适用于适用于 Kubernetes 群集的 Azure 策略外接程序：
+
+- Kubernetes 版本 **1.14** 或更高版本支持用于 Kubernetes 的 Azure 策略附加项。
+- 适用于 Kubernetes 的 Azure 策略外接程序只能部署到 Linux 节点池
+- 仅支持内置策略定义
+- 每个群集每个策略的不符合记录的最大数目： **500**
+- 每个订阅的不符合记录的最大数目： **1000000**
+- 不支持 Azure 策略外接程序之外的网关安装程序。 在启用 Azure 策略外接程序之前，请卸载由以前的网关安装程序安装的所有组件。
+- [不符合性的原因](../how-to/determine-non-compliance.md#compliance-reasons)不可用于 `Microsoft.Kubernetes.Data` 
+   [资源提供程序模式](./definition-structure.md#resource-provider-modes)
+
+以下限制仅适用于 AKS 的 Azure 策略外接程序：
+
+- [AKS Pod 安全策略](../../../aks/use-pod-security-policies.md) 和用于 AKS 的 Azure 策略外接程序不能同时启用。 有关详细信息，请参阅 [AKS pod 安全限制](../../../aks/use-pod-security-on-azure-policy.md#limitations)。
+- 用于评估的 Azure 策略外接程序自动排除的命名空间： _kube_、 _gatekeeper-system_ _aks 和 periscope_。
+
+## <a name="recommendations"></a>建议
+
+下面是有关使用 Azure 策略外接程序的常规建议：
+
+- Azure 策略外接程序需要3个要运行的网关守卫组件：1个审核 pod 和2个 webhook pod 副本。 在需要审核和强制操作的群集中，这些组件会消耗更多的资源，并在群集中增加 Kubernetes 资源和策略分配。
+
+  - 对于在单个群集中最多具有20个约束的小于500个 pod：每个组件2个 vcpu 和 350 MB 内存。
+  - 对于一个群集中超过500个 pod，最多有40个限制：每个组件3个 vcpu 和 600 MB 内存。
+
+- Windows pod [不支持安全上下文](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)。
+  因此，不能在 Windows pod 中升级某些 Azure 策略定义，例如禁用根权限，仅适用于 Linux pod。
+
+以下建议仅适用于 AKS 和 Azure 策略外接程序：
+
+- 使用带有破坏的系统节点池 `CriticalAddonsOnly` 来计划网关守卫。 有关详细信息，请参阅 [使用系统节点池](../../../aks/use-system-pools.md#system-and-user-node-pools)。
+- AKS 群集的安全出站流量。 有关详细信息，请参阅 [控制群集节点的出口流量](../../../aks/limit-egress-traffic.md)。
+- 如果已启用群集 `aad-pod-identity` ，节点托管标识 (NMI) 盒修改节点的 iptables，以截获对 Azure 实例元数据终结点的调用。 此配置意味着对元数据终结点发出的任何请求都将被 NMI 截获，即使 pod 不使用也是如此 `aad-pod-identity` 。 可以将 AzurePodIdentityException .CRD 配置为通知来自与 `aad-pod-identity` 在 .crd 中定义的标签相匹配的 pod 的元数据终结点的任何请求都应该在无 NMI 处理的情况下代理。 `kubernetes.azure.com/managedby: aks` _Kube_命名空间中带标签的系统箱应 `aad-pod-identity` 通过配置 AzurePodIdentityException .crd 排除在中。 有关详细信息，请参阅 [禁用特定 pod 或应用程序的 aad-pod 标识](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)。
+  若要配置异常，请安装 [mic-EXCEPTION YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
+
 ## <a name="install-azure-policy-add-on-for-aks"></a>为 AKS 安装 Azure Policy 加载项
 
 在安装 Azure Policy 加载项或启用任何服务功能之前，订阅必须启用“Microsoft.ContainerService”和“Microsoft.PolicyInsights”资源提供程序。
 
-1. 需要安装并配置 Azure CLI 2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+> [!IMPORTANT]
+> AKS 上的 Azure 策略的公开上市 (GA) 在所有区域中主动发布。 GA 版本的预期全球完成为9/29/2020。 如果区域中没有 GA 版本，则需要预览注册步骤。 但是，这会在该区域中可用时自动更新为 GA 版本。
+
+1. 需要安装并配置 Azure CLI 版本2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 注册资源提供程序和预览功能。
 
    - Azure 门户：
 
-     1. 注册“Microsoft.ContainerService”和“Microsoft.PolicyInsights”资源提供程序。 有关步骤，请参阅[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
-
-     1. 通过选择 " **所有服务**"，然后搜索并选择 " **策略**"，在 Azure 门户中启动 Azure 策略服务。
-
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="在所有服务中搜索策略的屏幕截图。" border="false":::
-
-     1. 选择“Azure Policy”页左侧的“加入预览”。
-
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="策略 页上的 联接预览 节点的屏幕截图。" border="false":::
-
-     1. 选择要添加到预览的订阅行。
-
-     1. 选择订阅列表顶部的“选择加入”按钮。
+     注册“Microsoft.ContainerService”和“Microsoft.PolicyInsights”资源提供程序。 有关步骤，请参阅[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
    - Azure CLI：
 
@@ -79,18 +107,9 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-
-     # Feature register: enables installing the add-on
-     az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
-     # Use the following to confirm the feature has registered
-     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-
-     # Once the above shows 'Registered' run the following to propagate the update
-     az provider register -n Microsoft.ContainerService
      ```
 
-1. 如果安装了有限预览策略定义，请在“策略(预览)”页下，删除 AKS 群集中带有“禁用”按钮的加载项。
+1. 如果安装了有限的预览策略定义，请在 "**策略**" 页下的 AKS 群集中删除带 "**禁用**" 按钮的外接程序。
 
 1. AKS 群集的版本必须是 1.14 或更高版本。 使用以下脚本验证 AKS 群集版本：
 
@@ -101,20 +120,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
    az aks list
    ```
 
-1. 安装适用于 AKS 的 Azure CLI 预览扩展版本 0.4.0 `aks-preview`：
-
-   ```azurecli-interactive
-   # Log in first with az login if you're not using Cloud Shell
-
-   # Install/update the preview extension
-   az extension add --name aks-preview
-
-   # Validate the version of the preview extension
-   az extension show --name aks-preview --query [version]
-   ```
-
-   > [!NOTE]
-   > 如果以前安装了 aks-preview 扩展，请使用 `az extension update --name aks-preview` 命令安装任何更新。
+1. 安装 Azure CLI 版本的 _2.12.0_ 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 完成上述先决条件步骤后，请在要管理的 AKS 群集中安装 Azure Policy 加载项。
 
@@ -124,19 +130,16 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
   1. 选择 AKS 群集之一。
 
-  1. 选择“Kubernetes 服务”页面左侧的“策略(预览)”。
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 策略 (preview)  节点的屏幕截图。" border="false":::
+  1. 选择 Kubernetes 服务页面左侧的 " **策略** "。
 
   1. 在主页中，选择“启用加载项”按钮。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="支持 Azure Kubernetes Services 的 Azure 策略 的 启用外接程序 按钮的屏幕截图 (K S) 页面。":::
-
      <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > 如果“启用加载项”按钮显示为灰色，则尚未将订阅添加到预览。 如果启用了 " **禁用外接程序** " 按钮并且显示了 "迁移警告 v2" 消息，则会安装 v1 外接程序，并且必须在分配 v2 策略定义之前将其删除。 在2020年8月24日起，已 _弃用_ 的 v1 外接程序将自动替换为 v2 附加项。 然后，必须分配策略定义的新 v2 版本。 若要立即升级，请执行以下步骤：
+     > 如果启用了 " **禁用外接程序** " 按钮并且显示了 "迁移警告 v2" 消息，则会安装 v1 外接程序，并且必须在分配 v2 策略定义之前将其删除。 在8月24日起，不 _推荐_ 使用的 v1 外接程序将自动替换为 v2 外接程序
+     > 2020. 然后，必须分配策略定义的新 v2 版本。 若要立即升级，请执行以下步骤：
      >
-     > 1. 验证 AKS 群集是否已安装 v1 外接程序，方法是在 AKS 群集上访问 " **策略" (预览 ") ** 页，并具有" 当前群集使用 Azure 策略外接程序 v1 ... "消息。
+     > 1. 若要验证 AKS 群集是否已安装 v1 外接程序，请访问 AKS 群集上的 " **策略** " 页，并将 "当前群集使用 Azure 策略附加项 v1 ..."消息。
      > 1. [删除外接程序](#remove-the-add-on-from-aks)。
      > 1. 选择 " **启用外接程序** " 按钮以安装该外接程序的 v2 版本。
      > 1. [分配 v1 内置策略定义的 v2 版本](#assign-a-built-in-policy-definition)
@@ -173,11 +176,11 @@ kubectl get pods -n gatekeeper-system
 }
 ```
 
-## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>为已启用 Azure Arc 的 Kubernetes 安装 Azure Policy 加载项
+## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>为启用了 Azure Arc 的 Azure 策略外接程序安装 Kubernetes (预览) 
 
 在安装 Azure Policy 加载项或启用任何服务功能之前，订阅必须启用 Microsoft.PolicyInsights 资源提供程序并为群集服务主体创建角色分配。
 
-1. 需要安装并配置 Azure CLI 2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+1. 需要安装并配置 Azure CLI 版本2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 若要启用资源提供程序，请按照[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)中的步骤操作，或运行 Azure CLI 或 Azure PowerShell 命令：
 
@@ -277,7 +280,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-## <a name="install-azure-policy-add-on-for-aks-engine"></a>为 AKS 引擎安装 Azure Policy 加载项
+## <a name="install-azure-policy-add-on-for-aks-engine-preview"></a><a name="install-azure-policy-add-on-for-aks-engine"></a>安装适用于 AKS 引擎的 Azure 策略外接程序 (预览) 
 
 在安装 Azure Policy 加载项或启用任何服务功能之前，订阅必须启用 Microsoft.PolicyInsights 资源提供程序并为群集服务主体创建角色分配。
 
@@ -430,7 +433,7 @@ kubectl get pods -n gatekeeper-system
 > [!NOTE]
 > 虽然群集管理员可能有权创建和更新 Azure Policy 加载项安装的约束模板和约束资源，但这些情况不受支持，因为手动更新会被覆盖。 Gatekeeper 会继续评估在安装加载项和分配 Azure Policy 策略定义之前已存在的策略。
 
-每隔 15 分钟，加载项就会调用对群集的完全扫描。 在收集完全扫描的详细信息和 Gatekeeper 对群集尝试更改的所有实时评估后，加载项将结果报告回 Azure Policy，以便像所有 Azure Policy 分配一样包含在[符合性详细信息](../how-to/get-compliance-data.md)中。 在审核周期中，仅返回活动策略分配的结果。 审核结果也可以视为已失败约束的“状态”字段中列出的[冲突](https://github.com/open-policy-agent/gatekeeper#audit)。
+每隔 15 分钟，加载项就会调用对群集的完全扫描。 在收集完全扫描的详细信息和 Gatekeeper 对群集尝试更改的所有实时评估后，加载项将结果报告回 Azure Policy，以便像所有 Azure Policy 分配一样包含在[符合性详细信息](../how-to/get-compliance-data.md)中。 在审核周期中，仅返回活动策略分配的结果。 审核结果也可以视为已失败约束的“状态”字段中列出的[冲突](https://github.com/open-policy-agent/gatekeeper#audit)。 有关 _不符合_ 资源的详细信息，请参阅 [资源提供程序模式的符合性详细信息](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes)。
 
 > [!NOTE]
 > 适用于 Kubernetes 群集的 Azure Policy 中的每个符合性报告都包含过去 45 分钟内的所有冲突。 时间戳指示发生冲突的时间。
@@ -464,13 +467,9 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
   1. 选择要在其中禁用 Azure Policy 加载项的 AKS 群集。
 
-  1. 选择“Kubernetes 服务”页面左侧的“策略(预览)”。
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服务页面上 策略 (preview)  节点的屏幕截图。" border="false":::
+  1. 选择 Kubernetes 服务页面左侧的 " **策略** "。
 
   1. 在主页中，选择“禁用加载项”按钮。
-
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Azure Kubernetes 服务的 Azure 策略 的 禁用外接程序 按钮的屏幕截图 (K S) 页面。" border="false":::
 
 - Azure CLI
 

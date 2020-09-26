@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f451b39d2757425a50a186a8212042cf887b136b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.date: 09/22/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: bd95e3ed6b4c31072d7e754c731e748f12db3329
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322387"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -1080,7 +1080,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 对于 `includeTrigger` 特性，可以指定 `true` 或 `false` 值。
 
-| 值 | 类型 | 说明 |
+| Value | 类型 | 说明 |
 |-------|------|-------------|
 | <*以前的操作*> | 字符串数组 | 包含指定的操作名称的数组。 使用工作流定义中显示的操作名称，其中的操作名称使用下划线 (_) 而不是空格 ("")。 |
 ||||
@@ -1224,7 +1224,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 属性 | 值 | 类型 | 说明 |
+| 属性 | Value | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `method` | <method-type> | String | 用于发送传出请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
 | `uri` | <HTTP-or-HTTPS-endpoint-URL> | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
@@ -1232,7 +1232,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *可选*
 
-| 属性 | 值 | 类型 | 说明 |
+| 属性 | Value | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `headers` | <header-content> | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <query-parameters> | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 |
@@ -2397,6 +2397,7 @@ ID,Product_Name
 | 操作选项 | 类型 | 说明 | 触发器或操作 | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | 以同步方式而非异步方式运行基于 HTTP 的操作。 <p><p>若要设置此选项，请参阅[同步运行操作](#disable-asynchronous-pattern)。 | 操作： <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[响应](#response-action) | 
+| `IncludeAuthorizationHeadersInOutputs` | String | 对于 [启用 Azure Active Directory 开放身份验证 (Azure AD OAuth) ](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) 的逻辑应用，以授权对基于请求的触发器终结点的入站调用的访问权限，请 `Authorization` 在触发器输出中包含 OAuth 访问令牌中的标头。 有关详细信息，请参阅 [在请求触发器输出中包含 "Authorization" 标头](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header)。 | 触发器： <p>[请求](#request-trigger)， <br>[HTTP Webhook](#http-webhook-trigger) | 
 | `OptimizedForHighThroughput` | String | 将针对每 5 分钟的操作执行数的[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)更改为[最大限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 <p><p>若要设置此选项，请参阅[在高吞吐量模式下运行](#run-high-throughput-mode)。 | 所有操作 | 
 | `Sequential` | String | 每次运行一个“for each”循环迭代，而不是同时并行运行所有迭代。 <p>此选项与将 `runtimeConfiguration.concurrency.repetitions` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p><p>若要设置此选项，请参阅[按顺序运行“for each”循环](#sequential-for-each)。| 操作： <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | 按顺序对每个逻辑应用实例运行此触发器，并在等待上一个活动运行完成后，再触发下一个逻辑应用实例。 <p><p>此选项与将 `runtimeConfiguration.concurrency.runs` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要设置此选项，请参阅[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 

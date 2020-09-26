@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357006"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自动数据库备份进行恢复 - Azure SQL 托管实例和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,10 +34,10 @@ ms.locfileid: "87809453"
 > [!IMPORTANT]
 > 还原期间无法覆盖现有数据库。
 
-默认情况下，Azure SQL 数据库和 Azure SQL 托管实例备份存储在异地复制的 Blob 存储（RA-GRS 存储类型）中。 此外，SQL 托管实例还支持本地冗余 (LRS) 和区域冗余 (ZRS) 备份存储。 冗余确保你的数据免受计划内和计划外事件的影响，包括暂时性的硬件故障、网络中断或电源中断，以及大规模灾难。 区域冗余存储 (ZRS) 仅在[特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)提供。
+默认情况下，Azure SQL 数据库和 Azure SQL 托管实例备份存储在异地复制的 Blob 存储（RA-GRS 存储类型）中。 此外，SQL 托管实例还支持本地冗余 (LRS) 和区域冗余 (ZRS) 备份存储。 冗余可确保数据免受计划内和计划外事件的影响，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 区域冗余存储 (ZRS) 仅在 [特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)提供。
 
 > [!IMPORTANT]
-> 为备份配置存储冗余仅适用于托管实例，并在创建过程中允许。 预配资源后，无法更改备份存储冗余选项。
+> 为备份配置存储冗余仅适用于托管实例，允许在创建过程中进行配置。 预配资源后，不能更改备份存储冗余选项。
 
 使用“标准”或“高级”服务层级时，数据库还原可能会产生额外的存储费用。 如果还原的数据库的最大大小大于目标数据库的服务层级和性能级别包含的存储量，则会产生额外的费用。 有关额外存储定价的详细信息，请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，可以通过将数据库最大大小设置为附送的量，来避免产生额外的费用。
 
@@ -77,7 +77,7 @@ ms.locfileid: "87809453"
 
 - **数据库替换**
 
-  如果你打算用还原的数据库替换原始数据库，则应该指定原始数据库的计算大小和服务层级。 然后，您可以使用 T-sql 中的[ALTER database](/sql/t-sql/statements/alter-database-azure-sql-database)命令来重命名原始数据库，并为还原的数据库指定原始名称。
+  如果你打算用还原的数据库替换原始数据库，则应该指定原始数据库的计算大小和服务层级。 然后，您可以使用 T-sql 中的 [ALTER database](/sql/t-sql/statements/alter-database-azure-sql-database) 命令来重命名原始数据库，并为还原的数据库指定原始名称。
 
 - **数据恢复**
 
@@ -89,15 +89,15 @@ ms.locfileid: "87809453"
 
 #### <a name="sql-database"></a>SQL 数据库
 
-若要使用 Azure 门户将数据库恢复到某个时间点，请打开 "数据库概述" 页，然后在工具栏上选择 "**还原**"。 选择备份源，然后选择要从中创建新数据库的时间点备份点。
+若要使用 Azure 门户将数据库恢复到某个时间点，请打开该数据库的概述页，并在工具栏上选择“还原”。 选择备份源，然后选择要从中创建新数据库的时间点备份点。
 
-  ![数据库还原选项的屏幕截图](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![SQL 数据库的数据库还原选项的屏幕截图。](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL 托管实例
 
 若要使用 Azure 门户将托管实例数据库恢复到某个时间点，请打开该数据库的概述页，并在工具栏上选择“还原”。 选择要从中创建新数据库的时间点备份点。
 
-  ![数据库还原选项的屏幕截图](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![SQL 托管实例的数据库还原选项的屏幕截图。](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
 > 若要以编程方式从备份还原数据库，请参阅[使用自动备份以编程方式执行恢复](recovery-using-backups.md)。
@@ -115,7 +115,7 @@ ms.locfileid: "87809453"
 
 #### <a name="sql-database"></a>SQL 数据库
 
-若要使用 Azure 门户将删除的数据库恢复到删除时间，请打开 "服务器概述" 页，然后选择 "**已删除的数据库**"。 选择要还原的已删除数据库，然后键入要使用从备份还原的数据创建的新数据库的名称。
+若要使用 Azure 门户将已删除的数据库恢复到删除时间，请打开服务器概述页，然后选择“删除的数据库”。 选择要还原的已删除数据库，然后键入要使用从备份还原的数据创建的新数据库的名称。
 
   ![还原已删除的数据库的屏幕截图](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "87809453"
 ## <a name="geo-restore"></a>异地还原
 
 > [!IMPORTANT]
-> 异地还原仅适用于使用异地冗余 (GRS) 备份存储类型配置的托管实例。 用本地冗余或区域冗余备份存储类型配置的托管实例不支持异地还原。
+> 异地还原仅适用于配置了异地冗余 (RA-GRS) 备份存储类型的托管实例。 用本地冗余或区域冗余备份存储类型配置的托管实例不支持异地还原。
 
 你可以在任何 Azure 区域中，从最新的异地复制备份还原任何 SQL 数据库服务器上的数据库或任何托管实例上的实例数据库。 异地还原使用异地复制的备份作为源。 即使由于服务中断而无法访问数据库或数据中心，也依然能够请求异地还原。
 
@@ -249,11 +249,11 @@ ms.locfileid: "87809453"
 
 #### <a name="sql-database"></a>SQL 数据库
 
-若要使用 Azure CLI 还原数据库，请参阅[az sql db restore](/cli/azure/sql/db#az-sql-db-restore)。
+若要使用 Azure CLI 还原数据库，请参阅 [az sql db restore](/cli/azure/sql/db#az-sql-db-restore)。
 
 #### <a name="sql-managed-instance"></a>SQL 托管实例
 
-若要使用 Azure CLI 恢复托管实例数据库，请参阅[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
+若要使用 Azure CLI 恢复托管实例数据库，请参阅 [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
 
 ## <a name="summary"></a>摘要
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c19650a8f36181e3e003414ff15add071e9a8ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b2763372cc63637f73610e1936e3ea54a4524e7d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918887"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356598"
 ---
 # <a name="what-is-a-keyword"></a>什么是关键字？
 
@@ -61,6 +61,6 @@ ms.locfileid: "88918887"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [免费获取语音服务订阅密钥](get-started.md)
+* [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
 * [获取语音 SDK](speech-sdk.md)
 * [了解有关语音助手的详细信息](voice-assistants.md)

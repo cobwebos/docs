@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310180"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>桌面型
+## <a name="desktop"></a>“桌面”
 
 Azure Maps Web SDK 支持以下桌面浏览器：
 
@@ -76,8 +76,6 @@ Node.js 中还支持以下 Web SDK 模块：
 
 了解有关 Azure Maps Web SDK 的详细信息：
 
-> [!div class="nextstepaction"]
-> [地图控件](how-to-use-map-control.md)
+[地图控件](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [服务模块](how-to-use-services-module.md)
+[服务模块](how-to-use-services-module.md)

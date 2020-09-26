@@ -2,13 +2,13 @@
 title: 在 Azure 事件网格中使用 Azure AD 进行安全的 WebHook 传递
 description: 介绍如何将事件传递到受到 Azure Active Directory 通过 Azure 事件网格进行保护的 HTTPS 终结点
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 90d06f203bc93177101a87a7a774d816b11b16f6
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.date: 09/23/2020
+ms.openlocfilehash: e4a6e08f3e28b84198346efb7de09b202b884575
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322540"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 
@@ -16,7 +16,6 @@ ms.locfileid: "87460705"
 
 本文使用 Azure 门户进行演示，但也可通过 CLI、PowerShell 或 SDK 来启用此功能。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-an-azure-ad-application"></a>创建 Azure AD 应用程序
 

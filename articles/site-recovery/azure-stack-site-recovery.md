@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333709"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -164,13 +164,13 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 1. 单击“准备基础结构” > “源”。  
 2. 在“准备源”中，单击“+配置服务器”   。
 
-    ![设置源](./media/azure-stack-site-recovery/plus-config-srv.png)
+    !["+ 配置服务器" 对话框的屏幕截图，其中包含消息 "在上面的命令栏中单击 + 配置服务器以设置一个 ..."。](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中    。
 5. 下载站点恢复统一安装程序安装文件。
 6. 下载保管库注册密钥。 运行统一安装程序时需要使用该注册密钥。 生成的密钥有效期为 5 天。
 
-    ![设置源](./media/azure-stack-site-recovery/set-source2.png)
+    !["添加服务器" 对话框的屏幕截图，其服务器类型设置为 "配置服务器"，并选中 "下载保管库注册密钥" 按钮。](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序

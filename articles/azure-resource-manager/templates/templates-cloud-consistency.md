@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356879"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>开发用于确保云一致性的 ARM 模板
 
@@ -655,7 +655,7 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 下图展示了团队使用集成开发环境 (IDE) 的开发过程的典型示例。 在时间线中的不同阶段执行不同的测试类型。 在这里，两名开发者正在处理同一解决方案，但这种情况同样适用于单个开发者或一个大型团队。 每个开发者通常会创建中央存储库的本地副本，这样每个人都可以处理本地副本，并且不会影响可能使用同一文件的其他用户。
 
-![工作流](./media/templates-cloud-consistency/workflow.png)
+![关系图显示了在本地 I D E 上并行执行的两组单元测试和集成测试，将 C I/C D 开发流程合并到单元测试中，然后进行集成测试，然后测试部署，然后部署。](./media/templates-cloud-consistency/workflow.png)
 
 请考虑以下用于测试和自动化的提示：
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d4f77cec793e13ff943c173d88948eb5b5de0957
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337868"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356241"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>门监视器 - 使用 Azure Functions 和 SendGrid 在门打开时发送电子邮件           
 
@@ -39,7 +39,7 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 
 一个有效的 Azure 订阅。 如果没有订阅，可以通过以下方法之一进行注册：
 
-* 激活[30 天免费试用 Microsoft Azure 帐户](https://azure.microsoft.com/free/)。
+* 激活 [30 天免费试用 Microsoft Azure 帐户](https://azure.microsoft.com/free/)。
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）。
 
 ## <a name="deploy-the-sendgrid-service-in-azure"></a>在 Azure 中部署 SendGrid 服务
@@ -171,7 +171,7 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 然后，VS Code 开始验证 Arduino 草图并将其上传到 DevKit。
 
-![设备上传](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
+![屏幕截图显示 Visual Studio Code 验证和上传 Arduino 草图。](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
 DevKit 将重新启动并开始运行代码。
 

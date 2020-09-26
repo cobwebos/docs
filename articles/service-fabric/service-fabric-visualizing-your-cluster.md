@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256248"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357210"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 
@@ -106,7 +106,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 ## <a name="event-store"></a>事件存储
 EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 Service Fabric Explorer 中使用的 Service Fabric 平台事件。 可以查看群集中每个实体的动态快照视图，例如节点、服务、应用程序和基于事件时间的查询。 还可以从 [EventStore 概述](service-fabric-diagnostics-eventstore.md)了解有关 EventStore 的详细信息。   
 
-![EventStore][sfx-eventstore]
+![屏幕截图显示具有选定事件的 "节点" 窗格。][sfx-eventstore]
 
 >[!NOTE]
 >从 Service Fabric 版本 6.4 开始。 EventStore 在默认情况下不启用，必须在资源管理器模板中启用

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fc9dee3d4ace5f70c4238cdce5c57696b131bfa9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a38aa5200ac8d498d2bc296a46b4b98357ab0b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897305"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322285"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 
@@ -47,13 +47,13 @@ ms.locfileid: "90897305"
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 和 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 和 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
 ## <a name="start-a-run-and-its-logging-process"></a>启动运行及其日志记录过程
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
-通过从 [azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py&preserve-view=true) 包导入 [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)、[Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true)、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) 和 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 类来设置试验。
+通过从 [azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py&preserve-view=true) 包导入 [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)、[Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true)、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 和 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 类来设置试验。
 
 ```python
 import azureml.core
@@ -64,7 +64,7 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-使用 [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) 方法启动运行及其日志记录过程。
+使用 [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-logging--args----kwargs-) 方法启动运行及其日志记录过程。
 
 ```python
 notebook_run = exp.start_logging()
@@ -91,7 +91,7 @@ notebook_run.log(name="message", value="Hello from run!")
 
     此命令创建包含示例 runconfig 和 conda 环境文件的 `.azureml` 子目录。 此子目录还包含用来与 Azure 机器学习工作区通信的 `config.json` 文件。
 
-    有关详细信息，请参阅 [az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
+    有关详细信息，请参阅 [az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-folder-attach)。
 
 2. 若要启动运行，请使用以下命令。 使用此命令时，请为 -c 参数指定 runconfig 文件的名称（如果查看的是文件系统，此名称为 \*.runconfig 前面的文本）。
 
@@ -102,11 +102,11 @@ notebook_run.log(name="message", value="Hello from run!")
     > [!TIP]
     > `az ml folder attach` 命令创建了一个 `.azureml` 子目录，其中包含两个示例 runconfig 文件。
     >
-    > 如果你的某个 Python 脚本以编程方式创建运行配置对象，则你可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) 将此对象另存为 runconfig 文件。
+    > 如果你的某个 Python 脚本以编程方式创建运行配置对象，则你可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) 将此对象另存为 runconfig 文件。
     >
     > 有关更多示例 runconfig 文件，请参阅 [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)。
 
-    有关详细信息，请参阅 [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
+    有关详细信息，请参阅 [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-run-submit-script)。
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
 
@@ -122,19 +122,19 @@ notebook_run.log(name="message", value="Hello from run!")
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
-使用 [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=trueget-status--) 方法获取运行的状态。
+使用 [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-status--) 方法获取运行的状态。
 
 ```python
 print(notebook_run.get_status())
 ```
 
-若要获取运行 ID、执行时间和有关运行的更多详细信息，请使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueget-details--) 方法。
+若要获取运行 ID、执行时间和有关运行的更多详细信息，请使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) 方法。
 
 ```python
 print(notebook_run.get_details())
 ```
 
-成功完成运行后，使用 [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) 方法将其标记为已完成。
+成功完成运行后，使用 [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecomplete--set-status-true-) 方法将其标记为已完成。
 
 ```python
 notebook_run.complete()
@@ -161,7 +161,7 @@ print(notebook_run.get_status())
 
     此命令返回一个 JSON 文档，其中列出了有关此试验的运行的信息。
 
-    有关详细信息，请参阅 [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
+    有关详细信息，请参阅 [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-experiment-list)。
 
 2. 若要查看有关特定运行的信息，请使用以下命令。 请将 `runid` 替换为运行的 ID：
 
@@ -171,7 +171,7 @@ print(notebook_run.get_status())
 
     此命令返回一个 JSON 文档，其中列出了有关运行的信息。
 
-    有关详细信息，请参阅 [az ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)。
+    有关详细信息，请参阅 [az ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-run-show)。
 
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
@@ -195,23 +195,23 @@ print(notebook_run.get_status())
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
-若要使用 SDK 取消运行，请使用 [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecancel--) 方法：
+若要使用 SDK 取消运行，请使用 [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecancel--) 方法：
 
 ```python
-run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
-local_script_run = exp.submit(run_config)
-print(local_script_run.get_status())
+src = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
+local_run = exp.submit(src)
+print(local_run.get_status())
 
-local_script_run.cancel()
-print(local_script_run.get_status())
+local_run.cancel()
+print(local_run.get_status())
 ```
 
-如果运行已完成但包含错误（例如，使用了错误的训练脚本），可以使用 [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) 方法将其标记为失败。
+如果运行已完成但包含错误（例如，使用了错误的训练脚本），可以使用 [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#fail-error-details-none--error-code-none---set-status-true-) 方法将其标记为失败。
 
 ```python
-local_script_run = exp.submit(run_config)
-local_script_run.fail()
-print(local_script_run.get_status())
+local_run = exp.submit(src)
+local_run.fail()
+print(local_run.get_status())
 ```
 
 ### <a name="using-the-cli"></a>使用 CLI
@@ -222,7 +222,7 @@ print(local_script_run.get_status())
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-有关详细信息，请参阅 [az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)。
+有关详细信息，请参阅 [az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-run-cancel)。
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
 
@@ -242,15 +242,15 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 > [!NOTE]
 > 只能使用 SDK 创建子运行。
 
-此代码示例使用 `hello_with_children.py` 脚本，通过 [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truechild-run-name-none--run-id-none--outputs-none-) 方法从已提交的运行内部创建包含五个子运行的批：
+此代码示例使用 `hello_with_children.py` 脚本，通过 [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truechild-run-name-none--run-id-none--outputs-none-) 方法从已提交的运行内部创建包含五个子运行的批：
 
 ```python
 !more hello_with_children.py
-run_config = ScriptRunConfig(source_directory='.', script='hello_with_children.py')
+src = ScriptRunConfig(source_directory='.', script='hello_with_children.py')
 
-local_script_run = exp.submit(run_config)
-local_script_run.wait_for_completion(show_output=True)
-print(local_script_run.get_status())
+local_run = exp.submit(src)
+local_run.wait_for_completion(show_output=True)
+print(local_run.get_status())
 
 with exp.start_logging() as parent_run:
     for c,count in enumerate(range(5)):
@@ -261,15 +261,15 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > 当子运行超出范围时，会自动标记为已完成。
 
-若要高效地创建许多子运行，请使用 [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) 方法。 由于每次创建操作都会造成网络调用，因此，创建一批运行比逐个创建更为高效。
+若要高效地创建许多子运行，请使用 [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) 方法。 由于每次创建操作都会造成网络调用，因此，创建一批运行比逐个创建更为高效。
 
 ### <a name="submit-child-runs"></a>提交子运行
 
 也可以从父运行提交子运行。 通过此操作可创建父运行和子运行的层次结构。 
 
-你可能会希望子运行使用与父运行不同的运行配置。 例如，对父运行使用常规的基于 CPU 的配置，而对子运行使用基于 GPU 的配置。 另一种常见的需求是向每个子运行传递不同的参数和数据。 若要自定义子运行，请将 `RunConfiguration` 对象传递给子运行的 `ScriptRunConfig` 构造函数。 此代码示例展示了父 `ScriptRunConfig` 对象的脚本的一部分：
+你可能会希望子运行使用与父运行不同的运行配置。 例如，对父运行使用常规的基于 CPU 的配置，而对子运行使用基于 GPU 的配置。 另一种常见的需求是向每个子运行传递不同的参数和数据。 若要自定义子运行，请为 `ScriptRunConfig` 子运行创建一个对象。 下面的代码执行以下操作：
 
-- 创建检索命名计算资源 `"gpu-compute"` 的 `RunConfiguration`
+- 从工作区中检索名为的计算资源 `"gpu-cluster"``ws`
 - 循环访问要传递给子 `ScriptRunConfig` 对象的不同参数值
 - 使用自定义计算资源和参数创建并提交新的子运行
 - 阻止至所有子运行完成为止
@@ -277,18 +277,16 @@ with exp.start_logging() as parent_run:
 ```python
 # parent.py
 # This script controls the launching of child scripts
-from azureml.core import Run, ScriptRunConfig, RunConfiguration
+from azureml.core import Run, ScriptRunConfig
 
-run_config_for_aml_compute = RunConfiguration()
-run_config_for_aml_compute.target = "gpu-compute"
-run_config_for_aml_compute.environment.docker.enabled = True 
+compute_target = ws.compute_targets["gpu-cluster"]
 
 run = Run.get_context()
 
 child_args = ['Apple', 'Banana', 'Orange']
 for arg in child_args: 
     run.log('Status', f'Launching {arg}')
-    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], compute_target=compute_target)
     # Starts the run asynchronously
     run.submit_child(child_config)
 
@@ -299,7 +297,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-若要高效创建多个具有相同配置、参数和输入内容的子运行，可使用 [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) 方法。 由于每次创建操作都会造成网络调用，因此，创建一批运行比逐个创建更为高效。
+若要高效创建多个具有相同配置、参数和输入内容的子运行，可使用 [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) 方法。 由于每次创建操作都会造成网络调用，因此，创建一批运行比逐个创建更为高效。
 
 在子运行内部，可以查看父运行 ID：
 
@@ -311,7 +309,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>查询子运行
 
-若要查询特定父级的子运行，请使用 [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=trueget-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) 方法。 使用 ``recursive = True`` 参数可以查询子级和孙级的嵌套树。
+若要查询特定父级的子运行，请使用 [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) 方法。 使用 ``recursive = True`` 参数可以查询子级和孙级的嵌套树。
 
 ```python
 print(parent_run.get_children())
@@ -325,37 +323,37 @@ print(parent_run.get_children())
 
 #### <a name="using-the-sdk"></a>使用 SDK
 
-若要将可搜索的元数据添加到运行，请使用 [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=trueadd-properties-properties-) 方法。 例如，以下代码将 `"author"` 属性添加到运行：
+若要将可搜索的元数据添加到运行，请使用 [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueadd-properties-properties-) 方法。 例如，以下代码将 `"author"` 属性添加到运行：
 
 ```Python
-local_script_run.add_properties({"author":"azureml-user"})
-print(local_script_run.get_properties())
+local_run.add_properties({"author":"azureml-user"})
+print(local_run.get_properties())
 ```
 
 属性是不可变的，因此它们将创建一条永久记录用于审核目的。 以下代码示例会导致出错，因为我们已在前面的代码中添加了 `"azureml-user"` 作为 `"author"` 属性值：
 
 ```Python
 try:
-    local_script_run.add_properties({"author":"different-user"})
+    local_run.add_properties({"author":"different-user"})
 except Exception as e:
     print(e)
 ```
 
-与属性不同，标记是可变的。 若要为试验的使用者添加可搜索且有意义的信息，请使用 [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truetag-key--value-none-) 方法。
+与属性不同，标记是可变的。 若要为试验的使用者添加可搜索且有意义的信息，请使用 [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truetag-key--value-none-) 方法。
 
 ```Python
-local_script_run.tag("quality", "great run")
-print(local_script_run.get_tags())
+local_run.tag("quality", "great run")
+print(local_run.get_tags())
 
-local_script_run.tag("quality", "fantastic run")
-print(local_script_run.get_tags())
+local_run.tag("quality", "fantastic run")
+print(local_run.get_tags())
 ```
 
 还可以添加简单的字符串标记。 当这些标记作为键出现在标记字典中时，它们的值为 `None`。
 
 ```Python
-local_script_run.tag("worth another look")
-print(local_script_run.get_tags())
+local_run.tag("worth another look")
+print(local_run.get_tags())
 ```
 
 #### <a name="using-the-cli"></a>使用 CLI
@@ -369,7 +367,7 @@ print(local_script_run.get_tags())
 az ml run update -r runid --add-tag quality='fantastic run'
 ```
 
-有关详细信息，请参阅 [az ml run update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)。
+有关详细信息，请参阅 [az ml run update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-run-update)。
 
 ### <a name="query-properties-and-tags"></a>查询属性和标记
 
@@ -395,7 +393,7 @@ az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'wort
 az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
 ```
 
-有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)。
+有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
 

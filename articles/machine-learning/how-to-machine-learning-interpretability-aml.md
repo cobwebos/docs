@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333828"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解释性包通过 Python 解释 ML 模型和预测（预览版）
 
@@ -42,10 +42,9 @@ ms.locfileid: "90897463"
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在个人计算机上生成特征重要性值 
 以下示例演示如何在不使用 Azure 服务的情况下在个人计算机上使用可解释性包。
 
-1. 安装 `azureml-interpret` 和 `azureml-contrib-interpret` 包。
+1. 安装 `azureml-interpret` 包。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. 在本地 Jupyter 笔记本中训练示例模型。
@@ -239,15 +238,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 * 在远程运行中使用 `ExplanationClient` 来上传可解释性上下文。
 * 稍后在本地环境中下载该上下文。
 
-1. 安装 `azureml-interpret` 和 `azureml-contrib-interpret` 包。
+1. 安装 `azureml-interpret` 包。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py`。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -280,7 +278,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 1. 下载本地 Jupyter 笔记本中的解释。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -332,29 +330,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 [![ICE 绘图可视化仪表板](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> 在 Jupyter 内核启动之前，请确保为可视化仪表板启用小组件扩展。
-
-* Jupyter 笔记本
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* JupyterLab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 若要加载可视化仪表板，请使用以下代码。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的可视化效果
@@ -370,7 +351,7 @@ ExplanationDashboard(global_explanation, model, dataset=x_test)
   1. 选择特定的试验可查看该试验中的所有运行。
   1. 选择一个运行，然后选择“解释”选项卡来查看解释可视化仪表板。
 
-   [![本地特征重要性可视化仪表板](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![试验中的可视化面板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * “模型”窗格
   1. 如果已遵循[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 16bdb0d8ed421763895e61a6e1173fc7c5a48d4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297940"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -38,7 +38,8 @@ ms.locfileid: "88816365"
 
 
 v2.0**包含以下**更新：
--   NET、Python、Java 和 JavaScript 的 [客户端库](quickstarts/client-library.md) 已输入公开上市。 
+
+- NET、Python、Java 和 JavaScript 的 [客户端库](quickstarts/client-library.md) 已输入公开上市。 
 
 
 GitHub 上提供了**新的示例**。 
@@ -148,7 +149,7 @@ GitHub 上提供了**新的示例**。
   * **TIFF 文件支持** 你现在可以训练和提取 TIFF 文档中的数据。
   * **提取准确性改进**
 
-* **预生成的回执模型**
+* **预生成的接收模型**
   * **Tip 数量** 你现在可以提取 tip 金额和其他手写值。
   * **行项提取** 您可以从收据中提取行项值。
   * **置信度值** 您可以查看模型对每个提取值的置信度。
@@ -176,4 +177,8 @@ GitHub 上提供了**新的示例**。
 
 ## <a name="next-steps"></a>后续步骤
 
-完成一个[快速入门](quickstarts/curl-train-extract.md)，开始使用[表单识别器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)。
+完成 [客户端库快速入门](quickstarts/client-library.md) ，开始使用所选语言的窗体识别器编写窗体处理应用。
+
+## <a name="see-also"></a>请参阅
+
+* [什么是表单识别器？](./overview.md)

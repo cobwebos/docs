@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 359c2a27099ca298076edc255b8c30e226af0a18
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07f5fef0103e674af1c5f73b3f09bdf759e592cb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355969"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推断环境
 
@@ -35,7 +35,7 @@ ms.locfileid: "90882952"
 > - Azure 容器实例 (ACI)
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
@@ -108,11 +108,24 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 创建过程完成后，可在虚拟网络后面的 AKS 群集上运行推理或模型评分。 有关详细信息，请参阅[如何部署 AKS](how-to-deploy-and-where.md)。
 
-## <a name="private-aks-cluster"></a>私有 AKS 群集
+## <a name="secure-vnet-traffic"></a>保护 VNet 流量
+
+可以通过两种方法将流量与 AKS 群集隔离到虚拟网络：
+
+* __私有 AKS 群集__：此方法使用 Azure 专用链接为 VNet 中的 AKS 群集创建专用终结点。
+* __内部 AKS 负载均衡器__：此方法配置负载均衡器，以便群集使用 VNet 中的内部 IP 地址。
+
+> [!WARNING]
+> 这两种配置都是实现相同目标 (保护到 VNet) 中 AKS 群集的流量的不同方式。 **使用其中一个或另一个，但不能同时使用两者**。
+
+### <a name="private-aks-cluster"></a>私有 AKS 群集
 
 默认情况下，AKS 群集具有一个具有公共 IP 地址的控制平面或 API 服务器。 可以通过创建专用 AKS 群集，将 AKS 配置为使用专用控制平面。 有关详细信息，请参阅 [创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
 
 创建专用 AKS 群集后， [将该群集附加到](how-to-create-attach-kubernetes.md) 要用于 Azure 机器学习的虚拟网络。
+
+> [!IMPORTANT]
+> 在将启用了专用链接的 AKS 群集与 Azure 机器学习一起使用之前，你必须打开支持事件才能启用此功能。 有关详细信息，请参阅 [管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 ## <a name="internal-aks-load-balancer"></a>内部 AKS 负载均衡器
 
@@ -120,7 +133,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 专用负载均衡器通过将 AKS 配置为使用 _内部负载均衡_器来启用。 
 
-### <a name="network-contributor-role"></a>网络参与者角色
+#### <a name="network-contributor-role"></a>网络参与者角色
 
 > [!IMPORTANT]
 > 如果通过提供之前创建的虚拟网络来创建或附加 AKS 群集，则必须向 AKS 群集的服务主体 (SP) 或托管标识授予对包含虚拟网络的资源组的_网络参与者_角色。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
@@ -152,16 +165,17 @@ aks_target = ComputeTarget.create(workspace=ws,
     ```
 若要详细了解如何结合使用内部负载均衡器与 AKS，请参阅[结合使用内部负载均衡器与 Azure Kubernetes 服务](/azure/aks/internal-lb)。
 
-### <a name="enable-private-load-balancer"></a>启用私有负载均衡器
+#### <a name="enable-private-load-balancer"></a>启用私有负载均衡器
 
 > [!IMPORTANT]
-> 创建 Azure Kubernetes 服务群集时，无法启用专用 IP。 只能在更新现有群集时进行启用。
+> 在 Azure 机器学习 studio 中创建 Azure Kubernetes Service 群集时，无法启用专用 IP。 使用 Python SDK 或计算机学习 Azure CLI 扩展时，可以使用内部负载均衡器创建一个。
 
-以下代码片段演示了如何__创建新的 AKS 群集__，然后将其更新为使用专用 IP/内部负载均衡器：
+以下示例演示了如何使用 SDK 和 CLI 通过 __专用 IP/内部负载均衡器创建新的 AKS 群集__ ：
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import azureml.core
-from azureml.core.compute.aks import AksUpdateConfiguration
 from azureml.core.compute import AksCompute, ComputeTarget
 
 # Verify that cluster does not exist already
@@ -175,7 +189,7 @@ except:
     # Subnet to use for AKS
     subnet_name = "default"
     # Create AKS configuration
-    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    prov_config=AksCompute.provisioning_configuration(load_balancer_type="InternalLoadBalancer")
     # Set info for existing virtual network to create the cluster in
     prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
     prov_config.vnet_name = "myvnetname"
@@ -188,44 +202,21 @@ except:
     aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
-    
-    # Update AKS configuration to use an internal load balancer
-    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
-    aks_target.update(update_config)
-    # Wait for the operation to complete
-    aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure CLI__
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
+```azurecli
+az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-该命令引用的 `body.json` 文件的内容类似于以下 JSON 文档：
+有关详细信息，请参阅 [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
 
-```json
-{ 
-    "location": "<region>", 
-    "properties": { 
-        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-name>", 
-        "computeType": "AKS", 
-        "provisioningState": "Succeeded", 
-        "properties": { 
-            "loadBalancerType": "InternalLoadBalancer", 
-            "agentCount": <agent-count>, 
-            "agentVmSize": "vm-size", 
-            "clusterFqdn": "<cluster-fqdn>" 
-        } 
-    } 
-} 
-```
+---
 
-将现有群集附加到工作区时，必须等到附加操作完成后才能配置负载均衡器。
+将现有群集附加到工作区时，必须等到附加操作完成后才能配置负载均衡器。 有关附加群集的信息，请参阅[附加现有的 AKS 群集](how-to-create-attach-kubernetes.md)。
 
-有关附加群集的信息，请参阅[附加现有的 AKS 群集](how-to-create-attach-kubernetes.md)。
-
-附加现有群集后，可以更新群集以使用专用 IP。
+附加现有群集后，你可以更新群集以使用内部负载均衡器/专用 IP：
 
 ```python
 import azureml.core
@@ -260,7 +251,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
     > [!IMPORTANT]
     > 启用委派时，使用 `Microsoft.ContainerInstance/containerGroups` 作为“将子网委派给服务”值。
 
-2. 使用 [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) 部署模型（使用 `vnet_name` 和 `subnet_name` 参数）。 将这些参数设置为启用了委派的虚拟网络名称和子网。
+2. 使用 [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) 部署模型（使用 `vnet_name` 和 `subnet_name` 参数）。 将这些参数设置为启用了委派的虚拟网络名称和子网。
 
 
 ## <a name="next-steps"></a>后续步骤

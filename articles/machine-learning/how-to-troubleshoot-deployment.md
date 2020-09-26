@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602627"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333766"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>使用 Azure Kubernetes 服务和 Azure 容器实例对模型的 Docker 部署进行故障排除 
 
@@ -26,7 +26,7 @@ ms.locfileid: "90602627"
 
 * 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 * [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 若要在本地调试，则必须在本地系统上安装一个有效的 Docker。
 
@@ -34,7 +34,7 @@ ms.locfileid: "90602627"
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>机器学习模型的 Docker 部署步骤
 
-在 Azure 机器学习中部署模型时，将使用 [模型。部署 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 和 [环境](how-to-use-environments.md) 对象。 服务在部署阶段创建基本的 docker 映像，并在一次调用中装载所需的模型。 基本部署任务包括：
+在 Azure 机器学习中部署模型时，将使用 [模型。部署 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 和 [环境](how-to-use-environments.md) 对象。 服务在部署阶段创建基本的 docker 映像，并在一次调用中装载所需的模型。 基本部署任务包括：
 
 1. 在工作区模型注册表中注册模型。
 
@@ -50,7 +50,7 @@ ms.locfileid: "90602627"
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。
 
-使用 Model 时，请使用[环境](how-to-use-environments.md)对象作为输入参数[部署 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) ，你的代码可以分为三个主要步骤：
+使用 Model 时，请使用[环境](how-to-use-environments.md)对象作为输入参数[部署 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) ，你的代码可以分为三个主要步骤：
 
 1. 注册模型。 下面是一些示例代码：
 
@@ -161,7 +161,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > 可从服务所使用的 `InferenceConfig` 对象指定的位置重新加载该脚本。
 
-若要更改模型、Conda 依赖项或部署配置，请使用 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-)。 以下示例更新服务使用的模型：
+若要更改模型、Conda 依赖项或部署配置，请使用 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-)。 以下示例更新服务使用的模型：
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -169,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>删除服务
 
-要删除服务，请使用 [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--)。
+要删除服务，请使用 [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--)。
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> 检查 Docker 日志
 
@@ -199,7 +199,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="function-fails-get_model_path"></a>函数故障：get_model_path()
 
-通常情况下，在评分脚本的 `init()` 函数中，会调用 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 来查找容器中的模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹，函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
+通常情况下，在评分脚本的 `init()` 函数中，会调用 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 来查找容器中的模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹，函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
 
 ```python
 from azureml.core.model import Model

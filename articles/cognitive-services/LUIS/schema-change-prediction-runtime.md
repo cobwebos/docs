@@ -1,20 +1,22 @@
 ---
-title: 在运行时扩展应用程序-LUIS
+title: 在运行时扩展应用 - LUIS
 description: ''
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322795"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>在预测运行时扩展应用
 
-应用的架构（模型和功能）经过训练并发布到预测终结点。 此已发布模型用于预测运行时。 您可以将新信息以及用户的查询文本传递到预测运行时以增加预测。
+应用的架构（模型和功能）经过训练后将发布到预测终结点。 此发布的模型用于预测运行时。 可以将新信息以及用户的言语传递到预测运行时以增加预测。
 
-两种预测运行时架构更改包括：
+预测运行时架构的两个更改包括：
 * [外部实体](#external-entities)
 * [动态列表](#dynamic-lists)
 
@@ -26,11 +28,11 @@ ms.locfileid: "81538574"
 
 客户端应用程序将提供其自身的实体提取器，它会管理实体匹配操作并确定匹配实体的言语中的位置，然后连同请求一起发送该信息。
 
-外部实体是一种机制，用于扩展任何实体类型，同时仍用作其他模型的信号。
+外部实体是用于扩展任何实体类型，同时仍可用作其他模型的信号的机制。
 
-这对于仅在查询预测运行时才提供数据的实体而言非常有用。 此类数据的示例包括不断变化的数据，或者每个用户的具体数据。 您可以使用用户联系人列表中的外部信息来扩展 LUIS contact 实体。
+这对于仅在查询预测运行时才提供数据的实体而言非常有用。 此类数据的示例包括不断变化的数据，或者每个用户的具体数据。 可以使用用户联系人列表中的外部信息扩展 LUIS 联系人实体。
 
-外部实体是 V3 创作 API 的一部分。 了解有关[迁移](luis-migration-api-v3.md)到此版本的详细信息。
+外部实体是 V3 创作 API 的一部分。 详细了解如何[迁移](luis-migration-api-v3.md)到此版本。
 
 ### <a name="entity-already-exists-in-app"></a>实体已在应用中存在
 
@@ -42,7 +44,7 @@ ms.locfileid: "81538574"
 
 `Send Hazem a new message`
 
-从聊天机器人到 LUIS 的请求可以传入张贴正文中的信息`Hazem` ，因此它直接与用户的联系人之一匹配。
+聊天机器人发送给 LUIS 的请求可以在 POST 正文中传入有关 `Hazem` 的信息，以便将此信息直接匹配为用户的联系人之一。
 
 ```json
     "externalEntities": [
@@ -66,7 +68,7 @@ ms.locfileid: "81538574"
 
 `Send him a calendar reminder for the party.`
 
-在这一轮会话中，查询文本将`him`用作对的引用。 `Hazem` 在 POST 正文中，聊天机器人可将 `him` 映射到从第一段言语 `Hazem` 提取的实体值。
+在这一轮会话中，言语使用 `him` 作为对 `Hazem` 的引用。 在 POST 正文中，聊天机器人可将 `him` 映射到从第一段言语 `Hazem` 提取的实体值。
 
 ```json
     "externalEntities": [
@@ -88,7 +90,7 @@ ms.locfileid: "81538574"
 
 `preferExternalEntities` 选项属性指定如果用户发送与同名的预测实体重叠的外部实体，LUIS 将选择传入的实体还是模型中存在的实体。
 
-例如，请考虑 `today I'm free` 查询。 LUIS 检测到 `today` 为 datetimeV2，响应如下：
+例如，考虑查询 `today I'm free`。 LUIS 检测到 `today` 为 datetimeV2，响应如下：
 
 ```JSON
 "datetimeV2": [
@@ -147,7 +149,7 @@ ms.locfileid: "81538574"
 
 #### <a name="resolution"></a>解决方法
 
-_可选_ `resolution`属性在预测响应中返回，使您可以传入与外部实体关联的元数据，然后在响应中返回。
+可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。__
 
 主要目的是扩展预生成实体，但并不局限于该实体类型。
 

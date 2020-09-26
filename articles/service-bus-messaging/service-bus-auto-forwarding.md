@@ -4,12 +4,12 @@ description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333675"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
@@ -29,11 +29,11 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 可使用自动转发扩大单个主题。 服务总线将[给定主题的订阅数](service-bus-quotas.md)限制为 2,000。 可以通过创建二级主题来容纳其他订阅。 即使订阅数并未受到服务总线限制，添加二级主题也可以提高主题的整体吞吐量。
 
-![自动转发方案][0]
+![自动转发方案的关系图，显示通过订单主题处理的消息，该主题可分支到三个二级订单主题中的任意一个。][0]
 
 自动转发还可用于分离消息发送方与接收方。 例如，考虑一个由以下三个模块组成的 ERP 系统：订单处理、库存管理和客户关系管理。 每个模块都会生成消息，这些消息将被排入相应的主题队。 Alice 和 Bob 是两名销售代表，他们想了解与其客户相关的所有消息。 要接收这些消息，Alice 和 Bob 各自创建一个个人队列和一个针对 ERP 主题的订阅，该订阅将所有消息自动转发给该队列。
 
-![自动转发方案][1]
+![自动转发方案示意图，其中显示了三个处理模块，通过三个相关主题将消息发送到两个单独的队列。][1]
 
 如果 Alice 去度假，则填充她的个人队列，而不是 ERP 主题。 在此方案中，由于销售代表没有接收到任何消息，所以所有 ERP 主题都没有达到配额。
 
