@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b166348031e9f72e8005e866a198855db9c01a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934360"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273194"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为启用了 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
 
@@ -156,14 +156,66 @@ select * from mysecrets;
 启用 Azure Arc 后，PostgreSQL 超大规模附带了标准 Postgres 管理用户 _Postgres_ ，你可以在创建服务器组时设置密码。
 用于更改其密码的命令的常规格式为：
 ```console
-azdata arc postgres server edit --name <server group name> --admin-password <new password>
+azdata arc postgres server edit --name <server group name> --admin-password
 ```
-密码将设置为 AZDATA_PASSWORD **会话**环境变量的值（如果存在）。 否则，系统会提示用户输入值。
-若要验证 AZDATA_PASSWORD 会话的环境变量是否存在和/或设置的值，请运行：
-```console
-printenv AZDATA_PASSWORD
-```
-如果希望提示输入新密码，则可能需要删除其值。
+
+其中--admin-password 是与 AZDATA_PASSWORD **会话**环境变量中的某个值相关的布尔值。
+如果 AZDATA_PASSWORD **会话**的环境变量存在并且具有值，则运行上述命令会将 postgres 用户的密码设置为此环境变量的值。
+
+如果 AZDATA_PASSWORD **会话**的环境变量存在，但没有值或 AZDATA_PASSWORD **会话**的环境变量不存在，则运行上述命令将提示用户以交互方式输入密码
+
+#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>以交互方式更改 postgres 管理用户的密码：
+1. 删除 AZDATA_PASSWORD **会话**的环境变量或删除其值
+2. 运行以下命令：
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   例如：
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   系统将提示你输入密码并进行确认：
+   ```console
+   Postgres Server password:
+   Confirm Postgres Server password:
+   ```
+   更新密码时，该命令的输出将显示：
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+   
+#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>使用 AZDATA_PASSWORD **会话**的环境变量更改 postgres 管理用户的密码：
+1. 将 AZDATA_PASSWORD **会话**的环境变量的值设置为你想要的密码。
+2. 运行命令：
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   例如：
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   
+   更新密码时，该命令的输出将显示：
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+
+> [!NOTE]
+> 若要验证 AZDATA_PASSWORD 会话的环境变量是否存在以及它所具有的值，请运行：
+> - 在 Linux 客户端上：
+> ```console
+> printenv AZDATA_PASSWORD
+> ```
+>
+> - 在带有 PowerShell 的 Windows 客户端上：
+> ```console
+> echo $env:AZDATA_PASSWORD
+> ```
+
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 7fbf7743eb1c037a364e1004fc3be30db6777bb0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f4c6eb8ad8e3d69d2b3545bc5754e1a632f5cc8c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285786"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为自动用户预配配置雪花
 
@@ -58,11 +58,11 @@ ms.locfileid: "88546636"
 
 2.  将为你的雪花租户生成 SCIM 访问令牌。 若要检索它，请单击下面突出显示的链接。
 
-    ![雪花添加 SCIM](media/Snowflake-provisioning-tutorial/image01.png)
+    ![雪花 U I 中工作表的屏幕截图，其中包含 S C I M 访问令牌。](media/Snowflake-provisioning-tutorial/image01.png)
 
 3. 复制生成的令牌值并单击 " **完成**"。 此值将在 Azure 门户的雪花型应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。
 
-    ![雪花添加 SCIM](media/Snowflake-provisioning-tutorial/image02.png)
+    ![详细信息部分的屏幕截图，其中显示了复制到 "文本" 字段中的标记和 "完成" 选项。](media/Snowflake-provisioning-tutorial/image02.png)
 
 ## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加雪花
 
@@ -93,11 +93,11 @@ ms.locfileid: "88546636"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 "管理员凭据" 部分下，输入之前在 "**租户 URL** " 和 "**机密令牌**" 字段中检索到的**SCIM 2.0 基本 URL 和身份验证令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到雪花。 如果连接失败，请确保你的雪花帐户具有管理员权限，然后重试。
 
@@ -107,7 +107,7 @@ ms.locfileid: "88546636"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“保存” 。
+8. 单击“ **保存**”。
 
 9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到雪花**"。
 
@@ -154,7 +154,7 @@ ms.locfileid: "88546636"
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。  
 
 ## <a name="connector-limitations"></a>连接器限制
 

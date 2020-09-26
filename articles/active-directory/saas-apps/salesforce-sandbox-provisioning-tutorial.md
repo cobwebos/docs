@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Active Directory 为 Salesforce Sandbox 配置自动用户预配 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Salesforce 沙盒之间配置单一登录。
+description: 了解需要在 Salesforce 沙盒中执行的步骤，并 Azure AD 自动预配和取消预配从 Azure AD 到 Salesforce 沙盒的用户帐户。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5fa40e954c84d4d2d70974bc799a198c6bf7d3e9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273307"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
 

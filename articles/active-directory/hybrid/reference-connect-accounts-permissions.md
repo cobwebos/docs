@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662333"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273594"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -115,7 +115,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 以下是有关自定义安装向导页、所收集凭据及其用途的摘要。
 
-![快速安装](./media/reference-connect-accounts-permissions/customize.png)
+![显示自定义安装向导页的屏幕截图。](./media/reference-connect-accounts-permissions/customize.png)
 
 | 向导页 | 收集的凭据 | 所需的权限 | 用途 |
 | --- | --- | --- | --- |
@@ -208,7 +208,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 #### <a name="virtual-service-account"></a>虚拟服务帐户
 虚拟服务帐户是一种特殊类型的帐户，它没有密码且由 Windows 管理。
 
-![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![显示 VSA)  (虚拟服务帐户的屏幕截图。](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使用远程 SQL，则建议改用组托管服务帐户。
 
@@ -241,7 +241,7 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 ### <a name="azure-ad-connector-account"></a>Azure AD 连接器帐户
 将在 Azure AD 中创建帐户供同步服务使用。 可以根据显示名称来识别此帐户。
 
-![AD 帐户](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![显示 Azure AD 帐户的屏幕截图。](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 使用该帐户的服务器名称可以根据用户名的第二个部分来识别。 在上图中，服务器名称为 DC1。 如果部署了暂存服务器，每个服务器都有自身的帐户。
 

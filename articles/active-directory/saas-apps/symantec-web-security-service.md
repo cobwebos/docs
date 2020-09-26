@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 083bb7549bb555cbbefaf680d401696ecd64b9c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b4a5e76ec8dad66bf300cc3e1d55471383f83ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285787"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>教程：配置 Symantec Web Security Service (WSS) 以实现自动用户预配
 
@@ -62,11 +62,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3.  选择 **第三方用户 & 组同步**。 
 
-    ![Symantec Web Security Service](media/symantec-web-security-service/third-party-users.png)
+    ![第三方用户 & 组同步选项的屏幕截图。](media/symantec-web-security-service/third-party-users.png)
 
 4.  复制 **SCIM URL** 和 **令牌**。 将在 Symantec Web Security Service 的 "设置" 选项卡的 " **租户 URL** " 和 " **机密令牌** " 字段中输入这些值 (WSS) 应用 Azure 门户程序。
 
-    ![Symantec Web Security Service](media/symantec-web-security-service/scim.png)
+    ![新的集成对话框的屏幕截图，其中包含 S C I M U R L 和标记文本框（称为 out）。](media/symantec-web-security-service/scim.png)
 
 ## <a name="add-symantec-web-security-service-wss-from-the-gallery"></a>从库中添加 Symantec Web Security Service (WSS) 
 
@@ -109,11 +109,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 "管理员凭据" 部分下，输入在**租户 url**和**机密令牌**中更早检索到的**SCIM URL**和**令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Symantec Web 安全服务。 如果连接失败，请确保 Symantec Web 安全服务 (WSS) 帐户具有管理员权限，然后重试。
 
@@ -123,23 +123,23 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户与 Symantec Web Security SERVICE 同步 (WSS) **"。
 
-    ![Symantec Web Security Service (WSS) 用户映射](media/symantec-web-security-service/usermapping.png)
+    !["映射" 部分的屏幕截图，其中包含与 "同步 Azure Active Directory 用户到 Symantec Web 安全服务" 选项（称为）的同步选项。](media/symantec-web-security-service/usermapping.png)
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Symantec Web Security SERVICE (WSS) 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Symantec Web Security SERVICE (WSS) 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![Symantec Web Security Service (WSS) 用户映射](media/symantec-web-security-service/userattribute.png)
+    ![显示16个匹配属性的 "属性映射" 部分的屏幕截图。](media/symantec-web-security-service/userattribute.png)
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Symantec Web Security 服务**"。
 
-    ![Symantec Web Security Service (WSS) 用户映射](media/symantec-web-security-service/groupmapping.png)
+    !["映射" 部分的屏幕截图，其中包含 "将 Azure Active Directory 组同步到](media/symantec-web-security-service/groupmapping.png)
 
 11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Symantec Web Security SERVICE (WSS) 的组属性。 选为 " **匹配** " 属性的属性用于匹配 Symantec Web Security SERVICE (WSS) 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![Symantec Web Security Service (WSS) 用户映射](media/symantec-web-security-service/groupattribute.png)
+    !["属性映射" 部分的屏幕截图，其中显示了三个匹配属性。](media/symantec-web-security-service/groupattribute.png)
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

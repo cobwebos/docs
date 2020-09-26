@@ -6,21 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8b733d1e5eae9cae01233fda4be078bd188e07c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334355"
 ---
-# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>用 GPU 更新 Azure Stack Edge Pro 
+# <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
-本文介绍通过本地 web UI 和 Azure 门户在 Azure Stack Edge Pro 上安装更新所需的步骤。 应用软件更新或修补程序，使 Azure Stack Edge Pro 设备和关联的 Kubernetes cluaster 在设备上保持最新。 
+本文介绍通过本地 web UI 和 Azure 门户在 Azure Stack Edge Pro 上安装更新所需的步骤。 应用软件更新或修补程序，使 Azure Stack Edge Pro 设备和设备上关联的 Kubernetes 群集保持最新。 
+
+本文中所述的过程是使用不同版本的软件执行的，但该过程对于当前软件版本保持不变。
 
 > [!IMPORTANT]
-> - 更新 **2008** 对应于设备上的 **2.1.1328.1904** software 版本。 有关此更新的信息，请参阅 [发行说明](azure-stack-edge-gpu-2008-release-notes.md)。
+> - 更新 **2009** 对应于设备上的 **2.1.1358.2075** software 版本。 有关此更新的信息，请参阅 [发行说明](azure-stack-edge-gpu-2009-release-notes.md)。
 >
 > - 请记住，安装更新或修补程序会重新启动设备。 此更新要求按顺序应用两个更新。 首先应用设备软件更新，然后 Kubernetes 更新。 假设 Azure Stack Edge Pro 是单节点设备，则正在进行的任何 i/o 都将中断，设备软件更新的设备的停机时间最长为30分钟。
 
@@ -186,7 +188,7 @@ ms.locfileid: "90899502"
 
    ![更新设备](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
 
-3. 选择“应用”。  
+3. 选择“应用”。 
 
    ![更新设备](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
 
@@ -204,7 +206,7 @@ ms.locfileid: "90899502"
 
    <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)--> 
 
-8. 选择“应用”。  
+8. 选择“应用”。 
 
    ![更新设备](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
 
