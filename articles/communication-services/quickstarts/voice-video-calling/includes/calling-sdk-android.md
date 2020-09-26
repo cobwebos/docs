@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376801"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "90934669"
 ### <a name="install-the-package"></a>安装包
 
 <!-- TODO: update with instructions on how to download, install and add package to project -->
-找到项目级别的 gradle，并确保将添加 `mavenCentral()` 到和下的存储库列表中 `buildscript``allprojects`
+找到项目级别 build.gradle，确保将 `mavenCentral()` 添加到 `buildscript` 和 `allprojects` 下的存储库列表中
 ```groovy
 buildscript {
     repositories {
@@ -56,12 +56,12 @@ dependencies {
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理调用客户端库的 Azure 通信服务的一些主要功能：
+以下类和接口处理 Azure 通信服务呼叫客户端库的某些主要功能：
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient 是调用客户端库的主入口点。|
-| CallAgent | CallAgent 用于启动和管理调用。 |
+| CallClient| CallClient 是呼叫客户端库的主入口点。|
+| CallAgent | CallAgent 用于启动和管理呼叫。 |
 | CommunicationUserCredential | CommunicationUserCredential 用作实例化 CallAgent 的令牌凭据。|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>初始化 CallClient 并创建 CallAgent，并访问 DeviceManager
@@ -81,8 +81,8 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>发出传出呼叫并加入组呼叫
 
-若要创建并启动调用，需要调用 `CallClient.call()` 方法，并为 `Identifier` 被调用方 () 。
-若要加入组调用，需要调用 `CallClient.join()` 方法并提供 groupId。 组 Id 必须采用 GUID 或 UUID 格式。
+若要创建并启动调用，需要调用 `CallAgent.call()` 方法，并为 `Identifier` 被调用方 () 。
+若要加入组调用，需要调用 `CallAgent.join()` 方法并提供 groupId。 组 Id 必须采用 GUID 或 UUID 格式。
 
 调用创建和启动是同步的。 调用实例允许您订阅调用中的所有事件。
 
@@ -106,7 +106,7 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-with-video-camera"></a>使用 with 视频相机发出1:1 呼叫
@@ -266,7 +266,7 @@ catch(Exception e) {
 
 ### <a name="unregister-push-notification"></a>注销推送通知
 
-- 应用程序可以随时取消注册推送通知。 只需 `unregisterPushNotification()` 在 callAgent 上调用方法。
+- 应用程序可以随时取消注册推送通知。 `unregisterPushNotification()`在 callAgent 上调用方法以注销。
 
 ```java
 try {
@@ -281,7 +281,7 @@ catch(Exception e) {
 你可以访问调用属性并在调用以管理与视频和音频相关的设置期间执行各种操作。
 
 ### <a name="call-properties"></a>调用属性
-* 获取此调用的唯一 Id。
+* 获取此调用的唯一 ID。
 ```java
 String callId = call.getCallId();
 ```
@@ -300,12 +300,12 @@ CommunicationIdentifier callerId = call.getCallerId();
 ```java
 CallState callState = call.getState();
 ```
-它返回调用的 reprensting 当前状态的字符串：
+它返回表示调用的当前状态的字符串：
 * "无"-初始调用状态
 * "传入"-表示调用是传入的，它必须接受或拒绝
 * "正在连接"-在调用或接受调用后初始转换状态
 * "震铃"-对于传出呼叫，表示呼叫正在拨打远程参与者，这是 "传入" 的一方
-* "EarlyMedia"-表示在连接调用之前播放公告的状态
+* "EarlyMedia"-表示在连接呼叫之前播放公告的状态
 * "已连接"-调用已连接
 * "保持"-呼叫处于暂挂状态，本地终结点与远程参与者之间没有媒体流动 (s) 
 * "断开"-在调用进入 "断开连接" 状态之前转换状态
@@ -385,7 +385,7 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 * 获取此远程参与者的标识符。
 标识是一个 "标识符" 类型
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * 获取此远程参与者的状态。
@@ -397,7 +397,7 @@ ParticipantState state = remoteParticipant.getState();
 * 参与者连接到呼叫时的 "正在连接"-转换状态
 * "已连接"-参与者已连接到呼叫
 * "保持"-参与者处于暂停状态
-* "EarlyMedia"-参与者连接到呼叫之前播放公告
+* "EarlyMedia"-在参与者连接到呼叫之前播放公告
 * "断开连接"-最终状态-参与者已与呼叫断开连接
 
 
@@ -476,7 +476,7 @@ void onRemoteParticipantVideoStreamsUpdated(RemoteParticipant participant, Remot
 ### <a name="remote-video-stream-properties"></a>远程视频流属性
 远程视频流具有几个属性
 
-* `Id` -远程视频流的 Id
+* `Id` -远程视频流的 ID
 ```java
 int id = remoteVideoStream.getId();
 ```

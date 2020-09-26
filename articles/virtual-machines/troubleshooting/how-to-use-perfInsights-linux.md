@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360525"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -61,7 +61,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>PerfInsights 收集的信息类型
 
-收集有关 Linux 虚拟机、操作系统、块设备、高资源使用者、配置和各种日志的信息。 下面是更多详细信息：
+收集有关 Linux 虚拟机、操作系统、块设备、高资源使用者、配置和各种日志的信息。 以下是更多详细信息：
 
 - 操作系统
   - Linux 分发版和版本
@@ -218,8 +218,8 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 " **概述** " 选项卡提供了基本的运行详细信息和虚拟机信息。 " **发现** " 选项卡将显示 PerfInsights 报表所有不同部分的建议摘要。
 
-![PerfInsights 报表的屏幕截图](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![PerfInsights 报表的屏幕截图](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![PerfInsights 报表的 "概述" 选项卡的屏幕截图。](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![PerfInsights 报表的 "Linux" 选项卡的屏幕截图。](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > 分类为“高”的发现结果是可能会导致性能问题发生的已知问题。 分类为“中等”的发现结果表示配置不是最佳，不一定会导致性能问题发生。 分类“低”的发现结果只是参考性陈述。

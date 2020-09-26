@@ -4,17 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ab5a106d077713c1332bfb1ba4608d9410086c9f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: devx-track-js
+ms.openlocfilehash: f8c7b9ee90e947534d6f938b1eb22f58b57270e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186284"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377201"
 ---
 :::row:::
     :::column span="3":::
-        Speech SDK for JavaScript 作为 npm 包提供，请参阅<a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">cognitiveservices account- <span class="docon docon-navigate-external x-hidden-focus"></span> </a> <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a>---------------------------------
+        JavaScript 语音 SDK 以 npm 包的形式提供（请参阅 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">microsoft-cognitiveservices-speech-sdk <span class="docon docon-navigate-external x-hidden-focus"></span></a> 及其配套的 GitHub 存储库库 <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">cognitive-services-speech-sdk-js <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
     :::column-end:::
     :::column:::
         <br>
@@ -25,11 +25,11 @@ ms.locfileid: "88186284"
 :::row-end:::
 
 > [!TIP]
-> 尽管 Speech SDK for JavaScript 作为 npm 包提供，因此客户端 web 浏览器和 Node.js 都可以使用它-请考虑每个环境的各种体系结构含义。 例如， <a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank"> (DOM) <span class="docon docon-navigate-external x-hidden-focus"></span> 的文档对象模型</a>对服务器端应用程序不可用，因为该<a href="https://nodejs.org/api/fs.html" target="_blank">文件系统 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>不适用于客户端应用程序。
+> 尽管 JavaScript 语音 SDK 以 npm 包的形式提供，但是客户端 Web 浏览器和 Node.js 都可以使用它 - 请考虑每种环境的各种体系结构隐含内容。 例如， <a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank"> (DOM) <span class="docon docon-navigate-external x-hidden-focus"></span> 的文档对象模型</a>对服务器端应用程序不可用，因为该<a href="https://nodejs.org/api/fs.html" target="_blank">文件系统 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>不适用于客户端应用程序。
 
 ### <a name="nodejs-package-manager-npm"></a>Node.js 包管理器 (NPM)
 
-若要安装 Speech SDK for JavaScript，请运行以下 `npm install` 命令。
+若要安装 JavaScript 语音 SDK，请运行以下 `npm install` 命令。
 
 ```nodejs
 npm install microsoft-cognitiveservices-speech-sdk

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377258"
 ---
 将 VM 置于单个区域可以减少实例之间的物理距离。 将它们置于单一可用性区域中也会减少它们的物理距离。 但是，随着 Azure 占用空间的增加，单个可用性区域可能会跨多个物理数据中心，这可能导致网络延迟，对应用程序造成影响。 
 
@@ -47,6 +47,39 @@ ms.locfileid: "89570201"
 -   对于你在其中添加和删除 VM 实例的弹性工作负荷，在部署上施加邻近放置组约束可能会导致去满足请求时失败，进而导致 AllocationFailure 错误  。 
 - 根据需要停止（解除分配）再启动 VM 是实现弹性的另一种方式。 由于停止（解除分配）VM 后不会保留容量，因此再次启动该 VM 可能会导致 AllocationFailure 错误  。
 
+## <a name="planned-maintenance-and-proximity-placement-groups"></a>计划内维护和邻近性放置组
+
+计划内维护事件（如 Azure 数据中心的硬件退役）可能会影响邻近位置组中的资源对齐。 可以将资源移到其他数据中心，从而破坏与邻近位置组相关的归置和延迟预期。
+
+### <a name="check-the-alignment-status"></a>检查对齐状态
+
+您可以执行以下操作来检查邻近位置组的对齐状态。
+
+
+- 可以使用门户、CLI 和 PowerShell 查看邻近性放置组归置状态。
+
+    -   使用 PowerShell 时，可以通过包含可选参数 "-ColocationStatus" 使用 AzProximityPlacementGroup cmdlet 来获取归置状态。
+
+    -   使用 CLI 时， `az ppg show` 通过包含可选参数 "--归置-status"，可以使用获取归置状态。
+
+- 对于每个邻近位置组， **归置状态** 属性提供了分组资源的当前对齐状态摘要。 
+
+    - **对齐**：资源在邻近位置组的信封延迟时间内。
+
+    - **未知**：至少释放了一个 VM 资源。 成功启动后，状态应返回到 "已 **对齐**"。
+
+    - **不对齐**：至少一个 VM 资源与邻近位置组不匹配。 不对齐的特定资源也会在成员资格部分中单独调用
+
+- 对于可用性集，可以在 "可用性集概述" 页中查看有关各个 Vm 的对齐的信息。
+
+- 对于规模集，可在规模集的 "**概述**" 页的 "**实例**" 选项卡中查看有关各个实例的对齐的信息。 
+
+
+### <a name="re-align-resources"></a>重新对齐资源 
+
+如果邻近组为 `Not Aligned` ，则可以 stop\deallocate，然后重新启动受影响的资源。 如果 VM 位于可用性集或规模集中，则必须先 stopped\deallocated 可用性集中的所有 Vm，然后再重新启动它们。
+
+如果由于部署约束导致分配失败，则可能需要 stop\deallocate 受影响的邻近位置组中的所有资源 (包括首先) 对齐的资源，然后重新启动它们以还原对齐。
 
 ## <a name="best-practices"></a>最佳做法 
 - 若要实现最低的延迟，请将邻近放置组与加速网络一起使用。 有关详细信息，请参阅[创建具有加速网络的 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或[创建具有加速网络的 Windows 虚拟机](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

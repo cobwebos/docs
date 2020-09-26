@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3e85d2ef9d75bbff6357466e76ffcf60e3716e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273668"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的密码哈希同步
 
@@ -172,7 +172,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 有关详细信息，请参阅[配置已加入混合 Azure AD 的设备](../devices/hybrid-azuread-join-plan.md)。
 
-#### <a name="branding"></a>署名
+#### <a name="branding"></a>品牌打造
 
 如果你的组织已[自定义 AD FS 登录页](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以使显示的内容与组织更相关，请考虑[在 Azure AD 登录页中使用类似的自定义项](../fundamentals/customize-branding.md)。
 
@@ -207,7 +207,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 * 使用 **Convert-MSOLDomainToFederated** cmdlet 将托管域转换为联合域。
 * 根据需要配置其他声明规则。
 
-### <a name="plan-communications"></a>规划沟通
+### <a name="plan-communications"></a>计划通信
 
 规划部署和支持的一个重要组成部分是确保主动通知最终用户将要发生哪些变化。 用户应该提前知道他们可能会遇到哪种情况，以及需要做些什么。 
 
@@ -302,7 +302,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 5. 在“启用单一登录”页上输入域管理员帐户的凭据，然后选择“下一步”。********
 
-   ![“启用单一登录”页的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
+   !["启用单一登录" 页的屏幕截图，你可以在其中输入域管理员帐户凭据。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
    > [!NOTE]
    > 需要使用域管理员帐户凭据来启用无缝 SSO。 该过程将完成以下操作，而这些操作需要这些提升的权限。 域管理员帐户凭据不存储在 Azure AD Connect 或 Azure AD 中。 域管理员帐户凭据仅用于启用该功能。 成功完成该过程后会丢弃这些凭据。
@@ -324,7 +324,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    * “无缝单一登录”设置为“已启用”。********
    * “密码同步”设置为“已启用”。********<br /> 
 
-   ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![显示 Azure AD 门户的用户登录部分中的设置的屏幕截图。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 跳到[测试和后续步骤](#testing-and-next-steps)。
 

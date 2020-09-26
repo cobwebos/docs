@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934665"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376558"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -22,32 +22,32 @@ ms.locfileid: "90934665"
 
 ### <a name="creating-the-xcode-project"></a>创建 Xcode 项目
 
-在 Xcode 中，创建一个新的 iOS 项目，并选择 " **单视图应用程序** " 模板。 此快速入门使用 [SwiftUI 框架](https://developer.apple.com/xcode/swiftui/)，因此应将 **语言** 设置为 **Swift** ，并将 **用户界面** 设置为 **SwiftUI**。 在本快速入门过程中，不会创建单元测试或 UI 测试。 可以随意取消选中 " **包括单元测试** "，也可以取消选中 " **包括 UI 测试**"。
+在 Xcode 中，创建新的 iOS 项目，并选择“单视图应用”模板。 此快速入门使用 [SwiftUI 框架](https://developer.apple.com/xcode/swiftui/)，因此应将 **语言** 设置为 **Swift** ，并将 **用户界面** 设置为 **SwiftUI**。 在本快速入门过程中，不会创建单元测试或 UI 测试。 可以随意取消选中 " **包括单元测试** "，也可以取消选中 " **包括 UI 测试**"。
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="显示 Xcode 中的 "新建新项目" 窗口的屏幕截图。":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="显示 Xcode 中的创建新项目窗口的屏幕截图。":::
 
 ### <a name="install-the-package"></a>安装包
 
-将调用客户端库及其依赖项的 Azure 通信服务添加 (AzureCore 和 AzureCommunication) 到你的项目。
+将 Azure 通信服务呼叫客户端库及其依赖项（AzureCore.framework 和 AzureCommunication.framework）添加到你的项目。
 
 > [!NOTE]
-> 随着 AzureCommunicationCalling SDK 的发行，你会发现一个 bash 脚本 `BuildAzurePackages.sh` 。 运行脚本时， `sh ./BuildAzurePackages.sh` 将显示生成的框架包的路径，需要在下一步中将该路径导入到示例应用。 请注意，在运行脚本之前，需要设置 Xcode 命令行工具： Start Xcode，选择 "首选项 > 位置"。 选择命令行工具的 Xcode 版本。
+> 随着 AzureCommunicationCalling SDK 的发布，你会找到一个 bash 脚本 `BuildAzurePackages.sh`。 运行 `sh ./BuildAzurePackages.sh` 时，该脚本会提供生成的框架包的路径，需要在下一步中将该路径导入到示例应用中。 请注意，在运行该脚本之前，需要设置 Xcode 命令行工具（如果未设置）：启动 Xcode，选择“首选项 -> 位置”。 选择命令行工具的 Xcode 版本。 **请注意，BuildAzurePackages.sh 脚本仅适用于 Xcode 11.5 及更高版本。**
 
-1. 下载调用适用于 iOS 的客户端库的 Azure 通信服务。
+1. 下载适用于 iOS 的 Azure 通信服务呼叫客户端库。
 2. 在 Xcode 中，单击项目文件，并选择生成目标以打开项目设置编辑器。
-3. 在 " **常规** " 选项卡下，滚动到 " **框架、库和嵌入的内容** " 部分，然后单击 **"+"** 图标。
-4. 在对话框的左下角，选择 " **添加文件**"，导航到非压缩的客户端库包的 **AzureCommunicationCalling** 目录。
-    1. 重复最后一个步骤来添加 **AzureCore** 和 **AzureCommunication**。
-5. 打开项目 "设置编辑器" 的 " **生成设置** " 选项卡，滚动到 " **搜索路径** " 部分。 为包含**AzureCommunicationCalling**的目录添加新的 "**框架搜索路径**" 条目。
-    1. 添加另一个指向包含依赖项的文件夹的 "框架搜索路径" 项。
+3. 在“常规”选项卡下，滚动到“框架、库和嵌入内容”部分，然后单击“+”图标  。
+4. 在对话框的左下角，选择“添加文件”，导航到解压缩的客户端库包的 AzureCommunicationCalling.framework 目录 。
+    1. 重复最后一步，以便添加 AzureCore.framework 和 AzureCommunication.framework 。
+5. 打开项目设置编辑器的“生成设置”选项卡，滚动到“搜索路径”部分 。 为包含 AzureCommunicationCalling.framework 的目录添加新的“框架搜索路径”条目 。
+    1. 添加另一个指向包含依赖项的文件夹的“框架搜索路径”条目。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="显示更新 XCode 中框架搜索路径的屏幕截图。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="显示在 XCode 中更新框架搜索路径的屏幕截图。":::
 
 ### <a name="request-access-to-the-microphone"></a>请求访问麦克风
 
-若要访问设备的麦克风，需要使用更新应用的信息属性列表 `NSMicrophoneUsageDescription` 。 将关联的值设置为 `string` 将包含在系统用于请求用户请求访问权限的对话框中。
+若要访问设备的麦克风，需要使用 `NSMicrophoneUsageDescription` 更新应用的信息属性列表。 将关联值设置为将包含在系统用于向用户请求访问权限的对话框中的 `string`。
 
-右键单击 `Info.plist` 项目树的条目，然后选择 "**以源代码形式打开**"  >  **Source Code**。 在顶级部分中添加以下行 `<dict>` ，然后保存该文件。
+右键单击项目树的 `Info.plist` 条目，然后选择“打开为” > “源代码” 。 将以下代码行添加到顶层 `<dict>` 节，然后保存文件。
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -56,7 +56,7 @@ ms.locfileid: "90934665"
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
 
-打开项目的 **ContentView** 文件，并将 `import` 声明添加到文件的顶部以导入 `AzureCommunicationCalling library` 。 此外，导入还 `AVFoundation` 需要在代码中为音频权限请求提供此项。
+打开项目的 ContentView.swift 文件，然后将 `import` 声明添加到文件顶部以导入 `AzureCommunicationCalling library`。 此外，导入还 `AVFoundation` 需要在代码中为音频权限请求提供此项。
 
 ```swift
 import AzureCommunicationCalling
@@ -73,7 +73,7 @@ import AVFoundation
 | ACSCallClient | ACSCallClient 是调用客户端库的主入口点。|
 | ACSCallAgent | ACSCallAgent 用于启动和管理调用。 |
 | CommunicationUserCredential | CommunicationUserCredential 用作实例化 CallAgent 的令牌凭据。| 
-| CommunicationIndentifier | CommunicationIndentifier 用于表示用户的标识，可以是以下项之一： CommunicationUser/PhoneNumber/CallingApplication。 |
+| CommunicationIndentifier | CommunicationIndentifier 用于表示用户的标识，可以是以下项之一：CommunicationUser/PhoneNumber/CallingApplication。 |
 
 > [!NOTE]
 > 实现事件委托时，应用程序必须持有对需要事件订阅的对象的强引用。 例如， `ACSRemoteParticipant` 在调用方法时返回对象， `call.addParticipant` 而应用程序将委托设置为侦听时 `ACSRemoteParticipantDelegate` ，应用程序必须持有对对象的强引用 `ACSRemoteParticipant` 。 否则，如果收集此对象，则当调用 SDK 尝试调用对象时，委托将引发严重异常。

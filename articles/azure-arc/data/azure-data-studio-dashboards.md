@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: c2dd0ce3c3e9a0f1f699b58ed2657394ad9acbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273217"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio 仪表板
 
@@ -24,7 +24,7 @@ ms.locfileid: "90934576"
 
 ## <a name="connecting-to-a-data-controller"></a>连接到数据控制器
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>先决条件
 
 - 下载 [Azure Data Studio](https://aka.ms/getazuredatastudio)
 - 已安装 Azure Arc 扩展
@@ -49,7 +49,7 @@ NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)
 controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
 ```
 
-如果使用的是 LoadBalancer 类型，则需要复制外部 IP 地址和端口号300080。  如果使用的是 NodePort，则需要使用 Kubernetes API 服务器的 IP 地址和端口号，该端口号在端口 (S) 列中列出。
+如果使用的是 LoadBalancer 类型，则需要复制外部 IP 地址和端口号。 如果使用的是 NodePort，则需要使用 Kubernetes API 服务器的 IP 地址和端口号，该端口号在端口 (S) 列中列出。
 
 现在，你将需要通过组合如下信息来构造终结点的 URL：
 

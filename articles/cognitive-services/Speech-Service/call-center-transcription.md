@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360644"
 ---
 # <a name="speech-service-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -147,4 +147,4 @@ GitHub 中提供了每个语音服务功能的示例代码。 这些示例涵盖
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [免费获取语音服务订阅密钥](get-started.md)
+> [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
