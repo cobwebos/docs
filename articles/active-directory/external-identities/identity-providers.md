@@ -1,6 +1,6 @@
 ---
 title: 外部标识的标识提供者 - Azure AD
-description: Azure Active Directory B2B 协作支持多重身份验证 (MFA)，以便对公司应用程序进行选择性访问
+description: 了解如何使用 Azure AD 作为默认标识提供者与外部用户共享。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2284d015b451872753dd0855cac42e6f1926545c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908251"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265705"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部标识的标识提供者
 

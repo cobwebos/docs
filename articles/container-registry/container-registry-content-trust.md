@@ -1,14 +1,14 @@
 ---
 title: 管理已签名的映像
-description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任是高级服务层的一项功能。
+description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 “内容信任”是高级服务层级的一项功能。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253473"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -19,7 +19,7 @@ Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模
 
 ## <a name="how-content-trust-works"></a>内容信任工作原理
 
-对于在设计时需考虑安全性的任何分布式系统来说，重要的是验证进入系统的数据的源和完整性。  数据的使用者需要能够验证数据的发布者（源），并确保数据在发布后未修改过（完整性）。 
+对于在设计时需考虑安全性的任何分布式系统来说，重要的是验证进入系统的数据的源和完整性。 数据的使用者需要能够验证数据的发布者（源），并确保数据在发布后未修改过（完整性）。 
 
 作为映像发布者，你可以通过内容信任对发布到注册表的映像进行**签名**。 映像的使用者（从注册表拉取映像的人或系统）可以将其客户端配置为仅拉取签名的映像。 当映像使用者拉取签名的映像时，其 Docker 客户端会验证映像的完整性。 在此模型中，可以向使用者确保你注册表中的签名映像确实是你发布的，且自发布后未作修改。
 
@@ -40,7 +40,7 @@ Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模
 
 若要为注册表启用内容信任，请先在 Azure 门户中导航到注册表。 在“策略”下选择“内容信任” > “启用” > “保存”。 你还可以在 Azure CLI 中使用 [az acr config content trust update][az-acr-config-content-trust-update] 命令。
 
-![在 Azure 门户中为注册表启用内容信任][content-trust-01-portal]
+![屏幕截图显示 Azure 门户中注册表的启用内容信任。][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>启用客户端内容信任
 
@@ -114,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服务主体的 **appId**、**objectId** 或其 **servicePrincipalName** 之一。 若要详细了解如何使用服务主体和 Azure 容器注册表，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份角色的信息，请参阅[使用 RBAC 和 Azure CLI 管理对 azure 资源的访问权限](../role-based-access-control/role-assignments-cli.md)和[排查 azure RBAC 问题](../role-based-access-control/troubleshooting.md)。
+> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份角色的信息，请参阅 [使用 RBAC 和 Azure CLI 管理对 azure 资源的访问权限](../role-based-access-control/role-assignments-cli.md) 和 [排查 azure RBAC 问题](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送受信任的映像
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 8/11/2020
+ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 972f9b1ac96ca180aa6eaeead7cde51b60ec0e93
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459991"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278476"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
@@ -51,7 +51,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 
         卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 你可以使用任何字母数字字符。   
 
-        不能将 `default` 用作卷名。
+        不能将 `default` 或 `bin` 用作卷名称。
 
     * **容量池**  
         指定要在其中创建卷的容量池。
@@ -60,6 +60,11 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
         指定分配给卷的逻辑存储量。  
 
         “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
+
+    * **吞吐量 (MiB/秒) **   
+        如果在手动 QoS 容量池中创建了卷，请指定要用于卷的吞吐量。   
+
+        如果卷是在自动 QoS 容量池中创建的，则此字段中显示的值为 (配额 x 服务级别吞吐量) 。   
 
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (VNet)。  
