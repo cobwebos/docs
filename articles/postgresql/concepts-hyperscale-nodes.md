@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/28/2019
-ms.openlocfilehash: a02583825f4a1ef15992aa2307e7f666d5abeaba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b3eda2c8de8319552f32938f20ff98af0e0a49fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136450"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314820"
 ---
 # <a name="nodes-and-tables-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的节点和表–超大规模 (Citus) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "88136450"
 
 每个服务器组都有一个协调器节点和多个辅助角色。 应用程序将其查询发送到协调器节点，该节点将其中继到相关的工作线程并累计其结果。 应用程序无法直接连接到辅助角色。
 
-超大规模 (Citus) 使数据库管理员能够在不同的工作节点上*分发*表，并存储不同的行。 分布式表是超大规模性能的关键所在。 如果无法分发表，则会将它们完全留在协调器节点上，并且无法利用跨计算机并行。
+超大规模 (Citus) 使数据库管理员能够在不同的工作节点上 *分发* 表，并存储不同的行。 分布式表是超大规模 (Citus) 性能的关键。 如果无法分发表，则会将它们完全留在协调器节点上，并且无法利用跨计算机并行。
 
 对于分布式表的每个查询，协调器会将其路由到单个辅助角色节点，或将其并行在多个节点上，具体取决于所需的数据是位于单个节点上还是在多个节点上。 协调器通过咨询元数据表确定要执行的操作。 这些表跟踪辅助角色节点的 DNS 名称和运行状况，以及跨节点分布的数据。
 

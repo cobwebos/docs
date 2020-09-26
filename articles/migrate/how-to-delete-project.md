@@ -1,24 +1,24 @@
 ---
 title: 删除 Azure Migrate 项目
-description: 介绍如何创建 Azure Migrate 项目并添加评估/迁移工具。
+description: 本文介绍如何使用 Azure 门户删除 Azure Migrate 项目。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307868"
 ---
 # <a name="delete-an-azure-migrate-project"></a>删除 Azure Migrate 项目
 
-本文介绍如何删除[Azure Migrate](./migrate-services-overview.md)项目。
+本文介绍如何删除 [Azure Migrate](./migrate-services-overview.md) 项目。
 
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 删除项目之前：
 
@@ -27,19 +27,19 @@ ms.locfileid: "86109869"
     - 不会自动删除此工作区。 请手动删除它。
     - 在删除工作区之前，验证工作区的用途。 同一 Log Analytics 工作区可用于多个方案。
     - 在删除项目之前，你可以在 OMS 工作区中的 " **Azure Migrate 服务器**  >  **Azure Migrate-服务器评估**" 中找到工作**OMS Workspace**区的链接。
-    - 若要在删除项目后删除工作区，请在相关资源组中找到工作区，并按照[这些说明](../azure-monitor/platform/delete-workspace.md)进行操作。
+    - 若要在删除项目后删除工作区，请在相关资源组中找到工作区，并按照 [这些说明](../azure-monitor/platform/delete-workspace.md)进行操作。
 
 
 ## <a name="delete-a-project"></a>删除项目
 
 
 1. 在 Azure 门户中，打开在其中创建项目的资源组。
-2. 在 "资源组" 页上，选择 "**显示隐藏的类型**"。
+2. 在 "资源组" 页上，选择 " **显示隐藏的类型**"。
 3. 选择要删除的项目和关联的资源。
     - Azure Migrate 项目的资源类型为 migrateprojects **/**。
     - 在下一部分中，查看在 Azure Migrate 项目中创建的用于发现、评估和迁移的资源。
     - 如果资源组仅包含 Azure Migrate 项目，则可以删除整个资源组。
-    - 如果要从 Azure Migrate 的以前版本中删除项目，则步骤是相同的。 这些项目的资源类型为 "**迁移项目**"。
+    - 如果要从 Azure Migrate 的以前版本中删除项目，则步骤是相同的。 这些项目的资源类型为 " **迁移项目**"。
 
 
 ## <a name="created-resources"></a>创建的资源
@@ -51,7 +51,7 @@ ms.locfileid: "86109869"
 
 ### <a name="vmwarephysical-server"></a>VMware/物理服务器
 
-**资源** | **Type**
+**资源** | **类型**
 --- | ---
 "Appliancename" kv | 密钥保管库
 "Appliancename" 站点 | OffAzure/VMwareSites
@@ -67,7 +67,7 @@ migrateapplisbns16041 | 服务总线命名空间
 
 ### <a name="hyper-v-vm"></a>Hyper-V VM 
 
-**资源** | **Type**
+**资源** | **类型**
 --- | ---
 ProjectName | Microsoft. 迁移/migrateprojects
 "项目名称" 项目 | Microsoft. 迁移/assessmentProjects
@@ -78,4 +78,4 @@ HyperV * 站点 | OffAzure/HyperVSites
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何添加其他[评估](how-to-assess.md)和[迁移](how-to-migrate.md)工具。 
+了解如何添加其他 [评估](how-to-assess.md) 和 [迁移](how-to-migrate.md) 工具。 

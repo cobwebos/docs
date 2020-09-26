@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308378"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -34,12 +34,12 @@ Hive 的一项优势是能够将元数据导出到外部数据库（也称为 Hi
 HDInsight 3.6 和 HDInsight 4.0 ACID 表以不同的方式理解 ACID 增量数据。 在迁移之前唯一需要执行的操作是针对 3.6 版群集上的每个 ACID 表运行“主要”压缩。 有关压缩的详细信息，请参阅 [Hive 语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact)。
 
 ### <a name="2-copy-sql-database"></a>2.复制 SQL 数据库
-创建外部元存储的新副本。 如果你使用的是外部元存储，则创建元存储副本的一种安全且简单的方法是使用函数将[数据库还原](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore)为其他名称 `RESTORE` 。  请参阅[在 Azure HDInsight 中使用外部元数据存储](../hdinsight-use-external-metadata-stores.md)，以详细了解如何将外部元存储附加到 HDInsight 群集。
+创建外部元存储的新副本。 如果你使用的是外部元存储，则创建元存储副本的一种安全且简单的方法是使用函数将 [数据库还原](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) 为其他名称 `RESTORE` 。  请参阅[在 Azure HDInsight 中使用外部元数据存储](../hdinsight-use-external-metadata-stores.md)，以详细了解如何将外部元存储附加到 HDInsight 群集。
 
 ### <a name="3-upgrade-metastore-schema"></a>3.升级元存储架构
 完成元存储的**复制**后，在现有 HDInsight 3.6 群集上运行[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)中的架构升级脚本，将新的元存储升级到 Hive 3 架构。 （此步骤不需要将新的元存储连接到群集。）这样，便可以将数据库附加为 HDInsight 4.0 元存储。
 
-接下来使用下表中的值。 请将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为 Hive 元存储副本**** 的相应值，并以空格分隔。 指定 SQL 服务器名称时，请不要包含“.database.windows.net”。
+接下来使用下表中的值。 请将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为 Hive 元存储副本的相应值，并以空格分隔。 指定 SQL 服务器名称时，请不要包含“.database.windows.net”。
 
 |属性 | Value |
 |---|---|
@@ -117,16 +117,16 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
 
 1. 使用[安全外壳 (SSH) 客户端](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 HDInsight 3.6 群集。
 
-1. 在打开的 SSH 会话中，下载以下脚本文件，以生成名为 alltables.hql**** 的文件。
+1. 在打开的 SSH 会话中，下载以下脚本文件，以生成名为 alltables.hql 的文件。
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
     chmod 755 exporthive_hdi_3_6.sh
     ```
 
-    * 对于常规 HDInsight 群集，不使用 ESP，只需执行 `exporthive_hdi_3_6.sh` 。
+    * 对于没有 ESP 的常规 HDInsight 群集，只需执行 `exporthive_hdi_3_6.sh`。
 
-    * 对于带有 ESP 的群集，kinit 并修改 beeline 的参数：运行以下，为具有完全 Hive 权限的 Azure AD 用户定义用户和域。
+    * 对于使用 ESP 的群集，使用 kinit 并将参数修改为 beeline：运行以下命令，为具有完全 Hive 权限的 Azure AD 用户定义用户和域。
 
         ```bash
         USER="USER"  # replace USER
@@ -141,19 +141,19 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
         ./exporthive_hdi_3_6.sh "$BEE_CMD"
         ```
 
-1. 退出 SSH 会话。 然后输入一条 scp 命令，以在本地下载 alltables.hql****。
+1. 退出 SSH 会话。 然后输入一条 scp 命令，以在本地下载 alltables.hql。
 
     ```bash
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
     ```
 
-1. 将 alltables.hql**** 上传到新的 HDInsight 群集。**
+1. 将 alltables.hql 上传到新的 HDInsight 群集。
 
     ```bash
     scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-1. 然后使用 SSH 连接到新的** HDInsight 4.0 群集。 在此群集的 SSH 会话中运行以下代码：
+1. 然后使用 SSH 连接到新的 HDInsight 4.0 群集。 在此群集的 SSH 会话中运行以下代码：
 
     不使用 ESP：
 
@@ -187,7 +187,7 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
 1. 在 HDInsight 3.6 群集中导航到 Ranger 服务管理器面板。
 2. 导航到名为 **HIVE** 的策略，并将该策略导出到某个 JSON 文件。
 3. 确保导出的策略 JSON 中引用的所有用户都存在于新群集中。 如果该策略 JSON 中引用的某个用户不存在于新群集中，请将该用户添加到新群集，或者从策略中删除引用。
-4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。****
+4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。
 5. 导航到名为 **HIVE** 的策略，并导入步骤 2 中导出的 Ranger 策略 JSON。
 
 ## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>在测试应用中检查兼容性并根据需要修改代码
@@ -208,30 +208,9 @@ HDInsight 3.6 和 4.0 群集必须使用同一存储帐户。
 
 ## <a name="query-execution-across-hdinsight-versions"></a>跨 HDInsight 版本执行查询
 
-在 HDInsight 3.6 群集中可以通过两种方式执行和调试 Hive/LLAP 查询。 HiveCLI 提供命令行体验，而 Tez 视图/Hive 视图提供基于 GUI 的工作流。
+在 HDInsight 3.6 群集中可以通过两种方式执行和调试 Hive/LLAP 查询。 HiveCLI 提供了命令行体验， [Tez 视图/Hive 视图](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) 提供了基于 GUI 的工作流。
 
-在 HDInsight 4.0 中，HiveCLI 已由 Beeline 取代。 HiveCLI 是 Hiveserver 1 的 thrift 客户端，Beeline 是用于访问 Hiveserver 2 的 JDBC 客户端。 Beeline 还可用于连接 JDBC 兼容的其他任何数据库终结点。 Beeline 可以现成地在 HDInsight 4.0 上使用，而无需进行任何安装。
-
-在 HDInsight 3.6 中，用来与 Hive 服务器交互的 GUI 客户端是 Ambari Hive 视图。 Ambari 视图不附带 HDInsight 4.0。 我们为客户提供了一种使用数据分析工作室（DAS）的方法，该方法不是核心 HDInsight 服务。 DAS 不会随 HDInsight 群集一起提供，并且不是正式支持的程序包。 但是，可以使用[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)在群集上安装 DAS，如下所示：
-
-|Property | Value |
-|---|---|
-|脚本类型|- Custom|
-|名称|转移|
-|Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|节点类型|头|
-
-等待10到15分钟，然后使用以下 URL 启动 Data Analytics Studio： `https://CLUSTERNAME.azurehdinsight.net/das/` 。
-
-在访问 DAS 之前，可能需要刷新 Ambari UI 和/或重新启动所有 Ambari 组件。
-
-安装 DAS 后，如果看不到在查询查看器中运行的查询，请执行以下步骤：
-
-1. 根据[此 DAS 安装故障排除指南](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)中所述，设置 Hive、Tez 和 DAS 的配置。
-2. 确保以下 Azure 存储目录配置为页 Blob，并且它们列在 `fs.azure.page.blob.dirs` 之下：
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. 在两个头节点上重启 HDFS、Hive、Tez 和 DAS。
+在 HDInsight 4.0 中，HiveCLI 已由 Beeline 取代。 Tez 视图/Hive 视图提供基于 GUI 的工作流。 HiveCLI 是 Hiveserver 1 的 thrift 客户端，Beeline 是用于访问 Hiveserver 2 的 JDBC 客户端。 Beeline 也可用于连接到任何其他与 JDBC 兼容的数据库终结点。 Beeline 可以现成地在 HDInsight 4.0 上使用，而无需进行任何安装。
 
 ## <a name="next-steps"></a>后续步骤
 

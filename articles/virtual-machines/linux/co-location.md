@@ -1,16 +1,16 @@
 ---
 title: 并置 Linux VM
-description: 了解并置 Azure VM 资源如何改善延迟。
+description: 了解如何归置用于 Linux 的 Azure VM 资源如何提高延迟。
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 000c8c8955314060ae9bdedb96b086a509fb3e96
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279717"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>并置资源以改善延迟
 
@@ -28,4 +28,4 @@ ms.locfileid: "87368636"
 
 了解如何[优化网络吞吐量](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。  
 
-了解如何[结合使用邻近组和 SAP 应用程序](../workloads/sap/sap-proximity-placement-scenarios.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+了解如何 [结合使用邻近组和 SAP 应用程序](../workloads/sap/sap-proximity-placement-scenarios.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

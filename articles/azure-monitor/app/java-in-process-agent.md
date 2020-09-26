@@ -3,12 +3,12 @@ title: 监视任何环境中的 Java 应用程序 - Azure Monitor Application In
 description: 对在任何环境中运行的 Java 应用程序进行应用程序性能监视，而不需要检测该应用。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370028"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure Monitor Application Insights - 公共预览版
 
@@ -20,15 +20,17 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 
 你仍可以从应用程序发送自定义遥测。 3\.0 代理会跟踪它并将其与所有自动收集的遥测数据相关联。
 
+3.0 代理支持 Java 8 及更高版本。
+
 ## <a name="quickstart"></a>快速入门
 
 **1.下载代理**
 
-下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
+下载 [applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar)
 
 **2.将 JVM 指向该代理**
 
-将 `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` 添加到应用程序的 JVM 参数
+将 `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` 添加到应用程序的 JVM 参数
 
 典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
 
@@ -44,7 +46,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-另一种方法是创建一个名为 `ApplicationInsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.0-PREVIEW.5.jar` 所在的目录中，该文件包含以下内容：
+另一种方法是创建一个名为 `ApplicationInsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.0-PREVIEW.7.jar` 所在的目录中，该文件包含以下内容：
 
 ```json
 {
@@ -128,17 +130,17 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ### <a name="supported-custom-telemetry"></a>支持的自定义遥测
 
-下表显示了当前支持的自定义遥测类型，您可以使用它们来补充 Java 3.0 代理。 总而言之，通过 micrometer 支持自定义指标，可通过日志记录框架启用自定义异常和跟踪，并通过[Application Insights Java 2.X SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x)支持任何类型的自定义遥测。 
+下表显示了当前支持的自定义遥测类型，您可以使用它们来补充 Java 3.0 代理。 总而言之，通过 micrometer 支持自定义指标，可通过日志记录框架启用自定义异常和跟踪，并通过 [Application Insights Java 2.X SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x)支持任何类型的自定义遥测。 
 
 |                     | Micrometer | Log4j、logback、七月 | 2.x SDK |
 |---------------------|------------|---------------------|---------|
 | **自定义事件**   |            |                     |  是    |
 | **自定义指标**  |  是       |                     |  是    |
-| **依赖关系**    |            |                     |  是    |
+| **依赖项**    |            |                     |  是    |
 | **异常**      |            |  是                |  是    |
 | **页面视图**      |            |                     |  是    |
 | **请求**        |            |                     |  是    |
-| **断**          |            |  是                |  是    |
+| **跟踪**          |            |  是                |  是    |
 
 目前，我们并不打算发布带有 Application Insights 3.0 的 SDK。
 
@@ -225,6 +227,8 @@ telemetryClient.trackEvent("WinGame");
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>从 Application Insights Java SDK 2.x 升级
 
 如果已在应用程序中使用 Application Insights Java SDK 2.x，则无需将其删除。 Java 3.0 代理会检测到它，并捕获和关联你通过 Java SDK 2.x 发送的任何自定义遥测，同时禁止 Java SDK 2.x 执行的任何自动收集以防止重复捕获。
+
+如果你使用的是 Application Insights 1.x 代理，则需要删除 `-javaagent:` 指向1.x 代理的 JVM 参数。
 
 > [!NOTE]
 > 注意：使用 3.0 代理时，Java SDK 2.x TelemetryInitializer 和 TelemetryProcessor 不会运行。

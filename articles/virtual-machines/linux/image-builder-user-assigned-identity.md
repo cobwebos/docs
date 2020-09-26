@@ -1,24 +1,24 @@
 ---
-title: 创建虚拟机映像，并使用用户分配的托管标识访问 Azure 存储中的文件（预览）
+title: '创建虚拟机映像，并使用用户分配的托管标识访问 Azure 存储中的文件 (预览) '
 description: 使用 Azure 映像生成器创建虚拟机映像，该映像可使用用户分配的托管标识访问存储在 Azure 存储中的文件。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: how-to
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5734d4b1871dd285fc83a72631f7d645e0b72ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307256"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像，并使用用户分配的托管标识访问 Azure 存储中的文件 
 
 Azure 映像生成器支持使用脚本，或从多个位置（例如 GitHub 和 Azure 存储等）复制文件。若要使用这些功能，必须对 Azure 映像生成器进行外部访问，但可以使用 SAS 令牌保护 Azure 存储 blob。
 
-本文介绍如何使用 Azure VM 映像生成器创建自定义映像，在此示例中，服务将使用[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)来访问 Azure 存储中的文件以进行映像自定义，而无需使文件公开访问，也无需设置 SAS 令牌。
+本文介绍如何使用 Azure VM 映像生成器创建自定义映像，在此示例中，服务将使用 [用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md) 来访问 Azure 存储中的文件以进行映像自定义，而无需使文件公开访问，也无需设置 SAS 令牌。
 
 在下面的示例中，你将创建两个资源组，一个用于自定义映像，另一个将托管包含脚本文件的 Azure 存储帐户。 这会模拟现实生活方案，在此方案中，可能会在映像生成器之外的不同存储帐户中有生成项目或图像文件。 你将创建一个用户分配的标识，然后授予该脚本文件的读取权限，但你不会设置对该文件的任何公共访问权限。 然后，你将使用 Shell 定制器从存储帐户下载并运行该脚本。
 
@@ -95,7 +95,7 @@ az group create -n $strResourceGroup -l $location
 
 创建用户分配的标识并对资源组设置权限。
 
-映像生成器将使用提供的[用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 然后将此角色定义分配给用户标识。
+映像生成器将使用提供的 [用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) 将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 然后将此角色定义分配给用户标识。
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -256,4 +256,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在使用 Azure 映像生成器时遇到任何问题，请参阅[故障排除](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。
+如果在使用 Azure 映像生成器时遇到任何问题，请参阅 [故障排除](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。

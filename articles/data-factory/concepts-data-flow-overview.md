@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370906"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>在 Azure 数据工厂中映射数据流
 
@@ -61,7 +61,7 @@ ms.locfileid: "89419957"
 
 " **优化** " 选项卡包含配置分区方案的设置。 若要了解有关如何优化数据流的详细信息，请参阅 [映射数据流性能指南](concepts-data-flow-performance.md)。
 
-![优化](media/data-flow/optimize.png "优化")
+![屏幕截图显示 "优化" 选项卡，其中包括分区选项、分区类型和分区数。](media/data-flow/optimize.png)
 
 #### <a name="inspect"></a>检查
 
@@ -106,8 +106,8 @@ Azure 数据工厂团队已经创建了 [性能优化指南](concepts-data-flow-
 |  澳大利亚中部 | | |  
 | 澳大利亚中部 2 | | |
 | 澳大利亚东部 | ✓ |  ✓ |
-| 澳大利亚东南部   | ✓ | ✓ |
-| 巴西南部  | ✓ |  |
+| Australia Southeast   | ✓ | ✓ |
+| Brazil South  | ✓ |  |
 | 加拿大中部 | ✓ |  |
 | 印度中部 | ✓ |   ✓ |
 | 美国中部    | ✓ |   ✓ |
@@ -126,7 +126,7 @@ Azure 数据工厂团队已经创建了 [性能优化指南](concepts-data-flow-
 |  (公用) 德国北部 | | |
 | 德国东北部 (主权)  | | |
 |  (公用) 德国中西部 |  | ✓ |
-| 日本东部 | ✓ |  |
+| Japan East | ✓ |  |
 | 日本西部 |  | |
 | 韩国中部 | ✓ |  |
 | 韩国南部 | | |
@@ -138,7 +138,7 @@ Azure 数据工厂团队已经创建了 [性能优化指南](concepts-data-flow-
 | 南非西部 |  |    |
 | 美国中南部  | | ✓ |
 | 印度南部 | | |
-| 东南亚    | ✓ | ✓ |
+| Southeast Asia    | ✓ | ✓ |
 | 瑞士北部 |   |  |
 | 瑞士西部 | | |
 | 阿联酋中部 | | |

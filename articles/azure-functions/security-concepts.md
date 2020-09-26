@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294744"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -72,16 +72,16 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 若要了解有关访问密钥的更多信息，请参阅 [HTTP 触发器绑定文章](functions-bindings-http-webhook-trigger.md#obtaining-keys)。
 
 
-#### <a name="secret-repositories"></a>密钥存储库
+#### <a name="secret-repositories"></a>机密存储库
 
-默认情况下，密钥存储在设置提供的帐户中的 Blob 存储容器中 `AzureWebJobsStorage` 。 您可以使用特定的应用程序设置来覆盖此行为，并将密钥存储在不同的位置。
+默认情况下，密钥存储在通过 `AzureWebJobsStorage` 设置提供的帐户中的 Blob 存储容器中。 可以使用特定的应用程序设置来重写此行为，将密钥存储在另一位置。
 
-|位置  |设置 | 值 | 描述  |
+|位置  |设置 | Value | 描述  |
 |---------|---------|---------|---------|
-|不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用独有的机密存储密钥之前对密钥进行加密。 |
-|文件系统   | `AzureWebJobsSecretStorageType`   |  `files`       | 密钥在文件系统上保留，在使用函数应用独有的机密存储之前加密。 |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保管库必须具有与系统分配的托管资源的托管标识对应的访问策略。 访问策略应授予标识以下机密权限： `Get` 、 `Set` 、 `List` 和 `Delete` 。 <br/>在本地运行时，使用开发人员标识，并且设置必须位于[local.settings.js文件](functions-run-local.md#local-settings-file)中。 | 
-|Kubernetes 机密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName`（可选） | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 仅当在 Kubernetes 中运行函数运行时才受支持。 如果 `AzureWebJobsKubernetesSecretName` 未设置，则会将存储库视为只读。 在这种情况下，必须在部署之前生成值。 在部署到 Kubernetes 时，Azure Functions Core Tools 会自动生成值。|
+|不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用特有的机密存储密钥之前对密钥进行加密。 |
+|文件系统   | `AzureWebJobsSecretStorageType`   |  `files`       | 密钥持久保留在文件系统中，在使用函数应用特有的机密进行存储之前加密。 |
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保管库必须有一项与承载资源的系统分配托管标识相对应的访问策略。 访问策略应向标识授予以下机密权限：`Get`、`Set`、`List` 和 `Delete`。 <br/>在本地运行时使用开发人员标识，且设置必须位于 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 | 
+|Kubernetes 机密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName`（可选） | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 仅当在 Kubernetes 中运行 Functions 运行时时才受支持。 如果未设置 `AzureWebJobsKubernetesSecretName`，则会将存储库视为只读。 在这种情况下，必须在部署之前生成值。 在部署到 Kubernetes 时，Azure Functions Core Tools 会自动生成值。|
 
 ### <a name="authenticationauthorization"></a>身份验证/授权
 
@@ -95,7 +95,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 #### <a name="user-management-permissions"></a>用户管理权限
 
-函数支持[AZURE RBAC) 的内置 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。 函数支持的 Azure 角色为 "[参与者](../role-based-access-control/built-in-roles.md#contributor)"、"[所有者](../role-based-access-control/built-in-roles.md#owner)" 和 "[读者](../role-based-access-control/built-in-roles.md#owner)"。 
+函数支持内置 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。 函数支持的 Azure 角色有[参与者](../role-based-access-control/built-in-roles.md#contributor)、[所有者](../role-based-access-control/built-in-roles.md#owner)和[读者](../role-based-access-control/built-in-roles.md#owner)。 
 
 权限在函数应用级别有效。 参与者角色是执行大多数函数应用级任务所必需的。 只有所有者角色才能删除函数应用。 
 
@@ -128,6 +128,8 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 例如，每个函数应用都需要一个关联的存储帐户，运行时将使用该帐户。 默认情况下，与此存储帐户的连接存储在名为 `AzureWebJobsStorage` 的应用程序设置中。
 
 应用设置和连接字符串以加密方式存储在 Azure 中。 只有在应用程序启动时，它们才会被解密，然后再注入到应用程序内存中。 加密密钥会定期轮换。 如果希望管理机密的安全存储，则应该将应用设置改为对 Azure Key Vault 的引用。 
+
+在本地计算机上开发函数时，还可以在文件的 local.settings.js中默认加密设置。 若要了解详细信息，请参阅 `IsEncrypted` [本地设置文件](functions-run-local.md#local-settings-file)中的属性。  
 
 #### <a name="key-vault-references"></a>Key Vault 引用
 

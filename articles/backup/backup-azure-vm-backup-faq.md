@@ -4,12 +4,12 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377312"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370821"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -20,6 +20,12 @@ ms.locfileid: "89377312"
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>哪些 VM 映像可以在创建时启用备份功能？
 
 创建 VM 时，可以为运行[受支持操作系统](backup-support-matrix-iaas.md#supported-backup-actions)的 VM 启用备份。
+
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>为什么初始备份需要很长时间才能完成？
+
+初始备份始终是完整备份，并且它将取决于数据的大小以及处理备份的时间。 <br>
+若要提高备份性能，请参阅 [备份最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [备份注意事项](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) 和 [备份性能](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+增量备份的总备份时间不超过 24 小时，但是，首次备份可能并非如此。
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>备份成本包含在 VM 成本内吗？
 
@@ -154,6 +160,10 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>在还原后我是否由于 VM 与域控制器的关系被破坏而可以访问 VM？
 
 可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](./backup-azure-arm-restore-vms.md#post-restore-steps)
+
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>为什么还原操作要花很长时间才能完成？
+
+还原的总时间取决于每秒的输入/输出操作 (IOPS) 和存储帐户的吞吐量。 如果目标存储帐户与其他应用程序的读取和写入操作一起加载，则总还原时间可能会受到影响。 若要改善还原操作，请选择一个未与其他应用程序数据一起加载的存储帐户。
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 

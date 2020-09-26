@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 1126c218f8e80b7d89183746890a3fae1357d29d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307579"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器中的 PostgreSQL 扩展
 
@@ -33,6 +33,8 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展将多个相关�
 > [!div class="mx-tableFixed"]
 > | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | 用于将地址分析成构成元素。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Address Standardizer US 数据集示例|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1.2             | 用于验证关系完整性的函数|
 > |[布隆](https://www.postgresql.org/docs/12/bloom.html)                    | 1.0             | 布隆访问方法-基于文件的索引|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | 支持在 GIN 中索引常见数据类型|
@@ -61,7 +63,11 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展将多个相关�
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
-> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS 几何结构、地理以及光栅空间类型和函数|
+> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometry，geography |
+> |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | PostGIS 光栅类型和函数| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL 函数|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS tiger 地理编码器和逆向地理编码器|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | PostGIS 拓扑空间类型和函数|
 > |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1.0             | 外部数据包装器，用于远程 PostgreSQL 服务器|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1.2             | 有关 SSL 证书的信息|
 > |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1.0             |  用于接受行数限制的 TABLESAMPLE 方法|
@@ -76,6 +82,8 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展将多个相关�
 > [!div class="mx-tableFixed"]
 > | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用于将地址分析成构成元素。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 数据集示例|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1.1             | 用于验证关系完整性的函数|
 > |[布隆](https://www.postgresql.org/docs/11/bloom.html)                    | 1.0             | 布隆访问方法-基于文件的索引|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | 支持在 GIN 中索引常见数据类型|
@@ -105,6 +113,9 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展将多个相关�
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | PostGIS 几何结构、地理以及光栅空间类型和函数|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL 函数|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS tiger 地理编码器和逆向地理编码器|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS 拓扑空间类型和函数|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | 外部数据包装器，用于远程 PostgreSQL 服务器|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1.2             | 有关 SSL 证书的信息|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | 可操作整个表（包括交叉表）的函数|
@@ -114,9 +125,21 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展将多个相关�
 > |[uuid ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 生成全局唯一标识符 (UUID)|
 
 
+## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) 和 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) 允许你从一个 PostgreSQL 服务器连接到另一个 PostgreSQL 服务器，或者连接到同一服务器中的另一个数据库。 发送服务器需要允许与接收服务器建立出站连接。 接收服务器需要允许来自发送服务器的连接。
+
+如果计划使用这两个扩展，我们建议使用 [VNet 集成](concepts-networking.md) 部署服务器。 默认情况下，VNet 集成允许在 VNET 中的服务器之间建立连接。 你还可以选择使用 [VNet 网络安全组](../../virtual-network/manage-network-security-group.md) 自定义访问权限。
+
+
 ## <a name="pg_prewarm"></a>pg_prewarm
 
 pg_prewarm 扩展可将关系数据加载到缓存中。 预热缓存意味着查询在重启后第一次运行时响应时间更短。 自动 prewarm 功能当前在 Azure Database for PostgreSQL 灵活的服务器中不可用。
+
+## <a name="pg_stat_statements"></a>pg_stat_statements
+[Pg_stat_statements 扩展](https://www.postgresql.org/docs/current/pgstatstatements.html)在每 Azure Database for PostgreSQL 灵活的服务器上预加载，为你提供一种跟踪 SQL 语句执行统计信息的方法。
+设置 `pg_stat_statements.track`，它可以控制哪些语句由扩展计数，默认为 `top`，这意味着跟踪所有由客户端直接发布的语句。 另外两个跟踪级别为 `none` 和 `all`。 此设置可作为服务器参数配置。
+
+查询执行信息 pg_stat_statements 提供的权限与记录每个 SQL 语句时对服务器性能的影响之间存在权衡。 如果不经常使用 pg_stat_statements 扩展，则建议将 `pg_stat_statements.track` 设置为 `none`。 请注意，某些第三方监视服务可能依赖 pg_stat_statements 来提供查询性能见解，因此，请确认这是否适合你。
 
 
 ## <a name="next-steps"></a>后续步骤

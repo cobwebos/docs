@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fd7ba2eeddb3eddd98f97bda1a26c69c2cfa77c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315297"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure 应用服务（预览版）
 
@@ -40,7 +40,7 @@ ms.locfileid: "90905119"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 * 工作区中注册的已训练的机器学习模型。 如果没有模型，请使用[图像分类教程：训练模型](tutorial-train-models-with-aml.md)来训练和注册模型。
 
     > [!IMPORTANT]
@@ -101,7 +101,7 @@ ms.locfileid: "90905119"
 
 ## <a name="create-the-image"></a>创建映像
 
-若要创建部署到 Azure 应用服务的 Docker 映像，请使用 [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)。 下面的代码片段演示如何从模型和推理配置生成新的映像：
+若要创建部署到 Azure 应用服务的 Docker 映像，请使用 [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-)。 下面的代码片段演示如何从模型和推理配置生成新的映像：
 
 > [!NOTE]
 > 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。

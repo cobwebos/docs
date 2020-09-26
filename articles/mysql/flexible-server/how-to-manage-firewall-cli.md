@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4279da10de92bc8bf9cd564eaae02db2fef76a64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307800"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 灵活的服务器防火墙规则
 
@@ -33,17 +33,17 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 
 若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以在单独的浏览器标签页中通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 打开 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后选择 Enter 来运行它。  
 
-如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令登录账户。 请注意 **ID** 属性，它是指 Azure 帐户的 **订阅 id** 。
+需要使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登录账户。 请注意 **ID** 属性，它是指 Azure 帐户的 **订阅 id** 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) 命令选择帐户下的特定订阅。 记下**az login**输出中的**ID**值，以用作命令中的 "**订阅**参数" 的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)。
+使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下**az login**输出中的**ID**值，以用作命令中的 "**订阅**参数" 的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -53,7 +53,7 @@ az account set --subscription <subscription id>
 
 你可以使用 `az mysql flexible-server --public access` 命令创建具有 *公共访问权限的灵活服务器 (允许的 IP 地址) * 并在创建灵活的服务器期间配置防火墙规则。 你可以使用 **--公共访问** 开关来提供能够连接到服务器的允许的 IP 地址。 你可以提供要包括在允许的 ip 地址列表中的一个或多个 IP 地址。 IP 地址范围必须是短划线，并且不包含任何空格。 使用 CLI 创建灵活的服务器有多种选项，如下例所示。
 
-请参阅 Azure CLI 参考文档 <!--FIXME --> 以获取可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
+请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
 
 - 创建具有公共访问权限的灵活服务器并添加客户端 IP 地址，以便能够访问服务器
     ```azurecli-interactive
@@ -95,7 +95,7 @@ az account set --subscription <subscription id>
 - **显示**：显示灵活的服务器防火墙规则的详细信息。
 - **删除**：删除灵活的服务器防火墙规则。
 
-请参阅 Azure CLI 参考文档 <!--FIXME --> 以获取可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
+请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
 
 ### <a name="create-a-firewall-rule"></a>创建防火墙规则
 使用 `az mysql flexible-server firewall-rule create` 命令在服务器上创建新的防火墙规则。

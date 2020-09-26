@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253762"
+ms.locfileid: "91369478"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure 认知服务容器图像标记
 
@@ -1131,22 +1131,22 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 | 图像标记                                  | 说明                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | 具有 `en-US` 区域设置和语音的容器映像 `en-US-AriaNeural` 。      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | 具有 `de-DE` 区域设置和语音的容器映像 `de-DE-KatjaNeural` 。     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | 具有 `en-AU` 区域设置和语音的容器映像 `en-AU-NatashaNeural` 。   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | 具有 `en-CA` 区域设置和语音的容器映像 `en-CA-ClaraNeural` 。     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | 具有 `en-GB` 区域设置和语音的容器映像 `en-GB-LibbyNeural` 。     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | 具有 `en-GB` 区域设置和语音的容器映像 `en-GB-MiaNeural` 。       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | 具有 `en-US` 区域设置和语音的容器映像 `en-US-AriaNeural` 。      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | 具有 `en-US` 区域设置和语音的容器映像 `en-US-GuyNeural` 。       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | 具有 `es-ES` 区域设置和语音的容器映像 `es-ES-ElviraNeural` 。    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | 具有 `es-MX` 区域设置和语音的容器映像 `es-MX-DaliaNeural` 。     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | 具有 `fr-CA` 区域设置和语音的容器映像 `fr-CA-SylvieNeural` 。    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | 具有 `fr-FR` 区域设置和语音的容器映像 `fr-FR-DeniseNeural` 。    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | 具有 `it-IT` 区域设置和语音的容器映像 `it-IT-ElsaNeural` 。      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | 具有 `ja-JP` 区域设置和语音的容器映像 `ja-JP-NanamiNeural` 。    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | 具有 `ko-KR` 区域设置和语音的容器映像 `ko-KR-SunHiNeural` 。     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | 具有 `pt-BR` 区域设置和语音的容器映像 `pt-BR-FranciscaNeural` 。 |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | 具有 `zh-CN` 区域设置和语音的容器映像 `zh-CN-XiaoxiaoNeural` 。  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | 具有 `de-DE` 区域设置和语音的容器映像 `de-DE-KatjaNeural` 。     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | 具有 `en-AU` 区域设置和语音的容器映像 `en-AU-NatashaNeural` 。   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | 具有 `en-CA` 区域设置和语音的容器映像 `en-CA-ClaraNeural` 。     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | 具有 `en-GB` 区域设置和语音的容器映像 `en-GB-LibbyNeural` 。     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | 具有 `en-GB` 区域设置和语音的容器映像 `en-GB-MiaNeural` 。       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | 具有 `en-US` 区域设置和语音的容器映像 `en-US-AriaNeural` 。      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | 具有 `en-US` 区域设置和语音的容器映像 `en-US-GuyNeural` 。       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | 具有 `es-ES` 区域设置和语音的容器映像 `es-ES-ElviraNeural` 。    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | 具有 `es-MX` 区域设置和语音的容器映像 `es-MX-DaliaNeural` 。     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | 具有 `fr-CA` 区域设置和语音的容器映像 `fr-CA-SylvieNeural` 。    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | 具有 `fr-FR` 区域设置和语音的容器映像 `fr-FR-DeniseNeural` 。    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | 具有 `it-IT` 区域设置和语音的容器映像 `it-IT-ElsaNeural` 。      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | 具有 `ja-JP` 区域设置和语音的容器映像 `ja-JP-NanamiNeural` 。    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | 具有 `ko-KR` 区域设置和语音的容器映像 `ko-KR-SunHiNeural` 。     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | 具有 `pt-BR` 区域设置和语音的容器映像 `pt-BR-FranciscaNeural` 。 |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | 具有 `zh-CN` 区域设置和语音的容器映像 `zh-CN-XiaoxiaoNeural` 。  |
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
