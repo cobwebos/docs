@@ -1,18 +1,18 @@
 ---
-title: 将模板规范部署为链接模板
-description: 了解如何在链接部署中部署现有模板规范。
+title: 将模板规格部署为链接模板
+description: 了解如何在链接的部署中部署现有模板规格。
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 799dac2bb553983b16f734d1d1abc2ad9281fb58
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369104"
 ---
-# <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教程： (预览版将模板规范部署为链接模板) 
+# <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教程：将模板规格部署为链接模板（预览版）
 
-了解如何使用[链接的部署](linked-templates.md#linked-template)部署现有[模板规范](template-specs.md)。 使用模板规范与组织中的其他用户共享 ARM 模板。 创建模板规范后，可以使用 Azure PowerShell 或 Azure CLI 来部署模板规范。 你还可以使用链接模板将模板规范部署为解决方案的一部分。
+了解如何使用[链接的部署](linked-templates.md#linked-template)部署现有[模板规格](template-specs.md)。 使用模板规格与组织中的其他用户共享 ARM 模板。 创建模板规范后，可以使用 Azure PowerShell 或 Azure CLI 来部署模板规范。 还可以使用链接的模板将模板规格作为解决方案的一部分进行部署。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -21,13 +21,13 @@ ms.locfileid: "89228012"
 > [!NOTE]
 > 模板规格当前提供预览版。 若要使用它，必须[注册预览版](https://aka.ms/templateSpecOnboarding)。
 
-## <a name="create-a-template-spec"></a>创建模板规范
+## <a name="create-a-template-spec"></a>创建模板规格
 
-遵循 [快速入门：创建和部署模板规范](quickstart-create-template-specs.md) ，以创建用于部署存储帐户的模板规范。 下一节需要模板规范、模板规范名称和模板规范版本的资源组名称。
+按照[快速入门：创建和部署模板规格](quickstart-create-template-specs.md)，创建用于部署存储帐户的模板规格。 下一部分中需要模板规格的资源组名称、模板规格名称和模板规格版本。
 
 ## <a name="create-the-main-template"></a>创建主模板
 
-若要在 ARM 模板中部署模板规范，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 `templateLink` 属性中，指定模板规范的资源 ID。使用以下名为的 JSON **azuredeploy.js**创建模板。 本教程假定你已保存到 **c:\Templates\deployTS\azuredeploy.js的** 路径，但你可以使用任何路径。
+若要在 ARM 模板中部署模板规范，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 `templateLink` 属性中，指定模板规格的资源 ID。使用以下名为 azuredeploy.json 的 JSON 创建模板。 本教程假设你已将模板保存到路径 c:\Templates\deployTS\azuredeploy.json，但你可以使用任何路径。
 
 ```json
 {
@@ -115,12 +115,12 @@ ms.locfileid: "89228012"
 }
 ```
 
-模板规范 ID 是使用函数生成的 [`resourceID()`](template-functions-resource.md#resourceid) 。 如果 templateSpec 位于当前部署的同一资源组中，则 resourceID ( # A1 函数中的资源组参数是可选的。  还可以直接传入资源 ID 作为参数。 若要获取 ID，请使用：
+模板规格 ID 是使用 [`resourceID()`](template-functions-resource.md#resourceid) 函数生成的。 如果 templateSpec 位于当前部署的同一资源组中，则 resourceID() 函数中的资源组参数是可选的。  还可以直接将资源 ID 作为参数传入。 若要获取 ID，请使用：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Versions.Id
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -130,11 +130,11 @@ id = $(az ts show --name $templateSpecName --resource-group $resourceGroupName -
 ```
 
 > [!NOTE]
-> 获取模板规范 ID 并将其分配到 Windows PowerShell 中的变量时存在一个已知问题。
+> 获取模板规格 ID 并将其分配到 Windows PowerShell 中的变量时存在一个已知问题。
 
 ---
 
-将参数传递给模板规范的语法为：
+将参数传递给模板规格的语法为：
 
 ```json
 "parameters": {
@@ -145,11 +145,11 @@ id = $(az ts show --name $templateSpecName --resource-group $resourceGroupName -
 ```
 
 > [!NOTE]
-> 的 apiVersion `Microsoft.Resources/deployments` 必须是2020-06-01 或更高版本。
+> `Microsoft.Resources/deployments` 的 apiVersion 必须是 2020-06-01 或更高版本。
 
 ## <a name="deploy-the-template"></a>部署模板
 
-部署链接模板时，它将同时部署 web 应用程序和存储帐户。 部署与部署其他 ARM 模板相同。
+部署链接的模板时，它将同时部署 Web 应用程序和存储帐户。 其部署过程与部署其他 ARM 模板相同。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

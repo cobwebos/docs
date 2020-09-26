@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363199"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -34,7 +34,7 @@ ms.locfileid: "86254820"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 为开发人员帐户授权
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 选择 ![箭头](./media/api-management-howto-aad/arrow.png)上获取。
+2. 选择 ![箭头图标。](./media/api-management-howto-aad/arrow.png)上获取。
 3. 在搜索框中键入 **api**。
 4. 选择“API 管理服务”。
 5. 选择自己的 API 管理服务实例。
@@ -88,7 +88,7 @@ ms.locfileid: "86254820"
 
 1. 返回到在上一部分创建的应用注册。
 2. 选择“API 权限”，然后单击“+添加权限” 。 
-3. 在 "**请求 API 权限**" 窗格中，选择 " **Microsoft api** " 选项卡，向下滚动，然后选择 " **Azure Active Directory 图形**" 磁贴。 选择“应用程序权限”，搜索“Directory”，然后选择“Directory.Read.All”权限  。 
+3. 在“请求 API 权限”窗格中，选择“Microsoft API”选项卡，向下滚动，然后选择“Azure Active Directory Graph”磁贴  。 选择“应用程序权限”，搜索“Directory”，然后选择“Directory.Read.All”权限  。 
 4. 单击窗格底部的“添加权限”，然后单击“为 {tenantname} 授予管理员许可”，以便为此目录中的所有用户授予访问权限 。 
 
 现在可以从 API 管理实例的“组”选项卡添加外部 Azure AD 组。

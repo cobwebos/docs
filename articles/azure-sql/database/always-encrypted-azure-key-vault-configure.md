@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa60d6127a42f0118df152e5b3081751c595dbcf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362625"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure 密钥管理库配置 Always Encrypted 
 
@@ -40,7 +40,7 @@ Always Encrypted 是一种数据加密技术，用于保护服务器上的静态
 ## <a name="prerequisites"></a>先决条件
 
 
-- Azure 帐户和订阅。 如果没有，请注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帐户和订阅。 如果没有，请注册 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 - [Azure SQL 数据库](single-database-create-quickstart.md)或 [Azure SQL 托管实例](../managed-instance/instance-create-quickstart.md)中的数据库。
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 版本 13.0.700.242 或更高版本。
 - [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 或更高版本（在客户端计算机上）。
@@ -183,7 +183,7 @@ Always Encrypted 向导包括以下几部分：**列选择**、**主密钥配置
 
 验证设置是否全都正确，并单击“完成”以完成“始终加密”的设置。
 
-![摘要](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![屏幕截图显示任务标记为 "已通过" 的 "结果" 页。](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>验证向导的操作
 
