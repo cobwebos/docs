@@ -3,12 +3,12 @@ title: Azure 备份的软删除
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271539"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除
 
@@ -29,7 +29,7 @@ ms.locfileid: "89179957"
 
 软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。只有保管库所有者可以禁用此功能。 如果禁用此功能，将来删除任何受保护项将导致立即删除，而无法还原。 禁用此功能之前，以软删除状态存在的备份数据将在 14 天内保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
 
- 请记住，禁用软删除后，将为所有类型的工作负载（包括 SQL server 和 SAP HANA 工作负载）禁用该功能。 例如，一旦为某个订阅启用了 [SQL Server/SAP HANA 预览版](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) ，就不可能仅对 SQL Server 或 SAP HANA 数据库禁用软删除功能，同时使其为同一保管库中的虚拟机启用。 可以创建单独的保管库以进行精细控制。
+请记住，禁用软删除后，所有类型的工作负荷都将禁用该功能。 例如，不能仅对 SQL server 或 SAP HANA Db 禁用软删除，同时使其为同一保管库中的虚拟机启用。 可以创建单独的保管库以进行精细控制。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 门户禁用软删除
 

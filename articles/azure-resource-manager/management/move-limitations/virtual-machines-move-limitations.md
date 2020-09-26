@@ -2,13 +2,13 @@
 title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/21/2020
+ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317100"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -50,7 +50,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
    1. 找到虚拟机的位置。
    2. 找到包含以下命名模式的资源组：`AzureBackupRG_<VM location>_1`。 例如，名称的格式为 *AzureBackupRG_westus2_1*。
    3. 在 Azure 门户中，查看“显示隐藏的类型”。
-   4. 查找类型为 Microsoft.Compute/restorePointCollections 的资源，其命名模式为 `AzureBackup_<name of your VM that you're trying to move>_###########`。
+   4. 查找类型为 Microsoft.Compute/restorePointCollections 的资源，其命名模式为 `AzureBackup_<VM name>_###########`。
    5. 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
    6. 删除操作完成后，可以移动虚拟机。
 
@@ -63,16 +63,31 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 1. 查找命名模式为的资源组 `AzureBackupRG_<VM location>_1` 。 例如，名称可能是 `AzureBackupRG_westus2_1` 。
 
-1. 使用以下命令获取还原点集合。
+1. 如果只移动一个虚拟机，请获取该虚拟机的还原点集合。
 
-   ```azurepowershell
-   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -name AzureBackup_<VM name>* -ResourceType Microsoft.Compute/restorePointCollections
    ```
 
-1. 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
+   删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
 
-   ```azurepowershell
-   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```azurepowershell-interactive
+   Remove-AzResource -ResourceId $restorePointCollection.ResourceId -Force
+   ```
+
+1. 如果要在此位置将所有虚拟机与备份一起移动，请获取这些虚拟机的还原点集合。
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   删除每个资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
+
+   ```azurepowershell-interactive
+   foreach ($restorePoint in $restorePointCollection)
+   {
+     Remove-AzResource -ResourceId $restorePoint.ResourceId -Force
+   }
    ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -81,18 +96,28 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 1. 查找命名模式为的资源组 `AzureBackupRG_<VM location>_1` 。 例如，名称可能是 `AzureBackupRG_westus2_1` 。
 
-1. 使用以下命令获取还原点集合。
+1. 如果只移动一个虚拟机，请获取该虚拟机的还原点集合。
 
-   ```azurecli
-   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections --query "[?starts_with(name, 'AzureBackup_<VM name>')].id" --output tsv)
    ```
 
-1. 查找命名模式为的资源的资源 ID `AzureBackup_<VM name>_###########`
+   删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
 
-1. 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
 
-   ```azurecli
-   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+1. 如果要在此位置将所有虚拟机与备份一起移动，请获取这些虚拟机的还原点集合。
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections)
+   ```
+
+   删除每个资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
    ```
 
 ## <a name="next-steps"></a>后续步骤

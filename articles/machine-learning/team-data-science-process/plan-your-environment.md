@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 603628e24d7ccdffeafea392ab56aa7e47781a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047716"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296478"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 
@@ -66,7 +66,7 @@ ms.locfileid: "87047716"
 有关用于将数据引入或载入不同存储和处理环境的过程和资源，请参阅：
 
 * [将数据载入存储环境以进行分析](ingest-data.md)
-* [将训练数据从各种数据源导入 Azure 机器学习工作室（经典）](../studio/import-data.md)
+* [将训练数据从各种数据源导入 Azure 机器学习工作室（经典）](../classic/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>是否需要按定期计划移动数据或在迁移期间修改数据？
 
@@ -75,7 +75,7 @@ ms.locfileid: "87047716"
 * 同时涉及本地和云资源的混合场景
 * 在迁移过程中业务逻辑会处理、修改或更改数据的场景
 
-有关详细信息，请参阅[使用 Azure 数据工厂将数据从 SQL Server 数据库移动到 SQL Azure](move-sql-azure-adf.md)。
+有关详细信息，请参阅[使用 Azure 数据工厂将数据从 SQL Server 数据库移到 SQL Azure](move-sql-azure-adf.md)。
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>要将多少数据移动到 Azure？
 
@@ -90,7 +90,7 @@ ms.locfileid: "87047716"
 * 数值
 * 分类
 * 字符串
-* Binary
+* 二进制
 
 ### <a name="how-is-your-data-formatted"></a>数据格式是如何设置的？
 
@@ -103,12 +103,12 @@ ms.locfileid: "87047716"
 ### <a name="how-large-is-your-data"></a>数据规模有多大？
 
 * 小型：小于 2 GB
-* 中型：大于 2 GB 且小于 10 GB
+* 中：大于 2 GB 且小于 10 GB
 * 大型：大于 10 GB
 
 以 Azure 机器学习工作室（经典）环境为例：
 
-* 关于 Azure 机器学习工作室支持的数据格式和类型的列表，请参阅[受支持的数据格式和数据类型](../studio/import-data.md#supported-data-formats-and-data-types)部分。
+* 关于 Azure 机器学习工作室支持的数据格式和类型的列表，请参阅[受支持的数据格式和数据类型](../classic/import-data.md#supported-data-formats-and-data-types)部分。
 * 有关分析过程中使用的其他 Azure 服务的限制的信息，请参阅 [Azure 订阅和服务限制、配额及约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>数据质量问题：浏览和预处理
@@ -146,10 +146,10 @@ ms.locfileid: "87047716"
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>应使用什么工具进行数据分析？
 
 * [Microsoft Azure PowerShell](/powershell/azure/) -一种脚本语言，用于使用脚本语言管理 Azure 资源
-* [Azure 机器学习工作室](../studio/what-is-ml-studio.md)
+* [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
-* [用于 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)
+* [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.anaconda.com/)
 * [Jupyter 笔记本](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)

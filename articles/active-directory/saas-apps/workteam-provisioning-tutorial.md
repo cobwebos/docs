@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa11cd9dedc2446b3952378e53b1f7248abbfa47
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317477"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>教程：为 Workteam 配置自动用户预配
 
@@ -54,15 +54,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [Workteam](https://app.workte.am/account/signin)。 单击 "**组织设置**"  >  **SETTINGS**。
 
-    ![Workteam](media/workteam-provisioning-tutorial/settings.png)
+    ![Workteam U I 的屏幕截图，其中包含 "组织设置" 和 "设置" 选项。](media/workteam-provisioning-tutorial/settings.png)
 
 2. 滚动到底部，启用 Workteam 的预配功能。
 
-    ![Workteam](media/workteam-provisioning-tutorial/icon.png)
+    !["设置" 部分底部的屏幕截图，其中包含 "S I M 用户预配" 齿轮图标。](media/workteam-provisioning-tutorial/icon.png)
 
 3. 复制 **基 Url** 和 **持有者令牌**。 这些值将输入到 Azure 门户中的 Workteam 应用程序的 "设置" 选项卡上的 " **租户 URL**" 和 " **机密令牌** " 字段。
 
-    ![Workteam](media/workteam-provisioning-tutorial/scim.png)
+    !["S C I M 设置" 对话框的屏幕截图，其中包含 "BASE U R L" 和 "持有者令牌" 文本框。](media/workteam-provisioning-tutorial/scim.png)
 
 
 ## <a name="add-workteam--from-the-gallery"></a>从库中添加 Workteam
@@ -106,11 +106,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 "管理员凭据" 部分下，输入之前在 "**租户 url** " 和 "**机密令牌**" 中检索的**基本 URL**和**持有者令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Workteam。 如果连接失败，请确保 Workteam 帐户具有管理员权限，然后重试。
 
@@ -120,7 +120,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Workteam**"。
 

@@ -1,17 +1,22 @@
 ---
-title: Azure 事件中心 - 异常
+title: 'Azure 事件中心-异常 (旧) '
 description: 本文提供 Azure 事件中心消息传送异常和建议的操作列表。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b3a7023dc44d7280284fec1eccf00a3dbe88b7ec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908373"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318477"
 ---
-# <a name="event-hubs-messaging-exceptions---net"></a>事件中心消息传送异常 - .NET
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中心消息传送异常-.NET (旧) 
 本部分列出了 .NET Framework API 生成的 .NET 异常。 
+
+> [!IMPORTANT]
+> 本文中列出的一些例外仅适用于旧版事件中心 .NET 库。 例如： node.js. * 异常。
+> 
+> 有关新 .NET 库引发的 EventHubsException 的信息，请参阅 [EventHubsException-.net](exceptions-dotnet.md)
 
 ## <a name="exception-categories"></a>异常类别
 
@@ -57,7 +62,7 @@ ms.locfileid: "90908373"
 
 | 异常类型 | 说明/原因/示例 | 建议的操作 | 自动/立即重试注意事项 |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) |服务器未在指定时间内响应请求的操作，该操作由 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 控制。 服务器可能已完成请求的操作。 此异常可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。<br /> 请参阅 [TimeoutException](#timeoutexception)。 | 在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
+| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) |服务器在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 控制的指定时间内未响应请求的操作。 服务器可能已完成请求的操作。 此异常可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。<br /> 请参阅 [TimeoutException](#timeoutexception)。 | 在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
 | [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1&preserve-view=true) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果在 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式下收到消息，则 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 将生成此异常。 | 检查代码和文档。 确保请求的操作有效。 | 重试没有帮助。 |
 | [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1&preserve-view=true) | 尝试对已关闭、中止或释放的对象调用某个操作。 在极少数的情况下，已释放环境事务。 | 检查代码并确保代码不会对已释放的对象调用操作。 | 重试没有帮助。 |
 | [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1&preserve-view=true) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 | 确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 | 在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |

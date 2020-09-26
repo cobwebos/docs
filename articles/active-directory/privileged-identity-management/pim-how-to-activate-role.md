@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317531"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>在 PIM 中激活我的 Azure AD 角色
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
-## <a name="activate-a-role"></a>激活角色
+## <a name="activate-a-role-for-new-version"></a>激活新版本的角色
 
 需要充当某个 Azure AD 角色时，可在 Privileged Identity Management 中通过打开“我的角色”请求激活。
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
     ![“激活请求正在等待审批”通知](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests"></a>查看请求的状态
+## <a name="view-the-status-of-your-requests-for-new-version"></a>查看新版本的请求状态
 
 可以查看等待激活的请求的状态。
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 向右滚动以查看“请求状态”**** 列。
 
-## <a name="cancel-a-pending-request"></a>取消挂起的请求
+## <a name="cancel-a-pending-request-for-new-version"></a>为新版本取消挂起的请求
 
 如果不需要激活需要审批的角色，随时可以取消等待中的请求。
 
@@ -106,7 +106,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
    ![突出显示“取消”操作的“我的请求”列表](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot-for-new-version"></a>针对新版本的故障排除
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>激活角色后，权限未被授予
 

@@ -4,17 +4,17 @@ description: Azure 安全基准 V2 资产管理
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ba010c0dd3384af895c68d980fcae788c2d6d45a
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318018"
 ---
-# <a name="security-control-asset-management"></a>安全控制：资产管理
+# <a name="security-control-v2-asset-management"></a>安全控制 V2：资产管理
 
 资产管理涵盖控制以确保对 Azure 资源进行安全可见性和管理。 这包括对安全人员权限的建议、对资产清单的安全访问，以及管理服务和资源的审批 (库存、跟踪和更正) 。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90059143"
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 上午-1 | 1.1、1.2、1.3、1.4、9.1、12.1 | CM-7、CM-8、CM-11、PM-5 |
+| 上午-1 | 1.1、1。2 | CM-8，下午5 |
 
 确保安全团队在 Azure 租户和订阅中获得安全读者权限，以便他们可以使用 Azure 安全中心监视安全风险。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "90059143"
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -48,7 +48,7 @@ ms.locfileid: "90059143"
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 上午-2 | 1.5 | CM-8，下午5 |
+| 上午-2 | 1.1、1.2、1.4、1.5、9.1、12。1 | CM-8，下午5 |
 
 确保安全团队有权访问 Azure 上不断更新的资产清单。 安全团队通常需要此清单来评估组织对新兴风险的潜在风险，并作为持续的安全改进的输入。 
 
@@ -56,7 +56,7 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 使用标记以及 Azure 中的其他元数据、Azure (名称、说明和类别) ，以逻辑方式组织资产。  
 
-- [如何通过 Azure 资源关系图资源管理器创建查询](../../governance/resource-graph/first-query-portal.md)
+- [如何使用 Azure Resource Graph 浏览器创建查询](../../governance/resource-graph/first-query-portal.md)
 
 - [Azure 安全中心资产清单管理](../../security-center/asset-inventory.md)
 
@@ -64,7 +64,7 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -82,11 +82,11 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 - [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
 
-- [如何通过 Azure 资源关系图资源管理器创建查询](../../governance/resource-graph/first-query-portal.md)
+- [如何使用 Azure Resource Graph 浏览器创建查询](../../governance/resource-graph/first-query-portal.md)
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全合规性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -106,7 +106,7 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -126,7 +126,7 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -136,27 +136,27 @@ Azure 安全中心清单功能和 Azure 资源图可查询和发现订阅中的�
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 上午-6 | 2.6 | AC-3、CM-7、CM-8、CM-10、CM-11 |
+| 上午-6 | 2.6、2。7 | AC-3、CM-7、CM-8、CM-10、CM-11 |
 
 确保仅执行授权软件，并且阻止所有未经授权的软件在 Azure 虚拟机上执行。
 
 使用 Azure 安全中心 (ASC) 自适应应用程序控件发现并生成应用程序允许列表。 你还可以使用 ASC 自适应应用程序控件，以确保仅执行授权的软件，并且阻止所有未经授权的软件在 Azure 虚拟机上执行。
 
-使用 Azure 自动化更改跟踪和清单自动收集 Windows 和 Linux Vm 中的清单信息。 可从 Azure 门户获取软件名称、版本、发布者和刷新时间。 若要获取软件安装日期和其他信息，请启用来宾级别诊断，并将 Windows 事件日志定向到 Log Analytics 工作区。
+使用 Azure 自动化更改跟踪和清单自动收集 Windows 和 Linux Vm 中的清单信息。 可从 Azure 门户获得软件名称、版本、发布者和刷新时间。 若要获取软件安装日期和其他信息，请启用来宾级诊断，并将 Windows 事件日志定向到 Log Analytics 工作区。
 
 根据脚本的类型，可以使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。 
 
 你还可以使用第三方解决方案来发现和识别未批准的软件。
 
-- [如何使用 Azure 安全中心自适应应用程序控件](../../security-center/security-center-adaptive-application.md)
+- [如何使用 Azure 安全中心自适应应用程序控制](../../security-center/security-center-adaptive-application.md)
 
-- [了解 Azure 自动化更改跟踪和清单](../../automation/change-tracking.md)
+- [了解 Azure 自动化更改跟踪和库存](../../automation/change-tracking.md)
 
-- [如何在 Windows 环境中控制 PowerShell 脚本执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 环境中控制 PowerShell 脚本的执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基础结构和终结点安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
