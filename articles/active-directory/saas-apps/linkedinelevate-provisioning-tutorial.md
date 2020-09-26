@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361567"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教程：为 LinkedIn Elevate 配置自动用户预配
 
@@ -70,12 +70,12 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
     > [!NOTE]
     > 如果未启用自动分配许可证，则意味着只有用户数据是同步的。
 
-    ![LinkedIn Elevate 预配](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+    ![屏幕截图显示 LinkedIn 帐户中心全局设置。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
     > [!NOTE]
     > 如果启用了自动许可证分配，则需要记下应用程序实例和许可证类型。 许可证将按照“先来先服务”原则进行分配，直到所有许可证用完。
 
-    ![LinkedIn Elevate 预配](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![屏幕截图显示了 "C I M 安装" 页。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
 5. 单击“生成令牌”。**** 应当可以看到访问令牌显示在“访问令牌”字段下。****
 
@@ -89,7 +89,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 10. 将“预配模式”设置为“自动”。
 
-    ![LinkedIn Elevate 预配](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+    ![屏幕截图显示 LinkedIn 提升设置页面。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
 11. 在“管理员凭据”**** 下填写以下字段：
 
@@ -105,7 +105,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 14. 在“属性映射”**** 部分中，查看将从 Azure AD 同步到 LinkedIn Elevate 的用户和组属性。 请注意，选为**匹配**属性的属性用于匹配 LinkedIn Elevate 中的用户帐户和组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![LinkedIn Elevate 预配](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![屏幕截图显示映射，包括属性映射。](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
 15. 要为 LinkedIn Elevate 启用 Azure AD 预配服务，请在“设置”**** 部分中将“预配状态”更改**** 为“启用”****
 

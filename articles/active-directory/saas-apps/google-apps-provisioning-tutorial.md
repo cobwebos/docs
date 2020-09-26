@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 27e34a66bb6dfa642b84bd8997b2b02c4981788e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f2f62fe158b946e00c7f81d0cb7eeb0d8f09437
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331120"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -133,13 +133,13 @@ ms.locfileid: "88551544"
 
 3. 选择“预配”选项卡。单击“入门”。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
       ![“开始”边栏选项卡](./media/google-apps-provisioning-tutorial/get-started.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，单击 " **授权**"。 你将在新的浏览器窗口中重定向到 Google 授权对话框。
 

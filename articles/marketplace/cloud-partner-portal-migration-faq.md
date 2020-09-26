@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369903"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户过渡到合作伙伴中心的常见问题
 
@@ -28,9 +28,9 @@ ms.locfileid: "88607507"
 | 提供发布和提供管理体验 | 我们已将你的产品/服务数据从云合作伙伴门户移动到合作伙伴中心。 你现在可以在合作伙伴中心访问你的产品/服务，它提供改进的用户体验和直观的界面。 了解如何 [在商业应用商店中更新现有产品/服务](partner-center-portal/update-existing-offer.md)。 |
 | 你的产品/服务在商业应用商店中的可用性 | 无更改。 如果产品/服务在商业应用商店中生活，则会继续保持活动。 |
 | 新的购买和部署 | 无更改。 你的客户可以继续购买和部署你的产品/服务，而不会出现任何中断。 |
-| 付款 | 任何购买和部署都将继续按常规方式支付给你。 详细了解如何 [在商业市场中付费](partner-center-portal/get-paid.md)。 |
+| 付款 | 任何购买和部署都将继续按常规方式支付给你。 详细了解如何 [在商业市场中付费](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context)。 |
 | API 与现有[云合作伙伴门户 API](cloud-partner-portal-api-overview.md) 的集成 | 仍支持现有云合作伙伴门户 Api，现有集成仍可正常工作。 要了解详细信息， [请参阅是否支持云合作伙伴门户 REST api？](#are-the-cloud-partner-portal-rest-apis-still-supported) |
-| Analytics | 可以通过在合作伙伴中心查看分析来继续监视销售、评估性能和优化商业应用商店中的产品/服务。 在 CPP 和伙伴中心中如何显示分析报表之间存在差异。 例如，CPP 中的 **卖方 Insights** 有一个 " **订单 & 使用情况** " 选项卡，该选项卡显示基于使用情况的产品/服务和基于使用情况的产品/ **服务的数据** 。 有关详细信息，请参阅 [合作伙伴中心的商业市场访问分析报表](partner-center-portal/analytics.md)。 |
+| 分析 | 可以通过在合作伙伴中心查看分析来继续监视销售、评估性能和优化商业应用商店中的产品/服务。 在 CPP 和伙伴中心中如何显示分析报表之间存在差异。 例如，CPP 中的 **卖方 Insights** 有一个 " **订单 & 使用情况** " 选项卡，该选项卡显示基于使用情况的产品/服务和基于使用情况的产品/ **服务的数据** 。 有关详细信息，请参阅 [合作伙伴中心的商业市场访问分析报表](partner-center-portal/analytics.md)。 |
 |||
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>是否需要创建新帐户来管理合作伙伴中心提供的产品/服务？
@@ -162,7 +162,9 @@ ms.locfileid: "88607507"
 - 计划设置页面
 - 计划列表页面
 - 计划可用性页面
-- 规划技术配置页，如下所示： ![ ！ [屏幕截图显示 "合作伙伴中心技术配置" 页。] (media/cpp-pc-常见问题解答/technical-configuration.png "显示合作伙伴中心技术配置页" ) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- 规划技术配置页，如下所示：
+
+![![屏幕截图显示合作伙伴中心技术配置页。] (media/cpp-pc-常见问题解答/technical-configuration.png "显示合作伙伴中心技术配置页" ) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 产品/服务 ID 现在显示在 "产品/服务" 的左侧导航栏上：
 

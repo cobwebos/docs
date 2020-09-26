@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 498d00b4f6a0ca16d07663641a46f30109b39d5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9bf3fbf28d8ac525f2937812742e850a5427cc9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325056"
+ms.locfileid: "91360814"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>在 Azure SQL 托管实例中配置公共终结点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "91325056"
 1. 在“安全性”设置中，选择“虚拟网络”选项卡。 
 1. 在虚拟网络配置页中选择“启用”，然后选择“保存”图标以更新配置。 
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![屏幕截图显示启用了公共终结点的 SQL 托管实例的虚拟网络页。](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>使用 PowerShell 为托管实例启用公共终结点
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. 如果托管实例的配置页仍处于打开状态，请导航到“概述”选项卡。否则，请返回 **SQL 托管实例**资源。 选择“虚拟网络/子网”链接，转到虚拟网络配置页。
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![屏幕截图显示 "虚拟网络配置" 页，可以在其中找到虚拟网络/子网值。](./media/public-endpoint-configure/mi-overview.png)
 
 1. 在虚拟网络的左侧配置窗格中选择“子网”选项卡，并记下托管实例的**安全组**。
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![屏幕截图显示 "子网" 选项卡，你可以在其中获取托管实例的安全组。](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. 返回包含你的托管实例的资源组。 应会看到上面记下的**网络安全组**名称。 请选择该名称转到网络安全组配置页。
 
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**操作**     |允许         |允许入站流量通过公共终结点传送到托管实例 |
     |**Priority**     |1300         |请确保此规则的优先级高于 **deny_all_inbound** 规则 |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![屏幕截图显示 deny_all_inbound 规则之上的新 public_endpoint_inbound 规则的入站安全规则。](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > 端口 3342 用来与托管实例建立公共终结点连接，暂时不可更改。
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. 导航到为公共终结点启用的托管实例配置页。 选择“设置”配置下的“连接字符串”选项卡。 
 1. 请注意，公用终结点主机名的格式 <mi_name>。**public**<dns_zone> database.windows.net，用于连接的端口为3342。
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![屏幕截图显示公共和专用终结点的连接字符串。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268221"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370171"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -24,7 +24,7 @@ ms.locfileid: "89268221"
 
 本文介绍计划 Azure AD 联接实现所需信息。
  
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](./overview.md)。
 
@@ -184,7 +184,7 @@ Azure AD 联接设备不支持依赖计算机身份验证的本地应用程序�
 
 Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混合 Azure AD 联接。 不支持未联接设备或非 Windows 设备的远程桌面。 有关详细信息，请参阅 [Connect to remote Azure Active Directory-joined PC](/windows/client-management/connect-to-remote-aadj-pc)（连接到远程 Azure AD 联接电脑）
 
-启动 Windows 10 2004 更新后，用户可以 alo 使用远程桌面从 Azure AD 注册的 Windows 10 设备连接到 Azure AD 加入的设备。 
+启动 Windows 10 2004 更新后，用户还可以从 Azure AD 注册的 Windows 10 设备使用远程桌面连接到 Azure AD 加入的设备。 
 
 ## <a name="understand-your-provisioning-options"></a>了解预配选项
 

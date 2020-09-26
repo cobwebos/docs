@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 00bca2d0c7e267bef8cd4a917463c5e7db159792
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304282"
 ---
 # <a name="camera-placement-guide"></a>照相机位置指南
 
@@ -56,7 +56,7 @@ ms.locfileid: "90933407"
 
 ## <a name="camera-to-focal-point-distance"></a>照相机到点距离
 
-"_相机到点距离_" 是指从焦点点 (或中心焦点点) 到相机的线性距离。
+"_相机到点距离_" 是从 " (" 或 "相机" 图像中心到) 到 "地面" 测量的点的线性距离。
 
 ![相机到焦点-距离](./media/spatial-analysis/camera-focal-point.png)
 

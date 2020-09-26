@@ -7,12 +7,12 @@ ms.service: application-gateway
 services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59ca7708b24d2e75381290b80adeb671e2b49822
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74130330"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362689"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "74130330"
 
 若要建立 WebSocket 连接，需在客户端和服务器之间交换特定的基于 HTTP 的握手。 如果成功，则应用程序层协议会使用之前建立的 TCP 连接从 HTTP“升级”为 WebSocket。 然后就完全不使用 HTTP；两个终结点可以使用 WebSocket 协议来发送或接收数据，直至 WebSocket 连接关闭。 
 
-![websocket](./media/application-gateway-websocket/websocket.png)
+![关系图对与 web 服务器交互的客户端进行了比较，并连接两次以获取两个回复，WebSocket 交互，其中客户端一次连接到服务器一次，以获取多个答复。](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>侦听器配置元素
 

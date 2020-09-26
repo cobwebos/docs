@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 022040f4fa7f70dd5fc7677ce969ee9acbe7bcbb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d89a5c951f2923f9e107dd2dabec7773f292fa02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886423"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290511"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -1259,7 +1259,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
   + [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift)
     + 已从 `azureml-contrib-datadrift` 移入 `azureml-datadrift`
     + 添加了监视时序数据集的偏移和其他统计度量的支持
-    + 已将新方法 `create_from_model()` 和 `create_from_dataset()` 添加到 [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) 类。 `create()` 方法即将弃用。
+    + 已将新方法 `create_from_model()` 和 `create_from_dataset()` 添加到 [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector%28class%29) 类。 `create()` 方法即将弃用。
     + 对 Azure 机器学习工作室中的 Python 和 UI 中的可视化效果做了调整。
     + 数据集监视器除了每日监视计划以外，还支持每周和每月监视计划。
     + 支持数据监视指标的回填，以分析数据集监视器的历史数据。
@@ -1364,7 +1364,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 支持使用模型部署和服务更新的环境。
   + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
     + [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) 类的 show 特性不再支持可选参数“with_details”。 show 特性只显示数据偏移系数和特征列的数据偏移分布。
-    + DataDriftDetector 函数 [get_output]https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) 的行为更改：
+    + DataDriftDetector 函数 [get_output] python/api/azureml-datadrift//datadrift。 DataDriftDetector # get--无--结束时间-无---无-) 行为更改：
       + 输入参数 start_time 和 end_time 是可选的，而不是必需的；
       + 在同一调用中结合特定的 run_id 输入特定的 start_time 和/或 end_time 会导致值错误异常，因为它们是互斥的；
       + 如果输入特定的 start_time 和/或 end_time，只会返回计划运行的结果；
@@ -1458,7 +1458,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 支持将 training_data、validation_data、label_column_name 和 weight_column_name 用作数据输入格式
     + 为 explain_model() 和 retrieve_model_explanations() 添加了弃用消息
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
-    + 添加了一个[笔记本](https://aka.ms/pl-modulestep)来描述 [Module](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module(class))、[ModuleVersion 和 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep)。
+    + 添加了一个[笔记本](https://aka.ms/pl-modulestep)来描述 [Module](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module%28class%29)、[ModuleVersion 和 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep)。
   + **[azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + 添加了用于通过 AML 管道支持 R 脚本运行的 [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep)。
     + 修复了 AzureBatchStep 中的元数据参数分析问题，此问题会导致出现错误消息“未指定参数 SubscriptionId 的分配”。

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361376"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -41,11 +41,11 @@ ms.locfileid: "85846565"
 2. 单击进程服务器注册到的配置服务器。
 3. 单击要对其流量进行负载均衡的进程服务器。
 
-    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![屏幕截图显示可对流量进行负载平衡的进程服务器。](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. 单击“负载均衡”，选择要将计算机移动到其中的目标进程服务器。  然后单击“确定” 
 
-    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![屏幕截图显示 "负载平衡" 窗格，其中选择了 "选择目标进程服务器"。](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. 单击“选择计算机”，选择要从当前进程服务器移动到目标进程服务器的计算机  。 针对每个虚拟机显示平均数据更改的详细信息。  。 
 3. 在保管库的“监视” > “Site Recovery 作业”下监视作业进程。  
@@ -61,7 +61,7 @@ ms.locfileid: "85846565"
 3. 单击要在其中切换工作负荷的进程服务器。
 4. 单击“切换”，选择要将工作负荷移动到其中的目标进程服务器。  然后单击“确定” 
 
-    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![屏幕截图显示 "选择目标进程服务器" 窗格。](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. 在保管库的“监视” > “Site Recovery 作业”下监视作业进程。  
 
@@ -138,4 +138,4 @@ ms.locfileid: "85846565"
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- 进程服务器安装目录。 例如： C:\Program Files （x86） \Microsoft Azure Site Recovery
+- 进程服务器安装目录。 例如： C:\Program 文件 (x86) \Microsoft Azure Site Recovery

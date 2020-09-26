@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316148"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure 数据工厂中映射数据流的疑难解答
 
@@ -116,7 +116,7 @@ ms.locfileid: "90031851"
 
 - **消息**：由于采样了太少的行，导致空值太多或缺少值。 请尝试更新调试行限制并刷新数据。
 - **原因**：联接条件与任何行都不匹配，或在数据预览期间导致了大量的 null 值。
-- **建议**：中转到 "调试" 设置，并增加源行限制中的行数。 请确保已选择并 Azure IR 具有足够大的数据流群集来处理更多数据。
+- **建议**：中转到 "调试" 设置，并增加源行限制中的行数。 请确保已选择一个具有足够大的数据流群集的 Azure IR 来处理更多数据。
 
 
 ## <a name="general-troubleshooting-guidance"></a>一般故障排除指南

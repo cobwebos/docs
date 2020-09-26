@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290681"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
+
+> [!IMPORTANT]
+> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
 
 连接的工厂解决方案加速器显示了虚拟公司 Contoso 的模拟仪表板。 此公司在全球许多地方都设有工厂。
 
@@ -264,9 +267,9 @@ ms.locfileid: "73820120"
 
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
-* “属性”
-* 描述
-* 图像
+* 名称
+* 说明
+* 映像
 * 位置
 * 单元
 * 可见
@@ -291,7 +294,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 连接的工厂支持基于最小/最大阈值的简单警报生成机制。 可以配置大量的预定义操作以响应这些警报。 此机制由以下属性控制：
 
 * 最大值
-* 最低配置
+* 最小值
 * MaximumAlertActions
 * MinimumAlertActions
 
@@ -307,7 +310,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
   标识 OPC UA 服务器中的节点值。 此属性的格式必须在 OPC UA 规范中指定。 在引入的消息中，此属性作为 NodeId 发送****。
 
-有关如何将遥测数据引入到连接工厂的详细信息，请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)。
+有关如何将遥测数据引入到连接工厂的详细信息，请参阅 [什么是 OPC 发布服务器](overview-opc-publisher.md) 。
 
 ## <a name="example-how-kpi1-is-calculated"></a>示例：如何计算 KPI1
 
@@ -340,4 +343,4 @@ NumberOfManufactureredProducts 节点值的一个特征是它只会增加****。
 
 ## <a name="next-steps"></a>后续步骤
 
-建议的下一步是了解如何[自定义已连接的工厂解决方案](iot-accelerators-connected-factory-customize.md)。
+建议的下一步是了解如何 [自定义已连接的工厂解决方案](iot-accelerators-connected-factory-customize.md)。

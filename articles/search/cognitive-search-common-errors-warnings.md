@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378349"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362808"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -59,9 +59,9 @@ ms.locfileid: "89378349"
 
 | Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| Blob 超过大小限制 | 文档大小为 `'150441598'` 字节，这超过了当前服务层级支持的最大文档提取大小（`'134217728'` 字节）。 | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| Blob 采用了不受支持的内容类型 | 文档采用了不受支持的内容类型 `'image/png'` | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| Blob 已加密 | 无法处理文档 - 它可能已加密或者受密码保护。 | 可以使用 [Blob 设置](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)跳过 Blob。 |
+| Blob 超过大小限制 | 文档大小为 `'150441598'` 字节，这超过了当前服务层级支持的最大文档提取大小（`'134217728'` 字节）。 | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| Blob 采用了不受支持的内容类型 | 文档采用了不受支持的内容类型 `'image/png'` | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| Blob 已加密 | 无法处理文档 - 它可能已加密或者受密码保护。 | 可以使用 [Blob 设置](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex)跳过 Blob。 |
 | 暂时性问题 | “处理 Blob 时出错:请求已中止：请求已被取消。” “在处理期间文档超时。” | 偶尔出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-parse-document"></a>
@@ -71,7 +71,7 @@ ms.locfileid: "89378349"
 
 | Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 缺少文档键 | 文档键不能缺失或为空 | 确保所有文档都有有效的文档键。 文档键是通过将 "key" 属性设置为 [索引定义](/rest/api/searchservice/create-index#request-body)的一部分来确定的。 在特定文档上找不到标记为 "key" 的属性时，索引器将发出此错误。 |
+| 缺少文档键 | 文档键不能缺失或为空 | 确保所有文档具有有效的文档键。 文档键是通过将“键”属性设置为[索引定义](/rest/api/searchservice/create-index#request-body)的一部分来确定的。 当在特定文档上找不到标记为“键”的属性时，索引器将发出此错误。 |
 | 文档键无效 | 文档键的长度不能超过 1024 个字符 | 根据验证要求修改文档键。 |
 | 无法将字段映射应用到某个字段 | 无法将映射函数 `'functionName'` 应用到字段 `'fieldName'`。 数组不能为 null。 参数名称: bytes | 请反复检查索引器中定义的[字段映射](search-indexer-field-mappings.md)，并与失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
 | 无法读取字段值 | 无法读取列 `'fieldName'` 在索引 `'fieldIndex'` 处的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误:0 - 远程主机强行关闭了现有连接。 | 这些错误的常见原因是数据源的底层服务出现了意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
@@ -175,7 +175,7 @@ ms.locfileid: "89378349"
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>错误：由于表采用了组合主键，无法使用集成的更改跟踪策略
 
-这适用于 SQL 表，此错误通常发生在将键定义为组合键，或者在表定义了唯一聚集索引时（在 SQL 索引而不是 Azure 搜索索引中）。 主要原因是在使用[唯一聚集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情况下将键属性修改为组合主键。 在这种情况下，请确保 SQL 表不采用唯一聚集索引，或者，请将键字段映射到某个保证不包含重复值的字段。
+这适用于 SQL 表，此错误通常发生在将键定义为组合键，或者在表定义了唯一聚集索引时（在 SQL 索引而不是 Azure 搜索索引中）。 主要原因是在使用[唯一聚集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)的情况下将键属性修改为组合主键。 在这种情况下，请确保 SQL 表不采用唯一聚集索引，或者，请将键字段映射到某个保证不包含重复值的字段。
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 
@@ -183,7 +183,7 @@ ms.locfileid: "89378349"
 
 当索引器无法在允许的执行时间内处理完数据源中的单个文档时，将发生此错误。 使用技能集时，[最长运行时间](search-limits-quotas-capacity.md#indexer-limits)更短。 发生此错误时，如果 maxFailedItems 设置为非 0 值，则索引器将在以后的运行中绕过该文档，使索引编制能够继续。 如果无法跳过任何文档，或者此错误一直出现，请考虑将文档分解为较小的文档，以便在索引器的单次执行中处理能够取得部分进展。
 
-<名称 = "不能作为文档></a>
+<a name="could-not-project-document></a>
 
 ## <a name="error-could-not-project-document"></a>错误：无法投影文档
 

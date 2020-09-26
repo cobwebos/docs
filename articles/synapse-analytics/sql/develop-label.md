@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 596b18332fc490f72ad185699fc59bf4521eca69
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289066"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查询标签
 本文中包含的是有关在 Synapse SQL 中使用查询标签的基本技巧。
@@ -34,7 +34,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-最后一行将字符串“My Query Label”标记为查询。 此标记特别有用，因为可以通过 DMV 查询标签。 查询标签提供了一种机制，可用于查找问题查询，并有助于通过 ELT 运行来确定进度。
+最后一行将字符串“My Query Label”标记为查询。 此标记很有用，因为可以通过 Dmv 查询标签。 查询标签提供了一种机制，可用于查找问题查询，并有助于通过 ELT 运行来确定进度。
 
 良好的命名约定最为有用。 例如，让标签以 PROJECT、PROCEDURE、STATEMENT 或 COMMENT 开头可在源代码管理的所有代码中唯一地标识查询。
 
