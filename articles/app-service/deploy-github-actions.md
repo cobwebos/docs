@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 54e4ce409eb9f2a6bedd7861b3e268311f886b49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273239"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
@@ -23,6 +23,22 @@ ms.locfileid: "88962564"
 > 
 
 工作流是由存储库中 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义的。 此定义包含组成工作流的各种步骤和参数。
+
+## <a name="use-the-deployment-center"></a>使用部署中心
+
+你可以使用应用服务部署中心快速开始使用 GitHub 操作。 这会根据应用程序堆栈自动生成工作流文件，并将其提交到正确目录中的 GitHub 存储库。
+
+1. 在 Azure 门户中导航到 webapp
+1. 在左侧，单击 "**部署中心**"
+1. 在 " **连续部署 (CI/CD") **中，选择 **GitHub**
+1. 接下来，选择 **GitHub 操作**
+1. 使用 dropdown 选择 GitHub 存储库、分支和应用程序堆栈
+    - 如果所选分支受到保护，则仍可继续添加工作流文件。 继续操作之前，请务必查看分支保护。
+1. 在最后一个屏幕上，可以查看所选内容并预览将提交到存储库的工作流文件。 如果选择正确，请单击 "**完成**"
+
+这会将工作流文件提交到存储库。 用于生成和部署应用的工作流将立即启动。
+
+## <a name="add-the-workflow-manually"></a>手动添加工作流
 
 对于 Azure 应用服务工作流，文件包含三个部分：
 

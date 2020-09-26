@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0b90389f6ae88a073f3961cc2f0957d22e190fe0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273664"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
 
@@ -91,11 +91,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 选择“预配”选项卡。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![突出显示并调用预配选项的 BlueJeans Enterprise 应用程序边栏屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![设置页的屏幕截图，其中包含预配模式和管理员凭据部分。](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
 5. 在“管理员凭据”部分下，输入 BlueJeans 帐户的“管理员用户名”和“管理员密码”************。 这些值的示例如下：
 
@@ -105,35 +105,35 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 6. 填入步骤 5 中所示的字段后，请单击“测试连接”**** 以确保 Azure AD 可以连接到 BlueJeans。 如果连接失败，请确保 BlueJeans 帐户具有管理员权限，然后重试。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    !["管理员凭据" 部分的屏幕截图，其中的测试连接选项称为 "out"。](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
 7. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+    ![通知电子邮件文本框的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. 单击“保存” 。
+8. 单击“ **保存**”。
 
 9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 BlueJeans”********。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+    !["映射" 部分的屏幕截图，其中突出显示了 "Synchronize Azure Active Directory Users to BlueJeans" 选项。](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
 10. 在“属性映射”**** 部分中，查看从 Azure AD 同步到 BlueJeans 的用户属性。 选为“匹配”**** 属性的特性用于匹配 BlueJeans 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![显示了7个映射的 "属性映射" 部分的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
 11. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 12. 若要为 BlueJeans 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”**** 更改为“启用”********。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+    ![设置 "状态" 选项设置为 "打开" 的 "设置" 部分的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
 
 13. 通过在“设置”**** 部分的“范围”**** 中选择所需的值，定义要预配到 BlueJeans 的用户和/或组。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
+    ![突出显示 "仅同步分配的用户和组" 选项的作用域设置屏幕截图。](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
 14. 已准备好预配时，单击“保存”。
 
-    ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![带有称为 "保存" 选项的 BlueJeans Enterprise 应用程序边栏屏幕截图。](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步********。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”**** 部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 BlueJeans 执行的所有操作。
 

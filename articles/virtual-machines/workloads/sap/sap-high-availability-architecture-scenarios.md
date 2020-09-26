@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360346"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
 
@@ -344,7 +344,7 @@ Azure 正在各个不同的 [Azure 区域](https://azure.microsoft.com/global-in
 
 > 本部分仅适用于：
 >
-> ![Windows][Logo_Windows] Windows 和 ![Linux][Logo_Linux] Linux
+> ![Windows 徽标。][Logo_Windows] Windows 和 ![Linux 徽标。][Logo_Linux] Linux
 >
 
 对于 SAP 应用程序服务器和对话实例，通常不需要特定的高可用性解决方案。 通过冗余实现高可用性，并且可在 Azure 虚拟机的不同实例中配置多个对话实例。 应该至少有两个 SAP 应用程序实例安装在两个 Azure 虚拟机实例中。
@@ -382,7 +382,7 @@ _**图 2：** Azure 可用性集中 SAP 应用程序服务器的高可用性_
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows 上 SAP ASCS/SCS 实例的高可用性体系结构
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 >
 
 WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种变体：
@@ -395,7 +395,7 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 实例的高可用性体系结构
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 > 
 > 有关使用 SLES 群集框架群集化 SAP ASCS/SCS 实例的详细信息，请参阅 [SUSE Linux Enterprise Server 的 Azure VM 上针对 SAP 应用程序的 SAP NetWeaver 高可用性][sap-suse-ascs-ha]。 对于 SLES 上不要求高可用 NFS 的备用 HA 体系结构，请参阅[带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 SAP NetWeaver 的高可用性指南][sap-suse-ascs-ha-anf]。
 
@@ -404,7 +404,7 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>群集 SAP ASCS/SCS 实例的 SAP NetWeaver 多 SID 配置
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 徽标。][Logo_Windows] Windows
 > 
 > 使用文件共享和共享磁盘，WSFC 支持多 SID。
 > 
@@ -414,7 +414,7 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 * [针对 Windows Server 故障转移群集和共享磁盘的 SAP ASCS/SCS 实例多 SID 高可用性][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux 徽标。][Logo_Linux] Linux
 > 
 > 在适用于 SAP ASCS/ERS 的 Linux Pacemaker 群集上支持多 SID 群集，限制为同一群集上**五** 个 SAP SID。
 > 有关 Linux 上多 SID 高可用性体系结构的详细信息，请参阅：

@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 40c7b1b0ae2065ed00cf21f99ab2046e25970237
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297352"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>排查常见的 Azure 数据库迁移服务问题和错误
 
@@ -118,7 +118,7 @@ ms.locfileid: "84609431"
 
 尝试将 Azure 数据库迁移服务连接到在命名实例或动态端口上运行的 SQL Server 源时，连接失败并出现以下错误：
 
-* **错误**：-1 - SQL 连接失败。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 未找到或无法访问服务器。 请验证实例名称是否正确，SQL Server 是否已配置为允许远程连接。 （提供程序：SQL 网络接口，错误：26 - 查找指定的服务器/实例时出错）
+* **错误**：-1 - SQL 连接失败。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。 请验证实例名称是否正确，SQL Server 是否已配置为允许远程连接。 （提供程序：SQL 网络接口，错误：26 - 查找指定的服务器/实例时出错）
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
