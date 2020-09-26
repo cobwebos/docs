@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308106"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性理解 IoT 行业中的 X.509 CA 证书
 
@@ -87,7 +87,7 @@ X.509 CA 证书上传进程指将 CA 证书上传到 IoT 中心。 IoT 中心希
 
 ### <a name="proof-of-possession-of-the-certificate"></a>证书的所有权证明
 
-与所有数字证书相同，X.509 CA 证书也是易遭窃听的公共信息。 因此，窃听者可能会拦截证书并尝试将其作为自己的证书进行上传。 在本示例中，IoT 中心会确保 X 公司上传的 CA 证书确实属于 X 公司。 实现这一目的的方法是：要求 X 公司通过[所有权证明 (PoP) 流程](https://tools.ietf.org/html/rfc5280#section-3.1)证明他们实际上拥有该证书。 所有权证明流程要求 IoT 中心生成随机数字，X 公司将使用其私钥对该数字进行签名。 如果 X 公司遵循了 PKI 最佳做法并保护了私钥，那么只有他们才能够正确响应所有权证明质疑。 成功响应所有权证明质疑后，IoT 中心会继续注册 X.509 CA 证书。
+与所有数字证书相同，X.509 CA 证书也是易遭窃听的公共信息。 因此，窃听者可能会拦截证书并尝试将其作为自己的证书进行上传。 在本示例中，IoT 中心会确保 X 公司上传的 CA 证书确实属于 X 公司。 这样做的目的是为了证明公司的用户可以通过 [所有权证明 (PoP) 流](https://tools.ietf.org/html/rfc5280#section-3.1)，使其确实拥有证书。 所有权证明流程要求 IoT 中心生成随机数字，X 公司将使用其私钥对该数字进行签名。 如果 X 公司遵循了 PKI 最佳做法并保护了私钥，那么只有他们才能够正确响应所有权证明质疑。 成功响应所有权证明质疑后，IoT 中心会继续注册 X.509 CA 证书。
 
 成功响应 IoT 中心的所有权证明质疑后，即可完成 X.509 CA 注册。
 

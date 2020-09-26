@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 098c0a85dc6c0fac8b78f344c4c8559b168b9114
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371331"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
 
@@ -25,9 +25,9 @@ ms.locfileid: "88749858"
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight 托管标识的实现
 
-在 Azure HDInsight 中，托管标识仅适用于内部组件的 HDInsight 服务。 目前没有支持的方法使用安装在 HDInsight 群集节点上的托管标识生成访问令牌，以便访问外部服务。 对于某些 Azure 服务（如计算 Vm），托管标识是通过可用于获取访问令牌的终结点实现的。 此终结点当前在 HDInsight 节点中不可用。
+在 Azure HDInsight 中，托管标识仅适用于内部组件的 HDInsight 服务。 目前没有任何支持的方法可用于通过 HDInsight 群集节点上安装的托管标识生成访问令牌来访问外部服务。 对于计算 VM 等某些 Azure 服务，托管标识是使用某个可用于获取访问令牌的终结点实现的。 此终结点当前在 HDInsight 节点中不可用。
 
-如果需要启动你的应用程序以避免在分析作业中放置机密/密码 (例如 SCALA 作业) ，你可以使用脚本操作将自己的证书 distrubte 到群集节点，然后使用该证书获取访问令牌 (例如，访问 Azure KeyVault) 。
+如果需要启动应用程序以避免在分析作业中放置机密/密码 (例如 SCALA 作业) ，可以使用脚本操作将自己的证书分发到群集节点，然后使用该证书获取访问令牌 (例如访问 Azure KeyVault) 。
 
 ## <a name="create-a-managed-identity"></a>创建托管标识
 
@@ -47,6 +47,15 @@ Azure HDInsight 中的多种方案都会使用托管标识。 有关详细的设
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [企业安全性套餐](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [客户管理的密钥磁盘加密](disk-encryption.md)
+
+HDInsight 将自动续订用于这些方案的托管标识的证书。 但是，当多个不同的托管标识用于长时间运行的群集时，可能会有一个限制：对于所有托管标识，证书续订可能不会按预期方式工作。 由于此限制，如果你计划使用长时间运行的群集 (例如，超过60天) ，则建议你为上述所有方案使用同一个托管标识。 
+
+如果你已经创建了具有多个不同托管标识的长时间运行的群集并且遇到以下问题之一：
+ * 在 ESP 群集中，群集服务将启动失败或增加，其他操作启动失败，并出现身份验证错误。
+ * 在 ESP 群集中，更改 AAD DS LDAPS 证书时，LDAPS 证书不会自动更新，因此 LDAP 同步和扩展的 ups 开始失败。
+ * MSI 对 ADLS Gen2 启动失败。
+ * 加密密钥不能在 CMK 方案中旋转。
+然后，应将上述方案所需的角色和权限分配给群集中使用的所有管理标识。 例如，如果你对 ADLS Gen2 和 ESP 群集使用了不同的托管标识，则这两个群集都应具有分配给他们的 "存储 blob 数据所有者" 和 "HDInsight 域服务参与者" 角色，以避免在这些问题中运行。
 
 ## <a name="faq"></a>常见问题
 

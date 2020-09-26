@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccd732c644cf0a5641099a9731f65dd7b03bf374
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73486690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316403"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语
 
 进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。 
 
-可以交互方式测试 LUIS，一次提供一条话语，或提供一批话语。 测试时，可以将当前活动模型的预测响应与已发布模型的预测响应进行比较。 
+可以通过交互方式测试 LUIS，一次查询文本一次，或提供一组最谈话。 测试时，可以将当前活动模型的预测响应与已发布模型的预测响应进行比较。 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>

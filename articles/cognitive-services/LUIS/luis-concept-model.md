@@ -1,26 +1,28 @@
 ---
 title: 使用模型进行设计 - LUIS
 description: 语言理解提供多种类型的模型。 某些模型可以通过多种方式使用。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316505"
 ---
 # <a name="design-with-intent-and-entity-models"></a>使用意向和实体模型进行设计
 
 语言理解提供了两种类型的模型，用于定义应用架构。 应用架构确定从新用户查询文本预测获得的信息。
 
-应用架构是使用[计算机教学](#authoring-uses-machine-teaching)创建的模型生成的：
+应用架构是使用 [计算机教学](#authoring-uses-machine-teaching)创建的模型生成的：
 * 用户[最谈话分类](#intents-classify-utterances)
-* [实体](#entities-extract-data)从查询文本中提取数据
+* [实体](#entities-extract-data) 从查询文本中提取数据
 
 ## <a name="authoring-uses-machine-teaching"></a>创作使用机器教学
 
-使用 LUIS 的机器教学方法，可以轻松地向计算机讲授概念。 了解_机器学习_不需要使用 LUIS。 相反，你作为老师，通过提供概念的示例并说明如何使用其他相关概念来建模概念，将概念传达给 LUIS。 作为教师，你还可以通过识别和修复预测错误，以交互方式改进 LUIS 的模型。
+使用 LUIS 的机器教学方法，可以轻松地向计算机讲授概念。 了解 _机器学习_ 不需要使用 LUIS。 相反，你作为老师，通过提供概念的示例并说明如何使用其他相关概念来建模概念，将概念传达给 LUIS。 作为教师，你还可以通过识别和修复预测错误，以交互方式改进 LUIS 的模型。
 
 <a name="v3-authoring-model-decomposition"></a>
 
@@ -59,17 +61,17 @@ ms.locfileid: "83683933"
 
 ## <a name="entity-model-decomposition"></a>实体模型分解
 
-LUIS 支持使用创作 Api 进行_模型分解_，并将概念分解为更小的部分。 这样，你便可以生成自己的模型，并有把握地构造和预测各个组成部分。
+LUIS 支持使用创作 Api 进行 _模型分解_ ，并将概念分解为更小的部分。 这样，你便可以生成自己的模型，并有把握地构造和预测各个组成部分。
 
 模型分解包括以下组成部分：
 
 * [意向](#intents-classify-utterances)
     * [功能](#features)
 * [机器学习实体](reference-entity-machine-learned-entity.md)
-    * 子实体（也是机器学习实体）
+    * 子实体 (机器学习实体) 
         * [功能](#features)
             * [短语列表](luis-concept-feature.md)
-            * [非计算机学习实体](luis-concept-feature.md)，如[正则表达式](reference-entity-regular-expression.md)、[列表](reference-entity-list.md)和预生成[实体](luis-reference-prebuilt-entities.md)
+            * [非计算机学习实体](luis-concept-feature.md) ，如 [正则表达式](reference-entity-regular-expression.md)、 [列表](reference-entity-list.md)和预生成 [实体](luis-reference-prebuilt-entities.md)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>
@@ -84,7 +86,7 @@ LUIS 支持使用创作 Api 进行_模型分解_，并将概念分解为更小�
 
 ## <a name="extending-the-app-at-runtime"></a>在运行时扩展应用程序
 
-应用的架构（模型和功能）经过训练并发布到预测终结点。 您可以将[新信息](schema-change-prediction-runtime.md)以及用户的查询文本传递到预测终结点以增加预测。
+应用的架构（模型和功能）经过训练后将发布到预测终结点。 您可以将 [新信息](schema-change-prediction-runtime.md)以及用户的查询文本传递到预测终结点以增加预测。
 
 ## <a name="next-steps"></a>后续步骤
 

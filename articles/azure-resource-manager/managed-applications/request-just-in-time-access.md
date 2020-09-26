@@ -3,20 +3,20 @@ title: 请求实时访问
 description: 介绍了 Azure 托管应用程序的发布者如何请求对托管应用程序的实时访问权限。
 author: MSEvanhi
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371553"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>启用和请求对 Azure 托管应用程序的实时访问权限
 
-你的托管应用程序的使用者可能不愿意向你授予对托管资源组的永久访问权限。 作为托管应用程序的发布者，你可能更希望使用者准确了解你何时需要访问托管资源。 为了让使用者在授予对托管资源的访问权限时能够更好地进行控制，Azure 托管应用程序提供了一种称为实时 (JIT) 访问的功能，该功能目前为预览版。
+你的托管应用程序的使用者可能不愿意向你授予对托管资源组的永久访问权限。 作为托管应用程序的发布者，你可能更希望使用者准确了解你何时需要访问托管资源。 为了使使用者更好地控制授予对托管资源的访问权限，Azure 托管应用程序提供了一项功能，称为 "实时 (JIT) 访问"。 此功能目前处于预览状态。
 
-JIT 访问允许你请求对托管应用程序资源的提升访问权限，以便进行故障排除或维护。 你始终对资源具有只读访问权限，但在特定的时间段内，你可以具有更高的访问权限。
+通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。
 
 用于授予访问权限的工作流为：
 
@@ -34,9 +34,7 @@ JIT 访问允许你请求对托管应用程序资源的提升访问权限，以�
 
 ## <a name="add-jit-access-step-to-ui"></a>向 UI 添加 JIT 访问步骤
 
-除了必须包括一个步骤来让使用者启用 JIT 访问之外，CreateUiDefinition.json 文件与你为永久访问创建的 UI 文件完全相同。 若要详细了解如何在 Azure 市场中发布你的第一个托管应用程序产品/服务，请参阅[市场中的 Azure 托管应用程序](publish-marketplace-app.md)。
-
-若要让你的产品/服务支持 JIT 功能，请将以下内容添加到 CreateUiDefinition.json 文件：
+在 CreateUiDefinition.js文件中，包含一个允许使用者启用 JIT 访问的步骤。 若要支持你的产品/服务的 JIT 功能，请将以下内容添加到你的 CreateUiDefinition.js文件。
 
 在 "steps" 中：
 
@@ -58,7 +56,7 @@ JIT 访问允许你请求对托管应用程序资源的提升访问权限，以�
     ]
 }
 ```
- 
+
 在 "outputs" 中：
 
 ```json
@@ -70,19 +68,21 @@ JIT 访问允许你请求对托管应用程序资源的提升访问权限，以�
 
 ## <a name="enable-jit-access"></a>启用 JIT 访问
 
-在市场中定义产品/服务时，请确保启用 JIT 访问。
+在合作伙伴中心创建产品/服务时，请确保启用 JIT 访问。
 
-1. 登录到[云合作伙伴发布门户](https://cloudpartner.azure.com)。
+1. 登录到 [合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的 "商用 Marketplace 门户"。
 
-1. 提供相应的值以在市场中发布托管应用程序。 对于“启用 JIT 访问?”，选择“是”。  
+1. 有关创建新的托管应用程序的指南，请遵循 [创建 Azure 应用程序服务](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)中的步骤。
 
-   ![启用实时访问](./media/request-just-in-time-access/marketplace-enable.png)
+1. 在 " **技术配置** " 页上，选中 " **启用实时 (JIT) 访问** " 复选框。
 
-你已向 UI 添加了一个 JIT 配置步骤，并在市场产品/服务中启用了 JIT 访问。 当使用者部署你的托管应用程序时，他们可以[为其实例启用 JIT 访问](approve-just-in-time-access.md#enable-during-deployment)。
+   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="启用实时访问":::
+
+已将 JIT 配置步骤添加到 UI，并已在商用 marketplace 产品/服务中启用了 JIT 访问。 当使用者部署你的托管应用程序时，他们可以[为其实例启用 JIT 访问](approve-just-in-time-access.md#enable-during-deployment)。
 
 ## <a name="request-access"></a>请求访问权限
 
-当你需要访问使用者的托管资源时，你发送一个请求来请求特定的角色、时间和持续时间。 然后，使用者必须批准该请求。
+需要访问使用者的托管资源时，需要为特定的角色、时间和持续时间发送请求。 然后，使用者必须批准该请求。
 
 若要发送 JIT 访问请求，请执行以下操作：
 

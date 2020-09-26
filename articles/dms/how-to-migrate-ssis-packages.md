@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5f9ba7ea4afd81d62cba7b970693f603b53ef9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316080"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务将 SSIS 包重新部署到 Azure SQL 数据库
 
@@ -39,7 +39,7 @@ ms.locfileid: "84021511"
 若要完成这些步骤，需满足以下条件：
 
 * SSMS 17.2 版本或更高版本。
-* 用于托管 SSISDB 的目标数据库服务器的实例。 如果还没有数据库，请通过导航到 SQL Server （仅逻辑服务器）[表单](https://ms.portal.azure.com/#create/Microsoft.SQLServer)，使用 Azure 门户创建[逻辑 SQL server](../azure-sql/database/logical-servers.md) （不包含数据库）。
+* 用于托管 SSISDB 的目标数据库服务器的实例。 如果还没有数据库，请在不使用数据库) 的情况下使用 Azure 门户创建 [逻辑 SQL server](../azure-sql/database/logical-servers.md) (，只需 ([窗体](https://ms.portal.azure.com/#create/Microsoft.SQLServer)导航到 SQL Server) 逻辑服务器。
 * SSIS 必须在包含 Azure-SSIS Integration Runtime (IR) 的 Azure 数据工厂 (ADF) 中进行预配，并且目标 SSISDB 由 SQL 数据库托管（如[在 Azure 数据工厂中预配 Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 一文所述）。
 
 ## <a name="assess-source-ssis-projectspackages"></a>评估源 SSIS 项目/包
@@ -81,7 +81,7 @@ ms.locfileid: "84021511"
 8. 选择“**下一步**”。
 9. 在“选择目标”页上，指定项目目标。
 
-    a. 在 "服务器名称" 文本框中，输入完全限定的服务器名称（<server_name> database.windows.net）。
+    a. 在 "服务器名称" 文本框中，输入完全限定的服务器名称 ( # B0 server_name> database.windows.net) 。
 
     b. 提供身份验证信息，然后选择“连接”。
 

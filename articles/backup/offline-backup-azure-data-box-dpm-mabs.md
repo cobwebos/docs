@@ -3,12 +3,12 @@ title: DPM 和 MABS Azure Data Box 的脱机备份
 description: 你可以使用 Azure Data Box 将初始备份数据从 DPM 和 MABS 脱机。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271488"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (预览版的 Azure Data Box 进行脱机种子设定) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "89177680"
 
 - Azure 备份（MARS 代理）可以直接将备份数据写入支持的 Azure Data Box SKU。 此功能使你无需为初始备份数据预配暂存位置。 也不需要使用实用工具来格式化数据并将其复制到磁盘上。
 
-## <a name="supported-platforms"></a>受支持的平台
+## <a name="supported-platforms"></a>支持的平台
 
 支持的平台如下：
 
@@ -110,7 +110,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>将初始备份数据传输到 Azure Data Box 设备
 
-1. 在 DPM/MABS 服务器上，按照以下步骤 [创建新的保护组](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 如果要将在线保护添加到现有保护组，请右键单击现有的保护组，然后选择 " **添加在线保护** " 和 "从 **步骤 8**开始"。
+1. 在 DPM/MABS 服务器上，按照以下步骤 [创建新的保护组](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)。 如果要将在线保护添加到现有保护组，请右键单击现有的保护组，然后选择 " **添加在线保护** " 和 "从 **步骤 8**开始"。
 2. 在“选择组成员”页，指定要备份的计算机和源。
 3. 在“选择数据保护方法”页，指定处理短期和长期备份的方式。 确保选择“我需要联机保护”。
 
@@ -149,7 +149,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
           - Azure.Storage       4.6.1<br>
      >  - Azure AD 应用程序注册为 AzureOfflineBackup_\<object GUID of the user>。
 
-13. 选择已解包、连接并解锁 Data Box 磁盘的正确数据框顺序。 选择“下一步”  。
+13. 选择已解包、连接并解锁 Data Box 磁盘的正确数据框顺序。 选择“**下一步**”。
 
     ![选择 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
     > 例如，如果磁盘的路径为 `\\mydomain\myserver\disk1\` ，并且 *disk1* 包含一个名为 *PageBlob*的目录，则 DPM/MABS 服务器向导上提供的路径为 `\\mydomain\myserver\disk1\` 。
     > 如果[设置 Azure Data Box 100 TB 设备](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)，请提供以下信息作为设备 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 的网络路径。
 
-15. 选择“下一步”  。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
+15. 选择“**下一步**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
 
     ![检测 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 

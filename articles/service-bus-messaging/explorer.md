@@ -3,12 +3,12 @@ title: 使用 Azure 服务总线资源管理器在服务总线上执行数据操
 description: 本文介绍如何使用基于门户的 Azure 服务总线资源管理器访问 Azure 服务总线数据。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295594"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用服务总线资源管理器在服务总线上执行数据操作（预览版）
 
@@ -104,7 +104,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 接收操作成功后，消息详细信息会显示在网格中，如下所示。 可以在网格中选择该消息以显示其详细信息。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Azure 服务总线资源管理器中的 "队列" 窗口的屏幕截图，其中显示了队列中所选活动消息的消息详细信息。":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>速览来自队列的消息
@@ -156,7 +156,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 接收操作成功后，收到的消息会显示在网格中，如下所示。 若要查看消息详细信息，请单击该消息。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Azure 服务总线资源管理器中的 "接收" 选项卡的屏幕截图，其中显示了已收到的活动消息的消息详细信息。":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>速览来自订阅的消息
 

@@ -3,17 +3,17 @@ title: 持续集成和持续部署到 Azure IoT Edge 设备-Azure IoT Edge
 description: 使用 Azure IoT Edge YAML 与 Azure DevOps、Azure Pipelines 来设置持续集成和持续部署
 author: shizn
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b68e354099a0038e1b418d6973eca2c774aed94
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89301699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281620"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>持续集成和持续部署到 Azure IoT Edge 设备
 
@@ -30,7 +30,7 @@ ms.locfileid: "89301699"
  | 生成部署清单 | 对文件和变量使用 deployment.template.js，然后生成最终的 IoT Edge 部署清单文件。 |
  | 部署到 IoT Edge 设备 | 创建 IoT Edge 部署到一个或多个 IoT Edge 设备。 |
 
-除非另行指定，否则本文中的过程不会浏览通过任务参数提供的所有功能。 有关详细信息，请参阅以下部分：
+除非另行指定，否则本文中的过程不会浏览通过任务参数提供的所有功能。 有关详细信息，请参阅以下主题：
 
 * [任务版本](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
 * **高级** -如果适用，请指定不想生成的模块。

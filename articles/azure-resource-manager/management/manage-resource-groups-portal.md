@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827225"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371246"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组
 
@@ -41,7 +41,7 @@ ms.locfileid: "87827225"
 
    - **订阅**：选择 Azure 订阅。 
    - **资源组**：输入新的资源组名称。 
-   - **区域**：选择 Azure 位置，如 "**美国中部**"。
+   - **区域**：选择 Azure 位置，如 " **美国中部**"。
 
      ![创建资源组](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. 选择“查看 + 创建”
@@ -105,7 +105,7 @@ ms.locfileid: "87827225"
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 
-Azure [RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/overview.md)是管理 azure 中资源访问权限的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 管理对 Azure 中资源的访问权限。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

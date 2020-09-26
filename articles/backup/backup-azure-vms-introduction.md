@@ -3,12 +3,12 @@ title: 关于 Azure VM 备份
 description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以及如何遵循最佳做法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371501"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
 
@@ -105,6 +105,13 @@ Azure 备份根据备份计划创建快照。
 - **磁盘有碎片：** 如果磁盘上的更改是相邻的，则备份操作会更快。 如果更改分散在磁盘的各个位置并出现碎片，则备份会变慢。
 - **磁盘变动率：** 如果正在进行增量备份的受保护磁盘的每日变动率超过 200 GB，则备份可能需要花费很长时间（8 小时以上）才能完成。
 - **备份版本：** 最新版本的备份（称为“即时还原”版本）使用比校验和比较更佳的优化进程来识别更改。 但是，如果使用即时还原并删除了备份快照，则备份将改用校验和比较。 在这种情况下，备份操作将超过 24 小时（或失败）。
+
+### <a name="restore-performance"></a>还原性能
+
+这些常见方案可能会影响总还原时间：
+
+- 还原的总时间取决于每秒的输入/输出操作 (IOPS) 和存储帐户的吞吐量。
+- 如果目标存储帐户与其他应用程序的读取和写入操作一起加载，则总还原时间可能会受到影响。 若要改善还原操作，请选择一个未与其他应用程序数据一起加载的存储帐户。
 
 ## <a name="best-practices"></a>最佳实践
 

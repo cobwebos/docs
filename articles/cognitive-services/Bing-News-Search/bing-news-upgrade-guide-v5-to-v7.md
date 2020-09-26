@@ -1,7 +1,7 @@
 ---
 title: 将必应新闻搜索 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
-description: 发现需要更新为使用版本 7 的应用部分。
+description: 标识你需要更新以使用版本7的必应新闻搜索应用程序部分。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80294366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316641"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新闻搜索 API 升级指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "80294366"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如，`https://api.cognitive.microsoft.com/bing/v7.0/news/search` 。
+- 终结点的版本号已从 v5 更改为 v7。 例如 `https://api.cognitive.microsoft.com/bing/v7.0/news/search`。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -54,7 +54,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-禁用|InsufficientAuthorization.AuthorizationDisabled
+已禁用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -86,7 +86,7 @@ InsufficientScope|InsufficientAuthorization
 
 - 已将 `mentions` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) 对象。 `mentions` 字段包含在文章中找到的实体（人员或位置）列表。
 
-- 已将 `video` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) 对象。 `video` 字段包含与新闻文章相关的视频。 视频要么是可以嵌入的 \<iframe\>，要么是动作缩略图。
+- 已将 `video` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) 对象。 `video` 字段包含与新闻文章相关的视频。 视频 \<iframe\> 可以是嵌入的，也可以是动画缩略图。
 
 - 已将 `sort` 字段添加到 [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) 对象。 `sort` 字段显示文章排序顺序。 例如，文章按相关性（默认设置）或日期排序。
 

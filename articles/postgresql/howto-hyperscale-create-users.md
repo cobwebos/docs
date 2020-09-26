@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295730"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>在 Azure Database for PostgreSQL-超大规模 (Citus 中创建用户) 
 
@@ -28,7 +28,7 @@ PostgreSQL 引擎使用 [角色](https://www.postgresql.org/docs/current/sql-cre
 * `postgres`
 * `citus`
 
-由于超大规模是托管的 PaaS 服务，因此只有 Microsoft 才能使用 `postgres` 超级用户角色登录。 对于有限的管理访问权限，超大规模提供了 `citus` 角色。
+由于超大规模 (Citus) 是托管的 PaaS 服务，因此只有 Microsoft 才能使用 `postgres` 超级用户角色登录。 对于有限的管理访问权限，超大规模 (Citus) 提供 `citus` 角色。
 
 角色的权限 `citus` ：
 
@@ -46,11 +46,11 @@ PostgreSQL 引擎使用 [角色](https://www.postgresql.org/docs/current/sql-cre
 
 如前所述， `citus` 管理员帐户没有创建其他用户的权限。 若要添加用户，请使用 Azure 门户接口。
 
-1. 中转到超大规模服务器组的 " **角色** " 页，然后单击 " **+ 添加**"：
+1. 中转到超大规模 (Citus) 服务器组的 " **角色** " 页，然后单击 " **+ 添加**"：
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text=""角色" 页":::
 
-2. 输入 "角色名称" 和 "密码"。 单击“保存”。
+2. 输入 "角色名称" 和 "密码"。 单击“ **保存**”。
 
    :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="添加角色":::
 
@@ -75,7 +75,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>如何删除用户角色或更改其密码
 
-若要更新用户，请访问超大规模服务器组的 "**角色**" 页，然后单击 "用户" 旁边**的省略号 "..."。** 省略号将打开一个菜单以删除用户或重置其密码。
+若要更新用户，请访问超大规模 (Citus) 服务器组的 " **角色** " 页，然后单击用户旁边 **的省略号 "..."** 。 省略号将打开一个菜单以删除用户或重置其密码。
 
    :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="编辑角色":::
 

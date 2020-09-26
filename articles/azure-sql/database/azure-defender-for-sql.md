@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: b789cd423d2260ce709a02ffb3ac5ea500997609
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372147"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -39,7 +39,7 @@ Azure Defender 提供一组高级 SQL 安全功能，包括 SQL 漏洞评估和�
 
 以下步骤可帮助你开始 Azure Defender。
 
-## <a name="1-enable-azure-defender"></a>1. 启用 Azure Defender
+## <a name="enable-azure-defender"></a>启用 Azure Defender
 
 可以通过 [Azure 门户](https://portal.azure.com)访问 Azure Defender。 在服务器或托管实例的**安全**标题下导航到**安全中心**，以启用 Azure Defender。
 
@@ -48,15 +48,15 @@ Azure Defender 提供一组高级 SQL 安全功能，包括 SQL 漏洞评估和�
 >
 > Azure Defender 的成本与每个节点的 Azure 安全中心标准层定价一致，其中节点是整个服务器或托管实例。 因此，只需要支付一次，就能用 Azure Defender 保护服务器或托管实例上的所有数据库。 可以先使用免费试用版试用 Azure Defender。
 
-## <a name="2-start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. 开始跟踪漏洞并调查威胁警报
+## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>开始跟踪漏洞并调查威胁警报
 
 单击“漏洞评估”卡，查看和管理漏洞扫描和报告，并跟踪安全状况。 如果收到安全警报，请单击“高级威胁防护”卡，查看警报的详细信息，并通过 Azure 安全中心安全警报页面查看 Azure 订阅中所有警报的综合报告。
 
-## <a name="3-manage-azure-defender-settings"></a>3. 管理 Azure Defender 设置
+## <a name="manage-azure-defender-settings"></a>管理 Azure Defender 设置
 
 若要查看和管理 Azure Defender 设置，请在服务器或托管实例的 "**安全**" 标题下导航到 "**安全中心**"。 在此页上，可以启用或禁用 Azure Defender，并修改整个服务器或托管实例的漏洞评估和高级威胁防护设置。
 
-## <a name="4-manage-azure-defender-settings-for-a-database"></a>4. 管理数据库的 Azure Defender 设置
+## <a name="manage-azure-defender-settings-for-a-database"></a>为数据库管理 Azure Defender 设置
 
 若要替代特定数据库的 Azure Defender 设置，请选中 " **在数据库级别启用 Azure defender FOR SQL"** 复选框。 仅当有接收单个数据库的单独高级威胁防护警报或漏洞评估结果这一特殊要求时才使用此选项，以代替或补充为服务器或托管实例上的所有数据库接收的警报和结果。
 
@@ -66,6 +66,6 @@ Azure Defender 提供一组高级 SQL 安全功能，包括 SQL 漏洞评估和�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[漏洞评估](sql-vulnerability-assessment.md)
+- 详细了解 [漏洞评估](sql-vulnerability-assessment.md)
 - 详细了解[高级威胁防护](threat-detection-configure.md)
 - 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息

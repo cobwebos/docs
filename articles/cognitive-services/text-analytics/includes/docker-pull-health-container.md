@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: b9452baf0301233a1cd6e05621a89d013d32c9e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b28049f1854494b61d63824334b986d814a641cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309298"
 ---
-填写并提交[认知服务容器请求表单](https://aka.ms/cognitivegate)以请求访问容器。
+填写并提交[认知服务容器请求表单](https://aka.ms/csgate)以请求访问容器。
 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队可以检查它，确保你满足访问专用容器注册表的条件。
 
 > [!IMPORTANT]

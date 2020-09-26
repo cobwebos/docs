@@ -4,17 +4,17 @@ description: Azure 安全基准 V2 标识管理
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bcd88f9f21c68f7f6cdda7299ac97d67e97dc009
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: a007b8e85440faab6f3d9f35c49ee207ee1597ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295492"
 ---
-# <a name="security-control-identity-management"></a>安全控制：身份管理
+# <a name="security-control-v2-identity-management"></a>安全控制 V2：标识管理
 
 标识管理涵盖使用 Azure Active Directory 建立安全标识和访问控制的控件。 这包括使用单一登录、强身份验证、托管标识 (和服务原则) 用于应用程序、条件性访问和帐户异常监视。
 
@@ -45,9 +45,9 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [标识和密钥](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
+- [标识和密钥管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -77,9 +77,9 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [标识和密钥](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [标识和密钥管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -97,11 +97,11 @@ Azure AD 提供对 Azure 资源、云应用程序和本地应用程序的标识�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [标识和密钥](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [标识和密钥管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -132,11 +132,11 @@ Azure AD 通过多重身份验证 (MFA) 和强无密码方法支持强身份验�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [标识和密钥](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [标识和密钥管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -179,7 +179,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -201,9 +201,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [标识和密钥](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [标识和密钥管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -217,13 +217,17 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 |--|--|--|--|
 | ID-7 | 18.1, 18.7 | IA-5 |
 
-实施凭据扫描程序来识别代码中的凭据。 凭据扫描器还鼓励将发现的凭据迁移到更安全的位置，例如 Azure Key Vault。
+实现 Azure DevOps Credential 扫描器来识别代码中的凭据。 凭据扫描器还鼓励将发现的凭据迁移到更安全的位置，例如 Azure Key Vault。
+
+对于 GitHub，你可以使用本机密钥扫描功能来识别代码中的凭据或其他形式的机密。
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
+- [GitHub 机密扫描](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [应用程序安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -247,7 +251,7 @@ Azure AD 应用程序代理可让你使用单一登录 (SSO) 向远程用户发�
 
 **责任**：客户
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

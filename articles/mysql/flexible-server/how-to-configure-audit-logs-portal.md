@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1d0687e6cdcc8208218183cb873f9620a5525d37
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b8fe32a079358fda48c6f5ee0c7eec9894a543a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295900"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户配置和访问 Azure Database for MySQL 灵活服务器的审核日志
 
@@ -20,7 +20,7 @@ ms.locfileid: "90934777"
 
 可以从 Azure 门户配置 Azure Database for MySQL 灵活的服务器 [审核日志](concepts-audit-logs.md) 和诊断设置。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 本文中的步骤要求您具有灵活的 [服务器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
@@ -50,6 +50,9 @@ ms.locfileid: "90934777"
     <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Save":::-->
 
 ## <a name="set-up-diagnostics"></a>设置诊断
+
+> [!NOTE]
+> 在部署过程中，与访问日志 Azure Monitor 诊断设置的集成正在部署，并且功能会很快可用。
 
 审核日志与 Azure Monitor 的诊断设置集成，可让你将日志通过管道传输到 Azure Monitor 日志、事件中心或 Azure 存储。
 
