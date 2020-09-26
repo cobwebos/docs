@@ -1,6 +1,6 @@
 ---
 title: SQL 数据同步的 Data Sync Agent
-description: 了解如何在 Azure 中为 SQL 数据同步安装和运行数据同步代理，以将数据与 SQL Server 数据库同步
+description: 了解如何在 Azure 中安装并运行 SQL 数据同步的 Data Sync Agent 来将数据与 SQL Server 数据库进行同步
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -9,26 +9,26 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333008"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL 数据同步的 Data Sync Agent
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-通过安装和配置 Azure 中 SQL 数据同步的数据同步代理，将数据与 SQL Server 数据库同步。 有关 SQL 数据同步的详细信息，请参阅[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-data-sync-data-sql-server-sql-database.md)。
+通过在 Azure 中安装并配置 SQL 数据同步的 Data Sync Agent 来将数据与 SQL Server 数据库进行同步。 有关 SQL 数据同步的详细信息，请参阅[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-data-sync-data-sql-server-sql-database.md)。
 
 > [!IMPORTANT]
-> 目前 SQL 数据同步**不支持 AZURE** SQL 托管实例。
+> 目前，SQL 数据同步不支持 Azure SQL 托管实例。
 
 ## <a name="download-and-install"></a>下载并安装
 
-若要下载数据同步代理，请中转到[SQL 数据同步代理](https://www.microsoft.com/download/details.aspx?id=27693)。
+若要下载 Data Sync Agent，请转到 [SQL Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693)。
 
 ### <a name="install-silently"></a>以无提示方式安装
 
@@ -36,7 +36,7 @@ ms.locfileid: "84195465"
 
 - 如果没有为 **TARGETDIR** 提供值，则默认值为 `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`。
 
-- 如果将 `LocalSystem` 作为**SERVICEACCOUNT**的值提供，请在配置代理以连接到 SQL Server 时使用 SQL Server authentication。
+- 如果提供 `LocalSystem` 作为 SERVICEACCOUNT 的值，请在配置代理来连接到 SQL Server 时使用 SQL Server 身份验证。
 
 - 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如，`SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`。
 
@@ -44,15 +44,15 @@ ms.locfileid: "84195465"
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
-## <a name="sync-data-with-a-sql-server-database"></a>将数据与 SQL Server 数据库同步
+## <a name="sync-data-with-a-sql-server-database"></a>将数据与 SQL Server 数据库进行同步
 
-若要配置数据同步代理，以便可以将数据与一个或多个 SQL Server 数据库同步，请参阅[添加 SQL Server 数据库](sql-data-sync-sql-server-configure.md#add-on-prem)。
+若要配置 Data Sync Agent 来将数据与一个或多个 SQL Server 数据库进行同步，请参阅[添加 SQL Server 数据库](sql-data-sync-sql-server-configure.md#add-on-prem)。
 
 ## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a> Data Sync Agent 常见问题解答
 
 ### <a name="why-do-i-need-a-client-agent"></a>为什么需要客户端代理
 
-SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信。 此安全功能可防止与防火墙后的数据库进行直接通信。 与代理通信时，SQL 数据同步服务使用加密连接和唯一令牌或代理密钥**。 SQL Server 数据库使用连接字符串和代理密钥对代理进行身份验证。 这种设计为数据提供高度安全性。
+SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信。 此安全功能可防止与防火墙后的数据库进行直接通信。 SQL 数据同步服务与代理通信时，使用加密连接和唯一令牌或代理密钥来执行此操作。 SQL Server 数据库使用连接字符串和代理密钥对代理进行身份验证。 这种设计为数据提供高度安全性。
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>可以运行多少个本地代理 UI 实例
 
@@ -64,7 +64,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 ### <a name="how-do-i-change-my-agent-key"></a>如何更改我的代理密钥
 
-一个代理只能使用一次代理密钥。 删除并重新安装新代理后，不能重复使用它，它也不能被多个代理使用。 如果需要为现有代理新建密钥，必须确保使用客户端代理和 SQL 数据同步服务记录相同密钥。
+一个代理只能使用一次代理密钥。 删除并重新安装新代理后，不能重复使用它，它也不能被多个代理使用。 如果需要为现有代理创建新密钥，必须确保使用客户端代理和 SQL 数据同步服务记录相同密钥。
 
 ### <a name="how-do-i-retire-a-client-agent"></a>如何停用客户端代理
 
@@ -84,19 +84,19 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 - [客户端代理安装、卸载或修复失败](#agent-install)
 
-- [取消卸载后，客户端代理不起作用](#agent-uninstall)
+- [取消卸载后，客户端代理无法正常运行](#agent-uninstall)
 
 - [代理列表中未列出我的数据库](#agent-list)
 
-- [客户端代理未启动（错误1069）](#agent-start)
+- [客户端代理未启动（错误 1069）](#agent-start)
 
 - [无法提交代理密钥](#agent-key)
 
-- [如果无法访问客户端代理关联的本地数据库，则无法从门户中删除该客户端代理](#agent-delete)
+- [如果与客户端代理关联的本地数据库不可访问，则无法从门户删除该客户端代理](#agent-delete)
 
 - [本地同步代理应用无法连接到本地同步服务](#agent-connect)
 
-### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a>安装、卸载或修复失败的客户端代理
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a>客户端代理安装、卸载或修复失败
 
 - **原因**。 许多情况会导致这种失败。 若要确定具体原因，请查看日志。
 
@@ -150,16 +150,16 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
   1. 找到 SQL 数据同步客户端代理服务。  
     a. 选择“开始”。  
     b. 在搜索框中输入 **services.msc**。  
-    c. 在搜索结果中，选择“服务”。****  
-    d. 在“服务”**** 窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
-  1. 右键单击“SQL Data Sync Agent”并选择“停止”。********
-  1. 右键单击“SQL Data Sync Agent”并选择“属性”。********
-  1. 在“SQL Data Sync Agent 属性”中，选择“登录”选项卡。********
-  1. 在“密码”框中输入自己的密码。****
-  1. 在“确认密码”框中再次输入自己的密码。****
+    c. 在搜索结果中，选择“服务”。  
+    d. 在“服务”窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
+  1. 右键单击“SQL Data Sync Agent”并选择“停止”。 
+  1. 右键单击“SQL Data Sync Agent”并选择“属性”。 
+  1. 在“SQL Data Sync Agent 属性”中，选择“登录”选项卡。 
+  1. 在“密码”框中输入自己的密码。
+  1. 在“确认密码”框中再次输入自己的密码。
   1. 依次选择“应用”、“确定” 。
-  1. 在“服务”窗口中，右键单击“SQL Data Sync Agent”服务并单击“启动”。************
-  1. 关闭 "**服务**" 窗口。
+  1. 在“服务”窗口中，右键单击“SQL Data Sync Agent”服务并单击“启动”。  
+  1. 关闭“服务”窗口。
 
 ### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a>无法提交代理密钥
 
@@ -192,9 +192,9 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
   1. 在文件资源管理器中，转到代理安装目录。 默认安装目录为 C:\\Program Files (x86)\\Microsoft SQL Data Sync。
   1. 双击“bin”子目录。
   1. 打开 SqlAzureDataSyncAgent 应用程序。
-  1. 选择“提交代理密钥”****。
+  1. 选择“提交代理密钥”。
   1. 在提供的空白处粘贴剪贴板中的密钥。
-  1. 选择“确定”。
+  1. 选择“确定” 。
   1. 关闭程序。
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>如果与客户端代理关联的本地数据库不可访问，则无法从门户删除该客户端代理
@@ -215,9 +215,9 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
   1. 退出应用。  
   1. 打开组件服务面板。  
     a. 在任务栏上的搜索框中输入 **services.msc**。  
-    b. 在搜索结果中，双击“服务”。****  
-  1. 停止“SQL 数据同步”**** 服务。
-  1. 重新启动**SQL 数据同步**服务。  
+    b. 在搜索结果中，双击“服务”。  
+  1. 停止“SQL 数据同步”服务。
+  1. 重启“SQL 数据同步”服务。  
   1. 重新打开应用。
 
 ## <a name="run-the-data-sync-agent-from-the-command-prompt"></a>从命令提示符运行 Data Sync Agent
@@ -226,7 +226,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 ### <a name="ping-the-service"></a>对服务执行 Ping 命令
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action pingsyncservice
@@ -240,7 +240,7 @@ SqlDataSyncAgentCommand.exe -action "pingsyncservice"
 
 ### <a name="display-registered-databases"></a>显示已注册的数据库
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action displayregistereddatabases
@@ -254,7 +254,7 @@ SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 
 ### <a name="submit-the-agent-key"></a>提交代理密钥
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 Usage: SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key]  -username [user name] -password [password]
@@ -287,7 +287,7 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 
 使用此命令取消注册数据库时，它会完全取消数据库的设置。 如果数据库参与其他同步组，则此操作会中断其他同步组。
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]
@@ -321,13 +321,13 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 
 -   概述 - [使用 Azure 中的 SQL 数据同步跨多个云和本地数据库同步数据](sql-data-sync-data-sql-server-sql-database.md)
 -   设置数据同步
-    - 在门户中-[教程：设置在 AZURE SQL 数据库和 SQL Server 之间同步数据的 SQL 数据同步](sql-data-sync-sql-server-configure.md)
+    - 在门户中 - [教程：设置 SQL 数据同步，以在 Azure SQL 数据库和 SQL Server 之间同步数据](sql-data-sync-sql-server-configure.md)
     - 使用 PowerShell
         -  [使用 PowerShell 在 Azure SQL 数据库中的多个数据库之间进行同步](scripts/sql-data-sync-sync-data-between-sql-databases.md)
-        -  [使用 PowerShell 在 Azure SQL 数据库中的数据库和 SQL Server 实例中的数据库之间进行同步](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+        -  [使用 PowerShell 在 Azure SQL 数据库中的数据库与 SQL Server 实例中的数据库之间进行同步](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   最佳做法 - [Azure SQL 数据同步最佳做法](sql-data-sync-best-practices.md)
 -   监视 - [使用 Azure Monitor 日志监视 SQL 数据同步](sql-data-sync-monitor-sync.md)
--   故障排除-[排查 Azure SQL 数据同步的问题] troubleshoot.md）
+-   故障排除 - [排查 Azure SQL 数据同步问题]sql-data-sync-troubleshoot.md)
 -   更新同步架构
-    -   通过 Transact-sql-通过[Azure 中的 SQL 数据同步自动复制架构更改](sql-data-sync-update-sync-schema.md)
+    -   使用 Transact-SQL - [在 Azure 中使用 SQL 数据同步自动复制架构更改](sql-data-sync-update-sync-schema.md)
     -   使用 PowerShell - [使用 PowerShell 更新现有同步组中的同步架构](scripts/update-sync-schema-in-sync-group.md)

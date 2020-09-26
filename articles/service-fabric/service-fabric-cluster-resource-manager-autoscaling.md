@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354796"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
 自动扩展是 Service Fabric 的附加功能，可根据服务正在报告的负载或基于资源的使用情况来动态扩展服务。 自动缩放提供了很大的弹性，并可实现按需配置服务的其他实例或分区。 整个自动缩放过程是自动且透明的，一旦在服务上设置策略，就无需在服务级别进行手动缩放操作。 可在创建服务时启用自动缩放，也可在任何时候通过更新服务启用。
@@ -51,7 +51,7 @@ ms.locfileid: "89005507"
 * 最大实例计数定义了缩放的上限。 如果分区的实例数量达到此限制，则无论负载如何，都不会扩大服务。 可以通过指定值 -1 来忽略此限制，在这种情况下，服务将尽可能扩大（限制是群集中可用的节点数）。
 * 最小实例计数定义了缩放的下限。 如果分区的实例数量达到此限制，则无论负载如何，都不会缩小服务。
 
-## <a name="setting-auto-scaling-policy"></a>设置自动缩放策略
+## <a name="setting-auto-scaling-policy-for-instance-based-scaling"></a>为基于实例的缩放设置自动缩放策略
 
 ### <a name="using-application-manifest"></a>使用应用程序清单
 ``` xml
@@ -133,7 +133,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 > [!WARNING] 
 > 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在进行横向扩展操作的情况下，新分区将为空；在进行横向缩减操作的情况下，分区将与其包含的所有数据一起被删除。
 
-## <a name="setting-auto-scaling-policy"></a>设置自动缩放策略
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>设置基于分区缩放的自动缩放策略
 
 ### <a name="using-application-manifest"></a>使用应用程序清单
 ``` xml

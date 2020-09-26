@@ -3,12 +3,12 @@ title: 如何创建和管理 DHCP
 description: 本文介绍如何在 Azure VMware 解决方案中管理 DHCP。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069554"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332825"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>如何在 Azure VMWare 解决方案中创建和管理 DHCP
 
@@ -24,7 +24,7 @@ NSX 为私有云提供配置 DHCP 的能力。 如果你计划使用 NSX-T 来�
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>将 DHCP 服务器连接到第1层网关。
 
-1. 选择**第1层网**关，选择网关并选择 "**编辑**"
+1. 选择**第1层网**关和网关，然后选择 "**编辑**"
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="选择要使用的网关" border="true":::
 
@@ -56,7 +56,7 @@ NSX 为私有云提供配置 DHCP 的能力。 如果你计划使用 NSX-T 来�
 
 ## <a name="create-dhcp-relay-service"></a>创建 DHCP 中继服务
 
-1. 在 "NSX-T" 窗口中，选择 " **网络** " 选项卡，然后在 " **IP 管理**" 下选择 **DHCP**。 选择 " **添加服务器**"。 为 " **服务器类型** " 选择 "DHCP 中继"，并输入中继服务器的服务器名称和 IP 地址。 选择“保存”以保存更改。
+1. 在 NXT 的 "T" 窗口中，选择 " **网络** " 选项卡，然后在 " **IP 管理**" 下选择 **DHCP**。 选择 " **添加服务器**"。 为 " **服务器类型** " 选择 "DHCP 中继"，并输入中继服务器的服务器名称和 IP 地址。 选择“保存”以保存更改。
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="创建 dhcp 中继服务器" border="true":::
 

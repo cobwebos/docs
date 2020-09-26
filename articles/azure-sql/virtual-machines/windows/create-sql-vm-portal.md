@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332910"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>如何使用 Azure 门户为 Windows 虚拟机预配 SQL Server
 
@@ -115,7 +115,7 @@ ms.locfileid: "88652009"
 
 * 创建新的 **虚拟网络** 或使用现有的虚拟网络作为 SQL Server VM。 同时指定子网。 
 
-* 在 " **NIC 网络安全组**" 下，选择 "基本" 安全组或 "高级" 安全组。 选择 "基本" 选项可为 SQL Server VM 选择与在 " **基本** " 选项卡上配置的值相同的入站端口。选择 "高级" 选项可选择现有的网络安全组，或创建新的网络安全组。 
+* 在 " **NIC 网络安全组**" 下，选择 "基本" 安全组或 "高级" 安全组。 选择 "基本" 选项，可为 SQL Server VM 选择与在 " **基本** " 选项卡上配置的值相同的入站端口。选择 "高级" 选项，可以选择现有的网络安全组，也可以创建一个新的安全组。 
 
 * 你可以对网络设置进行其他更改，也可以保留默认值。
 

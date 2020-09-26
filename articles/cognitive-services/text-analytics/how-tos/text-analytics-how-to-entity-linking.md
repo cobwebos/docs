@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 457be5ac014fda6b4984ed7af3dcc89780b16379
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 5f5122b5fa7c20bc0717ef1605e41bb5f2700be2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309092"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -23,7 +23,7 @@ ms.locfileid: "84141611"
 
 ### <a name="entity-linking"></a>实体链接
 
-实体链接是指识别并消除文本中发现的实体标识的能力（例如，确定出现 "Mars" 一词是指行星还是指罗马上帝）。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。 实体链接使用[维基百科](https://www.wikipedia.org/)作为此知识库。
+实体链接是指识别并消除文本 (中找到的实体标识的能力，例如，确定单词 "Mars" 的出现是指行星，还是) 的罗马上帝。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。 实体链接使用 [维基百科](https://www.wikipedia.org/) 作为此知识库。
 
 
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
@@ -34,20 +34,20 @@ ms.locfileid: "84141611"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| 功能                                                         | NER 3。0 | NER 3.1-preview. 1 |
+| 功能                                                         | NER 3。0 | NER 3.1-预览版2 |
 |-----------------------------------------------------------------|--------|----------|
 | 用于单个请求和批量请求的方法                          | X      | X        |
 | 跨多个类别展开实体识别           | X      | X        |
 | 用于发送实体链接和 NER 请求的不同终结点。 | X      | X        |
-| 个人（ `PII` ）和健康（ `PHI` ）信息实体的识别        |        | X        |
+| ) 信息实体的个人 (`PII`) 和运行状况 (识别 `PHI`        |        | X        |
 
-有关信息，请参阅[语言支持](../language-support.md)。
+有关信息，请参阅 [语言支持](../language-support.md) 。
 
 ### <a name="entity-types"></a>实体类型
 
-命名实体识别 v3 提供跨多种类型的扩展检测。 目前，NER 3.0 可以识别 "[常规实体" 类别](../named-entity-types.md)中的实体。
+命名实体识别 v3 提供跨多种类型的扩展检测。 目前，NER 3.0 可以识别 " [常规实体" 类别](../named-entity-types.md)中的实体。
 
-命名实体识别-3.1-preview。1包括3.0 的检测功能，以及 `PII` 使用终结点检测个人信息（）的功能 `v3.1-preview.1/entities/recognition/pii` 。 可以使用可选 `domain=phi` 参数来检测机密的健康信息（ `PHI` ）。 有关详细信息，请参阅下面的[实体类别](../named-entity-types.md)文章和[请求终结点](#request-endpoints)部分。
+命名实体识别-3.1-preview。2包括了3.0 的检测功能，以及 `PII` 使用终结点检测) 个人信息 (功能 `v3.1-preview.2/entities/recognition/pii` 。 可以使用可选 `domain=phi` 参数来检测 () 的机密健康信息 `PHI` 。 有关详细信息，请参阅下面的 [实体类别](../named-entity-types.md) 文章和 [请求终结点](#request-endpoints) 部分。
 
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求
@@ -63,7 +63,7 @@ ms.locfileid: "84141611"
 创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下链接中的“API 测试控制台”来快速构建并发送请求  。 
 
 > [!NOTE]
-> 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”  页上的“资源管理”  下。 
+> 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
 
 
 ### <a name="request-endpoints"></a>请求终结点
@@ -75,24 +75,36 @@ ms.locfileid: "84141611"
 实体链接
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
+[的命名实体识别版本3.0 引用 `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
+
 NER
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-#### <a name="version-31-preview1"></a>[版本 3.1-预览版。1](#tab/version-3-preview)
+[的命名实体识别版本3.0 引用 `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-命名实体识别 `v3.1-preview.1` 对于 NER 和实体链接请求使用不同的终结点。 根据你的请求使用下面的 URL 格式：
+#### <a name="version-31-preview2"></a>[版本 3.1-预览版2](#tab/version-3-preview)
+
+命名实体识别 `v3.1-preview.2` 对于 NER 和实体链接请求使用不同的终结点。 根据你的请求使用下面的 URL 格式：
 
 实体链接
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+
+[命名实体识别版本 3.1-预览版引用 `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
 
 NER
-* 常规实体-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/general`
+* 常规实体- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
 
-* 个人（ `PII` ）信息-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii`
+[命名实体识别版本 3.1-预览版引用 `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
 
-你还可以使用可选 `domain=phi` 参数来检测文本中的运行状况（ `PHI` ）信息。 
+* 个人 (`PII`) 信息- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi`
+你还可以使用可选 `domain=phi` 参数来检测 `PHI` 文本中) 信息的运行状况 (。 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+
+请注意，在 `redactedText` 响应 JSON 中添加属性，其中包含已修改的输入文本，检测到的 PII 实体将由每个字符的实体替换为 *。
+
+[命名实体识别版本 3.1-预览版引用 `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
 
 ---
 
@@ -125,13 +137,13 @@ NER
 
 所有 POST 请求都将返回 JSON 格式的响应，其中包含 ID 和检测到的实体属性。
 
-系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移量。 有关详细信息，请参阅[如何处理文本偏移](../concepts/text-offsets.md)。
+系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅 [如何处理文本偏移](../concepts/text-offsets.md) 。
 
-### <a name="example-v3-responses"></a>V3 响应示例
+### <a name="example-responses"></a>示例响应
 
 版本3为 NER 和实体链接提供单独的终结点。 这两个操作的响应如下所示。 
 
-#### <a name="example-ner-response"></a>NER 响应示例
+#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 ```json
 {
@@ -184,9 +196,7 @@ NER
   "modelVersion": "2020-04-01"
 }
 ```
-
-
-#### <a name="example-entity-linking-response"></a>实体链接响应示例
+#### <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-preview)
 
 ```json
 {
@@ -195,6 +205,7 @@ NER
       "id": "1",
       "entities": [
         {
+          "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e", 
           "name": "Space Needle",
           "matches": [
             {
@@ -210,6 +221,7 @@ NER
           "dataSource": "Wikipedia"
         },
         {
+          "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
           "name": "Seattle",
           "matches": [
             {
@@ -232,6 +244,8 @@ NER
   "modelVersion": "2020-02-01"
 }
 ```
+
+---
 
 
 ## <a name="summary"></a>摘要

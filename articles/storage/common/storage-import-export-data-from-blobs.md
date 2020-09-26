@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275196"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 
@@ -32,14 +32,14 @@ ms.locfileid: "85513500"
   - 生成导出作业的跟踪号。
   - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
   - 如果没有承运商帐户，请转到：
-    - [创建 FedEX 帐户](https://www.fedex.com/en-us/create-account.html)，或
+    - [创建 FedEx 帐户](https://www.fedex.com/en-us/create-account.html)，或
     - [创建 DHL 帐户](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
 ## <a name="step-1-create-an-export-job"></a>步骤 1：创建导出作业
 
 在 Azure 门户中执行以下步骤来创建导出作业。
 
-1. 登录到 <https://portal.azure.com/> 。
+1. 登录到 <https://portal.azure.com/>。
 2. 转到“所有服务”>“存储”>“导入/导出作业”。
 
     ![转到导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -83,9 +83,9 @@ ms.locfileid: "85513500"
 
 6. 在“回寄信息”中：
 
-    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com` 并提供有关计划使用的电信公司的信息。
+    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导出作业完成后，Microsoft 将使用此帐户寄回驱动器。
-    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
+    - 提供完整且有效的联系人姓名、电话、电子邮件、街道地址、城市、邮政编码、省/市/自治区和国家/地区。
 
         > [!TIP]
         > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
@@ -119,7 +119,7 @@ ms.locfileid: "85513500"
 1. 收到包含导出数据的驱动器后，你需要获取 BitLocker 密钥才能解锁驱动器。 转到 Azure 门户中的导出作业。 单击“导入/导出”选项卡。
 2. 从列表中选择并单击导出作业。 转到“加密”，然后复制密钥。
 
-   ![查看导出作业的 BitLocker 密钥](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![查看导出作业的 BitLocker 密钥](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
 
 3. 使用 BitLocker 密钥解锁磁盘。
 
@@ -127,15 +127,13 @@ ms.locfileid: "85513500"
 
 ## <a name="step-5-unlock-the-disks"></a>步骤 5：解锁磁盘
 
-如果使用 1.4.0.300 版 WAImportExport 工具，请使用以下命令解锁驱动器：
+使用以下命令解锁驱动器：
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 下面是示例输入的示例。
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
-
-如果使用该工具的更低版本，请使用 BitLocker 对话框解锁驱动器。
 
 现在，可删除作业，也可将其保留。 作业将在 90 天后自动删除。
 
@@ -155,7 +153,7 @@ ms.locfileid: "85513500"
 
     下表介绍了这些参数：
 
-    |命令行参数|描述|  
+    |命令行参数|说明|  
     |--------------------------|-----------------|  
     |**/logdir**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|  
     |**/sn**|必需。 导出作业的存储帐户的名称。|  

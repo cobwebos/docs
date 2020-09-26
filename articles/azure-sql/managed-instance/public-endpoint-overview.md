@@ -1,6 +1,6 @@
 ---
 title: 保护 Azure SQL 托管实例公共终结点
-description: 安全地在 Azure SQL 中使用公共终结点托管实例
+description: 在 Azure SQL 托管实例中安全地使用公共终结点
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -8,23 +8,23 @@ ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
-ms.openlocfilehash: a3339d03607c2286dabbac73fd0b683c61552dc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9c1828732b9a4e0e85c3af2263f097edd54437d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332842"
 ---
-# <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>通过公共终结点安全使用 Azure SQL 托管实例
+# <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL 托管实例可以通过[公共终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)提供用户连接。 本文将介绍如何提高此配置的安全性。
+Azure SQL 托管实例可通过[公共终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)进行用户连接。 本文将介绍如何提高此配置的安全性。
 
 ## <a name="scenarios"></a>方案
 
-Azure SQL 托管实例提供一个专用终结点，以允许从其虚拟网络内部连接。 默认选项是提供最大的隔离性。 但在某些情况下，需要提供公共终结点连接：
+Azure SQL 托管实例提供专用终结点用于从其虚拟网络内部启用连接。 默认选项是提供最大的隔离性。 但在某些情况下，需要提供公共终结点连接：
 
 - 托管实例必须与仅限多租户的平台即服务 (PaaS) 产品/服务集成。
 - 所需的数据交换吞吐量高于 VPN 所能提供的吞吐量。
@@ -36,7 +36,7 @@ Azure SQL 托管实例提供一个专用终结点，以允许从其虚拟网络�
 
 ## <a name="secure-data-in-motion"></a>保护动态数据
 
-如果客户端驱动程序支持加密，则 SQL 托管实例数据流量始终是加密的。 在托管实例与其他 Azure 虚拟机或 Azure 服务之间发送的数据永远不会离开 Azure 主干网络。 如果托管实例与本地网络之间已建立连接，则我们建议使用 Azure ExpressRoute。 ExpressRoute 有助于避免通过公共 Internet 移动数据。 对于托管实例专用连接，只能使用专用对等互连。
+如果客户端驱动程序支持加密，则始终加密 SQL 托管实例数据流量。 在托管实例与其他 Azure 虚拟机或 Azure 服务之间发送的数据永远不会离开 Azure 主干网络。 如果托管实例与本地网络之间已建立连接，则我们建议使用 Azure ExpressRoute。 ExpressRoute 有助于避免通过公共 Internet 移动数据。 对于托管实例专用连接，只能使用专用对等互连。
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>锁定入站和出站连接
 

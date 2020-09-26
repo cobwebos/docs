@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332958"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -131,7 +131,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 ### <a name="general-limitations"></a>一般限制
 
 - 表不能包含非主键标识列。
-- 表必须具有聚集索引才能使用数据同步。
+- 表必须具有聚集索引，才能使用数据同步。
 - 主键不能具有以下数据类型：sql_variant、binary、varbinary、image、xml。
 - 使用以下数据类型作为主键时请小心谨慎，因为支持的精度仅到秒：time、datetime、datetime2、datetimeoffset。
 - 对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
@@ -174,10 +174,10 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 在建立同步组后，数据同步服务需要连接到中心数据库。 建立同步组时，Azure SQL server 的设置中必须具有以下配置 `Firewalls and virtual networks` ：
 
- * *拒绝公共网络访问*必须设置为*Off*。
+ * *拒绝公共网络访问* 必须设置为 *Off*。
  * "*允许 Azure 服务和资源访问此服务器*" 必须设置为 *"是"*，或者必须为[数据同步服务使用的 ip 地址](network-access-controls-overview.md#data-sync)创建 ip 规则。
 
-创建并设置了同步组后，你可以禁用这些设置。 同步代理将直接连接到中心数据库，你可以使用服务器的[防火墙 IP 规则](firewall-configure.md)或[专用终结点](private-endpoint-overview.md)来允许代理访问中心服务器。
+创建并设置了同步组后，你可以禁用这些设置。 同步代理将直接连接到中心数据库，你可以使用服务器的 [防火墙 IP 规则](firewall-configure.md) 或 [专用终结点](private-endpoint-overview.md) 来允许代理访问中心服务器。
 
 > [!NOTE]
 > 如果更改同步组的架构设置，你将需要允许数据同步服务再次访问服务器，以便可以重新预配中心数据库。

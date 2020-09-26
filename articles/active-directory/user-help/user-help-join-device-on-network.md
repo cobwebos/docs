@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333403"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -54,7 +54,7 @@ ms.locfileid: "88799479"
 
     设备现已加入组织的网络。
 
-## <a name="to-make-sure-youre-joined"></a>确保你已加入
+## <a name="to-make-sure-youre-joined-new-device"></a>若要确保加入 (新设备) 
 可以通过查看你的设置确保已加入。
 
 1. 打开“设置”，然后选择“帐户” 。

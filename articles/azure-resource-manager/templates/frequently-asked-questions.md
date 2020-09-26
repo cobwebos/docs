@@ -2,15 +2,15 @@
 title: ARM 模板常见问题解答
 description: 有关 Azure 资源管理器模板的常见问题解答 (FAQ)。
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333114"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
@@ -28,7 +28,7 @@ ms.locfileid: "87327253"
 
   若要简化 ARM 模板的创作，需要合适的工具。 我们建议安装 [Visual Studio Code](https://code.visualstudio.com/) 和 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)。 有关这些工具的简要介绍，请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)。
 
-  准备好学习如何创建 ARM 模板时，请开始学习[有关 ARM 模板的初学者教程系列](template-tutorial-create-first-template.md)。 这些教程指导你逐步完成构造 ARM 模板的过程。 你将了解模板的不同部分以及它们的协作方式。 此内容也作为[Microsoft Learn 模块](/learn/modules/authoring-arm-templates/)提供。
+  准备好学习如何创建 ARM 模板时，请开始学习[有关 ARM 模板的初学者教程系列](template-tutorial-create-first-template.md)。 这些教程指导你逐步完成构造 ARM 模板的过程。 你将了解模板的不同部分以及它们的协作方式。 此内容也作为 [Microsoft Learn 模块](/learn/modules/authoring-arm-templates/)提供。
 
 * **我应使用 ARM 模板还是 Terraform 部署到 Azure？**
 
@@ -48,7 +48,7 @@ ms.locfileid: "87327253"
 
   若要了解有关新模板语言的信息，请[注册通知](https://aka.ms/armLangUpdates)。
 
-  若要了解有关模板规范的信息，请参阅[Azure 资源管理器模板规范（预览版）](template-specs.md)。
+  若要了解有关模板规格的信息，请参阅 [Azure 资源管理器模板规格（预览版）](template-specs.md)。
 
 ## <a name="creating-and-testing-templates"></a>创建和测试模板
 
@@ -88,7 +88,7 @@ ms.locfileid: "87327253"
 
 * **我听说你正在研究一种新的模板语言。在哪里可以找到有关它的详细信息？**
 
-  若要了解有关新模板语言的信息，请[注册通知](https://aka.ms/armLangUpdates)。
+  若要预览新语言，请参阅 [Project Bicep 存储库](https://github.com/Azure/bicep)。 若要及时了解新语言，请 [注册通知](https://aka.ms/armLangUpdates)。
 
 * **是否有支持在 YAML 中创建模板的计划？**
 

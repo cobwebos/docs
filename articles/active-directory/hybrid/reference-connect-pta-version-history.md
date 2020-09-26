@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5e6afef70ee3d4f4d84cb6b867a916ae57da5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333420"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD 传递身份验证代理：版本发布历史记录 
  
@@ -55,21 +55,16 @@ ms.locfileid: "85356298"
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>版本状态 
 1/31/2018：已发布以供下载  
-### <a name="fixed-issues"></a>修复的问题 
-
+### <a name="fixed-issues"></a>已修复的问题 
 - 修复了一个 bug，该 bug 导致代理中的内存泄漏。 
 - 更新了 Azure 服务总线版本，其中包括针对连接器超时问题的 bug 修复。 
- 
-## <a name="154050"></a>1.5.405.0 
-### <a name="release-status"></a>版本状态 
-11/26/2017：已发布以供下载  
 ### <a name="new-features-and-improvements"></a>新增功能和改进 
-- 添加了对代理和 Azure AD 服务之间基于 websocket 的连接的支持，以提高连接复原能力 
+- 添加了对代理和 Azure AD 服务之间基于 websocket 的连接的支持，以提高连接复原能力
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>版本状态 
 11/25/2017：已发布以供下载  
-### <a name="fixed-issues"></a>修复的问题 
+### <a name="fixed-issues"></a>已修复的问题 
 - 修复了与默认代理方案的 DNS 缓存相关的 bug 
  
 ## <a name="153890"></a>1.5.389.0 

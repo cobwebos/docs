@@ -3,12 +3,12 @@ title: 排查 SQL Server 数据库备份问题
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332774"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -130,7 +130,7 @@ ms.locfileid: "89513960"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 用于恢复的日志备份包含批量记录的更改。 它不能用来按照 SQL 准则随时停止。 | 当数据库处于批量记录恢复模式时，批量记录的事务与下一日志事务之间的数据将无法恢复。 | 请选择要恢复到的另一时间点。 [了解详细信息](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
+| 用于恢复的日志备份包含批量记录的更改。 它不能用来按照 SQL 准则随时停止。 | 当数据库处于批量记录恢复模式时，批量记录的事务与下一日志事务之间的数据将无法恢复。 | 请选择要恢复到的另一时间点。 [了解详细信息](/sql/relational-databases/backup-restore/recovery-models-sql-server)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -172,7 +172,7 @@ ms.locfileid: "89513960"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| -如果你使用 NSG 来限制连接，则应使用 AzureBackup service 标记允许对 Azure 备份服务、Azure 存储或 Azure Active Directory 服务的出站访问。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。<br>- 确保 DNS 在解析 Azure 终结点。<br>- 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。<br>-验证没有防火墙/防病毒/代理阻止调用上述三个目标服务。
+由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| -如果你使用 NSG 来限制连接性，则应使用 *AzureBackup* service 标记允许对 Azure 备份服务的出站访问，同样，对于 Azure AD (*AzureActiveDirectory*) 和 Azure 存储 (*存储*) 服务。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。<br>- 确保 DNS 在解析 Azure 终结点。<br>- 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。<br>-验证没有防火墙/防病毒/代理阻止调用上述三个目标服务。
 
 ## <a name="re-registration-failures"></a>重新注册失败
 

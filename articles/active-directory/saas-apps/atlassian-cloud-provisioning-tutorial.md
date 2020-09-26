@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ca2284e3e2f581d1935a8978d26fd674154d581b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333498"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教程：为 Atlassian Cloud 配置自动用户预配
 
@@ -49,11 +49,12 @@ ms.locfileid: "88549380"
 
 1. 导航到 [Atlassian 组织管理器](https://admin.atlassian.com) **> 选择 "org > 目录"**。
 
-    ![Atlassian 云预配](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+    !["管理" 页的屏幕截图，其中的目录选项称为 "out"。](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
 2. 单击 " **用户设置** "，然后单击 " **创建目录**"。 在 Azure AD 门户中的 Atlassian 云应用程序的 "设置" 选项卡中，复制将在 "**租户 url** " 和 "**机密令牌**" 字段中输入的**目录基 URL**和**持有者令牌**。
 
-    ![Atlassian 云预配 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![ Atlassian 云预配 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![ Atlassian 云预配](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+    ![具有用户预配选项的 "管理" 页的屏幕截图。 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png)!["创建令牌" 页的屏幕截图。](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
+    !["演示时间目录标记" 页的屏幕截图。](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
 
 ## <a name="step-3-add-atlassian-cloud-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Atlassian Cloud
@@ -85,11 +86,11 @@ ms.locfileid: "88549380"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入先前从 Atlassian 云帐户中检索到的 **租户 URL** 和 **机密令牌** 。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Atlassian Cloud。 如果连接失败，请确保 Atlassian 云帐户具有管理员权限，然后重试。
 
@@ -99,7 +100,7 @@ ms.locfileid: "88549380"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Atlassian Cloud**"。
 
@@ -144,7 +145,7 @@ ms.locfileid: "88549380"
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。  
 
 ## <a name="connector-limitations"></a>连接器限制
 

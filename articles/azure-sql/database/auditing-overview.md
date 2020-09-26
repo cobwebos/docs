@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040592"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333182"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 以下部分介绍如何使用 Azure 门户配置审核。
 
   > [!NOTE]
-  > 不能对已暂停的 Synapse SQL 池启用审核。 若要启用审核，请取消暂停 Synapse SQL 池。 了解有关[SYNAPSE SQL 池](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool)的详细信息。
+  > 不能对已暂停的 Synapse SQL 池启用审核。 若要启用审核，请取消暂停 Synapse SQL 池。 了解有关 [SYNAPSE SQL 池](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool)的详细信息。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 导航到“SQL 数据库”或“SQL Server”窗格中“安全性”标题下的“审核”  。
@@ -106,12 +106,12 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 #### <a name="remarks"></a>备注
 
 - 审核日志将写入到 Azure 订阅的 Azure Blob 存储中的追加 Blob
-- 若要为服务器或数据库级审核事件配置不可变的日志存储，请按照[Azure 存储提供的说明](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)进行操作。 在配置不可变 blob 存储时，请确保已选择 "**允许额外追加**"。
+- 若要为服务器或数据库级审核事件配置不可变的日志存储，请遵循 [Azure 存储提供的说明](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)。 确保在配置不可变的 blob 存储时，选择了“允许额外追加”。
 - 可以将审核日志写入到 VNet 或防火墙后面的 Azure 存储帐户。 有关具体说明，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](audit-write-storage-account-behind-vnet-firewall.md)。
 - 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
 - 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
 - 使用 AAD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
-- 对[只读副本](read-scale-out.md)的审核会自动启用。 若要详细了解存储文件夹、命名约定和日志格式的层次结构，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
+- 对[只读副本](read-scale-out.md)的审核会自动启用。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>对 Log Analytics 目标的审核
   
@@ -119,7 +119,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-有关 Azure Monitor 日志工作区的更多详细信息，请参阅[设计 Azure Monitor 日志部署](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
+有关 Azure Monitor Log Analytics 工作区的更多详细信息，请参阅 [设计 Azure Monitor 日志部署](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>对事件中心目标的审核
 

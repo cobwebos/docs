@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206297"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354966"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
@@ -106,6 +106,20 @@ ms.locfileid: "88206297"
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美国政府租户中，无法邀请 B2B 协作来宾用户
 
 在 Azure 美国政府版云中，当前仅支持在 Azure 美国政府云中的租户之间进行 B2B 协作，并且两者都支持 B2B 协作。 如果你邀请不属于 Azure 美国政府云的租户中的用户，或者不支持 B2B 协作，则会出现错误。 有关详细信息和限制，请参阅 [Azure Active Directory Premium P1 和 P2 变体](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>我收到了一个错误，Azure AD 在我的租户中找不到 aad 扩展应用
+
+使用自助服务注册功能（如自定义用户属性或用户流）时， `aad-extensions-app. Do not modify. Used by AAD for storing user data.` 会自动创建一个名为的应用。 Azure AD 外部标识使用它来存储有关注册和收集的自定义属性的用户的信息。
+
+如果意外删除了 `aad-extensions-app` ，则可以在30天内恢复。 你可以使用 Azure AD PowerShell 模块还原应用。
+
+1. 启动 Azure AD PowerShell 模块并运行 `Connect-AzureAD` 。
+1. 以全局管理员身份登录要恢复已删除应用的 Azure AD 租户。
+1. 运行 PowerShell 命令 `Get-AzureADDeletedApplication` 。
+1. 在列表中查找显示名称以开头的应用程序 `aad-extensions-app` ，并复制其 `ObjectId` 属性值。
+1. 运行 PowerShell 命令 `Restore-AzureADDeletedApplication -ObjectId {id}` 。 将 `{id}` 命令的部分替换为 `ObjectId` 上一步中的。
+
+现在，应会在 Azure 门户中看到已还原的应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 

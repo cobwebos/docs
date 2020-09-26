@@ -1,34 +1,34 @@
 ---
-title: 对 Azure Blob 存储内容进行搜索
+title: 配置 Blob 索引器
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用 Azure 认知搜索在 Azure Blob 存储中对文档编制索引以及从文档中提取文本。
+description: 设置 Azure Blob 索引器，以便在 Azure 认知搜索中自动为 Blob 内容编制索引以进行全文搜索操作。
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328286"
+ms.locfileid: "91355272"
 ---
-# <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
+# <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 中配置 blob 索引器认知搜索
 
-本文说明如何使用 Azure 认知搜索为存储在 Azure Blob 存储中的文档（例如 PDF 文档、Microsoft Office 文档和其他多种常用格式文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
+本文介绍如何使用 Azure 认知搜索来索引基于文本的文档 (例如 Pdf、Microsoft Office 文档以及其他一些常见格式，) 存储在 Azure Blob 存储中。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
 
 <a name="SupportedFormats"></a>
 
-## <a name="supported-document-formats"></a>支持的文档格式
+## <a name="supported-formats"></a>支持的格式
+
 Blob 索引器可从以下文档格式提取文本：
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="setting-up-blob-indexing"></a>设置 Blob 索引
+## <a name="set-up-blob-indexing"></a>设置 blob 索引
 可以使用以下方式设置 Azure Blob 存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
@@ -130,7 +130,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 <a name="how-azure-search-indexes-blobs"></a>
 
-## <a name="how-azure-cognitive-search-indexes-blobs"></a>Azure 认知搜索如何编制 Blob 的索引
+## <a name="how-blobs-are-indexed"></a>如何为 blob 编制索引
 
 根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
 
@@ -170,7 +170,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 应该仔细考虑要将提取的哪个字段映射到索引的键字段。 候选字段包括：
 
-* **metadata\_storage\_name** - 这可能是一个便利的候选项，但是请注意，1) 名称可能不唯一，因为不同的文件夹中可能有同名的 Blob；2) 名称中包含的字符可能在文档键中无效，例如短划线。 可以使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效的字符 - 如果这样做，请记得在将这些字符传入 Lookup 等 API 调用时为文档键编码。 （例如，在 .NET 中，可以使用 [UrlTokenEncode 方法](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8)实现此目的）。
+* **metadata\_storage\_name** - 这可能是一个便利的候选项，但是请注意，1) 名称可能不唯一，因为不同的文件夹中可能有同名的 Blob；2) 名称中包含的字符可能在文档键中无效，例如短划线。 可以使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效的字符 - 如果这样做，请记得在将这些字符传入 Lookup 等 API 调用时为文档键编码。 （例如，在 .NET 中，可以使用 [UrlTokenEncode 方法](/dotnet/api/system.web.httpserverutility.urltokenencode)实现此目的）。
 * **metadata\_storage\_path** - 使用完整路径可确保唯一性，但是路径必定会包含 `/` 字符，而该字符[在文档键中无效](/rest/api/searchservice/naming-rules)。  如上所述，可以选择使用 `base64Encode` [函数](search-indexer-field-mappings.md#base64EncodeFunction)为键编码。
 * 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上传过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
 
@@ -231,10 +231,12 @@ Blob 索引器可从以下文档格式提取文本：
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
-## <a name="controlling-which-blobs-are-indexed"></a>控制要为哪些 Blob 编制索引
+## <a name="index-by-file-type"></a>按文件类型编制索引
+
 可以控制要为哪些 Blob 编制索引，以及要跳过哪些 Blob。
 
-### <a name="index-only-the-blobs-with-specific-file-extensions"></a>只为具有特定文件扩展名的 Blob 编制索引
+### <a name="include-blobs-having-specific-file-extensions"></a>包含具有特定文件扩展名的 blob
+
 使用 `indexedFileNameExtensions` 索引器配置参数可以做到只为具有指定扩展名的 Blob 编制索引。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，如果只要为 .PDF 和 .DOCX Blob 编制索引，请执行以下操作：
 
 ```http
@@ -248,7 +250,8 @@ Blob 索引器可从以下文档格式提取文本：
     }
 ```
 
-### <a name="exclude-blobs-with-specific-file-extensions"></a>排除具有特定文件扩展名的 Blob
+### <a name="exclude-blobs-having-specific-file-extensions"></a>排除具有特定文件扩展名的 blob
+
 使用 `excludedFileNameExtensions` 配置参数可在编制索引时排除具有特定文件扩展名的 Blob。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，若要为所有 Blob 编制索引，但要排除具有 .PNG 和 .JPEG 扩展名的 Blob，请执行以下操作：
 
 ```http
@@ -265,7 +268,7 @@ Blob 索引器可从以下文档格式提取文本：
 如果同时存在 `indexedFileNameExtensions` 和 `excludedFileNameExtensions` 参数，Azure 认知搜索会先查看 `indexedFileNameExtensions`，再查看 `excludedFileNameExtensions`。 这意味着，如果两个列表中存在同一个文件扩展名，将从索引编制中排除该扩展名。
 
 <a name="PartsOfBlobToIndex"></a>
-## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>控制要为 Blob 中的哪些部分编制索引
+## <a name="index-parts-of-a-blob"></a>Blob 的索引部分
 
 可以使用 `dataToExtract` 配置参数控制要为 Blob 中的哪些部分编制索引。 该参数采用以下值：
 
@@ -296,7 +299,8 @@ Blob 索引器可从以下文档格式提取文本：
 | AzureSearch_SkipContent |"true" |此属性等效于[上面](#PartsOfBlobToIndex)所述的与特定 Blob 相关的 `"dataToExtract" : "allMetadata"` 设置。 |
 
 <a name="DealingWithErrors"></a>
-## <a name="dealing-with-errors"></a>处理错误
+
+## <a name="handle-errors"></a>处理错误
 
 默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
 
@@ -466,7 +470,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 ## <a name="content-type-specific-metadata-properties"></a>特定于内容类型的元数据属性
 下表汇总了针对每种文档格式执行的处理，并说明了 Azure 认知搜索提取的元数据属性。
 
-| 文档格式/内容类型 | 特定于内容类型的元数据属性 | 处理详细信息 |
+| 文档格式/内容类型 | 提取的元数据 | 处理详细信息 |
 | --- | --- | --- |
 | HTML（文本/html） |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |剥离 HTML 标记并提取文本 |
 | PDF（应用程序/pdf） |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |提取文本，包括嵌入的文档（不包括图像） |

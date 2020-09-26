@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
-ms.openlocfilehash: f3ae5e1ef4dc2968724daeafb32f26cf445b0d2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321418"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL 数据库和 Azure SQL 托管实例安全功能概述
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 本文概述使用 [Azure SQL 数据库](sql-database-paas-overview.md)和 [Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)保护应用程序数据层的基础知识。 所述的安全策略遵循如下图所示的分层深度防御方法，并从外向内移动：
 
-![sql 安全 layer.png](./media/security-overview/sql-security-layer.png)
+![分层深层防御关系图。 客户数据 try 网络安全、访问管理和威胁和信息保护层。](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>网络安全性
 
@@ -77,7 +77,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 行级别安全性使客户可以基于执行查询的用户的特性（例如，组成员身份或执行上下文）来控制对数据库表进行的访问。 行级别安全性也可用于实现基于自定义标签的安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
 
-![azure 数据库 rls.png](./media/security-overview/azure-database-rls.png)
+![此图显示行级别安全性阻止了 SQL 数据库的各个行通过客户端应用的访问权限。](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>威胁防护
 
@@ -91,7 +91,7 @@ SQL 数据库和 SQL 托管实例审核可跟踪数据库活动，通过将数�
 
 高级威胁防护通过对你的日志进行分析来检测异常行为和对数据库的潜在恶意访问或利用。 针对可疑活动（例如 SQL注入、潜在的数据渗透和暴力攻击）或访问模式中的异常情况创建警报，以捕获特权提升和违规的凭据使用。 可以从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看警报，其中提供了可疑活动的详细信息，并给出了进一步调查建议以及缓解威胁的措施。 可以为每台服务器启用高级威胁防护，但需要额外付费。 有关详细信息，请参阅 [SQL 数据库高级威胁防护入门](threat-detection-configure.md)。
 
-![azure 数据库 td.jpg](./media/security-overview/azure-database-td.jpg)
+![显示 SQL 威胁检测的关系图：监视从外部攻击者和恶意内部的 web 应用对 SQL 数据库的访问。](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>信息保护和加密
 
@@ -122,13 +122,13 @@ SQL 数据库和 SQL 托管实例通过使用[传输层安全性 (TLS)](https://
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted（使用中加密）
 
-![azure 数据库 ae.png](./media/security-overview/azure-database-ae.png)
+![显示 Always Encrypted 功能基础知识的关系图。 只有包含密钥的应用才能访问带有锁的 SQL 数据库。](./media/security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能旨在保护特定数据库列中存储的敏感数据不被访问（如信用卡号或、国民身份证号或视需要而定的数据）。 这包括数据库管理员或其他特权用户，他们被授权访问数据库以执行管理任务，但不需要访问加密列中的特定数据。 数据始终处于加密状态，这意味着加密数据只在有权访问加密密钥的客户端应用程序需要处理数据时才解密。 加密密钥从不暴露给 SQL 数据库或 SQL 托管实例，而且可以存储在 [Windows 证书存储](always-encrypted-certificate-store-configure.md)或 [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) 中。
 
 ### <a name="dynamic-data-masking"></a>动态数据屏蔽
 
-![azure 数据库 ddm.png](./media/security-overview/azure-database-ddm.png)
+![显示动态数据掩码的关系图。 企业应用将数据发送到 SQL 数据库，该数据库会在将数据发送回业务应用之前对其进行屏蔽。](./media/security-overview/azure-database-ddm.png)
 
 动态数据屏蔽通过对非特权用户屏蔽敏感数据来限制敏感数据的公开。 动态数据掩码可自动发现 Azure SQL 数据库和 SQL 托管实例中潜在的敏感数据，提供可行的建议来掩码这些字段，对应用程序层造成的影响可忽略不计。 它的工作原理是在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。 有关详细信息，请参阅 [SQL 数据库和 SQL 托管实例动态数据掩码入门](dynamic-data-masking-overview.md)。
 

@@ -3,12 +3,12 @@ title: Microsoft Azure 备份服务器中的新增功能
 description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332757"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 备份 Server 中的新增功能 (MABS) 
 
@@ -23,7 +23,7 @@ Microsoft Azure 备份 Server (MABS) 版本 3 UR1 是最新的更新，并包含
 
 MABS V2 引入了[新式备份存储](backup-mabs-add-storage.md) (MBS)，从而提高了存储利用率和性能。 MBS 使用 ReFS 作为基础文件系统，并被设计为使用诸如分层存储之类的混合存储。
 
-若要通过 MBS 实现缩放和性能，建议将 MABS V3 UR1 的一小部分（占总存储的 4%）闪存 (SSD) 用作分层卷，并与 DPM HDD 存储结合使用。 具有分层存储的 MABS V3 UR1 的备份速度可提高 50-70%。 有关配置分层存储的步骤，请参阅 DPM 文章[使用分层存储设置 MBS](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)。
+若要通过 MBS 实现缩放和性能，建议将 MABS V3 UR1 的一小部分（占总存储的 4%）闪存 (SSD) 用作分层卷，并与 DPM HDD 存储结合使用。 具有分层存储的 MABS V3 UR1 的备份速度可提高 50-70%。 有关配置分层存储的步骤，请参阅 DPM 文章[使用分层存储设置 MBS](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)。
 
 ### <a name="support-for-refs-volumes"></a>对 ReFS 卷的支持
 

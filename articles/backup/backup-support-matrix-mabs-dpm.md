@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332689"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -24,7 +24,7 @@ MABS 基于 System Center DPM，并提供类似的功能，但有几项差别：
 
 - 无需 System Center 许可证即可运行 MABS。
 - Azure 为 MABS 和 DPM 提供长期备份存储。 此外，DPM 允许在磁带上备份数据，以作长期存储。 MABS 不提供此功能。
-- [您可以使用辅助 dpm 服务器备份主 dpm 服务器](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019)。 辅助服务器将保护主服务器上存储的主服务器数据库和数据源副本。 如果主服务器出现故障，则辅助服务器可以继续保护由主服务器保护的工作负荷，直到主服务器再次可用为止。  MABS 不提供此功能。
+- [您可以使用辅助 dpm 服务器备份主 dpm 服务器](/system-center/dpm/back-up-the-dpm-server)。 辅助服务器将保护主服务器上存储的主服务器数据库和数据源副本。 如果主服务器出现故障，则辅助服务器可以继续保护由主服务器保护的工作负荷，直到主服务器再次可用为止。  MABS 不提供此功能。
 
 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57520)下载 MABS。 它可以在本地运行，或者在 Azure VM 上运行。
 
@@ -158,7 +158,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 |要求 |详细信息 |
 |---------|---------|
 |Domain    | DPM/MABS 服务器应该在 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 域中。        |
-|域信任   |  只要您在单独的林之间建立了林级别的双向信任关系，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   DPM/MABS 可跨域保护服务器和工作站，这些域与 DPM/MABS 服务器域具有双向信任关系的林中。 若要保护工作组或不受信任的域中的计算机，请参阅 [备份和还原工作组和不受信任的域中的工作负荷。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+|域信任   |  只要您在单独的林之间建立了林级别的双向信任关系，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   DPM/MABS 可跨域保护服务器和工作站，这些域与 DPM/MABS 服务器域具有双向信任关系的林中。 若要保护工作组或不受信任的域中的计算机，请参阅 [备份和还原工作组和不受信任的域中的工作负荷。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS 存储支持
 
@@ -185,7 +185,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 
 ## <a name="supported-backups-to-dpm"></a>DPM 支持的备份
 
-有关可以使用 Data Protection Manager 保护的各种服务器和工作负载的信息，请参阅 [DPM 可以备份的内容](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)一文。
+有关可以使用 Data Protection Manager 保护的各种服务器和工作负载的信息，请参阅 [DPM 可以备份的内容](/system-center/dpm/dpm-protection-matrix)一文。
 
 - DPM/MABS 备份的群集工作负荷应与 DPM/MABS 位于同一域中，或者在子域/受信任的域中。
 - 可以使用 NTLM/证书身份验证在不受信任的域或工作组中备份数据。

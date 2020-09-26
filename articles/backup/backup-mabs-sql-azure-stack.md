@@ -3,12 +3,12 @@ title: 在 Azure Stack 上备份 SQL Server 工作负荷
 description: 本文介绍如何配置 Microsoft Azure 备份服务器 (MABS) 以在 Azure Stack 上保护 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 912e6f10b689217303786b20ec6315fca595a8c2
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376326"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332808"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>在 Azure Stack 上备份 SQL Server
 
@@ -24,10 +24,10 @@ ms.locfileid: "89376326"
 
 * 如果具有包含远程文件共享上的文件的数据库，则保护将失败，错误 ID 为 104。 MABS 不支持对远程文件共享上的 SQL Server 数据进行保护。
 * MABS 无法保护远程 SMB 共享上存储的数据库。
-* 确保[将可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 确保[将可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server)。
 * 必须将系统帐户 **NTAuthority\System** 显式添加到 SQL Server 上的 Sysadmin 组。
-* 在为部分包含的数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)功能。
-* 在为文件流数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)功能。
+* 在为部分包含的数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable)功能。
+* 在为文件流数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream)功能。
 * 对 SQL Server AlwaysOn 的保护：
   * 在创建保护组时，MABS 检测可用性组。
   * MABS 检测到故障转移并继续保护数据库。
@@ -45,7 +45,7 @@ ms.locfileid: "89376326"
     * 如果所选节点上的备份失败，则备份操作将失败。
     * 不支持恢复到原始位置。
 * SQL Server 2014 或更高版本备份问题：
-  * SQL Server 2014 添加了一项新功能：[为 Windows Azure Blob 存储中的本地 SQL Server 创建数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 不能用于保护此配置。
+  * SQL Server 2014 添加了一项新功能：[为 Windows Azure Blob 存储中的本地 SQL Server 创建数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)。 MABS 不能用于保护此配置。
   * 对于 SQL AlwaysOn 选项，存在一些 "首选辅助" 备份首选项的已知问题。 MABS 始终从辅助副本进行备份。 如果找不到辅助副本，则备份将失败。
 
 ## <a name="before-you-start"></a>开始之前

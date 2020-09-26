@@ -4,19 +4,19 @@ description: 了解将 Azure Monitor Application Insights 经典资源升级到�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: caaf5469eace891f2996a565af183b411ad1d740
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333335"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>迁移到基于工作区的 Application Insights 资源
 
 本指南将指导你完成将经典 Application Insights 资源迁移到基于工作区的资源的过程。 基于工作区的资源支持 Application Insights 与 Log Analytics 之间的完全集成。 基于工作区的资源将 Application Insights 遥测发送到公共 Log Analytics 工作区，该工作区允许您访问 [Azure Monitor 的最新功能](#new-capabilities) ，同时将应用程序、基础结构和平台日志保持在单个合并位置。
 
-基于工作区的资源允许在资源中使用基于角色的常见访问控制 (RBAC) ，并消除了跨应用/工作区查询的需要。
+基于工作区的资源实现了基于角色的公共访问控制 (RBAC) 跨资源，消除了跨应用/工作区查询的需要。
 
 **基于工作区的资源当前在所有商业区域和 Azure 美国政府版中可用**
 
@@ -34,12 +34,11 @@ ms.locfileid: "90933549"
 
 迁移到基于工作区的资源时，不会将任何数据从经典资源的存储传输到新的基于工作区的存储。 选择迁移将改为更改新数据写入到 Log Analytics 工作区的位置，同时保留对经典资源数据的访问。 
 
-经典资源数据将保留，并在引入时受到保留设置的限制。 迁移后的所有新数据引入将受到关联 Log Analytics 工作区的保留设置的限制。 
-
+经典资源数据将保持不变，并受经典 Application Insights 资源上的保留设置的限制。 迁移后的所有新数据引入将受到关联 Log Analytics 工作区的 [保留设置](../platform/manage-cost-storage.md#change-the-data-retention-period) 的限制，这些设置还支持 [按数据类型进行不同的保留设置](../platform/manage-cost-storage.md#retention-by-data-type)。
 迁移过程是 **永久性的，无法撤消**。 将资源迁移到基于工作区的 Application Insights 后，它将始终是基于工作区的资源。 但是，一旦迁移，就可以根据需要随时更改目标工作区。 
 
 > [!NOTE]
-> 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。 迁移之前 (经典 Application Insights 资源数据引入在保留数据的持续时间内继续处于 Application Insights 保留/定价范围内。 )  
+> 基于工作区的 Application Insights 资源的数据引入和保留 [通过数据所在 Log Analytics 工作区进行计费](../platform/manage-cost-storage.md) 。 如果在迁移之前选择了 "数据引入 Application Insights" 的数据保留期超过90天，则在迁移之前，数据保留期将继续按 Application Insights 资源计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
 
 如果不需要迁移现有资源，而是想要创建新的基于工作区的 Application Insights 资源，请使用 [基于工作区的资源创建指南](create-workspace-resource.md)。
 

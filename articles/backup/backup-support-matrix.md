@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985003"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332706"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -39,6 +39,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 **移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](./backup-azure-move-recovery-services-vault.md)。 但是，不支持跨区域移动保管库。
 **在保管库之间移动数据** | 不支持在保管库之间移动备份的数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
+**区域冗余存储 (ZRS)** | 在英国南部中提供 (UKS) 和南部东亚 (海平面) 区域。
 
 ## <a name="on-premises-backup-support"></a>本地备份支持
 
@@ -128,7 +129,7 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
 **直接备份本地 Windows 计算机** | NA | ![是][green]
-**使用 VM 扩展的 Azure VM 备份** | 不可用 | NA
+**使用 VM 扩展的 Azure VM 备份** | NA | 不可用
 **使用 MABS/DPM 在本地计算机/Azure 计算机上备份** | ![是][green] | ![是][green]
 
 ## <a name="retention-limits"></a>保留期限制
@@ -150,9 +151,9 @@ Azure 备份添加了跨区域还原功能来增强数据可用性和复原能�
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域和主权云。  |
-| SQL/SAP HANA | 是                                                          | 所有 Azure 公共区域和主权云。             |
+| SQL/SAP HANA | 是                                                          | 美国西部 2 (WUS2) ，美国中部 (WCUS) ，加拿大中部 (CNC) ，加拿大东部 (CNE) ，美国东部 (EUS) 、美国西部 (WUS) 、日本东部 (JPE) 、日本东部 (JPE)  |
 | MARS 代理/本地  | 否                                                           | 空值               |
-| AFS                    | 否                                                           | 空值               |
+|  (Azure 文件共享的 AFS)                  | 否                                                           | 空值               |
 
 ## <a name="next-steps"></a>后续步骤
 
