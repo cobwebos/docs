@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76902698"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322421"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
@@ -103,15 +103,15 @@ ms.locfileid: "76902698"
 
    **插入日志条目**
 
-   ![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![逻辑应用设计器中的屏幕截图，其中显示了 InsertLogEntry 的配置设置。](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **插入错误条目**
 
-   ![插入日志条目](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![逻辑应用设计器中的屏幕截图，其中显示了 CreateErrorRecord 的配置设置。](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **检查是否存在创建记录失败**
 
-   ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![逻辑应用设计器中的 CreateErrorRecord 屏幕屏幕截图，显示用于创建错误条目的字段。](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>逻辑应用源代码
 

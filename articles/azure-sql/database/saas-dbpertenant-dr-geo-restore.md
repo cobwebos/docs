@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f3c7c166b72a43b6b11dc1830643332b032abad2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325311"
+ms.locfileid: "91356862"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本教程探讨如何对使用“每租户一个数据库”模型实现的多租户 SaaS 应用程序实施完整的灾难恢复方案。 使用[异地还原](recovery-using-backups.md)，将自动保留的异地冗余备份中的目录和租户数据库还原到备用恢复区域。 中断解决后，使用[异地复制](active-geo-replication-overview.md)将更改后的数据库遣返回原始区域。
 
-![异地还原体系结构](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![关系图显示了原始和恢复区域，这两个区域都有一个应用、目录、服务器和池的原始映像或镜像，自动备份到存储，恢复区域接受备份的异地复制，并为新租户提供服务器和池。](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 异地还原是适用于 Azure SQL 数据库的成本较低的灾难恢复解决方案。 但是，从异地冗余备份恢复可能会导致长达一小时的数据丢失。 此操作可能需要较长时间，具体取决于每个数据库的大小。 
 

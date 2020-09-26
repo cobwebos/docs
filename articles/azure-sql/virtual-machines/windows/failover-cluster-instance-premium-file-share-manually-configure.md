@@ -8,17 +8,17 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.custom: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: cbc6b2af98905a09324a58c92cafca0075d8a01d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298705"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上使用高级文件共享 (SQL Server 创建 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "89055133"
 
 ## <a name="mount-premium-file-share"></a>装载高级文件共享
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 并中转到你的存储帐户。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 并中转到你的存储帐户。
 1. 在 "**文件服务**" 下，单击 "**文件共享**"，然后选择要用于 SQL 存储的高级文件共享。
 1. 选择“连接”使系统显示文件共享的连接字符串。
 1. 在下拉列表中，选择要使用的驱动器号，然后将这两个代码块复制到记事本。
@@ -90,15 +90,15 @@ ms.locfileid: "89055133"
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
 1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 1. 在“测试选择”下，选择除“存储”和“存储空间直通”以外的所有测试，如下所示  ：
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="选择群集验证测试":::
 
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 1. 在“确认”下，选择“下一步”。 
 
 " **验证配置** 向导" 将运行验证测试。

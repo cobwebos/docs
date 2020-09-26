@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 675d9c76841ba1a4b94b666c7ff4ac4287fc5264
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f480cb0d478ca60555fa15849d5fcbed6cda684
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286108"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>教程：为 SmartFile 配置自动用户预配
 
@@ -58,9 +58,9 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 2. 若要生成持有者令牌，请复制 **产品密钥** 和 **产品密码**。 将其粘贴到记事本中，其中有一个冒号。
     
-     ![SmartFile 添加 SCIM](media/smartfile-provisioning-tutorial/auth.png)
+     !["产品密钥" 部分的屏幕截图，其中包含 "产品密钥" 和 "产品密码" 文本框。](media/smartfile-provisioning-tutorial/auth.png)
 
-    ![SmartFile 添加 SCIM](media/smartfile-provisioning-tutorial/key.png)
+    ![显示以冒号分隔的产品密钥和产品密码的纯文本屏幕截图。](media/smartfile-provisioning-tutorial/key.png)
 
 ## <a name="add-smartfile-from-the-gallery"></a>从库中添加 SmartFile
 
@@ -103,11 +103,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5.  在 " **管理员凭据** " 部分中，输入 " `https://<SmartFile sitename>.smartfile.com/ftp/scim` **租户 URL**"。 示例如下所示 `https://demo1test.smartfile.com/ftp/scim` 。 输入之前在 "**机密令牌**" 中检索到的 ProductKey： ProductPassword)  (**持有者令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 SmartFile。 如果连接失败，请确保 SmartFile 帐户具有管理员权限，然后重试。
 

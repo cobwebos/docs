@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7be92289d293798393ead3562c39721d46ce561b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334338"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure 数据工厂中的 Avro 格式
 
@@ -86,7 +86,7 @@ ms.locfileid: "90531842"
 
 支持的 **Avro 写入设置** `formatSettings` 如下：
 
-| 属性      | 说明                                                  | 必需                                              |
+| properties      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的类型必须设置为 **AvroWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
@@ -102,12 +102,13 @@ ms.locfileid: "90531842"
 
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
 | 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
 | 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="sink-properties"></a>接收器属性
 

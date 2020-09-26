@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358315"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
@@ -71,15 +71,15 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 6. 在新窗口中，使用管理员帐户登录到 GitHub。 在显示的授权对话框中，选择要启用预配的 GitHub 团队，并选择“授权”****。 完成后，返回到 Azure 门户完成预配配置。
 
-    ![授权对话框](./media/github-provisioning-tutorial/GitHub2.png)
+    ![屏幕截图显示 GitHub 的登录页。](./media/github-provisioning-tutorial/GitHub2.png)
 
 7. 在 Azure 门户中，输入“租户 URL”并单击“测试连接”，确保 Azure AD 可以连接到 GitHub 应用********。 如果连接失败，请确保 GitHub 帐户具有管理员权限，且输入的“租户 URl”正确无误，然后再次尝试“授权”步骤（可以按规则：`https://api.github.com/scim/v2/organizations/<Organization_name>` 来编写“租户 URL”，可在 GitHub 帐户：“设置” > “组织”下找到你的组织）****************。
 
-    ![授权对话框](./media/github-provisioning-tutorial/GitHub3.png)
+    ![屏幕截图显示 GitHub 中的组织页面。](./media/github-provisioning-tutorial/GitHub3.png)
 
 8. 在“通知电子邮件”字段中输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”****。
 
-9. 单击“保存” 。
+9. 单击“ **保存**”。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GitHub”****。
 

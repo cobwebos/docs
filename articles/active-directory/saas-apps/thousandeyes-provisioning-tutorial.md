@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546417"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355816"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>教程：为 ThousandEyes 配置自动用户预配
 
@@ -63,11 +63,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 4. 将“预配模式”设置为“自动”。
 
-    ![ThousandEyes 预配](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    ![屏幕截图显示了 ThousandEyes 的 "预配" 选项卡，并选择了 "自动设置"。](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
 5. 在“管理员凭据”部分下，输入 ThousandEyes 帐户生成的“OAuth 持有者令牌”（可在 ThousandEyes 帐户的“配置文件”部分下找到或生成令牌）************。
 
-    ![ThousandEyes 预配](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
+    ![屏幕截图显示在何处可以找到当前帐户组的 "帐户设置" 链接。](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
 6. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 ThousandEyes 应用****。 如果连接失败，请确保 ThousandEyes 帐户具有管理员权限，然后重试步骤 5。
 

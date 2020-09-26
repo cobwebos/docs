@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285377"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>通过添加更多的工作节点向外扩展启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 本文档介绍如何横向扩展启用了 Azure Arc 的 PostgreSQL 超大规模服务器组。 它通过学习方案来实现此目的。 **如果你不希望通过此方案运行，并且只想了解如何横向扩展，请跳转到段落 [扩大](#scale-out)**。
@@ -151,7 +151,11 @@ SELECT COUNT(*) FROM github_events;
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-例如，通过运行以下命令，将辅助角色节点数从2增加到4：
+> [!CAUTION]
+> 预览版本不支持向后缩放。 例如，尚不能减少辅助角色节点的数目。 如果需要执行此操作，则需要提取/备份数据，删除服务器组，使用较少的辅助角色节点创建新的服务器组，然后导入数据。
+
+在此示例中，我们将运行以下命令，将辅助角色节点数从2增加到4：
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
@@ -196,7 +200,8 @@ kubectl get postgresql-12
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **注意：** 如果创建了版本 11 PostgreSQL 的服务器组而不是12，请改为运行以下命令： _kubectl get PostgreSQL-11_
+> [!NOTE]
+> 如果创建了版本 11 PostgreSQL 的服务器组而不是12，请改为运行以下命令： _kubectl get PostgreSQL-11_
 
 #### <a name="with-a-sql-query"></a>使用 SQL 查询：
 用所选的客户端工具连接到你的服务器组，并运行以下查询：
@@ -230,7 +235,6 @@ SELECT COUNT(*) FROM github_events;
 >* [高性能 HTAP 与 Azure PostgreSQL 超大规模 (Citus) ](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [构建 HTAP 应用程序和 Python & Azure PostgreSQL 超大规模 (Citus) ](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> 预览版本不支持向后缩放。 例如，尚不能减少辅助角色节点的数目。 如果需要执行此操作，则需要提取/备份数据，删除服务器组，使用较少的辅助角色节点创建新的服务器组，然后导入数据。
 
 ## <a name="next-steps"></a>后续步骤
 

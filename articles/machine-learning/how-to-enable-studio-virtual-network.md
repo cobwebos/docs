@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5dce7cde3c46fbcf3f764819f730f42cace4a74c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0c5f91f1423bc20b2202589c488c9b225ed3fbaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333845"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习 studio
 
@@ -38,7 +38,7 @@ ms.locfileid: "90897526"
 > 尽管大部分工作室都适用于虚拟网络中存储的数据，但集成笔记本 __不会__。 集成笔记本不支持使用虚拟网络中的存储。 但你可以从计算实例使用 Jupyter Notebook。 有关详细信息，请参阅[访问计算实例笔记本中的数据]()部分。
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) ，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
@@ -56,8 +56,7 @@ ms.locfileid: "90897526"
 
 ## <a name="access-data-using-the-studio"></a>使用 studio 访问数据
 
-如果你的数据存储在虚拟网络中，则必须将你的存储帐户配置为使用 [托管标识](../active-directory/managed-identities-azure-resources/overview.md) 向工作室授予对数据的访问权限。
-
+[将 Azure 存储帐户添加到虚拟网络](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)后，你必须将你的存储帐户配置为使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)授予工作室对你的数据的访问权限。 Studio 支持配置为使用服务终结点或专用终结点的存储帐户。 默认情况下，存储帐户使用服务终结点。 若要启用存储的专用终结点，请参阅 [使用 Azure 存储的专用终结点](../storage/common/storage-private-endpoints.md)
 
 如果未启用托管标识，则会收到此错误， `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` 此外，将禁用以下操作：
 
@@ -72,7 +71,6 @@ ms.locfileid: "90897526"
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
 * Azure SQL 数据库
-
 
 ### <a name="configure-datastores-to-use-managed-identity"></a>将数据存储配置为使用托管标识
 

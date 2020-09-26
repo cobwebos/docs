@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289763"
 ---
 # <a name="configure-azure-defender-for-storage"></a>配置用于存储的 Azure Defender
 
@@ -23,11 +23,11 @@ ms.locfileid: "90994131"
 
 当活动出现异常时，会触发安全警报。 这些安全警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
-服务引入对 Blob 存储和 Azure 文件的读取、写入和删除请求的资源日志， (预览) 进行威胁检测。 若要调查来自 Azure Defender 的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 "**配置日志记录**"。
+服务引入对 Blob 存储和 Azure 文件的读取、写入和删除请求的资源日志，用于威胁检测。 若要调查来自 Azure Defender 的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 "**配置日志记录**"。
 
 ## <a name="availability"></a>可用性
 
-适用于存储的 azure Defender 目前可用于 Blob 存储、Azure 文件 (预览版) 和 Azure Data Lake Storage Gen2 (预览) 。 支持 Azure Defender 的帐户类型包括常规用途 v2、块 blob 和 Blob 存储帐户。 适用于存储的 Azure Defender 适用于所有公有云和美国政府云，但不适用于其他主权或 Azure 政府版云区域。
+适用于存储的 azure Defender 目前可用于 Blob 存储、Azure 文件和 Azure Data Lake Storage Gen2。 支持 Azure Defender 的帐户类型包括常规用途 v2、块 blob 和 Blob 存储帐户。 适用于存储的 Azure Defender 适用于所有公有云和美国政府云，但不适用于其他主权或 Azure 政府版云区域。
 
 为 Data Lake Storage 启用分层命名空间的帐户使用 Azure Blob 存储 Api 和 Data Lake Storage Api 支持事务。 Azure 文件共享通过 SMB 支持事务。
 
@@ -37,8 +37,8 @@ ms.locfileid: "90994131"
 
 - 发布状态：
   - [Blob 存储](https://azure.microsoft.com/services/storage/blobs/) (公开上市) 
-  - [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (预览版支持 SMB 和 REST 事务) 
-  - Azure Data Lake Storage Gen2（预览版）
+  - [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (公开发布) 
+  - Azure Data Lake Storage Gen2 (公开上市) 
 - 云：<br>
     ✔ 商业云<br>
     ✔ US Gov<br>
@@ -63,7 +63,7 @@ ms.locfileid: "90994131"
 
 现在已为此订阅中的所有存储帐户启用 Azure Defender。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 启动 [Azure 门户](https://portal.azure.com/)。
 1. 导航到存储帐户。 在 " **设置**" 下，选择 " **高级安全**"。

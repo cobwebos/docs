@@ -1,14 +1,14 @@
 ---
 title: 如何访问 Azure 实验室服务中的课堂实验室 | Microsoft Docs
-description: 在本教程中，你将访问教师在课堂实验室中设置的虚拟机。
+description: 了解如何注册到教室实验室，查看可以访问的所有实验，在实验室中启动/停止 VM，并连接到 VM。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 34b61be1ca3fc938032b75358842f2067e5c011c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443564"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334049"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何注册到课堂实验室、查看可以访问的所有实验室、在实验室中启动/停止 VM 以及连接到 VM。 

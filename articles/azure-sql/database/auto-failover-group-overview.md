@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277727"
+ms.locfileid: "91357703"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -153,7 +153,7 @@ ms.locfileid: "91277727"
 
 自动故障转移组必须在主服务器上进行配置，需将其连接到不同 Azure 区域中的辅助服务器。 组可以包含这些服务器中的所有或部分数据库。 下图演示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。
 
-![自动故障转移](./media/auto-failover-group-overview/auto-failover-group.png)
+![关系图显示了使用多个数据库和自动故障转移组的异地冗余云应用程序的典型配置。](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > 有关将 SQL 数据库中的数据库添加到故障转移组的详细分步教程，请参阅[将 SQL 数据库添加到故障转移组](failover-group-add-single-database-tutorial.md)。

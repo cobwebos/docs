@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358145"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
 本文介绍了如何使用 Azure CLI 在 Azure 中创建专用链接服务。
@@ -88,7 +88,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>创建专用链接服务  
+## <a name="create-a-private-link-service-using-standard-load-balancer"></a>使用标准负载均衡器创建专用链接服务 
  
 通过 [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) 使用标准负载均衡器前端 IP 配置创建专用链接服务。 此示例使用 *myResourceGroup* 资源组中的标准负载均衡器 *myLoadBalancer* 创建名为 *myPLS* 的专用链接服务。 
  

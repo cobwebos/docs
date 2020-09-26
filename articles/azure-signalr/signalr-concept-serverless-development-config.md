@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: ca7d28e3f964d486d9f860c355e88132ebb897a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327640"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
 
@@ -51,9 +51,9 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 使用 SignalR 触发器绑定来处理从 SignalR 服务发送的消息。 可在客户端发送消息或客户端连接或断开连接时通过触发功能收到通知。
 
-有关详细信息，请参阅[ *SignalR 触发器*绑定引用](../azure-functions/functions-bindings-signalr-service-trigger.md)。
+有关详细信息，请参阅 [SignalR 触发器绑定参考](../azure-functions/functions-bindings-signalr-service-trigger.md)。
 
-还需要将函数终结点配置为上游，以便服务将触发来自客户端的消息。 有关如何配置上游的详细信息，请参阅此 [文档](concept-upstream.md)。
+还需要将函数终结点配置为上游，让服务在收到来自客户端的消息时触发函数。 有关如何配置上游的详细信息，请参阅此[文档](concept-upstream.md)。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>发送消息和管理组成员身份
 
@@ -71,7 +71,7 @@ SignalR 具有“中心”的概念。 每个客户端连接以及从 Azure Func
 
 基于类的模型专用于 C#。 使用基于类的模型可以拥有一致的 SignalR 服务器端编程体验。 该示例应用程序具有以下功能。
 
-* 配置工作较少：类名称用作 `HubName` ，方法名称用作， `Event` 并 `Category` 根据方法名称自动确定。
+* 更少的配置工作：类名称用作 `HubName`，方法名称用作 `Event`，`Category` 根据方法名称自动确定。
 * 自动参数绑定：不需要 `ParameterNames` 和属性 `[SignalRParameter]`。 参数按顺序自动绑定到 Azure Function 方法的参数上。
 * 方便的输出和协商体验。
 
@@ -107,11 +107,11 @@ public class SignalRTestHub : ServerlessHub
 }
 ```
 
-要利用基于类的模型的所有函数都需要是继承自 **ServerlessHub**的类的方法。 示例中的类名称 `SignalRTestHub` 是中心名称。
+需要利用基于类的模型的所有函数都需是继承自 ServerlessHub 的类的方法。 示例中的类名称 `SignalRTestHub` 是中心名称。
 
 ### <a name="define-hub-method"></a>定义中心方法
 
-所有集线器方法都 **必须** 具有一个 `InvocationContext` 由特性修饰的参数 `[SignalRTrigger]` 并使用无参数构造函数。 然后将方法名称视为参数 event 。
+所有中心方法必须具有由 `[SignalRTrigger]` 属性修饰的 `InvocationContext` 参数，并使用无参数构造函数。 然后将方法名称视为参数 event 。
 
 默认情况下，除了方法名称外，`category=messages` 是以下名称之一：
 
@@ -204,7 +204,7 @@ SDK 根据约定自动将 `/negotiate` 追加到 URL，然后使用该 URL 开�
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>将消息从客户端发送到服务
 
-如果为 SignalR 资源配置了 [上游](concept-upstream.md) ，则可以使用任何 SignalR 客户端向 Azure Functions 发送消息。 下面是一个 JavaScript 示例：
+如果为 SignalR 资源配置了[上游](concept-upstream.md)，则可以使用任何 SignalR 客户端将消息从客户端发送到 Azure Functions。 下面是一个 JavaScript 示例：
 
 ```javascript
 connection.send('method1', 'arg1', 'arg2');

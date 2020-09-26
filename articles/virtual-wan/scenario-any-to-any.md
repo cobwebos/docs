@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6115ca375c3e5bf2be3335fe2231628ec7bf309f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267731"
 ---
 # <a name="scenario-any-to-any"></a>方案： Any 到 any
 
@@ -24,7 +24,7 @@ ms.locfileid: "89400069"
 
 为了确定虚拟 WAN 方案中需要多少个路由表，你可以构建一个连接矩阵，其中每个单元表示源 (行) 是否可以与) 的目标 (列通信。 此方案中的连接矩阵非常简单，但我们已将其包含在内，以便与其他方案保持一致。
 
-| 从 |   功能 |  *Vnet* | *分支* |
+| 源 |   功能 |  *Vnet* | *分支* |
 | -------------- | -------- | ---------- | ---|
 | VNet     | &#8594;|      X     |     X    |
 | 分支   | &#8594;|    X     |     X    |

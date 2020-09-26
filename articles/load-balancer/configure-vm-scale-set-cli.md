@@ -1,17 +1,17 @@
 ---
 title: 配置包含现有 Azure 负载均衡器的虚拟机规模集 - Azure CLI
-description: 了解如何配置包含现有 Azure 负载均衡器的虚拟机规模集。
+description: 了解如何使用 Azure CLI 通过现有的 Azure 负载均衡器来配置虚拟机规模集。
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 2d734e5242ff2a250d332de78cfa3b7f017a3fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 990380d553cc12d1a87b2e1c7ca9b09864801294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333971"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集
 

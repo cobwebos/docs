@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299691"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>教程：为 GoToMeeting 配置自动用户预配
 
@@ -60,7 +60,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 将 **预配** 模式设置为 " **自动**"。 
 
-    ![预配](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Azure 门户中的 GoToMeeting 的 "设置" 选项卡的屏幕截图。 预配模式设置为 "自动"，并且突出显示 "管理员用户名"、"密码" 和 "测试连接"。](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. 在“管理员凭据”部分中，执行以下步骤：
    
@@ -72,7 +72,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框****。
 
-1. 单击“保存”。
+1. 单击“保存” 
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GoToMeeting”****。
 
@@ -80,7 +80,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 若要为 GoToMeeting 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”**** 更改为“启用”****
 
-1. 单击“保存”。
+1. 单击“保存” 
 
 此操作会对“用户和组”部分中分配到 GoToMeeting 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”**** 部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 GoToMeeting 应用执行的所有操作。
 

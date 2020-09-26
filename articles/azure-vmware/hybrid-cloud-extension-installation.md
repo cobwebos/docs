@@ -3,12 +3,12 @@ title: 安装 VMware HCX
 description: 为 Azure VMware 解决方案私有云设置 VMware HCX 解决方案
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263194"
+ms.locfileid: "91356547"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安装适用于 Azure VMware 解决方案的 HCX
 
@@ -40,7 +40,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 当你准备使用 Azure VMware 解决方案私有 Cloud HCX 解决方案时，根据计算和存储资源调整工作负载大小是一个重要的规划步骤。 作为初始私有云环境规划的一部分，处理调整大小步骤。 
 
-还可以通过在 Azure Migrate 门户中完成 [Azure VMware 解决方案评估](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) 来调整工作负载大小。
+还可以通过在 Azure Migrate 门户中完成 [Azure VMware 解决方案评估](../migrate/how-to-create-azure-vmware-solution-assessment.md) 来调整工作负载大小。
 
 ## <a name="software-version-requirements"></a>软件版本要求
 

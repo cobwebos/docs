@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: faf5b1108e28b352a0b8622feed8bdd99264ff16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013974"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327572"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>使用 Azure 自动化管理 Azure SQL 数据库中的数据库
 
@@ -38,7 +38,7 @@ Azure 自动化提供了高度可靠且高度可用的工作流执行引擎，�
 
 Azure 自动化还可以通过使用 PowerShell 发出 SQL 命令，与 SQL 服务器直接通信。
 
-适用于[Azure 自动化](../../automation/automation-runbook-gallery.md)的 runbook 和模块库提供了来自 Microsoft 和社区的各种 runbook，你可以将其导入 Azure 自动化。 若要使用 Runbook，可以从库下载 Runbook，也可以直接从库或 Azure 门户中的自动化帐户导入 Runbook。
+适用于 [Azure 自动化](../../automation/automation-runbook-gallery.md) 的 runbook 和模块库提供了来自 Microsoft 和社区的各种 runbook，你可以将其导入 Azure 自动化。 若要使用 Runbook，可以从库下载 Runbook，也可以直接从库或 Azure 门户中的自动化帐户导入 Runbook。
 
 ## <a name="next-steps"></a>后续步骤
 

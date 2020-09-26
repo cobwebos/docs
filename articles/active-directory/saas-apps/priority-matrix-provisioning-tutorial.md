@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: bca751c55182df99e87ff1651de534985d9b5e76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43f5b96c7029da6b49bc9df40d92fbd250145715
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325991"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>教程：为自动用户预配配置优先级矩阵
 
@@ -114,11 +114,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://sync.appfluence.com/scim/v2/` **租户 URL**"。 输入先前从 **机密令牌**中的优先级矩阵检索并保存的值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到优先级矩阵。 如果连接失败，请确保你的优先级矩阵帐户具有管理员权限，然后重试。
 

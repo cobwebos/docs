@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887030"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358128"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>按国家/地区限制 Azure CDN 内容
 
 ## <a name="overview"></a>概述
-当用户请求内容时，默认情况下，无论发出请求的用户位于哪里，系统都会提供该内容。 但是，在某些情况下，你可能想要按国家/地区限制对内容的访问。 利用*地域筛选*功能，你可以在 CDN 终结点上的特定路径上创建规则，以允许或阻止所选国家/地区中的内容。
+当用户请求内容时，默认情况下，无论发出请求的用户位于哪里，系统都会提供该内容。 但是，在某些情况下，你可能想要按国家/地区限制对内容的访问。 利用 *地域筛选* 功能，你可以在 CDN 终结点上的特定路径上创建规则，以允许或阻止所选国家/地区中的内容。
 
 > [!IMPORTANT]
 > **Microsoft 的 Azure CDN 标准版**配置文件不支持基于路径的地区筛选。
@@ -38,7 +38,7 @@ ms.locfileid: "84887030"
 ### <a name="define-the-directory-path"></a>定义目录路径
 若要访问地区筛选功能，请在门户中选择你的 CDN 终结点，然后在左侧菜单中的“设置”下选择“地区筛选”。**** 
 
-![地区筛选标准](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![显示在终结点的菜单中选择的异地筛选的屏幕截图。](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
 从“路径”框中，指定将允许或拒绝用户访问的位置的相对路径。**** 
 
@@ -63,11 +63,11 @@ ms.locfileid: "84887030"
  *http： \/ / \<endpoint> . azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>定义国家/地区
-从 "**国家/地区代码**" 列表中，选择要阻止或允许路径的国家/地区。 
+从 " **国家/地区代码** " 列表中，选择要阻止或允许路径的国家/地区。 
 
-选择完国家/地区后，选择 "**保存**" 以激活新的异地筛选规则。 
+选择完国家/地区后，选择 " **保存** " 以激活新的异地筛选规则。 
 
-![地区筛选规则](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![屏幕截图显示了用于阻止或允许国家或地区的国家/地区代码。](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>清理资源
 若要删除某个规则，请从“地区筛选”**** 页面上的列表中选择它，然后选择“删除”****。
@@ -79,7 +79,7 @@ ms.locfileid: "84887030"
 
 2. 从 Verizon 门户中，选择“HTTP 大型”****，然后选择“国家/地区筛选”****。
 
-    ![地区筛选标准](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![屏幕截图显示了如何在 Azure C D 中选择国家/地区筛选。](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
 3. 选择“添加国家/地区筛选器”****。
 
@@ -89,11 +89,11 @@ ms.locfileid: "84887030"
 
     此时将显示“步骤二：”**** 页面。 
 
-5. 从列表中选择一个或多个国家/地区，然后选择 "**完成**" 以激活规则。 
+5. 从列表中选择一个或多个国家/地区，然后选择 " **完成** " 以激活规则。 
     
     新规则将显示在“国家/地区筛选”**** 页面上的表中。
 
-    ![地区筛选规则](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![屏幕截图显示规则在 "国家/地区筛选" 中出现的位置。](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>清理资源
 在 "国家/地区筛选规则" 表中，选择规则旁边的 "删除" 图标，将其删除或编辑图标进行修改。
