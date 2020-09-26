@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom:
 - seo-lt-2019
 - seo-dt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330326"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务联机迁移到 Azure DB for MySQL 的问题和限制
 
@@ -87,7 +87,7 @@ ms.locfileid: "87090699"
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **解决方法**：如果 LOB 对象大于 32 KB，请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
+    **解决方法**：如果 LOB 对象大于 32 KB，请在 [请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>从 AWS RDS MySQL 联机迁移时的限制
 
@@ -136,10 +136,10 @@ ms.locfileid: "87090699"
 
 - 在 Azure 数据库迁移服务中，可在单个迁移活动中迁移的数据库数目限制为 4 个。
 
-- Azure DMS 不支持级联引用操作，这有助于在父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参阅 MySQL 文档中的 "引用操作"[部分。](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html) Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果工作负载依赖于通过此引用操作更新相关子表，则建议改为执行[转储和还原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
+- Azure DMS 不支持 CASCADE 引用操作，这有助于当父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参见 MySQL 文档中的[外键约束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)一文中的“引用操作”部分。 Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果你的工作负载依赖于通过此引用操作更新相关子表，建议改为执行[转储并还原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
 
-- **错误：** 行大小太大（> 8126）。 将某些列更改为 TEXT 或 BLOB 可能会有帮助。 在当前的行格式中，0 字节的 BLOB 前缀以内联方式存储。
+- **错误：** 行太大 (> 8126)。 将某些列更改为 TEXT 或 BLOB 可能会有帮助。 在当前的行格式中，0 字节的 BLOB 前缀以内联方式存储。
 
-  **限制**：使用 InnoDB 存储引擎迁移到 Azure Database for MySQL 时，如果任何表的行大小太大（>8126 个字节），则会发生此错误。
+  **限制**：使用 InnoDB 存储引擎迁移到 Azure Database for MySQL 且任意表行过大（>8126 字节）时，会发生此错误。
 
-  **解决方法**：更新行大小大于8126字节的表的架构。 我们建议不要更改严格模式，因为更改后会截断数据。 不支持更改 page_size。
+  **解决方法**：更新其行大小大于 8126 字节的表的架构。 我们建议不要更改严格模式，因为更改后会截断数据。 不支持更改 page_size。

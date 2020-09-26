@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d7ed48354b3666a3ec544ffb66724bc605041c90
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3093996156a31d4a06f0d91dbca1bd00d58eacdb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330445"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 
@@ -109,6 +109,8 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 
     > [!NOTE]
     > 为获得提升的性能，建议使用 Windows 64 位主机处理。 SQL SDK 包含一个本机 ServiceInterop.dll，用于在本地分析和优化查询。 仅 Windows x64 平台支持 ServiceInterop.dll。 对于 ServiceInterop.dll 在其中不可用的 Linux 平台及其他不受支持的平台，将对网关进行额外的网络调用以获取优化的查询。
+
+如果遇到以下错误： `Unable to load DLL 'Microsoft.Azure.Cosmos.ServiceInterop.dll' or one of its dependencies:` 并且使用的是 windows，则应升级到最新的 windows 版本。
 
 ## <a name="next-steps"></a>后续步骤
 

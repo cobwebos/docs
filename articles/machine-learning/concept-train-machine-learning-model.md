@@ -1,7 +1,7 @@
 ---
 title: 构建并训练模型
 titleSuffix: Azure Machine Learning
-description: 了解可用于在 Azure 机器学习中训练模型的不同方法。 估算器提供了一种简单的方法来使用常见框架，如 Scikit-learn、TensorFlow、Keras、PyTorch 和 Chainer。 机器学习管道使你可以轻松计划无人参与的运行，使用异类计算环境，并重复使用工作流的某些部分。 运行配置则提供了对运行训练过程的计算目标的精细控制。
+description: 了解如何使用 Azure 机器学习来训练模型，包括使用常用框架，如 Scikit-learn、TensorFlow 和 PyTorch。 机器学习管道使你可以轻松计划无人参与的运行，使用异类计算环境，并重复使用工作流的某些部分。 运行配置则提供了对运行训练过程的计算目标的精细控制。
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,27 +10,26 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: b0a0420b470ee6bf0c7fbb9885e496eaabaf7ef4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330105"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
-Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优先解决方案到自动化机器学习和可视化设计器等低代码解决方案。 使用以下列表来确定哪种训练方法适合你：
+Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优先解决方案到低代码解决方案（例如自动机器学习和可视化设计器）。 使用以下列表来确定哪种训练方法适合你：
 
 + [适用于 Python 的 Azure 机器学习 SDK](#python-sdk)：Python SDK 提供多种方法来训练模型，每个模型都具有不同功能。
 
     | 训练方法 | 说明 |
     | ----- | ----- |
-    | [运行配置](#run-configuration) | 训练模型的一种通用方法是使用训练脚本并运行配置。 运行配置提供了配置用于训练模型的训练环境所需的信息。 可以使用运行配置、训练脚本和计算目标（训练环境），并运行训练作业。 |
+    | [运行配置](#run-configuration) | **训练模型的典型方法**是使用训练脚本并运行配置。 运行配置提供了配置用于训练模型的训练环境所需的信息。 可以在运行配置中指定训练脚本、计算目标和 Azure ML 环境，并运行训练作业。 |
     | [自动化机器学习](#automated-machine-learning) | 可以通过自动化机器学习来训练模型，而无需大量数据科学或编程知识。 对于具有数据科学和编程背景的人员，它提供了一种方法，可通过自动化算法选择和超参数优化来节省时间和资源。 使用自动化机器学习时，无需担心定义运行配置。 |
-    | [估算器](#estimators) | 利用估算器类，可以轻松地根据常用机器学习框架来训练模型。 有用于 Scikit-learn、PyTorch、TensorFlow、Chainer 和 Ray RLlib 的估算器类。 还有一个泛型估算器，可用于尚无专用估算器类的框架。 使用估算器时，无需担心定义运行配置。 |
-    | [机器学习管道](#machine-learning-pipeline) | 管道不是一种不同的训练方法，而是一种使用模块化、可重复使用的步骤定义工作流的方法，该方法可以将训练作为工作流的一部分包含在内。 机器学习管道支持使用自动化机器学习、估算器和运行配置来训练模型。 由于管道并非专门针对训练，因此使用管道的原因比其他训练方法更多样。 通常，可以在以下情况下使用管道：<br>* 你需要计划无人参与的进程，如长时间运行的训练作业或数据准备。<br>* 使用多个步骤跨异类计算资源和存储位置进行协调。<br>* 将管道用作针对特定场景的可重复使用的模板，如重新训练或批处理评分。<br>* 对工作流的数据源、输入和输出进行跟踪和版本控制。<br>* 工作流由不同的团队实现，这些团队单独执行特定步骤。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
+    | [机器学习管道](#machine-learning-pipeline) | 管道不是一种不同的训练方法，而是一种使用模块化、可重复使用的步骤定义工作流的方法，该方法可以将训练作为工作流的一部分包含在内。 机器学习管道支持使用自动机器学习和运行配置来训练模型。 由于管道并非专门针对训练，因此使用管道的原因比其他训练方法更多样。 通常，可以在以下情况下使用管道：<br>* 你需要计划无人参与的进程，如长时间运行的训练作业或数据准备。<br>* 使用多个步骤跨异类计算资源和存储位置进行协调。<br>* 将管道用作针对特定场景的可重复使用的模板，如重新训练或批处理评分。<br>* 对工作流的数据源、输入和输出进行跟踪和版本控制。<br>* 工作流由不同的团队实现，这些团队单独执行特定步骤。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
 
-+ [适用于 R 的 Azure 机器学习 SDK](#r-sdk)：适用于 R 的 SDK 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
++ [适用于 r (预览版的 AZURE 机器学习 sdk) ](#r-sdk-preview)：适用于 r 的 sdk 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
 
 + **设计器**： Azure 机器学习设计器提供了一种简单的入口点到机器学习中，用于构建概念证明或几乎编码经验的用户。 它允许你使用拖放基于 Web 的 UI 来训练模型。 可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下训练模型。
 
@@ -48,18 +47,18 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 
 ### <a name="run-configuration"></a>运行配置
 
-使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) 可以定义具有 Azure 机器学习的一般训练作业。 然后使用运行配置，以及训练脚本来训练计算目标上的模型。
+可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)定义具有 Azure 机器学习的一般训练作业。 然后，将使用脚本运行配置，并使用训练脚本 () 来训练计算目标上的模型。
 
 可以从本地计算机的运行配置开始，然后根据需要切换到基于云的计算目标。 更改计算目标时，只需更改所使用的运行配置。 运行还会记录有关训练作业的信息，例如输入、输出和日志。
 
 * [什么是运行配置？](concept-azure-machine-learning-architecture.md#run-configurations)
 * [教程：训练第一个 ML 模型](tutorial-1st-experiment-sdk-train.md)
-* [示例：Jupyter Notebook 训练模型示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [如何：使用计算目标进行模型训练](how-to-set-up-training-targets.md)
+* [示例：Jupyter Notebook 训练模型示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
+* [如何：配置定型运行](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>自动化机器学习
 
-定义迭代、超参数设置、特征化和其他设置。 在训练过程中，Azure 机器学习会并行尝试不同的算法和参数。 一旦训练达到你定义的退出条件就会停止。 使用估算器时，无需担心定义运行配置。
+定义迭代、超参数设置、特征化和其他设置。 在训练过程中，Azure 机器学习会并行尝试不同的算法和参数。 一旦训练达到你定义的退出条件就会停止。
 
 > [!TIP]
 > 除了 Python SDK 外，还可以通过 [Azure 机器学习工作室](https://ml.azure.com)使用自动化 ML。
@@ -72,25 +71,15 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [如何：自动训练时序预测模型](how-to-auto-train-forecast.md)
 * [如何：通过 Azure 机器学习工作室创建、了解和部署自动化机器学习试验](how-to-use-automated-ml-for-ml-models.md)
 
-### <a name="estimators"></a>估算器
-
-使用估算器可以轻松使用常用的 ML 框架来训练模型。 如果你使用的是 Scikit-learn、PyTorch、TensorFlow、Chainer 或 Ray RLlib，则应考虑使用估算器进行训练。 还有一个泛型估算器，可用于尚无专用估算器类的框架。 使用估算器时，无需担心定义运行配置。
-
-* [什么是估算器？](concept-azure-machine-learning-architecture.md#estimators)
-* [教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型](tutorial-train-models-with-aml.md)
-* [示例：Jupyter Notebook 使用估算器示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
-* [如何：在训练期间创建估算器](how-to-train-ml-models.md)
-
 ### <a name="machine-learning-pipeline"></a>机器学习管道
 
-机器学习管道可以使用前面提到的训练方法（运行配置、估算器和自动化机器学习）。 管道更多的是关于创建工作流，因此它们包含的不仅仅是模型训练。 在管道中，可以使用自动化机器学习、估算器或运行配置来训练模型。
+机器学习管道可以使用前面提到的训练方法。 管道更多的是关于创建工作流，因此它们包含的不仅仅是模型训练。 在管道中，可以使用自动机器学习或运行配置来训练模型。
 
 * [什么是 Azure 机器学习 ML 管道？](concept-ml-pipelines.md)
 * [使用 Azure 机器学习 SDK 创建和运行机器学习管道](how-to-create-your-first-pipeline.md)
 * [教程：使用 Azure 机器学习管道进行批处理评分](tutorial-pipeline-batch-scoring-classification.md)
 * [示例：Jupyter Notebook 机器学习管道示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [示例：使用自动化机器学习的管道](https://aka.ms/pl-automl)
-* [示例：使用估算器的管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
 
 ### <a name="understand-what-happens-when-you-submit-a-training-job"></a>了解提交训练作业时会发生的情况
 
@@ -114,7 +103,7 @@ Azure 训练生命周期包括：
 
 如果选择在本地计算机上进行训练（“配置为本地运行”），则无需使用 Docker。 可以在本地使用 Docker，前提是你选择这样做（有关示例，请参阅[配置 ML 管道](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )部分）。
 
-## <a name="r-sdk"></a>R SDK
+## <a name="r-sdk-preview"></a>R SDK（预览版）
 
 R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用网状包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问在 Python SDK 中实现的核心对象和方法。
 
@@ -160,4 +149,4 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[使用计算目标进行模型训练](how-to-set-up-training-targets.md)。
+了解如何 [配置训练运行](how-to-set-up-training-targets.md)。

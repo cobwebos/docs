@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ce4bbf81f5b74a06f06778c512995684fa1394c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329789"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "90893189"
 
 **1. VNet 概述**  >  [2。保护工作区](how-to-secure-workspace-vnet.md)  >  [3。保护定型环境](how-to-secure-training-vnet.md)  >  [4。保护推断环境](how-to-secure-inferencing-vnet.md)  >  [5。启用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 本文假定您已熟悉以下主题：
 + [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -83,7 +83,6 @@ ms.locfileid: "90893189"
 - 工作区专用链接仅在以下区域提供： eastus、westus2、default-machinelearning-southcentralus
     - 此限制不适用于关联的资源。 例如，你可以在任何 Azure 机器学习区域中为存储启用 VNet。
 - 所有资源都必须位于同一个 VNet 中。 但允许使用同一 VNet 中的子网。
-- 某些工作室功能，如设计器、AutoML、标签和数据分析，不能用于配置为使用专用终结点的存储帐户。 如果需要使用这些工作室功能，请改用服务终结点。
 
 ## <a name="secure-the-training-environment"></a>保护定型环境
 
@@ -150,7 +149,7 @@ ms.locfileid: "90893189"
 * 提交 AutoML 试验。
 * 启动标记项目。
 
-若要在使用存储服务终结点时启用全部功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 目前，studio 不支持存储专用终结点。
+若要在使用存储服务终结点时启用全部功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支持用于存储帐户的服务终结点和专用终结点。
 
 ### <a name="limitations"></a>限制
 - Studio 无法访问配置为使用专用终结点的存储帐户中的数据。 若要获取完整的功能，必须将服务终结点用于存储并使用托管标识。

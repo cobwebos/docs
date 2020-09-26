@@ -3,17 +3,17 @@ title: 在 multiregional 环境中诊断并解决 Azure Cosmos Sdk 的可用性�
 description: 了解有关在多区域环境中操作时的 Azure Cosmos SDK 可用性行为的全部信息。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/16/2020
+ms.date: 09/24/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0c717aca88095df05fc7927f3c3d6e2d481925d2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330428"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>在 multiregional 环境中诊断并解决 Azure Cosmos Sdk 的可用性问题
 
@@ -24,15 +24,35 @@ ms.locfileid: "90708618"
 * .NET V2 SDK 中的 [ConnectionPolicy PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) 属性。
 * .NET V3 SDK 中的 [CosmosClientOptions ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) 或 [CosmosClientOptions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) 属性。
 * Java V4 SDK 中的 [CosmosClientBuilder. preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) 方法。
-* Python SDK 中的[CosmosClient 参数 preferred_locations。](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient)
+* Node SDK 中的[CosmosClient 参数 preferred_locations。](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient)
+* [CosmosClientOptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations)参数。
 
-对于单个写入区域帐户，所有写入操作始终会发送到写入区域，因此首选区域列表仅适用于读取操作。 对于多个写入区域帐户，此首选项列表会影响读取和写入操作。
+设置区域首选项时，客户端将连接到下表中所述的区域：
 
-如果未设置首选区域，则区域首选项顺序由 [Azure Cosmos DB 地区列表顺序](distribute-data-globally.md)定义。
+|帐户类型 |读取 |写入 |
+|------------------------|--|--|
+| 单个写入区域 | 首选区域 | 主要区域  |
+| 多个写入区域 | 首选区域 | 首选区域  |
 
-发生以下任何情况时，使用 Azure Cosmos SDK 的客户端将公开日志，并在 **操作诊断信息**中包含重试信息。
+如果未设置首选区域：
 
-## <a name="removing-a-region-from-the-account"></a><a id="remove region"></a>从帐户中删除区域
+|帐户类型 |读取 |写入 |
+|------------------------|--|--|
+| 单个写入区域 | 主要区域 | 主要区域 |
+| 多个写入区域 | 主要区域  | 主要区域  |
+
+> [!NOTE]
+> 主要区域指的是[Azure Cosmos 帐户区域列表](distribute-data-globally.md)中的第一个区域
+
+发生以下任何情况时，使用 Azure Cosmos SDK 的客户端将公开日志，并在 **操作诊断信息**中包含重试信息：
+
+* .NET V2 SDK 中响应的 *RequestDiagnosticsString* 属性。
+* .NET V3 SDK 中响应和异常的 *诊断* 属性。
+* GetDiagnostics 对 Java V4 SDK 中的响应和异常 * ( # B1 * 方法。
+
+有关这些事件中的 SLA 保证的综合性详细信息，请参阅 [适用于可用性的 sla](high-availability.md#slas-for-availability)。
+
+## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>从帐户中删除区域
 
 当你从 Azure Cosmos 帐户中删除某个区域时，主动使用该帐户的任何 SDK 客户端都将通过后端响应代码检测区域删除。 然后，客户端将区域终结点标记为不可用。 客户端会重试当前操作，所有将来的操作将按优先顺序永久路由到下一个区域。
 
@@ -40,7 +60,7 @@ ms.locfileid: "90708618"
 
 Azure Cosmos SDK 客户端每5分钟读取一次帐户配置，并刷新其识别的区域。
 
-如果删除某个区域，然后将其重新添加回帐户，则如果添加的区域具有更高的优先级，SDK 将切换回以永久使用此区域。 检测到添加的区域后，所有将来的请求都将定向到该区域。
+如果删除某个区域，然后将其重新添加回帐户，则在 SDK 配置中，如果添加的区域的区域首选项顺序高于当前连接的区域，SDK 将切换回使用此区域。 检测到添加的区域后，所有将来的请求都将定向到该区域。
 
 如果将客户端配置为最好连接到 Azure Cosmos 帐户没有的区域，则将忽略首选区域。 如果以后添加该区域，客户端将检测到该区域，并将其永久切换到该区域。
 
@@ -50,7 +70,7 @@ Azure Cosmos SDK 客户端每5分钟读取一次帐户配置，并刷新其识�
 
 ## <a name="regional-outage"></a>区域性服务中断
 
-如果该帐户是单一写入区域，并且在执行写入操作期间发生区域中断，则此行为类似于 [手动故障转移](#manual-failover-single-region)。 对于读取请求或多个写入区域帐户，行为类似于 [删除区域](#remove region)。
+如果该帐户是单一写入区域，并且在执行写入操作期间发生区域中断，则此行为类似于 [手动故障转移](#manual-failover-single-region)。 对于读取请求或多个写入区域帐户，行为类似于 [删除区域](#remove-region)。
 
 ## <a name="session-consistency-guarantees"></a>会话一致性保证
 
@@ -64,6 +84,7 @@ Azure Cosmos SDK 客户端每5分钟读取一次帐户配置，并刷新其识�
 
 ## <a name="next-steps"></a>后续步骤
 
+* 查看 [可用性 sla](high-availability.md#slas-for-availability)。
 * 使用最新的 [.NET SDK](sql-api-sdk-dotnet-standard.md)
 * 使用最新的 [JAVA SDK](sql-api-sdk-java-v4.md)
 * 使用最新的 [PYTHON SDK](sql-api-sdk-python.md)

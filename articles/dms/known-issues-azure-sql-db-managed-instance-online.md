@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 871ea665d23a5fba644448ddb6c596179d47bb3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6393624cb4520ccd28dff41dd97746873bc13f59
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106378"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330292"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>联机迁移到 Azure SQL 托管实例时存在的已知问题/迁移限制
 
@@ -62,6 +62,6 @@ ms.locfileid: "85106378"
 
 - **部署**
 
-    SQL 托管实例是一种具有自动修补和版本更新功能的 PaaS 服务。 在 SQL 托管实例的迁移过程中，非关键更新将保留最多36小时。 之后（对于关键更新），如果迁移中断，进程将重置为完全还原状态。
+    SQL 托管实例是一种具有自动修补和版本更新功能的 PaaS 服务。 迁移 SQL 托管实例期间，非关键更新最多保留 36 小时。 之后（对于关键更新），如果迁移中断，此过程将重置为完全还原状态。
 
-    仅在完整备份还原完成且与所有日志备份一致后才能调用迁移切换。 如果生产迁移交接受到影响，请联系[AZURE DMS 反馈别名](mailto:dmsfeedback@microsoft.com)。
+    仅在完整备份还原完成且与所有日志备份一致后才能调用迁移切换。 如果生产迁移交接受到影响，请联系 [AZURE DMS 反馈别名](mailto:dmsfeedback@microsoft.com)。
