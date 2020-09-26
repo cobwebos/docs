@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313305"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，它将消除运行 Microsoft 的一种同步工具时 UserPrincipalName  和 SMTP ProxyAddress  冲突引起的摩擦。
@@ -124,7 +124,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 管理中心
 可以在 Microsoft 365 管理中心查看目录同步错误。 Microsoft 365 管理中心的报告只显示存在这些错误的 **User** 对象。 它不显示有关 **Groups** 和 **Contacts** 之间的冲突的信息。
 
-![活动用户](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "活动用户")
+![显示 Microsoft 365 管理中心中的目录同步错误的屏幕截图。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "活动用户")
 
 有关如何在 Microsoft 365 管理中心查看目录同步错误的说明，请参阅 [确定 Microsoft 365 中的目录同步错误](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
 
@@ -132,7 +132,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 使用此新行为处理具有重复属性冲突的对象时，通知将包含在标准标识同步错误报告电子邮件中，而该电子邮件将发送给租户的技术通知联系人。 但是，此行为有一项重大变化。 在过去，有关重复属性冲突的信息包含在每个后续错误报告中，直到解决冲突为止。 使用此新行为，给定冲突的错误通知只出现一次 - 在冲突属性被隔离时。
 
 ProxyAddress 冲突的电子邮件通知示例如下所示：  
-    ![活动用户](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "活动用户")  
+    ![显示 ProxyAddress 冲突的电子邮件通知示例的屏幕截图。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "活动用户")  
 
 ## <a name="resolving-conflicts"></a>解决冲突
 针对这些错误的故障排除策略和解决技巧不应与过去处理重复属性错误的方式不同。 唯一的差别在于，计时器任务将扫描服务端的租户，以便在冲突解决后，自动将有问题的属性添加到适当的对象。

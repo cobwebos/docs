@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330904"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>如何使用用于 VM 的 Azure Monitor 绘制性能图表
 
@@ -21,7 +21,7 @@ ms.locfileid: "83684392"
 下面是用于 VM 的 Azure Monitor 的性能收集方面的限制。
 
 - 可用内存不适用于运行 Red Hat Linux (RHEL) 6 的虚拟机。 此指标是从[内核版本 3.14](http://www.man7.org/linux/man-pages/man1/free.1.html) 中引入的 MemAvailable 计算得出的。
-- 指标仅适用于使用 EXT 文件系统系列（EXT2、EXT3、EXT4）的 Linux 虚拟机上的数据磁盘。
+- 度量值仅适用于使用 XFS filesystem 或 EXT filesystem 系列 (EXT2、EXT3、EXT4) 的 Linux 虚拟机上的数据磁盘。
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Monitor 中的多 VM 透视图
 

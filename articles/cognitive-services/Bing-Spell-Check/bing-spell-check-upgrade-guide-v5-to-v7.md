@@ -1,7 +1,7 @@
 ---
 title: 将必应拼写检查 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
-description: 发现需要更新为使用版本 7 的应用部分。
+description: 标识你需要更新以使用版本7的必应拼写检查应用程序部分。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 545772a28a67310b12eb55cd1fb14e8d12a95a58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 642aa23bc74f1f3f44deb6e489e6f7aafe7ff237
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68500818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254119"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>拼写检查 API 升级指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "68500818"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如，`https://api.cognitive.microsoft.com/bing/v7.0/spellcheck` 。
+- 终结点的版本号已从 v5 更改为 v7。 例如 `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -55,7 +55,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-禁用|InsufficientAuthorization.AuthorizationDisabled
+已禁用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing

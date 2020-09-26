@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 00771f950271cfbc86994c01b6d866c5983f1b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278662"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常见问题 (常见问题解答) Microsoft Authenticator 应用
 
@@ -29,6 +29,7 @@ Microsoft Authenticator 应用取代了 Azure Authenticator 应用，在使用 A
 
 | 问题 | Answer |
 | -------- | ------ |
+| 为什么在 watchOS 7 上出现 Apple Watch 问题？ | 在 watchOS 7 上批准通知时出现问题，我们正在与 Apple 合作以解决此问题。 同时，需要在你的手机上批准需要 Microsoft Authenticator watchOS 应用的任何通知。  |
 | 注册设备是否表示同意授权公司或服务访问我的设备？ | 注册设备可使你的设备访问组织的服务，但不允许组织访问你的设备。 |
 | 什么是应用锁定，如何使用它来帮助使我更安全？ | 应用锁定有助于使你的一次性密码、应用信息和应用设置更安全。 启用应用锁定后，每次打开身份验证器时，系统都会要求使用设备 PIN 或生物识别进行身份验证。 应用锁定还有助于确保你是唯一可以通过在批准登录通知时提示你提供 PIN 或生物识别来批准通知的人。 可以在 "验证器设置" 页上打开或关闭应用锁定。 默认情况下，当你在设备上设置 PIN 或生物识别时，应用锁定处于开启状态。<br><br>遗憾的是，不能保证应用锁定会阻止他人访问身份验证器。 这是因为设备注册可能发生在验证器之外的其他位置中，如 Android 帐户设置或公司门户应用。 |
 | 我有一个 Windows Mobile 设备，而 Windows Mobile 上的 Microsoft Authenticator 已不推荐使用。 能否继续使用该应用进行身份验证？ | 在2020年7月15日之后，使用 Windows Mobile 上的 Microsoft Authenticator 的所有身份验证都将停用。 强烈建议使用备用身份验证方法，避免被锁定。<br>适用于企业用户的其他选项包括：<br><ul><li>设置适用于 [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 或 [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>[设置 SMS](multi-factor-authentication-setup-phone-number.md) 以接收验证码。</li><li>设置电话号码以接收电话号码来 [验证其身份](multi-factor-authentication-setup-office-phone.md)。</li></ul><br>适用于个人 Microsoft 帐户用户的其他选项包括：<br><ul><li>设置适用于 [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 或 [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>通过从 " [Microsoft 帐户安全性" 页](https://account.microsoft.com/security/)更新安全信息，设置 (短信或电子邮件) 的备用登录方法。</li></ul> |

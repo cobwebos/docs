@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/03/2019
+ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266694"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -316,6 +316,7 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
 - Azure AD 预配服务不支持预配 NULL 值。
 - 它们的主键通常为“ID”，不应作为目标属性包含在属性映射中。 
 - 角色属性通常需要使用表达式进行映射，而不是直接映射。 有关角色映射的更多详细信息，请参阅上面的部分。 
+- 尽管可以从映射禁用组，但不支持禁用用户。 
 
 ## <a name="next-steps"></a>后续步骤
 

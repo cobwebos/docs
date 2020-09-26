@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278611"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>监视 key vault 服务的 Azure Monitor Key Vault
 Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和延迟的统一视图，全面监视密钥保管库。
@@ -25,21 +25,6 @@ Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和�
 -    **可自定义**：可在其中更改要查看、修改的指标，或设置与限制相符的阈值，并保存你自己的工作簿。 可以将工作簿中的图表固定到 Azure 面板。
 
 用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 所有用户都可以访问基于指标的监视数据，但包含基于日志的可视化效果可能要求用户[对其 Azure 密钥保管库启用日志记录](../../key-vault/general/logging.md)。
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>配置密钥保管库以进行监视
-
-> [!NOTE]
-> 启用日志是一项付费服务，可提供其他监视功能。
-
-1. “操作与延迟”选项卡可帮助确定启用多少个以及启用哪些密钥保管库。 要开始收集，请选择“启用”按钮，随后跳转到一个单独的工作簿，其中列出了需要启用诊断日志的密钥保管库。
-
-    ![“操作和延迟”选项卡的屏幕截图，其中显示了蓝色启用按钮](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. 要启用诊断日志，请单击“操作”列下的“启用”链接，然后创建一个可将日志发送到 Log Analytics 工作区的新诊断设置。 建议将所有日志发送到同一工作区。
-
-3. 保存诊断设置后，你将能够查看蜜月保管库见解下的所有基于日志的图表和可视化效果。 请注意，可能需要几分钟到几小时才能开始填充日志。
-
-4. 有关如何为密钥保管库服务启用诊断日志的其他帮助，请参阅[完整指南](../../key-vault/general/logging.md)。
 
 ## <a name="view-from-azure-monitor"></a>从 Azure Monitor 查看
 
@@ -165,10 +150,6 @@ Key Vault 的 Azure Monitor 通过提供 Key Vault 请求、性能、故障和�
 我们只显示从所选订阅筛选器中选择的包含密钥保管库的订阅，你可在 Azure 门户标头的“目录 + 订阅”中选择这些订阅。
 
 ![订阅筛选器的屏幕截图](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>我收到一条错误消息，指出“查询超出了允许的最大工作区数/区域数”，现在该怎么办
-
-目前，只能查询 25 个区域和 200 个工作区，要查看你的数据，需要减少订阅和/或资源组的数目。
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>我想要在 Key Vault Insights 中进行更改或添加更多可视化效果，如何执行此操作
 

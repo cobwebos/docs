@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: aff9966d0a2b960737c2732428ef96aece4f0253
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8de7ad2808e5319819410b3125472e28496647b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267136"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>创建 NVA 的虚拟 WAN 中心路由表：Azure 门户
 
@@ -56,7 +56,7 @@ ms.locfileid: "86122267"
 
 ## <a name="3-create-a-hub"></a><a name="hub"></a>3.创建中心
 
-创建中心。 请使用以下示例值：
+创建中心。 使用以下示例值：
 
 * **位置：** 美国西部
 * **名称：** westushub
@@ -96,9 +96,9 @@ ms.locfileid: "86122267"
 
 针对要连接的每个虚拟网络重复以下过程。
 
-1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。****
-2. 在虚拟网络连接页上，单击“+添加连接”。****
-3. 在“添加连接”页上填写以下字段****：
+1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。
+2. 在虚拟网络连接页上，单击“+添加连接”。
+3. 在“添加连接”页上填写以下字段：
 
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。

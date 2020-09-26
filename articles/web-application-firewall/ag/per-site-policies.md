@@ -5,15 +5,15 @@ description: 了解如何使用 Azure PowerShell 在应用程序网关上配置�
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 01/24/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 340b184ac56d4734431b154ec647e5e7af19ea16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267187"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每个站点的 WAF 策略
 
@@ -25,14 +25,13 @@ Web 应用程序防火墙 (WAF) 设置包含在 WAF 策略中，若要更改 WAF
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 设置网络
-> * 创建 WAF 策略
-> * 创建启用 WAF 的应用程序网关
-> *  (预览中全局、按站点和按 URI 应用 WAF 策略) 
-> * 创建虚拟机规模集
-> * 创建存储帐户和配置诊断
-> * 测试应用程序网关
+* 设置网络
+* 创建 WAF 策略
+* 创建启用 WAF 的应用程序网关
+*  (预览中全局、按站点和按 URI 应用 WAF 策略) 
+* 创建虚拟机规模集
+* 创建存储帐户和配置诊断
+* 测试应用程序网关
 
 ![Web 应用程序防火墙示例](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
