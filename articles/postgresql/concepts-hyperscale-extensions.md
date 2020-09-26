@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259062"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314871"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的 PostgreSQL 扩展-超大规模 (Citus) 
 
@@ -48,7 +48,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > [!div class="mx-tableFixed"]
 > | **扩展名** | **说明** |
 > |---|---|
-> | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供用于整数的文本搜索字典模板。 |
+> | [dict \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供用于整数的文本搜索字典模板。 |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | 用于扩展同义词处理的文本搜索字典模板。 |
 > | [unaccent](https://www.postgresql.org/docs/current/static/unaccent.html) | 删除了词素中重音（附加符号）的文本搜索字典。 |
 
@@ -65,8 +65,8 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | 提供用于操作无 null 整数数组的函数和运算符。 |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 用于跟踪上次修改时间的函数。 |
 > | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供加密函数。 |
-> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 |
-> | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 |
+> | [pg \_ partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 |
+> | [pg \_ trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 用于实现引用完整性 (过时) 的函数。 |
 > | 会话 \_ 分析 | 用于查询 hstore 数组的函数。 |
 > | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 |
@@ -74,7 +74,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | 用于实现旅行的函数。 |
 > | [uuid ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | 生成全局唯一标识符 (UUID)。 |
 
-### <a name="hyperscale-extensions"></a>超大规模扩展
+### <a name="hyperscale-citus-extensions"></a>超大规模 (Citus) 扩展
 
 > [!div class="mx-tableFixed"]
 > | **扩展名** | **说明** |
@@ -88,8 +88,8 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > | **扩展名** | **说明** |
 > |---|---|
 > | [布隆](https://www.postgresql.org/docs/current/bloom.html) | 布隆访问方法基于签名文件的索引。 |
-> | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供了示例 GIN 运算符类，这些类可实现某些数据类型的类似于 B 树的行为。 |
-> | [btree\_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) | 提供实施 B-tree 的 GiST 索引运算符类。 |
+> | [btree \_ gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供了示例 GIN 运算符类，这些类可实现某些数据类型的类似于 B 树的行为。 |
+> | [btree \_ gist](https://www.postgresql.org/docs/current/static/btree-gist.html) | 提供实施 B-tree 的 GiST 索引运算符类。 |
 
 ### <a name="language-extensions"></a>语言扩展
 
@@ -107,15 +107,15 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用于验证关系完整性的函数。 |
 > | [文件 \_ fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 用于平面文件访问的外数据包装。 |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 在较低级别检查数据库页的内容。 |
-> | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | 提供一种方法用于实时检查共享缓冲区缓存的当前状况。 |
+> | [pg \_ buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | 提供一种方法用于实时检查共享缓冲区缓存的当前状况。 |
 > | [pg \_](https://github.com/citusdata/pg_cron) | PostgreSQL 的作业计划程序。 |
 > | [pg \_ freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | 检查可用空间映射 (FSM) 。 |
-> | [pg\_prewarm](https://www.postgresql.org/docs/current/static/pgprewarm.html) | 提供一种方法用于将相关数据加载到缓冲区缓存中。 |
-> | [pg\_stat\_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | 提供一种方法用于跟踪服务器执行的所有 SQL 语句的执行统计信息。 有关此扩展的信息，请参阅 "pg_stat_statements" 部分。 |
+> | [pg \_ prewarm](https://www.postgresql.org/docs/current/static/pgprewarm.html) | 提供一种方法用于将相关数据加载到缓冲区缓存中。 |
+> | [pg \_ stat \_ 语句](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | 提供一种方法用于跟踪服务器执行的所有 SQL 语句的执行统计信息。 有关此扩展的信息，请参阅 "pg_stat_statements" 部分。 |
 > | [pg \_ 可见性](https://www.postgresql.org/docs/current/pgvisibility.html) | 检查可见性地图 (VM) 和页面级别的可见性信息。 |
 > | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | 提供一种显示行级锁定信息的方法。 |
 > | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | 提供一种显示元组级别统计信息的方法。 |
-> | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | 外部数据包装器，用于访问外部 PostgreSQL 服务器中存储的数据。 有关此扩展的信息，请参阅 "dblink and postgres_fdw" 部分。|
+> | [postgres \_ fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | 外部数据包装器，用于访问外部 PostgreSQL 服务器中存储的数据。 有关此扩展的信息，请参阅 "dblink and postgres_fdw" 部分。|
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | TLS/SSL 证书的相关信息。 |
 > | [tsm \_ 系统 \_ 行](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE 方法，它接受行数作为限制。 |
 > | [tsm \_ 系统 \_ 时间](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE 方法，以毫秒为单位接受时间（以毫秒为单位）。 |
@@ -145,5 +145,5 @@ Pg_stat_statements 提供的查询执行信息和对服务器性能的影响，�
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
 
-可以使用 dblink 和 postgres \_ fdw 从一个 PostgreSQL 服务器连接到另一个服务器，或连接到同一服务器中的其他数据库。  接收服务器需要允许来自发送服务器的连接通过其防火墙。  若要使用这些扩展在 Azure Database for PostgreSQL 服务器或超大规模 (Citus) 服务器组之间进行连接，请将 "**允许 Azure 服务和资源" 访问此服务器组 (或服务器) **设置为 "开"。  如果要使用这些扩展来循环回到同一服务器，还需要启用此设置。
+可以使用 dblink 和 postgres \_ fdw 从一个 PostgreSQL 服务器连接到另一个服务器，或连接到同一服务器中的其他数据库。  接收服务器需要允许来自发送服务器的连接通过其防火墙。  若要使用这些扩展在 Azure Database for PostgreSQL 服务器或超大规模 (Citus) 服务器组之间进行连接，请将 " **允许 Azure 服务和资源" 访问此服务器组 (或服务器) ** 设置为 "开"。  如果要使用这些扩展来循环回到同一服务器，还需要启用此设置。
 可以在 "**网络**" 下超大规模 (Citus) 服务器组的 "Azure 门户" 页中找到 "**允许 Azure 服务和资源访问此服务器" 组**设置。  目前，不支持来自 Azure Database for PostgreSQL 单服务器和超大规模 (Citus) 的出站连接，但与其他 Azure Database for PostgreSQL 服务器和超大规模 (Citus) 服务器组的连接除外。

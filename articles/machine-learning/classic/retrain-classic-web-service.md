@@ -9,16 +9,16 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: dfc959984147d89ca5bfe68ed103a89b22f75501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341685"
+ms.locfileid: "91362310"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典工作室（经典）Web 服务
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+**适用于：** ![绿色复选标记。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) ![ X，指示没有。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文介绍如何重新训练经典工作室（经典）Web 服务。 有关如何重新训练新的工作室（经典）Web 服务的指南，请[查看此操作指南文章](retrain-machine-learning-model.md)。

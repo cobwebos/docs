@@ -2,13 +2,13 @@
 title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 09/23/2020
+ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317083"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -174,8 +174,8 @@ ms.locfileid: "88235972"
 > | galleries/images/versions | 图像 | 32-bit integer | 数字和句点。 |
 > | images | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | snapshots | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
-> | virtualMachines | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
-> | virtualMachineScaleSets | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
+> | virtualMachines | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
+> | virtualMachineScaleSets | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
 
 > [!NOTE]
 > Azure 虚拟机有两个不同的名称：资源名称和主机名。 在门户中创建虚拟机时，将对这两个名称使用同一个值。 上表中的限制适用于主机名。 实际资源名称最多可包含 64 个字符。
@@ -606,7 +606,7 @@ ms.locfileid: "88235972"
 > | namespaces / disasterRecoveryConfigs | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母数字结尾。 |
 > | namespaces / migrationConfigurations | 命名空间 |  | 应始终为 **$default**。 |
 > | namespaces / queues | 命名空间 | 1-260 | 字母数字、句点、连字符、下划线和斜杠。<br><br>以字母数字开头和结尾。 |
-> | namespaces / queues / authorizationRules | 队列 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
+> | namespaces / queues / authorizationRules | queue | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics | 命名空间 | 1-260 | 字母数字、句点、连字符、下划线和斜杠。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics / authorizationRules | 主题 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
 > | namespaces / topics / subscriptions | 主题 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
@@ -651,8 +651,8 @@ ms.locfileid: "88235972"
 > | storageAccounts / fileServices | 存储帐户 |  | 必须是 `default`。 |
 > | storageAccounts / fileServices / shares | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
 > | storageAccounts / managementPolicies | 存储帐户 |  | 必须是 `default`。 |
-> | blob | 容器 (container) | 1-1024 | 任何 URL 字符，区分大小写 |
-> | 队列 | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
+> | blob | container | 1-1024 | 任何 URL 字符，区分大小写 |
+> | queue | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
 > | 表 | 存储帐户 | 3-63 | 字母数字。<br><br>以字母开头。 |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync

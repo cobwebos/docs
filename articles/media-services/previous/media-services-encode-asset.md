@@ -1,6 +1,6 @@
 ---
 title: Azure 点播媒体编码器概述 | Microsoft Docs
-description: Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。 本文提供 Azure 点播媒体编码器的概述。
+description: Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。 本文简要介绍 Azure 点播媒体编码器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5d5a00488321c9c67dd1469b1d8476636675aa8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281008"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器概述
 
@@ -36,12 +36,11 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 每当流式处理终结点处于“正在运行”**** 状态时，就会对该终结点进行计费。
 
-媒体服务支持会在本文中介绍的以下按需编码器：
+媒体服务支持以下按需编码器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [媒体编码器高级工作流](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-本文简要概述了点播媒体编码器，并提供了指向介绍更多详细信息的文章的链接。 本主题还提供对编码器的比较。
+本文简要概述了按需媒体编码器，并提供了指向包含更多详细信息的文章的链接。
 
 默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。 可以预留编码单元，使用它们可以同时运行多个编码任务，购买的每个编码预留单位对应一个任务。 有关信息，请参阅[缩放编码单位](media-services-scale-media-processing-overview.md)。
 
@@ -70,17 +69,8 @@ Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=61
 ### <a name="create-overlays"></a>创建覆盖层
 有关信息，请参阅[如何使用 Media Encoder Standard 创建覆盖层](media-services-advanced-encoding-with-mes.md#overlay)。
 
-### <a name="see-also"></a>请参阅
+### <a name="see-also"></a>另请参阅
 [媒体服务博客](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
-
-## <a name="media-encoder-premium-workflow"></a>媒体编码器高级工作流
-### <a name="overview"></a>概述
-[在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
-
-### <a name="how-to-use"></a>如何使用
-媒体编码器高级工作流使用复杂的工作流进行配置。 可以使用[工作流设计器](media-services-workflow-designer.md)工具创建和更新工作流文件。
-
-[如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>已知问题
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。

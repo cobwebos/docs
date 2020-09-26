@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317117"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -131,22 +131,31 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 
 如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量的速率持续超出阈值，或者您很快就会到达此阈值，则可以通过打开支持请求来请求增加此阈值。 
 
-若要在你的工作区中收到 approching 或达到引入量速率限制的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，该查询的结果数大于零，评估期为5分钟，频率为5分钟。
+若要在工作区中收到接近或达到引入量限制的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，并在结果数大于零的情况下使用警报逻辑基数，计算时间为5分钟，频率为5分钟。
 
-引入量速率达到阈值的 80%：
+引入速率超出阈值
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-引入量速率达到阈值：
+引入量速率超过80% 的阈值
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
 ```
 
+引入量速率超过70% 的阈值
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
+```
 
 ## <a name="recommendations"></a>建议
 

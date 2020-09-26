@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361630"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”
 
@@ -210,7 +210,7 @@ ms.locfileid: "86134538"
 
 > 本部分仅适用于：
 >
-> ![Windows][Logo_Windows] Windows 和 ![Linux][Logo_Linux] Linux
+> ![Windows 徽标。][Logo_Windows] Windows 和 ![Linux 徽标。][Logo_Linux] Linux
 >
 
 如果决定不在 Linux（目前仅支持 SUSE Linux Enterprise Server [SLES] 12 和更高版本）上使用 Windows Server 故障转移群集 (WSFC) 或 Pacemaker 等功能，则可利用 Azure 虚拟机重启。 它可以保护 SAP 系统不受 Azure 物理服务器基础结构和整个基础 Azure 平台的计划和非计划停机的影响。

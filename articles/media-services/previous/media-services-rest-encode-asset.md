@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d2e7be89b3319445a69d5b91990e9888cccd484a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0bff0c6b3ef7934188b548bd06c35d83b323fde
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359590"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用 Media Encoder Standard 对资产进行编码
 
@@ -101,7 +101,7 @@ HTTP/1.1 201 Created
 { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
 ```
 
-## <a name="considerations"></a>注意事项
+### <a name="considerations"></a>注意事项
 * TaskBody 属性必须使用文本 XML 来定义任务使用的输入资产或输出资产的数量。 任务文章包含 XML 的 XML 架构定义。
 * 在 TaskBody 定义中，必须将 `<inputAsset>` 和 `<outputAsset>` 的每个内部值设置为 JobInputAsset(value) 或 JobOutputAsset(value)。
 * 一个任务可以有多个输出资产。 作为作业任务的输出，一个 JobOutputAsset(x) 只能使用一次。
@@ -295,5 +295,5 @@ HTTP/1.1 201 Created
 ## <a name="next-steps"></a>后续步骤
 了解如何创建对资产进行编码的作业后，请参阅[如何使用媒体服务检查作业进度](media-services-rest-check-job-progress.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [获取媒体处理器](media-services-rest-get-media-processor.md)

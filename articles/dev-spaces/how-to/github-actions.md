@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js
+ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316097"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service (预览版 & GitHub 操作) 
 
@@ -149,7 +149,7 @@ git push origin bike-images
 
 推送完成后，请导航到 GitHub 上的分叉存储库，以将分叉存储库中的 *主* 分支作为基准分支与 " *自行车-映像* " 分支进行比较。
 
-在拉取请求打开后，导航到 " *操作* " 选项卡。验证是否已开始新的操作并生成 *自行车* 服务。
+在拉取请求打开后，导航到 " *操作* " 选项卡。验证新操作是否已启动并正在生成 *自行车* 服务。
 
 ## <a name="view-the-child-space-with-your-changes"></a>查看具有更改的子区域
 
@@ -170,7 +170,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Dev Spaces 的工作方式。
+深入了解 Azure Dev Spaces 的工作方式。
 
 > [!div class="nextstepaction"]
 > [Azure Dev Spaces 工作原理](../how-dev-spaces-works.md)

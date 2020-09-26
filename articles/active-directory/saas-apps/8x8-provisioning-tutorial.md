@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41ffd7606cb4c01cd8c2da56898b67cf177c358e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 850db53cbf88968a413d72527d76463e17aa8f5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329170"
+ms.locfileid: "91361698"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教程：为 8x8 配置自动用户预配
 
@@ -104,7 +104,7 @@ ms.locfileid: "91329170"
 
 5. 在“管理员凭据”部分下，将 8x8 URL 从 Configuration Manager 复制到“租户 URL”  。 将 8x8 API 令牌从 Configuration Manager 复制到“机密令牌” 。 单击“测试连接”以确保 Azure AD 可以连接到 8x8。 如果连接失败，请确保 8x8 帐户具有管理员权限，然后重试。
 
-    ![设置](./media/8x8-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/8x8-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

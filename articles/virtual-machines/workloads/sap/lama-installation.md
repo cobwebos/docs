@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361358"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -69,13 +69,13 @@ ms.locfileid: "80293949"
 * 如果登录到托管主机，请确保未卸载文件系统  
   如果登录到 Linux 虚拟机，并将工作目录更改为装入点中的某个目录（例如/usr/sap/AH1/ASCS00/exe），则无法卸载该卷，并且重定位或 unprepare 失败。
 
-* 请确保在 SUSE SLES Linux 虚拟机上禁用 CLOUD_NETCONFIG_MANAGE。 有关更多详细信息，请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。
+* 请确保在 SUSE SLES Linux 虚拟机上禁用 CLOUD_NETCONFIG_MANAGE。 有关更多详细信息，请参阅 [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>为 SAP LaMa 设置 Azure 连接器
 
 从 SAP LaMa 3.0 SP05 开始随附了 Azure 连接器。 我们建议始终为 SAP LaMa 3.0 安装最新的支持包和修补程序。
 
-Azure 连接器使用 Azure 资源管理器 API 来管理 Azure 资源。 SAP LaMa 可以使用服务主体或托管标识对此 API 进行身份验证。 如果在 Azure VM 上运行 SAP LaMa，我们建议使用托管标识，如[使用托管标识访问 AZURE API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章中所述。 如果要使用服务主体，请遵循[使用服务主体访问 AZURE API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)一章中的步骤。
+Azure 连接器使用 Azure 资源管理器 API 来管理 Azure 资源。 SAP LaMa 可以使用服务主体或托管标识对此 API 进行身份验证。 如果在 Azure VM 上运行 SAP LaMa，我们建议使用托管标识，如 [使用托管标识访问 AZURE API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章中所述。 如果要使用服务主体，请遵循 [使用服务主体访问 AZURE API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)一章中的步骤。
 
 ### <a name="use-a-service-principal-to-get-access-to-the-azure-api"></a><a name="913c222a-3754-487f-9c89-983c82da641e"></a>使用服务主体获取对 Azure API 的访问权限
 
@@ -105,7 +105,7 @@ Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵�
 
 ### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>使用托管标识获取对 Azure API 的访问权限
 
-为了能够使用托管标识，SAP LaMa 实例必须在具有系统或用户分配的标识的 Azure VM 上运行。 有关托管标识的详细信息，请参阅[azure 资源的托管标识是什么？](../../../active-directory/managed-identities-azure-resources/overview.md)并[使用 Azure 门户为 VM 上的 azure 资源配置托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。
+为了能够使用托管标识，SAP LaMa 实例必须在具有系统或用户分配的标识的 Azure VM 上运行。 有关托管标识的详细信息，请参阅 [azure 资源的托管标识是什么？](../../../active-directory/managed-identities-azure-resources/overview.md) 并 [使用 Azure 门户为 VM 上的 azure 资源配置托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。
 
 默认情况下，托管标识没有访问 Azure 资源的权限。 需要授予其访问权限。
 
@@ -117,7 +117,7 @@ Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵�
 1. 选择“参与者”角色
 1. 选择 "虚拟机" 作为 "分配访问权限"
 1. 选择运行 SAP LaMa 实例的虚拟机
-1. 点击“保存”
+1. 点击“保存”(Save)
 1. 对于要在 SAP LaMa 中使用的所有资源组，请重复上述步骤。
 
 在 SAP LaMa Azure 连接器配置中，选择 "使用托管标识" 启用托管标识。 如果要使用系统分配的标识，请确保将 "用户名" 字段留空。 如果要使用用户分配的标识，请在 "用户名" 字段中输入用户分配的标识 Id。
@@ -131,7 +131,7 @@ Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵�
 * Password：服务主体密钥/密码。 如果使用系统或用户分配的标识，则可以将此字段留空。
 * URL：保留默认值 `https://management.azure.com/`
 * 监视间隔(秒)：应至少为 300
-* 使用托管标识： SAP LaMa 可以使用系统或用户分配的标识对 Azure API 进行身份验证。 请参阅本指南中的 "[使用托管标识访问 AZURE API"](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章。
+* 使用托管标识： SAP LaMa 可以使用系统或用户分配的标识对 Azure API 进行身份验证。 请参阅本指南中的 " [使用托管标识访问 AZURE API"](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) 一章。
 * 订阅 ID：Azure 订阅 ID
 * Azure Active Directory 租户 ID：Active Directory 租户的 ID
 * 代理主机：如果 SAP LaMa 需要使用代理连接到 Internet，则为代理的主机名
@@ -212,7 +212,7 @@ SAP LaMa 不能重定位 SQL Server 本身，因此，要用于重定位数据�
 
 模板具有以下参数：
 
-* sapSystemId：SAP 系统 ID。 它用于创建磁盘布局（例如/usr/sap/ \<sapsid> ）。
+* sapSystemId：SAP 系统 ID。 它用于创建磁盘布局 (例如/usr/sap/ \<sapsid>) 。
 
 * computerName：新虚拟机的计算机名。 SAP LaMa 也使用此参数。 使用此模板将新虚拟机预配为系统副本的一部分时，SAP LaMa 会一直等到可以访问具有此计算机名的主机为止。
 
@@ -260,14 +260,14 @@ SAP LaMa 不能重定位 SQL Server 本身，因此，要用于重定位数据�
 
 在启动 SAP Software Provisioning Manager (SWPM) 之前，需要装载 ASCS 虚拟主机名的 IP 地址。 建议的方法是使用 sapacext。 如果使用 sapacext 装载 IP 地址，请务必在重新启动后重新装载该 IP 地址。
 
-![Linux][Logo_Linux] Linux
+![Linux 徽标。][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows 徽标。][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -276,19 +276,19 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 运行 SWPM，并为“ASCS 实例主机名”使用 *ah1-ascs*。**
 
-![Linux][Logo_Linux] Linux  
+![Linux 徽标。][Logo_Linux] Linux  
 将以下配置文件参数添加到位于 /usr/sap/hostctrl/exe/host_profile 的 SAP 主机代理配置文件。 有关详细信息，请参阅 SAP 说明 [2628497]。
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetAppFiles （和） BETA 上安装 SAP NetWeaver ASCS for SAP HANA
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetAppFiles 上安装 SAP NetWeaver ASCS for SAP HANA (和) BETA
 
 > [!NOTE]
-> 此功能尚不公开。 有关详细信息，请参阅 SAP 说明[2815988] （仅对预览版客户可见）。
+> 此功能尚不公开。 有关详细信息，请参阅 SAP 说明 [2815988] (仅对预览客户) 可见。
 打开组件 BC 上的 SAP 事件-VCM-HYPERV，并请求加入 Azure NetApp 文件预览版的 LaMa 存储适配器
 
-和为 Azure 提供 NFS。 在 SAP LaMa 的上下文中，这简化了 ABAP Central Services （ASCS）实例和应用程序服务器的后续安装。 以前，ASCS 实例还必须充当 NFS 服务器，并且必须将参数 acosprep/nfs_paths 添加到 SAP Hostagent 的 host_profile 中。
+和为 Azure 提供 NFS。 在 SAP LaMa 的上下文中，这简化了 ABAP Central Services (ASCS) 实例和应用程序服务器的后续安装。 以前，ASCS 实例还必须充当 NFS 服务器，并且必须将参数 acosprep/nfs_paths 添加到 SAP Hostagent 的 host_profile 中。
 
 #### <a name="anf-is-currently-available-in-these-regions"></a>和目前在以下区域中提供：
 
@@ -319,7 +319,7 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 
 ![已创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
 
-现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/ \<SID\> *、 */usr/sap/ \<SID\> *和 */home/ \<sid\> adm*。 （可选） */usr/sap/trans*是中心传输目录所必需的，其中至少有一个横向的系统使用。
+现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/ \<SID\> *、 */usr/sap/ \<SID\> *和 */home/ \<sid\> adm*。 （可选） */usr/sap/trans* 是中心传输目录所必需的，其中至少有一个横向的系统使用。
 
 > [!NOTE]
 > 在测试阶段，卷的名称在订阅中必须是唯一的。
@@ -366,7 +366,7 @@ mkdir -p /usr/sap/trans
 
 对于 ASCS 和 AS 实例，装载点应如下所示：
 
-![LaMa 中的 SAP LaMa 装入点 ](media/lama/sap-lama-ascs.png) （这是一个示例。 IP 地址和导出路径与之前使用的路径不同）
+![SAP LaMa 装入点在 LaMa 中 ](media/lama/sap-lama-ascs.png) (这是一个示例。 IP 地址和导出路径与之前使用的路径不同) 
 
 
 #### <a name="install-sap-hana"></a>安装 SAP HANA
@@ -387,14 +387,14 @@ mkdir -p /usr/sap/trans
 
 在启动 SAP Software Provisioning Manager (SWPM) 之前，需要装载应用程序服务器虚拟主机名的 IP 地址。 建议的方法是使用 sapacext。 如果使用 sapacext 装载 IP 地址，请务必在重新启动后重新装载该 IP 地址。
 
-![Linux][Logo_Linux] Linux
+![Linux 徽标。][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows 徽标。][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -462,7 +462,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。****
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="errors-and-warnings-during-discover"></a>发现期间的错误和警告
 
@@ -545,12 +545,12 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     在 SAP 系统的默认配置文件中设置配置文件参数 OS_UNICODE=uc 即可解决此问题。
 
 * 执行 SAPinst 步骤时出错: dCheckGivenServer
-  * 执行 SAPinst 步骤时出错： dCheckGivenServer "version =" 1.0 "错误：（该步骤报告的上一个错误： \<p> 用户已取消安装。 \</p>
+  * 执行 SAPinst 步骤时出错： dCheckGivenServer "version =" 1.0 "错误： (步骤报告的上一个错误： \<p> 用户已取消安装。 \</p>
   * 解决方案  
     确保以有权访问该配置文件的用户身份运行 SWPM。 可在应用程序服务器安装向导中配置此用户
 
 * 执行 SAPinst 步骤时出错: checkClient
-  * 执行 SAPinst 步骤时出错： checkClient "version =" 1.0 "错误：（该步骤报告的上一个错误： \<p> 用户已取消安装。 \</p>)
+  * 执行 SAPinst 步骤时出错： checkClient "version =" 1.0 "错误： (步骤报告的上一个错误： \<p> 用户已取消安装。 \</p>)
   * 解决方案  
     确保要安装应用程序服务器的虚拟机上已安装了 Microsoft ODBC Driver for SQL Server
 

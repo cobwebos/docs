@@ -5,14 +5,14 @@ author: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/25/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a43d7e3e406e4a248e0ac2c27fb74a2f1b036cf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d81cc6c94c04c683362fd12cd6777c304a4b0a84
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934841"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361970"
 ---
 # <a name="confidential-computing-at-the-edge"></a>边缘的机密计算
 
@@ -42,8 +42,8 @@ Open Enclave 支持多个硬件平台。 IoT Edge 对 enclaves 的支持目前�
 
 打开的 Enclave 存储库还包含帮助开发人员入门的示例。 有关详细信息，请选择其中一个介绍性文章：
 
-* [在 Linux 上构建开放式 Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
-* [在 Windows 上生成开放式 Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)
+* [在 Linux 上构建开放式 Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesLinux.md)
+* [在 Windows 上生成开放式 Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesWindows.md)
 
 ## <a name="hardware"></a>硬件
 

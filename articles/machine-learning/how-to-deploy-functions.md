@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: vaidyas
-author: vaidyas
+author: vaidya-s
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: b386c058a2795402cc60fddf6c187b57aec2185e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 133c885f29ceff0b8c4764507a80df5ee24cf4a1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328388"
+ms.locfileid: "91361721"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
 
@@ -120,7 +120,7 @@ print(blob.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>将映像部署为 Web 应用
 
-1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<myacr>` 替换为之前从 `package.location` 返回的值： 
+1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<myacr>` 替换为之前从 `blob.location` 返回的值： 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>

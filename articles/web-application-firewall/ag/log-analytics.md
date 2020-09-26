@@ -7,20 +7,20 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
-ms.openlocfilehash: 22273cf23e48de62d99a8c149ae3e2b1c05db3af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 733a9af589718e9abe8736491023003744428cd6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005423"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361066"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>使用 Log Analytics 来检查应用程序网关 Web 应用程序防火墙（WAF）日志
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>使用 Log Analytics 来检查应用程序网关 Web 应用程序防火墙 (WAF) 日志
 
 应用程序网关 WAF 正常运行之后，你可以启用日志来检查每一个请求所发生的情况。 通过防火墙日志可深入了解 WAF 所评估、匹配和阻止的内容。 利用 Azure Monitor Log Analytics，你可以检查防火墙日志中的数据，以更好地了解更多见解。 若要详细了解如何创建 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](../../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="import-waf-logs"></a>导入 WAF 日志
 
-若要将防火墙日志导入 Log Analytics，请参阅[应用程序网关的后端运行状况、资源日志和指标](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。 当 Log Analytics 工作区中有防火墙日志时，你可以查看数据、编写查询、创建可视化效果，并将这些内容添加到门户仪表板。
+若要将防火墙日志导入 Log Analytics，请参阅 [应用程序网关的后端运行状况、资源日志和指标](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。 当 Log Analytics 工作区中有防火墙日志时，你可以查看数据、编写查询、创建可视化效果，并将这些内容添加到门户仪表板。
 
 ## <a name="explore-data-with-examples"></a>通过运行示例浏览数据
 
@@ -79,7 +79,7 @@ AzureDiagnostics
 
 创建查询后，可将其添加到仪表板。  选择日志分析工作区右上方的“固定到仪表板”。 上述四个查询固定到示例仪表板后，这些数据就可以一目了然：
 
-![仪表板](../media/log-analytics/dashboard.png)
+![屏幕截图显示了可在其中添加查询的 Azure 仪表板。](../media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>后续步骤
 

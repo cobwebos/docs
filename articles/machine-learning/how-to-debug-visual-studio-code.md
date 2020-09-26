@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315348"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
@@ -281,7 +281,7 @@ ip_address: 10.3.0.5
 某些情况下，可能需要以交互方式调试包含在模型部署中的 Python 代码。 例如，如果输入脚本失败，并且无法通过其他记录确定原因。 通过使用 VS Code 和 debugpy，可以附加到在 Docker 容器中运行的代码。
 
 > [!IMPORTANT]
-> 使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，你必须使用 [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) 方法创建一个映像。
+> 使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，你必须使用 [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) 方法创建一个映像。
 
 若要在本地部署 Web 服务，需要在本地系统上安装能够正常工作的 Docker。 有关使用 Docker 的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。 请注意，在使用计算实例时，已安装 Docker。
 
@@ -416,7 +416,7 @@ ip_address: 10.3.0.5
 
 此时，VS Code 会连接到 Docker 容器内的 debugpy，并在之前设置的断点处停止。 现在可以在代码运行时逐句调试代码、查看变量等。
 
-有关使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)。
+有关使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true)。
 
 ### <a name="stop-the-container"></a>停止容器
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7efe58081604708ff090d28f7274c738406c5007
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 665e4870619751bbda062473d0c2549b26352d94
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255877"
+ms.locfileid: "91361596"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Oracle 云基础结构控制台
 
@@ -108,7 +108,7 @@ ms.locfileid: "91255877"
 
 5. 在 " **管理员凭据** " 部分中，输入格式为的 **租户 URL** `https://<IdP ID>.identity.oraclecloud.com/admin/v1` 。 例如，`https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Oracle 云基础结构控制台。 如果连接失败，请确保你的 Oracle 云基础结构控制台帐户具有管理员权限，然后重试。
 
-    ![预配](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 "管理员凭据" 对话框，你可以在其中输入租户 U R L 和机密令牌。](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
