@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
-ms.openlocfilehash: ec7fc5cec7d8ba63d9a628c3ede978818a2c3012
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 14229af9766f6604e71713f835935d43f6c7fcc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031018"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330139"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -33,7 +33,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |主要优点|描述|
 |----|----|
 |工作效率|可以在 Azure 机器学习工作室中使用集成的笔记本及以下工具来构建和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio（预览版）<br/>计算实例与 Azure 机器学习工作区和工作室完全集成。 你可以与工作区中的其他数据科学家共享笔记本和数据。 你还可以使用[SSH](how-to-set-up-vs-code-remote.md)设置 VS Code 远程开发 |
-|无需自行管理且安全|减少安全保护工作，增强企业的安全要求合规性。 计算实例提供可靠的管理策略和安全网络配置，例如：<br/><br/>-从资源管理器模板或 Azure 机器学习 SDK 自动预配<br/>- [Azure RBAC) 的 azure 基于角色的访问控制 (](/azure/role-based-access-control/overview)<br/>- [虚拟网络支持](how-to-enable-virtual-network.md#compute-instance)<br/>- 用于启用/禁用 SSH 访问的 SSH 策略<br/>已启用 TLS 1.2 |
+|无需自行管理且安全|减少安全保护工作，增强企业的安全要求合规性。 计算实例提供可靠的管理策略和安全网络配置，例如：<br/><br/>-从资源管理器模板或 Azure 机器学习 SDK 自动预配<br/>- [Azure 基于角色的访问控制 (Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [虚拟网络支持](how-to-enable-virtual-network.md#compute-instance)<br/>- 用于启用/禁用 SSH 访问的 SSH 策略<br/>已启用 TLS 1.2 |
 |已针对 ML 进行了预配置|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
 |完全可自定义|支持多种 Azure VM 类型，包括 GPU 和持久性低级自定义，例如，安装相应的包和驱动程序可以轻而易举地实现高级方案。 |
 
@@ -69,7 +69,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |Anaconda Python||
 |Jupyter 和扩展||
 |Jupyterlab 和扩展||
-[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>（来自 PyPI）|包括大多数 azureml 额外包。  若要查看完整列表，请[打开计算实例上的终端窗口](how-to-run-jupyter-notebooks.md#terminal)并运行 <br/> `conda list -n azureml_py36 azureml*` |
+[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>（来自 PyPI）|包括大多数 azureml 额外包。  若要查看完整列表，请[打开计算实例上的终端窗口](how-to-run-jupyter-notebooks.md#terminal)并运行 <br/> `conda list -n azureml_py36 azureml*` |
 |其他 PyPI 包|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda 包|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |深度学习包|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -91,6 +91,30 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * Jupyter 实验室：选择“启动器”选项卡中“其他”标题下的“终端”磁贴。
 * Jupyter：在“文件”选项卡的右上方选择“新建>“终端”。
 * 通过 SSH 连接到计算机。  然后，将 Python 包安装到 **Python 3.6 - AzureML** 环境中。  将 R 包安装到 **R** 环境中。
+
+### <a name="add-new-kernels"></a>添加新内核
+
+若要将新的 Jupyter 内核添加到计算实例：
+
+1. 从 Jupyter、JupyterLab 或从笔记本窗格或 SSH 创建新终端到计算实例
+2. 使用终端窗口创建新环境。  例如，以下代码会创建 `newenv`：
+    ```shell
+    conda create --name newenv
+    ```
+3. 激活该环境。  例如，创建 `newenv` 的结果如下：
+
+    ```shell
+    conda activate newenv
+    ```
+4. 在新环境中安装 pip 和 ipykernel 包，并为该 conda 环境创建内核
+
+    ```shell
+    conda install pip
+    conda install ipykernel
+    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
+    ```
+
+可以安装任何[可用的 Jupyter 内核](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)。
 
 ## <a name="accessing-files"></a>访问文件
 
@@ -138,7 +162,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>创建计算实例
 
-在 Azure 机器学习 studio 的工作区中，当你准备好运行某个笔记本时，请从 "**计算**" 部分或在 "**笔记本**" 部分[创建新的计算实例](how-to-create-attach-compute-studio.md#compute-instance)。 
+在 Azure 机器学习工作室的工作区中，当你准备好运行某个笔记本时，请从“计算”部分或“笔记本”部分[创建新的计算实例](how-to-create-attach-compute-studio.md#compute-instance) 。 
 
 也可以通过以下方式创建实例
 * 直接从[集成式笔记本体验](tutorial-1st-experiment-sdk-setup.md#azure)
@@ -153,7 +177,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 ### <a name="create-on-behalf-of-preview"></a>代表 (预览创建) 
 
 作为管理员，您可以代表数据科学家创建计算实例，并将实例分配给它们：
-* [Azure 资源管理器模板](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/2020-06-01/workspaces/computes)。  有关如何查找此模板中所需的 TenantID 和 ObjectID 的详细信息，请参阅 [查找身份验证配置的标识对象 id](../healthcare-apis/find-identity-object-ids.md)。  你还可以在 Azure Active Directory 门户中找到这些值。
+* [Azure 资源管理器模板](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json)。  有关如何查找此模板中所需的 TenantID 和 ObjectID 的详细信息，请参阅 [查找身份验证配置的标识对象 id](../healthcare-apis/find-identity-object-ids.md)。  你还可以在 Azure Active Directory 门户中找到这些值。
 * REST API
 
 你为其创建计算实例的数据科研人员需要以下 RBAC 权限： 
@@ -166,7 +190,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * Jupyter
 * JupyterLab
 * RStudio
-* 集成笔记本
+* 集成式笔记本
 
 ## <a name="compute-target"></a>计算目标
 
@@ -176,7 +200,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * 具有作业队列。
 * 在虚拟网络环境中安全地运行作业，无需企业打开 SSH 端口。 作业在容器化环境中执行，并将模型依赖项打包到 Docker 容器中。
 * 可以并行运行多个小型作业（预览版）。  每个核心可以并行运行两个作业，而剩余的作业将排队。
-* 支持单节点多 GPU 分布式培训作业
+* 支持单节点多 GPU 分布式训练作业
 
 可以使用计算实例作为测试/调试方案的本地推理部署目标。
 

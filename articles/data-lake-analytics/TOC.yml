@@ -68,7 +68,7 @@
             - name: 基础
               href: data-lake-analytics-u-sql-get-started.md
             - name: 语言参考
-              href: 'https://msdn.microsoft.com/library/azure/mt591959'
+              href: 'https://docs.microsoft.com/u-sql/'
             - name: 目录
               href: data-lake-analytics-u-sql-catalog.md
             - name: 用户定义的运算符

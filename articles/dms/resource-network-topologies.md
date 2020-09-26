@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5839de1fde8e4a4d5e661d232ae91099a9483bcb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291565"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 托管实例的网络拓扑
 
@@ -39,14 +39,14 @@ ms.locfileid: "87448525"
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
 
 - SQL 托管实例与本地连接隔离，但 Azure 数据库迁移服务实例已连接到本地网络。
-- 如果 Azure 基于角色的访问控制（Azure RBAC）策略已准备就绪，并且你需要限制用户访问承载 SQL 托管实例的同一订阅。
+- 如果 Azure 基于角色的访问控制 (Azure RBAC) 策略已经到位，并且你需要限制用户访问托管 SQL 托管实例的同一订阅。
 - 用于 SQL 托管实例和用于 Azure 数据库迁移服务的虚拟网络位于不同的订阅中。
 
 ![托管实例的网络拓扑与本地网络分离](media/resource-network-topologies/mi-isolated-workload.png)
 
 **要求**
 
-- 对于此方案，Azure 数据库迁移服务使用的虚拟网络还必须使用（或 VPN）连接到本地网络 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 。 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)
+- 对于此方案，Azure 数据库迁移服务使用的虚拟网络还必须使用 (或 VPN 连接到本地网络 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 。 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)
 - 在用于 SQL 托管实例的虚拟网络和 Azure 数据库迁移服务之间设置 [VNet 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>云到云的迁移：共享的虚拟网络
@@ -64,7 +64,7 @@ ms.locfileid: "87448525"
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
 
 - SQL 托管实例在隔离虚拟网络中进行预配。
-- 如果 Azure 基于角色的访问控制（Azure RBAC）策略已准备就绪，并且你需要将用户限制为访问承载 SQL 托管实例的同一订阅。
+- 如果 Azure 基于角色的访问控制 (Azure RBAC) 策略已经到位，并且你需要限制用户访问托管 SQL 托管实例的同一订阅。
 - 用于 SQL 托管实例和用于 Azure 数据库迁移服务的虚拟网络位于不同的订阅中。
 
 ![独立 VNet 的云到云迁移的网络拓扑](media/resource-network-topologies/cloud-to-cloud-isolated.png)

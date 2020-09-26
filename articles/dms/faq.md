@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 3383a16624ecf045753609865931f9d0c44b6b3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad49db3eb61b77805b0c7a3e1e9583fb22bd4373
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291964"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -58,11 +58,11 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。
 * 确保虚拟网络的网络安全组规则未阻止以下通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
-有关使用 Azure 数据库迁移服务来竞争特定迁移方案所需的所有先决条件的列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务[文档](https://docs.microsoft.com/azure/dms/dms-overview)中的相关教程。
+有关使用 Azure 数据库迁移服务来竞争特定迁移方案所需的所有先决条件的列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务 [文档](https://docs.microsoft.com/azure/dms/dms-overview) 中的相关教程。
 
 **问：如何查找 Azure 数据库迁移服务的 IP 地址，以便可以创建防火墙规则的允许列表用于访问要迁移的源数据库？**
 可能需要添加防火墙规则，以允许 Azure 数据库迁移服务访问要迁移的源数据库。 该服务的 IP 地址是动态的，但如果你使用 ExpressRoute，则企业网络会专门分配此地址。 标识相应 IP 地址的最简单方法是查看预配的 Azure 数据库迁移服务资源所在的同一个资源组，找到关联的网络接口。 通常，网络接口资源的名称以 NIC 前缀开头，后接唯一的字符和序号，例如 NIC-jj6tnztnmarpsskr82rbndyp。 选择此网络接口资源后，可以看到需要包含在 Azure 门户资源概述页上的允许列表中的 IP 地址。
@@ -85,8 +85,8 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
     GO
 ```
 
-**问：如何实现设置 Microsoft Azure 虚拟网络？**
-尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中。
+**：.如何实现设置 Microsoft Azure 虚拟网络？**
+尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中。
 
 ## <a name="usage"></a>使用情况
 

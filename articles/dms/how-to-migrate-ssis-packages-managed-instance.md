@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7f7bc16658733a7200d29fae22d96a2157b73065
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086562"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292126"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>将 SQL Server Integration Services 包迁移到 Azure SQL 托管实例
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Server 托管的源 SSISDB 迁移到 Azure SQL 托管实例托管的目标 SSISDB，可以使用 Azure 数据库迁移服务。
@@ -37,7 +37,7 @@ ms.locfileid: "86086562"
 
 若要完成这些步骤，需满足以下条件：
 
-* 若要使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，可以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 SQL 托管实例的网络拓扑]( https://aka.ms/dmsnetworkformi)一文。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 若要使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，可以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 SQL 托管实例的网络拓扑]( https://aka.ms/dmsnetworkformi)一文。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 * 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 配置[针对源数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
@@ -85,7 +85,7 @@ ms.locfileid: "86086562"
 
     有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
 
-    有关更多详细信息，请参阅文章[使用 Azure 数据库迁移服务的 AZURE SQL 托管实例迁移的网络拓扑](https://aka.ms/dmsnetworkformi)。
+    有关更多详细信息，请参阅文章 [使用 Azure 数据库迁移服务的 AZURE SQL 托管实例迁移的网络拓扑](https://aka.ms/dmsnetworkformi)。
 
 6. 选择定价层。
 

@@ -1,5 +1,5 @@
 ---
-title: 自定义角色：联机 SQL Server 到 SQL 托管实例迁移
+title: 自定义角色：在线将 SQL Server 迁移到 SQL 托管实例
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用自定义角色从 SQL Server 在线迁移到 Azure SQL 托管实例。
 services: database-migration
@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e950e34a1965e309d226c42bf4b3128cbe3bf3c5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291497"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>用于从 SQL Server 在线迁移到 Azure SQL 托管实例的自定义角色
 
@@ -83,7 +83,7 @@ Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 I
 
 以上 JSON 必须存储在三个文本文件中，可以在 AzureRM、AZ PowerShell cmdlet 或 Azure CLI 中使用 **New-AzureRmRoleDefinition (AzureRM)** 或 **New-AzRoleDefinition (AZ)** 创建角色。
 
-有关详细信息，请参阅[Azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)一文。
+有关详细信息，请参阅 [Azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)一文。
 
 创建这些自定义角色后，必须将角色分配添加到相应资源或资源组中的用户和应用 ID：
 
@@ -150,4 +150,4 @@ Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 I
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看 Microsoft[数据库迁移指南](https://datamigration.microsoft.com/)中有关方案的迁移指南。
+* 查看 Microsoft [数据库迁移指南](https://datamigration.microsoft.com/)中有关方案的迁移指南。
