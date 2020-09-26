@@ -4,17 +4,17 @@ description: Azure 安全基准 V2 数据保护
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059140"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314311"
 ---
-# <a name="security-control-data-protection"></a>安全控制：数据保护
+# <a name="security-control-v2-data-protection"></a>安全控制 V2：数据保护
 
 数据保护涉及到对静态数据保护、传输中的数据保护，以及通过授权访问机制的控制。 这包括使用 Azure 中的访问控制、加密和日志记录发现、分类、保护和监视敏感数据资产。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90059140"
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| DP-1 | 14.5、14。7 | SI-4，SC-28 |
+| DP-1 | 13.1、14.5、14。7 | SC-28 |
 
 发现、分类和标记您的敏感数据，以便您可以设计适当的控件，以确保组织的技术系统安全存储、处理和传输敏感信息。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "90059140"
 
 **责任**：共享
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -54,7 +54,7 @@ ms.locfileid: "90059140"
 
 为了确保一致的访问控制，所有类型的访问控制都应该与企业分段策略一致。 企业分段策略还应由敏感或业务关键数据和系统的位置来了解。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感数据，并防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实现了一些默认的数据保护控制和功能。
+对于 Microsoft 管理的基础平台，Microsoft 会将所有客户内容视为敏感数据，全方位防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实现了一些默认的数据保护控制和功能。
 
 - [Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)
 
@@ -62,7 +62,7 @@ ms.locfileid: "90059140"
 
 **责任**：共享
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,9 +90,9 @@ Azure 信息保护 (AIP) 为已分类并标记的信息提供监视功能。
 
 **责任**：共享
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全操作中心 (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [应用程序安全性和 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -118,7 +118,7 @@ Azure 信息保护 (AIP) 为已分类并标记的信息提供监视功能。
 
 **责任**：共享
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Azure 信息保护 (AIP) 为已分类并标记的信息提供监视功能。
 
 **责任**：共享
 
-**客户安全利益干系人**：
+**客户安全利益干系人** ([详细](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全体系结构](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

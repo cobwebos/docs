@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 31c426ffa85d4eb78a8420d56cce93132b4b7539
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f06374e67d1aad689662c77084fa593bb09c8ef
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341459"
+ms.locfileid: "91362463"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>为部署的 Azure 机器学习工作室（经典）Web 服务创建终结点
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+**适用于：** ![适用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) 不适 ![ 用于。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 
 > [!NOTE]

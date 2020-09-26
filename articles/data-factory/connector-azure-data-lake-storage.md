@@ -68,7 +68,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 - [Azure 资源的托管标识身份验证](#managed-identity)
 
 >[!NOTE]
->使用 PolyBase 将数据加载到 Azure Synapse Analytics (以前的 SQL 数据仓库) ，如果源 Data Lake Storage Gen2 配置了虚拟网络终结点，则必须按 PolyBase 要求使用托管标识身份验证。 请参阅[托管标识身份验证](#managed-identity)部分，其中提供了更多配置先决条件。
+>使用 PolyBase 将数据载入 Azure Synapse Analytics（以前称为 SQL 数据仓库）时，如果源 Data Lake Storage Gen2 配置了虚拟网络终结点，则必须使用 PolyBase 所需的托管标识身份验证。 请参阅[托管标识身份验证](#managed-identity)部分，其中提供了更多配置先决条件。
 
 ### <a name="account-key-authentication"></a>帐户密钥身份验证
 
@@ -131,16 +131,16 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 | type | type 属性必须设置为 AzureBlobFS。 |是 |
 | url | Data Lake Storage Gen2 的终结点，其模式为 `https://<accountname>.dfs.core.windows.net`。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
-| servicePrincipalCredentialType | 用于服务主体身份验证的凭据类型。 允许的值为 **ServicePrincipalKey** 和 **ServicePrincipalCert**。 | 是 |
-| servicePrincipalCredential | 服务主体凭据。 <br/> 使用 **ServicePrincipalKey** 作为凭据类型时，请指定应用程序的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br/> 将 **ServicePrincipalCert** 用作凭据时，请在 Azure Key Vault 中引用证书。 | 是 |
-| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br/> 对于，此属性仍受支持 `servicePrincipalId`  +  `servicePrincipalKey` 。 由于 ADF 添加新的服务主体证书身份验证，服务主体身份验证的新模型为 `servicePrincipalId`  +  `servicePrincipalCredentialType`  +  `servicePrincipalCredential` 。 | 否 |
+| servicePrincipalCredentialType | 要用于服务主体身份验证的凭据类型。 允许的值为“ServicePrincipalKey”和“ServicePrincipalCert” 。 | 是 |
+| servicePrincipalCredential | 服务主体凭据。 <br/> 使用“ServicePrincipalKey”作为凭据类型时，请指定应用程序的密钥。 将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br/> 使用“ServicePrincipalCert”作为凭据时，请引用 Azure Key Vault 中的证书。 | 是 |
+| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br/> `servicePrincipalId` + `servicePrincipalKey` 仍按原样支持此属性。 当 ADF 添加新的服务主体证书身份验证时，服务主体身份验证的新模型为 `servicePrincipalId` + `servicePrincipalCredentialType` + `servicePrincipalCredential`。 | 否 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
-| azureCloudType | 对于 "服务主体身份验证"，请指定你的 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为“AzurePublic”、“AzureChina”、“AzureUsGovernment”和“AzureGermany”。 默认情况下，使用数据工厂的云环境。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：使用服务主体密钥身份验证**
 
-你还可以将服务主体密钥存储在 Azure Key Vault 中。
+也可以将服务主体密钥存储在 Azure Key Vault 中。
 
 ```json
 {
@@ -210,7 +210,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 >如果使用数据工厂 UI 进行创作，并且托管标识未在 IAM 中设置为“存储 Blob 数据读取者/参与者”角色，则在执行测试连接或在文件夹中浏览/导航时，请选择“测试到文件路径的连接”或“从指定路径浏览”，然后指定具有“读取 + 执行”权限的路径以继续。
 
 >[!IMPORTANT]
->如果使用 PolyBase 将数据从 Data Lake Storage Gen2 加载到 Azure Synapse 分析 (以前的 SQL 数据仓库) ，则在对 Data Lake Storage Gen2 使用托管标识身份验证时，请确保你还遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 中的步骤1和步骤2，将) Azure Active Directory (Azure AD) 和) 注册到你的服务器;其余的是由数据工厂处理的。 如果源 Data Lake Storage Gen2 中已配置 Azure 虚拟网络终结点，若要使用 PolyBase 从中加载数据，必须使用 PolyBase 所需的托管标识身份验证。
+>如果在使用 Data Lake Storage Gen2 托管标识身份验证时使用 PolyBase 将 Data Lake Storage Gen2 中的数据载入 Azure Synapse Analytics（以前称为“SQL 数据仓库”），请确保同时按[此指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步骤 1 和 2 操作，以便：1) 向 Azure Active Directory (Azure AD) 注册；2) 将存储 Blob 数据参与者角色分配到服务器。剩余的任务将由数据工厂处理。 如果源 Data Lake Storage Gen2 中已配置 Azure 虚拟网络终结点，若要使用 PolyBase 从中加载数据，必须使用 PolyBase 所需的托管标识身份验证。
 
 链接服务支持以下属性：
 
@@ -309,9 +309,9 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 | deleteFilesAfterCompletion | 指示是否会在二进制文件成功移到目标存储后将其从源存储中删除。 文件删除按文件进行。因此，当复制活动失败时，你会看到一些文件已经复制到目标并从源中删除，而另一些文件仍保留在源存储中。 <br/>此属性仅在二进制文件复制方案中有效。 默认值：false。 |否 |
 | modifiedDatetimeStart    | 基于属性“上次修改时间”的文件筛选器。 <br>如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件属性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。<br/>如果配置 `fileListPath`，则此属性不适用。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认）和 true 。 | 否                                            |
-| partitionRootPath | 启用分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，默认情况下，<br/>- 在数据集或源的文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则除了文件内的列外，复制活动还将生成另外两个列 `month` 和 `day`，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
-| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅当要限制连接到数据存储的并发连接时，才指定此属性。 | 否                                            |
+| enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认值）和 true 。 | 否                                            |
+| partitionRootPath | 启用了分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，则默认情况下，<br/>- 在源的数据集或文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则复制活动除了生成文件内的列外，还会分别生成另外两个列，即“`month`”和“`day`”，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否                                            |
 
 **示例：**
 

@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362574"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Verizon Premium Azure CDN 规则引擎引用
 
@@ -41,7 +41,7 @@ ms.locfileid: "83872497"
 - 定义 CDN 如何处理上述请求的一组功能。
 下图中标识了这些元素。
 
-![策略部署工作流](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![带标签的屏幕截图显示规则的条件表达式、匹配项和功能。](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
 ### <a name="policy"></a>策略
 包含一组只读规则的策略提供了以下方法：

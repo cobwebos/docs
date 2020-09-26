@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 960440b1c9a35aa9be33cd36945f9df3d800cc41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897242"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315182"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 
@@ -41,7 +41,7 @@ Azure 机器学习的自动化 ML 功能可帮助你发现高性能模型，而�
 
 
 > [!TIP]
-> 公共预览版类和中提供了在管道步骤之间传递临时数据的改进体验  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 。  这些类是 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) 性预览功能，随时可能会更改。
+> 公共预览版类和中提供了在管道步骤之间传递临时数据的改进体验  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 。  这些类是 [试验](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) 性预览功能，随时可能会更改。
 
 通过 `AutoMLConfig` 对象配置 `AutoMLStep`。 `AutoMLConfig` 是一个灵活的类，如[使用 Python 配置自动化 ML 试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)中所述。 
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 以上代码片段会从数据准备步骤的 `PipelineOutputFileDataset` 输出创建一个高性能的 `PipelineOutputTabularDataset`。
 
 > [!TIP]
-> 公共预览类 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 包含 [read_delimited_files ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) 方法，该方法可将转换为 `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) AutoML 运行中的消耗量。
+> 公共预览类 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 包含 [read_delimited_files ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) 方法，该方法可将转换为 `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) AutoML 运行中的消耗量。
 
 另一个选项是使用在工作区中注册的 `Dataset` 对象：
 

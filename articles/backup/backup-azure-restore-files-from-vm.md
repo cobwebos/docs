@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292959"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -303,16 +303,16 @@ mount [RAID Disk Path] [/mountpath]
 
 - `download.microsoft.com`
 - 恢复服务 Url (地理名称引用恢复服务保管库所在的区域) 
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` Azure 公共区域的 () 
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn`（适用于 Azure 中国世纪互联）
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us`（适用于 Azure 美国政府）
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de`（适用于 Azure 德国）
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` Azure 公共区域的 () 
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn`（适用于 Azure 中国世纪互联）
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us`（适用于 Azure 美国政府）
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de`（适用于 Azure 德国）
 - 出站端口 53 (DNS)、443、3260
 
 > [!NOTE]
 >
-> - 下载的脚本文件名将具有要在 URL 中填充的地区名称。 例如：下载的脚本名称以 \' VMname \' \_ \' geoname \' _ GUID 开头 \' \' ，如*ContosoVM_wcus_12345678*
-> - URL 则为“<https://pod01-rec2.wcus.backup.windowsazure.com>”
+> 在 [上面](#mount-the-volume-and-copy-files) 的步骤5中下载的脚本文件将在该文件的名称中包含 **地理名称** 。 使用该 **地理名称** 填充 URL。 下载的脚本名称将以： \' VMname \' \_ \' geoname \' _ GUID \' 开头 \' 。<br><br>
+> 例如，如果脚本文件名为 " *ContosoVM_wcus_12345678*"，则 wcus**为，** URL 将*wcus*为：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
@@ -348,7 +348,7 @@ mount [RAID Disk Path] [/mountpath]
 - 用户每次下载脚本时，Azure 备份将开始准备用于下载的恢复点。 对于大磁盘，此过程需要相当长的时间。 如果连续出现大量请求，目标准备将造成下载激增。 因此，建议从门户/PowerShell/CLI 下载脚本，等待 20 - 30 分钟（探索性步骤），然后运行该脚本。 此时，目标应准备就绪，可以从脚本进行连接。
 - 在文件恢复后，请确保返回到门户，然后选择无法在其中装入卷的恢复点的 " **卸载磁盘** "。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果从虚拟机恢复文件时遇到问题，请查看下表了解更多信息。
 

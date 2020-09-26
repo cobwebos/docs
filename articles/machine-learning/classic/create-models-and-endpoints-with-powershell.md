@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 744b8e3ecf067e6f5986dde4fbf8abbe3a4c6224
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab14547ef5d9791728ce96fdf2c414945a46aab9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341441"
+ms.locfileid: "91362480"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>使用机器学习工作室（经典）和 PowerShell 从一个试验创建多个 Web 服务终结点
 
-**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
+**适用于：** ![适用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)机器学习 Studio (经典) 不适 ![ 用于。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 这是一个常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文演示如何仅使用单个试验在 Azure 机器学习工作室（经典）中大规模地执行此操作。
 

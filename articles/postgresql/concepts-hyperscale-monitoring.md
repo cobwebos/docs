@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dcce4485e00415f9caa706966cac1c936c1f15f6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690402"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314804"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>监视和优化 Azure Database for PostgreSQL-超大规模 (Citus) 
 
@@ -32,7 +32,7 @@ ms.locfileid: "88690402"
 |---|---|---|---|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
-|iops|IOPS|计数|查看 [IOPS 定义](../virtual-machines/premium-storage-performance.md#iops) 和 [超大规模吞吐量](concepts-hyperscale-configuration-options.md)|
+|iops|IOPS|Count|请参阅 [IOPS 定义](../virtual-machines/premium-storage-performance.md#iops) 和 [超大规模 (Citus) 吞吐量](concepts-hyperscale-configuration-options.md)|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
