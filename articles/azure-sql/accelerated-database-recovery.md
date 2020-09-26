@@ -1,7 +1,7 @@
 ---
 title: 加速数据库恢复
 titleSuffix: Azure SQL
-description: 加速数据库恢复为 Azure SQL 组合中的数据库提供快速且一致的数据库恢复、即时事务回滚和严格的日志截断。
+description: 加速数据库恢复可为 Azure SQL 组合中的数据库提供快速且一致的数据库恢复、即时事务回滚和主动性的日志截断。
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=4
@@ -9,19 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327606"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL 中的加速数据库恢复 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**加速数据库恢复（ADR）** 是一项 SQL Server 的数据库引擎功能，它通过重新设计 SQL Server 数据库引擎恢复过程，大大提高数据库的可用性，特别是在存在长时间运行的事务时。 ADR 目前适用于 Azure SQL 数据库、Azure SQL 托管实例、azure VM SQL Server 和 Azure Synapse Analytics 中的数据库（当前为预览版）。 ADR 的主要优势在于：
+加速的数据库恢复 (ADR) 是一项 SQL Server 数据库引擎功能，通过重新设计 SQL Server 数据库引擎恢复过程，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 
+
+ADR 目前适用于 Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics 中的数据库 (预览版) ，以及从 SQL Server 2019 开始的 Azure Vm 的 SQL Server。 
+
+> [!NOTE] 
+> 默认情况下，ADR 已在 Azure SQL 数据库和 Azure SQL 托管实例中启用，并且不支持其中任何一个产品的 ADR。 
+
+## <a name="overview"></a>概述
+
+ADR 的主要优势在于：
 
 - **快速且一致的数据库恢复**
 
@@ -33,17 +42,17 @@ ms.locfileid: "84344690"
 
 - **主动日志截断**
 
-  使用 ADR，即使存在活动的长期运行事务，也会主动截断事务日志，这可以防止其增长失控。
+  即使存在长时间运行的活动事务，ADR 也会主动截断事务日志，这可以防止其增长失控。
 
 ## <a name="standard-database-recovery-process"></a>标准数据库恢复过程
 
-数据库恢复遵循[ARIES](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf)恢复模式，其中包含三个阶段，如下图所示，并在关系图后面进行了详细说明。
+数据库恢复遵循 [ARIES](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) 恢复模式，由三个阶段组成，如下图所示，并在该示意图下附有详细的说明。
 
 ![当前恢复过程](./media/accelerated-database-recovery/current-recovery-process.png)
 
 - **分析阶段**
 
-  从上一个成功的检查点的开始（或最早的脏页 LSN）开始向前扫描事务日志，以确定数据库停止时每个事务的状态。
+  从最后一个成功检查点（或最早的脏页 LSN）的开头向前扫描事务日志直至结束，以确定数据库停止时每个事务的状态。
 
 - **重做阶段**
 
@@ -53,15 +62,15 @@ ms.locfileid: "84344690"
 
   对于在故障时处于活动状态的每个事务，向后遍历日志，撤消该事务执行的操作。
 
-根据此设计，在发生崩溃时，SQL Server 数据库引擎从意外的重新启动恢复的时间与系统中最长活动事务的大小成正比。 恢复需要回滚所有未完成的事务。 所需的时间长度与事务已执行的工作及其处于活动状态的时间成正比。 因此，在存在长时间运行的事务（如大型大容量插入操作或针对大型表的索引生成操作）时，恢复过程可能需要很长时间。
+基于此设计，SQL Server 数据库引擎从意外重启中恢复所需的时间（大致）与故障时系统中时间最长的活动事务的大小成正比。 恢复需要回滚所有未完成的事务。 所需的时间长度与事务已执行的工作及其处于活动状态的时间成正比。 因此，存在长期运行的事务（例如对大型表的大批量插入操作或索引生成操作）时，恢复过程可能需要很长时间。
 
 此外，基于此设计，取消/回滚大型事务也可能需要很长时间，因为它使用与上述流程相同的撤消恢复阶段。
 
-此外，当存在长时间运行的事务时，SQL Server 数据库引擎无法截断事务日志，因为恢复和回滚过程需要其相应的日志记录。 作为 SQL Server 数据库引擎的这一设计的结果，某些客户曾面临着这一问题：事务日志的大小会增长得非常大，并消耗大量的驱动器空间。
+此外，存在长期运行的事务时，SQL Server 数据库引擎无法截断事务日志，因为恢复和回退过程需要相应的日志记录。 由于 SQL Server 数据库引擎的这种设计，一些客户过去常常面临事务日志变得非常大并占用大量驱动器空间的问题。
 
 ## <a name="the-accelerated-database-recovery-process"></a>加速的数据库恢复过程
 
-ADR 通过完全重新设计 SQL Server 数据库引擎恢复过程来解决上述问题：
+ADR 通过完全重新设计 SQL Server 数据库引擎恢复过程来解决上述问题，具体内容如下：
 
 - 通过避免以最早的活动事务为起始点/结束点扫描日志，使其保持恒定时间/即时状态。 使用 ADR，事务日志仅从最后一个成功检查点（或最早的脏页日志序列号 (LSN)）开始处理。 因此，恢复时间不受长时间运行的事务影响。
 - 由于不再需要为整个事务处理日志，因此可最大程度地减少所需的事务日志空间。 当检查点和备份出现时，可以主动截断事务日志。
@@ -95,9 +104,9 @@ ADR 恢复过程与当前恢复过程具有相同的三个阶段。 下图说明
 
 ADR 的四个关键组件是：
 
-- **持久化版本存储区（PVS）**
+- **持久版本存储 (PVS)**
 
-  持久性版本存储区是一种新的 SQL Server 数据库引擎机制，用于持久保存在数据库本身而不是传统版本存储区中生成的行版本 `tempdb` 。 PVS 支持资源隔离，并提高可读辅助数据库的可用性。
+  持久版本存储是一种新的 SQL Server 数据库引擎机制，用于持久保存在数据库本身生成生成（而不是在传统的 `tempdb` 版本存储中生成）的行版本。 PVS 支持资源隔离，并提高可读辅助数据库的可用性。
 
 - **逻辑还原**
 
@@ -127,4 +136,4 @@ ADR 的四个关键组件是：
 
 - 具有长期运行的事务的工作负载。
 - 出现活动事务导致事务日志显著增长情况的工作负载。  
-- 由于长时间运行恢复（如意外的服务重启或手动事务回滚）而导致数据库不可用的长时间工作负荷。
+- 由于长时间运行的恢复（如意外的服务重启或手动事务回滚）而经历了数据库长时间不可用的工作负载。

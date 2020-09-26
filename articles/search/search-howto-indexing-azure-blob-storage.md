@@ -1,7 +1,7 @@
 ---
 title: 对 Azure Blob 存储内容进行搜索
 titleSuffix: Azure Cognitive Search
-description: 了解如何为 Azure Blob 存储中的文档编制索引，以及如何利用 Azure 认知搜索从文档中提取文本。
+description: 了解如何使用 Azure 认知搜索在 Azure Blob 存储中对文档编制索引以及从文档中提取文本。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328286"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
 
@@ -73,6 +73,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 可通过以下一种方式提供 blob 容器的凭据：
 
+- **托管标识连接字符串**： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 此连接字符串不需要帐户密钥，但必须按照说明 [使用托管标识设置到 Azure 存储帐户的连接](search-howto-managed-identities-storage.md)。
 - **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
 - **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
 -  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS 应具有容器的列表和读取权限。
@@ -210,9 +211,9 @@ Blob 索引器可从以下文档格式提取文本：
 >
 >
 
-#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果需要对某个字段进行编码以便将其用作键，但又想搜索它，该怎么办？
+#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果需要对字段进行编码以将其用作键，但也希望搜索它，该怎么办？
 
-有时，你需要使用诸如 metadata_storage_path 之类的字段的已编码版本作为键，但你也需要将该字段 (搜索，而不) 编码。 为了解决此问题，可以将其映射到两个字段中：一个将用于密钥，另一个将用于搜索目的。 在下面的示例中，" *键* " 字段包含编码的路径，而 *路径* 字段未编码，并将用作索引中的可搜索字段。
+有时，需要使用一个字段的编码版本（如 metadata_storage_path）作为键，但也需要该字段是可搜索的（无需编码）。 若要解决此问题，可以将其映射到两个字段中：一个用于键，另一个用于搜索目的。 在下面的示例中，“键”字段包含编码的路径，而“路径”字段未编码且将用作索引中的可搜索字段 。
 
 ```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30

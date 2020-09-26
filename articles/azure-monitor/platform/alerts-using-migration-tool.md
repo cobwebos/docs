@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358655"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>使用自愿性迁移工具迁移经典警报规则
 
-如前所述[，Azure Monitor](monitoring-classic-retirement.md)中的经典警报已停用，但对于尚不支持新警报的资源仍处于有限使用。 在 Azure 门户向使用经典警报规则的客户和想要触发迁移的客户提供迁移工具。 本文介绍如何使用该迁移工具，该工具也可用于剩余的警报，并等待进一步公告。
+如前所述 [，Azure Monitor](monitoring-classic-retirement.md)中的经典警报已停用，但对于尚不支持新警报的资源仍处于有限使用。 在 Azure 门户向使用经典警报规则的客户和想要触发迁移的客户提供迁移工具。 本文介绍如何使用该迁移工具，该工具也可用于剩余的警报，并等待进一步公告。
 
 ## <a name="benefits-of-new-alerts"></a>新警报的优势
 
@@ -49,7 +49,7 @@ ms.locfileid: "87852117"
 
 1. 选择“迁移到新规则”转到迁移登陆页。**** 此页显示所有订阅的列表及其迁移状态：
 
-    ![迁移-登陆](media/alerts-migration/migration-landing.png "迁移规则")
+    ![屏幕截图显示 "迁移警报规则" 页。](media/alerts-migration/migration-landing.png "迁移规则")
 
     可以使用该工具迁移的所有订阅已标记为“准备好迁移”。****
 
@@ -60,7 +60,7 @@ ms.locfileid: "87852117"
 
     生成的页将显示每次要为一个订阅迁移的经典警报规则的详细信息。 还可以选择“下载此订阅的迁移详细信息”，以获取 CSV 格式的详细信息。****
 
-    ![迁移-预览](media/alerts-migration/migration-preview.png "预览迁移")
+    ![屏幕截图显示 "迁移警报规则" 页，其中包含用于下载此订阅的迁移详细信息的链接，你可以指定用于迁移通知的电子邮件。](media/alerts-migration/migration-preview.png "预览迁移")
 
 1. 指定用于接收迁移状态通知的一个或多个电子邮件地址。 迁移完成或者需要你采取任何措施时，你会收到电子邮件。
 
@@ -69,7 +69,7 @@ ms.locfileid: "87852117"
     > [!IMPORTANT]
     > 启动订阅迁移后，无法编辑或创建该订阅的经典警报规则。 这种限制可以确保在迁移到新规则期间，不会丢失对经典警报规则所做的任何更改。 尽管无法更改经典警报规则，但在完成迁移之前，这些规则仍会继续运行并提供警报。 完成订阅的迁移后，不再可以使用经典警报规则。
 
-    ![迁移-确认](media/alerts-migration/migration-confirm.png "确认开始迁移")
+    ![屏幕截图显示了有关迁移的确认提示，其中包含重要信息，其中包含链接以了解详细信息，然后再继续。](media/alerts-migration/migration-confirm.png "确认开始迁移")
 
 1. 迁移完成或者需要你采取措施时，前面提供的地址会收到电子邮件。 也可以在门户中的迁移登陆页上定期检查状态。
 

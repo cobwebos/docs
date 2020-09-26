@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326564"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自定义连接器与逻辑应用集成
 
@@ -28,7 +28,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 如果还没有 Azure 订阅，可以在开始前**创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** 。
 利用此帐户登录到 [Azure 门户](https://portal.azure.com) 。 
 
-本部分的其余部分将指导你完成以下步骤：
+还需要在安装先决条件过程中完成以下各项。 本部分的其余部分将指导你完成以下步骤：
 - 设置 Azure 数字孪生实例
 - 获取应用注册客户端密钥
 - 添加数字输出
@@ -37,9 +37,9 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 若要将 Azure 数字孪生实例连接到本文中的逻辑应用，需要已设置 **Azure 数字孪生实例** 。 
 
-如果你现在需要设置一个新的实例，最简单的方法是运行自动部署脚本示例。 按照 [*如何：设置实例和身份验证 (脚本) *](how-to-set-up-instance-scripted.md) 中的说明设置新的实例和所需的 Azure AD 应用程序注册。 说明中还包含用于验证是否已成功完成每个步骤并准备好继续使用新实例的步骤。
+首先，设置 Azure 数字孪生实例，并设置所需的身份验证，以便能够使用它。 为此，请按照 [*如何：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的说明进行操作。 根据您的首选经验，将为 [Azure 门户](how-to-set-up-instance-portal.md)、 [CLI](how-to-set-up-instance-cli.md)或 [自动 Cloud Shell 部署脚本示例](how-to-set-up-instance-scripted.md)提供设置文章。 所有版本的说明还包含用于验证是否已成功完成每个步骤并准备好继续使用新实例的步骤。
 
-在本教程中，设置实例时将需要以下值。 如果需要再次收集这些值，请使用下面的链接转至设置文章中的相应部分，以在 [Azure 门户](https://portal.azure.com)中找到这些值。
+在本教程中，你将在设置实例时需要多个值。 如果需要再次收集这些值，请使用下面的链接转至设置文章中的相应部分，以在 [Azure 门户](https://portal.azure.com)中找到这些值。
 * Azure 数字孪生实例主机名（[在门户中查找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）
 * Azure AD 应用注册应用程序（客户端）ID（[在门户中查找](how-to-set-up-instance-portal.md#collect-important-values)）
 * Azure AD 应用注册目录（租户）ID（[在门户中查找](how-to-set-up-instance-portal.md#collect-important-values)）
@@ -160,13 +160,13 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 接下来，你将创建一个逻辑应用，该应用将使用新连接器自动执行 Azure 数字孪生更新。
 
-导航到 Azure 门户中的 " [逻辑应用 (消耗") ](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) 页 (可以使用此链接，或在门户搜索栏) 中查找它。 点击 " *添加* " 按钮创建逻辑应用。
+在 [Azure 门户](https://portal.azure.com)的门户搜索栏中搜索 " *逻辑应用* "。 选择它应转到 " *逻辑应用* " 页。 点击 " *创建逻辑应用* " 按钮以创建新的逻辑应用。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 门户中的 "逻辑应用 (消耗) " 页。点击 "添加" 按钮":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 门户中的 "逻辑应用" 页。点击 "添加" 按钮":::
 
-在随后的 " *逻辑应用 (消耗) * " 页上，输入你的订阅和资源组。 同时，选择逻辑应用的名称并选择位置。
+在随后的 " *逻辑应用* " 页中，输入订阅和资源组。 同时，为逻辑应用选择一个名称，并选择部署位置。
 
-依次选择 "查看" 和 " _创建_ " 按钮。
+按 " _评审 + 创建_ " 按钮。
 
 这会将你转到 "查看" 和 " *创建* " 选项卡，你可以在该选项卡上查看详细信息， *然后点击底部创建资源* 。
 

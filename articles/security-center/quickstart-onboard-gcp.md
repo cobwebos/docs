@@ -3,16 +3,16 @@ title: 将 GCP 帐户连接到 Azure 安全中心
 description: 监视 Azure 安全中心的 GCP 资源
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f478c279eb4c07332d047935f7c5dab89fd4b7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4020bc5e96ff35fa2d04a872216e43abbba5323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934716"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328303"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>将 GCP 帐户连接到 Azure 安全中心
 
@@ -37,9 +37,9 @@ Azure 安全中心保护 Azure 中的工作负荷，Amazon Web Services (AWS) �
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览|
-|计价|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
-|必需的角色和权限：|相关 Azure 订阅的**所有者**或**参与者**|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|所需角色和权限：|相关 Azure 订阅的**所有者**或**参与者**|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 ## <a name="connect-your-gcp-account"></a>连接到你的 GCP 帐户

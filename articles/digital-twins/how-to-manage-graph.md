@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326535"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
-Azure 数字孪生的核心是代表您的整个环境的克隆[图](concepts-twins-graph.md)。 克隆图形由通过**关系**连接的单个数字孪生组成。
+Azure 数字孪生的核心是代表您的整个环境的克隆 [图](concepts-twins-graph.md) 。 克隆图形由通过 **关系**连接的单个数字孪生组成。
 
-一旦拥有工作[Azure 数字孪生实例](how-to-set-up-instance-scripted.md)，并在客户端应用程序中设置了[身份验证](how-to-authenticate-client.md)代码，就可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)来创建、修改和删除 Azure 数字孪生实例中的数字孪生和它们之间的关系。 还可以使用[.net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[AZURE 数字孪生 CLI](how-to-use-cli.md)。
+一旦拥有工作 [Azure 数字孪生实例](how-to-set-up-instance-portal.md) ，并在客户端应用程序中设置了 [身份验证](how-to-authenticate-client.md) 代码，就可以使用 [**DigitalTwins api**](how-to-use-apis-sdks.md) 来创建、修改和删除 Azure 数字孪生实例中的数字孪生和它们之间的关系。 你还可以使用 [.net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或 [AZURE 数字孪生 CLI](how-to-use-cli.md)。
 
-本文重点介绍如何作为一个整体来管理关系和图形;若要使用单独的数字孪生，请参阅[*操作方法：管理数字孪生*](how-to-manage-twin.md)。
+本文重点介绍如何作为一个整体来管理关系和图形;若要使用单独的数字孪生，请参阅 [*操作方法：管理数字孪生*](how-to-manage-twin.md)。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -31,13 +31,13 @@ Azure 数字孪生的核心是代表您的整个环境的克隆[图](concepts-tw
 关系是使用调用创建的 `CreateRelationship` 。 
 
 若要创建关系，需要指定：
-* 源源源 ID （关系源自的位置）
-* 目标克隆 ID （关系到达的位置的位置）
+* 源克隆 ID (关系源自的位置) 
+* 目标克隆 ID (关系到达的位置) 
 * 关系名称
 * 关系 ID
 
 关系 ID 在给定的源克隆中必须是唯一的。 它不需要全局唯一。
-例如，对于双子*foo*，每个特定的关系 ID 都必须是唯一的。 但是，另一个克隆*栏*可以具有与*foo*关系的相同 ID 匹配的传出关系。 
+例如，对于双子 *foo*，每个特定的关系 ID 都必须是唯一的。 但是，另一个克隆 *栏* 可以具有与 *foo* 关系的相同 ID 匹配的传出关系。 
 
 下面的代码示例演示如何将关系添加到 Azure 数字孪生实例。
 
@@ -63,6 +63,14 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 ```
 
 有关 helper 类的详细信息 `BasicRelationship` ，请参阅 how [*To： Use The Azure 数字孪生 Api and sdk*](how-to-use-apis-sdks.md)。
+
+### <a name="create-multiple-relationships-between-twins"></a>在孪生之间创建多个关系
+
+对于在两个孪生之间可以具有的关系数没有限制，可以根据需要在孪生之间建立任意多的关系。 
+
+这意味着，可以一次在两个孪生之间表示多个不同类型的关系。 例如，克隆*A*可以具有*存储*的*关系和与**双子*
+
+如果需要，您甚至可以在相同的两个孪生之间创建同一类型关系的多个实例。 在此示例中，这意味着非重复 *A* 可能有两个不同的 *存储* 关系与 *双子 B*之间的关系。
 
 ## <a name="list-relationships"></a>列出关系
 
@@ -134,7 +142,7 @@ async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtI
 
 您可以使用删除关系 `DeleteRelationship(source, relId);` 。
 
-第一个参数指定源克隆（关系源自的位置）。 另一个参数是关系 ID。 由于关系 Id 只在克隆的作用域内是唯一的，因此您需要同时使用的 ID 和关系 ID。
+第一个参数指定源的源位置 (关系源自的位置) 。 另一个参数是关系 ID。 由于关系 Id 只在克隆的作用域内是唯一的，因此您需要同时使用的 ID 和关系 ID。
 
 ## <a name="create-a-twin-graph"></a>创建克隆图形 
 
@@ -239,7 +247,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 | 房间    | Room21 | Floor02 | contains | … |
 | 房间    | Room22 | Floor02 | contains | … |
 
-下面的代码使用[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/overview)来读取电子表格，并从结果中构造 Azure 数字孪生双子图。
+下面的代码使用 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/overview) 来读取电子表格，并从结果中构造 Azure 数字孪生双子图。
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;
@@ -301,7 +309,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>用 CLI 管理关系
 
-孪生及其关系也可以使用 Azure 数字孪生 CLI 进行管理。 有关命令，请参阅[*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
+孪生及其关系也可以使用 Azure 数字孪生 CLI 进行管理。 有关命令，请参阅 [*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

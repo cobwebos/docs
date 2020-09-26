@@ -1,7 +1,7 @@
 ---
 title: 云业务连续性 - 数据库恢复
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: 了解 Azure SQL 数据库和 SQL 托管实例如何支持云业务连续性和数据库恢复，并帮助保持任务关键型云应用程序运行。
+description: 了解 Azure SQL 数据库和 SQL 托管实例如何支持云业务连续性和数据库恢复以及如何帮助保持运行任务关键型云应用程序。
 keywords: 业务连续性, 云业务连续性, 数据库灾难恢复, 数据库恢复
 services: sql-database
 ms.service: sql-db-mi
@@ -11,25 +11,25 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327555"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-在 Azure SQL 数据库和 SQL 托管实例中，**业务连续性**指的是一项机制、策略和过程，使企业能够在面临中断的情况下继续工作，尤其是对于其计算基础结构。 在大多数情况下，SQL 数据库和 SQL 托管实例将处理在云环境中可能发生的中断性事件，并使应用程序和业务进程保持运行。 但是，SQL 数据库无法自动处理某些中断事件，例如：
+Azure SQL 数据库和 SQL 托管实例中的业务连续性是指在遇到中断（尤其是计算基础结构的中断）时，使企业能够继续运营的机制、策略和过程。 在大多数情况下，SQL 数据库和 SQL 托管实例将会处理云环境中可能发生的中断事件，并让应用程序和业务流程保持运行。 但是，SQL 数据库无法自动处理某些中断事件，例如：
 
 - 用户意外删除或更新了表中的某行。
 - 恶意攻击者成功删除了数据或数据库。
-- 地震导致断电和暂时禁用数据中心。
+- 地震导致断电和暂时性的数据中心停运。
 
-本概述介绍 SQL 数据库和 SQL 托管实例提供的用于业务连续性和灾难恢复的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
+本概述介绍 SQL 数据库和 SQL 托管实例针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
 
 ## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>有利于业务连续性的 SQL 数据库功能
 
@@ -42,16 +42,16 @@ ms.locfileid: "85982466"
 
 为了缓解本地硬件和软件故障问题，SQL 数据库包含一个[高可用性体系结构](high-availability-sla.md)，可以保证在出现这些故障时自动进行恢复，其可用性 SLA 高达 99.995%。  
 
-为了防止业务丢失数据，SQL 数据库和 SQL 托管实例每周自动创建完整数据库备份，每隔12小时自动创建一次差异数据库备份，每 5-10 分钟自动创建一次事务日志备份。 所有服务层级的备份在 RA-GRS 存储中存储至少 7 天。 对于时间点还原，所有服务层级（“基本”除外）都支持可配置的备份保留期，最长为 35 天。
+为了防止企业丢失数据，SQL 数据库和 SQL 托管实例每周自动创建完整数据库备份，每 12 小时自动创建差异数据库备份，每隔 5 - 10 分钟自动创建事务日志备份。 所有服务层级的备份在 RA-GRS 存储中存储至少 7 天。 对于时间点还原，所有服务层级（“基本”除外）都支持可配置的备份保留期，最长为 35 天。
 
-SQL 数据库和 SQL 托管实例还提供若干业务连续性功能，您可以使用这些功能来缓解各种计划外方案。
+SQL 数据库和 SQL 托管实例还提供多种业务连续性功能，用于缓解各种计划外方案问题。
 
 - 使用[时态表](../temporal-tables.md)可以从任意时间点还原行版本。
 - 使用[内置自动备份](automated-backups-overview.md)和[时间点还原](recovery-using-backups.md#point-in-time-restore)可将整个数据库还原到已配置保留期（最长为 35 天）内的某个时间点。
-- 如果**未删除服务器**，则可以将[删除的数据库还原](recovery-using-backups.md#deleted-database-restore)到删除该数据库的位置。
-- 使用[长期备份保留](long-term-retention-overview.md)可将备份保留长达 10 年之久。 这是适用于 SQL 托管实例的有限公共预览
-- [活动异地复制](active-geo-replication-overview.md)可让你创建可读副本，并在数据中心中断或应用程序升级时手动故障转移到任何副本。
-- [自动故障转移组](auto-failover-group-overview.md#terminology-and-capabilities)允许应用程序在发生数据中心服务中断的情况下自动恢复。
+- 如果服务器尚未删除，可[将已删除的数据库还原](recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
+- 使用[长期备份保留](long-term-retention-overview.md)可将备份保留长达 10 年之久。 该功能处于 SQL 托管实例有限的公共预览版中
+- 使用[活动异地复制](active-geo-replication-overview.md)，可以创建可读取的副本，并且在发生数据中心中断或应用程序升级期间手动故障转移到任何副本。
+- 发生数据中心中断时，应用程序可以通过[自动故障转移组](auto-failover-group-overview.md#terminology-and-capabilities)自动恢复。
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>恢复同一 Azure 区域内的数据库
 
@@ -76,9 +76,9 @@ SQL 数据库和 SQL 托管实例还提供若干业务连续性功能，您可�
 
 ## <a name="recover-a-database-to-the-existing-server"></a>将数据库恢复到现有服务器
 
-尽管罕见，但 Azure 数据中心可能会发生服务中断。 发生中断时，业务可能仅中断几分钟，也可能持续数小时。
+Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅中断几分钟，也可能持续数小时。
 
-- 一种选择是在数据中心中断结束时等待数据库重新联机。 这适用于可以容忍数据库脱机的应用程序。 例如无需一直处理的开发项目或免费试用版。 当某个数据中心发生服务中断时，您不知道该中断可能会持续多长时间，因此，只有在您不需要数据库的情况下，此选项才有效。
+- 用户可以选择等待数据中心中断结束，数据库重新联机。 这适用于可以容忍数据库脱机的应用程序。 例如无需一直处理的开发项目或免费试用版。 数据中心中断时，不知道中断会持续多久，因此该选项仅适用于暂时不需要数据库的情况。
 - 另一个选项是使用[异地冗余数据库备份](recovery-using-backups.md#geo-restore)（异地还原）来还原任何 Azure 区域中任何服务器上的数据库。 异地还原使用异地冗余备份作为源，即使由于停电而无法访问数据库或数据中心，也依然能够使用它来恢复数据库。
 - 最后，如果你使用[活动异地复制](active-geo-replication-overview.md)配置了异地辅助数据库或者为数据库配置了[自动故障转移组](auto-failover-group-overview.md)，则可以快速从中断中恢复。 你可以使用手动或自动故障转移，具体取决于你选择的这些技术。 虽然故障转移本身只需几秒钟，但服务至少需要 1 小时才能激活它。 这是确保故障转移符合中断规模所必需的。 此外，由于异步复制的性质，故障转移可能导致少量数据丢失。
 
@@ -93,7 +93,7 @@ SQL 数据库和 SQL 托管实例还提供若干业务连续性功能，您可�
 | 手动数据库故障转移 | 30 秒 | 5 秒 |
 
 > [!NOTE]
-> “手动数据库故障转移”** 是指使用[计划外模式](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)将单一数据库故障转移到其异地复制的辅助数据库。
+> “手动数据库故障转移”是指使用[计划外模式](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)将单一数据库故障转移到其异地复制的辅助数据库。
 有关自动故障转移 RTO 和 RPO 的详细信息，请参阅本文中前面的表。
 
 如果应用程序符合以下任意条件，请使用自动故障转移组：
@@ -109,7 +109,7 @@ SQL 数据库和 SQL 托管实例还提供若干业务连续性功能，您可�
 
 可以根据应用程序需求，选择结合使用数据库备份与活动异地复制。 若要探讨使用这些业务连续性功能为独立数据库和弹性池进行设计时的注意事项，请参阅[设计用于云灾难恢复的应用程序](designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 
-以下各节概述使用数据库备份或活动异地复制进行恢复的步骤。 有关详细步骤，包括规划要求、恢复后步骤，以及有关如何模拟中断以执行灾难恢复演练的信息，请参阅[在 SQL 数据库中从中断中恢复数据库](disaster-recovery-guidance.md)。
+以下各节概述使用数据库备份或活动异地复制进行恢复的步骤。 若要了解包括计划需求在内的详细步骤、恢复后步骤，以及如何模拟中断以执行灾难恢复演练，请参阅[在中断时恢复 SQL 数据库中的数据库](disaster-recovery-guidance.md)。
 
 ### <a name="prepare-for-an-outage"></a>为中断做好准备
 
@@ -126,14 +126,14 @@ SQL 数据库和 SQL 托管实例还提供若干业务连续性功能，您可�
 如果你使用活动异地复制或自动故障转移组作为恢复机制，则可以配置自动故障转移策略，或使用[手动计划外故障转移](active-geo-replication-configure-portal.md#initiate-a-failover)。 一旦启用，辅助数据库通过故障转移提升为新的主数据库，它可以记录新事务并响应查询 - 仅丢失极少尚未复制的数据。 有关设计故障转移过程的信息，请参阅[设计用于云灾难恢复的应用程序](designing-cloud-solutions-for-disaster-recovery.md)。
 
 > [!NOTE]
-> 数据中心重新联机后，旧的主副本会自动重新连接到新的主数据库并成为辅助数据库。 如果需要将主数据库重定位至原始区域，可以手动启动计划的故障转移（故障回复）。
+> 当数据中心恢复联机，旧主数据库自动重新连接至新主数据库，且其自身转为辅助数据库。 如果需要将主数据库重定位至原始区域，可以手动启动计划的故障转移（故障回复）。
 
 ### <a name="perform-a-geo-restore"></a>执行异地还原
 
 如果要将自动备份用于异地冗余存储（默认情况下已启用），则可以使用[异地还原](disaster-recovery-guidance.md#recover-using-geo-restore)恢复数据库。 恢复通常在 12 小时内进行 - 最多丢失 1 小时的数据，具体取决于上次日志备份的执行和复制时间。 在恢复完成之前，数据库无法记录任何事务或响应任何查询。 请注意，异地还原仅将数据库还原到上一个可用时间点。
 
 > [!NOTE]
-> 如果在将应用程序切换到恢复的数据库之前数据中心重新联机，则可以取消恢复。
+> 如果数据中心在应用程序切换到恢复的数据库之前就重新联机，可以取消恢复。
 
 ### <a name="perform-post-failover--recovery-tasks"></a>执行故障转移/恢复后任务
 
@@ -142,11 +142,11 @@ SQL 数据库和 SQL 托管实例还提供若干业务连续性功能，您可�
 - 将客户端和客户端应用程序重定向到新服务器和还原的数据库。
 - 确保设置适当的服务器级 IP 防火墙规则，以便用户能够连接或使用[数据库级防火墙](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)，启用合适的规则。
 - 确保设置适当的登录名和 master 数据库级权限（或使用[包含的用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)）。
-- 根据需要配置审核。
-- 根据需要配置警报。
+- 视情况配置审核。
+- 视情况配置警报。
 
 > [!NOTE]
-> 如果你使用的是故障转移组并使用读写侦听器连接到数据库，则在故障转移后重定向会自动并以透明方式对应用程序进行。
+> 如果使用故障转移组并使用读写侦听器连接到数据库，则在故障转移后应用程序将自动透明地进行重定向。
 
 ## <a name="upgrade-an-application-with-minimal-downtime"></a>在停机时间最短的情况下升级应用程序
 
@@ -154,4 +154,4 @@ SQL 数据库和 SQL 托管实例还提供若干业务连续性功能，您可�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关单一数据库和弹性池的应用程序设计注意事项的讨论，请参阅[设计用于云灾难恢复的应用程序](designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+若要探讨为单一数据库和弹性池设计应用程序时的注意事项，请参阅[设计用于云灾难恢复的应用程序](designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](disaster-recovery-strategies-for-applications-with-elastic-pool.md)。

@@ -4,14 +4,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6fe89e36685a2db0bf7b570ab6e7150bacf34857
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 9e1e81c70e21022364e52698f96213c01b452da4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405819"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326880"
 ---
+语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
+
+* 将语音翻译为文本
+* 将语音翻译为多种目标语言
+* 直接进行语音转语音翻译
+
+## <a name="skip-to-samples-on-github"></a>跳转到 GitHub 上的示例
+
+如果要直接跳到示例代码，请参阅 GitHub 上的 [JavaScript 快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) 。
+
 ## <a name="prerequisites"></a>先决条件
 
 本文假定你有 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，[可以免费试用语音服务](../../../get-started.md)。
@@ -56,7 +66,7 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 
 ## <a name="create-a-translation-configuration"></a>创建翻译配置
 
-若要使用 Speech SDK 调用翻译服务，需要创建 [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) 。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用翻译服务，需要创建 [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
 
 > [!NOTE]
 > 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
@@ -73,11 +83,11 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-## <a name="initialize-a-translator"></a>初始化转换器
+## <a name="initialize-a-translator"></a>初始化翻译工具
 
-创建 [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) 后，下一步是初始化 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest)。 初始化 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) 时，需要向其传递 `speechTranslationConfig`。 这将提供翻译服务验证请求所需的凭据。
+创建 [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) 后，下一步是初始化 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest)。 初始化 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) 时，需要向其传递 `speechTranslationConfig`。 这会提供翻译服务验证请求所需的凭据。
 
-如果要翻译通过设备的默认麦克风提供的语音，以下内容应如下所 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) 示：
+如果使用设备的默认麦克风翻译提供的语音，则 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) 应如下所示：
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
@@ -103,17 +113,17 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 ## <a name="translate-speech"></a>翻译语音
 
-用于 JavaScript 的语音 SDK 的[TranslationRecognizer 类](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest)公开了几种可用于语音转换的方法。
+JavaScript 的语音 SDK 的 [TranslationRecognizer 类](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest)公开了一些可用于语音翻译的方法。
 
-* 单步转换（async）-以非阻止（异步）模式执行转换。 这将转换单个查询文本。 单个言语的结束是通过在结束时倾听静音或处理最长 15 秒音频时确定的。
-* 连续转换（async）-异步启动连续转换操作。 用户向事件注册并处理各种应用程序状态。 若要停止异步连续转换，请调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync) 。
+* 单步翻译（异步）- 在非阻塞（异步）模式下执行翻译。 这会翻译单个言语。 单个言语的结束是通过在结束时倾听静音或处理最长 15 秒音频时确定的。
+* 连续翻译（异步）- 异步启动连续翻译操作。 用户向事件注册并处理各种应用程序状态。 若要停止异步连续翻译，请调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)。
 
 > [!NOTE]
 > 详细了解如何[选择语音识别模式](../../../how-to-choose-recognition-mode.md)。
 ### <a name="specify-a-target-language"></a>指定目标语言
 
-若要进行转换，必须指定源语言和至少一种目标语言。
-您可以使用[语音转换表](../../../language-support.md#speech-translation)中列出的区域设置来选择源语言。 在同一链接上查找翻译语言的选项。 当您想要查看文本，或想要收听合成翻译的语音时，适用于目标语言的选项有所不同。 若要从英语转换为德语，请修改翻译配置对象：
+若要进行翻译，必须同时指定源语言和至少一种目标语言。
+可以使用[语音翻译表](../../../language-support.md#speech-translation)中列出的区域设置来选择源语言。 在同一链接中查找译入语的选项。 当你想查看文本或想听到合成翻译语音时，目标语言的选项会有所不同。 若要从英语翻译为德语，请修改翻译配置对象：
 
 ```javascript
 speechTranslationConfig.speechRecognitionLanguage = "en-US";
@@ -122,7 +132,7 @@ speechTranslationConfig.addTargetLanguage("de");
 
 ### <a name="single-shot-recognition"></a>单步识别
 
-下面是使用进行异步单次转换的示例 [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognizeonceasync) ：
+下面是使用 [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognizeonceasync) 进行异步单步翻译的示例：
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -130,7 +140,7 @@ recognizer.recognizeOnceAsync(result => {
 });
 ```
 
-需要编写一些代码来处理结果。 此示例将计算 [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?view=azure-node-latest) 转换为德语的：
+需要编写一些代码来处理结果。 此示例对翻译为德语的 [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?view=azure-node-latest) 进行评估：
 
 ```javascript
 recognizer.recognizeOnceAsync(
@@ -145,9 +155,9 @@ recognizer.recognizeOnceAsync(
 });
 ```
 
-你的代码还可以处理翻译处理时提供的更新。
-你可以使用这些更新来提供有关翻译进度的视觉反馈。
-有关显示在转换过程中提供的更新的示例代码，请参阅[此 JavaScript Node.js 示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/js/node/translation.js)。 下面的代码还显示翻译过程中生成的详细信息。
+你的代码还可以处理翻译过程中提供的更新。
+可以使用这些更新来提供有关翻译进度的可视反馈。
+请参阅 [JavaScript Node.js 示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/js/node/translation.js)，获取显示翻译过程中提供的更新的示例代码。 下面的代码还显示了翻译过程中产生的详细信息。
 
 ```javascript
 recognizer.recognizing = function (s, e) {
@@ -169,7 +179,7 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>连续翻译
 
-连续翻译比单步识别更多。 它要求你订阅 `recognizing`、`recognized` 和 `canceled` 事件以获取识别结果。 若要停止转换，必须调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync) 。 下面是如何在音频输入文件中执行连续转换的示例。
+连续翻译涉及的方面比单步识别多一点。 它要求你订阅 `recognizing`、`recognized` 和 `canceled` 事件以获取识别结果。 若要停止翻译，必须调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)。 下面是有关如何对音频输入文件执行连续翻译的示例。
 
 首先，我们将定义输入并初始化一个 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest)：
 
@@ -179,10 +189,10 @@ const translator = new TranslationRecognizer(speechTranslationConfig);
 
 我们将订阅从 [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest) 发送的事件。
 
-* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognizing)：包含中间转换结果的事件的信号。
-* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognized)：包含最终转换结果（表示成功的转换尝试）的事件信号。
-* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#sessionstopped)：指示转换会话结束（操作）的事件信号。
-* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#canceled)：包含已取消转换结果的事件的信号（表示已取消作为结果的转换尝试或直接取消请求，或者传输或协议失败）。
+* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognizing)：事件信号，包含中间翻译结果。
+* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#recognized)：事件信号，包含最终翻译结果（指示成功的翻译尝试）。
+* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#sessionstopped)：事件信号，指示翻译会话的结束（操作）。
+* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest#canceled)：事件信号，包含已取消的翻译结果（指示因直接取消请求或者传输或协议失败导致的翻译尝试取消）。
 
 ```javascript
 recognizer.recognizing = (s, e) => {
@@ -222,7 +232,7 @@ recognizer.startContinuousRecognitionAsync();
 
 ## <a name="choose-a-source-language"></a>选择源语言
 
-语音翻译的常见任务是指定输入（或源）语言。 让我们看看如何将输入语言更改为意大利语。 在代码中查找 [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest) ，然后在其下直接添加以下行。
+语音翻译的一项常见任务是指定输入（或源）语言。 让我们看看如何将输入语言更改为意大利语。 在代码中找到 [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest)，并直接在其下方添加下面的行。
 
 ```javascript
 speechTranslationConfig.speechRecognitionLanguage = "it-IT";
@@ -232,16 +242,16 @@ speechTranslationConfig.speechRecognitionLanguage = "it-IT";
 
 ## <a name="choose-one-or-more-target-languages"></a>选择一种或多种目标语言
 
-语音 SDK 可以并行转换为多个目标语言。 可用的目标语言与源语言列表有些不同，您使用语言代码（而不是区域设置）指定目标语言。
-请参阅[语言支持页上的 "语音转换" 表](../../../language-support.md#speech-translation)中的文本目标语言的列表。 你还可以在此处找到有关转换为合成语言的详细信息。
+语音 SDK 可以并行翻译为多个目标语言。 可用的目标语言与源语言列表有些不同，你可以使用语言代码而不是区域设置来指定目标语言。
+请参阅[语言支持页上的语音翻译表](../../../language-support.md#speech-translation)中文本目标的语言代码列表。 你也可以在那里找到有关翻译为合成语言的详细信息。
 
-以下代码将德语添加为目标语言：
+下面的代码将德语添加为目标语言：
 
 ```javascript
 translationConfig.addTargetLanguage("de");
 ```
 
-由于有多种目标语言翻译，你的代码在检查结果时必须指定目标语言。 下面的代码获取德语的转换结果。
+由于可能有多个目标语言翻译，因此在检查结果时，代码必须指定目标语言。 下面的代码获取德语的翻译结果。
 
 ```javascript
 recognizer.recognized = function (s, e) {

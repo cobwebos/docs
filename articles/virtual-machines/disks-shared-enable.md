@@ -4,16 +4,16 @@ description: 使用共享磁盘配置 Azure 托管磁盘，以便可以跨多个
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 447380c7aed7e765695ea5389f0b3f2973a16b0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328133"
 ---
 # <a name="enable-shared-disk"></a>启用共享磁盘
 
@@ -147,7 +147,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 使用部署共享磁盘后 `maxShares>1` ，可以将该磁盘装载到一台或多台 vm。
 
 > [!NOTE]
-> 如果要部署的是 ultra 磁盘，请确保它符合必要的要求。 有关详细信息，请参阅《超级磁盘的 [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 部分。
+> 如果要部署的是 ultra 磁盘，请确保它符合必要的要求。 有关详细信息，请参阅 [使用 Azure ultra 磁盘](disks-enable-ultra-ssd.md) 。
 
 ```azurepowershell-interactive
 
@@ -209,6 +209,6 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 ## <a name="next-steps"></a>后续步骤
 
 如果希望使用 Azure 资源管理器模板来部署磁盘，可使用以下示例模板：
-- [高级·SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
+- [高级 SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
 - [区域超磁盘](https://aka.ms/SharedUltraDiskARMtemplateRegional)
 - [区域性超磁盘](https://aka.ms/SharedUltraDiskARMtemplateZonal)

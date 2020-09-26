@@ -3,7 +3,7 @@ title: 在 Azure Linux 虚拟机上设置 Oracle ASM | Microsoft Docs
 description: 在 Azure 环境中快速启动并运行 Oracle ASM。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: a707081aca4a28743bff8bdd1046a5e9aee285f1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: kegorman
+ms.openlocfilehash: e82b458487dd4c865013c806447473d25c75017f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328082"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  你将学习如何执行以下操作：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 Oracle 数据库 VM
@@ -443,7 +443,7 @@ ssh <publicIpAddress>
 
 若要安装 Oracle Grid Infrastructure，请完成以下步骤：
 
-1. 以**网格格式**登录。 （应该可以直接登录，系统不会提示输入密码。） 
+1. 以 **网格格式**登录。 （应该可以直接登录，系统不会提示输入密码。） 
 
    > [!NOTE]
    > 如果运行的是 Windows，请确保在开始安装之前已启动 Xming。

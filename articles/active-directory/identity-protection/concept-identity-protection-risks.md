@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327912"
 ---
 # <a name="what-is-risk"></a>什么是风险？
 
@@ -30,7 +30,7 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 
 存在两种类型的风险 **用户** 和 **登录** 以及两种类型的检测或计算： **实时** 和 **脱机**。
 
-实时检测可能不会在报告中显示5到10分钟。 脱机检测可能不会在报告中显示两到四个小时。
+实时检测可能不会在报告中显示5到10分钟。 脱机检测可能不会在报告中显示两到二十四个小时。
 
 ### <a name="user-risk"></a>用户风险
 

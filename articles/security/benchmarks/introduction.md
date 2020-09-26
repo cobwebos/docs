@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328252"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure 安全基准简介
 
@@ -23,8 +23,8 @@ Microsoft 发现，使用 *安全基准* 有助于快速保护云部署。 你�
 
 Azure 安全基准包括一系列可用于帮助保护在 Azure 中使用的服务的高影响安全建议：
 
-- 安全控制：这些建议通常适用于 Azure 租户和 Azure 服务。 每个建议都标识了通常涉及到基准测试的规划、批准或实现的利益干系人列表。 
-- 服务基线：这些应用程序将这些控件应用于单个 Azure 服务，以提供有关该服务安全配置的建议。
+- **安全控制**：这些建议通常适用于 azure 租户和 azure 服务。 每个建议都标识了通常涉及到基准测试的规划、批准或实现的利益干系人列表。 
+- **服务基线**：这些应用程序将这些控件应用于单个 Azure 服务，以提供有关该服务安全配置的建议。
 
 ## <a name="implement-the-azure-security-benchmark"></a>实现 Azure 安全性基准
 - 通过查看企业控制和服务特定基线的[文档](overview.md)来**规划你的**Azure 安全性基准实现，以规划你的控制框架，并了解它如何映射到 ci (控制 v2.0) 和 NIST (SP800) framework。

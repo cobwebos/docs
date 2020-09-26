@@ -2,15 +2,17 @@
 title: 如何使用创作密钥和运行时密钥 - LUIS
 description: 首次使用语言理解 (LUIS) 时，不需要创建创作密钥。 如果需要发布应用，然后使用运行时终结点，则需创建运行时密钥并将其分配给应用。
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327215"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
@@ -27,9 +29,9 @@ LUIS 允许三类 Azure 资源和一类非 Azure 资源：
 
 |资源|目的|认知服务 `kind`|认知服务 `type`|
 |--|--|--|--|
-|创作资源|允许您创建、管理、定型、测试和发布您的应用程序。 如果打算在 programtically 或 LUIS 门户中创作 LUIS apps，请[创建 LUIS 创作资源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal)。 需要首先 [迁移 LUIS 帐户](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) ，才能将 Azure authroring 资源链接到应用程序。 可以通过将用户分配到 ["参与者" 角色](#contributions-from-other-authors)来控制对创作资源的权限。 <br><br> LUIS 创作资源有一个层在：<br> * **F0 创作资源** ，每月提供1m 免费创作事务和1000免费预测终结点请求。 |`LUIS.Authoring`|`Cognitive Services`|
-|预测资源| 发布 LUIS 应用程序后，使用预测资源/键查询预测终结点请求。 在客户端应用程序请求除由创作或 starter 资源提供的1000请求之外的预测之前，请创建 LUIS 预测资源。 <br><br> 预测资源有两个层可用：<br> * **F0 预测资源** ，每月提供10000免费预测终结点请求<br> * 作为付费层的**S0 预测资源**。 [了解有关定价详细信息的详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|Starter/试用资源|允许您创建、管理、定型、测试和发布您的应用程序。 如果在第一次注册 tp LUIS 时选择了 "starter 资源" 选项，则会通过默认创建此项。 但是，此入门密钥最终将被弃用，并且所有 LUIS 用户将需要 [迁移其帐户](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) 并将其 LUIS 应用程序链接到创作资源。 此资源不提供对基于角色的访问控制（如创作资源）的权限。 <br><br> 就像创作资源一样，starter 资源可提供1M 免费创作事务和1000免费预测终结点请求。|-|不是 Azure 资源|
+|创作资源|允许您创建、管理、定型、测试和发布您的应用程序。 如果打算在 programtically 或 LUIS 门户中创作 LUIS apps，请[创建 LUIS 创作资源](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)。 需要首先 [迁移 LUIS 帐户](luis-migration-authoring.md#what-is-migration) ，才能将 Azure authroring 资源链接到应用程序。 可以通过将用户分配到 ["参与者" 角色](#contributions-from-other-authors)来控制对创作资源的权限。 <br><br> LUIS 创作资源有一个层在：<br> * **免费 F0 创作资源** ，可提供1m 免费创作事务，每月免费测试预测终结点请求1000。 |`LUIS.Authoring`|`Cognitive Services`|
+|预测资源| 发布 LUIS 应用程序后，使用预测资源/键查询预测终结点请求。 在客户端应用程序请求除由创作或 starter 资源提供的1000请求之外的预测之前，请创建 LUIS 预测资源。 <br><br> 预测资源有两个层可用：<br> * **免费 F0 预测资源** ，每月提供10000免费预测终结点请求<br> * **标准 S0 预测资源** ，是付费层。 [了解有关定价详细信息的详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Starter/试用资源|允许您创建、管理、定型、测试和发布您的应用程序。 如果在第一次注册 tp LUIS 时选择了 "starter 资源" 选项，则会通过默认创建此项。 但是，此入门密钥最终将被弃用，并且所有 LUIS 用户将需要 [迁移其帐户](luis-migration-authoring.md#what-is-migration) 并将其 LUIS 应用程序链接到创作资源。 此资源不提供对基于角色的访问控制（如创作资源）的权限。 <br><br> 就像创作资源一样，starter 资源可提供1M 免费创作事务和1000免费测试预测终结点请求。|-|不是 Azure 资源|
 |[认知服务多服务资源密钥](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|与 LUIS 和其他受支持的认知服务共享的查询预测终结点请求。|`CognitiveServices`|`Cognitive Services`|
 
 

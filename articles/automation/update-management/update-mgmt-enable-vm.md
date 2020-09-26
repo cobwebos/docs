@@ -2,15 +2,15 @@
 title: 从 Azure VM 启用 Azure 自动化更新管理
 description: 本文介绍如何从 Azure VM 启用更新管理。
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/16/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 27832190125840e367edbfb2db8e4134f98b192d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dead4649635bebd9f73f79937dea1d24565f273e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327778"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>从 Azure VM 启用“更新管理”
 
@@ -27,21 +27,23 @@ ms.locfileid: "87449931"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
-## <a name="enable-the-feature-for-deployment"></a>启用部署功能
+## <a name="enable-the-feature-for-deployment"></a>启用相关功能来进行部署
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“虚拟机”，或在“主页”页上搜索并选择“虚拟机” 。
 
 2. 选择要启用更新管理的 VM。 VM 可以位于任何区域，无论自动化帐户的位置如何。 你
 
-3. 在 VM 页的“操作”下选择“更新管理”。
+3. 在 "VM" 页的 " **操作**" 下，选择 " **来宾 + 主机更新**"。
+
+    ![在左侧窗格中选择 "来宾 + 主机更新"](media/update-mgmt-enable-vm/select-guest-and-os-updates.png)
 
 4. 必须拥有 `Microsoft.OperationalInsights/workspaces/read` 权限才能确定是否为工作区启用了 VM。 若要了解所需的其他权限，请参阅[启用计算机所需的权限](../automation-role-based-access-control.md#feature-setup-permissions)。 若要了解如何一次启用多台计算机，请参阅[从自动化帐户启用更新管理](update-mgmt-enable-automation-account.md)。
 
-5. 选择 Log Analytics 工作区和自动化帐户，然后单击“启用”以启用更新管理。 启用更新管理后，可能需要大约15分钟，然后才能查看 VM 的更新评估。
+5. 在 "启用更新管理" 页上，选择 "Log Analytics" 工作区和自动化帐户，然后单击 " **启用** " 以启用更新管理。 启用更新管理后，可能需要大约 15 分钟才能查看 VM 的更新评估。
 
-    ![启用更新管理](media/update-mgmt-enable-vm/manageupdates-update-enable.png)
+    ![启用更新管理](media/update-mgmt-enable-vm/enable-update-management.png)
 
 ## <a name="next-steps"></a>后续步骤
 
