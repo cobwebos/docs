@@ -3,33 +3,24 @@ title: 连接到 Windows 虚拟桌面 Windows 10 或 7-Azure
 description: 如何使用 Windows 桌面客户端连接到 Windows 虚拟桌面。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287332"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
-> 适用于： Windows 7、Windows 10 和 Windows 10 IoT 企业版
+> 适用于：Windows 10、Windows 10 IoT 企业版和 Windows 7
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
 
-使用 windows 桌面客户端，你可以使用 Windows 7、Windows 10 和 Windows 10 IoT Enterprise 在设备上访问 Windows 虚拟桌面资源。 客户端不支持窗口8或 Windows 8.1。
-
->[!NOTE]
->Windows 客户端自动默认为 Windows 虚拟桌面 (经典) 。 但是，如果客户端检测到用户还具有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。
-
-> [!IMPORTANT]
-> Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
-
-> [!IMPORTANT]
-> Windows 虚拟桌面目前不支持 Windows 应用商店中的远程桌面客户端。
+你可以使用 windows 桌面客户端通过 windows 10、Windows 10 IoT 企业版和 Windows 7 访问设备上的 Windows 虚拟桌面资源。 客户端不支持窗口8或 Windows 8.1。
 
 ## <a name="install-the-windows-desktop-client"></a>安装 Windows 桌面客户端
 
@@ -42,6 +33,9 @@ ms.locfileid: "89226703"
 你可以为当前用户安装客户端（这不需要管理员权限），或者你的管理员可以安装和配置客户端，以便设备上的所有用户都可以访问该客户端。
 
 安装后，可以通过搜索“远程桌面”****，从“开始”菜单启动客户端。
+
+> [!IMPORTANT]
+> Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
 
 ## <a name="subscribe-to-a-workspace"></a>订阅工作区
 
@@ -56,6 +50,9 @@ ms.locfileid: "89226703"
 2. 出现提示时，请使用用户帐户登录。
 3. 资源将显示在连接中心，并按工作区进行分组。
 
+>[!NOTE]
+>Windows 客户端自动默认为 Windows 虚拟桌面 (经典) 。 但是，如果客户端检测到用户还具有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。
+
 ### <a name="subscribe-with-a-url"></a>使用 URL 订阅
 
 1. 在客户端的主页中，选择 " **订阅**" "URL"。
@@ -65,7 +62,7 @@ ms.locfileid: "89226703"
      - Windows 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Windows 虚拟桌面 (US Gov) ： `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
    - 如果你使用的是 **电子邮件** 字段，请输入你的电子邮件地址。 如果管理员已设置 [电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)，则这将告知客户端搜索与你的电子邮件地址关联的 URL。
-3. 选择“**下一页**”。
+3. 选择“**下一步**”。
 4. 出现提示时，请使用用户帐户登录。
 5. 资源应显示在连接中心中，按工作区分组。
 

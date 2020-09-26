@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15e3d72661ad35335c744fbaf0ab39627d254750
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333437"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教程：为自动用户预配配置缩放
 
@@ -52,19 +52,19 @@ ms.locfileid: "88545975"
 
 2. 在页面的右上角导航到 " **管理** "。 
 
-    ![缩放安装](media/zoom-provisioning-tutorial/zoom02.png)
+    ![具有称为 "管理" 选项的缩放应用市场的屏幕截图。](media/zoom-provisioning-tutorial/zoom02.png)
 
 3. 导航到创建的 Azure AD 应用。 
     
-    ![缩放应用](media/zoom-provisioning-tutorial/zoom03.png)
+    ![已创建应用程序的屏幕截图，其中包含名为的 Azure A D 应用。](media/zoom-provisioning-tutorial/zoom03.png)
 
 4. 在左侧导航窗格中选择 " **应用凭据** "。
 
-    ![缩放应用](media/zoom-provisioning-tutorial/zoom04.png)
+    ![左侧导航窗格的屏幕截图，其中突出显示了 "应用凭据" 选项。](media/zoom-provisioning-tutorial/zoom04.png)
 
 5. 复制并保存 **JWT 标记**。 此值将输入到 Azure 门户中缩放应用程序 "预配" 选项卡的 " **机密令牌** " 字段中。 如果需要新的不过期令牌，将需要重新配置过期时间，这将自动生成新令牌。 
 
-    ![缩放安装](media/zoom-provisioning-tutorial/zoom05.png)
+    ![应用凭据页的屏幕截图。](media/zoom-provisioning-tutorial/zoom05.png)
 
 ## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加缩放
 
@@ -95,11 +95,11 @@ ms.locfileid: "88545975"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://api.zoom.us/scim` **租户 URL**"。 输入先前在 "**机密令牌**" 中检索到的**JWT 令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 "缩放"。 如果连接失败，请确保缩放帐户具有管理员权限，然后重试。
 
@@ -145,7 +145,7 @@ ms.locfileid: "88545975"
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。  
 
 ## <a name="connector-limitations"></a>连接器限制
 * 缩放最多允许当今最多9999个基本用户。

@@ -1,6 +1,6 @@
 ---
 title: 通过具体化视图进行性能优化
-description: 在使用具体化视图来提高查询性能时应了解的建议和注意事项。
+description: 用于提高查询性能的具体化视图的建议和注意事项。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289032"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>通过具体化视图进行性能优化
 
@@ -29,7 +29,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 具体化视图像表一样在 SQL 池中预先计算、存储和维护其数据。  每次使用具体化视图时都不需要重新计算。  这就是为什么使用具体化视图中全部或部分数据的查询可以获得更快的性能。  更好的是，查询可以使用具体化视图，而无需直接引用它，因此无需更改应用程序代码。  
 
-大多数标准视图要求仍适用于具体化视图。 如需详细了解具体化视图语法和其他要求，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+大多数标准视图要求仍适用于具体化视图。 如需详细了解具体化视图语法和其他要求，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 | 比较                     | 查看                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,8 +55,8 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 与其他数据仓库提供程序相比，在 Azure SQL 数据仓库中实现的具体化视图还提供了以下附加优势：
 
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
-- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
-- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="common-scenarios"></a>常见方案  
 
@@ -143,13 +143,17 @@ GROUP BY A, C
 
 **监视具体化视图**
 
-具体化视图存储在数据仓库中，就像具有聚集列存储索引 (CCI) 的表一样。  从具体化视图中读取数据的过程包括从增量存储区中扫描索引和应用更改。  当增量存储区中的行数太多时，从具体化视图解析查询可能比直接查询基表花费的时间更长。  若要避免查询性能降低，最好运行 [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 来监视视图的 overhead_ratio (total_rows / base_view_row)。  如果 overhead_ratio 太高，请考虑重新生成具体化视图，使增量存储区中的所有行都移到列存储索引中。  
+具体化视图存储在数据仓库中，就像具有聚集列存储索引 (CCI) 的表一样。  从具体化视图中读取数据的过程包括从增量存储区中扫描索引和应用更改。  当增量存储区中的行数太多时，从具体化视图解析查询可能比直接查询基表花费的时间更长。  
+
+若要避免查询性能降低，最好运行 [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 来监视视图的 overhead_ratio (total_rows / base_view_row)。  如果 overhead_ratio 太高，请考虑重新生成具体化视图，使增量存储区中的所有行都移到列存储索引中。  
 
 **具体化视图和结果集缓存**
 
 SQL 池中同时引入了这两项功能，用于优化查询性能。 结果集缓存用于在静态数据的重复查询中实现高并发性和快速响应。  
 
-为使用缓存结果，请求缓存的查询的形式必须与生成缓存的查询匹配。  此外，缓存的结果必须应用于整个查询。  具体化视图允许基表中的数据更改。  具体化视图中的数据可以应用于查询的一部分。  借助这一支持，使用相同的某些计算的不同查询可使用相同的具体化视图，以获得更快的性能。
+为使用缓存结果，请求缓存的查询的形式必须与生成缓存的查询匹配。  此外，缓存的结果必须应用于整个查询。  
+
+具体化视图允许基表中的数据更改。  具体化视图中的数据可以应用于查询的一部分。  借助这一支持，使用相同的某些计算的不同查询可使用相同的具体化视图，以获得更快的性能。
 
 ## <a name="example"></a>示例
 
@@ -352,7 +356,7 @@ GROUP BY c_customer_id
 
 ```
 
-再次检查原始查询的执行计划。  现在，联接数量从 17 个更改为 5 个，且不再有随机排布。  单击计划中的“筛选”操作图标。 其输出列表显示数据是从具体化视图读取的，而不是从基表读取的。  
+再次检查原始查询的执行计划。  现在，联接数量从 17 个更改为 5 个，且不再有随机排布。  在计划中选择 "筛选器操作" 图标。 其输出列表显示数据是从具体化视图读取的，而不是从基表读取的。  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 

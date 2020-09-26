@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 25ab7d275957aff03ad76bf2e946a98fc6cd8821
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289270"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
 
@@ -26,7 +26,7 @@ ms.locfileid: "90032956"
 
 由于列存储索引会通过扫描单个行组的列段来扫描表，所以，使每个行组的行数最大化可增强查询性能。 如果行组具有的行数较多，则会增强数据压缩，这意味着需要从磁盘读取的数据变少。
 
-有关行组的详细信息，请参阅[列存储索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+有关行组的详细信息，请参阅[列存储索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="target-size-for-rowgroups"></a>行组的目标大小
 
@@ -34,15 +34,15 @@ ms.locfileid: "90032956"
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>在压缩过程中，可对行组进行修剪
 
-批量加载或重建列存储索引期间，有时可能因内存不足而无法压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。
+在大容量加载或列存储索引重新生成期间，有时没有足够的内存可用于压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。
 
 如果内存不足，无法将至少 10,000 个行压缩到每个行组中，就会生成错误。
 
-有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk )（批量加载到聚集列存储索引中）。
+有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true )（批量加载到聚集列存储索引中）。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV [dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (dm_pdw_nodes_db_column_store_row_group_physical_stats 包含与 SQL db) 匹配的视图定义，该定义将公开有用的信息（如行组中的行数）以及修整时剪裁的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV [dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (dm_pdw_nodes_db_column_store_row_group_physical_stats 包含与 SQL db) 匹配的视图定义，该定义将公开有用的信息（如行组中的行数）以及修整时剪裁的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -77,14 +77,15 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 
 ## <a name="how-to-estimate-memory-requirements"></a>如何估算内存需求
 
-压缩单个行组所需的最大内存大约为
+压缩一个行组所需的最大内存量大致为，如下所示：
 
 - 72 MB +
 - \#rows \* \#columns \* 8 字节 +
 - \#rows \* \#short-string-columns \* 32 字节 +
 - \#long-string-columns \* 16 MB 用于压缩字典
 
-其中，short-string-columns 使用 <= 32 字节的字符串数据类型，long-string-columns 使用 > 32 字节的字符串数据类型。
+> [!NOTE]
+> 其中，短字符串列使用字符串数据类型 <= 32 字节，长字符串列使用 > 32 字节的字符串数据类型。
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
 
@@ -121,7 +122,7 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 
-当每次分发有多个 CPU 内核可用时，每次分发会将行组并行压缩到列存储中。 并行度需要额外的内存资源，这可能会造成内存压力和行组修剪。
+每个分布都有多个可用的 CPU 内核时，每个分布都将行组同时压缩为列存储。 并行度需要额外的内存资源，这可能会造成内存压力和行组修剪。
 
 若要减少内存压力，可使用 MAXDOP 查询提示，在每次分发中强制加载操作以串行模式运行。
 
