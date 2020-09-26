@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357006"
+ms.locfileid: "91371735"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自动数据库备份进行恢复 - Azure SQL 托管实例和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,7 +196,7 @@ ms.locfileid: "91357006"
 不能对异地辅助数据库执行时间点还原。 只能对主数据库执行此操作。 有关使用异地还原在中断后恢复的详细信息，请参阅[在中断后恢复](../../key-vault/general/disaster-recovery-guidance.md)。
 
 > [!IMPORTANT]
-> 异地还原是 SQL 数据库和 SQL 托管实例中提供的最基本的灾难恢复解决方案。 它依赖于自动创建的异地复制备份，其恢复点目标 (RPO) 为 1 小时，估计恢复时间最长为 12 小时。 它不保证在发生区域性的服务中断后，目标区域可提供足够的容量来还原数据库，因为此时的需求可能会急剧上升。 如果应用程序使用相对较小的数据库并且不是业务关键型应用程序，则异地还原是适当的灾难恢复解决方案。 
+> 异地还原是 SQL 数据库和 SQL 托管实例中提供的最基本的灾难恢复解决方案。 它依赖于自动创建异地复制的备份，其中包含恢复点目标 (RPO) 最多1小时，估计恢复时间最多为12小时。 它不保证在发生区域性的服务中断后，目标区域可提供足够的容量来还原数据库，因为此时的需求可能会急剧上升。 如果应用程序使用相对较小的数据库并且不是业务关键型应用程序，则异地还原是适当的灾难恢复解决方案。 
 >
 > 对于需要大型数据库且必须确保业务连续性的业务关键型应用程序，请使用[自动故障转移组](auto-failover-group-overview.md)。 此功能提供的 RPO 和恢复时间目标要低得多，并且始终可以保证容量。 
 >

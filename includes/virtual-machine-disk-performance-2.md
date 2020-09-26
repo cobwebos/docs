@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 65f6c239f34775efff6a2ea2e399064a7702606a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8882625d28871135223dd30e3fd96a385a13e8fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377323"
 ---
 ![Dsv3 文档](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -83,5 +83,11 @@ ms.locfileid: "89663734"
 有助于诊断磁盘 IO 上限的指标：
 - **使用的数据磁盘 IOPS 百分比** -通过预配的数据磁盘 iops 完成的数据磁盘 iops 计算得出的百分比。 如果此数量为100%，则运行的应用程序将从数据磁盘的 IOPS 限制中限制 IO。
 - **数据磁盘带宽消耗百分比** -通过预配的数据磁盘吞吐量完成的数据磁盘吞吐量计算得出的百分比。 如果此数量为100%，则运行的应用程序将从数据磁盘的带宽限制中限制 IO。
-- **Os 磁盘 IOPS** 已用百分比-通过预配的 Os 磁盘 iops 完成的 Os 磁盘 iops 计算得出的百分比。 如果此数量为100%，则运行应用程序时，会将 IO 限制为操作系统磁盘的 IOPS 限制。
+- **Os 磁盘 IOPS** 已用百分比-通过预配的 OS 磁盘 iops 完成的 OS 磁盘 iops 计算得出的百分比。 如果此数量为100%，则运行应用程序时，会将 IO 限制为操作系统磁盘的 IOPS 限制。
 - **Os 磁盘带宽消耗百分比** -通过预配的 os 磁盘吞吐量完成的 os 磁盘吞吐量计算得出的百分比。 如果此数量为100%，则运行的应用程序将是由操作系统磁盘的带宽限制限制的 IO。
+
+有助于诊断 VM IO 上限的指标：
+- 已用**VM 缓存的 Iops 百分比**-通过最大缓存虚拟机 iops 限制完成的总 iops 计算得出的百分比。 如果此数量为100%，则运行的应用程序将是受 VM 缓存 IOPs 限制限制的 IO。
+- 已**使用的 VM 缓存带宽百分比**-通过最大缓存虚拟机吞吐量完成的总磁盘吞吐量计算得出的百分比。 如果此数量为100%，则运行的应用程序将是受 VM 缓存的带宽限制限制的 IO。
+- **使用的 VM 未缓存 IOPS 百分比** -通过最大非缓存虚拟机 IOPS 限制完成的虚拟机上的总 IOPS 计算得出的百分比。 如果此数量为100%，则运行的应用程序将是受 VM 的未缓存 IOPs 限制的 IO 限制。
+- **使用的 VM 未缓存带宽百分比** -通过最大预配的虚拟机吞吐量在虚拟机上完成的总磁盘吞吐量计算得出的百分比。 如果此数量为100%，则运行的应用程序将从 VM 的未缓存带宽限制中限制为 IO。

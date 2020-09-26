@@ -4,12 +4,12 @@ description: 说明如何解决使用 Azure Resource Manager 将资源部署到 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372232"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -34,6 +34,7 @@ ms.locfileid: "89650953"
 | DeploymentNameLengthLimitExceeded | 部署名称限制为 64 个字符。  | |
 | DeploymentFailed | DeploymentFailed 错误为常规错误，未提供解决错误所需的详细信息。 请查看错误代码的错误详情，其中提供了详细信息。 | [查找错误代码](#find-error-code) |
 | DeploymentQuotaExceeded | 如果达到每个资源组的部署数限制 800，则会从历史记录中删除不再需要的部署。 | [解决部署计数超出 800 的错误](deployment-quota-exceeded.md) |
+| DeploymentSizeExceeded | 简化模板以减小大小。 | [解决模板大小错误](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS 记录名称必须唯一。 输入不同的名称。 | |
 | ImageNotFound | 检查 VM 映像设置。 |  |
 | InUseSubnetCannotBeDeleted | 如果尝试更新资源，但已通过删除并创建资源处理了请求，则可能会出现此错误。 请确保指定所有未更改的值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,6 +50,7 @@ ms.locfileid: "89650953"
 | InvalidSubscriptionRegistrationState | 向资源提供程序注册订阅。 | [解决注册问题](error-register-resource-provider.md) |
 | InvalidTemplate | 检查模板语法是否存在错误。 | [解决模板无效的问题](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | 删除不必要的依赖项。 | [解决循环依赖项](error-invalid-template.md#circular-dependency) |
+| JobSizeExceeded | 简化模板以减小大小。 | [解决模板大小错误](error-job-size-exceeded.md) |
 | LinkedAuthorizationFailed | 检查帐户所属的租户是否与要部署到的资源组所属的租户相同。 | |
 | LinkedInvalidPropertyId | 无法正确解析资源的资源 ID。 请检查是否提供了资源 ID 的所有必需值，包括订阅 ID、资源组名称、资源类型、父资源名称（如果需要）、资源名称。 | |
 | LocationRequired | 提供资源的位置。 | [设置位置](resource-location.md) |

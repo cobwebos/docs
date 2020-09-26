@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 726bc34a309ac6a29c189f13037e059f200732ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335912"
+ms.locfileid: "91371178"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -61,7 +61,7 @@ DDoS 保护标准功能包括：
 
 DDoS 保护标准监控实际流量利用率，并不断将其与 DDoS 策略中定义的阈值进行比较。 当超过流量阈值时，将自动启动 DDoS 缓解。 当流量回到阈值以下时，缓解将移除。
 
-![缓解措施](./media/ddos-protection-overview/mitigation.png)
+![关系图显示了从客户通过 Azure 门户通过 DDoS 防护标准开始的流，该流通过公共 I P 地址通过从两个公共 I P 地址结束的策略生成进行。](./media/ddos-protection-overview/mitigation.png)
 
 在风险缓解期间，DDoS 保护服务重定向发送到受保护资源的流量，并执行多个检查，如以下检查：
 

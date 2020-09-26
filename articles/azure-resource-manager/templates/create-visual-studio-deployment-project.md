@@ -3,12 +3,12 @@ title: 创建和部署 Visual Studio 资源组项目
 description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985247"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372640"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
@@ -370,7 +370,7 @@ ms.locfileid: "90985247"
 
    ![自定义仪表板](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-可以使用 RBAC 组管理对仪表板的访问。 部署后，还可以自定义仪表板的外观。 但是，如果重新部署资源组，则模板中的仪表板将重置为其默认状态。 有关创建仪表板的详细信息，请参阅[以编程方式创建 Azure 仪表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
+可以使用 Azure RBAC)  (azure 基于角色的访问控制来管理仪表板的访问权限。 部署后，还可以自定义仪表板的外观。 但是，如果重新部署资源组，则模板中的仪表板将重置为其默认状态。 有关创建仪表板的详细信息，请参阅[以编程方式创建 Azure 仪表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

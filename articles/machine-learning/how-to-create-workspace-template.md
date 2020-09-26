@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/27/2020
-ms.openlocfilehash: 1feb4432111ce517d49396eb2cb516b0463268d8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: 0d8965fcbde799ff4f48c320fe796746545eeea7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315637"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -30,7 +30,14 @@ ms.locfileid: "90883036"
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+
+* 某些方案要求你打开支持票证。 这些方案为：
+
+    * __启用了专用链接的工作区，其中包含客户托管的密钥 (CMK) __
+    * __虚拟网络后的工作区的 Azure 容器注册表__
+
+    有关详细信息，请参阅 [管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 ## <a name="workspace-resource-manager-template"></a>工作区资源管理器模板
 
@@ -272,7 +279,21 @@ New-AzResourceGroupDeployment `
 如果关联的资源不在虚拟网络后面，则可以将 **privateEndpointType** 参数设置为 `AutoAproval` 或 `ManualApproval`，以将工作区部署到专用终结点后面。 对于新的和现有的工作区，都可以这样做。 更新现有工作区时，请使用现有工作区中的信息填写模板参数。
 
 > [!IMPORTANT]
-> 使用 Azure 专用链接为 Azure 机器学习工作区创建专用终结点当前为公共预览版。 此功能仅在 **美国东部**、 **美国中南部**和 **美国西部 2** 区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 使用 Azure 专用链接为 Azure 机器学习工作区创建专用终结点当前为公共预览版。 此功能仅在以下区域提供：
+>
+> * **美国东部**
+> * **美国中南部**
+> * **美国西部**
+> * **美国西部 2**
+> * **加拿大中部**
+> * **Southeast Asia**
+> * **Japan East**
+> * **北欧**
+> * **澳大利亚东部**
+> * **英国南部**
+>
+> 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

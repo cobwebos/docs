@@ -4,14 +4,14 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
-ms.openlocfilehash: 30b8facfef6d90a444bd61d0ce041ed7dfef324e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b478775aa572ce89f3dcdc6f28ee0418e818d99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376596"
 ---
-## <a name="automatic-device-management"></a>自动设备管理
+## <a name="automatic-device-management-in-azure-iot-hub"></a>Azure IoT 中心的自动设备管理
 Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](../articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](../articles/iot-edge/how-to-deploy-at-scale.md)。
 
 ## <a name="iot-edge"></a>IoT Edge
@@ -60,4 +60,4 @@ IoT Edge 运行时包括 Microsoft 分发用于安装在 IoT Edge 设备上的�
 在一个设备的模块孪生上复制 IoT Edge 清单内容的操作。 基础 API 是泛型“应用配置”，仅将 IoT Edge 清单作为输入。
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge 目标条件
-在 IoT Edge 部署中，目标条件是设备孪生的标记上的任何布尔条件，用于选择部署的目标设备，例如**tag。环境 = 生产**。持续评估目标条件，以包括满足要求的所有新设备或删除不再需要的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
+在 IoT Edge 部署中，目标条件是设备孪生的标记上的任何布尔条件，用于选择部署的目标设备，例如 **tag。环境 = 生产**。持续评估目标条件，以包括满足要求的所有新设备或删除不再需要的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息

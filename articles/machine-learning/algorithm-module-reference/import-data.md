@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372589"
 ---
 # <a name="import-data-module"></a>“导入数据”模块
 
@@ -56,7 +56,7 @@ ms.locfileid: "90907944"
 
 1. 选择“数据源”，然后选择数据源类型。 该类型可以是 HTTP 或数据存储。
 
-    如果选择数据存储，则可以选择已注册到 Azure 机器学习工作区的现有数据存储，或创建新的数据存储。 然后，定义数据在数据存储中的导入路径。 可以通过单击“浏览路径”来轻松浏览路径 ![import-data-path](media/module/import-data-path.png)
+    如果选择数据存储，则可以选择已注册到 Azure 机器学习工作区的现有数据存储，或创建新的数据存储。 然后，定义数据在数据存储中的导入路径。 你可以通过单击 " **浏览路径**" 屏幕截图来轻松浏览路径， ![ 这将显示 "浏览路径" 链接，打开 "路径选择" 对话框。](media/module/import-data-path.png)
 
 1. 选择“预览架构”以筛选要包含的列。 还可以在“分析”选项中定义高级设置，例如“分隔符”。
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315484"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process 实务：使用 Azure Synapse Analytics
 本教程逐步介绍如何使用 Azure Synapse Analytics 为某个公开提供的数据集（[纽约市出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集）生成和部署机器学习模型。 构造的二元分类模型可预测是否为某个行程支付了小费。  模型包括多类分类（是否有小费）和回归（已付小费金额的分布）。
@@ -117,7 +117,7 @@ BEGIN CATCH
 END CATCH;
 ```
 
-**在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](../studio/create-workspace.md)。
+**在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](../classic/create-workspace.md)。
 
 ## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>将数据加载到 Azure Synapse Analytics 中
 打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。
@@ -403,13 +403,13 @@ $wc.DownloadFile($source, $ps1_dest)
 ### <a name="data-import-verification"></a>数据导入验证
 通过这些查询，可以快速验证早先使用 Polybase 的平行批量导入填充的表中的行和列的数量，
 
---表 <中 nyctaxi_trip> 的行数，不包括表扫描
+-- 在不进行表扫描的情况下报告表 <nyctaxi_trip> 中的行数
 
    ```sql
    SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
    ```
 
---表 <nyctaxi_trip 中的列数>
+-- 报告表 <nyctaxi_trip> 中的列数
 
    ```sql
    SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
@@ -588,7 +588,7 @@ GO
 
 下面是一个示例，显示如何调用此函数以在 SQL 查询中生成功能︰
 
---用于调用函数以创建功能的示例查询
+-- 用于调用函数来创建功能的示例查询
 
    ```sql
 SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
@@ -602,7 +602,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
 **输出：** 此查询生成一个表（包含 2,803,538 行），其中包含上下车的经纬度以及相应的直接距离（以英里计）。 下面是前三行的结果：
 
-|  (行号)  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
+| （行号） | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
@@ -941,9 +941,9 @@ pd.read_sql(query,conn)
 2. **多类分类**：根据以前定义的类，预测小费支付范围。
 3. **回归任务**：预测为行程支付的小费金额。
 
-若要开始建模练习，请登录到 **Azure 机器学习（经典版）** 工作区。 如果尚未创建机器学习工作区，请参阅[创建 Azure 机器学习工作室（经典版）工作区](../studio/create-workspace.md)。
+若要开始建模练习，请登录到 **Azure 机器学习（经典版）** 工作区。 如果尚未创建机器学习工作区，请参阅[创建 Azure 机器学习工作室（经典版）工作区](../classic/create-workspace.md)。
 
-1. 要开始使用 Azure 机器学习，请参阅[什么是 Azure 机器学习工作室（经典版）？](../studio/what-is-ml-studio.md)
+1. 要开始使用 Azure 机器学习，请参阅[什么是 Azure 机器学习工作室（经典版）？](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. 登录 [Azure 机器学习工作室（经典版）](https://studio.azureml.net)。
 3. 机器学习工作室（经典版）主页上提供丰富的信息、视频、教程、指向模块参考链接及其他资源。 有关 Azure 机器学习的详细信息，请参阅 [Azure 机器学习文档中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
@@ -983,7 +983,7 @@ pd.read_sql(query,conn)
 >
 
 ## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>在 Azure 机器学习中部署模型
-模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure ML Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
+模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure ML Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../classic/deploy-a-machine-learning-web-service.md)。
 
 要部署新 Web 服务，需要：
 

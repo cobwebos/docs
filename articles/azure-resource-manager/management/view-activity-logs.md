@@ -3,12 +3,12 @@ title: 查看 Azure 活动日志以监视资源
 description: 使用活动日志查看用户操作和错误。 显示 Azure 门户、PowerShell、Azure CLI 和 REST。
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371586"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志以监视对资源的操作
 
@@ -20,7 +20,7 @@ ms.locfileid: "87827043"
 * 操作的状态
 * 其他可能有助于研究操作的属性的值
 
-活动日志包含针对资源执行的所有写入操作（PUT、POST、DELETE）。 它不包含读取操作 (GET)。 有关资源操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。
+活动日志包含针对资源执行的所有写入操作（PUT、POST、DELETE）。 它不包含读取操作 (GET)。 有关资源操作的列表，请参阅 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。
 
 活动日志可存储 90 天。 可以查询任何日期范围，只要开始日期不早于过去 90 天。
 
@@ -82,7 +82,7 @@ ms.locfileid: "87827043"
 
     ![显示更改](./media/view-activity-logs/show-changes.png)
 
-若要了解有关更改历史记录的详细信息，请参阅[获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
+若要了解有关更改历史记录的详细信息，请参阅 [获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -191,8 +191,8 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationNam
 ## <a name="next-steps"></a>后续步骤
 
 * Azure 活动日志可以与 Power BI 一起使用，以便更深入地了解在订阅中执行的操作。 请参阅 [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）。
-* 若要了解如何设置安全策略，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
+* 若要了解如何设置安全策略，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/role-assignments-portal.md)。
 * 若要查看有关从基础结构层一直到应用程序部署的应用程序更改的详细信息，请参阅[在 Azure Monitor 中使用应用程序更改分析](../../azure-monitor/app/change-analysis.md)。
 * 若要了解查看部署操作的命令，请参阅[查看部署操作](../templates/deployment-history.md)。
 * 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure 资源管理器锁定资源](lock-resources.md)。
-* 若要查看可用于各 Microsoft Azure 资源管理器提供程序的操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)
+* 若要查看可用于每个 Microsoft Azure 资源管理器提供程序的操作的列表，请参阅 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)

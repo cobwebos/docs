@@ -3,12 +3,12 @@ title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 7e8ae7e8c568f5f0ebb85f434e33f142b5fe94e8
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372164"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
@@ -130,7 +130,7 @@ az deployment group create \
 
 ## <a name="deploy-template-spec"></a>部署模板规格
 
-你可以创建 [模板规范](template-specs.md)，而不是部署本地或远程模板。模板规范是包含 ARM 模板的 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用基于角色的访问控制 (RBAC) 授予对模板规范的访问权限。此功能目前处于预览阶段。
+你可以创建 [模板规范](template-specs.md)，而不是部署本地或远程模板。模板规范是包含 ARM 模板的 Azure 订阅中的资源。 这使你可以轻松地与组织中的用户共享模板。 使用 azure RBAC)  (Azure 基于角色的访问控制来授予对模板规范的访问权限。此功能目前处于预览阶段。
 
 下面的示例演示如何创建和部署模板规范。只有 [注册了预览](https://aka.ms/templateSpecOnboarding)后，才可以使用这些命令。
 

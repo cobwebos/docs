@@ -3,12 +3,12 @@ title: 完整模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: e288d3af080a96616026e94ac7be352a7684c181
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327657"
+ms.locfileid: "91372455"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -1502,11 +1502,8 @@ ms.locfileid: "91327657"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | workspaces | 是 |
-> | 工作区/codeJobs | 否 |
 > | workspaces / computes | 否 |
 > | workspaces / eventGridFilters | 否 |
-> | 工作区/inferenceEndpoints | 是 |
-> | 工作区/inferenceEndpoints/部署 | 是 |
 > | workspaces / linkedServices | 否 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance

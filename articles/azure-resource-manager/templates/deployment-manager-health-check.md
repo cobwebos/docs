@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: a6925ef8f72615cc3868c8b5cd4ea030ed3c3c40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278051"
+ms.locfileid: "91372368"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>介绍 Azure 部署管理器 (公共预览版的运行状况集成推出) 
 
@@ -41,7 +41,7 @@ Azure 部署管理器中的新 *healthCheck* 步骤使你可以声明指示正�
     1. 身份验证信息。 目前仅支持 API 键样式身份验证。 对于 "Azure Monitor"，应将身份验证类型设置为– "RolloutIdentity"，因为用户分配的托管标识用于 Azure 部署管理器推广 Azure Monitor 扩展。
     1. 定义正常响应的[HTTP 状态代码](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes)或正则表达式。 请注意，您可以提供正则表达式，这两者都必须匹配才能视为正常的响应，或者您可能会提供表达式，使响应被视为正常。 支持这两种方法。
 
-    以下 Json 是将 Azure Monitor 与 Azure 部署管理器集成的一个示例，它利用 RolloutIdentity 并建立运行状况检查，其中在没有警报的情况下进行推出。 唯一受支持的 Azure Monitor API： [警报–获取全部](/rest/api/monitor/alertsmanagement/alerts/getall.md)。
+    以下 Json 是将 Azure Monitor 与 Azure 部署管理器集成的一个示例，它利用 RolloutIdentity 并建立运行状况检查，其中在没有警报的情况下进行推出。 唯一受支持的 Azure Monitor API： [警报–获取全部](/rest/api/monitor/alertsmanagement/alerts/getall)。
 
     ```json
     {

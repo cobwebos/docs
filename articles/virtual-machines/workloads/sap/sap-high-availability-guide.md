@@ -1,6 +1,6 @@
 ---
 title: SAP NetWeaver 的 Azure 虚拟机高可用性
-description: Azure 虚拟机 (VM) 上的 SAP NetWeaver 的高可用性指南
+description: 本文介绍适用于 SAP NetWeaver 的高可用性 Azure 虚拟机。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a330fc18f39ffd7007e2a41a28016df69a2b739
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314651"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>适用于 SAP NetWeaver 的高可用性 Azure 虚拟机
 

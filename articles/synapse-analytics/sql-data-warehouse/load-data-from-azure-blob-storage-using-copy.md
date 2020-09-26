@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371518"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教程：加载纽约出租车数据集
 
@@ -91,7 +91,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 11. 在工具栏上，选择“通知”监视部署过程。
   
-     ![通知](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![屏幕截图显示在部署正在进行时打开的通知窗格 Azure 门户。](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
