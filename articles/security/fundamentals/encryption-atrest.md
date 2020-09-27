@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224486"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397243"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -81,13 +81,13 @@ Microsoft 致力于提供跨云服务的静态加密选项，可让客户控制�
 
 Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下面是在每个模型上使用该服务的示例：
 
-- 软件服务，也称软件即服务（简称 SaaS），包含云提供的应用程序，例如 Office 365。
+- 软件服务，称为软件作为服务器或 SaaS，其中包含云提供的应用程序，如 Microsoft 365。
 - 平台服务，方便客户在其应用程序中利用云，将云用于存储、分析和服务总线功能等。
 - 基础结构服务，也称基础结构即服务 (IaaS)，方便客户部署托管在云中的操作系统和应用程序，并尽可能利用其他云服务。
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>适合 SaaS 客户的静态加密
 
-软件即服务 (SaaS) 客户通常会在每个服务中启用或提供静态加密。 Office 365 为客户提供多个验证或启用静态加密的选项。 有关 Office 365 服务的信息，请参阅 [Office 365 中的加密](https://docs.microsoft.com/office365/securitycompliance/encryption)。
+软件即服务 (SaaS) 客户通常会在每个服务中启用或提供静态加密。 Microsoft 365 有多个选项可供客户验证或启用静态加密。 有关 Microsoft 365 服务的信息，请参阅 [Microsoft 365 中的加密](/microsoft-365/compliance/encryption)。
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>适合 PaaS 客户的静态加密
 

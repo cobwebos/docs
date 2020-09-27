@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985905"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395883"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
 标识数据由 Azure AD 存储在地理位置，这是在订阅 Microsoft Online 服务（例如 Microsoft 365 和 Azure）时由你的组织提供的地址。 若要了解标识数据的存储位置，可以使用 Microsoft 信任中心的 " [你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) " 部分。
@@ -35,6 +35,10 @@ ms.locfileid: "90985905"
 * 使用来自欧盟数据中心的 OATH 代码的多重身份验证请求在 EU 进行验证。
 
 若要详细了解 Azure 多重身份验证服务器 (MFA 服务器) 和基于云的 Azure MFA 收集的用户信息，请参阅 [Azure 多重身份验证用户数据收集](../authentication/howto-mfa-reporting-datacollection.md)。
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>适用于企业应用程序的基于密码的单一登录
+ 
+如果客户创建新的企业应用程序 (通过 Azure AD 库或非库) 并启用基于密码的 SSO，则应用程序登录 URL 和自定义捕获登录字段将存储在美国中。 有关此功能的详细信息，请参阅 [配置基于密码的单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

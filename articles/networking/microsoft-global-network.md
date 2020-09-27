@@ -13,45 +13,45 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280896"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398383"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
 
 Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复杂的体系结构（跨越超过160000英里）连接我们的数据中心和客户。 
  
-每天，世界各地的客户连接并将数万亿个请求传递到 Microsoft Azure、Bing、Dynamics 365、Office 365、XBox 等。 无论类型如何，客户都希望能够从我们的服务获得即时的可靠性和响应能力。 
+每天，世界各地的客户连接并将数万亿个请求传递到 Microsoft Azure、Bing、Dynamics 365、Microsoft 365、XBox 等。 无论类型如何，客户都希望能够从我们的服务获得即时的可靠性和响应能力。 
  
-[Microsoft 全球网络](https://azure.microsoft.com/global-infrastructure/global-network/)（WAN）是提供卓越的云体验的核心部分。 将我们的 Microsoft[数据中心](https://azure.microsoft.com/global-infrastructure/)连接到54个 Azure 区域和在世界各地的大型边缘节点，我们的全球网络提供了可用性、容量和灵活性，可满足任何需求。
+[Microsoft 全球网络](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) 是提供出色的云体验的核心。 将我们的 Microsoft [数据中心](https://azure.microsoft.com/global-infrastructure/) 连接到54个 Azure 区域和在世界各地的大型边缘节点，我们的全球网络提供了可用性、容量和灵活性，可满足任何需求。
 
 ![Microsoft 全球网络](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>获取高级云网络
  
-使用 Microsoft 云时，可以轻松选择[最佳体验](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)。 从客户流量进入全球网络到战略放置的边缘节点的那一刻，你的数据将在接近光线速度的情况下通过优化的路由传输。 这可确保最佳的延迟，以获得最佳性能。 在超过165个位置，这些边缘节点（所有连接到超过3500个唯一 Internet 合作伙伴（对等）的 Internet 合作伙伴（对等）可为其奠定基础。 
+使用 Microsoft 云时，可以轻松选择 [最佳体验](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) 。 从客户流量进入全球网络到战略放置的边缘节点的那一刻，你的数据将在接近光线速度的情况下通过优化的路由传输。 这可确保最佳的延迟，以获得最佳性能。 这些边缘节点（所有连接到3500个唯一 Internet 伙伴 (对等互连）) 到超过165个位置上的数千个连接，因此提供了互连策略的基础。 
  
 无论是从伦敦连接到东京还是从华盛顿特区连接到洛杉矶，网络性能都可以量化，并受诸如延迟、抖动、数据包丢失和吞吐量等因素的影响。  在 Microsoft，我们首选并使用直接互连，而不是传输链接，这会使响应流量保持对称，并有助于使跃点、对等方和路径尽可能简短且简单。 
 
-例如，如果伦敦的用户尝试访问东京中的服务，则 Internet 流量将进入伦敦的一个边缘，通过 Microsoft WAN 通过法国，在欧洲和印度之间进行交易，并将其用于托管服务的位置。 响应流量是对称的。 这有时称为[冷刷路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing)，这意味着在将流量移交之前，流量将在 Microsoft 网络上保持不变。  
+例如，如果伦敦的用户尝试访问东京中的服务，则 Internet 流量将进入伦敦的一个边缘，通过 Microsoft WAN 通过法国，在欧洲和印度之间进行交易，并将其用于托管服务的位置。 响应流量是对称的。 这有时称为 [冷刷路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ，这意味着在将流量移交之前，流量将在 Microsoft 网络上保持不变。  
   
 那么，在使用 Microsoft 服务时，这是否意味着任何流量？ 是的，数据中心之间的任何流量 Microsoft Azure 或 Microsoft 服务（例如虚拟机、Microsoft 365、XBox、SQL 数据库、存储和虚拟网络）之间的任何流量都在全球网络内路由，并从不通过公共 Internet 进行路由，以确保最佳的性能和完整性。  
  
-在大都市、地面和海底路径之间实现巨大的大规模投资，在加油站云和联机服务的极端增长时，这对我们来说是保持一致和高的服务级别。 全局网络的最新新增功能是我们的[MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea)海底缆线、行业的第一个开源系统（OLS） over Subsea、Bilbao、西班牙和弗吉尼亚海滩、弗吉尼亚州、美国、美国和美国纽约、美国和都柏林之间、爱尔兰和新[的北京](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) [（](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) 
+在大都市、地面和海底路径之间实现巨大的大规模投资，在加油站云和联机服务的极端增长时，这对我们来说是保持一致和高的服务级别。 全局网络的最新新增功能是我们的 MAREA 海底缆线、行业的第一个开源系统 (OLS) over subsea、Bilbao、西班牙和弗吉尼亚海滩、弗吉尼亚州、美国、美国和纽约、美国和都柏林之间、爱尔兰和新的北京[ (NCP) ](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system)在东京、日本和奥兰多[之间的](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) 。 
  
 
 ## <a name="our-network-is-your-network"></a>网络是你的网络
 
 我们已经投入了数十年的经验，并在网络中投入了大量资金，以确保始终获得最佳性能。 企业可以充分利用我们的网络资产，并在顶部构建高级覆盖体系结构。 
  
-Microsoft Azure 提供了最丰富的服务和功能组合，从而使客户能够在任何位置快速轻松地构建、扩展和满足网络需求。 我们的连接服务系列跨区域、混合和云中点到站点和站点到站点体系结构以及全局 IP 传输方案之间的虚拟网络对等互连。  对于希望将自己的数据中心或网络连接到 Azure 的企业，或具有大规模数据引入或传输需求、 [ExpressRoute](../expressroute/expressroute-introduction.md)和[expressroute](../expressroute/expressroute-erdirect-about.md)的客户，可直接在世界各地的对等互连位置提供高达 100 Gbps 的带宽的选项。  
+Microsoft Azure 提供了最丰富的服务和功能组合，从而使客户能够在任何位置快速轻松地构建、扩展和满足网络需求。 我们的连接服务系列跨区域、混合和云中点到站点和站点到站点体系结构以及全局 IP 传输方案之间的虚拟网络对等互连。  对于希望将自己的数据中心或网络连接到 Azure 的企业，或具有大规模数据引入或传输需求、 [ExpressRoute](../expressroute/expressroute-introduction.md)和 [expressroute](../expressroute/expressroute-erdirect-about.md) 的客户，可直接在世界各地的对等互连位置提供高达 100 Gbps 的带宽的选项。  
  
-[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md)旨在补充你的服务提供商的 WAN 实现并将本地站点连接到世界各地。 如果运行全局操作，则可以将 ExpressRoute Global Reach 与首选和本地服务提供商结合使用，以使用 Microsoft 全球网络连接所有全局站点。 将云中（WAN）中的新网络扩展为包含大量的分支站点可通过 Azure 虚拟 WAN 来实现，这使你能够通过内置易用性和自动连接性和配置管理将分支无缝连接到使用 SDWAN & VPN 设备（即，客户本地设备或 CPE）的 Microsoft 全球网络。 
+[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 旨在补充你的服务提供商的 WAN 实现并将本地站点连接到世界各地。 如果运行全局操作，则可以将 ExpressRoute Global Reach 与首选和本地服务提供商结合使用，以使用 Microsoft 全球网络连接所有全局站点。 将新的网络扩展到云中 (WAN) 可通过 Azure 虚拟 WAN 实现大量的分支站点，这使你能够使用 SDWAN & VPN 设备将分支无缝连接到 Microsoft 全球网络 (也就是说，客户本地设备或 CPE) 使用内置易用性和自动连接和配置管理。 
  
-[全局 VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)可让客户无缝地跨区域连接两个或多个 Azure 虚拟网络。 一旦对等互连，虚拟网络就会显示为一。 对等互连虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 
+[全局 VNet 对等互连](../virtual-network/virtual-network-peering-overview.md) 可让客户无缝地跨区域连接两个或多个 Azure 虚拟网络。 一旦对等互连，虚拟网络就会显示为一。 对等互连虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 
  
 
 ## <a name="well-managed-using-software-defined-innovation"></a>使用软件定义的创新进行良好管理

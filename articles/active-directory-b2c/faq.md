@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270659"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396427"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -29,9 +29,9 @@ ms.locfileid: "88270659"
 
 Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。 Azure AD 租户表示组织。 Azure AD B2C 租户表示信赖方应用使用的标识集合。 通过在“Azure AD B2C”>“标识提供者”下添加“新的 OpenID Connect 提供程序”，或者通过使用自定义策略，Azure AD B2C 可以联合 Azure AD，以便对组织中的员工进行身份验证。 
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>我可以使用 Azure AD B2C 提供 Office 365 的社交登录（Facebook 和 Google+）吗？
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>能否使用 Azure AD B2C 向 Microsoft 365 提供社交登录 (Facebook 和 Google +) ？
 
-Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。 Azure AD 是 Microsoft 的解决方案，用于管理员工对 SaaS 应用的访问权限，并且它具有旨在实现此目的的功能，如许可和条件访问。 Azure AD B2C 提供用于生成 Web 和移动应用程序的标识和访问管理平台。 当 Azure AD B2C 配置为联合 Azure AD 租户时，Azure AD 租户将管理员工对依赖 Azure AD B2C 的应用程序的访问权限。
+Azure AD B2C 不能用于对 Microsoft 365 的用户进行身份验证。 Azure AD 是 Microsoft 的解决方案，用于管理员工对 SaaS 应用的访问权限，并且它具有旨在实现此目的的功能，如许可和条件访问。 Azure AD B2C 提供用于生成 Web 和移动应用程序的标识和访问管理平台。 当 Azure AD B2C 配置为联合 Azure AD 租户时，Azure AD 租户将管理员工对依赖 Azure AD B2C 的应用程序的访问权限。
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>什么是 Azure AD B2C 中的本地帐户？ 它们与 Azure AD 中的工作或学校帐户有何不同？
 
@@ -154,7 +154,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
 1. 在左侧菜单中，选择“Azure Active Directory”。
-1. 在 " **概述** " 页上，选择 " **删除租户**"。 按照屏幕上的说明完成该过程。
+1. 在“概述”页上，选择“删除租户” 。 按照屏幕上的说明完成该过程。
 
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 

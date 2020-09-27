@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b07ed4589a54948ef87f516ac4bb97ef8492283e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329238"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398829"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>迁移到 Azure 虚拟 WAN
 
@@ -72,7 +72,7 @@ Contoso 是一家全球金融组织，在欧洲和亚洲设有办事处。 他�
 - 中心还通过全球网格网络的 OpenVPN 连接，为使用多种客户端类型的漫游用户提供 VPN 终端，这样，用户不仅可以访问已迁移到 Azure 的应用程序，而且还能访问保留在本地的任何资源。
 - Azure 虚拟 WAN 提供的虚拟网络中的资源的 Internet 连接。
 
-同样由 Azure 虚拟 WAN 提供的远程站点 Internet 连接。 通过合作伙伴集成支持的本地 Internet 中断，用于优化对 Office 365 等 SaaS 服务的访问。
+同样由 Azure 虚拟 WAN 提供的远程站点 Internet 连接。 通过合作伙伴集成支持本地 internet 分类，以优化访问 SaaS 服务（如 Microsoft 365）。
 
 ## <a name="migrate-to-virtual-wan"></a>迁移到虚拟 WAN
 

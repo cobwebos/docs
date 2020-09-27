@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017696"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395968"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租户应用程序
-多租户应用程序是一种共享资源，允许 "单独租户中的用户" 查看应用程序，就像它是自己的应用程序一样。 在多租户应用程序中，一种典型的方案是，来自不同租户的应用程序的所有用户都可能希望自定义用户体验，但也有相同的基本业务要求。 大型多租户应用程序的示例包括 Office 365、Outlook.com 和 visualstudio.com。
+多租户应用程序是一种共享资源，它允许“单独租户中的用户”像使用其自己的应用程序一样查看应用程序。 适合实施多租户应用程序的典型情况是，不同租户中的所有应用程序用户都可能希望定制用户体验，但在其他方面具有相同的基本业务要求。 大型多租户应用程序的示例有 Microsoft 365、Outlook.com 和 visualstudio.com。
 
 从应用程序提供商的角度来看，多租户技术的优势大多涉及运营和成本效益。 应用程序的一个版本可以满足许多租户/客户的需求，从而使你能够整合系统管理任务，例如监视、性能优化、软件维护和数据备份。
 
@@ -49,7 +49,7 @@ Azure 提供了许多功能，使你能够解决在设计多租户系统时遇�
 
 **隔离**
 
-* 使用或不使用 TLS 通信的主机标头对网站租户进行分段
+* 按使用或不使用 TLS 通信的主机头对网站租户进行分段
 * 按查询参数对网站租户进行分段
 * 辅助角色中的 Web 服务
   * 辅助角色通常在应用程序后端处理数据。

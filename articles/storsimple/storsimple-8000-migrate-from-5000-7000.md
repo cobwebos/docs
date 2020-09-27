@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184289"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398180"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>将数据从 StorSimple 5000-7000 系列迁移到 8000 系列设备
 
@@ -80,8 +80,8 @@ ms.locfileid: "88184289"
 
     ![检查旧设备上的软件版本。](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * 如果你的当前设备运行的不是 v2.1.1.518 或更高版本，请将系统升级到所要求的最低版本。 有关详细说明，请参阅[将系统升级到 v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)。
-    * 如果正在运行的是 v2.1.1.518，请转到 Web UI 查看是否存在有关注册表还原失败的任何通知。 如果注册表还原已失败，请运行注册表还原。 有关详细信息，请参阅如何[运行注册表还原](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry)。
+    * 如果你的当前设备运行的不是 v2.1.1.518 或更高版本，请将系统升级到所要求的最低版本。 你可能需要使用 Microsoft 支持部门来帮助你执行升级。
+    * 如果正在运行的是 v2.1.1.518，请转到 Web UI 查看是否存在有关注册表还原失败的任何通知。 如果注册表还原已失败，请运行注册表还原。 你可能需要使用 Microsoft 支持部门来帮助你还原注册表。
     * 如果有出现故障的设备没有运行 v2.1.1.518，请将其故障转移到运行 v2.1.1.518 的替换设备上。 有关详细说明，请参阅 5000/7000 系列 StorSimple 设备的 DR。
     * 通过使用云快照备份设备的数据。
     * 检查在源设备上是否有运行的任何其他活动备份作业。 这包括在 StorSimple 数据保护控制台主机上的作业。 等待当前作业完成。

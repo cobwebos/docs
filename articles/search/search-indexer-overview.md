@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971396"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397889"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -60,7 +60,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 对于它引入的每个文档，索引器将执行或协调多个步骤来编制索引，从文档检索到最终的搜索引擎“移交”。 （可选）如果定义了技能组，索引器还有助于推动技能组的执行和输出。
 
-![索引器阶段](./media/search-indexer-overview/indexer-stages.png "索引器阶段")
+:::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="索引器阶段" border="false":::
 
 ### <a name="stage-1-document-cracking"></a>第 1 阶段：文档破解
 

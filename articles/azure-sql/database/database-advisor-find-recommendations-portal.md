@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e13d69b8d821267a993cd2ca9a3b6d0d686ccf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284527"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398265"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
    ![索引顾问设置](./media/database-advisor-find-recommendations-portal/settings.png)
 2. 选择要自动执行的操作：
 
-   ![建议的索引](./media/database-advisor-find-recommendations-portal/server.png)
+   ![显示在何处选择要自动执行的操作的屏幕截图。](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
 > 请注意，**DROP_INDEX** 选项当前与使用分区切换和索引提示的应用程序不兼容。
@@ -139,7 +139,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 
 单击列表中的进程内建议即可查看详细信息：
 
-![建议的索引](./media/database-advisor-find-recommendations-portal/operations.png)
+![显示进程内建议列表的屏幕截图。](./media/database-advisor-find-recommendations-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>正在还原建议
 

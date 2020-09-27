@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 67eeb181f64f5924a90fd2c03e39e1be9887dd2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361035"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397158"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -205,10 +205,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | `storage.googleapis.com` | **`HTTPS:443`** | 此地址用于请求 helm/tiller 映像 |
 
 
-### <a name="azure-policy-preview"></a>Azure Policy（预览）
-
-> [!CAUTION]
-> 下面的某些功能处于预览阶段。  随着此功能向公共预览版和未来发布阶段发展，本文中的建议可能会有所不同。
+### <a name="azure-policy"></a>Azure Policy
 
 #### <a name="required-fqdn--application-rules"></a>必需的 FQDN/应用程序规则 
 
@@ -219,7 +216,6 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此地址用于正确操作 Azure Policy。 （AKS 中目前为预览版） |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此地址用于从 GitHub 请求内置策略，以确保正确操作 Azure Policy。 （AKS 中目前为预览版） |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy 加载项，用于向应用程序见解终结点发送遥测数据。 |
-
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>使用 Azure 防火墙限制出口流量
 

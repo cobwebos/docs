@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646828"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398008"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
@@ -25,7 +25,7 @@ ms.locfileid: "89646828"
 发布到商业市场的好处：
 
 - 使用 Microsoft 品牌推广你的公司。
-- 有机会与 AppSource 中的 1 亿多个 Office 365 和 Dynamics 365 用户接触，并通过 Azure 市场与 20 多万家组织接触。
+- 通过 Azure Marketplace，可能会超过 100000000 Microsoft 365 和 Dynamics 365 用户，AppSource 和200000多家组织。
 - 从这些市场获得优质的潜在客户。
 - 通过 Microsoft 现场和远程销售团队推广你的服务
 
@@ -98,7 +98,7 @@ ms.locfileid: "89646828"
 
 3. 如果选择了 " **Azure** 作为主要产品"，请选择最多三个 **解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
 
-    - 分析
+    - Analytics
     - 应用现代化
     - 存档
     - AI + 机器学习

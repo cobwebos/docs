@@ -1,5 +1,6 @@
 ---
-title: 从 Web 应用调用 Web API - Microsoft 标识平台 | Azure
+title: 从 web 应用调用 web api |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的 Web 应用（调用受保护的 Web API）
 services: active-directory
 author: jmprieur
@@ -8,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1e448f52f4e8c24dd8552cae873edac841e57fc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058432"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396121"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
-现在你已有令牌，可以调用受保护的 Web API 了。
+现在你已有令牌，可以调用受保护的 Web API 了。 通常会从 web 应用的控制器或页面调用下游 API。
 
 ## <a name="call-a-protected-web-api"></a>调用受保护的 Web API
 
@@ -28,20 +29,103 @@ ms.locfileid: "87058432"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-下面是 `HomeController` 操作的简化代码。 此代码获取用于调用 Microsoft Graph 的令牌。 添加了代码以演示如何将 Microsoft Graph 作为 REST API 调用。 Microsoft Graph API 的 URL 在 appsettings.json 文件中提供，并在名为 `webOptions` 的变量中读取：
+如果使用的是 *web.config*，则可以使用三种方法来调用 API：
 
-```json
+- [选项1：通过 Microsoft Graph SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
+- [选项2：使用帮助器类调用下游 web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [选项3：在不使用 helper 类的情况下调用下游 web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
+
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>选项1：通过 SDK 调用 Microsoft Graph
+
+要调用 Microsoft Graph。 在这种情况下，你已添加到 " `AddMicrosoftGraph` [代码配置](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph)" 中指定的*Startup.cs*中，并且可以直接在 `GraphServiceClient` 控制器或页构造函数中插入，以便在操作中使用。 以下示例 Razor 页面显示已登录用户的照片。
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
+public class IndexModel : PageModel
 {
-  "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
-    ...
-  },
-  ...
-  "GraphApiUrl": "https://graph.microsoft.com"
+ private readonly GraphServiceClient _graphServiceClient;
+
+ public IndexModel(GraphServiceClient graphServiceClient)
+ {
+    _graphServiceClient = graphServiceClient;
+ }
+
+ public async Task OnGet()
+ {
+  var user = await _graphServiceClient.Me.Request().GetAsync();
+  try
+  {
+   using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+   {
+    byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+    ViewData["photo"] = Convert.ToBase64String(photoByte);
+   }
+   ViewData["name"] = user.DisplayName;
+  }
+  catch (Exception)
+  {
+   ViewData["photo"] = null;
+  }
+ }
 }
 ```
 
-```csharp
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>选项2：使用帮助器类调用下游 web API
+
+需要调用 Microsoft Graph 之外的 web API。 在这种情况下，你已按照 `AddDownstreamWebApi` [代码配置](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)中的指定添加到*Startup.cs* ，并且可以直接在 `IDownstreamWebApi` 控制器或页构造函数中注入服务，并在操作中使用它：
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+public class TodoListController : Controller
+{
+  private IDownstreamWebApi _downstreamWebApi;
+  private const string ServiceName = "TodoList";
+
+  public TodoListController(IDownstreamWebApi downstreamWebApi)
+  {
+    _downstreamWebApi = downstreamWebApi;
+  }
+
+  public async Task<ActionResult> Details(int id)
+  {
+    var value = await _downstreamWebApi.CallWebApiForUserAsync(
+      ServiceName,
+      options =>
+      {
+        options.RelativePath = $"me";
+      });
+      return View(value);
+  }
+}
+```
+
+`CallWebApiForUserAsync`还具有强类型的泛型重写，使你能够直接接收对象。 例如，下面的方法接收 `Todo` 实例，该实例是 WEB API 返回的 JSON 的强类型表示形式。
+
+```CSharp
+    // GET: TodoList/Details/5
+    public async Task<ActionResult> Details(int id)
+    {
+        var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+            ServiceName,
+            null,
+            options =>
+            {
+                options.HttpMethod = HttpMethod.Get;
+                options.RelativePath = $"api/todolist/{id}";
+            });
+        return View(value);
+    }
+   ```
+
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>选项3：在不使用 helper 类的情况下调用下游 web API
+
+你已决定使用服务手动获取令牌 `ITokenAcquisition` ，现在需要使用该令牌。 在这种情况下，以下代码将继续在 web 应用中显示的示例代码 [，该应用程序调用 Web api：获取应用程序的令牌](scenario-web-app-call-api-acquire-token.md)。 代码在 web 应用控制器的操作中调用。
+
+获取令牌后，将其用作持有者令牌以调用下游 API，在本例中为 Microsoft Graph。
+
+ ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,11 +149,10 @@ public async Task<IActionResult> Profile()
   return View();
 }
 ```
-
 > [!NOTE]
 > 可以使用相同的原则来调用任何 Web API。
 >
-> 大多数 Azure Web API 都提供了简化 API 调用的 SDK。 Microsoft Graph 也是如此。 下一篇文章介绍如何找到说明 API 用法的教程。
+> 大多数 Azure web Api 都提供 SDK，可简化对 Microsoft Graph 的调用。 例如， [创建一个 web 应用程序，该应用程序使用 Azure AD 获取对 Blob 存储的访问权限，该应用程序](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet) 使用 Microsoft 和 AZURE 存储 SDK 的 web 应用的示例。
 
 # <a name="java"></a>[Java](#tab/java)
 

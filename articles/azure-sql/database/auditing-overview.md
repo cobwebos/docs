@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333182"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396223"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 2. 导航到“SQL 数据库”或“SQL Server”窗格中“安全性”标题下的“审核”  。
 3. 如果想设置服务器审核策略，可以选择数据库审核页中的“查看服务器设置”链接。 然后，可查看或修改服务器审核设置。 服务器审核策略应用于此服务器上所有现有和新建数据库。
 
-    ![导航窗格](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![屏幕截图，显示 "数据库审核" 页上突出显示的 "查看服务器设置" 链接。](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. 如果希望在数据库级别启用审核，请将“审核”切换到“启用”。 如果启用了服务器审核，数据库配置的审核将与服务器审核并存。
 
@@ -163,7 +163,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
-    ![导航窗格](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![屏幕截图，显示在 "数据库审核" 页上突出显示的 "查看审核日志" 按钮。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     此时会打开“审核记录”，可在其中查看日志。
 
@@ -171,14 +171,14 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
   - 可以通过切换“审核源”在服务器审核策略和数据库审核策略创建的审核记录之间进行切换。
   - 通过选中“仅显示 SQL 注入的审核记录”复选框，可以仅查看与 SQL 注入相关的审核记录。
 
-       ![导航窗格]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![显示用于查看审核记录的选项的屏幕截图。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - 使用系统函数 **sys.fn_get_audit_file** (T-SQL) 以表格格式返回审核日志数据。 有关使用此函数的详细信息，请参阅 [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
 - 使用 SQL Server Management Studio 中的“合并审核文件”选项（从 SSMS 17 开始）：
     1. 在 SSMS 菜单中，选择“文件” > “打开” > “合并审核文件”。
 
-        ![导航窗格](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![显示 "合并审核文件" 菜单选项的屏幕截图。](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. 此时会打开“添加审核文件”对话框。 通过“添加”选项，选择是合并本地磁盘中的审核文件还是从 Azure 存储中导入。 需要提供 Azure 存储详细信息和帐户密钥。
 
     3. 添加要合并的所有文件后，单击“确定”完成合并操作。
@@ -218,7 +218,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
 1. 打开“存储详细信息”。 在“存储访问密钥”框中，选择“辅助”并单击“确定”。 然后单击“审核配置”页顶部的“保存”。
 
-    ![导航窗格](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![显示用于选择辅助存储访问密钥的过程的屏幕截图。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. 转到存储配置页，重新生成主访问密钥。
 
     ![导航窗格](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

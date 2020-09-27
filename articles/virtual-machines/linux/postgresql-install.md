@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267245"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397090"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
@@ -164,7 +164,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     你应该会收到以下输出：
 
-![图像](./media/postgresql-install/no1.png)
+![在初始化数据库后显示输出的屏幕截图。](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>设置 PostgreSQL
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![图像](./media/postgresql-install/no2.png)
+![屏幕截图，显示安装前缀和数据目录。](./media/postgresql-install/no2.png)
 
 更改文件以使其成为可执行文件：
 
@@ -207,7 +207,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 你应该会看到以下输出：
 
-![图像](./media/postgresql-install/no3.png)
+![显示 PostgreSQL 终结点的屏幕截图。](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>连接到 Postgres 数据库
 再次切换成 postgres 用户：
@@ -246,11 +246,11 @@ CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1
 
 如果成功创建了表，你应该会看到以下内容：
 
-![图像](./media/postgresql-install/no4.png)
+![显示成功创建表时显示的消息的屏幕截图。](./media/postgresql-install/no4.png)
 
 你还可以使用以下命令检查表结构：
 
-![图像](./media/postgresql-install/no5.png)
+![显示用于检查表结构的命令的屏幕截图。](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>向表中添加数据
 首先，将信息插入某一行：
@@ -261,7 +261,7 @@ INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Cassero
 
 你应该会看到以下输出：
 
-![图像](./media/postgresql-install/no6.png)
+![屏幕截图，显示您添加的行信息。](./media/postgresql-install/no6.png)
 
 你也可以向表中多添加几个人。 下面是几个选项，你也可以自行创建：
 
@@ -282,7 +282,7 @@ select * from potluck;
 
 输出为：
 
-![图像](./media/postgresql-install/no7.png)
+![显示用于显示表的命令输出的屏幕截图。](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>删除表中的数据
 使用以下命令来删除表中的数据：

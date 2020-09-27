@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983296"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398504"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念
 
@@ -23,7 +23,7 @@ Azure Key Vault 是一种用于安全存储和访问机密的云服务。 需要
 
 下面是其他重要的术语：
 
-- **租户**：租户是拥有和管理特定的 Microsoft 云服务实例的组织。 它通常用来引用组织的 Azure 和 Office 365 服务集。
+- **租户**：租户是拥有和管理特定的 Microsoft 云服务实例的组织。 它最常用于指代组织的一组 Azure 和 Microsoft 365 服务。
 
 - **保管库所有者**：保管库所有者可以创建密钥保管库并获得它的完全访问权限和控制权。 保管库所有者还可以设置审核来记录谁访问了机密和密钥。 管理员可以控制密钥生命周期。 他们可以滚动到密钥的新版本、对其进行备份，以及执行相关的任务。
 
@@ -39,7 +39,7 @@ Azure Key Vault 是一种用于安全存储和访问机密的云服务。 需要
 
 - **资源组**：资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。
 
-- **安全主体**： Azure 安全主体是用户创建的应用、服务和自动化工具用于访问特定 Azure 资源的安全标识。 可将其视为具有特定角色，并且权限受到严格控制的“用户标识”（用户名和密码，或者证书）。 与一般用户标识不同，安全主体只需执行特定的操作。 如果只向它授予执行管理任务所需的最低权限级别，则可以提高安全性。 与应用程序或服务一起使用的安全主体专门称为 **服务主体**。
+- **安全主体**：Azure 安全主体是用户创建的应用、服务和自动化工具用来访问特定 Azure 资源的安全标识。 可将其视为具有特定角色，并且权限受到严格控制的“用户标识”（用户名和密码，或者证书）。 与普通的用户标识不同，安全主体应该只需执行特定的操作。 如果只向它授予执行管理任务所需的最低权限级别，则可以提高安全性。 与应用程序或服务一起使用的安全主体专称为“服务主体”。
 
 - [Azure Active Directory (Azure AD)](../../active-directory/active-directory-whatis.md)：Azure AD 是租户的 Active Directory 服务。 每个目录有一个或多个域。 每个目录可以有多个订阅与之关联，但只有一个租户。
 

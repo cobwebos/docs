@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083814"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397957"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -197,11 +197,11 @@ Site Recovery configuration failed.
 
 #### <a name="possible-cause"></a>可能的原因
 
-无法建立到 Office 365 身份验证和标识 IP4 终结点的连接。
+无法建立到 Microsoft 365 身份验证和标识 IP4 终结点的连接。
 
 #### <a name="fix-the-problem"></a>解决问题
 
-Azure Site Recovery 需要具有对 Office 365 IP 范围的访问权限才能进行身份验证。
+Azure Site Recovery 所需的访问权限 Microsoft 365 用于身份验证的 IP 范围。
 如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理控制 VM 的出站网络连接，请确保使用基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则来允许访问 AAD。 我们不再支持基于 IP 地址的 NSG 规则。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
@@ -535,19 +535,19 @@ Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程
 
 删除错误消息中指出的副本磁盘，然后重试失败的保护作业。
 
-## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>启用保护失败，因为安装程序找不到根磁盘（错误代码151137）
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>启动保护失败，因为安装程序无法找到根磁盘（错误代码 151137）
 
-对于使用 Azure 磁盘加密（ADE）对 OS 磁盘进行加密的 Linux 计算机，会发生此错误。 这只是代理版本9.35 中的有效问题。
+对于使用 Azure 磁盘加密 (ADE) 对 OS 磁盘进行加密的 Linux 计算机，会发生此错误。 这只是代理版本 9.35 中的有效问题。
 
 ### <a name="possible-causes"></a>可能的原因
 
-安装程序找不到承载根文件系统的根目录。
+安装程序无法找到托管根文件系统的根磁盘。
 
 ### <a name="fix-the-problem"></a>解决问题
 
-请按照以下步骤解决此问题-
+请按照以下步骤解决此问题 -
 
-1. 使用以下命令在 RHEL 和 CentOS 计算机上的目录 _/var/lib/waagent_下查找代理位： <br>
+1. 使用以下命令在 RHEL 和 CentOS 计算机上的目录 /var/lib/waagent 下查找代理位： <br>
 
     `# find /var/lib/ -name Micro\*.gz`
 
@@ -560,7 +560,7 @@ Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程
 
     `tar -xf <Tar Ball File>`
 
-4. 打开_prereq_check_installer.js_的文件，并删除以下行。 在此之后保存该文件。
+4. 打开文件 prereq_check_installer.json 并删除以下行。 在此之后保存该文件。
 
     ```
        {
@@ -568,10 +568,10 @@ Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程
           "CheckType": "MobilityService"
        },
     ```
-5. 使用命令调用安装程序： <br>
+5. 使用以下命令调用安装程序： <br>
 
     `./install -d /usr/local/ASR -r MS -q -v Azure`
-6. 如果安装成功，请重试启用复制作业。
+6. 如果安装程序成功，请重试“启用复制”作业。
 
 ## <a name="next-steps"></a>后续步骤
 

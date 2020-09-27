@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b1582af2bbd97579852ead0d4462f80f3a50fe6a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257140"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396189"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>调用 Web API 的 Web API：调用 API
 
@@ -28,11 +28,11 @@ ms.locfileid: "91257140"
 
 使用 *Microsoft. Identity*时，有三种使用方案：
 
-- [调用 Microsoft Graph](#call-microsoft-graph)
-- [调用 Microsoft Graph 的 web API](#call-web-api-other-than-microsoft-graph)
-- [手动获取令牌](#acquire-a-token-manually)
+- [选项1：通过 Microsoft Graph SDK 调用 Microsoft Graph](#option-1-call-microsoft-graph-with-the-sdk)
+- [选项2：使用帮助器类调用下游 web API](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [选项3：在不使用 helper 类的情况下调用下游 web API](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
-#### <a name="call-microsoft-graph"></a>调用 Microsoft Graph
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>选项1：通过 SDK 调用 Microsoft Graph
 
 在这种情况下，你已添加到 " `.AddMicrosoftGraph()` [代码配置](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)" 中指定的*Startup.cs*中，并且可以直接在 `GraphServiceClient` 控制器或页构造函数中插入，以便在操作中使用。 以下示例 Razor 页面显示已登录用户的照片。
 
@@ -68,7 +68,7 @@ ms.locfileid: "91257140"
  }
 ```
 
-#### <a name="call-web-api-other-than-microsoft-graph"></a>调用 Microsoft Graph 之外的 web API
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>选项2：使用帮助器类调用下游 web API
 
 在这种情况下，你已添加到 " `.AddDownstreamWebApi()` [代码配置](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)" 中指定的*Startup.cs* ，可以直接将 `IDownstreamWebApi` 服务注入控制器或页构造函数并在操作中使用它：
 
@@ -115,7 +115,7 @@ ms.locfileid: "91257140"
  }
 ```
 
-#### <a name="acquire-a-token-manually"></a>手动获取令牌
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>选项3：在不使用 helper 类的情况下调用下游 web API
 
 如果已决定使用服务手动获取令牌 `ITokenAcquisition` ，则现在需要使用该令牌。 在这种情况下，以下代码将继续在 [调用 Web api 的 WEB api](scenario-web-api-call-api-acquire-token.md)中显示的示例代码：获取应用的令牌。 该代码在 API 控制器的操作中调用。 它调用下游 API（名为 *todolist*）。
 

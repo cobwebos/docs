@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c5a2aa6ca75e352a824716c19af923c8628efde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341371"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397617"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure Arc 数据控制器
 
@@ -30,6 +30,20 @@ ms.locfileid: "91341371"
 
 > [!NOTE]
 > 下面所示的创建 Azure Arc 数据控制器的一些步骤需要 Kubernetes 群集管理员权限。  如果您不是 Kubernetes 群集管理员，则需要让 Kubernetes 群集管理员代表您执行这些步骤。
+
+#### <a name="cleanup-from-past-installations"></a>清除过去的安装
+
+如果在同一群集上过去安装了 Azure Arc 数据控制器，并使用命令删除了 Azure Arc 数据控制器 `azdata arc dc delete` ，则可能仍需要删除某些群集级别的对象。 运行以下命令以删除 Azure Arc 数据控制器群集级别对象：
+
+```
+# Cleanup azure arc data service artifacts
+kubectl delete crd datacontrollers.arcdata.microsoft.com 
+kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete postgresql-11s.arcdata.microsoft.com 
+kubectl delete postgresql-12s.arcdata.microsoft.com
+kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
+kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+```
 
 ## <a name="overview"></a>概述
 

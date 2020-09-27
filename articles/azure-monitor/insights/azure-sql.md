@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 663c852574667e45a39241575d6b50038495c33d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319582"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397073"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -54,7 +54,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 | 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | 是 | 是 |
 | 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 | 是 | 是 |
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 使用 [从解决方案库中添加 Azure Monitor 解决方案](./solutions.md) 中所述的过程，将 Azure SQL Analytics (预览) 添加到 Log Analytics 工作区。
 
@@ -90,11 +90,11 @@ Azure SQL Analytics 提供了两个单独的视图，一个用于监视 SQL 数�
 
 选择数据库的 Azure SQL Analytics 磁贴后，会显示监视仪表板。
 
-![Azure SQL Analytics 概述](./media/azure-sql/azure-sql-sol-overview.png)
+![显示监视仪表板的屏幕截图。](./media/azure-sql/azure-sql-sol-overview.png)
 
 选择任意磁贴，打开特定透视的向下钻取报告。 选择透视后，可看到向下钻取报表。
 
-![Azure SQL Analytics 超时](./media/azure-sql/azure-sql-sol-metrics.png)
+![显示向下钻取报表的屏幕截图。](./media/azure-sql/azure-sql-sol-metrics.png)
 
 此视图中的每个透视都提供了订阅、服务器、弹性池和数据库级别的汇总。 此外，每个透视在右侧都显示了特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
 

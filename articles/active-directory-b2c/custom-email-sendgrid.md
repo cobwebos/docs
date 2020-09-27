@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 952659746bbb99108c6177166ad60ad2272cbce6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e2040f52efae1955cf5a7b530358f2cec07b5fbf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584931"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396512"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>通过 SendGrid 进行自定义电子邮件验证
 
@@ -36,13 +36,13 @@ ms.locfileid: "88584931"
 
 接下来，将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，以供策略参考。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于 **选项**，请选择 " **手动**"。
-1. 输入策略密钥的**名称**。 例如，`SendGridSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的**名称**。 例如，`SendGridSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“机密”中，输入前面记录的应用程序机密。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
@@ -62,7 +62,6 @@ ms.locfileid: "88584931"
 
     <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en"><head id="Head1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Contoso demo account email verification code</title><meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
-       <!-- Template B O365 -->
        <style>
            table td {border-collapse:collapse;margin:0;padding:0;}
        </style>
@@ -154,7 +153,7 @@ ms.locfileid: "88584931"
 1. 展开左侧的 " **设置** "，对于 " **电子邮件主题**"，输入 `{{subject}}` 。
 1. 选择 " **保存模板**"。
 1. 通过选择 "返回" 箭头返回到 " **事务模板** " 页。
-1. 记录创建的模板 **ID** ，以便在后面的步骤中使用。 例如，`d-989077fbba9746e89f3f6411f596fb96` 。 [添加声明转换](#add-the-claims-transformation)时，可以指定此 ID。
+1. 记录创建的模板 **ID** ，以便在后面的步骤中使用。 例如 `d-989077fbba9746e89f3f6411f596fb96`。 [添加声明转换](#add-the-claims-transformation)时，可以指定此 ID。
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>添加 Azure AD B2C 声明类型
 

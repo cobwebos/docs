@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 326d3a4783b058855d86e17198cbe8d7492feba2
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 2c21c872649e3b171f2658ef6bdb0476552f0e59
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370634"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397177"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安装和运行读取容器（预览版）
 
@@ -24,9 +24,26 @@ ms.locfileid: "91370634"
 
 借助容器，你可以在自己的环境中运行计算机视觉 API。 容器非常适合用于满足特定的安全性和数据管理要求。 在本文中，你将学习如何下载、安装和运行计算机视觉容器。
 
-借助读取** 容器，可以从具有不同表面和背景的各种对象的图像中检测和提取印刷文本**，例如收据、海报和名片。 此外，读取** 容器可检测图像中的手写** 文本，并提供 PDF、TIFF 和多页文件支持。 有关详细信息，请参阅[读取](concept-recognizing-text.md#read-api) API 文档。
+借助读取** 容器，可以从具有不同表面和背景的各种对象的图像中检测和提取印刷文本**，例如收据、海报和名片。 此外，读取** 容器可检测图像中的手写** 文本，并提供 PDF、TIFF 和多页文件支持。 有关详细信息，请参阅 [读取 API 文档](concept-recognizing-text.md#read-api)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+预览版中提供了两个版本的2.x 容器。 这两个版本都提供了对上一个容器的额外准确性和功能。
+
+Read 3.0-preview 容器提供：
+* 用于增强准确性的新模型。
+* 同一文档中支持多种语言
+* 支持：荷兰语、英语、法语、德语、意大利语、葡萄牙语和西班牙语。
+* 针对文档和图像执行一项操作。
+* 支持较大的文档和图像。
+* 置信度分数为0到1。
+* 支持同时包含打印文本和手写文本的文档
+
+Read 3.1-preview 容器提供与 "v 3.0-预览" 相同的优势，同时提供附加功能：
+
+* 支持简体中文和日语。
+* 用于打印文本和手写文本的置信度和标签。 
+* 只能从文档中)  (的选定页面提取文本。
+
+考虑要使用哪个容器版本时，请注意，"3.1-预览" 处于更早的预览状态。 如果目前使用的是读取2.0 容器，请参阅 [迁移指南](read-container-migration-guide.md) ，了解有关新版本中的更改的信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,6 +54,8 @@ ms.locfileid: "91370634"
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **** 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |计算机视觉资源 |若要使用容器，必须具有：<br><br>Azure 计算机视觉**** 资源和关联的 API 密钥及终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个****<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点****|
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="request-approval-to-run-the-container"></a>请求批准以运行容器
 
@@ -71,6 +90,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | 容器 | 容器注册表/存储库/映像名称 |
 |-----------|------------|
+| 阅读 2.0-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | 阅读 3.0-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | 阅读 3.1-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
@@ -88,6 +108,12 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
+```
+
+# <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 ```
 
 ---
@@ -142,6 +168,23 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
+# <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+此命令：
+
+* 从容器映像运行读取容器。
+* 分配 8 个 CPU 核心和 16 千兆字节 (GB) 内存。
+* 公开 TCP 端口 5000，并为容器分配伪 TTY。
+* 退出后自动删除容器。 容器映像在主计算机上仍然可用。
+
 ---
 
 
@@ -177,6 +220,10 @@ ApiKey={API_KEY}
 # <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
 为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` 。
+
+# <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
+
+为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` 。
 
 ---
 
@@ -330,6 +377,67 @@ ApiKey={API_KEY}
 }
 ```
 
+# <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
+
+可以同时使用 `POST /vision/v2.0/read/core/asyncBatchAnalyze` 和 `GET /vision/v2.0/read/operations/{operationId}` 操作来异步读取图像，类似于计算机视觉服务使用相应 REST 操作的方式。 异步 POST 方法将返回一个 `operationId`，它用作 HTTP GET 请求的标识符。
+
+在 Swagger UI 中，选择 `asyncBatchAnalyze` 以在浏览器中将其展开。 然后选择“试用”**** > “选择文件”****。 在本示例中，我们将使用以下图像：
+
+![制表符与空格](media/tabs-vs-spaces.png)
+
+异步 POST 成功运行后，它会返回 HTTP 202**** 状态代码。 作为响应的一部分，有一个 `operation-location` 标头，其中包含请求的结果终结点。
+
+```http
+ content-length: 0
+ date: Fri, 13 Sep 2019 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v2.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ server: Kestrel
+```
+
+`operation-location` 是完全限定的 URL，可通过 HTTP GET 访问。 以下是从上图执行 `operation-location` URL 的 JSON 响应：
+
+```json
+{
+  "status": "Succeeded",
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 2.42,
+      "width": 502,
+      "height": 252,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [ 56, 39, 317, 50, 313, 134, 53, 123 ],
+          "text": "Tabs VS",
+          "words": [
+            {
+              "boundingBox": [ 90, 43, 243, 53, 243, 123, 94, 125 ],
+              "text": "Tabs",
+              "confidence": "Low"
+            },
+            {
+              "boundingBox": [ 259, 55, 313, 62, 313, 122, 259, 123 ],
+              "text": "VS"
+            }
+          ]
+        },
+        {
+          "boundingBox": [ 221, 148, 417, 146, 417, 206, 227, 218 ],
+          "text": "Spaces",
+          "words": [
+            {
+              "boundingBox": [ 230, 148, 416, 141, 419, 211, 232, 218 ],
+              "text": "Spaces"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 ---
 
 > [!IMPORTANT]
@@ -346,6 +454,10 @@ ApiKey={API_KEY}
 # <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
 `POST /vision/v3.0/read/syncAnalyze`
+
+# <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
+
+`POST /vision/v2.0/read/core/Analyze`
 
 ---
 

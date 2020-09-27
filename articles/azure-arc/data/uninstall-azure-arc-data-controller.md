@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2bae661218989d49b74ed8ca3f694ccb912ef912
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dce70441e5e8487bfc015df0a946ab3cd74c14f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934320"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397583"
 ---
 # <a name="delete-azure-arc-data-controller"></a>删除 Azure Arc 数据控制器
 
@@ -71,6 +71,20 @@ azdata arc dc delete -n <name> -ns <namespace>
 ```console
 oc adm policy remove-scc-from-user privileged -z default -n arc
 oc adm policy remove-scc-from-user anyuid     -z default -n arc
+```
+
+### <a name="delete-cluster-level-objects"></a>删除群集级别对象
+
+除了命名空间范围内的对象之外，如果还想要删除群集级别对象（如 CRDs、 `clusterroles` 和），请 `clusterrolebindings` 运行以下命令：
+
+```
+# Cleanup azure arc data service artifacts
+kubectl delete crd datacontrollers.arcdata.microsoft.com 
+kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete postgresql-11s.arcdata.microsoft.com 
+kubectl delete postgresql-12s.arcdata.microsoft.com
+kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
+kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
 ```
 
 ### <a name="optionally-delete-the-azure-arc-data-controller-namespace"></a>（可选）删除 Azure Arc 数据控制器命名空间

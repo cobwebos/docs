@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 0a79f6883a150cb95724a7be30dcbd2e8e03f01f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921836"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396070"
 ---
-# <a name="choose-the-right-consistency-level"></a>选择适当的一致性级别 
+# <a name="how-to-choose-the-right-consistency-level-for-your-azure-cosmos-db-application"></a>如何为 Azure Cosmos DB 应用程序选择适当的一致性级别？ 
 
-依赖于复制以实现高可用性、低延迟或这两者的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商用分布式数据库都要求开发人员在两种极端一致性模型之间进行选择：非常一致和最终一致。   开发人员使用 Azure Cosmos DB 可在五个妥善定义的一致性模型（非常、有限过期、会话、一致前缀和最终）之间进行选择。      这些一致性模型中的每一种都具有明确的定义并直观呈现，可用于特定的真实场景。 五种一致性模型中的每一种在精确的[可用性与性能方面都进行了权衡](consistency-levels-tradeoffs.md)，并有全面的 SLA 作为保障。 你可以在帐户级别配置默认一致性并[在请求级别重写它](how-to-manage-consistency.md#override-the-default-consistency-level)。 以下简单的注意事项将有助于你在许多常见方案中做出正确的选择。
+依赖于复制以实现高可用性、低延迟或这两者的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商用分布式数据库都要求开发人员在两种极端一致性模型之间进行选择：非常一致和最终一致。   开发人员使用 Azure Cosmos DB 可在五个妥善定义的一致性模型（非常、有限过期、会话、一致前缀和最终）之间进行选择。      这些一致性模型中的每一种都具有明确的定义并直观呈现，可用于特定的真实场景。 五种一致性模型中的每一种在精确的[可用性与性能方面都进行了权衡](consistency-levels-tradeoffs.md)，并有全面的 SLA 作为保障。 可以在帐户级别配置默认一致性，并[在请求级别替代它](how-to-manage-consistency.md#override-the-default-consistency-level)。 以下简单的注意事项将有助于你在许多常见方案中做出正确的选择。
 
 ## <a name="sql-api-and-table-api"></a>SQL API 和表 API
 
@@ -38,9 +38,9 @@ ms.locfileid: "85921836"
 
 ## <a name="cassandra-mongodb-and-gremlin-apis"></a>Cassandra、MongoDB 和 Gremlin API
 
-- 有关 Apache Cassandra 提供的“读取一致性级别”与 Cosmos DB 一致性级别之间的映射的详细信息，请参阅[一致性级别和 Cosmos DB API](consistency-levels-across-apis.md#cassandra-mapping)。
+- 有关 Apache Cassandra 中提供的 "读取一致性级别" 与 Cosmos DB 一致性级别之间的映射的详细信息，请参阅 [一致性级别和 Cosmos DB api](consistency-levels-across-apis.md#cassandra-mapping)。
 
-- 有关 MongoDB 的“读取问题”与 Cosmos DB 一致性级别之间的映射的详细信息，请参阅[一致性级别和 Cosmos DB API ](consistency-levels-across-apis.md#mongo-mapping)。
+- 有关 MongoDB 的 "阅读问题" 与 Azure Cosmos DB 一致性级别之间映射的详细信息，请参阅 [一致性级别和 Cosmos DB api](consistency-levels-across-apis.md#mongo-mapping)。
 
 ## <a name="consistency-guarantees-in-practice"></a>一致性保证的实践
 

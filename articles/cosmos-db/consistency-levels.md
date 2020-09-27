@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851692"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396019"
 ---
-# <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别
+# <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中有哪些一致性级别？
 
 依赖于复制实现高可用性和/或低延迟的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商用分布式数据库都要求开发人员在两种极端一致性模型之间进行选择：非常一致和最终一致。  非常一致性模型的可线性化是数据可编程性的黄金标准。 但它导致的写入延迟代价较高（稳定状态下）且会降低可用性（遇到故障时）。 另一方面，最终一致性可提供更高的可用性和性能，但会加大应用程序的编程难度。
 
@@ -31,7 +31,7 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性，而不会走�
 
 ## <a name="configure-the-default-consistency-level"></a>配置默认一致性级别
 
-随时都可在 Azure Cosmos DB 帐户中配置默认的一致性级别。 在帐户中配置的默认一致性级别适用于该帐户下的所有 Azure Cosmos 数据库和容器。 针对某个容器或数据库发出的所有读取和查询默认使用指定的一致性级别。 有关详细信息，请参阅如何[配置默认一致性级别](how-to-manage-consistency.md#configure-the-default-consistency-level)。 你还可以覆盖特定请求的默认一致性级别，若要了解详细信息，请参阅如何[覆盖默认的一致性级别](how-to-manage-consistency.md?#override-the-default-consistency-level)一文。
+随时都可在 Azure Cosmos DB 帐户中配置默认的一致性级别。 在帐户中配置的默认一致性级别适用于该帐户下的所有 Azure Cosmos 数据库和容器。 针对某个容器或数据库发出的所有读取和查询默认使用指定的一致性级别。 有关详细信息，请参阅如何[配置默认一致性级别](how-to-manage-consistency.md#configure-the-default-consistency-level)。 还可以覆盖特定请求的默认一致性级别，若要了解详细信息，请参阅如何[覆盖默认一致性级别](how-to-manage-consistency.md?#override-the-default-consistency-level)一文。
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>与一致性级别关联的保证
 
@@ -45,7 +45,7 @@ Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选�
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="视频":::
 
-- **受限停滞一致性**：保证读取操作遵循一致性前缀保证。 读取操作可能滞后于写入，最多 *"K"* 个版本（即 "更新"）或 *"T"* 时间间隔，以先达到的方式为准。 换言之，如果选择有限过期，则可以通过两种方式配置“过期”：
+- **受限停滞一致性**：保证读取操作遵循一致性前缀保证。  读取操作可以滞后于写入操作最多“K”个项版本（即“更新”）或“T”时间间隔，以先达到者为准。 换言之，如果选择有限过期，则可以通过两种方式配置“过期”：
 
 - 项的版本数 (*K*)
 - 读取操作可以滞后于写入操作的时间间隔 (*T*)
@@ -72,7 +72,7 @@ Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选�
 - 对于多主帐户，向单个区域进行写入的客户端的一致性为“一致前缀”
 - 对于多主帐户，向多个区域进行写入的客户端的一致性为“最终”
 
-  会话一致性是适用于单个区域和全球分布式应用程序的最广泛使用的一致性级别。 它不仅提供与最终一致性相当的写入延迟、可用性和读取吞吐量，还提供一致性保证，从而满足了编写为在用户上下文中运行的应用程序的需求。 下图以乐谱形式演示了会话一致性。 "美国西部2作者" 和 "美国西部2读者" 正在使用同一个会话（会话 A），因此他们同时读取相同的数据。 而“澳大利亚东部”区域正在使用“会话 B”，因此，它会稍后才会接收到数据，但接收顺序与写入顺序相同。
+  会话一致性是适用于单个区域和全球分布式应用程序的最广泛使用的一致性级别。 它不仅提供与最终一致性相当的写入延迟、可用性和读取吞吐量，还提供一致性保证，从而满足了编写为在用户上下文中运行的应用程序的需求。 下图以乐谱形式演示了会话一致性。 "美国西部2作者" 和 "美国西部2读者" 正在使用同一会话 (会话 A) 以便它们同时读取相同的数据。 而“澳大利亚东部”区域正在使用“会话 B”，因此，它会稍后才会接收到数据，但接收顺序与写入顺序相同。
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="视频":::
 
@@ -101,7 +101,7 @@ Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选�
 若要详细了解一致性的概念，请阅读以下文章：
 
 - [Azure Cosmos DB 提供的五个一致性级别的高级 TLA+ 规范](https://github.com/Azure/azure-cosmos-tla)
-- [通过 Doug Terry 通过棒球（视频）说明复制的数据一致性](https://www.youtube.com/watch?v=gluIh8zd26I)
+- [通过 Doug Terry 向棒球 (视频) 解释的复制数据一致性](https://www.youtube.com/watch?v=gluIh8zd26I)
 - [Doug Terry 借助棒球阐释复制数据一致性（白皮书）](https://www.microsoft.com/research/publication/replicated-data-consistency-explained-through-baseball/)
 - [弱一致性重复数据的会话保证](https://dl.acm.org/citation.cfm?id=383631)
 - [现代分布式数据库系统设计中的一致性利弊：CAP 只是冰山一角](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078990"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395985"
 ---
 # <a name="security-control-data-protection"></a>安全控制：数据保护
 
@@ -74,7 +74,7 @@ ms.locfileid: "89078990"
 
 如果 Azure 中的功能均不适用于你的特定服务，请使用可用的第三方发现工具来标识组织技术系统（包括现场或远程服务提供商处的技术系统）存储、处理或传输的所有敏感信息，并更新组织的敏感信息清单。
 
-使用 Azure 信息保护标识 Office 365 文档中的敏感信息。
+使用 Azure 信息保护来识别 Microsoft 365 文档中的敏感信息。
 
 使用 Azure SQL 信息保护有助于对 Azure SQL 数据库中存储的信息进行分类和标记。
 

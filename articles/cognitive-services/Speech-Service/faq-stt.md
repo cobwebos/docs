@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357567"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397753"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -152,17 +152,17 @@ ms.locfileid: "91357567"
 
 **答**：上传字词列表会将字词添加到词汇中，但不会告知系统这些字词的通常用法。 通过提供完整或部分话语（用户很可能会说事物的句子或短语），语言模型可以学习这些新字词及其用法。 自定义语言模型不仅适用于向系统中添加新字词，还适用于调整应用程序已知字词的概率。 提供完整话语可帮助系统更好地学习。
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>自定义语音 Office 365 数据的租户模型 () 
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>与 Microsoft 365 数据自定义语音的租户模型 () 
 
 **问：租户模型中包含哪些信息，如何创建？**
 
-**答：** 租户模型是使用 [公用组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) 电子邮件和文档生成的，你的组织中的任何人都可以看到该模型。
+**答：** 租户模型是使用 [公用组](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) 电子邮件和文档生成的，你的组织中的任何人都可以看到该模型。
 
 **问：租户模型改进了哪些语音体验？**
 
 **答：** 启用并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别;这也会传递一个用户 Azure AD 标记，指示企业的成员身份。
 
-当你为语音服务应用程序创建租户模型时，Office 365 中内置的语音体验（如听写和 PowerPoint 字幕）不会更改。
+为语音服务应用程序创建租户模型时，不会更改内置于 Microsoft 365 中的语音体验，如听写和 PowerPoint 字幕。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738209"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396767"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
 
@@ -42,7 +42,7 @@ ms.locfileid: "84738209"
 
 - 在 Azure 中有一个 Azure 自动化帐户。 请确保自动化帐户具有最新模块，同时确保具有 AzureRM.Network 模块。 如果需要将 AzureRM.Network 模块添加到自动化帐户，可以在模块库中找到此模块。
 - 必须在 Azure 自动化中配置一组凭据。 在 [Azure 自动化安全性](../automation/automation-security-overview.md)中了解详细信息。
-- 在 Azure 自动化中定义有效的 SMTP 服务器（Office 365、本地电子邮件或其他服务器）和凭据
+- 有效的 SMTP 服务器 (Microsoft 365、本地电子邮件或 Azure 自动化中定义的其他) 和凭据
 - 在 Azure 配置的虚拟网络网关。
 - 现有存储帐户，其中具有一个存储登录信息的现有容器。
 
@@ -55,37 +55,37 @@ ms.locfileid: "84738209"
 
 ### <a name="step-1"></a>步骤 1
 
-在 [Azure 门户](https://portal.azure.com)中导航到“Azure 自动化”，并单击“Runbook”****
+在 [Azure 门户](https://portal.azure.com)中导航到“Azure 自动化”，并单击“Runbook”
 
 ![自动化帐户概述][1]
 
 ### <a name="step-2"></a>步骤 2
 
-单击“添加 Runbook”启动 Runbook 创建过程。****
+单击“添加 Runbook”启动 Runbook 创建过程。
 
 ![Runbook 边栏选项卡][2]
 
 ### <a name="step-3"></a>步骤 3
 
-在“快速创建”下面，单击“创建新的 Runbook”创建 Runbook。********
+在“快速创建”下面，单击“创建新的 Runbook”创建 Runbook。 
 
 ![添加 Runbook 边栏选项卡][3]
 
 ### <a name="step-4"></a>步骤 4
 
-在此步骤中，我们将为 Runbook 命名，在本示例中命名为 **Get-VPNGatewayStatus**。 必须为 Runbook 指定一个描述性的名称，我们建议遵循正式的 PowerShell 命名标准来命名。 本示例中的 Runbook 类型为“PowerShell”，其他选项包括“图形”、“PowerShell 工作流”和“图形 PowerShell 工作流”。****
+在此步骤中，我们将为 Runbook 命名，在本示例中命名为 **Get-VPNGatewayStatus**。 必须为 Runbook 指定一个描述性的名称，我们建议遵循正式的 PowerShell 命名标准来命名。 本示例中的 Runbook 类型为“PowerShell”，其他选项包括“图形”、“PowerShell 工作流”和“图形 PowerShell 工作流”。
 
 ![Runbook 边栏选项卡][4]
 
 ### <a name="step-5"></a>步骤 5
 
-在此步骤中创建 Runbook。以下代码示例提供了本示例所需的所有代码。 包含的代码中的项 \<value\> 需要替换为订阅中的值。
+在此步骤中创建 Runbook。以下代码示例提供了本示例所需的所有代码。 需要将代码中包含 \<value\> 的项替换为订阅中的值。
 
-使用以下代码，并单击“保存”****
+使用以下代码，并单击“保存”
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -99,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName
@@ -145,32 +145,32 @@ else
 
 ### <a name="step-6"></a>步骤 6
 
-保存 Runbook 后，必须向它链接一个计划才能自动启动它。 若要启动链接过程，请单击“计划”。****
+保存 Runbook 后，必须向它链接一个计划才能自动启动它。 若要启动链接过程，请单击“计划”。
 
 ![步骤 6][6]
 
 ## <a name="link-a-schedule-to-the-runbook"></a>将计划链接到 Runbook
 
-必须创建一个新计划。 单击“将计划链接到 Runbook”。****
+必须创建一个新计划。 单击“将计划链接到 Runbook”。
 
 ![步骤 7][7]
 
 ### <a name="step-1"></a>步骤 1
 
-在“计划”边栏选项卡中，单击“创建新计划”********
+在“计划”边栏选项卡中，单击“创建新计划” 
 
 ![步骤 8][8]
 
 ### <a name="step-2"></a>步骤 2
 
-在“新建计划”边栏选项卡中填写计划信息。**** 以下列表提供了可设置的值：
+在“新建计划”边栏选项卡中填写计划信息。 以下列表提供了可设置的值：
 
 - **名称** - 计划的友好名称。
 - **说明** - 计划的说明。
 - **开始时间** - 此值是日期、时间和时区的组合，构成计划触发时间。
-- **重复周期** - 此值确定计划的重复方式。  有效值为“一次”或“定期”。********
+- **重复周期** - 此值确定计划的重复方式。  有效值为“一次”或“定期”。 
 - **重复间隔** - 以小时、天、周或月为单位的计划重复间隔。
-- **设置过期时间** - 该值确定计划是否会过期。 可设置为“是”或“否”。******** 如果选择“是”，则要提供有效的日期和时间。
+- **设置过期时间** - 该值确定计划是否会过期。 可设置为“是”或“否”。  如果选择“是”，则要提供有效的日期和时间。
 
 > [!NOTE]
 > 如果需要以高于每隔一小时的频率运行某个 Runbook，必须以不同的间隔创建多个计划（即，在小时后面指定 15、30 或 45 分钟）
