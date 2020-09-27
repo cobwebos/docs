@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002677"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400309"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -41,7 +41,7 @@ ms.locfileid: "88002677"
 * 单一登录
 * 反向代理
 * 多重身份验证
-* Azure RBAC) 的 azure 基于角色的访问控制 (
+* Azure 基于角色的访问控制 (Azure RBAC)
 * 安全监控、警报和基于机器学习的报告
 * 消费者标识和访问管理
 * 设备注册
@@ -54,7 +54,7 @@ ms.locfileid: "88002677"
 
 SSO 是指只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
 
-许多组织依赖 SaaS 应用程序（如 Office 365、Box 和 Salesforce）来提高用户生产力。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
+许多组织依赖 SaaS 应用程序（例如 Microsoft 365、Box 和 Salesforce）来提高用户工作效率。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
 
 Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够使用主要组织帐户登录到已加入域的设备和公司资源，而且能够登录到完成作业所需的全部 Web 和 SaaS 应用程序。
 
@@ -135,7 +135,7 @@ Azure AD B2C 是一项高度可用的全局性标识管理服务，适用于面�
 
 ## <a name="device-registration"></a>设备注册
 
-Azure AD 设备注册是基于设备的[条件性访问](/azure/active-directory/active-directory-conditional-access-device-registration-overview)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
+Azure AD 设备注册是基于设备的 [条件性访问](/azure/active-directory/active-directory-conditional-access-device-registration-overview) 方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
 
 当与 Intune 之类的移动设备管理解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 然后，你可以创建条件性访问规则，以根据你的安全性和符合性标准强制从设备进行访问。
 
@@ -147,14 +147,14 @@ Azure AD 设备注册是基于设备的[条件性访问](/azure/active-directory
 
 ## <a name="privileged-identity-management"></a>Privileged identity management
 
-利用 Azure AD Privileged Identity Management，可以管理、控制和监视特权标识以及对 Azure AD 中和 Office 365 和 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问。
+使用 Azure AD Privileged Identity Management，你可以管理、控制和监视特权标识以及对 Azure AD 和其他 Microsoft 联机服务中的资源的访问权限，例如 Microsoft 365 和 Microsoft Intune。
 
-用户有时候需要在 Azure 或 Office 365 资源或者其他 SaaS 应用中执行特权操作。 这种需要通常意味着，组织必须授予用户永久的 Azure AD 访问特权。 此类访问会给云中托管的资源不断增大安全风险，因为组织无法充分监视这些用户正在使用管理员特权执行哪些操作。 此外，如果有访问特权的用户帐户被泄露，此安全漏洞可能会影响组织的总体云安全性。 Azure AD Privileged Identity Management 可帮助解决这一风险。
+用户有时需要在 Azure 或 Microsoft 365 资源或其他 SaaS 应用中执行特权操作。 这种需要通常意味着，组织必须授予用户永久的 Azure AD 访问特权。 此类访问会给云中托管的资源不断增大安全风险，因为组织无法充分监视这些用户正在使用管理员特权执行哪些操作。 此外，如果有访问特权的用户帐户被泄露，此安全漏洞可能会影响组织的总体云安全性。 Azure AD Privileged Identity Management 可帮助解决这一风险。
 
 使用 Azure AD Privileged Identity Management 可执行以下操作：
 
 * 查看哪些用户是 Azure AD 管理员。
-* 按需启用对 Office 365 和 Intune 等 Microsoft 服务的实时 (JIT) 管理访问权限。
+* 启用按需实时 (JIT) 对 Microsoft 服务（如 Microsoft 365 和 Intune）的管理访问。
 * 获取有关管理员访问历史记录以及管理员分配更改的报告。
 * 获取有关访问特权角色的警报。
 
@@ -174,7 +174,7 @@ Azure AD 标识保护是一种安全服务，它提供一个综合视图，你�
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>混合标识管理/Azure AD Connect
 
-Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一用户标识对所有资源进行身份验证和授权，而不考虑其位置。 我们称此为混合标识。 Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具。 这样便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 它提供以下功能：
+Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一用户标识对所有资源进行身份验证和授权，而不考虑其位置。 我们称此为混合标识。 Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具。 这样，便可为集成到 Azure AD 的 Microsoft 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 它提供以下功能：
 
 * 同步
 * AD FS 和联合集成

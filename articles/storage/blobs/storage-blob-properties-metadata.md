@@ -4,21 +4,21 @@ description: 了解如何使用 .NET 客户端库设置和检索系统属性并�
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/12/2020
+ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1501b61e930b7554063356335b967583c0a3ff5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008431"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399119"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 属性和元数据
 
-除 Blob 包含的数据外，它们还支持系统属性和用户定义的元数据。 本文介绍如何使用[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)管理系统属性和用户定义元数据。
+除 Blob 包含的数据外，它们还支持系统属性和用户定义的元数据。 本文介绍如何使用[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)管理系统属性和用户定义元数据。
 
 ## <a name="about-properties-and-metadata"></a>关于属性和元数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "89008431"
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要在 blob 上设置属性，请调用 [SetHttpHeaders](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheaders) 或 [SetHttpHeadersAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheadersasync)。 未显式设置的任何属性都将被清除。 下面的代码示例首先获取 blob 上的现有属性，然后使用这些属性填充未更新的标头。
+若要在 Blob 上设置属性，请调用 [SetHttpHeaders](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheaders) 或 [SetHttpHeadersAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheadersasync)。 清除未显式设置的任何属性。 下面的代码示例首先获取 Blob 上的现有属性，然后使用它们填充未更新的标头。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_SetBlobProperties":::
 
@@ -70,7 +70,7 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 ```
 ---
 
-下面的代码示例获取 blob 的系统属性，并显示某些值。
+以下代码示例获取 blob 的系统属性并显示一些值。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
@@ -164,11 +164,11 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 ```
 ---
 
-下面的代码示例读取 blob 上的元数据。
+以下代码示例在 Blob 上读取元数据。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要检索元数据，请对 blob 或容器调用 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法来填充 [元数据](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然后读取值，如下面的示例中所示。
+要检索元数据，请对 blob 或容器调用 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法以填充 [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然后读取值，如下面的示例所示。 **GetProperties**方法在一次调用中检索 blob 属性和元数据。 这不同于 REST Api，后者需要单独调用来 [获取 Blob 属性](/rest/api/storageservices/get-blob-properties) 和 [获取 blob 元数据](/rest/api/storageservices/get-blob-metadata)。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

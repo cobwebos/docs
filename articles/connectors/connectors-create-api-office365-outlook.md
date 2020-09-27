@@ -7,16 +7,16 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832971"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400768"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Office 365 Outlook 中的电子邮件、联系人和日历
 
-使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Office 365 Outlook 连接器](/connectors/office365connector/)，可以通过构建逻辑应用来创建用于管理 Office 365 帐户的自动化任务和工作流。 例如，可以自动执行以下任务：
+通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和 [Office 365 Outlook connector](/connectors/office365connector/)，你可以创建自动化任务和工作流，以便通过构建逻辑应用来管理你的工作或学校帐户。 例如，可以自动执行以下任务：
 
 * 获取、发送和回复电子邮件。 
 * 在日历上安排会议。
@@ -31,9 +31,9 @@ ms.locfileid: "87832971"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-* 一个 [Office 365 帐户](https://www.office.com/)
+* [工作或学校帐户](https://www.office.com/)
 
-* 你要在其中访问 Office 365 Outlook 帐户的逻辑应用。 若要通过 Office 365 Outlook 触发器启动工作流，需要有一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要向工作流中添加 Office 365 Outlook 操作，逻辑应用需要已有一个触发器。
+* 要在其中访问工作或学校帐户的逻辑应用。 若要通过 Office 365 Outlook 触发器启动工作流，需要有一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要向工作流中添加 Office 365 Outlook 操作，逻辑应用需要已有一个触发器。
 
 ## <a name="add-a-trigger"></a>添加触发器
 
@@ -45,7 +45,7 @@ ms.locfileid: "87832971"
    
    ![选择用于启动逻辑应用的触发器](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. 如果系统提示你登录，请提供你的 Office 365 凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供触发器属性的信息。
+1. 如果系统提示你登录，请提供你的工作或学校凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供触发器属性的信息。
 
    > [!NOTE]
    > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
@@ -78,7 +78,7 @@ ms.locfileid: "87832971"
 
    ![选择要在逻辑应用中运行的操作](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. 如果系统提示你登录，请提供你的 Office 365 凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供操作属性的信息。
+1. 如果系统提示你登录，请提供你的工作或学校凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供操作属性的信息。
 
    > [!NOTE]
    > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
@@ -93,7 +93,7 @@ ms.locfileid: "87832971"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](/connectors/office365/)。 
+有关此连接器的技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅 [连接器的参考页](/connectors/office365/)。 
 
 ## <a name="next-steps"></a>后续步骤
 

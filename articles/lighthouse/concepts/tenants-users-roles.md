@@ -3,12 +3,12 @@ title: Azure Lighthouse 方案中的租户、角色和用户
 description: 了解 Azure Active Directory 租户、用户和角色的概念，以及如何在 Azure Lighthouse 方案中使用它们。
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163299"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399238"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、角色和用户
 
@@ -43,7 +43,7 @@ Azure Lighthouse 当前支持所有 [内置角色](../../role-based-access-contr
 - 确保需要[查看 Azure门户中的“我的客户”页](../how-to/view-manage-customers.md)的所有用户都具有[读者](../../role-based-access-control/built-in-roles.md#reader)角色（或包含读者访问权限的其他内置角色）。
 
 > [!IMPORTANT]
-> 若要为 Azure AD 组添加权限，“组类型”必须是“安全性”而不是“Office 365”  。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要为 Azure AD 组添加权限，则必须将 " **组类型** " 设置为 " **安全**"。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

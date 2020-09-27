@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 6646016a4529f46431ecb622c7546140a93a5d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596f06d6dc3ad33f2794dfe0e3ed7822a4820adb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871477"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399009"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>使用 Azure 门户注册对等互连服务
 
-Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Office 365、Dynamics 365、软件即服务 (SaaS)、Azure 或可通过公共 Internet 访问的任何 Microsoft 服务）建立的连接。
+Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Microsoft 365、Dynamics 365、软件即服务 (SaaS) services、Azure 或可通过公共 internet 访问的任何 Microsoft 服务）的连接。
 
 本文介绍如何使用 Azure 门户注册对等互连服务连接。
 
@@ -39,7 +39,7 @@ Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云
 
 可以与 Internet 服务提供商或 Internet 交换合作伙伴合作，以获取对等互连服务，从而将你的网络连接到 Microsoft 网络。
 
-请确保[连接提供商](location-partners.md)与 Microsoft 合作。
+请确保 [连接提供商](location-partners.md) 与 Microsoft 合作。
 
 
 

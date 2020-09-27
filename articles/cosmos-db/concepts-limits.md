@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033007"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400054"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -27,8 +27,8 @@ ms.locfileid: "90033007"
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个容器的最大 RU 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来提高此限制 |
-| 每个数据库的最大 RU 数（[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来提高此限制 |
+| 每个容器的最大 RU 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制 |
+| 每个数据库的最大 RU 数（[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制 |
 | 每 (逻辑) 分区的最大 ru 数 | 10,000 |
 | 每个 (逻辑) 分区的所有项的最大存储空间 | 20 GB |
 | 不同（逻辑）分区键的最大数目 | 无限制 |
@@ -79,8 +79,8 @@ Cosmos DB 支持通过 SDK 或门户对每个容器或数据库的吞吐量 (RU)
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个订阅的最大数据库帐户数 | 默认值为 50。 可以通过[开具 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来提高此限制|
-| 最大区域故障转移数 | 默认值为 1/小时。 可以通过[开具 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来提高此限制|
+| 每个订阅的最大数据库帐户数 | 默认值为 50。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制|
+| 最大区域故障转移数 | 默认值为 1/小时。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制|
 
 > [!NOTE]
 > 区域故障转移仅适用于单个区域写入帐户。 多区域写入帐户不需要，也不会对更改写入区域施加任何限制。
@@ -120,7 +120,7 @@ Cosmos DB 会定期自动备份数据。 有关备份保留时间间隔和窗口
 | 每个唯一键约束的最大路径数|16 <sup>*</sup>|
 | 最大 TTL 值 |2147483647|
 
-<sup>*</sup> 可以联系 Azure 支持人员来提高上述每个容器的限制。
+<sup>*</sup> 可以通过创建 [Azure 支持请求](create-support-request-quota-increase.md)增加这些每个容器的限制。
 
 ## <a name="per-item-limits"></a>每项的限制
 
@@ -160,7 +160,7 @@ Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或[资源令牌](sec
 | --- | --- |
 | 主令牌最长过期时间 | 15 分钟  |
 | 资源令牌最短过期时间 | 10 分钟  |
-| 资源令牌最长过期时间 | 默认为 24 小时。 可以通过[开具 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来提高此限制|
+| 资源令牌最长过期时间 | 默认为 24 小时。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制|
 | 令牌授权的最大时钟偏差| 15 分钟 |
 
 Cosmos DB 支持在写入期间执行触发器。 对于每个写入操作，该服务最多支持一个预先触发器和一个后期触发器。
@@ -202,7 +202,7 @@ Cosmos DB 支持使用 [SQL](how-to-sql-query.md) 查询项。 下表描述了�
 | 每个容器的最大排除路径数| 500 |
 | 组合索引中的最大属性数| 8 |
 
-<sup>*</sup> 可以联系 Azure 支持来提高上述 SQL 查询限制。
+<sup>*</sup> 可以通过创建 [Azure 支持请求](create-support-request-quota-increase.md)增加以上任何 SQL 查询限制。
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API 特定限制
 

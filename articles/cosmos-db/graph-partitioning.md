@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB Gremlin API 中的数据分区
 description: 了解如何在 Azure Cosmos DB 中使用分区图形。 本文还介绍了分区图形的要求和最佳做法。
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261760"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400496"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用分区图形
 
@@ -33,39 +33,39 @@ Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理
 
 - **边缘连同其源顶点一起存储**。 换句话说，对于每个顶点，其分区键定义它们与其传出边缘一起存储的位置。 进行此优化是为了避免在图形查询中使用 `out()` 基数时出现跨分区查询。
 
-- **边缘包含对其指向的顶点的引用**。 所有边缘在存储时，都有分区键以及边缘指向的顶点的 ID。 此计算使得所有 `out()` 方向查询始终是带范围的分区查询，而不是跨分区的盲查询。 
+- **边缘包含对其指向的顶点的引用**。 所有边缘在存储时，都有分区键以及边缘指向的顶点的 ID。 此计算使得所有 `out()` 方向查询始终是带范围的分区查询，而不是跨分区的盲查询。
 
 - **图形查询需要指定分区键**。 若要充分利用 Azure Cosmos DB 中的水平分区，选择单个顶点时应尽量指定分区键。 下面是用于在分区图形中选择一个或多个顶点的查询：
 
     - 在 Gremlin API 中，不支持将 `/id` 和 `/label` 作为容器的分区键。
 
 
-    - 根据 ID 选择顶点，然后**使用 `.has()` 步骤指定分区键属性**： 
-    
+    - 根据 ID 选择顶点，然后**使用 `.has()` 步骤指定分区键属性**：
+
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
-    - 通过**指定包含分区键值和 ID 的元组**选择顶点： 
-    
+
+    - 通过**指定包含分区键值和 ID 的元组**选择顶点：
+
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - 指定**分区键值和 ID 的元组数组**：
-    
+
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
-    - 选择一组带 ID 的顶点并**指定分区键值列表**： 
-    
+
+    - 选择一组带 ID 的顶点并**指定分区键值列表**：
+
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - 在查询开始时使用**分区策略**，并指定一个分区，用于 Gremlin 查询余下部分的范围： 
-    
+    - 在查询开始时使用**分区策略**，并指定一个分区，用于 Gremlin 查询余下部分的范围：
+
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```

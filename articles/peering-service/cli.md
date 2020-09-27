@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: fbb9a6237aafe1c1b7c94d9dd23ad4c3665c0c73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871457"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398983"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>使用 Azure CLI 注册对等互连服务连接
 
-Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Office 365、Dynamics 365、软件即服务 (SaaS)、Azure 或可通过公共 Internet 访问的任何 Microsoft 服务）建立的连接。 本文介绍如何使用 Azure CLI 注册对等互连服务连接。
+Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Microsoft 365、Dynamics 365、软件即服务 (SaaS) services、Azure 或可通过公共 internet 访问的任何 Microsoft 服务）的连接。 本文介绍如何使用 Azure CLI 注册对等互连服务连接。
 
 如果还没有 Azure 订阅，请现在就创建一个[帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -43,7 +43,7 @@ Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. 登录到 Azure 帐户并选择订阅
 
-要开始配置，请登录到 Azure 帐户。 如果使用 Cloud Shell**试用**"选项，则会自动登录。 使用以下示例来帮助你进行连接。
+要开始配置，请登录到 Azure 帐户。 如果使用 Cloud Shell **试用** "选项，则会自动登录。 使用以下示例来帮助你进行连接。
 
 ```azurecli-interactive
 az login
@@ -104,8 +104,8 @@ az peering service prefix create \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关对等互连服务连接的详细信息，请参阅对[等互连服务连接](connection.md)。
+- 若要了解有关对等互连服务连接的详细信息，请参阅对 [等互连服务连接](connection.md)。
 - 若要了解对等互连服务连接遥测数据，请参阅[对等互连服务连接遥测数据](connection-telemetry.md)。
 - 若要度量遥测，请参阅[度量连接遥测](measure-connection-telemetry.md)。
 - 若要使用 Azure PowerShell 注册连接，请参阅[注册对等互连服务连接 - Azure PowerShell](powershell.md)。
-- 若要使用 Azure 门户注册连接，请参阅[注册对等互连服务连接-Azure 门户](azure-portal.md)。
+- 若要使用 Azure 门户注册连接，请参阅 [注册对等互连服务连接-Azure 门户](azure-portal.md)。

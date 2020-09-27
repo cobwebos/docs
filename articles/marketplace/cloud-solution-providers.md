@@ -7,18 +7,18 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607477"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400734"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
 本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过 [商业 marketplace 在线商店](comparing-appsource-azure-marketplace.md)发布你的产品/服务，你还可以通过 CSP 计划进行销售，以便向该计划提供的数百万个合格 Microsoft 客户。
 
-可以按照“选择加入”的原则配置要在 CSP 计划中提供的新的或现有的产品/服务，以允许 CSP 合作伙伴销售你的产品并为客户创建捆绑式解决方案。
+你可以选择在 CSP 计划中配置新的或现有的产品/服务的可用性，这允许 CSP 合作伙伴销售你的产品并为客户创建捆绑式解决方案。
 
 发布者负责向最终客户提供中断后修复支持，并提供一个机制来让 CSP 计划中的合作伙伴和/或客户与你联系以获得支持。 最佳做法是为 CSP 计划中的合作伙伴提供用户文档、培训和服务运行状况/中断通知（如果适用），使 CSP 计划中的合作伙伴具备处理客户提出的一级支持请求的能力。  
 

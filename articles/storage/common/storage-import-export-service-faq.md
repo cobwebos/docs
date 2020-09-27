@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512396"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399034"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答
 
@@ -35,9 +35,9 @@ ms.locfileid: "85512396"
 
 是的。 Azure 导入/导出服务支持云解决方案提供商 (CSP) 订阅。
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>是否可以使用 Azure 导入/导出服务将 PST 邮箱和 SharePoint 数据复制到 O365？
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-microsoft-365"></a>能否使用 Azure 导入/导出服务将 PST 邮箱和 SharePoint 数据复制到 Microsoft 365？
 
-是的。 有关详细信息，请转到[将 PST 文件或 SharePoint 数据导入到 Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)。
+是的。 有关详细信息，请参阅 [导入组织的 PST 文件概述](/microsoft-365/compliance/importing-pst-files-to-office-365)。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>是否可以使用 Azure 导入/导出服务将我的备份脱机复制到 Azure 备份服务？
 
@@ -97,20 +97,20 @@ ms.locfileid: "85512396"
 - 在亚洲和澳大利亚区域的 DHL 帐户编号。
 
 > [!NOTE]
-> 印度中的数据中心需要使用信头上的声明字母（传递 challan）来返回驱动器。 若要安排所需的条目传递，还必须将所选的承运人预订并共享数据中心。
+> 印度中的数据中心需要 (传递 challan) 上的申报信才能返回驱动器。 若要安排所需的条目传递，还必须将所选的承运人预订并共享数据中心。
 
 ### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>跨国寄送和返还驱动器是否存在限制？
 
 请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在发运物理介质之前，请咨询顾问以验证介质和数据是否可以合法地发运到所确定的数据中心。 这会有助于确保它可以及时到达 Microsoft。
 
-上传完成后，将驱动器返回到国际地址的过程可能需要的时间比本地发货所需的典型2-3 天要长。 在 Azure 门户中列出为打包的阶段期间，Data Box 团队确保提供了正确的文档，以确保发货符合各种国际进口和出口要求。
+上传完成后，将驱动器 (s) 返回到国际地址的过程所需的时间可能比本地发货所需的2-3 天要长。 在 Azure 门户中列出为打包的阶段期间，Data Box 团队确保提供了正确的文档，以确保发货符合各种国际进口和出口要求。
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>将磁盘传送到数据中心是否有任何特殊要求？
 
 要求取决于特定的 Azure 数据中心限制。
 
-- 有一些站点（如澳大利亚、德国和英国南部）需要出于安全原因在包裹上写入 Microsoft datacenter Inbound ID 号。 将驱动器或磁盘寄送到数据中心之前，请联系 Azure DataBox Operations （ adbops@microsoft.com ）获取此号码。 如果没有此编号，将拒绝包。
-- 印度数据中心需要驱动程序的个人详细信息，例如政府 ID 卡或证明不需要。 （例如，PAN、AADHAR、DL）、name、contact 和 car 盘子编号，用于获取入口经历。 若要避免交付延迟，请向您的运营商通知这些要求。
+- 有一些站点（如澳大利亚、德国和英国南部）需要出于安全原因在包裹上写入 Microsoft datacenter Inbound ID 号。 将驱动器或磁盘寄送到数据中心之前，请联系 Azure DataBox 操作 (adbops@microsoft.com) 获取此号码。 如果没有此编号，将拒绝包。
+- 印度数据中心需要驱动程序的个人详细信息，例如政府 ID 卡或证明不需要。  (例如，PAN、AADHAR、DL) 、name、contact 和 car 盘子编号，以获取入口经历。 若要避免交付延迟，请向您的运营商通知这些要求。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>创建作业时，寄送地址是一个不同于存储帐户位置的位置。 我该怎么办？
 
@@ -128,7 +128,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>该服务是否会在返还驱动器之前将其格式化？
 
-不能。 所有驱动器都使用 BitLocker 加密。
+否。 所有驱动器都使用 BitLocker 加密。
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何才能访问此服务导入的数据？
 

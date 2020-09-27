@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835895"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400326"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -204,7 +204,7 @@ ms.locfileid: "87835895"
 可以使用 [RBAC](/azure/role-based-access-control/overview) 在一定范围内向用户、组和应用分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
 
 **最佳做法**：在团队中分离职责，只向用户授予执行作业所需的访问权限。 只允许在特定范围内执行特定操作，而不要在 Azure 订阅或资源中向每个人都授予无限制权限。
-**详细信息**：使用 azure 中的[azure 内置角色](/azure/role-based-access-control/built-in-roles)向用户分配权限。
+**详细信息**：使用 azure 中的 [azure 内置角色](/azure/role-based-access-control/built-in-roles) 向用户分配权限。
 
 > [!Note]
 > 特定的权限会造成不必要的复杂性和混乱，进而积累为很难在不担心造成破坏的情况下进行修复的“旧”配置。 避免特定于资源的权限。 而是将管理组用于企业范围内的权限，并将资源组用于订阅中的权限。 避免用户特定的权限。 而是向 Azure AD 中的组分配权限。
@@ -216,7 +216,7 @@ ms.locfileid: "87835895"
 * 段管理组：用于范围有限的团队（通常是由于法规或其他组织边界所致）
 
 **最佳做法**：向具有直接运营职责的安全团队授予适当的权限。
-**详细信息**：审阅 RBAC 内置角色，以进行适当的角色分配。 如果内置角色不满足组织的特定需求，则可以创建[Azure 自定义角色](/azure/role-based-access-control/custom-roles)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
+**详细信息**：审阅 RBAC 内置角色，以进行适当的角色分配。 如果内置角色不满足组织的特定需求，则可以创建 [Azure 自定义角色](/azure/role-based-access-control/custom-roles)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
 
 **最佳做法**：向需要的安全角色授予 Azure 安全中心访问权限。 使用安全中心，安全团队可以快速发现和修正风险。
 **详细信息**：将具有这些需求的安全团队添加到 RBAC [安全管理员](/azure/role-based-access-control/built-in-roles#security-admin)角色，这样他们就可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议，并能消除警报和建议。 为此，可以使用根管理组或段管理组，具体视职责范围而定。
@@ -229,7 +229,7 @@ ms.locfileid: "87835895"
 
 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
 
-建议制定并遵循一个路线图，防止特权访问受到网络攻击者的攻击。 有关创建详细路线图以保护在 Azure AD、Microsoft Azure、Office 365 和其他云服务中托管或报告的标识和访问的信息，请查看[确保 Azure AD 中混合部署和云部署的特权访问安全性](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)。
+建议制定并遵循一个路线图，防止特权访问受到网络攻击者的攻击。 若要详细了解如何在 Azure AD、Microsoft Azure、Microsoft 365 和其他云服务中管理或报告的安全身份和访问，请参阅 [Azure AD 中的保护混合和云部署的特权访问](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)。
 
 以下内容总结了[确保 Azure AD 中混合部署和云部署的特权访问安全性](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)中介绍的最佳做法：
 
@@ -240,7 +240,7 @@ ms.locfileid: "87835895"
 **详细信息**：从关键管理员角色中删除所有使用者帐户（例如，hotmail.com、live.com 和 outlook.com 等 Microsoft 帐户）。
 
 **最佳做法**：确保所有关键管理员角色都有一个单独的帐户来执行管理任务，以免发生网络钓鱼和其他入侵管理权限的攻击。
-**详细信息**：创建一个单独的管理员帐户，向其分配执行管理任务所需的权限。 禁止将这些管理帐户用于日常效率提升工具（如 Microsoft Office 365 电子邮件）或任意 Web 浏览。
+**详细信息**：创建一个单独的管理员帐户，向其分配执行管理任务所需的权限。 阻止使用这些管理帐户进行 Microsoft 365 电子邮件或任意 web 浏览等日常生产力工具。
 
 **最佳做法**：对特许权限高的角色中的帐户进行标识和分类。   
 **详细信息**：启用 Azure AD Privileged Identity Management 后，请查看角色为全局管理员、特权角色管理员和其他高特权角色的用户。 请删除在这些角色中不再需要的任何帐户，并对剩余的分配给管理员角色的帐户分类：
@@ -281,7 +281,7 @@ ms.locfileid: "87835895"
 **详细信息**：准备一个流程，在员工离开组织时禁用或删除管理员帐户。
 
 **最佳做法**：使用最新的攻击技术定期测试管理员帐户。
-**详细信息**：使用 Office 365 攻击模拟器或第三方产品/服务在组织中运行真实的攻击方案。 这样有助于在真正攻击发生之前发现易受攻击的用户。
+**详细信息**：使用 Microsoft 365 攻击模拟器或第三方产品/服务在你的组织中运行现实的攻击方案。 这样有助于在真正攻击发生之前发现易受攻击的用户。
 
 **最佳做法**：采取措施来缓解最常用的攻击技术的冲击。  
 **详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
@@ -294,11 +294,11 @@ ms.locfileid: "87835895"
 
 [要求对所有特权角色用户和公开的用户进行多重身份验证](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
-[获取 Office 365 安全功能分数（如果使用 Office 365）](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
+[获取 Microsoft 365 安全分数 (如果使用 Microsoft 365) ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[查看 Office 365 安全性和符合性指南（如果使用 Office 365）](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[查看 Microsoft 365 安全指导 (如果使用 Microsoft 365) ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[配置 Office 365 活动监视（如果使用 Office 365）](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+[如果使用 Microsoft 365，则配置 Microsoft 365 活动监视 () ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
 
 [确定事件/紧急情况响应计划所有者](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
 

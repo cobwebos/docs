@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB Gremlin 的限制
 description: 有关 Graph 引擎运行时限制的参考文档
-author: LuisBosquez
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: lbosq
-ms.openlocfilehash: 76ad787990c355d29613c05ca9fce31885a2eccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: sngun
+ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72029846"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400462"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB Gremlin 限制
 本文介绍 Azure Cosmos DB Gremlin 引擎的限制，并说明他们可能会如何影响客户遍历。
 
-Cosmos DB Gremlin 基于 Cosmos DB 基础结构而构建。 由于此原因，[Azure Cosmos DB 服务限制](https://docs.microsoft.com/azure/cosmos-db/concepts-limits)中所述的所有限制仍然适用。 
+Cosmos DB Gremlin 基于 Cosmos DB 基础结构而构建。 由于此原因，[Azure Cosmos DB 服务限制](https://docs.microsoft.com/azure/cosmos-db/concepts-limits)中所述的所有限制仍然适用。
 
 ## <a name="limits"></a>限制
 
@@ -34,5 +34,5 @@ Cosmos DB Gremlin 基于 Cosmos DB 基础结构而构建。 由于此原因，[A
 每小时的资源令牌  | **100** | Gremlin 客户端在连接到某个区域中的 Gremlin 帐户时使用的唯一资源令牌的数目。 当应用程序超出每小时唯一令牌限制时，系统会针对下一次的身份验证请求返回 `"Exceeded allowed resource token limit of 100 that can be used concurrently"`。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Cosmos DB Gremlin 响应标头](gremlin-headers.md) 
+* [Azure Cosmos DB Gremlin 响应标头](gremlin-headers.md)
 * [使用 Gremlin 的 Azure Cosmos DB 资源令牌](how-to-use-resource-tokens-gremlin.md)

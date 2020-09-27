@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中添加用户作为实验室创建者
 description: 本文介绍如何将用户添加到 Azure 实验室服务中的实验室帐户的实验室创建者角色。 实验室创建者可以在此实验室帐户中创建实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444278"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399476"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>向 Azure 实验室服务中的实验室帐户添加实验室创建者
 本文介绍如何将用户作为实验室创建者添加到 Azure 实验室服务中的实验室帐户。 然后，这些使用可以在实验室帐户中创建教室实验室。 
@@ -26,12 +26,12 @@ ms.locfileid: "85444278"
     ![添加实验室创建者](./media/tutorial-setup-lab-account/add-lab-creator.png)
 
     > [!NOTE]
-    > 如果要添加非 Microsoft 帐户用户作为实验室创建者，请参阅[将非 Microsoft 帐户用户添加为实验室创建者](#add-a-non-microsoft-account-user-as-a-lab-creator)部分。 
+    > 如果要添加非 Microsoft 帐户用户作为实验室创建者，请参阅 [将非 Microsoft 帐户用户添加为实验室创建者](#add-a-non-microsoft-account-user-as-a-lab-creator) 部分。 
 
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>添加非 Microsoft 帐户用户作为实验室创建者
 若要将用户添加为实验室创建者，请使用其电子邮件帐户。 可以使用以下类型的电子邮件帐户：
 
-- 大学办公室 365 Azure Active Directory （AAD）提供的电子邮件帐户。 
+- 大学 Azure Active Directory 提供的电子邮件帐户 (AAD) 。
 - Microsoft 电子邮件帐户，如 `@outlook.com` 、、 `@hotmail.com` `@msn.com` 或 `@live.com` 。
 - 非 Microsoft 电子邮件帐户，如 Yahoo 或 Google 提供的帐户。 但是，这些类型的帐户必须与 Microsoft 帐户链接。
 - 一个 GitHub 帐户。 此帐户必须与 Microsoft 帐户链接。
@@ -49,15 +49,15 @@ ms.locfileid: "85444278"
 
 
 ### <a name="using-a-github-account"></a>使用 GitHub 帐户
-讲师还可以使用现有的 GitHub 帐户注册和登录到教室实验室。 如果讲师已经有一个链接到其 GitHub 帐户的 Microsoft 帐户，则他们可以登录并提供其密码，如前一部分中所示。 如果尚未将其 GitHub 帐户链接到 Microsoft 帐户，则应选择 "**登录" 选项**：
+讲师还可以使用现有的 GitHub 帐户注册和登录到教室实验室。 如果讲师已经有一个链接到其 GitHub 帐户的 Microsoft 帐户，则他们可以登录并提供其密码，如前一部分中所示。 如果尚未将其 GitHub 帐户链接到 Microsoft 帐户，则应选择 " **登录" 选项**：
 
 ![登录选项链接](./media/how-to-configure-student-usage/signin-options.png)
 
-在 "**登录选项**" 页面上，选择 "**用 GitHub 登录**"。
+在 " **登录选项** " 页面上，选择 " **用 GitHub 登录**"。
 
 ![用 GitHub 链接登录](./media/how-to-configure-student-usage/signin-github.png)
 
-最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当讲师选择**下一个**时，会自动发生这种情况。  然后，教师会立即登录并连接到教室实验室。
+最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当讲师选择 **下一个**时，会自动发生这种情况。  然后，教师会立即登录并连接到教室实验室。
 
 
 ## <a name="next-steps"></a>后续步骤

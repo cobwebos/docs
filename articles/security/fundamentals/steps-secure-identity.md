@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386140"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399799"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -35,7 +35,7 @@ ms.locfileid: "87386140"
 阅读此清单时，请确保记录哪些功能和步骤已完成。
 
 > [!NOTE]
-> 本文档中的许多建议仅适用于配置为使用 Azure Active Directory 作为标识提供者的应用程序。 在应用中配置单一登录可确保将凭据策略、威胁检测、审核和日志记录的优势及其他功能添加到这些应用程序。 [Azure AD 的应用程序管理](../../active-directory/manage-apps/what-is-application-management.md)是所有这些建议所基于的基础。
+> 本文档中的许多建议仅适用于配置为使用 Azure Active Directory 作为标识提供者的应用程序。 在应用中配置单一登录可确保将凭据策略、威胁检测、审核和日志记录的优势及其他功能添加到这些应用程序。 [Azure AD 的应用程序管理](../../active-directory/manage-apps/what-is-application-management.md) 是所有这些建议所基于的基础。
 
 本文档中的建议符合[标识安全评分](../../active-directory/fundamentals/identity-secure-score.md)（Azure AD 租户的标识安全配置的自动评估）。 组织可以使用 Azure AD 门户中的“标识安全分数”页查找当前安全配置的差距，以确保遵循当前的 Microsoft 安全[最佳做法](identity-management-best-practices.md)。 实施“安全评分”页中的每条建议可以提高评分和跟踪进度，并有助于将实施方案与其他类似规模的组织或行业进行比较。
 
@@ -82,7 +82,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 如果组织使用实施直通身份验证或联合身份验证的混合标识解决方案，应该启用密码哈希同步，原因包括以下两点：
 
 * Azure AD 管理系统中的[凭据已泄漏的用户](../../active-directory/reports-monitoring/concept-risk-events.md)报告会警告用户名和密码对已在“黑暗网络”中透露。 日后遭到攻击的第三方站点上出现的网络钓鱼、恶意软件和密码重用，导致大量的密码泄漏。 Microsoft 会检测其中的许多泄漏凭据，如果它们与你组织中的凭据匹配，则会告诉你 – 但前提是已[启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)！
-* 如果发生本地服务中断（例如，在勒索软件攻击中），可以切换到[使用密码哈希同步的云身份验证](choose-ad-authn.md)。使用此备用身份验证方法，可以继续访问配置为使用 Azure Active Directory 进行身份验证的应用，包括 Office 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
+* 如果发生本地中断 (例如，在勒索软件攻击) ，可以 [使用密码哈希同步切换到使用云身份验证](choose-ad-authn.md)。利用此备份身份验证方法，你可以继续访问配置为 Azure Active Directory 身份验证的应用，包括 Microsoft 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
 
 详细了解[密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的工作原理。
 
@@ -117,7 +117,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 请务必了解各种 [Azure AD 应用程序许可体验](../../active-directory/develop/application-consent-experience.md)、[权限和许可的类型](../../active-directory/develop/v2-permissions-and-consent.md)以及它们对组织安全状况的影响。 默认情况下，Azure AD 中的所有用户都可以对利用 Microsoft 标识平台访问组织数据的应用程序进行授权。 尽管允许用户自行许可确实可让用户轻松获取与 Microsoft 365、Azure 和其他服务集成的有用应用程序，但如果未小心使用或未受监视，这可能会带来风险。
 
-Microsoft 建议限制用户同意，以帮助减少您的 surface 区域并降低这种风险。 你还可以使用[应用同意策略（预览版）](../../active-directory/manage-apps/configure-user-consent.md)将最终用户许可限制为仅限已验证的发布者和你选择的权限。 如果对最终用户的同意受到限制，则仍将接受以前的许可授权，但所有未来的同意操作都必须由管理员执行。 对于受限制的情况，用户可以通过集成的[管理员同意请求工作流](../../active-directory/manage-apps/configure-admin-consent-workflow.md)或通过你自己的支持过程来请求管理员许可。 在限制最终用户同意之前，请使用我们的[建议](../../active-directory/manage-apps/manage-consent-requests.md)在组织中规划此更改。 对于希望允许所有用户访问的应用程序，请考虑[代表所有用户授予许可](../../active-directory/develop/v2-admin-consent.md)，确保尚未单独许可的用户能够访问该应用。 如果不希望这些应用程序对所有场景中的所有用户都可用，请使用[应用程序分配](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)和条件访问来限制用户对[特定应用](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的访问。
+Microsoft 建议限制用户同意，以帮助减少您的 surface 区域并降低这种风险。 你还可以使用 [应用许可策略 (预览) ](../../active-directory/manage-apps/configure-user-consent.md) 将最终用户许可限制为仅限已验证的发布者和你选择的权限。 如果对最终用户的同意受到限制，则仍将接受以前的许可授权，但所有未来的同意操作都必须由管理员执行。 对于受限制的情况，用户可以通过集成的 [管理员同意请求工作流](../../active-directory/manage-apps/configure-admin-consent-workflow.md) 或通过你自己的支持过程来请求管理员许可。 在限制最终用户同意之前，请使用我们的 [建议](../../active-directory/manage-apps/manage-consent-requests.md) 在组织中规划此更改。 对于希望允许所有用户访问的应用程序，请考虑[代表所有用户授予许可](../../active-directory/develop/v2-admin-consent.md)，确保尚未单独许可的用户能够访问该应用。 如果不希望这些应用程序对所有场景中的所有用户都可用，请使用[应用程序分配](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)和条件访问来限制用户对[特定应用](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的访问。
 
 确保用户可以请求管理员批准新应用程序，以减少用户摩擦、最大程度降低支持量并防止用户使用非 Azure AD 凭据注册应用程序。 管控许可操作后，管理员应定期审核应用和许可权限。
 
@@ -193,7 +193,7 @@ IT 管理员可以通过 Azure AD 的[自助密码重置 (SSPR)](../../active-di
 
 ### <a name="implement-self-service-group-and-application-access"></a>实现自助服务组和应用程序访问
 
-Azure AD 允许非管理员使用安全组、Office 365 组、应用程序角色和访问包目录管理对资源的访问。  [自助服务组管理](../../active-directory/users-groups-roles/groups-self-service-management.md)使组所有者能够管理自己的组，而无需分配管理角色。 用户还可以创建和管理 Office 365 组，而无需依赖管理员来处理其请求，未使用的组将自动过期。  [Azure AD 权利管理](../../active-directory/governance/entitlement-management-overview.md)进一步启用委派和可见性，具有全面的访问请求工作流和自动过期。  可以委托非管理员为其拥有的组、Teams、应用程序和 SharePoint Online 网站配置自己的访问包，并为需要批准访问权限的人员配置自定义策略，包括将员工的经理和业务合作伙伴发起人配置为审批者。
+Azure AD 使非管理员能够使用安全组、Microsoft 365 组、应用程序角色和访问包目录管理对资源的访问。  [自助服务组管理](../../active-directory/users-groups-roles/groups-self-service-management.md)使组所有者能够管理自己的组，而无需分配管理角色。 用户还可以创建和管理 Microsoft 365 组，而无需依靠管理员来处理其请求，且未使用的组会自动过期。  [Azure AD 权利管理](../../active-directory/governance/entitlement-management-overview.md)进一步启用委派和可见性，具有全面的访问请求工作流和自动过期。  可以委托非管理员为其拥有的组、Teams、应用程序和 SharePoint Online 网站配置自己的访问包，并为需要批准访问权限的人员配置自定义策略，包括将员工的经理和业务合作伙伴发起人配置为审批者。
 
 ### <a name="implement-azure-ad-access-reviews"></a>实施 Azure AD 访问评审
 

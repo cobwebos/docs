@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB Gremlin API 中可视化图数据
 description: 了解如何将 Azure Cosmos DB 图数据与可视化解决方案（Linkurious Enterprise、Cambridge Intelligence）集成。
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9850af3ea2365aa73d8b9f08b2e706c79062860
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261777"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400513"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>使用数据可视化解决方案可视化在 Azure Cosmos DB Gremlin API 中存储的图数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "85261777"
 
 :::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence 徽标" border="false":::
 
-[剑桥智能的](https://cambridge-intelligence.com/products/)图形可视化工具包现在支持 Azure Cosmos DB。 Azure Cosmos DB 支持下面的两个可视化工具包：
+[剑桥智能的](https://cambridge-intelligence.com/products/) 图形可视化工具包现在支持 Azure Cosmos DB。 Azure Cosmos DB 支持下面的两个可视化工具包：
 
 - [面向 JavaScript 开发人员的 KeyLines](https://cambridge-intelligence.com/keylines/)
 
@@ -46,7 +46,7 @@ ms.locfileid: "85261777"
 
 
 ## <a name="next-steps"></a>后续步骤
- 
+
 - [试用工具包](https://cambridge-intelligence.com/try/)
 - [KeyLines 技术概述](https://cambridge-intelligence.com/keylines/technology/)
 - [Re-Graph 技术概述](https://cambridge-intelligence.com/regraph/technology/)

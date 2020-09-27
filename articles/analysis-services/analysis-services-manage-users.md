@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926172"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400785"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
@@ -28,13 +28,13 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 所有 3 个客户端库均支持 Azure AD 交互流和非交互式身份验证方法。 可在利用 AMOMD 和 MSOLAP 的应用程序中使用两种非交互式方法，即 Active Directory 密码和 Active Directory 集成身份验证方法。 这两种方法绝对不会产生弹出式对话框。
 
-客户端应用程序（如 Excel 和 Power BI Desktop）和工具（如适用于 Visual Studio 的 SSMS 和 Analysis Services 项目扩展）更新到最新版时，会安装最新版本的库。 每月更新 Power BI Desktop、SSMS 和 Analysis Services 项目扩展。 Excel [随 Office 365 一起更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Office 365 更新频率较低，并且某些组织会使用延期频道将更新延迟 3 个月。
+客户端应用程序（如 Excel 和 Power BI Desktop）和工具（如适用于 Visual Studio 的 SSMS 和 Analysis Services 项目扩展）更新到最新版时，会安装最新版本的库。 每月更新 Power BI Desktop、SSMS 和 Analysis Services 项目扩展。 Excel 已 [更新 Microsoft 365](https://support.microsoft.com/office/when-do-i-get-the-newest-features-for-microsoft-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Microsoft 365 更新的频率较低，某些组织使用延迟通道，这意味着更新最多可推迟三个月。
 
 根据使用的客户端应用程序或工具，身份验证类型和登录方式可能有所不同。 每个应用程序可能支持连接到云服务（如 Azure Analysis Services）的不同功能。
 
 Power BI Desktop、Visual Studio 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure 多重身份验证 (MFA)。 Azure MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它通过多个验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 **建议使用通用身份验证**。
 
-如果使用 Windows 帐户登录到 Azure 并且通用身份验证未选中或不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 使用联合身份验证时，Azure AD 和 Office 365 用户使用本地凭据进行身份验证，并且可以访问 Azure 资源。
+如果使用 Windows 帐户登录到 Azure 并且通用身份验证未选中或不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 使用联合身份验证、Azure AD 和 Microsoft 365 用户使用本地凭据进行身份验证，并可以访问 Azure 资源。
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
@@ -68,7 +68,7 @@ Excel 用户可使用 Windows 帐户、组织 ID（电子邮件地址）或外�
 
 ![Azure 门户中的访问控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure 资源管理器模板完成的任务。 若要了解详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)。 
+此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure 资源管理器模板完成的任务。 若要了解详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/overview.md)。 
 
 ## <a name="database-roles"></a>数据库角色
 
@@ -81,4 +81,4 @@ Excel 用户可使用 Windows 帐户、组织 ID（电子邮件地址）或外�
 [使用 Azure Active Directory 组管理对资源的访问权限](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [管理数据库角色和用户](analysis-services-database-users.md)  
 [管理服务器管理员](analysis-services-server-admins.md)  
-[Azure RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)  
+[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)  

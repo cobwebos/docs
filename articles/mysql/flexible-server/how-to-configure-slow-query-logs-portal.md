@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315024"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400377"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户配置和访问 Azure Database for MySQL 灵活服务器的慢速查询日志
 
@@ -45,9 +45,6 @@ ms.locfileid: "91315024"
 
 ## <a name="set-up-diagnostics"></a>设置诊断
 
-> [!NOTE]
-> 在部署过程中，与访问日志 Azure Monitor 诊断设置的集成正在部署，并且功能会很快可用。
-
 慢速查询日志与 Azure Monitor 诊断设置集成，使你可以通过管道将日志传递到 Azure Monitor 日志、事件中心或 Azure 存储。
 
 1. 在边栏中的“监视”  部分下，选择“诊断设置”   > “添加诊断设置”  。
@@ -66,7 +63,7 @@ ms.locfileid: "91315024"
 
 1. 可以通过在配置的数据接收器中浏览慢查询日志来对其进行访问。 最多需要等待 10 分钟的时间，这些日志就会出现。
 
-如果将日志通过管道传输到 Azure Monitor 日志 (Log Analytics) ，请参阅可用于分析的一些 [示例查询](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) 。 
+如果将日志通过管道传输到 Azure Monitor 日志 (Log Analytics) ，请参阅可用于分析的一些 [示例查询](concepts-slow-query-logs.md#analyze-logs-in-azure-monitor-logs) 。 
 
 ## <a name="next-steps"></a>后续步骤
 <!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->

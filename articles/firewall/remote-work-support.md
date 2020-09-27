@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82863410"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400105"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure 防火墙远程工作支持
 
@@ -24,8 +24,8 @@ Azure 防火墙是一种基于云的托管网络安全服务，可保护 Azure �
 
 ## <a name="azure-windows-virtual-desktop-support"></a>Azure Windows 虚拟桌面支持
 
-Windows 虚拟桌面是一个在 Azure 中运行的综合性桌面和应用虚拟化服务。 这是唯一一种可提供简化管理、多会话 Windows 10、对 Office 365 专业增强版的优化以及对远程桌面服务 (RDS) 环境的支持的虚拟桌面基础结构 (VDI)。 你可以在几分钟内部署和缩放 Azure 上的 Windows 桌面和应用，并获得内置的安全性和符合性功能。 Windows 虚拟桌面不需要您打开虚拟网络的任何入站访问权限。 但是，你必须为在虚拟网络中运行的 Windows 虚拟机虚拟机允许一组出站网络连接。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。
+Windows 虚拟桌面是一个在 Azure 中运行的综合性桌面和应用虚拟化服务。 这是 (VDI) 的唯一虚拟桌面基础结构，它提供简化的管理、多会话 Windows 10、适用于企业的 Microsoft 365 应用的优化，以及对远程桌面服务 (RDS) 环境的支持。 你可以在几分钟内部署和缩放 Azure 上的 Windows 桌面和应用，并获得内置的安全性和符合性功能。 Windows 虚拟桌面不需要您打开虚拟网络的任何入站访问权限。 但是，你必须为在虚拟网络中运行的 Windows 虚拟机虚拟机允许一组出站网络连接。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[Windows 虚拟桌面](https://docs.microsoft.com/azure/virtual-desktop/)。
+详细了解 [Windows 虚拟桌面](https://docs.microsoft.com/azure/virtual-desktop/)。

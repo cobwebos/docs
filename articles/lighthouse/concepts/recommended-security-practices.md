@@ -3,19 +3,19 @@ title: 建议的安全做法
 description: 使用 Azure Lighthouse 时，必须考虑安全性和访问控制。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163265"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399374"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
-使用[Azure Lighthouse](../overview.md)时，必须考虑安全性和访问控制。 你的租户中的用户将可以直接访问客户订阅和资源组，因此你需要采取措施来维护你的租户的安全性。 你还需要确保仅允许有效地管理客户资源所需的访问权限。 本主题提供相关建议，以帮助你实现此目的。
+使用 [Azure Lighthouse](../overview.md)时，必须考虑安全性和访问控制。 你的租户中的用户将可以直接访问客户订阅和资源组，因此你需要采取措施来维护你的租户的安全性。 你还需要确保仅允许有效地管理客户资源所需的访问权限。 本主题提供相关建议，以帮助你实现此目的。
 
 > [!TIP]
-> 这些建议也适用于使用 Azure Lighthouse[管理多个租户的企业](enterprise.md)。
+> 这些建议也适用于使用 Azure Lighthouse [管理多个租户的企业](enterprise.md) 。
 
 ## <a name="require-azure-multi-factor-authentication"></a>需要 Azure 多重身份验证
 
@@ -28,7 +28,7 @@ ms.locfileid: "88163265"
 为了更轻松地进行管理，请使用 Azure Active Directory (Azure AD 管理客户资源所需的每个角色的) 组。 这样，你就可以根据需要向组中添加或删除单个用户，而不是直接向每个用户分配权限。
 
 > [!IMPORTANT]
-> 若要为 Azure AD 组添加权限，“组类型”必须是“安全性”而不是“Office 365”  。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要为 Azure AD 组添加权限，则必须将 " **组类型** " 设置为 " **安全**"。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 创建权限结构时，请确保遵循最低权限原则，以便用户仅具有完成作业所需的权限，这样有助于减少发生意外错误的几率。
 

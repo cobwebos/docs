@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 78043e3d95a94d0e9be810164b31ef031234d620
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541016"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399595"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
@@ -64,13 +64,13 @@ Azure 标识保护可帮助保护帐户和标识的一些示例包括：
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD 特权标识管理
 
-使用 [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)，可以管理、控制和监视组织内的访问。 此功能包括访问 Azure AD 和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）中的资源。
+使用 [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)，可以管理、控制和监视组织内的访问。 此功能包括对 Azure AD 和其他 Microsoft 联机服务中的资源的访问权限，如 Microsoft 365 或 Microsoft Intune。
 
 ![Azure AD Privileged Identity Management 示意图](./media/threat-detection/azure-threat-detection-fig2.png)
 
 PIM 可帮助用户进行以下操作：
 
--   获取有关 Azure AD 管理员以及对 Office 365 和 Intune 等 Microsoft 联机服务的实时 (JIT) 管理访问的警报和报告。
+-   获取有关 Azure AD 管理员和实时 (JIT) 对 Microsoft 联机服务（如 Microsoft 365 和 Intune）的管理访问权限的警报和报表。
 
 -   获取有关管理员访问历史记录以及管理员分配更改的报告。
 
@@ -155,7 +155,7 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsof
 
 Microsoft 可访问大量的全球威胁情报。
 
-遥测数据的来源包括：Azure、Office 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。
+遥测数据的来源包括：Azure、Microsoft 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。
 
 ![威胁智能结果](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -190,7 +190,7 @@ Microsoft 可访问大量的全球威胁情报。
 
 -   **恶意 PowerShell 脚本**：攻击者出于各种目的，使用 PowerShell 在目标虚拟机上执行恶意代码。 安全中心会检查 PowerShell 活动中是否存在可疑活动的证据。
 
--   **传出攻击**：攻击者通常会以云资源为目标，目的是使用这些资源发起更多攻击。 例如，可以通过受攻击的虚拟机对其他虚拟机发起暴力攻击，可以发送垃圾邮件，也可以扫描 Internet 上的开放端口和其他设备。 将机器学习应用到网络流量以后，安全中心即可检测到出站网络通信何时超出标准。 检测到垃圾邮件时，安全中心也可将非正常的电子邮件流量与 Office 365 提供的情报信息关联起来，确定该邮件到底是恶意邮件，还是合法的电子邮件促销活动。
+-   **传出攻击**：攻击者通常会以云资源为目标，目的是使用这些资源发起更多攻击。 例如，可以通过受攻击的虚拟机对其他虚拟机发起暴力攻击，可以发送垃圾邮件，也可以扫描 Internet 上的开放端口和其他设备。 将机器学习应用到网络流量以后，安全中心即可检测到出站网络通信何时超出标准。 检测到垃圾邮件时，安全中心还会将异常的电子邮件流量与 Microsoft 365 的智能进行关联，以确定邮件是否可能是恶意的，还是合法的电子邮件活动的结果。
 
 ### <a name="anomaly-detection"></a>异常检测
 

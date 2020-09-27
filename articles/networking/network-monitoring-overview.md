@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67672181"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399646"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -65,12 +65,12 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 检测从本地到你的云应用程序的网络拓扑
 * 容量规划、带宽利用率分析
 * 针对主要路径和辅助路径进行监视并发出警报
-* 通过 ExpressRoute 监视与 Azure 服务（如 Office 365、Dynamics 365 等）的连接情况
+* 监视与 Azure 服务的连接，例如 Microsoft 365、Dynamics 365 .。。over ExpressRoute
 * 检测与 VNet 的连接的降级
 
 ![显示各区域流量的地图](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 * [为 ExpressRoute 配置网络性能监视器](../expressroute/how-to-npm.md)
 * [博客文章](https://aka.ms/NPMExRmonitorGA)
@@ -84,9 +84,9 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 从全球的多个用户位置测试应用程序可访问性
 * 确定你的业务线和 SaaS 应用程序的网络延迟和包丢失
 * 确定网络上可能会导致应用程序性能变差的热点
-* 使用针对 Microsoft Office 365、Dynamics 365、Skype for Business 和其他 Microsoft 服务的内置测试来监视 Office 365 应用程序的可访问性。
+* 使用内置测试 Microsoft 365、Dynamics 365、Skype for Business 和其他 Microsoft 服务监视 Microsoft 365 应用程序的可访问性
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 * [配置用于监视服务终结点的网络性能监视器](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [博客文章](https://aka.ms/svcendptmonitor)

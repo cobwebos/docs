@@ -1,19 +1,19 @@
 ---
 title: 选择 Azure 数据传输解决方案 | Microsoft Docs
-description: 了解如何根据环境中的数据大小和可用网络带宽，选择用于数据传输的 Azure 解决方案。
+description: 了解如何基于环境中的数据大小和可用网络带宽选择 Azure 数据传输解决方案。
 services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836592"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400532"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -50,19 +50,19 @@ ms.locfileid: "87836592"
 
 - 可用网络带宽是否有限或不存在，并且你要传输大型数据集？
   
-    如果是，请参阅：[方案1：传输不带或低网络带宽的大型数据集](storage-solution-large-dataset-low-network.md)。
+    如果是，请参阅：[方案 1：在网络带宽不存在或较低的情况下传输大型数据集](storage-solution-large-dataset-low-network.md)。
 - 是否要通过网络传输大型数据集并且具有中等到较高网络带宽？
 
-    如果是，请参阅：[方案2：传输具有中等到高网络带宽的大型数据集](storage-solution-large-dataset-moderate-high-network.md)。
+    如果是，请参阅：[方案 2：在网络带宽中等或较高的情况下传输大型数据集](storage-solution-large-dataset-moderate-high-network.md)。
 - 是否偶尔要通过网络仅传输几个文件？
 
-    如果是，请参阅[方案3：传输大小限制为适中的网络带宽的小型数据集](storage-solution-small-dataset-low-moderate-network.md)。
+    如果是，请参阅[方案 3：在网络带宽有限或中等的情况下传输小型数据集](storage-solution-small-dataset-low-moderate-network.md)。
 - 是否在寻找采用固定时间间隔的时间点数据传输？
 
-    如果是，请使用[方案4：定期数据传输](storage-solution-periodic-data-transfer.md)中所述的脚本化/编程选项。
+    如果是，请使用[方案 4：定期数据传输](storage-solution-periodic-data-transfer.md)中概述的脚本化/编程选项。
 - 是否在寻找持续数据传输？
 
-    如果是，请使用[方案4：定期数据传输](storage-solution-periodic-data-transfer.md)中的选项。
+    如果是，请使用[方案 4：定期数据传输](storage-solution-periodic-data-transfer.md)中概述的脚本化/编程选项。
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure 门户中的数据传输功能
 
@@ -74,7 +74,7 @@ ms.locfileid: "87836592"
 - [阅读 AzCopy 概述](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
 - [快速入门：使用 PowerShell 上传、下载和列出 blob](../blobs/storage-quickstart-blobs-powershell.md)
 - [快速入门：使用 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
-- 了解：
+- 学习内容：
 
     - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)。
     - [用于联机传输的 Azure Data Box Gateway 和 Azure Stack 边缘](https://docs.microsoft.com/azure/databox-online/)。

@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611129"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400145"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>使用 Azure 防火墙保护 Windows 虚拟桌面部署
 
@@ -27,16 +27,16 @@ Windows 虚拟桌面是在 Azure 上运行的桌面和应用虚拟化服务。 �
 
  - 已部署的 Windows 虚拟桌面环境和主机池。
 
-   有关详细信息，请参阅[教程：使用 Azure Marketplace 创建主机池](../virtual-desktop/create-host-pools-azure-marketplace.md)和[使用 Azure 资源管理器模板创建主机池](../virtual-desktop/virtual-desktop-fall-2019/create-host-pools-arm-template.md)。
+   有关详细信息，请参阅 [教程：使用 Azure Marketplace 创建主机池](../virtual-desktop/create-host-pools-azure-marketplace.md) 和 [使用 Azure 资源管理器模板创建主机池](../virtual-desktop/virtual-desktop-fall-2019/create-host-pools-arm-template.md)。
 
-若要了解有关 Windows 虚拟桌面环境的详细信息，请参阅[Windows 虚拟桌面环境](../virtual-desktop/environment-setup.md)。
+若要了解有关 Windows 虚拟桌面环境的详细信息，请参阅 [Windows 虚拟桌面环境](../virtual-desktop/environment-setup.md)。
 
 ## <a name="host-pool-outbound-access-to-windows-virtual-desktop"></a>主机池对 Windows 虚拟桌面的出站访问权限
 
-你为 Windows 虚拟桌面创建的 Azure 虚拟机必须有权访问多个完全限定的域名（Fqdn）才能正常工作。 Azure 防火墙提供 Windows 虚拟桌面 FQDN 标记以简化此配置。 使用以下步骤来允许出站 Windows 虚拟桌面平台流量：
+为 Windows 虚拟桌面创建的 Azure 虚拟机必须有权访问多个完全限定域名 (Fqdn) 才能正常工作。 Azure 防火墙提供 Windows 虚拟桌面 FQDN 标记以简化此配置。 使用以下步骤来允许出站 Windows 虚拟桌面平台流量：
 
-- 部署 Azure 防火墙并配置 Windows 虚拟机主机池子网用户定义的路由（UDR），以便通过 Azure 防火墙路由所有流量。 默认路由现在指向防火墙。
-- 创建应用程序规则集合并添加规则以启用*WindowsVirtualDesktop* FQDN 标记。 源 IP 地址范围为主机池虚拟网络，协议为**https**，目标为**WindowsVirtualDesktop**。
+- 部署 Azure 防火墙并配置 Windows 虚拟机主机池子网用户定义的路由 (UDR) ，通过 Azure 防火墙路由所有流量。 默认路由现在指向防火墙。
+- 创建应用程序规则集合并添加规则以启用 *WindowsVirtualDesktop* FQDN 标记。 源 IP 地址范围为主机池虚拟网络，协议为 **https**，目标为 **WindowsVirtualDesktop**。
 
 - 你的 Windows 虚拟桌面主机池所需的存储和服务总线帐户集是特定于部署的，因此尚未在 WindowsVirtualDesktop FQDN 标记中捕获。 可以通过以下方式之一来解决此操作：
 
@@ -54,16 +54,16 @@ Windows 虚拟桌面是在 Azure 上运行的桌面和应用虚拟化服务。 �
 - 创建网络规则集合添加以下规则：
 
    - 允许 DNS –允许向 TCP 和 UDP 端口53添加专用 IP 地址的流量。
-   - 允许 KMS –允许从 Windows 虚拟桌面虚拟机到 Windows 激活服务 TCP 端口1688的流量。 有关目标 IP 地址的详细信息，请参阅[强制隧道方案中的 Windows 激活失败](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution)。
+   - 允许 KMS –允许从 Windows 虚拟桌面虚拟机到 Windows 激活服务 TCP 端口1688的流量。 有关目标 IP 地址的详细信息，请参阅 [强制隧道方案中的 Windows 激活失败](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution)。
 
 > [!NOTE]
 > 某些部署可能不需要 DNS 规则，例如 Azure Active Directory 域控制器将 DNS 查询转发到 168.63.129.16 Azure DNS。
 
 ## <a name="host-pool-outbound-access-to-the-internet"></a>主机池对 Internet 的出站访问权限
 
-根据你的组织需求，你可能想要为你的最终用户启用安全的出站 Internet 访问。 如果允许的目标列表定义完善（例如[Office 365 access](https://docs.microsoft.com/Office365/Enterprise/office-365-ip-web-service)），则可以使用 Azure 防火墙应用程序和网络规则来配置所需的访问权限。 这会将最终用户流量直接路由到 Internet，以获得最佳性能。
+根据你的组织需求，你可能想要为你的最终用户启用安全的出站 Internet 访问。 如果允许的目标列表定义完善， (例如， [Microsoft 365 访问](/microsoft-365/enterprise/microsoft-365-ip-web-service)) 可以使用 Azure 防火墙应用程序和网络规则来配置所需的访问权限。 这会将最终用户流量直接路由到 Internet，以获得最佳性能。
 
-如果要使用现有的本地安全 web 网关筛选出站用户 Internet 流量，则可以使用显式代理配置来配置 web 浏览器或 Windows 虚拟机主机池上运行的其他应用程序。 例如，请参阅[如何使用 Microsoft Edge 命令行选项配置代理设置](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings)。 这些代理设置只影响最终用户的 Internet 访问，从而允许 Windows 虚拟桌面平台出站流量直接通过 Azure 防火墙。
+如果要使用现有的本地安全 web 网关筛选出站用户 Internet 流量，则可以使用显式代理配置来配置 web 浏览器或 Windows 虚拟机主机池上运行的其他应用程序。 例如，请参阅 [如何使用 Microsoft Edge 命令行选项配置代理设置](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings)。 这些代理设置只影响最终用户的 Internet 访问，从而允许 Windows 虚拟桌面平台出站流量直接通过 Azure 防火墙。
 
 ## <a name="additional-considerations"></a>其他注意事项
 
@@ -76,4 +76,4 @@ Windows 虚拟桌面是在 Azure 上运行的桌面和应用虚拟化服务。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 Windows 虚拟桌面的详细信息：[什么是 Windows 虚拟桌面？](../virtual-desktop/overview.md)
+- 了解有关 Windows 虚拟桌面的详细信息： [什么是 Windows 虚拟桌面？](../virtual-desktop/overview.md)

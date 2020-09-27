@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930479"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400581"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -49,7 +49,7 @@ ms.locfileid: "88930479"
 
 ### <a name="learn-from-what-similar-customers-collect"></a>参考类似客户收集的信息
 
-在 Application Insights 的 Azure 监视定价计算器中，如果启用“根据应用程序活动估算数据量”功能，可以提供有关应用程序的输入（如果以后会收集客户端遥测数据，请提供每月请求数和页面查看次数），然后，计算器会告知类似由应用程序收集的中间值和第 90 个百分位的数据量。 这些应用程序涉及各种 Application Insights 配置（例如，某些应用程序具有默认[采样](./sampling.md)、有些没有采样等），因此你仍然拥有控制权，可以使用采样将引入的数据量减少到远低于中间值级别。 不过，这只能简单地了解其他类似客户遇到的情况。
+在 Application Insights 的 Azure 监视定价计算器中，如果启用“根据应用程序活动估算数据量”功能，可以提供有关应用程序的输入（如果以后会收集客户端遥测数据，请提供每月请求数和页面查看次数），然后，计算器会告知类似由应用程序收集的中间值和第 90 个百分位的数据量。 这些应用程序涉及各种 Application Insights 配置（例如，某些应用程序具有默认[采样](./sampling.md)、有些没有采样等），因此你仍然拥有控制权，可以使用采样将引入的数据量减少到远低于中间值级别。 但这只是了解其他类似客户看到的情况的一个起点。
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>了解自己的使用情况和估算成本
 
@@ -264,7 +264,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 若要更改保留期，请从 Application Insights 资源转到“使用情况和估算成本”页，然后选择“数据保留”选项 ：
 
-![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
+![显示在何处更改数据保持期的屏幕截图。](./media/pricing/pricing-005.png)
 
 如果保留期天数减少，则在删除最旧的数据之前，会有几天的宽限期。
 
@@ -320,7 +320,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 场景                               | 每日节点计数总数 |
+| 方案                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725080"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399680"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用网络观察程序和 Grafana 管理和分析网络安全组流日志
 
@@ -199,7 +199,7 @@ sudo service grafana-server start
 
 以下屏幕截图描绘了一个图形和图表，其中显示了出现最多的流及其频率。 流还可以按 NSG 规则以及按决策显示。 Grafana 是可以高度自定义的，因此，建议创建仪表板来适应你的特定监视需求。 下面的示例显示了一个典型的仪表板：
 
-![仪表板图形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![屏幕截图，显示示例图形配置，其中包含按 NSG 规则分段的流。](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>结论
 

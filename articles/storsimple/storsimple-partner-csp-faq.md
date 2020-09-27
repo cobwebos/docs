@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279213"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400037"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题解答
 
@@ -40,10 +40,10 @@ ms.locfileid: "87279213"
 
 有关详细信息，请转到 [CSP 计划中的 StorSimple](https://www.microsoft.com/en-us/server-cloud/products/storsimple/)。 
 
-### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-office-365-and-enterprise-mobility-suite-ems"></a>StorSimple 是基于使用情况还是基于席位许可证（类似于 Office 365 和企业移动性套件 (EMS)）？
+### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-microsoft-365-and-enterprise-mobility-suite-ems"></a>StorSimple 是基于使用情况还是基于席位许可证，如 Microsoft 365 和企业移动性套件 (EMS) ？
 StorSimple 是基于使用情况的服务。 通过 CSP 渠道采购 StorSimple Virtual Array 的客户支付 virtual array 和 Azure 的使用费用（作为 CSP 帐单中的单独品种名计费）。 
 
-### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>StorSimple 业务模型是否类似于其他服务（如 Office 365 和企业移动套件）的业务模型？ 
+### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-microsoft-365-and-the-enterprise-mobility-suite"></a>StorSimple 业务模型与其他服务（如 Microsoft 365 和企业移动性套件）的模型是否相同？ 
 是的。 与 Azure 中其他基于使用情况的服务一样，该模型是批发折扣模型。 StorSimple 的批发折扣与其他 Azure 服务的批发折扣类似。 此模型为 CSP 合作伙伴提供了通过 StorSimple Virtual Array 提高销售量和推动 Azure 使用量的机会。  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>发布时提供哪些 StorSimple SKU？
@@ -63,7 +63,7 @@ StorSimple 是基于使用情况的服务。 通过 CSP 渠道采购 StorSimple 
 - 他们还可以通过提供托管服务发现新的业务模式。
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>为 StorSimple CSP 合作伙伴提供的奖励有哪些？ 我有资格获得 CSP 计划奖励吗？
-有关激励的信息，请参阅[CSP 计划奖励](https://partner.microsoft.com/cloud-solution-provider/program-details)。
+有关激励的信息，请参阅 [CSP 计划奖励](https://partner.microsoft.com/cloud-solution-provider/program-details)。
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>以合作伙伴身份部署和管理 StorSimple

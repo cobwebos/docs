@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488824"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400802"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -66,7 +66,7 @@ ms.locfileid: "89488824"
 > [!NOTE]
 > 在 ISE 及其连接器中运行的逻辑应用，不管这些连接器的运行位置如何，都遵循固定定价计划与基于消耗的定价计划。 有关详细信息，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md) 和 [逻辑应用定价详细](https://azure.microsoft.com/pricing/details/logic-apps/)信息。
 
-| Label | 示例 | 说明 |
+| 标签 | 示例 | 说明 |
 |-------|---------|-------------|
 | **转储** | ![示例核心连接器](./media/apis-list/example-core-connector.png) | 此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
 | **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你的本地系统已连接到 Azure 虚拟网络，则 ISE 允许你的逻辑应用直接访问该系统，而无需使用 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 相反，你可以使用该系统的 **ISE** 连接器（如果有）、HTTP 操作或 [自定义连接器](#custom)。 对于没有 **ISE** 连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅 [ise 连接器](#ise-connectors)。 |
@@ -136,7 +136,7 @@ ms.locfileid: "89488824"
 | [![Azure 服务总线托管连接器 ][azure-service-bus-icon]<br> **Azure 服务总线**][azure-service-bus-doc] | 使用逻辑应用中最常用的连接器管理异步消息、会话和主题订阅。 |
 | [![SQL Server 托管连接器 ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | 连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。 |
 | [![Azure Blob 存储托管连接器 ][azure-blob-storage-icon]<br> **azure blob <br> 存储**][azure-blob-storage-doc] | 连接到存储帐户，以便可以创建和管理 Blob 内容。 |
-| [![Office 365 Outlook 托管连接器 ][office-365-outlook-icon]<br> **Office 365 <br> outlook**][office-365-outlook-doc] | 连接到 Office 365 电子邮件帐户，以便可以创建和管理电子邮件、任务、日历事件和会议、联系人、请求，等等。 |
+| [![Office 365 Outlook 托管连接器 ][office-365-outlook-icon]<br> **Office 365 <br> outlook**][office-365-outlook-doc] | 连接到你的工作或学校电子邮件帐户，以便你可以创建和管理电子邮件、任务、日历事件和会议、联系人和请求等。 |
 | [![SFTP-SSH 托管连接器 ][sftp-ssh-icon]<br> **SFTP-ssh**][sftp-ssh-doc] | 使用 SSH 连接到可从 Internet 访问的 SFTP 服务器，以便可以处理文件和文件夹。 |
 | [![SharePoint Online 托管连接器 ][sharepoint-online-icon]<br> **sharepoint <br> online**][sharepoint-online-doc] | 连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。 |
 | [![Azure 队列托管连接器 ][azure-queues-icon]<br> **azure <br> 队列**][azure-queues-doc] | 连接到你的 Azure 存储帐户，以便你可以创建和管理队列和消息。 |
@@ -588,7 +588,7 @@ ms.locfileid: "89488824"
 [instagram-doc]: ./connectors-create-api-instagram.md "连接到 Instagram。触发事件或针对事件进行操作"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "连接到 Mandrill 进行通信"
 [mysql-doc]: /connectors/mysql/ "连接到本地 MySQL 数据库，以便读取和写入数据"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "连接到 Office 365 帐户，以便发送和接收电子邮件、管理日历和联系人，以及执行其他操作"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "连接到你的工作或学校帐户，以便能够发送和接收电子邮件、管理你的日历和联系人等"
 [onedrive-doc]: ./connectors-create-api-onedrive.md "连接到个人 Microsoft OneDrive，以便上传、删除、列出文件，等等"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Microsoft OneDrive，以便上传、删除、列出文件，等等"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库，以便添加、插入、删除行，以及执行其他操作"

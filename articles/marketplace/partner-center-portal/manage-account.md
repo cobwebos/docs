@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015826"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400683"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
@@ -237,7 +237,7 @@ ms.locfileid: "89015826"
 4. 为组指定角色或自定义权限。 无论与个人帐户关联的角色/权限如何，组的所有成员都将能够访问具有在此处应用的权限的合作伙伴中心帐户。
 5. 从显示的列表中选择新组的用户。 可以使用搜索框搜索特定用户。
 6. 选择 "用户" 后，选择 " **添加** " 以将其添加到新组。
-7. 选择“保存” 。
+7. 选择“保存”。
 
 将在组织的工作帐户中创建此新组 (Azure AD 租户) ，而不只是在合作伙伴中心帐户中。
 
@@ -306,7 +306,7 @@ ms.locfileid: "89015826"
 
 ## <a name="manage-tenants"></a>管理租户
 
-本文档中的 Azure Active Directory (AD) 租户（也称为“工作帐户”）是 Azure 门户中设置的组织的表示形式，可帮助你为内部和外部用户管理 Microsoft 云服务的特定实例。 如果你的组织已订阅 Microsoft 云服务（如 Azure、Microsoft Intune 或 Office 365），则会为你建立 Azure AD 租户。
+本文档中的 Azure Active Directory (AD) 租户（也称为“工作帐户”）是 Azure 门户中设置的组织的表示形式，可帮助你为内部和外部用户管理 Microsoft 云服务的特定实例。 如果你的组织已订阅 Microsoft 云服务（如 Azure、Microsoft Intune 或 Microsoft 365），则会为你建立 Azure AD 租户。
 
 可以设置多个用于合作伙伴中心的租户。 具有合作伙伴中心帐户中的管理员角色的任何用户都可以在该帐户中添加和删除 Azure AD 租户。  
 

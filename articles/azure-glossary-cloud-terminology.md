@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63adb5d6898fd467a0557aa147e54f814c167e72
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079564"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400123"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -30,8 +30,8 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 * [云计算术语](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 常规行业云术语。
 
 ## <a name="account"></a>account
-用于访问和管理 Azure 订阅的帐户。 它通常称为 Azure 帐户，尽管帐户可以是以下任何一个：现有的工作、学校或个人 Microsoft 帐户，或 Office 365 用户名和密码。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  
-请参阅使用[Microsoft 365 帐户注册 Azure 订阅](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md)和[可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+用于访问和管理 Azure 订阅的帐户。 它通常称为 Azure 帐户，尽管帐户可以是以下任何一种：现有的工作、学校或个人 Microsoft 帐户。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  
+请参阅使用 [Microsoft 365 帐户注册 Azure 订阅](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) 和 [可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="api-app"></a>API 应用
 又叫[应用服务应用](#app-service-app)。

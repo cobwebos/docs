@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 364f4f38599508e4dfb455f1336d4a6978cdf5b6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651733"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400445"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -53,7 +53,7 @@ Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 使用 
 有关详细信息，请参阅[什么是 Azure 虚拟网络？](../virtual-network/virtual-networks-overview.md)
 
 ### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
-使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 此连接是专用连接。 流量不经过 Internet。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 Dynamics 365 等 Microsoft 云服务建立连接。  有关详细信息，请参阅[什么是 ExpressRoute？](../expressroute/expressroute-introduction.md)
+使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 此连接是专用连接。 流量不经过 Internet。 使用 ExpressRoute 可与 Microsoft Azure、Microsoft 365 和 Dynamics 365 等 Microsoft 云服务建立连接。  有关详细信息，请参阅[什么是 ExpressRoute？](../expressroute/expressroute-introduction.md)
 
 ![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
@@ -73,7 +73,7 @@ Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的�
 ### <a name="azure-dns"></a><a name="dns"></a>Azure DNS
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 有关详细信息，请参阅[什么是 Azure DNS？](../dns/dns-overview.md)
 
-### <a name="azure-bastion"></a><a name="bastion"></a>Azure 堡垒
+### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
 Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接在 Azure 门户中实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。 有关详细信息，请参阅[什么是 Azure Bastion？](../bastion/bastion-overview.md)。
 
 ![Azure 堡垒体系结构](./media/networking-overview/architecture.png)
@@ -84,7 +84,7 @@ Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在
 ![虚拟网络 NAT 网关](./media/networking-overview/flow-map.png)
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure 对等互连服务
-Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365、Dynamics 365、软件即服务）的连接， (SaaS) 服务、Azure 或可通过公共 internet 访问的任何 Microsoft 服务。 有关详细信息，请参阅 [什么是 Azure 对等互连服务？](../peering-service/about.md)。
+Azure 对等互连服务增强了客户与 Microsoft 云服务的连接，例如 Microsoft 365、Dynamics 365、软件即服务 (SaaS) 服务、Azure 或可通过公共 internet 访问的任何 Microsoft 服务。 有关详细信息，请参阅 [什么是 Azure 对等互连服务？](../peering-service/about.md)。
 
 ## <a name="application-protection-services"></a><a name="protect"></a>应用程序保护服务
 

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924574"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400632"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用云解决方案提供商 (CSP) 计划在多租户环境中设置 VMware 灾难恢复
 
-[CSP 计划](https://partner.microsoft.com/cloud-solution-provider)可促进 Microsoft 云服务（包括 Office 365、企业移动性套件和 Microsoft Azure）更好地结合在一起。 有了 CSP，合作伙伴就可以与客户建立端到端关系，并在建立关系的过程中充当主要联络点。 合作伙伴可以为客户部署 Azure 订阅，并将这些订阅与自己的增值型自定义产品/服务相结合。
+[CSP 计划](https://partner.microsoft.com/cloud-solution-provider)为 Microsoft 云服务提供了更好的故事，包括 Microsoft 365、企业移动性套件和 Microsoft Azure。 有了 CSP，合作伙伴就可以与客户建立端到端关系，并在建立关系的过程中充当主要联络点。 合作伙伴可以为客户部署 Azure 订阅，并将这些订阅与自己的增值型自定义产品/服务相结合。
 
 有了 [Azure Site Recovery](site-recovery-overview.md)，作为合作伙伴，你可以直接通过 CSP 为客户管理灾难恢复。 另外，你也可以通过 CSP 来设置 Site Recovery 环境，让客户以自助方式管理自己的灾难恢复需求。 在这两种方案中，合作伙伴充当联系 Site Recovery 和客户的纽带。 合作伙伴提供客户关系服务，并针对 Site Recovery 使用情况向客户收费。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87924574"
 
 1. 在“客户”  页上，单击租户帐户的名称。
 2. 在租户帐户的“订阅”页上，可以监视现有的帐户订阅，并根据需要添加更多订阅。 
-3. 若要管理租户的灾难恢复操作，请选择“所有资源(Azure 门户)”****。 这将向你授予对租户的 Azure 订阅的访问权限。
+3. 若要管理租户的灾难恢复操作，请选择 " **所有资源" (Azure 门户) **"。 这将向你授予对租户的 Azure 订阅的访问权限。
 
     ![“所有资源”链接](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
@@ -68,37 +68,37 @@ ms.locfileid: "87924574"
 2. 向租户提供[你创建的帐户](#create-a-tenant-account)。
 3. 你可以通过 CSP 门户将新用户添加到租户订阅，如下所示：
 
-    a) 转到租户的 CSP 订阅页，然后选择“用户和许可证”选项。****
+    ) 中转到租户的 CSP 订阅页，然后选择 " **用户和许可证** " 选项。
 
       ![租户的 CSP 订阅页](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
     b) 现在可以创建新的用户，只需输入相关详细信息并选择权限，或者通过 CSV 文件上传用户列表即可。
     
-    c) 创建新用户后，返回到 Azure 门户。 在“订阅”  页上，选择相关的订阅。
+    c) 创建新用户后，返回到 Azure 门户。 在“订阅”**** 页上，选择相关的订阅。
 
-    d) 选择“访问控制(IAM)”，然后单击“角色分配”   。
+    d) 选择“访问控制(IAM)”，然后单击“角色分配”********。
 
-    e) 单击“添加角色分配”  以添加具有相关访问级别的用户。 通过 CSP 门户创建的用户会显示在“角色分配”选项卡上。
+    e) 单击“添加角色分配”**** 以添加具有相关访问级别的用户。 通过 CSP 门户创建的用户会显示在“角色分配”选项卡上。
 
       ![添加用户](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
-- 对于大多数管理操作，“参与者”角色已足够。  具有此访问级别的用户可以对订阅执行所有操作，更改访问级别除外（此操作需要“所有者”级别访问权限）。 
+- 对于大多数管理操作，“参与者”角色已足够。** 具有此访问级别的用户可以对订阅执行所有操作，更改访问级别除外（此操作需要“所有者”级别访问权限）。**
 - Site Recovery 还具有三个[预定义的用户角色](site-recovery-role-based-linked-access-control.md)，这些角色可用于根据需要进一步限制访问级别。
 
 ## <a name="multi-tenant-environments"></a>多租户环境
 
 有三种主要的多租户模型：
 
-* **共享托管服务提供程序 (HSP)** ：合作伙伴拥有物理基础结构，并使用共享资源（vCenter、数据中心、物理存储等）在同一基础结构上托管多个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
+* **共享托管服务提供程序 (HSP)**：合作伙伴拥有物理基础结构，并使用共享资源（vCenter、数据中心、物理存储等）在同一基础结构上托管多个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
 
 * **专用托管服务提供程序**：合作伙伴拥有物理基础结构，但使用专用资源 (多个 vcenter、物理数据存储等，) 并在单独的基础结构上托管每个租户的 vm。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有它作为自助解决方案。
 
-* **托管服务提供程序 (MSP)** ：客户拥有托管 VM 的物理基础结构，合作伙伴提供灾难恢复启用和管理功能。
+* **托管服务提供程序 (MSP)**：客户拥有托管 VM 的物理基础结构，合作伙伴提供灾难恢复启用和管理功能。
 
 通过按本文所述设置租户订阅，可以快速在任何相关的多租户模型中开始启用客户。 可以在[此处](vmware-azure-multi-tenant-overview.md)了解有关不同多租户模型和启用本地访问控制的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解 Azure (azure RBAC) 管理 Azure Site Recovery 部署的[基于角色的访问控制](site-recovery-role-based-linked-access-control.md)。
+- 详细了解 [Azure 基于角色的访问控制 (Azure RBAC)](site-recovery-role-based-linked-access-control.md) 以管理 Azure Site Recovery 部署。
 - 详细了解 VMware 到 Azure [复制体系结构](vmware-azure-architecture.md)。
 - 查看有关将 VMware VM 复制到 Azure 的[教程](vmware-azure-tutorial.md)。
 详细了解用于将 VMware VM 复制到 Azure 的[多租户环境](vmware-azure-multi-tenant-overview.md)。

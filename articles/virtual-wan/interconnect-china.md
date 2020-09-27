@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d95330c14e0d088bdee03c0edbc2eb9d1deb12cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329221"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399102"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虚拟 WAN 和安全中心与中国互连
 
-在普通的汽车、制造、物流行业或大使馆等机构中，经常问到的一个问题是如何改进与中国的互连。 这些改进措施主要与使用云服务（例如 Office 365、Azure 全球服务）或通过客户主干网络使用中国境内的互连分支相关。
+在普通的汽车、制造、物流行业或大使馆等机构中，经常问到的一个问题是如何改进与中国的互连。 这些改进主要与使用云服务（如 Microsoft 365、Azure 全局服务或中国内的互连分支）与客户主干相关。
 
 在大多数情况下，连接到中国境外（例如欧洲或美国）的客户都会挣扎于高延迟、低带宽、不稳定连接以及高费用的问题。
 
@@ -95,7 +95,7 @@ ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与�
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>适用于 Office 365 的安全 Internet 接入点
+## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Microsoft 365 的安全 Internet 分类
 
 另一个注意事项是网络安全性，以及中国、虚拟 WAN 建立的主干组件与客户主干网络之间的入口点的日志记录。 在大多数情况下，需要通过接入点连接到香港的 Internet 才能直接访问 Microsoft 边缘网络。为此，Microsoft 365 服务会使用 Azure Front Door 服务器。
 
@@ -109,7 +109,7 @@ ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与�
 
 根据你选择如何与香港建立连接，整体体系结构可能略有不同。 本部分介绍采用不同 VPN 或 SDWAN 和/或 ExpressRoute 组合的三种可用体系结构。
 
-所有这些选项都利用 Azure 虚拟 WAN 保护的中心在香港建立直接 M365 连接。 这些体系结构还支持 [Office 365 多地域](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo)的合规要求，并使该流量靠近下一个 Office 365 Front Door 位置。 因此，它也会改善中国境外的 Microsoft 365 使用。
+所有这些选项都使用 Azure 虚拟广域网保护的集线器来实现香港的直接 Microsoft 365 连接性。 这些体系结构还支持 [Microsoft 365 多地域](/microsoft-365/enterprise/microsoft-365-multi-geo) 的符合性要求，并在下一个 Azure 前门位置附近保存该流量。 因此，它也会改善中国境外的 Microsoft 365 使用。
 
 将 Azure 虚拟 WAN 与 Internet 连接结合使用时，每个连接都可以受益于其他服务，例如 [Microsoft Azure 对等互连服务 (MAPS)](https://docs.microsoft.com/azure/peering-service/about)。 MAPS 的构建可以优化从第三方 Internet 服务提供商发往 Microsoft 全球网络的流量。
 

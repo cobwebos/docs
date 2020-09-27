@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187194"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400411"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>排查混合 Runbook 辅助角色问题
 
@@ -234,11 +234,11 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 混合辅助角色将 [Runbook 输出和消息](../automation-runbook-output-and-messages.md)发送到 Azure 自动化，其发送方式与云中运行的 Runbook 作业发送输出和消息的方式相同。 可以像使用 Runbook 时一样启用“详细”流和“进度”流。
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>场景：Orchestrator.Sandbox.exe 无法通过代理连接到 Office 365
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>方案： Orchestrator.Sandbox.exe 无法通过代理连接到 Microsoft 365
 
 #### <a name="issue"></a>问题
 
-Windows 混合 Runbook 辅助角色上运行的脚本无法按预期方式连接到业务流程协调程序沙盒中的 Office 365。 脚本使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 进行连接。 
+在 Windows 混合 Runbook 辅助角色上运行的脚本不能按预期方式连接到 Orchestrator 沙盒上的 Microsoft 365。 脚本使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 进行连接。 
 
 即使调整 **Orchestrator.Sandbox.exe.config** 来设置代理和“绕过列表”，沙盒仍然无法正常连接。 包含相同代理和“绕过列表”设置的某个 **Powershell_ise.exe.config** 文件看起来却能按预期方式工作。 Service Management Automation (SMA) 日志和 PowerShell 日志未提供有关代理的任何信息。
 

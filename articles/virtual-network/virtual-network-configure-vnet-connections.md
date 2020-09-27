@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71099058"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400700"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>配置和验证虚拟网络或 VPN 连接
 
@@ -182,7 +182,7 @@ Azure 当前使用两种部署模型：资源管理器部署模型和经典部�
 
 ### <a name="configure-transit-routing-in-an-expressroute-connection"></a>在 ExpressRoute 连接中配置传输路由
 
-使用 Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 Dynamics 365 等 Microsoft 云服务建立连接。 有关详细信息，请参阅 [ExpressRoute 概述](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)。
+使用 Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Microsoft 365 和 Dynamics 365 等 Microsoft 云服务建立连接。 有关详细信息，请参阅 [ExpressRoute 概述](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)。
 
 ![与 Azure虚拟网络建立 ExpressRoute 专用对等互连](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 

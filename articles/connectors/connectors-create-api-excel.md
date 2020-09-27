@@ -7,16 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445880"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400717"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Excel Online 数据
 
-通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Excel online](/connectors/excelonlinebusiness/) For Business 连接器或[excel online for onedrive](/connectors/excelonline/)连接器，你可以基于 Excel online for business 或 onedrive 中的数据创建自动任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如：
+通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和 [Excel online](/connectors/excelonlinebusiness/) For Business 连接器或 [excel online for onedrive](/connectors/excelonline/) 连接器，你可以基于 Excel online for business 或 onedrive 中的数据创建自动任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如：
 
 * 创建新的工作表和表。
 * 获取和管理工作表、表和行。
@@ -33,7 +33,7 @@ ms.locfileid: "75445880"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 用于你的工作帐户或个人 Microsoft 帐户的一个 [Office 365 帐户](https://www.office.com/)
+* 工作帐户或个人 Microsoft 帐户的[工作或学校帐户](https://www.office.com/)
 
   你的 Excel 数据可以作为以逗号分隔的值 (CSV) 文件存在于存储文件夹中，例如在 OneDrive 中。 
   还可以将同一 CSV 文件与[平面文件连接器](../logic-apps/logic-apps-enterprise-integration-flatfile.md)结合使用。
@@ -53,7 +53,7 @@ ms.locfileid: "75445880"
    > [!NOTE]
    > 逻辑应用设计器无法加载包含 100 列或更多列的表。 如果可能，请减少所选表中的列数，以便设计器可以加载表。
 
-1. 如果出现提示，请登录到 Office 365 帐户。
+1. 如果系统提示，请登录到你的工作或学校帐户。
 
    你的凭据授权逻辑应用创建与 Excel Online 的连接并访问你的数据。
 

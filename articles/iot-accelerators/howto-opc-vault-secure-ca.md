@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281875"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399629"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>安全运行 OPC 保管库证书管理服务
 
@@ -94,7 +94,7 @@ OPC 保管库微服务定义下列角色：
 
 ### <a name="security-monitoring"></a>安全监视
 
-订阅或实现适当的安全监视。 例如，订阅中心监视解决方案 (例如 Azure 安全中心或 Office 365 监视解决方案) ，并相应地进行配置，以确保将安全事件传输到监视解决方案。
+订阅或实现适当的安全监视。 例如，订阅中央监视解决方案 (例如 Azure 安全中心或 Microsoft 365 监视解决方案) ，并相应地进行配置，以确保将安全事件传输到监视解决方案。
 
 > [!IMPORTANT]
 > 默认情况下，OPC 保管库服务将 [Azure 应用程序 Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) 部署为监视解决方案。 强烈建议添加安全解决方案（例如 [Azure 安全中心](https://azure.microsoft.com/services/security-center/) ）。

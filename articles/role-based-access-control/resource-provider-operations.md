@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 973426c6d9d3a4c642e5f37aebe60acce54d581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326399"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400088"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作
 
@@ -5098,7 +5098,7 @@ Azure 服务：[认知服务](../cognitive-services/index.yml)
 
 ### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
-Azure 服务：[机器学习工作室（经典）](../machine-learning/studio/index.yml)
+Azure 服务：[机器学习工作室（经典）](../machine-learning/classic/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -5242,36 +5242,6 @@ Azure 服务：[机器学习服务](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/workspaces/services/aks/listkeys/action | 列出机器学习服务工作区中 AKS 服务的密钥 |
 > | Microsoft.MachineLearningServices/workspaces/services/aks/delete | 删除机器学习服务工作区中的 AKS 服务 |
 > | Microsoft.MachineLearningServices/workspaces/services/aks/score/action | 为机器学习服务工作区中的 AKS 服务评分 |
-
-
-### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-
-Azure 服务：[机器学习工作室（经典）](../machine-learning/classic/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 说明 |
-> | --- | --- |
-> | Microsoft.MachineLearning/register/action | 注册机器学习 Web 服务资源提供程序的订阅，并启用 Web 服务的创建。 |
-> | Microsoft.MachineLearning/webServices/action | 为受支持的区域创建区域 Web 服务属性 |
-> | Microsoft.MachineLearning/commitmentPlans/read | 读取任何机器学习承诺计划 |
-> | Microsoft.MachineLearning/commitmentPlans/write | 创建或更新任何机器学习承诺计划 |
-> | Microsoft.MachineLearning/commitmentPlans/delete | 删除任何机器学习承诺计划 |
-> | Microsoft.MachineLearning/commitmentPlans/join/action | 加入任何机器学习承诺计划 |
-> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/read | 读取任何机器学习承诺计划关联 |
-> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/move/action | 移动任何机器学习承诺计划关联 |
-> | Microsoft.MachineLearning/locations/operationresults/read | 获取机器学习操作的结果 |
-> | Microsoft.MachineLearning/locations/operationsstatus/read | 获取正在进行的机器学习操作的状态 |
-> | Microsoft.MachineLearning/operations/read | 获取机器学习操作 |
-> | Microsoft.MachineLearning/skus/read | 获取机器学习承诺计划 SKU |
-> | Microsoft.MachineLearning/webServices/read | 读取任何机器学习 Web 服务 |
-> | Microsoft.MachineLearning/webServices/write | 创建或更新任何机器学习 Web 服务 |
-> | Microsoft.MachineLearning/webServices/delete | 删除任何机器学习 Web 服务 |
-> | Microsoft.MachineLearning/webServices/listkeys/read | 获取机器学习 Web 服务的密钥 |
-> | Microsoft.MachineLearning/Workspaces/read | 读取任何机器学习工作区 |
-> | Microsoft.MachineLearning/Workspaces/write | 创建或更新任何机器学习工作区 |
-> | Microsoft.MachineLearning/Workspaces/delete | 删除任何机器学习工作区 |
-> | Microsoft.MachineLearning/Workspaces/listworkspacekeys/action | 列出机器学习工作区的密钥 |
-> | Microsoft.MachineLearning/Workspaces/resyncstoragekeys/action | 重新同步针对机器学习工作区配置的存储帐户密钥 |
 
 ## <a name="internet-of-things"></a>物联网
 
@@ -8239,7 +8209,7 @@ Azure 服务：[Azure Policy](../governance/policy/overview.md)、[Azure RBAC](o
 > | 操作 | 说明 |
 > | --- | --- |
 > | Microsoft.Authorization/elevateAccess/action | 向调用方授予租户范围的“用户访问管理员”访问权限 |
-> | Microsoft.Authorization/classicAdministrators/read | 读取订阅的管理员。 |
+> | Microsoft.Authorization/classicAdministrators/read | 读取订阅的管理员。 如果用作自定义角色中的 NotAction，则不起作用。 |
 > | Microsoft.Authorization/classicAdministrators/write | 在订阅中添加或修改管理员。 |
 > | Microsoft.Authorization/classicAdministrators/delete | 从订阅中删除管理员。 |
 > | Microsoft.Authorization/classicAdministrators/operationstatuses/read | 获取订阅的管理员操作状态。 |
