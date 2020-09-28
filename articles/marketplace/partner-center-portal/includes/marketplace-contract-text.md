@@ -9,12 +9,12 @@ ms.date: 01/22/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d899db8b5f6f3b7c0ccef4e44c814f1e126c626a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e1119cf5c40cdcb1fd598b85410ea9149a7cc146
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326659"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400952"
 ---
 Microsoft 为商业市场提供标准合同模板。
 
@@ -41,13 +41,13 @@ Microsoft 为商业市场提供标准合同模板。
 >[!NOTE]
 > 这两种修正相互叠加。 在购买过程中，可看到自定义修正内容的客户也会看到标准协定的通用修正内容。
 
-**适用于 Microsoft 商用 Marketplace 标准合同的通用修正条款**：在此框中输入通用修订条款。 可以为每个产品/服务提供一个通用修订。 可以在此框中输入无限数量的字符。 在发现和购买流程中，这些条款会在 AppSource、Azure 市场和/或 Azure 门户中向客户显示。
+**适用于 Microsoft 商用 Marketplace 标准合同的通用修正条款**：在此框中输入通用修订条款。 可以为每个产品/服务提供一个通用修订。 你可以在此框中输入无限数量的字符。 在发现和购买流程中，这些条款会在 AppSource、Azure 市场和/或 Azure 门户中向客户显示。
 
-**适用于 Microsoft 商用 Marketplace 标准合同的自定义修订条款**：从选择 "**添加自定义修订条款**" 开始。 每个产品/服务最多可以提供 10 个自定义修订条款。
+**适用于 Microsoft 商用 Marketplace 标准合同的自定义修订条款**：从选择 " **添加自定义修订条款**" 开始。 每个产品/服务最多可以提供 10 个自定义修订条款。
 
 - **自**定义修订条款：在自定义修订条款框中输入自定义修订条款。 你可以在此框中输入无限数量的字符。 在 Azure 门户的产品/服务购买流程中，只会向为这些自定义条款指定的租户 ID 中的客户显示自定义修订条款。  
-- **租户 id** （必需）：每个自定义修订最多可针对20个租户 id。 如果添加自定义修订，则必须至少提供一个租户 ID。 租户 ID 标识 Azure 中的客户。 你可以要求客户提供此 ID，他们可通过导航到 portal.azure.com >“Azure Active Directory”>“属性”来找到它。 目录 ID 值即为租户 ID（例如，50c464d3-4930-494c-963c-1e951d15360e）。 你还可以使用[我的 Microsoft Azure 和 Office 365 租户 ID 是什么？](https://www.whatismytenantid.com)中客户的域名 URL 查找其组织的租户 ID。
-- **描述**（可选）：根据需要提供适用于租户 ID 的友好描述，以帮助你确定要使用修正的客户。
+- **租户 id** (必需) ：每个自定义修订最多可针对20个租户 id。 如果添加自定义修订，则必须至少提供一个租户 ID。 租户 ID 标识 Azure 中的客户。 你可以要求客户提供此 ID，他们可通过导航到 portal.azure.com >“Azure Active Directory”>“属性”来找到它。 目录 ID 值即为租户 ID（例如，50c464d3-4930-494c-963c-1e951d15360e）。 你还可以使用其域名 URL 查找你的客户的租户 ID [，"我的 Microsoft Azure 和 Microsoft 365 租户 id 是什么？"](https://www.whatismytenantid.com)。
+- **描述** (可选) ：根据需要提供适用于租户 ID 的友好描述，以帮助您识别修正的客户。
 
 **条款和条件**
 
