@@ -18,6 +18,14 @@ groups:
     title: cURL
   - id: url-test-tool-postman
     title: Postman
+- id: python-frameworks-01
+  title: Web 框架
+  prompt: 选择框架
+  pivots:
+  - id: python-framework-flask
+    title: Flask
+  - id: python-framework-django
+    title: Django
 - id: programming-languages-set-one
   title: 编程语言
   prompt: 选择编程语言
@@ -29,7 +37,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-two
@@ -95,7 +103,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-seven
@@ -145,7 +153,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-eleven
@@ -173,7 +181,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
   - id: programming-language-java
@@ -243,7 +251,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: java-build-tools-set
@@ -546,10 +554,28 @@ groups:
     title: C++
   - id: programming-language-java
     title: Java
-  - id: programming-language-python
-    title: Python
   - id: programming-language-javascript
     title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-spx
+    title: CLI
+- id: speech-full-stack-objectivec-swift
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
   - id: programming-language-spx
     title: CLI
 - id: programming-languages-voice-assistants
@@ -629,7 +655,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -719,7 +745,7 @@ groups:
   - id: platform-azp
     title: Azure 门户
   - id: platform-arm
-    title: Azure Resource Manager
+    title: Azure 资源管理器
   - id: platform-net
     title: .NET
   - id: platform-python
@@ -729,9 +755,9 @@ groups:
   - id: platform-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: f55c7be76f2acf666d37db9618fa0303bf253e31
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: 420743e3abfa61d89ec7f3da1e0a161f5367b9b7
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90984243"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91295186"

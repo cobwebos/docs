@@ -277,19 +277,19 @@
     - name: 收取付款
       items:
         - name: 收取付款
-          href: partner-center-portal/get-paid.md
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
         - name: 设置付款帐户和纳税表单
-          href: partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: 付款阈值、方法和时间范围
-          href: partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: 付款摘要概述
-          href: partner-center-portal/payout-summary-overview.md
-        - name: 付款摘要
-          href: partner-center-portal/payout-summary.md
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: 付款阈值和时间范围
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: 支出声明
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
         - name: 付款策略详细信息
-          href: partner-center-portal/payout-policy-details.md
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
         - name: 税项详细信息
-          href: partner-center-portal/tax-details-paid-transactions.md
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: 支出常见问题解答
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
     - name: CPP API 参考
       items:
         - name: 概述

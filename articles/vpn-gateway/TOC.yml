@@ -138,8 +138,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: 创建和安装 VPN 客户端配置文件
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: 会话管理
-              href: p2s-session-management.md
         - name: RADIUS 身份验证
           items:
             - name: 配置 P2S VPN
@@ -170,6 +168,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: 从 SSTP 转移到 OpenVPN 协议或 IKEv2
               href: ikev2-openvpn-from-sstp.md
+        - name: 配置 P2S 会话管理
+          href: p2s-session-management.md
         - name: 为 P2S 转换到公共 CA 网关证书
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: 配置 Always On VPN 设备隧道

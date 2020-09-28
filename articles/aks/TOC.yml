@@ -250,7 +250,7 @@
           href: control-kubeconfig-access.md
         - name: 使用网络策略保护 Pod 流量
           href: use-network-policies.md
-        - name: 使用 Azure Policy 保护 Pod（预览）
+        - name: 使用 Azure Policy 保护 Pod
           href: use-pod-security-on-azure-policy.md
         - name: 使用 pod 安全策略（预览版）
           href: use-pod-security-policies.md
@@ -365,7 +365,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: troubleshooting.md
@@ -416,5 +416,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md

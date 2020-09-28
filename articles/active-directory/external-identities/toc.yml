@@ -2,11 +2,14 @@
   href: index.yml
   items:
     - name: 概述
+      expanded: true
       items:
         - name: 比较外部标识的解决方案
           href: compare-with-b2c.md
         - name: 什么是 B2B 来宾用户访问权限？
           href: what-is-b2b.md
+        - name: 什么是 Azure AD B2C？
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: 快速入门
       items:
         - name: 在门户中添加来宾用户
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: 教程
       items:
-        - name: 通过 PowerShell 批量邀请
+        - name: 通过 PowerShell 批量邀请来宾用户
           href: bulk-invite-powershell.md
-        - name: 通过门户批量邀请
+        - name: 通过门户批量邀请来宾用户
           href: tutorial-bulk-invite.md
-        - name: 实施多重身份验证
+        - name: 对来宾用户强制执行多重身份验证
           href: b2b-tutorial-require-mfa.md
     - name: 示例
       items:
-        - name: 自助注册示例
+        - name: 来宾用户自助注册示例
           href: code-samples-self-service-sign-up.md
         - name: 代码和 Azure PowerShell 示例
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: 操作指南
       expanded: true
       items:
-        - name: 配置外部共享
+        - name: 配置外部协作设置
           href: delegate-invitations.md
-        - name: 邀请 B2B 用户
+        - name: 邀请来宾用户
           items:
             - name: 管理员添加 B2B 用户
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: 一次性密码身份验证
           href: one-time-passcode.md
-        - name: 自助注册（预览版）
+        - name: 来宾用户的自助注册（预览）
           items:
             - name: 添加自助注册用户流
               href: self-service-sign-up-user-flow.md
@@ -103,7 +106,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: 添加自定义审批系统
               href: self-service-sign-up-add-approvals.md
-        - name: 管理来宾帐户
+        - name: 管理来宾用户帐户
           items:
             - name: 将 B2B 用户添加到角色
               href: add-guest-to-role.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: 用于 Azure AD 集成应用的 B2B
               href: configure-saas-apps.md
-        - name: 管理混合组织中的访问权限
+        - name: 在混合组织中管理来宾访问权限
           items:
             - name: 授予本地用户对云应用的访问权限
               href: hybrid-on-premises-to-cloud.md

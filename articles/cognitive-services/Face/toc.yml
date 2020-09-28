@@ -13,7 +13,7 @@
       items:
         - name: 在图像中检测人脸
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp.md
             - name: cURL
               href: QuickStarts/curl.md
@@ -35,7 +35,7 @@
   items:
     - name: 使用客户端 SDK
       items:
-        - name: 'C#'
+        - name: C#
           href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: 概念
   items:
@@ -47,9 +47,7 @@
   items:
     - name: 检测人脸
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: 标识人脸
-      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-    - name: 添加人脸
+    - name: 向组中添加人脸
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: 使用 HeadPose 属性
       href: Face-API-How-to-Topics/how-to-use-headpose.md

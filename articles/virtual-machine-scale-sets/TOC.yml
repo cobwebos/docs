@@ -214,6 +214,9 @@
         - name: vCPU 配额
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: 用于创建或更新操作的 PUT 调用
+      href: ../virtual-machines/put-calls-create-or-update.md
+      maintainContext: true
     - name: 规模集常见问题解答
       href: virtual-machine-scale-sets-faq.md
 - name: 操作方式
@@ -274,6 +277,8 @@
             - name: 使用客户管理的密钥
               displayName: 'SSE, CMK, encrypt'
               href: ../virtual-machines/image-version-encryption.md
+            - name: 用于共享的应用注册
+              href: share-images-across-tenants.md
     - name: 创建模板
       items:
         - name: 了解规模集模板
@@ -326,6 +331,15 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: 将规模集模板转换为使用托管磁盘
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: 使用专用主机（预览）
+          href: ../virtual-machines/dedicated-hosts.md
+          items:
+            - name: CLI
+              href: ../virtual-machines/linux/dedicated-hosts-cli.md
+            - name: PowerShell
+              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
+            - name: 门户
+              href: ../virtual-machines/dedicated-hosts-portal.md
         - name: 使用点实例
           href: use-spot.md
     - name: 管理
@@ -358,18 +372,6 @@
           href: virtual-machine-scale-sets-scale-in-policy.md
         - name: 删除时终止通知
           href: virtual-machine-scale-sets-terminate-notification.md
-        - name: 共享映像库
-          items:
-            - name: 概述
-              href: shared-image-galleries.md
-            - name: CLI
-              href: shared-images-cli.md
-            - name: PowerShell
-              href: shared-images-powershell.md
-            - name: 在租户间共享映像
-              href: share-images-across-tenants.md
-            - name: 排查共享映像问题
-              href: troubleshooting-shared-images.md
         - name: 创建邻近放置组
           href: proximity-placement-groups.md
         - name: 规模集中的纵向缩放

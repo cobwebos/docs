@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
-  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+  ms.openlocfilehash: a9b7b40c3f79751a9d67750e428ca14cc024a47b
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/13/2020
-  ms.locfileid: "90058659"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91328269"
 landingContent:
 - title: 关于 Azure 安全基准
   linkLists:
@@ -28,12 +28,8 @@ landingContent:
       url: introduction.md
     - text: Azure 安全控制概述
       url: overview.md
-    - text: 云中责任分担
-      url: ../fundamentals/shared-responsibility.md
-    - text: Azure 安全中心
-      url: ../../security-center/index.yml
-    - text: Azure 安全基础知识
-      url: ../fundamentals/index.yml
+    - text: Azure 安全基线概述
+      url: security-baselines-overview.md
 - title: Azure 安全基准 V2 控制
   linkLists:
   - linkListType: overview
@@ -50,95 +46,147 @@ landingContent:
       url: security-controls-v2-asset-management.md
     - text: 查看详细信息
       url: security-controls-v2-logging-threat-detection.md
+- title: 更多 Azure 安全资源
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure 安全基础知识
+      url: ../fundamentals/index.yml
+    - text: 云中责任分担
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure 安全中心
+      url: ../../security-center/index.yml
+- title: AI + 机器学习安全基线
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Databricks
+      url: ../../azure-databricks/security-baseline.md
+    - text: Azure 机器学习
+      url: ../../machine-learning/security-baseline.md
+    - text: 认知服务
+      url: ../../cognitive-services/security-baseline.md
+- title: 分析安全基准
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 数据资源管理器安全基线
+      url: /azure/data-explorer/security-baseline
+    - text: Azure 数据工厂安全基线
+      url: ../../data-factory/security-baseline.md
+    - text: Data Lake Analytics 安全基线
+      url: ../../data-lake-analytics/security-baseline.md
+    - text: 事件中心安全基线
+      url: ../../event-hubs/security-baseline.md
+    - text: HDInsight 安全基线
+      url: ../../hdinsight/security-baseline.md
+    - text: 流分析基线
+      url: ../../stream-analytics/security-baseline.md
+    - text: Synapse Analytics 安全基线
+      url: ../../synapse-analytics/security-baseline.md
 - title: 计算安全基准
   linkLists:
   - linkListType: overview
     links:
-    - text: Linux 虚拟机
-      url: ../../virtual-machines/linux/security-baseline.md
-    - text: Windows 虚拟机
-      url: ../../virtual-machines/windows/security-baseline.md
-    - text: 虚拟机规模集
-      url: ../../virtual-machine-scale-sets/security-baseline.md
-    - text: Batch
-      url: ../../batch/security-baseline.md
     - text: Azure Functions
       url: ../../azure-functions/security-baseline.md
-- title: 容器安全基准
-  linkLists:
-  - linkListType: overview
-    links:
+    - text: Batch
+      url: ../../batch/security-baseline.md
     - text: 容器实例
       url: ../../container-instances/security-baseline.md
     - text: 容器注册表
       url: ../../container-registry/security-baseline.md
     - text: Service Fabric
       url: ../../service-fabric/security-baseline.md
-- title: 分析安全基准
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 数据资源管理器
-      url: /azure/data-explorer/security-baseline
-    - text: Data Lake Analytics
-      url: ../../data-lake-analytics/security-baseline.md
-    - text: Databricks
-      url: ../../azure-databricks/security-baseline.md
-    - text: 数据工厂
-      url: ../../data-factory/security-baseline.md
-    - text: HDInsight
-      url: ../../hdinsight/security-baseline.md
+    - text: Azure 存储
+      url: ../../storage/common/security-baseline.md
+    - text: 虚拟机规模集
+      url: ../../virtual-machine-scale-sets/security-baseline.md
+    - text: 虚拟机 Linux
+      url: ../../virtual-machines/linux/security-baseline.md
+    - text: 虚拟机 Windows
+      url: ../../virtual-machines/windows/security-baseline.md
 - title: 数据库安全基准
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Redis 缓存
       url: ../../azure-cache-for-redis/security-baseline.md
-    - text: Azure Database for MariaDB
-      url: ../../mariadb/security-baseline.md
     - text: Azure Database for MySQL
       url: ../../mysql/security-baseline.md
-    - text: Azure Database for PostgreDQL
+    - text: Azure Database for MariaDB
+      url: ../../mariadb/security-baseline.md
+    - text: Azure Database for PostgreSQL - 单一服务器
       url: ../../postgresql/security-baseline.md
+    - text: Azure Database for PostgreSQL - 超大规模
+      url: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - text: Azure SQL 数据库
       url: ../../sql-database/security-baseline.md
+    - text: Cosmos DB
+      url: ../../cosmos-db/security-baseline.md
+- title: 集成安全基线
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: API 管理
+      url: ../../api-management/security-baseline.md
+    - text: 事件网格
+      url: ../../event-grid/security-baseline.md
+    - text: 逻辑应用
+      url: ../../logic-apps/security-baseline.md
+- title: 管理和监管安全基线
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 自动化
+      url: ../../automation/security-baseline.md
+    - text: Azure 备份
+      url: ../../backup/security-baseline.md
+    - text: Azure Monitor
+      url: ../../azure-monitor/security-baseline.md
+    - text: Azure Policy
+      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - text: Azure Resource Graph
+      url: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
 - title: 网络安全基准
   linkLists:
   - linkListType: overview
     links:
     - text: 应用程序网关
       url: ../../application-gateway/security-baseline.md
-    - text: DDOS 保护
-      url: ../fundamentals/ddos-protection-security-baseline.md
-    - text: Azure ExpressRoute
-      url: ../../expressroute/security-baseline.md
+    - text: Azure DNS
+      url: ../../dns/security-baseline.md
     - text: Azure 防火墙
       url: ../../firewall/security-baseline.md
+    - text: Azure 专用链接
+      url: ../../private-link/security-baseline.md
+    - text: Azure 公共 IP
+      url: ../../virtual-network/public-ip-security-baseline.md
+    - text: DDOS 保护
+      url: ../fundamentals/ddos-protection-security-baseline.md
+    - text: ExpressRoute
+      url: ../../expressroute/security-baseline.md
     - text: 网络观察程序
       url: ../../network-watcher/security-baseline.md
-- title: 安全基线
+- title: 安全服务基线
   linkLists:
   - linkListType: overview
     links:
+    - text: Azure Sentinel
+      url: ../../sentinel/security-baseline.md
+    - text: 客户密码箱
+      url: ../fundamentals/customer-lockbox-security-baseline.md
     - text: Key Vault
       url: ../../key-vault/security-baseline.md
     - text: 安全中心
       url: ../../security-center/security-baseline.md
-    - text: 客户密码箱
-      url: ../fundamentals/customer-lockbox-security-baseline.md
-    - text: Azure Policy
-      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-- title: 管理和集成
+- title: 额外安全基线
   linkLists:
   - linkListType: overview
     links:
-    - text: 自动化
-      url: ../../automation/security-baseline.md
-    - text: 备份
-      url: ../../backup/security-baseline.md
-    - text: API 管理
-      url: ../../api-management/security-baseline.md
-    - text: 事件网格
-      url: ../../event-hubs/security-baseline.md
-    - text: 逻辑应用
-      url: ../../logic-apps/security-baseline.md
+    - text: Azure Data Box
+      url: ../../databox/security-baseline.md
+    - text: Azure 开发测试实验室
+      url: ../../devtest-labs/security-baseline.md
+    - text: Azure IoT 中心
+      url: ../../iot-hub/security-baseline.md

@@ -40,6 +40,8 @@
       href: custom-event-to-eventhub.md
     - name: 容器注册表事件
       href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: 处理 Azure 通信服务事件
+      href: ../communication-services/quickstarts/telephony-sms/handle-sms-events.md?toc=%2fazure%2fevent-grid%2ftoc.json
 - name: 教程
   items:
     - name: 当 VM 更改时发送电子邮件
@@ -112,6 +114,8 @@
               href: event-schema-app-service.md
             - name: Azure Blob 存储
               href: event-schema-blob-storage.md
+            - name: Azure 通信服务
+              href: event-schema-communication-services.md
             - name: Azure 容器注册表
               href: event-schema-container-registry.md
             - name: Azure 事件中心
@@ -214,7 +218,7 @@
       href: auth0-how-to.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md
-    - name: 死信与重试
+    - name: 设置死信位置和重试策略
       href: manage-event-delivery.md
     - name: 筛选事件
       href: how-to-filter-events.md

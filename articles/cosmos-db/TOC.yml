@@ -21,6 +21,8 @@
           href: create-sql-api-dotnet.md
         - name: Java 应用
           href: create-sql-api-java.md
+        - name: Spring Data 应用
+          href: create-sql-api-spring-data.md
         - name: Node.js 应用
           href: create-sql-api-nodejs.md
         - name: Python 应用
@@ -73,6 +75,8 @@
       href: sql-api-dotnet-v3sdk-samples.md
     - name: Java SDK v4 示例
       href: sql-api-java-sdk-samples.md
+    - name: Spring Data v3 示例
+      href: sql-api-spring-data-sdk-samples.md
     - name: Node.js 示例
       href: sql-api-nodejs-samples.md
     - name: Python 示例
@@ -651,7 +655,7 @@
               href: cassandra-import-data.md
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: cassandra-faq.md
             - name: 弹性缩放
               href: manage-scale-cassandra.md
@@ -754,7 +758,7 @@
               href: mongodb-feature-support-36.md
             - name: 线路协议支持 (3.2)
               href: mongodb-feature-support.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: mongodb-api-faq.md
         - name: 操作指南
           items:
@@ -832,7 +836,7 @@
               href: tutorial-query-graph.md
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: gremlin-api-faq.md
         - name: 操作指南
           items:
@@ -917,7 +921,7 @@
               maintainContext: true
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: table-api-faq.md
         - name: 操作指南
           items:
@@ -1074,7 +1078,7 @@
               href: troubleshoot-not-found.md
             - name: 故障排除未经授权
               href: troubleshoot-unauthorized.md
-            - name: 多区域环境中的 SDK 可用性
+            - name: 多区域环境中的可用性问题
               href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
@@ -1118,6 +1122,8 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 使用 Azure Synapse Spark 进行查询
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 使用 Synapse SQL 无服务器进行查询
+          href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 将 Power BI 与 Synapse Link 一起使用
           href: synapse-link-power-bi.md
     - name: 将内置分析功能与 Apache Spark 配合使用
@@ -1332,7 +1338,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

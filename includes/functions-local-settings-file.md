@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929478"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377126"
 ---
 ## <a name="local-settings-file"></a>本地设置文件
 
@@ -40,7 +40,7 @@ local.settings.json 文件存储应用设置、连接字符串和本地开发工
 
 | 设置      | 说明                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | 当此设置设为 `true` 时，所有值都使用本地计算机密钥进行加密。 与 `func settings` 命令配合使用。 默认值为 `false`。 |
+| **`IsEncrypted`** | 当此设置设为 `true` 时，所有值都使用本地计算机密钥进行加密。 与 `func settings` 命令配合使用。 默认值为 `false`。 当本地计算机上的 local.settings.json 文件中包含机密（如服务连接字符串）时，可能需要对其进行加密。 主机在运行时会自动对设置解密。 在尝试读取本地加密设置之前，请使用 `func settings decrypt` 命令。 |
 | **`Values`** | 在本地运行项目时使用的应用程序设置和连接字符串的数组。 这些键值 (string-string) 对与 Azure 的函数应用中的应用程序设置相对应，例如 [`AzureWebJobsStorage`]。 许多触发器和绑定都有一个引用连接字符串应用设置的属性，例如 [Blob 存储触发器](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)的 `Connection`。 对于此类属性，你需要一个在 `Values` 数组中定义的应用程序设置。 在下表中查看常用设置的列表。 <br/>值必须是字符串，而不能是 JSON 对象或数组。 设置名称不能包含冒号 (`:`) 或双下划线 (`__`)。 双下划线字符由运行时保留，并保留冒号以支持[依赖项注入](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings)。 |
 | **`Host`** | 在本地运行项目时，本部分中的设置会自定义 Functions 主机进程。 这些设置独立于 host json 设置，后者在 Azure 中运行项目时也适用。 |
 | **`LocalHttpPort`** | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此设置。 |

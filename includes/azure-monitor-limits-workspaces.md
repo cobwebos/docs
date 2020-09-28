@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a25f28b19e0f00830fd0290ff0296c317b9a5ed9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371707"
 ---
 **数据收集量和保留期** 
 
@@ -66,24 +66,34 @@ ms.locfileid: "88226121"
 
 **<a name="data-ingestion-volume-rate">数据引入速率</a>**
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 引入量速率限制旨在保护 Azure Monitor 客户免受多租户环境中突然出现的引入高峰的影响。 默认的引入量速率阈值为 500 M（压缩量），适用于工作区，大约等于未压缩时的每分钟 6 GB 的速率 - 根据日志长度及其压缩率，不同数据类型的实际大小可能不同。 此阈值适用于所有引入的数据，无论是使用[诊断设置](../articles/azure-monitor/platform/diagnostic-settings.md)、[数据收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 还是代理从 Azure 发送都适用。
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 引入量速率限制旨在使 Azure Monitor 客户与多租户环境中突然出现的引入高峰相隔绝。 为工作区定义的默认的引入量速率阈值为 500 M（压缩量），大约相应于未压缩时的每分钟 6 GB 的速率 - 根据日志长度及其压缩率，不同数据类型的实际大小可能不同。 此引入量速率阈值适用于所有引入的数据，无论是使用[诊断设置](../articles/azure-monitor/platform/diagnostic-settings.md)、[数据收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 还是代理从 Azure 发送都适用。
 
-如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率继续超过阈值，或者预计很快会达到阈值，你可打开支持请求，请求在工作区中调高阈值。 
+如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率继续超过阈值，或者预计很快会达到阈值，你可打开支持请求，请求调高阈值。 
 
-若要就工作区中的此类事件收到通知，请使用警报逻辑通过以下查询创建一条[日志警报规则](../articles/azure-monitor/platform/alerts-log.md)，其中该逻辑依据的是结果数大于 0、评估时段为 5 分钟且频率为 5 分钟。
+若希望在工作区中的引入量速率将要达到或已达到阈值时收到通知，请使用警报逻辑通过以下查询创建一条[日志警报规则](../articles/azure-monitor/platform/alerts-log.md)，其中该逻辑依据的是结果数大于 0、评估时段为 5 分钟且频率为 5 分钟。
 
-引入量速率达到阈值的 80%：
+引入量速率超过阈值
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-引入量速率达到阈值：
+引入量速率超过阈值的 80%
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
+```
+
+引入量速率超过阈值的 70%
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
 ```
 
 >[!NOTE]

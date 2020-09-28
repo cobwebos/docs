@@ -9,6 +9,10 @@
   items:
     - name: 创建 Front Door - 门户
       href: quickstart-create-front-door.md
+    - name: 创建 Front Door - PowerShell
+      href: quickstart-create-front-door-powershell.md
+    - name: 创建 Front Door - CLI
+      href: quickstart-create-front-door-cli.md
     - name: 创建 Front Door - ARM 模板
       href: quickstart-create-front-door-template.md
 - name: 教程

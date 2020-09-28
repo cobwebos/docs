@@ -6,19 +6,47 @@
       href: expressroute-introduction.md
 - name: 快速入门
   items:
+    - name: 创建 ExpressRoute 线路 - 门户
+      href: expressroute-howto-circuit-portal-resource-manager.md
+    - name: 创建 ExpressRoute 线路 - PowerShell
+      href: expressroute-howto-circuit-arm.md
+    - name: 创建 ExpressRoute 线路 - CLI
+      href: howto-circuit-cli.md
     - name: 创建 ExpressRoute 线路 - ARM 模板
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: 教程
   items:
-    - name: 创建和修改线路
-      href: expressroute-howto-circuit-portal-resource-manager.md
     - name: 创建和修改对等配置
-      href: expressroute-howto-routing-portal-resource-manager.md
+      items:
+        - name: Azure 门户
+          href: expressroute-howto-routing-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-routing-arm.md
+        - name: Azure CLI
+          href: howto-routing-cli.md
+    - name: 配置 ExpressRoute 的虚拟网络网关
+      items:
+        - name: Azure 门户
+          href: expressroute-howto-add-gateway-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-add-gateway-resource-manager.md
     - name: 将虚拟网络链接到 ExpressRoute 线路
-      href: expressroute-howto-linkvnet-portal-resource-manager.md
+      items:
+        - name: Azure 门户
+          href: expressroute-howto-linkvnet-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-linkvnet-arm.md
+        - name: Azure CLI
+          href: howto-linkvnet-cli.md
     - name: 配置用于 Microsoft 对等互连的路由筛选器
-      href: how-to-routefilter-portal.md
+      items:
+        - name: Azure 门户
+          href: how-to-routefilter-portal.md
+        - name: Azure PowerShell
+          href: how-to-routefilter-powershell.md
+        - name: Azure CLI
+          href: how-to-routefilter-cli.md
 - name: 概念
   items:
     - name: 远程工作
@@ -27,20 +55,24 @@
           href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
         - name: 用于远程用户的混合连接
           href: work-remotely-support.md
-    - name: 连接模型
-      href: expressroute-connectivity-models.md
+    - name: 在开始使用 ExpressRoute 之前
+      items:
+        - name: 先决条件
+          href: expressroute-prerequisites.md
+        - name: 连接模型
+          href: expressroute-connectivity-models.md
+        - name: 工作流
+          href: expressroute-workflows.md
+        - name: 路由要求
+          href: expressroute-routing.md
     - name: 位置与合作伙伴
       items:
         - name: 按位置列出的提供商
           href: expressroute-locations-providers.md
         - name: 按提供商列出的位置
           href: expressroute-locations.md
-    - name: 先决条件
-      href: expressroute-prerequisites.md
-    - name: 工作流
-      href: expressroute-workflows.md
-    - name: 路由要求
-      href: expressroute-routing.md
+    - name: ExpressRoute 常见问题
+      href: expressroute-faqs.md
     - name: 线路和对等互连
       items:
         - name: 关于线路和对等互连
@@ -49,10 +81,8 @@
           href: about-upgrade-circuit-bandwidth.md
         - name: 将线路从经典部署转移到 Resource Manager 部署
           href: expressroute-move.md
-    - name: 基于 ExpressRoute 的 BFD
-      href: expressroute-bfd.md
-    - name: QoS 要求
-      href: expressroute-qos.md
+    - name: 关于 Expressroute 网关
+      href: expressroute-about-virtual-network-gateways.md
     - name: 关于 ExpressRoute FastPath
       href: about-fastpath.md
     - name: 关于 ExpressRoute Direct
@@ -61,28 +91,16 @@
       href: expressroute-global-reach.md
     - name: 关于 ExpressRoute 加密
       href: expressroute-about-encryption.md
-    - name: 安全性
-      items:
-        - name: 安全基线
-          href: security-baseline.md
-        - name: 安全属性
-          href: expressroute-security-controls.md
-    - name: 关于虚拟网络网关
-      href: expressroute-about-virtual-network-gateways.md
     - name: 将 Azure 连接到公有云
       href: expressroute-connect-azure-to-public-cloud.md
-    - name: 后端连接互操作性
-      items:
-        - name: 前言和测试设置
-          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: 测试设置配置
-          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: 控制平面分析
-          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: 数据平面分析
-          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: 跨网连接
       href: cross-network-connectivity.md
+    - name: 安全属性
+      href: expressroute-security-controls.md
+    - name: 基于 ExpressRoute 的 BFD
+      href: expressroute-bfd.md
+    - name: QoS 要求
+      href: expressroute-qos.md
     - name: 高可用性 - 设计
       href: designing-for-high-availability-with-expressroute.md
     - name: 灾难恢复 - 设计
@@ -93,87 +111,24 @@
           href: use-s2s-vpn-as-backup-for-expressroute-privatepeering.md
 - name: 操作指南
   items:
-    - name: 创建和修改线路
+    - name: 配置 ExpressRoute Direct
       items:
-        - name: Azure 门户
-          href: expressroute-howto-circuit-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-circuit-arm.md
-        - name: Azure CLI
-          href: howto-circuit-cli.md
-        - name: Azure 资源管理器模板
-          displayName: 'ARM,resource manager template'
-          href: expressroute-howto-circuit-resource-manager-template.md
-    - name: 创建和修改对等配置
-      items:
-        - name: Azure 门户
-          href: expressroute-howto-routing-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-routing-arm.md
-        - name: Azure CLI
-          href: howto-routing-cli.md
-    - name: 将虚拟网络链接到 ExpressRoute 线路
-      items:
-        - name: Azure 门户
-          href: expressroute-howto-linkvnet-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-linkvnet-arm.md
-        - name: Azure CLI
-          href: howto-linkvnet-cli.md
-    - name: 对线路上的通信进行加密
-      items:
-        - name: 通过 Microsoft 对等互连配置站点到站点 VPN
-          href: site-to-site-vpn-over-microsoft-peering.md
-        - name: 配置 Windows 主机的 IPsec 传输模式
-          href: expressroute-howto-ipsec-transport-private-windows.md
+        - name: 配置 ExpressRoute Direct
+          items:
+            - name: Azure 门户
+              href: how-to-expressroute-direct-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-erdirect.md
+            - name: Azure CLI
+              href: expressroute-howto-expressroute-direct-cli.md
+        - name: 为 ExpressRoute Direct 端口配置 MACsec
+          href: expressroute-howto-macsec.md
     - name: 配置 ExpressRoute Global Reach
       items:
         - name: Azure PowerShell
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
-    - name: 配置 ExpressRoute 的虚拟网络网关
-      items:
-        - name: Azure 门户
-          href: expressroute-howto-add-gateway-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-add-gateway-resource-manager.md
-    - name: 配置 ExpressRoute 和站点到站点并存连接
-      href: expressroute-howto-coexist-resource-manager.md
-    - name: 配置 ExpressRoute Direct
-      items:
-        - name: Azure 门户
-          href: how-to-expressroute-direct-portal.md
-        - name: Azure PowerShell
-          href: expressroute-howto-erdirect.md
-        - name: Azure CLI
-          href: expressroute-howto-expressroute-direct-cli.md
-    - name: 为 ExpressRoute Direct 端口配置 MACsec
-      href: expressroute-howto-macsec.md
-    - name: 配置用于 Microsoft 对等互连的路由筛选器
-      items:
-        - name: Azure 门户
-          href: how-to-routefilter-portal.md
-        - name: Azure PowerShell
-          href: how-to-routefilter-powershell.md
-        - name: Azure CLI
-          href: how-to-routefilter-cli.md
-    - name: 启用和禁用对等互连
-      href: expressroute-howto-reset-peering.md
-    - name: 从公共对等互连移到 Microsoft 对等互连
-      href: how-to-move-peering.md
-    - name: 将线路从经典部署转移到 Resource Manager 部署
-      href: expressroute-howto-move-arm.md
-    - name: 将关联的虚拟网络从经典部署迁移到资源管理器部署
-      href: expressroute-migration-classic-resource-manager.md
-    - name: 在 Azure 可用性区域创建区域冗余的 VNet 网关
-      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
-    - name: 为 ExpressRoute 配置路由器
-      items:
-        - name: 配置路由器
-          href: expressroute-config-samples-routing.md
-        - name: NAT 的路由器配置示例
-          href: expressroute-config-samples-nat.md
     - name: 监视
       items:
         - name: ExpressRoute 监视、指标和警报
@@ -182,20 +137,32 @@
           href: how-to-npm.md
         - name: 配置自定义警报来监视播发路由
           href: how-to-custom-route-alert.md
-    - name: 经典版和旧版文章
+    - name: 管理对等互连
       items:
-        - name: 修改线路
-          href: expressroute-howto-circuit-classic.md
-        - name: 创建和修改对等配置
-          href: expressroute-howto-routing-classic.md
-        - name: 将虚拟网络链接到 ExpressRoute 线路
-          href: expressroute-howto-linkvnet-classic.md
-        - name: 配置 ExpressRoute 和 S2S 并存连接
-          href: expressroute-howto-coexist-classic.md
-        - name: 将网关添加到 VNet
-          href: expressroute-howto-add-gateway-classic.md
-        - name: 创建和修改公共对等互连
-          href: about-public-peering.md
+        - name: 启用和禁用对等互连
+          href: expressroute-howto-reset-peering.md
+        - name: 从公共对等互连移到 Microsoft 对等互连
+          href: how-to-move-peering.md
+    - name: 对线路上的通信进行加密
+      items:
+        - name: 通过 Microsoft 对等互连配置站点到站点 VPN
+          href: site-to-site-vpn-over-microsoft-peering.md
+        - name: 通过专用对等互连的 IPsec VPN
+          href: ../vpn-gateway/site-to-site-vpn-private-peering.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: 配置 Windows 主机的 IPsec 传输模式
+          href: expressroute-howto-ipsec-transport-private-windows.md
+    - name: 冗余
+      items:
+        - name: 配置 ExpressRoute 和站点到站点并存连接
+          href: expressroute-howto-coexist-resource-manager.md
+        - name: 在 Azure 可用性区域创建区域冗余的 VNet 网关
+          href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: 从经典部署移动到资源管理器部署
+      items:
+        - name: 将线路从经典部署转移到 Resource Manager 部署
+          href: expressroute-howto-move-arm.md
+        - name: 将关联的虚拟网络从经典部署迁移到资源管理器部署
+          href: expressroute-migration-classic-resource-manager.md
     - name: 最佳实践
       items:
         - name: 网络安全和云服务最佳实践
@@ -206,7 +173,7 @@
           href: expressroute-asymmetric-routing.md
         - name: 用于 ExpressRoute 的 NAT
           href: expressroute-nat.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 验证 ExpressRoute 连接
           href: expressroute-troubleshooting-expressroute-overview.md
@@ -233,8 +200,22 @@
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: 资源
   items:
-    - name: ExpressRoute 常见问题
-      href: expressroute-faqs.md
+    - name: 为 ExpressRoute 配置路由器
+      items:
+        - name: 配置路由器
+          href: expressroute-config-samples-routing.md
+        - name: NAT 的路由器配置示例
+          href: expressroute-config-samples-nat.md
+    - name: 后端连接互操作性
+      items:
+        - name: 前言和测试设置
+          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: 测试设置配置
+          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: 控制平面分析
+          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: 数据平面分析
+          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 案例研究
@@ -274,3 +255,19 @@
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/'
         - name: 为线路设置公共对等互连
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/'
+    - name: 经典版和旧版文章
+      items:
+        - name: 修改线路
+          href: expressroute-howto-circuit-classic.md
+        - name: 创建和修改对等配置
+          href: expressroute-howto-routing-classic.md
+        - name: 将虚拟网络链接到 ExpressRoute 线路
+          href: expressroute-howto-linkvnet-classic.md
+        - name: 配置 ExpressRoute 和 S2S 并存连接
+          href: expressroute-howto-coexist-classic.md
+        - name: 将网关添加到 VNet
+          href: expressroute-howto-add-gateway-classic.md
+        - name: 创建和修改公共对等互连
+          href: about-public-peering.md
+    - name: 安全基线
+      href: security-baseline.md

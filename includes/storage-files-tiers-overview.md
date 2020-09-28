@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7d0286b63703c165dda6cd12bb625fc64272aac1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90606457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376358"
 ---
 Azure 文件存储提供了四种不同的存储层（高级、事务优化、热和冷存储层），因此你能够根据方案的性能和价格要求定制共享：
 
@@ -26,4 +26,5 @@ Azure 文件存储提供了四种不同的存储层（高级、事务优化、�
 
 热文件共享和冷文件共享在所有 Azure 公共区域和 Azure 政府区域中均可用。 事务优化文件共享在所有 Azure 区域中可用，包括 Azure 中国和 Azure 德国区域。
 
-若要部署热或冷文件共享，请参阅[创建热或冷文件共享](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share)。 
+> [!Important]  
+> 可以在 GPv2 存储帐户类型中的各层（事务优化、热和冷）之间移动文件共享。 共享在层间移动会产生事务：从较热层移动到较冷层会导致对共享中每个文件收取冷层的写入事务费用，而从较冷层移动到较热层会导致对共享中每个文件收取冷层的读取事务费用。

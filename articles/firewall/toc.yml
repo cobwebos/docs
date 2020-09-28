@@ -88,6 +88,8 @@
       href: firewall-diagnostics.md
     - name: Azure Monitor 日志
       href: log-analytics-samples.md
+    - name: Azure 防火墙工作簿
+      href: firewall-workbook.md
 - name: 参考
   items:
     - name: Azure CLI
@@ -108,7 +110,7 @@
       href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: firewall-faq.md
     - name: 创作模板
       href: ../azure-resource-manager/templates/template-syntax.md

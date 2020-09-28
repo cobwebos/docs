@@ -15,19 +15,18 @@
 - name: 教程
   expanded: true
   items:
-    - name: Python（第 1 天）
+    - name: Python 第 1 天入门
       expanded: true
       items:
         - name: 1. 设置本地计算机
           href: tutorial-1st-experiment-sdk-setup-local.md
-        - name: 2. Hello world
+        - name: 2. “Hello world”
           href: tutorial-1st-experiment-hello-world.md
         - name: 3. 训练模型
           href: tutorial-1st-experiment-sdk-train.md
         - name: 4. 自带数据
           href: tutorial-1st-experiment-bring-data.md
     - name: Jupyter Notebook
-      expanded: true
       items:
         - name: 图像分类（MNIST 数据）
           items:
@@ -331,8 +330,13 @@
               displayName: parameter
               href: how-to-tune-hyperparameters.md
         - name: 使用 MLflow
-          displayName: 'log, monitor, deploy, metrics, Databricks, model registry, register'
-          href: how-to-use-mlflow.md
+          items:
+            - name: 使用 MLflow 对试验进行跟踪
+              displayName: 'log, monitor, deploy, metrics,  model registry, register'
+              href: how-to-use-mlflow.md
+            - name: 使用 MLflow 跟踪 Azure Databricks 运行
+              displayName: 'log, monitor, deploy, metrics, databricks'
+              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -552,6 +556,9 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: 特选环境
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md
 - name: 资源
   items:
     - name: 发行说明
@@ -578,6 +585,3 @@
     - name: 设计辅助功能
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
-    - name: 精挑细选的环境
-      displayName: 'environments, curated environments'
-      href: resource-curated-environments.md

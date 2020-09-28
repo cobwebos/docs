@@ -273,6 +273,10 @@
             - name: Azure PowerShell
               href: howto-configure-server-parameters-using-powershell.md
               displayName: 'server parameters, powershell'
+        - name: 停止/启动服务器
+          items:
+            - name: 停止启动 MySQL 服务器
+              href: how-to-stop-start-server.md
         - name: 自动增长存储
           items:
             - name: Azure 门户
@@ -319,7 +323,7 @@
             - name: 创建只读副本 - Azure PowerShell
               href: howto-read-replicas-powershell.md
               displayName: 'data-in replication, replica, failover'
-            - name: 疑难解答
+            - name: 故障排除
               items:
                 - name: 排查连接错误
                   href: howto-troubleshoot-common-connection-issues.md

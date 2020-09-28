@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: 扩展应用
       href: extensions-app.md
-    - name: IEF 发行说明
+    - name: 自定义策略 (IEF) 发行说明
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph API 操作
       href: microsoft-graph-operations.md

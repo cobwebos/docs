@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: f6893522b66f20dd26905084e5b09d303cbfd5b3
-  ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+  ms.openlocfilehash: c0f87da61b0fa2d4aed57eeef7ee9829a17d0f80
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/09/2020
-  ms.locfileid: "89612768"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91258364"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -83,7 +83,7 @@ landingContent:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET Core
-      url: /samples/azure-samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/calling-a-web-api-in-an-aspnet-core-web-application-using-azure-ad/
+      url: quickstart-v2-aspnet-core-web-api.md
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -120,6 +120,10 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 快速入门：保护 ASP.NET Core Web API
+      url: quickstart-v2-aspnet-core-web-api.md
+    - text: MSAL Python API 参考
+      url: /python/api/msal/
     - text: 快速入门：注册应用（重写）
       url: quickstart-register-app.md
     - text: 快速入门：公开 Web API（重写）

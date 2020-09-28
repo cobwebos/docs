@@ -46,8 +46,8 @@
           href: disconnected-deployment.md
         - name: 在 Kubernetes 中部署
           href: deploy-kubernetes.md
-        - name: SQL 工具
-          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+        - name: 使用 Azure Data Studio 部署
+          href: 'https://docs.microsoft.com/sql/azure-data-studio/deploy-azure-sql-edge?toc=/azure/azure-sql-edge/toc.json'
     - name: 机器学习
       items:
         - name: 支持 ONNX 的机器学习和 AI

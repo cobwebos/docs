@@ -4,7 +4,7 @@
   items:
     - name: 什么是 Azure NetApp 文件
       href: azure-netapp-files-introduction.md
-    - name: 了解存储层次结构
+    - name: Azure NetApp 文件的存储层次结构
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: 快速入门
   expanded: true
@@ -61,6 +61,8 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: 设置容量池
       href: azure-netapp-files-set-up-capacity-pool.md
+    - name: 管理手动 QoS 容量池
+      href: manage-manual-qos-capacity-pool.md
     - name: 将子网委派给 Azure NetApp 文件
       href: azure-netapp-files-delegate-subnet.md
     - name: 创建和管理 NFS 卷
@@ -109,8 +111,12 @@
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: 疑难解答
       items:
+        - name: 容量池问题故障排除
+          href: troubleshoot-capacity-pools.md
         - name: 跨区域复制故障排除
           href: troubleshoot-cross-region-replication.md
+        - name: 快照策略问题故障排除
+          href: troubleshoot-snapshot-policies.md
 - name: 参考
   items:
     - name: REST

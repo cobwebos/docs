@@ -20,8 +20,6 @@
       href: tutorial-nsx-t-network-segment.md
     - name: 7 - 从本地对等连接到私有云
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 8 - 通过内容库部署 VM
-      href: tutorial-deploy-vm-content-library.md
 - name: 概念
   items:
     - name: 私有云和群集
@@ -36,6 +34,8 @@
       href: concepts-rbac.md
     - name: 私有云升级
       href: concepts-upgrades.md
+    - name: 监视和修复私有云
+      href: concepts-monitor-repair-private-cloud.md
 - name: 操作指南
   items:
     - name: 启用 Azure VMware 解决方案
@@ -48,6 +48,8 @@
       href: manage-dhcp.md
     - name: 灾难恢复
       href: disaster-recovery.md
+    - name: 通过内容库部署 VM
+      href: deploy-vm-content-library.md
     - name: Azure 本机集成
       items:
         - name: API 管理
@@ -68,10 +70,16 @@
           href: deploy-traffic-manager-to-balance-avs-workloads.md
         - name: NetApp 文件
           href: net-app-files.md
+    - name: GitHub Enterprise Server
+      href: github-enterprise-server.md
     - name: VMware 解决方案
       items:
         - name: 设置 vRealize Operations
           href: vrealize-operations-for-avs.md
+    - name: VMware 生态系统
+      items:
+        - name: VM 的备份解决方案
+          href: ecosystem-back-up-vms.md
 - name: 参考
   items: null
 - name: 资源

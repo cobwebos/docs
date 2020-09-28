@@ -197,6 +197,8 @@
       items:
         - name: 设置或编辑策略
           href: set-edit-policies.md
+        - name: 调试策略
+          href: api-management-debug-policies.md
         - name: 策略表达式
           href: api-management-policy-expressions.md
         - name: 自定义缓存
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: 转换策略
           href: api-management-transformation-policies.md
+        - name: 分布式 Application Runtime (Dapr) 集成策略
+          href: api-management-dapr-policies.md
     - name: 在生产环境中进行管理
       items:
         - name: 将 API 导出到 Power Platform
@@ -270,7 +274,7 @@
       href: ./policy-reference.md
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: api-management-faq.md
     - name: 定价
       href: 'https://aka.ms/apimpricing'

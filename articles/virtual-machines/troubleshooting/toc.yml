@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows 停止错误 - 状态无内存
           href: troubleshoot-windows-stop-error.md
+        - name: Windows 停止错误 - 系统进程终止
+          href: windows-stop-error-system-process-terminated.md
 - name: 无法连接到 VM
   items:
     - name: RDP
@@ -204,7 +206,7 @@
   items:
     - name: 概述
       href: ../managed-disks-overview.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: ../faq-for-disks.md
     - name: 删除存储资源时出错
       href: storage-resource-deletion-errors.md
@@ -299,15 +301,15 @@
       items:
         - name: 概述
           href: ../windows/disk-encryption-overview.md
-        - name: 疑难解答
+        - name: 故障排除
           href: ../windows/disk-encryption-troubleshooting.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: ../windows/disk-encryption-faq.md
     - name: Linux
       items:
         - name: 概述
           href: ../linux/disk-encryption-overview.md
-        - name: 疑难解答
+        - name: 故障排除
           href: ../linux/disk-encryption-troubleshooting.md
         - name: 常见问题解答
           href: ../linux/disk-encryption-faq.md

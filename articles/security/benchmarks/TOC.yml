@@ -145,6 +145,8 @@
       href: ../../network-watcher/security-baseline.md
     - name: 安全中心基线
       href: ../../security-center/security-baseline.md
+    - name: 服务总线基线
+      href: ../../service-bus-messaging/security-baseline.md
     - name: Service Fabric 基线
       href: ../../service-fabric/security-baseline.md
     - name: 流分析基线

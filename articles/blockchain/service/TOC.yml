@@ -13,6 +13,8 @@
       href: create-member.md
     - name: 使用 CLI 创建成员
       href: create-member-cli.md
+    - name: 使用 Azure PowerShell 创建成员
+      href: create-member-powershell.md
     - name: 使用 ARM 模板创建成员
       displayName: Resource Manager
       href: create-member-template.md
@@ -81,7 +83,7 @@
     - name: 社区支持
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow 支持
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-service'
     - name: 产品反馈
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: 定价

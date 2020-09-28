@@ -17,6 +17,9 @@
     - name: 分配策略 - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: 分配策略 - JavaScript
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
     - name: 分配策略 - Python
       displayName: 'assign, compliance'
       href: ./assign-policy-python.md
@@ -52,7 +55,7 @@
           href: ./samples/pattern-logical-operators.md
         - name: 字段
           href: ./samples/pattern-fields.md
-        - name: 参数
+        - name: parameters
           href: ./samples/pattern-parameters.md
         - name: 效果详细信息
           href: ./samples/pattern-effect-details.md
@@ -112,10 +115,10 @@
       href: ./concepts/policy-as-code.md
     - name: Kubernetes 集成
       items:
-        - name: 适用于 Kubernetes 的 Azure Policy（预览版）
+        - name: 适用于 Kubernetes 的 Azure Policy
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: 使用 Azure Policy 保护 Pod（预览）
+        - name: 使用 Azure Policy 保护 Pod
           displayName: 'aks, psp, rego, opa'
           href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: 使用来宾配置审核 VM

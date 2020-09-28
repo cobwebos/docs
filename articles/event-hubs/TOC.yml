@@ -10,6 +10,8 @@
       href: event-hubs-capture-overview.md
     - name: 事件中心专用层
       href: event-hubs-dedicated-overview.md
+    - name: 事件中心中的 Azure 架构注册表（预览版）
+      href: schema-registry-overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -125,6 +127,8 @@
       maintainContext: true
 - name: 操作指南
   items:
+    - name: 创建架构注册表
+      href: create-schema-registry.md
     - name: 移动
       items:
         - name: 将命名空间移到另一个区域
@@ -211,7 +215,7 @@
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 解决连接问题
           href: troubleshooting-guide.md
@@ -219,6 +223,8 @@
           href: troubleshoot-authentication-authorization.md
         - name: 针对事件中心的 Kafka 故障排除指南
           href: apache-kafka-troubleshooting-guide.md
+        - name: EventHubsException
+          href: exceptions-dotnet.md
         - name: .NET 异常
           href: event-hubs-messaging-exceptions.md
         - name: 资源管理器异常

@@ -24,7 +24,7 @@
       href: how-to/display-math.md
     - name: 启动沉浸式阅读器以显示 HTML 内容
       href: how-to-launch-with-html.md
-    - name: 自定义沉浸式阅读器按钮
+    - name: 自定义“沉浸式阅读器”按钮
       href: how-to-customize-launch-button.md
     - name: 缓存身份验证令牌
       href: how-to-cache-token.md

@@ -49,7 +49,7 @@
   items:
     - name: 故障转移和修补
       href: cache-failover.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: cache-best-practices.md
     - name: 安全性
       items:
@@ -70,10 +70,14 @@
           href: cache-how-to-premium-clustering.md
         - name: 使用 Redis 数据持久性保留缓存
           href: cache-how-to-premium-persistence.md
+        - name: 添加更多副本
+          href: cache-how-to-multi-replicas.md
         - name: 使用虚拟网络保护缓存
           href: cache-how-to-premium-vnet.md
         - name: 以非公开方式连接到缓存
           href: cache-private-link.md
+        - name: 启用区域冗余
+          href: cache-how-to-zone-redundancy.md
         - name: 设置异地复制
           href: cache-how-to-geo-replication.md
         - name: 借助预留容量节省资金
