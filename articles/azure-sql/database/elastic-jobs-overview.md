@@ -1,6 +1,6 @@
 ---
 title: 弹性数据库作业（预览版）
-description: 配置弹性数据库作业（预览版），以便在 Azure SQL 数据库中的一组或多台数据库之间运行 Transact-sql （T-sql）脚本
+description: 配置弹性数据库作业（现为预览版），以在 Azure SQL 数据库中的一个或多个数据库中运行 Transact-SQL (T-SQL) 脚本
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,14 +11,14 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85251154"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409573"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
+# <a name="create-configure-and-manage-elastic-jobs-preview"></a> (预览中创建、配置和管理弹性作业) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 在本文中，你将了解如何创建、配置和管理弹性作业。
@@ -27,14 +27,14 @@ ms.locfileid: "85251154"
 
 ## <a name="create-and-configure-the-agent"></a>创建并配置代理
 
-1. 创建或标识空的 S0 或更高版本的数据库。 该数据库在弹性作业代理创建期间将用作“作业数据库”。 
-2. 在[门户](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)中或使用[PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)创建弹性作业代理。
+1. 创建或标识空的 S0 或更高级别的数据库。 该数据库在弹性作业代理创建期间将用作“作业数据库”。
+2. 通过[门户](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)或 [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) 创建弹性作业代理。
 
    ![创建弹性作业代理](./media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>创建、运行和管理作业
 
-1.  使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution) 在作业数据库中创建执行作业所需的凭据。
+1. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution) 在作业数据库中创建执行作业所需的凭据。
 2. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-target-group-servers) 定义目标组（需对其运行作业的数据库）。
 3. 在作业将运行的每个数据库中创建作业代理凭据[（向组中的每个数据库添加用户（或角色））](logins-create-manage.md)。 有关示例，请参阅 [PowerShell 教程](elastic-jobs-powershell-create.md)。
 4. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [T-SQL](elastic-jobs-tsql-create-manage.md#deploy-new-schema-to-many-databases) 创建作业。
@@ -50,11 +50,11 @@ ms.locfileid: "85251154"
 
 设置运行作业所需的适当凭据可能不太容易，因此请注意以下要点：
 
-- 必须在作业数据库中创建数据库范围的凭据。 
+- 必须在作业数据库中创建数据库范围的凭据。
 - **所有目标数据库必须有一个具有[足够权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)的登录名，否则作业无法成功完成**（下图中的 `jobuser`）。
 - 凭据可以跨作业反复使用，而凭据密码经过加密后，无法供只能通过只读方式访问作业对象的用户访问。
 
-下图旨在帮助用户了解和设置适当的作业凭据。 **记住在作业需运行的每个数据库（所有目标用户数据库  ）中创建该用户**。
+下图旨在帮助用户了解和设置适当的作业凭据。 **记住在作业需运行的每个数据库（所有目标用户数据库）中创建该用户**。
 
 ![弹性作业凭据](./media/elastic-jobs-overview/job-credentials.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "85251154"
 
 弹性作业在等待长时间运行的作业完成时使用极少的计算资源。
 
-根据目标数据库组的大小和作业所需执行时间（并发辅助角色数）的不同，代理需要的计算量和作业数据库性能也会有所不同（目标数和作业数越多，所需计算量越大）。 
+根据目标数据库组的大小和作业所需执行时间（并发辅助角色数）的不同，代理需要的计算量和作业数据库性能也会有所不同（目标数和作业数越多，所需计算量越大）。
 
 目前，预览版的限制是 100 个并发作业。
 
@@ -83,7 +83,7 @@ ms.locfileid: "85251154"
 ## <a name="best-practices-for-creating-jobs"></a>创建作业的最佳做法
 
 ### <a name="idempotent-scripts"></a>幂等脚本
-作业的 T-SQL 脚本必须[幂等](https://en.wikipedia.org/wiki/Idempotence)。  “幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业会自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次（或更多次），也仍会返回相同的结果。
+作业的 T-SQL 脚本必须[幂等](https://en.wikipedia.org/wiki/Idempotence)。 “幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业会自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次（或更多次），也仍会返回相同的结果。
 
 一个简单的策略是在创建对象之前测试其是否存在。
 

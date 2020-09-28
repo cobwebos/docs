@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855793"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409555"
 ---
 # <a name="what-is-virtual-network-nat"></a>什么是虚拟网络 NAT？
 
@@ -32,7 +32,7 @@ ms.locfileid: "88855793"
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="虚拟网络 NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="虚拟网络 NAT">
 </p>
 
 
@@ -51,11 +51,11 @@ NAT 会自动处理子网的所有出站流量，而无需完成任何客户配�
 
 NAT 使用“端口网络地址转换”（PNAT 或 PAT）。建议为大多数工作负荷使用 NAT。 可以通过按需出站流分配来轻松适应动态或分散工作负荷。 避免对出站资源进行开销不菲的预先规划、预先分配及最终的过度预配。 SNAT 端口资源在使用特定 NAT 网关资源的所有子网之间共享并可供其使用；可按需提供这些端口资源。
 
-附加到 NAT 的公共 IP 地址最多为 UDP 和 TCP 提供 64,000 个并发流。 可以先使用单个 IP 地址，然后扩展到 16 个公共 IP 地址。
+附加到 NAT 的公共 IP 地址分别为 UDP 和 TCP 提供最多64000个并发流。 可以从单个 IP 地址开始，使用公共 IP 地址或公共 IP 前缀或两者同时增加到16个 IP 地址。  NAT 网关资源将使用与资源关联的所有 IP 地址，以便从配置了同一 NAT 网关资源的所有子网建立出站连接。
 
 NAT 允许创建从虚拟网络到 Internet 的流。 在活动流的响应中仅允许来自 Internet 的返回流量。
 
-与负载均衡器出站 SNAT 不同，NAT 对虚拟机实例的哪个专用 IP 可以建立出站连接不设限制。  辅助 IP 配置可与 NAT 建立出站 Internet 连接。
+与负载均衡器出站 SNAT 不同，NAT 对虚拟机实例的哪个专用 IP 可以建立出站连接不设限制。  主和辅助 IP 配置可以与 NAT 建立出站 Internet 连接。
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>入站和出站连接的共存
 

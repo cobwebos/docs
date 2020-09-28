@@ -5,24 +5,24 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095539"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408501"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
-[Azure 防火墙](overview.md)是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。
+[Azure 防火墙](overview.md)是一种基于云的托管网络安全服务，可保护 Azure 虚拟网络资源。
 
 ![防火墙概述](media/overview/firewall-threat.png)
 
 Azure 防火墙包括以下功能：
 
-- [内置的高可用性](#built-in-high-availability)
+- [内置高可用性](#built-in-high-availability)
 - [可用性区域](#availability-zones)
 - [不受限制的云可伸缩性](#unrestricted-cloud-scalability)
 - [应用程序 FQDN 筛选规则](#application-fqdn-filtering-rules)
@@ -62,11 +62,11 @@ Azure 防火墙包括以下功能：
 
 ## <a name="application-fqdn-filtering-rules"></a>应用程序 FQDN 筛选规则
 
-可将出站 HTTP/S 流量或 Azure SQL 流量（预览版）限制到指定的一组完全限定的域名 (FQDN)（包括通配符）。 此功能不需要 TLS 终止。
+可以将出站 HTTP/S 流量或 Azure SQL 流量限制为指定的完全限定域名列表 (FQDN) 包括通配符）。 此功能不需要 TLS 终止。
 
 ## <a name="network-traffic-filtering-rules"></a>网络流量筛选规则
 
-可以根据源和目标 IP 地址、端口和协议，集中创建“允许”或“拒绝”网络筛选规则。** ** Azure 防火墙是完全有状态的，因此它能区分不同类型的连接的合法数据包。 将跨多个订阅和虚拟网络实施与记录规则。
+可以根据源和目标 IP 地址、端口和协议，集中创建“允许”或“拒绝”网络筛选规则。  Azure 防火墙是完全有状态的，因此它能区分不同类型的连接的合法数据包。 将跨多个订阅和虚拟网络实施与记录规则。
 
 ## <a name="fqdn-tags"></a>FQDN 标记
 

@@ -2,19 +2,19 @@
 title: 使用执行配置文件评估以 Azure Cosmos DB Gremlin API 编写的查询
 description: 了解如何使用执行配置文件步骤改善 Gremlin 查询及排查其问题。
 services: cosmos-db
-author: luisbosquez
+author: jasonwhowell
 manager: kfile
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: lbosq
-ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: jasonh
+ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261794"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408226"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用执行配置文件步骤来评估 Gremlin 查询
 

@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b4d2b277eea85fb8a5c9eb733e5bfd64d66f392c
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171266"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91407820"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
+
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-oracle-connector.md)
 > * [当前版本](connector-oracle.md)
@@ -68,16 +69,16 @@ ms.locfileid: "87171266"
 
 Oracle 链接服务支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于“高级 Oracle 本机连接”选项，可以选择在 Oracle 服务器上的 [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) 文件中添加一个条目，在“ADF Oracle 链接服务”中，选择使用“Oracle 服务名称”连接类型并配置相应的服务名称。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
 >如果遇到错误“ORA-01025:UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串。 然后重试。
 
-如果有多个 Oracle 实例用于故障转移方案，则可以创建 Oracle 链接服务，并填写主主机、端口、用户名、密码等，并添加新的 "**其他连接属性**"，其中属性名称为 `AlternateServers` ，值为-不 `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` 会错过方括号，请注意冒号（ `:` ）作为分隔符。 例如，以下替代服务器值定义了用于连接故障转移的两个备用数据库服务器： `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` 。
+如果有多个 Oracle 实例用于故障转移方案，则可以创建 Oracle 链接服务并填充主要主机、端口、用户名、密码等，并添加新的“其他连接属性”，其属性名称为 `AlternateServers`，值为 `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` - 不要遗漏括号，并注意作为分隔符的冒号 (`:`)。 例如，以下备用服务器值定义用于连接故障转移的两台备用数据库服务器：`(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)`。
 
 可以根据自己的情况在连接字符串中设置更多连接属性：
 
@@ -175,11 +176,11 @@ Oracle 链接服务支持以下属性：
 
 若要从/向 Oracle 复制数据，请将数据集的 type 属性设置为 `OracleTable`。 支持以下属性。
 
-| properties | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
-| 表 | 表/视图的名称。 |对于源为“否”，对于接收器为“是”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
 **示例：**
@@ -218,12 +219,12 @@ Oracle 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**None**（默认值）、**PhysicalPartitionsOfTable** 和 **DynamicRange**。<br>启用分区选项（即，该选项不为 `None`）时，用于从 Oracle 数据库并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | 否 |
+| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许的值为： **None** (默认值) 、 **PhysicalPartitionsOfTable**和 **DynamicRange**。<br>启用分区选项（即，该选项不为 `None`）时，用于从 Oracle 数据库并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
-| partitionNames | 需要复制的物理分区的列表。 <br>当分区选项为 `PhysicalPartitionsOfTable` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfTabularPartitionName`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionNames | 需要复制的物理分区的列表。 <br>当分区选项是 `PhysicalPartitionsOfTable` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfTabularPartitionName`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定，系统会自动检测表的主键并将其用作分区列。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionColumnName`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionUpperBound | 要从中复制数据的分区列的最大值。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionUpbound`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionLowerBound | 要从中复制数据的分区列的最小值。 <br>当分区选项为 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionLowbound`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
+| partitionLowerBound | 要从中复制数据的分区列的最小值。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionLowbound`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 
 **示例：使用基本查询但不使用分区复制数据**
 
@@ -309,12 +310,15 @@ Oracle 链接服务支持以下属性：
 
 建议同时启用并行复制和数据分区，尤其是从 Oracle 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
-| 场景                                                     | 建议的设置                                           |
+| 方案                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 从包含物理分区的大型表进行完整加载。          | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂将自动检测物理分区并按分区复制数据。 |
 | 从不包含物理分区但包含用于数据分区的整数列的大型表进行完整加载。 | **分区选项**：动态范围分区。<br>**分区列**：指定用于对数据进行分区的列。 如果未指定，将使用主键列。 |
 | 使用自定义查询从包含物理分区的表加载大量数据。 | **分区选项**：表的物理分区。<br>**查询**：`SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**：指定要从中复制数据的分区名称。 如果未指定，数据工厂将自动检测在 Oracle 数据集中指定的表的物理分区。<br><br>在执行期间，数据工厂会将 `?AdfTabularPartitionName` 替换为实际分区名称并发送到 Oracle。 |
-| 使用自定义查询从不包含物理分区但包含用于数据分区的整数列的表加载大量数据。 | 分区选项：动态范围分区。<br>查询：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>分区列：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限**和**分区下限**：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名和值范围，并将其发送到 Oracle。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则数据工厂会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
+| 使用自定义查询从不包含物理分区但包含用于数据分区的整数列的表加载大量数据。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限**和**分区下限**：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名和值范围，并将其发送到 Oracle。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则数据工厂会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
+
+> [!TIP]
+> 从非分区表复制数据时，可以使用 "动态范围" 分区选项对整数列进行分区。 如果源数据不具有这种类型的列，则可以利用源查询中 [ORA_HASH]( https://docs.oracle.com/database/121/SQLRF/functions136.htm) 函数来生成列，并将其用作分区列。
 
 **示例：使用物理分区进行查询**
 
@@ -355,24 +359,24 @@ Oracle 链接服务支持以下属性：
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>（仅支持 Oracle 10g 和更高版本） |
-| CHAR |字符串 |
-| CLOB |字符串 |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
 | FLOAT |Decimal、String（如果精度 > 28） |
 | INTEGER |Decimal、String（如果精度 > 28） |
-| LONG |字符串 |
+| LONG |String |
 | LONG RAW |Byte[] |
-| NCHAR |字符串 |
-| NCLOB |字符串 |
+| NCHAR |String |
+| NCLOB |String |
 | NUMBER |Decimal、String（如果精度 > 28） |
-| NVARCHAR2 |字符串 |
+| NVARCHAR2 |String |
 | RAW |Byte[] |
-| ROWID |字符串 |
+| ROWID |String |
 | TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |字符串 |
-| TIMESTAMP WITH TIME ZONE |字符串 |
+| TIMESTAMP WITH LOCAL TIME ZONE |String |
+| TIMESTAMP WITH TIME ZONE |String |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |字符串 |
+| VARCHAR2 |String |
 | XML |String |
 
 > [!NOTE]

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291661"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409708"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>请求增加 Azure HDInsight 的配额
 
 CPU 内核配额有助于确保资源使用在特定 Azure 区域的所有客户之间得到公平分配。 但是，在某些情况下，业务要求需要的群集资源量可能会超出当前配额的允许值。 在这种情况下，你可以请求增加 CPU 内核配额，以便能够部署符合你数据处理要求的群集数。
 
-达到配额限制时，则无法部署新群集，也无法通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅在美国东部地区的 CPU 内核限制可能是 30 个，而在美国东部 2 中允许的内核数又增加了 30 个。
+达到配额限制时，则无法部署新群集，也无法通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，在美国东部地区，你的订阅可能会有30个 CPU 核心限制，而美国东部仍允许使用另外30个 CPU 核心。
 
 ## <a name="gather-required-information"></a>收集所需信息
 
