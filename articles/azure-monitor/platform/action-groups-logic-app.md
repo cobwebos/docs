@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321881"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403120"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -100,15 +100,15 @@ ms.locfileid: "87321881"
 
     ![设置 Content-Type 标头](media/action-groups-logic-app/content-type-header.png "设置 Content-Type 标头")
 
-10. 选择 " **+** **新建步骤**"，然后选择 "**添加操作**"。
+10. 选择 " **+** **新建步骤** "，然后选择 " **添加操作**"。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
-11. 搜索并选择 Microsoft Teams 连接器。 选择 " **Microsoft 团队-Post 消息**" 操作。
+11. 搜索并选择 Microsoft Teams 连接器。 选择 " **Microsoft 团队-Post 消息** " 操作。
 
     ![Microsoft Teams 操作](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams 操作")
 
-12. 配置 Microsoft Teams 操作。 “逻辑应用设计器”将要求对 Office 365 帐户进行身份验证。**** 选择要向其发送消息的“团队 ID”和“通道 ID”********。
+12. 配置 Microsoft Teams 操作。 **逻辑应用设计器**要求您向工作或学校帐户进行身份验证。 选择要向其发送消息的“团队 ID”和“通道 ID”********。
 
 13. 使用静态文本的组合和对动态内容中的的引用来配置消息 \<fields\> 。 将以下文本复制并粘贴到“消息”字段：****
 
@@ -128,7 +128,7 @@ ms.locfileid: "87321881"
 
 14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。********
 
-15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅[在 Azure 门户中创建和管理操作组](./action-groups.md)以创建一个。 切勿忘记保存更改。
+15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅 [在 Azure 门户中创建和管理操作组](./action-groups.md) 以创建一个。 切勿忘记保存更改。
 
     ![更新操作组](media/action-groups-logic-app/update-action-group.png "更新操作组")
 
@@ -186,7 +186,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 -  步骤 9 和 10 相同。
 -  对于步骤 11 到 14，请使用以下过程：
 
-   1. 选择 " **+** **新建步骤**"，然后选择 "**添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
+   1. 选择 " **+** **新建步骤** "，然后选择 " **添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
@@ -210,7 +210,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 
        !["服务运行状况 true 条件后操作"](media/action-groups-logic-app/service-health-true-condition-post-action.png "服务运行状况 true 条件下的发布操作")
 
-   1. 对于**If false**条件，提供有用的消息：
+   1. 对于 **If false** 条件，提供有用的消息：
 
        ```html
        <p><strong>Service Health Alert</strong></p>
@@ -274,7 +274,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 - 步骤 9 和 10 相同。
 - 对于步骤 11 到 14，请使用以下过程：
 
-  1. 选择 " **+** **新建步骤**"，然后选择 "**添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
+  1. 选择 " **+** **新建步骤** "，然后选择 " **添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
      - `schemaId == AzureMonitorMetricAlert`
      - `version == "2.0"`
        
@@ -284,7 +284,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 
       !["指标警报事实 post 操作"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "指标警报 true 条件下的发布操作")
 
-  1. 在 "**如果为 false** " 条件下，定义 Microsoft 团队操作以传达指标警报与逻辑应用的预期不符。 包含 JSON 有效负载。 注意如何在 `json()` 表达式中引用 `triggerBody` 动态内容。
+  1. 在 " **如果为 false** " 条件下，定义 Microsoft 团队操作以传达指标警报与逻辑应用的预期不符。 包含 JSON 有效负载。 注意如何在 `json()` 表达式中引用 `triggerBody` 动态内容。
 
       !["指标警报错误情况 post 操作"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "指标警报 false 条件下的发布操作")
 

@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326726"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404951"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -22,7 +22,7 @@ ms.locfileid: "87326726"
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)创建和管理 IoT 中心。
 
-需要一个 Azure 订阅才能完成此教程中的步骤。 如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+需要一个 Azure 订阅才能完成此教程中的步骤。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -78,7 +78,7 @@ ms.locfileid: "87326726"
 
 ![显示了添加新路由的屏幕截图](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-为中心命名。 该名称在该中心的路由列表中必须是唯一的。 
+命名路由。 路由名称在该集线器的路由列表中必须是唯一的。 
 
 对于“终结点”  ，可从下拉列表中选择一个或新添加一个。 在此示例中，已有存储帐户和容器。 若要将其添加为终结点，请单击终结点下拉列表旁的“+”（添加）  并选择“Blob 存储”  。 以下屏幕显示指定存储帐户和容器的位置。
 

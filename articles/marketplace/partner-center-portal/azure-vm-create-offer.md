@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029696"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405048"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -118,7 +118,7 @@ ms.locfileid: "90029696"
 
 在 " **属性** " 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
 
-### <a name="category"></a>类别
+### <a name="category"></a>Category
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
@@ -402,7 +402,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 #### <a name="free-trial"></a>免费试用版
 
-可以为客户提供一个月或三个月的免费试用版。
+你可以向客户提供一个月或三个月或六个月的 *免费试用版* 。
 
 #### <a name="visibility"></a>可见性
 

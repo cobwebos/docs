@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: 认可的发行版
       href: endorsed-distros.md
-    - name: 专用主机
-      href: dedicated-hosts.md
     - name: 维护和更新
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 磁盘存储
@@ -391,11 +389,12 @@
         - name: 复制或克隆 VM
           href: copy-vm.md
         - name: 使用专用主机
+          href: ../dedicated-hosts.md
           items:
             - name: CLI
               href: dedicated-hosts-cli.md
             - name: 门户
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: 部署点 VM
           items:
             - name: CLI
@@ -858,6 +857,7 @@
         - name: 更改可用性集
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 创建邻近放置组
+          displayName: PPG aligned colocation co-location
           items:
             - name: CLI
               href: proximity-placement-groups.md

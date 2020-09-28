@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: b099a6ea706482e25b2c37a87cf0a24f2fe475bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531065"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403232"
 ---
 # <a name="revisions-in-azure-api-management"></a>Azure API 管理中的修订版本
 
@@ -38,7 +38,7 @@ ms.locfileid: "86531065"
 
 `https://apis.contoso.com/customers;rev=3?customerId=123`
 
-默认情况下，每个修订版本与当前修订版本具有相同的安全设置。 如果希望为每个修订应用不同的安全性，则可以特意更改特定版本的策略。 例如，你可能想要添加[IP 允许列表策略](./api-management-access-restriction-policies.md#RestrictCallerIPs)，以防止外部调用方访问仍在开发的修订版本。
+默认情况下，每个修订版本与当前修订版本具有相同的安全设置。 如果希望为每个修订应用不同的安全性，则可以特意更改特定版本的策略。 例如，你可能想要添加 [IP 筛选策略](./api-management-access-restriction-policies.md#RestrictCallerIPs) 以阻止外部调用方访问仍在开发的修订版本。
 
 修订可以脱机，这使得调用方可以访问它，即使它们尝试通过其 URL 访问修订版本也是如此。 您可以使用 Azure 门户将修订标记为脱机。 如果使用 PowerShell，则可以使用 `Set-AzApiManagementApiRevision` cmdlet 并将 `Path` 参数设置为 `$null` 。
 
@@ -47,7 +47,7 @@ ms.locfileid: "86531065"
 
 ## <a name="current-revision"></a>当前修订
 
-单个修订版本可设置为*当前*修订版本。 此修订版本将用于未在 URL 中指定显式修订号的所有 API 请求。 您可以通过将该修订设置为 "当前" 来回滚到以前的修订版本。
+单个修订版本可设置为 *当前* 修订版本。 此修订版本将用于未在 URL 中指定显式修订号的所有 API 请求。 您可以通过将该修订设置为 "当前" 来回滚到以前的修订版本。
 
 您可以使用 Azure 门户将修订设置为当前版本。 如果使用 PowerShell，则可以使用 `New-AzApiManagementApiRelease` cmdlet。
 

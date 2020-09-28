@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301663"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403480"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Azure Defender for server 简介
 
@@ -41,7 +41,7 @@ Azure Defender for server 提供的威胁检测和保护功能包括：
 
 - **自适应应用程序控制 (AAC) ** 自适应应用程序控件是一种智能和自动化的解决方案，用于为计算机定义已知安全应用程序的允许列表。
 
-    启用并配置自适应应用程序控件后，如果任何应用程序运行的不是您定义为安全的应用程序，您将收到安全警报。 [了解详细信息](security-center-adaptive-network-hardening.md)。
+    启用并配置自适应应用程序控件后，如果任何应用程序运行的不是您定义为安全的应用程序，您将收到安全警报。 [了解详细信息](security-center-adaptive-application.md)。
 
 - **自适应网络强化 (ANH) ** -应用网络安全组 (NSG) 来筛选进出资源的流量，从而改善网络安全状况。 但是，仍然可能存在一些这样的情况：通过 NSG 流动的实际流量是所定义 NSG 规则的子集。 在这些情况下，可以根据实际流量模式强化 NSG 规则，从而进一步改善安全状况。
 
@@ -58,7 +58,7 @@ Azure Defender for server 提供的威胁检测和保护功能包括：
 
 - **Fileless 攻击检测 (仅限 Windows) ** 攻击会将恶意有效负载注入到内存中，以避免通过基于磁盘的扫描技术检测。 然后，攻击者的负载会在遭到攻击的进程中保持不变，并执行各种恶意活动。
 
-  自动内存取证技术使用无文件攻击检测来识别无文件攻击工具包、方法和行为。 此解决方案会定期在运行时扫描计算机，并直接从进程内存中提取见解。 适用于 Linux 的特定见解包括以下内容的标识： 
+  自动内存取证技术使用无文件攻击检测来识别无文件攻击工具包、方法和行为。 此解决方案会定期在运行时扫描计算机，并直接从进程内存中提取见解。 特定 insights 包括以下内容的标识： 
 
   - 众所周知的工具包和加密挖掘软件 
 

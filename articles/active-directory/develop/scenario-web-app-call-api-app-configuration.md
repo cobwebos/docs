@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 27926c687871180da78930be8e0968febcd77869
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396308"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403188"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -181,7 +181,7 @@ Web 应用需要获取下游 API 的令牌。 可以通过在后添加行来指�
 
 下图显示了*Startup.cs* *的各种可能性及其对*文件的影响：
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="创建 web api 时，可以选择调用下游 api 和令牌缓存实现。":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="显示启动点 C 中的服务配置选项的框图，用于调用 web API 并指定令牌缓存实现":::
 
 > [!NOTE]
 > 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖关系注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。

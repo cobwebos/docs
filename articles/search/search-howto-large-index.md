@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927011"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403562"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
 
@@ -25,34 +25,37 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 以下部分探讨使用推送 API 和索引器对大量数据进行索引编制的方法。
 
-## <a name="push-api"></a>推送 API
+## <a name="use-the-push-api"></a>使用推送 API
 
-将数据推送到索引中时，有多个重要注意事项会影响推送 API 的索引编制速度。 以下部分概要介绍这些因素。 
+使用 " [添加文档" REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [index 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)将数据推送到索引中时，有几个关键注意事项会影响索引速度。 以下部分概述了这些因素，范围从将服务容量设置为代码优化。
 
-除本文中的信息外，还可利用[优化索引编制速度教程](tutorial-optimize-indexing-push-api.md)中的代码示例来了解详细信息。
+有关演示推送模型索引的详细信息和代码示例，请参阅 [教程：优化索引速度](tutorial-optimize-indexing-push-api.md)。
 
-### <a name="service-tier-and-number-of-partitionsreplicas"></a>服务层级和分区/副本数
+### <a name="capacity-of-your-service"></a>服务的容量
 
-添加分区或提高搜索服务层级都将提高索引编制速度。
+第一步是查看预配服务的层的特性和 [限制](search-limits-quotas-capacity.md) 。 定价层中的主要区别因素之一是分区的大小和速度，它们直接影响索引速度。 如果在工作负荷不足的层中预配了搜索服务，则升级到新层可能是提高索引吞吐量的最简单且最有效的解决方案。
 
-添加其他副本也可能会提高索引编制速度，但无法保证提高。 另一方面，其他副本将增加搜索服务可以处理的查询量。 副本也是获取 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 的关键组件。
+当你对层满意后，下一步就是增加分区数。 在初始索引运行后，可以重新调整分区分配，以降低运行服务的总体成本。
 
-在添加分区/副本或升级到更高层级前，请考虑金钱成本和分配时间。 添加分区可以显著提高索引编制速度，但添加/删除分区可能需要 15 分钟到几个小时不等。 有关详细信息，请参阅关于[调整容量](search-capacity-planning.md)的文档。
+> [!NOTE]
+> 添加其他副本也可能会提高索引编制速度，但无法保证提高。 另一方面，其他副本将增加搜索服务可以处理的查询量。 副本也是获取 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 的关键组件。
+>
+> 在添加分区/副本或升级到更高层级前，请考虑金钱成本和分配时间。 添加分区可以显著提高索引编制速度，但添加/删除分区可能需要 15 分钟到几个小时不等。 有关详细信息，请参阅关于[调整容量](search-capacity-planning.md)的文档。
+>
 
-### <a name="index-schema"></a>索引架构
+### <a name="review-index-schema"></a>查看索引架构
 
-索引架构在编制数据索引方面扮演重要角色。 添加字段和向字段添加其他属性（例如“可搜索”、“可分面”或“可筛选”）都会降低索引编制速度。
-
-一般而言，建议仅在打算使用其他属性时才将其添加到字段中。
+索引架构在编制数据索引方面扮演重要角色。 你具有的字段越多，你设置的属性越多 (例如，可 *搜索*、 *可查找*或可 *筛选*) 会导致索引时间增加。 通常，只应在搜索索引中创建并指定实际需要的字段。
 
 > [!NOTE]
 > 若要保持较小的文档大小，请避免向索引添加不可查询的数据。 图像和其他二进制数据不可直接搜索，不应存储在索引中。 若要将不可查询的数据集成到搜索结果中，应定义用于存储资源的 URL 引用的不可搜索字段。
 
-### <a name="batch-size"></a>批大小
+### <a name="check-the-batch-size"></a>检查批大小
 
-为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 不管你在 .NET SDK 中使用[添加文档 REST API](/rest/api/searchservice/addupdate-or-delete-documents) 还是[索引方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)，这些限制均适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
+为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 不管你在 .NET SDK 中使用[添加文档 REST API](/rest/api/searchservice/addupdate-or-delete-documents) 还是[索引方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)，这些限制均适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
 
 使用批处理为文档编制索引可显著提高索引编制性能。 确定数据的最佳批大小是优化索引编制速度的关键。 影响最佳批大小的两个主要因素是：
+
 + 索引的架构
 + 数据的大小
 
@@ -79,7 +82,7 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 + **503 服务不可用** - 此错误表示系统负载过重，当前无法处理请求。
 + **207 多状态** - 此错误意味着某些文档成功，但至少一个文档失败。
 
-### <a name="retry-strategy"></a>重试策略 
+### <a name="retry-strategy"></a>重试策略
 
 如果失败，则应使用[指数回退重试策略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)来重试请求。
 
@@ -89,7 +92,7 @@ Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，�
 
 编制数据索引时，网络数据传输速度可能是一个限制因素。 在 Azure 环境中为数据编制索引是加快索引编制的一种简便方法。
 
-## <a name="indexers"></a>索引器
+## <a name="use-indexers-pull-api"></a> (请求 API 使用索引器) 
 
 [索引器](search-indexer-overview.md)用于在支持的 Azure 数据源中通过爬网找到可搜索的内容。 有几项索引器功能尽管并非专门用于大规模索引编制，但它们特别能够适应较大的数据集：
 
@@ -100,7 +103,7 @@ Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，�
 > [!NOTE]
 > 索引器特定于数据源，因此，使用索引器方法仅对 Azure 上的选定数据源可行：[SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob 存储](search-howto-indexing-azure-blob-storage.md)、[表存储](search-howto-indexing-azure-tables.md)和 [Cosmos DB](search-howto-index-cosmosdb.md)。
 
-### <a name="batch-size"></a>批大小
+### <a name="check-the-batchsize-argument-on-create-indexer"></a>检查 Create 索引器上的 batchSize 参数
 
 与推送 API 一样，索引器允许配置每个批处理的项数。 对于基于[创建索引器 REST API](/rest/api/searchservice/Create-Indexer) 的索引器，可以设置 `batchSize` 参数来自定义此设置，以便与数据特征更相符。 
 
@@ -112,7 +115,7 @@ Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，�
 
 根据设计，计划的索引按特定的间隔启动，作业通常会按下一个计划间隔在恢复之前完成。 但是，如果处理在该间隔内未完成，则索引器会停止（因为已超时）。 在下一个间隔，处理将上次中断的位置恢复，同时，系统会跟踪该位置。 
 
-实际上，对于跨越好几天的索引负载，可按 24 小时计划放置索引器。 在下一个 24 小时周期恢复索引编制时，该作业会从已知正常的文档重新开始。 这样，索引器便可以处理很多天的文档积压工作，直到处理完所有未处理的文档。 有关此方法的详细信息，请参阅[为 Azure Blob 存储中的大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 有关设置计划的一般详细信息，请参阅[创建索引器 REST API](/rest/api/searchservice/Create-Indexer) 或[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+实际上，对于跨越好几天的索引负载，可按 24 小时计划放置索引器。 在下一个 24 小时周期恢复索引编制时，该作业会从已知正常的文档重新开始。 这样，索引器便可以处理很多天的文档积压工作，直到处理完所有未处理的文档。 有关设置计划的一般详细信息，请参阅[创建索引器 REST API](/rest/api/searchservice/Create-Indexer) 或[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
 <a name="parallel-indexing"></a>
 

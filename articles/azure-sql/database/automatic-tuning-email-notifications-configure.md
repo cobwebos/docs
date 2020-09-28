@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: 01daf0af039a00f6a81b850b07cfcf6d901a7732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 606d3c78e96491a92b2e09aa74801247369ba0ab
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284629"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403273"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -187,7 +187,7 @@ Write-Output $table
 
 - "**Azure 自动化-创建作业**" –用于执行 PowerShell 脚本以检索 Azure 自动化 runbook 中的自动优化建议。
 - "**Azure 自动化-获取作业输出**" –用于从已执行的 PowerShell 脚本检索输出。
-- "**Office 365 Outlook –发送电子邮件**" –用于发送电子邮件。 电子邮件使用创建此流的个人的 Office 365 帐户发送。
+- "**Office 365 Outlook –发送电子邮件**" –用于发送电子邮件。 电子邮件使用创建流的个人的工作或学校帐户发送出去。
 
 要了解有关 Microsoft Flow 功能的详细信息，请参阅[开始使用 Microsoft Flow](https://docs.microsoft.com/flow/getting-started)。
 

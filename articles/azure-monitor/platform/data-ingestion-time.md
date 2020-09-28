@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666631"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403545"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -51,7 +51,7 @@ Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可�
 ### <a name="management-solutions-collection"></a>管理解决方案收集
 某些解决方案不从代理收集其数据，并且可能使用会引入额外延迟的收集方法。 一些解决方案以固定时间间隔收集数据，而不尝试近实时收集。 具体示例包括：
 
-- Office 365 解决方案使用 Office 365 管理活动 API 轮询活动日志，该方法目前不提供任何近实时延迟保证。
+- Microsoft 365 解决方案使用管理活动 API 轮询活动日志，当前不提供任何近乎实时的延迟保证。
 - 该解决方案以每天一次的频率收集 Windows Analytics 解决方案（例如更新符合性）数据。
 
 请参阅各解决方案的文档，确定其收集频率。

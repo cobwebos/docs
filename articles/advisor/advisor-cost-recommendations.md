@@ -2,13 +2,13 @@
 title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325838"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405218"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -111,6 +111,7 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 
 若要了解有关顾问建议的详细信息，请参阅以下资源：
 * [顾问简介](advisor-overview.md)
+* [顾问分数](azure-advisor-score.md)
 * [顾问入门](advisor-get-started.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问高可用性建议](advisor-high-availability-recommendations.md)

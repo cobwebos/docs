@@ -6,25 +6,25 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045249"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403409"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报的问题
 
-本文讨论 Azure Monitor 警报和通知中的常见问题。
+本文讨论 Azure Monitor 警报和通知的常见问题。
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅[Microsoft Azure 中的警报概述](alerts-overview.md)。
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 [Microsoft Azure 中的警报概述](alerts-overview.md)。
 
-如果在出现警报时出现问题，或在需要时未激发，请参阅以下文章。 可以在 Azure 门户中看到 "已激发" 警报。
+如果你遇到警报触发问题或警报未按预期触发问题，请参阅下面的文章。 可以在 Azure 门户中查看已触发的警报。
 
 - [对 Microsoft Azure 中 Azure Monitor 指标警报进行故障排除](alerts-troubleshoot-metric.md)  
 - [对 Microsoft Azure 中 Azure Monitor 日志警报进行故障排除](alerts-troubleshoot-metric.md)
 
-如果警报根据 Azure 门户按预期方式触发但未发生正确的通知，请使用本文其余部分中的信息来解决该问题。
+如果警报根据 Azure 门户按预期触发，但未出现正确的通知，请使用本文其余部分中的信息来解决该问题。
 
 ## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>针对警报的操作或通知未按预期方式进行
 
@@ -61,7 +61,7 @@ ms.locfileid: "87045249"
     另请检查：
 
    - 电子邮件客户端（如 Outlook、Gmail）的垃圾邮件设置
-      - 电子邮件服务器（如 Exchange、Office 365、G-suite）的发件人限制/垃圾邮件设置/隔离设置
+      - 电子邮件服务器的发件人限制/垃圾邮件设置/隔离设置 (如 Exchange、Microsoft 365、G 套件) 
       - 若使用了电子邮件安全设备（如 Barracuda、Cisco），请检查其设置。
 
 1. **是否意外取消了对操作组的订阅？**
@@ -135,7 +135,7 @@ ms.locfileid: "87045249"
 
     1. **是否已阻止源 IP 地址？**
     
-       将从 webhook 调用的[IP 地址](action-groups.md#action-specific-information)添加到允许列表。
+       将需从其调用 Webhook 的 [IP 地址](action-groups.md#action-specific-information)加入允许列表。
 
     1. **你的 Webhook 终结点是否正常工作？**
 
@@ -172,7 +172,7 @@ ms.locfileid: "87045249"
 
 1. **是否为操作选择了正确的格式？** 
 
-    每个操作类型（电子邮件、webhook 等）都有两种格式–默认格式、旧格式和[较新的通用架构格式](alerts-common-schema.md)。 创建操作组时，请指定每个操作所需的格式，操作组中的不同操作可能具有不同的格式。 
+    每个操作类型 (电子邮件、webhook 等 ) 具有两种格式：默认格式、旧格式和 [较新的通用架构格式](alerts-common-schema.md)。 创建操作组时，请指定每个操作所需的格式，操作组中的不同操作可能具有不同的格式。 
 
     例如，对于 Webhook 操作： 
 
@@ -185,7 +185,7 @@ ms.locfileid: "87045249"
  
 1. **活动日志警报：活动日志中是否有该信息？** 
 
-    [活动日志警报](activity-log-alerts.md)是基于写入到 Azure 活动日志的事件的警报，如有关创建、更新或删除 azure 资源、服务运行状况和资源运行状况事件，或者从 azure Advisor 和 azure 策略中发现的事件。 如果你收到了基于活动日志的警报，但所需的某些字段丢失或不正确，请首先检查活动日志本身中的事件。 如果 Azure 资源未在其活动日志事件中写入所需字段，则这些字段将不会包含在相应的警报中。 
+    [活动日志警报](activity-log-alerts.md)是基于写入到 Azure 活动日志的事件（例如，有关创建、更新或删除 Azure 资源的事件、服务运行状况和资源运行状况事件，或者 Azure 顾问和 Azure Policy 发现的情况）的警报。 如果你收到了基于活动日志的警报，但所需的某些字段丢失或不正确，请首先检查活动日志本身中的事件。 如果 Azure 资源未在其活动日志事件中写入所需字段，则这些字段将不会包含在相应的警报中。 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>操作规则未按预期发挥作用 
 
@@ -221,9 +221,9 @@ ms.locfileid: "87045249"
     如果你认为操作规则本来应触发但未触发，或者它本来不应触发但确实已触发，请仔细检查操作规则作用域和筛选条件与触发的警报的属性。 
 
 
-## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>如何查找触发的警报的警报 ID
+## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>如何查找已触发的警报的警报 ID
 
-当打开有关特定触发的警报的事例时（例如，如果你未收到其电子邮件通知），你将需要提供警报 ID。 
+当打开有关特定发出的警报的事例时 (例如–如果未收到其电子邮件通知) ，则需要提供警报 ID。 
 
 若要查找该 ID，请遵循以下步骤：
 

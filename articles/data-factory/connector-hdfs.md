@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 2a0093ebb6e3214553cf5603151831d6ae53d862
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332043"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405077"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 服务器复制数据
 
@@ -279,6 +279,34 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 * 选项 1：[在 Kerberos 领域中加入自承载集成运行时计算机](#kerberos-join-realm)
 * 选项 2：[启用 Windows 域和 Kerberos 领域之间的相互信任](#kerberos-mutual-trust)
 
+对于任一选项，请确保为 Hadoop 群集启用 webhdfs：
+
+1. 为 webhdfs 创建 HTTP 主体和 keytab。
+
+    > [!IMPORTANT]
+    > HTTP Kerberos 主体必须按照 Kerberos HTTP SPNEGO 规范以 "**HTTP/**" 开头。
+
+    ```bash
+    Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
+    Kadmin> ktadd -k /etc/security/keytab/spnego.service.keytab HTTP/<namenode hostname>@<REALM.COM>
+    ```
+
+2. HDFS 配置选项：在中添加以下三个属性 `hdfs-site.xml` 。
+    ```xml
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@<REALM.COM></value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.keytab</name>
+        <value>/etc/security/keytab/spnego.service.keytab</value>
+    </property>
+    ```
+
 ### <a name="option-1-join-a-self-hosted-integration-runtime-machine-in-the-kerberos-realm"></a><a name="kerberos-join-realm"></a>方法 1：在 Kerberos 领域中加入自承载集成运行时计算机
 
 #### <a name="requirements"></a>要求
@@ -287,13 +315,24 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 #### <a name="how-to-configure"></a>配置方式
 
+**在 KDC 服务器上：**
+
+创建要使用的 Azure 数据工厂的主体，并指定密码。
+
+> [!IMPORTANT]
+> 用户名不应包含主机名。
+
+```bash
+Kadmin> addprinc <username>@<REALM.COM>
+```
+
 **在自承载集成运行时计算机上：**
 
 1.  运行 Ksetup 实用工具来配置 Kerberos 密钥分发中心 (KDC) 服务器和领域。
 
     由于 Kerberos 领域不同于 Windows 域，因此计算机必须配置为工作组的成员。 可运行以下命令来设置 Kerberos 领域和添加 KDC 服务器，以便实现此配置。 将 REALM.COM 替换为你自己的领域名。
 
-    ```console
+    ```cmd
     C:> Ksetup /setdomain REALM.COM
     C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
     ```
@@ -302,7 +341,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 2.  使用 `Ksetup` 命令验证配置。 输出应如下所示：
 
-    ```output
+    ```cmd
     C:> Ksetup
     default realm = REALM.COM (external)
     REALM.com:
@@ -446,7 +485,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 FileShare |是 |
 | folderPath | 文件夹的路径。 支持通配符筛选器。 允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |

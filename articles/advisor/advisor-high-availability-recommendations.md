@@ -2,13 +2,13 @@
 title: 利用 Advisor 提高应用程序的可靠性
 description: 使用 Azure 顾问确保并提高业务关键 Azure 部署的可靠性。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264586"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405184"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 提高应用程序的可靠性
 
@@ -109,6 +109,12 @@ Azure 顾问会识别使用旧版本 Azure Cosmos DB Spark 连接器 Azure Cosmo
 ## <a name="enable-virtual-machine-replication"></a>启用虚拟机复制
 未启用复制的虚拟机不能在区域中断后复原。 在 Azure 区域中断期间，复制虚拟机可降低任何不利的业务影响。 Advisor 检测未启用复制的 Vm，并建议启用复制。 启用复制时，如果发生中断，可以快速将虚拟机带入远程 Azure 区域。 [了解有关虚拟机复制的详细信息。](../site-recovery/azure-to-azure-quickstart.md)
 
+## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>升级到最新版的 Azure Connected Machine Agent
+[Azure 连接的计算机代理](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent)会定期更新，其中包含 bug 修复、稳定性增强和新功能。 我们已识别出不能使用最新版本的计算机代理的资源，此顾问建议会建议将代理升级到最新版本，以获得最佳的 Azure Arc 体验。
+
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>请勿替代主机名以确保网站的完整性
+在配置应用程序网关时，顾问建议尽量避免替代主机名。 在应用程序网关前端使用不同的域，这可能会导致 cookie 或重定向 url 中断。 请注意，在所有情况下，这种情况并不是如此，并且某些类别的后端 (（如 REST API 的) 通常不太敏感。 请确保后端能够处理此操作或更新应用程序网关配置，因此不需要将主机名覆盖到后端。 与应用服务一起使用时，将自定义域名附加到 Web 应用，并避免使用 *azurewebsites.net 主机名。* [详细了解自定义域](https://aka.ms/appgw-advisor-usecustomdomain)。
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
@@ -120,6 +126,7 @@ Azure 顾问会识别使用旧版本 Azure Cosmos DB Spark 连接器 Azure Cosmo
 有关顾问建议的详细信息，请参阅以下资源：
 * [顾问简介](advisor-overview.md)
 * [顾问入门](advisor-get-started.md)
+* [顾问分数](azure-advisor-score.md)
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: cece53544bfc8287f6ef542575d92b05032991f0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5be0b43de8265b2b337c024117ae8f424e4a3bc
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318035"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403478"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -42,12 +42,12 @@ ms.locfileid: "91318035"
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|-|-|-|是|
-|缺少 OS 修补程序评估|✔|✔|✔|Azure：免费<br><br>非 Azure：是|
+|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |安全配置错误评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|免费|
-|第三方漏洞评估|✔|-|-|免费|
-|[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
+|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|否|
+|第三方漏洞评估|✔|-|-|否|
+|[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|否|
 
 
 ### <a name="linux-machines"></a>[**Linux 计算机**](#tab/features-linux)
@@ -66,12 +66,12 @@ ms.locfileid: "91318035"
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[合规性仪表板和报表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |针对 Docker 托管的 IaaS 容器的建议和威胁防护|✔|✔|✔|是|
-|缺少 OS 修补程序评估|✔|✔|✔|Azure：免费<br><br>非 Azure：是|
-|安全配置错误评估|✔|✔|✔|Azure：免费<br><br>非 Azure：是|
-|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免费|
-|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|免费|
-|第三方漏洞评估|✔|-|-|免费|
-|[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
+|缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|安全配置错误评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|否|
+|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|否|
+|第三方漏洞评估|✔|-|-|否|
+|[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|否|
 
 --- 
 

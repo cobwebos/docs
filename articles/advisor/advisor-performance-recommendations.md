@@ -2,13 +2,13 @@
 title: 利用 Advisor 提高 Azure 应用程序的性能
 description: 使用 Azure 顾问中的性能建议，提高关键业务应用程序的速度和响应能力。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651577"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405150"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -63,8 +63,6 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 顾问分析可以指示连接到 MySQL 服务器的应用程序可能没有有效地管理连接。 这种情况可能会导致不必要的资源消耗和应用程序的总体延迟。 为了改进连接管理，建议你减少短期连接数并消除不必要的空闲连接。 可以通过配置服务器端连接池程序（例如 ProxySQL）来进行这些改进。
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>将当前的 Compute Management SDK 版本更新到最新版本
-顾问标识具有使用过时计算管理 SDK 版本的操作的订阅。 这可能会影响工作负荷的安全性和性能，因此，顾问建议切换到最新版本的计算管理 SDK。 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>增加以优化 Azure Synapse 分析表的缓存利用率以提高查询性能
 
@@ -170,6 +168,14 @@ Azure 顾问会在过去7天内分析系统日志，并确定群集是否遇到�
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>在服务器组中分布数据，以在节点间分布工作负载
 顾问会确定尚未分发数据但在协调器上保留的服务器组。 根据此，顾问建议对于完全超大规模 (Citus) 权益在服务器组的辅助角色节点上分布数据。 这将通过使用服务器组中每个节点的资源来提高查询性能。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>通过更近于 Windows 虚拟桌面部署位置的 Vm 部署来改善用户体验和连接
+我们已使用 Windows 虚拟桌面 (WVD) 确定 VM 所在的区域与用户连接所在的区域不同或相距较远。 这可能会导致连接响应时间延长，并会影响 WVD 上的整体用户体验。 为主机池创建 VM 时，应尝试使用靠近用户的区域。 距离更近可确保 WVD 服务的持续满意度，并提供更好的整体体验质量。 [在此处了解有关连接延迟的详细信息](https://docs.microsoft.com/azure/virtual-desktop/connection-latency)。
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>升级到沉浸式阅读器 SDK 的最新版本
+我们已使用沉浸式阅读器 SDK 的已过时版本识别了此订阅下的资源。 使用沉浸式阅读器 SDK 的最新版本，你可以获取更新的安全性、性能及扩展的一组功能，可用于自定义和增强集成体验。
+了解有关 [沉浸式读者 SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)的详细信息。
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
@@ -182,6 +188,7 @@ Azure 顾问会在过去7天内分析系统日志，并确定群集是否遇到�
 
 * [顾问简介](advisor-overview.md)
 * [顾问入门](advisor-get-started.md)
+* [顾问分数](azure-advisor-score.md)
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问可靠性建议](advisor-high-availability-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)

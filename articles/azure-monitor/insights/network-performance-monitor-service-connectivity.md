@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326097"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403698"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 
@@ -19,8 +19,8 @@ ms.locfileid: "87326097"
 
 可以使用服务连接监视器实现以下功能： 
 
-- 监视从多个分支机构或位置到应用程序和网络服务的网络连接。 应用程序和网络服务包括 Office 365、Dynamics CRM、内部业务线应用程序和 SQL 数据库。
-- 使用内置测试来监视与 Office 365 和 Dynamics 365 终结点建立的网络连接。 
+- 监视从多个分支机构或位置到应用程序和网络服务的网络连接。 应用程序和网络服务包括 Microsoft 365、Dynamics CRM、内部业务线应用程序和 SQL 数据库。
+- 使用内置测试来监视与 Microsoft 365 和 Dynamics 365 终结点之间的网络连接。 
 - 确定在连接到终结点时经历的响应时间、网络延迟和数据包丢失情况。
 - 确定应用程序性能差是由于网络问题，还是由于应用程序提供商一端出现某种问题。
 - 通过查看拓扑图中每个跃点造成的延迟，来查明网络中可能导致应用程序性能差的热点。
@@ -57,7 +57,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
     * 如果要监视响应 HTTP/S 请求的服务（例如 outlook.office365.com 或 bing.com）的连接，请选择“Web”。 <br>
     * 如果要监视响应 TCP 请求，但不响应 HTTP/S 请求的服务（例如 SQL 服务器、FTP 服务器、SSH 端口等）的连接，请选择“网络”。  
-    * 例如：若要创建对 blob 存储帐户的 web 测试，请选择 " **web** "，并将 target 输入为*yourstorageaccount*. blob.core.windows.net。 同样，可以使用[此链接](../../storage/common/storage-account-overview.md#storage-account-endpoints)为其他表存储、队列存储和 Azure 文件存储创建测试。
+    * 例如：若要创建对 blob 存储帐户的 web 测试，请选择 " **web** "，并将 target 输入为 *yourstorageaccount*. blob.core.windows.net。 同样，可以使用[此链接](../../storage/common/storage-account-overview.md#storage-account-endpoints)为其他表存储、队列存储和 Azure 文件存储创建测试。
 4. 如果你不希望执行网络度量（例如网络延迟、数据包丢失和拓扑发现），请清除“执行网络度量”  复选框。 保持选中此项可以最大程度地利用此功能。 
 5. 在“目标”  中，输入要监视其网络连接的目标 URL/FQDN/IP 地址。
 6. 在“端口号”中，输入目标服务的端口号。  

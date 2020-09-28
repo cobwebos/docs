@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336218"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403520"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全控制 V2：监管和策略
 
@@ -28,21 +28,21 @@ ms.locfileid: "91336218"
 
 此策略应包含以下元素的文档指南、策略和标准： 
 
--   数据分类标准符合业务风险
+- 数据分类标准符合业务风险
 
--   安全组织查看风险和资产清单 
+- 安全组织查看风险和资产清单 
 
--   使用 Azure 服务时的安全组织审批 
+- 使用 Azure 服务时的安全组织审批 
 
--   资产在其生命周期中的安全性
+- 资产在其生命周期中的安全性
 
--   根据组织数据分类所需的访问控制策略
+- 根据组织数据分类所需的访问控制策略
 
--   使用 Azure 本机和第三方数据保护功能
+- 使用 Azure 本机和第三方数据保护功能
 
--   传输和静态用例的数据加密要求
+- 传输和静态用例的数据加密要求
 
--   适当的加密标准
+- 适当的加密标准
 
 有关详细信息，请参阅以下资源：
 - [Azure 安全体系结构建议-存储、数据和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
@@ -51,9 +51,9 @@ ms.locfileid: "91336218"
 
 - [云采用框架-Azure 数据安全和加密最佳实践](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure 安全基准-资产管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure 安全基准-资产管理](security-controls-v2-asset-management.md)
 
-- [Azure 安全基准-数据保护](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure 安全基准-数据保护](security-controls-v2-data-protection.md)
 
 **责任**：客户
 
@@ -93,7 +93,7 @@ ms.locfileid: "91336218"
 
 持续衡量并缓解你的个人资产及其托管环境的风险。 确定高价值资产和高度暴露的攻击面，例如已发布的应用程序、网络入口和出口点、用户和管理员终结点等。
 
-- [Azure 安全基准-状况和漏洞管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure 安全基准-状况和漏洞管理](security-controls-v2-posture-vulnerability-management.md)
 
 **责任**：客户
 
@@ -131,23 +131,23 @@ ms.locfileid: "91336218"
 
 此策略应包含以下元素的文档指南、策略和标准： 
 
--   集中式网络管理和安全责任
+- 集中式网络管理和安全责任
 
--   虚拟网络分段模型与企业分段策略一致
+- 虚拟网络分段模型与企业分段策略一致
 
--   不同威胁和攻击方案中的补救策略
+- 不同威胁和攻击方案中的补救策略
 
--   Internet 边缘和入口和出口策略
+- Internet 边缘和入口和出口策略
 
--   混合云和本地互连策略
+- 混合云和本地互连策略
 
--   最新的网络安全项目 (例如网络关系图、引用网络体系结构) 
+- 最新的网络安全项目 (例如网络关系图、引用网络体系结构) 
 
 有关详细信息，请参阅以下资源：
 
 - [Azure 安全最佳实践 11-体系结构。单一统一安全策略](https://aka.ms/AzSec11)
 
-- [Azure 安全基准-网络安全](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure 安全基准-网络安全](security-controls-v2-network-security.md)
 
 - [Azure 网络安全概述](../fundamentals/network-overview.md)
 
@@ -169,25 +169,25 @@ ms.locfileid: "91336218"
 
 此策略应包含以下元素的文档指南、策略和标准： 
 
--   集中标识和身份验证系统及其与其他内部和外部标识系统的互连
+- 集中标识和身份验证系统及其与其他内部和外部标识系统的互连
 
--   不同用例和条件中的强身份验证方法
+- 不同用例和条件中的强身份验证方法
 
--   对高特权用户的保护
+- 对高特权用户的保护
 
--   异常用户活动监视和处理  
+- 异常用户活动监视和处理  
 
--   用户标识和访问评审和协调过程
+- 用户标识和访问评审和协调过程
 
 有关详细信息，请参阅以下资源：
 
-- [Azure 安全基准-标识管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure 安全基准-标识管理](security-controls-v2-identity-management.md)
 
-- [Azure 安全基准-特权访问](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure 安全基准-特权访问](security-controls-v2-privileged-access.md)
 
 - [Azure 安全最佳实践 11-体系结构。单一统一安全策略](https://aka.ms/AzSec11)
 
-- [Azure 标识管理安全概述](../fundamentals/identity-management-overview.md) 
+- [Azure 标识管理安全概述](../fundamentals/identity-management-overview.md)
 
 **责任**：客户
 
@@ -205,26 +205,26 @@ ms.locfileid: "91336218"
 
 此策略应包含以下元素的文档指南、策略和标准： 
 
--   安全操作 (SecOps) 组织的角色和职责 
+- 安全操作 (SecOps) 组织的角色和职责 
 
--   明确定义的事件响应过程与 NIST 或其他行业框架协调 
+- 明确定义的事件响应过程与 NIST 或其他行业框架协调 
 
--   日志捕获和保留期，可支持威胁检测、事件响应和合规性需求
+- 日志捕获和保留期，可支持威胁检测、事件响应和合规性需求
 
--   使用 SIEM、本机 Azure 功能和其他源，集中查看和关联有关威胁的信息 
+- 使用 SIEM、本机 Azure 功能和其他源，集中查看和关联有关威胁的信息 
 
--   与客户、供应商和感兴趣的各方之间的通信和通知计划
+- 与客户、供应商和感兴趣的各方之间的通信和通知计划
 
--   使用 Azure 本机和第三方平台进行事件处理，如日志记录和威胁检测、辩论和攻击修正和根除
+- 使用 Azure 本机和第三方平台进行事件处理，如日志记录和威胁检测、辩论和攻击修正和根除
 
--   处理事件和事件后活动的过程，如经验教训和证据保留期
+- 处理事件和事件后活动的过程，如经验教训和证据保留期
 
 有关详细信息，请参阅以下资源：
-- [Azure 安全基准-记录和威胁检测](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure 安全基准-记录和威胁检测](security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全基准-事件响应](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure 安全基准-事件响应](security-controls-v2-incident-response.md)
 
-- [Azure 安全最佳实践 4-过程。更新云的事件响应过程](https://aka.ms/AzSec11)
+- [Azure 安全最佳实践 4-过程。更新云的事件响应过程](https://aka.ms/AzSec4)
 
 - [Azure 采用框架、日志记录和报表决策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
@@ -246,14 +246,14 @@ ms.locfileid: "91336218"
 
 此策略应包含以下元素的文档指南、策略和标准： 
 
--   恢复时间目标 (RTO) 和恢复点目标 (RPO) 定义符合你的业务恢复目标
+- 恢复时间目标 (RTO) 和恢复点目标 (RPO) 定义符合你的业务恢复目标
 
--   应用程序和基础结构设置中的冗余设计
+- 应用程序和基础结构设置中的冗余设计
 
--   使用访问控制和数据加密保护备份
+- 使用访问控制和数据加密保护备份
 
 有关详细信息，请参阅以下资源：
-- [Azure 安全基准-备份和恢复](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
+- [Azure 安全基准-备份和恢复](security-controls-v2-backup-recovery.md)
 
 - [Azure 良好体系结构框架-Azure 应用程序的备份和灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)
 

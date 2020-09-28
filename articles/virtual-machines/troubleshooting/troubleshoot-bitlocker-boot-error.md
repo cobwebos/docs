@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088523"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404895"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -43,7 +43,7 @@ ms.locfileid: "87088523"
 
 ## <a name="solution"></a>解决方案
 
-若要解决此问题，停止并解除分配 VM，然后重启。 此操作将强制 VM 从 Azure Key Vault 中检索 BEK 文件，然后将其放在加密磁盘上。 
+若要解决此问题，请停止并解除分配 VM，然后启动 VM。 此操作将强制 VM 从 Azure Key Vault 中检索 BEK 文件，然后将其放在加密磁盘上。 
 
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
@@ -241,9 +241,9 @@ ms.locfileid: "87088523"
 
 4. 脚本开始时，将看到以下输出：
 
-    GAC 版本位置                                                                              
+    GAC    版本        位置                                                                              
     ---    -------        --------                                                                              
-    False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. 。 False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. 。
+    False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
 
     脚本完成后，将看到以下输出：
 

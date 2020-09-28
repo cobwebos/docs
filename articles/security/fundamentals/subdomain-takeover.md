@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514605"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403205"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>禁止无关联的 DNS 条目，并避免子域接管
 
@@ -117,14 +117,7 @@ ms.locfileid: "89514605"
 
 ### <a name="run-the-script"></a>运行脚本
 
-脚本有两个版本，都具有相同的输入参数并生成类似的输出：
-
-|Script  |信息  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |仅 PowerShell 版本7和更高版本支持并行模式，否则将运行串行模式。|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |仅在低于6的 PowerShell 桌面/版本中受支持，因为此脚本使用 [Windows 工作流](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview)。|
-
-了解详细信息并从 GitHub 下载 PowerShell 脚本： https://aka.ms/DanglingDNSDomains 。
+详细了解 PowerShell 脚本、 **Get-DanglingDnsRecords.ps1**，并从 GitHub 下载该脚本： https://aka.ms/DanglingDNSDomains 。
 
 ## <a name="remediate-dangling-dns-entries"></a>修正无关联的 DNS 条目 
 

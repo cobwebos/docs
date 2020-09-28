@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3eab0080f80b26fc7074d8a64885148c0568d8b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280607"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91402916"
 ---
 # <a name="security-control-v2-endpoint-security"></a>安全控制 V2：终结点安全
 
@@ -98,3 +98,4 @@ Azure 安全中心可以自动标识用于虚拟机的多个常用反恶意软�
 
 - [状况管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
+- [Azure 安全中心中的 Endpoint Protection 评估和建议](../../security-center/security-center-endpoint-protection.md)

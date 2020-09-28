@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935460"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403375"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充提示
 
@@ -110,12 +110,11 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 ## <a name="tip-8-increase-indexing-throughput"></a>提示 8：提高索引编制吞吐量
 
 进行[并行索引编制](search-howto-large-index.md)时，请将数据置于多个容器中，或者置于同一容器的多个虚拟文件夹中， 然后创建多个数据源和索引器对。 所有索引器可以使用同一技术集并写入同一目标搜索索引，因此你的搜索应用不需了解这种分区。
-有关详细信息，请参阅[为大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。
 
 ## <a name="see-also"></a>另请参阅
+
 + [快速入门：在门户中创建 AI 扩充管道](cognitive-search-quickstart-blob.md)
 + [教程：了解 AI 扩充 REST API](cognitive-search-tutorial-blob.md)
 + [指定数据源凭据](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [为大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [如何将扩充字段映射到索引](cognitive-search-output-field-mapping.md)

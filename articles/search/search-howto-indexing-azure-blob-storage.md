@@ -3,18 +3,17 @@ title: 配置 Blob 索引器
 titleSuffix: Azure Cognitive Search
 description: 设置 Azure Blob 索引器，以便在 Azure 认知搜索中自动为 Blob 内容编制索引以进行全文搜索操作。
 manager: nitinme
-author: mgottein
-ms.author: magottei
-ms.devlang: rest-api
+author: MarkHeff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e3419711c9a7358914f85574f6dbd5af29def1cf
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355272"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403598"
 ---
 # <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 中配置 blob 索引器认知搜索
 
@@ -29,6 +28,7 @@ Blob 索引器可从以下文档格式提取文本：
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="set-up-blob-indexing"></a>设置 blob 索引
+
 可以使用以下方式设置 Azure Blob 存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
@@ -42,13 +42,14 @@ Blob 索引器可从以下文档格式提取文本：
 在这里，我们使用 REST API 演示流。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
+
 数据源指定要编制索引的数据、访问数据所需的凭据和有效标识数据更改（新行、修改的行或删除的行）的策略。 一个数据源可供同一搜索服务中的多个索引器使用。
 
 若要为 Blob 编制索引，数据源必须具有以下属性：
 
 * **name** 是搜索服务中数据源的唯一名称。
 * **type** 必须是 `azureblob`。
-* **credentials** 以 `credentials.connectionString` 参数的形式提供存储帐户连接字符串。 有关详细信息请参阅下方的[如何指定凭据](#Credentials)。
+* * * 凭据提供存储帐户连接字符串作为 `credentials.connectionString` 参数。 有关详细信息请参阅下方的[如何指定凭据](#Credentials)。
 * **container** 指定存储帐户中的容器。 默认情况下，容器中的所有 Blob 都可检索。 如果只想为特定虚拟目录中的 Blob 编制索引，可以使用可选的 **query** 参数指定该目录。
 
 创建数据源：
@@ -63,30 +64,43 @@ Blob 索引器可从以下文档格式提取文本：
         "type" : "azureblob",
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
-    }   
+    }
 ```
 
 有关创建数据源 API 的详细信息，请参阅[创建数据源](/rest/api/searchservice/create-data-source)。
 
 <a name="Credentials"></a>
-#### <a name="how-to-specify-credentials"></a>如何指定凭据 ####
+
+#### <a name="how-to-specify-credentials"></a>如何指定凭据
 
 可通过以下一种方式提供 blob 容器的凭据：
 
-- **托管标识连接字符串**： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 此连接字符串不需要帐户密钥，但必须按照说明 [使用托管标识设置到 Azure 存储帐户的连接](search-howto-managed-identities-storage.md)。
-- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
-- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
--  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS 应具有容器的列表和读取权限。
+* **托管标识连接字符串**： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 
 
-有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/common/storage-sas-overview.md)。
+  此连接字符串不需要帐户密钥，但必须按照说明 [使用托管标识设置到 Azure 存储帐户的连接](search-howto-managed-identities-storage.md)。
+
+* **完全访问存储帐户连接字符串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`
+
+  可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
+
+* **存储帐户共享访问签名** (SAS) 连接字符串： `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`
+
+  SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
+
+* **容器共享访问签名**： `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`
+
+  SAS 应具有容器的列表和读取权限。
+
+有关存储共享访问签名的详细信息，请参阅 [使用共享访问签名](../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
 > 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器会失败，出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
+
 索引指定文档、属性和其他构造中可以塑造搜索体验的字段。
 
-下面介绍了如何使用可搜索 `content` 字段创建索引，以存储从 Blob 中提取的文本：   
+下面介绍了如何使用可搜索 `content` 字段创建索引，以存储从 Blob 中提取的文本：
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -102,9 +116,10 @@ Blob 索引器可从以下文档格式提取文本：
     }
 ```
 
-有关创建索引的详细信息，请参阅[创建索引](/rest/api/searchservice/create-index)
+有关详细信息，请参阅 [创建索引 (REST API) ](/rest/api/searchservice/create-index)。
 
 ### <a name="step-3-create-an-indexer"></a>步骤 3：创建索引器
+
 索引器将数据源与目标搜索索引关联，并提供自动执行数据刷新的计划。
 
 创建索引和数据源后，就可以准备创建索引器了：
@@ -124,9 +139,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
-有关创建索引器 API 的更多详细信息，请参阅[创建索引器](/rest/api/searchservice/create-indexer)。
-
-若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+有关详细信息，请参阅 [Create 索引器 (REST API) ](/rest/api/searchservice/create-indexer)。 若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
 <a name="how-azure-search-indexes-blobs"></a>
 
@@ -141,18 +154,25 @@ Blob 索引器可从以下文档格式提取文本：
 
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
-> [!NOTE]
-> Azure 认知搜索会根据定价层限制提取的文本数量：免费层为 32,000 个字符，基本层为 64,000 个字符，标准层为 400 万个字符、标准 S2 层为 800 万个字符，标准 S3 层为 1600 万个字符。 已截断的文本会在索引器状态响应中出现一条警告。  
+  > [!NOTE]
+  > Azure 认知搜索会根据定价层限制提取的文本数量：免费层为 32,000 个字符，基本层为 64,000 个字符，标准层为 400 万个字符、标准 S2 层为 800 万个字符，标准 S3 层为 1600 万个字符。 已截断的文本会在索引器状态响应中出现一条警告。  
 
 * Blob 中用户指定的元数据属性（如果有）将逐字提取。 请注意，这要求在索引中定义与 blob 的元数据密钥名称相同的字段。 例如，如果 blob 有值为 `High` 的元数据密钥 `Sensitivity`，则应在搜索索引中定义一个名为“`Sensitivity`”的字段，该字段将用值“`High`”填充。
+
 * 标准 Blob 元数据属性将提取到以下字段中：
 
   * **metadata\_storage\_name** (Edm.String) - Blob 的文件名。 例如，对于 Blob /my-container/my-folder/subfolder/resume.pdf 而言，此字段的值是 `resume.pdf`。
+
   * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如： `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+
   * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream`。
+
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 认知搜索使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
+
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
+
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
+
   * **metadata\_storage\_sas\_token** (Edm.String) - 一个临时 SAS 令牌，可由[自定义技能](cognitive-search-custom-skill-interface.md)用来获取对 Blob 的访问权限。 不应存储此令牌供以后使用，因为它可能会过期。
 
 * 特定于每种文档格式的元数据属性将提取到[此处](#ContentSpecificMetadata)所列的字段。
@@ -162,17 +182,20 @@ Blob 索引器可从以下文档格式提取文本：
 > [!NOTE]
 > 通常，现有索引中的字段名称与文档提取期间所生成的字段名称不同。 可以使用**字段映射**将 Azure 认知搜索提供的属性名称映射到搜索索引中的字段名称。 后面会提供字段映射的用法示例。
 >
->
 
 <a name="DocumentKeys"></a>
+
 ### <a name="defining-document-keys-and-field-mappings"></a>定义文档键和字段映射
+
 在 Azure 认知搜索中，文档键唯一标识某个文档。 每个搜索索引只能有一个类型为 Edm.String 的键字段。 键字段对于要添加到索引的每个文档必不可少（事实上它是唯一的必填字段）。  
 
 应该仔细考虑要将提取的哪个字段映射到索引的键字段。 候选字段包括：
 
 * **metadata\_storage\_name** - 这可能是一个便利的候选项，但是请注意，1) 名称可能不唯一，因为不同的文件夹中可能有同名的 Blob；2) 名称中包含的字符可能在文档键中无效，例如短划线。 可以使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效的字符 - 如果这样做，请记得在将这些字符传入 Lookup 等 API 调用时为文档键编码。 （例如，在 .NET 中，可以使用 [UrlTokenEncode 方法](/dotnet/api/system.web.httpserverutility.urltokenencode)实现此目的）。
+
 * **metadata\_storage\_path** - 使用完整路径可确保唯一性，但是路径必定会包含 `/` 字符，而该字符[在文档键中无效](/rest/api/searchservice/naming-rules)。  如上所述，可以选择使用 `base64Encode` [函数](search-indexer-field-mappings.md#base64EncodeFunction)为键编码。
-* 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上传过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
+
+* 第三种方法是将自定义元数据属性添加到 blob。 但是，此选项需要 blob 上传过程将该元数据属性添加到所有 blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
 
 > [!IMPORTANT]
 > 如果索引中没有键字段的显式映射，Azure 认知搜索会自动使用 `metadata_storage_path` 作为键并对键值进行 base-64 编码（上述第二个选项）。
@@ -206,10 +229,7 @@ Blob 索引器可从以下文档格式提取文本：
     }
 ```
 
-> [!NOTE]
-> 有关字段映射的详细信息，请参阅[此文](search-indexer-field-mappings.md)。
->
->
+有关详细信息，请参阅 [字段映射和转换](search-indexer-field-mappings.md)。
 
 #### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果需要对字段进行编码以将其用作键，但也希望搜索它，该怎么办？
 
@@ -231,6 +251,7 @@ Blob 索引器可从以下文档格式提取文本：
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
+
 ## <a name="index-by-file-type"></a>按文件类型编制索引
 
 可以控制要为哪些 Blob 编制索引，以及要跳过哪些 Blob。
@@ -268,6 +289,7 @@ Blob 索引器可从以下文档格式提取文本：
 如果同时存在 `indexedFileNameExtensions` 和 `excludedFileNameExtensions` 参数，Azure 认知搜索会先查看 `indexedFileNameExtensions`，再查看 `excludedFileNameExtensions`。 这意味着，如果两个列表中存在同一个文件扩展名，将从索引编制中排除该扩展名。
 
 <a name="PartsOfBlobToIndex"></a>
+
 ## <a name="index-parts-of-a-blob"></a>Blob 的索引部分
 
 可以使用 `dataToExtract` 配置参数控制要为 Blob 中的哪些部分编制索引。 该参数采用以下值：
@@ -298,6 +320,33 @@ Blob 索引器可从以下文档格式提取文本：
 | AzureSearch_Skip |"true" |指示 Blob 索引器完全跳过该 Blob， 既不尝试提取元数据，也不提取内容。 如果特定的 Blob 反复失败并且中断编制索引过程，此属性非常有用。 |
 | AzureSearch_SkipContent |"true" |此属性等效于[上面](#PartsOfBlobToIndex)所述的与特定 Blob 相关的 `"dataToExtract" : "allMetadata"` 设置。 |
 
+## <a name="index-from-multiple-sources"></a>来自多个源的索引
+
+你可能希望从索引中的多个源“组装”文档。 例如，你可能希望将 blob 中的文本与 Cosmos DB 中存储的其他元数据进行合并。 甚至可以将推送索引 API 与各种索引器一起使用来基于多个部件搭建搜索文档。
+
+若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关本主题的更多详细信息，请参阅 [索引多个 Azure 数据源](./tutorial-multiple-data-sources.md) 或此博客文章，将 [文档与 Azure 中的其他数据合并认知搜索](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)。
+
+## <a name="index-large-datasets"></a>为大型数据集编制索引
+
+Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob 需要编制索引，可以将数据分区，并使用多个索引器来并行处理数据，从而加快索引编制的速度。 设置方法如下：
+
+* 将数据分区到多个 Blob 容器或虚拟文件夹
+
+* 设置多个 Azure 认知搜索数据源，为每个容器或文件夹各设置一个。 若要指向某个 Blob 文件夹，请使用 `query` 参数：
+
+    ```json
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : "my-folder" }
+    }
+    ```
+
+* 为每个数据源创建相应的索引器。 所有索引器可以指向同一目标搜索索引。  
+
+* 服务中的每个搜索单位在任何给定的时间都只能运行一个索引器。 只有当索引器实际上并行运行时，如上所述创建多个索引器才很有用。 若要并行运行多个索引器，请通过创建合适数量的分区和副本来横向扩展搜索服务。 例如，如果搜索服务有 6 个搜索单位（例如，2 个分区 x 3 个副本），则 6 个索引器可以同时运行，导致索引吞吐量增加六倍。 若要了解有关缩放和容量规划的详细信息，请参阅 [调整 Azure 认知搜索服务的容量](search-capacity-planning.md)。
+
 <a name="DealingWithErrors"></a>
 
 ## <a name="handle-errors"></a>处理错误
@@ -321,7 +370,7 @@ Blob 索引器可从以下文档格式提取文本：
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限制记录在 [Azure 认知搜索中的服务限制](./search-limits-quotas-capacity.md)中。 过大的 blob 会被默认视为错误。 但是，如果将 `indexStorageMetadataOnlyForOversizedDocuments` 配置参数设为 true，你仍可以对过大 blob 的存储元数据编制索引： 
+Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限制记录在 [Azure 认知搜索中的服务限制](./search-limits-quotas-capacity.md)中。 过大的 blob 会被默认视为错误。 但是，如果将 `indexStorageMetadataOnlyForOversizedDocuments` 配置参数设为 true，你仍可以对过大 blob 的存储元数据编制索引：
 
 ```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
@@ -336,138 +385,10 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
     }
 ```
 
-## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
-
-将 Blob 索引器设置为按计划运行时，它将只根据 Blob 的 `LastModified` 时间戳，为更改的 Blob 重新编制索引。
-
-> [!NOTE]
-> 无需指定更改检测策略 - 系统会自动启用增量索引。
-
-若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。
-
-可通过两种方法实现软删除方法。 下面介绍了这两种方法。
-
-### <a name="native-blob-soft-delete-preview"></a>本机 Blob 软删除（预览版）
-
-> [!IMPORTANT]
-> 对本机 Blob 软删除的支持目前为预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2020-06-30-Preview](./search-api-preview.md) 提供此功能。 目前不支持门户或 .NET SDK。
-
-> [!NOTE]
-> 使用本机 Blob 软删除策略时，索引中文档的文档键必须是 Blob 属性或 Blob 元数据。
-
-在此方法中，你将使用 Azure Blob 存储提供的[本机 Blob 软删除](../storage/blobs/soft-delete-blob-overview.md)功能。 如果在存储帐户中启用了本机 Blob 软删除，你的数据源已设置了本地软删除策略，并且索引器找到了一个已转变为软删除状态的 Blob，则索引器会从索引中删除该文档。 为 Azure Data Lake Storage Gen2 中的 Blob 编制索引时，不支持本机 Blob 软删除策略。
-
-使用以下步骤：
-1. [为 Azure Blob 存储启用本地软删除](../storage/blobs/soft-delete-blob-overview.md)。 我们建议将保留策略设置为比索引器间隔计划大得多的值。 这样，如果在运行索引器时出现问题，或者如果有大量的文档需要编制索引，可以为索引器留出大量的时间来最终处理已软删除的 Blob。 仅当 Azure 认知搜索索引器在处理处于“已软删除”状态的 Blob 时，才会从索引中删除文档。
-1. 在数据源中配置本机 Blob 软删除检测策略。 下面显示了一个示例。 由于此功能目前为预览版，因此必须使用预览版 REST API。
-1. 运行索引器，或者将索引器设置为按计划运行。 当索引器运行并处理 Blob 时，将从索引中删除文档。
-
-    ```
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : null },
-        "dataDeletionDetectionPolicy" : {
-            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
-        }
-    }
-    ```
-
-#### <a name="reindexing-undeleted-blobs"></a>为取消删除的 Blob 重新编制索引
-
-在存储帐户中启用本机软删除后，如果从 Azure Blob 存储中删除某个 Blob，该 Blob 将转变为“已软删除”状态，允许你在保留期内取消删除该 Blob。 如果 Azure 认知搜索数据源具有本机 Blob 软删除策略，当索引器处理已软删除的 Blob 时，它会从索引中删除该文档。 如果随后取消删除该 Blob，则索引器始终不会为该 Blob 重新编制索引。 这是因为，索引器根据 Blob 的 `LastModified` 时间戳确定要为哪些 Blob 编制索引。 取消删除某个已软删除的 Blob 时，该 Blob 的 `LastModified` 时间戳不会更新，因此，如果索引器已处理的 Blob 的 `LastModified` 时间戳比已取消删除的 Blob 的时间戳更接近当前时间，则索引器不会为取消删除的 Blob 重新编制索引。 若要确保为取消删除的 Blob 重新编制索引，需要更新该 Blob 的 `LastModified` 时间戳。 为此，可以重新保存该 Blob 的元数据。 你无需更改元数据，但重新保存元数据会更新 Blob 的 `LastModified` 时间戳，使索引器知道它需要为此 Blob 重新编制索引。
-
-### <a name="soft-delete-using-custom-metadata"></a>使用自定义元数据的软删除
-
-在此方法中，你将使用 Blob 的元数据来指示何时应从搜索索引中删除文档。
-
-使用以下步骤：
-
-1. 将一个自定义元数据键值对属性添加到 Blob，以告知 Azure 认知搜索该 Blob 已采用逻辑方式删除。
-1. 在数据源中配置软删除列检测策略。 下面显示了一个示例。
-1. 在索引器处理 Blob 并从索引中删除文档后，你可以删除 Azure Blob 存储的 Blob。
-
-例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
-
-```http
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : null },
-        "dataDeletionDetectionPolicy" : {
-            "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
-            "softDeleteColumnName" : "IsDeleted",
-            "softDeleteMarkerValue" : "true"
-        }
-    }
-```
-
-#### <a name="reindexing-undeleted-blobs"></a>为取消删除的 Blob 重新编制索引
-
-如果在数据源中设置软删除列检测策略，再将自定义元数据添加到具有标记值的 Blob，然后运行索引器，则索引器将从索引中删除该文档。 若要为该文档重新编制索引，只需更改该 Blob 的软删除元数据值，然后重新运行索引器。
-
-## <a name="indexing-large-datasets"></a>为大型数据集编制索引
-
-Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob 需要编制索引，可以将数据分区，并使用多个索引器来并行处理数据，从而加快索引编制的速度。 设置方法如下：
-
-- 将数据分区到多个 Blob 容器或虚拟文件夹
-- 设置多个 Azure 认知搜索数据源，为每个容器或文件夹各设置一个。 若要指向某个 Blob 文件夹，请使用 `query` 参数：
-
-    ```
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" }
-    }
-    ```
-
-- 为每个数据源创建相应的索引器。 所有索引器可以指向同一目标搜索索引。  
-
-- 服务中的每个搜索单位在任何给定的时间都只能运行一个索引器。 只有当索引器实际上并行运行时，如上所述创建多个索引器才很有用。 若要并行运行多个索引器，请通过创建合适数量的分区和副本来横向扩展搜索服务。 例如，如果搜索服务有 6 个搜索单位（例如，2 个分区 x 3 个副本），则 6 个索引器可以同时运行，导致索引吞吐量增加六倍。 若要详细了解缩放和容量规划，请参阅[在 Azure 认知搜索中缩放用于查询和索引工作负荷的资源级别](search-capacity-planning.md)。
-
-## <a name="indexing-documents-along-with-related-data"></a>对文档以及相关数据进行索引
-
-你可能希望从索引中的多个源“组装”文档。 例如，你可能希望将 blob 中的文本与 Cosmos DB 中存储的其他元数据进行合并。 甚至可以将推送索引 API 与各种索引器一起使用来基于多个部件搭建搜索文档。 
-
-若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关本主题的更多详细信息，请参阅[为多个 Azure 数据源编制索引](./tutorial-multiple-data-sources.md)。 有关详细演练，请参阅外部文章：[Combine documents with other data in Azure Cognitive Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)（将文档与 Azure 认知搜索中的其他数据结合在一起）。
-
-<a name="IndexingPlainText"></a>
-## <a name="indexing-plain-text"></a>为纯文本编制索引 
-
-如果所有 blob 都包含采用同一编码的纯文本，则可以通过使用**文本分析模式**显著提高索引编制性能。 若要使用文本分析模式，请将 `parsingMode` 配置属性设置为 `text`：
-
-```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text" } }
-    }
-```
-
-默认情况下将采用 `UTF-8` 编码。 若要指定不同的编码，请使用 `encoding` 配置属性： 
-
-```http
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
-    }
-```
-
 <a name="ContentSpecificMetadata"></a>
+
 ## <a name="content-type-specific-metadata-properties"></a>特定于内容类型的元数据属性
+
 下表汇总了针对每种文档格式执行的处理，并说明了 Azure 认知搜索提取的元数据属性。
 
 | 文档格式/内容类型 | 提取的元数据 | 处理详细信息 |
@@ -498,6 +419,8 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 | RTF（应用程序/rtf） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | 提取文本|
 | 纯文本 (text/plain) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | 提取文本|
 
+## <a name="see-also"></a>请参阅
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
-如果想要请求新功能或者在改进方面有什么看法，敬请通过 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)告诉我们。
+* [Azure 认知搜索中的索引器](search-indexer-overview.md)
+* [使用 AI 了解 blob](search-blob-ai-integration.md)
+* [Blob 索引概述](search-blob-storage-integration.md)

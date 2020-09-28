@@ -118,6 +118,8 @@
           href: ./security-controls-policy.md
         - name: 保护索引器资源
           href: search-indexer-securing-resources.md
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 创建索引和构造
@@ -388,7 +390,7 @@
           href: search-monitor-queries.md
         - name: 搜索流量分析
           href: search-traffic-analytics.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 索引器问题
           href: search-indexer-troubleshooting.md

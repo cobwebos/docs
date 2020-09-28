@@ -1,6 +1,6 @@
 ---
-title: 在雪花中复制和转换数据
-description: 了解如何使用数据工厂在雪花中复制和转换数据。
+title: 在 Snowflake 中复制和转换数据
+description: 了解如何使用数据工厂在 Snowflake 中复制和转换数据。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023850"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405167"
 ---
-# <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换雪花中的数据
+# <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Snowflake 中复制和转换数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -52,7 +52,7 @@ Snowflake 链接服务支持以下属性。
 | 属性         | 说明                                                  | 必需 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | type 属性必须设置为 **Snowflake**。              | 是      |
-| connectionString | 指定连接到雪花实例所需的信息。 你可以选择将密码或整个连接字符串放在 Azure Key Vault 中。 如需更多详细信息，请参阅表下面的示例和[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)一文。<br><br>一些典型的设置：<br>- **帐户名：** 雪花帐户的  [完整帐户名称](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (包括标识区域和云平台) 的其他段，如 xy12345-zh-cn。<br/>- **用户名：** 连接的用户的登录名。<br>- **密码：** 用户的密码。<br>- **数据库：** 连接后要使用的默认数据库。 它应该是指定角色具有权限的现有数据库。<br>- **仓库：** 连接后要使用的虚拟仓库。 它应是指定角色具有权限的现有仓库。<br>- **角色：** 要在雪花会话中使用的默认访问控制角色。 指定的角色应为已分配给指定用户的现有角色。 默认角色是公共的。 | 是      |
+| connectionString | 指定连接到 Snowflake 实例所需的信息。 可以选择将密码或整个连接字符串置于 Azure Key Vault。 如需更多详细信息，请参阅表下面的示例和[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)一文。<br><br>部分典型设置：<br>- **帐户名：** 雪花帐户的  [完整帐户名称](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (包括标识区域和云平台) 的其他段，如 xy12345-zh-cn。<br/>- 用户名：用于连接的用户登录名。<br>- 密码：用户的密码。<br>- 数据库：要在连接后使用的默认数据库。 它应为指定角色具有权限的现有数据库。<br>- 仓库：要在连接后使用的虚拟仓库。 它应为指定角色具有权限的现有仓库。<br>- 角色：要在 Snowflake 会话中使用的默认访问控制角色。 指定角色应为已分配给指定用户的现有角色。 默认角色为 PUBLIC。 | 是      |
 | connectVia       | 用于连接到数据存储的 [Integration Runtime](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
 **示例：**
@@ -113,7 +113,7 @@ Snowflake 数据集支持以下属性。
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 SnowflakeTable。 | 是                         |
 | 架构 | 架构的名称。 请注意，架构名称在 ADF 中区分大小写。 |对于源为“否”，对于接收器为“是”  |
-| 表 | 表/视图的名称。 请注意，表名在 ADF 中区分大小写。 |对于源为“否”，对于接收器为“是”  |
+| 表 | 表/视图的名称。 请注意，表名称在 ADF 中区分大小写。 |对于源为“否”，对于接收器为“是”  |
 
 **示例：**
 
@@ -150,7 +150,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 | 属性                     | 说明                                                  | 必需 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的类型属性必须设置为 SnowflakeSource。 | 是      |
-| 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。 如果架构的名称、表和列包含小写，请在查询中引用对象标识符， `select * from "schema"."myTable"` 例如。<br>不支持执行存储过程。 | 否       |
+| 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。 如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。<br>不支持执行存储过程。 | 否       |
 | exportSettings | 用于从 Snowflake 检索数据的高级设置。 可以配置 COPY into 命令支持的此类设置。在调用相关语句时，数据工厂会传递此类设置。 | 否       |
 | 在 `exportSettings` 下： |  |  |
 | type | 导出命令的类型，设置为 **SnowflakeExportCopyCommand**。 | 是 |
@@ -170,7 +170,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
         - `rowDelimiter` 为 **\r\n** 或任何单个字符。
         - `compression` 可为“无压缩”、 **gzip**、**bzip2** 或 **deflate**。
         - `encodingName` 保留为默认值或设置为 **utf-8**。
-        - `quoteChar`**双引号**、**单引号**或**空字符串** (没有引号字符) 。
+        - `quoteChar` 为双引号、单引号或空字符串（无引号字符）  。
     - 对于“JSON”格式，直接复制只支持以下情况：源 Snowflake 表或查询结果仅有一列且该列的数据类型是“VARIANT”、“OBJECT”或“ARRAY”   。
         - `compression` 可为“无压缩”、 **gzip**、**bzip2** 或 **deflate**。
         - `encodingName` 保留为默认值或设置为 **utf-8**。
@@ -302,7 +302,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
         - `rowDelimiter` 为 **\r\n** 或任何单个字符。 如果行分隔符不是“\r\n”，则需将 `firstRowAsHeader` 设置为 **false**，且不指定 `skipLineCount`。
         - `compression` 可为“无压缩”、 **gzip**、**bzip2** 或 **deflate**。
         - `encodingName` 保留为默认值或设置为“UTF-8”、“UTF-16”、“UTF-16BE”、“UTF-32”、“UTF-32BE”、“BIG5”、“EUC-JP”、“EUC-KR”、“GB18030”、“ISO-2022-JP”、“ISO-2022-KR”、“ISO-8859-1”、“ISO-8859-2”、“ISO-8859-5”、“ISO-8859-6”、“ISO-8859-7”、“ISO-8859-8”、“ISO-8859-9”、“WINDOWS-1250”、“WINDOWS-1251”、“WINDOWS-1252”、“WINDOWS-1253”、“WINDOWS-1254”、“WINDOWS-1255”。
-        - `quoteChar`**双引号**、**单引号**或**空字符串** (没有引号字符) 。
+        - `quoteChar` 为双引号、单引号或空字符串（无引号字符）  。
     - 对于“JSON”格式，直接复制只支持以下情况：接收器 Snowflake 表仅有一列且该列的数据类型是“VARIANT”、“OBJECT”或“ARRAY”   。
         - `compression` 可为“无压缩”、 **gzip**、**bzip2** 或 **deflate**。
         - `encodingName` 保留为默认值或设置为 **utf-8**。
@@ -357,7 +357,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 #### <a name="staged-copy-to-snowflake"></a>暂存复制到 Snowflake
 
-如果接收器数据存储或格式与上一部分所述的 Snowflake COPY 命令并非以本机方式兼容，请通过临时的 Azure Blob 存储实例启用内置暂存复制。 暂存复制功能也能提供更高的吞吐量。 数据工厂会自动转换数据，以满足 Snowflake 的数据格式要求。 然后，它会调用 COPY 命令将数据载入 Snowflake。 最后，它会从 Blob 存储中清理临时数据。 若要详细了解如何通过暂存方式复制数据，请参阅[暂存复制](copy-activity-performance-features.md#staged-copy)。
+如果源数据存储或格式与雪花复制命令不在本机上兼容（如上一部分中所述），请使用临时 Azure Blob 存储实例启用内置暂存复制。 暂存复制功能也能提供更高的吞吐量。 数据工厂会自动转换数据，以满足 Snowflake 的数据格式要求。 然后，它会调用 COPY 命令将数据载入 Snowflake。 最后，它会从 Blob 存储中清理临时数据。 若要详细了解如何通过暂存方式复制数据，请参阅[暂存复制](copy-activity-performance-features.md#staged-copy)。
 
 若要使用此功能，请创建一个引用 Azure 存储帐户作为临时暂存位置的 [Azure Blob 存储链接服务](connector-azure-blob-storage.md#linked-service-properties)。 然后，在复制活动中指定 `enableStaging` 和 `stagingSettings` 属性。
 
@@ -414,7 +414,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 表 | 如果选择 "表" 作为输入，则在使用内联数据集时，数据流将从雪花数据集或源选项中指定的表中获取所有数据。 | 否 | String | * 仅限内联数据集的 () *<br>tableName<br>schemaName |
-| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构的名称、表和列包含小写，请在查询中引用对象标识符， `select * from "schema"."myTable"` 例如。 | 否 | String | 查询 |
+| 查询 | 如果选择 "查询" 作为输入，请输入查询以从雪花中提取数据。 此设置将重写您在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | String | query |
 
 #### <a name="snowflake-source-script-examples"></a>雪花源脚本示例
 
