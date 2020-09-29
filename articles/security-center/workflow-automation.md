@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b87f25f9424e8afebe601d2ff15330881d2173b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322149"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447708"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>通过工作流自动化创建对警报和建议的自动响应
 
@@ -42,45 +42,26 @@ ms.locfileid: "91322149"
 
 1. 从安全中心的边栏中选择 " **工作流自动化**"。
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流自动化列表":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流自动化列表&quot;:::
 
     在此页上，你可以创建新的自动化规则，还可以启用、禁用或删除现有的规则。
 
-1. 若要定义新工作流，请单击 " **添加工作流自动化**"。 
+1. 若要定义新工作流，请单击 &quot; **添加工作流自动化**&quot;。 
 
     此时会出现一个窗格，其中包含用于新自动化的选项。 可在此处输入：
     1. 自动化的名称和说明。
-    1. 将启动此自动工作流的触发器。 例如，你可能想要在生成包含 "SQL" 的安全警报时运行逻辑应用。
+    1. 将启动此自动工作流的触发器。 例如，你可能想要在生成包含 &quot;SQL" 的安全警报时运行逻辑应用。
     1. 满足触发条件时将运行的逻辑应用。 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="添加 workflow 自动化窗格":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="工作流自动化列表&quot;:::
 
-1. 在 "操作" 部分中，单击 " **新建** " 以开始创建逻辑应用过程。
+    在此页上，你可以创建新的自动化规则，还可以启用、禁用或删除现有的规则。
 
-    你将转到 Azure 逻辑应用。
+1. 若要定义新工作流，请单击 &quot; **添加工作流自动化**&quot;。 
 
-    [![创建新的逻辑应用](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
-
-1. 输入名称、资源组和位置，然后单击 " **创建**"。
-
-1. 在新的逻辑应用中，可以从 "安全" 类别中选择内置的预定义模板。 或者，你可以定义在触发此进程时要发生的自定义流。
-
-    在逻辑应用设计器中，支持安全中心连接器中的以下触发器：
-
-    * **创建或触发 Azure 安全中心建议时** -如果逻辑应用依赖于不推荐使用或已替换的建议，则自动化将停止工作，并且需要更新触发器。 若要跟踪对建议的更改，请参阅 [Azure 安全中心发行说明](release-notes.md)。
-
-    * **当创建或触发 Azure 安全中心警报时** ，你可以自定义触发器，使其仅与你感兴趣的严重性级别的警报相关。
-    
-    > [!NOTE]
-    > 如果在触发对 Azure 安全中心警报的响应时使用旧触发器，则不会通过工作流自动化功能启动逻辑应用。 请改用以上所述的任一触发器。 
-
-    [![示例逻辑应用](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
-
-1. 定义逻辑应用后，返回到 "工作流自动化定义" 窗格， ( "添加工作流自动化" ) 。 单击 " **刷新** " 以确保新的逻辑应用可供选择。
-
-    ![刷新](media/workflow-automation/refresh-the-list-of-logic-apps.png)
-
-1. 选择逻辑应用并保存自动化。 请注意，"逻辑应用" 下拉列表仅显示具有上述支持的安全中心连接器的逻辑应用。
+    此时会出现一个窗格，其中包含用于新自动化的选项。 可在此处输入：
+    1. 自动化的名称和说明。
+    1. 将启动此自动工作流的触发器。 例如，你可能想要在生成包含 &quot;SQL" 下拉列表仅显示具有上述支持的安全中心连接器的逻辑应用。
 
 
 ## <a name="manually-trigger-a-logic-app"></a>手动触发逻辑应用

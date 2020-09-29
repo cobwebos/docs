@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325145"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445782"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
 
@@ -22,11 +22,11 @@ ms.locfileid: "87325145"
 除了 Log Analytics 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Azure Monitor。  
 
 >[!NOTE]
->已将有线数据解决方案替换为[服务映射解决方案](service-map.md)。  两者都使用 Log Analytics 代理和依赖项代理将网络连接数据收集到 Azure Monitor 中。 
+>已将有线数据解决方案替换为 [服务映射解决方案](service-map.md)。  两者都使用 Log Analytics 代理和依赖项代理将网络连接数据收集到 Azure Monitor 中。 
 > 
 >使用线路数据解决方案的现有客户可继续使用该解决方案。 对于迁移到服务映射的迁移时间线，我们将发布相关指导。
 >
->新客户应安装[服务映射解决方案](service-map.md)或[用于 VM 的 Azure Monitor](vminsights-overview.md)。  服务映射数据集相当于线路数据。  用于 VM 的 Azure Monitor 包括服务映射数据集，其中包含用于分析的其他性能数据和功能。 
+>新客户应安装 [服务映射解决方案](service-map.md) 或 [用于 VM 的 Azure Monitor](vminsights-overview.md)。  服务映射数据集相当于线路数据。  用于 VM 的 Azure Monitor 包括服务映射数据集，其中包含用于分析的其他性能数据和功能。 
 
 
 默认情况下，Azure Monitor 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。 该解决方案不会查看单个 ACK 和 SYN。 完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。 只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
@@ -54,14 +54,14 @@ ms.locfileid: "87325145"
 
 Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent 依赖 Log Analytics 代理连接到 Azure Monitor。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。 下表介绍了 Wire Data 解决方案支持的连接的源。
 
-| **连接的源** | 支持 | **说明** |
+| **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
-| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除了[适用于 windows 的 Log Analytics 代理](../platform/agent-windows.md)，windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
-| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除了[适用于 linux 的 Log Analytics 代理](../learn/quick-collect-linux-computer.md)，linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
+| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除了 [适用于 windows 的 Log Analytics 代理](../platform/agent-windows.md)，windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
+| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除了 [适用于 linux 的 Log Analytics 代理](../learn/quick-collect-linux-computer.md)，linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](../platform/om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Azure Monitor。 |
 | Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 
-在 Windows 上，System Center Operations Manager 和 Azure Monitor 使用 Microsoft Monitoring Agent （MMA）来收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Azure Monitor 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Azure Monitor 报告，也可同时向两者报告。
+在 Windows 上，System Center Operations Manager 和 Azure Monitor 都使用 Microsoft Monitoring Agent (MMA) 来收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Azure Monitor 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Azure Monitor 报告，也可同时向两者报告。
 
 在 Linux 上，适用于 Linux 的 Log Analytics 代理收集数据并将其发送到 Azure Monitor。 可对具有直接连接到 Azure Monitor 的代理的服务器或通过 System Center Operations Manager 管理组连接到 Azure Monitor 的服务器使用 Wire Data。
 
@@ -76,7 +76,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用 Log Analytics 网关连接到 Azure Monitor。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 需要 [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) 解决方案产品/服务。
 - 如果正在使用以前版本的 Wire Data 解决方案，必须首先将其删除。 不过，通过原始 Wire Data 解决方案捕获的所有数据在 Wire Data 2.0 和日志搜索中仍然可用。
@@ -167,7 +167,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 执行以下步骤，为工作区配置 Wire Data 解决方案。
 
-1. 从[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或使用[从解决方案库添加监视解决方案](./solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
+1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) 或使用 [从解决方案库添加监视解决方案](./solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
 2. 在希望从中获取数据的每台计算机上安装 Dependency Agent。 Dependency Agent 可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
 > [!NOTE]
@@ -364,15 +364,15 @@ rpm -e dependency-agent dependency-agent-connector
 
 可以使用“正在捕获网络流量的代理”边栏选项卡来确定计算机正在消耗多少网络带宽。**** 可以通过此边栏选项卡轻松找到你的环境中“最健谈的”计算机。__ 此类计算机可能负载过重，行为异常，或者使用比平时更多的网络资源。
 
-![日志搜索示例](./media/wire-data/log-search-example01.png)
+![Wire Data 2.0 仪表板中的代理捕获网络流量边栏选项卡，其中显示了每台计算机使用的网络带宽。](./media/wire-data/log-search-example01.png)
 
 类似地，可以使用“本地子网”边栏选项卡确定有多少网络流量正在通过各个子网移动。**** 用户通常围绕其应用程序的关键领域定义子网。 可以通过此边栏选项卡查看这些领域。
 
-![日志搜索示例](./media/wire-data/log-search-example02.png)
+![Wire Data 2.0 仪表板中的 "本地子网" 边栏选项卡显示每个 LocalSubnet 使用的网络带宽。](./media/wire-data/log-search-example02.png)
 
 “应用程序级协议”**** 边栏选项卡很有用，因为它可以帮助你了解正在使用什么协议。 例如，你可能预料网络环境中没有使用 SSH。 查看此边栏选项卡中提供的信息可以快速确认或否定你的预期。
 
-![日志搜索示例](./media/wire-data/log-search-example03.png)
+![Wire Data 2.0 仪表板中的应用程序级协议边栏选项卡显示每个协议使用的网络带宽。](./media/wire-data/log-search-example03.png)
 
 了解协议流量是否在随时间推移而增加或减少也非常有用。 例如，如果某个应用程序传输的数据量在增加，则可能有某些事情需要注意或需要特别注意。
 

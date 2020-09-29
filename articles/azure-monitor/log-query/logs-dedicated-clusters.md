@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: e5ab3800e2d20bec34f321e0992240be8624404c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400845"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461455"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 记录专用群集
 
@@ -70,11 +70,10 @@ Azure Monitor 日志专用群集是一种部署选项，可用于更好地为大
 **PowerShell**
 
 ```powershell
-invoke-command -scriptblock { New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} } -asjob
+New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} -AsJob
 
 # Check when the job is done
-Get-Job
-
+Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
 **REST**
@@ -106,13 +105,16 @@ Content-type: application/json
 
 ### <a name="check-provisioning-status"></a>检查预配状态
 
-设置 Log Analytics 群集需要一段时间才能完成。 可以通过两种方式检查预配状态：
+设置 Log Analytics 群集需要一段时间才能完成。 可以通过多种方式检查预配状态：
 
-1. 从响应中复制 Azure-AsyncOperation URL 值，并进行异步操作状态检查。
+- 运行 AzOperationalInsightsCluster PowerShell 命令，并提供资源组名称，并检查 ProvisioningState 属性。 此值在预配时 *ProvisioningAccount* ，并在完成时 *成功* 。
+  ```powershell
+  New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
+  ```
 
-   OR
+- 从响应中复制 Azure-AsyncOperation URL 值，并进行异步操作状态检查。
 
-1. 在群集资源上发送 GET 请求，然后查看 provisioningState 值 。 此值在预配时 *ProvisioningAccount* ，并在完成时 *成功* 。
+- 在群集资源上发送 GET 请求，然后查看 provisioningState 值 。 此值在预配时 *ProvisioningAccount* ，并在完成时 *成功* 。
 
    ```rst
    GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -275,10 +277,10 @@ Content-type: application/json
 $clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}).id
 
 # Link the workspace to the cluster
-invoke-command -scriptblock { Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId } -asjob
+Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId -AsJob
 
 # Check when the job is done
-Get-Job
+Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Property *
 ```
 
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/25/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258400"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447304"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
@@ -50,7 +50,7 @@ SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Act
 
 可以使用中的参数更改 NotOnOrAfter 的值 `AccessTokenLifetime` `TokenLifetimePolicy` 。 它将设置为策略中配置的生存期（如果有）加上5分钟的时钟偏差系数。
 
-请注意，在元素中指定的主题确认 NotOnOrAfter `<SubjectConfirmationData>` 不受令牌生存期配置的影响。 
+元素中指定的主题确认 NotOnOrAfter `<SubjectConfirmationData>` 不受令牌生存期配置的影响。 
 
 ### <a name="refresh-tokens"></a>刷新令牌
 
@@ -84,7 +84,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 令牌生存期策略是一种策略对象，其中包含令牌生存期规则。 使用策略的属性控制指定的令牌生存期。 如果未设置策略，系统将强制实施默认生存期值。
 
 ### <a name="configurable-token-lifetime-properties"></a>可配置的令牌生存期属性
-| properties | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
+| 属性 | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 访问令牌生存期 |AccessTokenLifetime<sup>2</sup> |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
@@ -97,13 +97,13 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 * <sup>2</sup>若要确保 Microsoft 团队 Web 客户端工作，建议将 AccessTokenLifetime 保留为大于15分钟的 Microsoft 团队。
 
 ### <a name="exceptions"></a>异常
-| properties | 影响 | 默认 |
+| 属性 | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
 | 刷新令牌最大非活动时间（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |90 天 |
 | 刷新令牌最大期限（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |直到吊销 |
 
-* <sup>1</sup> 吊销信息不足的联合用户包括未同步 "LastPasswordChangeTimestamp" 属性的任何用户。 因为 AAD 无法验证何时吊销绑定旧凭据（例如已更改的密码）的令牌，必须更频繁地重新检查以确保用户和关联的令牌状态仍然良好，所以为用户提供此短暂的最大期限。 若要改善此体验，租户管理员必须确保同步 "LastPasswordChangeTimestamp" 属性 (可以使用 PowerShell 或通过 AADSync) 在 user 对象上设置此属性。
+* <sup>1</sup> 吊销信息不足的联合用户包括未同步 "LastPasswordChangeTimestamp" 属性的任何用户。 由于 Azure Active Directory 无法验证何时吊销与旧 (凭据（例如已更改的密码）相关的令牌（例如已) 更改的密码），因此会向这些用户提供这一短暂的最大期限，以确保用户和关联的令牌仍处于良好地位。 若要改善此体验，租户管理员必须确保同步 "LastPasswordChangeTimestamp" 属性 (可以使用 PowerShell 或通过 AADSync) 在 user 对象上设置此属性。
 
 ### <a name="policy-evaluation-and-prioritization"></a>策略评估和优先级
 可以创建令牌生存期策略并将其分配到特定的应用程序、组织和服务主体。 可将多个策略应用到特定的应用程序。 生效的令牌生存期策略遵循以下规则：
@@ -209,7 +209,7 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果你不熟悉 Azure AD，我们建议你在继续学习这些示例之前，先了解 [如何获取 Azure AD 租户](quickstart-create-new-tenant.md) 。  
 
 若要开始，请执行以下步骤：
@@ -382,170 +382,37 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 
 ## <a name="cmdlet-reference"></a>Cmdlet 参考
 
+这些是 [Azure Active Directory PowerShell For Graph 预览模块](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true)中的 cmdlet。
+
 ### <a name="manage-policies"></a>管理策略
 
 可以使用以下 cmdlet 来管理策略。
 
-#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
-
-创建新策略。
-
-```powershell
-New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Definition</code> |包含所有策略规则的字符串化 JSON 的数组。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |如果为 true，则将策略设置为组织的默认策略。 如果为 false，则不执行任何操作。 |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> |策略的类型。 对于令牌生存期，始终使用“TokenLifetimePolicy”。 | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [可选] |设置策略的备用 ID。 |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-获取所有 Azure AD 策略或指定的策略。
-
-```powershell
-Get-AzureADPolicy
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> [可选] |**ObjectId (** 所需策略的 ID) 。 |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-获取已链接到策略的所有应用和服务主体。
-
-```powershell
-Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (** 所需策略的 ID) 。 |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-更新现有策略。
-
-```powershell
-Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (** 所需策略的 ID) 。 |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> [可选] |包含所有策略规则的字符串化 JSON 的数组。 |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> [可选] |如果为 true，则将策略设置为组织的默认策略。 如果为 false，则不执行任何操作。 |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> [可选] |策略的类型。 对于令牌生存期，始终使用“TokenLifetimePolicy”。 |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [可选] |设置策略的备用 ID。 |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-删除指定的策略。
-
-```powershell
- Remove-AzureADPolicy -Id <ObjectId of Policy>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (** 所需策略的 ID) 。 | `-Id <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | 说明 | 
+| --- | --- |
+| [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 创建新策略。 |
+| [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 获取所有 Azure AD 策略或指定的策略。 |
+| [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) | 获取已链接到策略的所有应用和服务主体。 |
+| [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 更新现有策略。 |
+| [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 删除指定的策略。 |
 
 ### <a name="application-policies"></a>应用程序策略
 可以针对应用程序策略使用以下 cmdlet。</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-将指定的策略链接到应用程序。
-
-```powershell
-Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-获取已分配到应用程序的策略。
-
-```powershell
-Get-AzureADApplicationPolicy -Id <ObjectId of Application>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-从应用程序中删除策略。
-
-```powershell
-Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | 说明 | 
+| --- | --- |
+| [Add-AzureADApplicationPolicy](/powershell/module/azuread/add-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | 将指定的策略链接到应用程序。 |
+| [Get-AzureADApplicationPolicy](/powershell/module/azuread/get-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | 获取已分配到应用程序的策略。 |
+| [Remove-AzureADApplicationPolicy](/powershell/module/azuread/remove-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | 从应用程序中删除策略。 |
 
 ### <a name="service-principal-policies"></a>服务主体策略
 可以针对服务主体策略使用以下 cmdlet。
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-将指定的策略链接到服务主体。
-
-```powershell
-Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-获取已链接到指定服务主体的任何策略。
-
-```powershell
-Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-从指定的服务主体中删除策略。
-
-```powershell
-Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
-```
-
-| parameters | 说明 | 示例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |应用程序的**ObjectId (ID) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
+| Cmdlet | 说明 | 
+| --- | --- |
+| [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 将指定的策略链接到服务主体。 |
+| [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 获取已链接到指定服务主体的任何策略。|
+| [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 从指定的服务主体中删除策略。|
 
 ## <a name="license-requirements"></a>许可要求
 

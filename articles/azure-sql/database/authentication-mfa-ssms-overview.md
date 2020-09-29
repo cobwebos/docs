@@ -11,25 +11,30 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
+ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277795"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461149"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>使用多重 Azure Active Directory 身份验证
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 支持使用“Azure Active Directory - 通用且具有 MFA 支持”身份验证从 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 进行连接。 本文讨论了各种身份验证选项之间的差异，以及与将 Azure Active Directory (Azure AD) 中的通用身份验证用于 Azure SQL 相关的限制。
 
-**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。
+**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://aka.ms/ssms) 下载最新版本的 SSMS。 
+
+> [!Note]
+> 2021年12月，18.6 之前的版本将不再通过 MFA Azure Active Directory 进行身份验证。 若要继续利用 MFA 的 Azure Active Directory 身份验证，请安装或更新到 SSMS 18.6 或更高版本。
 
 对于本文中讨论的所有功能，请至少使用 2017 年 7 月的版本 17.2。 最新连接对话框的外观应类似于下图：
 
-  ![SQL Server Management Studio 中的 "连接到服务器" 对话框的屏幕截图，其中显示了服务器类型、服务器名称和身份验证的设置。](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
+  ![SQL Server Management Studio 中的 "连接到服务器" 对话框的屏幕截图，其中显示了服务器类型、服务器名称和身份验证的设置。](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
+  
+    
 
 ## <a name="authentication-options"></a>身份验证选项
 

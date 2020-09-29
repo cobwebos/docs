@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c427982854e1d328b5d1553aa86866ad298eea1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71162149"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461303"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure 经典 VM 体系结构的工作流 
 本文概述当你部署或更新虚拟机等 Azure 资源时发生的工作流过程。 
@@ -29,7 +29,7 @@ ms.locfileid: "71162149"
 
 下图显示了 Azure 资源的体系结构。
 
-![Azure 工作流](./media/cloud-services-workflow-process/workflow.jpg)
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<alt Azure 工作流的图像>":::
 
 ## <a name="workflow-basics"></a>工作流基础知识
    
@@ -69,11 +69,9 @@ ms.locfileid: "71162149"
 
 **I**. WaWorkerHost 是正常辅助角色的标准主机进程。 此主机进程托管角色的所有 DLL 以及入口点代码，例如 OnStart 和 Run。
 
-**J**. 如果 Web 角色已配置为使用 SDK 1.2 兼容的可托管 Web 核心 (HWC)，则 WaWebHost 是 Web 角色的标准主机进程。 角色可以通过从服务定义 (.csdef) 中删除元素来启用 HWC 模式。 在此模式下，服务的所有代码和 DLL 将从 WaWebHost 进程运行。 不会使用 IIS (w3wp)，并且 IIS 管理器中不会配置任何 AppPool，因为 IIS 托管在 WaWebHost.exe 内部。
+**J**. WaIISHost 是使用完整 IIS 的 Web 角色的角色入口点代码的主机进程。 此进程加载找到的第一个 DLL，该 DLL 使用 **RoleEntryPoint** 类并从此类执行代码（OnStart、Run、OnStop）。 在 RoleEntryPoint 类中创建的任何 **RoleEnvironment** 事件（例如 StatusCheck 和 Changed）将在此进程中引发。
 
-**K**. WaIISHost 是使用完整 IIS 的 Web 角色的角色入口点代码的主机进程。 此进程加载找到的第一个 DLL，该 DLL 使用 **RoleEntryPoint** 类并从此类执行代码（OnStart、Run、OnStop）。 在 RoleEntryPoint 类中创建的任何 **RoleEnvironment** 事件（例如 StatusCheck 和 Changed）将在此进程中引发。
-
-**L**. W3WP 是标准的 IIS 工作进程，如果角色配置为使用完整 IIS，将使用该进程。 它运行从 IISConfigurator 配置的 AppPool。 此处创建的任何 RoleEnvironment 事件（例如 StatusCheck 和 Changed）将在此进程中引发。 请注意，如果你订阅了这两个进程中的事件，则 RoleEnvironment 事件将在这两个位置（WaIISHost 和 w3wp.exe）激发。
+**K**。 W3WP 是标准的 IIS 工作进程，如果角色配置为使用完整 IIS，将使用该进程。 它运行从 IISConfigurator 配置的 AppPool。 此处创建的任何 RoleEnvironment 事件（例如 StatusCheck 和 Changed）将在此进程中引发。 请注意，如果你订阅了这两个进程中的事件，则 RoleEnvironment 事件将在这两个位置（WaIISHost 和 w3wp.exe）激发。
 
 ## <a name="workflow-processes"></a>工作流过程
 
@@ -86,9 +84,8 @@ ms.locfileid: "71162149"
 7. WaHostBootstrapper 从 E:\RoleModel.xml 读取**启动**任务，并开始执行启动任务。 WaHostBootstrapper 等到所有简单启动任务已完成并返回了“成功”消息。
 8. 对于完整 IIS Web 角色，WaHostBootstrapper 将告知 IISConfigurator 配置 IIS AppPool 并将站点指向 `E:\Sitesroot\<index>`，其中，`<index>` 是为服务定义的 `<Sites>` 元素数目的从 0 开始的索引。
 9. WaHostBootstrapper 将根据角色类型启动主机进程：
-    1. **辅助角色**：WaWorkerHost.exe 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，Wahostbootstrapper.exe 开始执行 Run （）方法，然后将该角色同时标记为 "就绪"，并将其放入负载均衡器循环（如果定义了 InputEndpoints）。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
-    1. **SDK 1.2 HWC Web 角色**： wawebhost.exe 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，WaHostBootstrapper 开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 WaWebHost 发出预热请求 (GET /do.rd_runtime_init)。 所有 Web 请求将发送到 WaWebHost.exe。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
-    1. **完整 IIS Web 角色**：aIISHost 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，它开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
+    1. **辅助角色**：开始 WaWorkerHost.exe。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，Wahostbootstrapper.exe 开始执行运行 ( # A1 方法，然后将该角色同时标记为 "就绪"，并将其放入负载均衡器旋转 (如果) 定义了 InputEndpoints。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
+    2. **完整 IIS Web 角色**：aIISHost 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，它开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
 10. 将 Web 请求传入完整 IIS Web 角色会触发 IIS 来启动 W3WP 进程并为请求提供服务，像在本地 IIS 环境中一样。
 
 ## <a name="log-file-locations"></a>日志文件位置
@@ -103,10 +100,6 @@ ms.locfileid: "71162149"
 **WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
- 
-**WaWebHost**
-
-`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
@@ -123,7 +116,3 @@ ms.locfileid: "71162149"
 **Windows 事件日志**
 
 `D:\Windows\System32\Winevt\Logs`
- 
-
-
-

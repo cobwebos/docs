@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319314"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448151"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 可将 Microsoft Endpoint Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
@@ -21,7 +21,7 @@ ms.locfileid: "87319314"
 Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高版本）。
 
 >[!NOTE]
->使用 Log Analytics 工作区连接 Configuration Manager 的功能是可选的，默认情况下不启用。 必须在使用前启用此功能。 有关详细信息，请参阅[启用更新中的可选功能](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
+>连接 Configuration Manager 和 Log Analytics 工作区的功能是可选的且在默认情况下未启用。 必须在使用前启用此功能。 有关详细信息，请参阅[启用更新中的可选功能](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
 
 ## <a name="configuration-overview"></a>配置概述
 
@@ -47,7 +47,7 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 > 必须为 Configuration Manager 指定 Log Analytics 工作区中的权限。 否则，在配置管理器中使用配置向导时会收到一条错误消息。
 >
 
-1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
+1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 
 2. 在 Log Analytics 工作区列表中，选择要修改的工作区。
 
@@ -135,7 +135,7 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 4. 依次选择“计算机组”、“SCCM”。********  
 5. 选择“导入 Configuration Manager 集合成员身份”****，并单击“保存”****。  
    
-    ![计算机组 - SCCM 选项卡](./media/collect-sccm/sccm-computer-groups01.png)
+    ![计算机的屏幕截图： S C C M 的高级设置，其中包含导入 Configuration Manager 集合成员身份的选项。](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>查看配置管理器中的数据
 
@@ -143,7 +143,7 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 
 在导入集合后，可以看到已检测到的具有集合成员身份的计算机数。 此外还可以看到已导入的集合数。
 
-![计算机组 - SCCM 选项卡](./media/collect-sccm/sccm-computer-groups02.png)
+![用于显示 "导入 Configuration Manager 收集成员身份" 选项的计算机组的 "高级设置" 的屏幕截图。](./media/collect-sccm/sccm-computer-groups02.png)
 
 单击上面任意一项，都会打开日志查询编辑器，相应显示所有已导入的组，或者属于每个组的所有计算机。 使用[日志搜索](../log-query/log-query-overview.md)，可以针对集合成员身份数据执行进一步的深度分析。
 

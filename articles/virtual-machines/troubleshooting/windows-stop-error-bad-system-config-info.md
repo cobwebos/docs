@@ -1,6 +1,6 @@
 ---
-title: Windows 停止错误-0x00000074 错误的系统配置信息
-description: 本文提供了一些步骤，用于解决由于 Azure 虚拟机 (VM) 中的系统配置信息不正确而导致 Windows 无法启动和需要重新启动的问题。
+title: Windows 停止错误 - 0x00000074 错误系统配置信息
+description: 本文提供了相关步骤，用于解决由于 Azure 虚拟机 (VM) 中的系统配置信息不正确而导致 Windows 无法启动并且需要重启的问题。
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942058"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447318"
 ---
-# <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止错误-0x00000074 错误的系统配置信息
+# <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止错误 - 0x00000074 错误系统配置信息
 
-本文提供了一些步骤，用于解决由于 Azure 虚拟机 (VM) 中的系统配置信息不正确而导致 Windows 无法启动和需要重新启动的问题。
+本文提供了相关步骤，用于解决由于 Azure 虚拟机 (VM) 中的系统配置信息不正确而导致 Windows 无法启动并且需要重启的问题。
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) " 查看 VM 的屏幕截图时，会看到屏幕截图显示 Windows stop 代码 **#0x00000074** 或 **BAD_SYSTEM_CONFIG_INFO**。
+使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，可看到屏幕截图显示 Windows 停止代码“#0x00000074”或“BAD_SYSTEM_CONFIG_INFO” 。
 
-*你的电脑遇到问题，需要重新启动。你可以重新启动。* 
-有关*此问题和可能的修复的详细信息， http://windows.com/stopcode 请访问* 
-*如果致电支持人员，请向他们提供以下信息：* 
-*停止代码： BAD_SYSTEM_CONFIG_INFO*
+你的电脑遇到问题，需要重启 *。你可以重启。
+有关此问题和可能的修补程序的详细信息，请访问 http://windows.com/stopcode
+如果致电支持人员，请向他们提供以下信息：
+停止代码* ** ** *：BAD_SYSTEM_CONFIG_INFO*
 
-  ![Windows stop code 0x00000074，也显示为 "BAD_SYSTEM_CONFIG_INFO"。 Windows 会通知用户其 PC 已遇到问题，需要重新启动。](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![Windows 停止代码 0x00000074，也显示为“BAD_SYSTEM_CONFIG_INFO”。 Windows 会通知用户其电脑遇到问题，需要重启。](./media/windows-stop-error-bad-system-config-info/1.png)
 
 ## <a name="cause"></a>原因
 
-如果**系统**注册表配置单元出现损坏，则会出现**BAD_SYSTEM_CONFIG_INFO**停止代码。 此错误可能由以下原因引起：
+如果“SYSTEM”注册表配置单元似乎已损坏，则会出现“BAD_SYSTEM_CONFIG_INFO”停止代码 。 此错误可能由以下原因引起：
 
 - 注册表配置单元未正常关闭。
-- 注册表配置单元已损坏。
+- 注册表配置单元损坏。
 - 缺少注册表项或值。
 
 ## <a name="solution"></a>解决方案
@@ -49,37 +49,37 @@ ms.locfileid: "88942058"
 ### <a name="process-overview"></a>过程概述：
 
 1. 创建和访问修复 VM。
-1. 检查 hive 损坏情况。
+1. 检查配置单元损坏情况。
 1. 启用串行控制台和内存转储收集。
 1. 重新生成 VM。
 
 > [!NOTE]
-> 遇到此错误时，来宾操作系统 (操作系统) 不能正常运行。 你将在脱机模式下进行故障排除以解决此问题。
+> 遇到此错误时，来宾操作系统 (OS) 无法正常运行。 将在脱机模式下进行故障排除才能解决此问题。
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
 1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 的步骤 1-3 准备一个修复 VM。
-1. 检查 hive 损坏情况。
-1. 使用远程桌面连接连接到修复 VM。
-1. 复制 `\windows\system32\config` 文件夹，并将其保存在正常的磁盘分区或另一个安全的位置。 请将此文件夹作为预防措施进行备份，因为你将编辑关键注册表文件。
+1. 检查配置单元损坏情况。
+1. 使用远程桌面连接来连接到修复 VM。
+1. 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹并将其保存在运行正常的磁盘分区或其他安全位置。 请备份此文件夹以防万一，因为你将编辑关键注册表文件。 
 
 > [!NOTE]
-> 如果需要回滚对注册表所做的任何更改，请将该文件夹的副本创建 `\windows\system32\config` 为备份。
+> 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹作为备份，以备你需要回退对注册表所做的任何更改。
 
-### <a name="check-for-hive-corruption"></a>检查 hive 损坏
+### <a name="check-for-hive-corruption"></a>检查配置单元损坏情况
 
 下面的说明将帮助你确定原因是否是 hive 损坏，或者配置单元是否未正确关闭。 如果未正确关闭 hive，你将能够解锁文件并修复 VM。
 
-1. 在修复 VM 上，打开 **注册表编辑器** 应用程序。 在 Windows 搜索栏中键入 "REGEDIT" 以找到它。
-1. 在注册表编辑器中，选择 " **HKEY_LOCAL_MACHINE** " 将其突出显示，然后选择 "**文件 > 加载 Hive ...** " 。
-1. 浏览到 `\windows\system32\config\SYSTEM` 并选择 " **打开**"。
-1. 当系统提示输入名称时，输入 **BROKENSYSTEM**。
+1. 在修复 VM 上，打开“注册表编辑器”应用程序。 在 Windows 搜索栏中键入 "REGEDIT" 以找到它。
+1. 在注册表编辑器中，选择“HKEY_LOCAL_MACHINE”以突出显示它，然后选择“文件”>“加载配置单元…”  。
+1. 浏览到 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` 并选择“打开”。
+1. 系统提示输入名称时，请输入 BROKENSYSTEM。
 
-   1. 如果配置单元未能打开，或者如果为空，则配置单元已损坏。 如果该配置单元已损坏，请 [打开支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+   1. 如果配置单元未能打开，或者为空，则说明配置单元已损坏。 如果配置单元已损坏，请[开具支持工单](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-     ![出现错误，指出注册表编辑器无法加载该配置单元。](./media/windows-stop-error-bad-system-config-info/2.png)
+     ![出现错误，指出注册表编辑器无法加载配置单元。](./media/windows-stop-error-bad-system-config-info/2.png)
 
-   1. 如果配置单元正常打开，则 hive 未正确关闭。 继续执行步骤5。
+   1. 如果配置单元正常打开，则 hive 未正确关闭。 继续执行步骤 5.
 
 1. 若要修复未正确关闭的配置单元，请突出显示 " **BROKENSYSTEM** "，然后选择 "**文件 > 卸载 hive ...** " 以解锁该文件。
 

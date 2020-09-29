@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 769aa6c0d546b7a9bcbe355136bad811fb4f47b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6290d89ed0ee539b4df4c2c8bc9070097da98c81
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753307"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447354"
 ---
 # <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>将虚拟 WAN 从基本层级升级到标准层级
 
@@ -26,13 +26,13 @@ ms.locfileid: "84753307"
 
 1. 在虚拟 WAN 的页面上，选择“配置”  以打开“配置”页面。
 
-   ![虚拟 WAN 示意图](./media/upgrade-virtual-wan/1.png)
-2. 对于虚拟 WAN 类型，请从下拉列表中选择“标准”  。
+   ![显示 "配置" 页面的屏幕截图，其中包含有关升级到底部突出显示的标准类型虚拟 WAN 的信息文本框。](./media/upgrade-virtual-wan/1.png)
+2. 对于 "虚拟 WAN 类型"，从下拉菜单中选择 " **标准** "。
 
-   ![虚拟 WAN 示意图](./media/upgrade-virtual-wan/2.png)
+   ![显示 "虚拟 WAN 类型" 下拉菜单的屏幕截图。](./media/upgrade-virtual-wan/2.png)
 3. 请注意，如果升级到标准虚拟 WAN，将无法还原到基本虚拟 WAN。 如果要升级，请选择“确认”  。
 
-   ![虚拟 WAN 示意图](./media/upgrade-virtual-wan/4.png)
+   ![显示 "升级确认" 对话框的屏幕截图。](./media/upgrade-virtual-wan/4.png)
 4. 保存更改后，你的虚拟 WAN 页面将与此示例类似。
 
    ![虚拟 WAN 示意图](./media/upgrade-virtual-wan/5.png)

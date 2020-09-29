@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 9e7d2d08c7041b23f0eb02328367d07e72fe35eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333058"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446387"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>将资源移到新区域 - Azure SQL 数据库和 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,7 +170,7 @@ ms.locfileid: "91333058"
 
 ### <a name="monitor-the-preparation-process"></a>监视准备过程
 
-可以定期调用 [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) 来监视数据库从源到目标的复制。 `Get-AzSqlDatabaseFailoverGroup` 的输出对象包含 **ReplicationState** 的属性：
+可以定期调用 [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) 来监视数据库从源到目标的复制。 `Get-AzSqlDatabaseFailoverGroup` 的输出对象包含 **ReplicationState** 的属性：
 
 - **ReplicationState = 2** (CATCH_UP) 表示数据库已同步，可以安全故障转移。
 - **ReplicationState = 0** (SEEDING) 表示数据库尚未设定种子，尝试故障转移会失败。
@@ -182,7 +182,7 @@ ms.locfileid: "91333058"
 ### <a name="initiate-the-move"></a>启动移动
 
 1. 使用辅助终结点 `<fog-name>.secondary.database.windows.net` 连接到目标托管实例。
-1. 在完全同步的情况下，使用 [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) 将辅助托管实例切换为主托管实例。 此操作将成功或者回滚。
+1. 在完全同步的情况下，使用 [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) 将辅助托管实例切换为主托管实例。 此操作将成功或者回滚。
 1. 使用 `nslook up <fog-name>.secondary.database.windows.net` 验证该命令是否已成功完成，确定 DNS CNAME 条目指向目标区域的 IP 地址。 如果 switch 命令失败，不会更新 CNAME。
 
 ### <a name="remove-the-source-managed-instances"></a>删除源托管实例

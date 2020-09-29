@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 4af63421e831318e6250825cffd1abad415b85bb
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257475"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447838"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>向模块授予对设备本地存储的访问权限
 
@@ -85,9 +85,9 @@ sudo chmod 700 <HostStoragePath>
 
 ## <a name="encrypted-data-in-module-storage"></a>模块存储中的加密数据
 
-当模块调用 IoT Edge 守护程序的工作负荷 API 来加密数据时，加密密钥将使用模块 ID 和模块的生成 ID 派生。 如果从部署中删除了某个模块，然后将另一个具有相同模块 ID 的模块部署到同一个设备，则将使用生成 ID 来保护机密。 你可以使用 Azure CLI 命令 [az iot 中心模块-标识显示](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)来查看模块的生成 id。
+当模块调用 IoT Edge 守护程序的工作负载 API 来加密数据时，系统会使用模块 ID 和模块的生成 ID 来派生加密密钥。 如果从部署中删除了某个模块，然后将另一具有相同模块 ID 的模块部署到同一设备，则会使用生成 ID 来保护机密。 可以使用 Azure CLI 命令 [az iot hub module-identity show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show) 查看模块的生成 ID。
 
-如果要跨代在模块之间共享文件，则这些文件不能包含任何机密，否则将无法解密。
+如果要跨代在模块之间共享文件，则这些文件不能包含任何机密，否则无法解密。
 
 ## <a name="next-steps"></a>后续步骤
 

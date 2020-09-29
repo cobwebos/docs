@@ -3,12 +3,12 @@ title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317083"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447531"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -392,7 +392,7 @@ ms.locfileid: "91317083"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | actionGroups | 资源组 | 1-260 | 不得使用：<br>`/` <br><br>不得以空格或句点结尾。  |
+> | actionGroups | 资源组 | 1-260 | 不得使用：<br>`/&%\?` <br><br>不得以空格或句点结尾。  |
 > | components | 资源组 | 1-260 | 不得使用：<br>`%&\?/` <br><br>不得以空格或句点结尾。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral

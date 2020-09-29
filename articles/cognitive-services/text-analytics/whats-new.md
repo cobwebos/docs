@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 09/29/2020
 ms.author: aahi
-ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 12f3ce506d8b4588dc9c670e49cabd3bc7767566
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271165"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460265"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -34,7 +34,7 @@ ms.locfileid: "91271165"
     * 3.0-预览。1
     
 > [!div class="nextstepaction"]
-> [详细了解文本分析 API 3.1 版-预览版2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+> [详细了解文本分析 API 3.1 版-预览版2](quickstarts/text-analytics-sdk.md)
 
 ### <a name="text-analytics-for-health-container-updates"></a>运行状况容器更新的文本分析
 
@@ -165,7 +165,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 * 以下常规实体类型的识别仅 (英语) ：
     * PersonType
-    * Products
+    * 产品
     * 事件
     * 地缘政治实体 (GPE) 作为 "位置" 下的子类型
     * 技能

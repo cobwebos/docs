@@ -4,12 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500328"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461217"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -101,6 +101,10 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 [添加到自动保护实例的数据库](backup-sql-server-database-azure-vms.md#enable-auto-protection)可能不会立即显示在“受保护的项”下。 这是因为，发现功能通常每隔 8 小时运行一次。 但是，如果按下图所示选择“重新发现数据库”来手动运行发现，则可以立即发现并保护新的数据库：
 
   ![手动发现新添加的数据库](./media/backup-azure-sql-database/view-newly-added-database.png)
+  
+## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>能否保护启用了 TDE (透明数据加密) 的数据库，以及数据库是否会在整个备份过程中保持加密状态？
+
+是的，Azure 备份支持 SQL Server 启用了 TDE 的数据库或服务器的备份。 Backup 通过 Azure 管理的密钥或 (BYOK) 的客户托管密钥支持 [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) 。  备份不会执行任何 SQL 加密作为备份过程的一部分，因此，在备份数据库时，数据库将保持加密状态。
 
 ## <a name="next-steps"></a>后续步骤
 

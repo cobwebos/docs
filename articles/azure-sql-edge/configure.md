@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888379"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446946"
 ---
 # <a name="configure-azure-sql-edge"></a>配置 Azure SQL Edge
 
@@ -33,7 +33,8 @@ Azure SQL Edge 公开了几个不同的环境变量，她们可用于配置 SQL 
 已将以下新环境变量添加到 Azure SQL Edge。 
 
 | 环境变量 | 说明 | 值 |     
-|-----|-----| ---------- |   
+|-----|-----| ---------- | 
+| **PlanId** | 指定要在初始化过程中使用的 Azure SQL Edge SKU。 仅当使用 Azure IoT Edge 部署 Azure SQL Edge 时，才需要使用此环境变量。 | **asde** -在 iot 边缘或 asde-先进**版**- | 
 | **MSSQL_TELEMETRY_ENABLED** | 启用或禁用使用情况和诊断数据收集。 | TRUE 或 FALSE |  
 | **MSSQL_TELEMETRY_DIR** | 设置使用情况和诊断数据收集审核文件的目标目录。 | SQL Edge 容器中的文件夹位置。 可以使用装入点或数据卷将此文件夹映射到主机卷。 | 
 | **MSSQL_PACKAGE** | 指定要部署的 dacpac 或 bacpac 包的位置。 | 文件夹、文件或包含 dacpac 或 bacpac 包的 SAS URL。 有关详细信息，请参阅 [在 Sql Edge 中部署 Sql 数据库 DACPAC 和 BACPAC 包](deploy-dacpac.md)。 |

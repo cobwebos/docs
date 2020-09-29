@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440807"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447973"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由
 
 本文介绍 Azure 点到站点 VPN 路由的工作原理。 P2S VPN 路由行为依赖于客户端 OS、用于 VPN 连接的协议，以及虚拟网络 (VNet) 相互之间的连接方式。
 
-Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于许多客户端操作系统，包括 Windows、Linux、、MacOS、Android 和 iOS。 SSTP 仅可用于 Windows。 如果更改网络拓扑并且具有 VPN 客户端，必须再次下载和安装 Windows 客户端的 VPN 客户端包，以使更改应用于客户端。
+Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 许多客户端操作系统（包括 Windows、Linux、macOS、Android 和 iOS）都支持 IKEv2。 SSTP 仅可用于 Windows。 如果更改网络拓扑并且具有 VPN 客户端，必须再次下载和安装 Windows 客户端的 VPN 客户端包，以使更改应用于客户端。
 
 > [!NOTE]
 > 本文仅适用于 IKEv2。
@@ -195,7 +195,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 所有客户端都只能访问 VNet1。
 
-![多个 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/7.jpg "多个 VNet S2S 和分支机构")
+![显示多 VNet S2S 和分支机构的关系图。](./media/vpn-gateway-about-point-to-site-routing/7.jpg "多个 VNet S2S 和分支机构")
 
 ### <a name="address-space"></a>地址空间
 

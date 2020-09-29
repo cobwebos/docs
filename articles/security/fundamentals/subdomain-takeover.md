@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403205"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447380"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>禁止无关联的 DNS 条目，并避免子域接管
 
@@ -100,18 +100,20 @@ ms.locfileid: "91403205"
 
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 以具有以下权限的用户身份运行查询：
 
 - 至少对 Azure 订阅的读者级别的访问权限
 - Azure 资源关系图的读取访问权限
 
-如果你是组织的租户的全局管理员，请使用 [提升访问权限以管理所有 Azure 订阅和管理组](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)，使你的帐户能够访问你组织的所有订阅。
+如果你是组织的租户的全局管理员，请使用 [提升访问权限以管理所有 Azure 订阅和管理组](../../role-based-access-control/elevate-access-global-admin.md)，使你的帐户能够访问你组织的所有订阅。
 
 
 > [!TIP]
-> 如果你的 Azure 环境较大，azure 资源关系图的限制和分页限制应考虑。 [详细了解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) 如何使用大型 Azure 资源数据集。 
+> 如果你的 Azure 环境较大，azure 资源关系图的限制和分页限制应考虑。 
+> 
+> [详细了解如何使用大型 Azure 资源数据集](../../governance/resource-graph/concepts/work-with-data.md)。
 > 
 > 该工具使用订阅批处理来避免这些限制。
 
@@ -145,7 +147,7 @@ ms.locfileid: "91403205"
 
 ### <a name="use-azure-dns-alias-records"></a>使用 Azure DNS 别名记录
 
-Azure DNS 的 [别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) 可以通过将 DNS 记录的生命周期与 Azure 资源耦合，来防止无关联的引用。 例如，假设某个 DNS 记录限定为别名记录，以指向公共 IP 地址或流量管理器配置文件。 如果删除这些基础资源，DNS 别名记录将变成空的记录集。 它不再引用已删除的资源。 需要特别注意的是，可以通过别名记录来保护的内容有限制。 目前，该列表限制为：
+Azure DNS 的 [别名记录](../../dns/dns-alias.md#scenarios) 可以通过将 DNS 记录的生命周期与 Azure 资源耦合，来防止无关联的引用。 例如，假设某个 DNS 记录限定为别名记录，以指向公共 IP 地址或流量管理器配置文件。 如果删除这些基础资源，DNS 别名记录将变成空的记录集。 它不再引用已删除的资源。 需要特别注意的是，可以通过别名记录来保护的内容有限制。 目前，该列表限制为：
 
 - Azure Front Door
 - 流量管理器配置文件
@@ -154,7 +156,7 @@ Azure DNS 的 [别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
 尽管目前提供有限的服务，我们仍建议使用别名记录来防止子域接管。
 
-[详细了解](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) Azure DNS 的别名记录的功能。
+[详细了解 Azure DNS 的别名记录的功能](../../dns/dns-alias.md#capabilities)。
 
 
 
@@ -164,7 +166,7 @@ Azure DNS 的 [别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
 这些记录不会阻止他人创建与 CNAME 条目中的名称相同的 Azure App Service。 如果无法证明域名的所有权，威胁参与者将无法接收流量或控制内容。
 
-[详细了解](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) 如何将现有的自定义 DNS 名称映射到 Azure App Service。
+[详细了解如何将现有的自定义 DNS 名称映射到 Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)。
 
 
 
@@ -178,13 +180,13 @@ Azure DNS 的 [别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
     - 停用服务时，请在所需检查列表中放置 "删除 DNS 条目"。
 
-    - 对具有自定义 DNS 条目的任何资源放置 [删除锁定](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) 。 删除锁定用作指示符，在取消预配资源之前，必须删除该映射。 此类度量值仅在与内部教育计划结合使用时才起作用。
+    - 对具有自定义 DNS 条目的任何资源放置 [删除锁定](../../azure-resource-manager/management/lock-resources.md) 。 删除锁定用作指示符，在取消预配资源之前，必须删除该映射。 此类度量值仅在与内部教育计划结合使用时才起作用。
 
 - **创建发现过程：**
 
     - 定期查看你的 DNS 记录，以确保你的子域全部都映射到以下 Azure 资源：
 
-        - 存在-在 DNS 区域中查询指向 Azure 子域的资源，例如 *. azurewebsites.net 或 *. cloudapp.azure.com (参阅 [此引用列表](azure-domains.md)) 。
+        - 存在-在 DNS 区域中查询指向 Azure 子域的资源，例如 *. azurewebsites.net 或 *. cloudapp.azure.com (参阅 [azure 域) 的参考列表](azure-domains.md) 。
         - 你需要确认你拥有 DNS 子域所面向的所有资源。
 
     - 维护 Azure 完全限定的域名的服务目录 (FQDN) 终结点和应用程序所有者。 若要生成服务目录，请运行以下 Azure 资源关系图查询脚本。 此脚本将为你有权访问的资源创建 FQDN 终结点信息，并将其输出到 CSV 文件中。 如果你有权访问租户的所有订阅，该脚本将会考虑所有这些订阅，如下面的示例脚本中所示。 若要将结果限制为一组特定的订阅，请按如下所示编辑脚本。
@@ -200,8 +202,8 @@ Azure DNS 的 [别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
 若要详细了解可用于防范子域接管的相关服务和 Azure 功能，请参阅以下页面。
 
-- [Azure DNS 支持对自定义域使用别名记录](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [防止无关联的 DNS 记录与 Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [在 Azure App Service 中添加自定义域时使用域验证 ID](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [在 Azure App Service 中添加自定义域时使用域验证 ID](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询](../../governance/resource-graph/first-query-powershell.md)

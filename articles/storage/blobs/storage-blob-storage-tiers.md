@@ -3,17 +3,17 @@ title: 适用于 Blob 的热、冷、存档访问层 - Azure 存储
 description: 了解 Azure Blob 存储的 "热"、"冷" 和 "存档" 访问层。 查看支持分层的存储帐户。 比较块 blob 存储选项。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/27/2020
+ms.date: 09/28/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226176"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460724"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -248,6 +248,10 @@ GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之
 **哪些区域提供了热、冷、存档访问层？**
 
 所有区域均提供热访问层和冷访问层以及 Blob 级别的分层。 存档存储一开始只会在选定区域提供。 如需完整列表，请参阅 [Azure 产品（按区域）](https://azure.microsoft.com/regions/services/)。
+
+**"热"、"冷" 和 "存档" 访问层支持哪些冗余选项？**
+
+"热" 和 "冷" 层支持所有冗余选项。 存档层仅支持 LRS、GRS 和 GRS。 存档层不支持 ZRS、GZRS 和 GZRS。
 
 **冷访问层中 Blob 的行为方式是否与热访问层中的不同？**
 

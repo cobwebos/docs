@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 80e6ffb79aae5ffc0fe1fd8c9d73d97cc3bdde1e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933531"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446350"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>如何：配置度量值和微调检测配置
 
@@ -45,7 +45,7 @@ ms.locfileid: "90933531"
 
 还有其他参数（如 **方向**）和可用于进一步优化配置的 **有效异常** 。 也可以组合不同的检测方法。 
 
-:::image type="content" source="../media/configuration-combination.png" alt-text="配置组合" lightbox="../media/configuration-combination.png":::
+:::image type="content" source="../media/configuration-combination.png" alt-text="选择指标" lightbox="../media/configuration-combination.png":::
 
 ### <a name="tune-the-configuration-for-a-specific-series-or-group"></a>优化特定系列或组的配置
 
@@ -53,7 +53,7 @@ ms.locfileid: "90933531"
 
 此配置将应用于系列组或特定系列，而不是指标级别配置。 设置此组的条件后，将其保存。
 
-:::image type="content" source="../media/advanced-configuration.png" alt-text="高级配置" lightbox="../media/advanced-configuration.png":::
+:::image type="content" source="../media/advanced-configuration.png" alt-text="选择指标" lightbox="../media/advanced-configuration.png":::
 
 ### <a name="anomaly-detection-methods"></a>异常情况检测方法
 
@@ -68,40 +68,29 @@ ms.locfileid: "90933531"
 
 敏感度可能会影响每个点的预期值范围的宽度。 增加时，预期的值范围将更紧密，并报告更多异常：
 
-:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="高度敏感度的智能检测":::
+:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="选择指标":::
 
 关闭敏感度后，预期的值范围将更宽，并且报告的异常将更少：
 
-:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="低敏感度的智能检测":::
-
-**更改阈值** 
-
-如果指标数据通常停留在某个范围内，则通常使用更改阈值。 阈值根据 **变化百分比**进行设置。 **更改阈值**模式能够检测到方案中的异常：
-
-* 数据通常稳定稳定。 需要在发生波动时获得通知。
-* 数据通常非常不稳定，而不会产生很大的波动。 希望在变得太稳定或平整时收到通知。
-
-使用以下步骤来使用此模式：
-
-1. 为指标或时间序列设置异常检测配置时，请选择 " **更改阈值** " 作为异常情况检测方法。
+:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="选择指标" 作为异常情况检测方法。
     
-    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="更改阈值":::
+    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="选择指标":::
 
 2. 根据方案选择 **超出范围** 或 **范围** 参数。
 
     如果要检测波动，请选择 **"超出范围"**。 例如，使用下面的设置时，与前一项相比，更改10% 以上的任何数据点将被检测为离群项。
-    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="超出范围参数":::
+    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="选择指标":::
 
     如果要检测数据中的平行，请 **在范围**内选择。 例如，使用以下设置时，0.01% 内发生变化的任何数据点将被检测为离群项。 由于阈值太小 (0.01% ) ，它将数据中的平面行检测为离群值。
 
-    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="In 范围参数":::
+    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="选择指标":::
 
 3. 设置将计为异常的更改的百分比，并将以前捕获的数据点用于比较。 此比较总是在当前数据点和它之前的单个数据点 N 点之间进行。
     
     仅当使用**超出范围**模式时，**方向**才有效：
     
-    * 将**检测配置为**仅在 (当前数据点)  (比较数据点) > 阈值% 时检测异常 **+** 。
-    * 将**检测配置为**仅在 (当前数据点时检测异常) - (比较数据点) < **-** 阈值%。
+    * 将**检测配置为**仅在 (当前数据点)  (比较数据点) > 阈值百分比时检测异常 **+** 。
+    * 将**检测配置为**仅在 (当前数据点)  (比较数据点) < 阈值百分比时检测异常 **-** 。
  
 **硬阈值**
 
@@ -117,11 +106,7 @@ ms.locfileid: "90933531"
 
 单击每个指标详细信息页上 "指标" 下拉列表旁边的 " **配置预设事件** " 按钮。
  
-:::image type="content" source="../media/metrics/preset-event-button.png" alt-text=""预设事件" 按钮":::
-
-在出现的窗口中，根据您的使用情况配置选项。 请确保选择 " **启用假日事件** " 以使用该配置。 
-
-" **假日事件** " 部分可帮助你取消在假日期间检测到的不必要的异常。 可以应用 **策略** 选项的两个选项：
+:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="选择指标" 部分可帮助你取消在假日期间检测到的不必要的异常。 可以应用 **策略** 选项的两个选项：
 
 * **取消假日**：在假日期间取消异常检测结果中的所有异常和警报。
 * **假日作为周末**：计算节假日前几个对应周末的平均预期值，并将异常状态从这些值中脱离。
@@ -161,7 +146,7 @@ X-不可用。
 
 循环事件用于在遵循循环模式时减少异常情况，但如果多个数据点不遵循模式，则将报告异常。 如果一个数据点不遵循该模式，则**严格模式**用于启用异常报告。 
 
-:::image type="content" source="../media/metrics/preset-events.png" alt-text="预设事件配置":::
+:::image type="content" source="../media/metrics/preset-events.png" alt-text="选择指标":::
 
 ## <a name="view-recent-incidents"></a>查看最近事件
 

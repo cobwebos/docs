@@ -1,24 +1,25 @@
 ---
-title: 如何安装和运行容器 - 计算机视觉
+title: 为计算机视觉读取 API 安装并运行 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 如何在本演练教程中下载、安装和运行计算机视觉容器。
+description: 使用用于计算机视觉读取 API 的 Docker 容器来检测和提取本地图像中的文本。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.custom: seodec18
-ms.openlocfilehash: 2c21c872649e3b171f2658ef6bdb0476552f0e59
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.custom: seodec18, cog-serv-seo-aug-2020
+keywords: 本地、Docker、容器
+ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397177"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460435"
 ---
-# <a name="install-and-run-read-containers-preview"></a>安装和运行读取容器（预览版）
+# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>为读取 API (预览安装并运行 Docker 容器)  
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979416"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446996"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -146,7 +146,7 @@ ms.locfileid: "90979416"
     | P1 | 你的目录中的或特定的连接组织中的特定用户和组 |
     | P2 | 你的目录中的所有成员（不包括来宾） |
     | P3 | 你的目录中的或特定的连接组织中的所有用户（包括来宾） |
-    | P4 | 所有连接的组织或所有用户（所有连接的组织 + 任何新的外部用户） |
+    | P4 | 所有已配置的已连接组织或所有用户 (所有连接的组织 + 所有新外部用户)  |
     
     如果有任何策略具有较高的优先级类别，则会忽略较低的优先级类别。 若要通过示例来了解如何将优先级相同的多个策略显示给请求者，请参阅[选择策略](entitlement-management-request-access.md#select-a-policy)。
 

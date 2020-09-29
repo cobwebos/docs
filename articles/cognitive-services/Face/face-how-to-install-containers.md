@@ -1,29 +1,30 @@
 ---
-title: 安装和运行容器 - 人脸
+title: 为人脸 API 安装并运行 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 本文通过此演练教程介绍如何下载、安装和运行人脸容器。
+description: 使用人脸 API 的 Docker 容器来检测和识别图像中的人脸。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: 本地、Docker、容器、标识
+ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548457"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461506"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装和运行人脸容器（预览版）
 
 > [!IMPORTANT]
-> 已达到人脸容器用户的限制。 目前不接受新的人脸容器申请。
+> 已达到人脸容器用户的限制。 目前不接受用于人脸容器的新应用程序。
 
-Azure 认知服务人脸为 Docker 提供了一个标准化的 Linux 容器，用于检测图像中的人脸。 它还标识属性，其中包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一图像或不同图像中的两张人脸是否相同。 人脸还可以根据数据库比较人脸，查看是否已存在类似或相同的人脸。 它也可以使用共享视觉特征将类似人脸整理为许多组。
+Azure 认知服务人脸 API 提供了一个 Linux Docker 容器，用于检测和分析图像中的人脸。 它还标识属性，其中包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一图像或不同图像中的两张人脸是否相同。 人脸还可以根据数据库比较人脸，查看是否已存在类似或相同的人脸。 它也可以使用共享视觉特征将类似人脸整理为许多组。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009607"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460163"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -141,9 +141,9 @@ ms.locfileid: "88009607"
 
 有关 `maxmemory` 策略的详细信息，请参阅 [Eviction policies](https://redis.io/topics/lru-cache#eviction-policies)（逐出策略）。
 
-“maxmemory-reserved”  设置用于配置保留给非缓存操作（例如故障转移期间的复制）的内存量 (MB)。 设置此值能够在负载变化时具有更一致的 Redis 服务器体验。 对于写入密集型工作负荷，应将此值设置为较高。 为此类操作保留内存后，无法存储缓存数据。
+**Maxmemory-reserved**设置配置群集中的每个实例的内存量（以 MB 为单位），该内存是为非缓存操作保留的（如在故障转移过程中的复制）。 设置此值能够在负载变化时具有更一致的 Redis 服务器体验。 对于写入密集型工作负荷，应将此值设置为较高。 为此类操作保留内存后，无法存储缓存数据。
 
-“maxfragmentationmemory-reserve”  设置配置保留以容纳内存碎片的内存量（以 MB 为单位）。 设置此值后，即使在缓存已满或接近满的状态并且碎片比率很高时，你也能拥有更加稳定的 Redis 服务器体验。 为此类操作保留内存后，无法存储缓存数据。
+**Maxfragmentationmemory-reserved 保留**设置配置群集中的每个实例的内存量（以 MB 为单位），保留这些内存碎片以容纳内存。 设置此值后，即使在缓存已满或接近满的状态并且碎片比率很高时，你也能拥有更加稳定的 Redis 服务器体验。 为此类操作保留内存后，无法存储缓存数据。
 
 在选择新的内存预留值（maxmemory-reserved  或 maxfragmentationmemory-reserved  ）时，请注意此更改可能会如何影响已在运行的包含大量数据的缓存。 例如，如果你的 53 GB 缓存中已有 49 GB 数据，那么，将预留值更改为 8 GB 后，此更改会将系统的最大可用内存降至 45 GB。 如果你的当前 `used_memory` 或 `used_memory_rss` 值高于 45 GB 的新限制，则系统需要逐出数据，直到 `used_memory` 和 `used_memory_rss` 均低于 45 GB。 逐出可能会增加服务器负载和内存碎片。 有关 `used_memory` 和 `used_memory_rss` 等缓存指标的详细信息，请参阅[可用指标和报告时间间隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
 
@@ -190,7 +190,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 | 服务器负载 |[使用率图表 - Redis 服务器负载](cache-how-to-monitor.md#usage-charts) |
 | 内存使用率 |[缓存性能 - 大小](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-若要升级缓存，请单击“立即升级”  以更改定价层并[缩放](#scale)缓存。 有关选择定价层的详细信息，请参阅[选择正确层](cache-overview.md#choosing-the-right-tier)
+若要升级缓存，请单击“立即升级”  以更改定价层并[缩放](#scale)缓存。 有关选择定价层的详细信息，请参阅[选择适当的层](cache-overview.md#choosing-the-right-tier)
 
 
 ### <a name="scale"></a>缩放

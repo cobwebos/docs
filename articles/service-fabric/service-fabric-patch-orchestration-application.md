@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258606"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445886"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -28,7 +28,7 @@ ms.locfileid: "86258606"
 > 从 2019 年 4 月 30 日起，修补业务流程应用程序版本 1.2.* 不再受支持。 请务必升级到最新版本。
 
 > [!NOTE]
-> 若要在[虚拟机规模集上进行自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)，最佳做法是保持操作系统在 Azure 中进行修补。 基于虚拟机规模集的自动 OS 映像升级需要在规模集上具有白银或更高的持久性。
+> 若要在 [虚拟机规模集上进行自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) ，最佳做法是保持操作系统在 Azure 中进行修补。 基于虚拟机规模集的自动 OS 映像升级需要在规模集上具有白银或更高的持久性。
 >
 
  修补业务流程应用程序 (POA) 是围绕 Azure Service Fabric 修复管理器服务的包装器，可为非 Azure 托管群集启用基于配置的 OS 修补计划。 非 Azure 托管群集不需要 POA，但需要按更新域计划修补程序安装，以便在不停机的情况下修补 Service Fabric 群集主机。
@@ -296,9 +296,9 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
    在 POA 1.4.0 和更高版本中，可以使用“WUOperationStatus-\<NodeName>”属性查看 NodeAgentService 上的运行状况事件，以便查找更新的状态。 下图中的突出显示部分显示了节点 *poanode_0* 和 *poanode_2* 上的 Windows 更新状态：
 
-   [![Windows 更新操作状态插图](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![屏幕截图显示 poanode_0 突出显示 Windows 更新操作状态的控制台窗口。](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Windows 更新操作状态插图](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![屏幕截图显示 poanode_1 突出显示 Windows 更新操作状态的控制台窗口。](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    也可以使用 PowerShell 获取详细信息。 为此，请连接到群集并使用 [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) 提取修复任务的状态。 
    
@@ -328,7 +328,7 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
 1. 在 POA 1.4.0 和更高版本中，当节点更新尝试完成后，将在 NodeAgentService 上发布一个包含属性“WUOperationStatus-[NodeName]”的事件，以通知下一次要在何时开始尝试下载并安装 Windows 更新。 下图显示了此信息：
 
-     [![Windows 更新操作状态插图](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![屏幕截图显示 NodeAgentService 操作状态 Windows 更新的控制台窗口。](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>诊断日志
 
@@ -480,7 +480,7 @@ Windows 更新发生故障时，会使特定节点或更新域上的应用程序
 ## <a name="poa-release-notes"></a>POA 发行说明
 
 >[!NOTE]
-> 对于 POA 版本1.4.0 及更高版本，你可以在 GitHub 上的[修补业务流程应用程序版本页](https://github.com/microsoft/Service-Fabric-POA/releases/)上找到发行说明和发布。
+> 对于 POA 版本 1.4.0 及更高版本，可以在 GitHub 的[修补业务流程应用程序版本页](https://github.com/microsoft/Service-Fabric-POA/releases/)上找到发行说明和版本。
 
 ### <a name="version-110"></a>版本 1.1.0
 - 公开发布的版本
@@ -492,7 +492,7 @@ Windows 更新发生故障时，会使特定节点或更新域上的应用程序
 
 - 系统重启工作流中的 Bug 修复。
 - 由于修复任务准备过程中的运行状况检查，RM 任务创建过程中的 Bug 修复未能按预期方式进行。
-- 已将 Windows service POANodeSvc 的启动模式从自动更改为延迟-自动。
+- 将 Windows 服务 POANodeSvc 的启动模式从自动更改为延时自动。
 
 ### <a name="version-121"></a>版本 1.2.1
 
@@ -508,12 +508,12 @@ Windows 更新发生故障时，会使特定节点或更新域上的应用程序
 
 - 将 InstallWindowsOSOnlyUpdates 设置为 false 现在会安装所有可用的更新。
 - 更改了禁用自动更新的逻辑。 这修复了在 Server 2016 及更高版本上不会禁用自动更新的 bug。
-- 用于高级用例的 POA 的微服务的参数化放置约束。
+- 针对高级用例，对 POA 的微服务的放置约束进行了参数化。
 
 ### <a name="version-131"></a>版本 1.3.1
-- 解决 POA 1.3.0 在 Windows Server 2012 R2 或更早版本上无法运行的回归，因为禁用自动更新时失败。 
+- 修复了因为禁用自动更新失败而导致 POA 1.3.0 无法在 Windows Server 2012 R2 或更早版本上运行的回归。 
 - 修复了 InstallWindowsOSOnlyUpdates 配置总是被选为 True 的 bug。
 - 将 InstallWindowsOSOnlyUpdates 的默认值更改为 False。
 
 ### <a name="version-132"></a>版本 1.3.2
-- 修复影响节点上的修补生命周期的问题（如果有名称是当前节点名称子集的节点）。 对于此类节点，可能会丢失修补程序或等待重启。
+- 修复了一个问题，如果存在其名称属于当前节点名称子集的节点，此问题会影响节点上的修补生命周期。 对于此类节点，可能出现修补缺失或重启操作挂起的情况。

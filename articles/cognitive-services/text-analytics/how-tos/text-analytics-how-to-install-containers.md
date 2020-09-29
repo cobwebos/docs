@@ -1,22 +1,23 @@
 ---
-title: 安装和运行容器 - 文本分析
+title: 为文本分析 API 安装并运行 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 通过本演练教程了解如何下载、安装和运行文本分析容器。
+description: 使用文本分析 API 的 Docker 容器在本地执行自然语言处理，如情绪分析。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: 本地、Docker、容器、情绪分析、自然语言处理
+ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309297"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461489"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 

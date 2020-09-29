@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e0d6694d44fdac9958acdf70be067348fadde57f
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298043"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461234"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -41,13 +41,11 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | 阿拉伯 (阿拉伯联合酋长国)      | 语言模型                                    |
 | `ar-BH` | 阿拉伯语(巴林)，现代标准 | 语言模型                                    |
 | `ar-EG` | 阿拉伯语（埃及）                    | 语言模型                                    |
-| `ar-IL` | 阿拉伯语（以色列）                   | 否                                                |
 | `ar-IQ` | 阿拉伯语（伊拉克）                     | 语言模型                                    |
 | `ar-JO` | 阿拉伯语（约旦）                   | 语言模型                                    |
 | `ar-KW` | 阿拉伯语(科威特)                   | 语言模型                                    |
 | `ar-LB` | 阿拉伯语（黎巴嫩）                  | 语言模型                                    |
 | `ar-OM` | 阿拉伯语（阿曼）                     | 语言模型                                    |
-| `ar-PS` | Palestine) 的阿拉伯语 (状态       | 否                                                |
 | `ar-QA` | 阿拉伯语（卡塔尔）                    | 语言模型                                    |
 | `ar-SA` | 阿拉伯语(沙特阿拉伯)             | 语言模型                                    |
 | `ar-SY` | 阿拉伯语（叙利亚）                    | 语言模型                                    |
@@ -198,7 +196,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `sv-SE` | 瑞典语 (瑞典)  | 女 | `sv-SE-HilleviNeural` | 常规 |
 | `ta-IN` <sup>新建</sup> | 泰米尔语（印度） | 女 | `ta-IN-PallaviNeural` | 常规 |
 | `te-IN` <sup>新建</sup> | 泰卢固语（印度） | Female | `te-IN-ShrutiNeural` | 常规 |
-| `th-TH` | 泰国 (泰国)  | 女 | `th-TH-AcharaNeural` | 常规 |
+| `th-TH` | 泰国 (泰国)  | Female | `th-TH-AcharaNeural` | 常规 |
 | `th-TH` <sup>新建</sup> | 泰语（泰国） | 女 | `th-TH-PremwadeeNeural` | 常规 |
 | `tr-TR` | 土耳其语 (土耳其)  | 女 | `tr-TR-EmelNeural` | 常规 |
 | `vi-VN` <sup>新建</sup> | 越南语(越南) | 女 | `vi-VN-HoaiMyNeural` | 常规 |
@@ -273,7 +271,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `ja-JP` | 日语（日本） | Female | `ja-JP-Ayumi` |
 | `ja-JP` | 日语（日本） | Female | `ja-JP-HarukaRUS` |
 | `ja-JP` | 日语（日本） | 男 | `ja-JP-Ichiro` |
-| `ko-KR` | 朝鲜语 (韩国)  | Female | `ko-KR-HeamiRUS` |
+| `ko-KR` | 韩语(韩国) | Female | `ko-KR-HeamiRUS` |
 | `ms-MY` | 马来语（马来西亚） | 男 | `ms-MY-Rizwan` |
 | `nb-NO` | 挪威语(博克马尔语，挪威) | Female | `nb-NO-HuldaRUS` |
 | `nl-NL` | 荷兰语（荷兰） | Female | `nl-NL-HannaRUS` |

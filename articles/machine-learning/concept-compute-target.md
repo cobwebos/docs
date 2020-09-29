@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330156"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446770"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 
@@ -101,6 +101,20 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 
 尽管 Azure 机器学习支持这些 VM 系列，但它们可能并非在所有 Azure 区域中均可用。 可在下文中查看可用的 VM 系列：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
+
+### <a name="compute-isolation"></a>计算隔离
+
+Azure 机器学习计算提供隔离于特定硬件类型并专用于单个客户的虚拟机大小。 独立的虚拟机大小最适合于由于满足符合性和法规要求等原因而需要与其他客户的工作负载高度隔离的工作负载。 使用独立大小可保证你的虚拟机将是在特定服务器实例上唯一运行的虚拟机。
+
+当前的独立虚拟机产品/服务包括：
+* Standard_M128ms
+* Standard_F72s_v2
+* Standard_NC24s_v3
+* Standard_NC24rs_v3*
+
+*支持 RDMA
+
+请参阅此处，了解有关 [Azure 公有云中隔离](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)的详细信息。
 
 ## <a name="unmanaged-compute"></a>非托管计算
 

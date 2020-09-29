@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1905db8f28bde41dadbe619894cb76830efca992
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981518"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445825"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -47,7 +47,7 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
 1. 找到要用于身份验证的目录的目录 ID。 此 ID 在“Active Directory”页的“属性”部分中列出。
 
-    ![Directory ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![屏幕截图显示 "目录 ID" 页，其中突出显示了 "目录 ID"。](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. 复制“目录 ID”。
 
@@ -89,7 +89,7 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
 7. 在 Azure AD 下的“企业应用程序”中，将会发现已列出“Azure VPN”。
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    ![显示 "所有应用程序" 页的屏幕截图。](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
 8. 如果还没有正常运行的“点到站点”环境，请按照说明创建一个。 请参阅[创建点到站点 VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md)，以创建和配置点到站点 VPN 网关。 
 

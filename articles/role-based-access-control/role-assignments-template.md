@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392448"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447736"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 在 Azure RBAC 中，若要授予访问权限，请添加角色分配。
 
-### <a name="resource-group-scope-without-parameters"></a>资源组作用域（不包含参数）
+### <a name="resource-group-scope-without-parameters"></a>资源组范围（不包含参数）
 
 以下模板演示了添加角色分配的基本方法。 某些值在模板中指定。 以下模板演示：
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource-scope"></a>资源作用域
+### <a name="resource-scope"></a>资源范围
 
 如果需要在资源级别添加角色分配，则角色分配的格式是不同的。 提供要为其分配角色的资源的资源提供程序命名空间和资源类型。 还在角色分配的名称中包含资源的名称。
 
@@ -365,7 +365,7 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 
 - [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>后续步骤

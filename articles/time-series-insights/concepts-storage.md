@@ -8,33 +8,32 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287521"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460822"
 ---
 # <a name="data-storage"></a>数据存储
 
 本文介绍 Azure 时序见解 Gen2 中的数据存储。 它涵盖了热和冷、数据可用性和最佳实践。
 
-## <a name="provisioning"></a>预配
+## <a name="provisioning"></a>设置
 
 创建 Azure 时序见解 Gen2 环境时，可以使用以下选项：
 
 * 冷数据存储：
-   * 在你为环境选择的订阅和区域中创建新的 Azure 存储资源。
-   * 附加预先存在的 Azure 存储帐户。 此选项仅可通过从 Azure 资源管理器 [模板](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)进行部署，并且在 Azure 门户中不可见。
+  * 在你为环境选择的订阅和区域中创建新的 Azure 存储资源。
+  * 附加预先存在的 Azure 存储帐户。 此选项仅可通过从 Azure 资源管理器 [模板](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)进行部署，并且在 Azure 门户中不可见。
 * 热数据存储：
-   * 温存储是可选的，可以在预配期间或之后禁用或禁用。 如果你决定稍后启用热存储且你的冷存储中已有数据， [请查看以下](concepts-storage.md#warm-store-behavior) 部分以了解预期的行为。 热存储数据保留时间可以配置为7到31天，也可以根据需要进行调整。
+  * 温存储是可选的，可以在预配期间或之后禁用或禁用。 如果你决定稍后启用热存储且你的冷存储中已有数据， [请查看以下](concepts-storage.md#warm-store-behavior) 部分以了解预期的行为。 热存储数据保留时间可以配置为7到31天，也可以根据需要进行调整。
 
 当某个事件处于引入状态时，它会在温存储 (中编制索引（如果启用) 和冷存储）。
 
 [![存储概述](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
-
 
 > [!WARNING]
 > 冷存储数据所在 Azure Blob 存储帐户的所有者对该帐户中的所有数据拥有完全访问权限。 此访问权限包括“写入”和“删除”权限。 请不要编辑或删除 Azure 时序见解第 2 代写入的数据，否则可能导致数据丢失。
@@ -50,11 +49,11 @@ ms.locfileid: "91287521"
 
 你的热存储中的数据只能通过 [时序查询 api](./time-series-insights-update-tsq.md)、 [AZURE 时序见解 TSI 资源管理器](./time-series-insights-update-explorer.md)或 [Power BI 连接器](./how-to-connect-power-bi.md)提供。 温存储查询免费，无配额，但并发请求数 [限制为 30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) 。
 
-### <a name="warm-store-behavior"></a>热存储行为 
+### <a name="warm-store-behavior"></a>热存储行为
 
 * 启用后，流式传输到您的环境中的所有数据都将路由到您的热存储区，而不考虑事件时间戳。 请注意，流式处理引入管道是为近乎实时的流式处理生成的， [不支持](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)引入的历史事件。
 * 保持期基于事件在温存储中的索引时间，而不是事件时间戳。 这意味着，在保持期结束后，即使事件时间戳适用于未来，数据在热存储中也不再可用。
-  - 示例：包含10天天气预测的事件在配置了7天保留期的热存储容器中引入并编制索引。 7天后，不能再在温存储中访问预测，但可以从冷查询进行查询。 
+  * 示例：包含10天天气预测的事件在配置了7天保留期的热存储容器中进行引入和索引。 7天后，不能再在温存储中访问预测，但可以从冷查询进行查询。
 * 请注意，如果在现有环境中启用了热存储，而该环境已将最近的数据编入索引，则请注意，不会使用此数据填充你的热存储。
 * 如果只是启用了热存储，但在浏览器中查看最近的数据时遇到问题，则可以暂时关闭热存储查询：
 

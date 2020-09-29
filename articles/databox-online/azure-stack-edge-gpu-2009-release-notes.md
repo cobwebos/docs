@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d3aafad457f5c72a8c45f4f98f8f03eb8d978d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324257"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460469"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Azure Stack 通过 GPU 公开上市 (GA) 发行说明
 
@@ -21,9 +21,9 @@ ms.locfileid: "91324257"
 
 发行说明会持续进行更新，并且会陆续将所发现的需要解决的重要问题添加到说明中。 在部署 Azure Stack Edge Pro 设备之前，请仔细查看发行说明中包含的信息。
 
-本文适用于映射到软件版本号**2.1.1358.2075**的**Azure Stack Edge Pro 2009**版本。
+本文适用于映射到软件版本号**2.1.1364.2110**的**Azure Stack Edge Pro 2009**版本。
 
-## <a name="whats-new"></a>新增功能
+## <a name="whats-new"></a>新变化
 
 Azure Stack Edge 2009 版中提供了以下新功能。 
 
@@ -35,7 +35,7 @@ Azure Stack Edge 2009 版中提供了以下新功能。
 
 下表汇总了 Azure Stack Edge Pro 设备的已知问题。
 
-| 不是。 | 功能 | 问题 | 解决方法/备注 |
+| 否。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 |**1.**|预览功能 |对于此 GA 版本，以下功能：本地 Azure 资源管理器、Vm、Kubernetes、支持 Azure Arc 的 Kubernetes、多进程服务 (MPS) 用于 GPU，适用于 Azure Stack 边缘 Pro 设备的预览。  |这些功能将在更高版本中公开发布。 |
 | **2.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |

@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 427d72b2a8531fa4dafa0040266249b138b6edf3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291072"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447795"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>持续集成和持续部署 Azure IoT Edge 设备 (经典编辑器) 
 
@@ -160,7 +160,7 @@ ms.locfileid: "91291072"
 >[!NOTE]
 >如果要在管道中使用 **分层部署** ，则 Azure DevOps 中的 Azure IoT Edge 任务尚不支持分层部署。
 >
->但是，可以使用 [Azure DevOps 中的 Azure CLI 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) 将部署创建为分层部署。 对于 " **内联脚本** " 值，你可以使用 [az iot edge deployment create 命令](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)：
+>但是，可以使用 [Azure DevOps 中的 Azure CLI 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) 将部署创建为分层部署。 对于 " **内联脚本** " 值，你可以使用 [az iot edge deployment create 命令](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)：
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

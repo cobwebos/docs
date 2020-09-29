@@ -3,12 +3,12 @@ title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9aedc115a29f11d4d54715d51bb6231ea1ea9e03
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660646"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447053"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -26,7 +26,7 @@ ms.locfileid: "89660646"
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 |执行的检查|
 |---|
-|<ul><li>Azure 春季云实例是否可用？</li></ul>|
+|<ul><li>Azure Spring Cloud 实例可用吗？</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |执行的检查|
@@ -51,7 +51,7 @@ ms.locfileid: "89660646"
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
 |执行的检查|
 |---|
-|<ul><li>所有角色实例的生产槽部署是否正常运行？</li><li>所有角色的 VM 实例上的角色是否正常运行？</li><li>云服务角色中每个 VM 的运行状况如何？</li><li>VM 状态是否因平台或客户发起的操作而改变？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否已降级并预计很快会发生故障？</li><li>[了解](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services) 有关执行的检查的详细信息</li></ul>|
+|<ul><li>所有角色实例的生产槽部署是否正常运行？</li><li>所有角色的 VM 实例上的角色是否正常运行？</li><li>云服务角色中每个 VM 的运行状况如何？</li><li>VM 状态是否因平台或客户发起的操作而改变？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否已降级并预计很快会发生故障？</li><li>[详细了解](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services)有关执行的检查的信息</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |执行的检查|
@@ -61,7 +61,7 @@ ms.locfileid: "89660646"
 ## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
 |执行的检查|
 |---|
-|<ul><li>主机是否已启动并正在运行？</li><li>主机硬件是否已降级？</li><li>主机是否已解除分配？</li><li>主机硬件服务是否已修复到不同的硬件？</li></ul>|
+|<ul><li>主机是否已启动且正在运行？</li><li>主机硬件是否已降级？</li><li>主机是否已解除分配？</li><li>主机硬件服务是否已修复到不同的硬件？</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |执行的检查|
@@ -71,7 +71,7 @@ ms.locfileid: "89660646"
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 |执行的检查|
 |---|
-|<ul><li>群集是否已启动并正在运行？</li><li>核心服务在群集上是否可用？</li><li>所有群集节点是否都准备就绪？</li><li>服务主体当前是否有效？</li></ul>|
+|<ul><li>群集是否已启动并正在运行？</li><li>群集上是否提供核心服务？</li><li>所有群集节点是否都准备就绪？</li><li>服务主体当前是否有效？</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |执行的检查|
@@ -144,10 +144,10 @@ ms.locfileid: "89660646"
 |---|
 |<ul><li>向 Key Vault 发出的请求是否因 Azure KeyVault 平台问题而失败？</li><li>向 Key Vault 发出的请求是否因客户发出的请求过多而受限制？</li></ul>|
 
-## <a name="microsoftkustoclusters"></a>Kusto/群集
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/clusters
 |执行的检查|
 |---|
-|<ul><li>群集是否会经历低引入成功率？</li><li>群集是否遇到高引入延迟？</li><li>群集是否遇到大量的查询失败？</li></ul>|
+|<ul><li>群集的引入成功率低吗？</li><li>群集是否遇到高引入延迟？</li><li>群集是否遇到大量查询失败？</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
 |执行的检查|
@@ -187,7 +187,7 @@ ms.locfileid: "89660646"
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.network/trafficmanagerprofiles
 |执行的检查|
 |---|
-|<ul><li>存在影响流量管理器配置文件的问题吗？</li></ul>|
+|<ul><li>是否存在影响流量管理器配置文件的问题？</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |执行的检查|
@@ -207,7 +207,7 @@ ms.locfileid: "89660646"
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |执行的检查|
 |---|
-|<ul><li>容量资源是否已启动且正在运行？</li><li>所有工作负荷是否都已启动且正在运行？</li></ul>|
+|<ul><li>容量资源是否已启动且正在运行？</li><li>所有工作负荷是否都已启动且正在运行？</li></ul>
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |执行的检查|

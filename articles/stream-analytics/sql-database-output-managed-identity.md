@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870181"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460635"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用托管标识访问 Azure 流分析作业的 Azure SQL 数据库（预览）
 
@@ -60,15 +60,15 @@ Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识�
 
    ![添加 Active Directory 管理员](./media/sql-db-output-managed-identity/add-admin.png)
 
-   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 有关受支持的管理员列表，请参阅 [将 Azure Active Directory 身份验证与使用 SQL 数据库或 Azure Synapse 进行身份验证结合使用](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)中的“Azure AD 功能和限制”部分 ****  。 基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。 此外，所选用户或组是将能够在下一个部分创建“包含数据库用户”的用户。
+   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 不能选择灰显的用户或组，因为它们不受 Azure Active Directory 管理员的支持。 请参阅在 **Azure Active Directory Features and Limitations**    [使用 SQL 数据库或 Azure Synapse 进行身份验证时使用 Azure Active Directory 身份验证](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)的 Azure Active Directory 功能和限制部分中受支持的管理员列表。 基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。 此外，所选用户或组是将能够在下一个部分创建“包含数据库用户”的用户。
 
 1. 在“Active Directory 管理员”页中，选择“保存”。 更改管理员的过程只需要几分钟。
 
-   设置 Azure AD 管理员时，此新的管理员名称（用户或组）不能作为 SQL Server 身份验证用户存在于虚拟 master 数据库中。 否则，Azure AD 管理员设置会失败，并将回滚其创建，指示此管理员（名称）已存在。 由于此 SQL Server 身份验证用户不是 Azure AD 的一部分，因此，以此用户身份使用 Azure AD 身份验证连接到服务器的任何尝试都会失败。 
+   设置 Azure Active Directory 管理员时，新的管理员名称 (用户或组) 不能作为 SQL Server 身份验证用户存在于虚拟主数据库中。 如果存在，则 Azure Active Directory 管理员安装程序会失败并回滚其创建，这表示管理员 (名称) 已经存在。 由于 SQL Server 身份验证用户不是 Azure Active Directory 的一部分，因此使用 Azure Active Directory 身份验证连接到服务器的任何操作都将失败。 
 
 ## <a name="create-a-contained-database-user"></a>创建包含数据库用户
 
-接下来，在 SQL 数据库中创建包含的数据库用户，该用户将映射到 Azure Active Directory 标识。 包含的数据库用户在 master 数据库中没有登录名，但它映射到与数据库关联的目录中的标识。 Azure Active Directory 标识可以是单独的用户帐户，也可以是组。 在这种情况下，你需要为流分析作业创建包含的数据库用户。 
+接下来，在 SQL 数据库中创建包含的数据库用户，该用户将映射到 Azure Active Directory 标识。 包含的数据库用户不具有主数据库的登录名，但会映射到与该数据库关联的目录中的标识。 Azure Active Directory 标识可以是单独的用户帐户，也可以是组。 在这种情况下，你需要为流分析作业创建包含的数据库用户。 
 
 1. 使用 SQL Server Management Studio 连接到 SQL 数据库。 “用户名”是具有 ALTER ANY USER 权限的 Azure Active Directory 用户。 在 SQL Server 上设置的管理员是一个示例。 使用“Azure Active Directory - 通用且具有 MFA”身份验证。 
 

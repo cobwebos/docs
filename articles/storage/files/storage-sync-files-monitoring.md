@@ -4,15 +4,15 @@ description: 查看如何使用 Azure Monitor、存储同步服务和 Windows Se
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/05/2019
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271050"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448025"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -35,38 +35,40 @@ ms.locfileid: "88271050"
 默认情况下，启用 Azure 文件同步指标，并每隔 15 分钟将指标发送到 Azure Monitor。
 
 **如何在 Azure Monitor 中查看 Azure 文件同步度量值**
-- 在**Azure 门户**中转到**存储同步服务**，然后单击 "**指标**"。
-- 单击 " **指标** " 下拉箭头，然后选择要查看的度量值。
+1. 在**Azure 门户**中转到**存储同步服务**，然后单击 "**指标**"。
+2. 单击 " **指标** " 下拉箭头，然后选择要查看的度量值。
+
+![Azure 文件同步指标的屏幕截图](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
 
 Azure Monitor 提供了下列 Azure 文件同步指标：
 
-| 指标名称 | 描述 |
+| 指标名称 | 说明 |
 |-|-|
 | 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
 | 云分层回调 | 回调的数据大小。<br><br>**注意**：未来将删除此指标。 使用云分层撤回大小指标监视重新调用的数据的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称 |
 | 云分层重调大小 | 回调的数据大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称、同步组名称 |
 | 应用程序的云分层重调大小 | 应用程序撤回的数据的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：应用程序名称、服务器名称、同步组名称 |
 | 云分层重调吞吐量 | 数据回调吞吐量的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称、同步组名称 |
-| 未同步的文件 | 未能同步的文件数。<br><br>单元：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
-| 同步的文件 | 已传输的文件数（上传和下载）。<br><br>单元：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
-| 服务器联机状态 | 从服务器接收的检测信号数。<br><br>单元：计数<br>聚合类型：最大值<br>适用的维度：服务器名称 |
-| 同步会话结果 | 同步会话结果（1=成功同步会话；0=失败同步会话）<br><br>单元：计数<br>聚合类型：最大值<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
+| 未同步的文件 | 未能同步的文件数。<br><br>单位：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
+| 同步的文件 | 已传输的文件数（上传和下载）。<br><br>单位：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
+| 服务器联机状态 | 从服务器接收的检测信号数。<br><br>单位：计数<br>聚合类型：最大值<br>适用的维度：服务器名称 |
+| 同步会话结果 | 同步会话结果（1=成功同步会话；0=失败同步会话）<br><br>单位：计数<br>聚合类型：最大值<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
 
 ### <a name="alerts"></a>警报
 
-在监视数据中发现重要情况时，警报会以主动的方式通知你。 若要了解有关在 Azure Monitor 中配置警报的详细信息，请参阅 [Microsoft Azure 中的警报概述](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+在监视数据中发现重要情况时，警报会以主动的方式通知你。 若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
 
 **如何创建 Azure 文件同步的警报**
 
-- 在**Azure 门户**中转到**存储同步服务**。 
-- 单击 "监视" 部分中的 " **警报** "，然后单击 " **+ 新建警报规则**"。
-- 单击 " **选择条件** " 并为警报提供以下信息： 
+1. 在**Azure 门户**中转到**存储同步服务**。 
+2. 单击 "监视" 部分中的 " **警报** "，然后单击 " **+ 新建警报规则**"。
+3. 单击 " **选择条件** " 并为警报提供以下信息： 
     - **指标**
     - **维度名称**
     - **警报逻辑**
-- 单击 " **选择操作组** "，并将操作组 (电子邮件、短信等 ) 添加到警报，方法是选择现有操作组或创建新的操作组。
-- 填写警报 **详细信息** ，如 **警报规则名称**、 **描述** 和 **严重性**。
-- 单击 " **创建警报规则** " 以创建警报。  
+4. 单击 " **选择操作组** "，并将操作组 (电子邮件、短信等 ) 添加到警报，方法是选择现有操作组或创建新的操作组。
+5. 填写**警报详细信息**，例如**警报规则名称**、**说明**和**严重性**。
+6. 单击“创建警报规则”以创建警报。  
 
 下表列出了一些要监视的示例方案和用于警报的适当指标：
 
@@ -96,6 +98,8 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 若要在门户中查看**已注册的服务器运行状况**，请导航到**存储同步服务**的 "**已注册服务器**" 部分。
 
+![已注册的服务器运行状况的屏幕截图](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
+
 - 如果 **已注册的服务器** 状态为 " **联机**"，则服务器将成功与服务进行通信。
 - 如果 **已注册的服务器** 状态 **显示**为 "脱机"，则存储同步监视器进程 ( # A0) 未运行，或者服务器无法访问 Azure 文件同步服务。 有关指南，请参阅 [故障排除文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) 。
 
@@ -103,7 +107,9 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 若要在门户中查看**服务器终结点**的运行状况，请导航到**存储同步服务**的 "**同步组**" 部分，并选择一个**同步组**。
 
-- 门户中的 **服务器终结点运行状况** 和 **同步活动** 基于服务器上的遥测事件日志中记录的同步事件， (ID 9102 和 9302) 。 如果同步会话由于暂时性错误（例如 "错误已取消"）而失败，则只要当前同步会话正在进行，则同步仍会在门户中显示为正常状态，前提是当前同步会话正在 (文件) 应用。 事件 ID 9302 是同步会话完成后记录的同步进度事件和事件 ID 9102。  有关详细信息，请参阅 [同步运行状况](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) 和 [同步进度](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。 如果由于同步未取得进展而导致门户出现错误，请参阅 [疑难解答文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) 以获得指导。
+![服务器终结点运行状况的屏幕截图](media/storage-sync-files-troubleshoot/file-sync-server-endpoint-health.png)
+
+- 门户中的 **服务器终结点运行状况** 和 **同步活动** 基于服务器上的遥测事件日志中记录的同步事件， (ID 9102 和 9302) 。 如果同步会话由于暂时性错误（例如 "错误已取消"）而失败，则只要当前同步会话正在进行，就会在门户中显示为 " **正常" 状态** ，前提是当前同步会话正在 (文件) 应用。 事件 ID 9302 是同步会话完成后记录的同步进度事件和事件 ID 9102。  有关详细信息，请参阅 [同步运行状况](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) 和 [同步进度](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。 如果服务器终结点运行状况显示 **错误** 或 **无活动**，请参阅 [疑难解答文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) 以获取指导。
 - 门户中的 " **文件未同步** 计数" 基于在服务器的遥测事件日志中记录的事件 ID 9121。 同步会话完成后，每个项的错误都会记录此事件。 若要解决每个项的错误，请参阅[如何实现查看是否存在不同步的特定文件或文件夹？](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)
 - 若要在门户中查看 **云分层效率** ，请转到 **服务器终结点属性** ，然后导航到 **云分层** 部分。 为云分层效率提供的数据基于事件 ID 9071，该事件记录在服务器上的遥测事件日志中。 若要了解详细信息，请参阅[云分层概述](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering)。
 - 若要查看未在门户中 **分层** 和 **撤回错误** 的文件，请转到 **服务器终结点属性** ，然后导航到 **云分层** 部分。 **不分层的文件** 基于事件 id 9003，该事件记录在服务器上的遥测事件日志中，并且 **撤回错误** 基于事件 id 9006。 若要调查无法进行分层或召回的文件，请参阅 [如何对无法进行层级处理的文件进行故障排除](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) ，以及如何对无法 [召回的文件进行故障排除](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)。
@@ -112,7 +118,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 - 可在存储同步服务门户中查看以下指标图表：
 
-  | 指标名称 | 描述 | 边栏选项卡名称 |
+  | 指标名称 | 说明 | 边栏选项卡名称 |
   |-|-|-|
   | 同步的字节数 | 已传输数据的大小（上传和下载） | 同步组，服务器终结点 |
   | 云分层回调 | 回调的数据的大小 | 已注册的服务器 |
@@ -142,7 +148,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 - 同步会话完成后，每个项的错误都会记录事件 ID 9121。 使用此事件来确定由于此错误 (**PersistentCount** 和 **TransientCount**) 而未能同步的文件数。 应调查永久性的每项错误，请参阅[如何实现查看是否存在不同步的特定文件或文件夹？](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)
 
-- 如果存在活动同步会话，则每 5 到 10 分钟记录一次事件 ID 9302。 使用此事件可确定当前同步会话是否正在 (**AppliedItemCount > 0**) 进行进度。 如果同步未进行进度，同步会话应最终会失败，并且会记录错误的事件 ID 9102。 有关详细信息，请参阅 [同步进度文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+- 如果存在活动同步会话，则每 5 到 10 分钟记录一次事件 ID 9302。 使用此事件可确定要 (**TotalItemCount**) 同步多少项，到目前为止已同步的项数 (**AppliedItemCount**) 和由于每个项的错误而未能同步的项数 (**PerItemErrorCount**) 。 如果同步没有 (**AppliedItemCount = 0**) 进行进度，则同步会话最终将失败，并且会记录错误的事件 ID 9102。 有关详细信息，请参阅 [同步进度文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
 已注册的服务器运行状况
 
@@ -172,7 +178,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 性能监视器提供了下列 Azure 文件同步性能计数器：
 
-| 性能对象\计数器名称 | 描述 |
+| 性能对象\计数器名称 | 说明 |
 |-|-|
 | AFS 传输的字节数\下载的字节数/秒 | 每秒下载的字节数。 |
 | AFS 传输的字节数\上传的字节数/秒 | 每秒上传的字节数。 |
@@ -206,7 +212,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
     - 计算依据：聚合粒度 = **24 小时** |评估频率 = **每小时** 
     - 单击 " **完成"。** 
 8. 单击 " **选择操作组** "，通过选择现有操作组或创建新的操作组，将操作组 (电子邮件、SMS 等 ) 添加到警报。
-9. 填写警报 **详细信息** ，如 **警报规则名称**、 **描述** 和 **严重性**。
+9. 填写**警报详细信息**，例如**警报规则名称**、**说明**和**严重性**。
 10. 单击“创建警报规则”。 
 
 ### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>如果文件未能同步到服务器或云终结点，如何创建警报
@@ -228,7 +234,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
      - 计算依据：聚合粒度 = **5 分钟** |评估频率 = **每5分钟** 
      - 单击 " **完成"。** 
 8. 单击 " **选择操作组** "，通过选择现有操作组或创建新的操作组，将操作组 (电子邮件、SMS 等 ) 添加到警报。
-9. 填写警报 **详细信息** ，如 **警报规则名称**、 **描述** 和 **严重性**。
+9. 填写**警报详细信息**，例如**警报规则名称**、**说明**和**严重性**。
 10. 单击“创建警报规则”。 
 
 ### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>如果已注册的服务器未能与存储同步服务进行通信，如何创建警报
@@ -248,9 +254,10 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
      - 聚合类型： **最大值**  
      - 阈值 (字节) ： **1** 
      - 计算依据：聚合粒度 = **1 小时** |评估频率 = **每30分钟** 
+        - 请注意，指标发送到每15到20分钟 Azure Monitor。 不要将 **计算频率** 设置为少于30分钟 (将) 生成错误警报。
      - 单击 " **完成"。** 
 8. 单击 " **选择操作组** "，通过选择现有操作组或创建新的操作组，将操作组 (电子邮件、SMS 等 ) 添加到警报。
-9. 填写警报 **详细信息** ，如 **警报规则名称**、 **描述** 和 **严重性**。
+9. 填写**警报详细信息**，例如**警报规则名称**、**说明**和**严重性**。
 10. 单击“创建警报规则”。 
 
 ### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>如果云分层撤回大小在一天内超过500GiB，如何创建警报
@@ -272,7 +279,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
      - 计算依据：聚合粒度 = **24 小时** |评估频率 = **每小时** 
     - 单击 " **完成"。** 
 8. 单击 " **选择操作组** "，通过选择现有操作组或创建新的操作组，将操作组 (电子邮件、SMS 等 ) 添加到警报。
-9. 填写警报 **详细信息** ，如 **警报规则名称**、 **描述** 和 **严重性**。
+9. 填写**警报详细信息**，例如**警报规则名称**、**说明**和**严重性**。
 10. 单击“创建警报规则”。 
 
 ## <a name="next-steps"></a>后续步骤

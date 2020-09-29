@@ -1,27 +1,29 @@
 ---
-title: Docker 容器 - LUIS
+title: 安装并运行 LUIS 的 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: LUIS 容器可将已训练或已发布的应用加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。
+description: 使用 LUIS 容器加载已定型或已发布的应用，并在本地访问其预测。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: 本地、Docker、容器
+ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889521"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460979"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
+# <a name="install-and-run-docker-containers-for-luis"></a>安装并运行 LUIS 的 Docker 容器
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
+容器使你能够在自己的环境中使用 LUIS。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装和运行 LUIS 容器。
 
 语言理解 (LUIS) 容器加载已训练或已发布的语言理解模型。 作为 [LUIS 应用](https://www.luis.ai)，docker 容器提供从容器的 API 终结点执行预测查询的访问权限。 可以从容器中收集查询日志并将这些日志上传回语言理解应用以提高应用的预测准确性。
 

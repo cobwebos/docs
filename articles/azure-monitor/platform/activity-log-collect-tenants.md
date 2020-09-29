@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cd0a510480673c48f23b25f48ead5d75e2d05c84
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321864"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447641"
 ---
-# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>跨 Azure Active Directory 租户 Azure Monitor 收集 Azure 活动日志（旧）
+# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>将 Azure 活动日志收集到 Azure Active Directory 租户之间 Azure Monitor (旧) 
 
 > [!NOTE]
 > 本文介绍了在 Azure 租户之间配置 Azure 活动日志以在 Log Analytics 工作区中收集的传统方法。  你现在可以使用类似于收集资源日志的方式的诊断设置，将活动日志收集到 Log Analytics 工作区中。 请参阅[收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](./activity-log.md)。
@@ -102,7 +102,7 @@ ms.locfileid: "87321864"
 - 一个[“撰写”操作](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)，用于将 JSON 转换为对象。
 - 一个 [Log Analytics 发送数据连接器](/connectors/azureloganalyticsdatacollector/)，用于将数据发布到 Log Analytics 工作区。
 
-   ![在逻辑应用中添加事件中心触发器的插图](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+   ![逻辑应用设计器的屏幕截图，其中显示了从事件中心收集活动日志并将它们写入 Log Analytics 工作区的步骤。](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="logic-app-requirements"></a>逻辑应用要求
 在创建逻辑应用之前，请确保已准备好在前面步骤中获取的以下信息：
@@ -124,7 +124,7 @@ ms.locfileid: "87321864"
 
     ![创建逻辑应用](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
-   |设置 | 描述  |
+   |设置 | 说明  |
    |:---|:---|
    | 名称           | 逻辑应用的唯一名称。 |
    | 订阅   | 选择将要包含该逻辑应用的 Azure 订阅。 |
@@ -145,7 +145,7 @@ ms.locfileid: "87321864"
 
 1. 在逻辑应用设计器的搜索框中，键入“事件中心”作为筛选器。** 选择触发器“事件中心 - 当事件在事件中心可用时”。****
 
-   ![在逻辑应用中添加事件中心触发器的插图](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
+   ![逻辑应用设计器的屏幕截图，其中包含 "事件中心-当事件在事件中心内可用时" 触发器选择的事件中心服务触发器。](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
 2. 系统提示输入凭据时，请连接到事件中心命名空间。 依次输入连接名称和复制的连接字符串。  选择“创建”。
 
@@ -299,7 +299,7 @@ ms.locfileid: "87321864"
 
     ![配置发送数据操作](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |设置        | 值           | 描述  |
+   |设置        | 值           | 说明  |
    |---------------|---------------------------|--------------|
    |JSON 请求正文  | **撰写**操作提供的**输出** | 从“撰写”操作的正文中检索记录。 |
    | 自定义日志名称 | AzureActivity | 在 Log Analytics 工作区中创建的、用于保存导入数据的自定义日志表的名称。 |
@@ -315,14 +315,14 @@ ms.locfileid: "87321864"
 
 在逻辑应用设计器中，单击“运行”以测试逻辑应用。**** 逻辑应用中的每个步骤会显示状态图标，绿色圆圈中包含白色勾选标记表示成功。
 
-   ![测试逻辑应用](media/collect-activity-logs-subscriptions/test-logic-app.png)
+   ![运行测试后逻辑应用设计器的屏幕截图。 逻辑应用的每个步骤都有一个指示成功的复选标记。](media/collect-activity-logs-subscriptions/test-logic-app.png)
 
 若要查看有关每个步骤的详细信息，请单击该步骤的名称将其展开。 单击“显示原始输入”和“显示原始输出”可以查看有关每个步骤接收和发送的数据的详细信息。********
 
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>步骤 5 - 在 Log Analytics 中查看 Azure 活动日志
 最后一步是检查 Log Analytics 工作区，以确保按预期收集数据。
 
-1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
+1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 工作区列表中选择工作区。
 3.  单击“日志搜索”**** 磁贴并在“日志搜索”窗格上的查询字段中键入 `AzureActivity_CL`，然后按 Enter 或单击查询字段右侧的搜索按钮。 如果未将自定义日志命名为 *AzureActivity*，请键入所选的名称，并在其后面追加 `_CL`。
 
@@ -333,7 +333,7 @@ ms.locfileid: "87321864"
 > 活动日志将写入到自定义表，而不会显示在[活动日志解决方案](./activity-log.md)中。
 
 
-![测试逻辑应用](media/collect-activity-logs-subscriptions/log-analytics-results.png)
+!["日志搜索" 窗格中搜索 AzureActivity_CL 的屏幕截图，其中显示一个结果表，其中一个结果已展开，显示活动详细信息。](media/collect-activity-logs-subscriptions/log-analytics-results.png)
 
 ## <a name="next-steps"></a>后续步骤
 
