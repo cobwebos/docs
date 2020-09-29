@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f7fd5b15d9671ed160166d16c1aceda818faa8e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f41223e9dfa336fdbf64fcfdc56798511f3a5b21
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318137"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442269"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -39,8 +39,8 @@ ms.locfileid: "91318137"
 
 **VMware** | **详细信息**
 --- | ---
-**VMware vCenter 服务器** | 版本5.5、6.0、6.5 或6.7。
-**VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5 或6.7。
+**VMware vCenter 服务器** | 版本5.5、6.0、6.5、6.7、7.0。
+**VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5、6.7、7.0。
 **vCenter Server 权限** | 无代理迁移使用 [迁移设备](migrate-appliance.md)。 设备需要这些权限才能 vCenter Server：<br/><br/> - **数据存储. 浏览**：允许浏览 VM 日志文件来排除快照创建和删除故障。<br/><br/> - **FileManagement**：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine.Config。更改跟踪**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine.Config。DiskLease**：允许 VM 的磁盘租约操作，使用 VMware vSphere 虚拟磁盘开发工具包 (VDDK) 读取磁盘。<br/><br/> - **VirtualMachine DiskAccess**： (专用于 vSphere 6.0 和更高版本) 允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. DiskRandomRead**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. DiskRandomAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. GetVmFiles**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> - **VirtualMachine. \* **：允许创建和管理用于复制的 VM 快照。<br/><br/> - **VirtualMachine**：允许 VM 在迁移到 Azure 期间关闭。
 
 
@@ -53,7 +53,7 @@ ms.locfileid: "91318137"
 --- | ---
 **受支持的操作系统** | 你可以迁移 Azure 支持的 [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) 和 [Linux](../virtual-machines/linux/endorsed-distros.md) 操作系统。
 **Azure 中的 Windows Vm** | 在迁移之前，你可能需要对 Vm [进行一些更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。 
-**Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 8.1、8.0、7.7、7.6、7.5、7.4、1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
+**Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 7.7，7.6，7.5，7.4，1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 **Linux 启动** | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。
 **UEFI 启动** | 。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。 
 **磁盘大小** | 2 TB 操作系统磁盘 (BIOS 启动) ;4 TB 操作系统磁盘 (UEFI 启动) ;8 TB （适用于数据磁盘）。

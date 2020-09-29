@@ -1,24 +1,24 @@
 ---
-title: '通过 Transact-sql (T-sql 创建和管理弹性数据库作业 (预览) ) '
+title: 使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业（预览版）
 description: 使用 Transact-SQL (T-SQL) 通过弹性数据库作业跨多个数据库运行脚本。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119107"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443349"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-sql (T-sql) 来创建和管理弹性数据库作业 (预览) 
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本文通过许多示例方案说明了如何使用 T-SQL 来完成弹性作业的入门。

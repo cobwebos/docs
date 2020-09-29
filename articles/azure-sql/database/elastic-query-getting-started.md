@@ -1,27 +1,27 @@
 ---
-title: 跨已扩展的云数据库进行报告
+title: 跨扩展云数据库进行报告
 description: 使用跨数据库数据库查询跨多个数据库进行报告。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956891"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443315"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-可以使用[弹性查询](elastic-query-overview.md)从单个连接点中的多个数据库创建报表。 数据库必须进行横向分区（也称为“分片”）。
+可以使用[弹性查询](elastic-query-overview.md)从单个连接点中的多个数据库创建报告。 数据库必须进行横向分区（也称为“分片”）。
 
 如果有现有的数据库，请参阅[将现有数据库迁移到扩展数据库](elastic-convert-to-use-elastic-tools.md)。
 
@@ -32,29 +32,29 @@ ms.locfileid: "85956891"
 下载并运行[弹性数据库工具示例入门](elastic-scale-get-started.md)。
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>使用示例应用程序创建分片映射管理器
-在此处，将创建分片映射管理器以及多个分片，然后将数据插入分片。 如果分片中正好设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
+在此处，用户将创建分片映射管理器以及多个分片，并将数据插入分片。 如果分片中正好设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
 
 1. 按照文章部分[下载并运行示例应用](elastic-scale-get-started.md#download-and-run-the-sample-app-1)中的步骤，生成并运行**弹性数据库工具入门**示例应用程序。 完成所有步骤后，会看到以下命令提示符：
 
     ![命令提示符][1]
-2. 在命令窗口中键入“1”，并按“Enter”****。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”****；重复该操作四次。 这会在分片中插入示例数据行。
+2. 在命令窗口中键入“1”，并按 **Enter**。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入“3”并按 **Enter**；重复该操作四次。 这会在分片中插入示例数据行。
 3. [Azure 门户](https://portal.azure.com)应显示服务器中的 3 个新数据库：
 
    ![Visual Studio 确认][2]
 
-   目前，通过弹性数据库客户端库支持跨数据库查询。 例如，在命令窗口中使用第 4 个选项。 来自多分片查询的结果始终是所有分片结果的 **UNION ALL**。
+   目前，通过弹性数据库客户端库支持跨数据库查询。 例如，在命令窗口中使用第 4 个选项。 来自多分片查询的结果始终是所有分片结果的 **UNION ALL** 。
 
-   在下一部分，我们将创建支持更丰富的跨分片数据查询的示例数据库终结点。
+   在下一部分，我们创建支持更丰富的跨分片数据查询的示例数据库终结点。
 
 ## <a name="create-an-elastic-query-database"></a>创建弹性查询数据库
 
-1. 打开[Azure 门户](https://portal.azure.com)并登录。
-2. 在与分片设置相同的服务器中，在 Azure SQL 数据库中创建新的数据库。 将数据库命名为“ElasticDBQuery”。
+1. 打开 [Azure 门户](https://portal.azure.com)并登录。
+2. 在与分片设置相同的服务器中的 Azure SQL 数据库中创建新的数据库。 将数据库命名为“ElasticDBQuery”。
 
     ![Azure 门户和定价层][3]
 
     > [!NOTE]
-    > 可以使用现有的数据库。 如果你可以完成此操作，它必定不是你想要在其中执行查询的分片之一。 此数据库用于为弹性数据库查询创建元数据对象。
+    > 可以使用现有数据库。 如果这样做，该数据库不能是你想要对其运行查询的某一个分片。 此数据库将用于为弹性数据库查询创建元数据对象。
     >
 
 ## <a name="create-database-objects"></a>创建数据库对象
@@ -112,7 +112,7 @@ WITH
 select count(CustomerId) from [dbo].[Customers]
 ```
 
-将注意到，查询会从所有分片聚合结果并提供以下输出：
+你将注意到，查询会从所有分片聚合结果并提供以下输出：
 
 ![输出详细信息][4]
 
@@ -120,16 +120,16 @@ select count(CustomerId) from [dbo].[Customers]
  可以将查询结果导入到 Excel 文件。
 
 1. 启动 Excel 2013。
-2. 导航到**数据功**能区。
-3. 单击“从其他源”****，并单击“从 SQL Server”****。
+2. 导航到“数据”功能区  。
+3. 单击“从其他源”，然后单击“从 SQL Server” 。
 
    ![从其他源导入 Excel][5]
-4. 在**数据连接向导**中，键入服务器名称和登录凭据。 然后单击 **“下一步”** 。
-5. 在对话框**选择包含所需数据的数据库**中，选择 **ElasticDBQuery** 数据库。
-6. 在列表视图中选择“客户”**** 表并单击“下一步”****。 然后单击“完成” 。
-7. 在“导入数据”**** 窗体中的“请选择该数据在工作簿中的显示方式”**** 下，选择“表”****，并单击“确定”****。
+4. 在“数据连接向导”中，键入服务器名称和登录凭据  。 。
+5. 在“选择包含所需数据的数据库”对话框中，选择 ElasticDBQuery 数据库 。
+6. 在列表视图中选择“客户”表并单击“下一步” 。 然后单击“完成” 。
+7. 在“导入数据”窗体中的“请选择该数据在工作簿中的显示方式”下，选择“表”，然后单击“确定”   。
 
-存储在不同分片中、来自“客户”**** 表的所有行将填入 Excel 工作表。
+存储在不同分片中、来自“客户”表的所有行将填入 Excel 工作表  。
 
 现在，可以使用 Excel 的强大数据可视化功能。 可以使用包含服务器名称、数据库名称和凭据的连接字符串，将 BI 和数据集成工具连接到弹性查询数据库。 请确保支持将 SQL Server 用作工具的数据源。 可以引用弹性查询数据库和外部表，就如同使用工具连接的任何其他 SQL Server 数据库和 SQL Server 表一样。
 

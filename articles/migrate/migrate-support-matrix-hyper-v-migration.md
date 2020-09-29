@@ -3,12 +3,12 @@ title: Azure Migrate 中的 Hyper-v 迁移支持
 description: 了解支持 Azure Migrate 的 Hyper-v 迁移。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 0054b6983e7d11dd36a92f21cd1cb20314fb9408
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318222"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442311"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 迁移的支持矩阵
 
@@ -38,7 +38,7 @@ ms.locfileid: "91318222"
 | :----------------------------- | :------------------- |
 | **操作系统** | Azure 支持的所有 [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) 和 [Linux](../virtual-machines/linux/endorsed-distros.md) 操作系统。 |
 **Windows Server 2003** | 对于运行 Windows Server 2003 的 Vm，需要在迁移之前 [安装 hyper-v Integration Services](prepare-windows-server-2003-migration.md) 。 | 
-**Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 8.1、8.0、7.7、7.6、7.5、7.4、1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
+**Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 7.7，7.6，7.5，7.4，1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 | **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。 |
 | **UEFI 启动**                  | 。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。  |
@@ -65,7 +65,7 @@ Hyper-v 主机上的复制提供程序软件将需要对这些 Url 的访问权�
 login.microsoftonline.com | 使用 Active Directory 进行访问控制和标识管理。
 backup.windowsazure.com | 复制数据传输和协调。
 *.hypervrecoverymanager.windowsazure.com | 用于复制管理。
-\* .blob.core.windows.net | 将数据上传到存储帐户。 
+*.blob.core.windows.net | 将数据上传到存储帐户。 
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 time.windows.com | 验证系统与全局时间之间的时间同步。
 

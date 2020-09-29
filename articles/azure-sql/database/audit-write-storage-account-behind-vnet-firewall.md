@@ -4,18 +4,18 @@ description: 配置审核以在虚拟网络和防火墙后面的存储帐户中�
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530364"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444540"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>将审核内容写入到 VNet 和防火墙后面的存储帐户
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -117,10 +117,10 @@ ms.locfileid: "87530364"
    }
    ```
 
-2. 打开 [Azure 门户](https://portal.azure.com)。 导航到存储帐户。 找到“访问控制(IAM)”，然后单击“添加角色分配”。  将**存储 Blob 数据参与者**Azure 角色分配到承载数据库的服务器，该数据库是你向 Azure Active Directory （Azure AD）注册的，如前一步骤所示。
+2. 打开 [Azure 门户](https://portal.azure.com)。 导航到存储帐户。 找到“访问控制(IAM)”，然后单击“添加角色分配”。  将 **存储 Blob 数据参与者** Azure 角色分配到承载数据库的服务器，该数据库已注册到 Azure Active Directory (Azure AD) ，如前一步骤所示。
 
    > [!NOTE]
-   > 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅[azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+   > 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 3. 在不指定 storageAccountAccessKey 的情况下配置[服务器的 Blob 审核策略](/rest/api/sql/server%20auditing%20settings/createorupdate)：
 

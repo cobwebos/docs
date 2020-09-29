@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064938"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443041"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -175,7 +175,7 @@ ms.locfileid: "88064938"
 可以通过运行包含的示例 PowerShell 脚本测试部署和环境。
 
 > [!IMPORTANT]
-> 示例脚本在 PowerShell 5.1 上运行。 它们目前不在 PowerShell 6 或更高版本上运行。
+> 示例脚本在 PowerShell 5.1 上运行。 它们目前不可在 PowerShell 6 或更高版本上运行。
 
 包含的脚本文件为：
 
@@ -321,8 +321,8 @@ ms.locfileid: "88064938"
 
 为了执行拆分/合并操作，必须声明要移动的分片表和引用表。 使用 **SchemaInfo** API 完成此操作。 此 API 位于 **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** 命名空间中。
 
-1. 对于每个分片表，请创建一个**ShardedTableInfo**对象，该对象描述表的父架构名称 (可选，默认为 "dbo" ) 、表名称以及该表中包含分片键的列名称。
-2. 对于每个引用表，请创建一个**shardedtableinfo**对象，该对象描述了表的父架构名称 (可选，默认为 "dbo" ) 和表名。
+1. 对于每个分片表，请创建一个 **ShardedTableInfo** 对象，该对象描述表的父架构名称 (可选，默认为 "dbo" ) 、表名称以及该表中包含分片键的列名称。
+2. 对于每个引用表，请创建一个 **shardedtableinfo** 对象，该对象描述了表的父架构名称 (可选，默认为 "dbo" ) 和表名。
 3. 将上面的 TableInfo 对象添加到新的 **SchemaInfo** 对象。
 4. 获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection**。
 5. 将 **SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。

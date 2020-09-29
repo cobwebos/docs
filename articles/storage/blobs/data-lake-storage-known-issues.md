@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923732"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441780"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -113,11 +113,9 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>生命周期管理策略
 
-- 高级 BlockBlobStorage 存储帐户中尚不支持生命周期管理策略。 
+- 只支持常规用途 v2 帐户的生命周期管理策略。 高级 BlockBlobStorage 存储帐户目前尚不支持。
+- 不能将数据从高级层级移到较低的层级。
 
-- 不能将数据从高级层级移到较低的层级。 
-
-- 当前不支持**删除 Blob** 操作。 
 
 ### <a name="hdinsight-support"></a>HDInsight 支持
 

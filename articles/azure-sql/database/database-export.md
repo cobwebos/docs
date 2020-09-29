@@ -10,13 +10,13 @@ ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
-ms.topic: conceptual
-ms.openlocfilehash: 9fb638feb254d5789d26cd854c0dcb3ae70da472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.topic: how-to
+ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284306"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443800"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 

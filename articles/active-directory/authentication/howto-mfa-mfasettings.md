@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526878"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441620"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -57,7 +57,7 @@ Azure 门户中提供以下 Azure 多重身份验证设置：
 
 ## <a name="block-and-unblock-users"></a>阻止和解除阻止用户
 
-如果用户的设备丢失或被盗，你可以阻止对关联帐户的身份验证尝试。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。
+如果用户的设备丢失或被盗，你可以阻止对关联帐户的 Azure 多重身份验证尝试。 对阻止的用户的任何 Azure 多重身份验证尝试都将被自动拒绝。 用户将在阻止日起 90 天内受到阻止。
 
 ### <a name="block-a-user"></a>阻止用户
 
@@ -85,7 +85,7 @@ Azure 门户中提供以下 Azure 多重身份验证设置：
 
 以下欺诈警报配置选项可用：
 
-* **自动阻止报告欺诈的用户**：如果用户报告欺诈，那么他们的帐户将被阻止90天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
+* **自动阻止报告欺诈的用户**：如果用户报告欺诈行为，则用户帐户的 Azure MFA 身份验证尝试将被阻止90天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
 * **在初始问候期间报告欺诈的代码**：当用户接收到执行多重身份验证的电话呼叫时，他们通常按 **#** 确认登录。 如果他们想要报告欺诈，则可在按 **#** 之前输入代码。 此代码默认为 **0**，但可以自定义此代码。
 
    > [!NOTE]

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426276"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442167"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>从 SSTP 过渡到 OpenVPN 协议或 IKEv2
 
@@ -47,7 +47,7 @@ IKEv2 使用非标准 UDP 端口，因此，你需要确保这些端口未在用
 
 若要将 IKEv2 添加到现有网关，只需在门户中转到虚拟网络网关下的“点到站点配置”选项卡，然后从下拉框中选择“IKEv2 和 SSTP (SSL)”。 
 
-![点到站点](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![显示 "点到站点配置" 页的屏幕截图，其中包含 "隧道类型" 下拉菜单，"IKEv2 and SSTP (SSL) " 处于选中状态。](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>选项 2 - 删除 SSTP 并在网关上启用 OpenVPN

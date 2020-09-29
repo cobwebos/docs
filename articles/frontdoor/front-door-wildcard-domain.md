@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442352"
 ---
 # <a name="wildcard-domains"></a>通配符域
 
@@ -72,7 +72,7 @@ ms.locfileid: "89398743"
 配置路由规则时，可以选择通配符域作为前端主机。 对于通配符域和子域，还可以具有不同的路由行为。 如 [Azure 前端的路由匹配方式](front-door-route-matching.md)中所述，在运行时选择不同路由规则中的域的最特定匹配。
 
 > [!IMPORTANT]
-> 你必须在路由规则中具有匹配的路径模式，否则你的客户端将会看到失败。 例如，有两个路由规则（例如路由 1 (`*.foo.com/*` 映射到后端池）) 和路由 2 (`bar.foo.com/somePath/*` 映射到后端池 B) 。 然后，请求到达 `bar.foo.com/anotherPath/*` 。 Azure 前门根据更具体的域匹配选择路由2，而只查找路由之间没有匹配的路径模式。
+> 你必须在路由规则中具有匹配的路径模式，否则你的客户端将会看到失败。 例如，有两个路由规则（例如路由 1 (`*.foo.com/*` 映射到后端池）) 和路由 2 (`/bar.foo.com/somePath/*` 映射到后端池 B) 。 然后，请求到达 `bar.foo.com/anotherPath/*` 。 Azure 前门根据更具体的域匹配选择路由2，而只查找路由之间没有匹配的路径模式。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401140"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442155"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 配置 VNet 到 VNet 的 VPN 网关连接
 
@@ -70,7 +70,7 @@ ms.locfileid: "89401140"
 
 * [驻留在同一订阅中的 vnet：](#samesub) 此配置的步骤使用 TestVNet1 和 TestVNet4。
 
-  ![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![此图显示了位于同一订阅中的 V 网络的 V Net 到 V Net 步骤。](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 * [驻留在不同订阅中的 vnet：](#difsub) 此配置的步骤使用 TestVNet1 和 TestVNet5。
 

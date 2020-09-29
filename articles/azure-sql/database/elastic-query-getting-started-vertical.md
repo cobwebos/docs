@@ -6,22 +6,22 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2e133228f04cacdc14278abb8b6ee6303b820e7b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 089cc8f22248a2b7152afaf951f6028a05682648
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956842"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443324"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-适用于 Azure SQL 数据库弹性数据库查询（预览版），可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。 本文适用于[垂直分区数据库](elastic-query-vertical-partitioning.md)。  
+Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。 本文适用于[垂直分区数据库](elastic-query-vertical-partitioning.md)。  
 
 完成时，会：了解如何配置和使用 Azure SQL 数据库执行跨多个相关数据库的查询。
 
@@ -33,7 +33,7 @@ ms.locfileid: "85956842"
 
 ## <a name="create-the-sample-databases"></a>创建示例数据库
 
-首先，在相同或不同的服务器中创建两个数据库：**客户**和**订单**。
+首先，我们在相同或不同服务器中创建两个数据库：Customers 和 Orders 。
 
 在 **Orders** 数据库中执行以下查询以创建 **OrderInformation** 表并输入示例数据。
 

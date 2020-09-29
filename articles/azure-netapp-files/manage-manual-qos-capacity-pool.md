@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 1bbd6ad9e33aab8d3564865b86485d70df5a108f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341378"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442083"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>管理手动 QoS 容量池
 
@@ -65,7 +65,7 @@ ms.locfileid: "91341378"
  
 2.  单击要更改为使用手动 QoS 的容量池。
 
-3.  单击 " **更改 QoS 类型**"。 然后，将 **新的 QoS 类型** 设置为 " **手动**"。 单击“确定”。 
+3.  单击 " **更改 QoS 类型**"。 然后，将 **新的 QoS 类型** 设置为 " **手动**"。 单击 **“确定”** 。 
 
 ![更改 QoS 类型](../media/azure-netapp-files/change-qos-type.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "91341378"
 
 1. 从 " **卷** " 页中，选择要修改其吞吐量的卷。   
 
-2. 单击 " **更改吞吐量**"。 指定所需 **)  (MiB/秒的吞吐量 ** 。 单击“确定”。 
+2. 单击 " **更改吞吐量**"。 指定所需 **)  (MiB/秒的吞吐量 ** 。 单击 **“确定”** 。 
 
     ![更改 QoS 吞吐量](../media/azure-netapp-files/change-qos-throughput.png)
 
@@ -90,3 +90,12 @@ ms.locfileid: "91341378"
 * [Azure NetApp 文件的指标](azure-netapp-files-metrics.md)
 * [Azure NetApp 文件的性能考虑因素](azure-netapp-files-performance-considerations.md)
 * [排查容量池问题](troubleshoot-capacity-pools.md)
+* [Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)
+* [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md)
+* [Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md)
+* [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
+* [创建 NFS 卷](azure-netapp-files-create-volumes.md)
+* [创建 SMB 卷](azure-netapp-files-create-volumes-smb.md)
+* [创建双协议卷](create-volumes-dual-protocol.md)
+
+

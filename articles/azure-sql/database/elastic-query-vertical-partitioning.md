@@ -6,19 +6,19 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 95964064200064dcc43449e1d939c1cdfd78cdb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84035978"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443091"
 ---
-# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
+# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>跨具有不同架构的云数据库进行查询（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 ![跨不同数据库中的表进行查询][1]
@@ -39,7 +39,7 @@ ms.locfileid: "84035978"
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx)
+4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>创建数据库范围的主密钥和凭据
 
@@ -53,14 +53,14 @@ SECRET = '<password>'
 ```
 
 > [!NOTE]
-> 确保不 `<username>` 包含任何 **" \@ servername"** 后缀。
+> 确保 `<username>` 不包含任何“\@servername”后缀。
 
 ## <a name="create-external-data-sources"></a>创建外部数据源
 
 语法：
 
-<External_Data_Source>：： = CREATE EXTERNAL DATA SOURCE <data_source_name WITH （TYPE = RDBMS，LOCATION = '> <fully_qualified_server_name '，> = ' DATABASE_NAME <remote_database_name "，  
-    CREDENTIAL = <credential_name>） [;]
+<External_Data_Source>：： = 创建外部数据源 <data_source_name> 类型 = RDBMS，LOCATION = ' (<fully_qualified_server_name "，> = ' DATABASE_NAME <remote_database_name"，  
+    CREDENTIAL = <credential_name> ) [;]
 
 > [!IMPORTANT]
 > TYPE 参数必须设置为 **RDBMS**。
@@ -90,10 +90,10 @@ select * from sys.external_data_sources;
 
 语法：
 
-CREATE EXTERNAL TABLE [database_name。 [ schema_name ] . |schema_name。 ] table_name  
-    （{<column_definition>} [,.。。n]） {WITH （<rdbms_external_table_options>）}） [;]
+CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
+    ( { <column_definition> } [ ,...n ]) { WITH ( <rdbms_external_table_options> ) } )[;]
 
-<rdbms_external_table_options>：： = DATA_SOURCE = <External_Data_Source>，[SCHEMA_NAME = N ' nonescaped_schema_name '，] [OBJECT_NAME = N ' nonescaped_object_name '，]
+<rdbms_external_table_options> ::= DATA_SOURCE = <External_Data_Source>, [ SCHEMA_NAME = N'nonescaped_schema_name',] [ OBJECT_NAME = N'nonescaped_object_name',]
 
 ### <a name="example"></a>示例
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL TABLE [dbo].[customer]
 select * from sys.external_tables;
 ```
 
-### <a name="remarks"></a>注解
+### <a name="remarks"></a>备注
 
 弹性查询将扩展现有的外部表语法以定义使用 RDBMS 类型的外部数据源的外部表。 垂直分区的外部表定义涉及以下几个方面：
 
@@ -161,16 +161,16 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>远程 T-SQL 执行的存储过程：sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>用于远程 T-SQL 执行的存储过程：sp\_execute_remote
 
-弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于执行远程存储过程或远程数据库上的 T-SQL 代码。 它采用了以下参数：
+弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于在远程数据库上执行远程存储过程或 T-SQL 代码。 它采用了以下参数：
 
 * 数据源名称 (nvarchar)：RDBMS 类型的外部数据源名称。
 * 查询 (nvarchar)：要在远程数据库上执行的 T-SQL 查询。
 * 参数声明 (nvarchar) - 可选：在查询参数（如 sp_executesql）中使用的参数的字符串（包含数据类型定义）。
 * 参数值列表 - 可选：以逗号分隔的参数值（如 sp_executesql）的列表。
 
-Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
+sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
 
 示例：
 
@@ -182,11 +182,11 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 ## <a name="connectivity-for-tools"></a>工具的连接
 
-您可以使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到已启用弹性查询并已定义外部表的服务器上的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库及其外部表，就像使用工具连接到其他任何 SQL Server 数据库一样。
+可使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到服务器上已启用弹性查询并已定义外部表的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后可以引用弹性查询数据库及其外部表，就如同使用工具连接的任何其他 SQL Server 数据库一样。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
-* 通过在 Azure SQL 数据库防火墙配置中启用对 Azure 服务的访问，确保已向弹性查询终结点数据库授予访问远程数据库的权限。 另请确保外部数据源定义中提供的凭据可以成功登录到远程数据库并有权访问远程表。  
+* 确保已通过在 Azure SQL 数据库防火墙配置中启用对 Azure 服务的访问，授予弹性查询终结点数据库访问远程数据库的权限。 另请确保外部数据源定义中提供的凭据可以成功登录到远程数据库并有权访问远程表。  
 * 弹性查询最适合大部分计算可以在远程数据库上完成的查询。 使用可以在远程数据库或联接上求值的选择性筛选器谓词（可以完全在远程数据库上执行），通常可以获得最佳查询性能。 其他查询模式可能需要从远程数据库加载大量数据并且可能会执行效果不佳。
 
 ## <a name="next-steps"></a>后续步骤

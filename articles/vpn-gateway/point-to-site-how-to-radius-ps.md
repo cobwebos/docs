@@ -1,18 +1,18 @@
 ---
 title: 使用点到站点和 RADIUS 身份验证将计算机连接到虚拟网络：PowerShell | Azure
-description: 使用 P2S 和 RADIUS 身份验证将 Windows 和 Mac OS X 客户端安全地连接到虚拟网络。
+description: 使用 P2S 和 RADIUS 身份验证将 Windows 和 OS X 客户端安全地连接到虚拟网络。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8d7ae3cd40f118399e5ff60fa0738b07249c5ef
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329153"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442412"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell
 
@@ -28,7 +28,7 @@ P2S VPN 连接是从 Windows 和 Mac 设备启动的。 连接方客户端可以
 
 借助本文可以配置一个使用 RADIUS 服务器进行身份验证的 P2S 配置。 如果要使用生成的证书和 VPN 网关本机证书身份验证进行身份验证，请参阅 [使用 VPN 网关本机证书身份验证配置与 VNet 的点到站点连接](vpn-gateway-howto-point-to-site-rm-ps.md) 或创建用于 Azure Active Directory 身份验证的 [P2S OpenVPN 协议连接的 Azure Active Directory 租户](openvpn-azure-ad-tenant.md) 。
 
-![连接关系图 - RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![此图显示了使用 RADIUS 服务器进行身份验证的 P2S 配置。](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
 点到站点连接不需要 VPN 设备或面向公众的 IP 地址。 P2S 基于 SSTP（安全套接字隧道协议）、OpenVPN 或 IKEv2 创建 VPN 连接。
 
@@ -65,7 +65,7 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example-values"></a><a name="example"></a>示例值
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894806"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441477"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -166,7 +166,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 1. 如果订阅已启用 Azure Defender，请打开该订阅的安全策略，并选择 " **Azure defender**"。
 
-   ![定价层][1]
+    :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 
 1. 接下来，在“安全策略 - 数据收集”页上选择“关”，禁用自动预配。
    ![数据收集][2]
@@ -200,7 +200,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用“Security”或“SecurityCenterFree”解决方案，则需要应用解决方案。 若要应用解决方案，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”页面应用定价层。
 
-   ![定价层][1]
+:::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 
 安全中心将会根据选定的定价层在工作区中启用正确的解决方案。
 
@@ -271,7 +271,6 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 
 <!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/pricing-tier.png
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png
