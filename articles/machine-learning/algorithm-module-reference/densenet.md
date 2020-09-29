@@ -8,19 +8,24 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898516"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450090"
 ---
 # <a name="densenet"></a>DenseNet
 
 本文介绍如何使用 Azure 机器学习设计器中的 **DenseNet** 模块，通过 DenseNet 算法创建图像分类模型。  
 
-此分类算法是一种监督式学习方法，需要一个标记的数据集。 若要详细了解如何获取标记的图像目录，请参阅 [Convert to Image Directory](convert-to-image-directory.md)（转换为图像目录）模块。 可通过提供模型和标记的图像目录作为[训练 Pytorch 模型](train-pytorch-model.md)模块的输入来训练模型。 然后，可使用训练后的模型来预测使用[为图像模型评分](score-image-model.md)模块的新输入示例的值。
+此分类算法是一种监督的学习方法，需要标记的图像目录。 
+
+> [!NOTE]
+> 此模块不支持从 studio 中的 *数据标签* 生成的标记的数据集，但仅支持从 [转换为图像目录](convert-to-image-directory.md) 模块生成的标记为图像目录。 
+
+可通过提供模型和标记的图像目录作为[训练 Pytorch 模型](train-pytorch-model.md)模块的输入来训练模型。 然后，可使用训练后的模型来预测使用[为图像模型评分](score-image-model.md)模块的新输入示例的值。
 
 ### <a name="more-about-densenet"></a>详细了解 DenseNet
 

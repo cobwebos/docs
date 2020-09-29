@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399627"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449238"
 ---
 # <a name="health-probes"></a>运行状况探测
 
-为了从给定的前门环境确定每个后端的运行状况和邻近性，每个前端环境会定期向每个已配置的后端发送综合 HTTP/HTTPS 请求。 Front Door 然后使用这些探测的响应来确定它应将实际客户端请求路由到的“最佳”后端。 
+为了确定给定前门环境的每个后端的运行状况和邻近性，每个前端环境会定期向每个已配置的后端发送综合 HTTP/HTTPS 请求。 然后，前门使用探测器中的这些响应来确定用于路由客户端请求的 "最佳" 后端资源。 
 
 > [!WARNING]
-> 由于前门具有全局边缘环境，因此后端的运行状况探测请求量可以非常高–每分钟25个请求，每分钟最高可达1200请求，具体取决于配置的运行状况探测频率。 如果默认探测频率为30秒，则后端的探测量应为每分钟约200请求。
+> 由于前端具有全局边缘环境，因此后端的运行状况探测量可以非常高-从25个请求每分钟到最高1200请求，具体取决于配置的运行状况探测频率。 如果默认探测频率为30秒，则后端的探测量应为每分钟约200请求。
 
 ## <a name="supported-protocols"></a>支持的协议
 
@@ -43,8 +43,8 @@ Front Door 支持通过 HTTP 或 HTTPS 协议发送探测。 这些探测通过�
 
 | 响应  | 说明 | 
 | ------------- | ------------- |
-| 确定运行状况  |  200 OK 状态代码指示后端运行状况良好。 所有其他状态均视为失败。 如果出于任何原因（包括网络失败），探测未接收到有效的 HTTP 响应，则探测被视为失败。|
-| 测量延迟  | 延迟是指从我们发送探测请求前的一刻到我们收到响应的最后一个字节的一刻所测得的时钟时间。 我们为每个请求都使用新的 TCP 连接，因此，此测量不会偏向使用现有热连接的后端。  |
+| 确定运行状况  |  200 OK 状态代码指示后端运行状况良好。 所有其他状态均视为失败。 如果出于任何原因 (包括网络故障) 没有收到探测的有效 HTTP 响应，则会将探测计为失败。|
+| 测量延迟  | 延迟是指从我们发送探测请求前的一刻到我们收到响应的最后一个字节的一刻所测得的时钟时间。 我们为每个请求使用一个新的 TCP 连接，因此，此度量值并不偏离现有的热连接后端。  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Front Door 如何确定后端运行状况
 
@@ -59,7 +59,7 @@ Azure 前门在所有算法中使用相同的三步骤过程来确定运行状�
 
     * 通过更改负载平衡设置中的 SuccessfulSamplesRequired 属性来配置_x_ 。
 
-3. 从后端池的一组运行状况良好的后端中，Front Door 还将测量和维护每个后端的延迟（往返时间）。
+3. 对于后端池中的正常后端集，前门还会进一步测量并维持每个后端) 的 (延迟时间。
 
 
 ## <a name="complete-health-probe-failure"></a>完成运行状况探测失败

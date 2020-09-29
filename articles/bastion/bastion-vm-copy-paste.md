@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987717"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445357"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>复制并粘贴到虚拟机：Azure Bastion
 
@@ -35,13 +35,13 @@ ms.locfileid: "90987717"
 1. 将本地设备中的文本/内容复制到本地剪贴板。
 1. 在远程会话期间，通过选择两个箭头启动 Bastion 剪贴板访问工具面板。 这些箭头位于会话的左中位置。
 
-   ![工具面板](./media/bastion-vm-manage/left.png)
+   ![屏幕截图，显示在窗口左侧突出显示的工具调色板的启动箭头。](./media/bastion-vm-manage/left.png)
 
    ![屏幕截图显示在堡垒中复制的文本的剪贴板。](./media/bastion-vm-manage/clipboard.png)
 1. 通常，已复制的文本会自动显示在 Bastion 复制粘贴面板上。 如果文本不在那里，则将文本粘贴到面板上的文本区域中。
 1. 文本位于文本区域中后，可以将其粘贴到远程会话。
 
-   ![粘贴](./media/bastion-vm-manage/local.png)
+   ![屏幕截图，显示突出显示的 "复制/粘贴" 按钮和一个复制到远程会话的示例文本字符串。](./media/bastion-vm-manage/local.png)
 
 ## <a name="copy-from-a-remote-session"></a><a name="from"></a>从远程会话复制
 

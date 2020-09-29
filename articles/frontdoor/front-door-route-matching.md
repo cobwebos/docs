@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401565"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449207"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 如何匹配请求与传递规则
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>如何将请求匹配到路由规则
 
-建立连接并执行 TLS 握手后，当请求落在前门环境中时，前门所要做的第一件事情就是从所有配置中确定，将请求与进行匹配，然后采用定义的操作。 以下文档介绍了 Front Door 如何确定在处理 HTTP 请求时要使用的路由配置。
+建立连接并完成 TLS 握手后，当请求落在前门环境中时，前一种情况下，首先需要确定要将请求与哪个特定路由规则进行匹配，然后在配置中采用定义的操作。 以下文档介绍了 Front Door 如何确定在处理 HTTP 请求时要使用的路由配置。
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Front Door 路由配置结构
 Front Door 传递规则配置由两个主要部分组成：“左侧”和“右侧”。 我们将传入的请求与路由的左侧相匹配，而右侧则定义我们处理请求的方式。
@@ -41,7 +41,7 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 本节将重点介绍我们如何匹配给定的 Front Door 传递规则。 基本概念是始终优先匹配最具体的匹配项，仅查看“左侧”****。  首先基于 HTTP 协议匹配，接下来是前端主机，然后是路径。
 
 ### <a name="frontend-host-matching"></a>前端主机匹配
-在匹配前端主机时，使用如下逻辑：
+匹配前端主机时，使用以下定义的逻辑：
 
 1. 查找主机上具有完全匹配项的任何路由。
 2. 如果没有精确的前端主机匹配项，则拒绝该请求并发送“400 错误请求”错误。

@@ -7,20 +7,20 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP，Azure HANA，存储超磁盘，高级存储
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440688"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449380"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -266,65 +266,9 @@ SAP **/hana/data** 卷的配置：
 
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp 文件上的 NFS v4.1 卷
-Azure NetApp 文件提供可用于 **/hana/shared**、 **/hana/data**和 **/hana/log** 卷的本机 NFS 共享。 对 **/hana/data** 和 **/hana/log** 卷使用基于和的 NFS 共享需要使用版本 4.1 nfs 协议。 如果在和上基于共享，则不支持使用 NFS 协议 v3 作为 **/hana/data** 和 **/hana/log** 卷。 
-
-> [!IMPORTANT]
-> **不**支持在 Azure NetApp 文件上实现的 NFS v3 协议适用于 **/hana/data**和 **/hana/log**。 从功能角度来看，NFS 4.1 对于 **/hana/data** 和 **/hana/log** 卷是必需的。 但对于 **/hana/shared** 卷，nfs V3 或 nfs v2.0 协议可从功能角度来使用。
-
-### <a name="important-considerations"></a>重要注意事项
-在考虑将 Azure NetApp 文件用于 SAP Netweaver 和 SAP HANA 时，请注意以下重要注意事项：
-
-- 最小容量池是 4 TiB。  
-- 最小卷大小为 100 GiB
-- Azure NetApp 文件和所有虚拟机（将装载 Azure NetApp 文件卷）必须位于同一 Azure 虚拟网络中或同一区域中的[对等虚拟网络](../../../virtual-network/virtual-network-peering-overview.md)中。  
-- 所选的虚拟网络必须具有一个委托给 Azure NetApp 文件的子网。
-- Azure NetApp 卷的吞吐量是卷配额和服务级别的函数，如 [Azure NetApp 文件服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量满足 HANA 系统要求。  
-- Azure NetApp 文件提供[导出策略](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)：你可以对允许的客户端、访问类型（读写、只读等）进行控制。 
-- Azure NetApp 文件功能尚没有区域感知性。 当前，Azure NetApp 文件功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域的潜在延迟影响。  
-- 将虚拟机部署在靠近 Azure NetApp 存储的位置以降低延迟，这一点非常重要。 
-- 虚拟机上 sidadm 的用户 ID 和 `sapsys` 的组 ID 必须与 Azure NetApp 文件中的配置相匹配<b></b>。 
-
-> [!IMPORTANT]
-> 对于 SAP HANA 工作负载，低延迟至关重要。 与 Microsoft 代表合作，确保虚拟机和 Azure NetApp 文件卷在邻近的地方部署。  
-
-> [!IMPORTANT]
-> 如果在虚拟机和 Azure NetApp 配置之间，sidadm 的用户 ID 和 `sapsys` 组 ID 不匹配，虚拟机上装载的 Azure NetApp 卷上的文件权限将显示为 `nobody`<b></b>。 在[载入新系统](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)到 Azure NetApp 文件时，请确保指定的 sidadm 的用户 ID 和 `sapsys` 的组 ID<b></b> 准确无误。
-
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>调整 Azure NetApp 文件上的 HANA 数据库的大小
-
-Azure NetApp 卷的吞吐量是卷大小和服务级别的函数，如 [Azure NetApp 文件服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 
-
-在 Azure 中为 SAP 设计基础结构时，应了解 SAP 的一些最低存储吞吐量要求，这可转化为以下最低吞吐量特征：
-
-- 在 I/O 大小为 1 MB、速率为 250 MB/秒的 /hana/log 上启用读/写  
-- 为 16 MB 和 64 MB I/O 大小的 /hana/data 启用至少 400 MB/秒的读取活动  
-- 为 16 MB 和 64 MB I/O 大小的 /hana/data 启用至少 250MB/秒的写入活动  
-
-每 1 TiB 的卷配额的 [Azure NetApp 文件吞吐量限制](../../../azure-netapp-files/azure-netapp-files-service-levels.md)为：
-- 高级存储层-64 MiB/秒  
-- 超级存储层 - 128 MiB/秒  
-
-> [!IMPORTANT]
-> 无论在单个 NFS 卷上部署的容量如何，预计吞吐量都将 1.2-1.4 GB/秒的带宽范围（由虚拟机中的使用者利用）内稳定下来。 这与 ANF 产品/服务的基础体系结构以及围绕 NFS 的相关 Linux 会话限制有关。 [Azure NetApp 文件的性能基准测试结果](../../../azure-netapp-files/performance-benchmarks-linux.md)一文中记录的性能和吞吐量数针对具有多个客户端 VM 的一个共享 NFS 卷而执行，因此具有多个会话。 这种情况不同于我们在 SAP 中测量的情况。 我们针对 NFS 卷衡量单个 VM 的吞吐量的位置。 托管在 ANF 上。
-
-为了满足 SAP 数据和日志的最低吞吐量要求，并根据 `/hana/shared` 准则，建议的大小如下所示：
-
-| 数据量(Volume) | 大小<br /> 高级存储层 | 大小<br /> 超级存储层 | 支持的 NFS 协议 |
-| --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v4.1 |
-| /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
-| /hana/shared | 最大（512 GB，1xRAM），每 4 个辅助角色节点 | 最大（512 GB，1xRAM），每 4 个辅助角色节点 | v3 或 v4.1 |
+有关适用于 HANA 的和的详细信息，请阅读[用于 SAP HANA 的 Azure NetApp 文件上](./hana-vm-operations-netapp.md)的文档 NFS v2.0 卷
 
 
-> [!NOTE]
-> 此处所述 Azure NetApp 文件大小调整建议的目的在于满足 SAP 向其基础设施提供商表达的最低要求。 在实际客户部署和工作负载场景中，这可能还不够。 请将这些建议作为起点，并根据具体工作负载的要求进行调整。  
-
-因此，可以考虑对已为超级磁盘存储列出的 ANF 卷部署类似的吞吐量。 同时请考虑为不同 VM SKU 的卷列出的大小情况，正如超级磁盘表中所做的那样。
-
-> [!TIP]
-> 可以动态调整 Azure NetApp 文件卷的大小，而无需 `unmount` 卷、停止虚拟机或停止 SAP HANA。 这具有灵活性，可同时满足应用程序的预期和不可预见的吞吐量需求。
-
-有关如何使用 ANF 中托管的 NFS v4.1 卷部署带备用节点的 SAP HANA 横向扩展配置的文档，已在以下位置发布：[使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure VM 上进行带备用节点的 SAP HANA 横向扩展](./sap-hana-scale-out-standby-netapp-files-suse.md)。
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure 高级存储的成本意识解决方案

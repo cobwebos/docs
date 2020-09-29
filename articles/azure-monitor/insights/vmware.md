@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090170"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450396"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -133,16 +133,16 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”  。 会缩小信息范围。
 
-![钻取](./media/vmware/eventhostdrilldown.png)
+![VMware 监视仪表板视图中的 "每事件计数" 和 "每事件类型的细分" 的 ESXi 主机的屏幕截图。](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>查找排名靠前的 VM 活动
 可在任何 ESXi 主机上创建和删除虚拟机。 它可以帮助管理员识别 ESXi 主机创建的 VM 数量。 反过来，可帮助了解性能和容量规划。 管理环境时，跟踪 VM 活动事件至关重要。
 
-![钻取](./media/vmware/vmactivities1.png)
+![VMware 监视仪表板中 "虚拟机活动" 边栏选项卡的屏幕截图，其中显示了 ESXi 主机创建和删除 VM 的关系图。](./media/vmware/vmactivities1.png)
 
 如果要查看其他 ESXi 主机 VM 创建数据，请单击 ESXi 主机名。
 
-![钻取](./media/vmware/createvm.png)
+![VMware 监视仪表板中的一个窗格屏幕截图，其中显示了一个表，其中包含每个由 ESXi 主机创建的虚拟机的数据行。](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>常见日志查询
 该解决方案包括可帮助你管理 ESXi 主机的其他有用查询，如高存储空间、存储延迟和路径故障。

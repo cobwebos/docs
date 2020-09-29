@@ -1,5 +1,5 @@
 ---
-title: 自定义策略中的条件性访问技术配置文件
+title: 自定义策略中的条件访问技术配置文件
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 中的条件访问技术配置文件的自定义策略参考。
 services: active-directory-b2c
@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459823"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义条件访问技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) 条件性访问是 Azure AD B2C 使用的工具，可将信号组合在一起，制定决策，并强制实施组织政策。 通过策略条件自动执行风险评估意味着，一旦识别风险登录便可立即修正或阻止。
+Azure AD B2C 使用 Azure Active Directory (Azure AD) 条件访问作为工具来汇集信号、做出决策，以及实施组织策略。 通过策略条件自动执行风险评估意味着，一旦识别风险登录便可立即修正或阻止。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 条件性访问是 Azure AD B2C 使用的工�
 Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
-下面的示例演示了条件性访问技术配置文件：
+以下示例显示了一个条件访问技术配置文件：
 
 ```XML
 <TechnicalProfile Id="ConditionalAccessEvaluation">
@@ -45,44 +45,44 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
   </Metadata>
 ```
 
-## <a name="conditional-access-evaluation"></a>条件性访问评估
+## <a name="conditional-access-evaluation"></a>条件访问评估
 
-对于每次登录，Azure AD B2C 会评估所有策略，并确保在授予用户访问权限之前满足所有要求。 "阻止访问" 将覆盖所有其他配置设置。 条件性访问技术配置文件的 **评估** 模式将评估在使用本地帐户登录期间 Azure AD B2C 收集的信号。 条件性访问技术配置文件的结果是一组由条件性访问评估生成的声明。 Azure AD B2C 策略在下一个业务流程步骤中使用这些声明来执行操作，如阻止用户或使用多重身份验证质询用户。 可以为该模式配置以下选项。
+每次登录时，Azure AD B2C 都会评估所有策略，确保只有满足所有要求时才向该用户授予访问权限。 “阻止访问”优先于所有其他配置设置。 在使用本地帐户登录期间，条件访问技术配置文件的“评估”模式会评估 Azure AD B2C 收集的信号。 条件访问技术配置文件的结果是一组由条件访问评估生成的声明。 Azure AD B2C 策略在下一个业务流程步骤中使用这些声明来执行操作，例如阻止用户或使用多重身份验证对用户进行质询。 可以为该模式配置以下选项。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 | Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| OperationType | 是 | 必须为 **计算**。  |
+| OperationType | 是 | 必须是 **Evaluation**。  |
 
 ### <a name="input-claims"></a>输入声明
 
-**InputClaims**元素包含要发送到条件访问的声明的列表。 你还可以将你的声明的名称映射到条件访问技术配置文件中定义的名称。
+**InputClaims** 元素包含要发送到条件访问的声明的列表。 还可将声明名称映射到条件访问技术配置文件中定义的名称。
 
 | ClaimReferenceId | 必须 | 数据类型 | 说明 |
 | --------- | -------- | ----------- |----------- |
-| UserId | 是 | string | 登录的用户的标识符。 |
-| AuthenticationMethodsUsed | 是 |stringCollection | 用户用于登录的方法的列表。 可能的值： `Password` 、和 `OneTimePasscode` 。 |
-| IsFederated | 是 |boolean | 指示用户是否已使用联合帐户登录。 值必须是 `false`。 |
-| IsMfaRegistered | 是 |boolean | 指示用户是否已为多重身份验证注册了电话号码。 |
+| UserId | 是 | 字符串 | 登录的用户的标识符。 |
+| AuthenticationMethodsUsed | 是 |stringCollection | 用户用于登录的方法列表。 可能的值：`Password` 和 `OneTimePasscode`。 |
+| IsFederated | 是 |boolean | 指示用户是否使用了联合帐户登录。 值必须是 `false`。 |
+| IsMfaRegistered | 是 |boolean | 指示用户是否已注册了用于多重身份验证的电话号码。 |
 
 
-**InputClaimsTransformations**元素可包含**InputClaimsTransformation**元素的集合，这些元素用于修改输入声明或生成新输入声明，然后将它们发送到条件访问服务。
+InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation 元素，这些元素用于修改输入声明，或者用于生成新的声明并将其发送到条件访问服务。 
 
 ### <a name="output-claims"></a>输出声明
 
-**OutputClaims**元素包含 ConditionalAccessProtocolProvider 生成的声明列表。 还可将声明名称映射到下面定义的名称。
+**OutputClaims** 元素包含由 ConditionalAccessProtocolProvider 生成的声明列表。 还可将声明名称映射到下面定义的名称。
 
 | ClaimReferenceId | 必须 | 数据类型 | 说明 |
 | --------- | -------- | ----------- |----------- |
-| 挑战 | 是 |stringCollection | 用于修正确定的威胁的操作列表。 可能的值： `block` |
+| 挑战 | 是 |stringCollection | 用于修正查明的威胁的操作列表。 可能的值：`block` |
 | MultiConditionalAccessStatus | 是 | stringCollection |  |
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
 ### <a name="example-evaluation"></a>示例：计算
 
-以下示例演示了用于评估登录威胁的条件性访问技术配置文件。
+以下示例展示了用于评估登录威胁的条件访问技术配置文件。
 
 ```XML
 <TechnicalProfile Id="ConditionalAccessEvaluation">
@@ -92,7 +92,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
     <Item Key="OperationType">Evaluation</Item>
   </Metadata>
   <InputClaimsTransformations>
-    <InputClaimsTransformation ReferenceId="IsMfaRegistered" />
+    <InputClaimsTransformation ReferenceId="IsMfaRegisteredCT" />
   </InputClaimsTransformations>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="UserId" />
@@ -109,35 +109,35 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ## <a name="remediation"></a>补救
 
-条件性访问技术配置文件的 **更正** 模式通知 Azure AD B2C 已纠正登录识别的威胁。 可以为修正模式配置以下选项。
+条件访问技术配置文件的“修正”模式会告知 Azure AD B2C 已修正登录过程中查明的威胁。 可以为修正模式配置以下选项。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 | Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| OperationType | 是 | 必须是 **修正**。  |
+| OperationType | 是 | 必须是 **Remediation**。  |
 
 ### <a name="input-claims"></a>输入声明
 
-**InputClaims**元素包含要发送到条件访问的声明的列表。 你还可以将你的声明的名称映射到条件访问技术配置文件中定义的名称。
+**InputClaims** 元素包含要发送到条件访问的声明的列表。 还可将声明名称映射到条件访问技术配置文件中定义的名称。
 
 | ClaimReferenceId | 必须 | 数据类型 | 说明 |
 | --------- | -------- | ----------- |----------- |
-| ChallengesSatisfied | 是 | stringCollection| 解决已识别的威胁（作为从评估模式返回的挑战声明）的一系列满足的挑战。|
+| ChallengesSatisfied | 是 | stringCollection| 满足的质询列表（质询声明），用于修正从评估模式返回的已查明威胁。|
 
 
-**InputClaimsTransformations**元素可包含**InputClaimsTransformation**元素的集合，这些元素用于修改输入声明，或在调用条件访问服务之前生成新输入声明。
+InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation 元素，这些元素用于修改输入声明，或者用于在调用条件访问服务之前生成新的声明。 
 
 ### <a name="output-claims"></a>输出声明
 
-条件访问协议提供程序不返回任何 **OutputClaims**，因此无需指定输出声明。 但是，只要设置了属性，就可以包括条件访问协议提供程序未返回的声明 `DefaultValue` 。
+条件访问协议提供程序不返回任何 **OutputClaims**，因此无需指定输出声明。 但是，只要设置了 `DefaultValue` 属性，就可以包含条件访问协议提供程序不会返回的声明。
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
 
-### <a name="example-remediation"></a>示例：修正
+### <a name="example-remediation"></a>示例：补救
 
-以下示例显示了用于修正确定威胁的条件性访问技术配置文件：
+以下示例展示了用于修正所查明的威胁的条件访问技术配置文件：
 
 ```XML
 <TechnicalProfile Id="ConditionalAccessRemediation">
@@ -152,7 +152,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 </TechnicalProfile>
 ```
 
-若要使此示例正常工作，请将以下示例中所示的声明添加到扩展文件中的 ClaimsSchema 部分：
+若要使此示例正常工作，请将以下示例中所示的声明添加到扩展文件中的 ClaimsSchema 节：
 
 ```XML
 <!-- Conditional Access claims  -->
@@ -327,7 +327,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ```
 
-在 TrustFrameworkPolicy 元素中，添加以下示例中所示的 SubJourneys：
+在 TrustFrameworkPolicy 元素中，添加以下示例中所示的这些 SubJourney：
 
 ```xml
   <SubJourneys>
@@ -367,16 +367,17 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
         </OrchestrationStep>
       </OrchestrationSteps>
     </SubJourney>
+  </SubJourneys>
 
 ```
 
-添加使用新声明的用户旅程，如以下示例中所示：
+添加使用新声明的用户旅程，如以下示例所示：
 
 ```xml
   <UserJourneys>
     <UserJourney Id="SignUpOrSignInWithCA">
       <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninsam">
+        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
           <ClaimsProviderSelections>
             <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
 
@@ -412,20 +413,14 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="4" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="UserJourneyContext" TechnicalProfileReferenceId="SimpleUJContext" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-
-        <OrchestrationStep Order="5" Type="InvokeSubJourney">
+        <OrchestrationStep Order="4" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Evaluation" />
           </JourneyList>
         </OrchestrationStep>
 
         <!--MFA based on Conditional Access-->
-        <OrchestrationStep Order="6" Type="ClaimsExchange">
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsMfa</Value>
@@ -443,7 +438,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
         </OrchestrationStep>
 
         <!--Save MFA phone number: The precondition verifies whether the user provided a new number in the previous step. If so, the phone number is stored in the directory for future authentication requests.-->
-        <OrchestrationStep Order="7" Type="ClaimsExchange">
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>newPhoneNumberEntered</Value>
@@ -455,7 +450,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="8" Type="ClaimsExchange" >
+        <OrchestrationStep Order="7" Type="ClaimsExchange" >
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
@@ -474,12 +469,12 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
         <!--If a user has reached this point, this means a remediation was applied-->
         <!--  You can add a precondition here to call remediation only if a Conditional Access challenge was issued-->
-        <OrchestrationStep Order="9" Type="InvokeSubJourney">
+        <OrchestrationStep Order="8" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Remediation" />
           </JourneyList>
         </OrchestrationStep>
-        <OrchestrationStep Order="10" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="9" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280974"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450065"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -209,6 +209,9 @@ ms.locfileid: "91280974"
     ```
 
     如果不包含前导正斜杠“/”，则需要为计算目标上的工作目录添加前缀（例如 `/mnt/batch/.../tmp/dataset`），以指示要将数据集装载到的位置。
+
+### <a name="mount-dataset"></a>装载数据集
+* **数据集初始化失败：正在等待装入点准备就绪**：已在中添加了重新尝试逻辑 `azureml-sdk >=1.12.0` 以缓解此问题。 如果你在以前的 azureml sdk 版本上，请升级到最新版本。 如果已打开 `azureml-sdk>=1.12.0` ，请重新创建你的环境，以便提供修补程序的最新修补程序。
 
 ### <a name="data-labeling-projects"></a>数据标签项目
 

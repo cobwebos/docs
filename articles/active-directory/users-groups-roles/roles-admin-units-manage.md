@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1166d2ad17aea97a4dd7fdda53c42d6b3df75936
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264677"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450362"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理单元
 
@@ -33,9 +33,6 @@ ms.locfileid: "91264677"
 
     ![显示指向 "授予管理员许可" 的链接的屏幕截图](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    b. 在图形资源管理器中，选择 **beta** 版本。
-
-    ![显示所选测试版的屏幕截图](./media/roles-admin-units-manage/select-beta-version.png)
 
 1. 使用 Azure AD PowerShell 的预览版本。
 
@@ -59,7 +56,7 @@ ms.locfileid: "91264677"
 
 ```powershell
 Connect-AzureAD
-New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 ```
 
 可以根据需要修改用引号引起来的值。
@@ -91,8 +88,8 @@ Request body
 ### <a name="use-powershell"></a>使用 PowerShell
 
 ```powershell
-$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 ```
 
 可以根据特定环境的需要修改用引号引起来的值。

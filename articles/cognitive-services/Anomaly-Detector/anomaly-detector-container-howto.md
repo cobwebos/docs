@@ -1,33 +1,38 @@
 ---
-title: 如何使用异常探测器 API 安装和运行容器
+title: 为异常探测器 API 安装并运行 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 了解如何安装和使用适用于异常探测器 API 高级算法的容器。
+description: 使用异常探测器 API 算法，通过 Docker 容器查找本地数据中的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: 本地、Docker、容器、流式处理、算法
+ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903544"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459994"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>安装并运行异常检测器容器 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>为异常探测器 API 安装并运行 Docker 容器 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-异常检测器具有以下容器功能：
+容器使你可以使用你自己的环境中的异常探测器 API。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装和运行异常探测器容器。
 
-| 功能 | 功能 |
-|--|--|
-| 异常检测器 | <li> 实时检测异常情况。 <li> 在整个数据集中以批处理方式检测异常。 <li> 检测数据集中的趋势更改点作为批次。<li> 推断数据的预期正常范围。 <li> 支持异常情况检测敏感度调整，以便更好地适应数据。 |
+异常探测器提供单个 Docker 容器，可用于在本地使用 API。 使用容器可以执行以下操作：
+* 对数据使用异常探测器的算法
+* 监视流式处理数据，并在实时发生异常时对其进行检测。
+* 以批的形式检测整个数据集中的异常。 
+* 以批处理方式检测数据集中的趋势更改点。
+* 调整异常情况检测算法的敏感度，以更好地适应数据。
 
-有关 Api 的详细信息，请参阅：
+有关 API 的详细信息，请参阅：
 * [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。

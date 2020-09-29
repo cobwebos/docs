@@ -9,39 +9,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: b36852e27f6aa3a909dd645c19a12c55e082b761
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 948cf3c65dfdc912f2f807dfac34076985f1bc89
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399321"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449185"
 ---
 # <a name="routing-architecture-overview"></a>路由体系结构概述
 
-Azure 前门接收客户端请求时，它会将其应答 (如果启用了缓存) 或将其转发到相应的应用程序后端 (作为反向代理) 。
-
-</br>路由到 Azure Front Door 或路由到后端有可能使通信流得到优化。
+当 Azure 前门接收客户端请求时，它将执行以下两项操作之一。 如果启用缓存，或将其转发到相应的应用程序后端作为反向代理，则可以回答这些问题。
 
 ## <a name="selecting-the-front-door-environment-for-traffic-routing-anycast"></a><a name = "anycast"></a>选择 Front Door 环境来实现流量路由（任意广播）
 
-路由到 Azure Front Door 环境这种方式将[任意广播](https://en.wikipedia.org/wiki/Anycast)同时用于 DNS（域名系统）和 HTTP（超文本传输协议）流量，这样用户流量会依照网络拓扑转到最近的环境（跃点最少）。 此体系结构通常可为最终用户优化所需的往返时间（最大程度发挥拆分 TCP 的优势）。 Front Door 将其环境组织为主“环”和回退“环”。  外环提供更接近用户的环境，延迟较低。  内环中的环境可在外环环境发生问题时为其执行故障转移。 外环是所有流量的首选目标，但需要使用内环来处理来自外环的流量溢出。 就 VIP（虚拟 Internet 协议地址）而言，会向每个前端主机或由 Front Door 提供的域分配一个主 VIP（由内环和外环中的环境发布）和一个回退 VIP（仅由内环中的环境发布）。 
+路由到 Azure 前门环境的流量对 DNS (域名系统) 和 HTTP (超文本传输协议) 流量使用 [任意播](https://en.wikipedia.org/wiki/Anycast) ，这允许用户请求在最少的网络跃点中到达最接近的环境。 此体系结构通过最大程度地提高拆分 TCP 的优点，为最终用户提供更好的往返时间。 Front Door 将其环境组织为主“环”和回退“环”。 外环提供更接近用户的环境，延迟较低。  内部环具有可处理外部环形环境故障转移的环境，以防出现任何问题。 外环是所有流量的首选目标，内部环是处理来自外部环的流量溢出。 由前门提供的每个前端主机或域都为虚拟 Internet 协议地址 (虚拟 Internet 协议地址) ，该地址由内部和外部环中的环境公布。 回退 VIP 仅由内环中的环境公布。 
 
-</br>此整体策略可确保来自最终用户的请求始终能够到达最近的 Front Door 环境，且即使首选的 Front Door 环境处于不良状态，流量也能够自动移动到下一个最近的环境。
+此体系结构可确保来自最终用户的请求始终到达最近的前门环境。 即使首选前门环境不正常，所有流量也会自动转移到下一个最近的环境。
 
 ## <a name="connecting-to-front-door-environment-split-tcp"></a><a name = "splittcp"></a>连接到 Front Door 环境（拆分 TCP）
 
-[拆分 TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) 是一种用于减少延迟和 TCP 问题的技术，其原理是将会产生较长往返时间的连接拆分成较小片段。  通过将 Front Door 环境设置在较接近最终用户的位置并在 Front Door 环境内部终止 TCP 连接，可将一个产生较长往返时间 (RTT) 的 TCP 连接（到应用程序后端）拆分为两个 TCP 连接。 最终用户与前门环境之间的短连接意味着连接是通过三次短往返建立的，而不是以三长时间往返，从而节省了延迟。  Front Door 环境和后端之间的长连接可预先建立并可跨多个最终用户调用重复使用，同样节省了 TCP 连接时间。  如果建立的是 SSL/TLS（传输层安全性）连接，效果将倍增，因为会通过更多往返行程来确保连接的安全性。
+[拆分 TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) 是一种用于减少延迟和 TCP 问题的技术，其原理是将会产生较长往返时间的连接拆分成较小片段。 当前门环境离最终用户更近时，TCP 连接将在前门环境内终止。 在应用程序后端)  (RTT 较长的 TCP 连接拆分为两个单独的连接。 最终用户与前门环境之间的 "短连接" 意味着连接是通过三次短行程（而不是三次往返行程）建立的，这会导致节省滞后时间。 前门环境和后端之间的 "长连接" 可以是预先建立的，然后跨其他最终用户重新使用请求可节省连接时间。 在建立 SSL/TLS (传输层安全性) 连接时，拆分 TCP 的影响将会成倍增加，因为需要更多的往返行程来保护连接。
 
 ## <a name="processing-request-to-match-a-routing-rule"></a>处理请求时将其与路由规则进行匹配
-建立连接并执行 TLS 握手后，当请求落在前门环境中时，第一步是匹配路由规则。 此匹配基本上是指根据 Front Door 中的所有配置确定将请求与哪个特定路由规则进行匹配。 阅读和详细了解 Front Door 如何执行[路由匹配](front-door-route-matching.md)。
+建立连接并完成 TLS 握手后，请求落在前门环境之后的第一步是将其与路由规则进行匹配。 匹配由前门上的配置确定，特定的路由规则与请求匹配。 阅读和详细了解 Front Door 如何执行[路由匹配](front-door-route-matching.md)。
 
 ## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>确定后端池中可用于路由规则的后端
-Front Door 基于传入的请求找到路由规则的匹配项后，如果没有缓存，则下一步是提取与匹配的路由关联的后端池的运行状况探测状态。 阅读和详细了解 Front Door 如何使用[运行状况探测](front-door-health-probes.md)监视后端运行状况。
+当前门满足传入请求的路由规则后，下一步是获取与路由规则关联的后端池的运行状况探测状态（如果没有缓存）。 阅读和详细了解 Front Door 如何使用[运行状况探测](front-door-health-probes.md)监视后端运行状况。
 
 ## <a name="forwarding-the-request-to-your-application-backend"></a>将请求转发到应用程序后端
-最后，假设没有配置缓存，系统会基于 [Front Door 路由方法](front-door-routing-methods.md)配置将用户请求转发到“最佳”后端。
+最后，假设未配置缓存，用户请求将根据 [路由方法](front-door-routing-methods.md) 配置转发到 "最佳" 后端。
 
 ## <a name="next-steps"></a>后续步骤
 

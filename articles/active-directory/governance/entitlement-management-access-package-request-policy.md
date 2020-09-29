@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980238"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449971"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 权限管理中更改访问包的请求设置
 
@@ -125,8 +125,8 @@ ms.locfileid: "90980238"
     |  |  |
     | --- | --- |
     | **特定的已连接的组织** | 如果要从管理员之前添加的组织列表中选择，请选择此选项。 来自选定组织的所有用户都可以请求此访问包。 |
-    | **所有已连接的组织** | 如果所有已连接的组织的用户都可以请求此访问包，请选择此选项。 |
-    | **所有用户（所有已连接的组织 + 任何新外部用户）** | 如果来自所有已连接的组织的所有用户都可以请求此访问包，并且 B2B 允许或拒绝列表设置对于任何新的外部用户都应优先，请选择此选项。 |
+    | **所有已配置的已连接组织** | 如果所有已配置连接的组织中的所有用户都可以请求此访问包，请选择此选项。 只有已配置的连接的组织中的用户可以请求从所有配置的组织向用户显示的访问包。 |
+    | **所有用户（所有已连接的组织 + 任何新外部用户）** | 如果 internet 上的任何用户应该能够请求此访问包，请选择此选项。  如果用户不属于目录中的已连接组织，则在请求包时将自动为其创建连接的组织。 自动创建的连接的组织将处于 "已 **建议** " 状态。 有关建议状态的详细信息，请参阅 [已连接组织的状态属性](entitlement-management-organization.md#state-properties-of-connected-organizations)。 |
 
     已连接的组织是与你有关系的外部 Azure AD 目录或域。
 

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7ca15baffd3fac4a1f3635ac7377bac620673446
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376558"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451533"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "91376558"
 5. 打开项目设置编辑器的“生成设置”选项卡，滚动到“搜索路径”部分 。 为包含 AzureCommunicationCalling.framework 的目录添加新的“框架搜索路径”条目 。
     1. 添加另一个指向包含依赖项的文件夹的“框架搜索路径”条目。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="显示在 XCode 中更新框架搜索路径的屏幕截图。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="显示 Xcode 中的创建新项目窗口的屏幕截图。":::
 
 ### <a name="request-access-to-the-microphone"></a>请求访问麦克风
 
@@ -113,7 +113,7 @@ public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ let call = self.callAgent?.join(with: groupCallContext, joinCallOptions: ACSJoin
 - 步骤2： Xcode & 功能 > 签名-> 添加功能 > "后台模式"
 - 步骤3： "背景模式"-> 选择 "语音 over IP" 和 "远程通知"
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="显示如何在 Xcode 中添加功能的屏幕截图。" lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="显示 Xcode 中的创建新项目窗口的屏幕截图。" lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>注册推送通知
 

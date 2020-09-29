@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480447"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449784"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>使用工作簿创建用于 VM 的 Azure Monitor 的交互式报表
 
@@ -44,29 +44,29 @@ ms.locfileid: "79480447"
 
 工作簿由可单独编辑的图表、表格、文本和输入控件构成的各部分组成。 为了更好地理解工作簿，首先让我们打开一个模板，并逐步创建一个自定义工作簿。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 选择 "**虚拟机**"。
+2. 选择 " **虚拟机**"。
 
 3. 从列表中选择一个虚拟机。
 
-4. 在 "VM" 页上的 "**监视**" 部分中，选择 " **Insights**"。
+4. 在 "VM" 页上的 " **监视** " 部分中，选择 " **Insights**"。
 
-5. 在 VM 见解页面上选择“性能”或“映射”选项卡，然后通过页面上的链接选择“查看工作簿”。************ 从下拉列表中，选择 "**前往库**"。
+5. 在 VM 见解页面上选择“性能”或“映射”选项卡，然后通过页面上的链接选择“查看工作簿”。************ 从下拉列表中，选择 " **前往库**"。
 
     ![工作簿下拉列表屏幕截图](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
     这会启动工作簿库，其中包含许多预生成的工作簿以帮助你入门。
 
-7. 通过选择 "**新建**" 创建新的工作簿。
+7. 通过选择 " **新建**" 创建新的工作簿。
 
     ![工作簿库的屏幕截图](media/vminsights-workbooks/workbook-gallery-01.png)
 
 ## <a name="editing-workbook-sections"></a>编辑工作簿部分
 
-工作簿具有两种模式：编辑模式和阅读模式********。 首次启动新工作簿时，它将在**编辑模式下**打开。 它会显示工作簿的所有内容，其中包括以任何方式隐藏的任何步骤和参数。 **阅读模式**提供了简化的报表样式视图。 在阅读模式下，可以免去创建报告时所遇到的复杂性，同时仍保留相应的基础机制，即只需几次单击即可进行修改。
+工作簿具有两种模式：编辑模式和阅读模式********。 首次启动新工作簿时，它将在 **编辑模式下**打开。 它会显示工作簿的所有内容，其中包括以任何方式隐藏的任何步骤和参数。 **阅读模式**提供了简化的报表样式视图。 在阅读模式下，可以免去创建报告时所遇到的复杂性，同时仍保留相应的基础机制，即只需几次单击即可进行修改。
 
-![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![中的 "虚拟机工作簿" 部分的屏幕截图 Azure Monitor 在编辑模式下显示一个新工作簿，其中突出显示了编辑控件。](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
 1. 完成编辑某个部分后，单击该部分左下角的“完成编辑”****。
 
@@ -96,13 +96,13 @@ ms.locfileid: "79480447"
 
 此外，不仅限于在通过工作簿启动的虚拟机的上下文中进行查询。 可以跨多个虚拟机以及 Log Analytics 工作区查询，前提是你对这些资源拥有访问权限。
 
-使用**工作区**标识符包含其他 Log Analytics 工作区或特定 Application Insights 应用中的数据。 若要了解有关跨资源查询的详细信息，请参阅[官方指导](../log-query/cross-workspace-query.md)。
+使用**工作区**标识符包含其他 Log Analytics 工作区或特定 Application Insights 应用中的数据。 若要了解有关跨资源查询的详细信息，请参阅 [官方指导](../log-query/cross-workspace-query.md)。
 
 ### <a name="advanced-analytic-query-settings"></a>高级分析查询设置
 
 每个部分都有自己的高级设置，可通过位于“添加参数”按钮右侧的![工作簿部分编辑控件](media/vminsights-workbooks/006-settings.png)图标设置访问****。
 
-![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/007-settings-expanded.png)
+![Azure Monitor 的 "虚拟机" 工作簿部分中的 "高级设置" 对话框的屏幕截图。 此时将突出显示此对话框。](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -118,11 +118,11 @@ ms.locfileid: "79480447"
 
 工作簿的第一部分基于日志查询数据。 第个部分也基于日志查询数据，但在第一个表中选择某一行将交互更新图表的内容：
 
-![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Azure Monitor 显示预生成的工作簿 TCP 流量的 "虚拟机" 部分的屏幕截图。](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 可以通过使用在表格的日志查询中启用的高级设置“选择项目后，导出参数”实现该行为****。
 
-![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/009-settings-export.png)
+![处于选中状态的虚拟机工作簿的 "高级设置" 对话框的屏幕截图。](media/vminsights-workbooks/009-settings-export.png)
 
 然后，在选择某个行创建部分标题和图表使用的一组值时，第二个日志查询将利用导出的值。 如果未选择任何行，则会隐藏部分标题和图表。 
 
@@ -141,7 +141,7 @@ VMConnection
 
 下例是关于被拉取到工作簿中以提供 CPU 性能的网格可视化效果的虚拟机数据：
 
-![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/010-metrics-grid.png)
+![Azure Monitor 中虚拟机工作簿的 "指标" 部分的屏幕截图。 每个虚拟机的 CPU 性能以图形方式显示。](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>添加参数部分
 
@@ -155,7 +155,7 @@ VMConnection
 
 |                  |      |
 | ---------------- |:-----|
-| **文本**    | 允许用户编辑文本框，你可以选择提供一个查询用于填充默认值。 |
+| **Text**    | 允许用户编辑文本框，你可以选择提供一个查询用于填充默认值。 |
 | **下拉列表** | 允许用户从一组值中进行选择。 |
 | **时间范围选取器**| 允许用户从一组预定义的时间范围值中选择，或者从自定义时间范围内选择。|
 | **资源选取器** | 允许用户从为工作簿所选资源中选择。|
@@ -164,7 +164,7 @@ VMConnection
 
 用户在文本框中输入的值将直接在查询中替换，不带任何转义或引号。 如果所需值为字符串，则查询应该在参数周围采用引号（如 '{parameter}'）****。
 
-文本参数允许在任意位置使用文本框中的值。 它可以是表名称、列名称、函数名称、运算符等。 Text 参数类型有一个 "**通过 analytics 查询获取默认值**" 选项，该选项允许工作簿作者使用查询来填充该文本框的默认值。
+文本参数允许在任意位置使用文本框中的值。 它可以是表名称、列名称、函数名称、运算符等。 Text 参数类型有一个 " **通过 analytics 查询获取默认值**" 选项，该选项允许工作簿作者使用查询来填充该文本框的默认值。
 
 使用日志查询中的默认值时，仅第一行的第一个值（行 0，列 0）用作默认值。 因此建议限制查询，以仅返回一行和一列。 忽略由查询返回的其他任何数据。 
 
@@ -180,11 +180,11 @@ VMConnection
 
 让我们看看“连接概述”报告中提供的参数。 单击“方向”旁边的编辑符号****。
 
-![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![用于在 Azure Monitor 中添加和编辑报表参数的部分的屏幕截图。 选择 "方向" 参数的编辑图标。](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
-这将启动**编辑参数**菜单项。
+这将启动 **编辑参数** 菜单项。
 
-![用于 VM 的 Azure Monitor 工作簿部分编辑控件](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+!["编辑参数" 对话框的屏幕截图。 参数名称为 "方向"，参数类型为 "下拉"，并选择 "从 JSON 获取数据"。](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 使用 JSON 可以生成填充了内容的任意表。 例如，以下 JSON 在下拉列表中生成两个值：
 

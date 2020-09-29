@@ -6,13 +6,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
+ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ed5c7eee1e8261c65decba4748e1d9c6a4d7212b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319348"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459806"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用资源日志排查 Azure 流分析问题
 
@@ -65,7 +66,7 @@ ms.locfileid: "87319348"
 
     ![在边栏选项卡中导航到资源日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 "**诊断设置**" "名称" 中提供一个**名称**，并在 "**日志**" 下选中 "**执行**和**创作**" 框，然后**在 "** **AllMetrics** " 然后选择 "**发送到 Log Analytics** " 并选择工作区。 单击 **“保存”** 。
+2.  在 "**诊断设置**" "名称" 中提供一个**名称**，并在 "**日志**" 下选中 "**执行**和**创作**" 框，然后**在 "** **AllMetrics** " 然后选择 " **发送到 Log Analytics** " 并选择工作区。 单击“ **保存**”。
 
     ![资源日志设置](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
@@ -73,7 +74,7 @@ ms.locfileid: "87319348"
 
    ![“监视”下的“资源日志”](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. 流分析提供预定义的查询，使你可以轻松搜索感兴趣的日志。 您可以在左窗格中选择任意预定义的查询，然后选择 "**运行**"。 你将在底部窗格中看到查询结果。 
+4. 流分析提供预定义的查询，使你可以轻松搜索感兴趣的日志。 您可以在左窗格中选择任意预定义的查询，然后选择 " **运行**"。 你将在底部窗格中看到查询结果。 
 
    ![“监视”下的“资源日志”](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
@@ -115,7 +116,7 @@ properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 
 名称 | 说明
 ------- | -------
 Source | 发生错误的作业输入或输出的名称。
-消息 | 与错误关联的消息。
+Message | 与错误关联的消息。
 类型 | 错误类型。 例如，DataConversionError****、CsvParserError**** 和 ServiceBusPropertyColumnMissingError ****。
 数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 

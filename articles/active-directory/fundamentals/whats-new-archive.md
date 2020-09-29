@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/28/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d89a75c0d917fc1416fcb5d54b7c7df5ef5f5dea
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319196"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449985"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -33,7 +33,161 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 - 更改计划
 
 ---
- ## <a name="february-2020"></a>2020 年 2 月
+
+ ## <a name="march-2020"></a>2020 年 3 月
+
+### <a name="unmanaged-azure-active-directory-accounts-in-b2b-update-for-march--2021"></a>2021年3月的 B2B 更新中的非托管 Azure Active Directory 帐户
+
+**类型：** 更改计划  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+**从2021年3月31日开始**，Microsoft 将不再支持通过创建非托管 Azure Active Directory (AZURE AD 用于 B2B 协作方案的) 帐户和租户来兑换邀请。 为此，我们建议你选择加入 [电子邮件一次性密码身份验证](../external-identities/one-time-passcode.md)。
+
+---
+
+### <a name="users-with-the-default-access-role-will-be-in-scope-for-provisioning"></a>具有默认访问角色的用户将处于预配范围内
+
+**类型：** 更改计划  
+**服务类别：** 应用预配  
+**产品功能：** 标识生命周期管理
+ 
+在过去，具有默认访问角色的用户已超出预配的范围。 我们已经注意到，客户希望具有此角色的用户在预配范围内提供反馈。 我们正在努力部署更改，以便所有新的预配配置都允许设置具有默认访问角色的用户。 我们将逐步更改现有预配配置的行为，以支持设置具有此角色的用户。 无需任何客户操作。 完成此更改后，我们会将更新发布到 [文档](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md) 。
+
+---
+
+### <a name="azure-ad-b2b-collaboration-will-be-available-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet-tenants"></a>Azure AD B2B 协作将在由世纪互联 (Azure 中国世纪互联) 租户 Microsoft Azure 运营
+
+**类型：** 更改计划  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+Azure AD B2B 协作功能将在由世纪互联 (Azure 中国世纪互联的 Microsoft Azure 运营) 租户中提供，使 Azure 中国世纪互联租户中的用户无缝与其他 Azure 中国世纪互联租户中的用户进行协作。 [详细了解 AZURE AD B2B 协作](/azure/active-directory/b2b/)。
+
+---
+ 
+### <a name="azure-ad-b2b-collaboration-invitation-email-redesign"></a>Azure AD B2B 协作邀请电子邮件重新设计
+
+**类型：** 更改计划  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+Azure AD B2B 协作邀请服务发送的 [电子邮件](../external-identities/invitation-email-elements.md) 将用户邀请到目录，以使邀请信息和用户的后续步骤更清晰。
+
+---
+
+### <a name="homerealmdiscovery-policy-changes-will-appear-in-the-audit-logs"></a>Homerealmdiscovery.aspx 策略更改将显示在审核日志中
+
+**类型：** 已修复  
+**服务类别：** 审核  
+**产品功能：** 监视和报告
+ 
+我们修复了一个 bug，即审核日志中未包含对 [homerealmdiscovery.aspx 策略](../manage-apps/configure-authentication-for-federated-users-portal.md) 所做的更改。 现在，你将能够查看策略更改的时间和方式，以及更改者。 
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---march-2020"></a>Azure AD 应用库中提供了新的联合应用程序-2020 年3月
+
+**类型：** 新功能  
+**服务类别：** 企业应用  
+**产品功能：** 第三方集成
+ 
+2020年3月向应用程序库添加了这些支持联合身份验证的51新应用： 
+
+[Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)， [Zoho 一](../saas-apps/zoho-one-china-tutorial.md)， [PlusPlus](https://test.plusplus.app/auth/login/azuread-outlook/)， [Profit.co SAML 应用](../saas-apps/profitco-saml-app-tutorial.md)程序， [IPoint 服务提供商](../saas-apps/ipoint-service-provider-tutorial.md)， [contexxt.ai 球](https://contexxt-sphere.com/login)，[按 Invictus](../saas-apps/wisdom-by-invictus-tutorial.md)， [Flare 数字告示](https://spark-dev.pixelnebula.com/login)， [Logz.io-云可观察性，适用于工程师](../saas-apps/logzio-cloud-observability-for-engineers-tutorial.md)， [SpectrumU](../saas-apps/spectrumu-tutorial.md)， [BizzContact](https://bizzcontact.app/)，Elqano [SSO](../saas-apps/elqano-sso-tutorial.md) [Campus Café](../saas-apps/campus-cafe-tutorial.md)，MarketSignShare， [CrossKnowledge Learning Suite](../saas-apps/crossknowledge-learning-suite-tutorial.md)， [Netvision Compas](../saas-apps/netvision-compas-tutorial.md)， [FCM](../saas-apps/fcm-hub-tutorial.md)，Byggeweb [MarketSignShare](http://www.signshare.com/) [，GoLinks](../saas-apps/datadog-tutorial.md) [B2B 用户门户](../saas-apps/zscaler-b2b-user-portal-tutorial.md) [，](https://apps.apple.com/us/app/docia/id529058757)[升降](../saas-apps/lift-tutorial.md) [，](../saas-apps/golinks-tutorial.md) [Planview Enterprise One](../saas-apps/planview-enterprise-one-tutorial.md) [，Datadog，](https://www.devfinition.com/)Zscaler [，](https://demo.asterapp.io/login)技能[工作流，](../saas-apps/skills-workflow-tutorial.md)节点[见解，](https://admin.nodeinsight.com/AADLogin.aspx)IP[平台，](../saas-apps/ip-platform-tutorial.md)InVision [，](../saas-apps/invision-tutorial.md)Pipedrive [，](../saas-apps/pipedrive-tutorial.md)展示[研讨会，](https://app.showcaseworkshop.com/)Greenlight[集成平台，](../saas-apps/greenlight-integration-platform-tutorial.md)Greenlight[相容访问管理，](../saas-apps/greenlight-compliant-access-management-tutorial.md)Grok[学习，](../saas-apps/grok-learning-tutorial.md)Miradore[联机，](https://login.online.miradore.com/)Khoros[护理，](../saas-apps/khoros-care-tutorial.md)AskYourTeam [，](../saas-apps/askyourteam-tutorial.md)TruNarrative [，](../saas-apps/trunarrative-tutorial.md)Smartwaiver [，](https://www.smartwaiver.com/m/user/sw_login.php?wms_login)Bizagi [Studio for 数字流程自动化，](../saas-apps/bizagi-studio-for-digital-process-automation-tutorial.md)insuiteX [，](https://www.insuite.jp/)sybo，Britive， [WhosOffice，](../saas-apps/whosoffice-tutorial.md)Kollective [，](../saas-apps/korn-ferry-360-tutorial.md)Witivio [，](https://portal.kollective.app/login) [Playvox，Korn](https://www.systexsoftware.com.tw/) [，](https://app.witivio.com/)[运送，捕获点](../saas-apps/e-days-tutorial.md) [，](../saas-apps/code42-tutorial.md) [Code42，](../saas-apps/britive-tutorial.md)， [Playvox](https://my.playvox.com/login) [，](../saas-apps/catchpoint-tutorial.md)360
+
+有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
+
+---
+
+### <a name="azure-ad-b2b-collaboration-available-in-azure-government-tenants"></a>Azure 政府租户中提供 Azure AD B2B 协作
+
+**类型：** 新功能  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+Azure AD B2B 协作功能现已在一些 Azure 政府租户之间可用。  若要查明你的租户是否能够使用这些功能，请按照 [如何判断我的 AZURE 美国政府租户中是否提供了 B2B 协作中](../external-identities/current-limitations.md#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant)的说明进行操作。
+
+---
+
+### <a name="azure-monitor-integration-for-azure-logs-is-now-available-in-azure-government"></a>Azure 的 Azure Monitor 集成现已在 Azure 政府版中提供
+
+**类型：** 新功能  
+**服务类别：** 报表  
+**产品功能：** 监视和报告
+ 
+现在 Azure 政府版中提供了与 Azure AD 日志 Azure Monitor 集成。 可以将 Azure AD 日志 (审核和登录日志路由) 到存储帐户、事件中心和 Log Analytics。 请查看详细的 [文档](https://aka.ms/aadlogsinamd) 以及用于 [报告和监视](../reports-monitoring/plan-monitoring-and-reporting.md) Azure AD 方案的部署计划。
+
+---
+
+### <a name="identity-protection-refresh-in-azure-government"></a>Azure 政府版中的 Identity Protection 刷新
+
+**类型：** 新功能  
+**服务类别：** 标识保护  
+**产品功能：** 标识安全和保护
+
+我们很高兴地分享，我们现在已[Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs)   在[Microsoft Azure 政府门户](https://portal.azure.us/)中推出刷新后的 Azure AD Identity Protection 体验。 有关详细信息，请参阅我们的 [公告博客文章](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667)。
+
+---
+
+### <a name="disaster-recovery-download-and-store-your-provisioning-configuration"></a>灾难恢复：下载并存储预配配置
+
+**类型：** 新功能  
+**服务类别：** 应用预配  
+**产品功能：** 标识生命周期管理
+ 
+Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够保存其配置，以便以后可以引用或回滚到已知的良好版本。 我们已添加了将预配配置下载为 JSON 文件的功能，并在需要时将其上传。 [了解详细信息](../app-provisioning/export-import-provisioning-configuration.md)。
+
+---
+ 
+### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (自助服务密码重置) 现在需要在由世纪互联 (Azure 中国世纪互联的 Microsoft Azure 中为管理员提供两个入口)  
+
+**类型：** 已更改的功能  
+**服务类别：** 自助服务密码重置  
+**产品功能：** 标识安全和保护
+ 
+以前的 Microsoft Azure 由世纪互联 (Azure 中国世纪互联) ，使用自助服务密码重置 (SSPR) 来重置其自己的密码，只需要一个 "入口" (质询) 来证明其身份。 在公共和其他国家云中，管理员通常必须在使用 SSPR 时使用两个入口来证明其身份。 但是，因为我们不支持 Azure 中国世纪互联中的短信或电话呼叫，所以管理员允许通过一入口的密码重置。
+
+我们正在创建 Azure 中国世纪互联和公有云之间的 SSPR 功能奇偶校验。 今后，管理员必须在使用 SSPR 时使用两个入口。 将支持 SMS、电话呼叫和验证器应用通知和代码。 [了解详细信息](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences)。
+
+---
+
+### <a name="password-length-is-limited-to-256-characters"></a>密码长度限制为256个字符
+
+**类型：** 已更改的功能  
+**服务类别：** 身份验证（登录）  
+**产品功能：** 用户身份验证
+ 
+为了确保 Azure AD 服务的可靠性，用户密码现在的长度限制为256个字符。 密码长度超过此长度的用户将被要求在后续登录时更改其密码，方法是联系管理员或使用自助服务密码重置功能。
+
+此更改已于2020年3月13日在 10AM PST (18:00 UTC) 启用，错误为 AADSTS 50052，InvalidPasswordExceedsMaxLength。 有关更多详细信息，请参阅 [重大更改通知](../develop/reference-breaking-changes.md#user-passwords-will-be-restricted-to-256-characters) 。
+
+---
+
+### <a name="azure-ad-sign-in-logs-are-now-available-for-all-free-tenants-through-the-azure-portal"></a>Azure AD 登录日志现在可通过 Azure 门户的所有免费租户使用
+
+**类型：** 已更改的功能  
+**服务类别：** 报表  
+**产品功能：** 监视和报告
+ 
+从现在开始，具有免费租户的客户可以从 Azure 门户到最多7天的 [Azure AD 登录日志](../reports-monitoring/concept-sign-ins.md) 。 以前，登录日志仅适用于具有 Azure Active Directory Premium 许可证的客户。 进行此更改后，所有租户都可以通过门户访问这些日志。
+
+> [!NOTE]
+> 客户仍需要高级许可证 (Azure Active Directory Premium P1 或 P2) 通过 Microsoft Graph API 和 Azure Monitor 访问登录日志。
+
+---
+
+### <a name="deprecation-of-directory-wide-groups-option-from-groups-general-settings-on-azure-portal"></a>弃用了目录范围内的组选项 Azure 门户上的组常规设置
+
+**类型：** 已弃用  
+**服务类别：** 组管理  
+**产品功能：** 协作
+
+若要为客户提供一种更灵活的方式来创建最符合需要的目录范围内的组，我们已将 "Azure 门户中的"**组**"" 常规设置 "中的"**目录范围组**"选项替换  >  **General**为[动态组文档](../users-groups-roles/groups-dynamic-membership.md)的链接。 我们已改进文档以提供更多说明，以便管理员可以创建包括或排除来宾用户在内的所有用户组。
+
+---
+
+## <a name="february-2020"></a>2020 年 2 月
 
 ### <a name="upcoming-changes-to-custom-controls"></a>自定义控件即将发生的更改
 
@@ -175,7 +329,7 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 **服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
  
-通过电话号码注册和登录，开发人员和企业可以允许其客户使用通过短信发送到用户的电话号码的一次性密码进行注册和登录。 此功能还允许客户在电话号码失去访问权限时更改其电话号码。 使用自定义策略的强大功能，通过电话注册和登录，开发人员和企业可以通过页面自定义来传达其品牌。 了解如何 [在 Azure AD B2C 中设置自定义策略的手机注册和登录](../../active-directory-b2c/phone-authentication.md)。
+通过电话号码注册和登录，开发人员和企业可以允许其客户使用通过短信发送到用户的电话号码的一次性密码进行注册和登录。 此功能还允许客户在电话号码失去访问权限时更改其电话号码。 通过自定义策略和电话注册和登录的强大功能，开发人员和企业可以通过页面自定义来传达其品牌。 了解如何 [在 Azure AD B2C 中设置自定义策略的手机注册和登录](../../active-directory-b2c/phone-authentication.md)。
  
 ---
  

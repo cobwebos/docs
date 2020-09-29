@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396019"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445327"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中有哪些一致性级别？
 
@@ -43,38 +43,11 @@ Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选�
 
   下图以乐谱形式演示了非常一致性。 将数据写入 "美国西部 2" 区域后，当您从其他区域读取数据时，您将获得最新的值：
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="视频":::
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="范围形式的一致性" 区域会根据配置的最大延迟时间或最大操作读取写入值：
 
-- **受限停滞一致性**：保证读取操作遵循一致性前缀保证。  读取操作可以滞后于写入操作最多“K”个项版本（即“更新”）或“T”时间间隔，以先达到者为准。 换言之，如果选择有限过期，则可以通过两种方式配置“过期”：
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="范围形式的一致性" 正在使用同一会话 (会话 A) 以便它们同时读取相同的数据。 而“澳大利亚东部”区域正在使用“会话 B”，因此，它会稍后才会接收到数据，但接收顺序与写入顺序相同。
 
-- 项的版本数 (*K*)
-- 读取操作可以滞后于写入操作的时间间隔 (*T*)
-
-有限过期在“过期窗口”之外提供全局整体顺序。 当客户端在接受写入的区域中执行读取操作时，有限过期一致性提供的保证与非常一致性的保证相同。
-
-在过期窗口内，有限过期提供以下一致性保证：
-
-- 对于单主帐户，同一区域中的客户端的一致性为“非常”
-- 对于单主帐户，不同区域中的客户端的一致性为“一致前缀”
-- 对于多主帐户，向单个区域进行写入的客户端的一致性为“一致前缀”
-- 对于多主帐户，向不同区域进行写入的客户端的一致性为“最终”
-
-  受限过期通常由需要较低写入延迟但需要全局订单总保证的全局分布式应用程序选择。 有限过期非常适合提供小组协作和共享、股票行情、发布-订阅/排队等功能的应用程序。下图以乐谱形式演示了有限过期一致性。 将数据写入 "美国西部 2" 区域后，"美国东部 2" 和 "澳大利亚东部" 区域会根据配置的最大延迟时间或最大操作读取写入值：
-
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="视频":::
-
-- **会话一致性**：在单个客户端会话中，将保证读取操作遵循一致前缀、单调读取、单调写入、读取写入和读取后写入保证。 这采用单个“写入器”会话，或者多个写入器共享会话令牌。
-
-在会话外部执行写入的客户端将获得以下保证：
-
-- 对于单主帐户，同一区域中的客户端的一致性为“一致前缀”
-- 对于单主帐户，不同区域中的客户端的一致性为“一致前缀”
-- 对于多主帐户，向单个区域进行写入的客户端的一致性为“一致前缀”
-- 对于多主帐户，向多个区域进行写入的客户端的一致性为“最终”
-
-  会话一致性是适用于单个区域和全球分布式应用程序的最广泛使用的一致性级别。 它不仅提供与最终一致性相当的写入延迟、可用性和读取吞吐量，还提供一致性保证，从而满足了编写为在用户上下文中运行的应用程序的需求。 下图以乐谱形式演示了会话一致性。 "美国西部2作者" 和 "美国西部2读者" 正在使用同一会话 (会话 A) 以便它们同时读取相同的数据。 而“澳大利亚东部”区域正在使用“会话 B”，因此，它会稍后才会接收到数据，但接收顺序与写入顺序相同。
-
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="视频":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="范围形式的一致性":::
 
 - 一致前缀：返回的更新包含所有更新的一些前缀，不带间隔。 一致前缀一致性级别保证读取操作永远不会看到无序写入。
 
@@ -89,12 +62,12 @@ Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选�
 
 下图以乐谱形式演示了一致前缀一致性。 在所有区域中，读取操作永远不会看到无序写入：
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="视频":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="范围形式的一致性":::
 
 - **最终一致性**：不保证读取的顺序。 如果缺少任何进一步的写入，则副本最终会收敛。  
 最终一致性是最弱的一致性形式，因为客户端可能会读取比之前读取的值还要旧的值。 最终一致性非常适合不需要任何顺序保证的应用程序。 示例包括推文、点赞或无回复评论的计数。 下图以乐谱形式演示了最终一致性。
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="视频":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="范围形式的一致性":::
 
 ## <a name="additional-reading"></a>其他阅读材料
 

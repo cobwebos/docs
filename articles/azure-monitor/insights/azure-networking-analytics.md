@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318056"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449916"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -87,10 +87,10 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 1. 在 Azure 门户中，转到要监视的应用程序网关资源。
 2. 选择“诊断日志”，以打开下面的页面。
 
-   ![Azure 应用程序网关资源图像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+   ![应用程序网关资源的 "诊断日志" 页的屏幕截图，其中显示了启用诊断的选项。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. 单击“启用诊断”，以打开下面的页面。
 
-   ![Azure 应用程序网关资源图像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+   ![用于配置诊断设置的页的屏幕截图。 "发送到 Log Analytics" 选项被选为三种日志类型和指标。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. 若要启用诊断，请单击“状态”下面的“开”。
 5. 单击选中“发送到 Log Analytics”复选框。
 6. 选择现有 Log Analytics 工作区，或创建一个工作区。
@@ -123,9 +123,9 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
   * 应用程序网关的主机运行状况
   * 最大和 95% 应用程序网关失败请求
 
-![Azure 应用程序网关分析仪表板图像](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![应用程序网关访问日志仪表板的屏幕截图，显示磁贴，其中包含用于网关错误、请求和失败请求的数据。](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Azure 应用程序网关分析仪表板图像](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![应用程序网关访问日志仪表板的屏幕截图，显示由用户代理、主机运行状况和失败的请求显示的包含错误数据的磁贴。](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
 在“Azure 应用程序网关分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，然后单击一项摘要，在日志搜索页查看其详细信息。
 
@@ -158,10 +158,10 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 1. 在 Azure 门户中，导航到要监视的网络安全组资源
 2. 选择“诊断日志”打开以下页面
 
-   ![Azure 网络安全组资源图像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![网络安全组资源的 "诊断日志" 页的屏幕截图，其中显示了启用诊断的选项。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. 单击“打开诊断”打开以下页面
 
-   ![Azure 网络安全组资源图像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![用于配置诊断设置的页的屏幕截图。 状态设置为 "打开"，将选择 "发送到 Log Analytics" 并选择两种日志类型。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. 若要打开诊断，请单击“状态”下面的“打开” 
 5. 单击“发送到 Log Analytics”对应的复选框
 6. 选择现有的 Log Analytics 工作区，或创建一个工作区
@@ -189,9 +189,9 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
   * 具有允许流的网络安全组规则
   * 具有允许流的 MAC 地址
 
-![Azure 网络安全组分析仪表板图像](media/azure-networking-analytics/log-analytics-nsg01.png)
+![磁贴的屏幕截图，其中包含网络安全组阻止流的数据，其中包括具有阻止的流的规则以及具有阻止流的 MAC 地址。](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![Azure 网络安全组分析仪表板图像](media/azure-networking-analytics/log-analytics-nsg02.png)
+![磁贴包含网络安全组允许流的数据的磁贴的屏幕截图，其中包括具有允许流的允许流和 MAC 地址的规则。](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。
 

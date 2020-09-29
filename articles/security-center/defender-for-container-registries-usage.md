@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Defender 容器注册表来扫描注册表
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 04a7b7f40e1591a919668e940a883dde9a6f4689
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302003"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449128"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用 Azure Defender 容器注册表来扫描映像是否存在漏洞
 
@@ -132,7 +132,7 @@ ms.locfileid: "91302003"
 您可以使用下列任一条件： 
 
 - 查找 ID 
-- 类别
+- Category
 - 安全检查 
 - CVSS v3 评分
 - 严重性 
@@ -145,13 +145,16 @@ ms.locfileid: "91302003"
 1. 定义条件。
 1. 选择 " **应用规则**"。
 
-    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现创建禁用规则":::
+    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现创建禁用规则&quot;:::
 
 1. 查看、替代或删除规则： 
-    1. 选择 " **禁用规则**"。
-    1. 在 "作用域" 列表中，具有活动规则的订阅显示为 "已 **应用规则**"。
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="修改或删除现有规则":::
-    1. 若要查看或删除规则，请选择省略号菜单 ( "..." ) 。
+    1. 选择 &quot; **禁用规则**&quot;。
+    1. 在 &quot;作用域" 列表中，具有活动规则的订阅显示为 "已 **应用规则**"。
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="为注册表上的 VA 发现创建禁用规则&quot;:::
+
+1. 查看、替代或删除规则： 
+    1. 选择 &quot; **禁用规则**&quot;。
+    1. 在 &quot;作用域" ) 。
 
 
 ## <a name="next-steps"></a>后续步骤

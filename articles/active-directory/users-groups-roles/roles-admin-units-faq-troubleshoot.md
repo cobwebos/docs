@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22992f66d45b9bdb76383301cccff645c98a74d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f9af8ee3bf87cfd5d2e74adfce618c7cf8c7e63
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264773"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450324"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD 管理单元：故障排除和常见问题解答
 
@@ -67,9 +67,9 @@ ms.locfileid: "91264773"
 
 **问：PowerShell 和图形 API 中是否支持管理单元？**
 
-**答:** 是的。 你将在 [PowerShell cmdlet 文档](/powershell/module/Azuread/?view=azureadps-2.0-preview&preserve-view=true) 和 [示例脚本](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview&preserve-view=true)中找到管理单元支持。
+**答:** 是的。 你将在 [PowerShell cmdlet 文档](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) 和 [示例脚本](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)中找到管理单元支持。
 
-查找 Microsoft Graph 中对 [administrativeUnit 资源类型](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true)的支持。
+查找 Microsoft Graph 中对 [administrativeUnit 资源类型](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true)的支持。
 
 ## <a name="next-steps"></a>后续步骤
 

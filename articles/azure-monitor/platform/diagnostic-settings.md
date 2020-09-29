@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614048"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449323"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -73,15 +73,15 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
    - 对于单项资源，在资源菜单中的“监视器”下，单击“诊断设置”。 
 
-        ![诊断设置](media/diagnostic-settings/menu-resource.png)
+        ![Azure 门户中突出显示了诊断设置的资源菜单的 "监视" 部分的屏幕截图。](media/diagnostic-settings/menu-resource.png)
 
    - 对于一项或多项资源，在 Azure Monitor 菜单中，单击“设置”下的“诊断设置”，然后单击相应资源。 
 
-      ![诊断设置](media/diagnostic-settings/menu-monitor.png)
+        !["Azure Monitor" 菜单中突出显示了诊断设置的 "设置" 部分的屏幕截图。](media/diagnostic-settings/menu-monitor.png)
 
    - 对于活动日志，在“Azure Monitor”菜单中，单击“活动日志”，然后单击“诊断设置”。   请确保禁用活动日志的任何旧配置。 有关详细信息，请参阅[禁用现有设置](./activity-log.md#legacy-collection-methods)。
 
-        ![诊断设置](media/diagnostic-settings/menu-activity-log.png)
+        !["监视器-活动日志" 菜单栏中突出显示了 "活动日志" 和 "诊断设置" Azure Monitor 菜单的屏幕截图。](media/diagnostic-settings/menu-activity-log.png)
 
 2. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“添加诊断设置”。
 

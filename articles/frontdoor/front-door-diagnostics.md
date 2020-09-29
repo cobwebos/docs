@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6f5051dd7dedcc49320557f17148bcdc9bf539ab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399746"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449284"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>在 Azure 前门中监视指标和日志
 
 使用 Azure 前门，可以通过以下方式监视资源：
 
-- **指标** Azure 前门目前有7个指标来查看性能计数器。
+- **指标** Azure 前门目前有8个指标来查看性能计数器。
 - **日志**。 活动和诊断日志允许出于监视目的从资源保存或使用性能、访问及其他数据。
 
 ### <a name="metrics"></a>指标
@@ -31,14 +31,14 @@ ms.locfileid: "89399746"
 
 | 指标 | 指标显示名称 | 计价单位 | 维度 | 说明 |
 | --- | --- | --- | --- | --- |
-| RequestCount | 请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
+| RequestCount | 请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
 | RequestSize | 请求大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以请求的形式从客户端发送到 Front Door 的字节数。 |
 | ResponseSize | 响应大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以响应的形式从 Front Door 发送到客户端的字节数。 |
 | TotalLatency | 总延迟 | 毫秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 由前门接收的客户端请求计算的时间，直到客户端从前门确认最后一个响应字节。 |
-| BackendRequestCount | 后端请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
+| BackendRequestCount | 后端请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
 | BackendRequestLatency | 后端请求延迟 | 毫秒 | 后端 | 自 Front Door 向后端发送请求起，直至 Front Door 接收到来自后端的最后一个响应字节为止，所计算的时间。 |
 | BackendHealthPercentage | 后端运行状况百分比 | 百分比 | 后端</br>BackendPool | 从 Front Door 到后端，成功运行状况探测的百分比。 |
-| WebApplicationFirewallRequestCount | Web 应用程序防火墙请求计数 | 计数 | PolicyName</br>RuleName</br>操作 | Front Door 的应用层安全性所处理的客户端请求数。 |
+| WebApplicationFirewallRequestCount | Web 应用程序防火墙请求计数 | Count | PolicyName</br>RuleName</br>操作 | Front Door 的应用层安全性所处理的客户端请求数。 |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>活动日志
 
@@ -52,22 +52,18 @@ ms.locfileid: "89399746"
 1. 选择前门实例。
 2. 选择“活动日志”。
 
-    ![活动日志](./media/front-door-diagnostics/activity-log.png)
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="活动日志&quot;:::
 
-3. 选择 "筛选范围"，然后选择 " **应用**"。
+3. 选择 &quot;筛选范围&quot;，然后选择 " **应用**"。
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>诊断日志
 诊断日志提供了有关操作和错误的丰富信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。
 
-活动日志可深入了解对 Azure 资源所做的操作。 诊断日志提供资源所执行的操作的见解。 有关详细信息，请参阅 [Azure Monitor 诊断日志](../azure-monitor/platform/platform-logs-overview.md)。
+活动日志可深入了解对 Azure 资源所做的操作。 诊断日志提供资源已完成的操作的见解。 有关详细信息，请参阅 [Azure Monitor 诊断日志](../azure-monitor/platform/platform-logs-overview.md)。
 
-![诊断日志](./media/front-door-diagnostics/diagnostic-log.png)
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="活动日志&quot;:::
 
-为前门配置诊断日志：
-
-1. 选择 Azure 前门。
-
-2. 选择 " **诊断设置**"。
+3. 选择 &quot;筛选范围&quot;，然后选择 " **诊断设置**"。
 
 3. 选择“启用诊断”。 将诊断日志和指标存档到存储帐户，将其流式传输到事件中心，或将其发送到 Azure Monitor 日志。
 
@@ -103,7 +99,6 @@ ms.locfileid: "89399746"
 | 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | 错误 | 命中 |
 | 启用了缓存的路由规则。 边缘 POP 处的缓存未命中，但在父缓存 POP 处命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2。空 | 1. True</br>2. False | 1. 未命中</br>2. PARTIAL_HIT |
 | 启用了缓存的路由规则。 边缘和父缓存弹出窗口中的缓存未命中 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2. 帮助填充缓存的后端 | 1. True</br>2. False | 1. 未命中</br>2. 未命中 |
-
 
 ## <a name="next-steps"></a>后续步骤
 

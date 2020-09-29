@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: memildin
-ms.openlocfilehash: 416968229e37fe6474da38df5402b0cebf02d54c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0ada1b615d4673f696c6f1b003288f3e7aa02e4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301969"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449166"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>导出安全警报和建议
 

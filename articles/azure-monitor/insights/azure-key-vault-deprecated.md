@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 286d8d8c202a4fc59a18501eff16a569e2d09047
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6d8929c8fd59836ff297f226851890892c10acc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318039"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445133"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 
@@ -42,10 +42,10 @@ ms.locfileid: "87318039"
 1. 在 Azure 门户中，导航到要监视的 Key Vault 资源
 2. 选择“诊断设置”，打开以下页面
 
-   ![Azure 密钥保管库磁贴的图像](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![Key Vault 资源 ContosoKVSCUS 的 "诊断设置" 页的屏幕截图。将突出显示启用诊断的选项。](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. 单击“打开诊断”打开以下页面
 
-   ![Azure 密钥保管库磁贴的图像](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![用于配置诊断设置的页的屏幕截图。 将选择发送到 Log Analytics、AuditEvent 日志和 AllMetrics 的选项。](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. 为诊断设置提供名称。
 5. 单击“发送到 Log Analytics”对应的复选框
 6. 选择现有的 Log Analytics 工作区，或创建一个工作区
@@ -77,7 +77,7 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
 [安装解决方案](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)后，请在 Azure Monitor 的“概览”页中单击“Key Vault 分析”磁贴，查看 Key Vault 数据。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面  。 
 
-![Azure 密钥保管库磁贴的图像](media/azure-key-vault/log-analytics-keyvault-tile.png)
+!["Azure Monitor 概述" 页上的 "Key Vault 分析" 磁贴的屏幕截图，显示一段时间内 Key Vault 操作卷的关系图。](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
 单击“Key Vault 分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
@@ -86,9 +86,9 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 * 按操作显示的平均操作延迟
 * 对于操作数目需要超过 1000 毫秒和操作列表需超过 1000 毫秒的此类操作的服务质量
 
-![Azure 密钥保管库仪表板的图像](media/azure-key-vault/log-analytics-keyvault01.png)
+![Azure Key Vault 仪表板的屏幕截图，显示磁贴，其中包含所有操作的图形数据、失败操作和平均操作延迟。](media/azure-key-vault/log-analytics-keyvault01.png)
 
-![Azure 密钥保管库仪表板的图像](media/azure-key-vault/log-analytics-keyvault02.png)
+![Azure Key Vault 仪表板的屏幕截图，显示磁贴，其中包含平均操作延迟、服务质量和推荐搜索的数据。](media/azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>查看任何操作的详细信息
 1. 在“概览”页上，单击“Key Vault 分析”磁贴。 

@@ -9,18 +9,55 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: d89a5c951f2923f9e107dd2dabec7773f292fa02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8df50096cc123003299b86da88f9230c95854775
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91290511"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450072"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**适用于 Python 的主要 SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2020-09-28"></a>2020-09-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1150"></a>用于 Python 的 Azure 机器学习 SDK 1.15。0
++ **Bug 修复与改进**
+  + **azureml-contrib-interpret**
+    + 从 contrib 的说明中移出了酸橙色的说明-解释社区包和图像从 azureml-contrib-解释包中删除
+    + 从 contrib 中删除的可视化仪表板-解释包、解释客户端已移动到 azureml-解释包并弃用 contrib
+    + 为 azureml-解读、azureml-pypi、contrib-解读和 azureml-tensorboard
+  + **azureml-contrib-notebook**
+    + 将 nbcovert 依赖项固定到 < 6，以便 papermill 1.x 继续工作。
+  + **azureml-core**
+    + 向 TensorflowConfiguration 和 MpiConfiguration 构造函数添加了参数，以支持更简单的类特性初始化，而无需用户设置每个单独的属性。 添加了 PyTorchConfiguration 类，用于配置 ScriptRunConfig 中的分布式 PyTorch 作业。
+    + 固定 azure 管理资源的版本以修复身份验证错误。
+    + 支持 Triton 没有代码部署
+    + start_logging 在交互式方案中运行时，将会跟踪 ( # A1 中指定的目录。 在调用运行时，将在 ML Studio 中看到跟踪的文件。完成 ( # A1
+    + 在创建数据集期间 `Dataset.Tabular.from_delimited_files` ，可以 `Dataset.Tabular.from_json_lines_files` 通过传递自变量来指定文件编码 `encoding` 。 支持的编码为 "utf8"、"iso88591"、"latin1-general"、"ascii"、utf16 "、" utf32 "、" utf8bom "和" windows1252 "。
+    + 环境对象未传递到 ScriptRunConfig 构造函数时的 Bug 修复。
+    + 已更新运行。取消 ( # A1，以允许从另一台计算机取消本地运行。
+  + **azureml-dataprep**
+    +  修复了数据集装入超时问题。
+  + **azureml-explain-model**
+    + 为 azureml-解读、azureml-pypi、contrib-解读和 azureml-tensorboard
+  + **azureml-interpret**
+    + 从 contrib 中删除的可视化仪表板-解释包、解释客户端已移动到 azureml-解释包并弃用 contrib
+    + azureml-解释更新后的包取决于解读-社区0.15。0
+    + 为 azureml-解读、azureml-pypi、contrib-解读和 azureml-tensorboard
+  + **azureml-pipeline-core**
+    +  `OutputFileDatasetConfig`当调用时，使用 `register_on_complete` `name` 将参数设置为预先存在的数据集名称时，固定管道挂起问题。
+  + **azureml-pipeline-steps**
+    + 已删除过时的 databricks 笔记本。
+  + **azureml-tensorboard**
+    + 为 azureml-解读、azureml-pypi、contrib-解读和 azureml-tensorboard
+  + **azureml-train-automl-runtime**
+    + 从 contrib 中删除的可视化仪表板-解释包、解释客户端已移动到 azureml-解释包并弃用 contrib
+  + **azureml-widgets**
+    + 从 contrib 中删除的可视化仪表板-解释包、解释客户端已移动到 azureml-解释包并弃用 contrib
 
 ## <a name="2020-09-21"></a>2020-09-21
 

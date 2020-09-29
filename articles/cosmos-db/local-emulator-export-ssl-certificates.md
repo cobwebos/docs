@@ -6,13 +6,13 @@ ms.topic: how-to
 ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
-ms.custom: devx-track-python, devx-track-java
-ms.openlocfilehash: 8f2714c7c49aa5e02747ce726da29a98485b5fbd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-python, devx-track-java, contperfq1
+ms.openlocfilehash: 068b316eaa92a1e781df0b9945133a26fa0b88a2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988233"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445281"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>导出 Azure Cosmos DB 模拟器证书以用于 Java、Python 和 Node.js 应用
 
@@ -36,31 +36,31 @@ ms.locfileid: "90988233"
 
 1. 单击“详细信息”****，并单击“确定”****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 2":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 1. 单击“复制到文件...” ****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 3":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 1. 单击“下一步”****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 4":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 1. 单击“否，不导出私钥”****，并单击“下一步”****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 5":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 1. 单击“Base-64 编码 X.509 (.CER)”****，并单击“下一步”****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 6":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 1. 为证书指定名称。 在本示例中为“documentdbemulatorcert”****。单击“下一步”****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 7":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 1. 单击“完成” ****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 8":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 ## <a name="use-the-certificate-with-java-apps"></a>将证书用于 Java 应用
 
@@ -98,7 +98,7 @@ sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $E
 
 可以通过在 Windows 任务栏中运行的 Azure Cosmos DB 模拟器中选择 " **重置数据** "，强制重新生成模拟器证书。 请注意，此操作还将擦除模拟器在本地存储的所有数据。
 
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB 本地模拟器重置数据":::
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB 本地模拟器导出步骤 1":::
 
 如果已将证书安装到 Java 证书存储中或在其他位置使用，则需要使用当前证书重新导入。 在更新证书之前，应用程序无法连接到本地模拟器。
 

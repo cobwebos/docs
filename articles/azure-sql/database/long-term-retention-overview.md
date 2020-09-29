@@ -12,18 +12,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: c4c19850cda158afdb888188d3f99b7d93195aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334848"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450227"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>长期保留 - Azure SQL 数据库和 Azure SQL 托管实例
 
-出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库和 Azure SQL 托管实例的[自动备份](automated-backups-overview.md)功能提供的过去 7-35 天的数据库备份。 通过使用长期保留 (LTR) 功能，可以将指定的 SQL 数据库和 Azure SQL 托管实例完整备份存储在可以进行读取访问异地冗余存储的 Azure Blob 存储中长达 10 年。 然后，可以将任何备份还原为新数据库。
-
-此外，SQL 托管实例引入了 [可配置的备份存储冗余](automated-backups-overview.md#backup-storage-redundancy) ，这使你可以灵活地在本地冗余 (LRS) 、区域冗余 (ZRS) 或异地冗余 (GRS) [存储 blob](../../storage/common/storage-redundancy.md)之间进行选择。 此选项目前仅在创建托管实例的过程中可用，在资源预配后无法更改。
+出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库和 Azure SQL 托管实例的[自动备份](automated-backups-overview.md)功能提供的过去 7-35 天的数据库备份。 通过使用 (LTR) 功能的长期保留，你可以在 Azure Blob 存储中存储指定的 SQL 数据库和 SQL 托管实例完整备份，并将 [配置的冗余](automated-backups-overview.md#backup-storage-redundancy) 设置为长达10年。 然后，可以将任何备份还原为新数据库。
 
 可以为 Azure SQL 数据库启用长时间保留。Azure SQL 托管实例的长期保留功能以有限的公共预览版形式提供。 本文提供长期保留的概念概述。 要配置长期保留，请参阅[配置 Azure SQL 数据库 LTR](long-term-backup-retention-configure.md) 和[配置 Azure SQL 托管实例 LTR](../managed-instance/long-term-backup-retention-configure.md)。 
 

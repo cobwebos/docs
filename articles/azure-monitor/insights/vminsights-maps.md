@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320504"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445541"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor 的地图功能来了解应用程序组件
 在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或你的环境中运行的 Windows 和 Linux 虚拟机 (VM) 上发现的应用程序组件。 可通过两种方式观察 VM。 查看直接从 VM 建立的映射，或查看从 Azure Monitor 建立的映射，以查看各个 VM 组中的组件。 本文将帮助你了解这两种查看方法，以及如何使用映射功能。 
@@ -49,7 +49,7 @@ ms.locfileid: "87320504"
 - 包含一个子句，以按计算机将警报分组（例如“by Computer interval 1 minute”****）。
 - 使警报基于指标。
 
-有关 Azure 警报和创建警报规则的详细信息，请参阅[Azure Monitor 中的统一警报](../platform/alerts-overview.md)。
+有关 Azure 警报和创建警报规则的详细信息，请参阅 [Azure Monitor 中的统一警报](../platform/alerts-overview.md)。
 
 右上角的“图例”选项描述映射中的符号和角色****。 要深入了解映射并将其四处移动，请使用右下角的缩放控件。 可以设置缩放级别，并使映射适合页面大小。  
 
@@ -88,21 +88,21 @@ ms.locfileid: "87320504"
 若要直接从 VM 访问用于 VM 的 Azure Monitor：
 
 1. 在 Azure 门户中，选择“虚拟机”。 
-2. 在列表中选择一个 VM。 在 "**监视**" 部分，选择 "**见解**"。  
+2. 在列表中选择一个 VM。 在 " **监视** " 部分，选择 " **见解**"。  
 3. 选择“映射”选项卡****。
 
 映射将发现在指定时间范围内已建立有效网络连接的正在运行的进程组和进程，以此将 VM 的依赖项可视化。  
 
 默认情况下，映射显示最近 30 分钟。 若要查看过去发现的依赖项，可以查询最多一小时的历史时间范围。 若要运行查询，请使用左上角的“TimeRange”选择器。**** 例如，在发生某个事件期间，或者想要查看更改前的状态时，可以运行查询。  
 
-![直接 VM 映射概述](./media/vminsights-maps/map-direct-vm-01.png)
+![Azure 门户的 "监视见解" 部分中 "地图" 选项卡的屏幕截图，显示了虚拟机之间依赖关系的关系图。](./media/vminsights-maps/map-direct-vm-01.png)
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>从虚拟机规模集查看映射
 
 若要直接从虚拟机规模集访问用于 VM 的 Azure Monitor：
 
 1. 在 Azure 门户中选择“虚拟机规模集”。
-2. 在列表中选择一个 VM。 然后在 "**监视**" 部分选择 "**见解**"。  
+2. 在列表中选择一个 VM。 然后在 " **监视** " 部分选择 " **见解**"。  
 3. 选择“映射”选项卡****。
 
 映射会将规模集中的所有实例可视化为组节点，并可视化该组的依赖项。 展开的节点将列出规模集中的实例。 每次可以滚动浏览其中的 10 个实例。 
@@ -111,7 +111,7 @@ ms.locfileid: "87320504"
 
 默认情况下，映射显示最近 30 分钟。 若要查看过去发现的依赖项，可以查询最多一小时的历史时间范围。 若要运行查询，请使用“TimeRange”选择器。**** 例如，在发生某个事件期间，或者想要查看更改前的状态时，可以运行查询。
 
-![直接 VM 映射概述](./media/vminsights-maps/map-direct-vmss-01.png)
+!["监视见解" 部分中 "地图" 选项卡的屏幕截图，显示了虚拟机规模集之间的依赖关系示意图 Azure 门户。](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
 >也可以从虚拟机规模集的“实例”视图访问特定实例的映射。**** 在 "**设置**" 部分中，请参阅**实例**  >  **见解**。
@@ -121,7 +121,7 @@ ms.locfileid: "87320504"
 在 Azure Monitor 中，映射功能将提供 VM 及其依赖项的全局视图。 若要在 Azure Monitor 中访问映射功能：
 
 1. 在 Azure 门户中选择“监视”。 
-2. 在 "**见解**" 部分，选择 "**虚拟机**"。
+2. 在 " **见解** " 部分，选择 " **虚拟机**"。
 3. 选择“映射”选项卡****。
 
    ![多个 VM 的 Azure Monitor 概述映射](./media/vminsights-maps/map-multivm-azure-monitor-01.png)

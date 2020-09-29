@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206161"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449682"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
 
-本文介绍可在 Data Box 和 Data Box Heavy 设备上执行的一些配置和管理任务。 可以通过 Azure 门户 UI 和设备的本地 Web UI 管理 Data Box 和 Data Box Heavy 设备。 本文重点介绍可使用本地 Web UI 执行的任务。
+本文介绍 Data Box 和 Data Box Heavy 设备上执行的一些配置和管理任务。 可以通过 Azure 门户 UI 和设备的本地 Web UI 管理 Data Box 和 Data Box Heavy 设备。 本文重点介绍使用本地 web UI 执行的任务。
 
-Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你还可以使用本地 web UI 关闭或重新启动设备、运行诊断测试、更新软件、查看复制日志，并为 Microsoft 支持部门生成日志包。 在具有两个独立节点的 Data Box Heavy 设备上，可以访问对应于每个设备节点的两个独立本地 Web UI。
+用于 Data Box 和 Data Box Heavy 的本地 web UI 用于设备的初始配置。 你还可以使用本地 web UI 关闭或重新启动设备、运行诊断测试、更新软件、查看复制日志，并为 Microsoft 支持部门生成日志包。 在具有两个独立节点的 Data Box Heavy 设备上，可以访问对应于每个设备节点的两个独立本地 Web UI。
 
 本文包括以下教程：
 
@@ -53,7 +53,7 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
 ## <a name="shut-down-or-restart-your-device"></a>关闭或重启设备
 
-可使用本地 Web UI 关闭或重启设备。 在重启之前，建议使共享依次在主机和设备上脱机。 这样做会使数据损坏的可能性降至最低。 关闭设备时，请确保当前未执行数据复制。
+可使用本地 Web UI 关闭或重启设备。 在重启之前，建议使共享依次在主机和设备上脱机。 这样做会使数据损坏的可能性降至最低。 确保关闭设备时未进行数据复制。
 
 若要关闭设备，请执行以下步骤。
 
@@ -62,7 +62,7 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
     ![关闭 Data Box 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. 出现确认提示时，请选择 **"确定"** 继续。
+3. 出现确认提示时，选择 **"确定"** 继续。
 
     ![关闭 Data Box 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -75,7 +75,7 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
     ![重启 Data Box 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. 出现确认提示时，请选择 **"确定"** 继续。
+3. 出现确认提示时，选择 **"确定"** 继续。
 
    设备将关闭并重启。
 
@@ -93,7 +93,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. 在文件资源管理器中可以看到，已根据用于连接到设备的协议和使用的 Azure 存储类型，生成了单独的文件列表。
+3. 在文件资源管理器中，会看到根据用于连接到设备的协议和使用的 Azure 存储类型来生成单独的文件列表。
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![根据存储类型和连接协议生成的文件](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -202,6 +202,49 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 4. 在本地 Web UI 中，转到“关闭或重启”****。
 5. 选择“重启”。 
 
+## <a name="enable-backup-operator-privileges"></a>启用备份操作员权限
+
+默认情况下，web UI 用户具有 SMB 共享的备份操作员特权。 如果你不想这样做，请使用 **Enable Operator 权限** 来禁用或启用权限。
+
+有关信息，请参阅 [Active Directory 安全组](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)中的备份操作员。
+
+在 Azure 设备中启用备份操作员权限：
+
+1. 在设备的本地 web UI 的右上角，选择 " **设置**"。
+
+   ![打开 Data Box 设置](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **启用** 备份操作员特权。
+
+   ![启用备份操作员权限](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
+
+3. **选择 "应用**"。
+4. 在本地 Web UI 中，转到“关闭或重启”****。
+5. 选择“重启”。 
+
+## <a name="enable-acls-for-azure-files"></a>为 Azure 文件启用 Acl
+
+当用户通过 SMB 将数据上载到 Data Box 时，文件中的元数据默认情况下传输。 该元数据包括访问控制列表 (Acl) 、文件属性和时间戳。 如果不想这样做，请使用 **Azure 文件的 acl** 来禁用或启用此功能。
+
+<!--For more information about metadata that is transferred, see [Preserving the ACLs and metadata with Azure Data Box](./data-box-local-web-ui-admin.md#enable-backup-operator-privileges) - IN DEVELOPMENT-->
+
+> [!Note]
+> 若要将元数据与文件一起传输，则必须是备份操作员。 使用此功能时，请确保 web UI 的本地用户是备份操作员。 请参阅 [启用备份操作员特权](#enable-backup-operator-privileges)。
+
+若要为 Azure 文件启用 Acl 传输：
+
+1. 在设备的本地 web UI 的右上角，选择 " **设置**"。
+
+    ![打开 Data Box 设置](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **启用** Azure 文件的 Acl。
+
+     ![为 Azure 文件启用 Acl](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
+  
+3. 选择“应用”。
+4. 在本地 Web UI 中，转到“关闭或重启”****。
+5. 选择“重启”。 
+
 ## <a name="enable-tls-11"></a>启用 TLS 1。1
 
 默认情况下，Azure Data Box 使用传输层安全性 (TLS) 1.2 进行加密，因为它比 TSL 1.1 更安全。 但是，如果你或你的客户端使用浏览器访问不支持 TLS 1.2 的数据，则可以启用 TLS 1.1。
@@ -212,7 +255,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
 1. 在设备的本地 web UI 的右上角，选择 " **设置**"。
 
-    ![打开“设置”](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![打开 Data Box 设置](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **启用** TLS 1.1。
 

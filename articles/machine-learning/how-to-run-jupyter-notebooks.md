@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897389"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460027"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
 
@@ -45,10 +45,10 @@ ms.locfileid: "90897389"
 1. 在左侧选择“笔记本”。 
 1. 在“我的文件”部分的“用户文件”列表上方，选择“新建文件”图标。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="新建文件":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="新建文件&quot;:::
 
 1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择 " **笔记本** " 作为文件类型。
+1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** " 作为文件类型。
 1. 选择文件目录。
 1. 选择“创建” 。
 
@@ -80,15 +80,24 @@ ms.locfileid: "90897389"
 1. 选择 **计算** 目标或创建一个新的目标，并等待它运行。
 1. 选择“打开终端”图标。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="打开终端":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="新建文件&quot;:::
 
-1. 如果看不到该图标，请选择计算目标右侧的 " **...** "，然后选择 " **打开终端**"。
+1. 为文件命名。 
+1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** " **打开终端**"。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="从“...”打开终端":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="新建文件&quot;:::
+
+1. 为文件命名。 
+1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** ":::
 
 
 详细了解如何[将 Git 存储库克隆到工作区文件系统](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)。
 
+### <a name="copy-and-paste-in-terminal"></a>在终端中复制和粘贴
+
+> * Windows： `Ctrl-Insert` 复制和使用 `Ctrl-Shift-v` 或 `Shift-Insert` 粘贴。
+> * Mac OS：使用 `Cmd-c` 复制，使用 `Cmd-v` 粘贴。
+> * FireFox/IE 可能不会正确支持剪贴板权限。
 
 ### <a name="share-notebooks-and-other-files"></a>共享笔记本和其他文件
 
@@ -121,8 +130,10 @@ ms.locfileid: "90897389"
 1. 运行所有笔记本单元。
 1. 选择包含想要新笔记本运行的代码的单元格。 例如，提交实验的代码或可能注册模型的代码。
 1. 选择显示在 "单元格" 工具栏上的 " **集合** " 图标。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="屏幕截图：选择 "收集" 图标":::
-1. 输入新的 "收集的" 笔记本的名称。  
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="新建文件&quot;:::
+
+1. 为文件命名。 
+1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** " 笔记本的名称。  
 
 新笔记本只包含代码单元，所有单元格都需要生成与你为收集所选单元产生的结果相同的结果。
 
@@ -132,7 +143,10 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 在笔记本工具栏中，选择“菜单”，然后选择“文件”&gt;“保存并设置检查点”以手动保存笔记本，它会添加与笔记本关联的检查点文件。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="笔记本工具栏中保存工具的屏幕截图":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="新建文件&quot;:::
+
+1. 为文件命名。 
+1. 对于 Jupyter Notebook 文件，请选择 &quot; **笔记本** ":::
 
 每个笔记本每隔30秒自动保存一次。自动保存仅更新初始 *ipynb*   文件，而不更新检查点文件。
  

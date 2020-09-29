@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 928a68cff5dc8043e69c25be3dcfa3510a7d3a2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8dcb188dc5aad59738e3eab4169bf9dbd3679ec
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267288"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449353"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -58,7 +58,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 |合作伙伴|配置/操作方法/部署指南|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN 部署指南](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco 云服务路由器 (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| [Cisco 云服务路由器 (CSR) VWAN 部署指南]()
+|[Cisco 云服务路由器 (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| 若要将 Cisco 云服务 (CSR) WAN 部署到虚拟中心，请将邮件发送到 vwan_public_preview@cisco.com |
 
 在不久的将来，我们会将以下合作伙伴预定给虚拟中心的 NVA： Citrix，反之亦然。
 

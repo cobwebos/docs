@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355612"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450268"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. 通过断开辅助数据库的连接来终止异地复制 (11)。 此操作创建生产数据库的独立但完全同步的副本。 将升级该数据库。 以下示例使用了 Transact-SQL，但是也可以使用 [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0)。 
+2. 通过断开辅助数据库的连接来终止异地复制 (11)。 此操作创建生产数据库的独立但完全同步的副本。 将升级该数据库。 以下示例使用了 Transact-SQL，但是也可以使用 [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true)。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication

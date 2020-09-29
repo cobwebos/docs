@@ -1,23 +1,25 @@
 ---
-title: 安装语音容器-语音服务
+title: 为语音服务 Api 安装并运行 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 安装和运行语音容器。 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 文本转语音可将输入文本转换为类似人类的合成语音。
+description: 使用用于语音服务的 Docker 容器在本地执行语音识别、脚本、生成和更多的工作。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: cog-serv-seo-aug-2020
+keywords: 本地、Docker、容器
+ms.openlocfilehash: 45edd1b13d4fe6f78eb127e7aad8feb611bce1d1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371671"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460044"
 ---
-# <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器 
+# <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 Api 安装并运行 Docker 容器 
 
 通过容器，你可以在自己的环境中运行一些语音服务 API。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装以及运行语音容器。
 
@@ -482,7 +484,7 @@ ApiKey={API_KEY}
 
 此命令： 
 
-* 从容器映像运行语音语言检测容器。 目前，你不需要支付运行此映像的费用。 
+* 从容器映像运行语音语言检测容器。 目前，你不需要支付运行此映像的费用。
 * 分配1个 CPU 核心和 1 gb (GB) 内存。
 * 公开 TCP 端口5003，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468600"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450418"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -199,6 +199,9 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 | D | CloudAP 插件将创建 PRT cookie，使用 TPM 绑定的会话密钥进行登录，然后将其发送回原生客户端主机。 因为 cookie 由会话密钥签名，所以不会被篡改。 |
 | E | 原生客户端主机会将此 PRT cookie 返回到浏览器，浏览器会将其包含在名为 x-ms-RefreshTokenCredential 的请求标头中，并从 Azure AD 请求令牌。 |
 | F | Azure AD 验证 PRT cookie 上的会话密钥签名，验证 nonce，验证设备在租户中是否有效，然后颁发网页的 ID 令牌和浏览器的已加密会话 cookie。 |
+
+> [!NOTE]
+> 以上步骤中描述的浏览器 SSO 流不适用于专用模式（如 Microsoft Edge 中的 InPrivate）或 Incognito in Google Chrome (中使用 Microsoft 帐户扩展) 时的会话。
 
 ## <a name="next-steps"></a>后续步骤
 

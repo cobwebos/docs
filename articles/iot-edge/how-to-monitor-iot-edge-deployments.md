@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489106"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450186"
 ---
 # <a name="monitor-iot-edge-deployments"></a>监视 IoT Edge 部署
 
@@ -63,12 +63,11 @@ IoT 中心服务使此数据可供你在 Azure 门户和 Azure CLI 中监视。
 
    ![查看某个部署的指标](./media/how-to-monitor-iot-edge-deployments/deployment-metrics-tab.png)
 
-
 若要更改部署，请参阅[修改部署](how-to-deploy-at-scale.md#modify-a-deployment)。
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>使用 Azure CLI 监视部署
 
-使用 [az IoT Edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) 命令显示单个部署的详细信息：
+使用 [az IoT Edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) 命令显示单个部署的详细信息：
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -86,7 +85,7 @@ deployment show 命令采用以下参数：
 * **reportedSuccessfulCount** - 一个设备指标，用于指定通过 IoT Edge 客户端运行时报告成功的部署中的 IoT Edge 设备数。
 * reportedFailedCount - 一个设备指标，指定已通过 IoT Edge 客户端运行时报告失败的部署中的 IoT Edge 设备数。
 
-可以使用 [az IoT Edge deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) 命令显示每个指标的设备 ID 或对象的列表：
+可以使用 [az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) 命令显示每个指标的设备 ID 或对象的列表：
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

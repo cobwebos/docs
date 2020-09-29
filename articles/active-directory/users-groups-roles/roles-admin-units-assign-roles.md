@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b5f39363e4c8b2fd3a0d74a8c013d315bff1fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264912"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450389"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>向管理单元分配限定范围的角色
 
@@ -38,6 +38,12 @@ ms.locfileid: "91264912"
 密码管理员  |  只能在所分配的管理单元内重置非管理员和密码管理员的密码。
 用户管理员  |  只能在所分配的管理单元内管理用户和组的所有方面，包括重置受限管理员的密码。
 
+## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>可分配给 AU 范围角色的安全主体
+以下安全主体可以分配给 AU 范围的角色：
+* 用户
+* 角色可分配的云组 (预览) 
+* 服务主体名称 (SPN)
+
 ## <a name="assign-a-scoped-role"></a>分配限定范围的角色
 
 ### <a name="azure-portal"></a>Azure 门户
@@ -50,15 +56,19 @@ ms.locfileid: "91264912"
 
 ![选择要限定范围的角色，然后选择“添加分配”](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
+> [!Note]
+>
+> 若要使用 PIM 在管理单元上分配角色，请按照 [此处](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)的步骤操作。
+
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
 $Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 $RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
 $RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 可以根据特定环境的需要更改突出显示的部分。
@@ -67,7 +77,7 @@ Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObje
 
 ```http
 Http request
-POST /administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{id}/scopedRoleMembers
     
 Request body
 {
@@ -87,8 +97,8 @@ Request body
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 可以根据特定环境的需要更改突出显示的部分。
@@ -97,7 +107,7 @@ Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 
 ```http
 Http request
-GET /administrativeUnits/{id}/scopedRoleMembers
+GET /directory/administrativeUnits/{id}/scopedRoleMembers
 Request body
 {}
 ```
