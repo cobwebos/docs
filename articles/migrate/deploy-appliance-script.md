@@ -3,12 +3,12 @@ title: 使用脚本设置 Azure Migrate 设备
 description: 了解如何使用脚本设置 Azure Migrate 设备
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 5be6f161724b8ab555c406ebf6e75072d7902eda
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514401"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438917"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用脚本设置设备
 
@@ -20,7 +20,7 @@ ms.locfileid: "89514401"
 - 若要为物理服务器设置设备，只能使用脚本。 请参阅 [此文](how-to-set-up-appliance-physical.md)。
 - 若要在 Azure 政府版云中设置设备，请遵循 [此文](deploy-appliance-script-government.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此脚本在现有物理计算机或 VM 上设置 Azure Migrate 设备。
 
@@ -46,12 +46,12 @@ Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 G
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
 3. 验证 Azure 公有云的最新设备版本和脚本：
 
     **算法** | **下载** | **SHA256**
     --- | --- | ---
-    VMware (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 72fef66b8efd93106e626ea87354af0fb800893f9cb77edb5490490106c6a193
+    VMware (85.8 MB)  | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
 
 
 
@@ -94,13 +94,13 @@ Hyper-V | Windows Server 2016，具有 16 GB 内存，8个个 vcpu，大约 80 G
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
 
 3. 验证 Azure 公有云的最新设备版本和脚本：
 
     **方案** | **下载** | **SHA256**
     --- | --- | ---
-    Hyper-V (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) |  bea013eab690ae3a476422c55becd87c369c14834e52f8cafe6ad0ed7f416b4f
+    Hyper-v (85.8 MB)  | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
 
 ### <a name="run-the-script"></a>运行脚本
 

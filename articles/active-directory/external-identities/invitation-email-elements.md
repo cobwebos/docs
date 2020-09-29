@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908235"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439848"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
@@ -75,7 +75,21 @@ ms.locfileid: "87908235"
 页脚包含有关所发送邀请的详细信息。 受邀方始终可以通过一个选项来阻止将来的邀请。 如果组织已[设置隐私声明](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)，则此处会显示该声明的链接。  否则会有一条注释，指出该组织尚未设置隐私声明。
 
 ![电子邮件中页脚部分的图像](media/invitation-email-elements/footer-section.png)
- 
+
+### <a name="blocking-an-organization-unsubscribing"></a>阻止组织 (取消订阅) 
+
+在来自组织的邀请中，页脚包含用于 **阻止未来邀请**的选项。 来宾用户可以选择此链接来阻止来自组织的任何未来邀请。 此操作还会将组织添加到用户的取消订阅列表 [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) 。
+
+### <a name="viewing-organizations-youve-blocked"></a>查看已阻止的组织
+
+来宾用户可以按照以下步骤查看或导出已阻止的组织：
+
+1. 转到 [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage)。
+2. 输入电子邮件并按照电子邮件一次性密码身份验证的登录步骤进行操作。
+3. 查看已阻止的组织，或使用复制和粘贴导出名称。
+   > [!NOTE]
+   > 如果希望允许组织再次邀请你，可以选择组织，然后选择 " **下一步**"。
+
 ## <a name="how-the-language-is-determined"></a>语言是如何确定的
 
 邀请电子邮件中呈现给来宾用户的语言是由以下设置确定的。 这些设置是按优先级顺序列出的。 如果某个设置未配置，则将由列表中的下一设置来确定语言。

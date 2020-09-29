@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398556"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440924"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -67,7 +67,7 @@ ms.locfileid: "89398556"
 
 * [驻留在同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
 
-  ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![此图显示了位于同一订阅中的 V 网络的 V Net 到 V Net 步骤。](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [驻留在不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
 
@@ -75,7 +75,7 @@ ms.locfileid: "89398556"
 
 ## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>如何连接同一订阅中的 VNet
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>在开始之前
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -203,7 +203,7 @@ ms.locfileid: "89398556"
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-完成命令后，创建此网关将需要多达 45 分钟的时间。 如果使用的是 Azure Cloud Shell，可以单击 Cloud Shell 终端的右上角重启 CloudShell 会话，然后配置 TestVNet4。 无需等到 TestVNet1 网关创建完成。
+完成命令后，创建此网关将需要多达 45 分钟的时间。 如果使用 Azure Cloud Shell，则可以通过单击 Cloud Shell 终端的左上角来重新启动 Cloud Shell 会话，并配置 TestVNet4。 无需等到 TestVNet1 网关创建完成。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>步骤 3 - 创建并配置 TestVNet4
 
@@ -475,7 +475,7 @@ ms.locfileid: "89398556"
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 到 VNet 常见问题解答
 

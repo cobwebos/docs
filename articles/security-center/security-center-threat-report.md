@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: a4fdbab4a69fac1376779f37d5fa69fef587bf52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9b3fd0000a1b5dbba00995c37f96a89319de0e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888246"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440486"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁智能报告
 
@@ -29,7 +29,7 @@ ms.locfileid: "84888246"
 
 安全中心可以监视 Azure 资源、网络以及连接的合作伙伴解决方案中的安全信息，从而针对威胁进行保护。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 有关详细信息，请参阅 [Azure 安全中心如何检测和应对威胁](security-center-alerts-overview.md#detect-threats)。
 
-当安全中心识别到威胁时，它将触发[安全警报](security-center-managing-and-responding-alerts.md)，其中包含有关事件的详细信息，包括有关修正的建议。 为帮助事件响应团队调查和修正威胁，安全中心提供包含检测到的威胁相关信息的威胁智能报告。 该报表包含如下所示的信息：
+当安全中心识别到威胁时，它将触发 [安全警报](security-center-managing-and-responding-alerts.md)，其中包含有关事件的详细信息，包括有关修正的建议。 为帮助事件响应团队调查和修正威胁，安全中心提供包含检测到的威胁相关信息的威胁智能报告。 该报表包含如下所示的信息：
 
 * 攻击者的身份或关联项（如果此信息可用）
 * 攻击者的目标
@@ -54,9 +54,9 @@ ms.locfileid: "84888246"
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>如何访问威胁智能报告？
 
-1. 从安全中心边栏打开 "**安全警报**" 页。
+1. 从安全中心边栏打开 " **安全警报** " 页。
 1. 选择警报。 
-    此时将打开 "警报详细信息" 页，其中包含有关警报的更多详细信息。 下面是**检测到的勒索软件指示器**警报详细信息页。
+    此时将打开 "警报详细信息" 页，其中包含有关警报的更多详细信息。 下面是 **检测到的勒索软件指示器** 警报详细信息页。
 
     [![检测到的勒索软件指示器警报详细信息页](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
 

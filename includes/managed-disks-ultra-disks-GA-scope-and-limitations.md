@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/25/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db377a933507f9a25b377ba52ebd956416a1dfd2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328187"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441187"
 ---
 目前，超磁盘有其他限制，如下所示：
 
@@ -35,7 +35,9 @@ ms.locfileid: "91328187"
 |US Gov 亚利桑那州     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |US Gov 弗吉尼亚州     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |美国西部     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持)         |
+|澳大利亚中部    |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |澳大利亚东部     |三个可用性区域         |
+|Southeast Asia    |三个可用性区域        |
 |加拿大中部 *     |三个可用性区域          |
 |美国中部     |三个可用性区域          |
 |美国东部     |三个可用性区域          |

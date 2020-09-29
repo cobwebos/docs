@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 8c89fcf22f669c97f2b17acce57c293eabcf96de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009690"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441053"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -61,7 +61,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. 如果 **slmgr.vbs /dlv** 显示 RETAIL channel，运行以下命令，以设置适用于所用 Windows Server 版本的 [KMS 客户端安装密钥](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?f=255&MSPPError=-2147217396)，并强制重试激活操作： 
+2. 如果 **slmgr.vbs /dlv** 显示 RETAIL channel，运行以下命令，以设置适用于所用 Windows Server 版本的 [KMS 客户端安装密钥](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)，并强制重试激活操作： 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -102,7 +102,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
   
     另外，请确保到具有 1688 端口的 KMS 终结点的出站网络流量未被 VM 上的防火墙阻止。
 
-5. 验证使用 "[网络观察程序" 下一跃点](../../network-watcher/network-watcher-next-hop-overview.md)，使下一个跃点类型从相关的 VM 指向目标 IP 23.102.135.246 （对于 kms.core.windows.net）或适用于你所在区域的相应 kms 终结点的 IP 是**Internet**。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系并进行协作，以便确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](./custom-routes-enable-kms-activation.md)。
+5. 验证使用 " [网络观察程序" 下一跃点](../../network-watcher/network-watcher-next-hop-overview.md) ，将所涉及的虚拟机中的下一跃点类型连接到目标 IP 23.102.135.246 (for kms.core.windows.net) 或适用于你所在区域的相应 kms 终结点的 IP 为 **Internet**。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系并进行协作，以便确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](./custom-routes-enable-kms-activation.md)。
 
 6. 验证成功连接到 kms.core.windows.net 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c2589b47c1619dd528ab843dcf4befd0da227d16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331482"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439295"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -245,11 +245,11 @@ Azure 备份是否可用于超级磁盘？
 
 是否可以在 VM 处于上传状态时将磁盘附加到它？
 
-不是。
+否。
 
 **是否可以创建处于上传状态的托管磁盘的快照？**
 
-不是。
+否。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
@@ -288,11 +288,11 @@ Azure 标准 SSD 盘是什么？
 
 **是否支持将现有虚拟机规模集从非托管磁盘自动迁移到托管磁盘？**
 
-不是。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
+否。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？
 
-不是。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
+否。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
 
 是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？
 
@@ -300,7 +300,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-不是。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
+否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -322,11 +322,11 @@ Azure 标准 SSD 盘是什么？
 
 是否可以为托管磁盘禁用服务器端加密？
 
-不是。
+否。
 
 服务器端加密是否仅适用于特定区域？
 
-不是。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
+否。 使用平台和客户托管密钥的服务器端加密适用于托管磁盘可用的所有区域。 
 
 对于本地到 Azure 和 Azure 到 Azure 灾难恢复方案，Azure Site Recovery 是否支持使用客户托管密钥的服务器端加密？
 
@@ -346,7 +346,7 @@ Azure 标准 SSD 盘是什么？
 
 是否会同时加密从托管磁盘或快照导出的 VHD？
 
-不是。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
+否。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>高级磁盘：托管和非托管
 
@@ -398,7 +398,7 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 **操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 4 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
+Azure 支持的操作系统磁盘的分区类型是第1代和第2代 Vm 的主启动记录 (MBR) 和 GUID 分区表 (GPT) 。 MBR 格式支持的磁盘最大大小为 2 TiB。 对于第1代 Vm，虽然最多可分配4个 TiB，但对于操作系统，最多只能使用2个 TiB 的磁盘空间。 对于第2代 Vm，可为操作系统磁盘分配和使用的最大大小为 4 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
@@ -467,15 +467,15 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以将多个虚拟网络链接到相同的磁盘访问对象？**
 
-不是。 目前，只能将磁盘访问对象链接到一个虚拟网络。
+否。 目前，只能将磁盘访问对象链接到一个虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+否。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+否。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **可以同时发生多少次使用同一磁盘访问对象的导出或导入？**
 
@@ -487,7 +487,7 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以使用磁盘/快照的 SAS URI 下载 VM 的基础 VHD，该虚拟机不在与该磁盘关联的专用终结点的子网中。**
 
-不是。
+否。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 

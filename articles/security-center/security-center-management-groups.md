@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 6bbc38d79f51ba4ffcc3795718d276a7e9c0bf03
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534900"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440779"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍如何通过将安全策略应用到链接到 Azure Active Directory 租户的所有 Azure 订阅来大规模管理组织的安全状况。
@@ -161,7 +161,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 2. 在导航列表中，单击“Azure Active Directory”，然后单击“属性” 。
 
-3. 在 " **Azure 资源的访问管理**" 下，将开关设置为 "**否**"。
+3. 在 " **Azure 资源的访问管理**" 下，将开关设置为 " **否**"。
 
 4. 单击“保存”，保存设置。
 

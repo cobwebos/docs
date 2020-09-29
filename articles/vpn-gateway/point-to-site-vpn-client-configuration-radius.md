@@ -1,22 +1,22 @@
 ---
 title: Azure VPN 网关：创建并安装 VPN 客户端配置文件 - P2S RADIUS 连接
-description: 创建 Windows、Mac OS X 和 Linux VPN 客户端配置文件，以便使用 RADIUS 身份验证建立连接。
+description: 为使用 RADIUS 身份验证的连接创建 Windows、OS X 和 Linux VPN 客户端配置文件。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419905"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440060"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
 
-若要通过点到站点 (P2S) 连接到虚拟网络，需要配置将从中进行连接的客户端设备。 可以通过 Windows、Mac OS X 和 Linux 客户端设备创建 P2S VPN 连接。 
+若要通过点到站点 (P2S) 连接到虚拟网络，需要配置将从中进行连接的客户端设备。 可以从 Windows、OS X 和 Linux 客户端设备创建 P2S VPN 连接。 
 
 使用 RADIUS 身份验证时，可以选择多种身份验证选项：用户名/密码身份验证、证书身份验证，以及其他身份验证类型。 每种身份验证的 VPN 客户端配置各个不同。 若要配置 VPN 客户端，可以使用包含所需设置的客户端配置文件。 本文将会帮助你创建并安装所要使用的 RADIUS 身份验证类型的 VPN 客户端配置。
 
@@ -36,7 +36,7 @@ P2S RADIUS 身份验证的配置工作流如下：
 >
 >
 
-若要执行本文中的操作，请先决定想要使用的身份验证类型：用户名/密码、证书或其他类型的身份验证。 每个部分都提供了适用于 Windows、Mac OS X 和 Linux 的步骤（目前可用的有限步骤）。
+若要执行本文中的操作，请先决定想要使用的身份验证类型：用户名/密码、证书或其他类型的身份验证。 每个部分都包含 Windows、OS X 和 Linux 的步骤， (此时) 使用有限的步骤。
 
 
 ## <a name="usernamepassword-authentication"></a><a name="adeap"></a>用户名/密码身份验证
@@ -142,9 +142,9 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 10. VPN 连接显示为“IkeV2-VPN”。  可以通过更新 **mobileconfig** 文件来更改该名称。
 
     ![VPN 连接的详细信息](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
-11. 选择“身份验证设置”。  在列表中选择“用户名”，并输入凭据。  如果此前已输入凭据，系统会在列表中自动选择“用户名”，并预填充用户名和密码。  选择“确定”以保存设置。 
+11. 选择“身份验证设置”。  在列表中选择“用户名”，并输入凭据。  如果之前输入了凭据，则会在列表中自动选择 " **用户名** "，并预填充用户名和密码。 选择“确定”以保存设置。 
 
-    ![身份验证设置](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![显示 "身份验证设置" 下拉选项的屏幕截图，其中已选中 "用户名"。](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. 返回到“网络”  对话框，选择“应用”  以保存更改。 若要启动连接，请选择“连接”。 
 
 #### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>通过 strongSwan 设置 Linux VPN 客户端

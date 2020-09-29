@@ -4,16 +4,16 @@ description: 了解 Azure Vm 的 ultra 磁盘
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 681804eadc1f710eb5fbf6980fabca4beaaf5439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328189"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441193"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
 
@@ -56,7 +56,7 @@ if($sku){$sku[0].LocationInfo[0].ZoneDetails} Else {Write-host "$vmSize is not s
 
 保留 " **区域** " 值，它表示可用性区域，你需要它来部署超磁盘。
 
-|ResourceType  |名称  |位置  |区域  |限制  |功能  |Value  |
+|ResourceType  |名称  |位置  |区域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -148,14 +148,17 @@ UltraSSDAvailable                            True
 
 - 在 " **创建新磁盘** " 边栏选项卡上，输入名称，然后选择 " **更改大小**"。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="创建新磁盘 边栏选项卡的屏幕截图，突出显示更改大小。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="&quot;创建新磁盘&quot; 边栏选项卡的屏幕截图，突出显示更改大小。&quot;:::
 
 
 - 将 **存储类型** 更改为 " **超小型磁盘**"。
 - 将 **自定义磁盘大小的值 (GiB) **、 **磁盘 IOPS**和 **磁盘吞吐量** 更改为所选的磁盘。
 - 在两个边栏选项卡中选择 **"确定"** 。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="选择磁盘大小 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="&quot;创建新磁盘&quot; 边栏选项卡的屏幕截图，突出显示更改大小。&quot;:::
+
+
+- 将 **存储类型** 更改为 ":::
 
 - 继续执行 VM 部署，该部署将与部署任何其他 VM 的部署相同。
 
@@ -250,13 +253,10 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 - 将 **帐户类型** 更改为 " **超小型磁盘**"。
 - 将 **自定义磁盘大小的值 (GiB) **、 **磁盘 IOPS**和 **磁盘吞吐量** 更改为所选的磁盘。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="选择磁盘大小 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="&quot;创建新磁盘&quot; 边栏选项卡的屏幕截图，突出显示更改大小。&quot;:::
 
-- 选择 **"确定"** ，然后选择 " **创建**"。
-- 返回到磁盘的边栏选项卡后，选择 " **保存**"。
-- 重新启动 VM。
 
-![Vm 上的 "磁盘" 边栏选项卡。](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+- 将 **存储类型** 更改为 " 边栏选项卡。](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -409,4 +409,5 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [在 Azure Kubernetes Service 上使用 azure ultra 磁盘 (预览) ](../aks/use-ultra-disks.md)。
+- [使用 Azure Kubernetes Service 上的 azure ultra 磁盘 (预览) ](../aks/use-ultra-disks.md)。
+- [将日志磁盘迁移到超磁盘](../azure-sql/virtual-machines/windows/storage-migrate-to-ultradisk.md)。

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983750"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441039"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>将 VPN 网关（虚拟网络网关）连接到虚拟 WAN
 
@@ -83,7 +83,7 @@ Azure 虚拟网络
 
 1. 在虚拟 WAN 的“VPN 站点”页的顶部，依次选择“站点”、“下载站点到站点 VPN 配置”。   Azure 将使用相应的设置创建配置文件。
 
-   ![下载配置文件](./media/connect-virtual-network-gateway-vwan/download.png "下载")
+   ![屏幕截图，显示 "VPN 站点" 页面并选择 "下载站点到站点 VPN 配置" 操作。](./media/connect-virtual-network-gateway-vwan/download.png "下载")
 2. 下载并打开配置文件。
 3. 针对第二个站点重复上述步骤。 打开两个配置文件后，可以转到下一部分。
 
@@ -98,7 +98,7 @@ Azure 虚拟网络
    * “订阅”、“资源组”和“位置”与虚拟 WAN 中心相同。
 2. 检查设置，然后创建本地网络网关。 本地网络网关应类似于以下示例。
 
-   ![下载配置文件](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+   ![屏幕截图，显示 "配置" 页，其中包含突出显示的 IP 地址，并选中 "配置 BGP 设置"。](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. 重复上述步骤以创建另一个本地网络网关，但这一次请使用配置文件中的“Instance1”值而不是“Instance0”值。
 
    ![下载配置文件](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")

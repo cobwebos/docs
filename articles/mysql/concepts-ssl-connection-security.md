@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052930"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439942"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 SSL/TLS 连接
 
@@ -61,6 +61,17 @@ Azure Database for MySQL 提供了为客户端连接强制使用 TLS 版本的�
 > 一旦强制实施最低 TLS 版本要求后，以后将无法禁用最低版本强制实施。
 
 若要了解如何为 Azure Database for MySQL 设置 TLS 设置，请参阅 [如何配置 TLS 设置](howto-tls-configurations.md)。
+
+## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器的密码支持
+
+作为 SSL/TLS 通信的一部分，将验证密码套件，并且仅允许支持密码满足与数据库 serer 的通信。 密码套件验证在 [网关层](concepts-connectivity-architecture.md#connectivity-architecture) 中控制，而不是在节点本身上显式控制。 如果密码套件与下面列出的套件之一不匹配，将拒绝传入的客户端连接。
+
+### <a name="cipher-suite-supported"></a>支持密码套件
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>后续步骤
 

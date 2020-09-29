@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883229"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439094"
 ---
 # <a name="train-pytorch-model"></a>训练 PyTorch 模型
 
@@ -49,7 +49,7 @@ ms.locfileid: "90883229"
 
 8.  对于“耐性”，请指定在验证损失不连续减少时提前停止训练的时期数。 默认为 3。
 
-9.  提交管道。 如果数据集较大，这将需要一段时间。
+9.  提交管道。 如果数据集的大小较大，将需要一段时间，并建议使用 GPU 计算。
 
 ## <a name="results"></a>结果
 

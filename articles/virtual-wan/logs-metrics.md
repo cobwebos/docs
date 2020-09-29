@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983629"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440872"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure 虚拟广域网日志和指标
 
@@ -62,11 +62,13 @@ Azure 点到站点 VPN 网关提供以下指标：
 
 3. 选择“指标”。
 
-   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="屏幕截图显示了 "站点到站点 P N" 窗格，其中 Azure Monitor 选中 "视图。":::
+   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="屏幕截图显示了 &quot;站点到站点 P N&quot; 窗格，其中 Azure Monitor 选中 &quot;视图。&quot;:::
 
-4. 在 " **指标** " 页上，你可以查看你感兴趣的指标。
+4. 在 &quot; **指标** " 页上，你可以查看你感兴趣的指标。
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="指标页":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="屏幕截图显示了 &quot;站点到站点 P N&quot; 窗格，其中 Azure Monitor 选中 &quot;视图。&quot;:::
+
+4. 在 &quot; **指标** ":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>诊断日志
 
@@ -93,15 +95,17 @@ Azure 点到站点 VPN 网关提供以下指标：
 
 1. 在门户中，导航到虚拟 WAN 资源。 在门户的 "虚拟 WAN" 页面的 " **概述** " 部分中，选择 " **Essentials** " 展开视图并获取资源组信息。 复制资源组信息。
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="指标页":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="屏幕截图显示了 &quot;站点到站点 P N&quot; 窗格，其中 Azure Monitor 选中 &quot;视图。&quot;:::
 
-2. 在 "监视" 部分中，导航到资源组。 选择 " **诊断设置**"，然后输入资源信息。 这是你在步骤2中从本文前面的 " [查看网关指标](#metrics-steps) " 部分中复制的资源信息。
+4. 在 &quot; **指标** " 部分中复制的资源信息。
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="指标页":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="屏幕截图显示了 &quot;站点到站点 P N&quot; 窗格，其中 Azure Monitor 选中 &quot;视图。&quot;:::
 
-3. 在 "结果" 页上，选择 " **+ 添加诊断设置**"，然后选择一个选项。 你可以选择发送到 Log Analytics、流式传输到事件中心，或者只是存档到存储帐户。
+4. 在 &quot; **指标** " **+ 添加诊断设置**"，然后选择一个选项。 你可以选择发送到 Log Analytics、流式传输到事件中心，或者只是存档到存储帐户。
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="指标页":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="屏幕截图显示了 &quot;站点到站点 P N&quot; 窗格，其中 Azure Monitor 选中 &quot;视图。&quot;:::
+
+4. 在 &quot; **指标** ":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics 示例查询
 

@@ -1,23 +1,23 @@
 ---
 title: Azure ExpressRoute：配置 ExpressRoute Direct： CLI
-description: 了解如何使用 Azure CLI 将 Azure ExpressRoute Direct 配置为直接连接到世界各地的对等互连位置上的 Microsoft 全球网络。
+description: 了解如何使用 Azure CLI 将 Azure ExpressRoute 直接配置为直接连接到 Microsoft 全球网络。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e8c305da074f3090ced0dfc16b4a3faa4c757699
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395955"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440221"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
-可以使用 Azure ExpressRoute Direct 连接到位于全球战略分布的对等互连位置的 Microsoft 全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
+ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连位置直接连接到 Microsoft 的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 
@@ -209,7 +209,13 @@ ms.locfileid: "89395955"
    }  
    ```
 
-## <a name="change-adminstate-for-links"></a><a name="state"></a> 更改链接的 AdminState
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a> (LOA 生成授权信) 
+
+输入最近创建的 ExpressRoute 直接资源名称、资源组名称和客户名称，以将 LOA 写入到 (（可选）) 定义用于存储文档的文件位置。 如果未引用文件路径，则文档将下载到当前目录。
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 使用此过程来执行第 1 层测试。 请确保每个交叉连接在主端口和辅助端口的每个路由器上都有正确的补丁。
 
@@ -287,7 +293,8 @@ ms.locfileid: "89395955"
 
 **SkuTier** 可以是本地、标准或高级。
 
-**SkuFamily** 必须是 MeteredData，因为 ExpressRoute 直接不支持。
+**SkuFamily** 只能为 MeteredData。 ExpressRoute 直接不支持无限制。
+
 在 ExpressRoute Direct 资源上创建线路：
 
   ```azurecli

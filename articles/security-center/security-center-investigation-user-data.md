@@ -8,20 +8,20 @@ manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82c800df03826386c8b79d45584f4b26b0bc45e4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582985"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440653"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
-本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)中，并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
+本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在 [Azure Monitor 日志](../log-analytics/log-analytics-overview.md) 中，并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -57,4 +57,4 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 ## <a name="next-steps"></a>后续步骤
 有关管理用户数据的详细信息，请参阅[管理 Azure 安全中心的用户数据](security-center-privacy.md)。
-若要了解有关在 Azure Monitor 日志中删除私有数据的详细信息，请参阅[如何导出和删除私有数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
+若要了解有关在 Azure Monitor 日志中删除私有数据的详细信息，请参阅 [如何导出和删除私有数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。

@@ -6,12 +6,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e12532107ed554385ccf38531bb95b7b70298934
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439524"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集
 
@@ -62,7 +62,7 @@ ms.locfileid: "91333879"
     | 确认密码               | 重新输入管理员密码 |
 
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="创建虚拟机规模集。" border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="屏幕截图显示 &quot;创建虚拟机规模集基本信息&quot; 选项卡。" border="true":::
 
 4. 选择“网络”选项卡。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "91333879"
     | 选择负载均衡器            | 选择“myLoadBalancer”或现有的负载均衡器  |
     | 选择后端池             | 选择“myBackendPool”或现有的后端池。   |
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="创建虚拟机规模集。" border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="屏幕截图显示 &quot;创建虚拟机规模集基本信息&quot; 选项卡。" border="true":::
 
 6. 选择“管理”选项卡。 
 

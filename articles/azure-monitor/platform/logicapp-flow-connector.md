@@ -7,26 +7,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475730"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439246"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>为逻辑应用和电源自动化 Azure Monitor 日志连接器
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器
 借助 [Azure 逻辑应用](../../logic-apps/index.yml) 和 [Power Automate](https://flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
 
 例如，可以创建一个逻辑应用，以在 Office 365 的电子邮件通知中使用 Azure Monitor 日志数据，在 Azure DevOps 中创建 Bug，或者发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。 
 
 ## <a name="connector-limits"></a>连接器限制
 Azure Monitor 日志连接器具有以下限制：
-* 最大数据大小： 16 MB
+* 最大数据大小：16 MB
 * 最大查询响应大小 100 MB
-* 最大记录数：500000
-* 最大查询超时110秒。
+* 最大记录数：500,000
+* 最大查询超时 110 秒。
 
-根据您的数据大小和所用的查询，连接器可能会达到其限制，并失败。 当调整触发器定期运行并查询更少的数据时，可以解决这种情况。 您可以使用聚合数据的查询来返回更少的记录和列。
+根据数据大小和所用的查询，连接器可能会达到其限制而失败。 调整触发器重复周期，增加运行频率、减少每次查询的数据量，即可解决这种情况。 你可以使用能聚合数据的查询来返回更少的记录和列。
 
 ## <a name="actions"></a>操作
 下表描述了 Azure Monitor 日志连接器附带的操作。 可通过这两个操作对 Log Analytics 工作区或 Application Insights 应用程序运行日志查询。 两者的差异在于返回数据的方式。
@@ -46,7 +46,7 @@ Azure Monitor 日志连接器具有以下限制：
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 
-在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。   可以打开**Log Analytics**设置来收集有关运行时数据和事件的信息，如[设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据](../../logic-apps/monitor-logic-apps-log-analytics.md)中所述。 使用 Azure Monitor 日志连接器不需要此设置。
+在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。   可以打开 **Log Analytics** 设置来收集有关运行时数据和事件的信息，如 [设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据](../../logic-apps/monitor-logic-apps-log-analytics.md)中所述。 使用 Azure Monitor 日志连接器不需要此设置。
 
 ![创建逻辑应用](media/logicapp-flow-connector/create-logic-app.png)
 
@@ -68,7 +68,7 @@ Azure Monitor 日志连接器具有以下限制：
 
 单击 " **Azure Log Analytics –运行查询并将结果可视化**。
 
-![运行查询并将结果可视化的操作](media/logicapp-flow-connector/select-query-action-visualize.png)
+![向逻辑应用设计器中的步骤添加的新操作的屏幕截图。 Azure Monitor 在 "选择操作" 下突出显示日志。](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>添加 Azure Monitor 日志操作
@@ -87,7 +87,7 @@ Event
 
 为“时间范围”选择“在查询中设置”，为“图表类型”选择“HTML 表”。  
    
-![运行查询并将结果可视化的操作](media/logicapp-flow-connector/run-query-visualize-action.png)
+![新 Azure Monitor 日志操作的屏幕截图，名为 "运行查询" 和 "可视化结果"。](media/logicapp-flow-connector/run-query-visualize-action.png)
 
 与当前连接关联的帐户将发送邮件。 可以单击“更改连接”来指定另一帐户。
 
@@ -126,4 +126,4 @@ Event
 
 - 详细了解 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
 - 详细了解[逻辑应用](../../logic-apps/index.yml)
-- 了解有关[电源自动执行](https://flow.microsoft.com)的详细信息。
+- 详细了解 [Power Automate](https://flow.microsoft.com)。

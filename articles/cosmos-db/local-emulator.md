@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, contperfq1
+ms.openlocfilehash: eb148801011b2d1c8c1f975edb870ba594b085a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303083"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440686"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>安装并使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -76,17 +76,13 @@ Azure Cosmos 模拟器提供 Azure Cosmos DB 服务的高保真模拟。 它支�
 
 默认情况下，Azure Cosmos 模拟器安装在 `C:\Program Files\Azure Cosmos DB Emulator` 位置。 若要在 Windows 上启动 Azure Cosmos 模拟器，请选择 " **开始** " 按钮或按 windows 键。 开始键入“Azure Cosmos 模拟器”，再从应用程序列表中选择该模拟器。
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="选择 "开始" 按钮或按 Windows 键，开始键入 "Azure Cosmos 模拟器"，然后从应用程序列表中选择该模拟器":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="选择 &quot;开始&quot; 按钮或按 Windows 键，开始键入 &quot;Azure Cosmos 模拟器&quot;，然后从应用程序列表中选择该模拟器":::
 
 启动模拟器后，Windows 任务栏通知区域中会显示一个图标。 它会自动在浏览器的此 URL url 中打开 Azure Cosmos 数据资源管理器 `https://localhost:8081/_explorer/index.html` 。
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Azure Cosmos DB 本地模拟器任务栏通知":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="选择 &quot;开始&quot; 按钮或按 Windows 键，开始键入 &quot;Azure Cosmos 模拟器&quot;，然后从应用程序列表中选择该模拟器" ) 在端口8081上侦听。 地址显示为 `https://localhost:8081/_explorer/index.html`。 如果关闭资源管理器，稍后又想要重新打开它，可以在浏览器中打开该 URL，或者在 Windows 任务栏图标中从 Azure Cosmos 模拟器启动它，如下所示。
 
-还可以从命令行或 PowerShell 命令启动和停止模拟器。 有关详细信息，请参阅 [命令行工具参考](emulator-command-line-parameters.md) 文章。
-
-默认情况下，Azure Cosmos 模拟器在本地计算机上运行 ( "localhost" ) 在端口8081上侦听。 地址显示为 `https://localhost:8081/_explorer/index.html`。 如果关闭资源管理器，稍后又想要重新打开它，可以在浏览器中打开该 URL，或者在 Windows 任务栏图标中从 Azure Cosmos 模拟器启动它，如下所示。
-
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos 本地模拟器数据资源管理器启动器":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="选择 &quot;开始&quot; 按钮或按 Windows 键，开始键入 &quot;Azure Cosmos 模拟器&quot;，然后从应用程序列表中选择该模拟器":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>在用于 Windows 的 Docker 上使用模拟器
 
@@ -289,7 +285,7 @@ services:
 
 1. 打开该特定项的上下文菜单，选择“获取项”，然后在“信任” > “使用此证书时”选项下选择“始终信任”。   
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="打开该特定项的上下文菜单，选择“获取项”，然后在“信任 - 使用此证书时”选项下选择“始终信任”":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="选择 &quot;开始&quot; 按钮或按 Windows 键，开始键入 &quot;Azure Cosmos 模拟器&quot;，然后从应用程序列表中选择该模拟器":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>选项2：在应用程序中禁用 SSL 验证
 
