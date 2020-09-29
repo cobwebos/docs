@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 7cdcef80ef2433d34b32589d2539089fb9801eb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399423"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448695"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Azure 前门中的 HTTP/2 支持
 
 目前，HTTP/2 支持对所有 Azure 前门配置都有效。 客户无需进一步执行操作。
 
-HTTP/2 是 HTTP/1.1 的主要修订。 它提供更快的 Web 性能、减少了响应时间并改进了用户体验，同时保留了熟悉的 HTTP 方法、状态代码和语义。 尽管 HTTP/2 用于处理 HTTP 和 HTTPS，但许多客户端 Web 浏览器仅通过传输层安全性 (TLS) 支持 HTTP/2。
+HTTP/2 是 HTTP/1.1 的主要修订版本，可通过缩短响应时间来提供更快的 web 性能。 HTTP/2 是通过维护熟悉的 HTTP 方法、状态代码和语义来实现的，以改善用户体验。 尽管 HTTP/2 设计为使用 HTTP 和 HTTPS，但许多客户端 web 浏览器仅支持 HTTP/2 over 传输层安全性 (TLS) 。
 
 > [!NOTE]
 > HTTP/2 协议支持仅适用于从客户端到前门的请求。 后端池中从前门到后端的通信通过 HTTP/1.1 进行。 
@@ -46,7 +46,7 @@ HTTP/2 的优点包括：
 
 ## <a name="http2-browser-support"></a>HTTP/2 浏览器支持
 
-所有主流浏览器均已在其当前版本中实现 HTTP/2 支持。 不支持的浏览器会自动回退到 HTTP/1.1。
+所有主流浏览器均已在其当前版本中实现 HTTP/2 支持。 不受支持的浏览器会自动回退到 HTTP/1.1。
 
 |浏览者|最低版本|
 |-------------|------------|

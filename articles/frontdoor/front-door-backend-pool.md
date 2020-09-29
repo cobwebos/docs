@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399916"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449286"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure 前门中的后端和后端池
-本文介绍有关如何在 Azure 前门中映射应用部署的概念。 它还说明了应用后端的前端配置中的不同术语。
+本文介绍有关如何在 Azure 前门中映射 web 应用程序部署的概念。 它还说明了应用程序后端周围的前门配置中使用的不同术语。
 
 ## <a name="backends"></a>后端
-后端等于某个区域中的应用部署实例。 前门同时支持 Azure 和非 Azure 后端，因此此区域不仅限于 Azure 区域。 此外，它还可以是本地数据中心或其他云中的应用程序实例。
+后端指的是区域中的 web 应用程序部署。 前门支持后端池中的 Azure 和非 Azure 资源。 应用程序可以在本地数据中心或其他云提供程序中。
 
-前门后端指的是应用程序的主机名或公共 IP，可以为客户端请求提供服务。 不应将后端与数据库层、存储层等混淆。 应将后端视为应用后端的公共终结点。 在前门后端池中添加后端时，还必须添加以下内容：
+前门后端是指用于处理客户端请求的应用程序的主机名或公共 IP。 不应将后端与数据库层、存储层等混淆。 应将后端视为应用程序后端的公共终结点。 将后端添加到前门后端池时，还必须添加以下内容：
 
 - **后端主机类型**。 要添加的资源的类型。 前门支持应用服务、云服务或存储中的应用后端自动发现。 如果需要 Azure 中的其他资源，甚至是非 Azure 后端，请选择 " **自定义主机**"。
 
@@ -41,13 +41,13 @@ ms.locfileid: "89399916"
 
 ### <a name="backend-host-header"></a><a name = "hostheader"></a>后端主机头
 
-由前门转发到后端的请求包括一个主机标头字段，后端使用它来检索目标资源。 此字段的值通常来自后端 URI，具有主机和端口。
+由前门转发到后端的请求包括一个主机标头字段，后端使用它来检索目标资源。 此字段的值通常来自具有主机标头和端口的后端 URI。
 
 例如，对发出的请求 `www.contoso.com` 将具有主机标头 www.contoso.com。 如果使用 Azure 门户配置后端，则此字段的默认值为后端的主机名。 如果后端为 contoso-westus.azurewebsites.net，则在 Azure 门户中，后端主机标头的会自动填充值将为 contoso-westus.azurewebsites.net。 但是，如果使用 Azure 资源管理器模板或其他方法而不显式设置此字段，前门会将传入的主机名作为主机标头的值发送。 如果针对 www contoso.com 发出了请求 \. ，并且后端 contoso-westus.azurewebsites.net 的头字段为空，则前门会将主机标头设置为 www \. contoso.com。
 
 大多数应用后端 (Azure Web 应用、Blob 存储和云服务) 需要主机标头来匹配后端的域。 但是，路由到后端的前端主机将使用不同的主机名，例如 www.contoso.net。
 
-如果后端需要主机标头来匹配后端主机名，请确保后端主机标头包含主机名后端。
+如果后端需要主机标头来匹配后端主机名，请确保后端主机标头包含后端的主机名。
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>配置后端的后端主机标头
 

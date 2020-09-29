@@ -4,12 +4,12 @@ description: 了解如何设置 Azure Migrate 设备进行物理服务器评估�
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085968"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448068"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
@@ -59,7 +59,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 公有云的示例用法：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - 政府云的示例用法：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  验证最新版本的设备和哈希值设置。
+3.  验证最新版本的设备和 [哈希值](tutorial-discover-physical.md#verify-security) 设置。
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本

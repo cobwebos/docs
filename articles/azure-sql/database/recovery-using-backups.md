@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371735"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448795"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自动数据库备份进行恢复 - Azure SQL 托管实例和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,11 +33,6 @@ ms.locfileid: "91371735"
 
 > [!IMPORTANT]
 > 还原期间无法覆盖现有数据库。
-
-默认情况下，Azure SQL 数据库和 Azure SQL 托管实例备份存储在异地复制的 Blob 存储（RA-GRS 存储类型）中。 此外，SQL 托管实例还支持本地冗余 (LRS) 和区域冗余 (ZRS) 备份存储。 冗余可确保数据免受计划内和计划外事件的影响，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 区域冗余存储 (ZRS) 仅在 [特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)提供。
-
-> [!IMPORTANT]
-> 为备份配置存储冗余仅适用于托管实例，允许在创建过程中进行配置。 预配资源后，不能更改备份存储冗余选项。
 
 使用“标准”或“高级”服务层级时，数据库还原可能会产生额外的存储费用。 如果还原的数据库的最大大小大于目标数据库的服务层级和性能级别包含的存储量，则会产生额外的费用。 有关额外存储定价的详细信息，请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，可以通过将数据库最大大小设置为附送的量，来避免产生额外的费用。
 
@@ -143,7 +138,7 @@ ms.locfileid: "91371735"
 ## <a name="geo-restore"></a>异地还原
 
 > [!IMPORTANT]
-> 异地还原仅适用于配置了异地冗余 (RA-GRS) 备份存储类型的托管实例。 用本地冗余或区域冗余备份存储类型配置的托管实例不支持异地还原。
+> 异地还原仅适用于配置了异地冗余 [备份存储](automated-backups-overview.md#backup-storage-redundancy)的 SQL 数据库或托管实例。
 
 你可以在任何 Azure 区域中，从最新的异地复制备份还原任何 SQL 数据库服务器上的数据库或任何托管实例上的实例数据库。 异地还原使用异地复制的备份作为源。 即使由于服务中断而无法访问数据库或数据中心，也依然能够请求异地还原。
 

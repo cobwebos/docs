@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974703"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448562"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>在 Azure Monitor（预览版）的 Log Analytics 工作区中创建自定义字段
 
@@ -101,7 +101,7 @@ Azure Monitor 的**自定义字段**功能使你可以通过添加自己的可�
 
 我们会看到：对于某些记录，已正确标识服务名称；但对于其他记录，则并未正确标识服务名称。   “搜索结果”显示：未选择“WMI 性能适配器”的部分名称。  “摘要”显示一条记录识别了“模块安装程序” 而不是“Windows 模块安装程序”。  
 
-![搜索结果](media/custom-fields/search-results-01.png)
+![显示在 "搜索结果" 窗格中突出显示的服务名称部分以及摘要中突出显示的一项错误服务名称的屏幕截图。](media/custom-fields/search-results-01.png)
 
 我们从“WMI 性能适配器”记录开始。  单击该记录的编辑图标，并单击“修改此突出显示”。  
 
@@ -113,7 +113,7 @@ Azure Monitor 的**自定义字段**功能使你可以通过添加自己的可�
 
 我们可以看到：“WMI 性能适配器”的条目已得到修正，Log Analytics 也使用该信息来修正“Windows 模块安装程序”的记录。
 
-![搜索结果](media/custom-fields/search-results-02.png)
+![显示 "搜索结果" 窗格中突出显示的完整服务名称以及摘要中突出显示的正确服务名称的屏幕截图。](media/custom-fields/search-results-02.png)
 
 我们现在可以运行一个查询来验证 **Service_CF** 已创建，但尚未添加到任何记录中。 这是因为自定义字段不能使用现有的记录，因此我们需等待系统收集新记录。
 

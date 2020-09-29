@@ -6,22 +6,22 @@ author: joplum
 ms.author: joplum
 ms.service: sql-database
 ms.workload: data-services
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 551276895de0ba659349c20205fa21d3d2c6b43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669557"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448895"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何将 SQLite 数据库迁移到 Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 许多人在 SQLite 中首次体验了数据库和 SQL 编程。 SQLite 包含在许多操作系统和热门应用程序中，是世界上最广泛部署和使用的数据库引擎之一。 此外，它可能是许多人首次使用的数据库引擎，因此往往成为项目或应用程序的核心组成部分。 当项目或应用程序超过最初的 SQLite 实施规模时，开发人员可能需要将其数据迁移到可靠的集中式数据存储。
 
-Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作负荷需求自动缩放计算，并根据每秒使用的计算量来计费。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
+Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层，可根据工作负载需求自动缩放，并根据每秒使用的计算资源量计费。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
 
 完成以下步骤后，数据库将会迁移到 Azure SQL 数据库无服务器，使你能够将数据库提供给云中的其他用户或应用程序使用，而且只需为使用的资源付费，只需对应用程序代码进行极少量的更改。
 
@@ -36,7 +36,7 @@ Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作�
 
 1. 在“无服务器”计算层中预配新的 Azure SQL 数据库。
 
-    ![显示 Azure SQL 数据库无服务器的预配示例的 Azure 门户屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/provision-serverless.png)
+    ![Azure 门户的屏幕截图，其中显示了 Azure SQL 数据库无服务器的预配示例](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/provision-serverless.png)
 
 2. 确保 SQLite 数据库文件在 Windows 环境中可用。 如果没有 SQLite ODBC 驱动程序，请安装该驱动程序 (有许多可用的开源驱动程序，例如 http://www.ch-werner.de/sqliteodbc/) 。
 
@@ -53,17 +53,17 @@ Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作�
     - 启动 ADF（在 Azure 门户上的服务中选择“创作和监视”）
     - 单击左侧的“创作”选项卡（蓝色铅笔图标）
     - 单击“连接”（左下角）并选择“集成运行时”
-    - 添加新的自承载集成运行时，为其命名，然后选择“选项 2”。**
+    - 添加新的自承载集成运行时，为其命名，然后选择“选项 2”。
 
 5. 为数据工厂中的源 SQLite 数据库创建新的链接服务。
 
-    ![在 Azure 数据工厂中显示空链接服务边栏选项卡的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
+    ![显示 Azure 数据工厂中的空“链接服务”边栏选项卡的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. 在 "**连接**" 下的 "**链接服务**" 下，单击 "**新建**"。
+6. 在“连接”中的“链接服务”下，单击“新建”  。
 
 7. 搜索并选择“ODBC”连接器
 
-   ![在 Azure 数据工厂的 "链接的服务" 边栏选项卡中显示 ODBC 连接器徽标的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-odbc.png)
+   ![显示 Azure 数据工厂中“链接服务”边栏选项卡上的“ODBC”连接器徽标的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-odbc.png)
 
 8. 为该链接服务指定一个有意义的名称，例如“sqlite_odbc”。 从“通过集成运行时进行连接”下拉列表中选择你的集成运行时。 在连接字符串中输入以下内容（请将 Initial Catalog 变量替换为 .db 文件的文件路径，并将 DSN 替换为系统 DSN 连接的名称）：
 
@@ -79,7 +79,7 @@ Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作�
 
 11. 为无服务器 SQL 目标创建另一个链接服务。 使用链接服务向导选择数据库，并提供 SQL 身份验证凭据。
 
-    ![显示在 Azure 数据工厂中选择的 Azure SQL 数据库的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create-target.png)
+    ![显示 Azure 数据工厂中选择的 Azure SQL 数据库的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create-target.png)
 
 12. 从 SQLite 数据库提取 CREATE TABLE 语句。 为此，可对数据库文件执行以下 Python 脚本。
 
@@ -102,7 +102,7 @@ Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作�
 
 14. 返回到数据工厂的主屏幕，然后单击“复制数据”来运行作业创建向导中的每个步骤。
 
-    ![显示 Azure 数据工厂中复制数据向导徽标的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/copy-data.png)
+    ![显示 Azure 数据工厂中的“复制数据向导”徽标的屏幕截图](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/copy-data.png)
 
 15. 使用复选框选择源 SQLite 数据库中的所有表，并将其映射到 Azure SQL 中的目标表。 作业完成运行后，即已成功将数据从 SQLite 迁移到 Azure SQL！
 

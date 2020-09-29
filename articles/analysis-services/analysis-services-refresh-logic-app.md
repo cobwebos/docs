@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552231"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448583"
 ---
 # <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
 
@@ -53,9 +53,9 @@ ms.locfileid: "87552231"
 
 2. 添加新步骤并搜索 **HTTP**。  
 
-   ![添加 HTTP 活动](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![选择了 "HTTP" 磁贴的 "选择操作" 部分的屏幕截图。](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![添加 HTTP 活动](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![选择了 "HTTP-HTTP" 磁贴的 "HTTP" 窗口的屏幕截图。](./media/analysis-services-async-refresh-logic-app/10.png)
 
 3. 选择“HTTP”以添加此操作。 
 
@@ -98,15 +98,15 @@ ms.locfileid: "87552231"
 
 沿用上面的示例，请删除第一个活动，并将其替换为“计划”活动。 
 
-![计划活动](./media/analysis-services-async-refresh-logic-app/12.png)
+![显示 "逻辑应用" 页面并选择 "计划" 磁贴的屏幕截图。](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![计划活动](./media/analysis-services-async-refresh-logic-app/13.png)
+![显示 "触发器" 页的屏幕截图。](./media/analysis-services-async-refresh-logic-app/13.png)
 
 本示例将使用“重复周期”。 
 
 添加活动后，配置“间隔”和“频率”，然后添加新参数并选择“在这些时间”。 
 
-![计划活动](./media/analysis-services-async-refresh-logic-app/16.png)
+![显示 "定期" 部分的屏幕截图，其中选择了 "当时时间" 参数。](./media/analysis-services-async-refresh-logic-app/16.png)
 
 选择所需的小时数。
 

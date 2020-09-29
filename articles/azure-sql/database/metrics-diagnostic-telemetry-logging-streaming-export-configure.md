@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 2c8c31219f014935c14371cf4dd30b61ba35819b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319497"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448912"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>配置 Azure SQL 数据库和 Azure SQL 托管实例诊断遥测的流式导出
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -478,7 +478,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：ResourceUsageStats |
+|Category|类别的名称。 始终：ResourceUsageStats |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：MANAGEDINSTANCES |
 |SubscriptionId|数据库的订阅 GUID |
@@ -503,7 +503,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：QueryStoreRuntimeStatistics |
+|Category|类别的名称。 始终：QueryStoreRuntimeStatistics |
 |OperationName|操作的名称。 始终：QueryStoreRuntimeStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -554,7 +554,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：QueryStoreWaitStatistics |
+|Category|类别的名称。 始终：QueryStoreWaitStatistics |
 |OperationName|操作的名称。 始终：QueryStoreWaitStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -592,7 +592,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：错误 |
+|Category|类别的名称。 始终：错误 |
 |OperationName|操作的名称。 始终：ErrorEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -610,7 +610,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_hash_s|失败查询的查询哈希（如果有） |
 |query_plan_hash_s|失败查询的查询计划哈希（如果有） |
 
-详细了解 [SQL 错误消息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)。
+详细了解 [SQL 错误消息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)。
 
 #### <a name="database-wait-statistics-dataset"></a>数据库等待统计数据集
 
@@ -621,7 +621,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：DatabaseWaitStatistics |
+|Category|类别的名称。 始终：DatabaseWaitStatistics |
 |OperationName|操作的名称。 始终：DatabaseWaitStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -650,7 +650,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：超时 |
+|Category|类别的名称。 始终：超时 |
 |OperationName|操作的名称。 始终：TimeoutEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -673,7 +673,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：块 |
+|Category|类别的名称。 始终：块 |
 |OperationName|操作的名称。 始终：BlockEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -697,7 +697,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC] |记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：死锁数 |
+|Category|类别的名称。 始终：死锁数 |
 |OperationName|操作的名称。 始终：DeadlockEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -718,7 +718,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|类别|类别的名称。 始终：AutomaticTuning |
+|Category|类别的名称。 始终：AutomaticTuning |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 47e9b616a2a686a7ce82a592ee81966041371048
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327997"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448613"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>虚拟 WAN (预览版 Azure Monitor 见解) 
 
@@ -24,7 +24,7 @@ Azure 虚拟 WAN [Azure Monitor Insights](../azure-monitor/insights/network-insi
 > 虚拟 WAN 门户中的 " **Insights** " 菜单选项目前正在推出。在此菜单推出时，可以使用网络 Azure Monitor 访问虚拟 WAN 拓扑和指标工作簿。 有关详细信息，请参阅 [网络 Azure Monitor](../azure-monitor/insights/network-insights-overview.md)。 
 >
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 若要完成本文中的步骤，需要具有一个或多个集线器的虚拟 WAN。 若要创建虚拟 WAN 和中心，请遵循以下文章中的步骤：
 
@@ -37,7 +37,7 @@ Azure 虚拟 WAN [Azure Monitor Insights](../azure-monitor/insights/network-insi
 
 **图1：监视器 > Insights 菜单**
 
-:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="显示见解菜单选项的屏幕截图。" lightbox="./media/azure-monitor-insights/monitor-menu.png":::
+:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="显示见解 (预览) 视图的屏幕截图。" lightbox="./media/azure-monitor-insights/monitor-menu.png":::
 
 在 " **见解** " 视图中，可以查看 AUTODISCOVERED 虚拟 WAN 资源。 这些资源包括：集线器、网关、防火墙、连接和辐射虚拟网络、第三方 Nva，以及端到端虚拟 WAN 中的分支。 有关示例，请参见 **图 2**。
 
@@ -45,7 +45,7 @@ Azure 虚拟 WAN [Azure Monitor Insights](../azure-monitor/insights/network-insi
 
 **图2： Insights 视图**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="显示见解视图的屏幕截图。" lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="显示见解 (预览) 视图的屏幕截图。" lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>“依赖项”视图
 
@@ -53,7 +53,7 @@ Azure 虚拟 WAN [Azure Monitor Insights](../azure-monitor/insights/network-insi
 
 **图3： VWAN 依赖关系视图**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="显示依赖关系视图的屏幕截图。" lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="显示见解 (预览) 视图的屏幕截图。" lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 **依赖关系**视图映射将以下资源显示为连接的图形：
 
@@ -69,13 +69,11 @@ Azure 虚拟 WAN [Azure Monitor Insights](../azure-monitor/insights/network-insi
 
 **图4：导航到特定于资源的信息**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="显示如何导航到特定于资源的信息的屏幕截图。":::
-
-" **依赖关系** " 视图中的搜索和筛选栏提供了一种简单的方法来在图形上进行搜索。 各种筛选器可帮助将搜索范围缩小到特定路径和状态。
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="显示见解 (预览) 视图的屏幕截图。" 视图中的搜索和筛选栏提供了一种简单的方法来在图形上进行搜索。 各种筛选器可帮助将搜索范围缩小到特定路径和状态。
 
 **图5：搜索和筛选**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="显示搜索和筛选栏的屏幕截图。" lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="显示见解 (预览) 视图的屏幕截图。" lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>详细度量值
 
@@ -83,7 +81,7 @@ Azure 虚拟 WAN [Azure Monitor Insights](../azure-monitor/insights/network-insi
 
 **图6：详细度量值仪表板**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="显示详细指标仪表板的屏幕截图。" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="显示见解 (预览) 视图的屏幕截图。" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

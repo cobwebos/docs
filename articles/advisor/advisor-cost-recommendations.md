@@ -3,12 +3,12 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 3b7e57aa178380ff4cf0561718c292dc1e6c6aa9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405218"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448178"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -59,8 +59,8 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB 保留的容量
 顾问会在过去30天内分析 Azure Cosmos DB 使用模式，并建议预留的容量购买以优化成本。 通过使用预留容量，你可以预购买 Azure Cosmos DB 小时的使用情况，并通过即用即付成本保存。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问通过使用3年预订定价并推断过去30天内观测到的使用模式，来计算各个订阅的节省估计。 共享范围的建议适用于预留容量购买，并可提高节省费用。
 
-### <a name="sql-paas-reserved-capacity"></a>SQL PaaS 预留容量
-顾问在过去30天内分析 SQL PaaS 弹性数据库池和 SQL 托管实例使用模式。 然后，它建议保留的容量购买，以优化成本。 通过使用预留容量，你可以预购买 SQL DB 每小时使用情况并保存你的 SQL 计算成本。 你的 SQL 许可证将单独收费，且不会按预订折扣。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问通过使用3年预订定价并推断过去30天内观测到的使用模式，来计算各个订阅的节省估计。 共享范围的建议适用于预留容量购买，并可提高节省费用。
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL 数据库和 SQL 托管实例保留容量
+顾问在过去30天内分析 SQL 数据库和 SQL 托管实例使用模式。 然后，它建议保留的容量购买，以优化成本。 通过使用预留容量，你可以预购买 SQL DB 每小时使用情况并保存你的 SQL 计算成本。 你的 SQL 许可证将单独收费，且不会按预订折扣。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问通过使用3年预订定价并推断过去30天内观测到的使用模式，来计算各个订阅的节省估计。 共享范围的建议适用于预留容量购买，并可提高节省费用。 有关详细信息，请参阅 [AZURE Sql 数据库 & SQL 托管实例保留容量](https://docs.microsoft.com/azure/azure-sql/database/reserved-capacity-overview)。
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>应用服务戳记保留容量
 顾问会在过去30天内分析 Azure App Service 隔离环境的戳记费使用模式，并建议预留容量购买，以优化成本。 通过使用预留容量，你可以为隔离的环境戳记收费预先购买每小时的使用量，并通过即用即付成本节省费用。 请注意，保留容量仅适用于邮票费，不适用于应用服务实例。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问会根据过去30天内的使用情况模式，使用3年保留价格计算各个订阅的节省估计值。

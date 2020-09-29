@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333709"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448967"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -314,26 +314,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ### <a name="fail-back-to-azure-stack"></a>故障回复到 Azure Stack
 
-主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 若要进行此操作，需下载 Azure VM VHD，并将其上传到 Azure Stack。
-
-1. 关闭 Azure VM，以便可下载 VHD。
-2. 若要开始下载 VHD，请安装 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
-3. 导航到 Azure 门户中的 VM（使用 VM 名称）。
-4. 在“磁盘”中，单击磁盘名称，然后收集设置  。
-
-    - 例如，我们的测试中使用的 VHD URI：可将 `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` 分解，获得用于下载 VHD 的以下输入参数。
-        - 存储帐户：502055westcentralus
-        - 容器：wahv9b8d2ceb284fb59287
-        - VHD 名称：copied-3676553984.vhd
-
-5. 现在请使用 Azure 存储资源管理器下载 VHD。
-6. 按照[这些步骤](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)将 VHD 上传到 Azure Stack。
-7. 在现有 VM 或新 VM 中，附加上传的 VHD。
-8. 检查 OS 磁盘是否正确，并启动 VM。
-
-
-此时，故障回复完成。
-
+主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 为此，请按照 [此处](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)列出的步骤进行操作。
 
 ## <a name="conclusion"></a>结论
 

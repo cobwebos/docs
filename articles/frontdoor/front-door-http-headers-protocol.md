@@ -9,29 +9,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e72443e33d1b6f097f61f4c027b5f547b43ee2a9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449223"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure 前门中 HTTP 标头的协议支持
 本文概述了前门在调用路径的各个部分支持的协议 (参阅图像) 。 以下各节提供了有关前门支持的 HTTP 标头的详细信息。
 
-![Azure 前门 HTTP 标头协议][1]
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure 前门 HTTP 标头协议":::
 
 >[!IMPORTANT]
 >前门不验证此处未记录的任何 HTTP 标头。
 
 ## <a name="client-to-front-door"></a>客户端到 Front Door
-前门接受传入请求中的大多数标头，而不进行修改。 如果发送了某些保留标头，则会将其从传入请求中删除，其中包含带有 X-FD-* 前缀的标头。
+前门接受传入请求的大多数标头而不进行修改。 如果发送了某些保留标头，则会将其从传入请求中删除，其中包含带有 X-FD-* 前缀的标头。
 
 ## <a name="front-door-to-backend"></a>Front Door 到后端
 
-前门包含传入请求中的标头，除非由于限制而被删除。 前门还添加以下标头：
+前门包含传入请求的标头，除非由于限制而被删除。 前门还添加以下标头：
 
 | 标头  | 示例和说明 |
 | ------------- | ------------- |
@@ -52,12 +52,9 @@ ms.locfileid: "89399508"
 
 | 标头  | 示例 |
 | ------------- | ------------- |
-| X-Azure-引用 |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 这对于疑难解答至关重要，因为它用于搜索访问日志。|
+| X-Azure-引用 |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识由前门提供的请求，这对于疑难解答至关重要，因为它用于搜索访问日志。|
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 Front Door](quickstart-create-front-door.md)
+- [创建前门](quickstart-create-front-door.md)
 - [前门的工作方式](front-door-routing-architecture.md)
-
-<!--Image references-->
-[1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

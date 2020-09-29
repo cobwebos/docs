@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703161"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448635"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户创建具有静态公共 IP 地址的虚拟机
 
@@ -60,13 +60,13 @@ ms.locfileid: "84703161"
 9. 部署虚拟机以后，请在门户顶部的搜索框中输入 *myPublicIpAddress*。 当“myPublicIpAddress”出现在搜索结果中时，将其选中。
 10. 可以查看分配的公共 IP 地址，以及分配给 **myVM** 虚拟机的地址，如下图所示：
 
-    ![查看公共 IP 地址](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+    ![屏幕截图显示了具有 I P 地址和名称的公共 I P 地址窗格。 ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
 
     Azure 从你在其中创建虚拟机的区域使用的地址中分配了一个公共 IP 地址。 对于 Azure [公有](https://www.microsoft.com/download/details.aspx?id=56519)云、[美国政府](https://www.microsoft.com/download/details.aspx?id=57063)云、[中国](https://www.microsoft.com/download/details.aspx?id=57062)云和[德国](https://www.microsoft.com/download/details.aspx?id=57064)云，可以下载范围（前缀）的列表。
 
 11. 选择“配置”，确认分配为“静态”。 
 
-    ![查看公共 IP 地址](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+    ![屏幕截图显示已选择配置项目的 "公共 I P 地址" 窗格。](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
 > 不要修改虚拟机操作系统中的 IP 地址设置。 操作系统不知道 Azure 公共 IP 地址。 虽然可以向操作系统添加专用 IP 地址设置，但除非必要，否则我们建议不要这样做，而只能阅读[向操作系统添加专用 IP 地址](virtual-network-network-interface-addresses.md#private)之后才执行此操作。

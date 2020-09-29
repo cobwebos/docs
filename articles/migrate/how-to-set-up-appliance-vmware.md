@@ -3,12 +3,12 @@ title: 为 VMware 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c9a9f1567f984fc5770b47d3998610cb69643360
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923598"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448644"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
 
@@ -36,19 +36,19 @@ ms.locfileid: "88923598"
 
 1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，选择“发现”。
 2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 VMware vSphere 虚拟机监控程序”  。
-3. 在 **1：生成 Azure Migrate 项目密钥**中，为你将为 VMware vm 的发现设置的 Azure Migrate 设备提供名称。该名称的字母数字应为14个字符或更少。
-1. 单击 " **生成密钥** " 开始创建所需的 Azure 资源。 请不要在创建资源的过程中关闭 "发现计算机" 页。
-1. 成功创建 Azure 资源后，将生成 **Azure Migrate 项目密钥** 。
-1. 复制密钥，因为在配置期间完成设备注册需要用到它。
+3. 在“1: 生成 Azure Migrate 项目密钥”中，提供将为发现 VMware VM 而设置的 Azure Migrate 设备的名称。该名称应为不超过 14 个字符的字母数字。
+1. 单击“生成密钥”，开始创建所需的 Azure 资源。 在创建资源期间，请不要关闭“发现计算机”页。
+1. 成功创建 Azure 资源后，会生成一个 Azure Migrate 项目密钥。
+1. 复制密钥，因为配置设备时需要输入该密钥才能完成设备注册。
 
 ### <a name="download-the-ova-template"></a>下载 OVA 模板
-在 **2：下载 Azure Migrate 设备**上，选择。.OVA 文件，然后单击 " **下载**"。 
+在“2:下载 Azure Migrate 设备”中，选择 .OVA 文件并单击“下载”。 
 
 
-   ![用于发现计算机的选项](./media/tutorial-assess-vmware/servers-discover.png)
+   ![对于发现计算机的选择](./media/tutorial-assess-vmware/servers-discover.png)
 
 
-   ![用于生成密钥的选项](./media/tutorial-assess-vmware/generate-key-vmware.png)
+   ![对于生成密钥的选择](./media/tutorial-assess-vmware/generate-key-vmware.png)
 
 ### <a name="verify-security"></a>验证安全性
 
@@ -57,7 +57,7 @@ ms.locfileid: "88923598"
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令，生成 .OVA 的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - 用法示例：```C:\>C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
 3. 对于最新的设备版本，生成的哈希应与这些 [设置](./tutorial-assess-vmware.md#verify-security)相符。
 
 
@@ -95,49 +95,49 @@ ms.locfileid: "88923598"
 3. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:** 44368。
 
    或者，可以在设备桌面上选择应用快捷方式打开该应用。
-1. 接受 **许可条款**，并阅读第三方信息。
+1. 接受许可条款，并阅读第三方信息。
 1. 在 Web 应用 >“设置必备组件”中执行以下操作：
    - **连接**：应用将检查 VM 是否可访问 Internet。 如果 VM 使用代理：
-     - 单击 " **设置代理** " 以指定窗体 http://ProxyIPAddress 或侦听端口 (的代理地址 http://ProxyFQDN) 。
+     - 单击“设置代理”，指定代理地址（格式为 http://ProxyIPAddress 或 http://ProxyFQDN) ）以及侦听端口。
      - 如果代理需要身份验证，请指定凭据。
      - 仅支持 HTTP 代理。
-     - 如果已添加代理详细信息或禁用代理和/或身份验证，请单击 " **保存** " 再次触发连接检查。
+     - 如果已添加代理详细信息或已禁用代理和/或身份验证，请单击“保存”，再次触发连接性检查。
    - **时间同步**：设备上的时间应与 Internet 时间同步，这样才能正常进行发现。
-   - **安装更新**：设备可确保安装最新的更新。 检查完成后，可以单击 " **查看设备服务** " 查看设备上运行的组件的状态和版本。
-   - **安装 VDDK**：设备将检查是否已安装 VMware vSphere 虚拟磁盘开发工具包 (VDDK)。 如果未安装，请从 VMware 下载 VDDK 6.7，并将下载的 zip 内容解压缩到设备上的指定位置，如 **安装说明**中所述。
+   - **安装更新**：设备可确保安装最新的更新。 检查完成后，可以单击“查看设备服务”查看设备上运行的组件的状态和版本。
+   - **安装 VDDK**：设备将检查是否已安装 VMware vSphere 虚拟磁盘开发工具包 (VDDK)。 从 VMware 下载 VDDK 6.7（如果尚未安装它），并按照“安装说明”中提供的信息将下载的 zip 内容解压缩到设备上的指定位置。
 
      Azure Migrate 服务器迁移在迁移到 Azure 期间使用 VDDK 复制计算机。 
-1. 如果需要，可以在设备配置期间随时 **重新运行必备组件** ，以检查设备是否满足所有先决条件。
+1. 如果需要，可以在设备配置期间随时重新运行先决条件，以检查设备是否满足所有先决条件。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
-1. 粘贴从门户复制的 **Azure Migrate 项目项** 。 如果没有密钥，请参阅 " **服务器评估"> 发现> 管理现有设备**"，选择在生成密钥时提供的设备名称并复制相应的密钥。
-1. 单击 " **登录**"。 这会在新的浏览器选项卡中打开 Azure 登录提示。如果未显示，请确保在浏览器中禁用了弹出窗口阻止程序。
+1. 粘贴从门户复制的 Azure Migrate 项目密钥。 如果没有密钥，请转到“服务器评估”>“发现”>“管理现有设备”，选择在生成密钥时提供的设备名称，然后复制相应的密钥。
+1. 单击“登录”。 这将在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
 1. 在新选项卡上，使用 Azure 用户名和密码登录。
    
    不支持使用 PIN 登录。
-3. 成功登录后，返回到 web 应用。 
-4. 如果用于日志记录的 Azure 用户帐户对密钥生成过程中创建的 Azure 资源具有适当的 [权限](tutorial-prepare-vmware.md#prepare-azure) ，则将启动设备注册。
-1. 成功注册设备后，可通过单击 " **查看详细信息**" 来查看注册详细信息。
+3. 成功登录后，返回到 Web 应用。 
+4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限](tutorial-prepare-vmware.md#prepare-azure)，会启动设备注册。
+1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
 
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
 设备需连接 vCenter Server，以发现 VM 的配置和性能数据。
 
-1. 在 **步骤1：提供 vCenter Server 凭据**中，单击 " **添加凭据** " 为凭据指定友好名称，为设备将用于发现 VCenter Server 实例上的 vm 的 vCenter Server 帐户添加 **用户名** 和 **密码** 。
+1. 在**步骤 1：提供 vCenter Server 凭据**中，单击“添加凭据”以指定凭据的易记名称，为设备将用于在 vCenter Server 实例上发现 VM 的 vCenter Server 帐户添加“用户名”和“密码”  。
     - 你应该已在[上一教程](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)中设置具有所需权限的帐户。
     - 如果要将发现范围限定于特定的 VMware 对象（vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM），请参阅[此文](set-discovery-scope.md)中的说明，以限制 Azure Migrate 所使用的帐户。
-1. 在 **步骤2：提供 vCenter Server 的详细信息**中，单击 " **添加发现源** " 以从下拉选择 "凭据的友好名称"，指定 vCenter Server 实例的 **IP 地址/FQDN** 。 可以 (443) 使用默认 **端口** ，或指定 vCenter Server 侦听的自定义端口，然后单击 " **保存**"。
-1. 单击 "保存" 后，设备将尝试通过提供的凭据验证与 vCenter Server 的连接，并在表中根据 vCenter Server IP 地址/FQDN 显示 **验证状态** 。
-1. 在开始发现之前，可以随时重新 **验证** 连接到 vCenter Server。
-1. 在 **步骤3：提供 VM 凭据以发现已安装的应用程序并执行无代理依赖项映射**，单击 " **添加凭据**"，并指定为其提供凭据的操作系统、凭据的友好名称以及 **用户名** 和 **密码**。 然后单击 " **保存**"。
+1. 在**步骤 2：提供 vCenter Server 详细信息**中，单击“添加发现源”，从下拉列表中选择凭据的易记名称，指定 vCenter Server 实例的 IP 地址/FQDN 。 可以保留“端口”的默认值 443，或指定 vCenter Server 侦听的自定义端口，然后单击“保存” 。
+1. 单击“保存”后，设备将尝试通过提供的凭据验证与 vCenter Server 的连接，并根据 vCenter Server IP 地址/FQDN 在表中显示验证状态。
+1. 在开始发现之前，可以随时重新验证与 vCenter Server 之间的连接。
+1. 在**步骤 3：提供 VM 凭据来发现已安装的应用程序并执行无代理依赖项映射**中，单击“添加凭据”，并指定为其提供凭据的操作系统、凭据的易记名称以及“用户名”和“密码”  。 然后单击“保存”。
 
     - 如果已创建用于[应用程序发现功能](how-to-discover-applications.md)或[无代理依赖项分析功能](how-to-create-group-machine-dependencies-agentless.md)的帐户，则可选择在此处添加凭据。
-    - 如果您不想使用这些功能，则可以单击滑块跳过该步骤。 您可以在以后随时恢复意向。
-    - 查看 [应用程序发现](migrate-support-matrix-vmware.md#application-discovery-requirements)或 [无代理依赖项分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)所需的凭据。
+    - 如果不想使用这些功能，请通过单击滑块跳过该步骤。 你以后可以随时恢复使用这些功能。
+    - 查看[应用程序发现](migrate-support-matrix-vmware.md#application-discovery-requirements)或[无代理依赖项分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)所需的凭据。
 
-5. 单击 " **开始发现**" 以启动 VM 发现。 成功启动发现后，你可以根据表中的 vCenter Server IP 地址/FQDN 来检查发现状态。
+5. 单击“开始发现”以启动 VM 发现。 成功启动发现后，可以针对表中的 vCenter Server IP 地址/FQDN 检查发现状态。
 
 发现的工作原理如下：
 - 大约 15 分钟后，已发现 VM 的元数据会显示在门户中。

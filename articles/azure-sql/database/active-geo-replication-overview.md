@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330836"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445059"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>创建并使用活动异地复制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ ms.locfileid: "91330836"
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到很大的写入工作负载，则计算较小的辅助数据库可能在进度上跟不上主数据库。 这会导致辅助数据库上出现重做滞后，并且可能会导致辅助数据库不可用。 为了缓解这些风险，必要时，活动异地复制会限制主数据库的事务日志速率，让辅助数据库能够跟上进度。
+主数据库和辅助数据库都需要有相同的服务层级。 同时，强烈建议使用相同的备份存储冗余和计算大小创建辅助数据库， (Dtu 或 Vcore) 作为主数据库。 如果主数据库遇到很大的写入工作负载，则计算较小的辅助数据库可能在进度上跟不上主数据库。 这会导致辅助数据库上出现重做滞后，并且可能会导致辅助数据库不可用。 为了缓解这些风险，必要时，活动异地复制会限制主数据库的事务日志速率，让辅助数据库能够跟上进度。
 
 辅助数据库的配置不平衡的另一结果是，在故障转移后，应用程序的性能可能会由于新的主数据库的计算能力不足而受影响。 在这种情况下，需要将数据库服务目标纵向扩展到所需的级别。这可能会占用大量时间和计算资源，并且在纵向扩展过程结束时需要执行[高可用性](high-availability-sla.md)故障转移。
 
@@ -126,8 +126,13 @@ ms.locfileid: "91330836"
 
 由于辅助数据库上的计算大小较小而在主数据库上进行的事务日志速率限制是使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待类型报告的，可通过 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 数据库视图查看。
 
+默认情况下，辅助数据库的备份存储冗余与主数据库相同。 你可以选择使用不同的备份存储冗余配置辅助数据库。 备份始终在主数据库上执行。 如果使用不同的备份存储冗余配置辅助数据库，则在故障转移后，辅助数据库升级到主副本后，将根据新主 (上一个辅助) 上选择的存储冗余对备份进行计费。 
+
 > [!NOTE]
 > 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅 [事务日志速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
+
+> [!NOTE]
+> Azure SQL 数据库可配置的备份存储冗余目前仅在东南亚 Azure 区域的公共预览版中提供。 在预览中，如果使用本地冗余或区域冗余备份冗余创建了源数据库，则不支持在不同的 Azure 区域中创建辅助数据库。 
 
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](purchasing-models.md)。
 
