@@ -74,11 +74,11 @@ ms.locfileid: "91398300"
 
 1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用 **目标服务标记**： _EastUS_ 和 **目标端口范围**： _443_。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="屏幕截图显示存储点东部 U S 的安全规则的 "添加出站安全规则" 窗格。":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="屏幕截图显示存储点东部 U S 的安全规则的 添加出站安全规则 窗格。":::
 
 1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用“目标服务标记”：“AzureActiveDirectory”和“目标端口范围”：“443”。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="屏幕截图显示 Azure Active Directory 安全规则的 "添加出站安全规则" 窗格。":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="屏幕截图显示 Azure Active Directory 安全规则的 添加出站安全规则 窗格。":::
 
 1. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS (443) 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
 1. 在 NSG 上为“AzureSiteRecovery”创建出站 HTTPS (443) 安全规则。 这样就可以在任何区域访问 Site Recovery 服务。
