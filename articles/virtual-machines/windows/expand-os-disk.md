@@ -40,16 +40,16 @@ ms.locfileid: "91335997"
 1. 在 [Azure 门户](https://portal.azure.com)中，请前往要在其中扩展磁盘的虚拟机。 选择 " **停止** " 以解除分配 VM。
 2. VM 停止后，请在 " **设置**" 下的左侧菜单中选择 " **磁盘**"。
 
-    :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="屏幕截图，显示在菜单的 "设置" 部分中选择的 "磁盘" 选项。":::
+    :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="屏幕截图，显示在菜单的 设置 部分中选择的 磁盘 选项。":::
 
  
 3. 在 " **磁盘名称**" 下，选择要调整大小的磁盘。
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="屏幕截图，显示选中了磁盘名称的 "磁盘" 窗格。":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="屏幕截图，显示选中了磁盘名称的 磁盘 窗格。":::
 
 4. 在左侧菜单中的 " **设置**" 下，选择 " **配置**"。
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="屏幕截图，显示在菜单的 "设置" 部分中选择的配置选项。":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="屏幕截图，显示在菜单的 设置 部分中选择的配置选项。":::
 
 5. 在 " **大小 (GiB") **中，选择所需的磁盘大小。
    
@@ -57,11 +57,11 @@ ms.locfileid: "91335997"
    > 新大小应该大于现有磁盘大小。 对于 OS 磁盘，允许的最大值为 2048 GB。  (可以将 VHD blob 扩展到该大小以上，但 OS 仅适用于前 2048 GB 空间。 ) 
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="显示所选磁盘大小的 "配置" 窗格的屏幕截图。":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="显示所选磁盘大小的 配置 窗格的屏幕截图。":::
 
 6. 选择“保存”。
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="屏幕截图，显示已选中 "保存" 按钮的配置窗格。":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="屏幕截图，显示已选中 保存 按钮的配置窗格。":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>使用 PowerShell 调整托管磁盘的大小
