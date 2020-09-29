@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c111752dcca03781dfb2a11fb100dafc4bad90f7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003704"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401109"
 ---
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -54,7 +54,7 @@ ms.locfileid: "87003704"
 
 1. 提供值后，选择“查看 + 创建”。
 
-    ![创建恢复服务保管库](./media/backup-create-rs-vault/review-and-create.png)
+    ![该屏幕截图显示在“创建恢复服务保管库”过程中的“查看 + 创建”按钮。](./media/backup-create-rs-vault/review-and-create.png)
 
 1. 准备好创建恢复服务保管库后，选择“创建”。
 

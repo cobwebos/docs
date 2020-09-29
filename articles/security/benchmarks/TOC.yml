@@ -69,6 +69,8 @@
       href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis 安全基线
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Cognitive Search 安全基线
+      href: ../../search/security-baseline.md
     - name: Azure Data Box 安全基线
       href: ../../databox/security-baseline.md
     - name: Azure 数据资源管理器安全基线

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 08/29/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12fc9da11469cd617154827232d430dc5cd4a94b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.openlocfilehash: ff9e83b9d03cfe80ae96e05201763d89956f0e39
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67172688"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400957"
 ---
-创建 Office 365 是为了通过 Internet 安全可靠地访问。 因此，我们建议将 ExpressRoute 用于特定方案。 有关使用 ExpressRoute 访问 Office 365 的信息，请访问[适用于 Office 365 的 Azure ExpressRoute](https://aka.ms/ExpressRouteOffice365)。
+创建 Microsoft 365 是为了通过 Internet 安全可靠地访问。 因此，我们建议将 ExpressRoute 用于特定方案。 有关使用 ExpressRoute 访问 Microsoft 365 的信息，请访问[适用于 Microsoft 365 的 Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)。

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75467923"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401080"
 ---
 可用性组侦听器是 SQL Server 可用性组侦听的 IP 地址和网络名称。 若要创建可用性组侦听器，请执行以下操作：
 
@@ -30,7 +30,7 @@ ms.locfileid: "75467923"
 
     b. 在“角色”窗格中，右键单击可用性组名称，并选择“添加资源” > “客户端接入点”。   
 
-   ![客户端接入点](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![该屏幕截图显示“客户端接入点”菜单选项。](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
     c. 在“名称”框中，创建新侦听器的名称。  
    新侦听器的名称是应用程序用来连接 SQL Server 可用性组中数据库的网络名称。
@@ -50,7 +50,7 @@ ms.locfileid: "75467923"
 
     c. 在“IP 地址”下面，单击“静态 IP 地址”。   将 IP 地址设置为在 Azure 门户中设置负载均衡器地址时所用的同一地址。
 
-   ![IP 资源](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![该屏幕截图显示设置 IP 地址的位置。](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
@@ -64,7 +64,7 @@ ms.locfileid: "75467923"
 
     c. 在依赖关系选项卡上，添加客户端接入点（侦听器）资源的名称。
 
-   ![IP 资源](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![该屏幕截图显示在“依赖关系”选项卡上添加名称的位置。](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. 单击 **“确定”** 。
 
@@ -74,7 +74,7 @@ ms.locfileid: "75467923"
 
     b. 在“资源”选项卡中，右键单击“服务器名称”下面的客户端接入点资源，并单击“属性”。    
 
-   ![IP 资源](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![该屏幕截图显示服务器名称的“属性”菜单选项。](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
     c. 选择“依赖项”选项卡。  验证 IP 地址是否为依赖项。 如果不是，则设置 IP 地址的依赖项。 如果有多个资源列出，请验证 IP 地址具有 OR 而不是 AND 依赖项。 单击 **“确定”** 。 
 
@@ -140,4 +140,4 @@ ms.locfileid: "75467923"
    b. 通过在某个群集节点上运行 PowerShell 脚本设置群集参数。  
 
 >[!WARNING]
->可用性组侦听程序运行状况探测端口必须不同于群集核心 IP 地址运行状况探测端口。 在这些示例中，侦听器端口为59999，群集核心 IP 地址运行状况探测端口为58888。 这两个端口都要求允许入站防火墙规则。
+>可用性组侦听程序运行状况探测端口必须不同于群集核心 IP 地址运行状况探测端口。 在这些示例中，侦听程序端口为 59999，群集核心 IP 地址运行状况探测端口为 58888。 这两个端口都要求允许入站防火墙规则。
