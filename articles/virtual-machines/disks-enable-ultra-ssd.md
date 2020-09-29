@@ -148,14 +148,14 @@ UltraSSDAvailable                            True
 
 - 在 " **创建新磁盘** " 边栏选项卡上，输入名称，然后选择 " **更改大小**"。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text=""创建新磁盘" 边栏选项卡的屏幕截图，突出显示更改大小。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="创建新磁盘 边栏选项卡的屏幕截图，突出显示更改大小。":::
 
 
 - 将 **存储类型** 更改为 " **超小型磁盘**"。
 - 将 **自定义磁盘大小的值 (GiB) **、 **磁盘 IOPS**和 **磁盘吞吐量** 更改为所选的磁盘。
 - 在两个边栏选项卡中选择 **"确定"** 。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text=""选择磁盘大小" 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="选择磁盘大小 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
 
 - 继续执行 VM 部署，该部署将与部署任何其他 VM 的部署相同。
 
@@ -250,7 +250,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 - 将 **帐户类型** 更改为 " **超小型磁盘**"。
 - 将 **自定义磁盘大小的值 (GiB) **、 **磁盘 IOPS**和 **磁盘吞吐量** 更改为所选的磁盘。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text=""选择磁盘大小" 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="选择磁盘大小 边栏选项卡的屏幕截图、为存储类型选择的超磁盘、突出显示的其他值。":::
 
 - 选择 **"确定"** ，然后选择 " **创建**"。
 - 返回到磁盘的边栏选项卡后，选择 " **保存**"。
