@@ -1,36 +1,36 @@
 ---
 title: 获取用于应用身份验证的值
-description: 创建用于从代码访问 Azure SQL 数据库的服务主体。
+description: 创建服务主体以便从代码访问 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d88fa0e096557169a956a2ba33f72448676785e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344605"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444674"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>获取对应用程序进行身份验证所需的值以便从代码访问 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-若要从代码创建和管理 Azure SQL 数据库，必须在创建 Azure 资源的订阅中的 Azure Active Directory （Azure AD）域内注册你的应用。
+要在代码中创建并管理 Azure SQL 数据库，必须在创建 Azure 资源的订阅中的 Azure Active Directory (Azure AD) 域内注册应用。
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>创建服务主体以便从应用程序访问资源
 
-以下示例将创建对 C# 应用进行身份验证所需的 Active Directory (AD) 应用程序和服务主体。 该脚本输出我们需要用于前面 C# 示例的值。 有关详细信息，请参阅 [使用 Azure PowerShell 创建服务主体以访问资源](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+以下示例将创建对 C# 应用进行身份验证所需的 Active Directory (AD) 应用程序和服务主体。 该脚本输出我们需要用于前面 C# 示例的值。 有关详细信息，请参阅[使用 Azure PowerShell 创建服务主体以访问资源](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
+> SQL 数据库仍然支持 PowerShell Azure 资源管理器 (RM) 模块，但所有后续开发都针对 Az.Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
 ```powershell
 # sign in to Azure
@@ -102,5 +102,5 @@ Write-Output "_applicationSecret:" $secret
 
 ## <a name="see-also"></a>另请参阅
 
-[使用 C 在 Azure SQL 数据库中创建数据库#](design-first-database-csharp-tutorial.md)  
+[在 Azure SQL 数据库中使用 C# 创建数据库](design-first-database-csharp-tutorial.md)  
 [使用 Azure Active Directory 身份验证连接到 Azure SQL 数据库](authentication-aad-overview.md)
