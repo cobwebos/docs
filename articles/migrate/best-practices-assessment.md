@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e007f0272a693f5117b0182dad82de2f4a6e252a
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387041"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576874"
 ---
 # <a name="best-practices-for-creating-assessments"></a>创建评估的最佳实践
 
@@ -41,11 +41,11 @@ ms.locfileid: "87387041"
 例如，如果你有一个本地 VM，其四个内核的利用率为20%，内存为 8 GB，利用率为10%，Azure VM 评估将如下所示：
 
 - **基于性能的评估**：
-    - 基于内核（4 x 0.20 = 0.8）和内存（8 GB x 0.10 = 0.8）利用率标识有效内核和内存。
-    - 应用在评估属性（假定 1.3 x）中指定的舒适因素，以获取用于调整大小的值。 
-    - 建议 Azure 中最接近的 VM 大小，该大小可支持 ~ 1.04 核心（0.8 x 1.3）和 ~ 1.04 GB （0.8 x 1.3）内存。
+    - 基于核心 (4 x 0.20 = 0.8) 和内存 (8 GB x 0.10 = 0.8) 利用率确定有效的内核和内存。
+    - 应用评估属性中指定的舒适系数 (假设 1.3 x) 获取用于调整大小的值。 
+    - 建议 Azure 中最接近的 VM 大小，该大小可支持 ~ 1.04 核心 (0.8 x 1.3) ，~ 1.04 GB (0.8 x 1.3) 内存。
 
-- **按原样（作为本地）评估**：
+- **与 (一样，作为本地) 评估**：
     -  建议具有四个核心的 VM;8 GB 内存。
 
 
@@ -80,7 +80,7 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的�
 
 ## <a name="best-practices-for-confidence-ratings"></a>置信度评级的最佳实践
 
-当你运行基于性能的评估时，从1星级（最低）到5星（最高）的置信度评级将获得评估。 有效使用置信度：
+当你运行基于性能的评估时，从1星 (最低) 到5星 (最高) 的置信度将为评估奖励。 有效使用置信度：
 - Azure Migrate Server 评估需要 VM CPU/内存的利用率数据。
 - 对于附加到本地 VM 的每个磁盘，都需要读/写 IOPS/吞吐量数据。
 - 对于附加到 VM 的每个网络适配器，它需要网络输入/输出数据。
@@ -102,11 +102,11 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的�
 
 ###  <a name="out-of-sync-assessments"></a>不同步评估
 
-如果在创建评估后在组中添加或删除计算机，你创建的评估将标记为 "不**同步**"。再次运行评估（**重新计算**）以反映组更改。
+如果在创建评估后在组中添加或删除计算机，你创建的评估将标记为 "不 **同步**"。再次运行评估 (**重新计算**) 以反映组更改。
 
 ### <a name="outdated-assessments"></a>过时评估
 
-如果对组中已评估的 Vm 进行本地更改，则将评估标记为**过时**。 由于以下属性中的一个或多个更改，可将评估标记为 "过时"：
+如果对组中已评估的 Vm 进行本地更改，则将评估标记为 **过时**。 由于以下属性中的一个或多个更改，可将评估标记为 "过时"：
 
 - 处理器核心数
 - 分配的内存
@@ -114,16 +114,16 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的�
 - 操作系统名称、版本和体系结构
 - 磁盘数目
 - 网络适配器的数目
-- 磁盘大小更改（已分配 GB）
+- 磁盘大小更改 (GB 已分配) 
 - Nic 属性更新。 示例： Mac 地址更改、IP 地址添加等。
 
-再次运行评估（**重新计算**）以反映所做的更改。
+再次运行评估 (**重新计算**) 以反映所做的更改。
 
 ### <a name="low-confidence-rating"></a>低置信度分级
 
 评估可能不包含所有数据点的原因有很多：
 
-- 在创建评估的过程中，你没有对环境进行分析。 例如，如果要创建性能持续时间设置为一周的*基于性能的评估*，则必须在开始发现所有数据点后至少等待一周。 随时可以单击 "**重新计算**" 查看最新的适用置信度级别。 仅当你创建*基于性能的*评估时，置信度才适用。
+- 在创建评估的过程中，你没有对环境进行分析。 例如，如果要创建性能持续时间设置为一周的 *基于性能的评估* ，则必须在开始发现所有数据点后至少等待一周。 随时可以单击 " **重新计算** " 查看最新的适用置信度级别。 仅当你创建 *基于性能的* 评估时，置信度才适用。
 
 - 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则服务器评估将无法收集该时段的性能数据。
 
@@ -132,11 +132,11 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的�
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>适用于 AVS 评估的迁移工具指南
 
 在 Azure VMware 解决方案 (AVS) 评估的 Azure 迁移就绪性报告中，可以看到以下推荐工具： 
-- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展（HCX）解决方案是将本地工作负荷迁移到 Azure VMware 解决方案（AVS）私有云的建议迁移工具。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
-- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展（HCX）解决方案。
+- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展 (HCX) 解决方案是将本地工作负荷迁移到 Azure VMware 解决方案 (AVS) 私有云的建议迁移工具。 [了解详细信息](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
+- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展 (HCX) 解决方案。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解](concepts-assessment-calculation.md)如何计算评估。
-- [了解](how-to-modify-assessment.md)如何自定义评估。
+- [了解](concepts-assessment-calculation.md) 如何计算评估。
+- [了解](how-to-modify-assessment.md) 如何自定义评估。

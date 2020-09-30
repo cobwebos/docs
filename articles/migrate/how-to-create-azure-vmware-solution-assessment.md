@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 192780f1340b09cd2579e31f4023acb101d0e1f9
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358077"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576704"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a> (AVS) 评估创建 Azure VMware 解决方案
 
@@ -19,7 +19,7 @@ ms.locfileid: "91358077"
 
 [Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 - 请确保已 [创建](how-to-add-tool-first-time.md) Azure Migrate 项目。
 - 如果已创建项目，请确保已 [添加](how-to-assess.md) Azure Migrate： Server 评估工具。
@@ -110,7 +110,7 @@ Azure VMware 解决方案 (AVS) 评估介绍：
     - **准备情况未知**： Azure Migrate 无法确定计算机的就绪性，因为从本地环境收集的元数据不足。
 
 3. 查看建议的工具：
-    - **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展 (HCX) 解决方案是将本地工作负荷迁移到 Azure VMware 解决方案 (AVS) 私有云的建议迁移工具。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
+    - **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展 (HCX) 解决方案是将本地工作负荷迁移到 Azure VMware 解决方案 (AVS) 私有云的建议迁移工具。 [了解详细信息](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
     - **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展 (HCX) 解决方案。 
 
 4. 单击 **AVS 就绪** 状态。 可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。
@@ -125,7 +125,7 @@ Azure VMware 解决方案 (AVS) 评估介绍：
 
     - 成本估算基于所有 Vm 的资源需求所需的 AVS 节点数。
     - 由于 Azure VMware 解决方案的定价 (AVS) 按节点进行，因此总成本不会产生计算成本和存储成本分布。
-    - 成本估算适用于在 AVS 中运行本地 Vm。 Azure Migrate 服务器评估不考虑 PaaS 或 SaaS 成本。
+    - 估算成本适用于在 AVS 上运行的本地 VM。 Azure Migrate 服务器评估不考虑 PaaS 或 SaaS 成本。
     
 2. 可以查看每月存储估算成本。 此视图显示评估的组的聚合存储成本，按不同类型的存储磁盘划分。
 

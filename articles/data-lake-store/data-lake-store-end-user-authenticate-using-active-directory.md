@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511301"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578540"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终身份验证
 > [!div class="op_single_selector"]
@@ -97,17 +97,17 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 2. 在应用程序的“设置”边栏选项卡上，单击“所需权限”，并单击“添加”************。
 
-    ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    !["设置" 边栏选项卡的屏幕截图，其中包含 "重定向" U R I 选项和 "重定向 U r i" 边栏选项卡，其中包含实际的 U R I I。](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. 在“添加 API 访问”边栏选项卡上，依次单击“选择 API”、“Azure Data Lake”和“选择”****************。
 
-    ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    !["添加 API 访问" 边栏选项卡的屏幕截图，其中包含 "选择一个 API" 选项和 "Azure Data Lake" 选项的 "选择 API" 边栏选项卡和 "选择" 选项（称为 out）。](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  在“添加 API 访问”边栏选项卡上，单击“选择权限”，选中复选框以给予“Data Lake Store 的完全访问权限”，并单击“选择”****************。
 
-    ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    !["添加 API 访问" 边栏选项卡的屏幕截图，其中包含 "选择权限" 选项，并具有 "对 Azure Data Lake 服务进行完全访问" 选项和 "选择" 选项。](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    单击“完成”。
+    单击“Done”（完成） 。
 
 5. 重复最后两步，同时为 Windows Azure 服务管理 API 授予权限****。
 

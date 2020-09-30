@@ -1,14 +1,14 @@
 ---
 title: 为资源上的数组属性创作策略
 description: 了解如何使用数组参数和数组语言表达式，如何计算 [*] 别名，以及如何使用 Azure Policy 定义规则追加元素。
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048476"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576891"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>为 Azure 资源上的数组属性创作策略
 
@@ -194,12 +194,24 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一对�
 |`{<field>,"Equals":"127.0.0.1"}` |无 |全部匹配 |一个数组元素的计算结果为 true (127.0.0.1 == 127.0.0.1)，另一个的计算结果为 false (127.0.0.1 == 192.168.1.1)，因此 Equals 条件为 false，不会触发该效果。 |
 |`{<field>,"Equals":"10.0.4.1"}` |无 |全部匹配 |两个数组元素的计算结果均为 false（10.0.4.1 == 127.0.0.1 和 10.0.4.1 == 192.168.1.1），因此 Equals 条件为 false，不会触发该效果。 |
 
-## <a name="the-append-effect-and-arrays"></a>追加效果和数组
+## <a name="modifying-arrays"></a>修改数组
 
-[追加效果](../concepts/effects.md#append)的行为有所不同，具体取决于 details.field 是否为 \[\*\] 别名 。
+在创建或更新时，对资源 [追加](../concepts/effects.md#append) 和 [修改](../concepts/effects.md#modify) 更改属性。 使用数组属性时，这些效果的行为取决于操作是否试图修改  **\[\*\]** 别名：
 
-- 如果不是 \[\*\] 别名，则追加会将整个数组替换为值属性 
-- 如果是 \[\*\] 别名，则追加会将值属性添加到现有数组或创建新数组 
+> [!NOTE]
+> 使用 `modify` 别名效果目前处于 **预览阶段**。
+
+|Alias |效果 | 业务成效 |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | 如果缺少，Azure 策略将追加在效果详细信息中指定的整个数组。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` with `add` 操作 | 如果缺少，Azure 策略将追加在效果详细信息中指定的整个数组。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` with `addOrReplace` 操作 | 如果缺少或替换现有数组，Azure 策略将追加在效果详细信息中指定的整个数组。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure 策略将追加在效果详细信息中指定的数组成员。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` with `add` 操作 | Azure 策略将追加在效果详细信息中指定的数组成员。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` with `addOrReplace` 操作 | Azure 策略将删除所有现有数组成员，并在效果详细信息中追加指定的数组成员。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure 策略将值追加到 `action` 每个数组成员的属性。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` with `add` 操作 | Azure 策略将值追加到 `action` 每个数组成员的属性。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` with `addOrReplace` 操作 | Azure 策略将追加或替换 `action` 每个数组成员的现有属性。 |
 
 有关详细信息，请参阅[追加示例](../concepts/effects.md#append-examples)。
 

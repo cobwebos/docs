@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301646"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577826"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
 
@@ -48,7 +48,7 @@ ms.locfileid: "91301646"
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL server 的主机上预配 Log Analytics 代理：
 
-- **在 AZURE vm 上 SQL Server** -如果 SQL 计算机托管在 azure vm 上，则可 [自动预配 Log Analytics 代理](security-center-enable-data-collection.md#workspace-configuration)。 或者，您可以按照 [添加 Azure Stack 计算机](quickstart-onboard-machines.md#add-non-azure-computers)的手动过程进行操作。
+- **在 AZURE vm 上 SQL Server** -如果 SQL 计算机托管在 azure vm 上，则可 [自动预配 Log Analytics 代理](security-center-enable-data-collection.md#workspace-configuration)。 或者，你可以按照手动过程来加入 [你的 Azure Stack vm](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)。
 - **SQL Server 在 Azure arc** 上-如果你的 SQL Server 托管在 [azure arc](https://docs.microsoft.com/azure/azure-arc/) 计算机上，则可以使用安全中心建议部署 Log Analytics 代理 "Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上 (预览版) "。 或者，可以遵循 [Azure Arc 文档](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)中的手动过程。
 
 - **SQL Server 本地** -如果你的 SQL Server 托管在不带 Azure Arc 的本地 Windows 计算机上，则有两个选项可用于将其连接到 azure：
@@ -97,7 +97,7 @@ ms.locfileid: "91301646"
 
     此时显示此建议的详细视图。
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="建议的详细视图":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="计算机上的 SQL server 上的漏洞评估结果应 (预览版进行修正) ":::
 
 1. 有关更多详细信息，请向下钻取：
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190280"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578234"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 
@@ -42,40 +42,40 @@ ms.locfileid: "88190280"
 
     a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”********。
 
-    ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "为 Data Lake Storage Gen1 根分配权限")
+    ![数据资源管理器的屏幕截图，其中包含帐户的根和调用的访问选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "为 Data Lake Storage Gen1 根分配权限")
 
     b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`************。 
 
-    ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为 Data Lake Storage Gen1 根分配权限")
+    ![访问页的屏幕截图，其中包含 "添加" 选项、"选择用户或组" 选项和 "Eventhubs" 选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为 Data Lake Storage Gen1 根分配权限")
     
-    单击“选择”。
+    单击“选择”  。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“执行”********。 将“添加到”设为“此文件夹和所有子文件夹”********。 将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
     > [!IMPORTANT]
     > 创建用于捕获 Azure 事件中心接收的数据的新文件夹层次结构时，这是确保可以访问目标文件夹的简便方法。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
 
-    ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "为 Data Lake Storage Gen1 根分配权限")
+    !["分配权限" 部分的屏幕截图，其中包含 "选择权限" 选项（称为 out）。"选择权限" 部分与 "执行" 选项、"添加到" 选项和 "添加为" 选项旁边。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "为 Data Lake Storage Gen1 根分配权限")
 
-    单击" **确定**"。
+    单击“确定”。
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
     a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”********。
 
-    ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
+    ![数据资源管理器的屏幕截图，其中包含帐户的文件夹和调用的访问选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
 
     b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`************。 
 
-    ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "分配 Data Lake Storage Gen1 文件夹的权限")
+    !["数据资源管理器访问" 页的屏幕截图，其中包含 "添加" 选项、"选择用户或组" 选项和 "Eventhubs" 选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“选择”。
+    单击“选择”  。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“读取”、“写入”和“执行”************。 将“添加到”设为“此文件夹和所有子文件夹”********。 最后，将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
-    ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
+    !["分配权限" 部分的屏幕截图，其中包含 "选择权限" 选项（称为 out）。"选择权限" 部分与 "读取"、"写入" 和 "执行" 选项、"添加到" 选项和 "添加为" 选项（称为 out）相邻。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击" **确定**"。 
+    单击“确定”。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>配置事件中心，将数据捕获到 Data Lake Storage Gen1
 
@@ -83,11 +83,11 @@ ms.locfileid: "88190280"
 
 1. 在事件中心命名空间的“概述”窗格中，单击“+ 事件中心”********。
 
-    ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "创建事件中心")
+    !["概述" 窗格的屏幕截图，其中的事件中心选项称为 "out"。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "创建事件中心")
 
 1. 提供以下值以配置事件中心，将数据捕获到 Data Lake Storage Gen1。
 
-    ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "创建事件中心")
+    !["创建事件中心" 对话框的屏幕截图，其中包含 "名称" 文本框、捕获选项、"捕获提供程序" 选项、"选择 Data Lake Store" 选项和 "Data Lake 路径" 选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "创建事件中心")
 
     a. 为事件中心提供一个名称。
     

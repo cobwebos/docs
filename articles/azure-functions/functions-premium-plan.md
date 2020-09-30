@@ -5,13 +5,15 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
-ms.custom: references_regions
-ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom:
+- references_regions
+- fasttrack-edit
+ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372215"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578030"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -32,7 +34,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 创建计划后，可以使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 创建 function app。 在门户中，计划和应用都同时创建。 有关完整 Azure CLI 脚本的示例，请参阅 [在高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md)。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特征
 
 以下功能可用于部署到高级计划的函数应用。
 
@@ -43,7 +45,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 在高级计划中，你可以让应用始终准备好指定数量的实例。  始终可用实例的最大数目为20。  事件开始触发应用时，它们首先路由到始终可用的实例。  当该函数变为活动状态时，其他实例将被准备好为缓冲区。  此缓冲区可防止在缩放期间需要对新实例进行冷启动。  这些缓冲的实例称为 [准备好实例](#pre-warmed-instances)。  结合使用 always ready 实例和预准备好缓冲器后，应用可以有效地消除冷启动。
 
 > [!NOTE]
-> 每个高级计划将至少具有一个活动和计费的实例。
+> 每个高级计划将至少有一个活动 (计费) 实例。
 
 您可以通过选择 **Function App**，转到 " **平台功能** " 选项卡，然后选择 " **Scale Out** " 选项，在 Azure 门户中配置始终可用的实例数。 在函数应用编辑窗口中，always ready 实例特定于该应用。
 
@@ -59,9 +61,9 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 准备好实例是在缩放和激活事件期间准备好为缓冲区的实例数。  在达到最大扩展限制之前，准备好实例将继续进行缓冲。  默认的预准备好实例计数为1，在大多数情况下，它应保留为1。  如果某个应用的长时间预热 (如自定义容器映像) ，你可能希望增加此缓冲区。  只有在充分利用了所有活动的实例后，准备好实例才会变为活动状态。
 
-请考虑此示例，了解始终可用实例和预准备好实例如何协同工作。  高级函数应用已配置五个始终可用实例，默认值为一个 prewarmed 实例。  当应用处于空闲状态且未触发任何事件时，将在五个实例上预配并运行应用。  
+请考虑此示例，了解始终可用实例和预准备好实例如何协同工作。  高级函数应用已配置五个始终可用实例，并且默认为一个预准备好实例。  当应用处于空闲状态且未触发任何事件时，将在五个实例上预配并运行应用。  此时，你将不会向准备好实例收费，因为未使用 always ready 实例，也没有分配准备好实例。
 
-第一次触发器进入后，五个 always ready 实例会变为活动状态，并分配一个额外的准备好实例。  应用现在正在运行六个预配的实例：五个现已激活的始终可用实例，以及第六个准备好和非活动缓冲。  如果执行速率持续增加，最终将使用五个活动实例。  当平台决定扩展到超过五个实例时，它将扩展到准备好实例。  发生这种情况时，现在会有六个活动实例，并将立即预配第七个实例并填充准备好缓冲区。  此缩放顺序和预预热将继续，直到达到应用的最大实例计数。  任何实例都不会提前准备好或激活，超过最大值。
+第一次触发器进入后，五个 always ready 实例会变为活动状态，并分配准备好实例。  应用现在正在运行六个预配的实例：五个现已激活的始终可用实例，以及第六个准备好和非活动缓冲。  如果执行速率持续增加，最终将使用五个活动实例。  当平台决定扩展到超过五个实例时，它将扩展到准备好实例。  发生这种情况时，现在会有六个活动实例，并将立即预配第七个实例并填充准备好缓冲区。  此缩放顺序和预预热将继续，直到达到应用的最大实例计数。  任何实例都不会提前准备好或激活，超过最大值。
 
 可以使用 Azure CLI 修改应用的预准备好实例数。
 
@@ -95,7 +97,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 创建计划时，有两个计划大小设置：实例的最小数目 (或计划大小) 和最大突发限制。
 
-如果你的应用程序需要的实例超出了始终可用的实例，它可以继续横向扩展，直到实例数达到最大猝发限制。  仅当计划规模正在运行且为你租借时，才会向你收费。  我们将尽最大努力将应用扩展到其定义的最大限制。
+如果你的应用程序需要的实例超出了始终可用的实例，它可以继续横向扩展，直到实例数达到最大猝发限制。  仅在每秒按计划大小运行并分配给你时，才会向你收费。  我们将尽最大努力将应用扩展到其定义的最大限制。
 
 您可以通过在 "**平台功能**") 下，通过选择部署到该 (计划的计划或函数应用中的**Scale Out**选项，在 Azure 门户中配置计划大小和最大值。
 
@@ -120,7 +122,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 ### <a name="available-instance-skus"></a>可用实例 Sku
 
-创建或缩放计划时，可以在三种实例大小之间进行选择。  将按照内核总数和每秒使用的内存数计费。  应用可根据需要自动向外扩展到多个实例。  
+创建或缩放计划时，可以在三种实例大小之间进行选择。  将按每秒分配给你的核心和内存总量来计费。  应用可根据需要自动向外扩展到多个实例。  
 
 |SKU|核心数|内存|存储|
 |--|--|--|--|

@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444378"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577503"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 本主题介绍如何为 Azure SQL 数据库和 Azure SQL 托管实例配置[自动故障转移组](auto-failover-group-overview.md)。
 
-## <a name="single-database-in-azure-sql-database"></a>Azure SQL 数据库中的单一数据库
+## <a name="single-database"></a>单一数据库
 
 使用 Azure 门户或 PowerShell 创建故障转移组，并将单一数据库添加到其中。
 
@@ -192,7 +192,7 @@ ms.locfileid: "91444378"
 > [!IMPORTANT]
 > 如果需要删除辅助数据库，请先将其从故障转移组中移除，然后再将其删除。 如果在从故障转移组中移除辅助数据库之前将其删除，则可能会导致不可预知的行为。
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Azure SQL 数据库中的弹性池
+## <a name="elastic-pool"></a>弹性池
 
 使用 Azure 门户或 PowerShell 创建故障转移组，并将弹性池添加到其中。  
 
@@ -346,7 +346,9 @@ ms.locfileid: "91444378"
 
 使用 Azure 门户或 PowerShell 在 Azure SQL 托管实例中的两个托管实例之间创建故障转移组。
 
-需要配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或为每个 SQL 托管实例的虚拟网络创建网关，连接两个网关，然后创建故障转移组。
+需要配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或为每个 SQL 托管实例的虚拟网络创建网关，连接两个网关，然后创建故障转移组。 
+
+出于性能原因，将两个托管实例部署到 [配对区域](../../best-practices-availability-paired-regions.md) 。 与非配对区域相比，位于地域配对区域中的托管实例具有更好的性能。 
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -360,6 +362,9 @@ ms.locfileid: "91444378"
 ### <a name="create-primary-virtual-network-gateway"></a>创建主虚拟网络网关
 
 如果尚未配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，则可使用 Azure 门户或 PowerShell 创建主虚拟网关。
+
+> [!NOTE]
+> 网关的 SKU 会影响吞吐量性能。 本文将使用最基本的 SKU () 部署网关 `HwGw1` 。 部署更高版本的 SKU (例如： `VpnGw3`) ，以实现更高的吞吐量。 有关所有可用选项，请参阅 [网关 sku](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -378,7 +383,7 @@ ms.locfileid: "91444378"
 
    下表显示了主托管实例的网关所需的值：
 
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称。 |
@@ -440,7 +445,7 @@ ms.locfileid: "91444378"
 
 下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 |

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269091"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578168"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理内容类型
 
@@ -61,7 +61,7 @@ ms.locfileid: "91269091"
   
   2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。   例如： 
 
-     ![显示 "收到 HTTP 请求时" 窗口的屏幕截图，其中包含示例 JSON 有效负载。](./media/logic-apps-content-type/request-trigger.png)
+     ![显示 "收到 HTTP 请求时" 操作的屏幕截图，其中包含示例 JSON 有效负载。](./media/logic-apps-content-type/request-trigger.png)
 
      此时，生成的架构会显示在触发器中。
 

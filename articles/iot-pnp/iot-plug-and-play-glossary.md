@@ -1,20 +1,20 @@
 ---
-title: 术语表 - IoT 即插即用预览版 | Microsoft Docs
-description: 概念 - 与 IoT 即插即用预览版相关的常用术语表。
+title: 术语词汇表-IoT 即插即用 |Microsoft Docs
+description: 概念-与 IoT 即插即用相关的常见术语的词汇表。
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854220"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577333"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
+# <a name="glossary-of-terms-for-iot-plug-and-play"></a>IoT 即插即用术语词汇表
 
 IoT 即插即用文章中常用术语的定义。
 
@@ -38,7 +38,7 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 
 ## <a name="azure-iot-device-sdk"></a>Azure IoT 设备 SDK
 
-可以使用多种语言的设备 SDK 来生成 IoT 即插即用设备客户端应用程序。
+可以使用多种语言的设备 SDK 来生成 IoT 即插即用设备客户端应用程序。 将 **DeviceClient** 用于设备，并将 **ModuleClient** 用于模块和 IoT Edge 模块。
 
 ## <a name="commands"></a>命令
 
@@ -55,13 +55,19 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 - 设备连接字符串使 [IoT 即插即用设备](#iot-plug-and-play-device)能够连接到 IoT 中心上面向设备的终结点。 设备上的客户端代码使用连接字符串与 IoT 中心建立安全连接。
 - IoT 中心连接字符串使后端解决方案和工具能够安全地连接到 IoT 中心上面向服务的终结点。 这些解决方案和工具可管理 IoT 中心以及与之连接的设备。
 
+## <a name="default-component"></a>默认组件
+
+所有 [设备模型](#device-model) 都具有默认组件。 简单的设备模型只有一个默认组件（此类模型也称为 "无组件" 设备）。 更复杂的模型在默认组件下嵌套了多个组件。
+
 ## <a name="device-certification"></a>设备认证
 
-IoT 即插即用设备认证计划验证设备是否满足 IoT 即插即用认证要求。 可以将认证设备添加到公共 [认证的 Azure IoT 设备目录](https://aka.ms/devicecatalog)。
+IoT 即插即用认证计划验证设备是否符合 IoT 即插即用认证要求。 可将已验证的设备添加到公共 [Azure IoT 认证设备目录](https://aka.ms/devicecatalog)。
 
 ## <a name="device-model"></a>设备型号
 
-设备型号描述了 [IoT 即插即用设备](#iot-plug-and-play-device) ，并定义组成设备的 [组件](#component) 。 简单的设备模型没有单独的组件，并包含单个根级别接口的定义。 更复杂的设备模型包含多个组件。 设备型号通常对应于物理设备、产品或 SKU。 使用 [数字孪生定义语言版本 2](#digital-twins-definition-language) 来定义设备型号。
+设备型号描述了 [IoT 即插即用设备](#iot-plug-and-play-device) ，并定义组成设备的 [组件](#component) 。 简单的设备模型没有单独的组件，并包含单个接口的定义。 Azure IoT 浏览器工具显示一个简单模型，其中包含一个 [默认组件](#default-component)。
+
+更复杂的设备模型包含多个组件。 设备型号通常对应于物理设备、产品或 SKU。 使用 [数字孪生定义语言版本 2](#digital-twins-definition-language) 来定义设备型号。
 
 ## <a name="device-builder"></a>设备生成器
 
@@ -69,7 +75,7 @@ IoT 即插即用设备认证计划验证设备是否满足 IoT 即插即用认�
 
 ## <a name="device-modeling"></a>设备建模
 
-[设备生成器](#device-builder)使用[数字孪生定义语言](#digital-twins-definition-language)来模拟[IoT 即插即用设备](#iot-plug-and-play-device)的功能。 [解决方案生成器](#solution-builder)可以从模型配置 IoT 解决方案。
+[设备生成器](#device-builder)或[模块生成器](#module-builder)使用[数字孪生定义语言](#digital-twins-definition-language)来模拟[IoT 即插即用设备](#iot-plug-and-play-device)的功能。 [解决方案生成器](#solution-builder)可以从模型配置 IoT 解决方案。
 
 ## <a name="digital-twin"></a>数字孪生体
 
@@ -89,15 +95,19 @@ IoT 即插即用设备认证计划验证设备是否满足 IoT 即插即用认�
 
 ## <a name="interface"></a>接口
 
-接口描述由 [IoT 即插即用设备](#iot-plug-and-play-device)或[数字孪生体](#digital-twin)实现的相关功能。 可以跨不同的 [设备模型](#device-model)重复使用接口。 当在设备模型中使用接口时，它将定义设备的一个 [组件](#component) 。
+接口描述由 [IoT 即插即用设备](#iot-plug-and-play-device)或[数字孪生体](#digital-twin)实现的相关功能。 可以跨不同的 [设备模型](#device-model)重复使用接口。 当在设备模型中使用接口时，它将定义设备的一个 [组件](#component) 。 简单设备只包含一个默认接口。
 
 ## <a name="iot-hub-query-language"></a>IoT 中心查询语言
 
 IoT 中心查询语言用于多种目的。 例如，可以使用该语言来搜索已向 IoT 中心注册的设备或优化[数字孪生体路由](#digital-twin-route)行为。
 
+## <a name="iot-plug-and-play-bridge"></a>IoT 即插即用 bridge
+
+IoT 即插即用桥是一个开源应用程序，它使连接到 Windows 或 Linux 网关上的现有传感器和外围设备能够作为 [IoT 即插即用设备](#iot-plug-and-play-device)连接。
+
 ## <a name="iot-plug-and-play-device"></a>IoT 即插即用设备
 
-IoT 即插即用设备通常是一种小型的独立计算设备，用于收集数据或控制其他设备，并运行实现 [设备型号](#device-model)的软件或固件。  例如，IoT 即插即用设备可以是环境监视设备，也可以是智能农业灌溉系统的控制器。 你可以编写云托管的 IoT 解决方案来命令、控制和接收 IoT 即插即用设备中的数据。
+IoT 即插即用设备通常是一种小型的独立计算设备，用于收集数据或控制其他设备，并运行实现 [设备型号](#device-model)的软件或固件。  例如，IoT 即插即用设备可以是环境监视设备，也可以是智能农业灌溉系统的控制器。 IoT 即插即用设备可能会直接实现或作为 IoT Edge 模块。 你可以编写云托管的 IoT 解决方案来命令、控制和接收 IoT 即插即用设备中的数据。
 
 ## <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
@@ -114,6 +124,10 @@ IoT 即插即用 [设备](#iot-plug-and-play-device) 在与解决方案交换数
 ## <a name="model-repository-rest-api"></a>模型存储库 REST API
 
 用于管理模型存储库和与之交互的 API。 例如，你可以使用 API 来添加和搜索 [设备型号](#device-model)。
+
+## <a name="module-builder"></a>模块生成器
+
+当实现在[IoT 即插即用设备](#iot-plug-and-play-device)上运行的代码时，模块生成器使用[设备模型](#device-model)和[接口](#interface)。 模块构建者将代码作为模块或 IoT Edge 模块实现，以便部署到设备上的 IoT Edge 运行时。
 
 ## <a name="properties"></a>属性
 

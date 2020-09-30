@@ -10,38 +10,44 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 09/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db10f53033e305aa2306bce230e7880140f35189
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295339"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578270"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
-如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
+如果需要更多的安装选项，请使用 Azure AD Connect **自定义设置** 。  例如，如果有多个林，或者要配置可选功能。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
 
 开始安装 Azure AD Connect 之前，请务必[下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)，并完成 [Azure AD Connect：硬件和先决条件](how-to-connect-install-prerequisites.md)。 此外请确保拥有 [Azure AD Connect 帐户和权限](reference-connect-accounts-permissions.md)所述的可用的必需帐户。
 
-如果自定义的设置不匹配拓扑（例如，要升级 DirSync），请参阅相关文档了解其他情况。
-
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义设置安装
+
 ### <a name="express-settings"></a>快速设置
-在此页面上，单击“自定义”  ，开始自定义的设置安装。
+在此页面上，单击“自定义”  ，开始自定义的设置安装。  本文档的其余部分将指导你完成自定义安装的各种向导屏幕。  你可以使用以下链接快速导航到特定向导屏幕的信息。
+
+- [安装所需的组件](#install-required-components)
+- [用户登录](#user-sign-in)
+- [连接到 Azure AD](#connect-to-azure-ad)
+- [“同步”部分下的页面](#pages-under-the-sync-section)
 
 ### <a name="install-required-components"></a>安装所需的组件
-安装同步服务时，可以将可选配置部分保留未选中状态，Azure AD Connect 会自动完成所有设置。 这会设置 SQL Server 2012 Express LocalDB 实例、创建相应的组并分配权限。 如果想要更改默认设置，可以使用下表来了解可用的可选配置选项。
+安装同步服务时，可以将可选配置部分保留未选中状态，Azure AD Connect 会自动完成所有设置。 它设置 SQL Server 2012 Express LocalDB 实例、创建相应的组并分配权限。 如果要更改默认值，可以通过选中相应的框来使用。  下表提供了这些选项的摘要和其他信息的链接。 
 
 ![所需的组件](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
 | 可选配置 | 说明 |
 | --- | --- |
+|指定自定义安装位置| 允许您更改 Azure AD Connect 的默认安装路径。|
 | 使用现有的 SQL Server |允许指定 SQL Server 名称和实例名称。 如果已有一个要使用的数据库服务器，请选择此选项。 如果 SQL Server 没有启用浏览，请在“实例名称”  中输入实例名称，后接逗号和端口号。  然后指定 Azure AD Connect 数据库的名称。  你的 SQL 权限决定了将创建新数据库还是 SQL 管理员必须提前创建数据库。  如果你有 SQL SA 权限，请参阅[如何使用现有数据库进行安装](how-to-connect-install-existing-database.md)。  如果为你委派了权限 (DBO)，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)。 |
 | 使用现有的服务帐户 |默认情况下，Azure AD Connect 将虚拟服务帐户用于为要使用的同步服务。 如果使用远程 SQL 服务器或使用需要身份验证的代理，则需使用**托管服务帐户**，或者使用域中的服务帐户并知道密码。 在这些情况下，请输入要使用的帐户。 确保运行安装的用户是 SQL 中的 SA，以便可以创建服务帐户的登录名。  请参阅 [Azure AD Connect 帐户和权限](reference-connect-accounts-permissions.md#adsync-service-account)。 </br></br>现在，在使用最新版本的情况下，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。  有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)。|
 | 指定自定义同步组 |默认情况下，在安装同步服务时，Azure AD Connect 会在服务器本地创建四个组。 这些组是：管理员组、操作员组、浏览组和密码重置组。 在此可以指定自己的组。 组必须在服务器本地，并且不能位于域中。 |
+| (预览导入同步设置) |允许您从 Azure AD Connect 的其他版本导入设置。  有关详细信息，请参阅 [导入和导出 Azure AD Connect 配置设置](how-to-connect-import-export-config.md)。|
 
 ### <a name="user-sign-in"></a>用户登录
 在安装所需的组件后，需要选择用户单一登录方法。 下表提供了可用选项的简短说明。 有关登录方法的完整说明，请参阅[用户登录](plan-connect-user-signin.md)。
@@ -167,7 +173,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 >
 >若要下载最新版本的 Azure AD Connect，请单击[此处](https://www.microsoft.com/download/details.aspx?id=47594)。
 
-![可选功能](./media/how-to-connect-install-custom/optional2.png)
+ ![可选功能](./media/how-to-connect-install-custom/optional2a.png)
 
 > [!WARNING]
 > 如果当前启用了 DirSync 或 Azure AD Sync，请勿激活 Azure AD Connect 中的任何写回功能。

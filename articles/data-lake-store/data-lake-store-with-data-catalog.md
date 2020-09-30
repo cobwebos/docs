@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515126"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578506"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
 本文介绍如何将 Azure Data Lake Storage Gen1 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "85515126"
 
     ![注册数据源](./media/data-lake-store-with-data-catalog/register-data-source.png "注册数据源")
 1. 在下一页上，单击“启动应用程序”****。 这会在计算机上下载应用程序清单文件。 双击此清单文件以启动应用程序。
-1. 在欢迎页上，单击 "**登录**"，然后输入你的凭据。
+1. 在欢迎页上，单击 " **登录**"，然后输入你的凭据。
 
     ![欢迎屏幕](./media/data-lake-store-with-data-catalog/welcome.screen.png "欢迎屏幕")
 1. 在“选择数据源”页上，选择“Azure Data Lake Store”，并单击“下一步”********。
@@ -50,14 +50,14 @@ ms.locfileid: "85515126"
 
     b. **可用对象**框中列出 **AmbulanceData** 文件夹下的文件和文件夹。
 
-    c. "**要注册的对象**" 框将列出要在 Azure 数据目录中注册的文件和文件夹。
+    c. " **要注册的对象** " 框将列出要在 Azure 数据目录中注册的文件和文件夹。
 
-    ![查看数据结构](./media/data-lake-store-with-data-catalog/view-data-structure.png "查看数据结构")
+    !["Microsoft Azure 数据目录-存储帐户" 对话框的屏幕截图。](./media/data-lake-store-with-data-catalog/view-data-structure.png "查看数据结构")
 1. 在本教程中，应在目录中注册所有文件。 为此，请单击（![移动对象](./media/data-lake-store-with-data-catalog/move-objects.png "移动对象")）按钮以将所有文件移到**要注册的对象**框。
 
     由于数据会在组织范围内的数据目录中注册，因此建议添加一些元数据，稍后可以使用这些元数据快速查找数据。 例如，可以为数据所有者添加电子邮件地址（例如，上传数据的用户）或添加标签以标识数据。 下面的屏幕截图显示了添加到数据的标记。
 
-    ![查看数据结构](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "查看数据结构")
+    !["Microsoft Azure 数据目录-存储帐户" 对话框的屏幕截图，其中包含已添加到称为 "out" 的数据的标记。](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "查看数据结构")
 
     单击“注册”。
 1. 以下屏幕截图表示数据已成功注册到数据目录中。

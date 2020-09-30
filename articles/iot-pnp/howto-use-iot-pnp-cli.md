@@ -1,5 +1,5 @@
 ---
-title: 使用适用于 Azure CLI 的 Azure IoT 扩展与 IoT 即插即用预览版设备交互 | Microsoft Docs
+title: 使用适用于 Azure CLI 的 Azure IoT 扩展与 IoT 即插即用设备交互 |Microsoft Docs
 description: 安装适用于 Azure CLI 的 Azure IoT 扩展，并使用它与连接到 IoT 中心的 IoT 即插即用设备交互。
 author: dominicbetts
 ms.author: dobett
@@ -7,18 +7,18 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475475"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577452"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>安装并使用适用于 Azure CLI 的 Azure IoT 扩展
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是一个开放源代码跨平台命令行工具，用于管理 IoT 中心等 Azure 资源。 Azure CLI 适用于 Windows、Linux 和 macOS。 利用 Azure CLI，你可以管理 Azure IoT 中心资源、设备预配服务实例和链接中心，而无需安装任何扩展。
+[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 是一个开放源代码跨平台命令行工具，用于管理 IoT 中心等 Azure 资源。 Azure CLI 适用于 Windows、Linux 和 macOS。 利用 Azure CLI，你可以管理 Azure IoT 中心资源、设备预配服务实例和链接中心，而无需安装任何扩展。
 
-适用于 Azure CLI 的 Azure IoT 扩展是一个命令行工具，用于与 IoT 即插即用预览版设备交互并测试它们。 可以使用该扩展执行以下操作：
+适用于 Azure CLI 的 Azure IoT 扩展是一个命令行工具，用于与 IoT 即插即用设备进行交互并对其进行测试。 可以使用该扩展执行以下操作：
 
 - 连接到设备。
 - 查看设备发送的遥测数据。
@@ -34,11 +34,11 @@ ms.locfileid: "87475475"
 
 ### <a name="step-1---install-the-azure-cli"></a>步骤 1 - 安装 Azure CLI
 
-按照[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI。 为获得最佳体验，Azure CLI 版本应为2.9.1 或更高版本。 请使用 `az -–version` 验证版本。
+按照[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)在环境中安装 Azure CLI。 为获得最佳体验，Azure CLI 版本应为2.9.1 或更高版本。 请使用 `az -–version` 验证版本。
 
 ### <a name="step-2---install-iot-extension"></a>步骤 2 - 安装 IoT 扩展
 
-[IoT 扩展自述文件](https://github.com/Azure/azure-iot-cli-extension)介绍了该扩展的多种安装方法。 最简单的方法是运行 `az extension add --name azure-iot`。 安装完成后，可以使用 `az extension list` 验证当前安装的扩展，或使用 `az extension show --name azure-iot` 查看有关 IoT 扩展的详细信息。 编写时，扩展版本号为 `0.9.7` 。
+[IoT 扩展自述文件](https://github.com/Azure/azure-iot-cli-extension)介绍了该扩展的多种安装方法。 最简单的方法是运行 `az extension add --name azure-iot`。 安装完成后，可以使用 `az extension list` 验证当前安装的扩展，或使用 `az extension show --name azure-iot` 查看有关 IoT 扩展的详细信息。 编写时，扩展版本号为 `0.10.0` 。
 
 若要删除该扩展，可以使用 `az extension remove --name azure-iot`。
 
@@ -122,13 +122,13 @@ az iot pnp repo create
 
 为特定资源创建用户或服务主体的角色分配。
 
-例如，为 user@consoso.com 租户提供**ModelsCreator**的角色：
+例如，为 user@consoso.com 租户提供 **ModelsCreator** 的角色：
 
 ```azurecli
 az iot pnp role-assignment create --resource-id {tenant_id} --resource-type Tenant --subject-id {user@contoso.com} --subject-type User --role ModelsCreator
 ```
 
-或者为 user@consoso.com 特定模型提供**ModelAdministrator**的角色：
+或者为 user@consoso.com 特定模型提供 **ModelAdministrator** 的角色：
 
 ```azurecli
 az iot pnp role-assignment create --resource-id {model_id} --resource-type Model --subject-id {user@contoso.com} --subject-type User --role ModelAdministrator
@@ -163,8 +163,8 @@ az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
 若要发布模型，必须满足以下要求：
 
 - 公司或组织租户必须是 Microsoft 合作伙伴。 
-- 用户或服务主体必须是存储库租户的 "**发布者**" 角色的成员。
+- 用户或服务主体必须是存储库租户的 " **发布者** " 角色的成员。
 
 ## <a name="next-steps"></a>后续步骤
 
-本操作指南文章介绍了如何安装和使用适用于 Azure CLI 的 Azure IoT 扩展，以便与 IoT 即插即用设备交互。 建议的下一步是了解如何在设备上使用[Azure IoT 浏览器](./howto-use-iot-explorer.md)。
+本操作指南文章介绍了如何安装和使用适用于 Azure CLI 的 Azure IoT 扩展，以便与 IoT 即插即用设备交互。 建议的下一步是了解如何在设备上使用 [Azure IoT 浏览器](./howto-use-iot-explorer.md)。

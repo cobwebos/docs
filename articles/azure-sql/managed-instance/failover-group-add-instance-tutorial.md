@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325243"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578557"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,6 +55,8 @@ ms.locfileid: "91325243"
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>创建资源组和主托管实例
 
 此步骤将使用 Azure 门户或 PowerShell 为故障转移组创建资源组和主托管实例。 
+
+出于性能原因，将两个托管实例部署到 [配对区域](../../best-practices-availability-paired-regions.md) 。 与非配对区域相比，位于地域配对区域中的托管实例具有更好的性能。 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
@@ -426,7 +428,7 @@ ms.locfileid: "91325243"
 
    下表显示了辅助虚拟网络所需的值：
 
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **名称** |  辅助托管实例要使用的虚拟网络的名称，例如 `vnet-sql-mi-secondary`。 |
     | **地址空间** | 虚拟网络的地址空间，例如 `10.128.0.0/16`。 | 
@@ -465,7 +467,7 @@ ms.locfileid: "91325243"
 
    下表显示了辅助托管实例所需的值：
  
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **资源组**| 主托管实例所在的资源组。 |
@@ -740,6 +742,8 @@ ms.locfileid: "91325243"
 
 本文提供了创建两个 VPN 网关并将它们连接起来的步骤，但如果你已配置 ExpressRoute，则可以改为创建故障转移组。 
 
+> [!NOTE]
+> 网关的 SKU 会影响吞吐量性能。 本教程使用最基本的 SKU () 部署网关 `HwGw1` 。 部署更高版本的 SKU (例如： `VpnGw3`) ，以实现更高的吞吐量。 有关所有可用选项，请参阅 [网关 sku](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark)
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -759,7 +763,7 @@ ms.locfileid: "91325243"
 
    下表显示了主托管实例的网关所需的值：
  
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称，例如 `primary-mi-gateway`。 | 
@@ -840,7 +844,7 @@ ms.locfileid: "91325243"
 
    下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 | 
@@ -1117,7 +1121,7 @@ Write-host "Removing residual resources and resource group..."
 
 此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |
