@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: c7d574bf172a792c59e4b00ea9ad0366ad1f17ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a121751e71bffdb76341f6a7dc2a01a22240019b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922848"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534462"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为多种语言创建索引
 
@@ -67,4 +67,4 @@ Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果是一名 .NET 开发人员，请注意，可以使用 [Azure 认知搜索 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) 和 [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) 属性来配置语言分析器。
+如果是一名 .NET 开发人员，请注意，可以使用 [Azure 认知搜索 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) 和 [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer) 属性来配置语言分析器。

@@ -1,14 +1,14 @@
 ---
 title: 了解适用于 Kubernetes 的 Azure 策略
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
-ms.date: 09/22/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369988"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540245"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -56,7 +56,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 - 每个订阅的不符合记录的最大数目： **1000000**
 - 不支持 Azure 策略外接程序之外的网关安装程序。 在启用 Azure 策略外接程序之前，请卸载由以前的网关安装程序安装的所有组件。
 - [不符合性的原因](../how-to/determine-non-compliance.md#compliance-reasons)不可用于 `Microsoft.Kubernetes.Data` 
-   [资源提供程序模式](./definition-structure.md#resource-provider-modes)
+   [资源提供程序模式](./definition-structure.md#resource-provider-modes)。 使用 [组件详细信息](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)。
 
 以下限制仅适用于 AKS 的 Azure 策略外接程序：
 
@@ -379,7 +379,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="assign-a-built-in-policy-definition"></a>分配内置策略定义
 
-若要为 Kubernetes 群集分配策略定义，系统必须为你分配适当的基于角色的访问控制 (RBAC) 策略分配操作。 Azure 内置角色 **资源策略参与者** 和 **所有者** 具有这些操作。 若要了解详细信息，请参阅 [Azure Policy 中的 RBAC 权限](../overview.md#rbac-permissions-in-azure-policy)。
+若要将策略定义分配到 Kubernetes 群集，必须为你分配适当的 Azure 基于角色的访问控制 (Azure RBAC) 策略分配操作。 Azure 内置角色 **资源策略参与者** 和 **所有者** 具有这些操作。 若要了解详细信息，请参阅 [Azure 策略中的 AZURE RBAC 权限](../overview.md#azure-rbac-permissions-in-azure-policy)。
 
 通过以下步骤，使用 Azure 门户查找用于管理群集的内置策略定义：
 
@@ -430,7 +430,7 @@ kubectl get pods -n gatekeeper-system
 > [!NOTE]
 > 虽然群集管理员可能有权创建和更新 Azure Policy 加载项安装的约束模板和约束资源，但这些情况不受支持，因为手动更新会被覆盖。 Gatekeeper 会继续评估在安装加载项和分配 Azure Policy 策略定义之前已存在的策略。
 
-每隔 15 分钟，加载项就会调用对群集的完全扫描。 在收集完全扫描的详细信息和 Gatekeeper 对群集尝试更改的所有实时评估后，加载项将结果报告回 Azure Policy，以便像所有 Azure Policy 分配一样包含在[符合性详细信息](../how-to/get-compliance-data.md)中。 在审核周期中，仅返回活动策略分配的结果。 审核结果也可以视为已失败约束的“状态”字段中列出的[冲突](https://github.com/open-policy-agent/gatekeeper#audit)。 有关 _不符合_ 资源的详细信息，请参阅 [资源提供程序模式的符合性详细信息](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes)。
+每隔 15 分钟，加载项就会调用对群集的完全扫描。 在收集完全扫描的详细信息和 Gatekeeper 对群集尝试更改的所有实时评估后，加载项将结果报告回 Azure Policy，以便像所有 Azure Policy 分配一样包含在[符合性详细信息](../how-to/get-compliance-data.md)中。 在审核周期中，仅返回活动策略分配的结果。 审核结果也可以视为已失败约束的“状态”字段中列出的[冲突](https://github.com/open-policy-agent/gatekeeper#audit)。 有关 _不符合_ 资源的详细信息，请参阅 [资源提供程序模式的组件详细信息](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)。
 
 > [!NOTE]
 > 适用于 Kubernetes 群集的 Azure Policy 中的每个符合性报告都包含过去 45 分钟内的所有冲突。 时间戳指示发生冲突的时间。

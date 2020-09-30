@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: da0eeafc9d92bf08a2475d7676f1da8a4fa30da5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461374"
+ms.locfileid: "91541163"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心中的文件完整性监视
 了解如何在 Azure 安全中心使用本演练 (FIM) 配置文件完整性监视。
@@ -116,7 +116,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
     - ![升级计划图标 ][4] 升级工作区以使用 Azure Defender。 此图标表示工作区或订阅不受 Azure Defender 保护。 若要使用 FIM 功能，你的订阅必须受 Azure Defender 保护。 [了解详细信息](security-center-pricing.md)。
 
-    - ![启用图标][3] 在工作区下的所有计算机上启用 FIM，并配置 FIM 选项。 此图标指示未对工作区启用 FIM-使用此按钮可：
+    - ![启用图标][3] 在工作区下的所有计算机上启用 FIM，并配置 FIM 选项。 此图标指示未对工作区启用 FIM。
 
         :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="启动 FIM" **启用**"。 将显示工作区的详细信息（包括工作区下的 Windows 和 Linux 计算机的数目）。
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 596f06d6dc3ad33f2794dfe0e3ed7822a4820adb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399009"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534941"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>使用 Azure 门户注册对等互连服务
 
@@ -72,14 +72,14 @@ Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云
 1. 选择“前缀”部分底部的“创建新前缀”，文本框随即出现。 现在，请输入前缀资源的名称以及与服务提供商关联的前缀。
 
 1. 选择“前缀键”并添加提供商（ISP 或 IXP）提供给你的前缀键。 此前缀使 MS 可以验证前缀以及分配 IP 前缀的提供商。
-   > ![注册对等互连服务配置选项卡](./media/peering-service-portal/peering-serviceconfiguration.png)
+   > ![屏幕截图显示 "创建对等服务连接" 页的 "配置" 选项卡，可以在其中输入前缀键。](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. 在页面左下角选择“审阅 + 创建”按钮。 “审阅 + 创建”页面随即出现，Azure 会验证你的配置。
     
 
 1. 当看到显示“验证通过”消息时，选择“创建” 。
 
-   > ![注册对等互连服务配置选项卡](./media/peering-service-portal/peering-service-prefix.png)
+   > ![屏幕截图显示 "创建对等服务连接" 页的 "查看" 和 "创建" 选项卡。](./media/peering-service-portal/peering-service-prefix.png)
 
 
 1. 注册对等互连服务连接之后，对包含的前缀执行其他验证。 可以在资源名称的“前缀”部分下查看验证状态。 如果验证失败，则显示以下错误消息之一：

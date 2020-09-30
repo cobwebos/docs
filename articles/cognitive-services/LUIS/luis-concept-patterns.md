@@ -3,20 +3,18 @@ title: 模式有助于预测 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用模式可在不提供更多话语的情况下获得更高的意向准确度。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 44a7a89740be3d6d502c5d22c79b46582034d88a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538048"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535946"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。
@@ -43,9 +41,9 @@ ms.locfileid: "86538048"
 
 <a name="patterns-do-not-improve-entity-detection"></a>
 
-## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>模式不改进机器学习实体检测
+## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>模式不会提升机器学习实体检测
 
-模式的主要用途是帮助预测意向和角色。 _pattern.any_ 实体用于提取自由格式实体。 当模式使用实体时，模式不会帮助检测计算机学习实体。
+模式的主要用途是帮助预测意向和角色。 _pattern.any_ 实体用于提取自由格式实体。 当模式使用实体时，模式不会帮助检测机器学习实体。
 
 若将多个话语合并到单个模式，则无法提升实体预测。 若要触发简单实体，需要添加话语或使用列表实体，否则模式将不会触发。
 
@@ -59,7 +57,7 @@ ms.locfileid: "86538048"
 模式的匹配顺序是先检测模式内的实体，再验证模式的其余字词和字词顺序。 要匹配模式，需要在模式中包含实体。 模式在标记级别应用，而不在字符级别应用。
 
 ## <a name="pattern-only-apps"></a>只有模式的应用
-你可以构建其中的意向没有示例话语的应用，只要每个意向具有模式即可。 对于仅限模式的应用程序，该模式不应包含计算机学习实体，因为它们需要示例最谈话。
+你可以构建其中的意向没有示例话语的应用，只要每个意向具有模式即可。 对于只有模式的应用，模式不能包含机器学习实体，因为这些实体要求具有示例言语。
 
 ## <a name="patternany-entity"></a>Pattern.any 实体
 
@@ -77,7 +75,7 @@ ms.locfileid: "86538048"
 详细了解模式：
 
 * [如何添加模式](luis-how-to-model-intent-pattern.md)
-* [如何添加模式。任何实体](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [如何添加 pattern.any 实体](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [模式语法](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]

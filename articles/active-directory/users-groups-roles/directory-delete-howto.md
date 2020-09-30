@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056296"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541248"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中删除一个租户
 
@@ -123,19 +123,19 @@ Deleted | 数据已删除 | 用户无法访问自助服务注册产品、文件�
 
 2. 选择“许可证”，然后选择“自助服务注册产品”。 可以从基于席位的订阅中单独查看所有自助服务注册产品。 选择要永久删除的产品。 下面是 Microsoft Power BI 中的一个示例：
 
-    ![用户名键入错误或未找到](./media/directory-delete-howto/licenses-page.png)
+    ![显示 "许可证-自助注册产品" 页的屏幕截图。](./media/directory-delete-howto/licenses-page.png)
 
 3. 选择“删除”以删除产品并接受数据立即删除且不可撤销的条款。 此删除操作将删除所有用户并将删除组织对该产品的访问权限。 单击“是”以继续执行删除操作。  
 
-    ![用户名键入错误或未找到](./media/directory-delete-howto/delete-product.png)
+    ![屏幕截图，显示 "许可证-自助注册产品" 页，其中显示了 "删除自助服务注册产品" 窗口。](./media/directory-delete-howto/delete-product.png)
 
 4. 如果选择“是”，将启动对自助服务产品的删除。 会通知你正在执行删除操作。  
 
-    ![用户名键入错误或未找到](./media/directory-delete-howto/progress-message.png)
+    ![显示 "许可证-自助注册产品" 页的屏幕截图，其中显示了 "正在进行删除" 通知。](./media/directory-delete-howto/progress-message.png)
 
 5. 现在，自助服务注册产品状态已更改为“已删除”。 刷新页面时，该产品应该已从“自助服务注册产品”页中删除。  
 
-    ![用户名键入错误或未找到](./media/directory-delete-howto/product-deleted.png)
+    ![屏幕截图，显示 "许可证-自助注册产品" 页面，该页面在右侧显示 "自助注册产品已删除" 窗格。](./media/directory-delete-howto/product-deleted.png)
 
 6. 删除所有产品后，可再次登录 Azure AD 管理中心，这里应没有必需的操作，也没有产品影响你删除组织。 你应该可以成功删除 Azure AD 组织。
 

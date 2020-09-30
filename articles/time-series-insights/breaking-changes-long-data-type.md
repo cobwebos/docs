@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4d4e7f4433171e593f5e61ab6f48afc640857d9b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489028"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536573"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure 时序见解第 2 代中添加了对 long 数据类型的支持
 
@@ -31,7 +31,7 @@ ms.locfileid: "89489028"
 - **情况 4**：你使用 JavaScript SDK 构建自定义前端应用程序。
 - **情况 5**：你在暖存储中已快要达到 1,000 属性名称限制，并且你同时发送整型和非整型数据。 可以在 [Azure 门户](https://portal.azure.com/)中将属性计数作为指标查看。
 
-如果你符合上述任何情况，请对模型进行更改。 请使用建议的更改更新你的变量定义中的时序表达式 (TSX)。 更新两个：
+如果你符合上述任何情况，请对模型进行更改。 请使用建议的更改更新你的变量定义中的时序表达式 (TSX)。 同时更新：
 
 - Azure 时序见解资源管理器
 - 任何使用我们的 API 的自定义客户端
@@ -72,11 +72,11 @@ ms.locfileid: "89489028"
 
 *以前的变量定义：*
 
-[![以前的变量定义](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
+[![屏幕截图显示 PropertyValue 变量的 "添加新变量" 对话框。](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
 
 *新的变量定义：*
 
-[![新的变量定义](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
+[![屏幕截图显示具有自定义值 numeric 的 PropertyValue 变量的 "添加新变量" 对话框。](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
 还可以使用 **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** 作为自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
@@ -139,11 +139,11 @@ ms.locfileid: "89489028"
 
 *以前的变量定义：*
 
-[![以前的变量定义](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
+[![屏幕截图显示 PropertyValue 变量分类的 "添加新变量" 对话框。](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
 
 *新的变量定义：*
 
-[![新的变量定义](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
+[![屏幕截图显示具有自定义值分类的 PropertyValue 变量的 "添加新变量" 对话框。](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
 还可以使用 **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** 作为自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 

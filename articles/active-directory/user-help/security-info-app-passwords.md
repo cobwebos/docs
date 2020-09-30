@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799190"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536998"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>从“安全信息”（预览版）页面创建应用密码
 
@@ -59,7 +59,7 @@ ms.locfileid: "88799190"
 
 4. 键入要求使用应用密码的应用的名称，然后选择“下一步”。
 
-    ![“应用密码”页面，其中显示了应用名称](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![显示 "应用密码" 页的屏幕截图，其中包含已输入的应用程序的名称。](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. 复制“密码”框中的文本，将密码粘贴到应用（在本例中为 Outlook 2010）的密码区域，然后选择“完成”。
 

@@ -1,6 +1,6 @@
 ---
-title: 为特权访问组分配合格的所有者和成员-Azure Active Directory
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为可分配角色的组分配合格的所有者或成员。
+title: 为特权访问组分配符合条件的所有者和成员 - Azure Active Directory
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中分配符合条件的可分配角色组的所有者或成员。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,30 +15,30 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869623"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534414"
 ---
-# <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>为特权访问组 (预览) 分配资格 Privileged Identity Management
+# <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配特权访问组（预览）的资格
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以帮助你在 Azure AD 中管理向特许访问组分配的资格和激活。 您可以向组的成员或所有者分配资格。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以帮助你管理 Azure AD 中特权访问组分配的资格和激活。 可以为组的成员或所有者分配资格。
 
 >[!NOTE]
->具有特权访问组的成员资格或拥有权限的每个用户都必须具有 Azure AD Premium P2 许可证。 有关详细信息，请参阅[使用 Privileged Identity Management 的许可要求](subscription-requirements.md)。
+>每个有资格成为特权访问组成员或所有者的用户都必须拥有 Azure AD Premium P2 许可证。 有关详细信息，请参阅[使用 Privileged Identity Management 的许可要求](subscription-requirements.md)。
 
 ## <a name="assign-an-owner-or-member-of-a-group"></a>分配组的所有者或成员
 
-请按照以下步骤操作，使用户有资格成为特权访问组的成员或所有者。
+按照以下步骤操作，使用户有资格成为特权访问组的成员或所有者。
 
 1. 以全局管理员或组所有者权限[登录到 Azure AD](https://aad.portal.azure.com) 。
 1. 选择 " **组** "，然后选择要管理的角色分配的组。 您可以搜索或筛选列表。
 
-    ![查找要在 PIM 中管理的角色分配的组](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
+    ![查找要在 PIM 中管理的可分配角色的组](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. 打开 "组"，然后选择 " **特权访问 (预览") **。
+1. 打开组，选择“特权访问(预览)”。
 
     ![打开 Privileged Identity Management 体验](./media/groups-assign-member-owner/groups-discover-groups.png)
 
@@ -46,23 +46,23 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以帮
 
     ![“新建分配”窗格](./media/groups-assign-member-owner/groups-add-assignment.png)
 
-1. 选择要为特权访问组提供资格的成员或所有者。
+1. 选择要使其符合特权访问组资格的成员或所有者。
 
-    ![“选择成员或组”窗格](./media/groups-assign-member-owner/add-assignments.png)
+    ![显示 "添加分配" 页的屏幕截图，其中 "选择成员或组" 窗格处于打开状态，"选择" 按钮突出显示。](./media/groups-assign-member-owner/add-assignments.png)
 
-1. 选择 " **下一步** " 设置成员资格或所有权持续时间。
+1. 选择“下一步”以设置成员资格或所有权持续时间。
 
     ![“选择成员或组”窗格](./media/groups-assign-member-owner/assignment-duration.png)
 
 1. 在“分配类型”**** 列表中，选择“合格”**** 或“活动”****。 特权访问组提供两种不同的分配类型：
 
-    - **符合条件** 的分配需要角色的成员才能执行操作来使用角色。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。
+    - “合格”分配要求该角色的成员执行某个操作才能使用该角色。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。
 
-    - **活动** 分配无需成员执行任何操作即可使用角色。 分配为“活动”的成员始终具有分配给该角色的权限。
+    - “活动”分配不要求成员执行任何操作便可使用该角色。 分配为“活动”的成员始终具有分配给该角色的权限。
 
-1. 如果分配应该是永久性的（永久合格或永久分配），请选中“永久”**** 复选框。 根据组织的设置，该复选框可能不会出现或不可编辑。
+1. 如果分配应该是永久性的（永久合格或永久分配），请选中“永久”**** 复选框。 根据组织的设置，该复选框可能不会显示或不可编辑。
 
-1. 完成后，选择 " **分配**"。
+1. 完成后，选择“分配”。
 
 1. 若要创建新的角色分配，请选择“添加”****。 显示状态通知。
 
@@ -75,9 +75,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以帮
 1. 以全局管理员或组所有者权限[登录到 Azure AD](https://aad.portal.azure.com) 。
 1. 选择 " **组** "，然后选择要管理的角色分配的组。 您可以搜索或筛选列表。
 
-    ![查找要在 PIM 中管理的角色分配的组](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
+    ![查找要在 PIM 中管理的可分配角色的组](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. 打开 "组"，然后选择 " **特权访问 (预览") **。
+1. 打开组，选择“特权访问(预览)”。
 
     ![打开 Privileged Identity Management 体验](./media/groups-assign-member-owner/groups-discover-groups.png)
 

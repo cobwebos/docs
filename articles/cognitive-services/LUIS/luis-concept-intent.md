@@ -3,20 +3,18 @@ title: 意向和实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 单个意向表示用户想执行的任务或操作。 它是用户话语中表达的目的或目标。 定义一组意向，对应于用户希望在应用程序中执行的操作。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101070"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536097"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 应用中的意向
 
@@ -34,14 +32,14 @@ ms.locfileid: "82101070"
 所有应用程序均附带了预定义意向“[None](#none-intent)”，这是一个回退意向。
 
 ## <a name="prebuilt-domains-provide-intents"></a>预生成域提供意向
-除了定义的意向以外，还可以使用预构建的[域](luis-how-to-use-prebuilt-domains.md)之一。
+除了定义的意向以外，还可以使用预构建的 [域](luis-how-to-use-prebuilt-domains.md)之一。
 
 ## <a name="return-all-intents-scores"></a>返回所有意向的得分
 将陈述分配给单个意向。 当 LUIS 在终结点上收到话语时，默认情况下，它将返回该话语的最高意向。
 
 如果想要话语的所有意向的得分，可以在预测 API 的查询字符串上提供一个标志。
 
-|预测 API 版本|标志|
+|预测 API 版本|Flag|
 |--|--|
 |V2|`verbose=true`|
 |V3|`show-all-intents=true`|
@@ -55,13 +53,13 @@ ms.locfileid: "82101070"
 
 |Intent   | 实体 | 示例陈述   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | 天气`Seattle` `tomorrow`情况如何？ |
+| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | 天气情况如何 `Seattle` `tomorrow` ？ |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend`（显示本周末的天气预报） |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>预生成域意向
 
-[预](luis-how-to-use-prebuilt-domains.md)生成的域提供最谈话的意图。
+[预](luis-how-to-use-prebuilt-domains.md) 生成的域提供最谈话的意图。
 
 ## <a name="none-intent"></a>None 意向
 

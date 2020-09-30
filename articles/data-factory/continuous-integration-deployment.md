@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320964"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533309"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -30,10 +30,6 @@ ms.locfileid: "91320964"
 
 -    使用数据工厂与 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的集成进行自动化部署
 -    使用数据工厂 UX 与 Azure 资源管理器的集成手动上传资源管理器模板。
-
-有关此功能的九分钟介绍及演示，请观看以下视频：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019394"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533411"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务连接性和网络问题：常见问题解答 (FAQ)
 
@@ -99,7 +99,7 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>如何确保云服务面向公众的 IP 地址永不改变？
 
-为了将云服务的 IP 地址列入允许列表，建议将一个保留 IP 与服务进行关联，否则，如果删除了部署，则会从订阅解除分配由 Azure 提供的虚拟 IP（也称 VIP）。 否则，如果删除了部署，则会从订阅解除分配由 Azure 提供的虚拟 IP。 为使 VIP 交换操作成功，需要为生产槽和暂存槽设置单独的保留 IP。 如果缺少这些 IP，交换操作会失败。 请根据以下文章来保留 IP 地址并将其与云服务进行关联：
+若要确保云服务的面向公众的 IP 地址 (也称为 VIP) 永远不会发生更改，使其可以由几个特定的客户端进行通常批准，我们建议你有一个与之关联的保留 IP。 否则，如果删除了部署，则会从订阅解除分配由 Azure 提供的虚拟 IP。 为使 VIP 交换操作成功，需要为生产槽和暂存槽设置单独的保留 IP。 如果缺少这些 IP，交换操作会失败。 请根据以下文章来保留 IP 地址并将其与云服务进行关联：
 
 - [保留现有云服务的 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
 - [使用服务配置文件将保留 IP 关联到云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)

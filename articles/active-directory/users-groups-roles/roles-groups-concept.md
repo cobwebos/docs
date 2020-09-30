@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c6c39fd6ceb9e5623d2b857ce8196ef29e73d78a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317406"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542302"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory（预览版）中的角色分配
 
@@ -58,7 +58,6 @@ Azure Active Directory (Azure AD) 即将引入公共预览，可在其中向 Azu
 
 ## <a name="known-issues"></a>已知问题
 
-- 如果角色是通过组分配的，则不能创建或修改动态组。
 - “为托管用户登录名启用分阶段推出”功能不支持通过组分配。
 - *仅限 Azure AD P2 授权客户*：不要通过 Azure AD 和 Privileged Identity Management (PIM) 为角色分配活动组。 具体而言，在创建一个可分配角色的组时，不要将角色分配给该组，也不要在以后使用 PIM 时将角色分配给该组。 这将导致用户无法在 PIM 中看到其活动角色分配以及无法删除该 PIM 分配的问题。 符合条件的分配在此方案中不受影响。 如果尝试进行此分配，可能会出现意外的行为，例如：
   - 角色分配的结束时间可能显示错误。

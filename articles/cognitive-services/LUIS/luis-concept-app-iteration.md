@@ -3,20 +3,18 @@ title: 迭代应用设计 - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: diberry
-ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057868"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538715"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
 
@@ -47,7 +45,7 @@ ms.locfileid: "86057868"
 
 最常见的架构是使用意向组织的意向架构。 此类架构使用 LUIS 来确定用户的意图。
 
-如果意向架构类型有助于 LUIS 确定用户的意图，则此类型可以包含实体。 例如，发货实体（作为意向的_机器学习功能_）有助于 LUIS 决定发货目的。
+如果意向架构类型有助于 LUIS 确定用户的意图，则此类型可以包含实体。 例如，发货实体（作为意向的机器学习功能）可帮助 LUIS 确定发货意图。
 
 ### <a name="example-schema-of-entities"></a>实体的示例架构
 
@@ -87,7 +85,7 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 ## <a name="test-your-published-app"></a>测试已发布的应用
 
-可以从 HTTPS 预测终结点测试已发布的 LUIS 应用。 通过预测终结点进行测试，LUIS 可以选择具有低置信度的任何[最谈话。](luis-how-to-review-endpoint-utterances.md)
+可以从 HTTPS 预测终结点测试已发布的 LUIS 应用。 从该预测终结点测试可使 LUIS 选择对可信度低的表述进行[评审](luis-how-to-review-endpoint-utterances.md)。
 
 ## <a name="create-a-new-version-for-each-cycle"></a>为每个周期创建新版本
 
@@ -105,11 +103,11 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 可以发布到过渡槽和/或生产槽。 每个槽可以具有不同的版本或相同的版本。 这样，在将更改发布到可供机器人或其他 LUIS 调用应用使用的生产槽之前，可以方便地验证这些更改。
 
-训练的版本在 LUIS 应用的[终结点](luis-glossary.md#endpoint)中不会自动可用。 要使其在 LUIS 应用终结点上可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 可以发布到“过渡”和“生产”槽，从而提供两个在终结点中可用的应用版本。  如果需要更多应用版本在终结点上可用，应导出版本并将其重新导入到新的应用。 新的应用具有不同的应用 ID。
+训练的版本在 LUIS 应用的[终结点](luis-glossary.md#endpoint)中不会自动可用。 要使某个版本在 LUIS 应用终结点中可用，必须[发布](luis-how-to-publish-app.md)或重新发布该版本。 可以发布到“过渡”和“生产”槽，从而提供两个在终结点中可用的应用版本。  如果需要更多应用版本在终结点上可用，应导出版本并将其重新导入到新的应用。 新的应用具有不同的应用 ID。
 
 ### <a name="import-a-version"></a>导入版本
 
-版本可以作为新的**导入**：
+可将版本导入为新版本：
 * 应用，具有新的应用 ID
 * 现有应用的版本
 
@@ -117,16 +115,16 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 ### <a name="export-a-version"></a>导出版本
 
-可以从 LUIS 门户中的应用级别或版本级别**导出**版本：
+可从 LUIS 门户中，在应用级别或版本级别导出版本：
 
-* 应用级别-在 **"我的应用**" 页上选择 "应用"，然后选择 "**导出**"
-* 版本级别-选择应用**程序页面上的 "应用**" 链接，选择 "**管理**"，选择 "**版本**"
+* 应用级别 - 在“我的应用”页面上选择应用，然后选择“导出” 
+* 版本级别 - 在“我的应用”页面上选择应用链接，然后选择“管理”，再选择“版本”  
 
-唯一的差别在于，在版本级别，应用级、导出版本是当前处于活动状态的版本，你可以在 "**[设置](luis-how-to-manage-versions.md)**" 页上选择要导出的任何版本。
+唯一的区别是，在应用级别导出的版本是当前活动版本，而在版本级别，可在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本。
 
 导出的文件**不**包含：
 
-* 计算机学习信息，因为该应用程序在导入后重新训练
+* 机器学习信息，因为应用在导入后会经过重新训练
 * 参与者信息
 
 若要备份 LUIS 应用架构，请从 [LUIS 门户](https://www.luis.ai/applications)导出版本。
@@ -143,7 +141,7 @@ LUIS 通过提供 Azure 资源级权限来使用应用参与者的概念。 将�
 
 每个创建者对自己的应用版本进行更改。 创建者对模型感到满意后，将新版本导出到 JSON 文件中。
 
-可对导出 `.json` 的应用或 `.lu` 文件进行比较以进行更改。 合并这些文件，创建一个新版本的文件。 更改 `versionId` 属性以指示新的合并版本。 将该版本导入原始应用。
+可以比较导出的应用、`.json` 文件或 `.lu` 文件的差异。 合并这些文件，创建一个新版本的文件。 更改 `versionId` 属性以指示新的合并版本。 将该版本导入原始应用。
 
 通过此方法可获得一个活动版本、阶段版本和已发布版本的应用。 可以在[交互式测试窗格](luis-interactive-test.md)中将活动版本与发布版本（阶段或生产）的结果进行比较。
 
@@ -157,7 +155,7 @@ LUIS 通过提供 Azure 资源级权限来使用应用参与者的概念。 将�
 
 ## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>评审终结点言语以开始新的迭代周期
 
-完成一个迭代循环后，可以重复该过程。 开始[审阅预测终结点最谈话](luis-how-to-review-endpoint-utterances.md)LUIS 标记为低置信度。 检查这些言语中预测的意向是否正确，以及提取的实体是否正确且完整。 评审并接受更改后，评审列表应是空的。
+完成一个迭代循环后，可以重复该过程。 首先评审被 LUIS 标记为低置信度的[预测终结点言语](luis-how-to-review-endpoint-utterances.md)。 检查这些言语中预测的意向是否正确，以及提取的实体是否正确且完整。 评审并接受更改后，评审列表应是空的。
 
 ## <a name="next-steps"></a>后续步骤
 

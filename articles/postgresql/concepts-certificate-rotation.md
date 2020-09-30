@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 576ff4eb3a189b27a4c7743966ced0676ec67a9d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 976b423822fa667df713382b34d7208cb0e3b002
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978914"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540653"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>了解 Azure Database for PostgreSQL 单一服务器的根 CA 更改的更改
 
@@ -109,7 +109,7 @@ Azure Database for PostgreSQL 将更改启用了 SSL 的客户端应用程序/�
 如果使用自承载 Integration Runtime 在连接字符串中显式包含 SSL 证书文件的路径，则需要下载 [新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ，并更新连接字符串以使用该证书。
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 是否需要为此更改计划数据库服务器维护停机时间？
-不是。 由于此处的更改仅在客户端连接到数据库服务器，因此数据库服务器不需要维护停机时间来进行此更改。
+否。 由于此处的更改仅在客户端连接到数据库服务器，因此数据库服务器不需要维护停机时间来进行此更改。
 
 ### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. 如果在 2020 (10/26/2020) 之前无法获得此更改的计划停机时间怎么办？
 由于用于连接到服务器的客户端需要更新证书信息（如 [此处](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修复部分所述），因此在这种情况下，服务器不需要停机。
@@ -120,14 +120,14 @@ Azure Database for PostgreSQL 将更改启用了 SSL 的客户端应用程序/�
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Microsoft 更新其证书的频率或过期策略是什么？
 Azure Database for PostgreSQL 使用的这些证书由受信任的证书颁发机构 (CA) 提供。 因此，Azure Database for PostgreSQL 上对这些证书的支持与 CA 的支持这些证书相关联。 但是，在这种情况下，这些预定义证书中可能存在无法预料的错误，这些错误需要在最早进行修复。
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. 如果我使用的是读取副本，是否只需在主服务器或读取副本上执行此更新？
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11. 如果我使用的是读取副本，是否只需在主服务器或读取副本上执行此更新？
 由于此更新是客户端更改，因此，如果客户端用于从副本服务器读取数据，则还需要对这些客户端应用更改。 
 
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. 我们是否有服务器端查询来验证是否正在使用 SSL？
 若要验证是否正在使用 SSL 连接连接到服务器，请参阅 [ssl 验证](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)。
 
 ### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. 如果我的证书文件中已有 DigiCertGlobalRootG2，是否需要执行操作？
-不是。 如果你的证书文件已有 **DigiCertGlobalRootG2**，则无需执行任何操作。
+否。 如果你的证书文件已有 **DigiCertGlobalRootG2**，则无需执行任何操作。
 
 ### <a name="14-what-if-i-have-further-questions"></a>14. 如果我还有其他问题，该怎么办？
 如果有疑问，请从 [Microsoft Q&的](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)社区专家那里获取答案。 如果你有支持计划并需要技术  [帮助，请联系我们](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936072"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542455"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
@@ -187,7 +187,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
-请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](../cognitive-services/text-analytics/overview.md) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类来提取正确的内容。  [可在此处找到更多详细信息。](../cognitive-services/text-analytics/concepts/text-offsets.md)
+请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](../cognitive-services/text-analytics/overview.md) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](/dotnet/api/system.globalization.stringinfo) 类来提取正确的内容。  [可在此处找到更多详细信息。](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>错误案例
 如果文档的语言代码不受支持，则返回错误，并且不提取任何实体。

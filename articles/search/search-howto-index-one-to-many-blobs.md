@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 76086dd7cccb042fdde3722b68b654343f2df012
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: e5a69525c4bd0717c0561bc61ee3c52aa68e1c9d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403579"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533955"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>为可以生成多个搜索文档的 Blob 编制索引
 默认情况下，Blob 索引器将一个 Blob 的内容视为单个搜索文档。 某些 **parsingMode** 值支持单个 Blob 导致多个搜索文档的方案。 允许索引器从一个 Blob 提取多个搜索文档的不同类型的 **parsingMode** 包括：
@@ -64,9 +64,9 @@ _Blob2.json_
     }
 ```
 
-此设置会生成包含以下信息的 Azure 认知搜索索引（为简洁起见，base64 编码的 ID 已缩短）
+此设置将导致 Azure 认知搜索索引，其中包含以下信息 (base64 编码的 ID 为简洁起见缩短) 
 
-| id | 温度 | 压力 | timestamp |
+| ID | 温度 | 压力 | timestamp |
 |----|-------------|----------|-----------|
 | aHR0 ...YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0 ...YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |

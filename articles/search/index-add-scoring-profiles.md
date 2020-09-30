@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: c32e1bc6e219ff645223cc34cf78991e229b86f0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935919"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537627"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
@@ -281,6 +281,6 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 ## <a name="see-also"></a>另请参阅  
 
-+ [REST API 参考](/rest/api/searchservice/)   
-+ [创建索引 API](/rest/api/searchservice/create-index)   
-+ [Azure 认知搜索 .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
++ [REST API 参考](/rest/api/searchservice/)
++ [创建索引 API](/rest/api/searchservice/create-index)
++ [Azure 认知搜索 .NET SDK](/dotnet/api/overview/azure/search?)

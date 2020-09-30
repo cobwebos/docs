@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b57fe5879c45225f8ba22e2c94aceeb5b38369e3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502524"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539429"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 在 Azure Database for PostgreSQL 中创建和管理只读副本
 
@@ -38,7 +38,7 @@ ms.locfileid: "87502524"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for PostgreSQL 服务器。 请确保主服务器位于其中一个定价层中。
+> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for PostgreSQL 服务器。 确保主服务器位于这些定价层中的一层。
 
 ### <a name="create-a-read-replica"></a>创建只读副本
 
@@ -56,7 +56,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | ResourceGroupName |  myresourcegroup |  在其中创建副本服务器的资源组。  |
 | 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 
-若要创建跨区域只读副本，请使用 Location 参数。 以下示例在**美国西部**区域创建一个副本。
+若要创建跨区域只读副本，请使用 Location 参数。 以下示例在 **美国西部** 区域创建一个副本。
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -65,14 +65,14 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。
 
-默认情况下，除非指定了 Sku 参数，否则将使用与主服务器相同的服务器配置来创建只读副本。
+默认情况下，将使用与主副本相同的服务器配置来创建读取副本，除非指定了 **Sku** 参数。
 
 > [!NOTE]
-> 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
+> 建议副本服务器的配置应保留为等于或大于主副本的值，以确保副本能够与主副本保持同步。
 
-### <a name="list-replicas-for-a-master-server"></a>列出主服务器的副本
+### <a name="list-replicas-for-a-primary-server"></a>列出主服务器的副本
 
-若要查看给定的主服务器的所有副本，请运行以下命令：
+若要查看给定主服务器的所有副本，请运行以下命令：
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -93,12 +93,12 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 Remove-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>删除主服务器
+### <a name="delete-a-primary-server"></a>删除主服务器
 
 > [!IMPORTANT]
-> 删除主服务器会停止复制到所有副本服务器，并删除主服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
+> 删除主服务器将停止复制到所有副本服务器，并删除主服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
-若要删除主服务器，可以运行 `Remove-AzPostgreSqlServer` cmdlet。
+若要删除主服务器，你可以运行 `Remove-AzPostgreSqlServer` cmdlet。
 
 ```azurepowershell-interactive
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 93c97055c6e31050dbc545445ec144ba37abc865
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971165"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539888"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 将角色分配给组
 
@@ -35,7 +35,7 @@ ms.locfileid: "90971165"
 
 1. 选择一个角色，然后选择一个组。 仅显示符合角色分配条件的组（可分配角色的组），而不是所有组。
 
-    ![选择要分配到该角色的用户](./media/roles-groups-pim-eligible/select-member.png)
+    ![显示 "添加分配" 页的屏幕截图，其中突出显示了 "选择角色" 和 "选择成员 (s) " 部分。](./media/roles-groups-pim-eligible/select-member.png)
 
 1. 选择所需的成员资格设置。 对于需要激活的角色，请选择“符合条件的”。 默认情况下，用户将是永久符合条件的，但你也可以为用户的资格设置开始和结束时间。 完成后，单击“保存”并“添加”以完成角色分配。
 

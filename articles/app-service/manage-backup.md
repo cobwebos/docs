@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987833"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539072"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -70,13 +70,13 @@ ms.locfileid: "90987833"
 
 3. 在“备份配置”页中，单击“未配置存储”来配置存储帐户 。
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="选择了 "未配置存储" 的 "备份存储" 部分的屏幕截图。":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="带有用于升级应用服务计划以访问备份和还原功能的消息的横幅屏幕截图。":::
 
 4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”。
 
 5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，接着选择要包含在备份中的数据库（SQL 数据库或 MySQL），然后单击“确定”  。
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text=""备份数据库" 部分的屏幕截图，其中显示了 "包含在备份中" 选项。":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="带有用于升级应用服务计划以访问备份和还原功能的消息的横幅屏幕截图。":::
 
     > [!NOTE]
     > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中 。 
@@ -141,7 +141,7 @@ ms.locfileid: "90987833"
 > [!NOTE]
 > 采用与[还原定期备份](web-sites-restore.md)相同的方式，还原站点的部分备份。 还原过程会执行正确的操作。
 > 
-> 还原完整备份后，站点上的所有内容都被替换为备份中的任何内容。 如果文件在站点上但不在备份中，则会将其删除。 但是，还原部分备份时，位于其中一个方块列表目录或任何方块列表文件中的任何内容都保持不变。
+> 还原完整备份后，站点上的所有内容都被替换为备份中的任何内容。 如果文件在站点上但不在备份中，则会将其删除。 但在还原部分备份时，位于其中一个受限制目录或任何受限制的文件中的任何内容都将保留原样。
 > 
 
 

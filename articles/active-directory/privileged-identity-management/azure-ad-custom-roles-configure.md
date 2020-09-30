@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422039"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538441"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 自定义角色
 
@@ -30,7 +30,7 @@ ms.locfileid: "87422039"
 > [!NOTE]
 > 在预览版中，Azure AD 自定义角色未集成内置的目录角色。 此功能的正式版发布后，可在内置的角色体验中进行角色管理。 如果看到以下横幅，则应[在内置角色体验中](pim-how-to-activate-role.md)管理这些角色，而本文不适用：
 >
-> [![选择 Azure AD > Privileged Identity Management](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> [![选择“Azure AD”>“Privileged Identity Management”](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>打开角色设置
 
@@ -44,7 +44,7 @@ ms.locfileid: "87422039"
 1. 选择“设置”打开“设置”页。******** 选择要配置其设置的角色。
 1. 选择“编辑”打开“角色设置”页。********
 
-    ![打开 Azure AD 自定义角色以编辑设置](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![显示 "角色设置详细信息" 页并选择 "编辑" 操作的屏幕截图。](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>角色设置
 
@@ -52,17 +52,17 @@ ms.locfileid: "87422039"
 
 ### <a name="assignment-duration"></a>分配持续时间
 
-为角色配置设置时，可以为每个分配类型（合格或活动）选择两个分配持续时间选项。 在 Privileged Identity Management 中将成员分配到角色时，这些选项将成为默认的最大持续时间。
+配置角色的设置时，可以从用于每种分配类型（“符合条件”或“活动”）的两个分配持续时间选项中进行选择·。 在 Privileged Identity Management 中将成员分配到角色时，这些选项将成为默认的最大持续时间。
 
-可以选择其中一个“符合条件”的分配持续时间选项：**
+可以选择其中一个“符合条件”的分配持续时间选项：
 
-- **允许永久符合条件的分配**：管理员可以分配永久符合条件的成员资格。
-- **在以下时间之后过期符合条件的分配**：管理员可以要求所有符合条件的分配都具有指定的开始日期和结束日期。
+- **允许永久性符合条件分配**：管理员可以分配永久性符合条件成员身份。
+- **使符合条件分配在以下时间后过期**：管理员可以要求所有符合条件分配都具有指定的开始和结束日期。
 
 此外，可以选择其中一个“活动”分配持续时间选项：**
 
-- **允许永久活动分配**：管理员可以分配永久活动成员身份。
-- 使**活动分配在之后过期**：管理员可以要求所有活动分配都具有指定的开始日期和结束日期。
+- **允许永久性活动分配**：管理员可以分配永久性活动成员身份。
+- **使活动分配在以下时间后过期**：管理员可以要求所有活动分配都具有指定的开始和结束日期。
 
 ### <a name="require-azure-multi-factor-authentication"></a>需要 Azure 多重身份验证
 

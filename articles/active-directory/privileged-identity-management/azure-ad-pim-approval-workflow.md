@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24471ff5a085be905f9316f1af3c95c3a7912bf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7e0f74f98adcc8a4e8aabc96f7f35c9c55ae277f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421529"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536352"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中批准或拒绝 Azure AD 角色的请求
 
@@ -34,7 +34,7 @@ ms.locfileid: "87421529"
 1. 以具有[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的用户身份登录到 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。  如果在概述页的顶部有横幅，请按照本文“新版本”选项卡中的说明进行操作  。 否则，请按照“先前版本”选项卡中的说明操作  。
 
-    [![选择 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![选择“Azure AD”>“Privileged Identity Management”。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 按照本文中的步骤，批准或拒绝 Azure AD 角色的请求。
 
@@ -48,9 +48,9 @@ ms.locfileid: "87421529"
 
 1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择 "**批准请求**"。
+1. 选择“审批请求”。
 
-    !["批准请求"-显示 Azure AD 角色评审请求的页面](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![审批请求 - 显示评审 Azure AD 角色的请求的页面](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
     在“请求激活角色”部分，将看到等待审批的请求列表****。
 
@@ -58,7 +58,7 @@ ms.locfileid: "87421529"
 
 1. 找到并选择要审批的请求。 此时将显示“批准或拒绝”页。
 
-    ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![显示 "批准请求-Azure AD 角色" 页的屏幕截图。](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
 1. 在“理由”**** 框中，输入业务理由。
 
@@ -83,10 +83,10 @@ ms.locfileid: "87421529"
 - 当某个角色的请求等待审阅时，审批者将收到电子邮件通知。 电子邮件通知包含请求的直接链接，审批者可通过此链接批准或拒绝请求。
 - 请求由第一个批准或拒绝的审批者来解析。
 - 当审批者响应请求时，会通知所有审批者该操作。
-- 当批准的用户处于活动状态时，将通知全局管理员和特权角色管理员。
+- 当获批准的用户在其角色中处于活动状态时，全局管理员和特权角色管理员会收到通知。
 
 >[!NOTE]
->如果 "全局管理员" 或 "特权角色管理员" 认为批准的用户不应处于活动状态，则可以在 Privileged Identity Management 中删除活动角色分配。 尽管不会向管理员通知挂起的请求，除非他们是审批者，但他们可以通过查看 Privileged Identity Management 中的挂起请求来查看和取消所有用户的任何挂起的请求。
+>如果全局管理员或特权角色管理员认为获批准的用户不应处于活动状态，则可在 Privileged Identity Management 中删除该活动角色分配。 尽管管理员不会收到待处理请求的通知（除非他们是审批者），但他们可通过在 Privileged Identity Management 中查看待处理请求，来查看和取消所有用户的任何待处理请求。
 
 # <a name="previous-version"></a>[先前版本](#tab/previous)
 
@@ -116,7 +116,7 @@ ms.locfileid: "87421529"
 
     ![包含“批准原因”的“批准所选请求”窗格](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. 单击 "**批准**"。
+1. 单击“批准”。
 
     状态符号将随审批操作更新。
 

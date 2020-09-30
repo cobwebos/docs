@@ -1,16 +1,14 @@
 ---
 title: 在单独的 Azure Service Fabric 中进行定期备份/还原
 description: 使用独立 Service Fabric 的定期备份和还原功能来启用应用程序数据的定期数据备份。
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: dd91b8eb120de24d752073fd80157e9d2a663594
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531315"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538579"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>在独立 Service Fabric 中定期备份和还原
 > [!div class="op_single_selector"]
@@ -18,18 +16,18 @@ ms.locfileid: "90531315"
 > * [独立群集](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-Service Fabric 是一种分布式系统平台，用于轻松开发和管理基于微服务的可靠的分布式云应用程序。 它允许运行无状态和有状态的微服务。 有状态服务可在请求和响应或完整的事务之外维持可变的权威状态。 如果有状态服务长时间不可用或由于灾难而丢失信息，可能需要还原到其状态的某个最近备份，以便在其备份后继续提供服务。
+Service Fabric 是一种分布式系统平台，可让你轻松地开发和管理基于微服务的可靠分布式云应用程序。 它允许运行无状态和有状态的微服务。 有状态服务可在请求和响应或完整的事务之外维持可变的权威状态。 如果有状态服务长时间关闭，或者由于灾难而丢失信息，则可能需要将其还原到其状态的最新备份，以便在备份后继续提供服务。
 
 Service Fabric 跨多个节点复制状态，确保服务高度可用。 即使群集中的一个节点出现故障，服务也将继续可用。 然而，在某些情况下，仍然需要服务数据能够可靠应对更广泛的故障。
  
-例如，服务可能要备份其数据，以防止出现以下情况：
+例如，服务可能需要备份其数据，以防止出现以下情况：
 - 整个 Service Fabric 群集永久丢失。
 - 大部分服务分区副本永久丢失
 - 状态被意外删除或受损而引起管理错误。 例如，具有足够权限的管理员错误地删除了服务。
 - 服务中的 bug 导致数据损坏。 例如，当某个服务代码升级程序开始将错误数据写入到可靠集合中时可能发生此情况。 在此情况下，代码和数据可能都必须还原到先前的状态。
 - 离线数据处理。 对于商业智能来说使用离线处理的数据很方便，此处理是独立于生成数据的服务进行的。
 
-Service Fabric 提供了一个内置 API，用于执行时间点[备份和还原](service-fabric-reliable-services-backup-restore.md)。 应用程序开发者可使用这些 API 定期备份服务状态。 此外，如果服务管理员想要在特定时间从服务外部触发备份，就像在升级应用程序之前一样，开发者需要将备份（和还原）作为服务的 API 公开。 维护备份是以上操作的额外成本。 例如，你可能希望每半小时进行 5 次递增备份，然后进行完整备份。 完整备份后，可删除以前的递增备份。 此方法需要额外的代码，因而在应用程序开发期间产生额外成本。
+Service Fabric 提供内置 API 来执行时间点 [备份和还原](service-fabric-reliable-services-backup-restore.md)。 应用程序开发者可使用这些 API 定期备份服务状态。 此外，如果服务管理员想要在特定 (时间（如升级应用程序) 之前）触发从服务外部进行的备份，则开发人员需要从服务中将备份 (和还原) 作为 API 公开。 维护备份是以上操作的额外成本。 例如，你可能希望每半小时进行 5 次递增备份，然后进行完整备份。 完整备份后，可删除以前的递增备份。 此方法需要额外的代码，因而在应用程序开发期间产生额外成本。
 
 定期备份应用程序数据是管理分布式应用程序以及防范数据丢失或长时间丢失服务可用性的基本要求。 Service Fabric 提供可选的备份和还原服务，因此无需编写任何其他代码，便可配置有状态可靠服务（包括角色服务）的定期备份。 它还有助于还原以前执行的备份。 
 
@@ -39,23 +37,23 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     - Azure 存储
     - 文件共享（本地）
 - 枚举备份
-- 触发分区的临时备份
+- 触发分区的计划外备份
 - 使用之前的备份还原分区
 - 暂时暂停备份
 - 备份的保留期管理（即将推出）
 
 ## <a name="prerequisites"></a>必备条件
-* 具有 Fabric 6.4 或更高版本的 Service Fabric 群集。 有关下载所需包的步骤，请参阅[文章](service-fabric-cluster-creation-for-windows-server.md)。
+* Service Fabric Fabric 6.4 或更高版本的群集。 有关下载所需包的步骤，请参阅[文章](service-fabric-cluster-creation-for-windows-server.md)。
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-windows-cluster-x509-security.md)，了解如何获取或创建一个自签名的 X.509 证书。
 
-* 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .Net Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本生成应用程序。
-* 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
+* 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .NET Core 2.0 的应用程序，应使用 Service Fabric SDK 版本3.1 或更高版本生成应用程序。
+* 安装 ServiceFabric 模块 [In Preview]，以便进行配置调用。
 
 ```powershell
-    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+    Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
 
-* 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
+* `Connect-SFCluster`使用 ServiceFabric 模块进行任何配置请求之前，请确保已使用命令连接群集。
 
 ```powershell
 
@@ -106,13 +104,13 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
+4. 使用上述更改更新群集配置文件后，请应用这些更改，并让部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
 
 
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>启用可靠有状态服务和 Reliable Actors 的定期备份
 让我们通过一些步骤来启用可靠有状态服务和 Reliable Actors 的定期备份。 这些步骤假定
-- 通过备份和还原服务安装群集__。
+- 群集配置了备份和还原 service_。
 - 在群集上部署了可靠有状态服务。 在本快速入门指南中，应用程序 URI 为 `fabric:/SampleApp`，属于此应用程序的可靠有状态服务的 URI 为 `fabric:/SampleApp/MyStatefulService`。 使用单个分区部署此服务，分区 ID 为 `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`。  
 
 ### <a name="create-backup-policy"></a>创建备份策略
@@ -122,14 +120,14 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 对于备份存储，请创建文件共享并为所有 Service Fabric 节点计算机提供对此文件共享的读写访问权限。 此示例假定名为 `BackupStore` 的共享存在于 `StorageServer` 上。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 PowerShell
 
 ```powershell
 
 New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -FileShare -Path '\\StorageServer\BackupStore' -Basic -RetentionDuration '10.00:00:00'
 
 ```
-#### <a name="rest-call-using-powershell"></a>使用 Powershell 进行 Rest 调用
+#### <a name="rest-call-using-powershell"></a>使用 PowerShell 进行 Rest 调用
 
 执行以下 PowerShell 脚本，调用所需的 REST API 来创建新策略。
 
@@ -177,13 +175,13 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 在定义策略以满足应用程序的数据保护要求后，备份策略应与应用程序相关联。 根据需要，备份策略可与应用程序、服务或分区相关联。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 PowerShell
 
 ```powershell
 Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用 Powershell 进行 Rest 调用
+#### <a name="rest-call-using-powershell"></a>使用 PowerShell 进行 Rest 调用
 执行以下 PowerShell 脚本，调用所需的 REST API，将上面步骤中创建的名为 `BackupPolicy1` 的备份策略与应用程序 `SampleApp` 相关联。
 
 ```powershell
@@ -203,7 +201,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![启用应用程序备份][3] 
 
-2. 最后，选择所需的策略，然后单击“启用备份”。
+2. 最后，选择所需的策略，然后选择 " *启用备份*"。
 
     ![选择策略][4]
 
@@ -217,13 +215,13 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份  。 根据需要，可为应用程序、服务或分区枚举备份。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 PowerShell
 
 ```powershell
     Get-SFApplicationBackupList -ApplicationId WordCount     
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用 Powershell 进行 Rest 调用
+#### <a name="rest-call-using-powershell"></a>使用 PowerShell 进行 Rest 调用
 
 执行以下 PowerShell 脚本，调用 HTTP API 来枚举为 `SampleApp` 应用程序内所有分区创建的备份。
 
