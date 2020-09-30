@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512918"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533632"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 
@@ -30,7 +30,7 @@ ms.locfileid: "87512918"
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交用于访问服务的候补请求
 
-1. 提交候补请求，通过[Azure Netapp 文件候补提交页](https://aka.ms/azurenetappfiles)访问 Azure netapp 文件服务。 
+1. 提交候补请求，通过 [Azure Netapp 文件候补提交页](https://aka.ms/azurenetappfiles)访问 Azure netapp 文件服务。 
 
     候补注册不保证立即访问服务。 
 
@@ -50,13 +50,13 @@ ms.locfileid: "87512918"
 
       ![Azure Cloud Shell 图标](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. 如果你的 Azure 帐户上有多个订阅，请选择已列入 Azure NetApp 文件的允许列表的订阅：
+2. 如果你的 Azure 帐户有多个订阅，请选择已批准 Azure NetApp 文件的订阅：
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. 在 Azure Cloud Shell 控制台中，输入以下命令来验证你的订阅是否已列入允许列表：
+3. 在 Azure Cloud Shell 控制台中，输入以下命令以验证你的订阅是否已获得批准：
     
     ```azurepowershell
     az feature list | grep NetApp
@@ -71,7 +71,7 @@ ms.locfileid: "87512918"
        
    `<SubID>` 是你的订阅 ID。
 
-    如果看不到该功能名称 `Microsoft.NetApp/ANFGA` ，则无法访问该服务。 停止执行此步骤。 按照[提交用于访问服务的候补请求](#waitlist)中的说明来请求服务访问，然后再继续。 
+    如果看不到该功能名称 `Microsoft.NetApp/ANFGA` ，则无法访问该服务。 停止执行此步骤。 按照 [提交用于访问服务的候补请求](#waitlist) 中的说明来请求服务访问，然后再继续。 
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799054"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538834"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -157,7 +157,7 @@ ms.locfileid: "88799054"
 
 下面是最新组许可证更改的详细信息示例：
 
-![组许可证更改屏幕截图](./media/licensing-group-advanced/audit-group-license-change.png)
+![屏幕截图显示 "审核日志" 页，其中列出了选定的列表项，并且打开了 "活动详细信息审核日志" 窗格。](./media/licensing-group-advanced/audit-group-license-change.png)
 
 ### <a name="find-out-when-group-changes-started-and-finished-processing"></a>了解组更改开始和完成处理的时间
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616996"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541146"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>为 SUSE Linux 安装 SMT 服务器
 SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系统提供程序注册此类单元，也无法直接下载并应用更新。 SUSE Linux 的解决方案是在 Azure 虚拟机中安装 SMT 服务器。 在 Azure 虚拟网络中托管虚拟机，该虚拟网络连接到 HANA 大型实例。 通过此类 SMT 服务器，HANA 大型实例单元可以注册并下载更新。 
@@ -44,7 +44,7 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
 
 将磁盘添加到虚拟机。 使用此磁盘来保存更新，启动盘本身可能太小。 磁盘装载到 /srv/www/htdocs，如下面的屏幕截图所示。 100 GB 磁盘应该就足够了。
 
-![SMT 服务器的虚拟机部署的屏幕截图](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+![屏幕截图在 PuTTy 窗口中显示添加的磁盘。](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
 登录一个或多个 HANA 大型实例单元，维护 /etc/hosts，并检查能否到达应通过网络运行 SMT 服务器的 Azure 虚拟机。
 
@@ -78,7 +78,7 @@ Resolving package dependencies...
 ```
 
 
-还可以使用 YAST 工具安装 smt 包。 在 YAST 中，请参阅 "**软件维护**"，然后搜索 "smt"。 选择“smt”后会自动切换到“yast2-smt”****。
+还可以使用 YAST 工具安装 smt 包。 在 YAST 中，请参阅 " **软件维护**"，然后搜索 "smt"。 选择“smt”后会自动切换到“yast2-smt”****。
 
 ![YAST 中 SMT 的屏幕截图](./media/hana-installation/image5_smt_in_yast.PNG)
 

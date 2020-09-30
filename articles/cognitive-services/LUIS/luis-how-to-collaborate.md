@@ -3,20 +3,18 @@ title: 与他人协作 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 应用所有者可以向创作资源添加参与者。 这些参与者可以修改模型，训练并发布应用。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.author: diberry
-ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055624"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540893"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 

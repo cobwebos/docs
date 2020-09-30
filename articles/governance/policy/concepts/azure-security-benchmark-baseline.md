@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6c6bd3ab87013aba04f43c95b3a986a64f2bc394
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231463"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540976"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure 安全基准的 Azure Policy 安全基准
 
@@ -74,9 +74,9 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure 策略的访问。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure Policy 的访问。
 
-* [Azure 策略中的 azure RBAC 权限](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure 策略中的 azure RBAC 权限](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 * [如何配置 Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 

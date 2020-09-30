@@ -3,20 +3,18 @@ title: 如何执行批处理测试 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用语言理解 (LUIS) 批处理测试集来查找意向和实体不正确的话语。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344401"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540942"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -47,11 +45,11 @@ ms.locfileid: "84344401"
 
 ## <a name="run-a-batch-test-on-your-trained-app"></a>对已训练的应用运行批处理测试
 
-若要运行测试，请选择数据集名称，然后在上下文工具栏中选择 "**运行**"。 测试完成后，此行将显示数据集的测试结果。
+若要运行测试，请选择数据集名称，然后在上下文工具栏中选择 " **运行** "。 测试完成后，此行将显示数据集的测试结果。
 
 此数据集可以下载，与之前上传用于批处理测试的文件相同。
 
-|州省/自治区/直辖市|含义|
+|状态|含义|
 |--|--|
 |![测试成功绿色圆圈图标](./media/luis-how-to-batch-test/batch-test-result-green.png)|所有陈述都成功完成。|
 |![测试未通过红色 x 图标](./media/luis-how-to-batch-test/batch-test-result-red.png)|至少一个陈述意向与预测不匹配。|

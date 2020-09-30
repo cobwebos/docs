@@ -1,17 +1,17 @@
 ---
-title: 创建并上传基于 CentOS 的 Linux VHD
+title: 创建和上传基于 CentOS 的 Linux VHD
 description: 了解如何创建和上传包含基于 CentOS 的 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372733"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533052"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 
@@ -66,7 +66,7 @@ ms.locfileid: "87372733"
     IPV6INIT=no
     ```
 
-6. 修改 udev 规则，以避免产生以太网接口的静态规则。 在 Microsoft Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
+6. 修改 udev 规则，以免为以太网接口生成静态规则。 在 Microsoft Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
 
     ```bash
     sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
@@ -163,7 +163,7 @@ ms.locfileid: "87372733"
     sudo yum install microsoft-hyper-v
     ```
 
-    此外，可以按照 [LIS 下载页](https://www.microsoft.com/download/details.aspx?id=51612)上的手动安装说明操作将 RPM 安装到 VM 中。
+    此外，可以按照 [LIS 下载页](https://www.microsoft.com/download/details.aspx?id=55106)上的手动安装说明操作将 RPM 安装到 VM 中。
 
 12. 安装 Azure Linux 代理和依赖项。 启动并启用 waagent 服务：
 
@@ -257,7 +257,7 @@ ms.locfileid: "87372733"
     NM_CONTROLLED=no
     ```
 
-5. 修改 udev 规则，以避免产生以太网接口的静态规则。 在 Microsoft Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
+5. 修改 udev 规则，以免为以太网接口生成静态规则。 在 Microsoft Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
 
     ```bash
     sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules

@@ -3,28 +3,26 @@ title: 管理版本 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 版本允许你构建和发布不同的模型。 较好的做法是在对模型进行更改之前将当前的活动模型复制到一个不同的应用版本。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 3aa7958ea4edf6cf3e3c1b170e2351f49f719983
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782834"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540857"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本进行编辑和测试，而不会影响暂存应用或生产应用
 
 版本允许你构建和发布不同的模型。 较好的做法是在对模型进行更改之前将当前的活动模型复制到一个不同的应用[版本](luis-concept-version.md)。
 
-"活动版本" 是你在 LUIS portal **Build**部分中编辑的版本，其中包含意向、实体、功能和模式。 使用创作 Api 时，无需设置活动版本，因为特定于版本的 REST API 调用包含路由中的版本。
+"活动版本" 是你在 LUIS portal **Build** 部分中编辑的版本，其中包含意向、实体、功能和模式。 使用创作 Api 时，无需设置活动版本，因为特定于版本的 REST API 调用包含路由中的版本。
 
-若要处理版本，请在“我的应用”**** 页面上通过选择你的应用名称来将其打开，在顶栏中选择“管理”****，然后在左侧导航栏中选择“版本”****。
+若要使用版本，请在 **"我的应用** " 页上选择应用程序的名称以打开应用，然后在顶部栏中选择 " **管理** "，然后在左侧导航栏中选择 " **版本** "。
 
 版本列表显示哪些版本已发布，它们发布在何处，以及哪个版本当前处于活动状态。
 
@@ -67,5 +65,5 @@ ms.locfileid: "84782834"
 
 * 若要**删除**某个版本，请从列表中选择一个版本，然后从工具栏中选择“删除”。  选择“确定”  。
 * 若要**重命名**某个版本，请从列表中选择一个版本，然后从工具栏中选择“重命名”。  输入新名称并选择“完成”  。
-* 若要**导出**某个版本，请从列表中选择一个版本，然后从工具栏中选择“导出应用”。  选择 "JSON" 或 "LU" 以便导出备份或保存在源代码管理中，选择 "**导出容器**" 以[在 LUIS 容器中使用此应用](luis-container-howto.md)。
+* 若要**导出**某个版本，请从列表中选择一个版本，然后从工具栏中选择“导出应用”。  选择 "JSON" 或 "LU" 以便导出备份或保存在源代码管理中，选择 " **导出容器** " 以 [在 LUIS 容器中使用此应用](luis-container-howto.md)。
 

@@ -1,71 +1,156 @@
 ---
-title: 设置 Python 开发环境
+title: 设置开发环境 |Python
 titleSuffix: Azure Machine Learning
-description: 了解如何配置 Azure 机器学习的开发环境。 使用 Conda 环境、创建配置文件，以及配置自己的基于云的 Notebook 服务器、Jupyter Notebook、Azure Databricks、IDE、代码编辑器和 Data Science Virtual Machine。
+description: 了解如何为 Azure 机器学习设置 Python 开发环境。 使用 Conda 环境、创建配置文件，以及配置自己的基于云的 Notebook 服务器、Jupyter Notebook、Azure Databricks、IDE、代码编辑器和 Data Science Virtual Machine。
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 12/27/2019
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, devx-track-python, contperfq1
+ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898277"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533173"
 ---
-# <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
+# <a name="set-up-a-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置开发环境
 
-
-本文介绍如何将开发环境配置为使用 Azure 机器学习。 Azure 机器学习不区分平台。 开发环境的唯一要求是提供 Python 3。 另外建议提供一个隔离的环境，例如 Anaconda 或 Virtualenv。
+了解如何为 Azure 机器学习配置 Python 开发环境。
 
 下表描述了本文所述的每个开发环境及其优点和缺点。
 
 | 环境 | 优点 | 缺点 |
 | --- | --- | --- |
-| [基于云的 Azure 机器学习计算实例](#compute-instance) | 最容易入门。 整个 SDK 已安装在工作区 VM 中，笔记本教程已预先克隆，随时可供运行。 | 缺少对开发环境和依赖项的控制。 Linux VM 会产生额外的成本（可以停止不使用的 VM，以免产生费用）。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [本地环境](#local) | 可以全面控制开发环境和依赖项。 使用所选的任何生成工具、环境或 IDE 来运行。 | 入门需要更长的时间。 必须安装必要的 SDK 包，此外，必须安装一个环境（如果尚未安装）。 |
+| [Azure 机器学习计算实例](#compute-instance) | 最容易入门。 整个 SDK 已安装在工作区 VM 中，笔记本教程已预先克隆，随时可供运行。 | 缺少对开发环境和依赖项的控制。 Linux VM 会产生额外的成本（可以停止不使用的 VM，以免产生费用）。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [Azure Databricks](#aml-databricks) | 非常适合用于在可缩放的 Apache Spark 平台上运行大规模的密集型机器学习工作流。 | 对于试验性机器学习或较小规模的试验和工作流而言性能过剩。 Azure Databricks 会产生额外的成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | 类似于基于云的计算实例（已预装 Python 和 SDK），但预装了其他流行的数据科学和机器学习工具。 易于缩放，并可与其他自定义工具和工作流结合使用。 | 与基于云的计算实例相比，入门过程更慢。 |
 
 本文还将提供以下工具的更多用法提示：
 
-* [Jupyter Notebook](#jupyter)：如果你已在使用 Jupyter Notebook，SDK 中包含了需要安装的某些附加功能。
+* Jupyter Notebook：如果已在使用 Jupyter Notebook，则应安装 SDK 的某些附加功能。
 
-* [Visual Studio Code](#vscode)：如果使用 Visual Studio Code，[Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)包含对 Python 的广泛语言支持，以及更方便、更高效地使用 Azure 机器学习的功能。
+* Visual Studio Code：如果你使用 Visual Studio Code，则 [Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) 包含对 Python 的广泛语言支持以及用于使使用 Azure 机器学习更方便、更有效的功能。
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 只需创建一个工作区，即可开始使用自己的[基于云的 Notebook 服务器](#compute-instance)、[DSVM](#dsvm) 或 [Azure Databricks](#aml-databricks)
+* Azure 机器学习工作区。 如果没有，可以通过 [Azure 门户](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure 资源管理器模板](how-to-create-workspace-template.md)创建 Azure 机器学习工作区。
 
-若要为[本地计算机](#local)、[Jupyter Notebook 服务器](#jupyter)或 [Visual Studio Code](#vscode) 安装 SDK 环境，还需要：
+### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> (Local and DSVM 仅) 创建工作区配置文件
 
-- [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://conda.io/miniconda.html) 包管理器。
+工作区配置文件是一个 JSON 文件，用于告知 SDK 如何与 Azure 机器学习工作区进行通信。 该文件命名为 *config.json*，其格式如下：
 
-- 在 Linux 或 macOS 上，需要 bash shell。
+```json
+{
+    "subscription_id": "<subscription-id>",
+    "resource_group": "<resource-group>",
+    "workspace_name": "<workspace-name>"
+}
+```
 
-    > [!TIP]
+此 JSON 文件必须采用包含 Python 脚本或 Jupyter Notebook 的目录结构。 它可以位于同一目录（名为 *.azureml* 的子目录）中，也可以位于父目录中。
+
+若要在代码中使用此文件，请使用 [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) 方法。 此代码从文件中加载信息，并连接到工作区。
+
+使用以下方法之一创建工作区配置文件：
+
+* Azure 门户
+
+    **下载文件**：在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”部分中的“**下载 config.json”** 。
+
+    ![Azure 门户](./media/how-to-configure-environment/configure.png)
+
+* Azure 机器学习 Python SDK
+
+    创建一个脚本，用于连接到 Azure 机器学习工作区，并使用 [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法生成文件并将其另存为 *azureml/config.js*。 请确保将 `subscription_id` 、和替换为 `resource_group` 自己的 `workspace_name` 。
+
+    ```python
+    from azureml.core import Workspace
+
+    subscription_id = '<subscription-id>'
+    resource_group  = '<resource-group>'
+    workspace_name  = '<workspace-name>'
+
+    try:
+        ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+        ws.write_config()
+        print('Library configuration succeeded')
+    except:
+        print('Workspace not found')
+    ```
+
+## <a name="local-computer"></a><a id="local"></a>本地计算机
+
+若要配置本地开发环境 (这可能也是远程虚拟机，如 Azure 机器学习计算实例或 DSVM) ：
+
+1.  (virtualenv，conda) 创建 Python 虚拟环境。
+
+    > [!NOTE]
+    > 尽管不是必需的，但建议使用 [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda) ](https://www.anaconda.com/download/) 来管理 Python 虚拟环境和安装包。
+
+    > [!IMPORTANT]
     > 如果在 Linux 或 macOS 上操作，并使用除 bash 以外的 shell（例如 zsh），则在运行某些命令时可能会收到错误消息。 若要解决此问题，请使用 `bash` 命令启动新的 bash shell，然后运行命令。
 
-- 在 Windows 上，需要命令提示符或 Anaconda 提示符（由 Anaconda 和 Miniconda 安装）。
+1. 激活新创建的 Python 虚拟环境。
+1. 安装 [Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+1. 若要将本地环境配置为使用 Azure 机器学习工作区，请 [创建一个工作区配置文件或使用现有的配置文件](#workspace) 。
 
-## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>自己的基于云的计算实例
+设置本地环境后，便可以开始使用 Azure 机器学习。 请参阅 [Azure 机器学习 Python 入门指南](tutorial-1st-experiment-sdk-setup-local.md) ，开始着手。
 
-Azure 机器学习 [计算实例](concept-compute-instance.md) 是一种基于云的安全 Azure 工作站，它向数据科学家提供 Jupyter 笔记本服务器、JupyterLab 和完全准备好的 ML 环境。
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebook
 
-无需为计算实例安装或配置任何组件。  随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+在运行本地 Jupyter Notebook 服务器时，建议为 Python 虚拟环境创建 IPython 内核。 这有助于确保预期内核和包导入行为。
+
+1. 启用环境特定的 IPython 内核
+
+    ```bash
+    conda install notebook ipykernel
+    ```
+
+1. 为 Python 虚拟环境创建内核。 请确保将替换为 `<myenv>` Python 虚拟环境的名称。
+
+    ```bash
+    ipython kernel install --user --name <myenv> --display-name "Python (myenv)"
+    ```
+
+1. 启动 Jupyter Notebook 服务器
+
+请参阅 [Azure 机器学习笔记本存储库](https://github.com/Azure/MachineLearningNotebooks) ，开始处理 Azure 机器学习和 Jupyter 笔记本。
+
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
+
+若要使用 Visual Studio Code 进行开发：
+
+1. 安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
+1.  (预览) 安装 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md) 。
+
+安装 Visual Studio Code 扩展后，可以管理 [Azure 机器学习资源](how-to-manage-resources-vscode.md)、 [运行和调试试验](how-to-debug-visual-studio-code.md)，以及 [部署定型模型](tutorial-train-deploy-image-classification-model-vscode.md)。
+
+## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure 机器学习计算实例
+
+Azure 机器学习 [计算实例](concept-compute-instance.md) 是一种基于云的安全 Azure 工作站，它向数据科学家提供 Jupyter Notebook 服务器、JupyterLab 和完全托管的机器学习环境。
+
+无需为计算实例安装或配置任何组件。  
+
+随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
 若要了解计算实例的详细信息（包括如何安装包），请参阅[计算实例](concept-compute-instance.md)。
 
-若要避免产生计算费用，请[停止计算实例](tutorial-1st-experiment-bring-data.md#clean-up-resources)。
+> [!TIP]
+> 若要防止对未使用的计算实例产生费用，请 [停止计算实例](tutorial-1st-experiment-bring-data.md#clean-up-resources)。
+
+除了 Jupyter Notebook server 和 JupyterLab，还可以在 [Azure 机器学习 studio 内的集成笔记本功能](how-to-run-jupyter-notebooks.md)中使用计算实例。
+
+你还可以使用 Azure 机器学习 Visual Studio Code 扩展将 [Azure 机器学习计算实例配置为远程 Jupyter Notebook 服务器](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server)。
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
-DSVM 是自定义的虚拟机 (VM) 映像。 它专为数据科学工作而设计，其中预配置了：
+DSVM 是自定义的虚拟机 (VM) 映像。 它是为数据科学工作设计的，它是预配置的工具和软件，如下所示：
 
   - TensorFlow、PyTorch、Scikit-learn、XGBoost 和 Azure 机器学习 SDK 等包
   - Spark Standalone 和 Drill 等常用数据科学工具
@@ -73,43 +158,37 @@ DSVM 是自定义的虚拟机 (VM) 映像。 它专为数据科学工作而设�
   - Visual Studio Code 和 PyCharm 等集成开发环境 (IDE)
   - Jupyter Notebook 服务器
 
-Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，如果还计划将 DSVM 用作计算目标，则仅支持 Ubuntu。
+有关更全面的工具列表，请参阅 [DSVM 包含的工具指南](data-science-virtual-machine/tools-included.md)。
 
-若要使用 DSVM 作为开发环境：
+> [!IMPORTANT]
+> 如果计划使用 DSVM 作为定型或推断作业的 [计算目标](concept-compute-target.md) ，则仅支持 Ubuntu。
 
-1. 在以下任一环境中创建 DSVM：
+将 DSVM 用作开发环境
 
-    * Azure 门户：
+1. 使用以下方法之一创建 DSVM：
 
-        * [创建 Ubuntu Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+    * 使用 Azure 门户创建 [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) 或 [Windows](data-science-virtual-machine/provision-vm.md) DSVM。
+    * [使用 ARM 模板创建 DSVM](data-science-virtual-machine/dsvm-tutorial-resource-manager.md)。
+    * 使用 Azure CLI
 
-        * [创建 Windows Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
+        若要创建 Ubuntu DSVM，请使用以下命令：
 
-    * Azure CLI：
+        ```azurecli-interactive
+        # create a Ubuntu DSVM in your resource group
+        # note you need to be at least a contributor to the resource group in order to execute this command successfully
+        # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
+        az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
+        ```
 
-        > [!IMPORTANT]
-        > * 使用 Azure CLI 时，必须先使用 `az login` 命令登录到 Azure 订阅。
-        >
-        > * 在此步骤中使用命令时，必须提供资源组名称、VM名称、用户名和密码。
+        若要创建 Windows DSVM，请使用以下命令：
 
-        * 若要创建 Ubuntu Data Science Virtual Machine，请使用以下命令：
+        ```azurecli-interactive
+        # create a Windows Server 2016 DSVM in your resource group
+        # note you need to be at least a contributor to the resource group in order to execute this command successfully
+        az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
+        ```
 
-            ```azurecli-interactive
-            # create a Ubuntu DSVM in your resource group
-            # note you need to be at least a contributor to the resource group in order to execute this command successfully
-            # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
-            az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
-            ```
-
-        * 若要创建 Windows Data Science Virtual Machine，请使用以下命令：
-
-            ```azurecli-interactive
-            # create a Windows Server 2016 DSVM in your resource group
-            # note you need to be at least a contributor to the resource group in order to execute this command successfully
-            az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
-            ```
-
-2. DSVM 上已安装 Azure 机器学习 SDK。 若要使用包含此 SDK 的 Conda 环境，请使用以下某个命令：
+1. 激活包含 Azure 机器学习 SDK 的 conda 环境。
 
     * 对于 Ubuntu DSVM：
 
@@ -123,157 +202,18 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
         conda activate AzureML
         ```
 
-1. 若要验证是否可以访问 SDK 并检查版本，请使用以下 Python 代码：
+1. 若要将 DSVM 配置为使用 Azure 机器学习工作区，请 [创建一个工作区配置文件](#workspace) 或使用现有的。
 
-    ```python
-    import azureml.core
-    print(azureml.core.VERSION)
-    ```
-
-1. 若要将 DSVM 配置为使用你的 Azure 机器学习工作区，请参阅[创建工作区配置文件](#workspace)部分。
+与本地环境类似，你可以使用 Visual Studio Code 和 [Azure 机器学习 Visual Studio Code 扩展](#vscode) 与 Azure 机器学习进行交互。
 
 有关详细信息，请参阅 [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)。
 
-## <a name="local-computer"></a><a id="local"></a>本地计算机
+## <a name="azure-databricks"></a><a name="aml-databricks"></a> Azure Databricks
 
-使用本地计算机（也可能是远程虚拟机）时，请创建 Anaconda 环境并安装 SDK。 下面是一个示例：
-
-1. 如果尚未安装 [Anaconda](https://www.anaconda.com/distribution/#download-section)（Python 3.7 版），请下载并安装。
-
-1. 打开 Anaconda 提示符，使用以下命令创建环境：
-
-    运行以下命令来创建环境。
-
-    ```bash
-    conda create -n myenv python=3.7.7
-    ```
-
-    然后激活该环境。
-
-    ```bash
-    conda activate myenv
-    ```
-
-    此示例使用 Python 3.7.7 创建环境，但可以选择任何特定的子版本。 使用某些主要版本（建议使用 3.5+）时，不一定能够保证 SDK 的兼容性。如果遇到错误，我们建议在 Anaconda 环境中尝试不同的版本/子版本。 下载组件和包时，创建环境需要花费几分钟。
-
-1. 在新环境中运行以下命令，启用特定于环境的 I Python 内核。 这可以确保在 Anaconda 环境中使用 Jupyter 笔记本时，内核和包导入的行为符合预期：
-
-    ```bash
-    conda install notebook ipykernel
-    ```
-
-    然后运行以下命令来创建内核：
-
-    ```bash
-    ipython kernel install --user --name myenv --display-name "Python (myenv)"
-    ```
-
-1. 使用以下命令安装包：
-
-    此命令安装包含笔记本和 `automl` 附加项的基础 Azure 机器学习 SDK。 `automl` 附加项是一个较大的安装包，如果你不打算运行自动化机器学习试验，可以从方括号中删除此附加项。 默认情况下，`automl` 附加项还包含 Azure 机器学习数据准备 SDK 作为依赖项。
-
-    ```bash
-    pip install azureml-sdk[notebooks,automl]
-    ```
-
-   > [!NOTE]
-   > * 如果有消息指出无法卸载 PyYAML，请改用以下命令：
-   >
-   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
-   >
-   > * 从 macOS Catalina 开始，zsh (Z shell) 是默认的登录 shell 和交互式 shell。 在 zsh 中，运行以下命令以使用“\\”（反斜杠）来转义方括号：
-   >
-   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
-
-   安装 SDK 可能需要几分钟时间。 有关安装选项的详细信息，请参阅[安装指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
-
-1. 安装机器学习试验的其他包。
-
-    使用以下任一命令（请将 *\<new package>* 替换为要安装的包）。 通过 `conda install` 安装包时，该包必须是当前通道的一部分（可在 Anaconda 云中添加新通道）。
-
-    ```bash
-    conda install <new package>
-    ```
-
-    或者，可以通过 `pip` 安装包。
-
-    ```bash
-    pip install <new package>
-    ```
-
-### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebook
-
-Jupyter Notebook 是 [Jupyter 项目](https://jupyter.org/)的一部分。 它们提供交互式编码体验，可用于创建将实时代码与叙述性文本和图形混合在一起的文档。 Jupyter Notebook 也是与他人共享结果的好方法，因为可用于将代码部分的输出保存在文档中。 可以在各种平台上安装 Jupyter Notebook。
-
-[本地计算机](#local)部分所述的过程将会安装在 Anaconda 环境中运行 Jupyter Notebook 所需的组件。
-
-若要在 Jupyter Notebook 环境中启用这些组件：
-
-1. 打开 Anaconda 提示符并激活环境。
-
-    ```bash
-    conda activate myenv
-    ```
-
-1. 克隆一组示例笔记本的 [GitHub 存储库](https://github.com/Azure/MachineLearningNotebooks)。
-
-    ```bash
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. 使用以下命令启动 Jupyter Notebook 服务器：
-
-    ```bash
-    jupyter notebook
-    ```
-
-1. 若要验证 Jupyter Notebook 是否可以使用 SDK，请创建一个**新的**笔记本，选择“Python 3”作为内核，然后在笔记本单元中运行以下命令：
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. 如果在导入模块时遇到问题并收到 `ModuleNotFoundError`，请在笔记本单元中运行以下代码，确保 Jupyter 内核连接到环境的正确路径。
-
-    ```python
-    import sys
-    sys.path
-    ```
-
-1. 若要将 Jupyter Notebook 配置为使用你的 Azure 机器学习工作区，请转到[创建工作区配置文件](#workspace)部分。
-
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
-
-Visual Studio Code 是一款非常流行的跨平台代码编辑器，它通过 [Visual Studio 市场](https://marketplace.visualstudio.com/vscode)中提供的扩展支持广泛的编程语言和工具。 [Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)将安装 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)，用于在所有类型的 Python 环境（虚拟环境、Anaconda 等）中编写代码。 此外，它还提供便利的功能用于处理 Azure 机器学习资源和运行 Azure 机器学习试验，而无需退出 Visual Studio Code。
-
-若要使用 Visual Studio Code 进行开发：
-
-1. 若要安装适用于 Visual Studio Code 的 Azure 机器学习扩展，请参阅 [Azure 机器学习](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)。
-
-    有关详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure 机器学习](tutorial-setup-vscode-extension.md)。
-
-1. 若要了解如何使用 Visual Studio Code 进行任何类型的 Python 开发，请参阅 [VSCode 中的 Python 入门](https://code.visualstudio.com/docs/python/python-tutorial)。
-
-    - 若要选择包含 SDK 的 SDK Python 环境，请打开 VS Code，然后按 Ctrl+Shift+P（Linux 和 Windows）或 Command+Shift+P (Mac)。
-        - 此时会打开“命令面板”。
-
-    - 输入 Python:__Select Interpreter__，然后选择相应的环境
-
-1. 若要验证是否可以使用 SDK，请创建包含以下代码的新 Python 文件 (.py)：
-
-    ```python
-    #%%
-    import azureml.core
-    azureml.core.VERSION
-    ```
-    单击“运行单元”CodeLens 或直接按 Shift+Enter 运行此代码。
-<a name="aml-databricks"></a>
-
-## <a name="azure-databricks"></a>Azure Databricks
-Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它提供基于 Notebook 的协作环境，其中包含基于 CPU 或 GPU 的计算群集。
+Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它通过基于 CPU 或 GPU 的计算群集提供基于笔记本的协作环境。
 
 Azure Databricks 如何使用 Azure 机器学习：
+
 + 可以使用 Spark MLlib 训练模型，然后在 Azure Databricks 内部将该模型部署到 ACI/AKS。
 + 也可以在包含 Azure Databricks 的特殊 Azure ML SDK 中使用[自动化机器学习](concept-automated-ml.md)功能。
 + 可以从 [Azure 机器学习管道](concept-ml-pipelines.md)将 Azure Databricks 用作计算目标。
@@ -297,6 +237,7 @@ Azure Databricks 如何使用 Azure 机器学习：
 请等待群集运行完成，然后继续操作。
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>将正确的 SDK 安装到 Databricks 库中
+
 群集运行后，请[创建一个库](https://docs.databricks.com/user-guide/libraries.html#create-a-library)用于将相应的 Azure 机器学习 SDK 包附加到群集。
 
 1. 右键单击用于存储该库的当前工作区文件夹。 选择“创建” > “库”。 
@@ -342,49 +283,6 @@ Azure Databricks 如何使用 Azure 机器学习：
 ![导入面板](./media/how-to-configure-environment/azure-db-import.png)
 
 + 了解如何[创建包含 Databricks 的管道用作训练计算](how-to-create-your-first-pipeline.md)。
-
-## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>创建工作区配置文件
-
-工作区配置文件是一个 JSON 文件，用于告知 SDK 如何与 Azure 机器学习工作区进行通信。 该文件命名为 *config.json*，其格式如下：
-
-```json
-{
-    "subscription_id": "<subscription-id>",
-    "resource_group": "<resource-group>",
-    "workspace_name": "<workspace-name>"
-}
-```
-
-此 JSON 文件必须采用包含 Python 脚本或 Jupyter Notebook 的目录结构。 它可以位于同一目录（名为 *.azureml* 的子目录）中，也可以位于父目录中。
-
-要从代码使用此文件，请使用 `ws=Workspace.from_config()`。 此代码从文件中加载信息，并连接到工作区。
-
-可通过三种方式创建配置文件：
-
-* **使用 [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)** ：编写 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
-
-* **下载文件**：在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”部分中的“**下载 config.json”** 。
-
-     ![Azure 门户](./media/how-to-configure-environment/configure.png)
-
-* **以编程方式创建文件**：以下代码片段通过提供订阅 ID、资源组和工作区名称连接到工作区。 然后，它将工作区配置保存到文件中：
-
-    ```python
-    from azureml.core import Workspace
-
-    subscription_id = '<subscription-id>'
-    resource_group  = '<resource-group>'
-    workspace_name  = '<workspace-name>'
-
-    try:
-        ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
-        ws.write_config()
-        print('Library configuration succeeded')
-    except:
-        print('Workspace not found')
-    ```
-
-    此代码将配置文件写入 *.azureml/config.json* 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

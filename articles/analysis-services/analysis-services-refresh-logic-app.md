@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448583"
+ms.locfileid: "91540721"
 ---
 # <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
 
@@ -27,7 +27,7 @@ ms.locfileid: "91448583"
 ## <a name="design-the-logic-app"></a>设计逻辑应用
 
 > [!IMPORTANT]
-> 以下示例假设已禁用 Azure Analysis Services 防火墙。 如果启用了防火墙，则必须将请求发起程序的公共 IP 地址加入 Azure Analysis Services 防火墙的允许列表。 若要详细了解每个区域的 Azure 逻辑应用 IP 范围，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#configuration)。
+> 以下示例假设已禁用 Azure Analysis Services 防火墙。 如果启用了防火墙，则必须将请求发起方的公共 IP 地址添加到 Azure Analysis Services 防火墙中的已批准列表。 若要详细了解每个区域的 Azure 逻辑应用 IP 范围，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
 ### <a name="prerequisites"></a>必备条件
 

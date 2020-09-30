@@ -3,20 +3,18 @@ title: 情绪分析 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/01/2020
-ms.author: diberry
-ms.openlocfilehash: 2d15170e3785d8978b9cb21eae3b94b002f9172e
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7c3c0f603b9e7d83e40f43ab00d31f4ca63f2b4f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857176"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535366"
 ---
 # <a name="sentiment-analysis"></a>情绪分析
 如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文档中详细了解情绪分析。

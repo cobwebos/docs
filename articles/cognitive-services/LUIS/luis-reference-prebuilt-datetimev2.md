@@ -3,24 +3,22 @@ title: DatetimeV2 预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
-ms.author: diberry
-ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272604"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534176"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
-**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。  由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。
+**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。 由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 的类型
 通过 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub 存储库管理 DatetimeV2。
@@ -154,7 +152,7 @@ ms.locfileid: "81272604"
 
 **datetimeV2** 支持以下范围内的日期：
 
-| Min | 最大值 |
+| Min | Max |
 |----------|-------------|
 | 1900 年 1 月 1 日   | 2099 年 12 月 31 日 |
 
@@ -671,14 +669,14 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
-`datetime` 预生成实体已弃用，已由 datetimeV2 取代****。
+`datetime` 预生成实体已弃用，已由 datetimeV2 取代。
 
 若要在 LUIS 应用中将 `datetime` 替换为 `datetimeV2`，请完成以下步骤：
 
-1. 打开 LUIS Web 界面的“实体”窗格。****
+1. 打开 LUIS Web 界面的“实体”窗格。
 2. 删除 **datetime** 预生成实体。
-3. 单击“添加预生成实体”****
-4. 选择“datetimeV2”并单击“保存”。********
+3. 单击“添加预生成实体”
+4. 选择“datetimeV2”并单击“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

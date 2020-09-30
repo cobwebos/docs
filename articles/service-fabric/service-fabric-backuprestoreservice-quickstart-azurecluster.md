@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 中的定期备份和还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: 9a99a936b3e6cf53c30c0264b70046008dab283c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261250"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538664"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>在 Azure Service Fabric 群集中定期备份和还原
 > [!div class="op_single_selector"]

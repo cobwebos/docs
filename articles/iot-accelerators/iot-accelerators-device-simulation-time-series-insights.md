@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889346"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540568"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
 
@@ -53,9 +53,9 @@ ms.locfileid: "73889346"
 
 ## <a name="create-a-new-time-series-insights-environment"></a>创建新的时序见解环境
 
-[Azure 时序见解](../../articles/time-series-insights/time-series-insights-overview.md)是一种完全托管的分析、存储和可视化服务，用于在云中管理 IoT-缩放时序数据。 若要创建新的时序见解环境：
+[Azure 时序见解](../../articles/time-series-insights/time-series-insights-overview.md) 是一种完全托管的分析、存储和可视化服务，用于在云中管理 IoT-缩放时序数据。 若要创建新的时序见解环境：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择 "**创建资源**"  >  **物联网**  >  **时序见解**：
 
@@ -63,7 +63,7 @@ ms.locfileid: "73889346"
 
 1. 若要在解决方案加速器所在的同一资源组中创建时序见解环境，请使用下表中的值：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 环境名称 | 以下屏幕截图使用名称 Contoso-TSI****。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
@@ -89,13 +89,13 @@ ms.locfileid: "73889346"
 
     ![查看事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
-1. 单击 "**添加**"：
+1. 单击 " **添加**"：
 
     ![添加事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
 
 1. 若要将 IoT 中心配置为新事件源，请使用下表中的值：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 事件源名称 | 以下屏幕截图使用名称 contoso-iot-hub****。 完成此步骤后，请使用自己的唯一名称。 |
     | 源 | **IoT 中心** |
@@ -137,9 +137,9 @@ ms.locfileid: "73889346"
 
 1. 在左侧的条件面板中，选择“温度”作为“度量”值，并且选择“iothub-connection-device-id”作为“拆分依据”值****************：
 
-    ![时序见解资源管理器中的查询](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![显示时序见解 "术语" 面板的屏幕截图，其中突出显示了 "度量值" 和 "拆分方式" 值。](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
-1. 右键单击该图表，然后选择 "**浏览事件**"：
+1. 右键单击该图表，然后选择 " **浏览事件**"：
 
     ![时序见解资源管理器中的事件](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "73889346"
 
 如果打算深入探索，请保留部署的解决方案加速器。
 
-如果不再需要解决方案加速器，请从 "[预配解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)" 页中将其删除，方法是选择它，然后单击 "**删除解决方案**"。
+如果不再需要解决方案加速器，请从 " [预配解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard) " 页中将其删除，方法是选择它，然后单击 " **删除解决方案**"。
 
 如果已向解决方案加速器的资源组中添加时序见解环境，则在删除解决方案加速器时将自动删除此环境。 否则必须手动从 Azure 门户中删除此时序见解环境。
 

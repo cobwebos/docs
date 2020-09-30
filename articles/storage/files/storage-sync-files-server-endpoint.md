@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905051"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541486"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>添加/删除 Azure 文件同步服务器终结点
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
 
-*服务器终结点*表示*已注册服务器*上的特定位置，例如服务器卷上的文件夹或卷的根目录。 如果命名空间不重叠（例如 F:\sync1 和 F:\sync2），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 如果将带一组现有文件的服务器位置作为服务器终结点添加到同步组，则这些文件将与同步组中其他终结点上已有的任何其他文件进行合并。
+*服务器终结点*表示*已注册服务器*上的特定位置，例如服务器卷上的文件夹或卷的根目录。 如果命名空间不重叠，多个服务器终结点可存在于同一个卷上 (例如，F:\sync1 和 F:\sync2) ，每个终结点都同步到唯一的同步组。 可为每个服务器终结点单独配置云分层策略。 如果将带一组现有文件的服务器位置作为服务器终结点添加到同步组，则这些文件将与同步组中其他终结点上已有的任何其他文件进行合并。
 
 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
@@ -56,7 +56,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order Clou
 ```
 指定 `-Order CloudTieringPolicy` 将首先撤回最近修改的文件。
 需要考虑的其他可选但有用的参数是：
-* `-ThreadCount`确定可并行回调的文件数。
+* `-ThreadCount` 确定可并行回调的文件数。
 * `-PerFileRetryCount`确定尝试重新调用当前被阻止的文件的频率。
 * `-PerFileRetryDelaySeconds`确定两次重试回调尝试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
 

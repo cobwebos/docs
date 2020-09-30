@@ -3,20 +3,18 @@ title: 语言支持 - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各种语言提供。 请确保你所定位的语言文化支持你感兴趣的功能。 LUIS 应用特定于区域性，一旦设置即无法更改。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588016"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541384"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -40,14 +38,14 @@ LUIS 理解以下语言：
 | 法语（加拿大） |`fr-CA` |-|-|-|✔|
 | 德语 |`de-DE` |✔| ✔ |✔ |✔|
 | 古吉拉特语 | `gu-IN`|-|-|-|-|
-| Hindi | `hi-IN`|-|✔|-|-|
+| 印地语 | `hi-IN`|-|✔|-|-|
 | 意大利语 |`it-IT` |✔| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
 | 朝鲜语 |`ko-KR` |✔|-|-|仅关键短语|
 | 马拉地语 | `mr-IN`|-|-|-|-|
 | 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
 | 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
-| 西班牙语（墨西哥）|`es-MX` |-|-|✔|✔|
+| 西班牙语(墨西哥)|`es-MX` |-|-|✔|✔|
 | 泰米尔语 | `ta-IN`|-|-|-|-|
 | 泰卢固语 | `te-IN`|-|-|-|-|
 | 土耳其语 | `tr-TR` |✔|✔|-|仅情绪|
@@ -94,12 +92,12 @@ LUIS 理解以下语言：
 |法语 (fr-CA)|✔|||
 |德语|✔||✔|
 |古吉拉特语|✔|||
-|Hindi|✔|||
+|印地语|✔|||
 |意大利语|✔|||
 |日语|||✔
 |朝鲜语||✔||
 |马拉地语|✔|||
-|葡萄牙语（巴西）|✔|||
+|葡萄牙语(巴西)|✔|||
 |西班牙语 (es-ES)|✔|||
 |西班牙语 (es-MX)|✔|||
 |泰米尔语|✔|||
@@ -111,7 +109,7 @@ LUIS 理解以下语言：
 
 以下区域性具有自定义 tokenizer 版本：
 
-|环境|版本|目的|
+|环境|版本|用途|
 |--|--|--|
 |德语<br>`de-de`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ich fahre einen krankenwagen` 作为话语，它将转换为 `Ich fahre einen kranken wagen`。 允许将 `kranken` 和 `wagen` 分别标记为不同的实体。|
 |德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ich fahre einen krankenwagen` 为查询文本，则它仍是一个令牌。 因此 `krankenwagen` 标记为单个实体。 |

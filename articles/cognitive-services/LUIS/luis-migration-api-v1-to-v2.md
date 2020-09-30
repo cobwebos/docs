@@ -3,20 +3,18 @@ title: v1 到 v2 API 迁移
 titleSuffix: Azure Cognitive Services
 description: 第 1 版终结点和和创作语言理解 API 已弃用。 使用此指南了解如何迁移至第 2 版终结点和创作 API。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344741"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541316"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
 第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API。

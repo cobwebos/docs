@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230970"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540330"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>在 Power BI 中直观显示 Azure 时序见解中的数据
 
@@ -110,13 +110,13 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
 1. 在窗口的左侧，确保已选择“报表”视图。****
 
-    [![选择报表视图](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![屏幕截图显示 "报表视图" 图标。](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1. 在“可视化效果”列中，选择所需的视觉对象。**** 例如，选择“折线图”。**** 这会在画布中添加一个空白的折线图。
 
 1. 在 " **字段** " 列表中，选择 " **_Timestamp** "，然后将其拖动到 " **轴** " 字段以沿 X 轴显示项。 请确保切换到 **_Timestamp** 为 **轴** 的值 (默认值为) **日期层次结构** 。
 
-    [![选择报表视图](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![屏幕截图显示选定 _Timestamp 的时间戳菜单。](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1. 同样，请在“字段”列表中选择“时序 ID”，然后将此 ID 拖放到“值”字段以显示 Y 轴上的项。************
 

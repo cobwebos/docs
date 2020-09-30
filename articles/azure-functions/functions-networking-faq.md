@@ -4,12 +4,12 @@ description: 有关 Azure Functions 的网络的一些最常见问题解答和�
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385902"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538052"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有关 Azure Functions 中的网络的常见问题解答
 
@@ -27,7 +27,7 @@ ms.locfileid: "87385902"
     * 在 IP 限制下，你还能够配置[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，这会将您的函数限制为仅接受来自特定虚拟网络的入站流量。
 * 删除所有 HTTP 触发器。 对于某些应用程序，只需要避免使用 HTTP 触发器并使用任何其他事件源来触发您的函数就足够了。
 
-请记住，Azure 门户编辑器需要直接访问你的正在运行的函数。 通过 Azure 门户所做的任何代码更改都将要求你使用的设备浏览门户来将其 IP 列入允许列表。 但是，在实施了网络限制的情况下，你仍然可以使用“平台功能”选项卡下的任何内容。
+请记住，Azure 门户编辑器需要直接访问你的正在运行的函数。 通过 Azure 门户进行的任何代码更改都需要使用的设备浏览门户，以将其 IP 添加到已批准列表。 但是，在实施了网络限制的情况下，你仍然可以使用“平台功能”选项卡下的任何内容。
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>如何将我的函数应用限制到某个虚拟网络？
 

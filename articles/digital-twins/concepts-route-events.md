@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334253"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541350"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 数字孪生内部和外部路由事件
 
@@ -55,7 +55,9 @@ Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用�
 * 事件中心
 * 服务总线
 
-使用控制平面 Api 设置终结点 (受 [Azure 数字孪生 CLI](how-to-use-cli.md)或 Azure 门户支持。 终结点定义提供：
+若要创建终结点，可以使用 Azure 数字孪生 [**控制平面 api**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 门户**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)。 
+
+定义终结点时，需要提供：
 * 终结点的名称
 * 终结点类型 (事件网格、事件中心或服务总线) 
 * 要进行身份验证的主连接字符串和辅助连接字符串 
@@ -69,7 +71,9 @@ Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用�
 
 ## <a name="create-an-event-route"></a>创建事件路由
  
-事件路由是在客户端应用程序中创建的。 实现此目的的一种方法是通过 `CreateEventRoute` [.Net (c # ) SDK](how-to-use-apis-sdks.md) 调用： 
+若要创建事件路由，可以使用 Azure 数字孪生 [**数据平面 api**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 门户**](how-to-manage-routes-portal.md#create-an-event-route)。 
+
+下面是使用 `CreateEventRoute` [.Net (c # ) SDK](how-to-use-apis-sdks.md) 调用在客户端应用程序中创建事件路由的示例： 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");

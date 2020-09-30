@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258547"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533717"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
 
@@ -200,21 +200,21 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 ### <a name="lower_case_table_names"></a>lower_case_table_names
 
-默认情况下，lower_case_table_name 设置为1，你可以在 MySQL 5.6 和 MySQL 5.7 中更新此参数
+lower_case_table_name 默认设置为 1，你可以在 MySQL 5.6 和 MySQL 5.7 中更新此参数
 
 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names)详细了解此参数。
 
 > [!NOTE]
-> 在 MySQL 8.0 中，默认情况下，lower_case_table_name 设置为1，您无法更改它。
+> 在 MySQL 8.0 中，lower_case_table_name 默认设置为 1 且无法更改。
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-如果收到类似于 "行大小太大 ( # A0 8126) " 的错误，则可能需要关闭参数 **innodb_strict_mode**。 不允许在服务器级别全局修改服务器参数 **innodb_strict_mode** ，因为如果行数据大小大于8k，则数据将被截断，且不会导致数据丢失。 建议修改架构以适应页面大小限制。 
+如果收到类似于“行大小太大(> 8126)”的错误，则可能需要关闭 innodb_strict_mode 参数。 不允许在服务器级别全局修改服务器参数 innodb_strict_mode，因为如果行数据大小大于 8k，该数据将会被截断，且不显示错误，这样就会导致有可能丢失数据。 建议修改架构以适应页面大小限制。 
 
-可以使用在会话级别设置此参数 `init_connect` 。 若要在会话级别设置 **innodb_strict_mode** ，请参阅 [未列出的设置参数](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+可以使用 `init_connect` 在会话级别设置此参数。 若要在会话级别设置 innodb_strict_mode，请参阅[设置未列出的参数](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
 
 > [!NOTE]
-> 如果有读取副本服务器，在主服务器上的会话级别将 **innodb_strict_mode** 设置为 OFF 会断开复制。 如果已读取副本，我们建议将参数设置为 OFF。
+> 如果有读取副本服务器，请在源服务器上的会话级别将 **innodb_strict_mode** 设置为 OFF 将中断复制。 如果有只读副本，建议将该参数始终设置为 OFF。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

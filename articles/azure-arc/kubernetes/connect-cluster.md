@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 使用 Azure Arc 连接已启用 Azure Arc 的 Kubernetes 群集
 keywords: Kubernetes, Arc, Azure, K8s, 容器
 ms.custom: references_regions
-ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723735"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540619"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "88723735"
 * 需要一个 kubeconfig 文件来访问群集上的群集和群集管理角色，以便部署启用了 Arc 的 Kubernetes 代理。
 * 使用 `az login` 和 `az connectedk8s connect` 命令的用户或服务主体必须具有对“Microsoft.Kubernetes/connectedclusters”资源类型的“读取”和“写入”权限。 "Kubernetes Cluster-Azure Arc 加入" 角色具有这些权限，可用于用户或服务主体上的角色分配。
 * 使用 connectedk8s 扩展加入群集时，Helm 3 是必需的。 [安装最新版本的 Helm 3](https://helm.sh/docs/intro/install) 以满足此要求。
-* 安装支持 Azure Arc 的 Kubernetes CLI 扩展需要 Azure CLI 版本 2.3 +。 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或更新到最新版本，以确保 Azure CLI 版本 2.3 +。
+* 安装支持 Azure Arc 的 Kubernetes CLI 扩展需要 Azure CLI 版本 2.3 +。 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或更新到最新版本，以确保 Azure CLI 版本 2.3 +。
 * 安装启用 Arc 的 Kubernetes CLI 扩展：
   
   安装 `connectedk8s` 扩展，该扩展可帮助你将 Kubernetes 群集连接到 Azure：
@@ -179,27 +179,16 @@ AzureArcTest1  eastus      AzureArcTest
 
 1. `connectedk8s`通过运行以下命令，检查计算机上安装的扩展的版本：
 
-    ```bash
+    ```console
     az -v
     ```
 
     需要 `connectedk8s` 扩展版本 >= 0.2.3 来设置代理和出站代理。 如果你的计算机上有版本 < 0.2.3，请执行 [更新步骤](#before-you-begin) 以获取计算机上的最新版本的扩展。
 
-2. 设置 Azure CLI 所需的环境变量：
+2. 运行连接命令并指定代理参数：
 
-    ```bash
-    export HTTP_PROXY=<proxy-server-ip-address>:<port>
-    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-    ```
-
-3. 运行连接命令并指定代理参数：
-
-    ```bash
-    az connectedk8s connect -n <cluster-name> -g <resource-group> \
-    --proxy-https https://<proxy-server-ip-address>:<port> \
-    --proxy-http http://<proxy-server-ip-address>:<port> \
-    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```console
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
     ```
 
 > [!NOTE]
