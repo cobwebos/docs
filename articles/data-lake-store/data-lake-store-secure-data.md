@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926291"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574137"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保护 Azure Data Lake Storage Gen1 中存储的数据
 保护 Azure Data Lake Storage Gen1 中的数据包含三个步骤。  必须同时设置基于角色的访问控制 (RBAC) 和访问控制列表 (ACL) 才能为用户和安全组完全启用对数据的访问权限。
 
-1. 首先在 Azure Active Directory (AAD) 中创建安全组。 这些安全组用于实现 Azure RBAC) 在 Azure 门户中的基于角色的访问控制 (。 有关详细信息，请参阅[AZURE RBAC](../role-based-access-control/role-assignments-portal.md)。
-2. 将 AAD 安全组分配到 Data Lake Storage Gen1 帐户。 这会控制从门户访问 Data Lake Storage Gen1 帐户的访问权限和从门户或 API 的管理操作。
-3. 将 AAD 安全组分配为 Data Lake Storage Gen1 文件系统上的访问控制列表 (ACL)。
+1. 首先，Azure Active Directory (Azure AD) 中创建安全组。 这些安全组用于实现 Azure RBAC) 在 Azure 门户中的基于角色的访问控制 (。 有关详细信息，请参阅 [AZURE RBAC](../role-based-access-control/role-assignments-portal.md)。
+2. 向 Data Lake Storage Gen1 帐户分配 Azure AD 安全组。 这会控制从门户访问 Data Lake Storage Gen1 帐户的访问权限和从门户或 API 的管理操作。
+3. 将 Azure AD 安全组指定为访问控制列表，) Data Lake Storage Gen1 文件系统上 (Acl。
 4. 此外，也可设置可访问 Data Lake Storage Gen1 中数据的客户端的 IP 地址范围。
 
 本文提供有关如何使用 Azure 门户执行以上任务的说明。 如需深入了解 Data Lake Storage Gen1 如何实现帐户和数据级别安全，请参阅 [Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)。 如需深入了解关于 Data Lake Storage Gen1 中如何实现 ACL 的信息，请参阅 [Data Lake Storage Gen1 中的访问控制概述](data-lake-store-access-control.md)。
@@ -33,10 +33,10 @@ ms.locfileid: "87926291"
 在开始阅读本教程前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>在 Azure Active Directory 中创建安全组
-有关如何创建 AAD 安全组和如何添加用户到组的说明，请参阅[管理 Azure Active Directory 中的安全组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+有关如何创建 Azure AD 安全组以及如何将用户添加到组的说明，请参阅 [管理 Azure Active Directory 中的安全组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 > [!NOTE] 
 > 可以使用 Azure 门户在 Azure AD 中向组添加用户和其他组。 不过，要将服务主体添加到组，请使用 [Azure AD 的 PowerShell 模块](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)。
@@ -74,7 +74,7 @@ ms.locfileid: "87926291"
    
     ![添加安全组](./media/data-lake-store-secure-data/adl.add.user.2.png "添加安全组")
    
-5. 单击“保存”  。 已添加的安全组如下所示。
+5. 单击“ **保存**”。 已添加的安全组如下所示。
    
     ![已添加的安全组](./media/data-lake-store-secure-data/adl.add.user.3.png "已添加的安全组")
 
@@ -99,17 +99,17 @@ ms.locfileid: "87926291"
    * “分配的权限”对应于 POSIX ACL，可用来为指定的特定用户或组（而不仅是文件的所有者或组）设置权限。**** 
      
      有关详细信息，请参阅 [HDFS ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)。 有关 Data Lake Storage Gen1 中如何实现 ACL 的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。
-4. 单击“添加”**** 图标以打开“分配权限”**** 边栏选项卡。 在此边栏选项卡中，单击 "**选择用户或组**"，然后在 "**选择用户或组**" 边栏选项卡中，查找之前在 Azure Active Directory 中创建的安全组。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击要添加的组，并单击“选择”****。
+4. 单击“添加”**** 图标以打开“分配权限”**** 边栏选项卡。 在此边栏选项卡中，单击 " **选择用户或组**"，然后在 " **选择用户或组** " 边栏选项卡中，查找之前在 Azure Active Directory 中创建的安全组。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击要添加的组，并单击“选择”****。
    
     ![添加组](./media/data-lake-store-secure-data/adl.acl.3.png "添加组")
 5. 单击“选择权限”****，选择权限、是否应当以递归方式应用权限，以及要将权限分配为访问 ACL、默认 ACL 还是同时分配为这两者。 单击“确定”。
    
-    ![分配权限给组](./media/data-lake-store-secure-data/adl.acl.4.png "分配权限给组")
+    !["分配权限" 边栏选项卡的屏幕截图，其中包含 "选择权限" 选项，其中包含 "确定" 选项（称为 "确定" 选项）。](./media/data-lake-store-secure-data/adl.acl.4.png "分配权限给组")
    
     有关 Data Lake Storage Gen1 中的权限和默认/访问 ACL 的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。
 6. 在“选择权限”边栏选项卡中单击“确定”后，新添加的组和关联的权限现在将在“访问”边栏选项卡中列出。************
    
-    ![分配权限给组](./media/data-lake-store-secure-data/adl.acl.5.png "分配权限给组")
+    ![具有称为 "数据工程" 选项的 "访问" 边栏选项卡的屏幕截图。](./media/data-lake-store-secure-data/adl.acl.5.png "分配权限给组")
    
    > [!IMPORTANT]
    > 在当前版本中，“分配的权限”下最多可以有 28 个条目。**** 若要添加的用户多于 28 个，应创建安全组、向安全组添加用户并向这些安全组提供 Data Lake Storage Gen1 帐户访问权限。
@@ -123,14 +123,14 @@ Data Lake Storage Gen1 允许进一步在网络级别锁定访问权限。 可�
 ![防火墙设置和 IP 访问](./media/data-lake-store-secure-data/firewall-ip-access.png "防火墙设置和 IP 地址")
 
 ## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>删除 Data Lake Storage Gen1 帐户的安全组
-从 Data Lake Storage Gen1 帐户删除安全组时，使用 Azure 门户和 Azure 资源管理器 API 仅会更改此帐户上的管理操作访问权限。  
+从 Data Lake Storage Gen1 帐户中删除安全组时，只会使用 Azure 门户和 Azure 资源管理器 Api 更改对帐户管理操作的访问。  
 
 对数据的访问权限保持不变，仍然由访问 ACL 进行管理。  但是，角色为“所有者”的用户/组例外。  从“所有者”角色中删除的用户/组不再是超级用户，并且其访问权限将回退到访问 ACL 设置。 
 
 1. 在 Data Lake Storage Gen1 帐户边栏选项卡中，单击“访问控制(IAM)”****。 
    
     ![将安全组分配到 Data Lake Storage Gen1 帐户](./media/data-lake-store-secure-data/adl.select.user.icon.png "将安全组分配到 Data Lake Storage Gen1 帐户")
-2. 在“访问控制 (IAM)”**** 边栏选项卡中，单击要删除的安全组。 单击“删除”。
+2. 在“访问控制 (IAM)”**** 边栏选项卡中，单击要删除的安全组。 单击 **“删除”** 。
    
     ![已删除的安全组](./media/data-lake-store-secure-data/adl.remove.group.png "已删除的安全组")
 
@@ -145,7 +145,7 @@ Data Lake Storage Gen1 允许进一步在网络级别锁定访问权限。 可�
     ![在 Data Lake Storage Gen1 文件系统上设置 Acl](./media/data-lake-store-secure-data/adl.acl.1.png "在 Data Lake Storage Gen1 文件系统上设置 Acl")
 3. 在“访问”**** 边栏选项卡中，单击要删除的安全组。 在“访问详细信息”**** 边栏选项卡中，单击“删除”****。
    
-    ![分配权限给组](./media/data-lake-store-secure-data/adl.remove.acl.png "分配权限给组")
+    !["访问" 边栏选项卡，其中包含名为 "out" 的数据工程选项和 "访问详细信息" 边栏选项卡和 "删除" 选项。](./media/data-lake-store-secure-data/adl.remove.acl.png "分配权限给组")
 
 ## <a name="see-also"></a>请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)

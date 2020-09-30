@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f84298c2c43afbb9e0379516be1e83002a7e3926
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d25a44aa70b9638017856595c7431e897d035c33
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228675"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576109"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -50,6 +50,7 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |Blobfuse|预览|尚不支持|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|
 |帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|客户管理的密钥|尚不支持|尚不支持|[用于 Azure 存储加密的客户托管密钥](../common/customer-managed-keys-overview.md)|
 |自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
 |加密范围|尚不支持|尚不支持|[创建和管理加密范围（预览）](encryption-scope-manage.md)|
 |更改源|尚不支持|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
