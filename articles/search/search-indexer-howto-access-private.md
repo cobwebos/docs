@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971423"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534720"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>通过专用终结点访问安全资源
 
@@ -45,7 +45,7 @@ Azure 认知搜索通过搜索管理 API 提供的功能，可以 [创建或更�
 出于本指南的目的，将使用 [ARMClient](https://github.com/projectkudu/ARMClient) 和 [Postman](https://www.postman.com/) 的混合来演示 REST API 调用。
 
 > [!NOTE]
-> 在本指南中，假设搜索服务的名称是__contoso-搜索__，后者位于订阅 id 为__00000000-0000-0000-0000-000000000000__的订阅的资源组__contoso__中。 此搜索服务的资源 id 将为 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+> 在本指南中，假设搜索服务的名称是__contoso-搜索__，后者位于订阅 ID 为__00000000-0000-0000-0000-000000000000__的订阅的资源组__contoso__中。 此搜索服务的资源 ID 将为 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
 
 本指南的其余部分将演示如何配置 __contoso 搜索__ 服务，以便其索引器可以访问安全存储帐户中的数据 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
 

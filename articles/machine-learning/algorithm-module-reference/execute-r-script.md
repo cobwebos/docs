@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908014"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542282"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
 
 本文介绍如何使用 "执行 R 脚本" 模块在 Azure 机器学习设计器管道中运行 R 代码。
 
-使用 R，可以执行现有模块当前不支持的任务，例如： 
+使用 R，你可以执行现有模块不支持的任务，例如： 
 - 创建自定义数据转换
 - 使用你自己的指标来评估预测
 - 使用未在设计器中作为独立模块实施的算法来生成模型
@@ -137,7 +137,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置“执行 R 脚本”
 
-“执行 R 脚本”模块包含可用作起点的代码示例。 若要配置“执行 R 脚本”模块，请提供一组输入和要运行的代码。
+执行 R 脚本模块包含示例代码作为起点。
 
 ![R 模块的输入示意图](media/module/execute-r-script.png)
 
@@ -194,9 +194,12 @@ azureml_main <- function(dataframe1, dataframe2){
     > [!NOTE]
     > 现有 R 代码可能需要稍做更改才能在设计器管道中运行。 例如，以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用。 R 语言中使用的数据和列类型与在设计器中使用的数据和列类型在某些方面也有所不同。
 
-    如果脚本大于 16KB，请使用脚本包端口以避免错误，如命令行超过 16597 个字符的限制。 
+    如果你的脚本大于 16 KB，请使用 **脚本捆绑** 端口来避免错误，如 *命令行数超过16597个字符的限制*。 
     
-    将脚本和其他自定义资源捆绑到一个 zip 文件，然后将该 zip 文件作为文件数据集上传到工作室。 然后可以从设计器创作页面左侧模块窗格中的“我的数据集”列表中拖取数据集模块。 将数据集模块连接到“执行 R 脚本”模块的“脚本包”端口。
+    1. 将脚本和其他自定义资源捆绑到 zip 文件。
+    1. 将 zip 文件作为 **文件数据集** 上传到工作室。 
+    1. 从 "设计器创作" 页左侧模块窗格的 " *我的数据集* " 列表中拖动数据集模块。 
+    1. 将数据集模块连接到“执行 R 脚本”模块的“脚本包”端口。
     
     下面是使用脚本包中的脚本的示例代码：
 
@@ -219,7 +222,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>结果
 
-“执行 R 脚本”模块可返回多个输出，但必须将它们作为 R 数据帧提供。 数据帧会自动转换为设计器中的数据集，以便与其他模块兼容。
+“执行 R 脚本”模块可返回多个输出，但必须将它们作为 R 数据帧提供。 设计器自动将数据帧转换为数据集，以便与其他模块兼容。
 
 来自 R 的标准消息和错误将返回到模块的日志中。
 
@@ -236,7 +239,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 若要将包含 R 代码的 .zip 文件上传到工作区，请转到“数据集”资产页。 选择“创建数据集”，然后选择“从本地文件”和“文件”数据集类型选项  。  
 
-1. 验证左侧模块树中“数据集”类别下“我的数据集”列表中是否存在该压缩文件 。
+1. 验证压缩文件是否显示在左侧模块树中 "**数据集**" 类别下的 **"我的数据集**" 中。
 
 1.  将数据集连接到“脚本包”输入端口。
 

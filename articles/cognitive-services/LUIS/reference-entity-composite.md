@@ -3,26 +3,24 @@ title: 复合实体类型 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 复合实体由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 97bd079034a39f158e3ca438c484929cb6f00363
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681385"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542251"
 ---
 # <a name="composite-entity"></a>复合实体
 
 复合实体由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。
 
 > [!CAUTION]
-> 此实体已**弃用**。 请迁移到[机器学习实体](reference-entity-machine-learned-entity.md)。
+> 此实体已 **弃用**。 请迁移到 [机器学习实体](reference-entity-machine-learned-entity.md)。
 
 **如果数据具有以下特征，则非常适合使用此实体：**
 
@@ -175,14 +173,14 @@ ms.locfileid: "83681385"
 * * *
 
 
-|数据对象|实体名称|值|
+|数据对象|实体名称|Value|
 |--|--|--|
 |预构建实体 - 数量|"builtin.number"|"2"|
 |预生成实体 - GeographyV2|"Location::ToLocation"|"cairo"|
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关实体的详细信息：
+详细了解实体：
 
 * [概念](luis-concept-entity-types.md)
-* [创建方法](luis-how-to-add-entities.md)
+* [如何创建](luis-how-to-add-entities.md)

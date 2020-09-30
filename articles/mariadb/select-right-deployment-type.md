@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d3b65558a12fb6b20f449f5386c0ce7e598433b6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 47aff04dfd44ea7fd892fdee763e93d7fd13a9d1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110294"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542387"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中选择适当的 MariaDB 服务器选项
 
@@ -31,19 +31,19 @@ ms.locfileid: "86110294"
 
 下表列出了这些选项之间的主要差别：
 
-| Attribute          | Azure Database for MariaDB | Azure VM 上的 MariaDB    |
+| 属性          | Azure Database for MariaDB | Azure VM 上的 MariaDB    |
 |:-------------------|:-----------------------------|:--------------------|
 | 服务级别协议 (SLA)                | 提供 99.99% 可用性 SLA| 同一可用性集中的两个或更多个实例的可用性高达 99.95%。<br/><br/>使用高级存储的单一实例 VM 的可用性为 99.9%。<br/><br/>使用可用性区域在多个可用性集中具有多个实例的99.99%。<br/><br/>请参阅[虚拟机 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
 | 操作系统修补        | 自动  | 由客户管理 |
 | MariaDB 修补     | 自动  | 由客户管理 |
 | 高可用性 | 高可用性 (HA) 模型以节点级中断发生时的内置故障转移机制为依据。 在这种情况下，服务将自动创建一个新实例，并将存储附加到此实例。 | 客户建构、实施、测试和维护高可用性。 功能可能包括不中断的故障转移群集、不中断的组复制、日志传送或事务复制。|
 | 区域冗余 | 目前不受支持。 | 可以将 Azure Vm 设置为在不同的可用性区域中运行。 对于本地解决方案，客户必须创建、管理和维护其自己的辅助数据中心。|
-| 混合场景 | 使用[数据传入复制](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)可将外部 MariaDB 服务器中的数据同步到 Azure Database for MariaDB 服务中。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。<br/><br/> 使用[只读副本](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas)功能可将 Azure Database for MariaDB 主服务器中的数据复制到最多五个只读副本服务器。 副本位于同一个 Azure 区域中，或者跨不同的区域。 使用 binlog 复制技术异步更新只读副本。<br/><br/>跨区域读取复制目前为公共预览版。| 由客户管理
+| 混合场景 | 使用[数据传入复制](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)可将外部 MariaDB 服务器中的数据同步到 Azure Database for MariaDB 服务中。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。<br/><br/> 使用 [读取副本](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas) 功能，可以将数据从 Azure Database for MariaDB 源服务器复制到最多5个只读副本服务器。 副本位于同一个 Azure 区域中，或者跨不同的区域。 使用 binlog 复制技术异步更新只读副本。<br/><br/>跨区域读取复制目前为公共预览版。| 由客户管理
 | 备份和还原 | 自动创建[服务器备份](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups)并将其存储在用户配置的本地冗余或异地冗余存储中。 服务将创建完整备份、差异备份和事务日志备份 | 由客户管理 |
 | 监视数据库操作 | 可让客户针对数据库操作[设置警报](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring)，并在即将达到阈值时采取措施。 | 由客户管理 |
-| 高级威胁防护 | 提供[高级威胁防护](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal)。 此保护可检测异常活动，这些活动表示异常和可能有害的数据库访问或利用尝试。<br/><br/>高级威胁防护目前为公共预览版。| 客户必须为自己构建这种保护。
+| 高级威胁防护 | 提供 [高级威胁防护](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal)。 此保护可检测异常活动，这些活动表示异常和可能有害的数据库访问或利用尝试。<br/><br/>高级威胁防护目前为公共预览版。| 客户必须为自己构建这种保护。
 | 灾难恢复 | 将自动创建的备份存储在用户配置的[本地冗余存储或异地冗余存储](https://docs.microsoft.com/azure/MariaDB/howto-restore-server-portal)中。 备份还可以将服务器还原到某个时间点。 保留期为 7 到 35 天。 还原是使用 Azure 门户完成的。 | 完全由客户管理。 责任包括但不限于计划、测试、存档、存储和保留。 另一个选项是使用 Azure 恢复服务保管库备份 Azure VM 和 VM 上的数据库。 此选项目前为预览版。 |
-| 性能建议 | 为客户提供基于系统生成的使用情况日志文件的[性能建议](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110)。 建议有助于优化工作负荷。<br/><br/>性能建议当前为公共预览版。 | 由客户管理 |
+| 性能建议 | 根据系统生成的使用日志文件为客户提供[性能建议](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110)。 这些建议有助于优化工作负荷。<br/><br/>性能建议目前以公共预览版提供。 | 由客户管理 |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>选择 PaaS 或 IaaS 的业务动机
 
@@ -89,7 +89,7 @@ Azure Database for MariaDB 针对任何类型的节点级中断提供内置高�
 
   此外，在另一个数据中心配置高可用性只需极少量的配置或管理，或者根本无需配置或管理。
 
-* 使用 Azure VM 上的 MariaDB 可以完全控制操作系统和 MariaDB 服务器实例配置。 在 VM 上，可以决定何时更新或升级操作系统与数据库软件。 还可以决定何时安装任何其他软件，例如防病毒应用程序。 提供的某些自动化功能可以大大简化修补、备份和高可用性。 可以控制 VM 的大小、磁盘数目及其存储配置。 有关详细信息，请参阅[Azure 的虚拟机和云服务大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。
+* 使用 Azure VM 上的 MariaDB 可以完全控制操作系统和 MariaDB 服务器实例配置。 在 VM 上，可以决定何时更新或升级操作系统与数据库软件。 还可以决定何时安装任何其他软件，例如防病毒应用程序。 提供的某些自动化功能可以大大简化修补、备份和高可用性。 可以控制 VM 的大小、磁盘数目及其存储配置。 有关详细信息，请参阅 [Azure 的虚拟机和云服务大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。
 
 ### <a name="time-to-move-to-azure"></a>迁移到 Azure 的时机
 
@@ -102,4 +102,4 @@ Azure Database for MariaDB 针对任何类型的节点级中断提供内置高�
 ## <a name="next-steps"></a>后续步骤
 
 * 参阅 [Azure Database for MariaDB 定价](https://azure.microsoft.com/pricing/details/MariaDB/)。
-* [首先创建您的第一个服务器](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)。
+* 从[创建第一个服务器](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)开始。

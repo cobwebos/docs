@@ -3,16 +3,16 @@ title: 虚拟机和磁盘性能
 description: 详细了解 Vm 及其附加的磁盘如何结合使用以提高性能
 author: albecker1
 ms.author: albecker
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: b3ef2c2c3b130478a8b2d3b3c3ce44a7c65b87fe
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 18c07fceb65623c286b31398314e2b6f124955a6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663735"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539966"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>虚拟机和磁盘性能
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance.md)]

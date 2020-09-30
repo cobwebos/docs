@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d83c4ffe4e60ef2896e16b97e1ec34d71a022b9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279002"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540704"
 ---
-# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
+# <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure 虚拟机 SAP 工作负荷的 Oracle DBMS 部署
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -389,12 +389,12 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 存储池 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | 高级或超磁盘 | 无 | 可用于高级  |
-| \oracle\<SID>\origlogaB | 高级或超磁盘 | 无 | 可用于高级 |
-| \oracle\<SID>\mirrlogAB | 高级或超磁盘 | 无 | 可用于高级 |
-| \oracle\<SID>\mirrlogBA | 高级或超磁盘 | 无 | 可用于高级 |
+| \oracle\<SID>\origlogaA | 高级或超磁盘 | None | 可用于高级  |
+| \oracle\<SID>\origlogaB | 高级或超磁盘 | None | 可用于高级 |
+| \oracle\<SID>\mirrlogAB | 高级或超磁盘 | None | 可用于高级 |
+| \oracle\<SID>\mirrlogBA | 高级或超磁盘 | None | 可用于高级 |
 | \oracle\<SID>\sapdata1...n | 高级或超磁盘 | 只读 | 建议用于高级  |
-| \oracle\SID\sapdata(n+1)* | 高级或超磁盘 | 无 | 可用于高级 |
+| \oracle\SID\sapdata(n+1)* | 高级或超磁盘 | None | 可用于高级 |
 | \oracle\<SID>\oraarch* | 高级或超磁盘 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
 
@@ -482,12 +482,12 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | 高级或超磁盘 | 无 | 可用于高级  |
-| /oracle/\<SID>/origlogaB | 高级或超磁盘 | 无 | 可用于高级 |
-| /oracle/\<SID>/mirrlogAB | 高级或超磁盘 | 无 | 可用于高级 |
-| /oracle/\<SID>/mirrlogBA | 高级或超磁盘 | 无 | 可用于高级 |
+| /oracle/\<SID>/origlogaA | 高级或超磁盘 | None | 可用于高级  |
+| /oracle/\<SID>/origlogaB | 高级或超磁盘 | None | 可用于高级 |
+| /oracle/\<SID>/mirrlogAB | 高级或超磁盘 | None | 可用于高级 |
+| /oracle/\<SID>/mirrlogBA | 高级或超磁盘 | None | 可用于高级 |
 | /oracle/\<SID>/sapdata1...n | 高级或超磁盘 | 只读 | 建议用于高级  |
-| /oracle/\<SID>/sapdata(n+1)* | 高级或超磁盘 | 无 | 可用于高级 |
+| /oracle/\<SID>/sapdata(n+1)* | 高级或超磁盘 | None | 可用于高级 |
 | /oracle/\<SID>/oraarch* | 高级或超磁盘 | 无 | 无需 |
 | Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
 

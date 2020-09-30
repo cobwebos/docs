@@ -3,18 +3,18 @@ title: 设置蓝图操作员的环境
 description: 了解如何配置 Azure 环境以与蓝图操作员 Azure 内置角色一起使用。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: ef911553b4985a6497fb397a1ae405387c6539fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ae881ac6d0714401f8c80e880b4d288f594b7cf3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051451"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535775"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>为蓝图操作员配置环境
 
 可以将蓝图定义和蓝图分配的管理分配给不同的团队。 在运营团队负责管理这些集中控制的蓝图定义的分配时，架构师或调控团队通常负责管理蓝图定义的生命周期管理。
 
-**蓝图运算符**内置的基于角色的访问控制 (RBAC) 专用于在此类方案中使用。 角色允许操作类型团队管理组织蓝图定义的分配，但不允许对其进行修改。 执行此操作需要在 Azure 环境中进行一些配置，本文介绍必要的步骤。
+**蓝图运算符**内置角色专用于在此类方案中使用。 角色允许操作类型团队管理组织蓝图定义的分配，但不允许对其进行修改。 执行此操作需要在 Azure 环境中进行一些配置，本文介绍必要的步骤。
 
 ## <a name="grant-permission-to-the-blueprint-operator"></a>向蓝图运算符授予权限
 

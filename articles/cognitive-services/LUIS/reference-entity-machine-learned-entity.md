@@ -1,34 +1,32 @@
 ---
-title: 机器学习实体类型-LUIS
+title: 机器学习实体类型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 机器学习实体是用于构建 LUIS 应用程序的首选实体。
+description: 机器学习实体是用于生成 LUIS 应用程序的首选实体。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
-ms.author: diberry
-ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684577"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542234"
 ---
 # <a name="machine-learning-entity"></a>机器学习实体
 
-机器学习实体是用于构建 LUIS 应用程序的首选实体。
+机器学习实体是用于生成 LUIS 应用程序的首选实体。
 
 
 ## <a name="example-json"></a>示例 JSON
 
-假设应用程序采用比萨饼订单，如[可以分解实体教程](tutorial-machine-learned-entity.md)。 每个订单可能包含多个不同的 pizzas，包括不同的大小。
+假设应用接受披萨订单，例如[可分解实体教程](tutorial-machine-learned-entity.md)。 每个订单可以包括多个不同的披萨，其中包括不同的尺寸。
 
 话语示例包括：
 
-|适用于比萨饼应用的示例最谈话|
+|适用于比萨饼应用的示例言语|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -38,9 +36,9 @@ ms.locfileid: "83684577"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
-因为机器学习实体可以有许多子实体所需的功能，所以这只是一个示例。 应将其视为有关实体将返回的内容的指南。
+因为机器学习实体可以拥有许多具有必需功能的子实体，所以这仅是示例。 它应被视为实体将返回哪些内容的指南。
 
-请考虑以下查询：
+考虑以下查询：
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
@@ -348,6 +346,6 @@ ms.locfileid: "83684577"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关计算机学习实体的详细信息，包括[教程](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
+了解有关机器学习实体的详细信息，包括[教程](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和[操作指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
 
-了解 "[列表](reference-entity-list.md)实体" 和 "[正则表达式](reference-entity-regular-expression.md)" 实体。
+了解[列表](reference-entity-list.md)实体和[正则表达式](reference-entity-regular-expression.md)实体。

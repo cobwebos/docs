@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662267"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535655"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 认知搜索中的相似性和评分
 
@@ -107,6 +107,4 @@ Azure 认知搜索支持两种不同的相似性排名算法：经典相似性�
 
 ## <a name="see-also"></a>另请参阅
 
- [计分概要文件](index-add-scoring-profiles.md)[REST API 参考](/rest/api/searchservice/)   
- [搜索文档 API](/rest/api/searchservice/search-documents)   
- [Azure 认知搜索 .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [计分配置文件](index-add-scoring-profiles.md) [REST API 引用](/rest/api/searchservice/)[搜索文档 API](/rest/api/searchservice/search-documents) [Azure 认知搜索 .net SDK](/dotnet/api/overview/azure/search)

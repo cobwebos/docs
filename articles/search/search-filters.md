@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002413"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534788"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 认知搜索中的筛选器 
 
@@ -138,7 +138,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 在 REST API 中，默认为简单字段启用了可筛选性。  可筛选字段会增大索引大小；对于不打算真正在筛选器中使用的字段，请务必设置 `"filterable": false`。 有关字段定义设置的详细信息，请参阅[创建索引](/rest/api/searchservice/create-index)。
 
-在 .NET SDK 中，可筛选性默认为“关”。  可以通过将相应 [Field](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) 对象的 [IsFilterable 属性](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)设置为 `true`，使某个字段可筛选。 也可以使用 [IsFilterable 特性](/dotnet/api/microsoft.azure.search.isfilterableattribute)以声明方式实现此目的。 在以下示例中，该特性已在一个映射到索引定义的模型类的 `BaseRate` 属性中设置。
+在 .NET SDK 中，可筛选性默认为“关”。  可以通过将相应 [Field](/dotnet/api/microsoft.azure.search.models.field) 对象的 [IsFilterable 属性](/dotnet/api/microsoft.azure.search.models.field.isfilterable)设置为 `true`，使某个字段可筛选。 也可以使用 [IsFilterable 特性](/dotnet/api/microsoft.azure.search.isfilterableattribute)以声明方式实现此目的。 在以下示例中，该特性已在一个映射到索引定义的模型类的 `BaseRate` 属性中设置。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317117"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534193"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -26,6 +26,8 @@ Log Analytics 工作区可提供：
 * 数据存储的地理位置。
 * 遵循建议的设计策略之一授予不同的用户访问权限，以实现数据隔离。
 * 设置配置的范围，例如[定价层级](./manage-cost-storage.md#changing-pricing-tier)、[保留期](./manage-cost-storage.md#change-the-data-retention-period)和[数据上限](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)。
+
+工作区在物理群集上托管。 默认情况下，系统将创建和管理这些群集。 超过 4TB/天的客户应为其工作区创建他们自己的专用群集，这样可以更好地控制和更高的引入率。
 
 本文提供设计和迁移注意事项的详细概述、访问控制概述，我们为 IT 组织推荐的设计实施方案的介绍。
 
@@ -125,37 +127,16 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 若要了解如何使用门户、PowerShell 或资源管理器模板更改访问控制模式，请参阅[配置访问控制模式](manage-access.md#configure-access-control-mode)。
 
-## <a name="ingestion-volume-rate-limit"></a>引入量速率限制
+## <a name="scale-and-ingestion-volume-rate-limit"></a>规模和摄取量限制
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 卷速率限制旨在将 Azure Monitor 客户与多租户环境中的突然引入峰值隔离开来。 工作区中定义了 500 MB (压缩) 的默认引入量速率阈值，此值转换为大约 **6 GB/最小值** （未压缩），这取决于日志长度及其压缩率。 卷速率限制适用于所有引入数据，无论是使用 [诊断设置](diagnostic-settings.md)、 [数据收集器 API](data-collector-api.md) 还是代理从 Azure 资源发送。
+Azure Monitor 是一种高度可扩展的数据服务，每月可为数千个客户发送超过 pb 的数据。 工作区在其存储空间中不受限制，并且可以增长到 pb 级的数据。 由于规模的原因，无需拆分工作区。
 
-如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量的速率持续超出阈值，或者您很快就会到达此阈值，则可以通过打开支持请求来请求增加此阈值。 
+为了保护和隔离 Azure Monitor 客户及其后端基础结构，提供了一个默认的引入速率限制，可防止出现高峰和泛滥情况。 速率限制的默认值约为 **6 GB/分钟** ，旨在实现正常引入。 有关引入卷限制度量值的更多详细信息，请参阅 [Azure Monitor 服务限制](../service-limits.md#data-ingestion-volume-rate)。
 
-若要在工作区中收到接近或达到引入量限制的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，并在结果数大于零的情况下使用警报逻辑基数，计算时间为5分钟，频率为5分钟。
+超过 4TB/天的客户通常不会满足这些限制。 如果客户在正常操作过程中引入了较大的卷或具有峰值，则应考虑移动到可引发引入速率限制的 [专用群集](../log-query/logs-dedicated-clusters.md) 。
 
-引入速率超出阈值
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Error"
-```
+当激活引入速率限制或达到阈值的80% 时，会将事件添加到工作区中的 *操作* 表中。 建议对其进行监视并创建警报。 请参阅 [数据引入量速率](../service-limits.md#data-ingestion-volume-rate)中的更多详细信息。
 
-引入量速率超过80% 的阈值
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Warning"
-```
-
-引入量速率超过70% 的阈值
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Info"
-```
 
 ## <a name="recommendations"></a>建议
 

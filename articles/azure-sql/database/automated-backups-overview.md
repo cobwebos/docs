@@ -7,16 +7,16 @@ ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: references_regions
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma, stevestein, danil
 ms.date: 09/25/2020
-ms.openlocfilehash: b28c175656b0951980f861198c93ccd794605839
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444329"
+ms.locfileid: "91535060"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -415,6 +415,9 @@ Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01
 
 有关详细信息，请访问 [AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
 
+> [!NOTE]
+> 若要将-BackupStorageRedundancy 参数与数据库还原、数据库复制或创建辅助操作一起使用，请使用 Azure PowerShell 版本 Az .Sql 2.11.0。 
+
 
 #### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
 
@@ -425,6 +428,8 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 ```
 
 有关更多详细信息，请访问 [AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)。
+
+---
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>使用 Azure 策略强制实施备份存储冗余
 
@@ -440,11 +445,13 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 
 可在 [此处](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)找到 SQL 数据库和托管实例的内置策略定义的完整列表。
 
-若要在组织级别强制执行数据驻留要求，可以将这些策略分配到订阅。 在订阅级别分配这些数据后，给定订阅中的用户将无法通过 Azure 门户或 Azure PowerShell 创建具有异地冗余备份存储的数据库或托管实例。 请注意，在通过 T-sql 创建数据库时，不会强制实施 Azure 策略。 
+若要在组织级别强制执行数据驻留要求，可以将这些策略分配到订阅。 在订阅级别分配这些数据后，给定订阅中的用户将无法通过 Azure 门户或 Azure PowerShell 创建具有异地冗余备份存储的数据库或托管实例。 
+
+> [!IMPORTANT]
+> 通过 T-sql 创建数据库时，不会强制实施 Azure 策略。 若要在使用 T-sql 创建数据库时强制数据驻留，请 [在 CREATE database 语句中使用 "LOCAL" 或 "ZONE" 作为 BACKUP_STORAGE_REDUNDANCY 参数的输入](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups)。
 
 了解如何使用[Azure 门户](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)或[Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)分配策略
 
----
 
 ## <a name="next-steps"></a>后续步骤
 

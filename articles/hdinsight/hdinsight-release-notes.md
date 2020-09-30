@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/27/2020
-ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: feb186fbe216305039fcc0a23a10419c44fd0483
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449575"
+ms.locfileid: "91535604"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -28,8 +28,8 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源分析服务之一
 此版本适用于 HDInsight 3.6 和 HDInsight 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
 
 ## <a name="new-features"></a>新增功能
-### <a name="llap-cluster-auto-scale-general-available"></a>LLAP 群集自动缩放常规可用
-LLAP 群集类型的自动缩放现已正式发布 (GA) 。 2020年8月27日之后创建的所有 LLAP 群集都将支持自动缩放。
+### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>使用 HDInsight 4.0 的交互式查询的自动缩放现已正式发布
+交互式查询群集类型的自动缩放现已正式发布 (适用于 HDInsight 4.0 的 GA) 。 4.0 年 8 2020 月27日之后创建的所有交互式查询群集都将为自动缩放提供 GA 支持。
 
 ### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase 群集支持高级 ADLS Gen2
 HDInsight 现在支持将高级 ADLS Gen2 作为 HDInsight HBase 3.6 和4.0 群集的主要存储帐户。 与 [加速写入](./hbase/apache-hbase-accelerated-writes.md)一起，你可以为 HBase 群集提供更好的性能。

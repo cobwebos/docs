@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489616"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539175"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -119,7 +119,7 @@ ms.locfileid: "87489616"
 | * / 5671, 5672, 443          | 出站           | TCP                | VIRTUAL_NETWORK / EventHub            | [事件中心策略日志](api-management-howto-log-event-hubs.md)和监视代理的依赖项 | 外部和内部  |
 | * / 445                      | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | 与适用于 [GIT](api-management-configuration-repository-git.md) 的 Azure 文件共享的依赖关系                      | 外部和内部  |
 | */443、12000                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 运行状况和监视扩展         | 外部和内部  |
-| * / 1886、443                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 发布[诊断日志和指标](api-management-howto-use-azure-monitor.md)，[资源运行状况](../service-health/resource-health-overview.md)和[Application Insights](api-management-howto-app-insights.md)                   | 外部和内部  |
+| * / 1886、443                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 发布 [诊断日志和指标](api-management-howto-use-azure-monitor.md)， [资源运行状况](../service-health/resource-health-overview.md) 和 [Application Insights](api-management-howto-app-insights.md)                   | 外部和内部  |
 | * / 25、587、25028                       | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 连接到 SMTP 中继以发送电子邮件                    | 外部和内部  |
 | * / 6381 - 6383              | 入站和出站 | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 访问 Redis 服务以获取计算机之间的[缓存](api-management-caching-policies.md)策略         | 外部和内部  |
 | * / 4290              | 入站和出站 | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 同步用于计算机之间的[速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey)策略的计数器         | 外部和内部  |
@@ -153,7 +153,7 @@ ms.locfileid: "87489616"
 
 + **Azure 负载均衡器**：`Developer` SKU 不要求允许来自服务标记 `AZURE_LOAD_BALANCER` 的入站请求，因为我们只在其后部署一个计算单元。 但当扩展到更高级的 SKU（如 `Premium`）时，来自 [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 的入站请求变得至关重要，因为负载均衡器的运行状况探测失败将导致部署失败。
 
-+ **Application Insights**：如果已在 API 管理上启用[Azure 应用程序 Insights](api-management-howto-app-insights.md)监视，则需要允许从虚拟网络到[遥测终结点](/azure/azure-monitor/app/ip-addresses#outgoing-ports)的出站连接。 
++ **Application Insights**：如果已在 API 管理上启用 [Azure 应用程序 Insights](api-management-howto-app-insights.md) 监视，则需要允许从虚拟网络到 [遥测终结点](/azure/azure-monitor/app/ip-addresses#outgoing-ports) 的出站连接。 
 
 + **使用 Express Route 或网络虚拟设备强制隧道流量发往本地防火墙**：客户的常用配置是定义自己的默认路由 (0.0.0.0/0)，强制来自 API 管理所委托子网的所有流量流经本地防火墙或流向网络虚拟设备。 此流量流一定会中断与 Azure API 管理的连接，因为出站流量会在本地被阻止，或者通过“网络地址转换”功能发送到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 此解决方案要求你执行多项操作：
 
@@ -170,7 +170,7 @@ ms.locfileid: "87489616"
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>疑难解答
 * **初始设置**：如果在某个子网中初次部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否与 Azure 订阅中的以下每个资源建立了连接
     * Azure 存储 Blob
-    * Azure SQL 数据库
+    * Azure SQL Database
     * Azure 存储表
 
   > [!IMPORTANT]
@@ -203,7 +203,7 @@ API 管理的每个额外缩放单元都需要另外两个 IP 地址。
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> 控制平面 IP 地址
 
-IP 地址由 **Azure 环境**划分。 允许入站请求时，标记为 **Global** 的 IP 地址必须与**区域**特定的 IP 地址一起加入允许列表。
+IP 地址由 **Azure 环境**划分。 如果允许入站请求使用 **Global** 标记的 ip 地址，则必须与 **区域** 特定的 ip 地址一起使用。
 
 | **Azure 环境**|   **区域**|  IP 地址|
 |-----------------|-------------------------|---------------|

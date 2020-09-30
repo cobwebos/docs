@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050326"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542268"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题解答
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -53,7 +53,7 @@ ms.locfileid: "87050326"
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 TLS 相互身份验证。
-* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中（消耗层除外），网关的 IP 地址仍保持不变，包括[IP 文档文章](api-management-howto-ip-addresses.md)中介绍了一些注意事项。
+* 在后端服务上使用 IP 筛选。 在 API 管理的所有层中（消耗层除外），网关的 IP 地址仍保持不变，包括[IP 文档文章](api-management-howto-ip-addresses.md)中介绍了一些注意事项。
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？

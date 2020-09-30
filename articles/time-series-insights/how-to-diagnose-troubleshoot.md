@@ -1,6 +1,6 @@
 ---
-title: 诊断和排查 Gen2 环境问题-Azure 时序见解 |Microsoft Docs
-description: 了解如何诊断 Azure 时序见解 Gen2 环境并对其进行故障排除。
+title: 诊断和排查第 2 代环境的问题 - Azure 时序见解 | Microsoft Docs
+description: 了解如何诊断和排查 Azure 时序见解第 2 代环境的问题。
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -10,16 +10,16 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289936"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540296"
 ---
-# <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>诊断 Azure 时序见解 Gen2 环境并对其进行故障排除
+# <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>诊断和排查 Azure 时序见解第 2 代环境的问题
 
-本文总结了在使用 Azure 时序见解 Gen2 环境时可能遇到的几个常见问题。 本文还介绍了每个问题的可能原因和解决方案。
+本文汇总了在使用 Azure 时序见解第 2 代环境时可能会遇到的若干常见问题。 本文还介绍了每个问题的可能原因和解决方案。
 
 ## <a name="problem-i-cant-find-my-environment-in-the-gen2-explorer"></a>问题：我在 Gen2 资源管理器中找不到我的环境
 
@@ -29,7 +29,7 @@ ms.locfileid: "87289936"
 
 ## <a name="problem-no-data-is-seen-in-the-gen2-explorer"></a>问题： Gen2 资源管理器中未显示数据
 
-数据可能不会出现在[Azure 时序见解 Gen2 资源管理器](https://insights.timeseries.azure.com/preview)中的几个常见原因。
+数据可能不会出现在 [Azure 时序见解 Gen2 资源管理器](https://insights.timeseries.azure.com/preview)中的几个常见原因。
 
 - 事件源可能未接收数据。
 
@@ -63,29 +63,29 @@ ms.locfileid: "87289936"
 
     如果在预配环境时时序 ID 属性配置不正确，则可能会发生此问题。 有关详细信息，请阅读[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 目前无法更新现有时序见解环境来使用其他时序 ID。
 
-## <a name="problem-some-data-shows-but-some-is-missing"></a>问题：有些数据显示，但有些数据丢失
+## <a name="problem-some-data-shows-but-some-is-missing"></a>问题：显示了一些数据，但是还有一些数据缺失
 
 可能在发送数据时没有提供时序 ID。
 
-- 如果在发送事件时有效负载中没有时序 ID 字段，则可能会发生此问题。 有关详细信息，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+- 如果在发送事件时有效负载中没有时序 ID 字段，则可能会发生此问题。 有关详细信息，请阅读[支持的 JSON 形状](./how-to-shape-query-json.md)。
 - 可能因环境受限而发生此问题。
 
     > [!NOTE]
     > 目前，时序见解支持的最大引入速率为 6 Mbps。
 
-## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：显示了数据，但现在引入已停止
+## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：以前可以显示数据，但引入现已停止
 
-- 事件源密钥可能已重新生成，Gen2 环境需要新的事件源密钥。
+- 可能已重新生成事件源密钥，并且第 2 代环境需要新的事件源密钥。
 
-如果创建事件源时提供的密钥不再有效，则会出现此问题。 你会在中心看到遥测数据，但不会在时序见解中收到入口接收的消息。 如果不确定是否已重新生成密钥，可以在事件中心的活动日志中搜索 "创建或更新命名空间授权规则" 或搜索 "为 IoT 中心创建或更新 IotHub 资源"。 
+如果创建事件源时提供的密钥不再有效，则会出现此问题。 你会在中心看到遥测数据，但不会在时序见解中收到入口接收的消息。 如果不确定是否重新生成了密钥，可以在事件中心的活动日志中搜索“创建或更新命名空间授权规则”或“为 IoT 中心创建或更新 IotHub 资源”。 
 
-若要用新密钥更新时序见解 Gen2 环境，请在 Azure 门户中打开中心资源并复制新密钥。 导航到 TSI 资源，并单击 "事件源"。 
+若要用新密钥更新时序见解第 2 代环境，请在 Azure 门户中打开中心资源并复制新密钥。 导航到 TSI 资源，单击“事件源”。 
 
-   [![更新密钥。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+   [![屏幕截图显示了具有称为 "事件源" 菜单项的 T S I 资源。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
-选择已停止引入的事件源，粘贴新密钥，并单击 "保存"。
+选择已停止从其引入的事件源，粘贴新密钥，然后单击“保存”。
 
-   [![更新密钥。](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
+   [![屏幕截图显示输入的 "I o T S 资源" 资源。](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>问题：我的事件源的时间戳属性名称不起作用
 
@@ -111,7 +111,7 @@ ms.locfileid: "87289936"
 
 - 你可能在访问时序见解 S1 或 S2 环境。
 
-   时序模型仅在即用即付环境中受支持。 有关如何从时序见解 Gen2 资源管理器访问 S1 或 S2 环境的详细信息，请阅读[资源管理器中的可视化数据](./time-series-insights-update-explorer.md)。
+   时序模型仅在即用即付环境中受支持。 有关如何从时序见解 Gen2 资源管理器访问 S1 或 S2 环境的详细信息，请阅读 [资源管理器中的可视化数据](./time-series-insights-update-explorer.md)。
 
    [![环境中没有事件。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -121,22 +121,22 @@ ms.locfileid: "87289936"
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>问题： Gen2 资源管理器中的所有实例都缺少父项
 
-如果你的环境未定义时序模型层次结构，则可能出现此问题。 有关详细信息，请阅读有关如何[使用时序模型](/azure/time-series-insights/time-series-insights-overview)的信息。
+如果你的环境未定义时序模型层次结构，则可能出现此问题。 有关详细信息，请阅读有关如何 [使用时序模型](/azure/time-series-insights/time-series-insights-overview)的信息。
 
-  [![Unparented 实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
+  [![无父级实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
-## <a name="problem-power-bi-connector-shows-unable-to-connect"></a>问题： Power BI 连接器显示 "无法连接"
+## <a name="problem-power-bi-connector-shows-unable-to-connect"></a>问题：Power BI 连接器显示“无法连接”
 
-如果未在 Power BI Desktop 中使用最新版本的 Power BI 连接器，则可能出现此问题。
+如果未在 Power BI Desktop 中使用最新版本的 Power BI 连接器，可能会出现此问题。
 
-[![Unparented 实例将显示警告。](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
+[![屏幕截图显示 "无法连接" 对话框。](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* 检查 Power BI Desktop 的版本，确保使用的是2020年7月版。 如果没有，请更新 Power BI Desktop 并再次运行连接器。 
+* 请检查 Power BI Desktop 的版本，并确保使用的是 2020 年 7 月版。 如果不是，请更新 Power BI Desktop 并再次运行该连接器。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读有关如何[使用时序模型的](/azure/time-series-insights/time-series-insights-overview)信息。
+- 阅读有关如何[使用时序模型](/azure/time-series-insights/time-series-insights-overview)的信息。
 
 - 了解[支持的 JSON 形状](./how-to-shape-query-json.md)。
 
-- 查看 Azure 时序见解 Gen2 中的[计划和限制](./time-series-insights-update-plan.md)。
+- 查看 Azure 时序见解第 2 代中的[规划和限制](./time-series-insights-update-plan.md)。

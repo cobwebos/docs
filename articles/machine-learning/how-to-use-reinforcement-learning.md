@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f4003f8cd78a20e2ed40c6d874d50ffcd49b704e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302252"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541707"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -215,7 +215,7 @@ else:
 
 本部分介绍如何使用 [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) 将训练作业提交到 Azure 机器学习。
 
-Azure 机器学习使用估算器类来封装运行配置信息。 这样，你便可以轻松指定如何配置脚本执行。 有关 Azure 机器学习估算器模式的详细信息，请参阅[如何使用估算器训练模型](how-to-train-ml-models.md)。
+Azure 机器学习使用估算器类来封装运行配置信息。 这样，你便可以轻松指定如何配置脚本执行。 
 
 ### <a name="define-a-worker-configuration"></a>定义工作器节点配置
 

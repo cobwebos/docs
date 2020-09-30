@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedd6d019005a4c55bbabf6070c6d864da90f40a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4ab3ae459d5719e965be668c529eacf0ab86d19b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055480"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541129"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
@@ -196,7 +196,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 1. 将“要求批准”**** 设置为“启用”****。 该窗格扩展选项以选择审批者。
 
-    ![Azure AD 角色 - 设置 - 需要审批](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![显示 "需要审批" 开关并选中 "启用" 的屏幕截图。](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     如果未指定任何审批者，则特权角色管理员将成为默认的审批者，然后需要审批此角色的所有激活请求。
 

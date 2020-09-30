@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974367"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541282"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -39,7 +39,7 @@ ms.locfileid: "90974367"
 
 * **员工 rehires** -当员工在 Workday 中 rehired 时，可以根据你的首选项) 自动重新激活或重新设置其旧帐户 (，具体取决于你的首选项 Active Directory、Azure Active Directory 和 [Microsoft 365 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-### <a name="whats-new"></a>新增功能
+### <a name="whats-new"></a>新变化
 本部分捕获最近的 Workday 集成增强功能。 有关综合更新、计划的更改和存档的列表，请访问页面 [Azure Active Directory 中的新增功能？](../fundamentals/whats-new.md) 
 
 * **5 月 2020-将电话号码写到 Workday 的能力：** 除了电子邮件和用户名外，现在可以将工作电话号码和移动电话号码从 Azure AD 写回到 Workday。 有关更多详细信息，请参阅 [写回应用教程](workday-writeback-tutorial.md)。
@@ -129,7 +129,7 @@ ms.locfileid: "90974367"
 1. 在搜索框中输入“创建安全组”，然后单击“创建安全组”。
 
    > [!div class="mx-imgBorder"]
-   > ![创建安全组](./media/workday-inbound-tutorial/wd_isu_03.png "创建安全组")
+   > ![屏幕截图显示在搜索框中输入的 "创建安全组"，并在搜索结果中显示 "创建安全组-任务"。](./media/workday-inbound-tutorial/wd_isu_03.png)
 2. 完成“创建安全组”任务。 
 
    * Workday 中有两种类型的安全组：
@@ -154,7 +154,7 @@ ms.locfileid: "90974367"
 
 1. 在搜索框中输入“域安全配置”，然后单击链接“域安全配置报表” 。  
    >[!div class="mx-imgBorder"]
-   >![域安全策略](./media/workday-inbound-tutorial/wd_isu_06.png "域安全策略")  
+   >![屏幕截图显示搜索框中的 "域安全配置"，并在结果中显示 "域安全配置-报表"。](./media/workday-inbound-tutorial/wd_isu_06.png "域安全策略")  
 2. 在“域”文本框中，搜索以下域，并将其逐个添加到筛选器中。  
    * 外部帐户预配
    * 工作人员数据：*工作人员*
@@ -166,10 +166,10 @@ ms.locfileid: "90974367"
    * *Workday 帐户*
    
      >[!div class="mx-imgBorder"]
-     >![域安全策略](./media/workday-inbound-tutorial/wd_isu_07.png "域安全策略")  
+     >![屏幕截图，显示 "域" 文本框中包含 "外部帐户" 的域安全配置报告。](./media/workday-inbound-tutorial/wd_isu_07.png "域安全策略")  
 
      >[!div class="mx-imgBorder"]
-     >![域安全策略](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
+     >![屏幕截图显示 "域安全配置" 报表，其中包含所选域的列表。](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
 
      单击“确定”。
 
@@ -179,7 +179,7 @@ ms.locfileid: "90974367"
 
 4. 在“编辑域安全策略权限”页面上，向下滚动至“集成权限”部分 。 单击“+”符号，将集成系统组添加到具有“获取”和“放置”集成权限的安全组列表中 。
    >[!div class="mx-imgBorder"]
-   >![编辑权限](./media/workday-inbound-tutorial/wd_isu_10.png "编辑权限")  
+   >![显示突出显示 "Integration 权限" 部分的屏幕截图。](./media/workday-inbound-tutorial/wd_isu_10.png "编辑权限")  
 
 5. 单击“+”符号，将集成系统组添加到具有“获取”和“放置”集成权限的安全组列表中 。
 
@@ -210,12 +210,12 @@ ms.locfileid: "90974367"
 1. 在搜索框中输入“业务流程策略”，然后单击链接“编辑业务流程安全策略”任务 。  
 
    >[!div class="mx-imgBorder"]
-   >![业务流程安全策略](./media/workday-inbound-tutorial/wd_isu_12.png "业务流程安全策略")  
+   >![屏幕截图，显示搜索框中的 "业务流程策略" 和选择 "编辑业务流程安全策略-任务"。](./media/workday-inbound-tutorial/wd_isu_12.png "业务流程安全策略")  
 
 2. 在“业务流程类型”文本框中，搜索“联系人”并选择“工作联系人更改”业务流程，然后单击“确定” 。
 
    >[!div class="mx-imgBorder"]
-   >![业务流程安全策略](./media/workday-inbound-tutorial/wd_isu_13.png "业务流程安全策略")  
+   >![屏幕截图，显示在 "业务流程类型" 菜单中选择了 "编辑业务流程安全策略" 页和 "工作联系人更改"。](./media/workday-inbound-tutorial/wd_isu_13.png "业务流程安全策略")  
 
 3. 在“编辑业务流程安全策略”页面上，滚动到“更改工作联系人信息 (Web 服务)”部分 。
     
@@ -258,7 +258,7 @@ ms.locfileid: "90974367"
 > 如果要限制预配代理仅在特定 OU 中创建和读取用户以进行测试，则建议在测试运行期间将控件委托给适当的 OU 级别。
 
 4. 在欢迎屏幕上单击 " **下一步** "。 
-5. 在 " **选择用户或组** " 屏幕上，添加在步骤2中创建的域用户。 单击“下一步”。
+5. 在 " **选择用户或组** " 屏幕上，添加在步骤2中创建的域用户。 单击 **“下一步”** 。
    >[!div class="mx-imgBorder"]
    >![添加屏幕](./media/workday-inbound-tutorial/delegation-wizard-01.png "添加屏幕")
 
@@ -415,7 +415,7 @@ ms.locfileid: "90974367"
    * 单击“测试连接”按钮。 如果连接测试成功，请单击顶部的“保存”按钮。 如果连接测试失败，请仔细检查代理设置上配置的 Workday 凭据和 AD 凭据是否有效。
 
      >[!div class="mx-imgBorder"]
-     >![Azure 门户](./media/workday-inbound-tutorial/wd_1.png)
+     >![显示 "设置" 页面并输入凭据的屏幕截图。](./media/workday-inbound-tutorial/wd_1.png)
 
    * 凭据成功保存后，“映射”部分或显示默认映射“将 Workday 工作人员同步到本地 Active Directory” 
 
@@ -480,7 +480,7 @@ ms.locfileid: "90974367"
 
 1. 要保存映射，请单击“属性-映射”部分顶部的“保存”。
    >[!div class="mx-imgBorder"]
-   >![Azure 门户](./media/workday-inbound-tutorial/wd_2.png)
+   >![显示 "属性映射" 页面并选择 "保存" 操作的屏幕截图。](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>下面是 Workday 与 Active Directory 之间的一些属性映射示例，还显示一些常用的表达式
 
@@ -942,11 +942,11 @@ SelectUniqueValue(
 
   查找与“事件 ID = 2”的导出操作的时间戳对应的 HTTP POST 记录。 此记录将包含预配服务发送到预配代理的属性值。
 
-  [![SCIM 添加](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="屏幕截图，显示 &quot;预配代理&quot; 日志中的 &quot;HTTP POST&quot; 记录。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   紧接在上述事件之后，应该还有一个事件，它捕获“创建 AD 帐户”操作的响应。 此事件返回在 AD 中新创建的 objectGuid，且它在预配服务中设置为 TargetAnchor 属性。
 
-  [![SCIM 添加](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="屏幕截图，显示 &quot;预配代理&quot; 日志中的 &quot;HTTP POST&quot; 记录。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>了解经理更新操作的日志
 
@@ -1040,14 +1040,14 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 5. 选择“外部”，然后选择在步骤 2 中下载的 Human_Resources WSDL 文件。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![显示 Workday Studio 中打开的 "Human_Resources" 文件的屏幕截图。](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. 将“位置”字段设置为 `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`，不过，请将“IMPL-CC”替换为实际实例类型，并将“TENANT”替换为实际租户名称。
 
 7. 将“操作”设置为 **Get_Workers** 
 
 8.    单击“请求/响应”窗格下面的“配置”链接设置 Workday 凭据。 选中“身份验证”，并输入 Workday 集成系统帐户的用户名和密码。 请务必将用户名格式设置为 name\@tenant，并保留选中“WS-Security UsernameToken”选项。
-   ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
+   ![屏幕截图显示了 "安全" 选项卡，其中输入了 "用户名" 和 "密码"，并选择了 "WS 安全用户名标记"。](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. 选择“确定”。
 
@@ -1086,7 +1086,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 13. 在 Workday Studio 的命令栏中，选择“文件”>“打开文件...”，并打开已保存的 XML 文件。 此操作将在 Workday Studio XML 编辑器中打开该文件。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
+    !["Workday Studio X M L 编辑器" 中打开的 X M L 文件的屏幕截图。](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. 在文件树中，浏览 **/env:Envelope > env:Body > wd:Get_Workers_Response > wd:Response_Data > wd:Worker**，查找用户数据。
 
@@ -1112,7 +1112,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 5. 选择“编辑 Workday 的属性列表”。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![其中突出显示了 "用于 Workday 的编辑属性列表" 操作的屏幕截图，其中显示了 "Workday 到 Azure A D 用户预配-设置" 页。](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. 滚动到属性列表的底部查看输入字段。
 

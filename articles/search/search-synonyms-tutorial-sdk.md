@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51d6920d9ab52b907f2cb51e29d85f82dc74d45b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250226"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538800"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>示例：使用 C# 为 Azure 认知搜索添加同义词
 
@@ -23,8 +23,8 @@ ms.locfileid: "91250226"
 在 Azure 认知搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。   本示例介绍了用于添加同义词并将其与现有索引一起使用的基本步骤。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用 [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 类创建同义词映射。 
-> * 在应该支持通过同义词进行查询扩展的字段上设置 [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) 属性。
+> * 使用 [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) 类创建同义词映射。 
+> * 在应该支持通过同义词进行查询扩展的字段上设置 [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) 属性。
 
 可以照常查询启用了同义词的字段。 访问同义词不需其他的查询语法。
 

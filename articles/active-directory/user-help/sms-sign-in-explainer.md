@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422991"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536879"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>使用电话号码作为用户名（预览版）
 
@@ -52,11 +52,11 @@ ms.locfileid: "87422991"
 
 1. 允许通过短信登录时，系统会显示一条横幅，询问你是否允许使用该电话号码进行短信登录：
 
-    [![用于启用电话号码的 SMS 登录的横幅。](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    :::image type="content" source="media/sms-sign-in-explainer/sms-sign-in-banner.png" alt-text="屏幕截图，显示标题，以便为电话号码启用 SMS 登录，并选中 &quot;启用&quot; 操作。" lightbox="media/sms-sign-in-explainer/sms-sign-in-banner.png":::
 
 1. 此外，如果在手机方法磁贴中选择脱字号，则会显示“启用”按钮  ：
 
-    [![用于启用电话号码的 SMS 登录的横幅。](media/sms-sign-in-explainer/sms-sign-in-phone-method.png)](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
+    [![启用电话号码进行短信登录的横幅。](media/sms-sign-in-explainer/sms-sign-in-phone-method.png)](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
 
 1. 若要启用该方法，请选择“启用”  。 系统会提示确认该操作：
 
@@ -68,7 +68,7 @@ ms.locfileid: "87422991"
 
 1. 若要删除电话号码，请选择短信登录手机方法磁贴中的删除按钮。
 
-    [![用于删除电话号码的 SMS 登录的横幅。](media/sms-sign-in-explainer/sms-sign-in-delete-method.png)](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
+    [![删除用于短信登录的电话号码的横幅。](media/sms-sign-in-explainer/sms-sign-in-delete-method.png)](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
 
 2. 当系统提示确认该操作时，请选择“确定”  。
 

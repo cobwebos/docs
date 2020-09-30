@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: e990d122367581c785b411f3f6d3c39b334a14fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3d683ada6401c4ba4f2e232948e9712643339fd8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998571"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533462"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT 中心模块标识和模块孪生 (.NET) 入门
 
@@ -70,7 +70,7 @@ ms.locfileid: "88998571"
 
 1. 搜索并选择 **Microsoft.Azure.Devices.Client**，然后选择“安装”。 
 
-    ![安装 Azure IoT 中心 .NET 服务 SDK 当前版本](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+    ![屏幕截图显示了 "Microsoft Azure. Client"，其中突出显示了 "安装" 按钮。](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
 1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 

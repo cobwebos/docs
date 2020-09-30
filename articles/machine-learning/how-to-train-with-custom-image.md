@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893116"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537610"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>使用自定义 Docker 映像为模型定型
 
@@ -29,7 +29,7 @@ ms.locfileid: "90893116"
 在以下任一环境中运行此代码：
 * Azure 机器学习计算实例 - 无需下载或安装
     * 完成 [教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md) ，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
-    * 在 Azure 机器学习 [示例存储库](https://github.com/Azure/azureml-examples)中，通过导航到以下目录查找已完成的笔记本： **笔记本 > fastai > resnet34. ipynb** 
+    * 在 Azure 机器学习 [示例存储库](https://github.com/Azure/azureml-examples)中，通过导航到以下目录查找已完成的笔记本：操作 **方法-使用情况-azureml > ml 框架 > fastai > 培训-docker** 
 
 * 你自己的 Jupyter 笔记本服务器
     * 创建[工作区配置文件](how-to-configure-environment.md#workspace)。
@@ -63,7 +63,7 @@ fastai_env = Environment("fastai2")
 fastai_env.docker.enabled = True
 ```
 
-此指定的基本映像支持用于分布式深度学习功能的 fast.ai 库。 有关详细信息，请参阅 [Fast.ai DockerHub](https://hub.docker.com/u/fastdotai)。 
+下面指定的基本映像支持用于分布式深层学习功能的 fast.ai 库。 有关详细信息，请参阅 [Fast.ai DockerHub](https://hub.docker.com/u/fastdotai)。 
 
 使用自定义 Docker 映像时，可能已正确设置了 Python 环境。 在这种情况下，将 `user_managed_dependencies` 标志设置为 True，以便利用自定义映像的内置 python 环境。 默认情况下，Azure ML 会使用你指定的依赖项构建一个 Conda 环境，并会在该环境中执行运行，而不是使用你在基础映像上安装的任何 Python 库。
 
@@ -98,6 +98,8 @@ fastai_env.docker.base_dockerfile = dockerfile
 fastai_env.docker.base_image = None
 fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
+
+有关创建和管理 Azure ML 环境的详细信息，请参阅 [创建 & 使用软件环境](how-to-use-environments.md)。 
 
 ### <a name="create-or-attach-existing-amlcompute"></a>创建或附加现有 AmlCompute
 需要为模型定型创建 [计算目标](concept-azure-machine-learning-architecture.md#compute-targets) 。 在本教程中，将创建 AmlCompute 作为训练计算资源。
@@ -136,9 +138,10 @@ print(compute_target.get_status().serialize())
 ```python
 from azureml.core import ScriptRunConfig
 
-fastai_config = ScriptRunConfig(source_directory='fastai-example', script='train.py')
-fastai_config.run_config.environment = fastai_env
-fastai_config.run_config.target = compute_target
+src = ScriptRunConfig(source_directory='fastai-example',
+                      script='train.py',
+                      compute_target=compute_target,
+                      environment=fastai_env)
 ```
 
 ### <a name="submit-your-run"></a>提交运行
@@ -147,14 +150,12 @@ fastai_config.run_config.target = compute_target
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'fastai-custom-image').submit(fastai_config)
+run = Experiment(ws,'fastai-custom-image').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
 > Azure 机器学习通过复制整个源目录来运行训练脚本。 如果你有不想上传的敏感数据，请使用 [.ignore 文件](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)或不将其包含在源目录中。 改为使用[数据存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)来访问数据。
-
-有关自定义 Python 环境的详细信息，请参阅 [创建 & 使用软件环境](how-to-use-environments.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用自定义 Docker 映像对模型进行训练。 有关 Azure 机器学习的详细信息，请参阅以下其他文章。

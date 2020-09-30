@@ -1,7 +1,7 @@
 ---
-title: 配置容器 - 计算机视觉
+title: 配置读取 OCR 容器-计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何在计算机视觉中配置识别文本容器的必需设置和可选设置。
+description: 本文介绍如何在计算机视觉中配置读取 OCR 容器的必需和可选设置。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 28116a373b66aa5bfa6d3ebbf027c2db6d24ba5d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397124"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536233"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>配置计算机视觉 Docker 容器
+# <a name="configure-read-ocr-docker-containers"></a>配置读取 OCR Docker 容器
 
-可以使用 `docker run` 命令参数配置计算机视觉容器的运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+使用命令参数配置计算机视觉读取 OCR 容器的运行时环境 `docker run` 。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -31,7 +31,7 @@ ms.locfileid: "91397124"
 
 容器还具有下列容器特定的配置设置：
 
-|必需|设置|目的|
+|必需|设置|用途|
 |--|--|--|
 |否|ReadEngineConfig:ResultExpirationPeriod| 仅限 v2.0 容器。 结果过期时间（小时）。 默认值为 48 小时。 设置指定系统应清除识别结果的时间。 例如，如果为 `resultExpirationPeriod=1` ，则系统将在进程后的1小时内清除识别结果。 如果为 `resultExpirationPeriod=0` ，则在检索结果后系统将清除识别结果。|
 |否|缓存： Redis| 仅限 v2.0 容器。 启用 Redis 存储以存储结果。 如果将多个读取容器放置在负载均衡器后面，则 *需要* 缓存。|

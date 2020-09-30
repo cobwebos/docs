@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723667"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540602"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>已启用 Azure Arc 的 Kubernetes 故障排除（预览版）
 
@@ -100,6 +100,34 @@ Command group 'connectedk8s' is in preview. It may be changed/removed in a futur
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
+
+### <a name="helm-issue"></a>Helm 问题
+
+Helm `v3.3.0-rc.1` 版本存在一个 [问题](https://github.com/helm/helm/pull/8527) ，其中，Helm 安装/升级 (在 connectedk8s CLI 扩展的内部使用) 导致所有挂钩运行，导致以下错误：
+
+```console
+$ az connectedk8s connect -n shasbakstest -g shasbakstest
+Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
+Ensure that you have the latest helm version installed before proceeding.
+This operation might take a while...
+
+Please check if the azure-arc namespace was deployed and run 'kubectl get pods -n azure-arc' to check if all the pods are in running state. A possible cause for pods stuck in pending state could be insufficientresources on the kubernetes cluster to onboard to arc.
+ValidationError: Unable to install helm release: Error: customresourcedefinitions.apiextensions.k8s.io "connectedclusters.arc.azure.com" not found
+```
+
+若要从此问题恢复，请执行以下步骤：
+
+1. 删除 Azure 门户中问题的 Azure Arc 已启用 Kubernetes 资源。
+2. 在计算机上运行以下命令：
+    
+    ```console
+    kubectl delete ns azure-arc
+    kubectl delete clusterrolebinding azure-arc-operator
+    kubectl delete secret sh.helm.release.v1.azure-arc.v1
+    ```
+
+3. 在计算机上[安装稳定版本](https://helm.sh/docs/intro/install/)的 Helm 3，而不是预发行版。
+4. 运行 `az connectedk8s connect` 具有适当值的命令，将群集连接到 Azure Arc。
 
 ## <a name="configuration-management"></a>配置管理
 

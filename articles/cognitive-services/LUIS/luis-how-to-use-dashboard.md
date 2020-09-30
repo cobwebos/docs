@@ -3,20 +3,18 @@ title: 仪表板 - 语言理解 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用已训练应用的仪表板修复意向和实体。 仪表板显示整体性的应用信息，并突出显示应予以修复的意向。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
-ms.author: diberry
-ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345234"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541401"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>如何使用仪表板来改善应用
 
@@ -84,7 +82,7 @@ ms.locfileid: "84345234"
 
 ### <a name="patterns-and-phrase-lists"></a>模式和短语列表
 
-分析页面并不指示何时使用[模式](luis-concept-patterns.md)或[短语列表](luis-concept-feature.md)。 如果添加了这些数据，则可以帮助进行不正确或不明确的预测，但不会帮助数据不平衡。
+分析页面并不指示何时使用 [模式](luis-concept-patterns.md) 或 [短语列表](luis-concept-feature.md)。 如果添加了这些数据，则可以帮助进行不正确或不明确的预测，但不会帮助数据不平衡。
 
 ### <a name="review-data-imbalance"></a>检查数据不平衡问题
 
@@ -92,7 +90,7 @@ ms.locfileid: "84345234"
 
 **数据不平衡**意向列表显示需要添加更多言语才能纠正数据不平衡问题的意向。
 
-**若要解决此问题**：
+**要解决此问题**：
 
 * 请将更多言语添加到意向，然后重新训练。
 
@@ -106,7 +104,7 @@ ms.locfileid: "84345234"
 
 **错误的预测**意向列表显示包含言语的意向，这些言语用作特定意向的示例，但已针对不同的意向做了预测。
 
-**若要解决此问题**：
+**要解决此问题**：
 
 * 编辑言语，使之与该意向更为相关，然后重新训练。
 * 如果言语过于接近，请合并意向，然后重新训练。
@@ -130,11 +128,11 @@ ms.locfileid: "84345234"
 
 以下图表显示了一个很不平衡的应用，其中包含许多要修复的问题。
 
-![以下图表显示了一个适当平衡的应用，其中几乎不存在任何要修复的问题。](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![屏幕截图显示了每个意向的预测，并显示了几个不明确或没有正确预测](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 将鼠标悬停在每个意向的条块上可以获取有关该意向的信息。
 
-![以下图表显示了一个适当平衡的应用，其中几乎不存在任何要修复的问题。](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![屏幕截图显示每个意向的预测，并显示不明确或错误预测结果的详细信息。](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
 使用“排序依据”功能可按问题类型排列意向，以便可以专注于处理存在该问题的最严重意向。****
 
@@ -154,7 +152,7 @@ ms.locfileid: "84345234"
 
 使用筛选器可以查找存在特定问题的意向：
 
-|筛选器|建议的百分比|目的|
+|筛选|建议的百分比|用途|
 |--|--|--|
 |问题最严重的意向|-|**从此处着手** - 修复此意向中的言语比其他修复方法更能改善应用。|
 |正确的预测低于|60%|这是选定意向中正确的、但置信度评分低于阈值的言语的百分比。 |

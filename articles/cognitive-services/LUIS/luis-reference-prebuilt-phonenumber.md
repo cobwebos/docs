@@ -3,23 +3,21 @@ title: 电话号码预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的电话号码预构建实体信息。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 598ecaddbab3b70297a460521c7ec3386b390a8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270476"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535383"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电话号码预生成实体
-`phonenumber` 实体提取各种包括国家/地区代码在内的电话号码。 此实体已定型，因此不需要将陈述示例添加到应用程序。 仅在 `phonenumber` 区域性中支持 `en-us` 实体。
+`phonenumber` 实体提取各种包括国家/地区代码在内的电话号码。 此实体已定型，因此不需要将陈述示例添加到应用程序。 仅在 `en-us` 区域性中支持 `phonenumber` 实体。
 
 ## <a name="types-of-a-phone-number"></a>电话号码的类型
 `Phonenumber` 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub 存储库中

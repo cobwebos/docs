@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f5072c90a699270a92af317976c8f56bd3e2cb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616708"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536522"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署与 SQL Server 和 Windows 操作系统一起运行的 SAP IDES 系统。 屏幕截图将逐步显示此过程。 若要部署另一种解决方案，请按照相同的步骤操作。
@@ -54,11 +54,11 @@ ms.locfileid: "77616708"
 
     b. Microsoft Azure 是新的 Resource Manager 部署模型。****
 
-    ![SAP CAL 帐户](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
+    ![屏幕截图显示了具有 Microsoft Azure 的 P CAL 帐户。](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
     若要部署在 Resource Manager 模型中，请选择“Microsoft Azure”****。
 
-    ![SAP CAL 帐户](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
+    ![屏幕截图显示 P CAL 帐户。](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
 1. 输入可在 Azure 门户中找到的 Azure 订阅 ID。**** 
 
@@ -99,7 +99,7 @@ ms.locfileid: "77616708"
 
     a. 输入实例“名称”****。
 
-    b. 选择 Azure**区域**。 可能需要 SAP CAL 订阅才能获取提供的多个 Azure 区域。
+    b. 选择 Azure **区域**。 可能需要 SAP CAL 订阅才能获取提供的多个 Azure 区域。
 
     c.  输入解决方案的主“密码”****，如下所示：
 

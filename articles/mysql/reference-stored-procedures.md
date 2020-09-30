@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 6a3fa40eaae174d3616fd0318f81576b7c59eac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e67130516410f64c32eadbf15857ca3ec4c976fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80067700"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542472"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL 管理存储过程
 
@@ -21,17 +21,17 @@ Azure Database for MySQL 服务器上提供了可帮助管理 MySQL 服务器的
 
 借助数据复制，可以将本地运行的 MySQL 服务器、虚拟机或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MySQL 服务。
 
-下面的存储过程用于在主体和副本之间设置或删除数据传入复制。
+以下存储过程用于在源和副本之间设置或删除数据传入复制。
 
 |**存储过程名称**|**输入参数**|**输出参数**|**用法说明**|
 |-----|-----|-----|-----|
 |*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|空值|若要使用 SSL 模式传输数据，请将 CA 证书的上下文传入 master_ssl_ca 参数。 </br><br>若要不使用 SSL 模式传输数据，请将空字符串传递到 master_ssl_ca 参数中。|
-|mysql.az_replication _start|N/A|N/A|开始复制。|
-|mysql.az_replication _stop|N/A|N/A|停止复制。|
-|*mysql.az_replication _remove_master*|N/A|N/A|删除主体和副本之间的复制关系。|
-|mysql.az_replication_skip_counter|N/A|N/A|跳过一个复制错误。|
+|mysql.az_replication _start|空值|空值|开始复制。|
+|mysql.az_replication _stop|空值|空值|停止复制。|
+|*mysql.az_replication _remove_master*|空值|空值|删除源和副本之间的复制关系。|
+|mysql.az_replication_skip_counter|空值|空值|跳过一个复制错误。|
 
-若要在 Azure Database for MySQL 中的主体和副本之间设置数据传入复制，请参阅[如何配置数据传入复制](howto-data-in-replication.md)。
+若要设置 Azure Database for MySQL 中的源和副本之间的数据传入复制，请参阅 [如何配置数据传入复制](howto-data-in-replication.md)。
 
 ## <a name="other-stored-procedures"></a>其他存储过程
 

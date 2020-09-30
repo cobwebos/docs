@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e548e99cc60d67b477fd087b993764bf7f223592
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448724"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541180"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中查看和分配管理员角色
 
@@ -26,11 +26,11 @@ ms.locfileid: "87448724"
 
 ## <a name="view-all-roles"></a>查看所有角色
 
-1. 登录到[Azure 门户](https://portal.azure.com)，然后选择 " **Azure Active Directory**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“Azure Active Directory”。
 
 1. 选择“角色和管理员”以查看所有可用角色列表  。
 
-1. 选择每行右侧的省略号，查看角色的权限。 选择一个角色来查看分配给该角色的用户。 如果你看到与下图不同的内容，请阅读[查看特权角色的分配](#view-assignments-for-privileged-roles)中的说明，以验证你是否处于 PRIVILEGED IDENTITY MANAGEMENT （PIM）。
+1. 选择每行右侧的省略号可查看角色的权限。 选择某个角色可查看分配给该角色的用户。 如果你看到与下图不同的内容，请阅读[查看特权角色的分配](#view-assignments-for-privileged-roles)中的“说明”，以验证你是否在 Privileged Identity Management (PIM) 中。
 
     ![Azure AD 门户中的角色列表](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
@@ -40,40 +40,40 @@ ms.locfileid: "87448724"
 
 ## <a name="view-assignments-for-privileged-roles"></a>查看特权角色的分配
 
-可选择“在 PIM 中管理”以查看其他管理功能****。 特权角色管理员可将“永久”（始终充当该角色）分配更改为“符合条件”（仅当提升了权限时才充当该角色）。 如果没有 Privileged Identity Management，仍然可以选择 "**在 PIM 中管理"** 以注册试用版。 Privileged Identity Management 需要 [Azure AD Premium P2 许可证计划](../privileged-identity-management/subscription-requirements.md)。
+可选择“在 PIM 中管理”以查看其他管理功能****。 特权角色管理员可将“永久”（始终充当该角色）分配更改为“符合条件”（仅当提升了权限时才充当该角色）。 如果没有 Privileged Identity Management，仍可以选择“在 PIM 中管理”来注册试用版。 Privileged Identity Management 需要 [Azure AD Premium P2 许可证计划](../privileged-identity-management/subscription-requirements.md)。
 
 ![管理员角色的成员列表](./media/directory-manage-roles-portal/member-list.png)
 
 全局管理员或特权角色管理员可以轻松添加或删除成员、筛选列表，或选择某个成员以查看为其分配的有效角色。
 
 > [!Note]
-> 如果有 Azure AD 的高级 P2 许可证，并且已使用 Privileged Identity Management，则所有角色管理任务都将在 "特权标识管理" 中执行，而不是在 Azure AD 中执行。
+> 如果你有 Azure AD Premium P2 许可证，并且已使用 Privileged Identity Management，则所有角色管理任务都会在 Privilege Identity Management 中执行，而不会在 Azure AD 中执行。
 >
-> ![为已使用 PIM 并具有高级 P2 许可证的用户在 PIM 中管理 Azure AD 角色](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
+> ![在 PIM 中为已使用 PIM 且具有 Premium P2 许可证的用户管理的 Azure AD 角色](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="view-a-users-role-permissions"></a>查看用户的角色权限
 
 查看某个角色的成员时，选择“说明”可以查看角色分配授予的权限的完整列表****。 该页包含相关文档的链接，引导你对目录角色进行管理。
 
-![管理员角色的权限列表](./media/directory-manage-roles-portal/role-description.png)
+![显示 "全局管理员描述" 页面的屏幕截图。](./media/directory-manage-roles-portal/role-description.png)
 
 ## <a name="download-role-assignments"></a>下载角色分配
 
-若要下载特定角色的所有分配，请在 "**角色和管理员**" 页上选择一个角色，然后选择 "**下载角色分配**"。 一个 CSV 文件，其中列出了该角色的所有范围内的分配。
+若要下载特定角色的所有分配，请在“角色和管理员”页上选择一个角色，然后选择“下载角色分配”。 将会下载一个 CSV 文件，其中列出了该角色的所有范围内的分配。
 
 ![下载角色的所有分配](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>分配角色
 
-1. 以 "全局管理员" 或 "特权角色管理员" 权限登录到[Azure 门户](https://portal.azure.com)，然后选择 " **Azure Active Directory**"。
+1. 以全局管理员或特权角色管理员权限登录到 [Azure 门户](https://portal.azure.com)，然后选择“Azure Active Directory”。
 
 1. 选择“角色和管理员”以查看所有可用角色列表****。
 
-1. 选择要查看其分配的角色。
+1. 选择一个角色，查看其分配情况。
 
-    ![管理员角色的权限列表](./media/directory-manage-roles-portal/member-list.png)
+    ![显示 "用户管理员-分配" 页面并选择 "在 PIM 中管理" 操作的屏幕截图。](./media/directory-manage-roles-portal/member-list.png)
 
-1. 选择 "**添加分配**" 并选择要分配的角色。 可选择“在 PIM 中管理”以查看其他管理功能****。 如果你看到与下图中的内容不同的内容，请阅读 "[查看特权角色的分配](#view-assignments-for-privileged-roles)" 中的说明，以验证你是否在 PIM 中。
+1. 选择“添加分配”，然后选择要分配的角色。 可选择“在 PIM 中管理”以查看其他管理功能****。 如果你看到与下图不同的内容，请阅读[查看特权角色的分配](#view-assignments-for-privileged-roles)中的“说明”，以验证你是否在 PIM 中。
 
     ![管理员角色的权限列表](./media/directory-manage-roles-portal/directory-role-select-role.png)
 
