@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874225"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088351"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>教程：Log Analytics 查询入门
 
@@ -42,7 +42,7 @@ ms.locfileid: "87874225"
 
 架构表显示在 Log Analytics 工作区的“表”选项卡上。 该表包含列，每个列的数据类型按照列名旁边的图标显示。 例如，**Event** 表包含 **Computer** 之类的文本列，以及 **EventCategory** 之类的数字列。
 
-![架构](media/get-started-portal/schema.png)
+![显示 Azure 门户“日志”页面的屏幕截图，其中包含一个新查询，突出显示了“表”窗格以及其中的 Computer 和 EventCategory。](media/get-started-portal/schema.png)
 
 ## <a name="write-and-run-basic-queries"></a>编写和运行基本查询
 
@@ -120,7 +120,7 @@ Log Analytics 将结果数限制为最多 10,000 条记录。 类似于 `Event` 
    
 1. 选择“筛选”。
    
-   ![筛选器](media/get-started-portal/filter.png)
+   ![显示结果表的屏幕截图，其中包含按 EventLevelName 筛选结果的上下文菜单。](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>排序、分组和选择列
 若要按特定的列（例如“TimeGenerated [UTC]”）对查询结果进行排序，请选择列标题。 再次选择该标题可切换为按升序或降序排序。
@@ -129,7 +129,7 @@ Log Analytics 将结果数限制为最多 10,000 条记录。 类似于 `Event` 
 
 还可以按组来组织结果。 若要按特定的列对结果进行分组，请将列标题拖放到结果表上方的、带有“将列标题拖放到此处，以按该列分组”标签的栏中。 若要创建子组，请将其他列拖放到上部栏中。 可以在该栏中重新排列组和子组的层次结构与排序方式。
 
-![组](media/get-started-portal/groups.png)
+![显示 EventLevelName 和 Computer 的子组的查询结果的屏幕截图。](media/get-started-portal/groups.png)
 
 若要在结果中隐藏或显示列，请选择表上方的“列”，然后从下拉列表中选择或取消选择所需的列。
 

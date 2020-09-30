@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 01a40e48f606c2e9c92d38b453a058d3ad5ba058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe1f5f718ce54845dea2fc9da3ea2c9f4e18ce92
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531276"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659400"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vyond"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Vyond 的集成
 
@@ -35,16 +35,16 @@ ms.locfileid: "88531276"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Vyond 单一登录 (SSO) 的订阅。
 
-> [!NOTE]
-> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
-
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Vyond 支持 SP 和 IDP 发起的 SSO
 
-* 配置 Vyond 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Vyond 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-vyond-from-the-gallery"></a>从库中添加 Vyond
 
@@ -58,7 +58,7 @@ ms.locfileid: "88531276"
 1. 从结果面板中选择“Vyond”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-vyond"></a>配置并测试 Vyond 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-vyond"></a>配置并测试 Vyond 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 Vyond 的 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 Vyond 相关用户之间建立关联。
 
