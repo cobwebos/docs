@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747244"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537027"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>设置短信作为验证方法
 
@@ -52,7 +52,7 @@ ms.locfileid: "83747244"
 
 4. 在“电话”页上，键入移动设备的电话号码，选择“以短信形式向我发送验证码”，然后选择“下一步”  。
 
-    ![添加电话号码并选择短信](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![显示 "电话" 页的屏幕截图，其中选中了 "将代码文本显示为"。](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. 输入以短信形式发送到移动设备的验证码，然后选择“下一步”。
 

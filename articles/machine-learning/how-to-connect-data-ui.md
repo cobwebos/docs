@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: feb79a2a077f819cce22925f23f5ed640d05e8d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296665"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542149"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>在 Azure 机器学习 studio 中连接到数据
 
@@ -114,7 +114,7 @@ ms.locfileid: "91296665"
 
 |统计信息|说明
 |------|------
-|功能| 正在汇总的列的名称。
+|Feature| 正在汇总的列的名称。
 |配置文件| 基于推理的类型显示的内联可视化效果。 例如，字符串、布尔值和日期包含值计数，而小数（数字）则包含近似的直方图。 这样，就可以快速了解数据的分布。
 |类型分布| 列中类型的内联值计数。 Null 是其自身的类型，因此，此可视化效果可用于检测反常值或缺失值。
 |类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
@@ -170,6 +170,6 @@ ms.locfileid: "91296665"
 
 * [使用 TabularDatasets 和自动化机器学习进行培训的分步示例](tutorial-first-experiment-automated-ml.md)。
 
-* [为模型定型](how-to-train-ml-models.md)。
+* [为模型定型](how-to-set-up-training-targets.md)。
 
 * 有关更多数据集训练示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)。

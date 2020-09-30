@@ -3,20 +3,18 @@ title: 预生成模型 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 预生成模型提供了域、意向、话语和实体。 可以使用预生成域启动你的应用，也可以在以后向你的应用添加相关域。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 32755ea9dccd2a7d4a0e727c7a006491d5ea3521
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74280840"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535877"
 ---
 # <a name="prebuilt-models"></a>预生成的模型
 
@@ -34,7 +32,7 @@ LUIS 提供了三种类型的预生成模型。 可以随时向你的应用中�
 
 ## <a name="prebuilt-domains"></a>预生成域
 
-语言理解（LUIS）提供预先训练的域，这些*域*是用于域或常见类别的客户端应用程序的预训练[模型和](luis-how-to-add-intents.md)[实体](luis-concept-entity-types.md)。 
+语言理解 (LUIS) 提供预先训练的域，这些*域*是用于域或常见类别的客户端应用程序的预训练[模型和](luis-how-to-add-intents.md)[实体](luis-concept-entity-types.md)。 
 
 预生成域已经过训练，就绪可添加到你的 LUIS 应用中。 将预生成域中的意向和实体添加到应用后，它们是完全可自定义的。 
 
@@ -44,7 +42,7 @@ LUIS 提供了三种类型的预生成模型。 可以随时向你的应用中�
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>更改预生成域意向的行为
 
-你可能会发现，虽然预生成域中某个意向与你要在 LUIS 应用中使用的意向类似，但你希望它具有不同的行为。 例如，“地点”预生成域提供用于预订餐厅的  **意向，但你希望应用使用该意向预订酒店**`MakeReservation`。 在这种情况下，可以通过在预订酒店的相关意向中添加示例话语来修改该意向的行为，然后重新训练应用。 
+你可能会发现，虽然预生成域中某个意向与你要在 LUIS 应用中使用的意向类似，但你希望它具有不同的行为。 例如，“地点”预生成域提供用于预订餐厅的 `MakeReservation` 意向，但你希望应用使用该意向预订酒店。 在这种情况下，可以通过在预订酒店的相关意向中添加示例话语来修改该意向的行为，然后重新训练应用。 
 
 可在[预生成域参考](./luis-reference-prebuilt-domains.md)中找到预生成域的完整列表。
 

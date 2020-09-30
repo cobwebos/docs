@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902147"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542115"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
@@ -79,7 +79,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 确保 Key Vault 和 Azure Database for PostgreSQL 单一服务器位于同一区域，从而保证能更快地访问 DEK 的“包装”和“取消包装”操作。
 * 锁定 Azure KeyVault，使其只能用于专用终结点和所选网络，且仅允许使用受信任的 Microsoft 服务来保护资源。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="显示“创建自己的密钥”概述的关系图":::
 
 下面是客户管理的密钥的配置建议：
 
@@ -121,9 +121,9 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 
 在使用 Key Vault 中存储的客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行加密后，还将所有新创建的服务器副本进行加密。 可通过本地或异地还原操作，或通过只读副本创建这个新副本。 可更改该副本，使其反映出用于加密的客户管理的新密钥。 当客户管理的密钥更改时，服务器的旧备份将开始使用最新的密钥。
 
-为避免在还原或只读副本创建期间设置客户管理的数据加密时出现问题，有必要在主服务器和还原/副本服务器上执行以下步骤：
+若要避免在还原或读取副本创建过程中设置客户管理的数据加密时出现问题，请务必在主服务器和还原/副本服务器上执行以下步骤：
 
-* 通过主要 Azure Database for PostgreSQL 单一服务器启动还原或只读副本创建过程。
+* 从主 Azure Database for PostgreSQL 单一服务器启动还原或读取副本的创建过程。
 * 使新创建的（还原/副本）服务器保持在无法访问的状态，因为其唯一标识尚无权访问 Key Vault。
 * 在还原/副本服务器上，重新验证数据加密设置中客户管理的密钥。 这可确保为新创建的服务器授予对 Key Vault 中存储的密钥进行包装和取消包装的权限。
 

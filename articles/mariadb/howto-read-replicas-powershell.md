@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a13ecbb5bed65de9ab8a52258d1f22b9f3520c9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498933"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542353"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -38,12 +38,12 @@ ms.locfileid: "87498933"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MariaDB 服务器。 请确保主服务器位于其中一个定价层中。
+> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MariaDB 服务器。 请确保源服务器位于其中一个定价层中。
 
 ### <a name="create-a-read-replica"></a>创建只读副本
 
 > [!IMPORTANT]
-> 如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
+> 为没有现有副本的源创建副本时，会先重新启动源以准备复制的副本。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下命令创建只读副本服务器：
 
@@ -59,7 +59,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | ResourceGroupName |  myresourcegroup |  在其中创建副本服务器的资源组。  |
 | 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 
-若要创建跨区域只读副本，请使用 Location 参数。 以下示例在**美国西部**区域创建一个副本。
+若要创建跨区域只读副本，请使用 Location 参数。 以下示例在 **美国西部** 区域创建一个副本。
 
 ```azurepowershell-interactive
 Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -68,14 +68,14 @@ Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。
 
-默认情况下，除非指定了 Sku 参数，否则将使用与主服务器相同的服务器配置来创建只读副本。
+默认情况下，将使用与源相同的服务器配置来创建读取副本，除非指定了 **Sku** 参数。
 
 > [!NOTE]
-> 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
+> 建议副本服务器的配置应保留为等于或大于源的值，以确保副本能够与主副本保持同步。
 
-### <a name="list-replicas-for-a-master-server"></a>列出主服务器的副本
+### <a name="list-replicas-for-a-source-server"></a>列出源服务器的副本
 
-若要查看给定的主服务器的所有副本，请运行以下命令：
+若要查看给定源服务器的所有副本，请运行以下命令：
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -86,7 +86,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 | 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
-| ServerName | mydemoserver | 主服务器的名称或 ID。 |
+| ServerName | mydemoserver | 源服务器的名称或 ID。 |
 
 ### <a name="delete-a-replica-server"></a>删除副本服务器
 
@@ -96,12 +96,12 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 Remove-AzMariaDbServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>删除主服务器
+### <a name="delete-a-source-server"></a>删除源服务器
 
 > [!IMPORTANT]
-> 删除主服务器会停止复制到所有副本服务器，并删除主服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
+> 删除源服务器会停止复制到所有副本服务器，并删除源服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
-若要删除主服务器，可以运行 `Remove-AzMariaDbServer` cmdlet。
+若要删除源服务器，可运行 `Remove-AzMariaDbServer` cmdlet。
 
 ```azurepowershell-interactive
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup

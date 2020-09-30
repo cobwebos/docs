@@ -2,14 +2,14 @@
 title: 对 Azure Batch 帐户使用专用终结点
 description: 了解如何使用专用终结点将专用连接到 Azure Batch 帐户。
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814104"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542132"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>对 Azure Batch 帐户使用专用终结点
 
@@ -20,7 +20,7 @@ ms.locfileid: "88814104"
 专用链接允许用户从虚拟网络或任何对等互连的虚拟网络中访问 Azure Batch 帐户。 映射到专用链接的资源也可通过 VPN 或 [Azure ExpressRoute](../expressroute/expressroute-introduction.md)通过专用对等互连在本地访问。 你可以使用 " [自动" 或 "手动" 审批方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)连接到使用 "专用" 链接配置的 Azure Batch 帐户。
 
 > [!IMPORTANT]
-> 当前在以下 Azure 区域提供对 Azure Batch 的专用连接的支持：美国中部、美国中北部、美国中南部、美国西部、美国东部、美国东部2、美国西部、美国西部2、东亚、法国中部、英国南部、北欧、西欧、日本东部、日本西部、澳大利亚东部以及所有 US Gov 和 US DoD 地区。
+> 除了德国中部和德国东北部之外的所有公共区域，Azure Batch 中的专用连接支持目前均可供使用。
 
 本文介绍了创建专用批处理帐户并使用专用终结点访问该帐户的步骤。
 
@@ -32,16 +32,12 @@ ms.locfileid: "88814104"
 2. 在 " **基本** 信息" 选项卡中输入订阅、资源组、区域和 Batch 帐户名称，然后选择 " **下一步：高级**"。
 3. 在 " **高级** " 选项卡中，将 " **公用网络访问** " 设置为 " **已禁用**"
 4. 在 " **设置**" 中选择 " **专用终结点连接** "，然后选择 " **+ 专用终结点**"。
-   :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="专用终结点连接":::
-5. 在 " **基本** 信息" 窗格中，输入或选择订阅、资源组、专用终结点资源名称和区域详细信息，然后选择 " **下一步：资源**"。
+   :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="专用终结点连接&quot;:::
+5. 在 &quot; **基本** 信息&quot; 窗格中，输入或选择订阅、资源组、专用终结点资源名称和区域详细信息，然后选择 &quot; **下一步：资源**&quot;。
 6. 在 **资源** 窗格中，将 **资源类型** 设置为 **Microsoft.Batch/batchAccounts**。 选择要访问的专用批处理帐户，然后选择 " **下一步：配置**"。
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="创建专用终结点-资源窗格":::
-7. 在 **配置** 窗格中，输入或选择以下信息：
-   - **虚拟网络**：选择虚拟网络。
-   - **子网**：选择子网。
-   - **与专用 DNS 区域集成**：选择 **"是"**。 若要以私密方式连接到专用终结点，需有一条 DNS 记录。 建议将专用终结点与专用 DNS 区域集成。 你也可以使用自己的 DNS 服务器，或者使用虚拟机上的主机文件创建 DNS 记录。
-   - **专用 DNS 区域**：选择 "privatelink <region> "。batch.azure.com。 系统会自动确定专用 DNS 区域。 无法使用 Azure 门户更改此区域。
-8. 依次选择 "查看" 和 " **创建**"，然后等待 Azure 验证你的配置。
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="专用终结点连接&quot;:::
+5. 在 &quot; **基本** 信息&quot; 窗格中，输入或选择订阅、资源组、专用终结点资源名称和区域详细信息，然后选择 &quot; **下一步：资源**&quot;。
+6. 在 **资源** 窗格中，将 **资源类型** 设置为 **Microsoft.Batch/batchAccounts**。 选择要访问的专用批处理帐户，然后选择 " **创建**"，然后等待 Azure 验证你的配置。
 9. 看到“验证通过”消息时，选择“创建” 。
 
 预配专用终结点后，可以使用专用终结点从同一虚拟网络中的 Vm 访问 Batch 帐户。 若要查看 Azure 门户中的 IP 地址：
@@ -50,7 +46,9 @@ ms.locfileid: "88814104"
 2. 搜索前面创建的专用终结点。
 3. 选择“概览”选项卡，查看 DNS 设置和 IP 地址。
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="专用终结点 DNS 设置和 IP 地址":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="专用终结点连接&quot;:::
+5. 在 &quot; **基本** 信息&quot; 窗格中，输入或选择订阅、资源组、专用终结点资源名称和区域详细信息，然后选择 &quot; **下一步：资源**&quot;。
+6. 在 **资源** 窗格中，将 **资源类型** 设置为 **Microsoft.Batch/batchAccounts**。 选择要访问的专用批处理帐户，然后选择 ":::
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
@@ -106,5 +104,6 @@ ms.locfileid: "88814104"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何 [在虚拟网络中创建批处理池](batch-virtual-network.md)。
+- 了解如何 [创建不带公共 IP 地址的 Batch 池](batch-pool-no-public-ip-address.md)
 - 了解如何 [创建具有指定公共 IP 地址的批处理池](create-pool-public-ip.md)。
 - 了解 [Azure 专用链接](../private-link/private-link-overview.md)。

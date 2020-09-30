@@ -3,20 +3,18 @@ title: 数据存储 - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据存储中。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691707"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541877"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>语言理解 (LUIS) 认知服务中的数据存储和删除
 LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据存储中。 此数据将存储 30 天。 
@@ -41,12 +39,12 @@ LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据�
 
 ### <a name="delete-utterances-in-review-from-active-learning"></a>从主动学习中删除审核中的话语
 
-可以从 LUIS**[建议的用户](luis-how-to-review-endpoint-utterances.md)** 最谈话列表中删除最谈话。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
+可以从 LUIS **[建议的用户](luis-how-to-review-endpoint-utterances.md)** 最谈话列表中删除最谈话。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 
-如果不需要主动学习最谈话，可以[禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 禁用主动学习也会禁止记录。
+如果不需要主动学习最谈话，可以 [禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 禁用主动学习也会禁止记录。
 
 ### <a name="disable-logging-utterances"></a>禁止记录话语
-[禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)将禁用日志记录。
+[禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning) 将禁用日志记录。
 
 
 <a name="accounts"></a>

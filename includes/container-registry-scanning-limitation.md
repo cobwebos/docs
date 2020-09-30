@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 08/25/2020
+ms.date: 09/17/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1ad9630c69e06066e9edc12441d5a42b84b15804
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e3234289fe56286cb5ff0791d983dee6ec2aa4d8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488656"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545179"
 ---
 > [!NOTE]
-> Azure 安全中心当前无法在限制对专用终结点、选定子网或 IP 地址的访问的注册表中执行 [映像漏洞扫描](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) 。
+> Azure 安全中心当前无法在限制对专用终结点、选定子网或 IP 地址的访问的注册表中执行 [映像漏洞扫描](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) 。 某些 Azure 服务的实例（包括 Azure DevOps Services 和 Azure 容器实例）也无法访问受网络限制的容器注册表。

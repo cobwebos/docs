@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 508d054bc4eed88867bb6e3282edbafaae9a5247
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 97bd71dd5a70a867f45915a5a5f95f6513f2a824
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298039"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541724"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集交互
 
@@ -63,11 +63,11 @@ ms.locfileid: "89298039"
 
 1. 在 Kafka 群集创建工作流期间，在“安全 + 网络”选项卡中，选中“启用 Kafka REST 代理”选项 。
 
-     ![启用 Kafka REST 代理并选择安全组](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     ![屏幕截图显示 "创建 H D insights" 群集页，其中选择了 "安全 + 网络"。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. 单击“选择安全组”。**** 从安全组列表中，选择你要允许其访问 REST 代理的安全组。 可以使用搜索框查找适当的安全组。 单击底部的“选择”按钮****。
 
-     ![启用 Kafka REST 代理并选择安全组](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     ![屏幕截图显示 "创建 H D 洞察力群集" 页，其中包含用于选择安全组的选项。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. 根据[使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started)中所述，完成创建群集的剩余步骤。
 
@@ -83,7 +83,7 @@ ms.locfileid: "89298039"
 1. 通过执行 `pip3 install msal` 安装所需的 Python 依赖项。
 1. 修改 **Configure these properties** 代码部分，并更新你的环境的以下属性：
 
-    |properties |说明 |
+    |属性 |说明 |
     |---|---|
     |租户 ID|订阅所在的 Azure 租户。|
     |客户端 ID|在安全组中注册的应用程序的 ID。|

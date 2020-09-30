@@ -3,19 +3,17 @@ title: Pattern.any 实体类型 - LUIS
 titleSuffix: Azure Cognitive Services
 description: Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75979166"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542200"
 ---
 # <a name="patternany-entity"></a>Pattern.any 实体
 
@@ -108,4 +106,4 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](luis-tutorial-pattern.md)中，请使用**模式。任何**实体从最谈话中提取数据，其中最谈话的格式正确，并且数据的结尾可能会与查询文本中的其余单词轻松混淆。
+在本 [教程](luis-tutorial-pattern.md)中，请使用 **模式。任何** 实体从最谈话中提取数据，其中最谈话的格式正确，并且数据的结尾可能会与查询文本中的其余单词轻松混淆。

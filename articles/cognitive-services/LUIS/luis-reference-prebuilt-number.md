@@ -3,20 +3,18 @@ title: 数字预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的数字预构建实体信息。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13594886b83d4474ee2531185db5868a5198ca64
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273462"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541946"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的数字预生成实体
 有许多方式使用数字值来量化、表达和描述信息片段。 本文仅包括了其中一些可能的示例。 LUIS 解释用户陈述中的变体并返回一致的数字值。 此实体已定型，因此不需要将包含数字的陈述示例添加到应用程序意向中。
@@ -38,7 +36,7 @@ ms.locfileid: "78273462"
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS 在它返回的 JSON 响应的  **字段中包括 `builtin.number`** `resolution` 实体的已识别值。
+LUIS 在它返回的 JSON 响应的 `resolution` 字段中包括 **`builtin.number`** 实体的已识别值。
 
 ## <a name="resolution-for-prebuilt-number"></a>预构建数字解析
 

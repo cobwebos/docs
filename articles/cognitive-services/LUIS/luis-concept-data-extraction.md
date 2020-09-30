@@ -3,15 +3,14 @@ title: 数据提取 - LUIS
 description: 从包含意向和实体的话语文本中提取数据。 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: c69971b36bf945086d1a8f398043444071acea5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324818"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541775"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -71,7 +70,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 * * *
 
-|数据对象|数据类型|数据位置|Value|
+|数据对象|数据类型|数据位置|值|
 |--|--|--|--|
 |Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
@@ -133,7 +132,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 意向按评分从高到低排序。
 
-|数据对象|数据类型|数据位置|Value|分数|
+|数据对象|数据类型|数据位置|值|分数|
 |--|--|--|--|:--|
 |Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |Intent|String|intents[1].intent|"None"|0.0168218873|
@@ -194,7 +193,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 * * *
 
-|域|数据对象|数据类型|数据位置|Value|
+|域|数据对象|数据类型|数据位置|值|
 |--|--|--|--|--|
 |实用工具|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |通信|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|

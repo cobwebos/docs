@@ -2,13 +2,13 @@
 title: 导入容器映像
 description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中，无需运行 Docker 命令。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/18/2020
+ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660489"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541571"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
 
@@ -18,7 +18,7 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 
 * 从公共注册表导入
 
-* 在同一或不同 Azure 订阅中从另一个 Azure 容器注册表导入
+* 从另一个 Azure 容器注册表导入相同或不同的 Azure 订阅或租户
 
 * 从非 Azure 专用容器注册表导入
 
@@ -28,7 +28,7 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 
 * 导入多体系结构映像（例如正式的 Docker 映像）时，会复制清单列表中指定的所有体系结构和平台的映像。
 
-* 访问源和目标注册表不必使用注册表的公共终结点。
+* 访问目标注册表不必使用注册表的公共终结点。
 
 若要导入容器映像，本文要求在 Azure Cloud Shell 中或本地（建议使用 2.0.55 或更高版本）运行 Azure CLI。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
@@ -83,9 +83,9 @@ az acr import \
 --image servercore:ltsc2019
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>从另一 Azure 容器注册表导入
+## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>从同一 AD 租户中的 Azure 容器注册表导入
 
-可以使用集成的 Azure Active Directory 权限从另一 Azure 容器注册表导入映像。
+你可以使用集成 Azure Active Directory 权限从同一 AD 租户中的 Azure 容器注册表导入映像。
 
 * 你的标识必须具有 Azure Active Directory 的权限，才能读取源注册表 (读取者角色) ，并导入到目标注册表 (参与者角色，或允许 importImage 操作) 的 [自定义角色](container-registry-roles.md#custom-roles) 。
 
@@ -136,7 +136,20 @@ az acr import \
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>使用服务主体凭据从注册表导入
 
-若要使用 Active Directory 权限从无法访问的注册表导入，可以使用服务主体凭据（如果可用）。 提供对源注册表具有 ACRPull 访问权限的 Active Directory [服务主体](container-registry-auth-service-principal.md)的 appID 和密码。 服务主体适用于需将映像导入到注册表的生成系统和其他无人参与系统。
+若要从无法使用集成 Active Directory 权限访问的注册表导入，则可以使用服务主体凭据 (如果) 到源注册表。 提供对源注册表具有 ACRPull 访问权限的 Active Directory [服务主体](container-registry-auth-service-principal.md)的 appID 和密码。 服务主体适用于需将映像导入到注册表的生成系统和其他无人参与系统。
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  –-password <SP_Passwd>
+```
+
+## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>从不同 AD 租户中的 Azure 容器注册表导入
+
+若要从不同 Azure Active Directory 租户中的 Azure 容器注册表导入，请按登录服务器名称指定源注册表，并提供用户名和密码凭据来启用对注册表的请求访问。 例如，使用 [存储库范围的令牌](container-registry-repository-scoped-permissions.md) 和密码，或者对源注册表具有 ACRPull 访问权限的 Active Directory [服务主体](container-registry-auth-service-principal.md) 的 appID 和 password。 
 
 ```azurecli
 az acr import \
@@ -149,7 +162,7 @@ az acr import \
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>从非 Azure 专用容器注册表导入
 
-通过指定启用对注册表的拉取访问的凭据，从专用注册表导入映像。 例如，从专用 Docker 注册表拉取映像： 
+通过指定启用对注册表的请求访问权限的凭据，从非 Azure 专用注册表导入映像。 例如，从专用 Docker 注册表拉取映像： 
 
 ```azurecli
 az acr import \

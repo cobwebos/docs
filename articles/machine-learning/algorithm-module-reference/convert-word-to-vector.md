@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898602"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536726"
 ---
 # <a name="convert-word-to-vector-module"></a>“将单词转换为矢量”模块
 
@@ -27,9 +27,9 @@ ms.locfileid: "90898602"
 
 ### <a name="more-about-converting-words-to-vectors"></a>详细了解如何将单词转换为矢量
 
-一般来说，将单词转换为矢量（也称单词矢量化）是一种自然语言处理 (NLP) 过程。 该过程使用语言模型或技术将单词映射到矢量空间，即通过实数的矢量表示每个单词。 同时，它允许含义相似的单词使用相似的表示形式。
+将字词转换为矢量或 word 矢量化是一种自然语言处理 (NLP) 过程。 此过程使用语言模型将单词映射到矢量空间。 矢量空间按实数的矢量表示每个单词。 它还允许具有相似含义的单词具有相似的表示形式。
 
-单词嵌入可用作 NLP 下游任务（例如，文本分类和情绪分析）的初始输入。
+使用 word 嵌入作为初始输入，NLP 下游任务（如文本分类和情绪分析）。
 
 单词嵌入技术多种多样，在此模块中，我们实现三种广泛使用的方法。 两种（Word2Vec 和 FastText）是在线训练模型。 另一种是预训练模型，即 glove-wiki-gigaword-100。 
 
@@ -37,9 +37,9 @@ ms.locfileid: "90898602"
 
 下面是有关方法的一些信息：
 
-+ Word2Vec 是使用浅层神经网络学习单词嵌入的最流行方法之一。 以下论文讨论了相关理论，可供你以 PDF 格式下载：[Efficient Estimation of Word Representations in Vector Space, by Mikolov, Tomas, et al](https://arxiv.org/pdf/1301.3781.pdf)（高效估算矢量空间中的单词表示形式，作者：Mikolov、Tomas 等）。此模块中的实现基于[适用于 Word2Vec 的 Gensim 库](https://radimrehurek.com/gensim/models/word2vec.html)。
++ Word2Vec 是使用浅层神经网络学习单词嵌入的最流行方法之一。 本白皮书中讨论了理论，如 PDF 下载： [在矢量空间中有效估计单词表示形式](https://arxiv.org/pdf/1301.3781.pdf)。 此模块中的实现基于 [用于 Word2Vec 的 Gensim 库](https://radimrehurek.com/gensim/models/word2vec.html)。
 
-+ 以下论文对 FastText 理论进行了说明，可供你以 PDF 格式下载：[Enriching Word Vectors with Subword Information, by Bojanowski, Piotr, et al](https://arxiv.org/pdf/1607.04606.pdf)（使用子词信息扩充单词矢量，作者：Bojanowski、Piotr 等）。此模块中的实现基于[适用于 FastText 的 Gensim 库](https://radimrehurek.com/gensim/models/fasttext.html)。
++ 本文介绍了 FastText 理论，这篇文章以 PDF 下载形式提供： [使用一个子词信息丰富字向量](https://arxiv.org/pdf/1607.04606.pdf)。 此模块中的实现基于 [用于 FastText 的 Gensim 库](https://radimrehurek.com/gensim/models/fasttext.html)。
 
 + GloVe 预训练模型是 glove-wiki-gigaword-100。 它是基于维基百科文本语料库的预训练矢量的集合，其中包含 56 亿个令牌和 400,000 个无大写的词汇。 下面是可供你以 PDF 格式下载的文章：[GloVe:Global Vectors for Word Representation](https://nlp.stanford.edu/pubs/glove.pdf)（GloVe：单词表示形式的全局矢量）。
 
@@ -71,13 +71,13 @@ ms.locfileid: "90898602"
 
         默认窗口大小为 5。
 
-    + 对于“epoch 数”，请指定语料库的 epoch（迭代）次数。 此设置对应于 Gensim 中的 `iter` 参数。
+    + 对于“epoch 数”，请指定语料库的 epoch（迭代）次数。 对应于 `iter` Gensim 中的参数。
 
         默认 epoch 数为 5。
 
 6. 对于“最大词汇表大小”，请指定生成的词汇表中的最大单词数。
 
-    如果有超出此数量的非重复单词，则删除不常用的单词。
+    如果有多个独特的单词超过最大大小，则修剪不常发生的单词。
 
     默认词汇表大小为 10,000。
 
@@ -93,11 +93,11 @@ ms.locfileid: "90898602"
 
 + **具有嵌入的词汇表**：包含生成的词汇表以及每个单词的嵌入。 一个维度占用一列。
 
-以下示例演示了“将单词转换为矢量”模块的工作原理。 它将此模块和默认设置应用到 Azure 机器学习提供的预处理的维基百科 SP 500 数据集。
+下面的示例演示如何将 Word 转换为矢量模块。 它使用将字转换为矢量，并使用默认设置到预处理后的维基百科 SP 500 数据集。
 
 ### <a name="source-dataset"></a>源数据集
 
-该数据集包含一个类别列，以及从维基百科提取的全文。 此表仅显示几个典型示例。
+该数据集包含一个类别列，以及从维基百科提取的全文。 下表显示了一些有代表性的示例。
 
 |文本|
 |----------|
@@ -136,13 +136,13 @@ loop|-0.391421|0.52366|0.141503|-0.105423|0.084503|-0.018424|...|-0.0521
 
     在这个“将单词转换为矢量”模块中，我们提供了三种不同的策略：两种在线训练模型和一种预训练模型。 在线训练模型将输入数据集用作训练数据，并在训练过程中生成词汇表和单词矢量。 预训练模型已通过大得多的文本语料库（例如维基百科或 Twitter 文本）进行训练。 预训练模型实际上是单词/嵌入对的集合。  
 
-    如果选择 GloVe 预训练模型作为单词矢量化策略，它会从输入数据集汇总词汇表，并为预训练模型中的每个单词生成嵌入矢量。 使用预训练模型时无需在线训练，可以节省训练时间。 预训练模型的性能更好，尤其是在输入数据集大小相对较小的情况下。
+    手套预先训练的模型将从输入数据集中汇总词汇，并为预先训练模型中的每个单词生成嵌入向量。 使用预训练模型时无需在线训练，可以节省训练时间。 预训练模型的性能更好，尤其是在输入数据集大小相对较小的情况下。
 
 + 嵌入大小：
 
-    一般而言，将单词嵌入长度设置为几百（例如，100、200、300）可获得良好的性能。 原因在于，较小的嵌入大小意味着较小的矢量空间，这可能会导致单词嵌入冲突。  
+    通常，word 嵌入的长度设置为几百。 例如，100，200，300。 小型嵌入大小意味着小型矢量空间，这可能会导致单词嵌入冲突。  
 
-    对于预训练模型，单词嵌入长度是固定的。 在此实现中，glove-wiki-gigaword-100 的嵌入大小为 100。
+    对于预先训练模型，word 嵌入的长度是固定的。 在此示例中，手套-gigaword-100 的嵌入大小为100。
 
 
 ## <a name="next-steps"></a>后续步骤

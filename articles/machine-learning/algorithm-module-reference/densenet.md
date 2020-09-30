@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 densenet 算法创建图像分类模型。
+description: 了解如何使用 DenseNet 算法创建图像分类模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450090"
+ms.locfileid: "91536624"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -29,17 +29,17 @@ ms.locfileid: "91450090"
 
 ### <a name="more-about-densenet"></a>详细了解 DenseNet
 
-有关更多详细信息，请参阅 [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)（密集连接的卷积网络）。
+有关 DenseNet 的详细信息，请参阅 [密集连接卷积网络](https://arxiv.org/abs/1608.06993)的研究论文。
 
 ## <a name="how-to-configure-densenet"></a>如何配置 DenseNet
 
 1.  在设计器中将 DenseNet 模块添加到管道。  
 
-2.  对于 " **模型名称**"，请指定特定 densenet 结构的名称，并且可以从受支持的 densenet 中进行选择： "densenet121"、"densenet161"、"densenet169"、"densenet201"。
+2.  对于 " **模型名称**"，请指定特定 DenseNet 结构的名称，并且可以从受支持的 DenseNet 中进行选择： "densenet121"、"densenet161"、"densenet169"、"densenet201"。
 
-3.  对于“预先训练”，请指定是否使用在 ImageNet 上预先训练的模型。 如果选择此选项，您可以根据所选的预先训练的模型来微调模型;如果取消选择，则可以从头开始训练。
+3.  对于“预先训练”，请指定是否使用在 ImageNet 上预先训练的模型。 如果已选择，则可以根据选定的预训练模型来微调模型；如果已取消选择，则可以从头开始训练。
 
-4.  对于“内存效率”，请指定是否使用检查点（使用检查点可以提高内存效率，但速度较慢）。 有关详细信息，请参阅 https://arxiv.org/pdf/1707.06990.pdf 。
+4.  对于“内存效率”，请指定是否使用检查点（使用检查点可以提高内存效率，但速度较慢）。 有关详细信息，请参阅 DenseNets 的调研纸张、 [内存有效实现](https://arxiv.org/pdf/1707.06990.pdf)。
 
 5.  将 **DenseNet** 模块、定型和验证图像数据集模块的输出连接到 [定型 Pytorch 模型](train-pytorch-model.md)。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "91450090"
 
 | 名称             | 范围 | 类型    | 默认     | 说明                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| 模型名称       | 任意   | Mode    | densenet201 | 特定 densenet 结构的名称     |
+| 模型名称       | 任意   | Mode    | densenet201 | 特定 DenseNet 结构的名称     |
 | 预先训练       | 任意   | 布尔 | True        | 是否使用在 ImageNet 上预先训练的模型 |
 | 内存效率 | 任意   | 布尔 | False       | 是否使用检查点（使用检查点可以提高内存效率，但速度较慢） |
 
@@ -64,7 +64,7 @@ ms.locfileid: "91450090"
 
 | 名称            | 类型                    | 说明                              |
 | --------------- | ----------------------- | ---------------------------------------- |
-| 未训练的模型 | UntrainedModelDirectory | 可以连接到定型 Pytorch 模型的未训练的 densenet 模型。 |
+| 未训练的模型 | UntrainedModelDirectory | 一个未训练的 DenseNet 模型，可连接到“训练 Pytorch 模型”模块。 |
 
 ## <a name="next-steps"></a>后续步骤
 

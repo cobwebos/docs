@@ -1,7 +1,7 @@
 ---
-title: 为计算机视觉读取 API 安装并运行 Docker 容器
+title: 从计算机视觉安装读取 OCR Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 使用用于计算机视觉读取 API 的 Docker 容器来检测和提取本地图像中的文本。
+description: 使用计算机视觉中的 "读取 OCR Docker 容器" 从映像中提取文本，并将其从本地 douments。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,23 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
-keywords: 本地、Docker、容器
-ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+keywords: 本地、OCR、Docker、容器
+ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460435"
+ms.locfileid: "91536369"
 ---
-# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>为读取 API (预览安装并运行 Docker 容器)  
+# <a name="install-read-ocr-docker-containers-preview"></a> (预览中安装读取 OCR Docker 容器)  
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
-借助容器，你可以在自己的环境中运行计算机视觉 API。 容器非常适合用于满足特定的安全性和数据管理要求。 在本文中，你将学习如何下载、安装和运行计算机视觉容器。
+借助容器，你可以在自己的环境中运行计算机视觉 API。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装和运行计算机视觉容器。
 
-借助读取** 容器，可以从具有不同表面和背景的各种对象的图像中检测和提取印刷文本**，例如收据、海报和名片。 此外，读取** 容器可检测图像中的手写** 文本，并提供 PDF、TIFF 和多页文件支持。 有关详细信息，请参阅 [读取 API 文档](concept-recognizing-text.md#read-api)。
+" *读取* OCR" 容器允许您从图像和文档中提取打印文本和手写文本，支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅 [读取 API 文档](concept-recognizing-text.md#read-api)。
 
+## <a name="read-3x-containers"></a>读取1.x 容器
 预览版中提供了两个版本的2.x 容器。 这两个版本都提供了对上一个容器的额外准确性和功能。
 
 Read 3.0-preview 容器提供：

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333403"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536964"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -48,7 +48,7 @@ ms.locfileid: "91333403"
 
 4. 在移动设备上，同意设备，以便它可以访问你的帐户。 
 
-    ![“移动通知”屏幕](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![显示 "输入密码" 通知屏幕的屏幕截图。](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. 完成 OOBE 过程，包括设置隐私设置和设置 Windows Hello（如有必要）。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91333403"
 
 2. 选择 " **访问工作单位或学校**"，并确保显示类似于 " **连接到 *\<your_organization>* Azure AD**" 的文本。
 
-    ![“访问工作单位或学校”屏幕，含已连接的 contoso 帐户](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![屏幕截图显示 "访问工作或学校" 窗口，其中显示了 "已连接到 (组织) Azure AD" 帐户。](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>加入已配置的 Windows 10 设备
