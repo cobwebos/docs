@@ -1,14 +1,14 @@
 ---
-title: 澳大利亚政府 ISM PROTECTED 蓝图示例概述
-description: 澳大利亚政府 ISM PROTECTED 蓝图示例的概述。 此蓝图示例帮助客户评估特定的 ISM PROTECTED 控制措施。
-ms.date: 08/03/2020
+title: 澳大利亚政府 ISM PROTECTED 蓝图示例控制措施
+description: 澳大利亚政府 ISM PROTECTED 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760424"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030100"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亚政府 ISM PROTECTED 蓝图示例的控制映射
 
@@ -350,6 +350,10 @@ ms.locfileid: "87760424"
 ## <a name="next-steps"></a>后续步骤
 
 有关蓝图及其使用方式的更多文章：
+
+> [!div class="nextstepaction"]
+> [ISM PROTECTED 蓝图 - 概述](./index.md)
+> [ISM PROTECTED 蓝图 - 部署步骤](./deploy.md)
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

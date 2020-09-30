@@ -1,6 +1,6 @@
 ---
-title: 可用的 Azure 文件协议
-description: 在创建 Azure 文件共享之前，请了解可用协议。
+title: 可用的 Azure 文件协议-NFS 和 SMB
+description: 在创建 Azure 文件共享之前，请先了解可用协议，其中包括服务器消息块 (SMB) 和网络文件系统 (NFS) 。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708132"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568465"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 文件共享协议
 
@@ -21,12 +21,12 @@ Azure 文件提供了两个用于连接和装载 Azure 文件共享的协议。 
 
 ## <a name="differences-at-a-glance"></a>差异概览
 
-|Feature  |NFS (预览)   |SMB  |
+|功能  |NFS (预览)   |SMB  |
 |---------|---------|---------|
 |访问协议     |NFS 4。1         |SMB 2.1，SMB 3。0         |
 |支持的 OS     |Linux 内核版本 4.3 +         |Windows 2008 R2 +、Linux 内核版本 4.11 +         |
-|可用层     |高级存储         |高级存储，标准存储，热，冷         |
-|复制     |LRS         |LRS、ZRS、GRS         |
+|[可用层](storage-files-planning.md#storage-tiers)     |高级存储         |高级存储，事务优化，热，冷         |
+|[冗余](storage-files-planning.md#redundancy)     |LRS         |LRS、ZRS、GRS         |
 |身份验证     |仅限基于主机的身份验证        |基于身份的身份验证，基于用户的身份验证         |
 |权限     |UNIX 样式权限         |NTFS 样式权限         |
 |文件系统语义     |POSIX 相容         |非 POSIX 相容性         |
@@ -74,7 +74,7 @@ Azure 文件的 NFS 适用于：
 
 使用 SMB 装载的 azure 文件共享提供更多 Azure 文件功能，且没有 Azure 文件功能限制，因为它已正式发布。
 
-### <a name="features"></a>功能
+### <a name="features"></a>特征
 
 - Azure 文件同步
 - 基于标识的身份验证

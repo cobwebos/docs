@@ -1,20 +1,20 @@
 ---
-title: 教程：迁移 Android 应用 | Microsoft Azure Maps
-description: 如何将 Android 应用从 Google Maps 迁移到 Microsoft Azure Maps。
+title: 迁移 Android 应用 | Microsoft Azure Maps
+description: 如何将 Android 应用从 Google Maps 迁移到 Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fe67364ef51248d04cbc6095eb691ffe255fa02c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319633"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>从 Google Maps 迁移 Android 应用
 
@@ -30,35 +30,35 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
 
 使用 Google Maps 或 Azure Maps 在 Android 应用中加载地图涉及到类似的步骤。 使用上述任一 SDK 时，必须：
 
-- 获取用于访问其中一个平台的 API 密钥或订阅密钥。
-- 将一些 XML 添加到活动中，以指定要在何处呈现地图，以及如何布局地图。
-- 将包含地图视图的活动中的所有生命周期方法重写为地图类中的相应方法。 具体而言，必须替代以下方法：
-    - `onCreate(Bundle)`
-    - `onStart()`
-    - `onResume()`
-    - `onPause()`
-    - `onStop()`
-    - `onDestroy()`
-    - `onSaveInstanceState(Bundle)`
-    - `onLowMemory()`
-- 在尝试访问和设定地图之前，请等待地图准备就绪。
+* 获取用于访问其中一个平台的 API 密钥或订阅密钥。
+* 将一些 XML 添加到活动中，以指定要在何处呈现地图，以及如何布局地图。
+* 将包含地图视图的活动中的所有生命周期方法重写为地图类中的相应方法。 具体而言，必须替代以下方法：
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
+    * `onLowMemory()`
+* 在尝试访问和设定地图之前，请等待地图准备就绪。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 若要使用适用于 Android 的 Google Maps SDK 显示地图，需执行以下步骤：
 
-1.  确保已安装 Google Play 服务。
-2.  将 Google Maps 服务的依赖项添加到模块的 **gradle.build** 文件： 
+1. 确保已安装 Google Play 服务。
+2. 将 Google Maps 服务的依赖项添加到模块的 gradle.build 文件：
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  将 Google Maps API 密钥添加到 **google\_maps\_api.xml** 文件的 application 节中：
-    
+3. 将 Google Maps API 密钥添加到 **google\_maps\_api.xml** 文件的 application 节中：
+
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
     ```
 
-1.  将一个地图片段添加到主活动：
+4. 将一个地图片段添加到主活动：
 
     ```xml
     <com.google.android.gms.maps.MapView
@@ -67,13 +67,13 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
             android:layout_height="match_parent"/>
     ```
 
-1.  在 **MainActivity.java** 文件中，需要导入 Google Maps SDK。 将包含地图视图的活动中的所有生命周期方法转发到地图类中的相应方法。 使用 `getMapAsync(OnMapReadyCallback)` 方法从地图片段中检索 `MapView` 实例。 `MapView` 将自动初始化地图系统和视图。 按如下所示编辑 **MainActivity.java** 文件：
+5. 在 **MainActivity.java** 文件中，需要导入 Google Maps SDK。 将包含地图视图的活动中的所有生命周期方法转发到地图类中的相应方法。 使用 `getMapAsync(OnMapReadyCallback)` 方法从地图片段中检索 `MapView` 实例。 `MapView` 将自动初始化地图系统和视图。 按如下所示编辑 **MainActivity.java** 文件：
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
     import com.google.android.gms.maps.MapView;
     import com.google.android.gms.maps.OnMapReadyCallback;
-    
+ 
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     
@@ -144,11 +144,9 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
 
 运行应用程序时，将按下图所示加载地图控件。
 
-<center>
+![简单 Google Maps](media/migrate-google-maps-android-app/simple-google-maps.png)
 
-![简单 Google Maps](media/migrate-google-maps-android-app/simple-google-maps.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 若要使用适用于 Android 的 Azure Maps SDK 显示地图，需执行以下步骤：
 
@@ -161,7 +159,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
     ```
 
 2. 更新 **app/build.gradle** 并在其中添加以下代码：
-    
+
     1. 确保项目的 **minSdkVersion** 设置为 API 21 或更高版本。
 
     2. 将以下代码添加到 Android 节：
@@ -172,6 +170,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
+
     3. 更新 dependencies 块。 为最新 Azure Maps Android SDK 添加新的实现依赖项行：
 
         ```java
@@ -180,10 +179,11 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
 
         > [!Note]
         > Azure Maps Android SDK 会定期升级并增强。 可以查看 [Android 地图控件入门](how-to-use-android-map-control-library.md)来获取最新的 Azure Maps 版本号。 此外，可将版本号从“0.2”设置为“0+”，使代码始终指向最新版本。
-    
+
     4. 在工具栏中转到“文件”，然后单击“将项目与 Gradle 文件同步”。 
-3. 将一个地图片段添加到 main 活动 (resources \> layout \> activity\_main.xml)：
-    
+
+3. 将一个地图片段添加到 main 活动 (resources pwd\> layout \> activity\_main.xml)：
+
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
@@ -202,7 +202,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
     ```
 
 4. 在 **MainActivity.java** 文件中，需要：
-    
+
     * 导入 Azure Maps SDK
     * 设置 Azure Maps 身份验证信息
     * 在 **onCreate** 方法中获取地图控件实例
@@ -221,7 +221,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
     * `onLowMemory()`
 
     按如下所示编辑 **MainActivity.java** 文件：
-    
+
     ```java
     package com.example.myapplication;
 
@@ -234,7 +234,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+     
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -303,9 +303,8 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
 
 如果运行应用程序，将按下图中所示加载地图控件。
 
-<center>
 
-![简单 Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)</center>
+![简单 Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
 请注意，Azure Maps 控件支持更大程度的缩小操作，并不仅提供世界视图。
 
@@ -316,7 +315,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
 
 如果受众遍布多个国家/地区或讲不同的语言，则本地化就非常重要。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 将以下代码添加到 `onCreate` 方法，以设置地图的语言。 必须在设置地图的上下文视图之前添加该代码。 “fr”语言代码将语言限制为法语。
 
@@ -332,11 +331,9 @@ getBaseContext().getResources().updateConfiguration(config,
 
 下面是将语言设置为“fr”的 Google Maps 示例。
 
-<center>
+![Google Maps 本地化](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-![Google Maps 本地化](media/migrate-google-maps-android-app/google-maps-localization.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 Azure Maps 提供三种不同的方式来设置地图的语言和区域视图。 第一个选项是将语言和区域视图信息直接传递到 `AzureMaps` 类。 此选项全局使用静态 `setLanguage` 和 `setView` 方法。 即，在载入到应用的所有 Azure Maps 控件中设置默认的语言和区域视图。 此示例使用“fr-FR”语言代码设置法语。
 
@@ -376,9 +373,7 @@ mapControl.onReady(map -> {
 
 下面是将语言设置为“fr-FR”的 Azure Maps 示例。
 
-<center>
-
-![Azure Maps 本地化](media/migrate-google-maps-android-app/azure-maps-localization.png)</center>
+![Azure Maps 本地化](media/migrate-google-maps-android-app/azure-maps-localization.png)
 
 查看[支持的语言](supported-languages.md)完整列表。
 
@@ -386,7 +381,7 @@ mapControl.onReady(map -> {
 
 可以通过调用相应的方法，以编程方式将 Azure Maps 和 Google Maps 中的动态地图移到新的地理位置。 让我们在地图中显示卫星航拍图像，将地图中心点置于某个坐标位置，并更改缩放级别。 此示例使用纬度：35.0272，经度：-111.0225，缩放级别：15。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 可以使用 `moveCamera` 方法以编程方式移动 Google Maps 地图控件的相机。 `moveCamera` 方法允许指定地图的中心点和缩放级别。 `setMapType` 方法更改要显示的地图类型。
 
@@ -400,14 +395,12 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
-
-![Google Maps - 设置视图](media/migrate-google-maps-android-app/google-maps-set-view.png)</center>
+![Google Maps - 设置视图](media/migrate-google-maps-android-app/google-maps-set-view.png)
 
 > [!NOTE]
-> Google Maps 使用尺寸为 256 像素的图块，而 Azure Maps 则使用更大的 512 像素图块。 在加载相同的地图区域时，与 Google Maps 相比，这可以减少 Azure Maps 所需的网络请求数。 若要实现与 Google Maps 中地图相同的可视区域，在使用 Azure Maps 时，需要将 Google Maps 中使用的缩放级别减 1。 
+> Google Maps 使用尺寸为 256 像素的图块，而 Azure Maps 则使用更大的 512 像素图块。 在加载相同的地图区域时，与 Google Maps 相比，这可以减少 Azure Maps 所需的网络请求数。 若要实现与 Google Maps 中地图相同的可视区域，在使用 Azure Maps 时，需要将 Google Maps 中使用的缩放级别减 1。
 
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 如前所述，若要在 Azure Maps 中实现相同的可视区域，请将 Google Maps 中使用的缩放级别减 1。 本例中使用的缩放级别为 14。
 
@@ -437,19 +430,17 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps - 设置视图](media/migrate-google-maps-android-app/azure-maps-set-view.png)</center>
+![Azure Maps - 设置视图](media/migrate-google-maps-android-app/azure-maps-set-view.png)
 
 **其他资源：**
 
-- [支持的地图样式](supported-map-styles.md)
+* [支持的地图样式](supported-map-styles.md)
 
 ## <a name="adding-a-marker"></a>添加标记
 
 通常使用地图上的图像呈现点数据。 这些图像称为标记、图钉或符号。 以下示例在地图上的以下坐标以标记形式呈现点数据：纬度：51.5，经度：-0.2。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 在 Google Maps 中，标记是使用地图 `addMarker` 方法添加的。
 
@@ -462,11 +453,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps 标记](media/migrate-google-maps-android-app/google-maps-marker.png)
 
-![Google Maps 标记](media/migrate-google-maps-android-app/google-maps-marker.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 在 Azure Maps 中，通过先将数据添加到数据源，在地图上呈现点数据。 然后将该数据源连接到符号层。 数据源优化地图控件中空间数据的管理。 符号层指定如何以图像或文本的形式呈现点数据。
 
@@ -484,9 +473,7 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps 标记](media/migrate-google-maps-android-app/azure-maps-marker.png)</center>
+![Azure Maps 标记](media/migrate-google-maps-android-app/azure-maps-marker.png)
 
 ## <a name="adding-a-custom-marker"></a>添加自定义标记
 
@@ -499,7 +486,7 @@ yellow-pushpin.png</center>
 
 在这两个示例中，以上图像将添加到应用资源的 drawable 文件夹中。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 在 Google Maps 中，可将自定义图像用于标记。 使用标记的 `icon` 选项加载自定义图像。 若要使图像的点与坐标对齐，请使用 `anchor` 选项。 定位点相对于图像的尺寸。 在本例中，定位点的宽度为 0.2 个单位，高度为 1 个单位。
 
@@ -514,11 +501,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps 自定义标记](media/migrate-google-maps-android-app/google-maps-custom-marker.png)
 
-![Google Maps 自定义标记](media/migrate-google-maps-android-app/google-maps-custom-marker.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 Azure Maps 中的符号层也支持自定义图像，但需要先将图像加载到地图资源，并为其分配唯一的 ID。 然后，符号层需要引用此 ID。 使用 `iconOffset` 选项来偏移符号，使之与图像上的正确点对齐。 图标偏移量以像素为单位。 默认情况下，偏移量相对于图像的中下点，但可以使用 `iconAnchor` 选项调整此偏移量值。 此示例将 `iconAnchor` 选项设置为 `"center"`。 它使用图标偏移量将图像向右移动 5 个像素，向上移动 15 个像素，以便与图钉图像的点对齐。
 
@@ -542,15 +527,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps 自定义标记](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)</center>
+![Azure Maps 自定义标记](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)
 
 ## <a name="adding-a-polyline"></a>添加折线
 
 折线用于表示地图上的线条或路径。 以下示例演示如何在地图上创建虚线折线。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 Google Maps 使用 `PolylineOptions` 类呈现折线。 使用 `addPolyline` 方法将折线添加到地图中。 使用 `color` 选项设置笔划颜色。 使用 `width` 选项设置笔划宽度。 使用 `pattern` 选项添加笔划虚线数组。
 
@@ -574,11 +557,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps 折线](media/migrate-google-maps-android-app/google-maps-polyline.png)
 
-![Google Maps 折线](media/migrate-google-maps-android-app/google-maps-polyline.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 在 Azure Maps 中，折线称为 `LineString` 或 `MultiLineString` 对象。 将这些对象添加到数据源，并使用线条层来呈现。 使用 `strokeWidth` 选项设置笔划宽度。 使用 `strokeDashArray` 选项添加笔划虚线数组。
 
@@ -607,15 +588,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps 折线](media/migrate-google-maps-android-app/azure-maps-polyline.png)</center>
+![Azure Maps 折线](media/migrate-google-maps-android-app/azure-maps-polyline.png)
 
 ## <a name="adding-a-polygon"></a>添加多边形
 
 多边形用于表示地图上的某个区域。 下面的示例演示如何创建多边形。 该多边形基于地图的中点坐标构成一个三角形。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 Google Maps 使用 `PolygonOptions` 类呈现多边形。 使用 `addPolygon` 方法将多边形添加到地图中。 分别使用 `fillColor` 和 `strokeColor` 选项设置填充颜色和笔划颜色。 使用 `strokeWidth` 选项设置笔划宽度。
 
@@ -639,11 +618,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps 多边形](media/migrate-google-maps-android-app/google-maps-polygon.png)
 
-![Google Maps 多边形](media/migrate-google-maps-android-app/google-maps-polygon.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 在 Azure Maps 中，将 `Polygon` 和 `MultiPolygon` 对象添加到数据源，并使用层在地图上呈现这些对象。 在多边形层中呈现多边形的区域。 使用线条层呈现多边形的轮廓。 使用 `strokeColor` 和 `strokeWidth` 选项设置笔划颜色和宽度。
 
@@ -676,10 +653,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
-
-<center>
-
-![Azure Maps 多边形](media/migrate-google-maps-android-app/azure-maps-polygon.png)</center>
+![Azure Maps 多边形](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>叠加图块层
 
@@ -687,7 +661,7 @@ mapControl.onReady(map -> {
 
 以下示例叠加爱荷华州立大学环境气象网提供的气象雷达图块层。 图块大小为 256 像素。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 在 Google Maps 中，可在地图的顶层叠加图块层。 使用 `TileOverlayOptions` 类。 使用 `addTileLauer` 方法将图块层添加到地图中。 若要使图块半透明，请将 `transparency` 选项设置为 0.2，即 20% 的透明度。
 
@@ -716,11 +690,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps 图块层](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
-![Google Maps 图块层](media/migrate-google-maps-android-app/google-maps-tile-layer.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 可以像添加任何其他层一样将图块层添加到地图中。 指定包含 x 轴、y 轴和缩放比例占位符的带格式 URL；`{x}`、`{y}`、`{z}` 分别用于告知层要在何处访问图块。 此外，Azure Maps 中的图块层支持 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 占位符。 若要使图块层半透明，请使用不透明度值 0.8。 尽管不透明度和透明度相似，但两者应使用反值。 若要在这两个选项之间进行转换，请用数字 1 减去其值。
 
@@ -738,15 +710,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps 图块层](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)</center>
+![Azure Maps 图块层](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)
 
 ## <a name="show-traffic"></a>显示交通情况
 
 Azure Maps 和 Google Maps 都提供用于叠加交通状况数据的选项。
 
-**前者：Google Maps**
+### <a name="before-google-maps"></a>前者：Google Maps
 
 在 Google Maps 中，可以通过将 true 传递给地图的 `setTrafficEnabled` 方法，将交通流量数据叠加到地图的顶层。
 
@@ -759,11 +729,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps 交通状况](media/migrate-google-maps-android-app/google-maps-traffic.png)
 
-![Google Maps 交通状况](media/migrate-google-maps-android-app/google-maps-traffic.png)</center>
-
-**后者：Azure Maps**
+### <a name="after-azure-maps"></a>后者：Azure Maps
 
 Azure Maps 提供用于显示交通状况的多种不同选项。 交通事件（例如道路封闭和事故）可以作为图标显示在地图上。 交通流量和带颜色编码的道路可以叠加在地图上。 可以修改颜色，以相对于公布的限速、正常的预期延误时间或绝对延误时间显示。 Azure Maps 中的事件数据每隔一分钟更新一次，交通流量数据每隔两分钟更新一次。
 
@@ -775,13 +743,8 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps 交通状况](media/migrate-google-maps-android-app/azure-maps-traffic.png)</center>
-
-## <a name="next-steps"></a>后续步骤
+![Azure Maps 交通状况](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
 详细了解 Azure Maps Android SDK。
 
-> [!div class="nextstepaction"]
-> [如何使用 Android 地图控件](how-to-use-android-map-control-library.md)
+[如何使用 Android 地图控件](how-to-use-android-map-control-library.md)

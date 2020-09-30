@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: fa3d044bbbce2a8c85f01517b918ffc57c10c759
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0792a885006cf3050002c0e275eff2850afb81c7
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316199"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566799"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -109,7 +109,7 @@ Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 * 更改默认的一致性策略
 * 更改 IP 范围筛选器
 * 更改虚拟网络配置
-* 启用多主数据库
+* 启用多区域写入
 
 > [!NOTE]
 > 不能同时添加或删除区域 (`locations`) 并更改 Azure Cosmos 帐户的其他属性。 修改区域的操作必须作为单独的操作与任何其他对帐户的更改操作分开执行。
@@ -166,7 +166,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
-### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a> 为 Azure Cosmos 帐户启用多个写入区域
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> 为 Azure Cosmos 帐户启用多个写入区域
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -175,13 +175,13 @@ $enableAutomaticFailover = $false
 $enableMultiMaster = $true
 
 # First disable automatic failover - cannot have both automatic
-# failover and multi-master on an account
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -EnableAutomaticFailover:$enableAutomaticFailover
 
-# Now enable multi-master
+# Now enable multi-region writes
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
@@ -219,7 +219,7 @@ Update-AzCosmosDBAccount `
 
 ### <a name="list-account-keys"></a><a id="list-keys"></a>列出帐户密钥
 
-创建 Azure Cosmos 帐户时，服务生成两个主访问密钥，这两个密钥可用于访问 Azure Cosmos 帐户时进行的身份验证。 还会生成只读密钥，用于对只读操作进行身份验证。
+创建 Azure Cosmos 帐户时，该服务会生成两个主访问密钥，用于在访问 Azure Cosmos 帐户时进行身份验证。 还会生成只读密钥，用于对只读操作进行身份验证。
 提供两个访问密钥后，Azure Cosmos DB 支持在不中断 Azure Cosmos 帐户的情况下重新生成密钥，并以轮换的方式一次使用一个密钥。
 Cosmos DB 帐户有两个读写密钥（主密钥和辅助密钥）和两个只读密钥（主密钥和辅助密钥）。
 
@@ -273,8 +273,8 @@ $accountName = "mycosmosaccount"
 $enableAutomaticFailover = $true
 $enableMultiMaster = $false
 
-# First disable multi-master - cannot have both automatic
-# failover and multi-master on an account
+# First disable multi-region writes - cannot have both automatic
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `

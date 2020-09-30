@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536464"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565405"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>为 Azure 逻辑应用中的集成帐户设置跨区域灾难恢复
 
@@ -98,15 +98,15 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”   。   
 
-   ![主要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
+   ![屏幕截图，显示在何处输入连接名称并选择主要区域集成帐户。 ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
 4. “开始同步控制编号的 DateTime”设置是可选的。  “频率”可以设置为“天”  、“小时”  、“分钟”  或“秒”  ，中间要有间隔。    
 
-   ![DateTime 和频率](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![屏幕截图，显示开始控制编号同步设置的日期时间。](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 5. 选择“新建步骤”   > “添加操作”  。
 
-   ![“新建步骤”、“添加操作”](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![显示 "新建步骤" 按钮和 "添加操作" 选项的屏幕截图。](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 6. 搜索“X12”  ，然后选择“X12 - 添加或更新控制编号”  。   
 
@@ -114,11 +114,11 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 7. 要将操作连接到次要区域集成帐户，请选择“更改连接”   > “添加新连接”  ，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。 
 
-   ![次要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![屏幕截图，显示添加次要区域集成帐户名称的位置。](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 8. 通过单击右上角的图标，切换到原始输入。
 
-   ![切换到原始输入](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
+   ![屏幕截图，显示要选择以切换到原始的图标。](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
 9. 从动态内容选取器选择正文，并保存逻辑应用。
 
@@ -140,7 +140,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
 若要启用入站消息的灾难恢复，请选择 EDIFACT 协议接受设置中的重复检查设置。
 
-![选择重复检查设置](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+![显示 EDIFACT 协议的接收设置中的重复检查设置的屏幕截图。](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
 1. 在次要区域中创建[逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。    
 
@@ -157,27 +157,27 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
 4. “开始同步控制编号的 DateTime”设置是可选的。  “频率”可以设置为“天”  、“小时”  、“分钟”  或“秒”  ，中间要有间隔。     
 
-   ![DateTime 和频率](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![显示日期时间和频率设置的屏幕截图。](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 6. 选择“新建步骤”   > “添加操作”  。    
 
-   ![“新建步骤”、“添加操作”](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![显示在何处添加操作的屏幕截图。](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 7. 搜索“EDIFACT”  ，然后选择“EDIFACT - 添加或更新控制编号”  。   
 
-   ![添加或更新控制编号](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![显示在何处添加或更新控制编号的屏幕截图。](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. 要将操作连接到次要区域集成帐户，请选择“更改连接”   > “添加新连接”  ，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。
 
-   ![次要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![创建次要区域集成帐户名称。](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 9. 通过单击右上角的图标，切换到原始输入。
 
-   ![切换到原始输入](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
+   ![当你想要切换到原始输入时，突出显示要选择的图标的屏幕截图。](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
 10. 从动态内容选取器选择正文，并保存逻辑应用。   
 
-   ![“动态内容”字段](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
+   ![显示动态内容选取器的屏幕截图，可从中选择正文。](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
    基于时间间隔，触发器将轮询主要区域收到的控制编号表并提取新记录。
    操作会将这些记录更新到次要区域集成帐户中。 
@@ -205,7 +205,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
    
 3. 输入连接名称，从列表中选择“主要区域集成帐户”，并选择“创建”   。
 
-   ![主要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
+   ![屏幕截图，显示在创建 MIC 值时在何处输入连接名称。](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
 4. “开始同步 MIC 值的 DateTime”设置是可选的。  “频率”可以设置为“天”  、“小时”  、“分钟”  或“秒”  ，中间要有间隔。    
 

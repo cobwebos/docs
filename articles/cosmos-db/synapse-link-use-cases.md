@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319230"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568040"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB：准实时分析用例
 
@@ -70,7 +70,7 @@ ms.locfileid: "89319230"
 
 当前，零售商必须构建安全、可缩放且满足客户和业务需求的电子商务解决方案。 这些电子商务解决方案需要通过自定义的产品和套餐吸引客户，快速且安全地处理事务，将重点放在履约和客户服务上。 通过 Azure Cosmos DB 和最新的 Synapse Link for Azure Cosmos DB，零售商可以实时为客户生成个性化建议。 它们使用低延迟和可优化的一致性设置快速获取见解，如以下体系结构所示：
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="实时个性化设置中的 Azure Synapse Link for Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="供应链分析中的 Azure Synapse Link for Azure Cosmos DB " border="false":::
 
 Synapse Link for Azure Cosmos DB 用例：
 
@@ -82,7 +82,7 @@ Synapse Link for Azure Cosmos DB 用例：
 
 下面是利用 IoT 预测性维护中的 Azure Synapse Link for Azure Cosmos DB 的云原生 HTAP 功能的体系结构：
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="IOT 预测性维护中的 Azure Synapse Link for Azure Cosmos DB" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="供应链分析中的 Azure Synapse Link for Azure Cosmos DB " border="false" :::
 
 Synapse Link for Azure Cosmos DB 用例：
 
@@ -92,7 +92,7 @@ Synapse Link for Azure Cosmos DB 用例：
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>示例方案：适用于 Azure Cosmos DB 的 HTAP
 
-近十年，大量客户都在使用 Azure Cosmos DB，将其用于需要弹性缩放、统包全球分发、多主数据库复制的任务关键型应用程序，以实现事务工作负荷中读写操作的低延迟和高可用性。
+对于将近十年，Azure Cosmos DB 已由成千上万的客户用于需要弹性缩放的任务关键型应用程序，这些应用程序需要弹性缩放、全包式全局分发、多区域写入复制，以实现较低的延迟和高可用性，读取操作在其事务工作负荷中 & 写入。
  
 以下列表概述了操作数据支持的使用 Azure Cosmos DB 的各种工作负荷模式：
 
@@ -104,17 +104,17 @@ Synapse Link for Azure Cosmos DB 用例：
 
 借助 Azure Synapse Link，Azure Cosmos DB 对历史操作数据不仅可以执行事务工作负荷，还可以执行准实时分析工作负荷。 它在没有 ETL 要求的情况下发生，并保证了事务工作负荷的性能隔离。
 
-下图显示了使用 Azure Cosmos DB 的工作负荷模式：:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Synapse Link for Azure Cosmos DB 工作负荷模式" border="false":::
+下图显示了使用 Azure Cosmos DB 的工作负荷模式：:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="供应链分析中的 Azure Synapse Link for Azure Cosmos DB " border="false":::
 
 让我们以包含跨 20 个国家/地区的全球业务的电子商务公司 CompanyXYZ 为例，说明了选择 Azure Cosmos DB 作为同时满足库存管理平台的事务和分析要求的单一实时数据库的好处。
 
 * CompanyXYZ 的核心业务依赖于库存管理系统 – 因此可用性和可靠性是核心支柱要求。 使用 Azure Cosmos DB 的好处：
 
-  * 凭借与 Azure 基础结构和透明多主数据库全局复制的深度集成，Azure Cosmos DB 可针对区域性服务中断提供行业领先的 [99.999% 的高可用性](high-availability.md)。
+  * 由于与 Azure 基础结构的深度集成以及透明的多区域写入、全局复制，Azure Cosmos DB 提供行业领先的 [99.999% 的高可用性](high-availability.md) ，以应对地区性中断。
 
 * CompanyXYZ 的供应链合作伙伴可能位于不同的地理位置，但他们可能需要查看世界各地的产品库存的单一视图，以支持其本地操作。 这包括需要能够实时读取其他供应链合作伙伴所做的更新。 还能够进行更新，而无需担心与其他合作伙伴在高吞吐量方面发生冲突。 使用 Azure Cosmos DB 的好处：
 
-  * 凭借其独特的多主数据库复制协议和免闩锁且优化了写入的数据库引擎，Azure Cosmos DB 可保证全球任意位置第 99 个百分位的已编入索引的读取和写入延迟均低于 10 毫秒。
+  * 通过其唯一的多区域写入复制协议和无闩锁的写入优化事务存储，Azure Cosmos DB 确保在全局位置，为索引的读取和写入操作提供小于10毫秒的延迟。
 
   * 通过事务存储中的[实时索引](index-policy.md)，高吞吐量引入批处理和流式处理数据馈送。
 

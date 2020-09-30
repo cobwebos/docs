@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400377"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565667"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户配置和访问 Azure Database for MySQL 灵活服务器的慢速查询日志
 
@@ -31,15 +31,16 @@ ms.locfileid: "91400377"
 1. 选择您的灵活服务器。
 
 1. 在侧栏的“设置”部分，选择“服务器参数”。 
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot of Server logs options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/server-parameters.png" alt-text="服务器参数页面。":::
 
 1. 将 **slow_query_log** 参数更新为 **ON**。
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/slow-query-log-enable.png" alt-text="服务器参数页面。":::
 
 1. 更改所需的任何其他参数 (例如。 `long_query_time`, `log_slow_admin_statements`). 有关更多参数，请参阅 [慢速查询日志](./concepts-slow-query-logs.md#configure-slow-query-logging) 文档。  
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="服务器参数页面。":::
 
-1. 选择“保存”。 
-
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Screenshot of slow query log parameters and save."::: -->
+1. 选择“保存”  。 
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="服务器参数页面。":::
 
 在“服务器参数”  页上，可以通过关闭该页来返回到日志列表。
 
@@ -49,17 +50,17 @@ ms.locfileid: "91400377"
 
 1. 在边栏中的“监视”  部分下，选择“诊断设置”   > “添加诊断设置”  。
 
-   <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/add-diagnostic-setting.png" alt-text="服务器参数页面。":::
 
 1. 提供诊断设置名称。
 
 1. 指定 (存储帐户、事件中心或 Log Analytics 工作区) 发送慢查询日志的目标。
 
 1. 选择 **MySqlSlowLogs** 作为日志类型。
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/configure-diagnostic-setting.png" alt-text="服务器参数页面。":::
 
 1. 配置可以通过管道向其传送慢查询日志的数据接收器后，选择“保存”。 
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-diagnostic-setting.png" alt-text="服务器参数页面。":::
 
 1. 可以通过在配置的数据接收器中浏览慢查询日志来对其进行访问。 最多需要等待 10 分钟的时间，这些日志就会出现。
 

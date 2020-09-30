@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397328"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567989"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什么是 Azure Synapse Link for Azure Cosmos DB（预览版）？
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 分析存储已经过优化，可为分析工作负荷提供可�
 Azure Cosmos DB 分析存储遵循基于消耗的定价模型，该模型基于数据存储和分析读/写操作以及已执行的查询。 这不会要求你预配任何吞吐量，因为目前如此操作是为了事务工作负荷。 通过 Azure Synapse Analytics 中极具弹性的计算引擎来访问你的数据，使运行存储和计算的总体成本非常高效。
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>本地可用、全球分发的多主数据的分析
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>本地可用的分析、全球分布式多区域写入
 
 你可以高效地对 Azure Cosmos DB 中距离最近的区域的数据副本运行分析查询。 Azure Cosmos DB 提供了最先进的功能，可按主动-主动的方式运行全球分发的分析工作负荷和事务工作负荷。
 

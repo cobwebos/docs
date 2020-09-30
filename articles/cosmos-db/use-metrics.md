@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24f321e3c3c0fe8e85633edb505879874e8c772f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019226"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568006"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 * **一致性指标** - 此指标显示所选一致性模型的最终一致性。 对于多区域帐户，此指标还显示所选区域之间的复制延迟。
 
-* **系统指标** - 此指标显示主分区处理的元数据请求数。 此指标还有助于确定限制的请求数。
+* **系统指标** -此指标显示主分区提供的元数据请求数。 此指标还有助于确定限制的请求数。
 
 以下部分介绍可以使用 Azure Cosmos DB 指标的常见场景。 
 
@@ -51,13 +51,13 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 最常见的错误状态代码为 429（速率限制）。 此错误意味着对 Azure Cosmos DB 的请求超过预配的吞吐量。 此问题最常见的解决方案是为给定集合[纵向扩展 RU](./set-throughput.md)。
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="每分钟的请求数":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>确定跨分区的吞吐量分布
 
 对任何可伸缩应用程序而言，均必须具有良好的分区键基数。 若要确定任何由分区细分为分区容器的吞吐量分布，请导航到 [Azure 门户](https://portal.azure.com)中的“指标”边栏选项卡。 在“吞吐量”选项卡中，存储细目显示在“各物理分区占用的最大 RU 数/秒”图表中   。 下图显示一个示例介绍因最左侧的倾斜分区而产生的不良数据分布。
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="单个分区使用率高":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
 
 吞吐量分布不均可能导致热分区，进而造成请求受阻和需要重新分区  。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partition-data.md)。
 
@@ -65,11 +65,11 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 对任何可伸缩应用程序而言，均必须具有良好的分区基数。 若要确定任何按分区细分为分区容器的存储分布，请前往 [Azure 门户](https://portal.azure.com)中的“指标”边栏选项卡。 在“存储”选项卡中，存储细分显示在顶部分区键图表所占用的“数据 + 索引”存储中。 下图说明了数据存储的不良分布，如最左侧的倾斜分区所示。
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="不良数据分布示例":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
 
 可单击图表上的分区，深入查看当前造成分布倾斜的分区键。
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="分区键使分布倾斜":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Azure 门户中的 Cosmos DB 性能指标":::
 
 确定导致分布倾斜的分区键之后，可能需使用进一步分布的分区键重新执行容器分区。 若要深入了解如何在 Azure Cosmos DB 中进行分区，请参阅[在 Azure Cosmos DB 中进行分区和缩放](./partition-data.md)。
 

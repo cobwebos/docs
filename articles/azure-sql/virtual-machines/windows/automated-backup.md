@@ -13,21 +13,21 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa6a9114635ddc7935f7923a1552ad1583625ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299062"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565133"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>用于 Azure 虚拟机（资源管理器）的自动备份 v2
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](automated-backup-sql-2014.md)
-> * [SQL Server 2016/2017](automated-backup.md)
+> * [SQL Server 2016 +](automated-backup.md)
 
-自动备份 v2 在运行 SQL Server 2016/2017 Standard、Enterprise 或 Developer 版本的 Azure VM 上自动为所有现有数据库和新数据库配置[向 Microsoft Azure 的托管备份](https://msdn.microsoft.com/library/dn449496.aspx)。 这样，便可以配置使用持久 Azure Blob 存储的定期数据库备份。 自动备份 v2 依赖于 [SQL Server 基础架构即服务 (IaaS) 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。
+自动备份 v2 会自动为运行 SQL Server 2016 或更高版本的 Standard edition、Enterprise edition 或 Developer edition 的 Azure VM 上的所有现有数据库和新数据库配置 [托管 Microsoft Azure 备份](https://msdn.microsoft.com/library/dn449496.aspx) 。 这样，便可以配置使用持久 Azure Blob 存储的定期数据库备份。 自动备份 v2 依赖于 [SQL Server 基础架构即服务 (IaaS) 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -42,17 +42,14 @@ ms.locfileid: "91299062"
 
 - SQL Server 2016 或更高版本：Developer、Standard 或 Enterprise
 
-> [!IMPORTANT]
-> 自动备份 v2 适用于 SQL Server 2016 或更高版本。 如果使用的是 SQL Server 2014，可以使用自动备份 v1 来备份数据库。 有关详细信息，请参阅[适用于 SQL Server 2014 Azure 虚拟机 (VM) 的自动备份](automated-backup-sql-2014.md)。
+> [!NOTE]
+> 有关 SQL Server 2014，请参阅 [SQL Server 2014 的自动备份](automated-backup-sql-2014.md)。
 
 **数据库配置**：
 
-- 目标数据库必须使用完整恢复模式。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅[使用完整恢复模型的备份](https://technet.microsoft.com/library/ms190217.aspx)。
-- 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。
-- 目标数据库必须位于默认 SQL Server 实例或[正确安装](frequently-asked-questions-faq.md#administration)的命名实例上。 
-
-> [!NOTE]
-> 自动备份依赖于 **SQL Server IaaS 代理扩展**。 当前的 SQL 虚拟机库映像默认添加此扩展。 有关详细信息，请参阅 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。
+- 目标 _用户_ 数据库必须使用完整恢复模式。 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅[使用完整恢复模型的备份](https://technet.microsoft.com/library/ms190217.aspx)。 
+- 已在 [完全管理模式下](sql-vm-resource-provider-register.md#upgrade-to-full)向 SQL VM 资源提供程序注册了 SQL Server VM。 
+-  自动备份依赖于完整 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。 因此，只有默认实例或单个命名实例的目标数据库支持自动备份。 如果没有默认实例和多个命名实例，则 SQL IaaS 扩展失败，自动备份将不起作用。 
 
 ## <a name="settings"></a>设置
 下表描述了可为自动备份 v2 配置的选项。 实际配置步骤根据你使用的是 Azure 门户还是 Azure Windows PowerShell 命令而有所不同。
@@ -62,7 +59,7 @@ ms.locfileid: "91299062"
 | 设置 | 范围（默认值） | 说明 |
 | --- | --- | --- |
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2016/2017 Developer、Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
-| **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
+| **保持期** | 1-30 天（30 天） | 保留备份的天数。 |
 | **存储帐户** | Azure 存储帐户 | 用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和数据库 GUID。 |
 | **加密** |启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书位于指定的存储帐户中。 该证书使用具有相同命名约定的相同**自动备份**容器。 如果密码发生更改，则使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** |密码文本 | 加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |

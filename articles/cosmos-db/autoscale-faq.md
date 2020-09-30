@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707996"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567581"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中自动缩放预配吞吐量的常见问题解答
 
@@ -37,14 +37,14 @@ ms.locfileid: "90707996"
 每小时将向你收取系统在该小时内扩展到的最高吞吐量 `T` 的费用。 如果你的资源在这个小时内没有请求，或者缩放的范围未超出 `0.1 * Tmax`，则将向你收取最低 `0.1 * Tmax` 的费用。 请参考 Azure Cosmos DB [定价页面](https://azure.microsoft.com/pricing/details/cosmos-db/)了解详细信息。 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>自动缩放如何显示在我的帐单上？
-在单主数据库帐户中，每 100 RU/s 的自动缩放速率是标准（手动）预配吞吐量速率的 1.5 倍。 在账单上，你可看到现有的标准预配吞吐量计量。 此计量的数量乘以 1.5。 例如，如果系统在一小时内缩放到的最高 RU/s 为 6,000 RU/s，则该小时的计费是 60 * 1.5 = 90 个计量单位。
+在单个写入区域帐户中，每 100 RU/s 的自动缩放速率为 1.5 x 标准 (手动) 预配吞吐量的比率。 在账单上，你可看到现有的标准预配吞吐量计量。 此计量的数量乘以 1.5。 例如，如果系统在一小时内缩放到的最高 RU/s 为 6,000 RU/s，则该小时的计费是 60 * 1.5 = 90 个计量单位。
 
-在多主数据库帐户中，每 100 RU/s 的自动缩放速率与标准（手动）预配的多主数据库吞吐量速率相同。 在帐单上，你可看到现有的多主数据库计量。 由于速率相同，因此如果你使用自动缩放，你可看到与标准吞吐量相同的数量。
+在具有多个写入区域的帐户中，每 100 RU/s 的自动缩放速率与标准 (手动) 设置多个写入区域吞吐量的速率相同。 在帐单上，你将看到现有的多写入区域计量器。 由于速率相同，因此如果你使用自动缩放，你可看到与标准吞吐量相同的数量。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自动缩放是否可用于预留容量？
-是的。 购买单主帐户预留容量时，对计量的使用量应用自动缩放资源的预留折扣，即 1.5 * [特定区域的比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)。 
+是的。 为具有多个写入区域的帐户购买保留容量时，自动缩放资源的预订折扣将按 1.5 * [的比率应用](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)到计量器的比率。 
 
-多主帐户预留容量同样适用于自动缩放和标准（手动）预配吞吐量。 请参阅 [Azure Cosmos DB 预留容量](cosmos-db-reserved-capacity.md)
+对于自动缩放和标准 (手动) 预配的吞吐量，多写入区域保留容量相同。 请参阅 [Azure Cosmos DB 预留容量](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自动缩放是否可用于免费层？
 是的。 在免费层，可以对容器使用自动缩放吞吐量。 尚不支持具有自定义最大 RU/s 的自动缩放共享吞吐量数据库。 查看[免费层计费与自动缩放一起工作](understand-your-bill.md#billing-examples-with-free-tier-accounts)的方式。
@@ -52,7 +52,7 @@ ms.locfileid: "90707996"
 ### <a name="is-autoscale-supported-for-all-apis"></a>是否所有 API 都支持自动缩放？
 是的，所有 API 都支持自动缩放：Core (SQL)、Gremlin、Table、Cassandra 以及 MongoDB API。
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>多主数据库帐户是否支持自动缩放？
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>多区域写入帐户是否支持自动缩放？
 是的。 添加到 Azure Cosmos DB 帐户的每个区域都支持最大 RU/s。 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>如何对新数据库或容器启用自动缩放？

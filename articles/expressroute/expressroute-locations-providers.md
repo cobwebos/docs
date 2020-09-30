@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: fe16dbf756016150c86b4d0131b8750b46bacfaa
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 66b11a10e59ca0525c7836553a08a515ab4dc602
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448714"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568244"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -118,7 +118,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **孟买 2** | Airtel | 2 | 印度西部 | 10G | Airtel、Sify、Vodafone Idea |
 | **慕尼黑** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | 不适用 | 10G | DE-CIX |
 | **纽约** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | 不适用 | 10G，100G | CenturyLink Cloud Connect、Colt、Coresite、CIX、Equinix、InterCloud、Megaport、Packet、Zayo |
-| **Newport(Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | 英国西部 | 不适用 | British Telecom、Colt、Level 3 Communications、Next Generation Data |
+| **Newport(Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | 英国西部 | 不适用 | 英国电信、Colt、Jisc、Level 3 通信、下一代数据 |
 | **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 日本西部 | 10G，100G | 东京，Colt，Equinix，Internet 计划日本 Inc.-IIJ，Megaport，NTT 通信，NTT SmartConnect，Softbank |
 | **奥斯陆** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | 挪威东部 | 10G，100G | Global Connect、Megaport、Telenor、Telia 载波 |
 | **巴黎** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | 法国中部 | 10G，100G | 英国电信，CenturyLink Cloud Connect，Colt，Equinix，Intercloud，Interxion，橙色，Telia 载波，Zayo |

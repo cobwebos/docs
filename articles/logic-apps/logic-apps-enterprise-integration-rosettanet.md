@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072574"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565099"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>在 Azure 逻辑应用中交换 RosettaNet 消息以实现 B2B 企业集成
 
@@ -197,7 +197,7 @@ ms.locfileid: "87072574"
 
 1. 提供操作属性的信息：
 
-   ![提供操作详细信息](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![屏幕截图，显示你为操作属性提供信息的位置。](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
    | 属性 | 必须 | 说明 |
    |----------|----------|-------------|

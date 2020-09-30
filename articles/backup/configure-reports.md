@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180280"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567428"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -23,6 +23,7 @@ ms.locfileid: "89180280"
 ## <a name="supported-scenarios"></a>支持的方案
 
 - Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA、Microsoft Azure 恢复服务 (MARS) 代理、Microsoft Azure 备份服务器 (MABS) 和 System Center Data Protection Manager (DPM) 均支持备份报表。 对于 Azure 文件共享备份，将显示在2020年6月1日或之后创建的所有记录的数据。
+- 对于 Azure 文件共享备份，受保护实例上的数据当前不会显示在报表中 (默认值为零，所有备份项) 。
 - 对于 DPM 工作负载，DPM 版本 5.1.363.0 及更高版本和代理版本 2.0.9127.0 及更高版本支持备份报表。
 - 对于 MABS 工作负载，MABS 版本 13.0.415.0 及更高版本和代理版本 2.0.9170.0 及更高版本支持备份报表。
 - 只要将备份报告的数据发送到用户有权访问的 Log Analytics 工作区，就可以在所有备份项目、保管库、订阅和区域中查看备份报表。 若要查看一组保管库的报表，只需具有对 Log Analytics 工作区（保管库将数据发送到该工作区）的读取访问权限。 无需具有对单个保管库的访问权限。
@@ -70,7 +71,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 报表包含各种选项卡：
 
-##### <a name="summary"></a>“摘要”
+##### <a name="summary"></a>总结
 
 使用此选项卡可大致了解备份空间。 你可以快速查看备份项的总数、使用的云存储空间总量、受保护实例的数量以及每种工作负载类型的作业成功率。 有关特定备份项目类型的详细信息，请转到相应的选项卡。
 

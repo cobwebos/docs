@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487294"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568647"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure 时序见解 Gen1 资源管理器
+
+> [!CAUTION]
+> 这是一个 Gen1 的文章。
 
 本文介绍 Azure 时序见解 Gen1 [资源管理器 Web 应用](https://insights.timeseries.azure.com/)的功能和选项。 Azure 时序见解资源管理器演示了该服务提供的，可在你自己的环境中访问的强大数据可视化功能。
 
@@ -108,7 +111,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 使用**热度地图**可以快速发现给定查询中的唯一或异常数据系列。 仅有一个搜索术语能可视化为热度地图。
 
-    [![时序见解资源管理器热度地图图表 ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [时序见解资源管理器热度地图图表](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (媒体/时间系列-insights-资源管理器/tsi-ga-example-heatmap-charting.png # lightbox) 
 
 1. 通过选择或右键单击浏览事件时，会显示“事件”面板  。 在这里，可以查看所有原始事件并可将事件导出为 JSON 或 CSV 文件。 Azure 时序见解存储所有原始数据。
 

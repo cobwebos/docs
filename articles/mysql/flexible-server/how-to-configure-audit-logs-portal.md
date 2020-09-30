@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 9/21/2020
-ms.openlocfilehash: b8fe32a079358fda48c6f5ee0c7eec9894a543a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 9/29/2020
+ms.openlocfilehash: cadd384bc7d3222cbc5d1179271f7b4624c9224a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295900"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565804"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户配置和访问 Azure Database for MySQL 灵活服务器的审核日志
 
@@ -35,40 +35,37 @@ ms.locfileid: "91295900"
 1. 选择您的灵活服务器。
 
 1. 在侧栏的“设置”部分，选择“服务器参数”。 
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="Server parameters":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/server-parameters.png" alt-text="服务器参数":::
 
 1. 将 **audit_log_enabled** 参数更新为 ON。
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Enable audit logs":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-enabled.png" alt-text="服务器参数":::
 
 1. 通过更新 **audit_log_events** 参数，选择要记录的[事件类型](concepts-audit-logs.md#configure-audit-logging)。
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Audit log events":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-events.png" alt-text="服务器参数":::
 
-1. 通过更新 **audit_log_exclude_users** 参数添加不进行日志记录的 MySQL 用户。 通过提供 MySQL 用户名来指定用户。
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Audit log exclude users":::-->
+1. 通过更新 **audit_log_exclude_users** 和 **audit_log_include_users** 参数，添加要在日志记录中包含或排除的任何 MySQL 用户。 通过提供 MySQL 用户名来指定用户。
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="服务器参数":::
 
 1. 更改参数之后，可以单击“保存”。 也可以放弃所做的更改。
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Save":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/save-parameters.png" alt-text="服务器参数":::
 
 ## <a name="set-up-diagnostics"></a>设置诊断
-
-> [!NOTE]
-> 在部署过程中，与访问日志 Azure Monitor 诊断设置的集成正在部署，并且功能会很快可用。
 
 审核日志与 Azure Monitor 的诊断设置集成，可让你将日志通过管道传输到 Azure Monitor 日志、事件中心或 Azure 存储。
 
 1. 在侧栏的“监视”部分，选择“诊断设置” 。
 
-1. 单击 "+ 添加诊断设置"  <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Add diagnostic setting":::-->
+1. 单击 "+ 添加诊断设置"  :::image type="content" source="./media/how-to-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="服务器参数":::
 
 1. 提供诊断设置名称。
 
 1. 指定要将审核日志 (存储帐户、事件中心和/或 Log Analytics 工作区) 发送到的目标。
 
 1. 选择 **MySqlAuditLogs** 作为日志类型。
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Configure diagnostic setting"::: -->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="服务器参数":::
 
 1. 配置可以通过管道向其传输审核日志的数据接收器以后，即可单击“保存”。
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Save diagnostic setting":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="服务器参数":::
 
 1. 访问审核日志时，可以在配置的数据接收器中浏览它们。 可能需要等待长达 10 分钟的时间这些日志才会出现。
 

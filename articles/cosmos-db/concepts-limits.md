@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400054"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567547"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -154,11 +154,11 @@ Azure Cosmos DB 支持对容器、项和数据库等资源执行 [CRUD 和查询
 
 一旦查询之类的操作达到执行超时或响应大小限制，它会向客户端返回结果页和继续标记，以继续执行操作。 单个查询可以针对不同的页面/继续执行活动运行的持续时间没有实际的限制。
 
-Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或[资源令牌](secure-access-to-data.md)对容器、分区键或项等资源进行精细的访问控制。 下表列出了 Cosmos DB 中授权令牌的限制。
+Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或 [资源令牌](secure-access-to-data.md) 对资源（如容器、分区键或项）进行精细的访问控制。 下表列出了 Cosmos DB 中授权令牌的限制。
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 主令牌最长过期时间 | 15 分钟  |
+| 最大主令牌到期时间 | 15 分钟  |
 | 资源令牌最短过期时间 | 10 分钟  |
 | 资源令牌最长过期时间 | 默认为 24 小时。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制|
 | 令牌授权的最大时钟偏差| 15 分钟 |
@@ -171,7 +171,7 @@ Azure Cosmos DB 维护每个帐户的系统元数据。 此元数据可用于免
 
 | 资源 | 默认限制 |
 | --- | --- |
-|最大集合创建速率 u 分钟| 5|
+|每分钟最大集合创建速率| 5|
 |最大数据库创建速率/分钟|   5|
 |最大预配吞吐量每分钟更新速率| 5|
 

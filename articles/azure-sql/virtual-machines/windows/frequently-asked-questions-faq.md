@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483739"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566986"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 常见问题解答
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "89483739"
 
 1. 如何使 Azure VM 上的 SQL Server 通用化并使用它部署新 VM？
 
-   可以部署 Windows Server VM（不安装 SQL Server），并使用 [SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) 进程和 SQL Server 安装媒体将 Azure VM (Windows) 上的 SQL Server 通用化。 如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装介质。 没有软件保障的客户可以使用具有所需版本的 Azure 市场 SQL Server VM 映像中的安装介质。
+   可以部署 Windows Server VM（不安装 SQL Server），并使用 [SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) 进程和 SQL Server 安装媒体将 Azure VM (Windows) 上的 SQL Server 通用化。 如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装介质。 没有软件保障的客户可以使用具有所需版本的 Azure 市场 SQL Server VM 映像中的安装介质。
 
    另外，也可使用 Azure 市场中的 SQL Server 映像之一来将 Azure VM 上的 SQL Server 通用化。 请注意，在创建你自己的映像之前，必须在源映像中删除以下注册表项。 如果不这样做，可能会导致 SQL Server 安装程序的启动文件夹扩展以及/或者 SQL IaaS 扩展处于故障状态。
 
@@ -179,13 +179,21 @@ ms.locfileid: "89483739"
    
    可以，只要指定的实例是 SQL Server 上的唯一实例，且原始默认实例[已正确卸载](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance)。 如果没有默认实例，但是单个 SQL Server VM 上有多个命名实例，则 SQL Server IaaS 代理扩展将无法安装。 
 
-1. **是否可从 SQL Server VM 中完全删除 SQL Server？**
+1. **是否可以从 SQL Server VM 中删除 SQL Server 和关联的许可证帐单？**
 
-   是的，但仍将按照 [SQL Server Azure VM 的定价指南](pricing-guidance.md)收取 SQL Server VM 费用。 如果不再需要 SQL Server，可以部署新的虚拟机并将数据和应用程序迁移到新的虚拟机。 然后可以删除 SQL Server 虚拟机。
+   是的，但你需要采取额外的措施来避免按 [定价指南](pricing-guidance.md)中所述为 SQL Server 实例付费。 如果要完全删除 SQL Server 实例，则可以迁移到其他 Azure VM，而无需 SQL Server 预装 VM 并删除当前 SQL Server VM。 如果要保留 VM，但要停止 SQL Server 计费，请执行以下步骤： 
+
+   1. 如有必要，请备份所有数据，包括系统数据库。 
+   1. 完全卸载 SQL Server，包括 SQL IaaS 扩展 (（如果存在）) 。
+   1. 安装免费的 [SQL Express edition](https://www.microsoft.com/sql-server/sql-server-downloads)。
+   1. 在 [轻型模式下](sql-vm-resource-provider-register.md)向 SQL VM 资源提供程序注册。
+   1.  (可选) 禁用服务启动来禁用 Express SQL Server 服务。 
 
 1. **是否可以使用 Azure 门户来管理同一 VM 上的多个实例？**
+
    不是。 门户管理由 SQL VM 资源提供程序提供，该提供程序依赖于 SQL Server IaaS 代理扩展。 同样，此限制也适用于资源提供程序作为扩展。 只要一个默认实例或一个命名实例的配置正确，门户就只能管理一个默认实例。 有关详细信息，请参阅 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md) 
-   
+
+
 ## <a name="updating-and-patching"></a>更新和修补
 
 1. **如何实现在 Azure VM 中更改为不同版本的 SQL Server？**
@@ -221,7 +229,7 @@ ms.locfileid: "89483739"
 
 1. SQL Server VM 与 SQL 数据库服务之间的差别是什么？
 
-   从概念上讲，在 Azure 虚拟机上运行 SQL Server 与在远程数据中心运行 SQL Server 并没什么不同。 与此相反， [AZURE SQL 数据库](../../database/sql-database-paas-overview.md) 提供数据库即服务。 使用 SQL 数据库时，无法访问托管数据库的计算机。 有关完整比较，请参阅[选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)](../../azure-sql-iaas-vs-paas-what-is-overview.md)。
+   从概念上讲，在 Azure 虚拟机上运行 SQL Server 与在远程数据中心运行 SQL Server 并没什么不同。 相比之下，[Azure SQL 数据库](../../database/sql-database-paas-overview.md) 可提供数据库即服务。 使用 SQL 数据库时，无法访问托管数据库的计算机。 有关完整比较，请参阅[选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)](../../azure-sql-iaas-vs-paas-what-is-overview.md)。
 
 1. **如何在 Azure VM 上安装 SQL Data Tools？**
 

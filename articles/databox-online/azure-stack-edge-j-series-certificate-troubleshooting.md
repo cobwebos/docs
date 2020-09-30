@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891326"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568346"
 ---
 # <a name="troubleshooting-certificate-errors"></a>证书错误疑难解答
 
@@ -30,7 +30,6 @@ ms.locfileid: "90891326"
 |---|---|
 | CertificateManagement_UntrustedCertificate | 使用者名称的证书 {0} 的证书链已断开。 上传签名链证书，然后上载此证书。|
 | CertificateManagement_DeviceNotRegistered| 你的设备未激活。 只能在激活后上传支持证书。|
-| CertificateManagement_EmptySAN | 使用者名称的证书没有 {0} 使用者备用名称。 检查证书属性并引入新证书。|
 | CertificateManagement_ExpiredCertificate | 类型的证书 {0} 已过期或即将过期。 检查证书过期时间，并在需要时引入新证书。|
 | CertificateManagement_FormatMismatch | 不支持证书格式。 检查证书格式，并根据需要引入新证书。  应为 {0} ，找到 {1} 。 |
 | CertificateManagement_GenericError | 无法执行证书管理操作。 请在几分钟后重试此操作。 如果问题持续出现，请联系 Microsoft 支持。 |
@@ -42,7 +41,6 @@ ms.locfileid: "90891326"
 | CertificateManagement_KeySizeNotSufficient | 使用者名称的证书 {0} 没有足够的密钥大小 {1} 。 最小密钥大小为4096。|
 | CertificateManagement_MissingClientOid | 使用者名称的证书没有 {0} 客户端身份验证 OID。 检查证书属性，如果需要，请引入新证书。|
 | CertificateManagement_MissingDigitalSignatureKeyUsage | 使用者名称的证书 {0} 在密钥使用中没有数字签名。 检查证书属性，如果需要，请引入新证书。 |
-| CertificateManagement_MissingEntryInSAN | 使用者名称的证书 {0} 在使用者可选名称中没有使用者名称条目。 检查证书属性并引入新证书。 |
 | CertificateManagement_MissingKeyCertSignKeyUsage | 使用者名称的证书 {0} 在密钥使用中没有证书签名。 检查证书属性，如果需要，请引入新证书。|
 | CertificateManagement_MissingKeyEnciphermentKeyUsage | 使用者名称的证书 {0} 在密钥使用中没有密钥加密。 检查证书属性，如果需要，请引入新证书。 |
 | CertificateManagement_MissingServerOid | 使用者名称的证书没有 {0} 服务器身份验证 OID。 检查证书属性，如果需要，请引入新证书。|
@@ -55,6 +53,10 @@ ms.locfileid: "90891326"
 | CertificateManagement_SubjectNamesInvalid | 使用者名称的证书没有 {0} 证书的正确使用者名称或使用者备用名称 {1} 。 检查已上传的证书，如果需要，请引入新证书。 还应检查 DNS 名称以匹配 SAN 名称。|
 | CertificateManagement_UnreadableCertificate | 无法读取类型的证书 {0} 。 如果证书不可读或已损坏，则会出现此错误。 引入新证书。|
 | CertificateSubjectNotFound | 找不到使用者名称的证书 {0} 。 引入新证书。|
+| CertificateRotationGenericFailure | 一个或多个证书轮换失败。 几分钟后重试。 如果问题持续出现，请联系 Microsoft 支持。|
+| CertificateImportFailure | {0}节点上未导入具有指纹的证书 {1} 。 如果问题持续出现，请联系 Microsoft 支持。 |
+| CertificateApplyFailure | {0}节点上未应用具有指纹的证书 {1} 。 如果问题持续出现，请联系 Microsoft 支持。|
+| NodeNotReachable | 无法在上验证证书 {0} 。 检查系统硬件和软件运行状况。|
 
 ## <a name="next-steps"></a>后续步骤
 

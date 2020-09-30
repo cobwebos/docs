@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279548"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566936"
 ---
 启用共享磁盘仅适用于磁盘类型的子集。 目前只有超磁盘和高级 Ssd 可以启用共享磁盘。 已启用共享磁盘的每个托管磁盘受到下列限制，按磁盘类型进行组织：
 
@@ -30,7 +30,6 @@ ms.locfileid: "91279548"
 
 ### <a name="premium-ssds"></a>高级 SSD
 
-- 目前仅在 [部分区域](#regional-availability)中受支持。
 - 目前仅限于 Azure 资源管理器或 SDK 支持。 
 - 只能对数据磁盘而不是 OS 磁盘启用。
 - **ReadOnly** 主机缓存不可用于的高级 ssd `maxShares>1` 。
@@ -42,24 +41,4 @@ ms.locfileid: "91279548"
 
 #### <a name="regional-availability"></a>区域可用性
 
-仅在以下区域支持共享高级 Ssd：
-
-- 美国东部
-- 美国东部 2
-- 美国西部
-- 美国西部 2
-- 美国中西部
-- 美国中南部
-- 美国中北部
-- 美国中部
-- 西欧
-- 北欧
-- 韩国中部
-- 加拿大中部
-- 加拿大东部
-- 日本东部
-- 日本西部
-- 东南亚
-- 东亚
-- US Gov 弗吉尼亚州
-- US Gov 亚利桑那州
+共享的高级 Ssd 在托管磁盘可用的所有区域中都可用。

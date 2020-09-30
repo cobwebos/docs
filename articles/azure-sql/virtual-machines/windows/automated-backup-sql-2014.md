@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 25f3b1e6a01ba190dffaa8c43534a5e23b7d9b23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299104"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565116"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机（资源管理器）的自动备份
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,27 +34,24 @@ ms.locfileid: "91299104"
 ## <a name="prerequisites"></a>先决条件
 若要使用自动备份，请考虑以下先决条件：
 
+
 **操作系统**：
 
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 及更高版本 
 
 **SQL Server 版本**：
 
 - SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
 
-> [!IMPORTANT]
-> 自动备份适用于 SQL Server 2014。 如果使用的是 SQL Server 2016/2017，可使用自动备份 v2 来备份数据库。 有关详细信息，请参阅 [SQL Server 2016 Azure 虚拟机的自动备份 v2](automated-backup.md)。
+> [!NOTE]
+> 对于 SQL 2016 及更高版本，请参阅 [SQL Server 2016 的自动备份](automated-backup.md)。
 
 **数据库配置**：
 
-- 目标数据库必须使用完整恢复模式。 如需深入了解完整恢复模式对备份产生的影响，请参阅[完整恢复模式下的备份](https://technet.microsoft.com/library/ms190217.aspx)。
-- 目标数据库必须位于默认 SQL Server 实例上。 SQL Server IaaS 代理扩展不支持命名实例。
-
-> [!NOTE]
-> 自动备份依赖 SQL Server IaaS 代理扩展。 当前的 SQL 虚拟机库映像默认添加此扩展。 有关详细信息，请参阅 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。
+- 目标 _用户_ 数据库必须使用完整恢复模式。 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。 如需深入了解完整恢复模式对备份产生的影响，请参阅[完整恢复模式下的备份](https://technet.microsoft.com/library/ms190217.aspx)。 
+- 已在 [完全管理模式下](sql-vm-resource-provider-register.md#upgrade-to-full)向 SQL VM 资源提供程序注册了 SQL Server VM。 
+-  自动备份依赖于完整 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。 因此，只有默认实例或单个命名实例的目标数据库支持自动备份。 如果没有默认实例和多个命名实例，则 SQL IaaS 扩展失败，自动备份将不起作用。 
 
 ## <a name="settings"></a>设置
 
@@ -63,7 +60,7 @@ ms.locfileid: "91299104"
 | 设置 | 范围（默认值） | 说明 |
 | --- | --- | --- |
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2014 Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
-| **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
+| **保持期** | 1-30 天（30 天） | 保留备份的天数。 |
 | **存储帐户** | Azure 存储帐户 | 用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 会在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和计算机名称。 |
 | **加密** | 启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书会使用相同的命名约定存放在同一 `automaticbackup` 容器中的指定存储帐户内。 如果密码发生更改，则使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** | 密码文本 | 加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |

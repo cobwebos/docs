@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 24f15b8a4d5a5afd3a2794fe686d3acb0036cdd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91529913"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565320"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID 代理 (预览) 
 
@@ -28,16 +28,6 @@ ms.locfileid: "91529913"
 
 HIB 提供身份验证基础结构，该基础结构允许从 OAuth (新式) 到 Kerberos (旧的) ，无需将密码哈希同步到 AAD DS。 此基础结构包含在 Windows Server VM 上运行的组件 (ID 代理节点) 以及群集网关节点。
 
-下图显示了启用 ID 代理后所有用户（包括联合用户）的新式基于 OAuth 的身份验证流：
-
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="采用 ID 代理的身份验证流":::
-
-在此图中，客户端 (（即浏览器或应用) 需要首先获取 OAuth 令牌，然后向 HTTP 请求中的网关提供令牌。 如果已登录到其他 Azure 服务（例如 Azure 门户），可以使用单一登录 (SSO) 体验登录到 HDInsight 群集。
-
-仍有许多仅支持基本身份验证的旧版应用程序 (即用户名/密码) 。 对于这些方案，你仍可以使用 HTTP 基本身份验证连接到群集网关。 在此设置中，你必须确保从网关节点到联合终结点的网络连接 (ADFS 终结点) ，以确保可从网关节点直接看到行。
-
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="采用 ID 代理的身份验证流":::
-
 根据组织的需要，使用下表确定最佳身份验证选项：
 
 |身份验证选项 |HDInsight 配置 | 要考虑的因素 |
@@ -45,6 +35,18 @@ HIB 提供身份验证基础结构，该基础结构允许从 OAuth (新式) 到
 | 完全 OAuth | ESP + HIB | 1. 支持) 2 (MFA 的最安全选项。    不需要传递哈希同步。 3.  无 kinit/keytab 访问权限，无法访问 AAD-DS 中没有密码哈希的本地帐户。 4.   仅限云的帐户可为 ssh/kinit/keytab。 5. 通过 Oauth 6 对 Ambari 进行基于 Web 的访问。  需要 (JDBC/ODBC 等 ) 更新旧版应用程序以支持 OAuth。|
 | OAuth + 基本身份验证 | ESP + HIB | 1. 通过 Oauth 2 对 Ambari 的基于 Web 的访问。 旧应用继续使用基本身份验证3。 必须禁用 MFA 才能进行基本身份验证访问。 4. 不需要传递哈希同步。 5. 无 kinit/keytab 访问权限，无法访问 AAD-DS 中没有密码哈希的本地帐户。 6. 仅限云的帐户仍可以 ssh/kinit。 |
 | 完全基本身份验证 | ESP | 1. 最类似于本地的设置。 2. 需要将密码哈希同步到 AAD-DS。 3. 本地帐户可以使用 ssh/kinit 或使用 keytab。 4. 如果支持存储 ADLS Gen2，则必须禁用 MFA |
+
+下图显示了启用 ID 代理后所有用户（包括联合用户）的新式基于 OAuth 的身份验证流：
+
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="采用 ID 代理的身份验证流":::
+
+在此图中，客户端 (（即浏览器或应用) 需要首先获取 OAuth 令牌，然后向 HTTP 请求中的网关提供令牌。 如果已登录到其他 Azure 服务（例如 Azure 门户），可以使用单一登录 (SSO) 体验登录到 HDInsight 群集。
+
+仍有许多仅支持基本身份验证的旧版应用程序 (即用户名/密码) 。 对于这些方案，你仍可以使用 HTTP 基本身份验证连接到群集网关。 在此设置中，你必须确保从网关节点到联合终结点的网络连接 (AD FS 终结点) ，以确保可从网关节点直接看到行。 
+
+下图显示了联合用户的基本身份验证流程。 首先，网关尝试使用 [ROPC flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) 完成身份验证，如果没有 Azure AD 的密码哈希同步，则它会回退到发现 AD FS 终结点并通过访问 AD FS 终结点完成身份验证。
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="采用 ID 代理的身份验证流":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>启用 HDInsight ID 代理

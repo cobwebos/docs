@@ -3,12 +3,12 @@ title: 对访问 Azure 事件中心资源的应用程序进行身份验证
 description: 本文提供有关对使用 Azure Active Directory 访问 Azure 事件中心资源的应用程序进行身份验证的信息
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b4456f63ce6d50ab1187f65deb1ee3280487580
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531517"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566323"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>对使用 Azure Active Directory 访问事件中心资源的应用程序进行身份验证
 Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用程序提供了集成的访问控制管理功能。 将 Azure AD 与 Azure 事件中心配合使用的主要优势在于，不再需要将凭据存储在代码中。 可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 请求令牌的资源名称为 `https://eventhubs.azure.net/`（对于 Kafka 客户端，请求令牌的资源为 `https://<namespace>.servicebus.windows.net`）。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure 事件中心资源请求授权。
@@ -19,11 +19,13 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 > 角色定义是权限的集合。 基于角色的访问控制 (RBAC) 控制如何通过角色分配实施这些权限。 角色分配包含三个要素：安全主体、角色订阅和范围。 有关详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Azure 事件中心的内置角色
-Azure 提供以下 Azure 内置角色，用于授权使用 Azure AD 和 OAuth 访问事件中心数据：
+Azure 提供了以下 Azure 内置角色，用于通过 Azure AD 和 OAuth 授予对事件中心数据的访问权限：
 
 - [Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)：使用此角色可以授予对事件中心资源的完全访问权限。
 - [Azure 事件中心数据发送者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可以授予对事件中心资源的发送访问权限。
 - [Azure 事件中心数据接收者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可以授予对事件中心资源的接收访问权限。   
+
+有关架构注册表内置角色，请参阅 [架构注册表角色](schema-registry-overview.md#role-based-access-control)。
 
 > [!IMPORTANT]
 > 预览版支持向“所有者”或“参与者”角色添加事件中心数据访问特权。 但是，不再授予“所有者”和“参与者”角色的数据访问特权。 如果使用“所有者”或“参与者”角色，请改用“Azure 事件中心数据所有者”角色。
@@ -41,7 +43,7 @@ Azure 提供以下 Azure 内置角色，用于授权使用 Azure AD 和 OAuth �
 
     ![选择事件中心](./media/authenticate-application/select-event-hub.png)
 1. 选择“访问控制(IAM)”以显示事件中心的访问控制设置。 
-1. 选择“角色分配”  选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。 
+1. 选择“角色分配”选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。 
 
     ![工具栏上的“添加”按钮](./media/authenticate-application/role-assignments-add-button.png)
 1. 在“添加角色分配”  页上，执行以下步骤：
@@ -107,8 +109,8 @@ Azure 提供以下 Azure 内置角色，用于授权使用 Azure AD 和 OAuth �
     此示例已更新为使用最新 **Azure.Messaging.EventHubs** 库。
 
 ## <a name="next-steps"></a>后续步骤
-- 若要了解有关 RBAC 的详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)？
-- 若要了解如何分配和管理 Azure PowerShell、Azure CLI 或 REST API 的 Azure 角色分配，请参阅以下文章：
+- 若要详细了解 RBAC，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)？
+- 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 分配和管理 Azure 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-powershell.md)  
     - [使用 Azure CLI 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-cli.md)
     - [使用 REST API 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-rest.md)

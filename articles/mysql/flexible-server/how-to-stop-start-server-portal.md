@@ -5,16 +5,15 @@ author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: b9f406035d32a9af9ba2f5b085bcaca1b51e9d92
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/29/2020
+ms.openlocfilehash: e3e08ae9bbf00e1c9a44e6ba913cac1d842928b7
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933385"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567465"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>停止/启动 Azure Database for MySQL 灵活的服务器 (预览版) 
-
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -32,6 +31,12 @@ ms.locfileid: "90933385"
 1.  在 [Azure 门户](https://portal.azure.com/)中，选择要停止的灵活服务器。
 
 2.  从 " **概述** " 页上，单击工具栏中的 " **停止** " 按钮。
+    
+    :::image type="content" source="media/how-to-stop-start-server-portal/stop-server.png" alt-text="停止灵活的服务器。"::: 
+
+3.  单击 **"是"** 以确认停止服务器。
+
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="停止灵活的服务器。"::: 
 
 > [!NOTE]
 > 停止服务器后，其他管理操作将不能用于灵活的服务器。
@@ -40,7 +45,9 @@ ms.locfileid: "90933385"
 
 1.  在 [Azure 门户](https://portal.azure.com/)中，选择要启动的灵活服务器。
 
-2.  从 " **概述** " 页上，单击工具栏中的 " **停止** " 按钮。
+2.  从 " **概述** " 页上，单击工具栏中的 " **开始** " 按钮。
+
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="停止灵活的服务器。":::  
 
 > [!NOTE]
 > 服务器启动后，所有管理操作现在都可用于灵活的服务器。

@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 授予访问权限
 description: 本文提供有关使用 Azure Active Directory 授权访问事件中心资源的信息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d26838831964b66beea4ed1e3c6e9873cfce247e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270026"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566255"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
 Azure 事件中心支持使用 Azure Active Directory (Azure AD) 授权对事件中心资源的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -35,11 +35,11 @@ Azure 提供了以下 Azure 内置角色，用于通过 Azure AD 和 OAuth 授�
 
 | 角色 | 说明 | 
 | ---- | ----------- | 
-[Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | 使用此角色可以授予对事件中心资源的完全访问权限。 |
+| [Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | 使用此角色可以授予对事件中心资源的完全访问权限。 |
 | [Azure 事件中心数据发送者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | 使用此角色可以授予对事件中心资源的发送访问权限。 |
 | [Azure 事件中心数据接收方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | 使用此角色可以授予对事件中心资源的使用/接收访问权限。 |
-| 架构注册表读取器 (预览)  | 阅读并列出架构注册表组和架构。 |
-| 架构注册表参与者 (预览)  | 读取、写入和删除架构注册表组和架构。 |
+
+有关架构注册表内置角色，请参阅 [架构注册表角色](schema-registry-overview.md#role-based-access-control)。
 
 ## <a name="resource-scope"></a>资源范围 
 向安全主体分配 Azure 角色之前，请确定安全主体应具有的访问权限的范围。 最佳做法指出，最好是授予尽可能小的范围。

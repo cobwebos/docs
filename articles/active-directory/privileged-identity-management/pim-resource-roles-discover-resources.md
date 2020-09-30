@@ -11,31 +11,34 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4852f841fc9ac8ebea586d5e24967a1db20b8044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743705"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568074"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>在 Privileged Identity Management 中发现要管理的 Azure 资源
 
-使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可加强对 Azure 资源的保护。 这对于已使用 Privileged Identity Management 保护 Azure AD 角色的组织、对于管理组以及希望保护生产资源的订阅所有者非常有用。
+使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可加强对 Azure 资源的保护。 这有助于：
 
-首次为 Azure 资源设置 Privileged Identity Management 时，需要发现并选择要使用 Privileged Identity Management 保护的资源。 可使用 Privileged Identity Management 管理的资源数量没有限制。 但是，我们建议从最重要的（生产）资源开始。
+- 已使用 Privileged Identity Management 保护 Azure AD 角色的组织
+- 尝试保护生产资源的管理组和订阅所有者
+
+首次为 Azure 资源设置 Privileged Identity Management 时，需要发现并选择要使用 Privileged Identity Management 保护的资源。 可使用 Privileged Identity Management 管理的资源数量没有限制。 但是，我们建议从最关键的生产资源着手。
 
 ## <a name="discover-resources"></a>发现资源
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。 
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“Azure 资源”  。
+1. 选择“Azure 资源” 。
 
-    如果这是首次将 Privileged Identity Management 用于 Azure 资源，则会显示“发现资源”  页。
+    如果这是首次将 Privileged Identity Management 用于 Azure 资源，则会显示“发现资源”**** 页。
 
     ![首次体验时没有列出资源的“发现资源”窗格](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
@@ -43,24 +46,27 @@ ms.locfileid: "84743705"
 
     ![列出当前正在托管的资源的“发现资源”窗格](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-1. 选择“发现资源”以启动发现之旅  。
+1. 选择“发现资源”以启动发现之旅****。
 
-    ![列出可托管的资源（如订阅和管理组）的“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    !["发现" 窗格列出了可管理的资源，例如订阅和管理组](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. 在“发现”页上，使用“资源状态筛选器”和“选择资源类型”筛选你对其具有写入权限的管理组或订阅    。 最初从“所有”开始可能会最简单  。
+1. 在“发现”页上，使用“资源状态筛选器”和“选择资源类型”筛选你对其具有写入权限的管理组或订阅************。 最初从“所有”开始可能会最简单****。
 
-    只能搜索并选择要使用 Privileged Identity Management 管理的管理组或订阅资源。 在 Privileged Identity Management 中管理管理组或订阅时，还可以管理其子资源。
+   可以在 Privileged Identity Management 中搜索和选择要管理的管理组或订阅资源。 在 Privileged Identity Management 中管理管理组或订阅时，还可以管理其子资源。
 
-1. 选中要管理的任何非托管资源旁边的复选框。
+   > [!Note]
+   > 将新的子 Azure 资源添加到 PIM 管理的管理组中时，可以通过在 PIM 中搜索子资源来将其置于管理下。
 
-1. 选择“管理资源”以开始管理所选资源  。
+1. 选择要管理的任何非托管资源。
+
+1. 选择“管理资源”以开始管理所选资源****。
 
     > [!NOTE]
     > 管理组或订阅已托管后，就无法取消托管。 这可防止其他资源管理员删除 Privileged Identity Management 设置。
 
     ![已选择资源并突出显示“管理资源”选项的“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 如果看到确认加入要管理的所选资源的消息，请选择“是”  。
+1. 如果看到确认加入要管理的所选资源的消息，请选择“是”****。
 
     ![确认加入所选资源以进行管理的消息](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 

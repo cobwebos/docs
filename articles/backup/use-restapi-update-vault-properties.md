@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 更新保管库配置。
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007105"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567819"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
 
@@ -30,13 +30,13 @@ ms.locfileid: "89007105"
 若要获取保管库的当前软删除状态，请使用以下 GET 操作
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 GET URI 包含参数 `{subscriptionId}`、`{vaultName}` 和 `{vaultresourceGroupName}`。 在本示例中，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 由于 URI 中提供了所有必需的参数，因此无需单独的请求正文。
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>响应
@@ -65,16 +65,16 @@ GET 操作的成功响应如下所示：
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>使用 REST API 更新软删除状态
 
-若要使用 REST API 更新恢复服务保管库的软删除状态，请使用以下 *修补* 操作
+若要使用 REST API 更新恢复服务保管库的软删除状态，请使用以下 *PUT* 操作
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-PATCH URI 包含参数 `{subscriptionId}`、`{vaultName}` 和 `{vaultresourceGroupName}`。 在本示例中，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 如果将 URI 替换为上述值，则 URI 将如下所示。
+PUT URI 具有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 参数。 在本示例中，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 如果将 URI 替换为上述值，则 URI 将如下所示。
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>创建请求正文

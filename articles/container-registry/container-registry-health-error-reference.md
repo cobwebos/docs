@@ -1,14 +1,14 @@
 ---
-title: 运行状况检查的错误参考信息
+title: 注册表状况检查的错误引用
 description: 在 Azure 容器注册表中运行 az acr check-health 命令时出现的问题的错误代码及可能的解决方法
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978308"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565592"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考
 
@@ -90,7 +90,7 @@ ms.locfileid: "82978308"
 
 此错误表示客户端无法与容器注册表建立安全连接。 如果运行或使用代理服务器，则往往会发生此错误。
 
-*可能的解决方法*：可[在此处](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy)找到有关如何使用代理的详细信息。
+*可能的解决方法*：可[在此处](/cli/azure/use-cli-effectively)找到有关如何使用代理的详细信息。
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

@@ -3,12 +3,12 @@ title: 媒体图概念 - Azure
 description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文提供了媒体图概念的详细说明。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567923"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567072"
 ---
 # <a name="media-graph"></a>媒体图
 
@@ -41,7 +41,7 @@ IoT Edge 上的实时视频分析支持不同类型的源、处理器和接收�
 以下状态图显示了图形拓扑和图形实例的生命周期。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="图形拓扑和图形实例生命周期":::
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="媒体图":::
 
 首先[创建图形拓扑](direct-methods.md#graphtopologyset)。 然后对每个要使用此拓扑处理的实时视频源，[创建图形实例](direct-methods.md#graphinstanceset)。 
 
@@ -70,7 +70,7 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="rtsp-source"></a>RTSP 源 
 
-通过 RTSP 源节点，你可以从 [RTSP](https://tools.ietf.org/html/rfc2326 服务器引入媒体。 监控和基于 IP 的照相机使用名为 RTSP（实时流式处理协议）的协议传输它们的数据，这不同于其他类型的设备（例如手机和摄像机）。 此协议用于建立和控制服务器（照相机）和客户端之间的媒体会话。 媒体图中的 RTSP 源节点充当客户端，可以与 RTSP 服务器建立会话。 许多设备（例如大多数 [IP 照相机](https://en.wikipedia.org/wiki/IP_camera)）有内置的 RTSP 服务器。 [ONVIF](https://www.onvif.org/) 强制要求在 [Profile G、S 和 T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 兼容设备的定义中支持 RTSP。 RTSP 源节点要求你指定 RTSP URL 以及凭据才能启用经过身份验证的连接。
+使用 RTSP 源节点可以从 [RTSP](https://tools.ietf.org/html/rfc2326 server)中引入媒体。 监控和基于 IP 的照相机使用名为 RTSP（实时流式处理协议）的协议传输它们的数据，这不同于其他类型的设备（例如手机和摄像机）。 此协议用于建立和控制服务器（照相机）和客户端之间的媒体会话。 媒体图中的 RTSP 源节点充当客户端，可以与 RTSP 服务器建立会话。 许多设备（例如大多数 [IP 照相机](https://en.wikipedia.org/wiki/IP_camera)）有内置的 RTSP 服务器。 [ONVIF](https://www.onvif.org/) 强制要求在 [Profile G、S 和 T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 兼容设备的定义中支持 RTSP。 RTSP 源节点要求你指定 RTSP URL 以及凭据才能启用经过身份验证的连接。
 
 #### <a name="iot-hub-message-source"></a>IoT 中心消息源 
 

@@ -2,26 +2,21 @@
 title: 排查 Kerberos 约束委派应用代理问题
 description: 排查应用程序代理的 Kerberos 约束委派配置问题
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760433"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568734"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -165,8 +160,8 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 ## <a name="other-scenarios"></a>其他方案
 
-- 在将请求发送至应用程序前，Azure 应用程序代理将请求 Kerberos 票证。 某些第三方应用程序不像这种身份验证方法。 这些应用程序希望进行更多常规协商。 首个请求为匿名请求，允许应用程序响应通过 401 支持的身份验证类型。
-- 多跃点身份验证常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL Server Reporting Services。 若要配置多跃点方案，请参阅支持文章[Kerberos 约束委派在多跃点方案中可能需要协议转换](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
+- 在将请求发送至应用程序前，Azure 应用程序代理将请求 Kerberos 票证。 某些第三方应用程序不像这种身份验证方法。 这些应用程序希望进行更多常规协商。 首个请求为匿名请求，允许应用程序响应通过 401 支持的身份验证类型。 可以使用本文档中所述的步骤启用这种类型的 Kerberos 协商： [用于单一登录的 Kerberos 约束委派](application-proxy-configure-single-sign-on-with-kcd.md)。
+- 多跃点身份验证常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL Server Reporting Services。 若要配置多跃点方案，请参阅支持文章 [Kerberos 约束委派在多跃点方案中可能需要协议转换](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
 
 ## <a name="next-steps"></a>后续步骤
 

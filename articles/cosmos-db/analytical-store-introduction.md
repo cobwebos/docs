@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253184"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567139"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB 分析存储（预览版）是什么？
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 分析存储解决了传统 ETL 管道所具有的复杂和延�
 
 下图说明了 Azure Cosmos DB 中的事务性行存储与分析列存储：
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 中的事务性行存储与分析列存储" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="示例操作表" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>分析工作负荷性能已分离
 
@@ -91,7 +91,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 ##### <a name="schema-representation"></a>架构表示形式
 
-在分析存储区中，架构表示形式有两种模式。 这些模式在列式表示形式、处理多态架构和简单的查询体验之间具有折衷：
+在分析存储中，架构表示形式有两种模式。 这些模式在简化列式表示形式、处理多态架构和简化查询体验之间进行了权衡：
 
 * 定义完善的架构表示形式
 * 完全保真架构表示形式
@@ -153,7 +153,7 @@ salary: 1000000
 |Int32  | "int32"  |123|
 |Int64  | "int64"  |255486129307|
 |Null   | "null"   | null|
-|String|    "string" | "ABC"|
+|字符串|    "string" | "ABC"|
 |时间戳 |    "timestamp" |  Timestamp (0，0) |
 |DateTime   |"date"    | ISODate ( "2020-08-21T07：43： 07.375 Z" ) |
 |ObjectId   |"objectId"    | ObjectId ( "5f3f7b59330ec25c132623a2" ) |
@@ -171,7 +171,7 @@ salary: 1000000
 
 ### <a name="security"></a>安全性
 
-对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
+对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 你可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>支持多个 Azure Synapse Analytics 运行时
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.custom: devx-track-js
+ms.openlocfilehash: 71bfff1b2ef75a13a3898d2fd9760dd60b83e3a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258837"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318307"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>教程：使用 Azure AD 进行端到端内容保护
 

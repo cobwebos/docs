@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398795"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568610"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>有关 Azure Synapse Link for Azure Cosmos DB 的常见问题
 
@@ -25,7 +25,7 @@ Azure Synapse Link for Azure Cosmos DB 在 Azure Cosmos DB 和 Azure Synapse Ana
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>多区域 Azure Cosmos 帐户是否支持 Synapse Link？
 
-是的，对于多区域 Azure Cosmos 帐户，存储在分析存储中的数据也是全球分布的。 无论是单一写入区域（单主数据库）还是多个写入区域（也称为多主数据库），都可以从最近的本地区域提供从 Azure Synapse Analytics 执行的分析查询。
+是的，对于多区域 Azure Cosmos 帐户，存储在分析存储中的数据也是全球分布的。 无论是单一写入区域还是多个写入区域，都可以从最近的本地区域提供从 Azure Synapse Analytics 执行的分析查询。
 
 计划配置具有分析存储支持的多区域 Azure Cosmos 帐户时，建议在创建帐户时添加所有必要的区域。
 
@@ -120,7 +120,7 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>对分析存储进行身份验证的方式有哪些？
 
-对分析存储进行身份验证的方式与对事务存储进行身份验证的方式相同。 对于给定的数据库，可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的所有用户都可以访问此链接服务。
+对分析存储进行身份验证的方式与对事务存储进行身份验证的方式相同。 对于给定的数据库，您可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的所有用户都可以访问此链接服务。
 
 ## <a name="synapse-run-times"></a>Synapse 运行时
 
@@ -150,7 +150,7 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 
 事务存储容器将使用以下图标表示：
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="使用事务存储启用的 Azure Cosmos DB 容器 - 图标":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="使用分析存储启用的 Azure Cosmos DB 容器 - 图标":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>如何从 Synapse Studio 传递 Azure Cosmos DB 凭据？
 

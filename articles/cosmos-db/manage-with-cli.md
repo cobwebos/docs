@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c248755c1f32d41b6926d4492dcc3d0eea2869b8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432837"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566867"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
@@ -19,7 +19,7 @@ ms.locfileid: "87432837"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 版本2.9.1 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本主题需要运行 Azure CLI 2.9.1 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos 帐户
 
@@ -87,10 +87,10 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
 
 ### <a name="enable-multiple-write-regions"></a>启用多个写入区域
 
-为 Cosmos 帐户启用多主数据库
+启用 Cosmos 帐户的多区域写入
 
 ```azurecli-interactive
-# Update an Azure Cosmos account from single to multi-master
+# Update an Azure Cosmos account from single write region to multiple write regions
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -148,7 +148,7 @@ az cosmosdb failover-priority-change --ids $accountId \
     --failover-policies 'East US 2=0' 'South Central US=1' 'West US 2=2'
 ```
 
-### <a name="list-all-account-keys"></a><a id="list-account-keys"></a>列出所有帐户密钥
+### <a name="list-all-account-keys"></a><a id="list-account-keys"></a> 列出所有帐户密钥
 
 获取 Cosmos 帐户的所有密钥。
 
@@ -335,7 +335,7 @@ az cosmosdb sql container create \
 
 ### <a name="create-a-container-with-autoscale"></a>使用自动缩放创建容器
 
-使用默认索引策略、分区键和自动缩放 RU/s （4000）创建 Cosmos 容器。
+使用默认索引策略、分区键且自动缩放 RU/s 为 4000 的 Cosmos 容器。
 
 ```azurecli-interactive
 # Create a SQL API container
