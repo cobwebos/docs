@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7583e35cad03927d003de7a836de03af091b55eb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116071"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569690"
 ---
 # <a name="work-with-azure-cosmos-account"></a>使用 Azure Cosmos 帐户
 
@@ -21,7 +21,7 @@ Azure Cosmos DB 是完全托管的平台即服务 (PaaS)。 若要开始使用 A
 
 Azure Cosmos 帐户是全局分配和高可用性的基本单元。 要在多个 Azure 区域之间全局分配数据和吞吐量，随时可在 Azure Cosmos 帐户中添加和删除 Azure 区域。 可将 Azure Cosmos 帐户配置为使用一个或多个写入区域。 有关详细信息，请参阅[如何在 Azure Cosmos 帐户中添加和删除 Azure 区域](how-to-manage-database-account.md)。 可以在 Azure Cosmos 帐户中配置[默认一致性](consistency-levels.md)级别。 Azure Cosmos DB 提供综合性的 SLA，涵盖了吞吐量、99% 时间内的延迟、一致性和高可用性。 有关详细信息，请参阅 [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)。
 
-若要安全管理对 Azure Cosmos 帐户中所有数据的访问，可以使用与帐户关联的[主密钥](secure-access-to-data.md)。 若要进一步保护对数据的访问，可在 Azure Cosmos 帐户中配置 [VNET 服务终结点](vnet-service-endpoint.md)和 [IP 防火墙](firewall-support.md)。 
+若要安全地管理对你的 Azure Cosmos 帐户中的所有数据的访问，你可以使用与你的帐户关联的 [主密钥](secure-access-to-data.md) 。 若要进一步保护对数据的访问，可在 Azure Cosmos 帐户中配置 [VNET 服务终结点](vnet-service-endpoint.md)和 [IP 防火墙](firewall-support.md)。 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos 帐户中的元素
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531949"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569995"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL 超大规模服务器组故障排除
 本文介绍可用于排查服务器组问题的一些方法。 除本文外，你可能还需要了解如何使用 [Kibana](monitor-grafana-kibana.md) 来搜索日志，或使用 [Grafana](monitor-grafana-kibana.md) 来可视化有关服务器组的指标。 

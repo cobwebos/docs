@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 5e17c55f8321ba0ad9a9686ada41413d64879d6c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612071"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570889"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -23,7 +23,7 @@ ms.locfileid: "89612071"
 
 [![视频缩略图： Azure HPC 缓存：安装程序 (单击以访问视频页面) ](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
-## <a name="portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[门户](#tab/azure-portal)
 
 ## <a name="define-basic-details"></a>定义基本详细信息
 
@@ -188,6 +188,97 @@ az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
 
 * 客户端装入地址-准备好将客户端连接到缓存时，请使用这些 IP 地址。 有关详细信息，请参阅 [安装 AZURE HPC 缓存](hpc-cache-mount.md) 。
 * 升级状态-发布软件更新时，此消息将会更改。 你可以在方便的时间手动 [升级缓存软件](hpc-cache-manage.md#upgrade-cache-software) ，或在数天后自动将其应用。
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!CAUTION]
+> HPCCache PowerShell 模块目前为公共预览版。 提供此预览版本时没有服务级别协议。 不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+## <a name="requirements"></a>要求
+
+如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果选择使用 Cloud Shell，请参阅 [Azure Cloud Shell 概述](https://docs.microsoft.com/azure/cloud-shell/overview) 获取详细信息。
+
+> [!IMPORTANT]
+> **HPCCache** PowerShell 模块为预览版时，必须使用 cmdlet 单独安装它 `Install-Module` 。 此 PowerShell 模块公开上市后，它将成为未来 Az PowerShell 模块版本的一部分，并从 Azure Cloud Shell 中的本机提供。
+
+```azurepowershell-interactive
+Install-Module -Name Az.HPCCache
+```
+
+## <a name="create-the-cache-with-azure-powershell"></a>创建缓存并 Azure PowerShell
+
+> [!NOTE]
+> Azure PowerShell 当前不支持使用客户托管的加密密钥创建缓存。 使用 Azure 门户。
+
+使用 [AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) cmdlet 创建新的 Azure HPC 缓存。
+
+提供以下值：
+
+* 缓存资源组名称
+* 缓存名称
+* Azure 区域
+* 缓存子网，格式如下：
+
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"`
+
+  缓存子网需要 (/24) 至少64个 IP 地址，并且不能容纳其他任何资源。
+
+* 缓存容量。 以下两个值设置 Azure HPC 缓存的最大吞吐量：
+
+  * 缓存大小 (GB) 
+  * 缓存基础结构中使用的虚拟机的 SKU
+
+  [AzHpcCacheSku](/powershell/module/az.hpccache/get-azhpccachesku) 显示可用的 sku 以及每个 sku 的有效缓存大小选项。 缓存大小选项的范围为 3 TB 到 48 TB，但仅支持某些值。
+
+  此图显示在 (7 月 2020) 准备此文档时，哪些缓存大小和 SKU 组合有效。
+
+  | 缓存大小 | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | 是         | 否          | 否          |
+  | 6144 GB    | 是         | 是         | 否          |
+  | 12288 GB   | 是         | 是         | 是         |
+  | 24576 GB   | 否          | 是         | 是         |
+  | 49152 GB   | 否          | 否          | 是         |
+
+  阅读 "门户说明" 选项卡上的 " **设置缓存容量** " 部分，了解有关定价、吞吐量以及如何为工作流适当调整缓存大小的重要信息。
+
+缓存创建示例：
+
+```azurepowershell-interactive
+$cacheParams = @{
+  ResourceGroupName = 'doc-demo-rg'
+  CacheName = 'my-cache-0619'
+  Location = 'eastus'
+  cacheSize = '3072'
+  SubnetUri = "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default"
+  Sku = 'Standard_2G'
+}
+New-AzHpcCache @cacheParams
+```
+
+创建缓存花费几分钟时间。 成功后，create 命令返回以下输出：
+
+```Output
+cacheSizeGb       : 3072
+health            : @{state=Healthy; statusDescription=The cache is in Running state}
+id                : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619
+location          : eastus
+mountAddresses    : {10.3.0.17, 10.3.0.18, 10.3.0.19}
+name              : my-cache-0619
+provisioningState : Succeeded
+resourceGroup     : doc-demo-rg
+sku               : @{name=Standard_2G}
+subnet            : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default
+tags              :
+type              : Microsoft.StorageCache/caches
+upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/0001 12:00:00 AM; firmwareUpdateStatus=unavailable; lastFirmwareUpdate=4/1/2020 10:19:54 AM; pendingFirmwareVersion=}
+```
+
+该消息包含一些有用的信息，包括以下项：
+
+* 客户端装入地址-准备好将客户端连接到缓存时，请使用这些 IP 地址。 有关详细信息，请参阅 [安装 AZURE HPC 缓存](hpc-cache-mount.md) 。
+* 升级状态-发布软件更新时，此消息会更改。 你可以在方便的时间手动 [升级缓存软件](hpc-cache-manage.md#upgrade-cache-software) ，或在数天后自动将其应用。
 
 ---
 

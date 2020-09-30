@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801508"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570130"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
@@ -50,7 +50,7 @@ ms.locfileid: "85801508"
 
 ## <a name="monitor-activity-runs"></a>监视活动运行
 
-若要查看每个管道运行的活动运行，请在“操作”列下选择“查看活动运行”图标。  此列表视图显示了与每个管道运行对应的活动运行。
+若要查看每个管道运行的活动运行，请在“操作”列下选择“查看活动运行”图标。 此列表视图显示了与每个管道运行对应的活动运行。
 
 | **列名** | **说明** |
 | --- | --- |
@@ -93,7 +93,7 @@ ms.locfileid: "85801508"
 | **列名** | **说明** |
 | --- | --- |
 | 管道名称 | 按管道名称筛选。 |
-| 运行开始时间 |  确定所显示的管道运行的时间范围。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期和时间。   |
+| 运行开始时间 |  确定所显示的管道运行的时间范围。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期和时间。 |
 | 运行状态 | 按状态筛选运行：**成功**、**失败**、**已排队**、**已取消**或**正在进行**。 |
 | 批注 | 按应用到每个管道的标记进行筛选 |
 | 运行次数 | 筛选是否要查看重新运行的管道 |
@@ -136,7 +136,7 @@ ms.locfileid: "85801508"
 
 通过单击管道运行旁边的消耗图标，可以查看运行消耗的资源。 
 
-![监视消耗](media/monitor-visually/monitor-consumption-1.png)
+![屏幕截图显示了管道使用的资源。](media/monitor-visually/monitor-consumption-1.png)
 
 单击此图标会打开相应管道运行所使用的资源的消耗报告。 
 
@@ -190,11 +190,11 @@ ms.locfileid: "85801508"
 
     ![目标条件的框](media/monitor-visually/add-criteria-1.png)
 
-    ![条件列表](media/monitor-visually/add-criteria-2.png)
+    ![屏幕截图，显示你选择一个指标来设置警报条件的位置。](media/monitor-visually/add-criteria-2.png)
 
     ![条件列表](media/monitor-visually/add-criteria-3.png)
 
-    你可以基于各种指标创建警报，包括 ADF 实体计数/大小、活动/管道/触发器运行、Integration Runtime （IR） CPU 使用率/内存/节点计数/队列，以及 SSIS 包执行和 SSIS IR 启动/停止操作。
+    可以针对各种指标创建警报，包括 ADF 实体计数/大小、活动/管道/触发器运行、Integration Runtime (IR) CPU 利用率/内存/节点计数/队列，以及 SSIS 包执行和 SSIS IR 启动/停止操作的指标。
 
 1.  配置警报逻辑。 可以针对所选的指标为所有管道和对应的活动创建警报。 还可以选择特定的活动类型、活动名称、管道名称或故障类型。
 

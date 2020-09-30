@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396002"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570063"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>不同 Azure Cosmos DB 一致性级别的延迟、可用性和性能折衷
 
@@ -76,9 +76,9 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 
 *T* = 自上次更新以来的时间间隔“T”。 
 
-## <a name="strong-consistency-and-multi-master"></a>强一致性和多主数据库
+## <a name="strong-consistency-and-multiple-write-regions"></a>强一致性和多个写入区域
 
-针对多主数据库配置的 Cosmos 帐户不能配置为实施强一致性，因为分布式系统不可能在提供为零的 RPO 的同时提供为零的 RTO。 另外，将强一致性与多主数据库配合使用时，没有写入延迟优势，因为对任何区域的任何写入必须在复制后提交到帐户中的所有已配置区域。 这导致写入延迟与单主数据库帐户相同。
+无法将配置为具有多个写入区域的 Cosmos 帐户配置为具有强一致性，因为分布式系统不能提供零的 RPO 和值为零的 RTO。 此外，对于对多个写入区域使用强一致性没有写入延迟的好处，因为对任何区域的写入请求必须复制并提交到该帐户内所有已配置的区域。 这会产生与单个写入区域帐户相同的写入延迟。
 
 ## <a name="next-steps"></a>后续步骤
 

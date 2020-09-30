@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072655"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570792"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用带有 Enterprise Integration Pack 的 Azure 逻辑应用中的映射转换 XML
 
@@ -69,7 +69,7 @@ ms.locfileid: "87072655"
 
 1. “程序集”页打开后，请选择“添加”。  
 
-   ![选择“添加”](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![突出显示 "程序集" 页上的 "添加" 按钮的屏幕截图。](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 根据程序集文件的大小，遵循相应的步骤来上传[不超过 2 MB](#smaller-assembly) 或[大于 2 MB 但不超过 8 MB](#larger-assembly) 的程序集。
 有关集成帐户中程序集数量的限制，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)。

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d98c9a7e58f08d9ad63183805cd6cd0d2ab3b3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72753323"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570173"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化多区域成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "72753323"
 
 ## <a name="costs-for-multiple-write-regions"></a>多个写入区域的成本
 
-在多主数据库系统中，可用于写入操作的净 RU 会增加 `N` 倍，其中 `N` 是写入区域数。 与单区域写入不同，每个区域都可写，应支持冲突解决。 编写器的工作负载量会增加。 从成本规划的角度来看，若要在 `M` 全球范围内执行 RU/秒的写入，则需要 `RUs` 在容器或数据库级别预配 M。 随后可以添加任意多个区域并将它们用于写入以在全球范围执行 `M` RU 写入。 
+在多区域写入系统中，写入操作的 net 可用 ru 增加了 `N` `N` 写入区域数目的时间。 与单区域写入不同，每个区域都可写，应支持冲突解决。 编写器的工作负载量会增加。 从成本规划的角度来看，若要在 `M` 全球范围内执行 RU/秒的写入，则需要 `RUs` 在容器或数据库级别预配 M。 随后可以添加任意多个区域并将它们用于写入以在全球范围执行 `M` RU 写入。 
 
 ### <a name="example"></a>示例
 

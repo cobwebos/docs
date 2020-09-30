@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585978"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569810"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 
@@ -40,7 +40,7 @@ ms.locfileid: "88585978"
 | |  |
 |---|---|
 |**下载 SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
 |**SDK 安装说明**|[Python SDK 安装说明](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**入门**|[Python SDK 入门](create-sql-api-python.md)|
 |**当前受支持的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5.3+](https://www.python.org/downloads/)|
@@ -126,7 +126,7 @@ ms.locfileid: "88585978"
 
 * `CosmosClient` 的构造函数已更新：
 
-  * `auth` 参数已重命名为 `credential`，现在将直接采用一个身份验证类型。 这意味着可以传入主键值、资源令牌字典或权限列表。 但仍支持旧字典格式。
+  * `auth` 参数已重命名为 `credential`，现在将直接采用一个身份验证类型。 这意味着主键值、资源令牌的字典或可传入的权限列表。 但仍支持旧字典格式。
 
   * `connection_policy` 参数已变为仅关键字的参数，并仍受支持，且现在可以传入策略的每个单独属性作为显式关键字参数：
 
@@ -151,7 +151,7 @@ ms.locfileid: "88585978"
 
 * 所有采用 `request_options` 或 `feed_options` 参数的操作都已转变为使用仅关键字的参数。 此外，在仍然支持这些选项字典的同时，也支持将字典中每个单独的选项作为显式关键字参数。
 
-* 错误层次结构现在继承自 `azure.core.AzureError` ：
+* 错误层次结构现继承自 `azure.core.AzureError`：
 
   * `HTTPFailure` 已重名为 `CosmosHttpResponseError`
   * `JSONParseFailure` 已删除，并替换为 `azure.core.DecodeError`

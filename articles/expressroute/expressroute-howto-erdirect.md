@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 1748db76aa2d1f65ea21046bcff2fff43ca732b0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450196"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569847"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
 
@@ -166,9 +166,12 @@ ExpressRoute Direct 使你能够通过战略分散在世界各地的对等互连
 
    ```powershell
    Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+   ```
 
-  This process should be used to conduct a Layer 1 test, ensuring that each cross-connection is properly patched into each router for primary and secondary.
-1. Get ExpressRoute Direct details.
+## <a name="change-admin-state-of-links"></a><a name="state"></a>更改链路的管理状态
+   
+应当使用此过程执行第 1 层测试，以确保每个交叉连接都已针对主端口和辅助端口正确设置到每台路由器中。
+1. 获取 ExpressRoute Direct 详细信息。
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName

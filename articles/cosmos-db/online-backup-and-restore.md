@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6485df342bbe0b2378a67b90e448b2bd98c5e283
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400394"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570923"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 * Azure Cosmos DB 将这些备份存储在 Azure Blob 存储中，而实际数据以本地形式驻留在 Azure Cosmos DB 中。
 
-* 为保证低延迟，备份的快照存储在 Azure Blob 存储中，且所在区域与当前写入区域（如果有多主数据库配置，则为其中一个写入区域）相同。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 当你通过支持请求来请求还原后，Azure Cosmos DB 团队将还原你的备份。
+* 为了保证低延迟，你的备份快照存储在与当前写入区域相同的区域中的 Azure Blob 存储中 (或 **其中一个** 写入区域，以防具有多区域写入配置) 。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 当你通过支持请求来请求还原后，Azure Cosmos DB 团队将还原你的备份。
 
    下图显示了如何在美国西部的远程 Azure Blob 存储帐户中备份 Azure Cosmos 容器（其三个主要物理分区全部位于美国西部），然后将其复制到美国东部：
 
@@ -59,11 +59,11 @@ Azure Cosmos DB 会自动对你的数据进行一次完整备份，在任何时�
 
    * **保留的数据副本** -默认情况下，会免费提供数据的两个备份副本。 如果需要两个以上的副本，则还需支付额外费用。 请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)中的“已用存储”部分，了解额外副本的确切价格。
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="为现有的 Azure Cosmos 帐户配置备份间隔和保留期" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="true":::
 
 如果在帐户创建过程中配置备份选项，则可以配置 **备份策略**，该策略可能是 **定期** 或 **连续**的。 定期策略用于配置备份间隔和备份保留期。 持续策略目前仅通过注册提供。 Azure Cosmos DB 团队将评估你的工作负荷并批准你的请求。
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="为新的 Azure Cosmos 帐户配置定期或连续备份策略" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="true":::
 
 ## <a name="restore-data-from-an-online-backup"></a>从联机备份还原数据
 

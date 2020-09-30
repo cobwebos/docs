@@ -22,7 +22,7 @@ Azure Database for PostgreSQL 是 Microsoft 云中基于 PostgreSQL 社区版数
 > [!div class="checklist"]
 > - 创建用于 PostgreSQL 的 Azure 数据库
 > - 配置服务器防火墙
-> - 使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
+> - 使用 [psql  ](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
 > - 加载示例数据
 > - 查询数据
 > - 更新数据
@@ -119,7 +119,7 @@ mydemoserver.postgresql.database.azure.com       myadmin
 
 ## <a name="connect-to-postgresql-database-using-psql"></a>使用 psql 连接到 PostgreSQL 数据库
 
-如果客户端计算机已安装 PostgreSQL，则可以使用 [psql](https://www.postgresql.org/docs/current/static/app-psql.html) 的本地实例连接到 Azure PostgreSQL 服务器。 还可以通过在本文的代码示例中选择“试用”按钮，在 Azure Cloud Shell 中访问预装版本的 `psql` 命令行工具。 访问 Azure Cloud Shell 的其他方式包括：在 Azure 门户右上角的工具栏上选择“>_”按钮，或访问 [shell.azure.com](https://shell.azure.com/)。 
+如果客户端计算机已安装 PostgreSQL，则可以使用 [psql](https://www.postgresql.org/docs/current/static/app-psql.html) 的本地实例连接到 Azure PostgreSQL 服务器。 还可以通过在本文的代码示例中选择“试用”按钮，在 Azure Cloud Shell 中访问预装版本的 `psql` 命令行工具。 访问 Azure Cloud Shell 的其他方式包括：在 Azure 门户右上角的工具栏上选择“>_ ” 按钮，或访问 [shell.azure.com](https://shell.azure.com/)。
 
 1. 使用 `psql` 命令行实用工具连接到 Azure PostgreSQL 服务器。
 

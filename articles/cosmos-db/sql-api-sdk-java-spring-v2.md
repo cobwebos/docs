@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d795624097877d20f98a6fd205fb7136cf38007
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069118"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570748"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>用于核心 (SQL) API 的弹簧数据 Azure Cosmos DB v2：发行说明和资源
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "90069118"
 > * [将 Spring Data Gremlin 用于 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > 希望快速开始？
-> 1. 安装 [受支持的最低 Java 运行时（JDK 8](/java/azure/jdk/?view=azure-java-stable)），以便你可以使用 SDK。
+> 1. 安装 [受支持的最低 Java 运行时（JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)），以便你可以使用 SDK。
 > 2. 使用 [starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)创建弹簧数据 Azure Cosmos DB 应用。 操作起来非常简单！
 > 3. 查看 [春季 Data Azure Cosmos DB 开发人员指南](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)，逐步完成基本 Azure Cosmos DB 请求。
 >
@@ -199,7 +199,7 @@ ms.locfileid: "90069118"
 #### <a name="key-bug-fixes"></a>关键 Bug 修复
 * Bug 修复和缺陷缓解。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤

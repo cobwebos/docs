@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4d1c68ba1e0b7db8afefa64abefc671d51e78bd4
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298957"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569507"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒体服务 v3 API 进行开发
 
@@ -41,7 +41,7 @@ ms.locfileid: "89298957"
 
 ### <a name="azure-ad-service-principal"></a>Azure AD 服务主体
 
-如果你要创建 Azure AD 应用和服务主体，必须使应用位于其自己的租户中。 创建应用后，向应用授予对媒体服务帐户的“参与者”或“所有者”角色访问权限 。
+Azure AD 的应用程序和服务主体应在同一个租户中。 创建应用后，向应用授予对媒体服务帐户的“参与者”或“所有者”角色访问权限 。
 
 如果不确定自己是否有权创建 Azure AD 应用，请查看[需要的权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 

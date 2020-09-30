@@ -9,18 +9,21 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: a552f03c8a8fa05ed7d2c6eb87374d4e7e17838d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dadf523c5d17ffb91f4fefa71b52d1d1855c978
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070080"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570221"
 ---
-# <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>如何缩放 Azure 时序见解 Gen1 环境
+# <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>如何缩放 Azure 时序见解第 1 代环境
 
-本文介绍如何使用[Azure 门户](https://portal.azure.com)更改 Azure 时序见解环境的容量。 容量是应用于入口速率、存储容量以及与所选 SKU 关联的成本的乘数。
+> [!CAUTION]
+> 这是一个 Gen1 的文章。
+
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)更改 Azure 时序见解环境的容量。 容量是应用于入口速率、存储容量以及与所选 SKU 关联的成本的乘数。
 
 可以使用 Azure 门户来增加或减少给定定价 SKU 中的容量。
 
@@ -32,9 +35,9 @@ ms.locfileid: "87070080"
 
 ## <a name="change-the-capacity-of-your-environment"></a>更改环境容量
 
-1. 在 Azure 门户中，找到并选择你的 Azure 时序见解环境。
+1. 在 Azure 门户中，找到并选择自己的 Azure 时序见解环境。
 
-1. 在 Azure 时序见解环境的菜单中，选择 "**存储配置**"。
+1. 在 Azure 时序见解环境的菜单中，选择“存储配置”。
 
    [![配置 Azure 时序见解容量](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
@@ -52,6 +55,6 @@ ms.locfileid: "87070080"
 
 - 有关详细信息，请参阅[了解 Azure 时序见解中的保留期](time-series-insights-concepts-retention.md)。
 
-- 了解如何[在 Azure Azure 时序见解中配置数据保留期](time-series-insights-how-to-configure-retention.md)。
+- 了解如何[在 Azure 时序见解中配置数据保留](time-series-insights-how-to-configure-retention.md)。
 
 - 了解如何[规划环境](time-series-insights-environment-planning.md)。

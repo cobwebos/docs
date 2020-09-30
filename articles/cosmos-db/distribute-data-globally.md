@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Cosmos DB 在全球范围内分发数据
-description: 了解如何通过 Azure Cosmos DB（一种全局分布式多模型数据库服务），使用全局数据库进行全球范围的异地复制、多主数据库、故障转移和数据恢复。
+description: 了解全球分布式多模型数据库服务，了解如何使用 Azure Cosmos DB 的全局数据库（一种全球分布式多模型数据库服务）进行全球范围的异地复制、多区域写入、故障转移和数据恢复。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399459"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570187"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 在全球范围内分发数据
 
@@ -27,7 +27,7 @@ Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟�
 
 ## <a name="key-benefits-of-global-distribution"></a>全局分布的重要优势
 
-**构建全局活动-活动应用。** 使用新式多主数据库复制协议，每个区域都支持写入和读取。 多主数据库功能还可以实现：
+**构建全局活动-活动应用。** 通过其 novel 多区域写入复制协议，每个区域都支持写入和读取。 多区域写入功能还可实现以下功能：
 
 - 无限弹性写入和读取可伸缩性。 
 - 在全球 99.999% 的读写可用性。
@@ -50,7 +50,7 @@ Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟�
 阅读以下文章详细了解全局分布：
 
 * [全球分布 - 揭秘](global-dist-under-the-hood.md)
-* [如何在应用程序中配置多主数据库](how-to-multi-master.md)
+* [如何在应用程序中配置多区域写入](how-to-multi-master.md)
 * [配置多宿主客户端](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [为 SQL API 帐户创建自定义冲突解决策略](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

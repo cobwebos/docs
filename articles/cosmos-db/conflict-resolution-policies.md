@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 91054318d4b030d9b2cb9bb80424ade80aeeca85
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395832"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570100"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>使用多个写入区域时的冲突类型和解决策略
 
@@ -50,6 +50,6 @@ Azure Cosmos DB 提供了灵活的策略驱动型机制来解决写入冲突。 
 
 了解如何配置冲突解决策略：
 
-* [如何在应用程序中配置多主数据库](how-to-multi-master.md)
+* [如何为应用程序配置多个写入区域](how-to-multi-master.md)
 * [如何管理冲突解决策略](how-to-manage-conflicts.md)
 * [如何从冲突源读取数据](how-to-manage-conflicts.md#read-from-conflict-feed)

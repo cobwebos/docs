@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502896"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570522"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 管理虚拟机规模集
 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 本文详细介绍了执行这些任务常用的一些 Azure CLI 命令。
@@ -49,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+你还可以在一个 API 调用中获取所有实例的详细 *instanceView* 信息，这有助于避免大型安装的 API 限制。 为、和提供自己的值 `--resource-group` `--subscription` `--name` 。
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>VM 连接信息列表
 若要连接规模集中的 VM，可将 SSH 或 RDP 连接到分配的公共 IP 地址和端口号。 默认情况下，会向将远程连接流量转发给每个 VM 的 Azure 负载均衡器添加网络地址转换 (NAT) 规则。 若要列出规模集中连接 VM 的地址和端口，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss)。 以下示例将列出 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例的连接信息 。 为这些名称提供自己的值：

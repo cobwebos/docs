@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: e65c17be47cdc59f929aa539071cf1c758e271f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320874"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569181"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中基于角色的访问控制
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基�
 |[Cosmos DB 操作员](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|可以预配 Azure Cosmos 帐户、数据库和容器。 不能访问任何数据或使用数据资源管理器。|
 
 > [!IMPORTANT]
-> Azure Cosmos DB 中的 RBAC 仅支持适用于控制平面操作。 使用主密钥或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对 Azure Cosmos DB 中数据的访问](secure-access-to-data.md)
+> Azure Cosmos DB 中的 RBAC 仅支持适用于控制平面操作。 使用主键或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对 Azure Cosmos DB 中数据的访问](secure-access-to-data.md)
 
 ## <a name="identity-and-access-management-iam"></a>标识和访问管理 (IAM)
 

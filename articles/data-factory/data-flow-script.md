@@ -6,19 +6,19 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2020
-ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 09/29/2020
+ms.openlocfilehash: 6802e3f6c0892993f9ffe4373f43274362b8a003
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448532"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569686"
 ---
-# <a name="data-flow-script-dfs"></a>数据流脚本（DFS）
+# <a name="data-flow-script-dfs"></a> (DFS) 的数据流脚本
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-数据流脚本（DFS）是基本元数据，类似于编码语言，用于执行映射数据流中包含的转换。 每个转换均由一系列属性表示，这些属性提供正确运行作业所需的信息。 通过单击浏览器 UI 顶部功能区上的 "脚本" 按钮，可从 ADF 查看并编辑该脚本。
+ (DFS) 的数据流脚本是用于执行映射数据流中包含的转换的基本元数据，类似于编码语言。 每个转换均由一系列属性表示，这些属性提供正确运行作业所需的信息。 通过单击浏览器 UI 顶部功能区上的 "脚本" 按钮，可从 ADF 查看并编辑该脚本。
 
 ![脚本按钮](media/data-flow/scriptbutton.png "脚本按钮")
 
@@ -71,7 +71,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-现在，我们将通过识别要新转换之后的转换（在本例中为）来重新路由传入流 `source1` ，并将流的名称复制到新转换：
+现在，我们会通过标识在这种情况下要使新转换 (的转换来重新路由传入流， `source1`) 并将流的名称复制到新的转换：
 ```
 source(output(
         movieId as string,
@@ -85,7 +85,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-最后，我们确定要在此新转换后出现的转换，并将其输入流（在本例中 `sink1` 为）替换为新转换的输出流名称：
+最后，我们要确定我们希望在此新转换后出现的转换，并将其输入流替换 (在这种情况下， `sink1`) 并将输出流名称替换为新的转换：
 ```
 source(output(
         movieId as string,
@@ -109,7 +109,7 @@ source(
 ) ~> source_name
 ```
 
-例如，具有三个列（movieId、title、流派）的简单源将为：
+例如，具有三列 (movieId、title、流派) 的简单源将为：
 ```
 source(output(
         movieId as string,
@@ -127,7 +127,7 @@ name_of_incoming_stream transformation_type(
 ) ~> new_stream_name
 ```
 
-例如，一个简单的派生转换，它采用列（title）并使用大写的版本覆盖它，如下所示：
+例如，使用列 (标题的简单派生转换) 并使用大写形式覆盖它，如下所示：
 ```
 source1 derive(
   title = upper(title)
@@ -210,6 +210,14 @@ aggregate(updates = countIf(isUpdate(), 1),
 ```
 aggregate(groupBy(mycols = sha2(256,columns())),
     each(match(true()), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="check-for-nulls-in-all-columns"></a>检查所有列中的 Null 值
+这是一个代码段，你可以将其粘贴到数据流中，以一般检查所有列中的 NULL 值。 此方法利用架构偏移来浏览所有行中的所有列，并使用有条件拆分将行中的 Null 与无 Null 的行分隔开。 
+
+```
+CreateColumnArray split(contains(array(columns()),isNull(#item)),
+    disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 
 ## <a name="next-steps"></a>后续步骤

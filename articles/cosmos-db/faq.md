@@ -1,5 +1,5 @@
 ---
-title: 有关 Azure Cosmos DB 中不同 API 的常见问题解答
+title: 有关 Azure Cosmos DB 中不同 API 的常见问题
 description: 获取与 Azure Cosmos DB（一种全球分布式多模型数据库服务）相关的常见问题答案。 了解容量、性能级别和缩放。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213085"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570354"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>是否可以使用多个 API 来访问我的数据？
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 其中多模型意味着 Azure Cosmos DB 支持多个 API 和多个数据模型，不同的 API 将不同的数据格式用于存储和线路协议。 例如，SQL 使用 JSON，MongoDB 使用 BSON，表使用 EDM，Cassandra 使用 CQL，Gremlin 使用 JSON 格式。 因此，建议对给定帐户中的所有数据访问使用相同的 API。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 如果多模型意味着 Azure Cosmos DB 支持多个 API 和多个数据模型，则不同的 API 将使用不同的数据格式来存储和连接协议。 例如，SQL 使用 JSON，MongoDB 使用 BSON，表使用 EDM，Cassandra 使用 CQL，Gremlin 使用 JSON 格式。 因此，建议对给定帐户中的所有数据访问使用相同的 API。
 
 除了可互操作的 Gremlin 和 SQL API，每个 API 都独立运行。
 
@@ -42,7 +42,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 是的，Azure Cosmos DB 符合 HIPAA。 HIPAA 针对可识别个人身份的健康信息的使用、泄露与保护制定了要求。 有关详细信息，请参阅 [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)（Microsoft 信任中心）。
 
-### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Azure Cosmos DB 的存储限制是什么？
+### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Azure Cosmos DB 的存储限制有哪些？
 
 对于容器可以存储在 Azure Cosmos DB 中的数据总量并没有任何限制。
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB 的费用如何？
 
-有关详细信息，请参阅 [Azure Cosmos DB 定价详细信息](https://azure.microsoft.com/pricing/details/cosmos-db/)页。 Azure Cosmos DB 使用费取决于预配的容器数、容器的联机小时数，以及每个容器的预配吞吐量。
+有关详细信息，请参阅 [Azure Cosmos DB 定价详细信息](https://azure.microsoft.com/pricing/details/cosmos-db/)页。 Azure Cosmos DB 使用费取决于预配的容器数目、容器的联机小时数，以及每个容器的预配吞吐量。
 
 ### <a name="is-a-free-account-available"></a>有免费的帐户吗？
 
@@ -85,7 +85,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 以下条件适用于“试用 Azure Cosmos DB”订阅：
 
-* 可以将帐户访问权限授予个人 Microsoft 帐户 (MSA)。 避免使用 Active Directory (AAD) 帐户或属于公司 AAD 租户的帐户，这些帐户可能存在限制，从而阻止访问授权。
+* 可以将帐户访问权限授予个人 Microsoft 帐户 (MSA)。 避免使用 Azure Active Directory (Azure AD) 帐户或属于公司 Azure AD 租户的帐户，它们可能会阻止访问权限。
 * 对于 SQL、Gremlin API 和表帐户，每个订阅一个[吞吐量预配容器](./set-throughput.md#set-throughput-on-a-container)。
 * 对于 MongoDB 帐户，每个订阅最多三个[吞吐量预配集合](./set-throughput.md#set-throughput-on-a-container)。
 * 每个订阅一个[吞吐量预配数据库](./set-throughput.md#set-throughput-on-a-database)。 吞吐量预配数据库可包含任意数量的容器。
@@ -102,9 +102,9 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 可以在 Azure 门户中注册 Azure Cosmos DB。 首先，注册 Azure 订阅。 注册后，可将 Azure Cosmos DB 帐户添加到 Azure 订阅。
 
-### <a name="what-is-a-master-key"></a>什么是主密钥？
+### <a name="what-is-a-primary-key"></a>什么是主密钥？
 
-主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主密钥时需谨慎。 [Azure 门户][azure-portal]的“密钥”边栏选项卡中提供主要主密钥和辅助主密钥。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#list-account-keys)。
+主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主键时要格外小心。 主主密钥和辅助主密钥在[Azure 门户][azure-portal]的 "**密钥**" 边栏选项卡中提供。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#list-account-keys)。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>可以将 PreferredLocations 设置为哪些区域？
 

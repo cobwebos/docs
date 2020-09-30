@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64e959536b4abea4f2facb5ae3238b4843e4611
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564349"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569946"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -65,7 +65,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. 创建一个 Azure 数字孪生 [终结点](concepts-route-events.md#create-an-endpoint) ，用于将事件网格主题链接到 Azure 数字孪生实例。
+4. 创建一个将事件中心链接到 Azure 数字孪生实例的 Azure 数字孪生 [终结点](concepts-route-events.md#create-an-endpoint) 。
 
     ```azurecli
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
@@ -203,11 +203,9 @@ namespace SampleFunctionsApp
     1. 选择 **PAYG (预览 ") ** 定价层。
     2. 需要为此环境选择 **时序 ID** 。 时序 ID 最多可以有三个值，你将使用这些值在时序见解中搜索数据。 对于本教程，可以使用 **$dtId**。 有关选择 [*时序 id 的最佳实践，*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid)请阅读有关选择 ID 值的详细信息。
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="时序见解环境的创建门户 UX。已选择 PAYG (预览) 定价层，并且时序 ID 属性名称为 $dtId":::
-
-2. 选择 " **下一步：事件源** "，然后从上面选择事件中心信息。 还需要创建新的事件中心使用者组。
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解" **下一步：事件源** "，然后从上面选择事件中心信息。 还需要创建新的事件中心使用者组。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="时序见解环境事件源的创建门户 UX。正在使用上面的事件中心信息创建事件源。你还将创建一个新的使用者组。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>开始将 IoT 数据发送到 Azure 数字孪生
 
@@ -223,19 +221,17 @@ namespace SampleFunctionsApp
 
 1. 在 [Azure 门户](https://portal.azure.com) 中打开时序见解实例 (可以在门户搜索栏) 中搜索实例的名称。 访问实例概述中所示的 *时序见解资源管理器 URL* 。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的 概述 选项卡中选择 时序见解资源管理器 URL":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解" **添加**"。
 
-2. 在资源管理器中，你将看到从左侧显示的 Azure 数字孪生的三个孪生。 选择 _**thermostat67**_，选择 **温度**，然后单击 " **添加**"。
-
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="选择 * * thermostat67 * *，选择 * * 温度 * *，然后单击 添加。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
 
 3. 你现在应看到恒温器的初始温度读数，如下所示。 将为 *room21* 和 *floor1*更新相同的温度读数，并以串联方式可视化这些数据流。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="在 TSI 资源管理器中将初始温度数据绘入图表。它是介于68和85之间的随机值的行":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
 
 4. 如果允许模拟运行的时间更长，可视化效果将如下所示：
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="每个克隆的温度数据都以不同颜色的三个平行线为绘图。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解":::
 
 ## <a name="next-steps"></a>后续步骤
 

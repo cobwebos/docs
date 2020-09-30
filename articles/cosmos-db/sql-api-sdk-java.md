@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586122"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569935"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -49,12 +49,12 @@ ms.locfileid: "88586122"
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**入门**|[Java SDK 入门](sql-api-java-get-started.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-java-application.md)|
-|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
+|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* 修复了 documentCollection 查询的主分区缓存问题。
+* 解决 documentCollection 查询上的主分区缓存问题。
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * 添加了对 449 重试自定义配置的支持。

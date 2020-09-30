@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401616"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569531"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 的 Azure 安全基线
 
@@ -290,7 +290,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 还可以使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。 
 
-此外，可以使用 Azure Active Directory 和帐户特定的主密钥来控制 Azure Cosmos DB 中的某些操作。  使用“disableKeyBasedMetadataWriteAccess”帐户设置控制密钥访问。
+此外，Azure Cosmos DB 中的一些操作可以用 Azure Active Directory 和特定于帐户的主键来控制。  使用“disableKeyBasedMetadataWriteAccess”帐户设置控制密钥访问。
 
 了解 Azure Cosmos DB 中基于角色的访问控制： https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -298,9 +298,9 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 在 Azure Active Directory 中创建新角色： https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-如何使用 PowerShell 获取 Azure Active Directory 中的目录角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+如何使用 PowerShell 获取 Azure Active Directory 中的目录角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-如何使用 PowerShell 获取 Azure Active Directory 中目录角色的成员： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+如何使用 PowerShell 获取 Azure Active Directory 中目录角色的成员： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 将用户访问权限仅限于数据操作： https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +310,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指导**：不存在与 Azure AD 或 Azure Cosmos DB 相关的默认密码或空白密码的概念。 Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供其数据和资源的访问权限：主密钥和资源令牌。 随时可以重新生成这些密钥。
+**指导**：不存在与 Azure AD 或 Azure Cosmos DB 相关的默认密码或空白密码的概念。 相反，Azure Cosmos DB 使用两种类型的密钥对用户进行身份验证，并提供对其数据和资源的访问权限;主键和资源令牌。 随时可以重新生成这些密钥。
 
 了解如何保护对 Azure Cosmos DB 中数据的访问： https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -640,7 +640,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 
 如何使用 Azure Resource Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-如何查看 Azure 订阅： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+如何查看 Azure 订阅： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 了解 Azure 基于角色的访问控制： https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -792,7 +792,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 
 - Cosmos DB 应使用虚拟网络服务终结点
 
-如何查看可用的 Azure Policy 别名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+如何查看可用的 Azure Policy 别名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 如何配置和管理 Azure Policy： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +834,7 @@ Azure 安全中心提供的支持功能： https://docs.microsoft.com/azure/secu
 
 **指南**：如果将自定义 Azure 策略定义用于 Cosmos DB 或相关资源，请使用 Azure Repos 安全地存储和管理你的代码。
 
-Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=truehttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Azure 安全中心监视**：不适用
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 如何还原 Azure Key Vault 机密：
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Azure 安全中心监视**：不适用
 

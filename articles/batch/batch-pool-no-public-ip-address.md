@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 6c6207e7f52e49b88dc8dc99e0bd20a2c774339d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e6922abb48e19157e6905d9ceb71817cfbaff767
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541894"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570861"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>创建不具有公共 IP 地址的 Azure Batch 池
 
@@ -34,8 +34,11 @@ ms.locfileid: "91541894"
 - **一个 Azure VNet**。 如果要在 [虚拟网络](batch-virtual-network.md)中创建池，请遵循以下要求和配置。 若要提前准备具有一个或多个子网的 VNet，可以使用 Azure 门户、Azure PowerShell、Azure 命令行接口 (CLI) 或其他方法。
   - VNet 必须与用于创建池的 Batch 帐户位于同一订阅和区域中。
   - 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。
-  - 必须禁用专用链接服务和终结点网络策略。 这可以通过使用 Azure CLI 来完成： ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
-  
+  - 必须禁用专用链接服务和终结点网络策略。 这可以通过使用 Azure CLI 来完成：
+    ```azurecli
+    az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies
+    ```
+
 > [!IMPORTANT]
 > 对于每个100专用节点或低优先级节点，Batch 分配一个专用链接服务和一个负载均衡器。 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 对于较大的池，你可能需要为这些资源中的一个或多个 [请求增加配额](batch-quota-limit.md#increase-a-quota) 。 此外，不应将资源锁应用于由 Batch 创建的任何资源，因为这样可以防止由于用户启动的操作（如删除池或调整为零）而清理资源。
 

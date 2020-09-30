@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3dd7df738f49b14a16be8a9741fb2c82ed3bf97c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409003"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570606"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph 帐户的区域终结点
-Azure Cosmos DB Graph 数据库是[全局分布](distribute-data-globally.md)的，因此应用程序可以使用多个读取终结点。 需要在多个位置具有写入访问权限的应用程序应启用[多主数据库](how-to-multi-master.md)功能。
+Azure Cosmos DB Graph 数据库是[全局分布](distribute-data-globally.md)的，因此应用程序可以使用多个读取终结点。 需要在多个位置具有写访问权限的应用程序应启用 [多区域写入](how-to-multi-master.md) 功能。
 
 选择多个区域的原因：
 1. **水平读取可伸缩性** - 随着应用程序负载的增加，将读取流量路由到不同的 Azure 区域可能是明智的做法。

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497754"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570123"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何将 Azure Kubernetes 与 Azure Cosmos DB（预览版）配合使用
 
-通过使用 Azure Cosmos DB 中的 etcd API，可将 Azure Cosmos DB 用作 Azure Kubernetes 的后端存储。 Azure Cosmos DB 实现 etcd 线路协议，从而允许主节点的 API 服务器使用 Azure Cosmos DB，就像访问一个本地安装的 etcd 一样。 Azure Cosmos DB 中的 etcd API 目前处于预览状态。 将 Azure Cosmos etcd API 用作 Kubernetes 的后备存储，可以获得以下优势： 
+通过使用 Azure Cosmos DB 中的 etcd API，可将 Azure Cosmos DB 用作 Azure Kubernetes 的后端存储。 Azure Cosmos DB 实现 etcd 线路协议，这允许主节点的 API 服务器使用 Azure Cosmos DB，就像访问本地安装的 etcd 一样。 Azure Cosmos DB 中的 etcd API 目前处于预览状态。 将 Azure Cosmos etcd API 用作 Kubernetes 的后备存储，可以获得以下优势： 
 
 * 无需手动配置和管理 etcd。
 * Cosmos 能保证 etcd 的高可用性（在单个区域中保持 99.99%，在多个区域中保持 99.999%）。
@@ -23,17 +23,17 @@ ms.locfileid: "86497754"
 * 默认保护且面向企业。
 * 业界领先的复合型 SLA。
 
-若要详细了解 Azure Cosmos DB 中的 etcd API，请参阅[概述](etcd-api-introduction.md)文章。 本文介绍如何使用 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) 在 Azure 上启动使用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 而不是本地安装和本地配置的 etcd 的 Kubernetes 群集。 
+若要详细了解 Azure Cosmos DB 中的 etcd API，请参阅 [概述](etcd-api-introduction.md) 一文。 本文介绍如何使用 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) 在 Azure 上启动使用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 而不是本地安装和本地配置的 etcd 的 Kubernetes 群集。 
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 可以下载特定于自己的操作系统的 Azure CLI 并进行安装。
+1. 安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。 可以下载特定于自己的操作系统的 Azure CLI 并进行安装。
 
-1. 安装[最新版本](https://github.com/Azure/aks-engine/releases)的 Azure Kubernetes 引擎。 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)页面中提供了不同操作系统的安装说明。 只需安装链接文档的**AKS Engine**部分的步骤即可。下载后，提取 zip 文件。
+1. 安装[最新版本](https://github.com/Azure/aks-engine/releases)的 Azure Kubernetes 引擎。 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)页面中提供了不同操作系统的安装说明。 只需查看链接的文档中“安装 AKS 引擎”部分中的步骤。下载后，解压缩 zip 文件。
 
    Azure Kubernetes 引擎 (aks-engine) 可以生成 Azure 资源管理器模板，用于 Azure 上的 Kubernetes 群集****。 aks-engine 的输入内容是群集定义文件，该文件描述所需的群集，包括业务流程协调程序、功能和代理。 输入文件的结构类似于 Azure Kubernetes 服务的公共 API。
 
-1. Azure Cosmos DB 中的 etcd API 目前处于预览状态。 登录并使用此处的预览版：https://aka.ms/cosmosetcdapi-signup。 提交表单后，你的订阅将被允许使用 Azure Cosmos etcd API。 
+1. Azure Cosmos DB 中的 etcd API 目前处于预览状态。 登录并使用此处的预览版：https://aka.ms/cosmosetcdapi-signup。 提交表单后，订阅将被允许使用 Azure Cosmos etcd API。 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 部署群集
 
@@ -43,7 +43,7 @@ ms.locfileid: "86497754"
    az login 
    ```
 
-1. 如果有多个订阅，请切换到 Azure Cosmos DB etcd API 允许使用的订阅。 可以使用以下命令切换至所需订阅：
+1. 如果有多个订阅，请切换到已被允许使用 Azure Cosmos DB etcd API 的订阅。 可以使用以下命令切换至所需订阅：
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"
@@ -139,17 +139,17 @@ ms.locfileid: "86497754"
 
    Azure Kubernetes 引擎使用一个群集定义，该定义对所需的 Azure Kubernetes 形状、大小和配置进行概述。 有几项功能可通过群集定义启用。 在本示例中，将使用以下参数：
 
-   * **订阅 id：** 已启用 Azure Cosmos DB etcd API 的 Azure 订阅 ID。
-   * **客户端 id：** 服务主体的 appId。 `appId` 作为步骤 4 中的输出返回。
-   * **客户端密钥：** 服务主体的密码或随机生成的密码。 该值在步骤 4 中返回为“password”参数中的输出。 
+   * **subscription-id：** 启用了 Azure Cosmos DB etcd API 的 Azure 订阅 ID。
+   * **client-id：** 服务主体的 appId。 `appId` 作为步骤 4 中的输出返回。
+   * **Client-secret：** 服务主体的密码或随机生成的密码。 该值在步骤 4 中返回为“password”参数中的输出。 
    * **dnsPrefix：** 区域唯一的 DNS 名称。 该值会成为主机名的一部分，例如 myprod1 和 staging。
-   * **位置：** 应将群集部署到的位置，当前仅支持 "centralus"。
+   * **location：** 应将群集部署到的位置，目前仅支持“centralus”。
 
    > [!Note]
    > 目前仅能在“centralus”区域中部署 Azure Cosmos etcd API。 
  
-   * **api 模型：** 模板文件的完全限定路径。
-   * **强制覆盖：** 此选项用于自动覆盖输出目录中的现有文件。
+   * **api-model：** 指向模板文件的完全限定的路径。
+   * **force-overwrite：** 此选项用于自动覆盖输出目录中的现有文件。
  
    以下命令展示的是一个示例部署：
 

@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 67eeb181f64f5924a90fd2c03e39e1be9887dd2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397158"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570369"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -49,11 +49,11 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 | 目标终结点                                                             | 协议 | 端口    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 对于[专用群集](private-clusters.md)，这不是必需的|
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 对于[专用群集](private-clusters.md)，这不是必需的 |
 | `*:123` 或 `ntp.ubuntu.com:123`（如果使用 Azure 防火墙网络规则）   | UDP      | 123     | 在 Linux 节点上进行网络时间协议 (NTP) 时间同步时需要。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。  |
+| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。 对于[专用群集](private-clusters.md)，这不是必需的  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Azure 全球的必需 FQDN/应用程序规则 
 
@@ -132,7 +132,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 | 目标 FQDN                                                               | 端口          | 用途      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
+| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
 
 如果选择阻止/不允许这些 FQDN，则仅当进行[节点映像升级](node-image-upgrade.md)或[群集升级](upgrade-cluster.md)时，节点才会接收 OS 更新。
 

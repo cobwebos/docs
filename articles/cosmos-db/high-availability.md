@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400292"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570795"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？ 
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 以透明方式在与 Azure Cosmos 帐户关联的所有 Azure �
 
 ## <a name="slas-for-availability"></a>可用性 SLA
 
-作为一种全球分布式数据库，Azure Cosmos DB 提供全面的 Sla，其中包含吞吐量、99% 的延迟、一致性和高可用性。 下表显示 Azure Cosmos DB 针对单区域和多区域帐户提供的高可用性保证。 若要实现高可用性，请始终将 Azure Cosmos 帐户配置为使用多个写入区域（也称为多主数据库）。
+作为一种全球分布式数据库，Azure Cosmos DB 提供全面的 Sla，其中包含吞吐量、99% 的延迟、一致性和高可用性。 下表显示 Azure Cosmos DB 针对单区域和多区域帐户提供的高可用性保证。 为实现高可用性，请始终将 Azure Cosmos 帐户配置为具有多个写入区域。
 
 |操作类型  | 单区域 |多区域（单区域写入）|多区域（多区域写入） |
 |---------|---------|---------|-------|
@@ -46,7 +46,7 @@ Azure Cosmos DB 以透明方式在与 Azure Cosmos 帐户关联的所有 Azure �
 
 - 使用 Azure Cosmos DB 时，在客户端确认写入操作之前，数据将由接受写入操作的区域中的副本仲裁持续提交。
 
-- 配置了多个写入区域/多主数据库的多区域帐户对于写入和读取都将保持高可用性。 区域性故障转移可在瞬间完成，不需要在应用程序中进行任何更改。
+- 配置有多个写入区域的多区域帐户对于写入和读取都将具有高可用性。 区域性故障转移可在瞬间完成，不需要在应用程序中进行任何更改。
 
 - 发生区域性服务中断时，单区域帐户可能会失去可用性。 始终建议对 Azure Cosmos 帐户至少设置两个区域（最好至少设置两个写入区域），以确保始终保持高可用性。
 
@@ -125,7 +125,7 @@ az cosmosdb create \
 
 创建 Azure Cosmos 帐户时，可以通过使用 Azure 门户启用可用性区域。 创建帐户时，请确保启用 **异地冗余**、 **多区域写入**，并选择支持可用性区域的区域：
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="使用 Azure 门户启用可用性区域"::: 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="物理分区"::: 
 
 ## <a name="building-highly-available-applications"></a>生成高可用性应用程序
 

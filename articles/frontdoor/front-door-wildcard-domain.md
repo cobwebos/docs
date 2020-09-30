@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442352"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570318"
 ---
 # <a name="wildcard-domains"></a>通配符域
 
-除了顶点域和子域，你还可以将通配符域名映射到你的 Azure 前门配置文件中的前端主机或自定义域列表。 如果在 Azure 前门配置中拥有通配符域，则会为同一路由规则中的 API、应用程序或网站的多个子域简化流量路由行为。 无需修改配置即可单独添加或指定每个子域。 例如，你可以 `customer1.contoso.com` `customer2.contoso.com` `customerN.contoso.com` 通过使用相同的路由规则并添加通配符域来定义、和的路由 `*.contoso.com` 。
+除了顶点域和子域以外，还可以将通配符域映射到你的 Azure 前门配置文件的前端主机或自定义域。 如果在 Azure 前门配置中拥有通配符域，则会为同一路由规则中的 API、应用程序或网站的多个子域简化流量路由行为。 无需修改配置即可单独添加或指定每个子域。 例如，你可以 `customer1.contoso.com` `customer2.contoso.com` `customerN.contoso.com` 通过使用相同的路由规则并添加通配符域来定义、和的路由 `*.contoso.com` 。
 
 支持通配符域的主要方案包括：
 
@@ -31,7 +31,7 @@ ms.locfileid: "91442352"
 
 ## <a name="adding-wildcard-domains"></a>添加通配符域
 
-你可以在前端主机或域的部分下添加通配符域。 类似于子域，Azure 前门验证是否存在通配符域的 CNAME 记录映射。 此 DNS 映射可以是映射到的直接 CNAME 记录映射 `*.contoso.com` `contoso.azurefd.net` 。 或者，可以使用 afdverify 临时映射。 例如， `afdverify.contoso.com` 映射以 `afdverify.contoso.azurefd.net` 验证通配符的 CNAME 记录映射。
+你可以在前端主机或域的部分下添加通配符域。 类似于子域，Azure 前门验证是否有通配符域的 CNAME 记录映射。 此 DNS 映射可以是映射到的直接 CNAME 记录映射 `*.contoso.com` `contoso.azurefd.net` 。 或者，可以使用 afdverify 临时映射。 例如， `afdverify.contoso.com` 映射以 `afdverify.contoso.azurefd.net` 验证通配符的 CNAME 记录映射。
 
 > [!NOTE]
 > Azure DNS 支持 通配符记录。
@@ -47,7 +47,7 @@ ms.locfileid: "91442352"
 - 如果将通配符域添加到 Azure 前门配置文件：
   - 不能将通配符域添加到任何其他 Azure 前门配置文件。
   - 不能将通配符域的第一级子域添加到另一个 Azure 前门配置文件或 Azure 内容分发网络配置文件。
-- 如果将通配符域的子域添加到 Azure 前门配置文件或 Azure 内容分发网络配置文件，则不能将通配符域添加到其他 Azure 前门配置文件。
+- 如果已将通配符域的子域添加到 Azure 前门配置文件或 Azure 内容分发网络配置文件，则通配符域不能用于其他 Azure 前门配置文件。
 - 如果两个配置文件 (Azure 前门或 Azure 内容分发网络) 具有根域的不同子域，则不能将通配符域添加到任一配置文件。
 
 ## <a name="certificate-binding"></a>证书绑定
@@ -59,7 +59,7 @@ ms.locfileid: "91442352"
 
 你可以选择使用 Azure Key Vault 中的相同通配符证书，也可以从子域的 Azure 前门托管证书中选择使用。
 
-如果为已具有关联证书的通配符域添加子域，则不能禁用该子域的 HTTPS。 子域使用通配符域的证书绑定，除非其他 Key Vault 或 Azure 前门托管证书覆盖它。
+如果为已具有关联证书的通配符域添加子域，则不能为子域禁用 HTTPS。 子域使用通配符域的证书绑定，除非其他 Key Vault 或 Azure 前门托管证书覆盖它。
 
 ## <a name="waf-policies"></a>WAF 策略
 

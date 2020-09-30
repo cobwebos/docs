@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225982"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570826"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -28,7 +28,7 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅 [快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集][aks-quickstart]。
+本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅[快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集][aks-quickstart]。
 
 还需要安装并配置 Azure CLI 2.6.0 或更高版本。 运行  `az --version`  即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -36,7 +36,7 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 
 默认情况下，在 K8s 版本低于 1.18 的群集上启用 kube-dashboard 加载项。 可以通过运行以下命令禁用加载项。
 
-``` azure-cli
+``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 

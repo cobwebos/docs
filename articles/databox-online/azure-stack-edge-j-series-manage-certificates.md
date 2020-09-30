@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e5c8a496c60d3bba81040716c74bca7b5cb6095e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890743"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569423"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上使用证书
 
@@ -61,7 +61,7 @@ Azure Stack Edge Pro 设备上使用各种类型的证书，如下所示：
 - 根证书应为证书链证书。
 - 可以按以下格式在设备上传根证书： 
     - **DER** –它们作为 `.cer` 文件扩展名提供。
-    - **基本-64 编码或 PEM** –它们也可作为 `.cer` 扩展。
+    - 以**64 为基础进行编码**–它们作为 `.cer` 文件扩展名提供。
     - **P7b** –此格式仅用于包含根证书和中间证书的签名链证书。
 - 在上传任何其他证书之前，将始终上载签名链证书。
 
@@ -275,11 +275,11 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     1. 首先上传根证书。 在本地 web UI 中，请参阅 " **证书" > "+ 添加证书**"。
 
-        ![添加签名链证书](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+        ![添加签名链证书1](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
 
     2. 接下来上传端点证书。 
 
-        ![添加签名链证书](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+        ![添加签名链证书2](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
 
         选择 *.pfx* 格式的证书文件，并输入在导出证书时提供的密码。 Azure 资源管理器证书可能需要几分钟才能生效。
 
@@ -324,7 +324,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
         ![导入证书3](media/azure-stack-edge-series-manage-certificates/import-cert-3.png)
 
  
-4. 选择“完成”。 出现导入成功的影响的消息。
+4. 选择“完成”  。 出现导入成功的影响的消息。
 
 ### <a name="export-certificates-as-pfx-format-with-private-key"></a>用私钥将证书导出为 .pfx 格式
 
@@ -366,11 +366,11 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![导出证书7](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-7.png)
   
-8. 选择“完成”。
+8. 选择“完成”  。
 
     ![导出证书8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. 你会收到一条已成功导出的消息。 选择“确定”。
+9. 你会收到一条已成功导出的消息。 选择“确定” 。
 
     ![导出证书9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 
@@ -383,20 +383,20 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 1. 在 "个人" 证书存储中，选择根证书。 右键单击并选择 " **所有任务" > 导出 ...**
 
-    ![导出证书1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![导出证书 DER 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
 2. 证书向导将打开。 选择格式为 **DER 编码的二进制 x.509 ( .cer) **。 选择“**下一页**”。
 
-    ![导出证书2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![导出证书 DER 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
 3. 浏览并选择要导出 .cer 格式文件的位置。
 
-    ![导出证书3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
+    ![导出证书 DER 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 
-4. 选择“完成”。
+4. 选择“完成”  。
 
-    ![导出证书4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![导出证书 DER 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="supported-certificate-algorithms"></a>支持的证书算法
@@ -410,11 +410,11 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 如果携带自己的证书，证书将在1年或6个月内过期。 若要查看证书的到期日期，请在设备的本地 web UI 中转到 " **证书** " 页。 如果选择特定证书，则可以查看证书的到期日期。
 
-## <a name="rotate-certificates"></a>轮换证书
+<!--## Rotate certificates
 
-此版本中未实现证书的轮替。 还不会向你通知你的证书的等待到期日期。 
+Rotation of certificates is not implemented in this release. You are also not notified of the pending expiration date on your certificate. 
 
-在设备的本地 web UI 中的 " **证书** " 页上查看证书到期日期。 证书过期后，根据 [创建和上载证书](azure-stack-edge-j-series-manage-certificates.md)中的详细说明创建并上传新证书。
+View the certificate expiration date on the **Certificates** page in the local web UI of your device. Once the certificate expiration is approaching, create and upload new certificates as per the detailed instructions in [Create and upload certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 ## <a name="next-steps"></a>后续步骤
 
