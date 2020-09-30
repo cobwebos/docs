@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252963"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>添加或更新用于 Azure 的信用卡
 
 本文档适用于使用信用卡注册 Azure online 的客户。
 
-在 Azure 门户中，可将默认付款方式更改为新信用卡，并更新信用卡详细信息。 只有[帐户管理员](billing-subscription-transfer.md#whoisaa)才能进行这种更改。
+在 Azure 门户中，可将默认付款方式更改为新信用卡，并更新信用卡详细信息。 只有[帐户管理员](../understand/subscription-transfer.md#whoisaa)才能进行这种更改。
 
 如果要删除信用卡，请参阅[删除 Azure 账单付款方式](delete-azure-payment-method.md)。
 

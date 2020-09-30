@@ -1,14 +1,16 @@
 ---
 title: 教程：用于查找问题的批处理测试 - LUIS
 description: 本教程演示如何使用批处理测试来验证语言理解 (LUIS) 应用的质量。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7dd181f8cd398dd683296b446028b398a9800b53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298302"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教程：成批测试数据集
 

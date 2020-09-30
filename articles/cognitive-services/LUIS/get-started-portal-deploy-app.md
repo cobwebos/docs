@@ -1,14 +1,16 @@
 ---
 title: 快速入门：通过 LUIS 门户部署应用
 description: 本快速入门介绍如何通过创建预测终结点资源、分配资源、训练和发布应用来部署应用。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 6126c6e37ad43ed6456b224d043dc6695fa2d00e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336356"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298402"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 

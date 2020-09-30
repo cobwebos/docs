@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270519"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教程：查看个人 Azure 账单
 
@@ -22,7 +22,7 @@ ms.locfileid: "88684620"
 
 本教程仅适用于具有个人订阅的 Azure 客户。 常见的个人订阅是直接从 Azure 网站购买的，其费率为即用即付费率。
 
-若想获取相关帮助来理解意外产生的费用，请参阅[分析意外费用](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges)。 或者，如果要取消 Azure 订阅，请参阅[取消 Azure 订阅](../manage/cancel-azure-subscription.md)。
+若想获取相关帮助来理解意外产生的费用，请参阅[分析意外费用](analyze-unexpected-charges.md)。 或者，如果要取消 Azure 订阅，请参阅[取消 Azure 订阅](../manage/cancel-azure-subscription.md)。
 
 在本教程中，你将了解如何执行以下操作：
 
