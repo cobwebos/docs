@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826054"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532138"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>将 Azure 计划程序作业迁移到 Azure 逻辑应用
 
@@ -96,7 +96,7 @@ ms.locfileid: "83826054"
 
    例如，可以包含向 URL 发送请求的 HTTP 操作，或包含处理存储队列、服务总线队列或服务总线主题的操作：
 
-   ![HTTP 操作](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![屏幕截图显示延迟，直到操作后跟带有 POST 方法的 H T T P 操作。](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. 完成后，保存逻辑应用。
 
@@ -155,7 +155,7 @@ ms.locfileid: "83826054"
 
    例如，可以包含向 URL 发送请求的 HTTP 操作，或包含处理存储队列、服务总线队列或服务总线主题的操作：
 
-   ![HTTP 操作](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![屏幕截图显示带有 POST 方法的 H T T P 操作。](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. 完成后，保存逻辑应用。
 

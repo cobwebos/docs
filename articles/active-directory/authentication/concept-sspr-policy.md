@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052709"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531269"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和账户限制
 
@@ -61,7 +61,7 @@ ms.locfileid: "90052709"
 
 ## <a name="administrator-reset-policy-differences"></a>管理员重置策略差异
 
-Microsoft 为任意 Azure 管理员角色强制实施默认强*双门*密码重置策略。 此策略可能与你为用户定义的策略不同，因此无法更改此策略。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
+默认情况下，系统会对管理员帐户启用自助密码重置，并强制实施强默认的 *双门* 密码重置策略。 此策略可能与你为用户定义的策略不同，因此无法更改此策略。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
 
 使用双门策略，管理员将无法使用安全问题。
 
@@ -93,6 +93,8 @@ Microsoft 为任意 Azure 管理员角色强制实施默认强*双门*密码重�
 * 如果在试用订阅中已过 30 天；或
 * 已为 Azure AD 租户配置了自定义域，如 *contoso.com*；或
 * Azure AD Connect 正在从本地目录同步标识
+
+你可以使用 [Set-msolcompanysettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell cmdlet 禁止对管理员帐户使用 SSPR。 `-SelfServePasswordResetEnabled $False`参数为管理员禁用 SSPR。
 
 ### <a name="exceptions"></a>异常
 

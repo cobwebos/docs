@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917850"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530848"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为复杂数据类型建模
 
@@ -62,7 +62,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 ## <a name="creating-complex-fields"></a>创建复杂字段
 
-与处理任何索引定义时一样，可以使用门户、[REST API](/rest/api/searchservice/create-index) 或 [.NET SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 创建包含复杂类型的架构。 
+与处理任何索引定义时一样，可以使用门户、[REST API](/rest/api/searchservice/create-index) 或 [.NET SDK](/dotnet/api/microsoft.azure.search.models.index) 创建包含复杂类型的架构。 
 
 以下示例演示了包含简单字段、集合与复杂类型的 JSON 索引架构。 请注意，在复杂类型中，与顶级字段一样，每个子字段包含一个类型，有时还包含属性。 架构对应于以上示例数据。 `Address` 是一个非集合的复杂字段（一家酒店只有一个地址）。 `Rooms` 是复杂集合字段（一家酒店有多间客房）。
 

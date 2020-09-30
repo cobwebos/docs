@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2f57d20df6adbb7c1a0c73958cc10035126e29b8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171597"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530980"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
 
 ## <a name="metrics"></a>指标
-Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解为 PostgreSQL 服务器提供支持的资源的行为。 每个指标以一分钟的频率发出，最多可达[93 天的历史记录](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#retention-of-metrics)。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解为 PostgreSQL 服务器提供支持的资源的行为。 每项指标以一分钟为频率发出，[历史记录长达 93 天](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#retention-of-metrics)。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for PostgreSQL：
@@ -34,11 +34,11 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |serverlog_storage_usage|服务器日志已用的存储量|字节|使用的服务器日志存储量。|
 |serverlog_storage_limit|服务器存储空间上限|字节|此服务器的最大服务器日志存储。|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
-|connections_failed|失败的连接数|计数|已建立失败的连接数。|
+|connections_failed|失败的连接数|Count|所建立的失败的连接数。|
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
-|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有数据库备份、差异备份和日志备份占用的存储量之和。 备份的频率为服务管理，并在[概念一文](concepts-backup.md)中对此进行了说明。 对于异地冗余存储，备份存储使用情况是本地冗余存储的两倍。|
-|pg_replica_log_delay_in_bytes|副本的最大滞后时间|字节|主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 此指标仅适用于主服务器。|
+|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份所消耗的存储的总和。 备份的频率由服务管理，并在[概念文章](concepts-backup.md)中进行了说明。 对于异地冗余存储，备份存储使用率是本地冗余存储的两倍。|
+|pg_replica_log_delay_in_bytes|副本的最大滞后时间|字节|主副本和最滞后副本之间的延迟（以字节为单位）。 此指标仅在主服务器上可用。|
 |pg_replica_log_delay_in_seconds|副本滞后时间|秒|自上次重放事务以来所经历的时间。 此指标仅适用于副本服务器。|
 
 ## <a name="server-logs"></a>服务器日志
@@ -74,7 +74,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
 
 > [!IMPORTANT]
-> 计划内维护通知当前在美国西部地区**以外**的所有区域中提供预览版
+> 计划内维护通知当前在美国西部地区 **以外** 的所有区域中提供预览版
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。

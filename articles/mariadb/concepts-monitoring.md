@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 088d2c0a11f7d145f0c8a7ccb2c0aac5bd2d140d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 35a097f7b6d73a14ac4840839a31d9aa256aa8de
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224079"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532685"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MariaDB 提供了各种指标来帮助用户深入了解服务器的行为。
@@ -28,7 +28,7 @@ ms.locfileid: "88224079"
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。  (不适用于基本层服务器) |
+|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。 （不适用于基本层服务器）|
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
 |storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
 |serverlog_storage_percent|服务器日志存储空间百分比|百分比|所用服务器日志存储占服务器最大服务器日志存储的百分比。|
@@ -37,10 +37,10 @@ ms.locfileid: "88224079"
 |storage_limit|存储限制|字节|此服务器的最大存储。|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
 |connections_failed|失败的连接数|计数|服务器的失败连接数。|
-|seconds_behind_master|复制延迟（秒）|计数|副本服务器滞后于主服务器的秒数。  (不适用于基本层服务器) |
+|seconds_behind_master|复制延迟（秒）|Count|副本服务器滞后源服务器的秒数。 （不适用于基本层服务器）|
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
-|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有数据库备份、差异备份和日志备份占用的存储量之和。 备份的频率为服务管理，并在 [概念一文](concepts-backup.md)中对此进行了说明。 对于异地冗余存储，备份存储使用情况是本地冗余存储的两倍。|
+|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份所消耗的存储的总和。 备份的频率由服务管理，并在[概念文章](concepts-backup.md)中进行了说明。 对于异地冗余存储，备份存储使用率是本地冗余存储的两倍。|
 
 ## <a name="server-logs"></a>服务器日志
 

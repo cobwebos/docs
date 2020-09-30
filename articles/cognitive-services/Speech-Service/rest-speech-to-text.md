@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934576"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532511"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
 作为[语音 SDK](speech-sdk.md) 的一种替代方法，语音服务允许使用 REST API 转换语音转文本。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。 REST API 非常有限，只应在[语音 SDK](speech-sdk.md) 不能使用的情况下使用。
 
-使用语音转文本 REST API 之前，请先了解：
+使用语音到文本 REST API 之前，请注意以下事项：
 
 * 使用 REST API 并直接传输音频的请求最多只能包含 60 秒的音频。
 * 语音转文本 REST API 仅返回最终结果。 不提供部分结果。
 
 如果应用程序需要发送更长的音频，请考虑使用[语音 SDK](speech-sdk.md) 或基于文件的 REST API，如[批量转录](batch-transcription.md)。
+
+> [!TIP]
+> 请参阅适用于政府云的 Azure 政府 [文档](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) (FairFax) 终结点。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -52,7 +55,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必须 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必需 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 Detailed 响应包括显示文本的四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
 | `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在“部署”页上找到的其终结点 ID 使用自定义模型。 使用终结点 ID 作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
@@ -66,7 +69,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
 | `Pronunciation-Assessment` | 指定用于在识别结果中显示发音分数的参数，这些参数评估语音输入的发音质量，并具有准确性、流畅性、完整性等指标。此参数是 Base64 编码的 json，其中包含多个详细的参数。 若要了解如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必须 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必需 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 某些请求框架提供不兼容的默认值。 最好始终包含 `Accept`。 | 可选，但建议提供。 |

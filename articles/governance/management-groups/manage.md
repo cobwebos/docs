@@ -3,12 +3,12 @@ title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 765a3853bbd3ee21bfc2a4aca5d5adb03f413e30
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658764"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531014"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -37,11 +37,11 @@ ms.locfileid: "89658764"
 
 1. 选择页面顶部的“重命名组”选项。
 
-   :::image type="content" source="./media/detail_action_small.png" alt-text="操作栏和 管理组 页上的 重命名组 按钮的屏幕截图。" border="false":::
+   :::image type="content" source="./media/detail_action_small.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 1. 菜单打开后，请输入要显示的新名称。
 
-   :::image type="content" source="./media/rename_context.png" alt-text="重命名组窗口的屏幕截图和用于重命名管理组的选项。" border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -68,7 +68,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 1. 该管理组下面没有任何子管理组或订阅。 若要将订阅或管理组移到另一个管理组，请参阅[在层次结构中移动管理组和订阅](#moving-management-groups-and-subscriptions)。
 
 1. 你需要拥有对管理组的写入权限（“所有者”、“参与者”或“管理组参与者”）。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 若要详细了解 Azure 角色，请参阅  
-   [通过 RBAC 管理访问和权限](../../role-based-access-control/overview.md)。
+   [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 ### <a name="delete-in-the-portal"></a>在门户中删除
 
@@ -82,14 +82,14 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 选择“删除”
 
-   :::image type="content" source="./media/delete.png" alt-text="突出显示 删除 按钮的 管理组 页的屏幕截图。" border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
    > [!TIP]
    > 如果该图标已禁用，将鼠标指针悬停在该图标上可显示原因。
 
 1. 此时会打开一个窗口，让你确认是否要删除该管理组。
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="删除管理组的 删除组 确认对话框的屏幕截图。" border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 1. 请选择“是”。
 
@@ -123,7 +123,7 @@ az account management-group delete --name 'Contoso'
 
 1. 若要查看管理组的详细信息，请选择管理组标题旁边的“(详细信息)”链接。 如果此链接不可用，则表示你无权查看该管理组。
 
-   :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的 管理组 页的屏幕截图。" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 ### <a name="view-in-powershell"></a>在 PowerShell 中查看
 
@@ -213,7 +213,7 @@ az account management-group show --name 'Contoso' -e -r
 
 如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 不能将它移到你在其中是参与者的管理组，因为你会失去订阅的所有权。 如果你直接分配到订阅的“所有者”角色的（而不是从管理组继承的），可将该订阅移到你身为参与者的任何管理组。
 
-若要查看自己在 Azure 门户中拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 Azure 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。
+若要查看自己在 Azure 门户中拥有哪些权限，请选择管理组，然后选择“IAM”。 若要了解有关 Azure 角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md)。
 
 ## <a name="move-subscriptions"></a>移动订阅 
 
@@ -229,7 +229,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中选择具有正确 ID 的订阅。
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="用于选择要添加到管理组的现有订阅的 添加订阅 选项的屏幕截图。" border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -243,13 +243,13 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中，选择要移动的订阅所在行末尾的椭圆。
 
-   :::image type="content" source="./media/move_small.png" alt-text="选择 移动 选项的订阅的备用菜单屏幕截图。" border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 1. 选择“移动”。
 
 1. 在打开的菜单中，选择“父管理组”。
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="移动 窗口的屏幕截图和用于将订阅移到其他管理组的选项。" border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -298,7 +298,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - 选择新管理组将创建一个新管理组。
    - 选择现有管理组将显示所有管理组的下拉列表，这些管理组可移动到此管理组。  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="用于创建新管理组的 添加管理组 选项的屏幕截图。" border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 1. 选择“保存”。
 
@@ -323,7 +323,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)支持管理组。 可查询发生在与其他 Azure 资源位于相同中心位置的管理组上的所有事件。 例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
 
-:::image type="content" source="./media/al-mg.png" alt-text="与所选管理组相关的活动日志和操作的屏幕截图。" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="“管理组”页面上操作栏和“重命名组”按钮的屏幕截图。" border="false":::
 
 如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示： **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 

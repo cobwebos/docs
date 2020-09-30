@@ -4,12 +4,12 @@ description: 提供有关 Azure VMware 解决方案的一些常见问题的解�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 4bb713b3d50fa92728baf7b1fff1e6e65c48ed92
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368730"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530470"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
 
@@ -67,7 +67,7 @@ Microsoft 和 Red Hat 共享一个集成的归置支持团队，该团队为在 
 
 VMware HCX Enterprise Edition (EE) 随 Azure VMware 解决方案一起提供，作为 *预览* 功能/服务。 虽然适用于 Azure VMware 解决方案的 VMware HCX EE 处于预览状态，但它是免费的功能/服务，并受预览版服务条款和条件的约束。 VMware HCX EE 服务推出后，你将获得30天的通知，计费将会切换。 你还可以选择关闭/退出服务。
 
-## <a name="compute-network-and-storage"></a>计算、网络和存储
+## <a name="compute-network-storage-and-backup"></a>计算、网络、存储和备份
 
 #### <a name="is-there-more-than-one-type-of-host-available"></a>是否有多种类型的主机可用？
 
@@ -92,6 +92,14 @@ VMware HCX Enterprise Edition (EE) 随 Azure VMware 解决方案一起提供，�
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>VSAN 数据存储上存储的数据是否静态加密？
 
 是的，默认情况下，使用存储在 Azure Key Vault 中的密钥加密所有 vSAN 数据。
+
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>你记录了 Commvault、Veritas 和 Veeam 已扩展其备份解决方案，以便与 Azure VMware 解决方案一起使用。 其他独立软件供应商 (ISV) 备份解决方案呢？
+
+正如我们所知，使用 VMware VADP 和 HotAdd 传输模式的任何备份解决方案都应直接在 Azure VMware 解决方案中使用。
+
+#### <a name="what-about-support-for-isv-backup-solutions"></a>对 ISV 备份解决方案的支持是怎样的？
+
+由于这些备份解决方案由客户进行安装和管理，因此他们可以联系到相应的 ISV 提供支持。 
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主机、群集和私有云
 

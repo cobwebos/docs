@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/03/2020
-ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897393"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530623"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>使用 VS Code 扩展（预览版）管理 Azure 机器学习资源
 
@@ -201,6 +201,7 @@ VS Code 扩展目前支持以下类型的数据存储：
 1. 在工作区中展开“试验”节点。
 1. 右键单击要运行的试验。
 1. 选择活动栏中的“运行试验”图标。
+1. 选择是要本地运行试验还是以远程方式运行试验。 有关在本地运行和调试试验的详细信息，请参阅 [调试指南](how-to-debug-visual-studio-code.md) 。
 1. 选择订阅。
 1. 选择要在其下运行试验的 Azure ML 工作区。
 1. 选择你的试验。
@@ -320,7 +321,7 @@ VS Code 扩展目前支持以下类型的数据存储：
 
 1. 展开包含你的工作区的订阅节点。
 1. 在工作区中展开“计算群集”节点。
-1. 右键单击要在其下创建运行配置的计算目标，然后选择“创建运行配置”。
+1. 右键单击要在其下创建运行配置的计算目标，然后选择 " **创建运行配置**"。
 1. 在提示中执行以下操作：
     1. 为你的计算目标提供一个名称
     1. 选择或创建一个新环境。

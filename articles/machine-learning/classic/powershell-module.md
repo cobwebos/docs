@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 59a0989157a87c7fb951c8b6d9c7b70474626f42
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 01c0b6610968c8eaa493a63aa9004d8ea4c36ca2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361868"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530760"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）PowerShell 模块
 
@@ -53,12 +53,12 @@ PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经�
 ## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell 支持表
 
 
-|  **Az** |  **PowerShell 经典** |
+| 任务 | **Az** |  **PowerShell 经典** |
 | --- | --- | --- |
 | 创建/删除工作区 | [资源管理器模板](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | 管理工作区承诺计划 | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | 管理工作区用户 |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| 管理 Web 服务 | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>（新 Web 服务）|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>（经典 Web 服务） |
+| 管理 Web 服务 | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>（新 Web 服务）| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>（经典 Web 服务） |
 | 管理 Web 服务终结点/密钥 |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
 | 管理用户数据集/已训练模型| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
 | 管理用户体验 |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |

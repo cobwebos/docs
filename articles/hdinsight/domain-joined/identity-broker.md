@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 12/12/2019
-ms.openlocfilehash: 12d98406b21ed9a3ea27f9aa4abc0db6f536468d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251909"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529913"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID 代理 (预览) 
 
@@ -30,11 +30,13 @@ HIB 提供身份验证基础结构，该基础结构允许从 OAuth (新式) 到
 
 下图显示了启用 ID 代理后所有用户（包括联合用户）的新式基于 OAuth 的身份验证流：
 
-![采用 ID 代理的身份验证流](./media/identity-broker/identity-broker-architecture.png)
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="采用 ID 代理的身份验证流":::
 
 在此图中，客户端 (（即浏览器或应用) 需要首先获取 OAuth 令牌，然后向 HTTP 请求中的网关提供令牌。 如果已登录到其他 Azure 服务（例如 Azure 门户），可以使用单一登录 (SSO) 体验登录到 HDInsight 群集。
 
 仍有许多仅支持基本身份验证的旧版应用程序 (即用户名/密码) 。 对于这些方案，你仍可以使用 HTTP 基本身份验证连接到群集网关。 在此设置中，你必须确保从网关节点到联合终结点的网络连接 (ADFS 终结点) ，以确保可从网关节点直接看到行。
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="采用 ID 代理的身份验证流":::
 
 根据组织的需要，使用下表确定最佳身份验证选项：
 

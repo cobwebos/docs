@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919703"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531019"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL 基础结构双加密
-
-> [!NOTE]
-> 此时，必须请求访问权限才能使用此功能。 为此，请联系 AskAzureDBforMySQL@service.microsoft.com。
 
 Azure Database for MySQL 使用 Microsoft 的托管密钥对数据进行 [静态数据存储加密](concepts-security.md#at-rest) 。 包括备份在内的数据在磁盘上加密，此加密始终打开且无法禁用。 加密使用 FIPS 140-2 验证的加密模块和 AES 256 位密码进行 Azure 存储加密。
 

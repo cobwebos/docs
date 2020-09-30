@@ -7,14 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: ecc2134d1a528ee22710cb447f996e0c5e31a8de
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee7ba96a7cc8789e1a949db80bc84c63b28f4518
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308174"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531660"
 ---
 # <a name="how-to-export-fhir-data"></a>如何导出 FHIR 数据
+
+大容量导出功能允许 (按 "FHIR 规范" 的 FHIR 服务器导出数据 https://hl7.org/fhir/uv/bulkdata/export/index.html) 。 
 
 使用 $export 之前，需确保将用于 FHIR 的 Azure API 配置为使用该 API。 若要配置导出设置和创建 Azure 存储帐户，请参阅 [配置导出数据页](configure-export-data.md)。
 
@@ -22,7 +24,7 @@ ms.locfileid: "91308174"
 
 配置用于 FHIR 的 Azure API 以进行导出后，可以使用 $export 命令将数据导出到服务外。 数据将存储在配置导出时指定的存储帐户中。 若要了解如何在 FHIR server 中调用 $export 命令，请阅读有关 [$export 规范](https://hl7.org/Fhir/uv/bulkdata/export/index.html)的文档。 
 
-Azure API for FHIR 中的 $export 命令采用一个可选的_ \_ 容器_参数，该参数指定在已配置的存储帐户中要将数据导出到的容器。
+Azure API for FHIR 中的 $export 命令采用一个可选的_ \_ 容器_参数，该参数指定在已配置的存储帐户中要将数据导出到的容器。 如果指定容器，则会将数据导出到名为的新文件夹中的容器。 如果未指定容器，则会将数据导出到新容器，名称为
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
@@ -32,6 +34,8 @@ Azure API for FHIR 中的 $export 命令采用一个可选的_ \_ 容器_参数�
 
 > [!Note] 
 > 如果资源位于多个资源的隔离舱中或位于多个组中，$export 将导出重复的资源。
+
+此外，还支持在队列中通过 location 标头返回的 URL 检查导出状态，同时支持取消实际导出作业。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735984"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530249"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>将移动设备设置为双因素验证方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "83735984"
 
 2. 从“方法”  区域中选择“通过文本消息向我发送代码”  ，然后选择“下一步”  。
 
-    ![“其他安全验证”页，其中显示身份验证电话和文本消息](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![显示 "其他安全验证" 页的屏幕截图，其中包含 "身份验证电话" 和 "通过短信向我发送代码"。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. 将 Microsoft 发送的文本消息中的验证码键入“第 2 步:  我们已将文本消息发送至您的手机”区域，然后选择“验证”  。
 

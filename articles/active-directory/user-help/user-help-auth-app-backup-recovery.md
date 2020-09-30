@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798986"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530895"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 
@@ -83,21 +83,21 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 1. 在 Microsoft Authenticator 应用程序的 " **帐户** " 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator 应用，显示可用帐户磁贴" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
 
 1. 点击要恢复的帐户的磁贴，然后点击 "登录" 选项以恢复。 输入密码，然后确认你的电子邮件地址或电话号码作为附加验证。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="身份验证器将一次性密码提供为验证码" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>为工作或学校帐户提供更多验证
 
 1. 在 Microsoft Authenticator 应用程序的 " **帐户** " 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator 应用，显示可用帐户磁贴" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
 
 1. 在全屏视图中，点击选项以扫描 QR 代码以完全恢复。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="身份验证器将一次性密码提供为验证码" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="显示具有可用帐户磁贴的 Microsoft Authenticator 应用程序的屏幕截图。" border="true":::
 
 >[!NOTE]
 >有关 QR 码以及如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](./user-help-auth-app-download-install.md)或[设置安全信息以使用 Authenticator 应用](./security-info-setup-auth-app.md)，具体取决于管理员是否已启用安全信息。

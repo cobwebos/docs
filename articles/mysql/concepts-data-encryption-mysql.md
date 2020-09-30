@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 71657d45ce9c4cc6fb103b61235a282b3005b924
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 30c60dbe74835cb67879f7e0cf9bf403dca17fd8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884917"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531082"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客户托管密钥进行 Azure Database for MySQL 数据加密
 
@@ -80,7 +80,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 确保 Key Vault 和 Azure Database for MySQL 位于同一区域，以确保对 DEK 包装和解包操作的更快访问。
 * 将 Azure KeyVault 锁定为仅“专用终结点和所选网络”，并仅允许“受信任的 Microsoft”服务保护资源。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="显示“创建自己的密钥”概述的关系图":::
 
 下面是客户管理的密钥的配置建议：
 
@@ -121,9 +121,9 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 
 在使用客户存储在 Key Vault 中的托管密钥对 Azure Database for MySQL 进行加密后，还将对服务器的任何新创建的副本进行加密。 可以通过本地或异地还原操作，或通过只读副本创建此新副本。 可更改该副本，使其反映出用于加密的客户管理的新密钥。 当客户管理的密钥更改时，服务器的旧备份将开始使用最新的密钥。
 
-若要避免在还原或只读副本创建期间设置客户托管的数据加密时出现问题，在主服务器和还原/副本服务器上执行以下步骤非常重要：
+若要避免在还原或读取副本创建过程中设置客户管理的数据加密时出现问题，必须在源服务器和还原/副本服务器上执行以下步骤：
 
-* 从主 Azure Database for MySQL 启动还原或只读副本创建过程。
+* 从源 Azure Database for MySQL 启动还原或读取副本的创建过程。
 * 使新创建的服务器（还原/副本）保持无法访问状态，因为其唯一标识尚未授予 Key Vault 的权限。
 * 在还原/副本服务器上，重新验证数据加密设置中客户托管密钥，以确保为新创建的服务器提供对存储在 Key Vault 中的密钥的包装和解包权限。
 

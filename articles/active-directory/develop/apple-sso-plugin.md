@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561340"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530691"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
 
@@ -93,7 +93,7 @@ MDM 管理员允许参与 SSO 的许可[应用](./application-consent-experience
 
 默认情况下，仅当 SSO 插件已经有共享凭据时，Microsoft 企业 SSO 插件才为授权应用提供 SSO。 Microsoft 企业 SSO 插件可以在令牌获取过程中由其他 ADAL 或基于 MSAL 的应用程序调用共享凭据。 大多数 Microsoft 应用都使用 Microsoft Authenticator 或 SSO 插件。 这意味着，默认情况下，在本机应用流之外的 SSO 是最大努力。  
 
-启用 `browser_sso_interaction_enabled` 标志后，MSAL 应用和 Safari 浏览器可以执行初始引导并获取共享凭据。 如果 Microsoft 企业 SSO 插件尚没有共享凭据，则每当从 Safari 浏览器、ASWebAuthenticationSession、SafariViewController 或其他白名单本机应用程序内的 Azure AD URL 请求登录时，它都会尝试获取一个共享凭据。  
+启用 `browser_sso_interaction_enabled` 标志后，MSAL 应用和 Safari 浏览器可以执行初始引导并获取共享凭据。 如果 Microsoft 企业 SSO 插件尚没有共享凭据，则每当从 Safari 浏览器、ASWebAuthenticationSession、SafariViewController 或其他允许的本机应用程序内的 Azure AD URL 请求登录时，它都会尝试获取一个共享凭据。  
 
 - 键：`browser_sso_interaction_enabled`
 - 类型：`Integer`

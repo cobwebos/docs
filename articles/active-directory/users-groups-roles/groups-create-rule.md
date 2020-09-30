@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c44f72021fa46352ae6ded8fe671ea4f1a4d60
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797167"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531524"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>在 Azure Active Directory 中创建或更新动态组
 
@@ -40,7 +40,7 @@ Azure AD 提供了一个规则生成器，用于更快地创建和更新重要�
 > [!NOTE]
 > 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会看到一条消息。 规则生成器不会以任何方式更改动态组规则的支持语法、验证或处理。
 
-![为动态组添加成员身份规则](./media/groups-create-rule/update-dynamic-group-rule.png)
+![显示 "动态成员身份规则" 页的屏幕截图，其中选择了 "配置规则" 选项卡上的 "添加表达式" 操作。](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 如需成员身份规则的语法、支持的属性、运算符和值的示例，请参阅 [Azure Active Directory 中的组的动态成员资格规则](groups-dynamic-membership.md)。
 
@@ -54,7 +54,7 @@ Azure AD 提供了一个规则生成器，用于更快地创建和更新重要�
 
 1. 在“组”页面上，输入新组的名称和说明。**** 为用户或设备选择“成员身份类型”，然后选择“添加动态查询”。******** 规则生成器支持最多五个表达式。 若要添加五个以上的表达式，必须使用文本框。
 
-   ![为动态组添加成员身份规则](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![显示 "所有组" 页面并选择 "新组" 操作的屏幕截图。](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. 查看适用于成员身份查询的自定义扩展属性：
    1. 选择“获取自定义扩展属性”****
@@ -67,7 +67,7 @@ Azure AD 提供了一个规则生成器，用于更快地创建和更新重要�
 ## <a name="to-update-an-existing-rule"></a>更新现有规则
 
 1. 使用 Azure AD 组织中 "全局管理员"、"组管理员"、"Intune 管理员" 或 "用户管理员" 角色中的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
-1. 选择 "**组**" "  >  **所有组**"。
+1. 选择“组” > “所有组” 。
 1. 选择组以打开其配置文件。
 1. 在该组的 "配置文件" 页上，选择 " **动态成员身份规则**"。 规则生成器支持最多五个表达式。 若要添加五个以上的表达式，必须使用文本框。
 

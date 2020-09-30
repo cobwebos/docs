@@ -6,21 +6,21 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830275"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530912"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
-**适用于：** Azure Database for PostgreSQL-单服务器版本9.6 及更高版本
+**适用于：** Azure Database for PostgreSQL（单一服务器）9.6 及更高版本
 
-Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时间内跟踪查询性能的方法。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for PostgreSQL 实例中的名为 azure_sys 的数据库中****。
+Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时间内跟踪查询性能的方法。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for PostgreSQL 实例中的名为 azure_sys 的数据库中。
 
 > [!IMPORTANT]
-> 请勿修改 azure_sys 数据库或其架构****。 执行此操作将阻止查询存储和相关的性能功能正常运行。
+> 请勿修改 azure_sys 数据库或其架构。 执行此操作将阻止查询存储和相关的性能功能正常运行。
 
 ## <a name="enabling-query-store"></a>启用查询存储
 查询存储是一项选择加入功能，因此默认情况下它在服务器上未处于活动状态。 对于给定服务器上的所有数据库，该存储处于全局启用或禁用状态，且无法为每个数据库打开或关闭存储。
@@ -77,7 +77,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 以下是一些示例，说明如何使用查询存储中的等待统计信息获得有关工作负载的更多见解：
 
-| **观测** | **Action** |
+| **观测** | **操作** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。|
 | 高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。|
@@ -88,7 +88,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 以下选项可用于配置查询存储参数。
 
-| **Parameter** | **说明** | **默认** | **范围**|
+| **参数** | **说明** | **默认** | **范围**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | 设置跟踪哪些语句。 | 无 | none, top, all |
 | pg_qs.max_query_text_length | 设置可保存的最大查询长度。 将截断较长的查询。 | 6000 | 100 - 10K |
@@ -103,20 +103,20 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 | Pgms_wait_sampling.history_period | 设置等待事件采样的频率（以毫秒为单位）。 | 100 | 1-600000 |
 
 > [!NOTE] 
-> 将 pgms_wait_sampling.query_capture_mode 替代为 pg_qs.query_capture_mode********。 如果 pg_qs.query_capture_mode 为 NONE，则 pgms_wait_sampling.query_capture_mode 设置无效。
+> 将 pgms_wait_sampling.query_capture_mode 替代为 pg_qs.query_capture_mode 。 如果 pg_qs.query_capture_mode 为 NONE，则 pgms_wait_sampling.query_capture_mode 设置无效。
 
 
 使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 获取或设置参数的不同值。
 
 ## <a name="views-and-functions"></a>视图和函数
-使用以下视图和函数查看并管理查询存储。 PostgreSQL 公共角色中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 azure_sys 数据库中可用****。
+使用以下视图和函数查看并管理查询存储。 PostgreSQL 公共角色中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 azure_sys 数据库中可用。
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 
 ### <a name="query_storeqs_view"></a>query_store.qs_view
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。 
 
-|**名称**   |类型 | **参考**  | **说明**|
+|**名称**   |**类型** | **参考**  | **说明**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | runtime_stats_entries 表的 ID|
 |user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
@@ -149,7 +149,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此视图返回查询存储中的查询文本数据。 每个不同的 query_text 都有一行。
 
-|**名称**|  类型|   **说明**|
+|**名称**|  **类型**|   **说明**|
 |---|---|---|
 |query_text_id  |bigint     |query_texts 表的 ID|
 |query_sql_text |Varchar(10000)     |代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。|
@@ -157,7 +157,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-|**名称**|  类型|   **参考**| **说明**|
+|**名称**|  **类型**|   **参考**| **说明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
 |db_id  |oid    |pg_database.oid    |在其中执行语句的数据库的 OID|
@@ -178,13 +178,13 @@ Query_store.staging_data_reset() 返回无效值
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL 与[Azure Monitor 诊断设置](../azure-monitor/platform/diagnostic-settings.md)集成。 通过诊断设置，可以将 Postgres 日志以 JSON 格式发送到[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)进行分析和警报、用于流式处理的事件中心以及用于存档的 Azure 存储。
+Azure Database for PostgreSQL 集成了 [Azure Monitor 诊断设置](../azure-monitor/platform/diagnostic-settings.md)。 使用诊断设置可将 JSON 格式的 Postgres 日志发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)用于分析和警报、发送到事件中心进行流式处理，或者发送到 Azure 存储进行存档。
 
 >[!IMPORTANT]
-> 的此诊断功能仅在 "常规用途" 和 "内存优化" 定价层中提供。
+> 此诊断功能仅适用于“常规用途”和“内存优化”定价层。
 
 ### <a name="configure-diagnostic-settings"></a>配置诊断设置
-你可以使用 Azure 门户、CLI、REST API 和 PowerShell 为你的 Postgres 服务器启用诊断设置。 要配置的日志类别是 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。 
+可以使用 Azure 门户、CLI、REST API 和 PowerShell 为 Postgres 服务器启用诊断设置。 要配置的日志类别是 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。 
 
 若要使用 Azure 门户启用资源日志：
 
@@ -192,13 +192,13 @@ Azure Database for PostgreSQL 与[Azure Monitor 诊断设置](../azure-monitor/p
 2. 选择“添加诊断设置”。
 3. 为此设置命名。
 4. 选择首选的终结点（存储帐户、事件中心、Log Analytics）。
-5. 选择 "日志类型**QueryStoreRuntimeStatistics** " 和 " **QueryStoreWaitStatistics**"。
+5. 选择日志类型“QueryStoreRuntimeStatistics”和“QueryStoreWaitStatistics”。
 6. 保存设置。
 
-若要使用 PowerShell、CLI 或 REST API 启用此设置，请访问[诊断设置一文](../azure-monitor/platform/diagnostic-settings.md)。
+若要使用 PowerShell、CLI 或 REST API 启用此设置，请访问[诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
 
 ### <a name="json-log-format"></a>JSON 日志格式
-下表描述了这两种日志类型的字段。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。
+下表描述了两种日志类型的字段。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。
 
 #### <a name="querystoreruntimestatistics"></a>QueryStoreRuntimeStatistics
 |**字段** | **说明** |
@@ -212,13 +212,13 @@ Azure Database for PostgreSQL 与[Azure Monitor 诊断设置](../azure-monitor/p
 | user_id_s | 执行此语句的用户的 OID |
 | db_id_s | 在其中执行语句的数据库的 OID |
 | query_id_s | 根据语句的分析树计算的内部哈希代码 |
-| end_time_s | 对应于此项的时间段的结束时间 |
+| end_time_s | 对应于此条目的时段的结束时间 |
 | calls_s | 执行查询的次数 |
 | total_time_s | 总查询执行时间（毫秒） |
 | min_time_s | 最小查询执行时间（毫秒） |
 | max_time_s | 最大查询执行时间（毫秒） |
 | mean_time_s | 平均查询执行时间（毫秒） |
-| ResourceGroup | 资源组 | 
+| resourceGroup | 资源组 | 
 | SubscriptionId | 订阅 ID |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | 资源 | Postgres 服务器名称 |
@@ -237,11 +237,11 @@ Azure Database for PostgreSQL 与[Azure Monitor 诊断设置](../azure-monitor/p
 | query_id_s | 查询的内部哈希代码 |
 | calls_s | 捕获的相同事件的数量 |
 | event_type_s | 后端正在等待的事件类型 |
-| event_s | 如果后端当前正在等待，则等待事件名称 |
+| event_s | 后端当前正在等待的等待事件名称 |
 | start_time_t | 事件开始时间 |
 | end_time_s | 事件结束时间 | 
 | LogicalServerName_s | Postgres 服务器名称 | 
-| ResourceGroup | 资源组 | 
+| resourceGroup | 资源组 | 
 | SubscriptionId | 订阅 ID |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | 资源 | Postgres 服务器名称 |
@@ -250,7 +250,7 @@ Azure Database for PostgreSQL 与[Azure Monitor 诊断设置](../azure-monitor/p
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 - 如果 PostgreSQL 服务器具有参数 default_transaction_read_only，则查询存储无法捕获数据。
 - 如果遇到较长的 Unicode 查询（> = 6000 个字节），查询存储功能可能会中断。
-- [只读副本](concepts-read-replicas.md)从主服务器复制查询存储数据。 这意味着只读副本的查询存储不提供有关在只读副本上运行的查询的统计信息。
+- [读取副本](concepts-read-replicas.md) 从主服务器查询存储的数据复制。 这意味着只读副本的查询存储不提供有关在只读副本上运行的查询的统计信息。
 
 
 ## <a name="next-steps"></a>后续步骤

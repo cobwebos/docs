@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876778"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530147"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
@@ -71,7 +71,7 @@ ms.locfileid: "87876778"
 
 ## <a name="connect-to-an-azure-account"></a>连接到 Azure 帐户
 
-在将脚本从 Visual Studio Code 提交到群集之前，用户可以登录到 Azure 订阅，也可以链接到[HDInsight 群集](#link-a-cluster)。 使用 ESP 群集的 Ambari 用户名/密码或已加入域的凭据连接到 HDInsight 群集。 遵循以下步骤连接到 Azure：
+在你可以从 Visual Studio Code 将脚本提交到群集之前，用户可以登录 Azure 订阅，或[链接 HDInsight 群集](#link-a-cluster)。 使用 Ambari 用户名/密码或 ESP 群集的域加入凭据连接到 HDInsight 群集。 遵循以下步骤连接到 Azure：
 
 1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Azure:  登录”：
 
@@ -199,11 +199,11 @@ ms.locfileid: "87876778"
 
 4. 有关安装 PySpark 内核的提示显示在窗口右下角。 可以单击“安装”按钮继续进行 PySpark 安装，也可以单击“跳过”按钮跳过此步骤。
 
-   ![安装 PySpark 内核](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   ![屏幕截图显示跳过 PySpark 安装的选项。](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
 5. 如果以后需要安装它，可以导航到“文件” > “首选项” > “设置”，然后在设置中取消选中“Hdinsight:允许跳过 Pyspark 安装”。 
     
-    ![安装 PySpark 内核](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    ![屏幕截图显示用于启用 Skip Pyspark 安装的选项。](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. 如果在步骤 4 中安装成功，则会在窗口右下角显示“已成功安装 PySpark”消息框。 单击“重载”按钮可重载此窗口。
     ![已成功安装 PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
@@ -294,17 +294,17 @@ ms.locfileid: "87876778"
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>与 HDInsight Identity Broker (HIB) 集成
 
-### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>连接到 ID 为 Broker (HIB 的 HDInsight ESP 群集) 
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>连接带有 ID 代理的 HDInsight ESP 群集 (HIB)
 
-可以按照常规步骤登录到 Azure 订阅，以连接到 ID 为 Broker (HIB) 的 HDInsight ESP 群集。 登录后，你将在 Azure 资源管理器中看到群集列表。 有关详细信息，请参阅[连接到 HDInsight 群集](#connect-to-an-azure-account)。
+可以按照常规步骤登录到 Azure 订阅，以连接带有 ID 代理的 HDInsight ESP 群集 (HIB)。 登录后，将在 Azure 资源管理器中看到群集列表。 有关详细信息，请参阅[连接到 HDInsight 群集](#connect-to-an-azure-account)。
 
-### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>在 ID 为 Broker (HIB) 的 HDInsight ESP 群集上运行 Hive/PySpark 作业
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>在带有 ID 代理的 HDInsight ESP 群集 (HIB) 上运行 Hive/PySpark 作业
 
-若要运行 hive 作业，可以按照常规步骤，将作业提交到 ID 为 Broker (HIB) 的 HDInsight ESP 群集。 有关更多说明，请参阅[提交交互式 Hive 查询和 Hive 批处理脚本](#submit-interactive-hive-queries-and-hive-batch-scripts)。
+若要运行 hive 作业，可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[提交交互式 Hive 查询和 Hive 批处理脚本](#submit-interactive-hive-queries-and-hive-batch-scripts)。
 
-对于运行交互式 PySpark 作业，你可以按照常规步骤，将作业提交到 ID 为 Broker (HIB) 的 HDInsight ESP 群集。 有关更多说明，请参阅[提交交互式 PySpark 查询](#submit-interactive-pyspark-queries)。
+若要运行交互式 PySpark 作业，可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[提交交互式 PySpark 查询](#submit-interactive-pyspark-queries)。
 
-若要运行 PySpark 批处理作业，你可以按照常规步骤，将作业提交到 ID 为 Broker (HIB) 的 HDInsight ESP 群集。 有关更多说明，请参阅[提交 PySpark 批处理作业](#submit-pyspark-batch-job)。
+若要运行 PySpark 批处理作业，可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[提交 PySpark 批处理作业](#submit-pyspark-batch-job)。
 
 
 ## <a name="apache-livy-configuration"></a>Apache Livy 配置
@@ -329,7 +329,7 @@ ms.locfileid: "87876778"
 
 + 支持的 Livy 配置：
 
-    **POST/batches**请求正文
+    **POST/batches** 请求正文
 
     | name | description | type |
     | --- | --- | --- |

@@ -8,19 +8,77 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315348"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530668"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
 
 
-了解如何使用 Visual Studio Code (VS Code) 和 [depugpy](https://github.com/microsoft/debugpy/) 以交互方式调试 Azure 机器学习管道和部署。
+了解如何使用 Visual Studio Code (VS Code) 和 [depugpy](https://github.com/microsoft/debugpy/)以交互方式调试 Azure 机器学习试验、管道和部署。
+
+## <a name="run-and-debug-experiments-locally"></a>在本地运行和调试试验
+
+将你的机器学习试验提交到云之前，请使用 Azure 机器学习扩展来验证、运行和调试它们。
+
+### <a name="prerequisites"></a>先决条件
+
+*  (预览) Azure 机器学习 VS Code 扩展。 有关详细信息，请参阅 [Set up Azure 机器学习 VS Code extension](tutorial-setup-vscode-extension.md)。
+* [Docker](https://www.docker.com/get-started)
+  * 适用于 Mac 和 Windows 的 Docker 桌面
+  * 适用于 Linux 的 Docker 引擎。
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> 在 Windows 上，请确保 [将 Docker 配置为使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)。
+
+> [!TIP]
+> 对于 Windows，虽然不是必需的，但强烈建议将 [Docker 与适用于 Linux 的 Windows 子系统 (WSL) 2 一起使用](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop)。
+
+> [!IMPORTANT]
+> 在本地运行试验之前，请确保 Docker 正在运行。
+
+### <a name="debug-experiment-locally"></a>本地调试试验
+
+1. 在 VS Code 中，打开 Azure 机器学习扩展视图。
+1. 展开包含您的工作区的订阅节点。 如果还没有工作区，则可以使用该扩展 [创建一个 Azure 机器学习工作区](how-to-manage-resources-vscode.md#create-a-workspace) 。
+1. 展开你的工作区节点。
+1. 右键单击 " **试验** " 节点，然后选择 " **创建试验**"。 出现提示时，请提供试验的名称。
+1. 展开 " **试验** " 节点，右键单击要运行的试验，然后选择 " **运行试验**"。
+1. 从选项列表中，选择 " **本地**"。
+1. **首次仅在 Windows 上使用**。 当提示你是否允许文件共享时，请选择 **"是"**。 当你启用文件共享时，它允许 Docker 将包含脚本的目录装载到容器中。 此外，它还允许 Docker 将运行中的日志和输出存储在系统上的临时目录中。
+1. 选择 **"是"** 以调试试验。 否则请选择“否”。 选择 "否" 将在本地运行试验，而不会附加到调试器。
+1. 选择 " **创建新的运行配置** " 以创建运行配置。 运行配置定义要运行的脚本、依赖项和使用的数据集。 或者，如果已经有一个，请从下拉列表中选择它。
+    1. 选择环境。 可以从任意 [Azure 机器学习特选](resource-curated-environments.md) 中进行选择，也可以创建自己的。
+    1. 提供要运行的脚本的名称。 路径相对于在 VS Code 中打开的目录。
+    1. 选择是否要使用 Azure 机器学习数据集。 可以使用扩展创建 [Azure 机器学习数据集](how-to-manage-resources-vscode.md#create-dataset) 。
+    1. 若要将调试器附加到运行试验的容器，Debugpy 是必需的。 若要将 debugpy 添加为依赖项，请选择 " **添加 debugpy**"。 否则，请选择 " **跳过**"。 如果不将 debugpy 添加为依赖项，则会在不附加到调试器的情况下运行试验。
+    1. 此时会在编辑器中打开一个包含运行配置设置的配置文件。 如果对设置感到满意，请选择 " **提交试验**"。 或者，您可以打开命令面板 (从菜单栏中 **查看 > 命令面板**) ，并在 `Azure ML: Submit experiment` 文本框中输入命令。
+1. 提交试验后，会创建一个包含脚本的 Docker 映像和运行配置中指定的配置。
+
+    在 Docker 映像生成过程开始时，文件流的内容将 `60_control_log.txt` VS Code 中的输出控制台。
+
+    > [!NOTE]
+    > 第一次创建 Docker 映像时，可能需要几分钟时间。
+
+1. 构建映像后，会出现一个提示来启动调试器。 在脚本中设置断点，并在准备好开始调试时选择 " **启动调试器** "。 这样做会将 VS Code 调试器附加到运行试验的容器。 或者，在 Azure 机器学习扩展中，将鼠标悬停在当前运行的节点上，然后选择 "播放" 图标以启动调试器。
+
+    > [!IMPORTANT]
+    > 单个试验不能有多个调试会话。 但是，可以使用多个 VS Code 实例调试两个或更多试验。
+
+此时，你应该能够使用 VS Code 来逐步调试和调试代码。
+
+如果要取消运行，请右键单击 "运行" 节点，然后选择 " **取消运行**"。
+
+与远程试验运行类似，你可以展开运行节点以检查日志和输出。
+
+> [!TIP]
+> 使用环境中定义的相同依赖项的 Docker 映像将在运行之间重复使用。 但是，如果使用新的或不同的环境运行试验，将创建一个新映像。 由于这些映像保存到本地存储，因此建议删除旧的或未使用的 Docker 映像。 若要从系统中删除映像，请使用 [DOCKER CLI](https://docs.docker.com/engine/reference/commandline/rmi/) 或 [VS Code docker 扩展](https://code.visualstudio.com/docs/containers/overview)。
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 
@@ -416,7 +474,7 @@ ip_address: 10.3.0.5
 
 此时，VS Code 会连接到 Docker 容器内的 debugpy，并在之前设置的断点处停止。 现在可以在代码运行时逐句调试代码、查看变量等。
 
-有关使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true)。
+有关使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://code.visualstudio.com/docs/python/debugging)。
 
 ### <a name="stop-the-container"></a>停止容器
 
@@ -428,6 +486,6 @@ docker stop debug
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已设置 Visual Studio Code Remote，可以将计算实例用作 Visual Studio Code 中的远程计算，从而对代码进行交互式调试。 
+现在，你已设置 VS Code 远程，你可以使用计算实例作为 VS Code 的远程计算，以便以交互方式调试你的代码。 
 
 [教程：训练自己的首个 ML 模型](tutorial-1st-experiment-sdk-train.md)演示如何将计算实例与集成的笔记本配合使用。

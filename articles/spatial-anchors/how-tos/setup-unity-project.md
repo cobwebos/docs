@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/17/2020
+ms.date: 09/29/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57ead9636b7218ecfc7d72bb605b469d6a7d1ac6
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536343"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530404"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>在 Unity 项目中配置 Azure 空间锚
 
@@ -33,8 +33,8 @@ Azure 空间定位点当前支持具有以下配置的 Unity 2019.4 (LTS) 。
 
 #### <a name="add-the-registry-to-your-unity-project"></a>将注册表添加到 Unity 项目
 
-1. 在文件资源管理器中，导航到 Unity 项目的 `Packages` 文件夹。 `manifest.json`在文本编辑器中打开项目清单文件。
-2. 在该文件的顶部，在与该部分相同的级别上 `dependencies` ，添加以下项以将 Azure 空间锚注册表添加到你的项目。 该 `scopedRegistries` 条目告诉 Unity 在哪里可以找到 Azure 空间锚定 SDK 包。
+1. 在文件资源管理器中，导航到 Unity 项目的 `Packages` 文件夹。 在文本编辑器中，打开项目清单文件 `manifest.json`。
+2. 在文件顶部，在与 `dependencies` 部分相同的级别添加以下项，以将 Azure 空间定位点注册表包含到项目中。 `scopedRegistries` 项告诉 Unity 在什么位置查找 Azure 空间定位点 SDK 包。
 
     [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
 
@@ -50,14 +50,14 @@ Azure 空间定位点当前支持具有以下配置的 Unity 2019.4 (LTS) 。
 
     [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-22&highlight=12-14)]
 
-2. 保存并关闭 `manifest.json` 文件。 当你返回到 Unity 时，Unity 应自动检测项目清单更改并检索指定的包。 可以 `Packages` 在项目视图中展开文件夹，以验证是否已导入正确的包。
+2. 保存并关闭 `manifest.json` 文件。 当你返回到 Unity 时，Unity 应自动检测项目清单更改并检索指定的包。 可以在“项目”视图中展开 `Packages` 文件夹，以验证是否已导入正确的包。
 
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>仅限 Android：配置 Maintemplate.json. gradle 文件
 
 1. 转到“编辑” > “项目设置” > “播放器”  。
 2. 在 "**播放器设置**" 的**检查器面板**中，选择 " **Android** " 图标。
 3. 在 " **生成** " 部分下，选中 " **自定义主 Gradle 模板** " 复选框，以在处生成自定义 Gradle 模板 `Assets\Plugins\Android\mainTemplate.gradle` 。
-4. 在文本编辑器中打开 `mainTemplate.gradle` 文件。 
+4. 在文本编辑器中打开 `mainTemplate.gradle` 文件。
 5. 在 `dependencies` 部分中，粘贴以下依赖项：
 
     ```gradle
@@ -72,10 +72,10 @@ Azure 空间定位点当前支持具有以下配置的 Unity 2019.4 (LTS) 。
 ### <a name="import-the-asset-package"></a>[导入资产包](#tab/UnityAssetPackage)
 
 > [!WARNING]
-> SDK 版本2.5.0 后，Azure 空间锚点 SDK 的 Unity 资产包分发将被弃用。
+> Azure 空间锚点 SDK 的 Unity 资产包分发已在版本2.5.0 中弃用，不再可从2.6.0 中获取。
 
-1. 下载 `AzureSpatialAnchors.unitypackage` 适用于 [GitHub](https://github.com/Azure/azure-spatial-anchors-samples/releases)版本的目标版本的文件。 
-2. 按照 [此处](https://docs.unity3d.com/Manual/AssetPackagesImport.html) 的说明将 Unity 资产包导入到项目中。    
+1. 下载 `AzureSpatialAnchors.unitypackage` 适用于 [GitHub](https://github.com/Azure/azure-spatial-anchors-samples/releases)版本的目标版本的文件。
+2. 按照 [此处](https://docs.unity3d.com/Manual/AssetPackagesImport.html) 的说明将 Unity 资产包导入到项目中。
 
 ---
 

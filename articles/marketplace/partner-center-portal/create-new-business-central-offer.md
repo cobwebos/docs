@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527082"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531813"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
@@ -56,11 +56,11 @@ ms.locfileid: "90527082"
 
 #### <a name="get-it-now-free"></a>立即获取（免费）
 
-通过提供有效的 URL（以 http 或 https 开头）免费向客户提供产品/服务列表，用户可以通过 URL 访问你的应用。   例如，`https://contoso.com/my-app` 。
+免费向客户列出你的产品/服务。
 
 #### <a name="free-trial-listing"></a>免费试用版（列出）
 
-向客户列出你的产品/服务，其中包含免费试用版的链接，方法是提供有效的 URL， (始于 `http` 或 `https`) 可以获取试用版。  例如，`https://contoso.com/trial/my-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
+向客户列出你的产品/服务，其中包含免费试用版的链接。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
 
 > [!NOTE]
 > 应用程序将通过试用链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 Microsoft 帐户不支持使用此令牌进行身份验证。
@@ -128,7 +128,7 @@ ms.locfileid: "90527082"
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 摘要
+8. 总结
 9. 说明
 10. 屏幕截图/视频
 

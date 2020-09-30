@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268294"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532255"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
@@ -317,7 +317,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 此示例将 Microsoft 英语和法语分析器分配给说明字段。 它是从更大的酒店索引定义中提取的代码片段，使用 [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 示例的 hotels.cs 文件中的酒店类进行创建。
 
-调用[分析器](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定 [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 类型，提供在 Azure 认知搜索中受支持的文本分析器。
+调用[分析器](/dotnet/api/microsoft.azure.search.models.analyzer)，指定 [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername) 类型，提供在 Azure 认知搜索中受支持的文本分析器。
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 如果需要自定义或配置，则需向索引添加分析器构造。 定义以后，即可将其添加到字段定义，如上一示例所示。
 
-创建 [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) 对象。 如需更多示例，请参阅 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
+创建 [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer) 对象。 如需更多示例，请参阅 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
 
 ```csharp
 {

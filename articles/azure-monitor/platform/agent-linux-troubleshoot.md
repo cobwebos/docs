@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325366"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531184"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -150,7 +150,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 ### <a name="probable-causes"></a>可能的原因
 * 在载入期间指定的代理不正确
-* Azure Monitor 和 Azure 自动化服务终结点不在数据中心的允许列表中 
+* 数据中心的已批准列表中不包括 Azure Monitor 和 Azure 自动化服务终结点 
 
 ### <a name="resolution"></a>解决方法
 1. 使用以下命令（启用了 `-v` 选项）通过 Log Analytics Linux 代理重新载入到 Azure Monitor。 它允许通过代理服务器连接到 Azure Monitor 的代理能够进行详细输出。 
@@ -444,4 +444,3 @@ sudo sh ./onboard_agent.sh --purge
     ```
 
 3. 通过执行以下命令升级程序包：`sudo sh ./omsagent-*.universal.x64.sh --upgrade`。
-

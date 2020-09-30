@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b77eaec0440aa4fcd22d7b35e7a205b0276164f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935817"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532561"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何计划 Azure 认知搜索中的索引器
 
@@ -110,10 +110,10 @@ ms.locfileid: "88935817"
 
 **startTime** 参数可设置为过去的时间。 在此情况下，计划的第一次执行的运行方式如同索引器在给定 **startTime** 之后连续运行。
 
-计划是使用 [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) 类定义的。 **IndexingSchedule** 构造函数需要一个使用 **TimeSpan** 对象指定的 **interval** 参数。 允许的最小间隔值为 5 分钟，最大间隔值为 24 小时。 指定为 **DateTimeOffset** 对象的第二个 **startTime** 参数是可选的。
+计划是使用 [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) 类定义的。 **IndexingSchedule** 构造函数需要一个使用 **TimeSpan** 对象指定的 **interval** 参数。 允许的最小间隔值为 5 分钟，最大间隔值为 24 小时。 指定为 **DateTimeOffset** 对象的第二个 **startTime** 参数是可选的。
 
 .NET SDK 允许使用 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 类及其 [Indexers](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) 属性（实现 **IIndexersOperations** 接口中的方法）来控制索引器操作。 
 
 随时可以使用 [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run)、[RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync) 或 [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) 方法按需运行索引器。
 
-有关创建、更新和运行索引器的详细信息，请参阅 [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet)。
+有关创建、更新和运行索引器的详细信息，请参阅 [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations)。

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331635"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530555"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接到 Azure SQL 内容并为其编制索引
 
@@ -39,7 +39,7 @@ ms.locfileid: "91331635"
 可使用以下内容设置和配置 Azure SQL 索引器：
 
 * [Azure 门户](https://portal.azure.com)中的导入数据向导
-* Azure 认知搜索 [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure 认知搜索 [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
 * Azure 认知搜索 [REST API](/rest/api/searchservice/indexer-operations)
 
 在本文中，我们将使用 REST API 创建**索引器**和**数据源**。
