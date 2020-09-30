@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509194"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578574"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
 
 > [!div class="op_single_selector"]
-> * [Portal](data-lake-store-get-started-portal.md)
+> * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -24,7 +24,7 @@ ms.locfileid: "85509194"
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-了解如何使用 Azure 门户创建 Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅[Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
+了解如何使用 Azure 门户创建 Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅 [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,15 +34,15 @@ ms.locfileid: "85509194"
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 
-1. 登录到新[Azure 门户](https://portal.azure.com)。
+1. 登录到新 [Azure 门户](https://portal.azure.com)。
 2. 单击“创建资源”>“存储”>“Data Lake Storage Gen1”。****
 3. 在“新建 Data Lake Storage Gen1”**** 边栏选项卡中，提供以下屏幕截图中所示的值：
 
     ![创建新的 Data Lake Storage Gen1 帐户](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "创建新的 Data Lake Storage Gen1 帐户")
 
-   * “名称”。 输入 Data Lake Storage Gen1 帐户的唯一名称。
+   * **名称**。 输入 Data Lake Storage Gen1 帐户的唯一名称。
    * **订阅**。 选择要在其下创建新的 Data Lake Storage Gen1 帐户的订阅。
-   * **资源组**。 选择现有资源组，或选择“新建”选项创建一个资源组。**** 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/management/overview.md#resource-groups)。
+   * 资源组。 选择现有资源组，或选择“新建”选项创建一个资源组。**** 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：选择要创建 Data Lake Storage Gen1 帐户的位置。
    * **加密设置**。 有三个选项：
 
@@ -50,7 +50,7 @@ ms.locfileid: "85509194"
      * 如果希望 Data Lake Storage Gen1 管理加密密钥，请使用 Data Lake Storage Gen1 管理的密钥。****
      * **使用自己的专用密钥保管库的密钥**。 可以选择现有的 Azure Key Vault，也可以创建新的 Key Vault。 若要使用密钥保管库中的密钥，必须为 Data Lake Storage Gen1 帐户分配 Azure Key Vault 访问权限。 有关说明，请参阅[分配对 Azure Key Vault 的权限](#assign-permissions-to-azure-key-vault)。
 
-        ![Data Lake Storage Gen1 加密](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1 加密")
+        ![新 Data Lake Storage 第1代边栏选项卡和 "加密设置" 边栏选项卡的屏幕截图。](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1 加密")
 
         在“加密设置”边栏选项卡中单击“确定”。********
 
@@ -64,10 +64,10 @@ ms.locfileid: "85509194"
 
 1. 如果使用了 Azure Key Vault 中的密钥，Data Lake Storage Gen1 帐户的边栏选项卡顶部会显示一条警告。 单击警告打开“加密”****。
 
-    ![Data Lake Storage Gen1 加密](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1 加密")
+    ![显示警告的 Data Lake Storage Gen1 帐户边栏选项卡的屏幕截图，显示 "需要密钥保管库权限配置"。单击此处进行设置。](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1 加密")
 2. 该边栏选项卡显示两个用于配置访问权限的选项。
 
-    ![Data Lake Storage Gen1 加密](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1 加密")
+    !["加密" 边栏选项卡的屏幕截图。](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1 加密")
 
    * 在第一个选项中，单击“授予权限”来配置访问权限。**** 仅当创建 Data Lake Storage Gen1 帐户的用户也是 Azure Key Vault 的管理员时，才启用第一个选项。
    * 另一个选项用于运行边栏选项卡中显示的 PowerShell cmdlet。 必须是 Azure 密钥保管库的所有者，或者能够授予对 Azure 密钥保管库的权限。 运行该 cmdlet 后，请返回上述边栏选项卡，并单击“启用”配置访问权限。****
@@ -84,13 +84,13 @@ ms.locfileid: "85509194"
 
 可以在 Data Lake Storage Gen1 帐户下创建文件夹，用于管理和存储数据。
 
-1. 打开已创建的 Data Lake Storage Gen1 帐户。 在左侧窗格中，单击 "**所有资源**"，然后在 "**所有资源**" 边栏选项卡中，单击要在其下创建文件夹的帐户名称。 如果将帐户固定到了启动板，请单击该帐户磁贴。
+1. 打开已创建的 Data Lake Storage Gen1 帐户。 在左侧窗格中，单击 " **所有资源**"，然后在 " **所有资源** " 边栏选项卡中，单击要在其下创建文件夹的帐户名称。 如果将帐户固定到了启动板，请单击该帐户磁贴。
 2. 在 Data Lake Storage Gen1 帐户边栏选项卡中，单击“数据资源管理器”****。
 
-    ![在 Data Lake Storage Gen1 帐户中创建文件夹](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "在 Data Lake Storage Gen1 帐户中创建文件夹")
+    !["Data Lake Storage 第1代帐户" 边栏选项卡的屏幕截图，其中包含称为 "数据资源管理器" 选项。](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "在 Data Lake Storage Gen1 帐户中创建文件夹")
 3. 在“数据资源管理器”边栏选项卡中，单击“新建文件夹”，输入新文件夹的名称，然后单击“确定”。********
 
-    ![在 Data Lake Storage Gen1 帐户中创建文件夹](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "在 Data Lake Storage Gen1 帐户中创建文件夹")
+    ![数据资源管理器边栏选项卡的屏幕截图，其中包含新的文件夹选项和名为 out 的 "创建新文件夹" 文本框。](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "在 Data Lake Storage Gen1 帐户中创建文件夹")
 
     新创建的文件夹在“数据资源管理器”**** 边栏选项卡中列出。 可以创建任何级别的嵌套文件夹。
 

@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 08/24/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 65304ca1241b2c8a1f9541580e7ee8434dd5b6eb
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426395"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578523"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -65,9 +65,9 @@ Resources
 > [!NOTE]
 > 限制具有 `project` 的 `join` 结果时，`join` 用于关联两个表的属性（在上述示例中为 subscriptionId）必须包含在 `project` 中。
 
-## <a name="extended-properties-preview"></a><a name="extended-properties"></a> (预览的扩展属性) 
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a>扩展属性（预览）
 
-作为 _预览_ 功能，资源图中的某些资源类型具有其他与类型相关的属性，可用于查询 Azure 资源管理器提供的属性以外的其他类型。 这组值（称为 " _扩展属性_"）存在于中支持的资源类型 `properties.extended` 。 若要查看哪些资源类型具有 _扩展属性_，请使用以下查询：
+作为预览功能，除了 Azure 资源管理器提供的属性以外，Resource Graph 中的某些资源类型还有其他类型相关的属性可供查询。 这组值（称为“扩展属性”）存在于 `properties.extended` 中受支持的资源类型中。 若要查看哪些资源类型具有“扩展属性”，请使用以下查询：
 
 ```kusto
 Resources
@@ -76,7 +76,7 @@ Resources
 | order by type asc
 ```
 
-示例：获取虚拟机计数，按 `instanceView.powerState.code` ：
+示例：通过 `instanceView.powerState.code` 获取虚拟机计数：
 
 ```kusto
 Resources
@@ -113,7 +113,7 @@ Resources
 
 ## <a name="supported-kql-language-elements"></a>支持的 KQL 语言元素
 
-资源图表支持 KQL [数据类型](/azure/kusto/query/scalar-data-types/)、 [标量函数](/azure/kusto/query/scalarfunctions)、 [标量运算符](/azure/kusto/query/binoperators)和 [聚合函数](/azure/kusto/query/any-aggfunction)的子集。 Resource Graph 支持特定[表格运算符](/azure/kusto/query/queries)，其中一些运算符具有不同的行为。
+Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-types/)、[标量函数](/azure/kusto/query/scalarfunctions)、[标量运算符](/azure/kusto/query/binoperators)和[聚合函数](/azure/kusto/query/any-aggfunction)。 Resource Graph 支持特定[表格运算符](/azure/kusto/query/queries)，其中一些运算符具有不同的行为。
 
 ### <a name="supported-tabulartop-level-operators"></a>支持的表格/顶级运算符
 
@@ -125,7 +125,7 @@ Resources
 |[distinct](/azure/kusto/query/distinctoperator) |[显示特定别名的非重复值](../samples/starter.md#distinct-alias-values) | |
 |[extend](/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中的 `join` 限制为 3。 不允许使用自定义联接策略，如广播联接。 可以在单个表中使用，也可以在 Resources 和 ResourceContainers 表中使用。 |
-|[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |`take` 的同义词 |
+|[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |的同义词 `take` 。 不适用于 [Skip](./work-with-data.md#skipping-records)。 |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 RowLimit 最大值为 400。 默认值为 128。 |
 |[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 |
 |[order](/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
@@ -133,7 +133,7 @@ Resources
 |[project-away](/azure/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
 |[sort](/azure/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`order` 的同义词 |
 |[summarize](/azure/kusto/query/summarizeoperator) |[对 Azure 资源进行计数](../samples/starter.md#count-resources) |仅已简化首页 |
-|[take](/azure/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |`limit` 的同义词 |
+|[take](/azure/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |的同义词 `limit` 。 不适用于 [Skip](./work-with-data.md#skipping-records)。 |
 |[返回页首](/azure/kusto/query/topoperator) |[按名称及其 OS 类型显示前五个虚拟机](../samples/starter.md#show-sorted) | |
 |[union](/azure/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许使用单个表：_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`ColumnName\] Table。 单个查询中的 `union` 分支限制为 3。 不允许对 `union` 分支表进行模糊解析。 可以在单个表中使用，也可以在 Resources 和 ResourceContainers 表中使用。 |
 |[where](/azure/kusto/query/whereoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |

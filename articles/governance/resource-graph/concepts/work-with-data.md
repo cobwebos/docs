@@ -1,15 +1,15 @@
 ---
 title: 处理大型数据集
 description: 了解如何在使用 Azure Resource Graph 的同时，在大型数据集中获取、格式化、分页和跳过记录。
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005932"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578489"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -48,7 +48,7 @@ First 当前允许的最大值为 5000，这是通过一次对 1000 条记录进
 下一个大型数据集处理选项是 Skip 控制措施。 通过这项控制措施，查询可以在返回结果之前跳过或略过定义的记录数。 Skip 适用于以一种有意义的方式对结果进行排序的查询，查询意图是在结果集中间某位置处获取记录。 如果所需的结果位于返回数据集的末尾，更高效的做法是使用不同的排序配置，并从数据集顶部检索结果。
 
 > [!NOTE]
-> 使用 Skip 时，建议用 `asc` 或 `desc` 按至少一个列对结果进行排序。 如果不排序，则返回的结果是随机的且不可重复。
+> 使用 Skip 时，建议用 `asc` 或 `desc` 按至少一个列对结果进行排序。 如果不排序，则返回的结果是随机的且不可重复。 如果 `limit` `take` 在查询中使用了或，则忽略 **Skip** 。
 
 下面的示例展示了如何跳过查询生成的前 10 条记录，改从第 11 条记录开始返回结果集：
 
@@ -64,10 +64,10 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 
 ## <a name="paging-results"></a>分页结果
 
-如果有必要将结果集拆分为更小的记录集进行处理，或者因为结果集会超过允许的最大返回记录数（即 1000 条），请使用分页。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
- **QueryResponse**提供了指示结果集已被中断的值： **resultTruncated**和 **$skipToken**。 resultTruncated 是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count 属性小于 totalRecords 属性，也可以确定此条件。 totalRecords 定义匹配查询的记录数。
+如果有必要将结果集拆分为更小的记录集进行处理，或者因为结果集会超过允许的最大返回记录数（即 1000 条），请使用分页。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)
+**QueryResponse** 提供了指明结果集已被拆分的值：**resultTruncated** 和 **$skipToken**。 resultTruncated 是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count 属性小于 totalRecords 属性，也可以确定此条件。 totalRecords 定义匹配查询的记录数。
 
- 如果分页已禁用或不可用，则**resultTruncated**为**true** ，这是因为没有 `id` 列，或者当可用资源小于查询请求时。 当 **resultTruncated** 为 **true**时，则不设置 **$skipToken** 属性。
+ 如果由于没有 `id` 列而禁用了分页或无法进行分页，或者可用资源少于查询请求的资源，则 resultTruncated 为 true。 如果 resultTruncated 为 true，则不会设置 $skipToken 属性。
 
 以下示例演示了如何使用 Azure CLI 和 Azure PowerShell 跳过前 3000 条记录，并返回这些跳过的记录之后的前 1000 条记录 ：
 
@@ -170,6 +170,6 @@ response = client.resources(request)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[初学者查询](../samples/starter.md)中了解所使用的语言。
-- 在[高级查询](../samples/advanced.md)中了解高级用法。
+- 请参阅[初学者查询](../samples/starter.md)中使用的语言。
+- 请参阅[高级查询](../samples/advanced.md)中的高级用法。
 - 详细了解如何[浏览资源](explore-resources.md)。
