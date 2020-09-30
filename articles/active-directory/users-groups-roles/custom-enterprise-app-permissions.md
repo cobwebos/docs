@@ -12,12 +12,12 @@ ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1d196ea33eafbfae0d9db68588c0adb131a383f4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2ebba2bb957a1c05fd591181f0a784ed778c6c57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998312"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333369"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的企业应用程序权限
 
@@ -138,7 +138,6 @@ microsoft.directory/servicePrincipals/appRoleAssignedTo/read | 读取服务主�
 microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新服务主体角色分配。
 microsoft.directory/servicePrincipals/appRoleAssignments/read | 读取分配给服务主体的角色分配。
 microsoft.directory/servicePrincipals/audience/update | 更新服务主体的受众属性。
-microsoft.directory/servicePrincipals/authentication/read |  
 microsoft.directory/servicePrincipals/authentication/update | 更新服务主体的身份验证属性。
 microsoft.directory/servicePrincipals/basic/update | 更新服务主体的基本属性。
 microsoft.directory/servicePrincipals/create | 创建服务主体。

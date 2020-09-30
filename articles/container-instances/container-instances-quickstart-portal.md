@@ -3,13 +3,13 @@ title: 快速入门 - 将 Docker 容器部署到容器实例 - 门户
 description: 本快速入门将使用 Azure 门户快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 ms.topic: quickstart
 ms.date: 08/24/2020
-ms.custom: seodec18, mvc, devx-track-javascript
-ms.openlocfilehash: 0decfdbc468cbf267260ef80634eb8ecb5e710b7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: c8477bd91c3a02a2cd02d341c38c16da251902ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324512"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
 
@@ -29,7 +29,7 @@ ms.locfileid: "88870794"
 
 选择“创建资源” > “容器” > “容器实例”    。
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="开始在 Azure 门户中创建新的容器实例":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 在“基本信息”页的“资源组”、“容器名称”和“容器映像”文本框中输入以下值     。 将其他值保留为默认值，然后选择“确定”  。
 
@@ -38,25 +38,25 @@ ms.locfileid: "88870794"
 * 映像源：**快速启动映像**
 * 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="在 Azure 门户中配置新的容器实例的基本设置":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 对于本快速入门，请使用默认设置来部署公共 Microsoft `aci-helloworld` 映像。 此示例 Linux 映像打包了一个用 Node.js 编写的小型 Web 应用，该应用提供静态 HTML 页面。 还可以将自己的容器映像存储在 Azure 容器注册表、Docker Hub 或其他注册表中。
 
 在“网络”页，为容器指定一个“DNS 名称标签”   。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.io` 公开访问。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="在 Azure 门户中配置新容器实例的网络设置":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 将其他设置保留为默认设置，然后选择“查看 + 创建”  。
 
 完成验证后，将显示容器的设置摘要。 选择“创建”  提交容器部署请求。
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="Azure 门户中新的容器实例的设置摘要":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 当部署启动时，会显示一个通知，指出正在进行部署。 部署了容器组后，会显示另一个通知。
 
 通过导航到“资源组” > “myresourcegroup” > “mycontainer”打开容器组的概述    。 记下容器实例的 **FQDN**（完全限定的域名）及其**状态**。
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="Azure 门户中的容器组概述":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 在其**状态**为“正在运行”  后，在浏览器中导航到容器的 FQDN。
 
@@ -70,18 +70,18 @@ ms.locfileid: "88870794"
 
 若要查看容器的日志，请在“设置”  下选择“容器”  ，然后选择“日志”  。 应当会看到在浏览器中查看应用程序时生成的 HTTP GET 请求。
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="Azure 门户中的容器日志":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 完成容器后，选择 *mycontainer* 容器实例的“概述”，然后选择“删除”。  
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="删除 Azure 门户中的容器实例":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 在出现确认对话框时选择“是”。 
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Azure 门户中容器实例的删除确认":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="在浏览器中显示的使用 Azure 容器实例部署的应用":::
 
 ## <a name="next-steps"></a>后续步骤
 

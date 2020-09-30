@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 699b3d9c9799b9d3a4ec148cbf395b212715f536
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686082"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368560"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>通过预购优化 Azure Databricks 成本
 
@@ -63,7 +63,7 @@ Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预�
 可以在购买后对预留进行以下类型的更改：
 
 - 更新预留范围
-- 基于角色的访问权限
+- Azure 基于角色的访问控制 (Azure RBAC)
 
 不能拆分或合并 Databricks 提交单位预购。 若要详细了解如何管理预留，请参阅[在购买后管理预留](manage-reserved-vm-instance.md)。
 

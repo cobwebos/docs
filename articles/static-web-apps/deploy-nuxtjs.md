@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2eafd2f74ffcf5fe0fe65d04884cfd2d668cdf0b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: bc11dd6113bbf5b07e19b83735c83e4895e4a796
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323589"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>将服务器呈现的 Nuxt.js 网站部署到 Azure 静态 Web 应用（预览）
 
@@ -62,7 +62,7 @@ ms.locfileid: "88684569"
 
 单击框架/库时，应看到已选定项的详细信息页：
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="详细信息页":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="启动 Nuxt.js 应用":::
 
 ## <a name="generate-a-static-website-from-nuxtjs-build"></a>从 Nuxt.js 生成创建静态网站
 
@@ -130,7 +130,7 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 1. 在“区域”下拉列表中，选择离你最近的区域。
 1. 从“SKU”下拉列表中选择“可用”。
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="创建静态 Web 应用":::
+   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="启动 Nuxt.js 应用":::
 
 ### <a name="add-a-github-repository"></a>添加 GitHub 存储库
 
@@ -141,7 +141,7 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 1. 查找并选择之前创建的存储库的名称。
 1. 从“分支”下拉列表中选择“主”作为分支。
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="连接 GitHub":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="启动 Nuxt.js 应用":::
 
 ### <a name="configure-the-build-process"></a>配置生成过程
 
@@ -149,7 +149,7 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 
 1. 单击“生成”选项卡以配置静态输出文件夹。
 
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="“生成”选项卡":::
+      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="启动 Nuxt.js 应用":::
 
 1. 在“应用项目位置”文本框中键入“dist”。
 
@@ -178,7 +178,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 导航到新部署的站点，然后单击其中一个框架或库徽标。 你会看到 404 错误页，而不是详细信息页。
 
-:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="动态路由 404 错误":::
+:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="启动 Nuxt.js 应用":::
 
 这样做的原因是，Nuxt.js 生成了静态站点，仅在主页上如此操作。 Nuxt.js 可以为每个 `.vue` 页面文件生成等效的静态 `.html` 文件，但会出现异常。 
 
@@ -215,7 +215,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 2. 将新更改推送到 GitHub 存储库并等待几分钟，同时 GitHub Actions 再次生成你的站点。 生成完成后，404 错误将消失。
 
-   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="已修复动态路由 404 错误":::
+   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="启动 Nuxt.js 应用":::
 
 > [!div class="nextstepaction"]
 > [设置自定义域](custom-domain.md)

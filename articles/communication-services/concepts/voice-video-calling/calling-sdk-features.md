@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334474"
 ---
 # <a name="calling-client-library-overview"></a>呼叫客户端库概述
 
@@ -55,8 +55,7 @@ ms.locfileid: "90943494"
 |                   | 与 PSTN 参与者进行组呼叫                                                                           | ✔️   | ✔️            | ✔️
 |                   | 将 PSTN 参与者的一对一呼叫升级为组呼叫                                                 | ✔️   | ✔️            | ✔️
 |                   | 以 PSTN 参与者身份在组呼叫中拨出                                                                    | ✔️   | ✔️            | ✔️   
-| 常规           | 参与包含最多 350 名参与者的组呼叫                                                       |  ✔️  | ✔️            | ✔️    
-|                   | 使用音频测试服务测试麦克风、扬声器和照相机（可通过呼叫 8:echo123 使用）                   |  ✔️  | ✔️            | ✔️   
+| 常规           | 使用音频测试服务测试麦克风、扬声器和照相机（可通过呼叫 8:echo123 使用）                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>呼叫客户端库浏览器支持
 

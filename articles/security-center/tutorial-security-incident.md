@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901082"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336269"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，您将学习如何执行以下操作：
@@ -76,7 +76,7 @@ Sam 是安全分析师，其职责包括：
 
    ![事件警报详细信息](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-   警报类型可能多种多样。请阅读[了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)一文，详细了解警报类型以及可能的修正步骤。 对于可以安全消除的警报，可右键单击警报，然后选择“消除”选项：
+   警报类型可能多种多样。请阅读[了解 Azure 安全中心的安全警报](security-center-alerts-type.md)一文，详细了解警报类型以及可能的修正步骤。 对于可以安全消除的警报，可右键单击警报，然后选择“消除”选项：
 
    ![警报](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
@@ -111,10 +111,10 @@ Sam 是安全分析师，其职责包括：
 1. 返回到安全中心主菜单，选择“安全策略”。
 2. 选择希望禁用自动设置的订阅。
 3. 在“安全策略 - 数据收集”下的“载入”下选择“关闭”，禁用自动预配。
-4. 选择“保存”。
+4. 选择“保存”  。
 
 >[!NOTE]
-> 禁用自动预配不会从已预配代理的 Azure VM 中删除 Log Analytics 代理。 禁用自动设置会限制对资源的安全监视。
+> 禁用自动预配不会从已预配 Log Analytics 代理的 Azure VM 中删除该代理。 禁用自动设置会限制对资源的安全监视。
 >
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333641"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用（预览）中部署服务器呈现的 Next.js 网站
 
@@ -63,7 +63,7 @@ ms.locfileid: "88684586"
 
 单击框架/库时，应看到已选定项的详细信息页：
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="详细信息页":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="启动 Next.js 应用":::
 
 ## <a name="generate-a-static-website-from-nextjs-build"></a>通过 Next.js 生成创建静态网站
 
@@ -146,7 +146,7 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 1. 在“区域”下拉列表中，选择离你最近的区域。
 1. 从“SKU”下拉列表中选择“可用”。
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="创建静态 Web 应用":::
+   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="启动 Next.js 应用":::
 
 ### <a name="add-a-github-repository"></a>添加 GitHub 存储库
 
@@ -157,7 +157,7 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 1. 查找并选择之前创建的存储库的名称。
 1. 从“分支”下拉列表中选择“主”作为分支。
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="连接 GitHub":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="启动 Next.js 应用":::
 
 ### <a name="configure-the-build-process"></a>配置生成过程
 
@@ -165,7 +165,7 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 
 1. 单击“生成”选项卡以配置静态输出文件夹。
 
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="“生成”选项卡":::
+   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="启动 Next.js 应用":::
 
 2. 在“应用项目位置”文本框中键入“out”。
 
@@ -195,7 +195,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 导航到新部署的站点，然后单击其中一个框架或库徽标。 你会看到 404 错误页，而不是详细信息页。
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="动态路由 404 错误":::
+:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="启动 Next.js 应用":::
 
 出现此错误的原因是：Next.js 仅基于应用程序配置生成了主页。
 
@@ -231,7 +231,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 2. 将新更改推送到 GitHub 存储库并等待几分钟，同时 GitHub Actions 再次生成你的站点。 生成完成后，404 错误将消失。
 
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="已修复动态路由 404 错误":::
+   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="启动 Next.js 应用":::
 
 > [!div class="nextstepaction"]
 > [设置自定义域](custom-domain.md)

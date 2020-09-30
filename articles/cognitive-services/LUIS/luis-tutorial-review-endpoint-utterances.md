@@ -2,14 +2,16 @@
 title: 教程：审核终结点话语 - LUIS
 description: 在本教程中，通过验证或更正通过 LUIS HTTP 终结点收到的 LUIS 不确定的话语来改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
-ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324631"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 本教程介绍如何通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的言语来改进应用预测。 在日常的计划性 LUIS 维护过程中，应该评审终结点言语。
@@ -82,7 +84,7 @@ ms.locfileid: "85959006"
 
 1. 在门户的“生成”部分，从左侧导航栏中选择“评审终结点言语”。  列表会筛选出 **ApplyForJob** 意向。
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="左侧导航栏中“评审终结点言语”按钮的屏幕截图。":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="从“版本”页切换到“意向”页。":::
 
     `I'm looking for a job with Natural Language Processing` 这一言语不在正确的意向 GetJobInformation 中。 由于两个意向中作业名称和谓词的相似性，因此它被错误预测为 ApplyForJob。
 

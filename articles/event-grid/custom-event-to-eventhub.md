@@ -4,12 +4,12 @@ description: 快速入门：使用 Azure 事件网格和 Azure CLI 发布一个�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0965963e6527e625d0684821b977b05cb9f28657
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7c236025f31e10c00b324e5ff3374bd6504b2b7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324104"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
 
@@ -23,7 +23,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 事件中心是受�
 
 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 
 
-以下示例在“westus2”  位置创建名为“gridResourceGroup”  的资源组。
+以下示例在“westus2”** 位置创建名为“gridResourceGroup”** 的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
@@ -62,10 +62,10 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ```azurecli-interactive
 hubid=$(az eventhubs eventhub show --name $hubname --namespace-name $namespace --resource-group gridResourceGroup --query id --output tsv)
+topicid=$(az eventgrid topic show --name $topicname -g gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  --topic-name $topicname \
-  -g gridResourceGroup \
+  --source-resource-id $topicid \
   --name subtoeventhub \
   --endpoint-type eventhub \
   --endpoint $hubid

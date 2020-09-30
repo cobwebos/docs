@@ -5,14 +5,14 @@ services: vnf-manager
 author: wamota
 ms.service: vnf-manager
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 09/22/2020
 ms.author: wamota
-ms.openlocfilehash: 5a858531f578612be8190625ae371992babca34e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fcc44bb1c8017d63ee7926a31177aebaafd832fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336371"
 ---
 # <a name="what-is-azure-orbital-preview"></a>什么是 Azure Orbital？ （预览版）
 
@@ -25,7 +25,7 @@ Azure Orbital 侧重于构建合作伙伴生态系统，使客户能够使用 Or
 
 Azure Orbital 为客户实现了多个用例，包括地球观测和全球通信。 它还提供了一个平台，允许通过虚拟化对现有地面站进行数字转换。 你可以直接访问所有 Azure 服务、Azure 全球基础设施、Azure 市场，以及通过我们的服务访问我们的世界级合作伙伴生态系统。
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure Orbital 概述":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure Orbital Ignite 大会开会视频":::
 
 **Azure Orbital 用户的价值主张包括：**
 
@@ -49,13 +49,13 @@ Azure Orbital 为客户实现了多个用例，包括地球观测和全球通信
 
 ## <a name="earth-observation"></a><a name="earth-observation"></a>地球观测
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure Orbital 提供地球观测数据流" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure Orbital Ignite 大会开会视频" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
 
 你可以使用 Azure Orbital 来计划你与卫星的联系事宜，对内务操作和有效负载下行数据按照即用即付方式付费即可。 可以使用计划的访问时间从卫星引入数据、监视卫星运行状况和状态，或将命令传输到卫星。 传入数据会传送到专用虚拟网络，这样就可以在 Azure 中对其进行处理或存储。
 
 由于服务已完全数字化，因此可以使用 Kratos 和 Amergint 提供的软件调制解调器执行调制/解调和编码/解码功能，以便恢复数据。 你可以选择从 Azure 市场进行购买，也可以让我们为你管理此部分事项。 此外还可以与 Kubos 集成，以便充分利用端到端解决方案来管理组网卫星的运营以及遥测、跟踪和控制 (TT&C) 功能。 可以使用 Azure 资源和工具箱在 Azure 中执行工作负荷，以便将有效负载数据操纵到最终产品/服务中。
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure Orbital 提供地球观测计划":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure Orbital Ignite 大会开会视频":::
 
 ### <a name="scheduling-contacts"></a><a name="scheduling-contacts"></a>计划联系事宜
 
@@ -71,7 +71,7 @@ Azure Orbital 为客户实现了多个用例，包括地球观测和全球通信
 
 ## <a name="global-communication"></a><a name="global-communication"></a>全球通信
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure Orbital 提供全球通信使用流":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure Orbital Ignite 大会开会视频":::
 
 向客户提供全球通信功能的卫星服务提供商可以使用 Azure Orbital 在 Azure 数据中心或 Azure 网络边缘共置新的地面站，或将其现有地面站与全球 Azure 主干互连。 然后，这些提供商可以将其流量路由到全球微软网络，利用 Azure 网络边缘的 Internet 接入点为其客户提供 Internet 服务和其他托管服务。
 
@@ -85,7 +85,7 @@ Azure Orbital 服务可将流量从 Orbital 地面站传送到提供商的虚拟
 
 地面站或传送站提供商可以与 Azure Orbital 合作，以便对其地面站进行数字转换。 这样，客户就可以使用这些地面站来计划与其卫星的联系事宜，同时利用平台和 Orbital 合作伙伴通过 Azure 市场提供的所有软件射频处理和数据处理功能。 该服务与云中的工作负荷紧密集成，并通过 Azure 市场提供一种充满活力的第三方解决方案（如调制解调器、资源管理和任务控制服务）生态系统。 所有数据还可以利用 Azure 的低延迟和高可靠性全球光纤网络。 总之，我们相信，它会尽可能提供最广泛的覆盖范围和最好的灵活性，方便我们的客户与卫星通信，并且其敏捷性和可靠性也是最高的。
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure Orbital 提供数字转换":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure Orbital Ignite 大会开会视频":::
 
 如果你要详细了解我们的预览版，或者有兴趣参与预览版活动，请在[此处](https://aka.ms/iaminterested)填写联系表单，或通过 [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com) 向我们发送电子邮件。
 
@@ -93,7 +93,7 @@ Azure Orbital 服务可将流量从 Orbital 地面站传送到提供商的虚拟
 
 随着我们的太空技术的发展，我们会向生态系统添加更多合作伙伴，帮助客户通过 Azure Orbital 实现更多目标。 在构建 Azure Orbital 时，我们会在方法中考虑到合作伙伴的因素。 另外，我们的目标始终是构建一个充满活力的合作伙伴生态系统，合力为我们的合作伙伴和客户创造更多价值。 将其视为一个珊瑚礁！
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure Orbital 合作伙伴":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure Orbital Ignite 大会开会视频":::
 
 以下部分显示了一个列表，其中包含合作伙伴类别和已属于 Orbital 生态系统的 Azure Orbital 合作伙伴：
 

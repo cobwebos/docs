@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 53fdea6a52cc02ddc9aaf22574a6bac5f5b7bca6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943429"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323668"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -67,7 +67,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 安全中心可以帮助识别影子 IT 订阅。 通过在仪表板中查看标记为“未涵盖”的订阅，可以立即知道新订阅创建的时间并确保策略已涵盖了这些订阅以及确保它们受到 Azure 安全中心的保护。
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="安全中心策略仪表板":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="策略管理页":::
 
 ### <a name="continuous-assessments"></a>持续评估
 
@@ -75,13 +75,13 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 为了帮助你了解每个建议对整体安全状况的重要程度，安全中心将建议分组到安全控件中，并向每个控件添加“安全分数”值。 这一点在你设置安全工作的优先级时至关重要。
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="安全中心安全分数":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="策略管理页":::
 
 ### <a name="network-map"></a>网络映射
 
 安全中心提供用于持续监视网络安全状态的强大工具之一是网络映射。 通过映射可以查看工作负荷的拓扑，从而可以查看是否已正确配置了每个节点。 可以看到节点的连接方式，这有助于阻止不必要的连接，这些连接可能使攻击者更容易沿网络爬行。
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="安全中心网络映射":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="策略管理页":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>通过配置建议的控制来优化和提高安全性
@@ -92,7 +92,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 这些建议有助于降低每个资源的攻击面。 其中包括 Azure 虚拟机、非 Azure 服务器和 Azure PaaS 服务（如 SQL 和存储帐户等），其中每种类型的资源都以不同的方式被评估并且具有自己的标准。
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="安全中心建议示例":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="策略管理页":::
 
 ## <a name="protect-against-threats"></a>防范威胁
 
@@ -100,7 +100,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 安全中心的威胁防护包括融合杀伤链分析，它可以基于网络杀伤链分析自动关联环境中的警报，有助于更好地了解攻击活动的完整情况，例如它的起始位置以及它对资源造成的影响。
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="安全警报":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="策略管理页":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>与 Microsoft Defender 高级威胁防护集成
 

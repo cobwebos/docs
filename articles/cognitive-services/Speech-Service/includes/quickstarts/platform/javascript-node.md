@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e5c83b4b8e579223fa8bc00e1347e5cb2f92fca1
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 6a7fbac72c73ae44d158d91653b3713b271f8da4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324727"
 ---
 本指南介绍如何安装可以在 NodeJS 中使用的 JavaScript 版[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果你只是需要包名称以便自行开始操作，请从现有项目运行 `npm install microsoft-cognitiveservices-speech-sdk`。
 

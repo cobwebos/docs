@@ -2,14 +2,15 @@
 author: aahill
 ms.author: aahi
 ms.service: cognitive-services
+ms.subservice: ink-recognizer
 ms.topic: include
 ms.date: 06/20/2019
-ms.openlocfilehash: 9d46b304d598b4830cf325909f77eea6b68af757
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ede1fb4bd2a9a6e6536959053e3ca4d8e4a82f87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327337"
 ---
 >[!NOTE]
 > 在 2019 年 7 月 1 日之后创建的资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
