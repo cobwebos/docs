@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 564acd6d6072a4308141942666cc0ebcc0ad0136
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371348"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企业角色
 
@@ -114,12 +114,12 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 |帐户所有者或部门管理员|✘ 已禁用 |none|无定价|
 |无|不适用 |所有者|零售定价|
 
-在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [管理对 Azure 账单信息的访问权限](manage-billing-access.md)
-- [使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)
 - [Azure 内置角色](../../role-based-access-control/built-in-roles.md)

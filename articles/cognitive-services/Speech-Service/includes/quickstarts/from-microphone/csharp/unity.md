@@ -10,12 +10,12 @@ ms.custom: devx-track-csharp
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 8307cfee90fdf65d119bbc1e55eabb0533a4a6ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 974f147492877f481616b43d67146a03814ada16
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377418"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
@@ -25,7 +25,7 @@ ms.locfileid: "88926390"
 准备工作：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../overview.md#try-the-speech-service-for-free)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
@@ -42,7 +42,7 @@ ms.locfileid: "88926390"
 1. 在“项目名称”中输入 **csharp-unity**。
 1. 在“模板”中，如果尚未选择“3D”，请选择它。 
 1. 在“位置”中，选择或创建用于保存项目的文件夹。
-1. 选择“创建”  。
+1. 选择“创建” 。
 
 片刻之后，会显示 Unity 编辑器窗口。
 

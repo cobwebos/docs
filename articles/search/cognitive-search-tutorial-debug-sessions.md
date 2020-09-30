@@ -7,13 +7,13 @@ ms.author: terrychr
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/19/2020
-ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935970"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397396"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教程：诊断、修正和提交对技能组的更改
 
@@ -59,7 +59,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="获取 HTTP 终结点和访问密钥" border="false":::
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -78,15 +78,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 输入 Azure 存储帐户的密钥页中的 storageConnectionString。
 1. 输入在存储帐户中创建的容器的 containerName。
 
-> [!div class="mx-imgBorder"]
-> ![在 Postman 中编辑变量](media/cognitive-search-debug/postman-enter-variables.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 该集合包含四个不同的 REST 调用，可用于完成本部分。
 
 第一个调用创建数据源。 `clinical-trials-ds` 列中的一个值匹配。 第二个调用创建技能组 `clinical-trials-ss`。 第三个调用创建索引 `clinical-trials`。 第四个（也是最后一个）调用创建索引器 `clinical-trials-idxr`。 完成集合中的所有调用后，关闭 Postman 并返回 Azure 门户。
 
-> [!div class="mx-imgBorder"]
-> ![使用 Postman 创建数据源](media/cognitive-search-debug/postman-create-data-source.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 ## <a name="check-the-results"></a>检查结果
 
@@ -109,8 +107,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="start-your-debug-session"></a>启动调试会话
 
-> [!div class="mx-imgBorder"]
-> ![启动新的调试会话](media/cognitive-search-debug/new-debug-session-screen-required.png)
+> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 1. 单击“调试会话(预览版)”选项卡。
 1. 选择“+新建调试会话”
@@ -123,8 +120,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 > [!Important]
 > 调试会话仅适用于单个文档。 可以选择数据集中的特定文档，否则会话将默认使用第一个文档。
 
-> [!div class="mx-imgBorder"]
-> ![新调试会话已启动](media/cognitive-search-debug/debug-execution-complete1.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 调试会话执行完毕后，该会话默认显示“AI 扩充”选项卡，并突出显示“技能图”。
 
@@ -144,8 +140,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 选择该行开头的 </> 符号，并打开表达式计算器。
 1. 单击“求值”按钮以确认此表达式导致错误。 它将确认“languageCode”属性不是有效输入。
 
-> [!div class="mx-imgBorder"]
-> ![表达式计算器](media/cognitive-search-debug/expression-evaluator-language.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 可通过两种方法在会话中研究此错误。 第一种方法是查看输入来自何处，层次结构中的哪个技能应该会生成此结果？ “技能详细信息”窗格中的“执行”选项卡应显示输入源。 如果没有源，则表示存在字段映射错误。
 
@@ -153,8 +148,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 查看输入并找到“languageCode”。 未列出此输入的源。 
 1. 切换左窗格以显示“扩充数据结构”。 没有与“languageCode”对应的映射路径。
 
-> [!div class="mx-imgBorder"]
-> ![扩充数据结构](media/cognitive-search-debug/enriched-data-structure-language.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 存在与“language”对应的映射路径。 因此，技能设置中存在拼写错误。 若要修复此问题，需要使用“/document/language”表达式更新技能 #1 中的表达式。
 
@@ -170,13 +164,11 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="fix-missing-skill-output-values"></a>修复缺失的技能输出值
 
-> [!div class="mx-imgBorder"]
-> ![错误和警告](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 某个技能缺失输出值。 若要确定出现错误的技能，请转到“扩充数据结构”，查找值名称并查看其“原始源”。 在缺失 organizations 和 locations 值的情况下，它们是技能 #1 的输出。 为每个路径打开表达式计算器 </> 时，列出的表达式将分别显示为“/document/content/organizations”和“/document/content/locations”。
 
-> [!div class="mx-imgBorder"]
-> ![表达式计算器 organizations 实体](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 这些实体的输出为空，但其输出不应为空。 哪些输入生成此结果？
 
@@ -184,16 +176,14 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在右侧的“技能详细信息”窗格中选择“执行”选项卡。
 1. 为输入“text”打开表达式计算器 </>。
 
-> [!div class="mx-imgBorder"]
-> ![text 技能的输入](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 此输入的显示结果看起来不像文本输入。 它看起来像是被新行包围的图像。 缺少文本意味着无法确定任何实体。 查看技能组的层次结构时，系统显示内容首先由技能 #6 (OCR) 处理，然后传递给技能 #5 (Merge)。 
 
 1. 在“技能图”中选择技能 #5 (Merge)。
 1. 在右侧的“技能详细信息”窗格中选择“执行”选项卡，然后为输出“mergedText”打开表达式计算器 </>。
 
-> [!div class="mx-imgBorder"]
-> ![Merge 技能的输出](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 此处的文本与图像配对。 查看表达式“/document/merged_content”时，可以看到技能 #1 的“organizations”和“locations”路径中的错误。 它不应使用“/document/content”，而是应该使用“/document/merged_content”作为“text”输入。
 
@@ -213,8 +203,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 浏览“技能设置”以找到“输出”。
 1. 为“organizations”实体打开表达式计算器 </>。
 
-> [!div class="mx-imgBorder"]
-> ![organizations 实体的输出](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 计算表达式的结果可给出正确的结果。 该技能正在为“organizations”实体确定正确的值。 但是，实体路径中的输出映射仍在引发错误。 在将技能中的输出路径与错误中的输出路径进行比较时，该技能将 /document/content 节点下的输出、组织和位置作为父级。 而输出字段映射期望结果在 /document/merged_content 节点下成为父级。 在上一步中，输入从“/document/content”更改为“/document/merged_content”。 需要更改技能设置中的上下文，以确保在正确的上下文中生成输出。
 
@@ -225,8 +214,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在右侧的“技能详细信息”窗格中单击“保存”。
 1. 在会话的窗口菜单中单击“运行”。 这将启动对使用文档的技能组的另一次执行。
 
-> [!div class="mx-imgBorder"]
-> ![技能设置中的上下文更正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="获取 HTTP 终结点和访问密钥":::
 
 所有错误均已解决。
 

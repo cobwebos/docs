@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3ca50a9bad36e0174dc4ee0059c9d01fcc18a5f1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d69cb782b3be7035b7571653dcb434e44d22da93
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377204"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -17,7 +17,7 @@ ms.locfileid: "81400895"
 
 > [!div class="checklist"]
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建 Azure 语音资源](../../../../overview.md#try-the-speech-service-for-free)
 > * [将源文件上传到 Azure blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>下载并安装 API 客户端库
@@ -27,9 +27,9 @@ ms.locfileid: "81400895"
 请按照以下步骤进行安装：
 
 1. 转到  https://editor.swagger.io 。
-1. 单击“文件”，然后单击“导入 URL”   。
+1. 单击“文件”，然后单击“导入 URL” 。
 1. 输入 Swagger URL，包括语音服务订阅的区域：`https://<your-region>.cris.ai/docs/v2.0/swagger`。
-1. 单击“生成客户端”，然后选择“Python”   。
+1. 单击“生成客户端”，然后选择“Python” 。
 1. 保存客户端库。
 1. 将下载的 python-client-generated.zip 提取到文件系统中的某个位置。
 1. 使用 pip：`pip install path/to/package/python-client` 在 Python 环境中安装提取的 python-client 模块。
@@ -41,11 +41,11 @@ ms.locfileid: "81400895"
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```
-> 文件 `swagger_client/models/model.py` 中包含以下内容的行
+> 文件 `swagger_client/models/model.py` 中包含以下内容的行和
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> 和文件 `swagger_client/models/inner_error.py` 中包含以下内容的行来进行修复。 错误消息将告知安装这些文件的位置。
+> 文件 `swagger_client/models/inner_error.py` 中包含以下内容的行来进行修复。 错误消息将告知安装这些文件的位置。
 
 ## <a name="install-other-dependencies"></a>安装其他依赖项
 

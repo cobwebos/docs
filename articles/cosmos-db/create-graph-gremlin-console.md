@@ -1,18 +1,18 @@
 ---
 title: 使用 TinkerPop Gremlin 控制台通过 Azure Cosmos DB Gremlin API 进行查询：教程
 description: 有关使用 Azure Cosmos DB Gremlin API 创建顶点、边缘和查询的 Azure Cosmos DB 快速入门教程。
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: jasonh
+ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543769"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409385"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入门：使用 Gremlin 控制台创建、查询和遍历 Azure Cosmos DB 图形数据库
 
@@ -65,11 +65,11 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
    对于 Hosts 值，请从“概览”页复制“Gremlin URI”值 ：
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="在 Azure 门户的“概览”页上查看和复制 Gremlin URI 值":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Apache Gremlin 控制台中的 Azure Cosmos DB":::
 
    对于密码值，请从“密钥”页复制“主密钥” ：
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="在 Azure 门户的“密钥”页中查看和复制主密钥":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Apache Gremlin 控制台中的 Azure Cosmos DB":::
 
    remote-secure.yaml 文件应如下所示：
 

@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290304"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397260"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>教程：为电话号码创建自定义分析器
 
@@ -59,7 +59,7 @@ ms.locfileid: "89290304"
 
 1. 将 `<YOUR-ADMIN-API-KEY>` 替换为搜索服务的主要密钥或辅助密钥。
 
-  ![Postman 请求 URL 和标头](media/search-get-started-postman/postman-url.png "Postman 请求 URL 和标头")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Postman 请求 URL 和标头" border="false":::
 
 如果不熟悉 Postman，请参阅[使用 Postman 探索 Azure 认知搜索 REST API](search-get-started-postman.md)。
 
@@ -239,11 +239,11 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 在下图中，可以看到这三个组件如何协同工作以切分一个句子：
 
-  ![用于标记句子的分析器进程示意图](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Postman 请求 URL 和标头":::
 
 这些标记随后被存储在倒排索引中，以便进行快速的全文搜索。  倒排索引通过将在词法分析过程中提取的所有唯一词映射到它们所在的文档来实现全文搜索。 下图提供了一个示例：
 
-  ![倒排索引示例](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Postman 请求 URL 和标头":::
 
 所有搜索均可归结为搜索存储在倒排索引中的字词。 用户发出查询时：
 
@@ -251,7 +251,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 1. 然后扫描倒排索引以查找具有匹配词的文档。
 1. 最后，根据[相似性算法](index-ranking-similarity.md)对检索到的文档进行排序。
 
-  ![用于对相似性排名的分析器进程示意图](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Postman 请求 URL 和标头":::
 
 如果查询词与倒排索引中的词不匹配，则不会返回结果。 若要详细了解查询的工作方式，请参阅这篇关于[全文搜索](search-lucene-query-architecture.md)的文章。
 

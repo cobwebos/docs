@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 71cf11673756dcefb828ad1fad0412a791b43efd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943446"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439967"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器
 
@@ -49,15 +49,14 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 1. 预配新的计算 Linux VM。
 2. 具有数据文件的存储映射到新的虚拟机
 3. PostgreSQL 数据库引擎在新的虚拟机上联机。
-4. 网关服务可确保故障转移透明化，从而确保无需更改应用程序端。
 
 下图显示了 VM 和存储故障的过渡。
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine-storage-failure.png" alt-text="灵活服务器 - VM 和存储故障":::
+ :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="灵活服务器 - VM 和存储故障":::
 
 如果已配置区域冗余高可用性，则该服务将在同一 Azure 区域内的可用性区域中预配并维护热备用服务器。 源服务器上的数据更改将同步复制到备用服务器，以确保没有数据丢失。 借助区域冗余高可用性，一旦触发了计划内或计划外的故障转移事件，备用服务器将立即联机，并可用于处理传入的事务。 这使服务可在支持多个可用性区域的 Azure 区域内从可用性区域故障中复原，如下图所示。
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="区域冗余高可用性":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="灵活服务器 - VM 和存储故障":::
 
  有关详细信息，请参阅[高可用性文档](./concepts-high-availability.md)。
 

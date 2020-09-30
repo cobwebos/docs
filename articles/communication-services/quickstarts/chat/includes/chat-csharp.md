@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f32b81184b9a96760e43d0cd64c27459952c5953
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ecf9575f2ab469c9226ec18a4b3b4647e582d408
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376902"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -46,7 +46,7 @@ dotnet build
 安装适用于 .NET 的 Azure 通信聊天客户端库
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.1
 ``` 
 
 ## <a name="object-model"></a>对象模型

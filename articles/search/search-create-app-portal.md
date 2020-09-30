@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/01/2020
-ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292531"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399816"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建演示应用（Azure 认知搜索）
 
@@ -35,7 +35,7 @@ ms.locfileid: "89292531"
 
   本快速入门使用内置的“房地产”示例数据和索引，因为该示例包含缩略图（向导支持将图像添加到结果页）。 若要创建本练习中使用的索引，请运行“导入数据”向导，并选择“realestate-us-sample”数据源。
 
-  ![示例数据的数据源页](media/search-create-app-portal/import-data-realestate.png)
+  :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="示例数据的数据源页" border="false":::
 
 索引可供使用后，转到下一步。
 
@@ -61,7 +61,7 @@ ms.locfileid: "89292531"
 
 1. 在“说明”中，选择一个提供详细信息的字段，这些信息可以帮助用户确定是否要单击进入特定的文档。
 
-   ![配置示例数据的结果](media/search-create-app-portal/configure-results.png)
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="示例数据的数据源页" border="false":::
 
 ## <a name="add-a-sidebar"></a>添加边栏
 
@@ -83,7 +83,7 @@ ms.locfileid: "89292531"
 
 以下屏幕截图显示了向导中的选项，同时显示了应用中呈现的页面。 其中展示了如何使用字段选项，以及如何使用“显示字段名称”在建议中包含或排除标签。
 
-![查询建议配置](media/search-create-app-portal/suggestions.png)
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="示例数据的数据源页":::
 
 ## <a name="create-download-and-execute"></a>创建、下载和执行
 
@@ -95,7 +95,7 @@ ms.locfileid: "89292531"
 
 基础索引由虚构生成的、已在不同文档中复制的数据构成，说明有时与图像不符。 如果基于自己的索引创建应用，则预期会获得更有整体性的体验。
 
-![运行应用](media/search-create-app-portal/run-app.png)
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="示例数据的数据源页":::
 
 
 ## <a name="clean-up-resources"></a>清理资源

@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924582"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399833"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教程：使用 Azure 机器学习构建和部署自定义技能 
 
@@ -82,8 +82,7 @@ ms.locfileid: "88924582"
 
 在门户中，转到“技能组”，然后选择“技能组定义 (JSON)”链接。 门户将显示在笔记本的第一个单元中创建的技能组的 JSON。 屏幕右侧有一个下拉菜单，可以在其中选择技能定义模板。 选择 Azure 机器学习 (AML) 模板。 提供 Azure ML 工作区的名称以及部署到推理群集的模型的终结点。 将使用终结点 URI 和密钥更新模板。
 
-> [!div class="mx-imgBorder"]
-> ![技能组定义模板](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="技能组定义模板":::
 
 从窗口复制技能组模板，然后将其粘贴到左侧的技能组定义中。 编辑模板，为以下对象提供缺失的值：
 

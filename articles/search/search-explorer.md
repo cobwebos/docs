@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929782"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398402"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>快速入门：在门户中使用“搜索浏览器”来运行查询
 
@@ -37,11 +37,11 @@ ms.locfileid: "88929782"
 
 1. 从命令栏打开“搜索浏览器”：
 
-   ![门户中的“搜索浏览器”命令](./media/search-explorer/search-explorer-cmd2.png "门户中的“搜索浏览器”命令")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
     或在打开的索引上使用嵌入的“搜索浏览器”选项卡：
 
-   ![“搜索浏览器”选项卡](./media/search-explorer/search-explorer-tab.png "“搜索浏览器”选项卡")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 ## <a name="unspecified-query"></a>未指定查询
 
@@ -55,7 +55,7 @@ ms.locfileid: "88929782"
 
    **结果**
    
-   ![空查询示例](./media/search-explorer/search-explorer-example-empty.png "不合格查询或空查询示例")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 ## <a name="free-text-search"></a>自由文本搜索
 
@@ -71,7 +71,7 @@ ms.locfileid: "88929782"
 
    可以使用 Ctrl-F 在结果中搜索感兴趣的特定字词。
 
-   ![自由文本查询示例](./media/search-explorer/search-explorer-example-freetext.png "自由文本查询示例")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 ## <a name="count-of-matching-documents"></a>匹配文档计数 
 
@@ -83,7 +83,7 @@ ms.locfileid: "88929782"
 
    **结果**
 
-   ![文档计数示例](./media/search-explorer/search-explorer-example-count.png "索引中的匹配文档计数")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>限制搜索结果中的字段
 
@@ -95,7 +95,7 @@ ms.locfileid: "88929782"
 
    **结果**
 
-   ![限制字段示例](./media/search-explorer/search-explorer-example-selectfield.png "限制搜索结果中的字段")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>返回下一批结果
 
@@ -107,7 +107,7 @@ Azure 认知搜索根据搜索排名返回排名前 50 的匹配项。 若要获
 
    **结果**
 
-   ![批量搜索结果](./media/search-explorer/search-explorer-example-topskip.png "返回下一批搜索结果")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>筛选表达式（大于、小于、等于）
 
@@ -119,7 +119,7 @@ Azure 认知搜索根据搜索排名返回排名前 50 的匹配项。 若要获
    
    **结果**
 
-   ![筛选器表达式](./media/search-explorer/search-explorer-example-filter.png "按条件筛选")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 ## <a name="order-by-expressions"></a>Order-by 表达式
 
@@ -131,7 +131,7 @@ Azure 认知搜索根据搜索排名返回排名前 50 的匹配项。 若要获
    
    **结果**
 
-   ![Orderby 表达式](./media/search-explorer/search-explorer-example-ordery.png "更改排序顺序")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="门户中的“搜索浏览器”命令" border="false":::
 
 “$filter”和“$orderby”表达式都是 OData 构造 。 有关详细信息，请参阅 [Filter OData syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
 
