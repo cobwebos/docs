@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285326"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -52,7 +52,7 @@ Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地�
 
 使用 Azure Maps Android SDK 创建移动地图绘制应用程序。
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="移动设备上的地图示例":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
 
 ## <a name="services-in-azure-maps"></a>Azure Maps 中的服务
 
@@ -78,7 +78,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 现处于预览阶段的[呈现服务 V2](https://docs.microsoft.com/rest/api/maps/renderv2) 引入了 [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="来自呈现服务 V2 的地图示例":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
 
 有关更多详细信息，请参阅[呈现服务 V2 文档](https://docs.microsoft.com/rest/api/maps/renderv2)。
 
@@ -88,7 +88,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 路线服务可用于计算每个请求路线的估计到达时间 (ETA)。 路线 API 考虑多种因素，例如实时交通信息和历史交通数据（如请求的星期几某一时间的典型道路速度）。 这些 API 会根据时间或距离依次或按最佳顺序返回可用于多个目的地的最短或最快路线。 使用该服务，开发人员可以计算跨几种出行模式（例如汽车、卡车、自行车、步行或电动车）的方向。 该服务还会考虑出发时间、重量限制或危险品运输等因素。
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="路线服务中的地图示例":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
 
 路线服务提供高级设置功能，例如：
 
@@ -102,7 +102,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 搜索服务帮助开发人员按名称或类别搜索地址、地点、商家列表和其他地理信息。 此外，服务可以根据纬度和经度对地址和十字路口进行[反向地理编码](https://en.wikipedia.org/wiki/Reverse_geocoding)。
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="地图上的搜索示例":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
 
 搜索服务还提供高级功能，例如：
 
@@ -204,7 +204,7 @@ Azure Maps 针对移动设备设计，可帮助你开发跨平台应用程序。
 
 Power BI 的 Azure Maps 视觉对象提供了一组丰富的数据可视化效果，适用于地图上的空间数据。 据估计，超过 80% 的业务数据具有位置上下文。 Azure Maps 视觉对象提供了一个无代码解决方案，可用于深入了解此位置上下文与业务数据有何关系以及对业务数据有何影响。
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="具有显示业务数据的 Azure Maps 视觉对象的 Power BI 桌面":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="使用 Azure Maps Web SDK 创建的人口变化地图示例":::
 
 有关详细信息，请参阅 [Azure Maps Power BI 视觉对象入门](power-bi-visual-getting-started.md)文档。
 
@@ -231,10 +231,8 @@ Microsoft 目前正在向“联机服务分包商”列表添加 TomTom、Moovit
 
 试用展示 Azure Maps 的示例应用：
 
-> [!div class="nextstepaction"]
-> [快速入门：创建 Web 应用](quick-demo-map-app.md)
+[快速入门：创建 Web 应用](quick-demo-map-app.md)
 
 随时掌握 Azure Maps 的最新信息：
 
-> [!div class="nextstepaction"]
-> [Azure Maps 博客](https://azure.microsoft.com/blog/topics/azure-maps/)
+[Azure Maps 博客](https://azure.microsoft.com/blog/topics/azure-maps/)

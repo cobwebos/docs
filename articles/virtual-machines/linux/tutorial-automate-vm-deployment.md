@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: f1d439569f15d7680d54b35e7ec1c52ca7843af7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 57e336093ece0906033b86cefe72ed9f2b940573
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279342"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教程 - 如何在 Azure 中的 Linux 虚拟机首次启动时使用 cloud-init 对其进行自定义
 
@@ -37,7 +37,7 @@ ms.locfileid: "87828959"
 ## <a name="cloud-init-overview"></a>Cloud-init 概述
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
-Cloud-init 还支持不同的发行版。 例如，不需使用 apt-get install 或 yum install 来安装包， 而是可定义要安装的程序包的列表。 Cloud-init 将对所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
 我们正在与合作伙伴协作，将 cloud-init 纳入用户向 Azure 提供的映像中并使其在映像中正常运行。 下表概述了 cloud-init 当前在 Azure 平台映像上的可用性：
 
@@ -270,7 +270,7 @@ az vm open-port \
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你使用 cloud-init 在首次启动时配置了 VM。 你已了解如何：
+在本教程中，你使用 cloud-init 在首次启动时配置了 VM。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 cloud-init 配置文件

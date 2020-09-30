@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 59eb826d8d17ed2adb3027f0aab11a6933b47ae5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-js
+ms.openlocfilehash: 5a0bef4fbfd4ee9aa720dab430a33bbfcd0b918b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280345"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 

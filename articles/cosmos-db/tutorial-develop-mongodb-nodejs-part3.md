@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e9cb30ca64fe697f9b8304f55381709083b8fbd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424233"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282895"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
 
@@ -62,7 +62,7 @@ ms.locfileid: "87424233"
 
 4. 在同一文件夹中打开 app.module.ts 文件。请注意，该文件在第 5 行向声明添加了 `HeroesComponent`，并在第 10 行对其进行了导入操作。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="打开 app-module.ts 文件":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="安装 hero 组件":::
 
 5. 返回到 heroes.component.html 文件，将此代码复制到其中。 `<div>` 是整个页面的容器。 容器内有一个需创建的 hero 的列表。创建这些组件后，在 UI 中单击其中一个组件即可将其选定进行编辑或删除操作。 然后就会在 HTML 中显示某种样式，可以据此判断选择了哪个组件。 此外还有编辑区域，用于添加新的 hero 或编辑现有的 hero。 
 
@@ -394,9 +394,7 @@ ms.locfileid: "87424233"
 
 5. 左键单击 `Hero` 一词，Visual Studio 会在代码块左侧显示一个灯泡图标。 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code 中的灯泡":::
-
-6. 单击灯泡，然后单击“从 ‘/app/hero’ 导入 Hero”。 或“从 "./hero" 导入 Hero”。 （此消息因设置而异）
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="安装 hero 组件" 导入 Hero”。 （此消息因设置而异）
 
     此时会在第 2 行出现新的代码行。 如果第 2 行引用 /app/hero，请对其进行修改，使之引用本地文件夹中的 hero 文件 (./hero)。 第 2 行应如下所示：
 
@@ -490,7 +488,7 @@ ms.locfileid: "87424233"
 
 3. 现在请打开 Internet 浏览器，导航到 localhost:3000，然后就会看到该应用在本地运行。
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="在本地运行的 Hero 应用程序":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="安装 hero 组件":::
 
 ## <a name="next-steps"></a>后续步骤
 

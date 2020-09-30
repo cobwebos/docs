@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281043"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索证书
 
@@ -34,18 +34,18 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息：
+5. 在“创建密钥保管库”部分，提供以下信息： 
     - 名称：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault。 
     - 订阅：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”。
+6. 提供上述信息后，选择“创建”  。
 
 请记下下面列出的两个属性：
 
 * **保管库名称**：在示例中，此项为 Example-Vault。 将在其他步骤中使用此名称。
-* **保管库 URI**：在本示例中，此项为 https://example-vault.vault.azure.net/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
+* **保管库 URI**：在本示例中，此项为 `https://example-vault.vault.azure.net/` 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户有权对这个新保管库执行操作。
 

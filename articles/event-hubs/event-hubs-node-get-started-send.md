@@ -3,13 +3,13 @@ title: 使用 JavaScript 向/从 Azure 事件中心发送/接收事件（最新�
 description: 本文演练如何创建一个可使用最新 azure/event-hubs 版本 5 包向/从 Azure 事件中心发送/接收事件的 JavaScript 应用程序。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6f1fe30cad3a1bc0d5bce7a885650dd84fcb2215
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js
+ms.openlocfilehash: 0acceffca79a36ceabf709aa6d7faf1bf79b0c83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282164"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure/event-hubs 版本 5** JavaScript 包向事件中心发送事件以及从事件中心接收事件。 

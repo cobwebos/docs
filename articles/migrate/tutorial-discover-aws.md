@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 服务器评估发现 AWS 实例�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: c2d91e0b2c2eaa2df8b01aca60e5a0e18e251fb8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275449"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>教程：使用服务器评估发现 AWS 实例
 
@@ -76,7 +76,18 @@ ms.locfileid: "90603690"
 
 - 对于 Windows 服务器，在要包括在发现中的所有 Windows 服务器上设置一个本地用户帐户。 将该用户帐户添加到以下组：- 远程管理用户 - 性能监视器用户 - 性能日志用户。
  - 对于 Linux 服务器，需要在要发现的 Linux 服务器上拥有根帐户。
-
+- Azure Migrate 在发现 AWS 实例时使用密码验证。 AWS 实例默认不支持密码验证。 需要先启用密码验证，才能发现实例。
+    - 对于 Windows 计算机，请允许 WinRM 端口 5985 (HTTP)。 这将允许 WMI 调用。
+    - 对于 Linux 计算机：
+        1. 登录到每台 Linux 计算机。
+        2. Open the sshd_config file : vi /etc/ssh/sshd_config
+        3. 在文件中，定位到 PasswordAuthentication 行，然后将值改为“yes”。 
+        4. 保存文件并将其关闭。 重启 ssh 服务。
+    - 如果使用根用户来发现 Linux VM，请确保 VM 上允许根登录。
+        1. 登录到每台 Linux 计算机
+        2. Open the sshd_config file : vi /etc/ssh/sshd_config
+        3. 在文件中，定位到 PermitRootLogin 行，然后将值改为“yes” 。
+        4. 保存文件并将其关闭。 重启 ssh 服务。
 
 ## <a name="set-up-a-project"></a>设置项目
 

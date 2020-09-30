@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543629"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273691"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>教程：Azure Active Directory 与 RStudio Connect 的集成
 
@@ -126,7 +126,7 @@ ms.locfileid: "88543629"
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>配置 RStudio Connect 单一登录
 
-要为 RStudio Connect 配置单点登录，需要使用上面使用的应用联合元数据 URL 和服务器地址    。 在 `/etc/rstudio-connect.rstudio-connect.gcfg` 处的 RStudio Connect 配置文件中完成该操作。
+要为 RStudio Connect 配置单点登录，需要使用上面使用的应用联合元数据 URL 和服务器地址    。 在 `/etc/rstudio-connect/rstudio-connect.gcfg` 处的 RStudio Connect 配置文件中完成该操作。
 
 以下是一个示例配置文件：
 
