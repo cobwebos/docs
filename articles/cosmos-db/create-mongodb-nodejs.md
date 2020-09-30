@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 1603e2c0d76415b612e81f88990805b0bb1de732
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: 5af929991e96d1307c32d219a9807c6e6a58387c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253269"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>快速入门：将现有的 MongoDB Node.js Web 应用迁移到 Azure Cosmos DB 
 
@@ -212,7 +212,7 @@ Cosmos 数据库中存储的数据可用于在 Azure 门户中查看和查询。
 
 在顶部搜索框中，输入 **Azure Cosmos DB**。 打开 Cosmos 帐户边栏选项卡后，请选择 Cosmos 帐户。 在左侧导航栏中，选择“数据资源管理器”。 在“集合”窗格中展开你的集合，即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
 
-:::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="Azure 门户中的数据资源管理器":::
+:::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="MEAN.js 成功连接至 MongoDB":::
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>将 Node.js 应用程序部署到 Azure

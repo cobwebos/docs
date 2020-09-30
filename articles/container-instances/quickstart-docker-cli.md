@@ -3,13 +3,13 @@ title: 快速入门 - 将 Docker 容器部署到容器实例 - Docker CLI
 description: 本快速入门将使用 Docker CLI 快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 37a6c430055e440d149b9a793c453251787267d4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.custom: devx-track-js
+ms.openlocfilehash: 9904fb8c2142816196a1939a16445318bdb245d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709179"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262308"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>快速入门：使用 Docker CLI 在 Azure 中部署容器实例
 

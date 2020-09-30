@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 294a3dc9525ba0a0c533d68027b148ad402cd7ee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268836"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：通过 CLI 训练和部署模型
 
@@ -39,7 +39,7 @@ ms.locfileid: "90906645"
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-* 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
     如果使用的是 [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，则可通过浏览器访问 CLI（它位于云端）。
 
@@ -128,7 +128,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-要详细了解如何使用资源组，请参阅 [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)。
+要详细了解如何使用资源组，请参阅 [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="create-a-workspace"></a>创建工作区
 

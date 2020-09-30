@@ -3,13 +3,13 @@ title: 快速入门：你的第一个 JavaScript 查询
 description: 本快速入门介绍为 JavaScript 启用 Resource Graph 库并运行第一个查询的步骤。
 ms.date: 06/23/2020
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc9809dbe615950b4f5c9e4dc66cefcd054f5ebf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415918"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251960"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>快速入门：使用 JavaScript 运行你的第一个 Resource Graph 查询
 

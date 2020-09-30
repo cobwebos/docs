@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: allensu
-ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: 3016825648ef45f8aa64b4228bac2b1f830004c3
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: dc6abc51fd0e5669126f1d2f1a977194479db5f5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269873"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建内部负载均衡器以对 VM 进行负载均衡
 

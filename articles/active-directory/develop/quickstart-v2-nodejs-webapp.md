@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
-ms.openlocfilehash: 149ed7aa281e50673c86c0bd7339f304aa63914a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
+ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257684"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 

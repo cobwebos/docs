@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f9ae7b74c17bb330c2c7aa99903c62d4701f0a52
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.reviewer: jrasnick
+ms.openlocfilehash: 9b4b9da37b753418773141f832f253003ad40014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260450"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>快速入门：将 Power BI 工作区链接到 Synapse 工作区
 

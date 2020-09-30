@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1fa481911be8eb91db498350e57e2ba42e4aedb5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 19039f8b87145d6bbb1a6b3636ea0892b06ccfe8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253422"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>快速入门：使用 Node.js SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -212,11 +212,11 @@ ms.locfileid: "87421002"
 > 
 > 双击 .crt 文件，将其打开到证书显示。 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="查看并验证输出":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="在 Azure 门户的连接字符串页中查看并复制“联系点”、“用户名”和“密码”":::
 >
 > 在证书向导中按“下一步”。 选择“Base-64 编码 X.509 (.CER)”，然后选择“下一步”。
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="查看并验证输出":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="在 Azure 门户的连接字符串页中查看并复制“联系点”、“用户名”和“密码”":::
 >
 > 选择“浏览”（目的是查找目标），然后键入文件名。
 > 完成后，选择“下一步”。
@@ -237,13 +237,13 @@ ms.locfileid: "87421002"
 
 4. 通过命令行验证结果是否符合预期。
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="查看并验证输出":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="在 Azure 门户的连接字符串页中查看并复制“联系点”、“用户名”和“密码”":::
 
     按 CTRL+C 停止执行程序并关闭控制台窗口。 
 
 5. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="在数据资源管理器中查看数据"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="在 Azure 门户的连接字符串页中查看并复制“联系点”、“用户名”和“密码”"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, seo-javascript-september2019, devx-track-javascript
+ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: c8aca82567de0b564aadc355b198502450dd7a5c
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258892"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 在单页应用程序中启用身份验证
 
@@ -150,13 +150,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     请使用有效的电子邮件地址，并使用验证码进行验证。 设置密码。 输入请求的属性的值。
 
-    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C 用户流显示的注册页":::
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="显示了本地运行的单页应用程序的 Web 浏览器":::
 
 1. 选择“创建”，在 Azure AD B2C 目录中创建本地帐户。
 
 选择“创建”时，应用程序会显示已登录用户的名称。
 
-:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="显示了包含已登录用户的单页应用程序的 Web 浏览器":::
+:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="显示了本地运行的单页应用程序的 Web 浏览器":::
 
 若要测试登录，请选择“注销”按钮，然后选择“登录”，并使用注册时输入的电子邮件地址和密码进行登录。 
 

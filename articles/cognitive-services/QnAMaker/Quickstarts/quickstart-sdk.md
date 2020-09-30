@@ -3,14 +3,14 @@ title: 快速入门：使用 SDK 来创建和管理知识库 - QnA Maker
 description: 本快速入门介绍如何使用客户端 SDK 创建和管理知识库。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-sixteen
-ms.openlocfilehash: 1517b84b38aaf1878b63d85c3e2f867bcd8e6586
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: aae9bce5542dc4c610df91d8176916adc459fe86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253916"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>快速入门：QnA Maker 客户端库
 
@@ -44,7 +44,7 @@ QnA Maker 客户端库入门。 请按照以下步骤安装程序包并试用基
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤

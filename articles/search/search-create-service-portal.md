@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/14/2020
-ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/16/2020
+ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268360"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -177,3 +177,8 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 > [!div class="nextstepaction"]
 > [快速入门：在门户中创建 Azure 认知搜索索引](search-get-started-portal.md)
+
+希望优化并节省云支出？
+
+> [!div class="nextstepaction"]
+> [使用成本管理开始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

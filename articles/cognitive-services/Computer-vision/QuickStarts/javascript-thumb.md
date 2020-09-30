@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: seodec18, devx-track-javascript
-ms.openlocfilehash: 84e350de894be0cc5c0811fa66bca1a59bc146fa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: seodec18, devx-track-js
+ms.openlocfilehash: c6e15795d3dde6b87125de30616136140218fe5a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262580"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 生成缩略图
 
