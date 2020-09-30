@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 72bb38b7d9d28366fb75c5656832a1f37c770fd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c11c2098d30ed6f00d94124fd77c2ebdb6cd2c7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303298"
 ---
 通过使用通信服务 Java 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -30,7 +30,8 @@ ms.locfileid: "90943948"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
-- 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
+- 活动的通信服务资源和连接字符串。 [创建通信服务资源](../../create-communication-resource.md)。
+- 启用短信的电话号码。 [获取电话号码](../get-phone-number.md)。
 
 ### <a name="prerequisite-check"></a>先决条件检查
 

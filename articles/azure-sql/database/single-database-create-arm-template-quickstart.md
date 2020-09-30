@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: mumian
 ms.author: jgao
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/24/2020
-ms.openlocfilehash: 2c1ae6bd69a87ad0ae941fba66785344d91e8268
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: a3589ec9b1a4cf652e7bcce16023a83a8b41ee5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319293"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure SQL 数据库中创建单一数据库
 

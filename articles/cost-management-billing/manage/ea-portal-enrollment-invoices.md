@@ -3,17 +3,17 @@ title: Azure Enterprise 注册发票
 description: 本文介绍如何管理和处理 Azure 企业发票。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316131"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -162,20 +162,6 @@ Microsoft 每年在注册生效日期对 Microsoft Azure 服务的任何预付�
 ### <a name="enterprise-agreement-units-of-measure"></a>企业协议度量单位
 
 企业协议的度量单位通常不同于其他计划，例如 Microsoft Online Services 协议计划 (MOSA)。 这种区分意味着，对于许多服务而言，合计度量单位是为了提供规范化的定价。 Azure Enterprise 门户的“使用情况摘要”视图中显示的度量单位始终为 Enterprise 度量。 [友好服务名称](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) Excel 文件中提供了每项服务的当前度量单位和换算的完整列表。
-
-### <a name="rounding-rules"></a>舍入规则
-
-在 Azure Enterprise 门户遵循 IEEE 标准银行家舍入法或高斯舍入法逻辑。 遇到数字 5 时，此逻辑将其舍入为最接近的偶数。 而更典型的四舍五入逻辑始终将数字 5 向上舍入为下一个最大的数字。 与标准的 Excel 逻辑相比，此 Azure Enterprise 门户方法实际提供的一组数字的总和更准确。
-
-演示：如果要去除的第一个数字是 5 且它后面没有其他数字或者它后面的数字为 0，则将这组数字舍入为最接近的偶数。 例如，2.315 和 2.325 在舍入为最接近的百分位数时，均为 2.32。
-
-下表显示了为 Azure Enterprise 门户中的舍入和转换规则建模时可使用的 Excel 公式供你参考：
-
-| 场景 | 银行从业者逻辑公式 |
-| --- | --- |
-| 舍入用法 | =MROUND({_source_}, 0.0002) |
-| 舍入定价（2 位小数） | =MROUND({_source_}, 0.02) |
-| 舍入定价（0 位小数） | =MROUND({_source_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>使用情况详细信息报表与使用情况摘要页之间的转换
 

@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: b4e085a4c81b44f721ddc8385d2dcd0f4a56f42a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303297"
 ---
 通过使用通信服务 C# 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -59,13 +59,14 @@ dotnet build
 仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务短信客户端库。
 
 ```console
-dotnet add package Azure.Communication.Sms
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
 ```
 
 将 `using` 指令添加到 Program.cs 顶部以包括 `Azure.Communication` 命名空间。
 
 ```csharp
 
+using Azure.Communication;
 using Azure.Communication.Sms;
 
 ```

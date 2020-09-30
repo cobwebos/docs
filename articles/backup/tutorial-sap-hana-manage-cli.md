@@ -4,12 +4,12 @@ description: 在本教程中，了解如何使用 Azure CLI 管理 Azure VM 上�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 22ff95fe5261a839927aa6ad8123ba370710f178
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323084"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 
@@ -39,7 +39,7 @@ Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本�
 
 ## <a name="monitor-backup-and-restore-jobs"></a>监视备份和还原作业
 
-若要监视已完成或当前正在运行的作业（备份或还原），请使用 [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet。 通过 CLI，还可[暂停当前正在运行的作业](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop)或[等待作业完成](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait)。
+若要监视已完成或当前正在运行的作业（备份或还原），请使用 [az backup job list](/cli/azure/backup/job#az-backup-job-list) cmdlet。 通过 CLI，还可[暂停当前正在运行的作业](/cli/azure/backup/job#az-backup-job-stop)或[等待作业完成](/cli/azure/backup/job#az-backup-job-wait)。
 
 ```azurecli-interactive
 az backup job list --resource-group saphanaResourceGroup \
@@ -60,7 +60,7 @@ F7c68818-039f-4a0f-8d73-e0747e68a813  Restore (Log)          Completed   hxe [hx
 
 ## <a name="change-policy"></a>更改策略
 
-若要更改 SAP HANA 备份配置基础上的策略，请使用 [az backup policy set](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-set) cmdlet。 此 cmdlet 中的 name 参数是指要更改其策略的备份项。 对于本教程，我们会将 SAP HANA 数据库 saphanadatabase;hxe;hxe 的策略替换为新策略 newsaphanaPolicy   。 可使用 [az backup policy create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet 创建新策略。
+若要更改 SAP HANA 备份配置基础上的策略，请使用 [az backup policy set](/cli/azure/backup/policy#az-backup-policy-set) cmdlet。 此 cmdlet 中的 name 参数是指要更改其策略的备份项。 对于本教程，我们会将 SAP HANA 数据库 saphanadatabase;hxe;hxe 的策略替换为新策略 newsaphanaPolicy   。 可使用 [az backup policy create](/cli/azure/backup/policy#az-backup-policy-create) cmdlet 创建新策略。
 
 ```azurecli-interactive
 az backup item set policy --resource-group saphanaResourceGroup \
@@ -82,7 +82,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 [使用恢复服务保管库注册 SAP HANA 实例](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance)会自动发现该实例上的所有数据库。
 
-但是，如果以后将新数据库添加到 SAP HANA 实例，请使用 [az backup protectable-item initialize](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) cmdlet。 此 cmdlet 会发现添加的新数据库。
+但是，如果以后将新数据库添加到 SAP HANA 实例，请使用 [az backup protectable-item initialize](/cli/azure/backup/protectable-item#az-backup-protectable-item-initialize) cmdlet。 此 cmdlet 会发现添加的新数据库。
 
 ```azurecli-interactive
 az backup protectable-item initialize --resource-group saphanaResourceGroup \
@@ -91,7 +91,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-然后，使用 [az backup protectable-item list](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 列出已在 SAP HANA 实例上发现的所有数据库。 但是，此列表会排除已配置备份的数据库。 发现要备份的数据库后，请参阅[在 SAP HANA 数据库上启用备份](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)。
+然后，使用 [az backup protectable-item list](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) cmdlet 列出已在 SAP HANA 实例上发现的所有数据库。 但是，此列表会排除已配置备份的数据库。 发现要备份的数据库后，请参阅[在 SAP HANA 数据库上启用备份](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)。
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -127,7 +127,7 @@ saphanadatabase;hxe;newhxe      SAPHanaDatabase          HXE           hxehost  
 
 ### <a name="stop-protection-with-retain-data"></a>停止保护并保留数据
 
-若要停止保护并保留数据，请使用 [az backup protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet。
+若要停止保护并保留数据，请使用 [az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) cmdlet。
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -146,11 +146,11 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-若要检查此操作的状态，请使用 [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet。
+若要检查此操作的状态，请使用 [az backup job show](/cli/azure/backup/job#az-backup-job-show) cmdlet。
 
 ### <a name="stop-protection-without-retain-data"></a>停止保护且不保留数据
 
-若要停止保护且不保留数据，请使用 [az backup protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet。
+若要停止保护且不保留数据，请使用 [az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) cmdlet。
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -170,13 +170,13 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-若要检查此操作的状态，请使用 [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet。
+若要检查此操作的状态，请使用 [az backup job show](/cli/azure/backup/job#az-backup-job-show) cmdlet。
 
 ## <a name="resume-protection"></a>恢复保护
 
 如果停止对 SAP HANA 数据库的保护且保留数据，可在稍后恢复保护。 如果不保留备份的数据，则无法恢复保护。
 
-若要恢复保护，请使用 [az backup protection resume](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) cmdlet。
+若要恢复保护，请使用 [az backup protection resume](/cli/azure/backup/protection#az-backup-protection-resume) cmdlet。
 
 ```azurecli-interactive
 az backup protection resume --resource-group saphanaResourceGroup \
@@ -194,7 +194,7 @@ Name                                  ResourceGroup
 b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 ```
 
-若要检查此操作的状态，请使用 [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet。
+若要检查此操作的状态，请使用 [az backup job show](/cli/azure/backup/job#az-backup-job-show) cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

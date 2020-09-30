@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74976717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316063"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>教程：通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
@@ -27,7 +27,7 @@ ms.locfileid: "74976717"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="prerequisites"></a>先决条件
 
 登录 [Azure 门户](https://portal.azure.com/)。
 

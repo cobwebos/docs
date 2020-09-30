@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74976734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315994"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>教程：跨负载均衡的 IoT 中心预配设备
 
@@ -67,15 +67,15 @@ ms.locfileid: "74976734"
 4. 在“将链接添加到 IoT 中心”页上，使用单选按钮指定链接的 IoT 中心位于当前订阅中还是其他订阅中  。 然后，从“IoT 中心”框中选择该 IoT 中心的名称  。
 5. 单击“ **保存**”。
 
-## <a name="next-steps"></a>后续步骤
-
 在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户将另一台设备预配到另一个 IoT 中心 
 > * 添加第二台设备的注册列表条目
-> * 将设备预配服务分配策略设置为“均匀分发” 
+> * 将设备预配服务分配策略设置为“均匀分发”****
 > * 将新的 IoT 中心链接到设备预配服务
+
+## <a name="next-steps"></a>后续步骤
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure 应用服务, web 应用, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312050"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自定义容器将自定义软件迁移到 Azure 应用服务
 
@@ -72,7 +72,7 @@ ms.locfileid: "90982861"
 
 在解决方案资源管理器中，打开 Dockerfile。
 
-需要使用[受支持的父映像](quickstart-custom-container.md#use-a-different-parent-image)。 通过将 `FROM` 行替换为以下代码，更改父映像：
+需要使用[受支持的父映像](configure-custom-container.md#supported-parent-images)。 通过将 `FROM` 行替换为以下代码，更改父映像：
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -618,6 +618,8 @@ service ssh start
 az group delete --name AppSvc-DockerTutorial-rg
 ```
 
+::: zone-end
+
 ## <a name="next-steps"></a>后续步骤
 
 你已了解：
@@ -625,9 +627,13 @@ az group delete --name AppSvc-DockerTutorial-rg
 > [!div class="checklist"]
 > * 将自定义映像部署到专用容器注册表
 > * 在应用服务中部署和自定义映像
+::: zone pivot="container-linux"
 > * 更新并重新部署映像
+::: zone-end
 > * 访问诊断日志
+::: zone pivot="container-linux"
 > * 使用 SSH 连接到容器
+::: zone-end
 
 在下一教程中，你将了解如何将自定义 DNS 名称映射到应用。
 
@@ -639,7 +645,7 @@ az group delete --name AppSvc-DockerTutorial-rg
 > [!div class="nextstepaction"]
 > [配置自定义容器](configure-custom-container.md)
 
+::: zone pivot="container-linux"
 > [!div class="nextstepaction"]
 > [教程：多容器 WordPress 应用](tutorial-multi-container-app.md)
-
 ::: zone-end

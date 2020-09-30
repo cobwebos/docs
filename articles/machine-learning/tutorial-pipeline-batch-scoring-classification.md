@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: b6b4be2eb2cd490d525046541f68a45d87a8e638
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f02638acdc60bba710280dcbeba0717173ed8b83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320500"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
@@ -388,7 +388,7 @@ published_pipeline
 
 服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。 首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。 使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) 类来管理身份验证流。 
 
-[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#&preserve-view=trueget-authentication-header--) 函数来提取标头：
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-authentication-header--) 函数来提取标头：
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

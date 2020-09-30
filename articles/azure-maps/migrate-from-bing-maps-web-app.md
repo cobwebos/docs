@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 155786de61206b4e21a4f074dfc3781b0fde1273
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90107931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319724"
 ---
 # <a name="migrate-a-web-app-from-bing-maps"></a>从必应地图迁移 Web 应用
 

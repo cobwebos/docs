@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户以增量方式复制多个表
-description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库的数据库中。
+description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库中的数据库。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 83c29740bd535d9508e5458a66fc8592500ceaf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251142"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320959"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
@@ -254,7 +254,7 @@ END
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择“V2”作为“版本”。
 7. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-8. 单击“创建”。      
+8. 单击**创建**。      
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
@@ -263,7 +263,7 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>创建自承载的 Integration Runtime
 在将数据从专用网络（本地）中的数据存储移至 Azure 数据存储时，请在本地环境中安装自承载的 Integration Runtime (IR)。 自承载的 IR 可在专用网络和 Azure 之间移动数据。 
 
-1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[管理选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
+1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
    ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -305,7 +305,7 @@ END
     1. 对于“服务器名称”，请输入装有 SQL Server 数据库的计算机的名称。
     1. 对于“数据库名称”，请输入 SQL Server 中包含源数据的数据库的名称。 已按照先决条件创建一个表并将数据插入到此数据库中。 
     1. 对于“身份验证类型”，请选择需要用于连接到数据库的**身份验证的类型**。 
-    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 示例为 `mydomain\\myuser`。
+    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
     1. 至于“密码”，请输入用户的**密码**。 
     1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
     1. 若要保存链接服务，请单击“完成”。
@@ -456,7 +456,7 @@ END
         ![复制活动 - 源设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. 切换到“接收器”选项卡，然后选择“SinkDataset”作为“接收器数据集”。   
         
-1. 请执行以下步骤：
+1. 执行以下步骤：
 
     1. 在“数据集”属性中，输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
     1. 至于“存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。
@@ -477,10 +477,10 @@ END
     1. 选择“导入参数”。 
     1. 指定以下参数值： 
 
-        | 名称 | 类型 | 值 | 
+        | 名称 | 类型 | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | 字符串 | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 选择“全部发布”，以便将创建的实体发布到数据工厂服务。 

@@ -9,14 +9,14 @@ ms.devlang: azurecli
 ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/16/2019
-ms.openlocfilehash: 8a8aac276617e97c26d7b05e6fe2518e5d575fab
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48f82dcc1fa9e1f6843df4e89daca6a01c57ed63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514775"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321440"
 ---
 # <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>使用 Azure CLI 将数据库添加到故障转移组
 
@@ -54,7 +54,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 描述 |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | 数据库命令。 |
 | [az sql failover-group](/cli/azure/sql/failover-group) | 故障转移组命令。 |

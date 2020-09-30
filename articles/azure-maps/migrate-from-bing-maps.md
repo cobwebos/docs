@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 643e49bdba76051c873ed549d5f6c21487f34056
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90107918"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319599"
 ---
 # <a name="migrate-from-bing-maps-to-azure-maps"></a>从必应地图迁移到 Azure Maps
 
@@ -81,6 +81,15 @@ Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并
 4.  迁移应用程序代码。
 5.  测试已迁移的应用程序。
 6.  将已迁移的应用程序部署到生产环境。
+
+## <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
+
+若要创建 Azure Maps 帐户并获得对 Azure Maps 平台的访问权限，请按照以下步骤操作：
+
+1. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+2. 登录 [Azure 门户](https://portal.azure.com/)。
+3. 创建 [Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)。 
+4. [获取 Azure Maps 订阅密钥](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)或设置 Azure Active Directory 身份验证来增强安全性。
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps 技术资源
 

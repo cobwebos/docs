@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06c353cf5fbd5c2b1058d99e7f91e9fcc3853cb1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303755"
 ---
 # <a name="add-faces-to-a-persongroup"></a>将人脸添加到 PersonGroup
 
@@ -138,6 +138,5 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="related-topics"></a>相关主题
 
-- [识别图像中的人脸](HowtoIdentifyFacesinImage.md)
 - [检测图像中的人脸](HowtoDetectFacesinImage.md)
 - [使用大规模功能](how-to-use-large-scale.md)
