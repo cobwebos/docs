@@ -1,32 +1,36 @@
 ---
-title: 教程：网络清单
-description: 网络要求先决条件以及有关网络连接和网络端口的详细信息
+title: 教程 - 网络规划清单
+description: 了解网络要求先决条件以及有关 Azure VMware 解决方案的网络连接和网络端口的详细信息。
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: aba5d7767e420b3ade6238621487884e44fbb6e2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750413"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254391"
 ---
-# <a name="networking-checklist-for-azure-vmware-solution"></a>Azure VMware 解决方案的网络清单 
+# <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware 解决方案的网络规划清单 
 
-Azure VMware 解决方案提供一个 VMware 私有云环境，用户和应用程序可以从本地和基于 Azure 的环境或资源访问该环境。 连接是通过 Azure ExpressRoute 等网络服务和 VPN 连接提供的，需要提供一些特定的网络地址范围和防火墙端口来启用服务。 本文提供了正确配置网络以使用 Azure VMware 解决方案需要了解的信息。
+Azure VMware 解决方案提供一个 VMware 私有云环境，用户和应用程序可以从本地和基于 Azure 的环境或资源访问该环境。 连接是通过 Azure ExpressRoute 和 VPN 连接等网络服务提供的，需要提供一些特定的网络地址范围和防火墙端口来启用服务。 本文提供正确配置网络以使用 Azure VMware 解决方案所需的信息。
 
 本教程介绍：
 
 > [!div class="checklist"]
-> * 网络连接要求
-> * Azure VMware 解决方案中的 DHCP
+> * 虚拟网络和 ExpressRoute 线路注意事项
+> * 路由和子网要求
+> * 与服务通信所需的网络端口
+> * Azure VMware 解决方案中的 DHCP 和 DNS 注意事项
 
-## <a name="virtual--network-and-expressroute-circuit--considerations"></a>虚拟网络和 ExpressRoute 线路注意事项
-当你在订阅中从虚拟网络创建连接时，ExpressRoute 线路通过对等互连建立，并使用你在 Azure 门户中请求的授权密钥和对等互连 ID。 对等互连是私有云和虚拟网络之间的一种专用的一对一连接。
+
+
+## <a name="virtual-network-and-expressroute-circuit-considerations"></a>虚拟网络和 ExpressRoute 线路注意事项
+在订阅中创建虚拟网络连接时，ExpressRoute 线路通过对等互连建立，并使用你在 Azure 门户中请求的授权密钥和对等互连 ID。 对等互连是私有云和虚拟网络之间的一种专用的一对一连接。
 
 > [!NOTE] 
 > ExpressRoute 线路不属于私有云部署。 本地 ExpressRoute 线路不在本文档的介绍范围之内。 如果你需要与私有云的本地连接，可使用一个现有的 ExpressRoute 线路或在 Azure 门户中购买一个。
 
-部署私有云时，你将收到 vCenter 和 NSX-T Manager 的 IP 地址。 若要访问这些管理接口，需要在订阅的虚拟网络中创建其他资源。 在本教程中，可找到有关创建这些资源和建立 ExpressRoute 专用对等互连的过程。
+部署私有云时，你将收到 vCenter 和 NSX-T Manager 的 IP 地址。 若要访问这些管理接口，需要在订阅的虚拟网络中创建其他资源。 在本教程中，可找到有关创建这些资源和建立 [ExpressRoute 专用对等互连](tutorial-expressroute-global-reach-private-cloud.md)的过程。
 
 私有云逻辑网络随附提前预配的 NSX-T。 已为你预配了第 0 层网关和第 1 层网关。 可创建一个段，并将其附加到现有的第 1 层网关，或将其附加到所定义的新的第 1 层网关。 NSX-T 逻辑网络组件提供工作负载之间的东-西连接，并提供与 Internet 和 Azure 服务的北-南连接。
 
@@ -39,15 +43,15 @@ AVS 私有云要求至少对子网使用 `/22` CIDR 网络地址块，如下所�
 
 子网：
 
-| 网络用途             | 子网 | 示例        |
-| ------------------------- | ------ | -------------- |
-| 私有云管理  | `/24`  | `10.10.0.0/24` |
-| vMotion 网络           | `/24`  | `10.10.1.0/24` |
-| VM 工作负荷              | `/24`  | `10.10.2.0/24` |
-| ExpressRoute 对等互连      | `/24`  | `10.10.3.8/30` |
+| 网络用途             | 子网 | 示例          |
+| ------------------------- | ------ | ---------------- |
+| 私有云管理  | `/26`  | `10.10.0.0/26`   |
+| vMotion 网络           | `/25`  | `10.10.1.128/25` |
+| VM 工作负荷              | `/24`  | `10.10.2.0/24`   |
+| ExpressRoute 对等互连      | `/29`  | `10.10.3.8/29`   |
 
 
-### <a name="network-ports-required-to-communicate-with-the-service"></a>与服务通信所需的网络端口
+## <a name="required-network-ports"></a>所需的网络端口
 
 | 源 | 目标 | 协议 | 端口 | 说明  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
@@ -67,20 +71,17 @@ AVS 私有云要求至少对子网使用 `/22` CIDR 网络地址块，如下所�
 | 本地 vCenter 网络 | 私有云管理网络 | TCP | 8000 |  从本地 vCenter 到私有云 vCenter 的 VM vMotion   |     
 
 ## <a name="dhcp-and-dns-resolution-considerations"></a>DHCP 和 DNS 解析注意事项
-在私有云环境中运行的应用程序和工作负荷需要使用名称解析和 DHCP 服务来进行查找和 IP 地址分配。 需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。 在私有云环境中，可以配置一个虚拟机来提供这些服务。  
+在私有云环境中运行的应用程序和工作负载需要使用名称解析和 DHCP 服务来进行查找和 IP 地址分配。 需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。 在私有云环境中，可以配置一个虚拟机来提供这些服务。  
 
-建议使用内置于 NSX 的 DHCP 服务，或使用私有云中的本地 DHCP 服务器，而不要通过 WAN 将广播 DHCP 流量路由回到本地。
+使用内置于 NSX 的 DHCP 服务，或使用私有云中的本地 DHCP 服务器，而不要通过 WAN 将广播 DHCP 流量路由回本地。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下内容：
+本教程介绍部署 Azure VMware 解决方案私有云的注意事项和要求。 
 
-> [!div class="checklist"]
-> * 网络连接要求
-> * Azure VMware 解决方案中的 DHCP
 
 正确设置网络后，请继续学习下一篇教程以创建 Azure VMware 解决方案私有云。
 
 > [!div class="nextstepaction"]
-> [教程：创建 Azure VMware 解决方案私有云](tutorial-create-private-cloud.md)
+> [创建 Azure VMware 解决方案私有云](tutorial-create-private-cloud.md)

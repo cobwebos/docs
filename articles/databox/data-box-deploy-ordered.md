@@ -2,18 +2,18 @@
 title: 有关订购 Azure Data Box 的教程 | Microsoft Docs
 description: 在本教程中，了解 Azure Data Box（让你能够将本地数据导入 Azure 中的混合解决方案）以及如何订购 Azure Data Box。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/15/2020
+ms.author: alkohli
+ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783563"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604302"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -138,7 +138,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 * 安装 Windows PowerShell 6.2.4 或更高版本。
 * 安装 Azure PowerShell (AZ) 模块。
 * 安装 Azure Data Box (Az.DataBox) 模块。
-* 登录到 Azure。
+* 登录 Azure。
 
 #### <a name="install-azure-powershell-and-modules-locally"></a>本地安装 Azure PowerShell 和模块
 
@@ -268,8 +268,21 @@ PS C:\Windows\System32>
     ![托管磁盘的 Data Box 订单](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
+   > [!NOTE]
+   > 如果页 blob 未成功转换为托管磁盘，它将保留在存储帐户中，你需为存储付费。
 
-    在完成时选择“下一步:联系人详细信息”以继续。
+    在完成时选择“下一步:安全性”以继续操作。
+
+1. 在“安全性”中，如果要启用基于软件的双重加密，请选择“为订单启用双重加密” 。 
+
+   除了对 Data Box 上的数据进行 AES-256 位加密，还可执行基于软件的加密。
+
+   > [!NOTE]
+   > 启用此选项可能会导致订单处理和数据复制耗时较长。 创建订单后，不能更改此选项。
+
+   ![Data Box 导入双重加密的安全性屏幕](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   在完成时选择“下一步:联系人详细信息”以继续。
 
 8. 在“联系人详细信息”中，选择“+ 添加送货地址” 。
 

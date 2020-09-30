@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 07/31/2020
-ms.openlocfilehash: 1e5d0e37b939715eed84447ea637a0e7880ca115
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/11/2020
+ms.openlocfilehash: 4b2727cfdc31dca509a4c8416010bbb40d2e46bb
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892263"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055412"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Azure Monitor 中的诊断设置的资源管理器模板示例
 本文包含用于为 Azure 资源创建诊断设置的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -563,6 +563,251 @@ ms.locfileid: "88892263"
       }
   }
 }
+```
+
+## <a name="diagnostic-setting-for-azure-storage"></a>Azure 存储的诊断设置
+以下示例为存储帐户中提供的每个存储服务终结点创建诊断设置。 设置应用于帐户中可用的每个单独存储服务。 可用的存储服务取决于存储帐户的类型。 此模板仅在帐户中存在存储服务时，才会为该帐户创建诊断设置。 对于提供的每项服务，诊断设置将启用事务指标以及资源日志集合，以进行读取、写入和删除操作。
+
+### <a name="template-file"></a>模板文件
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountName": {
+            "type": "string"
+        },
+        "settingName": {
+            "type": "string"
+        },
+        "storageSyncName": {
+            "type": "string"
+        },
+        "workspaceId": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-10-01",
+            "name": "nested",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "Incremental",
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "parameters": {
+                    "endpoints": {
+                        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01', 'Full').properties.primaryEndpoints]"
+                    },
+                    "settingName": {
+                        "value": "[parameters('settingName')]"
+                    },
+                    "storageAccountName": {
+                        "value": "[parameters('storageAccountName')]"
+                    },
+                    "storageSyncName": {
+                        "value": "[parameters('storageSyncName')]"
+                    },
+                    "workspaceId": {
+                        "value": "[parameters('workspaceId')]"
+                    }
+                },
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "endpoints": {
+                            "type": "object"
+                        },
+                        "settingName": {
+                            "type": "String"
+                        },
+                        "storageAccountName": {
+                            "type": "String"
+                        },
+                        "storageSyncName": {
+                            "type": "String"
+                        },
+                        "workspaceId": {
+                            "type": "String"
+                        }
+                    },
+                    "variables": {
+                        "hasblob": "[contains(parameters('endpoints'),'blob')]",
+                        "hastable": "[contains(parameters('endpoints'),'table')]",
+                        "hasfile": "[contains(parameters('endpoints'),'file')]",
+                        "hasqueue": "[contains(parameters('endpoints'),'queue')]"
+                    },
+                    "resources": [
+                        {
+                            "type": "Microsoft.Storage/storageAccounts/providers/diagnosticsettings",
+                            "apiVersion": "2017-05-01-preview",
+                            "name": "[concat(parameters('storageAccountName'),'/Microsoft.Insights/', parameters('settingName'))]",
+
+                            "properties": {
+                                "workspaceId": "[parameters('workspaceId')]",
+                                "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageSyncName'))]",
+                                "metrics": [
+                                    {
+                                        "category": "Transaction",
+                                        "enabled": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": "[variables('hasblob')]",
+                            "type": "Microsoft.Storage/storageAccounts/blobServices/providers/diagnosticsettings",
+                            "apiVersion": "2017-05-01-preview",
+                            "name": "[concat(parameters('storageAccountName'),'/default/Microsoft.Insights/', parameters('settingName'))]",
+                            "properties": {
+                                "workspaceId": "[parameters('workspaceId')]",
+                                "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageSyncName'))]",
+                                "logs": [
+                                    {
+                                        "category": "StorageRead",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageWrite",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageDelete",
+                                        "enabled": true
+                                    }
+                                ],
+                                "metrics": [
+                                    {
+                                        "category": "Transaction",
+                                        "enabled": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": "[variables('hastable')]",
+                            "type": "Microsoft.Storage/storageAccounts/tableServices/providers/diagnosticsettings",
+                            "apiVersion": "2017-05-01-preview",
+                            "name": "[concat(parameters('storageAccountName'),'/default/Microsoft.Insights/', parameters('settingName'))]",
+
+                            "properties": {
+                                "workspaceId": "[parameters('workspaceId')]",
+                                "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageSyncName'))]",
+                                "logs": [
+                                    {
+                                        "category": "StorageRead",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageWrite",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageDelete",
+                                        "enabled": true
+                                    }
+                                ],
+                                "metrics": [
+                                    {
+                                        "category": "Transaction",
+                                        "enabled": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": "[variables('hasfile')]",
+                            "type": "Microsoft.Storage/storageAccounts/fileServices/providers/diagnosticsettings",
+                            "apiVersion": "2017-05-01-preview",
+                            "name": "[concat(parameters('storageAccountName'),'/default/Microsoft.Insights/', parameters('settingName'))]",
+                            "properties": {
+                                "workspaceId": "[parameters('workspaceId')]",
+                                "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageSyncName'))]",
+                                "logs": [
+                                    {
+                                        "category": "StorageRead",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageWrite",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageDelete",
+                                        "enabled": true
+                                    }
+                                ],
+                                "metrics": [
+                                    {
+                                        "category": "Transaction",
+                                        "enabled": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": "[variables('hasqueue')]",
+                            "type": "Microsoft.Storage/storageAccounts/queueServices/providers/diagnosticsettings",
+                            "apiVersion": "2017-05-01-preview",
+                            "name": "[concat(parameters('storageAccountName'),'/default/Microsoft.Insights/', parameters('settingName'))]",
+                            "properties": {
+                                "workspaceId": "[parameters('workspaceId')]",
+                                "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageSyncName'))]",
+                                "logs": [
+                                    {
+                                        "category": "StorageRead",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageWrite",
+                                        "enabled": true
+                                    },
+                                    {
+                                        "category": "StorageDelete",
+                                        "enabled": true
+                                    }
+                                ],
+                                "metrics": [
+                                    {
+                                        "category": "Transaction",
+                                        "enabled": true
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+### <a name="parameter-file"></a>参数文件
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "storageAccountName": {
+          "value": "mymonitoredstorageaccount"
+      },
+      "settingName": {
+          "value": "Send to all locations"
+      },
+      "storageSyncName": {
+          "value": "mystorageaccount"
+      },
+      "workspaceId": {
+          "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyWorkspace"
+      }
+    }
+  }
 ```
 
 ## <a name="next-steps"></a>后续步骤

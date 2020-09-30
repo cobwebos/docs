@@ -1,18 +1,18 @@
 ---
-title: 使用新的 Azure 应用程序网关实例为新的 AKS 群集启用入口控制器加载项
-description: 了解如何使用 Azure CLI 通过新的应用程序网关实例为新的 AKS 群集启用入口控制器加载项。
+title: 教程：使用新的 Azure 应用程序网关实例为新的 AKS 群集启用入口控制器加载项
+description: 本教程介绍如何通过 Azure CLI 使用新的应用程序网关实例，为新的 AKS 群集启用入口控制器加载项。
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285581"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教程：使用新的应用程序网关实例为新的 AKS 群集启用入口控制器加载项（预览版）
 
@@ -30,11 +30,12 @@ ms.locfileid: "89595914"
 > * 在 AKS 群集上部署将 AGIC 用于入口的示例应用程序。
 > * 检查是否可以通过应用程序网关访问应用程序。
 
+## <a name="prerequisites"></a>先决条件
+
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>先决条件
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -134,7 +135,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [了解如何禁用 AGIC 加载项](./ingress-controller-disable-addon.md)
-* [了解 AGIC 支持哪些注释](./ingress-controller-annotations.md)
-* [排查 AGIC 的问题](./ingress-controller-troubleshoot.md)
+
+> [!div class="nextstepaction"]
+> [了解如何禁用 AGIC 加载项](./ingress-controller-disable-addon.md)
 

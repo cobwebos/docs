@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961833"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973712"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -26,7 +26,7 @@ Web 应用程序防火墙 (WAF) 会检查入站 Web 流量，并阻止 SQL 注�
 ## <a name="setup"></a>设置
 在本文中，我们配置受多个 Barracuda WAF 负载均衡实例保护的应用服务环境，只让来自 WAF 的流量到达该应用服务环境，而且无法从 DMZ 访问该环境。 在 Barracuda WAF 实例的前面，我们还部署了 Azure 流量管理器，用于在 Azure 数据中心和区域实现负载均衡。 高级设置示意图如下所示：
 
-![体系结构][Architecture] 
+![图显示了可选 Azure 流量管理器连接到 Web 应用程序防火墙实例，连接到网络 A C L，以只允许来自包含两个区域的 Web、A P I 和移动应用的应用服务环境中的防火墙的流量。][Architecture] 
 
 > [!NOTE]
 > 通过引入[对应用服务环境的 ILB支持](app-service-environment-with-internal-load-balancer.md)，可以将 ASE 配置为不可从 DMZ 访问，而仅可供专用网络访问。 

@@ -6,14 +6,38 @@ metadata:
   ms.topic: landing-page
   author: erikadoyle
   ms.author: edoyle
-  ms.date: 12/04/2019
-  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 07/31/2020
+  ms.openlocfilehash: 9bce6570cef2703bf1ad63d92c55bb3794927a8b
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75452227"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91408695"
 landingContent:
+- title: 试用 Service Fabric 托管群集（预览）
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 什么是 Service Fabric 托管群集（预览）
+      url: overview-managed-cluster.md
+    - text: 部署托管群集（预览）
+      url: quickstart-managed-cluster-template.md
+  - linkListType: tutorial
+    links:
+    - text: 创建托管群集（预览）
+      url: tutorial-managed-cluster-deploy.md
+    - text: 横向扩展托管群集节点类型（预览）
+      url: tutorial-managed-cluster-scale.md
+    - text: 添加和删除托管群集节点类型（预览）
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: 将应用部署到托管群集（预览）
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: 将 VM 规模集扩展添加到托管群集节点类型（预览）
+      url: how-to-managed-cluster-vmss-extension.md
+  - linkListType: whats-new
+    links:
+    - text: Service Fabric 托管群集常见问题解答
+      url: faq-managed-cluster.md
 - title: 关于 Service Fabric
   linkLists:
   - linkListType: overview
@@ -102,7 +126,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 安全最佳做法
+    - text: 安全最佳方案
       url: service-fabric-best-practices-security.md
     - text: 应用程序安全性
       url: service-fabric-application-and-service-security.md
@@ -138,7 +162,7 @@ landingContent:
       url: samples-cli.md
   - linkListType: whats-new
     links:
-    - text: 有关 Service Fabric 的常见问题
+    - text: Service Fabric 常见问题解答
       url: service-fabric-common-questions.md
 - title: 在本地使用 Service Fabric
   linkLists:

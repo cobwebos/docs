@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 994d427fb91f04ea0d2002a2c95e12366f4c6420
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553557"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658932"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>教程：Azure Active Directory 单一登录与 Prezi 的集成
 
@@ -42,6 +42,9 @@ ms.locfileid: "88553557"
 * Prezi 支持 SP 和 IDP 发起的 SSO。
 * Prezi 支持实时用户预配。
 * 配置 Prezi 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 有关详细信息，请参阅[了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="add-prezi-from-the-gallery"></a>从库中添加 Prezi
 
@@ -81,7 +84,7 @@ ms.locfileid: "88553557"
 
 1. 若要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”并执行以下步骤 ：
 
-    在“登录 URL”框中，输入 URL `https://prezi.com/login/sso/`。
+    在“登录 URL”框中，输入 URL：`https://prezi.com/login/sso/`。
 
 1. 选择“保存”。
 

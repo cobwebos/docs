@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 1aa52c81b7abbfb355ef06f6ae93a5dd4c985042
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5b5f115ab2fb7036287c976a94b9e123bf6ed42
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532375"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982808"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verasmart"></a>教程：Azure Active Directory 与 VeraSMART 的单一登录 (SSO) 集成
 
@@ -131,7 +131,7 @@ ms.locfileid: "88532375"
 
 1. 转到“管理” -> “安全性” -> “身份验证配置”  。
 
-    ![配置](./media/verasmart-tutorial/configuration.png)
+    ![显示 VeraSMART 的屏幕截图，其中依次选择了“管理”、“安全性”和“身份验证配置”。](./media/verasmart-tutorial/configuration.png)
 
 1. 在下面的页中执行以下步骤：
 

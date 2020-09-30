@@ -3,18 +3,18 @@ title: Microsoft 标识平台文档
 summary: Microsoft 标识平台是一项身份验证服务，也是开源库和应用程序管理工具。 在我们的快速入门、教程和代码示例中了解如何创建基于标准的新式身份验证解决方案。 构建这样的应用程序，你的用户和客户登录它们来使用其 Microsoft 身份或社交帐户，或者它们授权访问你的 API 或 Microsoft API（例如 Microsoft Graph）。
 metadata:
   ms.topic: landing-page
-  ms.date: 08/11/2020
+  ms.date: 09/26/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: c0f87da61b0fa2d4aed57eeef7ee9829a17d0f80
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
+  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91258364"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91403137"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -64,8 +64,8 @@ landingContent:
       url: quickstart-v2-aspnet-webapp.md
     - text: ASP.NET Core
       url: quickstart-v2-aspnet-core-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
+    - text: Blazor 服务器
+      url: tutorial-blazor-server.md
 - title: 移动/本机应用
   linkLists:
   - linkListType: get-started
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 教程：Blazor Server
+      url: tutorial-blazor-server.md
     - text: 快速入门：保护 ASP.NET Core Web API
       url: quickstart-v2-aspnet-core-web-api.md
     - text: MSAL Python API 参考
@@ -136,5 +138,3 @@ landingContent:
       url: msal-android-handling-exceptions.md
     - text: 声明中的目录架构扩展属性
       url: active-directory-schema-extensions.md
-    - text: MSAL.js 2.0 授权代码 + PKCE 和 CORS
-      url: quickstart-v2-javascript-auth-code.md

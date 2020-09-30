@@ -1,19 +1,19 @@
 ---
-title: 在 Azure IoT Central 应用程序中使用设备组 | Microsoft Docs
-description: 本文为操作员介绍如何在 Azure IoT Central 应用程序中使用设备组分析来自设备的遥测数据。
+title: 教程 - 在 Azure IoT Central 应用程序中使用设备组 | Microsoft Docs
+description: 教程 - 了解如何以操作员身份在 Azure IoT Central 应用程序中使用设备组分析设备的遥测数据。
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 3192a9f121d4380a3e681747596fc91997662bf0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80999040"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967937"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教程：使用设备组分析设备遥测数据
 

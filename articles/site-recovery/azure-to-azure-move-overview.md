@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130628"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007360"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
@@ -26,9 +26,21 @@ ms.locfileid: "86130628"
 - 你已在一个区域中部署了 VM，而 Azure 添加了新的支持区域，并且该区域更靠近应用程序或服务的最终用户。 在这种情况下，可将 VM 按原样移到新区域以降低延迟。 若要整合订阅或者监管或组织规则要求移动 VM，可以使用相同的方法。
 - VM 部署为单一实例 VM 或部署为可用性集的一部分。 若要提高可用性 SLA，可将 VM 移到可用性区域。
 
-## <a name="steps-to-move-azure-vms"></a>移动 Azure VM 的步骤
+## <a name="move-vms-with-resource-mover"></a>使用资源转移器移动 VM
 
-移动 VM 的过程包括以下步骤：
+现在可使用 [Azure 资源转移器](../resource-mover/tutorial-move-region-virtual-machines.md)将 VM 移动到另一个区域。 资源转移器已推出公共预览版，并提供：
+- 跨区域移动资源的单一中心。
+- 缩短了移动时间并降低了复杂性。 你所需要的一切都在同一个位置。
+- 移动不同类型的 Azure 资源的简单、一致的体验。
+- 标识要移动的资源之间的依赖项的一种简单方法。 这有助于将相关资源移动到一起，以便在移动后，所有资源在目标区域中都按预期方式工作。
+- 如果要在移动后删除源区域中的资源，请在源区域中自动清除它们。
+- 测试。 如果不想进行完整移动，可以尝试移动，然后将其丢弃。
+
+
+
+## <a name="move-vms-with-site-recovery"></a>使用 Site Recovery 移动 VM
+
+使用 Site Recovery 移动 VM 涉及以下步骤：
 
 1. 验证先决条件。
 2. 准备源 VM。
@@ -49,7 +61,7 @@ ms.locfileid: "86130628"
 
 * **跨不同的层部署的单一实例 VM**：层中的每个 VM 配置为单一实例 VM，并已通过负载均衡器连接到其他层。 此配置最容易采用。
 
-     ![跨层的单一实例 VM 部署](media/move-vm-overview/regular-deployment.png)
+     ![选择跨层移动单一实例 VM 部署](media/move-vm-overview/regular-deployment.png)
 
 * **每个层中跨可用性集部署的 VM**：层中的每个 VM 在可用性集中进行配置。 [可用性集](../virtual-machines/windows/tutorial-availability-sets.md)确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 这可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 会受到影响，整体解决方案仍可使用和操作。
 
@@ -64,16 +76,8 @@ ms.locfileid: "86130628"
 根据上述[体系结构](#typical-architectures-for-a-multi-tier-deployment)，下面演示了将 VM 按原样移到目标区域后的部署布局。
 
 * **跨不同的层部署的单一实例 VM**
-
-     ![跨层的单一实例 VM 部署](media/move-vm-overview/single-zone.png)
-
 * **每个层中跨可用性集部署的 VM**
-
-     ![跨区域可用性集](media/move-vm-overview/crossregionaset.png)
-
 * **每个层中跨可用性区域部署的 VM**
-
-     ![跨可用性区域的 VM 部署](media/move-vm-overview/azonecross.png)
 
 ## <a name="move-vms-to-increase-availability"></a>移动 VM 以提高可用性
 

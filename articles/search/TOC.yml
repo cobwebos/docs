@@ -162,8 +162,6 @@
       items:
         - name: 使用索引器
           items:
-            - name: 配置索引器
-              href: search-indexer-overview.md
             - name: 监视索引器
               href: search-howto-monitor-indexers.md
             - name: 计划索引器
@@ -188,8 +186,12 @@
               href: search-blob-ai-integration.md
             - name: 配置 Blob 索引器
               href: search-howto-indexing-azure-blob-storage.md
+            - name: 为已更改和已删除的 Blob 创建索引
+              href: search-howto-index-changed-deleted-blobs.md
             - name: 为一对多 blob 创建索引
               href: search-howto-index-one-to-many-blobs.md
+            - name: 为纯文本创建索引
+              href: search-howto-index-plaintext-blobs.md
             - name: 为 CSV Blob 创建索引
               href: search-howto-index-csv-blobs.md
             - name: 为 JSON Blob 创建索引

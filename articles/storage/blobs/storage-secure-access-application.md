@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d11fada41d0152b44be6cb0cdef41e68808689b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001167"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967514"
 ---
 # <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 
@@ -160,7 +160,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
 [Azure 存储加密](../common/storage-service-encryption.md)通过加密静态数据以及处理加密和解密来帮助你的保护数据。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
 
-可以选择让 Microsoft 管理加密密钥，也可以使用 Azure Key Vault 客户托管的密钥实现自带密钥。 有关详细信息，请参阅[使用 Azure Key Vault 客户托管的密钥管理 Azure 存储加密](../common/encryption-customer-managed-keys.md)。
+可以选择让 Microsoft 管理加密密钥，也可以使用 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)（预览版）中存储的客户管理的密钥实现自带密钥。 有关详细信息，请参阅[用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md)。
 
 Azure 存储加密自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）以及所有 Azure 存储服务（Blob、队列、表和文件）中的数据。
 

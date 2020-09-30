@@ -1,5 +1,6 @@
 ---
 title: 使用 Azure Site Recovery 将 VM 迁移至包含可用性区域的 Azure 区域
+description: 了解如何使用 Site Recovery 将 VM 移动到其他区域中的可用性区域
 services: site-recovery
 author: sideeksh
 ms.service: site-recovery
@@ -7,14 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425466"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605101"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>将 Azure VM 移到可用性区域中
+
+本文介绍如何将 Azure VM 移动到其他区域中的可用性区域。 如果要移动到同一区域中的其他区域，请[查看本文](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)。
+
+
 数据中心发生故障时，Azure 中的可用性区域可帮助保护应用程序和数据。 每个可用性区域都由一个或多个数据中心组成，这些数据中心都配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可帮助保护应用程序和数据。 随着可用性区域的推出，Azure 可为虚拟机 (VM) 的运行时间提供 99.99% 的服务级别协议 (SLA)。 如[支持可用性区域的区域](../availability-zones/az-region.md)中所述，选定区域支持可用性区域。
 
 如果你将 VM 作为单一实例部署到了特定的区域，并想要通过将这些 VM 移到可用性区域来提高可用性，可以使用 Azure Site Recovery。 此操作可进一步划分为：
@@ -23,7 +28,15 @@ ms.locfileid: "89425466"
 - 将可用性集中的 VM 移到目标区域中的可用性区域
 
 > [!IMPORTANT]
-> 目前，Azure Site Recovery 支持将 VM 从一个区域移到另一个区域。 仅支持在几个区域的区域内跨地区移动。 [了解详细信息](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)。
+> 若要将 Azure VM 移动到其他区域中的可用性区域，我们现在建议使用 [Azure 资源转移器](../resource-mover/move-region-availability-zone.md)。 资源转移器已推出公共预览版，并提供：
+> - 跨区域移动资源的单一中心。
+> - 缩短了移动时间并降低了复杂性。 你所需要的一切都在同一个位置。
+> - 移动不同类型的 Azure 资源的简单、一致的体验。
+> - 标识要移动的资源之间的依赖项的一种简单方法。 这有助于将相关资源移动到一起，以便在移动后，所有资源在目标区域中都按预期方式工作。
+> - 如果要在移动后删除源区域中的资源，请在源区域中自动清除它们。
+> - 测试。 如果不想进行完整移动，可以尝试移动，然后将其丢弃。
+
+
 
 ## <a name="check-prerequisites"></a>检查先决条件
 
@@ -132,7 +145,7 @@ ms.locfileid: "89425466"
 1.  在虚拟机菜单中，选择“灾难恢复”。
 2. 选择“故障转移”图标。
 3. 在“故障转移”中，选择“最新”。 
-4. 选择“在开始故障转移前关闭计算机”。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
+4. 选择“在开始故障转移前关闭计算机”  。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”  页上跟踪故障转移进度。 
 5. 该作业完成后，检查 VM 是否按预期显示在目标 Azure 区域中。
 6. 在“复制的项”中，右键单击 VM >“提交”。 这会完成移到目标区域的过程。 请等待提交作业完成。
 

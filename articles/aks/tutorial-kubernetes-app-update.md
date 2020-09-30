@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9981f9df31f6de21262aedc9790dbf1a7725fc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77593370"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985355"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 若要验证已更新的容器映像是否显示所做的更改，请打开一个本地 Web 浏览器并访问 `http://localhost:8080`。
 
-![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="一个屏幕截图，显示使用本地 Web 浏览器和本地主机打开的已更新容器映像 Azure 投票应用的示例。":::
 
 在 *config_file.cfg* 文件中提供的已更新值显示在正运行的应用程序中。
 
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 现在，请打开本地 Web 浏览器并访问服务的 IP 地址：
 
-![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="一个屏幕截图，显示使用本地 Web 浏览器和本地主机打开的已更新容器映像 Azure 投票应用的示例。":::
 
 ## <a name="next-steps"></a>后续步骤
 

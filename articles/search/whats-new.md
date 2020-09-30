@@ -6,20 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931839"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979580"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
 了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
 
 ## <a name="feature-announcements-in-2020"></a>2020 版功能公告
+
+### <a name="september-2020"></a>2020 年 9 月
+
+在 Azure Active Directory 中为搜索服务创建标识，然后使用 RBAC 权限向标识授予对 Azure 数据源的只读权限。 如果不能选择 IP 规则，可以选择[受信任的服务例外](search-indexer-howto-access-trusted-service-exception.md)功能。
+
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
+|------------------------------|----------|-------------|---------------|
+| [托管服务标识](search-howto-managed-identities-data-sources.md) | 索引器、安全性 | 在 Azure Active Directory 中为搜索服务创建标识，然后使用 RBAC 权限授予对 Azure 数据源的访问权限。 此方法无需连接字符串的凭据。 <br><br>如果不能选择 IP 规则，可以通过[受信任的服务例外](search-indexer-howto-access-trusted-service-exception.md)来使用托管服务标识。 | 正式发布。 使用门户或使用 api-version=2020-06-30 [创建数据源 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 时，访问此功能。 |
+| [使用专用链接的出站请求](search-indexer-howto-access-private.md) | 索引器、安全性 | 创建在访问由 Azure 专用链接保护的 Azure 资源时，索引器可以使用的共享专用链接资源。 若要详细了解确保索引器连接安全的所有方法，请参阅[使用 Azure 网络安全功能保护索引器资源](search-indexer-securing-resources.md)。 | 正式发布。 使用门户或使用 api-version=2020-08-01 的[共享专用链接资源](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources)时，访问此功能。 |
+| [管理 REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 新的稳定 REST API 增加了对创建共享专用链接资源的支持。 | 正式发布。 |
+| [管理 REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 添加了适用于 Azure Functions 和 Azure SQL for MySQL 数据库的共享专用链接资源。 | 公共预览版。 |
+| [管理 .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | 适用于管理 SDK 的 Azure SDK 更新，面向 REST API 版本 2020-08-01。 | 正式发布。 |
 
 ### <a name="august-2020"></a>2020 年 8 月
 
@@ -31,9 +44,9 @@ ms.locfileid: "88931839"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents 客户端库](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | 用于 .NET 的 Azure SDK | .NET 客户端库，由 Azure SDK 团队发布，旨在保持与其他 .NET 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30，但尚不支持知识存储、地理空间类型或 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)。 <br/><br/>有关详细信息，请参阅[快速入门：创建索引](search-get-started-dotnet.md)和[升级到 Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md)。 | 正式发布。 </br> 从 NuGet 安装 [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
-| [azure.search.documents 客户端库](/python/api/overview/azure/search-documents-readme?view=azure-python)  | 用于 Python 的 Azure SDK| Python 客户端库，由 Azure SDK 团队发布，旨在保持与其他 Python 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 PyPI 安装 [azure-search-documents 包](https://pypi.org/project/azure-search-documents/)。 |
-| [@azure/search-documents 客户端库](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | 用于 JavaScript 的 Azure SDK | JavaScript 客户端库，由 Azure SDK 团队发布，旨在保持与其他 JavaScript 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 npm 安装 [@azure/search-documents 包](https://www.npmjs.com/package/@azure/search-documents)。 |
+| [Azure.Search.Documents 客户端库](/dotnet/api/overview/azure/search.documents-readme) | 用于 .NET 的 Azure SDK | .NET 客户端库，由 Azure SDK 团队发布，旨在保持与其他 .NET 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30，但尚不支持知识存储、地理空间类型或 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)。 <br/><br/>有关详细信息，请参阅[快速入门：创建索引](search-get-started-dotnet.md)和[升级到 Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md)。 | 正式发布。 </br> 从 NuGet 安装 [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
+| [azure.search.documents 客户端库](/python/api/overview/azure/search-documents-readme)  | 用于 Python 的 Azure SDK| Python 客户端库，由 Azure SDK 团队发布，旨在保持与其他 Python 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 PyPI 安装 [azure-search-documents 包](https://pypi.org/project/azure-search-documents/)。 |
+| [@azure/search-documents 客户端库](/javascript/api/overview/azure/search-documents-readme)  | 用于 JavaScript 的 Azure SDK | JavaScript 客户端库，由 Azure SDK 团队发布，旨在保持与其他 JavaScript 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 npm 安装 [@azure/search-documents 包](https://www.npmjs.com/package/@azure/search-documents)。 |
 
 ### <a name="june-2020"></a>2020 年 6 月
 

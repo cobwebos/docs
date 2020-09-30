@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 81e02bdc483c4b68901d7e81b29f3a7f423480d9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 48009246dd491ca3f4080cf85036c66605a73272
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537594"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707007"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Adobe Creative Cloud 集成
 
@@ -102,7 +102,7 @@ ms.locfileid: "88537594"
     | 电子邮件 | user.mail |
 
     > [!NOTE]
-    > 用户需要有一个有效的 Office 365 ExO 许可证，以便在 SAML 响应中填充电子邮件声明值。
+    > 用户需要有一个有效的 Microsoft 365 ExO 许可证，以便在 SAML 响应中填充电子邮件声明值。
 
 1. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中找到“联合数据 XML”，然后选择“下载”以下载 XML 元数据文件并将其保存在计算机上   。
 

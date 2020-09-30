@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 89258b05831170ff502cde80577f3a6851659bf2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808693"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986319"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -101,7 +101,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 4. 在门户左上角选择“所有服务”。 在“筛选器”框中，键入“网络观察程序”。 搜索结果中出现“网络观察程序”后，将其选中。
 5. 在“日志”下选择“NSG 流日志”，如下图所示 ：
 
-    ![NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![显示网络观察程序 NSG 流日志的屏幕截图。](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. 从 NSG 列表中选择名为 **myVm-nsg** 的 NSG。
 7. 在“流日志设置”下选择“启用”。 

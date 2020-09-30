@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75450826"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606618"
 ---
 1. 选择“连接 VPN 站点”来打开“连接站点”页   。
 
-    ![connect](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "连接")
+    ![屏幕截图显示“虚拟中心”的“连接站点”窗格，已准备好预共享密钥和相关设置。](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "连接")
 
    完成以下字段：
 
@@ -28,7 +28,7 @@ ms.locfileid: "75450826"
 2. 选择“连接”  。
 3. 几分钟后，该站点将显示连接和连接状态。
 
-   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![屏幕截图显示“VPN 站点到站点”连接和连接状态。](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **连接状态：** 这是将 VPN 站点连接到 Azure 中心 VPN 网关的连接的 Azure 资源状态。 控制平面操作成功后，Azure VPN 网关和本地 VPN 设备将继续建立连接。
 

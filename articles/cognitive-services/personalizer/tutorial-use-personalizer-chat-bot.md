@@ -4,12 +4,12 @@ description: 自定义具有个性化体验创建服务循环的 C# .NET 聊天�
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935647"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089881"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>教程：在 .NET 聊天机器人中使用个性化体验创建服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "88935647"
 > [!div class="checklist"]
 > * 设置 Azure 资源
 > * 配置并运行机器人
-> * 使用机器人模拟器与机器人进行交互
+> * 使用 Bot Framework Emulator 与机器人交互
 > * 了解机器人使用个性化体验创建服务的位置和方式
 
 
@@ -174,20 +174,20 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 ## <a name="set-up-the-bot-emulator"></a>设置机器人模拟器
 
-1. 打开机器人模拟器并选择“打开机器人”。
+1. 打开 Bot Framework Emulator，然后选择“打开机器人”。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="机器人模拟器启动屏幕的屏幕截图。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="浏览器的屏幕截图，其中显示了聊天机器人网站。":::
 
 
 1. 使用以下机器人 URL 配置机器人，然后选择“连接” ：
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="机器人模拟器打开机器人设置的屏幕截图。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="浏览器的屏幕截图，其中显示了聊天机器人网站。":::
 
     模拟器连接到聊天机器人，并显示说明文本以及有助于本地开发的日志记录和调试信息。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="机器人模拟器第一轮次对话的屏幕截图。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="浏览器的屏幕截图，其中显示了聊天机器人网站。":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>在机器人模拟器中使用机器人
 

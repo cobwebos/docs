@@ -1,24 +1,24 @@
 ---
-title: 教程：从 Google Maps 迁移到 Azure Maps | Microsoft Azure Maps
-description: 介绍如何从 Google Maps 迁移到 Microsoft Azure Maps 的教程。 本指南介绍如何切换到 Azure Maps API 和 SDK。
+title: 从 Google Maps 迁移到 Azure Maps | Microsoft Azure Maps
+description: 如何从 Google Maps 迁移到 Microsoft Azure Maps。 本指南介绍如何切换到 Azure Maps API 和 SDK。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 09/23/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 2422204a809e0b13f4e337d49b851a0338681853
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249200"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264161"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>从 Google Maps 迁移到 Azure Maps
 
-本教程介绍如何将基于 Web、移动和服务器的应用程序从 Google Maps 迁移到 Microsoft Azure Maps 平台。 本教程包括有关如何迁移到 Azure Maps 的比较代码示例、迁移建议和最佳做法。
+本文介绍如何将基于 Web、移动和服务器的应用程序从 Google Maps 迁移到 Microsoft Azure Maps 平台。 本教程包括有关如何迁移到 Azure Maps 的比较代码示例、迁移建议和最佳做法。
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps 平台概述
 
@@ -80,6 +80,15 @@ Google Maps 提供基本的基于密钥的身份验证。 Azure Maps 提供基�
 5. 测试已迁移的应用程序。
 6. 将已迁移的应用程序部署到生产环境。
 
+## <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
+
+若要创建 Azure Maps 帐户并获得对 Azure Maps 平台的访问权限，请按照以下步骤操作：
+
+1. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+2. 登录 [Azure 门户](https://portal.azure.com/)。
+3. 创建 [Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)。 
+4. [获取 Azure Maps 订阅密钥](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)或设置 Azure Active Directory 身份验证来增强安全性。
+
 ## <a name="azure-maps-technical-resources"></a>Azure Maps 技术资源
 
 下面是 Azure Maps 的有用技术资源的列表。
@@ -98,15 +107,10 @@ Google Maps 提供基本的基于密钥的身份验证。 Azure Maps 提供基�
 
 开发人员可通过[论坛](https://aka.ms/AzureMapsForums)或众多 Azure 支持选项之一寻求迁移支持：[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-## <a name="next-steps"></a>后续步骤
+你可学习如何使用下列应用来迁移 Google Maps 应用程序： 
 
-请参阅以下文章，详细了解如何迁移 Google 地图应用程序：
+[迁移 Android 应用](migrate-from-google-maps-android-app.md) 
 
-> [!div class="nextstepaction"]
-> [迁移 Web 应用](migrate-from-google-maps-web-app.md)
+[迁移 Web 服务](migrate-from-google-maps-web-services.md) 
 
-> [!div class="nextstepaction"]
-> [迁移 Android 应用](migrate-from-google-maps-android-app.md)
-
-> [!div class="nextstepaction"]
-> [迁移 Web 服务](migrate-from-google-maps-web-services.md)
+[迁移 Web 应用](migrate-from-google-maps-web-app.md)

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：为应用程序 HA 创建配置文件 - Azure CLI - Azure 流量管理器
-description: 本快速入门文章介绍如何创建流量管理器配置文件，以生成高度可用的 Web 应用程序。
+description: 本快速入门文章介绍如何使用 Azure CLI 创建流量管理器配置文件，以生成高度可用的 Web 应用程序。
 services: traffic-manager
 author: duongau
 mnager: kumud
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/26/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 429d107a68c8631983bf791108f5091f31a480c3
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3c74cceb1f0142a53b8222472d0adad8629a1ebf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178074"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978116"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入门：使用 Azure CLI 创建流量管理器配置文件以实现 Web 应用程序的高可用性
 

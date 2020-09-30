@@ -7,12 +7,12 @@ keywords: 更改, 跟踪, 更改跟踪, 清单, 自动化
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185800"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530533"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>排查 Azure VM 上的更改问题
 
@@ -220,7 +220,7 @@ ConfigurationChange
 
 19. 对于“创建规则”，选择“电子邮件主题”，然后选择“创建警报规则”。 此警报会指出更新部署成功的时间以及哪些计算机是该更新部署运行的一部分。 下图是 W3SVC 服务停止时收到的示例电子邮件。
 
-    ![电子邮件](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![屏幕截图显示当 W 3 S V C 服务停止时收到的电子邮件通知。](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,12 +4,12 @@ description: 本教程介绍了如何使用 Visual Studio Azure DevOps 为 Azure
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614122"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563941"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教程：通过 CI/CD 将容器应用程序部署到 Service Fabric 群集
 
@@ -142,7 +142,7 @@ Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工�
 
 通过将一些代码更改签入到 Azure DevOps 来验证持续集成管道是否正常工作。
 
-在编写代码时，Visual Studio 会自动跟踪代码更改。 通过从右下角的状态栏中选择“挂起的更改”图标（![挂起的][pending]）来将更改提交到本地 Git 存储库。
+在编写代码时，Visual Studio 会自动跟踪代码更改。 通过从右下角的状态栏中选择“挂起的更改”图标（![“挂起的更改”图标显示一支铅笔和一个数字。][pending]）来将更改提交到本地 Git 存储库。
 
 在“团队资源管理器”中的“更改”视图中，添加一条消息来说明你的更新，然后提交更改。 
 

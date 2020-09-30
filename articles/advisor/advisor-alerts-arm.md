@@ -1,15 +1,15 @@
 ---
 title: 使用资源管理器模板为新建议创建 Azure 顾问警报
-description: 为新建议创建 Azure 顾问警报
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）针对 Azure 顾问给出的新建议设置警报。
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 2becfbbc63beb6451e5e877c5a60553d98650494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a10ca5f0b4119fb65d6b0f717f5c212acb20f9cd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057815"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973697"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>快速入门：使用 ARM 模板为创建针对新建议的 Azure 顾问警报
 

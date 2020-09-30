@@ -1,15 +1,15 @@
 ---
-title: PowerShell-在 Azure 开发测试实验室的实验室中创建自定义角色
-description: 本文提供了一个 Azure PowerShell 脚本，该脚本将外部用户添加到 Azure 开发测试实验室中的实验室。
+title: PowerShell - 在 Azure 开发测试实验室的实验室中创建自定义角色
+description: 本文提供了一个 Azure PowerShell 脚本，它在 Azure 开发测试实验室的实验室中创建自定义角色。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 9b6e4d47babd17916e31ab2762ec87f6aa433da6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3757d6c16a762a0f76f4718f117da93322af074c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252793"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 在 Azure 开发测试实验室的实验室中创建自定义角色
 
@@ -30,10 +30,10 @@ ms.locfileid: "88136195"
 
 此脚本使用以下命令： 
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-| [AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | 使用 Azure RBAC 获取作为安全对象的 Azure 资源提供程序的操作。 |
-| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | 列出可用于分配的所有 Azure 角色。 |
+| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | 使用 Azure RBAC 获取作为安全对象的 Azure 资源提供程序的操作。 |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | 列出所有可用于分配的 Azure 角色。 |
 | [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | 创建自定义角色。 |
 
 ## <a name="next-steps"></a>后续步骤

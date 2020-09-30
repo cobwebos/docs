@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962632"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981115"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -108,7 +108,7 @@ ms.locfileid: "88962632"
 
 在不同的浏览器中，导航到 `https://<your.custom.domain>` 以核实其是否适合应用。
 
-![在门户中导航到 Azure 应用](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="屏幕截图显示浏览到自定义域的示例，其中突出显示了 contoso.com URL。":::
 
 应用程序代码可以通过“x-appservice-proto”标头检查协议。 该标头的值将为 `http` 或 `https`。 
 

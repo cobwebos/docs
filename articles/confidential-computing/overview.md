@@ -6,20 +6,20 @@ author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: overview
-ms.date: 04/06/2020
+ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967580"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 上的机密计算
 
-在云中处理敏感数据时，可以使用 Azure 机密计算将这些数据隔离。 许多行业都使用机密计算来保护其数据。 这些工作负荷包括：
+在云中处理敏感数据时，可以使用 Azure 机密计算将这些数据隔离。 许多行业都使用机密计算来保护其数据，方法是通过使用机密计算来：
 
-- 保护财务数据
+- 保护金融数据
 - 保护患者信息
 - 对敏感信息运行机器学习过程
 - 针对来自多个源的加密数据集执行算法
@@ -39,74 +39,58 @@ ms.locfileid: "87835810"
 
 Microsoft Azure 可帮助你最小化受攻击面，以增强数据保护。 Azure 已提供了许多工具来通过客户端加密和服务器端加密等模型保护[静态数据](../security/fundamentals/encryption-atrest.md)。 此外，Azure 还提供了通过安全协议（例如 TLS 和 HTTPS）加密[传输中数据](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)的机制。 本页介绍了数据加密的第三个支柱 - 使用中数据的加密。
 
+## <a name="introduction-to-confidential-computing"></a>机密计算简介  
 
-## <a name="introduction-to-confidential-computing"></a>机密计算简介 <a id="intro to acc"></a>
+机密计算是由[机密计算联盟](https://confidentialcomputing.io/) (CCC) 定义的一个行业术语。CCC 是专业定义机密计算并加速其采用的基金会。 CCC 定义机密计算，如下所示：通过在基于硬件的受信任执行环境 (TEE) 中执行计算来保护使用中的数据。
 
-机密计算是由[机密计算联盟](https://confidentialcomputing.io/) (CCC) 定义的一个行业术语。CCC 是专业定义机密计算并加速其采用的基金会。 CCC 将机密计算定义为通过在基于硬件的受信任执行环境 (TEE) 中执行计算来保护使用中的数据。
+TEE 是强制仅执行已授权代码的环境。 TEE 外部的任何代码都无法读取或篡改该环境中的任何数据。 
 
-TEE 是强制仅执行已授权代码的环境。 TEE 外部的任何代码都无法读取或篡改该环境中的任何数据。
+### <a name="lessen-the-need-for-trust"></a>减少对信任的需求
+在云中运行工作负载要求信任。 将此信任授予各种提供程序，以启用应用程序的不同组件。
 
-### <a name="enclaves"></a>领地
 
-领地是硬件处理器和内存的受保护部分。 即使是使用调试器，也无法查看领地内部的数据或代码。 如果不受信任的代码尝试修改领地内存中的内容，则会禁用该环境并拒绝操作。
+**应用软件供应商**：通过本地部署，使用开放源代码，或者通过构建内部应用程序软件来信任软件。
 
-开发应用程序时，可以使用[软件工具](#oe-sdk)来屏蔽领地内部的代码和数据部分。 这些工具确保受信任环境外部的任何人都不能查看或修改你的代码和数据。 
+**硬件供应商**：通过使用本地硬件或内部硬件来信任硬件。 
 
-从根本上讲，可将领地视为一个安全盒。 加密的代码和数据将放入该盒子中。 在盒子的外部看不到任何内容。 你为领地指定一个用于解密数据的密钥，然后，在从领地发出数据之前，会再次对数据进行处理和加密。
+**基础结构提供商**：信任云提供商或管理你自己的本地数据中心。
 
-### <a name="attestation"></a>证明
 
-你想要验证受信任环境是否安全。 这种验证是一个证明过程。 
+利用 Azure 机密计算，可通过降低对计算云基础结构各个方面的信任需求，更轻松地信任云提供商。 Azure 机密计算可最大程度地降低对主机 OS 内核、虚拟机监控程序、VM 管理员和主机管理员的信任需求。
 
-通过证明，信赖方可以更加确信其软件：(1) 在领地中运行；(2) 领地是最新且安全的。 例如，领地请求底层硬件生成一个凭据，该凭据可以证明该领地在平台上存在。 然后，可以向另一个领地提供报告，验证该报告是否是在同一平台上生成的。
+### <a name="reducing-the-attack-surface"></a>缩小攻击面
+可信计算基 (TCB) 指的是提供安全环境的系统的所有硬件、固件和软件组件。 TCB 内的组件被视为“关键”组件。 如果 TCB 内部有一个组件存在风险，则可能危及整个系统的安全性。 
 
-必须使用与系统软件和芯片兼容的安全证明服务来实施证明。 [Intel 的证明和预配服务](https://software.intel.com/sgx/attestation-services)与 Azure 机密计算虚拟机兼容。
+更低的 TCB 意味着更高的安全性。 受各种漏洞、恶意软件、攻击和恶意用户的影响的风险更小。 Azure 机密计算旨在通过提供 TEE 来降低云工作负载的 TCB。 TEE 将 TCB 简化为受信任的运行时二进制文件、代码和库。 使用 Azure 基础结构和服务进行机密计算时，可以从 TCB 中删除所有的 Microsoft 内容。
 
 
 ## <a name="using-azure-for-cloud-based-confidential-computing"></a>使用 Azure 进行基于云的机密计算 <a id="cc-on-azure"></a>
 
-借助 Azure 机密计算，可以在虚拟化环境中利用机密计算功能。 现在可以使用工具、软件和云基础结构在安全硬件的基础上生成解决方案。 
+借助 Azure 机密计算，可以在虚拟化环境中利用机密计算功能。 现在可以使用工具、软件和云基础结构在安全硬件的基础上生成解决方案。  
 
-### <a name="virtual-machines"></a>虚拟机
+**阻止未经授权的访问**：在云中运行敏感数据。 信任 Azure 可以提供可能的最好数据保护，且对目前已完成的工作几乎不产生影响。
 
-Azure 是在虚拟化环境中提供机密计算的第一家云提供商。 我们开发了充当硬件与应用程序之间的抽象层的虚拟机。 你可以使用冗余和可用性选项大规模运行工作负荷。  
+**法规遵从**：迁移到云，并保持对数据的完全控制，以满足政府关于个人信息和组织 IP 保护的法规。
 
-#### <a name="intel-sgx-enabled-virtual-machines"></a>支持 Intel SGX 的虚拟机
+**安全且不受信任的协作**：通过跨组织，甚至跨竞争对手合并数据，获得广泛的数据分析信息和更深入的见解，从而解决行业范围的工作规模问题。
 
-在 Azure 机密计算虚拟机中，为应用程序中的一部分代码和数据保留了一部分 CPU 硬件。 此受限部分即为领地。 
+**隔离处理**：提供一批新产品，可利用盲处理消除对私人数据的责任。 服务提供商甚至无法检索用户数据。 
 
-![VM 模型](media/overview/hardware-backed-enclave.png)
+## <a name="get-started"></a>入门
+### <a name="azure-compute"></a>Azure 计算
+在 Azure 的机密计算 IaaS 产品基础之上构建应用程序。
+- 虚拟机 (VM)：[DCsv2 系列](confidential-computing-enclaves.md)
+- Azure Kubernetes (AKS)：[协调机密容器](confidential-nodes-aks-overview.md)
 
-Azure 机密计算基础结构目前由虚拟机 (VM) 的专用 SKU 组成。 这些 VM 在具有软件防护扩展 (Intel SGX) 的 Intel 处理器上运行。 [Intel SGX](https://intel.com/sgx) 组件可以通过机密计算来增强保护。 
+### <a name="azure-security"></a>Azure 安全性 
+通过验证方法和硬件绑定密钥管理来确保工作负载的安全性。 
+- 证明：[Microsoft Azure 证明（预览版）](https://docs.microsoft.com/azure/attestation/overview)
+- 密钥管理：托管 HSM（预览版）
 
-当前，Azure 提供了基于 Intel SGX 技术的 [DCsv2 系列](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)来用于创建基于硬件的领地。 你可以构建安全的基于领地的应用程序以在 DCsv2 系列 VM 中运行，从而保护使用中的应用程序数据和代码。 
-
-可以[详细了解](virtual-machine-solutions.md)如何使用基于硬件的受信任领地部署 Azure 机密计算虚拟机。
-
-## <a name="application-development"></a>应用程序开发 <a id="application-development"></a>
-
-若要利用领地和独立环境的强大功能，需要使用支持机密计算的工具。 有多种工具支持领地应用程序开发。 例如，可以使用以下开源框架： 
-
-- [Open Enclave 软件开发工具包 (SDK)](https://github.com/openenclave/openenclave)
-- [机密联盟框架 (CCF)](https://github.com/Microsoft/CCF)
-
-### <a name="overview"></a>概述
-
-使用领地构建的应用程序按两种方式分区：
-1. “不受信任的”组件（宿主）
-1. “受信任的”组件（领地）
-
-宿主是运行领地应用程序的不受信任的环境。 宿主无法访问部署在它上面的领地代码。 
-
-领地是应用程序代码及其缓存数据/内存运行的位置。 安全计算应在领地中进行，以确保机密和敏感数据保持受保护状态。 
-
-在应用程序设计过程中，识别并确定应用程序的哪个部分需要在领地中运行非常重要。 你选择放入受信任组件的代码将与应用程序其余组件中的数据相互隔离。 初始化领地并将代码加载到内存后，无法从不受信任的组件读取或更改该代码。 
-
-### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open Enclave 软件开发工具包 (OE SDK) <a id="oe-sdk"></a>
-
-若要编写在领地中运行的代码，请使用提供商支持的库或框架。 [开放领地 SDK](https://github.com/openenclave/openenclave) (OE SDK) 是一个开源 SDK，可以在支持机密计算的不同硬件上实现抽象化。 
-
-OE SDK 旨在充当任何 CSP 的任何硬件上的单个抽象层。 可以在 Azure 机密计算虚拟机的基础上使用 OE SDK，以创建并运行基于领地的应用程序。
+### <a name="develop"></a>开发
+开始使用开发 Enclave 感知应用程序，并使用机密推理框架部署机密算法。
+- 编写要在 DCsv2 VM 上运行的应用程序：[开放式 Enclave SDK](https://github.com/openenclave/openenclave)
+- ONNX 运行时中的机密 ML 模型：[机密推理 (beta)](https://aka.ms/confidentialinference)
 
 ## <a name="next-steps"></a>后续步骤
 

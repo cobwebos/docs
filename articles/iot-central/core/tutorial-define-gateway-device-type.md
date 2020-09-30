@@ -1,5 +1,5 @@
 ---
-title: 在 Azure IoT Central 中定义新的网关设备类型 | Microsoft Docs
+title: 教程 - 在 Azure IoT Central 中定义新的网关设备类型 | Microsoft Docs
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型。
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758128"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967911"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教程 - 在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
 本文适用于解决方案构建者和设备开发人员。 
 
@@ -31,6 +31,9 @@ ms.locfileid: "81758128"
 * 发送自身的遥测数据，例如温度。
 * 响应操作员做出的可写属性更新。 例如，操作员可能会更改遥测数据的发送间隔。
 * 响应命令，例如重新启动设备。
+
+> [!div class="checklist"]
+> 创建下游设备模板创建网关设备模板发布设备模板创建模拟设备
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -107,7 +110,7 @@ ms.locfileid: "81758128"
 
     | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
-    | 最后维修日期 | 无          | 日期   |
+    | 最后维修日期 | 无          | Date   |
     | 客户名称     | 无          | 字符串 |
 
 2. 选择“保存”。 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: a154f75b496676f3c639a19f604d5d5727d43fac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 36ca2bc8ba7812229c9c22cedd294085d5a63af7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521342"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>教程：Azure Active Directory 与 Ariba 集成
 
@@ -43,65 +43,48 @@ ms.locfileid: "88521342"
 
 * Ariba 支持 SP 发起的 SSO 
 
+* 配置 Ariba 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+
 ## <a name="adding-ariba-from-the-gallery"></a>从库中添加 Ariba
 
 要配置 Ariba 与 Azure AD 的集成，需要从库中将 Ariba 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Ariba，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Ariba” 。
+1. 从结果面板中选择“Ariba”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
-
-2. 转到“企业应用”，并选择“所有应用”选项   。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
-
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索框中，键入“Ariba”，在结果面板中选择“Ariba”，然后单击“添加”按钮添加应用程序    。
-
-     ![结果列表中的 Ariba](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-
-在本部分，我们使用名为“Britta Simon”的测试用户配置和测试 Ariba 的 Azure AD 单一登录  。
+在本部分，我们使用名为“Britta Simon”的测试用户配置和测试 Ariba 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Ariba 中的相关用户之间建立链接关系。
 
 若要配置和测试 Ariba 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Ariba 单一登录](#configure-ariba-single-sign-on)** - 在应用程序端配置单一登录设置。
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+2. **[配置 Ariba SSO](#configure-ariba-sso)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[创建 Ariba 测试用户](#create-ariba-test-user)** - 在 Ariba 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-若要配置 Ariba 的 Azure AD 单一登录，请执行以下步骤：
+1. 在 [Azure 门户](https://portal.azure.com/)的 Ariba 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Ariba”应用程序集成页上，选择“单一登录”   。
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
 4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Ariba 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
     
     ```http
     https://<subdomain>.sourcing.ariba.com
@@ -110,73 +93,63 @@ ms.locfileid: "88521342"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<subdomain>.procurement-2.ariba.com`
 
+    c. 对于“回复 URL”，请输入以下任一 URL 模式：
+
+    | 回复 URL|
+    |----------|
+    | `https://<subdomain>.ariba.com/CUSTOM_URL` |
+    | `https://<subdomain>.procurement-eu.ariba.com/CUSTOM_URL` |
+    | `https://<subdomain>.procurement-eu.ariba.com` |
+    | `https://<subdomain>.procurement-2.ariba.com` |
+    | `https://<subdomain>.procurement-2.ariba.com/CUSTOM_URL` |
+
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 若要获取这些值，请与 Ariba 客户端支持团队联系，电话：1-866-218-2155  。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 若要获取这些值，请与 Ariba 客户端支持团队联系，电话：1-866-218-2155。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-### <a name="configure-ariba-single-sign-on"></a>配置 Ariba 单一登录
-
-若要为应用程序配置 SSO，请拨打 Ariba 支持团队电话 1-866-218-2155，他们会详细说明如何向其提供已下载的证书 (Base64) 文件   。
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
+在本部分，你将在 Azure 门户中创建名为 B. Simon 的测试用户。
 
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”  。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。 
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。  
+1. 在屏幕顶部选择“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“姓名”字段中输入 **B.Simon**。  
+   1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。 例如：`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值 。
+   1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Ariba 的权限，以支持其使用 Azure 单一登录。
+在本部分中，你将授予 B.Simon 访问 Ariba 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Ariba”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Ariba”****。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+   ![“用户和组”链接](common/users-groups-blade.png)
 
-2. 在应用程序列表中，键入并选择“Ariba”  。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![应用程序列表中的 Ariba 链接](common/all-applications.png)
+    ![“添加用户”链接](common/add-assign-user.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
-    ![“用户和组”链接](common/users-groups-blade.png)
+## <a name="configure-ariba-sso"></a>配置 Ariba SSO
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+若要为应用程序配置 SSO，请拨打 Ariba 支持团队电话 1-866-218-2155，他们会详细说明如何向其提供已下载的证书 (Base64) 文件 。
 
 ### <a name="create-ariba-test-user"></a>创建 Ariba 测试用户
 
-在本部分中，将在 Ariba 中创建一个名为“Britta Simon”的用户。 请致电 1-866-218-2155 与 Ariba 支持团队协作，将用户添加到 Ariba 平台中  。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Ariba 中创建一个名为“Britta Simon”的用户。 请致电 1-866-218-2155 与 Ariba 支持团队协作，将用户添加到 Ariba 平台中****。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 

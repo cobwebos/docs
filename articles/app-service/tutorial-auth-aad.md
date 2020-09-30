@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c1c3f52dafe63e3f829eb12d4fb872ed3ce85f36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211718"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982899"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -145,7 +145,7 @@ http://<back-end-app-name>.azurewebsites.net
 http://<front-end-app-name>.azurewebsites.net
 ```
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/azure-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/azure-run.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 > [!NOTE]
 > 如果应用重启，你可能会注意到新数据已被清除。 此行为是基于设计，因为示例 ASP.NET Core 应用使用内存中数据库。
@@ -225,7 +225,7 @@ git push frontend master
 
 导航到 `http://<back-end-app-name>.azurewebsites.net`，此时会看到从前端应用添加的项目。 另请添加一些项目（例如 `from back end 1` 和 `from back end 2`），然后刷新前端应用，看其是否反映了所做的更改。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/remote-api-call-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 ## <a name="configure-auth"></a>配置身份验证
 
@@ -239,7 +239,7 @@ git push frontend master
 
 在“资源组”中，查找并选择资源组。 在“概述”中，选择后端应用的管理页。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 在后端应用的左侧菜单中，选择“身份验证/授权”，然后选择“启用”以启用应用服务身份验证 。
 
@@ -247,7 +247,7 @@ git push frontend master
 
 在“身份验证提供程序”下，选择“Azure Active Directory”。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/configure-auth-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 选择“快速”，接受创建新 AD 应用所需的默认设置，然后选择“确定” 。
 
@@ -259,7 +259,7 @@ git push frontend master
 
 将 Azure AD 应用程序的**客户端 ID** 复制到记事本。 稍后需要用到此值。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/get-application-id-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 如果到此为止，你将拥有一个已受应用服务身份验证和授权保护的独立应用。 其余部分介绍如何将经过身份验证的用户从前端“流式传输”到后端，以便保护多应用解决方案。 
 
@@ -284,13 +284,13 @@ git push frontend master
 
 选择“应用注册” > “拥有的应用程序” > “查看此目录中的所有应用程序”。 选择前端应用名称，然后选择“API 权限”。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/add-api-access-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 选择“添加权限”，然后选择“我的组织使用的 API” > “\<back-end-app-name>”。
 
 在后端应用的“请求 API 权限”页中，选择“委托的权限”和“user_impersonation”，然后选择“添加权限”。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/select-permission-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>对应用服务进行配置，使之返回可用的访问令牌
 
@@ -300,7 +300,7 @@ git push frontend master
 
 此时会打开 [Azure 资源浏览器](https://resources.azure.com)，前端应用在资源树中处于选中状态。 在页面顶部单击“读/写”，以便启用编辑 Azure 资源的功能。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/resources-enable-write.png)
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 在左侧浏览器中，向下钻取到“config” > “authsettings”。
 
@@ -310,7 +310,7 @@ git push frontend master
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/additional-login-params-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了“待办事项列表”应用。":::
 
 单击“PUT”，对设置进行保存。
 

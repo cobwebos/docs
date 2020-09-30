@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 中的自定义管理员角色 | Microsoft Docs
-description: 预览用于委托标识管理的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色。
+description: 了解 Azure Active Directory (Azure AD) 中具有基于角色的访问控制和资源范围的 Azure AD 自定义角色。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e962bea893e8a658b876aabf417e64b11a31dfc1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: aac8713affd56d011e5e1f5e9326de501fb3ce67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033500"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975564"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 中的自定义管理员角色（预览版）
 
@@ -58,7 +58,7 @@ Azure AD 内置和自定义角色的运作思路类似于 [Azure 基于角色的
 
 - 用户（在 Azure Active Directory 中具有配置文件的个人）
 - 角色定义
-- 资源作用域
+- 资源范围
 
 可以使用 Azure 门户、Azure AD PowerShell 或图形 API 创建[角色分配](roles-create-custom.md)。 还可以[查看自定义角色的分配](roles-view-assignments.md#view-the-assignments-of-a-role)。
 

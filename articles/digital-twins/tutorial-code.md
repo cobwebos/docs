@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923698"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561544"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
@@ -112,7 +112,7 @@ using Azure.Identity;
 >[!TIP]
 > 如果不知道自己的目录（租户）ID，可以在 [Azure Cloud Shell](https://shell.azure.com) 中运行以下命令来获取该 ID：
 > 
-> ```azurecli-interactive
+> ```azurecli
 > az account show --query tenantId
 > ```
 
@@ -322,12 +322,13 @@ for(int i=0; i<3; i++) {
 
 接下来，你可以在已创建的孪生之间创建关系，将它们连接到孪生图 。 [孪生图](concepts-twins-graph.md)用于表示整个环境。
 
-为了能够创建关系，请在 SDK 中为关系基类型添加 `using` 语句（如果已添加，请跳过此步骤）。
+若要创建关系，需要使用 `Azure.DigitalTwins.Core.Serialization` 命名空间。 你之前已使用此 `using` 语句将此项添加到项目中：
+
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
-接下来，将新的静态方法添加到 `Main` 方法下的 `Program` 类：
+将新的静态方法添加到 `Main` 方法下的 `Program` 类：
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {

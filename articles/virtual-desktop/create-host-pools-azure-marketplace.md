@@ -3,15 +3,15 @@ title: 使用 Azure 门户创建 Windows 虚拟桌面主机池 - Azure
 description: 如何使用 Azure 门户创建 Windows 虚拟桌面主机池。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322579"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084356"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -188,6 +188,13 @@ ms.locfileid: "89322579"
      - 基于配置的 Azure 资源管理模板的下载链接。
 
 所有操作现已全部完成！
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>运行 Azure 资源管理器模板来预配新的主机池
+
+如果你想要使用自动化过程，请[下载 Azure 资源管理器模板](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)来预配新的主机池。
+
+>[!NOTE]
+>如果你使用自动化过程来构建环境，则需要配置 JSON 文件的最新版本。 可在[此处](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list)找到 JSON 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

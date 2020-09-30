@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c72825f4645919468f8b59bbc4b9d9498fe11009
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719202"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979396"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案
 
@@ -41,9 +41,9 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="联接的物流仪表板":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Azure IoT 零售概述":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="联接的物流仪表板":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Azure IoT 零售概述":::
 
 若要了解详细信息，请参阅[部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics.md)教程。
 
@@ -64,7 +64,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="数字分发中心仪表板":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Azure IoT 零售概述":::
 
 若要了解详细信息，请参阅[部署并演练数字分发中心应用程序模板](./tutorial-iot-central-digital-distribution-center.md)教程。
 
@@ -86,7 +86,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="店内分析环境监视":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Azure IoT 零售概述":::
 
 若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)教程。
 
@@ -108,7 +108,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="店内分析结帐":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Azure IoT 零售概述":::
 
 若要了解详细信息，请参阅[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)教程。
 
@@ -128,7 +128,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="智能库存管理仪表板":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Azure IoT 零售概述":::
 
 若要了解详细信息，请参阅[部署和演练智能库存管理应用程序模板](./tutorial-iot-central-smart-inventory-management.md)教程。
 
@@ -148,7 +148,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求：
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="微履行中心":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Azure IoT 零售概述":::
 
 若要了解详细信息，请参阅[部署并演练微履行中心应用程序模板](./tutorial-micro-fulfillment-center.md)教程。
 
@@ -165,7 +165,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 * “(示例)真实相机管理”使用模拟相机展示如何在应用程序中管理相机。
 * “(示例)真实相机监视器”使用模拟相机展示如何在应用程序中监视相机。
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="视频分析 - 对象和运动检测":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Azure IoT 零售概述":::
 
 若要详细了解该解决方案的体系结构，请参阅[视频分析应用程序体系结构](architecture-video-analytics.md)。
 

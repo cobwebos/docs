@@ -1,6 +1,6 @@
 ---
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Concur 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Concur 之间配置单一登录。
+description: 了解如何在 Azure Active Directory 和 Concur 之间配置 SSO。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71e6dc8bdb8bdccdaaf845498eebdbe75a8b35c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 38cc5458b2e62e071227a2372d56e4647e347338
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547176"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Concur 集成
 
@@ -41,7 +41,7 @@ ms.locfileid: "88547176"
 
 * Concur 支持 SP 发起的 SSO 
 * Concur 支持实时用户预配 
-* 配置 Concur 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Concur 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-concur-from-the-gallery"></a>从库中添加 Concur
 
@@ -54,7 +54,7 @@ ms.locfileid: "88547176"
 1. 在“从库中添加”部分的搜索框中，键入“Concur”   。
 1. 从结果面板中选择“Concur”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur"></a>为 Concur 配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-concur"></a>配置并测试 Concur 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置和测试 Concur 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Concur 相关用户之间建立链接关系。
 
@@ -82,15 +82,24 @@ ms.locfileid: "88547176"
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.concursolutions.com/UI/SSO/<OrganizationId>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<customer-domain>.concursolutions.com` 
+    
+    c. 对于“回复 URL”，请输入以下任一 URL 模式：
 
+    | 回复 URL|
+    |----------|
+    | `https://www.concursolutions.com/SAMLRedirector/SAMLReceiver.ashx` |
+    | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
+    | `https://<customer-domain>.concur.com` |
+    | `https://<customer-domain>.concursolutions.com` | 
+    
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Concur”部分中，根据要求复制相应 URL  。
+6. 在“设置 Concur”部分中，根据要求复制相应 URL****。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -98,35 +107,35 @@ ms.locfileid: "88547176"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-    1. 在“名称”  字段中，输入 `B.Simon`。  
-    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-    1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+    1. 在“名称”字段中，输入 `B.Simon`。  
+    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Concur 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Concur”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Concur”****。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-concur-sso"></a>配置 Concur SSO
 
-若要在 **Concur** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Concur 支持团队](https://www.concur.co.in/contact)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Concur** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Concur 支持团队](https://www.concur.co.in/contact)。**** 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
   > [!NOTE]
   > 为 Concur 订阅配置基于 SAML 的联合 SSO 是一个单独的任务，必须联系 [Concur 客户端支持团队](https://www.concur.co.in/contact)来执行。

@@ -2,39 +2,60 @@
 title: 教程 - 使用 IoT 中心事件触发 Azure 逻辑应用
 description: 本教程介绍如何使用 Azure 事件网格的事件路由服务创建自动化过程，用于根据 IoT 中心事件执行 Azure 逻辑应用操作。
 services: iot-hub, event-grid
-author: robinsh
+author: philmea
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 07/07/2020
-ms.author: robinsh
+ms.date: 09/14/2020
+ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503440"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604518"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知
 
 使用 Azure 事件网格可以通过在下游业务应用程序中触发操作，对 IoT 中心内的事件做出反应。
 
-本文逐步讲解一个使用 IoT 中心和事件网格的示例配置。 本文结束时，我们会完成设置一个 Azure 逻辑应用。每次将设备添加到 IoT 中心时，该应用就会发送一封通知电子邮件。 
+本文逐步讲解一个使用 IoT 中心和事件网格的示例配置。 在本文末尾，我们将设置一个 Azure 逻辑应用，使其在每次将设备连接到 IoT 中心或与其断开连接时，都会发送一封通知电子邮件。 事件网格可用于及时通知关键设备断开连接。 指标和诊断可能需要几分钟（即 20 分钟或更长时间 -- 尽管我们不想给它加数字）才会在日志/警报中显示。 对于关键基础结构，这可能是不可接受的。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 一个有效的 Azure 订阅。 如果没有订阅，可以[创建一个免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Azure 逻辑应用支持的任何电子邮件提供程序（例如 Office 365 Outlook、Outlook.com 或 Gmail）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。 有关支持的逻辑应用连接器的完整列表，请参阅[连接器概述](/connectors/)。
+* Azure 逻辑应用支持的任何电子邮件提供程序（例如 Office 365 Outlook 或 Outlook.com）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。 
 
-  > [!IMPORTANT]
-  > 使用 Gmail 之前，请检查你是否有 G-Suite 商业帐户（带自定义域的电子邮件地址）或 Gmail 用户帐户（带 @gmail.com 或 @googlemail.com 的电子邮件地址）。 在逻辑应用中，只有 G-Suite 商业帐户可以不受限制地将 Gmail 连接器与其他连接器一起使用。 如果有 Gmail 用户帐户，则只能将 Gmail 连接器与 Google 批准的特定服务一起使用，也可以[创建用于身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-* Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](../iot-hub/quickstart-send-telemetry-dotnet.md)中的演练。
+## <a name="create-an-iot-hub"></a>创建 IoT 中心
+
+可使用门户中的 Azure Cloud Shell 终端快速创建新的 IoT 中心。
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 
+
+1. 在页面右上角选择“Cloud Shell”按钮。
+
+   ![“Cloud Shell”按钮](./media/publish-iot-hub-events-to-logic-apps/portal-cloud-shell.png)
+
+1. 运行以下命令来创建新资源组：
+
+   ```azurecli
+   az group create --name {your resource group name} --location westus
+   ```
+    
+1. 运行以下命令创建 IoT 中心：
+
+   ```azurecli
+   az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1 
+   ```
+
+1. 最小化 Cloud Shell 终端。 你将在本教程的后面部分返回到 Shell。
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
-首先，创建逻辑应用并添加事件网格触发器，以便监视虚拟机的资源组。 
+接下来创建一个逻辑应用，并添加一个 HTTP 事件网格触发器来处理来自 IoT 中心的请求。 
 
 ### <a name="create-a-logic-app-resource"></a>创建逻辑应用资源
 
@@ -48,9 +69,11 @@ ms.locfileid: "87503440"
 
    ![用于创建逻辑应用的字段](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. 选择“创建”。
+1. 选择“查看 + 创建”。
 
-1. 创建资源后，导航到你的逻辑应用。 为此，请选择“资源组”，然后选择本教程中创建的资源组。 然后在资源列表中查找逻辑应用并选择。 
+1. 验证设置，然后选择“创建”。
+
+1. 创建资源后，选择“转到资源”。 
 
 1. 在“逻辑应用设计器”中，下滑页面查看“模板”。 选择“空白逻辑应用”，以便可以从头开始构建逻辑应用。
 
@@ -60,63 +83,41 @@ ms.locfileid: "87503440"
 
 1. 在连接器和触发器搜索栏中，键入 **HTTP**。
 
-1. 选择“请求 - 当收到 HTTP 请求时”作为触发器。 
+1. 滚动浏览结果并选择“请求 - 当收到 HTTP 请求时”作为触发器。 
 
    ![选择 HTTP 请求触发器](./media/publish-iot-hub-events-to-logic-apps/http-request-trigger.png)
 
 1. 选择“使用示例有效负载生成架构”。 
 
-   ![选择 HTTP 请求触发器](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
+   ![使用示例有效负载](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
 
-1. 在文本框中粘贴以下示例 JSON 代码，然后选择“完成”：
+1. 将“设备已连接事件架构”JSON 粘贴到文本框中，然后选择“完成”：
 
    ```json
-   [{
-     "id": "56afc886-767b-d359-d59e-0da7877166b2",
-     "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
-     "subject": "devices/LogicAppTestDevice",
-     "eventType": "Microsoft.Devices.DeviceCreated",
-     "eventTime": "2018-01-02T19:17:44.4383997Z",
-     "data": {
-       "twin": {
-         "deviceId": "LogicAppTestDevice",
-         "etag": "AAAAAAAAAAE=",
-         "deviceEtag": "null",
-         "status": "enabled",
-         "statusUpdateTime": "0001-01-01T00:00:00",
-         "connectionState": "Disconnected",
-         "lastActivityTime": "0001-01-01T00:00:00",
-         "cloudToDeviceMessageCount": 0,
-         "authenticationType": "sas",
-         "x509Thumbprint": {
-           "primaryThumbprint": null,
-           "secondaryThumbprint": null
-         },
-         "version": 2,
-         "properties": {
-           "desired": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           },
-           "reported": {
-             "$metadata": {
-               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-             },
-             "$version": 1
-           }
-         }
-       },
-       "hubName": "egtesthub1",
-       "deviceId": "LogicAppTestDevice"
-     },
-     "dataVersion": "1",
-     "metadataVersion": "1"
-   }]
+     [{  
+      "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8",
+      "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+      "subject": "devices/LogicAppTestDevice",
+      "eventType": "Microsoft.Devices.DeviceConnected",
+      "eventTime": "2018-06-02T19:17:44.4383997Z",
+      "data": {
+          "deviceConnectionStateEventInfo": {
+            "sequenceNumber":
+              "000000000000000001D4132452F67CE200000002000000000000000000000001"
+          },
+        "hubName": "egtesthub1",
+        "deviceId": "LogicAppTestDevice",
+        "moduleId" : "DeviceModuleID"
+      }, 
+      "dataVersion": "1",
+      "metadataVersion": "1"
+    }]
    ```
 
-1. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。 可以放心忽略此建议，并转到下一部分。 
+   当设备连接到 IoT 中心时发布此事件。
+
+> [!NOTE]
+> 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。 可以放心忽略此建议，并转到下一部分。 
 
 ### <a name="create-an-action"></a>创建操作
 
@@ -124,21 +125,21 @@ ms.locfileid: "87503440"
 
 1. 选择“新建步骤”。 随即会打开一个窗口，供用户“选择操作”。
 
-1. 搜索“电子邮件”。
+1. 搜索“Outlook”。
 
-1. 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook**。 使用其他电子邮件提供程序时执行的步骤类似。 
+1. 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 Outlook.com。 使用其他电子邮件提供程序时执行的步骤类似。 
 
-   ![选择电子邮件提供程序连接器](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
+   ![选择电子邮件提供程序连接器](./media/publish-iot-hub-events-to-logic-apps/outlook-step.png)
 
-1. 选择“发送电子邮件”操作。 
+1. 选择“发送电子邮件 (V2)”操作。**** 
 
-1. 根据提示登录到电子邮件帐户。 
+1. 选择“登录”并登录到你的电子邮件帐户。 选择“是”，允许应用访问你的信息。
 
 1. 生成电子邮件模板。 
 
-   * **收件人**：输入接收通知电子邮件的电子邮件地址。 本教程使用你可以访问的测试电子邮件帐户。 
+   * **收件人**：输入接收通知电子邮件的电子邮件地址。 对于本教程，请使用你可以访问的电子邮件帐户进行测试。 
 
-   * **使用者**：填写主题文本。 单击“主题”文本框时，可以选择要包含的动态内容。 例如，本教程使用 `IoT Hub alert: {event Type}`。 如果未看到“动态内容”，请选择“添加动态内容”超链接，该操作可以开启和关闭此超链接。
+   * **使用者**：填写主题文本。 单击“主题”文本框时，可以选择要包含的动态内容。 例如，本教程使用 `IoT Hub alert: {eventType}`。 如果未看到“动态内容”，请选择“添加动态内容”超链接，该操作可以开启和关闭此超链接。
 
    * **正文**：编写电子邮件的文本。 在选择器工具中选择 JSON 属性，以包含基于事件数据的动态内容。 如果未看到“动态内容”，请选择“正文”文本框下的“添加动态内容”超链接 。 如果未看到所需字段，单击“动态内容”屏幕中的“更多”，以包含上一个操作中的字段。
 
@@ -146,7 +147,7 @@ ms.locfileid: "87503440"
 
    ![填写电子邮件信息](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
-1. 保存逻辑应用。 
+1. 在逻辑应用设计器中选择“保存”。  
 
 ### <a name="copy-the-http-url"></a>复制 HTTP URL
 
@@ -166,28 +167,30 @@ ms.locfileid: "87503440"
 
 1. 在 Azure 门户中导航到 IoT 中心。 为此，可以选择“资源组”，然后选择本教程中的资源组，接着从资源列表中选择 IoT 中心。
 
-2. 选择“事件”。
+1. 选择“事件”。
 
    ![打开事件网格详细信息](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
-3. 选择“事件订阅”。 
+1. 选择“事件订阅”。 
 
    ![创建新的事件订阅](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
-4. 使用以下值创建事件订阅： 
+1. 使用以下值创建事件订阅： 
 
-    1. 在“事件订阅详细信息”部分中，执行以下任务：
-        1. 为事件订阅提供一个名称。 
-        2. 对于“事件架构”，请选择“事件网格架构” 。 
-   2. 在“主题详细信息”部分中，执行以下任务：
-       1. 确认“主题类型”是否设置为“IoT 中心” 。 
-       2. 确认 IoT 中心的名称是否设置为“源资源”字段的值。 
-       3. 输入将创建的“系统主题”的名称。 要了解系统主题，请参阅[系统主题的概述](system-topics.md)。
-   3. 在“事件类型”部分中，执行以下任务： 
-        1. 对于“筛选事件类型”，取消选中除“创建的设备”以外的所有选项 。
+   1. 在“事件订阅详细信息”部分：
+      1. 为事件订阅提供一个名称。 
+      2. 对于“事件架构”，请选择“事件网格架构” 。 
+   2. 在“主题详细信息”部分：
+      1. 确认“主题类型”是否设置为“IoT 中心” 。 
+      2. 确认 IoT 中心的名称是否设置为“源资源”字段的值。 
+      3. 输入将创建的“系统主题”的名称。 要了解系统主题，请参阅[系统主题的概述](system-topics.md)。
+   3. 在“事件类型”部分：
+      1. 选择“筛选到事件类型”下拉列表。
+      1. 取消选择“设备已创建”和“设备已删除”复选框，仅保留选中“连接已设备”和“设备已断开连接”复选框   。
 
-           ![订阅事件类型](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
-   4. 在“终结点详细信息”部分中，执行以下任务： 
+         ![选择订阅事件类型](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   
+   4. 在“终结点详细信息”部分： 
        1. 选择“终结点类型”作为“Web Hook” 。
        2. 单击“选择终结点”，粘贴从逻辑应用复制的 URL，然后确认选择。
 
@@ -195,60 +198,33 @@ ms.locfileid: "87503440"
 
          完成后，窗格应如以下示例所示： 
 
-        ![示例事件订阅窗体](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+         ![示例事件订阅窗体](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-5. 可在此处保存事件订阅，并接收针对 IoT 中心内创建的每个设备发送的通知。 不过，在本教程中，我们将使用可选字段来筛选特定的设备。 在窗格顶部，选择“筛选器”。
+1.  选择“创建”。
 
-6. 选择“添加新筛选器”。 在字段中填写以下值：
+## <a name="simulate-a-new-device-connecting-and-sending-telemetry"></a>模拟新设备连接并发送遥测数据
 
-   * **密钥**：选择 `Subject`。
+使用 Azure CLI 快速模拟设备连接来测试逻辑应用。 
 
-   * **操作员**：选择 `String begins with`。
+1. 选择“Cloud Shell”按钮以重新打开终端。
 
-   * **值**：输入 `devices/Building1_`，筛选建筑物 1 中的设备事件。
-  
-   在另一个筛选器中添加以下值：
+1. 运行以下命令创建模拟设备标识：
+    
+     ```azurecli 
+    az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName}
+    ```
 
-   * **密钥**：选择 `Subject`。
+1. 运行以下命令以模拟将设备连接到 IoT 中心并发送遥测数据：
 
-   * **操作员**：选择 `String ends with`。
+    ```azurecli
+    az iot device simulate -d simDevice -n {YourIoTHubName}
+    ```
 
-   * **值**：输入 `_Temperature`，筛选与温度相关的设备事件。
+1. 当模拟设备连接到 IoT 中心时，你将收到一封电子邮件，通知你“DeviceConnected”事件。
 
-   事件订阅的“筛选器”选项卡现在应如下图所示：
+1. 当模拟完成时，你将收到一封电子邮件，通知你“DeviceDisconnected”事件。 
 
-   ![向事件订阅添加筛选器](./media/publish-iot-hub-events-to-logic-apps/event-subscription-filters.png)
-
-7. 选择“创建”保存事件订阅。
-
-## <a name="create-a-new-device"></a>创建新设备
-
-创建新设备来触发事件通知电子邮件，以测试逻辑应用。 
-
-1. 在 IoT 中心选择“IoT 设备”。 
-
-2. 选择“新建”。
-
-3. 对于“设备 ID”，请输入 `Building1_Floor1_Room1_Light`。
-
-4. 选择“保存”。 
-
-5. 可以添加具有不同设备 ID 的多个设备来测试事件订阅筛选器。 尝试以下示例： 
-
-   * Building1_Floor1_Room1_Light
-   * Building1_Floor2_Room2_Temperature
-   * Building2_Floor1_Room1_Temperature
-   * Building2_Floor1_Room1_Light
-
-   如果添加了四个示例，IoT 设备列表应如下图所示：
-
-   ![IoT 中心设备列表](./media/publish-iot-hub-events-to-logic-apps/iot-hub-device-list.png)
-
-6. 将一些设备添加到 IoT 中心后，请检查电子邮件，确定哪些设备触发了逻辑应用。 
-
-## <a name="use-the-azure-cli"></a>使用 Azure CLI
-
-如果不使用 Azure 门户，也可以使用 Azure CLI 来完成 IoT 中心相关的步骤。 有关详细信息，请参阅有关使用 Azure CLI [创建事件订阅](/cli/azure/eventgrid/event-subscription)和[创建 IoT 设备](/cli/azure/ext/azure-iot/iot/hub/device-identity)的网页。
+    ![示例警报邮件](./media/publish-iot-hub-events-to-logic-apps/alert-mail.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -260,30 +236,10 @@ ms.locfileid: "87503440"
 
 2. 在“资源组”页上，选择“删除资源组”。 系统将提示输入资源组名称，然后你可以将其删除。 同时会删除其中包含的所有资源。
 
-如果不想删除所有资源，可以逐个进行管理。 
-
-如果不希望丢弃针对逻辑应用所执行的操作，可以禁用逻辑应用，但不要将其删除。 
-
-1. 导航到逻辑应用。
-
-2. 在“概述”边栏选项卡上，选择“删除”或“禁用”。   
-
-每个订阅可以包含一个免费 IoT 中心。 如果在本教程中创建了一个免费中心，则不需要将其删除，以免产生费用。
-
-1. 导航到 IoT 中心。 
-
-2. 在“概览”边栏选项卡上，选择“删除”。  
-
-即使保留了 IoT 中心中，你也仍可能想要删除创建的事件订阅。 
-
-1. 在 IoT 中心，选择“事件网格”。
-
-2. 选择要删除的事件订阅。 
-
-3. 选择“删除”。 
-
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解如何[通过使用事件网格触发操作来对 IoT 中心事件做出反应](../iot-hub/iot-hub-event-grid.md)。
 * [了解如何订阅设备已连接和已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * 了解[事件网格](overview.md)的其他作用。
+
+有关支持的逻辑应用连接器的完整列表，请参阅[连接器概述](/connectors/)。

@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67173478"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361377"
 ---
 根据你的具体情况执行以下步骤。
 
@@ -17,9 +17,9 @@ ms.locfileid: "67173478"
 
 1. 以管理员身份与进程服务器建立远程连接。
 2. 在“控制面板”  中，打开“程序”>“卸载程序”  。
-3. **Site Recovery 移动服务/主目标服务器 Microsoft Azure**卸载程序。
-4. **Site Recovery 配置/进程服务器 Microsoft Azure**卸载程序。
-5. 卸载步骤3和步骤4中的程序后，卸载**Microsoft Azure Site Recovery 配置/进程服务器依赖项**。
+3. 卸载 Microsoft Azure Site Recovery Mobility Service/Master Target Server 程序。
+4. 卸载 Microsoft Azure Site Recovery Configuration/Process Server 程序。
+5. 卸载步骤 3 和 4 中的程序后，请卸载 Microsoft Azure Site Recovery Configuration/Process Server Dependencies。
 
 ### <a name="unregister-a-disconnected-process-server"></a>注销已断开连接的进程服务器
 
@@ -35,7 +35,7 @@ ms.locfileid: "67173478"
     - S. 号：进程服务器序列号。
     - IP/名称：运行进程服务器的计算机的 IP 地址和名称。
     - 检测信号：进程服务器计算机发出的上一个检测信号。
-    ![Unregister-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ![屏幕截图中有进程服务器和文本相关信息的纯文本显示。请选择上述某个服务器进行注销。(media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
 4. 指定要注销的进程服务器的序列号。
 5. 注销进程服务器将从系统中删除其所有详细信息，并显示消息：**已成功注销服务器名称> (服务器 IP 地址)**

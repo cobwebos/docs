@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁�
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: c9a7e76496c2851b90c8fd1d164645c46d02609b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376021"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530516"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -121,7 +121,7 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用�
 
 11. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
    
-    ![磁盘](./media/tutorial-migrate-vmware/disks.png)
+    ![屏幕截图显示“复制”对话框的“磁盘”选项卡。](./media/tutorial-migrate-vmware/disks.png)
 
 12. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
 

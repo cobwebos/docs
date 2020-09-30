@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017494"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707809"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Google Cloud (G Suite) Connector 的集成
 
@@ -72,9 +72,9 @@ ms.locfileid: "89017494"
 
     对于任何拥有有效的 Exchange 许可证的用户，电子邮件属性会自动填充。 如果用户未启用电子邮件，则将收到此错误，因为应用程序需要获取此属性才能提供访问权限。
 
-    你可以使用管理员帐户访问 portal.office.com，接着单击“管理中心”、“帐单”、“订阅”，选择你的 Office 365 订阅，然后单击“分配给用户”，选择要检查其订阅的用户，然后在右侧窗格中单击“编辑许可证”。
+    可以使用管理员帐户访问 portal.office.com，接着单击“管理中心”、“帐单”、“订阅”，选择你的 Microsoft 365 订阅，然后单击“分配给用户”，选择要检查其订阅的用户，然后在右侧窗格中单击“编辑许可证”。
 
-    分配 O365 许可证后，可能需要几分钟的时间才能应用。 之后，user.mail 属性将自动填充，此问题应会得到解决。
+    分配 Microsoft 365 许可证后，它可能需要几分钟的时间才能应用。 之后，user.mail 属性将自动填充，此问题应会得到解决。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -240,7 +240,7 @@ ms.locfileid: "89017494"
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>创建 Google Cloud (G Suite) Connector 测试用户
 
-本部分的目标是[在 Google Cloud (G Suite) Connector 中创建名为 B.Simon 的用户](https://support.google.com/a/answer/33310?hl=en)。 在 Google Cloud (G Suite) Connector 中手动创建用户后，该用户现在可以使用其 Office 365 登录凭据登录。
+本部分的目标是[在 Google Cloud (G Suite) Connector 中创建名为 B.Simon 的用户](https://support.google.com/a/answer/33310?hl=en)。 在 Google Cloud (G Suite) Connector 中手动创建用户后，该用户现在可以使用其 Microsoft 365 登录凭据登录。
 
 Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自动用户预配，必须先[为自动用户预配配置 Google Cloud (G Suite) Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)。
 

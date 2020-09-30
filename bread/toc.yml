@@ -598,12 +598,9 @@
         - name: 数据科学虚拟机
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
-    - name: 市场消费者
-      tocHref: /azure/marketplace-consumer/
+    - name: 商业市场
+      tocHref: /azure/marketplace
       topicHref: /azure/marketplace/
-    - name: 市场发布
-      tocHref: /azure/marketplace-publishing/
-      topicHref: /azure/marketplace/marketplace-publishers-guide
     - name: 媒体服务
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/

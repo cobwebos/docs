@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77426354"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972438"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教程：在 IoT Central 中创建连接的废弃物管理应用程序
 
@@ -131,13 +131,13 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
 1. 在 IoT Central 中应用程序的左窗格中单击“设备模板”  。 
 
-    ![设备模板](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![显示应用程序中的设备模板列表的屏幕截图](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
 2. 在“设备模板”列表中，你将看到“连接的垃圾桶”  。 通过单击名称打开。
 
 3. 熟悉设备模板功能。 你可以看到，它定义了填充级别、气味计、重量、位置等传感器     。
 
-   ![设备模板](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![显示连接的垃圾桶设备模板详细信息的屏幕截图](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
@@ -265,8 +265,9 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 1. 从 IoT Central 应用程序的左侧窗格打开“管理”选项卡。
 2. 选择“应用程序设置”，然后单击页面底部的“删除”按钮。
 
-  
-
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[连接的废弃物管理概念](./concepts-connectedwastemanagement-architecture.md)的详细信息
+* 详细了解
+ 
+> [!div class="nextstepaction"]
+> [连接的废弃物管理概念](./concepts-connectedwastemanagement-architecture.md)

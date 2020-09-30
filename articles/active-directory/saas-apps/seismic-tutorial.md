@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5f21fea2b1908a0ccd5a24ae424f405fbf141c9f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c42180990f81e179a8fa8cdfe9e5d762323213b0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543184"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661057"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>教程：Azure Active Directory 与 Seismic 集成
 
@@ -45,71 +45,55 @@ ms.locfileid: "88543184"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Seismic 支持 SP 发起的 SSO
+* 配置 Seismic 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-seismic-from-the-gallery"></a>从库中添加 Seismic
 
 若要配置 Seismic 与 Azure AD 的集成，需要从库中将 Seismic 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Seismic，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Seismic” 。
+1. 从结果面板中选择“Seismic”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
-
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
-
-2. 转到“企业应用”，并选择“所有应用”选项 。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
-
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索框中，键入“Seismic”，在结果面板中选择“Seismic”，然后单击“添加”按钮添加应用程序。  
-
-     ![结果列表中的 Seismic](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 
 在本部分中，基于一个名为“Britta Simon”的测试用户使用 Seismic 配置和测试 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Seismic 相关用户之间建立链接关系。
 
 若要配置和测试 Seismic 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Seismic 单一登录](#configure-seismic-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Seismic 测试用户](#create-seismic-test-user) - 在 Seismic 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+2. **[配置 Seismic SSO](#configure-seismic-sso)** - 在应用程序端配置单一登录设置。
+    * [创建 Seismic 测试用户](#create-seismic-test-user) - 在 Seismic 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-若要配置 Seismic 的 Azure AD 单一登录，请执行以下步骤：
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Seismic”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Seismic”应用程序集成页上，选择“单一登录” 。
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框  。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Seismic 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.seismic.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.seismic.com` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.seismic.com`
+    
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.seismic.com/SSO/<ROUTEURL>`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Seismic 客户端支持团队](mailto:support@seismic.com)获取这些值。 也可上传“服务提供程序元数据”，以便自动填充标识符值。有关“服务提供程序元数据”的详细信息，请联系 [Seismic 客户端支持团队](mailto:support@seismic.com)。 
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新值。 请联系 [Seismic 客户端支持团队](mailto:support@seismic.com)获取这些值。 也可上传“服务提供程序元数据”，以便自动填充标识符值。有关“服务提供程序元数据”的详细信息，请联系 [Seismic 客户端支持团队](mailto:support@seismic.com)。 
 
 5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -119,72 +103,45 @@ ms.locfileid: "88543184"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
-
-    b. Azure AD 标识符
-
-    c. 注销 URL
-
-### <a name="configure-seismic-single-sign-on"></a>配置 Seismic 单一登录
-
-若要在 **Seismic** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Seismic 支持团队](mailto:support@seismic.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”字段中，输入 BrittaSimon。
-  
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Seismic 的权限，允许她使用 Azure 单一登录。
+本部分将通过授予 B.Simon 访问 Seismic 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Seismic”  。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Seismic”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+   ![“用户和组”链接](common/users-groups-blade.png)
 
-2. 在应用程序列表中，选择“Seismic”。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![应用程序列表中的 Seismic 链接](common/all-applications.png)
+    ![“添加用户”链接](common/add-assign-user.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
-    ![“用户和组”链接](common/users-groups-blade.png)
+## <a name="configure-seismic-sso"></a>配置 Seismic SSO
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
-
-7. 在“添加分配”对话框中，单击“分配”按钮。
+若要在 **Seismic** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Seismic 支持团队](mailto:support@seismic.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-seismic-test-user"></a>创建 Seismic 测试用户
 
 在本部分，我们将在 Seismic 中创建一个名为“Britta Simon”的用户。 请与  [Seismic 支持团队](mailto:support@seismic.com)协作，将该用户添加到 Seismic 平台中。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 

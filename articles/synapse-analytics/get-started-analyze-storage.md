@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 836e56884659c60c129eba0bb5505eddd9981283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0d5c758873413e549b31e3ec4cc41791fc8c371
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093323"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667406"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
 
@@ -64,7 +64,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ) AS [r];
     ```
 
-     在脚本中，“附加到”字段将设置为“SQL 按需版本” 。
+    在脚本窗口中，“连接到”字段将设置为“按需 SQL” 。
 
 1. 运行该脚本。
 

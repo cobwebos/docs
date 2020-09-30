@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 37bf610d1ecc6a05e8dd142ff3d72dd9ed72e51f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363165"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
 
@@ -52,10 +52,10 @@ ms.locfileid: "87087758"
 * 下载 ora2pg 并[将其安装在 Windows 或 Linux 上](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)。
 * [在 Azure Database for PostgreSQL 中创建实例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
 * 参考[此文档](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)中的说明连接到该实例并创建数据库。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，其中该模型使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
   > [!NOTE]
-  > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网中：
+  > 在虚拟网络设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，则请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到要在其中预配该服务的子网：
   >
   > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
   > * 存储终结点
@@ -214,14 +214,14 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 1. 当你创建新的 Oracle 到 Azure Database for PostgreSQL 迁移项目时，系统将提示你在“选择架构”步骤中选择“目标数据库”和“目标架构”。 填写目标数据库和目标架构。
 
-   ![显示门户订阅](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![显示“映射到目标数据库”的屏幕截图。](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. “迁移设置”  屏幕将显示 Oracle 源中的表的列表。 Azure 数据库迁移服务将尝试基于表名称匹配源表和目标表。 如果存在多个具有不同大小写的匹配目标表，你可以选择要映射到的目标表。
 
-    ![显示门户订阅](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![显示迁移设置的屏幕截图。](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> 如果需要将源表名称映射到名称不同的表，请发送电子邮件， [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) 我们可以提供一个脚本来自动执行此过程。
+> 如果需要将源表名称映射到名称不同的表，请发送电子邮件到 [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com)，我们可以提供一个脚本来自动执行此过程。
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>如果不存在 PostgreSQL 表架构
 
@@ -249,7 +249,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
     | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
     | HR | targetHR.Hr | *无法映射混合大小写 |
 
-    * 若要在目标 PostgreSQL 中创建混合大小写架构和表名，请联系 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 。 我们可以提供一个脚本，用于在目标 PostgreSQL 数据库中设置混合大小写表架构。
+    *若要在目标 PostgreSQL 中创建混合大小写架构和表名，请联系 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)。 我们可以提供一个脚本，用于在目标 PostgreSQL 数据库中设置混合大小写表架构。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
@@ -322,7 +322,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="upload-oracle-oci-driver"></a>上传 Oracle OCI 驱动程序
 
-1. 选择 "**保存**"，然后在 "**安装 OCI 驱动程序**" 屏幕上，登录到你的 Oracle 帐户，并从[此处](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下载驱动程序**instantclient-basiclite-windows.x64-12.2.0.1.0.zip** （37128586字节（s））（SHA1 校验和：865082268）。
+1. 选择“保存”，然后在“安装 OCI 驱动程序”屏幕上，登录到你的 Oracle 帐户并  从[此处](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下载驱动程序“instantclient-basiclite-windows.x64-12.2.0.1.0.zip”（37,128,586 字节）（SHA1 校验和：865082268）。
 2. 将该驱动程序下载到某个共享文件夹中。
 
    确保该文件夹已与使用最低只读访问权限指定的用户名共享。 Azure 数据库迁移服务将访问并读取该共享，以通过模拟指定的用户名将 OCI 驱动程序上传到 Azure。
@@ -351,7 +351,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 * 选择“运行迁移”。
 
-  此时将显示 "迁移活动" 窗口，并且会**初始化**活动的**状态**。
+  迁移活动窗口随即出现，活动的“状态”为“正在初始化” 。
 
 ## <a name="monitor-the-migration"></a>监视迁移
 
@@ -359,7 +359,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
      ![活动状态 - 正在运行](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
 
-2. 在 "**数据库名称**" 下，选择特定数据库以获取**完整数据加载**和**增量数据同步**操作的迁移状态。
+2. 在“数据库名称”下选择特定数据库即可转到“完整数据加载”和“增量数据同步”操作的迁移状态。  
 
     完整数据加载会显示初始加载迁移状态，而增量数据同步则会显示变更数据捕获 (CDC) 状态。
 
@@ -371,7 +371,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。
 
-1. 如果准备完成数据库迁移，请选择“启动直接转换”。
+1. 如果准备完成数据库迁移，请选择“启动直接转换”。 
 
 2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。
 

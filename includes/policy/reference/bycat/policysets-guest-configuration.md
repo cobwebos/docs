@@ -2,37 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/04/2020
+ms.date: 09/16/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 212e9b1826d0245675b066ded00b03e8cff1fb96
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: cbe87fa2fb5323f10f8980dbafddb54491d17100
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487030"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984442"
 ---
 |名称 |说明 |策略 |版本 |
 |---|---|---|---|
-|[审核未安装指定应用程序的 Linux VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |此计划部署策略要求，并审核未安装指定应用程序的 Linux 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
-|[审核安装了指定应用程序的 Linux VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |此计划部署策略要求，并审核安装了指定应用程序的 Linux 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
-|[审核带有不安全密码安全设置的 VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPasswordSettings.json) |此计划部署策略要求，并审核带有不安全密码安全设置的虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |18 |1.1.0 |
-|[审核未启用 Windows 串行控制台的 Windows Server VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsSerialConsole.json) |此计划部署策略要求，并审核未启用 Windows 串行控制台的 Windows Server 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核其“管理员”组中包含任何指定成员的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToExclude.json) |此计划部署策略要求，并审核其“管理员”组中包含任何指定成员的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核其“管理员”组中不包含所有指定成员的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude.json) |此计划部署策略要求，并审核其“管理员”组中不包含所有指定成员的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核其“管理员”组中不只包含指定成员的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembers.json) |此计划部署策略要求，并审核其“管理员”组中不只包含指定成员的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核其 DSC 配置不符合要求的的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDscConfiguration.json) |此计划部署策略要求，并审核 Desired State Configuration (DSC) 配置不合规的 Windows VM。 此策略仅适用于包含 WMF 4 和更高版本的计算机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核其 Log Analytics 代理未按预期方式连接的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsLogAnalyticsAgentConnection.json) |此计划部署策略要求，并审核其 Log Analytics 代理未连接到指定工作区的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核其远程主机连接状态与指定的状态不匹配的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsRemoteConnection.json) |此计划部署策略要求，并审核其远程主机连接状态与指定的状态不匹配的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核未安装指定的服务且“正在运行”的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsServiceStatus.json) |此计划部署策略要求，并审核未安装指定的服务且“正在运行”的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核未加入指定域的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDomainMembership.json) |此计划部署策略要求，并审核未加入指定域的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核未设置为指定时区的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsTimeZone.json) |此计划部署策略要求，并审核未设置为指定时区的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核包含在指定天数内过期的证书的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_CertificateExpiration.json) |此计划部署策略要求，并审核包含在指定天数内过期的证书的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核在受信任的根中不包含指定证书的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsCertificateInTrustedRoot.json) |此计划部署策略要求，并审核受信任的根证书颁发机构证书存储 (Cert: LocalMachine Root) 中不包含指定证书的 Windows VM。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核未安装指定应用程序的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApp.json) |此计划部署策略要求，并审核未安装指定应用程序的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核在指定天数内未重启的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_MachineLastBootUpTime.json) |此计划部署策略要求，并审核在指定天数内未重启的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核安装了指定应用程序的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |此计划部署策略要求，并审核安装了指定应用程序的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核正在等待重新启动的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |此计划部署策略要求，并审核正在等待重新启动的 Windows 虚拟机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[审核未使用安全通信协议的 Windows Web 服务器](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |此计划部署策略要求，并审核未使用安全通信协议（TLS 1.1 或 TLS 1.2）的 Windows Web 服务器。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
+|[审核带有不安全密码安全设置的计算机](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPasswordSettingsAINE.json) |此计划可部署策略要求，并审核带有不安全的密码安全设置的计算机。 有关 Guest Configuration 策略的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |9 |1.0.0 |
 |[部署先决条件以在虚拟机上启用来宾配置策略](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |此计划添加系统分配的托管标识，并向符合来宾配置策略监视条件的虚拟机部署平台相应的来宾配置扩展。 这是所有来宾配置策略的先决条件，在使用任何来宾配置策略之前必须被分配到策略分配范围。 有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |4 |1.0.0-preview |
 |[Windows 计算机应符合 Azure 安全基线的要求](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json) |此计划审核具有不符合 Azure 安全基线的设置的 Windows 计算机。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol) |29 |2.0.0-preview |

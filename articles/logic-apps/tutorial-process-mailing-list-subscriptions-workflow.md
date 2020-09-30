@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c802fafa92ace2260002f7156b0df9841af8338c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132392"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029573"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于审批的工作流
 
@@ -40,7 +40,7 @@ ms.locfileid: "87132392"
 
 * 一个 MailChimp 帐户，其中包含名为“test-members-ML”的列表，供逻辑应用在其中为批准的成员添加电子邮件地址。 如果没有帐户，请[注册免费帐户](https://login.mailchimp.com/signup/)，然后了解[如何创建 MailChimp 列表](https://us17.admin.mailchimp.com/lists/#)。
 
-* Office 365 Outlook 或 Outlook.com 中的电子邮件帐户，支持审批工作流。 本文使用 Office 365 Outlook。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 显示可能稍有不同。
+* Microsoft 365 Outlook 或 Outlook.com 中的电子邮件帐户，支持审批工作流。 本文使用 Office 365 Outlook。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 显示可能稍有不同。
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 

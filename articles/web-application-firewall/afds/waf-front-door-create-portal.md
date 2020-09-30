@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475835"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602211"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure Front Door 上创建 Web 应用程序防火墙策略
 
@@ -68,7 +68,7 @@ ms.locfileid: "79475835"
 
 可以通过选择“自定义规则”部分下的“添加自定义规则”来创建自定义规则。   这会启动自定义规则配置页。 以下示例配置一个自定义规则，当查询字符串包含 **blockme** 时，此规则会阻止相应的请求。
 
-![更改 WAF 策略模式](../media/waf-front-door-create-portal/customquerystring2.png)
+![自定义规则](../media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>默认规则集 (DRS)
 
@@ -76,8 +76,11 @@ ms.locfileid: "79475835"
 
  ![更改 WAF 规则集](../media/waf-front-door-create-portal/managed2.png)
 
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，请删除资源组及所有相关资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解 Azure Web 应用程序防火墙](../overview.md)
 > [详细了解 Azure Front Door](../../frontdoor/front-door-overview.md)

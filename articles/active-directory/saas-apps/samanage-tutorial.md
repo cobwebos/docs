@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 与 Samanage 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Samanage 之间配置单一登录。
+title: 教程：Azure Active Directory 与 SolarWinds Service Desk（以前称为 Samanage）集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 SolarWinds Service Desk（以前称为 Samanage）之间配置单一登录。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543493"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707571"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>教程：Azure Active Directory 与 Samanage 集成
+# <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>教程：Azure Active Directory 与 SolarWinds Service Desk（以前称为 Samanage）集成
 
-本教程介绍如何将 Samanage 与 Azure Active Directory (Azure AD) 集成。
-将 Samanage 与 Azure AD 集成提供以下优势：
+本教程介绍如何将 SolarWinds 与 Azure Active Directory (Azure AD) 集成。
+将 SolarWinds 与 Azure AD 集成具有以下优势：
 
-* 可以在 Azure AD 中控制谁有权访问 Samanage。
-* 可以让用户使用其 Azure AD 帐户自动登录到 Samanage（单一登录）。
+* 可在 Azure AD 中控制谁有权访问 SolarWinds。
+* 可让用户使用其 Azure AD 帐户自动登录到 SolarWinds（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -32,7 +32,7 @@ ms.locfileid: "88543493"
 
 ## <a name="prerequisites"></a>必备条件
 
-若要配置 Azure AD 与 Samanage 的集成，需备齐以下项目：
+若要配置 Azure AD 与 SolarWinds Service Desk（以前称为 Samanage）的集成，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 * 启用了单一登录的 Samanage 订阅
@@ -41,15 +41,15 @@ ms.locfileid: "88543493"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Samanage 支持 **SP** 发起的 SSO
+* SolarWinds 支持 SP 发起的 SSO
 
-## <a name="adding-samanage-from-the-gallery"></a>从库中添加 Samanage
+## <a name="adding-solarwinds-from-the-gallery"></a>从库中添加 SolarWinds
 
-要配置 Samanage 与 Azure AD 的集成，需要从库中将 Samanage 添加到托管 SaaS 应用列表。
+若要配置 SolarWinds 与 Azure AD 的集成，需要从库中将 SolarWinds 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Samanage，请执行以下步骤：**
+若要从库中添加 SolarWinds，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，选择“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
@@ -61,31 +61,31 @@ ms.locfileid: "88543493"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Samanage”，在结果面板中选择“Samanage”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中键入“SolarWinds”，在结果面板中选择“SolarWinds”，然后单击“添加”按钮添加该应用程序  。
 
-     ![结果列表中的 Samanage](common/search-new-app.png)
+     ![结果列表中的 SolarWinds](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 Samanage 的 Azure AD 单一登录。
-若要运行单一登录，需要在 Azure AD 用户与 Samanage 中相关用户之间建立链接关系。
+在本部分中，我们基于名为“Britta Simon”的测试用户为 SolarWinds 配置和测试 Azure AD 单一登录。
+若要运行单一登录，需要在 Azure AD 用户与 SolarWinds 相关用户之间建立链接关系。
 
-若要配置和测试 Samanage 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置并测试 SolarWinds 的 Azure AD 单一登录，需要完成以下基础部分：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Samanage 单一登录](#configure-samanage-single-sign-on)** - 在应用程序端配置单一登录。
+2. **[配置 SolarWinds Service Desk 单一登录](#configure-solarwinds-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Samanage 测试用户](#create-samanage-test-user)** - 在 Samanage 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+5. [创建 SolarWinds Service Desk 测试用户](#create-solarwinds-test-user) - 在 SolarWinds Service Desk 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 Samanage 的 Azure AD 单一登录，请执行以下步骤：
+若要配置 SolarWinds 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Samanage** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中的“SolarWinds”应用程序集成页上，选择“单一登录”。 
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "88543493"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Samanage”  部分中，根据要求复制相应的 URL。
+6. 在“设置 SolarWinds”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -122,9 +122,11 @@ ms.locfileid: "88543493"
 
     c. 注销 URL
 
-### <a name="configure-samanage-single-sign-on"></a>配置 Samanage 单一登录
+<a name="configure-solarwinds-single-sign-on"></a>
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Samanage 公司站点。
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>配置 SolarWinds Service Desk 单一登录
+
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 SolarWinds 公司站点。
 
 2. 在左侧导航窗格中，单击“仪表板”  并选择“设置”  。
    
@@ -150,7 +152,7 @@ ms.locfileid: "88543493"
  
     f. 在记事本中打开从 Azure 门户下载的 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“在下面粘贴标识提供者 x.509 证书”文本框中  。
  
-    g. 单击“创建用户(如果用户在 Samanage 中不存在)”  。
+    g. 单击“创建用户(如果用户在 SolarWinds 中不存在)”。
  
     h. 单击“更新”  。
 
@@ -181,15 +183,13 @@ ms.locfileid: "88543493"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Samanage 提供的 的权限，允许她使用 Azure 单一登录。
+本部分将通过授予 Britta Simon 访问 SolarWinds 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Samanage”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SolarWinds”  。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Samanage”  。
-
-    ![应用程序列表中的 Samanage 链接](common/all-applications.png)
+2. 在应用程序列表中，选择“SolarWinds”。
 
 3. 在左侧菜单中，选择“用户和组”  。
 
@@ -205,39 +205,39 @@ ms.locfileid: "88543493"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-samanage-test-user"></a>创建 Samanage 测试用户
+### <a name="create-solarwinds-test-user"></a>创建 SolarWinds 测试用户
 
-为了使 Azure AD 用户能够登录到 Samanage，必须将其预配到 Samanage 中。  
-对于 Samanage，需要手动执行预配。
+若要使 Azure AD 用户能够登录 SolarWinds，则必须将其预配到 SolarWinds 中。  
+对于 SolarWinds，预配是一项手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
-1. 以管理员身份登录 Samanage 公司站点。
+1. 以管理员身份登录 SolarWinds 公司站点。
 
-2. 在左侧导航窗格中，单击“仪表板”  并选择“设置”  。
+2. 在左侧导航窗格中，单击“仪表板”**** 并选择“设置”****。
    
-    ![安装](./media/samanage-tutorial/tutorial_samanage_001.png "设置")
+    ![安装](./media/samanage-tutorial/tutorial_samanage_001.png "安装")
 
-3. 单击“用户”  选项卡
+3. 单击 **“用户”** 选项卡
    
     ![用户](./media/samanage-tutorial/tutorial_samanage_006.png "用户")
 
-4. 单击“新建用户”  。
+4. 单击 **“新建用户”**。
    
     ![新建用户](./media/samanage-tutorial/tutorial_samanage_007.png "新建用户")
 
-5. 键入要预配的 Azure Active Directory 帐户的“名称”和“电子邮件地址”，并单击“创建用户”    。
+5. 键入要预配的 Azure Active Directory 帐户的“名称”和“电子邮件地址”，并单击“创建用户”************。
    
     ![创建用户](./media/samanage-tutorial/tutorial_samanage_008.png "创建用户")
    
    >[!NOTE]
-   >Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。 可以使用任何其他 Samanage 用户帐户创建工具或 Samanage 提供的 API 来预配 Azure Active Directory 用户帐户。
+   >Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。 可以使用 SolarWinds 提供的任何其他 SolarWinds 用户帐户创建工具或 API 来预配 Azure Active Directory 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Samanage 磁贴时，应当会自动登录到你为其设置了 SSO 的 Samanage。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“SolarWinds”磁贴时，应会自动登录到为其设置了 SSO 的 SolarWinds。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

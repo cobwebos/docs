@@ -46,7 +46,7 @@
         - name: 多租户的预配
           href: how-to-provision-multitenant.md
         - name: 使用自定义分配策略
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: 示例
   items:
     - name: 模拟 TPM 设备证明示例
@@ -109,6 +109,8 @@
   items:
     - name: 将 MXChip IoT DevKit 连接到 IoT 中心
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: 使用自定义分配策略预配设备
+      href: how-to-use-custom-allocation-policies.md
     - name: 管理设备预配服务
       items:
         - name: 管理注册 - 门户
@@ -145,7 +147,7 @@
       href: how-to-use-sdk-tools.md
     - name: 如何从设备发送更多数据
       href: how-to-send-additional-data.md
-    - name: 疑难解答
+    - name: 故障排除
       href: how-to-troubleshoot-dps.md
     - name: 使用 MQTT 协议与 DPS 通信
       href: iot-dps-mqtt-support.md

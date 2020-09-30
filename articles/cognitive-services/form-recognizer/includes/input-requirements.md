@@ -5,19 +5,22 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: 5de121a1a905a58f8b5eaf8e60c1f8da71ee8cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75379414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276930"
 ---
 表单识别器可以处理符合以下要求的输入文档：
 
 * 格式必须为 JPG、PNG、PDF（文本或扫描件）或 TIFF。 最好是使用文本嵌入式 PDF，因为这可以避免在提取和定位字符时出错。
+* 文件大小必须小于 20 MB。
+* 图像尺寸必须介于 50 x 50 像素与 10000 x 10000 像素之间。
+* PDF 尺寸必须最多为 17 x 17 英寸，对应于 Legal 或 A3 纸张尺寸及更小。
+* 对于 PDF 和 TIFF，仅处理前 200 页（对于免费层订阅，仅处理前两页）。
+* 训练数据集的总大小不得超过 500 页。
 * 如果 PDF 是密码锁定的文件，则必须先删除锁，然后才能提交它们。
-* PDF 和 TIFF 文档不得超过 200 页，并且训练数据集的总大小不得超过 500 页。
-* 对于图像，尺寸必须介于 600 x 100 像素与 4200 x 4200 像素之间。
 * 如果从纸质文档扫描表单，应使用优质扫描仪。
 * 文本必须使用拉丁字母（英文字符）。
 * 对于非监督式学习（没有已标记的数据），数据必须包含键和值。

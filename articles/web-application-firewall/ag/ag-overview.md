@@ -5,15 +5,15 @@ description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267017"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什么是 Azure 应用程序网关上的 Azure Web 应用程序防火墙？
 
@@ -75,9 +75,21 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 - 按地理位置筛选流量，以允许或阻止从特定的国家/地区访问你的应用程序。 （预览版）
 - 使用机器人缓解规则集防范应用程序遭到机器人攻击。 （预览版）
 
-## <a name="waf-policy"></a>WAF 策略
+## <a name="waf-policy-and-rules"></a>WAF 策略和规则
 
-若要在应用程序网关上启用 Web 应用程序防火墙，必须创建 WAF 策略。 此策略是指存在所有托管规则、自定义规则、排除项和其他自定义项（如文件上传限制）的位置。 
+若要在应用程序网关上启用 Web 应用程序防火墙，必须创建 WAF 策略。 此策略是指存在所有托管规则、自定义规则、排除项和其他自定义项（如文件上传限制）的位置。
+
+可以配置一个 WAF 策略，然后将该策略与一个或多个应用程序网关相关联，以提供保护。 WAF 策略包含两种类型的安全规则：
+
+- 你创建的自定义规则
+
+- 托管规则集，即由 Azure 托管的预配置规则集的集合
+
+如果两者均存在，则先处理自定义规则，然后处理托管规则集中的规则。 规则由匹配条件、优先级和操作组成。 支持的操作类型包括：ALLOW、BLOCK 和 LOG。 可以组合托管规则和自定义规则以创建满足特定应用程序保护要求的完全自定义策略。
+
+策略中的规则按优先顺序进行处理。 “优先级”是唯一的整数，定义规则的处理顺序。 整数值越小表示优先级越高，这些规则的评估顺序先于整数值较大的规则。 匹配规则后，规则中定义的相应操作将应用于请求。 处理此类匹配后，不再进一步处理优先级较低的规则。
+
+由应用程序网关提供的 Web 应用，可以在全局级别、每个站点级别或每个 URI 级别与 WAF 策略关联。
 
 ### <a name="core-rule-sets"></a>核心规则集
 
@@ -123,7 +135,7 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 
 在异常评分模式下，当防火墙处于阻止模式时，不会立即阻止与任何规则匹配的流量。 规则具有一定的严重性：“严重”、“错误”、“警告”或“通知”。 此严重性会影响请求的数值，该数值称为异常分数。 例如，一个“警告”规则匹配对应的分数为 3。 一个“严重”规则匹配对应的分数为 5。
 
-|严重性  |值  |
+|严重性  |Value  |
 |---------|---------|
 |严重     |5|
 |错误        |4|
@@ -159,6 +171,11 @@ Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM)
 
 
 ![Azure WAF 防火墙事件工作簿](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>用于 WAF 的 Azure Monitor 工作簿
+
+此工作簿支持跨多个可筛选面板自定义与安全相关 WAF 事件的可视化。 它适用于所有 WAF 类型，包括应用程序网关、Front Door 和 CDN，并且可以根据 WAF 类型或特定 WAF 实例进行筛选。 通过 ARM 模板或库模板导入。 若要部署此工作簿，请参阅 [WAF 工作簿](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook)。
 
 #### <a name="logging"></a>日志记录
 

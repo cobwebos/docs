@@ -9,24 +9,67 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: e2e1d0479b8edacaae8816d74db061eeedb805a7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325213"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015494"
 ---
 # <a name="analyze-data-with-sql-pools"></a>使用 SQL 池分析数据
 
 Azure Synapse Analytics 为你提供使用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车示例数据来探索 SQL 池的分析功能。
 
-## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>将纽约市出租车示例数据加载到 SQLDB1 数据库
+## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>将纽约市出租车数据加载到 SQLDB1
 
-1. 在 Synapse Studio 最顶部的蓝色菜单中，选择问号 (?) 图标。
-1. 选择“入门” > “入门中心” 。
-1. 在标有“查询示例数据”的卡中，选择名为 SQLDB1 的 SQL 池 。
-1. 选择“查询数据”。 “正在加载示例数据”通知将短暂出现。 Synapse Studio 的顶部附近的淡蓝色状态栏指示正在将数据加载到 SQLDB1 中。
-1. 在状态栏变为绿色后，请将其关闭。
+1. 在 Synapse Studio 中，导航到“开发”中心，然后新建 SQL 脚本
+1. 输入以下代码：
+    ```
+    CREATE TABLE [dbo].[Trip]
+    (
+        [DateID] int NOT NULL,
+        [MedallionID] int NOT NULL,
+        [HackneyLicenseID] int NOT NULL,
+        [PickupTimeID] int NOT NULL,
+        [DropoffTimeID] int NOT NULL,
+        [PickupGeographyID] int NULL,
+        [DropoffGeographyID] int NULL,
+        [PickupLatitude] float NULL,
+        [PickupLongitude] float NULL,
+        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DropoffLatitude] float NULL,
+        [DropoffLongitude] float NULL,
+        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [PassengerCount] int NULL,
+        [TripDurationSeconds] int NULL,
+        [TripDistanceMiles] float NULL,
+        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FareAmount] money NULL,
+        [SurchargeAmount] money NULL,
+        [TaxAmount] money NULL,
+        [TipAmount] money NULL,
+        [TollsAmount] money NULL,
+        [TotalAmount] money NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
+
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    WITH
+    (
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
+    )
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
+    ```
+1. 此脚本大约需要 1 分钟的运行时间。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>浏览 SQL 池中的纽约市出租车数据
 

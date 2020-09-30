@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505833"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090068"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>教程：从 Azure 资源收集和分析资源日志
 
@@ -84,7 +84,7 @@ Azure Monitor 中的 Log Analytics 工作区可从各种源收集和索引日志
     > [!NOTE]
     > 如果从 Azure Monitor 菜单中打开“日志”，则会将范围设置为“Log Analytics 工作区”。 在这种情况下，所有查询都将包括工作区中的所有记录。
    
-    ![日志](media/tutorial-resource-logs/logs.png)
+    ![屏幕截图显示逻辑应用的日志，其中显示一个新查询，并突出显示了逻辑应用名称。](media/tutorial-resource-logs/logs.png)
 
 4. 示例中显示的服务将资源日志写入 AzureDiagnostics 表，但其他服务可能会写入其他表  。 请参阅 [Azure 资源日志支持的服务、架构和类别](../platform/resource-logs-schema.md)，以查看不同 Azure 服务使用的表。
 

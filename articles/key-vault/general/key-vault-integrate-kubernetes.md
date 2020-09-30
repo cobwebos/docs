@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/25/2020
-ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869178"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061795"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
@@ -70,7 +70,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
     ```azurecli
     kubectl version
     ```
-1. 确保 Kubernetes 版本是 1.16.0 或更高版本。 以下命令将同时升级 Kubernetes 群集和节点池。 执行该命令可能需要几分钟的时间。 在本例中，资源组是 contosoResourceGroup，Kubernetes 群集是 contosoAKSCluster 。
+1. 确保 Kubernetes 版本是 1.16.0 或更高版本。 对于 windows 群集，请确保 Kubernetes 版本为 1.18.0 或更高版本。 以下命令将同时升级 Kubernetes 群集和节点池。 执行该命令可能需要几分钟的时间。 在本例中，资源组是 contosoResourceGroup，Kubernetes 群集是 contosoAKSCluster 。
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
@@ -110,18 +110,20 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 ## <a name="create-your-own-secretproviderclass-object"></a>创建自己的 SecretProviderClass 对象
 
-若要自行创建自定义 SecretProviderClass 对象，并为机密存储 CSI 驱动程序指定提供程序特定的参数，请[使用此模板](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml)。 此对象将提供对密钥保管库的标识访问。
+若要自行创建自定义 SecretProviderClass 对象，并为机密存储 CSI 驱动程序指定提供程序特定的参数，请[使用此模板](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml)。 此对象将提供对密钥保管库的标识访问。
 
 在示例 SecretProviderClass YAML 文件中，填写缺少的参数。 下列参数必填：
 
-* **userAssignedIdentityID**：服务主体的客户端 ID
+* **userAssignedIdentityID**：# [必需] 如果使用服务主体，请使用客户端 ID 指定要使用的用户分配的托管标识。 如果使用用户分配的标识作为 VM 的托管标识，请指定标识的客户端 ID。如果该值为空，则默认情况下，将在 VM 上使用系统分配的标识 
 * **keyvaultName**：密钥保管库的名称
 * **对象**：包含要装载的所有机密内容的容器
     * **objectName**：机密内容的名称
     * **objectType**：对象类型（机密、密钥、证书）
-* **resourceGroup**：资源组的名称
-* **subscriptionId**：密钥保管库的订阅 ID
+* **resourceGroup**：资源组的名称 # [版本 < 0.0.4 时需要] KeyVault 的资源组
+* **subscriptionId**：密钥保管库的订阅 ID # [版本 < 0.0.4 时需要] KeyVault 的订阅 ID
 * **tenantID**：密钥保管库的租户 ID 或目录 ID
+
+此处提供所有必填字段的文档：[链接](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)。
 
 更新后的模板如以下代码所示。 将其下载为 YAML 文件，并填写必填字段。 在本例中，密钥保管库为 contosoKeyVault5。 它有两个机密，secret1 和 secret2 。
 
@@ -210,6 +212,11 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 1. 若要创建、列出或读取用户分配的托管标识，需要为 AKS 群集分配[托管标识操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。 请确保 $clientId 是 Kubernetes 群集的 clientId。 就范围而言，它处于 Azure 订阅服务（特别是创建 AKS 群集时创建的节点资源组）下。 此范围将确保仅该组中的资源受下面分配的角色的影响。 
 
     ```azurecli
+    RESOURCE_GROUP=contosoResourceGroup
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+    
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
@@ -304,6 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
+          nodePublishSecretRef:
+              name: secrets-store-creds 
 ```
 
 运行以下命令来部署 Pod：

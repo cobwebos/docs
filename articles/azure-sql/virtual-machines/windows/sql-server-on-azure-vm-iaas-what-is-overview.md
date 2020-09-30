@@ -1,24 +1,24 @@
 ---
 title: Azure Windows 虚拟机上的 SQL Server 概述 | Microsoft Docs
-description: 了解如何在云中的 Azure 虚拟机上运行完整版的 SQL Server，无需管理任何本地硬件。
+description: 了解如何在云中的 Azure 虚拟机上运行完整版本的 SQL Server，而无需管理任何本地硬件。
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 541f3e5ada69568506969f6406564a8ff59c0ba6
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
-ms.translationtype: MT
+ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613221"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272151"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机 (Windows) 上的 SQL Server 是什么？
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,11 +27,11 @@ ms.locfileid: "89613221"
 > * [Windows](sql-server-on-azure-vm-iaas-what-is-overview.md)
 > * [Linux](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 
-[Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 允许你在云中使用完整版本的 SQL Server，而不需管理任何本地硬件。 SQL Server 虚拟机 (Vm) 还会在你根据需要时简化许可成本。
+[Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 允许你在云中使用完整版本的 SQL Server，而不需管理任何本地硬件。 使用即用即付时，SQL Server 虚拟机 (VM) 还可以简化许可成本。
 
 Azure 虚拟机在全球许多不同的[地理区域](https://azure.microsoft.com/regions/)运行， 并提供各种[虚拟机大小](../../../virtual-machines/windows/sizes.md)。 使用虚拟机映像库可以创建 SQL Server VM，而且版本和操作系统都很正确。 因此，虚拟机适用于许多不同的 SQL Server 工作负荷。
 
-如果不熟悉如何 SQL Server Azure Vm，请参阅 azure *Vm 概述* 视频，详细 SQL Server 了解 azure vm [视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)：
+如果你不熟悉 Azure VM 上的 SQL Server，请查看我们深度讲解的 [Azure SQL 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的“Azure VM 上的 SQL Server 概述”视频：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>自动更新
@@ -80,7 +80,7 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL Server
 ### <a name="bring-your-own-license"></a><a id="BYOL"></a> 自带许可
 也可以自带许可 (BYOL)。 在此方案中，你只需支付 VM 费用，SQL Server 许可不需要任何额外的费用。  自带许可证长时间会节省资金，因为可以持续使用生产型工作负荷。 有关使用此选项的要求，请参阅 [SQL Server Azure VM 定价指南](pricing-guidance.md#byol)。
 
-若要自带许可证，可以转换现有的按用量付费的 SQL Server VM，也可以部署前缀为 {BYOL} 的映像。 若要详细了解如何在按使用量付费和 BYOL 之间切换许可模式，请参阅 [如何更改 SQL Server VM 的许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+若要自带许可证，可以转换现有的按用量付费的 SQL Server VM，也可以部署前缀为 {BYOL} 的映像。 有关在按使用量付费和 BYOL 之间切换许可模型的更多信息，请参阅[如何更改 SQL Server VM 的许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 | 版本 | 操作系统 | 版本 |
 | --- | --- | --- |

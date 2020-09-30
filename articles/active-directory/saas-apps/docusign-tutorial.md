@@ -1,6 +1,6 @@
 ---
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 DocuSign 之间配置单一登录。
+description: 了解如何在 Azure Active Directory 和 DocuSign 之间配置单一登录 (SSO)。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c91f9d38922cc1bddf252fde59291c2f233e1aa2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 51ad28319a372cd791575b5a3e67cc0fd6934be2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650204"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "89650204"
 * 在 Azure AD 中控制谁有权访问 DocuSign。
 * 让用户通过其 Azure AD 帐户自动登录到 DocuSign。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure AD 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,18 +40,19 @@ ms.locfileid: "89650204"
 
 本教程将在测试环境中配置并测试 Azure AD SSO，以验证：
 
-* DocuSign 支持服务提供商 (SP) 发起的 SSO。
+* DocuSign 支持服务提供商 SP 发起的 SSO。
 
 * DocuSign 支持**实时**用户预配。
 
 * DocuSign 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
+
 * 配置 DocuSign 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>从库中添加 DocuSign
 
 若要配置 DocuSign 与 Azure AD 的集成，必须从库中将 DocuSign 添加到托管 SaaS 应用列表：
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
@@ -65,7 +64,7 @@ ms.locfileid: "89650204"
 
 使用名为 **B.Simon** 的测试用户配置并测试 DocuSign 的 Azure AD SSO。 若要正常使用 SSO，必须在 Azure AD 用户与 DocuSign 中的相应用户之间建立链接关系。
 
-若要配置并测试 DocuSign 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 DocuSign 的 Azure AD SSO，请执行以下步骤：
 
 1. [配置 Azure AD SSO](#configure-azure-ad-sso)，使用户能够使用此功能。
     1. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以使用 B.Simon 测试 Azure AD 单一登录。
@@ -78,7 +77,7 @@ ms.locfileid: "89650204"
 
 若要在 Azure 门户中启用 Azure AD SSO，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“DocuSign”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
+1. 在 Azure 门户中的“DocuSign”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的笔形图标以编辑设置   。
 
@@ -131,15 +130,9 @@ ms.locfileid: "89650204"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“DocuSign”。
 1. 在应用的概述页上找到“管理”部分，然后选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后按下屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后按下屏幕底部的“选择”按钮。 
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，选择“分配”按钮。 
 
 ## <a name="configure-docusign-sso"></a>配置 DocuSign SSO
@@ -236,21 +229,18 @@ ms.locfileid: "89650204"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中选择“DocuSign”磁贴时，应会自动登录到设置了 SSO 的 DocuSign 实例。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 DocuSign 登录 URL，可以在其中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+2. 直接转到 DocuSign 登录 URL，并在其中启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure AD 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击“DocuSign”磁贴时，应会自动登录到设置了 SSO 的 DocuSign。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
-- [Azure AD 中的应用程序访问和单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure AD 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+## <a name="next-steps"></a>后续步骤
 
-- [在 Azure AD 中试用 DocuSign](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+配置 DocuSign 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

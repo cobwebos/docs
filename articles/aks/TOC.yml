@@ -4,6 +4,8 @@
   items:
     - name: 关于 AKS
       href: intro-kubernetes.md
+    - name: 解决方案体系结构
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
 - name: 快速入门
   expanded: true
   items:
@@ -365,7 +367,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: troubleshooting.md

@@ -2,16 +2,16 @@
 title: Azure Cosmos 模拟器下载和发行说明
 description: 获取不同版本的 Azure Cosmos 模拟器发行说明并下载信息。
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
-ms.date: 06/20/2019
-ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/21/2020
+ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083451"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988189"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -26,18 +26,25 @@ ms.locfileid: "86083451"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="2112-07072020"></a>2.11.2 (2020/07/07)
+### <a name="2115-23-august-2020"></a>2.11.5（2020 年 8 月 23 日）
 
-- 此版本更改了收集 Cosmos 模拟器故障时所需的 ETL 跟踪的方式。 现在默认使用 Windows 性能运行时工具 (WPR) 捕获基于 ETL 的跟踪，而旧的基于 LOGMAN 的捕获已弃用。 此更改在一定程度上是必需的，因为最新的 Windows 安全更新会对 LOGMAN 在通过 Cosmos 模拟器执行时的工作方式产生意外影响。
+此版本添加了两个新的 Cosmos 模拟器启动选项： 
 
-### <a name="2111-06102020"></a>2.11.1 (2020/06/10)
+* “/EnablePreview”- 它启用模拟器的预览功能。 预览功能仍处于开发阶段，可通过 CI 和示例编写进行访问。
+* “/EnableAadAuthentication”- 它允许模拟器接受自定义 Azure Active Directory 令牌作为 Azure Cosmos 主密钥的替代项。 此功能仍处于开发阶段；当前不支持特定的角色分配和其他与权限相关的设置。
 
-- 此版本修复了与仿真程序数据资源管理器相关的几个 bug。 在某些情况下，通过 Web 浏览器使用仿真程序数据资源管理器时，会无法连接到 Cosmos 仿真程序终结点，并且所有相关操作（如创建数据库或容器）都将出错。 解决的第二个问题与使用数据资源管理器上传操作从 JSON 文件创建项有关。
+### <a name="2112-07-july-2020"></a>2.11.2（2020 年 7 月 7 日）
+
+- 此版本更改了收集 Cosmos 模拟器故障时所需的 ETL 跟踪的方式。 现在默认使用 Windows 性能运行时工具 (WPR) 捕获基于 ETL 的跟踪，而旧的基于 LOGMAN 的捕获已被弃用。 此更改在一定程度上是必需的，因为最新的 Windows 安全更新会对 LOGMAN 在通过 Cosmos 模拟器执行时的工作方式产生意外影响。
+
+### <a name="2111-10-june-2020"></a>2.11.1（2020 年 6 月 10 日）
+
+- 此版本修复了与仿真程序数据资源管理器相关的几个 bug。 在某些情况下，通过 Web 浏览器使用模拟器数据资源管理器时，无法连接到 Cosmos 模拟器终结点，并且所有相关操作（如创建数据库或容器）都将导致错误。 解决的第二个问题与使用数据资源管理器上传操作从 JSON 文件创建项有关。
 
 ### <a name="2110"></a>2.11.0
 
 - 此版本引入了对自动缩放预配吞吐量的支持。 这些新功能包括：以请求单位 (RU/s) 设置自定义的最大预配吞吐量级别，在现有数据库和容器上启用自动缩放，以及通过 Azure Cosmos DB SDK 提供编程支持。
-- 解决了查询大量文档（超过 1GB）时模拟器会失败并出现内部错误状态代码 500 的问题。
+- 解决了查询大量文档（超过 1 GB）时模拟器会失败并出现内部错误状态代码 500 的问题。
 
 ### <a name="292"></a>2.9.2
 
@@ -57,7 +64,7 @@ ms.locfileid: "86083451"
 
 ### <a name="270"></a>2.7.0
 
-- 此版本修复了一个回归，该回归阻止用户在使用基于 .Net Core 或 x86 .NET 的客户端时从模拟器对 SQL API 帐户执行查询。
+- 此版本解决了一项性能下降的问题，它使得用户在使用基于 .Net Core 或 x86 .NET 的客户端时无法从模拟器对 SQL API 帐户执行查询。
 
 ### <a name="246"></a>2.4.6
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551041"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教程：Azure Active Directory 与 FreshDesk 集成
 
@@ -55,7 +55,7 @@ ms.locfileid: "88551041"
 1. 在“从库中添加”部分的搜索框中，键入“FreshDesk” 。
 1. 从结果面板中选择“FreshDesk”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>配置并测试 FreshDesk 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>配置并测试 FreshDesk 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 FreshDesk 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 FreshDesk 相关用户之间建立关联。
 
@@ -81,9 +81,11 @@ ms.locfileid: "88551041"
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.freshdesk.com`，或者键入 Freshdesk 建议的其他值。
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<tenant-name>.freshdesk.com`，或者键入 Freshdesk 建议的其他值。
-
+     
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.freshdesk.com/login/saml`
+    
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请与 [FreshDesk 客户端支持团队](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请与 [FreshDesk 客户端支持团队](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. FreshDesk 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 下面的屏幕截图显示默认属性的列表，而“唯一用户标识符”与 user.userprincipalname 映射，但 FreshDesk 希望此声明与 user.mail 映射，因此需要通过单击“编辑”图标来编辑属性映射，然后更改属性映射。
 
@@ -107,7 +109,7 @@ ms.locfileid: "88551041"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
@@ -124,7 +126,7 @@ ms.locfileid: "88551041"
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
     d. 单击“创建”。
 
@@ -149,7 +151,7 @@ ms.locfileid: "88551041"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
 6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 

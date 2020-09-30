@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 370712ea976db027abee943d786f6ce81ac99c4a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 10e17a4fba1adbccf71497c54060fda2f60088ab
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376003"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90525331"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -137,7 +137,7 @@ ms.locfileid: "89376003"
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 
-    ![磁盘](./media/tutorial-migrate-hyper-v/disks.png)
+    ![屏幕截图显示“复制”对话框的“磁盘”选项卡。](./media/tutorial-migrate-hyper-v/disks.png)
 
 13. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f60a0167e7ac09b1fdfee87cc8412cdbe19053
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1b9d7ad93c287aa9313658ec6b8d5df9f2219f27
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255942"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968858"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>使用 REST API 调用在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -37,11 +37,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 如果使用 Windows，请安装[适用于 Linux 的 Windows 子系统](/windows/wsl/about)或使用 Azure 门户中的 [Azure Cloud Shell](../../cloud-shell/overview.md)。
-- 如果使用[适用于 Linux 的 Windows 子系统](/windows/wsl/about)或 [Linux 分发版 OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)，请[安装 Azure CLI 本地控制台](/cli/azure/install-azure-cli)。
-- 如果使用 Azure CLI 本地控制台，请使用 `az login` 和与要用于管理系统或用户分配的托管标识的 Azure 订阅关联的帐户登录。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- 可在云中或在本地运行本文中的所有命令：
+    - 若要在云中运行，请使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
+    - 若要在本地运行，请安装 [curl](https://curl.haxx.se/download.html) 和 [Azure CLI](/cli/azure/install-azure-cli)，然后使用 [az login](/cli/azure/reference-index#az-login) 和帐户登录，其中该帐户与要用于管理系统或用户分配的托管标识的 Azure 订阅相关联。
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 

@@ -69,8 +69,10 @@
       href: load-balancer-tcp-reset.md
     - name: 标准负载均衡器和可用性区域
       href: load-balancer-standard-availability-zones.md
-    - name: 内置安全控件
-      href: load-balancer-security-controls.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 后端池管理
       href: backend-pool-management.md
     - name: 标准负载均衡器和虚拟机规模集

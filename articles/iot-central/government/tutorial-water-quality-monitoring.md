@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82024466"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972368"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
 
@@ -256,4 +256,7 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[水质监测的概念](./concepts-waterqualitymonitoring-architecture.md)。
+* 详细了解以下内容 
+
+> [!div class="nextstepaction"]
+> [水质检测概念](./concepts-waterqualitymonitoring-architecture.md)。

@@ -9,18 +9,22 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073176"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983229"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 密钥保管库可用性和冗余
 
 Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可供应用程序使用，即使服务的单个组件发生故障也是如此。
 
+> [!NOTE]
+> 本指南适用于保管库。 托管 HSM 池使用其他高可用性和灾难恢复模型。 要了解详细信息，请参阅[有关托管 HSM 灾难恢复的指南](../managed-hsm/disaster-recovery-guide.md)。
+
 密钥保管库的内容会在区域中复制，并且会复制到至少 150 英里以外（但位于同一个地理位置）的次要区域，以保持密钥和机密的高持续性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)一文。
+
 
 如果密钥保管库服务中的单独组件发生故障，则区域内的替代组件将继续处理请求，确保不会导致功能损失。 要开始此过程，你无需执行任何操作；此过程以透明的方式自动发生。
 
@@ -42,9 +46,10 @@ Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可�
   * 解密
   * 包装
   * 解包
-  * Verify
+  * 验证
   * 签名
   * 备份
-* 在故障转移期间，无法更改密钥保管库属性。 不能更改访问策略或防火墙配置和设置。
-* 故障回复之后，所有请求类型（包括读取*和*写入请求）都将可用。
 
+* 在故障转移期间，无法更改密钥保管库属性。 不能更改访问策略或防火墙配置和设置。
+
+* 故障回复之后，所有请求类型（包括读取*和*写入请求）都将可用。

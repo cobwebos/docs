@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001336"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980750"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教程：部署并演练数字分发中心应用程序模板
 
@@ -35,7 +35,7 @@ ms.locfileid: "81001336"
 1. 导航到 Azure IoT Central 应用程序管理器网站。 从左侧导航栏中选择“生成”，然后单击“零售”选项卡   。
 
     > [!div class="mx-imgBorder"]
-    > ![数字分发中心](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > ![显示如何选择数字分发中心应用程序模板的屏幕截图](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
 2. 选择“零售”选项卡，然后在“数字分发中心应用程序”下选择“创建应用”   
 
@@ -46,10 +46,10 @@ ms.locfileid: "81001336"
    **创建**：选择页面底部的“创建”以部署应用程序。
 
     > [!div class="mx-imgBorder"]
-    > ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > ![显示如何从数字分发中心应用程序模板创建应用的屏幕截图](./media/tutorial-iot-central-ddc/ddc-create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![数字分发计费信息](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+    > ![显示创建应用程序时的计费选项的屏幕截图](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>演练应用程序仪表板 
 
@@ -62,31 +62,31 @@ ms.locfileid: "81001336"
    * 管理解决方案中的所有摄像机。 
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
+> ![显示数字分发中心仪表板的屏幕截图](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
 ## <a name="device-template"></a>设备模板
 
 单击“设备模板”选项卡，你将看到网关功能模型。 功能模型是围绕两个不同的接口“摄像机”和“数字分发网关”构建的  
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![显示应用程序中数字分发网关设备模板的屏幕截图](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 **照相机** - 此接口组织所有特定于照相机的命令功能 
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![显示数字分发网关设备模板中相机接口的屏幕截图](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 **数字分发网关** - 此接口表示来自相机、云定义的设备孪生属性和网关信息的所有遥测。
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![显示数字分发网关设备模板中数字分发网关接口的屏幕截图](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 
 ## <a name="gateway-commands"></a>网关命令
 此接口组织了所有网关命令功能
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![显示数字分发网关设备模板中网关命令接口的屏幕截图](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>规则
 选择“规则”选项卡以查看此应用程序模板中存在的两个不同规则。 这些规则配置为通过电子邮件将通知发送给操作员以进行进一步调查。
@@ -96,7 +96,7 @@ ms.locfileid: "81001336"
 **大型包裹** - 如果摄像机检测到无法检查其质量的大型包裹，则将触发此规则。 
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![显示数字分发中心应用程序中规则列表的屏幕截图](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>作业
 选择“作业”选项卡以查看此应用程序模板中存在的五个不同的作业：可以使用作业功能来执行解决方案范围的操作。 此处，数字分发中心作业将使用设备命令和孪生功能执行以下任务：
@@ -105,15 +105,17 @@ ms.locfileid: "81001336"
    * 修改遥测间隔时间以管理数据上传
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![显示数字分发中心应用程序中作业列表的屏幕截图](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 如果不打算继续使用此应用程序，请访问“管理” > “应用程序设置”并单击“删除”，以删除应用程序模板    。
 
 > [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![显示如何在使用应用程序后将其删除的屏幕截图](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解数字分发中心解决方案体系结构[数字分发中心的概念](./architecture-digital-distribution-center.md)
+* 详细了解数字分发中心解决方案体系结构 
+> [!div class="nextstepaction"]
+> [数字分发中心概念](./architecture-digital-distribution-center.md)
 * 详细了解其他 [IoT Central 零售模板](./overview-iot-central-retail.md)
 * 请参阅 [IoT Central 概述](../core/overview-iot-central.md)，详细了解 IoT Central

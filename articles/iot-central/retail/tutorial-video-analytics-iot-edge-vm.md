@@ -1,6 +1,6 @@
 ---
 title: 教程 - 在 Azure IoT Central 中创建视频分析 IoT Edge 实例 (Linux VM)
-description: 本教程演示如何创建视频分析 IoT Edge 实例，以便与视频分析 - 对象和运动检测应用程序模板一起使用。
+description: 本教程介绍如何在 Linux VM 上创建视频分析 IoT Edge 实例，以便与视频分析 - 对象和运动检测应用程序模板一起使用。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037859"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526385"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>教程：创建用于视频分析的 IoT Edge 实例 (Linux VM)
 

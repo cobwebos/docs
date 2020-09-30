@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
-ms.author: miguego
-ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/10/2020
+ms.author: jeedes
+ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552167"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979706"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 单一登录与本地 SharePoint 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "88552167"
 * 在 Azure AD 中控制谁有权访问本地 SharePoint。
 * 让用户使用其 Azure AD 帐户自动登录到本地 SharePoint。
 * 在 Azure 门户中管理帐户。
-
-若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +43,7 @@ ms.locfileid: "88552167"
 
 若要从库中添加本地 SharePoint，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.com)最左侧的窗格中，选择“Azure Active Directory”。
+1. 在 Azure 门户最左侧的窗格中，选择“Azure Active Directory”。
 
    > [!NOTE]
    > 如果该元素不可用，还可通过最左侧窗格顶部的“所有服务”链接将其打开。 在以下概述中，“Azure Active Directory”链接位于“标识”部分。 还可以使用筛选器框来搜索它。
@@ -72,7 +70,7 @@ ms.locfileid: "88552167"
 
 若要配置并测试本地 SharePoint 的 Azure AD SSO，请完成以下构建基块：
 
-- [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)，使用户能够使用此功能。
+- [配置 Azure AD SSO](#configure-azure-ad-sso)，使用户能够使用此功能。
 - [配置本地 SharePoint](#configure-sharepoint-on-premises) - 在应用程序端配置 SSO 设置。
 - [在 Azure 门户中创建 Azure AD 测试用户](#create-an-azure-ad-test-user-in-the-azure-portal) - 在 Azure AD 中创建用于 SSO 的新用户。
 - [在 Azure 门户中创建 Azure AD 安全组](#create-an-azure-ad-security-group-in-the-azure-portal) - 在 Azure AD 中创建用于 SSO 的新安全组。
@@ -81,13 +79,13 @@ ms.locfileid: "88552167"
 - [在 Azure 门户中向来宾帐户授予对本地 SharePoint 的访问权限](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal) - 向 Azure AD 中的来宾帐户授予对本地 SharePoint 的权限。
 - [为多个 Web 应用程序配置受信任的标识提供者](#configure-the-trusted-identity-provider-for-multiple-web-applications) - 对多个 Web 应用程序使用相同的受信任标识提供者。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 在本部分，你将在 Azure 门户中启用 Azure AD SSO。
 
 若要配置本地 SharePoint 的 Azure AD SSO，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“Azure Active Directory” > “企业应用程序”。 选择之前创建的企业应用程序名称，然后选择“单一登录”。
+1. 在 Azure 门户中，选择“Azure Active Directory” > “企业应用程序”。 选择之前创建的企业应用程序名称，然后选择“单一登录”。
 
 1. 在“选择单一登录方法”对话框中，选择“SAML”模式以启用 SSO 。
  
@@ -205,7 +203,7 @@ ms.locfileid: "88552167"
   > [!NOTE]
   > 如果没有 AzureCP，可以通过添加 Azure AD 组的 ID 来添加组，但此方法不具备用户友好性，且不可靠。 其如下所示：
   > 
-  >![将 Azure AD 组添加到 SharePoint 组](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  >![按 ID 将 Azure AD 组添加到 SharePoint 组](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
   
 ### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>向本地 SharePoint 中的 Azure AD 组授予权限
 
@@ -244,7 +242,7 @@ ms.locfileid: "88552167"
 
 1. 将“源属性”属性更改为值“user.localuserprincipalname”，然后选择“保存”  。
 
-    ![“用户属性和声明”初始值](./media/sharepoint-on-premises-tutorial/manage-claim.png)
+    ![“用户属性和声明”初始源属性](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
 1. 使用功能区返回“基于 SAML 的登录”。 现在，“用户属性和声明”部分如下所示： 
 
@@ -287,9 +285,6 @@ ms.locfileid: "88552167"
 
 你可能会遇到想要授予内部用户对本地 SharePoint 实例的访问权限的其他方案。 对于这种情况，你必须部署 Microsoft Azure Active Directory Connect 才能允许本地用户与 Azure AD 同步。 此设置将在另一篇文章中讨论。
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [什么是使用 Azure Active Directory 的混合标识？](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+配置本地 SharePoint 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

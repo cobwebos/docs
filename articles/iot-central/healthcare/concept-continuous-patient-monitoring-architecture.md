@@ -1,52 +1,52 @@
 ---
 title: Azure IoT Central 中的持续患者监视体系结构 | Microsoft Docs
-description: 了解持续患者监视解决方案体系结构。
+description: 教程 - 了解持续患者监视解决方案体系结构。
 author: philmea
 ms.author: philmea
-ms.date: 7/23/2020
+ms.date: 09/14/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 0032f341330ad394241806a4fe61add530253f09
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116868"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972231"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>持续患者监视体系结构
 
-
+本文介绍从“持续患者监视”应用程序模板生成的解决方案的体系结构：
 
 利用提供的应用模板，并使用下面概述的体系结构作为指导，可以生成持续患者监视解决方案。
 
->[!div class="mx-imgBorder"] 
->![CPM 体系结构](media/cpm-architecture.png)
-
-1. 医疗设备使用低耗电蓝牙 (BLE) 进行通信
-1. 手机网关接收 BLE 数据并将其发送到 IoT Central
-1. 将患者健康状况数据连续导出到 Azure API for FHIR&reg;
-1. 基于互操作数据的机器学习
-1. 基于 FHIR 数据生成的护理团队仪表板
+:::image type="content" source="media/cpm-architecture.png" alt-text="持续患者监视体系结构":::
 
 ## <a name="details"></a>详细信息
-本节会更详细地概述体系结构图的每个部分。
 
-### <a name="ble-medical-devices"></a>BLE 医疗设备
-医疗保健 IoT 领域中使用的许多医用可穿戴设备都是低耗电蓝牙设备。 这些设备无法直接与云通信，需要通过网关。 此体系结构建议使用手机应用程序作为此网关。 
+本节会更详细地概述体系结构图的每个部分：
+
+### <a name="bluetooth-low-energy-ble-medical-devices"></a>蓝牙低功耗 (BLE) 医疗设备
+
+医疗保健 IoT 解决方案中使用的许多医疗可穿戴设备都是 BLE 设备。 这些设备无法直接与云通信，需要使用网关与云解决方案交换数据。 此体系结构使用手机应用程序作为网关。
 
 ### <a name="mobile-phone-gateway"></a>手机网关
-该手机应用程序的主要功能是从医疗设备引入 BLE 数据，并将其传递给 Azure IoT Central。 此外，该应用还可以帮助指导患者完成设备设置和预配流程，并帮助他们查看其个人健康状况数据视图。 如果是在医院病房内，其他解决方案可以使用平板电脑网关或静态网关实现相同的通信流。 我们创建了一个适用于 Android 和 iOS 的开放源代码示例移动应用程序，你可以将它用作开始应用程序开发工作的起点。 有关 IoT Central 持续患者监视移动应用示例的详细信息，请参阅 [Azure 示例](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
+
+该手机应用程序的主要功能是从医疗设备收集 BLE 数据，并将其传递给 IoT Central。 该应用还通过设备设置指导患者，让他们查看自己的个人健康数据。 其他解决方案可以使用病房中的平板电脑网关或静态网关。 开源示例移动应用程序可用于 Android 和 iOS，以用作应用程序开发的起点。 若要了解详细信息，请参阅 [IoT Central 持续患者监视移动应用](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>导出到 Azure API for FHIR&reg;
-Azure IoT Central 符合 HIPAA 并通过 HITRUST&reg; 认证，但你可能还希望将与患者健康状况相关的数据发送到 Azure API for FHIR。 [Azure API for FHIR](../../healthcare-apis/overview.md) 是完全托管的、基于标准的、符合法规的临床健康状况数据 API，让你可以用健康状况数据创建新的参与系统。 它由云中托管的平台即服务 (PaaS) 产品/服务提供支持，通过 FHIR API 即可快速交换数据。 使用 IoT Central 的持续数据导出功能，可以通过[适用于 FHIR 的 Azure IoT 连接器](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart)将数据发送到 Azure API for FHIR。
+
+Azure IoT Central 符合 HIPAA 并经过 HITRUST&reg; 认证。 还可以使用 [Azure API for FHIR](../../healthcare-apis/overview.md) 向其他服务发送患者健康状况数据。 Azure API for FHIR 是基于标准的临床健康状况数据 API。 通过[适用于 FHIR 的 Azure IoT 连接器](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart)，可以将 Azure API for FHIR 用作 IoT Central 的连续数据导出目标。
 
 ### <a name="machine-learning"></a>机器学习
-聚合数据并将其转换为 FHIR 格式后，你可以生成机器学习模型，以便提供丰富的见解，让护理团队能够作出明智的决策。 可使用各种服务构建、训练和部署机器学习模型。 有关如何使用 Azure 机器学习产品/服务的详细信息，请参阅[机器学习文档](../../machine-learning/index.yml)。
+
+将机器学习模型与 FHIR 数据一起使用，以生成见解并支持护理团队的决策制定。 若要了解详细信息，请参阅 [Azure 机器学习文档](../../machine-learning/index.yml)。
 
 ### <a name="provider-dashboard"></a>提供程序仪表板
-可使用位于 Azure API for FHIR 中的数据生成患者见解仪表板，也可以将其直接集成到 EMR 中，帮助护理团队查看患者状态。 护理团队可以使用此仪表板来照顾需要帮助的患者，并发现病情恶化的早期征兆。 若要了解如何构建 Power BI 实时提供程序仪表板，请遵循[操作指南](howto-health-data-triage.md)。
+
+使用 Azure API for FHIR 数据构建患者见解仪表板或将其直接集成到护理团队使用的电子病历中。 护理团队可以使用仪表板帮助患者并识别恶化的早期警告迹象。 若要了解详细信息，请参阅[构建 Power BI 提供程序仪表板](howto-health-data-triage.md)教程。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解如何部署持续监视患者应用程序模板](tutorial-continuous-patient-monitoring.md)
+
+建议的下一步是[了解如何部署持续监视患者应用程序模板](tutorial-continuous-patient-monitoring.md)。

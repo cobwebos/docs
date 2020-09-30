@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4111752d949b7ed2b0ea14734e5d795564718611
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554764"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661917"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Mapbox 的集成
 
@@ -42,13 +42,16 @@ ms.locfileid: "88554764"
 * Mapbox 支持 IDP 发起的 SSO
 * 配置 Mapbox 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
 ## <a name="adding-mapbox-from-the-gallery"></a>从库中添加 Mapbox
 
 若要配置 Mapbox 与 Azure AD 的集成，需要从库中将 Mapbox 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Mapbox” 。
 1. 从结果面板中选择“Mapbox”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -76,7 +79,7 @@ ms.locfileid: "88554764"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”按钮来保存配置。
+1. 在基本 SAML 配置  部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”按钮来保存配置。
 
 1. Mapbox 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 Mapbox 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
@@ -109,7 +112,7 @@ ms.locfileid: "88554764"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -122,12 +125,12 @@ ms.locfileid: "88554764"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-mapbox-sso"></a>配置 Mapbox SSO
@@ -136,15 +139,15 @@ ms.locfileid: "88554764"
 
 1. 单击“设置”选项卡。
 
-    ![Mapbox 配置](./media/mapbox-tutorial/configure1.png)
+    ![Mapbox“设置”选项卡](./media/mapbox-tutorial/configure1.png)
 
 1. 在左侧导航窗格中单击“安全”选项卡。
 
-    ![Mapbox 配置](./media/mapbox-tutorial/configure2.png)
+    ![单击“安全”选项卡](./media/mapbox-tutorial/configure2.png)
 
 1. 单击“编辑单一登录”。
 
-    ![Mapbox 配置](./media/mapbox-tutorial/configure3.png)
+    ![Mapbox“编辑单一登录”](./media/mapbox-tutorial/configure3.png)
 
 1. 向下滚动到“步骤 3：为 Mapbox 设置 SAML 单一登录”，并执行以下步骤：
 

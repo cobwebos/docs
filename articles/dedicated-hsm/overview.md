@@ -1,6 +1,6 @@
 ---
 title: 什么是专用 HSM？ - Azure 专用 HSM | Microsoft Docs
-description: 关于 Azure 专用 HSM 在 Azure 中提供符合 FIPS 140-2 级别 3 认证的密钥存储功能的概述
+description: 了解 Azure 专用 HSM 为何是一项在 Azure 中提供加密密钥存储的 Azure 服务。
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881079"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970201"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>什么是 Azure 专用 HSM？
 
@@ -87,8 +87,8 @@ Azure 专用 HSM 是否适合取决于你能否做出需求和妥协的复杂组
 
 [Gemalto 集成指南](https://safenet.gemalto.com/partners/microsoft/)有助于简化将 HSM 配置到现有虚拟网络环境中的过程。 还有一些操作指南可帮助你确定如何设置部署体系结构。
 
-* [高可用性](high-availability.md)
-* [物理安全性](physical-security.md)
+* 高可用性
+* 物理安全性
 * [网络](networking.md)
 * [可支持性](supportability.md)
 * [Monitoring](monitoring.md)

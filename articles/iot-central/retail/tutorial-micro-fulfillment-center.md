@@ -5,14 +5,14 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001266"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980548"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教程：部署和演练微型配送中心应用程序模板
 
@@ -62,11 +62,11 @@ ms.locfileid: "81001266"
    * 查看楼面布置图，以及机器人载体在配送结构中的位置。
    * 触发命令，例如重置控制系统、更新载体的固件，以及重新配置网络。
 
-     ![Northwind Traders 微型配送中心仪表板的屏幕截图](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders 微履行中心仪表板上半部分的屏幕截图](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * 参阅可供操作员用来监视配送中心内的条件的仪表板示例。 
    * 监视配送中心内网关设备上运行的有效负载的运行状况。    
 
-     ![Northwind Traders 微型配送中心仪表板的屏幕截图](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders 微履行中心仪表板下半部分的屏幕截图](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>设备模板
 如果选择“设备模板”选项卡，将会看到模板中包含两种不同的设备类型： 
@@ -91,6 +91,9 @@ ms.locfileid: "81001266"
 ![微型配送中心“应用程序设置”页的屏幕截图](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解[微型配送中心解决方案体系结构](./architecture-micro-fulfillment-center.md)。
-* 详细了解其他 [Azure IoT Central 零售模板](./overview-iot-central-retail.md)。
-* 阅读 [Azure IoT Central 概述](../preview/overview-iot-central.md)。
+
+详细了解以下内容
+> [!div class="nextstepaction"]
+> [微履行中心解决方案体系结构](./architecture-micro-fulfillment-center.md)
+* 详细了解 [Azure IoT Central 零售模板](./overview-iot-central-retail.md)
+* 详细了解其他 [Azure IoT Central 概述](../preview/overview-iot-central.md)

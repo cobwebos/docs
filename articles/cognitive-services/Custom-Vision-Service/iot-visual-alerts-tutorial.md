@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244663"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604285"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教程：配合使用自定义视觉和 IoT 设备来报告视觉状态
 
@@ -52,7 +52,7 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 * **等待训练的模型**：在此状态下，应用每秒调用自定义视觉 API，以检查目标项目是否包含训练的迭代。 找到一个训练的迭代后，会将相应的 ONNX 模型下载到本地文件，并切换到“评分”状态  。
 * **评分**：在此状态下，应用根据本地 ONNX 模型使用 Windows ML 评估照相机中的单个帧。 屏幕上会显示生成的图像分类，并作为消息发送到 IoT 中心。 应用会休眠一秒钟，然后对新图像评分。
 
-## <a name="understand-the-code-structure"></a>了解代码结构
+## <a name="examine-the-code-structure"></a>检查代码结构
 
 以下文件处理应用的主要功能。
 
@@ -98,13 +98,13 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 
 ## <a name="train-the-custom-vision-model"></a>训练自定义视觉模型
 
-应用完成图像捕获后，会上传图像，然后切换到“等待训练的模型”状态  。 此时，需要前往[自定义视觉门户](https://www.customvision.ai/)，基于新的训练图像生成模型。 下面的动画展示了此过程。
+应用完成图像捕获后，会上传图像，然后切换到“等待训练的模型”状态  。 此时，需要前往[自定义视觉网站](https://www.customvision.ai/)，基于新的训练图像生成模型。 下面的动画展示了此过程。
 
 ![动画：标记多个香蕉图像](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 在自己的方案中实现此过程：
 
-1. 登录[自定义视觉门户](http://customvision.ai)。
+1. 登录[自定义视觉网站](http://customvision.ai)。
 1. 查找目标项目，该项目现在应包含应用上传的所有训练图像。
 1. 对于需识别的每个视觉状态，请选择相应的图像并手动应用标记。
     * 例如，如果目标是区分空房间和有人的房间，建议将五个或以上有人的图像标记为新类“People”，将五个或以上没有人的图像标记为“Negative”   。 这可以帮助模型区分这两种状态。

@@ -7,17 +7,17 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 572bd35a916ed97ab0c846e2b8d561bd27b145cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602465"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978258"
 ---
-[沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术以提高阅读理解能力。
+[沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 你可在应用程序中使用沉浸式阅读器来隔离文本，以改进焦点、显示常用词的图片、突出显示语音的各个部分、大声朗读所选文本、实时翻译字词和短语等等。
 
 本快速入门将从头开始构建一个 Android 应用，并集成沉浸式阅读器。 [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) 提供了此快速入门的完整工作示例。
 
@@ -25,6 +25,7 @@ ms.locfileid: "88602465"
 
 ## <a name="prerequisites"></a>先决条件
 
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 为 Azure Active Directory 身份验证配置的沉浸式阅读器资源。 按照[这些说明](../../how-to-create-immersive-reader.md)进行设置。 在配置环境属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
 * [Git](https://git-scm.com/)。
 * [沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk)。
@@ -34,27 +35,27 @@ ms.locfileid: "88602465"
 
 在 Android Studio 中启动新项目。 此示例的源代码作为[沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) 的一部分提供。
 
-![新建项目](../../media/android/java/android-studio-create-project.png)
+![新建项目 - Android](../../media/android/java/android-studio-create-project.png)
 
 在“选择项目”窗口中选择“空活动”，选择“下一步”。  
 
-![“空活动”项目](../../media/android/java/android-studio-empty-activity.png)
+![空活动项目 - Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>配置项目
 
 将项目命名为“QuickstartJava”，然后选择一个保存它的位置。 选择“Java”作为编程语言，然后选择“完成” 。
 
-![配置项目](../../media/android/java/android-studio-configure-project.png)
+![配置项目 - Android](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>设置资产和身份验证
 
 创建新的“/assets”文件夹。
 
-![创建新的“assets”文件夹](../../media/android/java/android-studio-assets-folder.png)
+![创建新的 assets 文件夹 - Android](../../media/android/java/android-studio-assets-folder.png)
 
  在资产文件夹内创建名为“env”的文件。 添加以下名称和值，并根据需要提供值。 不要将此 env 文件提交到源代码管理中，因为它包含不应公开的机密。
 
-![创建新的 env 文件](../../media/android/java/android-studio-create-env-file.png)
+![创建新的 env 文件 - Android](../../media/android/java/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -81,13 +82,13 @@ dependencies {
 }
 ```
 
-![应用 gradle 实现](../../media/android/java/android-studio-build-gradle.png)
+![App gradle 应用 - Android](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>更新应用字符串和布局资源
 
 将“res/strings/strings.xml”中的内容替换为以下要在应用中使用的字符串。
 
-![应用 strings.xml](../../media/android/java/android-studio-strings.png)
+![应用 strings.xml - Android](../../media/android/java/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -97,7 +98,7 @@ dependencies {
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -105,7 +106,7 @@ dependencies {
 
 将“res/layout/activity_main.xml”中的内容替换为以下要在应用中使用的 XML。 此 XML 是应用的 UI 布局。
 
-![应用 activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
+![应用 activity_main.xml - Android](../../media/android/java/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,9 +207,9 @@ dependencies {
 
 在“res/layout/”文件夹中，创建一个新的布局资源文件，将它命名为“activity_immersive_reader” 。 然后将其内容替换为以下 XML。 此 XML 会添加 WebView 组件，供在后面步骤中将创建的 IRActivity Java 代码所使用。 目前它尚未定义，并且将导致错误。
 
-![创建新的布局资源文件](../../media/android/java/android-studio-new-layout-resource.png)
+![创建新的布局资源文件 - Android](../../media/android/java/android-studio-new-layout-resource.png)
 
-![配置新的布局资源](../../media/android/java/android-studio-activity-immersive-reader.png)
+![配置新的布局资源 - Android](../../media/android/java/android-studio-activity-immersive-reader.png)
 
 ```activity_immersive_reader.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +236,7 @@ dependencies {
 
 在“/Java/com.example.quickstartjava”文件夹中，你将看到现有的“MainActivity.java”Java 类文件 。 此文件夹是应用逻辑的编写位置。
 
-![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
+![MainActivity - Android](../../media/android/java/android-studio-main-activity-java.png)
 
 将 MainActivity.java 内容替换为以下代码。 代码中引用的一些类尚不存在，稍后将会创建它们。
 
@@ -292,7 +293,7 @@ public class MainActivity extends Activity {
 
 若要创建新的“ImmersiveReader.java”Java 类文件，请右键单击 Android Studio 中的文件夹、选择“新建”，然后选择“Java 类”  。 将使用相同的方法为创建的每个新 Java 类文件创建 Java 类文件。
 
-![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
+![ImmersiveReader - Android](../../media/android/java/android-studio-immersivereader-java.png)
 
 将“ImmersiveReader.java”内容替换为以下代码：
 
@@ -376,7 +377,7 @@ public class ImmersiveReader {
 
 创建新的“IRActivity.java”Java 类文件。
 
-![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
+![IRActivity - Android](../../media/android/java/android-studio-iractivity-java.png)
 
 将“IRActivity.java”内容替换为以下代码：
 
@@ -460,7 +461,7 @@ public class ImmersiveReader {
 
 创建新的“IRError.java”Java 类文件。
 
-![IRError](../../media/android/java/android-studio-irerror-java.png)
+![IRError - Android](../../media/android/java/android-studio-irerror-java.png)
 
 将“IRError.java”内容替换为以下代码：
 
@@ -539,7 +540,7 @@ public class IRError implements Parcelable {
 
 创建新的“Error.java”Java 类文件。
 
-![错误](../../media/android/java/android-studio-error-java.png)
+![Error - Android](../../media/android/java/android-studio-error-java.png)
 
 将“Error.java”内容替换为以下代码：
 
@@ -570,7 +571,7 @@ public class Error {
 
 创建新的“ReadableContent.java”Java 类文件。
 
-![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
+![ReadableContent - Android](../../media/android/java/android-studio-readablecontent-java.png)
 
 将“ReadableContent.java”内容替换为以下代码：
 
@@ -614,7 +615,7 @@ public class ReadableContent {
 
 创建新的“ReadableTextChunk.java”Java 类文件。
 
-![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
+![ReadableTextChunk - Android](../../media/android/java/android-studio-readabletextchunk-java.png)
 
 将“ReadableTextChunk.java”内容替换为以下代码：
 
@@ -646,7 +647,7 @@ public class ReadableTextChunk {
 
 创建新的“IRDataHolder.java”Java 类文件。
 
-![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
+![IRDataHolder - Android](../../media/android/java/android-studio-irdataholder-java.png)
 
 将“IRDataHolder.java”内容替换为以下代码：
 
@@ -711,7 +712,7 @@ public class IRDataHolder {
 
 创建新的“IRAuthenticator.java”Java 类文件。
 
-![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
+![IRAuthenticator - Android](../../media/android/java/android-studio-irauthenticator-java.png)
 
 将“IRAuthenticator.java”内容替换为以下代码：
 
@@ -822,7 +823,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 创建新的“IRLauncher.java”Java 类文件。
 
-![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
+![IRLauncher - Android](../../media/android/java/android-studio-irlauncher-java.png)
 
 将“IRLauncher.java”内容替换为以下代码：
 
@@ -1015,7 +1016,7 @@ public class IRLauncher {
 
 创建新的“IRStore.java”Java 类文件。
 
-![IRStore](../../media/android/java/android-studio-irstore-java.png)
+![IRStore - Android](../../media/android/java/android-studio-irstore-java.png)
 
 将“IRStore.java”内容替换为以下代码：
 
@@ -1097,7 +1098,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 创建新的“Chunk.java”Java 类文件。
 
-![Chunk](../../media/android/java/android-studio-chunk-java.png)
+![Chunk - Android](../../media/android/java/android-studio-chunk-java.png)
 
 将“Chunk.java”内容替换为以下代码：
 
@@ -1134,7 +1135,7 @@ public class Chunk {
 
 创建新的“Content.java”Java 类文件。
 
-![内容](../../media/android/java/android-studio-content-java.png)
+![Content - Android](../../media/android/java/android-studio-content-java.png)
 
 将“Content.java”内容替换为以下代码：
 
@@ -1170,7 +1171,7 @@ public class Content {
 
 创建新的“Options.java”Java 类文件。
 
-![选项](../../media/android/java/android-studio-options-java.png)
+![Options - Android](../../media/android/java/android-studio-options-java.png)
 
 将“Options.java”内容替换为以下代码：
 
@@ -1204,7 +1205,7 @@ public class Options {
 
 创建新的“Message.java”Java 类文件。
 
-![消息](../../media/android/java/android-studio-message-java.png)
+![Message - Android](../../media/android/java/android-studio-message-java.png)
 
 将“Message.java”内容替换为以下代码：
 
@@ -1242,7 +1243,7 @@ public class Message {
 
 创建新的“WebAppInterface.java”Java 类文件。
 
-![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
+![WebAppInterface - Android](../../media/android/java/android-studio-webappinterface-java.png)
 
 将“WebAppInterface.java”内容替换为以下代码：
 
@@ -1293,9 +1294,9 @@ public class WebAppInterface {
 
 Web 视图的实现需要 HTML 才能工作。 右键单击“/assets”文件夹，创建新文件并将其命名为“immersiveReader.html” 。
 
-![创建新的 html 文件](../../media/android/java/android-studio-immersive-reader-html.png)
+![创建新的 html 文件 - Android](../../media/android/java/android-studio-immersive-reader-html.png)
 
-![HTML 资产位置](../../media/android/java/android-studio-immersive-reader-html-assets.png)
+![HTML 资产位置 - Android](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
 添加以下 HTML 和 JavaScript。 此代码会将沉浸式阅读器 SDK 添加到应用，并通过我们编写的应用代码使用它来打开沉浸式阅读器。
 
@@ -1352,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>设置应用权限
 
-![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
+![AndroidManifest - Android](../../media/android/java/android-studio-android-manifest-xml.png)
 
 由于应用程序需要向沉浸式阅读器 SDK 发出网络调用才能正常工作，因此我们需要确保将应用权限配置为允许网络访问。 将“/manifests/AndroidManifest.xml”的内容替换为以下 XML：
 
@@ -1389,7 +1390,7 @@ Licensed under the MIT License. -->
 
 在设备模拟器上使用 Android Studio 运行应用。 当选择“沉浸式阅读器”时，会打开显示了应用上内容的沉浸式阅读器。
 
-![沉浸式阅读器](../../media/android/java/android-studio-device-emulator.png)
+![沉浸式阅读器 - Android](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>后续步骤
 

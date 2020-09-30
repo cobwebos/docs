@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70296dce5b9dcac738c17a4f2388a7eb37abd66f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d193637122cb388ea2c5012638526719d245f524
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269329"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968978"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -37,7 +37,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 ## <a name="prerequisites"></a>先决条件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
+
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
+
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 
     > [!NOTE]
@@ -46,7 +48,10 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     - [虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)，可创建虚拟机规模集，并从虚拟机规模集启用和删除系统分配的托管标识和/或用户分配的托管标识。
     - [托管标识参与者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色，可以创建用户分配的托管标识。
     - [托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色，可在虚拟机规模集中分配和删除用户分配的托管标识。
-- 安装[最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)（如果尚未安装）。 
+
+- 若要运行示例脚本，有两个选项：
+    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
+    - 通过安装最新版的 [Azure PowerShell](/powershell/azure/install-az-ps) 在本地运行脚本，然后使用 `Connect-AzAccount` 登录到 Azure。 
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
@@ -58,48 +63,40 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 1. 请参阅 [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 参考文章中的示例 1，以创建具有系统分配的托管标识的虚拟机规模集。  将参数 `-IdentityType SystemAssigned` 添加到 `New-AzVmssConfig` cmdlet：
 
-    ```powershell
+    ```azurepowershell-interactive
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
 
-
-
-## <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>在现有 Azure 虚拟机规模集上启用系统分配的托管标识
+### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>在现有 Azure 虚拟机规模集上启用系统分配的托管标识
 
 如果需要在现有 Azure 虚拟机规模集上启用系统分配的托管标识，请执行以下操作：
 
-1. 使用 `Connect-AzAccount` 登录到 Azure 门户。 使用与包含虚拟机规模集的 Azure 订阅关联的帐户。 此外，请确保该帐户所属角色可授予对虚拟机规模集的写入权限，如“虚拟机参与者”：
+1. 请确保你使用的 Azure 帐户所属角色可授予对虚拟机规模集的写入权限，如“虚拟机参与者”。
+   
+1. 使用 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) cmdlet 检索虚拟机规模集属性。 然后，若要启用系统分配的托管标识，请在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 上使用 `-IdentityType` 开关：
 
-   ```powershell
-   Connect-AzAccount
-   ```
-
-2. 首先使用 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) cmdlet 检索虚拟机规模集属性。 然后，若要启用系统分配的托管标识，请在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 上使用 `-IdentityType` 开关：
-
-   ```powershell
+   ```azurepowershell-interactive
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
-
-
 
 ### <a name="disable-the-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集中禁用系统分配的托管标识
 
 如果某个虚拟机规模集不再需要系统分配的托管标识，但仍需要用户分配的托管标识，请使用以下 cmdlet：
 
-1. 使用 `Connect-AzAccount` 登录到 Azure 门户。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户所属角色可授予对虚拟机规模集的写入权限，如“虚拟机参与者”：
+1. 请确保该帐户所属角色可授予对虚拟机规模集的写入权限，如“虚拟机参与者”。
 
-2. 运行以下 cmdlet：
+1. 运行以下 cmdlet：
 
-   ```powershell
+   ```azurepowershell-interactive
    Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "UserAssigned"
    ```
 
-如果某个虚拟机规模集不再需要系统分配的托管标识，且没有用户分配的托管标识，请使用以下命令：
+1. 如果某个虚拟机规模集不再需要系统分配的托管标识，且没有用户分配的托管标识，请使用以下命令：
 
-```powershell
-Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
-```
-
+    ```azurepowershell-interactive
+    Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
+    ```
+    
 ## <a name="user-assigned-managed-identity"></a>用户分配的托管标识
 
 本部分介绍如何使用 Azure PowerShell 从虚拟机规模集中添加和删除用户分配的托管标识。
@@ -112,17 +109,13 @@ Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
 
 将用户分配的托管标识分配到现有 Azure 虚拟机规模集：
 
-1. 使用 `Connect-AzAccount` 登录到 Azure 门户。 使用与包含虚拟机规模集的 Azure 订阅关联的帐户。 此外，请确保该帐户所属角色可授予对虚拟机规模集的写入权限，如“虚拟机参与者”：
+1. 请确保该帐户所属角色可授予对虚拟机规模集的写入权限，如“虚拟机参与者”。
 
-   ```powershell
-   Connect-AzAccount
-   ```
-
-2. 首先使用 `Get-AzVM` cmdlet 检索虚拟机规模集属性。 然后，若要向虚拟机规模集分配用户分配的托管标识，请在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 上使用 `-IdentityType` 和 `-IdentityID` 开关。 将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、`<USER ASSIGNED ID1>`、`USER ASSIGNED ID2` 替换为自己的值。
+1. 使用 `Get-AzVM` cmdlet 检索虚拟机规模集属性。 然后，若要向虚拟机规模集分配用户分配的托管标识，请在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 上使用 `-IdentityType` 和 `-IdentityID` 开关。 将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>`、`<USER ASSIGNED ID1>`、`USER ASSIGNED ID2` 替换为自己的值。
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
-   ```powershell
+   ```azurepowershell-interactive
    Update-AzVmss -ResourceGroupName <RESOURCE GROUP> -Name <VMSS NAME> -IdentityType UserAssigned -IdentityID "<USER ASSIGNED ID1>","<USER ASSIGNED ID2>"
    ```
 
@@ -130,17 +123,17 @@ Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
 
 如果虚拟机规模集有多个用户分配的托管标识，则可以使用以下命令将这些标识删除到只剩一个。 请务必将 `<RESOURCE GROUP>` 和 `<VIRTUAL MACHINE SCALE SET NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY NAME>` 是用户分配的托管标识的名称属性，该属性应保留在虚拟机规模集上。 可通过 `az vmss show` 在虚拟机规模集的标识部分中找到此信息：
 
-```powershell
+```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"
 ```
 如果虚拟机规模集没有系统分配的托管标识，并且你想要从中删除所有用户分配的托管标识，请使用以下命令：
 
-```powershell
+```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
 ```
 如果虚拟机规模集同时具有系统分配的托管标识和用户分配的托管标识，则可通过切换为仅使用系统分配的托管标识，删除所有用户分配的托管标识。
 
-```powershell 
+```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "SystemAssigned"
 ```
 

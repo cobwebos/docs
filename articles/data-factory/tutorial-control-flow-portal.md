@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983734"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 门户对 Azure 数据工厂管道中的活动进行分支和链接
 
@@ -24,7 +24,7 @@ ms.locfileid: "86077639"
 
 在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，该管道会在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，该管道会在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
 
-方案的综合概述：![概述](media/tutorial-control-flow-portal/overview.png)
+方案的综合概述：![显示 Azure Blob 存储的关系图，该存储是副本的目标，如果成功，将发送包含详细信息的电子邮件，如果失败，则将发送包含错误详细信息的电子邮件。](media/tutorial-control-flow-portal/overview.png)
 
 在本教程中执行以下步骤：
 
@@ -144,7 +144,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 3. 选择要在其中创建数据工厂的 Azure **订阅**。
 4. 对于**资源组**，请执行以下步骤之一：
 
-      - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+      - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
@@ -169,20 +169,20 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 - 将一个活动连接到另一个活动（成功和失败时）
 - 使用一个活动的输出作为后续活动的输入
 
-1. 在数据工厂 UI 的“入门”页中，单击“创建管道”磁贴。   
+1. 在数据工厂 UI 的“入门”页中，单击“创建管道”磁贴。  
 
    ![“入门”页](./media/tutorial-control-flow-portal/get-started-page.png)
-3. 在管道的属性窗口中切换到“参数”选项卡，并使用“新建”按钮添加字符串类型的以下三个参数：sourceBlobContainer、sinkBlobContainer 和 receiver。 
+3. 在管道的属性窗口中切换到“参数”选项卡，并使用“新建”按钮添加字符串类型的以下三个参数：sourceBlobContainer、sinkBlobContainer 和 receiver。
 
     - **sourceBlobContainer** – 源 Blob 数据集使用的管道中的参数。
     - **sinkBlobContainer** – 接收器 Blob 数据集使用的管道中的参数。
     - **receiver** – 此参数由管道中的两个 Web 活动用来向其电子邮件地址已通过此参数指定的接收方发送成功或失败电子邮件。
 
    ![“新建管道”菜单](./media/tutorial-control-flow-portal/pipeline-parameters.png)
-4. 在“活动”工具箱中展开“数据流”，将“复制”活动拖放到管道设计器图面。  
+4. 在“活动”工具箱中展开“数据流”，将“复制”活动拖放到管道设计器图面。
 
    ![拖放复制活动](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
-5. 在底部“复制”活动的“属性”窗口中切换到“源”选项卡，然后单击“+ 新建”。    此步骤创建复制活动的源数据集。
+5. 在底部“复制”活动的“属性”窗口中切换到“源”选项卡，然后单击“+ 新建”。 此步骤创建复制活动的源数据集。
 
    ![源数据集](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. 在“新建数据集”窗口中，选择“Azure Blob 存储”，然后单击“完成”。  
@@ -191,7 +191,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 7. 此时会显示标题为“AzureBlob1”的新**选项卡**。 将数据集的名称更改为 **SourceBlobDataset**。
 
    ![数据集常规设置](./media/tutorial-control-flow-portal/dataset-general-page.png)
-8. 在“属性”窗口中切换到“连接”选项卡，然后针对“链接服务”单击“新建”。   此步骤创建一个链接服务，用于将 Azure 存储帐户链接到数据工厂。
+8. 在“属性”窗口中切换到“连接”选项卡，然后针对“链接服务”单击“新建”。 此步骤创建一个链接服务，用于将 Azure 存储帐户链接到数据工厂。
 
    ![数据集连接 - 新建链接服务](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
 9. 在“新建链接服务”窗口中执行以下步骤：
@@ -205,29 +205,29 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     ![源数据集设置](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-13. 切换到“管道”选项卡，或单击树状视图中的管道。 确认为“源数据集”选择了“SourceBlobDataset”。 
+13. 切换到“管道”选项卡，或单击树状视图中的管道。 确认为“源数据集”选择了“SourceBlobDataset”。
       
    ![源数据集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
-13. 在属性窗口中切换到“接收器”选项卡，针对“接收器数据集”单击“+ 新建”。   像创建源数据集一样，在此步骤中创建复制活动的接收器数据集。
+13. 在属性窗口中切换到“接收器”选项卡，针对“接收器数据集”单击“+ 新建”。 像创建源数据集一样，在此步骤中创建复制活动的接收器数据集。
 
     ![“新建接收器数据集”按钮](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
-14. 在“新建数据集”窗口中，选择“Azure Blob 存储”，然后单击“完成”。  
+14. 在“新建数据集”窗口中，选择“Azure Blob 存储”，然后单击“完成”。
 15. 在数据集的“常规”设置页中，输入 **SinkBlobDataset** 作为**名称**。
 16. 切换到“连接”选项卡，然后执行以下步骤：
 
-    1. 为“LinkedService”选择“AzureStorageLinkedService”。 
+    1. 为“LinkedService”选择“AzureStorageLinkedService”。
     2. 输入 `@pipeline().parameters.sinkBlobContainer` 作为文件夹。
     1. 输入 `@CONCAT(pipeline().RunId, '.txt')` 作为文件名。 该表达式使用当前管道运行的 ID 作为文件名。 有关支持的系统变量和表达式列表，请参阅[系统变量](control-flow-system-variables.md)和[表达式语言](control-flow-expression-language-functions.md)。
 
         ![接收器数据集设置](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
-17. 切换到顶部的“管道”选项卡。 在“活动”工具箱中展开“常规”，将“Web”活动拖放到管道设计器图面。   将活动的名称设置为 **SendSuccessEmailActivity**。 Web 活动允许调用任何 REST 终结点。 有关该活动的详细信息，请参阅 [Web 活动](control-flow-web-activity.md)。 此管道使用 Web 活动调用逻辑应用电子邮件工作流。
+17. 切换到顶部的“管道”选项卡。 在“活动”工具箱中展开“常规”，将“Web”活动拖放到管道设计器图面。 将活动的名称设置为 **SendSuccessEmailActivity**。 Web 活动允许调用任何 REST 终结点。 有关该活动的详细信息，请参阅 [Web 活动](control-flow-web-activity.md)。 此管道使用 Web 活动调用逻辑应用电子邮件工作流。
 
     ![拖放第一个 Web 活动](./media/tutorial-control-flow-portal/success-web-activity-general.png)
-18. 从“常规”选项卡切换到“设置”选项卡，然后执行以下步骤： 
+18. 从“常规”选项卡切换到“设置”选项卡，然后执行以下步骤：
     1. 对于“URL”，请指定用于发送成功电子邮件的逻辑应用工作流的 URL。  
-    2. 为“方法”选择“POST”。 
-    3. 在“标头”部分中单击“+ 添加标头”链接。 
+    2. 为“方法”选择“POST”。
+    3. 在“标头”部分中单击“+ 添加标头”链接。
     4. 添加标头 **Content-Type** 并将其设置为 **application/json**。
     5. 为“正文”指定以下 JSON。
 
@@ -247,7 +247,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
        - 接收方 – 传递 "\@pipeline().parameters.receiver") 的值。 访问管道参数。
 
          ![第一个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
-19. 将“复制”活动旁边的绿色按钮拖放到“Web”活动，以便将“复制”活动连接到“Web”活动。 
+19. 将“复制”活动旁边的绿色按钮拖放到“Web”活动，以便将“复制”活动连接到“Web”活动。
 
     ![将“复制”活动连接到第一个“Web”活动](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)
 20. 将“Web”活动从“活动”工具箱拖放到管道设计器图面，并将**名称**设置为 **SendFailureEmailActivity**。
@@ -256,8 +256,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 21. 切换到“设置”选项卡，然后执行以下步骤：
 
     1. 对于“URL”，请指定用于发送失败电子邮件的逻辑应用工作流的 URL。  
-    2. 为“方法”选择“POST”。 
-    3. 在“标头”部分中单击“+ 添加标头”链接。 
+    2. 为“方法”选择“POST”。
+    3. 在“标头”部分中单击“+ 添加标头”链接。
     4. 添加标头 **Content-Type** 并将其设置为 **application/json**。
     5. 为“正文”指定以下 JSON。
 
@@ -271,7 +271,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ```
 
         ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。   
+22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。  
 
     ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. 将“复制”活动旁边的**红色**按钮拖放到第二个“Web”活动 **SendFailureEmailActivity**。 可以四处移动活动，使管道如下图所示：
@@ -308,7 +308,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>触发失败的管道运行
 1. 在左侧切换到“编辑”选项卡。
-2. 若要**触发**某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
+2. 若要**触发**某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。
 3. 在“管道运行”窗口中执行以下步骤：
 
     1. 为 **sourceBlobContainer** 参数输入 **adftutorial/dummy/input**。 请确保 adftutorial 容器中不存在 dummy 文件夹。
@@ -327,7 +327,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 2. 若要**查看**与此管道运行关联的活动运行，请单击“操作”列中的第一个链接。 使用“刷新”按钮刷新列表。 请注意，管道中的“复制”活动失败。 “Web”活动已成功将失败电子邮件发送到指定的接收方。
 
     ![活动运行](./media/tutorial-control-flow-portal/activity-runs-failure.png)
-4. 在“操作”列中单击“错误”链接可查看有关错误的详细信息。 
+4. 在“操作”列中单击“错误”链接可查看有关错误的详细信息。
 
     ![活动运行错误](./media/tutorial-control-flow-portal/activity-run-error.png)
 

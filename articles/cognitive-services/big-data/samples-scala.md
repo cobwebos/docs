@@ -1,6 +1,6 @@
 ---
 title: 适用于大数据的认知服务 Scala 示例
-description: 尝试使用 Python for Azure Databricks 中的认知服务示例来运行针对大数据的 MMLSpark 管道。
+description: 使用适用于 Azure Databricks 的认知服务来运行针对大数据的 MMLSpark 管道。
 services: cognitive-services
 author: mhamilton723
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 098b59b8de0d0d7e5c3929ce084276350c04810a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189297"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524957"
 ---
 # <a name="quick-examples"></a>快速示例
 

@@ -4,12 +4,16 @@
   items:
     - name: 什么是 Service Fabric？
       href: service-fabric-overview.md
+    - name: Service Fabric 托管群集
+      href: overview-managed-cluster.md
 - name: 快速入门
   expanded: true
   items:
     - name: ARM 模板
       displayName: Resource Manager
       href: quickstart-cluster-template.md
+    - name: 托管群集
+      href: quickstart-managed-cluster-template.md
     - name: 创建 .NET 应用程序
       href: service-fabric-quickstart-dotnet.md
     - name: 部署 Linux 容器应用程序
@@ -64,6 +68,16 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 - 故障转移和缩放
           href: service-fabric-tutorial-containers-failover.md
+    - name: 创建 Service Fabric 托管群集
+      items:
+        - name: 1- 部署 Service Fabric 托管群集
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2- 横向扩展托管群集节点类型
+          href: tutorial-managed-cluster-scale.md
+        - name: 3- 添加和删除托管群集节点类型
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4- 连接到托管群集并部署应用程序
+          href: tutorial-managed-cluster-deploy-app.md
     - name: 创建和管理群集
       items:
         - name: 1- 在 Azure 上创建群集
@@ -90,7 +104,7 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4- 清理群集和删除基础结构
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: 最佳实践
+- name: 最佳做法
   items:
     - name: Service Fabric 最佳做法概述
       href: service-fabric-best-practices-overview.md
@@ -155,7 +169,7 @@
           items:
             - name: 容器概述
               href: service-fabric-containers-overview.md
-            - name: Docker Compose（预览）
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: 探测
               href: probes-codepackage.md
@@ -430,7 +444,7 @@
               href: service-fabric-deploy-existing-app.md
         - name: 生成容器服务
           items:
-            - name: Docker Compose（预览）
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: 卷和日志记录驱动程序
               href: service-fabric-containers-volume-logging-drivers.md
@@ -509,7 +523,7 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: 在 Linux 上设置加密证书并加密机密
                   href: service-fabric-application-secret-management-linux.md
-                - name: 通过 KeyVaultReference 安全地存储机密（预览版）
+                - name: 通过 KeyVaultReference 安全地存储机密
                   href: service-fabric-keyvault-references.md
             - name: 配置反向代理以进行安全通信
               href: service-fabric-reverseproxy-configure-secure-communication.md
@@ -675,6 +689,8 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: 升级
               items:
+                - name: 将 VM 规模集扩展添加到托管群集节点类型
+                  href: how-to-managed-cluster-vmss-extension.md
                 - name: 升级 Service Fabric 版本
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: 升级群集配置
@@ -901,6 +917,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 常见问题
       href: service-fabric-common-questions.md
+    - name: Service Fabric 托管群集常见问题
+      href: faq-managed-cluster.md
     - name: Microsoft Q&A 问题页面
       href: /answers/topics/azure-service-fabric.html
     - name: Azure 资源管理器部署准则

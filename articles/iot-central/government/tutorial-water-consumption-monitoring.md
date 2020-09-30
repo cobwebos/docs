@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77122075"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972404"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教程：使用 Azure IoT Central 创建水消耗量监测应用程序
 
@@ -256,4 +256,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[水消耗量监测的概念](./concepts-waterconsumptionmonitoring-architecture.md)。
+* 详细了解以下内容 
+
+> [!div class="nextstepaction"]
+> [水消耗量监视概念](./concepts-waterconsumptionmonitoring-architecture.md)。

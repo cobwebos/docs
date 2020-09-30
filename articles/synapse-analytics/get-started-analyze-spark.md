@@ -1,6 +1,6 @@
 ---
 title: 教程：开始使用 Spark 进行分析
-description: 本教程将介绍设置和使用 Azure Synapse Analytics 的基本步骤。
+description: 在本教程中，你将了解如何使用 Apache Spark 分析数据
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,16 +9,30 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5c6b35c1d9f00cae8fc688569e3a491679900995
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093223"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017908"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
+## <a name="analyze-nyc-taxi-data-in-blob-storage--using-spark"></a>使用 Spark 分析 Blob 存储中的纽约市出租车数据
+
 本教程介绍使用 Apache Spark for Azure Synapse 加载和分析数据的基本步骤。
+
+1. 在“链接”下的“数据”中心中，右键单击“Azure Blob 存储”>“示例数据集”>“nyc_tlc_yellow”，然后选择“选择新笔记本”   
+1. 这将会使用以下代码创建新笔记本：
+    ```
+    from azureml.opendatasets import NycTlcYellow
+
+    data = NycTlcYellow()
+    data_df = data.to_spark_dataframe()
+    display(data_df.limit(10))
+    ```
+1. 在笔记本中，在“附加到”菜单中选择 spark 池
+1. 单击单元上的“运行”
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>将纽约市出租车数据加载到 Spark nyctaxi 数据库
 

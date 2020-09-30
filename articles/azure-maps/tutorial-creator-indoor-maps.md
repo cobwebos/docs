@@ -1,21 +1,21 @@
 ---
-title: 使用 Creator 创建室内定位
-description: 使用 Azure Maps Creator 创建室内定位。
+title: 教程：使用 Creator 创建室内定位
+description: 介绍如何使用 Azure Maps Creator 创建室内地图的教程
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 09/22/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
-ms.translationtype: MT
+ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469909"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371416"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>使用 Creator 创建室内定位
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>教程：使用 Creator 创建室内定位
 
 本教程介绍了如何创建室内定位。 本教程将介绍如何使用 API 完成以下操作：
 
@@ -35,12 +35,12 @@ ms.locfileid: "89469909"
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 3. [创建 Creator 资源](how-to-manage-creator.md)
-4. 下载[示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
+4. 下载[示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip)。
 
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
 >[!IMPORTANT]
-> 此文档中的 API url 可能必须根据创建者资源的位置进行调整。 有关更多详细信息，请参阅 [访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
+> 本文档中的 API URL 可能会根据你的 Creator 资源的位置进行调整。 有关更多详细信息，请参阅[访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
 
 ## <a name="upload-a-drawing-package"></a>上传绘图包
 
@@ -64,7 +64,7 @@ ms.locfileid: "89469909"
 
 5. 单击蓝色的“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡。 复制“位置”键的值，即 `status URL`。
 
-6. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 **GET**请求应类似于以下 URL：
+6. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 GET 请求应如下面的 URL 所示：
 
     ```http
     https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -111,13 +111,13 @@ ms.locfileid: "89469909"
     ```
 
     >[!IMPORTANT]
-    > 此文档中的 API url 可能必须根据创建者资源的位置进行调整。 有关更多详细信息，请参阅 [访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
+    > 本文档中的 API URL 可能会根据你的 Creator 资源的位置进行调整。 有关更多详细信息，请参阅[访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
 
-3. 单击“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡，然后查找“位置”键。 复制“位置”键的值，即转换请求的 `status URL`。 你将在下一步中使用它。
+3. 单击“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡，然后查找“位置”键。 复制“位置”键的值，即转换请求的 `status URL`。 你将下一步骤中使用此内容。
 
-    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="复制 location 键的值":::
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="复制“位置”键的值":::
 
-4. 在生成器选项卡中，启动新的 GET HTTP 方法。将 Azure Maps 主订阅密钥追加到 `status URL` 中。 在**GET** `status URL` 步骤3中复制的上发出 GET 请求。 类似于 `status URL` 以下 URL：
+4. 在生成器选项卡中，启动新的 GET HTTP 方法。将 Azure Maps 主订阅密钥追加到 `status URL` 中。 在步骤 3 中复制的 `status URL` 处发出 GET 请求。 `status URL` 如下面的 URL 所示：
 
     ```http
     https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -404,43 +404,11 @@ ms.locfileid: "89469909"
 
 使用[特征状态获取 API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview)，可以通过特征 `ID` 检索特征的状态。 还可以使用[特征状态删除 API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview) 来删除状态集及其资源。
 
+要详细了解本文中讨论的各种 Azure Maps Creator 服务，请参阅 [Creator 室内地图](creator-indoor-maps.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 上传室内定位绘图包
-> * 将绘图包转换为定位数据
-> * 通过定位数据创建数据集
-> * 通过数据集中的数据创建图块集
-> * 通过查询 Azure Maps WFS 服务来了解定位特征
-> * 通过使用定位特征和数据集中的数据来创建特征状态集
-> * 更新特征状态集
-
-现在你已经具备了学习后续指南所需要的技能：
+若要了解如何使用室内地图模块，请参阅
 
 > [!div class="nextstepaction"]
-> [使用“室内定位”模块](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [实现室内定位的动态样式](indoor-map-dynamic-styling.md)
-
-详细了解本文中讨论的各种 Azure Maps 服务：
-
-> [!div class="nextstepaction"]
-> [数据上传](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [数据转换](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [数据集](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [图块集](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [特征状态集](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [WFS 服务](creator-indoor-maps.md#web-feature-service-api)
+> [使用室内定位模块](how-to-use-indoor-module.md)

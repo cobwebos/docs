@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77209420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976297"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建 ExpressRoute 关联
 
@@ -122,7 +122,7 @@ ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps
 
 1. 在 ExpressRoute 页面上，单击“+ 兑换授权密钥” 
 
-   ![兑换](./media/virtual-wan-expressroute-portal/redeem.png "兑换")
+   ![屏幕截图显示一个虚拟中心的 ExpressRoute，其中已选择“兑换授权密钥”。](./media/virtual-wan-expressroute-portal/redeem.png "兑换")
 2. 在“兑换授权密钥”页上，填写值。
 
    ![兑换密钥值](./media/virtual-wan-expressroute-portal/redeemkey2.png "兑换密钥值")

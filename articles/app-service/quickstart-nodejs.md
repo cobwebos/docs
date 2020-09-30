@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4ce14b9d467e4badc833a1e1e4d8e1d08d232b1a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083468"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985238"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -63,13 +63,13 @@ ms.locfileid: "88083468"
     code .
     ```
 
-1. 在 VS Code 活动栏中，选择 Azure 徽标显示“AZURE 应用服务”资源管理器。 选择“登录到 Azure...”并遵照说明操作。 （如果遇到错误，请参阅下面的[排查 Azure 登录问题](#troubleshooting-azure-sign-in)。）登录后，资源管理器应会显示 Azure 订阅的名称。
+1. 在 VS Code 活动栏中，选择 Azure 徽标显示“AZURE 应用服务”资源管理器。 选择“登录到 Azure...”并遵照说明操作。  （如果遇到错误，请参阅下面的[排查 Azure 登录问题](#troubleshooting-azure-sign-in)。）登录后，资源管理器应会显示 Azure 订阅的名称。
 
     ![登录 Azure](media/quickstart-nodejs/sign-in.png)
 
 1. 在 VS Code 的“AZURE 应用服务”资源管理器中，选择蓝色的向上箭头图标，将应用部署到 Azure。 （也可以从“命令面板”调用相同的命令 (**Ctrl**+**Shift**+**P**)，方法是键入“部署到 Web 应用”，并选择“Azure 应用服务: 部署到 Web 应用”）。
 
-    ![部署到 Web 应用](media/quickstart-nodejs/deploy.png)
+    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="VS Code 中的 Azure 应用服务的屏幕截图，显示已选中蓝色箭头图标。&quot;:::
         
 1. 选择 *nodejs-docs-hello-world* 文件夹。
 
@@ -95,7 +95,7 @@ ms.locfileid: "88083468"
 
     ![在目标 Linux 服务器上更新配置的提示](media/quickstart-nodejs/server-build.png)
 
-1. 当系统提示你“始终将工作区 "nodejs-docs-hello-world" 部署到 (应用名称)”时，请选择“是”。  选择“是”就是告知 VS Code 在进行后续部署时自动以同一应用服务 Web 应用为目标。
+1. 当系统提示你“始终将工作区 &quot;nodejs-docs-hello-world" 部署到 (应用名称)”时，请选择“是”。  选择“是”就是告知 VS Code 在进行后续部署时自动以同一应用服务 Web 应用为目标。
 
 1. 如果部署到 Linux，请在部署完成后，选择提示中的“浏览网站”以查看全新部署的 Web 应用。 浏览器应会显示“Hello World!”
 
@@ -141,7 +141,33 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 1. 出现提示时，请选择启用日志记录并重启应用程序。 重启应用后，VS Code 输出窗口将会打开，其中包含与日志流建立的连接。 
 
-    ![启用日志记录并重启](media/quickstart-nodejs/enable-restart.png)
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="VS Code 中的 Azure 应用服务的屏幕截图，显示已选中蓝色箭头图标。&quot;:::
+        
+1. 选择 *nodejs-docs-hello-world* 文件夹。
+
+1. 根据要部署到的操作系统选择创建选项：
+
+    - Linux：选择“创建新 Web 应用”
+    - Windows：选择“创建新 Web 应用...高级”
+
+1. 键入 Web 应用的全局唯一名称，然后按 **Enter**。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
+
+1. 如果以 Linux 为目标，请在出现提示时选择 Node.js 版本。 建议使用 **LTS** 版本。
+
+1. 如果面向 Windows，请遵循附加提示：
+    1. 选择“创建新的资源组”，然后输入资源组的名称，例如`AppServiceQS-rg`。
+    1. 选择 **Windows** 作为操作系统。
+    1. 选择“创建新的应用服务计划”，输入该计划的名称（例如 `AppServiceQS-plan`），然后选择“F1 免费”作为定价层。 
+    1. 当系统提示 Application Insights 时，选择“立即跳过”。
+    1. 选择你附近或想要访问的资源附近的区域。
+
+1. 响应所有提示后，VS Code 将在其通知弹出窗口中显示正在为该应用创建的 Azure 资源。
+
+    部署到 Linux 时，如果系统提示你更新配置以在目标 Linux 服务器上运行 `npm install`，请选择“是”。
+
+    ![在目标 Linux 服务器上更新配置的提示](media/quickstart-nodejs/server-build.png)
+
+1. 当系统提示你“始终将工作区 &quot;nodejs-docs-hello-world":::
 
 1. 几秒钟后，输出窗口将看到一条消息，指出已连接到日志流服务。 可以通过刷新浏览器中的页面来生成更多输出活动。
 
@@ -263,7 +289,33 @@ code .
 
 在“AZURE 应用服务”资源管理器中，选择蓝色的向上箭头图标，将应用部署到 Azure。 
 
-![部署到 Web 应用](./media/quickstart-nodejs/deploy.png)
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="VS Code 中的 Azure 应用服务的屏幕截图，显示已选中蓝色箭头图标。&quot;:::
+        
+1. 选择 *nodejs-docs-hello-world* 文件夹。
+
+1. 根据要部署到的操作系统选择创建选项：
+
+    - Linux：选择“创建新 Web 应用”
+    - Windows：选择“创建新 Web 应用...高级”
+
+1. 键入 Web 应用的全局唯一名称，然后按 **Enter**。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
+
+1. 如果以 Linux 为目标，请在出现提示时选择 Node.js 版本。 建议使用 **LTS** 版本。
+
+1. 如果面向 Windows，请遵循附加提示：
+    1. 选择“创建新的资源组”，然后输入资源组的名称，例如`AppServiceQS-rg`。
+    1. 选择 **Windows** 作为操作系统。
+    1. 选择“创建新的应用服务计划”，输入该计划的名称（例如 `AppServiceQS-plan`），然后选择“F1 免费”作为定价层。 
+    1. 当系统提示 Application Insights 时，选择“立即跳过”。
+    1. 选择你附近或想要访问的资源附近的区域。
+
+1. 响应所有提示后，VS Code 将在其通知弹出窗口中显示正在为该应用创建的 Azure 资源。
+
+    部署到 Linux 时，如果系统提示你更新配置以在目标 Linux 服务器上运行 `npm install`，请选择“是”。
+
+    ![在目标 Linux 服务器上更新配置的提示](media/quickstart-nodejs/server-build.png)
+
+1. 当系统提示你“始终将工作区 &quot;nodejs-docs-hello-world":::
 
 > [!TIP]
 > 也可以从**命令面板** (CTRL + SHIFT + P) 进行部署，方法是键入“deploy to web app”并运行“Azure App Service:  Deploy to Web App”命令。
@@ -280,11 +332,63 @@ code .
 
 1. 当系统提示你更新配置以在目标服务器上运行 `npm install` 时，选择“是”。  随后将部署应用。
 
-    ![配置的部署](./media/quickstart-nodejs/server-build.png)
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="VS Code 中的 Azure 应用服务的屏幕截图，显示已选中蓝色箭头图标。&quot;:::
+        
+1. 选择 *nodejs-docs-hello-world* 文件夹。
+
+1. 根据要部署到的操作系统选择创建选项：
+
+    - Linux：选择“创建新 Web 应用”
+    - Windows：选择“创建新 Web 应用...高级”
+
+1. 键入 Web 应用的全局唯一名称，然后按 **Enter**。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
+
+1. 如果以 Linux 为目标，请在出现提示时选择 Node.js 版本。 建议使用 **LTS** 版本。
+
+1. 如果面向 Windows，请遵循附加提示：
+    1. 选择“创建新的资源组”，然后输入资源组的名称，例如`AppServiceQS-rg`。
+    1. 选择 **Windows** 作为操作系统。
+    1. 选择“创建新的应用服务计划”，输入该计划的名称（例如 `AppServiceQS-plan`），然后选择“F1 免费”作为定价层。 
+    1. 当系统提示 Application Insights 时，选择“立即跳过”。
+    1. 选择你附近或想要访问的资源附近的区域。
+
+1. 响应所有提示后，VS Code 将在其通知弹出窗口中显示正在为该应用创建的 Azure 资源。
+
+    部署到 Linux 时，如果系统提示你更新配置以在目标 Linux 服务器上运行 `npm install`，请选择“是”。
+
+    ![在目标 Linux 服务器上更新配置的提示](media/quickstart-nodejs/server-build.png)
+
+1. 当系统提示你“始终将工作区 &quot;nodejs-docs-hello-world":::
 
 1. 部署开始后，系统会提示更新工作区，使以后的部署自动针对相同的应用服务 Web 应用。 选择“是”，以确保将更改部署到正确的应用。 
 
-    ![配置的部署](./media/quickstart-nodejs/save-configuration.png)
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="VS Code 中的 Azure 应用服务的屏幕截图，显示已选中蓝色箭头图标。&quot;:::
+        
+1. 选择 *nodejs-docs-hello-world* 文件夹。
+
+1. 根据要部署到的操作系统选择创建选项：
+
+    - Linux：选择“创建新 Web 应用”
+    - Windows：选择“创建新 Web 应用...高级”
+
+1. 键入 Web 应用的全局唯一名称，然后按 **Enter**。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
+
+1. 如果以 Linux 为目标，请在出现提示时选择 Node.js 版本。 建议使用 **LTS** 版本。
+
+1. 如果面向 Windows，请遵循附加提示：
+    1. 选择“创建新的资源组”，然后输入资源组的名称，例如`AppServiceQS-rg`。
+    1. 选择 **Windows** 作为操作系统。
+    1. 选择“创建新的应用服务计划”，输入该计划的名称（例如 `AppServiceQS-plan`），然后选择“F1 免费”作为定价层。 
+    1. 当系统提示 Application Insights 时，选择“立即跳过”。
+    1. 选择你附近或想要访问的资源附近的区域。
+
+1. 响应所有提示后，VS Code 将在其通知弹出窗口中显示正在为该应用创建的 Azure 资源。
+
+    部署到 Linux 时，如果系统提示你更新配置以在目标 Linux 服务器上运行 `npm install`，请选择“是”。
+
+    ![在目标 Linux 服务器上更新配置的提示](media/quickstart-nodejs/server-build.png)
+
+1. 当系统提示你“始终将工作区 &quot;nodejs-docs-hello-world":::
 
 > [!TIP]
 > 确保应用程序正在侦听 PORT 环境变量 `process.env.PORT` 提供的端口。
@@ -314,7 +418,33 @@ code .
 
 ![查看流日志](./media/quickstart-nodejs/view-logs.png)
 
-![启用日志记录并重启](./media/quickstart-nodejs/enable-restart.png)
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="VS Code 中的 Azure 应用服务的屏幕截图，显示已选中蓝色箭头图标。&quot;:::
+        
+1. 选择 *nodejs-docs-hello-world* 文件夹。
+
+1. 根据要部署到的操作系统选择创建选项：
+
+    - Linux：选择“创建新 Web 应用”
+    - Windows：选择“创建新 Web 应用...高级”
+
+1. 键入 Web 应用的全局唯一名称，然后按 **Enter**。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
+
+1. 如果以 Linux 为目标，请在出现提示时选择 Node.js 版本。 建议使用 **LTS** 版本。
+
+1. 如果面向 Windows，请遵循附加提示：
+    1. 选择“创建新的资源组”，然后输入资源组的名称，例如`AppServiceQS-rg`。
+    1. 选择 **Windows** 作为操作系统。
+    1. 选择“创建新的应用服务计划”，输入该计划的名称（例如 `AppServiceQS-plan`），然后选择“F1 免费”作为定价层。 
+    1. 当系统提示 Application Insights 时，选择“立即跳过”。
+    1. 选择你附近或想要访问的资源附近的区域。
+
+1. 响应所有提示后，VS Code 将在其通知弹出窗口中显示正在为该应用创建的 Azure 资源。
+
+    部署到 Linux 时，如果系统提示你更新配置以在目标 Linux 服务器上运行 `npm install`，请选择“是”。
+
+    ![在目标 Linux 服务器上更新配置的提示](media/quickstart-nodejs/server-build.png)
+
+1. 当系统提示你“始终将工作区 &quot;nodejs-docs-hello-world":::
 
 几秒钟后，你将看到一条消息，指出已连接到日志流服务。 请多次刷新页面以查看更多活动。
 

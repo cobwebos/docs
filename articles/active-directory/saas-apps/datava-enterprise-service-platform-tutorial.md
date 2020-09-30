@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536710"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659485"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Datava Enterprise Service Platform 的集成
 
@@ -35,9 +35,6 @@ ms.locfileid: "88536710"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Datava Enterprise Service Platform 单一登录 (SSO) 的订阅。
 
-> [!NOTE]
-> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
-
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
@@ -45,6 +42,9 @@ ms.locfileid: "88536710"
 * Datava Enterprise Service Platform 支持 SP 发起的 SSO
 * Datava Enterprise Service Platform 支持实时用户预配
 * 配置 Datava Enterprise Service Platform 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>从库中添加 Datava Enterprise Service Platform
 
@@ -57,7 +57,7 @@ ms.locfileid: "88536710"
 1. 在“从库中添加”部分的搜索框中，键入“Datava Enterprise Service Platform”。
 1. 从结果面板中选择“Datava Enterprise Service Platform”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>配置并测试 Datava Enterprise Service Platform 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>配置并测试 Datava Enterprise Service Platform 的 Azure AD SSO
 
 使用名为“B.Simon”的测试用户配置并测试 Datava Enterprise Service Platform 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Datava Enterprise Service Platform 中的相关用户之间建立链接关系。
 
@@ -148,5 +148,3 @@ ms.locfileid: "88536710"
 - [在 Azure AD 中试用 Datava Enterprise Service Platform](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何通过高级可见性和控制保护 Datava Enterprise Service Platform](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

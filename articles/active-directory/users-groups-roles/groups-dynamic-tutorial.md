@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582874"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054597"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教程：自动添加或删除组成员
 
-在 Azure Active Directory (Azure AD) 中，可以自动地在安全组或 Office 365 组中添加或删除用户，因此不必总是手动执行该操作。 当用户或设备的任何属性更改时，Azure AD 会评估 Azure AD 组织中的所有动态组规则，以了解该更改是否会添加或删除成员。
+在 Azure Active Directory (Azure AD) 中，可在安全组或 Microsoft 365 组中自动添加或删除用户，因此不必总是手动执行该操作。 当用户或设备的任何属性更改时，Azure AD 会评估 Azure AD 组织中的所有动态组规则，以了解该更改是否会添加或删除成员。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]

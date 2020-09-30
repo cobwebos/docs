@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068840"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984609"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>对所有 Key Vault 启用软删除
 
 > [!WARNING]
 > 中断性变更：选择退出软删除功能将于今年年底弃用，所有 Key Vault 的软删除保护将自动启用。  Azure Key Vault 用户和管理员应立即对其 Key Vault 启用软删除。
+>
+> 对于托管 HSM，默认情况下启用软删除，并且无法禁用。
 
 如果在没有软删除保护的情况下从 Key Vault 中删除机密，则该机密将被永久删除。 用户当前可以在创建 Key Vault 期间选择退出软删除，但是为了防止用户意外或恶意删除你的机密，Microsoft 不久将对所有 Key Vault 启用软删除保护，而用户将不再能够选择退出或关闭软删除。
 

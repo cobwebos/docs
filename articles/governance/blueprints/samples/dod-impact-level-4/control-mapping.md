@@ -1,14 +1,14 @@
 ---
 title: DoD 影响级别 4 蓝图示例控制
 description: DoD 影响级别 4 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923282"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978416"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影响级别 4 蓝图示例的控制映射
 
@@ -102,11 +102,11 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 Azure Monitor 收集的日志数据存储在支持集中配置和管理的 Log Analytics 工作区中。 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来确保事件被记录下来，这些定义审核并强制在 Azure 虚拟机上部署 Log Analytics 代理。
 
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
+- 审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VM 的 Log Analytics 工作区 — 报告不匹配
-- \[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Linux 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Linux VM 部署 Log Analytics 代理
-- \[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Windows 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 对审核处理失败的响应
@@ -123,11 +123,11 @@ Azure Monitor 收集的日志数据存储在支持集中配置和管理的 Log A
 Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log Analytics 工作区中。 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来确保事件被记录下来，这些定义审核并强制在 Azure 虚拟机上部署 Log Analytics 代理。
 
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
+- 审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VM 的 Log Analytics 工作区 — 报告不匹配
-- \[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Linux 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Linux VM 部署 Log Analytics 代理
-- \[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Windows 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 审核评审、分析和报告 | 集成/扫描和监视功能
@@ -144,7 +144,7 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
+- 审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 
 ## <a name="au-12-audit-generation"></a>AU-12 审核生成
 
@@ -152,11 +152,11 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 此外，审核和高级数据安全在 SQL 服务器上配置。
 
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
+- 审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VM 的 Log Analytics 工作区 — 报告不匹配
-- \[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Linux 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Linux VM 部署 Log Analytics 代理
-- \[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Windows 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理
 - 审核诊断设置
 - 应在 SQL Server 的高级数据安全设置上启用审核
@@ -336,11 +336,8 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 缺陷修正 | 删除以前版本的软件/固件
 
-此蓝图分配的策略定义可帮助确保你的应用程序使用最新版本的 .NET Framework、HTTP、Java、PHP、Python 和 TLS。 此蓝图分配的一个策略定义还可以确保 Kubernetes 服务升级到其不易受攻击的版本。
+此蓝图分配的策略定义有助于确保你的应用程序使用最新版本的 HTTP、Java、PHP、Python 和 TLS。 此蓝图分配的一个策略定义还可以确保 Kubernetes 服务升级到其不易受攻击的版本。
 
-- 确保用作 API 应用一部分的“.Net Framework”版本是最新的
-- 确保用作函数应用一部分的“.Net Framework”版本是最新的
-- 确保用作 Web 应用一部分的“.Net Framework”版本是最新的
 - 确保用于运行 API 应用的“HTTP 版本”是最新的
 - 确保用于运行函数应用的“HTTP 版本”是最新的
 - 确保用于运行 Web 应用的“HTTP 版本”是最新的
@@ -348,7 +345,6 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 - 确保用作函数应用一部分的“Java 版本”是最新的
 - 确保用作 Web 应用一部分的“Java 版本”是最新的
 - 确保用作 API 应用一部分的“PHP 版本”是最新的
-- 确保用作函数应用一部分的“PHP 版本”是最新的
 - 确保用作 WEB 应用一部分的“PHP 版本”是最新的
 - 确保用作 API 应用一部分的“Python 版本”是最新的
 - 确保用作函数应用一部分的“Python 版本”是最新的
@@ -356,7 +352,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 - 应在 API 应用中使用最新的 TLS 版本
 - 应在函数应用中使用最新的 TLS 版本
 - 应在 Web 应用中使用最新的 TLS 版本
-- \[预览\]：Kubernetes 服务应升级到不易受攻击的 Kubernetes 版本
+- Kubernetes 服务应升级到不易受攻击的 Kubernetes 版本
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 恶意代码防护
 
@@ -378,11 +374,11 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 此蓝图有助于通过审核和跨 Azure 资源强制执行日志记录和数据安全来监视系统。 具体而言，分配的策略审核并强制执行 Log Analytics 代理的部署和 SQL 数据库、存储帐户和网络资源的强化安全设置。 这些功能有助于检测异常行为和攻击指标，以便你采取相应措施。
 
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
+- 审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VM 的 Log Analytics 工作区 — 报告不匹配
-- \[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Linux 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Linux VM 部署 Log Analytics 代理
-- \[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理
+- 为 Windows 虚拟机规模集部署 Log Analytics 代理
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理
 - 应在托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性

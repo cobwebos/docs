@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543918"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705616"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
@@ -76,13 +76,13 @@ ms.locfileid: "88543918"
 ## <a name="consent-framework"></a>同意框架
 
 可以使用 Azure AD 许可框架来开发多租户 Web 应用程序和本机客户端应用程序。 这些应用程序允许与应用程序所注册到的租户不同的 Azure AD 租户中的用户帐户登录。 它们可能还需要访问 Web API，例如：
-- Microsoft 图形 API（以便访问 Azure AD、Intune，以及 Office 365 中的服务）。
+- Microsoft Graph API，用于访问 Azure AD、Intune，以及 Microsoft 365 中的服务。
 - 其他 Microsoft 服务的 API。
 - 你自己的 Web API。
 
 该框架基于某个用户或管理员，该用户或管理员许可某个应用程序在其目录中注册。 注册可能涉及到访问目录数据。 获得许可后，客户端应用程序可以代表该用户调用 Microsoft 图形 API，并根据需要使用信息。
 
-[Microsoft 图形 API](https://developer.microsoft.com/graph/) 可用于访问 Office 365 中的数据，例如：
+[Microsoft Graph API](https://developer.microsoft.com/graph/) 提供对 Microsoft 365 中数据的访问，例如：
 
 - 来自 Exchange 的日历和邮件。
 - 来自 SharePoint 的站点和列表。
@@ -121,7 +121,7 @@ ms.locfileid: "88543918"
 
 3. 如果用户尚未经过身份验证，Azure AD 的 /authorize 终结点会提示登录。
 
-    ![身份验证](./media/openidoauth-tutorial/authentication.png)
+    ![帐户登录提示的屏幕截图](./media/openidoauth-tutorial/authentication.png)
 
 4. 用户登录后，Azure AD 将决定是否要向该用户显示许可页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。
 

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525140"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606484"
 ---
 1. 在虚拟 WAN 的“门户”页上，选择“连接”部分中的“VPN 站点”以开打“VPN 站点”页 。
 2. 在“VPN 站点”页上，单击“+创建站点”。
 
-   ![基础知识](./media/virtual-wan-tutorial-site-include/basics.png "基础")
+   ![屏幕截图显示“创建 VPN 站点”窗格处于打开状态的“VPN 站点到站点”窗口。](./media/virtual-wan-tutorial-site-include/basics.png "基础")
 3. 在“创建 VPN 站点”页的“基本信息”选项卡上，填写以下字段 ：
 
     * **区域** - 之前称为位置。 这是要在其中创建此站点资源的位置。
@@ -29,7 +29,7 @@ ms.locfileid: "86525140"
     * **中心** - 希望站点连接到的中心。 站点只能连接到具有 VPN 网关的中心。 如果看不到中心，请先在相应的中心内创建 VPN 网关。
 4. 选择“链路”以在分支添加物理链路的信息。 如果有虚拟 WAN 合作伙伴 CPE 设备，请检查该设备，查看是否将此信息作为从其系统设置的分支信息上传的一部分与 Azure 进行交换。
 
-   ![链路](./media/virtual-wan-tutorial-site-include/links.png "链接")
+   ![屏幕截图显示已选择“链接”选项卡的“创建 VPN 站点”窗格。](./media/virtual-wan-tutorial-site-include/links.png "链接")
 
     * **链路名称** - 要在 VPN 站点为物理链路提供的名称。 例如：mylink1。
     * **提供程序名称** - 物理链路在 VPN 站点的的名称。 示例：ATT、Verizon。

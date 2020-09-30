@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 057cbd5d42eafaa693abc418de62c3ae03a6b995
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508230"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984585"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>教程：使用 Azure 安全中心监视 Windows 虚拟机
 
@@ -36,7 +36,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 安全中心不仅提供数据发现功能，而且还针对它检测到到问题提供建议。 例如，如果所部署的 VM 没有附加的网络安全组，则安全中心会显示一个建议，其中提供了可以采取的修正步骤。 无需退出安全中心的上下文即可自动完成修正。  
 
-![建议](./media/tutorial-azure-security/recommendations.png)
+![显示“建议”页的屏幕截图，其中包括说明、资源、状态和建议的严重性。](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>设置数据收集
 

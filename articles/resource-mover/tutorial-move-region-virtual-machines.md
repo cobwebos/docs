@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 49b7a3700bf497ad868b7c4ab1f0802564b61bf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652227"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603962"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>教程：跨区域移动 Azure VM
 
@@ -68,6 +68,7 @@ ms.locfileid: "89652227"
 选择要移动的资源。
 
 - 将显示所选源区域中资源组内所有受支持的资源类型。
+- 不显示已添加的用于在区域间移动的资源。
 - 将资源移动到与源区域相同的订阅中的目标区域。 如果要更改订阅，可以在移动资源后进行更改。
 
 1. 在 Azure 门户中，搜索“资源转移器”。 然后，在“服务”下，选择“Azure 资源转移器” 。
@@ -80,7 +81,6 @@ ms.locfileid: "89652227"
 
 3. 在“移动资源” > “源 + 目标”中，选择来源订阅和区域 。
 4. 在“目标”中，选择要将 VM 移动到的区域。 然后单击“下一步”  。
-5. 在“元数据区域”中，选择要存储有关要移动资源的元数据的位置。 专门为此目的创建资源组。 然后单击“下一步”  。
 
     ![用于选择源区域和目标区域的页面](./media/tutorial-move-region-virtual-machines/source-target.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "89652227"
     ![用于选择要移动的 VM 的页面](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  在“要移动的资源”中，单击“下一步” 。
-9. 在“查看 + 添加”中，查看源和目标设置。 确认你了解有关移动的元数据将存储在元数据区域中为此目的创建的资源组中。
+9. 在“查看 + 添加”中，查看源和目标设置。 
 
     ![用于检查设置并继续移动的页面](./media/tutorial-move-region-virtual-machines/review.png)
 10. 单击“继续”，开始添加资源。
@@ -206,7 +206,7 @@ ms.locfileid: "89652227"
 
 你可以按如下所示放弃移动：
 
-1. 在“跨区域”中，选择“提交移动挂起”状态的资源，然后单击“放弃移动”。
+1. 在“跨区域”中，选择“提交移动挂起”状态的资源，然后单击“放弃移动”  。
 2. 在“放弃移动”中，单击“放弃” 。
 3. 跟踪通知栏中的移动进度。
 
@@ -235,7 +235,8 @@ ms.locfileid: "89652227"
 
 ## <a name="configure-settings-after-the-move"></a>在移动后配置设置
 
-不会自动从 VM 卸载移动服务。 手动卸载它，或者如果你计划再次移动服务器，则保留它。
+- 不会自动从 VM 卸载移动服务。 手动卸载它，或者如果你计划再次移动服务器，则保留它。
+- 移动后，修改 Azure 基于角色的访问控制 (Azure RBAC) 规则。
 
 ## <a name="delete-source-resources-after-commit"></a>提交后删除源资源
 

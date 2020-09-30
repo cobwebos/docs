@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 705c7dd602d9c908ec9048d131ba66b21c5b2103
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
-ms.translationtype: MT
+ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293656"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server Always On 可用性组简介
 
@@ -42,23 +42,23 @@ Azure 虚拟机中可用性组的主要区别是这些虚拟机 (VM) 需要[负�
 |  | Windows Server 版本 | SQL Server 版本 | SQL Server 版本 | WSFC 仲裁配置 | 使用多区域进行灾难恢复 | 多子网支持 | 支持现有 AD | 使用具有多个区域的相同区域进行灾难恢复 | Dist-AG 支持，没有 AD 域 | Dist-AG 支持，没有群集 |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | **[Azure 门户](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | 企业版 | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
-| **[Azure CLI/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | 企业版 | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
+| **[Azure CLI / PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | 企业版 | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
 | **[快速启动模板](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | 企业版 | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
 | **[手动](availability-group-manually-configure-prerequisites-tutorial.md)** | 全部 | 全部 | 全部 | 全部 | 是 | 是 | 是 | 是 | 是 | 是 |
 
-**SQL Server AlwaysOn 群集 (预览版) **模板已从 Azure Marketplace 中删除并且不再可用。 
+“SQL Server AlwaysOn 群集（预览版）”模板已从 Azure 市场中删除，并且不再提供。 
 
 准备好在 Azure 虚拟机上生成 SQL Server 可用性组时，请参阅这些教程。
 
 ## <a name="manually-with-azure-cli"></a>使用 Azure CLI 手动生成
 
-建议使用 Azure CLI 来配置和部署可用性组，因为它是最简单、最快捷的部署。 使用 Azure CLI 中，创建 Windows 故障转移群集、将 SQL Server VM 加入群集以及创建侦听器和内部负载均衡器均可在 30 分钟内完成。 此选项仍需要手动创建可用性组，但它会自动执行所有其他必要的配置步骤。 
+建议使用 Azure CLI 配置和部署可用性组，因为它是最简单、最快的部署方式。 使用 Azure CLI 中，创建 Windows 故障转移群集、将 SQL Server VM 加入群集以及创建侦听器和内部负载均衡器均可在 30 分钟内完成。 此选项仍然需要手动创建可用性组，但它会自动完成所有其他必要的配置步骤。 
 
 有关详细信息，请参阅[使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 配置 Always On 可用性组](availability-group-az-cli-configure.md)。 
 
 ## <a name="automatically-with-azure-quickstart-templates"></a>使用 Azure 快速启动模板自动生成
 
-Azure 快速启动模板使用 SQL VM 资源提供程序来创建 Windows 故障转移群集、将 SQL Server VM 加入到该群集、创建侦听器以及配置内部负载均衡器。 此选项仍需要手动创建可用性组和内部负载均衡器 (ILB) 。 但是，它会自动执行并简化所有其他必要的配置步骤，包括 ILB 配置。 
+Azure 快速启动模板使用 SQL VM 资源提供程序来创建 Windows 故障转移群集、将 SQL Server VM 加入到该群集、创建侦听器以及配置内部负载均衡器。 此选项仍然需要手动创建可用性组和内部负载均衡器 (ILB)。 但是，它会自动执行并简化所有其他必要的配置步骤，包括 ILB 的配置。 
 
 有关详细信息，请参阅[使用 Azure 快速启动模板为 Azure VM 上的 SQL Server 配置 Always On 可用性组](availability-group-quickstart-template-configure.md)。
 

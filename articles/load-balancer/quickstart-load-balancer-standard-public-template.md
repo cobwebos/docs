@@ -1,5 +1,5 @@
 ---
-title: 快速入门：创建负载均衡器 - Azure 模板
+title: 快速入门：创建公共负载均衡器 - Azure 模板
 titleSuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 Azure 资源管理器模板创建负载均衡器。
 services: load-balancer
@@ -15,16 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d83d58d608fc184f94ae70e60c56fe8fdc1e5eaa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706041"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984421"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建负载均衡器，以对 VM 进行负载均衡
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建公共负载均衡器，以对 VM 进行负载均衡
 
-负载均衡将传入请求分布到多个虚拟机 (VM)，从而提供更高级别的可用性和可伸缩性。 本快速入门介绍如何部署 Azure 资源管理器模板（ARM 模板）来创建标准负载均衡器，以对 VM 进行负载均衡。 与其他部署方法相比，使用 ARM 模板需要的步骤更少。
+负载均衡将传入请求分布到多个虚拟机 (VM)，从而提供更高级别的可用性和可伸缩性。 
+
+本快速入门演示如何部署标准负载均衡器，以对虚拟机进行负载均衡。
+
+与其他部署方法相比，使用 ARM 模板需要的步骤更少。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -40,7 +44,7 @@ ms.locfileid: "88706041"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/)。
 
-负载均衡器和公共 IP SKU 必须匹配。 创建标准负载均衡器时，还必须创建一个作为该标准负载均衡器的前端配置的新标准公共 IP 地址。 若要创建基本负载均衡器，请使用[此模板](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建议将标准 SKU 用于生产工作负荷。
+负载均衡器和公共 IP SKU 必须匹配。 创建标准负载均衡器时，还必须创建一个作为该标准负载均衡器的前端配置的新标准公共 IP 地址。 若要创建基本负载均衡器，请使用[此模板](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
 :::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
@@ -52,7 +56,7 @@ ms.locfileid: "88706041"
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines)（其中 3 个）。
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)（其中 3 个）。
-- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions)（其中 3 个）：用于配置 IIS 和网页。
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions)（其中 3 个）：用于配置 Internet Information Server (IIS) 和网页。
 
 若要查找与 Azure 负载均衡器相关的更多模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)。
 
@@ -91,7 +95,7 @@ ms.locfileid: "88706041"
 
 ![Azure 标准负载均衡器资源管理器模板 PowerShell 部署输出](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
 
-使用 Azure PowerShell 部署模板。 除了 Azure PowerShell，还可以使用 Azure 门户、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-portal.md)。
+使用 Azure PowerShell 部署模板。 还可以使用 Azure 门户、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-portal.md)。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -115,13 +119,23 @@ ms.locfileid: "88706041"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、负载均衡器以及所有相关资源，请将其删除。 为此，请访问 Azure 门户，选择包含负载均衡器的资源组，然后选择“删除资源组”。
+不再需要它们时，请删除： 
+
+* 资源组
+* 负载均衡器
+* 相关资源
+
+请访问 Azure 门户，选择包含负载均衡器的资源组，然后选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个标准负载均衡器，向其附加了 VM，配置了负载均衡器流量规则，执行了运行状况探测，然后测试了该负载均衡器。
+在本快速入门中，请执行以下操作：
 
-若要了解详细信息，请继续学习与负载均衡器相关的教程。
+* 已创建标准负载均衡器并已将 VM 附加到它。
+* 配置了负载均衡器流量规则和运行状况探测。
+* 测试了负载均衡器。
+
+若要了解详细信息，请继续学习与 Azure 负载均衡器相关的教程。
 
 > [!div class="nextstepaction"]
 > [Azure 负载均衡器教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

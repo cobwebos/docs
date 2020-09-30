@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550736"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985893"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
 
@@ -194,7 +194,7 @@ ms.locfileid: "88550736"
 
 2. 单击“人员”。
 
-    ![People](./media/github-tutorial/people.png "人员")
+    ![显示 GitHub 站点的屏幕截图，其中已选中“人员”。](./media/github-tutorial/people.png "人员")
 
 3. 单击“邀请成员”。
 

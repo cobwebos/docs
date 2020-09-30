@@ -1,24 +1,24 @@
 ---
 title: 什么是语言理解 (LUIS)？
 description: 语言理解 (LUIS) - 一种基于云的 API 服务，将机器学习用于对话式自然语言，来预测含义和提取信息。
-keywords: Azure, 人工智能, ai, 自然语言处理, nlp, 自然语言理解, nlu, ai 对话, 对话 ai, ai 聊天机器人, 聊天机器人生成器, LUIS, nlp ai, luis ai, azure luis, 理解自然语言
+keywords: Azure, artificial intelligence, ai, natural language processing, nlp, natural language understanding, nlu, LUIS, conversational AI, ai chatbot, nlp ai, azure luis
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ff9aa2652fe8a1e503b5e2c93ca149112770b081
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3a8905ca1b9e7d7b4b1e4f5add000def9e91f9c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400936"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985863"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
+语言理解 (LUIS) 是一种基于云的对话式 AI 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 
-LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能够以自然语言与用户通信并完成任务即可。 这些客户端应用程序包括社交媒体应用、聊天机器人以及支持语音的桌面应用程序。
+LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能够以自然语言与用户通信并完成任务即可。 这些客户端应用程序包括社交媒体应用、AI 聊天机器人以及支持语音的桌面应用程序。
 
 ![3 个客户端应用程序使用认知服务语言理解 (LUIS) 的概念图](./media/luis-overview/luis-entry-point.png "3 个客户端应用程序使用认知服务语言理解 (LUIS) 的概念图")
 
@@ -26,7 +26,7 @@ LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能
 
 <a name="Accessing-LUIS"></a>
 
-LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送话语（文本）并接收结果作为 JSON 响应。 LUIS 的常用客户端应用程序是聊天机器人。
+Azure LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送言语（文本）并将结果作为 JSON 响应接收。 LUIS 的常用客户端应用程序是聊天机器人。
 
 
 ![LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图](./media/luis-overview/LUIS-chat-bot-request-response.svg "LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图")
@@ -44,7 +44,7 @@ LUIS 应用提供的智能有助于客户端应用程序进行智能选择。 LU
 
 ## <a name="natural-language-understanding-nlu"></a>自然语言理解 (NLU)
 
-[LUIS 以 NLU 的形式提供人工智能 (AI)](artificial-intelligence.md "LUIS 提供人工智能 (AI)")，NLU 是自然语言处理 (NLP) 的一个分支。
+[LUIS 以 NLU 的形式提供人工智能 (AI)](artificial-intelligence.md "LUIS 提供人工智能 (AI)")，NLU 是自然语言处理 AI 的一个分支。
 
 LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建的域模型启动 LUIS 应用、构建你自己的模型，还可将预构建的域的各个部分与自己的自定义信息进行混合。
 
@@ -52,7 +52,7 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 
 * “自定义模型”LUIS 提供多种方法来识别自己的自定义模型，包括意向和实体。 实体包括机器学习的实体、特定实体或文本实体，以及机器学习的实体和文本实体的组合。
 
-进一步了解 [NLP](artificial-intelligence.md "NLP")，以及 NLU 中特定于 LUIS 的领域。
+详细了解 [NLP AI](artificial-intelligence.md "NLP")，以及 NLU 中特定于 LUIS 的领域。
 
 ## <a name="step-1-design-and-build-your-model"></a>步骤 1：设计和生成模型
 

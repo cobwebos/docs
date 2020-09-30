@@ -1,6 +1,6 @@
 ---
-title: 将 Azure IoT Edge 设备添加到 Azure IoT Central | Microsoft Docs
-description: 以操作员身份将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序
+title: 教程 - 将 Azure IoT Edge 设备添加到 Azure IoT Central | Microsoft Docs
+description: 教程 - 以操作员身份将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序
 author: rangv
 ms.author: rangv
 ms.date: 05/29/2020
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: cc612d5dc21594da855799ed965effeb4b547d00
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018656"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987017"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>教程：将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序
 
@@ -99,7 +99,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 “管理”界面现在包含 **machine**、**ambient** 和 **timeCreated** 遥测类型：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="包含 machine 和 ambient 遥测类型的界面":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 ### <a name="add-views-to-template"></a>将视图添加到模板
 
@@ -115,7 +115,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 1. 选择“保存”以保存“查看 IoT Edge 设备遥测数据”视图。 
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="具有遥测视图的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 ### <a name="publish-the-template"></a>发布模板
 
@@ -123,7 +123,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 导航到“环境传感器边缘设备”模板并选择“发布”。  在“将此设备模板发布到应用程序”面板中，选择“发布”以发布模板 ：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="发布设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 ## <a name="add-iot-edge-device"></a>添加 IoT Edge 设备
 
@@ -135,7 +135,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 现在，已有一个状态为“已注册”的新设备：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="新的注册设备":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 ### <a name="get-the-device-credentials"></a>获取设备凭据
 
@@ -181,7 +181,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 1. 查看你的选择，然后选择“创建”：
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="创建 IoT Edge VM":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 部署需要几分钟时间完成。 部署完成后，导航到 Azure 门户中的 central-edge-rg 资源组。
 
@@ -269,15 +269,15 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 模拟的 IoT Edge 设备现在正在 VM 中运行。 在 IoT Central 应用程序中，“设备”页上的设备状态现在为“已预配”： 
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="已预配 IoT Edge 设备":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 可以在“查看 IoT Edge 设备遥测”页上查看该设备的遥测：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="设备遥测":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 “模块”页显示设备上的 IoT Edge 模块的状态：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="设备模块状态":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -286,14 +286,14 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 * 要删除 IoT Edge VM 及其关联的资源，请删除 Azure 门户中的 contoso-edge-rg 资源组。
 * 要删除 IoT Central 应用程序，请导航至该应用程序“管理”部分中的“你的应用程序”页面，然后选择“删除”  。
 
+既然解决方案开发人员或操作员已了解了如何在 IoT Central 中使用和管理 IoT Edge 设备，建议执行的下一步操作是：
+
+> [!div class="nextstepaction"]
+> [使用设备组分析设备遥测](./tutorial-use-device-groups.md)
+
 ## <a name="next-steps"></a>后续步骤
 
 作为设备开发人员，现在你已了解了如何在 IoT Central 中使用和管理 IoT Edge 设备，建议执行的下一步操作是阅读：
 
 > [!div class="nextstepaction"]
 > [开发 IoT Edge 模块](../../iot-edge/tutorial-develop-for-linux.md)
-
-既然解决方案开发人员或操作员已了解了如何在 IoT Central 中使用和管理 IoT Edge 设备，建议执行的下一步操作是：
-
-> [!div class="nextstepaction"]
-> [使用设备组分析设备遥测](./tutorial-use-device-groups.md)

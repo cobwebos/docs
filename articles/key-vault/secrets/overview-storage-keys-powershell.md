@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: dd54dd17e5a9a828935ad0d6ac3d713aaedd9535
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251586"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>设置变量
 
-首先，通过以下步骤设置 PowerShell cmdlet 使用的变量。 请务必更新 <YourResourceGroupName>、<YourStorageAccountName> 和 <YourKeyVaultName> 占位符，并将 $keyVaultSpAppId 设置为 `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`（在上面的[服务主体应用程序 ID](#service-principal-application-id) 中指定）。
+首先，通过以下步骤设置 PowerShell cmdlet 使用的变量。 请确保更新“YourResourceGroupName”、“YourStorageAccountName”和“YourKeyVaultName”占位符，并将 $keyVaultSpAppId 设置为 `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`（如上文[服务主体应用程序 ID](#service-principal-application-id) 中指定的那样）。
 
 我们还将使用 Azure PowerShell [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) 和 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) cmdlet 来获取你的用户 ID，以及 Azure 存储帐户的上下文。
 

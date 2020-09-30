@@ -4,6 +4,8 @@
   items:
     - name: 关于用于 Redis 的 Azure 缓存
       href: cache-overview.md
+    - name: 新增功能
+      href: cache-whats-new.md
 - name: 快速入门
   expanded: true
   items:
