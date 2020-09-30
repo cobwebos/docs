@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffcb2c741838b1292eaf0793cd625c99d252068c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1a52a15012e367dc902992f7f7b905fc6c6a5eb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462065"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541537"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>快速入门：使用 Azure.Search.Documents 客户端库创建搜索索引
 
-使用新的 [Azure.Search.Documents（版本 11）客户端库](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)以 C# 创建 .NET Core 控制台应用程序，用于创建、加载和查询搜索索引。
+使用新的 [Azure.Search.Documents（版本 11）客户端库](/dotnet/api/overview/azure/search.documents-readme)以 C# 创建 .NET Core 控制台应用程序，用于创建、加载和查询搜索索引。
 
 [下载源代码](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11)，从一个已完成的项目着手，或按照本文中的步骤操作，创建自己的项目。
 

@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e51d0bfb79eab4db9bb571cc0f4ee70ada352d92
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895777"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447172"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>快速入门：设置 Azure 安全中心
 
@@ -61,7 +61,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 
 1. 从安全中心的边栏选择“开始使用”。
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="“入门”页的“升级”选项卡"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="安全中心的“概述”仪表板"::: 
 
     “升级”选项卡列出了符合加入条件的订阅和工作区。
 
@@ -82,7 +82,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 1. 在“数据收集”页上，将“自动预配”设置为“开启”  。
 1. 选择“保存”。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="启用 Log Analytics 代理的自动预配":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="安全中心的“概述”仪表板":::
 
 >[!TIP]
 > 如果需要设置工作区，那么代理安装过程可能需要最多 25 分钟的时间。
@@ -109,7 +109,6 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 [2]: ./media/security-center-get-started/overview.png
 [4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
-[6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
 [9]: ./media/security-center-get-started/select-subscription.png

@@ -2,20 +2,18 @@
 title: include 文件
 description: include 文件
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/12/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript
-ms.author: diberry
-ms.openlocfilehash: 7d1c9e396f088fb64c3a71a868cdefee803e4730
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.custom: include file, devx-track-js
+ms.openlocfilehash: 77a0f0151968a97f6ea5d682a031574bbf8bcdfc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88237291"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545635"
 ---
 预测响应是一个 JSON 对象，其中包括意向和找到的所有实体。
 

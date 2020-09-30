@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002856"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534091"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
 
@@ -170,7 +170,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-    
+
 添加搜索服务信息和 Blob 存储帐户信息。 请注意，可以从上一部分所述的服务预配步骤获取此信息。
 
 对于“SearchServiceName”，请输入短服务名称而不是完整 URL。
@@ -586,11 +586,11 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 
 | 字段名 | 字段类型 |
 | --- | --- |
-| id | Edm.String |
-| content | Edm.String |
-| languageCode | Edm.String |
-| keyPhrases | List<Edm.String> |
-| 组织 | List<Edm.String> |
+| `id` | Edm.String |
+| `content` | Edm.String |
+| `languageCode` | Edm.String |
+| `keyPhrases` | List<Edm.String> |
+| `organizations` | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>创建 DemoIndex 类
 
@@ -906,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-针对本练习中的其他字段（content、languageCode、keyPhrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) 属性返回多个字段。
+针对本练习中的其他字段（content、languageCode、keyPhrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select) 属性返回多个字段。
 
 <a name="reset"></a>
 

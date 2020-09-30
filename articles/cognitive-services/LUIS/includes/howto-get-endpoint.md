@@ -2,20 +2,18 @@
 title: include 文件
 description: include 文件
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 05/06/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 01d102de24185eba789e041d8534d6fdce8c260b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6d1ca85c59f03ae0d008342f71597f4d3ca5d97a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "87374893"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545742"
 ---
 在“Azure 资源”页（左侧菜单）的“管理”部分（右上方菜单）中，复制“示例查询”URL，然后粘贴到新的浏览器选项卡中  。
 
