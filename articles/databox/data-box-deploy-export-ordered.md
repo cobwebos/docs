@@ -8,18 +8,18 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052992"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575565"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教程：创建 Azure Data Box (预览版的出口订单) 
 
 Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移到你的位置。 本教程介绍如何创建 Azure Data Box 的出口订单。 创建导出顺序的主要原因是为了进行灾难恢复，并且在本地存储区被泄露并且需要还原备份。
 
-在本教程中，你将学习：
+本教程的介绍内容包括：
 
 > [!div class="checklist"]
 >
@@ -60,7 +60,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![创建资源](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
 
-3. 选择“创建” 。
+3. 选择“创建”。
 
    ![创建 Azure Data Box](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
 
@@ -82,7 +82,7 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
 6. 在 " **顺序**" 中，指定 **基本** 订单详细信息。 输入或选择以下信息，然后选择“下一步”。
 
-    |设置  |值  |
+    |设置  |“值”  |
     |---------|---------|
     |订阅     | 系统会根据前面所做的选择自动填充此订阅。|
     |资源组 | 之前选择的资源组。 |
@@ -119,14 +119,14 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 
    ![联系人详细信息](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
 
-1. 在 " **安全**" 中，如果要启用基于软件的双加密，请选择 **"为顺序启用双加密**"。 
+1. 在“安全性”中，如果要启用基于软件的双重加密，请选择“为订单启用双重加密” 。 
 
-   除了对 Data Box 上的数据进行 AES-256 位加密外，还执行基于软件的加密。
+   除了对 Data Box 上的数据进行 AES-256 位加密，还可执行基于软件的加密。
 
    > [!NOTE]
    > 启用此选项可能会导致订单处理和数据复制耗时较长。 创建订单后，不能更改此选项。
 
-   ![数据框导入、双加密的安全屏幕](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+   ![Data Box 导入双重加密的安全性屏幕](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
 
    在完成时选择“下一步:联系人详细信息”以继续。
 
@@ -159,34 +159,34 @@ Azure Data Box 是一种混合解决方案，可让你将 Azure 中的数据移�
 如果选择 " **使用 XML 文件**"，则可以指定要导出的 (页面和块) 的特定容器和 blob。 若要设置 XML 格式，需遵循 [示例 xml 文件表](#sample-xml-file) 规范。 下面的步骤演示了如何使用 XML 文件导出数据：
 
 1. 对于 " **导出类型**"，请选择 " **使用 XML 文件**"。 这是 XML 文件，用于指定要导出的特定 blob 和 Azure 文件。 若要添加 XML 文件，请选择 " **单击此处以选择 xml 文件**"。
-     ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+     ![选择导出选项的屏幕截图，单击此处选择一个称为 "X M L 文件" 的文件选项。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
 2. 选择 " **+ 容器** " 以创建容器。
-    ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+    ![容器部分的屏幕截图。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
 3. 在从 Azure 门户右侧弹出的 " **新建容器** " 选项卡中，为容器添加一个名称。 名称必须为小写，并且可以包含数字和短划线 "-"。 然后从下拉列表框中选择 " **公共访问级别** "。 建议选择 " **专用 (非匿名访问) ** "，以防止其他人访问数据。 有关容器访问级别的详细信息，请参阅 [容器访问权限](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
-   ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![新 "容器" 选项卡的屏幕截图，其中显示 "专用 (没有选择匿名访问) " 选项。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
-4. 选择“创建” 。
+4. 选择“创建”。
 
-   ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   !["新建容器" 选项卡的屏幕截图，其中包含 "创建" 选项。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
    如果已成功创建容器，你将收到以下消息：
 
-   ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![显示 "已成功创建存储容器" 的消息的屏幕截图。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
 
 5. 选择所创建的容器，并双击它。
 
-   ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   !["容器" 部分的屏幕截图，其中的私有测试容器容器称为 "out"。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
 6. 双击容器将打开容器属性视图。 现在想要附加 (或浏览) 包含要导出的 blob 和/或 Azure 文件列表的 XML 文件。 选择“上传”。
 
-   ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   !["上传 blob" 对话框的屏幕截图，其中包含一个称为 "上载" 选项。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 
 7. 已成功将 XML 文件添加到容器中。 将仅导出在此 XML 中指定的 blob 和 Azure 文件。
 
-   ![XML 文件](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   !["订单向导" 的屏幕截图，其中包含下一个 "安全" 选项。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
 
 ## <a name="track-the-order"></a>跟踪订单
 

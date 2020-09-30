@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 部署群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何创建 AKS 群集并使用 kubectl 连接到 Kubernetes 主节点。
 services: container-service
 ms.topic: tutorial
-ms.date: 02/25/2020
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 72c2a664b3994d53fdd3602b432df1cabdaeb3ef
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e78dcb3b7ba503011ec83058d9ad765815ef66a8
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002970"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576347"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 

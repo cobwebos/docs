@@ -2,13 +2,13 @@
 title: Azure 服务总线 - 暂停消息实体
 description: 本文介绍如何暂时暂停和重新激活 Azure 服务总线消息实体（队列、主题和订阅）。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/29/2020
+ms.openlocfilehash: f89e17e494cc777691b7f7ca47538cd29114d2dc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078848"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575212"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
 
@@ -18,28 +18,29 @@ ms.locfileid: "88078848"
 
 暂停或重新激活可以由用户或系统执行。 系统只会出于重大管理原因（如达到订阅支出限制），才会暂停实体。 系统禁用的实体不能被用户重新激活，但在暂停原因消除后就会还原。
 
-在门户中，相应实体的 "**概述**" 部分允许更改状态;当前状态以超链接的形式显示在 "**状态**" 下。
-
-以下屏幕截图显示了可通过选择超链接更改实体的可用状态： 
-
-![概述中的服务总线功能的屏幕截图，用于更改实体状态选项。][1]
-
-门户只容许完全禁用队列。 也可以单独禁用发送和接收操作，方法是在 .NET Framework SDK 中使用服务总线 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API，或通过 Azure CLI 或 Azure PowerShell 使用 Azure 资源管理器模板。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="suspension-states"></a>暂停状态
-
+## <a name="queue-status"></a>队列状态 
 可以为队列设置如下状态：
 
 -   **Active**：队列处于活动状态。
--   **Disabled**：队列处于暂停状态。
+-   **Disabled**：队列处于暂停状态。 它相当于同时设置 **SendDisabled** 和 **microsoft.servicebus.messaging.entitystatus.receivedisabled**。 
 -   **SendDisabled**：队列部分处于暂停状态，允许执行接收操作。
 -   **ReceiveDisabled**：队列部分处于暂停状态，允许执行发送操作。
 
-对于订阅和主题，只能设置“Active”**** 和“Disabled”****。
+### <a name="change-the-queue-status-in-the-azure-portal"></a>在 Azure 门户中更改队列状态： 
 
-[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) 枚举还定义了一组只能由系统设置的过渡状态。 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”**** 即可。
+1. 在 Azure 门户中，导航到你的服务总线命名空间。 
+1. 选择要更改其状态的队列。 你将在中间窗格中看到队列。 
+1. 在 " **服务总线队列** " 页上，将队列的当前状态视为超链接。 如果未在左侧菜单中选择 " **概述** "，请选择它以查看队列的状态。 选择要更改的队列的当前状态。 
+
+    :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="选择队列状态":::
+4. 选择队列的新状态，然后选择 **"确定"**。 
+
+    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="选择队列状态":::
+    
+门户只容许完全禁用队列。 也可以单独禁用发送和接收操作，方法是在 .NET Framework SDK 中使用服务总线 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API，或通过 Azure CLI 或 Azure PowerShell 使用 Azure 资源管理器模板。
+
+### <a name="change-the-queue-status-using-azure-powershell"></a>使用 Azure PowerShell 更改队列状态
+下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”**** 即可。
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -48,6 +49,30 @@ $q.Status = "Disabled"
 
 Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
+
+## <a name="topic-status"></a>主题状态
+在 Azure 门户中更改主题状态类似于更改队列的状态。 选择主题的当前状态时，会看到以下页面，可以在其中更改状态。 
+
+:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="选择队列状态":::
+
+可为主题设置的状态包括：
+- **活动**：主题处于活动状态。
+- **Disabled**：主题被挂起。
+- **SendDisabled**：与 **已禁用**的效果相同。
+
+## <a name="subscription-status"></a>订阅状态
+在 Azure 门户中更改订阅状态类似于更改主题或队列的状态。 当你选择订阅的当前状态时，你会看到以下页面，你可以在其中更改状态。 
+
+:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="选择队列状态":::
+
+可为主题设置的状态包括：
+- **活动**：主题处于活动状态。
+- **Disabled**：主题被挂起。
+- **Microsoft.servicebus.messaging.entitystatus.receivedisabled**：与 **已禁用**的效果相同。
+
+## <a name="other-statuses"></a>其他状态
+[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) 枚举还定义了一组只能由系统设置的过渡状态。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 3469b612081f9cb96beec98a065e0827d1c04b4c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 400c2d91383b5f21fcd40fdbbe279bd83fcef51a
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261831"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576534"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>服务器评估概述 (迁移到 Azure VMware 解决方案) 
 
@@ -127,7 +127,7 @@ ms.locfileid: "88261831"
 **性能历史记录** | 设置评估计算机性能数据时要考虑的持续时间。 仅当大小调整条件 *基于性能*时，此属性才适用。 
 **百分位使用率** | 指定要用于调整右大小的性能样本集的百分位数值。 此属性仅当调整大小基于性能时才适用。
 **舒适因子** | Azure Migrate Server 评估考虑到 (在评估过程中) 的缓冲区。 该缓冲应用到 VM 的机器使用率数据（CPU、内存、磁盘和网络）上。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 
-**产品/服务** | 显示您注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 Azure Migrate 会进行相应的成本估算。
+**产品** | 显示您注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 Azure Migrate 会进行相应的成本估算。
 **货币** | 显示帐户的计费货币。 
 **折扣 (%)** | 列出你在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。 
 **Azure 混合权益** | 指定您是否具有软件保障并且有资格使用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 尽管由于基于节点的价格而不影响 Azure VMware 解决方案定价，但客户仍然可以使用 Azure 混合权益在 AVS (基于 Microsoft 的) 中应用本地操作系统许可证。 其他软件操作系统供应商必须提供其自己的许可条款，例如 RHEL。 
@@ -256,7 +256,7 @@ Azure Migrate 中的每个基于性能的评估都与置信度分级相关联，
 ## <a name="migration-tool-guidance"></a>迁移工具指南
 
 在 Azure VMware 解决方案 (AVS) 评估的 Azure 迁移就绪性报告中，可以看到以下推荐工具： 
-- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展 (HCX) 解决方案是将本地工作负荷迁移到 Azure VMware 解决方案 (AVS) 私有云的建议迁移工具。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
+- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展 (HCX) 解决方案是将本地工作负荷迁移到 Azure VMware 解决方案 (AVS) 私有云的建议迁移工具。 [了解详细信息](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
 - **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展 (HCX) 解决方案。
 
 ## <a name="next-steps"></a>后续步骤

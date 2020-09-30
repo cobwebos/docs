@@ -1,18 +1,18 @@
 ---
-title: 获取有关转换的信息
-description: 获取有关转换的信息
+title: 获取转换的相关信息
+description: 获取转换的相关信息
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870283"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576619"
 ---
-# <a name="get-information-about-conversions"></a>获取有关转换的信息
+# <a name="get-information-about-conversions"></a>获取转换的相关信息
 
 ## <a name="information-about-a-conversion-the-result-file"></a>有关转换的信息：结果文件
 
@@ -65,6 +65,10 @@ ms.locfileid: "88870283"
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
     },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
+    },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
         "conversionHash": "CCDB1F7A4C09F565"
@@ -114,6 +118,13 @@ ms.locfileid: "88870283"
 * `sourceAssetFormat`：源文件格式的说明。
 * `sourceAssetFormatVersion`：源文件格式的版本。
 * `sourceAssetGenerator`：生成源文件的工具的名称（如果可用）。
+
+### <a name="the-materialoverrides-section"></a>*MaterialOverrides*部分
+
+本部分提供有关在向转换服务提供了材料覆盖文件时的 [材料重](override-materials.md) 写的信息。
+其中包含以下信息：
+* `numOverrides`：从材料覆盖文件中读取的替代项的数目。
+* `numOverriddenMaterials`：已重写的材料数。
 
 ### <a name="the-inputstatistics-section"></a>*InputStatistics*部分
 

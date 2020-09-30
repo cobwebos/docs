@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192140"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576210"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 流分析将 Azure 存储 Blob 中的数据流式传输至 Azure Data Lake Storage Gen1 中
 本文介绍如何使用 Azure Data Lake Storage Gen1 作为 Azure 流分析作业的输出。 本文演示了一个简单的方案：从 Azure 存储 blob（输入）读取数据并将数据写入 Data Lake Storage Gen1（输出）。
@@ -42,11 +42,11 @@ ms.locfileid: "88192140"
 
 1. 打开流分析作业页，在左窗格中单击“输入”**** 选项卡，并单击“添加”****。
 
-    ![添加输入到作业](./media/data-lake-store-stream-analytics/create.input.1.png "添加输入到作业")
+    ![流分析作业边栏选项卡的屏幕截图，其中包含输入选项和 "添加流输入" 选项（称为 out）。](./media/data-lake-store-stream-analytics/create.input.1.png "添加输入到作业")
 
 2. 在“新建输入”**** 边栏选项卡中，提供以下值。
 
-    ![添加输入到作业](./media/data-lake-store-stream-analytics/create.input.2.png "添加输入到作业")
+    ![Blob 存储-新输入边栏选项卡的屏幕截图。](./media/data-lake-store-stream-analytics/create.input.2.png "添加输入到作业")
 
    * 对于“输入别名”****，输入此作业输入的唯一名称。
    * 对于“源类型”****，选择“数据流”****。
@@ -65,18 +65,18 @@ ms.locfileid: "88192140"
 
 1. 打开流分析作业页面，单击“输出”选项卡，单击“添加”，然后选择“Data Lake Storage Gen1”************。
 
-    ![向作业添加输出](./media/data-lake-store-stream-analytics/create.output.1.png "向作业添加输出")
+    ![流分析作业边栏选项卡的屏幕截图，其中包含 "输出" 选项、"添加选项" 和 "Data Lake Storage 第1代" 选项。](./media/data-lake-store-stream-analytics/create.output.1.png "向作业添加输出")
 
 2. 在“新建输出”**** 边栏选项卡中，提供以下值。
 
-    ![向作业添加输出](./media/data-lake-store-stream-analytics/create.output.2.png "向作业添加输出")
+    ![Data Lake Storage 第1代-新建输出 "边栏选项卡的屏幕截图，其授权选项称为" out "。](./media/data-lake-store-stream-analytics/create.output.2.png "向作业添加输出")
 
     * 对于“输出别名”****，输入此作业输出的唯一名称。 该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Storage Gen1 帐户。
     * 系统会提示授权访问 Data Lake Storage Gen1 帐户。 单击“授权”****。
 
 3. 在“新建输出”**** 边栏选项卡中，继续提供以下值。
 
-    ![向作业添加输出](./media/data-lake-store-stream-analytics/create.output.3.png "向作业添加输出")
+    ![Data Lake Storage 第1代-新 "输出" 边栏选项卡的屏幕截图。](./media/data-lake-store-stream-analytics/create.output.3.png "向作业添加输出")
 
    * 在“帐户名称”处，选择已创建的要将作业输出发送到的 Data Lake Storage Gen1 帐户****。
    * 对于“路径前缀模式”，输入用于在指定的 Data Lake Storage Gen1 帐户中写入文件的文件路径****。

@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 创建容器注册表
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 197e5c7bed569e67376f9c28fe0d2e050016cce8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bf2ea5c7ea0c2f3ae90f9d98d8009915d5ced6f8
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922398"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576273"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
@@ -66,10 +66,10 @@ $ docker images
 上述命令输出显示当前本地图像的列表：
 
 ```
-REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
-redis                        latest              a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
+mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 若要将 *azure-vote-front* 容器映像与 ACR 配合使用，需使用注册表的登录服务器地址对映像进行标记。 在将容器映像推送到映像注册表时，使用此标记进行路由。
@@ -83,10 +83,10 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 现在，请使用容器注册表的 acrLoginServer 地址标记本地 azure-vote-front 映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
 
 ```console
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
 ```
 
-若要验证是否已应用标记，请再次运行 [docker images][docker-images]。 
+若要验证是否已应用标记，请再次运行 [docker images][docker-images]。
 
 ```azurecli
 $ docker images
@@ -95,11 +95,11 @@ $ docker images
 系统会使用 ACR 实例地址和版本号对映像进行标记。
 
 ```
-REPOSITORY                                           TAG           IMAGE ID            CREATED             SIZE
-azure-vote-front                                     latest        eaf2b9c57e5e        8 minutes ago       716 MB
-mycontainerregistry.azurecr.io/azure-vote-front      v1            eaf2b9c57e5e        8 minutes ago       716 MB
-redis                                                latest        a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313        8 months ago        694 MB
+REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front    v1                  84b41c268ad9        16 minutes ago      944MB
+mycontainerregistry.azurecr.io/azure-vote-front v1                  84b41c268ad9        16 minutes ago      944MB
+mcr.microsoft.com/oss/bitnami/redis             6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 ## <a name="push-images-to-registry"></a>将映像推送到注册表

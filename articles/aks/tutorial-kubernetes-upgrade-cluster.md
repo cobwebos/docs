@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 升级群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何将现有 AKS 群集升级到最新可用的 Kubernetes 版本。
 services: container-service
 ms.topic: tutorial
-ms.date: 02/25/2020
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: a89e8bb42bec4323d2189ca93dfe73171c4a128c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 9a36e0903945a974f73187e4799e978c32f2d961
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888005"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576262"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 

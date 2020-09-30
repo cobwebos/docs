@@ -1,5 +1,5 @@
 ---
-title: 缩放 Synapse SQL 池的计算（Azure 门户）
+title: 快速入门：缩放 Synapse SQL 池的计算（Azure 门户）
 description: 可以使用 Azure 门户缩放 Synapse SQL 池（数据仓库）的计算。
 services: synapse-analytics
 author: Antvgski
@@ -11,12 +11,12 @@ ms.date: 04/28/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d944ff86cdc11c30142792c6fd15d03e3cfd4fa9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b8a39220bda788cf6dac0be5151c2cdf5385e342
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212932"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570269"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>快速入门：使用 Azure 门户缩放 Synapse SQL 池的计算
 

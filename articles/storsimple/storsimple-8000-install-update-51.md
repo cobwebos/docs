@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052165"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575956"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 设备上安装更新5。1
 
@@ -60,15 +60,15 @@ ms.locfileid: "90052165"
 
 2. 导航到 "**设备设置**" "  >  **设备更新**"。
 
-    ![单击“设备更新”](./media/storsimple-8000-install-update-51/update2.png)
+    !["设置" 边栏选项卡的屏幕截图，其中包含称为 "设备更新" 选项。](./media/storsimple-8000-install-update-51/update2.png)
 
 3. 如果有新的更新可用，则会显示一条通知。 或者，在“设备更新”边栏选项卡中，单击“扫描更新”。******** 已创建一个用于扫描可用更新的作业。 在作业成功完成时，系统会发出通知。
 
-    ![单击“设备更新”](./media/storsimple-8000-install-update-51/update3.png)
+    !["设置" 边栏选项卡和 "设备更新" 选项的屏幕截图，其中包含新的定期更新。](./media/storsimple-8000-install-update-51/update3.png)
 
 4. 建议先查看版本信息，然后在设备上应用更新。 若要应用更新，请单击“安装更新”。**** 在“确认常规更新”边栏选项卡中，在应用更新之前，复查要完成的先决条件。**** 选中指示已做好更新准备的复选框，并单击“安装”。****
 
-    ![单击“设备更新”](./media/storsimple-8000-install-update-51/update4.png)
+    !["设备更新" 边栏选项卡和 "安装更新" 选项的屏幕截图，其中包含 "同意" 选项和 "安装选项"。](./media/storsimple-8000-install-update-51/update4.png)
 
 5. 此时会开始执行一系列先决条件检查。 这些检查包括：
    
@@ -80,17 +80,17 @@ ms.locfileid: "90052165"
 
 7. 预检查成功完成后，将创建更新作业。 成功创建更新作业后，系统会发出通知。
    
-    ![创建更新作业](./media/storsimple-8000-install-update-51/update6.png)
+    ![显示 "正在启动软件更新作业" 的通知屏幕截图。](./media/storsimple-8000-install-update-51/update6.png)
    
     然后，在设备上应用更新。
 
 9. 更新需要数小时才能完成。 随时可以选择更新作业并单击“详细信息”来查看作业详细信息。****
 
-    ![创建更新作业](./media/storsimple-8000-install-update-51/update8.png)
+    !["设备更新" 边栏选项卡的屏幕截图，其中包含 "下载并安装正在进行的软件更新" 选项（称为 "已下载" 和 "安装更新"](./media/storsimple-8000-install-update-51/update8.png)
 
      还可以从“设备设置”>“作业”检索更新作业的进度****。 在“作业”边栏选项卡上，可以看到更新进度。****
 
-     ![创建更新作业](./media/storsimple-8000-install-update-51/update7.png)
+     !["设置" 边栏选项卡的屏幕截图，其中包含被称为 "作业" 和 "作业" 边栏选项卡，显示更新进度。](./media/storsimple-8000-install-update-51/update7.png)
 
 10. 在作业完成后，导航到“设备设置”>“设备更新”。**** 软件版本现在应当已更新。
 

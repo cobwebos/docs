@@ -3,14 +3,14 @@ title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/14/2019
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a9a8a73e2208f7efe01f43fa87e196ffd8c64f14
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361585"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576296"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 

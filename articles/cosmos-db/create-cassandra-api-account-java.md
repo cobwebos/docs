@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: fa25d07ff034cec50da515341bd9ca604ee28577
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 902980d7c145d5150214b7d4f4433e5da344e30b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319178"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570045"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "87319178"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 
-* 获取最新版本的 [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable)。 
+* 获取最新版本的 [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。 
 
 * [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档。 
   - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。 

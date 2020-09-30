@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192857"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574185"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据
 本文介绍如何使用 Power BI Desktop 分析和可视化 Azure Data Lake Storage Gen1 中存储的数据。
@@ -27,7 +27,7 @@ ms.locfileid: "88192857"
 1. 在计算机上启动 Power BI Desktop。
 2. 在“主页”功能区上，单击“获取数据”，并单击“详细信息”。 在“获取数据”对话框中，单击“Azure”，单击“Azure Data Lake Store”，然后单击“连接”。
    
-    ![连接到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "连接到 Data Lake Storage Gen1")
+    !["获取数据" 对话框的屏幕截图，其中突出显示了 "Azure Data Lake Store" 选项和 "连接" 选项。](./media/data-lake-store-power-bi/get-data-lake-store-account.png "连接到 Data Lake Storage Gen1")
 3. 如果出现一个对话框显示连接器处于开发阶段，选择继续。
 4. 在“Azure Data Lake Store”对话框中，提供 Data Lake Storage Gen1 帐户的 URL，并单击“确定”。
    
@@ -37,7 +37,7 @@ ms.locfileid: "88192857"
     ![登录 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登录 Data Lake Storage Gen1")
 6. 登录成功后，单击“连接”。
    
-    ![连接到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "连接到 Data Lake Storage Gen1")
+    !["Azure Data Lake Store" 对话框的屏幕截图，其中的 Connect 选项称为 "out"。](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "连接到 Data Lake Storage Gen1")
 7. 下一个对话框中会显示已上传至 Data Lake Storage Gen1 帐户的文件。 验证信息，并单击“加载”。
    
     ![从 Data Lake Storage Gen1 加载数据](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "从 Data Lake Storage Gen1 加载数据")
@@ -52,19 +52,19 @@ ms.locfileid: "88192857"
     后续步骤会更新查询，以按所需格式转换已导入的数据。
 9. 在“主页”功能区上，单击“编辑查询”。
    
-    ![编辑查询](./media/data-lake-store-power-bi/edit-queries.png "编辑查询")
+    !["主页" 功能区的屏幕截图，其中包含名为 "编辑查询" 选项。](./media/data-lake-store-power-bi/edit-queries.png "编辑查询")
 10. 在“查询编辑器”中的“内容”列，单击“二进制”。
     
-    ![编辑查询](./media/data-lake-store-power-bi/convert-query1.png "编辑查询")
+    ![内容列被称为 "内容" 列的 "查询编辑器" 屏幕截图。](./media/data-lake-store-power-bi/convert-query1.png "编辑查询")
 11. 会出现一个文件图标，该图标表示已上传的 **Drivers.txt** 文件。 右键单击该文件，并单击“CSV”。    
     
-    ![编辑查询](./media/data-lake-store-power-bi/convert-query2.png "编辑查询")
+    ![查询编辑器的屏幕截图，其中的 CSV 选项称为 "out"。](./media/data-lake-store-power-bi/convert-query2.png "编辑查询")
 12. 会出现如下所示的输出。 数据现在已是可用于创建可视化的格式。
     
-    ![编辑查询](./media/data-lake-store-power-bi/convert-query3.png "编辑查询")
+    ![查询编辑器的屏幕截图，输出显示为预期结果。](./media/data-lake-store-power-bi/convert-query3.png "编辑查询")
 13. 在“主页”功能区上，单击“关闭并应用”，并再次单击“关闭并应用”。
     
-    ![编辑查询](./media/data-lake-store-power-bi/load-edited-query.png "编辑查询")
+    ![主功能区的屏幕截图，其中的 close 和 Apply 选项称为 out。](./media/data-lake-store-power-bi/load-edited-query.png "编辑查询")
 14. 查询更新后，“字段”选项卡会显示可用于可视化的新字段。
     
     ![已更新的字段](./media/data-lake-store-power-bi/updated-query-fields.png "已更新的字段")

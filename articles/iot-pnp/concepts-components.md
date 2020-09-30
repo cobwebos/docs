@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c4a32a5c929e74332e85ceb6f4cff787e237e385
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069639"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574273"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>模型中的 IoT 即插即用组件
 
@@ -56,7 +56,7 @@ ms.locfileid: "90069639"
 ...
 ```
 
-尽管模型没有显式定义组件，但其行为就像具有所有遥测、属性和命令定义的单个组件。
+尽管模型没有显式定义组件，但它的行为就好像存在单个 _默认组件_，并且具有所有遥测、属性和命令定义。
 
 以下屏幕截图显示了如何在 Azure IoT 资源管理器工具中显示模型：
 
@@ -64,9 +64,12 @@ ms.locfileid: "90069639"
 
 模型 ID 存储在设备的克隆属性中，如以下屏幕截图所示：
 
-:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="数字克隆属性中的模型 ID":::
+:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Azure IoT 浏览器中的默认组件":::
 
-对于包含一组遥测、属性和命令的设备，没有组件的 DTDL 模型是一种有用的简化。 不使用组件的模型使你可以轻松地将现有设备迁移为 IoT 即插即用设备-你可以创建一个 DTDL 模型来描述你的实际设备，而无需定义任何组件。
+对于具有一组遥测、属性和命令的设备或 IoT Edge 模块，不含组件的 DTDL 模型是非常有用的。 不使用组件的模型使你可以轻松地将现有设备或模块迁移为 IoT 即插即用设备或模块-创建 DTDL 模型来描述你的实际设备或模块，而无需定义任何组件。
+
+> [!TIP]
+> 模块可以是设备 [module] (。/iot-hub/iot-hub-devguide-module-twins.md 或 [IoT Edge 模块](../iot-edge/about-iot-edge.md)。
 
 ## <a name="multiple-components"></a>多个组件
 
@@ -109,11 +112,12 @@ ms.locfileid: "90069639"
 ...
 ```
 
-此模型包含三个组件（在 "内容" 部分中定义）-两个 `Thermostat` 组件和一个 `DeviceInformation` 组件。 还有一个默认的根组件。
+此模型包含三个组件（在 "内容" 部分中定义）-两个 `Thermostat` 组件和一个 `DeviceInformation` 组件。 还有一个默认组件。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已了解模型组件，下面是一些其他资源：
 
+- [安装并使用 DTDL 创作工具](howto-use-dtdl-authoring-tools.md)
 - [数字孪生定义语言 v2 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl)
 - [模型存储库](./concepts-model-repository.md)

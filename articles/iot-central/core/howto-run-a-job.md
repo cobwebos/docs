@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 5b8aba74cb0914cf26382e0d17a8ce2ba6bd4063
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060809"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91573936"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建并运行作业
 
@@ -32,23 +32,35 @@ ms.locfileid: "90060809"
 
 1. 选择 " **云属性**"、" **属性**" 或 " **命令** " 作为 **作业类型**：
 
-    若要设置“属性”  作业配置，请选择一个属性并设置其新值。 若要设置 **命令** 作业配置，请选择要运行的命令。 属性作业可以设置多个属性。
+    若要配置 **属性** 作业，请选择属性并设置其新值。 若要配置 **命令** 作业，请选择要运行的命令。 属性作业可以设置多个属性。
 
-    :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="显示用于创建名为 设置光源阈值 的属性作业的选项的屏幕截图":::
+    :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
 
-    选择 " **保存并退出** "，将作业添加到 " **作业** " 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
 
-    选择 " **下一步** " 转到 " **审阅** " 页。 " **审阅** " 页将显示作业配置详细信息。 选择 " **运行** " 以提交作业。
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消" 阈值**。
 
-    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="作业向导 审阅 页的屏幕截图":::
+    批处理使你可以将大量设备的作业错开。 作业分为多个批处理，每个批处理包含设备的一个子集。 批处理已排队并按顺序运行。
 
-1. 作业通过 " *挂起*"、" *正在运行*" 和 " *已完成* " 阶段。 作业执行详细信息包含结果指标、持续时间详细信息和设备列表网格。
+    如果错误数超出设置的限制，则取消阈值允许您自动取消作业。 阈值可应用于作业中的所有设备，或应用于单个批次。
 
-    作业完成后，可以选择 " **结果日志** " 以下载作业详细信息的 CSV 文件，包括设备及其状态值。 这些信息可用于故障排除。
+    :::image type="content" source="media/howto-run-a-job/job-wizard-delivery-options.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
 
-    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="显示设备状态的屏幕截图":::
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
 
-1. 作业现在显示在 "**作业**" 页上的 "**过去30天**" 列表中。 此页显示当前正在运行的作业，以及以前运行的或保存的作业的历史记录。
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消" 以提交作业。
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
+
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
+
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消" 以下载作业详细信息的 CSV 文件，包括设备及其状态值。 这些信息可用于故障排除。
+
+    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
+
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
+
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消" 列表中。 此页显示当前正在运行的作业，以及以前运行的或保存的作业的历史记录。
 
     > [!NOTE]
     > 你可以查看以前运行的作业的30天历史记录。
@@ -57,17 +69,27 @@ ms.locfileid: "90060809"
 
 若要停止正在运行的作业，请将其打开，然后选择 " **停止**"。 作业状态将更改，以反映作业已停止。 " **摘要** " 部分显示已完成、已失败或仍处于挂起状态的设备。
 
-:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="显示正在运行的作业和停止作业的按钮的屏幕截图":::
+:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
 
-当作业处于停止状态时，你可以选择 " **继续** " 以继续运行作业。 作业状态将更改，以反映作业现在正在运行。 " **摘要** " 部分继续更新并获得最新进度。
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
 
-:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="显示已停止的作业和用于继续作业的按钮的屏幕截图":::
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消" 部分继续更新并获得最新进度。
+
+:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
+
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
+
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消":::
 
 ## <a name="copy-a-job"></a>复制作业
 
 若要复制现有作业，请选择已执行的作业。 在 "作业结果" 页或 "作业详细信息" 页上选择 " **复制** "：
 
-:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="显示 复制 按钮的屏幕截图":::
+:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
+
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
+
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消":::
 
 此时会打开一个作业配置副本供你编辑，并且 **复制** 将追加到作业名称。
 
@@ -82,6 +104,7 @@ ms.locfileid: "90060809"
 | 挂起              | 此作业尚未开始在设备上运行。         |
 | 运行              | 此作业当前正在设备上运行。             |
 | 已停止              | 用户已手动停止此作业。           |
+| 已取消             | 此作业已取消，因为超出了 " **传递选项** " 页面上设置的阈值。 |
 
 状态消息后面是作业中设备的概述。 下表列出了可能的 *设备状态* 值：
 
@@ -104,15 +127,21 @@ ms.locfileid: "90060809"
 
 您可以通过选择 "筛选器" 图标来筛选 " **作业详细信息** " 页上的设备列表。 可以在 " **设备 ID** " 或 " **状态** " 字段上进行筛选：
 
-:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="显示用于筛选设备列表的选项的屏幕截图。":::
+:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
+
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
+
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消":::
 
 ## <a name="customize-columns-in-the-device-list"></a>自定义设备列表中的列
 
 可以通过选择 "列选项" 图标，将列添加到设备列表：
 
-:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="显示列选项图标的屏幕截图。":::
+:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
 
-使用 " **列选项** " 对话框可以选择设备列表列。 选择要显示的列，选择向右箭头，然后选择 **"确定"**。 若要选择所有可用列，请选择 " **全选**"。 选定的列将显示在设备列表中。
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
+
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消" **全选**"。 选定的列将显示在设备列表中。
 
 所选列跨用户会话或有权访问应用程序的用户会话之间保持不变。
 
@@ -120,14 +149,11 @@ ms.locfileid: "90060809"
 
 你可以重新运行具有失败设备的作业。 **失败时选择重新运行**：
 
-:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="屏幕截图，显示用于在失败设备上重新运行作业的按钮。":::
+:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="显示用于创建名为 &quot;设置光源阈值&quot; 的属性作业的选项的屏幕截图&quot;:::
 
-输入 "作业名称" 和 "说明"，然后选择 " **重新运行作业**"。 提交新作业，以重试对失败设备的操作。
+    选择 &quot; **保存并退出** &quot;，将作业添加到 &quot; **作业** &quot; 页上保存的作业列表中。 稍后可以从已保存作业列表返回到作业。
 
-> [!NOTE]
-> 你不能从 Azure IoT Central 应用程序同时运行五个以上的作业。
->
-> 当作业完成并且删除作业的设备列表中的设备时，设备名称中的设备条目将显示为 "已删除"。 "详细信息" 链接对已删除的设备不可用。
+    选择 &quot; **下一步** &quot; 转到 &quot; **传递选项** &quot; 页。 &quot; **传递选项** &quot; 页面允许您为此作业设置传递选项： &quot; **批处理** &quot; 和 &quot; **取消" 链接对已删除的设备不可用。
 
 ## <a name="next-steps"></a>后续步骤
 

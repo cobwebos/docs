@@ -3,12 +3,12 @@ title: 教程 - 网络规划清单
 description: 了解网络要求先决条件以及有关 Azure VMware 解决方案的网络连接和网络端口的详细信息。
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254391"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576671"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware 解决方案的网络规划清单 
 
@@ -21,8 +21,6 @@ Azure VMware 解决方案提供一个 VMware 私有云环境，用户和应用�
 > * 路由和子网要求
 > * 与服务通信所需的网络端口
 > * Azure VMware 解决方案中的 DHCP 和 DNS 注意事项
-
-
 
 ## <a name="virtual-network-and-expressroute-circuit-considerations"></a>虚拟网络和 ExpressRoute 线路注意事项
 在订阅中创建虚拟网络连接时，ExpressRoute 线路通过对等互连建立，并使用你在 Azure 门户中请求的授权密钥和对等互连 ID。 对等互连是私有云和虚拟网络之间的一种专用的一对一连接。

@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269278"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575004"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用作用域基于组状态运行操作
 
 若要仅在另一组操作成功或失败后运行操作，请在范围内对这些操作进行分组。 如果你希望将各个操作组织为逻辑组，评估该组的状态并执行基于作用域状态的操作，则此结构非常有用。 当某个作用域中的所有操作都完成运行后，该作用域也确定了其自己的状态。 例如，当希望实现[异常和错误处理](../logic-apps/logic-apps-exception-handling.md#scopes)时可以使用作用域。 
 
-若要检查作用域的状态，可以使用与用来确定逻辑应用运行状态（例如 "已成功"、"失败"、"已取消"，等等）的条件相同的条件。 默认情况下，当作用域的所有操作都成功时，作用域的状态将被标记为“已成功”。 但是，当作用域中有任何操作失败或被取消时，作用域的状态将被标记为“已失败”。 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
+若要检查作用域的状态，可以使用与用来确定逻辑应用运行状态（例如 " **成功**"、"已 **失败**"、"已 **取消**" 等）的条件相同的条件。 默认情况下，当作用域的所有操作都成功时，作用域的状态将标记为 " **成功**"。 但是，当作用域中的任何操作失败或被取消时，作用域的状态将标记为 " **失败**"。 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
 
-例如，下面是一个高级别逻辑应用，它使用作用域来运行特定操作并使用一个条件来检查作用域的状态。 如果作用域中有任何操作失败或意外终止，则作用域将被相应地标记为“已失败”或“已中止”，并且逻辑应用将发送一条“作用域已失败”消息。 如果作用域中的所有操作都成功，则逻辑应用会发送一条“作用域已成功”消息。
+例如，下面是一个高级别逻辑应用，它使用作用域来运行特定操作并使用一个条件来检查作用域的状态。 如果范围中的任何操作失败或意外结束，则该范围分别标记为 "已 **失败** " 或 "已 **中止** "，逻辑应用将发送 "scope Failed" 消息。 如果作用域中的所有操作都成功，则逻辑应用会发送一条“作用域已成功”消息。
 
 ![关系图显示了逻辑应用范围流，其中包含 "作用域已失败" 和 "作用域已成功" 的示例。](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "91269278"
    
       `result('Scope')[0]['status']`
 
-      ![显示 "添加表达式" 窗口并突出显示结果表达式的屏幕截图。](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![显示结果表达式为突出显示的 "表达式" 框的屏幕截图。](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. 对于这两行，选择“等于”作为其运算符。 
    

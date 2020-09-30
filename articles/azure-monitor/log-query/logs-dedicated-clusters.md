@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461455"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575514"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 记录专用群集
 
@@ -19,7 +19,7 @@ Azure Monitor 日志专用群集是一种部署选项，可用于更好地为大
 
 除了对大容量的支持外，还可以使用专用群集的其他好处：
 
-- **速率限制** -客户只能对专用群集具有更高的引入速率限制。
+- **速率限制** -客户只能对专用群集具有更高的 [引入速率限制](../service-limits.md#data-ingestion-volume-rate) 。
 - **功能** -某些企业功能仅适用于专用群集-具体而言， (CMK) 和密码箱支持的客户托管密钥。 
 - **一致性** -客户具有自己的专用资源，因此不会影响在同一共享基础结构上运行的其他客户。
 - **成本效率** -使用专用群集可能更具成本效益，因为分配的容量预留层将考虑所有的群集引入，并将其应用到所有的工作区，即使其中一些工作区较小且不符合容量保留折扣。
@@ -38,14 +38,23 @@ Azure Monitor 日志专用群集是一种部署选项，可用于更好地为大
 
 群集级别上的所有操作都需要对群集的 " `Microsoft.OperationalInsights/clusters/write` 操作" 权限。 可以通过包含操作的所有者或参与者或 `*/write` 包含操作的 Log Analytics 参与者角色授予此权限 `Microsoft.OperationalInsights/*` 。 有关 Log Analytics 权限的详细信息，请参阅 [在 Azure Monitor 中管理对日志数据和工作区的访问权限](../platform/manage-access.md)。 
 
-## <a name="billing"></a>计费
 
-只有在具有或没有容量保留层的情况下使用每 GB 计划的工作区才支持专用群集。 对于承诺为此类群集引入超过 1 TB 的客户，专用群集不收取额外费用。 "提交到引入" 意味着它们在群集级别分配了至少 1 TB/天的容量预留层。 虽然在群集级别附加了容量保留，但对于数据的实际收费有两个选项：
+## <a name="cluster-pricing-model"></a>群集定价模型
 
-- *群集* (默认) -群集的容量保留成本归属于 *群集* 资源。
-- *工作区* -群集的容量保留成本与群集中的工作区按比例进行了分类。 如果该天的引入总数据量低于容量预留，则会对该 *群集* 资源进行计费。 请参阅 [Log Analytics 专用群集](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) ，了解群集定价模型的详细信息。
+Log Analytics 专用群集使用至少 1000 GB/天的容量保留定价模型。 将按即用即付费率对超出预留级别的任何使用量进行计费。  [Azure Monitor 定价页]( https://azure.microsoft.com/pricing/details/monitor/)上提供了容量保留定价信息。  
 
-有关专用群集计费的详细信息，请参阅 [Log Analytics 专用群集计费](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)。
+群集容量预留级别通过使用下的参数以编程方式通过 Azure 资源管理器进行配置 `Capacity` `Sku` 。 `Capacity` 指定 GB 为单位，并且值可以为 1000 GB/天或更大，增量为 100 GB/天。
+
+对于群集上的使用情况，有两种计费模式。 配置群集时，可通过 `billingType` 参数指定这些计费模式。 
+
+1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 将聚合与群集关联的每个工作区中的引入数据数量，以计算群集的每日账单。 
+
+2. **工作区**：在为每个工作区的 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/) 中的每个节点分配记帐后，群集的容量保留成本将按节点分配给群集中的工作区 (。 ) 
+
+请注意，如果工作区使用的是旧的每节点定价层，则当其链接到某个群集时，将基于针对群集容量预留的数据引入进行计费，并且不再按节点计费。 将继续应用 Azure 安全中心的每个节点的数据分配。
+
+有关详细信息，请参阅 [此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)提供的 Log Analytics 专用群集的计费。
+
 
 ## <a name="creating-a-cluster"></a>创建群集
 
@@ -155,8 +164,8 @@ Content-type: application/json
 
 - **keyVaultProperties**：用于配置用于预配 [Azure Monitor 客户管理的密钥](../platform/customer-managed-keys.md#cmk-provisioning-procedure)的 Azure Key Vault。 它包含以下参数：  *KeyVaultUri*、 *KeyName*、 *KeyVersion*。 
 - **billingType** - *billingType* 属性确定 *群集* 资源及其数据的计费归属：
-- **群集** (默认) -群集的容量保留成本归属于 *群集* 资源。
-- **工作区** -群集的容量预留成本与群集中的工作区按比例进行了分类，如果当天的总引入数据低于容量预留，则会向 *群集* 资源计费一些使用情况。 请参阅 [Log Analytics 专用群集](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) ，了解群集定价模型的详细信息。 
+  - **群集** (默认) -群集的容量保留成本归属于 *群集* 资源。
+  - **工作区** -群集的容量预留成本与群集中的工作区按比例进行了分类，如果当天的总引入数据低于容量预留，则会向 *群集* 资源计费一些使用情况。 请参阅 [Log Analytics 专用群集](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) ，了解群集定价模型的详细信息。 
 
 > [!NOTE]
 > PowerShell 不支持 *billingType* 属性。
@@ -185,7 +194,7 @@ Content-type: application/json
 {
    "sku": {
      "name": "capacityReservation",
-     "capacity": 1000
+     "capacity": <capacity-reservation-amount-in-GB>
      },
    "properties": {
     "billingType": "cluster",
@@ -265,8 +274,6 @@ Content-type: application/json
 > [!WARNING]
 > 将工作区链接到群集需要同步多个后端组件并确保缓存混合。 此操作最多可能需要两个小时才能完成。 建议以异步方式运行。
 
-
-### <a name="link-operations"></a>链接操作
 
 **PowerShell**
 
@@ -366,7 +373,36 @@ Authorization: Bearer <token>
 
 ## <a name="delete-a-dedicated-cluster"></a>删除专用群集
 
-可以删除专用群集资源。 删除之前，必须取消群集中所有工作区的链接。 删除群集资源后，物理群集将进入清除和删除过程。 删除群集将删除存储在群集中的所有数据。 数据可以来自已链接到过去的群集的工作区。
+可以删除专用群集资源。 删除之前，必须取消群集中所有工作区的链接。 你需要对群集资源具有“写入”权限才能执行此操作。 
+
+删除群集资源后，物理群集将进入清除和删除过程。 删除群集将删除存储在群集中的所有数据。 数据可以来自已链接到过去的群集的工作区。
+
+过去 14 天内删除的群集资源处于软删除状态，因此该群集资源及其数据均可恢复。 由于所有工作区都已与*群集资源*删除*Cluster*解除关联，因此你需要在恢复后重新关联你的工作区。 用户无法执行恢复操作，请联系你的 Microsoft 渠道或支持恢复请求。
+
+删除后的14天内，群集资源名称是保留名称，不能由其他资源使用。
+
+**PowerShell**
+
+使用以下 PowerShell 命令删除群集：
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
+
+**REST**
+
+使用以下 REST 调用来删除群集：
+
+  ```rst
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  **响应**
+
+  200 正常
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

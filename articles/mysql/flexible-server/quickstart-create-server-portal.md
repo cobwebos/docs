@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/21/2020
-ms.openlocfilehash: 4d4d65f9ad04ca6bf99375647684a75e8662bb4d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/29/2020
+ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943476"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569634"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>快速入门：使用 Azure 门户创建 Azure Database for MySQL 灵活服务器
 
@@ -36,18 +36,15 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 
 2. 选择“数据库”   >   “Azure Database for MySQL”。 还可以在搜索框中输入“MySQL”  以查找该服务。
 
-    >[!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="Azure Database for MySQL 选项":::
 
 3. 选择“灵活服务器”作为部署选项。
      
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="选择部署选项":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Azure Database for MySQL 选项":::    
 
 4. 填写“基本”表单，其中包含以下信息： 
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="“创建服务器”窗体"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Azure Database for MySQL 选项"::: 
                                     
     |**设置**|建议的值|**说明**|
     |---|---|---|
@@ -60,8 +57,7 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
     版本|5.7| MySQL 主要版本。|
     计算 + 存储 | “可突增”、“Standard_B1ms”、“10 GiB”和“7 天”    | 新服务器的计算、存储和备份配置。 选择“配置服务器”。 “可突增”、“Standard_B1ms”、“10 GiB”和“7 天”分别是“计算层”、“计算大小”、“存储”和“备份保持期”的默认值      。 可以按原样保留这些滑块，也可以对其进行调整。 若要保存此计算和存储选择，请选择“保存”继续进行配置。 下面的屏幕截图显示了计算和存储选项。|
     
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="计算 + 存储":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Azure Database for MySQL 选项":::
 
 5. 配置网络选项
 
@@ -70,10 +66,7 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
     > [!NOTE]
     > 创建服务器后，无法更改连接方法。 例如，如果在创建过程中选择了“公共访问(允许的 IP 地址)”，则在创建后无法将其更改为“专用访问(VNet 集成)” 。 强烈建议创建采用专用访问的服务器，以使用 VNet 集成安全地访问你的服务器。 若要详细了解专用访问，请参阅[概念文章](./concepts-networking.md)。
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="配置网络":::  
-
-    <!--:::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Select "Add current client IP address"":::-->
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Azure Database for MySQL 选项":::  
 
 6. 选择“查看 + 创建”，查看你的灵活服务器配置。
 
@@ -110,7 +103,7 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 若要删除服务器，可以单击服务器的“概述”页面上的“删除”按钮，如下所示 ：
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="删除资源":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Azure Database for MySQL 选项":::
 
 ## <a name="next-steps"></a>后续步骤
 

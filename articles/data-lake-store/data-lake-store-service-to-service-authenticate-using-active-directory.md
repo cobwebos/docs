@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515150"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576092"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -65,12 +65,12 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
     ![添加组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "添加组")
 6. 单击“选择权限”****，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击“确定”。
    
-    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "分配权限给组")
+    !["添加自定义访问" 边栏选项卡的屏幕截图，其中包含 "选择权限" 选项和 "确定" 选项（称为 "确定" 选项）。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "分配权限给组")
    
     有关 Data Lake Storage Gen1 中的权限和默认/访问 ACL 的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。
-7. 在“添加自定义访问”**** 边栏选项卡中，单击“确定”****。 将在 "**访问**" 边栏选项卡中列出新添加的具有关联权限的组。
+7. 在“添加自定义访问”**** 边栏选项卡中，单击“确定”****。 将在 " **访问** " 边栏选项卡中列出新添加的具有关联权限的组。
    
-    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")
+    !["访问" 边栏选项卡的屏幕截图，其中新添加的组在 "自定义访问" 部分中。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")
 
 > [!NOTE]
 > 如果计划将 Azure Active Directory 应用程序限制到特定文件夹，则还需要为相同的 Azure Active Directory 应用程序提供对根的执行**** 权限，以便通过 .NET SDK 启用文件创建访问。
@@ -88,11 +88,11 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 3. 在“应用注册”边栏选项卡顶部，单击“终结点”****。
 
-    ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth 令牌终结点")
+    ![带应用注册选项和 "终结点" 选项的 Active Directory 屏幕截图。](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth 令牌终结点")
 
 4. 从终结点列表中，复制 OAuth 2.0 令牌终结点。
 
-    ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 令牌终结点")   
+    !["终结点" 边栏选项卡的屏幕截图，其中包含 O 身份验证2点 O 令牌终结点复制图标。](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 令牌终结点")   
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何创建 Azure AD web 应用程序，并使用 .NET SDK、Java、Python、REST API 等在你创作的客户端应用程序中收集了所需的信息。你现在可以继续阅读以下文章，这些文章讨论了如何使用 Azure AD 的本机应用程序先使用 Data Lake Storage Gen1 进行身份验证，然后在存储中执行其他操作。

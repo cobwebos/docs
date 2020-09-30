@@ -3,25 +3,25 @@ title: IoT 即插即用体系结构 |Microsoft Docs
 description: 作为解决方案生成器，了解 IoT 即插即用的关键体系结构元素。
 author: ridomin
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475679"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574309"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>IoT 即插即用预览版体系结构
+# <a name="iot-plug-and-play-architecture"></a>IoT 即插即用体系结构
 
-IoT 即插即用预览版使解决方案生成器能够将智能设备与其解决方案集成，无需任何手动配置。 IoT 即插即用的核心是一种设备_型号_，用于描述设备对于启用 IoT 即插即用的应用程序的功能。 此模型的结构化为一组定义的接口：
+IoT 即插即用使解决方案构建者能够将智能设备与其解决方案集成，无需任何手动配置。 IoT 即插即用的核心是一种设备 _型号_ ，用于描述设备对于启用 IoT 即插即用的应用程序的功能。 此模型的结构化为一组定义的接口：
 
-- 表示设备或其他实体的只读或可写状态的_属性_。 例如，设备序列号可以是只读属性，恒温器上的目标温度可能是可写的属性。
-- _遥测_数据是指设备发出的数据，数据是传感器读数的常规流、偶尔出现的错误或信息消息。
+- _属性_：表示设备或其他实体的只读或可写状态。 例如，设备序列号可以是只读属性，而调温器上的目标温度可以是可写属性。
+- _遥测_：设备发出的数据，包括常规的传感器读数流、偶发性错误或信息消息。
 - _命令_：描述可在设备上执行的功能或操作。 例如，命令可以重新启动网关，或使用远程相机拍照。
 
 每个模型和接口都具有唯一的 ID。
@@ -32,7 +32,7 @@ IoT 即插即用预览版使解决方案生成器能够将智能设备与其解�
 
 ## <a name="model-repository"></a>模型存储库
 
-[模型存储库](./concepts-model-repository.md)是模型和接口定义的存储区。 使用[数字孪生定义语言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl)定义模型和接口。
+[模型存储库](./concepts-model-repository.md)是模型和接口定义的存储区。 使用 [数字孪生定义语言 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl)定义模型和接口。
 
 利用 web UI，你可以管理模型和接口。
 
@@ -40,17 +40,35 @@ IoT 即插即用预览版使解决方案生成器能够将智能设备与其解�
 
 ## <a name="devices"></a>设备
 
-设备生成器使用[Azure IoT 设备 sdk](./libraries-sdks.md)之一来实现在 IoT 智能设备上运行的代码。 设备 Sdk 可帮助设备生成器执行以下操作：
+设备生成器使用 [Azure IoT 设备 sdk](./libraries-sdks.md)之一来实现在 IoT 智能设备上运行的代码。 设备 Sdk 可帮助设备生成器执行以下操作：
 
 - 安全地连接到 IoT 中心。
-- 向 IoT 中心注册设备，并公告标识设备实现的接口集合的模型 ID。
-- 更新设备实现的 DTDL 接口中定义的属性。 这些属性是使用数字孪生实现的，这些属性用于管理与 IoT 中心的同步。
-- 添加设备实现的 DTDL 接口中定义的命令的命令处理程序。
+- 向 IoT 中心注册设备，并公告标识设备实现的 DTDL 接口集合的模型 ID。
+- 同步在设备与 IoT 中心之间的 DTDL 接口中定义的属性。
+- 添加 DTDL 接口中定义的命令的命令处理程序。
+- 将遥测发送到 IoT 中心。
+
+## <a name="iot-edge-gateway"></a>IoT Edge 网关
+
+IoT Edge 网关充当中介，用于连接无法直接连接到 IoT 中心的 IoT 即插即用设备。 若要了解详细信息，请参阅 [如何将 IoT Edge 设备用作网关](../iot-edge/iot-edge-as-gateway.md)。
+
+## <a name="iot-edge-modules"></a>IoT Edge 模块
+
+利用 _IoT Edge 模块_ ，你可以部署和管理边缘上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。
+
+_IoT Edge 中心_是组成 Azure IoT Edge 运行时的模块之一。 它通过公开与 IoT 中心相同的协议终结点，充当 IoT 中心的本地代理。 这种一致性意味着客户端（无论是设备还是模块）可以连接到 IoT Edge 运行时，就像连接到 IoT 中心一样。
+
+设备 Sdk 有助于模块生成器：
+
+- 使用 IoT Edge 集线器安全地连接到 IoT 中心。
+- 向 IoT 中心注册模块，并公告标识设备实现的 DTDL 接口集合的模型 ID。
+- 同步在设备与 IoT 中心之间的 DTDL 接口中定义的属性。
+- 添加 DTDL 接口中定义的命令的命令处理程序。
 - 将遥测发送到 IoT 中心。
 
 ## <a name="iot-hub"></a>IoT 中心
 
-[Iot 中心](../iot-hub/about-iot-hub.md)是一项云托管的服务，可充当 IoT 解决方案与它所管理的设备之间的双向通信。
+[Iot 中心](../iot-hub/about-iot-hub.md) 是一项云托管的服务，可充当 IoT 解决方案与它所管理的设备之间的双向通信。
 
 IoT 中心：
 
@@ -80,4 +98,4 @@ IoT 中心：
 
 - [模型存储库](./concepts-model-repository.md)
 - [数字克隆模型集成](./concepts-model-discovery.md)
-- [为 IoT 即插即用进行开发](./concepts-developer-guide.md)
+- [为 IoT 即插即用进行开发](./concepts-developer-guide-device-csharp.md)

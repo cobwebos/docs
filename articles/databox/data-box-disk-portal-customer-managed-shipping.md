@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055559"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575157"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box Disk 使用自我托管交付功能
 
@@ -37,13 +37,13 @@ ms.locfileid: "90055559"
 
 1. 在 Azure Data Box Disk 订单的“联系人详细信息”下，选择“+添加送货地址” 。
 
-   ![自我托管交付](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![订单向导的屏幕截图，显示 "联系人详细信息" 步骤，其中包含 "添加装运地址" 选项。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. 选择送货类型时，请选择“自我托管交付”选项。 仅当你位于先决条件中所述的受支持的区域时，此选项才可用。
 
 3. 提供送货地址后，需要验证该地址并完成下单。
 
-   ![自我托管交付](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   !["添加送货地址" 对话框的屏幕截图，其中包含 "发货方式" 选项和 "添加送货地址" 选项。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. 准备好设备并收到电子邮件通知后，可以计划装货。 在 Azure Data Box Disk 订单中，转到“概述”，然后选择“安排提货” 。
 
@@ -55,7 +55,7 @@ ms.locfileid: "90055559"
 
 6. 安排好设备提货后，可在“Azure 提货安排”中查看授权代码。
 
-   ![查看授权代码](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
+   !["计划选择 Azure" 对话框的屏幕截图，其中包含被称为 "分拣" 文本框的授权代码。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
    记下此授权代码。
 
@@ -78,7 +78,7 @@ ms.locfileid: "90055559"
 
 9. 如果你已收到订单交货预约，那么订单在 Azure 门户中现应处于“可在 Azure 数据中心接收”状态。
 
-   ![查看授权代码](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   !["添加送货地址" 对话框的屏幕截图，其中包含 "发货方式" 选项和 "添加发货地址" 选项。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
 
 10. 在 ID 和授权代码经过验证，且你在数据中心归还设备后，订单的状态应为“已接收”。
 

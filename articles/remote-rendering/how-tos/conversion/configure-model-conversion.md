@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967207"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575174"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
 
@@ -33,7 +33,6 @@ ms.locfileid: "90967207"
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ ms.locfileid: "90967207"
 
 * `opaqueMaterialDefaultSidedness` - 呈现引擎假定不透明材料是双面的。
 如果该假设不是特定模型的 true，则应将此参数设置为 "SingleSided"。 有关详细信息，请参阅[ :::no-loc text="single sided"::: 呈现](../../overview/features/single-sided-rendering.md)。
-
-### <a name="material-overrides"></a>材料覆盖
-
-* `material-override` - 此参数允许[在转换中自定义](override-materials.md)材料的处理。
 
 ### <a name="material-de-duplication"></a>材料去重
 
@@ -200,7 +195,7 @@ ms.locfileid: "90967207"
 
 各种格式的内存占用量如下：
 
-| 格式 | 说明 | 字节/ :::no-loc text="vertex"::: |
+| 格式 | 描述 | 字节/ :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|双组件全浮点精度|8
 |16_16_FLOAT|双组件半浮点精度|4
@@ -305,6 +300,8 @@ ms.locfileid: "90967207"
 
 仍支持使用非特定于模型的文件名来提供设置 `conversionSettings.json` ，但不推荐使用。
 请改用特定于模型的文件名 `<modelName>.ConversionSettings.json` 。
+
+`material-override`仍支持使用设置来标识转换设置文件中的[材料覆盖文件](override-materials.md)，但不推荐使用。 请改用特定于模型的文件名 `<modelName>.MaterialOverrides.json` 。
 
 ## <a name="next-steps"></a>后续步骤
 

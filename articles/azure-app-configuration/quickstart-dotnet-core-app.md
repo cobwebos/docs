@@ -6,14 +6,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 1/9/2019
+ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 57202752a965ad0405a04b2eba4cdf42070c94bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 83da47ce27d452fd77fab3905c9ce48944c42ffb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319485"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575055"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
@@ -21,7 +21,7 @@ ms.locfileid: "89319485"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/dotnet)
 - [.NET Core SDK](https://dotnet.microsoft.com/download) - 也可在 [Azure Cloud Shell](https://shell.azure.com) 中使用。
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区

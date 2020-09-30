@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439295"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575854"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -396,13 +396,19 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 否，任何大小的标准 SSD 托管磁盘都不能与非托管磁盘或页 blob 配合使用。
 
-**操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
+**Gen1 Vm 上的操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是第1代和第2代 Vm 的主启动记录 (MBR) 和 GUID 分区表 (GPT) 。 MBR 格式支持的磁盘最大大小为 2 TiB。 对于第1代 Vm，虽然最多可分配4个 TiB，但对于操作系统，最多只能使用2个 TiB 的磁盘空间。 对于第2代 Vm，可为操作系统磁盘分配和使用的最大大小为 4 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
+Azure 支持的 Gen1 操作系统磁盘的分区类型是主启动记录 (MBR) 。 尽管 Gen1 OS 磁盘仅支持 MBR，但数据磁盘支持 GPT。 尽管可以分配最多4个 TiB 的 OS 磁盘，但 MBR 分区类型只能为操作系统使用最多2个 TiB 的磁盘空间。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
+
+**Gen2 Vm 上的操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
+
+Azure 支持的 Gen2 操作系统磁盘的分区类型为 GUID 分区表 (GPT) 。 Gen2 Vm 最多支持4个 TiB 操作系统磁盘。 Azure 支持的托管数据磁盘最大大小为 32 TiB。
+
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 为操作系统非托管磁盘支持的最大大小为 4 TiB。 Azure 支持的非托管数据磁盘最大大小为 4 TiB。
+Azure 支持使用非托管磁盘的操作系统磁盘的分区类型是主启动记录 (MBR) 。  尽管可以分配最多4个 TiB 的 OS 磁盘，但 MBR 分区类型只能为操作系统使用最多2个 TiB 的磁盘空间。 对于非托管数据磁盘，Azure 最多支持4个 TiB。
+
 
 支持的最大页 blob 大小是多少？
 
@@ -483,7 +489,7 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以使用磁盘/快照的 SAS URI 来下载与该磁盘关联的专用终结点的子网中的 VM 的基础 VHD？**
 
-是的。
+是。
 
 **是否可以使用磁盘/快照的 SAS URI 下载 VM 的基础 VHD，该虚拟机不在与该磁盘关联的专用终结点的子网中。**
 
