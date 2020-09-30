@@ -1,22 +1,21 @@
 ---
-title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理服务器
-description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
+title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的 AWS 实例
+description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的 AWS 实例。
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
+ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
 ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090415"
+ms.locfileid: "90107969"
 ---
-# <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>教程：评估物理服务器以便迁移到 Azure
+# <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>教程：评估 AWS 实例以便迁移到 Azure
 
 在迁移到 Azure 的过程中，将评估本地工作负载，以衡量云的就绪性、确定风险以及估算成本和复杂性。
 
-本文介绍如何使用 Azure Migrate 评估用于迁移到 Azure 的本地物理服务器：服务器评估”工具评估本地 VMware VM。
-
+本文介绍如何使用 Azure Migrate 评估用于迁移到 Azure 的 Amazon Web Services (AWS) 实例：服务器评估”工具评估本地 VMware VM。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -31,10 +30,8 @@ ms.locfileid: "90090415"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在按照本教程来评估要迁移到 Azure VM 的计算机之前，请确保已发现要评估的计算机：
-    - 若要使用 Azure Migrate 设备发现计算机，请[遵循本教程](tutorial-discover-physical.md)。 
-    - 若要使用导入的 CSV 文件发现计算机，请[遵循本教程](tutorial-discover-import.md)。
-- 请确保要评估的物理计算机未运行 Windows Server 2003 或 SUSE Linux。 不支持对这些计算机进行评估。
+- 在执行本教程中的步骤之前，请完成本系列的第一个教程：[发现本地库存](tutorial-discover-aws.md)。 
+- 确保 AWS 实例未运行 Windows Server 2003 或 SUSE Linux。 不支持对这些计算机进行评估。
 
 
 ## <a name="decide-which-assessment-to-run"></a>确定要运行的评估
@@ -53,22 +50,21 @@ ms.locfileid: "90090415"
 
 1. 在“服务器”页 >“Windows 和 Linux 服务器”中，单击“评估和迁移服务器”  。
 
-   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-physical/assess.png)
+   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-aws/assess.png)
 
-2. 在 **Azure Migrate:** 服务器评估”中，单击“评估”。
+2. 在“Azure Migrate:服务器评估”中，单击“评估”。
 
-    ![“评估”按钮的位置](./media/tutorial-assess-physical/assess-servers.png)
+    ![“评估”按钮的位置](./media/tutorial-assess-aws/assess-servers.png)
 
 3. 在“评估服务器” > “评估类型”中，选择“Azure VM”  。
 4. 在“发现源”中：
 
     - 如果使用设备发现了计算机，请选择“从 Azure Migrate 设备中发现的计算机”。
     - 如果使用导入的 CSV 文件发现了计算机，请选择“导入的计算机”。 
-    
 5. 指定评估的名称。 
 6. 单击“全部查看”查看评估属性。
 
-    ![用于查看评估属性的“查看全部”按钮的位置](./media/tutorial-assess-physical/assessment-name.png)
+    ![用于查看评估属性的“查看全部”按钮的位置](./media/tutorial-assess-aws/assessment-name.png)
 
 7. 在“评估属性” > “目标属性”中 ：
     - 在“目标位置”中，选择要迁移到的 Azure 区域。
@@ -88,7 +84,7 @@ ms.locfileid: "90090415"
     - 在“VM 系列”中，指定要列入考虑的 Azure VM 系列。
         - 如果使用基于性能的评估，Azure Migrate 会为你建议一个值。
         - 根据需要调整设置。 例如，如果不需要将生产环境迁移到 Azure 中的 A 系列 VM，可以从系列的列表中排除 A 系列。
-    - 在“舒适因子”中，指明要在评估过程中使用的缓冲区。 此帐户用于解决季节性使用情况、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，如果使用舒适因子 2：组件 | 有效资源利用率 | 添加舒适因子 (2.0) 核心数 | 2 | 4 内存 | 8 GB | 16 GB      
+    - 在“舒适因子”中，指明要在评估过程中使用的缓冲区。 此帐户用于解决季节性使用情况、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，如果使用舒适因子 2：详细信息 | 利用率 | 添加舒适因子 (2.0) 读取 IOPS | 100 | 200 写入 IOPS | 100 | 200 读取吞吐量 | 100 Mbps | 200 Mbps 写入吞吐量 | 100 Mbps | 200 Mbps  
    
 9. 在“定价”中：
     - 在“产品/服务”中，如果已注册，请指定 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 “服务器评估”会估计该产品/服务的费用。
@@ -104,10 +100,10 @@ ms.locfileid: "90090415"
 
 10. 如有更改，请单击“保存”。
 
-    ![评估属性](./media/tutorial-assess-physical/assessment-properties.png)
+    ![评估属性](./media/tutorial-assess-aws/assessment-properties.png)
 
 11. 在“评估服务器”中，单击“下一个” 。
-12. 在“选择要评估的计算机”中，选择“新建”并指定组名称。  
+12. 在“选择要评估的计算机”中，选择“新建”并指定组名称 。 
 13. 选择设备，然后选择要添加到组的 VM。 然后单击“下一步”。
 14. 在“审阅 + 创建评估”中，查看评估详细信息，然后单击“创建评估”以创建组并运行评估。
 
@@ -128,7 +124,7 @@ ms.locfileid: "90090415"
 1. 在“服务器” > “Azure Migrate: 服务器评估”中，单击“评估”旁边的数字。
 2. 在“评估”中，选择某项评估将其打开。 例如（估算和费用仅用于示例）： 
 
-    ![评估摘要](./media/tutorial-assess-physical/assessment-summary.png)
+    ![评估摘要](./media/tutorial-assess-aws/assessment-summary.png)
 
 3. 查看评估摘要。 你还可以编辑评估属性，或重新计算评估。
  
@@ -161,12 +157,13 @@ ms.locfileid: "90090415"
 
 服务器评估为基于性能的评估分配置信度评级。 评级从一星（最低）到五星（最高）。
 
-![置信度分级](./media/tutorial-assess-physical/confidence-rating.png)
+![置信度分级](./media/tutorial-assess-aws/confidence-rating.png)
 
 置信度评级用于估计评估中的大小建议的可靠性。 此评级基于对评估进行计算时所需数据点的可用性。
 
 > [!NOTE]
 > 如果基于 CSV 文件创建评估，则不会分配置信度评级。
+
 
 置信度评级如下所示。
 

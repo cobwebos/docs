@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理服务器
-description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
+title: 使用 Azure Migrate 中的服务器评估来评估要迁移到 Azure VM 的 VMware VM
+description: 了解如何使用服务器评估来评估要迁移到 Azure VM 的 VMware VM。
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
+ms.openlocfilehash: 01db7128cd990098caa25ba2cd79f2f2a2b28d78
 ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090415"
+ms.locfileid: "90107961"
 ---
-# <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>教程：评估物理服务器以便迁移到 Azure
+# <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>教程：评估 VMware VM 以便迁移到 Azure VM
 
 在迁移到 Azure 的过程中，将评估本地工作负载，以衡量云的就绪性、确定风险以及估算成本和复杂性。
 
-本文介绍如何使用 Azure Migrate 评估用于迁移到 Azure 的本地物理服务器：服务器评估”工具评估本地 VMware VM。
+本文介绍如何使用 Azure Migrate 来评估发现的 VMware 虚拟机 (VM) 是否已准备好迁移到 Azure VM：服务器评估”工具评估本地 VMware VM。
 
 
 在本教程中，你将了解如何执行以下操作：
@@ -31,10 +31,10 @@ ms.locfileid: "90090415"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在按照本教程来评估要迁移到 Azure VM 的计算机之前，请确保已发现要评估的计算机：
-    - 若要使用 Azure Migrate 设备发现计算机，请[遵循本教程](tutorial-discover-physical.md)。 
-    - 若要使用导入的 CSV 文件发现计算机，请[遵循本教程](tutorial-discover-import.md)。
-- 请确保要评估的物理计算机未运行 Windows Server 2003 或 SUSE Linux。 不支持对这些计算机进行评估。
+在按照本教程来评估要迁移到 Azure VM 的计算机之前，请确保已发现要评估的计算机：
+
+- 若要使用 Azure Migrate 设备发现计算机，请[遵循本教程](tutorial-discover-vmware.md)。 
+- 若要使用导入的 CSV 文件发现计算机，请[遵循本教程](tutorial-discover-import.md)。
 
 
 ## <a name="decide-which-assessment-to-run"></a>确定要运行的评估
@@ -47,17 +47,18 @@ ms.locfileid: "90090415"
 **按本地原样** | 基于计算机配置数据/元数据进行评估。  | 建议的 Azure VM 大小基于本地 VM大小。<br/><br> 建议的 Azure 磁盘类型基于在评估的存储类型设置中选择的内容。
 **基于性能** | 基于收集的动态性能数据进行评估。 | 建议的 Azure VM 大小基于 CPU 和内存利用率数据。<br/><br/> 建议的磁盘类型基于本地磁盘的 IOPS 和吞吐量。
 
+
 ## <a name="run-an-assessment"></a>运行评估
 
 按如下述运行评估：
 
 1. 在“服务器”页 >“Windows 和 Linux 服务器”中，单击“评估和迁移服务器”  。
 
-   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-physical/assess.png)
+   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
 2. 在 **Azure Migrate:** 服务器评估”中，单击“评估”。
 
-    ![“评估”按钮的位置](./media/tutorial-assess-physical/assess-servers.png)
+    ![“评估”按钮的位置](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
 3. 在“评估服务器” > “评估类型”中，选择“Azure VM”  。
 4. 在“发现源”中：
@@ -65,12 +66,12 @@ ms.locfileid: "90090415"
     - 如果使用设备发现了计算机，请选择“从 Azure Migrate 设备中发现的计算机”。
     - 如果使用导入的 CSV 文件发现了计算机，请选择“导入的计算机”。 
     
-5. 指定评估的名称。 
-6. 单击“全部查看”查看评估属性。
+1. 指定评估的名称。 
+1. 单击“全部查看”查看评估属性。
 
-    ![用于查看评估属性的“查看全部”按钮的位置](./media/tutorial-assess-physical/assessment-name.png)
+    ![用于查看评估属性的“查看全部”按钮的位置](./media/tutorial-assess-vmware-azure-vm/assessment-name.png)
 
-7. 在“评估属性” > “目标属性”中 ：
+1. 在“评估属性” > “目标属性”中 ：
     - 在“目标位置”中，选择要迁移到的 Azure 区域。
         - 大小和成本建议基于你指定的位置。
         - 在 Azure 政府中，你可以以[这些区域](migrate-support-matrix.md#supported-geographies-azure-government)中的评估为目标
@@ -80,7 +81,7 @@ ms.locfileid: "90090415"
     - 在“预留实例”中，指定在迁移 VM 时是否要使用 VM 的“预留实例”。
         - 如果选择使用预留实例，则无法指定“折扣(%)”或“VM 运行时间” 。 
         - [了解详细信息](https://aka.ms/azurereservedinstances)。
-8. 在“VM 大小”中：
+ 7. 在“VM 大小”中：
  
     - 在“大小调整条件”中，选择进行评估时是基于计算机配置数据/元数据，还是以基于性能的数据为基础。 如果使用性能数据：
         - 在“性能历史记录”中，指示要用于评估的数据持续时间
@@ -88,9 +89,9 @@ ms.locfileid: "90090415"
     - 在“VM 系列”中，指定要列入考虑的 Azure VM 系列。
         - 如果使用基于性能的评估，Azure Migrate 会为你建议一个值。
         - 根据需要调整设置。 例如，如果不需要将生产环境迁移到 Azure 中的 A 系列 VM，可以从系列的列表中排除 A 系列。
-    - 在“舒适因子”中，指明要在评估过程中使用的缓冲区。 此帐户用于解决季节性使用情况、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，如果使用舒适因子 2：组件 | 有效资源利用率 | 添加舒适因子 (2.0) 核心数 | 2 | 4 内存 | 8 GB | 16 GB      
+    - 在“舒适因子”中，指明要在评估过程中使用的缓冲区。 此帐户用于解决季节性使用情况、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，如果使用舒适因子 2：组件 | 有效资源利用率 | 添加舒适因子 (2.0) 核心数 | 2 | 4 内存 | 8 GB | 16 GB       
    
-9. 在“定价”中：
+8. 在“定价”中：
     - 在“产品/服务”中，如果已注册，请指定 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 “服务器评估”会估计该产品/服务的费用。
     - 在“货币”中，为帐户选择计费货币。
     - 在“折扣 (%)”中，添加基于 Azure 产品/服务获得的任何特定于订阅的折扣。 默认设置是 0%。
@@ -102,14 +103,17 @@ ms.locfileid: "90090415"
     - 在“EA 订阅”中，指定是否将企业协议 (EA) 订阅折扣考虑在内以进行成本估算。 
     - 在“Azure 混合权益”中，指定是否已有 Windows Server 许可证。 如果已有许可证，并且许可证具有 Windows Server 订阅的有效软件保障，则在将许可证引入 Azure 时，可以申请 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
-10. 如有更改，请单击“保存”。
+9. 如有更改，请单击“保存”。
 
-    ![评估属性](./media/tutorial-assess-physical/assessment-properties.png)
+    ![评估属性](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
 
-11. 在“评估服务器”中，单击“下一个” 。
-12. 在“选择要评估的计算机”中，选择“新建”并指定组名称。  
-13. 选择设备，然后选择要添加到组的 VM。 然后单击“下一步”。
-14. 在“审阅 + 创建评估”中，查看评估详细信息，然后单击“创建评估”以创建组并运行评估。
+10. 在“评估服务器”中，单击“下一个” 。
+11. 在“选择要评估的计算机”中，选择“新建”并指定组名称 。 
+12. 选择设备，然后选择要添加到组的 VM。 然后单击“下一步”。
+
+     ![将 VM 添加到组](./media/tutorial-assess-vmware-azure-vm/assess-group.png)
+
+13. 在“审阅 + 创建评估”中，查看评估详细信息，然后单击“创建评估”以创建组并运行评估。
 
 
     > [!NOTE]
@@ -128,7 +132,7 @@ ms.locfileid: "90090415"
 1. 在“服务器” > “Azure Migrate: 服务器评估”中，单击“评估”旁边的数字。
 2. 在“评估”中，选择某项评估将其打开。 例如（估算和费用仅用于示例）： 
 
-    ![评估摘要](./media/tutorial-assess-physical/assessment-summary.png)
+    ![评估摘要](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
 
 3. 查看评估摘要。 你还可以编辑评估属性，或重新计算评估。
  
@@ -161,7 +165,7 @@ ms.locfileid: "90090415"
 
 服务器评估为基于性能的评估分配置信度评级。 评级从一星（最低）到五星（最高）。
 
-![置信度分级](./media/tutorial-assess-physical/confidence-rating.png)
+![置信度分级](./media/tutorial-assess-vmware-azure-vm/confidence-rating.png)
 
 置信度评级用于估计评估中的大小建议的可靠性。 此评级基于对评估进行计算时所需数据点的可用性。
 
@@ -183,4 +187,4 @@ ms.locfileid: "90090415"
 ## <a name="next-steps"></a>后续步骤
 
 - 使用[依赖项映射](concepts-dependency-visualization.md)查找计算机依赖项。
-- 设置[基于代理](how-to-create-group-machine-dependencies.md)的依赖项映射。
+- 设置[无代理](how-to-create-group-machine-dependencies-agentless.md)或[基于代理](how-to-create-group-machine-dependencies.md)的依赖项映射。

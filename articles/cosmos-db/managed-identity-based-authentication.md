@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997721"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566612"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系统分配的托管标识访问 Azure Cosmos DB 数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "88997721"
 
 1. 在“标识”选项卡上，开启系统标识的“状态”并选择“保存”     。 “标识”窗格应如下所示  ：  
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="显示了系统标识“状态”设置为“开启”的屏幕截图。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="显示了函数应用的“平台功能”和“标识”选项的屏幕截图。":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>向 Azure Cosmos 帐户授予访问权限
 
@@ -47,7 +47,7 @@ ms.locfileid: "88997721"
 |[Cosmos DB 帐户读者角色](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以读取 Azure Cosmos DB 帐户数据。 允许检索读取密钥。 |
 
 > [!IMPORTANT]
-> Azure Cosmos DB 中对基于角色的访问控制的支持仅适用于控制平面操作。 将通过主密钥或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对数据的访问](secure-access-to-data.md)一文。
+> Azure Cosmos DB 中对基于角色的访问控制的支持仅适用于控制平面操作。 通过主键或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对数据的访问](secure-access-to-data.md)一文。
 
 > [!TIP] 
 > 分配角色时，请仅分配所需的访问权限。 如果服务只需读取数据，请向托管标识分配“Cosmos DB 帐户读取者”角色  。 有关最低权限访问权限的重要性的详细信息，请参阅 [特权帐户的低公开部分](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) 。
@@ -58,19 +58,19 @@ ms.locfileid: "88997721"
 
 1. 登录到 Azure 门户并转到你的 Azure Cosmos DB 帐户。 依次打开“访问控制(IAM)”窗格和“角色分配”选项卡   ：
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="显示了“访问控制”窗格和“角色分配”选项卡的屏幕截图。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="显示了函数应用的“平台功能”和“标识”选项的屏幕截图。":::
 
 1. 选择“+ 添加”   >   “添加角色分配”。
 
 1. “添加角色分配”面板会在右侧打开  ：
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="显示了“添加角色分配”窗格的屏幕截图。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="显示了函数应用的“平台功能”和“标识”选项的屏幕截图。":::
 
    * **角色**：选择“DocumentDB 帐户参与者” 
    * **将访问权限分配到**：在“选择系统分配的托管标识”子部分下，选择“函数应用”   。
    * **选择**：窗格中将会填充你的订阅中具有托管系统标识的所有函数应用  。 在本例中，请选择“FishTankTemperatureService”函数应用  ： 
 
-      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="显示了由示例填充的“添加角色分配”窗格的屏幕截图。":::
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="显示了函数应用的“平台功能”和“标识”选项的屏幕截图。":::
 
 1. 选择函数应用后，选择“保存”  。
 

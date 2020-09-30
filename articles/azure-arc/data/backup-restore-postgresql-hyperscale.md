@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL 超大规模服务器组的备份和还原
-description: Azure Database for PostgreSQL 超大规模服务器组的备份和还原
+title: 为 Azure Database for PostgreSQL 超大规模服务器组进行备份和还原
+description: 为 Azure Database for PostgreSQL 超大规模服务器组进行备份和还原
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934573"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569719"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>启用 Azure Arc 的备份和还原 PostgreSQL 超大规模服务器组
 
@@ -52,7 +52,7 @@ ms.locfileid: "90934573"
     }
 ...
 ```
-如果你看到 "备份" 一节，则表示你的服务器组已配置为使用备份存储类，并且已准备好进行备份和恢复。 如果看不到 "备份" 部分，则需要删除并重新创建服务器组以配置备份存储类。 此时，在创建服务器组后，还不能配置备份存储类。
+如果你看到在该命令的输出的 "备份" 部分中指示的存储类的名称，则表示你的服务器组已配置为使用备份存储类，并且已准备好进行备份和恢复。 如果看不到 "备份" 部分，则需要删除并重新创建服务器组以配置备份存储类。 此时，在创建服务器组后，还不能配置备份存储类。
 
 >[!IMPORTANT]
 >如果你的服务器组已配置为使用备份存储类，请跳过下一步，直接转到 "执行手动完整备份" 步骤。
@@ -134,10 +134,12 @@ azdata arc postgres backup list --server-name postgres01
 
 它将返回如下所示的输出：
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+Timestamp 指示进行备份的时间点。
 
 ## <a name="restore-a-backup"></a>还原备份
 
