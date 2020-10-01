@@ -10,34 +10,24 @@
       items:
         - name: 简介
           href: get-started.md
-          displayName: 'get, started'
-        - name: 1 创建工作区
+        - name: 1 创建 Synapse 工作区
           href: get-started-create-workspace.md
-          displayName: 'get, started'
-        - name: 2 使用 SQL 池
+        - name: 2 使用 SQL 池进行分析
           href: get-started-analyze-sql-pool.md
-          displayName: 'get, started'
-        - name: 3 使用 Spark
+        - name: 3 使用 Spark 进行分析
           href: get-started-analyze-spark.md
-          displayName: 'get, started'
-        - name: 4 使用按需 SQL
+        - name: 4 使用按需 SQL 进行分析
           href: get-started-analyze-sql-on-demand.md
-          displayName: 'get, started'
         - name: 5 分析存储帐户中的数据
           href: get-started-analyze-storage.md
-          displayName: 'get, started'
         - name: 6 通过管道进行编排
           href: get-started-pipelines.md
-          displayName: 'get, started'
         - name: 7 使用 Power BI 进行可视化
           href: get-started-visualize-power-bi.md
-          displayName: 'get, started'
         - name: 8 监视
           href: get-started-monitor.md
-          displayName: 'get, started'
-        - name: 9 探索知识中心
+        - name: 9 查看知识中心
           href: get-started-knowledge-center.md
-          displayName: 'get, started'
     - name: 备忘单
       href: overview-cheat-sheet.md
     - name: 常见问题解答
@@ -58,16 +48,16 @@
       href: quickstart-power-bi.md
     - name: 创建池
       items:
-        - name: 使用 Synapse Studio 创建 SQL 池
-          href: quickstart-create-sql-pool-studio.md
+        - name: 使用 Web 工具创建 Apache Spark 笔记本
+          href: quickstart-apache-spark-notebook.md
+        - name: 使用 Azure 门户创建 Apache Spark 池
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: 使用 Synapse Studio 创建 Apache Spark 池
+          href: quickstart-create-apache-spark-pool-studio.md
         - name: 使用 Azure 门户创建 SQL 池
           href: quickstart-create-sql-pool-portal.md
-        - name: 创建笔记本
-          href: quickstart-apache-spark-notebook.md
-        - name: 使用 Azure 门户创建 Spark 池
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: 使用 Synapse Studio 创建 Spark 池
-          href: quickstart-create-apache-spark-pool-studio.md
+        - name: 使用 Synapse Studio 创建 SQL 池
+          href: quickstart-create-sql-pool-studio.md
     - name: 使用 SQL 池加载数据
       items:
         - name: COPY 语句
@@ -84,16 +74,12 @@
   items:
     - name: 运行 Apache Spark 应用程序
       href: ./spark/intellij-tool-synapse.md
-    - name: 运行适用于 Spark 池的 PySpark 应用程序
-      href: ./spark/vscode-tool-synapse.md
     - name: Spark 作业定义
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: 数据科学家
       items:
-        - name: 使用 Azure AutoML 运行回归试验
-          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
         - name: 使用 Apache Spark MLlib 创建分类模型
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: 数据分析师
@@ -212,8 +198,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 表达式语言
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 与 Azure 数据工厂的区别
-              href: ./data-integration/concepts-data-factory-differences.md
+        - name: 与 Azure 数据工厂的区别
+          href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: 概述
@@ -386,6 +372,22 @@
           href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Link 用例
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: 机器学习
+      items:
+        - name: 概述
+          items:
+            - name: Synapse Analytics 中的机器学习是指什么？
+              href: machine-learning/what-is-machine-learning.md
+        - name: 快速入门
+          items:
+            - name: 创建新的 Azure 机器学习链接服务
+              href: machine-learning/quickstart-integrate-azure-machine-learning.md
+        - name: 教程
+          items:
+            - name: 面向 SQL 池的模型评分向导
+              href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+            - name: 使用 Azure AutoML 运行回归试验（DW 中的评分）
+              href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 工具集成（AI、ETL、BI）
       items:
         - name: 排查 Synapse Studio 的问题
@@ -478,15 +480,13 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 连接到 Azure Synapse Link for Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: 使用 Apache Spark 查询 Azure Cosmos DB 分析存储
+            - name: 使用 Apache Spark for Azure Synapse Analytics 查询 Azure Cosmos DB 分析存储
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: 使用 Apache Spark 将数据从 Synapse Link 复制到 SQL 池
               href: ./synapse-link/how-to-copy-to-sql-pool.md
-            - name: 使用按需 SQL 查询 Azure Cosmos DB 分析存储
-              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: 查询外部数据
+            - name: 查询存储中的数据
               items:
                 - name: 概述
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -494,15 +494,13 @@
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查询 Parquet 文件
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: 查询 Parquet 嵌套类型
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查询 JSON 文件
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 查询 Azure Cosmos DB
-                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 查询嵌套类型
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查询文件夹和多个文件
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 使用文件元数据查询分区文件
+                - name: 使用文件元数据
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 创建和使用视图
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -594,7 +592,7 @@
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 文件存储
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL 数据库
+            - name: Azure SQL Database
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 托管实例
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

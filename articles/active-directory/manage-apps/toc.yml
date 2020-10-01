@@ -26,7 +26,7 @@
       href: delete-application-portal.md
 - name: 教程
   items:
-    - name: 集成库应用（例如 ServiceNow、Salesforce、Dropbox）
+    - name: 预配置应用的列表
       href: /azure/active-directory/saas-apps/
     - name: 添加通过应用程序代理访问的本地应用
       href: application-proxy-add-on-premises-application.md
@@ -142,7 +142,7 @@
       items:
         - name: 迁移资源
           href: migration-resources.md
-        - name: 将 ADFS 应用迁移到 Azure
+        - name: 将 AD FS 应用迁移到 Azure
           href: migrate-adfs-apps-to-azure.md
         - name: 使用 AD FS 应用程序活动报表（预览版）
           href: migrate-adfs-application-activity.md

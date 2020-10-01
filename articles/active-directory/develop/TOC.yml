@@ -418,6 +418,8 @@
               href: id-tokens.md
             - name: 访问令牌
               href: access-tokens.md
+            - name: 配置令牌生存期
+              href: active-directory-configurable-token-lifetimes.md
             - name: UserInfo 终结点
               href: userinfo.md
             - name: 证书凭据
@@ -522,7 +524,7 @@
         - name: 在声明中使用目录架构扩展属性
           href: active-directory-schema-extensions.md
         - name: 配置令牌生存期
-          href: active-directory-configurable-token-lifetimes.md
+          href: configure-token-lifetimes.md
         - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: 在 Safari 中处理 ITP

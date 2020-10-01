@@ -97,6 +97,8 @@
       href: ../../azure-functions/security-baseline.md
     - name: Azure IoT 中心安全基线
       href: ../../iot-hub/security-baseline.md
+    - name: Azure 负载均衡器安全基线
+      href: ../../load-balancer/security-baseline.md
     - name: Azure Monitor 安全基线
       href: ../../azure-monitor/security-baseline.md
     - name: Azure 机器学习安全基线

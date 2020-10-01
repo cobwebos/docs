@@ -96,6 +96,8 @@
       href: hana-vm-operations.md
     - name: SAP HANA Azure 虚拟机存储配置
       href: hana-vm-operations-storage.md
+    - name: 适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
+      href: hana-vm-operations-netapp.md
     - name: Azure 虚拟机中的 SAP HANA 可用性
       items:
         - name: Azure SAP HANA 可用性概述

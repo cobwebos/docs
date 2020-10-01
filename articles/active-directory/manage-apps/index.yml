@@ -1,25 +1,25 @@
 ### YamlMime:Landing
 title: 应用程序管理文档
-summary: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Microsoft 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
+summary: Azure Active Directory 是一种标识和访问管理 (IAM) 系统。 它提供了一个用于存储数字标识相关信息的单一位置。 你可以将软件应用程序配置为使用 Azure AD 来作为存储用户信息的位置。
 metadata:
   title: 应用程序管理文档
-  description: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Microsoft 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
+  description: Azure AD 是一个标识和访问管理 (IAM) 系统。 它提供了一个用于存储数字标识相关信息的单一位置。 你可以将软件应用程序配置为使用 Azure AD 来作为存储用户信息的位置。
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/10/2019
+  ms.date: 09/28/2020
   author: kenwith
   ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: e3232f319c14af6724bc5b844f71a5c6ff34bfa9
+  ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209104"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91534992"
 landingContent:
-- title: 关于应用程序管理
+- title: 关于应用管理
   linkLists:
   - linkListType: overview
     links:
@@ -27,75 +27,91 @@ landingContent:
       url: what-is-application-management.md
     - text: 什么是单一登录？
       url: what-is-single-sign-on.md
+- title: 入门
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: 快速入门系列
+    - text: 查看你的应用
       url: view-applications-portal.md
-- title: 管理云应用和单一登录
+    - text: 添加应用
+      url: add-application-portal.md
+- title: 添加和配置应用
   linkLists:
-  - linkListType: concept
+  - linkListType: learn
     links:
-    - text: 了解单一登录
+    - text: 添加应用
+      url: add-application-portal.md
+    - text: 配置应用
+      url: add-application-portal-configure.md
+- title: 管理应用
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 最佳做法
+      url: application-management-fundamentals.md
+    - text: 常见方案
+      url: common-scenarios.md
+- title: 了解单一登录
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: 单一登录概念
       url: what-is-single-sign-on.md
-    - text: 最终用户体验
-      url: end-user-experiences.md
-  - linkListType: how-to-guide
-    links:
-    - text: 配置单一登录
-      url: configure-saml-single-sign-on.md
-    - text: 向应用分配用户或组
-      url: assign-user-or-group-access-portal.md
-- title: 为应用预配用户和组
+    - text: 单一登录选项
+      url: sso-options.md
+- title: 应用许可
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: 什么是应用程序预配？
-      url: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - linkListType: tutorial
-    links:
-    - text: SaaS 应用预配教程
-      url: /azure/active-directory/saas-apps/
-  - linkListType: how-to-guide
-    links:
-    - text: 构建应用？ 使用 SCIM 进行预配（应用预配文档）
-      url: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
-    - text: 想要添加库应用？ 配置预配（应用预配文档）
-      url: /azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal
-- title: 使用应用程序代理发布本地应用
+    - text: 配置用户同意
+      url: configure-user-consent.md
+    - text: 配置管理员同意
+      url: configure-admin-consent-workflow.md
+- title: 迁移应用
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: 什么是应用程序代理？
+    - text: 迁移资源
+      url: migration-resources.md
+    - text: 将 AD FS 应用迁移到 Azure
+      url: migrate-adfs-apps-to-azure.md
+- title: 使用本地应用
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 什么是应用代理？
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: 应用程序代理计划
+    - text: 应用代理部署
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
-    links:
-    - text: 添加本地应用
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
-    links:
-    - text: 配置连接器以使用代理服务器
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: 配置自定义主页
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
-    links:
-    - text: 使用应用程序代理发布远程桌面
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: 通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
-      url: application-proxy-integrate-with-sharepoint-server.md
-- title: 通过应用交付控制器和网络保护旧版应用
+- title: 保护应用安全
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: 保护对旧版应用的混合访问（云和本地）
-      url: secure-hybrid-access.md
-  - linkListType: how-to-guide
+    - text: 管理对应用的访问权限
+      url: what-is-access-management.md
+    - text: 管理租户限制
+      url: tenant-restrictions.md
+- title: 配置我的应用
+  linkLists:
+  - linkListType: learn
     links:
-    - text: 使用 F5 Big-IP APM 保护应用
-      url: https://aka.ms/f5-hybridaccessguide
-    - text: 使用 Zscaler ZPA 保护应用
-      url: https://aka.ms/zscaler-hybridaccessguide
+    - text: 计划“我的应用”部署
+      url: access-panel-deployment-plan.md
+    - text: 创建集合
+      url: access-panel-collections.md
+- title: 开发新应用
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 开发人员指南
+      url: developer-guidance-for-integrating-applications.md
+    - text: 了解平台
+      url: ../develop/v2-overview.md
+- title: Docs 中的新增内容
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 设置基于 SAML 的 SSO
+      url: add-application-portal-setup-sso.md
+    - text: 设置基于 OIDC 的 SSO
+      url: add-application-portal-setup-oidc-sso.md

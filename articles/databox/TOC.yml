@@ -78,6 +78,8 @@
                   href: security-baseline.md
                 - name: 检查安全性
                   href: data-box-security.md
+            - name: 传输 ACL 和元数据
+              href: data-box-file-acls-preservation.md
             - name: 常见问题解答
               href: data-box-faq.md
         - name: 如何
