@@ -3,14 +3,14 @@ title: 将 Blob 存储事件发送到 Web 终结点 - 模板
 description: 使用 Azure 事件网格和 Azure 资源管理器模板创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661259"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598344"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>使用 ARM 模板将 Blob 存储事件路由到 Web 终结点
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>快速入门：使用 ARM 模板将 Blob 存储事件路由到 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 本文将使用 Azure 资源管理器模板（ARM 模板）创建 Blob 存储帐户、订阅该 Blob 存储的事件，并触发事件来查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 

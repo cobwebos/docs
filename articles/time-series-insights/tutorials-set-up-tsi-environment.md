@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/27/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286455"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597666"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>教程：设置 Azure 时序见解 Gen2 环境
 
@@ -54,7 +54,7 @@ ms.locfileid: "87286455"
    ---|---
    **部署名称** | 此唯一值用于创建新资源组。 将会创建列出的 Azure 资源并将其分配到资源组。
    **Azure 订阅** | 指定在上一部分用于创建 Azure 时序见解 Gen2 环境的同一订阅。
-   **部署选项** | 选择“预配新的 IoT 中心”可创建特定于本教程的新 IoT 中心。
+   **部署选项** | 选择“预配新的 IoT 中心”  可创建特定于本教程的新 IoT 中心。
    **Azure 位置** | 指定在上一部分用于创建 Azure 时序见解 Gen2 环境的同一区域。
 
    完成后选择“创建”，以预配解决方案的 Azure 资源。 完成此过程可能最多需要 20 分钟的时间。
@@ -78,7 +78,7 @@ ms.locfileid: "87286455"
 
 1. 使用 Azure 订阅帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择左上角的“+ 创建资源”。
-1. 依次选择“物联网”类别、“时序见解” 。
+1. 依次选择“物联网”类别、“时序见解”   。
 
    [![选择时序见解环境资源。](media/v2-update-provision/tsi-create-new-environment.png)](media/v2-update-provision/tsi-create-new-environment.png#lightbox)
 
@@ -149,15 +149,15 @@ ms.locfileid: "87286455"
 
 现已部署了 Azure 时序见解 Gen2 环境，请流式传输数据以进行分析。
 
-1. 返回到[解决方案加速器仪表板](https://www.azureiotsolutions.com/Accelerators#dashboard)。 根据需要，使用本教程所用的同一 Azure 帐户重新登录。 选择“设备解决方案”，然后选择“转到解决方案加速器”以启动部署的解决方案。
+1. 返回到[解决方案加速器仪表板](https://www.azureiotsolutions.com/Accelerators#dashboard)。 根据需要，使用本教程所用的同一 Azure 帐户重新登录。 选择“设备解决方案”，然后选择“转到解决方案加速器”  以启动部署的解决方案。
 
    [![解决方案加速器仪表板。](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
-1. 设备模拟 Web 应用首先会提示你授予该 Web 应用程序“登录并读取你的个人资料”的权限。 此权限使得应用程序能够检索所需的用户个人资料信息来支持运行应用程序。
+1. 设备模拟 Web 应用首先会提示你授予该 Web 应用程序“登录并读取你的个人资料”  的权限。 此权限使得应用程序能够检索所需的用户个人资料信息来支持运行应用程序。
 
    [![设备模拟 Web 应用程序许可。](media/v2-update-provision/sawa-signin-consent.png)](media/v2-update-provision/sawa-signin-consent.png#lightbox)
 
-1. 选择“+ 新建模拟”。
+1. 选择“+ 新建模拟”  。
 
     1. 在“模拟设置”页加载后，输入所需的参数。
 
@@ -255,7 +255,7 @@ ms.locfileid: "87286455"
         [![添加类型变量。](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
     1. 选择“应用”。 
-    1. 选择“保存”。 此时将创建并显示三个变量。
+    1. 选择“保存”。  此时将创建并显示三个变量。
 
         [![添加类型后，可在“模型”视图中查看它。](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -268,7 +268,7 @@ ms.locfileid: "87286455"
         | **名称** | 输入“位置层次结构”。 |
         |**级别**| 输入“国家/地区”作为第一级的名称 <br /> 选择“+ 添加级别” <br /> 输入“城市”作为第二级，然后选择“+ 添加级别” <br /> 输入“建筑”作为第三级和最后一个级别的名称 |
 
-   1. 选择“保存”。
+   1. 选择“保存”。 
 
         [![在“模型”视图中显示新的层次结构。](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -291,7 +291,7 @@ ms.locfileid: "87286455"
         | **城市** | 输入“西雅图” |
         | **建筑物** | 输入“太空针塔” |
 
-    1. 选择“保存”。
+    1. 选择“保存”。 
 
 1. 使用以下值重复上一步骤和其他两个实例：
 
