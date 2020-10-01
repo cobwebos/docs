@@ -3,18 +3,20 @@ title: 使用备份中心管理备份空间
 description: 了解如何管理 Azure 环境，以确保所有资源都符合备份中心的备份方式。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 009ee461b0372a3fb73ffb3b0ee5151b77bd8ef8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994792"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614305"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>使用备份中心管理备份空间
 
 备份中心有助于管理 Azure 环境，以确保所有资源都符合备份的要求。 下面是备份中心的一些调控功能：
 
 * 查看并分配用于备份的 Azure 策略
+
+* 在所有用于备份的内置 Azure 策略上查看资源的符合性。
 
 * 查看未配置备份的所有数据源。
 
@@ -29,6 +31,12 @@ ms.locfileid: "90994792"
 通过选择任何定义，可 [将策略分配](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) 给作用域。
 
 ![选择 Azure 策略定义](./media/backup-center-govern-environment/azure-policy-definitions.png)
+
+## <a name="backup-compliance"></a>备份符合性
+
+单击 "备份符合性" 菜单项可帮助你根据已分配给 Azure 环境的各种内置策略来查看资源的 [符合性](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) 。 你可以查看符合所有策略的资源的百分比，以及具有一个或多个不符合标准的策略。
+
+![查看备份符合性](./media/backup-center-govern-environment/azure-policy-compliance.png)
 
 ## <a name="protectable-datasources"></a>可保护的数据源
 

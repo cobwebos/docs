@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 08/14/2020
-ms.openlocfilehash: ceb1c9711d67b32f9a31e6105df0e0e0eec42907
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321367"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614421"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,11 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列和 Fsv2 系列。 
 - M 系列是内存优化硬件选项，适用于需要更多内存和更高计算限制的工作负荷，而不是由 Gen5 提供。
 - M 系列提供每个 vCore 29 GB 和最多128个 Vcore，这会将相对于 Gen5 的内存限制增加到将近 4 TB。
 
-M 系列仅在业务关键层中受支持，不支持区域冗余。  订阅必须是付费产品/服务类型，包括即用即付或企业协议 (EA) 。 对于 M 系列可用的区域，请参阅 [m 系列可用性](#m-series-1)。
+M 系列仅在业务关键层中受支持，不支持区域冗余。  对于 M 系列可用的区域，请参阅 [m 系列可用性](#m-series-1)。
+
+#### <a name="azure-offer-types-supported-by-m-series"></a>M 系列支持的 Azure 产品/服务类型
+
+若要访问 M 系列，订阅必须是付费产品/服务类型，包括即用即付或企业协议 (EA) 。  有关 M 系列支持的 Azure 产品/服务类型的完整列表，请参阅 [当前优惠，无需支出限制](https://azure.microsoft.com/support/legal/offer-details)。
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 0940521873b8d6746381acbd8e6c4c6d3a273c49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325753"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613758"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -111,6 +111,10 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 创建 ITSM 连接后，可以使用**操作组**中的 **ITSM 操作**，在 ITSM 工具中基于 Azure 警报创建工作项。
 
 操作组对 Azure 警报提供模块化且可重用的方法来触发操作。 可以在 Azure 门户结合指标警报、活动日志警报和 Azure Log Analytics 警报使用操作组。
+
+> [!NOTE]
+> 创建 ITSM 连接后，需要等待创建到同步过程的连接器完成后30分钟
+> 
 
 请按以下过程操作：
 

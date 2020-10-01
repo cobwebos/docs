@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533411"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613912"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教程：为 Tableau Online 配置自动用户预配
 
@@ -78,7 +78,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>在 Azure AD 中为 Tableau Online 配置自动用户预配
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" "  >  **所有应用程序**  >  **Tableau 联机**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" "  >  **所有应用程序**  >  **Tableau 联机**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -125,7 +125,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![Tableau Online 通知电子邮件](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-9. 选择“保存”。
+9. 选择“保存”  。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Tableau”********。
 
@@ -133,7 +133,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Tableau Online 的用户属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作****。 若要保存任何更改，请选择“保存”。
 
-    ![Tableau Online 匹配用户属性](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tableau Online 匹配用户属性](./media/tableau-online-provisioning-tutorial/attribute.png)
 
 12. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Tableau”********。
 
@@ -162,6 +162,9 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接。 该报表介绍 Azure AD 预配服务在 Tableau Online 上执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+
+## <a name="change-log"></a>更改日志
+* 09/30/2020-为用户添加了对属性 "authSetting" 的支持。
 
 ## <a name="additional-resources"></a>其他资源
 

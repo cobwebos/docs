@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281244"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613894"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -38,7 +38,7 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 专用终结点是在客户拥有的 VNet 内部分配的专用 IP 地址，可通过该地址访问 Azure 资源。 通过 Azure 专用链接，可以为 IoT 中心设置专用终结点，以允许 VNet 中的服务访问 IoT 中心，而无需将流量发送到 IoT 中心的公共终结点。 同样，本地设备可以使用[虚拟专用网络 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 对等互连，通过其专用终结点，连接到 VNet 和 IoT 中心。 这样，便可以通过使用 [IoT 中心 IP 筛选器](./iot-hub-ip-filtering.md)和[将路由配置为不将任何数据发送到内置终结点](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)，来限制或完全阻止与 IoT 中心公共终结点的连接。 此方法使用设备的专用终结点来保持与中心的连接。 此设置主要适用于本地网络中的设备。 对于广域网中部署的设备，不建议使用此设置。
 
-![IoT 中心公共终结点](./media/virtual-network-support/virtual-network-ingress.png)
+![IoT 中心虚拟网络 engress](./media/virtual-network-support/virtual-network-ingress.png)
 
 在继续操作之前，请确保满足以下先决条件：
 
@@ -92,7 +92,7 @@ IoT 中心可以通过（后述资源的）公共终结点连接到 Azure blob �
 
 1. 在“状态”下，选择“开”，然后单击“保存”  。
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="屏幕截图显示如何为 IoT 中心启用托管标识":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="屏幕截图显示了为 IoT 中心添加专用终结点的位置":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>使用 ARM 模板在创建时将托管标识分配给 IoT 中心
 

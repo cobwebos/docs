@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068823"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614013"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -183,6 +183,14 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 ## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>我正在 `"AADSTS7000215: Invalid client secret is provided."` 使用 AKS API。   应采取何种操作？
 
 这通常是由于服务主体凭据过期引起的。 [更新 AKS 群集的凭据。](update-credentials.md)
+
+## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>使用 API 服务器授权的 IP 范围时，无法从自动化/开发计算机/工具访问我的群集 API。 如何修复此问题？
+
+这需要 `--api-server-authorized-ip-ranges` 包含 ip (s) 或 ip 范围 () 所使用的自动化/开发/工具系统。 请参阅 [使用授权 IP 地址范围安全访问 API 服务器](api-server-authorized-ip-ranges.md)部分中的 "如何查找我的 ip" 部分。
+
+## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>我无法在 Azure 门户中查看群集的资源查看器中配置有 API 服务器授权 IP 范围的资源。 如何修复此问题？
+
+[Kubernetes 资源查看器](kubernetes-portal.md)需要 `--api-server-authorized-ip-ranges` 包含对要从中浏览门户) 的本地客户端计算机或 IP 地址范围 (的访问。 请参阅 [使用授权 IP 地址范围安全访问 API 服务器](api-server-authorized-ip-ranges.md)部分中的 "如何查找我的 ip" 部分。
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>在限制出口流量后收到错误消息
 

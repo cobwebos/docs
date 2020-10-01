@@ -3,20 +3,23 @@ title: 事件中心 - 使用 Azure 门户捕获流式处理事件
 description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315730"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613571"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
-使用 azure[事件中心捕获][capture-overview]，可以自动将事件中心内的流数据传送到[Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或[Azure Data Lake Storage Gen1 或所选的第2代](https://azure.microsoft.com/services/data-lake-store/)帐户。
+使用 azure [事件中心捕获][capture-overview] ，可以自动将事件中心内的流数据传送到 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/) 或 [Azure Data Lake Storage Gen1 或所选的第2代](https://azure.microsoft.com/services/data-lake-store/) 帐户。
 
-可以使用 [Azure 门户](https://portal.azure.com)在创建事件中心时配置捕获。 可以将数据捕获到 Azure [Blob 存储](https://azure.microsoft.com/services/storage/blobs/)容器，或捕获到[Azure Data Lake Storage 第1代或第2代](https://azure.microsoft.com/services/data-lake-store/)帐户。
+可以使用 [Azure 门户](https://portal.azure.com)在创建事件中心时配置捕获。 可以将数据捕获到 Azure [Blob 存储](https://azure.microsoft.com/services/storage/blobs/) 容器，或捕获到 [Azure Data Lake Storage 第1代或第2代](https://azure.microsoft.com/services/data-lake-store/) 帐户。
 
 有关详细信息，请参阅[事件中心捕获概述][capture-overview]。
+
+> [!IMPORTANT]
+> 目标存储 (Azure 存储或 Azure Data Lake Storage) 帐户必须与事件中心位于同一订阅中。
 
 ## <a name="capture-data-to-azure-storage"></a>将数据捕获到 Azure 存储
 
@@ -59,8 +62,8 @@ ms.locfileid: "85315730"
 
 ### <a name="create-an-azure-data-lake-storage-gen-1-account-and-folders"></a>创建 Azure Data Lake Storage 第1代帐户和文件夹
 
-1. 按照[使用 Azure 门户 Azure Data Lake Storage 第1代入门](../data-lake-store/data-lake-store-get-started-portal.md)中的说明创建 Data Lake Storage 帐户。
-2. 按照 "向[事件中心分配权限](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs)" 部分中的说明在 Data Lake Storage 第1代帐户（要在其中捕获事件中心的数据）中创建文件夹，并为事件中心分配权限，以便它可以将数据写入 Data Lake Storage 第1代帐户。  
+1. 按照 [使用 Azure 门户 Azure Data Lake Storage 第1代入门](../data-lake-store/data-lake-store-get-started-portal.md)中的说明创建 Data Lake Storage 帐户。
+2. 按照 "向 [事件中心分配权限](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) " 部分中的说明在 Data Lake Storage 第1代帐户（要在其中捕获事件中心的数据）中创建文件夹，并为事件中心分配权限，以便它可以将数据写入 Data Lake Storage 第1代帐户。  
 
 
 ### <a name="create-an-event-hub"></a>创建事件中心

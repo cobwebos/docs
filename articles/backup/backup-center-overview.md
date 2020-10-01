@@ -2,13 +2,13 @@
 title: 备份中心概述
 description: 本文概述了 Azure 的备份中心。
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994575"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614270"
 ---
 # <a name="overview-of-backup-center"></a>备份中心概述
 
@@ -39,7 +39,11 @@ ms.locfileid: "90994575"
 
 在 " **备份实例** " 磁贴中，可以获得备份空间内所有备份实例的汇总视图。 例如，与仍配置为要进行保护的实例数相比，可以看到处于软删除状态的备份实例数。 选择此磁贴中的任何数字可查看有关特定数据源类型和保护状态的备份实例的详细信息。
 
-请按照以下步骤来了解备份中心提供的不同功能，以及如何使用这些功能来有效地管理备份空间。
+观看以下视频，了解备份中心的功能：
+
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+按照 [后续步骤](#next-steps) 来了解备份中心提供的不同功能，以及如何使用这些功能来有效地管理备份场所。
 
 ## <a name="next-steps"></a>后续步骤
 

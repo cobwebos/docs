@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906368"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613639"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>针对已在使用 Azure Monitor 日志的客户的常见问题解答<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ ms.locfileid: "90906368"
 当安全中心确定 VM 已连接到你创建的工作区时，安全中心会根据你的定价配置在此工作区上启用解决方案。 由于[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，解决方案仅应用于相关的 Azure VM，因此计费保持不变。
 
 - **Azure Defender off** –安全中心在工作区中安装 "SecurityCenterFree" 解决方案。 不会向你收费。
-- 
 - **Azure Defender on** –安全中心在工作区上安装 "安全" 解决方案。
 
    ![默认工作区上的解决方案](./media/security-center-platform-migration-faq/solutions.png)

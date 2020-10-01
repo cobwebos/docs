@@ -4,12 +4,12 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299657"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613724"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -129,6 +129,32 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges ""
 ```
+
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>如何查找我的 IP 以便加入 `--api-server-authorized-ip-ranges` ？
+
+必须将开发计算机、工具或自动化 IP 地址添加到已批准 IP 范围的 AKS 群集列表中，以便从该列表访问 API 服务器。 
+
+另一种做法是在防火墙虚拟网络中的单独子网内，使用所需的工具配置 Jumpbox。 这假设你的环境中有防火墙，其中包含各自的网络，已将防火墙 Ip 添加到授权范围。 同样，如果将 AKS 子网中的强制隧道设置为防火墙子网，则与群集子网中的 jumpbox 也不一样。
+
+用以下命令将其他 IP 地址添加到已批准的范围。
+
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+```
+
+>> [!NOTE]
+> 上面的示例在群集上追加了 API 服务器授权的 IP 范围。 若要禁用授权的 IP 范围，请使用 az aks update 并指定空范围 ""。 
+
+另一种方法是在 Windows 系统上使用以下命令来获取公用 IPv4 地址，也可以使用 [查找 IP 地址](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)中的步骤。
+
+```azurepowershell-interactive
+Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+```
+
+还可以通过在 internet 浏览器中搜索 "我的 IP 地址" 来查找此地址。
 
 ## <a name="next-steps"></a>后续步骤
 

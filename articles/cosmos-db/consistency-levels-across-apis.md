@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bb8a413f2e2a3aa4a8facd533d822312bb61fa0e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920426"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613554"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
 
@@ -23,7 +23,7 @@ Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本�
 使用 Cassandra API 或 Azure Cosmos DB 的适用于 MongoDB 的 API 时，应用程序将分别获取 Apache Cassandra 和 MongoDB 提供的完整一致性级别，同时提供更强的一致性和持久性保证。 本文档介绍了与 Apache Cassandra 和 MongoDB 一致性级别对应的 Azure Cosmos DB 一致性级别。
 
 > [!NOTE]
-> Azure Cosmos DB 的默认一致性模型是 Session。 会话是以客户端为中心的一致性模型，不受 Cassandra 或 MongoDB 的本机支持。 有关所选的一致性模型的详细信息，请参阅[Azure Cosmos DB 中的一致性级别](consistency-levels.md)
+> Azure Cosmos DB 的默认一致性模型是 Session。 会话是以客户端为中心的一致性模型，不受 Cassandra 或 MongoDB 的本机支持。 有关所选的一致性模型的详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 
 ## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Apache Cassandra 与 Azure Cosmos DB 一致性级别之间的映射
 
@@ -49,11 +49,11 @@ Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本�
 
 * Azure Cosmos DB 会将 MongoDB 客户端驱动程序指定的读取关注动态映射到根据读取请求动态配置的某个 Azure Cosmos DB 一致性级别。  
 
-* 可以将与 Azure Cosmos 帐户关联的特定区域批注为“主区域”，方法是将该区域设置为第一个可写区域。 
+* 你可以通过将区域作为第一个可写区域来为与 Azure Cosmos 帐户关联的特定区域添加注释 "主要"。 
 
 下表说明了在使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时，如何将本机 MongoDB 写入/读取问题映射到 Azure Cosmos 一致性级别：
 
-:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="MongoDB 一致性模型映射" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Cassandra 一致性模型映射" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

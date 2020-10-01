@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533173"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613707"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置开发环境
 
@@ -228,7 +228,7 @@ Azure Databricks 如何使用 Azure 机器学习：
 | 设置 |适用于| Value |
 |----|---|---|
 | 群集名称 |通用| yourclustername |
-| Databricks Runtime |通用|非 ML 运行时 6.5（scala 2.11、spark 2.4.3） |
+| Databricks Runtime |通用|非 ML 运行时 7.1 (scala 2.21，spark 3.0.0)  |
 | Python 版本 |通用| 3 |
 | 工作节点 |通用| 2 个或以上 |
 | 工作节点 VM 类型 <br>（确定最大并发迭代数） |自动化机器学习<br>（仅限）| 首选内存优化的 VM |
@@ -238,19 +238,18 @@ Azure Databricks 如何使用 Azure 机器学习：
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>将正确的 SDK 安装到 Databricks 库中
 
-群集运行后，请[创建一个库](https://docs.databricks.com/user-guide/libraries.html#create-a-library)用于将相应的 Azure 机器学习 SDK 包附加到群集。
+群集运行后，请[创建一个库](https://docs.databricks.com/user-guide/libraries.html#create-a-library)用于将相应的 Azure 机器学习 SDK 包附加到群集。 对于自动 ML，请跳过 [与自动机器学习部分的 Databricks SDK](#sdk-for-databricks-with-automated-machine-learning)。
 
 1. 右键单击用于存储该库的当前工作区文件夹。 选择“创建” > “库”。 
 
-1. 请仅选择**一个**选项（不支持其他 SDK 安装）
+1. 选择以下选项 (不支持其他 SDK 安装) 
 
    |SDK 包附加项|Source|PyPi 名称|
    |----|---|---|
    |对于 Databricks| 上传 Python Egg 或 PyPI | azureml-sdk[databricks]|
-   |对于包含自动化<br> ML 功能的 Databricks| 上传 Python Egg 或 PyPI | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > 无法安装其他 SDK 附加项。 请仅选择上述选项中的一个，即 [`databricks`] 或 [`automl`]。
+   > 无法安装其他 SDK 附加项。 仅选择 [ `databricks` ] 选项。
 
    * 不要选择“自动附加到所有群集”。
    * 选择群集名称旁边的“附加”。
@@ -270,9 +269,17 @@ Azure Databricks 如何使用 Azure 机器学习：
 
 如果安装成功，则导入的库应如下所示：
 
-**不包含**自动化机器学习的 Databricks 的 SDK ![适用于 Databricks 的 Azure 机器学习 SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+#### <a name="sdk-for-databricks"></a>适用于 Databricks 的 SDK
+![适用于 Databricks 的 Azure 机器学习 SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-**包含**自动化机器学习的 Databricks 的 SDK ![Databricks 上安装的包含自动化机器学习的 SDK](./media/how-to-configure-environment/automlonadb.png)
+#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>带有自动机器学习的 Databricks SDK
+如果群集是用 Databricks 非 ML 运行时7.1 或更高版本创建的，请在笔记本的第一个单元格中运行以下命令，以安装 AML SDK。
+
+```
+%pip install -r https://aka.ms/automl_linux_requirements.txt
+```
+对于 Databricks 非 ML 运行时7.0 和更低版本，请使用 [init 脚本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md)安装 AML SDK。
+
 
 ### <a name="start-exploring"></a>开始探索
 
