@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401378"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595978"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-使用 Azure 媒体服务在媒体从计算机离开一直到存储、处理和传送的整个过程中帮助保护其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 如果内容是使用 AES 明文密钥加密的，并且是通过 HTTPS 发送的，则它在到达客户端之前不会以明文形式发送。 
+使用 Azure 媒体服务在媒体从计算机离开一直到存储、处理和传送的整个过程中帮助保护其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 如果内容是使用 AES 明文密钥加密的，并且是通过 HTTPS 发送的，则它在到达客户端之前不会以明文形式发送。
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 在媒体服务 v3 中，内容密钥与流定位符相关联（参阅[此示例](protect-with-aes128.md)）。 如果使用媒体服务密钥传送服务，可让 Azure 媒体服务自动生成内容密钥。 如果使用自己的密钥传送服务，或者需要处理高可用性方案（需要在两个数据中心使用相同的内容密钥），则应自行生成内容密钥。
 
@@ -136,7 +138,7 @@ HLS 协议支持以下容器格式和加密方案：
 
 * iOS 11 或更高版本。
 * iPhone 8 或更高版本。
-* 装备 Intel 第 7 代 CPU 的 MacOS High Sierra。
+* Intel 第7代 CPU 的 macOS 高塞拉利昂。
 
 ### <a name="mpeg-dash"></a>MPEG-DASH
 

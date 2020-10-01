@@ -3,7 +3,7 @@ title: 排查 Azure Windows 虚拟机的高 CPU 问题
 description: .
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: v-miegge
+author: mnanda
 manager: dcscontentpm
 editor: v-jesits
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 1cc1b6cc6e678e30b2d66d67cdc4aa438cd2058b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542851"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596845"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>排查 Azure Windows 虚拟机的高 CPU 问题
 
@@ -229,7 +229,7 @@ Perfmon 中没有可供用户使用的默认报表。 更改图形类型的视�
 
 1. 选择 **_Total**，这将提供所有组合内核的统计信息。
 
-1. 选择 **添加** 。 该窗口在 "**已添加的计数器**" 下显示 **% ProcessorTime** 。
+1. 选择“添加”。 该窗口在 "**已添加的计数器**" 下显示 **% ProcessorTime** 。
 
   ![添加处理器时间](./media/troubleshoot-high-cpu-issues-azure-windows-vm/11-add-processor-time.png)
 
@@ -315,7 +315,7 @@ PerfInsights 尚无 **计划的运行** 功能。 但是，可以通过命令行
 
 在问题发生时收集 Perfmon 数据后，分析数据的其余步骤与前面讨论的步骤相同。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 对于任何性能问题，了解工作负荷是解决问题的关键所在。 不同 VM Sku 和不同磁盘存储选项上的选项必须通过保持对生产工作负荷的关注来评估。 在不同 Vm 上测试解决方案的过程可帮助你做出最佳决策。
 

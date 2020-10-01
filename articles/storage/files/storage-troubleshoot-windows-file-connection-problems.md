@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9b0eeda443aefc105fb36d6075c717fafae4cb61
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707605"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598030"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>排查 Windows (SMB) 中的 Azure 文件问题
 
-本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息，该疑难解答提供相关步骤来帮助解决在连接/映射/装载 Azure 文件共享时遇到的问题。
+本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。
 
 > [!IMPORTANT]
 > 本文的内容仅适用于 SMB 共享。 有关 NFS 共享的详细信息，请参阅对 [AZURE NFS 文件共享进行故障排除](storage-troubleshooting-files-nfs.md)。
@@ -343,7 +343,7 @@ Cmdlet 按顺序执行以下检查，并为故障提供指导：
 1. CheckADObjectPasswordIsCorrect：确保在表示存储帐户的 AD 标识上配置的密码与存储帐户 kerb1 或 kerb2 密钥的密码匹配。 如果密码不正确，可以运行 [AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) 以重置密码。 
 2. CheckADObject：确认 Active Directory 中有一个表示存储帐户并且具有正确 SPN (服务主体名称) 的对象。 如果未正确设置 SPN，请运行在调试 cmdlet 中返回的设置 AD cmdlet 以配置 SPN。
 3. CheckDomainJoined：验证客户端计算机是否已加入 AD。 如果计算机不是加入 AD 的域，请参阅此 [文章](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) 了解域加入说明。
-4. CheckPort445Connectivity：检查是否为 SMB 连接打开了端口445。 如果未打开所需的端口，请参阅故障排除工具 [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) 以了解 Azure 文件的连接问题。
+4. CheckPort445Connectivity：检查是否为 SMB 连接打开了端口445。 如果未打开所需的端口，请参阅故障排除工具 [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) 以了解 Azure 文件的连接问题。
 5. CheckSidHasAadUser：检查登录 AD 用户是否已同步到 Azure AD。 如果要查找特定 AD 用户是否已同步到 Azure AD，可以在输入参数中指定-UserName 和-Domain。 
 6. CheckGetKerberosTicket：尝试获取用于连接到存储帐户的 Kerberos 票证。 如果没有有效的 Kerberos 令牌，请运行 klist get cifs/cmdlet，并检查错误代码，使其根本原因导致票证检索失败。
 7. CheckStorageAccountDomainJoined：检查是否已启用 AD 身份验证，并填充该帐户的 AD 属性。 否则，请参阅 [此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) 的说明，在 Azure 文件上启用 AD DS 身份验证。 

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539964"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91605851"
 ---
 ![Dsv3 文档](media/vm-disk-performance/dsv3-documentation.jpg)
 
-最大非 **缓存** 磁盘吞吐量是虚拟机能够处理的默认存储最大限制。 启用主机缓存后，最大 **缓存** 存储吞吐量限制是单独的限制。 主机缓存的工作原理是：使存储空间更接近可以写入或读取的 VM。 可供 VM 用于主机缓存的存储量位于文档中。 例如，你可以看到 Standard_D8s_v3 附带了 200 GiB 的缓存存储。 让我们 
+最大非 **缓存** 磁盘吞吐量是虚拟机能够处理的默认存储最大限制。 启用主机缓存后，最大 **缓存** 存储吞吐量限制是单独的限制。 主机缓存的工作原理是：使存储空间更接近可以写入或读取的 VM。 可供 VM 用于主机缓存的存储量位于文档中。 例如，你可以看到 Standard_D8s_v3 附带了 200 GiB 的缓存存储。
 
 创建虚拟机并附加磁盘时，可以启用主机缓存。 你还可以调整以打开和关闭在现有 VM 上缓存磁盘的主机。
 
@@ -94,7 +94,7 @@ ms.locfileid: "91539964"
     - 主机缓存：读/写
 - 2 P30 数据磁盘 X 2
     - IOPS：5000
-    - 主机缓存：读/写
+    - 主机缓存：已禁用
 
 ![具有远程存储的主机缓存示例](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 

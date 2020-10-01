@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 09/26/2020
-ms.openlocfilehash: 1595051c851d1c21242bcbb5368baa28a1da740d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409844"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597785"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>在 Azure 逻辑应用 Visual Studio Code 中创建有状态或无状态的工作流 (预览版) 扩展
 
@@ -389,9 +389,11 @@ Azure 逻辑应用 (预览版) 扩展可在 Visual Studio Code 中为你的本�
 
 1. 如果必须在设计器中删除项，请执行以下步骤：
 
-   1. 在设计器中，选择项。
+   1. 在设计器中，选择项，该项将在右侧打开该项的详细信息窗格。
 
-   1. 在将打开的项的详细信息窗格中，选择 "省略号 (**...** ") 按钮 " **>** **删除**"。 若要确认删除，请选择 **"确定"**。
+   1. 更广泛地展开 "Visual Studio Code" 窗口，使其位于 "触发器" 或 "操作名称" 旁边，"省略号 (**...**) " 按钮显示在最上方。 
+
+   1. 打开 "省略号 (**...** ") 菜单，然后选择 " **删除**"。 若要确认删除，请选择 **"确定"**。
 
       ![用 "打开详细信息" 窗格以及所选省略号按钮和 "删除" 选项在设计器上显示选定项的屏幕截图。](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
@@ -441,7 +443,7 @@ Azure 逻辑应用 (预览版) 扩展可在 Visual Studio Code 中为你的本�
 
    ![显示逻辑应用设计器的屏幕截图，其中包含 Office 365 Outlook "发送电子邮件" 操作的详细信息。](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
-   | 属性 | 必须 | Value | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **收件人** | 是 | <*your-email-address*> | 电子邮件收件人，可以是你的电子邮件地址，用于测试目的。 此示例使用虚构电子邮件 `sophiaowen@fabrikam.com` 。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |

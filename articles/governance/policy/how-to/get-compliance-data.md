@@ -3,12 +3,12 @@ title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537944"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596046"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -46,7 +46,37 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 ### <a name="on-demand-evaluation-scan"></a>按需评估扫描
 
-可以通过 Azure CLI,、Azure PowerShell 或调用 REST API 来启动订阅或资源组的评估扫描。 此扫描是一个异步过程。
+可以使用 Azure CLI、Azure PowerShell、对 REST API 的调用或通过使用 [Azure 策略相容性扫描 GitHub 操作](https://github.com/marketplace/actions/azure-policy-compliance-scan)来启动对订阅或资源组的评估扫描。
+此扫描是一个异步过程。
+
+#### <a name="on-demand-evaluation-scan---github-action"></a>按需评估扫描-GitHub 操作
+
+使用 [Azure 策略符合性扫描操作](https://github.com/marketplace/actions/azure-policy-compliance-scan) 可在一个或多个资源、资源组或订阅上触发 [GitHub 工作流](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) 的按需评估扫描，并基于资源的符合性状态触发工作流。 你还可以将工作流配置为在计划的时间运行，以便可以在方便的时间获取最新的符合性状态。 此外，此 GitHub 操作还可以生成有关扫描资源的符合性状态的报告，以便进一步分析或存档。
+
+下面的示例运行订阅的符合性扫描。 
+
+```yaml
+on:
+  schedule:    
+    - cron:  '0 8 * * *'  # runs every morning 8am
+jobs:
+  assess-policy-compliance:    
+    runs-on: ubuntu-latest
+    steps:         
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}} 
+
+    
+    - name: Check for resource compliance
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+有关详细信息和工作流示例，请参阅 [Azure 策略符合性扫描](https://github.com/Azure/policy-compliance-scan)存储库的 GitHub 操作。
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>按需评估扫描 - Azure CLI
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870827"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596561"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
 Azure 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。
@@ -72,7 +72,9 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 
 请务必选择包含许多不同值的分区键属性，并跨这些值均匀分配工作负载。 作为分区的自然项目，涉及同一分区键的请求受到单个分区的最大吞吐量的限制。 
 
-属于同一分区键的文档的存储大小上限为 20 GB。 理想的分区键可以作为筛选器频繁出现在查询中，并具有足够的基数，以确保解决方案可缩放。
+属于同一分区键值的文档的存储大小限制为 20 GB ([物理分区大小限制](../cosmos-db/partition-data.md) 为 50 gb) 。 [理想的分区键](../cosmos-db/partitioning-overview.md#choose-partitionkey)是指经常作为查询中的筛选器，并且具有足够的基数以确保解决方案是可缩放的。
+
+用于流分析查询和 Cosmos DB 的分区键不需要完全相同。 完全并行拓扑建议使用 *输入分区键*， `PartitionId` 作为流分析查询的分区键，但这可能不是 Cosmos DB 容器的分区键的建议选项。
 
 分区键也是 Cosmos DB 的存储过程和触发器中的事务处理的边界。 选择分区键时，应确保在事务中同时出现的文档使用相同的分区键值。 如需详细了解如何选择分区键，请参阅 [Azure Cosmos DB 中的分区](../cosmos-db/partitioning-overview.md)一文。
 

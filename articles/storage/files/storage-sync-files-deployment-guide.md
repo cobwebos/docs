@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c64c376e8f283336573500e69ac31989b5947961
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069622"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598243"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -21,7 +21,7 @@ ms.locfileid: "90069622"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
@@ -105,7 +105,7 @@ ms.locfileid: "90069622"
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>准备 Windows Server，用于 Azure 文件同步
 对于要与 Azure 文件同步配合使用的每个服务器（包括故障转移群集中的服务器节点），请禁用“Internet Explorer 增强的安全性配置”。**** 只需在最初注册服务器时禁用。 可在注册服务器后重新启用。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 > [!Note]  
 > 如果要在 Windows Server Core 上部署 Azure 文件同步，则可以跳过此步骤。
 
@@ -152,7 +152,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > [!Note]
 > 存储同步服务将从它已部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 若要部署存储同步服务，请单击 " [Azure 门户](https://portal.azure.com/)"，再单击 " *创建资源* "，然后搜索 Azure 文件同步。在搜索结果中，选择 " **Azure 文件同步**"，然后选择 " **创建** " 以打开 " **部署存储同步** " 选项卡。
 
 在打开的窗格中，输入以下信息：
@@ -220,7 +220,7 @@ $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name 
 ## <a name="install-the-azure-file-sync-agent"></a>安装 Azure 文件同步代理
 Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 Azure 文件共享的同步。 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 可从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载代理。 下载完成后，双击 MSI 包，开始安装 Azure 文件同步代理。
 
 > [!Important]  
@@ -288,7 +288,7 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 * "Storagesync.sys/storageSyncServices/工作流/读取"
 * "Storagesync.sys/storageSyncServices/工作流/操作/读取"
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 服务器注册 UI 应在 Azure 文件同步代理安装后自动打开。 如果没有打开，可以手动从其文件位置 C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe 打开。 服务器注册 UI 打开时，请选择“登录”开始操作****。
 
 登录后，系统会提示输入以下信息：
@@ -321,7 +321,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 
 创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色 **所有者** 的成员。 这可以在 " **访问控制" (IAM) ** 在存储帐户的 Azure 门户中进行配置。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 若要创建同步组，请在 [Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：
 
 ![在 Azure 门户中创建新的同步组](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -407,7 +407,7 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 > [!NOTE]
 > 不支持在卷上创建服务器终结点后更改路径或驱动器号。 请确保在已注册的服务器上使用最终路径。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 若要添加服务器终结点，请前往新创建的同步组，然后选择 " **添加服务器终结点**"。
 
 ![在“同步组”窗格中添加一个新的服务器终结点](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
@@ -524,13 +524,12 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
 如果没有可用于初始载入的额外存储空间，并且希望附加到现有的共享，则可以在 Azure 文件共享中预先播种数据。 当且仅当可以接受停机并且绝对可以保证在初始载入过程中服务器共享上不会发生数据更改时，才建议使用此方法。 
  
 1. 确保任何服务器上的数据在载入过程中都不会更改。
-2. 使用任何数据传输工具通过 SMB 对 Azure 文件共享进行预 seed，例如 Robocopy、直接 SMB 副本。 由于 AzCopy 不通过 SMB 上传数据，因此不能使用它进行预先播种。
+2. 使用任何数据传输工具通过 SMB 对 Azure 文件共享进行预 seed。 例如，Robocopy。 还可以使用 AzCopy 而不是 REST。 请确保将 AzCopy 与适当的开关一起使用，以保留 Acl 时间戳和属性。
 3. 使用所需的指向现有共享的服务器终结点创建 Azure 文件同步拓扑。
 4. 让同步服务在所有终结点上完成对帐过程。 
 5. 在对帐完成后，你可以打开共享进行更改。
  
 目前，预播种方法有一些限制- 
-- 不能保持文件的完全保真度。 例如，文件会丢失 ACL 和时间戳。
 - 在同步拓扑完全启动并运行之前更改服务器上的数据可能会导致各个服务器终结点上发生冲突。  
 - 创建云终结点后，在开始初始同步之前，Azure 文件同步会运行一个进程来检测云中的文件。完成此过程所花的时间取决于各种因素，如网络速度、可用带宽以及文件和文件夹的数目。 对于预览版，粗略估计，检测流程以大约每秒 10 个文件的速度运行。因此，当在云中预先播种数据时，即使预先播种运行速度很快，获得完全运行的系统所需的总体时间也会更长。
 
@@ -591,7 +590,7 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 ### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>启用服务器终结点以主动撤回 Azure 文件共享中的更改
 
-# <a name="portal"></a>[Portal](#tab/proactive-portal)
+# <a name="portal"></a>[门户](#tab/proactive-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，请切换到存储同步服务，选择正确的同步组，然后在 Azure 文件共享 (云终结点) 中，确定要密切跟踪其更改的服务器终结点。
 1. 在 "云分层" 部分中，找到 "Azure 文件共享下载" 主题。 你将看到当前所选模式，可以将其更改为跟踪 Azure 文件共享更改，并主动地将其重新与服务器撤回。

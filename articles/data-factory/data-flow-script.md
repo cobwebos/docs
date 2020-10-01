@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 6802e3f6c0892993f9ffe4373f43274362b8a003
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569686"
+ms.locfileid: "91598095"
 ---
 # <a name="data-flow-script-dfs"></a> (DFS) 的数据流脚本
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 使用数据流脚本中的此代码创建一个名为的新派生列 ```DWhash``` ，该派生列生成 ```sha1``` 三列的哈希。
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 你还可以使用以下脚本，使用流中存在的所有列生成行哈希，而无需命名每个列：
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg 等效项
@@ -191,7 +191,7 @@ derive(DWhash = sha1(columns()))
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新、upsert、插入、删除的次数
@@ -216,7 +216,7 @@ aggregate(groupBy(mycols = sha2(256,columns())),
 这是一个代码段，你可以将其粘贴到数据流中，以一般检查所有列中的 NULL 值。 此方法利用架构偏移来浏览所有行中的所有列，并使用有条件拆分将行中的 Null 与无 Null 的行分隔开。 
 
 ```
-CreateColumnArray split(contains(array(columns()),isNull(#item)),
+split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 

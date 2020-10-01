@@ -1,14 +1,14 @@
 ---
 title: 将策略设计为代码工作流
 description: 了解如何设计工作流以将 Azure Policy 定义部署为代码并自动验证资源。
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651892"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598212"
 ---
 # <a name="design-policy-as-code-workflows"></a>将策略设计为代码工作流
 
@@ -39,12 +39,14 @@ ms.locfileid: "89651892"
 - Policy 定义：[将标记添加到资源](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - 计划定义：[计费标记](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
+另外，请参阅 [导出 Azure 策略资源](../how-to/export-resources.md) ，将现有的定义和分配导入到源代码管理环境 [GitHub](https://www.github.com)中。
+
 ## <a name="workflow-overview"></a>工作流概述
 
 策略即代码的建议常规工作流如下图所示：
 
-:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="显示从创建到要部署的测试的 代码工作流 框的策略的关系图。" border="false":::
-   将策略显示为代码工作流框的关系图。 创建包含策略和计划定义的创建。 测试涵盖已禁用强制模式的赋值。 首先，将网关检查符合性状态，并向其授予对 I 权限和修正资源的分配。  部署包含已启用强制模式的更新分配。
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="图中显示了从创建到测试到部署的“策略作为代码”工作流框。" border="false":::
+   图中显示了“策略作为代码”工作流框。 创建包括策略和计划定义的创建。 测试包括已禁用强制模式的分配。 在网关检查合规性状态之后，向分配授予 MSI 权限并对资源进行修正。  部署包括在启用强制模式的情况下更新分配。
 :::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>创建和更新策略定义
@@ -112,7 +114,7 @@ ms.locfileid: "89651892"
 > [!NOTE]
 > 尽管强制模式非常有用，但它不能替代在各种条件下对策略定义进行全面测试。 应使用 `PUT` 和 `PATCH` REST API 调用、合规与不合规的资源以及边缘事例（如资源中缺少属性）对策略定义进行测试。
 
-部署分配后，请使用策略 SDK 或 [Azure 策略相容性扫描 GitHub 操作](https://github.com/marketplace/actions/azure-policy-compliance-scan) 获取新分配的 [符合性数据](../how-to/get-compliance-data.md) 。 用于测试策略和分配的环境应同时具有合规与不合规的资源。
+部署分配后，使用 Policy SDK 或 [Azure Policy 合规性扫描 GitHub 操作](https://github.com/marketplace/actions/azure-policy-compliance-scan)来[获取新分配的合规性数据](../how-to/get-compliance-data.md)。 用于测试策略和分配的环境应同时具有合规与不合规的资源。
 与用于代码的良好单元测试一样，需要测试资源是否如同预期，并且是否也没有假正或假负。 如果仅针对期望的内容进行测试和验证，则策略可能会产生意外和无法识别的影响。 有关详细信息，请参阅[评估新 Azure Policy 定义的影响](./evaluate-impact.md)。
 
 ### <a name="enable-remediation-tasks"></a>启用修正任务

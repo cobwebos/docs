@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800256"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598297"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -66,6 +66,7 @@ ms.locfileid: "87800256"
 * Azure 特定的 RHEL 文档：
   * [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members](https://access.redhat.com/articles/3131341)（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
+  * [采用 RHEL 8-高可用性和群集的注意事项](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [在 RHEL 7.6 的 Pacemaker 中将 SAP S/4HANA ASCS/ERS 配置为 Standalone Enqueue Server 2 (ENSA2)](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>群集安装
@@ -78,7 +79,7 @@ ms.locfileid: "87800256"
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
-1. **[A]** 注册
+1. **[A]** 注册。 如果使用已启用 RHEL 8.x HA 的映像，则不需要执行此步骤。  
 
    注册虚拟机，将其附加到包含适用于 RHEL 7 的存储库的池。
 
@@ -88,9 +89,9 @@ ms.locfileid: "87800256"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   注意，通过将池附加到 Azure Marketplace PAYG RHEL 映像，可以有效地对 RHEL 使用情况进行双重计费：一次是对 PAYG 映像进行计费，另一次是对附加池中的 RHEL 权利进行计费。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。
+   通过将池附加到 Azure Marketplace PAYG RHEL 映像，你将能够有效地按 RHEL 使用情况进行双重计费：一次用于 PAYG 映像，一次用于附加的池中的 RHEL 权限。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。
 
-1. **[A]** 为 SAP 存储库启用 RHEL
+1. **[A]** 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL 8.x HA 的映像，则不需要执行此步骤。  
 
    为了安装所需的包，启用以下存储库。
 
@@ -108,6 +109,7 @@ ms.locfileid: "87800256"
 
    > [!IMPORTANT]
    > 如果资源停止故障或者群集节点无法互相通信，我们建议客户使用以下 Azure 隔离代理版本（或更高版本）以获取更快的故障转移时间：  
+   > RHEL 7.7 或更高版本使用最新的可用围栏-代理包版本  
    > RHEL 7.6：fence-agents-4.2.1-11.el7_6.8  
    > RHEL 7.5：fence-agents-4.0.11-86.el7_5.8  
    > RHEL 7.4：fence-agents-4.0.11-66.el7_4.12  
@@ -165,15 +167,23 @@ ms.locfileid: "87800256"
 
 1. **[1]** 创建 Pacemaker 群集
 
-   运行以下命令以验证节点并创建群集。 将令牌设置为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇[适用于 Linux][virtual-machines-linux-maintenance] 的文章。
-
+   运行以下命令以验证节点并创建群集。 将令牌设置为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇[适用于 Linux][virtual-machines-linux-maintenance] 的文章。  
+   
+   如果在 **RHEL 7、windows**上构建群集，请使用以下命令：  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   如果在 **RHEL**2.x 上构建群集，请使用以下命令：  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   通过执行以下命令来验证群集状态：  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,17 +198,22 @@ ms.locfileid: "87800256"
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** 设置预期投票
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A]** 设置预期的投票。 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
+
+   >[!TIP]
+   > 如果构建多节点群集，该群集具有两个以上的节点，请不要将投票设置为2。    
 
 1. **[1]** 允许并发隔离操作
 
@@ -211,7 +226,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。 这是“租户 ID”。
+   请参阅 "属性" 并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击“新建注册”
 1. 输入名称，选择“仅限此组织目录中的帐户” 
@@ -219,7 +234,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
    不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择“证书和机密”，然后单击“新建客户端机密”
 1. 输入新密钥的说明，选择“永不过期”，并单击“添加”
-1. 记下值。 此值用作服务主体的**密码**
+1. 将节点设置为值。 此值用作服务主体的**密码**
 1. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
@@ -276,12 +291,17 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-使用以下命令配置隔离设备。
-
 > [!NOTE]
 > 如果 RHEL 主机名和 Azure 节点名不相同，则仅命令仅需要“pcmk_host_map”选项。 请参阅命令中的粗体部分。
 
+对于 RHEL **7、windows**，使用以下命令来配置隔离设备：    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+对于 RHEL **2.x**，请使用以下命令来配置隔离设备：  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

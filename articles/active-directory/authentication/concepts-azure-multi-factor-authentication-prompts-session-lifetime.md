@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052658"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595549"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure 多重身份验证的会话生存期
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 
 **持久性浏览器会话** 允许用户在关闭并重新打开其浏览器窗口后保持登录。 与 " *保持登录* " 设置相似，它在浏览器上设置持久性 cookie。 但是，由于它是由管理员配置的，因此不要求用户在 "*保持登录"* 选项中选择 **"是"** ，因此提供了更好的用户体验。 如果使用 " *保持登录"* 选项，则建议改为启用 **永久浏览器会话** 策略。
 
-获取详细信息。 请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
+有关详细信息， 请参阅 [使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 
 ### <a name="configurable-token-lifetimes"></a>可配置的令牌生存期
 
@@ -121,7 +121,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 1. 选择 " **安全性**"，然后选择 " **条件访问**"。
 1. 使用本文详细介绍的建议会话管理选项配置策略。
 
-若要查看令牌生存期，请 [使用 Azure AD PowerShell 来查询任何 Azure AD 策略](../develop/active-directory-configurable-token-lifetimes.md#prerequisites)。 禁用已有的任何策略。
+若要查看令牌生存期，请 [使用 Azure AD PowerShell 来查询任何 Azure AD 策略](../develop/configure-token-lifetimes.md#prerequisites)。 禁用已有的任何策略。
 
 如果在租户中启用了多个设置，则建议你根据可用的许可来更新设置。 例如，如果你有 Azure AD premium 许可证，则应仅使用 *登录频率* 和 *持续浏览器会话*的条件性访问策略。 如果有 Microsoft 365 应用或 Azure AD 免费许可证，则应使用 " *保持登录"* 配置。
 

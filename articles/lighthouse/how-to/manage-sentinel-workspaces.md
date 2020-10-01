@@ -1,14 +1,14 @@
 ---
 title: 大规模管理 Azure Sentinel 工作区
 description: 了解如何在委派的客户资源上有效地管理 Azure Sentinel。
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019727"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596936"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
@@ -35,6 +35,9 @@ Azure Sentinel 提供安全分析和威胁情报，为警报检测、威胁可�
 - 所有数据源的数据和与 Azure Sentinel 集成的数据连接器 (例如 Azure AD 活动日志、Office 365 日志或 Microsoft 威胁防护警报，) 将保留在每个客户租户内。
 - 减少网络延迟。
 - 轻松地添加或删除新的子公司或客户。
+
+> [!NOTE]
+> 可以管理位于不同 [区域](../../availability-zones/az-overview.md#regions)的委托资源。 但是，不支持跨 [全国云和](../../active-directory/develop/authentication-national-cloud.md) Azure 公有云或跨两个不同的国家云的订阅委派。
 
 ## <a name="granular-role-based-access-control-rbac"></a> (RBAC) 细化基于角色的访问控制
 

@@ -1,25 +1,25 @@
 ---
-title: 如何为 Azure AD 应用配置基于密码的单一登录
-description: '如何在 Microsoft 标识平台中为 Azure AD 应用程序配置基于密码的单一登录 (SSO)  (Azure AD) '
+title: '了解 Azure Active Directory 中应用的基于密码的单一登录 (SSO) '
+description: '了解 Azure Active Directory 中应用的基于密码的单一登录 (SSO) '
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049054"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598341"
 ---
-# <a name="configure-password-based-single-sign-on"></a>配置基于密码的单一登录
+# <a name="understand-password-based-single-sign-on"></a>了解基于密码的单一登录
 
-在应用程序管理的 [快速入门系列](view-applications-portal.md) 中，已了解如何使用 Azure AD 作为标识提供程序 (IdP) 应用程序。 在快速入门指南中，可以设置基于 SAML 的 SSO。 另一种方法是基于密码的 SSO。 本文更详细地介绍了基于密码的 SSO 选项。 
+在应用程序管理的 [快速入门系列](view-applications-portal.md) 中，已了解如何使用 Azure AD 作为标识提供程序 (IdP) 应用程序。 在快速入门指南中，你将配置基于 SAML 或 OIDC 的 SSO。 另一种方法是基于密码的 SSO。 本文更详细地介绍了基于密码的 SSO 选项。 
 
 此选项可用于包含 HTML 登录页的任何网站。 基于密码的 SSO 也称为密码存储。 通过基于密码的 SSO，你可以管理不支持联合身份验证的 web 应用程序的用户访问权限和密码。 在多个用户需要共享单个帐户（例如，组织的社交媒体应用帐户）时，这也很有用。
 
@@ -39,12 +39,12 @@ ms.locfileid: "89049054"
 
 ## <a name="before-you-begin"></a>开始之前
 
-使用 Azure AD 作为标识提供者 (IdP) 并设置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
+使用 Azure AD 作为标识提供者 (IdP) 并配置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能用几个操作进行配置。 其他人需要深入配置。 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
 
 > [!IMPORTANT] 
 > 在某些情况下，" **单一登录** " 选项将不会出现在 " **企业应用**程序" 中的应用程序的导航中。 
 >
-> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能设置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能将配置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
 >
 > 当应用程序托管在另一个租户中，或者如果你的帐户没有服务主体) 的所需权限 (全局管理员、云应用程序管理员、应用程序管理员或所有者时，导航中将缺少 **单一登录** 。 权限还可能会导致出现这样的情况：你可以打开 **单一登录** 但无法保存。 若要详细了解 Azure AD 管理角色，请参阅 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 
@@ -60,7 +60,7 @@ ms.locfileid: "89049054"
 
 输入 URL 后，选择 " **保存**"。 Azure AD 分析用户名和密码输入字段的登录页的 HTML。 如果尝试成功，则已完成。
  
-下一步是 [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)。 分配用户和组后，你可以提供凭据，以便在用户登录到应用程序时使用。 选择 " **用户和组**"，选中用户或组所在行的复选框，然后选择 " **更新凭据**"。 最后，输入要用于该用户或组的用户名和密码。 如果不这样做，系统将在启动时提示用户输入凭据。
+下一步是 [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)。 分配用户和组后，你可以提供凭据，以便在用户登录到应用程序时使用。 选择 " **用户和组**"，选中用户或组所在行的复选框，然后选择 " **更新凭据**"。 最后，输入要用于该用户或组的用户名和密码。 否则，系统将在启动时提示用户输入凭据。
  
 
 ## <a name="manual-configuration"></a>手动配置

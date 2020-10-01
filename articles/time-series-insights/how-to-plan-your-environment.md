@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287402"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598116"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>规划 Azure 时序见解 Gen2 环境
 
@@ -25,7 +25,7 @@ ms.locfileid: "91287402"
 
 围绕环境规划和准备的最佳做法在以下文章中进一步进行了阐述：
 
-* 在[预配 Azure 时序见解第 2 代环境](#the-gen2-environment)时获得的功能。
+* [预配 Azure 时序见解 Gen2 环境](#the-gen2-environment)时获得的内容。
 * [时序 ID 和时间戳属性](#configure-time-series-ids-and-timestamp-properties)是什么。
 * [新时序模型](#understand-the-time-series-model)是什么，以及如何生成自己的模型。
 * 如何[在 JSON 中高效地发送事件](#shape-your-events)。
@@ -35,8 +35,7 @@ Azure 时序见解采用即用即付业务模型。 若要详细了解费用和�
 
 ## <a name="the-gen2-environment"></a>第 2 代环境
 
-预配 Azure 时序见解第 2 代环境时，请创建两个 Azure 资源：
-
+预配 Azure 时序见解 Gen2 环境时，会创建两个 Azure 资源：
 
 * Azure 时序见解第 2 代环境
 * Azure 存储帐户
@@ -94,8 +93,8 @@ Azure 时序见解采用即用即付业务模型。 若要详细了解费用和�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要规划业务恢复配置选项，请查看 [Azure 顾问](../advisor/advisor-overview.md)。
-- 若要规划业务恢复配置选项，请查看 [Azure 顾问](../advisor/advisor-overview.md)。
-- 阅读有关 Azure 时序见解第 2 代中[数据引入](./concepts-ingestion-overview.md)的详细信息。
-- 查看有关 Azure 时序见解第 2 代中[数据存储](./concepts-storage.md)的文章。
-- 了解 Azure 时序见解第 2 代中的[数据建模](./concepts-model-overview.md)。
+* 若要规划业务恢复配置选项，请查看 [Azure 顾问](../advisor/advisor-overview.md)。
+* 若要规划业务恢复配置选项，请查看 [Azure 顾问](../advisor/advisor-overview.md)。
+* 阅读有关 Azure 时序见解第 2 代中[数据引入](./concepts-ingestion-overview.md)的详细信息。
+* 查看有关 Azure 时序见解第 2 代中[数据存储](./concepts-storage.md)的文章。
+* 了解 Azure 时序见解第 2 代中的[数据建模](./concepts-model-overview.md)。

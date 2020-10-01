@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 本地、Docker、容器、Kubernetes
-ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461200"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597442"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -58,9 +58,9 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | 服务 | 支持的定价层 | 容器 | 描述 |
 |--|--|--|--|
 | [异常探测器][ad-containers] | F0、S0 | **异常情况-探测器** ([映像](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))   | 可以使用异常检测器 API 来监视并检测与机器学习配合使用的时序数据中的异常。<br>[请求访问权限][request-access] |
-| [计算机视觉][cv-containers] | F0、S1 | **读取** | 从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。 读取容器还可检测图像中的手写文本，并提供 PDF/TIFF/多页支持。<br/><br/>**重要提示：** 读取容器目前仅适用于英语。 |
-| [人脸][fa-containers] | F0、S0 | **人脸** | 检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限][request-access] |
-| [窗体识别器][fr-containers] | F0、S0 | **表单识别器** | 表单理解应用机器学习技术从表单中识别和提取键值对和表。<br>[请求访问权限][request-access] |
+| [计算机视觉][cv-containers] | F0、S1 | **阅读** OCR ([图像](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read))  | "读取 OCR" 容器允许您从图像和文档中提取打印文本和手写文本，支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅 [读取 API 文档](./computer-vision/concept-recognizing-text.md)。<br>[请求访问权限][request-access] |
+| [人脸][fa-containers] | F0、S0 | **人脸** | 检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。 |
+| [窗体识别器][fr-containers] | F0、S0 | **表单识别器** | 表单理解应用机器学习技术从表单中识别和提取键值对和表。 |
 | [LUIS][lu-containers] | F0、S0 | **LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)） | 可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。 |
 | [语音服务 API][sp-containers-stt] | F0、S0 | **语音到文本** ([图像](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text))  | 将连续的实时语音转换为文本。 |
 | [语音服务 API][sp-containers-cstt] | F0、S0 | **自定义语音到文本** ([图像](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text))  | 使用自定义模型将连续的实时语音转录为文本。 |

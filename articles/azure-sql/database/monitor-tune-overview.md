@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333080"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596967"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL 数据库与 Azure SQL 托管实例中的监视和性能优化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,13 +25,16 @@ ms.locfileid: "91333080"
 
 Azure SQL 数据库提供多个数据库顾问来提供智能性能优化建议以及用于提高性能的自动优化选项。 此外，Query Performance Insight 会显示有关针对单一数据库和共用数据库运行的、CPU 和 IO 占用量最高的查询的详细信息。
 
-Azure SQL 数据库和 Azure SQL 托管实例提供基于人工智能的其他监视和优化功能，以帮助排查数据库和解决方案的性能问题并实现其最高性能。 你可以选择将这些[智能见解](intelligent-insights-overview.md)和其他数据库资源日志和指标的[流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)配置为多个目标中的一个，以实现消耗和分析，尤其是使用[SQL 分析](../../azure-monitor/insights/azure-sql.md)) 。 Azure SQL Analytics 是一种高级云监视解决方案，用于在单个视图中跨多个订阅大规模监视所有数据库的性能。 有关可导出的日志和指标列表，请参阅[可导出的诊断遥测数据](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
+Azure SQL 数据库和 Azure SQL 托管实例提供基于人工智能的其他监视和优化功能，以帮助排查数据库和解决方案的性能问题并实现其最高性能。 你可以选择将这些[智能见解](intelligent-insights-overview.md)和其他数据库资源日志和指标的[流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)配置为多个目标中的一个，以便使用[SQL Analytics](../../azure-monitor/insights/azure-sql.md)。 Azure SQL Analytics 是一种高级云监视解决方案，用于在单个视图中跨多个订阅大规模监视所有数据库的性能。 有关可导出的日志和指标列表，请参阅[可导出的诊断遥测数据](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
 
-最后，SQL Server 具有自己的监视和诊断功能，SQL 数据库和 SQL 托管实例可以利用这些功能，例如[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)和[动态管理视图 (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。 有关用于监视各种性能问题的脚本，请参阅[使用 DMV 进行监视](monitoring-with-dmvs.md)。
+SQL Server 具有其自己的监视和诊断功能，SQL 数据库和 SQL 托管实例利用这些功能，如 (Dmv) 的 [查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) 和 [动态管理视图 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。 有关用于监视各种性能问题的脚本，请参阅[使用 DMV 进行监视](monitoring-with-dmvs.md)。
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure 门户中的监视和优化功能
 
-在 Azure 门户中，Azure SQL 数据库和 Azure SQL 托管实例提供对资源指标的监视。 此外，Azure SQL 数据库提供数据库顾问，而 Query Performance Insight 提供查询优化建和查询性能分析。 最后，在 Azure 门户中，可为[逻辑 SQL 服务器](logical-servers.md)及其单一数据库和共用数据库启用自动优化。
+在 Azure 门户中，Azure SQL 数据库和 Azure SQL 托管实例提供对资源指标的监视。 Azure SQL 数据库提供数据库顾问，Query Performance Insight 提供查询优化建议和查询性能分析。 在 Azure 门户中，可以为 [逻辑 SQL 服务器](logical-servers.md) 及其单个和共用数据库启用自动优化。
+
+> [!NOTE]
+> 使用率极低的数据库可能会显示在门户中，其使用时间少于实际值。 由于在将双精度值转换为最接近的整数时，会发出遥测数据，因此，小于0.5 的某些使用金额将舍入为0，这会使发出的遥测精度损失。 有关详细信息，请参阅 [数据库和弹性池度量值舍入为零](#low-database-and-elastic-pool-metrics-rounding-to-zero)。
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL 数据库和 Azure SQL 托管实例资源监视
 
@@ -46,6 +49,33 @@ Azure SQL 数据库包含针对单一数据库和共用数据库提供性能优�
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Azure SQL 数据库中的 Query Performance Insight
 
 [Query Performance Insight](query-performance-insight-use.md) 在 Azure 门户中显示针对单一数据库和共用数据库运行的、资源消耗量最高且运行时间最长的查询的性能。
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>数据库和弹性池度量值舍入为零
+
+从2020年9月开始，使用情况极低的数据库可能会在门户中显示，并且使用情况不会超过实际使用情况。 由于在将双精度值转换为最接近的整数时，会发出遥测数据，因此，小于0.5 的某些使用金额将舍入为0，这会使发出的遥测的粒度降低。
+
+例如：假设有一个1分钟的窗口，其中包含以下四个数据点：0.1、0.1、0.1、0.1、将这些低值向下舍入为0、0、0、0并显示平均0。 如果任何数据点大于0.5，例如：0.1、0.1、0.9、0.1，它们将舍入为0，0，1，0，并显示平均值为0.25。
+
+受影响的数据库指标：
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+受影响的弹性池指标：
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>生成性能问题的智能评估
 

@@ -14,21 +14,22 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d8cc24722832fac9b2d353a6d87772ffce6c0a4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527116"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598146"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>带有 Widevine 许可证模板的媒体服务 v3 概述
 
 通过 Azure 媒体服务，可使用 Google Widevine 加密内容****。 媒体服务还提供传送 Widevine 许可证的服务。 可使用 Azure 媒体服务 API 来配置 Widevine 许可证。 当播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了请求，则该服务将颁发许可证。 许可证将被发送到客户端，并用于解密和播放指定的内容。
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 Widevine 许可证请求将格式化为 JSON 消息。  
 
->[!NOTE]
-> 可以创建不含任何值的空消息，只是“{}”。 然后，使用默认值创建许可证模板。 默认值适用于大多数情况。 基于 Microsoft 的许可证交付方案应始终使用默认值。 如果需要设置“provider”和“content_id”值，提供程序必须与 Widevine 凭据匹配。
+
 
 ```json
 {  
@@ -61,9 +62,12 @@ Widevine 许可证请求将格式化为 JSON 消息。
 }
 ```
 
+>[!NOTE]
+> 可以创建不含任何值的空消息，只是“{}”。 然后，使用默认值创建许可证模板。 默认值适用于大多数情况。 基于 Microsoft 的许可证交付方案应始终使用默认值。 如果需要设置“provider”和“content_id”值，提供程序必须与 Widevine 凭据匹配。
+
 ## <a name="json-message"></a>JSON 消息
 
-| 名称 | 值 | 说明 |
+| “属性” | 值 | 说明 |
 | --- | --- | --- |
 | payload |Base64 编码的字符串 |客户端发送的许可证请求。 |
 | content_id |Base64 编码的字符串 |用于为每个 content_key_specs.track_type 派生密钥 ID 与内容密钥的标识符。 |
@@ -81,7 +85,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 
 无论 use_policy_overrides_exclusively 选项的值是什么，都必须为所有跟踪指定每个 content_key_specs 值。 
 
-| 名称 | 值 | 说明 |
+| “属性” | 值 | 说明 |
 | --- | --- | --- |
 | content_key_specs。 track_type |字符串 |跟踪类型名称。 如果许可证请求中指定了 content_key_specs，请确保显式指定所有跟踪类型。 否则会导致无法播放过去 10 秒的内容。 |
 | content_key_specs  <br/> security_level |uint32 |定义客户端对播放稳定性的要求。 <br/> - 需要基于软件的白盒加密。 <br/> - 需要软件加密和模糊处理解码器。 <br/> - 密钥材料和加密操作必须在由硬件支持的可信执行环境中执行。 <br/> - 内容加密和解码必须在由硬件支持的可信执行环境中执行。  <br/> - 加密、解码与媒体（压缩和未压缩）的所有处理必须在由硬件支持的可信执行环境中处理。 |
@@ -90,7 +94,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | content_key_specs.key_id |Base64 编码的二进制字符串，16 字节 |密钥的唯一标识符。 |
 
 ## <a name="policy-overrides"></a>策略重写
-| 名称 | 值 | 说明 |
+| “属性” | 值 | 说明 |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |布尔值 true 或 false |指示允许播放内容。 默认值为 false。 |
 | policy_overrides&#46;can_persist |布尔值 true 或 false |指示可以将许可证保存到非易失性存储器供脱机使用。 默认值为 false。 |
@@ -105,7 +109,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | policy_overrides&#46;renew_with_usage |布尔值 true 或 false |指示开始使用时发送许可证以进行续订。 仅当 can_renew 为 true 时才使用此字段。 |
 
 ## <a name="session-initialization"></a>会话初始化
-| 名称 | 值 | 说明 |
+| “属性” | 值 | 说明 |
 | --- | --- | --- |
 | provider_session_token |Base64 编码的字符串 |此会话令牌将传回到许可证，并存在于后续的续订中。 会话令牌不能在会话之外持久保存。 |
 | provider_client_token |Base64 编码的字符串 |要在许可证响应中返回的客户端令牌。 如果许可证请求包含客户端令牌，则忽略此值。 客户端令牌可以在许可证会话之外持久保存。 |

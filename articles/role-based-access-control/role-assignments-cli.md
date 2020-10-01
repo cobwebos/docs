@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 17a32b27fba4fcde2e148e44e9db768cc9270e01
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441984"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597651"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 添加或删除 Azure 角色分配
 
@@ -95,7 +95,7 @@ az role definition list --name "{roleName}"
  
 ### <a name="step-3-identify-the-needed-scope"></a>步骤3：确定所需的范围
 
-Azure 提供四个级别的作用域：资源、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)、订阅和 [管理组](../governance/management-groups/overview.md)。 最佳做法是使用所需的最小特权授予访问权限，因此应避免在更广泛的范围内分配角色。
+Azure 提供四个级别的作用域：资源、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)、订阅和 [管理组](../governance/management-groups/overview.md)。 最佳做法是使用所需的最小特权授予访问权限，因此应避免在更广泛的范围内分配角色。 有关作用域的详细信息，请参阅 [了解作用域](scope-overview.md)。
 
 **资源范围**
 

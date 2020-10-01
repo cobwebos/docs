@@ -1,38 +1,38 @@
 ---
-title: '在 Azure AD 中配置应用的基于 SAML 的单一登录 (SSO) '
-description: '在 Azure AD 中配置应用的基于 SAML 的单一登录 (SSO) '
+title: '了解 Azure Active Directory 中应用的基于 SAML 的单一登录 (SSO) '
+description: '了解 Azure Active Directory 中应用的基于 SAML 的单一登录 (SSO) '
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: afa927f8faa1ac2bd9cd910b3e78b690c16259e5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605135"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597917"
 ---
-# <a name="configure-saml-based-single-sign-on"></a>配置基于 SAML 的单一登录
+# <a name="understand-saml-based-single-sign-on"></a>了解基于 SAML 的单一登录
 
 在应用程序管理的 [快速入门系列](view-applications-portal.md) 中，已了解如何使用 Azure AD 作为标识提供程序 (IdP) 应用程序。 本文介绍有关单一登录的基于 SAML 的选项的更多详细信息。 
 
 
 ## <a name="before-you-begin"></a>开始之前
 
-使用 Azure AD 作为标识提供者 (IdP) 并设置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要基于 SAML 的 SSO 的自定义配置，则此文适用于你。
+使用 Azure AD 作为标识提供者 (IdP) 并配置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能用几个操作进行配置。 其他人需要深入配置。 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要基于 SAML 的 SSO 的自定义配置，则此文适用于你。
 
 在 [快速入门系列](add-application-portal-setup-sso.md)中，有一篇文章介绍了如何配置单一登录。 在此示例中，你将了解如何访问应用的 "SAML 配置" 页。 "SAML 配置" 页包括五个部分。 本文详细讨论了这些部分。
 
 > [!IMPORTANT] 
 > 在某些情况下，在**企业应用**程序中的应用程序的导航中将不会出现**单一登录**选项。 
 >
-> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能设置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果使用 **应用注册** 注册了应用程序，则默认情况下，单一登录功能将配置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用 **应用注册** 添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅 [Azure Active Directory 应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要了解有关 SSO 标准的详细信息，请参阅 [使用 Microsoft 标识平台进行身份验证和授权](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
 >
 > 当应用程序托管在另一个租户中，或者如果你的帐户没有服务主体) 的所需权限 (全局管理员、云应用程序管理员、应用程序管理员或所有者时，导航中将缺少 **单一登录** 。 权限还可能会导致出现这样的情况：你可以打开 **单一登录** 但无法保存。 若要详细了解 Azure AD 管理角色，请参阅 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 
@@ -42,7 +42,7 @@ ms.locfileid: "90605135"
 应从应用程序供应商处获取这些值。 可以手动输入值，或上传元数据文件以提取字段值。
 
 > [!TIP]
-> 许多应用程序都已预先配置为使用 Azure AD。 在将应用添加到 Azure AD 租户时，可浏览的应用库中列出了这些应用。 此 [快速入门系列](add-application-portal-setup-sso.md) 指导完成该过程。 对于库中的应用，你将会看到详细的分步说明，即设置说明。 若要访问这些步骤，你可以单击 "快速入门" 系列中所述的应用的 "SAML 配置" 页上的链接，也可以浏览 [SaaS 应用配置教程](../saas-apps/tutorial-list.md)中的所有应用配置教程的列表。
+> 许多应用程序都已预先配置为使用 Azure AD。 在将应用添加到 Azure AD 租户时，可浏览的应用库中列出了这些应用。 此 [快速入门系列](add-application-portal-setup-sso.md) 指导完成该过程。 对于库中的应用，你将看到详细的分步说明。 若要访问这些步骤，你可以单击 "快速入门" 系列中所述的应用的 "SAML 配置" 页上的链接，也可以浏览 [SaaS 应用配置教程](../saas-apps/tutorial-list.md)中的所有应用配置教程的列表。
 
 | 基本 SAML 配置设置 | SP 启动 | idP 启动 | 说明 |
 |:--|:--|:--|:--|
@@ -76,7 +76,7 @@ ms.locfileid: "90605135"
 
 ## <a name="saml-signing-certificate"></a>SAML 签名证书
 
-Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 需要使用此证书在 Azure AD 与应用程序之间设置信任。 有关证书格式的详细信息，请参阅应用程序的 SAML 文档。 有关详细信息，请参阅[管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和 [SAML 令牌中的高级证书签名选项](certificate-signing-options.md)。
+Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 需要此证书来配置 Azure AD 与应用程序之间的信任。 有关证书格式的详细信息，请参阅应用程序的 SAML 文档。 有关详细信息，请参阅[管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和 [SAML 令牌中的高级证书签名选项](certificate-signing-options.md)。
 
 > [!IMPORTANT]
 > 许多应用程序已预先配置，在应用程序库中，无需深入了解证书。 [快速入门系列](add-application-portal.md)逐步讲解如何添加和配置应用。
@@ -99,7 +99,7 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>将应用程序设置为使用 Azure AD
 
-"**设置 \<applicationName> ** " 部分列出了需要在应用程序中配置的值，因此它将使用 Azure AD 作为 SAML 标识提供者。 在 "应用程序" 网站上的 "配置" 页上设置值。 例如，如果您设置的是 GitHub，则可以通过 github.com 站点并设置这些值。 如果已预先配置该应用程序，并在 Azure AD 库中，你将找到一个用于 **查看分步说明**的链接。 否则，你将需要查找正在设置的应用程序的文档。 
+"**设置 \<applicationName> ** " 部分列出了需要在应用程序中配置的值，因此它将使用 Azure AD 作为 SAML 标识提供者。 在 "应用程序" 网站上的 "配置" 页上设置值。 例如，如果你配置的是 GitHub，则可以通过 github.com 站点并设置这些值。 如果已预先配置该应用程序，并在 Azure AD 库中，你将找到一个用于 **查看分步说明**的链接。 否则，你将需要找到要配置的应用程序的文档。 
 
 " **登录 url** " 和 " **注销 URL** " 值都解析为同一终结点，该终结点是 Azure AD 租户的 SAML 请求处理终结点。 
 

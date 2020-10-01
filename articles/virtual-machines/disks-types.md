@@ -3,17 +3,17 @@ title: 选择 Azure IaaS VM 的磁盘类型 - 托管磁盘
 description: 了解虚拟机的可用 Azure 磁盘类型，包括超级磁盘、高级 SSD、标准 SSD 和标准 HDD。
 author: roygara
 ms.author: rogarana
-ms.date: 06/03/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088487"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596775"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -57,7 +57,7 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 |64     |19,200         |2,000         |
 |128     |38,400         |2,000         |
 |256     |76,800         |2,000         |
-|512     |80,000         |2,000         |
+|512     |153600         |2,000         |
 |1,024 - 65,536（此范围内的大小以 1 TiB 为增量递增）     |160,000         |2,000         |
 
 ### <a name="ga-scope-and-limitations"></a>GA 范围和限制

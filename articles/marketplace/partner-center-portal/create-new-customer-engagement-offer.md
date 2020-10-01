@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: c488daeafefce23d1fc65fe61e8c0f39cd1c0490
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 106ad6c1669506b5a8086afc1a74d967478e556c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646720"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597297"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
 
@@ -36,7 +36,8 @@ ms.locfileid: "89646720"
 输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。
 
 - 客户可以在市场产品/服务和 Azure 资源管理器模板的 Web 地址中看到此 ID（若有）。
-- 只使用小写字母和数字。 其中可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。 例如，如果你输入“test-offer-1”，则产品/服务 Web 地址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 与发布者 ID 组合的产品 ID 的长度必须为40个字符。
+- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格。 例如，如果你的发布者 ID 是 "testpublisherid"，并且你输入了 " **测试/服务-1**"，则 "产品/服务" 网址为 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
 - 在选择“创建”后，就无法更改产品/服务 ID 了。
 
 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。
@@ -56,11 +57,11 @@ ms.locfileid: "89646720"
 
 #### <a name="get-it-now-free"></a>立即获取（免费）
 
-通过提供有效的 URL（以 http 或 https 开头）免费向客户提供产品/服务列表，用户可以通过该 URL 访问你的应用 。  例如，`https://contoso.com/my-app` 。
+免费向客户列出你的产品/服务。
 
 #### <a name="free-trial-listing"></a>免费试用版（列出）
 
-向客户列出你的产品/服务，其中包含免费试用版的链接，方法是提供有效的 URL， (始于 `http` 或 `https`) 可以获取试用版。  例如，`https://contoso.com/trial/my-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
+向客户列出你的产品/服务，其中包含免费试用版的链接。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
 
 > [!NOTE]
 > 应用程序将通过试用链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 Microsoft 帐户不支持使用此令牌进行身份验证。

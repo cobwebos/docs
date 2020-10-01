@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 030677276fa077c06a95e7c677fec956b9c2a947
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556256"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598086"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 Azure NetApp 文件 SAP HANA 扩展的高可用性
 
@@ -197,7 +197,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 为了满足/hana/data 和/hana/log 的 SAP 最小吞吐量要求和/hana/shared 的准则，建议的大小为：
 
-|    数据量(Volume)    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
+|    Volume    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
 | :----------: | :--------------------------: | :------------------------: | :--------------------: |
 |  /hana/log   |            4 TiB             |           2 TiB            |          v4.1          |
 |  /hana/data  |           6.3 TiB            |          3.2 TiB           |          v4.1          |
@@ -548,13 +548,18 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
     ```
     pcs constraint location SAPHanaTopology_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 7.x
     pcs constraint location SAPHana_HN1_03-master rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 8.x
+    pcs constraint location SAPHana_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
     # Take the cluster out of maintenance mode
     sudo pcs property set maintenance-mode=false
     ```
 
    检查群集和所有资源的状态
-
+   > [!NOTE]
+   > 本文包含对字词 *从属*的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+   
     ```
     sudo pcs status
     

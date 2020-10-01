@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258650"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597132"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -82,7 +82,7 @@ az account list-locations
 
 ### <a name="global-azure"></a>全球 Azure
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | 身份验证 | `https://login.microsoftonline.com/` |
@@ -90,15 +90,17 @@ az account list-locations
 
 ### <a name="azure-government"></a>Azure Government
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | 身份验证 | `https://login.microsoftonline.us/` |
 | 令牌受众 | `https://management.core.usgovcloudapi.net/` |
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 ### <a name="azure-germany"></a>Azure 德国
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | 身份验证 | `https://login.microsoftonline.de/` |
@@ -106,7 +108,7 @@ az account list-locations
 
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
-| 服务 | 端点 |
+| 服务 | 终结点 |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 身份验证 | `https://login.chinacloudapi.cn/` |

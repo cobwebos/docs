@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: e7f5750d89c661cad7616cf1c56157c6e92e1175
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7dd67387a541ff62bfa85a7afc2f1bbf31c6180
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654457"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596436"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>使用 C 升查询 Azure 时序见解 Gen1 环境中的数据
+# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>使用 C Sharp 查询 Azure 时序见解 Gen1 环境中的数据
+
+> [!CAUTION]
+> 这是一个 Gen1 的文章。
 
 本 C# 示例演示如何使用[Gen1 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) 查询 Azure 时序见解 Gen1 环境中的数据。
 
@@ -57,7 +60,7 @@ ms.locfileid: "88654457"
 
 ## <a name="project-dependencies"></a>项目依赖项
 
-建议使用最新版 Visual Studio：
+建议使用最新版本的 Visual Studio：
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - 版本 16.4.2+
 
@@ -75,7 +78,7 @@ ms.locfileid: "88654457"
 
 ## <a name="c-sample-code"></a>C# 示例代码
 
-请参阅 [Azure 时序见解](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] 存储库，以访问 c # 示例代码。 
+请参阅 [Azure 时序见解](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)存储库以访问 C# 示例代码。
 
 ## <a name="next-steps"></a>后续步骤
 

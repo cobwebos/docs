@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362208"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597630"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户添加或删除 Azure 角色分配
 
@@ -31,23 +31,19 @@ ms.locfileid: "85362208"
 
 ## <a name="access-control-iam"></a>访问控制 (IAM)
 
-**访问控制（IAM）** 是通常用于分配角色以授予对 Azure 资源的访问权限的页面。 该功能也称为标识和访问管理，会显示在 Azure 门户中的多个位置。 下面显示了订阅的访问控制（IAM）页的示例。
+“访问控制(IAM)”是一个页面，通常用于分配角色以授予对 Azure 资源的访问权限。 该功能也称为标识和访问管理，会显示在 Azure 门户中的多个位置。 下面显示了订阅的“访问控制(IAM)”页面的示例。
 
 ![订阅的“访问控制(IAM)”页](./media/role-assignments-portal/access-control-subscription.png)
 
-若要在访问控制（IAM）页中实现最有效的功能，如果您在尝试分配角色时可以回答以下三个问题，则会很有帮助：
+若要在访问控制 (IAM) 页上最有效，可通过以下步骤来分配角色。
 
-1. **谁需要访问权限？**
+1. 确定需要访问的人员。 可以将角色分配给用户、组、服务主体或托管标识。
 
-    谁指的是用户、组、服务主体或托管标识。 这也称为“安全主体”。
+1. 查找适当的角色。 权限组合成角色。 可以从多个 [Azure 内置角色](built-in-roles.md) 的列表中进行选择，也可以使用自己的自定义角色。
 
-1. **他们需要什么角色？**
+1. 确定所需的作用域。 Azure 提供四个级别的作用域： [管理组](../governance/management-groups/overview.md)、订阅、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)和资源。 有关作用域的详细信息，请参阅 [了解作用域](scope-overview.md)。
 
-    权限组合成角色。 可以从包含多个[内置角色](built-in-roles.md)的列表中进行选择，也可以使用自己的自定义角色。
-
-1. **他们在何处需要访问权限？**
-
-    “何处”是指访问权限应用到的资源集。 “何处”可以是管理组、订阅、资源组或单个资源，例如存储帐户。 这称为“范围”。
+1. 执行以下部分之一中的步骤来分配角色。
 
 ## <a name="add-a-role-assignment"></a>添加角色分配
 
@@ -63,17 +59,17 @@ ms.locfileid: "85362208"
 
     ![“访问控制(IAM)”和“角色分配”选项卡](./media/role-assignments-portal/role-assignments.png)
 
-1. 单击“添加” > “角色分配”。 
+1. 单击“添加” > “角色分配”。
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-   ![添加角色分配菜单](./media/shared/add-role-assignment-menu.png)
+   ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
     此时会打开“添加角色分配”窗格。
 
    ![“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment.png)
 
-1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
 1. 在“选择”列表中，选择用户、组、服务主体或托管标识。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 
@@ -97,27 +93,27 @@ ms.locfileid: "85362208"
 
     ![“访问控制(IAM)”和“角色分配”选项卡](./media/role-assignments-portal/role-assignments.png)
 
-1. 单击“添加” > “角色分配”。 
+1. 单击“添加” > “角色分配”。
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-   ![添加角色分配菜单](./media/shared/add-role-assignment-menu.png)
+   ![添加订阅的角色分配菜单](./media/shared/add-role-assignment-menu.png)
 
     此时会打开“添加角色分配”窗格。
 
-   ![“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment.png)
+   ![添加订阅的角色分配窗格](./media/role-assignments-portal/add-role-assignment.png)
 
 1. 在“角色”下拉列表中，选择“所有者”角色。
 
-1. 在“选择”列表中，选择一个用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。
+1. 在“选择”列表中，选择用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。
 
 1. 单击“保存”以分配该角色。
 
-   片刻之后，会在订阅范围为用户分配“所有者”角色。
+   片刻之后，会在订阅范围内为该用户分配“所有者”角色。
 
-## <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>为托管标识（预览）添加角色分配
+## <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>为托管标识添加角色分配 (预览) 
 
-如本文前面所述，可以使用**访问控制（IAM）** 页添加托管标识的角色分配。 使用访问控制（IAM）页时，请从范围开始，然后选择托管标识和角色。 本部分介绍了一种添加托管标识的角色分配的替代方法。 使用这些步骤，从托管标识开始，然后选择范围和角色。
+如本文前面所述，可以使用 " **访问控制 (" IAM) ** 页添加托管标识的角色分配。 使用 "访问控制 (IAM) " 页时，请从范围开始，然后选择托管标识和角色。 本部分介绍了一种添加托管标识的角色分配的替代方法。 使用这些步骤，从托管标识开始，然后选择范围和角色。
 
 > [!IMPORTANT]
 > 使用这些备用步骤添加托管标识的角色分配目前处于预览阶段。
@@ -134,23 +130,23 @@ ms.locfileid: "85362208"
 
     ![系统分配的托管标识](./media/shared/identity-system-assigned.png)
 
-1. 在 "**权限**" 下，单击 " **Azure 角色分配**"。
+1. 在“权限”下，单击“Azure 角色分配” 。
 
     如果已将角色分配给所选系统分配的托管标识，则会看到角色分配的列表。 此列表包括你有权读取的所有角色分配。
 
     ![系统分配的托管标识的角色分配](./media/shared/role-assignments-system-assigned.png)
 
-1. 若要更改订阅，请单击 "**订阅**" 列表。
+1. 若要更改订阅，请单击“订阅”列表。
 
-1. 单击 "**添加角色分配（预览）**"。
+1. 单击 " **添加角色分配 (预览") **。
 
-1. 使用下拉列表选择角色分配适用的资源集，如**订阅**、**资源组**或资源。
+1. 使用下拉列表选择角色分配适用的资源集，如 **订阅**、 **资源组**或资源。
 
     如果没有所选作用域的角色分配写入权限，则将显示内联消息。 
 
-1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
-   ![“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![为系统分配的托管标识添加角色分配窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. 单击“保存”以分配该角色。
 
@@ -166,19 +162,19 @@ ms.locfileid: "85362208"
 
     如果已将角色分配给所选的用户分配的托管标识，则会看到角色分配的列表。 此列表包括你有权读取的所有角色分配。
 
-    ![系统分配的托管标识的角色分配](./media/shared/role-assignments-user-assigned.png)
+    ![用户分配的托管标识的角色分配](./media/shared/role-assignments-user-assigned.png)
 
-1. 若要更改订阅，请单击 "**订阅**" 列表。
+1. 若要更改订阅，请单击“订阅”列表。
 
-1. 单击 "**添加角色分配（预览）**"。
+1. 单击 " **添加角色分配 (预览") **。
 
-1. 使用下拉列表选择角色分配适用的资源集，如**订阅**、**资源组**或资源。
+1. 使用下拉列表选择角色分配适用的资源集，如 **订阅**、 **资源组**或资源。
 
     如果没有所选作用域的角色分配写入权限，则将显示内联消息。 
 
-1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
-   ![“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![为用户分配的托管标识添加角色分配窗格](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. 单击“保存”以分配该角色。
 
@@ -194,17 +190,17 @@ ms.locfileid: "85362208"
 
 1. 在角色分配列表中，在需删除其角色分配的安全主体旁边添加复选标记。
 
-   ![“删除角色分配”消息](./media/role-assignments-portal/remove-role-assignment-select.png)
+   ![已选择要删除的角色分配](./media/role-assignments-portal/remove-role-assignment-select.png)
 
-1. 单击“删除”。
+1. 单击 **“删除”** 。
 
    ![“删除角色分配”消息](./media/role-assignments-portal/remove-role-assignment.png)
 
 1. 在显示的“删除角色分配”消息中，单击“是”。
 
-    此时会显示一条消息，指出无法删除继承的角色分配，而你正在尝试删除子范围的角色分配。 应在角色的分配范围打开“访问控制(IAM)”，然后重试。 在正确的范围打开“访问控制(IAM)”的快捷方法是查看“范围”列，然后单击“(继承)”旁边的链接。 
+    此时会显示一条消息，指出无法删除继承的角色分配，而你正在尝试删除子范围的角色分配。 应在角色的分配范围打开“访问控制(IAM)”，然后重试。 在正确的范围打开“访问控制(IAM)”的快捷方法是查看“范围”列，然后单击“(继承)”旁边的链接。
 
-   ![“删除角色分配”消息](./media/role-assignments-portal/remove-role-assignment-inherited.png)
+   ![删除继承的角色分配的角色分配消息](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,13 +2,13 @@
 title: Azure Monitor 中的 Azure 服务总线指标 | Microsoft Docs
 description: 本文介绍如何使用 Azure Monitor 监视服务总线实体（队列、主题和订阅）。
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320432"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598125"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 
@@ -93,7 +93,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 | 标准名称 | 说明 |
 | ------------------- | ----------------- |
-|活动连接数|命名空间以及实体上的活动连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
+|活动连接数|命名空间和命名空间中的实体上的活动连接数。 此指标的值为时间点值。 在该时间点之后立即处于活动状态的连接可能不会反映在指标中。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
 |打开的连接数 |打开的连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
 |关闭的连接数 |关闭的连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
 
@@ -128,7 +128,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
     1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。 
     2. 对于“按订阅筛选”字段，选择你的订阅。
     3. 从列表中选择“服务总线命名空间”。 
-    4. 选择“完成” 。 
+    4. 选择“完成”。 
     
         ![选择命名空间](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. 选择“添加条件”，并在“配置信号逻辑”页面上执行以下操作：
@@ -139,7 +139,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
     1. 对于“条件”，选择“大于”。
     2. 对于“时间聚合”，选择“总计”。 
     3. 对于“阈值”，输入 **5**。 
-    4. 选择“完成” 。    
+    4. 选择“完成”。    
 
         ![指定条件](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. 在“创建规则”页面上，展开“定义警报详细信息”，执行以下操作：

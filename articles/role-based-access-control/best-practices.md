@@ -2,23 +2,19 @@
 title: Azure RBAC 最佳做法
 description: 使用 Azure 基于角色的访问控制 (Azure RBAC) 的最佳做法。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 09/30/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735328"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595479"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 最佳做法
 
@@ -28,7 +24,9 @@ ms.locfileid: "82735328"
 
 使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。 请勿向每个人授予 Azure 订阅或资源的无限制权限，只能允许他们在特定的范围执行某些操作。
 
-规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 下图显示了与 Azure RBAC 使用有关的建议模式。
+规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 即使最初看起来更方便操作，也应避免在更广泛的范围内分配更广泛的角色。 通过限制角色和作用域，如果安全主体遭到入侵，则限制哪些资源有风险。
+
+下图显示了与 Azure RBAC 使用有关的建议模式。
 
 ![Azure RBAC 和最低权限](./media/best-practices/rbac-least-privilege.png)
 
@@ -36,7 +34,7 @@ ms.locfileid: "82735328"
 
 ## <a name="limit-the-number-of-subscription-owners"></a>限制订阅所有者的数量
 
-最多只能有 3 个订阅所有者，这样可降低被入侵的所有者做出违规行为的可能性。 可以在 Azure 安全中心内监视此建议措施。 有关安全中心中的其他标识和访问建议，请参阅[安全建议-参考指南](../security-center/recommendations-reference.md)。
+最多只能有 3 个订阅所有者，这样可降低被入侵的所有者做出违规行为的可能性。 可以在 Azure 安全中心内监视此建议措施。 有关安全中心中的其他标识和访问建议，请参阅 [安全建议-参考指南](../security-center/recommendations-reference.md)。
 
 ## <a name="use-azure-ad-privileged-identity-management"></a>使用 Azure AD Privileged Identity Management
 

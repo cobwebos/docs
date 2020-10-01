@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 6836461e9f1d4f14bc39161a99ad9d151caafaa5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 9/29/2020
+ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540789"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598190"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中配置数据传入复制
 
@@ -54,9 +54,40 @@ ms.locfileid: "91540789"
 
 1. 请先查看[主服务器要求](concepts-data-in-replication.md#requirements)，然后再继续。 
 
-   例如，确保源服务器允许端口3306上的入站和出站流量，并且源服务器具有 **公共 IP 地址**、DNS 可公开访问，或者具有完全限定的域名 (FQDN) 。 
+2. 请确保源服务器允许端口3306上的入站和出站流量，并且源服务器具有 **公共 IP 地址**、DNS 可公开访问，或者具有完全限定的域名 (FQDN) 。 
    
    尝试从在其他计算机上托管的 MySQL 命令行或从 Azure 门户中提供的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中进行连接，以测试与源服务器的连接。
+
+   如果你的组织具有严格的安全策略，并且将不允许源服务器上的所有 IP 地址启用从 Azure 到源服务器的通信，则可以使用以下命令来确定你的 Azure Database for MariaDB 服务器的 IP 地址。
+    
+   1. 使用 MySQL 命令行之类的工具登录 Azure Database for MariaDB。
+   2. 执行下面的查询。
+      ```bash
+      mysql> SELECT @@global.redirect_server_host;
+      ```
+      下面是一些示例输出：
+      ```bash 
+      +-----------------------------------------------------------+
+      | @@global.redirect_server_host                             |
+      +-----------------------------------------------------------+
+      | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
+       +-----------------------------------------------------------+
+      ```
+   3. 退出 MySQL 命令行。
+   4. 执行以下命令来获取 IP 地址。
+      ```bash
+      ping <output of step 2b>
+      ``` 
+      例如： 
+      ```bash      
+      C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
+      Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
+      ```
+
+   5. 配置源服务器的防火墙规则，以便在端口3306上包括上一步的输出 IP 地址。
+
+   > [!NOTE]
+   > 此 IP 地址可能因维护/部署操作而更改。 此连接方法仅适用于无法允许3306端口上的所有 IP 地址的客户。
 
 2. 启用二进制日志记录。
     
