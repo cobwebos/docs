@@ -10,16 +10,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 587a01f8b3d366f315813b70bb2ff83eeccd5be4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994211"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618720"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>在对 Blob 存储的请求中提供加密密钥
 
 针对 Azure Blob 存储发出请求的客户端可以选择基于每个请求提供加密密钥。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。 客户提供的密钥可以存储在 Azure Key Vault 或其他密钥存储中。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="encrypting-read-and-write-operations"></a>加密读取和写入操作
 

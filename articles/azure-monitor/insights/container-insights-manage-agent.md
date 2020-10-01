@@ -3,12 +3,12 @@ title: 如何管理用于容器的 Azure Monitor 代理 | Microsoft Docs
 description: 本文介绍使用容器化 Log Analytics 代理来管理最常见的维护任务，该代理由用于容器的 Azure Monitor 使用。
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041258"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618431"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>如何管理用于容器的 Azure Monitor 代理
 
@@ -30,12 +30,12 @@ ms.locfileid: "87041258"
 
 若要安装代理的新版本，请遵循[使用 Azure CLI 启用监视](container-insights-enable-new-cluster.md#enable-using-azure-cli)中介绍的步骤来完成此过程。  
 
-重新启用监视后，可能需要约 15 分钟才能查看群集的更新后运行状况指标。 若要验证代理是否已成功升级，可以执行以下操作之一：
+重新启用监视后，可能需要约 15 分钟才能查看群集的更新后运行状况指标。 若要验证代理是否已成功升级，可以执行以下操作：
 
-* 运行命令： `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` 。 在返回的状态中，记下输出的 "*容器*" 部分中 "Omsagent 的**图像**" 下的值。
-* 在 "**节点**" 选项卡上，选择 "群集" 节点，然后在右侧的 "**属性**" 窗格中，记下 "**代理图像" 标记**下的值。
+* 运行 `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` 命令。 在返回的状态中，记下输出的“容器”部分中“映像”下 omsagent 的值。
+* 在“节点”选项卡上选择群集节点，然后在右侧的“属性”窗格中记下“代理映像标记”下的值。  
 
-显示的代理版本应与 "[发布历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)" 页上列出的最新版本相匹配。
+显示的代理版本应与[版本历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)页上列出的最新版本匹配。
 
 ### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>升级混合 Kubernetes 群集上的代理
 
@@ -75,23 +75,25 @@ $ helm upgrade --name myrelease-1 \
 >
 
 ```console
-$ helm upgrade --name myrelease-1 \
---set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
+
+若要详细了解如何在此命令中使用服务主体，请参阅在启用启用[Azure Arc 的 Kubernetes 群集](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script)中**使用服务主体**。
 
 ### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 上的升级代理 Kubernetes
 
-执行以下命令，在没有代理终结点的启用了 Azure Arc 的 Kubernetes 群集上升级代理。
+执行以下命令，在启用了 Azure Arc 的 Kubernetes 群集上升级代理。
 
 ```console
-$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
 ```
 
-执行以下命令以在指定代理终结点时升级代理。 有关代理终结点的详细信息，请参阅[配置代理终结点](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint)。
+若要详细了解如何在此命令中使用服务主体，请参阅在启用启用[Azure Arc 的 Kubernetes 群集](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script)中**使用服务主体**。
 
-```console
-$ helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
-```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>如何禁用容器上的环境变量集合
 

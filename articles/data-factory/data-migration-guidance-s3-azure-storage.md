@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984891"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616918"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
 
@@ -74,7 +74,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 - 在此体系结构中，数据迁移是通过 AWS Direct Connect 与 Azure Express Route 之间的专用对等互连链路完成的，因此，数据永远不会遍历公共 Internet。  它需要使用 AWS VPC 和 Azure 虚拟网络。 
 - 需要在 Azure 虚拟网络中的 Windows VM 上安装 ADF 自承载集成运行时才能实现此体系结构。  可以手动纵向扩展自承载 IR VM 或横向扩展为多个 VM（最多 4 个节点），以充分利用网络和存储 IOPS/带宽。 
-- 如果可以接受通过 HTTPS 传输数据，但你希望将对源 S3 的网络访问锁定在特定的 IP 范围内，则可以采用此体系结构的一种变体：删除 AWS VPC 并使用 HTTPS 替换专用链路。  你需要在 Azure VM 上保留 Azure Virtual 和自承载 IR，以便使用可公开路由的静态 IP 进行允许列表操作。 
+- 如果可以接受通过 HTTPS 传输数据，但你希望将对源 S3 的网络访问锁定在特定的 IP 范围内，则可以采用此体系结构的一种变体：删除 AWS VPC 并使用 HTTPS 替换专用链路。  你需要在 Azure VM 中保留 Azure 虚拟和自承载 IR，以便可以使用静态的可路由 IP 来实现筛选目的。 
 - 可以使用此体系结构实现初始快照数据迁移和增量数据迁移。 
 
 ## <a name="implementation-best-practices"></a>有关实现的最佳做法 

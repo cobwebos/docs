@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 32c5135629bf56645ea39a8eee991de3cae6dca0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325328"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618953"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -158,7 +158,7 @@ Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用
 
 日志速率调控器流量造型通过以下等待类型显示， (在 [dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.databases dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)) 视图中公开）：
 
-| Wait 类型 | 说明 |
+| Wait 类型 | 备注 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |

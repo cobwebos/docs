@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533309"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616884"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -461,7 +461,13 @@ ms.locfileid: "91533309"
                 }
             }
         }
+    },
+    "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints": {
+        "properties": {
+            "*": "="
+        }
     }
+}
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>示例：参数化现有的 Azure Databricks 交互式群集 ID
@@ -553,7 +559,7 @@ ms.locfileid: "91533309"
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -636,6 +642,8 @@ ms.locfileid: "91533309"
 -   **部署前和部署后脚本**。 在 CI/CD 中完成资源管理器部署步骤之前，需要先完成某些任务，例如停止再重启触发器并执行清理。 我们建议在执行部署任务之前和之后使用 PowerShell 脚本。 有关详细信息，请参阅[更新活动触发器](#updating-active-triggers)。 数据工厂团队已在本网页的末尾提供了一个可用的[脚本](#script)。
 
 -   **集成运行时和共享**。 集成运行时不经常更改，在 CI/CD 的所有阶段中都是类似的。 因此，数据工厂预期在 CI/CD 的所有阶段使用相同的集成运行时名称和类型。 若要在所有阶段中共享集成运行时，请考虑使用三元工厂，这只是为了包含共享的集成运行时。 可以在所有环境中将此共享工厂用作链接的集成运行时类型。
+
+-   **托管专用终结点部署**。 如果某个专用终结点在工厂中已存在，并且你尝试部署的 ARM 模板包含具有相同名称但带有修改的属性的专用终结点，则部署将失败。 换句话说，你可以成功部署专用终结点，前提是该终结点具有工厂中已存在的相同属性。 如果环境之间的任何属性不同，可以通过参数化该属性并在部署过程中提供相应的值来重写它。
 
 -   **Key Vault**。 使用其连接信息存储在 Azure Key Vault 中的链接服务时，建议为不同的环境保留不同的密钥保管库。 此外，可为每个密钥保管库单独配置权限级别。 例如，你可能不希望团队成员有权访问生产机密。 如果采用此方法，我们建议在所有阶段中保留相同的机密名称。 如果保留相同的机密名称，则无需在 CI/CD 环境中参数化每个连接字符串，因为只需更改密钥保管库名称，而该名称是一个单独的参数。
 

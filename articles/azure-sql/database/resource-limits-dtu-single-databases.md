@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fa15a5f95c2163309ecfd9cc0130d1860eb3b634
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 0bcc26c637e8ef6043589d963cfa9708b599a456
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542681"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619058"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>使用 DTU 购买模型的单一数据库的资源限制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "87542681"
 | :--- | --: |
 | 最大 DTU 数 | 5 |
 | 包含的存储 (GB) | 2 |
-| 最大存储（GB） | 2 |
+| 最大存储 (GB) | 2 |
 | 最大内存中 OLTP 存储 (GB) |空值 |
 | 最大并发工作线程数（请求数） | 30 |
 | 最大并发会话数 | 300 |
@@ -55,14 +55,14 @@ ms.locfileid: "87542681"
 | **计算大小** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | 最大 DTU | 10 个 | 20 个 | 50 | 100 |
-| 包含的存储（GB） <sup>1</sup> | 250 | 250 | 250 | 250 |
-| 最大存储（GB） | 250 | 250 | 250 | 1024 |
+| 包含的存储 (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
+| 最大存储 (GB) | 250 | 250 | 250 | 1024 |
 | 最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 空值 |
 | 最大并发工作线程数（请求数）| 60 | 90 | 120 | 200 |
 | 最大并发会话数 |600 | 900 | 1200 | 2400 |
 ||||||
 
-<sup>1</sup>请参阅[SQL 数据库定价选项](https://azure.microsoft.com/pricing/details/sql-database/single/)，详细了解由于预配的任何额外存储导致的额外成本。
+<sup>1</sup> 请参阅 [SQL 数据库定价选项](https://azure.microsoft.com/pricing/details/sql-database/single/)，详细了解由于任何预配的额外存储导致的额外成本。
 
 > [!IMPORTANT]
 > 标准 S0、S1 和 S2 层级提供的 vCore (CPU) 不到一个。  对于 CPU 密集型工作负荷，建议使用 S3 或更高的服务层级。
@@ -75,30 +75,30 @@ ms.locfileid: "87542681"
 | **计算大小** | **S4** | **S6** | S7 | S9 | S12 |
 | :--- |---:| ---:|---:|---:|---:|
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
-| 包含的存储（GB） <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
-| 最大存储（GB） | 1024 | 1024 | 1024 | 1024 | 1024 |
+| 包含的存储 (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
+| 最大存储 (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 | 最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 空值 |空值 |
 | 最大并发工作线程数（请求数）| 400 | 800 | 1600 | 3200 |6000 |
 | 最大并发会话数 |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
-<sup>1</sup>请参阅[SQL 数据库定价选项](https://azure.microsoft.com/pricing/details/sql-database/single/)，详细了解由于预配的任何额外存储导致的额外成本。
+<sup>1</sup> 请参阅 [SQL 数据库定价选项](https://azure.microsoft.com/pricing/details/sql-database/single/)，详细了解由于任何预配的额外存储导致的额外成本。
 
 ### <a name="premium-service-tier"></a>“高级”服务层级
 
 | **计算大小** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | 最大 DTU 数 | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| 包含的存储（GB） <sup>1</sup> | 500 | 500 | 500 | 500 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
-| 最大存储（GB） | 1024 | 1024 | 1024 | 1024 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
+| 包含的存储 (GB) <sup>1</sup> | 500 | 500 | 500 | 500 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
+| 最大存储 (GB) | 1024 | 1024 | 1024 | 1024 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
 | 最大内存中 OLTP 存储 (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | 最大并发工作线程数（请求数）| 200 | 400 | 800 | 1600 | 2800 | 6400 |
 | 最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-<sup>1</sup>请参阅[SQL 数据库定价选项](https://azure.microsoft.com/pricing/details/sql-database/single/)，详细了解由于预配的任何额外存储导致的额外成本。
+<sup>1</sup> 请参阅 [SQL 数据库定价选项](https://azure.microsoft.com/pricing/details/sql-database/single/)，详细了解由于任何预配的额外存储导致的额外成本。
 
-<sup>2</sup> 1024 gb，最大为 4096 gb，增量为 256 gb。
+<sup>2</sup> 从 1024 GB 到 4096 GB，以 256 GB 为增量。
 
 > [!IMPORTANT]
 > 高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。

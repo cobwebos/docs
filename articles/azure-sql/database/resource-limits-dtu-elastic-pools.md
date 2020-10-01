@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: elastic-pools
 ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: e5417f41c241efad57dad048bbcfd1a5ab778d40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 72d50cadcc9b0f913c66f00ebc16d5e12a39de70
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325345"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619094"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的弹性池的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -70,7 +70,7 @@ ms.locfileid: "91325345"
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | 每个池包含的存储 (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | 每个池的最大存储空间 (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 空值 | 空值 | 空值 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 空值 | 空值 | 不可用 |
 | 每个池的最大数据库数 <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程 (请求) <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | 每个池的最大并发会话数 <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -91,7 +91,7 @@ ms.locfileid: "91325345"
 |:---|---:|---:|---:| ---: | ---: |
 | 每个池包含的存储 (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
 | 每个池的最大存储空间 (GB) | 2560 | 3072 | 3584 | 4096 | 4096 |
-| 每个池的最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 空值 | 空值 |
+| 每个池的最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 不可用 | 不可用 |
 | 每个池的最大数据库数 <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
 | 每个池的最大并发工作线程 (请求) <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | 每个池的最大并发会话数 <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |

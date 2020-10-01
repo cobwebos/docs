@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323101"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617632"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>确定 Azure SQL 托管实例所需的子网大小和范围
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

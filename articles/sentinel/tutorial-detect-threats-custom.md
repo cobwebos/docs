@@ -1,6 +1,6 @@
 ---
 title: 创建自定义分析规则，用 Azure Sentinel 检测威胁 |Microsoft Docs
-description: 使用本教程来了解如何创建自定义分析规则以使用 Azure Sentinel 检测安全威胁。
+description: 使用本教程来了解如何创建自定义分析规则以使用 Azure Sentinel 检测安全威胁。 利用事件分组和警报分组，并了解自动禁用。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605908"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617173"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>教程：创建自定义分析规则以检测威胁
 
@@ -38,28 +38,30 @@ ms.locfileid: "88605908"
 
 1. 在顶部菜单栏中，选择 " **+ 创建** "，并选择 " **计划的查询规则**"。 这会打开 **分析规则向导**。
 
-    :::image type="content" source="media/tutorial-detect-threats-custom/create-scheduled-query.png" alt-text="创建计划查询":::
+    :::image type="content" source="media/tutorial-detect-threats-custom/create-scheduled-query.png" alt-text="创建计划查询&quot;:::
 
-1. 在 " **常规** " 选项卡中，提供唯一 **名称** 和 **描述**。 在 " **策略** " 字段中，可以从分类规则所依据的各种攻击类别中进行选择。 根据需要设置警报 **严重性** 。 创建规则时，默认情况下会**启用**其**状态**，这意味着它将在创建完成后立即运行。 如果你不希望它立即运行，请选择 " **禁用**"，并且该规则将添加到 " **活动规则** " 选项卡中，你可以在需要时从该选项卡中启用它。
+1. 在 &quot; **常规** &quot; 选项卡中，提供唯一 **名称** 和 **描述**。 在 &quot; **策略** &quot; 字段中，可以从分类规则所依据的各种攻击类别中进行选择。 根据需要设置警报 **严重性** 。 创建规则时，默认情况下会**启用**其**状态**，这意味着它将在创建完成后立即运行。 如果你不希望它立即运行，请选择 &quot; **禁用**&quot;，并且该规则将添加到 &quot; **活动规则** &quot; 选项卡中，你可以在需要时从该选项卡中启用它。
 
     ![开始创建自定义分析规则](media/tutorial-detect-threats-custom/general-tab.png)
 
-1. 在 " **设置规则逻辑** " 选项卡中，可以直接在 **规则查询** 字段中编写查询，也可以在 Log Analytics 中创建查询，然后将其复制并粘贴到其中。
+1. 在 &quot; **设置规则逻辑** &quot; 选项卡中，可以直接在 **规则查询** 字段中编写查询，也可以在 Log Analytics 中创建查询，然后将其复制并粘贴到其中。
  
    ![在 Azure Sentinel 中创建查询](media/tutorial-detect-threats-custom/settings-tab.png)
 
-   - 请参阅右侧的 **结果预览** 区域，其中，Azure Sentinel 显示查询将生成)  (日志事件的结果数，在编写和配置查询时动态更改。 此图显示了定义的时间段内的结果数，该值由 " **查询计划** " 部分中的设置确定。
-    - 如果你发现你的查询将触发过多或过多的警报，你可以在 " **警报阈值** " 部分中设置基线。
+   - 请参阅右侧的 **结果预览** 区域，其中，Azure Sentinel 显示查询将生成)  (日志事件的结果数，在编写和配置查询时动态更改。 此图显示了定义的时间段内的结果数，该值由 &quot; **查询计划** &quot; 部分中的设置确定。
+    - 如果你发现你的查询将触发过多或过多的警报，你可以在 &quot; **警报阈值** " 部分中设置基线。
 
       下面是一个示例查询，当在 Azure 活动中创建异常数量的资源时，该查询将向你发出警报。
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > 查询长度应介于1到10000个字符之间，并且不能包含 "search \* " 或 "union \* "。
+        > [!NOTE]
+        > 查询长度应介于1到10000个字符之间，并且不能包含 "search \* " 或 "union \* "。
 
     1. 使用 " **地图实体** " 部分可将参数从查询结果链接到 Azure Sentinel 识别的实体。 这些实体构成进一步分析的基础，包括 " **事件设置** " 选项卡中的警报分组到事件。
   
@@ -69,8 +71,12 @@ ms.locfileid: "88605908"
 
        1. 设置 **最后的查找数据** ，以确定查询所覆盖的数据的时间段（例如，它可以查询过去10分钟的数据或过去6小时的数据）。
 
-       > [!NOTE]
-       > 这两个设置彼此独立，最多是一个点。 您可以在一小段时间间隔内运行查询，该时间段内覆盖的时间段比)  (的时间段长，但您不能以超过覆盖期的时间间隔运行查询，否则，整个查询覆盖范围内会出现空白。
+          > [!NOTE]
+          > **查询间隔和 lookback 期间**
+          > - 这两个设置彼此独立，最多是一个点。 您可以在一小段时间间隔内运行查询，该时间段内覆盖的时间段比)  (的时间段长，但您不能以超过覆盖期的时间间隔运行查询，否则，整个查询覆盖范围内会出现空白。
+          >
+          > **引入延迟**
+          > - 若要考虑在源中的生成事件与将其引入到 Azure Sentinel 之间可能发生的 **延迟** ，并确保在没有重复数据的情况下完整覆盖，Azure Sentinel 将按计划的时间从 **五分钟的延迟** 运行计划分析规则。
 
     1. 使用 " **警报阈值** " 部分可定义基线。 例如，如果希望仅在查询每次运行时返回超过1000个结果时才生成警报，请在 "**查询结果数****大于**" 时设置 "生成警报"，然后输入数字1000。 这是必填字段，因此，如果你不想设置基线，即，如果你希望警报注册每个事件–请在 "数字" 字段中输入0。
     
@@ -134,6 +140,43 @@ ms.locfileid: "88605908"
 
 > [!NOTE]
 > Azure Sentinel 中生成的警报通过 [Microsoft Graph 安全机制](https://aka.ms/securitygraphdocs)提供。 有关详细信息，请参阅 [Microsoft Graph 安全警报文档](https://aka.ms/graphsecurityreferencebetadocs)。
+
+## <a name="troubleshooting"></a>疑难解答
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>计划的规则无法执行，或显示已将自动禁用添加到名称中
+
+计划的查询规则无法运行，但可能会发生这种情况。 Azure Sentinel 根据故障的具体类型和发生故障的情况，将故障提前设置为暂时性或永久性。
+
+#### <a name="transient-failure"></a>暂时性故障
+
+暂时性故障发生的原因是临时的，并且不久会恢复正常，此时规则执行将会成功。 Azure Sentinel 归类为暂时性故障的一些示例如下：
+
+- 规则查询运行时间太长，超时。
+- 数据源和 Log Analytics 之间，或 Log Analytics 与 Azure Sentinel 之间存在连接问题。
+- 任何其他新的和未知的故障都被视为暂时性的。
+
+如果发生暂时性故障，Azure Sentinel 会继续尝试在预先确定的时间间隔之后再次执行规则，直到达到某个点。 之后，规则将仅在下一次计划的时间运行。 由于暂时性故障，规则永远不会自动禁用。
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>永久失败-规则自动禁用
+
+发生永久性故障是由于允许规则运行的条件发生了变化，无需人工干预的情况下，将不会返回其以前的状态。 下面是分类为永久性的故障的一些示例：
+
+- 删除了规则查询操作)  (的目标工作区。
+- 删除了规则查询操作)  (的目标表。
+- Azure Sentinel 已从目标工作区中删除。
+- 规则查询使用的函数不再有效;已对其进行修改或删除。
+- 更改了规则查询的数据源之一的权限。
+- 已删除或断开规则查询的数据源之一。
+
+如果**预先确定的连续永久失败次数与相同的类型和相同的规则，** Azure Sentinel 停止尝试执行规则，同时执行以下步骤：
+
+- 禁用规则。
+- 将 **"自动禁用"** 字样添加到规则名称的开头。
+- 将失败 (和禁用) 的原因添加到规则的说明。
+
+通过按名称对规则列表进行排序，可以轻松地确定是否存在自动禁用的规则。 自动禁用的规则将在列表顶部或附近。
+
+SOC 管理器应确保定期检查规则列表，以确定是否存在自动禁用的规则。
 
 ## <a name="next-steps"></a>后续步骤
 

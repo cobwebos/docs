@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436919"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616697"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,7 +59,7 @@ RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-你可以选择使用 azure 中 [基于角色的访问控制 (AZURE RBAC) ][rbac-what-is-813s] 在 azure 中创建只具有必要的功能子集的单个自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+可以选择在 Azure 中使用 [Azure 基于角色的访问控制 (Azure RBAC)][rbac-what-is-813s]，创建一个只有部分必需功能的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
 > 在某些情况下，Azure SQL 数据库中的数据库和 VNet-子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
@@ -108,13 +108,13 @@ Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连�
 
 ### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure Synapse PolyBase 和 COPY 语句
 
-PolyBase 和 COPY 语句通常用于从 Azure 存储帐户将数据加载到 Azure Synapse 分析，以实现高吞吐量数据引入。 如果要将数据加载到其中的 Azure 存储帐户仅限制对一组 VNet 子网的访问，则在使用 PolyBase 并将 COPY 语句复制到存储帐户时，连接将中断。 若要启用导入和导出方案，可将 COPY 和 PolyBase 用于连接到受保护到 VNet 的 Azure 存储的 Azure Synapse Analytics，请按照以下步骤进行操作：
+PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中，以实现高吞吐量数据引入。 如果你要从中加载数据的 Azure 存储帐户将访问权限限制到一组 VNet 子网，则使用 PolyBase 和 COPY 语句时，与存储帐户的连接将断开。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure Synapse Analytics，若要使用 COPY 和 PolyBase 启用导入和导出方案，请执行如下所示的步骤：
 
 #### <a name="prerequisites"></a>先决条件
 
 - 按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
 - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
-- 必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 启用此配置将允许 PolyBase 和 COPY 语句使用强身份验证连接到存储帐户，在此情况下，网络流量将保留在 Azure 主干上。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+- 必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 启用此配置将允许 PolyBase 和 COPY 语句使用强身份验证连接到存储帐户，而网络流量仍保留在 Azure 主干上。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
@@ -136,7 +136,7 @@ PolyBase 和 COPY 语句通常用于从 Azure 存储帐户将数据加载到 Azu
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
 
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将 **存储 Blob 数据参与者** Azure 角色分配到托管 Azure Synapse Analytics 的服务器，该服务器已注册到 AZURE ACTIVE DIRECTORY (AAD) 如步骤 #1 中所述。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将“存储 Blob 数据参与者”Azure 角色分配给托管 Azure Synapse Analytics 的服务器，后者已在步骤 #1 中向 Azure Active Directory (AAD) 注册。
 
    > [!NOTE]
    > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。

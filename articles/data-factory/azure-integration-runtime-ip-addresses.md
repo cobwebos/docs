@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 0c64a38295754e4754326dec126bfbc36e1bef61
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55d8b5ebdfb226247f8a500f36e6df3ae02ea58a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523326"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619037"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 地址
 
@@ -27,7 +27,7 @@ Azure 集成运行时使用的 IP 地址取决于 Azure 集成运行时所在的
 > [!IMPORTANT]  
 > 启用托管虚拟网络的数据流和 Azure Integration Runtime 不支持使用固定 IP 范围。
 >
-> 可以将这些 IP 范围用于数据移动、管道和外部活动执行。 这些 IP 范围可用于数据存储/网络安全组 (NSG)/防火墙中的允许列表，以便通过 Azure 集成运行时进行入站访问。 
+> 可以将这些 IP 范围用于数据移动、管道和外部活动执行。 这些 IP 范围可用于在数据存储/网络安全组 (NSG) /防火墙中进行筛选，以便从 Azure 集成运行时进行入站访问。 
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure 集成运行时 IP 地址：特定的区域
 

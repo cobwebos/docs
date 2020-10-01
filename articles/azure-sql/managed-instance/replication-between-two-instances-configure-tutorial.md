@@ -7,31 +7,31 @@ ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
-ms.translationtype: MT
+ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920103"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617054"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教程：配置两个托管实例之间的复制
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-事务复制允许您将数据从一个数据库复制到 SQL Server 或[AZURE SQL 托管实例](sql-managed-instance-paas-overview.md)上承载的另一个数据库中。 SQL 托管实例可以是复制拓扑中的发布服务器、分发服务器或订阅服务器。 有关可用配置，请参阅[事务复制配置](replication-transactional-overview.md#common-configurations)。 
+通过事务复制可以将数据从一个数据库复制到 SQL Server 或 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)中托管的另一个数据库。 SQL 托管实例可以是复制拓扑中的发布服务器、分发服务器或订阅服务器。 有关可用配置，请参阅[事务复制配置](replication-transactional-overview.md#common-configurations)。 
 
-事务性复制目前处于公共预览版的 SQL 托管实例。 
+事务复制目前提供了用于 SQL 托管实例的公共预览版。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
-> - 将托管实例配置为复制发布服务器和分发服务器。
+> - 将托管实例配置为复制发布服务器和分发器。
 > - 将托管实例配置为复制分发服务器。
 
 ![在两个托管实例之间复制](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
@@ -40,7 +40,7 @@ ms.locfileid: "87920103"
 
 
 > [!NOTE]
-> - 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](../database/auto-failover-group-overview.md)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。 在[通过故障转移组配置事务复制](replication-transactional-overview.md#with-failover-groups)时，还有其他注意事项。
+> - 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](../database/auto-failover-group-overview.md)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。 配置[故障转移组的事务复制](replication-transactional-overview.md#with-failover-groups)时还有其他注意事项。
 
 
 

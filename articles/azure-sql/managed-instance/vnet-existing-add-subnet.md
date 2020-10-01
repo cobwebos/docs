@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 17838d4a652be3a1b50da56812731e0f634a0c08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 461acc07ee2217a38f7bb59805d4c7e0de4a1e22
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323118"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617644"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>为 Azure SQL 托管实例配置现有虚拟网络
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

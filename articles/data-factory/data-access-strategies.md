@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484946"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616850"
 ---
 # <a name="data-access-strategies"></a>数据访问策略
 
@@ -38,10 +38,10 @@ ms.locfileid: "89484946"
 ## <a name="data-access-strategies-through-azure-data-factory"></a>通过 Azure 数据工厂的数据访问策略
 
 * **[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)** -可以在 Azure 数据工厂托管的虚拟网络中创建 Azure Integration Runtime，它将利用专用终结点安全连接到受支持的数据存储。 托管虚拟网络与数据源之间的流量传播到 Microsoft 主干网络，并且不会公开给公用网络。
-* **[受信任的服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 存储（Blob、ADLS Gen2）支持允许精选受信任 Azure 平台服务安全访问存储帐户的防火墙配置。 受信任的服务强制实施托管标识身份验证，这可以确保其他数据工厂不能连接到此存储，除非使用其托管标识将其列入了执行此操作的允许列表。 可在[此博客](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)中找到更多详细信息。 因此，这这种方法非常安全，建议使用。 
+* **[受信任的服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 存储（Blob、ADLS Gen2）支持允许精选受信任 Azure 平台服务安全访问存储帐户的防火墙配置。 受信任的服务强制实施托管标识身份验证，这可确保任何其他数据工厂都无法连接到此存储，除非使用其托管标识进行批准。 可在[此博客](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)中找到更多详细信息。 因此，这这种方法非常安全，建议使用。 
 * **唯一静态 IP** - 需要设置一个自承载集成运行时，以便获取静态 IP 以建立数据工厂连接器。 此机制可确保阻止来自其他所有 IP 地址的访问。 
 * **[静态 IP 范围](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** - 可以使用 Azure Integration Runtime 的 IP 地址，允许在你的存储（如 S3、Salesforce 等）中列出它。 它肯定会限制可连接到数据存储但又依赖于身份验证/授权规则的 IP 地址。
-* **[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 服务标记是来自给定 Azure 服务（例如 Azure 数据工厂）的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量简化网络安全规则的频繁更新。 要将虚拟网络中 IaaS 托管数据存储上的数据访问列入允许列表时，此方法非常有用。
+* **[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 服务标记是来自给定 Azure 服务（例如 Azure 数据工厂）的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量简化网络安全规则的频繁更新。 在虚拟网络中筛选 IaaS 托管的数据存储上的数据访问时，此方法非常有用。
 * **允许 Azure 服务** - 使用某些服务时，如果选择此选项，可以允许所有 Azure 服务连接到它。 
 
 有关 Azure Integration Runtime 和自承载集成运行时中数据存储上支持的网络安全机制的详细信息，请参阅下面两个表。  
@@ -54,8 +54,8 @@ ms.locfileid: "89484946"
     |                              | Azure Data Lake Gen1                                | -                | -                   | 是             | -            | 是                  |
     |                              | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL       | -                | -                   | 是             | -            | 是                  |
     |                              | Azure 文件存储                                  | 是              | -                   | 是             | -            | .                    |
-    |                              | Azure 存储 (Blob、ADLS Gen2)                      | 是              | 是（仅 MSI 身份验证） | 是             | -            | .                    |
-    |                              | Azure SQL DB，Azure Synapse Analytics) ，SQL Ml  | 是 (仅限 Azure SQL DB/DW)         | -                   | 是             | -            | 是                  |
+    |                              | Azure 存储（Blob、ADLS Gen2）                     | 是              | 是（仅 MSI 身份验证） | 是             | -            | .                    |
+    |                              | Azure SQL DB、Azure Synapse Analytics、SQL Ml  | 是 (仅限 Azure SQL DB/DW)         | -                   | 是             | -            | 是                  |
     |                              | Azure Key Vault（用于提取机密/连接字符串） | 是      | 是                 | 是             | -            | -                    |
     | 其他 PaaS/SaaS 数据存储 | AWS S3、SalesForce、Google Cloud Storage 等。    | -                | -                   | 是             | -            | -                    |
     | Azure laaS                   | SQL Server、Oracle 等。                          | -                | -                   | 是             | 是          | -                    |
@@ -73,7 +73,7 @@ ms.locfileid: "89484946"
     |                                | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL               | 是       | -                   |
     |                                | Azure 文件存储                                            | 是       | -                   |
     |                                | Azure 存储（Blob、ADLS Gen2）                             | 是       | 是（仅 MSI 身份验证） |
-    |                                | Azure SQL DB，Azure Synapse Analytics) ，SQL Ml          | 是       | -                   |
+    |                                | Azure SQL DB、Azure Synapse Analytics、SQL Ml          | 是       | -                   |
     |                                | Azure Key Vault（用于提取机密/连接字符串） | 是       | 是                 |
     | 其他 PaaS/SaaS 数据存储 | AWS S3、SalesForce、Google Cloud Storage 等。              | 是       | -                   |
     | Azure laaS                     | SQL Server、Oracle 等。                                  | 是       | -                   |

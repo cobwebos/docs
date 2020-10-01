@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345268"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616799"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84345268"
 
 在本文中，你会看到两个示例，它们演示了如何使用 Azure SQL 数据库中的内存中 OLTP 和列存储索引。
 
-有关详情，请参阅：
+有关详细信息，请参阅：
 
 - [内存中 OLTP 的概述和使用方案](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios)（包括客户案例研究参考和入门信息）
 - [内存中 OLTP 的文档](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
@@ -47,7 +47,7 @@ ms.locfileid: "84345268"
 
 ### <a name="installation-steps"></a>安装步骤
 
-1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[在 AZURE SQL 数据库中创建第一个数据库](database/single-database-create-quickstart.md)。
+1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[在 Azure SQL 数据库中创建第一个数据库](database/single-database-create-quickstart.md)。
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 
@@ -345,7 +345,7 @@ GO
 
 ### <a name="deeper-information"></a>深入信息
 
-- [了解仲裁如何通过 Azure SQL 数据库中的内存中 OLTP，将关键数据库的工作负荷翻倍，同时降低70% 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [了解 Quorum 如何通过使用 Azure SQL 数据库的内存中 OLTP，在关键数据库工作负载加倍的情况下，将 DTU 降低 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)（“Azure SQL 数据库中的内存中 OLTP”博客文章）
 
