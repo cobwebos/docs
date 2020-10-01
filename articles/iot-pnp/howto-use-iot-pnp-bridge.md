@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b952c2663750c055ec6838bf66df31fec5a0d730
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579741"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613469"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>如何将在 Linux 或 Windows 上运行的 IoT 即插即用 bridge 示例连接到 IoT 中心
 
@@ -88,7 +88,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 在所选目录中打开命令提示符。 执行以下命令，将 [IoT 即插即用 bridge](https://aka.ms/iotplugandplaybridge) GitHub 存储库克隆到此位置：
 
 ```cmd
-git clone https://github.com/Azure/AzurePnPBridgePreview.git
+git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 ```
 
 将 IoT 即插即用 bridge 存储库克隆到计算机后，请打开管理命令提示符，并导航到克隆的存储库的目录：

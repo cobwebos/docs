@@ -9,18 +9,21 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3a5ee1cc8efead7c29dadaf64adb8e2686a10621
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2b83433a135fec486701b4538793f0c3e0a6fa6e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168076"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611820"
 ---
-# <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中心将事件发送到 Azure 时序见解 Gen1 环境
+# <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中心向 Azure 时序见解 Gen1 环境发送事件
 
-本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果现有事件中心具有 JSON 格式的事件，请跳过本教程并在[Azure 时序见解](./time-series-insights-update-create-environment.md)中查看你的环境。
+> [!CAUTION]
+> 这是一个 Gen1 的文章。
+
+本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果现有事件中心具有 JSON 格式的事件，请跳过本教程并在 [Azure 时序见解](./time-series-insights-update-create-environment.md)中查看你的环境。
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
 
@@ -55,7 +58,7 @@ ms.locfileid: "88168076"
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>添加 Azure 时序见解实例
 
-在 Azure 时序见解 Gen2 中，你可以使用时序模型 (TSM) 将上下文数据添加到传入遥测。 在 TSM 中，你的标记或信号称为*实例，* 你可以在*实例字段*中存储上下文数据。 使用时间序列 ID 在查询时加入数据。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`。 若要详细了解如何在实例字段中存储数据，请参阅[时序模型](./concepts-model-overview.md)概述。
+在 Azure 时序见解 Gen2 中，可以使用时序模型 (TSM) 将上下文数据添加到传入遥测中。 在 TSM 中，标记或信号被称为“实例”，你可以将上下文数据存储在“实例字段”中 。 使用时间序列 ID 在查询时加入数据。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`。 若要详细了解如何在实例字段中存储数据，请参阅[时序模型](./concepts-model-overview.md)概述。
 
 ### <a name="create-an-azure-time-series-insights-event-source"></a>创建 Azure 时序见解事件源
 

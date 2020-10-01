@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a5b826bd76eb7e56620bcb5b5eec9464ebacffc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579742"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91610069"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>在受限制的设备上实施 IoT 即插即用
 
@@ -39,7 +39,7 @@ SDK for Embedded C 存储库包含 [几个示例](https://github.com/Azure/azure
 
 ## <a name="using-azure-rtos"></a>使用 Azure RTO
 
-Azure RTO 包含一个轻型层，可将本机连接添加到 Azure IoT 云服务。 此层提供一种简单的机制，用于将受限制的设备连接到 Azure IoT，同时使用 Azure RTO 的高级功能。
+Azure RTO 包含一个轻型层，可将本机连接添加到 Azure IoT 云服务。 此层提供一种简单的机制，用于将受限制的设备连接到 Azure IoT，同时使用 Azure RTO 的高级功能。 若要了解详细信息，请参阅 [什么是 MICROSOFT AZURE rto](https://docs.microsoft.com/azure/rtos/overview-rtos)。
 
 ### <a name="toolchains"></a>工具链
 

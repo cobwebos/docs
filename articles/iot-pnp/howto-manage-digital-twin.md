@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577588"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613384"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 即插即用数字孪生
 
@@ -179,11 +179,11 @@ IoT 即插即用设备实现 [数字孪生定义语言 v2 (DTDL) ](https://githu
 
 ## <a name="troubleshoot-update-digital-twin-api-errors"></a>更新数字克隆 API 错误疑难解答
 
-在公共预览版期间，更新数字克隆 API 会引发以下一般错误消息：
+数字克隆 API 引发以下一般错误消息：
 
 `ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
 
-请确保更新修补程序遵循 [设置数字克隆属性的所需值的规则](#rules-for-setting-the-desired-value-of-a-digital-twin-property)
+如果看到此错误，请确保更新修补程序遵循 [设置数字克隆属性的所需值的规则](#rules-for-setting-the-desired-value-of-a-digital-twin-property)
 
 更新组件时，请确保设置 [空对象 $metadata 标记](#add-replace-or-remove-a-component) 。
 

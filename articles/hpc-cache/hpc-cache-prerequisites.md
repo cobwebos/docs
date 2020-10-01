@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613991"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612976"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -36,9 +36,6 @@ ms.locfileid: "89613991"
 ## <a name="azure-subscription"></a>Azure 订阅
 
 建议使用付费订阅。
-<!-- 
-> [!NOTE]
-> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>网络基础结构
 
@@ -131,13 +128,13 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
   * 如果无法使用 `rpcinfo` 命令，请确保这些常用端口允许入站和出站流量：
 
-    | 协议 | Port  | 服务  |
+    | 协议 | 端口  | 服务  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | mountd   |
-    | TCP/UDP  | 4047  | 状态   |
+    | TCP/UDP  | 4047  | status   |
 
     某些系统对这些服务使用不同的端口号，请参阅存储系统的文档以确保。
 

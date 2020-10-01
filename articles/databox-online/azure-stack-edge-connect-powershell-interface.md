@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894431"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613537"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro 设备
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro FPGA 设备
 
 Azure Stack Edge Pro 解决方案允许处理数据，并通过网络将数据发送到 Azure。 本文介绍 Azure Stack Edge Pro 设备的一些配置和管理任务。 你可以使用 Azure 门户、本地 web UI 或 Windows PowerShell 界面来管理你的设备。
 
@@ -43,16 +43,16 @@ Azure Stack Edge Pro 解决方案允许处理数据，并通过网络将数据�
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-还可上传 IoT Edge 证书，在 IoT Edge 设备和可能与其进行连接的下游设备之间启用安全连接。 需要安装以下三个 IoT Edge *证书 () * 格式：
+还可上传 IoT Edge 证书，在 IoT Edge 设备和可能与其进行连接的下游设备之间启用安全连接。 需要安装以下三个文件 (*pem* 格式) ：
 
 - 根 CA 证书或所有者 CA
 - 设备 CA 证书
-- 设备密钥证书
+- 设备私钥 
 
 下面的示例演示如何使用此 cmdlet 安装 IoT Edge 证书：
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 运行此 cmdlet 时，系统将提示你提供网络共享的密码。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0a5411a8fba8456deb59a5c9ede4e9314876dbdb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d06ec62f2ef1438657a4406b0f9a5b2c85feee16
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569573"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611633"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 
@@ -22,21 +22,21 @@ Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供其数�
 
 |密钥类型|资源|
 |---|---|
-|[主密钥](#primary-keys) |用于管理资源：数据库帐户、数据库、用户和权限|
+|[主键](#primary-keys) |用于管理资源：数据库帐户、数据库、用户和权限|
 |[资源令牌](#resource-tokens)|用于应用程序资源：容器、文档、附件、存储过程、触发器和 UDF|
 
 <a id="primary-keys"></a>
 
-## <a name="master-keys"></a>主密钥
+## <a name="primary-keys"></a>主键
 
-主密钥提供对数据库帐户的所有管理资源的访问权限。 主密钥：
+主键提供对数据库帐户的所有管理资源的访问权限。 主键：
 
 - 提供对帐户、数据库、用户和权限的访问权限。 
 - 无法用于提供对容器和文档的精细访问权限。
 - 在创建帐户过程中创建。
 - 随时可重新生成。
 
-每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。
+每个帐户都包含两个主键：主密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。
 
 除了 Cosmos DB 帐户的两个主键外，还有两个只读密钥。 这些只读密钥只允许针对帐户执行读取操作。 只读密钥不提供对资源的读取权限。
 

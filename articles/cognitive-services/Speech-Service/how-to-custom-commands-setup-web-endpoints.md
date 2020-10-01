@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: HT
+ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362104"
 ---
 # <a name="set-up-web-endpoints"></a>设置 Web 终结点
 
@@ -29,7 +29,7 @@ ms.locfileid: "86027675"
 ## <a name="prerequisites"></a>先决条件
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * 语音服务的 Azure 订阅密钥：[免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)上创建它
+> * 语音服务的 Azure 订阅密钥：[免费获取一个](overview.md#try-the-speech-service-for-free)或在 [Azure 门户](https://portal.azure.com)上创建它
 > * 之前[创建的自定义命令应用](quickstart-custom-commands-application.md)
 > * 已启用语音 SDK 的客户端应用：[操作说明：向客户端应用程序发送活动](./how-to-custom-commands-setup-speech-sdk.md)
 

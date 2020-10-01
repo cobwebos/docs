@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297654"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613503"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -79,11 +79,11 @@ Azure 存储 REST API 版本2019-10-10 及更高版本支持 blob 版本控制�
 
 下图显示了对版本控制的 blob 执行删除操作的影响：
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="显示已进行版本控制的 blob 的删除的图示。":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
 
 将新数据写入 blob 会创建新版本的 blob。 不会影响任何现有版本，如下图所示。
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="显示在删除后重新创建版本控制的 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
 
 ### <a name="blob-types"></a>Blob 类型
 
@@ -122,7 +122,7 @@ Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有以�
 
 下图显示了在禁用版本控制后修改 blob 的方式创建了一个不是版本控制的 blob。 与 blob 关联的任何现有版本将保持不变。
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="显示禁用版本控制后修改的基本 blob 的关系图。":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob 版本控制和软删除
 
@@ -138,7 +138,7 @@ Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据
 
 下图显示了在删除 blob 或 blob 版本时会发生什么情况。
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="显示已启用软删除的版本删除的图示。":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
 
 如果在存储帐户上同时启用了版本控制和软删除，则在修改或删除 blob 或 blob 版本时，不会创建软删除的快照。
 
@@ -150,7 +150,7 @@ Blob 版本控制和 blob 软删除可协同工作，为你提供最佳的数据
 
 下图显示了如何还原软删除的 blob 版本与删除了 **blob** 操作，以及如何通过 **复制 blob** 操作还原 blob 的当前版本。
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="显示如何还原软删除版本的关系图。":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
 
 在软删除保留期结束之后，将永久删除任何软删除的 blob 版本。
 
@@ -169,7 +169,7 @@ Blob 快照是在特定时间点拍摄的 blob 的只读副本。 Blob 快照和
 
 下图显示拍摄已版本控制的 blob 的快照时会发生的情况。 在关系图中，版本 ID 为2和3的 blob 版本和快照包含相同的数据。
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="显示已进行版本控制的 blob 的快照的关系图。":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>对 blob 版本的操作授权
 
@@ -269,7 +269,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 下图说明了在将版本控制的 blob 移动到不同层时，如何对对象计费。
 
-:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="此图显示了在显式分层版本控制的 blob 时对象的计费方式。":::
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="显示写入操作如何影响版本控制 blob 的关系图。":::
 
 无法撤消为 blob、版本或快照显式设置层。 如果将某个 blob 移动到新层，然后将其移回其原始层，则即使该对象与原始层中的其他对象共享块，也会为该对象的完整内容长度收费。
 

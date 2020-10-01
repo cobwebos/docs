@@ -4,15 +4,15 @@ description: 介绍 Azure 活动日志中每个类别的事件架构。
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 06/09/2020
+ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829503"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612755"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 [Azure 活动日志](platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍活动日志类别以及每个类别的架构。 
@@ -23,6 +23,17 @@ ms.locfileid: "87829503"
 - 对于使用[诊断设置](diagnostic-settings.md)将活动日志发送到 Azure 存储或 Azure 事件中心时的架构，请参阅最后一节[来自存储帐户和事件中心的架构](#schema-from-storage-account-and-event-hubs)。
 - 对于使用[诊断设置](diagnostic-settings.md)将活动日志发送到 Log Analytics 工作区时的架构，请参阅[Azure Monitor 数据参考](/azure/azure-monitor/reference/)。
 
+## <a name="severity-level"></a>严重级别
+活动日志中的每个条目都具有严重性级别。 严重性级别可以具有以下值之一：  
+
+| 严重性 | 说明 |
+|:---|:---|
+| 严重 | 需要系统管理员立即关注的事件。 可能指示应用程序或系统已失败或已停止响应。
+| 错误 | 指示问题的事件，但不需要立即引起注意。
+| 警告 | 提供潜在问题 forewarning 的事件，尽管不是实际的错误。 指示资源未处于理想状态，稍后可能会降级以显示错误或严重事件。  
+| 信息 | 向管理员传递非关键信息的事件。 类似于下面的注释： "信息"。 
+
+每个资源提供程序的 devlopers 选择其资源条目的严重性级别。 因此，根据应用程序的生成方式，实际的严重性可能会有所不同。 例如，对于在 isloation 中进行的特定资源 "关键" 的项，在 Azure 应用程序的中心资源类型中可能不像 "错误" 一样重要。 确定要发出警报的事件时，请考虑这一事实。  
 
 ## <a name="categories"></a>Categories
 活动日志中的每个事件都有特定的类别，该类别在下表中进行了描述。 请参阅以下各部分，了解从门户、PowerShell、CLI 和 REST API 访问活动日志时，每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](./resource-logs.md#send-to-azure-event-hubs)时，架构是不同的。 本文最后一个部分提供了这些属性到[资源日志架构](./resource-logs-schema.md)的映射。
@@ -30,7 +41,7 @@ ms.locfileid: "87829503"
 | 类别 | 说明 |
 |:---|:---|
 | [管理](#administrative-category) | 包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 管理事件示例包括创建虚拟机和删除网络安全组。<br><br>使用资源管理器的用户或应用程序执行的每个操作都作为对特定资源类型的操作进行建模。 如果操作类型为写入、删除或操作，则会在“管理”类别中记录该操作的启动和成功或失败记录。 管理事件还包括对订阅中基于角色的访问控制进行的任何更改。 |
-| [服务运行状况](#service-health-category) | 包含对任何发生在 Azure 中的服务运行状况事件的记录。 SQL Azure 在美国东部的一个服务运行状况事件示例是遭遇停机。 <br><br>服务运行状况事件分 6 种：需要操作、协助恢复、事件、维护、信息或安全性。 仅当订阅中有某个资源受事件影响时，才会创建这些事件。
+| [服务运行状况](#service-health-category) | 包含对任何发生在 Azure 中的服务运行状况事件的记录。 SQL Azure 在美国东部的一个服务运行状况事件示例是遭遇停机。 <br><br>服务运行状况事件有 6 种：需要采取行动、辅助恢复、事件、维护、信息或安全。 仅当订阅中有某个资源受事件影响时，才会创建这些事件。
 | [资源运行状况](#resource-health-category) | 包含对 Azure 资源发生的任何资源运行状况事件的记录。 资源运行状况事件的一个示例是，虚拟机运行状况状态更改为“不可用”。<br><br>资源运行状况事件可以表现出以下四种运行状况状态之一：“Available”、“Unavailable”、“Degraded”和“Unknown”   。 此外，资源运行状况事件可以分为“平台启动”或“用户启动” 。 |
 | [Alert](#alert-category) | 包含 Azure 警报的激活记录。 警报事件的一个示例是，在过去 5 分钟内，我的 VM 上的 CPU % 始终超过 80。|
 | [自动缩放](#autoscale-category) | 包含基于自动缩放设置（在订阅中定义）的自动缩放引擎操作相关的事件记录。 自动缩放事件的一个示例是，自动缩放纵向扩展操作失败。 |

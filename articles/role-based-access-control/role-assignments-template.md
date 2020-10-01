@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 09/29/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447736"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612738"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
 
@@ -52,6 +52,18 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
+### <a name="managed-identities"></a>托管标识
+
+若要获取托管标识的 ID，可以使用 [AzAdServiceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp](/cli/azure/ad/sp) 命令。
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectId --output tsv)
+```
+
 ### <a name="application"></a>应用程序
 
 若要获取服务主体（应用程序使用的标识）的 ID，可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 命令。 对于服务主体，使用对象 ID，而不是应用程序 ID。
@@ -77,7 +89,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 若要使用模板，必须执行以下操作：
 
 - 创建新的 JSON 文件并复制模板
-- 将 `<your-principal-id>` 替换为要为其分配角色的用户、组或应用程序
+- 替换为 `<your-principal-id>` 要将角色分配到的用户、组、托管标识或应用程序的 ID
 
 ```json
 {
@@ -120,7 +132,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 若要使用模板，必须指定以下输入：
 
-- 要为其分配角色的用户、组或应用程序 ID
+- 要向其分配角色的用户、组、托管标识或应用程序的 ID
 - 将用于角色分配的唯一 ID，或者可以使用默认 ID
 
 ```json
@@ -214,7 +226,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
 
 若要使用模板，必须指定以下输入：
 
-- 要为其分配角色的用户、组或应用程序 ID
+- 要向其分配角色的用户、组、托管标识或应用程序的 ID
 
 ```json
 {

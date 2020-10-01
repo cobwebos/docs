@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 2fc869448bac8303acee902b5d8819fdd3f26138
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258519"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611650"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 门户管理 Azure Data Box 和 Azure Data Box Heavy
 
@@ -66,13 +66,13 @@ ms.locfileid: "86258519"
 
 只能删除已完成或已取消的订单。 执行以下步骤删除订单。
 
-1. 中转到 "**所有资源**"。 搜索订单。
+1. 中转到 " **所有资源**"。 搜索订单。
 
 2. 单击要删除的订单，并转到“概况”。**** 从命令栏中，单击“删除”****。
 
     ![删除 Data Box 订单 1](media/data-box-portal-admin/delete-order1.png)
 
-3. 当系统提示确认删除订单时，请输入订单名称。 单击“删除”。
+3. 当系统提示确认删除订单时，请输入订单名称。 单击 **“删除”** 。
 
 ## <a name="download-shipping-label"></a>下载发货标签
 
@@ -129,10 +129,10 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
 2. 单击“下载订单历史记录”。**** 在下载的历史记录中，会看到一个有关承运人跟踪日志的记录。 将有两组日志对应于 Data Box Heavy 上的两个节点。 如果向下滚动到该日志的底部，则可看到以下内容的链接：
     
-   - **复制日志**-将误码数据复制过程中的文件列表从 Data Box 复制到 Azure 存储帐户 (导入订单) ，*反之亦然* (导出顺序) 。
+   - **复制日志** -将误码数据复制过程中的文件列表从 Data Box 复制到 Azure 存储帐户 (导入订单) ， *反之亦然* (导出顺序) 。
    - **审核日志** - 包含有关当 Data Box 在 Azure 数据中心外部时如何启动它和访问其上共享的信息。
-   - **按导入顺序列出的 BOM 文件**-具有文件的列表 (也称为文件清单) ，你可以在**准备交付**期间下载该文件，并且该文件具有文件名、文件大小和文件校验和。
-   - **导出顺序中的详细日志**-在将数据从 Azure 存储帐户复制到 Data Box 时，将包含文件的列表、文件大小和校验和计算。
+   - **按导入顺序列出的 BOM 文件** -具有文件的列表 (也称为文件清单) ，你可以在 **准备交付** 期间下载该文件，并且该文件具有文件名、文件大小和文件校验和。
+   - **导出顺序中的详细日志** -在将数据从 Azure 存储帐户复制到 Data Box 时，将包含文件的列表、文件大小和校验和计算。
 
    下面是来自导入订单的订单历史记录的示例。
 
@@ -202,7 +202,7 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
 也可查看包含审核日志和 BOM 文件的一系列监管日志。
 
-![登录存储帐户](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+![存储帐户中的日志2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
 
 ## <a name="view-order-status"></a>查看订单状态
 
@@ -212,7 +212,7 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
 下面是导入顺序的状态。
 
-|订单状态 |描述 |
+|订单状态 |说明 |
 |---------|---------|
 |已订购     | 已成功下单。 <br>如果设备有货，Microsoft 会确定要发货的设备，并准备设备。 <br> 如果不是可以立即提供设备，则将在有设备可用时处理订单。 订单可能需要花费几天到几个月的时间来进行处理。 如果不能在 90 天内履行订单，则订单将取消并且会向你发送通知。         |
 |已处理     | 订单处理已完成。 根据你的订单，在数据中心内做好了设备的发货准备工作。         |
@@ -225,28 +225,28 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 |已完成但出错| 数据复制已完成，但在复制期间发生错误。 <br> 请使用 Azure 门户中提供的路径查看复制日志。 请参阅[上传完成但显示错误时复制日志的示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
 |已完成但出现警告| 数据复制已完成，但数据已修改。 数据具有非关键 blob 或文件名错误，已通过更改文件或 blob 名称修复这些错误。 <br> 请使用 Azure 门户中提供的路径查看复制日志。 对数据中的修改进行注释。 请参阅[当上传完成但出现警告时复制日志的示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
 |已取消            |订单已取消。 <br> 你取消了订单，或者由于遇到错误，服务取消了订单。 如果不能在 90 天内履行订单，则订单也将取消并且会向你发送通知。     |
-|清理 | 已擦除设备磁盘上的数据。 当 Azure 门户中提供了可供下载的订单历史记录时，可以认为设备清理已完成。|
+|清除 | 已擦除设备磁盘上的数据。 当 Azure 门户中提供了可供下载的订单历史记录时，可以认为设备清理已完成。|
 
 ### <a name="statuses-for-export-order"></a>导出顺序的状态
 
 下面是导出顺序的状态。
 
-|订单状态 |描述 |
+|订单状态 |说明 |
 |---------|---------|
 |已订购     | 已成功放置导出顺序。 <br>如果设备有货，Microsoft 会确定要发货的设备，并准备设备。 <br> 如果不是可以立即提供设备，则将在有设备可用时处理订单。 订单可能需要花费几天到几个月的时间来进行处理。 如果不能在 90 天内履行订单，则订单将取消并且会向你发送通知。         |
 |已取消            |订单已取消。 <br> 您取消了订单 (您只能在处理订单之前取消) 或遇到错误，服务取消了订单。 如果不能在 90 天内履行订单，则订单也将取消并且会向你发送通知。     |
 |已处理     | 订单处理已完成。 根据订单，设备准备好在数据中心进行数据复制。 创建设备共享。         |
 |正在复制数据     | 正在将指定 Azure 存储帐户中的数据复制到设备。 可以在 Azure 门户中跟踪订单的复制进度。 <br> 请等待数据复制完成。 |
 |复制已完成     | 从指定的 Azure 存储帐户到设备的数据复制已完成。 如果在 order) 中启用了选项，则 (详细日志文件，并在存储帐户中创建复制日志。 详细日志包含有关复制到设备 (名称、路径、计算校验和) 的所有文件的信息。 复制日志包含复制进程的摘要，包括由于任何错误而无法复制的文件的列表。<br> 存储帐户数据保持不变。 |
-|复制已完成，但出现错误| 数据复制已完成，但在复制期间发生错误。 <br> 使用 Azure 门户中提供的路径查看 Azure 存储帐户中的复制日志。 请参阅[下载完成但出现错误时复制日志的示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
-|复制已完成，但出现警告| Azure 存储帐户中的数据复制已完成，但数据发生非严重错误。 <br> 请使用 Azure 门户中提供的路径查看复制日志。 记下 "非严重" 错误。 请参阅[下载完成时复制日志的示例，但会出现警告](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
-|复制失败并出现错误| 从 Azure 存储帐户复制数据失败，订单已终止。 不会发送设备。<br> 使用 Azure 门户中提供的路径查看 Azure 存储帐户中的复制日志。 请参阅[下载失败并出现错误时的复制日志示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
+|复制已完成，但出现错误| 数据复制已完成，但在复制期间发生错误。 <br> 使用 Azure 门户中提供的路径查看 Azure 存储帐户中的复制日志。 请参阅 [下载完成但出现错误时复制日志的示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
+|复制已完成，但出现警告| Azure 存储帐户中的数据复制已完成，但数据发生非严重错误。 <br> 请使用 Azure 门户中提供的路径查看复制日志。 记下 "非严重" 错误。 请参阅 [下载完成时复制日志的示例，但会出现警告](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
+|复制失败并出现错误| 从 Azure 存储帐户复制数据失败，订单已终止。 不会发送设备。<br> 使用 Azure 门户中提供的路径查看 Azure 存储帐户中的复制日志。 请参阅 [下载失败并出现错误时的复制日志示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
 |已发运     |订单已发货。 可以使用门户中你的订单上显示的跟踪 ID 来跟踪货物。        |
 |已交货     |货物已交付到订单中指定的地址。        |
 |已提货     |承运人已提取并扫描了你的回寄设备。         |
 |Received     | 已收到你的设备并在 Azure 数据中心对其进行了扫描。 <br> 已检查发货。      |
 |已完成           |订单已完成。     |
-|清理 | 已擦除设备磁盘上的数据。 当 Azure 门户中提供了可供下载的订单历史记录时，可以认为设备清理已完成。|
+|清除 | 已擦除设备磁盘上的数据。 当 Azure 门户中提供了可供下载的订单历史记录时，可以认为设备清理已完成。|
 
 > [!NOTE]
 > 如果要将数据从 Azure 存储帐户导出到 Data Box 的复制作业完成时出现错误或警告，则设备仍然会发货。 仅当复制失败时，将终止该订单，并且不会发出设备。
@@ -254,7 +254,7 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
 如果使用自行管理的装运，则在复制完成后，在收到设备之前，你会看到以下状态 (，而不是上表中提到的状态) ：
 
-|订单状态 |描述 |
+|订单状态 |说明 |
 |---------|---------|
 |准备好在 Azure 数据中心进行装货      |设备已准备好，可以在 Azure 数据中心选取。        |
 |已提货    |你已选择设备。         |
