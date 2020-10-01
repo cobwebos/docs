@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
-ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532182"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620080"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -68,11 +68,11 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 > [!Important]
 > Azure HDInsight 自动缩放功能于 2019 年 11 月 7 日正式发布，适用于 Spark 和 Hadoop 群集，并包含了该功能预览版本中未提供的改进。 如果你在 2019 年 11 月 7 日之前创建了 Spark 群集，并希望在群集上使用自动缩放功能，我们建议创建新群集，并在新群集上启用自动缩放。
 >
-> 在8月27日，2020公开上市 (LLAP) 的自动缩放。 HBase 群集仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
+> 在8月27日，2020上发布了针对 HDI 4.0 的公开上市 (LLAP) 自动缩放。 HBase 群集仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
 
 下表描述了与自动缩放功能兼容的群集类型和版本。
 
-| 版本 | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| 版本 | Spark | Hive | 交互式查询 | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
 | 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
@@ -243,7 +243,7 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 ![启用工作器节点的基于计划的自动缩放指标](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 ### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>请考虑向上扩展和向下缩放操作的延迟
 
@@ -251,7 +251,7 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 ### <a name="prepare-for-scaling-down"></a>准备缩小
 
-在群集缩小过程中，自动缩放会 add-on 节点以满足目标大小。 如果任务在这些节点上运行，自动缩放会等待任务完成。 由于每个辅助角色节点还在 HDFS 中提供角色服务，因此临时数据将移动到其余节点。 请确保剩余节点上有足够的空间来承载所有临时数据。
+在群集缩小过程中，自动缩放会 add-on 节点以满足目标大小。 如果任务在这些节点上运行，自动缩放会等待，直到完成 Spark 和 Hadoop 群集的任务。 由于每个辅助角色节点还在 HDFS 中提供角色服务，因此临时数据将移动到其余节点。 请确保剩余节点上有足够的空间来承载所有临时数据。
 
 正在运行的作业将继续运行。 在可用的工作器节点变少的情况下，挂起的作业会等待安排。
 
@@ -265,7 +265,7 @@ Hadoop 群集的自动缩放还会监视 HDFS 的使用情况。 如果 HDFS 处
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>为高峰使用方案设置 Hive 配置最大并发查询数
 
-自动缩放事件不会在 Ambari 中更改 Hive 配置 *最大并发查询总数* 。 这意味着，在任何时间点，Hive Server 2 交互式服务只能处理给定数量的并发查询，即使 LLAP 守护程序计数根据负载和计划增加和减少。 一般建议为高峰使用方案设置此配置，以避免手动干预。
+自动缩放事件不会在 Ambari 中更改 Hive 配置 *最大并发查询总数* 。 这意味着，在任何时间点，Hive Server 2 交互式服务只能处理给定数量的并发查询，即使交互式查询守护程序计数根据负载和计划增加和减少也是如此。 一般建议为高峰使用方案设置此配置，以避免手动干预。
 
 但是，如果只有少量的工作节点，并且将最大并发查询数的值配置得太高，则可能会遇到 Hive 服务器2重新启动失败。 至少需要最少数量的辅助角色节点，才能容纳给定数量的 Tez Ams (等于最大总计并发查询配置) 。 
 
@@ -275,11 +275,11 @@ Hadoop 群集的自动缩放还会监视 HDFS 的使用情况。 如果 HDFS 处
 
 HDInsight 自动缩放使用节点标签文件来确定节点是否准备好执行任务。 节点标签文件存储在具有三个副本的 HDFS 中。 如果群集大小大幅缩小，并且有大量的临时数据，则可能会删除所有三个副本。 如果发生这种情况，群集将进入错误状态。
 
-### <a name="llap-daemons-count"></a>LLAP 守护程序计数
+### <a name="interactive-query-daemons-count"></a>交互式查询守护程序计数
 
-对于启用了 autoscae 的 LLAP 群集，自动缩放向上/向下事件还会将 LLAP 守护程序的数目增加/减小到活动工作节点数。 不会在 Ambari 的配置中保留守护程序数量的变化 `num_llap_nodes` 。 如果手动重新启动 Hive 服务，则会根据 Ambari 中的配置重置 LLAP 守护程序的数量。
+对于启用自动缩放的交互式查询群集，自动缩放启用/关闭事件还会将交互式查询守护程序的数目向上/向下扩展到活动工作节点数。 不会在 Ambari 的配置中保留守护程序数量的变化 `num_llap_nodes` 。 如果手动重新启动 Hive 服务，则会根据 Ambari 中的配置重置交互查询守护程序的数量。
 
-如果手动重启 LLAP 服务，则需要手动更改 `num_llap_node` 配置 (在)  (" *高级 Hive-交互"-* "LLAP" 下运行 Hive 守护程序) ，以匹配当前活动的工作节点计数。
+如果手动重新启动了交互式查询服务，则需要手动更改 `num_llap_node` 配置 () 运行 Hive 交互查询) 后台 *程序* 所需的节点 (，以匹配当前活动的工作节点计数。
 
 ## <a name="next-steps"></a>后续步骤
 

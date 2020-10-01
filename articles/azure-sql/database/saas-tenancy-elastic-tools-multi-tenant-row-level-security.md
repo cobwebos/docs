@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a0ad71e870005ce1cbe0ffe0f56bcbd0104c3dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9550f365eb11ffff87add041824504488c0de15
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026838"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619927"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -358,7 +358,7 @@ GO
 
 ## <a name="questions-and-feature-requests"></a>问题和功能请求
 
-如有问题，请联系我们的[Microsoft Q&一个有关 SQL Database 的问题页](https://docs.microsoft.com/answers/topics/azure-sql-database.html)。 可以向 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)提交功能请求。
+如有问题，请联系我们的 [Microsoft Q&一个有关 SQL Database 的问题页](https://docs.microsoft.com/answers/topics/azure-sql-database.html)。 可以向 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)提交功能请求。
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png

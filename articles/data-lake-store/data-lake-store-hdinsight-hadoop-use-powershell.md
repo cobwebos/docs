@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048847"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619996"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 创建将 Azure Data Lake Storage Gen1 用作额外存储的 HDInsight 群集
 
@@ -51,7 +51,7 @@ ms.locfileid: "87048847"
 在开始阅读本教程前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**。 请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
+* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/)。
 * **Windows SDK**。 可从[此处](https://dev.windows.com/en-us/downloads)进行安装。 可使用它来创建安全证书。
 * **Azure Active Directory 服务主体**。 本教程中的步骤用于指导如何在 Azure AD 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 Azure AD 管理员可以跳过此先决条件，继续阅读本教程。
 
@@ -77,7 +77,7 @@ ms.locfileid: "87048847"
     ```
 
    > [!NOTE]
-   > 如果在注册 Data Lake Storage Gen1 资源提供程序时收到类似于 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，可能是未将订阅列入 Data Lake Storage Gen1 允许列表。 请按照以下[说明](data-lake-store-get-started-portal.md)，确保对 Data Lake Storage Gen1 启用 Azure 订阅。
+   > 如果在 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 注册 Data Lake Storage Gen1 资源提供程序时收到类似于的错误，则可能是你的订阅未获得 Data Lake Storage Gen1 批准。 请按照以下[说明](data-lake-store-get-started-portal.md)，确保对 Data Lake Storage Gen1 启用 Azure 订阅。
    >
    >
 2. Data Lake Store Gen1 帐户与 Azure 资源组关联。 首先创建 Azure 资源组。

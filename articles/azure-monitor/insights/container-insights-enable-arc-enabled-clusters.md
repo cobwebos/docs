@@ -2,13 +2,13 @@
 title: 配置启用了 Azure Arc 的 Kubernetes 群集与 Azure Monitor 容器 |Microsoft Docs
 description: 本文介绍如何为启用了 Azure Arc Kubernetes 群集的容器配置 Azure Monitor 监视。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977539"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620284"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>启用对启用了 Azure Arc 的 Kubernetes 群集的监视
 
@@ -21,8 +21,6 @@ ms.locfileid: "90977539"
 容器 Azure Monitor 支持监视启用了 Azure Arc 的 Kubernetes (预览版) 如 [概述](container-insights-overview.md) 文章中所述，以下功能除外：
 
 - 实时数据 (预览) 
-
-- [收集](container-insights-update-metrics.md) 群集节点和 pod 中的指标，并将其存储在 Azure Monitor 度量值数据库中
 
 以下内容是针对容器 Azure Monitor 正式支持的：
 
@@ -106,7 +104,7 @@ ms.locfileid: "90977539"
 1. 使用以下命令将脚本下载并保存到使用监视外接程序配置群集的本地文件夹：
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. `$azureArcClusterResourceId`通过设置的相应值来配置变量 `subscriptionId` ， `resourceGroupName` 并 `clusterName` 表示启用了 Azure Arc 的 Kubernetes 群集资源的资源 ID。

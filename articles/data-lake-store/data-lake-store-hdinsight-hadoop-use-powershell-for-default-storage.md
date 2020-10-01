@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075036"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619997"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
 
@@ -67,7 +67,7 @@ ms.locfileid: "87075036"
     ```
 
     > [!NOTE]
-    > 如果在注册 Data Lake Storage Gen1 资源提供程序时收到类似于 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是订阅未列入 Data Lake Storage Gen1 的允许列表。 要在 Data Lake Storage Gen1 中启用 Azure 订阅，请遵循[通过 Azure 门户开始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
+    > 如果注册 Data Lake Storage Gen1 资源提供程序，并收到类似于的错误 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` ，则可能不会为 Data Lake Storage Gen1 批准你的订阅。 要在 Data Lake Storage Gen1 中启用 Azure 订阅，请遵循[通过 Azure 门户开始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
     >
 
 2. Data Lake Store Gen1 帐户与 Azure 资源组关联。 首先请创建资源组。

@@ -1,18 +1,18 @@
 ---
-title: 容器 Azure Monitor 的指标警报 |Microsoft Docs
+title: 容器 Azure Monitor 的指标警报
 description: 本文介绍了公共预览版中适用于容器 Azure Monitor 建议的指标警报。
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.date: 09/24/2020
+ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019880"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619944"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a> (预览从容器 Azure Monitor 预览) 推荐的指标警报
 
-若要在出现系统资源问题时发出警报，以便在使用容器 Azure Monitor 时发出警报，你可以根据存储在 Azure Monitor 日志中的性能数据创建日志警报。 容器 Azure Monitor 现在包含 AKS 群集的预配置指标警报规则，该规则以公共预览版提供。
+若要在出现系统资源问题时发出警报，以便在使用容器 Azure Monitor 时发出警报，你可以根据存储在 Azure Monitor 日志中的性能数据创建日志警报。 容器 Azure Monitor 现在包含预配置的指标警报规则，适用于 AKS 和启用了 Azure Arc 的 Kubernetes 群集。
 
 本文介绍了经验并指导如何配置和管理这些警报规则。
 
@@ -22,22 +22,22 @@ ms.locfileid: "90019880"
 
 在开始之前，请确认以下事项：
 
-* 自定义指标只在一部分 Azure 区域中可用。 受支持的区域列表在[此处](../platform/metrics-custom-overview.md#supported-regions)记录。
+* 自定义指标只在一部分 Azure 区域中可用。 支持的区域的列表记录在 [受支持的区域](../platform/metrics-custom-overview.md#supported-regions)中。
 
-* 为了支持指标警报和引入其他指标，所需的最低代理版本为 **microsoft/oms： ciprod05262020**。
+* 为了支持指标警报和其他指标的引入，所需的最低代理版本为： Azure Arc enabled Kubernetes 群集的 **microsoft/oms： ciprod05262020** for AKS and **microsoft/oms： ciprod09252020** 。
 
     若要验证群集是否正在运行较新版本的代理，可以执行以下操作之一：
 
     * 运行 `kubectl describe <omsagent-pod-name> --namespace=kube-system` 命令。 在返回的状态中，记下输出的“容器”部分中“映像”下 omsagent 的值。 
     * 在“节点”选项卡上选择群集节点，然后在右侧的“属性”窗格中记下“代理映像标记”下的值。  
 
-    显示的值应为高于 **ciprod05262020**的版本。 如果群集具有较旧版本，请按照 [AKS 群集上的升级代理](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) 步骤来获取最新版本。
-    
+    为 AKS 显示的值应为 **ciprod05262020** 或更高版本。 为启用 Azure Arc 的 Kubernetes 群集显示的值应为 **ciprod09252020** 或更高版本。 如果群集具有较旧版本，请参阅 [如何升级容器的 Azure Monitor 代理](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) ，以获取最新版本的步骤。
+
     有关与代理版本相关的详细信息，请参阅 [代理发行历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)。 若要验证是否正在收集指标，可以使用 Azure Monitor 指标资源管理器，并验证是否列出了**insights**的**指标命名空间**。 如果是这样，您可以继续设置警报。 如果看不到任何收集到的指标，则群集服务主体或 MSI 缺少必要的权限。 若要验证 SPN 或 MSI 是否为 " **监视指标发布者** " 角色的成员，请按照使用 Azure CLI 确认和设置角色分配部分的 " [每个群集升级](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) " 一节中所述的步骤进行操作。
 
 ## <a name="alert-rules-overview"></a>警报规则概述
 
-若要对重要内容发出警报，Azure Monitor 容器包括 AKS 群集的以下指标警报：
+若要对重要内容进行警报，Azure Monitor 容器包括 AKS 和启用了 Azure Arc Kubernetes 群集的以下指标警报：
 
 |名称| 说明 |默认阈值 |
 |----|-------------|------------------|
@@ -106,7 +106,7 @@ ms.locfileid: "90019880"
 
 本部分逐步讲解如何启用 Azure 门户中的容器指标警报 (预览版) Azure Monitor。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 通过从 Azure 门户中的左窗格中选择 " **见解** "，可以直接从 AKS 群集访问 Azure Monitor for 容器指标警报 (预览版) 功能。
 
@@ -146,7 +146,7 @@ ms.locfileid: "90019880"
 
 3. 搜索 " **模板**"，然后选择 " **模板部署**"。
 
-4. 选择“创建” 。
+4. 选择“创建”。
 
 5. 你会看到用于创建模板的多个选项，请选择 " **在编辑器中生成自己的模板**"。
 

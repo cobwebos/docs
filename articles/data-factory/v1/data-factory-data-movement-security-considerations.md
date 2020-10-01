@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441929"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619910"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -63,7 +63,7 @@ Azure 数据工厂使用由 Microsoft 管理的证书**** 对数据存储凭据�
 #### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 Azure Synapse Analytics 中透明数据加密 (TDE) 通过对静态数据进行实时加密和解密，帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [保护 Synapse Analytics 中的数据库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL 数据库
+#### <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)。 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -114,7 +114,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 | 网关版本（创建期间） | 存储的凭据 | 凭据加密/安全 | 
 | --------------------------------- | ------------------ | --------- |  
 | < = 2.3.xxxx.x | 在云上 | 使用证书加密（不同于凭据管理器应用使用的证书） | 
-| > = 2.4.xxxx.x | 本地 | 通过 DPAPI 保护 | 
+| > = 2.4.xxxx.x | 在本地 | 通过 DPAPI 保护 | 
   
 
 ### <a name="encryption-in-transit"></a>传输中加密
@@ -142,7 +142,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 ![将 IPSec VPN 与网关配合使用](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和允许列表 IP 地址
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>防火墙配置和筛选网关的 IP 地址
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
 在企业中，企业 **防火墙** 在组织的中央路由器上运行。 并且，Windows 防火墙**** 在安装网关的本地计算机上作为守护程序运行。 
@@ -158,7 +158,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 | `*.azuredatalakestore.net` | 443 | （可选）目标为 Azure Data Lake Store 时需要 | 
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口/允许列表域。 此表仅使用 Azure SQL 数据库、Azure Synapse Analytics Azure Data Lake Store 作为示例。   
+> 你可能需要根据相应数据源的要求在企业防火墙级别管理端口/筛选域。 此表仅使用 Azure SQL 数据库、Azure Synapse Analytics Azure Data Lake Store 作为示例。   
 
 下表提供了**windows 防火墙**的**入站端口**要求。
 
@@ -168,10 +168,10 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 ![网关端口要求](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>数据存储中的 IP 配置/允许列表
-云中的某些数据存储还需要访问它们的计算机的 IP 地址允许列表。 确保已在防火墙中将网关计算机的 IP 地址列入允许列表或对其进行了适当配置。
+#### <a name="ip-configurationsfiltering-in-data-store"></a>数据存储中的 IP 配置/筛选
+云中的某些数据存储还要求审批访问这些数据的计算机的 IP 地址。 确保在防火墙中相应地批准/配置网关计算机的 IP 地址。
 
-以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址允许列表。 
+以下云数据存储要求批准网关计算机的 IP 地址。 默认情况下，某些数据存储可能不需要审批 IP 地址。 
 
 - [Azure SQL 数据库](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 答案：**** 我们尚不支持此功能。 我们正致力于解决该问题。
 
 问题：**** 确保网关正常工作的端口要求是什么？
-答案：**** 网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80****，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050****。 如果 Azure SQL 数据库或 Azure Synapse Analytics 用作源/目标，则还需要打开 **1433** 端口。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
+答案：**** 网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80****，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050****。 如果 Azure SQL 数据库或 Azure Synapse Analytics 用作源/目标，则还需要打开 **1433** 端口。 有关详细信息，请参阅 [防火墙配置和筛选 IP 地址](#firewall-configurations-and-filtering-ip-address-of gateway) 部分。 
 
 问题：**** 网关的证书要求是什么？
 答案：**** 当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 你可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 
 
 ## <a name="next-steps"></a>后续步骤
 有关复制活动性能的信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
-
- 

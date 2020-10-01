@@ -1,22 +1,22 @@
 ---
 title: XEvent 环形缓冲区代码
-description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓冲区目标。
+description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓存区目标。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: sample
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84033878"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619825"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的环形缓冲区目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,24 +30,24 @@ ms.locfileid: "84033878"
 1. 创建一个包含要演示的数据的表。
 2. 创建现有扩展事件的会话，即 **sqlserver.sql_statement_starting**。
 
-   * 此事件仅限于包含特定 Update 字符串的 SQL 语句：**statement LIKE '%UPDATE tabEmployee%'**。
+   * 此事件仅限于包含特定 Update 字符串的 SQL 语句： **statement LIKE '%UPDATE tabEmployee%'** 。
    * 选择要将事件的输出发送给环形缓冲区类型的目标，即 **package0.ring_buffer**。
 3. 启动事件会话。
 4. 发出几个简单的 SQL UPDATE 语句。
 5. 发出 SQL SELECT 语句，从环形缓冲区检索事件输出。
 
-   * **sys.dm_xe_database_session_targets** 和其他动态管理视图 (DMV) 联接在一起。
+   * 将 **sys.dm_xe_database_session_targets** 和其他动态管理视图 (DMV) 联接在一起。
 6. 停止事件会话。
 7. 删除环形缓冲区目标以释放其资源。
 8. 删除事件会话和演示表。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 可以在其中创建表的任何数据库。
+* Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 可在其中创建表的任何数据库。
   
-  * 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
-* SQL Server Management Studio (ssms.exe)，最好是每月更新版。
+  * 或者，也可以在几分钟内[创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
+* SQL Server Management Studio (ssms.exe)，最好是每月最新更新版。
   可从以下位置下载最新的 ssms.exe：
   
   * 标题为[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 的主题。
@@ -55,7 +55,7 @@ ms.locfileid: "84033878"
 
 ## <a name="code-sample"></a>代码示例
 
-只要稍加修改，就可以在 Azure SQL 数据库或 Microsoft SQL Server 上运行以下环形缓冲区的代码示例。 不同之处在于步骤 5 的 FROM 子句中使用的某些动态管理视图 (DMV) 名称出现了节点“_database”。 例如：
+只要稍加修改，就可以在 Azure SQL 数据库或 Microsoft SQL Server 上运行以下环形缓冲区的代码示例。 不同之处在于步骤 5 的 FROM 子句中使用的某些动态管理视图 (DMV) 的名称中出现了节点“_database”。 例如：
 
 * sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
@@ -216,13 +216,13 @@ GO
 
 ## <a name="ring-buffer-contents"></a>环形缓冲区内容
 
-我们使用 `ssms.exe` 来运行代码示例。
+我们使用 `ssms.exe` 运行代码示例。
 
 为了查看结果，我们单击了 **target_data_XML** 列标题下的单元格。
 
-然后，在结果窗格中，我们单击了 target_data_XML 列标题下的单元格****。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
+然后，在结果窗格中，我们单击了 **target_data_XML** 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
 
-输出显示在以下块中。 它看起来很长，但它只是两个 **\<event>** 元素。
+输出显示在以下块中。 结果看起来很长，但其实只是两个 **\<event>** 元素。
 
 &nbsp;
 
@@ -340,11 +340,11 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 有关 Azure SQL 数据库中扩展事件的主要主题是：
 
-* [AZURE Sql 数据库中的扩展事件注意事项](xevent-db-diff-from-svr.md)，这对比了 Azure sql 数据库与 Microsoft SQL Server 不同的扩展事件的某些方面。
+* [Azure SQL 数据库中扩展事件的注意事项](xevent-db-diff-from-svr.md)，对比了 Azure SQL 数据库与 Microsoft SQL Server 之间存在差异的扩展事件的某些方面。
 
-可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，可以在运行示例时确定是否要做出细微的更改。
+可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，用户可以在运行示例时确定是否要做出细微的更改。
 
-* 适用于 Azure SQL 数据库的代码示例： [AZURE Sql 数据库中扩展事件的事件文件目标代码](xevent-code-event-file.md)
+* Azure SQL 数据库的代码示例：[Azure SQL 数据库中扩展事件的事件文件目标代码](xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

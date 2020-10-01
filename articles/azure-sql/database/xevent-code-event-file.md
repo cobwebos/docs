@@ -1,35 +1,35 @@
 ---
 title: XEvent 事件文件代码
-description: 提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。 完成此方案部分必须用到 Azure 存储空间。
+description: 提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。 此方案的一部分要求使用 Azure 存储。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: sample
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485471"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620182"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的事件文件目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
+需要完整的代码示例来可靠捕获和报告扩展事件的信息。
 
-在 Microsoft SQL Server 中，[事件文件目标](https://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储空间服务来支持事件文件目标。
+在 Microsoft SQL Server 中，[事件文件目标](https://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储服务来支持事件文件目标。
 
 本主题演示了一个两阶段代码示例：
 
-- PowerShell：用于在云中创建 Azure 存储空间容器。
+- PowerShell：用于在云中创建 Azure 存储容器。
 - Transact-SQL：
   - 将 Azure 存储容器分配到事件文件目标。
   - 创建和启动事件会话，等等。
@@ -41,36 +41,36 @@ ms.locfileid: "84485471"
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-- Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-- 可以在其中创建表的任何数据库。
+- Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- 可在其中创建表的任何数据库。
   
-  - 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
+  - 或者，也可以在几分钟内[创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
 
-- SQL Server Management Studio (ssms.exe)，最好是每月更新版。
+- SQL Server Management Studio (ssms.exe)，最好是每月最新更新版。
   可从以下位置下载最新的 ssms.exe：
   
   - 标题为[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 的主题。
   - [直接指向下载位置的链接。](https://go.microsoft.com/fwlink/?linkid=616025)
 
-- 必须安装 [Azure PowerShell 模块](https://go.microsoft.com/?linkid=9811175)。
+- 必须安装 [Azure PowerShell 模块](https://go.microsoft.com/?linkid=9811175) 。
 
   - 这些模块提供 **New-AzStorageAccount** 等命令。
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储空间容器的 PowerShell 代码
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储容器的 PowerShell 代码
 
 此 PowerShell 是两阶段代码示例的第 1 阶段。
 
-脚本开头的命令将清除以前可能运行后的结果，并且可重复运行。
+脚本以用于在可能的上次运行后进行清理的命令开头，且可重复运行。
 
-1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1** 的文件。
+1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1**的文件。
 2. 以管理员身份启动 PowerShell ISE。
-3. 在提示符下键入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然后按 Enter。
+3. 在提示符下键入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>，然后按 Enter。
 4. 在 PowerShell ISE 中打开 **.ps1** 文件。 运行该脚本。
-5. 该脚本先启动一个新窗口，供你在其中登录到 Azure。
+5. 该脚本会先启动新的窗口，可在其中登录 Azure。
 
    - 如果想要重新运行脚本而不中断会话，可以很方便地选择注释禁止 **Add-AzureAccount** 命令。
 
-![在准备运行脚本之前，必须准备好已装有 Azure 模块的 PowerShell ISE。](./media/xevent-code-event-file/event-file-powershell-ise-b30.png)
+![装有 Azure 模块的 PowerShell ISE，可运行脚本。](./media/xevent-code-event-file/event-file-powershell-ise-b30.png)
 
 ### <a name="powershell-code"></a>PowerShell 代码
 
@@ -241,14 +241,14 @@ Related to   https://github.com/MicrosoftDocs/azure-docs/issues/56520
 > [!NOTE]
 > 在上述 PowerShell 代码示例中，SQL 扩展事件与 ADLS Gen2 存储帐户不兼容。
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>阶段 2：使用 Azure 存储空间容器的 Transact-SQL 代码
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>阶段 2：使用 Azure 存储容器的 Transact-SQL 代码
 
 - 在此代码示例的第 1 阶段，已运行 PowerShell 脚本来创建 Azure 存储容器。
 - 接下来在第 2 阶段，以下 Transact-SQL 脚本必须使用该容器。
 
-脚本开头的命令将清除以前可能运行后的结果，并且可重复运行。
+脚本以用于在可能的上次运行后进行清理的命令开头，且可重复运行。
 
-PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-SQL 脚本以使用这些值。 在 Transact-SQL 脚本中查找 **TODO** 以找到编辑点。
+PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-SQL 脚本才能使用这些值。 在 Transact-SQL 脚本中查找 **TODO** 以找到编辑点。
 
 1. 打开 SQL Server Management Studio (ssms.exe)。
 2. 连接到 Azure SQL 数据库中的数据库。
@@ -258,7 +258,7 @@ PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-S
 6. 保存并运行该脚本。
 
 > [!WARNING]
-> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”*。 否则，安全性可能会阻止操作。
+> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须 *删除前导“?”* 。 否则，可能由于安全原因而阻止操作。
 
 ### <a name="transact-sql-code"></a>Transact-SQL 代码
 
@@ -440,7 +440,7 @@ PRINT 'Use PowerShell Remove-AzStorageAccount to delete your Azure Storage accou
 GO
 ```
 
-如果运行脚本时无法附加目标，则你必须停止再重新启动事件会话：
+如果运行脚本时无法附加目标，必须停止再重新启动事件会话：
 
 ```sql
 ALTER EVENT SESSION ... STATE = STOP;
@@ -451,9 +451,9 @@ GO
 
 ## <a name="output"></a>输出
 
-完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 **\<event>** 显示一个元素，其中显示了一个 UPDATE 语句。
+完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时将显示一个 **\<event>** 元素，其中显示了一个 UPDATE 语句。
 
-下面是 **\<event>** 测试期间生成的一个元素：
+下面是测试期间生成的一个 **\<event>** 元素：
 
 ```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
@@ -498,7 +498,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 - [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
-用于查看扩展事件数据的高级选项的说明可在此处获取：
+可在以下位置获取用于查看扩展事件数据的高级选项的说明：
 
 - [扩展事件的目标数据的高级视图](https://msdn.microsoft.com/library/mt752502.aspx)
 
@@ -506,7 +506,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 假设要在 Microsoft SQL Server 上运行上述 Transact-SQL 示例。
 
-- 为了方便，想要将 Azure 存储容器完全替换为一个简单文件（例如 *C:\myeventdata.xel*）。 该文件将写入托管 SQL Server 的计算机的本地硬盘驱动器上。
+- 为简单起见，会想要将 Azure 存储容器完全替换为一个简单文件（例如 *C:\myeventdata.xel*）。 该文件将写入 SQL Server 所在计算机的本地硬盘驱动器。
 - 不需要为 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** 使用任何类型的 Transact-SQL 语句。
 - 在 **CREATE EVENT SESSION** 语句的 **ADD TARGET** 子句中，将对 **filename=** 分配的 Http 值替换为完整路径字符串（例如 *C:\myfile.xel*）。
   
@@ -514,11 +514,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 ## <a name="more-information"></a>详细信息
 
-有关 Azure 存储空间服务中帐户和容器的详细信息，请参阅：
+有关 Azure 存储服务中帐户和容器的详细信息，请参阅：
 
 - [如何通过 .NET 使用 Blob 存储](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [命名和引用容器、Blob 与元数据](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 - [使用根容器](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [第1课：在 Azure 容器上创建存储访问策略和共享访问签名](https://msdn.microsoft.com/library/dn466430.aspx)
+- [课程 1：在 Azure 容器上创建存储访问策略和共享访问签名](https://msdn.microsoft.com/library/dn466430.aspx)
   - [第 2 课：使用共享访问签名创建 SQL Server 凭据](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Microsoft SQL Server 扩展事件](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)

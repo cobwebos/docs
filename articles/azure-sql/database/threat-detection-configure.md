@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: seo-dt-2019, sqldbrb=1
-ms.topic: conceptual
+ms.topic: how-to
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: 19da4581ef44d7c7cc51eac839c7db018793e557
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 678de4354012dcea5b954980109fd71c1004aca4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885120"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619281"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>为 Azure SQL 数据库配置高级威胁防护
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

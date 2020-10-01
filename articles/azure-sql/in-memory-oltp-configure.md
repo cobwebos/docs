@@ -1,52 +1,52 @@
 ---
-title: 内存中 OLTP 提高了 SQL txn 性能
-description: 采用内存中 OLTP 来改善 Azure SQL 数据库中的现有数据库和 Azure SQL 托管实例中的事务性能。
+title: 内存中 OLTP 改进了 SQL 事务性能
+description: 利用内存中 OLTP 改进 Azure SQL 数据库中现有数据库和 Azure SQL 托管实例的事务性能。
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
 ms.subservice: development
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345302"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619740"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>使用内存中 OLTP 改善 Azure SQL 数据库和 Azure SQL 托管实例中的应用程序性能
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>使用内存中 OLTP 改进 Azure SQL 数据库和 Azure SQL 托管实例中的应用程序性能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 [内存中 OLTP](in-memory-oltp-overview.md) 可以用来改善[高级和业务关键层](database/service-tiers-vcore.md)数据库中事务处理、数据引入和暂时性数据方案的性能，而不需要提高定价层。
 
 > [!NOTE]
-> 了解仲裁如何将[关键数据库的工作负荷翻倍，同时使用 AZURE SQL 数据库降低70% 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> 了解 [Quorum 如何通过使用 Azure SQL 数据库，在关键数据库工作负载加倍的情况下，将 DTU 降低 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 请按照以下步骤在现有数据库中采用内存中 OLTP。
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>步骤 1：确保使用的是高级和业务关键层数据库
 
-只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
+只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持内存中 OLTP：
 
 ```sql
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 ```
 
-*XTP* 代表*极端事务处理*
+XTP 代表*极端事务处理*
 
 ## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>步骤 2：标识要迁移到 In-Memory OLTP 的对象
 
-SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性能分析概述**。 该报告识别要迁移到 In-Memory OLTP 的候选表和存储过程。
+SSMS 包含可以针对具有活动工作负荷的数据库运行的“事务性能分析概述”。 该报告识别要迁移到内存中 OLTP 的候选表和存储过程。
 
 若要在 SSMS 中生成报告，请执行以下操作：
 
-* 在“对象资源管理器”**** 中，右键单击数据库节点。
-* 单击 "**报表**" "  >  **标准报表**" "  >  **事务性能分析概述**"。
+* 在“对象资源管理器”中，右键单击数据库节点。
+* 单击“报表” > “标准报表” > “事务性能分析概述”。
 
-有关详细信息，请参阅[确定表或存储过程是否应移植到内存中 OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp)
+有关详细信息，请参阅[确定是否应将某个表或存储过程移植到 In-Memory OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp)。
 
 ## <a name="step-3-create-a-comparable-test-database"></a>步骤 3：创建可比较的测试数据库
 
@@ -77,13 +77,13 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
 若要使用此迁移选项，请执行以下操作：
 
 1. 使用 SSMS 连接到测试数据库。
-2. 在“对象资源管理器”**** 中，右键单击该表，并单击“内存优化顾问”****。
+2. 在“对象资源管理器”中，右键单击该表，然后单击“内存优化顾问”。
 
-   此时会显示“表内存优化顾问”**** 向导。
-3. 在向导中，单击“迁移验证”****（或“下一步”**** 按钮），以查看该表是否有任何在内存优化表中不受支持的功能。 有关详情，请参阅：
+   此时将显示“表内存优化顾问”向导。
+3. 在向导中，单击“迁移验证”（或“下一步”按钮），查看该表是否包含任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
 
-   * [内存优化顾问中的](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor)*内存优化清单*。
-   * [内存中 OLTP 不支持的 Transact-sql 构造](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp)。
+   * [内存优化顾问中的](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor)内存优化清单。
+   * [内存中 OLTP 不支持的 Transact-SQL 构造](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp)。
    * [迁移到内存中 OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server)。
 4. 如果该表没有不受支持的功能，顾问可执行实际的架构和数据迁移。
 
@@ -95,7 +95,7 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
 2. 获取表及其索引的完整 T-SQL 脚本。
 
    * 在 SSMS 中，右键单击表节点。
-   * 单击 "**编写表脚本为**" "  >  **CREATE To**  >  **新建查询" 窗口**。
+   * 单击“编写表脚本为” > “创建到” > “新建查询窗口”。
 3. 在脚本窗口中，将 WITH (MEMORY_OPTIMIZED = ON) 添加到 CREATE TABLE 语句。
 4. 如果存在 CLUSTERED 索引，请将其更改为 NONCLUSTERED。
 5. 使用 SP_RENAME 重命名现有表。
@@ -118,7 +118,7 @@ In-Memory 功能还可以修改存储过程，以改善性能。
 * NATIVE_COMPILATION
 * SCHEMABINDING：表示除非丢弃存储过程，否则无法由存储过程以任何影响到存储过程的方式更改其列定义的表。
 
-本机模块必须使用一个大型 [ATOMIC 块](/sql/relational-databases/in-memory-oltp/atomic-blocks-in-native-procedures)进行事务管理。 显式 BEGIN TRANSACTION 或 ROLLBACK TRANSACTION 没有角色。 如果代码检测到违反业务规则，它可以使用 [THROW](/sql/t-sql/language-elements/throw-transact-sql) 语句终止原子块。
+本机模块必须使用一个大型 [ATOMIC 块](/sql/relational-databases/in-memory-oltp/atomic-blocks-in-native-procedures)进行事务管理。 显式 BEGIN TRANSACTION 或 ROLLBACK TRANSACTION 没有角色。 如果你的代码检测到违反业务规则，它可以使用 [THROW](/sql/t-sql/language-elements/throw-transact-sql) 语句终止 ATOMIC 块。
 
 ### <a name="typical-create-procedure-for-natively-compiled"></a>本机编译存储过程的典型 CREATE PROCEDURE
 
@@ -137,7 +137,7 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-* 就 TRANSACTION_ISOLATION_LEVEL 而言，SNAPSHOT 是本机编译存储过程最常用的值。 但是，也支持其他值的子集：
+* 对于 TRANSACTION_ISOLATION_LEVEL，SNAPSHOT 是本机编译存储过程最常用的值。 但是，也支持其他值的子集：
   
   * REPEATABLE READ
   * SERIALIZABLE
@@ -164,7 +164,7 @@ CREATE PROCEDURE schemaname.procedurename
 * 并发连接数。
 * 读/写比率。
 
-若要定制和运行测试工作负荷，请考虑使用 `ostress.exe` 此[内存中](in-memory-oltp-overview.md)文章中所述的便利工具。
+若要修改并运行测试工作负载，请考虑使用便利的 `ostress.exe` 工具，这篇[内存中](in-memory-oltp-overview.md)文章对此工具进行了说明。
 
 为了尽可能减少网络延迟，请在数据库所在的同一 Azure 地理区域运行测试。
 
@@ -173,7 +173,7 @@ CREATE PROCEDURE schemaname.procedurename
 建议监视在生产环境中实施 In-Memory 后的性能影响：
 
 * [监视内存中存储](in-memory-oltp-monitor-space.md)。
-* [使用动态管理视图进行监视](database/monitoring-with-dmvs.md)
+* [使用动态管理视图进行监控](database/monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>相关链接
 
