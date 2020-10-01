@@ -48,11 +48,13 @@ PostgreSQL 引擎使用 [角色](https://www.postgresql.org/docs/current/sql-cre
 
 1. 中转到超大规模 (Citus) 服务器组的 " **角色** " 页，然后单击 " **+ 添加**"：
 
-   :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text=""角色" 页":::
+   :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="&quot;角色&quot; 页&quot;:::
 
-2. 输入 "角色名称" 和 "密码"。 单击“ **保存**”。
+2. 输入 &quot;角色名称" 和 "密码"。 单击“ **保存**”。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="添加角色":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="&quot;角色&quot; 页&quot;:::
+
+2. 输入 &quot;角色名称":::
 
 将在服务器组的协调器节点上创建用户，并将其传播到所有工作节点。 通过 Azure 门户创建的角色具有 `LOGIN` 属性，这意味着它们是可以登录数据库的真实用户。
 
@@ -77,7 +79,9 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 若要更新用户，请访问超大规模 (Citus) 服务器组的 " **角色** " 页，然后单击用户旁边 **的省略号 "..."** 。 省略号将打开一个菜单以删除用户或重置其密码。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="编辑角色":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="&quot;角色&quot; 页&quot;:::
+
+2. 输入 &quot;角色名称":::
 
 该 `citus` 角色具有特权，不能删除。
 

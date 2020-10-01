@@ -78,7 +78,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > 使用 [Azure Active Directory 用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) 的 "Azure 门户" 页选择用户帐户并打开其详细信息。 复制用户的 *ObjectID*：
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户突出显示 "对象 ID" 字段中的 GUID 的用户页面视图" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口" lightbox="media/includes/user-id.png":::
 >
 > 然后，使用上面参数的用户 *对象 ID* 重复角色分配列表命令 `assignee` 。
 
@@ -115,7 +115,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 接下来，将此文件上传到 Cloud Shell。 在 Cloud Shell 窗口中，单击 "上传/下载文件" 图标，然后选择 "上传"。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="显示上传选项选择的 Cloud Shell 窗口":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口":::
 导航到刚刚创建的 *manifest.js* ，并单击 "打开"。
 
 接下来，运行以下命令以创建应用注册，并使用 *公用客户端/本机 (移动 & 桌面) * 回复 URL `http://localhost` 。 根据需要替换占位符：
@@ -126,7 +126,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 下面是此命令的输出摘录，显示已创建的注册的相关信息：
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="新 Azure AD 应用注册 Cloud Shell 输出":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口":::
 
 ### <a name="verify-success"></a>验证是否成功
 
@@ -140,7 +140,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 接下来，从菜单栏中选择 " *概述* " 以查看应用注册的详细信息：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="应用注册重要值的门户视图":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="成功创建资源组和 Azure 数字孪生实例命令窗口":::
 
 记下**在页面上显示的***应用程序 (客户端) id*和*目录 (租户) id* 。 稍后将需要这些值对 [Azure 数字孪生 api 的客户端应用进行身份验证](how-to-authenticate-client.md)。 如果您不是将为此类应用程序编写代码的人，则需要与将要进行共享的人员共享这些值。
 

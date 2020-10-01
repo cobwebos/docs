@@ -62,27 +62,27 @@ ms.locfileid: "91409657"
 
 2. 从左侧的选项中，选择边栏选项 `Features` 卡。 这会显示可用于数据库帐户的帐户级别功能。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="带有 MongoDB 帐户概述的 Azure 门户突出显示功能边栏选项卡" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure 门户与 MongoDB 帐户概述" border="false":::
 
 3. 单击 `Upgrade to Mongo server version 3.6` 该行。 如果看不到此选项，则表示你的帐户可能没有此升级的资格。 如果是这种情况，请提交 [支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="带有选项的 "功能" 边栏选项卡。" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Azure 门户与 MongoDB 帐户概述" border="false":::
 
 4. 查看关于此特定升级显示的信息。 请注意，只有在应用程序使用更新的终结点时才会完成升级，如本部分中所述。 `Enable`一旦准备好开始该过程，请单击 "打开"。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="扩展的升级指南。" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Azure 门户与 MongoDB 帐户概述" border="false":::
 
 5. 启动进程后， `Features` 菜单将显示升级状态。 状态将从 `Pending` 、到到 `In Progress` `Upgraded` 。 此过程不会影响数据库帐户的现有功能或操作。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="启动后的升级状态。" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Azure 门户与 MongoDB 帐户概述" border="false":::
 
 6. 升级完成后，状态将显示为 `Upgraded` 。 单击它以了解有关完成此过程所需执行的后续步骤和操作的详细信息。 如果处理请求时出现问题，请 [联系支持人员](https://azure.microsoft.com/en-us/support/create-ticket/) 。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="已升级帐户状态。" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Azure 门户与 MongoDB 帐户概述" border="false":::
 
 7. **若要开始使用数据库帐户的升级版本**，请返回到 `Overview` 边栏选项卡，并复制要在应用程序中使用的新连接字符串。 当应用程序连接到新终结点后，将立即开始使用升级后的版本。 现有连接不会中断，并且可以在方便时进行更新。 为了确保获得一致的体验，所有应用程序都必须使用新的终结点。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="新建概述边栏选项卡。" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Azure 门户与 MongoDB 帐户概述" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

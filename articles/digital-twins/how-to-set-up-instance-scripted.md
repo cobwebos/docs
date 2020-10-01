@@ -49,15 +49,13 @@ ms.locfileid: "91328623"
  
 2. 在 Cloud Shell 图标栏中，确保 Cloud Shell 设置为运行 PowerShell 版本。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="显示 PowerShell 版本选择的 Cloud Shell 窗口":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="显示 PowerShell 版本选择的 Cloud Shell 窗口&quot;:::
 
-1. 选择 "上传/下载文件" 图标，然后选择 "上传"。
+1. 选择 &quot;上传/下载文件" 图标，然后选择 "上传"。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="显示 "上传" 图标选择的 Cloud Shell 窗口":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="显示 PowerShell 版本选择的 Cloud Shell 窗口&quot;:::
 
-    在计算机上导航到_**deploy.ps1**_ 文件 (_Azure_Digital_Twins_samples > 脚本 > **deploy.ps1** _) 并单击 "打开"。 这会将文件上传到 Cloud Shell，以便可以在 "Cloud Shell" 窗口中运行该文件。
-
-4. 通过 `./deploy.ps1` 在 "Cloud Shell" 窗口中发送命令来运行该脚本。  (回忆要粘贴到 Cloud Shell 中，可以在 Windows 和 Linux 上使用 **Ctrl + shift + v** ，或在 macOS 上使用 **Cmd + shift + v** 。 你还可以使用右键单击菜单。 ) 
+1. 选择 &quot;上传/下载文件" 窗口中发送命令来运行该脚本。  (回忆要粘贴到 Cloud Shell 中，可以在 Windows 和 Linux 上使用 **Ctrl + shift + v** ，或在 macOS 上使用 **Cmd + shift + v** 。 你还可以使用右键单击菜单。 ) 
 
     ```azurecli
     ./deploy.ps1
@@ -82,7 +80,9 @@ ms.locfileid: "91328623"
 
 下面是该脚本的输出日志摘录：
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="显示通过运行部署脚本的输入和输出日志的 Cloud Shell 窗口" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="显示 PowerShell 版本选择的 Cloud Shell 窗口&quot;:::
+
+1. 选择 &quot;上传/下载文件" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 如果脚本成功完成，最终打印输出将显示 `Deployment completed successfully` 。 否则，请解决错误消息，并重新运行该脚本。 它将跳过已完成的步骤，并在你离开的点再次开始请求输入。
 
@@ -103,7 +103,9 @@ ms.locfileid: "91328623"
 
 选择它将打开实例的 " *概述* " 页。 注意其 *名称*、 *资源组*和 *主机名*。 稍后可能需要用到它们来标识并连接到实例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 "概述" 页中的重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="显示 PowerShell 版本选择的 Cloud Shell 窗口&quot;:::
+
+1. 选择 &quot;上传/下载文件":::
 
 ### <a name="collect-app-registration-values"></a>收集应用注册值 
 
@@ -113,7 +115,9 @@ ms.locfileid: "91328623"
 
 你应该会看到刚才在此列表中创建的应用注册。 选择它以打开其详细信息：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="应用注册重要值的门户视图":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="显示 PowerShell 版本选择的 Cloud Shell 窗口&quot;:::
+
+1. 选择 &quot;上传/下载文件":::
 
 记下**在页面上显示的***应用程序 (客户端) id*和*目录 (租户) id* 。 如果您不是将为客户端应用程序编写代码的人员，则需要与将要进行共享的人员共享这些值。
 

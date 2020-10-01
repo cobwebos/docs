@@ -18,7 +18,7 @@ ms.locfileid: "87808879"
 
 在门户主页上，搜索 Azure 数字孪生实例以提取其详细信息。 从左侧的 Azure 数字孪生实例的导航菜单中选择 "**指标**" 选项，以显示 "*指标*" 页。
 
-:::image type="content" source="../articles/digital-twins/media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 "指标" 页的屏幕截图。":::
+:::image type="content" source="../articles/digital-twins/media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 &quot;指标&quot; 页的屏幕截图。":::
 
 在此处，你可以查看实例的度量值并创建自定义视图。
 

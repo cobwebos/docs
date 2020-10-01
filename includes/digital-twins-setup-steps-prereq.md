@@ -32,7 +32,7 @@ ms.locfileid: "88009628"
 
 若要查看你在订阅中的角色，请访问 Azure 门户中的 "[订阅" 页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) (你可以使用此链接或通过门户搜索栏) 查找*订阅*。 查找正在使用的订阅的名称，并在 "*我的角色*" 列中查看其角色：
 
-:::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Azure 门户中的 "订阅" 页的视图，将用户显示为所有者" lightbox="../articles/digital-twins/media/how-to-set-up-instance/portal/subscriptions-role.png":::
+:::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Azure 门户中的 &quot;订阅&quot; 页的视图，将用户显示为所有者" lightbox="../articles/digital-twins/media/how-to-set-up-instance/portal/subscriptions-role.png":::
 
 如果发现值为 "*参与者*" 或另一个没有上述所需权限的角色，则可以联系订阅上具有这些权限的用户 (例如 *，订阅*所有者或帐户管理员) ，并按以下方式之一进行操作：
 * 请求用户以你的名义完成本文中的步骤

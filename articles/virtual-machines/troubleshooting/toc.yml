@@ -224,6 +224,8 @@
           href: troubleshoot-performance-virtual-machine-linux-windows.md
         - name: 性能诊断
           href: performance-diagnostics.md
+        - name: 排查 Azure Windows 虚拟机的 CPU 占用量高的问题
+          href: troubleshoot-high-cpu-issues-azure-windows-vm.md
     - name: PerfInsights
       items:
         - name: Windows
@@ -232,8 +234,6 @@
               href: how-to-use-perfinsights.md
             - name: 性能诊断扩展
               href: performance-diagnostics-vm-extension.md
-            - name: 排查 Azure Windows 虚拟机的 CPU 占用量高的问题
-              href: troubleshoot-high-cpu-issues-azure-windows-vm.md
         - name: Linux
           items:
             - name: 如何使用 PerfInsights
@@ -303,7 +303,7 @@
       items:
         - name: 概述
           href: ../windows/disk-encryption-overview.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ../windows/disk-encryption-troubleshooting.md
         - name: 常见问题解答
           href: ../windows/disk-encryption-faq.md
@@ -311,7 +311,7 @@
       items:
         - name: 概述
           href: ../linux/disk-encryption-overview.md
-        - name: 故障排除
+        - name: 疑难解答
           href: ../linux/disk-encryption-troubleshooting.md
         - name: 常见问题解答
           href: ../linux/disk-encryption-faq.md

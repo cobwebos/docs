@@ -88,7 +88,7 @@ ms.locfileid: "91328485"
 
 若要验证连接，您可以单击 " *运行查询* " 按钮以运行默认查询，该查询在图形 *资源管理器* 框中的关系图中显示所有孪生和关系。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="窗口顶部附近显示“运行查询”的按钮突出显示" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/run-query.png":::
 
 你可以让 ADT 资源管理器运行，因为稍后将在本文中再次使用它将这些项重新上传到目标区域中的新实例。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91328485"
  
 然后，按 "*图形视图*" 框中的 "*导出关系图*" 图标。
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在 "关系图视图" 框中，将突出显示图标。它会显示一个指向云的下拉箭头。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/export-graph.png":::
 
 这将在*图形视图*中启用 "*下载*" 链接。 选择此项可下载基于 JSON 的查询结果表示形式，包括模型、孪生和关系。 这应该 *将一个文件中的* 文件下载到你的计算机。
 
@@ -136,7 +136,7 @@ ms.locfileid: "91328485"
 
 目前，ADT 资源管理器已连接到原始 Azure 数字孪生实例。 通过点击窗口顶部的 " *登录* " 按钮，将连接切换为指向新的实例。 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="在窗口顶部附近突出显示“登录”图标的 ADT 资源管理器。图标显示了一个简单的人员与密钥叠加的剪影。" lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/sign-in.png":::
 
 由于你要重用应用程序注册，因此只需替换 *ADT URL*。 请将此值更改为它读取 https：/ */{new 实例主机名}*。
 
@@ -148,7 +148,7 @@ ms.locfileid: "91328485"
 
 若要上载**模型、孪生和 graph**，请点击 "*图形视图*" 框中的 "*导入关系图*" 图标。 此选项将立即上传这三个组件， (甚至在图形) 中当前未使用的模型。
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="在“图形视图”框中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/import-graph.png":::
 
 在 "文件选择器" 框中，导航到下载的关系图。 选择 *"graph"* 文件并单击 " *打开*"。
 
@@ -158,7 +158,7 @@ ms.locfileid: "91328485"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="在“图形预览”窗格中突出显示“保存”图标" lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -168,7 +168,7 @@ ADT 资源管理器现在会将模型和图形 () 添加到新的 Azure 数字�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="指示关系图导入成功的对话框。它读取 "导入成功"。已导入2个模型。4孪生已导入。已导入2个关系。 "" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ ADT 资源管理器现在会将模型和图形 () 添加到新的 Azure 数字�
 
 若要验证是否已成功上传所有内容，请点击 "*图形资源管理器*" 框中的 "*运行查询*" 按钮，以运行在图形中显示所有孪生和关系的默认查询。 这也会在 *模型视图*中刷新模型列表。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="在窗口顶部附近的 "运行查询" 按钮周围突出显示" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/run-query.png":::
 
 应该会看到图形，其中显示了 " *图形资源管理器* " 框中显示的所有孪生和关系。 您还应在 " *模型视图* " 框中看到您的模型。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="ADT 资源管理器的视图，显示在 "模型视图" 框中突出显示的2个模型，在 "Graph 资源管理器" 框中突出显示了图形" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/how-to-move-regions/post-upload.png":::
 
 这会确认已将模型、孪生和 graph 重新上传到目标区域中的新实例。
 
@@ -234,4 +234,4 @@ ADT 资源管理器现在会将模型和图形 () 添加到新的 Azure 数字�
 
 点击 " *删除* " 按钮，并按照提示完成删除操作。
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure 门户的 "概述" 选项卡上的 Azure 数字孪生实例详细信息的视图。突出显示 "删除" 按钮":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT 资源管理器，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。":::

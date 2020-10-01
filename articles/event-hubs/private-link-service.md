@@ -64,48 +64,7 @@ ms.locfileid: "91334236"
 1. 选择页面顶部的“专用终结点连接”选项卡。 
 1. 在页面顶部选择“+ 专用终结点”按钮。
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text=""网络" 页-专用终结点连接选项卡-添加专用终结点链接":::
-7. 在“基本信息”页上执行以下步骤： 
-    1. 选择要在其中创建专用终结点的 Azure 订阅。 
-    2. 选择专用终结点资源的资源组。
-    3. 输入专用终结点的名称。 
-    5. 专用终结点选择“区域”。 专用终结点必须与虚拟网络位于同一区域，但可以与要连接的专用链接资源位于不同的区域。 
-    6. 在完成时选择“下一步:资源 >”按钮，它位于页面底部。
-
-        ![创建专用终结点 -“基本信息”页](./media/private-link-service/create-private-endpoint-basics-page.png)
-8. 在“资源”页上执行以下步骤：
-    1. 对于连接方法，如果选择了“连接到我的目录中的 Azure 资源”，请执行以下步骤： 
-        1. 选择你的**事件中心命名空间**所在的 **Azure 订阅**。 
-        2. 对于“资源类型”，请选择“Microsoft.EventHub/namespaces”。  
-        3. 对于“资源”，请从下拉列表中选择一个事件中心命名空间。 
-        4. 确认“目标子资源”设置为“命名空间”。 
-        5. 在页面底部选择“下一步:配置 >”按钮。 
-        
-            ![创建专用终结点 -“资源”页](./media/private-link-service/create-private-endpoint-resource-page.png)    
-    2. 如果选择了“按资源 ID 或别名连接到 Azure 资源”，请执行以下步骤：
-        1. 输入“资源 ID”或“别名”。  该值可以是某人已与你共享的资源 ID 或别名。 获取资源 ID 的最简单方法是在 Azure 门户中导航到“事件中心”命名空间，然后复制从 `/subscriptions/` 开始的 URI 部分。 参阅下图中的示例。 
-        2. 对于“目标子资源”，请输入“命名空间”。  它是专用终结点可以访问的子资源类型。
-        3. （可选）输入一条请求消息。 资源所有者在管理专用终结点连接时会看到此消息。
-        4. 然后选择“下一步:配置 >”按钮。
-
-            ![创建专用终结点 - 使用资源 ID 进行连接](./media/private-link-service/connect-resource-id.png)
-9. 在“配置”页上，选择要在其中部署专用终结点的虚拟网络中的子网。 
-    1. 选择一个虚拟网络。 下拉列表中仅列出了当前所选订阅和位置中的虚拟网络。 
-    2. 在所选的虚拟网络中选择一个“子网”。 
-    3. 在完成时选择“下一步:标记 >”按钮，它位于页面底部。 
-
-        ![创建专用终结点 -“配置”页](./media/private-link-service/create-private-endpoint-configuration-page.png)
-10. 在“标记”页上，创建要与专用终结点资源关联的任何标记（名称和值）。 然后选择页面底部的“查看 + 创建”按钮。 
-11. 在“查看 + 创建”页上查看所有设置，然后选择“创建”以创建专用终结点 。
-    
-    ![创建专用终结点 -“查看 + 创建”页](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. 确认你创建的专用终结点连接已显示在终结点列表中。 在此示例中，专用终结点会自动获得批准，因为你已连接到自己目录中的 Azure 资源，并且有足够的权限。 
-
-    ![已创建专用终结点](./media/private-link-service/private-endpoint-created.png)
-
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
-
-若要允许受信任的服务访问你的命名空间，请切换到 "**网络**" 页上的 "**防火墙和虚拟网络**" 选项卡，然后选择 **"是"** 以**允许受信任的 Microsoft 服务跳过此防火墙？**。 
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="网络选项卡 -“所选网络”选项" 选项卡，然后选择 **"是"** 以**允许受信任的 Microsoft 服务跳过此防火墙？**。 
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>使用 PowerShell 添加专用终结点
 以下示例演示如何使用 Azure PowerShell 创建专用终结点连接。 此过程不会为你创建专用群集。 请遵循[此文](event-hubs-dedicated-cluster-create-portal.md)中的步骤创建专用的事件中心群集。 

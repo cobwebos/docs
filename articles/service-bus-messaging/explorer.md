@@ -51,7 +51,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 从左侧导航菜单中选择“服务总线资源管理器(预览版)”
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="左侧导航菜单中的“服务总线资源管理器”":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="实体选择":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>向队列或主题发送消息
 
@@ -66,17 +66,17 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 撰写消息后，点击“发送”。
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="撰写消息":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="实体选择":::
 
 发送操作成功完成后， 
 
 * 如果是发送到队列，则“活动消息”指标计数器将会递增。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="实体选择":::
 
 * 如果是发送到主题，则“活动消息”指标计数器将在消息路由到的订阅上递增。
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="TopicAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="实体选择":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>接收来自队列的消息
 
@@ -93,18 +93,18 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 1. 单击服务总线资源管理器中的“接收”选项卡。
 2. 检查指标，确定是否存在可接收的“活动消息”或“死信消息”。 
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="实体选择":::
 
 3. 在“队列”与“死信”子队列之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="实体选择":::
 
 4. 单击“接收”按钮，然后单击“是”以确认执行“接收并删除”操作。
 
 
 接收操作成功后，消息详细信息会显示在网格中，如下所示。 可以在网格中选择该消息以显示其详细信息。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Azure 服务总线资源管理器中的 "队列" 窗口的屏幕截图，其中显示了队列中所选活动消息的消息详细信息。":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="实体选择":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>速览来自队列的消息
@@ -113,21 +113,21 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 1. 若要速览队列中的消息，请单击服务总线资源管理器中的“速览”选项卡。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="实体选择":::
 
 2. 检查指标，确定是否存在可速览的“活动消息”或“死信消息”。 
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="实体选择":::
 
 3. 然后在“队列”与“死信”子队列之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="实体选择":::
 
 4. 单击“速览”按钮。 
 
 速览操作完成后，网格中最多会显示 32 条消息，如下所示。 若要查看特定消息的详细信息，请在网格中选择该消息。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="实体选择":::
 
 > [!NOTE]
 >
@@ -146,17 +146,17 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 1. 单击“接收”选项卡，然后从下拉选择器中选择特定的***订阅***。
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="实体选择":::
 
 2. 在“订阅”与“死信”子实体之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="实体选择":::
 
 3. 单击“接收”按钮，然后单击“是”以确认执行“接收并删除”操作。
 
 接收操作成功后，收到的消息会显示在网格中，如下所示。 若要查看消息详细信息，请单击该消息。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Azure 服务总线资源管理器中的 "接收" 选项卡的屏幕截图，其中显示了已收到的活动消息的消息详细信息。":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="实体选择":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>速览来自订阅的消息
 
@@ -164,17 +164,17 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 1. 单击“速览”选项卡，然后从下拉选择器中选择特定的***订阅***。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="实体选择":::
 
 2. 在“订阅”与“死信”子实体之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="实体选择":::
 
 3. 单击“速览”按钮。
 
 速览操作完成后，网格中最多会显示 32 条消息，如下所示。 若要查看特定消息的详细信息，请在网格中选择该消息。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="实体选择":::
 
 > [!NOTE]
 >

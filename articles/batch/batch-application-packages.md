@@ -77,15 +77,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 块 blob �
 
 若要查看 Batch 帐户中的应用程序，请在左侧导航菜单中选择 " **应用程序** "。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Azure 门户中的 "应用程序" 菜单项的屏幕截图。":::
-
-选择此菜单选项将打开 " **应用程序** " 窗口。 此窗口显示帐户中每个应用程序的 ID，以及以下属性：
-
-- **包**：与此应用程序关联的版本号。
-- **默认版本**：如果适用，则在部署应用程序时未指定版本的情况下将安装的应用程序版本。
-- **允许更新**：指定是否允许包更新和删除。
-
-若要查看计算节点上的应用程序包的 [文件结构](files-and-directories.md) ，请导航到 Azure 门户中的 Batch 帐户。 选择 " **池**"。 然后选择包含计算节点的池。 选择在其上安装应用程序包的计算节点，然后打开 " **应用程序** " 文件夹。
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="显示应用程序和应用程序包的概要视图的关系图。" 文件夹。
 
 ### <a name="view-application-details"></a>查看应用程序详细信息
 
@@ -101,7 +93,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 块 blob �
 
 在 Batch 帐户中，选择 " **应用程序** "，然后选择 " **添加**"。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Azure 门户中的新应用程序创建过程的屏幕截图。":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="显示应用程序和应用程序包的概要视图的关系图。":::
 
 输入以下信息：
 
@@ -128,11 +120,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 块 blob �
 
 若要更新或删除现有的应用程序包，请在 Batch 帐户的 **应用程序** 部分选择该应用程序。 选择要修改的应用程序包行中的省略号，并选择要执行的操作。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="显示 Azure 门户中应用程序包的更新和删除选项的屏幕截图。":::
-
-如果选择 " **更新**"，则可以上传新的 .zip 文件。 这将替换为该版本上载的上一个 .zip 文件。
-
-如果选择 " **删除**"，系统将提示你确认是否要删除该版本。 选择 **"确定"** 后，Batch 会从 Azure 存储帐户中删除 .zip 文件。 如果删除应用程序的默认版本，则会删除该应用程序的 " **默认版本** " 设置。
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="显示应用程序和应用程序包的概要视图的关系图。" 设置。
 
 ## <a name="install-applications-on-compute-nodes"></a>将应用程序安装在计算节点上
 

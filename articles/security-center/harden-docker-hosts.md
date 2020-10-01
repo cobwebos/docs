@@ -43,18 +43,28 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 
     建议页面显示) 的 Docker 主机 (受影响的资源。 
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="建议在容器安全配置中修正漏洞 ":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="建议在容器安全配置中修正漏洞 &quot;:::
 
 1. 若要查看和修正特定主机出现故障的 CIS 控制，请选择要调查的主机。 
 
     > [!TIP]
-    > 如果你在 "资产清单" 页上启动并达到此建议，请 select "建议" 页上的 " **执行操作** " 按钮。
+    > 如果你在 &quot;资产清单&quot; 页上启动并达到此建议，请 select &quot;建议&quot; 页上的 &quot; **执行操作** " 按钮。
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="使用 "操作" 按钮启动 Log Analytics":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="建议在容器安全配置中修正漏洞 &quot;:::
+
+1. 若要查看和修正特定主机出现故障的 CIS 控制，请选择要调查的主机。 
+
+    > [!TIP]
+    > 如果你在 &quot;资产清单&quot; 页上启动并达到此建议，请 select &quot;建议&quot; 页上的 &quot; **执行操作** ":::
 
     Log Analytics 随即打开，其中包含可运行的自定义操作。 默认自定义查询包括评估的所有失败规则的列表，以及有助于你解决问题的指南。
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="带有显示所有失败的 CIS 控件的查询的 Log Analytics 页面":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="建议在容器安全配置中修正漏洞 &quot;:::
+
+1. 若要查看和修正特定主机出现故障的 CIS 控制，请选择要调查的主机。 
+
+    > [!TIP]
+    > 如果你在 &quot;资产清单&quot; 页上启动并达到此建议，请 select &quot;建议&quot; 页上的 &quot; **执行操作** ":::
 
 1. 如有必要，请调整查询参数。
 

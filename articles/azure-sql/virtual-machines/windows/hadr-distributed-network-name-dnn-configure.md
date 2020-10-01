@@ -116,10 +116,10 @@ Start-ClusterResource -Name dnn-demo
 
 1. 在故障转移群集管理器中转到 DNN 资源。 
 1. 右键单击 "DNN" 资源，然后选择 " **属性**"。 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="DNN 资源的快捷菜单，其中突出显示了 "属性" 命令。":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="DNN 资源的快捷菜单，其中突出显示了 &quot;属性&quot; 命令。":::
 1. 清除不参与故障转移群集实例的任何节点的复选框。 DNN 资源的可能所有者列表应与 SQL Server 实例资源的可能所有者列表匹配。 例如，假设 Data3 不参与 FCI，下图是从 DNN 资源的可能所有者列表中删除 Data3 的示例： 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="对于 DNN 资源的可能所有者，清除不参与 FCI 的节点旁边的复选框":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN 资源的快捷菜单，其中突出显示了 &quot;属性&quot; 命令。":::
 
 1. 选择“确定”保存设置****。 
 
