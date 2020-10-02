@@ -17,6 +17,9 @@
     - name: 分配策略 - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: 分配策略 - .NET
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
     - name: 分配策略 - JavaScript
       displayName: 'assign, compliance'
       href: ./assign-policy-javascript.md
@@ -55,7 +58,7 @@
           href: ./samples/pattern-logical-operators.md
         - name: 字段
           href: ./samples/pattern-fields.md
-        - name: parameters
+        - name: 参数
           href: ./samples/pattern-parameters.md
         - name: 效果详细信息
           href: ./samples/pattern-effect-details.md
@@ -139,6 +142,9 @@
     - name: 为数组属性创作策略
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: 导出 Azure Policy 资源
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
     - name: 来宾配置
       items:
         - name: 在 Windows 上创建 Guest Configuration 策略

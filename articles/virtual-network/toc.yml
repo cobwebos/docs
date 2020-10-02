@@ -35,7 +35,7 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: template-samples.md
 - name: 概念
   items:
@@ -95,6 +95,8 @@
           href: public-ip-security-baseline.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 网络安全组
           items:
             - name: 概述
@@ -461,5 +463,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 常见问题
+    - name: 常见问题解答
       href: virtual-networks-faq.md

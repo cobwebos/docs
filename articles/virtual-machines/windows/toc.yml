@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: 连接到 VM
           href: connect-logon.md
-        - name: 连接到 Linux VM
+        - name: SSH 到 Linux VM
           displayName: ssh keygen ssk-key putty
           items:
             - name: 在门户中
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: 磁盘加密常见问题解答
               href: disk-encryption-faq.md
-            - name: 磁盘加密 - 以前的版本 (Azure AD)
+            - name: 磁盘加密 - 历史版本
               items:
                 - name: 概述
                   href: disk-encryption-overview-aad.md
@@ -774,7 +774,7 @@
                       href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: 自定义字段
                       href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 故障排除
+            - name: 疑难解答
               items:
                 - name: Log Analytics VM 扩展
                   href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -983,7 +983,7 @@
           href: ../extensions/extensions-rmpolicy-howto-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 导出扩展
           href: ../extensions/export-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 故障排除
+        - name: 疑难解答
           href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure 磁盘加密
           href: ../extensions/azure-disk-enc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -1051,7 +1051,7 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
-- name: 故障排除
+- name: 疑难解答
   href: ../troubleshooting/index.yml
 - name: 参考
   items:

@@ -4,22 +4,36 @@
   items:
     - name: 关于 Azure VMware 解决方案
       href: introduction.md
+- name: 快速入门
+  items:
+    - name: 预部署过程
+      href: production-ready-deployment-steps.md
+    - name: 部署前清单
+      href: pre-deployment-checklist.md
+    - name: 1 - 部署 Azure VMware 解决方案
+      href: deploy-azure-vmware-solution.md
+    - name: 2 - 连接到本地
+      href: azure-vmware-solution-on-premises.md
+    - name: 3 - 部署和配置 VMware HCX
+      href: tutorial-deploy-vmware-hcx.md
 - name: 教程
   items:
-    - name: 1 - 网络规划
+    - name: 1 - 网络规划清单
       href: tutorial-network-checklist.md
     - name: 2 - 创建私有云
       href: tutorial-create-private-cloud.md
-    - name: 3 - 配置网络
-      href: tutorial-configure-networking.md
-    - name: 4 - 访问私有云
+    - name: 3 - 访问私有云
       href: tutorial-access-private-cloud.md
-    - name: 5 - 缩放私有云
-      href: tutorial-scale-private-cloud.md
-    - name: 6 - 创建 NSX-T 网络段
+    - name: 4 - 配置网络
+      href: tutorial-configure-networking.md
+    - name: 5 - 创建 NSX-T 网络段
       href: tutorial-nsx-t-network-segment.md
-    - name: 7 - 从本地对等连接到私有云
+    - name: 6 - 从本地对等连接到私有云
       href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 7 - 部署和配置 VMware HCX
+      href: tutorial-deploy-vmware-hcx.md
+    - name: 8 - 缩放私有云
+      href: tutorial-scale-private-cloud.md
 - name: 概念
   items:
     - name: 私有云和群集
@@ -31,11 +45,9 @@
     - name: 私有云的访问权限和标识
       href: concepts-identity.md
     - name: 基于角色的访问控制
-      href: concepts-rbac.md
+      href: concepts-role-based-access-control.md
     - name: 私有云升级
       href: concepts-upgrades.md
-    - name: 监视和修复私有云
-      href: concepts-monitor-repair-private-cloud.md
 - name: 操作指南
   items:
     - name: 启用 Azure VMware 解决方案
@@ -44,46 +56,34 @@
       href: reserved-instance.md
     - name: 迁移评估
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
-    - name: 设置 HCX
-      href: hybrid-cloud-extension-installation.md
     - name: 管理 DHCP
       href: manage-dhcp.md
-    - name: 灾难恢复
-      href: disaster-recovery.md
+    - name: 为 VM 部署灾难恢复
+      href: disaster-recovery-for-virtual-machines.md
     - name: 通过内容库部署 VM
-      href: deploy-vm-content-library.md
+      href: tutorial-deploy-vm-content-library.md
     - name: Azure 本机集成
       items:
         - name: API 管理
           href: concepts-api-management.md
         - name: 中心和分支
-          href: concepts-avs-hub-and-spoke-integration.md
+          href: concepts-hub-and-spoke.md
         - name: Azure 备份服务器
           items:
             - name: 设置备份服务器
-              href: set-up-mabs-for-avs.md
+              href: set-up-backup-server-for-azure-vmware-solution.md
             - name: 使用备份服务器备份私有云 VM
-              href: backup-avs-vms-with-mabs.md
+              href: backup-azure-vmware-solution-virtual-machines.md
         - name: VM 的生命周期管理
           href: lifecycle-management-of-azure-vmware-solution-vms.md
         - name: 应用程序网关
-          href: protect-avs-web-apps-with-app-gateway.md
+          href: protect-azure-vmware-solution-with-application-gateway.md
         - name: 流量管理器
-          href: deploy-traffic-manager-to-balance-avs-workloads.md
-        - name: NetApp 文件
-          href: net-app-files.md
-    - name: GitHub Enterprise Server
-      href: github-enterprise-server.md
+          href: deploy-traffic-manager-balance-workloads.md
     - name: VMware 解决方案
       items:
         - name: 设置 vRealize Operations
-          href: vrealize-operations-for-avs.md
-    - name: VMware 生态系统
-      items:
-        - name: VM 的备份解决方案
-          href: ecosystem-back-up-vms.md
-- name: 参考
-  items: null
+          href: vrealize-operations-for-azure-vmware-solution.md
 - name: 资源
   items:
     - name: 疑难解答

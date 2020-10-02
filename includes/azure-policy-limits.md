@@ -4,16 +4,17 @@ description: include 文件
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: dacoulte
-ms.openlocfilehash: 2707523947cae77dd800dd5f560ebe1c47f3893a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3f706789e14cb20214bf17fd91f6ec1e503848f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905966"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91605782"
 ---
-Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目是指订阅或[管理组](../articles/governance/management-groups/overview.md)。
+Azure Policy 的每个对象类型都有一个最大计数。 对于定义，“范围”条目是指[管理组](../articles/governance/management-groups/overview.md)或订阅。
+对于分配和例外情况，“范围”条目是指[管理组](../articles/governance/management-groups/overview.md)、订阅、资源组或单个资源。
 
 | 其中 | 对象 | 最大计数 |
 |---|---|---|
@@ -22,9 +23,9 @@ Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目�
 | 租户 | 计划定义 | 2,500 |
 | 范围 | 策略或计划分配 | 200 |
 | 范围 | 豁免 | 1000 |
-| 策略定义 | 参数 | 20 |
+| 策略定义 | parameters | 20 |
 | 计划定义 | 策略 | 1000 |
-| 计划定义 | 参数 | 100 |
+| 计划定义 | parameters | 100 |
 | 策略或计划分配 | 排除项 (notScopes) | 400 |
 | 策略规则 | 嵌套式条件语句 | 512 |
 | 修正任务 | 资源 | 500 |

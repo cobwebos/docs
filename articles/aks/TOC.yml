@@ -50,6 +50,8 @@
       href: concepts-identity.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 应用程序和群集的安全性
           href: concepts-security.md
         - name: Azure Policy 的安全控件
