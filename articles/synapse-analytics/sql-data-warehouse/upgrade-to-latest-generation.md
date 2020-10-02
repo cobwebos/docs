@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f97b7cb836009683a689fc49882e61ce66abac58
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210688"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627068"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>通过升级 Azure Synapse Analytics SQL 池优化性能
 
@@ -114,7 +114,7 @@ ms.locfileid: "85210688"
 
    > [!NOTE]
    > 如果在“任务”选项卡下未看到“升级到第 2 代”  卡，则你的订阅类型在当前区域中受到限制。
-   > [提交支持票证](sql-data-warehouse-get-started-create-support-ticket.md)以便将你的订阅列入允许列表。
+   > [提交支持票证](sql-data-warehouse-get-started-create-support-ticket.md) 以批准你的订阅。
 
 3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 在 SQL 池作为“计算优化第 2 代”层级 SQL 池回到联机状态之前，会出现几分钟的停机。 选择“升级”  ：
 
@@ -242,7 +242,7 @@ $GeoRestoredDatabase.status
 
 如果源数据库启用了 TDE，则已恢复的数据库会启用 TDE。
 
-如果 SQL 池遇到任何问题，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)，并将 "Gen2 upgrade" 引用为可能的原因。
+如果 SQL 池遇到任何问题，请创建 [支持请求](sql-data-warehouse-get-started-create-support-ticket.md) ，并将 "Gen2 upgrade" 引用为可能的原因。
 
 ## <a name="next-steps"></a>后续步骤
 

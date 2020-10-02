@@ -1,6 +1,6 @@
 ---
 title: 在 Azure AD 中注册服务应用 - Azure API for FHIR
-description: 了解如何在 Azure Active Directory 中注册可用于身份验证和获取令牌的服务客户端应用程序。
+description: 了解如何在 Azure Active Directory 中注册服务客户端应用程序。
 services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
@@ -8,68 +8,72 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 34eec3ad0d2fc193744898b6f08cbe50c261c945
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 19d6b0ebfa2570b04c3a9dda3fe69428aa0eed75
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853017"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629266"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册服务客户端应用程序
 
 本文介绍如何在 Azure Active Directory 中注册服务客户端应用程序。 客户端应用程序注册是可用于身份验证和获取令牌的应用程序的 Azure Active Directory 表示形式。 服务客户端旨在供应用程序用来获取访问令牌，而无需用户进行交互式身份验证。 服务客户端拥有特定的应用程序权限，在获取访问令牌时使用应用程序机密（密码）。
 
-遵循以下步骤创建新的服务客户端。
+按照以下步骤创建新的服务客户端。
 
 ## <a name="app-registrations-in-azure-portal"></a>Azure 门户中的应用注册
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，单击“Azure Active Directory”。 
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到 " **Azure Active Directory**"。
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“应用注册”：  
+2. 选择“应用注册” 。
 
     ![Azure 门户。 新建应用注册。](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. 单击“新建注册”  。
+3. 选择“新注册”。
 
-## <a name="service-client-application-details"></a>服务客户端应用程序详细信息
+4. 为服务客户端指定显示名称。 服务客户端应用程序通常不使用回复 URL。
 
-* 服务客户端需要一个显示名称，你也可以提供回复 URL，但通常不会使用回复 URL。
+    :::image type="content" source="media/service-client-app/service-client-registration.png" alt-text="Azure 门户。新的服务客户端应用注册。":::
 
-    ![Azure 门户。 新建服务客户端应用注册。](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-NAME.png)
+5. 选择“注册”。
 
 ## <a name="api-permissions"></a>API 权限
 
-需要授予服务客户端应用程序角色。 
+现在，你已注册应用程序，你将需要选择此应用程序应该能够代表用户请求的 API 权限：
 
-1. 打开“API 权限”，选择你的 [FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)。 如果使用 Azure API for FHIR，可以通过搜索“我的组织使用的 API”下的 Azure 医疗保健 API，来添加对 Azure 医疗保健 API 的权限。 
+1. 选择“API 权限”****。
+1. 选择“添加权限”。
 
-    ![Azure 门户。 服务客户端 API 权限](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-API-PERMISSIONS.png)
+    如果你使用的是用于 FHIR 的 Azure API，则需要通过在**我的组织使用的 api**下搜索**azure 医疗保健 Api**来添加 azure 医疗保健 api 的权限。 
 
-2. 从资源应用程序上定义的应用程序角色中选择角色：
+    如果引用的是其他资源应用程序，请选择之前在 **"我的 api**" 下创建的[FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)。
 
-    ![Azure 门户。 服务客户端应用程序权限](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-APPLICATION-PERMISSIONS.png)
+    :::image type="content" source="media/service-client-app/service-client-org-api.png" alt-text="Azure 门户。新的服务客户端应用注册。" lightbox="media/service-client-app/service-client-org-api-expanded.png":::
 
-3. 向应用程序授予许可。 如果你没有所需的权限，请咨询 Azure Active Directory 管理员：
+1. 选择 "作用域" (权限) 机密应用程序应该能够代表用户请求：
 
-    ![Azure 门户。 服务客户端管理员许可](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-ADMIN-CONSENT.png)
+    :::image type="content" source="media/service-client-app/service-client-add-permission.png" alt-text="Azure 门户。新的服务客户端应用注册。":::
 
-## <a name="application-secret"></a>应用程序机密
+1. 向应用程序授予许可。 如果你没有所需的权限，请咨询 Azure Active Directory 管理员：
 
-服务客户端需要机密（密码），获取令牌时将使用该机密。
+    :::image type="content" source="media/service-client-app/service-client-grant-permission.png" alt-text="Azure 门户。新的服务客户端应用注册。":::
 
-1. 单击“证书和机密”
+## <a name="application-secret"></a>应用程序密码
 
-2. 单击“新建客户端机密” 
+服务客户端需要机密 (密码) 才能获取令牌。
+
+1. 选择“证书和机密”。
+2. 选择“新建客户端机密”。 
 
     ![Azure 门户。 服务客户端机密](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-SECRET.png)
 
-3. 提供机密的持续时间。
+3. 提供机密 (1 年、2年或永不) 的密码的描述和持续时间。
 
-4. 生成机密后，它只会在门户中显示一次。 请记下该机密并存储在安全的位置。
+4. 一旦生成了机密，就只能在门户中显示一次。 记下它并安全地存储。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已了解如何在 Azure Active Directory 中注册服务客户端应用程序。 接下来请在 Azure 中部署 FHIR API。
+本文介绍了如何在 Azure Active Directory 中注册服务客户端应用程序。 接下来，可以了解适用于 FHIR 的 Azure API 的其他设置。
  
 >[!div class="nextstepaction"]
->[部署开源 FHIR 服务器](fhir-oss-powershell-quickstart.md)
+>[其他设置](azure-api-for-fhir-additional-settings.md)

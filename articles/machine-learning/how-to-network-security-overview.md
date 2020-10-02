@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538376"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631182"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -80,19 +80,7 @@ ms.locfileid: "91538376"
 ### <a name="limitations"></a>限制
 
 保护工作区和虚拟网络中的关联资源具有以下限制：
-- 工作区专用链接仅在以下区域提供：
-    - **美国东部**
-    - **美国中南部**
-    - **美国西部**
-    - **美国西部 2**
-    - **加拿大中部**
-    - **Southeast Asia**
-    - **Japan East**
-    - **北欧**
-    - **澳大利亚东部**
-    - **英国南部**
-    
-    此限制不适用于关联的资源。 例如，你可以在任何 Azure 机器学习区域中为存储启用 VNet。
+- 在 Azure 政府版或 Azure 中国世纪互联区域中，使用具有专用链接的 Azure 机器学习工作区不可用。
 - 所有资源都必须位于同一个 VNet 中。 但允许使用同一 VNet 中的子网。
 
 ## <a name="secure-the-training-environment"></a>保护定型环境

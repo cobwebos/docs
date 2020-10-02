@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948192"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631420"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
 
@@ -36,11 +36,11 @@ ms.locfileid: "88948192"
 
 - 想要测试的用户 
 - 用户要尝试访问的云应用
-- 访问配置的云应用时存在的条件
+- 对已配置的云应用进行访问的条件
      
 下一步，可以启动用于评估设置的模拟运行。 评估运行中仅包含启用的策略。
 
-完成评估后，此工具将生成一份受影响策略的报表。 若要收集有关条件访问策略的详细信息， [条件性访问见解和报表工作簿](howto-conditional-access-insights-reporting.md) 可以在 "仅报告" 模式下提供有关策略的其他详细信息，以及当前启用的策略。
+完成评估后，此工具将生成一份受影响策略的报表。 若要收集有关条件访问策略的详细信息，可参阅[条件访问见解和报表工作簿](howto-conditional-access-insights-reporting.md)，更详细地了解“仅限报告”模式的策略以及那些目前已启用的策略。
 
 ## <a name="running-the-tool"></a>运行此工具
 
@@ -104,5 +104,5 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关条件访问策略应用程序的详细信息，请参阅使用 [条件性访问见解和报表](howto-conditional-access-insights-reporting.md)的仅限报告模式。
+- 有关条件访问策略应用程序的详细信息，可以使用[条件访问见解和报告](howto-conditional-access-insights-reporting.md)通过策略的“仅限报告”模式来查找。
 - 如果已准备好为环境配置条件访问策略，请参阅[条件访问常见策略](concept-conditional-access-policy-common.md)。

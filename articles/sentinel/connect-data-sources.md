@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895808"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627136"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -45,17 +45,22 @@ Azure Sentinel 支持以下数据连接方法：
 
 - **服务到服务集成**：<br> 有些服务是本机互连的（如 AWS 和 Microsoft 服务），这些服务利用 Azure 基础进行现成集成，只需单击几次即可连接以下解决方案：
     - [Amazon Web Services - CloudTrail](connect-aws.md)
-    - [Azure 活动](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) 审核日志和登录日志
+    - [Azure 活动](connect-azure-activity.md)
     - [Azure AD 标识保护](connect-azure-ad-Identity-protection.md)
-    - [Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure 高级威胁防护) 
+    - [Azure DDoS 防护](connect-azure-ddos-protection.md)
+    - 用于 iot 的[Azure Defender](connect-asc-iot.md) (以前为 iot) 的 Azure 安全中心
     - [Azure 信息保护](connect-azure-information-protection.md)
+    - [Azure 防火墙](connect-azure-firewall.md)
     - [Azure 安全中心](connect-azure-security-center.md) -来自 azure Defender 解决方案的警报
+    - [Azure Web 应用程序防火墙 (WAF) ](connect-azure-waf.md) (以前的 Microsoft WAF) 
     - [Cloud App Security](connect-cloud-app-security.md)
     - [域名服务器](connect-dns.md)
-    - [Office 365](connect-office-365.md)
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) -包括 MDATP 原始数据
     - [Microsoft defender For Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前的 Microsoft Defender 高级威胁防护) 
-    - [Microsoft Web 应用程序防火墙](connect-microsoft-waf.md)
+    - [Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure 高级威胁防护) 
+    - [Microsoft Defender For office 365](connect-office-365-advanced-threat-protection.md) (以前的 Office 365 高级威胁防护) 
+    - [Office 365](connect-office-365.md) (与团队合作！ ) 
     - [Windows 防火墙](connect-windows-firewall.md)
     - [Windows 安全事件](connect-windows-security-events.md)
 
@@ -67,9 +72,14 @@ Azure Sentinel 支持以下数据连接方法：
     - [Citrix Analytics（安全）](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Okta SSO](connect-okta-single-sign-on.md)
+    - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 日志](connect-perimeter-81-logs.md)
+    - [Proofpoint TAP](connect-proofpoint-tap.md)
+    - [Qualys VM](connect-qualys-vm.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
+    - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
     - [Zimperium](connect-zimperium-mtd.md)
 
 
@@ -79,7 +89,7 @@ Azure Sentinel 支持以下数据连接方法：
 
     Azure Sentinel 代理实际上是 Log Analytics 代理，它将 CEF 格式的日志转换为可通过 Log Analytics 引入的格式。 根据设备类型，代理会直接安装在设备上，也可以在基于 Linux 的专用日志转发器上安装。 适用于 Linux 的代理通过 UDP 从 Syslog 守护程序接收事件，但如果预期 Linux 计算机需要收集大量的 Syslog 事件，则会通过 TCP 将这些事件从 Syslog 守护程序发送到代理，然后从代理发送到 Log Analytics。
 
-    - **防火墙、代理和终结点：**
+    - **防火墙、代理和终结点-CEF：**
         - [AI Vectra 检测](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
@@ -87,15 +97,23 @@ Azure Sentinel 支持以下数据连接方法：
         - [F5 ASM](connect-f5.md)
         - [Forcepoint 产品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto Networks](connect-paloalto.md)
+        - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
-        - [其他 CEF 设备](connect-common-event-format.md)
-        - [其他 Syslog 设备](connect-syslog.md)
+        - [Palo Alto Networks](connect-paloalto.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Zscaler](connect-zscaler.md)
+        - [其他基于 CEF 的设备](connect-common-event-format.md)
+    - **防火墙、代理和终结点-Syslog：**
+        - [Infoblox NIOS](connect-infoblox.md)
+        - [Pulse Connect Secure](connect-pulse-connect-secure.md)
+        - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
+        - [Symantec VIP](connect-symantec-vip.md)
+        - [其他基于 Syslog 的设备](connect-syslog.md)
     - DLP 解决方案
     - [威胁智能提供程序](connect-threat-intelligence.md)
     - [DNS 计算机](connect-dns.md) - 直接安装在 DNS 计算机上的代理
+    - [Azure Stack Vm](connect-azure-stack.md)
     - Linux 服务器
     - 其他云
     

@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1e90a7cbc4f817f5dd6c854020e2711e8ac097b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284969"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627102"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -1416,7 +1416,7 @@ ms.locfileid: "91284969"
 > | frontdoors | 否 | 否 |
 > | ipallocations | 是 | 是 |
 > | ipgroups | 是 | 是 |
-> | loadbalancers | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
+> | loadbalancers | 是 - 基本 SKU<br> 是-标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
 > | localnetworkgateways | 是 | 是 |
 > | natgateways | 否 | 否 |
 > | networkexperimentprofiles | 否 | 否 |
@@ -1435,7 +1435,7 @@ ms.locfileid: "91284969"
 > | privateendpointredirectmaps | 否 | 否 |
 > | privateendpoints | 是 | 是 |
 > | privatelinkservices | 否 | 否 |
-> | publicipaddresses | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
+> | publicipaddresses | 是 - 基本 SKU<br>是-标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
 > | publicipprefixes | 是 | 是 |
 > | routefilters | 否 | 否 |
 > | routetables | 是 | 是 |

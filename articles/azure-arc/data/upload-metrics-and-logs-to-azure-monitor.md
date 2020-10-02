@@ -9,16 +9,37 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7c8e92604cc6188d17411a266f8b27db55c8fbad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317270"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629992"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
 
-监视是 Azure Arc 启用的数据服务提供的众多内置功能之一。 
+你会定期为计费目的、监视指标和日志导出使用情况信息，然后将其上传到 Azure。  这三种类型的数据的导出和上传还将在 Azure 中创建和更新数据控制器、SQL 托管实例和 PostgreSQL 超大规模服务器组资源。
+
+> [!NOTE] 
+在预览期间，使用启用了 Azure Arc 的数据服务不会产生费用。
+
+## <a name="prerequisites"></a>先决条件
+
+你将需要安装 Azure CLI (az) 和 Azure Data CLI (azdata) 。  [安装工具](./install-client-tools.md)。
+
+在将数据上传到 Azure 之前，需要确保 Azure 订阅已注册 AzureData 资源提供程序。
+
+可以通过运行以下命令来验证这一点：
+
+```console
+az provider show -n Microsoft.AzureData -o table
+```
+
+如果你的订阅中当前未注册资源提供程序，则可以通过运行以下命令来注册它。  此命令需要几分钟时间才能完成。
+
+```console
+az provider register -n Microsoft.AzureData --wait
+```
 
 ## <a name="upload-usage-data"></a>上载使用情况数据
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533717"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627340"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
 
@@ -54,6 +54,12 @@ MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户�
 
 > [!IMPORTANT]
 > 请在生产环境中启用线程池之前对其进行测试。 
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+在 Azure Database for MySQL 中，始终启用二进制日志 (即 `log_bin`) 设置为 ON。 如果你想要使用触发器，你会收到类似于 *你未启用超级权限和二进制日志记录的错误 (你可能想要使用较不安全的 `log_bin_trust_function_creators` 变量) *。 
+
+二进制日志记录格式始终为 **行** ，与服务器的所有连接 **始终** 使用基于行的二进制日志记录。 利用基于行的二进制日志记录，不存在安全问题，二进制日志记录无法中断，因此可以安全地将设置 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 为 **TRUE**。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f557bb271c88b32a9b53cf9b41b911314427530a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349939"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629941"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure 专用链接常见问题解答 (FAQ)
 
@@ -65,7 +65,7 @@ ms.locfileid: "75349939"
 你可以使用专用链接服务上的可见性配置来控制公开。 可见性支持三种设置：
 
 - **无** - 只有具有 RBAC 访问权限的订阅才能找到服务。 
-- **限制** - 只有列入允许列表且具有 RBAC 访问权限的订阅才能找到服务。 
+- 仅限限制的受**限制**订阅和 RBAC 访问权限可以找到服务。 
 - **全部** - 所有人都可以找到服务。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>是否可以使用基本负载均衡器创建专用链接服务？ 

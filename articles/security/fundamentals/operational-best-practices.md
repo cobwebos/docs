@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279493"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629788"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
@@ -185,7 +185,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 对于 [Azure 虚拟机](../../virtual-machines/windows/overview.md)，请确保 VM 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../../virtual-machines/windows/tutorial-availability-sets.md)中。 建议使用虚拟机规模集来实现自动缩放功能。
 
 **** 最佳做法：应用程序中的分层安全防御可以减少攻击成功的可能性。 使用 Azure 平台的内置功能对其应用程序实施安全设计。  
-**** 详细信息：攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用允许列表关闭负载均衡器（[Azure 负载均衡器](/azure/load-balancer/load-balancer-get-started-internet-portal)和 [Azure 应用程序网关](/azure/application-gateway/application-gateway-create-probe-portal)）上不需要的公开 IP 地址空间和侦听端口，来减少外围应用。
+**** 详细信息：攻击风险会随着应用程序的规模（外围应用）的增大而增大。 你可以通过使用审批列表来关闭公开的 IP 地址空间，并将负载平衡器上不需要的侦听端口关闭 ([Azure 负载平衡器](/azure/load-balancer/load-balancer-get-started-internet-portal) 和 [Azure 应用程序网关](/azure/application-gateway/application-gateway-create-probe-portal)) ，从而减少外围应用。
 
 [网络安全组](../../virtual-network/security-overview.md)是缩小受攻击面的另一种方法。 可以使用[服务标记](../../virtual-network/security-overview.md#service-tags)和[应用程序安全组](../../virtual-network/security-overview.md#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
 

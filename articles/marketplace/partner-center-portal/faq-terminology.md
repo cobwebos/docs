@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317546"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631794"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>商业市场分析术语和常见问题
 
@@ -45,6 +45,7 @@ ms.locfileid: "87317546"
 | Azure 许可证类型：Enterprise | 客户、订单 | 最终客户通过直接与 Microsoft 签署的企业协议购买 Azure 和市场套餐。|
 | Azure 许可证类型：通过经销商购买产品/服务的企业  | 客户、订单 | 最终客户通过某家经销商购买 Azure 和市场产品/服务，与该经销商合作便于与 Microsoft 达成企业协议。|
 | Azure 许可证类型：即用即付| 客户、订单 | 最终客户通过直接与 Microsoft 签署的“即用即付”协议购买 Azure 和市场产品/服务。|
+| 计费帐户 ID| 客户、订单、使用情况| 生成计费的帐户的标识符。 使用此属性将分析报表与支出交易报表进行连接。|
 | 云实例名称| 订单| 部署 VM 的 Microsoft 云。|
 | 云实例名称：Azure 全球| 订单| Microsoft 全球公有云。|
 | 云实例名称：Azure 政府 | 订单| 特定于以下政府之一的 Microsoft 云：中国、德国或美国。| |
@@ -70,8 +71,8 @@ ms.locfileid: "87317546"
 | 市场订阅 ID | 客户、订单 | 与客户用来购买市场产品/服务的 Azure 订阅关联的唯一标识符。 该 ID 以前称为“Azure 订阅 GUID”。|
 | 产品名称  | 订单| 市场产品/服务的名称。|
 | 产品/服务类型  | 订单| Microsoft 市场产品/服务的类型。|
-| 产品/服务类型：托管应用程序  | 顺序 | 需要满足以下条件时，请使用“Azure 应用：托管应用”产品/服务类型：使用 VM 为客户部署基于订阅的解决方案，或部署基于 IaaS 的整个解决方案。 你或客户要求解决方案由合作伙伴管理。 |
-| 产品/服务类型：Azure 应用程序| 顺序 | 如果解决方案需要在简单的 VM 以外实现附加的部署和配置自动化，请使用“Azure 应用程序解决方案模板”产品/服务类型。|
+| 产品/服务类型：托管应用程序  | 订单 | 需要满足以下条件时，请使用“Azure 应用：托管应用”产品/服务类型：使用 VM 为客户部署基于订阅的解决方案，或部署基于 IaaS 的整个解决方案。 你或客户要求解决方案由合作伙伴管理。 |
+| 产品/服务类型：Azure 应用程序| 订单 | 如果解决方案需要在简单的 VM 以外实现附加的部署和配置自动化，请使用“Azure 应用程序解决方案模板”产品/服务类型。|
 | 产品/服务类型：咨询服务| 订单| Azure 市场中的咨询服务有助于将客户与服务联系起来，以支持和扩展他们对 Azure 的使用。|
 | 产品/服务类型：容器 | 订单| 如果解决方案是预配为基于 Kubernetes 的 Azure 容器服务的 Docker 容器映像，请使用“容器”产品/服务类型。|
 | 产品/服务类型：Dynamics 365 Business Central| 订单| 如果你的解决方案与 Dynamics 365 for Finance and Operations 集成，请使用此产品/服务类型|
@@ -89,16 +90,16 @@ ms.locfileid: "87317546"
 | 订单状态：已取消 | 订单| 客户之前已下单，但随后取消了订单。|
 | 提供商电子邮件| 客户| 介入 Microsoft 与最终客户之间的关系的提供商的电子邮件地址。 如果客户是“通过经销商购买产品/服务的企业”，则此提供商是经销商。 如果涉及到云解决方案提供商 (CSP)，则此提供商是 CSP。|
 | Provider Name| 客户| 介入 Microsoft 与最终客户之间的关系的提供商的名称。 如果客户是“通过经销商购买产品/服务的企业”，则此提供商是经销商。 如果涉及到云解决方案提供商 (CSP)，则此提供商是 CSP。|
-| SKU| 订单| 在发布过程中定义的 SKU （目前称为计划）名称。 一个产品/服务可能有许多 Sku （计划），但每个都只能与单个产品/服务相关联。|
+| SKU| 订单| SKU (现在称为计划) 名称（在发布过程中定义）。 产品/服务可能有许多 Sku (计划) ，但每个产品只能与单个产品/服务相关联。|
 | 试用结束日期| 订单| 此订单的试用期将要结束或已结束的日期。|
 |||
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关合作伙伴中心商业市场内可用的分析报告的概述，请参阅[合作伙伴中心内的商业市场分析](./analytics.md)。
-- 有关为产品/服务汇总市场活动的聚合数据的图、趋势和值，请参阅[商业市场分析中的“摘要”仪表板](./summary-dashboard.md)。
-- 有关采用图形和可下载格式的订单的信息，请参阅[商业市场分析中的“订单”仪表板](./orders-dashboard.md)。
-- 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标，请参阅[商业市场分析中的“使用情况”仪表板](./usage-dashboard.md)。
+- 若要大致了解合作伙伴中心商业市场内可用的分析报表，请参阅[合作伙伴中心内的商业市场分析](./analytics.md)。
+- 有关为产品/服务汇总市场活动的聚合数据的图表、趋势和值，请参阅[商业市场分析中的“摘要”仪表板](./summary-dashboard.md)。
+- 有关采用图形和可下载格式显示的订单的信息，请参阅[商业市场分析中的“订单”仪表板](./orders-dashboard.md)。
+- 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的“使用情况”仪表板](./usage-dashboard.md)。
 - 有关客户的详细信息（包括增长趋势），请参阅[商业市场分析中的“客户”仪表板](./customer-dashboard.md)。
-- 有关过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./downloads-dashboard.md)。
+- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./downloads-dashboard.md)。
 - 若要查看客户对 Azure 市场和 AppSource 中产品/服务的反馈的综合视图，请参阅[商业市场分析中的“评级和评论”仪表板](./ratings-reviews.md)。

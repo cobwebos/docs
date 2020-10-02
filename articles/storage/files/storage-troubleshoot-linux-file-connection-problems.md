@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249580"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629431"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>排查 Linux 中的 Azure 文件问题 (SMB) 
 
@@ -298,6 +298,32 @@ Linux 内核中的此重新连接问题现已在以下更改中进行了修复�
 
 ### <a name="solution"></a>解决方案
 可以忽略此错误。
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>无法访问名称中有空格或句点的文件夹或文件
+
+如果在 Linux 上安装时无法从 Azure 文件共享访问文件夹或文件，则在访问共享时，诸如 du 和 ls 和/或第三方应用程序之类的命令可能会失败并出现 "没有这样的文件或目录" 错误，但你可以通过门户将文件上传到所述的文件夹中。
+
+### <a name="cause"></a>原因
+
+已将文件夹或文件从对名称末尾的字符进行编码的系统上传到另一个字符，从 Macintosh 计算机上传的文件可能有一个 "0xF028" 或 "0xF029" 字符，而不是 (space) 或 0X2E (点) 。
+
+### <a name="solution"></a>解决方案
+
+在 Linux 上装载共享时，请在共享上使用 mapchars 选项： 
+
+而不是：
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+用法
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 

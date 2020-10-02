@@ -5,13 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
+ms.custom: references_regions
 ms.date: 8/13/2020
-ms.openlocfilehash: 35a097f7b6d73a14ac4840839a31d9aa256aa8de
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9868403f69f3dc0b56aae06be1afda2134472805
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532685"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631029"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MariaDB 提供了各种指标来帮助用户深入了解服务器的行为。
@@ -37,7 +38,7 @@ ms.locfileid: "91532685"
 |storage_limit|存储限制|字节|此服务器的最大存储。|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
 |connections_failed|失败的连接数|计数|服务器的失败连接数。|
-|seconds_behind_master|复制延迟（秒）|Count|副本服务器滞后源服务器的秒数。 （不适用于基本层服务器）|
+|seconds_behind_master|复制延迟（秒）|计数|副本服务器滞后源服务器的秒数。 （不适用于基本层服务器）|
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
 |backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份所消耗的存储的总和。 备份的频率由服务管理，并在[概念文章](concepts-backup.md)中进行了说明。 对于异地冗余存储，备份存储使用率是本地冗余存储的两倍。|
@@ -62,8 +63,10 @@ ms.locfileid: "91532685"
 
 **计划内维护通知** 可用于接收有关即将进行的计划内维护到 Azure Database for MariaDB 的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
 
-> [!Note]
-> 我们将尽一切努力为所有事件提供**计划内维护通知** 72 小时通知。 但是，对于关键或安全修补程序，通知可能会在事件快要发生时更晚一点发送，或者会被忽略。
+在计划内维护期间，你可能会希望服务器重启并发生 [暂时性错误](concepts-connectivity.md#transient-errors) 。 系统在 60 秒以内可自动解决其中的大部分事件。 
+
+> [!IMPORTANT]
+> 计划内维护通知当前在美国西部地区 **以外** 的所有地区预览版中可用。
 
 ### <a name="to-receive-planned-maintenance-notification"></a>接收计划内维护通知
 
@@ -78,8 +81,8 @@ ms.locfileid: "91532685"
 
 有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
 
-> [!IMPORTANT]
-> 计划内维护通知当前在美国西部地区 **以外** 的所有区域中提供预览版
+> [!Note]
+> 我们将尽一切努力为所有事件提供**计划内维护通知** 72 小时通知。 但是，对于关键或安全修补程序，通知可能会在事件快要发生时更晚一点发送，或者会被忽略。
 
 ## <a name="next-steps"></a>后续步骤
 

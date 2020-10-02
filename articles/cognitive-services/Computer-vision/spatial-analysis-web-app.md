@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 5ffa5398143bff4e24d81a28a541e16c44700c99
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254017"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628188"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>如何：部署计算 web 应用程序的人员
 
@@ -127,14 +127,13 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'"--subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
 ```
 
 填写所需的参数：
 
-* 部署名称：选择此部署的名称
 * IoT 中心名称： Azure IoT 中心名称
-* Deployment.js：部署文件的名称
+* DeploymentManifest.js：部署文件的名称
 * IoT Edge 设备名称：主计算机的 IoT Edge 设备名称
 * 订阅：你的订阅 ID 或名称
 
@@ -186,7 +185,7 @@ docker push [desired local image name]
 
 添加这两个设置后，单击 " **保存**"。 然后在左侧导航菜单中单击 " **身份验证/授权** "，并将其更新为所需的身份验证级别。 建议将 Azure Active Director (Azure AD) express。 
 
-### <a name="test-the-app"></a>测试应用程序
+### <a name="test-the-app"></a>测试应用
 
 请在 Azure Web 应用中进行操作并验证部署是否成功，以及 Web 应用是否正在运行。 导航到配置的 url： `<yourapp>.azurewebsites.net` 查看正在运行的应用程序。
 

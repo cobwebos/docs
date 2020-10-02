@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650868"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630927"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>在 Azure HDInsight 中配置网络虚拟设备
 
@@ -23,7 +23,7 @@ ms.locfileid: "89650868"
 
 * 可以使用服务终结点配置支持服务终结点的服务，这通常会出于成本或性能考虑因素而导致绕过 NVA。
 * IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）。
-* 可将 FQDN HTTP/HTTPS 终结点加入 NVA 设备的允许列表中。
+* 可以在 NVA 设备中批准 FQDN HTTP/HTTPS 终结点。
 * 将创建的路由表分配到 HDInsight 子网。
 
 ## <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: 4550f1da0ac87a55bab64566a0035451dee8d225
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/1/2020
+ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538256"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627561"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -36,6 +36,9 @@ ms.locfileid: "91538256"
 由于副本是只读的，它们不能直接缓解主服务器上的写入容量负担。 此功能并非面向写入密集型工作负荷。
 
 只读副本功能使用 MySQL 本机异步复制。 该功能不适用于同步复制方案。 源和副本之间将有可度量的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
+
+> [!IMPORTANT]
+> Azure Database for MySQL 使用基于 **行** 的二进制日志记录。 如果表缺少主键，则会扫描表中的所有行，以进行 DML 操作。 这会导致复制滞后增加。 为了确保副本能够跟上对源服务器的更改，我们通常建议在创建副本服务器之前在源服务器的表中添加一个主键，或者在已有副本服务器的情况下重新创建副本服务器。
 
 ## <a name="cross-region-replication"></a>跨区域复制
 你可以在源服务器的其他区域中创建读取副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。

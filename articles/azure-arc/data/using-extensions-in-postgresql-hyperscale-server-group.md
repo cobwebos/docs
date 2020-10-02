@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19b2ec283619df0cc8d3c880cb2df6f53f6fb332
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934316"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631760"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用 PostgreSQL 扩展
 
@@ -30,6 +30,7 @@ ms.locfileid: "90934316"
 - `pg_cron`，v：1。2
 - `plpgsql`，v：1。0
 - `postgis`，v：3.0。2
+- `plv8`，v：2.3.14
 
 此列表将不断演变，并将在本文档中发布更新。 除了上面列出的扩展名外，还不可能添加扩展。
 
@@ -240,3 +241,7 @@ SELECT * FROM the_best_coffee_shop;
 >[!NOTE]
 >不支持删除 `citus` 扩展。 `citus`需要扩展才能提供超大规模体验。
 
+## <a name="next-steps"></a>后续步骤：
+- 阅读有关[plv8](https://plv8.github.io/)的文档
+- 阅读有关[PostGIS](https://postgis.net/)的文档
+- 阅读文档 [`pg_cron`](https://github.com/citusdata/pg_cron)

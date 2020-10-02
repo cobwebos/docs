@@ -13,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705739"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627000"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
 应用程序清单包含 Microsoft 标识平台中的某个应用程序对象的所有属性的定义。 它还充当用于更新应用程序对象的机制。 有关应用程序实体及其架构的详细信息，请参阅[图形 API 应用程序实体文档](/graph/api/resources/application)。
 
-可以通过 Azure 门户或者使用 [REST API](/graph/api/resources/application) 或 [PowerShell](/powershell/module/azuread/?view=azureadps-2.0#applications) 以编程方式配置应用的属性。 但是，在某些情况下，需要编辑应用清单来配置应用的属性。 这些方案包括：
+可以通过 Azure 门户或者使用 [REST API](/graph/api/resources/application) 或 [PowerShell](/powershell/module/azuread#applications) 以编程方式配置应用的属性。 但是，在某些情况下，需要编辑应用清单来配置应用的属性。 这些方案包括：
 
 * 如果已将应用注册为 Azure AD 多租户和个人 Microsoft 帐户，则不能在 UI 中更改支持的 Microsoft 帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
 * 如果需要定义你的应用支持的权限和角色，则必须修改应用程序清单。
@@ -78,7 +78,7 @@ ms.locfileid: "90705739"
 
 ### <a name="addins-attribute"></a>addIns 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | addIns | 集合 |
 
@@ -103,7 +103,7 @@ ms.locfileid: "90705739"
 
 ### <a name="allowpublicclient-attribute"></a>allowPublicClient 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | allowPublicClient | 布尔 |
 
@@ -117,7 +117,7 @@ ms.locfileid: "90705739"
 
 ### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | availableToOtherTenants | 布尔 |
 
@@ -128,7 +128,7 @@ ms.locfileid: "90705739"
 
 ### <a name="appid-attribute"></a>appId 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | appId | String |
 
@@ -142,7 +142,7 @@ ms.locfileid: "90705739"
 
 ### <a name="approles-attribute"></a>appRoles 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
@@ -167,7 +167,7 @@ ms.locfileid: "90705739"
 
 ### <a name="displayname-attribute"></a>displayName 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | displayName | String |
 
@@ -178,7 +178,7 @@ ms.locfileid: "90705739"
 
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | errorUrl | String |
 
@@ -186,7 +186,7 @@ ms.locfileid: "90705739"
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 |groupMembershipClaims | String |
 
@@ -204,7 +204,7 @@ ms.locfileid: "90705739"
 
 ### <a name="homepage-attribute"></a>homepage 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | homepage |String |
 
@@ -215,7 +215,7 @@ ms.locfileid: "90705739"
 
 ### <a name="objectid-attribute"></a>objectId 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 |objectId | String |
 
@@ -231,7 +231,7 @@ ms.locfileid: "90705739"
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | optionalClaims | String |
 
@@ -249,7 +249,7 @@ ms.locfileid: "90705739"
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | identifierUris | String Array |
 
@@ -263,7 +263,7 @@ ms.locfileid: "90705739"
 
 ### <a name="informationalurls-attribute"></a>informationalUrls 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | informationalUrls | String |
 
@@ -282,7 +282,7 @@ ms.locfileid: "90705739"
 
 ### <a name="keycredentials-attribute"></a>keyCredentials 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
@@ -306,7 +306,7 @@ ms.locfileid: "90705739"
 
 ### <a name="knownclientapplications-attribute"></a>knownClientApplications 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | knownClientApplications | String Array |
 
@@ -320,7 +320,7 @@ ms.locfileid: "90705739"
 
 ### <a name="logourl-attribute"></a>logoUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | logoUrl | String |
 
@@ -334,7 +334,7 @@ ms.locfileid: "90705739"
 
 ### <a name="logouturl-attribute"></a>logoutUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | logoutUrl | String |
 
@@ -348,7 +348,7 @@ ms.locfileid: "90705739"
 
 ### <a name="name-attribute"></a>name 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | name | String |
 
@@ -362,7 +362,7 @@ ms.locfileid: "90705739"
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowImplicitFlow | 布尔 |
 
@@ -376,7 +376,7 @@ ms.locfileid: "90705739"
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | 布尔 |
 
@@ -390,7 +390,7 @@ ms.locfileid: "90705739"
 
 ### <a name="oauth2permissions-attribute"></a>oauth2Permissions 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2Permissions | 集合 |
 
@@ -415,7 +415,7 @@ ms.locfileid: "90705739"
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2RequiredPostResponse | 布尔 |
 
@@ -429,7 +429,7 @@ ms.locfileid: "90705739"
 
 ### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | parentalControlSettings | String |
 
@@ -447,7 +447,7 @@ ms.locfileid: "90705739"
 
 ### <a name="passwordcredentials-attribute"></a>passwordCredentials 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | passwordCredentials | 集合 |
 
@@ -469,7 +469,7 @@ ms.locfileid: "90705739"
 
 ### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | preAuthorizedApplications | 集合 |
 
@@ -490,7 +490,7 @@ ms.locfileid: "90705739"
 
 ### <a name="publicclient-attribute"></a>publicClient 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | publicClient | 布尔|
 
@@ -500,7 +500,7 @@ ms.locfileid: "90705739"
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | publisherDomain | String |
 
@@ -514,7 +514,7 @@ ms.locfileid: "90705739"
 
 ### <a name="replyurls-attribute"></a>replyUrls 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | replyUrls | 字符串数组 |
 
@@ -524,7 +524,7 @@ ms.locfileid: "90705739"
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | replyUrlsWithType | 集合 |
 
@@ -549,7 +549,7 @@ ms.locfileid: "90705739"
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -576,7 +576,7 @@ ms.locfileid: "90705739"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | samlMetadataUrl | String |
 
@@ -590,7 +590,7 @@ ms.locfileid: "90705739"
 
 ### <a name="signinurl-attribute"></a>signInUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | signInUrl | String |
 
@@ -604,7 +604,7 @@ ms.locfileid: "90705739"
 
 ### <a name="signinaudience-attribute"></a>signInAudience 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | signInAudience | String |
 
@@ -622,7 +622,7 @@ ms.locfileid: "90705739"
 
 ### <a name="tags-attribute"></a>tags 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | 标记 | String Array  |
 
@@ -686,14 +686,10 @@ ms.locfileid: "90705739"
 [AAD-DEVELOPER-GLOSSARY]:developer-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
-[APPLICATION-ENTITY]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity
-[APPLICATION-ENTITY-APP-ROLE]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#approle-type
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
 [IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: ./quickstart-register-app.md
 [O365-PERM-DETAILS]: /graph/permissions-reference
-[O365-SERVICE-DAEMON-APPS]: /previous-versions/office/office-365-api/
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/

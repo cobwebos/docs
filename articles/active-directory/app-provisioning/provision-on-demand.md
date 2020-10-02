@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235530"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629006"
 ---
 # <a name="on-demand-provisioning"></a>按需预配
 使用按需预配可在数秒内将用户预配到应用程序。 除此之外，还可以使用此功能执行以下操作：
@@ -28,12 +28,15 @@ ms.locfileid: "88235530"
 ## <a name="how-to-use-on-demand-provisioning"></a>如何使用按需预配
 
 1. 登录到 **Azure 门户**。
-2. 中转到 "**所有服务**" "  >  **企业应用程序**"。
-3. 选择应用程序，然后打开 "设置配置" 页。
-4. 通过提供管理员凭据来配置设置。
-5. 选择 **"按需预配"**。
-6. 按名字、姓氏、显示名称、用户主体名称或电子邮件地址搜索用户。
-7. 选择页面底部的 " **预配** "。
+1. 中转到 "**所有服务**" "  >  **企业应用程序**"。
+1. 选择应用程序，然后打开 "设置配置" 页。
+1. 通过提供管理员凭据来配置设置。
+1. 选择 **"按需预配"**。
+1. 按名字、姓氏、显示名称、用户主体名称或电子邮件地址搜索用户。
+   > [!NOTE]
+   > 对于云 HR 预配应用 (Workday/SuccessFactors 到 AD/Azure AD) ，输入值不同。 对于 Workday 方案，请在 Workday 中提供用户的 "WID"。 对于 SuccessFactors 方案，请在 SuccessFactors 中提供用户的 "personIdExternal"。 
+ 
+1. 选择页面底部的 " **预配** "。
 
 :::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="显示用于按需预配用户的 Azure 门户 UI 的屏幕截图。":::
 
@@ -121,7 +124,7 @@ ms.locfileid: "88235530"
 
 下面是在成功按需预配用户之后可能会看到的示例：
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="显示用户的成功按需预配的屏幕截图。":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="显示用于按需预配用户的 Azure 门户 UI 的屏幕截图。":::
 
 #### <a name="view-details"></a>查看详细信息
 
@@ -144,7 +147,7 @@ ms.locfileid: "88235530"
 > [!NOTE]
 > 以下限制特定于按需预配功能。 有关应用程序是否支持预配组、删除或其他功能的信息，请参阅该应用程序的教程。
 
-* Workday、Amazon Web Services (AWS) 和 SuccessFactors 应用程序不支持按需预配。 
+* Amazon Web Services (AWS) 应用程序不支持按需预配。 
 * 不支持按需预配组和角色。
 * 按需预配支持禁用从应用程序中取消分配的用户。 但是，它不支持禁用或删除已从 Azure AD 中禁用或删除的用户。 搜索用户时不会显示这些用户。
 

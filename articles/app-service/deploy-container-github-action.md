@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 6808117728569ba6fd0b094c7330ce9a1baa24c4
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 59bfdbf2d78497bc253f466e94fd69367a85070d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618601"
+ms.locfileid: "91631777"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub 操作将自定义容器部署到应用服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "91618601"
 
 |部分  |任务  |
 |---------|---------|
-|**身份验证** | 1. 服务主体或发布配置文件。 <br /> 2. 创建 GitHub 机密。 |
+|**身份验证** | 1. 检索服务主体或发布配置文件。 <br /> 2. 创建 GitHub 机密。 |
 |**生成** | 1. 创建环境。 <br /> 2. 构建容器映像。 |
 |**部署** | 1. 部署容器映像。 |
 
