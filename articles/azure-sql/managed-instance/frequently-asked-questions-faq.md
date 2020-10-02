@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325209"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627611"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -334,9 +334,12 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 连接放置在不同区域中的托管实例的建议方法是什么？
 
-快速路由线路对等互连是执行该操作的首选方式。 这不应与跨区域虚拟网络对等互连混合使用，后者不受支持，因为存在与[约束](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)相关的内部负载均衡器。
+快速路由线路对等互连是执行该操作的首选方式。 支持全局虚拟网络对等互连，其限制如下所述。  
 
-如果无法实现快速路由线路对等互连，则唯一的另一种选项是创建站点到站点 VPN 连接（[Azure 门户](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、[PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)、[Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)）。
+> [!IMPORTANT]
+> [在9/22/2020 中，我们为新创建的虚拟群集宣布了全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，对于在公告日期之后在空子网中创建的 SQL 托管实例，以及在这些子网中创建的所有后续托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例的对等互连，都将限制为同一区域的网络，因为 [全局虚拟网络对等互连的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
+
+如果无法实现快速路由线路对等互连和全局虚拟网络对等互连，则唯一的另一种方法是创建站点到站点 VPN 连接 ([Azure 门户](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)， [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)， [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) 。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>缓解数据透露风险  
 

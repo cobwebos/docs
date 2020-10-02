@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8901f54c4802766eb3f12830d98d29fb47337ae5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 866640d90c66dd82e8be61d221bc903907575454
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705208"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91640322"
 ---
 在预览版中，NFS 具有以下限制：
 
@@ -22,7 +22,7 @@ ms.locfileid: "90705208"
 - 必须创建新的存储帐户，才能创建 NFS 共享。
 - 仅支持管理平面 REST Api。 数据平面 REST Api 不可用，这意味着存储资源管理器之类的工具将无法与 NFS 共享一起使用，也不能浏览 Azure 门户中的 NFS 共享数据。
 - 仅适用于高级层。
-- 目前只能在本地冗余存储中使用。
+- 目前仅适用于本地冗余存储 (LRS) 。
 
 ### <a name="azure-storage-features-not-yet-supported"></a>尚不支持 Azure 存储功能
 

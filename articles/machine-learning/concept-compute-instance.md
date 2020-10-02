@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
-ms.openlocfilehash: 14229af9766f6604e71713f835935d43f6c7fcc6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56febc6c2a0e88b2be547c71a2f90ccfa9b78f26
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330139"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630825"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -91,6 +91,8 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 * Jupyter 实验室：选择“启动器”选项卡中“其他”标题下的“终端”磁贴。
 * Jupyter：在“文件”选项卡的右上方选择“新建>“终端”。
 * 通过 SSH 连接到计算机。  然后，将 Python 包安装到 **Python 3.6 - AzureML** 环境中。  将 R 包安装到 **R** 环境中。
+
+自定义计算实例时，请确保不删除 azureml_py36 conda 环境或 Python 3.6 AzureML 内核。 这是 Jupyter/JupyterLab 功能所必需的
 
 ### <a name="add-new-kernels"></a>添加新内核
 

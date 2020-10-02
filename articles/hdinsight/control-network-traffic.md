@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400188"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631709"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>在 Azure HDInsight 中控制网络流量
 
@@ -58,7 +58,7 @@ ms.locfileid: "89400188"
 
 ## <a name="required-ports"></a>必需端口
 
-如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，就不需要特地将端口列入允许列表。
+如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中所述的 Azure 管理流量到达端口443上的群集，就不需要对端口进行特殊筛选。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 

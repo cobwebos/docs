@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565581"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631488"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步骤1：部署日志转发器
 
@@ -71,74 +71,131 @@ ms.locfileid: "88565581"
 
 1. **下载并安装 Log Analytics 代理：**
 
-    - 下载 Log Analytics (OMS) Linux 代理的安装脚本<br>
-        `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - 下载 Log Analytics (OMS) Linux 代理的安装脚本。
 
-    - 安装 Log Analytics 代理<br>
-        `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - 安装 Log Analytics 代理。
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **将 Log Analytics 代理配置设置为侦听端口25226，并将 CEF 消息转发到 Azure Sentinel：**
+
+    - 从 Log Analytics 代理 GitHub 存储库下载配置。
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **配置 Syslog 守护程序：**
 
-    1. 使用 syslog 配置文件打开端口514进行 TCP 通信 `/etc/rsyslog.conf` 。
+    - 使用 syslog 配置文件打开端口514进行 TCP 通信 `/etc/rsyslog.conf` 。
 
-    1. 通过在 syslog 守护程序目录中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理 `security-config-omsagent.conf` `/etc/rsyslog.d/` 。
+    - 通过在 syslog 守护程序目录中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理 `security-config-omsagent.conf` `/etc/rsyslog.d/` 。
 
         文件的内容 `security-config-omsagent.conf` ：
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
 
-1. **重新启动 Syslog 守护程序**
+1. **重新启动 Syslog 守护程序和 Log Analytics 代理：**
 
-    `service rsyslog restart`
+    - 重新启动 rsyslog 守护程序。
+    
+        ```bash
+        service rsyslog restart
+        ```
 
-1. **将 Log Analytics 代理配置设置为侦听端口25226，并将 CEF 消息转发到 Azure Sentinel**
+    - 重新启动 Log Analytics 代理。
 
-    1. 从 Log Analytics 代理 GitHub 存储库下载配置<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
+1. **按预期验证 " *计算机* " 字段的映射：**
 
-    1. 重新启动 Log Analytics 代理<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+    - 通过运行此命令并重新启动代理，确保 syslog 源中的 " *计算机* " 字段已正确映射到 Log Analytics 代理。
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng 守护程序](#tab/syslogng)
 
 1. **下载并安装 Log Analytics 代理：**
 
-    - 下载 Log Analytics (OMS) Linux 代理的安装脚本<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - 下载 Log Analytics (OMS) Linux 代理的安装脚本。
 
-    - 安装 Log Analytics 代理<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - 安装 Log Analytics 代理。
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **将 Log Analytics 代理配置设置为侦听端口25226，并将 CEF 消息转发到 Azure Sentinel：**
+
+    - 从 Log Analytics 代理 GitHub 存储库下载配置。
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **配置 Syslog 守护程序：**
 
-    1. 使用 syslog 配置文件打开端口514进行 TCP 通信 `/etc/syslog-ng/syslog-ng.conf` 。
+    - 使用 syslog 配置文件打开端口514进行 TCP 通信 `/etc/syslog-ng/syslog-ng.conf` 。
 
-    1. 通过在 syslog 守护程序目录中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理 `security-config-omsagent.conf` `/etc/syslog-ng/conf.d/` 。
+    - 通过在 syslog 守护程序目录中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理 `security-config-omsagent.conf` `/etc/syslog-ng/conf.d/` 。
 
         文件的内容 `security-config-omsagent.conf` ：
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. **重新启动 Syslog 守护程序**
+1. **重新启动 Syslog 守护程序和 Log Analytics 代理：**
 
-    `service syslog-ng restart`
+    - 重新启动 syslog-ng 守护程序。
+    
+        ```bash
+        service syslog-ng restart
+        ```
 
-1. **将 Log Analytics 代理配置设置为侦听端口25226，并将 CEF 消息转发到 Azure Sentinel**
+    - 重新启动 Log Analytics 代理。
 
-    1. 从 Log Analytics 代理 GitHub 存储库下载配置<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. **按预期验证 " *计算机* " 字段的映射：**
+
+    - 通过运行此命令并重新启动代理，确保 syslog 源中的 " *计算机* " 字段已正确映射到 Log Analytics 代理。
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 
-    1. 重新启动 Log Analytics 代理<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
-
----
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何部署 Log Analytics 代理，将 CEF 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：

@@ -3,12 +3,12 @@ title: 使用 Azure 实验室服务设置道德黑客实验室 |Microsoft Docs
 description: 了解如何使用 Azure 实验室服务设置实验室来讲授道德黑客。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297580"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631675"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>设置实验室来讲授道德攻击类 
 本文介绍如何设置一个侧重于道德攻击辩论方的类。 渗透测试是道德黑客社区使用的一种做法，当某人试图获得对系统或网络的访问权限以证明恶意攻击者可能利用的漏洞时，就会进行渗透测试。 
@@ -22,7 +22,7 @@ ms.locfileid: "89297580"
 
 按照 [本教程](tutorial-setup-classroom-lab.md) 创建新的实验室，然后应用以下设置：
 
-| 虚拟机大小 | 映像 |
+| 虚拟机大小 | 图像 |
 | -------------------- | ----- | 
 | 中型 (嵌套虚拟化)  | Windows Server 2019 Datacenter |
 
@@ -70,26 +70,23 @@ Kali 是一个 Linux 分发版，其中包含用于渗透测试和安全审核�
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>使用 Metasploitable 映像设置嵌套 VM  
 Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用此映像来测试和查找问题。 以下说明介绍了如何使用预先创建的 Metasploitable 映像。 但是，如果需要更新版本的 Metasploitable 映像，请参阅 [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) 。
 
-1. 导航到 [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)。 填写表单以下载图像，然后选择 " **提交** " 按钮。
-1. 选择 " **立即下载 Metasploitable** " 按钮。
-1. 下载 zip 文件时，提取 zip 文件，并记住该位置。
-1. 将提取的 vmdk 文件转换为 vhdx 文件，以便可以使用 Hyper-v。 为此，请打开具有管理权限的 PowerShell，导航到 vmdk 文件所在的文件夹，然后按照以下说明进行操作：
-    1. 下载 [Microsoft 虚拟机转换器](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)，并在出现提示时运行 mvmc_setup.msi 文件。
-    1. 导入 PowerShell 模块。  安装模块的默认位置为 C:\Program Files\Microsoft Virtual Machine 转换器 \
-
-        ```powershell
-        Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
-        ```
-    1. 将 vmdk 转换为可由 Hyper-v 使用的 vhd 文件。 此操作可能需要几分钟。
-    
-        ```powershell
-        ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
-        ```
-    1. 将新创建的 metasploitable 复制到 C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\。 
+1. 下载 Metasploitable 映像。
+    1. 导航到 [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)。 填写表单以下载图像，然后选择 " **提交** " 按钮。
+    2. 选择 " **立即下载 Metasploitable** " 按钮。
+    3. 下载 zip 文件时，提取 zip 文件，并记住 Metasploitable 文件的位置。
+1. 将提取的 vmdk 文件转换为 vhdx 文件，以便可以将 vhdx 文件与 Hyper-v 配合使用。 有几种工具可用于将 VMware 映像转换为 Hyper-v 映像，反之亦然。  我们将使用 [STARWIND V2V 转换器](https://www.starwindsoftware.com/starwind-v2v-converter)。  若要下载，请参阅 [STARWIND V2V 转换器下载页](https://www.starwindsoftware.com/starwind-v2v-converter#download)。
+    1. 启动 **STARWIND V2V 转换器**。
+    1. 在 " **选择要转换的图像位置** " 页上，选择 " **本地文件**"。  选择“**下一页**”。
+    1. 在 " **源映像** " 页上，导航到并选择在上一步中为 " **文件名** " 设置解压缩的 Metasploitable。  选择“**下一页**”。
+    1. 在 " **选择目标映像位置**" 中，选择 " **本地文件**"。  选择“**下一页**”。
+    1. 在 " **选择目标映像格式** " 页上，选择 " **VHD/VHDX**"。  选择“**下一页**”。
+    1. 在 " **为 VHD/VHDX 映像格式选择选项** " 页上，选择 " **VHDX 可扩充映像**"。  选择“**下一页**”。
+    1. 在 " **选择目标文件名** " 页上，接受默认文件名。  选择“转换”****。
+    1. 在 " **转换** " 页上，等待图像转换。  此过程可能需要几分钟时间。  完成转换后，选择 " **完成** "。
 1. 创建新的 Hyper-v 虚拟机。
     1. 打开 **Hyper-v 管理器**。
     1. 选择 "**操作**" "  ->  **新建**  ->  **虚拟机**"。
-    1. 在**新建虚拟机向导**的 "**开始之前**" 页上，单击 "**下一步**"。
+    1. 在**新建虚拟机向导**的 "**开始之前**" 页上，选择 "**下一步**"。
     1. 在 " **指定名称和位置** " 页上，输入 **Metasploitable** 作为 **名称**，然后选择 " **下一步**"。
 
         ![新建 VM 映像向导](./media/class-type-ethical-hacking/new-vm-wizard-1.png)
@@ -126,7 +123,7 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
 
 有关定价的详细信息，请参阅 [Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 本文指导你完成为道德攻击类创建实验室的步骤。 它包括设置嵌套虚拟化的步骤，用于在主机虚拟机内创建两个虚拟机以进行渗透测试。
 
 ## <a name="next-steps"></a>后续步骤

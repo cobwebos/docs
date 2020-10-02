@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705888"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631301"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -97,7 +97,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
     https://sts.windows.net/{tenantid}/
 ```
 
-因此，多租户应用程序无法仅通过将元数据中的颁发者值与令牌中的 `issuer` 值进行匹配来验证令牌。 多租户应用程序需要一个逻辑来根据颁发者值的租户 ID 部分来确定哪些颁发者值有效、哪些颁发者值无效。 
+因此，多租户应用程序无法仅通过将元数据中的颁发者值与令牌中的 `issuer` 值进行匹配来验证令牌。 多租户应用程序需要一个逻辑来根据颁发者值的租户 ID 部分来确定哪些颁发者值有效、哪些颁发者值无效。
 
 例如，如果多租户应用程序只允许从已注册其服务的特定租户登录，则必须检查令牌中的颁发者值或 `tid` 声明值，以确保该租户在其订户列表中。 如果多租户应用程序只处理个人而不根据租户做出任何访问决策，则可以完全忽略颁发者值。
 
@@ -116,7 +116,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 * 委托的权限授权应用程序充当登录用户来执行该用户所能执行的一部分操作。 例如，可以向应用程序授予委托的权限来读取登录用户的日历。
 * 仅限应用的权限直接授予给应用程序的标识。 例如，可以向应用程序授予仅限应用的权限来读取租户中的用户列表，无论是谁登录此应用程序，该应用程序都能够执行此操作。
 
-有些权限可由普通用户同意，有些则需要租户管理员同意。 
+有些权限可由普通用户同意，有些则需要租户管理员同意。
 
 ### <a name="admin-consent"></a>管理员同意
 
@@ -179,10 +179,6 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 多租户应用程序也可以获取访问令牌来调用受 Azure AD 保护的 API。 配合多租户应用程序使用 Active Directory 身份验证库 (ADAL) 时经常会出现一个错误，就是一开始即使用 /common 来为用户请求令牌、接收响应，然后同样使用 /common 来为同一用户请求后续令牌。 由于从 Azure AD 返回的响应来自租户而不是 /common，因此 ADAL 缓存令牌时将它视为来自租户。 后续为了为用户获取访问令牌而执行的 /common 调用会错过缓存项，因此系统会再次提示用户登录。 为了避免缓存未命中，请确保后续为登录用户执行的调用是针对租户的终结点发出的。
 
-## <a name="next-steps"></a>后续步骤
-
-本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 启用应用与 Azure AD 之间 (SSO) 的单一登录后，还可以更新应用程序以访问 Microsoft 资源（如 Microsoft 365）公开的 Api。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要详细了解如何对 Azure AD 和 Microsoft 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
-
 ## <a name="related-content"></a>相关内容
 
 * [Multi-tenant application sample](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)（多租户应用程序示例）
@@ -191,6 +187,10 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
 * [同意框架概述][AAD-Consent-Overview]
 * [Microsoft Graph API 权限范围][MSFT-Graph-permission-scopes]
+
+## <a name="next-steps"></a>后续步骤
+
+本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 启用应用与 Azure AD 之间 (SSO) 的单一登录后，还可以更新应用程序以访问 Microsoft 资源（如 Microsoft 365）公开的 Api。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要详细了解如何对 Azure AD 和 Microsoft 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -228,8 +228,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html

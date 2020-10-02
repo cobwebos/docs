@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 6/11/2020
+ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ce9fc7a7af18a163207f8fc497149d885423607b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493799"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626439"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MariaDB 中配置服务器参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
+
+>[!Note]
+> 可以在服务器级别全局更新服务器参数，使用 [Azure CLI](./howto-configure-server-parameters-cli.md)、 [PowerShell](./howto-configure-server-parameters-using-powershell.md)或 [Azure 门户](./howto-server-parameters.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
@@ -56,7 +59,7 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 此代码会将 slow\_query\_log 配置重置为默认值 OFF。 
 
-## <a name="setting-parameters-not-listed"></a>未列出设置参数
+## <a name="setting-parameters-not-listed"></a>设置参数未列出
 如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
 更新资源组**myresourcegroup**下的服务器**mydemoserver.mariadb.database.azure.com**的**init \_ connect**服务器配置参数，以设置诸如字符集之类的值。

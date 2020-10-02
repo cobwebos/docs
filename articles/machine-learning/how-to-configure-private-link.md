@@ -1,5 +1,5 @@
 ---
-title: " (预览配置专用终结点) "
+title: 配置专用终结点
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 专用链接从虚拟网络安全地访问 Azure 机器学习工作区。
 services: machine-learning
@@ -10,34 +10,17 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/21/2020
-ms.openlocfilehash: 619960238125191e7bd4e702a49016c8fd58c847
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 1a34f8ec42969cded5921d377b1fa62276a30cc7
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296648"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630383"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a> (预览版为 Azure 机器学习工作区配置 Azure 专用链接) 
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
-本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 有关为 Azure 机器学习设置虚拟网络的信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
-
-> [!IMPORTANT]
-> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在以下区域提供：
->
-> * **美国东部**
-> * **美国中南部**
-> * **美国西部**
-> * **美国西部 2**
-> * **加拿大中部**
-> * **Southeast Asia**
-> * **Japan East**
-> * **北欧**
-> * **澳大利亚东部**
-> * **英国南部**
->
-> 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 有关创建 Azure 机器学习虚拟网络的信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
 
 使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用链接有助于降低数据外泄风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
@@ -46,21 +29,46 @@ ms.locfileid: "91296648"
 >
 > 如果使用的是 Mozilla Firefox，则在尝试访问工作区的专用终结点时可能会遇到问题。 此问题可能与 Mozilla 中的 HTTPS 上的 DNS 有关。 建议使用 Google Chrome 的 Microsoft Edge 作为解决方法。
 
-> [!TIP]
-> Azure 机器学习计算实例可以与工作区和专用终结点一起使用。 此功能目前在 **美国东部**、 **美国中南部** 和 **美国西部 2** 区域公开预览版。
-
 ## <a name="prerequisites"></a>先决条件
 
 如果计划将启用了专用链接的工作区与客户托管的密钥配合使用，则必须使用支持票证请求此功能。 有关详细信息，请参阅 [管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
+## <a name="limitations"></a>限制
+
+使用具有专用链接的 Azure 机器学习工作区在 Azure 政府区域或 Azure 中国世纪互联区域中不可用。
+
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>创建使用专用终结点的工作区
 
-> [!IMPORTANT]
-> 目前，我们仅支持在创建新的 Azure 机器学习工作区时启用专用终结点。
+使用以下方法之一创建具有专用终结点的工作区：
 
-中的模板 [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) 可用于创建具有专用终结点的工作区。
+> [!TIP]
+> 如果需要，Azure 资源管理器模板可以创建一个新的虚拟网络。 其他方法都需要现有虚拟网络。
+
+# <a name="resource-manager-template"></a>[Resource Manager 模板](#tab/azure-resource-manager)
+
+中的 Azure 资源管理器模板 [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) 提供了一种简单的方法来创建具有专用终结点和虚拟网络的工作区。
 
 有关使用此模板（包括专用终结点）的信息，请参阅 [使用 Azure 资源管理器模板创建 Azure 机器学习的工作区](how-to-create-workspace-template.md)。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Azure 机器学习 Python SDK 提供了 [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) 类，该类可用于 [工作区。创建 ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) 来创建具有专用终结点的工作区。 此类需要现有虚拟网络。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create)命令。 此命令的以下参数可用于创建具有专用网络的工作区，但它需要现有虚拟网络：
+
+* `--pe-name`：创建的专用终结点的名称。
+* `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
+* `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
+* `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
+* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+使用 Azure 机器学习 studio 中的 " __网络__ " 选项卡可以配置专用终结点。 但是，它需要现有虚拟网络。 有关详细信息，请参阅 [在门户中创建工作区](how-to-manage-workspace.md)。
+
+---
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>通过专用终结点使用工作区
 

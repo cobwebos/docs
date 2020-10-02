@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 语音翻译
-ms.openlocfilehash: e4bc2f07fce3917bfa59f79305498bb91889344d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359794"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630064"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
 
@@ -58,7 +58,7 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 * [语音设备 SDK](speech-devices-sdk.md)
 * [REST API：语音转文本](rest-speech-to-text.md)
 * [REST API：文本转语音](rest-text-to-speech.md)
-* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
+* [REST API：批量听录和自定义](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>后续步骤
 

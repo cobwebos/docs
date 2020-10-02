@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569719"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630417"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>启用 Azure Arc 的备份和还原 PostgreSQL 超大规模服务器组
 
@@ -93,8 +93,6 @@ azdata arc postgres backup create [--name <backup name>] --server-name <server g
 - __名称__ 指示备份的名称
 - __服务器名称__ 指示服务器组
 - "__否"-等待__指示命令行不会等待备份完成，你可以继续使用此命令行窗口
-
->**注意**：允许列出可用于还原的备份的命令尚未显示，即执行备份的日期/时间。 因此，建议使用包含日期/时间信息的--name 参数) 为备份 (提供名称。
 
 此命令将在构成启用了 Azure Arc 的 PostgreSQL 超大规模服务器组的所有节点之间协调分布式完整备份。 换句话说，它将备份协调器和辅助节点中的所有数据。
 

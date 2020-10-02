@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 8df50096cc123003299b86da88f9230c95854775
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 954962d4f0f16cb35035527d4cb81d0e13495a86
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450072"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631828"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -49,7 +49,7 @@ ms.locfileid: "91450072"
     + azureml-解释更新后的包取决于解读-社区0.15。0
     + 为 azureml-解读、azureml-pypi、contrib-解读和 azureml-tensorboard
   + **azureml-pipeline-core**
-    +  `OutputFileDatasetConfig`当调用时，使用 `register_on_complete` `name` 将参数设置为预先存在的数据集名称时，固定管道挂起问题。
+    +  固定管道问题 `OutputFileDatasetConfig` ：当调用时，如果将 `register_on_complete` `name` 参数设置为预先存在的数据集名称，则系统可能会停止响应。
   + **azureml-pipeline-steps**
     + 已删除过时的 databricks 笔记本。
   + **azureml-tensorboard**
@@ -125,7 +125,7 @@ ms.locfileid: "91450072"
     + 升级后的 AutoML 依赖项： `scikit-learn` (立即 0.22.1) ， `pandas` (现在 0.25.1) ， `numpy` (现在 1.18.2) 。
   + **azureml-contrib-automl-dnn-forecasting**
     + 升级后的 AutoML 依赖项： `scikit-learn` (立即 0.22.1) ， `pandas` (现在 0.25.1) ， `numpy` (现在 1.18.2) 。
-  + **azureml-contrib-fairness**
+  + **contrib-公平**
     + 提供 contrib-公平的简短说明。
   + **azureml-contrib-pipeline-steps**
     + 添加了指示此包已弃用的消息，并且用户应该改用 azureml 管道的步骤。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360644"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630145"
 ---
 # <a name="speech-service-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -142,7 +142,7 @@ GitHub 中提供了每个语音服务功能的示例代码。 这些示例涵盖
 - [语音设备 SDK](speech-devices-sdk.md)
 - [REST API：语音转文本](rest-speech-to-text.md)
 - [REST API：文本转语音](rest-text-to-speech.md)
-- [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
+- [REST API：批量听录和自定义](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>后续步骤
 

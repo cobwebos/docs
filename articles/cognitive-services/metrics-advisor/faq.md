@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934293"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631727"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>指标顾问常见问题
 
@@ -74,9 +74,26 @@ ms.locfileid: "90934293"
 
 ### <a name="more-concepts-and-technical-terms"></a>更多概念和技术术语
 
-有关详细信息，请参阅 [术语表](glossary.md) 。
+有关详细信息，另请参阅 [词汇表](glossary.md) 。
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>如何实现检测到这种异常情况吗？ 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>如何实现编写有效的查询以引入我的数据吗？  
+
+要使指标顾问引入数据，您需要创建一个查询，该查询将以单个时间戳返回数据的尺寸。 指标顾问将多次运行此查询，以从每个时间戳获取数据。 
+
+请注意，查询应在给定时间戳为每个维度组合最多返回一条记录。 返回的所有记录必须具有相同的时间戳。 查询不应返回重复记录。
+
+例如，假设你在下面创建了一个每日度量值的查询： 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+确保为时序使用正确的粒度。 对于每小时指标，你应使用： 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+请注意，这些查询仅以单个时间戳返回数据，并包含由度量顾问引入的所有维度组合。 
+
+:::image type="content" source="media/query-result.png" alt-text="F0 资源已存在时的消息" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>如何实现检测峰值 & 异常？
 

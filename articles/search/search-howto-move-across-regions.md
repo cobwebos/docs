@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007037"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629805"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>将 Azure 认知搜索服务移到另一个 Azure 区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "90007037"
 
 + 确保帐户使用的服务和功能在目标区域中受支持。
 
-+ 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
++ 对于预览功能，请确保已针对目标区域批准订阅。
 
 ## <a name="prepare-and-move"></a>准备并移动
 

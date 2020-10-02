@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658366"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628666"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect 云预配常见问题解答
 
@@ -83,6 +83,18 @@ Exchange 混合部署功能允许在本地和 Microsoft 365 中共存 Exchange �
 **问：是否可以在云预配代理中使用过渡服务器？**
 
 不支持，不支持过渡服务器。
+
+**问：是否可以同步来宾用户帐户？**
+
+否，不支持同步来宾用户帐户。
+
+**问：如果我将用户从作用域为云预配的 OU 移动到作用域为 Azure AD Connect 的 OU，会发生什么情况？**
+
+将删除并重新创建该用户。  若要将用户从作用域为云预配的 OU 中移出，将被视为删除操作。  如果将用户移动到 Azure AD Connect 管理的 OU，则会将其重新预配到 Azure AD 并创建新用户。
+
+**问：如果重命名或移动云预配筛选范围内的 OU，在 Azure AD 中创建的用户会发生什么情况？**
+
+哪个位置都不行。  如果重命名或移动了 OU，则不会删除用户。
 
 ## <a name="next-steps"></a>后续步骤 
 

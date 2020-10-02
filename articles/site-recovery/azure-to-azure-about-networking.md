@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361409"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631335"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -46,11 +46,11 @@ ms.locfileid: "91361409"
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许以下 Site Recovery URL：
 
 >[!NOTE]
-> 不应执行基于 IP 地址的允许列表来控制出站连接。
+> 不应执行基于 IP 地址的筛选来控制出站连接。
 
 **URL** | **详细信息**
 --- | ---
-\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以允许访问特定的存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *. blob.core.windows.net
+*.blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以允许访问特定的存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *. blob.core.windows.net
 login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。
 *.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。

@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419123"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631216"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
  
@@ -112,7 +112,7 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-以下用户提供的信息必须是正确的：
+用户提供的以下信息必须正确：
 
 - Key Vault 租户 ID
 - 设置为 https%3A%2F%2Fvault.azure.net（URL 编码）的资源值
@@ -128,7 +128,7 @@ resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secr
 HTTP 403 表示请求已完成身份验证（知道请求方标识），但标识无权访问请求的资源。 此错误有两种原因：
 
 - 没有为标识设置访问策略。
-- 请求方资源的 IP 地址未列入 Key Vault 防火墙设置中的允许列表。
+- 不会在密钥保管库的防火墙设置中批准请求资源的 IP 地址。
 
 如果客户的应用程序未使用客户端 ID，但客户认为已使用，则往往会出现 HTTP 403。 这通常意味着，未为实际调用方标识正确设置访问策略。
 
@@ -166,5 +166,3 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 - 如果通过缓存无法减少请求数，并且计时退避不起作用，请考虑将密钥拆分到多个 Key Vault 中。 单个订阅的服务限制是单个 Key Vault 限制的 5 倍。 如果使用 5 个以上的 Key Vault，应考虑使用多个订阅。 
 
 可在以下文章中找到详细的指导，包括如何请求提高限制：[Azure Key Vault 限制指南](overview-throttling.md)
-
-
