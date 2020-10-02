@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: b8a6e1013c131778bacb11bd885b9280fb6c6077
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 97d3b87edad56394d42daca19cdb8dbf962fade9
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182167"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649501"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
@@ -29,17 +29,15 @@ Ev4 系列规格在 Intel Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上�
 
 远程数据磁盘存储与虚拟机分开计费。 要使用高级存储磁盘，请使用 Esv4 规格。 Esv4 系列规格的定价和计费标准与 Ev4 系列相同。
 
-ACU：195 - 210
+[ACU](acu.md)： 195-210<br>
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
-高级存储：不支持
-
-高级存储缓存：不支持
-
-实时迁移：支持
-
-内存保留更新：支持
-
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数|预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|
 | Standard_E2_v4  | 2 | 16   | 仅限远程存储 | 4 | 2|1000  |
 | Standard_E4_v4  | 4 | 32  | 仅限远程存储 | 8 | 2|2000  |
@@ -55,17 +53,15 @@ ACU：195 - 210
 
 Esv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行。 Esv4 系列实例非常适合于内存密集型企业应用程序。 Esv4 系列 VM 采用 Intel&reg; 超线程技术。 远程数据磁盘存储与虚拟机分开计费。
 
-ACU：195-210
+[ACU](acu.md)：195-210<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：支持
-
-内存保留更新：支持
-
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2s_v4  | 2 | 16  | 仅限远程存储 | 4 | 3200/48 | 2|1000  |
 | Standard_E4s_v4  | 4 | 32  | 仅限远程存储 | 8 | 6400/96 | 2|2000  |
@@ -89,9 +85,9 @@ ACU：195-210
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
+有关磁盘类型的详细信息：[磁盘类型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

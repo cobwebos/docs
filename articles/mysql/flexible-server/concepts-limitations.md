@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934396"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650283"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的限制) 
 
@@ -26,6 +26,8 @@ ms.locfileid: "90934396"
 > 如果正在查找服务器参数（如和）的最小/最大值 `max_connections` `innodb_buffer_pool_size` ，则此信息已移至服务器参数概念 <!-- **[server parameters](./concepts-server-parameters.md)** --> 一文。
 
 Azure Database for MySQL 支持优化服务器参数的值。 某些参数（例如 `max_connections`、 `join_buffer_size` 、 `query_cache_size`) 由服务器的计算层和计算大小决定。 请参阅服务器参数概念 <!-- [server parameters](./concepts-server-parameters.md)--> 有关这些限制的详细信息。
+
+服务不支持密码插件，如 "validate_password" 和 "caching_sha2_password"。
 
 ## <a name="storage-engines"></a>存储引擎
 

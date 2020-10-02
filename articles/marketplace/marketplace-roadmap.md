@@ -7,30 +7,25 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 05/19/2020
-ms.openlocfilehash: f5325f2eeb6b3c1866db7db0b99b2885623e6d5a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 11f3f8a81f4b9e9b932355ca08551532ae498491
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91626405"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650963"
 ---
-# <a name="microsoft-commercial-marketplace-resources"></a>Microsoft 商业市场资源
+# <a name="quick-links-to-blogs-forums-and-other-resources"></a>指向博客、论坛和其他资源的快速链接
 
 请参阅以下资源，了解有关 Microsoft 商用 marketplace 和合作伙伴中心的最新版本和其他更新的信息。
 
 * [Microsoft AppSource 和 Azure 市场 - 合作伙伴社区论坛](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
 * [合作伙伴中心公告](/partner-center/announcements/)
 * [市场和云解决方案提供商 (CSP) 更新博客](https://aka.ms/marketplacemarchupdateblog)
-* [将产品/服务发布到 CSP 通道 (ISV)](./cloud-solution-providers.md)
-* [转售市场产品/服务 (CSP)](https://aka.ms/marketplaceincsp)
 * [Microsoft 商业市场的标准协定](./standard-contract.md)
 * [SaaS 履行 API](./partner-center-portal/pc-saas-fulfillment-apis.md)
-* [商业市场的地域可用性和货币支持](marketplace-geo-availability-currencies.md)
-* [合作伙伴中心内的商业市场分析](partner-center-portal/analytics.md)
 * [Microsoft Build 市场博客](https://aka.ms/marketplacebuildblog)
 * [市场可能会更新博客](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* 合作伙伴中心：[创建帐户](partner-center-portal/create-account.md) / [管理帐户](partner-center-portal/manage-account.md) / [从 CPP 迁移](partner-center-portal/account-migration-from-cpp-to-pc.md)
-* 合作伙伴中心：[创建 SaaS 产品](partner-center-portal/create-new-saas-offer.md)  /  [发布状态](partner-center-portal/publishing-status.md)) /[更新现有产品](partner-center-portal/update-existing-offer.md)/  /  [服务分析](partner-center-portal/analytics.md)
-* [在合作伙伴中心获取市场支持](partner-center-portal/support.md)
+* [将产品/服务发布到 CSP 通道 (ISV)](./cloud-solution-providers.md)
+* [转售市场产品/服务 (CSP)](https://aka.ms/marketplaceincsp)
 
 欢迎提供建议！ 加入 [Microsoft 合作伙伴社区](https://www.microsoftpartnercommunity.com/)中的对话，获取新功能、计划和事件的最新更新。

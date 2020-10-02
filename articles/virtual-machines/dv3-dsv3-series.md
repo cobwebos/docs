@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: db85774dd1cf1e7dd5a284182faf354004671618
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891769"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649637"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
@@ -28,15 +28,13 @@ Dv3 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® Pl
 
 Dv3 系列 VM 采用 Intel® 超线程技术。
 
-ACU：160-190
-
-高级存储：不支持
-
-高级存储缓存：不支持
-
-实时迁移：支持
-
-内存保留更新：支持
+[ACU](acu.md)：160-190<br>
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大 NIC 数/网络带宽 |
 |---|---|---|---|---|---|---|
@@ -54,15 +52,13 @@ Dsv3 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® P
 
 Dsv3 系列 VM 采用 Intel® 超线程技术。
 
-ACU：160-190
-
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：支持
-
-内存保留更新：支持
+[ACU](acu.md)：160-190<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大突发缓存和临时存储吞吐量： IOPS/MBps<sup>1</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大突发未缓存磁盘吞吐量： IOPS/MBps<sup>1</sup> | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|

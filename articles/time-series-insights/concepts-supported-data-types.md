@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 9dbc66e3331325e9b79d0434fb452d01d69d550a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 11199e5a283459d7d97f649322f9d41fc7b3e11d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482583"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650788"
 ---
 # <a name="supported-data-types"></a>支持的数据类型
 
@@ -27,7 +27,7 @@ ms.locfileid: "89482583"
 | **double** | 一个双精度 64 位数字  | `"value": 31.0482941` | `$event.value.Double` 或 `$event['value'].Double` |  `value_double`
 | **long** | 已签名的 64 位整数  | `"value" : 31` | `$event.value.Long` 或 `$event['value'].Long` |  `value_long`
 | **string** | 文本值，必须包含有效的 UTF-8。 Null 字符串和空字符串的处理方式相同。 |  `"site": "DIM_MLGGG"`| `$event.site.String` 或 `$event['site'].String`| `site_string`
-| **dynamic** | 一个复杂的（非基元）类型，由数组或属性包（字典）组成。 目前只会将基元的字符串化 JSON 数组或不包含 TS ID 或时间戳属性的对象数组存储为动态数组。 请阅读此[文章](./concepts-json-flattening-escaping-rules.md)，了解对象如何平展，以及数组如何展开。 仅可通过 `Explore Events` 在时序见解资源管理器中选择以查看原始事件或通过 [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) 用于客户端分析的查询 API 来访问存储为此类型的负载属性   。 |  `"values": "[197, 194, 189, 188]"` | 尚不支持在时序表达式中引用动态类型 | `values_dynamic`
+| **dynamic** | 一个复杂的（非基元）类型，由数组或属性包（字典）组成。 目前只会将基元的字符串化 JSON 数组或不包含 TS ID 或时间戳属性的对象数组存储为动态数组。 请阅读此[文章](./concepts-json-flattening-escaping-rules.md)，了解对象如何平展，以及数组如何展开。 存储为此类型的有效负载属性只能通过以下方式进行访问：在时序见解资源管理器中选择 `Explore Events` 来查看原始事件，或者使用用于客户端分析的 [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)  查询 API。 |  `"values": "[197, 194, 189, 188]"` | 尚不支持在时序表达式中引用动态类型 | `values_dynamic`
 
 > [!NOTE]
 > 支持 64 位整数值，但是由于 JavaScript 的限制，Azure 时序见解资源管理器可以安全地表示的最大值是 9,007,199,254,740,991 (2^53-1)。 如果在以上数据模型中使用数字，可以通过创建[时序模型变量](/azure/time-series-insights/concepts-variables#numeric-variables)和[转换](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions)值来减小大小。

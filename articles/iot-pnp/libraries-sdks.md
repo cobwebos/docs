@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 75ad3cef85809caee06a206ece0538c2b4f13299
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 1b534c6ccb3bfca6c7dddaec82d8794deae72ff2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613367"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651303"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>用于 IoT 的 Microsoft Sdk 即插即用
 
@@ -25,7 +25,7 @@ IoT 即插即用库和 Sdk 使开发人员能够在多个平台上使用各种�
 |---|---|---|---|---|---|
 | C-设备 | [vcpkg 1.3。9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md) | [GitHub](https://github.com/Azure/azure-iot-sdk-c) | [示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp) | [连接到 IoT 中心](quickstart-connect-device-c.md) | [引用](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/) |
 | .NET-设备 | [NuGet 1.31。0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/) | [示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples) | [连接到 IoT 中心](quickstart-connect-device-csharp.md) | [引用](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client?view=azure-dotnet&preserve-view=true) |
-| Java-设备 | [Maven 1.25。0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [连接到 IoT 中心](quickstart-connect-device-java.md) | [引用](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device?view=azure-java-stable&preserve-view=true) |
+| Java-设备 | [Maven 1.26。0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [连接到 IoT 中心](quickstart-connect-device-java.md) | [引用](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device?view=azure-java-stable&preserve-view=true) |
 | Python-设备 | [pip 2.3。0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [连接到 IoT 中心](quickstart-connect-device-python.md) | [引用](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device?view=azure-python&preserve-view=true) |
 | 节点-设备 | [npm 1.17。2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [连接到 IoT 中心](quickstart-connect-device-node.md) | [引用](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-node-latest&preserve-view=true) |
 | Embedded C-设备 | 空值 | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [示例](howto-use-embedded-c.md#samples) | [如何使用嵌入的 C](howto-use-embedded-c.md) | 不可用

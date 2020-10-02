@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: df78d11ce19c1d1fbbb04d2cd1718be74401cd83
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 59c00b06f1fef613b00ade13c7cacc0b88e61bf1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182150"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649540"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 和 Dsv4 系列
 
@@ -28,17 +28,15 @@ Dv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运�
 
 远程数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 Dsv4 规格。 Dsv4 规格的定价和计费标准与 Dv4 系列的相同。
 
-ACU：195-210
+[ACU](acu.md)：195-210<br>
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
-高级存储：不支持
-
-高级存储缓存：不支持
-
-实时迁移：支持
-
-内存保留更新：支持
-
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数|预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|
 | Standard_D2_v4 | 2 | 8 | 仅限远程存储 | 4 | 2|1000 |
 | Standard_D4_v4 | 4 | 16  | 仅限远程存储 | 8 | 2|2000 |
@@ -52,17 +50,15 @@ ACU：195-210
 
 Dsv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运行。 Dv4 系列规格为大多数生产工作负载提供 vCPU、内存和远程存储选项组合。 Dsv4 系列 VM 采用 [Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)。 远程数据磁盘存储与虚拟机分开计费。
 
-ACU：195-210
+[ACU](acu.md)：195-210<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+<br>
 
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：支持
-
-内存保留更新：支持
-
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2s_v4 | 2 | 8  | 仅限远程存储 | 4 | 3200/48 | 2|1000 |
 | Standard_D4s_v4 | 4 | 16 | 仅限远程存储 | 8 | 6400/96 | 2|2000 |

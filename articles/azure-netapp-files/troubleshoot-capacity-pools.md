@@ -14,31 +14,24 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 0b5558501042dd7816202ea05b3a332b23400ff4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e7e3c2eb058d3549f2e1a10ffacf01fd354fbd47
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341377"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651048"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>排查容量池问题
 
 本文介绍管理容量池时可能遇到的问题的解决方法。 
 
-## <a name="issues-creating-a-capacity-pool"></a>创建容量池时出现问题
+## <a name="error-conditions-and-resolutions"></a>错误情况和解决方法 
 
-请确保容量池计数不超过限制。 请参阅 [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)。  如果计数低于限制并且仍遇到问题，请提交支持票证并指定容量池名称。
-
-## <a name="issues-deleting-a-capacity-pool"></a>删除容量池时出现问题
-
-请确保已删除订阅中尝试删除容量池的所有 Azure NetApp 文件卷和快照。   
-
-如果已删除所有卷和快照并且仍无法删除容量池，则对资源的引用可能仍然存在，而不会显示在门户中。 在这种情况下，请提交支持票证，并指定已执行上述建议步骤。 
-
-## <a name="volume-creation-or-modification-fails-with-requested-throughput-not-available-error"></a>卷创建或修改失败，出现 "请求的吞吐量不可用" 错误
-
-卷的可用吞吐量取决于容量池的大小和服务级别。 如果没有足够的吞吐量，则应增加池大小或调整现有的卷吞吐量。
-
+|     添加状态    |     解决方法    |
+|-|-|
+| 创建容量池时出现问题 |  请确保容量池计数不超过限制。 请参阅 [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)。  如果计数低于限制并且仍遇到问题，请提交支持票证并指定容量池名称。 |
+| 删除容量池时出现问题  |  请确保在尝试删除容量池的订阅中删除所有 Azure NetApp 文件的卷和快照。 <br> 如果已删除所有卷和快照并且仍无法删除容量池，则对资源的引用可能仍然存在，而不会在门户中显示。 在这种情况下，请提交支持票证，并指定已执行上述建议步骤。 |
+| 卷创建或修改失败，出现 `Requested throughput not available` 错误 | 卷的可用吞吐量取决于容量池的大小和服务级别。 如果没有足够的吞吐量，则应增加池大小或调整现有的卷吞吐量。 | 
 
 ## <a name="next-steps"></a>后续步骤  
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f95ffb662d830c432d3286eca8c935e2737f8043
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648354"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649535"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
@@ -20,19 +20,17 @@ Eav4 系列和 Easv4 系列在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup
 
 ## <a name="eav4-series"></a>Eav4 系列
 
-ACU： 230-260
-
-高级存储：不支持
-
-高级存储缓存：不支持
-
-实时迁移：支持
-
-内存保留更新：支持
+[ACU](acu.md)： 230-260<br>
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
 Eav4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率，并使用高级 SSD。 Eav4 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级 SSD，请使用 Easv4 系列大小。 Easv4 大小的定价和计费标准与 Eav3 系列相同。
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大 NIC 数 | 预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
 | -----|-----|-----|-----|-----|-----|-----|-----|
 | 标准 \_ E2a \_ v4|2|16|50|4|3000/46/23|2 | 1000 |
 | 标准 \_ E4a \_ v4|4|32|100|8|6000/93/46|2 | 2000 |
@@ -46,15 +44,13 @@ Eav4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实�
 
 ## <a name="easv4-series"></a>Easv4 系列
 
-ACU： 230-260
-
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：支持
-
-内存保留更新：支持
+[ACU](acu.md)： 230-260<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
 Easv4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率，并使用高级 SSD。 Easv4 系列大小适用于内存密集型企业应用程序。
 
@@ -81,9 +77,9 @@ Easv4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实�
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
+有关磁盘类型的详细信息：[磁盘类型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>后续步骤
 

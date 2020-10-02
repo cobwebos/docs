@@ -5,29 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 10/01/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: scottsta
-ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.reviewer: calui
+ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419523"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650300"
 ---
-# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID （预览版）登录到 Azure Active Directory
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID (预览版登录到 Azure Active Directory) 
 
-许多组织希望让用户使用与其本地目录环境相同的凭据登录到 Azure Active Directory （Azure AD）。 使用此方法（称为混合身份验证），用户只需记住一组凭据。
+许多组织希望让用户使用与其本地目录环境相同的凭据登录到 Azure Active Directory (Azure AD) 。 使用此方法（称为混合身份验证），用户只需记住一组凭据。
 
 一些组织尚未转换为使用混合身份验证，原因如下：
 
-* 默认情况下，Azure AD 用户主体名称（UPN）设置为与本地目录相同的 UPN。
+* 默认情况下，Azure AD 用户主体名称 (UPN) 设置为与本地目录相同的 UPN。
 * 更改 Azure AD UPN 将在本地和 Azure AD 环境之间创建错误匹配，这可能会导致某些应用程序和服务出现问题。
 * 由于业务或合规性原因，组织不希望使用本地 UPN 登录到 Azure AD。
 
 若要帮助移动到混合身份验证，你现在可以将 Azure AD 配置为允许用户使用已验证域中的电子邮件作为备用登录 ID 进行登录。 例如，如果 Contoso 更名为 Fabrikam，现在就可以不再使用旧 `balas@contoso.com` UPN 登录，而是可以使用电子邮件作为备用登录 ID 。 若要访问应用程序或服务，用户可以使用分配的电子邮件（例如）登录到 Azure AD `balas@fabrikam.com` 。
+
+本文介绍如何启用电子邮件并将其用作备用登录 ID。 Azure AD Free 版和更高版本中提供此功能。
 
 > [!NOTE]
 > 使用电子邮件作为备用登录 ID 登录到 Azure AD 是 Azure Active Directory 的一项公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -42,19 +44,21 @@ ms.locfileid: "87419523"
 
 此问题的典型解决方法是将 Azure AD UPN 设置为用户希望登录时所用的电子邮件地址。 虽然这种方法有效，但在本地 AD 与 Azure AD 中的 Upn 不同，并且此配置与所有 Microsoft 365 工作负荷都不兼容。
 
-另一种方法是将 Azure AD 和本地 Upn 同步到相同的值，然后将 Azure AD 配置为允许用户使用已验证的电子邮件登录到 Azure AD。 若要提供此功能，请在本地目录中的用户*ProxyAddresses*属性中定义一个或多个电子邮件地址。 然后，将*ProxyAddresses*同步到使用 Azure AD Connect 自动 Azure AD。
+另一种方法是将 Azure AD 和本地 Upn 同步到相同的值，然后将 Azure AD 配置为允许用户使用已验证的电子邮件登录到 Azure AD。 若要提供此功能，请在本地目录中的用户 *ProxyAddresses* 属性中定义一个或多个电子邮件地址。 然后，将*ProxyAddresses*同步到使用 Azure AD Connect 自动 Azure AD。
 
 ## <a name="preview-limitations"></a>预览版限制
+
+如果 Azure AD Free 版本和更高版本中提供备用登录 ID，请使用电子邮件登录到 Azure AD。
 
 在当前预览状态下，当用户使用非 UPN 电子邮件作为备用登录 ID 登录时，会出现以下限制：
 
 * 用户可能会看到其 UPN，即使是通过其非 UPN 电子邮件登录的。 可能会出现以下示例行为：
     * 当定向到 Azure AD 登录时，系统将提示用户登录 UPN `login_hint=<non-UPN email>` 。
     * 当用户使用非 UPN 电子邮件登录并输入错误密码时， *"输入密码"* 页将更改以显示 UPN。
-    * 在某些 Microsoft 网站和应用（例如 [https://portal.azure.com](https://portal.azure.com) 和 Microsoft Office）上，通常显示在右上角的 "**帐户管理器**" 控件可能会显示用户的 UPN，而不是用于登录的非 UPN 电子邮件。
+    * 在某些 Microsoft 网站和应用（例如 [https://portal.azure.com](https://portal.azure.com) 和 Microsoft Office）上，通常显示在右上角的 " **帐户管理器** " 控件可能会显示用户的 UPN，而不是用于登录的非 UPN 电子邮件。
 
 * 某些流当前与非 UPN 电子邮件不兼容，如下所示：
-    * 标识保护当前不匹配电子邮件备用登录 Id，其中包含*泄漏的凭据*风险检测。 此风险检测使用 UPN 来匹配已泄漏的凭据。 有关详细信息，请参阅[Azure AD Identity Protection 风险检测和修正][identity-protection]。
+    * 标识保护当前不匹配电子邮件备用登录 Id，其中包含 *泄漏的凭据* 风险检测。 此风险检测使用 UPN 来匹配已泄漏的凭据。 有关详细信息，请参阅 [Azure AD Identity Protection 风险检测和修正][identity-protection]。
     * 不完全支持将 B2B 邀请发送到备用登录 ID 的电子邮件。 接受作为备用登录 ID 发送到电子邮件的邀请后，使用备用电子邮件登录可能对租户终结点上的用户不起作用。
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>将登录电子邮件地址同步到 Azure AD

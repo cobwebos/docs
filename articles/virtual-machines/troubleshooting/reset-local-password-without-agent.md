@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: c7e6772799d98cd2997a1fe6b48efe1c7632cfaa
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 4cec8f77cacc5d3492dd6a5f8a8baa060f910763
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598386"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650590"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>脱机重置 Azure VM 的本地 Windows 密码
 如果已安装 Azure 来宾代理，可以使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重置 Azure 中 VM 的本地 Windows 密码。 此方法是重置 Azure VM 密码的主要方法。 如果遇到了 Azure 来宾代理无响应的问题，或者上传自定义映像后无法安装，可以手动重置 Windows 密码。 本文详细说明如何通过将源 OS 虚拟磁盘附加到另一个 VM 来重置本地帐户密码。 本文所述的步骤不适用于 Windows 域控制器。 
@@ -59,7 +59,7 @@ ms.locfileid: "91598386"
      Version=1
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
 4. 在 `\Windows\System32\GroupPolicy\Machine\Scripts\` 中创建 `scripts.ini` 确保隐藏的文件夹已显示。 如果需要，请创建 `Machine` 或 `Scripts` 文件夹。 
    
@@ -71,10 +71,10 @@ ms.locfileid: "91598386"
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="创建 gpt.ini" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="创建 gpt.ini":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
    
     定义新密码时，必须符合针对 VM 配置的密码复杂性要求。
 
@@ -106,31 +106,31 @@ ms.locfileid: "91598386"
    
    * 在 Azure 门户中选择 VM，然后单击“删除”：
      
-     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
 2. 将源 VM 的 OS 磁盘附加到故障排除 VM。 故障排除 VM 必须与源 VM 的 OS 磁盘位于同一区域（例如 `West US`）：
    
    1. 在 Azure 门户中选择故障排除 VM。 单击“磁盘” | “附加现有磁盘”： 
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="创建 gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
      
    2. 选择“VHD 文件”，并选择包含源 VM 的存储帐户： 
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="创建 gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
      
    3. 选中标有“显示经典存储帐户”的框，然后选择源容器。 源容器通常为 *vhds*：
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="创建 gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="创建 gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
      
    4. 选择要附加的 OS VHD。 单击“选择”完成该过程： 
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="创建 gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
    5. 单击“确定”以附加磁盘
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="创建 gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
 3. 使用远程桌面连接到故障排除的 VM，确保源 VM 的 OS 磁盘可见：
 
@@ -140,7 +140,7 @@ ms.locfileid: "91598386"
 
    3. 在文件资源管理器中，找到附加的数据磁盘。 如果源 VM 的 VHD 是附加到故障排除 VM 的唯一数据磁盘，它应该是 F: 驱动器：
      
-      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="创建 gpt.ini":::
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
 4. 在源 VM 的驱动器上的 `\Windows\System32\GroupPolicy` 中创建 `gpt.ini`（如果存在 `gpt.ini`，请将它重命名为 `gpt.ini.bak`）：
    
@@ -156,7 +156,7 @@ ms.locfileid: "91598386"
      Version=1
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
 5. 在 `\Windows\System32\GroupPolicy\Machine\Scripts\` 中创建 `scripts.ini` 确保隐藏的文件夹已显示。 如果需要，请创建 `Machine` 或 `Scripts` 文件夹。
    
@@ -168,10 +168,10 @@ ms.locfileid: "91598386"
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="创建 gpt.ini" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="创建 gpt.ini":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
    
     定义新密码时，必须符合针对 VM 配置的密码复杂性要求。
 
@@ -181,17 +181,17 @@ ms.locfileid: "91598386"
    
    2. 选择在步骤 2 中附加的数据磁盘，单击“分离”，然后单击“确定”。
 
-     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
      
-     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
 8. 从源 VM 的 OS 磁盘创建一个 VM：
    
-     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="创建 gpt.ini":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="显示对 gpt.ini 文件进行的更新的屏幕截图。":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>完成创建虚拟机体验
 

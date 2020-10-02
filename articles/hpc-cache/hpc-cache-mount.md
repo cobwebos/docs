@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: e29d031bc3461c4adab87b1d784ef19c89c7c12d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612994"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651422"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>装载 Azure HPC 缓存
 
@@ -79,7 +79,7 @@ Azure 门户中的 " [装入说明](#use-the-mount-instructions-utility) " 页�
 
 1. 选择要用于客户端的 **虚拟命名空间路径** 。 这些路径链接到后端存储系统上的导出。
 
-   !["命名空间路径" 字段的屏幕截图，其中打开了选择器](media/mount-select-target.png)
+   ![显示 "虚拟命名空间路径" 字段并打开选择器的屏幕截图。](media/mount-select-target.png)
 
    可以在 **命名空间** 门户页上查看和更改虚拟命名空间路径。 请参阅 [设置聚合命名空间](add-namespace-paths.md) 以了解如何操作。
 

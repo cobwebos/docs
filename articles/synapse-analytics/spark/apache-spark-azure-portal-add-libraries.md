@@ -9,12 +9,12 @@ ms.date: 07/22/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b815dd9218ac395786e7ab7ed3a02ba440fe2807
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260166"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649892"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理 Apache Spark 的库
 
@@ -85,7 +85,7 @@ alabaster==0.7.10
 
  4. 使用文件选择器上载环境配置文件。
 
-![添加 Python 库](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "添加 Python 库")
+![突出显示 "上传环境配置文件" 按钮的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "添加 Python 库")
 
 ### <a name="verify-installed-libraries"></a>验证安装的库
 

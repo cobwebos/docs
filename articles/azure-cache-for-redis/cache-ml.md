@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 268293fc1391346090c1423a4290e25a57fbe666
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637147"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650181"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>将机器学习模型部署到使用 Redis 的 Azure Cache Azure Functions 
 
@@ -23,7 +23,7 @@ ms.locfileid: "91637147"
 > 虽然 Azure 机器学习和 Azure Functions 都已正式发布，但将模型从机器学习服务部署到 Functions 的功能目前处于预览阶段。  
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/)。
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)一文。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
@@ -318,5 +318,5 @@ print(model_package.location)
 * 详细了解 [适用于 Redis 的 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview)
 * 通过 [Functions](/azure/azure-functions/functions-create-function-linux-custom-image) 文档，了解如何配置 Functions 应用。
 * [API 参考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) 
-* [创建使用 Azure Redis 缓存的 Python 应用](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started)
+* 创建 [使用适用于 Redis 的 Azure 缓存的 Python 应用](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started)
 

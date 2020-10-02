@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 9b79a0f21135e91ab72a4c8a9e604b84b67df0a9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: ed653ffb6fc24a75170d51d345c0c64724ff90f1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902819"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651015"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器中创建数据库和用户
 
@@ -35,7 +35,8 @@ ms.locfileid: "90902819"
 创建 Azure Database for MySQL 服务器后，你可以使用第一个服务器管理员用户帐户来创建其他用户，并授予这些用户管理员访问权限。 此外，服务器管理员帐户还可以用于创建只能访问各个数据库架构的权限较低的用户。
 
 > [!NOTE]
-> 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privilege-support)，以了解服务中不支持的权限。
+> 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privileges--data-manipulation-support)，以了解服务中不支持的权限。<br><br>
+> 服务不支持密码插件，如 "validate_password" 和 "caching_sha2_password"。
 
 ## <a name="how-to-create-database-with-non-admin-user-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中创建具有非管理员用户的数据库
 
@@ -69,12 +70,12 @@ ms.locfileid: "90902819"
 
 5. 使用新用户名和密码登录到服务器，指定选定的数据库。 此示例显示了 mysql 命令行。 使用此命令，会提示你输入用户名的密码。 替换你自己的服务器名称、数据库名称和用户名。
 
-# <a name="single-server"></a>[单台服务器](#tab/single-server)
+# <a name="single-server"></a>单一服务器
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-# <a name="flexible-server"></a>[灵活的服务器](#tab/flexible-server)
+# <a name="flexible-server"></a>灵活服务器
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
@@ -106,6 +107,10 @@ ms.locfileid: "90902819"
 
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
+
+## <a name="azure_superuser"></a>azure_superuser
+
+所有 Azure Database for MySQL 服务器都是使用名为 "azure_superuser" 的用户创建的。 这是由 Microsoft 创建的系统帐户，用于管理服务器以执行监视、备份和其他定期维护。 待命工程师还可以使用此帐户在使用证书身份验证的情况下访问服务器，并且必须使用实时 (JIT) 过程请求访问。
 
 ## <a name="next-steps"></a>后续步骤
 

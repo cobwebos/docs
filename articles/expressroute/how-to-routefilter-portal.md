@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 37f8903adbc676ae2e48e2ef5841d8f5b122842c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 468c7a0113a4603f4f47bb529145261ff50d96d4
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566239"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650538"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "89566239"
 
 可以通过 Microsoft 对等互连访问 Microsoft 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Business）以及 Azure 服务（如存储和 SQL 数据库）。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
-如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 你可以：
+如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 您可以：
 
 - 通过在 BGP 团体上应用路由筛选器，筛选出不需要的前缀。 这是标准的网络做法，通常在多个网络中使用。
 
@@ -60,7 +60,7 @@ ms.locfileid: "89566239"
 
 -  必须将路由筛选器附加到 ExpressRoute 线路。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 开始配置之前，请确保满足以下条件：
 
@@ -88,33 +88,33 @@ ms.locfileid: "89566239"
 ### <a name="1-create-a-route-filter"></a>1. 创建路由筛选器
 可以通过选择创建新资源的选项来创建路由筛选器。 单击 "**创建资源**  >  **Networking**  >  " "网络" "**RouteFilter**"，如下图所示：
 
-![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
+![显示 "路由筛选器" 页的屏幕截图。](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 必须将路由筛选器放置在资源组中。 
 
-![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter.png)
+![屏幕截图显示 "创建路由筛选器" 页，其中包含输入的示例值。](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2. 创建筛选规则
 
 可通过选择管理规则选项卡添加和更新路由筛选器规则。
 
-![创建路由筛选器](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![显示 "概述" 页面并突出显示 "管理规则" 操作的屏幕截图。](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 可从下拉列表中选择希望连接的服务，并在完成后保存规则。
 
-![创建路由筛选器](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
+![显示 "管理规则" 窗口的屏幕截图，其中选择了 "允许的服务社区" 下拉列表中的服务。](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
 
 可通过选择“添加线路”按钮并从下拉列表中选择 ExpressRoute 线路将路由筛选器附加到线路。
 
-![创建路由筛选器](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
+![显示 "概述" 页并选择 "添加线路" 操作的屏幕截图。](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 如果连接服务提供商为 ExpressRoute 线路配置了对等互连，请先从 ExpressRoute 线路边栏选项卡中刷新线路，再选择“添加线路”按钮。
 
-![创建路由筛选器](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
+![显示 "概述" 页并选择 "刷新" 操作的屏幕截图。](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="common-tasks"></a><a name="tasks"></a>常见任务
 
@@ -122,7 +122,7 @@ ms.locfileid: "89566239"
 
 在门户中打开资源时，可以查看路由筛选器的属性。
 
-![创建路由筛选器](./media/how-to-routefilter-portal/ViewRouteFilter.png)
+![显示 "概述" 页的屏幕截图。](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>更新路由筛选器的属性
@@ -130,16 +130,16 @@ ms.locfileid: "89566239"
 可通过选择“管理规则”按钮更新附加到线路的 BGP 社区值列表。
 
 
-![创建路由筛选器](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![显示 "概述" 页面并突出显示 "管理规则" 操作的屏幕截图。](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![创建路由筛选器](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
+![显示选择了服务的 "管理规则" 窗口的屏幕截图。](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
 
 若要从路由筛选器中分离线路，请右键单击线路并单击“取消关联”。
 
-![创建路由筛选器](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
+![显示 "概述" 页的屏幕截图，其中突出显示了 "取消关联" 操作。](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="to-delete-a-route-filter"></a><a name="delete"></a>删除路由筛选器

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: lahugh
-ms.openlocfilehash: 2fe09d785d282b0f3954e2285b15458c867a9401
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906192"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649569"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -26,15 +26,13 @@ Ev3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 
 Ev3 系列 VM 的 Intel®超线程技术功能。
 
-ACU：160 - 190
-
-高级存储：不支持
-
-高级存储缓存：不支持
-
-实时迁移：支持
-
-内存保留更新：支持
+[ACU](acu.md)： 160-190<br>
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大网卡数/网络带宽等级 |
 |---|---|---|---|---|---|---|
@@ -58,15 +56,13 @@ Esv3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeo
 
 Esv3 系列 VM 的 Intel®超线程技术功能。
 
-ACU：160-190
-
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：支持
-
-内存保留更新：支持
+[ACU](acu.md)：160-190<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 缓存突发缓存和临时存储吞吐量： IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发未缓存磁盘吞吐量： IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|

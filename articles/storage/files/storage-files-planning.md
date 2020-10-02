@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563420"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649943"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -117,7 +117,7 @@ Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azur
 
 通常情况下，Azure 文件的功能和与其他服务的互操作性在高级文件共享和标准文件共享之间是相同的 (包括) 的事务优化、热和冷文件共享，但有几个重要的区别：
 - **计费模式**
-    - 高级文件共享使用预配的计费模式进行计费，这意味着你需要为预配的存储量而不是实际请求的存储量付费。 
+    - 高级文件共享使用预配的计费模式进行计费，这意味着你预配了多少存储空间，而不是使用的存储量。 静态事务和元数据不会产生额外的费用。
     - 标准文件共享使用即用即付模型进行计费，其中包括实际使用的存储量的基本成本，并根据使用共享的方式增加事务成本。 如果使用标准文件共享，则在 Azure 文件共享) 使用 (读/写/装载时，计费将会增加。
 - **冗余选项**
     - 高级文件共享仅适用于本地冗余 (LRS) 和区域冗余 (ZRS) 存储。
@@ -126,7 +126,7 @@ Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azur
     - 高级文件共享最多可预配 100 TiB，无需任何额外的操作。
     - 默认情况下，标准文件共享的上限是 5 TiB，但可以通过选择“大文件共享”存储帐户功能标志将共享限制增加到 100 TiB。 对于本地冗余存储帐户或区域冗余存储帐户，标准文件共享的上限是 100 TiB。 有关增加文件共享大小的详细信息，请参阅[启用和创建大文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)。
 - **区域可用性**
-    - 高级文件共享在每个区域中都不可用，区域冗余支持在一小部分区域中提供。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 若要找出哪些区域支持 ZRS，请参阅 [按区域的 Azure 可用性区域支持](../../availability-zones/az-region.md)。 若要帮助我们确定新的区域和高级层功能的优先级，请填写此 [调查](https://aka.ms/pfsfeedback)。
+    - 大多数 Azure 区域中都提供高级文件共享，但有几个区域除外。 区域冗余支持在区域的一个子集内提供。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 若要找出支持 ZRS 的区域，请参阅 [区域冗余存储](../common/storage-redundancy.md#zone-redundant-storage)。 若要帮助我们确定新的区域和高级层功能的优先级，请填写此 [调查](https://aka.ms/pfsfeedback)。
     - 标准文件共享在每个 Azure 区域中可用。
 - Azure Kubernetes 服务 (AKS) 在 1.13 及更高版本中支持高级文件共享。
 

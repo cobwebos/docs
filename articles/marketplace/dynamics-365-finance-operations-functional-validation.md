@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016233"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651150"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 财务和运营功能验证
 
@@ -52,15 +52,15 @@ Microsoft 认证团队将查看视频和文件，然后批准解决方案或有�
 
     1. 请参阅**LCS**  >  **业务流程建模**器  >  **项目库**。 拍摄所有过程步骤的屏幕截图。 包括 **关系图** 和 **查看** 的列，如下所示：
 
-       :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="显示 项目库 窗口。":::
+       :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="显示 &quot;项目库&quot; 窗口。":::
 
       2. 请参阅**LCS**  >  **解决方案管理**  >  **测试解决方案包**。 获取包含这些示例中所示的程序包概述和内容的屏幕截图：
 
     | 字段 | 映像 <img src="" width="400px">|
     | --- | --- |
-    | 包概述 | [![包概述屏幕](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
+    | 包概述 | [![显示 "包概述" 窗口的屏幕截图。](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>解决方案审批者</li></ul> | [![包概述屏幕](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | 包的内容<ul><li>型号</li><li>软件可部署包</li></ul> | [![包内容屏幕1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | 包的内容<ul><li>建模</li><li>软件可部署包</li></ul> | [![包内容屏幕1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>GER 配置</li><li>数据库备份</li></ul><br>**GER 配置**节中不需要项目。 | [![包内容屏幕2](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI 报表模型</li><li>BPM 项目</li></ul><br>**Power BI**部分中不需要项目。 | [![包内容屏幕3](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>处理数据包</li><li>解决方案许可协议和隐私策略</li></ul><br>**GER 配置**和**Power BI 报表模型**节对于财务和操作产品/服务是可选的。 | [![包内容屏幕4](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

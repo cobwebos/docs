@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3bc68b7f4682ff00d2b93a75e39e0e5eabe4637b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287434"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650759"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>流式引入吞吐量限制
 
@@ -28,7 +28,7 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 一般而言，引入速率被视为与组织中的设备数、事件发出频率以及每个事件的大小因素有关：
 
-*  设备数 × 事件发射频率 × 每个事件大小  。
+* 设备数 × 事件发射频率 × 每个事件大小  。
 
 默认情况下，对于每个 Azure 时序见解第 2 代环境，Azure 时序见解第 2 代可按**每秒最多 1 兆字节 (MBps)** 的速率引入传入的数据。 存在针对[单个中心分区](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)的其他限制。
 
@@ -36,12 +36,12 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 >
 > * 我们可按请求提供最高 8 MBps 引入速度的环境支持。
 > * 如果需要更高的吞吐量，请通过 Azure 门户提交支持票证来联系我们。
- 
+
 * **示例 1：**
 
     Contoso Shipping 有 100,000 台设备，每分钟发出事件三次。 事件的大小为 200 字节。 它们使用包含 4 个分区的 IoT 中心作为 Azure 时序见解第 2 代事件源。
 
-    * 其 Azure 时序见解第 2 代环境的引入速率为：**100,000 个设备 * 200 字节/事件 * (每秒 3 个事件/60) = 1 MBps**。
+  * 其 Azure 时序见解第 2 代环境的引入速率为：**100,000 个设备 * 200 字节/事件 * (每秒 3 个事件/60) = 1 MBps**。
     * 假设分区平衡，则每个分区的引入速率为 0.25 MBps。
     * Contoso Shipping 的引入率在缩放限制范围内。
 
@@ -49,13 +49,13 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
     Contoso Fleet Analytics 有 40,000 台设备，它们每秒发出某个事件。 它们使用分区计数为 2 的事件中心作为 Azure 时序见解第 2 代事件源。 事件的大小为 200 字节。
 
-    * 环境引入速率为：40,000 设备 * 200 字节/事件 * 1 事件/秒 = 8 MBps。
+  * 环境引入速率为：40,000 设备 * 200 字节/事件 * 1 事件/秒 = 8 MBps。
     * 假设分区平衡，则每个分区的速率为 4 MBps。
     * Contoso Fleet Analytics 的引入速率超出了环境和分区限制。 它们可以通过 Azure 门户向 Azure 时序见解第 2 代提交一个请求，要求提高其环境的引入速率，并创建一个事件中心，提高限制中的分区数。
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>中心分区和每个分区的限制
 
-规划 Azure 时序见解第 2 代环境时，必须考虑要连接到 Azure 时序见解第 2 代的事件源的配置。 Azure IoT 中心和事件中心都利用分区来实现事件处理的水平缩放。 
+规划 Azure 时序见解第 2 代环境时，必须考虑要连接到 Azure 时序见解第 2 代的事件源的配置。 Azure IoT 中心和事件中心都利用分区来实现事件处理的水平缩放。
 
 分区是中心内保留的有序事件。 分区计数是在中心创建阶段设置的，且不可更改。
 
@@ -64,7 +64,7 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 > [!NOTE]
 > 与 Azure 时序见解第 2 代配合使用的大多数 IoT 中心只需要 4 个分区。
 
-无论是为 Azure 时序见解第 2 代环境创建新的中心还是使用现有的中心，都需要计算每个分区的引入速率，以确定它是否在限制范围内。 
+无论是为 Azure 时序见解第 2 代环境创建新的中心还是使用现有的中心，都需要计算每个分区的引入速率，以确定它是否在限制范围内。
 
 在 Azure 时序见解第 2 代中，**每个分区的常规限制目前为 0.5 MBps**。
 
