@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067029"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653173"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 
 GPU 优化 VM 大小是具有单个、多个或部分 GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 
-- [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md)和[NCT4_v3 系列](nct4-v3-series.md)大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序以及模拟、AI 和深度学习。 NCT4v3 系列重点介绍了具有 NVIDIA Tesla T4 GPU 和 AMD EPYC2 罗马处理器的推理工作负荷。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。 NC 系列使用 Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) 处理器，NCv2 系列和 NCv3 系列 VM 使用 Intel Xeon E5-2690 v4 (Broadwell) 处理器。
+- [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md) 和 [NCT4_v3 系列](nct4-v3-series.md) 大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序以及模拟、AI 和深度学习。 NCT4v3 系列重点介绍了具有 NVIDIA Tesla T4 GPU 和 AMD EPYC2 罗马处理器的推理工作负荷。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。 NC 系列使用 Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) 处理器，NCv2 系列和 NCv3 系列 VM 使用 Intel Xeon E5-2690 v4 (Broadwell) 处理器。
 
-- [ND 系列](nd-series.md)和[NDv2 系列](ndv2-series.md)的大小侧重于定型和推理方案，以便进行深入学习。 它们使用 NVIDIA Tesla P40 GPU 和 Intel 2690 v4 (Broadwell) 处理器。 NDv2 系列使用 Intel 强白金 8168 (Skylake) 处理器。
+- [ND 系列](nd-series.md)和 [NDv2 系列](ndv2-series.md) 的大小侧重于定型和推理方案，以便进行深入学习。 ND 系列使用 NVIDIA Tesla P40 GPU 和 Intel 2690 v4 (Broadwell) 处理器。 NDv2 系列使用 Nvidia Volta V100 和 Intel 白金 8168 (Skylake) 处理器。
 
-- [NV 系列](nv-series.md)和[NVv3 系列](nvv3-series.md)大小经过优化，适用于使用 OpenGL 和 DirectX 等框架的远程可视化、流式处理、游戏、编码和 VDI 方案。 这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
+- [NV 系列](nv-series.md) 和 [NVv3 系列](nvv3-series.md) 大小经过优化，适用于使用 OpenGL 和 DirectX 等框架的远程可视化、流式处理、游戏、编码和 VDI 方案。 这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 
-- [NVv4 系列](nvv4-series.md)VM 大小经过优化，适用于 VDI 和远程可视化。 对于分区 Gpu，NVv4 为需要较小 GPU 资源的工作负荷提供适当的大小。 这些 Vm 由 AMD Radeon Instinct MI25 GPU 支持。 NVv4 Vm 当前仅支持 Windows 来宾操作系统。
+- [NVv4 系列](nvv4-series.md) VM 大小经过优化，适用于 VDI 和远程可视化。 对于分区 Gpu，NVv4 为需要较小 GPU 资源的工作负荷提供适当的大小。 这些 Vm 由 AMD Radeon Instinct MI25 GPU 支持。 NVv4 Vm 当前仅支持 Windows 来宾操作系统。
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
 若要利用 Azure N 系列 Vm 的 GPU 功能，必须安装 NVIDIA 或 AMD GPU 驱动程序。
 
-- 对于 NVIDIA Gpu 支持的 Vm， [NVIDIA Gpu 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)会安装适当的 nvidia CUDA 或网格驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
+- 对于 NVIDIA Gpu 支持的 Vm， [NVIDIA Gpu 驱动程序扩展](./extensions/hpccompute-gpu-windows.md) 会安装适当的 nvidia CUDA 或网格驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
    或者，你可以手动安装 NVIDIA GPU 驱动程序。 请参阅[在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序](./windows/n-series-driver-setup.md)或[在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序](./linux/n-series-driver-setup.md)，以了解受支持的操作系统、驱动程序以及安装和验证步骤。
 
-- 对于 AMD Gpu 支持的 Vm，请参阅[在运行 Windows 的 N 系列 vm 上安装 AMD GPU 驱动程序](./windows/n-series-amd-driver-setup.md)以获取支持的操作系统、驱动程序、安装和验证步骤。
+- 对于 AMD Gpu 支持的 Vm，请参阅 [在运行 Windows 的 N 系列 vm 上安装 AMD GPU 驱动程序](./windows/n-series-amd-driver-setup.md) 以获取支持的操作系统、驱动程序、安装和验证步骤。
 
 ## <a name="deployment-considerations"></a>部署注意事项
 

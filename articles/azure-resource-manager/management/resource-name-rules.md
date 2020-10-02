@@ -2,13 +2,13 @@
 title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/01/2020
+ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447531"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653360"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -171,10 +171,10 @@ ms.locfileid: "91447531"
 > | galleries / applications | 库 | 1-80 | 字母数字、连字符和句点。<br><br>以字母数字开头和结尾。 |
 > | galleries / applications/versions | application | 32-bit integer | 数字和句点。 |
 > | galleries/images | 库 | 1-80 | 字母数字、连字符和句点。<br><br>以字母数字开头和结尾。 |
-> | galleries/images/versions | 图像 | 32-bit integer | 数字和句点。 |
+> | galleries/images/versions | image | 32-bit integer | 数字和句点。 |
 > | images | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | snapshots | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
-> | virtualMachines | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
+> | virtualMachines | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Windows Vm 不能包含句点或以连字符结尾。<br><br>Linux Vm 不能以句点或连字符结尾。 |
 > | virtualMachineScaleSets | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
 
 > [!NOTE]

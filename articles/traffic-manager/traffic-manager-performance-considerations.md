@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392664"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653037"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
@@ -50,7 +50,7 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
     其中最简单的工具就是 WebSitePulse。 输入 URL 即可查看 DNS 解析时间、第一个字节、最后一个字节和其他性能统计信息。 可以从三个不同的测试位置中选择。 在此示例中可以看到，第一次执行显示 DNS 查找花费了 0.204 秒。
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![显示 "WebSitePulse" 工具，其中突出显示了 "DNS" 查找结果的屏幕截图。](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     由于结果会缓存，针对同一个流量管理器终结点执行第二次测试时，DNS 查找仅花费了 0.002 秒。
 

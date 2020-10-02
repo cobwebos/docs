@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119634"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653224"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft 标识平台的 UserInfo 终结点
 
@@ -57,7 +57,7 @@ UserInfo 是一个标准的 OAuth 持有者令牌 API，与任何其他 Microsof
 >
 > 在下一部分中，你可以使用此访问令牌。
 
-与任何其他 Microsoft Graph 令牌一样，你在此处收到的令牌可能不是 JWT。 如果你在 Microsoft 帐户用户登录，则它将是加密令牌格式。 这是因为 Microsoft Graph 具有特殊的令牌颁发模式。 这不会影响你使用访问令牌调用用户信息终结点的能力。
+与任何其他 Microsoft Graph 令牌一样，你在此处收到的令牌可能不是 JWT。 如果登录了一个 Microsoft 帐户用户，它将是加密令牌格式。 这是因为 Microsoft Graph 具有特殊的令牌颁发模式。 这不会影响你使用访问令牌调用 UserInfo 终结点的能力。
 
 ### <a name="calling-the-api"></a>调用 API
 
@@ -81,7 +81,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 }
 ```
 
-此处列出的声明（包括 `sub`）与应用在颁发给应用的 [ID 令牌](id-tokens.md)中看到的声明相同。  
+此处列出的声明是用户信息终结点可以返回的所有声明。  这些值与应用程序在颁发给应用程序的 [ID 令牌](id-tokens.md) 中看到的值相同。  
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>有关 UserInfo 终结点的说明和注意事项
 

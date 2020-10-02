@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396669"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653632"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>适用于云解决方案提供商 (CSP) 的 ExpressRoute
 Microsoft 为传统经销商和分销商 (CSP) 提供超大规模的服务，允许他们为客户快速预配新服务和解决方案，而不需投资开发这些新服务。 为了让云解决方案提供商 (CSP) 能够直接管理这些新服务，Microsoft 提供了相应的程序和 API，以便 CSP 代表客户管理 Microsoft Azure 资源。 其中一项资源就是 ExpressRoute。 ExpressRoute 允许 CSP 将现有客户资源连接到 Azure 服务。 ExpressRoute 是指向 Azure 中服务的高速专用通信链接。 
@@ -34,18 +34,18 @@ Microsoft 通过允许以编程方式与自己的服务管理系统集成，为 
 订阅管理方式将取决于你与客户签署的协定。 可以由 CSP 直接管理资源的创建和维护，也可以始终由客户对 Microsoft Azure 订阅进行控制，并根据需要来创建 Azure 资源。 如果客户在其 Microsoft Azure 订阅中管理资源的创建，则将使用以下两种模型之一： "*连接到*" 模型或 "*直接到*" 模型。 将在下面各节中详细介绍这些模型。  
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
-![替换文字](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
+![显示 "连接到" 模型的关系图。](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 在 Connect-Through 模型中，CSP 在数据中心和你客户的 Azure 订阅之间创建直接连接。 使用 ExpressRoute 进行直接连接，将网络与 Azure 相连。 然后，客户再连接到网络。 此方案要求客户通过 CSP 网络来访问 Azure 服务。 
 
 如果客户有其他不由你管理的 Azure 订阅，他们会使用公共 Internet 或他们自己的专用连接来连接到在非 CSP 订阅下预配的服务。 
 
-对于管理 Azure 服务的 CSP，假定 CSP 有一个以前建立的客户标识存储，该存储随后会复制到 Azure Active Directory 中，以便通过代表 (AOBO) 管理其 CSP 订阅。 此方案的关键驱动因素包括：给定合作伙伴或服务提供商已建立与客户的关系，客户目前正在使用提供商服务，或者合作伙伴希望提供提供商托管和 Azure 托管解决方案的组合，以提供灵活性并解决不能由 CSP 满足的客户难题。 此模型见下 **图**。
+对于管理 Azure 服务的 CSP，假定 CSP 有一个以前建立的客户标识存储，该存储随后会复制到 Azure Active Directory 中，以便通过代表 (AOBO) 管理其 CSP 订阅。 此方案的关键驱动因素包括：给定合作伙伴或服务提供商已建立与客户的关系，客户目前正在使用提供商服务，或者合作伙伴希望提供提供商托管和 Azure 托管解决方案的组合，以提供灵活性并解决不能由 CSP 满足的客户难题。 下 **图** 演示了此模型。
 
-![替换文字](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
+![显示 "连接到" 模型的详细方案的关系图。](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
 ### <a name="connect-to-model"></a>Connect-To 模型
-![替换文字](./media/expressroute-for-cloud-solution-providers/connect-to.png)
+![显示 "连接到" 模型的关系图。](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 在 Connect-To 模型中，服务提供商使用基于客户网络的 ExpressRoute 在其客户的数据中心和 CSP 预配的 Azure 订阅之间创建直接连接。
 
@@ -56,7 +56,7 @@ Microsoft 通过允许以编程方式与自己的服务管理系统集成，为 
 
 此连接方案要求客户通过客户网络直接进行连接，以访问由 CSP 管理的 Azure 订阅，使用由客户完全或部分创建、拥有和管理的直接网络连接。 对于这些客户，假定提供商当前没有建立客户标识存储，提供商将帮助客户将其当前的标识存储复制到 Azure Active Directory 中，以便通过 AOBO 管理其订阅。 此方案的关键驱动因素包括：既定的合作伙伴或服务提供商已建立与客户的合作关系、客户目前正使用提供商的服务，或者合作伙伴希望提供完全基于 Azure 托管型解决方案的服务，而不需要使用现有的提供商数据中心或基础结构。
 
-![替换文字](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
+![显示 "连接到" 模型的详细方案的关系图。](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
 这两个选项之间的选择取决于客户的需求，并且你当前需要提供 Azure 服务。 有关这些模型的详细信息以及关联的基于角色的访问控制、网络和标识设计模式在以下链接中有详尽介绍：
 
@@ -109,7 +109,7 @@ ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网�
 * 从虚拟网络到虚拟网络的路由，使用 VPN 网关
 * 从虚拟网络到本地网络的路由，使用 VPN 或 ExpressRoute 网关
 
-![替换文字](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
+![显示默认路由选项的关系图。](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>用户定义的路由 (UDR)
 使用用户定义的路由，可以控制虚拟网络中从分配的子网到其他子网的出站流量，或者控制经过其他某个预定义网关（ExpressRoute；Internet 或 VPN）的出站流量。 可以将默认的系统路由表替换为用户定义的路由表，以便将默认路由表替换为自定义路由。 使用用户定义的路由，客户可以创建到某些设备（例如防火墙或入侵检测设备）的特定路由，或者阻止他人从托管用户定义的路由的子网访问特定的子网。 有关用户定义的路由的概述，请查看 [此处](../virtual-network/virtual-networks-udr-overview.md)。 

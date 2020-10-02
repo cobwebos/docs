@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320075"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651627"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>排查存储资源删除错误
 
@@ -95,7 +95,7 @@ Azure 阻止删除附加到 VM 的磁盘，以防发生损坏。 它还会阻止
 7. 选择“磁盘”窗格顶部的“编辑”。
 8. 单击要删除的数据磁盘的拆离图标  。
 
-     ![门户屏幕截图，其中打开了存储“blob 元数据”窗格](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![门户的屏幕截图，其中存储了 "Blob 元数据" 窗格，并突出显示要删除的数据磁盘的分离图标。](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
 9. 选择“保存”。  此时该磁盘将与 VM 分离，并且 VHD 将不再租用。 可能需要几分钟才能释放租约。 若要验证租用是否已解除，请转到 blob 位置，再检查“blob 属性”  窗格中的“租用状态”  值是否为“已解锁”  或“可租用”  。
 

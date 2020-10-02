@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654780"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653649"
 ---
 # <a name="m-series"></a>M 系列
 
@@ -20,19 +20,16 @@ M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.
 
 M 系列 VM 采用 Intel&reg; 超线程技术。
 
-ACU：160-180
+[ACU](acu.md)：160-180<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：不支持<br>
+[内存保留更新](maintenance-and-updates.md)：不支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[写入加速器](./how-to-enable-write-accelerator.md)：支持<br>
+<br>
 
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：不支持
-
-内存保留更新：不支持
-
-写入加速器：[支持](./how-to-enable-write-accelerator.md)
-
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_M8ms                    | 8   | 218.75 | 256   | 8  | 10000/100 (793)     | 5000/125   | 4|2000  |
 | Standard_M16ms                   | 16  | 437.5  | 512   | 16 | 20000/200 (1587)    | 10000/250  | 8|4000  |
@@ -64,9 +61,9 @@ ACU：160-180
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
+有关磁盘类型的详细信息：[磁盘类型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

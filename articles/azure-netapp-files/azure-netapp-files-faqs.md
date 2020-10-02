@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325566"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653615"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "91325566"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-不是。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+否。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅 [Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "91325566"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>能否为 Azure NetApp 文件卷设置或选择自己的 IP 地址？  
 
-不是。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
+否。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp 文件是否支持双堆栈 (IPv4 和 IPv6) VNet？
 
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>我尝试使用 "root" 和本地用户访问 UNIX 系统上具有 NTFS 安全样式的双协议卷。 为什么会出现 "权限被拒绝" 错误？   
 
-双协议卷支持 NFS 协议和 SMB 协议。  当你尝试访问 UNIX 系统上装入的卷时，系统将尝试将你使用的 UNIX 用户映射到 Windows 用户。 如果未找到映射，则会发生 "权限被拒绝" 错误。  当你使用 "root" 用户进行访问时，这种情况也适用。    
-
-若要避免 "权限被拒绝" 问题，请确保在 `pcuser` 访问装入点之前 Windows Active Directory 包含。 如果在 `pcuser` 遇到 "权限被拒绝" 问题后添加，请等待24小时，以便在再次尝试访问之前清除缓存条目。
+有关解决方法，请参阅 [排查双协议卷问题](troubleshoot-dual-protocol-volumes.md) 。
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>尝试创建双重协议卷时，为什么创建过程失败，并出现错误 "无法验证 LDAP 配置，更正 LDAP 配置后重试"？  
 
-DNS 服务器上可能缺少 AD 主机计算机 (PTR) 记录的指针。 需要在 DNS 服务器上创建反向查找区域，然后在该反向查找区域中添加 AD 主机计算机的 PTR 记录。
-
-例如，假设 AD 计算机的 IP 地址为 `1.1.1.1` ，使用命令)  (找到的 ad 计算机的主机名 `hostname` `AD1` ，并且域名为 `myDomain.com` 。  添加到反向查找区域中的 PTR 记录应该是 `1.1.1.1`  ->  `AD1.myDomain.com` 。
+有关解决方法，请参阅 [排查双协议卷问题](troubleshoot-dual-protocol-volumes.md) 。
 
 ## <a name="capacity-management-faqs"></a>容量管理常见问题
 
@@ -196,7 +192,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-不是。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+否。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何实现确定目录是否接近限制大小？
 
@@ -253,11 +249,11 @@ NetApp 提供基于 SaaS 的解决方案，即 [Netapp 云同步](https://cloud.
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-不是。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+否。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-不是。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+否。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

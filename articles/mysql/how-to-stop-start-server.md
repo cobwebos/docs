@@ -6,25 +6,25 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: f09b6d48e8a98b0995c882769d6c978996324dad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 706748018c9f32ab2300b290c6929d344b82e0b0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341499"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653088"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>停止/启动 Azure Database for MySQL
 
 > [!IMPORTANT]
 > Azure Database for MySQL 的停止/启动功能当前为公共预览版。
 
-本文提供了执行停止和启动灵活服务器的分步过程。
+本文提供了执行停止和启动单一服务器的分步过程。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本操作指南，需要：
 
--   您必须具有 Azure Database for MySQL 灵活的服务器。
+-   您必须具有 Azure Database for MySQL 单个服务器。
 
 > [!NOTE]
 > 请参阅使用[停止/启动](concepts-servers.md#limitations-of-stopstart-operation)的限制
@@ -40,18 +40,18 @@ ms.locfileid: "91341499"
     :::image type="content" source="./media/howto-stop-start-server/mysql-stop-server.png" alt-text="Azure Database for MySQL 停止服务器":::
 
     > [!NOTE]
-    > 停止服务器后，其他管理操作将不能用于灵活的服务器。
+    > 停止服务器后，不能为单一服务器提供其他管理操作。
 
 ### <a name="start-a-stopped-server"></a>启动停止的服务器
 
-1.  在 [Azure 门户](https://portal.azure.com/)中，选择要启动的灵活服务器。
+1.  在 [Azure 门户](https://portal.azure.com/)中，选择要启动的单一服务器。
 
 2.  从 " **概述** " 页上，单击工具栏中的 " **开始** " 按钮。
 
-    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL 启动服务器":::
+    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL 停止服务器":::
 
     > [!NOTE]
-    > 服务器启动后，所有管理操作现在都可用于灵活的服务器。
+    > 服务器启动后，所有管理操作现在都可用于单一服务器。
 
 ## <a name="how-to-stopstart-the-azure-database-for-mysql-using-cli"></a>如何使用 CLI 停止/启动 Azure Database for MySQL
 
@@ -65,11 +65,11 @@ ms.locfileid: "91341499"
     az mysql server stop --name <server-name> -g <resource-group-name>
     ```
     > [!NOTE]
-    > 停止服务器后，其他管理操作将不能用于灵活的服务器。
+    > 停止服务器后，不能为单一服务器提供其他管理操作。
 
 ### <a name="start-a-stopped-server"></a>启动停止的服务器
 
-1.  在 [Azure 门户](https://portal.azure.com/)中，选择要启动的灵活服务器。
+1.  在 [Azure 门户](https://portal.azure.com/)中，选择要启动的单一服务器。
 
 2.  从 " **概述** " 页上，单击工具栏中的 " **开始** " 按钮。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91341499"
     az mysql server start --name <server-name> -g <resource-group-name>
     ```
     > [!NOTE]
-    > 服务器启动后，所有管理操作现在都可用于灵活的服务器。
+    > 服务器启动后，所有管理操作现在都可用于单一服务器。
 
 ## <a name="next-steps"></a>后续步骤
 了解 [如何创建有关指标的警报](howto-alert-on-metric.md)。

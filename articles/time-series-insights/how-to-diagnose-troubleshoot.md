@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540296"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653751"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>诊断和排查 Azure 时序见解第 2 代环境的问题
 
@@ -43,17 +43,17 @@ ms.locfileid: "91540296"
 
 - 事件源密钥缺少所需权限。
 
-  * 对于 IoT 中心，需提供具有“服务连接”**** 权限的密钥。
+  - 对于 IoT 中心，需提供具有“服务连接”**** 权限的密钥。
 
     [![验证 IoT 中心权限。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * “iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限************。
+    - “iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限************。
 
-  * 对于事件中心，需提供具有“侦听”**** 权限的密钥。
+  - 对于事件中心，需提供具有“侦听”**** 权限的密钥。
   
     [![查看事件中心权限。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * “读取”和“管理”策略均可使用，因为两者都具有“侦听”权限************。
+    - “读取”和“管理”策略均可使用，因为两者都具有“侦听”权限************。
 
 - 提供的使用者组并非时序见解所独有。
 
@@ -75,11 +75,11 @@ ms.locfileid: "91540296"
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：以前可以显示数据，但引入现已停止
 
-- 可能已重新生成事件源密钥，并且第 2 代环境需要新的事件源密钥。
+- 事件源密钥可能已重新生成，Gen2 环境需要新的事件源密钥。
 
-如果创建事件源时提供的密钥不再有效，则会出现此问题。 你会在中心看到遥测数据，但不会在时序见解中收到入口接收的消息。 如果不确定是否重新生成了密钥，可以在事件中心的活动日志中搜索“创建或更新命名空间授权规则”或“为 IoT 中心创建或更新 IotHub 资源”。 
+如果创建事件源时提供的密钥不再有效，则会出现此问题。 你会在中心看到遥测数据，但不会在时序见解中收到入口接收的消息。 如果不确定是否重新生成了密钥，可以在事件中心的活动日志中搜索 "创建或更新命名空间授权规则" 或搜索 "为 IoT 中心创建或更新 IotHub 资源"。
 
-若要用新密钥更新时序见解第 2 代环境，请在 Azure 门户中打开中心资源并复制新密钥。 导航到 TSI 资源，单击“事件源”。 
+若要用新密钥更新时序见解第 2 代环境，请在 Azure 门户中打开中心资源并复制新密钥。 导航到 TSI 资源，单击“事件源”。
 
    [![屏幕截图显示了具有称为 "事件源" 菜单项的 T S I 资源。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
@@ -91,14 +91,14 @@ ms.locfileid: "91540296"
 
 请确保名称和值符合以下规则：
 
-* Timestamp 属性名称区分大小写。
-* 来自事件源的 Timestamp 属性值（采用 JSON 字符串形式）的格式为 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`。 `"2008-04-12T12:53Z"` 是此类字符串的一个示例。
+- Timestamp 属性名称区分大小写。
+- 来自事件源的 Timestamp 属性值（采用 JSON 字符串形式）的格式为 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`。 `"2008-04-12T12:53Z"` 是此类字符串的一个示例。
 
 若要确保捕获时间戳属性名称并使其正常工作，最简单的方法是使用时序见解 Gen2 资源管理器。 在时序见解 Gen2 资源管理器中，使用图表选择提供时间戳属性名称后的时间段。 右键单击所做的选择，然后选择“浏览事件”选项。**** 第一个列标头为 Timestamp 属性名称。 它应该有 `($ts)` 位于 `Timestamp` 一词的旁边，而不是：
 
-* `(abc)`，指示时序见解将数据值作为字符串来读取。
-* **日历**图标，指示时序见解将数据值作为日期/时间来读取。
-* `#`，指示时序见解将数据值作为整数来读取。
+- `(abc)`，指示时序见解将数据值作为字符串来读取。
+- **日历**图标，指示时序见解将数据值作为日期/时间来读取。
+- `#`，指示时序见解将数据值作为整数来读取。
 
 如果未显式指定 Timestamp 属性，则会使用事件的 IoT 中心或事件中心排队时间作为默认时间戳。
 
@@ -131,7 +131,7 @@ ms.locfileid: "91540296"
 
 [![屏幕截图显示 "无法连接" 对话框。](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* 请检查 Power BI Desktop 的版本，并确保使用的是 2020 年 7 月版。 如果不是，请更新 Power BI Desktop 并再次运行该连接器。 
+- 请检查 Power BI Desktop 的版本，并确保使用的是 2020 年 7 月版。 如果不是，请更新 Power BI Desktop 并再次运行该连接器。
 
 ## <a name="next-steps"></a>后续步骤
 

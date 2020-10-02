@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395224"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653377"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
 有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，所采用的路由可能不是最理想的 - 也就是说，流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文详述此问题，并说明如何使用标准路由技术来优化路由。
@@ -27,7 +27,7 @@ ms.locfileid: "89395224"
 
 请考虑以下示例场景：
 
-![ExpressRoute 案例 1 问题 - 从客户到 Microsoft 的路由欠佳](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![此图显示了 ExpressRoute 案例 1-从客户到 Microsoft 的不理想问题路由](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 在上面的示例中，要首选 ExpressRoute路径，请按如下所示配置“本地优先级”。 
 

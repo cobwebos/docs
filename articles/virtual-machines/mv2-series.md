@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: c91e9832e4b415a59c12b71964a0da580e9fda21
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651125"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653547"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -20,17 +20,15 @@ Mv2 系列提供高吞吐量、低延迟的平台，该平台在超线程 Intel�
 
 Mv2 系列 VM 的 Intel®超线程技术功能
 
-高级存储：支持
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：不支持<br>
+[内存保留更新](maintenance-and-updates.md)：不支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+[写入加速器](./how-to-enable-write-accelerator.md)：支持<br>
+<br>
 
-高级存储缓存：支持
-
-实时迁移：不支持
-
-内存保留更新：不支持
-
-写入加速器： [支持](./how-to-enable-write-accelerator.md)
-
-|大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 | 预期网络带宽 (Mbps)  |
+|大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040)  | 40000 / 1000 | 8 | 16000 |
 | Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040)  | 40000 / 1000 | 8 | 16000 |
@@ -57,9 +55,9 @@ Mv2 系列 VM 的 Intel®超线程技术功能
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
+有关磁盘类型的详细信息：[磁盘类型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

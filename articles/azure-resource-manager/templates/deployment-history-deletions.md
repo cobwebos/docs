@@ -2,13 +2,13 @@
 title: 部署历史记录删除
 description: 介绍 Azure 资源管理器如何从部署历史记录中自动删除部署。 当历史记录即将超过限制（800 条）时，将删除部署。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284727"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652476"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>从部署历史记录自动删除
 
@@ -23,7 +23,7 @@ ms.locfileid: "91284727"
 
 ## <a name="when-deployments-are-deleted"></a>删除部署时
 
-达到 775 或更多个部署时，将从历史记录中删除部署。 Azure 资源管理器会删除部署，直到历史部署量下降到 750 个部署为止。 始终最先删除最早的部署。
+超过775个部署时，将从历史记录中删除部署。 Azure 资源管理器会删除部署，直到历史部署量下降到 750 个部署为止。 始终最先删除最早的部署。
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="从部署历史记录中删除内容":::
 

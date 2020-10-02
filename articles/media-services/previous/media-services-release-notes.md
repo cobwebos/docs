@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268649"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652952"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -48,6 +48,18 @@ ms.locfileid: "89268649"
 
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+以下 v2 属性将不再用历史作业进度数据填充：
+
+* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+
+若要获取任务历史记录，应通过 webhook 或使用通知终结点的队列消息使用 v2 作业通知。 有关详情，请参阅：
+
+* [使用 Azure 队列存储监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-queues.md)
+* [使用 Azure Webhook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="february-2020"></a>2020 年 2 月
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e546963a7ca90c7494164af7afefbb4e78b2259b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986580"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651932"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>配置自定义警报来监视播发路由
 
@@ -78,7 +78,7 @@ ms.locfileid: "90986580"
 
 2. 选择“角色”，以查看正在使用的角色定义。
 
-   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="分配角色":::
+   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="添加自动化帐户":::
 
 ## <a name="create-and-configure-runbooks"></a><a name="runbooks"></a>创建并配置 runbook
 
@@ -88,25 +88,25 @@ ms.locfileid: "90986580"
 
 1. 打开你的 Azure 自动化帐户并导航到“模块”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="导航到模块":::
+   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="添加自动化帐户":::
 
 2. 搜索库并导入以下模块：**Az.Accounts**、**Az.Network**、**Az.Automation** 和 **Az.Profile**。
 
-   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="搜索并导入模块" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
   
 ### <a name="2-create-a-runbook"></a><a name="create"></a>2.创建 runbook
 
 1. 若要创建 PowerShell runbook，请导航到你的自动化帐户。 在“流程自动化”下选择“Runbook”磁贴，然后选择“创建 runbook”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="创建 runbook。":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="添加自动化帐户":::
 
 2. 选择“创建”以创建 runbook。
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="选择“创建”。":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="添加自动化帐户":::
 
 3. 选择新创建的 runbook，然后选择“编辑”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="编辑 Runbook":::
+   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="添加自动化帐户":::
 
 4. 在“编辑”中，粘贴 PowerShell 脚本。 可以修改[示例脚本](#script)并使用它来监视一个或多个资源组中的 ExpressRoute 网关。
 
@@ -231,7 +231,7 @@ Write-Output  $jsonResults
 1. 选择“保存”以保存 runbook 的草稿副本。
 2. 选择“发布”，将此 runbook 作为正式版 runbook 发布到自动化帐户中。
 
-   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="保存并发布 runbook。":::
+   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="添加自动化帐户":::
 
 当你运行 PowerShell 脚本时，系统会收集一个值列表：
  
@@ -263,7 +263,7 @@ PowerShell 脚本会将收集的信息转换为 JSON 输出。 runbook 使用 Po
 
 创建 runbook 后，必须对其进行验证。 请选择“启动”并检查不同作业流的输出和错误。
 
-:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="验证 runbook" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
 
 ## <a name="create-and-configure-a-logic-app"></a><a name="logic"></a>创建并配置逻辑应用
 
@@ -273,13 +273,13 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 在此工作流中，我们构建一个逻辑应用来定期监视 ExpressRoute 网关。 如果存在新项，逻辑应用会针对每个项发送电子邮件。 完成后，逻辑应用看起来大致与以下工作流类似：
 
-:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="逻辑应用工作流":::
+:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="添加自动化帐户":::
 
 ### <a name="1-create-a-logic-app"></a>1.创建逻辑应用
 
 在“逻辑应用设计器”中，使用“空白逻辑应用”模板创建逻辑应用。 有关步骤，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)。
 
-:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="空白模板":::
+:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="添加自动化帐户":::
 
 ### <a name="2-add-a-trigger"></a>2.添加触发器
 
@@ -287,7 +287,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 若要定期运行基于预定义时间计划的逻辑应用，请向工作流添加内置的“重复周期:计划”。 在搜索框中键入“计划”。 选择“触发器”。 从“触发器”列表中选择“重复周期计划”。
 
-:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="重复周期:计划":::
+:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="添加自动化帐户":::
 
 在“重复周期计划”触发器中，可以设置时区以及重复执行该工作流时需遵循的重复周期。 时间间隔和频率合在一起，即可定义逻辑应用的触发器的计划。 若要确定合理的最小重复频率，请考虑以下因素：
 
@@ -299,7 +299,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 在工作流配置结束时，可以通过多次运行工作流来检查重复频率的一致性，然后在“运行历史记录”中验证结果。
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="屏幕截图显示重复间隔和频率值。" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3.创建作业
 
@@ -308,29 +308,29 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 1. 在“逻辑应用设计器”中，在“定期”下 选择“新建步骤”。 在“选择操作”和搜索框下，选择“全部” 。
 2. 在搜索框中键入“Azure 自动化”，然后进行搜索。 选择“创建作业”。 “创建作业”将用于触发先前创建的自动化 runbook。
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="创建作业":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="添加自动化帐户":::
 
 3. 使用一个服务主体登录。 可以使用现有的服务主体，也可以创建一个新的。 若要创建新的服务主体，请参阅[如何使用门户创建可访问资源的 Azure AD 服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 选择“通过服务主体进行连接”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="登录":::
+   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="添加自动化帐户":::
 
 4. 键入一个**连接名称**，然后添加你的**客户端 ID**（应用程序 ID）、**客户端机密**和**租户 ID**。 然后选择“创建”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="通过服务主体进行连接":::
+   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="添加自动化帐户":::
 
 5. 在“创建作业”页上，服务主体应在承载自动化帐户的**资源组**上具有“读取者”角色，并在**自动化帐户**上具有“自动化作业操作员”角色。 此外，请验证是否已将“Runbook 名称”添加为新参数。
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="屏幕截图显示在 "重复周期" 中创建作业值，你可以在其中验证 Runbook 名称。" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4.获取作业输出
 
 1. 选择“新建步骤”。 搜索“Azure 自动化”。 从“操作”列表中选择“获取作业输出”。 
 
-   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="获取作业输出":::
+   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="添加自动化帐户":::
 
 2. 在“获取作业输出”页上，指定访问自动化帐户所需的信息。 选择要使用的“订阅”、“资源组”和“自动化帐户”。 在“作业 ID”框内单击。 当“动态内容”列表出现时，选择“作业 ID”。 
 
-   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="作业 ID" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5.分析 JSON
 
@@ -339,23 +339,23 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 1. 添加操作。 在“获取作业输出 -> 操作”下，选择“新建步骤”。 
 2. 在“选择操作”搜索框中键入“分析 json”以搜索提供此操作的连接器。 在“操作”列表中，选择与要使用的数据操作相对应的“分析 JSON”操作。
 
-   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="分析 JSON":::
+   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="添加自动化帐户":::
 
 3. 在“内容”框中单击。 当“动态内容”列表出现时，选择“内容”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="屏幕截图显示 "分析 JSON" 对话框，其中包含所选内容。" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. 分析 JSON 需要一个架构。 可以使用自动化 runbook 的输出来生成架构。 打开一个新的 Web 浏览器会话，运行自动化 runbook 并捕获输出。 返回到“逻辑应用的分析 JSON 数据操作”操作。 在页面底部，选择“使用示例有效负载生成架构”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="使用示例有效负载生成架构":::
+   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="添加自动化帐户":::
 
 5. 对于“输入或粘贴示例 JSON 有效负载”，请粘贴自动化 runbook 的输出，然后选择“完成”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="粘贴示例有效负载" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
 
 6. 架构是通过对 JSON 输入有效负载进行分析自动生成的。
 
-   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="生成架构" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
 
 ### <a name="6-define-and-initialize-a-variable"></a><a name="define-variable"></a>6.定义并初始化变量
 
@@ -363,15 +363,15 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 1. 在“获取作业输出”操作下，选择“新建步骤”。  在搜索框中找到并选择“变量”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="屏幕截图显示在 "搜索" 框中包含变量的 "选择操作" 对话框和所选变量。":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="添加自动化帐户":::
 
 2. 在“操作”列表中，选择“初始化变量”操作。 
 
-   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="初始化变量":::
+   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="添加自动化帐户":::
 
 3. 指定变量的名称。 对于“类型”，请选择“字符串” 。 稍后将在工作流中分配变量的**值**。
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="屏幕截图显示了与 Initialize 变量关联的 Parse JSON，你可以在其中输入名称、类型和值。" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7.创建“For each”操作
 
@@ -379,51 +379,51 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 1. 在“初始化变量”下，选择“添加操作”。 在搜索框中键入“for each”作为筛选器。
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="屏幕截图显示 "选择操作" 对话框，其中每个在搜索框和控件中都处于选定状态。":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="添加自动化帐户":::
 
 2. 从“操作”列表中选择“For each - 控制”操作。
 
-   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="For each - 控制":::
+   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="添加自动化帐户":::
 
 3. 单击“从先前的步骤中选择一个输出”文本框。 当“动态内容”列表出现时，请选择“正文”，这是分析的 JSON 的输出。 
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="屏幕截图显示了与 For each 关联的初始化变量，其中包含 "从前面的步骤中选择一个输出" 文本框。":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="添加自动化帐户":::
 
 4. 对于 JSON 正文的每个元素，我们需要设置一个条件。 从操作组中选择“控制”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="控制":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="添加自动化帐户":::
 
 5. 在“操作”列表中选择“条件-控制”。  条件-控制是一个控制结构，可将工作流中的数据与特定值或字段进行比较。 然后，可以指定不同的操作，这些操作是否运行取决于数据是否符合条件。
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="条件控制":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="添加自动化帐户":::
 
 6. 在“条件”操作的根中，将逻辑操作更改为“或”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="Or" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
 
 7. 检查 ExpressRoute 网关播发到两个 BGP 对等机的网络前缀数的值。 路由数在“动态内容”中的“numRoutePeer1”和“numRoutePeer2”中提供。 在“值”框中，键入“numRoutePeer1”的值。
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="numRoutesPeer1":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="添加自动化帐户":::
 
 8. 若要在条件中添加其他行，请选择“添加”->“添加行”。 在第二个框中，从“动态内容”选择“numRoutePeer2”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="添加自动化帐户":::
 
 9. 如果两个动态变量中的一个（numRoute1 或 numRoute2）大于阈值，则逻辑条件为 true。 在此示例中，阈值固定为 160（200 个路由这一最大值的 80%）。 你可以更改阈值来适应你的需求。 为了保持一致性，此值应与 runbook PowerShell 脚本中使用的值相同。
 
-   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="逻辑条件":::
+   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="添加自动化帐户":::
 
 10. 在“如果为 true”下，格式化并创建可通过电子邮件发送警报的操作。 在“选择操作”**中，搜索并选择“变量”。
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="如果为 true":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="添加自动化帐户":::
 
 11. 在“变量”中，选择“添加操作”。 在“操作”列表中，选择“设置变量”。 
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="设置变量":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="添加自动化帐户":::
 
 12. 在“名称”中，选择前面创建的名为 **EmailBody** 的变量。 对于“值”，请粘贴设置警报电子邮件格式所需的 HTML 脚本。 使用“动态内容”来包括 JSON 正文的值。 配置这些设置后，获得的结果就是：变量 **Emailbody** 包含 HTML 格式的与警报相关的所有信息。
 
-    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="设置变量":::
+    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="添加自动化帐户":::
 
 ### <a name="8-add-the-email-connector"></a><a name="email"></a>8.添加电子邮件连接器
 
@@ -431,29 +431,29 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 1. 选择“Office 365 Outlook”。
 
-   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="发送电子邮件":::
+   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="添加自动化帐户":::
 
 2. 在“操作”列表中选择“发送电子邮件(V2)”。 
 
-   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="发送电子邮件(V2)":::
+   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="添加自动化帐户":::
 
 3. 登录以创建到 Office 365 Outlook 的连接。
 
-   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="登录":::
+   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="添加自动化帐户":::
 
 4. 在“正文”字段中，单击“添加动态内容”。 在“动态内容”面板中，添加“Emailbody”变量。 填写“主题”和“收件人”字段。 
 
-   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="正文":::
+   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="添加自动化帐户":::
 
 5. “发送电子邮件(V2)”操作完成工作流设置。
 
-   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="发送电子邮件 v2" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="添加自动化帐户" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
 
 ### <a name="9-workflow-validation"></a><a name="validation"></a>9.工作流验证
 
 最后一步是工作流验证。 在“逻辑应用概览”中，选择“运行触发器” 。 选择“重复周期”。 可以在“运行历史记录”中监视和验证工作流。
 
-:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="运行触发器":::
+:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="添加自动化帐户":::
 
 ## <a name="next-steps"></a>后续步骤
 

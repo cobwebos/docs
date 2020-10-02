@@ -8,28 +8,26 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b1f30e91b9ce96daf8b2eb8ac6c8cb38b86b347f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 56112107bbd1bb506fcbff615ec524e043d54d1a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594401"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653717"
 ---
 # <a name="h-series"></a>H 系列
 
 H 系列 Vm 针对按高 CPU 频率驱动的应用程序和每个核心要求提供较大内存的优化。 H 系列 Vm 功能8或 16 Intel 至强 E5 2667 v3 处理器核心，每个 CPU 核心最多 14 GB RAM，无超线程。 H 系列功能 56 Gb/秒，FDR 不会阻止 fat 树配置，以实现一致的 RDMA 性能。 H 系列 Vm 目前不支持 SR-IOV，并支持 Intel MPI 1.x 和 MS-CHAP。
 
-ACU：290-300
+[ACU](acu.md)：290-300<br>
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：不支持<br>
+[内存保留更新](maintenance-and-updates.md)：不支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
-高级存储：不支持
-
-高级存储缓存：不支持
-
-实时迁移：不支持
-
-内存保留更新：不支持
-
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz)  | 所有核心频率 (GHz，峰值)  | 单核频率 (GHz，峰值)  | RDMA 性能 (Gb/s)  | MPI 支持 | 临时存储 (GB)  | 最大数据磁盘数 | 磁盘最大吞吐量：IOPS | 最大以太网 Nic |
+| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz)  | 所有核心频率 (GHz，峰值)  | 单核频率 (GHz，峰值)  | RDMA 性能 (Gb/s)  | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 磁盘最大吞吐量：IOPS | 最大以太网 Nic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8   | 8  | Intel 至强 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 1.x，MS-MPI | 1000 | 32 | 32 x 500 | 2 |
 | Standard_H16  | 16 | Intel 至强 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 1.x，MS-MPI | 2000 | 64 | 64 x 500 | 4 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595649"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649790"
 ---
 # <a name="outbound-connections"></a>出站连接
 
@@ -160,7 +160,7 @@ Azure 使用算法来确定可用的预分配 [SNAT](#snat) 端口数。 算法�
 
 ### <a name="outbound-flow-idle-timeout-and-tcp-reset"></a><a name="idletimeout"></a> 出站流空闲超时和 TCP 重置
 
-出站规则提供一个配置参数用于控制出站流空闲超时，并使该超时符合应用程序的需求。 出站空闲超时默认为 4 分钟。 有关详细信息，请参阅 [配置空闲超时](load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)。 
+出站规则提供一个配置参数用于控制出站流空闲超时，并使该超时符合应用程序的需求。 出站空闲超时默认为 4 分钟。 有关详细信息，请参阅 [配置空闲超时](load-balancer-tcp-idle-timeout.md)。 
 
 负载均衡器的默认行为是在达到出站空闲超时时，无提示地删除流。 `enableTCPReset`参数实现可预测的应用程序行为和控制。 参数指示是否将双向 TCP 重置 (TCP RST) 发送到出站空闲超时的超时。 
 

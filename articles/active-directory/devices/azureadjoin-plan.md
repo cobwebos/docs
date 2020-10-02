@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370171"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653207"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -24,7 +24,7 @@ ms.locfileid: "91370171"
 
 本文介绍计划 Azure AD 联接实现所需信息。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](./overview.md)。
 
@@ -187,6 +187,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 启动 Windows 10 2004 更新后，用户还可以从 Azure AD 注册的 Windows 10 设备使用远程桌面连接到 Azure AD 加入的设备。 
 
 ## <a name="understand-your-provisioning-options"></a>了解预配选项
+**注意**：无法使用系统准备工具（ (Sysprep) 或类似的映像工具）部署 Azure AD 联接的设备
 
 可以使用以下方法预配 Azure AD 联接：
 

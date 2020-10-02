@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: duau
-ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ccbd9645ac7d331c06e528298b3a45a184c6cc49
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395717"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652221"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
 
@@ -60,12 +60,12 @@ ms.locfileid: "89395717"
 
    **线路 - 提供商状态：未预配**
 
-   [![显示 ExpressRoute 演示线路的 "概述" 页的屏幕截图，其中显示 "未设置" 设置为 "未预配" 的提供程序状态的红色框。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+   [![显示 ExpressRoute 演示线路的 "概述" 页的屏幕截图，其中显示一个红色框，其中突出显示了 "未预配" 提供程序状态。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
 
 
    **线路 - 提供商状态：已预配**
 
-   [![显示 ExpressRoute 演示线路的 "概述" 页的屏幕截图，其中显示 "提供商状态" 设置为 "已预配" 的 "提供商状态"。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![显示 ExpressRoute 演示线路的 "概述" 页的屏幕截图，其中显示一个红色框，其中突出显示了 "提供程序状态" 设置为 "已设置"。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 
 2. 配置线路的 Microsoft 对等互连。 在继续下一步之前，请确保已准备好以下信息。
 

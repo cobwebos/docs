@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: bb76dbf975ce15f72d3ad339853c407de42cf507
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 9475d3f000bbfd84c16efc080cbbb9df63cac608
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594384"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653258"
 ---
 # <a name="hc-series"></a>HC 系列
 
@@ -21,19 +21,17 @@ HC 系列 Vm 针对密集计算驱动的应用程序进行了优化，如隐式�
 
 HC 系列 Vm 功能 100 Gb/秒 Mellanox EDR。 这些 Vm 连接在一个非阻止 fat 树中，用于实现优化和一致的 RDMA 性能。 这些 Vm 支持自适应路由，而动态连接传输 (DCT，) 的附加到标准 RC 和 UD 传输。 这些功能增强了应用程序的性能、可伸缩性和一致性，并且强烈建议使用这些功能。
 
-ACU：297-315
+[ACU](acu.md)：297-315<br>
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：不支持<br>
+[内存保留更新](maintenance-and-updates.md)：不支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+<br>
 
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：不支持
-
-内存保留更新：不支持
-
-| 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz)  | 所有核心频率 (GHz，峰值)  | 单核频率 (GHz，峰值)  | RDMA 性能 (Gb/s)  | MPI 支持 | 临时存储 (GB)  | 最大数据磁盘数 | 最大以太网 Nic |
+| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz)  | 所有核心频率 (GHz，峰值)  | 单核频率 (GHz，峰值)  | RDMA 性能 (Gb/s)  | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HC44rs | 44 | Intel 强白金8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | 全部 | 700 | 4 | 1 |
+| Standard_HC44rs | 44 | Intel 强白金8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | All | 700 | 4 | 1 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aec72644f708d6363a80da28c5e571d0165fcdfa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678165"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651830"
 ---
 # <a name="export-your-application"></a>导出应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "84678165"
 
 选择“复制”。  在对话框中，输入新应用程序的详细信息。 再次选择“复制”以确认要继续操作。  若要详细了解窗体中的字段，请参阅[创建应用程序](quick-deploy-iot-central.md)快速入门。
 
-![“应用程序设置”页](media/howto-use-app-templates/appcopy2.png)
+![显示 "复制应用程序" 设置页的屏幕截图。](media/howto-use-app-templates/appcopy2.png)
 
 应用复制操作成功后，可以使用链接导航到新应用程序。
 

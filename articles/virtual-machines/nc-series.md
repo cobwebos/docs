@@ -7,24 +7,23 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bd62d7f7c04896a8a62ab1290ddbc9370934d333
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 38365cc144bbffbedfa1416112c5f8eca2b5fc13
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286234"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653513"
 ---
 # <a name="nc-series"></a>NC 系列
 
-NC 系列 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)卡和 Intel 2690 E5-V3 （Haswell）处理器提供支持。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
+NC 系列 Vm 由 [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) 卡和 Intel 2690 E5-V3 (Haswell) 处理器提供支持。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
-高级存储：不支持
-
-高级存储缓存：不支持
-
-实时迁移：不支持
-
-内存保留更新：不支持
+[高级存储](premium-storage-performance.md)：不支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：不支持<br>
+[内存保留更新](maintenance-and-updates.md)：不支持<br>
+[VM 生成支持](generation-2.md)：第1代<br>
+<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|
@@ -41,11 +40,11 @@ NC 系列 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solu
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
-若要利用 Azure N 系列 Vm 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。
+若要利用 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。
 
 [NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于[Windows 的 n 系列 gpu 驱动程序设置](./windows/n-series-driver-setup.md)或适用于[Linux 的 n 系列 gpu 驱动程序设置](./linux/n-series-driver-setup.md)，以支持操作系统、驱动程序、安装和验证步骤。
+如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于 [Windows 的 n 系列 gpu 驱动程序设置](./windows/n-series-driver-setup.md) 或适用于 [Linux 的 n 系列 gpu 驱动程序设置](./linux/n-series-driver-setup.md) ，以支持操作系统、驱动程序、安装和验证步骤。
 
 ## <a name="other-sizes"></a>其他大小
 

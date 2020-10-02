@@ -8,12 +8,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 235d82e54c79350f110ab0cda4f4b672e396c61d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085138"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652000"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
@@ -73,7 +73,7 @@ when making changes in one don't forget the other two.
 
 3. 使用表中指定的“添加 Web 作业”设置。
 
-   ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjcontinuous.png)
+   ![屏幕截图，显示需要配置的 "添加 Web 作业" 设置。](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
@@ -111,7 +111,7 @@ when making changes in one don't forget the other two.
 
 3. 使用表中指定的“添加 Web 作业”设置。
 
-   ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjtriggered.png)
+   ![屏幕截图，显示需要设置以创建手动触发的 WebJob 的设置。](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |

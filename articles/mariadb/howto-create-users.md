@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 34fcb8d28ae8deda88a6ce91261301ab5d08a743
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: 7a3515850027963dcabbf2cef4efd8bf43802cbe
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104548"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653054"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户 
 本文介绍如何在 Azure Database for MariaDB 中创建用户。
@@ -29,7 +29,8 @@ ms.locfileid: "86104548"
 创建 Azure Database for MariaDB 服务器后，可以使用第一个服务器管理员用户帐户来创建其他用户，并授予这些用户管理员访问权限。 此外，服务器管理员帐户还可以用于创建只能访问各个数据库架构的权限较低的用户。
 
 > [!NOTE]
-> 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privilege-support)，以了解服务中不支持的权限。
+> 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privileges--data-manipulation-support)，以了解服务中不支持的权限。<br><br>
+> 服务不支持密码插件，如 "validate_password" 和 "caching_sha2_password"。
 
 ## <a name="create-additional-admin-users"></a>创建其他管理员用户
 1. 获取连接信息和管理员用户名。
@@ -90,6 +91,10 @@ ms.locfileid: "86104548"
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
    有关用户帐户管理的详细信息，请参阅 MariaDB 文档，了解[用户帐户管理](https://mariadb.com/kb/en/library/user-account-management/)、[GRANT 语法](https://mariadb.com/kb/en/library/grant/)和[权限](https://mariadb.com/kb/en/library/grant/#privilege-levels)。
+
+## <a name="azure_superuser"></a>azure_superuser
+
+所有 Azure Database for MySQL 服务器都是使用名为 "azure_superuser" 的用户创建的。 这是由 Microsoft 创建的系统帐户，用于管理服务器以执行监视、备份和其他定期维护。 待命工程师还可以使用此帐户在使用证书身份验证的情况下访问服务器，并且必须使用实时 (JIT) 过程请求访问。
 
 ## <a name="next-steps"></a>后续步骤
 针对新用户计算机的 IP 地址打开防火墙，使其能够连接：[使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则](howto-manage-firewall-portal.md)  

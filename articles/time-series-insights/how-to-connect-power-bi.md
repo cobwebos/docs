@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540330"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653768"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>在 Power BI 中直观显示 Azure 时序见解中的数据
 
@@ -29,7 +29,7 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
 
 如果还没有 Azure 订阅，请确保注册 [免费订阅](https://azure.microsoft.com/free/) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 下载并安装最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
 * 具有或创建 [Azure 时序见解 Gen2 环境](time-series-insights-update-how-to-manage.md)
@@ -69,7 +69,7 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
        > [!NOTE]
        > 原始事件级别数据的事件计数限制为250000。
 
-       [![连接](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![与](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. 如果尚未使用 **热存储**配置 Azure 时序见解环境，将收到一条警告。
 

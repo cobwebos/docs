@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2c3eb2423c308d512bb880525cb15fef2ffbdb2c
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: dce2ecc166938e21b01b34f8903d9242a6207929
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89303925"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652598"
 ---
 下表显示了 Azure Functions 运行时的主版本支持的绑定：
 
@@ -18,7 +18,7 @@ ms.locfileid: "89303925"
 | 类型 | 1.x | 2.x 及更高版本<sup>1</sup> | 触发器 | 输入 | 输出 |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob 存储](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
-| [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
+| [Azure Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
 | [Dapr](https://github.com/dapr/azure-functions-extension)<sup>3</sup>             | |✔|✔|✔|✔|
 | [事件网格](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [事件中心](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|

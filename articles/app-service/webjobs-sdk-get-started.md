@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959046"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652034"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -264,13 +264,13 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 输入 *queue* 作为队列名称，然后选择“确定”。
 
-   ![创建队列](./media/webjobs-sdk-get-started/create-queue.png)
+   ![屏幕截图，显示创建队列的位置，并将其命名为 "queue"。 ](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. 右键单击新队列所在的节点，然后选择“查看队列”。
 
 1. 选择“添加消息”图标。
 
-   ![创建队列](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![突出显示 "添加消息" 图标的屏幕截图。](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. 在“添加消息”对话框中，输入 *Hello World!*  作为**消息正文**，然后选择“确定”。 现在，队列中会出现一条消息。
 
@@ -329,7 +329,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    |名称  |连接字符串  |数据库类型|
    |---------|---------|------|
-   |AzureWebJobsStorage | {前面复制的存储连接字符串}|自定义|
+   |AzureWebJobsStorage | {前面复制的存储连接字符串}|“自定义”|
 
 1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。 （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 

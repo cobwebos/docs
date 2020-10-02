@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: d68323bb72779ec5978c721b5258d4c8a8d4940d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 30c3fa837f84ff318e9a03a8a11ef6259890f4bb
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650789"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653734"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>迁移到新的 Azure 时序见解第 2 代 API 版本
 
@@ -56,7 +56,7 @@ ms.locfileid: "89650789"
 
     [![更新变量](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. 单击“更新已保存的查询”。 当已保存的查询更新时，该工具将通知您。
+1. 单击“更新已保存的查询”。 当保存的查询已更新时，该工具会通知你。
 
     [![更新已保存的查询](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 

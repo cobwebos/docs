@@ -7,30 +7,28 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 50653b0da2bb488f2a0d4254df2e27ba7c6a5f1f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 039045b613e57ee396201ee93c3962c5970cf02b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648303"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651915"
 ---
 # <a name="fsv2-series"></a>Fsv2 系列
 
-Fsv2 系列在 Intel®强®白金 8272CL (级联 Lake) 处理器和 Intel®至强®白金 8168 (Skylake) 处理器上运行。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
+Fsv2 系列在英特尔® 至强® 铂金 8272CL (Cascade Lake) 处理器和英特尔® 至强® 铂金 8168 (Skylake) 处理器上运行。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
 
 Fsv2 系列 VM 采用了 Intel® 超线程技术。
 
-ACU：195 - 210
+[ACU](acu.md)： 195-210<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：支持<br>
+[内存保留更新](maintenance-and-updates.md)：受支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+<br>
 
-高级存储：支持
-
-高级存储缓存：支持
-
-实时迁移：支持
-
-内存保留更新：支持
-
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_F2s_v2  | 2  | 4   | 16  | 4  | 4000/31 (32)       | 3200/47    | 2|875   |
 | Standard_F4s_v2  | 4  | 8   | 32  | 8  | 8000/63 (64)       | 6400/95    | 2|1750  |
@@ -66,9 +64,9 @@ ACU：195 - 210
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
+有关磁盘类型的详细信息：[磁盘类型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

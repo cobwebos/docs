@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: cc53aa9cab765f16fdf7a517793f8f36ca30daac
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edbd36ad3444795ade4b3f8d29d8473b21a2fda8
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396176"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651507"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ ms.locfileid: "89396176"
 > 
 > 
 
-![共存](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
+![显示一个站点到站点 VPN 连接作为 ExpressRoute 的备份的关系图。](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>配置站点到站点 VPN，以便连接到不通过 ExpressRoute 进行连接的站点
 可以对网络进行配置，使得部分站点通过站点到站点 VPN 直接连接到 Azure，部分站点通过 ExpressRoute 进行连接。 

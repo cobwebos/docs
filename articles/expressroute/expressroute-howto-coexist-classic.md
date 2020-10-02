@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
-ms.openlocfilehash: 4291e0df9f3a99cb45d4f96d4a316f9bb29a9c79
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cc96a8183e07a17ae880549cdc2b8bdca516322
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396142"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651490"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "89396142"
 > 
 > 
 
-![共存](media/expressroute-howto-coexist-classic/scenario1.jpg)
+![显示一个站点到站点 VPN 连接作为 ExpressRoute 的备份的关系图。](media/expressroute-howto-coexist-classic/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>配置站点到站点 VPN，以便连接到不通过 ExpressRoute 进行连接的站点
 可以对网络进行配置，使得部分站点通过站点到站点 VPN 直接连接到 Azure，部分站点通过 ExpressRoute 进行连接。 

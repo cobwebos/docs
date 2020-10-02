@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982032"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653343"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
 
@@ -35,7 +35,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 Azure 
 
 若要创建 Azure IoT Central 应用程序，请在左侧菜单中选择“生成”  。 选择一个行业模板，或选择“自定义应用”**** 从头开始创建应用程序。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。  你将找到有关以下每个字段的详细信息。
 
-![适用于 CSP 的“创建应用程序”页](media/howto-create-and-manage-applications-csp/image4.png)
+![显示 "生成 IoT 应用程序" 页面并选择 "生成" 按钮的屏幕截图。](media/howto-create-and-manage-applications-csp/image4.png)
 
 ![适用于 CSP 的“创建应用程序”页](media/howto-create-and-manage-applications-csp/image4-1.png)
 
@@ -75,7 +75,7 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 
 ## <a name="location"></a>位置
 
-**Location**是要在其中创建应用程序的[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，可以在**澳大利亚**、**亚太**、**欧洲**、**美国**、**英国**和**日本**地区创建 IoT Central 应用程序。 选择一个位置后，之后便不能将应用程序移到其他位置。
+**Location** 是要在其中创建应用程序的 [地理](https://azure.microsoft.com/global-infrastructure/geographies/) 位置。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，可以在 **澳大利亚**、 **亚太**、 **欧洲**、 **美国**、 **英国**和 **日本** 地区创建 IoT Central 应用程序。 选择一个位置后，之后便不能将应用程序移到其他位置。
 
 ## <a name="application-template"></a>应用程序模板
 

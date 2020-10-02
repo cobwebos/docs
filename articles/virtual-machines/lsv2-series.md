@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654746"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652918"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -25,19 +25,16 @@ Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC<sup>TM</sup>7551 处�
 >
 > 若要了解详细信息，请参阅：针对 [Windows](../virtual-machines/windows/storage-performance.md) 或 [Linux](../virtual-machines/linux/storage-performance.md) 优化 Lsv2 系列虚拟机上的性能。  
 
-ACU：150-175
+[ACU](acu.md)：150-175<br>
+[高级存储](premium-storage-performance.md)：受支持<br>
+[高级存储缓存](premium-storage-performance.md)：不支持<br>
+[实时迁移](maintenance-and-updates.md)：不支持<br>
+[内存保留更新](maintenance-and-updates.md)：不支持<br>
+[VM 生成支持](generation-2.md)：第1代和第2代<br>
+突发：支持<br>
+<br>
 
-突发：支持
-
-高级存储：支持
-
-高级存储缓存：不支持
-
-实时迁移：不支持
-
-内存保留更新：不支持
-
-| 大小 | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘<sup>2</sup> | NVMe 磁盘吞吐量<sup>3</sup>（读取 IOPS/MBps） | 非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>4</sup> | 最大突发非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>5</sup>| 最大数据磁盘 | 最大 NIC 数 | 预期网络带宽 (Mbps)  |
+| 大小 | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘<sup>2</sup> | NVMe 磁盘吞吐量<sup>3</sup>（读取 IOPS/MBps） | 非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>4</sup> | 最大突发非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>5</sup>| 最大数据磁盘 | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 | 3200   |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 | 6400   |
@@ -85,9 +82,9 @@ ACU：150-175
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
+有关磁盘类型的详细信息：[磁盘类型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

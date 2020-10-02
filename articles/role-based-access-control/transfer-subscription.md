@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 订阅转移到其他 Azure AD 目录（预览）
+title: 将 Azure 订阅转移到不同的 Azure AD 目录
 description: 了解如何将 Azure 订阅和已知相关资源转移到其他 Azure Active Directory (Azure AD) 目录。
 services: active-directory
 author: rolyon
@@ -10,39 +10,34 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6d0c0333186655d4f105337021164814453ab47a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400538"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652378"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>将 Azure 订阅转移到其他 Azure AD 目录（预览）
-
-> [!IMPORTANT]
-> 按照以下步骤将订阅转移到其他 Azure AD 目录（这项功能目前处于公共预览状态）。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到不同的 Azure AD 目录
 
 组织可能具有多个 Azure 订阅。 每个订阅都与特定 Azure Active Directory (Azure AD) 目录相关联。 为了简化管理，你可能希望将订阅转移到其他 Azure AD 目录。 将订阅转移到其他 Azure AD 目录时，某些资源不会转移到目标目录。 例如，Azure 基于角色的访问控制 (Azure RBAC) 中的所有角色分配和自定义角色将从源目录中永久删除，不会转移到目标目录。
 
 本文介绍将订阅转移到其他 Azure AD 目录并在转移后重新创建一些资源时可以遵循的基本步骤。
 
 > [!NOTE]
-> 对于 Azure 云服务提供程序 (CSP) 订阅，不支持更改订阅的 Azure AD 目录。
+> 对于 Azure 云服务提供商 (CSP) 订阅，不支持更改订阅的 Azure AD 目录。
 
 ## <a name="overview"></a>概述
 
 将 Azure 订阅转移到其他 Azure AD 目录是一个复杂的过程，必须仔细计划和执行。 许多 Azure 服务都需要安全主体（标识）才能正常运行，或者才能管理其他 Azure 资源。 本文将尽力涵盖很大程度上依赖于安全主体的大多数 Azure 服务，但这些服务并不全面。
 
 > [!IMPORTANT]
-> 在某些情况下，转移订阅的过程可能需要停机才能完成。 需要认真规划才能评估传输是否需要停机时间。
+> 在某些情况下，转移订阅的过程可能需要停机才能完成。 需要认真规划以评估转移是否需要停机。
 
 下图显示了将订阅转移到其他目录时必须遵循的基本步骤。
 
 1. 准备转移
 
-1. 将 Azure 订阅转移到不同的目录
+1. 将 Azure 订阅转移到另一目录
 
 1. 在目标目录中重新创建资源，例如角色分配、自定义角色和托管标识
 
@@ -75,23 +70,23 @@ ms.locfileid: "89400538"
 | 用户分配的托管标识 | “是” | “是” | [列出托管标识](#list-role-assignments-for-managed-identities) | 必须删除、重新创建托管标识并将其附加到相应的资源。 必须重新创建角色分配。 |
 | Azure Key Vault | “是” | “是” | [列出 Key Vault 访问策略](#list-key-vaults) | 必须更新与密钥保管库关联的租户 ID。 必须删除并添加新的访问策略。 |
 | 启用了 Azure AD 身份验证集成的 Azure SQL 数据库 | 是 | 否 | [检查采用 Azure AD 身份验证的 Azure SQL 数据库](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
-| Azure 存储和 Azure Data Lake Storage Gen2 | “是” | “是” |  | 必须重新创建任何 ACL。 |
-| Azure Data Lake Storage Gen1 | 是 | 是 |  | 必须重新创建任何 ACL。 |
+| Azure 存储和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 必须重新创建任何 ACL。 |
+| Azure Data Lake Storage Gen1 | “是” | “是” |  | 必须重新创建任何 ACL。 |
 | Azure 文件 | 是 | 是 |  | 必须重新创建任何 ACL。 |
-| Azure 文件同步 | 是 | “是” |  |  |
-| Azure 托管磁盘 | “是” | 空值 |  |  |
-| 用于 Kubernetes 的 Azure 容器服务 | 是 | 是 |  |  |
-| Azure Active Directory 域服务 | “是” | 否 |  |  |
-| 应用注册 | “是” | 是 |  |  |
+| Azure 文件同步 | 是 | 是 |  |  |
+| Azure 托管磁盘 | 是 | 空值 |  |  |
+| 用于 Kubernetes 的 Azure 容器服务 | 是 | “是” |  |  |
+| Azure Active Directory 域服务 | 是 | 否 |  |  |
+| 应用注册 | “是” | “是” |  |  |
 
 > [!WARNING]
-> 如果将静态加密用于某个资源（例如存储帐户或 SQL 数据库），而该资源依赖于 **不** 在正在传输的同一订阅中的密钥保管库，则可能会导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
+> 如果对依赖于密钥保管库的资源（例如存储帐户或 SQL 数据库）使用静态加密，而密钥保管库不位于正在转移的订阅中，则可能导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成这些步骤，需要：
 
-- [Bash Azure Cloud Shell](/azure/cloud-shell/overview) 或 [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Bash Azure Cloud Shell](/azure/cloud-shell/overview) 或 [Azure CLI](/cli/azure)
 - 要在源目录中转移的订阅的帐户管理员
 - 目标目录中的[所有者](built-in-roles.md#owner)角色
 
@@ -101,13 +96,13 @@ ms.locfileid: "89400538"
 
 1. 以管理员身份登录 Azure。
 
-1. 使用 [az account list](/cli/azure/account#az-account-list) 命令获取订阅列表。
+1. 使用 [az account list](/cli/azure/account#az_account_list) 命令获取订阅列表。
 
     ```azurecli
     az account list --output table
     ```
 
-1. 使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 设置要转移的活动订阅。
+1. 使用 [az account set](/cli/azure/account#az_account_set) 设置要转移的活动订阅。
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ ms.locfileid: "89400538"
 
 ### <a name="install-the-resource-graph-extension"></a>安装 resource-graph 扩展
 
- 借助 resource-graph 扩展，你可以使用 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 命令来查询由 Azure 资源管理器管理的资源。 后续步骤中需要使用此命令。
+ 借助 resource-graph 扩展，你可以使用 [az graph](/cli/azure/ext/resource-graph/graph) 命令来查询由 Azure 资源管理器管理的资源。 后续步骤中需要使用此命令。
 
-1. 使用 [az extension list](https://docs.microsoft.com/cli/azure/extension#az-extension-list) 查看是否安装了 resource-graph 扩展。
+1. 使用 [az extension list](/cli/azure/extension#az_extension_list) 查看是否安装了 resource-graph 扩展。
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ ms.locfileid: "89400538"
 
 ### <a name="save-all-role-assignments"></a>保存所有角色分配
 
-1. 使用 [az role assignment list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list) 列出所有角色分配（包括继承的角色分配）。
+1. 使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list) 列出所有角色分配（包括继承的角色分配）。
 
     为了更轻松地查看列表，可以将输出导出为 JSON、TSV 或表。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 列出角色分配](role-assignments-list-cli.md)。
 
@@ -149,7 +144,7 @@ ms.locfileid: "89400538"
 
 ### <a name="save-custom-roles"></a>保存自定义角色
 
-1. 使用 [az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) 列出自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
+1. 使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 列出自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ ms.locfileid: "89400538"
 
 1. 查看[支持托管标识的 Azure 服务列表](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)以了解可能用到托管标识的位置。
 
-1. 使用 [az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list) 列出系统分配的和用户分配的托管标识。
+1. 使用 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) 列出系统分配的和用户分配的托管标识。
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ ms.locfileid: "89400538"
     | `alternativeNames` 属性不包括 `isExplicit` | 系统分配 |
     | `alternativeNames` 属性包括 `isExplicit=True` | 用户分配 |
 
-    还可以使用 [az identity list](https://docs.microsoft.com/cli/azure/identity#az-identity-list) 命令仅列出用户分配的托管标识。 有关详细信息，请参阅[使用 Azure CLI 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。
+    还可以使用 [az identity list](/cli/azure/identity#az_identity_list) 命令仅列出用户分配的托管标识。 有关详细信息，请参阅[使用 Azure CLI 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。
 
     ```azurecli
     az identity list
@@ -222,9 +217,9 @@ ms.locfileid: "89400538"
 创建密钥保管库时，它会自动绑定到创建它的订阅的默认 Azure Active Directory 租户 ID。 所有访问策略条目也都绑定到此租户 ID。 有关详细信息，请参阅[将 Azure Key Vault 移动到另一个订阅](../key-vault/general/move-subscription.md)。
 
 > [!WARNING]
-> 如果将静态加密用于某个资源（例如存储帐户或 SQL 数据库），而该资源依赖于 **不** 在正在传输的同一订阅中的密钥保管库，则可能会导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
+> 如果对依赖于密钥保管库的资源（例如存储帐户或 SQL 数据库）使用静态加密，而密钥保管库不位于正在转移的订阅中，则可能导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
 
-- 如果有密钥保管库，请使用 [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) 列出访问策略。 有关详细信息，请参阅 [分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-cli.md)。
+- 如果有密钥保管库，请使用 [az keyvault show](/cli/azure/keyvault#az_keyvault_show) 列出访问策略。 有关详细信息，请参阅[分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-cli.md)。
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ ms.locfileid: "89400538"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>列出采用 Azure AD 身份验证的 Azure SQL 数据库
 
-- 使用 [az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) 和 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extension 查看是否正在使用启用了 Azure AD AUTHENTICATION 集成的 Azure sql 数据库。 有关详细信息，请参阅[使用 SQL 配置和管理 Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-configure.md)。
+- 使用 [az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) 和 [az graph](/cli/azure/ext/resource-graph/graph) 扩展来查看是否正在使用启用了 Azure AD 身份验证集成的 Azure SQL 数据库。 有关详细信息，请参阅[使用 SQL 配置和管理 Azure Active Directory 身份验证](../azure-sql/database/authentication-aad-configure.md)。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ ms.locfileid: "89400538"
 
 ### <a name="list-other-known-resources"></a>列出其他已知资源
 
-1. 使用 [az account show](https://docs.microsoft.com/cli/azure/account#az-account-show) 获取订阅 ID。
+1. 使用 [az account show](/cli/azure/account#az_account_show) 获取订阅 ID。
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. 使用 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 扩展列出具有已知 Azure AD 目录依赖项的其他 Azure 资源。
+1. 使用 [az graph](/cli/azure/ext/resource-graph/graph) 扩展列出具有已知 Azure AD 目录依赖项的其他 Azure 资源。
 
     ```azurecli
     az graph query -q \
@@ -262,21 +257,21 @@ ms.locfileid: "89400538"
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-the-subscription"></a>步骤2：传输订阅
+## <a name="step-2-transfer-the-subscription"></a>步骤 2：转移订阅
 
-在此步骤中，将订阅从源目录传输到目标目录。 具体步骤会有所不同，具体取决于是否还要转移计费所有权。
+在此步骤中，你需要将订阅从源目录转移到目标目录。 具体步骤取决于是否还要转移计费所有权。
 
 > [!WARNING]
-> 传输订阅时，源目录中的所有角色分配将被 **永久** 删除并且无法还原。 传输订阅后无法返回。 执行此步骤之前，请确保已完成前面的步骤。
+> 转移订阅时，源目录中的所有角色分配都将永久删除且无法还原。 订阅转移后无法取消。 执行此步骤之前，请确保已完成前面的步骤。
 
-1. 确定是否还要将帐单所有权转移到另一个帐户。
+1. 确定是否还要将计费所有权转移到另一个帐户。
 
-1. 将订阅转移到不同的目录。
+1. 将订阅转移到另一目录。
 
-    - 如果要保留当前帐单所有权，请按照 [将 Azure 订阅关联或添加到 Azure Active Directory 租户](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)中的步骤进行操作。
+    - 若要保留当前计费所有权，请按照[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)中的步骤进行操作。
     - 如果还想要转让帐单所有权，请遵循将 [Azure 订阅的帐单所有权转移到另一个帐户](../cost-management-billing/manage/billing-subscription-transfer.md)中的步骤。 若要将订阅转移到不同的目录，必须选中 " **订阅 Azure AD 租户** " 复选框。
 
-1. 传输完订阅后，返回到本文，在目标目录中重新创建资源。
+1. 完成订阅转移后，请返回到本文，了解如何在目标目录中重新创建资源。
 
 ## <a name="step-3-re-create-resources"></a>步骤 3：重新创建资源
 
@@ -286,13 +281,13 @@ ms.locfileid: "89400538"
 
     只有新帐户中接受了转移请求的用户才有权管理这些资源。
 
-1. 使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list) 命令获取订阅列表。
+1. 使用 [az account list](/cli/azure/account#az_account_list) 命令获取订阅列表。
 
     ```azurecli
     az account list --output table
     ```
 
-1. 使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 设置要使用的活动订阅。
+1. 使用 [az account set](/cli/azure/account#az_account_set) 设置要使用的活动订阅。
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ ms.locfileid: "89400538"
 
 ### <a name="create-custom-roles"></a>创建自定义角色
         
-- 使用 [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) 从先前创建的文件中创建每个自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
+- 使用 [az role definition create](/cli/azure/role/definition#az_role_definition_create) 从先前创建的文件中创建每个自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ ms.locfileid: "89400538"
 
 ### <a name="create-role-assignments"></a>创建角色分配
 
-- 使用 [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) 为用户、组和服务主体创建角色分配。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 添加或删除角色分配](role-assignments-cli.md)。
+- 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户、组和服务主体创建角色分配。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 添加或删除角色分配](role-assignments-cli.md)。
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ ms.locfileid: "89400538"
     | 虚拟机规模集 | [使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | 其他服务 | [支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. 使用 [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) 为系统分配的托管标识创建角色分配。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为系统分配的托管标识创建角色分配。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ ms.locfileid: "89400538"
     | 虚拟机规模集 | [使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | 其他服务 | [支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[使用 Azure CLI 创建、列出或删除用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. 使用 [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) 为用户分配的托管标识创建角色分配。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户分配的托管标识创建角色分配。 有关详细信息，请参阅[使用 Azure CLI 为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
