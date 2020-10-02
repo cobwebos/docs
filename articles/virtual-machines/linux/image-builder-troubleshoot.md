@@ -3,16 +3,16 @@ title: 排查 Azure 映像生成器服务问题
 description: 排查使用 Azure VM 映像生成器服务时遇到的常见问题和错误
 author: cynthn
 ms.author: danis
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459923"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661102"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>排查 Azure 映像生成器服务问题
 
@@ -591,6 +591,18 @@ template name:  t_1556938436xxx
 #### <a name="solution"></a>解决方案
 
 可以托管自己的 DevOps 代理，也可以考虑缩短生成时间。 例如，如果要分发到共享映像库，则复制到一个区域。 如果要异步复制，则为。 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Windows 登录缓慢： ' 请等待 Windows 模块安装程序 '
+
+#### <a name="error"></a>错误
+使用映像生成器创建 Windows 10 映像后，请从该映像创建一个 VM，然后从该映像创建一个 VM，并在第一次登录时需要等待几分钟，并显示以下消息：
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>解决方案
+首先，在映像生成中，通过添加 Windows 重新启动定制器作为最后一个自定义项，并完成所有软件安装，以检查是否不需要任何未完成的重新启动。 最后，将 [/mode： vm](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) 选项添加到 AIB 使用的默认 sysprep，请参阅下面的 "从 AIB 映像创建的 vm 未成功创建" > 重写命令 "  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>无法成功创建从 AIB 映像创建的 Vm
 

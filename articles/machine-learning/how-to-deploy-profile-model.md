@@ -1,5 +1,5 @@
 ---
-title: 配置文件模型内存和 CPU 使用率
+title: 分析模型内存和 CPU 使用率
 titleSuffix: Azure Machine Learning
 description: 了解如何分析模型内存和 CPU 使用率
 services: machine-learning
@@ -10,20 +10,24 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aac5fba68c43892216cbd16dd99b0c6a9bf70217
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935579"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660983"
 ---
-# <a name="profile-your-model-to-determine-resource-utilization"></a>分析模型以确定资源利用率
+# <a name="profile-your-model-to-determine-resource-utilization"></a>分析模型，确定资源利用率
 
-本文介绍如何分析机器学习模型，以确定在将模型部署为 web 服务时，需要为模型分配多少 CPU 和内存。
+本文介绍如何分析机器学习模型，以确定在将模型部署为 Web 服务时需要为该模型分配多少 CPU 和内存。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本文假设已通过 Azure 机器学习训练和注册了模型。 请参阅 [此处的示例教程](how-to-train-scikit-learn.md) ，了解使用 Azure 机器学习培训和注册 scikit-learn 模型的示例。
+本文假设你已通过 Azure 机器学习训练并注册了一个模型。 有关使用 Azure 机器学习训练和注册 scikit-learn 模型的示例，请参阅[此处的示例教程](how-to-train-scikit-learn.md)。
+
+## <a name="limitations"></a>限制
+
+* 当工作区的 Azure 容器注册表 (ACR) 位于虚拟网络后面时，分析将不起作用。
 
 ## <a name="run-the-profiler"></a>运行探查器
 
@@ -40,7 +44,7 @@ ms.locfileid: "88935579"
 > [!IMPORTANT]
 > 我们仅支持对 ChinaEast2 和 USGovArizona 区域中的2个 Cpu 进行分析。
 
-下面是一个示例，说明了如何构造用于分析服务的输入数据集，该服务预期其传入请求数据包含序列化 json。 在这种情况下，我们创建了一个基于数据集的同一请求数据内容的100实例。 在实际方案中，建议使用包含各种输入的更大数据集，尤其是在模型资源使用/行为是依赖于输入的情况下。
+下面是一个示例，说明了如何构造用于分析服务的输入数据集，该服务预期其传入请求数据包含序列化 json。 在此示例中，我们创建了一个数据集，该数据集基于 100 个请求数据内容相同的实例。 在实际方案中，建议使用包含各种输入的更大数据集，尤其是在模型资源使用/行为是依赖于输入的情况下。
 
 ::: zone pivot="py-sdk"
 
@@ -127,9 +131,9 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查失败的部署问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败的问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
-* [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
+* [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)

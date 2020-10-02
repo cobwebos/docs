@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bfdda75c0826ed12fbce1eb47680f91abbde4934
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397617"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661051"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure Arc 数据控制器
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 有关概述信息，请参阅 [创建 Azure Arc 数据控制器](create-data-controller.md) 主题。
 
@@ -31,11 +31,11 @@ ms.locfileid: "91397617"
 > [!NOTE]
 > 下面所示的创建 Azure Arc 数据控制器的一些步骤需要 Kubernetes 群集管理员权限。  如果您不是 Kubernetes 群集管理员，则需要让 Kubernetes 群集管理员代表您执行这些步骤。
 
-#### <a name="cleanup-from-past-installations"></a>清除过去的安装
+### <a name="cleanup-from-past-installations"></a>清除过去的安装
 
-如果在同一群集上过去安装了 Azure Arc 数据控制器，并使用命令删除了 Azure Arc 数据控制器 `azdata arc dc delete` ，则可能仍需要删除某些群集级别的对象。 运行以下命令以删除 Azure Arc 数据控制器群集级别对象：
+如果过去安装了 Azure Arc 数据控制器，则在同一群集上使用命令删除 Azure Arc 数据控制器时， `azdata arc dc delete` 可能仍需要删除某些群集级别的对象。 运行以下命令以删除 Azure Arc 数据控制器群集级别对象：
 
-```
+```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
 kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 

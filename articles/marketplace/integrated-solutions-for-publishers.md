@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119525"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660898"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
@@ -52,7 +52,7 @@ ms.locfileid: "86119525"
 
 ## <a name="submit-a-nomination"></a>提交提名
 
-希望参与计划的合作伙伴应确定他们要合作的其他合作伙伴。 他们应填写[集成解决方案提名表单](https://aka.ms/AA5qicu)。 集成解决方案计划团队将评审提名，并在 10 个工作日内进行跟进。 该团队提供审批和后续步骤。
+希望参与计划的合作伙伴应确定他们要合作的其他合作伙伴。 他们应完成 " [集成解决方案提名" 窗体](https://aka.ms/AA5qicu)。 集成解决方案计划团队将评审提名，并在 10 个工作日内进行跟进。 该团队提供审批和后续步骤。
 
 ## <a name="develop-an-integrated-solution"></a>部署集成解决方案
 
@@ -114,4 +114,4 @@ ms.locfileid: "86119525"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关在市场中购买集成解决方案的信息，请参阅[集成解决方案](./integrated-solutions.md)。
+- [集成解决方案提名表单](https://aka.ms/AA5qicu)
