@@ -10,6 +10,10 @@
       href: language-support.md
     - name: 区域支持
       href: regions.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: 配额和限制
+      href: speech-services-quotas-and-limits.md
     - name: Docs 中的新增内容
       href: whats-new.md
 - name: 语音转文本
@@ -76,7 +80,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -155,7 +159,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -205,7 +209,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -248,7 +252,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -303,7 +307,7 @@
                 - name: Java
                   displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javaref'
-                - name: Javascript
+                - name: JavaScript
                   displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javascriptref'
                 - name: Objective-C
@@ -347,6 +351,8 @@
       items:
         - name: 什么是语音助手？
           href: voice-assistants.md
+        - name: 语音助手示例 (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: 自定义命令
       items:
         - name: 什么是自定义命令？
@@ -459,11 +465,58 @@
       items:
         - name: 说话人识别 REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: 工具
   items:
-    - name: “承载”文档
-      href: index-hosting.yml
-    - name: 操作指南
+    - name: 语音 SDK
+      items:
+        - name: 语音 SDK 概述
+          href: speech-sdk.md
+        - name: 安装语音 SDK
+          href: quickstarts/setup-platform.md
+        - name: 语音 SDK 发行说明
+          href: releasenotes.md
+        - name: 参考
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: 语音 CLI
+      displayName: SPX
+      items:
+        - name: 语音 CLI 概述
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: 语音 CLI 基础知识
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Speech Studio 概述
+          href: 'https://speech.microsoft.com'
+        - name: 使用 Speech Studio 创建自定义命令应用
+          href: quickstart-custom-speech-commands-create-new.md
+- name: 部署
+  items:
+    - name: 启用日志记录
+      href: how-to-use-logging.md
+    - name: 跟踪内存使用情况
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: 为 Linux 配置 OpenSSL
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: 配置 RHEL/CentOS 7
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: 容器
       items:
         - name: 安装和运行语音容器
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Azure 容器实例中的语音容器
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: 资源
-      items:
         - name: 容器常见问题解答
           href: speech-container-faq.md
-- name: 语音 SDK
-  items:
-    - name: 语音 SDK 概述
-      href: speech-sdk.md
-    - name: 安装语音 SDK
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: 操作指南
-      items:
-        - name: 启用日志记录
-          href: how-to-use-logging.md
-        - name: 跟踪内存使用情况
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: 为 Linux 配置 OpenSSL
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: 配置 RHEL/CentOS 7
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: 示例
-      items:
-        - name: 语音 SDK 示例 (GitHub)
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: 语音设备 SDK 示例 (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: 语音助手示例 (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: 参考
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: 语音 SDK 发行说明
-          href: releasenotes.md
 - name: 设备
   items:
     - name: 语音设备文档
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: 获取语音设备 SDK
           href: get-speech-devices-sdk.md
+        - name: 语音设备 SDK 示例 (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: 硬件
       items:
         - name: 麦克风阵列建议
@@ -560,23 +570,6 @@
       items:
         - name: 语音设备 SDK 发行说明
           href: devices-sdk-release-notes.md
-- name: 工具
-  items:
-    - name: 语音 CLI
-      displayName: SPX
-      items:
-        - name: 什么是语音 CLI？
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: 语音 CLI 基础知识
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: 什么是 Speech Studio？
-          href: 'https://speech.microsoft.com'
-        - name: 使用 Speech Studio 创建自定义命令应用
-          href: quickstart-custom-speech-commands-create-new.md
 - name: 迁移
   items:
     - name: 从必应语音
@@ -588,19 +581,13 @@
     - name: 支持
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
-    - name: 区域
-      href: regions.md
     - name: Swagger 文档
       href: swagger-documentation.md
     - name: 主权云
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: 配额和限制
-      href: speech-services-quotas-and-limits.md
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密

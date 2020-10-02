@@ -4,11 +4,13 @@
   items:
     - name: 什么是 IoT 即插即用？
       href: overview-iot-plug-and-play.md
-    - name: 预览刷新版本更新
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: 当前版本中的内容
+      href: overview-iot-plug-and-play-current-release.md
 - name: 快速入门
   expanded: true
   items:
+    - name: 设置你的环境
+      href: set-up-environment.md
     - name: 将设备连接到 IoT 中心
       items:
         - name: C
@@ -27,6 +29,10 @@
           href: quickstart-service-node.md
         - name: Python
           href: quickstart-service-python.md
+        - name: C#
+          href: quickstart-service-csharp.md
+        - name: Java
+          href: quickstart-service-java.md
 - name: 教程
   items:
     - name: 连接多组件设备 (C)
@@ -41,18 +47,38 @@
       href: tutorial-multiple-components-python.md
     - name: 使用 MQTT 连接设备
       href: tutorial-use-mqtt.md
+    - name: 与 MXChip 设备交互（示例）
+      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+    - name: 将设备迁移到模块
+      href: tutorial-migrate-device-to-module.md
 - name: 概念
   items:
     - name: 体系结构
       href: concepts-architecture.md
-    - name: 开发人员指南
-      href: concepts-developer-guide.md
+    - name: 设备开发人员指南
+      items:
+        - name: C#
+          href: concepts-developer-guide-device-csharp.md
+        - name: Node.js
+          href: concepts-developer-guide-device-node.md
+        - name: Java
+          href: concepts-developer-guide-device-java.md
+        - name: Python
+          href: concepts-developer-guide-device-python.md
+        - name: C
+          href: concepts-developer-guide-device-c.md
+    - name: 服务开发人员指南
+      href: concepts-developer-guide-service.md
     - name: 组件
       href: concepts-components.md
     - name: IoT 即插即用约定
       href: concepts-convention.md
+    - name: IoT 即插即用桥接
+      href: concepts-iot-pnp-bridge.md
     - name: 数字孪生
       href: concepts-digital-twin.md
+    - name: 设备认证
+      href: concepts-certification-program.md
     - name: 模型存储库
       href: concepts-model-repository.md
     - name: 在解决方案中使用模型
@@ -67,8 +93,14 @@
   items:
     - name: 安装和使用 IoT 资源管理器
       href: howto-use-iot-explorer.md
+    - name: 安装和 IoT 即插即用桥接
+      href: howto-use-iot-pnp-bridge.md
     - name: 安装和使用 Azure IoT CLI 扩展
       href: howto-use-iot-pnp-cli.md
+    - name: 安装和使用 DTDL 创作工具
+      href: howto-use-dtdl-authoring-tools.md
+    - name: 使用嵌入的 C
+      href: howto-use-embedded-c.md
     - name: 管理数字孪生
       href: howto-manage-digital-twin.md
     - name: 认证设备
@@ -78,7 +110,7 @@
     - name: 库和 SDK
       href: libraries-sdks.md
     - name: 数字孪生 REST API
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: 资源

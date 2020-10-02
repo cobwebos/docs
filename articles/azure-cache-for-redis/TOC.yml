@@ -43,6 +43,8 @@
           href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: 创建排行榜
       href: cache-web-app-cache-aside-leaderboard.md
+    - name: 部署机器学习模型
+      href: cache-ml.md
     - name: 使用 Azure PowerShell 进行管理
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: 使用 Azure CLI 进行管理
@@ -68,6 +70,8 @@
       items:
         - name: 选择缓存层
           href: cache-overview.md#choosing-the-right-tier
+        - name: 设置 Redis 版本
+          href: cache-how-to-version.md
         - name: 使用群集分布缓存
           href: cache-how-to-premium-clustering.md
         - name: 使用 Redis 数据持久性保留缓存

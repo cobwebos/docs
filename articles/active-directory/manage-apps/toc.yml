@@ -57,10 +57,16 @@
           href: developer-guidance-for-integrating-applications.md
     - name: 单一登录
       items:
-        - name: 单一登录选项
-          href: sso-options.md
         - name: 计划单一登录部署
           href: plan-sso-deployment.md
+        - name: 单一登录选项
+          href: sso-options.md
+        - name: 基于 SAML 的 SSO
+          href: configure-saml-single-sign-on.md
+        - name: 基于密码的 SSO
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: 基于链接的 SSO
+          href: configure-linked-sign-on.md
         - name: 一键式 SSO
           href: one-click-sso-tutorial.md
     - name: 应用程序安全性
@@ -102,14 +108,6 @@
 - name: 操作指南
   expanded: false
   items:
-    - name: 配置单一登录
-      items:
-        - name: 配置基于 SAML 的单一登录
-          href: configure-saml-single-sign-on.md
-        - name: 配置基于密码的登录
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: 配置链接登录
-          href: configure-linked-sign-on.md
     - name: 分配用户和管理对应用的访问权限
       items:
         - name: 配置用户同意

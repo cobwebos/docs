@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 05/04/2020
-  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
-  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+  ms.date: 09/21/2020
+  ms.openlocfilehash: 76a879f1c2c228fd509f0b0725b7ff3ddac4fa41
+  ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/22/2020
-  ms.locfileid: "88752119"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91574902"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -22,15 +22,61 @@ landingContent:
     links:
     - text: 什么是 Azure VMware 解决方案？
       url: introduction.md
+  - linkListType: concept
+    links:
+    - text: 私有云和群集
+      url: concepts-private-clouds-clusters.md
+    - text: 私有云网络和网络间连接
+      url: concepts-networking.md
+    - text: 私有云中的存储
+      url: concepts-storage.md
+    - text: 私有云的访问权限和标识
+      url: concepts-identity.md
+    - text: 基于角色的访问控制
+      url: concepts-role-based-access-control.md
+    - text: 私有云升级
+      url: concepts-upgrades.md
+- title: 部署 Azure VMware 解决方案
+  linkLists:
   - linkListType: get-started
     links:
-    - text: 网络清单
-      url: tutorial-network-checklist.md
+    - text: 预部署过程
+      url: production-ready-deployment-steps.md
+    - text: 部署前清单
+      url: pre-deployment-checklist.md
+    - text: 1 - 部署 Azure VMware 解决方案
+      url: deploy-azure-vmware-solution.md
+    - text: 2 - 连接到本地
+      url: azure-vmware-solution-on-premises.md
+    - text: 3 - 部署和配置 HCX
+      url: tutorial-deploy-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: 创建 AVS 私有云
+    - text: 网络规划清单
+      url: tutorial-network-checklist.md
+    - text: 创建私有云
       url: tutorial-create-private-cloud.md
-    - text: 配置网络
-      url: tutorial-configure-networking.md
     - text: 访问私有云
       url: tutorial-access-private-cloud.md
+    - text: 配置网络
+      url: tutorial-configure-networking.md
+    - text: 创建 NSX-T 网络段
+      url: tutorial-nsx-t-network-segment.md
+    - text: 从本地对等连接到私有云
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: 部署和配置 VMware HCX
+      url: tutorial-deploy-vmware-hcx.md
+    - text: 缩放私有云
+      url: tutorial-scale-private-cloud.md
+- title: 扩展 Azure VMware 解决方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 迁移评估
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - text: 管理 DHCP
+      url: manage-dhcp.md
+    - text: 为 VM 部署灾难恢复
+      url: disaster-recovery-for-virtual-machines.md
+    - text: 通过内容库部署 VM
+      url: tutorial-deploy-vm-content-library.md

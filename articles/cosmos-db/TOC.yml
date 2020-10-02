@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: 冲突类型和解决策略
-          displayName: 'last write wins, custom, multi master, multi-master'
+          displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: 全球分布 - 揭秘
           href: global-dist-under-the-hood.md
@@ -584,7 +584,7 @@
         - name: 数据加密
           href: database-encryption-at-rest.md
         - name: 保护对数据的访问
-          displayName: 'master key, resource token, users, roles'
+          displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
         - name: IP 防火墙
           href: firewall-support.md
@@ -977,7 +977,7 @@
           href: how-to-move-regions.md
     - name: 全球分布
       items:
-        - name: 配置多主数据库
+        - name: 配置多区域写入
           href: how-to-multi-master.md
         - name: 管理一致性级别
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'

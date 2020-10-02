@@ -43,6 +43,8 @@
       href: basic-concepts.md
     - name: 安全性
       items:
+        - name: Key Vault 身份验证基础知识
+          href: authentication-fundamentals.md
         - name: Azure Key Vault 安全性
           href: overview-security.md
         - name: 有关使用 Key Vault 的最佳做法 - Azure Key Vault
@@ -130,6 +132,8 @@
           href: access-behind-firewall.md
     - name: 软删除
       items:
+        - name: Key Vault 恢复（软删除和清除保护）
+          href: key-vault-recovery.md
         - name: 在 CLI 中使用软删除
           href: soft-delete-cli.md
         - name: 在 PowerShell 中使用软删除

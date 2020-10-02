@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: IoT 即插即用预览刷新版本文档
+title: IoT 即插即用文档
 summary: 使用 IoT 即插即用可定义这样一个设备模型，该模型使云解决方案能够自动了解你的设备并开始与之交互。
 metadata:
-  title: IoT 即插即用预览版体系结构
-  description: 通过 IoT 即插即用预览版，解决方案构建者无需手动配置即可将设备集成到解决方案中。 本文介绍了使其成为可能的关键体系结构元素。
+  title: IoT 即插即用体系结构
+  description: 通过 IoT 即插即用，解决方案构建者无需手动配置即可将设备集成到解决方案中。 本文介绍了使此任务成为可能的关键体系结构元素。
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 5b01154fa3e5821ca577e4a910facff8d9cb968a
+  ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337358"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91598050"
 landingContent:
 - title: 关于 IoT 即插即用
   linkLists:
@@ -24,8 +24,8 @@ landingContent:
     links:
     - text: 什么是 IoT 即插即用？
       url: overview-iot-plug-and-play.md
-    - text: 2020 年预览刷新版本更新
-      url: overview-iot-plug-and-play-preview-updates.md
+    - text: 当前版本中的内容
+      url: overview-iot-plug-and-play-current-release.md
 - title: 生成设备
   linkLists:
   - linkListType: quickstart
@@ -43,11 +43,13 @@ landingContent:
   - linkListType: concept
     links:
     - text: 开发人员指南
-      url: concepts-developer-guide.md
-    - text: IoT 即插即用约定
-      url: concepts-convention.md
+      url: concepts-developer-guide-device-csharp.md
     - text: 组件
       url: concepts-components.md
+    - text: IoT 即插即用约定
+      url: concepts-convention.md
+    - text: IoT 即插即用桥接
+      url: concepts-iot-pnp-bridge.md
 - title: 构建解决方案
   linkLists:
   - linkListType: quickstart
