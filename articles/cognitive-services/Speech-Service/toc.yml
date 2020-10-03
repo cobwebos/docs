@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: 示例和常见问题
               href: windows-voice-assistants-faq.md
-    - name: 自定义关键字
-      items:
-        - name: 自定义关键字概述
-          href: custom-keyword-overview.md
-        - name: 自定义关键字基础知识
-          href: custom-keyword-basics.md
 - name: 说话人识别
   items:
     - name: 说话人辨识概述
@@ -465,6 +459,12 @@
       items:
         - name: 说话人识别 REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: 自定义关键字
+  items:
+    - name: 自定义关键字概述
+      href: custom-keyword-overview.md
+    - name: 自定义关键字基础知识
+      href: custom-keyword-basics.md
 - name: 工具
   items:
     - name: 语音 SDK
