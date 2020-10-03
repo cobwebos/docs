@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: 18389f3058bcc60c22f8598040f4fea4b036f1ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298906"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666613"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -163,7 +163,7 @@ A8-A11 和 H 系列大小也称为 *计算密集型实例*。 运行这些大小
 <sup>1</sup>对于 MPI 应用程序来说，专用 RDMA 后端网络是通过 FDR InfiniBand 网络启用的，后者可以提供相当低的延迟和高带宽。  
 
 > [!NOTE]
-> A8 – A11 VM 计划于 2021 年 3 月停用。 有关详细信息，请参阅 [HPC 迁移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
+> A8 – A11 VM 计划于 2021 年 3 月停用。 强烈建议不要创建任何新的 A8 – A11 Vm。 请将任何现有的 A8 – A11 Vm 迁移到新的、功能强大的高性能计算 VM 大小（如 H、HB-ACCT-WC、HC、HBv2）以及常规用途计算 VM 大小（如 D、E 和 F），以获得更好的性价比。 有关详细信息，请参阅 [HPC 迁移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
 
 <br>
 

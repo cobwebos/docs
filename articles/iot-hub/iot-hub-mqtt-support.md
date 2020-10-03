@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 2e1c8975c0f37fff2e177c9aa0dcf8f3b92a9d3f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421401"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664930"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -103,6 +103,38 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * Python SDK 中不支持 AMQP。
 
+## <a name="example-in-c-using-mqtt-without-an-azure-iot-sdk"></a>使用不带 Azure IoT SDK 的 MQTT 的 C 中的示例
+
+在 [IOT MQTT 示例存储库](https://github.com/Azure-Samples/IoTMQTTSample)中，你将找到几个 c/c + + 演示项目，其中展示了如何发送遥测消息，并在不使用 Azure IOT C SDK 的情况下接收具有 IoT 中心的事件。 
+
+这些示例使用 Eclipse Mosquitto 库向在 IoT 中心内实现的 MQTT Broker 发送消息。
+
+此存储库包含：
+
+**对于 Windows：**
+
+* TelemetryMQTTWin32：包含用于将遥测消息发送到在 Windows 计算机上生成和运行的 Azure IoT 中心的代码。
+
+* SubscribeMQTTWin32：包含用于在 Windows 计算机上订阅给定 IoT 中心的事件的代码。
+
+* DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备孪生事件的代码。
+
+* PnPMQTTWin32：包含用于将遥测消息（含 IoT 即插即用预览版设备功能）发送到在 Windows 计算机上生成和运行的 Azure IoT 中心的代码。 你可以阅读有关[IoT 插件 & 播放](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)的详细信息
+
+**对于 Linux：**
+
+* MQTTLinux：包含要在 Linux 上运行的代码和生成脚本（目前已测试过 WSL、Ubuntu 和 Raspbian）。
+
+* LinuxConsoleVS2019：包含相同的代码，但位于针对 WSL 的 VS2019 项目中（Windows Linux 子系统）。 通过此项目，你可以从 Visual Studio 逐步调试在 Linux 上运行的代码。
+
+**对于 mosquitto_pub：**
+
+此文件夹包含与 Mosquitto.org 提供的 mosquitto_pub 实用工具结合使用的两个示例命令。
+
+* Mosquitto_sendmessage：用于将简单文本消息发送到充当设备的 Azure IoT 中心。
+
+* Mosquitto_subscribe：用于查看 Azure IoT 中心发生的事件。
+
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
 如果设备无法使用设备 SDK，仍可使用端口 8883 上的 MQTT 协议连接到公共设备终结点。 在 CONNECT 数据包中，设备应使用以下值：
@@ -115,7 +147,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
-* “密码”  字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
+* “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
 
@@ -147,38 +179,6 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 对于 MQTT 连接和断开连接数据包，IoT 中心会在**操作监视**通道上发出事件。 此事件包含的其他信息有助于排查连接问题。
 
 设备应用可以在 CONNECT 数据包中指定 Will 消息 。 设备应用应该使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作为 Will 主题名称，用于定义要作为遥测消息转发的 Will 消息 。 在此情况下，如果关闭网络连接，但之前未从设备中接收到 DISCONNECT 数据包，则 IoT 中心将 CONNECT 数据包中提供的 Will 消息发送到遥测通道  。 遥测通道可以是默认事件终结点或由 IoT 中心路由定义的自定义终结点。 消息具有 iothub-MessageType 属性，其中包含分配给它的 Will 的值 。
-
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>在不使用 Azure IoT C SDK 的情况下使用 MQTT 的 C 代码示例
-
-在 [IOT MQTT 示例存储库](https://github.com/Azure-Samples/IoTMQTTSample)中，你将找到几个 c/c + + 演示项目，其中展示了如何发送遥测消息，并在不使用 Azure IOT C SDK 的情况下接收具有 IoT 中心的事件。 
-
-这些示例使用 Eclipse Mosquitto 库向在 IoT 中心内实现的 MQTT Broker 发送消息。
-
-此存储库包含：
-
-**对于 Windows：**
-
-* TelemetryMQTTWin32：包含用于将遥测消息发送到在 Windows 计算机上生成和运行的 Azure IoT 中心的代码。
-
-* SubscribeMQTTWin32：包含用于在 Windows 计算机上订阅给定 IoT 中心的事件的代码。
-
-* DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备孪生事件的代码。
-
-* PnPMQTTWin32：包含用于将遥测消息（含 IoT 即插即用预览版设备功能）发送到在 Windows 计算机上生成和运行的 Azure IoT 中心的代码。 你可以阅读有关[IoT 插件 & 播放](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)的详细信息
-
-**对于 Linux：**
-
-* MQTTLinux：包含要在 Linux 上运行的代码和生成脚本（目前已测试过 WSL、Ubuntu 和 Raspbian）。
-
-* LinuxConsoleVS2019：包含相同的代码，但位于针对 WSL 的 VS2019 项目中（Windows Linux 子系统）。 通过此项目，你可以从 Visual Studio 逐步调试在 Linux 上运行的代码。
-
-**对于 mosquitto_pub：**
-
-此文件夹包含与 Mosquitto.org 提供的 mosquitto_pub 实用工具结合使用的两个示例命令。
-
-* Mosquitto_sendmessage：用于将简单文本消息发送到充当设备的 Azure IoT 中心。
-
-* Mosquitto_subscribe：用于查看 Azure IoT 中心发生的事件。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>直接使用 MQTT 协议（作为模块）
 

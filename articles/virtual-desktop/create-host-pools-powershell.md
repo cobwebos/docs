@@ -3,15 +3,15 @@ title: 创建 Windows 虚拟桌面主机池 PowerShell - Azure
 description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面中创建主机池。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287281"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667157"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Windows 虚拟机主机池
 
@@ -99,6 +99,9 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
     >[!NOTE]
     > 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户也是 [AAD DC 管理员组](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)的成员。
+
+>[!IMPORTANT]
+>建议你不要启用任何禁用 Windows Installer 的策略或配置。 如果你禁用 Windows Installer，则该服务将无法在你的会话主机上安装代理更新，并且你的会话主机将无法正常运行。
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>将虚拟机注册到 Windows 虚拟机主机池
 

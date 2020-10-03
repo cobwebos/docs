@@ -4,17 +4,17 @@ description: 使用存储分析、客户端日志记录等功能及其他第三�
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/23/2019
+ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031477"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667905"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -256,6 +256,14 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 >
 >
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+下面的代码示例演示如何使用自定义客户端请求 ID。 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 如果存储客户端库在客户端上引发 StorageException，则 RequestInformation 属性将包含 RequestResult 对象（其中包含 ServiceRequestID 属性）。 也可以通过 **OperationContext** 实例访问 **RequestResult** 对象。
 
 下面的代码示例演示如何通过附加 **OperationContext** 对象（向存储服务发出的请求）设置自定义 **ClientRequestId** 值。 它还演示了如何从响应消息中检索 **ServerRequestId** 值。
@@ -291,6 +299,8 @@ catch (StorageException storageException)
     }
 }
 ```
+
+---
 
 ### <a name="timestamps"></a><a name="timestamps"></a>时间戳
 还可以使用时间戳来查找相关日志项，但应注意客户端和服务器之间可能存在的时钟偏差。 在客户端上基于时间戳搜索服务器端的相应条目时，应加/减 15 分钟。 请记住，包含指标的 Blob 的 Blob 元数据指示 Blob 中存储的指标的时间范围。 如果在同一分钟或小时内使用多个指标 Blob，则此时间范围会很有用。
@@ -358,13 +368,19 @@ catch (StorageException storageException)
 
 对于表和队列服务，Nagle 算法也可能会导致高 **AverageE2ELatency**（与 **AverageServerLatency** 相比）：有关详细信息，请参阅博客文章 [Nagle’s Algorithm is Not Friendly towards Small Requests](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)（Nagle 算法对小型请求不友好）。 可以通过使用 **System.Net** 命名空间中的 **ServicePointManager** 类在代码中禁用 Nagle 算法。 应在应用程序中调用表或队列服务之前执行此操作，因为这样做不会影响已打开的连接。 下面的示例来自辅助角色中的 **Application_Start** 方法。
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
-ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-tableServicePoint.UseNagleAlgorithm = false;
 ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
 queueServicePoint.UseNagleAlgorithm = false;
 ```
+
+---
 
 应查看客户端日志以了解客户端应用程序正在提交多少个请求，并检查客户端中与 .NET 相关的常规性能瓶颈（如 CPU、.NET 垃圾回收、网络利用率或内存）。 作为排查 .NET 客户端应用程序问题的起点，请参阅[调试、跟踪和分析](https://msdn.microsoft.com/library/7fe0dd2y)。
 
@@ -594,6 +610,12 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 下面的代码示例演示如何配置 Blob 服务，以允许在 Contoso 域中运行的 JavaScript 访问 Blob 存储服务中的 Blob：
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
 // Set the service properties.
@@ -609,6 +631,8 @@ sp.Cors.CorsRules.Clear();
 sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
+
+---
 
 #### <a name="network-failure"></a><a name="network-failure"></a>网络故障
 在某些情况下，丢失的网络数据包可能会导致存储服务向客户端返回 HTTP 404 消息。 例如，当客户端应用程序从表服务中删除某个实体时，看到客户端从表服务引发报告“HTTP 404(找不到)”状态消息的存储异常。 调查表存储服务中的表时，看到该服务确实删除了请求的实体。
@@ -818,7 +842,7 @@ Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；
 * [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
-[介绍]: #introduction
+[简介]: #introduction
 [本指南的组织方式]: #how-this-guide-is-organized
 
 [监视存储服务]: #monitoring-your-storage-service

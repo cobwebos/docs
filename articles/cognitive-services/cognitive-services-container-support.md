@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 本地、Docker、容器、Kubernetes
-ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597442"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665406"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -29,7 +29,8 @@ Azure 认知服务提供了多个 [Docker 容器](https://www.docker.com/what-co
 
 > [!div class="checklist"]
 > * [异常检测器][ad-containers]
-> * [计算机视觉][cv-containers]
+> * [读取 OCR (光学字符识别) ][cv-containers]
+> * [空间分析][spa-containers]
 > * [人脸][fa-containers]
 > * [表单识别器][fr-containers]
 > * [语言理解 (LUIS)][lu-containers]

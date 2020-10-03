@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409555"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667191"
 ---
 # <a name="what-is-virtual-network-nat"></a>什么是虚拟网络 NAT？
 
@@ -43,7 +43,7 @@ ms.locfileid: "91409555"
 
 可为使用 NAT 的每个子网定义出站连接。  同一虚拟网络中的多个子网可以使用不同的 NAT。 可以通过指定要使用的 NAT 网关资源来配置子网。 任何虚拟机实例中的所有 UDP 和 TCP 出站流都会使用 NAT。 
 
-NAT 与标准 SKU 公共 IP 地址资源、公共 IP 前缀资源或两者的组合相兼容。  可以直接使用公共 IP 前缀，或者在多个 NAT 网关资源之间分配前缀的公共 IP 地址。 NAT 会将所有流量梳理到前缀的 IP 地址范围。  在部署中将任何 IP 加入允许列表的过程现在都很简单。
+NAT 与标准 SKU 公共 IP 地址资源、公共 IP 前缀资源或两者的组合相兼容。  可以直接使用公共 IP 前缀，或者在多个 NAT 网关资源之间分配前缀的公共 IP 地址。 NAT 会将所有流量梳理到前缀的 IP 地址范围。  现在可以轻松地对部署进行任何 IP 筛选。
 
 NAT 会自动处理子网的所有出站流量，而无需完成任何客户配置。  不需要指定用户定义的路由。 NAT 优先于其他出站方案，可替代子网的默认 Internet 目标。
 
@@ -145,4 +145,3 @@ NAT 默认是区域性的。 创建[可用性区域](../availability-zones/az-ov
 
 * 了解 [NAT 网关资源](./nat-gateway-resource.md)。
 * [在 UserVoice 中告诉我们接下来想要为虚拟网络 NAT 开发什么功能](https://aka.ms/natuservoice)。
-

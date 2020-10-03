@@ -1,5 +1,5 @@
 ---
-title: 创建自定义关键字-语音服务
+title: Create 关键字快速入门-语音服务
 titleSuffix: Azure Cognitive Services
 description: 设备始终 (或短语) 侦听关键字。 当用户显示关键字时，设备会将所有后续音频发送到云，直到用户停止说话。 自定义关键字是区分设备并增强品牌的有效方法。
 services: cognitive-services
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360661"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667687"
 ---
-# <a name="custom-keyword-basics"></a>自定义关键字基础知识
+# <a name="get-started-with-custom-keyword"></a>自定义关键字入门
 
-本文介绍如何使用 Speech Studio 和 Speech SDK 处理自定义关键字。 关键字是允许激活语音的单词或短语。 使用 Speech Studio 创建关键字模型，然后在应用程序中导出用于语音 SDK 的模型文件。
+本快速入门介绍如何使用 Speech Studio 和 Speech SDK 来使用自定义关键字。 关键字是允许激活语音的单词或短语。 使用 Speech Studio 创建关键字模型，然后在应用程序中导出用于语音 SDK 的模型文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文中的步骤需要语音订阅和语音 SDK。 如果还没有订阅，请 [免费试用语音服务](overview.md#try-the-speech-service-for-free)。 若要获取 SDK，请参阅适用于你的平台的 [安装指南](quickstarts/setup-platform.md) 。
 

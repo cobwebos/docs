@@ -9,16 +9,16 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998945"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667837"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>使用 C 升查询 Azure 时序见解 Gen2 环境中的数据
+# <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>使用 C# 查询 Azure 时序见解第 2 代环境中的数据
 
 本 C# 示例演示了如何在 Azure 时序见解 Gen2 环境中通过 [Gen2 数据访问 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) 查询数据。
 
@@ -32,7 +32,7 @@ ms.locfileid: "88998945"
 * 支持通过 [Azure AutoRest](https://github.com/Azure/AutoRest) 自动生成 SDK。
 * 如何使用 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) 通过 Azure Active Directory 获取访问令牌。
 * 如何在后续的数据访问 API 请求的 `Authorization` 标头中传递获取的访问令牌。
-* 该示例提供了一个控制台界面，演示如何对以下内容进行 HTTP 请求：
+* 该示例提供了一个控制台界面，其中演示了如何对以下项发出 HTTP 请求：
   * [Gen2 环境 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis)
     * [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability) 和[获取事件架构 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
   * [Gen2 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)
@@ -71,7 +71,7 @@ ms.locfileid: "88998945"
 
 ## <a name="c-sample-code"></a>C# 示例代码
 
-请参阅 [Azure 时序见解存储库](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) ，以访问 c # 示例代码。 
+请参阅 [Azure 时序见解](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample)存储库以访问 C# 示例代码。
 
 > [!NOTE]
 >

@@ -1,6 +1,6 @@
 ---
 title: 通过参数化 URL 共享自定义视图 - Azure 时序见解 | Microsoft Docs
-description: 了解如何创建参数化 Url，以便在 Azure 时序见解中轻松共享自定义的资源管理器视图。
+description: 了解如何创建参数化 URL，以便在 Azure 时序见解中轻松共享自定义的资源管理器视图。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,24 +8,25 @@ ms.author: dpalled
 manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/07/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2673bb70582640cda97160eb31f16f7c7f1d60e6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421175"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665321"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
-若要在 Azure 时序见解资源管理器中共享自定义视图，可以通过编程方式创建自定义视图的参数化 URL。
+若要在 Azure 时序见解资源管理器中共享自定义视图，可以通过编程方式创建一个自定义视图的参数化 URL。
 
-Azure 时序见解资源管理器支持 URL 查询参数，以便直接从 URL 指定体验中的视图。 例如，只使用 URL 就可以指定目标环境、搜索谓词以及所需的时间跨度。 当用户选择自定义的 URL 时，接口会在 Azure 时序见解门户中提供直接链接到该资产的链接。 数据访问策略适用。
+Azure 时序见解资源管理器支持使用 URL 查询参数，在 URL 中直接指定体验中的视图。 例如，只使用 URL 就可以指定目标环境、搜索谓词以及所需的时间跨度。 当用户选择自定义的 URL 时，界面会提供一个链接，直接指向 Azure 时序见解门户中的相应资产。 数据访问策略适用。
 
 > [!TIP]
-> * 查看免费的[Azure 时序见解演示](https://insights.timeseries.azure.com/samples)。
-> * 阅读随附的[Azure 时序见解资源管理器](./time-series-insights-explorer.md)文档。
+>
+> * 查看免费的 [Azure 时序见解演示](https://insights.timeseries.azure.com/samples)。
+> * 阅读随附的 [Azure 时序见解资源管理器](./time-series-insights-explorer.md)文档。
 
 ## <a name="environment-id"></a>环境 ID
 
@@ -53,7 +54,7 @@ Azure 时序见解资源管理器支持 URL 查询参数，以便直接从 URL �
 
 例如，`&relativeMillis=3600000` 显示最新的 60 分钟的数据。
 
-接受的值对应于 Azure 时序见解资源管理器的 "**快速时间**" 菜单，包括：
+接受的值对应于 Azure 时序见解资源管理器的“快速时间”菜单，其中包括：
 
 * `1800000`（过去 30 分钟）
 * `3600000`（过去 60 分钟）
@@ -66,7 +67,7 @@ Azure 时序见解资源管理器支持 URL 查询参数，以便直接从 URL �
 
 ### <a name="optional-parameters"></a>可选参数
 
-`timeSeriesDefinitions=<collection of term objects>`参数指定将在 Azure 时序见解视图中显示的谓词术语：
+`timeSeriesDefinitions=<collection of term objects>` 参数指定将在 Azure 时序见解视图中显示的谓词术语：
 
 | 参数 | URL 项 | 说明 |
 | --- | --- | --- |
@@ -98,7 +99,7 @@ Azure 时序见解资源管理器支持 URL 查询参数，以便直接从 URL �
 
 ### <a name="examples"></a>示例
 
-若要将时序定义作为 URL 参数添加到 Azure 时序见解环境，请追加：
+若要将时序定义以 URL 参数的形式添加到 Azure 时序见解环境，请追加：
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -123,7 +124,7 @@ https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-000
 > [使用 URL](https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[%7B%22name%22:%22F1PressureId%22,%22splitBy%22:%22Id%22,%22measureName%22:%22Pressure%22,%22predicate%22:%22%27Factory1%27%22%7D,%7B%22name%22:%22F2TempStation%22,%22splitBy%22:%22Station%22,%22measureName%22:%22Temperature%22,%22predicate%22:%22%27Factory2%27%22%7D,%7B%22name%22:%22F3VibrationPL%22,%22splitBy%22:%22ProductionLine%22,%22measureName%22:%22Vibration%22,%22predicate%22:%22%27Factory3%27%22%7D]
 ) 上方示例查看实时资源管理器。
 
-上述 URL 介绍并显示参数化的 Azure 时序见解资源管理器视图。 
+上述 URL 描述并显示参数化的 Azure 时序见解资源管理器视图。
 
 * 参数化谓词。
 
@@ -137,4 +138,4 @@ https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-000
 
 * 了解如何[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
 
-* 了解[Azure 时序见解资源管理器](./time-series-insights-explorer.md)。
+* 了解 [Azure 时序见解资源管理器](./time-series-insights-explorer.md)。

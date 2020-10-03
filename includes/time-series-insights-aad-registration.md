@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 02/03/2020
-ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080741"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665799"
 ---
 1. 在 [Azure 门户](https://ms.portal.azure.com/)中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080741"
 
     你的应用在注册后将在此处列出。
 
-1. 为应用程序提供名称，然后选择“仅此组织目录中的帐户”，以指定可访问 API 的“支持的帐户类型”。 选择要在用户进行身份验证后将其重定向到的有效 URI，然后选择“注册”。
+1. 为应用程序提供名称，然后选择“仅此组织目录中的帐户”，以指定可访问 API 的“支持的帐户类型”。 如果要创建 [公用客户端应用](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri)，请添加有效的重定向 URI，然后 **注册**。
 
    [![在 Azure Active Directory 中创建应用程序](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
@@ -32,7 +32,7 @@ ms.locfileid: "87080741"
 
    复制要在客户端应用程序中使用的“应用程序(客户端) ID”。
 
-1. “身份验证”边栏选项卡可指定重要的身份验证配置设置。 
+1. “身份验证”边栏选项卡可指定重要的身份验证配置设置。
 
     1. 通过选择“+ 添加平台”，添加“重定向 URI”并配置“访问令牌”。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87080741"
    > [!NOTE]
    > 可以改为导入证书。 为增强安全性，建议使用证书。 若要使用证书，请选择“上传证书”。
 
-1. 将 Azure Active Directory 应用关联到 Azure 时序见解。 依次选择“API 权限” > “添加权限” > “我的组织使用的 API”。 
+1. 将 Azure Active Directory 应用与 Azure 时序见解关联。 依次选择“API 权限” > “添加权限” > “我的组织使用的 API”。
 
     [![将 API 与 Azure Active Directory 应用相关联](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

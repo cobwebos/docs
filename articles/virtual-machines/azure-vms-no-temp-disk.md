@@ -7,23 +7,20 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191137"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665304"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>无本地临时磁盘的 Azure VM 规格 
-本文提供常见问题的解答 (常见问题解答) 不具有本地临时磁盘的 Azure VM 大小 (也就是说，没有本地临时磁盘) 。 有关这些 VM 规格的详细信息，请参阅 [Dv4 和 Dsv4 系列规范（常规用途工作负载）](dv4-dsv4-series.md)或 [Ev4 和 Esv4 系列规范（内存优化工作负载）](ev4-esv4-series.md)。
-
-> [!IMPORTANT]
-> Dv4、Dsv4、Ev4 和 Esv4 的 VM 规格现以公共预览版提供。 若要注册公共预览版，请填写此 [窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)。 
+本文提供有关没有本地临时磁盘（即无本地临时磁盘）的 Azure VM 大小的常见问题解答 (FAQ)。 有关这些 VM 规格的详细信息，请参阅 [Dv4 和 Dsv4 系列规范（常规用途工作负载）](dv4-dsv4-series.md)或 [Ev4 和 Esv4 系列规范（内存优化工作负载）](ev4-esv4-series.md)。
 
 ## <a name="what-does-no-local-temp-disk-mean"></a>无本地临时磁盘是什么意思？ 
 通常，我们的 VM 规格（例如 Standard_D2s_v3、Standard_E48_v3）包含一个小型本地磁盘（例如 D:驱动器）。 现在，使用这些新的 VM 规格，该小型本地磁盘将不再存在；但你仍然可以附加标准 HDD、高级 SSD 或超级 SSD。
 
-## <a name="what-if-i-still-want-a-local-temp-disk"></a>如果仍需要本地临时磁盘怎么办？
+## <a name="what-if-i-still-want-a-local-temp-disk"></a>如果仍需本地临时磁盘，该怎么办？
 如果工作负载需要本地临时磁盘，我们也提供了新的 [Ddv4 和 Ddsv4](ddv4-ddsv4-series.md) 或 [Edv4 和 Edsv4](edv4-edsv4-series.md) VM 规格。 与以前的 v3 规格相比，这些规格提供大 50% 的临时磁盘。
 
 > [!NOTE]
@@ -56,7 +53,7 @@ ms.locfileid: "88191137"
 填写[反馈窗体]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u)。 
 
 ## <a name="next-steps"></a>后续步骤 
-在本文档中，你了解了有关不带本地临时磁盘的 Azure Vm 的最常见问题的详细信息。 有关这些 VM 规格的详细信息，请参阅以下文章：
+本文档详细介绍了与没有本地临时磁盘的 Azure VM 相关的最常见问题。 有关这些 VM 规格的详细信息，请参阅以下文章：
 
 - [Dv4 和 Dsv4 系列规格（常规用途工作负载）](dv4-dsv4-series.md)
 - [Ev4 和 Esv4 系列规范（内存优化工作负载）](ev4-esv4-series.md)

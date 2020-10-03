@@ -10,19 +10,19 @@ ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/01/2020
-ms.openlocfilehash: db14670d19bf6bf0019e1533ebefdc5a47436a1c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/02/2020
+ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302360"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667854"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
 Azure 机器学习可以将训练的机器学习模型部署到 Azure Kubernetes 服务。 但是，必须首先从 Azure ML 工作区中 __创建__ Azure Kubernetes SERVICE (AKS) 群集，或者 __附加__ 现有的 AKS 群集。 本文提供有关创建和附加群集的信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -278,6 +278,31 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 有关在门户中附加 AKS 群集的信息，请参阅 [在 Azure 机器学习 studio 中创建计算目标](how-to-create-attach-compute-studio.md#inference-clusters)。
 
 ---
+
+## <a name="detach-an-aks-cluster"></a>分离 AKS 群集
+
+若要从工作区中分离群集，请使用以下方法之一：
+
+> [!WARNING]
+> 使用用于机器学习的 Azure 机器学习 studio、SDK 或 Azure CLI 扩展分离 AKS 群集不 **会删除 AKS 群集**。 若要删除群集，请参阅 [将 Azure CLI 与 AKS 一起使用](/azure/aks/kubernetes-walkthrough#delete-the-cluster)。
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+aks_target.detach()
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要将现有群集分离到工作区，请使用以下命令。 将替换为 `myaks` AKS 群集作为附加到的工作区的名称。 将 `myresourcegroup` 替换为包含工作区的资源组。 将 `myworkspace` 替换为工作区名称。
+
+```azurecli
+az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
+```
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+在 Azure 机器学习 studio 中，选择 " __计算__"、" __推理群集__" 和要删除的群集。 使用 " __分离__ " 链接分离群集。
 
 ## <a name="next-steps"></a>后续步骤
 

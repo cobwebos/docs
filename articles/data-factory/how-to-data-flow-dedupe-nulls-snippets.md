@@ -8,18 +8,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 683d7ffe5549b86a587cd2dc3c9a86a36aee1bba
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 841484a647d2737d621c75ebe63f65f2de829a26
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637081"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666479"
 ---
 # <a name="dedupe-rows-and-find-nulls-using-data-flow-snippets"></a>使用数据流片段重复数据的行重复和查找 null
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 通过使用映射数据流中的代码片段，您可以很容易地执行重复数据删除和 null 筛选等常见任务。 本操作方法指南将说明如何使用数据流脚本代码段轻松地将这些函数添加到管道。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4GnhH]
 
 ## <a name="create-a-pipeline"></a>创建管道
 

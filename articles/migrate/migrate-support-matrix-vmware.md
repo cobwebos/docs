@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解使用 Azure Migrate 服务器评估时的 VMware VM 评估支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660277"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667786"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估支持矩阵 
 
@@ -45,7 +45,7 @@ ms.locfileid: "89660277"
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 设备要求
 
-Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和评估。 可以将设备部署为 VMWare VM，具体方法为使用 OVA 模板、导入到 vCenter Server 或使用 [PowerShell 脚本](deploy-appliance-script.md)。
+Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和评估。 你可以使用 .OVA 模板将设备部署为 VMware VM，并将其导入 vCenter Server 或使用 [PowerShell 脚本](deploy-appliance-script.md)。
 
 - 了解 VMware 的[设备要求](migrate-appliance.md#appliance---vmware)。
 - 在 Azure 政府中，必须[使用脚本](deploy-appliance-script-government.md)部署设备。
@@ -85,16 +85,15 @@ Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和
 --- | --- 
 **部署前** | 应有 Azure Migrate 项目，并已将服务器评估工具添加到项目中。<br/><br/>  设置 Azure Migrate 设备后，请部署依赖关系可视化，以发现本地 VMware 计算机。<br/><br/> [了解如何](create-manage-projects.md)首次创建项目。<br/> [了解如何](how-to-assess.md)向现有项目添加评估工具。<br/> [了解如何](how-to-set-up-appliance-vmware.md)设置 Azure Migrate 设备来评估 VMware VM。
 **支持的虚拟机** | 目前，只有 VMware VM 才支持。
-**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2（64 位）。
+**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2（64 位）。<br/>Microsoft Windows Server 2008 (32) 。 确保安装了 PowerShell。
 **vCenter Server 凭据** | 依赖关系可视化需要 vCenter Server 帐户，帐户具有只读访问权限，并需要为“虚拟机”>“来宾操作”启用的特权。
 **Windows VM 权限** |  对于依赖关系分析，Azure Migrate 设备必须有域管理员帐户或本地管理员帐户，才能访问 Windows VM。
-**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
-**Linux 帐户** | 对于依赖关系分析，在 Linux 虚拟机上，Azure Migrate 设备需要具有根权限的用户帐户。<br/><br/> 或者，用户帐户需要对 /bin/netstat 和 /bin/ls 文件具有以下权限：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。 使用以下命令设置这些功能： <br/> sudo setcap CAP_DAC_READ_SEARCH，CAP_SYS_PTRACE = ep/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH，CAP_SYS_PTRACE = ep/bin/netstat
+**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。<br/> SUSE Linux Enterprise Server 11 和更高版本
+**Linux 帐户** | 对于依赖项分析，在 Linux 计算机上，Azure Migrate 设备需要 root 用户帐户<br/><br/> 或者，用户帐户需要对 /bin/netstat 和 /bin/ls 文件具有以下权限：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。 使用以下命令设置这些功能： <br/> sudo setcap CAP_DAC_READ_SEARCH，CAP_SYS_PTRACE = ep/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH，CAP_SYS_PTRACE = ep/bin/netstat
 **必需代理** | 要分析的虚拟机上不需要任何代理。
 **VMware 工具** | 必须在要分析的每个 VM 上安装并运行 VMware 工具（版本高于 10.2）。
-
-**PowerShell** |Windows Vm 必须安装了 PowerShell 版本2.0 或更高版本。
-**端口访问** |在运行要分析的 Vm 的 ESXi 主机上，Azure Migrate 设备必须能够连接到 TCP 端口443。
+**PowerShell** | Windows VM 必须安装 PowerShell 版本 2.0 或更高版本。
+**端口访问** | 在运行要分析的 VM 的 ESXi 主机上，Azure Migrate 设备必须能够连接到 TCP 端口 443。
 
 
 ## <a name="dependency-analysis-requirements-agent-based"></a>基于代理的)  (依赖关系分析需求

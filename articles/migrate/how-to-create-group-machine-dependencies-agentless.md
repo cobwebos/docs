@@ -3,12 +3,12 @@ title: 在 Azure Migrate 服务器评估中设置无代理依赖项分析
 description: 在 Azure Migrate 服务器评估中设置无代理依赖项分析。
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275585"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667463"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>分析计算机依赖项（无代理）
 
@@ -27,7 +27,7 @@ ms.locfileid: "91275585"
 - 一组服务器的依赖关系图当前不可用。
 - 可以同时为1000服务器设置依赖关系数据收集。 您可以通过对多个1000的批次进行排序来分析更多的服务器。
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 - [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支持的操作系统和所需的权限。
 - 确保：
@@ -137,12 +137,12 @@ Destination Port | 目标计算机上的端口号
 如果要停止依赖于多台计算机，则可以使用 [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 执行此操作。
 
 
-### <a name="start-or-stop-dependency-discovery-using-powershell"></a>使用 PowerShell 启动或停止依赖项发现
+## <a name="start-or-stop-dependency-discovery-using-powershell"></a>使用 PowerShell 启动或停止依赖项发现
 
 从 GitHub 上的 [Azure PowerShell 示例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) 存储库下载 PowerShell 模块。
 
 
-#### <a name="log-in-to-azure"></a>登录 Azure
+### <a name="log-in-to-azure"></a>登录 Azure
 
 1. 使用 AzAccount cmdlet 登录到 Azure 订阅。
 
@@ -166,7 +166,7 @@ Destination Port | 目标计算机上的端口号
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-#### <a name="enable-or-disable-dependency-data-collection"></a>启用或禁用依赖项数据收集
+### <a name="enable-or-disable-dependency-data-collection"></a>启用或禁用依赖项数据收集
 
 1. 使用以下命令获取 Azure Migrate 项目中发现的 VMware Vm 列表。 在下面的示例中，项目名称为 FabrikamDemoProject，其所属的资源组为 FabrikamDemoRG。 计算机列表将保存在 FabrikamDemo_VMs.csv
 

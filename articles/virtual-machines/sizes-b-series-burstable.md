@@ -3,17 +3,17 @@ title: B 系列可突增 - Azure 虚拟机
 description: 描述 B 系列可突增 Azure VM 大小。
 services: virtual-machines
 ms.subservice: sizes
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: ayshak
-ms.openlocfilehash: 8591b703382049346fe019b89a5f31517380757f
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.author: sttsinar
+ms.openlocfilehash: 43e19df24de2f2c4e8e5334010ee788129cee68b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653411"
+ms.locfileid: "91666630"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -21,12 +21,14 @@ B 系列 VM 非常适合于并非持续需要 CPU 完全性能的工作负荷，
 
 B 系列有以下 VM 大小：
 
+[Azure 计算单元 (ACU) ](https://docs.microsoft.com/azure/virtual-machines/acu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)：不同 *<br>
 [高级存储](premium-storage-performance.md)：受支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：受支持<br>
 [VM 生成支持](generation-2.md)：第1代和第2代<br>
 <br>
+* B 系列 Vm 是可突增的，因此 ACU 的数字会因工作负荷和核心使用而异。
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | VM 的基本 CPU 性能 | VM 的最大 CPU 性能 | 初始信用额度 | 累积的额度/小时 | 最大累积积分 | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

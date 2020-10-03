@@ -6,15 +6,15 @@ author: mikben
 manager: mikben
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 38d6b131c972b4fd890af53624fdd6a36b3ecb6c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933527"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666936"
 ---
 # <a name="client-and-server-architecture"></a>客户端和服务器体系结构
 
@@ -43,13 +43,13 @@ Azure 通信服务客户端库需要 `user access tokens` 安全访问通信服�
 
 Azure 通信 JavaScript 客户端库可以启用具有丰富文本、语音和视频交互功能的 web 应用程序。 应用程序通过客户端库直接与 Azure 通信服务交互，以访问数据平面，并提供实时文本、语音和视频通信。 下面是一个示例体系结构流：
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="显示用于通信服务的浏览器体系结构的浏览器。":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="显示用户访问令牌体系结构的关系图。":::
 
 ## <a name="native-app-communication"></a>本机应用通信
 
 很多方案都适用于本机应用程序。 Azure 通信服务支持浏览器到应用和应用到应用的通信。  生成本机应用程序体验时，即使在应用程序未运行的情况下，也可以使用推送通知来接收调用。 利用 Azure 通信服务，可以轻松地将集成推送通知发送到 Google Firebase、Apple Push Notification 服务和 Windows 推送通知。 下面是一个示例体系结构流：
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="显示本机应用通信的通信服务体系结构的关系图。":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="显示用户访问令牌体系结构的关系图。":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>通过公共切换电话网络进行语音和短信 (PSTN) 
 
@@ -58,7 +58,7 @@ Azure 通信 JavaScript 客户端库可以启用具有丰富文本、语音和�
 > [!Note]
 > 在公共预览版期间，我们提供了美国和加拿大的帐单地址的客户电话号码的设置。 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="显示通信服务 PSTN 体系结构的关系图。":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="显示用户访问令牌体系结构的关系图。":::
 
 有关 PSTN 和 SMS 解决方案的详细信息，请参阅 [规划你的 pstn 和 sms 解决方案](../concepts/telephony-sms/plan-solution.md)
 
@@ -66,7 +66,7 @@ Azure 通信 JavaScript 客户端库可以启用具有丰富文本、语音和�
 
 Azure 通信服务通过文本和语音频道，使用直接访问 Azure 通信服务数据平面的服务支持人到系统的通信。 例如，你可以让机器人应答来电或参加网络聊天。 Azure 通信服务提供了客户端库，这些库可实现这些方案以便调用和聊天。 下面是一个示例体系结构流：
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="显示通信服务机器人体系结构的关系图。":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="显示用户访问令牌体系结构的关系图。":::
 
 ## <a name="networking"></a>网络
 
@@ -80,10 +80,10 @@ Azure 通信服务通过文本和语音频道，使用直接访问 Azure 通信�
 > [!div class="nextstepaction"]
 > [创建用户访问令牌](../quickstarts/access-tokens.md)
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 - 了解 [身份验证](../concepts/authentication.md)
 - 了解 [PSTN 和 SMS 解决方案](../concepts/telephony-sms/plan-solution.md)
 
 - [向应用添加聊天](../quickstarts/chat/get-started.md)
-- [添加对应用的语音调用](../quickstarts/voice-video-calling/getting-started-with-calling.md)
+- [添加对应用的音频呼叫](../quickstarts/voice-video-calling/getting-started-with-calling.md)

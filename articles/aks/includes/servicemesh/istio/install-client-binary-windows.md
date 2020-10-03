@@ -1,14 +1,14 @@
 ---
 author: paulbouwer
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 10/02/2020
 ms.author: pabouwer
-ms.openlocfilehash: e26a2c214a03243d6507296c1e981706be8c56db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02c17013a205ccc0da85536b491d467ef72fa48
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81736629"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666686"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下载并安装 Istio istioctl 客户端二进制文件
 
@@ -16,21 +16,19 @@ ms.locfileid: "81736629"
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
-$ISTIO_VERSION="1.4.0"
+$ISTIO_VERSION="1.7.3"
 
-# Enforce TLS 1.2
 [Net.ServicePointManager]::SecurityProtocol = "tls12"
-$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-win.zip" -OutFile "istio-$ISTIO_VERSION.zip"
-Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
+$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istioctl-$ISTIO_VERSION-win.zip" -OutFile "istioctl-$ISTIO_VERSION.zip"
+Expand-Archive -Path "istioctl-$ISTIO_VERSION.zip" -DestinationPath .
 ```
 
-`istioctl` 客户端二进制文件在客户端计算机上运行，用来与 Istio 服务网格交互。 在 Windows 上基于 PowerShell 的 shell 中使用以下命令安装 Istio `istioctl` 客户端二进制文件。 这些命令可将 `istioctl` 客户端二进制文件复制到某个 Istio 文件夹，然后你就可以通过 `PATH` 将其设置为立即可用（在当前 shell 中）或永久可用（跨 shell 重启）。 不需要提升的（管理员）特权即可运行这些命令，不需重启 shell。
+`istioctl`客户端二进制文件在客户端计算机上运行，并允许在 AKS 群集中安装和管理 Istio。 在 Windows 上基于 PowerShell 的 shell 中使用以下命令安装 Istio `istioctl` 客户端二进制文件。 这些命令可将 `istioctl` 客户端二进制文件复制到某个 Istio 文件夹，然后你就可以通过 `PATH` 将其设置为立即可用（在当前 shell 中）或永久可用（跨 shell 重启）。 不需要提升的（管理员）特权即可运行这些命令，不需重启 shell。
 
 ```powershell
 # Copy istioctl.exe to C:\Istio
-cd istio-$ISTIO_VERSION
 New-Item -ItemType Directory -Force -Path "C:\Istio"
-Copy-Item -Path .\bin\istioctl.exe -Destination "C:\Istio\"
+Move-Item -Path .\istioctl.exe -Destination "C:\Istio\"
 
 # Add C:\Istio to PATH. 
 # Make the new PATH permanently available for the current User

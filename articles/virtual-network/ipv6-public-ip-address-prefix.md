@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff33bf771065e7af209934a5c54b6f8f2e34835e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420526"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666777"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>保留的公共 IPv6 地址前缀
 
@@ -28,7 +28,7 @@ ms.locfileid: "80420526"
 > [!WARNING]
 > 请小心不要意外删除公共 IP 地址。 删除某个公共 IP 会将其从订阅中删除，而且无法予以恢复（甚至在 Azure 支持人员的帮助之下也不能恢复）。
 
-除了保留单个 IPv6 地址以外，还可以保留连续的 Azure IPv6 地址范围（称作 IP 前缀）供你使用。  与单个 IP 地址类似，保留的前缀与所选 Azure 区域和 Azure 订阅相关联。 保留可预测的连续地址范围有很多好处。 例如，可以让公司和客户大大简化 Azure 托管应用程序的 IP 允许列表操作，因为随时可以在本地防火墙中设定静态 IP 范围。   可以根据需要基于 IP 前缀创建单个公共 IP，删除这些公共 IP 时，它们将返回到保留的范围，日后可供重复使用。  IP 前缀中的所有 IP 地址保留供你独用，直到删除该前缀。
+除了保留单个 IPv6 地址以外，还可以保留连续的 Azure IPv6 地址范围（称作 IP 前缀）供你使用。  与单个 IP 地址类似，保留的前缀与所选 Azure 区域和 Azure 订阅相关联。 保留可预测的连续地址范围有很多好处。 例如，你可以极大地简化公司和客户对 Azure 托管应用程序的 IP *筛选* ，因为你的静态 IP 范围可以轻松地加入到本地防火墙中。  可以根据需要基于 IP 前缀创建单个公共 IP，删除这些公共 IP 时，它们将返回到保留的范围，日后可供重复使用。  IP 前缀中的所有 IP 地址保留供你独用，直到删除该前缀。
 
 
 

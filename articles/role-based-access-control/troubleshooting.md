@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441830"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665984"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>将订阅转移到另一目录
 
-- 如果需要有关如何将订阅传输到不同 Azure AD 目录的步骤，请参阅将 [Azure 订阅转移到不同的 Azure AD 目录 (预览) ](transfer-subscription.md)。
+- 如果需要有关如何将订阅传输到不同 Azure AD 目录的步骤，请参阅将 [Azure 订阅转移到不同的 Azure AD 目录](transfer-subscription.md)。
 - 如果将订阅转移到另一 Azure AD 目录，所有角色分配将从源 Azure AD 目录中永久删除，而不会迁移到目标 Azure AD 目录。 必须在目标目录中重新创建角色分配。 此外，还需手动重新创建 Azure 资源的托管标识。 有关详细信息，请参阅[托管标识的 FAQ 和已知问题](../active-directory/managed-identities-azure-resources/known-issues.md)。
 - 如果你是 Azure AD 全局管理员并且在目录之间转移某个订阅后对其没有访问权限，请使用“Azure 资源的访问权限管理”开关暂时[提升你的访问权限](elevate-access-global-admin.md)来获取对订阅的访问权限。
 

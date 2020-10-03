@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631794"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665135"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>商业市场分析术语和常见问题
 
@@ -45,7 +45,7 @@ ms.locfileid: "91631794"
 | Azure 许可证类型：Enterprise | 客户、订单 | 最终客户通过直接与 Microsoft 签署的企业协议购买 Azure 和市场套餐。|
 | Azure 许可证类型：通过经销商购买产品/服务的企业  | 客户、订单 | 最终客户通过某家经销商购买 Azure 和市场产品/服务，与该经销商合作便于与 Microsoft 达成企业协议。|
 | Azure 许可证类型：即用即付| 客户、订单 | 最终客户通过直接与 Microsoft 签署的“即用即付”协议购买 Azure 和市场产品/服务。|
-| 计费帐户 ID| 客户、订单、使用情况| 生成计费的帐户的标识符。 使用此属性将分析报表与支出交易报表进行连接。|
+| 计费帐户 ID| 客户、订单、使用情况| 生成计费的帐户的标识符。 将 **计费帐户 ID** 映射到 **customerID** ，以将支出交易报告与客户、订单和使用情况报告连接起来。|
 | 云实例名称| 订单| 部署 VM 的 Microsoft 云。|
 | 云实例名称：Azure 全球| 订单| Microsoft 全球公有云。|
 | 云实例名称：Azure 政府 | 订单| 特定于以下政府之一的 Microsoft 云：中国、德国或美国。| |

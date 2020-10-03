@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708206"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666749"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>使用 Azure CLI 的虚拟网络服务终结点策略管理数据渗透到 Azure 存储帐户
 
@@ -33,7 +33,7 @@ ms.locfileid: "84708206"
 * 启用 Azure 存储的服务终结点。
 * 创建两个 Azure 存储帐户，并在上面创建的子网中允许对其进行网络访问。
 * 创建服务终结点策略，只允许访问其中一个存储帐户。
-* 将虚拟机（VM）部署到子网。
+* 将 (VM) 的虚拟机部署到子网。
 * 从子网确认对允许的存储帐户的访问权限。
 * 确认拒绝从子网到不允许的存储帐户的访问。
 
@@ -41,11 +41,11 @@ ms.locfileid: "84708206"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -154,7 +154,7 @@ az network nsg rule create \
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-用[az storage account create](/cli/azure/storage/account)创建两个 Azure 存储帐户。
+用 [az storage account create](/cli/azure/storage/account)创建两个 Azure 存储帐户。
 
 ```azurecli-interactive
 storageAcctName1="allowedstorageacc"
@@ -174,7 +174,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-创建存储帐户后，使用[az storage account show-string](/cli/azure/storage/account)将存储帐户的连接字符串检索到变量中。 在后面的步骤中将使用此连接字符串来创建文件共享。
+创建存储帐户后，使用 [az storage account show-string](/cli/azure/storage/account)将存储帐户的连接字符串检索到变量中。 在后面的步骤中将使用此连接字符串来创建文件共享。
 
 ```azurecli-interactive
 saConnectionString1=$(az storage account show-connection-string \
@@ -252,7 +252,7 @@ az storage account network-rule add \
 
 Azure 服务终结点策略仅适用于 Azure 存储。 因此，在此示例设置中，我们将为此子网启用服务终结点 *。*
 
-服务终结点策略应用于服务终结点。 首先，我们将创建服务终结点策略。 接下来，我们将为此子网将 Azure 存储帐户列入允许列表的策略定义
+服务终结点策略应用于服务终结点。 首先，我们将创建服务终结点策略。 然后，我们将在此策略下为要为此子网批准的 Azure 存储帐户创建策略定义
 
 创建服务终结点策略
 
@@ -313,7 +313,7 @@ az vm create \
 
 ### <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 将替换 *\<publicIpAddress>* 为*myVmPrivate* VM 的公共 IP 地址。
+通过 SSH 登录到 *myVmPrivate* VM。 将 *\<publicIpAddress>* 替换为 *myVmPrivate* VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -341,7 +341,7 @@ sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share 
 sudo mkdir /mnt/MyAzureFileShare2
 ```
 
-尝试将 Azure 文件共享从存储帐户*notallowedstorageacc*装载到你创建的目录中。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 
+尝试将 Azure 文件共享从存储帐户 *notallowedstorageacc* 装载到你创建的目录中。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 
 
 在执行下面的命令之前，请将替换 *\<storage-account-key>* 为 **$saConnectionString 2**中的*AccountKey*值。
 
@@ -363,4 +363,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何通过 Azure 虚拟网络服务终结点将服务终结点策略应用于 Azure 存储。 已创建 Azure 存储帐户，并且只能从虚拟网络子网访问特定存储帐户（并因此被拒绝其他存储帐户）。 若要详细了解服务终结点策略，请参阅[服务终结点策略概述](virtual-network-service-endpoint-policies-overview.md)。
+本文介绍如何通过 Azure 虚拟网络服务终结点将服务终结点策略应用于 Azure 存储。 已创建 Azure 存储帐户，并且仅限 (特定存储帐户的网络访问权限，因此从虚拟网络子网中拒绝其他) 。 若要详细了解服务终结点策略，请参阅 [服务终结点策略概述](virtual-network-service-endpoint-policies-overview.md)。

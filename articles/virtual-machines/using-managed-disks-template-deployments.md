@@ -1,6 +1,6 @@
 ---
-title: 托管磁盘-Azure 资源管理器模板
-description: 详细介绍如何在 azure Vm 中使用 azure 资源管理器模板中的托管磁盘。
+title: 用 Azure 资源管理器模板部署磁盘
+description: 详细介绍如何在 azure Vm 中使用 azure 资源管理器模板中的托管和非托管磁盘。
 documentationcenter: ''
 author: jboeshart
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 298c6e4f33fff99fff01b6b911ec77c78f1fbd26
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854330"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666545"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中使用托管磁盘
+# <a name="using-disks-in-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板中的磁盘
 
 本文档逐步讲解在使用 Azure 资源管理器模板预配虚拟机时托管磁盘与非托管磁盘之间的差异。 该示例可以帮助你将使用非托管磁盘的现有模板更新为托管磁盘。 为方便参考，我们将使用 [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) 模板作为指导。 你可以查看使用[托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json)的模板，以及使用[非托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)的早期版本，因此可以根据需要直接对两者进行比较。
 
@@ -98,16 +98,16 @@ ms.locfileid: "88854330"
 
 ### <a name="default-managed-disk-settings"></a>默认的托管磁盘设置
 
-若要创建包含托管磁盘的 VM，你不再需要创建存储帐户资源。 引用以下模板示例时，要注意以下几个不同的非托管磁盘示例：
+若要使用托管磁盘创建 VM，则不再需要创建存储帐户资源。 请参考下面的模板示例，需要注意，这与前面的非托管磁盘示例有些不同：
 
-- `apiVersion`是支持托管磁盘的版本。
-- `osDisk` 并且 `dataDisks` 不再引用 VHD 的特定 URI。
-- 如果部署时未指定其他属性，磁盘将使用基于 VM 大小的存储类型。 例如，如果你使用的 VM 大小支持高级存储，则其名称中包含 "s" (大小，如 Standard_D2s_v3) ，则默认情况下会配置高级磁盘。 可以通过使用磁盘的 sku 设置来指定存储类型来对此进行更改。
-- 如果未指定磁盘的名称，则会将 `<VMName>_OsDisk_1_<randomstring>` OS 磁盘和 `<VMName>_disk<#>_<randomstring>` 每个数据磁盘的格式设置为。
-  - 如果正在从自定义映像创建 VM，则会从自定义映像资源中定义的磁盘属性中检索存储帐户类型和磁盘名称的默认设置。 可以通过在模板中指定这些值来覆盖这些值。
-- 默认情况下，禁用 Azure 磁盘加密。
-- 默认情况下，磁盘缓存是操作系统磁盘的读/写，无适用于数据磁盘。
-- 在下面的示例中，仍有一个存储帐户依赖项，但这仅适用于诊断的存储，而对于磁盘存储则不需要。
+- `apiVersion` 是一个支持托管磁盘的版本。
+- `osDisk` 和 `dataDisks` 不再引用 VHD 的特定 URI。
+- 如果部署时未指定其他属性，磁盘将根据 VM 大小使用某个存储类型。 例如，如果你使用的是支持高级存储的 VM 大小（其名称中包含“s”的大小，例如 Standard_D2s_v3），则默认情况下将配置高级磁盘。 若要更改此行为，可以使用磁盘的 SKU 设置来指定存储类型。
+- 如果没有为磁盘指定名称，则 OS 磁盘采用格式 `<VMName>_OsDisk_1_<randomstring>`，每个数据磁盘采用格式 `<VMName>_disk<#>_<randomstring>`。
+  - 如果正在基于自定义映像创建 VM，则会从在自定义映像资源中定义的磁盘属性中检索存储帐户类型和磁盘名称的默认设置。 可以通过在模板中指定这些值来替代它们。
+- 默认情况下，Azure 磁盘加密处于禁用状态。
+- 默认情况下，缓存对于 OS 磁盘为“读/写”，对于数据磁盘则为“无”。
+- 下面的示例中仍然存在一个存储帐户依赖项，但这仅用于诊断的存储，磁盘存储并不需要。
 
 ```json
 {

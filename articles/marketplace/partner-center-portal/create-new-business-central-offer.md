@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531813"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665232"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
@@ -256,9 +256,8 @@ ms.locfileid: "91531813"
 
 如果你的产品/服务必须与将不在市场中发布的其他扩展一起安装，则需要此文件。 如果是，请在此处上传它的 .app 文件。
 
-#### <a name="dependency-package-file"></a>依赖项包文件
-
-如果你的产品/服务必须与已在市场中发布的其他扩展一起安装，则需要此文件。 如果是，请在此处上传它的 `.app` 或 `.zip` 文件。
+>[!NOTE]
+>不再使用该依赖项包文件。 请改为上载库包文件。
 
 ### <a name="url-to-app-installation"></a>应用安装的 URL
 

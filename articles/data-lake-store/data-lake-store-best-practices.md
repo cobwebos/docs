@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440824"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667735"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen1 为 Azure Active Directory (Azure AD) 用户、组�
 
 在 Data Lake Storage Gen1 中处理大数据时，大多数情况下会使用服务主体，以便使用 Azure HDInsight 之类的服务来处理数据。 但是，在某些情况下，单个用户也需要访问数据。 在这种情况下，必须使用 Azure Active Directory [安全组](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)，而不是将单个用户分配给文件夹和文件。
 
-为安全组分配权限以后，在组中添加或删除用户就不需要对 Data Lake Storage Gen1 进行任何更新。 这还有助于确保不超出 [32 访问和默认 ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits)（这包括始终与每个文件和文件夹关联的四个 POSIX 样式的 ACL：[负责人用户](data-lake-store-access-control.md#the-owning-user)、[负责人组](data-lake-store-access-control.md#the-owning-group)、[掩码](data-lake-store-access-control.md#the-mask)和其他）。
+为安全组分配权限以后，在组中添加或删除用户就不需要对 Data Lake Storage Gen1 进行任何更新。 这还有助于确保不超出 [32 访问和默认 ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits)（这包括始终与每个文件和文件夹关联的四个 POSIX 样式的 ACL：[负责人用户](data-lake-store-access-control.md#the-owning-user)、[负责人组](data-lake-store-access-control.md#the-owning-group)、[掩码](data-lake-store-access-control.md#the-mask)和其他）。
 
 ### <a name="security-for-groups"></a>组的安全性
 
@@ -104,7 +104,7 @@ Azure Data Lake Storage Gen1 去除了对 Blob 存储帐户的硬性 IO 限制�
 |**支持复制增量数据**     |   是      | 否         | 否         |
 |**内置业务流程**     |  否（使用 Oozie Airflow 或 cron 作业）       | 是        | 否（使用 Azure 自动化或 Windows 任务计划程序）         |
 |**支持的文件系统**     | ADL、HDFS、WASB、S3、GS、CFS        |很多，请参阅[连接器](../data-factory/connector-azure-blob-storage.md)。         | ADL 到 ADL、WASB 到 ADL（仅限同一区域）        |
-|**OS 支持**     |任何运行 Hadoop 的 OS         | 空值          | Windows 10         |
+|**OS 支持**     |任何运行 Hadoop 的 OS         | 不可用          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>使用 Distcp 在两个位置之间进行数据移动
 
