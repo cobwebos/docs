@@ -1,18 +1,18 @@
 ---
 title: 限制 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍了 Azure Database for PostgreSQL（单一服务器）中的限制，例如连接数和存储引擎选项。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6733e373b35dd160af94e3178cd11f657f362c1c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665251"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707517"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的限制
 下列各部分介绍数据库服务中的容量和功能限制。 如果想了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。

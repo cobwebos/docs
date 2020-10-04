@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 872775df82d609a640346ddef2f77381c2160fcf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276061"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704722"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>计划和管理 Azure 机器学习成本
 
@@ -69,7 +69,7 @@ ms.locfileid: "91276061"
 
 Azure 机器学习用户可以使用托管 Azure 机器学习计算群集（也称为 AmlCompute）。 AmlCompute 支持多种 GPU 和 CPU 选项。 AmlCompute 是由 Azure 机器学习代表你的订阅在内部进行托管的。 它在 Azure IaaS 云规模上提供相同的企业级安全性、合规性和治理功能。
 
-由于这些计算池位于 Azure IaaS 基础结构内，因此，你可以按照与基础结构的其余部分相同的安全性和合规性要求来部署、缩放和管理训练。  这些部署在你的订阅中发生，遵循你的治理规则。 了解有关 [Azure 机器学习计算](how-to-create-attach-compute-sdk.md#amlcompute)的详细信息。
+由于这些计算池位于 Azure IaaS 基础结构内，因此，你可以按照与基础结构的其余部分相同的安全性和合规性要求来部署、缩放和管理训练。  这些部署在你的订阅中发生，遵循你的治理规则。 了解有关 [Azure 机器学习计算](how-to-create-attach-compute-cluster.md)的详细信息。
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>配置训练群集以实现自动缩放
 
@@ -127,4 +127,4 @@ Azure 机器学习计算本身就支持预留实例。 如果你购买了一年�
 了解有关以下方面的详细信息：
 * [管理和增加资源配额](how-to-manage-quotas.md)
 * [通过成本分析来管理成本](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
-* 用 [SDK](how-to-create-attach-compute-sdk.md#amlcompute) 或在 [工作室](how-to-create-attach-compute-studio.md#amlcompute)中创建 Azure 机器学习计算。
+* 用 [SDK](how-to-create-attach-compute-cluster.md) 或在 [工作室](how-to-create-attach-compute-studio.md#amlcompute)中创建 Azure 机器学习计算。

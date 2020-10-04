@@ -1,17 +1,17 @@
 ---
 title: 配置服务器参数-Azure 门户-Azure Database for PostgreSQL-单一服务器
 description: 本文介绍如何通过 Azure 门户在 Azure Database for PostgreSQL 中配置 Postgres 参数。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/28/2018
-ms.openlocfilehash: a2410328b068be6bc5af358fa72ee20eead4c8ed
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b40e3116d56e87a2f397350ef2ba5510e04c0c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907460"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707687"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>通过 Azure 门户在 Azure Database for PostgreSQL - 单一服务器中配置服务器参数 
 可以通过 Azure 门户列出、显示和更新 Azure Database for PostgreSQL 的配置参数。
@@ -29,19 +29,19 @@ ms.locfileid: "90907460"
 :::image type="content" source="./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png" alt-text="参数概述页":::
 
 4. 选择**下拉**按钮查看 client_min_messages 等枚举类型的参数的可能值。
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="枚举下拉按钮":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="参数概述页":::
 
 5. 选择“i”（信息）按钮或将鼠标悬停于其上，查看 cpu_index_tuple_cost 等数字参数的可能值范围。 
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="信息按钮":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="参数概述页":::
 
 6. 如果需要，可使用**搜索框**缩小特定参数的搜索范围。 搜索根据参数的名称和说明执行。
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="搜索结果":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="参数概述页":::
 
 7. 更改想要调整的参数值。 在此会话中所做的更改将以紫色突出显示。 更改值之后，可选择“保存”。  也可以放弃所做的更改  。
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="保存或放弃更改":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="参数概述页":::
 
 8. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。 
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="全部重置为默认设置":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="参数概述页":::
 
 ## <a name="next-steps"></a>后续步骤
 学习内容：

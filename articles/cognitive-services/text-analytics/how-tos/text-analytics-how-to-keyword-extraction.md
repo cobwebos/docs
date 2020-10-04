@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: c1ca14b8471ef6257c0603e61d78e789e846f0ae
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142395"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704372"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语
 
@@ -29,6 +29,8 @@ ms.locfileid: "84142395"
 > 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于提取关键短语，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
 
 ## <a name="preparation"></a>准备工作
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 提供的要处理的文本量越大，关键短语提取效果越好。 这恰好与情绪分析（文本量越小，效果越好）相反。 要从两个操作获取最佳结果，请考虑相应地重建输入。
 
@@ -72,7 +74,7 @@ ms.locfileid: "84142395"
 
 有关请求定义的信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求  。 查看此请求的 API 文档：[关键短语 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
++ 创建 POST 请求  。 查看此请求的 API 文档： [关键短语 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
 
 + 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 必须在 URL 中包括 `/text/analytics/v3.0/keyPhrases`。 例如：`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`。
 
@@ -95,57 +97,66 @@ ms.locfileid: "84142395"
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
 
-关键短语提取输出的示例如下所示：
+下面显示了从 3.1-preview. 2 终结点提取关键短语的输出示例：
 
 ```json
     {
-        "documents": [
-            {
-                "keyPhrases": [
-                    "year",
-                    "trail",
-                    "trip",
-                    "views"
-                ],
-                "id": "1"
-            },
-            {
-                "keyPhrases": [
-                    "marked trails",
-                    "Worst hike",
-                    "goners"
-                ],
-                "id": "2"
-            },
-            {
-                "keyPhrases": [
-                    "trail",
-                    "small children",
-                    "family"
-                ],
-                "id": "3"
-            },
-            {
-                "keyPhrases": [
-                    "spectacular views",
-                    "trail",
-                    "area"
-                ],
-                "id": "4"
-            },
-            {
-                "keyPhrases": [
-                    "places",
-                    "beautiful views",
-                    "favorite trail"
-                ],
-                "id": "5"
-            }
-        ],
-        "errors": []
+       "documents":[
+          {
+             "id":"1",
+             "keyPhrases":[
+                "year",
+                "trail",
+                "trip",
+                "views",
+                "hike"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"2",
+             "keyPhrases":[
+                "marked trails",
+                "Worst hike",
+                "goners"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"3",
+             "keyPhrases":[
+                "trail",
+                "small children",
+                "family"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"4",
+             "keyPhrases":[
+                "spectacular views",
+                "trail",
+                "Worth",
+                "area"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"5",
+             "keyPhrases":[
+                "places",
+                "beautiful views",
+                "favorite trail",
+                "rest"
+             ],
+             "warnings":[]
+          }
+       ],
+       "errors":[],
+       "modelVersion":"2020-07-01"
     }
-```
 
+```
 如上所述，分析器查找和放弃不重要的字词，并保留似乎是句子主语或宾语的字词或短语。
 
 ## <a name="summary"></a>摘要

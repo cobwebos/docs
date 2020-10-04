@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 450bd87c6dd1f55c58f4c8a620dbddcfdf42ec7f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596536"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704950"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -83,6 +83,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 ## <a name="change-log"></a>更改日志
 
 - 09/30/2020：在 [rhel 上的 Azure vm 上 SAP HANA 高可用性](./sap-hana-high-availability-rhel.md)，在 rhel 上 [通过和进行 SAP HANA 扩展](./sap-hana-high-availability-netapp-files-red-hat.md) ，并 [在 Azure 中的 rhel 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 以适应 rhel 8.1 的说明
+- 09/29/2020：[有关 SAP 应用程序的最佳网络延迟，请在 Azure 邻近位置组](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)一文中对 PPG 的使用做出限制和建议 
 - 09/28/2020：添加了新的存储操作指南，适用于使用 Azure NetApp 文件和 Azure netapp 文件上的文档 NFS SAP HANA 的文件 [进行 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 09/23/2020：在[适用的 sku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)中为 b-hli 添加新的认证 sku 
 - 09/20/2020：针对 sap 工作 [负荷的 Azure 虚拟机 dbms 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)的文档中的更改，SQL Server 适用于 [Sap NetWeaver 的 AZURE 虚拟机 dbms 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)， [azure 虚拟机针对 SAP 工作负荷的 Oracle Dbms](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)部署， [IBM Db2 Azure 虚拟机 dbms 部署 sap 工作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) 负荷，用于适应新的配置建议，建议将 dbms 二进制文件和 SAP 二进制文件隔离到不同的 Azure 磁盘。 还可以向不同的指南添加超高磁盘建议。
