@@ -10,27 +10,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0c8e6fb3bab179483d03320e6d90ab712ec528
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: be0d428120f53a4edb9763199a78b0e50409b19a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89493311"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708725"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 中 (预览) 的用户管理增强功能
 
-本文介绍如何在 Azure Active Directory (Azure AD) 门户中使用增强型用户管理预览版。 " **所有用户** " 和 " **已删除用户** " 页已更新，以提供详细信息并使查找用户更容易。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文介绍如何在 Azure Active Directory (Azure AD) 门户中使用用户管理增强功能预览。 " **所有用户** " 和 " **已删除用户** " 页已更新，以提供详细信息并使查找用户更容易。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 预览中的更改包括：
 
 - 更直观的用户属性，包括对象 ID、目录同步状态、创建类型和标识颁发者
 - "立即搜索" 允许对姓名、电子邮件和对象 Id 进行合并搜索
-- 按用户类型增强筛选 (成员和来宾) 、目录同步状态和创建类型
+- 按用户类型增强筛选 (member、guest、none) 、目录同步状态、创建类型、公司名称和域名
+- 对属性（如名称和用户主体名称）的新排序功能
+- 新用户总数使用搜索或筛选器进行更新
 
 > [!NOTE]
 > 此预览版当前不适用于 Azure AD B2C 租户。
@@ -66,7 +68,7 @@ ms.locfileid: "89493311"
 - 邀请状态：来宾用户的邀请状态。
 - Mail：用户的电子邮件。
 
-   ![显示在 "所有用户" 和 "已删除用户" 页上的新用户属性](./media/users-search-enhanced/user-properties.png)
+![显示在 "所有用户" 和 "已删除用户" 页上的新用户属性](./media/users-search-enhanced/user-properties.png)
 
 ### <a name="deleted-users-page"></a>已删除用户页
 
@@ -96,22 +98,36 @@ ms.locfileid: "89493311"
 
 下面是 " **所有用户** " 页上可筛选的属性：
 
-- 用户类型-成员或来宾
-- 目录已同步状态-是
-- 创建类型-邀请、电子邮件验证、本地帐户
+- 用户类型： Member、guest、none
+- 目录已同步状态：是，否
+- 创建类型：邀请、电子邮件验证、本地帐户
 - 邀请状态–等待接受，已接受
-- 管理单元-选择此选项可将你查看的用户的范围限制为单个管理单元。 有关详细信息，请参阅 [管理单元管理预览版](directory-administrative-units.md)。
+- 域名：输入域名
+- 公司名称：输入公司名称
+- 管理单元：选择此选项可将你查看的用户的范围限制为单个管理单元。 有关详细信息，请参阅 [管理单元管理预览版](directory-administrative-units.md)。
 
-## <a name="filtering-deleted-users-list"></a>筛选删除的用户列表
+### <a name="filtering-deleted-users-list"></a>筛选删除的用户列表
 
 " **已删除用户** " 页中有其他筛选器，而不是 " **所有用户** " 页。 下面是 " **已删除用户** " 页上可筛选的属性：
 
-- 用户类型-成员或来宾
-- 目录已同步状态-是
-- 创建类型-邀请、电子邮件验证、本地帐户
-- 邀请状态–等待接受，已接受
-- 删除日期-最近7、14或30天
-- 永久删除日期-最近7、14或30天
+- 用户类型： Member、guest、none
+- 目录已同步状态：是，否
+- 创建类型：邀请、电子邮件验证、本地帐户
+- 邀请状态：待定接受，已接受
+- 删除日期：过去7天、14天或30天
+- 域名：输入域名
+- 公司名称：输入公司名称
+- 永久删除日期：过去7天、14天或30天
+
+## <a name="user-list-sorting"></a>用户列表排序
+
+现在，你可以在 " **所有用户** " 和 " **已删除用户** " 页中按名称和用户主体名称进行排序。 您还可以在 " **已删除用户** " 列表中按删除日期排序。
+
+## <a name="user-list-counts"></a>用户列表计数
+
+你可以在 " **所有用户** " 和 " **已删除用户** " 页中查看用户总数。 搜索或筛选列表时，会更新计数以反映找到的用户总数。
+
+!["所有用户" 页上的用户列表计数说明](./media/users-search-enhanced/user-list-sorting.png)
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -121,8 +137,6 @@ ms.locfileid: "89493311"
 源列发生了什么情况？ | **源**列已替换为其他提供类似信息的列，同时允许您单独对这些值进行筛选。 示例包括 **创建类型**、已 **同步目录** 和 **标识颁发者**。
 用户名列发生了什么情况？ | **用户名**列仍存在，但已被重命名为**用户主体名称**。 这更好地反映了该列中包含的信息。 你还会注意到，现在为 B2B 来宾显示了完整的用户主体名称。 这与你在 MS Graph 中获得的内容相匹配。  
 为什么只能执行 "开始使用" 搜索而不是 "包含" 搜索？ | 有一些限制会阻止我们允许执行 "包含" 搜索。 我们听说过反馈，请继续关注。
-为什么无法对列进行排序？ | 存在一些限制，这会阻止我们允许对列进行排序。 我们听说过反馈，请继续关注。
-为什么只能按 "是" 筛选 **目录同步** 列？ | 存在一些限制，这会阻止我们允许您通过 "无" 值筛选此属性。 我们听说过反馈，请继续关注。
 
 ## <a name="next-steps"></a>后续步骤
 

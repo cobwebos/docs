@@ -11,19 +11,22 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898101"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708389"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建计算目标以进行模型训练和部署
 
 本文介绍了如何在 Azure 机器学习工作室中创建和管理计算目标。  也可以使用以下 SDK 与扩展创建和管理计算目标：
 
-* [Azure 机器学习 SDK](how-to-create-attach-compute-sdk.md)、 
-* 用于 Azure 机器学习的 [CLI 扩展](reference-azure-machine-learning-cli.md#resource-management)
+* Azure 机器学习的 Azure 机器学习学习 SDK 或 CLI 扩展
+  * [计算实例](how-to-create-manage-compute-instance.md)
+  * [计算群集](how-to-create-attach-compute-cluster.md)
+  * [Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)
+  * [其他计算资源](how-to-attach-compute-targets.md)
 * 用于 Azure 机器学习的 [VS Code 扩展](how-to-manage-resources-vscode.md#compute-clusters)。
 
 
@@ -56,11 +59,11 @@ ms.locfileid: "90898101"
 
 1. 如果你没有计算目标，请选择页面中间的“创建”。
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="创建计算目标":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="查看计算目标的列表":::
 
 1. 如果看到计算资源的列表，请选择列表上方的“+ 新建”。
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="选择“新建”":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="查看计算目标的列表":::
 
 
 1. 为你的计算类型填写表单：
@@ -74,14 +77,14 @@ ms.locfileid: "90898101"
 
 1. 通过在列表中选择计算目标来查看创建操作的状态：
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="从列表中查看计算状态":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="查看计算目标的列表":::
 
 
 ### <a name="compute-instance"></a>计算实例
 
 使用[上述步骤](#portal-create)创建计算实例。  然后按如下所示填写表单：
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="新建计算实例":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="查看计算目标的列表":::
 
 
 |字段  |说明  |
@@ -107,7 +110,7 @@ ms.locfileid: "90898101"
 |最大节点数 | 需要预配的节点的最大数量。 提交作业时，计算将自动缩放到此节点计数的最大值。 |
 |高级设置     |  可选。 配置虚拟网络 指定**资源组**、**虚拟网络**和**子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](how-to-enable-virtual-network.md#compute-instance)。   另外请附加[托管标识](#managed-identity)以授予对资源的访问权限     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> 设置托管标识
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> 设置托管标识
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 

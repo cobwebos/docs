@@ -8,18 +8,18 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380677"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708894"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>如何在商业应用商店中创建 SaaS 产品/服务
 
 作为一家商业市场发布商，你可以创建一个软件即服务 (SaaS) 产品/服务，因此潜在客户可以购买基于 SaaS 的技术解决方案。 本文介绍为 Microsoft 商业应用商店创建 SaaS 产品/服务的过程。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 如果尚未这样做，请阅读 [为商业应用商店计划 SaaS 产品/服务](plan-saas-offer.md)。 它将说明 SaaS 应用的技术要求，以及创建产品/服务时所需的信息和资产。 除非你计划发布简单的列表 (**与我联系** 列表选项) 在商业市场中，否则 SaaS 应用程序必须满足有关身份验证的技术要求。
 
@@ -29,17 +29,17 @@ ms.locfileid: "89380677"
 1. 在左侧导航菜单中，选择 "**商业市场**  >  **概述**"。
 1. 在 "**概述**" 选项卡上，选择 " **+ 新建产品**/  >  **服务软件**"。
 
-   :::image type="content" source="media/new-offer-saas.png" alt-text="说明左侧导航菜单和新产品/服务列表。":::
+   :::image type="content" source="media/new-offer-saas.png" alt-text="说明左侧导航菜单和新产品/服务列表。&quot;:::
 
-1. 在 " **新建产品/服务** " 对话框中，输入 **产品 ID**。 此 ID 在商业市场列表和 Azure 资源管理器模板的 URL 中可见（如果适用）。 例如，如果在此框中输入 " **测试/服务-1** "，则 "产品/服务" 网址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` 。
+1. 在 &quot; **新建产品/服务** &quot; 对话框中，输入 **产品 ID**。 此 ID 在商业市场列表和 Azure 资源管理器模板的 URL 中可见（如果适用）。 例如，如果在此框中输入 &quot; **测试/服务-1** &quot;，则 &quot;产品/服务&quot; 网址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` 。
    + 帐户中的每个提议都必须具有唯一的产品 ID。
    + 只使用小写字母和数字。 其中可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。
-   + 选择 " **创建**" 后，无法更改产品/服务 ID。
+   + 选择 &quot; **创建**&quot; 后，无法更改产品/服务 ID。
 
 1. 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。
 
    + 此名称在商业应用商店中不可见，并且不同于向客户显示的产品/服务名称和其他值。
-   + 选择 " **创建**" 后，不能更改该产品/服务别名。
+   + 选择 &quot; **创建**&quot; 后，不能更改该产品/服务别名。
 1. 若要生成产品/服务并继续，请选择 " **创建**"。
 
 ## <a name="configure-your-saas-offer-setup-details"></a>配置你的 SaaS 产品/服务设置详细信息
@@ -69,7 +69,7 @@ ms.locfileid: "89380677"
 将客户关系管理 (CRM) 系统与你的商业 marketplace 产品/服务相连接，以便在客户表达兴趣或部署你的产品时可以接收客户联系信息。 你可以在创建产品/服务的过程中或之后随时修改此连接。
 
 > [!NOTE]
-> 如果你通过 Microsoft 销售产品/服务，或者选择了 " **联系我** " 列表选项，则必须配置 "潜在客户管理"。 有关详细指南，请参阅 [商业应用商店的潜在客户管理](lead-management-for-cloud-marketplace.md)。
+> 如果你通过 Microsoft 销售产品/服务，或者选择了 " **联系我** " 列表选项，则必须配置 "潜在客户管理"。 有关详细指南，请参阅 [商业 marketplace 产品/服务的客户领导](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>在合作伙伴中心配置连接详细信息
 

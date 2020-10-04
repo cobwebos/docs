@@ -1,17 +1,17 @@
 ---
 title: 使用高级威胁防护-Azure Database for PostgreSQL-单服务器
 description: 威胁防护会检测异常的数据库活动，指出对数据库的潜在安全威胁。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6aa0a0f798df2fd69d6f69badd0dcbbb92a0cf39
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901672"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708214"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 单服务器的高级威胁防护
 
@@ -42,15 +42,15 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
     
 1. 单击电子邮件中“查看最近的警报”**** 链接，以启动 Azure 门户并显示“Azure 安全中心警报”页，可概要查看在 SQL 数据库上检测到的活动威胁。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="异常活动报告":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="设置威胁检测":::
 
     查看活动威胁：
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="活动威胁":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="设置威胁检测":::
 
 2. 单击特定警报可获得其他详细信息以及用于调查此威胁和解决潜在威胁的操作。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="特定警报":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="设置威胁检测":::
 
 ## <a name="explore-threat-detection-alerts"></a>浏览威胁检测警报
 
@@ -58,7 +58,7 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
 
 单击“威胁防护”**** 下的“安全警报”**** 以启动“Azure 安全中心警报”页，并概要查看在数据库中检测到的活动 SQL 威胁。
 
-  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="威胁防护 asc":::
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="设置威胁检测":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2cfa21bc5223af058d412bf3f17f53cb151fc5c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297631"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707755"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
@@ -39,9 +39,9 @@ ms.locfileid: "89297631"
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 导航到中的媒体服务帐户，并单击 "**监视**" 下的 "**诊断设置**"。 在此处查看订阅中所有资源的列表，这些资源通过 Azure Monitor 生成监视数据。
 
-    ![诊断设置部分](media/media-services-diagnostic-logs/logs01.png)
+    ![突出显示 "监视" 部分下的诊断设置的屏幕截图。](media/media-services-diagnostic-logs/logs01.png)
 
-1. 单击“添加诊断设置”。
+1. 单击“添加诊断设置”  。
 
    资源诊断设置是描述应从特定资源中路由哪个监视数据以及此监视数据应传输到何处的一种定义****。
 
@@ -52,7 +52,7 @@ ms.locfileid: "89297631"
 
    ![诊断设置部分](media/media-services-diagnostic-logs/logs02.png)
 1. 将“保留期(天)”滑块移至 30****。 此滑块设置监视数据要在存储帐户中保留的天数。 Azure Monitor 会自动删除早于所述天数的数据。 如果保留期为 0 天，则无限期存储数据。
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 现在，资源的监视数据将流入到存储帐户。
 

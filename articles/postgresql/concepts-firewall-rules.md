@@ -1,17 +1,17 @@
 ---
 title: 防火墙规则 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍如何使用防火墙规则连接到 Azure Database for PostgreSQL（单一服务器）。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7048fac4804e16ae70145c8fadc1cd6e0859fcfc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e677aef7a90e7372c5af4bfa48c6160c439b3ee8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903917"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707959"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的防火墙规则
 在指定哪些计算机具有访问权限之前，Azure Database for PostgreSQL 服务器防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -40,7 +40,7 @@ ms.locfileid: "90903917"
 > “允许访问 Azure 服务”选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。**** 选择该选项时，请确保登录名和用户权限将访问限制为仅允许授权用户访问。
 > 
 
-:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="在门户中配置“允许访问 Azure 服务”":::
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="防火墙工作流示例":::
 
 ### <a name="connecting-from-a-vnet"></a>从 VNet 连接
 若要从 VNet 安全连接到 Azure Database for PostgreSQL 服务器，请考虑使用 [VNet 服务终结点](./concepts-data-access-and-security-vnet.md)。 

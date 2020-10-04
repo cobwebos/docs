@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036924"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710373"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
 
@@ -102,7 +102,7 @@ StorSimple 提供以下优势：
 | 备份方案  | 本地存储容量  | 云存储容量  |
 |---|---|---|
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
-| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 空值  |
+| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不可用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
 
@@ -275,7 +275,7 @@ StorSimple 提供以下优势：
 
     ![Backup Exec 管理控制台，选择存储页](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  输入有代表性的名称（例如“星期六完整备份”）和说明。**** 选择“**下一步**”。
+3.  输入有代表性的名称（例如“星期六完整备份”）和说明。**** 选择“下一步”  。
 
     ![Backup Exec 管理控制台，名称和说明页](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -409,15 +409,15 @@ StorSimple 提供以下优势：
 
 4.  在“存储”下拉列表中选择存档作业要将数据存储到的 StorSimple 卷。****
 
-    ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![屏幕截图，显示需要选择存储的列表。](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  选择“验证”，并选中“不要验证此作业的数据”复选框。********
 
-    ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![显示您选择 "不要验证此作业的数据" 选项的屏幕截图。](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  选择“确定”。
+6.  选择“确定”  。
 
-    ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![显示备份定义属性的屏幕截图。](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
 7.  在“备份”列中添加一个新阶段。**** 对于源，请使用“增量”。**** 对于目标，请选择增量备份作业要存档到的 StorSimple 卷。 重复步骤 1-6。
 
@@ -472,13 +472,13 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 方案 | 影响 | 如何恢复 | 注释 |
+| 方案 | 影响 | 如何恢复 | 备注 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | Backup Exec 服务器故障 | 备份和还原操作会中断。 | 根据 [How to do a manual Backup and Restore of Backup Exec (BEDB) database](http://www.veritas.com/docs/000041083)（如何对 Backup Exec (BEDB) 数据库执行手动备份和还原）中所述，重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 Backup Exec 服务器。 将数据库还原到最近的时间点。 如果还原的 Backup Exec 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
 | 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作会中断。 | 首先还原 StorSimple，然后还原 Backup Exec。 | 首先还原 StorSimple，然后还原 Backup Exec。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 
 本文参考了以下文档：
 

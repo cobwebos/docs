@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420432"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708112"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -57,7 +57,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 
 这些额外的技术要求仅适用于 _通过 Microsoft_ (事务) 列表选项销售：
 
-- 需要 Azure AD 具有单一登录 (SSO) 标识管理和身份验证。 有关详细指南，请参阅 [商业应用商店中的 Azure AD 和事务 SaaS 产品](azure-ad-saas.md)。
+- Azure AD 具有单一登录 (SSO) 标识管理和身份验证是购买用户访问登陆页面所必需的。 有关详细指南，请参阅 [商业应用商店中的 Azure AD 和事务 SaaS 产品](azure-ad-saas.md)。
 - 必须使用 [SaaS 履单 api](./partner-center-portal/pc-saas-fulfillment-api-v2.md) 与 Azure Marketplace 和 Microsoft AppSource 集成。 你需要公开可以与 SaaS 订阅交互的服务，以创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 适用于 [api](./partner-center-portal/pc-saas-fulfillment-api-v2.md)的文档中提供了介绍所收集字段的用法的关系图和详细说明。
 - 您必须为您的产品/服务创建至少一个计划。 你的计划将基于你在发布之前选择的定价模型： _平面速率_ 或 _每用户_。 本文后面提供了有关 [计划](#plans) 的更多详细信息。
 - 客户可随时取消你的产品/服务。
@@ -68,7 +68,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 
 - **登陆页 url**： SAAS 网站 url (例如： `https://contoso.com/signup` 从商业市场获取产品/服务后，用户将定向到的) ，从新创建的 SaaS 订阅触发配置过程。 此 URL 将收到一个令牌，该令牌可用于调用履单 Api 以获取交互式注册页面的预配详细信息。
 
-  将调用此 URL，其中包含用于唯一标识特定客户 SaaS 购买的 marketplace 购买标识令牌参数。 必须使用 [解析 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)为相应的 SaaS 订阅详细信息交换此标记。 应将这些详细信息以及要收集的任何其他内容用作客户交互式网页的一部分，以完成客户注册并激活其购买。 在此页上，用户应通过使用 Azure Active Directory (Azure AD) 注册一次单击身份验证。
+  将通过唯一标识特定客户的 SaaS 购买的 marketplace 购买标识令牌参数调用此 URL。 必须使用 [解析 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)为相应的 SaaS 订阅详细信息交换此标记。 应将这些详细信息以及要收集的任何其他内容用作客户交互式网页的一部分，以完成客户注册并激活其购买。 在此页上，用户应通过使用 Azure Active Directory (Azure AD) 注册一次单击身份验证。
 
   当客户从 Azure 门户或 M365 管理中心启动托管 SaaS 体验时，还将调用具有 marketplace 购买标识令牌参数的 URL。 应处理这两个流：在新客户购买后首次提供令牌时，以及再次为管理其 SaaS 解决方案的现有客户提供。
 
@@ -90,7 +90,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
   > [!NOTE]
   > 如果发布者在合作伙伴中心有两个或更多不同的帐户，则应使用两个或多个不同的 Azure AD 应用 Id，每个帐户对应于一个帐户。 伙伴中心中的每个合作伙伴帐户应为通过此帐户发布的所有 SaaS 产品/服务使用唯一的 Azure AD 应用 ID。
 
-## <a name="test-drives"></a>测试驱动器
+## <a name="test-drives"></a>体验版
 可以选择为 SaaS 应用启用测试驱动器。 测试驱动器允许客户在固定的小时数内访问预配置环境。 可以为任何发布选项启用测试驱动器，但此功能具有其他要求。 若要了解有关测试驱动器的详细信息，请参阅 [什么是测试驱动器？](what-is-test-drive.md)。 有关配置不同种类的测试驱动器的信息，请参阅 [测试驱动器技术配置](test-drive-technical-configuration.md)。
 
 > [!TIP]
@@ -100,7 +100,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 
 您必须将产品/服务连接到客户关系管理 (CRM) 系统以收集客户信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及提供程序的名称、ID 和在线商店，将被发送到已配置的 CRM 系统。 商业应用商店支持各种 CRM 系统，以及使用 Azure 表或使用电源自动配置 HTTPS 终结点的选项。
 
-你可以在创建产品/服务或之后随时添加或修改 CRM 连接。 有关详细指南，请参阅 [商业应用商店的潜在客户管理](lead-management-for-cloud-marketplace.md)。
+你可以在创建产品/服务或之后随时添加或修改 CRM 连接。 有关详细指南，请参阅 [商业 marketplace 产品/服务的客户领导](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 ## <a name="selecting-an-online-store"></a>选择在线商店
 
@@ -119,7 +119,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 
 在合作伙伴中心 [创建新的 SaaS 产品](create-new-saas-offer.md) /服务时，你将在 " **产品/服务列表** " 页上输入文本、图像、可选视频和其他详细信息。 这是客户在商业市场中发现你的产品/服务列表时将看到的信息，如以下示例中所示。
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
+:::image type="content" source="./media/example-saas-1.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。&quot;:::
 
 **拨出说明**
 
@@ -147,13 +147,13 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 1. 屏幕截图
 
 > [!NOTE]
-> 如果产品/服务说明以短语 "此应用程序只能在 [非英语] 中使用"，则产品/服务列表内容不需要为英语。
+> 如果产品/服务说明以短语 &quot;此应用程序只能在 [非英语] 中使用&quot;，则产品/服务列表内容不需要为英语。
 
 为了帮助更轻松地创建你的产品/服务，请提前准备其中一些项。 除非另有说明，否则需要以下各项。
 
 - **名称**：此名称将显示为商业应用商店中的产品/服务列表的标题。 该名称可以是商标字。 它不能包含表情符号（除非它们是商标和版权符号），并且长度必须限制为 50 个字符。
 - **搜索结果摘要**：将产品/服务的用途或功能描述为一个句子，其中不含分行符的100个字符或更少。 此摘要用于商业应用商店，其中列出了) 搜索结果 (。
-- **说明**：此说明将显示在 "商用 marketplace" 列表中 (") 概述"。 考虑包括值主张、关键优势、预期用户群、任何类别或行业关联、应用内购买机会、任何所需的披露以及用于了解详细信息的链接。
+- **说明**：此说明将显示在 &quot;商用 marketplace&quot; 列表中 (&quot;) 概述&quot;。 考虑包括值主张、关键优势、预期用户群、任何类别或行业关联、应用内购买机会、任何所需的披露以及用于了解详细信息的链接。
     
     此文本框包含丰富的文本编辑器控件，你可以使用这些控件来使说明更具吸引力。 你还可以使用 HTML 标记来设置说明格式。 在此框中最多可以输入3000个字符，包括 HTML 标记。 有关其他提示，请参阅[编写出色的应用说明](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)。
 
@@ -174,8 +174,8 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 
   这些徽标用于在线商店中的不同位置：
 
-  -  小徽标出现在 Azure Marketplace 搜索结果中，并出现在 "Microsoft AppSource" 主页和 "搜索结果" 页上。
-  -  在 Microsoft Azure 中创建新资源时，将显示 "中" 徽标。
+  -  小徽标出现在 Azure Marketplace 搜索结果中，并出现在 &quot;Microsoft AppSource&quot; 主页和 &quot;搜索结果&quot; 页上。
+  -  在 Microsoft Azure 中创建新资源时，将显示 &quot;中" 徽标。
   -  大徽标显示在 Azure Marketplace 中的产品/服务列表页上，并 Microsoft AppSource。
 
 - **媒体-屏幕截图**：必须至少添加一个最多5个屏幕截图，其中包含以下要求，其中显示了产品/服务的工作原理：
@@ -194,7 +194,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 预览观众可以在现场发布之前访问你的产品/服务，以便在将其发布之前测试端到端功能。 在 " **预览观众** " 页上，可以定义受限的预览受众。 如果你选择单独处理事务，而不是通过 Microsoft 销售你的产品/服务，则此设置不可用。 如果是这样，则可以跳过本部分并转到 [其他销售机会](#additional-sales-opportunities)。
 
 > [!NOTE]
-> 预览受众不同于私有计划。 私有计划仅适用于所选的特定群体。 这使您可以与特定客户协商自定义计划。 有关更多详细信息，请参阅下一节：计划。
+> 预览受众不同于私有计划。 私有计划仅适用于所选的特定群体。 这使您可以与特定客户协商自定义计划。 有关详细信息，请参阅下一节：计划。
 
 可以将邀请发送到 Microsoft 帐户 (MSA) 或 Azure Active Directory (Azure AD) 电子邮件地址。 手动添加最多10个电子邮件地址，或使用 .csv 文件最多导入20个电子邮件地址。 如果你的产品/服务已处于活动阶段，你仍可以定义预览受众来测试产品/服务的任何更改或更新。
 

@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400734"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708588"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
-本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过 [商业 marketplace 在线商店](comparing-appsource-azure-marketplace.md)发布你的产品/服务，你还可以通过 CSP 计划进行销售，以便向该计划提供的数百万个合格 Microsoft 客户。
+本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过 [商业 marketplace 在线商店](overview.md#commercial-marketplace-online-stores)发布你的产品/服务，你还可以通过 CSP 计划进行销售，以便向该计划提供的数百万个合格 Microsoft 客户。
 
 你可以选择在 CSP 计划中配置新的或现有的产品/服务的可用性，这允许 CSP 合作伙伴销售你的产品并为客户创建捆绑式解决方案。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91400734"
 
 如果选择此选项，需要指定 CSP 计划中有资格转售你的产品/服务的合作伙伴并向其授权。
 
-若要为合作伙伴授权，请单击“选择 CSP 合作伙伴”，此时会显示一个菜单，让你按合作伙伴名称或 CSP Azure Active Directory (AAD) 租户 ID 进行搜索。
+若要授权合作伙伴，请选择 " **选择 CSP 合作伙伴** "，此时将显示一个菜单，让你按伙伴名称或 CSP Azure Active Directory (Azure AD) 租户 ID "进行搜索。
 
 ![“选择 CSP 合作伙伴”菜单](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "91400734"
 如果此产品/服务尚未发布，则需要将其发布，以将其提供给所选的合作伙伴。
 
 >[!NOTE]
->如果在给定的区域为 CSP 计划中的某家合作伙伴授权，则该合作伙伴可以向属于该特定区域的任何客户销售该产品/服务。 有关不同区域中 CSP 产品/服务的分类方式的详细信息，请参阅[云解决方案提供商计划区域市场和货币](https://docs.microsoft.com/partner-center/regional-authorization-overview)。
+>如果在给定的区域为 CSP 计划中的某家合作伙伴授权，则该合作伙伴可以向属于该特定区域的任何客户销售该产品/服务。 若要详细了解如何在区域下对 CSP 产品/服务进行分类，请参阅 [云解决方案提供商计划地区市场和货币](https://docs.microsoft.com/partner-center/regional-authorization-overview)。
 
 如果要更新已发布产品/服务的 CSP 列表，请添加其他合作伙伴，然后选择“同步 CSP 受众”。
 
@@ -147,7 +147,7 @@ ms.locfileid: "91400734"
 5. 选择“下一步”转到“问题详细信息页”，在其中输入有关问题的更多详细信息。 
 6. 使用“取消 CSP 授权”作为问题标题，并填写剩余的必填部分。
 
- 如果产品/服务当前采用“选项 2:我选择的 CSP 计划中的特定合作伙伴”，而你想要导航到“选项 3:不包括 CSP 计划中的任何合作伙伴”，则仅当 CSP 计划中已授权的合作伙伴尚未向最终客户转售你的产品/服务时，你才能导航到该选项。 请参考以下说明来创建请求：
+ 如果产品/服务当前采用“选项 2:我选择的 CSP 计划中的特定合作伙伴”，而你想要导航到“选项 3:不包括 CSP 计划中的任何合作伙伴”，则仅当 CSP 计划中已授权的合作伙伴尚未向最终客户转售你的产品/服务时，你才能导航到该选项。 使用以下说明创建请求：
 
 1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
 
@@ -170,14 +170,11 @@ ms.locfileid: "91400734"
 
 ### <a name="partner-center-csp-channel"></a>合作伙伴中心 CSP 渠道
 
-如果你已在合作伙伴中心选择加入 CSP 渠道，则发布者必须在产品/服务列表模块中输入一个 URL，其中存放了有关 CSP 渠道的营销材料和渠道联系信息：
+如果你已在合作伙伴中心选择了 CSP 通道，则发布者必须在产品/服务列表模块下输入一个 URL，该 URL 承载相关营销材料和渠道联系信息。
 
 ![合作伙伴中心 CSP 宣传信息](media/marketplace-publishers-guide/pc-csp-channel.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-访问 [Azure 市场和 AppSource 发布者指南](marketplace-publishers-guide.md)。
-
-若要详细了解市场 GTM 服务，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
-
-登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建并配置产品/服务。
+- 了解有关 [走向市场服务](https://partner.microsoft.com/reach-customers/gtm)的详细信息。
+- 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建并配置产品/服务。

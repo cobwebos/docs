@@ -8,37 +8,37 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: c50beef5c9c5dcae7edd487e8bf3d192ba557865
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 74586222bbd92b2d6182b34b4667cda0bc599b93
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662722"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709193"
 ---
 > [!NOTE]
 > 若要检测 (PHI) 受保护的运行状况信息，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
 >
-> 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+> 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi&model-version=2020-07-01`
  
-将请求发送到终结点时，将返回以下实体类别 `/v3.1-preview.1/entities/recognition/pii` 。
+将请求发送到终结点时，将返回以下实体类别 `/v3.1-preview.2/entities/recognition/pii` 。
 
 | 类别   | Subcategory | 说明                          | 开始模型版本 | 备注 |
 |------------|-------------|--------------------------------------|------------------------|---|
-| 人员     | 空值         | 人员姓名。  | `2019-10-01`  | 还返回了 `domain=phi` 。 |
-| PersonType | 空值         | 人员持有的作业类型或角色。 | `2020-02-01` | |
-| PhoneNumber | 空值 | 电话号码仅)  (美国和欧盟电话号码。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
-|组织  | 空值 | 公司、政治组、音乐带、运动俱乐部、政府机构和公共组织。  | `2019-10-01` | 各族和 religions 不包含在此实体类型中。  |
+| 人员     | 不可用         | 人员姓名。  | `2019-10-01`  | 还返回了 `domain=phi` 。 |
+| PersonType | 不可用         | 人员持有的作业类型或角色。 | `2020-02-01` | |
+| PhoneNumber | 不可用 | 电话号码仅)  (美国和欧盟电话号码。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
+|组织  | 不可用 | 公司、政治组、音乐带、运动俱乐部、政府机构和公共组织。  | `2019-10-01` | 各族和 religions 不包含在此实体类型中。  |
 |组织 | 医疗 | 医疗公司和团队。 | `2020-04-01` |  |
 |组织 | 股票兑换 | 股票兑换组。 | `2020-04-01` |  |
 | 组织 | 体育游戏 | 与体育相关的组织。 | `2020-04-01` |  |
-| 地址 | 空值 | 完整的邮件地址。  | `2020-04-01` | 还返回了 `domain=phi` 。 |
-| 欧盟 GPS 坐标 | 空值 | 欧盟内位置的 GPS 坐标。  | `2019-10-01` |  |
-| Email | 空值 | 电子邮件地址。 | `2019-10-01` | 还返回了 `domain=phi` 。   |
-| URL | 空值 | 指向网站的 Url。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
-| IP | 空值 | 网络 IP 地址。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
-| DateTime | 空值 | 日期和时间。 | `2019-10-01` |  | 
+| 地址 | 不可用 | 完整的邮件地址。  | `2020-04-01` | 还返回了 `domain=phi` 。 |
+| 欧盟 GPS 坐标 | 不可用 | 欧盟内位置的 GPS 坐标。  | `2019-10-01` |  |
+| 电子邮件 | 不可用 | 电子邮件地址。 | `2019-10-01` | 还返回了 `domain=phi` 。   |
+| URL | 不可用 | 指向网站的 Url。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
+| IP | 不可用 | 网络 IP 地址。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
+| DateTime | 不可用 | 日期和时间。 | `2019-10-01` |  | 
 | DateTime | Date | 日历日期。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
-| 数量 | 空值 | 数字和数字。 | `2019-10-01` |  |
+| 数量 | 不可用 | 数字和数字。 | `2019-10-01` |  |
 | 数量 | Age | 年龄段. | `2019-10-01` | | |
 
 ## <a name="azure-information"></a>Azure 信息

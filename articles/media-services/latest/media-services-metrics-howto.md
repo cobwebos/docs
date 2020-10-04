@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296615"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707704"
 ---
 # <a name="monitor-media-services-metrics"></a>监视媒体服务指标
 
@@ -48,7 +48,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
     选择资源并按“应用”。  有关支持的资源和指标的详细信息，请参阅[监视媒体服务指标](media-services-metrics-diagnostic-logs.md)。
 
-    ![度量值](media/media-services-metrics/metrics02.png)
+    ![显示选定资源并突出显示 "应用" 按钮的屏幕截图。](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
     > 若要在你要监视其指标的资源之间切换，请再次单击“资源”框，然后重复上述步骤。 

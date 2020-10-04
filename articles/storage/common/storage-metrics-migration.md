@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: f0357c153a068b1f857e4595fa17a9ac6bc22104
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500260"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708571"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>转换到 Azure Monitor 中的指标
 
@@ -116,4 +116,4 @@ ms.locfileid: "89500260"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
-* [Azure Monitor 中的存储指标](./storage-metrics-in-azure-monitor.md)
+

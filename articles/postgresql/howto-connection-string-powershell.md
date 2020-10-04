@@ -1,18 +1,18 @@
 ---
-title: 使用 PowerShell Azure Database for PostgreSQL 生成连接字符串
-description: 本文提供了一个 Azure PowerShell 示例，用于生成连接到 Azure Database for PostgreSQL 所用的连接字符串。
-author: rachel-msft
-ms.author: raagyema
+title: 使用 PowerShell 生成连接字符串 - Azure Database for PostgreSQL
+description: 本文提供一个 Azure PowerShell 示例，用于生成连接到 Azure Database for PostgreSQL 所用的连接字符串。
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: a8e82c1863fde7a7580300606949e00a34c4e58c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29641bdc3696f0722ca430dde912768071fd9b16
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908385"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708163"
 ---
 # <a name="how-to-generate-an-azure-database-for-postgresql-connection-string-with-powershell"></a>如何使用 PowerShell 生成 Azure Database for PostgreSQL 连接字符串
 
@@ -26,7 +26,7 @@ ms.locfileid: "87908385"
 
 ## <a name="get-the-connection-string"></a>获取连接字符串
 
-`Get-AzPostgreSqlConnectionString`Cmdlet 用于生成连接字符串，以便将应用程序连接到 Azure Database for PostgreSQL。 下面的示例从**mydemoserver**返回 PHP 客户端的连接字符串。
+`Get-AzPostgreSqlConnectionString` cmdlet 用于生成连接字符串，以便将应用程序连接到 Azure Database for PostgreSQL。 下面的示例从 mydemoserver 返回 PHP 客户端的连接字符串。
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup
@@ -36,7 +36,7 @@ Get-AzPostgreSqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupNa
 host=mydemoserver.postgres.database.azure.com port=5432 dbname={your_database} user=myadmin@mydemoserver password={your_password} sslmode=require
 ```
 
-参数的有效值 `Client` 包括：
+`Client` 参数的有效值包括：
 
 * ADO&#46;NET
 * JDBC

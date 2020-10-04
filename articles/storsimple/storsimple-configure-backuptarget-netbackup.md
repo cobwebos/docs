@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184000"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710917"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
@@ -132,7 +132,7 @@ StorSimple 提供以下优势：
 
 必须调整高性能卷的大小，使其能够应对保留策略容量和性能要求。
 
-![用作辅助备份目标的 StorSimple 的逻辑示意图](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
+![显示一种体系结构的关系图，其中，初始备份和还原针对高性能卷。](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>辅助目标备份逻辑步骤
 
@@ -316,7 +316,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，创建新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2. 在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。******** 选择“确定”。
+2. 在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。******** 选择“确定”  。
 
    ![NetBackup 管理控制台，“添加新策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
@@ -328,7 +328,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。******** 选择“**下一页**”。
+5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。******** 选择“下一步”  。
 
    ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -360,7 +360,7 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，更改开始时段](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14. 选择“确定”。
+14. 选择“确定”  。
 
 15. 针对每个增量备份重复步骤 10-14。 针对创建的每个备份选择适当的卷和计划。
 
@@ -436,7 +436,7 @@ StorSimple 提供以下优势：
 
 2. 输入快照的名称，并选择“添加”。****
 
-3. 在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。**************** 为“目标存储”、“保留类型”和“保留期”选择所需的值。************ 选择“确定”。
+3. 在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。**************** 为“目标存储”、“保留类型”和“保留期”选择所需的值。************ 选择“确定”  。
 
    ![NetBackup 管理控制台，“新建操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 

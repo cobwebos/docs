@@ -1,17 +1,17 @@
 ---
 title: 业务连续性 - Azure Database for PostgreSQL（单一服务器）
-description: 本文介绍了在使用 Azure Database for PostgreSQL 时， (时间点还原、数据中心中断、异地还原、副本) 的业务连续性。
-author: rachel-msft
-ms.author: raagyema
+description: 本文介绍使用 Azure Database for PostgreSQL 时的业务连续性（时间点还原、数据中心服务中断、异地还原、副本）。
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612016"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710900"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
 
@@ -19,16 +19,20 @@ ms.locfileid: "89612016"
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来提供业务连续性的功能
 
-Azure Database for PostgreSQL 提供了业务连续性功能，这包括自动备份和允许用户启动异地还原的功能。 每种功能在估计恢复时间 (ERT) 和可能丢失的数据方面都有不同的特性。 估计的恢复时间 (ERT) 为数据库在还原/故障转移请求后完全正常运行的估计持续时间。 了解这些选项后，便可从中进行选择，可以针对不同方案将其搭配使用。 制定业务连续性计划时，需了解应用程序在破坏性事件发生后完全恢复前的最大可接受时间，即恢复时间目标 (RTO)。 此外，还需要了解从破坏性事件恢复时，应用程序可忍受丢失的最近数据更新（时间间隔）最大数量，即恢复点目标 (RPO)。
+制定业务连续性计划时，需了解应用程序在破坏性事件发生后完全恢复前的最大可接受时间，即恢复时间目标 (RTO)。 此外，还需要了解从破坏性事件恢复时，应用程序可忍受丢失的最近数据更新（时间间隔）最大数量，即恢复点目标 (RPO)。
 
-下表比较了各种可用功能的 ERT 和 RPO：
+Azure Database for PostgreSQL 提供了业务连续性功能，包括可启动异地还原的功能，以及在不同区域中部署读取副本的能力。 每个对恢复时间和潜在数据丢失都有不同的特征。 使用 [异地还原](concepts-backup.md) 功能，将使用从另一个区域复制的备份数据创建新的服务器。 还原和恢复所需的总时间取决于数据库的大小和要恢复的日志量。 建立服务器的总时间从几分钟到几小时不等。 对于 [读取副本](concepts-read-replicas.md)，主副本中的事务日志将异步流式传输到副本。 主副本和副本之间的延迟取决于站点和要传输的数据量之间的延迟。 如果主站点发生故障（如可用性区域错误），升级副本将提供较短的 RTO，并减少数据丢失。 
+
+下表比较了典型方案中的 RTO 和 RPO：
 
 | **功能** | **基本** | **常规用途** | **内存优化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 从备份执行时间点还原 | 保留期内的任何还原点 | 保留期内的任何还原点 | 保留期内的任何还原点 |
-| 从异地复制的备份执行异地还原 | 不支持 | ERT < 12 小时<br/>RPO < 1 小时 | ERT < 12 小时<br/>RPO < 1 小时 |
+| 从异地复制的备份执行异地还原 | 不支持 | RTO-不同 <br/>RPO < 1 小时 | RTO-不同 <br/>RPO < 1 小时 |
+| 只读副本 | RTO-分钟 <br/>RPO < 5 分钟 | RTO-分钟 <br/>RPO < 5 分钟| RTO-分钟 <br/>RPO < 5 分钟|
 
-还可以考虑使用 [读取副本](concepts-read-replicas.md)。
+> [!IMPORTANT]
+> 此处提到的预期 RTO 和 RPO 仅用于参考目的。 对于这些指标，不提供任何 Sla。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在发生用户或应用程序错误之后恢复服务器
 

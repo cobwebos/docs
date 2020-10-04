@@ -1,17 +1,17 @@
 ---
 title: 查询存储 - Azure Database for PostgreSQL - 单一服务器
 description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的查询存储功能。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530912"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710526"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 

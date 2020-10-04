@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405048"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709010"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -118,7 +118,7 @@ ms.locfileid: "91405048"
 
 在 " **属性** " 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
 
-### <a name="category"></a>Category
+### <a name="category"></a>类别
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
@@ -242,7 +242,7 @@ ms.locfileid: "91405048"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。
@@ -547,7 +547,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="说明此产品/服务在 Azure Marketplace 搜索结果中的显示方式。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -558,7 +558,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 <br>下面是 Azure Marketplace 计划详细信息的示例：
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="说明 Azure Marketplace 计划详细信息。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -568,7 +568,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 <br>下面是有关如何在 Azure 门户中显示产品/服务的示例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="说明了此产品/服务在 Azure 门户中的显示方式。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -579,7 +579,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="说明此产品/服务在 Azure 门户搜索结果中的显示方式。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -589,7 +589,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 <br>下面是 Azure 门户计划详细信息的示例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="说明 Azure 门户计划详细信息。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 

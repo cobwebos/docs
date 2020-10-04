@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 25f110f27ec9ac55420f624b5eea4555e482e7f4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419748"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708350"
 ---
 # <a name="consulting-service-offers"></a>咨询服务产品
 
@@ -22,7 +22,7 @@ ms.locfileid: "89419748"
 
 ## <a name="compare-consulting-services"></a>比较咨询服务
 
-商业市场在线商店（Microsoft AppSource 和 Azure Marketplace）与解决方案类型和云产品相结合，以帮助客户找到所需的内容。 每个在线商店都提供专门的发布选项来帮助你最大程度地提高发布投资。 若要详细了解两个在线商店之间的差异，请参阅 [比较 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
+商业市场在线商店（Microsoft AppSource 和 Azure Marketplace）与解决方案类型和云产品相结合，以帮助客户找到所需的内容。 每个在线商店都提供专门的发布选项来帮助你最大程度地提高发布投资。 若要详细了解 AppSource 和 Azure Marketplace 之间的差异，请参阅 [商业 Marketplace 在线商店](overview.md#commercial-marketplace-online-stores)。
 
 基于 Dynamics 365、Power Apps 和 Power BI 的咨询服务产品可以列在 AppSource 中。 有关详细信息，请下载 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 文件。
 

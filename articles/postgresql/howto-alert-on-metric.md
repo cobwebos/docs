@@ -1,17 +1,17 @@
 ---
 title: 配置警报-Azure 门户-Azure Database for PostgreSQL-单一服务器
 description: 本文介绍如何通过 Azure 门户配置和访问针对 Azure Database for PostgreSQL（单一服务器）的指标警报。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 0866df5f4f78fff429e75d586450bce72faece63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fba5c868a146529a981e23cd88b413f2eb441896
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907545"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708928"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>使用 Azure 门户设置针对 Azure Database for PostgreSQL（单一服务器）指标的警报
 
@@ -40,19 +40,17 @@ ms.locfileid: "90907545"
 
 4. 随即打开“创建规则”页面，如下所示  。 填写所需信息：
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="添加指标警报窗体":::
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="选择警报规则":::
 
 5. 在“条件”部分中，选择“添加条件”   。
 
 6. 从要发出警报的信号列表中选择一个指标。 在此示例中，选择“存储百分比”。
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="选择指标":::
-
-7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率**。
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="选择警报规则" ) 和 **频率**。
    
    完成后选择“完成”  。
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="选择指标":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="选择警报规则":::
 
 8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知   。
 
@@ -66,11 +64,11 @@ ms.locfileid: "90907545"
 
     完成后选择“确定”  。
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="操作组":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="选择警报规则":::
 
 11. 指定预警规则名称、说明和严重性。
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="操作组"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="选择警报规则"::: 
 
 12. 选择“创建警报规则”可以创建警报  。
 

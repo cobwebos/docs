@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294219"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710288"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -76,6 +76,9 @@ ms.locfileid: "91294219"
 > [!NOTE] 
 > 如果将来宾指标配置为发送到 Log Analytics 工作区中，则这些指标将显示在 Log Analytics 工作区资源下，并且只会在创建用于监视数据的警报规则后才开始显示数据。 为此，按照步骤[配置日志的指标警报](./alerts-metric-logs.md#configuring-metric-alert-for-logs)。
 
+> [!NOTE] 
+> 指标警报当前不支持监视多个具有单个警报规则的虚拟机的来宾指标。 您可以使用 [日志警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)来实现此目的。 为此，请确保将来宾指标收集到 Log Analytics 工作区，并在工作区上创建日志警报规则。
+
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到警报所针对的指标
 
 如果希望针对特定指标发出警报，但看不到该资源的任何指标，请[检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
@@ -110,7 +113,7 @@ ms.locfileid: "91294219"
 
 创建指标警报规则时，将根据 [指标定义 API](/rest/api/monitor/metricdefinitions/list) 验证指标名称，以确保其存在。 在某些情况下，即使在发出之前，也要根据自定义指标创建警报规则。 例如，在创建 (时使用资源管理器模板) 将发出自定义指标的 Application Insights 资源，以及用于监视该指标的警报规则。
 
-若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用 *skipMetricValidation* 参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何在资源管理器模板中使用此参数。 有关详细信息，请参阅 [用于创建指标警报规则的完整资源管理器模板示例](./alerts-metric-create-templates.md)。
+若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用 *skipMetricValidation* 参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何在资源管理器模板中使用此参数。 有关详细信息，请参阅 [创建指标警报规则的完整资源管理器模板示例](./alerts-metric-create-templates.md)。
 
 ```json
 "criteria": {
@@ -252,6 +255,12 @@ ms.locfileid: "91294219"
     - 我想更新第一个条件，并且仅监视 **ApiName** 维度等于“GetBlob”的事务
     - 由于“事务数”和 **SuccessE2ELatency** 指标都支持 **ApiName** 维度，所以我需要更新这两个条件，并将它们的 **ApiName** 维度都指定为“GetBlob”值。
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>设置预警规则的时间和频率
+
+建议选择大于评估频率的聚合粒度（周期），以降低在以下情况下错过对已添加的时序进行首次评估的可能性 ：
+-   监视多个维度的指标警报规则–添加新维度值组合时
+-   监视多个资源的指标警报规则-将新资源添加到作用域时
+-   用于监视不连续 (稀疏指标) 的指标的指标警报规则–在超过24小时的时间段内发出指标时，未发出此指标
 
 ## <a name="next-steps"></a>后续步骤
 

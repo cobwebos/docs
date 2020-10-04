@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: f011f2703286cd7eb4e19588ae1ae1fe9319500f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646681"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710645"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用套餐
 
-本文介绍如何创建 Power BI 应用程序产品/服务并发布到 Microsoft [AppSource](https://appsource.microsoft.com/)。
+本文介绍如何创建 Power BI 应用服务并将其发布到 [Microsoft AppSource](https://appsource.microsoft.com/)。
 
 在开始之前，[在合作伙伴中心创建商业市场帐户](create-account.md)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
 
@@ -55,10 +55,10 @@ ms.locfileid: "89646681"
 
 它包含用于根据你所做的选择对此产品/服务执行操作的链接。 例如：
 
-- 如果产品/服务是草稿版的草稿 [提议](update-existing-offer.md#delete-a-draft-offer)) 
-- 如果产品/服务是实时的，则 [停止销售该产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)) 
-- 如果[产品/服务为预览版) ](publishing-status.md#publisher-approval)
-- 如果尚未完成发布服务器注销-请 [取消发布](update-existing-offer.md#cancel-publishing)) 
+- 如果产品/服务是草稿 - [删除草稿产品/服务](update-existing-offer.md#delete-a-draft-offer)
+- 如果产品/服务已上线 - [停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- 如果产品/服务为预览版 - [投入使用](publishing-status.md#publisher-approval)
+- 如果尚未完成发布- [取消发布](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -73,7 +73,7 @@ ms.locfileid: "89646681"
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果前面未列出你的 CRM 系统，请使用 [Azure 表](commercial-marketplace-lead-management-instructions-azure-table.md)或 [Https 终结点](commercial-marketplace-lead-management-instructions-https.md)存储潜在顾客数据。 然后将数据导出到你的 CRM 系统。
+    > 如果 CRM 系统不在此列表中，请使用 [Azure 表](commercial-marketplace-lead-management-instructions-azure-table.md) 或 [HTTPS 终结点](commercial-marketplace-lead-management-instructions-https.md) 来存储客户的潜在客户数据。 然后将数据导出到你的 CRM 系统。
 
 2. 在合作伙伴中心发布时，将产品/服务连接到潜在顾客目标。
 3. 确认正确配置了到潜在顾客目标的连接。 在合作伙伴中心发布后，我们将验证连接，并向你发送一个测试潜在顾客。 如果要在投入使用前预览产品/服务，还可以通过亲自尝试在预览环境中购买产品/服务来测试潜在顾客连接。
@@ -81,10 +81,10 @@ ms.locfileid: "89646681"
 
 下面是一些其他顾客连接管理资源：
 
-- [顾客连接管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
-- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
-- [顾客连接管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
+- [商业市场产品/服务的潜在客户](commercial-marketplace-get-customer-leads.md)
+- [有关潜在客户管理的常见问题](../lead-management-faq.md#common-questions-about-lead-management)
+- [潜在客户配置错误疑难解答](../lead-management-faq.md#publishing-config-errors)
+- [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
 选择“保存草稿”，然后继续。
 
@@ -202,7 +202,7 @@ ms.locfileid: "89646681"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
@@ -218,7 +218,7 @@ ms.locfileid: "89646681"
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

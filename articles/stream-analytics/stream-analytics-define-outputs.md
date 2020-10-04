@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
-ms.date: 08/25/2020
-ms.openlocfilehash: 7de882683248406e44a617dfb5d070e12879aea3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/2/2020
+ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317746"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708429"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 流分析的输出
 
@@ -26,10 +26,10 @@ Azure 流分析作业由输入、查询和输出构成。 可以向多个输出�
 | 输出类型 | 分区 | 安全性 | 
 |-------------|--------------|----------|
 |[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 用户 </br> MSI|
-|[Azure SQL 数据库](sql-database-output.md)|是，但需要启用。|SQL 用户身份验证 </br> MSI (预览) |
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|否|SQL 用户身份验证|
+|[Azure SQL 数据库](sql-database-output.md)|是，可选。|SQL 用户身份验证 </br> MSI (预览) |
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|是|SQL 用户身份验证|
 |[Blob 存储和 Azure Data Lake 第2代](blob-storage-azure-data-lake-gen2-output.md)|是|MSI </br> 访问密钥|
-|[Azure 事件中心](event-hubs-output.md)|是|访问密钥|
+|[Azure 事件中心](event-hubs-output.md)|是，需要在输出配置中设置分区键列。|访问密钥|
 |[Power BI](power-bi-output.md)|否|Azure Active Directory 用户 </br> MSI|
 |[Azure 表存储](table-storage-output.md)|是|帐户密钥|
 |[Azure 服务总线队列](service-bus-queues-output.md)|是|访问密钥|
@@ -41,7 +41,7 @@ Azure 流分析作业由输入、查询和输出构成。 可以向多个输出�
 
 流分析支持除 Power BI 之外的所有输出的分区。 有关分区键和输出编写器的数目的详细信息，请参阅你感兴趣的特定输出类型的文章。 在上一节中链接了所有输出文章。  
 
-可以使用 (查看查询中的) 子句来控制输出编写器的数目 `INTO <partition count>` ，这在实现所需的作业拓扑时非常有用。 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 如果输出适配器未分区，则在一个输入分区中缺少数据将导致延迟达到延迟时间。 在这种情况下，输出将合并到单个写入器，这可能会导致管道中出现瓶颈。 若要了解有关延迟到达策略的详细信息，请参阅 [Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。
+此外，若要对分区进行更高级的优化，可以使用 (查看查询中的) 子句来控制输出编写器的数目 `INTO <partition count>` ，这在实现所需的作业拓扑时非常有用。 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 如果输出适配器未分区，则在一个输入分区中缺少数据将导致延迟达到延迟时间。 在这种情况下，输出将合并到单个写入器，这可能会导致管道中出现瓶颈。 若要了解有关延迟到达策略的详细信息，请参阅 [Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。
 
 ## <a name="output-batch-size"></a>输出批大小
 

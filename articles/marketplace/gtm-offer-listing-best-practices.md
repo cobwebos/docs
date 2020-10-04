@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420925"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708639"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -61,7 +61,8 @@ Microsoft AppSource 和 Azure Marketplace 是提供不同解决方案类型的�
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>重要说明： SaaS 提供和 Microsoft 365 外接程序
 
-请参阅 " [产品/服务类型](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) " 中的指南，了解有关使用情况的详细信息。 对于 SaaS 产品/服务，产品/服务的交易功能以及类别选择将确定发布产品/服务的在线商店：
+请参阅 [商业应用商店中的约束力](marketplace-commercial-transaction-capabilities-and-considerations.md) ，了解有关该服务如何影响应用商店客户查看和购买产品/服务的具体详细信息。 对于 SaaS 产品/服务，产品/服务的交易功能以及类别选择将确定发布产品/服务的在线商店。
+
 
 | SaaS 套餐    | SaaS 套餐   | SaaS 套餐  | SaaS 套餐   | SaaS 套餐   | SaaS 套餐   | SaaS 套餐    | 适用的在线商店| 适用的在线商店 |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|

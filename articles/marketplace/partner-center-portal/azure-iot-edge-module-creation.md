@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815770"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708333"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -78,9 +78,9 @@ ms.locfileid: "88815770"
 
 下面是其他一些潜在客户管理资源：
 
-- [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
-- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
+- [商业市场产品/服务的潜在客户](commercial-marketplace-get-customer-leads.md)
+- [有关潜在客户管理的常见问题](../lead-management-faq.md#common-questions-about-lead-management)
+- [潜在客户配置错误疑难解答](../lead-management-faq.md#publishing-config-errors)
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
 选择“保存草稿”，然后继续操作。
@@ -194,7 +194,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
@@ -237,12 +237,12 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 6. 名称
 7. 总结
 8. 说明
-9. 有用链接
+9. 有用的链接
 10. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="说明此产品/服务在 Azure Marketplace 搜索结果中的显示方式。":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -252,18 +252,18 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 <br>下面是有关如何在 Azure 门户中显示产品/服务的示例：
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="说明了此产品/服务在 Azure 门户中的显示方式。":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. 名称
 2. 说明
-3. 有用链接
+3. 有用的链接
 4. 屏幕截图
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="说明此产品/服务在 Azure 门户搜索结果中的显示方式。":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -362,7 +362,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 下面是 Azure Marketplace 计划详细信息的示例 (列出的所有价格仅用于举例目的，而不用于反映实际成本) ：
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="说明 Azure Marketplace 计划详细信息。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -372,7 +372,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 <br>下面是 Azure 门户计划详细信息的示例 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="说明 Azure 门户计划详细信息。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
@@ -393,7 +393,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 ## <a name="technical-configuration"></a>技术配置
 
-“IoT Edge 模块”产品/服务类型是在 IoT Edge 设备上运行的一种特定类型的容器。 在“技术配置”选项卡上，将提供 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)内的容器映像存储库的引用信息，以及可便于客户轻松使用模块的配置设置。
+“IoT Edge 模块”产品/服务类型是在 IoT Edge 设备上运行的一种特定类型的容器。 在 " **技术配置** " 选项卡上，你将提供 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)中的容器映像存储库的参考信息，以及允许客户轻松使用该模块的配置设置。
 
 在产品/服务发布后，IoT Edge 容器映像会复制到 Azure 市场中的特定公共容器注册表。 Azure 用户的所有使用模块的请求都是由 Azure 市场公共容器注册表（而不是专用容器注册表）提供服务。
 
@@ -413,7 +413,7 @@ Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表
 
 **Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联) 的 [管理员用户名](../../container-registry/container-registry-authentication.md#admin-account) 。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="展示了“更新容器注册表”对话框。":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-description"></a>拨出说明
 
@@ -421,15 +421,15 @@ Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表
 
 <br>Azure 容器注册表的密码：提供与包含容器映像的 Azure 容器注册表关联的管理员用户名的密码。 用户名和密码是必需的，以确保公司有权访问注册表。 可以从 Azure 门户中获取密码，具体方法为依次转到“容器注册表” > “访问密钥”，或通过 Azure CLI 运行 [show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="说明 Azure 门户中的访问密钥屏幕。":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 访问键
+1. 访问密钥
 2. 用户名
 3. 密码
 
-Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时指定存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](../../container-registry/container-registry-repositories.md)。 请注意，在设置了名称之后，就不能更改它了。 请对你帐户中的每个产品/服务使用唯一名称。
+Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时指定存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](../../container-registry/container-registry-repositories.md)。 请注意，名称一经设置便不可更改。 请对你帐户中的每个产品/服务使用唯一名称。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>新版产品/服务的映像标记
 
@@ -466,7 +466,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 - 名称 #1：ACCEPT_EULA
 - 值 #1：Y
 
-默认容器创建选项。 容器创建选项指导 IoT Edge 模块 Docker 容器的创建。 IoT Edge 支持 Docker 引擎 API 创建容器选项。 有关所有选项，请查看[列出容器](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)。 “创建选项”字段必须是有效的 JSON、未转义且小于 512 个字符。
+默认容器创建选项。 容器创建选项指导 IoT Edge 模块 Docker 容器的创建。 IoT Edge 支持 Docker 引擎 API 创建容器选项。 有关所有选项，请查看[列出容器](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)。 "创建选项" 字段必须为有效的 JSON、非转义且少于512个字符。
 
 例如，如果某个模块需要端口绑定，请定义以下创建选项：
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647656"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708180"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 marketplace 帐户
 
@@ -24,7 +24,7 @@ ms.locfileid: "89647656"
 >[!IMPORTANT]
 >如果云合作伙伴门户 (CPP) 中有帐户，则将其移动到合作伙伴中心;不需要创建新帐户。 有关详细信息，请参阅 [适用于从云合作伙伴门户移动的发布者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 若要在合作伙伴中心创建帐户，请确保：
 
@@ -80,7 +80,7 @@ ms.locfileid: "89647656"
     
 1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置**" "  >  **合作伙伴设置**  >  **程序**"。
 
-你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关详细信息，请参阅 [商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅 [将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
+你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关添加发布服务器的帮助，请参阅 [将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>使用现有的 Microsoft 合作伙伴中心注册创建帐户
 
@@ -129,7 +129,7 @@ ms.locfileid: "89647656"
     
 1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置**" "  >  **合作伙伴设置**  >  **程序**"。
 
-你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关详细信息，请参阅 [商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅 [将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
+你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关添加发布服务器的帮助，请参阅 [将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>如果我已注册开发人员计划，该怎么办？
 
@@ -157,7 +157,7 @@ ms.locfileid: "89647656"
     
 1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置**" "  >  **合作伙伴设置**  >  **程序**"。
 
-你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关详细信息，请参阅 [商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅 [将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
+你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关添加发布服务器的帮助，请参阅 [将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>对于从云合作伙伴门户移动的出版商
 
@@ -190,4 +190,5 @@ ms.locfileid: "89647656"
 
 ## <a name="next-steps"></a>后续步骤
 
+- [什么是 Microsoft 商用 marketplace？](../overview.md)
 - [在合作伙伴中心管理商业市场帐户](./manage-account.md)

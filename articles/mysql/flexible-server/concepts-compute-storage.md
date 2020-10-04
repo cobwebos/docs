@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 67c924c350fa2bc69f724d44a1b43c7e878e493a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934779"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708673"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的计算和存储选项) 
 
@@ -23,7 +23,7 @@ ms.locfileid: "90934779"
 | 资源/层 | **可突增** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | VM 系列| B 系列 | Ddsv4 系列 | Edsv4 系列|
-| vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 | 2，4，8，16，32，48，64 |
+| vCore 数 | 1, 2 | 2，4，8，16，32，48，64 | 2，4，8，16，32，48，64 |
 | 每个 vCore 的内存 | 变量 | 4 GiB | 8 GiB * |
 | 存储大小 | 5 GiB 到 16 TiB | 5 GiB 到 16 TiB | 5 GiB 到 16 TiB |
 | 数据库备份保留期 | 1到35天 | 1到35天 | 1到35天 |

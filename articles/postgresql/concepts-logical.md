@@ -1,17 +1,17 @@
 ---
 title: 逻辑解码 - Azure Database for PostgreSQL - 单一服务器
 description: 介绍用于 Azure Database for PostgreSQL - 单一服务器中的变更数据捕获的逻辑解码和 wal2json
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903887"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708605"
 ---
 # <a name="logical-decoding"></a>逻辑解码
  
@@ -56,7 +56,7 @@ ms.locfileid: "90903887"
 
 2. 通过选择“是”，重启服务器以应用更改。
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL - 复制 - 确认重启":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL - 复制 - Azure 复制支持":::
 
 
 ## <a name="start-logical-decoding"></a>开始逻辑解码

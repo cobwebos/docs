@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420602"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708537"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -58,7 +58,7 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 若要将 IoT Edge 模块发布到 Azure 市场，需满足以下先决条件：
 
-- 访问合作伙伴中心。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](marketplace-publishers-guide.md)。
+- 访问合作伙伴中心。 有关详细信息，请参阅 [在合作伙伴中心创建商业 marketplace 帐户](partner-center-portal/create-account.md)。
 - 在 Azure 容器注册表中托管 IoT Edge 模块。
 - 准备好 IoT Edge 模块元数据，比如（非详尽列表）：
     - 标题

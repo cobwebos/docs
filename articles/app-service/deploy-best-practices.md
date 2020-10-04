@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961867"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708146"
 ---
 # <a name="deployment-best-practices"></a>部署最佳实践
 
@@ -47,7 +47,7 @@ ms.locfileid: "88961867"
 
 永远不应为生产槽启用持续部署。 相反，生产分支 (经常) 应部署到非生产槽上。 准备好释放基本分支后，将其交换到生产槽中。 交换到生产中（而不是部署到生产环境）可防止停机，并使你能够通过再次交换回滚更改。 
 
-![槽使用情况视觉对象](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![此图显示了开发、过渡和主分支之间的流，以及要将它们部署到的槽。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>连续部署容器
 

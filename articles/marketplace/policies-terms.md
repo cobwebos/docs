@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52b9a67ee8c11011ea04f7414a3d978f5860c0ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974841"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708061"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商业市场策略和条款
 
@@ -30,6 +30,6 @@ ms.locfileid: "90974841"
 - [Azure 市场参与政策](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
 - [Azure 市场条款](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
-## <a name="next-step"></a>下一步
+## <a name="next-steps"></a>后续步骤
 
-请访问 [商业 marketplace 发布指南](marketplace-publishers-guide.md) 页。
+- [什么是 Microsoft 商用 marketplace？](overview.md)

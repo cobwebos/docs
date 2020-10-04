@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649268"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709098"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure 市场中创建 Azure 容器套餐
 
@@ -80,10 +80,10 @@ ms.locfileid: "89649268"
 
 下面是其他一些潜在客户管理资源：
 
-- [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在顾客管理常见问题解答](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [常见的潜在顾客配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
+- [商业市场产品/服务的潜在客户](commercial-marketplace-get-customer-leads.md)
+- [有关潜在客户管理的常见问题](../lead-management-faq.md#common-questions-about-lead-management)
+- [潜在客户配置错误疑难解答](../lead-management-faq.md#publishing-config-errors)
+- [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
 选择“保存草稿”，然后继续。
 
@@ -122,7 +122,7 @@ ms.locfileid: "89649268"
 
 ##### <a name="your-own-terms-and-conditions"></a>你自己的条款和条件
 
-若要提供你自己的自定义条款和条件，请在“条款和条件”框中输入它们。 可以在此框中输入不限数量的文本字符。 客户必须接受这些条款，才能试用你的产品/服务。
+若要提供你自己的自定义条款和条件，请在“条款和条件”框中输入它们。 您可以在此框中输入不限数量的字符。 客户必须接受这些条款，才能试用你的产品/服务。
 
 选择“保存草稿”，然后转到下一部分“产品/服务一览”继续操作。
 
@@ -190,7 +190,7 @@ ms.locfileid: "89649268"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
@@ -223,19 +223,19 @@ ms.locfileid: "89649268"
 
 下图显示 Azure 市场中的“产品/服务一览”页：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Azure 市场中的“产品/服务一览”页图示。" :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。" :::
 
 下图显示 Azure 市场中的搜索结果：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Azure 市场中的搜索结果图示。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。":::
 
 下图显示 Azure 门户中的“产品/服务一览”页：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Azure 门户中的“产品/服务一览”页图示。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。":::
 
 下图显示 Azure 门户中的搜索结果：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Azure 门户中的搜索结果图示。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。":::
 
 ## <a name="preview"></a>预览
 
@@ -328,11 +328,11 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 下面是在查看计划详细信息时 Azure 市场中的字段：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="在 Azure 市场中查看计划详细信息时看到的字段的图示。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。":::
 
 下面是 Azure 门户上的计划详细信息：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure 门户上的计划详细信息的图示。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。":::
 
 ### <a name="plan-availability"></a>计划可用性
 
@@ -363,11 +363,11 @@ Azure 容器注册表名称 - 提供包含容器映像的 [Azure 容器注册表
 
 **Azure 容器注册表的管理员用户名** –提供 [管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)) 与具有容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="“更新容器注册表”对话框的图示。":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。":::
 
 Azure 容器注册表的密码 - 提供与包含容器映像的 Azure 容器注册表相关联的管理员用户的密码。 用户名和密码是必需的，以确保公司有权访问注册表。 可以从 Azure 门户中获取密码，具体方法为依次转到“容器注册表” > “访问密钥”，或通过 Azure CLI 运行 [show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="“访问密钥”菜单的图示。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="“使用 Microsoft 商业市场的标准协定”复选框图示。":::
 
 Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时包含存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](../../container-registry/container-registry-repositories.md)。
 

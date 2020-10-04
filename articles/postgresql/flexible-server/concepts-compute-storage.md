@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a149d147b9817d8fde7a4fa7eb1b0e7a7eea8283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934759"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710067"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活的服务器中的计算和存储选项
 
@@ -22,7 +22,7 @@ ms.locfileid: "90934759"
 
 | 资源/层 | **可突增** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| vCore 数 | 1, 2 | 4、8、16、32、64 | 4、8、16、32、48、64 |
+| vCore 数 | 1, 2 | 2，4，8，16，32，48，64 | 2，4，8，16，32，48，64 |
 | 每个 vCore 的内存 | 变量 | 4 GB | 6.75 到 8 GB |
 | 存储大小 | 32 GB 到 16 TB | 32 GB 到 16 TB | 32 GB 到 16 TB |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |

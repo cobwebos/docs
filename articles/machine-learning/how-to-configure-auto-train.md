@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 895bdfde80dfe10bef4b6aad12236db60e2c427b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533139"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709081"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -44,7 +44,7 @@ ms.locfileid: "91533139"
 
 * 已安装 Azure 机器学习 Python SDK。
     若要安装该 SDK，你可以： 
-    * 创建一个计算实例，该实例将自动安装 SDK 并针对 ML 工作流进行预先配置。 有关详细信息，请参阅[什么是 Azure 机器学习计算实例？](concept-compute-instance.md#managing-a-compute-instance) 
+    * 创建一个计算实例，该实例将自动安装 SDK 并针对 ML 工作流进行预先配置。 有关详细信息，请参阅 [创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md) 。 
 
     * [自己安装 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。 只要确保额外包括 `automl` 即可。 
 

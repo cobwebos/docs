@@ -1,17 +1,17 @@
 ---
 title: 高级威胁防护-Azure Database for PostgreSQL-单服务器
 description: 了解如何使用高级威胁防护来检测异常的数据库活动，指示数据库存在潜在的安全威胁。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: fbb6a7dbe73444ac9049573705e4d04bd868a806
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cfe565c45ea6aa0a4bcfecc95b1e1149b17542a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884563"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708044"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的高级威胁防护-单服务器
 

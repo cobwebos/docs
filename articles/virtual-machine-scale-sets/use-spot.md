@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072734"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709037"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure Spot VM 
 
@@ -163,8 +163,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **问：** 自动缩放是否可用于这两种收回策略（解除分配和删除）？
 
-**答:** 建议使用自动缩放时将收回策略设置为删除。 这是因为解除分配的实例将计入规模集的容量计数。 如果使用自动缩放，由于实例已解除分配且已收回，实例很可能会快速达到目标数。 
-
+**答:** 建议使用自动缩放时将收回策略设置为删除。 这是因为解除分配的实例将计入规模集的容量计数。 如果使用自动缩放，由于实例已解除分配且已收回，实例很可能会快速达到目标数。 此外，你的缩放操作可能会受到点逐出的影响。 例如，在缩放操作期间，由于存在多个点逐出，VMSS 实例可能低于设置的最小计数。 
 
 **问：** 哪些渠道支持 Spot VM？
 
