@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1742c80fd6914a1c9420f37217df02791e80da9d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886103"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710050"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>保存和写入 Azure 机器学习试验文件的位置
 
@@ -79,4 +79,4 @@ Jupyter 笔记本| 创建 `.amlignore` 文件或将笔记本移动到新的空�
 
 * 详细了解如何[访问数据存储中的数据](how-to-access-data.md)。
 
-* 详细了解如何使用 [Python SDK](how-to-create-attach-compute-sdk.md) 或[工作室](how-to-create-attach-compute-studio.md)来创建计算目标。
+* 详细了解如何 [创建用于模型定型和部署的计算目标](how-to-create-attach-compute-studio.md)

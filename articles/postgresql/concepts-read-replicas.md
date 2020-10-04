@@ -1,17 +1,17 @@
 ---
 title: 只读副本 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍 Azure Database for PostgreSQL（单一服务器）中的只读副本功能。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d1fa99d0954177e2804039fc71c2ba010b94bd50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530934"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710509"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -83,7 +83,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ## <a name="monitor-replication"></a>监视复制
 Azure Database for PostgreSQL 提供了两个用于监视复制的指标。 这两个指标是**副本的最大滞后时间**和**副本滞后时间**。 若要了解如何查看这些指标，请参阅[只读副本操作指南文章](howto-read-replicas-portal.md)的“监视副本”部分。
 
-**副本的最大延迟**指标显示主副本和最滞后副本之间的滞后时间（以字节为单位）。 此指标仅在主服务器上可用。
+**副本的最大延迟**指标显示主副本和最滞后副本之间的滞后时间（以字节为单位）。 此指标仅在主服务器上可用，且仅当至少一个读取副本连接到主服务器时才可用。
 
 “副本滞后时间”指标显示的是自上次重放事务以来所经历的时间。 如果在主服务器上没有发生事务，则该度量值将反映此时间延迟。 此指标仅适用于副本服务器。 “副本滞后时间”是从 `pg_stat_wal_receiver` 视图计算得出的：
 
@@ -141,6 +141,9 @@ AS total_log_delay_in_bytes from pg_stat_replication;
     
 如果应用程序成功处理了读取和写入操作，则表明故障转移已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
+### <a name="disaster-recovery"></a>灾难恢复
+
+当出现重大灾难事件（如可用性区域级别或区域故障）时，可以通过提升读取副本来执行灾难恢复操作。 在 UI 门户中，可以导航到读取副本服务器。 然后单击 "复制" 选项卡，可以停止副本以将其升级为独立服务器。 或者，你可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) 来停止和升级副本服务器。
 
 ## <a name="considerations"></a>注意事项
 

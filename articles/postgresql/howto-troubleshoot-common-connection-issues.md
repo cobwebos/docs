@@ -2,17 +2,17 @@
 title: 对连接进行故障排除 - Azure Databases for PostgreSQL - 单一服务器
 description: 了解如何排查 Azure Databases for PostgreSQL - 单一服务器的连接问题。
 keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: c97e8e0d55a99e0b022bdc6e97edc778d7b6588a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107591"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708010"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>排查 Azure Databases for PostgreSQL - 单一服务器的连接问题
 
@@ -50,14 +50,14 @@ ms.locfileid: "86107591"
 * 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 对于无法访问的服务器 IP 地址和端口，必需授予其访问权限，并且必须允许使用某些防火墙的应用程序名称（如 PostgreSQL）。
 * 用户失误：例如，你可能错误键入了连接参数（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
 * 如果看到“服务器未配置为允许 IPv6 连接”错误，则请注意，基本层不支持 VNet 服务终结点。 必须从子网中删除尝试连接到“基本”服务器的 Microsoft.Sql 终结点。
-* 如果你看到连接错误_sslmode 值 "* *" 无效，当 SSL 支持未按错误编译时_，这意味着你的 PostgreSQL 客户端不支持 ssl。 大多数情况下，客户端 libpq 尚未用 "--openssl" 标志进行编译。 请尝试使用具有 SSL 支持的 PostgreSQL 客户端进行连接。 
+* 如果看到连接错误“未在其中编译 SSL 支持时，sslmode 值 ‘***’ 无效”，则表示 PostgreSQL 客户端不支持 SSL。 最有可能的是，客户端 libpq 尚未使用“--with-openssl”标志进行编译。 请尝试使用带有 SSL 支持的 PostgreSQL 客户端进行连接。 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 
 1. 设置[防火墙规则](howto-manage-firewall-using-portal.md)以允许客户端 IP 地址。 （仅出于临时测试目的）使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束 IP 地址，来设置一个防火墙规则。 这样会使服务器向所有 IP 地址开放。 如果这样可以解决连接性问题，请删除此规则，再针对适当限制的 IP 地址或地址范围创建防火墙规则。
 2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 5432。
 3. 验证连接字符串和其他连接设置。
-4. 在仪表板中检查服务运行状况。 如果你认为存在区域性中断，请参阅[业务连续性概述，并 Azure Database for PostgreSQL](concepts-business-continuity.md)获取恢复到新区域的步骤。
+4. 在仪表板中检查服务运行状况。 如果你认为存在区域性中断，请参阅 [业务连续性概述，并 Azure Database for PostgreSQL](concepts-business-continuity.md) 获取恢复到新区域的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
