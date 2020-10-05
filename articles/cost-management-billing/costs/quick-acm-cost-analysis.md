@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297855"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -150,7 +150,7 @@ ms.locfileid: "88718520"
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-若要固定成本分析，请选择右上角的图钉图标。 固定成本分析只会保存主图表或表视图。 共享仪表板，允许他人访问此磁贴。 请注意，这只共享仪表板配置，并不授予他人访问基础数据的权限。 如果你没有成本访问权限但有共享仪表板的访问权限，将会看到“拒绝访问”消息。
+若要固定成本分析，请选择右上角或“<Subscription Name> | 成本分析”后的图钉图标。 固定成本分析只会保存主图表或表视图。 共享仪表板，允许他人访问此磁贴。 请注意，这只共享仪表板配置，并不授予他人访问基础数据的权限。 如果你没有成本访问权限但有共享仪表板的访问权限，将会看到“拒绝访问”消息。
 
 若要共享成本分析链接，请选择边栏选项卡顶部的“共享”。 随即会显示一个自定义 URL，单击此 URL 会打开针对此特定范围的特定视图。 如果你没有成本访问权限也没有获取此 URL，你将看到“拒绝访问”消息。
 

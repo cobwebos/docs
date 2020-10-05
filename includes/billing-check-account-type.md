@@ -4,18 +4,18 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: bc60e7d39e6dbdf04744a10ef6c6f286e1b1ea52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6787983421285122834479cb652fec52ee7bf72b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75987780"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360679"
 ---
 1. 登录 [Azure 门户](https://portal.azure.com)。
  
 2. 在“成本管理 + 计费”中进行搜索。
  
-   ![显示了 Azure 门户搜索的屏幕截图](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
+   ![显示在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图。](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
  
 3. 如果仅有权访问一个计费范围，请从左侧选择“属性”。
  

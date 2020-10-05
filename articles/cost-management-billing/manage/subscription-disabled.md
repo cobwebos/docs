@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686796"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308956"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新激活已禁用的 Azure 订阅
 
@@ -32,7 +32,7 @@ Azure 订阅被禁用可能是因为额度已过期、达到了支出限制、�
 > [!NOTE]
 > 如果使用的是免费试用版订阅且移除了支出限制，则在免费试用结束时会将订阅转换为采用即用即付费率的个人订阅。 创建订阅后，可保留剩余信用额度整整 30 天。 仍可使用 12 个月的免费服务。
 
-若要监视和管理 Azure 的计费活动，请参阅[通过 Azure 计费和成本管理来防止意外成本](getting-started.md)。
+要监视和管理 Azure 的计费活动，请参阅[计划管理 Azure 成本](../understand/plan-manage-costs.md)。
 
 
 ## <a name="your-bill-is-past-due"></a>帐单已过期
@@ -60,4 +60,4 @@ Azure 订阅被禁用可能是因为额度已过期、达到了支出限制、�
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何[监视和管理 Azure 的计费活动](getting-started.md)。
+- 了解如何[计划管理 Azure 成本](../understand/plan-manage-costs.md)。

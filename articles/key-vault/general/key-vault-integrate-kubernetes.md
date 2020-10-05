@@ -5,13 +5,13 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 08/25/2020
-ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.date: 09/25/2020
+ms.openlocfilehash: ca075414b234b65f15b82847a112104f6fbe3cc1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061795"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597887"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
@@ -114,7 +114,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 在示例 SecretProviderClass YAML 文件中，填写缺少的参数。 下列参数必填：
 
-* **userAssignedIdentityID**：# [必需] 如果使用服务主体，请使用客户端 ID 指定要使用的用户分配的托管标识。 如果使用用户分配的标识作为 VM 的托管标识，请指定标识的客户端 ID。如果该值为空，则默认情况下，将在 VM 上使用系统分配的标识 
+* **userAssignedIdentityID**：# [必需] 如果使用服务主体，请使用客户端 ID 指定要使用的用户分配的托管标识。 如果使用用户分配的标识作为 VM 的托管标识，请指定标识的客户端 ID。 如果该值为空，则默认情况下，将在 VM 上使用系统分配的标识 
 * **keyvaultName**：密钥保管库的名称
 * **对象**：包含要装载的所有机密内容的容器
     * **objectName**：机密内容的名称

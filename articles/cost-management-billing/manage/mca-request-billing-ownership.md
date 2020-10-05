@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 233cc5330096b9b6419c8024205a41646ddd9519
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371858"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>从其他帐户获取 Azure 订阅的计费所有权
 
@@ -152,7 +152,7 @@ Azure 市场产品将连同各自的订阅一起转移。
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
-在转换期间，使用 (Azure RBAC（基于角色的访问控制）)[../role-based-access-control/overview.md] 为现有用户、组或服务主体分配的访问权限不受影响。
+在转换期间，使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 为现有用户、组或服务主体分配的访问权限不受影响。
 
 ### <a name="azure-support-plan"></a>Azure 支持计划
 

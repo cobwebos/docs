@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681917"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447883"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解采用即用即付费率的个人订阅的 Azure 预留使用情况
 
@@ -74,7 +74,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 筛选“预留实例使用量”计量名称，并选择所需的“计量类别” - Azure SQL 数据库或 Azure Cosmos DB 。 此时会显示以下屏幕截图中所示的内容：
 
-![SQL 数据库预留容量的 CSV 文件](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![屏幕截图显示“计费类型”条目。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 “预留实例使用情况”行包含预留涵盖的核心小时总数。 此行的费率为 0 美元，因为预留涵盖了成本。
 
@@ -82,7 +82,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 筛选“其他信息”，并键入**预留 ID**。 以下屏幕截图显示了与 SQL 数据库预留容量预订相关的字段。
 
-![SQL 数据库预留容量的 CSV 文件](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![屏幕截图显示预留容量的 CSV 文件的详细信息。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. “其他信息”字段中的 ReservationId 是应用到 SQL 数据库资源的 SQL 数据库预留容量预订。
 2. **ConsumptionMeter** 是 SQL 数据库资源的计量 ID。

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 27a6f8f0ed0d58deb64f768d2e47bafebc910edb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371736"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>开始使用更新的 Azure 计费帐户
 
@@ -113,7 +113,7 @@ ms.locfileid: "88690419"
 
 **无服务故障时间** 订阅中的 Azure 服务将保持正常运行，而不会中断。 仅对你的计费体验进行更新。 这不会对现有的资源、资源组或管理组产生影响。
 
-**不会更改 Azure 资源** 对使用 Azure RBAC（基于角色的访问控制）设置的 Azure 资源的访问权限不受此更新的影响。
+**不会更改 Azure 资源** 对使用 Azure 基于角色的访问控制 (Azure RBAC) 设置的 Azure 资源的访问权限不受此更新的影响。
 
 **过去的发票在新体验中可用** 更新帐户前生成的发票在 Azure 门户中仍然可用。
 

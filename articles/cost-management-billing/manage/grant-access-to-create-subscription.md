@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: b154d723e82d02ea864459ef65eb5c05c14ae336
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371875"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授予创建 Azure Enterprise 订阅（预览版）所需的访问权限
 
@@ -23,11 +23,11 @@ ms.locfileid: "88943147"
 
 ## <a name="grant-access"></a>授予访问权限
 
-若要[在注册帐户下创建订阅](programmatically-create-subscription.md)，用户必须在该帐户上具有 [RBAC 所有者角色](../../role-based-access-control/built-in-roles.md#owner)。 可以按照以下步骤为用户或用户组授予注册帐户上的 RBAC 所有者角色：
+若要[在注册帐户下创建订阅](programmatically-create-subscription.md)，用户必须在该帐户上具有 Azure RBAC [所有者角色](../../role-based-access-control/built-in-roles.md#owner)。 可按照以下步骤为用户或用户组授予注册帐户上的 Azure RBAC 所有者角色：
 
 1. 获取要授权访问的注册帐户的对象 ID
 
-    若要向其他人授予注册帐户上的 RBAC 所有者角色，你必须是该帐户的帐户所有者或 RBAC 所有者。
+    若要向其他人授予注册帐户上的 Azure RBAC 所有者角色，你必须是该帐户的帐户所有者或 Azure RBAC 所有者。
 
     # <a name="rest"></a>[REST](#tab/rest)
 
@@ -62,7 +62,7 @@ ms.locfileid: "88943147"
     }
     ```
 
-    使用 `principalName` 属性标识要允许 RBAC 所有者访问的帐户。 复制该帐户的 `name`。 例如，如果要允许 RBAC 所有者访问 SignUpEngineering@contoso.com 注册帐户，则复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将该值粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
+    使用 `principalName` 属性标识要允许 Azure RBAC 所有者访问的帐户。 复制该帐户的 `name`。 例如，如果要允许 Azure RBAC 所有者访问 SignUpEngineering@contoso.com 注册帐户，则复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将该值粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,7 +80,7 @@ ms.locfileid: "88943147"
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    使用 `principalName` 属性标识要允许 RBAC 所有者访问的帐户。 复制该帐户的 `ObjectId`。 例如，如果要允许 RBAC 所有者访问 SignUpEngineering@contoso.com 注册帐户，则复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 将该对象 ID 粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
+    使用 `principalName` 属性标识要允许 Azure RBAC 所有者访问的帐户。 复制该帐户的 `ObjectId`。 例如，如果要允许 Azure RBAC 所有者访问 SignUpEngineering@contoso.com 注册帐户，则复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 将该对象 ID 粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -111,18 +111,18 @@ ms.locfileid: "88943147"
 
     ---
 
-    使用 `principalName` 属性标识要允许 RBAC 所有者访问的帐户。 复制该帐户的 `name`。 例如，如果要允许 RBAC 所有者访问 SignUpEngineering@contoso.com 注册帐户，则复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将该值粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
+    使用 `principalName` 属性标识要允许 Azure RBAC 所有者访问的帐户。 复制该帐户的 `name`。 例如，如果要允许 Azure RBAC 所有者访问 SignUpEngineering@contoso.com 注册帐户，则复制 ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将该值粘贴到某个位置，以便在下一步中将其用作 `enrollmentAccountObjectId`。
 
-1. <a id="userObjectId"></a>获取要向其授予 RBAC 所有者角色的用户或组的对象 ID
+1. <a id="userObjectId"></a>获取要向其授予 Azure RBAC 所有者角色的用户或组的对象 ID
 
     1. 在 Azure 门户中，搜索“Azure Active Directory”。
     1. 如果要向用户授予访问权限，请在左侧菜单中选择“用户”。 若要向组授予访问权限，请选择“组”。
-    1. 选择要向其授予 RBAC 所有者角色的用户或组。
+    1. 选择要向其授予 Azure RBAC 所有者角色的用户或组。
     1. 如果选择了用户，则将在“配置文件”页中找到对象 ID。 如果选择了组，则对象 ID 出现在“概述”页中。 通过选择文本框右侧的图标来复制 ObjectID。 将其粘贴到某个位置，以便在下一步中将其用作 `userObjectId`。
 
-1. 向用户或组授予注册帐户上的 RBAC 所有者角色
+1. 向用户或组授予注册帐户上的 Azure RBAC 所有者角色
 
-    使用在前两个步骤中收集的值，向用户或组授予注册帐户上的 RBAC 所有者角色。
+    使用在前两个步骤中收集的值，向用户或组授予注册帐户上的 Azure RBAC 所有者角色。
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
@@ -174,7 +174,7 @@ ms.locfileid: "88943147"
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    用户成为注册帐户的 RBAC 所有者之后，他们即可[以编程方式在该帐户下创建订阅](programmatically-create-subscription.md)。 委托用户创建的订阅仍有作为服务管理员的原始帐户所有者，但它默认情况下也有作为 RBAC 所有者的委托用户。
+    用户成为注册帐户的 Azure RBAC 所有者后，就可[以编程方式在该帐户下创建订阅](programmatically-create-subscription.md)。 委托用户创建的订阅仍有作为服务管理员的原始帐户所有者，但它默认情况下也有作为 Azure RBAC 所有者的委托用户。
 
     ---
 

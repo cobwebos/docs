@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371943"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise 门户入门
 
@@ -242,10 +242,10 @@ Azure Enterprise 门户的层次结构包括：
 
 - 完成订阅转移后，Microsoft 会更新帐户所有者。
 
-了解以下基于角色的访问控制 (RBAC) 策略：
+了解以下 Azure 基于角色的访问控制 (Azure RBAC) 策略：
 
-- 在同一租户中的两个组织 ID 之间执行订阅转移时，会保留 RBAC 策略以及现有的服务管理员和共同管理员角色。
-- 其他订阅转移会导致 RBAC 策略和角色分配丢失。
+- 在同一租户中的两个组织 ID 之间执行订阅转移时，会保留 Azure RBAC 策略以及现有的服务管理员和共同管理员角色。
+- 其他订阅转移会导致 Azure RBAC 策略和角色分配丢失。
 - 策略和管理员角色不会在不同的目录之间转移。 服务管理员将更新为目标帐户的所有者。
 
 在更改帐户所有者之前：
@@ -569,7 +569,7 @@ Azure Enterprise 门户为企业客户提供两种类型的订阅：
 
 若要定义支出配额，请选择部门，然后选择编辑图标。 编辑支出限制详细信息后，选择“保存”。
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>我使用了资源组来实现 RBAC 和跟踪使用情况。 如何查看相关的使用情况详细信息？
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>我使用了资源组来实现 Azure RBAC 和跟踪使用。 如何查看相关的使用情况详细信息？
 
 如果你使用了资源组和标记，则会在服务级别跟踪此信息，可以在下载的详细使用情况 (CSV) 文件中访问此信息。  请参阅 Azure Enterprise 门户中的[下载使用情况报表](https://ea.azure.com/report/downloadusage)。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685045"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447659"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的 Azure 成本管理 Power BI 应用分析成本
 
@@ -47,7 +47,7 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 9. 在出现的对话框中，为“BillingProfileIdOrEnrollmentNumber”输入 EA 注册编号。 指定要获取的数据的月数。 保留“注册编号”的默认“范围”值，然后选择“下一步”。  
   ![输入 EA 注册信息](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. 在下一个对话框中连接到 Azure，并获取所需的数据来显示预留实例建议。 保留配置的默认值，并选择“登录”。  
-  ![连接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+  ![屏幕截图显示了带有默认值的“连接到 Azure 成本管理应用”对话框。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. 最后一个安装步骤连接到 EA 注册，并要求使用[企业管理员](../manage/understand-ea-roles.md)帐户。 选择“登录”以便对 EA 注册进行身份验证。 此步骤还会在 Power BI 中启动数据刷新操作。  
   ![连接到 EA 注册](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
@@ -189,7 +189,7 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 1. 连接到数据。
 1. 输入 EA 注册和月数后，请务必保留“匿名”作为“身份验证方法”的默认值，并保留“无”作为隐私级别设置。  
-  ![连接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  ![屏幕截图显示了已输入“匿名”和“无”这两个值的“连接到 Azure 成本管理应用”对话框。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
 1. 在下一页上，设置 **OAuth2** 作为“身份验证方法”，设置“无”作为“隐私级别”。 然后登录，以便对注册进行身份验证。 此步骤还启动 Power BI 数据刷新。
 
 

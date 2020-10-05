@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690572"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447625"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>跟踪 Microsoft 客户协议的 Azure 额度余额
 
@@ -35,11 +35,11 @@ ms.locfileid: "88690572"
 
 2. 搜索“成本管理 + 计费”。
 
-    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图。](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. 在计费范围页中，选择要跟踪其额度余额的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。
 
-    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![显示计费范围的屏幕截图。](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -47,7 +47,7 @@ ms.locfileid: "88690572"
 
 3. 在左侧选择“付款方式”，然后选择“Azure 额度”。 
 
-   ![计费对象信息的额度余额的屏幕截图](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![显示预估余额和当前余额的屏幕截图。](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. “Azure 额度”页包含以下部分：
 

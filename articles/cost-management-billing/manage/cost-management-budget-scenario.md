@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690181"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446455"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
@@ -152,7 +152,7 @@ ms.locfileid: "88690181"
 1. 选择“确定”，以设置表达式  。
 1. 在“条件”下拉框中选择“大于或等于”   。
 1. 在条件的“选择值”框中，输入 `.8` 。  
-    ![Azure - 逻辑应用 - 包含值的 Float 表达式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![屏幕截图显示已选中值的“条件”对话框。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. 选择“条件”框中的“添加” > “添加行”，以添加条件的其他部分   。
 1. 在“条件”框中，选择包含 `Choose a value` 的文本框  。
 1. 选择列表顶部的“表达式”并在表达式编辑器中输入以下表达式：`float()`
@@ -160,7 +160,7 @@ ms.locfileid: "88690181"
 1. 选择“确定”，以设置表达式  。
 1. 在“条件”的下拉框中选择“小于”   。
 1. 在条件的“选择值”框中，输入 `1` 。  
-    ![Azure - 逻辑应用 - 包含值的 Float 表达式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![屏幕截图显示带有两个条件的“条件”对话框。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. 在“如果为 true”框中，选择“添加操作”   。 你将添加一个用于关闭可选 VM 的 HTTP POST 操作。  
     ![Azure - 逻辑应用 - 添加操作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. 输入“HTTP”以搜索 HTTP 操作，然后选择“HTTP - HTTP”操作   。  
@@ -183,7 +183,7 @@ ms.locfileid: "88690181"
 使用条件语句检查阈值金额是否已达到或超过预算值的 100%。 如果已达到此阈值金额，则使用名为“Complete”的 Webhook 发送 HTTP POST  。 此操作将关闭剩下的所有 VM。
 
 1. 选择“新建步骤” > “添加条件”   。  
-    ![Azure - 逻辑应用 - 添加操作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![屏幕截图显示已调出“添加操作”的“若为 true”对话框。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. 在“条件”框中，选择包含 `Choose a value` 的文本框以显示可用值的列表  。
 1. 选择列表顶部的“表达式”并在表达式编辑器中输入以下表达式：`float()`
 1. 选择“动态内容”，将光标置于括号 () 内，然后从列表中选择“NotificationThresholdAmount”以填充整个表达式   。
@@ -194,11 +194,11 @@ ms.locfileid: "88690181"
 1. 在条件的“选择值”框中，输入 `1` 。  
     ![Azure - 逻辑应用 - 设置条件值](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. 在“如果为 true”框中，选择“添加操作”   。 你将添加一个用于关闭所有剩余 VM 的 HTTP POST 操作。  
-    ![Azure - 逻辑应用 - 添加操作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![屏幕截图显示“若为 true”对话框，你可在此处添加 HTTP POST 操作。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. 输入“HTTP”以搜索 HTTP 操作，然后选择“HTTP - HTTP”操作   。
 1. 选择“Post”作为“方法”值   。
 1. 对于之前在本教程中创建的名为“Complete”的 Webhook，请输入其 URL 作为 Uri 值   。  
-    ![Azure - 逻辑应用 - 添加操作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![屏幕截图显示 HTTP 对话框，你可在此处输入 URL 值。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. 在“如果为 true”框中，选择“添加操作”   。 你将添加一个电子邮件操作，该操作会发送一封电子邮件，通知收件人已关闭剩余的 VM。
 1. 搜索“发送电子邮件”，然后根据所用的电子邮件服务选择“发送电子邮件”操作  。
 1. 为用来通知收件人已关闭可选 VM 的电子邮件添加“收件人”、“主题”、“正文”文本    。 使用 BudgetName 和 NotificationThresholdAmount 动态内容填充主题和正文字段   。  

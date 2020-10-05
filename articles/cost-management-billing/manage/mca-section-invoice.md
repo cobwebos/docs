@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362759"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>通过自定义计费帐户来组织成本
 
@@ -53,19 +53,19 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 |---------|---------|
 |Jack 注册了 Azure，他需要一份月度发票。 | 一个计费配置文件和一个发票科目。 当 Jack 注册 Azure 时，系统会自动为他设置此结构，不需要他执行任何附加步骤。 |
 
-![简单计费场景的信息图](./media/mca-section-invoice/organize-billing-scenario1.png)
+![单个计费场景的信息图。](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |场景  |结构  |
 |---------|---------|
 |Contoso 是一家小型组织，需要一份月度发票，但需要按部门（营销和工程）将成本分组。  | Contoso 的计费配置文件，营销和工程部门各有一个发票科目。 |
 
-![简单计费场景的信息图](./media/mca-section-invoice/organize-billing-scenario2.png)
+![多个计费场景的信息图。](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |场景  |结构  |
 |---------|---------|
 |Fabrikam 是一家中型组织，需要为其工程部门和营销部门单独提供发票。 对于工程部门，他们希望按环境（生产和开发）将成本分组。  | 营销和工程部门各有一个计费配置文件。 对于工程部门，生产和开发环境各有一个发票科目。 |
 
-![简单计费场景的信息图](./media/mca-section-invoice/organize-billing-scenario3.png)
+![多个计费场景的信息图，其中对生产和开发环境进行单独计费。](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>创建新的发票科目
 
@@ -79,7 +79,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 3. 在左侧窗格中选择“计费配置文件”。 在列表中选择一个计费配置文件。 新科目将显示在所选计费配置文件的发票上。
 
-   [![显示计费配置文件列表的屏幕截图](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![显示计费对象信息列表的屏幕截图。](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. 在左侧窗格中选择“发票科目”，然后在页面顶部选择“添加”。 
 
@@ -107,7 +107,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 3. 在左侧窗格中选择“计费配置文件”，然后在页面顶部选择“添加”。 
 
-   [![显示计费配置文件列表的屏幕截图](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![显示计费对象信息列表的屏幕截图，其中选择了“添加”。](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 2. 搜索“订阅”。
 
-   [![演示如何在门户中搜索订阅的屏幕截图](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![显示在 Azure 门户中搜索订阅的屏幕截图。](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. 从页面顶部选择“添加”。
 
-   ![其中显示了“订阅”视图中的“添加”按钮的屏幕截图](./media/mca-section-invoice/subscription-add.png)
+   ![显示新订阅的“订阅”视图中的“添加”按钮的屏幕截图。](./media/mca-section-invoice/subscription-add.png)
 
 4. 如果你有权访问多个计费帐户，请选择自己的 Microsoft 客户协议计费帐户。
 
-   ![其中显示了“订阅”视图中的“添加”按钮的屏幕截图](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![显示“创建订阅”窗格的屏幕截图。](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. 选择用于计收订阅使用费的计费配置文件。 Azure 使用费以及此订阅的其他购买费用将从所选计费配置文件的发票中计收。
 
@@ -166,7 +166,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 2. 搜索“成本管理 + 计费”。
 
-   ![其中显示了在门户中搜索订阅的屏幕截图](./media/mca-section-invoice/search-cmb.png)
+   ![显示在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图。](./media/mca-section-invoice/search-cmb.png)
 
 3. 若要将订阅链接到新的发票科目，请在屏幕的左侧选择“Azure 订阅”。 对于其他产品（例如 Azure 市场和应用源资源），请选择“重复性费用”。
 

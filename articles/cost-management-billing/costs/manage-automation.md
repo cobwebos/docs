@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372181"
 ---
 # <a name="manage-costs-with-automation"></a>通过自动化功能管理成本
 
@@ -234,7 +234,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 - **时间段** - 表示预算有效期。 仅当预算仍然有效时，系统才会主动监控预算并向你发出通知。
 - **通知**
   - 联系电子邮件 - 当预算累积成本且超过定义的阈值时，电子邮件地址会收到警报。
-  - 联系角色 - 在给定范围内具有匹配的 Azure RBAC 角色的所有用户都会收到带有此选项的电子邮件警报。 例如，订阅所有者可能会收到在订阅范围内创建的预算警报。
+  - 联系角色 - 在给定范围内具有匹配的 Azure 角色的所有用户都会收到带有此选项的电子邮件警报。 例如，订阅所有者可能会收到在订阅范围内创建的预算警报。
   - 联系人组 - 超出警报阈值时，预算将调用已配置的操作组。
 - **成本维度筛选器** - 可以通过成本分析或查询 API 进行的筛选，也可以对预算进行。 使用此筛选器，可以缩小对于预算要监视的成本范围。
 

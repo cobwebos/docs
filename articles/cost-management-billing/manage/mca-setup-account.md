@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682784"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371790"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
@@ -132,7 +132,7 @@ ms.locfileid: "88682784"
 
 ### <a name="user-access-to-azure-resources"></a>用户对 Azure 资源的访问权限
 
-在转换过程中，使用 Azure RBAC（基于角色的访问控制）设置的 Azure 资源访问权限不受影响。
+在转换期间，使用 Azure 基于角色的访问控制 (Azure RBAC) 设置的 Azure 资源访问权限不受影响。
 
 ### <a name="azure-reservations"></a>Azure 预留
 
@@ -225,7 +225,7 @@ ms.locfileid: "88682784"
 
 4. 在左侧选择“访问控制(IAM)”。 
 
-   ![显示转换后企业管理员访问权限的屏幕截图](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![一张屏幕截图，上面显示了转换后列为计费帐户所有者的企业管理员的访问权限。](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 企业管理员将作为计费帐户所有者列出，而拥有只读权限的企业管理员将作为计费帐户读取者列出。 如果你认为缺少了任何企业管理员的访问权限，可以在 Azure 门户中为其授予访问权限。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
@@ -241,7 +241,7 @@ ms.locfileid: "88682784"
 
 4. 在左侧选择“访问控制(IAM)”。 
 
-   ![显示转换后企业管理员访问权限的屏幕截图](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![一张屏幕截图，上面显示了转换后列为计费对象信息所有者的企业管理员的访问权限。](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 企业管理员将作为计费配置文件所有者列出，而拥有只读权限的企业管理员将作为计费配置文件读取者列出。 如果你认为缺少了任何企业管理员的访问权限，可以在 Azure 门户中为其授予访问权限。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 

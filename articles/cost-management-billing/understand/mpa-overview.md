@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 98941530ba0483e82f43af222e12df7439b6625e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688740"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447938"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft 合作伙伴协议计费帐户入门
 
@@ -55,7 +55,7 @@ Microsoft 合作伙伴协议的计费帐户包含开展业务时使用的每种�
 
 1. 在“成本管理 + 计费”  中进行搜索。
 
-   ![显示了 Azure 门户搜索的屏幕截图](./media/mpa-overview/search-cmb.png)
+   ![屏幕截图显示在 Azure 门户中搜索“成本管理 + 计费”。](./media/mpa-overview/search-cmb.png)
 
 1. 在左侧选择“客户”，然后从列表中选择一位客户。 
 

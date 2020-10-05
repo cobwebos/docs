@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326600"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
 
@@ -131,7 +131,7 @@ InPrivate 浏览如何？
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>我看到我的免费试用版帐户上产生了费用
 
-注册后，你可能会看到你的信用卡帐户上存在少量临时验证费用。 这一费用会在 3 到 5 天内被删除。 如果你为如何管理成本而担忧，请阅读有关[防止意外成本](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started)的详细信息。
+注册后，你可能会看到你的信用卡帐户上存在少量临时验证费用。 这一费用会在 3 到 5 天内被删除。 如果你为如何管理成本而担忧，请阅读有关[分析意外费用](../understand/analyze-unexpected-charges.md)的详细信息。
 
 ## <a name="agreement"></a>协议
 

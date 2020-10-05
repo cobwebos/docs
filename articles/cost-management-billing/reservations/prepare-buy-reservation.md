@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368713"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -123,7 +123,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 对于使用 EA 订阅的客户：
 
 - 通知只会发送到 EA 通知联系人。
-- 使用 RBAC (IAM) 权限添加到预留项的用户不会收到任何电子邮件通知。
+- 使用 Azure RBAC (IAM) 权限添加到预留项的用户不会收到任何电子邮件通知。
 
 对于使用单个订阅的客户：
 

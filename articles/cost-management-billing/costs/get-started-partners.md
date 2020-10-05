@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372249"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -22,7 +22,7 @@ Azure 成本管理原生可用于已将其客户加入 Microsoft 客户协议并
 
 就直接合作伙伴和间接提供商而言，全局管理员和管理员代理可以访问合作伙伴租户中的成本管理并以已开票的价格管理成本。
 
-经销商和客户可以访问客户租户中的成本管理并查看订阅的成本，其中成本是按零售价计算和显示的。 但是，他们必须对客户租户中的订阅具有 RBAC 访问权限才能查看成本。 提供商必须为客户租户启用成本可见性策略。
+经销商和客户可以访问客户租户中的成本管理并查看订阅的成本，其中成本是按零售价计算和显示的。 但是，他们必须对客户租户中的订阅具有 Azure RBAC 访问权限才能查看成本。 提供商必须为客户租户启用成本可见性策略。
 
 在 CSP 合作伙伴为其客户启用成本管理功能后，客户即可使用该功能。
 
@@ -55,13 +55,13 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 有关为计费帐户启用 Azure 成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。
 
-若要在订阅范围访问 Azure 成本管理，对某个订阅拥有 RBAC 访问权限的任何用户都可以查看零售（即用即付）费率的成本。 但是，必须[为客户租户启用成本可见性策略](#enable-the-policy-to-view-azure-usage-charges)。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
+若要在订阅范围访问 Azure 成本管理，对某个订阅拥有 Azure RBAC 访问权限的任何用户都可查看零售（即用即付）费率的成本。 但是，必须[为客户租户启用成本可见性策略](#enable-the-policy-to-view-azure-usage-charges)。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
 ## <a name="how-cost-management-uses-scopes"></a>成本管理如何使用范围
 
-你将在特定的范围内管理计费数据、获取特定于付款的角色、查看发票，以及执行常规的帐户管理。 对计费和帐户角色的管理独立于用于资源管理的范围（使用 RBAC）的管理。 为了明确区分不同范围的意图（包括访问控制的差异），我们分别将其称作计费范围和 RBAC 范围。
+你将在特定的范围内管理计费数据、获取特定于付款的角色、查看发票，以及执行常规的帐户管理。 对计费和帐户角色的管理独立于用于资源管理的范围（使用 Azure RBAC）的管理。 为了明确区分不同范围的意图（包括访问控制的差异），我们分别将其称作计费范围和 Azure RBAC 范围。
 
-若要了解计费范围和 RBAC 范围以及成本管理如何使用范围，请参阅[了解和使用范围](understand-work-scopes.md)。
+若要了解计费范围和 RBAC 范围，并了解成本管理如何使用范围，请参阅[了解和使用范围](understand-work-scopes.md)。
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>使用合作伙伴租户计费范围管理成本
 
@@ -116,9 +116,9 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>为客户租户订阅启用成本管理
 
-将客户加入 Microsoft 客户协议后，合作伙伴可以启用对成本管理的访问。 然后，合作伙伴可以启用某个策略，使客户能够查看其按即用即付零售价计算的 Azure 所消耗服务的成本。 将在 RBAC 订阅和资源组范围，以客户的计费货币根据其消耗用量显示成本。
+将客户加入 Microsoft 客户协议后，合作伙伴可以启用对成本管理的访问。 然后，合作伙伴可以启用某个策略，使客户能够查看其按即用即付零售价计算的 Azure 所消耗服务的成本。 将在 Azure RBAC 订阅和资源组范围，以客户的计费货币根据其消耗用量显示成本。
 
-合作伙伴启用成本可见性策略后，可通过 Azure 资源管理器访问订阅的任何用户都可以管理和分析按即用即付费率计算的成本。 对 Azure 订阅拥有相应 RBAC 访问权限的经销商和客户实际上可以查看成本。
+合作伙伴启用成本可见性策略后，可通过 Azure 资源管理器访问订阅的任何用户都可以管理和分析按即用即付费率计算的成本。 对 Azure 订阅拥有相应 Azure RBAC 访问权限的经销商和客户实际上可以查看成本。
 
 无论采用哪种策略，只要提供商的全局管理员和管理员代理具有对订阅和资源组的访问权限，他们就可以查看订阅成本。
 
@@ -149,9 +149,9 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 [![以客户身份查看成本分析](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
-将以基于即用即付费率的成本，提供订阅和资源组 RBAC 范围的成本分析、预算和警报。
+将以基于即用即付费率的成本，提供订阅和资源组 Azure RBAC 范围的成本分析、预算和警报。
 
-RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。 预留实例成本仅显示在购买时所在的计费范围内。
+Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。 预留实例成本仅显示在购买时所在的计费范围内。
 
 用于计算视图中显示的成本的零售价与适用于所有客户的 Azure 定价计算器中显示的价格相同。 显示的成本不包括合作伙伴可能具有的任何折扣或额度，例如“合作伙伴赚取的额度”、“分级折扣”和“全局服务折扣”。
 
@@ -159,7 +159,7 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 有权访问合作伙伴租户中的计费范围的合作伙伴可以在不同客户的成本分析中，浏览和分析特定客户或发票的开票成本。 在[成本分析](quick-acm-cost-analysis.md)视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)，以及将数据导出到 [CSV 和 PNG 文件](quick-acm-cost-analysis.md#download-usage-data)。
 
-有权访问客户租户中的订阅的 RBAC 用户还可以分析该客户租户中的订阅的零售成本、保存视图，以及将数据导出到 CSV 和 PNG 文件。
+有权访问客户租户中的订阅的 Azure RBAC 用户还可分析该客户租户中的订阅的零售成本、保存视图，并可将数据导出到 CSV 和 PNG 文件。
 
 可以使用成本分析中的筛选和分组依据功能来按多个字段分析成本。 下一部分将介绍特定于合作伙伴的字段。
 
@@ -223,8 +223,8 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 | costinBillingCurrency | 采用计费货币的 ExtendedCost 或混合税前成本。 | 空值 |
 | costinPricingCurrency | 与价格关联的采用定价货币的 ExtendedCost 或混合税前成本。 | 空值 |
 | **costinUSD** | 以美元为货币的估算 ExtendedCost 或混合税前成本。 | 空值 |
-| **paygCostInBillingCurrency** | 定价为零售价时显示成本。 以计费货币显示即用即付价格。 仅在 RBAC 范围适用。 | 空值 |
-| **paygCostInUSD** | 定价为零售价时显示成本。 以美元为货币显示即用即付价格。 仅在 RBAC 范围适用。 | 空值 |
+| **paygCostInBillingCurrency** | 定价为零售价时显示成本。 以计费货币显示即用即付价格。 仅在 Azure RBAC 范围适用。 | 空值 |
+| **paygCostInUSD** | 定价为零售价时显示成本。 以美元为货币显示即用即付价格。 仅在 Azure RBAC 范围适用。 | 空值 |
 | exchangeRate | 从定价货币转换为计费货币时使用的汇率。 | 在合作伙伴中心内称为 PCToBCExchangeRate。 定价货币兑换为计费货币的汇率。|
 | exchangeRateDate | 从定价货币转换为计费货币时使用的汇率的日期。 | 在合作伙伴中心内称为 PCToBCExchangeRateDat。 定价货币兑换为计费货币的汇率日期。|
 | isAzureCreditEligible | 指示该成本是否适合以 Azure 额度付款。 | 空值 |
@@ -262,7 +262,7 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 有权访问合作伙伴租户中的计费范围的合作伙伴可将其成本和使用情况数据导出到 Azure 存储 Blob。 该 Blob 必须位于合作伙伴租户的某个订阅中，且该订阅不是共享的服务订阅或客户的订阅。 若要启用成本数据导出，我们建议在合作伙伴租户中设置一个独立的即用即付订阅来托管导出的成本数据。 导出存储帐户将在即用即付订阅中托管的 Azure 存储 Blob 上创建。 根据伙伴创建导出时所在的范围，会定期自动将关联的数据导出到存储帐户。
 
-对订阅拥有 RBAC 访问权限的用户还可以将成本数据导出到客户租户的任何订阅中托管的 Azure 存储 Blob。
+对订阅拥有 Azure RBAC 访问权限的用户还可将成本数据导出到客户租户的任何订阅中托管的 Azure 存储 Blob。
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>在合作伙伴租户或客户租户中创建导出
 
@@ -276,7 +276,7 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 在合作伙伴租户中创建导出时，请选择合作伙伴租户中的即用即付订阅。 使用该订阅创建 Azure 存储帐户。
 
-对于客户租户中的 RBAC 用户，请选择客户租户中的订阅。 使用该订阅创建 Azure 存储帐户。
+对于客户租户中的 Azure RBAC 用户，请选择客户租户中的订阅。 使用该订阅创建 Azure 存储帐户。
 
 查看内容，然后选择“创建”以计划导出。
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683260"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447603"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -91,9 +91,9 @@ ms.locfileid: "88683260"
 
 1. 如果尚未创建管理组，请创建一个，并为其分配订阅。
 1. 在成本分析中，将范围设置为管理组，并选择“选择此管理组”。  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="显示“选择此管理组”选项的示例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="新导出示例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. 在范围内创建导出，获取管理组中订阅的成本管理数据。  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="显示具有管理组范围的“新建导出”选项的示例":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="新导出示例":::
 
 ## <a name="verify-that-data-is-collected"></a>验证是否已收集数据
 
@@ -128,11 +128,11 @@ ms.locfileid: "88683260"
 
 你可以通过在导出列表页中选择单个导出来查看计划导出的运行历史记录。 导出列表页还提供了快速访问，可查看先前、下次以及将来导出的运行时间。 下面是显示运行历史记录的示例。
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="显示导出运行历史记录的示例":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="新导出示例":::
 
 选择导出以查看其运行历史记录。
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="显示导出运行历史记录的示例":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="新导出示例":::
 
 ## <a name="access-exported-data-from-other-systems"></a>从其他系统访问导出的数据
 

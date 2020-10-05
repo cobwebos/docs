@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594316"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597374"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -77,8 +77,9 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 
 你还可以控制对依赖于 Azure AD 安全组或 Microsoft 365 组的其他资源的访问权限。  例如：
 
-- 可以通过在访问包中使用 Azure AD 安全组，并为该组配置[基于组的许可](../users-groups-roles/licensing-groups-assign.md)，为用户提供 Microsoft 365 许可证
-- 可以通过在访问包中使用 Azure AD 安全组，并为该组创建 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)，为用户提供管理 Azure 资源的权限
+- 可以通过在访问包中使用 Azure AD 安全组，并为该组配置[基于组的许可](../users-groups-roles/licensing-groups-assign.md)，为用户提供 Microsoft 365 许可证。
+- 可以通过在访问包中使用 Azure AD 安全组，并为该组创建 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)，为用户提供管理 Azure 资源的权限。
+- 可以使用可分配到访问包中 Azure AD 角色的组并向[该组分配 Azure AD 角色](../users-groups-roles/roles-groups-assign-role.md)，从而授予用户管理 Azure AD 角色的访问权限。
 
 ## <a name="how-do-i-control-who-gets-access"></a>如何控制谁获得访问权限？
 
@@ -161,7 +162,7 @@ Azure AD External Identities（来宾用户）定价基于月度活动用户数 
 
 下面是一些许可证场景示例，可帮助你确定必须拥有的许可证数量。
 
-| 场景 | 计算 | 许可证数量 |
+| 方案 | 计算 | 许可证数量 |
 | --- | --- | --- |
 | Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 150 名员工请求了访问包。 | 可以请求访问包的 2000 名员工 | 2,000 |
 | Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 另一个策略指定，来自“合作伙伴 Contoso 用户”（来宾）的某些用户可以经批准请求相同的访问包。 Contoso 有 30000 名用户。 150 名员工请求访问包，来自 Contoso 的 10500 名用户请求访问权限。 | 2000 名员工 + 比率超过 1:5 的来自 Contoso 的 500 名来宾用户 (10,500 - (2,000 * 5)) | 2,500 |

@@ -1,24 +1,26 @@
 ---
 title: 快速入门：使用示例标记工具 - 表单识别器来标记表单、训练模型和分析表单
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用表单识别器示例标记工具来手动标记表单文档。 然后，将通过带标记的文档来训练自定义模型，并使用该模型来提取键/值对。
+description: 在本快速入门中，你将使用表单识别器示例标记工具来手动标记表单文档。 然后，将通过带标记的文档来训练自定义文档处理模型，并使用该模型来提取键/值对。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: 文档处理
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418953"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597745"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
-在本快速入门中，将示例标记工具和表单识别器 REST API 结合使用，通过手动标记的数据训练自定义模型。 有关此功能的详细信息，请参阅概述的[通过标签进行训练](../overview.md#train-with-labels)部分。
+在本快速入门中，将示例标记工具和表单识别器 REST API 结合使用，通过手动标记的数据训练自定义文档处理模型。 如需详细了解如何使用表单识别器进行受监督的学习，请参阅概述的[通过标签进行训练](../overview.md#train-with-labels)部分。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
@@ -137,7 +139,7 @@ ms.locfileid: "89418953"
 * **API 密钥** - 表单识别器订阅密钥。
 * **说明** -（可选）项目说明
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="示例标记工具上的“新建项目”页面。":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="示例标记工具的连接设置。":::
 
 ## <a name="label-your-forms"></a>标记表单
 
@@ -153,7 +155,7 @@ ms.locfileid: "89418953"
 
 它还将显示已自动提取的表。 单击文档左侧的表/网格图标可查看提取的表。 在本快速入门中，由于表内容是自动提取的，因此我们不会对表内容进行标记，而是依靠自动提取。
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="示例标记工具中的表可视化效果。":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="示例标记工具的连接设置。":::
 
 ### <a name="apply-labels-to-text"></a>将标签应用于文本
 
@@ -199,7 +201,7 @@ ms.locfileid: "89418953"
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="示例标记工具的主编辑器窗口。":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="示例标记工具的连接设置。":::
 
 
 按照上述步骤标记至少五个窗体。
@@ -254,7 +256,7 @@ ms.locfileid: "89418953"
 * 标记列表，以及每个标记的估计准确度。
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="训练视图。":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="示例标记工具的连接设置。":::
 
 训练完成后，检查“平均准确度”值。 如果该值较低，应添加更多输入文档，并重复上述步骤。 已标记的文档将保留在项目索引中。
 
@@ -273,7 +275,7 @@ ms.locfileid: "89418953"
 
 若要在示例标记工具中组合模型，请单击左侧的模型组合（合并箭头）图标。 在左侧，选择要组合在一起的模型。 带有箭头图标的模型是已组合的模型。 单击“组合”按钮。 在弹出窗口中，为新的组合模型命名，然后单击“组合”。 操作完成后，新的组合模型应出现在列表中。 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="模型组合 UX 视图。":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="示例标记工具的连接设置。":::
 
 ---
 
@@ -306,7 +308,10 @@ ms.locfileid: "89418953"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用表单识别器示例标记工具通过手动标记的数据来训练模型。 如果想要将标记工具集成到自己的应用程序中，请使用处理标记数据训练的 REST API。
+本快速入门介绍了如何使用表单识别器示例标记工具通过手动标记的数据来训练模型。 如果要构建自己的实用工具来标记训练数据，请使用用于处理标记数据训练的 REST API。
 
 > [!div class="nextstepaction"]
 > [使用 Python 通过标签进行训练](./python-labeled-data.md)
+
+* [什么是表单识别器？](../overview.md)
+* [表单识别器客户端库快速入门](client-library.md)

@@ -1,6 +1,6 @@
 ---
 title: 获取 Microsoft 合作伙伴协议 (MPA) 的 Azure 订阅的计费所有权
-description: 了解如何从其他用户请求 Azure 订阅的计费所有权。
+description: 了解如何针对 Microsoft 合作伙伴协议 (MPA) 从其他用户请求 Azure 订阅的计费所有权。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371008"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 
@@ -35,7 +35,7 @@ ms.locfileid: "88684943"
 
 1. 使用 CSP 租户中的 CSP 管理员代理凭据登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索“成本管理 + 计费”。  
-    ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mpa-request-ownership/search-cmb.png)
+    ![显示在 Azure 门户中搜索“成本管理 + 计费”来请求计费所有权的屏幕截图。](./media/mpa-request-ownership/search-cmb.png)
 1. 在左侧选择“客户”，然后从列表中选择一位客户。  
     [![屏幕截图，显示正在选择客户](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. 选择左下角的“转移请求”，然后选择“添加新请求”。  
@@ -56,7 +56,7 @@ ms.locfileid: "88684943"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索“成本管理 + 计费”。  
-    ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![显示在 Azure 门户中搜索“成本管理 + 计费”来请求转移状态的屏幕截图。](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. 在左侧选择“客户”。  
     [![屏幕截图，显示正在选择客户](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. 从列表中选择已为其发送转移请求的客户。
@@ -127,7 +127,7 @@ Azure 预留项不会随订阅一起自动移动。 可以在其他订阅的 EA 
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
-在转换期间，使用 [Azure RBAC（基于角色的访问控制）](../../role-based-access-control/overview.md)为现有用户、组或服务主体分配的访问权限不受影响。 合作伙伴不会获得对订阅的任何新 RBAC 访问权限。
+在转换期间，使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 为现有用户、组或服务主体分配的访问权限不受影响。 合作伙伴不会获得对订阅的任何新的 Azure RBAC 访问权限。
 
 合作伙伴应协助客户获取对订阅的访问权限。 合作伙伴需获取[代表管理员 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) 访问权限才能开具支持票证。
 
@@ -174,4 +174,4 @@ SaaS 产品不会随订阅一起转移。 请让用户[联系 Azure 支持人员
 ## <a name="next-steps"></a>后续步骤
 
 * Azure 订阅的计费所有权现已转移给你。 可在 [Azure 门户](https://portal.azure.com)中跟踪这些订阅的费用。
-* 协助客户获取对已转移的 Azure 订阅的访问权限。 [使用 RBAC 管理对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+* 协助客户获取对已转移的 Azure 订阅的访问权限。 [使用 Azure 门户添加或删除 Azure 角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。

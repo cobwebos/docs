@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 27073cb7cbd78183e519290c676c2499700b0cca
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371909"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -175,7 +175,7 @@ Azure Enterprise 用户的身份验证类型可以从 Microsoft 帐户（MSA 或
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>每个订阅可以有多少个 Azure 帐户所有者？
 
-每个订阅只允许有一个帐户所有者。  可以使用 [Azure 门户](https://portal.azure.com)页面左上角的订阅选项卡中“基于角色的访问”或“访问控制 (IAM)”来添加其他角色。
+每个订阅只允许有一个帐户所有者。  可使用 [Azure 门户](https://portal.azure.com)页面左上角的订阅选项卡中 Azure 基于角色的访问控制 (Azure RBAC) 来添加其他角色。
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>可以在多个部门下列出同一个 Azure 帐户所有者吗？
 
@@ -191,7 +191,7 @@ Azure 帐户所有者可以创建和管理无限多的订阅。
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>我如何访问/查看组织的所有订阅？
 
-如今必须通过策略完成此操作；也就是说，你需要要求对于创建的每个订阅，都使用基于角色的访问将帐户添加到某个订阅角色。
+如今必须通过策略完成此操作；也就是说，你需要要求对于创建的每个订阅，都使用 Azure 基于角色的访问控制 (Azure RBAC) 将帐户添加到某个订阅角色。
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>去何处创建订阅？
 

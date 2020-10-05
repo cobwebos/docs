@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683294"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447703"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure 门户中的帐户管理员任务
 
@@ -35,14 +35,14 @@ ms.locfileid: "88683294"
 
 1. 在“我的订阅”列表中，选择要向其添加信用卡的订阅  。
 
-   ![显示我的订阅网格概览的屏幕截图](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![屏幕截图显示“成本管理 + 计费”页面，你可在此处选择订阅。](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > 如果在此处未看到你的某些订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
 
 1. 选择“付款方式”。 
 
-    ![显示选定的付款方式边栏选项卡的屏幕截图。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![屏幕截图显示付款方式页面，你可在此处添加付款方式。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 你可以在此添加新的信用卡，更改有效付款方式，编辑信用卡详细信息以及删除信用卡。
 
@@ -100,7 +100,7 @@ ms.locfileid: "88683294"
 
 1. 在命令栏中选择“使用发票付款”  。
 
-    ![显示选定的付款方式边栏选项卡的屏幕截图。](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![屏幕截图显示已选择“按发票付款”的付款方式页面。](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. 为发票付款方法输入地址。
 1. 单击“下一步”。 
@@ -124,7 +124,7 @@ Azure 中的支出限制可以防止支出超过额度金额。 只要 Azure 订
 
 1. 在“我的订阅”列表中，选择自己的 Visual Studio Enterprise 订阅  。
 
-   ![显示我的订阅网格概览的屏幕截图](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![屏幕截图显示“我的订阅”区域，你可在此处选择你的 Visual Studio Enterprise 订阅。](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > 如果在此处未看到你的某些 Visual Studio 订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
@@ -152,7 +152,7 @@ Azure 中的支出限制可以防止支出超过额度金额。 只要 Azure 订
 
 1. 在“我的订阅”列表中，选择自己的 Azure 开放许可订阅  。
 
-    ![显示我的订阅网格概览的屏幕截图](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![屏幕截图显示“我的订阅”区域，你可在此处选择你的 Azure 开放式许可订阅。](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > 如果在此处未看到你的订阅，则可能是因为你在某个时间点更改了其目录。 你需要将订阅的目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
@@ -183,4 +183,4 @@ Azure 中的支出限制可以防止支出超过额度金额。 只要 Azure 订
 我们不支持虚拟卡或预付卡。 如果在添加或更新有效信用卡时遇到错误，请尝试以无痕模式打开浏览器。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解如何[在 Azure 门户中分析和预防预料之外的费用](getting-started.md)
+- 详细了解[分析意外费用](../understand/analyze-unexpected-charges.md)

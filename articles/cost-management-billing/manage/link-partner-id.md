@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371824"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -151,9 +151,9 @@ C:\ az managementpartner delete --partner-id 12345
 
 由于以下原因，无法在报告中看到客户
 
-1. 链接的用户帐户对任何客户 Azure 订阅或资源都没有[基于角色的访问权限](https://docs.microsoft.com/azure/role-based-access-control/overview)。
+1. 链接的用户帐户对任何客户 Azure 订阅或资源都没有 [Azure 基于角色的访问权限 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
-2. 用户对其具有[基于角色的访问权限](https://docs.microsoft.com/azure/role-based-access-control/overview)的 Azure 订阅没有任何使用情况。
+2. 用户对其具有 [Azure 基于角色的访问权限 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 的 Azure 订阅没有任何使用。
 
 **链接合作伙伴 ID 是否适用于 Azure Stack？**
 

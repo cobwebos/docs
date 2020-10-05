@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: c4d328d2e2ef562813bcb529c104b3559f03066e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371892"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 传输
 
@@ -101,13 +101,13 @@ Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所�
 
 将 Azure 订阅转移到同一 Azure Active Directory 租户中的某个帐户后，以前拥有 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将保留其访问权限。
 
-若要查看哪些用户对订阅拥有 RBAC 访问权限：
+若要查看哪些用户对订阅拥有 Azure RBAC 访问权限：
 
 1. 在 Azure 门户中，打开 **订阅**。
 2. 选择要查看的订阅，然后选择“访问控制(IAM)”。
-3. 选择“角色分配”。 角色分配页将列出对订阅拥有 RBAC 访问权限的所有用户。
+3. 选择“角色分配”。 角色分配页面列出了对订阅拥有 Azure RBAC 访问权限的所有用户。
 
-如果将订阅转移到了不同 Azure AD 租户中的某个帐户，则以前拥有 [RBAC](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将失去其访问权限。 尽管失去了 RBAC 访问权限，但他们可以通过安全机制来访问订阅，这些机制包括：
+如果将订阅转移到了不同 Azure AD 租户中的某个帐户，则之前拥有 [Azure RBAC](../../role-based-access-control/overview.md) 权限，可管理资源的所有用户、组和服务主体将失去其访问权限。 尽管失去了 Azure RBAC 访问权限，但他们可通过安全机制来访问订阅，这些机制包括：
 
 - 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../../cloud-services/cloud-services-certs-create.md)。
 - 存储空间等服务的访问密钥。 有关详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。

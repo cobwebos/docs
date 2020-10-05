@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4adb3bb1408357d40e3869c2a0d251b11d015195
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689518"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447540"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>教程：查看 Microsoft 客户协议发票
 
@@ -47,7 +47,7 @@ ms.locfileid: "88689518"
 
 在 Azure 门户中，在搜索框中键入“成本管理 + 计费”  ，然后选择“成本管理 + 计费”  。
 
-![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
+![屏幕截图显示在 Azure 门户中搜索“成本管理 + 计费”。](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
 
 如果仅有权访问一个计费范围，请从左侧选择“属性”  。 如果计费帐户类型为“Microsoft 客户协议”  ，则有权访问 Microsoft 客户协议的计费帐户。
 
@@ -106,7 +106,7 @@ ms.locfileid: "88689518"
 
 费用部分将显示本月至今累计费用，以及上个月的费用。
 
-![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![屏幕截图显示计费对象信息摘要。](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 本月至今累计费用是当前月份的未结费用，将在生成当月的发票时计收。 如果上个月的发票仍未生成，则上个月的费用也是未结的，将显示在下一份发票中。
 
@@ -138,7 +138,7 @@ ms.locfileid: "88689518"
 
 Azure 订阅页将显示计费配置文件中每个订阅的当月费用和上个月费用。 本月至今累计费用是当前月份的未结费用，将在生成当月的发票时计收。 如果上个月的发票仍未生成，则上个月的费用也是未结的。
 
-![显示计费配置文件的 Azure 订阅列表的屏幕截图](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![屏幕截图显示带有本月至今费用和上个月的费用的订阅。](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>分析 Azure 使用费
 
@@ -172,7 +172,7 @@ Azure 订阅页将显示计费配置文件中每个订阅的当月费用和上�
 
 下图显示了 Azure 门户中的订阅列表。
 
-![显示计费配置文件的 Azure 订阅列表的屏幕截图](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![屏幕截图显示 Azure 门户中的订阅列表，其中一个订阅被调出。](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 将 Azure 使用情况和费用 CSV 文件中的“subscriptionName”列筛选为“WA_Subscription”，以查看 WA_Subscription 的详细使用费。  
 
