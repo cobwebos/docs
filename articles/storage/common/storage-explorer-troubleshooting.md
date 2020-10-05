@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534849"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714458"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -21,13 +21,13 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 本指南汇总了存储资源管理器中常见问题的解决方法。
 
-## <a name="rbac-permissions-issues"></a>RBAC 权限问题
+## <a name="azure-rbac-permissions-issues"></a>Azure RBAC 权限问题
 
-使用基于角色的访问控制 [(RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 可以通过将权限集组合成角色，来对 Azure 资源进行精细的访问管理。 下面是在存储资源管理器中以最佳方式使用 RBAC 的一些策略。
+Azure 基于角色的访问控制 [AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 可通过将权限集组合到 _角色_中来实现对 azure 资源的高粒度访问管理。 下面是用于在存储资源管理器中以最佳方式使用 Azure RBAC 的一些策略。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>如何在存储资源管理器中访问我的资源？
 
-如果你在通过 RBAC 访问存储资源时遇到问题，原因可能是你尚未获得相应的角色。 以下部分介绍了存储资源管理器目前要求提供哪些权限来访问存储资源。 如果你不确定自己是否拥有相应的角色或权限，请联系 Azure 帐户管理员。
+如果通过 Azure RBAC 访问存储资源时遇到问题，可能是因为没有为你分配适当的角色。 以下部分介绍了存储资源管理器目前要求提供哪些权限来访问存储资源。 如果你不确定自己是否拥有相应的角色或权限，请联系 Azure 帐户管理员。
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>“读取：列出/获取存储帐户”权限问题
 
@@ -48,7 +48,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 Azure 存储提供两个访问层：“管理”和“数据”。  订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
 
-Azure 角色可以向你授予管理或数据层访问权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
+Azure 角色可以授予你进行管理或数据层访问的权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
 
 严格地讲，“读取者”角色不提供数据层的权限，并非一定要有该角色才能访问数据层。
 
@@ -65,9 +65,9 @@ Azure 角色可以向你授予管理或数据层访问权限。 例如，“读�
 3. 选择与要连接到的资源关联的用户帐户和租户。 单击“下一步”。
 4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 单击“下一步”。 单击“连接”。
 
-目前，对于其他资源类型，我们尚未制定与 RBAC 相关的解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+对于其他资源类型，目前还没有 Azure RBAC 相关解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
-### <a name="recommended-azure-built-in-roles"></a>推荐的 Azure 内置角色
+### <a name="recommended-azure-built-in-roles"></a>建议的 Azure 内置角色
 
 有几个 Azure 内置角色可以提供使用存储资源管理器所需的权限。 其中一些角色是：
 - [所有者](/azure/role-based-access-control/built-in-roles#owner)：管理所有内容，包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
@@ -134,7 +134,7 @@ Azure 角色可以向你授予管理或数据层访问权限。 例如，“读�
 
 ### <a name="conditional-access"></a>条件性访问
 
-由于存储资源管理器使用的 Azure AD 库中的限制，在 Windows 10、Linux 或 macOS 上使用存储资源管理器时不支持条件访问。
+由于存储资源管理器使用的 Azure AD 库中存在限制，在 Windows 10、Linux 或 macOS 上使用存储资源管理器时，不支持条件访问。
 
 ## <a name="mac-keychain-errors"></a>Mac 密钥链错误
 
@@ -166,7 +166,7 @@ Azure 角色可以向你授予管理或数据层访问权限。 例如，“读�
 如果成功登录后无法检索订阅，请尝试以下故障排除方法：
 
 * 验证你的帐户是否有权访问所需的订阅。 可以通过登录到尝试使用的 Azure 环境的门户，来验证是否能够访问这些订阅。
-* 请确保已通过正确的 Azure 环境（Azure、Azure 中国世纪互联、Azure 德国、Azure 美国政府或自定义环境）登录。
+* 请确保已通过正确的 Azure 环境 (Azure、Azure 中国世纪互联、Azure 德国、Azure 美国政府或自定义环境) 登录。
 * 如果使用代理服务器，请确保已正确配置存储资源管理器代理。
 * 尝试删除并重新添加帐户。
 * 如果有“更多信息”链接，请检查针对失败的租户报告的错误消息。 如果你不确定如何处理错误消息，请随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。

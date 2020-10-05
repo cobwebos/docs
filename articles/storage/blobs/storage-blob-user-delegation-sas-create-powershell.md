@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 781d76cb80dd375c54d1283ecf27f543765f5ddb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077018"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714528"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>使用 PowerShell 为容器或 blob 创建用户委托 SAS
 
@@ -75,9 +75,9 @@ Connect-AzAccount
 
 有关如何在 PowerShell 中登录的详细信息，请参阅 [登录 Azure PowerShell](/powershell/azure/authenticate-azureps)。
 
-## <a name="assign-permissions-with-rbac"></a>通过 RBAC 分配权限
+## <a name="assign-permissions-with-azure-rbac"></a>向 Azure RBAC 分配权限
 
-若要从 Azure PowerShell 创建用户委托 SAS，必须为用于登录 PowerShell 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey** 操作的角色。 此权限允许 Azure AD 帐户请求 *用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey** 操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。 有关创建用户委托 SAS 的 RBAC 权限的详细信息，请参阅[创建用户委托 sas](/rest/api/storageservices/create-user-delegation-sas)中的**使用 rbac 分配权限**部分。
+若要从 Azure PowerShell 创建用户委托 SAS，必须为用于登录 PowerShell 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey** 操作的角色。 此权限允许 Azure AD 帐户请求 *用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey** 操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。 有关创建用户委托 SAS 的 Azure RBAC 权限的详细信息，请参阅[创建用户委托 sas](/rest/api/storageservices/create-user-delegation-sas)中的**使用 azure rbac 分配权限**部分。
 
 如果你没有足够的权限将 Azure 角色分配到 Azure AD 安全主体，你可能需要要求帐户所有者或管理员分配必要的权限。
 

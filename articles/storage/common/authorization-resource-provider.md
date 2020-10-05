@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3d0ef8a8641c3814fa7c9964786a7f24f5e54a01
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 162aa0c382ec22f946d20299fbb990b92481518f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534934"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714698"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 存储资源提供程序访问管理资源
 
@@ -26,15 +26,15 @@ Azure 资源管理器是 Azure 的部署和管理服务。 Azure 存储资源提
 
 Microsoft 提供了两个用于处理 Azure 存储资源的 REST Api。 这些 API 构成了可对 Azure 存储执行的所有操作的基础。 使用 Azure 存储 REST API 可以处理存储帐户中的数据，包括 Blob、队列、文件和表数据。 使用 Azure 存储资源提供程序 REST API 可以处理存储帐户和相关的资源。
 
-读取或写入 Blob 数据的请求所需的权限不同于执行管理操作的请求。 RBAC 为两种类型的资源提供精细的权限控制。 向安全主体分配 Azure 角色时，请确保你了解将授予主体的权限。 有关说明与每个 Azure 内置角色关联的操作的详细参考信息，请参阅[azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+读取或写入 Blob 数据的请求所需的权限不同于执行管理操作的请求。 Azure RBAC 提供对这两种类型资源的权限的精细控制。 向安全主体分配 Azure 角色时，请确保了解要向主体授予的权限。 有关与每个 Azure 内置角色关联的操作的详细参考，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
-Azure 存储支持使用 Azure AD 来授权对 Blob 和队列存储的请求。 有关 blob 和队列数据操作的 Azure 角色的信息，请参阅[使用 Active Directory 授予对 blob 和队列的访问权限](storage-auth-aad.md)。
+Azure 存储支持使用 Azure AD 来授权对 Blob 和队列存储的请求。 有关用于 Blob 和队列数据操作的 Azure 角色的信息，请参阅[使用 Active Directory 授权访问 Blob 和队列](storage-auth-aad.md)。
 
-## <a name="assign-management-permissions-with-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC) 分配管理权限
+## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>使用 azure RBAC)  (基于角色的访问控制分配管理权限
 
-每个 Azure 订阅都有一个用于管理用户、组和应用程序的关联 Azure Active Directory。 在 [Microsoft 标识平台](/azure/active-directory/develop/)的上下文中，用户、组或应用程序也称为安全主体。 可以使用基于角色的访问控制 (RBAC) 向 Active Directory 中定义的安全主体授予对订阅中资源的访问权限。
+每个 Azure 订阅都有一个用于管理用户、组和应用程序的关联 Azure Active Directory。 在 [Microsoft 标识平台](/azure/active-directory/develop/)的上下文中，用户、组或应用程序也称为安全主体。 可以使用 Azure RBAC)  (azure 基于角色的访问控制，向在 Active Directory 中定义的安全主体授予对资源的访问权限。
 
-向安全主体分配 Azure 角色时，还会指示角色授予的权限生效的作用域。 对于管理操作，可以在订阅、资源组或存储帐户级别分配角色。 可以使用[Azure 门户](https://portal.azure.com/)、 [Azure CLI 工具](../../cli-install-nodejs.md)、 [PowerShell](/powershell/azure/)或[Azure 存储资源提供程序 REST API](/rest/api/storagerp)将 azure 角色分配到安全主体。
+向安全主体分配某个 Azure 角色时，还需要指明该角色授予的权限在哪个范围生效。 对于管理操作，可以在订阅、资源组或存储帐户级别分配角色。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../../cli-install-nodejs.md)、[PowerShell](/powershell/azure/) 或 [Azure 存储资源提供程序 REST API](/rest/api/storagerp) 向安全主体分配 Azure 角色。
 
 有关详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md) 和[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
@@ -57,7 +57,7 @@ Azure 提供用于授权调用管理操作的内置角色。 Azure 存储还提�
 
 ### <a name="custom-roles-for-management-operations"></a>用于管理操作的自定义角色
 
-Azure 还支持定义用于访问管理资源的 Azure 自定义角色。 有关自定义角色的详细信息，请参阅[Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
+Azure 还支持定义用于访问管理资源的 Azure 自定义角色。 有关自定义角色的详细信息，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
 
 ## <a name="code-samples"></a>代码示例
 

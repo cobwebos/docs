@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988189"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566682"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -31,7 +31,7 @@ ms.locfileid: "90988189"
 此版本添加了两个新的 Cosmos 模拟器启动选项： 
 
 * “/EnablePreview”- 它启用模拟器的预览功能。 预览功能仍处于开发阶段，可通过 CI 和示例编写进行访问。
-* “/EnableAadAuthentication”- 它允许模拟器接受自定义 Azure Active Directory 令牌作为 Azure Cosmos 主密钥的替代项。 此功能仍处于开发阶段；当前不支持特定的角色分配和其他与权限相关的设置。
+* “/EnableAadAuthentication”- 它允许模拟器接受自定义 Azure Active Directory 令牌作为 Azure Cosmos 主键的替代项。 此功能仍处于开发阶段；当前不支持特定的角色分配和其他与权限相关的设置。
 
 ### <a name="2112-07-july-2020"></a>2.11.2（2020 年 7 月 7 日）
 

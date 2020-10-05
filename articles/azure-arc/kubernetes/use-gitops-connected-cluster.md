@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 将 GitOps 用于启用了 Azure Arc 的群集配置（预览版）
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, containers
-ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541622"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714177"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在启用了 Arc 的 Kubernetes 群集 () 预览中使用 GitOps 部署配置
 
@@ -23,7 +23,7 @@ GitOps 是在 Git 存储库中声明所需状态的 Kubernetes 配置 (部署、
 
 `config-agent`群集中运行的负责在启用了 Azure Arc 的 Kubernetes 资源上监视新的或更新的 `sourceControlConfiguration` 扩展资源，部署 flux 运算符来查看 Git 存储库，以及传播对的任何更新 `sourceControlConfiguration` 。 甚至可以 `sourceControlConfiguration` `namespace` 在启用了同一个 Azure Arc Kubernetes 群集的范围内创建多个资源，以实现多租户。 在这种情况下，每个运算符只能将配置部署到其各自的命名空间。
 
-Git 存储库可以包含任何有效的 Kubernetes 资源，包括命名空间、ConfigMap、部署、Daemonset 等。它还可能包含用于部署应用程序的 Helm 图表。 一组常见的场景包括为组织定义基线配置，其中可能包括常见的 RBAC 角色和绑定、监视或日志记录代理或者群集范围的服务。
+Git 存储库可以包含任何有效的 Kubernetes 资源，包括命名空间、ConfigMap、部署、Daemonset 等。它还可能包含用于部署应用程序的 Helm 图表。 一组常见的方案包括为你的组织定义基线配置，其中可能包括常见的 Azure 角色和绑定、监视或日志记录代理或群集范围内的服务。
 
 可以使用相同的模式来管理更大的群集集合，这些群集可能会在异类环境中进行部署。 例如，你可能具有一个存储库，该存储库为组织定义基线配置，并一次性将其应用于数十个 Kubernetes 群集。 [Azure 策略可以](use-azure-policy.md) 在 `sourceControlConfiguration` (订阅或资源组) 的作用域下，使用一组特定的参数在所有启用了 Azure Arc 的 Kubernetes 资源上自动创建。
 

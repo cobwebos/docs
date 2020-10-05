@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a30ab4136b1d54e852ddb8fe3d0ed9a4e2bc9149
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03f996f1105601dc46c81fa1a874816913e80633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485934"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716056"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -94,7 +94,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 - 资源组
 - 订阅
 
-若要了解如何验证和分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要了解如何验证和分配角色，请参阅 [使用 Azure 门户分配 Azure 角色以访问 blob 和队列数据](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 请记住，Azure 角色分配可能需要最多五分钟的时间进行传播。

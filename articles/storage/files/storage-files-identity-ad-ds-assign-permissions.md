@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320347"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716033"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>第二部分：向标识分配共享级权限
 
@@ -52,7 +52,7 @@ ms.locfileid: "91320347"
 
 ### <a name="powershell"></a>PowerShell
 
-以下 PowerShell 示例演示了如何基于登录名将 Azure 角色分配到 Azure AD 标识。 有关使用 PowerShell 分配 Azure 角色的详细信息，请参阅 [使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
+以下 PowerShell 示例演示了如何基于登录名将 Azure 角色分配到 Azure AD 标识。 有关使用 PowerShell 分配 Azure 角色的详细信息，请参阅 [使用 Azure PowerShell 模块添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-powershell.md)。
 
 在运行下面的示例脚本之前，请将占位符值（包括括号）替换为你的值。
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-以下 CLI 2.0 命令将基于登录名将 Azure 角色分配到 Azure AD 标识。 有关将 Azure 角色分配到 Azure CLI 的详细信息，请参阅 [使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。 
+以下 CLI 2.0 命令将基于登录名将 Azure 角色分配到 Azure AD 标识。 有关将 Azure 角色分配到 Azure CLI 的详细信息，请参阅 [使用 Azure CLI 添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-cli.md)。 
 
 在运行以下示例脚本之前，请记得将占位符值（包括括号）替换为自己的值。
 

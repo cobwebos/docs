@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228267"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715151"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure 存储的 azure 安全基线
 
@@ -280,7 +280,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： Azure AD 具有内置角色，必须显式分配这些角色并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。 
+**指南**：Azure AD 具有必须显式分配且可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。 
 
 - [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -380,13 +380,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 提供基于角色的访问控制 (RBAC)，用于精细地控制客户端对存储帐户中资源的访问权限。  尽可能使用 Azure AD 凭据作为最佳安全方案，而不是使用帐户密钥，这样会更容易受到威胁。 当应用程序设计要求使用共享访问签名来访问 Blob 存储时，请使用 Azure AD 凭据创建用户委派共享访问签名 (SAS) ，以便实现高安全性。
+**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure 为 azure RBAC) 提供 Azure 基于角色的访问 (控制，以精细控制客户端对存储帐户中资源的访问权限。  尽可能使用 Azure AD 凭据作为最佳安全方案，而不是使用帐户密钥，这样会更容易受到威胁。 当应用程序设计要求使用共享访问签名来访问 Blob 存储时，请使用 Azure AD 凭据创建用户委派共享访问签名 (SAS) ，以便实现高安全性。
 
 - [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [使用 Azure 存储资源提供程序访问管理资源](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [如何在 Azure 门户中使用 RBAC 配置对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [如何使用 Azure RBAC 在 Azure 门户中配置对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [授予访问 Azure 存储中的数据的权限](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -478,7 +478,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指南**：针对各个安全域（如环境、数据敏感度）使用单独的订阅、管理组和存储帐户实现隔离。  你可以根据所用网络的类型和子集限制存储帐户，以控制对你的应用程序和企业环境所需的存储帐户的访问级别。 配置网络规则后，仅通过指定网络组请求数据的应用程序才能访问存储帐户。 可以通过 Azure AD RBAC 来控制对 Azure 存储的访问。 你还可以配置专用终结点以提高安全，因为虚拟网络与服务之间的流量通过 Microsoft 主干网络进行遍历，从而消除了公共 Internet 的泄露。 
+**指南**：针对各个安全域（如环境、数据敏感度）使用单独的订阅、管理组和存储帐户实现隔离。  你可以根据所用网络的类型和子集限制存储帐户，以控制对你的应用程序和企业环境所需的存储帐户的访问级别。 配置网络规则后，仅通过指定网络组请求数据的应用程序才能访问存储帐户。 可以通过 Azure RBAC 控制对 Azure 存储的访问。 你还可以配置专用终结点以提高安全，因为虚拟网络与服务之间的流量通过 Microsoft 主干网络进行遍历，从而消除了公共 Internet 的泄露。 
 
 - [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -534,13 +534,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**： Azure Active Directory (Azure AD) 通过基于角色的访问控制 (RBAC) 来授予对受保护资源的访问权限。 Azure 存储定义了一组内置的 Azure 角色，它们包含用于访问 Blob 或队列数据的通用权限集。 
+**指南**： Azure Active Directory (Azure AD) 通过 azure RBAC (的 azure 基于角色的访问控制授予对受保护资源的访问权限。 Azure 存储定义了一组内置的 Azure 角色，它们包含用于访问 Blob 或队列数据的通用权限集。 
 
 - [如何为 Azure 存储帐户分配 Azure 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [使用 Azure 存储资源提供程序访问管理资源](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [如何在 Azure 门户中使用 RBAC 配置对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [如何使用 Azure RBAC 在 Azure 门户中配置对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [如何创建和配置 AAD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -560,7 +560,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指南**：已为所有存储帐户启用 Azure 存储加密，因此无法将其禁用。 将数据保存到云时，Azure 存储会自动加密数据。 从 Azure 存储读取数据时，Azure 存储会在返回数据之前将其解密。 利用 Azure 存储加密，无需修改代码或将代码添加到任何应用程序，即可保护静态数据。 
+**指南**：已为所有存储帐户启用 Azure 存储加密，因此无法将其禁用。 在数据保存到云时，Azure 存储会自动加密数据。 从 Azure 存储读取数据时，Azure 存储会在返回数据之前将其解密。 利用 Azure 存储加密，无需修改代码或将代码添加到任何应用程序，即可保护静态数据。 
 
 - [了解静态 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 

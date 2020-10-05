@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ea818cd14e6052da2bbcf2a4473e95c68cd5e4a9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671297"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713048"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>诊断 Azure Key Vault 上的私有链接配置问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "91671297"
 
 ### <a name="symptoms-covered-by-this-article"></a>本文涵盖的症状
 
-- DNS 查询仍返回密钥保管库的公共 IP 地址，而不是使用专用链接功能时所需的专用 IP 地址。
+- DNS 查询仍返回密钥保管库的公共 IP 地址，而不是使用 "专用链接" 功能的预期专用 IP 地址。
 - 给定客户端发出的使用专用链接的所有请求都失败，出现超时或网络错误，问题不是间歇性的。
 - Key vault 有一个专用 IP 地址，但请求仍会收到 `403` `ForbiddenByFirewall` 内部错误代码的响应。
 - 你使用的是专用链接，但 key vault 仍接受来自公共 Internet 的请求。
@@ -34,7 +34,7 @@ ms.locfileid: "91671297"
 ### <a name="symptoms-not-covered-by-this-article"></a>本文未涵盖的症状
 
 - 出现间歇性连接问题。 在给定的客户端中，你会看到一些请求工作，一些请求工作不起作用。 *间歇性问题通常不是由专用链接配置中的问题引起的;它们是网络或客户端重载的符号。*
-- 你使用的是和支持 BYOK (创建自己的密钥) 或 CMK (客户托管密钥) 的 Azure 产品，并且该产品无法访问你的密钥保管库。 *查看其他产品文档。请确保它已启用防火墙，并显式声明对密钥保管库的支持。如果需要，请与该特定产品的产品支持部门联系。*
+- 你使用的是支持 BYOK (创建自己的密钥) 或 CMK (客户托管密钥) 的 Azure 产品，该产品无法访问你的密钥保管库。 *查看其他产品文档。请确保它已启用防火墙，并显式声明对密钥保管库的支持。如果需要，请与该特定产品的产品支持部门联系。*
 
 ### <a name="how-to-read-this-article"></a>如何阅读本文
 
@@ -46,7 +46,7 @@ ms.locfileid: "91671297"
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>确认客户端在虚拟网络上运行
 
-此故障排除指南适用于从应用程序代码到密钥保管库的连接。 例如，在虚拟机中执行的应用程序和脚本、Azure Service Fabric 群集、Azure App Service、Azure Kubernetes 服务 (AKS) ，等等。
+本指南旨在帮助您修复从应用程序代码到密钥保管库的连接。 示例包括在 Azure 虚拟机中执行的应用程序和脚本、Azure Service Fabric 群集、Azure App Service、Azure Kubernetes 服务 (AKS) 和类似的其他内容。
 
 通过定义专用链接，必须在连接到部署了 [专用终结点资源](../../private-link/private-endpoint-overview.md) 的虚拟网络的计算机、群集或环境上运行应用程序或脚本。 如果应用程序在连接 Internet 的任意网络上运行，则本指南不适用，可能无法使用专用链接。
 
@@ -128,7 +128,7 @@ ms.locfileid: "91671297"
 IP 地址是指 *在同一虚拟网络中运行* 的 vm 和其他设备将用于连接到密钥保管库的 IP 地址。 记下 IP 地址，或将 "浏览器" 选项卡保持打开状态，并在进行进一步调查时不进行触摸。
 
 >[!NOTE]
-> 如果密钥保管库有多个专用终结点，则它将具有多个专用 IP 地址。 仅当有多个虚拟网络访问同一密钥保管库（每个虚拟网络通过其自己的专用终结点 (专用终结点属于单个虚拟网络) 时，此方法才有用。 请确保诊断了正确虚拟网络的问题，并在上面的过程中选择正确的专用终结点连接。 此外， **不要** 为同一虚拟网络中的同一个 Key Vault 创建多个专用终结点。 这不是必需的，并且是一种混乱的原因。
+> 如果密钥保管库有多个专用终结点，则它有多个专用 IP 地址。 仅当有多个虚拟网络访问同一密钥保管库（每个虚拟网络通过其自己的专用终结点 (专用终结点属于单个虚拟网络) 时，此方法才有用。 请确保诊断了正确虚拟网络的问题，并在上面的过程中选择正确的专用终结点连接。 此外， **不要** 为同一虚拟网络中的同一个 Key Vault 创建多个专用终结点。 这不是必需的，并且是一种混乱的原因。
 
 ## <a name="5-validate-the-dns-resolution"></a>5. 验证 DNS 解析
 
@@ -158,11 +158,11 @@ Linux：
 
 你可以看到，名称解析为公共 IP 地址，并且没有 `privatelink` 别名。 别名稍后将进行说明，别担心。
 
-无论计算机是连接到虚拟网络，还是使用 Internet 连接的任意计算机，都应使用以上结果。 出现这种情况的原因是密钥保管库没有处于已批准状态的专用链接，因此无需密钥保管库支持专用链接连接。
+无论计算机是连接到虚拟网络，还是使用 Internet 连接的任意计算机，都应使用以上结果。 出现这种情况的原因是 key vault 没有处于已批准状态的专用终结点连接，因此无需密钥保管库支持专用链接。
 
 ### <a name="key-vault-with-private-link-resolving-from-arbitrary-internet-machine"></a>通过任意 Internet 计算机解析专用链接的密钥保管库
 
-如果密钥保管库具有处于已批准状态的一个或多个专用终结点连接，并且你在连接到 Internet 的任意计算机上解析了主机名， (**未** 连接到专用终结点所在的虚拟网络的计算机) 中，你应找到以下内容：
+如果密钥保管库具有处于已批准状态的一个或多个专用终结点连接，并且你在连接到 Internet 的任意计算机上解析了主机名， (*未* 连接到专用终结点所在的虚拟网络的计算机) 中，你应找到以下内容：
 
 Windows:
 
@@ -253,7 +253,7 @@ Linux：
 而且， `A` (IP 地址) 记录的值必须是 [密钥保管库专用 IP 地址](#find-the-key-vault-private-ip-address-in-the-virtual-network)。 如果找到该 `A` 记录，但该记录包含错误的 ip 地址，则必须删除错误的 ip 地址并添加新的 ip 地址。 建议删除整个 `A` 记录并添加一个新记录。
 
 >[!NOTE]
-> 无论何时删除或修改 `A` 记录，计算机仍可能会解析为旧 IP 地址，因为 TTL (生存时间) 值可能尚未过期。 建议你始终将 TTL 值指定为不到60秒 (一分钟) 且不超过600秒 (10 分钟) 。 如果指定太大的值，则客户端将无法从中断中恢复。
+> 无论何时删除或修改 `A` 记录，计算机仍可能会解析为旧 IP 地址，因为 TTL (生存时间) 值可能尚未过期。 建议你始终将 TTL 值指定为不到60秒 (一分钟) 且不超过600秒 (10 分钟) 。 如果指定的值太大，则客户端可能需要很长时间才能从中断中恢复。
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>针对多个虚拟网络的 DNS 解析
 
@@ -261,15 +261,13 @@ Linux：
 
 在更高级的方案中，有多个启用了对等互连的虚拟网络。 在这种情况下，只有一个虚拟网络需要专用终结点资源，尽管这两个虚拟网络可能需要链接到专用 DNS 区域资源。 此文档不直接涵盖这种情况。
 
-### <a name="fact-the-user-controls-dns-resolution"></a>事实：用户控制 DNS 解析
+### <a name="fact-you-have-control-over-dns-resolution"></a>事实：你可以控制 DNS 解析
 
-如果是网络 scholar 或好奇的人，可能会认识到 DNS 解析的工作方式。 如 [前一部分](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有专用链接的密钥保管库将具有 `{vaultname}.privatelink.vaultcore.azure.net` 其 *公共* 注册中的别名。 虚拟网络使用的 DNS 服务器将检查每个别名是否有 *专用* 名称注册，如果找到，它将停止遵循公共注册的别名。
+如 [前一部分](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有专用链接的密钥保管库 `{vaultname}.privatelink.vaultcore.azure.net` 在其 *公共* 注册中具有别名。 虚拟网络使用的 DNS 服务器使用公共注册，但会检查每个别名是否存在 *专用* 注册，如果找到，它将停止在公共注册中定义的以下别名。
 
-例如，请考虑将虚拟网络链接到名为的专用 DNS 区域 `privatelink.vaultcore.azure.net` ，并且 key vault 的公共 DNS 注册具有别名 `fabrikam.privatelink.vaultcore.azure.net` 。 请注意，后缀与专用 DNS 区域名称完全匹配。 这意味着解决方案将首先查找 `A` 专用 DNS 区域中名称为的 `fabrikam` 记录。 如果 `A` 找到该记录，它的 IP 地址将在 DNS 查询中返回。 并且该 IP 地址只是密钥保管库的专用 IP 地址。
+此逻辑表示，如果虚拟网络链接到名为的专用 DNS 区域 `privatelink.vaultcore.azure.net` ，并且 key vault 的公共 DNS 注册具有别名 `fabrikam.privatelink.vaultcore.azure.net` (请注意，key vault 主机名后缀与专用 DNS 区域名称精确匹配) ，则 DNS 查询将查找 `A` 名称 `fabrikam` *在专用 DNS 区域中*的记录。 如果 `A` 找到该记录，则会在 DNS 查询中返回其 IP 地址，并且不会在公共 DNS 注册中执行进一步的查找。
 
-正如您所看到的，整个名称解析都处于用户控制之下。
-
-此设计有两个原因：
+正如您所看到的，名称解析在您的控制之下。 此设计的基本原理是：
 
 - 可能有一个复杂的方案涉及到自定义 DNS 服务器，并与本地网络集成。 在这种情况下，需要控制如何将名称转换为 IP 地址。
 - 可能需要访问没有专用链接的密钥保管库。 在这种情况下，解析虚拟网络中的主机名时必须返回公共 IP 地址，这是因为没有专用链接的密钥保管库 `privatelink` 在名称注册中没有别名。

@@ -7,22 +7,22 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320330"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716018"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级权限 
 
 在开始本文之前，请确保已完成上一篇文章， [将共享级别权限分配给某个标识](storage-files-identity-ad-ds-assign-permissions.md) ，以确保你的共享级权限已就位。
 
-使用 RBAC 分配共享级权限后，必须在根、目录或文件级别配置适当的 Windows Acl，才能利用粒度访问控制。 将 RBAC 共享级别的权限视为用于确定用户是否可以访问共享的高级身份确认程序。 虽然 Windows Acl 以更精细的级别运行，以确定用户可以在目录或文件级别执行哪些操作。 当用户尝试访问文件/目录时，会强制执行共享级和文件/目录级别的权限，因此，如果其中一个文件/目录之间存在差异，则只会应用限制最严格的权限。 例如，如果用户在文件级别具有读/写访问权限，但只读取共享级别，则只能读取该文件。 同样，如果反转了它，并且用户对共享级别具有读/写访问权限，但只读取文件级别，则它们仍可以仅读取文件。
+使用 Azure RBAC 分配共享级权限后，必须在根、目录或文件级别配置适当的 Windows Acl，才能利用粒度访问控制。 将 Azure RBAC 共享级权限视为用于确定用户是否可以访问共享的高级身份确认。 虽然 Windows Acl 以更精细的级别运行，以确定用户可以在目录或文件级别执行哪些操作。 当用户尝试访问文件/目录时，会强制执行共享级和文件/目录级别的权限，因此，如果其中一个文件/目录之间存在差异，则只会应用限制最严格的权限。 例如，如果用户在文件级别具有读/写访问权限，但只读取共享级别，则只能读取该文件。 同样，如果反转了它，并且用户对共享级别具有读/写访问权限，但只读取文件级别，则它们仍可以仅读取文件。
 
-## <a name="rbac-permissions"></a>RBAC 权限
+## <a name="azure-rbac-permissions"></a>Azure RBAC 权限
 
-下表包含与此配置相关的 RBAC 权限：
+下表包含与此配置相关的 Azure RBAC 权限：
 
 
 | 内置角色  | NTFS 权限  | 结果访问  |
@@ -102,7 +102,7 @@ else
 1. 选择 " **编辑"。** 更改权限。
 1. 您可以更改现有用户的权限，也可以选择 " **添加 ...** " 向新用户授予权限。
 1. 在添加新用户的提示窗口中，在 " **输入要选择的对象名称** " 框中输入要向其授予权限的目标用户名，然后选择 " **检查名称** " 以查找目标用户的完整 UPN 名称。
-1.    选择“确定”  。
+1.    选择“确定”。
 1.    在 " **安全** " 选项卡中，选择要授予新用户的所有权限。
 1.    选择“应用”。
 

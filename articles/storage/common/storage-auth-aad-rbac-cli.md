@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure CLI 分配 Azure 角色以进行数据访问
+title: 使用 Azure CLI 分配可以进行数据访问的 Azure 角色
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure CLI 通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储通过 Azure AD 支持用于身份验证的内置和 Azure 自定义角色。
+description: 了解如何使用 Azure CLI 通过 azure RBAC)  (azure RBAC 访问控制向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置的和 Azure 自定义的角色进行身份验证。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,22 +11,22 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5714ab17f82f9c4d9c1d00f297c0950e41f54cdc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827973"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715129"
 ---
-# <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 分配 Azure 角色以访问 blob 和队列数据
+# <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 分配一个可以访问 blob 和队列数据的 Azure 角色
 
-Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的访问控制](../../role-based-access-control/overview.md)来授予对受保护资源的访问权限。 Azure 存储空间定义一组 Azure 内置角色，这些角色包含用于访问 blob 或队列数据的公用权限集。
+Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 授予对受保护资源的访问权限。 Azure 存储定义了一组内置的 Azure 角色，它们包含用于访问 Blob 或队列数据的通用权限集。
 
-将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+将 Azure 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文介绍如何使用 Azure CLI 列出 Azure 内置角色并将其分配给用户。 若要详细了解如何使用 Azure CLI，请参阅 [Azure 命令行界面 (CLI)](/cli/azure)。
+本文介绍如何使用 Azure CLI 列出内置的 Azure 角色并将其分配给用户。 若要详细了解如何使用 Azure CLI，请参阅 [Azure 命令行界面 (CLI)](/cli/azure)。
 
-## <a name="azure-roles-for-blobs-and-queues"></a>适用于 blob 和队列的 Azure 角色
+## <a name="azure-roles-for-blobs-and-queues"></a>Blob 和队列的 Azure 角色
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的�
 
 ## <a name="list-available-azure-roles"></a>列出可用的 Azure 角色
 
-若要列出 Azure CLI 的可用 Azure 内置角色，请使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)命令：
+若要通过 Azure CLI 列出可用的内置 Azure 角色，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list) 命令：
 
 ```azurecli-interactive
 az role definition list --out table
@@ -54,9 +54,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-azure-role-to-a-security-principal"></a>将 Azure 角色分配到安全主体
+## <a name="assign-an-azure-role-to-a-security-principal"></a>向安全主体分配 Azure 角色
 
-若要将 Azure 角色分配到安全主体，请使用[az role assign create](/cli/azure/role/assignment#az-role-assignment-create)命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
+若要向安全主体分配 Azure 角色，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
 ### <a name="container-scope"></a>容器范围
 
@@ -139,6 +139,6 @@ az role assignment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-powershell.md)
-- [在 Azure PowerShell 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac-powershell.md)
-- [在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac-portal.md)
+- [使用 Azure PowerShell 模块添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md)
+- [使用 Azure PowerShell 模块分配用于访问 blob 和队列数据的 Azure 角色](storage-auth-aad-rbac-powershell.md)
+- [使用 Azure 门户为 blob 和队列数据分配 Azure 角色](storage-auth-aad-rbac-portal.md)

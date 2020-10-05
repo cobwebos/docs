@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: b816e7bd5e00b21700bc994fc0860195d39f2915
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b4d74e7ba869e0438a936817d824e841823d472
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826511"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715715"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
 
@@ -55,7 +55,7 @@ ms.locfileid: "87826511"
 | 安全控制 | Yes/No | 说明|
 |---|---|--|
 | 身份验证| 是 | Azure Active Directory、共享密钥、共享访问令牌。 |
-| 授权| 是 | 支持通过 RBAC、POSIX ACL 和 SAS 令牌进行授权 |
+| 授权| 是 | 通过 Azure RBAC、POSIX Acl 和 SAS 令牌支持授权 |
 
 ## <a name="configuration-management"></a>配置管理
 

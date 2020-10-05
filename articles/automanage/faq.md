@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449770"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714972"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for Vm 常见问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "91449770"
 - Vm 不得链接到不同订阅中的 log analytics 工作区
 - Automanage 目前不支持沙盒订阅
 
-**启用 Automanage 需要哪些 RBAC 权限？**
+**启用 Automanage 需要哪些 Azure RBAC 权限？**
 
 如果要在具有现有 Automanage 帐户的 VM 上启用 Automanage，则需要具有 VM 所在的资源组的参与者角色。
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 26ce59c1d4ec8e3e2bf2096a4688b7639148410f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359233"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713505"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -226,7 +226,7 @@ Azure 门户预览列表中未显示动态组的所选作用域的 VM。 此列�
 
 #### <a name="incorrect-access-on-selected-scopes"></a>对所选作用域的访问权限不正确
 
-Azure 门户仅显示你在给定作用域内具有写入访问权限的计算机。 如果没有对作用域的正确访问权限，请参阅[教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限](../../role-based-access-control/quickstart-assign-role-user-portal.md)。
+Azure 门户仅显示你在给定作用域内具有写入访问权限的计算机。 如果没有作用域的正确访问权限，请参阅 [教程：使用 Azure 门户向用户授予对 Azure 资源的访问权限](../../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>ARG 查询未返回预期的计算机
 

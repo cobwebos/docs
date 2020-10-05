@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987283"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714641"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -22,7 +22,7 @@ ms.locfileid: "90987283"
 
 * 在 Azure Active Directory (Azure AD) 中创建服务主体。
 * 创建证书。
-* 向参与者分配基于角色的访问控制 (RBAC)，以便使用 Runbook 管理 Azure 资源管理器资源。
+* 分配 "参与者" 角色，该角色使用 runbook 管理 Azure 资源管理器资源。
 
 使用系统创建的此帐户，可以快速开始构建和部署 Runbook 来支持自动化需求。
 
@@ -59,7 +59,7 @@ ms.locfileid: "90987283"
    > [!NOTE]
    > 如果“添加自动化帐户”窗格中显示以下消息，则表示你的帐户不是订阅管理员角色成员和订阅的共同管理员。
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="提示 "你没有权限在 Azure Active directory 中创建运行方式帐户" 的屏幕截图。":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="提示 &quot;你没有权限在 Azure Active directory 中创建运行方式帐户&quot; 的屏幕截图。":::
 
 1. 在“添加自动化帐户”窗格的“名称”字段中，输入新自动化帐户的名称。 选择后，将无法更改此名称。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "90987283"
    > [!NOTE]
    > 如果选择不创建运行方式帐户，则选择“否”，“添加自动化帐户”窗格中会显示一条消息。  尽管该帐户是在 Azure 门户中创建的，但它在经典部署模型订阅或 Azure 资源管理器订阅目录服务中没有对应的身份验证标识。 因此，自动化帐户无法访问订阅中的资源。 这会导致引用此帐户的任何 Runbook 无法进行身份验证，也无法针对这些部署模型中的资源执行任务。
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="提示消息 "你已选择不创建运行方式帐户" 的屏幕截图。":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="提示 &quot;你没有权限在 Azure Active directory 中创建运行方式帐户&quot; 的屏幕截图。":::
    >
    > 未创建服务主体时不会分配参与者角色。
    >
