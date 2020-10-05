@@ -118,6 +118,8 @@
           href: autogen-bitrate-ladder.md
         - name: 内容感知型编码
           href: content-aware-encoding.md
+        - name: 媒体保留单位
+          href: concept-media-reserved-units.md
     - name: 分析内容（视频索引器）
       items:
         - name: 概述

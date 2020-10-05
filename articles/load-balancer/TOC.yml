@@ -69,6 +69,8 @@
       href: load-balancer-tcp-reset.md
     - name: 标准负载均衡器和可用性区域
       href: load-balancer-standard-availability-zones.md
+    - name: 浮动 IP 配置
+      href: load-balancer-floating-ip.md
     - name: 安全性
       items:
         - name: 安全基线

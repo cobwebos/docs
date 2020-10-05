@@ -700,6 +700,8 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB 到 Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
+            - name: 对代码片段进行重复数据消除和 NULL 检查
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: 从本地进行 SSIS 迁移
           items:
             - name: SSIS 迁移概述

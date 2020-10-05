@@ -73,7 +73,7 @@
           href: time-series-insights-update-query-data-csharp.md
         - name: 使用 C# 查询数据 - Gen1
           href: time-series-insights-query-data-csharp.md
-        - name: 使用 C# 管理参考数据
+        - name: 使用 C# 管理参考数据 - Gen1
           href: time-series-insights-manage-reference-data-csharp.md
         - name: 共享自定义视图
           href: time-series-insights-parameterized-urls.md
@@ -131,8 +131,6 @@
           href: time-series-insights-send-events.md
         - name: 缩放环境
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: 针对传入和查询调整 JSON
-          href: how-to-shape-query-json.md
         - name: 缓解限制
           href: time-series-insights-environment-mitigate-latency.md
         - name: 诊断和故障排除

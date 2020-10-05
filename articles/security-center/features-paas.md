@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 7087fb7b1de0b16480d0bb02043b40e0e97204f6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4c56f8cba232220844a8a8f9c408a60c89c581cd
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449953"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613622"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>适用于 Azure PaaS 服务的功能覆盖范围 <a name="paas-services"></a>
 
@@ -36,9 +36,9 @@ ms.locfileid: "91449953"
 |Azure 容器注册表|-|-|✔|
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
-|Azure Database for MySQL*|✔|✔|-|
-|Azure Database for PostgreSQL*|✔|✔|-|
+|Azure Data Lake Storage|✔|✔|-|
+|Azure Database for MySQL*|-|✔|-|
+|Azure Database for PostgreSQL*|-|✔|-|
 |Azure 事件中心命名空间|✔|-|-|
 |Azure Functions 应用|✔|-|-|
 |Azure Key Vault|✔|✔|-|
@@ -49,7 +49,7 @@ ms.locfileid: "91449953"
 |Azure SQL 托管实例|✔|✔|✔|
 |Azure 服务总线命名空间|✔|-|-|
 |Azure Service Fabric 帐户|✔|-|-|
-|Azure 存储帐户|✔|-|-|
+|Azure 存储帐户|✔|✔|-|
 |Azure 流分析|✔|-|-|
 |Azure 订阅|✔ **|✔|-|
 |Azure 虚拟网络</br> （包括子网、NIC 和网络安全组）|✔|-|-|

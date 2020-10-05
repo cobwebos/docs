@@ -39,6 +39,7 @@
         - name: 适用于应用服务的 Azure Defender
           href: defender-for-app-service-introduction.md
         - name: 适用于存储的 Azure Defender
+          displayName: 'blob, adls, files'
           href: defender-for-storage-introduction.md
         - name: 适用于 SQL 的 Azure Defender
           displayName: database
@@ -46,7 +47,7 @@
         - name: 适用于 IoT 的 Azure Defender
           href: defender-for-iot-introduction.md
         - name: 适用于 Key Vault 的 Azure Defender
-          displayName: KV
+          displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: 适用于 Kubernetes 的 Azure Defender
           displayName: 'clusters, k8s'
@@ -65,13 +66,13 @@
   items:
     - name: 入门
       href: security-center-get-started.md
-    - name: 连接非 Azure 计算机
-      displayName: 'azure stack, windows, linux'
-      href: quickstart-onboard-machines.md
-    - name: 连接 AWS 和 GCP 帐户
+    - name: 设置混合环境
       items:
+        - name: 连接非 Azure 计算机
+          displayName: 'azure stack, ash, windows, linux, hybrid, arc'
+          href: quickstart-onboard-machines.md
         - name: 连接 AWS 帐户
-          displayName: 'hybrid, multicloud, amazon'
+          displayName: 'hybrid, multicloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: 连接 GCP 帐户
           displayName: 'hybrid, multicloud, google'
@@ -90,7 +91,7 @@
       href: security-center-planning-and-operations-guide.md
     - name: 保护资源
       href: tutorial-protect-resources.md
-    - name: 响应事件
+    - name: 调查和响应安全警报
       href: tutorial-security-incident.md
     - name: 提高合规性
       href: security-center-compliance-dashboard.md
@@ -206,6 +207,7 @@
       items:
         - name: 在 Azure VM 上配置适用于 SQL 的 Azure Defender
           href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc'
         - name: 自定义信息保护策略
           href: security-center-info-protection-policy.md
     - name: 使用适用于容器注册表的 Azure Defender
@@ -218,6 +220,7 @@
         - name: 创建和管理警报抑制规则
           href: alerts-suppression-rules.md
         - name: 响应适用于 Key Vault 的 Azure Defender 警报
+          displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
         - name: 管理安全事件
           href: security-center-incident.md

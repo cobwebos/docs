@@ -3,17 +3,17 @@ title: Azure Database for PostgreSQL 文档
 summary: 用于 PostgreSQL 的 Azure 数据库是基于开源 Postgres 数据库引擎的关系型数据库服务。 它是完全托管的数据库即服务，能够处理任务关键型工作负荷，具有可预测的性能、安全性、高可用性和动态可伸缩性。
 metadata:
   description: Azure Database for PostgreSQL 是 Microsoft 云中的关系型数据库服务，它基于开源 PostgreSQL 数据库引擎，专为开发人员而构建。
-  author: rachel-msft
-  ms.author: raagyema
+  author: sunilagarwal
+  ms.author: sunila
   ms.date: 09/21/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: c14cab875ab017feb913269e277e8b5c12a3ee08
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 4931a50d2258902c551cb276a8b47b129a176551
+  ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90895644"
+  ms.lasthandoff: 10/04/2020
+  ms.locfileid: "91704287"
 landingContent:
 - title: 关于 Azure Database for PostgreSQL
   linkLists:

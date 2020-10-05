@@ -34,6 +34,10 @@
           href: how-to-install.md
         - name: 云预配配置
           href: how-to-configure.md
+        - name: 按需预配
+          href: how-to-on-demand-provision.md
+        - name: 属性映射
+          href: how-to-attribute-mapping.md
         - name: 使用单一登录
           href: how-to-sso.md
     - name: 规划和设计
@@ -50,7 +54,7 @@
           href: how-to-transformation.md
         - name: Azure AD 同步 API
           href: /graph/api/resources/synchronization-overview
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 云预配故障排除
           href: how-to-troubleshoot.md

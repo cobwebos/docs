@@ -18,6 +18,8 @@
       items:
         - name: 添加存储目标
           href: hpc-cache-add-storage.md
+        - name: 添加命名空间路径
+          href: add-namespace-paths.md
         - name: 将数据移到存储目标（如果需要）
           items:
             - name: 将数据预加载到新的 Blob 存储
@@ -42,8 +44,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
-    - name: Azure PowerShell
-      href: /powershell/module/Az.HPCCache
 - name: 资源
   items:
     - name: 开具支持票证

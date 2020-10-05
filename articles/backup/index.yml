@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: eeca42ea748c10970f312a84ea32c53fb904344a
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: 4716d537a6a3e402a4f399be8d64c9fd51edc292
+  ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90974442"
+  ms.lasthandoff: 10/01/2020
+  ms.locfileid: "91620114"
 landingContent:
 - title: 了解 Azure 备份
   linkLists:
@@ -60,6 +60,12 @@ landingContent:
       url: backup-center-overview.md
     - text: 备份 Azure Database for PostgreSQL
       url: backup-azure-database-postgresql.md
+    - text: 适用于 Azure VM 的选择性磁盘备份和还原
+      url: selective-disk-backup-restore.md
+    - text: Azure VM 上 SQL Server 数据库的跨区域还原
+      url: restore-sql-database-azure-vm.md#cross-region-restore
+    - text: 支持备份最多包含 32 个磁盘的 VM
+      url: backup-support-matrix-iaas.md#vm-storage-support
     - text: Azure 备份的软删除
       url: backup-azure-security-feature-cloud.md
     - text: 将 Azure VM 上的 SQL Server 还原为文件

@@ -117,15 +117,10 @@
       items:
         - name: 概述
           href: platform/data-platform.md
-        - name: 数据位置
-          href: platform/data-locations.md
-        - name: 指标
-          href: platform/data-platform-metrics.md
         - name: 日志
           href: platform/data-platform-logs.md
-        - name: 日志数据引入时间
-          displayname: latency
-          href: platform/data-ingestion-time.md
+        - name: 指标
+          href: platform/data-platform-metrics.md
         - name: 将数据流式传输到事件中心
           href: platform/stream-monitoring-data-event-hubs.md
     - name: 洞察力
@@ -209,39 +204,42 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: 日志查询概述
-          displayname: 'log query, log queries, query, queries'
+        - name: 概述
+          displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
+        - name: 教程
+          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+          href: log-query/get-started-portal.md
+        - name: 查询范围
+          href: log-query/scope.md
         - name: 简单日志体验
           href: log-query/simple-logs.md
-        - name: 审核日志查询
-          href: log-query/query-audit.md
-        - name: 教程
+        - name: 日志查询
           items:
-            - name: Log Analytics 教程
-              href: log-query/get-started-portal.md
-            - name: 日志查询教程
-              href: log-query/get-started-queries.md
-        - name: 日志数据
-          items:
-            - name: 查询范围
-              href: log-query/scope.md
             - name: 标准列
               href: platform/log-standard-columns.md
+            - name: 审核查询
+              href: log-query/query-audit.md
+            - name: 优化查询
+              href: log-query/query-optimization.md
+            - name: 函数
+              href: log-query/functions.md
+            - name: 分析文本数据
+              href: log-query/parse-text.md
+            - name: 查询示例
+              href: log-query/saved-queries.md
             - name: 计算机组
               href: platform/computer-groups.md
         - name: 查询语言
           items:
-            - name: 查询语言文档
-              href: log-query/query-language.md
-            - name: 语言差异
+            - name: KQL 引用
+              href: /azure/data-explorer/kusto/query/
+            - name: 与 Azure 数据资源管理器的区别
               href: log-query/data-explorer-difference.md
-            - name: 有用的运算符
-              href: log-query/useful-operators.md
-            - name: 函数
-              href: log-query/functions.md
-            - name: 从日志搜索转换
-              href: log-query/log-search-transition.md
+            - name: 示例
+              href: log-query/examples.md
+            - name: 智能分析示例
+              href: log-query/smart-analytics.md
             - name: 课程
               items:
                 - name: 字符串操作
@@ -268,9 +266,9 @@
                   href: log-query/sql-cheatsheet.md
                 - name: Splunk
                   href: log-query/splunk-cheatsheet.md
-        - name: 跨资源
+        - name: 跨资源查询
           items:
-            - name: 跨资源查询
+            - name: 概述
               href: log-query/cross-workspace-query.md
             - name: 应用表达式
               href: log-query/app-expression.md
@@ -280,32 +278,25 @@
               href: log-query/resource-expression.md
             - name: 统一应用程序数据资源
               href: log-query/unify-app-resource-data.md
-        - name: 示例和指南
-          items:
-            - name: 查询示例
-              href: log-query/saved-queries.md
-            - name: 日志查询示例
-              href: log-query/examples.md
-            - name: 智能分析示例
-              href: log-query/smart-analytics.md
-            - name: 优化查询
-              href: log-query/query-optimization.md
-            - name: 分析文本数据
-              href: log-query/parse-text.md
         - name: 工作区和群集
           items:
             - name: 设计工作区部署
               href: platform/design-logs-deployment.md
             - name: 创建工作区
               items:
-                - name: 使用 Azure 门户
+                - name: Azure 门户
                   href: learn/quick-create-workspace.md
-                - name: 使用 Azure CLI
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
-                - name: 使用 PowerShell
+                - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+                - name: 资源管理器模板
+                  href: platform/template-workspace-configuration.md
             - name: 删除和恢复工作区
               href: platform/delete-workspace.md
+            - name: 管理访问权限
+              displayName: Log Analytics workspace
+              href: platform/manage-access.md
             - name: 移动工作区
               href: platform/move-workspace.md
             - name: 适用于服务提供商的设计
@@ -328,6 +319,9 @@
       items:
         - name: 数据收集规则
           href: platform/data-collection-rule-overview.md
+        - name: 日志数据引入时间
+          displayname: latency
+          href: platform/data-ingestion-time.md
         - name: 代理数据源
           items:
             - name: 概述
@@ -1167,12 +1161,18 @@
               href: platform/workbooks-time.md
             - name: 文本参数
               href: platform/workbooks-text.md
+            - name: 资源参数
+              href: platform/workbooks-resources.md
         - name: 配置
           items:
             - name: 访问控制
               href: platform/workbooks-access-control.md
             - name: 使用 Azure 资源管理器进行部署
               href: platform/workbooks-automate.md
+            - name: 组
+              href: platform/workbooks-groups.md
+            - name: 使用 JSONPath 转换 JSON 数据
+              href: platform/workbooks-jsonpath.md
             - name: 将工作簿移动到其他区域
               href: platform/workbooks-move-region.md
             - name: 将工作簿模板移动到其他区域
