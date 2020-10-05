@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 09/25/2020
-ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/05/2020
+ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535060"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728652"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -50,7 +50,7 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术，每周创建[完�
 > 区域冗余存储目前仅在 [特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)中可用。 
 
 > [!NOTE]
-> Azure SQL 数据库可配置的备份存储冗余目前仅在东南亚 Azure 区域的公共预览版中提供。  
+> 适用于 Azure SQL 数据库的可配置备份存储冗余目前仅在东南亚 Azure 区域的公共预览版中提供。 此功能尚不可用于超大规模层。 
 
 ### <a name="backup-usage"></a>备份使用情况
 

@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 29a35715115816d742103bd7556ded19f22b316e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/05/2020
+ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372402"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729111"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -52,7 +52,9 @@ ms.locfileid: "91372402"
 
 若要管理订阅，请使用：
 
+* [顾问配置](/azure/templates/microsoft.advisor/configurations)
 * [预算](/azure/templates/microsoft.consumption/budgets)
+* [更改分析配置文件](/azure/templates/microsoft.changeanalysis/profile)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [标记](/azure/templates/microsoft.resources/tags)
 
@@ -80,7 +82,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 ## <a name="deployment-scopes"></a>部署范围
 
-部署到订阅时，可以将一个订阅和订阅中的任何资源组作为目标。 无法部署到与目标订阅不同的订阅。 部署模板的用户必须有权访问指定的作用域。
+部署到订阅时，可以将一个订阅和该订阅中的任何资源组作为目标。 无法部署到与目标订阅不同的订阅。 部署模板的用户必须有权访问指定的作用域。
 
 将对订阅应用模板的资源部分中定义的资源。
 
@@ -90,7 +92,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
 
-本文介绍如何将资源部署到不同范围的模板。 对于创建资源组并向其部署存储帐户的模板，请参阅 [创建资源组和资源](#create-resource-group-and-resources)。 对于创建资源组的模板，对其应用锁，并为资源组分配角色，请参阅 [访问控制](#access-control)。
+在本文中，你可以找到显示如何将资源部署到不同范围的模板。 有关创建资源组并向其部署存储帐户的模板，请参阅[创建资源组和资源](#create-resource-group-and-resources)。 对于可创建资源组、对其应用锁并为资源组分配角色的模板，请参阅[访问控制](#access-control)。
 
 ## <a name="deployment-commands"></a>部署命令
 
@@ -133,7 +135,7 @@ New-AzSubscriptionDeployment `
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 请勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 获取在订阅级别部署的资源的资源 ID。 相反，请使用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函数。
+* 请勿使用 [resourceId()](template-functions-resource.md#resourceid) 获取在订阅级别部署的资源的资源 ID。 请改用 [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 函数。
 
   例如，若要获取部署到订阅的策略定义的资源 ID，请使用：
 

@@ -8,22 +8,22 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7228368645023ffc7debbc84adb8e3b7c27b1bbb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905476"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728431"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
-在 Azure 安全中心，针对许多不同的资源类型提供多种不同的警报。 安全中心为部署在 Azure 上的资源以及部署在本地和混合云环境中的资源生成警报。
+在安全中心，许多不同的资源类型都有各种警报。 安全中心为部署在 Azure 上的资源以及部署在本地和混合云环境中的资源生成警报。
 
-安全警报由高级检测触发，仅适用于 Azure Defender。 有免费试用版可用。 你可以从 **定价 & 设置** "页升级。 了解有关 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)的详细信息。
+安全警报由高级检测触发，仅适用于 Azure Defender。 有免费试用版可用。 可以从“定价和设置”页升级。 详细了解[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
-## <a name="respond-to-todays-threats"></a>应对今天的威胁<a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>应对当前的威胁 <a name="respond-threats"> </a>
 
 过去 20 年里，威胁态势有了很大的改变。 在过去，公司通常只需担心网站被各个攻击者改头换面。许多情况下，这些攻击者感兴趣的是看看“自己能够做什么”。 而现在，攻击者则更为复杂，更有组织性。 他们通常有具体的经济和战略目标。 他们的可用资源也更多，因为他们可能是由国家/地区提供资金支持的，可能是有组织犯罪。
 
@@ -53,7 +53,7 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 由于我们在云
 
 安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 可以充分利用大数据和 [机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) 技术的突破跨整个云结构对事件进行评估，检测那些使用手动方式不可能发现的威胁，并预测攻击的发展方式。 此类安全分析包括：
 
-* **集成威胁智能**：Microsoft 提供大量的全球威胁情报。 遥测来自多个源，例如 Azure、Microsoft 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU) 和 Microsoft 安全响应中心 (MSRC) 。 研究人员也会收到在主要云服务提供商之间共享的威胁情报信息，以及来自其他第三方的源。 Azure 安全中心可能会在分析该信息后发出警报，提醒用户注意来自行为不端攻击者的威胁。
+* **集成威胁智能**：Microsoft 提供大量的全球威胁情报。 遥测数据的来源包括：Azure、Microsoft 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。 研究人员也会收到在主要云服务提供商之间共享的威胁情报信息，以及来自其他第三方的源。 Azure 安全中心可能会在分析该信息后发出警报，提醒用户注意来自行为不端攻击者的威胁。
 
 * **行为分析**：行为分析是一种技术，该技术会对数据进行分析并将数据与一系列已知模式对比。 不过，这些模式不是简单的特征， 需要对大型数据集运用复杂的机器学习算法来确定， 或者由分析专家通过仔细分析恶意行为来确定。 Azure 安全中心可以使用行为分析对虚拟机日志、虚拟网络设备日志、结构日志和其他资源进行分析，确定遭到泄露的资源。
 
@@ -84,6 +84,14 @@ Azure 安全中心受益于在整个 Microsoft 有安全研究和数据科学团
 * **检测优化**：针对实际的客户数据集运行相关算法，安全研究人员与客户一起验证结果。 通过检出率和误报率优化机器学习算法。
 
 将这些措施结合起来，形成新的改进型检测方法，使你能够即时受益，而你不需采取任何措施。
+
+## <a name="export-alerts"></a>导出警报
+
+你有一系列用于在安全中心外查看警报的选项，其中包括：
+
+- 下载 "警报" 仪表板上的**csv 报表**向 CSV 提供一次性导出。
+- 通过定价 & 设置**连续导出**，你可以配置安全警报流和建议 Log Analytics 工作区和事件中心。 [了解有关连续导出的详细信息](continuous-export.md)
+- **Azure sentinel 连接器** 将 azure Defender 警报从 Azure 安全中心流式传输到 azure Sentinel。 [详细了解如何将 Azure 安全中心与 Sentinel 连接](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>后续步骤

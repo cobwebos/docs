@@ -14,26 +14,26 @@ ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
 ms.openlocfilehash: aa35d1325e339af515c8bfc052d1af524b464e09
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91446010"
 ---
-# <a name="set-up-email-notifications-for-security-alerts"></a>针对安全警报设置电子邮件通知 
+# <a name="set-up-email-notifications-for-security-alerts"></a>设置安全警报的电子邮件通知 
 
-为确保将有关环境中安全警报的通知发送给组织中的正确人员，请在“电子邮件通知”设置页中输入其电子邮件地址。
+为确保组织中的相应人员收到有关环境中的安全警报的通知，请在“电子邮件通知”设置页面中输入其电子邮件地址。
 
-设置通知时，可以将电子邮件配置为发送给特定个人，或配置为发送给具有订阅的特定 Azure 角色的任何人。 
+设置通知时，可以配置将电子邮件发送给具有特定 Azure 订阅角色的特定个人或任何人。 
 
-为了避免“警报疲劳”现象，安全中心会限制传出邮件的数量。 对于每个订阅，安全中心将：
+为了避免警报疲劳，安全中心限制了外发邮件的数量。 对于每个订阅，安全中心都会发送以下数量的电子邮件：
 
-- 每日针对“严重级别高”的警报最多发送四封电子邮件 
-- 每日针对“严重级别中等”的警报最多发送两封电子邮件 
-- 每日针对“严重级别低”的警报最多发送一封电子邮件 
+- 每天最多四封电子邮件（适用于“高严重性”警报） 
+- 每天最多两封电子邮件（适用于“中等严重性”警报） 
+- 每天最多一封电子邮件（适用于“低严重性”警报） 
 
 
-:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="配置将接收安全警报电子邮件的联系人的详细信息。" :::
+:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="配置将接收有关安全警报的电子邮件的联系人的详细信息。" :::
 
 ## <a name="availability"></a>可用性
 
@@ -48,21 +48,21 @@ ms.locfileid: "91446010"
 
 ## <a name="set-up-email-notifications-for-alerts"></a>为警报设置电子邮件通知 <a name="email"></a>
 
-可以向特定的个人或具有特定 Azure 角色的所有用户发送电子邮件通知。
+可以将电子邮件通知发送给具有特定 Azure 角色的个人或所有用户。
 
-1. 从安全中心的“定价和设置”区域中选择相关订阅，并选择“电子邮件通知”。
+1. 在安全中心的“定价和设置”区域中，找到相关的订阅，然后选择“电子邮件通知” 。
 
 1. 定义通知的收件人：
 
-    - 从下拉列表中，选择可用角色。
-    - 和/或输入用逗号分隔的特定电子邮件地址。 可输入的电子邮件地址数量无限制。
+    - 从下拉列表中，选择某个可用角色。
+    - 和/或输入特定电子邮件地址（用逗号分隔）。 可输入的电子邮件地址数量无限制。
 
 1. 若要将安全联系人信息应用到订阅，请选择“保存”。
 
 
 ## <a name="see-also"></a>另请参阅
-若要了解有关安全警报的详细信息，请参阅以下文章：
+若要详细了解安全警报，请参阅以下文章：
 
-* [安全警报 - 参考指南](alerts-reference.md) - 了解 Azure 安全中心的威胁防护模块中可能会显示的安全警报
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报
-* [工作流自动化](workflow-automation.md) --通过自定义通知逻辑自动响应警报
+* [安全警报 - 参考指南](alerts-reference.md) - 了解可能会在 Azure 安全中心的威胁防护模块中看到的安全警报
+* [在 Azure 安全中心中管理和响应安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报
+* [工作流自动化](workflow-automation.md) - 通过自定义通知逻辑自动响应警报

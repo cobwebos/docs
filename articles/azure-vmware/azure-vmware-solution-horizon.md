@@ -3,12 +3,12 @@ title: 在 Azure VMware 解决方案上部署地平线
 description: 了解如何在 Azure VMware 解决方案上部署 VMware 地平线。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 60207b0ed9e1df805ac667752b55f14a693ec25c
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91492415"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729043"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>在 Azure VMware 解决方案上部署地平线 
 
@@ -84,7 +84,7 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 
 由于 Azure 私有云/SDDC 最大限制，我们建议使用部署体系结构，在该体系结构中，水平连接服务器和 VMware 统一访问网关 (UAGs) 在 Azure 虚拟网络中运行。 这会有效地将每个 Azure 私有云/SDDC 变成一个块。 这进而使在 Azure VMware 解决方案上运行的地平线的可伸缩性最大化。
 
-从 Azure 虚拟网络到 Azure 私有云/SDDCs 的连接应配置为 ExpressPath 快速路径。 下图显示了基本的地平线盒部署。
+从 Azure 虚拟网络到 Azure 私有云/SDDCs 的连接应配置为 ExpressRoute FastPath。 下图显示了基本的地平线盒部署。
 
 :::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Azure VMware 解决方案上的范围和 Azure 上的范围云之间的差异" border="false":::
 
@@ -92,7 +92,7 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 
 本部分详细介绍了在 Azure VMware 解决方案上横向扩展的网络体系结构，以及一些常见的部署示例。 这里的重点是关键网络元素。
 
-### <a name="single-horizon-pd-on-azure-vmware-solution"></a>Azure VMware 解决方案上的单地平线 pd
+### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware 解决方案上的单个地平线箱
 
 :::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware 解决方案上的范围和 Azure 上的范围云之间的差异" border="false":::
 
@@ -197,7 +197,7 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 
 基于标准部署体系结构，地平线基础结构 Vm 由连接服务器、UAGs、应用程序卷管理器组成，并部署在客户的 Azure 虚拟网络中。 需要额外的 Azure 本机实例以支持 Azure 上的高可用性 (HA) 、Microsoft SQL 或 Microsoft Active Directory (AD) 服务。 下面是基于2000桌面部署示例的 Azure 实例列表。 
 
-| 地平线基础结构组件 | Azure 实例 | 2000 (所需的实例数)     | 评论  |
+| 地平线基础结构组件 | Azure 实例 | 2000 (所需的实例数)     | 备注  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
 | 连接服务器                | D4sv3          | 2       | *为 HA 包含1个实例*             |    
 | UAG                              | F2sv2          | 2       | *为 HA 包含1个实例*             |

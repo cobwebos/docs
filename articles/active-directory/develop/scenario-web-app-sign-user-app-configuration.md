@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 64b38d0e776a0e3dab155704dcc368cc738c278e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ea0312cd8129fce342f94cfab5701d1773aca309
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855422"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728329"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -29,7 +29,7 @@ ms.locfileid: "88855422"
 
 | 平台 | 库 | 说明 |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 在由 ASP.NET 和 ASP.NET Core 直接使用的情况下，适用于 .NET 的 Microsoft 标识模型扩展提议了一组在 .NET Framework 和 .NET Core 上运行的 DLL。 在 ASP.NET 或 ASP.NET Core Web 应用中，可以使用 **TokenValidationParameters** 类控制令牌验证（尤其适用于某些合作伙伴方案）。 在实践 [中，复杂性](https://aka.ms/ms-identity-web) 封装在 |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 在由 ASP.NET 和 ASP.NET Core 直接使用的情况下，适用于 .NET 的 Microsoft 标识模型扩展提议了一组在 .NET Framework 和 .NET Core 上运行的 DLL。 在 ASP.NET 或 ASP.NET Core Web 应用中，可以使用 **TokenValidationParameters** 类控制令牌验证（尤其适用于某些合作伙伴方案）。 实际上，复杂度封装在 [Microsoft.Identity.Web](https://aka.ms/ms-identity-web) 库中 |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 支持 Java Web 应用程序 |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | 支持 Python Web 应用程序 |
 
@@ -63,7 +63,7 @@ ms.locfileid: "88855422"
 
 ## <a name="configuration-files"></a>配置文件
 
-使用 Microsoft 标识平台登录用户的 Web 应用程序是通过配置文件配置的。 需填充的设置为：
+使用 Microsoft 标识平台将用户登录的 Web 应用程序是通过配置文件配置的。 需填充的设置为：
 
 - 云实例 (`Instance`)（例如，如果需要在国家云中运行应用）
 - 租户 ID 中的受众 (`TenantId`)
@@ -95,7 +95,7 @@ ms.locfileid: "88855422"
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",
     "CallbackPath": "/signin-oidc",
-    "SignedOutCallbackPath ": "/signout-oidc"
+    "SignedOutCallbackPath": "/signout-oidc"
   }
 }
 ```
@@ -211,9 +211,9 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 若要使用 Microsoft 标识平台（前称为 Azure AD v2.0）添加身份验证，需要添加以下代码。 代码中的注释应该浅显易懂。
 
 > [!NOTE]
-> 如果要直接使用 Microsoft 标识平台的新 ASP.NET Core 模板开始使用 Microsoft 标识平台，则可以下载包含 .NET Core 3.1 和 .NET 5.0 项目模板的预览 NuGet 包。 然后，在安装后，可以直接实例化 ASP.NET Core web 应用程序 (MVC 或 Blazor) 。 有关详细信息，请参阅 [Microsoft web 应用项目模板](https://aka.ms/ms-id-web/webapp-project-templates) 。 这是最简单的方法，因为它将执行以下所有步骤。
+> 如果想直接从利用 Microsoft.Identity.Web 的 Microsoft 标识平台的新 ASP.NET Core 模板开始，则可下载一个包含 .NET Core 3.1 和 .NET 5.0 项目模板的 NuGet 预览包。 然后，在安装后，可以直接实例化 ASP.NET Core Web 应用程序（MVC 或 Blazor）。 有关详细信息，请参阅 [Microsoft.Identity.Web Web 应用项目模板](https://aka.ms/ms-id-web/webapp-project-templates)。 这是最简单的方法，因为它将执行以下所有步骤。
 >
-> 如果希望使用 Visual Studio 中的当前默认 ASP.NET Core web 项目或使用或来启动项目 `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth` ，则会看到如下所示的代码：
+> 如果你想使用 Visual Studio 中的当前默认 ASP.NET Core Web 项目来启动项目，或者使用 `dotnet new mvc --auth SingleAuth` 或 `dotnet new webapp --auth SingleAuth` 来启动项目，则会看到如下所示的代码：
 >
 >```c#
 >  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -223,7 +223,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 > 此代码使用用于创建 Azure AD v1.0 应用程序的旧版 Microsoft.AspNetCore.Authentication.AzureAD.UI NuGet 包。 本文介绍如何创建一个用于替换该代码的 Microsoft 标识平台 (Azure AD v2.0) 应用程序。
 >
 
-1. 将 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) 和 [Microsoft.Identity.Web.UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet 包添加到项目。 如果存在 AspNetCore NuGet 包，请将其删除。
+1. 将 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) 和 [Microsoft.Identity.Web.UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet 包添加到项目。 删除 Microsoft.AspNetCore.Authentication.AzureAD.UI NuGet 包（如果存在）。
 
 2. 更新 `ConfigureServices` 中的代码，使其使用 `AddMicrosoftIdentityWebAppAuthentication` 和 `AddMicrosoftIdentityUI` 方法。
 
@@ -272,10 +272,10 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 - `AddMicrosoftIdentityUI` 扩展方法在 Microsoft.Identity.Web.UI 中进行定义。 它提供了一个默认控制器来处理登录和注销。
 
-你可以在中找到有关如何使你能够创建 web 应用的更多详细信息。 <https://aka.ms/ms-id-web/webapp>
+有关如何使用 Microsoft.Identity.Web 创建 Web 应用的更多详细信息，可访问 <https://aka.ms/ms-id-web/webapp>
 
 > [!WARNING]
-> 目前，在使用 Azure AD 作为和外部登录提供程序时，Microsoft 不支持 **单个用户帐户** (存储用户帐户应用内) 。 有关详细信息，请参阅： [AzureAD/microsoft-标识-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
+> 目前，使用 Azure AD 作为外部登录提供程序时，Microsoft.Identity.Web 不支持单个用户帐户（在应用内存储用户帐户）的方案。 有关详细信息，请参阅：[AzureAD/microsoft-identity-web#133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

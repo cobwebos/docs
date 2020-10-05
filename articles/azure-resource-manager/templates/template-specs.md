@@ -2,21 +2,21 @@
 title: 模板规格概述
 description: 介绍如何创建模板规格并与组织中的其他用户共享。
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 30e7f26a53e81ebdeebe2acaef44dccab1cf4b27
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448823"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728465"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格（预览版）
 
-模板规格是一种新资源类型，用于在 Azure 中存储 Azure 资源管理器模板（ARM 模板），以便之后进行部署。 通过该资源类型，你可以与组织中的其他用户共享 ARM 模板。 就像任何其他 Azure 资源一样，你可以使用 Azure 基于角色的访问控制 (Azure RBAC) 来共享模板规范。
+模板规范是用于存储 azure 资源管理器模板的资源类型 (ARM 模板在 Azure 中) ，供以后部署。 通过该资源类型，你可以与组织中的其他用户共享 ARM 模板。 就像任何其他 Azure 资源一样，你可以使用 Azure 基于角色的访问控制 (Azure RBAC) 来共享模板规范。
 
-Microsoft.Resources/templateSpecs 是模板规格的新资源类型。 它包含一个主模板和任意数量的链接模板。 Azure 将模板规格安全存储在资源组中。 模板规格支持[版本控制](#versioning)。
+对于模板规格， **templateSpecs/** 资源类型为资源类型。 它包含一个主模板和任意数量的链接模板。 Azure 将模板规格安全存储在资源组中。 模板规格支持[版本控制](#versioning)。
 
 若要部署模板规格，请使用标准 Azure 工具（如 PowerShell）、Azure CLI、Azure 门户、REST 和其他受支持的 SDK 和客户端。 请使用针对模板使用的相同命令。
 
@@ -136,7 +136,7 @@ az ts show \
 
 请注意，资源 ID 包括模板规格的版本号。
 
-例如，使用以下命令部署模板规范。
+例如，可以使用以下命令部署模板规格。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
