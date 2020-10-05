@@ -1,6 +1,6 @@
 ---
 title: 连接到 Azure 媒体服务 v3 API - Java
-description: 本文介绍如何通过 Java 连接到 Azure 媒体服务 v3 API。
+description: 本文介绍如何使用 Java 连接到 Azure 媒体服务 v3 API。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
 ms.openlocfilehash: 0f099a1b807cb860aaeda95a442cfdd7fd3c2869
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89297376"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
