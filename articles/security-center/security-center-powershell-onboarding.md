@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: e367851c4d709acbc0eb94a47d7e20d4d3c1cc46
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: c805b35b2c05600f96983da42ea7206a09e2e3e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904802"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447392"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
 
@@ -29,7 +29,7 @@ ms.locfileid: "90904802"
 
 本文提供了一个示例 PowerShell 脚本，可在你的环境中进行修改和使用，以跨订阅推出安全中心。 
 
-在此示例中，我们将在 ID 为 d07c0080-170c-4c24-861d-9c817742786c 的订阅上启用安全中心，并应用提供高级保护的推荐设置，通过 Azure Defender 提供高级威胁防护和检测功能：
+在此示例中，通过启用 Azure Defender，提供高级威胁防护和检测功能，我们将对 ID 为 d07c0080-170c-4c24-861d-9c817742786c 的订阅启用安全中心，并应用提供高级别保护的建议设置：
 
 1. 启用 [Azure Defender](azure-defender.md)。 
  
@@ -61,7 +61,7 @@ ms.locfileid: "90904802"
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. 可选：设置订阅 (的 Azure Defender 打开/关闭) 的覆盖级别。 如果未定义，则 Defender 处于关闭状态：
+1. 可选：设置订阅的覆盖级别（启用/关闭 Azure Defender）。 如果未定义，Defender 将处于关闭状态：
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
@@ -91,7 +91,7 @@ ms.locfileid: "90904802"
 
     ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
 
-已成功将 Azure 安全中心与 PowerShell 载入。
+你已使用 PowerShell 成功加入 Azure 安全中心。
 
 现在可以将这些 PowerShell cmdlet 与自动化脚本结合使用，从而以编程方式循环访问订阅和资源。 这可节省时间并减少人为错误的可能性。 你可以使用此[示例脚本](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1)作为参考。
 
@@ -101,7 +101,7 @@ ms.locfileid: "90904802"
 ## <a name="see-also"></a>另请参阅
 若要详细了解如何通过 PowerShell 来自动开始使用安全中心，请参阅以下文章：
 
-* [Az. Security](https://docs.microsoft.com/powershell/module/az.security)
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security)
 
 若要详细了解安全中心，请参阅以下文章：
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: a9f5bac475fd019b294f79abf0acdfaff198f52b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335171"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442754"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "91335171"
 
 若要完成本教程，请确保做好以下准备：
 
-- Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 [创建 Batch 帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
 
 ## <a name="1---create-a-single-database"></a>1 - 创建单一数据库
 
@@ -50,7 +50,7 @@ ms.locfileid: "91335171"
 
 1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
 1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过在“数据库”磁贴上选择“显示详细信息”来查看有关不同数据库的其他信息。
-1. 从 " **SQL 数据库**" 磁贴的 "**资源类型**" 下拉选择 "**弹性池**"。 选择 " **创建** " 来创建弹性池。
+1. 在“SQL 数据库”磁贴的“资源类型”下拉菜单中选择“弹性池”。 选择“创建”以创建弹性池。
 
     ![选择弹性池](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "91335171"
         - **服务器名称**：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
         - **服务器管理员登录名**：键入 `azureuser`
         - **密码**：键入符合密码要求的复杂密码。
-        - **位置**：从下拉项中选择一个位置，例如 `East US` 。 此位置不能与主服务器的位置相同。
+        - 位置：从下拉列表中选择一个位置，例如 `East US`。 此位置不能与主服务器的位置相同。
 
        > [!NOTE]
        > 服务器登录名和防火墙设置必须与主服务器相匹配。
@@ -241,7 +241,7 @@ ms.locfileid: "91335171"
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为服务器创建防火墙规则。 |
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | 为 Azure SQL 数据库创建弹性池。|
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 新建故障转移组。 |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或多个 Azure SQL 数据库添加到故障转移组。 |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或更多个 Azure SQL 数据库添加到故障转移组。 |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
 
 ---
@@ -401,7 +401,7 @@ ms.locfileid: "91335171"
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | 设置数据库的属性，或将现有数据库移到弹性池中。 |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 新建故障转移组。 |
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 获取一个和多个 SQL 数据库中的数据库。 |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或多个 Azure SQL 数据库添加到故障转移组。 |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或更多个 Azure SQL 数据库添加到故障转移组。 |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 执行 Azure SQL 数据库故障转移组的故障转移。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 |

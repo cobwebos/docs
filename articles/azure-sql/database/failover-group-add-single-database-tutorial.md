@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263583"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442738"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教程：将 Azure SQL 数据库添加到自动故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,20 +35,20 @@ ms.locfileid: "91263583"
 
 若要完成本教程，请确保做好以下准备：
 
-- Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 [创建 Batch 帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要完成本教程，请确保准备好以下各项：
 
-- Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 [创建 Batch 帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
 - [Azure PowerShell](/powershell/azure/)
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要完成本教程，请确保准备好以下各项：
 
-- Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 [创建 Batch 帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ---
@@ -65,8 +65,8 @@ ms.locfileid: "91263583"
 
 使用 Azure 门户创建故障转移组，并将数据库添加到其中。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **AZURE sql** 不在列表中，请选择 " **所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
-1. 选择在第1部分中创建的数据库，例如 `mySampleDatabase` 。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入“Azure SQL” 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
+1. 选择在第 1 部分中创建的数据库，例如 `mySampleDatabase`。
 1. 可以在服务器级别配置故障转移组。 在**服务器名称**下选择服务器的名称以打开服务器的设置。
 
    ![打开服务器上的数据库](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
@@ -82,7 +82,7 @@ ms.locfileid: "91263583"
       - **服务器名称**：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
       - **服务器管理员登录名**：键入 `azureuser`
       - **密码**：键入符合密码要求的复杂密码。
-      - **位置**：从下拉项中选择一个位置，例如 `East US` 。 此位置不能与主服务器的位置相同。
+      - 位置：从下拉列表中选择一个位置，例如 `East US`。 此位置不能与主服务器的位置相同。
 
      > [!NOTE]
      > 服务器登录名和防火墙设置必须与主服务器相匹配。
@@ -211,8 +211,8 @@ ms.locfileid: "91263583"
 
 使用 Azure 门户测试故障转移。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **AZURE sql** 不在列表中，请选择 " **所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
-1. 选择在第2部分中创建的数据库，例如 `mySampleDatbase` 。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 Azure SQL 不在列表中，请选择“所有服务”，然后在搜索框中键入“Azure SQL” 。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。
+1. 选择在第 2 部分中创建的数据库，例如 `mySampleDatbase`。
 1. 在**服务器名称**下选择服务器的名称以打开服务器的设置。
 
    ![打开服务器上的数据库](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)

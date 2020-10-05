@@ -1,29 +1,29 @@
 ---
 title: Azure 安全中心的其他威胁防护
-description: 了解 azure 安全中心以外的 Azure Defender 提供的威胁防护
+description: 了解 Azure 安全中心提供的除 Azure Defender 外的威胁防护
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4a849af2be9f02187dc3cda526c9c4727cab1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: 377c68cd2f0b0c132fc690cb03d7c3c5694bb52e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934137"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438905"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 安全中心的其他威胁防护
-此外，azure 安全中心还提供以下威胁防护功能，同时提供内置的 [Azure Defender](azure-defender.md)防护功能。
+除内置 [Azure Defender 保护](azure-defender.md)外，Azure 安全中心还提供了以下威胁防护功能。
 
 > [!TIP]
-> 若要启用安全中心的威胁防护功能，必须在包含适用工作负荷的订阅上启用 Azure Defender。
+> 若要启用安全中心的威胁保护功能，必须在包含适用工作负载的订阅上启用 Azure Defender。
 >
-> 只能在资源级别为 **Azure Database for MariaDB/MySQL/PostgreSQL** 启用威胁防护。
+> 只能在资源级别为 Azure Database for MariaDB/MySQL/PostgreSQL 启用威胁防护。
 
 
 ## <a name="threat-protection-for-azure-network-layer"></a>针对 Azure 网络层的威胁防护 <a name="network-layer"></a>
@@ -37,7 +37,7 @@ ms.locfileid: "90934137"
 有关 Azure 网络层警报的列表，请参阅[警报参考表](alerts-reference.md#alerts-azurenetlayer)。
 
 
-## <a name="threat-protection-for-azure-resource-manager-preview"></a>Azure 资源管理器 (预览版的威胁防护) <a name ="management-layer"></a>
+## <a name="threat-protection-for-azure-resource-manager-preview"></a>Azure 资源管理器（预览版）的威胁防护<a name ="management-layer"></a>
 基于 Azure 资源管理器的安全中心保护层目前为预览版。
 
 安全中心通过 Azure 资源管理器事件提供额外的保护层，该保护层被视为 Azure 的控制平面。 通过分析 Azure 资源管理器记录，安全中心可以检测 Azure 订阅环境中的非寻常或可能有害的操作。
@@ -48,21 +48,21 @@ ms.locfileid: "90934137"
 >[!NOTE]
 > 上述几项分析由 Microsoft Cloud App Security 提供支持。 若要从这些分析中获益，必须激活 Cloud App Security 许可证。 如果你有 Cloud App Security 许可证，则默认会启用这些警报。 若要禁用警报：
 >
-> 1. 从安全中心的菜单中，选择“定价和设置”。
+> 1. 在安全中心的菜单中，选择“定价和设置”。
 > 1. 选择想要更改的订阅。
 > 1. 选择“威胁检测”。
-> 1. 清除 " **允许 Microsoft Cloud App Security 访问我的数据**"，然后选择 " **保存**"。
+> 1. 清除“允许 Microsoft Cloud App Security 访问我的数据”，然后选择“保存” 。
 
 
 >[!NOTE]
 >安全中心将安全相关的客户数据存储在其资源所在的地理区域。 如果 Microsoft 尚未在该资源所在的地理位置部署安全中心，则数据将存储在美国。 启用 Cloud App Security 后，将根据 Cloud App Security 的地理位置规则存储此信息。 有关详细信息，请参阅[非区域性服务的数据存储](https://azuredatacentermap.azurewebsites.net/)。
 
-1. 设置要在其上安装代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
+1. 设置要安装代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
 
-1. 启用 **Azure Defender**，然后选择 " **保存**"。
+1. 启用“Azure Defender”，然后选择“保存” 。
 
 
-## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (预览版的威胁防护) <a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>针对 Azure Cosmos DB 的威胁防护（预览版）<a name="cosmos-db"></a>
 
 当有人企图以非寻常和可能有害的方式访问或恶意利用 Azure Cosmos DB 帐户时，会生成 Azure Cosmos DB 警报。
 

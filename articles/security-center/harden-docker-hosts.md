@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f59bae9864e533270b0bfea829f64ccf541a8a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301425"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712266"
 ---
 # <a name="harden-your-docker-hosts"></a>强化 Docker 主机
 
@@ -32,7 +32,7 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 |发布状态：|正式发布 (GA)|
 |定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |所需角色和权限：|主机连接到的工作区中的**读取器**|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>识别和修正 Docker 配置中的安全漏洞

@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: overview
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: carlr
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436776"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450352"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -249,7 +249,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 **示例 4** 演示的目标组包含一个充当目标的弹性池。 与*示例 2* 类似，此池会在作业运行时动态枚举，以便确定池中数据库的列表。
 <br><br>
 
-![目标组示例](./media/job-automation-overview/targetgroup-examples2.png)
+![更多目标组示例](./media/job-automation-overview/targetgroup-examples2.png)
 
 **示例 5** 和**示例 6** 演示高级方案，其中的服务器、弹性池和数据库可以使用包括和排除规则进行组合。<br>
 **示例 7** 表明分片映射中的分片也可在作业运行时进行评估。

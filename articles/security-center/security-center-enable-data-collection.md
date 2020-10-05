@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905498"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447227"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
@@ -71,7 +71,7 @@ ms.locfileid: "90905498"
 选择安全中心创建的工作区：
 
 1. 在“默认工作区配置”下，选择“使用安全中心创建的工作区”。
-   ![选择定价层][10] 
+    :::image type="content" source="./media/security-center-enable-data-collection/workspace-selection.png" alt-text="启用 Log Analytics 代理的自动预配"::: 
 
 1. 单击“ **保存**”。<br>
     安全中心会在该地理位置创建新的资源组和默认工作区，并将代理连接到该工作区。 工作区和资源组的命名约定是：<br>
@@ -81,7 +81,7 @@ ms.locfileid: "90905498"
 1. 安全中心将会根据针对订阅设置的定价层，在工作区中自动启用安全中心解决方案。 
 
 > [!NOTE]
-> 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于没有 Azure Defender 的订阅，安全中心在默认工作区启用了 *SecurityCenterFree* 解决方案。 对于 Azure Defender 订阅，安全中心在默认工作区启用 *安全* 解决方案。
+> 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于未启用 Azure Defender 的订阅，安全中心在默认工作区上启用 *SecurityCenterFree* 解决方案。 对于启用 Azure Defender 的订阅，安全中心在默认工作区上启用 *Security* 解决方案。
 > 在 Log Analytics 中存储数据可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 有关现有 Log Analytics 帐户的详细信息，请参阅[现有 Log Analytics 客户](./faq-azure-monitor-logs.md)。
@@ -99,8 +99,7 @@ ms.locfileid: "90905498"
 选择现有 Log Analytics 工作区的具体步骤：
 
 1. 在“默认工作区配置”下，选择“使用其他工作区” 。
-
-   ![使用另一个工作区][2]
+    :::image type="content" source="./media/security-center-enable-data-collection/use-another-workspace.png" alt-text="启用 Log Analytics 代理的自动预配"::: 
 
 2. 从下拉菜单中，选择一个工作区，用于存储所收集的数据。
 
@@ -122,7 +121,7 @@ ms.locfileid: "90905498"
 
    - 若要取消该操作，请选择“取消”。
 
-     ![查看用于重新配置监视的 Vm 的选项][3]
+     ![查看用于重新配置受监视的 VM 的选项][3]
 
 5. 选择工作区是否将启用 Azure Defender。
 
@@ -132,7 +131,7 @@ ms.locfileid: "90905498"
      
     1. 选择要将代理连接到的工作区。
 
-    1. 选择 **"Azure defender** 或 **azure defender**"。
+    1. 选择“启用 Azure Defender”或“关闭 Azure Defender”。
 
    
    >[!NOTE]
@@ -158,7 +157,7 @@ ms.locfileid: "90905498"
 
 
 > [!NOTE]
-> 这些安全事件集仅适用于 Azure Defender。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
+> 这些安全事件集只能与 Azure Defender 一起使用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
 这些集合专门用于典型应用场景。 请务必先评估哪个事件集适合你的需求，再进行实现。
 >
 >
@@ -174,7 +173,7 @@ ms.locfileid: "90905498"
 
 | 数据层 | 收集的事件指示器 |
 | --- | --- |
-| 最少 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
+| 轻微 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
 | 通用 | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
@@ -191,10 +190,10 @@ ms.locfileid: "90905498"
 >
 
 选择筛选策略的具体步骤：
-1. 在“数据收集”页上，选择“安全事件”下的筛选策略 。
-2. 选择“保存”。
-
-   ![选择筛选策略][5]
+1. 在“数据收集”页上，选择“存储更多原始数据 - Windows 安全事件”下的筛选策略 。
+ 
+1. 选择“保存”。
+    :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="启用 Log Analytics 代理的自动预配":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>在预先安装了代理的情况下进行自动预配 <a name="preexisting"></a> 
 
@@ -207,7 +206,7 @@ ms.locfileid: "90905498"
 <br>
 对于 Linux 计算机，尚不支持代理多主页，因此，如果检测到现有的代理安装，则不会进行自动预配，并且不会更改计算机的配置。
 <br>
-对于 "订阅中的现有计算机载入到 2006 2019 年3月17日之前的安全中心"，将会检测到现有代理，不会安装 Log Analytics 代理扩展，并且计算机将不会受到影响。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”建议，以解决这些计算机上的代理安装问题。
+对于在 2019 年 3 月 17 日之前已加入安全中心的订阅中的现有计算机，检测到现有代理时，不会安装 Log Analytics 代理扩展，且计算机不受影响。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”建议，以解决这些计算机上的代理安装问题。
 
   
 - 已在计算机上安装 System Center Operations Manager 代理<br>
@@ -219,15 +218,15 @@ ms.locfileid: "90905498"
     - 如果环境中的 Log Analytics 代理安装在客户端工作站上并向现有的 Log Analytics 工作区报告，请查看 [Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表以确保操作系统受支持。 有关详细信息，请参阅[现有 Log Analytics 客户](./faq-azure-monitor-logs.md)。
  
 ### <a name="turn-off-automatic-provisioning"></a>关闭自动预配 <a name="offprovisioning"></a>
-若要禁用 Log Analytics 代理的自动预配：
+若要关闭 Log Analytics 代理的自动预配，请执行以下操作：
 
 1. 在门户的“安全中心”菜单中，选择“定价和设置”。
 2. 选择相关订阅。
 
-   ![选择订阅][7]
+    :::image type="content" source="./media/security-center-enable-data-collection/select-subscription.png" alt-text="启用 Log Analytics 代理的自动预配":::
 
 3. 选择“数据收集”。
-4. 在 " **自动设置**" 下，选择 " **关闭** " 以禁用自动设置。
+4. 在“自动预配”下，选择“关闭”以禁用自动预配 。
 5. 选择“保存”。 
 
 
@@ -248,22 +247,22 @@ ms.locfileid: "90905498"
 
 可以手动安装 Log Analytics 代理，使安全中心能够从 VM 收集安全数据并提供建议和警报。
 
-1. 禁用自动设置。
+1. 禁用自动预配。
 
-1. （可选）创建一个工作区。
+1. （可选）创建工作区。
 
 1. 在要安装 Log Analytics 代理的工作区上启用 Azure Defender：
 
-    1. 从安全中心的菜单中，选择“定价和设置”。
+    1. 在安全中心的菜单中，选择“定价和设置”。
 
-    1. 设置要在其上安装代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
+    1. 设置要安装代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
 
-    1. 将 Azure Defender 设置为 on，然后选择 " **保存**"。
+    1. 将 Azure Defender 设置为“启用”，并选择“保存”。
 
        >[!NOTE]
        >如果工作区中已启用 **Security** 或 **SecurityCenterFree** 解决方案，则会自动设置定价层。 
 
-1. 如果要使用资源管理器模板在新的 Vm 上部署代理，请安装 Log Analytics 代理：
+1. 若要使用资源管理器模板在新 VM 上部署代理，请安装 Log Analytics 代理：
 
    a.  [安装适用于 Windows 的 Log Analytics 代理](../virtual-machines/extensions/oms-windows.md)
     
@@ -275,7 +274,7 @@ ms.locfileid: "90905498"
    > “收集事件和性能数据”部分是可选的。
    >
 
-1. 若要使用 PowerShell 来部署扩展，请使用虚拟机文档中的说明：
+1. 若要使用 PowerShell 部署扩展，请按照虚拟机文档中的说明进行操作：
 
     - [对于 Windows 计算机](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
@@ -309,13 +308,7 @@ ms.locfileid: "90905498"
 
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
-[2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[7]: ./media/security-center-enable-data-collection/select-subscription.png
-[8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
-[10]: ./media/security-center-enable-data-collection/workspace-selection.png
 [11]: ./media/security-center-enable-data-collection/log-analytics.png
 [12]: ./media/security-center-enable-data-collection/log-analytics2.png

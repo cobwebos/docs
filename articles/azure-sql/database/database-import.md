@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: migrate
 ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 574bc4721f83d60fdd8c75b4fedb824522968822
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
-ms.translationtype: MT
+ms.openlocfilehash: 5f7aad271f04bcb4eb63472716ea2fe9f98a0e33
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070038"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443693"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库或 Azure SQL 托管实例中的数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "89070038"
 
 ## <a name="using-azure-portal"></a>使用 Azure 门户
 
-观看此视频，了解如何从 Azure 门户中的 BACPAC 文件导入，或继续阅读以下内容：
+观看此视频，了解如何在 Azure 门户中从 BACPAC 文件中导入，或继续阅读以下内容：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
@@ -87,7 +87,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)当前不支持使用 Azure PowerShell 从 BACPAC 文件将数据库迁移到实例数据库。 若要导入 SQL 托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
 > [!NOTE]
-> 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 因此，某些请求可能会失败，出现 "磁盘空间不足" 错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
+> 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 其结果是某些请求可能会失败，并显示“磁盘空间不足”错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -147,6 +147,10 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 - 不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到弹性池。
 - 当“允许访问 Azure 服务”设置为“关闭”时，导入/导出服务无法正常工作。 不过，可通过以下方式解决此问题：在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出。
+- 导入操作不支持在创建新数据库时指定备份存储冗余，而是会使用默认异地冗余备份存储冗余创建新数据库。 若要解决此问题，请首先使用 Azure 门户或 PowerShell 和所需的备份存储冗余创建一个空数据库，然后将 BACPAC 导入此空数据库。 
+
+> [!NOTE]
+> “Azure SQL 数据库可配置备份存储冗余”目前为公共预览版，且仅在东南亚 Azure 区域提供。
 
 ## <a name="import-using-wizards"></a>使用向导导入
 

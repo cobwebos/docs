@@ -2,20 +2,18 @@
 title: include 文件
 description: include 文件
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: da9388a3bd5f4d46ec34ed226e3ee23a96b2f494
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375014"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541419"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
 
@@ -29,7 +27,7 @@ LUIS 的新用户需要执行此过程：
 
 1. 填写资源的详细信息。
 
-    ![创建创作资源](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![屏幕截图显示了“新建用于创作的资源”窗格。](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
     **创建新的创作资源**时，请提供以下信息：
 
@@ -42,8 +40,8 @@ LUIS 的新用户需要执行此过程：
 
 1. 此时将显示要创建的资源的摘要。 选择“**下一页**”。
 
-    ![创建创作资源](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![屏幕截图显示了“欢迎”页面，其中显示了用于链接到 Azure 帐户的选项。](../media/sign-in/sign-in-confirm-key-selection.png)
 
 1. 选择“继续”进行确认。
 
-    ![创建创作资源](../media/sign-in/sign-in-confirm-continue.png)
+    ![屏幕截图显示了链接到 Azure 帐户后的“欢迎”页面。](../media/sign-in/sign-in-confirm-continue.png)

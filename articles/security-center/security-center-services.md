@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心提供的支持功能 |Microsoft Docs
+title: Azure 安全中心提供的支持功能 | Microsoft Docs
 description: 此文档提供了 Azure 安全中心支持的服务的列表。
 services: security-center
 documentationcenter: na
@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: f5be0b43de8265b2b337c024117ae8f424e4a3bc
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
-ms.translationtype: MT
+ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403478"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439409"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -45,7 +45,7 @@ ms.locfileid: "91403478"
 |缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |安全配置错误评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|否|
+|磁盘加密评估|✔</br>（适用于[支持的场景](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)）|✔|-|否|
 |第三方漏洞评估|✔|-|-|否|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|否|
 
@@ -69,7 +69,7 @@ ms.locfileid: "91403478"
 |缺少 OS 修补程序评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |安全配置错误评估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |[终结点保护评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|否|
-|磁盘加密评估|✔</br>支持的 [方案](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|否|
+|磁盘加密评估|✔</br>（适用于[支持的场景](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)）|✔|-|否|
 |第三方漏洞评估|✔|-|-|否|
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|否|
 
@@ -77,7 +77,7 @@ ms.locfileid: "91403478"
 
 
 > [!TIP]
->若要试验仅适用于 Azure Defender 的功能，可以注册30天试用版。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+>要试验仅适用于 Azure Defender 的功能，可以注册 30 天试用版。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 
 ## <a name="supported-endpoint-protection-solutions"></a>支持的终结点保护解决方案 <a name="endpoint-supported"></a>
@@ -93,7 +93,7 @@ ms.locfileid: "91403478"
 |------|------|-----|-----|
 | Microsoft Defender 防病毒| Windows Server 2016 或更高版本| 否，内置到 OS| 是 |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
-| 趋势微–深度安全 | Windows Server 系列  | 否 | 是 |
+| Trend Micro – Deep Security | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
