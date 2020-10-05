@@ -3,12 +3,12 @@ title: 将混合计算机大规模连接到 Azure
 description: 本文介绍如何使用服务主体使用启用了 Azure Arc 的服务器将计算机连接到 Azure。
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5976e2ff9aef5f68d119a5fdf5f7d4d4345287a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254935"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713423"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 
@@ -67,7 +67,7 @@ ms.locfileid: "91254935"
 > 请确保使用服务主体 **ApplicationId** 属性，而不是 **Id** 属性。
 >
 
-“Azure Connected Machine 加入”角色只包含加入计算机时所需的权限。 可以分配服务主体权限，以允许其范围包含资源组或订阅。 若要添加角色分配，请参阅[使用 Azure RBAC 和 Azure 门户添加或删除角色分配](../../role-based-access-control/role-assignments-portal.md)或者[使用 Azure RBAC 和 Azure CLI 添加或删除角色分配](../../role-based-access-control/role-assignments-cli.md)。
+“Azure Connected Machine 加入”角色只包含加入计算机时所需的权限。 可以分配服务主体权限，以允许其范围包含资源组或订阅。 若要添加角色分配，请参阅 [使用 Azure 门户添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-portal.md) 或 [使用 Azure CLI 添加或删除 azure 角色分配](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安装代理并连接到 Azure
 

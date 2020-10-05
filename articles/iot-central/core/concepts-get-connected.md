@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018174"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714235"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -99,13 +99,11 @@ IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/abo
 
 1. 在 " **主证书" 页**上，上传主 x.509 证书。 这是你的根或中间证书：
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="主证书屏幕截图":::
-
-1. 使用 **验证码** 在你使用的工具中生成验证码。 然后选择 " **验证** " 上传验证证书。
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="添加 x.509 注册组屏幕快照" 上传验证证书。
 
 1. 验证成功后，会看到以下确认信息：
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="已验证主证书屏幕截图":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="添加 x.509 注册组屏幕快照":::
 
 验证证书所有权可确保上传证书的人员具有证书的私钥。
 
@@ -147,21 +145,7 @@ IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/abo
 
 1. 从 " **SAS-设备** " 注册组中复制组主密钥：
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="将 SAS-设备注册组中的主密钥分组":::
-
-1. 使用 `az iot central device compute-device-key` 命令生成设备 SAS 密钥。 使用上一步中的 "组主密钥"。 设备 Id 必须是小写的：
-
-    ```azurecli
-    az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
-    ```
-
-1. OEM 用设备 ID、生成的设备 SAS 密钥和应用程序 **ID 范围** 值闪烁每个设备。
-
-1. 打开设备时，它首先会连接到 DPS 以检索其 IoT Central 注册信息。
-
-    设备最初在 "**设备**" 页上具有 "未**关联**设备" 状态，并且未分配给设备模板。 在 " **设备** " 页上，将设备 **迁移** 到适当的设备模板。 设备预配现已完成，设备状态现在为 "已 **设置**"，设备可以开始发送数据。
-
-    在 " **管理 > 设备连接** " 页上，" **自动批准** " 选项控制是否需要在设备开始发送数据之前手动批准。
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="添加 x.509 注册组屏幕快照" 选项控制是否需要在设备开始发送数据之前手动批准。
 
     > [!NOTE]
     > 若要了解如何自动将设备与设备模板关联，请参阅 [自动将设备与设备模板关联](#automatically-associate-with-a-device-template)。
@@ -253,7 +237,7 @@ IoT Central 的主要功能之一是能够在设备连接上自动关联设备�
 
     操作员可以使用 "**迁移**" 按钮，将设备从 "**设备**" 页关联到设备模板。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 第一次连接设备时，请勿保留或缓存 DPS 返回的设备连接字符串。 若要重新连接设备，请执行标准设备注册流以获取正确的设备连接字符串。 如果设备缓存连接字符串，则在 IoT Central 更新其使用的基础 Azure IoT 中心时，设备软件面临具有陈旧连接字符串的风险。
 
@@ -279,9 +263,9 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 遥测 | 设备到云的消息传送 |
-| 属性 | 设备孪生报告属性 |
+| properties | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
-| Command | 直接方法 |
+| 命令 | 直接方法 |
 
 ### <a name="protocols"></a>协议
 

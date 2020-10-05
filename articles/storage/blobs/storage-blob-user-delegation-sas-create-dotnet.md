@@ -10,24 +10,24 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e499b27124ed5723fb19fecbe4091f17364aea5a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 05ab666eff39412c1b169178e7ea4c68f3a81ca9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533982"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714542"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建用户委托 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用 Azure Active Directory （Azure AD）凭据为包含适用于 .NET 版本12的 Azure 存储客户端库的容器或 blob 创建用户委托 SAS。
+本文介绍如何使用 Azure Active Directory (Azure AD) 凭据为包含适用于 .NET 版本12的 Azure 存储客户端库的容器或 blob 创建用户委托 SAS。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="assign-azure-roles-for-access-to-data"></a>分配 Azure 角色以访问数据
+## <a name="assign-azure-roles-for-access-to-data"></a>分配可访问数据的 Azure 角色
 
-当 Azure AD 安全主体尝试访问 blob 数据时，该安全主体必须具有对资源的权限。 无论安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配 Azure 角色，以授予对 Azure 存储中的 blob 数据的访问权限。 有关通过 RBAC 分配权限的信息，请参阅[使用 Azure Active Directory 授予对 azure blob 和队列的访问](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)权限中的 "为**访问权限分配 azure 角色**" 一节。
+当 Azure AD 安全主体尝试访问 blob 数据时，该安全主体必须具有对资源的权限。 无论安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配 Azure 角色，以授予对 Azure 存储中的 blob 数据的访问权限。 有关通过 Azure RBAC 分配权限的信息，请参阅[使用 Azure Active Directory 授予对 azure blob 和队列的访问](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)权限中的 "为**访问权限分配 azure 角色**" 一节。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
@@ -94,7 +94,7 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 
 ## <a name="create-the-sas-token"></a>创建 SAS 令牌
 
-以下代码片段显示了如何创建新的[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) ，并提供了用户委托 SAS 的参数。 然后，该代码段调用[ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters)来获取 SAS 令牌字符串。 最后，该代码生成完整的 URI，包括资源地址和 SAS 令牌。
+以下代码片段显示了如何创建新的 [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) ，并提供了用户委托 SAS 的参数。 然后，该代码段调用 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 来获取 SAS 令牌字符串。 最后，该代码生成完整的 URI，包括资源地址和 SAS 令牌。
 
 ```csharp
 // Create a SAS token that's valid for one hour.
@@ -185,7 +185,7 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 
 ## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>示例：使用用户委托 SAS 读取 blob
 
-下面的示例从模拟的客户端应用程序测试在上一个示例中创建的用户委托 SAS。 如果 SAS 有效，则客户端应用程序能够读取 blob 的内容。 如果 SAS 无效，例如，如果它已过期，Azure 存储将返回错误代码403（禁止访问）。
+下面的示例从模拟的客户端应用程序测试在上一个示例中创建的用户委托 SAS。 如果 SAS 有效，则客户端应用程序能够读取 blob 的内容。 如果 SAS 无效，例如，如果它已过期，Azure 存储将返回错误代码 403 (禁止访问) 。
 
 ```csharp
 private static async Task ReadBlobWithSasAsync(Uri sasUri)
@@ -239,4 +239,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 - [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)
-- [创建用户委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)
+- [创建 (REST API 的用户委托 SAS) ](/rest/api/storageservices/create-user-delegation-sas)

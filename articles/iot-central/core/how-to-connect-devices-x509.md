@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6de711567e87bcdd1e58185f90264d0c9aecdfde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 22d86b96b7d9493ecc2f734be3f677a270a2739a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91341515"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714272"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用 Node.js 设备 SDK IoT Central 应用程序将设备连接到 x.509 证书
 
@@ -20,7 +20,7 @@ IoT Central 支持共享访问签名 (SAS) 和 x.509 证书，以保护设备与
 
 本文介绍了在生产环境 [中通常使用的 x.509 的两](how-to-connect-devices-x509.md#use-a-group-enrollment) 种使用方式的方法，以及用于测试的 [单个注册](how-to-connect-devices-x509.md#use-an-individual-enrollment) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 完成 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 ( # A0) ](./tutorial-connect-device-nodejs.md) 教程。
 - [Git](https://git-scm.com/download/)。
@@ -30,35 +30,34 @@ IoT Central 支持共享访问签名 (SAS) 和 x.509 证书，以保护设备与
 
 在生产环境中将 x.509 证书与组注册一起使用。 在组注册中，将根或中间的 x.509 证书添加到 IoT Central 应用程序。 具有派生自根证书或中间证书的叶证书的设备可以连接到你的应用程序。
 
-
 ## <a name="generate-root-and-device-cert"></a>生成根证书和设备证书
 
-在本部分中，你将使用 x.509 证书将设备与派生自注册组的证书的证书连接，该证书可以连接到你的 IoT Central 应用程序。
+在本部分中，将使用 x.509 证书将设备与派生自注册组的证书的证书连接，该证书可以连接到 IoT Central 应用程序。
 
 > [!WARNING]
-> 这种生成 x.509 证书的方式只是为了进行测试。 对于生产环境，应该使用官方的安全机制来生成证书。
+> 此方法生成 x.509 证书仅用于测试。 对于生产环境，应该使用官方的安全机制来生成证书。
 
 1. 打开命令提示符。 克隆证书生成脚本的 GitHub 存储库：
-    
+
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-node.git
     ```
 
-2. 导航到证书生成器脚本并安装所需的包：
+1. 导航到证书生成器脚本并安装所需的包：
 
     ```cmd/sh
     cd azure-iot-sdk-node/provisioning/tools
     npm install
     ```
 
-3. 创建根证书，然后通过运行脚本派生设备证书。 请确保对证书名称只使用小写字母数字和连字符。
+1. 创建根证书，然后通过运行脚本派生设备证书。 请确保仅对证书名称使用小写字母数字和连字符：
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
 
-这将为根和设备证书生成三个文件
+这些命令为根和设备证书生成三个文件
 
 filename | 内容
 -------- | --------
@@ -66,57 +65,47 @@ filename | 内容
 \<name\>_key pem | X509 证书的私钥
 \<name\>_fullchain pem | X509 证书的整个密钥链。
 
-
 ## <a name="create-a-group-enrollment"></a>创建组注册
 
+1. 打开 IoT Central 应用程序并导航到左侧窗格中的 " **管理**  "，然后选择 " **设备连接**"。
 
-1. 现在打开 IoT Central 应用程序，导航到左侧窗格中的 " **管理**  "，然后单击 " **设备连接**"。 
+1. 选择 " **+ 创建注册组**"，然后创建一个名为 _MyX509Group_ 的新注册组，其证明类型为 **证书 (x.509) **。
 
-2. 选择 "+ **创建注册组**"，然后创建一个名为 _MyX509Group_ 的新注册组，其证明类型为 **证书 (x.509) **：
+1. 打开创建的注册组，并选择 " **管理主要**"。
 
-
-3. 打开创建的注册组，并单击 " **管理主要**"。 
-
-4. 选择 "文件" 选项，然后上传之前生成的名为 _mytestrootcert_cert_ 的根证书文件：
-
+1. 选择 "文件" 选项，然后上传之前生成的名为 _mytestrootcert_cert_ 的根证书文件：
 
     ![证书上传](./media/how-to-connect-devices-x509/certificate-upload.png)
 
-
-
-5. 若要完成验证，请复制验证代码，并在命令提示符下使用该代码创建一个 x.509 验证证书。
+1. 若要完成验证，请生成验证代码，复制它，然后在命令提示符下使用它创建 x.509 验证证书：
 
     ```cmd/sh
     node create_test_cert.js verification --ca mytestrootcert_cert.pem --key mytestrootcert_key.pem --nonce  {verification-code}
     ```
 
-6. 将签名的验证证书上传 _verification_cert_ 以完成验证。
+1. 将签名的验证证书上传 _verification_cert_ 以完成验证：
 
     ![验证的证书](./media/how-to-connect-devices-x509/verified.png)
 
-
 你现在可以连接具有派生自此主根证书的 x.509 证书的设备。 保存注册组后，记下 "ID" 范围。
-
 
 ## <a name="run-sample-device-code"></a>运行示例设备代码
 
+1. 在 Azure IoT Central 应用程序中，选择 "**设备**"，并创建一个新设备，其中_Mytestdevice_作为 "**环境传感器**" 设备模板中的**设备 ID** 。
 
-1. 在 Azure IoT Central 应用程序中，单击 " **设备**"，并创建一个新设备，其中 _Mytestdevice_ 作为 "环境传感器" 设备模板中的 **设备 ID** 。
+1. 将 _mytestdevice_key_ 和 _mytestdevice_cert pem_ 文件复制到包含 _environmentalSensor.js_ 应用程序的文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时创建了此应用程序。
 
-
-2. 完成 "[连接设备 ( # A1) 教程](./tutorial-connect-device-nodejs.md)时，请将_mytestdevice_key Pem_和_mytestdevice_cert_连接到包含_environmentalSensor.js_应用程序的文件夹。
-
-3. 导航到包含 environmentalSensor.js 应用程序的文件夹，并运行以下命令安装 x.509 包：
+1. 导航到包含 environmentalSensor.js 应用程序的文件夹，并运行以下命令安装 x.509 包：
 
     ```cmd/sh
     npm install azure-iot-security-x509 --save
     ```
 
-4. 编辑 **environmentalSensor.js** 文件。
-    - 将 `idScope` 值替换为你之前记下的**ID 范围** 
+1. 编辑 **environmentalSensor.js** 文件。
+    - 将 `idScope` 该值替换为之前记下的 **ID 范围** 。
     - 将 `registrationId` value 替换为 `mytestdevice` 。
 
-5. 编辑语句，如下所示 `require` ：
+1. 编辑语句，如下所示 `require` ：
 
     ```javascript
     var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
@@ -128,7 +117,7 @@ filename | 内容
     var X509Security = require('azure-iot-security-x509').X509Security;
     ```
 
-6. 编辑创建客户端的部分，如下所示：
+1. 编辑创建客户端的部分，如下所示：
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';
@@ -141,7 +130,7 @@ filename | 内容
     var hubClient;
     ```
 
-7. 修改打开连接的部分，如下所示：
+1. 修改打开连接的部分，如下所示：
 
    ```javascript
     var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
@@ -149,11 +138,11 @@ filename | 内容
     hubClient.setOptions(deviceCert);
     ```
 
-8. 执行脚本，验证该设备是否已成功预配。
+1. 执行脚本并验证是否已成功设置设备：
 
     ```cmd/sh
     node environmentalSensor.js
-    ```   
+    ```
 
     你还可以验证遥测显示在仪表板上。
 
@@ -165,10 +154,9 @@ filename | 内容
 
 ## <a name="generate-self-signed-device-cert"></a>生成自签名设备证书
 
+在本部分中，将使用自签名的 x.509 证书来连接用于注册单个设备的单个注册设备。 自签名证书仅用于测试。
 
-在本部分中，将使用自签名的 x.509 证书连接用于注册单个设备的单个注册设备。 自签名证书仅用于测试。
-
-通过运行脚本创建自签名 x.509 设备证书。 请确保对证书名称只使用小写字母数字和连字符。
+通过运行脚本创建自签名 x.509 设备证书。 请确保仅对证书名称使用小写字母数字和连字符：
 
   ```cmd/sh
     cd azure-iot-sdk-node/provisioning/tools
@@ -178,46 +166,43 @@ filename | 内容
 
 ## <a name="create-individual-enrollment"></a>创建单个注册
 
-1. 在 Azure IoT Central 应用程序中，选择 " **设备**"，然后从环境传感器设备模板中创建 **设备 ID** 为 _mytestselfcertprimary_ 的新设备。 记下 **ID 范围**
+1. 在 Azure IoT Central 应用程序中，选择 " **设备**"，然后从环境传感器设备模板中创建 **设备 ID** 为 _mytestselfcertprimary_ 的新设备。 记下 **ID 范围**，稍后使用。
 
-2. 打开所创建的设备，然后选择 "**连接**"
+1. 打开所创建的设备，然后选择 " **连接**"。
 
-3. 选择 " **单独注册** " 作为 Connect 方法，将 **证书 () ** 作为机制。
+1. 选择 " **单独注册** " 作为 **Connect 方法** ， ** (的证书) ** 作为机制：
 
     ![单独注册](./media/how-to-connect-devices-x509/individual-device-connect.png)
 
+1. 选择 "主文件" 下的 "文件" 选项，并上传之前生成的名为 _mytestselfcertprimary_cert_ 的证书文件。
 
-4. 选择 "主文件" 下的 "文件" 选项，并上传之前生成的名为 _mytestselfcertprimary_cert_ 的证书文件。 
-
-5. 选择辅助证书的文件选项，并上传名为 mytestselfcertsecondary_cert 的证书文件 _。_ 然后选择 "**保存**"
+1. 选择辅助证书的文件选项，并上传名为 mytestselfcertsecondary_cert 的证书文件 _。_ 然后选择 " **保存**"：
 
     ![上传单个注册证书](./media/how-to-connect-devices-x509/individual-enrollment.png)
 
 设备现在预配了 x.509 证书。
 
-
-
 ## <a name="run-a-sample-individual-enrollment-device"></a>运行单个注册设备示例
 
-1. 完成 "[连接设备 ( # A1) 教程](./tutorial-connect-device-nodejs.md)时，将_mytestselfcertprimary_key pem_和_mytestselfcertprimary_cert_复制到包含 environmentalSensor.js 应用程序的文件夹。
+1. 将 _mytestselfcertprimary_key_ 和 _mytestselfcertprimary_cert pem_ 文件复制到包含 environmentalSensor.js 应用程序的文件夹中。 完成 " [连接设备 ( # A0) 教程](./tutorial-connect-device-nodejs.md)时创建了此应用程序。
 
-
-2. 按如下所示编辑 **environmentalSensor.js** 文件并保存。
+1. 按如下所示编辑 **environmentalSensor.js** 文件并保存。
     - 将 `idScope` 该值替换为之前记下的 **ID 范围** 。
     - 将 `registrationId` value 替换为 `mytestselfcertprimary` 。
     - 将 **Var deviceCert** 替换为：
-    ```cmd\sh
-    var deviceCert = {
-    cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
-    key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
-    };
-    ```
 
-3. 执行脚本，验证该设备是否已成功预配。
+        ```javascript
+        var deviceCert = {
+        cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
+        key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
+        };
+        ```
+
+1. 执行脚本并验证是否已成功设置设备：
 
     ```cmd/sh
     node environmentalSensor.js
-    ```   
+    ```
 
     你还可以验证遥测显示在仪表板上。
 
@@ -228,4 +213,3 @@ filename | 内容
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已了解如何使用 x.509 证书连接设备，接下来建议的下一步是了解如何 [使用监视设备连接性 Azure CLI](howto-monitor-devices-azure-cli.md)
-

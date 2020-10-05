@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 32e78b3b8ccad791bc7b9bb11123dbe901df597f
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088665"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715516"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>选择如何授权访问 Azure 门户中的队列数据
 
@@ -24,11 +24,11 @@ ms.locfileid: "90088665"
 
 ## <a name="permissions-needed-to-access-queue-data"></a>访问队列数据所需的权限
 
-你需要特定的权限，具体取决于你希望如何授权访问 Azure 门户中的队列数据。 在大多数情况下，这些权限是通过基于角色的访问控制 (RBAC) 提供的。 有关 RBAC 的详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)。
+你需要特定的权限，具体取决于你希望如何授权访问 Azure 门户中的队列数据。 在大多数情况下，这些权限通过 Azure RBAC)  (基于角色的访问控制提供。 有关 Azure RBAC 的详细信息，请参阅 [什么是 AZURE rbac) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
 
 ### <a name="use-the-account-access-key"></a>使用帐户访问密钥
 
-若要使用帐户访问密钥访问队列数据，必须为你分配一个 Azure 角色，其中包括 RBAC 操作 " **storageAccounts/listkeys/action**"。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
+若要使用帐户访问密钥访问队列数据，你必须将 Azure 角色分配给你，其中包括 Azure RBAC 操作 **storageAccounts/listkeys/action**。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
 
 - Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
 - Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
@@ -74,11 +74,11 @@ ms.locfileid: "90088665"
 
 如果使用帐户访问密钥进行身份验证，则会在门户中看到“访问密钥”已指定为身份验证方法：
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="显示用户当前正在访问具有帐户密钥的队列的屏幕截图":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="显示如何导航到 Azure 门户中的队列数据的屏幕截图":::
 
 若要改用 Azure AD 帐户，请单击图中突出显示的链接。 如果你通过分配给你的 Azure 角色获得了相应的权限，则可以继续访问。 但是，如果你缺少相应的权限，则会看到如下所示的错误消息：
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Azure AD 帐户不支持访问时显示的错误":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="显示如何导航到 Azure 门户中的队列数据的屏幕截图":::
 
 请注意，如果 Azure AD 帐户无权查看队列，则不会在列表中显示任何队列。 单击“切换为访问密钥”链接，以再次使用访问密钥进行身份验证。
 
@@ -86,7 +86,7 @@ ms.locfileid: "90088665"
 
 如果使用 Azure AD 帐户进行身份验证，则会在门户中看到“Azure AD 用户帐户”已指定为身份验证方法：
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="显示用户当前正在访问 Azure AD 帐户的队列的屏幕截图":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="显示如何导航到 Azure 门户中的队列数据的屏幕截图":::
 
 若要改用帐户访问密钥，请单击图中突出显示的链接。 如果你有权访问帐户密钥，则可以继续访问。 但是，如果你没有帐户密钥的访问权限，则 Azure 门户会显示错误消息。
 
@@ -95,6 +95,6 @@ ms.locfileid: "90088665"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure Active Directory 验证对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md)
-- [在 Azure 门户中使用 RBAC 授予对 Azure 容器和队列的访问权限](../common/storage-auth-aad-rbac-portal.md)
-- [在 Azure CLI 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](../common/storage-auth-aad-rbac-cli.md)
-- [在 PowerShell 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](../common/storage-auth-aad-rbac-powershell.md)
+- [使用 Azure 门户为 blob 和队列数据分配 Azure 角色](../common/storage-auth-aad-rbac-portal.md)
+- [使用 Azure CLI 分配 Azure 角色以访问 blob 和队列数据](../common/storage-auth-aad-rbac-cli.md)
+- [使用 Azure PowerShell 模块分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-powershell.md)

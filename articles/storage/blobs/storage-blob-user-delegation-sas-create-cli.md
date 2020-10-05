@@ -11,24 +11,24 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ddfa12bd758ffc362c51e10f63800665109d54a6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 453eaa816ad48626b476fa392999f44e3c1a10cd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534067"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714562"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>为具有 Azure CLI 的容器或 blob 创建用户委托 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用 Azure Active Directory （Azure AD）凭据为包含 Azure CLI 的容器或 blob 创建用户委托 SAS。
+本文介绍如何使用 Azure Active Directory (Azure AD) 凭据为包含 Azure CLI 的容器或 blob 创建用户委托 SAS。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="install-the-latest-version-of-the-azure-cli"></a>安装最新版本的 Azure CLI
 
-若要使用 Azure CLI 使用 Azure AD 凭据来保护 SAS，首先请确保已安装最新版本的 Azure CLI。 有关安装 Azure CLI 的详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+若要使用 Azure CLI 使用 Azure AD 凭据来保护 SAS，首先请确保已安装最新版本的 Azure CLI。 有关安装 Azure CLI 的详细信息，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 若要使用 Azure CLI 创建用户委托 SAS，请确保已安装2.0.78 或更高版本。 若要查看已安装的版本，请使用 `az --version` 命令。
 
@@ -36,13 +36,13 @@ ms.locfileid: "87534067"
 
 用你的 Azure AD 凭据登录到 Azure CLI。 有关详细信息，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
 
-## <a name="assign-permissions-with-rbac"></a>通过 RBAC 分配权限
+## <a name="assign-permissions-with-azure-rbac"></a>向 Azure RBAC 分配权限
 
-若要从 Azure PowerShell 创建用户委托 SAS，必须为用于登录 Azure CLI 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey**操作的角色。 此权限允许 Azure AD 帐户请求*用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey**操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。
+若要从 Azure PowerShell 创建用户委托 SAS，必须为用于登录 Azure CLI 的 Azure AD 帐户分配包含 storageAccounts **//blobServices/generateUserDelegationKey** 操作的角色。 此权限允许 Azure AD 帐户请求 *用户委托密钥*。 用户委托密钥用于对用户委托 SAS 进行签名。 提供 storageAccounts/ **blobServices/generateUserDelegationKey** 操作的角色必须在存储帐户、资源组或订阅的级别上进行分配。
 
 如果你没有足够的权限将 Azure 角色分配到 Azure AD 安全主体，你可能需要要求帐户所有者或管理员分配必要的权限。
 
-下面的示例分配**存储 Blob 数据参与者**角色，其中包括 storageAccounts **//blobServices/generateUserDelegationKey**操作。 角色的作用域为存储帐户的级别。
+下面的示例分配 **存储 Blob 数据参与者** 角色，其中包括 storageAccounts **//blobServices/generateUserDelegationKey** 操作。 角色的作用域为存储帐户的级别。
 
 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -53,7 +53,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-有关内置角色的详细信息，包括**storageAccounts//blobServices/generateUserDelegationKey**操作，请参阅[Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+有关内置角色的详细信息，包括 **storageAccounts//blobServices/generateUserDelegationKey** 操作，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>使用 Azure AD 凭据来保护 SAS
 
@@ -61,13 +61,13 @@ az role assignment create \
 
 由于用户委托密钥的有效最大时间间隔是从开始日期起的7天，因此，你应为开始时间在7天内的 SAS 指定到期时间。 此 SA 在用户委托密钥过期后无效，因此过期时间超过7天的 SAS 仍将仅适用于7天。
 
-创建用户委托 SAS 时， `--auth-mode login` 和 `--as-user parameters` 是必需的。 指定参数的*登录名*， `--auth-mode` 以便向 Azure 存储空间发出的请求授权 Azure AD 凭据。 指定 `--as-user` 参数以指示返回的 sas 应为用户委托 sas。
+创建用户委托 SAS 时， `--auth-mode login` 和 `--as-user parameters` 是必需的。 指定参数的 *登录名* ， `--auth-mode` 以便向 Azure 存储空间发出的请求授权 Azure AD 凭据。 指定 `--as-user` 参数以指示返回的 sas 应为用户委托 sas。
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>为容器创建用户委托 SAS
 
-若要为具有 Azure CLI 的容器创建用户委托 SAS，请调用[az storage container 生成-SAS](/cli/azure/storage/container#az-storage-container-generate-sas)命令。
+若要为具有 Azure CLI 的容器创建用户委托 SAS，请调用 [az storage container 生成-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) 命令。
 
-容器上的用户委托 SAS 支持的权限包括添加、创建、删除、列出、读取和写入。 权限可以单独指定或组合指定。 有关这些权限的详细信息，请参阅[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
+容器上的用户委托 SAS 支持的权限包括添加、创建、删除、列出、读取和写入。 权限可以单独指定或组合指定。 有关这些权限的详细信息，请参阅 [创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
 以下示例返回容器的用户委托 SAS 令牌。 请记住，用自己的值替换括号中的占位符值：
 
@@ -89,9 +89,9 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>为 blob 创建用户委托 SAS
 
-若要为具有 Azure CLI 的 blob 创建用户委托 SAS，请调用[az storage blob 生成 sas](/cli/azure/storage/blob#az-storage-blob-generate-sas)命令。
+若要为具有 Azure CLI 的 blob 创建用户委托 SAS，请调用 [az storage blob 生成 sas](/cli/azure/storage/blob#az-storage-blob-generate-sas) 命令。
 
-Blob 上的用户委托 SAS 支持的权限包括添加、创建、删除、读取和写入。 权限可以单独指定或组合指定。 有关这些权限的详细信息，请参阅[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
+Blob 上的用户委托 SAS 支持的权限包括添加、创建、删除、读取和写入。 权限可以单独指定或组合指定。 有关这些权限的详细信息，请参阅 [创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
 以下语法返回 blob 的用户委托 SAS。 该示例指定 `--full-uri` 参数，该参数返回附加 SAS 令牌的 BLOB URI。 请记住，用自己的值替换括号中的占位符值：
 
@@ -119,7 +119,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="revoke-a-user-delegation-sas"></a>撤消用户委托 SAS
 
-若要从 Azure CLI 撤消用户委托 SAS，请调用[az storage account revoke-keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys)命令。 此命令吊销与指定存储帐户关联的所有用户委托密钥。 与这些密钥关联的所有共享访问签名都将失效。
+若要从 Azure CLI 撤消用户委托 SAS，请调用 [az storage account revoke-keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) 命令。 此命令吊销与指定存储帐户关联的所有用户委托密钥。 与这些密钥关联的所有共享访问签名都将失效。
 
 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -134,5 +134,5 @@ az storage account revoke-delegation-keys \
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建用户委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)
+- [创建 (REST API 的用户委托 SAS) ](/rest/api/storageservices/create-user-delegation-sas)
 - [获取用户委派密钥操作](/rest/api/storageservices/get-user-delegation-key)

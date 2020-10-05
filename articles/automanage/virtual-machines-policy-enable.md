@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 47f4085ff01526853fab29da2c1bc1a3e8998d23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933445"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714906"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>通过 Azure 策略为虚拟机启用 Automanage
 
@@ -28,12 +28,12 @@ ms.locfileid: "90933445"
 > 免费试用帐户无法访问本教程中使用的虚拟机。 请升级为即用即付订阅。
 
 > [!IMPORTANT]
-> 若要启用 Automanage： **Owner** 角色或 **参与者** 以及 **用户访问管理员** 角色，需要以下 RBAC 权限。
+> 若要启用 Automanage： **Owner** 角色或 **参与者** 以及 **用户访问管理员** 角色，需要以下 Azure RBAC 权限。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录到 [Azure 门户](https://portal.azure.com/)。
 
 
 ## <a name="locate-and-assign-the-policy"></a>找到并分配策略

@@ -7,16 +7,16 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c82858294054b50d6edae42a3d41e9fcb89ca89d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577792"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715064"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT 模型存储库
 
-通过 Azure IoT 模型存储库，设备构建者可以管理和共享 IoT 即插即用设备型号。 设备模型是使用 [数字孪生建模语言 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)定义的 JSON LD 文档。 存储在模型存储库服务中的模型可通过访问控制或公开方式与解决方案开发人员共享，无需任何身份验证即可集成和开发 IoT 即插即用云解决方案。
+借助 Azure IoT 模型存储库，设备构建者可以管理和共享 IoT 即插即用设备模型。 设备模型是使用 [数字孪生建模语言 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)定义的 JSON LD 文档。 存储在模型存储库服务中的模型可通过访问控制或公开方式与解决方案开发人员共享，无需任何身份验证即可集成和开发 IoT 即插即用云解决方案。
 
 > [!NOTE]
 > 设备构建者可以选择直接在设备上实现 IoT 即插即用设备型号，使用模块，或在 IoT Edge 模块中实现。
@@ -48,7 +48,7 @@ var httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
 若要使用 CLI 查看公共模型，请参阅 Azure CLI [获取模型](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) "命令。
@@ -118,7 +118,7 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 
 ```csharp
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
 若要使用 CLI 查看公司模型或共享模型，请参阅 Azure CLI [获取模型](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) "命令。
@@ -164,16 +164,16 @@ var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09
 ```csharp
 var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-09-30", httpContent).ConfigureAwait(false);
+var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
 ```
 
 若要使用 CLI 上传模型，请参阅 Azure CLI [创建模型](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) "命令。
 
 ### <a name="publish-a-model"></a>发布模型
 
-若要发布模型，必须满足以下要求：
+要发布模型，必须满足以下要求：
 
-1. 你的组织需要成为 [Microsoft 合作伙伴网络](https://docs.microsoft.com/partner-center/) 的成员才能发布模型。 若要创建合作伙伴中心帐户，请参阅 [创建合作伙伴中心帐户](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account)。 帐户获得批准后，可以发布模型。 有关详细信息，请参阅 [合作伙伴中心常见问题](https://support.microsoft.com/help/4340639/partner-center-account-faqs)。
+1. 你的组织需要是 [Microsoft 合作伙伴网络](https://docs.microsoft.com/partner-center/)的成员才能发布模型。 要创建合作伙伴中心帐户，请参阅[创建合作伙伴中心帐户](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account)。 在你的帐户获得批准后，即可发布模型。 有关详细信息，请参阅[合作伙伴中心常见问题解答](https://support.microsoft.com/help/4340639/partner-center-account-faqs)。
 
 2. 用户必须是存储库租户的 " *发布者* " 角色的成员。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017228"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716103"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -21,22 +21,22 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 <a id="azure-role-based-access-control-rbac"></a>
 
-## <a name="role-based-access-control"></a>基于角色的访问控制
+## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
-RBAC 使用角色分配对服务主体有效地应用权限集。 安全主体是一个对象，表示 Azure Active Directory (AD) 中定义的用于请求访问 Azure 资源的用户、组、服务主体或托管标识。
+Azure RBAC 使用角色分配有效地将权限集应用到 *安全主体*。 安全主体是一个对象，表示 Azure Active Directory (AD) 中定义的用于请求访问 Azure 资源的用户、组、服务主体或托管标识。
 
 一般情况下，这些 Azure 资源限制为顶级资源（例如：Azure 存储帐户）。 就 Azure 存储以及随后的 Azure Data Lake Storage Gen2 而言，此机制已扩展到容器（文件系统）资源。
 
-若要了解如何为存储帐户范围内的安全主体分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要了解如何将角色分配给存储帐户范围内的安全主体，请参阅 [使用 Azure 门户分配 Azure 角色以访问 blob 和队列数据](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 来宾用户无法创建角色分配。
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>角色分配对文件和目录级访问控制列表的影响
 
-虽然使用 Azure 角色分配是一种强大的访问权限控制机制，但相对于 ACL，这种机制并不精细。 RBAC 的最小粒度在容器级别，其评估优先级高于 ACL。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
+虽然使用 Azure 角色分配是一种强大的访问权限控制机制，但相对于 ACL，这种机制并不精细。 Azure RBAC 的最小粒度为容器级别，其计算优先级高于 Acl。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
 
-通过某个[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或某个自定义角色授予安全主体 RBAC 数据权限后，在授权请求时首先评估这些权限。 如果请求的操作通过安全主体的 Azure 角色分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 Azure 角色分配或请求的操作与分配的权限不匹配，则通过执行 ACL 检查来确定安全主体是否有权执行请求的操作。
+通过 [内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或自定义角色向安全主体授予 Azure RBAC 数据权限时，将首先评估请求的授权。 如果请求的操作通过安全主体的 Azure 角色分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 Azure 角色分配或请求的操作与分配的权限不匹配，则通过执行 ACL 检查来确定安全主体是否有权执行请求的操作。
 
 > [!NOTE]
 > 如果为安全主体分配了“存储 Blob 数据所有者”内置角色，则会将安全主体视为“超级用户”并向其授予对所有转变操作（包括设置目录或文件的所有者，以及设置他们不是所有者的目录或文件的 ACL）的完全访问权限。 超级用户访问是唯一获准的更改资源所有者的方式。
@@ -102,7 +102,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 | **执行 (X)** | 不表示 Data Lake Storage Gen2 上下文中的任何内容 | 需要遍历目录的子项 |
 
 > [!NOTE]
-> 如果仅使用 ACL（无 RBAC）授予权限，则要授予安全主体对文件的读取或写入访问权限，需要授予安全主体对容器以及通向该文件的文件夹层次结构中每个文件夹的“执行”权限。
+> 如果你使用的是仅使用 Acl (没有 Azure RBAC) 来授予权限，则若要向安全主体授予对文件的读取或写入权限，你需要为该容器以及导致该文件的文件夹层次结构中的每个文件夹授予安全主体 **执行** 权限。
 
 #### <a name="short-forms-for-permissions"></a>权限的简短形式
 

@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78c25afe69565840ca1af013d29dd512550241b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280212"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714761"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -31,7 +31,7 @@ ms.locfileid: "91280212"
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>将角色分配给 Azure AD 安全主体
 
-若要从 Azure 存储应用程序对安全主体进行身份验证，请先为该安全主体配置基于角色的访问控制 (RBAC) 设置。 Azure 存储空间定义了包含容器和队列权限的内置角色。 如果将 RBAC 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
+若要从 Azure 存储应用程序对安全主体进行身份验证，请先为该安全主体配置 azure RBAC) 设置 (azure 基于角色的访问控制。 Azure 存储空间定义了包含容器和队列权限的内置角色。 如果将 Azure 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅 [使用 AZURE RBAC 管理 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>将应用程序注册到 Azure AD 租户
 
@@ -46,7 +46,7 @@ ms.locfileid: "91280212"
 
 注册应用程序后，可在“设置”下看到应用程序 ID（或客户端 ID）：
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="显示客户端 ID 的屏幕截图":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="显示如何向 Azure AD 注册存储应用程序的屏幕截图":::
 
 有关向 Azure AD 注册应用程序的详细信息，请参阅[将应用程序与 Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md) 集成。
 
@@ -59,13 +59,11 @@ ms.locfileid: "91280212"
 1. 在 " **请求 API 权限** " 窗格上，在 " **应用程序需要何种类型的权限"** 下，观察可用权限类型是否为 " **委托权限**"。 默认已自动选择此选项。
 1. 在 " **权限**" 下，选中 " **user_impersonation**" 旁边的复选框，然后选择 " **添加权限** " 按钮。
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="显示存储 API 权限的屏幕截图":::
-
-1. 接下来，通过单击 " **授予默认目录的管理员许可**" 向管理员授予对这些权限的许可。
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="显示如何向 Azure AD 注册存储应用程序的屏幕截图" 向管理员授予对这些权限的许可。
 
 现在， **API 权限** 窗格显示已注册的 Azure AD 应用程序有权访问 Microsoft Graph 和 Azure 存储 api，并授予默认目录许可。 首次向 Azure AD 注册应用时，系统会自动授予对 Microsoft Graph 的权限。
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="显示已注册应用的 API 权限的屏幕截图":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="显示如何向 Azure AD 注册存储应用程序的屏幕截图":::
 
 ### <a name="create-a-client-secret"></a>创建客户端机密
 
@@ -87,7 +85,7 @@ ms.locfileid: "91280212"
 1. 在“管理”部分中，选择“身份验证”设置。 
 1. 在“隐式授权”部分中，选中相应的复选框以启用 ID 令牌，如下图所示：
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="显示如何启用隐式授权流设置的屏幕截图":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="显示如何向 Azure AD 注册存储应用程序的屏幕截图":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>用于获取令牌的客户端库
 
@@ -127,7 +125,7 @@ ms.locfileid: "91280212"
 
 若要运行代码示例，请在 Azure Active Directory 所在的同一订阅中创建一个存储帐户。 然后在该存储帐户中创建一个容器。 示例代码将在此容器中创建块 Blob。
 
-接下来，将“存储 Blob 数据参与者”角色显式分配到用于运行示例代码的用户帐户。 若要了解如何在 Azure 门户中分配此角色的说明，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac-portal.md)。
+接下来，将“存储 Blob 数据参与者”角色显式分配到用于运行示例代码的用户帐户。 有关如何在 Azure 门户中分配此角色的说明，请参阅 [使用 Azure 门户分配 Azure 角色以访问 blob 和队列数据](storage-auth-aad-rbac-portal.md)。
 
 > [!NOTE]
 > 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
@@ -291,5 +289,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>后续步骤
 
 - [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)
-- [使用 RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)
+- [使用 Azure RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)
 - [使用 Azure Active Directory 和 Azure 资源的托管标识验证对 blob 和队列的访问权限](storage-auth-aad-msi.md)

@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707911"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715624"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>为块 blob 配置对象复制
 
@@ -37,7 +37,7 @@ ms.locfileid: "90707911"
 
 配置对象复制时，可以通过 Azure 存储资源提供程序在目标帐户上创建复制策略。 创建复制策略后，Azure 存储为其分配策略 ID。 然后，你必须使用策略 ID 将该复制策略与源帐户相关联。 源帐户和目标帐户上的策略 ID 必须相同，才能进行复制。
 
-若要为存储帐户配置对象复制策略，你必须分配有 Azure 资源管理器 **参与者** 角色，范围为存储帐户级别或更高级别。 有关详细信息，请参阅 Azure 基于角色的访问控制中的 [azure 内置角色](../../role-based-access-control/built-in-roles.md) (RBAC) 文档。
+若要为存储帐户配置对象复制策略，你必须分配有 Azure 资源管理器 **参与者** 角色，范围为存储帐户级别或更高级别。 有关详细信息，请参阅 azure RBAC) 文档中基于 Azure 角色的访问控制中的 [azure 内置角色](../../role-based-access-control/built-in-roles.md) (。
 
 ### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>当你有权访问两个存储帐户时，配置对象复制
 
@@ -65,19 +65,19 @@ ms.locfileid: "90707911"
 
     下图展示了限制在复制规则中复制哪些 blob 的筛选器。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="展示了复制规则的筛选器的屏幕截图":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
 
 1. 默认情况下，复制范围设置为只复制新对象。 若要复制容器中的所有对象，或从自定义日期和时间开始复制对象，请选择“更改”链接，然后为容器对配置复制范围。
 
     下图显示了从指定的日期和时间开始复制对象的自定义复制范围。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="展示了对象复制的自定义复制范围的屏幕截图":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
 
 1. 选择“保存并应用”，以创建复制策略，并开始复制数据。
 
 配置对象复制后，Azure 门户会显示复制策略和规则，如下图所示。
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="显示中的对象复制策略的屏幕截图 Azure 门户":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -238,7 +238,7 @@ az storage account or-policy show \
 
 如果你没有访问源存储帐户的权限，则可以在目标帐户上配置对象复制，并向另一个用户提供一个包含策略定义的 JSON 文件，以便在源帐户上创建相同的策略。 例如，如果源帐户与目标帐户位于不同的 Azure AD 租户中，则可以使用此方法配置对象复制。
 
-请记住，你必须被分配到作用域为目标存储帐户级别或更高级别的 Azure 资源管理器 **参与者** 角色才能创建策略。 有关详细信息，请参阅 Azure 基于角色的访问控制中的 [azure 内置角色](../../role-based-access-control/built-in-roles.md) (RBAC) 文档。
+请记住，你必须被分配到作用域为目标存储帐户级别或更高级别的 Azure 资源管理器 **参与者** 角色才能创建策略。 有关详细信息，请参阅 azure RBAC) 文档中基于 Azure 角色的访问控制中的 [azure 内置角色](../../role-based-access-control/built-in-roles.md) (。
 
 下表总结了每个方案中的 JSON 文件中的策略 ID 和规则 Id 要使用的值。
 
@@ -284,16 +284,9 @@ az storage account or-policy show \
 1. 选择 " **上载复制规则**"。
 1. 上传 JSON 文件。 Azure 门户显示要创建的策略和规则，如下图所示。
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="显示如何上传 JSON 文件以定义复制策略的屏幕截图":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图" **下载规则**"，如下图所示。
 
-1. 选择 " **上传** "，在目标帐户上创建复制策略。
-
-然后，你可以下载包含策略定义的 JSON 文件，你可以向其他用户提供该文件来配置源帐户。 若要下载此 JSON 文件，请执行以下步骤：
-
-1. 在 Azure 门户中导航到目标帐户的 **对象复制** 设置。
-1. 选择要下载的策略旁边的 " **更多** " 按钮，然后选择 " **下载规则**"，如下图所示。
-
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="显示如何将复制规则下载到 JSON 文件的屏幕截图":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
 
 1. 将 JSON 文件保存到本地计算机，以便与其他用户共享，以便在源帐户上配置策略。
 

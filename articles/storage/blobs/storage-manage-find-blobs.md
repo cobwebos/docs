@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 70d0e31809227d5e27f8f2b22a7703d5a8ccca3c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275058"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713690"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>通过 Blob 索引 (预览) 管理和查找 Azure Blob 数据
 
@@ -104,7 +104,7 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 |     >=     |  大于或等于 | "Priority" >= "5" |
 |     <      |  小于   | "Age" < "32" |
 |     <=     |  小于或等于  | "公司" <= "Contoso" |
-|    AND     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
+|    和     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
 | @container | 作用域到特定容器 | @container = ' videofiles ' 和 "status" = ' done ' |
 
 > [!NOTE]
@@ -128,7 +128,7 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 |     >=     |  大于或等于 | "Priority" >= "5" |
 |     <      |  小于   | "Age" < "32" |
 |     <=     |  小于或等于  | "公司" <= "Contoso" |
-|    AND     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
+|    和     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
 |     OR     | 逻辑或   | "状态" = "完成" 或 "优先级" >= "05" |
 
 > [!NOTE]
@@ -146,7 +146,7 @@ Blob 索引的标记不仅有助于对 blob 数据进行分类、管理和搜索
 
 以下示例生命周期管理规则适用于容器 "videofiles" 中的块 blob，以及用于仅在数据与的 blob 索引标记条件匹配时用于存档存储的层 blob ```"Status" = 'Processed' AND "Source" == 'RAW'``` 。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 ![Azure 门户中的生命周期管理的 Blob 索引匹配规则示例](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -196,7 +196,7 @@ Blob 索引的标记不仅有助于对 blob 数据进行分类、管理和搜索
 
 您可以使用以下方法之一来授权对 blob 索引的访问：
 
-- 通过使用基于角色的访问控制 (RBAC) 授予 Azure Active Directory (Azure AD) 安全主体的权限。 Microsoft 建议使用 Azure AD，以实现更高的安全性和易用性。 有关将 Azure AD 与 blob 操作一起使用的详细信息，请参阅 [使用 Azure Active Directory 授予对 blob 和队列的访问权限](../common/storage-auth-aad.md)。
+- 通过使用 azure 基于角色的访问控制 (Azure RBAC) 授予 Azure Active Directory (Azure AD) 安全主体的权限。 Microsoft 建议使用 Azure AD，以实现更高的安全性和易用性。 有关将 Azure AD 与 blob 操作一起使用的详细信息，请参阅 [使用 Azure Active Directory 授予对 blob 和队列的访问权限](../common/storage-auth-aad.md)。
 - 通过使用共享访问签名 (SAS) 委托对 blob 索引的访问。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
 - 通过使用帐户访问密钥向使用共享密钥的操作授权。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key)。
 
@@ -205,7 +205,7 @@ Blob 索引标记是 blob 数据的子资源。 具有权限的用户或用于�
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 可以向使用 [Azure AD 标识](../common/storage-auth-aad.md) 的调用方授予对 blob 索引标记进行操作的以下权限。
 
-|   Blob 操作  |  RBAC 操作   |
+|   Blob 操作  |  Azure RBAC 操作   |
 |--------------------|----------------|
 | 按标记查找 Blob | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 | 设置 Blob 标记      | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write |
@@ -297,7 +297,7 @@ az provider register --namespace 'Microsoft.Storage'
 - CopyBlob (在目标 blob 上应用了标记的另一个存储帐户中 Async copy) 当前导致 blob 索引引擎不返回筛选器集中的 blob 及其标记。 建议在过渡期间使用 URL (同步副本) 中的 CopyBlob。
 - 在创建快照时保留标记;但当前不支持升级快照，并且可能会导致空标记集。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Blob 索引可以帮助我筛选和查询 blob 中的内容吗？
 不可以，blob 索引标记可帮助你查找要查找的 blob。 如果需要在 blob 内搜索，请使用查询加速或 Azure 搜索。

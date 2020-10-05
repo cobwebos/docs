@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653794"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714987"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 存储服务简介
 
@@ -111,7 +111,7 @@ Azure 存储提供多种类型的存储帐户。 每种类型支持不同的功�
 
 对 Azure 存储的每个请求必须获得授权。 Azure 存储支持以下授权方法：
 
-- **用于 Blob 和队列数据的 Azure Active Directory (Azure AD) 集成。** Azure 存储支持通过基于角色的访问控制 (RBAC) 使用 Azure AD 为 Blob 和队列服务进行身份验证和授权。 建议使用 Azure AD 进行授权请求，以确保极高的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure Blob 和队列访问进行授权](storage-auth-aad.md)。
+- **用于 Blob 和队列数据的 Azure Active Directory (Azure AD) 集成。** Azure 存储通过 Azure RBAC)  (azure 基于角色的访问控制，支持 Azure AD 用于 Blob 和队列服务的身份验证和授权。 建议使用 Azure AD 进行授权请求，以确保极高的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure Blob 和队列访问进行授权](storage-auth-aad.md)。
 - **Azure AD Azure 文件的 SMB 的授权。** Azure 文件支持通过 SMB (服务器消息块进行基于标识的授权) 通过 Azure Active Directory 域服务 (Azure AD DS) 或本地 Active Directory 域服务 (预览版) 。 已加入域的 Windows Vm 可使用 Azure AD 凭据访问 Azure 文件共享。 有关详细信息，请参阅 [Azure 文件基于标识的身份验证支持概述，了解如何使用](../files/storage-files-active-directory-overview.md) [azure 文件部署和规划 azure 文件部署](../files/storage-files-planning.md#identity)。
 - **通过共享密钥进行授权。** Azure 存储 Blob、文件、队列和表服务支持通过共享密钥授权。 使用共享密钥授权的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
 - **使用共享访问签名 (SAS) 进行授权。** 共享访问签名 (SAS) 是一个字符串，其中包含的安全令牌可以追加到存储资源的 URI。 安全令牌封装了各种约束，例如权限、访问时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。

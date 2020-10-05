@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335375"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715451"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 应用程序配置常见问题解答
 
@@ -94,7 +94,7 @@ ms.locfileid: "91335375"
     对于标准层存储，每日前 200,000 个请求包含在每日费用中。 其他请求按超额计费。
 
 - **服务级别协议**：标准层具有 99.9% 的 SLA 可用性。 免费层没有 SLA。
-- **安全功能**：这两个层都包括基本安全功能，包括使用 Microsoft 管理的密钥进行加密、通过 HMAC 或 Azure Active Directory 进行身份验证、RBAC 支持和托管标识。 标准层提供更高级的安全功能，包括对客户管理的密钥的私有链接支持和加密。
+- **安全功能**：这两个层都包含基本的安全功能，包括对 Microsoft 托管密钥的加密、通过 HMAC 或 Azure Active Directory 的身份验证、Azure RBAC 支持和托管标识。 标准层提供更高级的安全功能，包括对客户管理的密钥的私有链接支持和加密。
 - **成本**：标准层存储每日收取使用费。 对超过每日配额的请求也收取超额费用。 免费层的存储可免费使用。
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>我可以将存储从免费层升级到标准层吗？ 我可以将存储从标准层降级到免费层吗？

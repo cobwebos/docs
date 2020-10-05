@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/04/2020
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710288"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715328"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -81,8 +81,10 @@ ms.locfileid: "91710288"
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到警报所针对的指标
 
-如果希望针对特定指标发出警报，但看不到该资源的任何指标，请[检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
-如果可以看到该资源的某些指标，但找不到某个特定的指标，请[检查该指标是否可用](./metrics-supported.md)。如果可用，请参阅指标说明，了解它是否仅适用于该资源的特定版本。
+如果你想要针对特定指标发出警报，但在创建警报规则时看不到它，请检查以下内容：
+- 如果看不到资源的任何指标，请 [检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
+- 如果你可以看到资源的一些指标，但找不到特定的指标，请 [检查该指标是否可用](./metrics-supported.md)，如果是，请查看指标说明，以检查其是否仅适用于特定版本的资源。
+- 如果该指标不适用于资源，则可在资源日志中使用，并且可以使用日志警报进行监视。 有关如何 [从 Azure 资源收集和分析资源日志](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)的详细信息，请参阅此处。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>找不到警报所针对的指标维度
 
