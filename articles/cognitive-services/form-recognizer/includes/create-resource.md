@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: 49feedaa087a89b2dfc5d90c7230b7abf23ed1ba
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815730"
 ---
 访问 Azure 门户并<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="创建新的表单识别器资源" target="_blank">创建新的表单识别器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在“创建”窗格中提供以下信息：

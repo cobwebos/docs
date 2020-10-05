@@ -8,10 +8,10 @@ ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
 ms.openlocfilehash: b08a1c60b1225b2786ea869f96ac40cc651c82f3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88185598"
 ---
 # <a name="how-to-generate-an-azure-database-for-mariadb-connection-string-with-powershell"></a>如何使用 PowerShell 生成 Azure Database for MariaDB 连接字符串

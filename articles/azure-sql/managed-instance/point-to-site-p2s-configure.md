@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91617683"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 托管实例的点到站点连接
