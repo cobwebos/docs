@@ -3,12 +3,12 @@ title: 如何创建适用于 Windows 的来宾配置策略
 description: 了解如何创建适用于 Windows 的 Azure Policy 来宾配置策略。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 36e71f00a4613e1723645f48d9e57aed9e1e9a8a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719387"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728924"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的来宾配置策略
 
@@ -23,10 +23,8 @@ ms.locfileid: "88719387"
 请执行以下操作来创建你自己的配置，用于验证 Azure 或非 Azure 计算机的状态。
 
 > [!IMPORTANT]
-> 包含来宾配置的自定义策略是一项预览功能。
->
 > 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。
-> 若要在所有 Windows 计算机上大规模部署扩展，请分配以下策略定义： `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> 若要在所有 Windows 计算机上大规模部署该扩展，请分配以下策略定义：`Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
@@ -54,7 +52,7 @@ ms.locfileid: "88719387"
 
 - PowerShell 6.2 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/scripting/install/installing-powershell)。
 - Azure PowerShell 1.5.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-az-ps)。
-  - 仅 Az 模块 "Az. Accounts" 和 "Az" 是必需的。
+  - 只有 Az 模块“Az.Accounts”和“Az.Resources”是必需的。
 
 ### <a name="install-the-module"></a>安装模块
 
@@ -118,7 +116,7 @@ return @{
 }
 ```
 
-必须将原因属性添加到作为嵌入类的资源的架构 MOF。
+必须将 Reasons 属性添加到嵌入类形式的资源的架构 MOF。
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -368,7 +366,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用标记筛选来宾配置策略
 
-来宾配置模块中由 cmdlet 创建的策略定义可以视需要选择包括标记筛选器。 `New-GuestConfigurationPolicy` 的 Tag 参数支持包含各个标记条目的哈希表数组。 标记将添加到 `If` 策略定义的部分，并且不能通过策略分配进行修改。
+来宾配置模块中由 cmdlet 创建的策略定义可以视需要选择包括标记筛选器。 `New-GuestConfigurationPolicy` 的 Tag 参数支持包含各个标记条目的哈希表数组。 标记会添加到策略定义的 `If` 部分，并且不能通过策略分配进行修改。
 
 下面给出了筛选标记的策略定义的示例代码片段。
 
@@ -403,13 +401,22 @@ cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage`
 下面的示例创建策略定义来审核服务，其中用户在策略分配时从列表中进行选择。
 
 ```azurepowershell-interactive
+# This DSC Resource text:
+Service 'UserSelectedNameExample'
+      {
+          Name = 'ParameterValue'
+          Ensure = 'Present'
+          State = 'Running'
+      }
+
+# Would require the following hashtable:
 $PolicyParameterInfo = @(
     @{
         Name = 'ServiceName'                                            # Policy parameter name (mandatory)
         DisplayName = 'windows service name.'                           # Policy parameter display name (mandatory)
         Description = "Name of the windows service to be audited."      # Policy parameter description (optional)
         ResourceType = "Service"                                        # DSC configuration resource type (mandatory)
-        ResourceId = 'windowsService'                                   # DSC configuration resource property name (mandatory)
+        ResourceId = 'UserSelectedNameExample'                                   # DSC configuration resource id (mandatory)
         ResourcePropertyName = "Name"                                   # DSC configuration resource property name (mandatory)
         DefaultValue = 'winrm'                                          # Policy parameter default value (optional)
         AllowedValues = @('BDESVC','TermService','wuauserv','winrm')    # Policy parameter allowed values (optional)
@@ -532,7 +539,7 @@ wmi_service -out ./Config
 
 支持文件必须打包在一起。 来宾配置使用已完成的包来创建 Azure Policy 定义。
 
-`New-GuestConfigurationPackage` cmdlet 创建包。 对于第三方内容，使用 FilesToInclude 参数将 InSpec 内容添加到包。 对于 Linux 包，无需指定 **ChefProfilePath** 。
+`New-GuestConfigurationPackage` cmdlet 创建包。 对于第三方内容，使用 FilesToInclude 参数将 InSpec 内容添加到包。 不需要如同 Linux 包一样指定 ChefProfilePath。
 
 - **Name**：来宾配置包名称。
 - **配置**：已编译的配置文档完整路径。

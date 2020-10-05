@@ -3,12 +3,12 @@ title: 常见问题 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: aa108d961fca3819b0747332c363b324c05b7994
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318494"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729094"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -270,6 +270,20 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 事件中心的技术支持可通过 [Azure 服务总线的 Microsoft 问答页面](/answers/topics/azure-service-bus.html)获取。 计费和订阅管理支持免费提供。
 
 若要详细了解我们的 SLA，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)页面。
+
+## <a name="azure-stack-hub"></a>Azure Stack Hub
+
+### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>使用 Azure Blob 存储作为检查点存储时，如何以特定版本的 Azure 存储 SDK 为目标？
+如果在 Azure Stack 集线器上运行此代码，则会遇到运行时错误，除非你面向特定的存储 API 版本。 这是因为，事件中心 SDK 使用 Azure 中提供的最新可用 Azure 存储 API，这些 API 在你的 Azure Stack 中心平台上不可用。 Azure Stack 中心支持的存储 Blob SDK 版本不同于 Azure 上通常可用的版本。 如果使用 Azure 博客存储作为检查点存储，请查看 [Azure Stack 中心生成的受支持的 Azure 存储 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version) ，并将该版本定位到你的代码中。 
+
+例如，如果在 Azure Stack Hub 版本2005上运行，则存储服务的最高可用版本为2019-02-02 版。 默认情况下，在发布 SDK) 时，事件中心 SDK 客户端库使用 Azure (2019-07-07 上的最高可用版本。 在这种情况下，除了执行本部分中的步骤以外，还需要添加代码以面向存储服务 API 版本2019-02-02。 有关如何以特定存储 API 版本为目标的示例，请参阅 c #、Java、Python 和 JavaScript/TypeScript 的以下示例。  
+
+有关如何从代码面向特定存储 API 版本的示例，请参阅 GitHub 上的以下示例： 
+
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
+- Python - [同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
+- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
 ## <a name="next-steps"></a>后续步骤
 

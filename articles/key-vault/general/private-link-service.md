@@ -9,10 +9,10 @@ ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88585825"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
@@ -159,8 +159,8 @@ az network private-endpoint show --resource-group {RG} --name {Private Endpoint 
 | 服务提供商操作 | 服务使用者专用终结点状态 | 说明 |
 |--|--|--|
 | 无 | 挂起的 | 连接是手动创建的，正等待专用链接资源所有者批准。 |
-| 审批 | 已批准 | 连接已自动或手动批准，可供使用。 |
-| 拒绝 | 已拒绝 | 连接被专用链接资源所有者拒绝。 |
+| 审批 | 已批准 | 连接已自动或手动批准，随时可供使用。 |
+| 拒绝 | 已拒绝 | 连接已被专用链接资源所有者拒绝。 |
 | 删除 | 已断开连接 | 连接已被专用链接资源所有者删除，专用终结点仅供参考，应将其删除以清理资源。 |
  
 ###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>如何使用 Azure 门户管理与 Key Vault 建立的专用终结点连接 
@@ -257,7 +257,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 * 请检查以确保专用 DNS 区域不缺少 Key Vault 的 A 记录。 
     1. 导航到专用 DNS 区域页。 
     2. 单击“概述”，并检查是否存在具有 Key Vault 的简单名称（即 fabrikam）的 A 记录。 不要指定任何后缀。
-    3. 确保检查拼写，并创建或修复 A 记录。 可以使用 3600（1小时）的 TTL。 
+    3. 请务必检查拼写，创建或修复 A 记录。 可以使用 3600（1小时）的 TTL。 
     4. 确保指定了正确的专用 IP 地址。 
     
 * 检查以确保 A 记录具有正确的 IP 地址。 

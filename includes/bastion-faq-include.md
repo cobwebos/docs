@@ -9,10 +9,10 @@ ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86276102"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>面向哪些区域提供？
@@ -49,9 +49,9 @@ RDP 和 SSH 都是基于使用率的协议。 会话的使用率高将导致堡�
 
 使用 Windows 上的 Microsoft Edge 浏览器或 Google Chrome。 对于 Apple Mac，可使用 Google Chrome 浏览器。 Windows 和 Mac 上也支持 Microsoft Edge Chromium。
 
-### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Azure 堡垒将客户数据存储在何处？
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Azure Bastion 将客户数据存储在何处？
 
-Azure 堡垒不会将客户数据移出或存储在它所部署到的区域中。
+Azure Bastion 不会将客户数据移出部署的区域或存储到部署区域以外的区域。
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>是否需要通过角色来访问虚拟机？
 

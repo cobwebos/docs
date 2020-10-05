@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73815e793357dd38244dd429f9056c4c6a0bfff1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91410299"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728992"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric 托管群集常见问题解答
 
@@ -41,7 +41,7 @@ SLA 不会与当前 Service Fabric 资源模型发生更改。
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>基本和标准 SKU 群集之间的区别是什么？
 
-基本 SKU 群集是指 Service Fabric 资源提供程序提供的大多数配置。 基本 SKU 群集旨在用于测试和预生产环境。 标准 SKU 群集允许用户将群集配置为专门满足其需求。 有关详细信息，请参阅 [Service Fabric 托管群集 sku](overview-managed-cluster.md#service-fabric-managed-cluster skus.md) 了解更多详细信息。
+基本 SKU 群集是指 Service Fabric 资源提供程序提供的大多数配置。 基本 SKU 群集旨在用于测试和预生产环境。 标准 SKU 群集允许用户将群集配置为专门满足其需求。 有关详细信息，请参阅 [Service Fabric 托管群集 sku](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) 了解更多详细信息。
 
 ## <a name="cluster-deployment-and-management"></a>群集部署和管理
 

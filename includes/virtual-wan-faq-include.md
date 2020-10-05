@@ -9,10 +9,10 @@ ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89570057"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？

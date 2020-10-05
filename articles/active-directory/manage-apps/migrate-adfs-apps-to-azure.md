@@ -14,21 +14,21 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600939"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728975"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
 [Azure Active Directory (Azure AD) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 提供一个通用标识平台，该平台为你的用户、合作伙伴和客户提供单个标识来访问应用程序，并从任何平台和设备进行协作。 Azure AD 具有一整套 [标识管理功能](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)。  (应用标准化应用程序) 身份验证和授权 Azure AD 可实现这些功能提供的好处。 
 
-> [!NOTE]
-> 本文重点介绍如何将应用程序身份验证从本地 Active Directory 和 Active Directory 联合身份验证服务迁移到 Azure AD。 有关规划此迁移的概述，请参阅将 [应用程序身份验证迁移到 Azure AD](https://aka.ms/migrateapps/whitepaper) 白皮书。 本白皮书介绍了如何规划迁移、测试和见解。
+> [!TIP]
+> 本文面向开发人员群体。 规划应用程序移动到 Azure AD 的项目经理和管理员应考虑阅读我们的 [迁移应用程序身份验证，以 Azure AD](https://aka.ms/migrateapps/whitepaper) 白皮书 (PDF) 。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 如果你的本地目录包含用户帐户，则你可能有许多用户对其进行身份验证的应用程序。 其中每个应用都配置为用户使用其标识进行访问。 
 
@@ -199,13 +199,13 @@ LOB 应用由组织内部开发，或者作为你的数据中心内安装的标�
 
 | 配置设置| AD FS| 如何在 Azure AD 中配置| SAML 令牌 |
 | - | - | - | - |
-| **应用登录 URL** <p>用户登录到服务提供程序中的应用的 URL， (SP) 启动的 SAML 流。| 不可用| 从基于 SAML 的登录打开基本 SAML 配置| 不可用 |
+| **应用登录 URL** <p>用户登录到服务提供程序中的应用的 URL， (SP) 启动的 SAML 流。| 不适用| 从基于 SAML 的登录打开基本 SAML 配置| 不适用 |
 | **应用回复 URL** <p>从标识提供程序的 (IdP 的) 角度来看应用程序的 URL。 用户登录到 IdP 后，IdP 会将用户和令牌发送到此处。  这也称为 **SAML 断言使用者终结点**。| 选择 " **终结点** " 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| SAML 令牌中的 Destination 元素。 示例值： `https://contoso.my.salesforce.com` |
-| **应用注销 URL** <p>这是用户从应用程序中注销时，向其发送 "注销清理" 请求的 URL。 IdP 发送请求，同时从其他所有应用注销用户。| 选择 " **终结点** " 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| 不可用 |
+| **应用注销 URL** <p>这是用户从应用程序中注销时，向其发送 "注销清理" 请求的 URL。 IdP 发送请求，同时从其他所有应用注销用户。| 选择 " **终结点** " 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| 不适用 |
 | **应用标识符** <p>这是 IdP 的透视中的应用标识符。 登录 URL 值通常用于标识符 (但并非始终) 。  有时，应用程序会将 "实体 ID" 称为 "实体 ID"。| 选择 " **标识符** " 选项卡|从基于 SAML 的登录打开基本 SAML 配置| 映射到 SAML 令牌中的 **受众** 元素。 |
-| **应用联合元数据** <p>这是应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。| 选择 " **监视** " 选项卡| 不适用。 Azure AD 不支持直接使用应用程序联合元数据。 您可以手动导入联合元数据。| 不可用 |
+| **应用联合元数据** <p>这是应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。| 选择 " **监视** " 选项卡| 不适用。 Azure AD 不支持直接使用应用程序联合元数据。 您可以手动导入联合元数据。| 不适用 |
 | **用户标识符/名称 ID** <p>一个属性，用于以唯一方式向应用指示 Azure AD 或 AD FS 中的用户标识。  此属性通常为用户的 UPN 或电子邮件地址。| 声明规则。 在大多数情况下，声明规则使用以 NameIdentifier 结尾的类型发出声明。| 可以在标头 **用户属性和声明**下找到标识符。 默认情况下，将使用 UPN| 映射到 SAML 令牌中的 **NameID** 元素。 |
-| **其他声明** <p>通常从 IdP 发送到应用的其他声明信息的示例包括名字、姓氏、电子邮件地址和组成员身份。| 在 AD FS 中，可以看到此项充当信赖方的其他声明规则。| 可以在标头用户属性下找到标识符 **& 声明**。 选择“查看”，然后编辑所有其他的用户属性。****| 不可用 |
+| **其他声明** <p>通常从 IdP 发送到应用的其他声明信息的示例包括名字、姓氏、电子邮件地址和组成员身份。| 在 AD FS 中，可以看到此项充当信赖方的其他声明规则。| 可以在标头用户属性下找到标识符 **& 声明**。 选择“查看”，然后编辑所有其他的用户属性。****| 不适用 |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>地图标识提供者 (IdP) 设置
@@ -455,7 +455,7 @@ AD FS 2016 具有几个内置的访问控制策略，你可以从中进行选择
 
 根据你配置应用的方式，验证 SSO 是否正常工作。 
 
-| 身份验证类型| 正在测试 |
+| 身份验证类型| 测试 |
 | - | - |
 | OAuth/OpenID Connect| 选择 " **企业应用程序" > 权限** ，并确保你同意在你的组织中的应用程序的用户设置中使用该应用程序。  
 ‎ |
@@ -469,7 +469,7 @@ AD FS 2016 具有几个内置的访问控制策略，你可以从中进行选择
 > [!NOTE]
 > 旧 AD FS 环境中的 cookie 在用户计算机上仍然是永久性的。 这些 cookie 可能会导致迁移出现问题，因为用户可能会定向到旧的 AD FS 登录环境与新的 Azure AD 登录名。 可能需要手动或使用脚本来清除用户浏览器 cookie。 你还可以使用 System Center Configuration Manager 或类似的平台。
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 如果在测试已迁移的应用程序时出现任何错误，则在回退到现有 AD FS 信赖方之前，排除故障可能是第一步。 请参阅 [如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录](https://docs.microsoft.com/azure/active-directory/azuread-dev/howto-v1-debug-saml-sso-issues)。
 
