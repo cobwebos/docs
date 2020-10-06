@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716018"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761135"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级权限 
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)。 我们还提供了有关在阻止端口445时解决方案的 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了有关在阻止端口445时解决方案的 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
 
 ## <a name="configure-windows-acls"></a>配置 Windows Acl
 
@@ -102,7 +102,7 @@ else
 1. 选择 " **编辑"。** 更改权限。
 1. 您可以更改现有用户的权限，也可以选择 " **添加 ...** " 向新用户授予权限。
 1. 在添加新用户的提示窗口中，在 " **输入要选择的对象名称** " 框中输入要向其授予权限的目标用户名，然后选择 " **检查名称** " 以查找目标用户的完整 UPN 名称。
-1.    选择“确定”。
+1.    选择“确定”****。
 1.    在 " **安全** " 选项卡中，选择要授予新用户的所有权限。
 1.    选择“应用”。
 

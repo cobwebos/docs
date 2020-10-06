@@ -6,12 +6,12 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707843"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761594"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 
@@ -24,7 +24,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 ## <a name="using-spring-boot-15x"></a>使用 Spring Boot 1.5x
 将以下依赖项添加到 pom.xml 或 build.gradle 文件： 
-* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 或更高版本
+* [Application Insights spring-boot-starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 或更高版本
 * Micrometer Azure Registry 1.1.0 或更高版本
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 或更高版本（用于向后移植 Spring 框架中的自动配置代码）。
 * [ApplicationInsights 资源](./create-new-resource.md)
@@ -57,7 +57,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. 生成并运行应用程序
-2. 上述代码应会使用自动收集到 Azure Monitor 的预先聚合指标启动并运行应用程序。 有关如何微调 Application Insights Spring Boot Starter 的详细信息，请参阅 [GitHub 上的自述文件](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md)。
+2. 上述代码应会使用自动收集到 Azure Monitor 的预先聚合指标启动并运行应用程序。 有关如何微调 Application Insights Spring Boot Starter 的详细信息，请参阅 [GitHub 上的自述文件](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md)。
 
 ## <a name="using-spring-2x"></a>使用 Spring 2.x
 

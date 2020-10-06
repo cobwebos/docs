@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: add8a533f2b4fba9a9e881442e43030adb7e2b53
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421665"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762002"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中批量添加组成员
 
@@ -69,13 +69,13 @@ ms.locfileid: "87421665"
 
 可在“批量操作结果”页面中查看所有挂起的批量请求的状态。
 
-[![检查 "批量操作结果" 页中的状态。](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
+[![在“批量操作结果”页面中查看状态。](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 要详细了解批量操作中每个行项，请选择“成功数”、“失败数”或“请求总数”列下的值  。 如果失败，则会列出失败原因。
 
 ## <a name="bulk-import-service-limits"></a>“批量导入”服务限制
 
-导入组成员列表的每个批量活动最多可运行一小时。 这样可导入至少包含 40,000 名成员的列表。
+导入组成员列表的每个批量活动最多可运行一小时。 这允许导入最多40000个成员的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

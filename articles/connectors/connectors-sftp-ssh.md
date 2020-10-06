@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286608"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761118"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -44,7 +44,7 @@ ms.locfileid: "87286608"
 * 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认的区块大小为 15 MB，但此大小可以根据网络延迟、服务器响应时间等因素动态变化，从 5 MB 开始逐渐增加到最大值 50 MB。
 
   > [!NOTE]
-  > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ISE 标记版本需要使用[ise 消息限制来改用 ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+  > 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的 ISE 标记版本需要使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
   当改用[指定固定区块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设你有一个 45 MB 的文件，以及可以支持该文件大小而没有延迟的网络。 自适应分块会导致多次调用，而不是一次调用。 若要减少调用次数，可以尝试设置 50 MB 的区块大小。 在不同情况下，如果逻辑应用超时（例如，当使用 15 MB 的块时），可以尝试将大小减小到 5 MB。
 
@@ -53,11 +53,11 @@ ms.locfileid: "87286608"
   | 操作 | 分块支持 | 重写区块大小支持 |
   |--------|------------------|-----------------------------|
   | **复制文件** | 否 | 不适用 |
-  | **创建文件** | “是” | “是” |
+  | **创建文件** | 是 | 是 |
   | **创建文件夹** | 不适用 | 不适用 |
   | **删除文件** | 不适用 | 不适用 |
   | **将存档提取到文件夹** | 不适用 | 不适用 |
-  | **获取文件内容** | “是” | 是 |
+  | **获取文件内容** | 是 | 是 |
   | **使用路径获取文件内容** | 是 | 是 |
   | **获取文件元数据** | 不适用 | 不适用 |
   | **使用路径获取文件元数据** | 不适用 | 不适用 |
@@ -253,12 +253,28 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 1. 如果以后需要此文件元数据，可以使用“获取文件元数据”操作。
 
+### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504错误： "连接尝试失败，因为连接的参与方在一段时间后未正确响应，或已建立连接失败，因为连接的主机未响应" 或 "到 SFTP 服务器的请求已超过 ' 00:00:30 ' 秒"
+
+如果逻辑应用无法成功建立与 SFTP 服务器的连接，则会发生此错误。 可能有许多不同的原因，我们建议在以下方面对问题进行故障排除。 
+
+1. 连接超时为20秒。 请确保 SFTP 服务器具有良好的性能，intermidiate 的设备（如防火墙）不会产生很大的开销。 
+
+2. 如果涉及到防火墙，请确保将 **托管连接器 IP** 地址列入允许列表。 你可以为逻辑应用区域找到这些 IP 地址 [**此处**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+
+3. 如果此问题是间歇性的，请测试重试设置，以查看是否有比默认值4更高的重试计数。
+
+4. 请检查 SFTP 服务器是否对每个 IP 地址的连接数施加限制。 如果是这样，则可能需要限制并发逻辑应用实例的数目。 
+
+5. 将 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性增加到 SFTP 服务器上 SSH 配置中的1小时，以降低连接建立成本。
+
+6. 可以检查 SFTP 服务器日志，以查看逻辑应用的请求是否曾经到达 SFTP 服务器。 你还可以在防火墙和 SFTP 服务器上进行一些网络跟踪，进一步深入了解连接问题。
+
 ## <a name="connector-reference"></a>连接器参考
 
 有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/sftpwithssh/)。
 
 > [!NOTE]
-> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ISE 标记版本需要使用 " [ise 消息限制" 来改用 ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的 ISE 标记版本需要使用 " [ise 消息" 限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
 ## <a name="next-steps"></a>后续步骤
 

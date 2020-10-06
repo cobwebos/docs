@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707826"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760506"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights 快照调试器，但未看到出现异常的快照，则可以使用以下说明进行故障排除。 可能有许多不同的原因导致未生成快照。 可以运行快照运行状况检查以确定一些可能的常见原因。
@@ -62,7 +62,7 @@ ms.locfileid: "90707826"
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>升级到最新版本的 NuGet 包
 
-如果已通过[门户中的 Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了快照调试器，那么应用程序应该已经在运行最新的 NuGet 包。 如果通过包含 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包启用了快照调试器，请使用 Visual Studio 的 NuGet 包管理器确保使用的是最新版本的 Microsoft.ApplicationInsights.SnapshotCollector。 可以在 https://github.com/Microsoft/ApplicationInsights-Home/issues/167 中找到发行说明
+如果已通过[门户中的 Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了快照调试器，那么应用程序应该已经在运行最新的 NuGet 包。 如果通过包含 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包启用了快照调试器，请使用 Visual Studio 的 NuGet 包管理器确保使用的是最新版本的 Microsoft.ApplicationInsights.SnapshotCollector。
 
 ## <a name="check-the-uploader-logs"></a>检查上传程序日志
 

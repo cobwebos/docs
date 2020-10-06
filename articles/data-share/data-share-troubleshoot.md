@@ -6,39 +6,39 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 08/14/2020
-ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 10/02/2020
+ms.openlocfilehash: 620fe1e693a177123e166220ab94bbd74c4826ff
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257805"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761525"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share"></a>排查 Azure 数据共享中的常见问题 
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>排查 Azure Data Share 中的常见问题 
 
 本文介绍如何解决 Azure 数据共享的常见问题。 
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share 邀请 
 
-在某些情况下，当新用户单击他人发送的电子邮件邀请中的“接受邀请”时，**** 会出现一个空的邀请列表。 
+在某些情况下，当新用户单击发送的电子邮件邀请中的 " **接受邀请** " 时，可能会显示一个空邀请列表。 
 
 ![无邀请](media/no-invites.png)
 
-这可能是由于以下原因造成的：
+这可能是由以下原因造成的：
 
-* **Azure 数据共享服务未在 Azure 租户中注册为任何 Azure 订阅的资源提供程序。** 如果 Azure 租户中没有数据共享资源，则会遇到此问题。 当你创建 Azure 数据共享资源时，它会自动在你的 Azure 订阅中注册资源提供程序。 还可以按照以下步骤手动注册数据共享服务。 需要具有 Azure 参与者角色才能完成这些步骤。
+* **Azure Data Share 服务未在 Azure 租户中注册为任何 Azure 订阅的资源提供程序。** 如果你的 Azure 租户中没有 Data Share 资源，则会遇到此问题。 当你创建 Azure Data Share 资源时，它会自动在你的 Azure 订阅中注册资源提供程序。 你还可以按照以下步骤手动注册 Data Share 服务。 你需要拥有“Azure 参与者”角色才能完成这些步骤。
 
     1. 在 Azure 门户中，导航到“订阅”****
-    1. 选择要用于创建 Azure 数据共享资源的订阅
+    1. 选择要用于创建 Azure Data Share 资源的订阅
     1. 单击“资源提供程序”****
-    1. 搜索 **DataShare**
+    1. 搜索“Microsoft.DataShare”
     1. 单击“注册” 
 
     需要 Azure 订阅的 [Azure 参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) 才能完成这些步骤。 
 
-* **邀请发送到你的电子邮件别名，而不是 Azure 登录电子邮件。** 如果已注册 Azure 数据共享服务或已在 Azure 租户中创建了数据共享资源，但仍无法查看邀请，原因可能是提供商已将你的电子邮件别名输入为收件人，而不是 Azure 登录电子邮件地址。 联系你的数据提供商，确保他们已将邀请发送到你的 Azure 登录电子邮件地址，而不是电子邮件别名。
+* **邀请将发送到你的电子邮件别名而不是 Azure 登录电子邮件处。** 如果你已注册了 Azure Data Share 服务或已在 Azure 租户中创建了 Data Share 资源，但仍无法看到邀请，原因可能是提供者已将你的电子邮件别名而不是 Azure 登录电子邮件地址作为收件人输入。 请联系你的数据提供者，确保他们已将邀请发送到你的 Azure 登录电子邮件地址而非电子邮件别名处。
 
-* **已接受邀请。** 电子邮件中的链接将你转到 Azure 门户中的数据共享邀请页面，此页面仅列出待定邀请。 如果已接受邀请，则它将不再显示在 "数据共享邀请" 页中。 转到你用于接受邀请的数据共享资源，以便查看收到的共享并配置目标 Azure 数据资源管理器群集设置。
+* **邀请已被接受。** 电子邮件中的链接将你转到 Azure 门户中的“Data Share 邀请”页面，此页面仅列出待处理邀请。 如果你已接受邀请，则它将不再显示在“Data Share 邀请”页中。 转到你用于接受邀请的 Data Share 资源，以便查看收到的共享并配置你的目标 Azure 数据资源管理器群集设置。
 
 ## <a name="error-when-creating-or-receiving-a-new-share"></a>创建或接收新共享时出错
 
@@ -58,34 +58,15 @@ ms.locfileid: "88257805"
 
 如果这是你第一次在 Azure 数据存储中共享或接收数据，则还需要 *Microsoft。授权/角色分配/写入* 权限，后者通常存在于所有者角色中。 即使您创建了 Azure 数据存储资源，也不会自动使您成为该资源的所有者。 使用适当的权限时，Azure 数据共享服务会自动向数据共享资源的托管标识授予对数据存储区的访问权限。 此过程可能需要几分钟才能生效。 如果遇到此延迟，请在几分钟后重试。
 
-基于 SQL 的共享需要其他权限。 有关详细信息，请参阅基于 SQL 的共享疑难解答。
-
-## <a name="troubleshooting-sql-based-sharing"></a>对基于 SQL 的共享进行故障排除
-
-"用户 x 在 SQL 数据库中不存在"
-
-如果从基于 SQL 的源添加数据集时收到此错误，可能是因为你未在 SQL 数据库中创建 Azure 数据共享托管标识的用户。  若要解决此问题，请运行以下脚本：
-
-```sql
-    create user "<share_acct_name>" from external provider; 
-    exec sp_addrolemember db_datareader, "<share_acct_name>";
-```      
-如果在将数据集映射到基于 SQL 的目标时收到此错误，可能是因为你未在 SQL Server 上创建 Azure 数据共享托管标识的用户。  若要解决此问题，请运行以下脚本：
-
-```sql
-    create user "<share_acc_name>" from external provider; 
-    exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-    exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-    exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-```
-请注意，*<share_acc_name>* 是 Data Share 资源的名称。      
-
-确保已遵循 [共享数据](share-your-data.md) 和 [接受和接收数据](subscribe-to-data-share.md) 教程中列出的所有先决条件。
+基于 SQL 的共享需要其他权限。 有关先决条件的详细列表，请参阅 [从 SQL 源共享](how-to-share-from-sql.md) 。
 
 ## <a name="snapshot-failed"></a>快照失败
-快照可能因多种原因而失败。 单击快照的开始时间，然后单击每个数据集的状态，即可找到详细的错误消息。 
+快照可能因多种原因而失败。 单击快照的开始时间，然后单击每个数据集的状态，即可找到详细的错误消息。 快照失败的原因如下：
 
-如果错误消息与权限相关，请验证数据共享服务是否具有所需的权限。 有关详细信息，请参阅 [角色和要求](concepts-roles-permissions.md) 。 如果这是你第一次拍摄快照，可能需要几分钟时间才能向数据共享资源授予对 Azure 数据存储的访问权限。 请等待几分钟，然后重试。
+* 数据共享没有读取源数据存储或写入目标数据存储的权限。 有关详细权限要求，请参阅 [角色和要求](concepts-roles-permissions.md) 。 如果这是你第一次拍摄快照，可能需要几分钟时间才能向数据共享资源授予对 Azure 数据存储的访问权限。 请等待几分钟，然后重试。
+* 与源或目标数据存储的数据共享连接已被防火墙阻止。
+* 共享数据集，或源或目标数据存储已删除。
+* 对于 SQL 共享，快照进程或目标数据存储不支持数据类型。 有关详细信息，请参阅 [从 SQL 源共享](how-to-share-from-sql.md#supported-data-types) 。
 
 ## <a name="next-steps"></a>后续步骤
 

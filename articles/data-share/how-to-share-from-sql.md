@@ -1,19 +1,19 @@
 ---
-title: 在 Azure SQL 数据库和 Azure Synapse Analytics 中共享和接收数据
+title: 从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据
 description: 了解如何在 Azure SQL 数据库和 Azure Synapse Analytics 中共享和接收数据
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/02/2020
+ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89490065"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761917"
 ---
-# <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>在 Azure SQL 数据库和 Azure Synapse Analytics 中共享和接收数据
+# <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据
 
 [!INCLUDE[appliesto-sql](includes/appliesto-sql.md)]
 
@@ -33,13 +33,14 @@ Azure 数据共享支持在以前的 Azure SQL DW) 中共享 Azure SQL 数据库
 * 如果源 Azure 数据存储位于与你将用于创建 Data Share 资源的 Azure 订阅不同的 Azure 订阅中，请在 Azure 数据存储所在的订阅中注册 [Microsoft.DataShare 资源提供程序](concepts-roles-permissions.md#resource-provider-registration)。 
 
 ### <a name="prerequisites-for-sql-source"></a>SQL 源的先决条件
+下面是用于从 SQL 源共享数据的先决条件列表。 还可以按照分步 [演示](https://youtu.be/hIE-TjJD8Dc) 来配置先决条件。
 
-* 使用 Azure SQL 数据库或 Azure Synapse Analytics (以前的 SQL 数据仓库，) 要共享的表和视图。
+* 包含要共享的表和视图的 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 SQL 数据仓库）。
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。
 * 用于访问数据仓库的数据共享权限。 可以通过以下步骤完成此操作： 
-    1. 将你自己设置为 SQL Server 的 Azure Active Directory 管理员。
-    1. 使用 Azure Active Directory 连接到 Azure SQL 数据库/数据仓库。
-    1. 使用查询编辑器（预览版）执行以下脚本，以将 Data Share 资源托管标识添加为 db_datareader。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
+    1. 在 Azure 门户中，导航到 SQL server 并将自己设置为 Azure Active Directory 管理员。
+    1. 使用 [查询编辑器](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 或 SQL Server Management Studio 通过 Azure Active Directory 身份验证连接到 Azure SQL 数据库/数据仓库。 
+    1. 执行以下脚本以将数据共享资源托管标识作为 db_datareader 添加。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
@@ -49,10 +50,11 @@ Azure 数据共享支持在以前的 Azure SQL DW) 中共享 Azure SQL 数据库
 
 * 具有“db_datareader”访问权限的 Azure SQL 数据库用户，可以浏览和选择要共享的表和/或视图。 
 
-* 客户端 IP SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
+* SQL Server 防火墙访问。 可以通过以下步骤完成此操作： 
     1. 在 Azure 门户中的 SQL Server 中，导航到“防火墙和虚拟网络” 
-    1. 单击“打开”切换按钮以允许访问 Azure 服务  。
-    1. 单击“+ 添加客户端 IP”  ，然后单击“保存”  。 客户端 IP 地址可能会更改。 下次从 Azure 门户共享 SQL 数据时，可能需要重复此过程。 还可以添加 IP 范围。 
+    1. 单击 **"是"** *允许 Azure 服务和资源访问此服务器*。
+    1. 单击 " **+ 添加客户端 IP**"。 客户端 IP 地址可能会更改。 下次从 Azure 门户共享 SQL 数据时，可能需要重复此过程。 还可以添加 IP 范围。
+    1. 单击“保存” 。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -147,13 +149,13 @@ Azure 数据共享支持在以前的 Azure SQL DW) 中共享 Azure SQL 数据库
 * 向存储帐户添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL 目标的先决条件
-如果选择将数据接收到 Azure SQL Database，Azure Synapse Analytics 会列出必备组件。
+如果选择将数据接收到 Azure SQL Database，Azure Synapse Analytics 会列出必备组件。 还可以按照分步 [演示](https://youtu.be/aeGISgK1xro) 来配置先决条件。
 
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。 
-* 用于访问 Azure SQL 数据库或 Azure Synapse Analytics 的数据共享资源托管标识的权限。 可以通过以下步骤完成此操作： 
-    1. 将你自己设置为 SQL Server 的 Azure Active Directory 管理员。
-    1. 使用 Azure Active Directory 连接到 Azure SQL 数据库/数据仓库。
-    1. 使用查询编辑器（预览版）执行以下脚本，以将 Data Share 托管标识添加为“db_datareader, db_datawriter, db_ddladmin”。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
+* 数据共享资源托管标识用于访问 Azure SQL 数据库或 Azure Synapse Analytics 的权限。 可以通过以下步骤完成此操作： 
+    1. 在 Azure 门户中，导航到 SQL server 并将自己设置为 Azure Active Directory 管理员。
+    1. 使用 [查询编辑器](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 或 SQL Server Management Studio 通过 Azure Active Directory 身份验证连接到 Azure SQL 数据库/数据仓库。 
+    1. 执行以下脚本，以 "db_datareader、db_datawriter db_ddladmin" 的形式添加数据共享托管标识。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -163,10 +165,11 @@ Azure 数据共享支持在以前的 Azure SQL DW) 中共享 Azure SQL 数据库
         ```      
         请注意， *<share_acc_name>* 是 Data Share 资源的名称。 如果尚未创建 Data Share 资源，则可以稍后返回到该先决条件。         
 
-* 客户端 IP SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
+* SQL Server 防火墙访问。 可以通过以下步骤完成此操作： 
     1. 在 Azure 门户中的 SQL Server 中，导航到“防火墙和虚拟网络” 
-    1. 单击“打开”切换按钮以允许访问 Azure 服务  。
-    1. 单击“+ 添加客户端 IP”  ，然后单击“保存”  。 客户端 IP 地址可能会更改。 下次从 Azure 门户将数据接收到 SQL 目标中时，可能需要重复此过程。 还可以添加 IP 范围。 
+    1. 单击 **"是"** *允许 Azure 服务和资源访问此服务器*。
+    1. 单击 " **+ 添加客户端 IP**"。 客户端 IP 地址可能会更改。 下次从 Azure 门户共享 SQL 数据时，可能需要重复此过程。 还可以添加 IP 范围。
+    1. 单击“保存” 。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -231,6 +234,49 @@ Azure 数据共享支持在以前的 Azure SQL DW) 中共享 Azure SQL 数据库
 
 ### <a name="view-history"></a>查看历史记录
 此步骤仅适用于基于快照的共享。 若要查看快照历史记录，请选择“历史记录”选项卡。在这里可以找到包含过去 30 天生成的所有快照的历史记录。 
+
+## <a name="supported-data-types"></a>支持的数据类型
+当你从 SQL 源共享数据时，以下映射用于从 SQL Server 数据类型到 Azure 数据共享快照过程中的临时数据类型。 
+
+| SQL Server 数据类型 | Azure 数据共享临时数据类型 |
+|:--- |:--- |
+| bigint |Int64 |
+| binary |Byte[] |
+| bit |布尔 |
+| char |String, Char[] |
+| date |DateTime |
+| datetime |DateTime |
+| datetime2 |DateTime |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
+| smalldatetime |DateTime |
+| smallint |Int16 |
+| smallmoney |小数 |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Int16 |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |String |
+
+>[!NOTE]
+> 1. 对于映射到小数过渡类型的数据类型，当前快照最多支持精度为28。 如果数据需要的精度大于28，请考虑将转换为字符串。 
+> 1.  如果要将数据从 Azure SQL 数据库共享到 Azure Synapse Analytics，并非所有数据类型都受支持。 有关详细信息，请参阅 [SYNAPSE SQL 池中的表数据类型](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) 。 
+
 
 ## <a name="next-steps"></a>后续步骤
 已了解如何使用 Azure 数据共享服务从存储帐户共享和接收数据。 若要了解有关其他数据源的共享的详细信息，请继续阅读 [支持的数据存储](supported-data-stores.md)。

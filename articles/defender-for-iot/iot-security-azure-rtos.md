@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: 0cfd1e0ce16008c6f7fd128d561ad361bcc53b87
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 22bd12bbdcccef2fd0e9010f926cd18e95d42967
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934461"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761849"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>概述： Azure RTO (预览版的 IoT 安全模块 Defender) 
 
@@ -46,7 +46,7 @@ Azure RTO 安全模块提供以下功能：
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>开始保护 Azure RTO 设备
 
-可免费下载适用于你的设备的 Azure RTO 安全模块。 每个 Azure 订阅30天试用版提供 IoT 云服务的 Defender。 若要开始，请下载 [AZURE Rto 安全模块](https://github.com/azure-rtos/iot-security-module-preview) 。 
+可免费下载适用于你的设备的 Azure RTO 安全模块。 每个 Azure 订阅30天试用版提供 IoT 云服务的 Defender。 若要开始，请下载 [AZURE Rto 安全模块](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md) 。 
 
 
 ## <a name="next-steps"></a>后续步骤

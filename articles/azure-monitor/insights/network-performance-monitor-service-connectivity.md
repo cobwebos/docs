@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403698"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761033"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 
@@ -99,7 +99,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 确定问题是由于网络导致的后，可以在拓扑图上选择“拓扑”视图链接来查明有问题的跃点。  下图中显示了一个示例。 节点与应用程序终结点之间的总延迟为 105 毫秒，其中，96 毫秒的延迟是带有红色标记的跃点造成的。 查明有问题的跃点后，可以采取纠正措施。 
 
-![服务连接监视器测试](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![服务连接监视器终结点拓扑](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>诊断 
 

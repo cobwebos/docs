@@ -1,5 +1,5 @@
 ---
-title: 用于 SQL API 发行说明和资源的弹簧数据 Azure Cosmos DB v2
+title: 用于 SQL API 的Spring Data Azure Cosmos DB v2 的发行说明和资源
 description: 了解 SQL API Azure Cosmos DB v2 的弹簧数据，其中包括发布日期、停用日期和 Azure Cosmos DB SQL Async Java SDK 各版本之间所做的更改。
 author: anfeldma-ms
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570748"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760819"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>用于核心 (SQL) API 的弹簧数据 Azure Cosmos DB v2：发行说明和资源
 > [!div class="op_single_selector"]
@@ -26,8 +26,8 @@ ms.locfileid: "91570748"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
-> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -66,11 +66,11 @@ ms.locfileid: "91570748"
 |---|---|
 | **SDK 下载** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/spring-data-cosmosdb) |
 |**API 文档** | [Spring Data Azure Cosmos DB 参考文档]() |
-|**参与 SDK** | [GitHub 上的弹簧数据 Azure Cosmos DB 存储库](https://github.com/microsoft/spring-data-cosmosdb) | 
-|**春季 Boot 入门**| [适用于 Java 的 Azure Cosmos DB Spring Boot Starter 客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**参与 SDK** | [GitHub 上的 Spring Data Azure Cosmos DB 存储库](https://github.com/microsoft/spring-data-cosmosdb) | 
+|**春季 Boot 入门**| [适用于 Java 的 Azure Cosmos DB Spring Boot Starter 客户端库](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**用于 Azure Cosmos DB 的 Spring TODO 应用示例**| [应用服务 Linux 中的端到端 Java 体验（第 2 部分）](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
 |**开发人员指南** | [春季 Data Azure Cosmos DB 开发人员指南](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**使用 Starter** | [如何将弹簧 Boot Starter 与 Azure Cosmos DB SQL API 一起使用](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [用于 Azure Cosmos DB 春季 Boot 入门的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**使用 Starter** | [如何将弹簧 Boot Starter 与 Azure Cosmos DB SQL API 一起使用](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [用于 Azure Cosmos DB 春季 Boot 入门的 GitHub 存储库](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Azure App Service 示例** | [如何将 Spring 和 Cosmos DB 与 Linux 上的应用服务配合使用](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [TODO 应用示例](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>版本历史记录
@@ -87,7 +87,7 @@ ms.locfileid: "91570748"
 * 包含 Azure Cosmos DB SDK 3.7.3 中的内存泄漏修复和 Netty 版本升级。
 
 ### <a name="224-april-6-2020"></a>2.2.4 (2020 年4月6日) 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复 `allowTelemetry` 要从中考虑的标志 `CosmosDbConfig` 。
 * 修复 `TTL` 容器上的属性。
 
@@ -95,19 +95,19 @@ ms.locfileid: "91570748"
 #### <a name="new-features"></a>新增功能
 * `findAll`按分区键 API 添加新的。
 * 将 Azure Cosmos DB 版本更新为3.7.0。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复 `collectionName`  ->  `containerName` 。
 * 修复了 `entityClass` 和 `domainClass`  ->  `domainType` 。
 * 修复了 "返回存储库保存的实体集合，而不是输入实体"。
 
 ### <a name="2110-february-25-2020"></a>hdp-2.1.10 (2020 年2月25日) 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * Precise-backports 修复了 "返回按存储库保存的实体集合，而不是输入实体"。
 
 ### <a name="222-january-15-2020"></a>2.2.2 (2020 年1月15日) 
 #### <a name="new-features"></a>新增功能
 * 将 Azure Cosmos DB 版本更新为3.6.0。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 
 ### <a name="221-december-31-2019"></a>2.2.1 (2019 年12月31日) 
 #### <a name="new-features"></a>新增功能
@@ -115,7 +115,7 @@ ms.locfileid: "91570748"
 * 添加批注字段，以启用或禁用自动集合创建。
 * 改进异常处理。 `CosmosClientException`通过公开 `CosmosDBAccessException` 。
 * 公开 `requestCharge` 和 `activityId` `ResponseDiagnostics` 。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * SDK 3.5.0 更新修复 "Cosmos DB HTTP 响应标头大于8192字节时出现异常，" "ConsistencyPolicy. defaultConsistencyLevel ( # A1 在受限过期和一致前缀上失败。"
 * 修复 `findById` 方法的行为。 以前，如果找不到实体而不是引发异常，则此方法返回空。
 * 修复了一个 bug，在使用时，不会在下一页上应用排序 `CosmosPageRequest` 。
@@ -136,7 +136,7 @@ ms.locfileid: "91570748"
 * 添加 `findByIdAndPartitionKey` 和 `deleteByIdAndPartitionKey` api。
 * 删除 azure-documentdb 的依赖项。
 * Rebrands DocumentDB 到 Azure Cosmos DB。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复了当 pageSize 小于存储库中的项目总数时，排序引发异常。
 
 ### <a name="218-october-18-2019"></a>2.1.8 () 年10月18日，2019
@@ -155,14 +155,14 @@ ms.locfileid: "91570748"
 * 为反应 Cosmos 存储库支持添加其他配置更改。
 
 ### <a name="212-march-19-2019"></a>2.1.2 (3 月19日 2019) 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 删除 `applicationInsights` 以下项的依赖项：
     * 依赖项污染的潜在风险。
     * Java 11 不兼容。
     * 避免对 CPU 和/或内存产生潜在的性能影响。
 
 ### <a name="207-march-20-2019"></a>2.0.7 (2019 年3月20日) 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 向后移植删除 `applicationInsights` 以下项的依赖项：
     * 依赖项污染的潜在风险。
     * Java 11 不兼容。
@@ -184,7 +184,7 @@ ms.locfileid: "91570748"
 #### <a name="new-features"></a>新增功能
 * 添加关键字 `exists` 和 `startsWith` 。
 * 更新自述文件。
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复了 "无法直接调用实体的自助 href"。
 * 修复了 "如果未创建集合，findAll 将失败"。
 
@@ -196,14 +196,14 @@ ms.locfileid: "91570748"
 * 简化了 cosmosdb 的配置。
 * 添加 `deleteCollection` 和 `deleteAll` api。
 
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * Bug 修复和缺陷缓解。
 
 ## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 的详细信息。
+详细了解 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。
 
 了解有关 [弹簧框架](https://spring.io/projects/spring-framework)的详细信息。
 

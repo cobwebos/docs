@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886376"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760963"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -39,7 +39,7 @@ ms.locfileid: "90886376"
 
 分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。 详细了解[使用自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)并查看其示例。
 
-参阅以下 Python 笔记本中的分类和自动化机器学习示例：[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新闻组数据分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+参阅以下 Python 笔记本中的分类和自动化机器学习示例：[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新闻组数据分类](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)
 
 ### <a name="regression"></a>回归
 

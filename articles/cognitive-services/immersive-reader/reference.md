@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330598"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761543"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>沉浸式读者 JavaScript SDK 参考 (1.1) 
 
@@ -45,8 +45,8 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
-| `token` | string | Azure AD 身份验证令牌。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
-| `subdomain` | string | Azure 中沉浸式读者资源的自定义子域。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
+| `token` | 字符串 | Azure AD 身份验证令牌。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
+| `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
 | `content` | 内容  | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
 | `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |
 
@@ -84,7 +84,7 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 `immersive-
 
 使用以下属性来配置按钮的外观。
 
-| Attribute | 说明 |
+| 属性 | 说明 |
 | --------- | ----------- |
 | `data-button-style` | 设置按钮的样式。 可以是 `icon`、`text` 或 `iconAndText`。 默认为 `icon`。 |
 | `data-locale` | 设置区域设置。 例如，`en-US` 或 `fr-FR`。 默认为英语 `en` 。 |
@@ -135,7 +135,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 | ------- | ---- | ----------- |
 | 元素 | HTMLDivElement [] | 要在其中呈现沉浸式读者按钮的元素。 |
 
-##### `-elements`
+##### `elements`
 ```Parameters
 Type: HTMLDivElement[]
 Required: false
@@ -192,7 +192,7 @@ Required: false
 
 ## <a name="types"></a>类型
 
-### <a name="content"></a>内容
+### <a name="content"></a>Content
 
 包含要在沉浸式阅读器中显示的内容。
 
@@ -210,14 +210,14 @@ Required: false
 | title | 字符串 | 沉浸式读者顶部显示的标题文本 (可选)  |
 | 区块 | [区块 []](#chunk) | 块区数组 |
 
-##### `-title`
+##### `title`
 ```Parameters
 Type: String
 Required: false
 Default value: "Immersive Reader" 
 ```
 
-##### `-chunks`
+##### `chunks`
 ```Parameters
 Type: Chunk[]
 Required: true
@@ -244,23 +244,23 @@ Default value: null
 | ---- | ---- |------------ |
 | 内容 | String | 包含发送到沉浸式读者的内容的字符串。 |
 | lang | String | 文本的语言，值为 IETF BCP 47 language 标记格式，如 en、es。 如果未指定，将自动检测语言。 请参阅 [支持的语言](#supported-languages)。 |
-| mimeType | string | 支持纯文本、MathML、HTML & Microsoft Word .DOCX 格式。 有关更多详细信息，请参阅 [支持的 MIME 类型](#supported-mime-types) 。 |
+| mimeType | 字符串 | 支持纯文本、MathML、HTML & Microsoft Word .DOCX 格式。 有关更多详细信息，请参阅 [支持的 MIME 类型](#supported-mime-types) 。 |
 
-##### `-content`
+##### `content`
 ```Parameters
 Type: String
 Required: true
 Default value: null 
 ```
 
-##### `-lang`
+##### `lang`
 ```Parameters
 Type: String
 Required: false
 Default value: Automatically detected 
 ```
 
-##### `-mimeType`
+##### `mimeType`
 ```Parameters
 Type: String
 Required: false
@@ -323,38 +323,38 @@ Default value: "text/plain"
 | onPreferencesChanged | 函数 | 用户的首选项更改时执行。 有关详细信息，请参阅 [如何存储用户首选项](./how-to-store-user-preferences.md) 。 |
 | customDomain | String | 保留以供内部使用。 承载沉浸式读者 webapp 的自定义域 (默认值为 null) 。 |
 
-##### `-uiLang`
+##### `uiLang`
 ```Parameters
 Type: String
 Required: false
 Default value: User's browser language 
 ```
 
-##### `-timeout`
+##### `timeout`
 ```Parameters
 Type: Number
 Required: false
 Default value: 15000
 ```
 
-##### `-uiZIndex`
+##### `uiZIndex`
 ```Parameters
 Type: Number
 Required: false
 Default value: 1000
 ```
 
-##### `-onExit`
+##### `onExit`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-preferences`
+##### `preferences`
 
 > [!CAUTION]
-> **重要提示** 不要尝试以编程方式更改 `-preferences` 发送到沉浸式读取器应用程序的字符串的值，因为这可能会导致意外行为，导致用户的用户体验下降。
+> **重要提示** 不要尝试以编程方式更改 `-preferences` 发送到沉浸式读取器应用程序的字符串的值，因为这可能会导致意外行为，导致用户的用户体验下降。 主机应用程序不应将自定义值分配给或操作该 `-preferences` 字符串。 使用 `-preferences` 字符串选项时，请仅使用从回调选项返回的确切值 `-onPreferencesChanged` 。
 
 ```Parameters
 Type: String
@@ -362,14 +362,14 @@ Required: false
 Default value: null
 ```
 
-##### `-onPreferencesChanged`
+##### `onPreferencesChanged`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-customDomain`
+##### `customDomain`
 ```Parameters
 Type: String
 Required: false
@@ -396,7 +396,7 @@ type ReadAloudOptions = {
 | 速度 | Number | 播放速度必须介于0.5 到2.5 （含）之间。 |
 | 功能 | 布尔 | 当沉浸式读取器加载时，自动开始朗读。 |
 
-##### `-voice`
+##### `voice`
 ```Parameters
 Type: String
 Required: false
@@ -404,7 +404,7 @@ Default value: "Female" or "Male" (determined by language)
 Values available: "Female", "Male"
 ```
 
-##### `-speed`
+##### `speed`
 ```Parameters
 Type: Number
 Required: false
@@ -435,7 +435,7 @@ type TranslationOptions = {
 | autoEnableDocumentTranslation | 布尔 | 自动翻译整篇文档。 |
 | autoEnableWordTranslation | 布尔 | 自动启用 word 翻译。 |
 
-##### `-language`
+##### `language`
 ```Parameters
 Type: String
 Required: true
@@ -463,7 +463,7 @@ type DisplayOptions = {
 | increaseSpacing | 布尔 | 设置文本间距是打开还是关闭。 |
 | fontFamily | String |  ( "Calibri"、"ComicSans" 或 "Sitka" ) 设置选定的字体。 |
 
-##### `-textSize`
+##### `textSize`
 ```Parameters
 Type: Number
 Required: false
@@ -471,7 +471,7 @@ Default value: 20, 36 or 42 (Determined by screen size)
 Values available: 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96
 ```
 
-##### `-fontFamily`
+##### `fontFamily`
 ```Parameters
 Type: String
 Required: false

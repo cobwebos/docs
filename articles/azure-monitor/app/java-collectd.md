@@ -3,12 +3,12 @@ title: 监视 Linux 上 Java Web 应用的性能 - Azure | Microsoft Docs
 description: 通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322595"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761016"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
@@ -28,7 +28,7 @@ ms.locfileid: "87322595"
 在 Linux 服务器计算机上：
 
 1. 安装 [collectd](https://collectd.org/) 版本 5.4.0 或更高版本。
-2. 下载 [Application Insights collectd 编写器插件](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)。 注意版本号。
+2. 下载 [Application Insights collectd 编写器插件](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。 注意版本号。
 3. 将插件 JAR 复制到 `/usr/share/collectd/java`。
 4. 编辑 `/etc/collectd/collectd.conf`：
    * 确保已启用 [Java 插件](https://collectd.org/wiki/index.php/Plugin:Java)。

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262342"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761441"
 ---
 # <a name="receipt-concepts"></a>回执概念
 
@@ -90,7 +90,7 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|状态 | string | notStarted：分析操作尚未开始。 |
+|status | 字符串 | notStarted：分析操作尚未开始。 |
 | |  | 正在运行：分析操作正在进行。 |
 | |  | 失败：分析操作失败。 |
 | |  | succeeded：分析操作成功。 |
@@ -459,4 +459,4 @@ Azure 窗体识别器可以使用它的一个预生成模型分析回执。 接�
 ## <a name="see-also"></a>请参阅
 
 * [什么是表单识别器？](./overview.md)
-* [REST API 参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)
+* [REST API 参考文档](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)

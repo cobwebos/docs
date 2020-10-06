@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4a5203a91ba528328dce7036d4690c6dea137c33
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054256"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760247"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -97,7 +97,7 @@ Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中
 [查询范围](log-query/scope.md)设置为特定资源时，“查询资源管理器”、“保存”和“新建警报规则”按钮不可用  。 若要创建警报并保存或加载查询，Log Analytics 的范围必须设为某个工作区。 若要在工作区上下文中打开 Log Analytics，请选择“Azure Monitor”菜单中的“日志” 。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](log-query/scope.md)
 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么收到“要使此订阅启用此查询，需注册 Microsoft.Insights”错误？ 
-将自动注册多个资源提供程序，但某些资源提供程序可能需要你手动注册。 注册的范围始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
+将自动注册多个资源提供程序，但某些资源提供程序可能需要你手动注册。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
 ### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么我不会收到访问错误消息？ 
 若要查看 VM 日志，需获得存储 VM 日志的工作区的读取权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。
@@ -430,7 +430,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>是否可以将遥测数据发送到 Application Insights 门户？
 
-建议使用我们的 SDK 并使用 [SDK API](app/api-custom-events-metrics.md)。 为各种[平台](app/platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)和[终结点协议](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
+建议使用我们的 SDK 并使用 [SDK API](app/api-custom-events-metrics.md)。 为各种[平台](app/platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)和[终结点协议](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>是否可以监视 Intranet Web 服务器？
 

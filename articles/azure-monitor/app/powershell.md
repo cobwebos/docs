@@ -3,12 +3,12 @@ title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
 description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和管理资源、警报和可用性测试。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322476"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760897"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -26,7 +26,7 @@ ms.locfileid: "87322476"
 1. 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](https://www.microsoft.com/web/downloads/platform.aspx)。
 2. 使用它来安装 Microsoft Azure PowerShell。
 
-除了使用资源管理器模板，还可以使用许多 [Application Insights PowerShell cmdlet](/powershell/module/az.applicationinsights)，以编程方式轻松地配置 Application Insights 资源。 cmdlet 启用的功能包括：
+除了可以使用资源管理器模板以外，还有一组丰富的 [Application Insights PowerShell cmdlet](/powershell/module/az.applicationinsights)，可用于轻松地以编程方式配置 Application Insights 资源。 cmdlet 启用的功能包括：
 
 * 创建和删除 Application Insights 资源
 * 获取 Application Insights 资源及其属性的列表
@@ -342,7 +342,7 @@ Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <res
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
-也可以使用 [ARMClient](https://github.com/projectkudu/ARMClient) 来获取和设置每日上限参数。  要获取当前值，请使用：
+也可以使用 [ARMClient](https://github.com/projectkudu/ARMClient) 来获取和设置每日上限参数。  若要获取当前值，请运行：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
@@ -473,5 +473,5 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 * [设置警报](powershell-alerts.md)
 * [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)
-* [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [创建版本注释](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

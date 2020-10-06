@@ -5,18 +5,17 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041398"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761458"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
 
 启用监视时，可能会遇到阻止数据收集的问题。
 本文列出了所有已知问题，并提供了故障排除示例。
-如果遇到此处未列出的问题，可以通过 [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) 联系我们。
 
 ## <a name="known-issues"></a>已知问题
 
@@ -56,7 +55,7 @@ ms.locfileid: "87041398"
 ### <a name="conflict-with-iis-shared-configuration"></a>与 IIS 共享配置冲突
 
 如果拥有 Web 服务器群集，则可能会使用[共享配置](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
-HttpModule 无法注入到此共享配置中。
+HttpModule 无法注入此共享配置。
 在每个 Web 服务器上运行 Enable 命令，以将 DLL 安装到每个服务器的 GAC 中。
 
 在运行 Enable 命令后，请完成以下步骤：
@@ -72,12 +71,10 @@ HttpModule 无法注入到此共享配置中。
 ### <a name="iis-nested-applications"></a>IIS 嵌套应用程序
 
 在 1.0 版中，我们不在 IIS 中检测嵌套应用程序。
-我们正在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/369)跟踪此问题。
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>高级 SDK 配置不可用。
 
 在 1.0 版中，SDK 配置不向最终用户公开。
-我们正在[此处](https://github.com/microsoft/ApplicationInsights-Home/issues/375)跟踪此问题。
 
     
     
@@ -122,7 +119,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ### <a name="troubleshooting-running-processes"></a>对正在运行的进程进行故障排除
 
 可以检查已检测的计算机上的进程，以确定是否加载了所有 DLL。
-如果监视功能在正常工作，则至少有 12 个 DLL 应加载。
+如果监视正常工作，则至少应加载 12 个 DLL。
 
 使用 `Get-ApplicationInsightsMonitoringStatus -InspectProcess` 命令来检查 DLL。
 
@@ -135,25 +132,24 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 1. 从 [GitHub](https://github.com/Microsoft/perfview/releases) 下载 PerfView.exe 和 PerfView64.exe。
 2. 启动 PerfView64.exe。
-3. 展开“高级选项”  。
+3. 展开“高级选项”。
 4. 清除这些复选框：
     - **Zip**
     - **合并**
     - **.NET 符号集合**
-5. 设置以下“其他提供程序”  ：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. 设置以下 **其他提供程序**： `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>收集日志
 
 1. 在具有管理员权限的命令控制台中，运行 `iisreset /stop` 命令以禁用 IIS 和所有 Web 应用。
-2. 在 PerfView 中，选择“开始收集”  。
+2. 在 PerfView 中，选择“开始收集”****。
 3. 在具有管理员权限的命令控制台中，运行 `iisreset /start` 命令以启动 IIS。
 4. 尝试浏览到你的应用。
-5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”  。
+5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”****。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请查看 [API 参考](status-monitor-v2-overview.md#powershell-api-reference)，以了解你可能错过的参数。
-- 如果遇到此处未列出的问题，可以通过 [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) 联系我们。
+- 查看 [API 参考](status-monitor-v2-overview.md#powershell-api-reference) ，了解可能缺少的参数。

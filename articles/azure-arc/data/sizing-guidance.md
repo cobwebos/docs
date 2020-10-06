@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7afe00746b133e8376cf32ba874831c7962e85b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934819"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761475"
 ---
 # <a name="sizing-guidance"></a>大小调整指南
 
@@ -27,7 +27,7 @@ ms.locfileid: "90934819"
 ## <a name="general-sizing-requirements"></a>一般大小要求
 
 > [!NOTE]
-> 如果你不熟悉本文中的概念，可以阅读有关 [Kubernetes 资源调控](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) 和 [Kubernetes 大小表示法](https://kubernetes.io/docs/concepts/configuration/.manage-resources-containers/#resource-units-in-kubernetes)的详细信息。
+> 如果你不熟悉本文中的概念，可以阅读有关 [Kubernetes 资源调控](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) 和 [Kubernetes 大小表示法](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)的详细信息。
 
 内核数必须是大于或等于1的整数值。
 
@@ -47,7 +47,7 @@ ms.locfileid: "90934819"
 
 数据控制器是部署到 Kubernetes 群集的 pod 的集合，用于提供 API、控制器服务、引导程序以及监视数据库和仪表板。  下表描述了内存和 CPU 请求和限制的默认值。
 
-|Pod 名称|CPU 请求|内存请求|CPU 限制|内存限制|说明|
+|Pod 名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
 |---|---|---|---|---|---|
 |**引导程序**|100m|100Mi|200m|200Mi||
 |**control**|400m|2Gi|1800m|2Gi||
@@ -89,7 +89,7 @@ ms.locfileid: "90934819"
 - 核心数：1
 
 创建的每个 SQL 托管实例盒都有三个容器：
-|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|说明|
+|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|未指定|未指定|除了为 SQL 托管实例指定的请求 _外_ ，fluentbit 容器资源请求。||
 |弧形-sqlmi|已指定或未指定用户。|已指定或未指定用户。|已指定或未指定用户。|已指定或未指定用户。||
@@ -104,7 +104,7 @@ ms.locfileid: "90934819"
 - 核心数：1
 
 创建的每个 PostgreSQL 超大规模服务器组协调器或辅助角色盒都有三个容器：
-|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|说明|
+|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|未指定|未指定|Fluentbit 容器资源请求是针对 PostgreSQL 超大规模服务器组节点指定的请求的 _补充_ 。|
 |postgres|已指定或未指定用户。|用户指定或 256Mi (默认) 。|已指定或未指定用户。|已指定或未指定用户。||

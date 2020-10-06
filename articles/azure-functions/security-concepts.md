@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294744"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761407"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "91294744"
 
 ### <a name="security-center"></a>安全中心
 
-安全中心与门户中的函数应用集成。 它免费提供了对潜在配置相关安全漏洞的快速评估。 在专用计划中运行的函数应用也可以使用安全中心的实时安全功能，但需要额外付费。 若要了解更多信息，请参阅[保护你的 Azure 应用服务 Web 应用和 API](../security-center/security-center-app-services.md)。 
+安全中心与门户中的函数应用集成。 它免费提供了对潜在配置相关安全漏洞的快速评估。 在专用计划中运行的函数应用也可以使用安全中心的实时安全功能，但需要额外付费。 若要了解更多信息，请参阅[保护你的 Azure 应用服务 Web 应用和 API](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)。 
 
 ### <a name="log-and-monitor"></a>日志和监视器
 
@@ -76,7 +76,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 默认情况下，密钥存储在通过 `AzureWebJobsStorage` 设置提供的帐户中的 Blob 存储容器中。 可以使用特定的应用程序设置来重写此行为，将密钥存储在另一位置。
 
-|位置  |设置 | Value | 描述  |
+|位置  |设置 | 值 | 描述  |
 |---------|---------|---------|---------|
 |不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用特有的机密存储密钥之前对密钥进行加密。 |
 |文件系统   | `AzureWebJobsSecretStorageType`   |  `files`       | 密钥持久保留在文件系统中，在使用函数应用特有的机密进行存储之前加密。 |

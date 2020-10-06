@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4e1a2fdd772c7b318ba36b1aee623c663689526f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 85ffff1a38d42aac00ce122a1e51d79515b0c51b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597282"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762019"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？ 
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 以透明方式在与 Azure Cosmos 帐户关联的所有 Azure �
 |吞吐量 | X RU/秒预配吞吐量 | X RU/s 预配吞吐量 * 1.25 | 已预配 2X RU/秒的吞吐量 <br/><br/> 与具有可用性区域的单个区域相比，此配置模式需要两倍的吞吐量，因为有两个区域。 |
 
 > [!NOTE]
-> 若要为多区域 Azure Cosmos 帐户启用可用性区域支持，帐户必须启用多区域写入写入。
+> 若要为多区域 Azure Cosmos 帐户启用可用性区域支持，帐户必须启用多区域写入。
 
 将区域添加到新的或现有的 Azure Cosmos 帐户时，可以启用区域冗余。 若要在 Azure Cosmos 帐户上启用区域冗余，应将标志设置为，以 `isZoneRedundant` `true` 指定特定位置。 可以在 "位置" 属性中设置此标志。 例如，以下 PowerShell 代码片段为 "东南亚" 区域启用区域冗余：
 

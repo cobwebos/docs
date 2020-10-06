@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285054"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760155"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a> (预览版 Azure Monitor 日志中审核查询) 
 日志查询审核日志提供有关 Azure Monitor 中运行的日志查询的遥测。 这包括如下所述的信息：运行查询、运行查询的人员、使用的工具、查询文本，以及描述查询执行的性能统计信息。
@@ -68,6 +68,9 @@ ms.locfileid: "91285054"
 - 性能统计信息不适用于来自 Azure 数据资源管理器代理的查询。 这些查询的所有其他数据仍将填充。
 - [进行模糊处理字符串文本](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)的字符串上的*h*提示不会影响查询审核日志。 将完全按提交方式捕获查询，而不会对字符串进行模糊处理。 应确保只有具有相容性权限才能查看此数据的用户才能使用 Log Analytics 工作区中提供的各种 RBAC 模式来完成此操作。
 - 对于包含多个工作区中数据的查询，只能在用户有权访问的工作区中捕获查询。
+
+## <a name="costs"></a>成本  
+Azure 诊断扩展不会产生费用，但可能会产生数据引入费用。 检查与要将数据收集到其中的目标相对应的 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258399"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760748"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 中的中介身份验证
 
@@ -55,7 +55,7 @@ ms.locfileid: "91258399"
 
 在设备上安装中介后，所有后续交互式令牌请求（对 `acquireToken()` 的调用）将由该中介处理，而不是由 MSAL 在本地处理。 以前提供给 MSAL 的任何 SSO 状态不会提供给中介。 因此，用户需要重新进行身份验证，或者从设备已知的现有帐户列表中选择一个帐户。
 
-安装代理不需要用户重新登录。 仅当用户需要解决 `MsalUiRequiredException` 时，下一个请求才会发送到中介。 `MsalUiRequiredException` 可能出于多种原因而引发，需要以交互方式解决。 例如：
+安装代理不需要用户重新登录。 仅当用户需要解决 `MsalUiRequiredException` 时，下一个请求才会发送到中介。 `MsalUiRequiredException` 可能出于多种原因而引发，需要以交互方式解决。 例如： 。
 
 - 用户更改了与其帐户关联的密码。
 - 用户的帐户不再符合条件访问策略。
@@ -95,7 +95,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 使用 *keytool*生成签名哈希后，请使用 Azure 门户生成重定向 URI：
 
-1. 登录到 [Azure 门户](https://protal.azure.com) 并选择 **应用注册**中的 Android 应用。
+1. 登录到 [Azure 门户](https://portal.azure.com) 并选择 **应用注册**中的 Android 应用。
 1. 选择 "**身份验证**" "  >  **添加平台**  >  **Android**"。
 1. 在 " **配置 Android 应用程序** " 窗格打开后，输入前面生成的 **签名哈希** 和 **包名称**。
 1. 选择 " **配置** " 按钮。

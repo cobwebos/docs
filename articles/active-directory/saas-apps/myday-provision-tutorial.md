@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2020
 ms.author: Zhchia
-ms.openlocfilehash: 15119a76e1e59b339a9012896a525a0ecc91f34d
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: e8d8f2af0350a8b4457f70632341f070c890cba0
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761476"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761050"
 ---
 # <a name="tutorial-configure-myday-for-automatic-user-provisioning"></a>教程：为 myday 配置自动用户预配
 
-本教程介绍了需要在 myday 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [myday](https://www.mydaycloud.com) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 myday 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [myday](https://go.mydaycloud.com) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -48,11 +48,11 @@ ms.locfileid: "90761476"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定要 [在 Azure AD 与 myday 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-myday-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 myday 以支持 Azure AD 的预配
+## <a name="step-2-configure-myday-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 myday 以支持 Azure AD 的预配
 
 联系你的 myday 代表或支持团队来接收 **租户 URL** 和 **机密令牌**。
 
-## <a name="step-3-add-myday-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 myday
+## <a name="step-3-add-myday-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 myday
 
 从 Azure AD 应用程序库中添加 myday，开始管理预配到 myday。 如果以前为 SSO 设置了 myday，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
@@ -124,8 +124,8 @@ ms.locfileid: "90761476"
    |phoneNumbers[type eq "mobile"].value|字符串|
    |phoneNumbers[type eq "work"].value|字符串|
    |角色 [主 eq "True"]。显示|String|
-   |role [primary eq "True"]。类型|String|
-   |role [主 eq "True"]。值|字符串|
+   |role [primary eq "True"]。类型|字符串|
+   |roles[primary eq "True"].value|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|

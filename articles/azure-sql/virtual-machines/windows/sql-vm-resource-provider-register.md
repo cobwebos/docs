@@ -10,21 +10,27 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/13/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272061"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761305"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server VM (RP) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文介绍如何在 Azure 中通过 SQL VM 资源提供程序 (RP) 注册 SQL Server 虚拟机 (VM) 。 注册到资源提供程序会在订阅中创建 SQL 虚拟机资源，这是与虚拟机资源不同的资源。 从资源提供程序中取消注册 SQL Server VM 会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
+本文介绍如何在 Azure 中通过 SQL VM 资源提供程序 (RP) 注册 SQL Server 虚拟机 (VM) 。 
+
+本文介绍如何使用 SQL VM 资源提供程序注册单个 SQL Server VM。 或者，你可以 [自动](sql-vm-resource-provider-automatic-registration.md) 注册所有 SQL Server vm 或 [批量](sql-vm-resource-provider-bulk-register.md)注册。
+
+## <a name="overview"></a>概述
+
+注册到资源提供程序会在订阅中创建 SQL 虚拟机资源，这是与虚拟机资源不同的资源。 从资源提供程序中取消注册 SQL Server VM 会删除 SQL 虚拟机资源，但不会删除实际虚拟机。
 
 通过 Azure 门户部署 SQL Server VM Azure 市场映像会自动将 SQL Server VM 注册到资源提供程序。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 预配 Azure 虚拟机，则应将 SQL Server VM 注册到资源提供程序以实现以下目的：
 
@@ -58,7 +64,7 @@ ms.locfileid: "91272061"
 若要将 SQL Server VM 注册到资源提供程序，需要： 
 
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
-- 部署到公有云或 Azure 政府云的 Azure 资源模型 [SQL Server VM](create-sql-vm-portal.md)。 
+- 将[SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)部署到公共或 Azure 政府云的 Azure 资源模型[Windows 虚拟机](../../../virtual-machines/windows/quick-create-portal.md)。 
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli) 或 [PowerShell](/powershell/azure/new-azureps-module-az)。 
 
 ## <a name="management-modes"></a>管理模式
@@ -282,7 +288,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="azure-portal"></a>Azure 门户 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 1. 中转到 [SQL Server vm](manage-sql-vm-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果 SQL Server VM 未在此处列出，则可能尚未注册到 SQL VM 资源提供程序。 
 1. 查看“状态”下的值。 如果“状态”为“成功”，则 SQL Server VM 已成功注册到 SQL VM 资源提供程序 。 
@@ -328,11 +334,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 1. 选择“删除”。 
 
-   ![删除 SQL VM 资源提供程序](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
+   ![在顶部导航栏中选择 "删除"](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
 1. 键入 SQL 虚拟机的名称，并 **清除该虚拟机旁边的复选框**。
 
-   ![删除 SQL VM 资源提供程序](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
+   ![取消选中 VM 以阻止删除实际虚拟机，然后选择 "删除" 以继续删除 SQL VM 资源](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > 如果未能清除虚拟机名称的复选框，会导致彻底删除虚拟机。 清除该复选框可从资源提供程序取消注册 SQL Server VM，但不会删除实际虚拟机。 
@@ -342,7 +348,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ### <a name="command-line"></a>命令行
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用 [az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) 命令。 这会删除 SQL Server VM *资源* ，但不会删除虚拟机。 
+若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用 [az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) 命令。 这会删除 SQL Server VM *资源* ，但不会删除虚拟机。 
 
 
 ```azurecli-interactive
@@ -400,7 +406,7 @@ SQL VM 资源提供程序仅支持：
 
 是，使用 SQL VM 资源提供程序注册将在 VM 上安装代理。
 
-SQL Server IaaS 扩展依赖于代理来查询 SQL Server 的元数据。 仅当在 NoAgent 模式下 regsitered SQL VM 资源提供程序时，才会安装代理。
+SQL Server IaaS 扩展依赖于代理来查询 SQL Server 的元数据。 仅当在 NoAgent 模式下注册 SQL VM 资源提供程序时，才会安装代理。
 
 **是否向 VM 上的 SQL VM 资源提供程序重启 SQL Server 注册？**
 

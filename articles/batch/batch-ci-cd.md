@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d125427a3b2e519e909aad9e6f9cf08a963d2d46
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461523"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760557"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 生成和部署 HPC 解决方案
 
@@ -291,7 +291,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 
 基础结构和软件可以定义为代码，并在相同的存储库中并置。
 
-对于此解决方案，将使用 ffmpeg 作为应用程序包。 可以在[此处](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)下载 ffmpeg 包。
+对于此解决方案，将使用 ffmpeg 作为应用程序包。 可以在[此处](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip)下载 ffmpeg 包。
 
 ![示例 Git 存储库结构](media/batch-ci-cd/git-repository.jpg)
 

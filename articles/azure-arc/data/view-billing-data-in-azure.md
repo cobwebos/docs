@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934309"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760300"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>将计费数据上传到 Azure 并在 Azure 门户中查看
 
@@ -30,7 +30,7 @@ ms.locfileid: "90934309"
 - **间接连接** -不会直接连接到 Azure。 数据仅通过导出/上载过程发送到 Azure。 目前，所有 Azure Arc 数据服务部署在此模式下均以预览版的方式运行。
 - **直接连接** -在此模式下，将依赖于支持 azure Arc 的 Kubernetes 服务，以便在 azure 与启用了 azure arc 的数据服务的 Kubernetes 群集之间提供直接连接。 这可以实现更多功能，还可让你使用 Azure 门户和 Azure CLI 管理启用了 Azure Arc 的数据服务，就像在 Azure PaaS 中管理数据服务一样。  此连接模式目前尚不提供预览版，但即将推出。
 
-可以阅读有关 [连接模式](/docs/connectivity.md)之间差异的详细信息。
+可以阅读有关 [连接模式](https://docs.microsoft.com/azure/azure-arc/data/connectivity)之间差异的详细信息。
 
 在间接连接模式下，计费数据会定期从 Azure Arc 数据控制器输出到安全文件，然后上传到 Azure 并进行处理。  在即将到来的直接连接模式下，计费数据会自动发送到 Azure 大约1小时，以便对服务成本进行近乎实时的查看。 在间接连接模式下导出和上传数据的过程也可以使用脚本自动进行，我们可能会构建一个可为你执行此操作的服务。
 

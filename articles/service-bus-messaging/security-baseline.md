@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6242e593171bd8a01d01739b884ae8a1ca7beb4d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629754"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761152"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>适用于服务总线的 Azure 安全基准
 
@@ -227,7 +227,7 @@ ms.locfileid: "91629754"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： Azure 基于角色的访问控制 (RBAC) 使你可以通过角色分配管理对 Azure 资源的访问权限。 你可以将这些角色分配给用户、组服务主体和托管标识。 对于服务总线，有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。
+**指南**： Azure 基于角色的访问控制 (RBAC) 使你可以通过角色分配管理对 Azure 资源的访问权限。 可以将这些角色分配给用户、组服务主体和托管标识。 对于服务总线，有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。
 
 - [Azure 服务总线的内置角色](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
@@ -273,7 +273,7 @@ ms.locfileid: "91629754"
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
-**指南**： Microsoft Azure 为基于 Azure Active Directory (Azure AD) 的资源和应用程序提供集成的访问控制管理。 将 Azure AD 与 Azure 服务总线配合使用的主要优势在于，你无需再将凭据存储在代码中。 可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 用于请求令牌的资源名称为 https://servicebus.azure.net/。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 将向应用程序返回一个访问令牌，然后应用程序可使用该访问令牌向 Azure 服务总线资源授予请求。
+**指南**： Microsoft Azure 为基于 Azure Active Directory (Azure AD) 的资源和应用程序提供集成的访问控制管理。 将 Azure AD 与 Azure 服务总线配合使用的主要优势在于，你无需再将凭据存储在代码中。 可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 用于请求令牌的资源名称为 https://azure.microsoft.com/services/service-bus/。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 将向应用程序返回一个访问令牌，然后应用程序可使用该访问令牌向 Azure 服务总线资源授予请求。
 
 - [如何使用 Azure AD 对应用程序进行身份验证以访问服务总线资源](authenticate-application.md)
 

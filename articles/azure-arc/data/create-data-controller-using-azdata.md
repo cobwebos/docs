@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8651921dafd5727f79e4ab3919e188d4b8612465
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934625"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761679"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用 Azure 数据 CLI (azdata 创建 Azure Arc 数据控制器) 
 
@@ -155,7 +155,7 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 > [!NOTE]
 >   在此处和下面的命令中使用相同的命名空间 `azdata arc dc create` 。 示例为 `arc` 。
 
-首先，从 [GitHub](https://raw.githubusercontent.com/microsoft/azure_arc/master/data_services/deployment/yaml/arc-data-scc.yaml) 下载自定义安全上下文约束 (SCC) ，并将其应用到群集。
+首先，从 [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) 下载自定义安全上下文约束 (SCC) ，并将其应用到群集。
 
 您可以运行以下命令来创建数据控制器：
 > [!NOTE]
