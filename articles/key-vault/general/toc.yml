@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: 排查访问问题
           href: troubleshooting-access-issues.md
+    - name: 如何启用日志记录
+      href: howto-logging.md
     - name: 开发
       items:
         - name: Azure 密钥保管库开发人员指南

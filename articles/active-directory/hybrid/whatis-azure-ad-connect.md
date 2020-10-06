@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure AD Connect 和 Connect Health？ | Microsoft Docs
-description: 介绍了用来通过 Azure AD 同步和监视本地环境的工具。
+description: 了解用来通过 Azure AD 同步和监视本地环境的工具。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278830"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018605"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -35,7 +35,7 @@ Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具�
 
 ## <a name="what-is-azure-ad-connect-health"></a>什么是 Azure AD Connect Health？
 
-Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提供可靠的监视功能。 它可以用于维护到 Office 365 和 Microsoft Online Services 的可靠连接。  此可靠性是通过针对关键标识组件提供监视功能来实现的。 另外，它还使有关这些组件的关键数据点可轻松访问。
+Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提供可靠的监视功能。 它可以用于维护到 Microsoft 365 和 Microsoft Online Services 的可靠连接。  此可靠性是通过针对关键标识组件提供监视功能来实现的。 另外，它还使有关这些组件的关键数据点可轻松访问。
 
 这些信息显示在 [Azure AD Connect Health 门户](https://aka.ms/aadconnecthealth)中。 可以使用 Azure AD Connect Health 门户来查看警报、性能监视、使用情况分析和其他信息。 Azure AD Connect Health 在一个集中的位置提供重要标识组件的运行状况单一可重用功能区。
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 ## <a name="why-use-azure-ad-connect"></a>为何使用 Azure AD Connect？
 将本地目录与 Azure AD 集成可提供通用标识用于访问云和本地资源，从而提高用户的生产率。 用户和组织可以得到以下好处：
 
-* 用户可以使用单个标识来访问本地应用程序和云服务，例如 Office 365。
+* 用户可以使用单个标识来访问本地应用程序和云服务（例如 Microsoft 365）。
 * 单个工具即可提供轻松同步和登录的部署体验。
 * 为方案提供最新功能。 Azure AD Connect 取代了 DirSync 和 Azure AD Sync 等早期版本的标识集成工具。有关详细信息，请参阅 [混合标识目录集成工具比较](plan-hybrid-identity-design-considerations-tools-comparison.md)。
 

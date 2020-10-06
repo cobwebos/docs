@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 005068c8e81adb9a79a4e6dc7e86a9bfb39902a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505816"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088623"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -42,13 +42,13 @@ Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指�
 
 Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](platform/metrics-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
-![指标](media/overview/metrics.png)
+![此图显示流入指标资源管理器中的要在可视化效果中使用的指标数据。](media/overview/metrics.png)
 
 可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以使用 Azure 门户中的 [Log Analytics](./log-query/log-query-overview.md) 创建和测试查询，然后可以直接使用不同的工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
 
 Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/azure/kusto/query/)的某个版本，该查询语言适用于简单的日志查询，但也包括高级功能，例如聚合、联接和智能分析。 可以通过[多个课程](log-query/get-started-queries.md)快速了解此查询语言。  特定指南提供给已熟悉 [SQL](log-query/sql-cheatsheet.md) 和 [Splunk](log-query/splunk-cheatsheet.md) 的用户。
 
-![日志](media/overview/logs.png)
+![此图显示流入 Log Analytics 中进行分析的日志数据。](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure Monitor 收集哪些数据？
 
@@ -56,7 +56,7 @@ Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据�
 
 - **应用程序监视数据**：有关编写的代码的性能和功能的数据，不管平台是什么。
 - **来宾 OS 监视数据**：有关运行应用程序的操作系统的数据。 此应用程序可以在 Azure 中运行，也可以在其他云中或本地运行。 
-- **Azure 资源监视数据**：有关 Azure 资源的操作的数据。
+- **Azure 资源监视数据**：有关 Azure 资源操作的数据。
 - **Azure 订阅监视数据**：有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 
 - **Azure 租户监视数据**：有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。
 
@@ -103,12 +103,12 @@ Azure Monitor 中的[监视解决方案](insights/solutions.md)是打包的逻�
 
 Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，其中包含可在多个规则之间共享的独特接收者和操作集。 操作组可根据要求执行多种操作，例如，使用 Webhook 来让警报启动外部操作，或者与 ITSM 工具集成。
 
-![警报](media/overview/alerts.png)
+![屏幕截图显示 Azure Monitor 中的警报（包含严重性、警报总数等信息）。](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>自动缩放
 自动缩放是指在处理应用程序负载时让适当数量的资源运行。 自动缩放允许创建规则，这些规则使用 Azure Monitor 收集的指标来确定何时要自动添加资源来应对负载增大的情况，并在空闲期删除资源以节省成本。 可以指定最小和最大实例数，并创建逻辑来控制何时要增加或减少资源。
 
-![自动缩放](media/overview/autoscale.png)
+![此图显示自动缩放，一行中有几个服务器标记为“处理器时间 > 80%”，两台服务器标记为最小容量，三台服务器标记为当前容量，五台服务器标记为最大容量。](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>可视化监视数据
 图表和表等[可视化效果](visualizations.md)是用于汇总监视数据并向不同的受众呈现这些数据的有效工具。 Azure Monitor 具有自身的可视化监视数据的功能，并可利用其他 Azure 服务将这些数据发布到不同的受众。
@@ -116,12 +116,12 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 ### <a name="dashboards"></a>仪表板
 使用 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)可将不同类型的数据（包括指标和日志）合并到 [Azure 门户](https://portal.azure.com)的单个窗格中。 可以选择与其他 Azure 用户共享仪表板。 除了任何日志查询或指标图表的输出以外，还可将整个 Azure Monitor 中的元素添加到 Azure 仪表板。 例如，可以创建一个包含多个磁贴的仪表板，这些磁贴分别用于显示指标图、活动日志表、Application Insights 的使用情况图表，以及日志查询的输出。
 
-![仪表板](media/overview/dashboard.png)
+![屏幕截图显示一个 Azure 仪表板，其中包括应用程序和安全性磁贴以及其他可自定义的信息。](media/overview/dashboard.png)
 
 ### <a name="views"></a>视图
 [视图](./platform/view-designer.md)在 Azure Monitor 中直观显示日志数据。  每个视图包含单个磁贴，使用该磁贴可以向下钻取到各种可视化效果的组合，例如汇总了关键数据的列表，以及条形图和折线图。  监视解决方案包含的视图汇总了特定应用程序的数据。你可以创建自己的视图来显示来自任何日志查询的数据。 与 Azure Monitor 中的其他元素一样，可将视图添加到 Azure 仪表板。
 
-![查看](media/overview/view.png)
+![屏幕截图显示一个容器监视解决方案的磁贴，以及选择磁贴时打开的详细视图。](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) 是一个业务分析服务，可针对各种数据源提供交互式可视化效果，并且是将数据提供给组织内部和外部的其他人的有效方式。 可将 Power BI 配置为[自动从 Azure Monitor 导入日志数据](./platform/powerbi.md)，以利用这些附加的可视化效果。

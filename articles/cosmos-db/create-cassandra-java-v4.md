@@ -1,6 +1,6 @@
 ---
 title: 带有使用 Java 4.0 SDK 的 Azure Cosmos DB Cassandra API 的 Java 应用
-description: 本快速入门介绍如何配合 Azure 门户和 Java 使用 Azure Cosmos DB Cassandra API 创建配置文件应用程序
+description: 本快速入门介绍如何配合 Azure 门户和 Java 4.0 SDK 使用 Azure Cosmos DB Cassandra API 创建配置文件应用程序
 ms.service: cosmos-db
 author: TheovanKraay
 ms.author: thvankra
@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4411c2d3b540423c1086fe8b45bd343870a72f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 076cb892740b99971400fbc34f60dc1083554555
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319195"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532199"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据（v4 驱动程序）
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据（v4 驱动程序）
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -66,7 +66,7 @@ ms.locfileid: "87319195"
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 这些代码片段全部摘自 src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java 文件。  
+此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 这些代码片段全部摘自 src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java** 文件。  
 
 * `CqlSession` 连接到 Azure Cosmos DB Cassandra API 并返回可供访问的会话（v3 驱动程序中的 `Cluster` 对象现已过时）。 Cassandra 主机、端口、用户名和密码是使用 Azure 门户中的连接字符串页设置的。
 
@@ -77,7 +77,7 @@ ms.locfileid: "87319195"
     ```
 
 
-以下代码片段来自 src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java 文件。
+以下代码片段来自 src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java** 文件。
 
 * 如果密钥空间自上次运行的时候已存在，则删除该密钥空间。
 
@@ -151,29 +151,29 @@ ms.locfileid: "87319195"
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串详细信息使应用能够与托管数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”****。 
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制用户名":::
 
 2. 使用屏幕右侧的 :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: 按钮复制“CONTACT POINT”值。
 
-3. 打开 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources 文件夹中的 config.properties 文件。 
+3. 打开 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources** 文件夹中的 config.properties** 文件。 
 
 3. 粘贴门户中的“联系点”值，并覆盖第 2 行中的 `<Cassandra endpoint host>`。
 
-    config.properties 的第 2 行现在应类似于 
+    config.properties** 的第 2 行现在应类似于 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
 3. 返回到门户，并复制“用户名”值。 粘贴门户中的“用户名”值，并覆盖第 4 行中的 `<cassandra endpoint username>`。
 
-    config.properties 的第 4 行现在应类似于 
+    config.properties** 的第 4 行现在应类似于 
 
     `cassandra_username=cosmos-db-quickstart`
 
 4. 返回到门户，并复制“密码”值。 粘贴门户中的“密码”值，并覆盖第 5 行中的 `<cassandra endpoint password>`。
 
-    config.properties 的第 5 行现在应类似于 
+    config.properties** 的第 5 行现在应类似于 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
@@ -187,7 +187,7 @@ ms.locfileid: "87319195"
 
     这是因为 v.4x 驱动程序只允许将一个本地 DC 与联系点配对。 如果要添加默认区域以外的区域（这是首次创建 Cosmos DB 帐户时给出的区域），则需要在添加联系点时使用区域后缀，例如 `host-westus.cassandra.cosmos.azure.com`。
 
-8. 保存 config.properties 文件。
+8. 保存 config.properties** 文件。
 
 ## <a name="run-the-java-app"></a>运行 Java 应用
 
@@ -213,9 +213,9 @@ ms.locfileid: "87319195"
 
     按 Ctrl+C 停止执行程序并关闭控制台窗口。
 
-4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
+4. 在 Azure 门户中，打开数据资源管理器****，以查询、修改和处理这些新数据。 
 
-    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="在数据资源管理器中查看数据 - Azure Cosmos DB":::
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制用户名":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

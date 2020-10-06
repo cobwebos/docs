@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 918ac54836adf6ad12934d7e30cf88f2786e1fba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: 481c0d85420ab2cc57f5636ed1862a525ace553b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508498"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604936"
 ---
-本文提供信息和示例代码，以帮助你开始通过 Go 使用自定义视觉客户端库来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Go 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
+本指南提供说明和示例代码，以帮助你开始使用适用于 Go 的自定义视觉客户端库来构建图像分类模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
+
+> [!NOTE]
+> 若要在不编写代码的情况下构建和训练分类模型，请改为参阅[基于浏览器的指南](../../getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -19,7 +22,7 @@ ms.locfileid: "88508498"
 
 ## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
 
-若要安装适用于 Go 的自定义视觉服务客户端库，请在 PowerShell 中运行以下命令：
+若要使用适用于 Go 的自定义视觉来编写图像分析应用，需要自定义视觉服务客户端库。 在 PowerShell 中运行以下命令：
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -36,9 +39,9 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>添加代码
 
-在首选项目目录中创建名为 sample.go  的新文件。
+在首选项目目录中创建名为 sample.go** 的新文件。
 
-### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
+## <a name="create-the-custom-vision-project"></a>创建自定义视觉项目
 
 将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 另外，从自定义视觉网站的“设置”页面获取终结点 URL。
 
@@ -80,9 +83,9 @@ func main() {
     }
 ```
 
-### <a name="create-tags-in-the-project"></a>在项目中创建标记
+## <a name="create-tags-in-the-project"></a>在项目中创建标记
 
-若要在项目中创建分类标记，请将以下代码添加到 sample.go  末尾：
+若要在项目中创建分类标记，请将以下代码添加到 sample.go** 末尾：
 
 ```go
 // Make two tags in the new project
@@ -90,7 +93,7 @@ hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree ta
 cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>上传和标记图像
+## <a name="upload-and-tag-images"></a>上传和标记图像
 
 要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 最多可以在单个批次中上传 64 个图像。
 
@@ -123,7 +126,7 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>训练分类器和发布
+## <a name="train-and-publish-the-project"></a>训练并发布项目
 
 此代码创建预测模型的第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
 
@@ -143,7 +146,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>获取并使用预测终结点上发布的迭代
+## <a name="use-the-prediction-endpoint"></a>使用预测终结点
 
 若要将图像发送到预测终结点并检索预测，请将以下代码添加到文件末尾：
 
@@ -163,7 +166,7 @@ trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name
 
 ## <a name="run-the-application"></a>运行应用程序
 
-运行 sample.go  。
+运行 sample.go**。
 
 ```shell
 go run sample.go
@@ -194,3 +197,7 @@ Done!
 
 > [!div class="nextstepaction"]
 > [测试和重新训练模型](../../test-your-model.md)
+
+* 什么是自定义视觉？
+* [SDK 参考文档（训练）](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [SDK 参考文档（预测）](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)

@@ -3,15 +3,18 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: a822ab52024a801f4443a9dd864b4b96ec52d000
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: 107cc24cc03c7f8716f4ee0577fc2372668adcd9
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511271"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604817"
 ---
-本文介绍如何开始通过 Java 使用自定义视觉客户端库来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Java 应用程序的模板。
+本指南提供说明和示例代码，以帮助你开始使用适用于 Java 的自定义视觉客户端库来构建对象检测模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
+
+> [!NOTE]
+> 若要在不编写代码的情况下构建和训练对象检测模型，请改为参阅[基于浏览器的指南](../../get-started-build-detector.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,9 +23,9 @@ ms.locfileid: "88511271"
 - 已安装 [Maven](https://maven.apache.org/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>获取自定义视觉客户端库和示例代码
+## <a name="get-the-custom-vision-client-library"></a>获取自定义视觉客户端库
 
-若要编写使用自定义视觉的 Java 应用，需要自定义视觉 maven 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
+若要使用适用于 Java 的自定义视觉编写图像分析应用，需要自定义视觉 maven 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
 
 可在 maven 中央存储库中找到自定义视觉客户端库：
 - [定型 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
@@ -30,7 +33,7 @@ ms.locfileid: "88511271"
 
 克隆或下载[认知服务 Java SDK 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)项目。 导航到 **Vision/CustomVision/** 文件夹。
 
-此 Java 项目创建新的名为“示例 Java OD 项目”  的自定义视觉对象检测项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定对象是**叉子**还是**剪刀**。
+此 Java 项目创建新的名为“示例 Java OD 项目”____ 的自定义视觉对象检测项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定对象是**叉子**还是**剪刀**。
 
 [!INCLUDE [get-keys](../../includes/get-keys.md)]
 
@@ -44,21 +47,21 @@ $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
 $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 ```
 
-## <a name="understand-the-code"></a>了解代码
+## <a name="examine-the-code"></a>检查代码
 
 在 Java IDE 中加载 `Vision/CustomVision` 项目，打开 _CustomVisionSamples.java_ 文件。 找到 **runSample** 方法，注释掉 **ImageClassification_Sample** 方法调用&mdash;此方法会执行图像分类方案（本指南中未介绍）。 **ObjectDetection_Sample** 方法实现本快速入门的主要功能；请导航到其定义并检查代码。 
 
-### <a name="create-a-new-custom-vision-service-project"></a>创建新的自定义视觉服务项目
+## <a name="create-a-new-custom-vision-project"></a>创建新的自定义视觉项目
 
-转到创建训练客户端和对象检测项目的代码块。 创建的项目将显示在以前访问过的[自定义视觉网站](https://customvision.ai/)上。 请查看 [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) 方法重载，以在创建项目时指定其他选项（在[生成检测器](../../get-started-build-detector.md) Web 门户指南中进行了说明）。
+转到创建训练客户端和对象检测项目的代码块。 创建的项目将显示在以前访问过的[自定义视觉网站](https://customvision.ai/)上。 请查看 [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) 方法重载，以在创建项目时指定其他选项（在[生成检测器](../../get-started-build-detector.md) Web 门户指南中进行了说明）。
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create_od)]
 
-### <a name="add-tags-to-your-project"></a>将标记添加到你的项目
+## <a name="add-tags-to-your-project"></a>将标记添加到你的项目
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags_od)]
 
-### <a name="upload-and-tag-images"></a>上传和标记图像
+## <a name="upload-and-tag-images"></a>上传和标记图像
 
 在对象检测项目中标记图像时，需要使用标准化坐标指定每个标记对象的区域。 转到 `regionMap` 映射的定义。 此代码将每个示例图像与其标记的区域相关联。
 
@@ -75,13 +78,13 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
 
-### <a name="train-the-project-and-publish"></a>训练项目和发布
+## <a name="train-the-project-and-publish"></a>训练项目和发布
 
 此代码创建预测模型的第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train_od)]
 
-### <a name="use-the-prediction-endpoint"></a>使用预测终结点
+## <a name="use-the-prediction-endpoint"></a>使用预测终结点
 
 此处的 `predictor` 对象表示的预测终结点是一个引用，用于将图像提交到当前模型并获取分类预测。 在此示例中，`predictor` 在别处使用预测密钥环境变量来定义。
 
@@ -101,7 +104,10 @@ mvn compile exec:java
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解如何在代码中完成对象检测过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。 以下训练指南涉及图像分类，但其原理与对象检测类似。
+现在，你已在代码中完成了对象检测过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。 以下指南涉及图像分类，但其原理与对象检测类似。
 
 > [!div class="nextstepaction"]
 > [测试和重新训练模型](../../test-your-model.md)
+
+* 什么是自定义视觉？
+* [SDK 参考文档](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable)

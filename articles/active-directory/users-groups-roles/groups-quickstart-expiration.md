@@ -14,14 +14,14 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213733"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054392"
 ---
-# <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>快速入门：将 Azure Active Directory 中的 Microsoft 365 组设置为过期
+# <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>将 Azure Active Directory 中的 Microsoft 365 组设置为过期
 
 本快速入门介绍如何设置 Microsoft 365 组的过期策略。 当用户可以设置自己的组时，未使用的组可能会成倍增加。 若要管理未使用的组，一种方式是将这些组设置为过期，以便减少手动删除组的维护工作量。
 
@@ -33,7 +33,7 @@ ms.locfileid: "88213733"
 - 已删除的 Microsoft 365 组可以由组所有者或 Azure AD 管理员在 30 天内还原
 
 > [!NOTE]
-> 现在，组使用 Azure AD 智能，根据是否在最近使用而自动续订。 此续订决策基于 Office 365 服务（如 Outlook、SharePoint、Teams、Yammer 等）中组的用户活动。
+> 现在，组使用 Azure AD 智能，根据是否在最近使用而自动续订。 此续订决策基于 Microsoft 365 服务（如 Outlook、SharePoint、Teams、Yammer 等）中组的用户活动。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -45,17 +45,17 @@ ms.locfileid: "88213733"
 
 1. 使用用户管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 依次选择“组”、“常规”。  
+2. 依次选择“组”、“常规”。********
   
    ![自助组设置页](./media/groups-quickstart-expiration/self-service-settings.png)
 
-3. 将“用户可创建 Microsoft 365 组”设置为“是” 。
+3. 将“用户可创建 Microsoft 365 组”设置为“是”********。
 
-4. 设置完成后，选择“保存”以保存组设置  。
+4. 设置完成后，选择“保存”以保存组设置****。
 
 ## <a name="set-group-expiration"></a>设置组过期
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，选择“Azure Active Directory” > “组” > “过期”打开过期设置    。
+1. 登录到 [Azure 门户](https://portal.azure.com)，选择“Azure Active Directory” > “组” > “过期”打开过期设置************。
   
    ![组过期设置页](./media/groups-quickstart-expiration/expiration-settings.png)
 
@@ -63,9 +63,9 @@ ms.locfileid: "88213733"
 
 3. 提供当组没有所有者时用于发送过期通知的电子邮件地址。
 
-4. 在本快速入门中，请将“为这些 Microsoft 365 组启用到期功能”设置为“所有” 。
+4. 在本快速入门中，请将“为这些 Microsoft 365 组启用到期功能”设置为“所有”********。
 
-5. 设置完成后，选择“保存”来保存过期设置  。
+5. 设置完成后，选择“保存”来保存过期设置****。
 
 就这么简单！ 在本快速入门中，你已成功设置所选 Microsoft 365 组的过期策略。
 
@@ -74,13 +74,13 @@ ms.locfileid: "88213733"
 ### <a name="to-remove-the-expiration-policy"></a>删除过期策略
 
 1. 确保已使用 Azure AD 组织的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory”   >   “组” >   “过期”。
-3. 将“为这些 Microsoft 365 组启用到期功能”设置为“无” 。
+2. 选择“Azure Active Directory”**** > ****“组” > ****“过期”。
+3. 将“为这些 Microsoft 365 组启用到期功能”设置为“无”********。
 
 ### <a name="to-turn-off-user-creation-for-groups"></a>为组禁用创建用户的功能
 
-1. 选择“Azure Active Directory”   >   “组” >   “常规”。 
-2. 将“用户可以在 Azure 门户中创建 Microsoft 365 组”设置为“否” 。
+1. 选择“Azure Active Directory”**** > ****“组” > ****“常规”。 
+2. 将“用户可以在 Azure 门户中创建 Microsoft 365 组”设置为“否”********。
 
 ## <a name="next-steps"></a>后续步骤
 

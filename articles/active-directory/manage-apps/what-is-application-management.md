@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299875"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604115"
 ---
 # <a name="what-is-application-management"></a>什么是应用程序管理？
 
@@ -25,7 +25,7 @@ Azure AD 是一个标识和访问管理 (IAM) 系统。 它提供了一个用于
 
 Azure AD 必须配置为与应用程序相集成。 换句话说，它需要知道哪些应用程序正在将它用作标识系统。 使 Azure AD 意识到这些应用程序的存在以及应如何处理它们的过程称为“应用程序管理”。
 
-你可以在 Azure Active Directory 门户的“管理”部分中的“企业应用程序”边栏选项卡上管理应用程序。
+你可以在 Azure Active Directory 门户的“管理”部分中的“企业应用程序”边栏选项卡上管理应用程序****。
 
 ![Azure AD 门户的“管理”部分下的“企业应用程序”选项。](media/what-is-application-management/enterprise-applications-in-nav.png)
 
@@ -49,7 +49,7 @@ Azure AD 必须配置为与应用程序相集成。 换句话说，它需要知�
 
 ## <a name="how-does-azure-ad-work-with-applications"></a>Azure AD 如何与应用程序一起工作？
 
-Azure AD 通过为云和本地应用提供单一的标识系统，简化了应用程序的管理方式。 可将软件即服务 (SaaS) 应用程序、本地应用程序和业务线 (LOB) 应用添加到 Azure AD。 然后，用户只需登录一次，即可安全无缝地访问这些应用程序，以及 Microsoft 提供的 Office 365 和其他商务应用程序。 可以通过[自动执行用户预配](../app-provisioning/user-provisioning.md)来降低管理成本。 还可以使用多重身份验证和条件访问策略提供安全的应用程序访问。
+Azure AD 通过为云和本地应用提供单一的标识系统，简化了应用程序的管理方式。 可将软件即服务 (SaaS) 应用程序、本地应用程序和业务线 (LOB) 应用添加到 Azure AD。 然后，用户只需登录一次，即可安全无缝地访问这些应用程序，以及 Microsoft 提供的 Microsoft 365 和其他商务应用程序。 可以通过[自动执行用户预配](../app-provisioning/user-provisioning.md)来降低管理成本。 还可以使用多重身份验证和条件访问策略提供安全的应用程序访问。
 
 ![显示通过 Azure AD 进行联合的应用的关系图](media/what-is-application-management/app-management-overview.png)
 
@@ -59,17 +59,17 @@ Azure AD 通过为云和本地应用提供单一的标识系统，简化了应�
 
 - **Azure AD 库应用程序** – Azure AD 提供了一个库，其中包含数千个已预先集成的、支持 Azure AD 单一登录的应用程序。 组织所用的某些应用程序可能在该库中。 [了解如何规划应用集成](plan-an-application-integration.md)，或者在 [SaaS 应用程序教程](https://docs.microsoft.com/azure/active-directory/saas-apps/)中获取单个应用的详细集成步骤。
 
-- **使用应用程序代理的本地应用程序** – 使用 Azure AD 应用程序代理可将本地 Web 应用与 Azure AD 相集成，以支持单一登录。 然后，最终用户可以像访问 Office 365 和其他 SaaS 应用程序一样访问你的本地 Web 应用。请参阅[通过 Azure AD 的应用程序代理提供对本地应用程序的远程访问](application-proxy.md)。
+- **使用应用程序代理的本地应用程序** – 使用 Azure AD 应用程序代理可将本地 Web 应用与 Azure AD 相集成，以支持单一登录。 然后，最终用户可以像访问 Microsoft 365 和其他 SaaS 应用一样访问你的本地 Web 应用。请参阅[通过 Azure AD 的应用程序代理提供对本地应用程序的远程访问](application-proxy.md)。
 
 - **定制开发的应用程序** – 生成自己的业务线应用程序时，可将其与 Azure AD 相集成，以支持单一登录。 将应用程序注册到 Azure AD 后，你可以控制应用程序的身份验证策略。 有关详细信息，请参阅[开发人员指南](developer-guidance-for-integrating-applications.md)。
 
 - **非库应用程序** – 引入自己的应用程序！ 将这些应用程序添加到 Azure AD 即可支持其他应用的单一登录。 可以通过多种方法集成应用程序，下面列出了一些方法。 有关详细信息，请参阅[配置 SAML 单一登录](configure-saml-single-sign-on.md)。
 
 >[!TIP]
->可以将 Azure AD 与应用程序集成，即使尚未对应用程序进行预配置并且它不在应用库中。 可以将 Azure AD 与以下任意项集成
-> - 任何呈现用户名和密码字段的 Web 链接或应用程序。
-> - 任何支持 SAML 或 OpenID Connect 协议的应用程序。
-> - 任何支持跨域身份管理系统 (SCIM) 标准的应用程序。
+>可以将 Azure AD 与应用程序集成，即使尚未对应用程序进行预配置并且它不在应用库中。 可以将 Azure AD 与以下任意项集成****
+> - 任何呈现用户名和密码字段的 Web 链接或应用程序****。
+> - 任何支持 SAML 或 OpenID Connect 协议的应用程序****。
+> - 任何支持跨域身份管理系统 (SCIM) 标准的应用程序****。
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>利用条件访问策略管理风险
 
@@ -77,9 +77,9 @@ Azure AD 通过为云和本地应用提供单一的标识系统，简化了应�
 
 ## <a name="improve-productivity-with-single-sign-on"></a>使用单一登录提高工作效率
 
-跨应用程序启用单一登录 (SSO) 和 Office 365 能够通过减少或消除登录提示，为现有用户提供卓越的登录体验。 没有多个提示，也无需管理多个密码，这让用户的环境更具有凝聚力，并且让用户更不容易分心。 业务组可以通过自助服务和动态成员身份管理和批准访问权限。 让合适的业务人员管理对应用程序的访问权限可以提高标识系统的安全性。
+跨应用程序和 Microsoft 365 启用单一登录 (SSO) 能够通过减少或消除登录提示，为现有用户提供卓越的登录体验。 没有多个提示，也无需管理多个密码，这让用户的环境更具有凝聚力，并且让用户更不容易分心。 业务组可以通过自助服务和动态成员身份管理和批准访问权限。 让合适的业务人员管理对应用程序的访问权限可以提高标识系统的安全性。
 
-SSO 可以提高安全性。 在没有单一登录的情况下，管理员需要针对每个应用程序创建和更新用户帐户，这会耗费大量的时间。 此外，用户必须记录多个凭据才能访问应用程序。 因此，用户往往会写下密码或使用其他密码管理解决方案，这会带来数据安全风险。 [详细了解单一登录](what-is-single-sign-on.md)。
+SSO 可以提高安全性。 在没有单一登录的情况下，管理员需要针对每个应用程序创建和更新用户帐户，这会耗费大量的时间**。 此外，用户必须记录多个凭据才能访问应用程序。 因此，用户往往会写下密码或使用其他密码管理解决方案，这会带来数据安全风险。 [详细了解单一登录](what-is-single-sign-on.md)。
 
 ## <a name="address-governance-and-compliance"></a>解决管理和符合性问题
 

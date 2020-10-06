@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320590"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032990"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure 证明（预览版）
 
@@ -85,7 +85,7 @@ Azure 证明的[业务连续性和灾难恢复](/azure/best-practices-availabili
 - 该区域的 [Azure 流量管理器](../traffic-manager/index.yml)将检测运行状况探测是否已降级，并将终结点切换到配对区域
 - 现有连接将不起作用，并将收到内部服务器错误或遇到超时问题
 - 所有控制平面操作都将被阻止。 客户将无法在主要区域中创建证明提供程序和更新策略
-- 所有数据平面操作（包括证明）都将继续在主要区域中运行
+- 所有数据平面操作（包括证明调用）都将继续在主要区域运行
 
 ## <a name="next-steps"></a>后续步骤
 - 了解 [Azure 证明基本概念](basic-concepts.md)
