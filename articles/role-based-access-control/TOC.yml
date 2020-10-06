@@ -103,7 +103,7 @@
       href: elevate-access-global-admin.md
     - name: 经典管理员
       href: classic-administrators.md
-    - name: 将订阅传输到不同的目录（预览）
+    - name: 将订阅传输到不同的目录
       href: transfer-subscription.md
     - name: 疑难解答
       href: troubleshooting.md

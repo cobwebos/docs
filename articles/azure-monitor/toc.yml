@@ -976,6 +976,8 @@
           href: insights/vminsights-maps.md
         - name: 监视性能
           href: insights/vminsights-performance.md
+        - name: 监视更改
+          href: insights/vminsights-change-analysis.md
         - name: 使用日志查询分析数据
           href: insights/vminsights-log-search.md
         - name: 通过工作簿实现数据可视化

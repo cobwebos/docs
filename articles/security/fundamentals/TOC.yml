@@ -80,6 +80,8 @@
       href: encryption-overview.md
     - name: 双重加密
       href: double-encryption.md
+    - name: TLS 证书更改
+      href: tls-certificate-changes.md
     - name: 磁盘加密
       items:
         - name: 最佳做法

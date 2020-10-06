@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73720307"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>从 Azure 门户检索主机名、端口和访问密钥
@@ -23,7 +23,7 @@ ms.locfileid: "73720307"
   
   ![Azure Redis 缓存密钥](media/redis-cache-access-keys/redis-cache-keys.png)
 
-- 若要获取主机名和端口，请在缓存的左侧导航栏中选择“属性”。  主机名的格式为 *\<DNS 名称>.redis.cache.windows.net*。
+- 若要获取主机名和端口，请在缓存的左侧导航栏中选择“属性”。  主机名的格式为 \<DNS name>.redis.cache.windows.net。
 
   ![Azure Redis 缓存属性](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

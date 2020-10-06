@@ -13,20 +13,20 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: bd1a0b2efb01d0db153bd666f8ff4e3911095702
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: f3711352d18b0f225ed94c0b09ec17b7a90917ac
+  ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90984999"
+  ms.lasthandoff: 10/02/2020
+  ms.locfileid: "91653071"
 highlightedContent:
   items:
   - title: Azure Key Vault 简介
     itemType: overview
     url: ./general/overview.md
-  - title: 对软删除的重要更改
+  - title: 服务的重要更新
     itemType: whats-new
-    url: ./general/soft-delete-change.md
+    url: ./general/whats-new.md
   - title: 身份验证
     itemType: overview
     url: ./general/authentication.md
@@ -57,7 +57,7 @@ conceptualContent:
       text: 监视和管理证书创建
     footerLink:
       url: ./certificates/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 键
     links:
     - url: ./keys/about-keys.md

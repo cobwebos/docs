@@ -65,7 +65,7 @@
       href: load-balancer-multivip-overview.md
     - name: 出站连接
       href: load-balancer-outbound-connections.md
-    - name: 在空闲超时的情况下重置 TCP
+    - name: TCP 重置和 TCP 空闲超时
       href: load-balancer-tcp-reset.md
     - name: 标准负载均衡器和可用性区域
       href: load-balancer-standard-availability-zones.md

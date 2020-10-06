@@ -88,6 +88,8 @@
           href: specify-marketplace-images.md
         - name: 指定支持信息（实验室帐户所有者）
           href: lab-account-owner-support-information.md
+        - name: 将自定义映像上传到共享映像库
+          href: upload-custom-image-shared-image-gallery.md
     - name: 创建和配置教室实验室（教师）
       items:
         - name: 创建和管理教室实验室

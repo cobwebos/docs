@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 7b64ef2739b8e6531f7531f9a135b7fb5ffe3467
-  ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
+  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/09/2020
-  ms.locfileid: "89568012"
+  ms.lasthandoff: 10/02/2020
+  ms.locfileid: "91667446"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -118,15 +118,23 @@ conceptualContent:
       url: index-voice-assistants.yml
   - title: 说话人识别
     links:
-    - itemType: how-to-guide
+    - itemType: overview
       text: 关于说话人识别
       url: speaker-recognition-overview.md
-    - itemType: how-to-guide
-      text: 说话人识别基础知识
+    - itemType: quickstart
+      text: 说话人识别入门
       url: speaker-recognition-basics.md
     - itemType: how-to-guide
       text: 说话人识别 API 参考
       url: https://docs.microsoft.com/rest/api/speakerrecognition/
+  - title: 自定义关键字
+    links:
+    - itemType: overview
+      text: 关于自定义关键字
+      url: custom-keyword-overview.md
+    - itemType: quickstart
+      text: 自定义关键字入门
+      url: custom-keyword-basics.md
   - title: 工具
     links:
     - itemType: overview
@@ -187,7 +195,7 @@ tools:
   - title: Java
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
     url: https://aka.ms/csspeech/javaref
-  - title: Javascript
+  - title: JavaScript
     imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
     url: https://aka.ms/csspeech/javascriptref
   - title: Objective-C 和 Swift

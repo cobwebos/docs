@@ -146,6 +146,10 @@
           href: move-subscription.md
         - name: 将 Key Vault 移到另一个区域
           href: move-region.md
+    - name: 网络
+      items:
+        - name: 诊断专用链接配置问题
+          href: private-link-diagnostics.md
 - name: 参考
   items:
     - name: 新增功能
