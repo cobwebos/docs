@@ -253,7 +253,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -544,6 +544,8 @@
           href: data-flow-new-branch.md
         - name: 透视
           href: data-flow-pivot.md
+        - name: 排名
+          href: data-flow-rank.md
         - name: Select
           href: data-flow-select.md
         - name: 接收器

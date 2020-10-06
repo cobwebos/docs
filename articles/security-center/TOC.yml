@@ -263,8 +263,6 @@
       href: release-notes-archive.md
     - name: Azure 路线图博客
       href: 'https://azure.microsoft.com/updates/?product=security-center'
-    - name: 功能和 API 停用（2019 年 7 月）
-      href: security-center-features-retirement-july2019.md
     - name: 终结点保护评估和建议
       href: security-center-endpoint-protection.md
 - name: 资源
