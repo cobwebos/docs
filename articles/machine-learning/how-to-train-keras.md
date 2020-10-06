@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: af31d909c0fbab7d873b2b583bb731f9d2e8e19e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d7cd452b6d1107f440d952c7db930281f3d86c11
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532867"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743792"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Azure 机器学习，大规模定型 Keras 模型
 
@@ -144,7 +144,7 @@ dependencies:
 
 从此 conda 环境规范创建 Azure ML 环境。 环境将在运行时打包到 Docker 容器中。
 
-默认情况下，如果未指定基本映像，Azure ML 将使用 CPU 映像 `azureml.core.runconfig.DEFAULT_CPU_IMAGE` 作为基本映像。 由于本示例在 GPU 群集上运行训练，因此需要指定具有必要的 GPU 驱动程序和依赖关系的 GPU 基本映像。 Azure ML 维护一组在 Microsoft 容器注册表上发布的基本映像 (可以使用的 MCR) ，有关详细信息，请参阅 [Azure/AzureML 容器](https://github.com/Azure/AzureML-Containers) GitHub 存储库。
+默认情况下，如果未指定基本映像，Azure ML 将使用 CPU 映像 `azureml.core.environment.DEFAULT_CPU_IMAGE` 作为基本映像。 由于本示例在 GPU 群集上运行训练，因此需要指定具有必要的 GPU 驱动程序和依赖关系的 GPU 基本映像。 Azure ML 维护一组在 Microsoft 容器注册表上发布的基本映像 (可以使用的 MCR) ，有关详细信息，请参阅 [Azure/AzureML 容器](https://github.com/Azure/AzureML-Containers) GitHub 存储库。
 
 ```python
 from azureml.core import Environment

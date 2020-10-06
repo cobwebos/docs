@@ -1,14 +1,14 @@
 ---
 title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
-ms.date: 08/27/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30d5528b4613dc04d1e825d10e11b7eeadc57698
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534856"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744009"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -24,7 +24,7 @@ ms.locfileid: "91534856"
 
 蓝图分配中的项目创建的资源具有四种状态： **未锁定**、 **只读**、 **无法编辑/删除**或 **无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
 
-|模式|项目资源类型|州省/自治区/直辖市|说明|
+|模式|项目资源类型|状态|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受 Azure 蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”**** 或“不要删除”**** 资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
@@ -109,8 +109,8 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 |模式 |权限。操作 |权限。 NotActions |主体 [i]。类别 |ExcludePrincipals [i]。识别 | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|只读 |**\*** |**\*/read** |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
-|不要删除 |**\*/delete** | |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|只读 |**\*** |**\*/read**<br />**Microsoft.Authorization/locks/delete**<br />**VirtualNetwork/子网/加入/操作** |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|不要删除 |**\*/delete** | **Microsoft.Authorization/locks/delete**<br />**VirtualNetwork/子网/加入/操作** |SystemDefined (所有人)  |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
 
 > [!IMPORTANT]
 > Azure 资源管理器可以将角色分配详细信息缓存最多 30 分钟。 因此，蓝图资源上的拒绝分配拒绝操作可能不会立即完全生效。 在此时间段内，可能无法删除将由蓝图锁保护的资源。

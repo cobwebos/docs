@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 99f249c9eba0e3d59fd687ac2c3886d037d1ff20
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 22e834ccc31e2d01646250c973080848173661de
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532765"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743771"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Azure 机器学习，大规模定型 PyTorch 模型
 
@@ -113,48 +113,10 @@ except ComputeTargetException:
 
 ### <a name="define-your-environment"></a>定义环境
 
-若要定义封装定型脚本依赖项的 Azure ML [环境](concept-environments.md) ，可以定义自定义环境或使用和 Azure ML 特选环境。
-
-#### <a name="create-a-custom-environment"></a>创建自定义环境
-
-定义封装定型脚本依赖项的 Azure ML 环境。
-
-首先，在 YAML 文件中定义 conda 依赖项;在此示例中，该文件命名为 `conda_dependencies.yml` 。
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - torch==1.6.0
-  - torchvision==0.7.0
-  - future==0.17.1
-  - pillow
-```
-
-从此 conda 环境规范创建 Azure ML 环境。 环境将在运行时打包到 Docker 容器中。
-
-默认情况下，如果未指定基本映像，Azure ML 将使用 CPU 映像 `azureml.core.runconfig.DEFAULT_CPU_IMAGE` 作为基本映像。 由于本示例在 GPU 群集上运行训练，因此需要指定具有必要的 GPU 驱动程序和依赖关系的 GPU 基本映像。 Azure ML 维护一组在 Microsoft 容器注册表上发布的基本映像 (可以使用的 MCR) ，有关详细信息，请参阅 [Azure/AzureML 容器](https://github.com/Azure/AzureML-Containers) GitHub 存储库。
-
-```python
-from azureml.core import Environment
-
-pytorch_env = Environment.from_conda_specification(name='pytorch-1.6-gpu', file_path='./conda_dependencies.yml')
-
-# Specify a GPU base image
-pytorch_env.docker.enabled = True
-pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
-```
-
-> [!TIP]
-> 或者，你可以直接在自定义 Docker 映像或 Dockerfile 中捕获所有依赖项，然后从创建环境。 有关详细信息，请参阅 [训练自定义图像](how-to-train-with-custom-image.md)。
-
-有关创建和使用环境的详细信息，请参阅 [在 Azure 机器学习中创建和使用软件环境](how-to-use-environments.md)。
+若要定义封装定型脚本依赖项的 Azure ML [环境](concept-environments.md) ，可以定义自定义环境或使用 Azure ML 特选环境。
 
 #### <a name="use-a-curated-environment"></a>使用特选环境
-（可选）如果不想构建自己的映像，Azure ML 会提供预构建的特选环境。 Azure ML 具有多个 CPU 和 GPU 特选环境，适用于 PyTorch 的不同版本。 有关详细信息，请参阅[此文](resource-curated-environments.md)。
+如果你不想定义自己的环境，Azure ML 会提供预构建的特选环境。 Azure ML 具有多个 CPU 和 GPU 特选环境，适用于 PyTorch 的不同版本。 有关详细信息，请参阅[此文](resource-curated-environments.md)。
 
 若要使用特选环境，可以改为运行以下命令：
 
@@ -177,6 +139,44 @@ pytorch_env = Environment.from_conda_specification(name='pytorch-1.6-gpu', file_
 ```python
 pytorch_env = pytorch_env.clone(new_name='pytorch-1.6-gpu')
 ```
+
+#### <a name="create-a-custom-environment"></a>创建自定义环境
+
+还可以创建自己的 Azure ML 环境，用于封装定型脚本的依赖项。
+
+首先，在 YAML 文件中定义 conda 依赖项;在此示例中，该文件命名为 `conda_dependencies.yml` 。
+
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - torch==1.6.0
+  - torchvision==0.7.0
+  - future==0.17.1
+  - pillow
+```
+
+从此 conda 环境规范创建 Azure ML 环境。 环境将在运行时打包到 Docker 容器中。
+
+默认情况下，如果未指定基本映像，Azure ML 将使用 CPU 映像 `azureml.core.environment.DEFAULT_CPU_IMAGE` 作为基本映像。 由于本示例在 GPU 群集上运行训练，因此需要指定具有必要的 GPU 驱动程序和依赖关系的 GPU 基本映像。 Azure ML 维护一组在 Microsoft 容器注册表上发布的基本映像 (可以使用的 MCR) ，有关详细信息，请参阅 [Azure/AzureML 容器](https://github.com/Azure/AzureML-Containers) GitHub 存储库。
+
+```python
+from azureml.core import Environment
+
+pytorch_env = Environment.from_conda_specification(name='pytorch-1.6-gpu', file_path='./conda_dependencies.yml')
+
+# Specify a GPU base image
+pytorch_env.docker.enabled = True
+pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
+```
+
+> [!TIP]
+> 或者，你可以直接在自定义 Docker 映像或 Dockerfile 中捕获所有依赖项，然后从创建环境。 有关详细信息，请参阅 [训练自定义图像](how-to-train-with-custom-image.md)。
+
+有关创建和使用环境的详细信息，请参阅 [在 Azure 机器学习中创建和使用软件环境](how-to-use-environments.md)。
 
 ## <a name="configure-and-submit-your-training-run"></a>配置并提交定型运行
 

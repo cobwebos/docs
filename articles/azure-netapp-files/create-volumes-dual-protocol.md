@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 10/05/2020
 ms.author: b-juche
-ms.openlocfilehash: ce65d6f1806965a55a91117725d2232d4d6460bd
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 9266a5efb7156367dfa0d6036f5876337098c143
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449631"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743924"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议 (NFSv3 和 SMB) 卷
 
@@ -40,6 +40,7 @@ Azure NetApp 文件支持使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或双重协�
 * 确保 NFS 客户端是最新的，并且运行最新的操作系统更新。
 * 确保 Active Directory (AD) LDAP 服务器已在 AD 上启动并运行。 这是通过在 AD 计算机上安装和配置 [Active Directory 轻型目录服务 (AD LDS) ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色来完成的。
 * 确保使用 [Active Directory 证书服务 (AD CS) ](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色在 ad 上创建证书颁发机构 (ca) ，以生成和导出自签名根 CA 证书。   
+* 双协议卷当前不支持 Azure Active Directory 域服务 (AADDS) 。  
 
 ## <a name="create-a-dual-protocol-volume"></a>创建双协议卷
 

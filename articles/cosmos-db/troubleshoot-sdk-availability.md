@@ -3,17 +3,17 @@ title: 在 multiregional 环境中诊断并解决 Azure Cosmos Sdk 的可用性�
 description: 了解有关在多区域环境中操作时的 Azure Cosmos SDK 可用性行为的全部信息。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/24/2020
+ms.date: 10/05/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330428"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743958"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>在 multiregional 环境中诊断并解决 Azure Cosmos Sdk 的可用性问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "91330428"
 * .NET V2 SDK 中的 [ConnectionPolicy PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) 属性。
 * .NET V3 SDK 中的 [CosmosClientOptions ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) 或 [CosmosClientOptions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) 属性。
 * Java V4 SDK 中的 [CosmosClientBuilder. preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) 方法。
-* Node SDK 中的[CosmosClient 参数 preferred_locations。](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient)
+* Python SDK 中的 [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) 参数。
 * [CosmosClientOptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations)参数。
 
 设置区域首选项时，客户端将连接到下表中所述的区域：
@@ -49,6 +49,8 @@ ms.locfileid: "91330428"
 * .NET V2 SDK 中响应的 *RequestDiagnosticsString* 属性。
 * .NET V3 SDK 中响应和异常的 *诊断* 属性。
 * GetDiagnostics 对 Java V4 SDK 中的响应和异常 * ( # B1 * 方法。
+
+在按优先顺序确定下一个区域时，SDK 客户端将使用帐户区域列表，并确定首选区域的优先级 (如果有任何) 。
 
 有关这些事件中的 SLA 保证的综合性详细信息，请参阅 [适用于可用性的 sla](high-availability.md#slas-for-availability)。
 

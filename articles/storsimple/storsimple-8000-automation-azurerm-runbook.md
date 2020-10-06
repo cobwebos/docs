@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dff1d8f48b275fa7e45dab93b5ce45962499b450
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563873"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744026"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自动化 Runbook 管理 StorSimple 设备
 
@@ -85,7 +85,7 @@ ms.locfileid: "90563873"
 
 6. 验证是否已在 `C:\scripts\StorSimpleSDKTools` 中创建自动化模块 zip 文件。
 
-    ![屏幕截图显示具有自动化模块 zip 文件的 StorSimpleSDKTools 文件夹。](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![屏幕截图显示具有自动化模块 zip 文件的 StorSimpleSDKTools 文件夹](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
 7. 通过 Windows PowerShell 创建自动化模块后，会显示以下输出。
 
@@ -182,9 +182,9 @@ ms.locfileid: "90563873"
    3. 创建新的资源组，或选择现有的资源组。
    4. 选择一个**位置**（请尽量选择运行服务的位置）。
    5. 保留选择默认的“创建运行方式帐户”选项。****
-   6. （可选）选中“固定到仪表板”。**** 单击“创建”。 
+   6. （可选）选中“固定到仪表板”。**** 单击“创建”。
 
-       ![屏幕截图显示 "添加自动化帐户" 窗格，其中包含订阅、创建 Azure 运行方式帐户和创建的值。](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![屏幕截图显示 "添加自动化帐户" 窗格，其中包含订阅的值，创建 Azure 运行方式帐户，创建2](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
       成功创建自动化帐户后，会收到通知。 有关如何创建自动化帐户的详细信息，请转到[创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
 
@@ -194,11 +194,11 @@ ms.locfileid: "90563873"
 
 4. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。********
 
-5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击“确定”。
+5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击“确定”  。
 
-    ![屏幕截图显示 "添加模块" 窗格，其中包含上传文件值和 "确定"。](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![屏幕截图显示 "添加模块" 窗格，其中包含上传文件值和 "确定"](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. 转到“过程自动化”>“Runbook”并单击“+ 添加 Runbook”。**** 在“添加 Runbook”边栏选项卡中，单击“导入现有的 Runbook”。******** 指向 **Runbook 文件**的 Windows PowerShell 脚本文件。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。 
+6. 转到“过程自动化”>“Runbook”并单击“+ 添加 Runbook”。**** 在“添加 Runbook”边栏选项卡中，单击“导入现有的 Runbook”。******** 指向 **Runbook 文件**的 Windows PowerShell 脚本文件。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
@@ -208,11 +208,11 @@ ms.locfileid: "90563873"
 
 8. 编辑 Runbook 并单击“测试”窗格。**** 提供 StorSimple 设备管理器服务的名称、StorSimple 设备的名称和订阅等参数。 **开始**测试。 完成运行后，会生成报告。 有关详细信息，请转到[如何测试 Runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
 
-    ![屏幕截图显示 canenter 参数值和开始测试的测试平移。](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![屏幕截图显示 canenter 参数值和开始测试的测试全景](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
 9. 在测试窗格中检查 Runbook 的输出。 如果对结果满意，请关闭窗格。 单击“发布”，出现确认提示时，请确认并发布该 Runbook。****
 
-    ![屏幕截图显示 "编辑 PowerShell Runbook" 窗格，该窗格会提示你继续发布 Runbook。](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![屏幕截图显示 "编辑 PowerShell Runbook" 窗格，该窗格会提示你继续发布 Runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>后续步骤
 

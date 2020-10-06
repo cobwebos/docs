@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 488f48275fa511ea69939563496beaaa709d9bf0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 4db53b806adc2e29ae9c9a950faf8fc822c9d66b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631658"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743975"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -101,7 +101,7 @@ myenv = Environment.from_pip_requirements(name = "myenv"
 
 ### <a name="enable-docker"></a>启用 Docker
 
-启用 Docker 后，Azure 机器学习会生成 Docker 映像，并根据你的规范在该容器中创建一个 Python 环境。 Docker 映像会被缓存并重复使用：在新环境中首次运行的时间通常比构建映像的时间更长。
+当你启用 Docker 时，Azure 机器学习会生成一个 Docker 映像，并根据你的规范在该容器中创建一个 Python 环境。 Docker 映像会被缓存并重复使用：在新环境中首次运行的时间通常比构建映像的时间更长。
 
 使用 Azure 机器学习 `Environment` 类的 [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py&preserve-view=true)，可以精细地自定义和控制运行训练的来宾操作系统。 可以使用 `arguments` 变量来指定要传递到 Docker run 命令的额外参数。
 
@@ -114,7 +114,7 @@ myenv.docker.enabled = True
 
 #### <a name="use-a-prebuilt-docker-image"></a>使用预生成的 Docker 映像
 
-默认情况下，服务会自动使用一个基于 Ubuntu Linux 的 [基础映像](https://github.com/Azure/AzureML-Containers)，特别是由定义的一个映像 `azureml.core.run_config.DEFAULT_CPU_IMAGE` 。 然后，它将安装由提供的 Azure ML 环境定义的任何指定的 Python 包。 还可以使用[自定义 Docker 基础映像](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)。
+默认情况下，服务会自动使用一个基于 Ubuntu Linux 的 [基础映像](https://github.com/Azure/AzureML-Containers)，特别是由定义的一个映像 `azureml.core.environment.DEFAULT_CPU_IMAGE` 。 然后，它将安装由提供的 Azure ML 环境定义的任何指定的 Python 包。 还可以使用[自定义 Docker 基础映像](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -128,7 +128,7 @@ myenv.docker.base_image_registry="your_registry_location"
 > * Conda 4.5.# 或更高版本。
 > * Python 3.5 +。
 
-#### <a name="use-your-own-dockerfile"></a>使用自己的 Dockerfile 
+#### <a name="use-your-own-dockerfile"></a>使用你自己的 Dockerfile 
 
 还可以指定自定义 Dockerfile。 最简单的方法是使用 Docker ```FROM``` 命令从某个 Azure 机器学习基础映像开始，然后添加自己的自定义步骤。 如果需要安装非 Python 包作为依赖项，请使用此方法。 记住将基础映像设置为“None”。
 
@@ -364,7 +364,7 @@ run = exp.submit(src)
 在将模型部署为 Web 服务时，可以使用环境。 此功能可以实现可再现的联网工作流。 在此工作流中，可在训练计算和推理计算中使用相同的库来训练、测试和部署模型。
 
 
-如果要为 web 服务部署定义自己的环境，则必须 `azureml-defaults` 使用版本 >= 1.0.45 作为 pip 依赖项进行列出。 此包包含将模型作为 Web 服务托管时所需的功能。
+如果你要为 Web 服务部署定义自己的环境，则必须将版本不低于 1.0.45 的 `azureml-defaults` 列出为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。
 
 若要部署 Web 服务，请将环境、推理计算、评分脚本和已注册的模型组合到部署对象 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 中。 有关详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3727c41c991b83bc3869279cbb0535a6185ff04d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015724"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743754"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet 包及其所有依赖项都安装在 ActorClient 项目中。
 
-5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击“依赖项”  ，然后单击“添加引用...”  。选择“项目”>“解决方案”  （如果尚未选择），然后勾选“HelloWorld.Interfaces”  旁边的复选框。  单击 **“确定”** 。
+5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击 " **依赖关系** "，然后单击 " **添加项目引用 ...**"。 如果尚未选择 ") "，请选择 " **项目" > 解决方案** (，然后勾选 **HelloWorld**旁边的复选框。  单击 **“确定”** 。
     
     ![“添加引用”对话框][7]
 

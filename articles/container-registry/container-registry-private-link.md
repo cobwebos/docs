@@ -2,15 +2,15 @@
 title: 设置专用链接
 description: 在容器注册表上设置专用终结点，并实现在本地虚拟网络中通过专用链接进行访问的功能。 专用链接访问是高级服务层级的一项功能。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488739"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743635"
 ---
-# <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure Private Link 将专用连接到 Azure 容器注册表
+# <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure 容器注册表
 
 
 通过将虚拟网络专用 IP 地址分配到注册表终结点并使用 [Azure 专用链接](../private-link/private-link-overview.md)，限制对注册表的访问。 虚拟网络上的客户端与注册表的专用终结点之间的网络流量将遍历 Microsoft 主干网络上的虚拟网络和专用链接，从而消除了公共 internet 的泄露。 专用链接还允许通过 [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) 专用对等互连或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)从本地进行专用注册表访问。
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域
 
-为专用 Azure 容器注册表域创建专用 DNS 区域。 在后续步骤中，你将在此 DNS 区域中为你的注册表域创建 DNS 记录。
+为专用 Azure 容器注册表域创建 [专用 DNS 区域](../dns/private-dns-privatednszone.md) 。 在后续步骤中，你将在此 DNS 区域中为你的注册表域创建 DNS 记录。
 
 若要使用专用区域替代 Azure 容器注册表的默认 DNS 解析，区域必须命名为 privatelink.azurecr.io。 运行以下 [az network private-dns zone create][az-network-private-dns-zone-create] 命令以创建专用区域：
 
@@ -219,7 +219,7 @@ az network private-dns record-set a add-record \
     | 虚拟网络| 选择要在其中部署虚拟机的虚拟网络，例如 myDockerVMVNET。 |
     | 子网 | 选择要在其中部署虚拟机的子网，例如 myDockerVMSubnet。 |
     |专用 DNS 集成||
-    |与专用 DNS 区域集成 |请选择“是”。 |
+    |与专用 DNS 区域集成 |请选择“是”。  |
     |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
     |||
 1. 配置其余注册表设置，然后选择“审阅 + 创建”。
@@ -262,7 +262,7 @@ az network private-dns record-set a add-record \
     | 虚拟网络| 选择要在其中部署虚拟机的虚拟网络，例如 myDockerVMVNET。 |
     | 子网 | 选择要在其中部署虚拟机的子网，例如 myDockerVMSubnet。 |
     |专用 DNS 集成||
-    |与专用 DNS 区域集成 |请选择“是”。 |
+    |与专用 DNS 区域集成 |请选择“是”。  |
     |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
     |||
 
@@ -306,28 +306,46 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 
 若要验证专用链接连接，请通过 SSH 连接到虚拟网络中设置的虚拟机。
 
-运行 `nslookup` 命令以通过专用链接解析注册表的 IP 地址：
+运行实用程序（如 `nslookup` 或） `dig` ，通过专用链接查找注册表的 IP 地址。 例如：
 
 ```bash
-nslookup $REGISTRY_NAME.azurecr.io
+dig $REGISTRY_NAME.azurecr.io
 ```
 
 示例输出演示子网的地址空间中的注册表 IP 地址：
 
 ```console
 [...]
-myregistry.azurecr.io       canonical name = myregistry.privatelink.azurecr.io.
-Name:   myregistry.privatelink.azurecr.io
-Address: 10.0.0.6
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> myregistry.azurecr.io
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52155
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;myregistry.azurecr.io.         IN      A
+
+;; ANSWER SECTION:
+myregistry.azurecr.io.  1783    IN      CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 10 IN A      10.0.0.7
+
+[...]
 ```
 
-将此结果与公共终结点上相同注册表的 `nslookup` 输出中的公共 IP 地址进行比较：
+将此结果与公共终结点上相同注册表的 `dig` 输出中的公共 IP 地址进行比较：
 
 ```console
 [...]
-Non-authoritative answer:
-Name:   myregistry.westeurope.cloudapp.azure.com
-Address: 40.78.103.41
+;; ANSWER SECTION:
+myregistry.azurecr.io.  2881    IN  CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 2881 IN CNAME xxxx.xx.azcr.io.
+xxxx.xx.azcr.io.    300 IN  CNAME   xxxx-xxx-reg.trafficmanager.net.
+xxxx-xxx-reg.trafficmanager.net. 300 IN CNAME   xxxx.westeurope.cloudapp.azure.com.
+xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
+
+[...]
 ```
 
 ### <a name="registry-operations-over-private-link"></a>针对专用链接的注册表操作
@@ -361,9 +379,15 @@ az acr private-endpoint-connection list \
 
 ## <a name="add-zone-records-for-replicas"></a>为副本添加区域记录
 
-如本文中所示，将专用终结点连接添加到注册表时，将在 `privatelink.azurecr.io` 区域中为注册表进行[复制](container-registry-geo-replication.md)的区域中的注册表及其数据终结点创建 DNS 记录。 
+如本文中所示，当你向注册表添加专用终结点连接时，你将在注册表的区域中创建 DNS 记录， `privatelink.azurecr.io` 并在 [复制](container-registry-geo-replication.md)注册表的区域中创建其数据终结点。 
 
 如果以后添加新副本，则需要为该区域中的数据终结点手动添加新的区域记录。 例如，如果在 northeurope 位置创建 myregistry 的副本，则会为 `myregistry.northeurope.data.azurecr.io` 添加区域记录。 有关步骤，请参阅本文中的[在专用区域中创建 DNS 记录](#create-dns-records-in-the-private-zone)。
+
+## <a name="dns-configuration-options"></a>DNS 配置选项
+
+本示例中的专用终结点与基本虚拟网络关联的专用 DNS 区域相集成。 此安装程序直接使用 Azure 提供的 DNS 服务将注册表的公共 FQDN 解析为虚拟网络中的专用 IP 地址。 
+
+Private link 支持使用专用区域的其他 DNS 配置方案，包括自定义 DNS 解决方案。 例如，你可能有一个在虚拟网络中部署的自定义 DNS 解决方案，或在网络中使用 VPN 网关连接到虚拟网络的本地网络。 若要在这些情况下将注册表的公共 FQDN 解析为专用 IP 地址，需 (168.63.129.16) 配置服务器级别的转发器到 Azure DNS 服务。 确切的配置选项和步骤取决于现有的网络和 DNS。 有关示例，请参阅 [Azure 专用终结点 DNS 配置](../private-link/private-endpoint-dns.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

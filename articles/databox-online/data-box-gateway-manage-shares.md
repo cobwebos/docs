@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 847c8a07bfa245d0c9859bb3cf6f6ed233934250
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883541"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743873"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 
@@ -94,7 +94,7 @@ ms.locfileid: "90883541"
 
 1. 在 Azure 门户中转到“共享”。**** 选择并单击要刷新的共享。
 
-   ![选择共享](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![选择共享2](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2. 单击“刷新”。 
 
@@ -124,11 +124,11 @@ ms.locfileid: "90883541"
 1. 在资源中转到“概述”。**** 
 2. 在共享列表中，选择并单击与需要同步的存储帐户关联的共享。单击 " **同步存储密钥**"。 
 
-     ![同步存储密钥 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
+     ![同步存储密钥](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. 当系统提示确认时，单击“是”****。 同步完成后，请退出对话框。
 
-     ![同步存储密钥 1](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![同步存储密钥2](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > 只需针对给定的存储帐户执行此操作一次。 对于与同一存储帐户关联的所有共享，无需重复此操作。

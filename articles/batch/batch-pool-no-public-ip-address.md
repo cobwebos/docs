@@ -3,15 +3,15 @@ title: 创建不具有公共 IP 地址的 Azure Batch 池
 description: 了解如何创建不带公共 IP 地址的池
 author: pkshultz
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 10/05/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: e6922abb48e19157e6905d9ceb71817cfbaff767
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 3106ceef8bc45d70401265f61bacb17cb0dc7262
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570861"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743652"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>创建不具有公共 IP 地址的 Azure Batch 池
 
@@ -24,7 +24,7 @@ ms.locfileid: "91570861"
 若要限制对这些节点的访问并减少从 internet 的这些节点的发现，可以预配无公共 IP 地址的池。
 
 > [!IMPORTANT]
-> 对于在 Azure Batch 中没有公共 IP 地址的池的支持目前以公共预览版提供给以下地区：法国中部、东亚、美国中北部、美国中南部、美国西部2、美国东部、北欧、美国东部2、美国中部、西欧。
+> 对在 Azure Batch 中没有公共 IP 地址的池的支持目前处于公共预览版中的以下区域：美国西部、东亚、美国西部、美国中南部、美国西部2、美国东部、北欧、美国东部2、美国中部、西欧、美国中北部、美国西部、澳大利亚东部、日本东部、日本西部。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件

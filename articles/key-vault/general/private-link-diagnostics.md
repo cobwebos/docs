@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713048"
+ms.locfileid: "91744213"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>诊断 Azure Key Vault 上的私有链接配置问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "91713048"
 
 如果你不熟悉此功能，请参阅将 [Key Vault 与 Azure Private Link 集成](private-link-service.md)。
 
-### <a name="symptoms-covered-by-this-article"></a>本文涵盖的症状
+### <a name="problems-covered-by-this-article"></a>本文涵盖的问题
 
 - DNS 查询仍返回密钥保管库的公共 IP 地址，而不是使用 "专用链接" 功能的预期专用 IP 地址。
 - 给定客户端发出的使用专用链接的所有请求都失败，出现超时或网络错误，问题不是间歇性的。
@@ -31,7 +31,7 @@ ms.locfileid: "91713048"
 - Key vault 有两个专用终结点。 使用一个请求的操作很正常，但使用其他请求的请求会失败。
 - 你有另一个使用专用链接的订阅、密钥保管库或虚拟网络。 你要进行新的类似部署，但无法获取专用链接。
 
-### <a name="symptoms-not-covered-by-this-article"></a>本文未涵盖的症状
+### <a name="problems-not-covered-by-this-article"></a>本文未涵盖的问题
 
 - 出现间歇性连接问题。 在给定的客户端中，你会看到一些请求工作，一些请求工作不起作用。 *间歇性问题通常不是由专用链接配置中的问题引起的;它们是网络或客户端重载的符号。*
 - 你使用的是支持 BYOK (创建自己的密钥) 或 CMK (客户托管密钥) 的 Azure 产品，该产品无法访问你的密钥保管库。 *查看其他产品文档。请确保它已启用防火墙，并显式声明对密钥保管库的支持。如果需要，请与该特定产品的产品支持部门联系。*
@@ -188,7 +188,7 @@ Linux：
 
 这并不意味着从虚拟网络 *外部* 的计算机执行的请求 (如您刚才使用的) 将使用专用链接。 您可以看到，主机名仍可解析为公共 IP 地址。 只有 *连接到虚拟网络的* 计算机才能使用专用链接。 有关详细信息，请参阅。
 
-如果看不到 `privatelink` 别名，则表示密钥保管库的状态为0个专用终结点连接 `Approved` 。 请继续阅读本文。
+如果看不到 `privatelink` 别名，则表示密钥保管库的状态为0个专用终结点连接 `Approved` 。 请返回到 [此部分](#2-confirm-that-the-connection-is-approved-and-succeeded) ，然后重试。
 
 ### <a name="key-vault-with-private-link-resolving-from-virtual-network"></a>通过虚拟网络解析专用链接的密钥保管库
 

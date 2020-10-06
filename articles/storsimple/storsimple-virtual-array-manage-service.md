@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698931"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744128"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
 
@@ -70,7 +70,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 #### <a name="to-delete-a-service"></a>删除服务
 
-1. 中转到 "**所有资源**"。 搜索 StorSimple Device Manager 服务。 选择要删除的服务。
+1. 中转到 " **所有资源**"。 搜索 StorSimple Device Manager 服务。 选择要删除的服务。
    
     ![选择要删除的服务](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
 2. 转到服务仪表板，确保没有设备连接到该服务。 如果没有设备注册到此服务，则还将看到指示此内容的横幅消息。 单击 **“删除”** 。
@@ -109,7 +109,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 #### <a name="to-regenerate-the-service-registration-key"></a>重新生成服务注册密钥
 1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”“密钥”******&gt;** ****。
    
-   ![“密钥”边栏选项卡](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![密钥边栏选项卡](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. 在“密钥”**** 边栏选项卡中，单击“重新生成”****。
    
    ![单击“重新生成”](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,11 +118,11 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
    ![确认重新生成密钥](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. 将显示新的服务注册密钥。
    
-    ![确认重新生成密钥](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![其他确认重新生成密钥](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    复制此密钥，并保存密钥以供为任何新设备注册此服务。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[开始](storsimple-virtual-array-deploy1-portal-prep.md)使用 StorSimple 虚拟阵列。
+* 了解如何 [开始](storsimple-virtual-array-deploy1-portal-prep.md) 使用 StorSimple 虚拟阵列。
 * 了解如何[管理 StorSimple 设备](storsimple-ova-web-ui-admin.md)。
 

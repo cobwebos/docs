@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962479"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743907"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure 应用服务中纵向扩展应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "88962479"
 ## <a name="scale-up-your-pricing-tier"></a>向上缩放定价层
 
 > [!NOTE]
-> 要纵向扩展到 PremiumV2 层，请参阅[为应用服务配置 PremiumV2 层](app-service-configure-premium-tier.md)。
+> 若要纵向扩展到 **PremiumV3** 层，请参阅为 [应用服务配置 PremiumV3 层](app-service-configure-premium-tier.md)。
 >
 
 1. 在浏览器中，打开 [Azure 门户][portal]。
@@ -78,7 +78,7 @@ ms.locfileid: "88962479"
 ## <a name="more-resources"></a>更多资源
 
 [手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md)  
-[为应用服务配置 PremiumV2 层](app-service-configure-premium-tier.md)
+[为应用服务配置 PremiumV3 层](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/
