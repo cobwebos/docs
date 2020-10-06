@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a5f11a6054358584a8511cb967860c89f6491beb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934397"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756528"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版中的备份和还原) 
 
@@ -24,7 +24,7 @@ Azure Database for MySQL 灵活的服务器，会自动创建服务器备份并�
 
 灵活的服务器采用数据文件的快照备份，并将它们存储在本地冗余存储中。 服务器还会执行事务日志备份，并将它们存储在本地冗余存储中。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 你可以选择将数据库备份配置为1到35天。 所有备份都使用 AES 256 位加密为静态存储的数据加密。
 
-无法导出这些备份文件。 备份仅可用于在灵活的服务器中执行还原操作。 你还可以使用 [mysqldump](https://docs.microsoft.com/azure/MySQL/howto-migrate-using-dump-and-restore)   MySQL 客户端中的 mysqldump 来复制数据库。
+无法导出这些备份文件。 备份仅可用于在灵活的服务器中执行还原操作。 你还可以使用 [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   MySQL 客户端中的 mysqldump 来复制数据库。
 
 ## <a name="backup-frequency"></a>备份频率
 
@@ -52,14 +52,14 @@ Azure Database for MySQL 灵活的服务器，会自动创建服务器备份并�
 > [!IMPORTANT]
 > 灵活的服务器当前不支持异地冗余备份。
 
-## <a name="point-in-time-restore"></a>时间点还原
+## <a name="point-in-time-restore"></a>时点还原
 
 在 Azure Database for MySQL 灵活的服务器中，执行时间点还原将从与源服务器相同的区域中的灵活服务器的备份创建新的服务器。 它是在计算层的原始服务器配置、Vcore 数、存储大小、备份保留期和备份冗余选项的情况下创建的。 此外，还会从源服务器继承标记和设置，例如虚拟网络和防火墙。 还原完成后，可以更改还原的服务器的计算和存储层、配置和安全设置。
 
 > [!NOTE]
-> 有两个服务器参数 (重置为默认值，并且不会从主服务器复制到还原操作之后) 
-> *   time_zone-要设置为默认值系统的此值
-> *   event_scheduler-已还原服务器上的 event_scheduler 设置为 OFF
+> 还原操作完成后，有两个服务器参数重置为默认值（而不是从主服务器复制）
+> *   time_zone - 此值设置为默认值“SYSTEM”
+> *   event_scheduler - 还原的服务器上的 event_scheduler 设置为“OFF”
 
 多种情况下可以使用时间点还原。 常见的一些用例包括-
 -   当用户意外删除数据库中的数据时

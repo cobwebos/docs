@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 559c596ed9b7412b277fbfc1cf30cad15e852cef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253150"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757837"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 
-Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处理 (HTAP) 功能，可用于在 Azure Cosmos DB 中对操作数据运行准实时分析。 Synapse Link 在 Azure Cosmos DB 和 Azure Synapse Analytics 之间建立紧密的无缝集成。
+[适用于 Azure Cosmos DB 的 Azure Synapse 链接](synapse-link.md) 是 (HTAP) 功能的云本机混合事务性和分析处理，使你能够以 Azure Cosmos DB 中的操作数据运行近乎实时的分析。 Synapse Link 在 Azure Cosmos DB 和 Azure Synapse Analytics 之间建立紧密的无缝集成。
 
 > [!IMPORTANT]
 > 若要使用 Azure Synapse 链接，请确保在一个受支持区域 & Azure Synapse Analytics 工作区中预配 Azure Cosmos DB 帐户。 Azure Synapse 链接目前在以下 Azure 区域中提供：美国西部、美国东部、西2、北欧、西欧、美国中南部、东南亚、澳大利亚东部、东 U2、英国南部。
@@ -46,7 +46,7 @@ Azure Synapse 链接可用于 Azure Cosmos DB SQL API 容器 Azure Cosmos DB 或
 
 1. 接下来，它会提示你在帐户上启用 Synapse Link。 选择“启用”。 完成此过程可能需要1到5分钟。
 
-   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="启用 Synapse Link 功能":::
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="查找 Synapse Link 预览功能":::
 
 1. 你的帐户现已启用，可以使用 Synapse Link。 接下来，了解如何创建启用了分析存储的容器，以便自动开始将操作数据从事务性存储复制到分析存储。
 
@@ -68,13 +68,7 @@ Azure Synapse 链接可用于 Azure Cosmos DB SQL API 容器 Azure Cosmos DB 或
 
 1. 选择“新容器”****，并输入数据库、容器、分区键和吞吐量详细信息的名称。 打开“分析存储”**** 选项。 启用分析存储后，它将创建一个容器，该容器的 `AnalyicalTTL` 属性设置为默认值 -1（无限保留期）。 此分析存储保留所有记录的历史版本。
 
-   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="启用 Azure Cosmos 容器的分析存储":::
-
-1. 如果你以前未在此帐户上启用 Synapse Link，系统将提示你执行此操作，因为它是创建启用了分析存储的容器的先决条件。 如果系统提示，请选择“启用 Synapse Link”****。 完成此过程可能需要1到5分钟。
-
-1. 选择“确定”****，创建启用了分析存储的 Azure Cosmos 容器。
-
-1. 创建容器后，验证是否已启用分析存储区，方法是单击 " **设置**"，然后在数据资源管理器中的 "文档" 下，检查 " **分析存储的生存时间** " 选项是否已打开。
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="查找 Synapse Link 预览功能" 选项是否已打开。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -108,16 +102,16 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ### <a name="python-v4-sdk"></a>Python V4 SDK
 
-Python 2.7 和 Azure Cosmos DB SDK 4.1.0 是所需的最低版本，SDK 仅与 SQL API 兼容。
+Python 2.7 和 Azure Cosmos DB SDK 4.1.0 是所需的最低版本，此 SDK 仅与 SQL API 兼容。
 
-第一步是确保至少使用版本4.1.0 的 [Azure Cosmos DB PYTHON SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)：
+第一步是确保至少使用 [Azure Cosmos DB Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) 版本 4.1.0：
 
 ```python
 import azure.cosmos as cosmos
 
 print (cosmos.__version__)
 ```
-下一步使用 Azure Cosmos DB Python SDK 创建包含分析存储的容器：
+下一步是使用 Azure Cosmos DB Python SDK 创建具有分析存储的容器：
 
 ```python
 # Azure Cosmos DB Python SDK, for SQL API only.

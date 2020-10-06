@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907585"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756545"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自动化机器学习中的特征化
 
@@ -316,7 +316,7 @@ class_prob = fitted_model.predict_proba(X_test)
 
 AutoML 会为 BERT 执行以下步骤。 
 
-1. 所有文本列的预处理和标记化。 例如，可以在最终模型的特征化摘要中找到“StringCast”转换器。 [此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)中提供了一个有关如何生成模型的特征化摘要的示例。
+1. 所有文本列的预处理和标记化。 例如，可以在最终模型的特征化摘要中找到“StringCast”转换器。 [此笔记本](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)中提供了一个有关如何生成模型的特征化摘要的示例。
 
 2. **将所有文本列连接到单个文本列中**，因此在最终模型中会调用 `StringConcatTransformer`。 
 

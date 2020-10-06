@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1ba3f49c9016d71acf162efb07cd6120b1dcc1ec
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743550"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756613"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -46,7 +46,7 @@ ms.locfileid: "91743550"
 
 创建计算实例是工作区的一次过程。 您可以将此计算作为开发工作站重复使用，或者作为一种计算目标来进行培训。 可以将多个计算实例附加到工作区。
 
-每个区域中每个区域的专用核心数（适用于计算实例创建）都是统一的，并与 Azure 机器学习定型计算群集配额进行共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。
+每个区域中每个区域的专用核心数（适用于计算实例创建）都是统一的，并与 Azure 机器学习定型计算群集配额进行共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。 请注意，创建虚拟机后，不能更改计算实例的虚拟机大小。
 
 下面的示例演示如何创建计算实例：
 
@@ -161,7 +161,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     instance.restart(wait_for_completion=True, show_output=True)
     ```
 
-* Delete
+* 删除
 
     ```python
     # delete() is used to delete the ComputeInstance target. Useful if you want to re-use the compute name 
@@ -196,7 +196,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
     有关详细信息，请参阅 [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
 
-* Delete
+* 删除
 
     ```azurecli-interactive
     az ml computetarget delete -n instance -v

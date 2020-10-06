@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 474b3c4261b412c0c875f7a05802095c9e0c2cd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b936460d98ce772e49f281a06f95da09fa34ccfb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320364"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758789"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -379,7 +379,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 事件中心         | Microsoft.EventHub         | 使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure 文件同步          | Microsoft.StorageSync      | 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 可实现多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
-| Azure 导入导出      | Microsoft.ImportExport     | 允许使用导入/导出服务将数据导入 Azure 以及从 Azure 导出数据。 [了解详细信息](/azure/storage/common/storage-import-export-service)。  |
+| Azure 导入导出      | Microsoft.ImportExport     | 允许使用 Azure 存储导入/导出服务将数据导入到 Azure 存储或从 Azure 存储导出数据。 [了解详细信息](/azure/storage/common/storage-import-export-service)。  |
 | Azure Monitor            | Microsoft.Insights         | 允许向受保护的存储帐户写入监视数据，包括资源日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
 | Azure 网络         | Microsoft.Network          | 以多种方式（包括使用网络观察程序和流量分析服务）存储和分析网络流量日志。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，请启用复制，以实现 Azure IaaS 虚拟机的灾难恢复。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
@@ -396,7 +396,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure IoT 中心                  | Microsoft.Devices/IotHubs              | 允许将 IoT 中心的数据写入 Blob 存储。 [了解详细信息](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
 | Azure 机器学习服务 | Microsoft.MachineLearningServices      | 经过授权的 Azure 机器学习工作区将实验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
-| Azure Synapse Analytics（以前称为 SQL 数据仓库）       | Microsoft.Sql                          | 允许使用 COPY 语句或 PolyBase 从特定 SQL 数据库导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure Synapse Analytics（以前称为 SQL 数据仓库）       | Microsoft.Sql                          | 允许使用 COPY 语句或 PolyBase 通过特定 SQL 数据库导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure SQL 数据库       | Microsoft.Sql                          | 允许从存储帐户[导入](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)数据，并将审核数据[写入](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall)防火墙后的存储帐户。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |

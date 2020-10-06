@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: fd80f7b4a62380b62acb52543b49f5640cc5d365
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: bb408c762c33e4d146a2f0ef36f32e525b3859bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627969"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758262"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
@@ -38,7 +38,7 @@ ms.locfileid: "91627969"
 > - [将本地文件服务器替换为 Azure 文件 (包括在文件和 AD 身份验证的专用链接上安装) ](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [使用 Azure 文件作为 Windows 虚拟机的配置文件容器 (包括在 AD 身份验证和 FsLogix 配置上安装) ](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备知识 
 
 在为 Azure 文件共享启用 AD DS 身份验证之前，请确保已完成以下先决条件： 
 
@@ -54,7 +54,9 @@ ms.locfileid: "91627969"
 
     请确保尚未为包含文件共享的存储帐户配置 Azure AD DS 身份验证。 如果在存储帐户上启用了 Azure 文件 Azure AD DS 身份验证，则需要在更改后将其禁用，才能使用本地 AD DS。 这意味着，将需要重新配置在 Azure AD DS 环境中配置的现有 Acl，以实现适当的权限。
 
-    如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)。 我们还提供了有关在阻止端口445时解决方案的 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+
+    如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了有关在阻止端口445时解决方案的 [指南](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+
 
 - 在启用和配置 Azure 文件共享 AD DS 身份验证之前，请进行任何相关的网络配置。 有关详细信息，请参阅 [Azure 文件网络注意事项](storage-files-networking-overview.md) 。
 

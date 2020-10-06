@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 9ffc134c2bded747346f3639119dde4a6f14231b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f21d3ed3d5e71c2f87777316e7584011490043a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250702"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757769"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -22,7 +22,7 @@ ms.locfileid: "91250702"
 
 ## <a name="what-are-datasets-with-labels"></a>什么是带标签的数据集 
 
-我们引用 Azure 机器学习数据集，并将标签用作标记的数据集。 标记数据集的这些特定数据集类型仅作为 Azure 机器学习数据标记项目的输出创建。 可以使用[这些步骤](how-to-create-labeling-projects.md)创建数据标记项目。 机器学习支持用于图像分类的数据标记项目（无论是多标签的还是多类的），以及带边界框的对象标识。
+我们将带标签的 Azure 机器学习数据集称为带标签的数据集。 这些特定数据集类型的带标签数据集只能创建为 Azure 机器学习数据标记项目的输出。 可以使用[这些步骤](how-to-create-labeling-projects.md)创建数据标记项目。 机器学习支持用于图像分类的数据标记项目（无论是多标签的还是多类的），以及带边界框的对象标识。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,13 +61,20 @@ pip install azureml-contrib-dataset
 >[!NOTE]
 >azureml.contrib 命名空间会频繁更改，因为我们正在改进服务。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
 
-转换为 pandas 数据帧时，我们针对文件流提供以下文件处理选项。
+Azure 机器学习在转换为 pandas 数据帧时为文件流提供以下文件处理选项。
 * 下载：将数据文件下载到本地路径。
 * 装载：将数据文件装载到装入点。 装载仅适用于基于 Linux 的计算，包括 Azure 机器学习笔记本 VM 和 Azure 机器学习计算。
 
+在下面的代码中， `animal_labels` 数据集是之前保存到工作区的标记项目的输出。
+
 ```Python
+import azureml.core
 import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
 from azureml.contrib.dataset import FileHandlingOption
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 animal_pd = animal_labels.to_pandas_dataframe(file_handling_option=FileHandlingOption.DOWNLOAD, target_path='./download/', overwrite_download=True)
 
 import matplotlib.pyplot as plt
@@ -82,8 +89,18 @@ imgplot = plt.imshow(img)
 
 还可以使用 `azureml-contrib-dataset` 类中的 [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-torchvision--) 方法将带标签的数据集加载到 Torchvision 数据集中。 若要使用此方法，需要安装 [PyTorch](https://pytorch.org/)。 
 
+在下面的代码中， `animal_labels` 数据集是之前保存到工作区的标记项目的输出。
+
 ```python
+import azureml.core
+import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
+from azureml.contrib.dataset import FileHandlingOption
+
 from torchvision.transforms import functional as F
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 
 # load animal_labels dataset into torchvision dataset
 pytorch_dataset = animal_labels.to_torchvision()

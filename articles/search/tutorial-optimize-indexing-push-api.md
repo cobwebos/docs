@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfb2598fb3a207bbdfaade9086efd07827b077dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998418"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757786"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>教程：使用推送 API 优化索引编制
 
@@ -325,7 +325,7 @@ do
 
 在这里，我们将指数回退代码包装到一个函数中，以便可以轻松调用它。
 
-然后创建另一个函数来管理活动线程。 为简单起见，此处未包括该函数，但你可在 [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs) 中找到该函数。 可以通过以下命令调用该函数，其中，`hotels` 是要上传的数据，`1000` 是批大小，`8` 是并发线程数：
+然后创建另一个函数来管理活动线程。 为简单起见，此处未包括该函数，但你可在 [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs) 中找到该函数。 可以通过以下命令调用该函数，其中，`hotels` 是要上传的数据，`1000` 是批大小，`8` 是并发线程数：
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();

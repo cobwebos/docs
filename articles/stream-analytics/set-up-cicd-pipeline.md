@@ -8,20 +8,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 23ac1e241c0811944a943c3c3fef3116eff68a67
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933487"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757752"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>使用 Azure DevOps 为流分析作业创建 CI/CD 管道
 
-本文介绍如何使用 Azure 流分析 CI/CD 工具创建 Azure DevOps [生成](/devops/pipelines/get-started-designer) 和 [发布](/devops/pipelines/release/define-multistage-release-process) 管道。
+本文介绍如何使用 Azure 流分析 CI/CD 工具创建 Azure DevOps [生成](/azure/devops/pipelines/get-started/pipelines-get-started) 和 [发布](/azure/devops/pipelines/release/define-multistage-release-process) 管道。
 
 ## <a name="commit-your-stream-analytics-project"></a>提交流分析项目
 
-在开始之前，请将完整的流分析项目作为源文件提交到 [Azure DevOps](/devops/user-guide/source-control) 存储库。 可以在 Azure Pipelines 中引用此 [示例存储库](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) 和 [流分析项目源代码](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) 。
+在开始之前，请将完整的流分析项目作为源文件提交到 [Azure DevOps](/azure/devops/user-guide/source-control) 存储库。 可以在 Azure Pipelines 中引用此 [示例存储库](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) 和 [流分析项目源代码](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) 。
 
 本文中的步骤使用流分析 Visual Studio Code 项目。 如果使用的是 Visual Studio 项目，请按照 [使用 CI/CD 工具自动执行 Azure 流分析作业的生成、测试和部署](cicd-tools.md)中的步骤操作。
 
@@ -33,29 +33,37 @@ ms.locfileid: "90933487"
 
 1. 在左侧导航菜单中的 " **管道** " 下，选择 " **生成**"。 然后选择 " **新建管道**"。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="创建新的 Azure 管道":::
+   :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="创建新的 Azure 管道&quot;:::
 
-1. 选择 **"使用经典编辑器** 创建无 YAML 的管道"。
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
 
-1. 选择 "源类型"、"团队项目" 和 "存储库"。 然后选择“继续”。
+1. 选择 &quot;源类型&quot;、&quot;团队项目" 和 "存储库"。 然后选择“继续”。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="选择 Azure 流分析项目":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="创建新的 Azure 管道&quot;:::
 
-1. 在 " **选择模板** " 页上，选择 " **空作业**"。
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目" **空作业**"。
 
 ## <a name="install-npm-package"></a>安装 npm 包
 
 1. 在 " **任务** " 页上，选择 " **代理作业 1**" 旁边的加号。 在任务搜索中输入 *npm* ，并选择 **npm**。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="选择 npm 任务":::
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="创建新的 Azure 管道&quot;:::
 
-2. 为任务指定 **显示名称**。 将 **命令** 选项更改为 " *自定义* "，然后在 " **命令和参数**" 中输入以下命令。 保留剩余的默认选项。
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目" 中输入以下命令。 保留剩余的默认选项。
 
    ```bash
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="输入 npm 任务的配置":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 ## <a name="add-a-build-task"></a>添加生成任务
 
@@ -77,7 +85,11 @@ ms.locfileid: "90933487"
 
    下图使用流分析 Visual Studio Code 项目作为示例。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="输入命令行任务的配置 visual studio code":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 ## <a name="add-a-test-task"></a>添加测试任务
 
@@ -87,9 +99,11 @@ ms.locfileid: "90933487"
    |-|-|
    |Microsoft.vsts.test.testpath|测试|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="添加管道变量":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="创建新的 Azure 管道&quot;:::
 
-2. 在 " **任务** " 页上，选择 " **代理作业 1**" 旁边的加号。 搜索 " **命令行**"。
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目" **命令行**"。
 
 3. 为任务指定 **显示名称** ，然后输入以下脚本。 用项目文件名和测试配置文件的路径来修改脚本。 
 
@@ -99,7 +113,11 @@ ms.locfileid: "90933487"
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="输入命令行任务的配置":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 ## <a name="add-a-copy-files-task"></a>添加复制文件任务
 
@@ -116,7 +134,11 @@ ms.locfileid: "90933487"
 
 2. 展开 " **控件选项**"。 **即使之前的任务失败，也请选择，除非**在**运行此任务**时未取消生成。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="输入复制任务的配置":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>添加 "发布生成项目" 任务
 
@@ -124,7 +146,11 @@ ms.locfileid: "90933487"
 
 2. 展开 " **控件选项**"。 **即使之前的任务失败，也请选择，除非**在**运行此任务**时未取消生成。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="输入发布任务的配置":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 ## <a name="save-and-run"></a>“保存”和“运行”
 
@@ -134,9 +160,17 @@ ms.locfileid: "90933487"
 
 可在 **已发布** 文件夹中找到测试摘要文件和 Azure 资源管理器模板文件。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="检查生成和测试结果":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="创建新的 Azure 管道&quot;:::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="检查项目":::
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
+
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines 发布
 
@@ -150,7 +184,11 @@ ms.locfileid: "90933487"
 
 3. 在 " **项目** " 框中，选择 " **+ 添加项目**"。 在 " **源**" 下，选择创建的生成管道，然后选择 " **添加**"。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="输入生成管道项目":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 4. 更改 **阶段 1** 的名称，将 **作业部署到测试环境**。
 
@@ -196,7 +234,11 @@ ms.locfileid: "90933487"
 
 若要创建发布，请在右上角选择 " **创建发布** "。
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="使用 Azure Pipelines 创建发布":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="创建新的 Azure 管道&quot;:::
+
+1. 选择 **&quot;使用经典编辑器** 创建无 YAML 的管道&quot;。
+
+1. 选择 &quot;源类型&quot;、&quot;团队项目":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629992"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757463"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
 
@@ -23,7 +23,7 @@ ms.locfileid: "91629992"
 > [!NOTE] 
 在预览期间，使用启用了 Azure Arc 的数据服务不会产生费用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 你将需要安装 Azure CLI (az) 和 Azure Data CLI (azdata) 。  [安装工具](./install-client-tools.md)。
 
@@ -95,7 +95,7 @@ az provider register -n Microsoft.AzureData --wait
 若要创建服务主体，请运行以下命令：
 
 > [!NOTE]
-> 若要创建服务主体，需要 [在 Azure 中具有特定权限](/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+> 若要创建服务主体，需要 [在 Azure 中具有特定权限](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)。
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

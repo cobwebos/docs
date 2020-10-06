@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741401"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757930"
 ---
 # <a name="security-control-v2-identity-management"></a>安全控制 V2：标识管理
 
@@ -169,7 +169,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../../security-center/security-center-identity-access.md)
 
-- [Azure 安全中心的威胁智能保护模块中的警报](//azure/security-center/alerts-reference)
+- [Azure 安全中心的威胁智能保护模块中的警报](/azure/security-center/alerts-reference)
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 

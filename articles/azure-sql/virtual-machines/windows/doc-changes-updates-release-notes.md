@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机上 SQL Server 的文档更改 | Microsoft Docs
+title: Azure 虚拟机上 SQL Server 的文档更改
 description: 了解 Azure 虚拟机上不同版本的 SQL Server 的新增功能和改进。
 services: virtual-machines-windows
 author: MashaMSFT
@@ -10,18 +10,25 @@ ms.service: virtual-machines-sql
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/20/2020
-ms.openlocfilehash: a596a57b2b4ac914514fcdefe77106c311e53c44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/21/2020
+ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272661"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758636"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的文档更改
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机 (VM)。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中与新功能和改进相关的文档更改。 
+
+## <a name="september-2020"></a>2020 年 9 月
+
+| 更改 | 详细信息 |
+| --- | --- |
+| **自动 RP 注册** | 你现在可以启用 [自动注册](sql-vm-resource-provider-automatic-registration.md) 功能，自动注册已部署到你的订阅的所有 SQL Server vm，以及将来添加的任何 SQL Server vm。  | 
+
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -83,7 +90,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机 (VM)。 本文�
 | **命名实例可支持性** | 现在，如果已正确卸载默认实例，可以将 [SQL Server IaaS 扩展](sql-server-iaas-agent-extension-automate-management.md#installation)与命名实例一起使用。 | 
 | **门户增强功能** | 改进了 Azure 门户的 SQL Server VM 部署体验，从而提高了可用性。 有关详细信息，请参见简要的[快速入门](sql-vm-create-portal-quickstart.md)和更详尽的[操作指南](create-sql-vm-portal.md)，以部署 SQL Server VM。|
 | **门户改进** | 现在，可以使用 [Azure 门户网站](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider)将 SQL Server VM 的许可模式从“即用即付”更改为“自带许可”。|
-| **通过 Azure CLI 简化对 SQL Server VM 的可用性组部署** | 现在，将可用性组部署到 Azure 中的 SQL Server VM 比以往更加容易。 你可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) 从命令行创建 Windows 故障转移群集、内部负载均衡器和可用性组侦听器。 有关详细信息，请参阅 [使用 Azure CLI 为 AZURE VM 上的 SQL Server 配置 Always On 可用性组](availability-group-az-cli-configure.md)。 | 
+| **通过 Azure CLI 简化对 SQL Server VM 的可用性组部署** | 现在，将可用性组部署到 Azure 中的 SQL Server VM 比以往更加容易。 你可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 从命令行创建 Windows 故障转移群集、内部负载均衡器和可用性组侦听器。 有关详细信息，请参阅 [使用 Azure CLI 为 AZURE VM 上的 SQL Server 配置 Always On 可用性组](availability-group-az-cli-configure.md)。 | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 

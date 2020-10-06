@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650981"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759069"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
@@ -166,7 +166,7 @@ ms.locfileid: "89650981"
 | 津巴布韦                            | ZW        | USD          |
 |   |   |   |
 
-\* 对于巴西的客户，通过云解决方案提供商提供的 commcercial marketplace) 使用 USD (CSP。
+\* 对于巴西的客户，通过云解决方案提供商提供的商业市场 (CSP) 使用 USD。
 
 \** 仅适用于免费和 BYOL VM 映像。
 
@@ -181,7 +181,7 @@ ms.locfileid: "89650981"
 
 产品/服务的价格始终以当地货币向客户显示。 在合作伙伴中心中选择的价格将根据你在合作伙伴中心中保存价格时的汇率转换为客户的当地货币。 除非重新发布产品/服务，否则在线商店中的客户所显示的价格不会改变。
 
-Microsoft 以当地货币接收来自客户的付款，并以当地货币为您支付。 Microsoft 使用购买日的汇率将客户本地货币转换为本地货币。
+Microsoft 以当地货币的形式接收来自客户的付款，并按合作伙伴中心中所选的货币向你付费。 Microsoft 使用购买日的汇率来转换客户当地币种。
 
 > [!NOTE]
 > Microsoft 使用 Microsoft 国库券汇率转换优惠价格。
@@ -196,7 +196,7 @@ Microsoft 以当地货币接收来自客户的付款，并以当地货币为您�
 
 - [创建 Azure 应用程序产品/服务](partner-center-portal/create-new-azure-apps-offer.md)
 - [创建 Azure 容器产品/服务](partner-center-portal/create-azure-container-offer.md)
-- [创建 Azure 虚拟机产品/服务](partner-center-portal/azure-vm-create-offer.md)
+- [创建 Azure 虚拟机套餐](partner-center-portal/azure-vm-create-offer.md)
 - [创建咨询服务套餐](partner-center-portal/create-consulting-service-offer.md)
 - [创建 Dynamics 365 for Customer Engagement & PowerApps 套餐](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations 产品/服务](partner-center-portal/create-new-operations-offer.md)

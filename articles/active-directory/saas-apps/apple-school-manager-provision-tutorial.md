@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 221039ad1dc30e645d98ba6dd7e79c7b81ba3430
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313053"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757417"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教程：为 Apple School Manager 配置自动用户预配
 
@@ -55,7 +55,7 @@ ms.locfileid: "91313053"
 1. 在 Apple 学校管理器中，使用角色为 "管理员"、"站点经理" 或 "人员经理" 的帐户进行登录。
 2. 单击侧栏底部的 "设置"，单击 "组织设置" 下方的 "数据源"，然后单击 "连接到数据源"。
 3. 单击 "SCIM" 旁边的 "连接"，仔细阅读警告，单击 "复制"，然后单击 "关闭"。
-[连接到 SCIM 窗口，该窗口在其下提供标记和复制按钮。]将此窗口保持为打开状态，将租户 URL 从 Apple Business Manager 复制到 Azure AD，这是： https://federation.apple.com/feeds/school/scim
+[连接到 SCIM 窗口，该窗口在其下提供标记和复制按钮。]将此窗口保持为打开状态，将租户 URL 从 Apple Business Manager 复制到 Azure AD，这是： " https://federation.apple.com/feeds/school/scim "
 
     ![Apple School Manager](media/appleschoolmanager-provisioning-tutorial/scim-token.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "91313053"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存” 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Apple School Manager**"。
 
@@ -152,16 +152,16 @@ ms.locfileid: "91313053"
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
-* [查看 Apple School Manager 的 SCIM 要求](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [Apple School Manager 中使用人员 ID 的方式](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [使用 SCIM 将用户导入 Apple School Manager](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [解决 Apple School Manager 中的 SCIM 用户帐户冲突](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [删除 Apple School Manager 中显示 Azure AD 帐户](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [在 Apple School Manager 中查看 SCIM 活动](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [在 Apple 学校管理器中管理现有的 SCIM 令牌和连接](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [断开 Apple School Manager 中的 SCIM 连接](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [在 Apple 学校管理器中管理现有的 SCIM 令牌和连接](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [Apple School Manager 中的 SCIM 连接疑难解答](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [查看 Apple School Manager 的 SCIM 要求](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [Apple School Manager 中使用人员 ID 的方式](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [使用 SCIM 将用户导入 Apple School Manager](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [解决 Apple School Manager 中的 SCIM 用户帐户冲突](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [删除 Apple School Manager 中显示 Azure AD 帐户](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [在 Apple School Manager 中查看 SCIM 活动](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [在 Apple 学校管理器中管理现有的 SCIM 令牌和连接](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [断开 Apple School Manager 中的 SCIM 连接](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [在 Apple 学校管理器中管理现有的 SCIM 令牌和连接](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [Apple School Manager 中的 SCIM 连接疑难解答](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>后续步骤
 

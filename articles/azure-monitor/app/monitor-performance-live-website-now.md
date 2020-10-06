@@ -4,12 +4,12 @@ description: 在不重新部署网站的情况下监视网站性能。 使用托
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923817"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758657"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -130,7 +130,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 </dependentAssembly>
 ```
 
-我们将在[此处](https://github.com/Microsoft/ApplicationInsights-Home/issues/301)跟踪此问题。
+我们将在[此处](https://github.com/MohanGsk/ApplicationInsights-Home)跟踪此问题。
 
 
 ### <a name="application-diagnostic-messages"></a>应用程序诊断消息

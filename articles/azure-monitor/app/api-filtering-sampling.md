@@ -4,12 +4,12 @@ description: 编写遥测处理器和遥测初始值设定项，以便在遥测�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d2a0c348eda569e95a3029b9dce76aa981989ddf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b3ccc3516d5b31f4c119c2d5a2bd11a63dbdc611
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264025"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758024"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中筛选和预处理遥测
 
@@ -26,7 +26,7 @@ ms.locfileid: "91264025"
 
 <a name="filtering"></a>
 
-## <a name="filtering"></a>Filtering
+## <a name="filtering"></a>筛选
 
 此方法可让你直接控制遥测流中包含或排除的内容。 可以通过筛选删除要发送到 Application Insights 的遥测项。 可以结合采样或单独使用筛选。
 
@@ -292,7 +292,7 @@ protected void Application_Start()
 }
 ```
 
-请参阅 [此示例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)的更多。
+请参阅 [此示例](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)的更多。
 
 ASP.NET **核心/辅助服务应用：加载初始值设定项**
 
@@ -553,5 +553,5 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 * [搜索事件和日志](./diagnostic-search.md)
 * [样本](./sampling.md)
-* [疑难解答](../faq.md)
+* [故障排除](../faq.md)
 

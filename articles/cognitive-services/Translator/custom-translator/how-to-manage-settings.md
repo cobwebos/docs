@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510442"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757021"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
 
@@ -51,6 +51,8 @@ ms.locfileid: "88510442"
 
     ![“创建新工作区”对话框](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>自定义转换器不支持为文本翻译 API 资源 (也称为创建工作区 已在 [已启用 VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)内创建 Azure 订阅密钥) 。
 
 ### <a name="modify-existing-key"></a>修改现有密钥
 
@@ -61,7 +63,7 @@ ms.locfileid: "88510442"
 
 3. 在对话框中，输入转换器订阅的密钥，然后单击 "保存" 按钮。
 
-    ![如何添加订阅密钥](media/how-to/how-to-add-subscription-key-dialog.png)
+    !["如何添加订阅密钥" 对话框](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>管理工作区
 

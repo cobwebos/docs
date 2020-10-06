@@ -4,12 +4,12 @@ description: 了解如何针对不同情况自定义应用服务中的身份验�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: a5d81d99759c972d91f66ec75c482e08826a8e07
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a01ca051f676f6a62face2c8ef0c9055c0c98c31
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255207"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757514"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -269,7 +269,7 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ### <a name="identity-provider-level"></a>标识提供者级别
 
-标识提供者可能会提供某些密钥授权。 例如：
+标识提供者可能会提供某些密钥授权。 例如： 。
 
 - 对于 [Azure App Service](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中 [管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md) 。 有关说明，请参阅 [如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
 - 对于 [google](configure-authentication-provider-google.md)，可以将属于 [组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) 的 Google API 项目配置为仅允许组织中的用户访问 (参阅 [Google **设置 OAuth 2.0** 支持页](https://support.google.com/cloud/answer/6158849?hl=en)) 。
@@ -322,6 +322,17 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
             "/path1",
             "/path2"
         ]
+    },
+    "httpSettings": {
+        "requireHttps": <true|false>,
+        "routes": {
+            "apiPrefix": "<api prefix>"
+        },
+        "forwardProxy": {
+            "convention": "NoProxy|Standard|Custom",
+            "customHostHeaderName": "<host header value>",
+            "customProtoHeaderName": "<proto header value>"
+        }
     },
     "identityProviders": {
         "azureActiveDirectory": {
@@ -398,7 +409,7 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
             }
         },
         "openIdConnectProviders": {
-            "provider name": {
+            "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
@@ -427,45 +438,35 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
                 }
             },
             //...
+        }
+    },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
         },
-        "login": {
-            "routes": {
-                "logoutEndpoint": "<logout endpoint>"
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
             },
-            "tokenStore": {
-                "enabled": <true|false>,
-                "tokenRefreshExtensionHours": "<double>",
-                "fileSystem": {
-                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
-                },
-                "azureBlobStorage": {
-                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-                }
-            },
-            "preserveUrlFragmentsForLogins": <true|false>,
-            "allowedExternalRedirectUri": [
-                "https://uri1.azurewebsites.net/",
-                "https://uri2.azurewebsites.net/"
-            ],
-            "cookieExpiration": {
-                "convention": "FixedTime|IdentityProviderDerived",
-                "timeToExpiration": "<timespan>"
-            },
-            "nonce": {
-                "validateNonce": <true|false>,
-                "nonceExpirationInterval": "<timespan>"
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
             }
         },
-        "httpSettings": {
-            "requireHttps": <true|false>,
-            "routes": {
-                "apiPrefix": "<api prefix>"
-            },
-            "forwardProxy": {
-                "convention": "NoProxy|Standard|Custom",
-                "customHostHeaderName": "<host header value>",
-                "customProtoHeaderName": "<proto header value>"
-            }
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUri": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityProviderDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
         }
     }
 }
@@ -489,7 +490,7 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ##### <a name="from-the-azure-cli"></a>通过 Azure CLI
 
-使用 Azure CLI 通过 [az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) 命令查看当前中间件版本。
+使用 Azure CLI 通过 [az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) 命令查看当前中间件版本。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +521,7 @@ az webapp auth show --name <my_app_name> \
 
 #### <a name="update-the-current-runtime-version"></a>更新当前运行时版本
 
-使用 Azure CLI，可以通过 [az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) 命令更新应用中的 `runtimeVersion` 设置。
+使用 Azure CLI，可以通过 [az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) 命令更新应用中的 `runtimeVersion` 设置。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

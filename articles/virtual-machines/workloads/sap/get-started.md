@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/01/2020
+ms.date: 10/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: eb7d7d6296432146e6e4390b0df62964ffe6f8da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704950"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758092"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -82,6 +82,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在有关[Sap NetWeaver 的 Azu
 
 ## <a name="change-log"></a>更改日志
 
+- 10/05/2020： [在 RHEL 上通过 Azure vm 上的 Pacemaker SAP HANA 扩展 HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) 的发布配置指南
 - 09/30/2020：在 [rhel 上的 Azure vm 上 SAP HANA 高可用性](./sap-hana-high-availability-rhel.md)，在 rhel 上 [通过和进行 SAP HANA 扩展](./sap-hana-high-availability-netapp-files-red-hat.md) ，并 [在 Azure 中的 rhel 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 以适应 rhel 8.1 的说明
 - 09/29/2020：[有关 SAP 应用程序的最佳网络延迟，请在 Azure 邻近位置组](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)一文中对 PPG 的使用做出限制和建议 
 - 09/28/2020：添加了新的存储操作指南，适用于使用 Azure NetApp 文件和 Azure netapp 文件上的文档 NFS SAP HANA 的文件 [进行 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)

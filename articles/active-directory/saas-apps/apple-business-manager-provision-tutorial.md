@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7d946c2b1d6e13897667fd58b784575e6f44aa1d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5cfd355941a7fae211f3abb9b5dd31e86ba1d14b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333507"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757480"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>教程：为 Apple Business Manager 配置自动用户预配
 
@@ -55,7 +55,7 @@ ms.locfileid: "91333507"
 1. 在 Apple Business Manager 中，使用具有管理员或人员经理角色的帐户登录。
 2. 单击侧栏底部的 "设置"，单击 "组织设置" 下方的 "数据源"，然后单击 "连接到数据源"。
 3. 单击 "SCIM" 旁边的 "连接"，仔细阅读警告，单击 "复制"，然后单击 "关闭"。
-[连接到 SCIM 窗口，该窗口在其下提供标记和复制按钮。]将此窗口保持为打开状态，将租户 URL 从 Apple Business Manager 复制到 Azure AD，这是： https://federation.apple.com/feeds/business/scim
+[连接到 SCIM 窗口，该窗口在其下提供标记和复制按钮。]将此窗口保持为打开状态，将租户 URL 从 Apple Business Manager 复制到 Azure AD，这是： " https://federation.apple.com/feeds/business/scim "
 
     ![Apple Business Manager](media/applebusinessmanager-provisioning-tutorial/scim-token.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "91333507"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存” 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Apple 业务经理**"。
 
@@ -151,15 +151,15 @@ ms.locfileid: "91333507"
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
-* [查看 Apple Business Manager 的 SCIM 要求](URL=https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
-* [Apple 业务经理如何使用人员 ID](URL=https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
-* [使用 SCIM 将用户导入 Apple Business Manager](URL=https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
-* [解决 Apple Business Manager 中的 SCIM 用户帐户冲突](URL=https://support.apple.com/guide/apple-business-manager/apd313013d12)
-* [删除 Apple Business Manager 中显示 Azure AD 帐户](URL=https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
-* [在 Apple Business Manager 中查看 SCIM 活动](URL=https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
-* [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](URL=https://support.apple.com/guide/apple-business-manager/apdc9a823611)
-* [断开 Apple Business Manager 中的 SCIM 连接](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61)
-* [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
+* [查看 Apple Business Manager 的 SCIM 要求](https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
+* [Apple 业务经理如何使用人员 ID](https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
+* [使用 SCIM 将用户导入 Apple Business Manager](https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
+* [解决 Apple Business Manager 中的 SCIM 用户帐户冲突](https://support.apple.com/guide/apple-business-manager/apd313013d12)
+* [删除 Apple Business Manager 中显示 Azure AD 帐户](https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
+* [在 Apple Business Manager 中查看 SCIM 活动](https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
+* [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
+* [断开 Apple Business Manager 中的 SCIM 连接](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
+* [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
 * [Apple Business Manager 中的 SCIM 连接疑难解答](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>后续步骤

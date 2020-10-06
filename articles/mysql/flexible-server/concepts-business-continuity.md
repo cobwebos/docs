@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 62ca7ea885605b3b5590342b6786dcdc63f3a00b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6beab6f470a39c281020bfdfb7d43c4b6c5e3b70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933600"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756494"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版的业务连续性概述) 
 
@@ -56,7 +56,7 @@ Azure Database for MySQL 灵活的服务器可实现业务连续性功能，以�
 | :---------- | ---------- | ------- |
 | **数据库服务器故障** | 如果数据库服务器由于某些基础硬件故障而关闭，则会丢弃处于活动状态的连接，并中止任何正在进行的事务。 Azure 将尝试重新启动数据库服务器。 如果成功，则执行数据库恢复。 如果重新启动失败，则数据库服务器将尝试在另一个物理节点上重新启动。  <br /> <br /> 恢复时间 (RTO) 取决于各种因素，包括发生故障时的活动，例如，在数据库服务器启动过程中需执行的大型事务和恢复量。 <br /> <br /> 所构建的使用 MySQL 数据库的应用程序需要能够检测并重试丢弃的连接和失败的事务。  当应用程序重试时，连接将定向到新创建的数据库服务器。 | 如果检测到数据库服务器故障，则会激活备用数据库服务器，从而减少停机时间。 有关更多详细信息，请参阅 [HA 概念页](concepts-high-availability.md) 。 RTO 应为60-120 秒，RPO = 0 |
 | **存储失败** | 对于任何与存储相关的问题（例如磁盘故障或物理块损坏），应用程序看不到任何影响。 由于数据存储在 3 个副本中，因此将由未发生故障的存储提供数据的副本。 块损坏会自动修复。 如果丢失了数据的副本，则会自动创建数据的新副本。 | 对于不可恢复的错误，弹性服务器会故障转移到备用副本，以减少停机时间。 有关更多详细信息，请参阅 [HA 概念页](../concepts-high-availability.md) 。 |
-| **逻辑/用户错误** | 在发生用户错误（例如，意外删除了表或错误地更新了数据）后进行的恢复涉及到执行[时间点恢复](https://docs.microsoft.com/azure/MySQL/concepts-backup) (PITR)，方法是将数据还原并恢复到发生错误之前的那个时间点。<br> <br>  如果只需还原部分数据库或特定的表，而不是还原数据库服务器中的所有数据库，则可在新实例中还原数据库服务器，通过 [pg_dump](https://www.MySQL.org/docs/11/app-pgdump.html) 导出表，然后使用 [pg_restore](https://www.MySQL.org/docs/11/app-pgrestore.html) 将这些表还原到数据库中。 | 由于将所有用户操作都复制到备用状态，因此这些用户错误不会因高可用性而受到保护。 |
+| **逻辑/用户错误** | 在发生用户错误（例如，意外删除了表或错误地更新了数据）后进行的恢复涉及到执行[时间点恢复](https://docs.microsoft.com/azure/MySQL/concepts-backup) (PITR)，方法是将数据还原并恢复到发生错误之前的那个时间点。<br> <br>  如果只需还原部分数据库或特定的表，而不是还原数据库服务器中的所有数据库，则可在新实例中还原数据库服务器，通过 [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html) 导出表，然后使用 [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) 将这些表还原到数据库中。 | 由于将所有用户操作都复制到备用状态，因此这些用户错误不会因高可用性而受到保护。 |
 | **可用性区域故障** | 虽然这是一个很少见的事件，但如果想要从区域级别的故障中恢复，则可以使用备份来执行时间点恢复，并选择自定义的还原点以访问最新数据。 新的灵活服务器将部署在另一个区域中。 还原所需的时间取决于以前的备份和要恢复的事务日志数。 | 灵活的服务器执行自动故障转移到备用站点。 有关更多详细信息，请参阅 [HA 概念页](../concepts-high-availability.md) 。 |
 | **区域故障** | 预览版尚不支持跨区域副本和异地还原功能。 | |
 
