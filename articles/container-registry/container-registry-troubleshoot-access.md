@@ -3,12 +3,12 @@ title: 排查与注册表相关的网络问题
 description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630944"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743363"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
 
@@ -90,6 +90,8 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 如果要使用其他 Azure 订阅中的虚拟网络限制注册表访问，请确保在 `Microsoft.ContainerRegistry` 该订阅中注册资源提供程序。 使用 Azure 门户、Azure CLI 或其他 Azure 工具注册 Azure 容器注册表[的资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 如果在网络中配置了 Azure 防火墙或类似的解决方案，请检查是否已允许来自其他资源（如 AKS 群集）的出口流量到达注册表终结点。
+
+如果配置了专用终结点，请确认 DNS 将注册表的公共 FQDN （如 *myregistry.azurecr.io* ）解析为注册表的专用 IP 地址。 使用网络实用工具（如 `dig` 或） `nslookup` 进行 DNS 查找。
 
 相关链接：
 

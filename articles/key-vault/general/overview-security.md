@@ -3,19 +3,18 @@ title: Azure Key Vault 安全性
 description: 管理 Azure Key Vault、密钥和机密的访问权限。 介绍 Key Vault 的身份验证和授权模型以及如何保护 Key Vault。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596359"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739684"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -76,29 +75,16 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 
 若要详细了解 Azure Key Vault 网络地址，请查看 [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)）
 
-### <a name="tls-and-https"></a>TLS 和 HTTPS
+## <a name="tls-and-https"></a>TLS 和 HTTPS
 
 *   Key Vault 前端 (数据平面) 是一个多租户服务器。 这意味着来自不同客户的密钥保管库可以共享相同的公共 IP 地址。 为了实现隔离，每个 HTTP 请求都将进行身份验证和授权，而与其他请求无关。
 *   你可以确定 TLS 的旧版本来报告漏洞，但由于公共 IP 地址是共享的，因此密钥保管库服务团队无法在传输级别为单独的密钥保管库禁用旧版本的 TLS。
 *   HTTPS 协议允许客户端参与 TLS 协商。 **客户端可以强制使用最新版本的 TLS**，只要客户端这样做，整个连接就会使用相应的级别保护。 但 Key Vault 仍支持旧的 TLS 版本，则不会影响使用较新的 TLS 版本的连接的安全性。
 *   尽管 TLS 协议中存在已知的漏洞，但当攻击者使用具有漏洞的 TLS 版本启动连接时，不会有任何已知的攻击允许恶意代理从密钥保管库中提取任何信息。 攻击者仍需要对自身进行身份验证和授权，只要合法的客户端始终使用最新的 TLS 版本进行连接，就无法从旧的 TLS 版本泄露凭据。
 
+## <a name="logging-and-monitoring"></a>日志记录和监视
 
-## <a name="monitoring"></a>监视
-
-Key Vault 日志记录会保存保管库中所执行活动的相关信息。 Key Vault 日志：
-
-- 所有经过身份验证的 REST API 请求，包括失败的请求
-  - 对密钥保管库本身的操作。 这些操作包括创建、删除、设置访问策略，以及更新密钥保管库属性（例如标记）。
-  - 对 Key Vault 中的密钥和机密执行的操作，包括：
-    - 创建、修改或删除这些密钥或机密。
-    - 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
-- 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。
-
-在密钥保管库运行后，可以在 10 分钟内访问日志记录信息。 存储帐户中的日志完全由你管理。
-
-- 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
-- 删除不想继续保留在存储帐户中的日志。
+Key Vault 日志记录会保存保管库中所执行活动的相关信息。 有关完整详细信息，请参阅 [Key Vault 日志记录](logging.md)。
 
 有关如何安全地管理存储帐户的建议，请查看 [Azure 存储安全指南](../../storage/blobs/security-recommendations.md)
 
@@ -106,4 +92,3 @@ Key Vault 日志记录会保存保管库中所执行活动的相关信息。 Key
 
 - [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)
 - [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
-

@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336626"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739725"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -120,6 +120,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
   - 通过自适应网络强化来强化网络安全组配置
   - 通过自适应应用程序控制，确保服务器仅运行适当的应用程序和进程
   - 运用文件完整性监视 (FIM) 监视对重要文件和注册表项的更改
+- 请注意，必须将整个订阅委托给管理租户;委托资源组不支持 Azure 安全中心方案
 
 [Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md)：
 

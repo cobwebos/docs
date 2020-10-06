@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904524"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743295"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>为 Azure Stack Edge Pro 和 Azure Data Box Gateway 开支持票证
 
@@ -59,7 +59,7 @@ ms.locfileid: "90904524"
 
 4. 在“查看 + 创建”选项卡上，查看与支持票证相关的信息。 选择“创建”。 
 
-    ![问题](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
+    ![问题2](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
     创建支持票证后，支持工程师会尽早与你联系，以便处理请求。
 

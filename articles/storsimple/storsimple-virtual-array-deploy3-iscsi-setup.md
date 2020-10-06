@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704584"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742411"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
 
@@ -33,7 +33,7 @@ ms.locfileid: "84704584"
 
 完成此处所述过程大约需要 30 分钟到 1 小时。 本文发布的信息仅适用于 StorSimple 虚拟阵列。
 
-## <a name="setup-prerequisites"></a>设置先决条件
+## <a name="setup-prerequisites"></a>Setup prerequisites
 
 配置和设置 StorSimple 虚拟阵列之前，请确保：
 
@@ -100,7 +100,7 @@ ms.locfileid: "84704584"
    
     在“Web 代理”页上：****
    
-   1. 提供此格式的**Web 代理 URL** ： *http： \/ /host-IP Address*或*FQDN：端口号*。 请注意，不支持 HTTPS URL。
+   1. 提供此格式的 **Web 代理 URL** ： *http： \/ /host-IP Address* 或 *FQDN：端口号*。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。************
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。********
    4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。
@@ -117,7 +117,7 @@ ms.locfileid: "84704584"
 9. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
    
    1. 输入在[部署 StorSimple 虚拟阵列 - 准备门户](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)的“步骤 2：获取服务注册密钥”中获得的“服务注册密钥”。********
-   2. 如果这不是你向此服务注册的第一个设备，你将需要提供**服务数据加密密钥**。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 有关详细信息，请参阅本地 Web UI 上的[获取服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
+   2. 如果这不是你向此服务注册的第一个设备，你将需要提供 **服务数据加密密钥**。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 有关详细信息，请参阅本地 Web UI 上的[获取服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
    3. 单击“注册”。 此时会重新启动设备。 可能需要等待 2-3 分钟才能成功注册设备。 重新启动设备后，会转到登录页。
       
       ![注册设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
@@ -125,7 +125,7 @@ ms.locfileid: "84704584"
 11. 导航到服务的“设备”**** 边栏选项卡。 如果有大量资源，请单击“所有资源”****，单击服务名称（必要时可搜索），然后单击“设备”****。
 12. 在“设备”**** 边栏选项卡上，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“就绪可设置”****。
     
-    ![注册设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![部署设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>步骤 2：将设备配置为 iSCSI 服务器
 
@@ -133,12 +133,12 @@ ms.locfileid: "84704584"
 
 #### <a name="to-configure-the-device-as-iscsi-server"></a>将设备配置为 iSCSI 服务器
 
-1. 中转到 StorSimple 设备管理器服务，然后中转到**管理 > 设备**。 在“设备”边栏选项卡中，选择刚创建的设备。**** 此设备会显示为“已准备好设置”****。
+1. 中转到 StorSimple 设备管理器服务，然后中转到 **管理 > 设备**。 在“设备”边栏选项卡中，选择刚创建的设备。**** 此设备会显示为“已准备好设置”****。
    
     ![将设备配置为 iSCSI 服务器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. 单击设备，会显示横幅消息，指示该设备已准备好设置。
    
-    ![将设备配置为 iSCSI 服务器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![将设备配置为 iSCSI 服务器2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. 在设备命令栏中，单击“配置”****。 此时会打开“配置”**** 边栏选项卡。 在“配置”**** 边栏选项卡中，执行以下操作：
    
    * 将自动填充 iSCSI 服务器名称。
@@ -146,13 +146,13 @@ ms.locfileid: "84704584"
    * 指定 32 个字符的加密密钥并将其记录在密钥管理应用中以供将来参考。
    * 选择要用于设备的存储帐户。 在此订阅中，可以选择现有存储帐户，也可以单击“添加”从其他订阅中选择一个帐户****。
      
-     ![将设备配置为 iSCSI 服务器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![将设备配置为 iSCSI 服务器3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. 单击“配置”**** 完成 iSCSI 服务器的设置。
    
-    ![将设备配置为 iSCSI 服务器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![将设备配置为 iSCSI 服务器4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. 将通知你“正在创建 iSCSI 服务器”。 成功创建 iSCSI 服务器后，“设备”边栏选项卡**** 将更新，并且相应的设备状态为“联机”****。
    
-    ![将设备配置为 iSCSI 服务器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![将设备配置为 iSCSI 服务器5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>步骤 3：添加卷
 
@@ -169,17 +169,17 @@ ms.locfileid: "84704584"
      
      分层卷则是进行精简预配。 创建分层卷时，大约 10% 的空间预配在本地层，90% 的空间预配在云中。 例如，如果预配 1 TB 的卷，则当数据分层时，100 GB 会驻留在本地空间，900 GB 会在云中使用。 反过来说，这意味着，如果用光了设备上的所有本地空间，则无法预配分层共享（因为该 10% 的空间不可用）。
      
-     ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![添加卷2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * 单击“已连接主机”****，选择要连接到此卷的 iSCSI 发起程序所对应的访问控制记录 (ACR)，并单击“选择”****。 <br><br> 
 3. 要添加新连接的主机，请单击“新增”****，输入主机的名称及其 iSCSI 限定名称 (IQN)，并单击“添加”****。 如果没有 IQN，请转到[附录 A：获取 Windows Server 主机的 IQN](#appendix-a-get-the-iqn-of-a-windows-server-host)。
    
-      ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![添加卷3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. 完成配置卷后，单击“确定”****。 此时会使用指定的设置创建卷，会看到一条通知。 默认情况下，将为卷启用监视和备份功能。
    
-     ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![添加卷4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. 若要确认已成功创建卷，请转到“卷”边栏选项卡****。 此时会看到列出的卷。
    
-   ![添加卷](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![添加卷5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>步骤 4：装载、初始化和格式化卷
 
@@ -194,10 +194,10 @@ ms.locfileid: "84704584"
 3. 在“发现目标门户”对话框中，提供支持 iSCSI 网络接口的 IP 地址，并单击“确定”********。
    
     ![IP 地址](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
-4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”************。 （每个卷都是发现的目标。）设备状态应显示为 "**非活动**"。
+4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”************。  (每个卷都将成为发现的目标。 ) 设备状态应显示为 " **非活动**"。
    
     ![已发现的目标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
-5. 选择目标设备，并单击“连接”。**** 设备连接后，状态应更改为 **已连接**。 （有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft Iscsi 发起程序][1]。
+5. 选择目标设备，并单击“连接”。**** 设备连接后，状态应更改为 **已连接**。  (有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅 [安装和配置 Microsoft Iscsi 发起程序][1]。
    
     ![选择目标设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/image25.png)
 6. 在 Windows 主机上，按 Windows 徽标键 + X，并单击“ **运行**”。
@@ -217,7 +217,7 @@ ms.locfileid: "84704584"
 12. 为卷分配驱动器号，并单击“下一步”。****
     
     ![新建卷向导 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. 输入对卷进行格式化的参数。 **Windows Server 仅支持 NTFS。** 将分配单元大小设置为 64 K。 为卷提供一个标签。 根据最佳做法，建议将此名称设置为在 StorSimple 虚拟阵列上提供的卷名。 单击“下一步” 。
+13. 输入对卷进行格式化的参数。 **Windows Server 仅支持 NTFS。** 将分配单元大小设置为 64 K。 为卷提供一个标签。 根据最佳做法，建议将此名称设置为在 StorSimple 虚拟阵列上提供的卷名。 单击 **下一步**。
     
     ![新建卷向导 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. 查看卷的值，并单击“完成”。****
@@ -239,7 +239,7 @@ ms.locfileid: "84704584"
 #### <a name="to-get-the-iqn-of-a-windows-host"></a>获取 Windows 主机的 IQN
 
 1. 在 Windows 主机上启动 Microsoft iSCSI 发起程序。
-2. 在 " **ISCSI 发起程序属性**" 窗口的 "**配置**" 选项卡上，选择并复制 "**发起程序名称**" 字段中的字符串。
+2. 在 " **ISCSI 发起程序属性** " 窗口的 " **配置** " 选项卡上，选择并复制 " **发起程序名称** " 字段中的字符串。
    
     ![iSCSI 发起程序属性](./media/storsimple-virtual-array-deploy3-iscsi-setup/image34.png)
 3. 保存此字符串。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 60e621b34250b036888b233b084ba1ddff939048
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087792"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739929"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>将 Azure 密钥保管库中的客户管理的密钥用于 Azure Data Box
 
@@ -61,7 +61,7 @@ Azure Data Box 可通过加密密钥保护用于锁定设备的设备解锁密�
 
     还可以选择“新建”来创建新的密钥保管库。 在“创建密钥保管库”边栏选项卡中，输入资源组和密钥保管库名称。 确保已启用“软删除”和“清除保护”。 接受其他所有默认值。 选择“查看 + 创建”。
 
-    ![创建新的 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![新建 Azure Key Vault 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
 7. 查看与密钥保管库关联的信息，然后选择“创建”。 等待几分钟，以便完成密钥保管库的创建。
 
@@ -69,11 +69,11 @@ Azure Data Box 可通过加密密钥保护用于锁定设备的设备解锁密�
 
 8. 在“从 Azure Key Vault 中选择密钥”中，可以选择现有密钥保管库中的密钥。
 
-    ![在 Azure Key Vault 中创建新密钥](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![在 Azure Key Vault 3 中创建新密钥](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
 9. 如果要创建新密钥，请选择“新建”以创建密钥。 RSA 密钥大小可以是 2048 或更大。
 
-    ![在 Azure Key Vault 中创建新密钥](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![在 Azure Key Vault 4 中创建新密钥](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
 
 10. 提供密钥的名称，接受其他默认值，然后选择“创建”。 
 

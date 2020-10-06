@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183711"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743567"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
@@ -69,7 +69,7 @@ ms.locfileid: "88183711"
      
 10. 在“函数”窗口中，运行 _.csx_ 文件。
 
-    ![创建新的 C# 函数](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![创建新的 c # 函数2](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     执行以下步骤。
 
@@ -179,7 +179,7 @@ ms.locfileid: "88183711"
 
         ![复制存储连接名称](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
-    3. **保存**函数。
+    3. **保存** 函数。
 
         ![保存函数](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
@@ -191,9 +191,9 @@ ms.locfileid: "88183711"
 
     2. 单击“+ 添加”。
         
-        ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![添加新函数添加文件](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. 键入 " **project.js**，然后按**enter**。 在 **project.json** 文件中，粘贴以下代码：
+    3. 键入 " **project.js**，然后按 **enter**。 在 **project.json** 文件中，粘贴以下代码：
 
         ```
         {
@@ -209,9 +209,9 @@ ms.locfileid: "88183711"
         ```
 
     
-    4. 单击“ **保存**”。
+    4. 单击“保存” 。
 
-        ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![新函数项目 json](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 已创建 Azure 函数。 数据转换作业每次生成新 blob 时，都会触发此函数。
 

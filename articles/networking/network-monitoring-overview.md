@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399646"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742326"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -103,7 +103,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 流量分析可以提供可操作的信息，帮助你审核组织的网络活动、保护应用程序和数据、优化工作负荷性能和保持符合性。
 
-![显示各区域流量的地图](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![显示跨区域的流量的地图](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 相关链接：
 * [博客文章](https://aka.ms/trafficanalytics)、[文档](https://aka.ms/trafficanalyticsdocs)、[常见问题解答](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)

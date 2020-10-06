@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545533"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743431"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
@@ -52,7 +52,7 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 
-### <a name="scenario-evaluation-not-as-expected"></a>方案：评估与预期不符
+### <a name="scenario-compliance-not-as-expected"></a>方案：符合性与预期不符
 
 #### <a name="issue"></a>问题
 
@@ -64,10 +64,21 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 #### <a name="resolution"></a>解决方法
 
-- 对于应符合但实际不符合的资源，请先[确定不符合性的原因](../how-to/determine-non-compliance.md)。 通过将定义与计算的属性值进行比较，可了解资源不符合的原因。
-- 对于本应不符合但实际符合的资源，请逐个阅读策略定义条件并根据资源属性进行评估。 验证逻辑运算符是否将正确的条件组合在一起，并验证条件不会反转。
+请按照以下步骤来解决策略定义问题：
 
-如果策略分配的符合性显示 `0/0` 资源，表示没有确定在分配范围内适用的资源。 检查策略定义和分配范围。
+1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
+1. 检查分配参数和分配的作用域是否已正确设置。
+1. 检查 [策略定义模式](../concepts/definition-structure.md#mode)：
+   - 所有资源类型的模式 "all"。
+   - 如果策略定义检查标记或位置，则为 "已索引" 模式。
+1. 检查资源的作用域是否已 [排除](../concepts/assignment-structure.md#excluded-scopes) 或不 [例外](../concepts/exemption-structure.md)。
+1. 如果策略分配的符合性显示 `0/0` 资源，表示没有确定在分配范围内适用的资源。 检查策略定义和分配范围。
+1. 对于预期符合的不合规资源，请检查 [确定不符合的原因](../how-to/determine-non-compliance.md)。 通过将定义与计算的属性值进行比较，可了解资源不符合的原因。
+   - 如果 **目标值** 错误，请修改策略定义。
+   - 如果 **当前值** 错误，请通过验证资源负载 `resources.azure.com` 。
+1. 检查故障排除：针对其他常见问题和解决方案的 [强制性不按预期执行](#scenario-enforcement-not-as-expected) 。
+
+如果复制和自定义的内置策略定义或自定义定义仍存在问题，请在 **创作策略** 时创建支持票证，以便正确路由问题。
 
 ### <a name="scenario-enforcement-not-as-expected"></a>方案：未按预期执行
 
@@ -77,11 +88,22 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 #### <a name="cause"></a>原因
 
-已为 [enforcementMode](../concepts/assignment-structure.md#enforcement-mode)“禁用”配置了策略分配。 禁用强制模式时，不会强制实施策略效果，并且活动日志中不存在任何条目。
+已为 [enforcementMode](../concepts/assignment-structure.md#enforcement-mode)“禁用”配置了策略分配。 当强制模式处于禁用状态时，不会强制实施策略效果，并且活动日志中没有条目。
 
 #### <a name="resolution"></a>解决方法
 
-将 enforcementMode 更新为“启用”。 执行此更改后，Azure Policy 能够处理此策略分配中的资源，并将条目发送到活动日志。 如果已启用 enforcementMode，请参阅[评估与预期不符](#scenario-evaluation-not-as-expected)，了解操作过程。
+请按照以下步骤来解决策略分配的强制问题：
+
+1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
+1. 请检查是否正确设置了分配参数和分配范围，以及是否_启用_了**enforcementMode** 。 
+1. 检查 [策略定义模式](../concepts/definition-structure.md#mode)：
+   - 所有资源类型的模式 "all"。
+   - 如果策略定义检查标记或位置，则为 "已索引" 模式。
+1. 检查资源的作用域是否已 [排除](../concepts/assignment-structure.md#excluded-scopes) 或不 [例外](../concepts/exemption-structure.md)。
+1. 验证资源负载是否与策略逻辑匹配。 这可以通过 [捕获 HAR 跟踪](../../../azure-portal/capture-browser-trace.md) 或查看 ARM 模板属性来完成。
+1. 检查 [故障排除：满足](#scenario-compliance-not-as-expected) 其他常见问题和解决方案的符合性要求。
+
+如果复制和自定义的内置策略定义或自定义定义仍存在问题，请在 **创作策略** 时创建支持票证，以便正确路由问题。
 
 ### <a name="scenario-denied-by-azure-policy"></a>方案：被 Azure Policy 拒绝
 

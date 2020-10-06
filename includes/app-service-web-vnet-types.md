@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 481bd4f50eb527bcad2ba79b5ba4b9df4b872bfc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81312839"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739896"
 ---
 * 支持除独立定价计划以外的全部定价计划的多租户系统。
 * 部署到 VNet 中且支持独立定价计划应用的应用服务环境。
@@ -23,7 +23,7 @@ VNet 集成允许应用访问 VNet 中的资源，但不允许通过 VNet 对应
 
 VNet 集成功能：
 
-* 需要“标准”、“高级”、“高级 V2”或“弹性高级”定价计划。
+* 需要标准、高级、PremiumV2、PremiumV3 或弹性高级定价计划。
 * 支持 TCP 和 UDP。
 * 适用于 Azure 应用服务应用和函数应用。
 

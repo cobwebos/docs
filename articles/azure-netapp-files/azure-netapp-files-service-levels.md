@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2019
+ms.date: 10/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 818b3b59b1113875b6486ffe64bc8d2d30d613d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325448"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743091"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp 文件的服务级别
 服务级别是容量池的属性。 根据分配给卷的配额，为容量池中的卷允许的最大吞吐量定义和区分服务级别。
@@ -66,7 +66,7 @@ Azure NetApp 文件支持三个服务级别： *Ultra*、 *高级*和 *标准*�
 * SAP HANA 数据量：大小为 4 TB，最多 704 MiB/秒
 * SAP HANA 日志卷：大小为 0.5 TB，最高可达 256 MiB/秒
 * SAP HANA 共享卷：大小为 1 TB，最多 64 MiB/秒
-* 备份卷 SAP HANA：大小为 4.5 TB，最高可达 256 MiB/秒
+* 备份卷 SAP HANA：大小为 6.5 TB，最高可达 256 MiB/秒
 
 下图演示了 SAP HANA 卷的方案：
 

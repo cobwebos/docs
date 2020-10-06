@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 10/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611612"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740371"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -253,6 +253,9 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 </TrustFrameworkPolicy>
 ```
 
+> [!NOTE]
+> 当实现其他类型的用户流 (例如登录、密码重置或配置文件编辑) 时，该过程实质上与本部分中所述的过程相同。 在上面的步骤4中，将用户旅程的最后一个步骤从更改 `JWTIssuer` 为 `Saml2AssertionIssuer` 。 在上面的步骤6中，在 "信赖方" 部分中，将 **协议** 从更改 `OpenIdConnect` 为 `SAML2` 。
+
 ### <a name="32-upload-and-test-your-policy-metadata"></a>3.2 上传和测试策略元数据
 
 保存更改并上传新的策略文件。 上传两个策略（扩展和信赖方文件）后，打开 Web 浏览器并导航到策略元数据。
@@ -267,7 +270,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 在 Azure AD B2C 中注册应用程序
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255226"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739897"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -144,7 +144,7 @@ Azure App Service 在 VNet 集成功能上有两种变化形式：
 
 使用需要网关的 VNet 集成功能涉及三项费用：
 
-* **应用服务计划定价层费用**：应用必须属于“标准”、“高级”或“高级 V2”应用服务计划。 有关这些费用的详细信息，请参阅[应用服务定价][ASPricing]。
+* **应用服务计划定价层费用**：应用需要处于标准、高级、PremiumV2 或 PremiumV3 应用服务计划中。 有关这些费用的详细信息，请参阅[应用服务定价][ASPricing]。
 * **数据传输费用**：传出数据会产生费用，即使 VNet 位于同一数据中心也是如此。 [数据传输定价详细信息][DataPricing]中对这些费用进行了说明。
 * **VPN 网关费用**：点到站点 VPN 所需的虚拟网关会产生费用。 有关详细信息，请参阅 [VPN 网关定价][VNETPricing]。
 

@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962088"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743040"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
 可通过多种方式部署 Azure 应用服务中的应用程序。 默认情况下，应用服务托管的应用可直接通过 Internet 访问，并且它们只能访问 Internet 托管的终结点。 但是，许多客户应用程序需要控制入站和出站网络流量。 应用服务中的多项功能可以满足这些需求。 难点在于，应该使用哪种功能来解决给定的问题。 本文档旨在帮助客户根据某些示例用例来确定要使用的功能。
 
-Azure 应用服务有两种主要部署类型。 多租户公共服务：在“免费”、“共享”、“基本”、“标准”、“高级”和“高级 v2”定价 SKU 中托管应用服务计划。 单租户应用服务环境 (ASE)：直接在 Azure 虚拟网络 (VNet) 中托管隔离的 SKU 应用服务计划。 所用的功能根据是在多租户服务还是 ASE 中操作而有所不同。 
+Azure 应用服务有两种主要部署类型。 多租户公共服务提供了免费、共享、基本、标准、高级、PremiumV2 和 PremiumV3 定价 Sku 中的应用服务计划。 单租户应用服务环境 (ASE)：直接在 Azure 虚拟网络 (VNet) 中托管隔离的 SKU 应用服务计划。 所用的功能根据是在多租户服务还是 ASE 中操作而有所不同。 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>多租户应用服务网络功能 
 
@@ -62,7 +62,7 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 
 ### <a name="default-networking-behavior"></a>默认网络行为
 
-Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 “免费”和“共享”SKU 计划在多租户辅助角色上托管客户工作负荷。 “基本”和更高层的计划仅托管专用于一个应用服务计划 (ASP) 的客户工作负荷。 如果你有“标准”应用服务计划，该计划中的所有应用将在同一个辅助角色上运行。 如果横向扩展辅助角色，将在 ASP 中每个实例的新辅助角色上复制该 ASP 中的所有应用。 用于“高级 v2”的辅助角色不同于其他计划使用的辅助角色。 在每个应用服务部署中，有一个 IP 地址用于发往该应用服务部署中的应用的所有入站流量。 但是，有 4 到 11 个地址可用于发出出站调用。 这些地址由该应用服务部署中的所有应用共享。 出站地址根据不同的辅助角色类型而异。 即，“免费”、“共享”、“基本”、“标准”和“高级”ASP 使用的地址不同于用于从“高级 v2”ASP 发出出站调用的地址。 查看应用的属性时，可以看到应用使用的入站和出站地址。 如果需要锁定与 IP ACL 之间的依赖关系，请使用 possibleOutboundAddresses。 
+Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 “免费”和“共享”SKU 计划在多租户辅助角色上托管客户工作负荷。 “基本”和更高层的计划仅托管专用于一个应用服务计划 (ASP) 的客户工作负荷。 如果你有“标准”应用服务计划，该计划中的所有应用将在同一个辅助角色上运行。 如果横向扩展辅助角色，将在 ASP 中每个实例的新辅助角色上复制该 ASP 中的所有应用。 用于 PremiumV2 和 PremiumV3 的辅助角色不同于用于其他计划的工作线程。 在每个应用服务部署中，有一个 IP 地址用于发往该应用服务部署中的应用的所有入站流量。 但是，有 4 到 11 个地址可用于发出出站调用。 这些地址由该应用服务部署中的所有应用共享。 出站地址根据不同的辅助角色类型而异。 这意味着，免费、共享、基本、标准和高级 Asp 使用的地址与 PremiumV2 和 PremiumV3 Asp 的出站调用所使用的地址不同。 查看应用的属性时，可以看到应用使用的入站和出站地址。 如果需要锁定与 IP ACL 之间的依赖关系，请使用 possibleOutboundAddresses。 
 
 ![应用属性](media/networking-features/app-properties.png)
 

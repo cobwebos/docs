@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275917"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741187"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -96,6 +96,7 @@ ms.locfileid: "89275917"
 | 80007 | 身份验证代理无法连接到 Active Directory。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80010 | 身份验证代理无法解密密码。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。 
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。
+| 80014 | 验证请求在超过最长运行时间之后响应。 | 身份验证代理超时。使用错误代码、相关 ID 和时间戳打开支持票证以获取有关此错误的更多详细信息
 
 >[!IMPORTANT]
 >传递身份验证代理通过在 Active Directory 通过调用 [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera)来验证其用户名和密码，对 Azure AD 用户进行身份验证。 因此，如果已将 Active Directory 中的 "登录到" 设置设置为限制工作站登录访问，则必须将承载直通身份验证代理的服务器添加到 "登录到" 服务器的列表。 否则，会阻止用户登录 Azure AD。

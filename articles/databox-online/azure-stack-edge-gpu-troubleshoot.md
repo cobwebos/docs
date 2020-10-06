@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891554"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743193"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>排查 Azure Stack Edge Pro GPU 设备上的问题 
 
@@ -51,7 +51,7 @@ ms.locfileid: "90891554"
  
 2. 创建支持包后，选择 " **下载支持包**"。 压缩包将下载到所选的路径。 可以解压缩该包并查看系统日志文件。
 
-    ![选择“添加用户”](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
+    ![选择添加用户2](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
 
 ## <a name="gather-advanced-security-logs"></a>收集高级安全日志
 
@@ -136,11 +136,11 @@ ms.locfileid: "90891554"
 
 错误列表根据标识的方案进行了编译，可用于自行诊断和故障排除。 
 
-## <a name="azure-resource-manager"></a>Azure 资源管理器
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 
 下面是在配置 Azure 资源管理器以访问设备时可能显示的错误。 
 
-| **问题/错误** |  **解决方法** | 
+| **问题/错误** |  **分辨率** | 
 |------------|-----------------|
 |常规问题|<li>[验证边缘设备是否已正确配置](#verify-the-device-is-configured-properly)。<li> [验证是否正确配置了客户端](#verify-the-client-is-configured-properly)|
 |Get-azurermenvironment：发送请求时出错。<br>行：1个字符：1<br>+ Get-azurermenvironment-Name Az3-ARMEndpoint " https://management.dbe .。。|此错误表示 Azure Stack Edge Pro 设备无法访问或配置不正确。 验证是否正确配置了边缘设备和客户端。 有关指南，请参阅此表中的 **常规问题** 行。|
@@ -184,7 +184,7 @@ ms.locfileid: "90891554"
 
 下面是与 Azure Stack Edge Pro/Data Box Gateway 设备上的 blob 存储相关的错误。
 
-| **问题/错误** |  **解决方法** | 
+| **问题/错误** |  **分辨率** | 
 |--------------------|-----------------|
 |无法检索子资源。 其中一个 HTTP 标头的值的格式不正确。| 在“编辑”菜单中，选择“目标 Azure Stack API”。  然后，重新启动 Azure 存储资源管理器。|
 |getaddrinfo ENOTFOUND <accountname> . <serialnumber>microsoftdatabox.com|检查是否已将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到主机文件中的以下路径： `C:\Windows\System32\drivers\etc\hosts` Windows 或 `/etc/hosts` Linux。|

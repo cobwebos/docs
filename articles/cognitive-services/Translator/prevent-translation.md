@@ -1,7 +1,7 @@
 ---
-title: 禁止内容翻译-转换器
+title: 防止翻译内容 - 翻译器
 titleSuffix: Azure Cognitive Services
-description: 通过转换器防止内容翻译。 转换器允许对内容进行标记，使其不会被翻译。
+description: 使用翻译器防止翻译内容。 使用翻译器可以标记内容，以便不对其进行翻译。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 37d2e4c0131569ab50ebf49ff73b6adf7a420713
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ec39b3692a90f22409e85b5502d3ea874e3282d6
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996170"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742054"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator"></a>如何防止翻译内容翻译
+# <a name="how-to-prevent-translation-of-content-with-the-translator"></a>如何使用翻译器防止翻译内容
 
-转换器允许对内容进行标记，使其不会被翻译。 例如，你可能想要标记本地化后没有意义的代码、品牌名称或单词/短语。
+使用翻译器可以标记内容，以便不对其进行翻译。 例如，你可能想要标记本地化后没有意义的代码、品牌名称或单词/短语。
 
 ## <a name="methods-for-preventing-translation"></a>阻止翻译的方法
 
@@ -37,13 +37,26 @@ ms.locfileid: "83996170"
    <div>This will be translated. </div>
    ```
 
-2. 使用[动态词典](dynamic-dictionary.md)给出特定翻译。
+2. 使用 `translate="no"` 标记内容。 这仅适用于将输入 textType 设置为 HTML 的情况
 
-3. 不要将该字符串传递给翻译人员的翻译。
+   示例：
 
-4. 自定义转换器：[在自定义转换器中使用字典](custom-translator/what-is-dictionary.md)，以规定短语的翻译的概率为100%。
+   ```html
+   <span translate="no">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
+   ```html
+   <div translate="no">This will not be translated.</div>
+   <div>This will be translated. </div>
+
+3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+
+4. Don't pass the string to the Translator for translation.
+
+5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
 
 
-## <a name="next-steps"></a>后续步骤
+## Next steps
 > [!div class="nextstepaction"]
-> [避免翻译人员拜访](reference/v3-0-translate.md)
+> [Use the Translate operation to translate text](reference/v3-0-translate.md)

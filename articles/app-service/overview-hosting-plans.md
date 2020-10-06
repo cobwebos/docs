@@ -4,14 +4,14 @@ description: 了解应用服务计划在 Azure 应用服务中的工作方式，
 keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 可伸缩性, 应用服务计划, 应用服务成本
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958506"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742967"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -22,32 +22,32 @@ ms.locfileid: "88958506"
 - 区域（美国西部、美国东部，等等）
 - VM 实例数
 - VM 实例大小（“小型”、“中型”、“大型”）
-- 定价层（免费、共享、基本、标准、高级、高级 V2、独立）
+- 定价层 (免费、共享、基本、标准、高级、PremiumV2、PremiumV3、隔离) 
 
 应用服务计划的定价层确定了所提供的应用服务功能和计划费用。  定价层有以下几个类别：
 
 - **共享计算**：“免费”和“共享”，这两个基本层在其他应用服务应用（包括其他客户的应用）所在的同一个 Azure VM 上运行应用。   这些层为共享资源中运行的每个应用分配 CPU 配额，且资源不可横向扩展。
-- **专用计算**：“基本”、“标准”、“高级”和“高级 V2”层在专用的 Azure VM 上运行应用。     只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。
+- **专用计算**： " **基本**"、" **标准**"、" **高级**"、" **PremiumV2**" 和 " **PremiumV3** " 层在专用 Azure vm 上运行应用。 只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。
 - **隔离**：此层级在专用 Azure 虚拟网络上运行专用 Azure VM。 它在计算隔离的基础上为应用提供了网络隔离。 此层提供最大的横向扩展能力。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 每个层还提供应用服务功能的特定子集。 这些功能包括自定义域和 TLS/SSL 证书、自动缩放、部署槽位、备份、流量管理器集成，等等。 层越高，可用的功能越多。 若要了解每个定价层支持的功能，请参阅[应用服务计划详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 
-<a name="new-pricing-tier-premiumv2"></a>
+<a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> 与“标准”层相比，新的“高级 V2”层提供 [Dv2 系列 VM](../virtual-machines/dv2-dsv2-series.md)，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。   **高级 V2** 还支持通过增加实例数扩大规模，同时仍提供标准计划中的所有高级功能。 **高级 V2** 中包含现有“高级”  层中提供的所有功能。
+> 与**标准**层相比，新的**PremiumV3**定价层保证[Dv3 系列 vm](../virtual-machines/dv3-dsv3-series.md)具有更快的处理器、SSD 存储以及四个内存与内核的比率。 **PremiumV3** 还支持更高的规模，通过增加的实例计数，同时仍然提供 **标准** 层中的所有高级功能。 现有 **PremiumV2** 层中提供的所有功能都包含在 **PremiumV3**中。
 >
 > 类似于其他专用层，以下三种 VM 大小可用于此层：
 >
-> - 小型（一个 CPU 核心，3.5 GiB 内存） 
-> - 中型（两个 CPU 核心，7 GiB 内存） 
-> - 大型（四个 CPU 核心，14 GiB 内存）  
+> - 小型 (2 CPU 核心，8 GiB 内存)  
+> - 中型 (4 CPU 内核，16 GiB 内存)  
+> - 大型 (8 CPU 核心，32 GiB 内存)   
 >
-> 有关**高级 V2** 定价信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
+> 有关 **PremiumV3** 定价信息，请参阅 [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 >
-> 若要开始使用新的“高级 V2”  定价层，请参阅[为应用服务配置“高级 V2”层](app-service-configure-premium-tier.md)。
+> 若要开始学习新的 **PremiumV3** 定价层，请参阅为 [应用服务配置 PremiumV3 层](app-service-configure-premium-tier.md)。
 
 ## <a name="how-does-my-app-run-and-scale"></a>应用如何运行和缩放？
 
@@ -68,7 +68,7 @@ ms.locfileid: "88958506"
 除了 **免费** 层外，应用服务计划还会对其使用的计算资源收费。
 
 - 在 **共享** 层中，每个应用都接收 cpu 分钟的配额，因此 _每个应用_ 都按 cpu 配额收费。
-- 在专用计算层 (" **基本**"、" **标准**"、" **高级**"、" **PremiumV2** ") ，"应用服务计划" 定义应用扩展到的 vm 实例数，因此，应用服务计划中的 _每个 vm 实例_ 都收费。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
+- 在专用计算层中 (" **基本**"、" **标准**"、" **高级**"、" **PremiumV2**" **PremiumV3**) ，"应用服务计划" 定义应用缩放到的 vm 实例数，因此，应用服务计划中的 _每个 vm 实例_ 都是计费的。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
 - 在 **隔离** 层中，应用服务环境定义运行应用的独立辅助角色的数目，并对 _每个工作线程_ 收费。 此外，还会为运行应用服务环境本身提供一项固定的戳记。
 
 使用提供的应用服务功能（配置自定义域、TLS/SSL 证书、部署槽位、备份等）不会产生费用。 例外情况包括：

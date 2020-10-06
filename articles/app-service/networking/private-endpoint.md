@@ -9,19 +9,19 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 16ce03ad8d6af1908a9ea4d3b7759bb5eb3c1139
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 9f593bd5e1d4970b43b25c434abfa87177b72066
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961544"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743006"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>为 Azure Web 应用使用专用终结点（预览版）
 
 > [!Note]
 > 通过预览刷新，我们发布了数据泄露保护功能。
 >
-> 预览版适用于 PremiumV2 Windows 和 Linux Web 应用和弹性高级功能的所有公共区域。 
+> 预览版适用于 PremiumV2 和 PremiumV3 Windows 和 Linux 应用和弹性高级功能的所有公共区域。 
 
 可以为 Azure Web 应用使用专用终结点，以允许位于专用网络中的客户端通过专用链接安全地访问应用。 专用终结点使用你的 Azure VNet 地址空间中的 IP 地址。 专用网络上客户端与 Web 应用之间的网络流量将通过 VNet 以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
 

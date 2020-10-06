@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120069"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742836"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 门户设置针对 Azure Database for MariaDB 指标的警报
 
@@ -48,11 +48,11 @@ ms.locfileid: "86120069"
    
    ![选择指标](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟"）和**频率**。
+7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   "过去30分钟" ) 和 **频率**。
    
    完成后选择“完成”  。
 
-   ![选择指标](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![选择指标2](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知   。
 
@@ -70,7 +70,7 @@ ms.locfileid: "86120069"
 
 11. 指定预警规则名称、说明和严重性。
 
-    ![操作组](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![操作组2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. 选择“创建警报规则”可以创建警报  。
 

@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936157"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743176"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>在 Azure 中调试会话认知搜索
 
@@ -35,8 +35,7 @@ ms.locfileid: "88936157"
 
 要启动调试会话，必须已有 AI 扩充管道，且该管道中包括数据源、技能组、索引器和索引。 要配置调试会话，需要为会话命名，并提供一个用于在索引器运行期间缓存技能执行的常规用途存储帐户。 还需要选择将运行的索引器。 索引器存储了对数据源、技能组和索引的引用。 调试会话默认为数据源中的第一个文档，也可以指定数据源中的一个文档用于逐步执行。
 
-> [!div class="mx-imgBorder"]
-> ![创建调试会话](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="创建调试会话":::
 
 ## <a name="debug-session-features"></a>调试会话功能
 
@@ -52,8 +51,7 @@ ms.locfileid: "88936157"
 
 在关系图中选择某个技能后，将突出显示与其相连的技能、创建其输入的节点和接受其输出的节点。 每个技能节点都会显示其类型、错误或警告，以及执行计数。 在“技能图”中，可选择要调试或增强的技能。 选择技能后，其详细信息将显示在图右侧的“技能详细信息”窗格中。
 
-> [!div class="mx-imgBorder"]
-> ![技能图](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="创建调试会话":::
 
 ## <a name="skill-details"></a>技能详细信息
 
@@ -75,8 +73,7 @@ ms.locfileid: "88936157"
 
 “扩充数据结构”窗格显示通过技能组实现的文档扩充，详细介绍了每个扩充和起始技能的上下文。 “表达式计算器”也可用于查看每个扩充的内容。
 
-> [!div class="mx-imgBorder"]
-> ![扩充数据结构](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="创建调试会话":::
 
 ## <a name="expression-evaluator"></a>表达式计算器
 

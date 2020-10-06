@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962411"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742598"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接
 
@@ -42,7 +42,7 @@ ms.locfileid: "88962411"
 - 通常不需要在防火墙中开放端口。 连接全部是通过标准 Web 端口建立的。
 - 由于该功能在网络级别运行，它并不知道应用使用的语言以及终结点使用的技术。
 - 可以通过单个应用使用它在多个网络中提供访问。 
-- 它在 Windows 应用正式版和 Linux 应用预览版中受支持。
+- 它在适用于 Windows native 应用的 GA 中受支持，并且是适用于 Linux 应用程序的预览。 Windows 容器应用不支持此方法。
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>混合连接无法提供的功能 ###
 

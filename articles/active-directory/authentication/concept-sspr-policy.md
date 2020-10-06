@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: bc6e72a5e5ab9f95ec88b1e8ed711f00b8051208
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531269"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741711"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和账户限制
 
@@ -41,11 +41,13 @@ ms.locfileid: "91531269"
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD 密码指南
 
-密码策略应用于直接在 Azure AD 中创建和管理的所有用户帐户。 虽然你可以 [为 Azure AD 密码保护配置自定义禁止密码](tutorial-configure-custom-password-protection.md)，但无法修改此密码策略。
+密码策略应用于直接在 Azure AD 中创建和管理的所有用户帐户。 尽管可以 [为 Azure AD 密码保护或帐户锁定参数配置自定义禁止密码](tutorial-configure-custom-password-protection.md) ，但无法修改某些密码策略设置。
 
-除非启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，否则密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境同步的用户帐户。
+默认情况下，在尝试使用错误的密码进行10次失败登录尝试后，帐户被锁定。 用户已锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md) 跟踪最后三个错误密码哈希，以避免为同一密码增加锁定计数器的值。 如果有人多次输入同一错误密码，则此行为不会导致帐户锁定。你可以定义 "智能锁定阈值" 和 "持续时间"。
 
-定义了下列密码策略选项：
+Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境同步的用户帐户，除非你启用 *EnforceCloudPasswordPolicyForPasswordSyncedUsers*。
+
+定义了以下 Azure AD 密码策略选项。 除非另行说明，否则无法更改这些设置：
 
 | 属性 | 要求 |
 | --- | --- |
@@ -57,7 +59,6 @@ ms.locfileid: "91531269"
 | 密码过期（让密码永不过期） |<ul><li>默认值：**false**（指示密码有到期日期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
 | 密码更改历史记录 | 用户更改密码时，上一个密码*不能*再次使用。 |
 | 密码重置历史记录 | 用户重置忘记的密码时，上一个密码*可以*再次使用。 |
-| 帐户锁定 | 使用错误密码 10 次登录尝试失败之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md) 跟踪最后三个错误密码哈希，以避免为同一密码增加锁定计数器的值。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。 |
 
 ## <a name="administrator-reset-policy-differences"></a>管理员重置策略差异
 
@@ -110,7 +111,7 @@ ms.locfileid: "91531269"
 
 还可以使用 PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。
 
-本指南适用于其他提供程序，例如 Intune 和 Microsoft 365，它们也依赖于 Azure AD 用于标识和目录服务。 密码过期是策略中唯一可更改的部分。
+本指南适用于其他提供程序（如 Intune 和 Microsoft 365），这些提供程序也依赖于 Azure AD 提供标识和目录服务。 密码过期是策略中唯一可更改的部分。
 
 > [!NOTE]
 > 只能将未通过 Azure AD Connect 进行同步的用户帐户的密码配置为永不过期。 有关目录同步的详细信息，请参阅[将 AD 与 Azure AD 连接](../hybrid/whatis-hybrid-identity.md)。

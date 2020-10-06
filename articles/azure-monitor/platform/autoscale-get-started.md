@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f784ce9eb4c465c83bea28e05e7f423e0b55c947
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294243"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743516"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -115,7 +115,9 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>将流量路由到 (应用服务的正常实例) 
 
-向外扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 为此，请打开应用服务的门户，并选择 "**监视**" 下的**运行状况检查**。 选择 " **启用** "，并在应用程序中提供有效的 URL 路径，例如 `/health` 或 `/api/health` 。 单击“ **保存**”。
+向外扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 为此，请打开应用服务的门户，并选择 "**监视**" 下的**运行状况检查**。 选择 " **启用** "，并在应用程序中提供有效的 URL 路径，例如 `/health` 或 `/api/health` 。 单击“保存” 。
+
+若要使用 ARM 模板启用此功能，请将 `healthcheckpath` 资源的属性设置 `Microsoft.Web/sites` 为站点上的运行状况检查路径，例如： `"/api/health/"` 。 若要禁用该功能，请将属性重新设置为空字符串 `""` 。
 
 ### <a name="health-check-path"></a>运行状况检查路径
 
@@ -123,7 +125,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 运行状况检查路径应检查应用程序的关键组件。 例如，如果应用程序依赖于数据库和消息系统，则运行状况检查终结点应连接到这些组件。 如果应用程序无法连接到关键组件，路径应返回500级别的响应代码，以指示该应用程序不正常。
 
-#### <a name="security"></a>安全性 
+#### <a name="security"></a>安全 
 
 大型企业的开发团队通常需要遵守其公开的 Api 的安全要求。 若要保护 healthcheck 终结点，你应该首先使用 [IP 限制](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)、 [客户端证书](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)或虚拟网络等功能来限制对应用程序的访问。 你可以通过要求传入请求的匹配来保护 healthcheck 终结点本身 `User-Agent` `ReadyForRequest/1.0` 。 由于之前的安全功能已对该请求进行了保护，因此不能欺骗用户代理。
 

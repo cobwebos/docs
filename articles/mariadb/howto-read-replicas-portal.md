@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542523"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742853"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -116,7 +116,7 @@ ms.locfileid: "91542523"
 
 3. 键入源服务器的名称，然后单击 " **删除** " 以确认删除源服务器。  
 
-   ![Azure Database for MariaDB - 删除主服务器](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MariaDB-删除主确认](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>监视复制
 
@@ -134,7 +134,7 @@ ms.locfileid: "91542523"
 
 5. 查看所选时间范围的复制延迟时间。 下图显示了大型工作负荷的过去 30 分钟。
 
-   ![选择时间范围](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![选择时间范围30分钟](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>后续步骤
 
