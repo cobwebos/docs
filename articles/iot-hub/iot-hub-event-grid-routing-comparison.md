@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 05b582e24afddf25b7f50d4c8cd1a029684a2d4f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fa5c4bc1aae91e9e40b6d14ad5c12b8d1aee68f6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023799"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767598"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比较 IoT 中心的消息路由和事件网格
 
@@ -32,7 +32,7 @@ Azure IoT 中心可以从已连接的设备流式传输数据并将该数据集�
 
 | Feature | IoT 中心消息路由 | IoT 中心与事件网格的集成 |
 | ------- | --------------- | ---------- |
-| **设备消息和事件** | 是的，消息路由可用于遥测数据、报告设备克隆更改、设备生命周期事件 (ex。 当创建、删除、连接到 IoT 中心的设备并与之断开连接时) 和数字克隆更改事件 (部分 [IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)) 。 | 是的，事件网格可用于遥测数据和设备生命周期事件。 但事件网格不能用于设备克隆更改事件和数字克隆更改事件。 |
+| **设备消息和事件** | 是，消息路由可以用于遥测数据、报告设备孪生更改和设备生命周期事件（例如， 创建、删除、连接并断开与 IoT 中心之间的连接时) 和数字克隆更改事件。 | 是，事件网格可用于遥测数据和设备生命周期事件。 但是，事件网格不能用于设备孪生更改事件和数字孪生体更改事件。 |
 | **中间件排序** | 是，事件顺序保持不变。  | 否，无法保证事件顺序。 | 
 | **筛选** | 对消息应用程序属性、消息系统属性、消息正文、设备孪生标记和设备孪生属性执行的丰富筛选。 筛选不会应用于数字孪生更改事件。 有关示例，请参阅[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)。 | 基于事件类型、使用者类型和每个事件中的属性进行筛选。 有关示例，请参阅[了解在事件网格订阅中筛选事件](../event-grid/event-filtering.md)。 订阅遥测事件时，在发布到事件网格之前，你可以对数据应用其他筛选器来基于你的 IoT 中心内的消息属性、消息正文和设备孪生进行筛选。 请参阅[如何筛选事件](../iot-hub/iot-hub-event-grid.md#filter-events)。 |
 | **Endpoints** | <ul><li>事件中心</li> <li>Azure Blob 存储</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>存储 Blob</li> <li>自定义主题</li> <li>队列存储</li> <li>Microsoft Flow</li> <li>通过 Webhook 的第三方服务</li></ul><br>每个 IoT 中心支持 500 个终结点。 有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
@@ -78,4 +78,4 @@ IoT 中心消息路由和 IoT 中心与事件网格的集成通过执行不同�
 * 详细了解 [IoT 中心消息路由](iot-hub-devguide-messages-d2c.md)和 [IoT 中心终结点](iot-hub-devguide-endpoints.md)。
 * 详细了解 [Azure 事件网格](../event-grid/overview.md)。
 * 若要了解如何创建消息路由，请参阅[使用路由处理 IoT 中心的设备到云消息](../iot-hub/tutorial-routing.md)教程。
-* [使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)，尝试事件网格集成。
+* 通过[使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)，尝试事件网格集成。

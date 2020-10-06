@@ -8,20 +8,20 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331856"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767831"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
 [设置 Azure 数字孪生实例和身份验证](how-to-set-up-instance-portal.md)后，可以创建将用于与实例进行交互的客户端应用程序。 设置入门客户端项目后，本文将介绍 **如何在该客户端应用程序中编写代码，以便** 对 Azure 数字孪生实例进行身份验证。
 
 本文提供了两种方法来示例代码。 您可以根据自己的选择，使用最适合自己的语言：
-* 示例代码的第一部分使用 Azure 数字孪生 .NET (c # ) SDK。 SDK 是适用于 .NET 的 Azure SDK 的一部分，位于： [*适用于 .net 的 Azure IoT 数字克隆客户端库*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。
-* 示例代码的第二部分适用于不使用 .NET SDK 的用户，而是使用其他语言的 AutoRest 生成的 Sdk。 有关此策略的详细信息，请参阅 [*如何：创建适用于 Azure 数字孪生的自定义 Sdk AutoRest*](how-to-create-custom-sdks.md)。
+* 示例代码的第一部分使用 Azure 数字孪生 .NET (c # ) SDK。 SDK 是适用于 .NET 的 Azure SDK 的一部分，位于： [*适用于 .net 的 Azure IoT 数字克隆客户端库*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。 还支持 [Java](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) 和 [JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)的 sdk，可通过类似方式使用。
+* 示例代码的第二部分适用于不使用提供的 SDK 的用户，而是使用其他语言的 AutoRest 生成的 Sdk。 有关此策略的详细信息，请参阅 [*如何：创建适用于 Azure 数字孪生的自定义 Sdk AutoRest*](how-to-create-custom-sdks.md)。
 
 你还可以在 [*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)中了解有关 Azure 数字孪生的 Api 和 sdk 的详细信息。
 
@@ -32,6 +32,8 @@ ms.locfileid: "91331856"
 若要继续，你需要一个客户端应用程序项目，可在其中编写代码。 如果尚未设置客户端应用程序项目，请使用与本教程一起使用的所选语言创建基本项目。
 
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>身份验证和客户端创建： .NET (c # ) SDK
+
+本部分介绍使用提供的 .NET SDK 的 c # 示例。
 
 首先，在项目中包括以下包，以便将 .NET SDK 和身份验证工具用于本操作方法：
 * `Azure.DigitalTwins.Core`
@@ -100,7 +102,7 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 ## <a name="authentication-with-an-autorest-generated-sdk"></a>使用 AutoRest 生成的 SDK 进行身份验证
 
-如果使用的不是 .NET，则可以选择使用所选的语言构建 SDK 库，如 [*操作方法：使用 AutoRest 创建 Azure 数字孪生的自定义 sdk*](how-to-create-custom-sdks.md)中所述。
+如果未使用提供的 Sdk ( .NET、Java、JavaScript) ，则可以选择使用所选的语言构建 SDK 库，如 [*如何使用 AutoRest 创建 Azure 数字孪生的自定义 sdk*](how-to-create-custom-sdks.md)中所述。
 
 本部分介绍如何在这种情况下进行身份验证。
 

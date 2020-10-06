@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 10/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20e48640d52fba7b3262014c2e84cfc56c7110cc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714925"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767228"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -36,13 +36,13 @@ Microsoft 建议使用 blob 版本控制来维护以前版本的 blob，以实�
 
 版本捕获 blob 在给定时间点的状态。 为存储帐户启用 blob 版本控制后，每次修改或删除 blob 时，Azure 存储会自动创建新版本的 blob。
 
-当你创建启用了版本控制的 blob 时，新的 blob 是 (的 blob 的当前版本或基本 blob) 。 如果你随后修改了该 blob，Azure 存储将创建一个在修改之前捕获 blob 状态的版本。 修改后的 blob 将成为新的当前版本。 每次修改 blob 时都会创建一个新版本。
+当你创建启用了版本控制的 blob 时，新的 blob 是 (的 blob 的当前版本或基本 blob) 。 如果你随后修改了该 blob，Azure 存储将创建一个在修改之前捕获 blob 状态的版本。 修改后的 blob 将成为新的当前版本。 每次修改 blob 时都会创建一个新版本。 一个 blob 最多可以有1000个关联版本。
 
 当删除启用了版本控制的 blob 时，Azure 存储将创建一个在删除之前捕获 blob 状态的版本。 然后，将删除 blob 的当前版本，但 blob 的版本将保持不变，以便可以在需要时重新创建。 
 
 Blob 版本是不可变的。 不能修改现有 blob 版本的内容或元数据。
 
-Blob 版本控制可用于常规用途 v2、块 blob 和 Blob 存储帐户。 当前不支持启用了层次结构命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
+Blob 版本控制可用于常规用途 v2、块 blob 和 Blob 存储帐户。 当前不支持启用了层次结构命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。 
 
 Azure 存储 REST API 版本2019-10-10 及更高版本支持 blob 版本控制。
 
@@ -291,7 +291,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 | 如果 blob 软删除和版本控制均已启用 | 完全内容长度的所有现有版本，与层无关。 |
 | 如果启用了 blob 软删除但禁用了版本控制 | 所有现有软删除快照（按完整内容长度），不考虑层级。 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [启用和管理 blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

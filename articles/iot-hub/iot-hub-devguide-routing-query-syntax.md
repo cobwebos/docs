@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336491"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767358"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -59,10 +59,10 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 | contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
 | iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
-| dt-dataschema | string |  此值由 IoT 中心在设备到云消息上设置。 它包含设备连接中设置的设备型号 ID。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 若要查询，请使用 `$dt-dataschema`。 |
-| dt-主题 | string | 正在发送设备到云消息的组件的名称。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 若要查询，请使用 `$dt-subject`。 |
+| dt-dataschema | 字符串 |  此值由 IoT 中心在设备到云消息上设置。 它包含设备连接中设置的设备型号 ID。 若要查询，请使用 `$dt-dataschema`。 |
+| dt-subject | 字符串 | 正在发送设备到云消息的组件的名称。 若要查询，请使用 `$dt-subject`。 |
 
-如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了上表中的上述属性，还可以查询**connectionDeviceId**，**为 connectionmoduleid**。
+如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了上一表中的上述属性外，还可以查询 connectionDeviceId、connectionModuleId。
 
 ### <a name="application-properties"></a>应用程序属性
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> 这说明了如何处理 javascript 中正文的编码。 若要查看 c # 中的示例，请下载[Azure IoT c # 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案*SimulatedDevice*的 Program.cs 文件演示如何编码和将消息提交到 IoT 中心。 这是用于测试消息路由的相同示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于读取其中一个编码文件，对其进行解码，并将其写回作为 ASCII，以便您可以读取它。 
+> 这说明了如何处理 javascript 中正文的编码。 若要查看中 C# 的示例，请下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案 *SimulatedDevice* 的 Program.cs 文件演示如何编码以及如何将消息提交到 IoT 中心。 这是用于测试消息路由的同一示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于在其中一个编码文件中读取内容，对其进行解码，然后将其作为 ASCII 写回，方便你读取。 
 
 
 ### <a name="query-expressions"></a>查询表达式
@@ -204,7 +204,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>查询表达式
 
-对消息双子的查询需要以为前缀 `$twin` 。 此外，查询表达式还可以将孪生标记或属性引用与正文引用、消息系统属性和消息应用程序属性引用组合在一起。 我们建议在标记和属性中使用唯一名称，因为查询不区分大小写。 这同时适用于设备孪生和模块孪生。 同时，请避免使用 `twin`、`$twin`、`body` 或 `$body` 作为属性名称。 例如，以下所有查询表达式都有效： 
+对消息孪生的查询需要以 `$twin` 为前缀。 此外，查询表达式还可以将孪生标记或属性引用与正文引用、消息系统属性和消息应用程序属性引用组合在一起。 我们建议在标记和属性中使用唯一名称，因为查询不区分大小写。 这同时适用于设备孪生和模块孪生。 同时，请避免使用 `twin`、`$twin`、`body` 或 `$body` 作为属性名称。 例如，以下所有查询表达式都有效： 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -218,7 +218,7 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 $twin.tags.deploymentLocation.floor = 1 
 ```
 
-不支持在负载或属性名称中有句点的 body 或 device 双子的路由查询。
+不支持在有效负载或属性名称中有句点的正文或设备孪生上路由查询。
 
 ## <a name="next-steps"></a>后续步骤
 

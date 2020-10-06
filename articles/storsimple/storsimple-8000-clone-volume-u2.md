@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496139"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767578"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 门户中使用 StorSimple 设备管理器服务来克隆卷
 
@@ -64,11 +64,11 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
 
       与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
    
-      ![备份集列表](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![备份集列表2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. 展开备份集以查看关联的卷并选择备份集中的卷。 单击右键，从上下文菜单中选择“克隆”。****
 
-   ![备份集列表](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![备份集列表3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
 3. 在“克隆”边栏选项卡中执行以下步骤：****
    
@@ -84,17 +84,17 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
           
    3. 在“连接的主机”下面，指定克隆的访问控制记录 (ACR)。**** 可以添加新的 ACR，或从现有列表中进行选择。 ACR 会确定哪些主机可以访问此克隆。
       
-       ![备份集列表](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![备份集列表4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
    4. 单击“克隆”完成操作。****
 
 4. 此时会启动克隆作业，成功创建克隆后，系统会发出通知。 单击作业通知或转到“作业”边栏选项卡可监视克隆作业。****
 
-    ![备份集列表](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![备份集列表5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
 7. 克隆作业完成后，请转到自己的设备，单击“卷”。**** 在卷列表中，应会看到刚刚创建的克隆出现在包含源卷的同一个卷容器中。
 
-    ![备份集列表](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![备份集列表6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 通过此方式创建的克隆为暂时性克隆。 有关克隆类型的详细信息，请参阅[暂时性克隆与永久性克隆](#transient-vs-permanent-clones)。
 

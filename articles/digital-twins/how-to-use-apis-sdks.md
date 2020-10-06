@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2af4f2e2148c96a6059836f861cf56d4a4ac005b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252657"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766174"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -61,8 +61,9 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
 * 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
    - 可以从 npm 中查看和安装包： [适用于 JavaScript 的 Azure Azure 数字孪生客户端库](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)。
    - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)。
-* 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
+* 可以使用 **Java** SDK。 使用 Java SDK .。。
    - 可以从 Maven 查看和安装包： [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/client?view=azure-java-preview&preserve-view=true)
 * 可以使用 AutoRest 为其他语言生成 SDK。 按照 [*如何：创建适用于 Azure 数字孪生的自定义 Sdk AutoRest*](how-to-create-custom-sdks.md)中的说明进行操作。
 
 还可以通过 [CLI](how-to-use-cli.md)与 Azure 数字孪生交互，来运用日期平面 api。

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290307"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767194"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>用于设备到云的 IoT 中心消息的消息根据
 
@@ -62,13 +62,13 @@ ms.locfileid: "87290307"
 
 | **方法** | **命令** |
 | ----- | -----| 
-| 门户 | [Azure 门户](https://portal.azure.com) | 请参阅[message 根据教程](tutorial-message-enrichments.md) | 
+| 门户 | [Azure 门户](https://portal.azure.com) | 请参阅 [message 根据教程](tutorial-message-enrichments.md) | 
 | Azure CLI   | [az iot 中心消息-扩充](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 添加消息根据不会将延迟添加到消息路由。
 
-若要尝试消息根据，请参阅[message 根据教程](tutorial-message-enrichments.md)
+若要尝试消息根据，请参阅 [message 根据教程](tutorial-message-enrichments.md)
 
 ## <a name="limitations"></a>限制
 
@@ -86,7 +86,7 @@ ms.locfileid: "87290307"
 
 * 总消息大小（包括扩充）不能超过 256 KB。 如果消息大小超过 256 KB，IoT 中心会丢弃消息。 如果丢弃了消息，可以使用 [IoT 中心指标](iot-hub-metrics.md)来识别和调试错误。 例如，可以监视 d2c.telemetry.egress.invalid。
 
-* 消息根据不适用于数字克隆更改事件（ [IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分）。
+* 消息根据不适用于数字克隆更改事件。
 
 ## <a name="pricing"></a>定价
 

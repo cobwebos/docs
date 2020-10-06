@@ -6,38 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f499e1cdd7ccf22d90b21ce04299798978a828
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926597"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767865"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
-本文介绍 Microsoft Azure Data Box 以及连接到 Data Box 的客户端的重要系统要求。 建议在部署 Data Box 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
+本文介绍了 Microsoft Azure Data Box 和连接到 Data Box 的客户端的重要系统要求。 建议你在部署 Data Box 之前仔细查看此信息，然后在部署和操作过程中根据需要对其进行引用。
 
 系统需求包括：
 
-* **连接到 Data Box 的主机的软件要求** - 介绍支持的平台、本地 Web UI 的浏览器、SMB 客户端以及可连接到 Data Box 的主机的任何其他要求。
-* **Data Box 的网络要求** - 提供有关 Data Box 最佳操作的网络要求的信息。
+* **软件要求：** 对于连接到 Data Box 的主机，为本地 web UI 介绍了支持的操作系统、文件传输协议、存储帐户、存储类型和浏览器。
+* **网络要求：** 对于 Data Box，描述了 Data Box 的最佳操作的网络连接和端口要求。
 
 
 ## <a name="software-requirements"></a>软件要求
 
-软件要求包括有关支持的操作系统、本地 Web UI 支持的浏览器和 SMB 客户端的信息。
+软件要求包括本地 web UI 支持的操作系统、文件传输协议、存储帐户、存储类型和浏览器。
 
 ### <a name="supported-operating-systems-for-clients"></a>客户端支持的操作系统
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
 
-### <a name="supported-filesystems-for-linux-clients"></a>适用于 Linux 客户端的受支持的文件系统
+### <a name="supported-file-transfer-protocols-for-clients"></a>客户端支持的文件传输协议
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
-
 
 > [!IMPORTANT] 
 > 对于出口订单，不支持通过 REST 连接到 Data Box 共享。 
@@ -45,7 +44,6 @@ ms.locfileid: "87926597"
 ### <a name="supported-storage-accounts"></a>支持的存储帐户
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
-
 
 ### <a name="supported-storage-types"></a>受支持的存储类型
 
@@ -57,11 +55,11 @@ ms.locfileid: "87926597"
 
 ## <a name="networking-requirements"></a>网络要求
 
-数据中心需要有高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路复制数据，但复制速度会受影响。
+数据中心需要有高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-gbe 连接不可用，则可以使用 1-GbE 数据链接来复制数据，但会影响复制速度。
 
 ### <a name="port-requirements"></a>端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB 或 NFS 流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。****
+下表列出了需要在防火墙中打开以允许 SMB 或 NFS 流量的端口。 在此表中 *，* (*入站*) 是指传入客户端请求访问设备的方向。 *Out* (或 *出站*) 是指 Data Box 设备在外部发送数据的方向，而不是部署：例如，到 Internet 的出站。
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

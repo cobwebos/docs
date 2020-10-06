@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512036"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766246"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>使用 StorSimple 设备管理器服务中的设备摘要
 
@@ -78,7 +78,7 @@ StorSimple 设备摘要边栏选项卡提供特定 StorSimple 设备的概要信
 
      在此图表中，用户可以查看设备在一段时间内使用的总主存储（由主机写入设备的数据量）和总云存储的指标。
   
-     在此语境中，“主存储”是指由主机写入的总数据量，可以按卷类型细分：“主分层存储”包括本地存储数据以及分层到云中的数据。**** “主本地固定存储”只包括本地存储数据。** 另一方面，*云存储*是存储在云中的总数据量的度量值。 此存储包括分层数据和备份。 存储在云中的数据是删除了重复数据且经过压缩的，而存储在主存储中的数据则是未删除重复数据且未经过压缩的。 （您可以对这两个数字进行比较，以了解压缩率。）对于主存储和云存储，显示的数量取决于你配置的跟踪频率。 例如，如果选择的频率为一周一次，该图表会显示上周每一天的数据。
+     在此语境中，“主存储”是指由主机写入的总数据量，可以按卷类型细分：“主分层存储”包括本地存储数据以及分层到云中的数据。**** “主本地固定存储”只包括本地存储数据。** 另一方面，*云存储*是存储在云中的总数据量的度量值。 此存储包括分层数据和备份。 存储在云中的数据是删除了重复数据且经过压缩的，而存储在主存储中的数据则是未删除重复数据且未经过压缩的。  (可以对这两个数字进行比较，以了解压缩率。 ) 对于主存储和云存储，显示的数量取决于你配置的跟踪频率。 例如，如果选择的频率为一周一次，该图表会显示上周每一天的数据。
 
      若要查看某段时间内使用的云存储量，请选择“使用的云存储”**** 选项。 若要查看由主机写入的总存储，请选择“已使用的主分层存储”和“已使用的主本地固定存储”选项。******** 
      有关详细信息，请参阅[使用 StorSimple 设备管理器服务监视 StorSimple 设备](storsimple-monitor-device.md)。
@@ -86,7 +86,7 @@ StorSimple 设备摘要边栏选项卡提供特定 StorSimple 设备的概要信
 
 * “容量”**** 磁贴显示所预配的主存储，以及设备相对于可用于同一设备的总存储剩余的存储。 **已预配**是指已准备且已分配供使用的存储量，**剩余**是指可以在此设备上预配的剩余容量。 
 
-    ![“使用情况”磁贴](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![使用情况图2](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     单击此磁贴可查看如何跨分层卷和本地固定卷预配容量。 **剩余分层**容量是可以预配的可用容量（包括云），而**剩余本地**是附加到此设备的磁盘上剩余的容量。
 

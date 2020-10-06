@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: e546963a7ca90c7494164af7afefbb4e78b2259b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651932"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766667"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>配置自定义警报来监视播发路由
 
@@ -52,7 +52,7 @@ ms.locfileid: "91651932"
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>创建和配置帐户
 
-在 Azure 门户中创建自动化帐户时，会自动创建[运行方式](../automation/manage-runas-account.md#types-of-run-as-accounts)帐户。 此帐户执行以下操作：
+在 Azure 门户中创建自动化帐户时，会自动创建[运行方式](../automation/automation-security-overview.md#run-as-accounts)帐户。 此帐户执行以下操作：
 
 * 使用自签名证书创建 Azure Active Directory (Azure AD) 应用程序。 运行方式帐户本身具有默认情况下需要每年续订的证书。
 

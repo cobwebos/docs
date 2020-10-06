@@ -2,13 +2,13 @@
 title: 完整模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/06/2020
+ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372455"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766719"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -19,6 +19,11 @@ ms.locfileid: "91372455"
 标记为 **No** 的资源类型不在模板中时不会自动删除；但是，如果删除了父资源，则会删除它们。 有关此行为的完整描述，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 
 如果部署到[模板中的多个资源组](cross-scope-deployment.md)，则可以删除部署操作中指定的资源组中的资源。 辅助资源组中的资源不会被删除。
+
+资源由资源提供程序命名空间列出。 若要匹配资源提供程序命名空间及其 Azure 服务名称，请参阅 [azure 服务的资源提供程序](../management/azure-services-resource-providers.md)。
+
+> [!NOTE]
+> 在完全模式下部署模板之前，请始终使用 [what-if 操作](template-deploy-what-if.md)。 如果显示哪些资源将被创建、删除或修改。 使用 what-if 以避免意外删除资源。
 
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
@@ -744,9 +749,9 @@ ms.locfileid: "91372455"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | accounts | 是 |
-> | 帐户/privateEndpointConnectionProxies | 否 |
-> | 帐户/privateEndpointConnections | 否 |
-> | 帐户/privateLinkResources | 否 |
+> | accounts / privateEndpointConnectionProxies | 否 |
+> | accounts / privateEndpointConnections | 否 |
+> | accounts / privateLinkResources | 否 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -1621,9 +1626,9 @@ ms.locfileid: "91372455"
 > | mediaservices / liveEvents / liveOutputs | 否 |
 > | mediaservices / liveOutputOperations | 否 |
 > | mediaservices / mediaGraphs | 否 |
-> | windowsazure.mediaservices/privateEndpointConnectionOperations | 否 |
-> | windowsazure.mediaservices/privateEndpointConnectionProxies | 否 |
-> | windowsazure.mediaservices/privateEndpointConnections | 否 |
+> | mediaservices / privateEndpointConnectionOperations | 否 |
+> | mediaservices / privateEndpointConnectionProxies | 否 |
+> | mediaservices / privateEndpointConnections | 否 |
 > | mediaservices / streamingEndpointOperations | 否 |
 > | mediaservices / streamingEndpoints | 是 |
 > | mediaservices / streamingLocators | 否 |
@@ -1833,7 +1838,7 @@ ms.locfileid: "91372455"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | 证明 | 否 |
+> | attestations | 否 |
 > | policyEvents | 否 |
 > | policyMetadata | 否 |
 > | policyStates | 否 |
