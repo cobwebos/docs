@@ -1,25 +1,27 @@
 ---
-title: 有关生成对象检测器的快速入门 - 自定义视觉服务
+title: 快速入门：使用“自定义视觉”网站生成对象检测器
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将了解如何使用自定义视觉服务网站创建图像分类模型。
+description: 本快速入门介绍如何使用“自定义视觉”网站创建、训练并测试对象检测器模型。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+keywords: 图像识别, 图像识别应用, 自定义视觉
+ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549541"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596881"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入门：如何使用自定义视觉生成对象检测器
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入门：使用“自定义视觉”网站生成对象检测器
 
-本快速入门介绍如何通过自定义视觉网站生成对象检测器。 生成检测器模型后，可以使用自定义视觉服务进行对象检测。
+本快速入门介绍如何使用自定义视觉网站创建对象检测器模型。 生成模型后，可以使用新图像测试该模型，并最终将该模型集成到你自己的图像识别应用中。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -27,7 +29,7 @@ ms.locfileid: "88549541"
 
 - 一组用于训练检测器模型的图像。 可以使用 GitHub 上的一组[示例图像](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images)。 或者，可以根据下面的提示选择你自己的图像。
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>在 Azure 门户中创建自定义视觉资源
+## <a name="create-custom-vision-resources"></a>创建自定义视觉资源
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +47,7 @@ ms.locfileid: "88549541"
 1. 输入项目名称和描述。 然后选择一个资源组。 如果登录帐户与 Azure 帐户相关联，则“资源组”下拉列表将显示包含自定义影像服务资源的所有 Azure 资源组。 
 
    > [!NOTE]
-   > 如果没有可用的资源组，请确认已使用登录 [Azure 门户](https://portal.azure.com/)时所用的同一帐户登录 [customvision.ai](https://customvision.ai)。 此外，请确认在自定义视觉门户中选择的“目录”与自定义视觉资源所在 Azure 门户中的目录相同。 在这两个站点中，可从屏幕右上角的下拉帐户菜单中选择目录。 
+   > 如果没有可用的资源组，请确认已使用登录 [Azure 门户](https://portal.azure.com/)时所用的同一帐户登录 [customvision.ai](https://customvision.ai)。 此外，请确认在自定义视觉网站中选择的“目录”与自定义视觉资源所在 Azure 门户中的目录相同。 在这两个站点中，可从屏幕右上角的下拉帐户菜单中选择目录。 
 
 1. 选择“项目类型”下的“对象检测”。  
 
@@ -118,3 +120,4 @@ ms.locfileid: "88549541"
 > [!div class="nextstepaction"]
 > [测试和重新训练模型](test-your-model.md)
 
+* [什么是自定义视觉？](./overview.md)

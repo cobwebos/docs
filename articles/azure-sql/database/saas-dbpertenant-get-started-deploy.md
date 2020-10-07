@@ -1,30 +1,30 @@
 ---
-title: 每租户数据库 SaaS 教程
+title: “每租户一个数据库”SaaS 教程
 description: 部署并探究一个 Wingtip Tickets SaaS 多租户应用程序，该应用程序使用 Azure SQL 数据库演示了“每租户一个数据库”模式和其他 SaaS 模式。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: MT
+ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356819"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618931"
 ---
-# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的每租户数据库模式的多租户 SaaS 应用
+# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署并探索一个多租户 SaaS 应用，该应用通过 Azure SQL 数据库使用“每租户一个数据库”模式
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本教程中，你将部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序 (Wingtip)。 该应用使用“每租户一个数据库”模式存储多个租户的数据。 该应用设计用于展示简化了 SaaS 方案的启用方式的 Azure SQL 数据库功能。
 
-选择“部署到 Azure”后，五分钟即生成一个多租户 SaaS 应用程序****。 应用包括在 Azure SQL 数据库中运行的数据库。 该应用部署有三个示例租户，每个租户具有其自己的数据库。 所有数据库都部署到一个 SQL 弹性池中。 该应用会部署到 Azure 订阅。 用户具有完全访问权限，可以浏览并处理该应用的各个组件。 [Wingtipticketssaas-dbpertenant 提供了-Wingtipticketssaas-dbpertenant-master GitHub][github-wingtip-dpt]存储库中提供了应用程序 c # 源代码和管理脚本。
+选择“部署到 Azure”后，五分钟即生成一个多租户 SaaS 应用程序****。 该应用包括在 Azure SQL 数据库中运行的数据库。 该应用部署有三个示例租户，每个租户具有其自己的数据库。 所有数据库都部署到一个 SQL 弹性池中。 该应用会部署到 Azure 订阅。 用户具有完全访问权限，可以浏览并处理该应用的各个组件。 [WingtipTicketsSaaS-DbPerTenant GitHub 存储库][github-wingtip-dpt]中提供了应用程序 C# 源代码和管理脚本。
 
 本教程介绍以下内容：
 
@@ -65,7 +65,7 @@ ms.locfileid: "91356819"
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 建议创建一个新的资源组。 不要使用现有资源组、服务器或池。 不要将此应用程序、脚本或所部署的任何资源用于生产。 使用完该应用程序时请删除此资源组，以停止相关计费。
 
     - **资源组**：选择“新建”****，并为资源组提供之前所选的唯一名称。
-    - **位置**：从下拉列表中选择一个位置。
+    - 位置：从下拉列表中选择一个位置。
     - **用户**：使用之前所选的用户名值。
 
 1. 部署应用程序。
@@ -98,7 +98,7 @@ ms.locfileid: "91356819"
 
 运行任何脚本之前，在 UserConfig 文件中更新“资源组”和“用户”值。 将这些变量设置为部署期间使用的值。
 
-1. 在 PowerShell ISE 中打开 ... \\学习模块 \\ **userconfig.psm1. hbase-runner.psm1**
+1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\**UserConfig.psm1**
 1. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name********。
 1. 保存更改。
 
@@ -108,7 +108,7 @@ ms.locfileid: "91356819"
 
 举办活动的应用展示场所。 场所类型包括音乐厅、爵士乐俱乐部和运动俱乐部。 在 Wingtip Tickets 中，场所注册为租户。 注册为租户可让场所轻松列出活动，以及向其客户销售门票。 每个场所有个性化的网站用于列出其活动和售票。
 
-在应用程序内部，每个租户都将获取部署到弹性池中的数据库。
+在应用内部，每个租户均获得一个部署到弹性池的数据库。
 
 中间的“事件中心”**** 页提供你的部署中租户的链接列表。
 
@@ -130,8 +130,8 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../../traffic-manager/tra
 
     | URL 部分        | 说明       |
     | :-------------- | :---------------- |
-    | wingtip-user | Wingtip 应用的事件部分。<br /><br /> **-dpt** 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个**“每租户应用”(-sa**) 实现，或多租户数据库** (-mt**) 实现。 |
-    | .* &lt; 用户 &gt; * | 在示例中为 *af1*。 |
+    | events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> **-dpt** 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个**“每租户应用”(-sa**) 实现，或多租户数据库** (-mt**) 实现。 |
+    | . *&lt;user&gt;* | 在示例中为 *af1*。 |
     | .trafficmanager.net/ | 流量管理器、基 URL。 |
     | fabrikamjazzclub | 标识名为 Fabrikam Jazz Club 的租户。 |
     | &nbsp; | &nbsp; |
@@ -142,7 +142,7 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../../traffic-manager/tra
   - 目录是通过使用分片映射管理实现的**。
 - 事件中心使用目录中的扩展元数据为每个租户构造事件页 URL 的列表。
 
-在生产环境中，通常要创建一条 CNAME DNS 记录，将 [*公司 internet 域指向*](../../traffic-manager/traffic-manager-point-internet-domain.md)   流量管理器 DNS 名称。
+在生产环境中，通常要创建一条 CNAME DNS 记录，用以 [*将公司 Internet 域指向*](../../traffic-manager/traffic-manager-point-internet-domain.md) 流量管理器 DNS 名称。
 
 > [!NOTE]
 > 在本教程中，流量管理器的用途可能不是非常明显。 此系列教程的目标是展示可以处理复杂生产环境规模的各种模式。 在这种情况下，例如，你将具有分布在全球的多个 Web 应用，并且它们与数据库共存于相同的位置，你将需要使用流量管理器在这些实例之间进行路由。
@@ -212,7 +212,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载**。 以下步骤
 - 已初始化。
 - 已在目录中注册。
 
-成功预配后，新租户的 " *事件* " 站点将显示在浏览器中。
+成功预配后，新租户的“事件”站点会显示在浏览器中。
 
 ![新租户](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
@@ -225,7 +225,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载**。 以下步骤
 1. 在  [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后打开 **catalog-dpt-&lt;USER&gt;** 服务器。
     - 目录服务器包含两个数据库：**tenantcatalog** 和 **basetenantdb**（为了创建新租户而复制的模板数据库）。
 
-   ![屏幕截图显示具有两个数据库的 "目录服务器概述" 页。](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![屏幕截图显示了包含两个数据库的目录服务器“概览”页。](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. 返回到 SQL 服务器列表。
 
@@ -270,7 +270,7 @@ LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始�
 > - 如何通过查看池使用率来监视租户活动。
 > - 如何删除示例资源以停止相关计费。
 
-接下来，请尝试 [预配和编录教程](saas-dbpertenant-provision-and-catalog.md)。
+接下来，请尝试[预配和编录教程](saas-dbpertenant-provision-and-catalog.md)。
 
 <!-- Link references. -->
 

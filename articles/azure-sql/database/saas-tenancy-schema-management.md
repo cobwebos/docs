@@ -1,22 +1,22 @@
 ---
-title: 在单租户应用程序中管理架构
+title: 在单租户应用中管理架构
 description: 在使用 Azure SQL 数据库的单租户应用中管理多个租户的架构
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 62e20a10e9709bc69a746a6f62e949c47c3a6d02
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255545"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620148"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>通过将“租户各有数据库”模式与 Azure SQL 数据库配合使用，在 SaaS 应用程序中管理架构
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,35 +37,35 @@ ms.locfileid: "85255545"
 
 若要完成本教程，请确保满足以下先决条件：
 
-* 已部署 Wingtip Tickets SaaS Database Per Tenant 应用。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip 票证 SaaS 数据库每个租户应用程序](../../sql-database/saas-dbpertenant-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS Database Per Tenant 应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 租户各有数据库应用程序](../../sql-database/saas-dbpertenant-get-started-deploy.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安装最新版的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
 
-“租户各有数据库”模式可以对租户数据进行有效的隔离，但会增加需要管理和维护的数据库的数目。 [弹性作业](../../sql-database/elastic-jobs-overview.md)有利于管理和管理多个数据库。 可以使用作业安全可靠地针对一组数据库运行任务（T-SQL 脚本）。 作业可以跨应用程序中的所有租户数据库部署架构和常见的引用数据更改。 此外还可以通过弹性作业来维护数据库用来创建新租户的** 模板，确保其架构和引用数据始终为最新。
+“租户各有数据库”模式可以对租户数据进行有效的隔离，但会增加需要管理和维护的数据库的数目。 [弹性作业](../../sql-database/elastic-jobs-overview.md)有利于多个数据库的管理。 可以使用作业安全可靠地针对一组数据库运行任务（T-SQL 脚本）。 作业可以跨应用程序中的所有租户数据库部署架构和常见的引用数据更改。 此外还可以通过弹性作业来维护数据库用来创建新租户的** 模板，确保其架构和引用数据始终为最新。
 
 ![屏幕](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
 ## <a name="elastic-jobs-public-preview"></a>弹性作业公共预览版
 
-有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能。 此新版本的弹性作业当前为公共预览版。 此公共预览版目前支持使用 PowerShell 创建作业代理，并支持使用 T-sql 创建和管理作业。
+有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能。 此新版弹性作业目前为公共预览版。 此公共预览版目前支持使用 PowerShell 创建作业代理，同时支持使用 T-SQL 创建和管理作业。
 有关详细信息，请参阅有关[弹性数据库作业](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview)的文章。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“租户各有数据库”应用程序脚本
 
-[Wingtipticketssaas-dbpertenant 提供了-Wingtipticketssaas-dbpertenant-master](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库中提供了应用程序源代码和管理脚本。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
+[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了应用程序源代码和管理脚本。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>创建作业代理数据库和新的作业代理
 
 本教程要求使用 PowerShell 来创建作业代理及其充当支持的作业代理数据库。 作业代理数据库存储作业定义、作业状态和历史记录。 创建作业代理及其数据库后，即可立刻创建和监视作业。
 
-1. **在 POWERSHELL ISE 中**打开 ... \\学习模块 \\ 架构管理 \\ *Demo-SchemaManagement.ps1*。
-1. 按**F5**运行该脚本。
+1. 在 PowerShell ISE 中打开 …\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1。
+1. 按 **F5** 运行脚本。
 
-*Demo-SchemaManagement.ps1*脚本调用*Deploy-SchemaManagement.ps1*脚本，在目录服务器上创建名为*osagent*的数据库。 然后该脚本创建作业代理，将数据库用作参数。
+Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，以便在目录服务器上创建名为“osagent”的数据库。 然后该脚本创建作业代理，将数据库用作参数。
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>创建一个将新的引用数据部署到所有租户的作业
 
@@ -102,12 +102,12 @@ ms.locfileid: "85255545"
 使用相同的作业“系统”存储过程创建作业。
 
 1. 打开 SSMS 并连接到 _catalog-dpt-&lt;user&gt;.database.windows.net_ 服务器
-1. 打开文件 _... \\学习模块 \\ 架构管理 \\ onlinereindex.sql_
+1. 打开 _…\\Learning Modules\\Schema Management\\OnlineReindex.sql_ 文件
 1. 通过右键单击选择“连接”，连接到 _catalog-dpt-&lt;user&gt;.database.windows.net_ 服务器（如果尚未连接）
 1. 确保已连接到 _jobagent_ 数据库，然后按 **F5** 运行该脚本
 
 在 _OnlineReindex.sql_ 脚本中观察以下元素：
-* **sp \_ add \_ job**创建名为 "联机索引索引 \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885" 的新作业
+* sp\_add\_job 创建一个名为“Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885”的新作业
 * sp\_add\_jobstep**** 创建包含 T-SQL 命令文本的作业步骤，以更新索引
 * 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成****。
 
@@ -123,10 +123,10 @@ ms.locfileid: "85255545"
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引
 
-接下来，请尝试[即席报表教程](../../sql-database/saas-tenancy-cross-tenant-reporting.md)，了解如何跨租户数据库运行分布式查询。
+接下来，请试用[特别报告教程](../../sql-database/saas-tenancy-cross-tenant-reporting.md)，了解如何跨租户数据库运行分布式查询。
 
 
 ## <a name="additional-resources"></a>其他资源
 
-* [基于 Wingtip 票证 SaaS 每个租户应用程序部署构建的其他教程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [构建 Wingtip Tickets SaaS Database Per Tenant 应用程序部署的其他教程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [管理扩大的云数据库](../../sql-database/elastic-jobs-overview.md)

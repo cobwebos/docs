@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 072dc3c453984eb30805bb6c2c8c44cc39b06d17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283592"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91620250"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>快速入门：配置 Azure VM 以连接到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -110,7 +110,7 @@ ms.locfileid: "91283592"
 
 1. 部署完成后，转到虚拟机资源。
 
-    ![屏幕截图显示了 Azure 门户，其中突出显示了所选的和连接的虚拟机的 "概述" 页。](./media/connect-vm-instance-configure/vm.png)  
+    ![屏幕截图显示了 Azure 门户，其中选择了虚拟机的“概览”页并突出显示了“连接”。](./media/connect-vm-instance-configure/vm.png)  
 
 2. 选择“连接” 。
 

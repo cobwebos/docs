@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=4
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 keywords: SQL Server 云, 云端 SQL Server, PaaS 数据库, 云 SQL Server, DBaaS, IaaS
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 344e52da8ef41e26ab0bfa7ef8e09a31f5d135ca
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
-ms.translationtype: MT
+ms.openlocfilehash: 4cc1eefa93366451b568da789fd48d8a8c658439
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611837"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91618261"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +33,7 @@ Azure SQL 是基于熟悉的 SQL Server 引擎构建的，因此你可轻松迁�
 了解每款产品如何契合 Microsoft 的 Azure SQL 数据平台，以与适合你业务需求的选项相符。 无论你是优先考虑成本节省还是精简管理，本文都会帮助你确定哪种方法能够满足你最重视的业务要求。
 
 
-如果不熟悉 Azure SQL，请参阅深入了解 azure sql[视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的*azure sql*视频：
+如果你不熟悉 Azure SQL，请观看我们深度讲解的 [Azure SQL 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的“什么是 Azure SQL”视频：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
 
@@ -80,7 +80,7 @@ Azure 会持续监视你的数据是否受到威胁。 借助 Azure SQL，你可
 
 [Azure SQL 数据库](database/sql-database-paas-overview.md)是 Azure 中托管的关系数据库即服务 (DBaaS)，属于“平台即服务 (PaaS)”行业类别。 
 - 最适合用于需要使用最新的 SQL Server 稳定功能，且开发与面市时间有限的新式云应用程序。 
-- 完全托管的 SQL Server 数据库引擎，基于最新稳定的 SQL Server Enterprise Edition。 SQL 数据库提供了两个部署选项，这些选项是在由 Microsoft 拥有、托管和维护的标准化硬件和软件基础上构建的。 
+- 完全托管的 SQL Server 数据库引擎，基于最新稳定的 SQL Server Enterprise Edition。 SQL 数据库有两个部署选项，每个选项都以 Microsoft 所拥有、托管及维护的标准化硬件和软件为基础。 
 
 在 SQL Server 中，无论是本地的还是 Azure 虚拟机中，都可使用需要进行广泛配置的内置特性和功能。 使用 SQL 数据库时，可以即用即付，并使用向上或向外缩放选项获得更强大的功能且不会中断服务。 SQL 数据库具有 SQL Server 所不能提供的其他一些功能，例如，内置的高可用性、智能和管理。
 
@@ -114,7 +114,7 @@ Azure SQL 数据库提供了以下部署选项：
 | Azure SQL 数据库 | Azure SQL 托管实例 | Azure VM 上的 SQL Server |
 | :--- | :--- | :--- |
 |支持大多数本地数据库级功能。 提供最常用的 SQL Server 功能。<br/>保证 99.995% 的可用性。<br/>内置备份、修补和恢复。<br/>最新稳定的数据库引擎版本。<br/>可将必要的资源（CPU/存储）分配到单个数据库。<br/>内置高级智能和安全性。<br/>联机更改资源（CPU/存储）。| 几乎支持所有的本地实例级和数据库级功能。 与 SQL Server 高度兼容。<br/>保证 99.99% 的可用性。<br/>内置备份、修补和恢复。<br/>最新稳定的数据库引擎版本。<br/>从 SQL Server 轻松迁移。<br/>Azure 虚拟网络中的专用 IP 地址。<br/>内置高级智能和安全性。<br/>联机更改资源（CPU/存储）。| 可以完全控制 SQL Server 引擎。 支持所有本地功能。<br/>高达 99.99% 的可用性。<br/>完全可与匹配的本地 SQL Server 版本搭配使用。<br/>固定的已知数据库引擎版本。<br/>从 SQL Server 轻松迁移。<br/>Azure 虚拟网络中的专用 IP 地址。<br/>可将应用程序或服务部署到 SQL Server 所在的主机上。|
-|可能难以从 SQL Server 迁移。<br/>某些 SQL Server 功能不可用。<br/>不保证确切的维护时间（但几乎是透明的）。<br/>只能使用数据库兼容性级别来实现与 SQL Server 版本的兼容。<br/>通过 [Azure 专用链接](database/private-endpoint-overview.md)支持专用 IP 地址。|仍有极少量的 SQL Server 功能不可用。<br/>不保证确切的维护时间（但几乎是透明的）。<br/>只能使用数据库兼容性级别来实现与 SQL Server 版本的兼容。|需要自行管理备份和修补程序。<br>需要实施高可用性解决方案。<br/>更改资源（CPU/存储）会造成停机|
+|可能难以从 SQL Server 迁移。<br/>某些 SQL Server 功能不可用。<br/>不保证确切的维护时间（但几乎是透明的）。<br/>只能使用数据库兼容性级别来实现与 SQL Server 版本的兼容。<br/>[Azure 专用链接](database/private-endpoint-overview.md)支持专用 IP 地址。|仍有极少量的 SQL Server 功能不可用。<br/>不保证确切的维护时间（但几乎是透明的）。<br/>只能使用数据库兼容性级别来实现与 SQL Server 版本的兼容。|需要自行管理备份和修补程序。<br>需要实施高可用性解决方案。<br/>更改资源（CPU/存储）会造成停机|
 | 最多 100 TB 的数据库。 | 最多 8 TB。 | 具有高达 256 TB 存储空间的 SQL Server 实例。 实例可以支持所需数量的数据库。 |
 | 本地应用程序可以访问 Azure SQL 数据库中的数据。 | 使用 Azure Express Route 或 VPN 网关[实现本机虚拟网络](managed-instance/vnet-existing-add-subnet.md)并连接到本地环境。 | 借助 SQL 虚拟机，应用程序可以一部分在云中运行，一部分在本地运行。 例如，可以通过 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，将本地网络和 Active Directory 域扩展到云中。 有关混合云解决方案的详细信息，请参阅[将本地数据解决方案扩展到云](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)。 |
 
@@ -128,7 +128,7 @@ Azure SQL 数据库提供了以下部署选项：
 目前，SQL 数据库和 SQL 托管实例均以服务的形式出售，提供了多个选项和多个服务层级，不同资源采用不同的价格，所有资源根据你选择的服务层级和计算大小以固定费率按小时计费 。 有关当前支持的服务层级、计算大小和存储量的最新信息，请参阅 [SQL 数据库基于 DTU 的购买模型](database/service-tiers-dtu.md)和 [SQL 数据库和 SQL 托管实例基于 vCore 的购买模型](database/service-tiers-vcore.md)。
 
 - 使用 SQL 数据库时，可根据需求选择各种价格的服务层级（起步价为基本层级的每月 5 美元），你也可创建[弹性池](database/elastic-pool-overview.md)，在数据库之间共享资源，从而降低成本并应对使用高峰。
-- 通过 SQL 托管实例，还可以自带许可证。 有关自带许可的详细信息，请参阅 [Azure 上的通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/) 或使用 [Azure 混合权益计算器](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) 查看如何 **节省多达 40%**。
+- 使用 SQL 托管实例时，还可以自带许可证。 有关自带许可的详细信息，请参阅 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)，或使用 [Azure 混合权益计算器](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database)来了解如何将成本最高节省 40%。
 
 此外，需要对固定的 [数据传输速率](https://azure.microsoft.com/pricing/details/data-transfers/)的 Internet 传出流量付费。 可以动态调整服务层级和计算大小，以满足应用程序的不同吞吐量需求。
 
@@ -157,9 +157,9 @@ Azure SQL 数据库提供了以下部署选项：
 
 对于许多 IT 部门而言，首要任务是达到服务级别协议 (SLA) 规定的正常运行时间。 本部分会说明 SLA 对每个数据库托管选项代表的含义。
 
-对于 **AZURE Sql 数据库** 和 **azure sql 托管实例**，Microsoft 提供99.99% 的可用性 SLA。 有关最新信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/sql-database/)。
+对于 Azure SQL 数据库和 Azure SQL 托管实例，Microsoft 提供 99.99% 的可用性 SLA。 有关最新信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/sql-database/)。
 
-对于 **AZURE VM 上的 SQL**，Microsoft 提供99.95% 的可用性 SLA，只涉及虚拟机。 此 SLA 不涵盖 VM 上运行的进程（例如 SQL Server），并且要求你在可用性集中托管至少两个 VM 实例。 有关最新信息，请参阅 [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 为了 (HA) 在 Vm 内实现数据库高可用性，应在 SQL Server 中配置一个受支持的高可用性选项，例如 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)。 使用支持的高可用性选项不会提供更多 SLA，但使用户能够实现 >99.99% 的数据库可用性。
+对于 Azure VM 上的 SQL，Microsoft 提供 99.95% 的可用性 SLA（仅涵盖虚拟机）。 此 SLA 不涵盖 VM 上运行的进程（例如 SQL Server），并且要求你在可用性集中托管至少两个 VM 实例。 有关最新信息，请参阅 [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 为了在 VM 中实现数据库高可用性 (HA)，应在 SQL Server 中配置受支持的高可用性选项之一，例如 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)。 使用支持的高可用性选项不会提供更多 SLA，但使用户能够实现 >99.99% 的数据库可用性。
 
 ## <a name="time-to-move-to-azure"></a><a name="market"></a>迁移到 Azure 的时机
 

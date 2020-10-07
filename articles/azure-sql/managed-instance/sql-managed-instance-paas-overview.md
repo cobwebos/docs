@@ -6,24 +6,24 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ce86f4e6ed5f29be3e36959e0f9db76edaab4982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273018"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91618121"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL 托管实例是一种智能、可缩放的云数据库服务；它将最广泛的 SQL Server 数据库引擎兼容性与完全托管且经久不衰的平台即服务的所有优势相结合。 SQL 托管实例具有与最新 SQL Server (Enterprise Edition) 数据库引擎近 100% 的兼容性，提供解决常见安全问题的本机[虚拟网络 (VNet)](../../virtual-network/virtual-networks-overview.md) 实现，并提供现有 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，SQL 托管实例保留了所有 PaaS 功能（自动修补和版本更新、[自动备份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)），可大幅降低管理开销和总拥有成本。
 
-如果不熟悉 Azure SQL 托管实例，请参阅我们的深层[AZURE sql 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的*azure sql 托管实例*视频：
+如果不熟悉 Azure SQL 托管实例，请观看我们深度讲解的 [Azure SQL 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的“Azure SQL 托管实例”视频：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
 
 > [!IMPORTANT]
@@ -49,7 +49,7 @@ SQL 托管实例结合了 Azure SQL 数据库和 SQL Server 数据库引擎提�
 |隔离的环境（[VNet 集成](connectivity-architecture-overview.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) 身份验证](../database/authentication-aad-overview.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>  <br>遵循与 Azure SQL 数据库相同的合规性标准 <br>[SQL 审核](auditing-configure.md) <br>[高级威胁防护](threat-detection-configure.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
 > [!IMPORTANT]
-> Azure SQL 托管实例已通过了多项合规性标准认证。 有关详细信息，请参阅 " [Microsoft Azure 符合性产品/服务](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers)"，其中列出了 " **sql 数据库**" 下列出的 sql 托管实例相容性认证的最新列表。
+> Azure SQL 托管实例已通过了多项合规性标准认证。 有关详细信息，请参阅 [Microsoft Azure 合规性产品](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers)，从中找出 SQL 托管实例符合性认证的最新列表（列在“SQL 数据库”下）。
 
 下表显示 SQL 托管实例的主要功能：
 
@@ -76,8 +76,8 @@ SQL 托管实例[基于 vCore 的购买模型](../database/service-tiers-vcore.m
 
 在 vCore 模型中，可在以下两代硬件中进行选择。
 
-- **Gen4** 逻辑 Cpu 基于 Intel® E5-2673 V3 (Haswell) 2.4 GHz 处理器、附加的 SSD、物理内核、每核 7 GB RAM 以及8到 24 vcore 之间的计算大小。
-- **Gen5** 逻辑 Cpu 基于 Intel® E5-2673 V4 (Broadwell) 2.3 GHz、INTEL® SP 8160 (Skylake) 和 INTEL® 8272CL (级联 Lake) 2.5 GHz 处理器，快速 NVMe SSD，超线程逻辑核心，以及4到80核心之间的计算大小。
+- Gen4 逻辑 CPU 基于 Intel® E5-2673 v3 (Haswell) 2.4 GHz 处理器，采用附加 SSD 和物理核心（每个核心 7 GB RAM），计算大小为 8 到 24 个 vCore。
+- Gen5 逻辑 CPU 基于 Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) 和 Intel® 8272CL (Cascade Lake) 2.5 GHz 处理器，采用快速 NVMe SSD 和超线程逻辑核心，计算大小为 4 到 80 个核心。
 
 若要详细了解两代硬件之间的区别，请参阅 [SQL 托管实例资源限制](resource-limits.md#hardware-generation-characteristics)。
 
@@ -222,7 +222,7 @@ SQL 托管实例受益于云中的一贯最新状态，这意味着 SQL Server �
 
 ### <a name="administration-features"></a>管理功能
 
-SQL 托管实例可以减少系统管理员花费在管理任务上的时间，因为该服务可以自行执行这些任务，或者大大简化这些任务。 例如， [OS/RDBMS 安装和修补](../database/high-availability-sla.md)、 [动态实例大小调整和配置](../database/single-database-scale.md)、 [备份](../database/automated-backups-overview.md)、 [数据库复制](replication-between-two-instances-configure-tutorial.md) (包括系统数据库) 、 [高可用性配置](../database/high-availability-sla.md)，以及运行状况和 [性能监视](../../azure-monitor/insights/azure-sql.md) 数据流的配置。
+SQL 托管实例可以减少系统管理员花费在管理任务上的时间，因为该服务可以自行执行这些任务，或者大大简化这些任务。 例如，[OS/RDBMS 安装和修补](../database/high-availability-sla.md)、[动态实例大小重设和配置](../database/single-database-scale.md)、[备份](../database/automated-backups-overview.md)、[数据库复制](replication-between-two-instances-configure-tutorial.md)（包括系统数据库）、[高可用性配置](../database/high-availability-sla.md)，以及运行状况和[性能监视](../../azure-monitor/insights/azure-sql.md)数据流的配置。
 
 有关详细信息，请参阅[支持和不支持的 SQL 托管实例功能列表](../database/features-comparison.md)以及 [SQL 托管实例和 SQL Server 之间的 T-SQL 差异](transact-sql-tsql-differences-sql-server.md)。
 
@@ -244,5 +244,5 @@ SQL 托管实例可以减少系统管理员花费在管理任务上的时间，�
 - 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅 [使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
+- 有关使用内置故障排除智能对 SQL 托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
 - 有关定价信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

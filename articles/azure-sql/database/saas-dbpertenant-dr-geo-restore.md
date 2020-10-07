@@ -6,24 +6,24 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: f3c7c166b72a43b6b11dc1830643332b032abad2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: MT
+ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356862"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618992"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本教程探讨如何对使用“每租户一个数据库”模型实现的多租户 SaaS 应用程序实施完整的灾难恢复方案。 使用[异地还原](recovery-using-backups.md)，将自动保留的异地冗余备份中的目录和租户数据库还原到备用恢复区域。 中断解决后，使用[异地复制](active-geo-replication-overview.md)将更改后的数据库遣返回原始区域。
 
-![关系图显示了原始和恢复区域，这两个区域都有一个应用、目录、服务器和池的原始映像或镜像，自动备份到存储，恢复区域接受备份的异地复制，并为新租户提供服务器和池。](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![关系图显示了原始区域和恢复区域，这两个区域都有应用、目录、服务器和池的原始映像或镜像映像、到存储的自动备份，恢复区域接受备份的异地复制并为新租户提供服务器和池。](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 异地还原是适用于 Azure SQL 数据库的成本较低的灾难恢复解决方案。 但是，从异地冗余备份恢复可能会导致长达一小时的数据丢失。 此操作可能需要较长时间，具体取决于每个数据库的大小。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "91356862"
 
 开始本教程之前，需具备以下先决条件：
 * 部署 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序](saas-dbpertenant-get-started-deploy.md)。 
-* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)入门。
+* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>异地还原恢复模式简介
 
@@ -97,7 +97,7 @@ ms.locfileid: "91356862"
 
 3. 在 [Azure 门户](https://portal.azure.com)中，查看并打开部署应用的资源组。
 
-   请注意部署应用服务组件和 SQL 数据库的资源和区域。
+   请注意其中部署了应用服务组件和 SQL 数据库的资源和区域。
 
 ## <a name="sync-the-tenant-configuration-into-the-catalog"></a>将租户配置同步到目录中
 
@@ -159,7 +159,7 @@ ms.locfileid: "91356862"
 
     * 由于还原请求跨所有池并行处理，因此最好跨多个池分布重要租户。 
 
-10. 监视服务以确定还原数据库的时间。 还原后的租户数据库将在目录中标记为联机，并且系统会记录该租户数据库的 rowversion 总和。 
+10. 监视该服务，确定数据库还原的时间。 还原后的租户数据库将在目录中标记为联机，并且系统会记录该租户数据库的 rowversion 总和。 
 
     * 在目录中将租户数据库标记为联机后，应用程序可立即访问这些数据库。
 
@@ -361,7 +361,7 @@ ms.locfileid: "91356862"
 ## <a name="designing-the-application-to-ensure-that-the-app-and-the-database-are-co-located"></a>设计应用程序，确保应用和数据库位于相同位置 
 设计应用程序，使其始终从租户数据库所在区域中的实例进行连接。 此设计可降低应用程序与数据库之间的延迟。 此优化有望使“应用到数据库”交互比“用户到应用”交互更加密切。  
 
-在遣返期间的某些时段，租户数据库可能遍布在恢复区域和原始区域。 对于每个数据库，应用会通过对租户服务器名称执行 DNS 查找来查找数据库所在的区域。 服务器名称是一个别名。 使用别名的服务器名称包含区域名称。 如果应用程序不在数据库所在的同一区域，则它将重定向到服务器所在的同一区域中的实例。 重定向到数据库所在区域中的实例可将应用与数据库之间的延迟降到最低。  
+在遣返期间的某些时段，租户数据库可能遍布在恢复区域和原始区域。 对于每个数据库，应用会通过对租户服务器名称执行 DNS 查找来查找数据库所在的区域。 服务器名称是别名。 使用别名的服务器名称包含区域名称。 如果应用程序不与数据库位于同一区域，它将重定向到服务器所在区域中的实例。 重定向到数据库所在区域中的实例可将应用与数据库之间的延迟降到最低。  
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -369,7 +369,7 @@ ms.locfileid: "91356862"
 > [!div class="checklist"]
 > 
 > * 使用租户目录保存定期更新的配置信息，以允许在其他区域中创建镜像恢复环境。
-> * 使用地域还原将数据库恢复到恢复区域。
+> * 使用异地还原将数据库恢复到恢复区域。
 > * 更新租户目录以反映已还原的租户数据库位置。 
 > * 使用 DNS 别名可使应用程序全程连接到租户目录，并且无需进行重新配置。
 > * 中断解决后，使用异地复制将恢复后的数据库遣返回原始区域。

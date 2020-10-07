@@ -1,5 +1,6 @@
 ---
 title: Microsoft 标识平台概述 - Azure
+titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 标识平台的组件以及它们如何帮助你在应用程序中构建标识和访问管理 (IAM) 支持。
 services: active-directory
 author: rwike77
@@ -12,14 +13,14 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119549"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91627119"
 ---
-# <a name="microsoft-identity-platform-overview"></a>Microsoft 标识平台概述
+# <a name="what-is-the-microsoft-identity-platform"></a>什么是 Microsoft 标识平台？
 
 Microsoft 标识平台有助于你构建这样的应用程序，你的用户和客户登录它们来使用其 Microsoft 标识或社交帐户，并提供对你的 API 或 Microsoft API（例如 Microsoft Graph）的授权访问。
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
-ms.translationtype: MT
+ms.openlocfilehash: 1545f9cde15f010ba3d7d52c6fea1ef233d2fac5
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544075"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619463"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,9 +25,9 @@ ms.locfileid: "87544075"
 
 独立应用程序或每租户应用模式将为每个租户部署应用程序实例。  为特定租户配置了每个应用程序并在单独的 Azure 资源组中部署了这些应用程序。 预配了应用程序的多个实例，提供多租户解决方案。 租户数较少且最需要优先考虑租户隔离时，最适合采用此模式。 Azure 具有合作伙伴计划，这些计划允许将资源部署到租户的订阅中，由服务提供商代表租户进行管理。 
 
-在本教程中，将三个租户的三个独立应用程序部署到 Azure 订阅中。  用户具有完全访问权限，可以浏览并处理各个应用程序组件。
+在本教程中，三个租户的三个独立应用程序将会部署到 Azure 订阅中。  用户具有完全访问权限，可以浏览并处理各个应用程序组件。
 
-[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存储库提供了应用程序源代码和管理脚本。 该应用程序是使用 Visual Studio 2015 创建的，并且不会在 Visual Studio 2019 中成功打开和编译，而无需进行更新。
+[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存储库提供了应用程序源代码和管理脚本。 该应用程序是使用 Visual Studio 2015 创建的，无法在不更新的情况下在 Visual Studio 2019 中成功打开和编译。
 
 
 本教程介绍以下内容：
@@ -37,7 +37,7 @@ ms.locfileid: "87544075"
 > * 获取应用程序源代码和管理脚本的位置。
 > * 关于构成该应用的服务器和数据库。
 
-我们将发布更多教程。 它们将允许你探索基于此应用程序模式的一系列管理方案。   
+我们将发布更多教程。 参考这些教程可以探索基于此应用程序模式的一系列管理方案。   
 
 ## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>部署 Wingtip 票证 SaaS 独立应用程序
 
@@ -46,21 +46,21 @@ ms.locfileid: "87544075"
 1. 单击每个蓝色的“部署到 Azure”按钮，在 [Azure 门户](https://portal.azure.com)中打开部署模板****。 每个模板要求两个参数值；新资源组的名称和用于区分该部署和应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。
 
    **Contoso 音乐厅**   
-   [![显示标记为 "部署到 Azure" 按钮的图像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+   [![图像显示标记为“部署到 Azure”的按钮。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
 
    **Dogwood Dojo**   
-   [![显示标记为 "部署到 Azure" 按钮的图像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+   [![图像显示标记为“部署到 Azure”的按钮。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
 
    **Fabrikam 爵士乐俱乐部**   
-   [![显示标记为 "部署到 Azure" 按钮的图像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+   [![图像显示标记为“部署到 Azure”的按钮。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
  
 2. 输入每个部署所需的参数值。
 
     > [!IMPORTANT]
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 为每个应用程序部署创建新的资源组****。  不要使用现有资源组。 不要使用该应用程序及其创建的任何资源进行生产。 使用完该应用程序时请删除所有资源组，停止相关计费。
 
-    最好只在资源名称中使用小写字母、数字和连字符。
-    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的名称****。 **wingtip \<venueName\> - - \<user\> **是建议的模式。  对于 \<venueName\> ，请将地点名称替换为空格。 对于 \<user\> ，请替换下面的 "用户" 值。  使用此模式，资源组名称可能是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1******。
+    最好在资源名称中仅使用小写字母、数字和连字符。
+    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的名称****。 **wingtip-sa-\<venueName\>-\<user\>** 是建议的模式。  对于 \<venueName\>，请将场所名称替换为不带空格的名称。 对于 \<user\>，请将其替换为下面的用户值。  使用此模式，资源组名称可能是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1******。
     * 从下拉列表中选择一个**位置**。
 
     * 对于“用户”，建议使用较短的用户值，例如在缩写后加上数字：af1******。
@@ -76,7 +76,7 @@ ms.locfileid: "87544075"
 
 ## <a name="run-the-applications"></a>运行应用程序
 
-举办活动的应用展示场所。  场所是应用程序的租户。 每个场所有个性化的网站用于列出活动和售票。 场所类型包括音乐厅、爵士乐俱乐部和运动俱乐部。 在示例中，场所的类型决定了场所网站上所示的背景照片。   在独立的应用模型中，每个地点都有一个单独的应用程序实例，其中包含自己的独立 Azure SQL 数据库。
+举办活动的应用展示场所。  场所是应用程序的租户。 每个场所有个性化的网站用于列出活动和售票。 场所类型包括音乐厅、爵士乐俱乐部和运动俱乐部。 在示例中，场所的类型决定了场所网站上所示的背景照片。   在独立应用模型中，每个场所都有单独的应用程序实例及其自身的独立 Azure SQL 数据库。
 
 1. 在不同的浏览器选项卡中打开三个租户各自的活动页面：
 
@@ -88,10 +88,10 @@ ms.locfileid: "87544075"
 
    ![事件](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
-为了控制传入请求的分配，该应用使用[*Azure 流量管理器*](../../traffic-manager/traffic-manager-overview.md)。 每个租户特定的应用实例将租户名称用作 URL 中域名的一部分。 所有租户 URL 包含特定的 **User** 值。 URL 采用以下格式：
+该应用使用 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户特定的应用实例将租户名称用作 URL 中域名的一部分。 所有租户 URL 包含特定的 **User** 值。 URL 采用以下格式：
 - http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
-每个租户的数据库**位置**都包含在相应部署的应用的应用设置中。
+每个租户的数据库**位置**包含在部署的相应应用的应用设置中。
 
 在生产环境中，通常要创建一条 CNAME DNS 记录，[*将公司 Internet 域指向*](../../traffic-manager/traffic-manager-point-internet-domain.md)流量管理器配置文件的 URL。
 
@@ -104,7 +104,7 @@ ms.locfileid: "87544075"
 2. 应能看到三个租户资源组。
 3. 打开 wingtip-sa-fabrikam-&lt;user&gt; 资源组，其中包括“Fabrikam 爵士乐俱乐部”这一部署的资源****。  fabrikamjazzclub-&lt;user&gt; 服务器包括 fabrikamjazzclub 数据库********。
 
-每个租户数据库都是一个 50 DTU*独立*数据库。
+每个租户数据库都是一个 50 DTU 的 独立数据库。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -114,7 +114,7 @@ ms.locfileid: "87544075"
 * To learn about elastic jobs, see [*Managing scaled-out cloud databases*](../../sql-database/elastic-jobs-overview.md)
 -->
 
-- 若要了解多租户 SaaS 应用程序，请参阅[多租户 saas 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
+- 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
  
 ## <a name="delete-resource-groups-to-stop-billing"></a>删除资源组，停止计费 ##
@@ -130,6 +130,6 @@ ms.locfileid: "87544075"
 > * 关于构成该应用的服务器和数据库。
 > * 如何删除示例资源以停止相关计费。
 
-接下来，请尝试[预配和目录](saas-standaloneapp-provision-and-catalog.md)教程，你将在其中探索用于启用各种跨租户方案（如架构管理和租户分析）的租户目录。
+接下来，请尝试[预配和目录](saas-standaloneapp-provision-and-catalog.md)教程，你将在其中了解租户目录的用途，该目录可实现一系列跨租户方案，如架构管理和租户分析。
  
 

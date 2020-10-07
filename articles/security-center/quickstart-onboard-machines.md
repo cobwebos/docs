@@ -3,22 +3,47 @@ title: 将非 Azure 计算机连接到 Azure 安全中心
 description: 了解如何将非 Azure 计算机连接到安全中心
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6f2889c298f525e1babf80f86d4ae140ef2ce96f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448951"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91612211"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>将非 Azure 计算机连接到安全中心
 
-安全中心可以监视非 Azure 计算机的安全状态，但首先需要载入这些资源。 可以从“开始使用”页面或“库存”中添加非 Azure 计算机，如下所述。
+安全中心可以监视非 Azure 计算机的安全状态，但首先需要载入这些资源。 
 
-## <a name="add-non-azure-computers"></a>添加非 Azure 计算机 
+可以通过以下任何一种方式添加非 Azure 计算机：
+
+- 使用 Azure Arc（**推荐**）
+- 使用 Azure 门户中的安全中心的页面（“入门”和“库存”）
+
+下面介绍上述每种方式。
+
+## <a name="add-non-azure-machines-with-azure-arc"></a>使用 Azure Arc 添加非 Azure 计算机
+
+使用 Azure Arc 是将非 Azure 计算机添加到 Azure 安全中心的首选方法。
+
+启用了 Azure Arc 的计算机将成为 Azure 资源，与其他 Azure 资源一样显示在安全中心并带有建议。 
+
+此外，Azure Arc 还提供了增强的功能，例如“在计算机上启用策略”、“将 Log Analytics 代理部署为扩展”，“使用其他 Azure 服务简化部署”等选项。 有关这些优势的概述，请参阅[支持的方案](../azure-arc/servers/overview.md#supported-scenarios)。
+
+**若要部署 Azure Arc，请执行以下操作：**
+
+- 对于一台计算机，请按照[快速入门：使用启用了 Azure Arc 的服务器连接混合计算机](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中的说明进行操作。
+- 若要大规模部署 Azure Arc，请参阅[将混合计算机大规模连接到 Azure](../azure-arc/servers/onboard-service-principal.md)
+
+详细了解 [Azure Arc](../azure-arc/servers/overview.md)。
+
+> [!TIP]
+> 如果你正在加入 AWS 计算机，则安全中心的 AWS 连接器将为你透明地处理 Azure Arc 部署。 在[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)中了解详细信息。
+
+## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>从安全中心的门户页添加非 Azure 计算机
 
 1. 在安全中心的菜单中，打开“开始使用”页。
 1. 选择“入门”选项卡。
@@ -29,6 +54,8 @@ ms.locfileid: "91448951"
 
     > [!TIP]
     > 还可以通过“库存”页面的“添加非 Azure 服务器”按钮打开“添加计算机”。
+    > 
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="“开始使用”页中的“开始使用”选项卡":::
 
     此时将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
@@ -89,12 +116,13 @@ ms.locfileid: "91448951"
 
 
 ## <a name="verifying"></a>验证
-恭喜！ 现在，可以在同一个位置查看 Azure 和非 Azure 计算机了。 打开[“资产清单”页](asset-inventory.md)，并筛选到相关的资源类型。 这两个图标分别代表两种类型：
+恭喜！ 现在，可以在同一个位置查看 Azure 和非 Azure 计算机了。 打开[“资产清单”页](asset-inventory.md)，并筛选到相关的资源类型。 这些图标区分类型：
 
-  ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 计算机
+  ![用于非 Azure 计算机的 ASC 图标](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 计算机
 
-  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![用于 Azure 计算机的 ASC 图标](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
+  ![用于 Azure Arc 计算机的 ASC 图标](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) 已启用 Azure Arc 的计算机
 
 ## <a name="next-steps"></a>后续步骤
 
