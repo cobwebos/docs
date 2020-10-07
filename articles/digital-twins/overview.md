@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
 ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89003841"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
@@ -88,7 +88,7 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 下图显示了 Azure 数字孪生在较大 Azure IoT 解决方案的上下文中所处的位置。
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="该图显示了输入源、输出服务以及与客户端应用程序和外部计算资源的双向通信。" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Azure 数字孪生资源管理器示例应用程序的屏幕截图，显示表示数字孪生的节点图" border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits-in-public-preview"></a>公共预览版中的服务限制
 

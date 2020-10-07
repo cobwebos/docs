@@ -1,6 +1,6 @@
 ---
 title: 关于 Azure VPN 网关
-description: 了解 VPN 网关的定义，以及如何使用 VPN 网关连接到 IPsec IKE 站点到站点、VNet 到 VNet 以及点到站点 VPN 虚拟网络。
+description: 了解 VPN 网关的定义，以及如何使用 VPN 网关连接到 IPsec IKE 站点到站点、VNet 到 V-VNet 以及点到点 VPN 虚拟网络。
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -10,10 +10,10 @@ ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: contperfq1
 ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89015384"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
@@ -34,7 +34,7 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ### <a name="design"></a><a name="diagrams"></a>设计
 
-必须知道，VPN 网关连接可以使用不同的配置。 必须确定哪种配置最适合自己的需要。 例如，点到站点、站点到站点以及共存的 ExpressRoute/站点到站点连接都有不同的说明和配置要求。 有关设计和查看连接拓扑图的信息，请参阅[设计](design.md)。
+必须知道，VPN 网关连接可以使用不同的配置。 必须确定哪种配置最适合自己的需要。 例如，点到站点、站点到站点以及共存的 ExpressRoute/站点到站点连接都有不同的说明和配置要求。 要了解设计和查看连接拓扑图，请参阅[设计](design.md)。
 
 ### <a name="planning-table"></a><a name="planningtable"></a>规划表
 

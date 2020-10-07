@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
 ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88705242"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建专用链接服务
@@ -56,7 +56,7 @@ ms.locfileid: "88705242"
 
 1. 若要登录到 Azure 并打开模板，请选择“部署到 Azure”。 此模板创建虚拟机、标准负载均衡器、专用链接服务、专用终结点、网络和要验证的虚拟机。
 
-   [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
 
 2. 选择或创建资源组。
 3. 键入虚拟机管理员用户名和密码。

@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815855"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>使用 Azure 门户限制通过专用链接对托管磁盘的导入/导出访问
@@ -52,7 +52,7 @@ ms.locfileid: "88815855"
 
 创建资源后，直接导航到该资源。
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="门户中“转到资源”按钮的屏幕截图":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="磁盘访问创建边栏选项卡的屏幕截图。填写所需的名称，选择一个区域，选择一个资源组，然后继续操作":::
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 
@@ -61,13 +61,13 @@ ms.locfileid: "88815855"
 1. 从磁盘访问资源中，选择“专用终结点连接接”。
 1. 选择 “+ 专用终结点”。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="磁盘访问资源的概览边栏选项卡的屏幕截图。突出显示了专用终结点连接。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="磁盘访问创建边栏选项卡的屏幕截图。填写所需的名称，选择一个区域，选择一个资源组，然后继续操作":::
 
 1. 选择资源组
 1. 填写名称并选择创建磁盘访问资源时所在的同一区域。
 1. 在完成时选择“下一步:“资源”>
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="专用终结点创建工作流的屏幕截图，第一个边栏选项卡。如果不选择合适的区域，以后可能会遇到问题。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="磁盘访问创建边栏选项卡的屏幕截图。填写所需的名称，选择一个区域，选择一个资源组，然后继续操作":::
 
 1. 在“资源”边栏选项卡中，选择“连接到目录中的 Azure 资源” 。
 1. 对于“资源类型”，请选择“Microsoft.Compute/diskAccesses” 
@@ -75,7 +75,7 @@ ms.locfileid: "88815855"
 1. 将“目标子资源”保留为“磁盘” 
 1. **选择“下一步:** 配置 >”。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="专用终结点创建工作流的屏幕截图，第二个边栏选项卡。突出显示所有值（资源类型、资源、目标子资源）":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="磁盘访问创建边栏选项卡的屏幕截图。填写所需的名称，选择一个区域，选择一个资源组，然后继续操作":::
 
 1. 选择要仅限其为磁盘导出位置的虚拟网络，其他虚拟网络将无法导出磁盘。
 
@@ -85,7 +85,7 @@ ms.locfileid: "88815855"
 1. 选择相应的子网
 1. 选择“查看 + 创建”。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="专用终结点创建工作流的屏幕截图，第三个边栏选项卡。已强调虚拟网络和子网。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="磁盘访问创建边栏选项卡的屏幕截图。填写所需的名称，选择一个区域，选择一个资源组，然后继续操作":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>启用磁盘上的专用终结点
 
@@ -94,7 +94,7 @@ ms.locfileid: "88815855"
 1. 选择“专用终结点(通过磁盘访问)”并选择之前创建的磁盘访问权限。
 1. 选择“保存”。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="托管磁盘网络边栏选项卡的屏幕截图突出显示专用终结点选择以及所选磁盘访问。保存此选择即为实现此访问配置了磁盘。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="磁盘访问创建边栏选项卡的屏幕截图。填写所需的名称，选择一个区域，选择一个资源组，然后继续操作":::
 
 现在，已经完成了在导入/导出托管磁盘时可以使用的专用链接的配置。
 

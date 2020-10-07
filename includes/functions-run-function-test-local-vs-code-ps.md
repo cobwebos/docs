@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
 ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88703287"
 ---
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
 Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运行和调试 Azure Functions 项目。 有关如何在 Visual Studio Code 中进行调试的详细信息，请参阅[在本地调试 PowerShell Azure Functions](../articles/azure-functions/functions-debug-powershell-local.md)。 
 
-1. 按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
+1. 按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
 
 1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
@@ -34,7 +34,7 @@ Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运
 
     调用 HttpTrigger 终结点而未将 `name` 参数作为查询参数或在正文中传递时，该函数将返回 `BadRequest` 错误。 在 run.ps1 中检查代码时，会看到此错误，这是设计使然。
 
-1. 有关请求的信息将显示在“终端”  面板中。
+1. 有关请求的信息将显示在“终端”**** 面板中。
 
     ![“终端”面板中的函数执行](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
 ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649595"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建异地复制容器注册表
@@ -51,7 +51,7 @@ ms.locfileid: "88649595"
  2. 选择或输入以下值。
 
     * 订阅：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。
+    * **资源组**：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。 
     * **位置**：选择资源组的位置。 示例：“美国中部”。
     * **Acr 名称**：接受为注册表生成的名称，或者输入一个名称。 它必须全局唯一。
     * **位置**：接受为注册表的主副本生成的位置，或输入一个位置，例如美国中部。 
@@ -62,7 +62,7 @@ ms.locfileid: "88649595"
 
  3. 如果接受条款和条件，请选择“购买”。 成功创建注册表后，你会收到通知：
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="门户通知":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="模板属性":::
 
  使用 Azure 门户部署模板。 除了 Azure 门户之外，还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-cli.md)。
 
@@ -74,11 +74,11 @@ ms.locfileid: "88649595"
 
 1. 在“概述”页上，记下注册表的“登录服务器” 。 使用 Docker 标记映像并将其推送到注册表时，请使用此 URI。 有关信息，请参阅[使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)。
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="注册表概述":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="模板属性":::
 
 1. 在“复制”页上，确认主副本和通过该模板添加的副本的位置。 如果需要，可在此页上添加更多副本。
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="注册表复制":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="模板属性":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -94,4 +94,4 @@ ms.locfileid: "88649595"
 有关引导你完成模板创建过程的分步教程，请参阅：
 
 > [!div class="nextstepaction"]
-> [教程：创建和部署你的第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> 创建和部署你的第一个 ARM 模板[
