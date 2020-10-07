@@ -1,47 +1,53 @@
 ---
-title: 什么是文本分析 API？ - 功能 -
+title: 使用文本分析 API 进行文本挖掘和分析 - Azure 认知服务
 titleSuffix: Azure Cognitive Services
-description: 使用 Azure 认知服务中用于情绪分析、关键短语提取、语言检测和实体识别的文本分析 API。
+description: 了解如何使用文本分析 API 进行文本挖掘。 可以使用它进行情绪分析、语言检测和其他形式的自然语言处理。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: 文本挖掘, 情绪分析, 文本分析
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000951"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647463"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
-文本分析 API 是一种基于云的服务，它提供对原始文本的高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、语言检测和命名实体识别。
+文本分析 API 是一种基于云的服务，它提供用于文本挖掘和文本分析的自然语言处理 (NLP) 功能，包括：情绪分析、观点挖掘、关键短语提取、语言检测和命名实体识别。
 
-该 API 是 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。
+该 API 是 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/text-analytics-sdk.md)一起使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-文本分析可能有不同的含义，但在认知服务中，文本分析 API 提供如下所述的四种分析。 可以将这些功能与 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/text-analytics-sdk.md)一起使用。
-
 ## <a name="sentiment-analysis"></a>情绪分析
-通过在原始文本中分析有关积极和消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。
+
+通过在文本中挖掘有关积极情绪或消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定人们如何看待你的品牌或主题。 此 API 功能针对每个文档返回 0 到 1 之间的一个情绪评分，1 是最积极的评分。
+
+观点挖掘是情绪分析的一项功能，在 v3.1 预览版中开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
-自动[提取关键短语](how-tos/text-analytics-how-to-keyword-extraction.md)，以快速识别要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。
+
+使用[关键短语提取](how-tos/text-analytics-how-to-keyword-extraction.md)可以快速识别文本中的主要概念。 例如，在文本“The food was delicious and there were wonderful staff”中，关键短语提取将返回谈话要点：“food”和“wonderful staff”。
 
 ## <a name="language-detection"></a>语言检测
-可以[检测输入文本是用哪种语言编写的](how-tos/text-analytics-how-to-language-detection.md)，并以多种语言、变体、方言和一些区域/文化语言报告请求中提交的每个文档的单一语言代码。 语言代码与表示评分强度的评分相搭配。
+
+语言检测可以[检测输入文本是用哪种语言编写的](how-tos/text-analytics-how-to-language-detection.md)，并以多种语言、语言变体、方言和一些区域/文化语言报告请求中提交的每个文档的单一语言代码。 语言代码与置信度分数成对出现。
 
 ## <a name="named-entity-recognition"></a>命名实体识别
-[识别文本中的实体并将其分类](how-tos/text-analytics-how-to-entity-linking.md)为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。
+
+命名实体识别 (NER) 可以[对文本中的实体进行识别和分类](how-tos/text-analytics-how-to-entity-linking.md)，将其识别并分类为人员、地点、组织、数量，还可以识别众所周知的实体并将其链接到 Web 上的详细信息。
 
 ## <a name="use-containers"></a>使用容器
 
-将标准化的 Docker 容器安装到靠近数据的位置以后，即可在本地[使用文本分析容器](how-tos/text-analytics-how-to-install-containers.md)提取关键短语、检测语言以及进行情绪分析。
+[使用文本分析容器](how-tos/text-analytics-how-to-install-containers.md)作为一种用于挖掘文本和使用 API 的本地解决方案。 这些 Docker 容器使你能够提取关键短语、检测语言，并分析更符合你的数据的情绪。
 
 ## <a name="typical-workflow"></a>典型工作流
 
