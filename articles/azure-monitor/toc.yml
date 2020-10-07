@@ -301,8 +301,6 @@
               href: platform/move-workspace.md
             - name: 适用于服务提供商的设计
               href: platform/service-providers.md
-            - name: 管理访问权限
-              href: platform/manage-access.md
             - name: 专用群集
               href: log-query/logs-dedicated-clusters.md
     - name: 指标资源管理器
@@ -469,7 +467,7 @@
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: platform/autoscale-webhook-email.md
-        - name: 疑难解答
+        - name: 故障排除
           href: platform/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: platform/autoscale-resource-log-schema.md
@@ -634,7 +632,7 @@
                 - name: Spring Boot 应用
                   displayname: java
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: 故障排除
+                - name: 疑难解答
                   href: app/java-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
@@ -709,7 +707,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 疑难解答
+                    - name: 故障排除
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -751,9 +749,7 @@
             - name: 可用性警报
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: 性能测试
-              href: app/performance-testing.md
-            - name: 疑难解答
+            - name: 故障排除
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
         - name: 分布式跟踪

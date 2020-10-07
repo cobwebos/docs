@@ -627,7 +627,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -906,7 +906,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -992,6 +992,8 @@
                 - name: 注册 SQL VM RP
                   displayName: 'resource provider, registration'
                   items:
+                    - name: 自动注册
+                      href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
                     - name: 单个 VM
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: 批量注册多个 VM
@@ -1196,7 +1198,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md
