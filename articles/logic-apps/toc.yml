@@ -70,7 +70,7 @@
         - name: 在 Visual Studio Code 中创建有状态或无状态工作流
           href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: 从 Power Automate 和 Power Apps 调用逻辑应用
-          href: call-logic-apps-from-power-automate-power-apps.md
+          href: call-from-power-automate-power-apps.md
         - name: 控制工作流执行
           items:
             - name: 条件语句
