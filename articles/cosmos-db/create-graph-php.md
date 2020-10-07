@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: jasonh
 ms.openlocfilehash: e8848ee0a1fe5755316b59432c465b3836a0bab1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409351"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 PHP 和 Azure 门户创建图形数据库
@@ -207,7 +207,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 5. 单击“添加属性”，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 **id** 键是必需的。
 
-    密钥 | 值 | 说明
+    密钥 | Value | 说明
     ----|----|----
     **id** | ashley | 顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     **性别** | 女 | 
@@ -224,7 +224,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 9. 单击“添加属性”，添加下列所有属性：
     
-    密钥 | 值 | 说明
+    密钥 | Value | 说明
     ----|----|----
     **id** | rakesh | 顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     **性别** | 男 | 
