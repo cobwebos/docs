@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654474"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631437"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure 负载均衡器 SKU
 
@@ -54,7 +54,9 @@ Azure 负载均衡器有两种 SKU。
 
 - SKU 是不可变的。 无法更改现有资源的 SKU。
 - 独立的虚拟机资源、可用性集资源或虚拟机规模集资源可以引用一个 SKU，绝不能同时引用两个。
-- 标准负载均衡器和标准公共 IP 资源不支持[移动订阅操作](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+- [移动操作](../azure-resource-manager/management/move-resource-group-and-subscription.md)：
+  - 标准负载均衡器和标准公共 IP 支持资源组移动操作（在同一订阅内）。 
+  - 标准负载均衡器和标准公共 IP 资源不支持[订阅组移动操作](../azure-resource-manager/management/move-support-resources.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

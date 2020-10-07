@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 资源管理器模板（ARM 模板）针�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: a10ca5f0b4119fb65d6b0f717f5c212acb20f9cd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f03bf6eaf4f3045e00fc67efe6faa9f53d962089
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973697"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91629890"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>快速入门：使用 ARM 模板为创建针对新建议的 Azure 顾问警报
 
@@ -25,7 +25,7 @@ ms.locfileid: "90973697"
 - 影响级别
 - 建议类型
 
-还可通过以下方式配置触发警报时将发生的操作：  
+还可通过以下方式配置触发警报时将发生的操作：
 
 - 选择现有操作组
 - 创建新的操作组
@@ -69,11 +69,12 @@ ms.locfileid: "90973697"
     {
       "comments": "Action Group",
       "type": "microsoft.insights/actionGroups",
-      "name": "[parameters('actionGroups_name')]",
       "apiVersion": "2019-06-01",
+      "name": "[parameters('actionGroups_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "dependsOn": [],
+      "tags": {},
       "properties": {
         "groupShortName": "[parameters('actionGroups_name')]",
         "enabled": true,
@@ -85,17 +86,16 @@ ms.locfileid: "90973697"
         ],
         "smsReceivers": [],
         "webhookReceivers": []
-      },
-      "dependsOn": []
+      }
     },
     {
       "comments": "Azure Advisor Activity Log Alert",
       "type": "microsoft.insights/activityLogAlerts",
-      "name": "[parameters('activityLogAlerts_name')]",
       "apiVersion": "2017-04-01",
+      "name": "[parameters('activityLogAlerts_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "tags": {},
       "properties": {
         "scopes": [
           "[variables('alertScope')]"

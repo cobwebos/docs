@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f17385307995d87f2d5792a7e9ce19ad0260cbcc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010233"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91627357"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -158,13 +158,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ```
 3. 按 CTRL + F5 运行应用程序。 应用将显示在控制台窗口中。 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="查看并验证输出":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
 
     按 CTRL + C 停止执行程序并关闭控制台窗口。 
     
 4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在数据资源管理器中查看数据":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

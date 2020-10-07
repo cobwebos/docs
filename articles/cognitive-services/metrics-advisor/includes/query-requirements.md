@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 68b5946cb21bef1c8979a94c8780682cfe9defa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 518865f78c170f1fbe4e65b96dc149c1b449a88b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376421"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631353"
 ---
-在查询中，使用 `@StartTime` 参数获取特定时间戳的指标数据。 这将替换为 `yyyy-MM-ddTHH:mm:ss` 格式的字符串。 
+在查询中，使用 `@StartTime` 参数获取单一时间戳的指标数据。 指标顾问将在运行查询时将参数替换为 `yyyy-MM-ddTHH:mm:ss` 格式字符串。
 
 > [!IMPORTANT]
-> 确保查询仅返回单一时间戳的指标数据。 指标顾问将针对每个时间戳运行查询，以获取相应的指标数据。 例如，对粒度为“每天”的指标的查询仅应包含一个单一时间戳，例如运行一次查询时的 `2020-06-21T00:00:00Z`。 
+> 对于每个维度组合，查询应在每个时间戳处最多返回一条记录。 查询返回的所有记录必须具有相同的时间戳。 指标顾问将针对每个时间戳运行此查询以引入数据。 有关详细信息和示例，请参阅[查询常见问题解答部分](../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data)。 
