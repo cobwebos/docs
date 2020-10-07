@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943537"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -23,11 +23,11 @@ ms.locfileid: "90943537"
 
 在“搜索市场”输入字段中或门户顶部的搜索栏中输入“通信” 。
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="屏幕截图显示搜索栏中的通信服务搜索内容。":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="突出显示 Azure 门户中“创建资源”按钮的屏幕截图。":::
 
 在结果中选择“通信服务”，然后选择“添加” 。
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="屏幕截图显示 Azure 面板并突出显示添加按钮。":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="突出显示 Azure 门户中“创建资源”按钮的屏幕截图。":::
 
 现在可以配置通信服务资源。 在创建进程的第一页上，系统将要求你指定：
 

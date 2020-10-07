@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
 ms.openlocfilehash: 4d8b91529eaf5a9ee93cff28153b28b26fb7e685
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89566888"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>快速入门：检测运动并发出事件

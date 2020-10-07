@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943337"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 灵活服务器
@@ -41,11 +41,11 @@ ms.locfileid: "90943337"
 
 3. 选择“灵活服务器”部署选项。
 
-   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="选择“Azure Database for PostgreSQL - 灵活服务器”部署选项":::
+   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 4. 填写“基本”表单，其中包含以下信息：
 
-    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="创建服务器":::
+    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
     设置|建议的值|说明
     ---|---|---
@@ -58,23 +58,23 @@ ms.locfileid: "90943337"
     版本|最新主版本| 除非另有特定的要求，否则为最新 PostgreSQL 主版本。
     计算 + 存储 | “常规用途”、“4 个 vCore”、“512 GB”和“7 天”    | 新服务器的计算、存储和备份配置。 选择“配置服务器”。 “常规用途”、“4 个 vCore”、“512 GB”和“7 天”分别是“计算层”、“vCore”、“存储”和“备份保持期”的默认值      。 可以按原样保留这些滑块，也可以对其进行调整。 若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
 
-    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="“定价层”窗格":::
+    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
     
 5. 配置网络选项
 
     在“网络”选项卡上，可以选择访问服务器的方式。 用于 PostgreSQL 的 Azure 数据库会在服务器级别创建防火墙。 除非创建了规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。 建议使服务器可公开访问：
 
-    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="“网络”窗格":::
+    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
     然后将其限制为你自己的客户端 IP 地址：
 
-    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="选择“添加当前客户端 IP 地址”":::
+    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 6. 选择“查看 + 创建”，查看所选内容。 选择“创建”以预配服务器。 此操作可能需要几分钟的时间。
 
 7. 在工具栏上选择“通知”图标（铃铛）以监视部署过程。 完成部署后，可以选择“固定到仪表板”  ，以便在 Azure 门户仪表板上为此服务器创建磁贴作为到此服务器“概述”  页的快捷方式。 选择“转到资源”可打开此服务器的“概述”页。
 
-    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="“通知”窗格":::
+    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
    默认情况下，会在服务器下创建 **postgres** 数据库。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 （另一个默认数据库是 **azure_maintenance**， 其功能是将托管服务进程与用户操作分开。 你不能访问此数据库。）
 
@@ -88,7 +88,7 @@ ms.locfileid: "90943337"
 
 打开服务器的“概览”页。 记下“服务器名称”和“服务器管理员登录名”。 将光标悬停在每个字段，然后复制符号就会显示在文本右侧。 根据需要选择复制符号即可复制这些值。
 
- :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="服务器“概述”页":::
+ :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 ## <a name="connect-to-the-postgresql-database-using-psql"></a>使用 psql 连接到 PostgreSQL 数据库
 
@@ -162,7 +162,7 @@ ms.locfileid: "90943337"
 
 2. 在“概览”  页上，选择“删除”  。
 
-    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="“删除”按钮":::
+    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 3. 确认要删除的服务器名称并查看其下受影响的数据库。 在文本框中输入服务器名称，例如 mydemoserver。 选择“删除” 。
 

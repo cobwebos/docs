@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943499"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>快速入门：浏览带有示例数据的指标顾问演示
@@ -44,14 +44,14 @@ ms.locfileid: "90943499"
 * 数据馈送更新时间的日志。   
 * 数据馈送信息和设置。
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="数据馈送视图" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="示例数据列表" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>查看时序可视化效果和配置
 
 单击进入“Sample - Cost/Revenue - City/Category”数据馈送中的“cost”指标 。 你将看到根据维度切片的关联时序，以及根据历史指标数据显示的可视化效果。 指标数据周围的蓝带表示指标顾问的机器学习模型中的预期值范围。 位于此带之外的点将以红点标记，表示检测到异常。 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="序列可视化" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="示例数据列表" lightbox="../media/series-visualization.png":::
 
 可以通过在指标详细信息页的左侧优化“检测配置”来配置异常情况检测。 有多种异常情况检测方法可用，你可以将这些方法加以组合。 还可以尝试不同的敏感度、检测方向和其他配置。 通过“检测配置”底部的”高级配置”链接，可以创建更复杂的自定义检测设置，这些设置可用于组或单个序列 。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "90943499"
 
 面板中的底部有一个“前往事件中心”链接，该链接会将你定向到事件分析页并分析事件的根本原因 。  
 
-:::image type="content" source="../media/incident-link.png" alt-text="事件链接" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="示例数据列表" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>浏览异常情况检测结果并执行根本原因分析
 
@@ -67,7 +67,7 @@ ms.locfileid: "90943499"
 
 “诊断”部分显示事件树以及用于诊断事件的多个选项卡。
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="事件诊断" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="示例数据列表" lightbox="../media/incident-diagnostic.png":::
 
 通过查明事件的根本原因，你可以在情况恶化之前采取措施并缓解问题。 还可以单击提供的其他诊断功能来浏览更多见解。 
 

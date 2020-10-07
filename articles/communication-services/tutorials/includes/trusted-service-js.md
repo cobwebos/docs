@@ -9,10 +9,10 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943367"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -132,7 +132,7 @@ module.exports = async function (context, req) {
 
 在浏览器中打开 URL，应会看到包含通信用户 Id、令牌和令牌过期时间的响应正文。
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="显示创建的 Azure 函数的响应示例的屏幕截图。":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="可信服务体系结构的关系图":::
 
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 

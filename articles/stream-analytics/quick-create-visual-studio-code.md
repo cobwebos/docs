@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 5ba47522f483b6c9b2a03e99f3608c58e916e010
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90944000"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业（预览）
@@ -25,7 +25,7 @@ ms.locfileid: "90944000"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录 [Azure 门户](https://portal.azure.com/)。
+* 登录到 [Azure 门户](https://portal.azure.com/)。
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "90944000"
 
 在定义流分析作业之前，应该对稍后会配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“创建资源” > “物联网” > “IoT 中心”。
 
@@ -76,7 +76,7 @@ ms.locfileid: "90944000"
 
    ![设置 IoT 中心的大小和规模](./media/quick-create-visual-studio-code/iot-hub-size-and-scale.png)
 
-6. 选择“查看 + 创建”。 查看 IoT 中心信息，然后选择“创建”****。 创建 IoT 中心可能需要数分钟的时间。 可在“通知”窗格中监视进度****。
+6. 选择“查看 + 创建”  。 查看 IoT 中心信息，然后选择“创建”****。 创建 IoT 中心可能需要数分钟的时间。 可在“通知”窗格中监视进度****。
 
 7. 在 IoT 中心导航菜单的“IoT 设备”下选择“添加”**** ****。 为“设备 ID”添加 ID，然后选择“保存”**** ****。
 

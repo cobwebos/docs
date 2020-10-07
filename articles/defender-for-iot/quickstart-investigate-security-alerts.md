@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943346"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>快速入门：调查安全警报
@@ -44,12 +44,12 @@ IoT 中心安全警报列表显示 IoT 中心的所有聚合安全警报。
 
 1. 在“IoT 中心” > “安全” > “警报”列中，选择并打开任何安全警报  。 
 1. 查看警报“说明”、“严重性”、“检测源”，和在聚合期间发出此警报的所有设备的“设备详细信息”   。
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="深化并查看聚合警报中每个设备的详细信息"::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="使用新的警报标志调查新的 IoT 安全警报"::: 
 1. 查看警报细节后，使用“手动修正步骤”说明可帮助修正和/或解决导致警报的问题。 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="按照手动修正步骤帮助解决或修正设备安全警报":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="使用新的警报标志调查新的 IoT 安全警报":::
 
 1. 如果需要进一步调查，请使用此链接调查 Log Analytics 中的警报。 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="要进一步调查警报，请使用屏幕上提供的“使用 Log Analytics 进行调查”链接":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="使用新的警报标志调查新的 IoT 安全警报":::
 
 ## <a name="next-steps"></a>后续步骤
 

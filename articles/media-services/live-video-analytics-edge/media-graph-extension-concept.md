@@ -4,10 +4,10 @@ description: 使用 IoT Edge 上的实时视频分析，可以通过图形扩展
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89569317"
 ---
 # <a name="media-graph-extension"></a>媒体图扩展

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896319"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 MySQL Workbench 连接到 Azure Database for MySQL 并查询其中的数据
@@ -49,7 +49,7 @@ ms.locfileid: "90896319"
 
 2.    在“设置新连接”对话框的“参数”选项卡上，输入以下信息：
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="设置新连接":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Azure Database for MySQL 服务器名称":::
 
 | **设置** | **建议的值** | **字段说明** |
 |---|---|---|
@@ -103,7 +103,7 @@ ms.locfileid: "90896319"
 
     此屏幕快照显示 SQL Workbench 中的一个 SQL 代码示例以及运行该示例代码后的输出。
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="运行示例 SQL 代码的 MySQL Workbench SQL 选项卡":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Azure Database for MySQL 服务器名称":::
 
 2. 若要运行示例 SQL 代码，请单击“SQL 文件”选项卡工具栏中的闪电图标。
 3. 请注意页面中间“结果网格”部分中的三个选项卡式结果。 

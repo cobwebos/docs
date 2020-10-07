@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442243"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入门：配置客户端应用程序以访问 Web API
@@ -59,7 +59,7 @@ ms.locfileid: "89442243"
 
 将权限添加到 API 后，应在“配置的权限”下看到所选权限。 下图显示了示例 Employees.Read.All 委托的权限已添加到客户端应用的注册。
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Azure 门户中的“配置的权限”窗格，其中显示了新添加的权限":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="一个显示 Web API 的线形图，其中右侧有公开的范围，左侧有客户端应用程序，且这些范围选为权限":::
 
 你可能还会注意到 Microsoft Graph API 的 User.Read 权限。 在 Azure 门户中注册应用时，会自动添加此权限。
 
@@ -136,11 +136,11 @@ ms.locfileid: "89442243"
 
 通过“为 {你的租户} 授予其他权限”按钮，管理员可向为应用程序配置的权限授予管理员同意。 选择该按钮后，会显示一个对话框，请求确认同意操作。
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Azure 门户中的“配置的权限”窗格中突出显示了“授予管理员同意”按钮":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="一个显示 Web API 的线形图，其中右侧有公开的范围，左侧有客户端应用程序，且这些范围选为权限":::
 
 授予同意后，要求管理员同意的权限显示为“已获得权限”：
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="在 Azure 门户中“配置权限”表，其中显示了已为 Files.Read.All 权限授予管理员同意":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="一个显示 Web API 的线形图，其中右侧有公开的范围，左侧有客户端应用程序，且这些范围选为权限":::
 
 如果你不是管理员，或者没有为应用程序配置任何权限，则将禁用“授予管理员同意”按钮。 如果你获得了权限但尚未配置它们，则“管理员同意”按钮会提示你处理这些权限。 可将它们添加到已配置的权限，或者将其删除。
 

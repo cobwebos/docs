@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442119"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>快速入门：配置应用程序以公开 Web API
@@ -95,7 +95,7 @@ ms.locfileid: "89442119"
 
 如果你已成功添加先前部分中所介绍的两个示例范围，则它们将显示在 Web API 的应用注册的“公开 API”窗格中，类似于以下内容：
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="“公开 API”窗格的屏幕截图，其中显示了两个公开的范围。":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Azure 门户中应用注册的“公开 API”窗格":::
 
 如图所示，范围的完整字符串由 Web API 的“应用程序 ID URI”与范围的“范围名称”串联而成 。
 

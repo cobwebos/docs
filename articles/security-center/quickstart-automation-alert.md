@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
 ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906357"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>快速入门：使用 Azure 资源管理器 (ARM) 模板创建特定安全警报自动响应
@@ -84,7 +84,7 @@ ms.locfileid: "90906357"
 1. 从 [Azure 门户](https://portal.azure.com)打开“安全中心”。
 1. 在顶部菜单栏中，选择筛选器图标，然后选择在其上部署了新的工作流自动化的特定订阅。
 1. 从安全中心的侧边栏打开“工作流自动化”并查找要删除的自动化。
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="删除工作流自动化的步骤" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="已配置的自动化列表" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. 选中要删除的项的复选框。
 1. 从工具栏中选择“删除”。
 

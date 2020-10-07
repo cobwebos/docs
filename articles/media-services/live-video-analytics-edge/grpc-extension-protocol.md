@@ -4,10 +4,10 @@ description: 在本文中，你将学习如何使用 gRPC 扩展协议在实时�
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 288dcd1a11c7c42d8796d3b17f2bfd56f562aaf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89448039"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC 扩展协议
