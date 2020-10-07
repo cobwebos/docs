@@ -1,19 +1,19 @@
 ---
 title: 快速入门：创建服务器 - Azure PowerShell - Azure Database for PostgreSQL（单一服务器）
 description: 使用 Azure PowerShell 创建 Azure Database for PostgreSQL（单一服务器）的快速入门指南。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7f04c4c52b2c1e2b347699168b3255d2f809278b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902681"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91705273"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -169,7 +169,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
 1. 在“创建 - 服务器”对话框中的“连接”选项卡上，填写设置表。
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="“连接”选项卡":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="“常规”选项卡":::
 
     pgAdmin 参数 |值|说明
     ---|---|---
@@ -193,7 +193,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
 1. 从列表框中选择数据库的“所有者”。 选择服务器管理员登录名，例如“my admin”。
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="在 pgAdmin 中创建数据库":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="“常规”选项卡":::
 
 1. 选择“保存”创建新的空白数据库。
 

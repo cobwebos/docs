@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 83da47ce27d452fd77fab3905c9ce48944c42ffb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575055"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767743"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "91575055"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “创建” > “键-值”来添加以下键值对    ：
+7. 选择“配置资源管理器” > “创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
@@ -36,7 +36,7 @@ ms.locfileid: "91575055"
 
     暂时将“标签”和“内容类型”保留为空   。
 
-7. 选择“应用”。 
+8. 选择“应用”。 
 
 ## <a name="create-a-net-core-console-app"></a>创建 .NET Core 控制台应用
 

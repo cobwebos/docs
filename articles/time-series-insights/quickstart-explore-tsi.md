@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/07/2020
-ms.openlocfilehash: 135fbe914a1bf99f1cc32bd9291658f60282aa0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100717"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91666528"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>快速入门：浏览 Azure 时序见解 Gen2 演示环境
 
@@ -100,7 +100,7 @@ Azure 时序见解 Gen2 资源管理器演示历史数据和根本原因分析�
 
       [![将时间跨度扩大为 60 天](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. 可以添加其他传感器数据点来提供更好的上下文。 查看的传感器越多，对问题的认识就更全面。 让我们放置一个标记，以显示实际值。 
+1. 可以添加其他传感器数据点来提供更好的上下文。 查看的传感器越多，对问题的认识就更全面。 让我们放置一个标记，以显示实际值。
 
     1. 选择“发电机系统”，然后选择三个传感器： **GridVoltagePhase1**、**GridVoltagePhase2** 和 **GridVoltagePhase3**。
     1. 在可见区域的最后一个数据点放一个标记。

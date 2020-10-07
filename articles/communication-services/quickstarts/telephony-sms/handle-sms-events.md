@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02a0a5dd5cfe3a1ecaa264f1e81c848a8da6c58d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943513"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756734"
 ---
 # <a name="quickstart-handle-sms-events"></a>快速入门：处理短信事件
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 通过 Azure 事件网格处理通信服务短信事件，开始使用 Azure 通信服务。 
 
@@ -65,11 +65,11 @@ ms.locfileid: "90943513"
 
 查看 [Azure 通信服务支持的事件](../../concepts/event-handling.md)的完整列表。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="显示选择了“短信已收到”和“短信传递报告已收到”事件类型的屏幕截图。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="显示在资源事件页中选择事件订阅按钮的屏幕截图。":::
 
 对于“终结点类型”，请选择“Web Hook”。  
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="显示设置为 Webhook 的“终结点类型”字段的屏幕截图。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="显示在资源事件页中选择事件订阅按钮的屏幕截图。":::
 
 对于“终结点”，请单击“选择终结点”，然后输入 Web 应用的 URL 。
 
@@ -77,7 +77,7 @@ ms.locfileid: "90943513"
 
 然后选择“确认选择”。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="显示确认 Webhook 终结点的屏幕截图。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="显示在资源事件页中选择事件订阅按钮的屏幕截图。":::
 
 ## <a name="viewing-sms-events"></a>查看短信事件
 
@@ -94,9 +94,9 @@ ms.locfileid: "90943513"
 
 完成以上任一操作后，你会注意到 `SMS Received` 和 `SMS Delivery Report Received` 事件发送到你的终结点。 这些事件会显示在我们在开始时设置的 [Azure 事件网格查看器示例](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)中。 可以按事件旁的眼睛图标来查看整个有效负载。 事件将如下所示：
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="显示“短信已收到”事件的事件网格架构的屏幕截图。":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="显示在资源事件页中选择事件订阅按钮的屏幕截图。":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="显示“短信传递报告”事件的事件网格架构的屏幕截图。":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="显示在资源事件页中选择事件订阅按钮的屏幕截图。":::
 
 详细了解[事件架构和其他事件处理概念](../../concepts/event-handling.md)
 

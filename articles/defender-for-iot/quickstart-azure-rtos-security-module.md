@@ -4,21 +4,21 @@ description: 了解如何在 Azure IoT 中心为 Azure RTOS 服务加入和启�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/24/2020
+ms.author: rkarlin
+ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943437"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759726"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>快速入门：Azure RTOS 安全模块（预览版）
 
@@ -35,7 +35,7 @@ ms.locfileid: "90943437"
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-从 [Azure RTOS 安全模块 GitHub 资源](hhtps://github.com/azure-rtos/azure-iot-preview/releases)下载、编译和运行你选择的特定看板和工具（IAR、semi's IDE 或 PC）的其中一个 .zip 文件。
+从 [Azure RTOS 安全模块 GitHub 资源](https://github.com/azure-rtos/azure-iot-preview/releases)下载、编译和运行你选择的特定看板和工具（IAR、semi's IDE 或 PC）的其中一个 .zip 文件。
 
 ### <a name="azure-resources"></a>Azure 资源
 
@@ -63,10 +63,10 @@ Azure RTOS 安全模块根据 MQTT 协议使用 Azure IoT 中间件连接。
 1. 选择“数据收集”。 
 1. 在“工作区配置”选项中，将开关切换为“开” 。 
 1. 创建新的或附加现有的 Log Analytics 工作区。 请确保已选中“访问原始安全数据”选项。 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="显示数据收集选项和原始安全数据选项均已选中的 Azure RTOS 配置":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="访问 Azure RTOS 的数据收集选项":::
 1. 选择“保存”
 1. 返回到 Azure 资源列表并确认你创建或附加的 Log Analytics 工作区已对 IoT 中心启用。
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="检查 Azure 资源列表以确认是否存在为 IoT 中心添加的正确 Log Analytics 工作区"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="访问 Azure RTOS 的数据收集选项"::: 
 
 ## <a name="next-steps"></a>后续步骤
 

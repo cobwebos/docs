@@ -10,12 +10,12 @@ ms.date: 09/03/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
-ms.openlocfilehash: 3fe27bf31385e0310211b5e1b0b7bbfa636eb19b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9265caa3054cde6af311e655db2b2496524e8d24
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943961"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757105"
 ---
 通过使用通信服务 Python 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -107,7 +107,7 @@ sms_response = sms_client.send(
 
 ```
 
-应将 `<leased-phone-number>` 替换为与通信服务关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。 所有电话号码参数都应遵循 [E.164 标准](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164)。
+应将 `<leased-phone-number>` 替换为与通信服务关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。 
 
 `send_sms_options` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
 

@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d4fe0f54ecd11c197f258d190e9eaef14bf2bb7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459917"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767775"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Azure Functions 应用
 
@@ -29,7 +29,7 @@ ms.locfileid: "91459917"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
+7. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
@@ -37,7 +37,7 @@ ms.locfileid: "91459917"
 
     暂时将“标签”和“内容类型”保留为空   。
 
-7. 选择“应用”。
+8. 选择“应用”。
 
 ## <a name="create-a-functions-app"></a>创建 Functions 应用
 

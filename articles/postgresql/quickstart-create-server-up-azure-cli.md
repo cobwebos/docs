@@ -1,19 +1,19 @@
 ---
 title: 快速入门：创建服务器 - az postgres up - Azure Database for PostgreSQL（单一服务器）
 description: 使用 Azure CLI（命令行界面）up 命令创建 Azure Database for PostgreSQL - 单一服务器的快速入门指南。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 662d34d3ed89a7d440a604de4338de334ea0bd11
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e4615db3dbabbc4b18dad7d6ec805ddff10e8fd7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300011"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91705103"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 Azure CLI 命令、az postgres up（预览版）创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -75,7 +75,7 @@ admin-password | 系统生成的 | 管理员用户的密码。
 
 服务器创建后，随附有以下设置：
 
-- 创建了一条名为“devbox”的防火墙规则。 Azure CLI 尝试检测运行 `az postgres up` 命令的计算机的 IP 地址，并允许该 IP 地址。
+- 创建了一条名为“devbox”的防火墙规则。 Azure CLI 尝试检测运行 `az postgres up` 命令的计算机的 IP 地址，并允许此 IP 地址。
 - “允许访问 Azure 服务”设置为“开”。 此设置会将服务器的防火墙配置为接受来自所有 Azure 资源（包括非订阅中的资源）的连接。
 - 创建了一个名为“sampledb”的空数据库
 - 创建了一个特权为“sampledb”且名为“root”的新用户

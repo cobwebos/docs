@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5be2ff48ea5510c54c79e76e8bae082bd5085794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943391"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91665389"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 
@@ -36,7 +36,7 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 
 可以将 Azure 通知中心连接到通信服务资源，以便在收到传入呼叫时自动向用户的移动设备发送推送通知。 你应使用这些推送通知从后台唤醒你的应用程序，并显示让用户接受或拒绝呼叫的 UI。 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="显示通信服务如何与 Azure 通知中心集成的关系图。":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="显示通信服务如何与事件网格集成的关系图。":::
 
 通信服务使用 Azure 通知中心作为直通服务，以便使用[直接发送](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 与各种特定于平台的推送通知服务进行通信。 这使你可以重复使用现有 Azure 通知中心资源和配置，向你的应用程序传递低延迟、可靠的呼叫通知。
 
@@ -66,7 +66,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 在门户中，导航到 Azure 通信服务资源。 在通信服务资源中，从“通信服务”页的左侧菜单中选择“推送通知”，并连接之前预配的通知中心。 你需要在此处提供连接字符串和资源 ID：
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示 Azure 门户中的推送通知设置的屏幕截图。":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示通信服务如何与事件网格集成的关系图。":::
 
 #### <a name="device-registration"></a>设备注册 
 

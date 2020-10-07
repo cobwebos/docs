@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307715"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740916"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 
@@ -35,7 +35,7 @@ ms.locfileid: "91307715"
 
 服务仪表板上的部分显示你已有多少个索引、索引器和数据源。 
 
-![索引、索引器和数据源的列表](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="索引、索引器和数据源的列表":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> 创建索引并加载数据
 
@@ -49,11 +49,11 @@ ms.locfileid: "91307715"
 
 1. [查找搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，并在“概述”页中，单击命令栏上的“导入数据”，以创建和填充搜索索引。
 
-   ![导入数据命令](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="索引、索引器和数据源的列表":::
 
 1. 在向导中，单击“连接到数据” > “示例” > “hotels-sample”。   此数据源是内置的。 如果要创建自己的数据源，则需要指定名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
 
-   ![选择示例数据集](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="索引、索引器和数据源的列表":::
 
 1. 继续转到下一页。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91307715"
 
 我们将暂时跳过此步骤，转到“自定义目标索引”。
 
-   ![跳过认知技能步骤](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="索引、索引器和数据源的列表":::
 
 > [!TIP]
 > 可以在[快速入门](cognitive-search-quickstart-blob.md)或[教程](cognitive-search-tutorial-blob.md)中逐步执行 AI 索引示例。
@@ -87,7 +87,7 @@ ms.locfileid: "91307715"
 
    如果使用现有的 hotels 数据源再次重新运行向导，则不会使用默认属性配置索引。 以后导入时，你必须手动选择属性。 
 
-   ![生成的 hotels 索引](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="索引、索引器和数据源的列表":::
 
 2. 继续转到下一页。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91307715"
 
 单击“提交”以创建并同时运行索引器。
 
-  ![hotels 索引器](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="索引、索引器和数据源的列表":::
 
 ## <a name="monitor-progress"></a>监视进度
 
@@ -108,7 +108,7 @@ ms.locfileid: "91307715"
 
 门户网站可能需要几分钟才能更新页面，但列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
 
-   ![索引器进度消息](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="索引、索引器和数据源的列表":::
 
 ## <a name="view-the-index"></a>查看索引
 
@@ -116,13 +116,13 @@ ms.locfileid: "91307715"
 
 等待门户页刷新。 几分钟后，应该会看到具有文档计数和存储大小的索引。
 
-   ![服务仪表板上的索引列表](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="索引、索引器和数据源的列表":::
 
 从此列表中，可以单击刚刚创建的 *hotels-sample* 索引，查看索引架构， 并可以选择添加新字段。 
 
 “字段”选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 认知搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
 
-   ![示例索引定义](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="索引、索引器和数据源的列表":::
 
 随时可以添加其他构造，例如评分配置文件和 CORS 选项。
 
@@ -140,15 +140,15 @@ ms.locfileid: "91307715"
 
 1. 单击命令栏上的“搜索浏览器”  。
 
-   ![搜索浏览器命令](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="索引、索引器和数据源的列表":::
 
 2. 在“索引”下拉列表中，选择“hotels-sample-index”。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。 对于以下查询，请使用正式发行版 (2020-06-30)。
 
-   ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="索引、索引器和数据源的列表":::
 
 3. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。
 
-   ![查询字符串和搜索按钮](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="索引、索引器和数据源的列表":::
 
 ## <a name="example-queries"></a>查询示例
 

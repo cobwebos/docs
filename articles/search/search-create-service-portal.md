@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/05/2020
+ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268360"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741000"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -47,7 +47,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 1. 使用搜索栏查找“Azure 认知搜索”，或通过“Web” > “Azure 认知搜索”导航到资源 。
 
-![在门户中创建资源](./media/search-create-service-portal/find-search3.png "在门户中创建资源")
+:::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="在门户中创建资源" border="false":::
 
 ## <a name="choose-a-subscription"></a>选择订阅
 
@@ -59,11 +59,11 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 若不将资源合并到单个组中，或现有资源组中包含的资源用于不相关的解决方案，请新建一个仅用于 Azure 认知搜索资源的资源组。 
 
-![创建新的资源组](./media/search-create-service-portal/new-resource-group.png "创建新的资源组")
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="在门户中创建资源" border="false":::
 
 随着时间的变化，你可以统一跟踪当前成本和预计成本，或者查看单个资源的费用。 以下屏幕截图显示了在将多个资源合并到一个组时，可以看到的成本信息的种类。
 
-![在资源组级别管理成本](./media/search-create-service-portal/resource-group-cost-management.png "在资源组级别管理成本")
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="在门户中创建资源" border="false":::
 
 > [!TIP]
 > 资源组可以简化清理，因为删除某个组会删除其中的所有服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。
@@ -114,11 +114,11 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 提供所需的输入后，继续创建服务。 
 
-![查看并创建服务](./media/search-create-service-portal/new-service3.png "查看并创建服务")
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="在门户中创建资源" border="false":::
 
 服务在几分钟内即可部署。 可以通过 Azure 通知监视进度。 考虑将该服务固定到仪表板，以方便将来访问。
 
-![监视和固定服务](./media/search-create-service-portal/monitor-notifications.png "监视和固定服务")
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="在门户中创建资源" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>获取密钥和 URL 终结点。
 
@@ -128,7 +128,7 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 2. 在“密钥”页上，复制其中一个管理密钥（它们等同）。 在服务上创建、更新和删除对象需要管理员 API 密钥。 相反，查询键提供索引内容的读取访问权限。
 
-   ![包含 URL 终结点的服务概览页](./media/search-create-service-portal/get-url-key.png "URL 终结点和其他服务详细信息")
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="在门户中创建资源" border="false":::
 
 基于门户的任务不需终结点和密钥。 门户已链接到具有管理员权限的 Azure 认知搜索资源。 有关门户演练，请从[快速入门：在门户中创建 Azure 认知搜索索引](search-get-started-portal.md)。
 
@@ -149,7 +149,7 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 2. 在左侧导航窗格中，选择“设置” > “缩放”。
 3. 使用滑块添加任一类型的资源。
 
-![添加容量](./media/search-create-service-portal/settings-scale.png "通过副本和分区添加容量")
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="在门户中创建资源" border="false":::
 
 > [!Note]
 > 所在的层级越高，每个分区的存储大小和速度就越高。 有关详细信息，请参阅[容量和限制](search-limits-quotas-capacity.md)。

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 2dcc018c65625825436bd1050cdf7f3b9d3131e2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 134c9996690d629ad8acb348d1928904741b6b2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375196"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654449"
 ---
 若要创建 Visual Studio 项目以用于通用 Windows 平台 (UWP) 开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，设置音频捕获，然后安装语音 SDK。
 
@@ -19,13 +19,13 @@ ms.locfileid: "87375196"
 
 1. 打开 Visual Studio 2019 以显示“开始”  窗口。
 
-   ![启动窗口 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
+   ![显示“开始”窗口的屏幕截图，其中突出显示了“继续但无需代码”操作。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
 
 1. 选择“继续但无需代码”  ，转到 Visual Studio IDE。
 
 1. 在 Visual Studio 菜单栏中，选择“工具”   > “获取工具和功能”  以打开 Visual Studio 安装程序并查看“修改”  对话框。
 
-   ![“工作负载”选项卡，“修改”对话框，Visual Studio 安装程序](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
+   ![显示“修改”对话框的“工作负荷”选项卡的屏幕截图，其中突出显示了“通用 Windows 平台开发”。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
 1. 在“工作负载”  选项卡的“Windows”  下，找到“通用 Windows 平台开发”  工作负载。 如果已选中该工作负载旁的复选框，请关闭“修改”  对话框，然后转到步骤 6。
 
@@ -39,13 +39,13 @@ ms.locfileid: "87375196"
 
 1. 在 Visual Studio 菜单栏中，选择“文件”   > “新建”   > “项目”  以显示“创建新项目”  窗口。
 
-   ![创建新项目 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
+   ![显示“新建项目”窗口的屏幕截图，其中选中了“空白应用(通用 Windows)”，并且突出显示了“下一步”按钮。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
 
 1. 查找并选择“空白应用(通用 Windows)”。 确保选择此项目类型的 C# 版本（而不是 Visual Basic）。
 
 1. 选择“下一步”  以显示“配置新项目”  屏幕。
 
-   ![配置新项目 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
+   ![显示“配置新项目”屏幕的屏幕截图，其中突出显示了“项目名称”和“位置”字段以及“创建”按钮。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
 1. 在“项目名称”  中输入 `helloworld`。
 
@@ -53,7 +53,7 @@ ms.locfileid: "87375196"
 
 1. 选择“创建”  以转到“新建通用 Windows 平台项目”  窗口。
 
-   ![“新建通用 Windows 平台项目”对话框 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+   ![显示“新建通用 Windows 平台项目”对话框的屏幕截图。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
 1. 在“最低版本”  （第二个下拉框）中，选择“Windows 10 Fall Creators Update (10.0；内部版本 16299)”  ，这是语音 SDK 的最低要求。
 
@@ -90,13 +90,13 @@ ms.locfileid: "87375196"
 
 1. 选择“浏览”。
 
-   ![“管理解决方案包”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![显示“管理解决方案的包”对话框的屏幕截图，其中突出显示了“浏览”选项卡、“搜索”框和“包源”。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. 在“包源”中，选择“nuget.org”。
 
 1. 在“搜索”框中，输入 `Microsoft.CognitiveServices.Speech`，然后在该包显示在搜索结果中之后选择该包。
 
-   ![“管理解决方案包”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
+   ![显示选中“Microsoft.CognitiveServices.Speech”的屏幕截图，其中突出显示了项目和“安装”按钮。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
 1. 在搜索结果旁的“包状态”窗格中，选择“helloworld”项目。
 

@@ -8,23 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 2ef95af333bad96e443821e1bc039ef2614593f5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9f31a16434c8b54e13f4d52a412afbc90fb5c6b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327219"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760880"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>快速入门：使用计算机视觉 REST API 和 Java 提取印刷体文本和手写文本
 
 本快速入门将使用计算机视觉 REST API 从图像中提取印刷体文本和手写文本。 使用 [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 和 [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) 方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。
 
-
-> [!IMPORTANT]
-> [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Location` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取读取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API，同时检查状态并返回 Read 方法调用的结果。
+[Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Location` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取读取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API，同时检查状态并返回 Read 方法调用的结果。
 
 ---
 

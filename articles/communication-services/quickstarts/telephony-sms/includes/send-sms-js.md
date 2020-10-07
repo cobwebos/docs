@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: cdd4988f9a23904c0771852c4539aa9bce2ee683
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ad8266d936c272ee2f6bad254738622c3f81bf03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943953"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757106"
 ---
 通过使用通信服务 JavaScript 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -97,16 +97,20 @@ const smsClient = new SmsClient(connectionString);
 通过调用 `send` 方法发送短信。 将此代码添加到 send-sms.js 方法的末尾：
 
 ```javascript
-await smsClient.send({
-  from: "<leased-phone-number>",
-  to: ["<to-phone-number>"],
-  message: "Hello World 👋🏻 via Sms"
-}, {
-  enableDeliveryReport: true //Optional parameter
-});
+async function main() {
+  await smsClient.send({
+    from: "<leased-phone-number>",
+    to: ["<to-phone-number>"],
+    message: "Hello World 👋🏻 via Sms"
+  }, {
+    enableDeliveryReport: true //Optional parameter
+  });
+}
+
+main();
 ```
 
-应将 `<leased-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。 所有电话号码参数都应遵循 [E.164 标准](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164)。
+应将 `<leased-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。
 
 `enableDeliveryReport` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
 

@@ -8,22 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: c3f0b7c262fc774e43f2f63ebf09a1a08beea686
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4100bf38b61d1b6eb7c3dfad3f1434a885c7d2ae
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262665"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760846"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取印刷体文本和手写文本
 
 本快速入门将使用计算机视觉 REST API 从图像中提取印刷体文本和手写文本。 使用 [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 和 [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) 方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 
 
-> [!IMPORTANT]
-> [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Location` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取读取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API，同时检查状态并返回 Read 方法调用的结果。
+[Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Location` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取读取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API，同时检查状态并返回 Read 方法调用的结果。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,8 +31,8 @@ ms.locfileid: "91262665"
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-## <a name="create-and-run-the-sample"></a>创建并运行示例
 
+## <a name="create-and-run-the-sample"></a>创建并运行示例
 
 要创建和运行示例，请执行以下步骤：
 

@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303297"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779490"
 ---
 通过使用通信服务 C# 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -59,7 +59,7 @@ dotnet build
 仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务短信客户端库。
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.2
 ```
 
 将 `using` 指令添加到 Program.cs 顶部以包括 `Azure.Communication` 命名空间。
@@ -106,7 +106,7 @@ smsClient.Send(
 );
 ```
 
-应将 `<leased-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。 所有电话号码参数都应遵循 [E.164 标准](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164)。
+应将 `<leased-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。
 
 `EnableDeliveryReport` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
 

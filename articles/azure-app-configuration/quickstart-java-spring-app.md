@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586443"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767638"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "88586443"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
+7. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
@@ -40,7 +40,7 @@ ms.locfileid: "88586443"
 
     暂时将“标签”和“内容类型”保留为空   。
 
-7. 选择“应用”。 
+8. 选择“应用”。 
 
 ## <a name="create-a-spring-boot-app"></a>创建 Spring Boot 应用
 

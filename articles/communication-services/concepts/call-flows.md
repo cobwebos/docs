@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7172e3319e60603d46dc2af87f3818a5c3664285
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9fe5cb13ee352b2c49ab6ae57cabd6116cdfa720
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943526"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667667"
 ---
 # <a name="call-flows"></a>呼叫流
 
@@ -44,13 +44,13 @@ ms.locfileid: "90943526"
 
 对于 Alice，它会作为咖啡店的 NAT，而对于 Bob，它会作为家庭办公室的 NAT。 Alice 的设备会发送其 NAT 的外部地址，Bob 的设备会执行相同操作。 客户端库从 Azure 通信服务免费提供的 STUN（适用于 NAT 的会话遍历实用工具）服务了解外部地址。 处理 Alice 与 Bob 之间的握手的逻辑嵌入在 Azure 通信服务提供的客户端库中。 （无需任何其他配置）
 
-:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="显示利用 STUN 连接的 VOIP 呼叫的关系图。":::
+:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="显示用户与通信服务之间的直接 VOIP 呼叫的关系图。":::
 
 ### <a name="case-3-voip-where-neither-a-direct-nor-nat-connection-is-possible"></a>事例 3：无法实现直接和 NAT 连接的 VoIP
 
 如果一个或两个客户端设备处于对称 NAT 后面，则需要用于在两个客户端库之间中继媒体的单独云服务。 此服务称为 TURN（围绕 NAT 使用中继进行遍历），也由通信服务提供。 通信服务呼叫客户端库会基于检测到的网络条件自动使用 TURN 服务。 使用 Microsoft 的 TURN 服务会单独计费。
 
-:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="显示利用 TURN 连接的 VOIP 呼叫的关系图。":::
+:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="显示用户与通信服务之间的直接 VOIP 呼叫的关系图。":::
  
 ### <a name="case-4-group-calls-with-pstn"></a>事例 4：使用 PSTN 的群呼
 
@@ -58,7 +58,7 @@ PSTN 呼叫的信号和媒体都使用 Azure 通信服务电话服务资源。 �
 
 PSTN 媒体流量会通过一个称为媒体处理器的组件进行流动。
 
-:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="显示使用通信服务的 PSTN 群呼的关系图。":::
+:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="显示用户与通信服务之间的直接 VOIP 呼叫的关系图。":::
 
 > [!NOTE]
 > 对于熟悉媒体处理的用户，我们的媒体处理器还是背靠背用户代理（在 [RFC 3261 SIP：会话初始协议](https://tools.ietf.org/html/rfc3261)中定义），这意味着它可以在处理 Microsoft 与运营商网络之间的呼叫时转换编解码器。 Azure 通信服务信号控制器是 Microsoft 根据相同 RFC 实现的 SIP 代理。
@@ -70,11 +70,11 @@ PSTN 媒体流量会通过一个称为媒体处理器的组件进行流动。
 > [!NOTE]
 > 媒体处理器可以充当多点控制单元 (MCU) 或选择性转发单元 (SFU)
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="显示通信服务内的 UDP 媒体处理流的关系图。":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="显示用户与通信服务之间的直接 VOIP 呼叫的关系图。":::
 
 如果由于防火墙限制，客户端库无法对媒体使用 UDP，则会尝试使用传输控制协议 (TCP)。 请注意，媒体处理器组件需要 UDP，因此当发生这种情况时，通信服务 TURN 服务会添加到群呼中，用于将 TCP 转换为 UDP。 在这种情况下会产生 TURN 费用，除非手动禁用 TURN 功能。
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="显示通信服务内的 TCP 媒体处理流的关系图。":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="显示用户与通信服务之间的直接 VOIP 呼叫的关系图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

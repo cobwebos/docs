@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: c11c2098d30ed6f00d94124fd77c2ebdb6cd2c7a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76aae596c145c736ae75e65f7f72fdbdcead5919
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303298"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779504"
 ---
 通过使用通信服务 Java 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -52,13 +52,13 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 
 ### <a name="install-the-package"></a>安装包
 
-在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
+在文本编辑器中打开 pom.xml 文件****。 将以下依赖项元素添加到依赖项组。
 
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.1</version>
+    <version>1.0.0-beta.2</version>
 </dependency>
 ```
 
@@ -161,7 +161,7 @@ SendSmsResponse response = client.sendMessage(
 System.out.println("MessageId: " + response.getMessageId());
 ```
 
-应将 `<leased-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。 所有电话号码参数都应遵循 [E.164 标准](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164)。
+应将 `<leased-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。
 
 `enableDeliveryReport` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
 

@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 5542dca6d9b1ab18cf1b9b93e20fa64da0eb1dd4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998291"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767708"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>快速入门：向 Azure Functions 应用添加功能标志
 
@@ -31,14 +31,14 @@ ms.locfileid: "90998291"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“功能管理器” > “+添加”以添加名为 `Beta` 的功能标志。  
+7. 选择“功能管理器” > “+添加”以添加名为 `Beta` 的功能标志。  
 
     > [!div class="mx-imgBorder"]
     > ![启用名为 Beta 的功能标志](media/add-beta-feature-flag.png)
 
     暂时不定义 `label` 和 `Description`。
 
-7. 选择“应用”  以保存新功能标志。
+8. 选择“应用”  以保存新功能标志。
 
 ## <a name="create-a-functions-app"></a>创建 Functions 应用
 

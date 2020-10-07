@@ -3,12 +3,12 @@ title: 快速入门：使用 Azure CLI 创建蓝图
 description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: c64723befbe3cb8d811179e7062df18606749783
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 3dfb74469bc186c25b918bfe87c7ce6f1930f2e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051536"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667684"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图
 
@@ -23,7 +23,7 @@ ms.locfileid: "89051536"
 ## <a name="add-the-blueprint-extension"></a>添加蓝图扩展
 
 若要使 Azure CLI 能够管理蓝图定义和分配，则必须添加该扩展。
-此扩展适用于可以使用 Azure CLI 的任何位置，包括 [Windows 10 上的 bash](/windows/wsl/install-win10)、[Cloud Shell](https://shell.azure.com)（独立的或位于门户内的）、[Azure CLI Docker 映像](https://hub.docker.com/r/microsoft/azure-cli/)，也适用于在本地安装了 Azure CLI 的任何位置。
+此扩展适用于可以使用 Azure CLI 的任何位置，包括 [Windows 10 上的 bash](/windows/wsl/install-win10)、[Cloud Shell](https://shell.azure.com)（独立的或位于门户内的）、[Azure CLI Docker 映像](https://hub.docker.com/_/microsoft-azure-cli)，也适用于在本地安装了 Azure CLI 的任何位置。
 
 1. 请确保安装最新的 Azure CLI（至少为 2.0.76）。 若尚未安装，请遵循[这些说明](/cli/azure/install-azure-cli-windows)。
 
