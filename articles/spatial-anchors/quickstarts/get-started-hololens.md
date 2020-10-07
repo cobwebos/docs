@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: e6d728647bb654ee2645bb1e3eb5968dcab337a8
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87810337"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>快速入门：在 C++/WinRT 和 DirectX 中使用 Azure 空间定位点创建 HoloLens 应用

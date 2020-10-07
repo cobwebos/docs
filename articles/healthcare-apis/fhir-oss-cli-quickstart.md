@@ -10,10 +10,10 @@ ms.date: 02/07/2019
 ms.author: matjazl
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 10af71afd8843e75d5df3be57c909c56a7abca01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87843566"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-cli"></a>快速入门：使用 Azure CLI 部署开放源代码 FHIR 服务器

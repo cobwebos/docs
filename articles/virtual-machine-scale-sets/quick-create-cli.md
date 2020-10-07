@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 0dc98ba242d3eb5fba79605dae9f8eadc56affd7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87504426"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟机规模集
@@ -27,7 +27,7 @@ ms.locfileid: "87504426"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -65,7 +65,7 @@ az vmss extension set \
 
 
 ## <a name="allow-traffic-to-application"></a>允许流量发往应用程序
-创建规模集时，已自动部署一个 Azure 负载均衡器。 该负载均衡器会将流量分配到规模集中的 VM 实例。 若要允许流量抵达示例 Web 应用程序，请使用 [az network lb rule create](/cli/azure/network/lb/rule) 创建一个负载均衡器规则。 以下示例创建名为“myLoadBalancerRuleWeb”  的规则：
+创建规模集时，已自动部署一个 Azure 负载均衡器。 该负载均衡器会将流量分配到规模集中的 VM 实例。 若要允许流量抵达示例 Web 应用程序，请使用 [az network lb rule create](/cli/azure/network/lb/rule) 创建一个负载均衡器规则。 以下示例创建名为“myLoadBalancerRuleWeb”的规则：
 
 ```azurecli-interactive
 az network lb rule create \
@@ -81,7 +81,7 @@ az network lb rule create \
 
 
 ## <a name="test-your-scale-set"></a>测试规模集
-若要查看正在运行的规模集，请在 Web 浏览器中访问示例 Web 应用程序。 使用 [az network public-ip show](/cli/azure/network/public-ip) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”  的 IP 地址：
+若要查看正在运行的规模集，请在 Web 浏览器中访问示例 Web 应用程序。 使用 [az network public-ip show](/cli/azure/network/public-ip) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”的 IP 地址：
 
 ```azurecli-interactive
 az network public-ip show \

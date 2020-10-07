@@ -4,10 +4,10 @@ description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应�
 ms.topic: overview
 ms.date: 05/10/2019
 ms.openlocfilehash: cb1eb8eb75a18a73e8f024f02217df37f45981fe
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499766"
 ---
 # <a name="what-is-azure-service-health"></a>什么是 Azure 服务运行状况？

@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642106"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>使用 Azure AD 集中应用程序管理

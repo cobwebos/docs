@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.openlocfilehash: 8afb6f018e9c01ee42a9e43cc726a442fa4c8965
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88539332"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>快速入门：使用人脸 REST API 和 cURL 检测图像中的人脸

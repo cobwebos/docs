@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
 ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88226576"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。

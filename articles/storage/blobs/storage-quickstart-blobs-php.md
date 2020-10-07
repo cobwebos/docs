@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835742"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象

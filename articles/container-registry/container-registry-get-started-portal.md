@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88031762"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>快速入门：通过 Azure 门户创建 Azure 容器注册表
@@ -31,7 +31,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 在“基本信息”选项卡中，输入“资源组”和“注册表名称”的值 。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `West US` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU**，选择“基本”。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="在门户中创建容器注册表":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="在门户中导航到容器注册表":::
 
 对于剩余的设置，请接受默认值。 然后选择“查看 + 创建”。 查看设置后，选择“创建”。
 
@@ -39,7 +39,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 显示“部署成功”消息时，请在门户中选择容器注册表。 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="门户中的容器注册表概述":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="在门户中导航到容器注册表":::
 
 记下登录服务器的注册表名称和值。 使用 Docker 推送和拉取映像时，请在以下步骤中使用这些值。
 
@@ -65,7 +65,7 @@ az acr login --name mycontainerregistry
 
 若要列出注册表中的映像，请在门户中导航到注册表并选择“存储库”，然后选择使用 `docker push` 创建的 hello-world 存储库 。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="在门户中列出容器映像":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="在门户中导航到容器注册表":::
 
 通过选择 hello-world 存储库，可以在“标记”下看到 `v1` 标记的映像 。
 
@@ -75,7 +75,7 @@ az acr login --name mycontainerregistry
 
 若要清理资源，请在门户中导航到 **myResourceGroup** 资源组。 加载该资源组后，单击“删除资源组”，删除该资源组、容器注册表以及其中存储的容器映像。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="在门户中删除资源组":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="在门户中导航到容器注册表":::
 
 
 ## <a name="next-steps"></a>后续步骤

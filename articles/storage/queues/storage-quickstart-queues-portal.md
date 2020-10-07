@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213496"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建队列并添加消息

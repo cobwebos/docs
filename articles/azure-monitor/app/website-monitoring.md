@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/19/2020
 ms.custom: mvc
 ms.openlocfilehash: 959beeac004c71fb4593740d3c1685771638e40c
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88611324"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>快速入门：开始使用 Azure Monitor Application Insights 监视你的网站
@@ -132,7 +132,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 > 如果使用了现有资源组，则以下说明不适用。 只需删除单个 Application Insights 资源即可。 请记住，在删除某个资源组时，属于该组的所有底层资源也会一并删除。
 
 1. 在 Azure 门户的左侧菜单中选择“资源组”，然后选择“myResourceGroup”或临时资源组的名称。
-1. 在资源组页上选择“删除”，在文本框中输入 **myResourceGroup**，然后选择“删除”。
+1. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup**，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87836371"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介

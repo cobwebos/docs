@@ -8,10 +8,10 @@ ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88587389"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法

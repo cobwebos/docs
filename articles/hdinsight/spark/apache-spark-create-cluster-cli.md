@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9827c50d034b1c49700869c3274800c194c631a8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499443"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集

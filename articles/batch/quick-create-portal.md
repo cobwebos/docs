@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511365"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
@@ -47,7 +47,7 @@ ms.locfileid: "88511365"
 
 1. 在“操作系统”中选择以下设置（可以浏览其他选项）。
   
-   |设置  |值  |
+   |设置  |Value  |
    |---------|---------|
    |**映像类型**|市场|
    |**发布者**     |microsoftwindowsserver|
@@ -97,7 +97,7 @@ Batch 会立即创建池，但分配和启动计算节点则需要数分钟。 �
 
 你创建的示例任务将在几分钟内完成。 若要查看已完成任务的输出，请选择任务，然后选择“节点上的文件”。 选择 `stdout.txt` 文件以查看任务的标准输出。 内容如下所示：
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="已完成任务的输出的屏幕截图。":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Azure 市场中的 Batch 服务的屏幕截图。":::
 
 内容显示在节点上设置的 Azure Batch 环境变量。 创建自己的 Batch 作业和任务时，可以在任务命令行中引用这些环境变量，并在命令行运行的应用和脚本中引用它们。
 
@@ -105,7 +105,7 @@ Batch 会立即创建池，但分配和启动计算节点则需要数分钟。 �
 
 若要继续学习 Batch 教程和示例，请使用在本快速入门中创建的 Batch 帐户和关联的存储帐户。 Batch 帐户本身不收费。
 
-只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 在帐户视图中，选择“池”和池的名称。 然后选择“删除”。  删除池时会删除节点上的所有任务输出。
+只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 在帐户视图中，选择“池”和池的名称。 然后选择“删除”  。  删除池时会删除节点上的所有任务输出。
 
 若不再需要资源组、Batch 帐户以及所有相关资源，请将其删除。 为此，请选择 Batch 帐户所在的资源组，然后选择“删除资源组”。
 

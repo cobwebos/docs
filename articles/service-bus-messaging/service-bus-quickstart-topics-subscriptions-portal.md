@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.openlocfilehash: d3dc63106e1ca5d9db2b14392ca1fb97e3a68289
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88191535"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>使用 Azure 门户创建一个服务总线主题和多个对该主题的订阅

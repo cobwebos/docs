@@ -4,10 +4,10 @@ description: 本快速入门介绍为 Azure PowerShell 启用 Resource Graph 模
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4cc7eb524060f2a797077f38321ae9ce6c9cf267
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88056391"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询

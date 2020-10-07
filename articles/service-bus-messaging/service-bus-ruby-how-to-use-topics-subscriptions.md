@@ -7,10 +7,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88067556"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>快速入门：如何通过 Ruby 使用服务总线主题和订阅

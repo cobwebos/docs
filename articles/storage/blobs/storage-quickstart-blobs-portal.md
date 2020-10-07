@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: tamram
 ms.openlocfilehash: f2e18b060aabcb849fb8e17722c530d199ebdbb8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88067732"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入门：使用 Azure 门户上传、下载和列出 Blob

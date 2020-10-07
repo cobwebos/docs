@@ -8,10 +8,10 @@ ms.custom:
 - mvc
 - devx-track-python
 ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511008"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
@@ -227,7 +227,7 @@ for task in tasks:
 
 应用自动删除所创建的存储容器，并允许你选择是否删除 Batch 池和作业。 只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 删除池时会删除节点上的所有任务输出。 
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后选择“删除资源组”。 
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后选择“删除资源组”。****
 
 ## <a name="next-steps"></a>后续步骤
 

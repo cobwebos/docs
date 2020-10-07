@@ -12,17 +12,17 @@ ms.date: 08/14/2020
 ms.author: iainfou
 ms.custom: contperfq1
 ms.openlocfilehash: 2255f2193378d0cc3611680c6aa5f8e0837e99aa
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88245169"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？
 
 Azure Active Directory 域服务 (AD DS) 提供托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器 (DC) 即可使用这些域服务。
 
-通过 Azure AD DS 托管域，可在云中或者在你不希望 Directory 查找始终返回到本地 AD DS 环境的位置，运行无法使用新式身份验证方法的旧版应用程序。 你可以将这些旧版应用程序从本地环境直接迁移到托管域，而无需在云中管理 AD DS 环境。
+Azure AD DS 托管域使你能够在云中或你不希望目录查找始终返回到本地 AD DS 环境的位置，运行无法使用现代身份验证方法的旧版应用程序。 你可以将这些旧版应用程序从本地环境直接迁移到托管域，而无需在云中管理 AD DS 环境。
 
 Azure AD DS 与现有的 Azure AD 租户集成。 通过此集成，用户可以使用其现有凭据登录到与托管域相连的服务和应用程序。 还可以使用现有组和用户帐户来保护对资源的访问。 这些功能可更顺畅地将本地资源直接迁移到 Azure。
 
@@ -31,9 +31,9 @@ Azure AD DS 与现有的 Azure AD 租户集成。 通过此集成，用户可以
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS 如何工作？
 
-创建 Azure AD DS 托管域时，需定义唯一的命名空间。 该命名空间是域名，例如“aaddscontoso.com”。 两个 Windows Server 域控制器 (DC) 随后部署到你所选定的 Azure 区域中。 DC 的这种部署称为副本集。
+创建 Azure AD DS 托管域时，需定义唯一的命名空间。 该命名空间为域名，例如“aaddscontoso.com”。 两个 Windows Server 域控制器 (DC) 随即部署到选定的 Azure 区域中。 DC 的这种部署称为副本集。
 
-你不需要管理、配置或更新这些 DC。 Azure 平台将这些 DC 作为托管域的一部分进行处理，包括备份。
+你不需要管理、配置或更新这些 DC。 Azure 平台将 DC 作为托管域的一部分进行处理，包括备份。
 
 托管域配置为从 Azure AD 执行单向同步，以提供对一组集中用户、组和凭据的访问。 你可以直接在托管域中创建资源，但它们不会同步回 Azure AD。 然后，Azure 中连接到该托管域的应用程序、服务和 VM 便可使用常见 AD DS 功能，如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。
 
@@ -54,7 +54,7 @@ Azure AD DS 从 Azure AD 中复制标识信息，因此，它适用于仅限云�
 
 >[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
-若要了解 Azure AD DS 部署方案的实际应用，你可以探索以下示例：
+若要查看运行中的 Azure AD DS 部署方案，你可以探索以下示例：
 
 * [混合组织的 Azure AD DS](scenarios.md#azure-ad-ds-for-hybrid-organizations)
 * [仅限云的组织的 Azure AD DS](scenarios.md#azure-ad-ds-for-cloud-only-organizations)
@@ -63,7 +63,7 @@ Azure AD DS 从 Azure AD 中复制标识信息，因此，它适用于仅限云�
 
 为了向云中的应用程序和 VM 提供标识服务，Azure AD DS 与域加入、安全 LDAP (LDAPS)、组策略、DNS 管理以及 LDAP 绑定和读取支持等操作的传统 AD DS 环境完全兼容。 LDAP 写入支持适用于在托管域中创建的对象，但不适用于从 Azure AD 同步的资源。
 
-若要了解关于你的标识选项的详细信息，[请将 Azure AD DS 与 Azure AD、Azure VM 上的 AD DS 以及本地 AD DS 进行比较][compare]。
+若要了解有关标识选项的详细信息，[请将 Azure AD DS 与 Azure AD、Azure VM 上的 AD DS 和本地 AD DS 进行比较][compare]。
 
 Azure AD DS 的以下功能简化了部署和管理操作：
 

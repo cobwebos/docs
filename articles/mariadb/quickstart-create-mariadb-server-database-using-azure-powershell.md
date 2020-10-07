@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87502250"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure Database for MariaDB 服务器

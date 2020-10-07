@@ -8,10 +8,10 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
 ms.openlocfilehash: 7857a037d8e48c8c6ae8d44cf77c863bec91d9d3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88510604"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和加密 Windows 虚拟机
@@ -45,7 +45,7 @@ ms.locfileid: "88510604"
 
 1. 选择“管理”选项卡，验证自己是否有一个诊断存储帐户。 如果没有存储帐户，请选择“新建”，为新帐户指定一个名称，然后选择“确定”
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="ResourceGroup 创建屏幕":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Windows VM 创建屏幕":::
 
 1. 单击“查看 + 创建”。
 1. 在“创建虚拟机”页上，可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”。
@@ -59,19 +59,19 @@ ms.locfileid: "88510604"
 1. 在顶部栏上，选择“其他设置”。
 1. 在“加密设置” > “要加密的磁盘”下，选择“OS 和数据磁盘”  。
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="磁盘和加密选择":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Windows VM 创建屏幕":::
 
 1. 在“加密设置”下，选择“选择密钥保管库和用于加密的密钥” 。
 1. 在“从 Azure Key Vault 选择密钥”屏幕上选择“新建” 。
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="磁盘和加密选择":::
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Windows VM 创建屏幕":::
 
 1. 在“密钥保管库和密钥”的左侧，选择“单击以选择密钥” 。
 1. 在“从 Azure Key Vault 选择密钥”的“密钥保管库”字段下选择“新建”  。
 1. 在“创建密钥保管库”屏幕上，确保资源组为 myResourceGroup，并为密钥保管库命名。  Azure 中的每个密钥保管库都必须具有唯一名称。
 1. 在“访问策略”选项卡上，选中“用于卷加密的 Azure 磁盘加密”框 。
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="磁盘和加密选择":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="Windows VM 创建屏幕":::
 
 1. 选择“查看 + 创建”。  
 1. 在密钥保管库通过验证后，选择“创建”。 这将让你返回“从 Azure Key Vault 选择密钥”屏幕。

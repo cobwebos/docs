@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: 3e84db3aa13ae77f931a46683f0c5e4572f6ce44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87852627"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>使用命令行工具将 Azure Functions 连接到 Azure 存储

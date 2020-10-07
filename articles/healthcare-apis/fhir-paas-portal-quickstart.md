@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851930"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure API for FHIR
@@ -37,13 +37,13 @@ ms.locfileid: "87851930"
 
 选择“创建”，创建一个新的 Azure API for FHIR 帐户：
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="创建 Azure API for FHIR 帐户":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="搜索医疗保健 API":::
 
 ## <a name="enter-account-details"></a>输入帐户详细信息
 
 选择一个现有资源组或创建一个新资源组，选择帐户名称，最后单击“查看 + 创建”：
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="新的医疗保健 api 详细信息":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="搜索医疗保健 API":::
 
 确认创建并等待 FHIR API 部署。
 
@@ -51,7 +51,7 @@ ms.locfileid: "87851930"
 
 也可以单击“下一步: 其他设置”，查看身份验证设置。 Azure API for FHIR 的默认配置是[使用 Azure RBAC 来分配数据平面角色](configure-azure-rbac.md)。 在此模式下配置时，FHIR 服务的“颁发机构”将设置为订阅的 Azure Active Directory 租户：
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="默认身份验证设置":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="搜索医疗保健 API":::
 
 注意，用于输入允许的对象 ID 的框将灰显，因为在本例中，我们使用 Azure RBAC 来配置角色分配。
 

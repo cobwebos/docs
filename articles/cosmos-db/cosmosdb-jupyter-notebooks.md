@@ -7,10 +7,10 @@ ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
 ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88588149"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB（预览版）中的内置 Jupyter Notebook 支持
@@ -23,7 +23,7 @@ Azure Cosmos DB 内置 Jupyter Notebook 直接集成到 Azure 门户和 Azure Co
 
 Azure Cosmos DB 支持适用于所有 API 的 C# 和 Python 笔记本，包括 Core (SQL)、Cassandra、Gremlin、表和适用于 MongoDB 的 API。 通过在笔记本里利用内置命令和功能，可以轻松地创建 Azure Cosmos DB 资源、上传数据以及查询和可视化 Azure Cosmos DB 中的数据。 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB 中的 Jupyter Notebook 支持":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB 中的 Jupyter Notebook 可视化效果":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Jupyter Notebook 的优势
 

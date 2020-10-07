@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88055456"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
@@ -53,7 +53,7 @@ ms.locfileid: "88055456"
 
 1. 按照提示提供以下信息：
 
-    | Prompt | 值 | 说明 |
+    | Prompt | Value | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数应用项目的语言 | C# | 创建本地 C# Functions 项目。 |
     | 选择版本 | Azure Functions v3 | 仅当尚未安装 Core Tools 时，才会出现此选项。 在本例中，当你首次运行应用时即已安装 Core Tools。 |
@@ -70,7 +70,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | 值 | 说明 |
+    | Prompt | Value | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | DurableFunctionsOrchestration | 创建 Durable Functions 业务流程 |
     | 提供函数名称 | HelloOrchestration | 在其中创建函数的类的名称 |
@@ -78,7 +78,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 当 VS Code 提示选择存储帐户时，请选择“选择存储帐户”。 按照提示提供以下信息，以在 Azure 中创建新的存储帐户。
 
-    | Prompt | 值 | 说明 |
+    | Prompt | Value | 说明 |
     | ------ | ----- | ----------- |
     | 选择订阅 | *订阅的名称* | 选择 Azure 订阅 |
     | 选择存储帐户 | 新建存储帐户 |  |
@@ -167,7 +167,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 ![在 Azure 中运行持久函数](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 

@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88589616"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机
@@ -96,7 +96,7 @@ VM [扩展](../extensions/features-windows.md?toc=/azure/virtual-machines/window
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
 
-| 资源 | 必选 | 说明 |
+| 资源 | 必须 | 说明 |
 | --- | --- | --- |
 | [资源组](../../azure-resource-manager/management/overview.md) |是 |VM 必须包含在资源组中。 |
 | [存储帐户](../../storage/common/storage-account-create.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
@@ -109,6 +109,6 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 
 创建第一个 VM！
 
-- [门户](quick-create-portal.md)
+- [Portal](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)

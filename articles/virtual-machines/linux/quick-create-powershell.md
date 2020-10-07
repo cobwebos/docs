@@ -9,10 +9,10 @@ ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87513445"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机

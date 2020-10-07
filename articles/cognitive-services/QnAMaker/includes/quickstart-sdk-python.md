@@ -4,10 +4,10 @@ description: 本快速入门介绍如何开始使用适用于 Python 的 QnA Mak
 ms.topic: include
 ms.date: 06/18/2020
 ms.openlocfilehash: d99ed657098a8046a64c10ae48433aa87c2f06f6
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88246378"
 ---
 可以使用适用于 Python 的 QnA Maker 客户端库执行以下操作：

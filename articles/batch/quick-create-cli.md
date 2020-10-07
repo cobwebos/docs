@@ -1,14 +1,14 @@
 ---
 title: 快速入门 - 使用 Azure CLI 运行第一个 Batch 作业
-description: 快速了解使用 Azure CLI 创建 Batch 帐户和运行 Batch 作业。
+description: 快速了解如何使用 Azure CLI 创建 Batch 帐户和运行 Batch 作业。
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213104"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
@@ -17,7 +17,7 @@ ms.locfileid: "88213104"
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -53,7 +53,7 @@ az storage account create \
 
 使用 [az batch account create](/cli/azure/batch/account#az-batch-account-create) 命令创建 Batch 帐户。 需要一个帐户来创建计算资源（计算节点池）和 Batch 作业。
 
-以下示例在 QuickstartBatch-rg 中创建名为 mybatchaccount 的 Batch 帐户，并链接已创建的存储帐户 。  
+以下示例在“QuickstartBatch-rg”中创建名为“mybatchaccount”的 Batch 帐户，并关联已创建的存储帐户 。  
 
 ```azurecli-interactive
 az batch account create \

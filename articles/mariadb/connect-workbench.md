@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88121878"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>快速入门：Azure Database for MariaDB：使用 MySQL Workbench 连接和查询数据
@@ -58,7 +58,7 @@ ms.locfileid: "88121878"
    | 主机名 | 服务器名称 | 指定在创建 Azure Database for MariaDB 实例时使用的服务器名称值。 示例服务器为 **mydemoserver.mariadb.database.azure.com**。 请使用完全限定的域名 (\*.mariadb.database.azure.com)，如示例中所示。 如果不记得服务器名称，请完成上一部分的步骤，以便获取连接信息。  |
    | 端口 | **3306** | 在连接到 Azure Database for MariaDB 时，始终使用端口 3306。 |
    | 用户名 |  服务器管理员登录名 | 输入在创建 Azure Database for MariaDB 实例时使用的服务器管理员登录用户名。 示例用户名是 myadmin\@mydemoserver。 如果不记得服务器管理员登录名，请完成上一部分的步骤，以便获取连接信息。 格式为 username\@servername。
-   | 密码 | 你的密码 | 若要保存密码，请选择“在保管库中存储”。 |
+   | 密码 | 你的密码  | 若要保存密码，请选择“在保管库中存储”。 |
 
    ![设置新连接](./media/connect-workbench/2-setup-new-connection.png)
 
