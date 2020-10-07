@@ -11,13 +11,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: 58adb3e8216fdda1f276760b103e02bf7de6e12e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: f8b7e55d95c08a31a20503e329e64b9e65e3b723
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422124"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323917"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -27,7 +27,7 @@ ms.locfileid: "87422124"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 熟悉[预配](about-iot-dps.md#provisioning-process)概念。
 - 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Node.js v4.0+](https://nodejs.org)。

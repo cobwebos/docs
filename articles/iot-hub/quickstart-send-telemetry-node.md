@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 ms.date: 06/21/2019
 ms.openlocfilehash: 07508046e1689c3b8c2a3bb323a98994d10df8a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91334117"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Node.js)
@@ -131,7 +131,7 @@ az extension add --name azure-iot
 
 1. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.js 文件。 更新以下变量并保存对文件所做的更改。
 
-    | 变量 | 值 |
+    | 变量 | Value |
     | -------- | ----------- |
     | `eventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
     | `eventHubsCompatiblePath`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |

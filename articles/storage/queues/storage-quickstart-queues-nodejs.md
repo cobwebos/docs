@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: ad26cba30986ee9a5f642755840ad5ec281219aa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91320279"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure 队列存储客户端库 v12
