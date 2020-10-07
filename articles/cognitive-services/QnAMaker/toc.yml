@@ -10,11 +10,9 @@
   items:
     - name: 使用 QnA Maker 门户
       items:
-        - name: 1. 创建知识库
+        - name: 创建知识库
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: 2. 添加带有元数据的问题
-          href: Quickstarts/add-question-metadata-portal.md
-        - name: 3. 使用 Postman 或 cURL 获取回答
+        - name: 查询知识库
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: 使用 REST
       href: Quickstarts/quickstart-rest-curl.md
@@ -32,10 +30,8 @@
   items:
     - name: 规划知识库
       href: Concepts/plan.md
-    - name: Azure 资源
+    - name: 规划 QnA Maker 资源
       href: Concepts/azure-resources.md
-    - name: 与他人协作
-      href: Concepts/role-based-access-control.md
     - name: 设计知识库
       items:
         - name: 对于语言
@@ -48,22 +44,12 @@
           href: Concepts/knowledge-base.md
         - name: 导入的内容类型
           href: Concepts/content-types.md
-        - name: 问答集
-          href: Concepts/question-answer-set.md
-    - name: 知识库生命周期
-      items:
-        - name: 开发生命周期
-          href: Concepts/development-lifecycle-knowledge-base.md
-          displayName: 'version control, test, index, publish, monitor usage, create'
-        - name: 使用主动学习建议进行改进
-          href: Concepts/active-learning-suggestions.md
-    - name: 查询知识库
-      items:
-        - name: 获取答案
-          displayName: 'DefaultAnswer, Default answer'
-          href: Concepts/query-knowledge-base.md
-        - name: 置信度分数
-          href: Concepts/confidence-score.md
+    - name: 排名程序进程
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/query-knowledge-base.md
+    - name: 开发生命周期
+      href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
     - name: 最佳做法
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -93,7 +79,7 @@
         - name: 迁移到新知识库
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: 测试知识库
+        - name: 测试
           href: How-To/test-knowledge-base.md
     - name: 管理 QnA 对
       items:
@@ -105,50 +91,11 @@
         - name: 获取建议的替代问题
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-        - name: 添加受保护的 SharePoint 文件
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: 查询知识库
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: 分析和遥测
       href: How-To/get-analytics-knowledge-base.md
-    - name: 使用 REST API
-      items:
-        - name: 创建新的知识库
-          items:
-            - name: C#
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Go
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: 发布知识库
-          items:
-            - name: C#
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Go
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: 获取答案
-          items:
-            - name: C#
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Go
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: 参考
   items:
     - name: 语言支持
@@ -156,9 +103,18 @@
     - name: 限制
       href: limits.md
     - name: 基于角色的访问控制 (RBAC)
-      href: reference-role-based-access-control.md
+      href: Concepts/role-based-access-control.md
+    - name: 主动学习
+      href: Concepts/active-learning-suggestions.md
+    - name: 置信度分数
+      href: Concepts/confidence-score.md
     - name: 疑难解答
       href: troubleshooting.md
+    - name: 问答集
+      href: Concepts/question-answer-set.md
+    - name: 添加受保护的 SharePoint 文件
+      href: How-To/add-sharepoint-datasources.md
+      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: 服务配置
       href: reference-app-service.md
     - name: 内容和数据格式
@@ -173,6 +129,8 @@
       href: reference-markdown-format.md
     - name: 批量测试格式
       href: reference-tsv-format-batch-testing.md
+    - name: 加密
+      href: qna-maker-encryption-of-data-at-rest.md
     - name: REST API 参考
       items:
         - name: 创作 API
@@ -181,10 +139,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: 训练 API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-    - name: 示例
-      items:
-        - name: QnA Maker 帮助机器人
-          href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK
       items:
         - name: C#
@@ -231,8 +185,6 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: qna-maker-encryption-of-data-at-rest.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价和限制

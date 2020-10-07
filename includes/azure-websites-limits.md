@@ -4,14 +4,14 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424989"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745725"
 ---
-| 资源 | 免费 | 共享 | 基本 | Standard | 高级 (v2) | 隔离 </th> |
+| 资源 | 免费 | 共享 | 基本 | Standard | 高级 (v3) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | 每个 [Azure 应用服务计划](../articles/app-service/overview-hosting-plans.md)的 [Web 应用、移动应用或 API 应用数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup>|
 | [应用服务计划](../articles/app-service/overview-hosting-plans.md) |每个区域仅 10 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个|
@@ -52,7 +52,7 @@ ms.locfileid: "87424989"
 <sup>5</sup>该存储限制是针对同一应用服务计划中所有应用的内容总大小的限制。 单个资源组和区域内所有应用服务计划中的所有应用的总内容大小不能超过 500GB。  
 <sup>6</sup>这些资源受到专用实例上的物理资源（实例大小和实例数）的限制。  
 <sup>7</sup>如果将基本层的某个应用扩展为两个实例，则其中每个实例有 350 个并发连接。 对于标准层和更高层，Web 套接字没有理论上的限制，但其他因素可能会限制 Web 套接的数量。 例如，允许的最大并发请求数（由 `maxConcurrentRequestsPerCpu` 定义）为：每个小型 VM 7500 个、每个中型 VM 15000 个（7500 x 2 个核心）以及每个大型 VM 75000 个（18750 x 4 个核心）。  
-<sup>8</sup>最大 IP 连接数指的是每个实例的最大 IP 连接数，它取决于实例大小：每个 B1/S1/P1V2 实例 1920 个，每个 B2/S2/P2V2 实例 3968 个，每个 B3/S3/P3V2 实例 8064 个。  
+<sup>8</sup>最大 IP 连接数指的是每个实例的最大 IP 连接数，它取决于实例大小：每个 B1/S1/P1V3 实例 1,920 个，每个 B2/S2/P2V3 实例 3,968 个，每个 B3/S3/P3V3 实例 8,064 个。  
 <sup>9</sup>每个订阅的应用服务证书配额限制可以通过支持请求增加到最大限制 200。  
 <sup>10</sup>独立应用服务 SKU 能够通过使用 Azure 负载均衡器实现内部负载均衡 (ILB)，因此没有来自 Internet 的公共连接。 因此，必须从能够直接访问 ILB 网络终结点的计算机使用 ILB 独立应用服务的某些功能。  
 <sup>11</sup>按需、按计划或持续作为应用服务实例内的后台任务运行自定义可执行文件和/或脚本。 连续执行 WebJob 需要使用“始终打开”。 对于可以在某个应用服务实例中运行的 Webjob 的数量，没有预定义的限制。 但存在实际上的限制，具体取决于应用程序代码尝试执行的操作。

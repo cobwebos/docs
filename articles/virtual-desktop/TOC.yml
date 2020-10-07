@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: 使用 iOS 客户端进行连接
           href: connect-ios.md
+        - name: 使用 Microsoft Store 客户端进行连接
+          href: connect-microsoft-store.md
     - name: 设置 PowerShell 模块
       href: powershell-module.md
     - name: 创建主机池和会话主机

@@ -82,6 +82,8 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: 流量管理器
           href: deploy-traffic-manager-balance-workloads.md
+        - name: 公共 IP 使用情况
+          href: public-ip-usage.md
     - name: VMware 解决方案
       items:
         - name: 设置 vRealize Operations

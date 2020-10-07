@@ -226,7 +226,7 @@
       items:
         - name: 纵向扩展服务器容量
           href: manage-scale-up.md
-        - name: 配置 PremiumV2 层
+        - name: 配置 PremiumV3 层
           href: app-service-configure-premium-tier.md
         - name: 横向扩展到多个实例
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json

@@ -634,7 +634,7 @@
                 - name: Spring Boot 应用
                   displayname: java
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: 疑难解答
+                - name: 故障排除
                   href: app/java-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
@@ -1326,6 +1326,8 @@
       href: samples/policy-reference.md
     - name: 功能和 API 停用
       items:
+        - name: OperationalInsights API
+          href: platform/operationalinsights-api-retirement.md
         - name: 经典的自动缩放和指标 API
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: 经典的警报和监视

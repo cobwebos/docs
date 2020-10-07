@@ -28,6 +28,8 @@
           href: tutorial-discover-physical.md
         - name: 发现 AWS 实例
           href: tutorial-discover-aws.md
+        - name: 发现 GCP 实例
+          href: tutorial-discover-gcp.md
     - name: 评估
       items:
         - name: 评估 VMware VM 以便迁移到 Azure VM
@@ -40,6 +42,8 @@
           href: tutorial-assess-physical.md
         - name: 评估 AWS 实例以便迁移到 Azure
           href: tutorial-assess-aws.md
+        - name: 访问 GCP 实例以便迁移到 Azure
+          href: tutorial-assess-gcp.md
         - name: 评估导入的服务器
           href: tutorial-discover-import.md
     - name: Migrate
@@ -58,6 +62,8 @@
           href: tutorial-migrate-physical-virtual-machines.md
         - name: 迁移 AWS 实例
           href: tutorial-migrate-aws-virtual-machines.md
+        - name: 迁移 GCP 实例
+          href: tutorial-migrate-gcp-virtual-machines.md
 - name: 概念
   items:
     - name: 使用 Azure Migrate 构建迁移计划
@@ -160,7 +166,7 @@
           href: how-to-migrate-at-scale.md
         - name: 迁移示例（Contoso 系列）
           href: contoso-migration-overview.md
-- name: 疑难解答
+- name: 故障排除
   items:
     - name: 排查 Azure Migrate 问题
       href: troubleshoot-general.md

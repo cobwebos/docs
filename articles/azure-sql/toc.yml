@@ -497,12 +497,8 @@
               href: database/database-copy.md
             - name: 复制到 SQL 数据库
               href: database/replication-to-sql-database.md
-            - name: SQL 数据同步
-              items:
-                - name: 复制架构更改
-                  href: database/sql-data-sync-update-sync-schema.md
-                - name: 使用 OMS 进行监视
-                  href: database/sql-data-sync-monitor-sync.md
+            - name: 复制架构更改（数据同步）
+              href: database/sql-data-sync-update-sync-schema.md
         - name: 数据库分片
           items:
             - name: 升级客户端库
@@ -631,7 +627,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -910,7 +906,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
