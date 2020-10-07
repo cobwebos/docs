@@ -6,26 +6,27 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5c177517ec18d7526b1cc09da74e35cb5434766d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dca4828a5c1127133461ddf9fc06099fc176b68
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876388"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779653"
 ---
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>验证关键短语提取容器实例
 
-1. 选择 "**概览**" 选项卡，然后复制 IP 地址。
-1. 打开新的浏览器选项卡，并输入 IP 地址。 例如，输入 `http://<IP-address>:5000 (http://55.55.55.55:5000`)。 此时会显示容器的主页，使你知道容器正在运行。
+1. 选择“概述”选项卡，并复制 IP 地址。
+1. 打开新的浏览器选项卡，并输入 IP 地址。 例如，输入 `http://<IP-address>:5000 (http://55.55.55.55:5000`)。 此时将显示容器的主页，让你知道该容器正在运行。
 
     ![查看容器主页，以验证它是否处于运行状态](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. 选择 "**服务 API 说明**" 链接以前往容器的 Swagger 页面。
+1. 选择“服务 API 说明”链接，以转到该容器的 Swagger 页。
 
-1. 选择任何**POST** api，并选择 "**试用**"。将显示参数，其中包括以下示例输入：
+1. 选择任意一个 **POST** API，然后选择“试用”。此时将显示参数，其中包括以下示例输入：
 
     ```json
     {
@@ -64,11 +65,11 @@ ms.locfileid: "80876388"
     }
     ```
 
-1. 将**showStats**设置为 `true` 。
+1. 将“showStats”设置为 `true`。
 
-1. 选择“执行”**** 以确定文本的情绪。
+1. 选择“执行”以确定文本的情绪。
 
-    容器中打包的模型生成范围为0到1之间的分数，其中0表示负数，1表示正值。
+    在容器中打包的模型会生成范围为从 0 到 1 的分数，其中，0 表示消极，而 1 表示积极。
 
     返回的 JSON 响应包括更新的文本输入的情绪：
 
@@ -100,4 +101,4 @@ ms.locfileid: "80876388"
     }
     ```
 
-我们现在可以将响应有效负载的 JSON 数据的文档 `id` 关联到原始请求有效负载文档 `id`。 生成的文档具有一个 `keyPhrases` 数组，其中包含已从相应输入文档中提取的关键短语的列表。 此外， `characterCount` `transactionCount` 每个生成的文档都有各种统计信息，例如和。
+我们现在可以将响应有效负载的 JSON 数据的文档 `id` 关联到原始请求有效负载文档 `id`。 生成的文档有一个 `keyPhrases` 数组，其中包含已从相应输入文档中提取的关键短语的列表。 此外，每个生成的文档都有各种统计信息（例如 `characterCount` 和 `transactionCount`）。

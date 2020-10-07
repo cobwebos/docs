@@ -1,29 +1,31 @@
 ---
 title: 服务配置-QnA Maker
 description: 了解配置资源的方式和位置。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1d54b912d2177a3ccd0cf34d57fc0358af653199
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804254"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776708"
 ---
 # <a name="service-configuration"></a>服务配置
 
-QnA Maker 使用多个 Azure 资源（服务），包括认知搜索、应用服务、应用服务计划和 Application Insights。
+QnA Maker 使用多个 Azure 资源 (服务) 包括认知搜索、应用服务、应用服务计划和 Application Insights。
 
 下面列出了 QnA Maker 支持的这些设置的所有自定义项。
 
 ## <a name="app-service"></a>应用服务
 
-QnA Maker 使用应用服务提供[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)使用的查询运行时。
+QnA Maker 使用应用服务提供 [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)使用的查询运行时。
 
 
-这些设置适用于应用服务的 Azure 门户。 可以通过依次选择 "**设置**"、"**配置**" 来使用这些设置。
+这些设置适用于应用服务的 Azure 门户。 可以通过依次选择 " **设置**"、" **配置**" 来使用这些设置。
 
-可以通过 "应用程序设置" 列表设置单个设置，也可以通过选择 "**高级编辑**" 来修改多个设置。
+可以通过 "应用程序设置" 列表设置单个设置，也可以通过选择 " **高级编辑**" 来修改多个设置。
 
 |资源|设置|
 |--|--|
@@ -34,7 +36,7 @@ QnA Maker 使用应用服务提供[GENERATEANSWER API](https://docs.microsoft.co
 |UserAppInsightsKey|聊天日志和遥测|
 |UserAppInsightsName|聊天日志和遥测|
 
-了解[如何将认知搜索服务更改](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)为服务。
+了解 [如何将认知搜索服务更改](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) 为服务。
 
 完成更改后，需要从 Azure 门户的 "**概述**" 页中**重新启动**该服务。
 
@@ -42,7 +44,7 @@ QnA Maker 使用应用服务提供[GENERATEANSWER API](https://docs.microsoft.co
 
 QnA Maker 服务为以下用户提供了配置，以便在单个 QnA Maker 服务及其所有知识库上进行协作。
 
-了解[如何向服务添加协作](./how-to/collaborate-knowledge-base.md)者。
+了解 [如何向服务添加协作](./how-to/collaborate-knowledge-base.md) 者。
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -54,4 +56,4 @@ Application Insights 没有特定于 QnA Maker 的配置设置。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关要导入到知识库中的文档和 Url[格式](reference-document-format-guidelines.md)的详细信息。
+了解有关要导入到知识库中的文档和 Url [格式](reference-document-format-guidelines.md) 的详细信息。

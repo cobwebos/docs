@@ -1,14 +1,16 @@
 ---
 title: 术语-Personalizer
 description: Personalizer 使用强化学习中的术语。 这些术语用于 Azure 门户和 Api。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 8177606ac6e968bd287a23554be7b9dd06d880a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd0d85be5447aad0f2a3c37041e7d5d5d047a468
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002856"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777286"
 ---
 # <a name="personalizer-terminology"></a>Personalizer 术语
 
@@ -16,22 +18,22 @@ Personalizer 使用强化学习中的术语。 这些术语用于 Azure 门户�
 
 ## <a name="conceptual-terminology"></a>概念术语
 
-* **学习循环**：为应用程序的每个部分创建名为_学习循环_的 Personalizer 资源，该资源可从个性化设置受益。 如果需要个性化多个体验，请为每个体验创建一个循环。
+* **学习循环**：为应用程序的每个部分创建名为 _学习循环_的 Personalizer 资源，该资源可从个性化设置受益。 如果需要个性化多个体验，请为每个体验创建一个循环。
 
 * **模型**： Personalizer 模型捕获所有了解用户行为的数据，从发送的参数的组合中获取定型数据以对调用进行分级和奖励，并使用由学习策略确定的定型行为。
 
-* **联机模式**：学习循环使用的 Personalizer 的默认[学习行为](#learning-behavior)，它使用机器学习来构建模型，以便预测内容的**最高操作**。
+* **联机模式**：学习循环使用的 Personalizer 的默认 [学习行为](#learning-behavior) ，它使用机器学习来构建模型，以便预测内容的 **最高操作** 。
 
-* **Apprentice 模式**：一[种学习行为](#learning-behavior)，可帮助在不影响应用程序的结果和操作的情况下，帮助预热 Personalizer 模型进行定型。
+* **Apprentice 模式**：一 [种学习行为](#learning-behavior) ，可帮助在不影响应用程序的结果和操作的情况下，帮助预热 Personalizer 模型进行定型。
 
 ## <a name="learning-behavior"></a>学习行为：
 
 * **联机模式**：返回最佳操作。 你的模型将使用最佳操作对排名调用做出响应，并将使用奖励调用来了解并改进其选择。
-* **[Apprentice 模式](concept-apprentice-mode.md)**：学习 Apprentice。 模型将通过观察现有系统的行为来了解。 排名调用将始终返回应用程序的**默认操作**（基线）。
+* **[Apprentice 模式](concept-apprentice-mode.md)**：学习 Apprentice。 模型将通过观察现有系统的行为来了解。 排名调用将始终返回应用程序的 **默认操作** (基准) 。
 
 ## <a name="personalizer-configuration"></a>Personalizer 配置
 
-Personalizer 是从[Azure 门户](https://portal.azure.com)配置的。
+Personalizer 是从 [Azure 门户](https://portal.azure.com)配置的。
 
 * **奖励**：配置奖励 wait 时间、默认奖励和奖励聚合策略的默认值。
 
@@ -43,9 +45,9 @@ Personalizer 是从[Azure 门户](https://portal.azure.com)配置的。
 
 ## <a name="use-rank-and-reward-apis"></a>使用排名和奖励 Api
 
-* **排名**：对于功能和上下文功能的操作，请使用 "浏览" 或 "利用" 返回 top 操作（内容项）。
+* **排名**：在给定功能和上下文功能的情况下，使用 "浏览" 或 "利用" 返回 (内容项目) 的顶部操作。
 
-    * **操作**：操作是要从中进行选择的内容项，例如产品或促销。 Personalizer 选择通过排名 API 向用户显示的顶级操作（返回的奖励操作 ID）。
+    * **操作**：操作是要从中进行选择的内容项，例如产品或促销。 Personalizer 选择顶部操作 (返回的奖励操作 ID) 通过排名 API 向用户显示。
 
     * **上下文**：若要提供更准确的排名，请提供有关上下文的信息，例如：
         * 你的用户。
@@ -78,15 +80,15 @@ Personalizer 是从[Azure 门户](https://portal.azure.com)配置的。
 
 * **计算**：脱机评估根据应用程序的数据确定循环的最佳学习策略。
 
-* **学习策略**： Personalizer 如何训练每个事件的模型将由影响机器学习算法工作方式的某些参数确定。 新的学习循环从默认的**学习策略**开始，这会产生适度的性能。 运行[评估](concepts-offline-evaluation.md)时，Personalizer 会创建专门优化到循环用例的新学习策略。 对于在评估过程中生成的每个特定循环，Personalizer 将显著提高性能。 在 Azure 门户中的 Personalizer 资源的**模型和学习设置**中，学习策略命名为 "_学习设置_"。
+* **学习策略**： Personalizer 如何训练每个事件的模型将由影响机器学习算法工作方式的某些参数确定。 新的学习循环从默认的 **学习策略**开始，这会产生适度的性能。 运行 [评估](concepts-offline-evaluation.md)时，Personalizer 会创建专门优化到循环用例的新学习策略。 对于在评估过程中生成的每个特定循环，Personalizer 将显著提高性能。 在 Azure 门户中的 Personalizer 资源的**模型和学习设置**中，学习策略命名为 "_学习设置_"。
 
 ### <a name="apprentice-mode-evaluations"></a>Apprentice 模式评估
 
-Apprentice 模式提供下列**评估指标**：
-* **基线–平均奖励**：应用程序默认值（基线）的平均收益。
+Apprentice 模式提供下列 **评估指标**：
+* **基线–平均奖励**：应用程序默认 (基准) 的平均收益。
 * **Personalizer –平均奖励**：可能已达到的总奖励 Personalizer 平均数。
 * **平均滚动奖励**：基线和 Personalizer 的比率–在最近的1000事件上标准化。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[道德和责任使用](ethics-responsible-use.md)
+* 了解 [道德和责任使用](ethics-responsible-use.md)

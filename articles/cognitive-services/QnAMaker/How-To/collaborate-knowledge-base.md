@@ -1,22 +1,24 @@
 ---
 title: 与知识库协作-QnA Maker
 description: 通过 QnA Maker，多名人员可针对知识库展开协作。 此功能随 Azure RBAC)  (Azure 基于角色的访问控制一起提供。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8adc02d4b397c2b0bdaf5d3998cfbe229c896d41
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926841"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776844"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>与作者和编辑器协作
 
-在 QnA Maker 资源级别提供协作，使你能够基于合作者角色限制协作者访问权限。 详细了解 QnA Maker 协作者身份验证[概念](../Concepts/role-based-access-control.md)。
+在 QnA Maker 资源级别提供协作，使你能够基于合作者角色限制协作者访问权限。 详细了解 QnA Maker 协作者身份验证 [概念](../Concepts/role-based-access-control.md)。
 
 ## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>向 QnA Maker 资源添加 azure RBAC)  (Azure 基于角色的访问控制
 
-QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库。 此功能随[AZURE RBAC)  (azure 基于角色的访问控制](../../../active-directory/role-based-access-control-configure.md)一起提供。
+QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库。 此功能随 [AZURE RBAC)  (azure 基于角色的访问控制 ](../../../active-directory/role-based-access-control-configure.md)一起提供。
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>QnA Maker 资源级别的访问权限
 
@@ -28,7 +30,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 以下步骤使用 "协作者" 角色，但可以使用以下步骤添加任何[角色](../reference-role-based-access-control.md)
 
-1. 登录到[Azure](https://portal.azure.com/)门户，并中转到 QnA Maker 资源。
+1. 登录到 [Azure](https://portal.azure.com/) 门户，并中转到 QnA Maker 资源。
 
     ![QnA Maker 资源列表](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
@@ -36,7 +38,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. 选择“添加”  。
+1. 选择 **添加** 。
 
     ![QnA Maker IAM 添加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
@@ -50,19 +52,21 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
     |认知服务 QnA Maker 编辑器|
     |认知服务用户|
 
-    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker IAM 添加角色。":::
+    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker IAM 添加角色。&quot;:::
 
-1. 输入用户的电子邮件地址，并按 "**保存**"。
+1. 输入用户的电子邮件地址，并按 " **保存**"。
 
     ![QnA Maker IAM 添加电子邮件](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
 
 ### <a name="view-qna-maker-knowledge-bases"></a>查看 QnA Maker 知识库
 
-当你将 QnA Maker 服务的用户共享到[QnA Maker 门户](https://qnamaker.ai)时，他们可以根据其角色查看该服务中的所有知识库。
+当你将 QnA Maker 服务的用户共享到 [QnA Maker 门户](https://qnamaker.ai)时，他们可以根据其角色查看该服务中的所有知识库。
 
 当他们选择某一知识库时，该知识库中的 QnA Maker 资源上的当前角色就可见了。
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="在编辑模式下的知识库中的屏幕截图，其角色名称位于网页左上角的 "知识库名称" 旁边的括号中。":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="QnA Maker IAM 添加角色。&quot;:::
+
+1. 输入用户的电子邮件地址，并按 ":::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -70,5 +74,5 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 > [测试知识库](./test-knowledge-base.md)
 
 了解有关协作的详细信息：
-* [Azure](../../../active-directory/role-based-access-control-configure.md)基于角色的访问控制
-* QnA Maker 基于角色的访问控制[概念](../Concepts/role-based-access-control.md)
+* [Azure](../../../active-directory/role-based-access-control-configure.md) 基于角色的访问控制
+* QnA Maker 基于角色的访问控制 [概念](../Concepts/role-based-access-control.md)

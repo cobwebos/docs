@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605729"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777779"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中的预配吞吐量简介
 
@@ -40,12 +40,12 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 下图显示了物理分区如何托管容器的一个或多个逻辑分区：
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="物理分区" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="承载一个或多个容器逻辑分区的物理分区" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>对数据库设置吞吐量
 
 > [!NOTE]
-> Azure Cosmos 数据库上的预配吞吐量当前无法用于启用 [客户托管密钥](how-to-setup-cmk.md) 的帐户。
+> 当前在启用了[客户管理的密钥](how-to-setup-cmk.md)的帐户中，无法预配 Azure Cosmos 数据库吞吐量。
 
 对 Azure Cosmos 数据库预配吞吐量时，在该数据库中的所有容器（称作共享的数据库容器）之间共享吞吐量。 一种例外是在数据库中的特定容器上指定了预配的吞吐量。 在容器之间共享数据库级预配吞吐量相当于在计算机群集上托管数据库。 由于数据库中的所有容器共享一台计算机上的可用资源，因此，任何特定容器的性能自然不可预测。 若要了解如何对数据库配置预配吞吐量，请参阅[对 Azure Cosmos 数据库配置预配吞吐量](how-to-provision-database-throughput.md)。 若要了解如何对数据库配置自动缩放吞吐量，请参阅[预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)。
 
@@ -67,7 +67,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果逻辑分区上的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量，操作将受到速率限制。 出现速率限制时，可以增大整个数据库的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
-共享吞吐量数据库中的容器共享分配给该数据库的吞吐量（RU/秒）。 你最多可以有四个容器，在数据库上的最低吞吐量为 400 RU/秒。 如果使用标准（手动）预配吞吐量，那么前四个容器后面的每个新容器至少需要 100 RU/秒的吞吐量。 例如，如果你有一个包含八个容器的共享吞吐量数据库，则数据库上的最小吞吐量将为 800 RU/秒。 使用自动缩放预配的吞吐量，最多可以在一个4000数据库中包含25个容器，最多可有25个容器在 400-4000 RU/s) 之间 (缩放。
+共享吞吐量数据库中的容器共享分配给该数据库的吞吐量（RU/秒）。 你最多可以有四个容器，在数据库上的最低吞吐量为 400 RU/秒。 如果使用标准（手动）预配吞吐量，那么前四个容器后面的每个新容器至少需要 100 RU/秒的吞吐量。 例如，如果你有一个包含八个容器的共享吞吐量数据库，则数据库上的最小吞吐量将为 800 RU/秒。 如果使用自动缩放预配吞吐量，那么一个数据库中最多可以有 25 个容器，其吞吐量可自动缩放到的最大值是 4000 RU/秒（在 400 - 4000 RU/秒之间缩放）。
 
 > [!NOTE]
 > 在 2020 年 2 月，我们引入了一项更改（允许在共享吞吐量数据库中最多拥有 25 个容器），因此可以更好地实现跨容器的吞吐量共享。 有了头 25 个容器之后，仅当容器[预配了专用吞吐量](#set-throughput-on-a-database-and-a-container)（与数据库的共享吞吐量分离）时，才能向数据库添加更多容器。<br>
@@ -75,7 +75,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果工作负荷涉及到删除数据库中的所有集合并重新创建集合，则我们建议删除空数据库，再重新创建新的数据库，然后创建集合。 下图显示了物理分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="物理分区" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="承载一个或多个容器逻辑分区的物理分区" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>对数据库和容器设置吞吐量
 
@@ -84,7 +84,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 * 可以创建一个具有标准（手动）预配吞吐量（“K”RU）的名为 *Z* 的 Azure Cosmos 数据库。 
 * 接下来，在该数据库中创建名为 *A*、*B*、*C*、*D* 和 *E* 的五个容器。 创建容器 B 时，请确保启用“为此容器预配专用吞吐量”选项，并在此容器上显式配置“P”个 RU 的预配吞吐量。 请注意，只有在创建数据库和容器时，才能配置共享吞吐量和专用吞吐量。 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="在容器级别设置吞吐量":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="承载一个或多个容器逻辑分区的物理分区":::
 
 * “K”RU 吞吐量在 *A*、*C*、*D* 和 *E* 这四个容器之间共享。提供给 A、C、D 或 E 的确切吞吐量各不相同。    每个容器的吞吐量没有 SLA 的保障。
 * 保证名为 B 的容器始终可以获得“P”RU 吞吐量。  该容器有 SLA 的保障。
@@ -96,20 +96,20 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 可对数据库或容器配置的最大预配吞吐量没有限制。 
 
-若要估计数据库或容器的 [最小预配吞吐量](concepts-limits.md#storage-and-database-operations) ，请查找的最大值：
+若要估算数据库或容器的[最小预配吞吐量](concepts-limits.md#storage-and-database-operations)，请查找以下内容的最大值：
 
 * 400 RU/s 
-* 当前存储空间（GB * 10 RU/秒）
-* 在数据库或容器/100 上预配的最高 RU/秒
-* 容器计数 * 100 RU/s (仅限共享吞吐量数据库) 
+* 当前存储空间 (GB) * 10 RU/s
+* 数据库或容器上预配的最高 RU/s / 100
+* 容器计数 * 100 RU/s（仅限共享吞吐量数据库）
 
-实际的最小 RU/秒可能因帐户配置而异。 你可以使用 [Azure Monitor 度量值](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) 来查看资源上的预配吞吐量 (RU/秒) 和存储的历史记录。
+实际的最小 RU/s 可能因帐户配置而异。 可以使用 [Azure Monitor 指标](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)来查看资源上预配吞吐量 (RU/s) 和存储的历史记录。
 
-可以使用 SDK 以编程方式检索容器或数据库的最小吞吐量，或者在 Azure 门户中查看值。 使用 .NET SDK 时，可以通过 [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) 方法缩放预配的吞吐量值。 使用 Java SDK 时，可以通过 [RequestOptions.setOfferThroughput](sql-api-java-sdk-samples.md) 方法缩放预配的吞吐量值。 
+可以使用 SDK 以编程方式检索容器或数据库的最小吞吐量，或者在 Azure 门户中查看值。 使用 .NET SDK 时，为 [容器。ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) 方法允许您缩放预配的吞吐量值。 使用 Java SDK 时，可以使用 [CosmosContainer. replaceProvisionedThroughput](sql-api-java-sdk-samples.md) 方法缩放预配的吞吐量值。
 
-使用 .NET SDK 时，可以通过 [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) 方法检索容器或数据库的最小吞吐量。 
+使用 .NET SDK 时， [ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) 方法允许检索容器或数据库的最小吞吐量。 
 
-可以随时缩放容器或数据库的预配吞吐量。 执行缩放操作以增加吞吐量时，由于系统任务的原因，可能需要更长的时间来预配所需的资源。 可以在 Azure 门户中检查缩放操作的状态，也可以使用 SDK 以编程方式检查。 使用 .NET SDK 时，可以通过 `DocumentClient.ReadOfferAsync` 方法获取缩放操作的状态。
+可以随时缩放容器或数据库的预配吞吐量。 执行缩放操作以增加吞吐量时，由于系统任务的原因，可能需要更长的时间来预配所需的资源。 可以在 Azure 门户中检查缩放操作的状态，也可以使用 SDK 以编程方式检查。 使用 .NET SDK 时，可以通过 `Container.ReadThroughputAsync` 方法获取缩放操作的状态。
 
 ## <a name="comparison-of-models"></a>模型比较
 下表显示了对数据库与容器预配标准（手动）吞吐量时的差异比较。 

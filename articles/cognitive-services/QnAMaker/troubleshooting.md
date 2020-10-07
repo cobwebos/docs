@@ -1,14 +1,16 @@
 ---
 title: 故障排除-QnA Maker
 description: 有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务，并获得更好的结果。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06747e2d053171749bfc5c9c394dab3d48674d67
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502573"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776232"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -23,7 +25,7 @@ ms.locfileid: "87502573"
 
 **答**：吞吐量性能问题表明你需要为应用服务和认知搜索扩展。 请考虑将副本添加到认知搜索以提高性能。
 
-了解有关[定价层](Concepts/azure-resources.md)的详细信息。
+了解有关 [定价层](Concepts/azure-resources.md)的详细信息。
 </details>
 
 <details>
@@ -59,7 +61,7 @@ ms.locfileid: "87502573"
 <details>
 <summary><b>为什么我的 URL/文件没有提取问答对？</b></summary>
 
-**答**： QnA Maker 无法自动提取有效常见问题 url 中的一些问题和答案（QnA）内容。 在这种情况下，可以将 QnA 内容粘贴到 .txt 文件中，并查看该工具是否可以引入它。 或者，也可以通过 [QnA Maker 门户](https://qnamaker.ai)以编辑方式向知识库添加内容。
+**答**： QnA Maker 无法通过有效的 FAQ url 自动提取一些问题和答案 (QnA) 内容。 在这种情况下，可以将 QnA 内容粘贴到 .txt 文件中，并查看该工具是否可以引入它。 或者，也可以通过 [QnA Maker 门户](https://qnamaker.ai)以编辑方式向知识库添加内容。
 
 </details>
 
@@ -87,7 +89,7 @@ ms.locfileid: "87502573"
 <details>
 <summary><b>是否可以与不在同一个 AAD 租户中的参与者共享知识库，以修改知识库？</b></summary>
 
-**答案**：共享基于 Azure 基于角色的访问控制（Azure RBAC）。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。__
+**答案**：共享基于基于 azure 角色的访问控制 (azure RBAC) 。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。__
 
 </details>
 
@@ -119,21 +121,21 @@ ms.locfileid: "87502573"
 <details>
 <summary><b>为什么我的 SharePoint 链接没有被提取？</b></summary>
 
-**答案**：有关详细信息，请参阅[数据源位置](./Concepts/knowledge-base.md#data-source-locations)。
+**答案**：有关详细信息，请参阅 [数据源位置](./Concepts/knowledge-base.md#data-source-locations) 。
 
 </details>
 
 <details>
 <summary><b>我对知识库所做的更新不会反映在发布上。为什么不呢？</b></summary>
 
-**答**：需要先保存每个编辑操作（无论是在表更新、测试还是设置中），然后才能将其发布。 请确保在每次编辑操作后单击 "**保存并训练**" 按钮。
+**答**：需要先保存每个编辑操作（无论是在表更新、测试还是设置中），然后才能将其发布。 请确保在每次编辑操作后单击 " **保存并训练** " 按钮。
 
 </details>
 
 <details>
 <summary><b>知识库是否支持丰富的数据或多媒体？</b></summary>
 
-**答案**：
+答案：
 
 #### <a name="multimedia-auto-extraction-for-files-and-urls"></a>文件和 Url 的多媒体自动提取
 
@@ -149,7 +151,7 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 <details>
 <summary><b>QnA Maker 是否支持非英语语言？</b></summary>
 
-**答案**：查看有关支持的[语言](./Overview/languages-supported.md)的详细信息。
+**答案**：查看有关支持的 [语言](./Overview/languages-supported.md)的详细信息。
 
 如果你有多种语言的内容，请务必为每种语言创建单独的服务。
 
@@ -195,7 +197,7 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 <details>
 <summary><b>如何更改 QnA Maker 使用的 Azure 认知搜索资源的名称？</b></summary>
 
-**答**： Azure 认知搜索资源的名称是在末尾追加了一些随机字母的 QnA Maker 资源名称。 这使得 QnA Maker 难以区分多个搜索资源。 创建单独的搜索服务（按你喜欢的方式对其进行命名），并将其连接到你的 QnA 服务。 步骤与[升级 Azure 搜索](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)所需执行的步骤类似。
+**答**： Azure 认知搜索资源的名称是在末尾追加了一些随机字母的 QnA Maker 资源名称。 这使得 QnA Maker 难以区分多个搜索资源。 创建单独的搜索服务 (将其命名为你希望) 并将其连接到 QnA 服务。 步骤与 [升级 Azure 搜索](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)所需执行的步骤类似。
 
 </details>
 
@@ -204,13 +206,13 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 
 **答**：应用服务的磁盘空间可能已满。 修复磁盘空间的步骤：
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 QnA Maker 的应用服务，然后停止服务。
-1. 仍在应用服务中，选择 "**开发工具**"，然后依次选择 "**高级工具**"、"**开始**"。 这将打开一个新的浏览器窗口。
-1. 选择 "**调试控制台**"，然后选择 " **CMD** " 以打开命令行工具。
-1. 导航到_site/wwwroot/Data/QnAMaker/_ directory。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 QnA Maker 的应用服务，然后停止服务。
+1. 仍在应用服务中，选择 " **开发工具**"，然后依次选择 " **高级工具**"、" **开始**"。 这将打开一个新的浏览器窗口。
+1. 选择 " **调试控制台**"，然后选择 " **CMD** " 以打开命令行工具。
+1. 导航到 _site/wwwroot/Data/QnAMaker/_ directory。
 1. 删除名称以开头的所有文件夹 `rd` 。
 
-    **请勿删除**以下内容：
+    **请勿删除** 以下内容：
 
     * KbIdToRankerMappings.txt 文件
     * 文件 EndpointSettings.js
@@ -226,14 +228,14 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 <details>
 <summary><b>为了使用 QnA Maker，需要使用 Bot Framework 吗？</b></summary>
 
-**答**：不可以，不需要将[机器人框架](https://github.com/Microsoft/botbuilder-dotnet)用于 QnA Maker。 不过，QnA Maker 是在 [Azure Bot 服务](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)中提供的几个模板之一。 机器人服务通过 Microsoft Bot Framework 实现快速智能机器人开发，并且它在无服务器的环境中运行。
+**答**：不可以，不需要将 [机器人框架](https://github.com/Microsoft/botbuilder-dotnet) 用于 QnA Maker。 不过，QnA Maker 是在 [Azure Bot 服务](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)中提供的几个模板之一。 机器人服务通过 Microsoft Bot Framework 实现快速智能机器人开发，并且它在无服务器的环境中运行。
 
 </details>
 
 <details>
 <summary><b>如何使用 QnA Maker 创建新的机器人？</b></summary>
 
-**答案**：按照[本](./Quickstarts/create-publish-knowledge-base.md)文档中的说明，通过 Azure Bot 服务创建机器人。
+**答案**：按照 [本](./Quickstarts/create-publish-knowledge-base.md) 文档中的说明，通过 Azure Bot 服务创建机器人。
 
 </details>
 
@@ -244,9 +246,9 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 
 * 知识库 ID。
 * 在发布后，在 "设置" 页上找到了知识库的已发布终结点自定义子域名称（称为 `host` ）。 **Settings**
-* 知识库的已发布终结点项-发布后在 "**设置**" 页上找到。
+* 知识库的已发布终结点项-发布后在 " **设置** " 页上找到。
 
-有关此信息，请在 Azure 门户中转到机器人的应用服务。 在**设置-> 配置-> 应用程序设置**中，更改这些值。
+有关此信息，请在 Azure 门户中转到机器人的应用服务。 在 **设置-> 配置-> 应用程序设置**中，更改这些值。
 
 知识库的终结点键 `QnAAuthkey` 在 ABS 服务中进行了标记。
 
@@ -274,7 +276,7 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 <details>
 <summary><b>存储哪些数据以及存储在何处？</b></summary>
 
-**答案**：
+答案：
 
 创建 QnA Maker 服务时，你选择了 Azure 区域。 知识库和日志文件存储在此区域中。
 

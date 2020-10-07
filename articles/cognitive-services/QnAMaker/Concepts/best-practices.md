@@ -1,14 +1,16 @@
 ---
 title: 最佳做法 - QnA Maker
 description: 使用这些最佳做法来改进知识库，并向应用程序/聊天机器人的最终用户提供更好的结果。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053136"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777014"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 
@@ -35,13 +37,13 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 
 ### <a name="add-relevant-alternative-questions"></a>添加相关的替代问题
 
-你的用户可能会输入带有对话文本样式的问题`How do I add a toner cartridge to my printer?`或关键字搜索（如）。 `toner cartridge` 知识库应同时具有这两种样式，以便正确返回最佳答案。 如果不确定客户输入了哪些关键字，请使用 Application Insights 数据来分析查询。
+你的用户可能会输入带有对话文本样式的问题 `How do I add a toner cartridge to my printer?` 或关键字搜索（如） `toner cartridge` 。 知识库应同时具有这两种样式，以便正确返回最佳答案。 如果不确定客户输入了哪些关键字，请使用 Application Insights 数据来分析查询。
 
 ### <a name="good-answers"></a>有价值的答案
 
-最好的答案是简单答案，但并不简单。 不要使用诸如`yes`和`no`之类的答案。 如果你的答案应链接到其他源或提供丰富的媒体和链接体验，请使用[元数据标记](../how-to/edit-knowledge-base.md#add-metadata)来区分答案，然后使用`strictFilters`属性中的元数据标记[提交查询](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)以获取正确的答案版本。
+最好的答案是简单答案，但并不简单。 不要使用诸如和之类的 `yes` 答案 `no` 。 如果你的答案应链接到其他源或提供丰富的媒体和链接体验，请使用 [元数据标记](../how-to/edit-knowledge-base.md#add-metadata) 来区分答案，然后使用属性中的元数据标记 [提交查询](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` 以获取正确的答案版本。
 
-|Answer|Follup 提示|
+|答案|Follup 提示|
 |--|--|
 |用键盘上的电源按钮关闭 Surface 笔记本电脑。|* 用于休眠、关闭和重新启动的组合键。<br>* 如何硬启动 Surface 便携机<br>* 如何更改 Surface 便携机的 BIOS<br>* 睡眠、关机和重启之间的差异|
 |客户服务可通过手机、Skype 和短信24小时提供。|* 销售的联系人信息。<br> * 办公地点和商店地点和营业时间。<br> * 适用于 Surface 便携机的附件。|
@@ -49,12 +51,12 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 ## <a name="chit-chat"></a>聊天内容
 向机器人中添加聊天内容可以轻松地使其更健谈而有趣。 创建 KB 时，可以从预定义的个性轻松添加 chit 数据集，并随时对其进行更改。 了解如何[向知识库添加聊天内容](../How-To/chit-chat-knowledge-base.md)。
 
-Chit-[多语言](../how-to/chit-chat-knowledge-base.md#language-support)支持聊天。
+Chit- [多语言](../how-to/chit-chat-knowledge-base.md#language-support)支持聊天。
 
 ### <a name="choosing-a-personality"></a>选择一种个性
 Chit-多个预定义个性支持聊天：
 
-|个性化 |QnA Maker 数据集文件 |
+|个性 |QnA Maker 数据集文件 |
 |---------|-----|
 |Professional |[qna_chitchat_professional tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
 |友好 |[qna_chitchat_friendly tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
@@ -62,7 +64,7 @@ Chit-多个预定义个性支持聊天：
 |关心 |[qna_chitchat_caring tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
 |热情 |[qna_chitchat_enthusiastic tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-响应既有正式的，也有非正式的和粗鲁的。 应该选择与所需机器人语气最接近的个性。 你可以查看数据集，并选择一个充当机器人的基础的[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)，然后自定义响应。
+响应既有正式的，也有非正式的和粗鲁的。 应该选择与所需机器人语气最接近的个性。 你可以查看数据集，并选择一个充当机器人的基础的 [数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)，然后自定义响应。
 
 ### <a name="edit-bot-specific-questions"></a>编辑特定于机器人的问题
 有一些特定于机器人的问题，这些问题是聊天数据集的一部分，并且已经使用泛型答案进行填充。 更改这些答案，使之能够最好地反映机器人的细节。
@@ -70,14 +72,14 @@ Chit-多个预定义个性支持聊天：
 建议使下述聊天 QnA 更具体：
 
 * 你是谁？
-* 你可以做什么？
+* 该怎么办？
 * 你多大了？
 * 谁创建了你？
 * 你好
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>添加自定义 chit-与元数据标记聊天
 
-如果添加自己的 chit-chat QnA 对，请确保添加元数据，以便返回这些答案。 元数据名称/值对为`editorial:chitchat`。
+如果添加自己的 chit-chat QnA 对，请确保添加元数据，以便返回这些答案。 元数据名称/值对为 `editorial:chitchat` 。
 
 ## <a name="searching-for-answers"></a>搜索答案
 
@@ -94,10 +96,10 @@ GenerateAnswer API 使用这两个问题和答案来搜索用户查询的最佳�
 
 ### <a name="choosing-a-threshold"></a>选择一个阈值
 
-用作阈值的默认[置信度](confidence-score.md)为0，但你可以根据需要更改 KB 的[阈值](confidence-score.md#set-threshold)。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。
+用作阈值的默认 [置信度](confidence-score.md) 为0，但你可以根据需要更改 KB 的 [阈值](confidence-score.md#set-threshold) 。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。
 
 ### <a name="choosing-ranker-type"></a>选择 Ranker 类型
-默认情况下，QnA Maker 搜索问题和答案。 如果只想要搜索问题，若要生成答案，请`RankerType=QuestionOnly`在 GenerateAnswer 请求的 POST 正文中使用。
+默认情况下，QnA Maker 搜索问题和答案。 如果只想要搜索问题，若要生成答案，请 `RankerType=QuestionOnly` 在 GenerateAnswer 请求的 POST 正文中使用。
 
 ### <a name="add-alternate-questions"></a>添加替代问题
 [替代问题](../How-To/edit-knowledge-base.md)可提高用户查询匹配到结果的可能性。 如果同样的问题能以多种方式提出，则替代问题就很有用。 这可以包含句子结构和措辞方式的更改。
@@ -111,10 +113,10 @@ GenerateAnswer API 使用这两个问题和答案来搜索用户查询的最佳�
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>使用元数据标记筛选问题和解答
 
-[元数据](../How-To/edit-knowledge-base.md)添加了一种功能，使客户端应用程序知道它不应使用所有答案，而是根据元数据标记缩小用户查询的结果范围。 即使查询相同，知识库的答案也可能因元数据标记而有所不同。 例如，如果餐馆分店的位置不同（即，元数据是“位置：西雅图”和“位置：雷德蒙德”），则“停车位在哪里？”就会有不同的答案”******。
+[元数据](../How-To/edit-knowledge-base.md) 添加了一种功能，使客户端应用程序知道它不应使用所有答案，而是根据元数据标记缩小用户查询的结果范围。 即使查询相同，知识库的答案也可能因元数据标记而有所不同。 例如，如果餐馆分店的位置不同（即，元数据是“位置：西雅图”和“位置：雷德蒙德”），则“停车位在哪里？”就会有不同的答案”******。
 
 ### <a name="use-synonyms"></a>使用同义词
-虽然对英语中的同义词有某些支持，但通过[变更 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)使用不区分大小写的单词变更将同义词添加到采用不同形式的关键字。 同义词添加到 QnA Maker 服务级别，并由服务中的所有知识库共享。
+虽然对英语中的同义词有某些支持，但通过 [变更 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 使用不区分大小写的单词变更将同义词添加到采用不同形式的关键字。 同义词添加到 QnA Maker 服务级别，并由服务中的所有知识库共享。
 
 |原始字|同义词|
 |--|--|
@@ -130,7 +132,7 @@ GenerateAnswer API 使用这两个问题和答案来搜索用户查询的最佳�
 |停车位置在哪里**|
 |ATM*位置*在哪里|
 
-由于这两个 QnA 使用很类似的单词来措辞，因此这种相似性可能导致许多措辞类似于**“`<x>` 位置在哪里”的用户查询获得很类似的分数。 相反，尝试*使用类似于*"位置" 的查询（例如，"位置"）来清楚地区分类似于 "位置" 的*字词，这*在您的知识库中可能存在许多问题。
+由于这两个 QnA 使用很类似的单词来措辞，因此这种相似性可能导致许多措辞类似于**“`<x>` 位置在哪里”的用户查询获得很类似的分数。 相反，尝试  *使用类似于* "位置" 的查询（例如，"位置"）来清楚地区分类似于 "位置" 的 *字词，这*在您的知识库中可能存在许多问题。
 
 ## <a name="collaborate"></a>协作
 QnA Maker 让用户可以在知识库上进行[协作](../How-to/collaborate-knowledge-base.md)。 用户需要具备对 Azure QnA Maker 资源组的访问权限，以便访问知识库。 某些组织可能想外包知识库的编辑工作和维护工作，但仍要能保护 Azure 资源的访问权限。 在不同订阅中设置两个完全相同的 [QnA maker 服务](../How-to/set-up-qnamaker-service-azure.md)并选择一个用于编辑测试循环，即可完成编辑者-审批者模型。 完成测试后，请使用[导入-导出](../Tutorials/migrate-knowledge-base.md)进程将知识库内容转移到审批者 QnA Maker 服务，由审批者进行最终的知识库发布和终结点更新。
@@ -139,7 +141,7 @@ QnA Maker 让用户可以在知识库上进行[协作](../How-to/collaborate-kno
 
 ## <a name="active-learning"></a>主动学习
 
-[主动学习](../How-to/use-active-learning.md)在提供大量基于用户的高质量和高数量的查询时，可以最好地建议备选问题。 重要的是允许客户端应用程序的用户查询在没有审查的情况下参与主动学习反馈循环。 在 QnA Maker 门户中建议问题后，可以**[按建议进行筛选](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)**，查看并接受或拒绝这些建议。
+[主动学习](../How-to/use-active-learning.md)在提供大量基于用户的高质量和高数量的查询时，可以最好地建议备选问题。 重要的是允许客户端应用程序的用户查询在没有审查的情况下参与主动学习反馈循环。 在 QnA Maker 门户中建议问题后，可以 **[按建议进行筛选](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** ，查看并接受或拒绝这些建议。
 
 ## <a name="next-steps"></a>后续步骤
 

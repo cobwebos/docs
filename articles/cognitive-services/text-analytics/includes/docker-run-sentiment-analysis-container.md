@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: e4a08217b5476f4934325518bec00d640003aece
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 96b41c27b282bdc05dafa8c69398a11e8dbf3b1b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906058"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779052"
 ---
 若要运行 *情绪分析 v3* 容器，请执行以下 `docker run` 命令。 将下面的占位符替换为你自己的值：
 

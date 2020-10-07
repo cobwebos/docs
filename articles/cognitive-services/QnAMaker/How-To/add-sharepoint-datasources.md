@@ -1,14 +1,16 @@
 ---
 title: SharePoint 文件-QnA Maker
 description: 通过将受保护的 SharePoint 数据源添加到知识库，可以通过 Active Directory 的问题和答案来丰富知识库。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660309"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776861"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>向知识库添加受保护的 SharePoint 数据源
 
@@ -18,21 +20,21 @@ ms.locfileid: "83660309"
 
 如果 QnA Maker 知识库管理器不是 Active Directory 管理器，则需要与 Active Directory 管理器进行通信以完成此过程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 基于云的 SharePoint-QnA Maker 使用 Microsoft Graph 权限。 如果你的 SharePoint 位于本地，你将无法从 SharePoint 中提取，因为 Microsoft Graph 无法确定权限。
-* URL 格式-QnA Maker 仅支持为共享生成的 SharePoint url，格式为`https://\*.sharepoint.com`
+* URL 格式-QnA Maker 仅支持为共享生成的 SharePoint url，格式为 `https://\*.sharepoint.com`
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>将支持的文件类型添加到知识库
 
-您可以将所有 QnA Maker 支持的[文件类型](../Concepts/content-types.md)从 SharePoint 站点添加到知识库中。 如果文件资源受到保护，则可能必须授予[权限](#permissions)。
+您可以将所有 QnA Maker 支持的 [文件类型](../Concepts/content-types.md) 从 SharePoint 站点添加到知识库中。 如果文件资源受到保护，则可能必须授予 [权限](#permissions) 。
 
 1. 从具有 SharePoint 站点的库中，选择该文件的省略号菜单 `...` 。
 1. 复制该文件的 URL。
 
    ![通过选择文件的省略号菜单并复制 URL 来获取 SharePoint 文件 URL。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. 在 QnA Maker 门户中的 "**设置**" 页上，将 URL 添加到知识库中。
+1. 在 QnA Maker 门户中的 " **设置** " 页上，将 URL 添加到知识库中。
 
 ### <a name="images-with-sharepoint-files"></a>带有 SharePoint 文件的图像
 
@@ -53,23 +55,23 @@ ms.locfileid: "83660309"
 当 SharePoint 服务器中的安全文件添加到知识库中时，将会授予权限。 根据 SharePoint 的设置方式和添加该文件的人员的权限，这可能需要：
 
 * 无其他步骤-添加文件的人员具有所需的所有权限。
-* "[知识库管理器](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal)" 和 " [Active Directory 管理器](#active-directory-manager-grant-file-read-access-to-qna-maker)" 中的步骤。
+* " [知识库管理器](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) " 和 " [Active Directory 管理器](#active-directory-manager-grant-file-read-access-to-qna-maker)" 中的步骤。
 
 请参阅下面列出的步骤。
 
 ### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>知识库管理器：在 QnA Maker 门户中添加 SharePoint 数据源
 
-当**QnA Maker 管理器**将受保护的 SharePoint 文档添加到知识库时，该知识库管理器将启动 Active Directory 管理器需要完成的权限请求。
+当 **QnA Maker 管理器** 将受保护的 SharePoint 文档添加到知识库时，该知识库管理器将启动 Active Directory 管理器需要完成的权限请求。
 
 请求以弹出窗口开头，以便向 Active Directory 帐户进行身份验证。
 
 ![验证用户帐户](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-QnA Maker 管理器选择帐户后，Azure Active Directory 管理员将收到一条通知，指出他们需要允许 QnA Maker 的应用（而不是 QnA Maker manager）访问 SharePoint 资源。 对于每个 SharePoint 资源，Azure Active Directory 管理器都需要执行此操作，但不需要为该资源中的每个文档执行此操作。
+QnA Maker 管理器选择帐户后，Azure Active Directory 管理员将收到一条通知，指出他们需要允许 QnA Maker 应用程序 (而不是 QnA Maker 管理员) 访问 SharePoint 资源。 对于每个 SharePoint 资源，Azure Active Directory 管理器都需要执行此操作，但不需要为该资源中的每个文档执行此操作。
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active directory 管理器：授予对 QnA Maker 的文件读取访问权限
 
-Active Directory 管理器（而不是 QnA Maker 管理器）需要通过选择[此链接](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68)来授权 QnA Maker 门户 SharePoint enterprise 应用具有文件读取权限，从而授予 QnA Maker 访问 SharePoint 资源的访问权限。
+Active Directory manager (不是 QnA Maker 管理器) 需要通过选择 [此链接](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) 对 QnA Maker 门户 SharePoint 企业应用程序授予对文件读取权限的访问权限，以访问 SharePoint 资源。
 
 ![Azure Active Directory 管理器以交互方式授予权限](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
@@ -111,13 +113,13 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 -->
 ### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>授予 Azure Active Directory 管理中心的访问权限
 
-1. Active Directory 管理器登录到 Azure 门户并打开**[企业应用程序](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**。
+1. Active Directory 管理器登录到 Azure 门户并打开 **[企业应用程序](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**。
 
 1. 搜索 `QnAMakerPortalSharePoint` 选择 QnA Maker 应用。
 
     [![搜索企业应用列表中的 QnAMakerPortalSharePoint](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. 在 "**安全性**" 下，中转到 "**权限**"。 选择 "**授予组织的管理员许可**"。
+1. 在 " **安全性**" 下，中转到 " **权限**"。 选择 " **授予组织的管理员许可**"。
 
     [![选择 Active Directory 管理员的经过身份验证的用户](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 

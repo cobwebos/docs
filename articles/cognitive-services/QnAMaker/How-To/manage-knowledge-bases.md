@@ -1,14 +1,16 @@
 ---
 title: 管理知识库-QnA Maker
 description: QnA Maker 允许您通过提供对知识库设置和内容的访问权限来管理您的知识库。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551772"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777732"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>创建知识库并管理设置
 
@@ -47,7 +49,7 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
     |**+ 添加 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**聊天内容**|选择“专业”|
 
-1. 在 **步骤 5**中，选择 " **创建知识库**"。
+1. 在“步骤 5”中，选择“创建 KB” 。
 
     提取过程需要一些时间来读取文档并确定问题和解答。
 

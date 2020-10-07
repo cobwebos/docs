@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 83a9eeb7644d107a808494ad06a8bef91d471fe1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122291"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779383"
 ---
 ### <a name="verify-that-a-container-is-running"></a>验证容器是否正在运行
 
@@ -25,7 +26,7 @@ ms.locfileid: "88122291"
 
 1. 选择“服务 API 说明”链接，以转到该容器的 Swagger 页。
 
-1. 选择任何**POST** api，并选择 "**试用**"。将显示参数，其中包括示例输入。
+1. 选择任何 **POST** api，并选择 " **试用**"。将显示参数，其中包括示例输入。
 
 你还可以使用多个 Url 来验证容器是否正在运行。
 

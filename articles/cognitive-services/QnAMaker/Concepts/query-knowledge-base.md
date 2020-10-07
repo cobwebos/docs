@@ -1,14 +1,16 @@
 ---
 title: 查询知识库-QnA Maker
 description: 必须发布知识库。 发布后，将使用 generateAnswer API 在运行时预测终结点上查询知识库。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220717"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776912"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>查询知识库以获取答案
 
@@ -16,7 +18,7 @@ ms.locfileid: "79220717"
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>QnA Maker 如何处理用户查询以选择最佳答案
 
-训练和[发布](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base)的 QnA Maker 知识库通过[GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)从机器人或其他客户端应用程序接收用户查询。 下图说明了收到用户查询时的过程。
+训练和 [发布](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) 的 QnA Maker 知识库通过 [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)从机器人或其他客户端应用程序接收用户查询。 下图说明了收到用户查询时的过程。
 
 ![用户查询的排名模型过程](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
@@ -26,10 +28,10 @@ ms.locfileid: "79220717"
 
 |步骤|目的|
 |--|--|
-|1|客户端应用程序将用户查询发送到[GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)。|
+|1|客户端应用程序将用户查询发送到 [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)。|
 |2|QnA Maker 通过语言检测、spellers 和断字符来预处理用户查询。|
 |3|此预处理用于更改最佳搜索结果的用户查询。|
-|4|此更改的查询将发送到 Azure 认知搜索索引，该索引将`top`接收结果数。 如果这些结果中没有正确答案，请将值`top`略微增大。 通常，90% 的查询中`top`的值为10。|
+|4|此更改的查询将发送到 Azure 认知搜索索引，该索引将接收 `top` 结果数。 如果这些结果中没有正确答案，请将值略微增大 `top` 。 通常， `top` 90% 的查询中的值为10。|
 |5|QnA Maker 使用语法和语义特征化来确定用户查询与提取的 QnA 结果之间的相似性。|
 |6|机器学习的 ranker 模型使用步骤5中的不同功能来确定置信度和新的排名顺序。|
 |7|新结果将按顺序返回到客户端应用程序。|
@@ -42,7 +44,7 @@ ms.locfileid: "79220717"
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>用于生成答案的用户查询请求
 
-用户查询是最终用户要求使用知识库的问题，例如`How do I add a collaborator to my app?`。 查询通常采用自然语言格式或几个表示问题的关键字，如`help with collaborators`。 查询将从客户端应用程序中的 HTTP 请求发送到知识库。
+用户查询是最终用户要求使用知识库的问题，例如 `How do I add a collaborator to my app?` 。 查询通常采用自然语言格式或几个表示问题的关键字，如 `help with collaborators` 。 查询将从客户端应用程序中的 HTTP 请求发送到知识库。
 
 ```json
 {
@@ -59,13 +61,13 @@ ms.locfileid: "79220717"
 }
 ```
 
-可以通过设置[scoreThreshold](./confidence-score.md#choose-a-score-threshold)、 [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)和[strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)等属性来控制响应。
+可以通过设置 [scoreThreshold](./confidence-score.md#choose-a-score-threshold)、 [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)和 [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)等属性来控制响应。
 
-使用[会话上下文](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context)和[多轮功能](../how-to/multiturn-conversation.md)，使对话进入优化问题和答案，找到正确且最终的答案。
+使用 [会话上下文](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) 和 [多轮功能](../how-to/multiturn-conversation.md) ，使对话进入优化问题和答案，找到正确且最终的答案。
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>来自调用的响应生成答案
 
-HTTP 响应是基于给定用户查询的最佳匹配项从知识库中检索到的答案。 响应包括答案和预测分数。 如果您要求使用`top`属性的多个顶级答案，则会获得多个顶级答案，其中每个都有一个分数。
+HTTP 响应是基于给定用户查询的最佳匹配项从知识库中检索到的答案。 响应包括答案和预测分数。 如果您要求使用属性的多个顶级答案， `top` 则会获得多个顶级答案，其中每个都有一个分数。
 
 ```json
 {

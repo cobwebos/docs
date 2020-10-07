@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766288"
+ms.locfileid: "91777773"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro GPU 设备
 
@@ -429,7 +429,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 基板管理控制器 (BMC) 用于远程监视和管理你的设备。 本部分介绍可用于管理 BMC 配置的 cmdlet。 在运行任何这些 cmdlet 之前，请 [连接到设备的 PowerShell 接口](#connect-to-the-powershell-interface)。
 
-- `Get-HcsNetBmcInterface`：使用此 cmdlet 获取 BMC 的网络配置属性，例如，、、 `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` 、 `DhcpEnabled` ： 
+- `Get-HcsNetBmcInterface`：使用此 cmdlet 可获取 BMC 的网络配置属性，例如，、、 `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` 、 `DhcpEnabled` 。 
     
     下面是示例输出：
     
@@ -476,7 +476,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
         [10.100.10.10]: PS>
         ```    
 
-- `Set-HcsBmcPassword`：此 cmdlet 用于修改的 BMC 密码 `EdgeUser` 。 
+- `Set-HcsBmcPassword`：此 cmdlet 用于修改的 BMC 密码 `EdgeUser` 。 用户名- `EdgeUser` -区分大小写。
 
     下面是示例输出： 
 

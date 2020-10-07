@@ -1,14 +1,16 @@
 ---
 title: 导入 QnA Maker 支持 Url 类型
 description: 了解如何使用 Url 类型来导入和创建 QnA 对。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bf50c1ea81cdf5246c47646d1a55926fe7d58d6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804310"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776691"
 ---
 # <a name="urls-supported-for-importing-documents"></a>导入文档时支持的 Url
 
@@ -48,7 +50,7 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
 
  ![知识库的深层链接常见问题解答页示例](./media/qnamaker-concepts-datasources/topics-faq.png)
 
-## <a name="support-urls"></a>支持 Url
+## <a name="support-urls"></a>支持 URL
 
 QnA Maker 可以处理半结构化支持网页，例如，介绍如何执行给定任务、如何诊断和解决给定问题以及适用于给定流程的最佳做法的网文。 提取最适用于结构清晰且具有分层标题的文档。
 

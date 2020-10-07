@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376801"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779805"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,7 @@ allprojects {
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -109,7 +109,7 @@ Context appContext = this.getApplicationContext();
 Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>使用 with 视频相机发出1:1 呼叫
+### <a name="place-a-11-call-with-video-camera"></a>使用摄像机发出1:1 呼叫
 > [!WARNING]
 > 目前仅支持一个传出的本地视频流来向视频发出呼叫，你必须使用 API 枚举本地相机 `deviceManager` `getCameraList` 。
 选择所需的照相机后，可以使用它来构造 `LocalVideoStream` 实例，并将其 `videoOptions` 作为数组中的项传递 `localVideoStream` 给 `call` 方法。
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>推送通知
+## <a name="push-notifications"></a>推送通知
 
 ### <a name="overview"></a>概述
-移动推送通知是在移动设备上获取的弹出通知。 对于调用，我们将重点介绍 VoIP (通过 Internet 协议) 推送通知。 我们将为你提供注册推送通知的功能，处理推送通知并取消注册推送通知。
+移动推送通知是在移动设备上看到的弹出通知。 对于调用，我们将重点介绍 VoIP (通过 Internet 协议) 推送通知。 我们将注册推送通知，处理推送通知，然后取消注册推送通知。
 
-### <a name="prerequisite"></a>先决条件
+### <a name="prerequisites"></a>先决条件
 
-本教程假定你已设置了 Firebase 帐户，且已启用云消息 (FCM) ，Firebase 云消息传递连接到 Azure 通知中心 (ANH) 实例。 有关详细信息，请参阅 [将 Firebase 连接到 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
-此外，本教程假定你使用 Android Studio 版本3.6 或更高版本来生成应用程序。
+若要完成本部分，请创建 Firebase 帐户，并 (FCM) 启用云消息传送。 确保 Firebase 云消息传送已连接到 Azure 通知中心 (ANH) 实例。 有关说明，请参阅 [将 Firebase 连接到 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
+本部分还假设你使用 Android Studio 版本3.6 或更高版本来生成应用程序。
 
-Android 应用程序需要一组权限才能接收来自 FCM 的通知消息。 在 AndroidManifest.xml 文件中，在 *<清单 ... >* 或标记下面添加以下权限集 *</application>*
+Android 应用程序需要一组权限，以便能够接收来自 Firebase 云消息传送的通知消息。 在 `AndroidManifest.xml` 文件中，在 *<manifest ... >* 或标记下面添加以下权限集 *</application>*
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ Android 应用程序需要一组权限才能接收来自 FCM 的通知消息。 
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>注册推送通知
+### <a name="register-for-push-notifications"></a>注册推送通知
 
-- 若要注册推送通知，应用程序需要在具有设备注册令牌的 *CallAgent* 实例上调用 registerPushNotification ( # A1。
+若要注册推送通知，应用程序需要 `registerPushNotification()` 在具有设备注册令牌的 *CallAgent* 实例上调用。
 
-- 如何获取设备注册令牌
-1. 请确保将 Firebase 客户端库添加到应用程序模块的 *gradle* 文件，方法是在 " *依赖关系* " 部分中添加以下行（如果尚未存在）：
+若要获取设备注册令牌，请将 Firebase 客户端库添加到应用程序模块的 *gradle* 文件，方法是在部分中添加以下行 `dependencies` （如果尚未这样做）：
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. 在项目级别的 *gradle* 文件中，在 " *依赖关系* " 部分中添加以下内容（如果尚未存在）
+在项目级别的 *gradle* 文件中，将以下内容添加到部分（ `dependencies` 如果尚未存在）：
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. 如果文件中尚不存在以下插件，请将其添加到文件的开头
+如果文件中尚不存在以下插件，请将其添加到文件的开头：
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. 选择工具栏中的 " *立即同步* "
+选择工具栏中的 " *立即同步* "。 添加以下代码段以获取由客户端应用程序实例的 Firebase Cloud 消息客户端库生成的设备注册令牌。请确保将以下导入添加到实例的主活动的标头。 若要检索令牌，段需要它们：
 
-5. 添加以下代码片段，以获取由 FCM 客户端应用程序实例生成的客户端应用程序实例的设备注册令牌 
-- 将这些导入添加到实例的主活动的标头中。 它们是代码片段检索令牌所必需的
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- 添加此代码片段以检索令牌
+
+添加此代码片段以检索令牌：
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. 向传入呼叫的调用服务客户端库注册设备注册令牌推送通知
+向传入呼叫推送通知的调用服务客户端库注册设备注册令牌：
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -218,10 +220,9 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>推送通知处理
 
-- 若要接收传入的调用推送通知，请在具有有效负载的*CallAgent*实例上调用*HandlePushNotification ( # B1* 。
+若要接收传入的调用推送通知，请在具有有效负载的*CallAgent*实例上调用*HandlePushNotification ( # B1* 。
 
-1. 若要从 FCM 获取有效负载，需执行以下步骤：
-- > 新的 > 服务 > Service) 中创建新的服务 (文件，该服务将扩展 *FirebaseMessagingService* Firebase 客户端库类，并确保重写 *onMessageReceived* 方法。 此方法是在 FCM 将推送通知传递到应用程序时调用的事件处理程序。
+若要从 Firebase 云消息传送中获取有效负载，请首先创建一个新的服务 (文件 > 新的 > 服务 > 服务) 扩展 *FirebaseMessagingService* Firebase 客户端库类，并重写 `onMessageReceived` 方法。 此方法是在 Firebase Cloud 消息传递将推送通知传递到应用程序时调用的事件处理程序。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- 还将以下服务定义添加到标记内的 AndroidManifest.xml 文件中 <application> 。
+将以下服务定义添加到该 `AndroidManifest.xml` 文件中的 <application> 标记内：
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- 检索有效负载后，可以通过对*CallAgent*实例调用*handlePushNotification*方法，将其传递给*通信服务*客户端库。
+检索有效负载后，可以通过对实例调用方法来将其传递到通信服务客户端库 `handlePushNotification` `CallAgent` 。
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 当推送通知消息的处理成功并且所有事件处理程序都已正确注册时，应用程序将会响铃。
 
-### <a name="unregister-push-notification"></a>注销推送通知
+### <a name="unregister-push-notifications"></a>注销推送通知
 
-- 应用程序可以随时取消注册推送通知。 `unregisterPushNotification()`在 callAgent 上调用方法以注销。
+应用程序可以随时取消注册推送通知。 `unregisterPushNotification()`在 callAgent 上调用方法以注销。
 
 ```java
 try {
@@ -281,25 +283,31 @@ catch(Exception e) {
 你可以访问调用属性并在调用以管理与视频和音频相关的设置期间执行各种操作。
 
 ### <a name="call-properties"></a>调用属性
-* 获取此调用的唯一 ID。
+
+获取此调用的唯一 ID：
+
 ```java
 String callId = call.getCallId();
 ```
 
-* 若要了解有关调用中的其他参与者，请检查 `remoteParticipant` 该实例上的集合 `call` ：
+若要了解有关调用中的其他参与者，请检查 `remoteParticipant` 该实例上的集合 `call` ：
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* 如果调用是传入的，则为调用方的标识。
+如果调用是传入的，则调用方的标识：
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* 获取调用的状态。
+获取调用的状态： 
+
 ```java
 CallState callState = call.getState();
 ```
+
 它返回表示调用的当前状态的字符串：
 * "无"-初始调用状态
 * "传入"-表示调用是传入的，它必须接受或拒绝
@@ -312,39 +320,45 @@ CallState callState = call.getState();
 * "Disconnected"-最终调用状态
 
 
-* 若要了解调用结束的原因，请检查 `callEndReason` 属性。
-它包含代码/子代码 (TODO 链接到文档) 
+若要了解调用结束的原因，请检查 `callEndReason` 属性。 它包含代码/子代码： 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* 若要查看当前调用是否为传入呼叫，请检查 `isIncoming` 属性：
+若要查看当前调用是否为传入呼叫，请检查 `isIncoming` 属性：
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  若要查看当前麦克风是否静音，请检查 `muted` 属性：
+若要查看当前麦克风是否静音，请检查 `muted` 属性：
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* 若要检查活动视频流，请检查 `localVideoStreams` 集合：
+若要检查活动视频流，请检查 `localVideoStreams` 集合：
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>静音和取消静音
+
 若要使本地终结点静音或取消静音，你可以使用 `mute` 和 `unmute` 异步 api：
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>开始和停止发送本地视频
-若要开始视频，必须 `getCameraList` 在对象上使用 API 来枚举摄像机 `deviceManager` 。
-然后创建 `LocalVideoStream` 传递所需照相机的新实例，并将其 `startVideo` 作为自变量传递到 API
+
+若要开始视频，必须 `getCameraList` 在对象上使用 API 来枚举摄像机 `deviceManager` 。 然后创建 `LocalVideoStream` 传递所需照相机的新实例，并将其 `startVideo` 作为参数传递给 API：
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 成功开始发送视频后， `LocalVideoStream` 实例将添加到 `localVideoStreams` 调用实例上的集合中。
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 若要停止本地视频，请 `localVideoStream` 在集合中传递可用的实例 `localVideoStreams` ：
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -383,7 +399,7 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 任何给定的远程参与者都具有与之关联的一组属性和集合：
 
 * 获取此远程参与者的标识符。
-标识是一个 "标识符" 类型
+标识是 "标识符" 类型之一
 ```java
 CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
@@ -452,7 +468,9 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 若要 `RemoteVideoStream` 从远程参与者呈现，必须订阅 `OnVideoStreamsUpdated` 事件。
-在此事件中，将 `isAvailable` 属性更改为 true 表示远程参与者当前正在发送流一次，创建新的实例 `Renderer` ，然后使用异步 API 创建新的， `RendererView` `createView` 并附加到 `view.target` 应用程序 UI 中的任意位置。
+
+在此事件中，将 `isAvailable` 属性更改为 true 表示远程参与者当前正在发送流。 出现这种情况后，创建新的实例 `Renderer` ，然后使用异步 API 创建新的， `RendererView` `createView` 并 `view.target` 在应用程序 UI 中的任意位置附加。
+
 当远程流的可用性发生变化时，你可以选择销毁整个呈现器、特定 `RendererView` 或保留它们，但这将导致显示空白的视频帧。
 
 ```java
@@ -504,7 +522,7 @@ renderer.createView()
 renderer.dispose()
 ```
 
-* `StreamSize` -size ( 远程视频流的宽度/高度 ) 
+* `StreamSize` -size (远程视频流的宽度/高度) 
 ```java
 StreamSize renderStreamSize = remoteVideoStream.getSize();
 int width = renderStreamSize.getWidth();

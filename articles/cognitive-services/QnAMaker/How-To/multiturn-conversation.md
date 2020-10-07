@@ -1,14 +1,16 @@
 ---
 title: 多轮会话-QnA Maker
 description: 使用 "提示" 和 "上下文" 来管理机器人，使机器人从一个问题到另一个问题。 多轮功能可以让您在上一个问题的上下文中影响下一个问题和答案。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322829"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777811"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建多个轮次的对话
 
@@ -92,7 +94,7 @@ ms.locfileid: "91322829"
 
 多转换上下文显示在第一列中。
 
-:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="屏幕截图显示突出显示的上下文部分。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="屏幕截图显示用户手册中结构的示例。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 在上图中， **#1** 指示列中的粗体文本，这表示当前问题。 父问题是行中的顶级项。 下面的任何问题都是链接的问答对。 可以选择这些项，以便您可以立即跳到其他上下文项。
 
@@ -108,7 +110,7 @@ ms.locfileid: "91322829"
 1. 在 **Signout**的行中的 " **答案** " 列中，选择 " **添加后续提示**"。
 1. 在 " **跟进提示符** " 弹出窗口的 "字段" 中，输入以下值：
 
-    |字段|Value|
+    |字段|值|
     |--|--|
     |显示文本|输入 **"关闭设备"**。 这是要在后续提示中显示的自定义文本。|
     |仅限上下文| 选中此复选框。 仅当问题指定上下文时，才返回答案。|
@@ -145,7 +147,7 @@ ms.locfileid: "91322829"
 1. 在此问题的 " **答案** " 列中，选择 " **添加后续提示**"。
 1. 在 " **后续提示 (预览") **下，输入以下值创建新的后续提示：
 
-    |字段|Value|
+    |字段|值|
     |--|--|
     |显示文本|*创建 Windows 帐户*。 要在跟进提示中显示的自定义文本。|
     |仅限上下文|选中此复选框。 仅当问题指定了上下文时，才返回此答案。|
@@ -167,7 +169,7 @@ ms.locfileid: "91322829"
 
     父问题将新问题显示为它的一个选择。
 
-    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="屏幕截图显示了这两个问题的上下文列，表示跟进提示符关系。" lightbox="../media/conversational-context/child-prompt-created.png":::
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="屏幕截图显示用户手册中结构的示例。" lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. 添加后续提示后，在顶部导航栏中选择 " **保存并训练** "。
 

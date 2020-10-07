@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: bc5d4e5a8a9607f74eb8733855a216b83520ff11
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88bff924075b0fe525c4b64fca5736a88e26763c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503696"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779750"
 ---
 Azure 提供了以下 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予对 Blob 和队列数据的访问权限：
 
@@ -26,7 +26,7 @@ Azure 提供了以下 Azure 内置角色，用于使用 Azure AD 和 OAuth 授�
 - [存储队列数据消息处理者](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)：用来对 Azure 存储队列中的消息授予扫视、检索和删除权限。
 - [存储队列数据消息发送者](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)：用来对 Azure 存储队列中的消息授予添加权限。
 
-只有为数据访问明确定义的角色才允许安全主体访问 Blob 或队列数据。 内置角色（例如“所有者”、“参与者”和“存储帐户参与者”）允许安全主体管理存储帐户，但不通过 Azure AD 提供对该帐户内的 blob 或队列数据的访问权限  。 但是，如果角色包括 Microsoft.Storage/storageAccounts/listKeys/action，则获得了该角色的用户可以使用帐户访问密钥通过共享密钥授权来访问存储帐户中的数据。 有关详细信息，请参阅[使用 Azure 门户访问 Blob 或队列数据](../articles/storage/common/storage-access-blobs-queues-portal.md)。
+只有为数据访问明确定义的角色才允许安全主体访问 Blob 或队列数据。 内置角色（例如“所有者”、“参与者”和“存储帐户参与者”）允许安全主体管理存储帐户，但不通过 Azure AD 提供对该帐户内的 blob 或队列数据的访问权限  。 但是，如果角色包括 Microsoft.Storage/storageAccounts/listKeys/action，则获得了该角色的用户可以使用帐户访问密钥通过共享密钥授权来访问存储帐户中的数据。 有关详细信息，请参阅[使用 Azure 门户访问 Blob 或队列数据](../articles/storage/blobs/authorize-blob-access-portal.md)。
 
 要详细了解数据服务和管理服务的 Azure 存储的 Azure 内置角色，请参阅 [Azure RBAC 的 Azure 内置角色](../articles/role-based-access-control/built-in-roles.md#storage)的“存储”部分。 此外，若要了解 Azure 中提供权限的不同类型的角色，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 角色](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)。
 

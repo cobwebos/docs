@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 9b616f8df0a8b64969fac1d18544e6d316120e50
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91771031"
+ms.locfileid: "91776385"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>在 Azure 存储中设置 GitHub 操作工作流以部署静态网站
 
@@ -83,7 +83,7 @@ Azure 订阅和 GitHub 帐户。
 
 1. 删除工作流文件的部分后面的所有内容 `on:` 。 例如，剩余工作流可能如下所示。 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -95,7 +95,7 @@ Azure 订阅和 GitHub 帐户。
 
 1. 重命名工作流 `Blob storage website CI` 并添加结帐和登录操作。 这些操作将签出你的站点代码，并使用之前创建的 GitHub 机密对 Azure 进行身份验证 `AZURE_CREDENTIALS` 。 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:
@@ -181,7 +181,7 @@ Azure 订阅和 GitHub 帐户。
 
 1. 删除工作流文件的部分后面的所有内容 `on:` 。 例如，剩余工作流可能如下所示。 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -193,7 +193,7 @@ Azure 订阅和 GitHub 帐户。
 
 1. 重命名工作流 `Blob storage website CI` 并添加结帐和登录操作。 这些操作将签出你的站点代码，并使用之前创建的 GitHub 机密对 Azure 进行身份验证 `AZURE_CREDENTIALS` 。 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:

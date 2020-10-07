@@ -5,12 +5,12 @@ description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003052"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776300"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -19,7 +19,7 @@ ms.locfileid: "88003052"
 本文重点介绍如何保护 AKS 群集。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用 Azure Active Directory 和基于角色的访问控制 (RBAC) 保护 API 服务器访问
+> * 使用 Azure Active Directory 和基于角色的访问控制 (RBAC) 来保护 API 服务器访问
 > * 保护容器对节点资源的访问
 > * 将 AKS 群集升级到最新的 Kubernetes 版本
 > * 使节点保持最新状态并自动应用安全修补程序
@@ -53,7 +53,7 @@ Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管�
 若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。 内置的 Linux 安全功能仅在 Linux 节点和 Pod 上提供。
 
 > [!NOTE]
-> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 其他安全功能（如*AppArmor*、 *Seccomp*、 *Pod 安全策略*）或更细粒度的基于角色的访问控制 (用于节点的 RBAC) 使攻击更加困难。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
+> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 AppArmor、seccomp、Pod 安全策略或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ### <a name="app-armor"></a>App Armor
 
@@ -177,7 +177,7 @@ chmod-prevented           0/1       Error     0          7s
 
 与更传统的基础结构平台相比，Kubernetes 发布新功能的速度更快。 Kubernetes 更新包括新功能和 bug 或安全修补程序。 新功能通常会在经历 *alpha*、*beta* 状态后变得*稳定*，这时便可公开发布，并建议用于生产环境中。 在此发布周期内，可对 Kubernetes 进行更新，而不会经常遇到中断性变更，也无需调整部署和模板。
 
-AKS 支持四个 Kubernetes 次要版本。 这意味着，在引入新的次要修补程序版本后，将停止对最早次要版本和修补程序版本的支持。 系统会定期更新 Kubernetes 的次要版本。 请确保设置一个根据需要进行检查和升级的管理流程，以免失去支持。 有关详细信息，请参阅[支持的 Kubernetes 版本 AKS][aks-supported-versions]
+AKS 支持三种次要版本的 Kubernetes。 这意味着，在引入新的次要修补程序版本后，将停止对最早次要版本和修补程序版本的支持。 系统会定期更新 Kubernetes 的次要版本。 请确保设置一个根据需要进行检查和升级的管理流程，以免失去支持。 有关详细信息，请参阅 [支持的 Kubernetes 版本 AKS][aks-supported-versions]。
 
 若要检查可用于群集的版本，请使用 [az aks get-upgrades][az-aks-get-upgrades] 命令，如以下示例所示：
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 然后，可以使用 [az aks upgrade][az-aks-upgrade] 命令升级 AKS 群集。 升级过程会以安全的方式逐一封锁并清空节点，在剩余的节点上计划 Pod，然后部署一个运行最新 OS 和 Kubernetes 版本的新节点。
+
+强烈建议在开发测试环境中测试新的次要版本，以便可以使用新的 Kubernetes 版本来验证工作负荷的运行状况是否正常。 Kubernetes 可能会弃用 Api，如版本1.16 中的工作负荷。 在将新版本引入生产环境时，请考虑 [在不同版本上使用多个节点池](use-multiple-node-pools.md) ，并每次升级一个池，以便在群集中逐步滚动更新。 如果运行多个群集，则每次升级一个群集以逐步监视影响或更改。
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION

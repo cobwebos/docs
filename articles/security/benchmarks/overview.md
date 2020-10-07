@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280651"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777099"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure 安全基准概述 (V2) 
 
@@ -30,19 +30,17 @@ Azure 安全基准中包含以下控件：
 
 | 审计准则委员会控制域 | 说明 
 |--|--|
-| [网络安全 (NS) ](security-controls-v2-network-security.md) | 网络安全包括用于保护和保护 Azure 网络的控件，包括保护虚拟网络、建立专用连接、阻止和减少外部攻击以及保护 DNS。 |
-| [身份管理 (IM) ](security-controls-v2-identity-management.md) | 标识管理涵盖使用 Azure Active Directory 建立安全标识和访问控制的控件，包括使用单一登录、强身份验证、托管标识 (和服务原则) 应用程序、条件性访问和帐户异常监视。 |
-| [ (PA) 的特权访问 ](security-controls-v2-privileged-access.md) | 特权访问涵盖了用于保护对 Azure 租户和资源的特权访问的控制，包括保护管理模型、管理帐户和特权访问工作站的各种控制，以防止有意和无意的风险。 |
-| [数据保护 (DP) ](security-controls-v2-data-protection.md) | 数据保护涉及到对静态数据保护、传输过程中的数据保护，以及通过授权访问机制的控制，包括使用 Azure 中的访问控制、加密和日志记录发现、分类、保护和监视敏感数据资产。 |
-| [资产管理 (AM) ](security-controls-v2-asset-management.md) | 资产管理涵盖控制以确保对 Azure 资源的安全性的可见性和管理，包括对安全人员权限的建议、对资产清单的安全访问，以及管理服务和资源的审批 (库存、跟踪和更正) 。 |
-| [ (LT) 进行日志记录和威胁检测 ](security-controls-v2-logging-threat-detection.md) | 日志记录和威胁检测涵盖了用于检测 Azure 上的威胁、为 Azure 服务启用、收集和存储审核日志的控制，包括通过控制启用检测、调查和修正过程，从而在 Azure 服务中生成具有本机威胁检测功能的高质量警报;它还包括 Azure Monitor 收集日志，通过 Azure Sentinel、时间同步和日志保留来集中进行安全分析。 |
-| [事件响应 (IR)](security-controls-v2-incident-response.md) | 事件响应涵盖事件响应生命周期-准备、检测和分析、包含和事件后活动中的控制，包括使用 azure 服务（如 Azure 安全中心和 Sentinel）自动执行事件响应过程。 |
-| [状况和漏洞管理 (PV) ](security-controls-v2-posture-vulnerability-management.md) | 状况和漏洞管理重点介绍用于评估和改进 Azure 安全状况的控制，包括漏洞扫描、渗透测试和修正，以及 Azure 资源中的安全配置跟踪、报告和更正。 |
-| [Endpoint Security (ES) ](security-controls-v2-endpoint-security.md) | Endpoint Security 涵盖终结点检测和响应中的控件，包括在 Azure 环境中使用终结点检测和响应 (EDR) 和反恶意软件服务。 |
-| [ (BR) 备份和恢复 ](security-controls-v2-backup-recovery.md) | 备份和恢复涵盖了控制，以确保执行、验证和保护不同服务层上的数据和配置备份。 |
-| [管理和策略 (GS) ](security-controls-v2-governance-strategy.md) | 调控和策略提供的指导可确保一致的安全策略和记录的管理方法来指导和维持安全保障，包括为不同的云安全功能、统一的技术策略和支持策略和标准建立角色和责任。 |
-
-还可以通过 [电子表格格式](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)下载 Azure 安全基准。
+| [网络 &nbsp; 安全 &nbsp; (NS) ](security-controls-v2-network-security.md) | 网络安全包括用于保护和保护 Azure 网络的控件，包括保护虚拟网络、建立专用连接、阻止和减少外部攻击以及保护 DNS。 |
+| [身份 &nbsp; 管理 &nbsp; (IM) ](security-controls-v2-identity-management.md) | 标识管理涵盖使用 Azure Active Directory 建立安全标识和访问控制的控件，包括使用单一登录、强身份验证、托管标识 (和服务原则) 应用程序、条件性访问和帐户异常监视。 |
+| [&nbsp; &nbsp; (PA) 的特权访问](security-controls-v2-privileged-access.md) | 特权访问涵盖了用于保护对 Azure 租户和资源的特权访问的控制，包括保护管理模型、管理帐户和特权访问工作站的各种控制，以防止有意和无意的风险。 |
+| [数据 &nbsp; 保护 &nbsp; (DP) ](security-controls-v2-data-protection.md) | 数据保护涉及到对静态数据保护、传输过程中的数据保护，以及通过授权访问机制的控制，包括使用 Azure 中的访问控制、加密和日志记录发现、分类、保护和监视敏感数据资产。 |
+| [资产 &nbsp; 管理 &nbsp; (AM) ](security-controls-v2-asset-management.md) | 资产管理涵盖控制以确保对 Azure 资源的安全性的可见性和管理，包括对安全人员权限的建议、对资产清单的安全访问，以及管理服务和资源的审批 (库存、跟踪和更正) 。 |
+| [&nbsp; (LT) 进行日志记录和 &nbsp; 威胁 &nbsp; 检测](security-controls-v2-logging-threat-detection.md) | 日志记录和威胁检测涵盖了用于检测 Azure 上的威胁、为 Azure 服务启用、收集和存储审核日志的控制，包括通过控制启用检测、调查和修正过程，从而在 Azure 服务中生成具有本机威胁检测功能的高质量警报;它还包括 Azure Monitor 收集日志，通过 Azure Sentinel、时间同步和日志保留来集中进行安全分析。 |
+| [事件 &nbsp; 响应 &nbsp; (IR) ](security-controls-v2-incident-response.md) | 事件响应涵盖事件响应生命周期-准备、检测和分析、包含和事件后活动中的控制，包括使用 azure 服务（如 Azure 安全中心和 Sentinel）自动执行事件响应过程。 |
+| [状况 &nbsp; 和 &nbsp; 漏洞 &nbsp; 管理 &nbsp; (PV) ](security-controls-v2-posture-vulnerability-management.md) | 状况和漏洞管理重点介绍用于评估和改进 Azure 安全状况的控制，包括漏洞扫描、渗透测试和修正，以及 Azure 资源中的安全配置跟踪、报告和更正。 |
+| [Endpoint &nbsp; Security &nbsp; (ES) ](security-controls-v2-endpoint-security.md) | Endpoint Security 涵盖终结点检测和响应中的控件，包括在 Azure 环境中使用终结点检测和响应 (EDR) 和反恶意软件服务。 |
+| [&nbsp; &nbsp; &nbsp; (BR) 备份和恢复](security-controls-v2-backup-recovery.md) | 备份和恢复涵盖了控制，以确保执行、验证和保护不同服务层上的数据和配置备份。 |
+| [管理 &nbsp; 和 &nbsp; 策略 &nbsp; (GS) ](security-controls-v2-governance-strategy.md) | 调控和策略提供的指导可确保一致的安全策略和记录的管理方法来指导和维持安全保障，包括为不同的云安全功能、统一的技术策略和支持策略和标准建立角色和责任。 |
 
 ## <a name="azure-security-benchmark-recommendations"></a>Azure 安全基准检验建议
 
@@ -60,7 +58,11 @@ Azure 安全基准中包含以下控件：
 
 我们欢迎你提供详细反馈并积极参与 Azure 安全基准检验工作。 若要提供 Azure 安全基准团队直接输入，请在 https://aka.ms/AzSecBenchmark
 
+## <a name="download"></a>下载
 
+可以采用 [电子表格格式](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)下载 Azure 安全基准。
+
+## <a name="next-steps"></a>后续步骤 
 - 请参阅第一个安全控制： [网络安全](security-control-network-security.md)
 - 阅读 [Azure 安全基准检验简介](introduction.md)
-- 下载 [Azure Security 准则 v2 excel 电子表格](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)
+- 了解 [Azure 安全性基础知识](../fundamentals/index.yml)

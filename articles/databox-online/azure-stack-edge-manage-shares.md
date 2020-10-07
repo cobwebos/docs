@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d7ff32b33a8eab5c6729d84d38fec2e5b2c87449
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904478"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777201"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的共享
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的共享
 
 本文介绍如何在 Azure Stack Edge Pro 上管理共享。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
 
@@ -74,7 +74,7 @@ ms.locfileid: "90904478"
 
 1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 在命令栏上选择“+ 添加共享”****。
 
-   ![选择“添加共享”](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![选择添加共享2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. 在“添加共享”中指定共享设置。**** 提供共享的唯一名称。
     
@@ -88,7 +88,7 @@ ms.locfileid: "90904478"
 
 6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。************
 
-7. 选择“创建”。 
+7. 选择“创建”****。 
 
    ![创建本地共享](media/azure-stack-edge-manage-shares/add-local-share-2.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "90904478"
 
 1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。********
 
-   ![选择共享](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![选择共享3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. 选择“装载”****。
 
@@ -130,7 +130,7 @@ ms.locfileid: "90904478"
 
 1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **网关 > 共享**"。
 
-   ![选择共享](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![选择共享4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。 选择 " **卸载**"。
 
@@ -150,7 +150,7 @@ ms.locfileid: "90904478"
 
 1. 在共享列表中，选择并单击要删除的共享。
 
-   ![选择共享](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![选择共享5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. 单击 **“删除”** 。
 
@@ -175,7 +175,7 @@ ms.locfileid: "90904478"
 
 1. 在 Azure 门户中转到“共享”。**** 选择并单击要刷新的共享。
 
-   ![选择共享](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![选择共享6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
 2. 单击“刷新”。
 

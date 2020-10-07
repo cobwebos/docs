@@ -1,14 +1,16 @@
 ---
 title: 将活动学习与知识库结合使用-QnA Maker
 description: 了解如何通过主动学习提高知识库的质量。 查看、接受或拒绝，添加时不删除或更改现有问题。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 32dfe6a274889181410ab5f800ac595ee81c148c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c67cde3062d88c48eb44a5135bf47ad3948cecc8
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298139"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776793"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用主动学习改进知识库
 

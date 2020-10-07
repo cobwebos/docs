@@ -3,14 +3,14 @@ title: 在 Azure 自动化中部署 Linux 混合 Runbook 辅助角色
 description: 本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色，以便在本地数据中心或云环境中基于 Linux 的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987228"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776266"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -45,6 +45,10 @@ ms.locfileid: "90987228"
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
 
 混合 Runbook 辅助角色需要受支持的 Linux 操作系统的 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)。
+
+>[!NOTE]
+>安装适用于 Linux 的 Log Analytics 代理后，不应更改 `sudoers.d` 文件夹或其所有权的权限。 Sudo 权限对于 **nxautomation** 帐户是必需的，后者是混合 Runbook 辅助角色在其下运行的用户上下文。 不应删除这些权限。 将此限制为某些文件夹或命令可能会导致重大更改。
+>
 
 ### <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
 

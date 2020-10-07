@@ -1,17 +1,17 @@
 ---
-title: 导出 Azure 策略资源
+title: 导出 Azure Policy 资源
 description: 了解如何将 Azure 策略资源导出到 GitHub，如策略定义和策略分配。
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17f0322390cd2cd89ba182a9e3c7c95843cc135e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604267"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777082"
 ---
-# <a name="export-azure-policy-resources"></a>导出 Azure 策略资源
+# <a name="export-azure-policy-resources"></a>导出 Azure Policy 资源
 
 本文提供了有关如何导出现有 Azure 策略资源的信息。 导出资源会很有用，并建议用于备份，但在使用云管理和将 [策略视为代码](../concepts/policy-as-code.md)时，这也是一项重要的一步。 Azure 策略资源可以通过 [Azure 门户](#export-with-azure-portal)、 [Azure CLI](#export-with-azure-cli)、 [Azure PowerShell](#export-with-azure-powershell)和每个受支持的 sdk 进行导出。
 
@@ -84,7 +84,7 @@ az policy definition show --name 'VirtualMachineStorage'
 下面是一个示例，说明如何获取 **名** 为 _VirtualMachineStorage_的策略定义的 JSON：
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition --Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
 ```
 
 ## <a name="next-steps"></a>后续步骤

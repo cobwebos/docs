@@ -1,14 +1,16 @@
 ---
 title: 从数据源导入-QnA Maker
 description: 了解如何从数据源导入问题和答案对-QnA Maker。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: c66f81ccabd77e49ba1c492db25ad9e9edd34e93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f609dc27aa1251cfad0249d26ef5140936bfe41
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334627"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776946"
 ---
 # <a name="importing-from-data-sources"></a>从数据源导入
 
@@ -65,7 +67,7 @@ Chit chat QnA 内容集以多种语言和会话样式提供的完整内容数据
 > [!div class="nextstepaction"]
 > [知识库的开发生命周期](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 使用 QnA Maker [Markdown 参考](../reference-markdown-format.md) 来帮助你设置答案的格式。
 

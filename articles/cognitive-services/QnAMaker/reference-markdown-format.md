@@ -1,14 +1,16 @@
 ---
 title: Markdown 格式-QnA Maker
 description: 下面是可以在 QnA Maker 的答案文本中使用的 markdown 格式的列表。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: d5bf8342b3e595ed4b381ec5104a0c82f0d7ecc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321027"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777360"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker 应答文本中支持的 Markdown 格式
 

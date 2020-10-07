@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 7f5f3f4edccc6d23b8041051028273559bcffecd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325923"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776572"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 和 Oracle 云基础结构之间的直接互连  
 
@@ -96,7 +96,7 @@ Microsoft 创建了 Terraform 脚本，用于启用网络互连的自动部署�
 
 若要删除此互连，必须按照给定的顺序执行以下步骤。 否则，将导致 "失败状态" ExpressRoute 线路。
 
-1. 删除 ExpressRoute 连接。 通过单击连接页面上的 " **删除** " 图标来删除连接。 有关详细信息，请参阅 [ExpressRoute 文档](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet)。
+1. 删除 ExpressRoute 连接。 通过单击连接页面上的 " **删除** " 图标来删除连接。 有关详细信息，请参阅 [ExpressRoute 文档](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#clean-up-resources)。
 1. 从 Oracle 云控制台中删除 Oracle FastConnect。
 1. 删除 Oracle FastConnect 线路后，可以删除 Azure ExpressRoute 线路。
 

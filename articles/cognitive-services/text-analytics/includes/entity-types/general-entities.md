@@ -5,24 +5,25 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 32e80c50ff6f543679852cbd7e5ce9bda92d01e1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 630f04bf2cc9e7de6331f9d25754a20fe2327d76
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140904"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779242"
 ---
 将请求发送到终结点时，将返回以下实体类别 `/entities/recognition/general` 。
 
-| Category   | 子类别 | 说明                          | 开始模型版本                                                    | 注释 |
+| 类别   | Subcategory | 说明                          | 开始模型版本                                                    | 备注 |
 |------------|-------------|--------------------------------------|-------------------------------------------------------------|--------------------------------------|
 | 人员     | 空值         | 人员姓名。  | `2019-10-01`  | NER v 2.1 还返回 |
 | PersonType | 空值         | 人员持有的作业类型或角色。 | `2020-02-01` | |
 |位置    | 空值         | 自然和人为的特征点、结构、地理功能和地缘政治实体     |  `2019-10-01` | NER v 2.1 还返回 |
-|位置     | 地缘政治实体（GPE）        | 城市、国家/地区、州。      | `2020-02-01` | |
+|位置     | 地缘政治实体 (GPE)         | 城市、国家/地区、州。      | `2020-02-01` | |
 |位置     | Structural                       | 人造结构。 | `2020-04-01` | |
 |位置     | 出于       | 地理和自然功能，如河流、海洋和盛夏。 |  `2020-04-01` | |
 |组织  | 空值 | 公司、政治组、音乐带、运动俱乐部、政府机构和公共组织。  | `2019-10-01` | 各族和 religions 不包含在此实体类型中。 NER v 2.1 还返回 |
@@ -36,8 +37,8 @@ ms.locfileid: "84140904"
 | 产品 | 空值 | 各种类别的物理对象。 | `2020-02-01` | |
 | 产品 | 计算产品 | 计算产品。 |  `2020-02-01 ` | |
 | 技能 | 空值 | 功能、技能或专业知识。 | `2020-02-01` |  |
-| 地址 | 空值 | 完整的邮件地址。  | `2020-04-01` |  |
-| PhoneNumber | 空值 | 电话号码（仅限美国和欧盟电话号码）。 | `2019-10-01` | NER v 2.1 还返回 |
+| 地址 | 不可用 | 完整的邮件地址。  | `2020-04-01` |  |
+| PhoneNumber | 空值 | 电话号码仅)  (美国和欧盟电话号码。 | `2019-10-01` | NER v 2.1 还返回 |
 | 电子邮件 | 空值 | 电子邮件地址。 | `2019-10-01` | NER v 2.1 还返回 |
 | URL | 空值 | 指向网站的 Url。 | `2019-10-01` | NER v 2.1 还返回  |
 | IP | 空值 | 网络 IP 地址。 | `2019-10-01` | NER v 2.1 还返回 |

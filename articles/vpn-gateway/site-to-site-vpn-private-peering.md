@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: effbe8e771922ea07ad908dd4871f8dcdb7c1d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934273"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776555"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>通过 ExpressRoute 专用对等互连 (预览 "配置站点到站点 VPN 连接) 
 
@@ -72,16 +72,16 @@ ms.locfileid: "90934273"
 
 ## <a name="portal-steps"></a><a name="portal"></a>门户步骤
 
-1. 配置站点到站点连接。 有关步骤，请参阅 [站点到站点配置](vpn-gateway-howto-site-to-site-resource-manager-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 区域冗余 Sku 在 SKU 末尾有 "AZ"。 例如，VpnGw1AZ。
+1. 配置站点到站点连接。 有关步骤，请参阅 [站点到站点配置](vpn-gateway-howto-site-to-site-resource-manager-portal.md) 一文。 务必为网关选择区域冗余的网关 SKU。 
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="网关专用 Ip":::
-1. 在网关上启用专用 Ip。 选择 " **配置**"，并将 " **网关专用 ip** " 设置为 " **启用**"。 选择“保存”以保存更改。
-1. 在 " **概述** " 页上，选择 " **查看更多** " 来查看专用 IP 地址。 记下此信息，以便稍后在配置步骤中使用。
+   区域冗余 Sku 在 SKU 末尾有 "AZ"。 例如， **VpnGw1AZ**。 区域冗余的网关仅适用于可用性区域服务可用的区域。 有关我们支持可用性区域的区域的信息，请参阅 [支持可用性区域的区域](../availability-zones/az-region.md)。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="概述页" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="图 1" 来查看专用 IP 地址。 记下此信息，以便稍后在配置步骤中使用。
+
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="图 1" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. 若要启用对连接 **使用 Azure 专用 IP 地址** ，请选择 "  **配置**"。 将 " **使用 Azure 专用 IP 地址** " 设置为 " **已启用**"，然后选择 " **保存**"。
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="网关专用 Ip-已启用":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="图 1":::
 1. 在防火墙中，对你在步骤3中记下的专用 IP 进行 ping 操作。 专用 IP 应可通过 ExpressRoute 专用对等互连进行访问。
 1. 使用此专用 IP 作为本地防火墙上的远程 IP，通过 ExpressRoute 专用对等互连建立站点到站点隧道。
 

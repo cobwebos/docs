@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 49a2b285d9494dfc5ca0863c021733b4bc874efa
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662925"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779333"
 ---
 此实体类别包括财务信息和官方形式的标识。 从模型版本开始可用 `2019-10-01` 。 下面列出了子类型。 
 
@@ -275,7 +276,7 @@ ms.locfileid: "89662925"
 * 英国 Passport 号码
 * 英国 唯一纳税人参考编号
 
-United States
+美国
 * U.S. 社会保障号 (SSN) 
 * 美国驾照号码
 * 美国 Passport 号码

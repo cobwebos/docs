@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 563daca1e5179639b8dd3aaf710d92e54faf6aa1
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 44bce7c6dd2443ea0ed1851325a5b84f325f5fae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709192"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779724"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>运行状况类别、实体和属性的文本分析
 
@@ -50,7 +51,7 @@ ms.locfileid: "91709192"
 
 :::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure-2.png" alt-text="正文结构实体的示例。":::
 
-### <a name="attributes"></a>特性
+### <a name="attributes"></a>属性
 
 **方向** 性术语，例如： left、侧向、upper、后验，这种术语反映了正文结构。
 
@@ -75,7 +76,7 @@ ms.locfileid: "91709192"
 
 :::image type="content" source="../../media/ta-for-health/gender-entity.png" alt-text="正文结构实体的示例。":::
 
-### <a name="attributes"></a>特性
+### <a name="attributes"></a>属性
 
 用于表达人口统计信息实体与其他信息之间关系的**RELATIONAL_OPERATOR**短语。
 
@@ -91,7 +92,7 @@ ms.locfileid: "91709192"
 
 :::image type="content" source="../../media/ta-for-health/exam-name-entities-2.png" alt-text="正文结构实体的示例。":::
 
-### <a name="attributes"></a>特性
+### <a name="attributes"></a>属性
 
 描述检查特征的**方向**性术语。
 
@@ -165,7 +166,7 @@ ms.locfileid: "91709192"
 
 :::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity-2.png" alt-text="正文结构实体的示例。":::
 
-### <a name="attributes"></a>特性
+### <a name="attributes"></a>属性
 
 用于描述医疗条件的**CONDITION_QUALIFIER**质量术语。 以下所有子类别均被视为限定符：
 
@@ -233,7 +234,7 @@ ms.locfileid: "91709192"
 
 :::image type="content" source="../../media/ta-for-health/medication-entities-name.png" alt-text="正文结构实体的示例。":::
 
-### <a name="attributes"></a>特性
+### <a name="attributes"></a>属性
 
 **剂量** -已订购的药物量。 例如，注入 Sodium Chloride solution *1000 mL*。
 
@@ -275,7 +276,7 @@ ms.locfileid: "91709192"
 
 :::image type="content" source="../../media/ta-for-health/treatment-entities-name.png" alt-text="正文结构实体的示例。":::
 
-### <a name="attributes"></a>特性
+### <a name="attributes"></a>属性
 
 反映处理情况的**方向**性术语。
 

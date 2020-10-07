@@ -1,14 +1,16 @@
 ---
 title: Azure 资源-QnA Maker
 description: QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何单独使用这些功能，可以规划和选择正确的定价层，或者知道何时更改定价层。 了解如何结合使用它们，可以在出现问题时查找并解决问题。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 06731c97217e3b6a5c498743b83f1d16bab791eb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62f627fb9765f2a86a373f74c33437680c9305af
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548423"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777048"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -62,7 +64,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
 ## <a name="when-to-change-a-pricing-tier"></a>何时更改定价层
 
-|升级|原因|
+|升级|Reason|
 |--|--|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker 管理 SKU|你需要在知识库中具有更多的 QnA 对或文档源。|
 |[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) 应用服务 SKU 和检查认知搜索层并 [创建认知搜索副本](../../../search/search-capacity-planning.md)|您的知识库需要提供客户端应用程序的更多请求，例如聊天机器人。|
@@ -144,7 +146,7 @@ QnA Maker 资源提供对创作和发布 Api 的访问，以及自然语言处�
 
 QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权益，请使用下表来了解可以和不能共享的内容：
 
-|服务|共享|原因|
+|服务|共享|Reason|
 |--|--|--|
 |认知服务|X|不能通过设计|
 |应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将会遇到问题。|

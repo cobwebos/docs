@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377205"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779445"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,9 +72,9 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>将1： n 调用与用户和 PSTN 一起使用
-> [!WARNING]
-> PSTN 呼叫目前处于个人预览版。 对于访问权限，请 [应用于早期](https://aka.ms/ACS-EarlyAdopter)使用者计划。
+
 若要对用户和 PSTN 号码进行1： n 调用，必须为这两个被调用方指定 CommunicationUser 和电话号码。
+
 必须将通信服务资源配置为允许 PSTN 调用。
 ```js
 
