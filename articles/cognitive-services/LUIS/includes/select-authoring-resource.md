@@ -3,10 +3,10 @@ title: 选择创作资源
 ms.topic: include
 ms.date: 03/25/2020
 ms.openlocfilehash: b16e720e8b28d9440cde4fdf5e84dbfc00c00ca8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83658665"
 ---
 ## <a name="select-subscription-and-authoring-resource"></a>选择订阅和创作资源

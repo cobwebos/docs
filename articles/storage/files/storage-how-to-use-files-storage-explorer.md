@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75431821"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>快速入门：使用 Azure 存储资源管理器创建和管理 Azure 文件共享
@@ -21,7 +21,7 @@ Azure 存储资源管理器是一个常用的客户端工具，可用于 Windows
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本快速入门要求安装存储资源管理器。 若要下载并安装它，请转到 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
@@ -30,13 +30,13 @@ Azure 存储资源管理器是一个常用的客户端工具，可用于 Windows
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
 ## <a name="connect-storage-explorer-to-azure-resources"></a>将存储资源管理器连接到 Azure 资源
-首次启动存储资源管理器时，将会显示“Microsoft Azure 存储资源管理器 - 连接”  窗口。 存储资源管理器提供了多种用来连接到存储帐户的方式： 
+首次启动存储资源管理器时，将会显示“Microsoft Azure 存储资源管理器 - 连接”窗口。 存储资源管理器提供了多种用来连接到存储帐户的方式： 
 
 - **使用 Azure 帐户登录**：可以通过用于你的组织或 Microsoft 帐户的用户凭据进行登录。 
-- **使用连接字符串或 SAS 令牌连接到特定存储帐户**：连接字符串是一个特殊字符串，其中包含存储帐户名称和存储帐户密钥/SAS 令牌。 使用令牌，存储资源管理器可以直接访问存储帐户（而非仅仅看到 Azure 帐户中的所有存储帐户）。 若要详细了解连接字符串，请参阅[配置 Azure 存储连接字符串](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+- **使用连接字符串或 SAS 令牌连接到特定的存储帐户**：连接字符串是一个特殊字符串，包含存储帐户名称和存储帐户密钥 /SAS 令牌。 使用令牌，存储资源管理器可以直接访问存储帐户（而非仅仅看到 Azure 帐户中的所有存储帐户）。 若要详细了解连接字符串，请参阅[配置 Azure 存储连接字符串](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 - **使用存储帐户名称和密钥连接到特定的存储帐户**：使用存储帐户的存储帐户名称和密钥连接到 Azure 存储。
 
-对于本快速入门，请使用 Azure 帐户进行登录。 选择“添加 Azure 帐户”  ，然后选择“登录”  。 根据提示登录到 Azure 帐户。
+对于本快速入门，请使用 Azure 帐户进行登录。 选择“添加 Azure 帐户”****，然后选择“登录”****。 根据提示登录到 Azure 帐户。
 
 ![“Microsoft Azure 存储资源管理器 - 连接”窗口的屏幕截图](./media/storage-how-to-use-files-storage-explorer/connect-to-azure-storage-1.png)
 
@@ -44,7 +44,7 @@ Azure 存储资源管理器是一个常用的客户端工具，可用于 Windows
 若要在 `storageacct<random number>` 存储帐户中创建第一个 Azure 文件共享，请执行以下操作：
 
 1. 展开你创建的存储帐户。
-2. 右键单击“文件共享”  ，然后选择“创建文件共享”  。  
+2. 右键单击“文件共享”，然后选择“创建文件共享”。  
     ![文件共享文件夹和上下文中上下文菜单的屏幕截图](media/storage-how-to-use-files-storage-explorer/create-file-share-1.png)
 
 3. 对于文件共享，输入 *myshare*，然后按 Enter。
@@ -59,26 +59,26 @@ Azure 存储资源管理器是一个常用的客户端工具，可用于 Windows
 ### <a name="create-a-directory"></a>创建目录
 添加目录就是提供管理文件共享所需的层次结构。 可以在目录中创建多个层次。 但是，在创建子目录之前，必须确保父目录存在。 例如，对于路径 myDirectory/mySubDirectory，必须先创建目录 *myDirectory*。 然后，可以创建 *mySubDirectory*。 
 
-1. 在文件共享对应的选项卡上，在顶部菜单中，选择“新建文件夹”按钮。  此时将打开“创建新目录”窗格。 
+1. 在文件共享对应的选项卡上，在顶部菜单中，选择“新建文件夹”按钮。 此时将打开“创建新目录”窗格。
     ![上下文中“新建文件夹”按钮的屏幕截图](media/storage-how-to-use-files-storage-explorer/create-directory-1.png)
 
-2. 对于目录名称，输入 *myDirectory*，然后选择“确定”  。 
+2. 对于目录名称，输入 *myDirectory*，然后选择“确定”。 
 
 *myDirectory* 目录将在 *myshare* 文件共享对应的选项卡上列出。
 
 ### <a name="upload-a-file"></a>上传文件 
 可以将文件从本地计算机上传到文件共享中的新目录。 可以上传整个文件夹，也可以上传单个文件。
 
-1. 在顶部菜单中，选择“上传”。  这样就可以选择是上传文件夹还是文件。
-2. 选择“上传文件”，然后从本地计算机选择要上传的文件。 
-3. 在“上传到目录”  中，输入 *myDirectory*，然后选择“上传”。  
+1. 在顶部菜单中，选择“上传”。 这样就可以选择是上传文件夹还是文件。
+2. 选择“上传文件”，然后从本地计算机选择要上传的文件。
+3. 在“上传到目录”中，输入 *myDirectory*，然后选择“上传”。 
 
-完成后，该文件将显示在“myDirectory”  窗格中的列表中。
+完成后，该文件将显示在“myDirectory”窗格中的列表中。
 
 ### <a name="download-a-file"></a>下载文件
-若要从文件共享下载某个文件的副本，请右键单击该文件，然后选择“下载”。  选择要在本地计算机上的哪个位置放置该文件，然后选择“保存”。 
+若要从文件共享下载某个文件的副本，请右键单击该文件，然后选择“下载”。 选择要在本地计算机上的哪个位置放置该文件，然后选择“保存”。
 
-下载进度显示在窗口底部的“活动”窗格中。 
+下载进度显示在窗口底部的“活动”窗格中。
 
 ## <a name="clean-up-resources"></a>清理资源
 无法使用存储资源管理器删除资源。 若要清理本快速入门的资源，可以使用 [Azure 门户](https://portal.azure.com/)。 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 06/26/2019
 keywords: azure, kinect, 概述, 开发人员工具包, DK, 设备, 深度, 人体跟踪, 语音, 认知服务, SDK, 固件
 ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80421950"
 ---
 # <a name="about-azure-kinect-dk"></a>关于 Azure Kinect DK

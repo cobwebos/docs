@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83652284"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
@@ -34,13 +34,13 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息：
+5. 在“创建密钥保管库”部分，提供以下信息： 
     - **Name**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
     - **订阅**：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”。
+6. 提供上述信息后，选择“创建”  。
 
 请记下下面列出的两个属性：
 

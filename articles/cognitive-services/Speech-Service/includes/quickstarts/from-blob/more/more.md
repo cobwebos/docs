@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 76640d00343cf2d58aa128550e2001779d80d6f2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81400977"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
@@ -20,7 +20,7 @@ ms.locfileid: "81400977"
 | C# | [来自麦克风][1-mic]、[来自文件][1-file] | [.NET Framework][dotnet]、[.NET Core][netcore]、[UWP][uwp]、[Unity][unity] 和 [Xamarin][xamarin] |
 | C++ | [来自麦克风][2-mic]、[来自文件][2-file] | [Windows][cpp-windows]、[Linux][cpp-linux]、[macOS][cpp-mac] |
 | Java | [来自麦克风][3-mic]、[来自文件][3-file] | [Android][java-android]、[JRE][java-jre] |
-| JavaScript | [在浏览器上识别来自麦克风的语音][js-browser]、[在 Node.js 上识别来自文件的语音][js-node] | [Windows、Linux 和 macOS][js-code] |
+| Javascript | [在浏览器上识别来自麦克风的语音][js-browser]、[在 Node.js 上识别来自文件的语音][js-node] | [Windows、Linux 和 macOS][js-code] |
 | Objective-C | [在 iOS 上识别来自麦克风的语音][obj-iOS-qck]、[在 macOS 上识别来自麦克风的语音][obj-macOS-qck] | [iOS][obj-iOS]、[macOS][obj-macOS] |
 | Python | [来自麦克风][4-mic]、[来自文件][4-file] | [Windows、Linux 和 macOS][python] |
 | Swift | [在 iOS 上识别来自麦克风的语音][swift-iOS-qck]、[在 macOS 上识别来自麦克风的语音][swift-macOS-qck] | [iOS][swift-iOS]、[macOS][swift-macOS] |

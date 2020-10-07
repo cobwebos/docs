@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84434579"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>什么是必应自定义搜索 API？
@@ -23,7 +23,7 @@ ms.locfileid: "84434579"
 
 ## <a name="features"></a>功能
 
-|Feature  |说明  |
+|功能  |说明  |
 |---------|---------|
 |[自定义实时搜索建议](define-custom-suggestions.md)     | 当用户键入搜索词时，以下拉列表的形式提供搜索建议。       | 
 |[自定义图像搜索体验](get-images-from-instance.md)     | 让用户从自定义搜索实例中指定的域和网站搜索图像。        |        

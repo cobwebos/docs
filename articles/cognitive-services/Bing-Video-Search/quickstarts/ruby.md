@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849563"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>快速入门：使用必应视频搜索 REST API 和 Ruby 来搜索视频

@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: jingwang
 ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84655792"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂

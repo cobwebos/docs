@@ -13,10 +13,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84667635"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：通过 Azure 门户在 Windows 虚拟机上创建 SQL Server 2017
@@ -114,7 +114,7 @@ ms.locfileid: "84667635"
 
 1. 在“密码”  框中，键入登录的密码。
 
-1. 选择“连接”。
+1. 选择“连接” 。
 
     ![ssms 连接](./media/sql-vm-create-portal-quickstart/ssms-connect.png)
 

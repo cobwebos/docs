@@ -4,10 +4,10 @@ description: 本快速入门介绍为 Go 启用 Resource Graph 包并运行第�
 ms.date: 06/16/2020
 ms.topic: quickstart
 ms.openlocfilehash: cc15b9fe75913ca47a14001a27e1e3c37d9ea71a
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84899388"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>快速入门：使用 Go 运行你的第一个 Resource Graph 查询

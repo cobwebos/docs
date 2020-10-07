@@ -9,10 +9,10 @@ ms.date: 01/24/2020
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 5015371afc67574a214097f8d3eef661df29c22f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85115026"
 ---
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
@@ -23,7 +23,7 @@ ms.locfileid: "85115026"
    
 3. 在“新建”页上，选择“数据库” > “Azure Cosmos DB”。  
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure 门户“数据库”窗格":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png" alt-text="在 Azure 门户中创建资源":::
    
 3. 在“创建 Azure Cosmos DB 帐户”页中，输入新 Azure Cosmos DB 帐户的设置。 
  
@@ -39,9 +39,9 @@ ms.locfileid: "85115026"
 
 5. 选择“查看 + 创建”。 完成验证后，选择“创建”以创建帐户。 
  
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png" alt-text="Azure Cosmos DB 的“新建帐户”页面":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png" alt-text="在 Azure 门户中创建资源":::
 
 6. 创建帐户需要几分钟时间。 你将看到一条说明“部署正在进行”的消息。 等待部署完成，然后选择“转到资源”。
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png" alt-text="Azure 门户“通知”窗格":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png" alt-text="在 Azure 门户中创建资源":::
 

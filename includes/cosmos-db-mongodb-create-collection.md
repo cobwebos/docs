@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
 ms.openlocfilehash: 8d12645bd302a7ea808f13c07e2a72f66846bad7
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85121462"
 ---
 现在可以在 Azure 门户中使用数据资源管理器工具来创建用于 MongoDB 数据库和容器的 Azure Cosmos DB API。 
