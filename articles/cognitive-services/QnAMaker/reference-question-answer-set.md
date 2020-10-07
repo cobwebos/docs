@@ -1,14 +1,16 @@
 ---
 title: 设计知识库-QnA Maker
 description: QnA Maker 的知识库包含一组问题和答案 (QnA) 对和与每个 QnA 对关联的可选元数据。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 1f5bd07a465c3d27dffe54eb853330a952be0d59
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 363af72df89be9104e4d946bf8da0d44908382d4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762444"
+ms.locfileid: "91776215"
 ---
 # <a name="question-and-answer-pair-concepts"></a>问题和答案对概念
 

@@ -10,12 +10,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: e0c5e6041da933b4a42bc438900f8c4c91cc6dbc
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711244"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772662"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件
 
@@ -71,6 +71,8 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 | StorageRead | 对象上的读取操作。 |
 | StorageWrite | 对象上的写入操作。 |
 | StorageDelete | 对象上的删除操作。 |
+
+若要获取记录的 SMB 和 REST 操作的列表，请参阅 [存储记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 和 [Azure 文件监视数据引用](storage-files-monitoring-reference.md)。
 
 ## <a name="analyzing-metrics"></a>分析指标
 
@@ -171,7 +173,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 ```
 
-#### <a name="reading-account-level-metric-values"></a>正在读取帐户级别的指标值
+#### <a name="reading-account-level-metric-values"></a>读取帐户级别指标值
 
 以下示例演示如何读取帐户级别的 `UsedCapacity` 数据：
 
@@ -276,7 +278,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 你可以将资源日志作为存储帐户中的 blob 以及事件数据进行访问，也可以通过 Log Analytics 查询访问资源日志。
 
-有关这些日志中显示的字段的详细参考信息，请参阅 [Azure Azure 文件监视数据参考](storage-files-monitoring-reference.md)。
+若要获取记录的 SMB 和 REST 操作的列表，请参阅 [存储记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 和 [Azure 文件监视数据引用](storage-files-monitoring-reference.md)。
 
 > [!NOTE]
 > Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 若要注册预览版，请参阅[此页](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 经典存储帐户不受支持。
@@ -292,7 +294,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 - 使用共享访问签名 (SAS) 或 OAuth 的请求，包括失败和成功的请求
 - 对分析数据（$logs 容器中的经典日志数据和 $metric 表中的类指标数据）的请求 
 
-不会记录 Azure 文件服务本身发出的请求，如日志创建或删除。 若要查看所记录数据的完整列表，请参阅[存储记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)和[存储日志格式](storage-files-monitoring-reference.md)。
+不会记录 Azure 文件服务本身发出的请求，如日志创建或删除。 有关记录的 SMB 和 REST 请求的完整列表，请参阅 [存储记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 和 [Azure 文件监视数据参考](storage-files-monitoring-reference.md)。
 
 ### <a name="log-anonymous-requests"></a>记录匿名请求
 
@@ -303,7 +305,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 - 客户端和服务器的超时错误
 - 失败的 GET 请求，错误代码为 304（未修改）
 
-不会记录所有其他失败的匿名请求。 若要查看所记录数据的完整列表，请参阅[存储记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)和[存储日志格式](storage-files-monitoring-reference.md)。
+不会记录所有其他失败的匿名请求。 有关记录的 SMB 和 REST 请求的完整列表，请参阅 [存储记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 和 [Azure 文件监视数据参考](storage-files-monitoring-reference.md)。
 
 ### <a name="accessing-logs-in-a-storage-account"></a>访问存储帐户中的日志
 
@@ -315,7 +317,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
-### <a name="accessing-logs-in-an-event-hub"></a>访问事件中心中的日志
+### <a name="accessing-logs-in-an-event-hub"></a>访问事件中心内的日志
 
 发送到事件中心的日志并没有存储为文件，但你可以验证事件中心是否收到了日志信息。 在 Azure 门户中，请转到事件中心，然后验证“传入消息”计数是否大于零。 
 
@@ -484,7 +486,7 @@ StorageFileLogs
 - [Azure 文件监视数据引用](storage-files-monitoring.md)
 - [利用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure 存储指标迁移](../common/storage-metrics-migration.md)
-- [规划 Azure 文件存储部署](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
+- [规划 Azure 文件部署](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
 - [如何部署 Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
 - [排查 Windows 上的 Azure 文件问题](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)
 - [排查 Linux 上的 Azure 文件问题](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-linux-file-connection-problems)

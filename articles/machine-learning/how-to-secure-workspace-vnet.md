@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/07/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708310"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776030"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
 
@@ -41,7 +41,7 @@ ms.locfileid: "91708310"
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
-+ 要用于计算资源的现有虚拟网络和子网。
++ 用于计算资源的现有虚拟网络和子网。
 
 + 若要将资源部署到虚拟网络或子网中，你的用户帐户必须在 Azure 基于角色的访问控制 (RBAC) 中具有以下操作的权限：
 
@@ -57,10 +57,9 @@ Azure Private Link 允许使用专用终结点连接到工作区。 专用终结
 
 有关设置专用链接工作区的详细信息，请参阅 how [to Configure Private link](how-to-configure-private-link.md)。
 
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>保护具有服务终结点的 Azure 存储帐户
 
-## <a name="secure-azure-storage-accounts"></a>保护 Azure 存储帐户
-
-本部分介绍如何使用服务终结点保护 Azure 存储帐户。 但是，你还可以使用专用终结点来保护 Azure 存储。 有关详细信息，请参阅 [将专用终结点用于 Azure 存储](../storage/common/storage-private-endpoints.md)。
+Azure 机器学习支持配置为使用服务终结点或专用终结点的存储帐户。 本部分介绍如何使用服务终结点保护 Azure 存储帐户。 对于专用终结点，请参阅下一节。
 
 > [!IMPORTANT]
 > 可将 Azure 机器学习的默认存储帐户或者将非默认存储帐户放在虚拟网络中。 
@@ -95,9 +94,21 @@ Azure Private Link 允许使用专用终结点连接到工作区。 专用终结
 
    [![Azure 门户中的“防火墙和虚拟网络”窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>保护具有专用终结点的 Azure 存储帐户
+
+Azure 机器学习支持配置为使用服务终结点或专用终结点的存储帐户。 如果存储帐户使用专用终结点，则必须为默认存储帐户配置两个专用终结点：
+1. 具有 **blob** 目标子资源的专用终结点。
+1. 具有文件目标子资源 (**文件** 共享) 的专用终结点。
+
+![显示具有 blob 和文件选项的专用终结点配置页的屏幕截图](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+
+若要为 **非** 默认存储的存储帐户配置专用终结点，请选择对应于要添加的存储帐户的 **目标子资源** 类型。
+
+有关详细信息，请参阅 [使用 Azure 存储的专用终结点](../storage/common/storage-private-endpoints.md)
+
 ## <a name="secure-datastores-and-datasets"></a>保护数据存储和数据集
 
-本部分介绍如何在虚拟网络中使用数据存储和数据集使用情况获取 SDK 体验。 有关 studio 体验的详细信息，请参阅在 [虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md)。
+本部分介绍如何在虚拟网络中使用 SDK 体验中的数据存储和数据集。 有关 studio 体验的详细信息，请参阅在 [虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md)。
 
 若要使用 SDK 访问数据，必须使用存储数据的单个服务所需的身份验证方法。 例如，如果注册数据存储以访问 Azure Data Lake Store Gen2，则仍需使用 " [连接到 Azure 存储服务](how-to-access-data.md#azure-data-lake-storage-generation-2)" 中所述的服务主体。
 
@@ -276,6 +287,6 @@ Azure 机器学习使用关联 Key Vault 实例存储以下凭据：
 本文是由四部分构成的虚拟网络系列中的第一部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第1部分：虚拟网络概述](how-to-network-security-overview.md)
-* [第3部分：保护定型环境](how-to-secure-training-vnet.md)
-* [第4部分：保护推断环境](how-to-secure-inferencing-vnet.md)
-* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)
+* [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
+* [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
+* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)

@@ -4,12 +4,12 @@ description: 有关如何在 Azure 订阅和资源组之间移动恢复服务保
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181504"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773359"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -25,7 +25,7 @@ ms.locfileid: "89181504"
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>移动恢复服务保管库的先决条件
 
-- 在跨资源组的保管库移动期间，源和目标资源组都会被锁定，从而阻止了写入和删除操作。 有关详细信息，请参阅此[文章](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+- 在跨资源组的保管库移动期间，源和目标资源组都会被锁定，从而阻止了写入和删除操作。 有关详细信息，请参阅[此文](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 只有订阅管理员有权移动保管库。
 - 对于跨订阅移动保管库，目标订阅必须位于与源订阅相同的租户中，并且应启用其状态。
 - 必须有权对目标资源组执行写入操作。
@@ -35,7 +35,7 @@ ms.locfileid: "89181504"
 - 不管 VM 是否连同保管库一起移动，都始终可以从保管库中保留的备份历史记录还原该 VM。
 - Azure 磁盘加密要求密钥保管库和 VM 位于同一 Azure 区域和订阅中。
 - 若要移动包含托管磁盘的虚拟机，请参阅[此文](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)。
-- 用于移动通过经典模型部署的资源的选项会有所不同，这取决于你是要将资源移到订阅中，还是移动到新的订阅。 有关详细信息，请参阅此[文章](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+- 用于移动通过经典模型部署的资源的选项会有所不同，这取决于你是要将资源移到订阅中，还是移动到新的订阅。 有关详细信息，请参阅[此文](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 跨订阅移动保管库或将其移到新资源组后，为保管库定义的备份策略将会保留。
 - 只能移动包含以下任何类型的备份项的保管库。 在移动保管库之前，需要停止下面未列出的任何类型的备份项目，并将数据永久删除。
   - Azure 虚拟机
@@ -52,7 +52,7 @@ ms.locfileid: "89181504"
 
 若要将恢复服务保管库及其关联的资源移到不同的资源组，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。**** 当保管库仪表板打开时，其外观如下图所示。
 
    ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -81,7 +81,7 @@ ms.locfileid: "89181504"
 
 可将恢复服务保管库及其关联的资源移到不同的订阅
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。 当保管库仪表板打开时，其外观如下图所示。
 
     ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -142,6 +142,50 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 1. 设置/验证资源组的访问控制。  
 2. 移动完成后，需要再次为保管库配置备份报告和监视功能。 在移动操作期间，以前的配置将会丢失。
+
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>将 Azure 虚拟机移动到不同的恢复服务保管库。 
+
+如果要移动启用了 Azure 备份的 Azure 虚拟机，则有两个选择。 它们取决于您的业务要求：
+
+- [无需保留以前备份的数据](#dont-need-to-preserve-previous-backed-up-data)
+- [必须保留以前备份的数据](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>无需保留以前备份的数据
+
+若要保护新保管库中的工作负荷，将需要在旧保管库中删除当前保护和数据，并重新配置备份。
+
+>[!WARNING]
+>以下操作是破坏性的，无法撤消。 与受保护服务器关联的所有备份数据和备份项将被永久删除。 请谨慎操作。
+
+**停止并删除旧保管库上的当前保护：**
+
+1. 在保管库属性中禁用软删除。 按照[这些步骤](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal)禁用软删除。
+
+2. 停止保护并删除当前保管库中的备份。 在保管库仪表板菜单中，选择“备份项”。 此处列出的需要移动到新保管库的项必须连同其备份数据一起删除。 请参阅如何[删除云中受保护的项](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud)以及[删除本地受保护的项](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
+
+3. 如果打算将 AFS (Azure 文件共享) 、SQL server 或 SAP HANA 服务器，则还需要对其进行撤消注册。 在保管库仪表板菜单中，选择“备份基础结构”。 请参阅如何 [取消注册 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、 [注销与 Azure 文件共享相关联的存储帐户](manage-afs-backup.md#unregister-a-storage-account)和 [注销 SAP HANA 实例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
+
+4. 从旧保管库中删除后，请继续在新保管库中配置工作负荷的备份。
+
+### <a name="must-preserve-previous-backed-up-data"></a>必须保留以前备份的数据
+
+如果需要将当前受保护的数据保留在旧的保管库中并在新保管库中继续保护，则某些工作负荷的选项是有限的：
+
+- 对于 MARS，可以 [停止保护并保留数据](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) ，并在新保管库中注册代理。
+
+  - Azure 备份服务将继续保留旧保管库的所有现有恢复点。
+  - 需要付费，以保留旧保管库中的恢复点。
+  - 只能为旧保管库中未过期的恢复点还原已备份的数据。
+  - 将需要在新的保管库中创建数据的新初始副本。
+
+- 对于 Azure VM，可以 [停止保护，保留](backup-azure-manage-vms.md#stop-protecting-a-vm) 旧保管库中 vm 的数据，将 vm 移动到另一个资源组，然后在新保管库中保护 vm。 请参阅将 VM 移到其他资源组的[指南和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)。
+
+  同一时间只能在一个保管库中保护 VM。 但是，可以在新的保管库中保护新资源组中的 VM，因为它被视为不同 VM。
+
+  - Azure 备份服务将保留已在旧保管库中备份的恢复点。
+  - 你需要付费，使旧保管库中的恢复点 (参阅 [Azure 备份定价](azure-backup-pricing.md) 以了解详细信息) 。
+  - 如果需要，你可以从旧保管库还原 VM。
+  - 新资源中 VM 的新保管库上的第一次备份将是初始副本。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 83267b1bebd501871277ea3e40b7fa9ba38f33cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313750"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773240"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>如何在 Azure 虚拟 WAN 中心 (预览中创建网络虚拟设备) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91313750"
 
 本文中的步骤可帮助你在虚拟 WAN 集线器中创建 **Barracuda CLOUDGEN WAN** 网络虚拟设备。 若要完成此练习，必须在开始之前，将 Barracuda Cloud 本地设备 (CPE) 和部署到中心的 Barracuda CloudGen WAN 设备的许可证。
 
-有关 Azure 虚拟广域网中 **CISCO SD** 的部署文档，请通过以下电子邮件地址向 Cisco 发送电子邮件： vwan_public_preview@cisco.com 。
+有关 Azure 虚拟广域网内 **CISCO SD** 的部署文档，请通过以下电子邮件地址向 Cisco 发送电子邮件： vwan_public_preview@external.cisco.com
 
 
 ## <a name="before-you-begin"></a>开始之前
@@ -66,31 +66,13 @@ ms.locfileid: "91313750"
 
 1. 找到在上一步中创建的虚拟 WAN 中心，然后将其打开。
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="虚拟中心":::
-1. 找到 "网络虚拟设备" 磁贴，然后选择 " **创建** " 链接。
-1. 在 " **网络虚拟设备** " 边栏选项卡中，选择 " **Barracuda CloudGen WAN**"，并选择 " **创建** " 按钮。
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="基础知识" 按钮。
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="选择 NVA":::
-1. 这会转到适用于 Barracuda CloudGen WAN 网关的 Azure Marketplace 产品/服务。 阅读条款，然后在准备就绪时选择 " **创建** " 按钮。
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="基础知识" 按钮。
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Barracuda NVA 基础知识":::
-1. 在 " **基本** 信息" 页上，你将需要提供以下信息：
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="基础知识" 按钮。
 
-   * **订阅** -选择用于部署虚拟 WAN 和中心的订阅。
-   * **资源组** -选择用于部署虚拟 WAN 和中心的同一资源组。
-   * **区域** -选择虚拟中心资源所在的同一区域。
-   * **应用程序名称** -BARRACUDA NextGen WAN 是托管应用程序。 选择便于标识此资源的名称，因为这是在订阅中显示的名称。
-   * **托管资源组** -这是托管资源组的名称，Barracuda 将在该资源组中部署由这些资源组管理的资源。 此名称应预先填充。
-1. 选择 " **下一步： CLOUDGEN WAN 网关** " 按钮。
-
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen WAN 网关":::
-1. 在此处提供以下信息：
-
-   * **虚拟 Wan 中心** -要将此 NVA 部署到其中的虚拟 wan 中心。
-   * **NVA 基础结构单元** -指明要将此 NVA 部署到的 NVA 基础结构单元的数量。 选择要在通过此 NVA 连接到此中心的所有分支站点中提供的聚合带宽容量量。
-   * **Token** Barracuda 要求你在此处提供身份验证令牌，以便将自己标识为该产品的已注册用户。 需要从 Barracuda 获取此。
-1. 选择 " **查看" 和 "创建** " 按钮以继续。
-1. 在此页上，系统将要求您接受共同管理员访问协议的条款。 这对于发布者将有权访问此部署中某些资源的托管应用程序是标准的。 选中 " **我同意上述条款和条件** " 框，然后选择 " **创建**"。
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="基础知识" **创建**"。
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>将 VNet 连接到中心
 

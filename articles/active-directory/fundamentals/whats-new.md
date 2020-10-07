@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/06/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9bcc356835fcfc080bd381043552d6e8868cc7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446625"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773499"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -57,6 +57,22 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 - [Webroot 安全意识](../saas-apps/webroot-security-awareness-training-provisioning-tutorial.md)
 
 有关如何使用自动化用户帐户预配更好地保护组织的详细信息，请参阅[使用 Azure AD 自动将用户预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+ 
+---
+### <a name="cloud-provisioning-public-preview-refresh"></a>云预配公共预览版刷新
+
+**类型：** 新功能  
+**服务类别：** Azure AD 云预配 **产品功能：** 标识生命周期管理
+ 
+Azure AD Connect 云预配公共预览版刷新功能通过客户反馈开发了两个主要的增强功能： 
+
+- 通过 Azure 门户实现的属性映射体验
+
+    利用此功能，IT 管理员可以使用目前存在的各种映射类型将用户、组或联系人属性从 AD 映射到 Azure AD。 属性映射是一种功能，用于标准化从 Active Directory 流到 Azure Active Directory 的属性的值。 可以确定是直接将属性值映射到 Azure AD，还是在预配用户时使用表达式来转换属性值。 [了解详细信息](../cloud-provisioning/how-to-attribute-mapping.md)
+
+- 按需预配或测试用户体验
+
+    设置配置后，你可能需要进行测试，以查看用户转换是否按预期方式工作，然后再将其应用到作用域中的所有用户。 利用按需预配，IT 管理员可以输入 AD 用户 (DN) 的可分辨名称，并查看其是否按预期同步。 按需设置提供了一种很好的方法来确保以前执行的属性映射。 [了解详细信息](../cloud-provisioning/how-to-on-demand-provision.md)
  
 ---
 
@@ -106,7 +122,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 ---
 
-### <a name="ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>要求用户请求访问包其他问题以改进批准决策
+### <a name="public-preview-ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>公共预览版：向用户请求访问包，以改进批准决策
 
 **类型：** 新功能  
 **服务类别：** 用户访问管理  

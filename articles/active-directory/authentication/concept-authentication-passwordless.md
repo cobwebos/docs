@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266609"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773920"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
 多重身份验证 (MFA) 等功能是保护组织的一种好方法，但用户通常会在必须记住其密码的情况下使用额外的安全层。 无密码身份验证方法更为方便，因为密码会被删除并替换为你拥有的内容，以及你或你知道的内容。
 
-| 身份验证  | 你拥有的东西 | 你或知道的内容 |
+| 身份验证  | 已有内容 | 你或知道的内容 |
 | --- | --- | --- |
 | 无密码 | Windows 10 设备、电话号码或安全密钥 | 生物识别或 PIN |
 
@@ -61,6 +61,8 @@ Windows Hello 企业版 [规划指南](/windows/security/identity-protection/hel
 ![通过 Microsoft Authenticator 应用登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
 验证器应用会将任何 iOS 或 Android 手机变成强、无密码凭据。 用户可以通过以下方式登录到任何平台或浏览器：向其手机发送通知，将屏幕上显示的数字与电话上的一个数字匹配，然后使用其生物识别 (触摸或面部) 或 PIN 以确认。 有关安装的详细信息，请参阅 [下载并安装 Microsoft Authenticator 应用](../user-help/user-help-auth-app-download-install.md) 。
+
+无密码 Microsoft Authenticator 应用登录到 Azure AD 目前处于预览阶段。 使用 Microsoft Authenticator 应用进行 Azure 多重身份验证的辅助身份验证、自助服务密码重置 (SSPR) 或 OATH 软件令牌为 GA。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用验证器应用的无密码 authentication 遵循与 Windows Hello 企业版相同的基本模式。 这会稍微复杂一些，因为需要识别用户，以便 Azure AD 可以找到正在使用的 Microsoft Authenticator 应用程序版本：
 

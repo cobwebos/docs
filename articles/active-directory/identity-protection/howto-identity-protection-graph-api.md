@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950113"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776130"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory 标识保护和 Microsoft Graph 入门
 
@@ -39,7 +39,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 ### <a name="retrieve-your-domain-name"></a>检索域名 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。  
+1. 登录到 [Azure 门户](https://portal.azure.com)。  
 1. 浏览到**Azure Active Directory**  >  **自定义域名**。 
 1. 记下 `.onmicrosoft.com` 域，稍后的步骤中将需要此信息。
 
@@ -50,7 +50,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 1. 在 " **创建** " 页上，执行以下步骤：
    1. 在 " **名称** " 文本框中，键入应用程序的名称 (例如： Azure AD 风险检测 API) 。
    1. 在 " **受支持的帐户类型**" 下，选择将使用 api 的帐户类型。
-   1. 选择“注册”。
+   1. 选择“注册”  。
 1. 复制 **应用程序 ID**。
 
 ### <a name="configure-api-permissions"></a>配置 API 权限
@@ -104,6 +104,8 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 如果成功，响应中会包含标识风险检测的集合，以及采用 OData JSON 格式的相关数据，在适当的情况下可以分析和处理这些数据。
 
 ### <a name="sample"></a>示例
+
+此示例演示如何使用共享机密进行身份验证。 在生产环境中，通常会 frowned 在代码中存储机密。 组织可以使用 Azure 资源的托管标识来保护这些凭据。 有关托管标识的详细信息，请参阅 [Azure 资源的托管标识](../managed-identities-azure-resources/overview.md)一文。
 
 下面是使用 PowerShell 进行身份验证和调用 API 的示例代码。  
 只需添加客户端 ID、密钥和租户域即可。

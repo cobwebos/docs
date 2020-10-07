@@ -5,28 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463954"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776096"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>修正风险和解除阻止用户
 
-完成[调查](howto-identity-protection-investigate-risk.md)后，需要采取措施来纠正风险或取消阻止用户。 组织还可以选择使用其[风险策略](howto-identity-protection-configure-risk-policies.md)来启用自动修正。 组织应尝试在你的组织熟悉的一段时间内关闭所有风险检测。 Microsoft 建议尽快关闭事件，因为在处理风险时，时间很重要。
+完成 [调查](howto-identity-protection-investigate-risk.md)后，需要采取措施来纠正风险或取消阻止用户。 组织还可以选择使用其 [风险策略](howto-identity-protection-configure-risk-policies.md)来启用自动修正。 组织应尝试在你的组织熟悉的一段时间内关闭所有风险检测。 Microsoft 建议尽快关闭事件，因为在处理风险时，时间很重要。
 
 ## <a name="remediation"></a>补救
 
 计算称作“用户风险级别”的值时，会考虑到所有活动风险检测。 用户风险级别是反映帐户泄露可能性的一个指标（低、中、高）。 管理员希望能够关闭所有风险检测，以便受影响的用户不再面临风险。
 
-某些风险检测可能会被标识保护标记为 "已关闭（系统）"，因为这些事件不再确定是危险的。
+某些风险检测可能会被标识保护标记为 "已关闭 (系统) "，因为这些事件不再确定是危险的。
 
 管理员可以使用以下选项进行修正：
 
@@ -37,9 +37,9 @@ ms.locfileid: "84463954"
 
 ### <a name="self-remediation-with-risk-policy"></a>带有风险策略的自我修正
 
-如果你允许用户通过 Azure 多因素身份验证（MFA）和你的风险策略中的自助密码重置（SSPR）自行修正，则在检测到风险时，他们可以取消阻止自身。 然后将这些检测视为关闭。 用户必须先注册 Azure MFA 和 SSPR，才能在检测到风险时使用。
+如果你允许用户通过 Azure 多重身份验证 (MFA) 和自助服务密码重置 (SSPR) 在你的风险策略中，则他们可以在检测到风险时解除阻止。 然后将这些检测视为关闭。 用户必须先注册 Azure MFA 和 SSPR，才能在检测到风险时使用。
 
-某些检测可能不会对用户需要进行自我修正的级别提出风险，但管理员仍应评估这些检测。 管理员可以确定需要执行其他措施，如[阻止来自位置的访问](../conditional-access/howto-conditional-access-policy-location.md)，或降低其策略中可接受的风险。
+某些检测可能不会对用户需要进行自我修正的级别提出风险，但管理员仍应评估这些检测。 管理员可以确定需要执行其他措施，如 [阻止来自位置的访问](../conditional-access/howto-conditional-access-policy-location.md) ，或降低其策略中可接受的风险。
 
 ### <a name="manual-password-reset"></a>手动重置密码
 
@@ -55,7 +55,7 @@ ms.locfileid: "84463954"
 
 如果密码重置不是你的选择，因为例如，用户已被删除，你可以选择取消用户风险检测。
 
-单击 "**消除用户风险**" 时，所有事件都将关闭，受影响的用户不再有风险。 但是，此方法不会对现有密码产生影响，因为它不能将相关的标识恢复安全状态。 
+单击 " **消除用户风险**" 时，所有事件都将关闭，受影响的用户不再有风险。 但是，此方法不会对现有密码产生影响，因为它不能将相关的标识恢复安全状态。 
 
 ### <a name="close-individual-risk-detections-manually"></a>手动关闭单个风险检测
 
@@ -77,17 +77,21 @@ ms.locfileid: "84463954"
 若要取消阻止帐户由于用户风险而被阻止，管理员可选择以下选项：
 
 1. **重置密码** - 可以重置用户的密码。
-1. **消除用户风险**-如果已达到配置的用户风险级别用于阻止访问，则用户风险策略会阻止用户。 可以通过消除用户风险或手动关闭已报告的风险检测来降低用户的风险级别。
-1. **从策略中排除用户**-如果你认为登录策略的当前配置导致特定用户出现问题，你可以将用户排除在外。 有关详细信息，请参阅[如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md#exclusions)一文中的排除部分。
-1. **禁用** - 如果认为策略配置导致所有用户出现问题，可禁用该策略。 有关详细信息，请参阅[如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md)一文。
+1. **消除用户风险** -如果已达到配置的用户风险级别用于阻止访问，则用户风险策略会阻止用户。 可以通过消除用户风险或手动关闭已报告的风险检测来降低用户的风险级别。
+1. **从策略中排除用户** -如果你认为登录策略的当前配置导致特定用户出现问题，你可以将用户排除在外。 有关详细信息，请参阅 [如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md#exclusions)一文中的排除部分。
+1. **禁用** - 如果认为策略配置导致所有用户出现问题，可禁用该策略。 有关详细信息，请参阅 [如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md)一文。
 
 ### <a name="unblocking-based-on-sign-in-risk"></a>基于登录风险取消阻止
 
 若要基于登录风险取消阻止帐户，管理员可以使用以下选项：
 
 1. **** 从熟悉的位置或设备登录 - 已阻止可疑登录的常见原因是尝试从不熟悉的位置或设备登录。 你的用户可以通过尝试从熟悉的位置或设备登录来快速确定此原因是否为阻止的原因。
-1. **从策略中排除用户**-如果你认为登录策略的当前配置导致特定用户出现问题，你可以将用户排除在外。 有关详细信息，请参阅[如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md#exclusions)一文中的排除部分。
-1. **禁用** - 如果认为策略配置导致所有用户出现问题，可禁用该策略。 有关详细信息，请参阅[如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md)一文。
+1. **从策略中排除用户** -如果你认为登录策略的当前配置导致特定用户出现问题，你可以将用户排除在外。 有关详细信息，请参阅 [如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md#exclusions)一文中的排除部分。
+1. **禁用** - 如果认为策略配置导致所有用户出现问题，可禁用该策略。 有关详细信息，请参阅 [如何：配置和启用风险策略](howto-identity-protection-configure-risk-policies.md)一文。
+
+## <a name="powershell-preview"></a>PowerShell 预览版
+
+使用 powershell SDK 预览版模块 Microsoft Graph，组织可以使用 PowerShell 来管理风险。 可在 [Azure AD GitHub](https://github.com/AzureAD/IdentityProtectionTools)存储库中找到预览模块和示例代码。
 
 ## <a name="next-steps"></a>后续步骤
 

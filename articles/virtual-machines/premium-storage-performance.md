@@ -4,15 +4,15 @@ description: 使用 Azure 高级 SSD 托管磁盘设计高性能应用程序。 
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650704"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776147"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -305,45 +305,11 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 
 ## <a name="optimize-performance-on-linux-vms"></a>优化 Linux Vm 的性能
 
-对于缓存设置为 ReadOnly 或 None 的所有高级存储 SSD 或极致磁盘，必须在装入文件系统时禁用“屏障” 。 在此方案中不需要屏障，因为写入高级存储磁盘对于这些缓存设置是持久性的。 成功完成写入请求时，数据已写入持久存储。 若要禁用“屏障”，请使用以下方法之一： 选择适用于文件系统的方法：
-  
-* 对于 **reiserFS**，请使用 `barrier=none` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=flush`。）
-* 对于 **ext3/ext4**，请使用 `barrier=0` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=1`。）
-* 对于 **XFS**，请使用 `nobarrier` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier`。）
-* 对于缓存设置为 **ReadWrite** 的高级存储磁盘，请启用屏障来实现写入持久性。
-* 若要在重新启动 VM 后保留卷标，必须在 /etc/fstab 中更新对磁盘的全局唯一标识符 (UUID) 引用。 有关详细信息，请参阅[将托管磁盘添加到 Linux VM](./linux/add-disk.md)。
+对于所有高级 Ssd 或超磁盘，你可能会对磁盘上的文件系统禁用 "屏障"，以便在已知没有可能丢失数据的缓存的情况下提高性能。  如果 Azure 磁盘缓存设置为 "只读" 或 "无"，则可以禁用屏障。  但是，如果将缓存设置为 ReadWrite，则关卡应保持启用状态以确保写入持续性。  通常情况下，屏障默认情况下处于启用状态，但你可以根据文件系统类型使用以下方法之一来禁用关卡：
 
-下面是我们使用高级 SSD 验证过的 Linux 发行版。 为了提高高级 SSD 的性能和稳定性，建议将 VM 升级到其中一个版本（或更新版本）。 
-
-某些版本需要最新的适用于 Azure 的 Linux Integration Services (LIS) v4.0。 若要下载并安装某个发行版，请单击下表中所列的链接。 完成验证后，我们将陆续在该列表中添加映像。 我们的验证表明，性能根据每个映像的不同而异。 性能取决于工作负荷特征和映像设置。 不同的映像已针对不同种类的工作负荷进行优化。
-
-| 分发 | 版本 | 支持的内核 | 详细信息 |
-| --- | --- | --- | --- |
-| Ubuntu | 12.04 或更高版本| 3.2.0-75.110+ | &nbsp; |
-| Ubuntu | 14.04 或更高版本| 3.13.0-44.73+  | &nbsp; |
-| Debian | 7.x、8.x 或更高版本| 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12 或更高版本| 3.12.36-38.1+ | &nbsp; |
-| SUSE | SLES 11 SP4 或更高版本| 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+ 或更高版本| 3.18.4+ | &nbsp; |
-| CentOS | 6.5、6.6、6.7、7.0 或更高版本| &nbsp; | [需要 LIS4](https://www.microsoft.com/download/details.aspx?id=55106) <br> *请参阅下一部分中的注释* |
-| CentOS | 7.1+ 或更高版本| 3.10.0-229.1.2.el7+ | [建议使用 LIS4](https://www.microsoft.com/download/details.aspx?id=55106) <br> 请参阅下一部分中的注释 |
-| Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+ 或更高版本 | &nbsp; | &nbsp; |
-| Oracle | 6.0+、7.2+ 或更高版本 | &nbsp; | UEK4 或 RHCK |
-| Oracle | 7.0-7.1 或更高版本 | &nbsp; | UEK4 或 RHCK，带 [LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4-6.7 或更高版本 | &nbsp; | UEK4 或 RHCK，带 [LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 的 LIS 驱动程序
-
-运行 OpenLogic CentOS VM 时，请运行以下命令来安装最新的驱动程序：
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-在某些情况下，上述命令还会升级内核。 如果需要内核更新，则可能需要在重新启动后再次运行上述命令以完全安装 microsoft-hyper-v 包。
-
+* 对于 **reiserFS**，请使用屏障 = none 装载选项来禁用屏障。  若要显式启用屏障，请使用关卡 = flush。
+* 对于 **ext3/ext4**，请使用关卡 = 0 mount 选项来禁用屏障。  若要显式启用屏障，请使用关卡 = 1。
+* 对于 **XFS**，请使用 nobarrier 装入选项来禁用屏障。  若要显式启用屏障，请使用障碍。  请注意，在更高版本的 Linux 内核版本中，XFS 文件系统的设计始终确保持续性，禁用关卡不起作用。  
 
 ## <a name="disk-striping"></a>磁盘条带化
 

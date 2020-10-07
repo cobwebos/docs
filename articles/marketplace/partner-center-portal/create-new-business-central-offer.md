@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665232"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774572"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
@@ -36,7 +36,8 @@ ms.locfileid: "91665232"
 输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。
 
 - 客户可以在市场产品/服务和 Azure 资源管理器模板的 Web 地址中看到此 ID（若有）。
-- 只使用小写字母和数字。 其中可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。 例如，如果你输入 test-offer-1，则产品/服务 Web 地址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 与发布者 ID 组合的产品 ID 的长度必须为40个字符。
+- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格。 例如，如果你的发布者 ID 是 "testpublisherid"，并且你在此处输入了 " **测试/服务-1** "，则 "产品/服务" 网址为 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
 - 在选择“创建”后，就无法更改产品/服务 ID 了。
 
 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。

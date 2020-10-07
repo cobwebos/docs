@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ff28bbf57ac77e1bc092d35e9bf493f75040cc9c
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91712300"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772798"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
 活动日志是 Azure 中的一种[平台日志](platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
@@ -399,4 +399,5 @@ Azure Log Analytics 监视解决方案不久就会被弃用，并将替换为一
 ## <a name="next-steps"></a>后续步骤
 
 * [阅读平台日志概述](platform-logs-overview.md)
+* [查看活动日志事件架构](activity-log-schema.md)
 * [创建诊断设置将活动日志发送到其他目标](diagnostic-settings.md)

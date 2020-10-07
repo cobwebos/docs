@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 58395463c494a95a8842cddbe4d51544ce03d212
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713367"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776079"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习工作室
 
@@ -24,6 +24,7 @@ ms.locfileid: "91713367"
 
 > [!div class="checklist"]
 > - 从虚拟网络内部的资源访问工作室。
+> - 为存储帐户配置专用终结点。
 > - 授予工作室访问存储在虚拟网络内部的数据的权限。
 > - 了解工作室如何影响存储安全性。
 
@@ -31,7 +32,7 @@ ms.locfileid: "91713367"
 
 请参阅本系列中的其他文章：
 
-[1. VNet 概述](how-to-network-security-overview.md)  >  [2。保护工作区](how-to-secure-workspace-vnet.md)  >  [3。保护定型环境](how-to-secure-training-vnet.md)  >  [4。保护推断环境](how-to-secure-inferencing-vnet.md)  >  [5。启用 studio 功能](how-to-enable-studio-virtual-network.md)
+[1. VNet 概述](how-to-network-security-overview.md)  >  [2。保护工作区](how-to-secure-workspace-vnet.md)  >  [3。保护定型环境](how-to-secure-training-vnet.md)  >  [4。保护推断环境](how-to-secure-inferencing-vnet.md)  >  **5。启用 studio 功能**
 
 
 > [!IMPORTANT]
@@ -46,7 +47,7 @@ ms.locfileid: "91713367"
 
 + 现有的[启用了专用链接的 Azure 机器学习工作区](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)。
 
-+ 现有的[已添加虚拟网络的 Azure 存储帐户](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)。
++ 现有的[已添加虚拟网络的 Azure 存储帐户](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)。
 
 ## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>从 VNet 内部的资源访问工作室
 
@@ -56,7 +57,7 @@ ms.locfileid: "91713367"
 
 ## <a name="access-data-using-the-studio"></a>使用工作室访问数据
 
-[将 Azure 存储帐户添加到虚拟网络](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)后，你必须将你的存储帐户配置为使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)授予工作室对你的数据的访问权限。 Studio 支持配置为使用服务终结点或专用终结点的存储帐户。 默认情况下，存储帐户使用服务终结点。 若要启用存储的专用终结点，请参阅 [使用 Azure 存储的专用终结点](../storage/common/storage-private-endpoints.md)
+使用[服务终结](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)[点或专用终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)将 Azure 存储帐户添加到虚拟网络后，你必须将你的存储帐户配置为使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)向工作室授予对数据的访问权限。
 
 如果未启用托管标识，则会收到以下错误 `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` 此外，将禁用以下操作：
 
@@ -64,6 +65,9 @@ ms.locfileid: "91713367"
 * 在设计器中将数据可视化。
 * 提交 AutoML 试验。
 * 启动标记项目。
+
+> [!NOTE]
+> [ML 辅助数据标签](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支持虚拟网络后保护的默认存储帐户。 对于 ML 辅助数据标签，必须使用非默认存储帐户。 可在虚拟网络后保护非默认存储帐户。 
 
 工作室支持从虚拟网络中的以下数据存储类型读取数据：
 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/30/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631182"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776011"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -70,7 +70,7 @@ ms.locfileid: "91631182"
 
 1. 创建 [启用了专用链接的工作区](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) ，以启用 VNet 与工作区之间的通信。
 1. 使用 [服务终结](../key-vault/general/overview-vnet-service-endpoints.md) 点或 [专用终结点](../key-vault/general/private-link-service.md)将 Azure Key Vault 添加到虚拟网络。 将 Key Vault 设置为 ["允许受信任的 Microsoft 服务跳过此防火墙"](how-to-secure-workspace-vnet.md#secure-azure-key-vault)。
-1. 使用[服务终结](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)点或[专用终结点](../storage/common/storage-private-endpoints.md)将 Azure 存储帐户添加到虚拟网络
+1. 使用 [服务终结](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) 点或 [专用终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)将 Azure 存储帐户添加到虚拟网络。
 1. [将 Azure 容器注册表配置为使用专用终结点](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) ，并 [在 Azure 容器实例中启用子网委托](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
 
 ![显示工作区和关联资源如何通过服务终结点或 VNet 内的专用终结点相互通信的体系结构关系图](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -141,17 +141,17 @@ ms.locfileid: "91631182"
 
 [保护工作区](#secure-the-workspace-and-associated-resources)  > [保护定型环境](#secure-the-training-environment)  > [保护推断环境](#secure-the-inferencing-environment)  > **启用 studio 功能**  > [配置防火墙设置](#configure-firewall-settings)
 
-尽管工作室可以访问使用服务终结点配置的存储帐户中的数据，但默认情况下禁用某些功能：
+如果存储在 VNet 中，则必须先执行其他配置步骤，以便在 [工作室](overview-what-is-machine-learning-studio.md)中启用全部功能。 默认情况下，禁用以下功能：
 
 * 预览工作室中的数据。
 * 在设计器中将数据可视化。
 * 提交 AutoML 试验。
 * 启动标记项目。
 
-若要在使用存储服务终结点时启用全部功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支持用于存储帐户的服务终结点和专用终结点。
+若要在 VNet 内部启用完整的 studio 功能，请参阅 [在虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支持使用服务终结点或专用终结点的存储帐户。
 
 ### <a name="limitations"></a>限制
-- Studio 无法访问配置为使用专用终结点的存储帐户中的数据。 若要获取完整的功能，必须将服务终结点用于存储并使用托管标识。
+- [ML 辅助数据标记](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支持虚拟网络后保护的默认存储帐户。 对于 ML 辅助数据标签，必须使用非默认存储帐户。 请注意，非默认存储帐户可在虚拟网络后受到保护。 
 
 ## <a name="configure-firewall-settings"></a>配置防火墙设置
 
@@ -164,6 +164,6 @@ ms.locfileid: "91631182"
 本文是由四部分构成的虚拟网络系列中的第一部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第2部分：虚拟网络概述](how-to-secure-workspace-vnet.md)
-* [第3部分：保护定型环境](how-to-secure-training-vnet.md)
-* [第4部分：保护推断环境](how-to-secure-inferencing-vnet.md)
-* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)
+* [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
+* [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
+* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)

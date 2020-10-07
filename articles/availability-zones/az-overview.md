@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018665"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773733"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -79,7 +79,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 | 区域类型 | 非区域 | 基础 | 主要支持 | 专用 | 可用性区域 | 数据驻留 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 建议 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | :heavy_check_mark: | :heavy_check_mark: |
-| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 不适用 | :heavy_check_mark: |
+| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 空值 | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>按类别分类的服务
 
@@ -92,12 +92,12 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | 基础 | 主要支持 | 专用 |
 > | --- | --- | --- |
 > | 帐户存储 | API 管理 | 适用于 FHIR 的 Azure API |
-> | 应用程序网关 | 应用配置 | Azure Analysis Services |
+> | 应用程序网关 | 应用程序配置 | Azure Analysis Services |
 > | Azure 备份 | 应用服务 | Azure 区块链服务 |
 > | Azure Cosmos DB | 自动化 | Azure 蓝图 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory 域服务 | Azure Database for MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Azure 专用 HSM |
-> | Azure SQL 数据库 | Azure Redis 缓存 | Azure Dev Spaces |
+> | Azure SQL 数据库 | 用于 Redis 的 Azure 缓存 | Azure Dev Spaces |
 > | 云服务 | Azure 认知搜索 | Azure 数字孪生 |
 > | 云服务： Av2 系列 | Azure 数据资源管理器 | Azure 实验室服务 |
 > | 云服务： Dv2 系列 | Azure Data Share | Azure NetApp 文件 |
@@ -113,7 +113,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | Service Fabric | Azure HPC 缓存 | 数据目录 |
 > | 虚拟机规模集 | Azure IoT 中心 | 数据工厂：数据工厂 V1 |
 > | 虚拟机 | Azure Kubernetes 服务 (AKS) | Data Lake Analytics |
-> | 虚拟机： Av2 系列 | Azure 机器学习 | 机器学习工作室 |
+> | 虚拟机： Av2 系列 | Azure 机器学习 | Azure 机器学习工作室（经典）|
 > | 虚拟机： Bs.1770 系列 | Azure 专用链接 | Microsoft 基因组学 |
 > | 虚拟机： DSv2 系列 | Azure Red Hat OpenShift | 远程渲染 |
 > | 虚拟机： DSv3 系列 | Azure SignalR 服务 | 空间定位点 |
@@ -142,7 +142,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > |  | 通知中心 | 虚拟机： NVv3 系列 |
 > |  | Power BI Embedded | 虚拟机： NVv4 系列 |
 > |  | 高级 Blob 存储 | 虚拟机： Azure SAP HANA 大型实例 |
-> |  | 高级文件存储 | Visual Studio App Center |
+> |  | 高级文件存储 | Visual Studio 应用中心 |
 > |  | 存储：存档存储 |  |
 > |  | 超级磁盘存储 |  |
 > |  | 虚拟机： Ddsv4 系列 |  |
