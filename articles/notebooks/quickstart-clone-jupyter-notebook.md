@@ -4,10 +4,10 @@ description: 快速克隆 GitHub 存储库中的 Jupyter 笔记本并在 Azure N
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87424471"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中克隆笔记本

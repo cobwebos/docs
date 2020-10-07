@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
 ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78244975"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 专用 DNS 区域
@@ -76,35 +76,35 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 ## <a name="link-the-virtual-network"></a>链接虚拟网络
 
-若要将专用 DNS 区域链接到虚拟网络，请创建一个虚拟网络链接。
+若要将专用 DNS 区域链接到虚拟网络，请创建虚拟网络链接。
 
 ![添加虚拟网络链接](media/private-dns-portal/dns-add-virtual-network-link.png)
 
-1. 打开“MyAzureResourceGroup”资源组，并选择“private.contoso.com”专用区域。  
-2. 在左窗格中，选择“虚拟网络链接”。 
-3. 选择 **添加** 。
+1. 打开“MyAzureResourceGroup”资源组，并选择“private.contoso.com”专用区域。********
+2. 在左窗格中，选择“虚拟网络链接”。****
+3. 选择“添加”。
 4. 键入 **myLink** 作为**链接名称**。
-5. 对于“虚拟网络”，请选择“myAzureVNet”。  
-6. 选中“启用自动注册”复选框。 
+5. 对于“虚拟网络”，请选择“myAzureVNet”。********
+6. 选中“启用自动注册”复选框。****
 7. 选择“确定”  。
 
 ## <a name="create-the-test-virtual-machines"></a>创建测试虚拟机
 
 现在，创建两台虚拟机，以便可以测试专用 DNS 区域：
 
-1. 在门户页的左上角，依次选择“创建资源”、“Windows Server 2016 Datacenter”。  
-1. 选择“MyAzureResourceGroup”作为资源组。 
+1. 在门户页的左上角，依次选择“创建资源”、“Windows Server 2016 Datacenter”。********
+1. 选择“MyAzureResourceGroup”作为资源组。****
 1. 键入 **myVM01** 作为虚拟机的名称。
-1. 选择“美国中西部”作为**区域**。 
+1. 选择“美国中西部”作为**区域**。****
 1. 为管理员用户名输入一个名称。
 2. 输入密码并确认密码。
-5. 对“公共入站端口”选择“允许所选端口”，然后对“选择入站端口”选择“RDP (3389)”。    
-10. 接受该页上的其他默认值，然后单击“下一步:  磁盘 >”。
-11. 接受“磁盘”页上的默认值，然后单击“下一步:   网络 >”。
-1. 确保为虚拟网络选择了“myAzureVNet”。 
-1. 接受该页上的其他默认值，然后单击“下一步:  管理 >”。
-2. 对于“启动诊断”，请选择“关闭”，接受其他默认值，然后选择“查看 + 创建”。   
-1. 查看设置，然后单击“创建”。 
+5. 对“公共入站端口”选择“允许所选端口”，然后对“选择入站端口”选择“RDP (3389)”。****************
+10. 接受该页上的其他默认值，然后单击“下一步:磁盘 >”。
+11. 接受“磁盘”页上的默认值，然后单击“下一步: 网络 >”。
+1. 确保为虚拟网络选择了“myAzureVNet”。****
+1. 接受该页上的其他默认值，然后单击“下一步:管理 >”。
+2. 对于“启动诊断”，请选择“关闭”，接受其他默认值，然后选择“查看 + 创建”。************
+1. 查看设置，然后单击“创建”。
 
 重复这些步骤创建名为 **myVM02** 的另一个虚拟机。
 
@@ -114,10 +114,10 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
  下面的示例在 DNS 区域 **private.contoso.com** 的资源组 **MyAzureResourceGroup** 中创建相对名称为 **db** 的一个记录。 记录集的完全限定名称为 **db.private.contoso.com**。 记录类型为“A”，包含 **myVM01** 的 IP 地址。
 
-1. 打开“MyAzureResourceGroup”资源组，并选择“private.contoso.com”专用区域。  
-2. 选择“+ 记录集”。 
-3. 对于“名称”，请键入 **db**。 
-4. 对于“IP 地址”，请键入 **myVM01** 的 IP 地址。  启动虚拟机时，应会自动注册此地址。
+1. 打开“MyAzureResourceGroup”资源组，并选择“private.contoso.com”专用区域。********
+2. 选择“+记录集”。
+3. 对于“名称”，请键入 **db**。****
+4. 对于“IP 地址”，请键入 **myVM01** 的 IP 地址。**** 启动虚拟机时，应会自动注册此地址。
 5. 选择“确定”  。
 
 ## <a name="test-the-private-zone"></a>测试专用区域
@@ -143,7 +143,7 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
    ```
    ping myVM01.private.contoso.com
    ```
-   应当会看到与以下内容类似的输出：
+   应看到与以下内容类似的输出：
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -163,7 +163,7 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
    ```
    ping db.private.contoso.com
    ```
-   应当会看到与以下内容类似的输出：
+   应看到与以下内容类似的输出：
    ```
    PS C:\> ping db.private.contoso.com
 

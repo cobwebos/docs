@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86186072"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 VM
@@ -51,7 +51,7 @@ ms.locfileid: "86186072"
 1. 在自动化帐户的左侧窗格中，在“共享资源”下选择“模块库”。 
 1. 通过键入模块的部分名称来搜索要导入的模块：`nx`。
 1. 单击要导入的模块。
-1. 单击“导入”。
+1. 单击“导入”  。
 
 ![导入 DSC 模块](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
 

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75908918"
 ---
 # <a name="internet-peering-overview"></a>Internet 对等互连概述
@@ -41,7 +41,7 @@ ms.locfileid: "75908918"
 * 跟踪所有连接的状态和带宽数据。
 * 可以使用同一订阅访问 Azure 云服务。
 
-如果已与 Microsoft 建立了对等互连，则称之为**传统对等互连**。 可以选择将此类对等互连作为 Azure 资源进行管理，以便充分利用上述优势。 若要提交新的对等互连请求，或将旧对等互连转换为 Azure 资源，请按照下面的“后续步骤”  部分的链接进行操作。
+如果已与 Microsoft 建立了对等互连，则称之为**传统对等互连**。 可以选择将此类对等互连作为 Azure 资源进行管理，以便充分利用上述优势。 若要提交新的对等互连请求，或将旧对等互连转换为 Azure 资源，请按照下面的“后续步骤”**** 部分的链接进行操作。
 
 ## <a name="peering-policy"></a>对等互连策略
 Microsoft 有一项选择性的但通常处于打开状态的对等互连策略。 对等方的选择取决于性能和功能，其中有互利因素，并受特定的技术、商业和法律要求的限制。 有关详细信息，请参阅[对等互连策略](policy.md)。

@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
 ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87283888"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 数据工厂
@@ -94,23 +94,23 @@ Jane, Doe
 
 1. 选择“转到资源组”。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="资源组":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="部署 ADF ARM 模板":::
 
 2.  验证是否已创建 Azure 数据工厂。
     1. Azure 数据工厂名称的格式为 - datafactory\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="数据工厂示例":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="部署 ADF ARM 模板":::
 
 2. 验证是否已创建存储帐户。
     1. 存储帐户名称的格式为 - storage\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="存储帐户":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="部署 ADF ARM 模板":::
 
 3. 选择创建的存储帐户，并选择“容器”。
     1. 在“容器”页上，选择创建的 blob 容器。
         1. blob 容器名称的格式为 - blob\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="blob 容器":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="部署 ADF ARM 模板":::
 
 ### <a name="upload-a-file"></a>上传文件
 
@@ -122,11 +122,11 @@ Jane, Doe
 
 4. 在“上传到文件夹”框中，输入“输入”。
 
-5. 选择“上传”按钮。 应该会在列表中看到 **emp.txt** 文件和上传状态。
+5. 选择“上传”按钮  。 应该会在列表中看到 **emp.txt** 文件和上传状态。
 
 6. 选择“关闭”图标 (X) 以关闭“上传 Blob”页面  。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="将文件上传到输入文件夹":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="部署 ADF ARM 模板":::
 
 使容器页保持打开状态，因为你可以使用它在快速入门结束时验证输出。
 
@@ -136,13 +136,13 @@ Jane, Doe
 
 2. 选择“创建者和监视器”磁贴。 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="创建者和监视器":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="部署 ADF ARM 模板":::
 
 2. 选择“创作”选项卡 :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false":::。
 
 3. 选择创建的管道 - ArmtemplateSampleCopyPipeline。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ARM 模板管道":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="部署 ADF ARM 模板":::
 
 4. 选择“添加触发器” > “立即触发器”。
 
@@ -156,7 +156,7 @@ Jane, Doe
 
 2. 此时会看到与管道运行相关联的活动运行。 在本快速入门中，管道只有一个活动，其类型为：“复制”。 因此会看到该活动运行。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="成功运行":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="部署 ADF ARM 模板":::
 
 ### <a name="verify-the-output-file"></a>验证输出文件
 
@@ -168,7 +168,7 @@ Jane, Doe
 
 3. 确认 **emp.txt** 已复制到 output 文件夹。 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="输出":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="部署 ADF ARM 模板":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

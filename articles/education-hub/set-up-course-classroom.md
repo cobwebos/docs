@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 0b797e2416b4d8849da19e4e75127f86a6f17322
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87100822"
 ---
 # <a name="quickstart-set-up-a-course-and-create-a-classroom"></a>快速入门：设置课程并创建课堂
@@ -45,17 +45,17 @@ ms.locfileid: "87100822"
 
 1. 选择表左上角的“+ 添加”图标，开始创建工作流。
 
-    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="向 Azure 教育中心添加课程" border="false":::
+    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Azure 教育中心课程页" border="false":::
 
 1. 可以使用以下两种方法创建课程名册：上传名册或使用邀请码。
     - 名册：如果你已有所有学生的姓名和登录名，则可以填写并上传名册文件。 若要下载上传名册所需的 .csv 文件的示例文件，请选择右上角的“下载示例文件”链接。
     - 邀请码：如果选择使用邀请码，请确定可兑换的代码数量，以及这些代码的过期时间。 你将向你的学生发送以下链接以兑换代码： https://aka.ms/joinedu 。
 
-      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="在 Azure 教育中心输入邀请码" border="false":::
+      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Azure 教育中心课程页" border="false":::
 
 1. 选择右下角的“创建课堂”。 这可能需要一些时间才能完成。
 
-   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="在 Azure 教育中心创建课堂" border="false":::
+   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Azure 教育中心课程页" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

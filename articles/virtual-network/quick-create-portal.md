@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86082431"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建虚拟网络
@@ -28,15 +28,15 @@ ms.locfileid: "86082431"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 在 Azure 门户菜单中，选择“创建资源”。 在 Azure 市场中，选择“网络” > “虚拟网络” 。
+1. 在 Azure 门户菜单中，选择“创建资源”  。 在 Azure 市场中，选择“网络” > “虚拟网络” 。
 
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
@@ -63,7 +63,7 @@ ms.locfileid: "86082431"
 
 1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -79,7 +79,7 @@ ms.locfileid: "86082431"
     | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
-    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 公共入站端口 | 选择“允许所选端口”****。 |
     | 选择入站端口 | 输入 *HTTP (80)* 和 *RDP (3389)* 。 |
     | **节省资金** |  |
     | 已有 Windows 许可证？ | 默认设置为“否”。 |
@@ -90,7 +90,7 @@ ms.locfileid: "86082431"
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 默认设置为 **myVirtualNetwork**。 |
     | 子网 | 默认设置为 **myVirtualSubnet (10.1.0.0/24)** 。 |
@@ -105,7 +105,7 @@ ms.locfileid: "86082431"
 
 1. 在“创建存储帐户”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 myvmstorageaccount。 如果此名称已被使用，请创建唯一的名称。|
     | 帐户类型 | 默认设置为“存储(常规用途 v1)”。 |
@@ -139,14 +139,14 @@ ms.locfileid: "86082431"
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开该 RDP 文件。 出现提示时，选择“连接”。
+1. 打开该 RDP 文件。 出现提示时，选择“连接”  。
 
 1. 输入在创建 VM 时指定的用户名和密码。
 
     > [!NOTE]
     > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
 1. 可能会在登录时收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 

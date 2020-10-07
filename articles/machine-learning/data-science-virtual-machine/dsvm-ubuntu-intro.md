@@ -9,10 +9,10 @@ ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
 ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85254695"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
@@ -39,14 +39,14 @@ ms.locfileid: "85254695"
    
 1. 输入以下信息以配置向导的每个步骤：
 
-    1. 基本信息：
+    1. **基本信息**：
     
-       * 订阅：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
-       * 资源组：新建资源组，或使用现有资源组。
+       * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
+       * **资源组**：新建资源组，或使用现有资源组。
        * **虚拟机名称**：输入虚拟机的名称。 此名称在你的 Azure 门户中使用。
        * **区域**：选择最合适的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
        * **映像**：保留默认值。
-       * **Size**：此选项应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
+       * **大小**：此选项应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
        * **身份验证类型**：为了更快地设置，请选择“密码”。 
          
          > [!NOTE]
@@ -57,7 +57,7 @@ ms.locfileid: "85254695"
          > [!IMPORTANT]
          > 如果在用户名中使用大写字母，JupyterHub 将无法正常工作，并且你将遇到 500 内部服务器错误。
 
-       * 密码：输入将用于登录到虚拟机的密码。    
+       * **密码**：输入将用于登录到虚拟机的密码。    
     
    1. 选择“查看 + 创建”。
    1. **查看 + 创建**
@@ -71,7 +71,7 @@ ms.locfileid: "85254695"
 可以通过以下三种方式之一访问 Ubuntu DSVM：
 
   * 终端会话 SSH
-  * 图形会话 X2Go
+  * X2Go 图形会话
   * Jupyter 笔记本的 JupyterHub 和 JupyterLab
 
 还可以将 Data Science Virtual Machine 附加到 Azure Notebooks，以在 VM 上运行 Jupyter Notebook，并绕过免费服务层的限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。

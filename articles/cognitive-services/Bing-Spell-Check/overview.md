@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86200496"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>什么是必应拼写检查 API？
@@ -23,7 +23,7 @@ ms.locfileid: "86200496"
 
 ## <a name="features"></a>功能
 
-| Feature | 说明 |
+| 功能 | 说明 |
 |---------|---------|
 |多种拼写检查模式     | 多种拼写检查模式使用户可以获得专注于语法和/或拼写的更正。 |
 |俚语和非正式语言识别     | 识别文本中常用的表达和非正式用语。         |

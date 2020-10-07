@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86135711"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>快速入门：为 Azure VM 设置到 Azure 次要区域的灾难恢复
@@ -48,7 +48,7 @@ ms.locfileid: "86135711"
 1. 在“操作”中，选择“灾难恢复”   。
 1. 若要查看“概览”中的复制详细信息，  请选择“基本信息”  。 更多详细信息显示在“运行状况和状态”  、“故障转移就绪情况”和“基础结构视图”映射中。  
 
-   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="复制状态。":::
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="启用复制。":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -65,7 +65,7 @@ ms.locfileid: "86135711"
 1. 从“概览”中选择“禁用复制”  。 
 1. 若要卸载 Site Recovery 扩展，请转到 VM 的“设置” > “扩展”。  
 
-   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="禁用复制。":::
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="启用复制。":::
 
 ## <a name="next-steps"></a>后续步骤
 

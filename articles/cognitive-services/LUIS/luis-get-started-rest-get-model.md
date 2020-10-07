@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 06/19/2020
 ms.author: nitinme
 ms.openlocfilehash: e5cf3160e6592a48e3a81480480ad8f01cc6af3a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86206255"
 ---
 # <a name="quickstart-use-curl-and-rest-to-change-model"></a>快速入门：使用 cURL 和 REST 来更改模型

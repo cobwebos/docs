@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87100713"
 ---
 # <a name="accessing-the-azure-education-hub"></a>访问 Azure 教育中心
@@ -32,7 +32,7 @@ ms.locfileid: "87100713"
    > [!IMPORTANT]
    > 确认将使用组织/工作帐户（如所在机构的 @domain.edu）登录。 如果是这样，请先在窗口的左侧选择此选项。 这会将你转到不同的登录屏幕。
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="组织“登录”对话框。" border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="打开隐私浏览器窗口。" border="false":::
 
 1. 登录后，你将被定向到 Azure 门户。 若要找到教育中心，请转到“所有服务”菜单，并搜索“教育”。
    首次登录时，将显示“开始使用”页。
