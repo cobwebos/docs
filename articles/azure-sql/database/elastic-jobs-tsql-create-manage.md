@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443349"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803851"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 要向其添加成员的目标组的名称。 target_group_name 为 nvarchar(128)，没有默认值。
 
 [ **\@membership_type =** ] 'membership_type'  
-指定是包括目标组成员还是将其排除。 target_group_name 为 nvarchar(128)，默认值为 ‘Include’。 target_group_name 的有效值为 ‘Include’ 或 ‘Exclude’。
+指定是包括目标组成员还是将其排除。 target_group_name 为 nvarchar(128)，默认值为 ‘Include’。 Membership_type 的有效值为 "包括" 或 "排除"。
 
 [ **\@target_type =** ] 'target_type'  
 目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库、一个分片映射中的所有数据库，或者一个单独的数据库。 target_type 为 nvarchar(128)，没有默认值。 target_type 的有效值为 ‘SqlServer’、‘SqlElasticPool’、‘SqlDatabase’ 或 ‘SqlShardMap’。
 
 [ **\@refresh_credential_name =** ] 'refresh_credential_name'  
-服务器的名称。 refresh_credential_name 为 nvarchar(128)，没有默认值。
+数据库作用域凭据的名称。 refresh_credential_name 为 nvarchar(128)，没有默认值。
 
 [ **\@server_name =** ] 'server_name'  
 应添加到指定目标组的服务器的名称。 当 target_type 为 ‘SqlServer’ 时，应指定 server_name。 server_name 为 nvarchar(128)，没有默认值。
@@ -1041,7 +1041,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 应添加到指定目标组的弹性池的名称。 当 target_type 为 ‘SqlElasticPool’ 时，应指定 elastic_pool_name。 elastic_pool_name 为 nvarchar(128)，没有默认值。
 
 [ **\@shard_map_name =** ] 'shard_map_name'  
-应添加到指定目标组的分片映射池的名称。 当 target_type 为 ‘SqlSqlShardMap’ 时，应指定 elastic_pool_name。 shard_map_name 为 nvarchar(128)，没有默认值。
+应添加到指定目标组的分片映射池的名称。 当 target_type 为 "SqlShardMap" 时，应指定 elastic_pool_name。 shard_map_name 为 nvarchar(128)，没有默认值。
 
 [ **\@target_id =** ] target_group_id OUTPUT  
 分配给目标组成员的目标标识号，前提是其已创建并添加到目标组。 target_id 是类型为 uniqueidentifier 的输出变量，默认值为 NULL。

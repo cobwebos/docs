@@ -6,15 +6,15 @@ ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85557310"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 ARM 模板
 
-了解如何使用 Azure 门户生成 Azure 资源管理器 (ARM) 模板，以及从门户编辑和部署该模板的过程。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模板部署概述](overview.md)。
+了解如何使用 Azure 门户生成 Azure 资源管理器 (ARM) 模板，以及从门户编辑和部署该模板的过程。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
 
 ![资源管理器模板快速入门门户图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "85557310"
     ![创建 Azure 存储帐户](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. 输入以下信息：
 
-    |名称|值|
+    |名称|Value|
     |----|----|
     |**资源组**|选择“新建”，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
     |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016” 。 有关详细信息，请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)。|
@@ -160,14 +160,14 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 1. 选择“保存”。
 1. 输入以下值：
 
-    |名称|值|
+    |名称|Value|
     |----|----|
     |**资源组**|选择在上一部分中创建的资源组名称。 |
     |**区域**|选择资源组的位置。 例如“美国中部”。 |
     |**位置**|选择存储帐户的位置。 例如“美国中部”。 |
     |**帐户类型**|对于本快速入门，请输入 **Standard_LRS**。 |
     |**种类**|对于本快速入门，请输入“StorageV2”。 |
-    |**访问层**|对于本快速入门，请输入“Hot”。 |
+    |**访问层**|对于本快速入门，请输入“热”。 |
     |**最低 TLS 版本**|输入 TLS1_0。 |
     |**仅支持 Https 流量**| 对于本快速入门，请选择“true”。 |
     |**允许 Blob 公共访问**| 对于本快速入门，请选择“false”。 |

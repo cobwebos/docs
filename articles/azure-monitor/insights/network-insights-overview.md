@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330940"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803800"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure 网络监视器（预览版）
 网络 Azure Monitor 为所有部署的网络资源提供 [运行状况](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) 和 [指标](../platform/metrics-supported.md) 的综合视图，无需任何配置。  它还提供对所有网络监视功能的访问，例如 [连接监视器](../../network-watcher/connection-monitor-preview.md)、 [网络安全组的流日志记录 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、 [流量分析](../../network-watcher/traffic-analytics.md)和其他网络 [诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
@@ -108,6 +108,43 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 
 ![诊断工具包选项卡](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="troubleshooting"></a>故障排除 
+
+如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
+
+本部分将帮助你诊断和解决在使用网络 Azure Monitor 时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
+
+### <a name="resolving-performance-issues-or-failures"></a>解决性能问题或故障
+
+若要帮助解决你在网络 Azure Monitor 中标识的任何网络相关问题，请参阅故障排除资源的故障排除文档。 下面列出了用于高使用服务的故障排除链接。
+* 虚拟网络 (VNET) 
+* 应用程序网关
+* VPN 网关
+* ExpressRoute 
+* 负载均衡器 
+
+### <a name="why-dont-i-see-the-resources-from-all-the-subscriptions-i-have-selected"></a>为什么我看不到我选择的所有订阅中的资源
+
+网络见解一次只能显示5个订阅中的资源。 
+
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-network-insights-how-do-i-do-so"></a>我要对网络见解进行更改或添加其他可视化效果，如何实现此目的
+
+要进行更改，请选择“编辑模式”修改工作簿，然后可以将工作保存为绑定到指定订阅和资源组的新工作簿。
+
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>固定工作簿的任何部分后，时间粒度是多少
+
+我们使用“自动”时间粒度，因此，它取决于选择的时间范围。
+
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>固定工作簿的任何部分后，时间范围是多少
+
+时间范围将取决于面板设置。
+
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-network-insights"></a>如果想要查看其他数据或生成自己的可视化效果，应该怎么做？ 如何对网络见解进行更改
+
+您可以通过使用编辑模式来编辑在任何侧面板和详细指标视图中看到的工作簿，然后将您的工作保存为新的工作簿，该工作簿将包含所有新的更改。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 - 有关网络监视的详细信息 [，请参阅 Azure 网络观察程序是什么？](../../network-watcher/network-watcher-monitoring-overview.md)。
+- 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。

@@ -4,12 +4,12 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006753"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803585"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -25,7 +25,7 @@ ms.locfileid: "90006753"
 * 部署方法：框架依赖或自包含。
 * Web 服务器：IIS（Internet 信息服务器）或 Kestrel。
 * **托管平台**：Azure 应用服务的 Web 应用功能、Azure VM、Docker、Azure Kubernetes 服务 (AKS) 等。
-* **.NET Core 运行时版本**：1.XX、2.XX 或 3.XX
+* **.Net core 版本**：所有正式 [支持](https://dotnet.microsoft.com/download/dotnet-core) 的 .net core 版本。
 * **IDE**：Visual Studio、VS Code 或命令行。
 
 > [!NOTE]
@@ -121,7 +121,7 @@ ms.locfileid: "90006753"
 
 ### <a name="user-secrets-and-other-configuration-providers"></a>用户机密和其他配置提供程序
 
-如果要将检测密钥存储在 ASP.NET Core 用户机密或从其他配置提供程序中检索它，则可以将重载与参数一起使用 `Microsoft.Extensions.Configuration.IConfiguration` 。 例如，`services.AddApplicationInsightsTelemetry(Configuration);`。
+如果要将检测密钥存储在 ASP.NET Core 用户机密或从其他配置提供程序中检索它，则可以将重载与参数一起使用 `Microsoft.Extensions.Configuration.IConfiguration` 。 例如 `services.AddApplicationInsightsTelemetry(Configuration);`。
 从 Applicationinsights.config AspNetCore 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)开始，调用 `services.AddApplicationInsightsTelemetry()` 会自动从应用程序读取检测密钥 `Microsoft.Extensions.Configuration.IConfiguration` 。 无需显式提供 `IConfiguration` 。
 
 ## <a name="run-your-application"></a>运行应用程序
@@ -151,7 +151,7 @@ ms.locfileid: "90006753"
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.X 应用收集默认的计数器集。 [EventCounter](eventcounters.md) 教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
+`EventCounterCollectionModule` 默认情况下启用。 [EventCounter](eventcounters.md)教程提供了有关配置要收集的计数器列表的说明。
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>为 Web 应用程序启用客户端遥测
 
@@ -226,9 +226,9 @@ public void ConfigureServices(IServiceCollection services)
 
 有关最新列表，请参阅 [`ApplicationInsightsServiceOptions` 中的可配置设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
-### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Applicationinsights.config 的配置建议 AspNetCore SDK 2.15.0-beta3 &
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Applicationinsights.config 的配置建议 AspNetCore SDK 2.15.0 &
 
-从 Applicationinsights.config. AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) 开始，建议使用配置中提供的每个设置 `ApplicationInsightsServiceOptions` ，包括使用应用程序实例的 instrumentationkey `IConfiguration` 。 设置必须位于 "Applicationinsights.config" 部分下，如以下示例中所示。 中来自 appsettings.js的以下部分配置检测密钥，同时还禁用自适应采样和性能计数器集合。
+从 Applicationinsights.config AspNetCore [SDK 版本开始，建议](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 使用配置中提供的每个设置 `ApplicationInsightsServiceOptions` ，包括使用应用程序实例的 instrumentationkey `IConfiguration` 。 设置必须位于 "Applicationinsights.config" 部分下，如以下示例中所示。 中来自 appsettings.js的以下部分配置检测密钥，同时还禁用自适应采样和性能计数器集合。
 
 ```json
 {
@@ -240,11 +240,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如果 `services.AddApplicationInsightsTelemetry(aiOptions)` 使用，则此将重写中的设置 `Microsoft.Extensions.Configuration.IConfiguration` 。
+如果 `services.AddApplicationInsightsTelemetry(aiOptions)` 使用，它将重写中的设置 `Microsoft.Extensions.Configuration.IConfiguration` 。
 
 ### <a name="sampling"></a>采样
 
-适用于 ASP.NET Core 的 Application Insights SDK 支持固定频率和自适应采样。 自适应采样默认已启用。 
+适用于 ASP.NET Core 的 Application Insights SDK 支持固定频率和自适应采样。 自适应采样默认已启用。
 
 有关详细信息，请参阅 [配置 ASP.NET Core 应用程序的自适应采样](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)。
 
@@ -335,7 +335,6 @@ public void ConfigureServices(IServiceCollection services)
     services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                module.Counters.Clear();
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
@@ -447,16 +446,12 @@ public class HomeController : Controller
 
 否。 [状态监视器](./monitor-performance-live-website-now.md)和[状态监视器 v2](./status-monitor-v2-overview.md) 目前仅支持 ASP.NET 4.x。
 
-### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>系统是否会自动为 ASP.NET Core 2.0 应用程序启用 Application Insights？
-
-`Microsoft.AspNetCore.All` 2.0 元包包含 Application Insights SDK（版本 2.1.0）。 如果在 Visual Studio 调试器中运行该应用程序，则 Visual Studio 会启用 Application Insights，并在 IDE 本身中显示遥测数据。 除非指定检测密钥，否则遥测数据不会发送到 Application Insights 服务。 我们建议遵照本文中的说明启用 Application Insights，即使是对于 2.0 应用。
-
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果在 Linux 中运行应用程序，是否支持所有功能？
 
 是的。 SDK 的功能支持在所有平台中是相同的，不过存在以下例外情况：
 
 * 该 SDK 在 Linux 上收集[事件计数器](./eventcounters.md)，因为[性能计数器](./performance-counters.md)仅在 Windows 中受支持。 大多数指标是相同的。
-* 尽管默认已启用 `ServerTelemetryChannel`，但如果应用程序在 Linux 或 MacOS 中运行，出现网络问题时，通道不会自动创建本地存储文件夹来暂时保留遥测数据。 由于这种限制，在出现暂时性的网络或服务器时，遥测数据将会丢失。 若要解决此问题，请为通道配置一个本地文件夹：
+* 即使 `ServerTelemetryChannel` 默认情况下处于启用状态，如果应用程序在 Linux 或 macOS 中运行，则通道不会自动创建本地存储文件夹，以在出现网络问题时暂时保留遥测数据。 由于这种限制，在出现暂时性的网络或服务器时，遥测数据将会丢失。 若要解决此问题，请为通道配置一个本地文件夹：
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -473,6 +468,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
         services.AddApplicationInsightsTelemetry();
     }
 ```
+
+此限制不适用于 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 和更新版本。
 
 ### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>新的 .NET Core 3.X 辅助角色服务模板应用程序是否支持此 SDK？
 

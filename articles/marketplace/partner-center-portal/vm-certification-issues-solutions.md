@@ -1,20 +1,20 @@
 ---
-title: 虚拟机认证 - 问题和解决方案
-description: 本文说明了 VM 映像的常见错误消息。 它还讨论相关解决方案
+title: 验证 Azure Marketplace 的虚拟机映像时遇到的常见问题
+description: 本文介绍了测试和验证 Azure Marketplace 的 VM 映像时的常见错误消息和问题。 它还讨论相关解决方案。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296444"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803460"
 ---
-# <a name="issues-and-solutions-during-virtual-machine-certification"></a>虚拟机认证过程中的问题和解决方案 
+# <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>验证 Azure Marketplace 的虚拟机映像时遇到的常见问题
 
 将虚拟机 (VM) 映像发布到 Azure Marketplace 时，Azure 团队会对其进行验证，以确保其 bootability、安全性和 Azure 兼容性。 如果任何高质量测试失败，则发布将失败，并且你将收到一条描述问题的错误消息。
 
@@ -332,7 +332,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 步骤 2. 选择第一个选项 "RunShellScript"，并运行以下命令。
 
-命令： "cat/dev/null > ~/bash_history && history-c" ![ Bash history 命令（在 Azure 门户上）](./media/vm-certification-issues-solutions-4.png)
+命令： "cat/dev/null > ~/.bash_history && history-c" ![ Bash history 命令（在 Azure 门户上）](./media/vm-certification-issues-solutions-4.png)
 
 步骤 3. 执行完命令后，重新启动 VM。
 

@@ -4,10 +4,10 @@ description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupy
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85831397"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 预览版概述

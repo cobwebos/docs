@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8f8d366961049deb3eda193718ccb553aac930e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "67666378"
 ---
 支付两项内容：虚拟网络网关的每小时计算成本和虚拟网络网关的出口数据传输。 可在 [定价](https://azure.microsoft.com/pricing/details/vpn-gateway) 页上找到定价信息。 有关旧版网关 SKU 定价的信息，请参阅 [ExpressRoute 定价页](https://azure.microsoft.com/pricing/details/expressroute)并滚动至“虚拟网络网关”  部分。

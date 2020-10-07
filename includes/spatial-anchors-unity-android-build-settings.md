@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: c3bc542ffaabdb307ebcecdb02ce29a5d8acfbdc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68562433"
 ---
 通过选择“文件” > “生成设置”，打开“生成设置”。

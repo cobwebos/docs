@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322183"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803817"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -88,7 +88,7 @@ H265 编解码器未安装：
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>使用 MRC 录制的视频未反映实时体验的质量
 
-可以通过[混合现实捕捉 (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) 在 Hololens 上录制视频。 但是，由于以下两个原因，所生成视频的质量不如实时体验：
+可以通过 [混合现实捕获 (MRC) ](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)在 HoloLens 上记录视频。 但是，由于以下两个原因，所生成视频的质量不如实时体验：
 * 视频帧速率上限为 30 Hz，而不是 60 Hz。
 * 视频图像未经历[后期阶段重新投影](../overview/features/late-stage-reprojection.md)处理步骤，因此视频显得断断续续。
 
@@ -185,7 +185,7 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP 应用程序或 Dll 的 "找不到库" 错误
 
-在 c + + Nuget 包中，有 `microsoft.azure.remoterendering.Cpp.targets` 一个文件文件用于定义要使用的二进制口味。 若要确定 `UWP` ，文件中检查的条件 `ApplicationType == 'Windows Store'` 。 因此，需要确保在项目中设置此类型。 这应该是通过 Visual Studio 的项目向导创建 UWP 应用程序或 Dll 时的情况。
+在 c + + NuGet 包中，有 `microsoft.azure.remoterendering.Cpp.targets` 一个文件文件用于定义要使用的二进制口味。 若要确定 `UWP` ，文件中检查的条件 `ApplicationType == 'Windows Store'` 。 因此，需要确保在项目中设置此类型。 这应该是通过 Visual Studio 的项目向导创建 UWP 应用程序或 Dll 时的情况。
 
 ## <a name="unstable-holograms"></a>不稳定全息影像
 
@@ -193,7 +193,7 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 不稳定全息影像（晃动、弯曲、抖动或跳转全息影像）的另一个原因可能是网络连接不佳，尤其是网络带宽不足或延迟过高。 网络连接质量的一个良好指示器是[性能统计信息](../overview/features/performance-queries.md)值 `ARRServiceStats.VideoFramesReused`。 重复使用的帧表示因为没有新视频帧可用，而需要在客户端上重复使用旧视频帧的情况（例如，由于数据包丢失或网络延迟变化）。 如果 `ARRServiceStats.VideoFramesReused` 经常大于零，则表示存在网络问题。
 
-另一个要查看的值是 `ARRServiceStats.LatencyPoseToReceiveAvg`。 它应始终低于 100 毫秒。 如果出现较高值，则表示连接到的数据中心太远。
+另一个要查看的值是 `ARRServiceStats.LatencyPoseToReceiveAvg`。 它应始终低于 100 毫秒。 查看较高的值可能表明您连接到的数据中心太远。
 
 有关可能的缓解措施的列表，请参阅[网络连接指导原则](../reference/network-requirements.md#guidelines-for-network-connectivity)。
 
@@ -245,7 +245,9 @@ ARR 具有一项功能，用于确定表面是否可以进行 z 抵抗： [棋�
 
 * 表面是有意的，如 decals 或墙壁上的文本。
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>在本机 c + + 应用中使用多路立体声呈现的图形项目
 
+在某些情况下，自定义本机 c + + 应用程序将多路立体声呈现模式用于本地内容 (在调用 [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) 后，在单独的) 中向左和向右眼呈现会触发驱动程序 bug。 Bug 会导致不确定的光栅化问题，导致本地内容的各个三角形或部分三角形随机消失。 出于性能原因，建议你始终使用更新式的单传递立体声呈现技术（例如，使用 **SV_RenderTargetArrayIndex**）来呈现本地内容。
 
 ## <a name="next-steps"></a>后续步骤
 

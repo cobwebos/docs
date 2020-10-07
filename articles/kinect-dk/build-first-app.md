@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 麦克风, 访问麦克风, 麦克风数据
 ms.openlocfilehash: 3632145b3f3b63023e0c66e3cf99903231802edf
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "70099456"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-application"></a>快速入门：生成第一个 Azure Kinect 应用程序

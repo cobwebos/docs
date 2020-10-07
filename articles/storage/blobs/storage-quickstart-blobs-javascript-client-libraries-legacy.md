@@ -10,10 +10,10 @@ ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
 ms.openlocfilehash: 134408704d54479fbbe0dfb5094f2920fa2e74be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91336184"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
@@ -43,7 +43,7 @@ ms.locfileid: "91336184"
 
 下表描述了每项 CORS 设置，并对用于定义规则的值进行了说明。
 
-|设置  |值  | 说明 |
+|设置  |Value  | 说明 |
 |---------|---------|---------|
 | 允许的域 | * | 接受一个逗号分隔的列表，其中的域设置为可以接受的域。 将值设置为 `*` 意味着所有域都可以访问存储帐户。 |
 | 允许的方法     | delete、get、head、merge、post、options 和 put | 列出允许对存储帐户执行操作的 HTTP 谓词。 对于本快速入门，请选择所有可用的选项。 |
@@ -84,7 +84,7 @@ az storage account generate-sas \
 
 你可能会觉得每个参数之后的一系列值有点费解。 这些参数值取自相应权限的第一个字母。 下表解释了这些值的来源：
 
-| 参数        | 值   | 说明  |
+| 参数        | Value   | 说明  |
 |------------------|---------|---------|
 | *权限*    | racwdl  | 此 SAS 允许 *read*（读取）、*append*（追加）、*create*（创建）、*write*（编写）、*delete*（删除）和 *list*（列出）功能。 |
 | *resource-types* | sco     | 受 SAS 影响的资源为 *service*（服务）、*container*（容器）和 *object*（对象）。 |

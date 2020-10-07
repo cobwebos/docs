@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的联机备份和按需数据还原
-description: 本文介绍了自动备份、按需数据还原的工作原理，以及如何在 Azure Cosmos DB 中配置备份时间间隔和保留期。
+description: 本文介绍了 Azure Cosmos DB 中自动备份、按需数据还原的工作原理，以及如何配置备份间隔和保留期。
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0db34a615c9d92401e760c702feb0dbbf13ce01d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570923"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803868"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 使用 Azure Cosmos DB，数据和数据备份都高度冗余，并且具有可复原性，能抵御区域性灾难。 以下步骤演示 Azure Cosmos DB 如何执行数据备份：
 
-* 默认情况下，Azure Cosmos DB 每4小时自动执行数据库的完整备份，在任何时间点都只存储最新的两个备份。 如果默认间隔不能满足工作负荷要求，则可以更改 Azure 门户的备份间隔和保持期。 你可以在创建 Azure Cosmos 帐户期间或之后更改备份配置。 如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库的现有快照保留30天。
+* 默认情况下，Azure Cosmos DB 每4小时自动执行数据库的完整备份，在任何时间点都只存储最新的两个备份。 如果默认间隔不能满足工作负载要求，则可以从 Azure 门户更改备份间隔和保持期。 可以在创建 Azure Cosmos 帐户期间或之后更改备份配置。 如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库中的现有快照保留 30 天。
 
 * Azure Cosmos DB 将这些备份存储在 Azure Blob 存储中，而实际数据以本地形式驻留在 Azure Cosmos DB 中。
 
@@ -40,34 +40,34 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 * 使用 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)定期将数据移至所选的存储。
 
-* 使用 Azure Cosmos DB [更改源](change-feed.md) 来定期读取数据以进行完整备份或增量更改，并将其存储在自己的存储中。
+* 使用 Azure Cosmos DB [更改源](change-feed.md)定期读取数据来进行完整备份或增量更改，并将其存储在自己的存储中。
 
-## <a name="modify-the-backup-interval-and-retention-period"></a>修改备份间隔和保持期
+## <a name="modify-the-backup-interval-and-retention-period"></a>修改备份时间间隔和保持期
 
-Azure Cosmos DB 会自动对你的数据进行一次完整备份，在任何时间点都将存储最新的两个备份。 此配置是默认选项，提供它时不需要任何额外的费用。 你可以在创建 Azure Cosmos 帐户期间或创建帐户后更改默认备份间隔和保持期。 备份配置是在 Azure Cosmos 帐户级别设置的，需要在每个帐户上配置。 为帐户配置备份选项后，该帐户将应用到该帐户中的所有容器。 目前，你只能从 Azure 门户更改它们的备份选项。
+Azure Cosmos DB 会自动对你的数据进行一次完整备份，在任何时间点都将存储最新的两个备份。 此配置是默认选项，提供它时不需要任何额外的费用。 你可以在创建 Azure Cosmos 帐户期间或创建帐户之后更改默认备份时间间隔和保持期。 备份配置是在 Azure Cosmos 帐户级别设置的，需要在每个帐户上配置。 为帐户配置备份选项后，该帐户将应用到该帐户中的所有容器。 目前，你只能从 Azure 门户更改它们的备份选项。
 
 如果你意外删除或损坏了数据， **则在创建支持请求以还原数据之前，请确保将你的帐户的备份保留期至少增加了7天。最好在此事件的8小时内提高你的保留期。** 这样，Azure Cosmos DB 团队才有足够的时间来还原你的帐户。
 
-使用以下步骤更改现有 Azure Cosmos 帐户的默认备份选项：
+使用以下步骤可为现有 Azure Cosmos 帐户更改默认备份选项：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 导航到你的 Azure Cosmos 帐户，并打开 **备份 & 还原** 窗格。 根据需要更新备份间隔和备份保留期。
+1. 导航到你的 Azure Cosmos 帐户，打开“备份和还原”窗格。 根据需要更新备份间隔和备份保持期。
 
-   * **备份间隔** -Azure Cosmos DB 尝试对数据进行备份的时间间隔。 备份需要非零时间，在某些情况下，可能由于下游依赖关系而失败。 Azure Cosmos DB 尝试在配置的时间间隔内进行备份，但它不能保证备份在该时间间隔内完成。 可以用小时数或分钟数来配置此值。 备份间隔不能小于1小时且不能超过24小时。 更改此间隔后，新时间间隔将从上次备份的时间开始生效。
+   * **备份间隔** -Azure Cosmos DB 尝试对数据进行备份的时间间隔。 备份需要一定的时间，在某些情况下，可能由于下游依赖项而失败。 Azure Cosmos DB 尝试在配置的时间间隔内进行备份，但它不能保证备份在该时间间隔内完成。 可以按小时或分钟配置此值。 备份间隔不能小于 1 小时且不能超过 24 小时。 更改此间隔后，新间隔将从进行上次备份时开始生效。
 
-   * **备份保留** 期-它表示保留每个备份的时间段。 你可以在数小时或数天内配置。 最小保持期不能小于备份间隔 (的两倍) 小时，并且不能超过720小时。
+   * 备份保持期 - 它表示保留每个备份的时间段。 可以按小时或天配置它。 最小保持期不能小于备份间隔 (的两倍) 小时，并且不能超过720小时。
 
-   * **保留的数据副本** -默认情况下，会免费提供数据的两个备份副本。 如果需要两个以上的副本，则还需支付额外费用。 请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)中的“已用存储”部分，了解额外副本的确切价格。
+   * 保留的数据副本 - 默认情况下，会免费提供数据的两个备份副本。 如果需要两个以上的副本，则需支付额外费用。 请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)中的“已用存储”部分，了解额外副本的确切价格。
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="true":::
 
-如果在帐户创建过程中配置备份选项，则可以配置 **备份策略**，该策略可能是 **定期** 或 **连续**的。 定期策略用于配置备份间隔和备份保留期。 持续策略目前仅通过注册提供。 Azure Cosmos DB 团队将评估你的工作负荷并批准你的请求。
+如果在帐户创建过程中配置备份选项，则可以配置“备份策略”（是“定期”或“连续”）  。 定期策略使你可以配置备份间隔和备份保留期。 连续策略目前仅通过注册提供。 Azure Cosmos DB 团队会评估你的工作负载并审批你的请求。
 
 :::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="true":::
 
 ## <a name="restore-data-from-an-online-backup"></a>从联机备份还原数据
 
-在以下情况下，可能会意外删除或修改数据：  
+在以下情况之一中，可能会意外删除或修改数据：  
 
 * 删除整个 Azure Cosmos 帐户。
 
@@ -75,34 +75,41 @@ Azure Cosmos DB 会自动对你的数据进行一次完整备份，在任何时�
 
 * 删除一个或多个 Azure Cosmos 容器。
 
-* 删除或修改 Azure Cosmos 项 (例如，文档) 容器中。 这种特定情况通常称为 "数据损坏"。
+* 删除或修改容器中的 Azure Cosmos 项（例如文档）。 此特定情况通常称为"数据损坏"。
 
-* 共享的服务数据库中的共享产品/服务已删除或已损坏。
+* 删除或损坏共享产品数据库中的共享产品数据库或容器。
 
-在上述所有情况中，Azure Cosmos DB 均可还原数据。 在还原时，将创建一个新的 Azure Cosmos 帐户来保存已还原的数据。 如果未指定，则新帐户的名称将采用格式 `<Azure_Cosmos_account_original_name>-restored1` 。 尝试多次还原时，最后一个数字会递增。 不能将数据还原到预先创建的 Azure Cosmos 帐户中。
+在上述所有情况中，Azure Cosmos DB 均可还原数据。 进行还原时，会创建一个新的 Azure Cosmos 帐户来保存还原数据。 如果未指定新帐户的名称，则其名称将采用 `<Azure_Cosmos_account_original_name>-restored1` 格式。 如果尝试多次还原，则最后一位数将递增。 不能将数据还原到预先创建的 Azure Cosmos 帐户中。
 
-如果意外删除了 Azure Cosmos 帐户，可以将数据还原到同名的新帐户，前提是该帐户名称未被使用。 因此，建议您不要在删除帐户后重新创建它。 因为它不仅会阻止已还原的数据使用相同的名称，而且还会使发现正确的帐户从难以还原。
+意外删除 Azure Cosmos 帐户后，如果该帐户名未被使用，则可将数据还原到相同名称的帐户中。 因此，建议不要在删除帐户后重新创建它。 因为这样不仅会阻止还原数据使用相同的名称，还会难以确定正确还原帐户。
 
-如果意外删除了 Azure Cosmos 数据库，可以还原整个数据库或该数据库中的一部分容器。 还可以在数据库中选择特定容器，并将其还原到新的 Azure Cosmos 帐户。
+意外删除 Azure Cosmos 数据库后，我们可以还原整个数据库或该数据库中的容器子集。 还可以跨数据库选择特定容器并将它们还原到新的 Azure Cosmos 帐户中。
 
-如果意外删除或修改容器中的一个或多个项 (数据损坏事例) ，则需要指定还原到的时间。 如果数据损坏，时间很重要。 由于容器处于活动状态，因此备份仍在运行，因此，如果你等待超过保持期 (默认值为8小时) 将覆盖备份。 **若要防止备份被覆盖，请将帐户的备份保留至少增加7天。最好在8小时内提高数据损坏的保留期。**
+如果意外删除或修改了容器中的一个或多个项（即数据损坏情况），需要指定还原到的时间。 如果数据损坏，则时间很重要。 由于容器是实时的，所以备份仍在运行，因此如果超过了保持期（默认值为 8 小时），备份将被覆盖。 **若要防止备份被覆盖，请将帐户的备份保留至少增加7天。最好在8小时内提高数据损坏的保留期。**
 
-如果意外删除或损坏了数据，则应在 8 小时内联系 [Azure 支持](https://azure.microsoft.com/support/options/)，以便 Azure Cosmos DB 团队帮助你从备份中还原数据。 这样，Azure Cosmos DB 支持团队将有足够的时间来还原你的帐户。
+如果意外删除或损坏了数据，则应在 8 小时内联系 [Azure 支持](https://azure.microsoft.com/support/options/)，以便 Azure Cosmos DB 团队帮助你从备份中还原数据。 这样，Azure Cosmos DB 支持团队才有足够的时间来还原你的帐户。
 
-如果在数据库级别预配吞吐量，则在这种情况下，备份和还原过程将在整个数据库级别发生，而不是在单独的容器级别进行。 在这种情况下，不能选择要还原的容器的子集。
+> [!NOTE]
+> 还原数据后，并非所有源功能或设置都会传输到还原的帐户。 以下设置不会转移到新帐户：
+
+> * VNET 访问控制列表
+> * 存储过程、触发器和用户定义的函数
+> * 多区域设置  
+
+如果在数据库级别预配吞吐量，那么在这种情况下，将对整个数据库，而不是单个容器进行备份和还原。 在这种情况下，无法选择还原容器子集。
 
 ## <a name="migrate-data-to-the-original-account"></a>将数据迁移到原始帐户
 
-数据还原的主要目的是恢复意外删除或修改的数据。 因此，建议先检查已还原数据，确保其中包含所需内容。 稍后，你可以将数据迁移回主帐户。 尽管可以使用还原的帐户作为新的活动帐户，但如果有生产工作负荷，建议使用此选项。  
+数据还原的主要目标是恢复意外删除或修改的数据。 因此，建议先检查已还原数据，确保其中包含所需内容。 以后可以将数据迁移回主帐户。 尽管可以使用已还原帐户作为新的活动帐户，但如果有生产工作负载则不建议这样做。  
 
 可通过以下方式将数据迁移回原始的 Azure Cosmos 帐户：
 
 * 使用 [Azure Cosmos DB 数据迁移工具](import-data.md)。
 * 使用 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)。
-* 使用 Azure Cosmos DB 中的 [更改源](change-feed.md) 。
-* 您可以编写自己的自定义代码。
+* 使用 Azure Cosmos DB 中的[更改源](change-feed.md)。
+* 可以编写自己的自定义代码。
 
-请确保在迁移数据后立即删除已还原的帐户，因为这些帐户将产生持续的费用。
+确保在迁移了数据后立即删除已还原帐户，因为它们会持续产生费用。
 
 ## <a name="next-steps"></a>后续步骤
 

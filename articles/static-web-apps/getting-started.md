@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
 ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88752353"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入门：生成第一个静态 Web 应用
@@ -44,27 +44,27 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 1. 将鼠标置于“Static Web Apps”标签上，然后选择加号。
 
-    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="应用程序名称":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Azure 徽标":::
 
 1. 命令面板将在编辑器顶部打开，并提示你命名应用程序。
 
     输入“my-first-static-web-app”，然后按 Enter 。
 
-    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="创建静态 Web 应用":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Azure 徽标":::
 
 1. 选择“master”分支并按 Enter 。
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="分支名称":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Azure 徽标":::
 
 1. 选择“/”作为应用程序代码的位置，然后按 Enter 。
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="应用程序代码位置":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Azure 徽标":::
 
 1. 扩展正在查找应用程序中 API 的位置。 本文不实现 API。
 
     选择“暂时跳过”，然后按 Enter 。
 
-    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API 位置":::
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Azure 徽标":::
 
 1. 选择在应用中生成用于生产的文件的位置。
 
@@ -72,39 +72,39 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
     清除框并按 Enter。
 
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Azure 徽标":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
     输入“dist/angular-basic”，然后按 Enter 。
 
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular 应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Azure 徽标":::
 
     # <a name="react"></a>[React](#tab/react)
 
     键入“生成”，然后按 Enter 。
 
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React 应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Azure 徽标":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
     键入“dist”，然后按 Enter 。
 
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue 应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Azure 徽标":::
 
     ---
 
 1. 选择离你最近的位置，然后按 Enter。
 
-    :::image type="content" source="media/getting-started/extension-location.png" alt-text="资源位置":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Azure 徽标":::
 
 1. 创建应用后，将在 Visual Studio Code 中显示确认通知。
 
-    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="已创建确认":::
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Azure 徽标":::
 
 1. 在 Visual Studio Code 资源管理器窗口中，返回到“Static Web Apps”部分，右键单击“产品”，然后选择“在门户中打开”以在 Azure 门户中查看应用 。
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="打开门户":::
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Azure 徽标":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -114,7 +114,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 在 Visual Studio Code 资源浏览器窗口中，返回到“Static Web Apps”部分，右键单击“my-first-static-web-app”，然后选择“删除” 。
 
-:::image type="content" source="media/getting-started/extension-delete.png" alt-text="删除应用":::
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Azure 徽标":::
 
 ## <a name="next-steps"></a>后续步骤
 

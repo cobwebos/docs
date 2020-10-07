@@ -10,16 +10,16 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: aa70c9e5d67c759afe905e9e110d6bcd18555a8c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019234"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803783"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 
-本文适用于解决方案构建者和设备开发人员。
+本文适用于解决方案构建者和设备开发人员。 
 
 设备模板是一种蓝图，用于定义连接到 [Azure IoT Central 应用程序](concepts-app-templates.md)的设备类型的特征和行为。
 
@@ -129,7 +129,7 @@ ms.locfileid: "90019234"
 | 架构 | 遥测数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 架构不可用于事件和状态语义类型。 |
 | severity | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”************。 |
 | 状态值 | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。 |
-| 计价单位 | 遥测值的单位，例如**mph**、 **%** 或** &deg; C**。 |
+| 单位 | 遥测值的单位，例如**mph**、 **%** 或** &deg; C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
 | 评论 | 有关遥测功能的任何注释。 |
 | 说明 | 遥测功能的说明。 |
@@ -150,7 +150,7 @@ ms.locfileid: "90019234"
 | 可写 | 如果属性不是可写，则设备可向 IoT Central 报告属性值。 如果属性是可写的，则该设备可以向 IoT Central 报告属性值，而 IoT Central 可将属性更新发送到设备。
 | severity | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”************。 |
 | 状态值 | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。 |
-| 计价单位 | 属性值的单位，如**mph**、 **%** 或** &deg; C**。 |
+| 单位 | 属性值的单位，如**mph**、 **%** 或** &deg; C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
 | 评论 | 有关属性功能的任何注释。 |
 | 说明 | 属性功能的说明。 |
@@ -166,11 +166,26 @@ ms.locfileid: "90019234"
 | 显示名称 | 仪表板和窗体上使用的命令的显示名称。 |
 | 名称 | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 |
 | 功能类型 | 命令。 |
-| Command | `SynchronousExecutionType`. |
+| 命令 | `SynchronousExecutionType`. |
 | 评论 | 有关命令功能的任何注释。 |
 | 说明 | 命令功能的说明。 |
 | 请求 | 如果启用，则请求参数的定义包括：名称、显示名称、架构、单位和显示单位。 |
 | 响应 | 如果启用，则命令响应的定义包括：名称、显示名称、架构、单位和显示单位。 |
+
+#### <a name="offline-commands"></a>脱机命令
+
+如果设备模板中命令的 "脱机" 选项启用 " **脱机** " 选项，则可以选择 "队列命令"。
+
+此选项使用 IoT 中心云到设备的消息向设备发送通知。 若要了解详细信息，请参阅 IoT 中心文章 [发送云到设备的消息](../../iot-hub/iot-hub-devguide-messages-c2d.md)。
+
+云到设备的消息：
+
+- 是从解决方案到设备的单向通知。
+- 保证至少一次消息送达。 IoT 中心将云到设备的消息保留在每个设备队列中，从而确保可根据连接和设备故障进行恢复。
+- 要求设备实现消息处理程序以处理云到设备的消息。
+
+> [!NOTE]
+> 此选项仅在 IoT Central web UI 中可用。 如果从设备模板导出模型或接口，则不包含此设置。
 
 ## <a name="manage-an-interface"></a>管理接口
 

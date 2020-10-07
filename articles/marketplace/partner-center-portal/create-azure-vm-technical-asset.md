@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 虚拟机技术资产
+title: 为 Azure Marketplace 虚拟机产品/服务创建技术资产
 description: 了解如何为 Azure 市场的虚拟机 (VM) 产品/服务创建并配置技术资产。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,22 +7,22 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646809"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803511"
 ---
-# <a name="create-azure-virtual-machine-technical-assets"></a>创建 Azure 虚拟机技术资产
+# <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>为 Azure Marketplace 虚拟机产品/服务创建技术资产
 
 向 Azure Marketplace 发布虚拟机 (VM) 映像时，Azure 团队将验证 VM 映像，确保其 bootability、安全性和 Azure 兼容性。 如果任何高质量测试失败，则发布将失败并出现一条消息，其中包含错误和可能的 [纠正步骤](https://docs.microsoft.com/azure/marketplace/partner-center-portal/vm-certification-issues-solutions)。
 
 本文介绍如何为 Azure 市场的虚拟机 (VM) 产品/服务创建并配置技术资产。 VM 包含两个组件：操作系统虚拟硬盘 (VHD)，以及可选的关联数据磁盘 VHD：
 
-1. **操作系统 VHD** - 包含与你的产品/服务一起部署的操作系统和解决方案。 准备 VHD 的过程会有所不同，具体取决于它是基于 Linux 的、基于 Windows 的虚拟机还是基于自定义的 VM。
+- **操作系统 VHD**：包含与产品/服务一起部署的操作系统和解决方案。 准备 VHD 的过程会有所不同，具体取决于它是基于 Linux 的、基于 Windows 的虚拟机还是基于自定义的 VM。
 
-2. **数据磁盘 vhd** –适用于 VM 的专用持久存储。 请不要使用操作系统 VHD（例如 C: 驱动器）来存储持久性信息。
+- **数据磁盘 vhd**： VM 的专用持久存储。 请不要使用操作系统 VHD（例如 C: 驱动器）来存储持久性信息。
 
 一个 VM 映像包含一个操作系统磁盘以及多达 16 个数据磁盘。 每个数据磁盘使用一个 VHD，即使磁盘为空。
 
@@ -92,23 +92,35 @@ Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参
 1. 使用要用于发布 VM 产品/服务的 Azure 订阅关联的 Microsoft 帐户登录到 [Azure 门户](https://ms.portal.azure.com/)。
 2. 创建新资源组，并提供**资源组名称**、**订阅**和**资源组位置**。 有关详细信息，请参阅[管理资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)。
 
-    :::image type="content" source="media/vm/create-resource-group.png" alt-text="显示创建资源组的开始。":::
+    :::image type="content" source="media/vm/create-resource-group.png" alt-text="显示创建资源组的开始。&quot;:::
 
-3. 选择左侧导航栏中的 " **虚拟机** " 以显示 "虚拟机详细信息" 页。
+3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
 4. 选择“+ 添加”以打开“创建虚拟机体验” 。
 5. 从下拉列表中选择图像，或选择 " **浏览所有公用和专用映像** "，搜索或浏览所有可用的虚拟机映像。 示例：
 
-    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="显示示例 VM 映像。":::
+    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="显示创建资源组的开始。&quot;:::
+
+3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
+4. 选择“+ 添加”以打开“创建虚拟机体验” 。
+5. 从下拉列表中选择图像，或选择 ":::
 
 6. 根据以下建议选择要部署的 VM 的大小：
     1. 如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
     2. 如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
 
-    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="显示 VM 大小的选择。":::
+    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="显示创建资源组的开始。&quot;:::
+
+3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
+4. 选择“+ 添加”以打开“创建虚拟机体验” 。
+5. 从下拉列表中选择图像，或选择 ":::
 
 7. 在“磁盘”部分中，展开“高级部分，并将“使用托管磁盘”选项设置为“否”   。
 
-    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="显示使用托管磁盘的选项。":::
+    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="显示创建资源组的开始。&quot;:::
+
+3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
+4. 选择“+ 添加”以打开“创建虚拟机体验” 。
+5. 从下拉列表中选择图像，或选择 ":::
 
 8. 提供创建 VM 所需的其他详细信息。
 9. 选择“查看 + 创建”可查看选择。 看到“验证通过”消息时，选择“创建” 。
@@ -123,13 +135,17 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 2. 选择“创建资源”。 
 3. 选择左侧的 "从 Azure Marketplace **查看全部** "。
 4. 选择支持 Gen2 的映像。
-5. 选择“创建” 。
+5. 选择“创建”。
 6. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
 7. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 8. 选择 [受支持的第2代 VM](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) 和大小的建议大小。
 9. 通过 [Azure 门户创建流](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)完成 VM 的创建。
 
-    :::image type="content" source="media/vm/vm-generation.png" alt-text="显示用于选择 VM 代的选项。":::
+    :::image type="content" source="media/vm/vm-generation.png" alt-text="显示创建资源组的开始。&quot;:::
+
+3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
+4. 选择“+ 添加”以打开“创建虚拟机体验” 。
+5. 从下拉列表中选择图像，或选择 ":::
 
 ## <a name="connect-to-your-azure-vm"></a>连接到 Azure VM
 
@@ -157,7 +173,11 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 7. 打开 PuTTY 应用程序。
 8. 在 PuTTY 的“配置”对话框中，输入 VM 的 IP 地址或 DNS 名称。
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="说明 PuTTY 终端设置，并突出显示 主机名 和 端口 字段。":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="显示创建资源组的开始。&quot;:::
+
+3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
+4. 选择“+ 添加”以打开“创建虚拟机体验” 。
+5. 从下拉列表中选择图像，或选择 ":::
 
 9. 选择“打开”以打开 PuTTY 终端。
 10. 出现提示时，请输入 Linux VM 帐户的帐户名称和密码。
@@ -170,7 +190,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 
 以下规则适用于操作系统磁盘大小的限制。 提交任何请求时，请确保 OS 磁盘大小在 Linux 或 Windows 的限制范围内。
 
-| (OS) | 推荐的 VHD 大小 |
+| OS | 推荐的 VHD 大小 |
 | --- | --- |
 | Linux | 30到 1023 GB |
 | Windows | 30到 250 GB |
