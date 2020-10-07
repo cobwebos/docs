@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743312"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812397"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -61,6 +61,11 @@ Azure 标识客户端库支持上述身份验证方案，并与 Key Vault Sdk �
 | .NET | Python | Java | Javascript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure 标识 SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure 标识 SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+
+在应用程序中 Key Vault 进行身份验证：
+- [在 .NET 中的虚拟机中托管的应用程序中 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [在 Python 中托管的应用程序中 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
+- [通过应用服务 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>管理密钥、证书和机密
 
@@ -112,9 +117,13 @@ Azure 标识客户端库支持上述身份验证方案，并与 Key Vault Sdk �
 
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
-- [静态加密与 Key Vault](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-
+- [静态加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) 允许在保留数据时对数据进行 (加密) 编码。 数据加密密钥通常由 Azure Key Vault 中的密钥加密密钥进行加密，以进一步限制访问。
 - [Azure 信息保护](/azure/information-protection/plan-implement-tenant-key)允许管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
+- 使用[Azure 专用链接服务](private-link-service.md)，可以通过虚拟网络中的专用终结点访问 azure 服务 (例如，Azure Key Vault、azure 存储和 Azure Cosmos DB) 和 azure 托管的客户/合作伙伴服务。
+- Key Vault 与 [事件网格](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  的集成，用户可以在密钥保管库中存储的机密状态发生更改时收到通知。 你可以向应用程序分发新版本的机密，或轮换接近到期机密以防止中断。
+- 你可以通过 Key Vault 中的不需要的访问来保护 [Azure Devops](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) 机密。
+- [使用 DataBricks 中存储 Key Vault 的机密连接到 Azure 存储](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
+- 在 Kubernetes 上配置并运行 [机密存储 CSI 驱动程序](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) 的 Azure Key Vault 提供程序
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 

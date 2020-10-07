@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: fd8192b48f6923a8fe68abf674d6100c8b8e5a00
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761866"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804174"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到不同的 Azure AD 目录
 
@@ -74,10 +74,10 @@ ms.locfileid: "91761866"
 | Azure Data Lake Storage Gen1 | “是” | “是” |  | 必须重新创建任何 ACL。 |
 | Azure 文件 | 是 | 是 |  | 必须重新创建任何 ACL。 |
 | Azure 文件同步 | 是 | 是 |  |  |
-| Azure 托管磁盘 | 是 | 空值 |  |  |
-| 用于 Kubernetes 的 Azure 容器服务 | 是 | “是” |  |  |
+| Azure 托管磁盘 | 是 | 是 |  |  如果你使用磁盘加密集来使用客户管理的密钥来加密托管磁盘，则必须禁用并重新启用与磁盘加密集相关联的系统分配的标识。 您必须重新创建角色分配，即，对密钥保管库中的磁盘加密集再次授予所需权限。 |
+| 用于 Kubernetes 的 Azure 容器服务 | 是 | 是 |  |  |
 | Azure Active Directory 域服务 | 是 | 否 |  |  |
-| 应用注册 | “是” | “是” |  |  |
+| 应用注册 | “是” | 是 |  |  |
 
 > [!WARNING]
 > 如果对依赖于密钥保管库的资源（例如存储帐户或 SQL 数据库）使用静态加密，而密钥保管库不位于正在转移的订阅中，则可能导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。

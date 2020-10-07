@@ -17,12 +17,12 @@ ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331244"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812584"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -35,7 +35,8 @@ ms.locfileid: "91331244"
 - **活动** 
     - **登录** - [登录报告](concept-sign-ins.md)提供有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志** - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
-- **安全性** 
+    - **设置日志**  - [设置日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)允许客户通过预配服务监视活动，例如在 ServiceNow 中创建组或从 Workday 导入的用户。 
+- **安全** 
     - 有**风险的登录**-有[风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。 
     - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
@@ -126,7 +127,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - GroupManagement
 - KerberosDomain
 - KeyManagement
-- 标签
+- Label
 - 其他
 - PermissionGrantPolicy
 - 策略
@@ -190,7 +191,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 如果只想查看与用户相关的审核数据，则可以在 "**用户**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**UserManagement**作为预先选择的类别。
 
-![用户](./media/concept-audit-logs/users.png "用户")
+![User](./media/concept-audit-logs/users.png "User")
 
 如果只想查看与组相关的审核数据，则可以在 "**组**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**GroupManagement**作为预先选择的类别。
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地、Docker、容器
-ms.openlocfilehash: ed14b0b90fadf02ee23852ebce9a60b758b82573
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766471"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813264"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 Api 安装并运行 Docker 容器 
 
@@ -140,7 +140,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 # <a name="speech-language-detection"></a>[语音语言检测](#tab/lid)
 
 > [!TIP]
-> 为了获得最佳效果，我们建议使用语音语言检测容器和语音到文本或自定义的语音到文本容器。 
+> 若要获得最有用的结果，建议使用语音语言检测容器和语音到文本或自定义的语音到文本容器。 
 
 | 容器 | 存储库 |
 |-----------|------------|

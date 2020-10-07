@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Active Directory 门户中预配日志 (预览版) |Microsoft Docs
-description: Azure Active Directory 门户中的预配活动报表简介
+description: 在 Azure Active Directory 门户中预配日志报表简介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361273"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812550"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
     - **审核日志**  - [审核日志](concept-audit-logs.md)提供有关用户和组管理、托管应用程序和目录活动的系统活动信息。
     - **设置日志** -提供有关由 Azure AD 预配服务设置的用户、组和角色的系统活动。 
 
-- **安全性** 
+- **安全** 
     - 有**风险的登录**-有[风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。
     - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
@@ -42,6 +42,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
+* 应用程序所有者
 * 安全管理员、安全读者、报表读者、应用程序管理员和云应用程序管理员角色中的用户
 * 全局管理员
 
@@ -172,7 +173,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 修改的属性
 
-- 总结
+- 摘要
 
 
 ![预配详细信息](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
@@ -210,13 +211,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="what-you-should-know"></a>要点
 
-- 如果有高级版，Azure 门户将报告的预配数据存储30天，如果有免费版，则存储7天。
+- 如果你有一个免费版，Azure 门户会将报告的预配数据存储30天，如果你有一个免费版，则为7天。预配日志可发布到 log analytics，以便保留超过30天的保留期。 
 
 - 您可以使用 "更改 ID" 属性作为唯一标识符。 例如，当与产品支持交互时，这很有用。
 
 - 当前没有可用于下载 CSV 文件的预配数据的选项，但你可以使用 [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)来导出数据。
-
-- 当前不支持 log analytics。
 
 - 对于不在作用域内的用户，可能会看到跳过的事件。 这是预期情况，特别是在同步作用域设置为 "所有用户和组" 时。 我们的服务将评估租户中的所有对象，即使是超出范围的对象。 
 
@@ -252,3 +251,4 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 * [检查用户设置的状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [为 Azure AD 库应用程序配置用户预配时遇到的问题](../app-provisioning/application-provisioning-config-problem.md)
+* [预配日志图形 API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

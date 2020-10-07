@@ -3,12 +3,12 @@ title: 使用 MARS 代理将文件还原到 Windows 服务器
 description: 在本文中，了解如何使用 Microsoft Azure 恢复服务 (MARS) 代理将存储在 Azure 中的数据还原到 Windows 服务器或 Windows 计算机。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 0d2f9e8197ac397bf61e4cb293e354a10ba0e1da
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178551"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813247"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理将文件还原到 Windows 服务器
 
@@ -107,7 +107,7 @@ ms.locfileid: "89178551"
 
 5. 提供对应于示例保管库的保管库凭据文件，并选择“下一步”。
 
-    如果保管库凭据文件无效（或已过期），请在 Azure 门户中从示例保管库下载新的保管库凭据文件。 提供有效的保管库凭据后，会显示相应备份保管库的名称。
+    如果保管库凭据文件 (或过期) ，请从 Azure 门户的 [示例保管库下载新的保管库凭据文件](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) 。 提供有效的保管库凭据后，会显示相应备份保管库的名称。
 
 6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择源计算机并提供通行短语。 然后，选择“下一步”。
 

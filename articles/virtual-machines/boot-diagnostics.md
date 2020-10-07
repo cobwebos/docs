@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287077"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813230"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 启动诊断
 
@@ -25,12 +25,14 @@ ms.locfileid: "91287077"
 
 > [!IMPORTANT]
 > 在10月2020，Azure 客户不会向使用托管存储帐户启动诊断相关的存储费用收费。
+>
+> 启动诊断数据 blob (包含日志和快照映像) 存储在托管存储帐户中。 客户将仅对 blob 使用的 Gib 等进行收费，而不是根据磁盘的预配大小收费。 快照计量将用于托管存储帐户的计费。 由于托管帐户是在标准 LRS 或标准 ZRS 上创建的，因此，客户只需为其诊断数据 blob 的大小按每月 $ 0.05/GB 收费。 有关此定价的详细信息，请参阅 [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 客户将看到这一费用与 VM 资源 URI 相关联。 
 
 ## <a name="boot-diagnostics-view"></a>启动诊断视图
 虚拟机边栏选项卡中的启动诊断选项位于 Azure 门户的“支持和故障排除”部分。 选择启动诊断会显示屏幕截图和串行日志信息。 串行日志包含内核消息，屏幕快照是 VM 当前状态的快照。 Windows 或 Linux 会根据 VM 是否正在运行来确定预期的屏幕快照会是什么样子。 Windows 用户会看到桌面背景，Linux 用户会看到登录提示。
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="Linux 启动诊断的屏幕截图":::
-:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Windows 启动诊断的屏幕截图":::
+:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Linux 启动诊断的屏幕截图":::
 
 
 ## <a name="limitations"></a>限制

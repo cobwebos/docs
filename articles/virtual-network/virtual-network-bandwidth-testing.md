@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265171"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812278"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
@@ -26,7 +26,7 @@ ms.locfileid: "87265171"
 将此工具复制到大小相同的两个 Azure VM 中。 一个 VM 充当发送方，另一个充当接收方。
 
 #### <a name="deploying-vms-for-testing"></a>部署 VM 以进行测试
-为了达到此测试的目的，两个 VM 应位于同一云服务或同一可用性集中，这样便可使用其内部 IP 并从测试中排除负载均衡器。 也可以使用 VIP 进行测试，但这类测试不在本文档的讨论范围内。
+出于此测试的目的，两个 Vm 应位于相同的 [邻近位置组](../virtual-machines/windows/co-location.md) 或同一可用性集，以便我们可以使用其内部 ip 并从测试中排除负载均衡器。 也可以使用 VIP 进行测试，但这类测试不在本文档的讨论范围内。
 
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 

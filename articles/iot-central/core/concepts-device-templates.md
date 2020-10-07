@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 中的设备模板 IoT Central |Microsoft Docs
-description: Azure IoT Central 设备模板使你能够指定连接到应用程序的设备的行为。
+description: Azure IoT Central 设备模板使你能够指定连接到应用程序的设备的行为。 设备模板指定设备必须实现的遥测、属性和命令。 设备模板还在 IoT Central （例如，操作员使用的窗体和仪表板）中定义设备的 UI。
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015086"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813162"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
 
@@ -26,12 +26,10 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义连接到应�
 设备模板包括以下部分：
 
 - _一种设备功能模型 (DCM) _。 设备模板的此部分定义设备与应用程序交互的方式。 设备开发人员实现 DCM 中定义的行为。
+    - _接口_。 DCM 包含一个或多个接口，用于定义设备必须实现的遥测、属性和命令。
 - _云属性_。 设备模板的此部分使解决方案开发人员可以指定任何要存储的设备元数据。 云属性永远不会与设备同步，而只存在于应用程序中。 云属性不影响设备开发人员为实现 DCM 而编写的代码。
 - _自定义_。 设备模板的此部分使解决方案开发人员可以覆盖 DCM 中的一些定义。 如果解决方案开发人员想要优化应用程序处理值的方式（例如更改属性的显示名称或用于显示遥测值的颜色），则自定义项很有用。 自定义不会影响设备开发人员为实现 DCM 而编写的代码。
 - _视图_。 设备模板的此部分使解决方案开发人员可以定义可视化，以查看设备中的数据，以及用于管理和控制设备的窗体。 视图使用 DCM、云属性和自定义项。 视图不影响设备开发人员为实现 DCM 而编写的代码。
-
-> [!NOTE]
-> [IoT 即插即用公共预览版刷新版本](../../iot-pnp/overview-iot-plug-and-play.md)面向设备开发人员和 oem 开始构建设备，他们可以在 GA 发布之前为 IoT 即插即用认证。
 
 ## <a name="device-capability-models"></a>设备功能模型
 
@@ -108,11 +106,11 @@ DCM 定义设备与 IoT Central 应用程序交互的方式。 设备开发人�
 
 有一些可选字段可用于向功能模型中添加更多详细信息，例如显示名称和说明。
 
-### <a name="interface"></a>接口
+## <a name="interfaces"></a>接口
 
 DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描述设备的一部分实现的属性、遥测和命令：
 
-- `Properties`. 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 你可以将属性声明为只读或可写。
+- `Properties`. 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 你可以将属性声明为只读或可写。 只有设备可以更新只读属性的值。 操作员可以设置要发送到设备的可写属性的值。
 - `Telemetry`. 遥测字段表示传感器的度量。 如果设备采用传感器度量，应发送包含传感器数据的遥测事件。
 - `Commands`. 命令表示设备的用户可以在设备上执行的方法。 例如，使用 reset 命令或命令来打开或关闭风扇。
 
@@ -159,7 +157,7 @@ DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描�
 }
 ```
 
-此示例显示了两个属性：一个遥测类型和两个命令。 最小字段说明具有：
+此示例显示了两个属性 (一个只读和一个可写) 、一个遥测类型和两个命令。 最小字段说明具有：
 
 - `@type` 指定功能类型： `Telemetry` 、 `Property` 或 `Command` 。  在某些情况下，该类型包括一个语义类型，以使 IoT Central 可以做出有关如何处理该值的一些假设。
 - `name` 对于遥测值。
@@ -168,7 +166,7 @@ DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描�
 
 可选字段（如显示名称和说明）使你可以向界面和功能添加更多详细信息。
 
-### <a name="properties"></a>属性
+## <a name="properties"></a>属性
 
 默认情况下，属性是只读的。 只读属性意味着设备将属性值更新报告给你的 IoT Central 应用程序。 IoT Central 应用程序无法设置只读属性的值。
 
@@ -180,13 +178,13 @@ DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描�
 
 对于可写属性，设备应用程序会返回所需状态状态代码、版本和说明，以指示是否已收到并应用属性值。
 
-### <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测
 
 IoT Central 允许你查看仪表板和图表上的遥测，并使用规则在达到阈值时触发操作。 IoT Central 使用 DCM 中的信息（如数据类型、单位和显示名称）来确定如何显示遥测值。
 
 你可以使用 IoT Central 数据导出功能将遥测流式传输到其他目标（例如存储或事件中心）。
 
-### <a name="commands"></a>命令
+## <a name="commands"></a>命令
 
 命令为同步或异步。 默认情况下，必须在30秒内执行同步命令，并且在命令到达时必须连接设备。 如果设备有时间响应或设备未连接，则该命令将失败。
 

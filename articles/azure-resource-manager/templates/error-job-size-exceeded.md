@@ -2,13 +2,13 @@
 title: 作业大小超出错误
 description: 描述如何在作业大小或模板过大时排查错误。
 ms.topic: troubleshooting
-ms.date: 09/25/2020
-ms.openlocfilehash: 06645561964d9634d93061b3be4d100a578cc7e7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/07/2020
+ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373085"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812890"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>解决超出作业大小的错误
 
@@ -38,6 +38,10 @@ ms.locfileid: "91373085"
 
 你可以将其他资源设置为依赖于链接的模板，并 [从链接模板的输出中获取值](linked-templates.md#get-values-from-linked-template)。
 
-## <a name="solution-2---use-serial-copy"></a>解决方案 2-使用串行复制
+## <a name="solution-2---reduce-name-size"></a>解决方案 2-缩减名称大小
+
+请尝试缩短用于 [参数](template-parameters.md)、 [变量](template-variables.md)和 [输出](template-outputs.md)的名称的长度。 如果通过复制循环重复这些值，则会将较大的名称相乘。 模板的最终大小不太大。
+
+## <a name="solution-3---use-serial-copy"></a>解决方案 3-使用串行复制
 
 第二种方法是将复制循环从 [并行更改为串行处理](copy-resources.md#serial-or-parallel)。 仅当怀疑错误来自通过复制部署大量资源时，才使用此选项。 此更改可能会显著增加部署时间，因为不会并行部署资源。
