@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
 ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89299144"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>快速入门：使用 ARM 模板创建流量管理器配置文件
@@ -43,7 +43,7 @@ ms.locfileid: "89299144"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure。 
+1. 从以下代码块中选择“试用”，以打开 Azure Cloud Shell，然后按照相关说明登录到 Azure****。 
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -60,9 +60,9 @@ ms.locfileid: "89299144"
 
     等到控制台中显示提示。
 
-1. 从上一个代码块中选择“复制”，以复制 PowerShell 脚本。
+1. 从上一个代码块中选择“复制”****，以复制 PowerShell 脚本。
 
-1. 右键单击 shell 控制台窗格，然后选择“粘贴”。
+1. 右键单击 shell 控制台窗格，然后选择“粘贴”****。
 
 1. 输入相应的值。
 

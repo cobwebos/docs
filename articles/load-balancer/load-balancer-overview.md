@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
 ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89299195"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
