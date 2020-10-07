@@ -6,18 +6,18 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: e7005a3786bb2d538450b076c113e159c766d72e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642072"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801471"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何监视 Azure Cosmos 容器或帐户的规范化 RU/秒
 
 适用于 Azure Cosmos DB 的 Azure Monitor 提供了用来监视帐户和创建仪表板的指标视图。 Azure Cosmos DB 指标是默认收集的，此功能不需要你显式启用或配置任何项。
 
-**规范化 RU 消耗**指标用于查看分区键范围相对于流量的饱和程度。 Azure Cosmos DB 在所有分区键范围内平均分配吞吐量。 此指标提供分区键范围的最大吞吐量使用率的每秒视图。 使用此度量值可以计算给定容器的分区键范围内的 RU/秒使用量。 使用此度量值时，如果在 Azure monitor 中的所有分区键范围内看到的请求单位利用率很高，则应增加吞吐量以满足工作负荷的需求。 
+**规范化 RU 消耗**指标用于查看分区键范围相对于流量的饱和程度。 Azure Cosmos DB 在所有分区键范围内平均分配吞吐量。 此指标提供分区键范围的最大吞吐量使用率的每秒视图。 使用此度量值可以计算给定容器的分区键范围内的 RU/秒使用量。 使用此度量值时，如果在 Azure monitor 中的所有分区键范围内看到的请求单位利用率很高，则应增加吞吐量以满足工作负荷的需求。 示例-标准化利用率定义为所有分区键范围内的 RU/s 利用率的最大值。 例如，假设最大吞吐量为 20000 RU/s，并且有两个分区键范围（P_1 和 P_2），每个分区键都可以缩放到 10000 RU/秒。 在给定的秒数内，如果 P_1 已使用 6000 RU，而 P_2 已使用 8000 RU，则标准化利用率为 MAX(6000 RU / 10,000 RU, 8000 RU / 10,000 RU) = 0.8。
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>规范化 RU/秒较高时会发生的事情和应该做的事情
 
@@ -43,13 +43,13 @@ Azure Monitor 指标通过使用 **Total Requests** 指标帮助你查找 SQL AP
 
 3. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="选择一个 Azure Cosmos 帐户来查看指标":::
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Azure Monitor 中的“指标”窗格":::
 
 4. 接下来，可以从可用指标列表中选择一个指标。 可以选择特定于请求单位、存储、延迟、可用性、Cassandra 和其他方面的指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别列出的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，我们选择“规范化 RU 消耗”指标，并选择“最大值”作为聚合值。
 
    除了这些详细信息之外，还可以选择指标的时间范围和时间粒度。 可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="从 Azure 门户中选择一个指标":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure Monitor 中的“指标”窗格":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>针对规范化请求单位消耗的筛选器
 
@@ -59,7 +59,7 @@ Azure Monitor 指标通过使用 **Total Requests** 指标帮助你查找 SQL AP
 
 将会显示每个容器的规范化请求单位消耗指标，如下图所示：
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="对规范化请求单位消耗指标应用筛选器":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Azure Monitor 中的“指标”窗格":::
 
 ## <a name="next-steps"></a>后续步骤
 

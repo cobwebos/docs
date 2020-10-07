@@ -4,17 +4,17 @@ description: 了解如何从存储分析指标（经典指标）转换到 Azure 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708571"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802831"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>转换到 Azure Monitor 中的指标
 
@@ -46,6 +46,8 @@ ms.locfileid: "91708571"
 本部分介绍这两个指标平台之间的一些关键差别。
 
 主要差别在于如何管理指标。 经典指标由 Azure 存储管理，而 Azure Monitor 中的指标由 Azure Monitor 管理。 使用经典指标，Azure 存储会收集并聚合指标值，然后将它们存储到位于存储帐户中的表中。 通过 Azure Monitor 中的指标，Azure 存储发送指标数据到 Azure Monitor 后端。 Azure Monitor 对通过 Azure 门户和引入的数据获取的数据提供统一的监视体验。 
+
+经典指标会发送并存储在 Azure 存储帐户中。 Azure Monitor 度量值可以发送到多个位置。 一个存储帐户可以是这些位置中的一个，但不是必需的。  
 
 至于指标支持，经典指标仅为 Azure Blob 存储提供容量指标。 Azure Monitor 中的指标提供 Blob、表、文件、队列和高级存储的容量指标。 经典指标提供 Blob、表、Azure 文件和队列存储上的事务指标。 Azure Monitor 中的指标向该列表添加高级存储。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235717"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801794"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -169,22 +169,42 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)中记录了用户预配服务运行的所有操作。 该日志包括对源系统和目标系统执行的所有读写操作，以及在每次操作期间读取或写入的用户数据。 若要了解如何在 Azure 门户中读取预配日志，请参阅[预配报告指南](./check-status-user-account-provisioning.md)。
 
 ## <a name="de-provisioning"></a>取消预配
+如果删除用户访问权限，则 Azure AD 预配服务会使源和目标系统保持同步，方法是取消预配帐户。
 
-当用户不应该再拥有访问权限时，Azure AD 预配服务通过取消预配帐户来使源系统和目标系统保持同步。 
+预配服务支持删除和禁用 (有时称为软删除) 用户。 根据目标应用的实现，"禁用" 和 "删除" 的确切定义会有所不同，但通常禁用指示用户无法登录。 删除指示已完全从应用程序中删除用户。 对于 SCIM 应用程序，禁用是将用户的 *活动* 属性设置为 false 的请求。 
 
-当应用程序支持软删除时，Azure AD 预配服务会软删除应用程序中的用户， (update 请求中包含 active = false) 并发生以下任何事件：
+**配置应用程序以禁用用户**
 
-* 已在 Azure AD 中删除用户帐户
-*   从应用程序中取消分配用户
-*   用户不再符合范围筛选器并超出范围
-    * 默认情况下，Azure AD 预配服务软删除或禁用超出范围的用户。 如果要重写此默认行为，可以将标志设置为[跳过范围外删除](../app-provisioning/skip-out-of-scope-deletions.md)。
-*   AccountEnabled 属性设置为 False
+确保已选中 "更新" 复选框。
 
-如果发生上述四个事件之一，并且目标应用程序不支持软删除，则预配服务将发送 DELETE 请求，以从应用中永久删除该用户。 
+确保你具有应用程序的 *活动* 映射。 如果你使用应用程序库中的应用程序，映射可能会略有不同。 请确保对库应用程序使用默认的/出盒映射。
 
-在 Azure AD 中删除用户 30 天后，他们将从租户中永久删除。 此时，设置服务将发送 DELETE 请求以永久删除应用程序中的用户。 在 30 天窗口期中的任何时候，你都可以[手动永久删除用户](../fundamentals/active-directory-users-restore.md)，这将向应用程序发送一个删除请求。
 
-如果在属性映射中看到属性 IsSoftDeleted，则该属性用于确定用户的状态以及是否发送 active = false 的更新请求以软删除用户。 
+**配置应用程序以删除用户**
+
+以下方案将触发 "禁用" 或 "删除"： 
+* 将用户软删除 Azure AD (发送到 "回收站"/"AccountEnabled" 属性设置为 "false) "。
+    在 Azure AD 中删除用户 30 天后，他们将从租户中永久删除。 此时，设置服务将发送 DELETE 请求以永久删除应用程序中的用户。 在30天内的任何时间，你都可以 [手动删除用户](../fundamentals/active-directory-users-restore.md)，这会向应用程序发送删除请求。
+* 将从 Azure AD 中的 "回收站" 中永久删除/删除用户。
+* 用户未从应用中取消分配。
+* 用户从范围内进入范围外 (不会再) 传递范围筛选器。
+    
+默认情况下，Azure AD 预配服务软删除或禁用超出范围的用户。 如果要重写此默认行为，可以设置一个标志来 [跳过超出范围的删除操作。](skip-out-of-scope-deletions.md)
+
+如果发生上述四个事件之一，并且目标应用程序不支持软删除，则预配服务将发送 DELETE 请求，以从应用中永久删除该用户。
+
+如果在属性映射中看到属性 IsSoftDeleted，则该属性用于确定用户的状态以及是否发送 active = false 的更新请求以软删除用户。
+
+**已知的限制**
+
+* 如果先前由预配服务管理的用户未从应用中分配或从分配到应用的组中取消分配，我们将发送禁用请求。 此时，该用户不受服务管理，将不会在从目录中删除时发送删除请求。
+* 不支持在 Azure AD 中预配已禁用的用户。 它们必须在设置之前处于 Azure AD 状态。
+* 当用户从软删除变为活动状态时，Azure AD 预配服务将在目标应用中激活该用户，但不会自动还原组成员身份。 目标应用程序应维护处于非活动状态的用户的组成员身份。 如果目标应用程序不支持此功能，则可以重新启动预配以更新组成员身份。 
+
+建议
+
+开发应用程序时，始终支持软删除和硬删除。 它允许客户在意外禁用用户时进行恢复。
+
 
 ## <a name="next-steps"></a>后续步骤
 

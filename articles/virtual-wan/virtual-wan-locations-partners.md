@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: e8dcb188dc5aad59738e3eab4169bf9dbd3679ec
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449353"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801454"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -58,7 +58,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 |合作伙伴|配置/操作方法/部署指南|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN 部署指南](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco 云服务路由器 (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| 若要将 Cisco 云服务 (CSR) WAN 部署到虚拟中心，请将邮件发送到 vwan_public_preview@cisco.com |
+|[Cisco 云服务路由器 (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| 在公共预览版的 Cisco 云服务 (CSR) WAN 集成到 VWAN 中心时，Cisco 要求最终客户通过向发送电子邮件 vwan_public_preview@external.cisco.com 并请求 VManage 部署指南，将其注册为 CISCO EFT (早于现场试用) 客户。 |
 
 在不久的将来，我们会将以下合作伙伴预定给虚拟中心的 NVA： Citrix，反之亦然。
 

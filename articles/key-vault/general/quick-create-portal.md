@@ -6,17 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: general
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c6be9e287657b92d51e3f6f8013757655e7b8256
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1c780d1eb9535343373701e6dfe4899a9cba366
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100682"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803897"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建密钥保管库
 
@@ -38,13 +38,13 @@ Azure Key Vault 是一项云服务，它为[密钥](../keys/index.yml)、[机密
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息：
+5. 在“创建密钥保管库”部分，提供以下信息： 
     - **Name**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
     - **订阅**：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”。
+6. 提供上述信息后，选择“创建”  。
 
 请记下下面列出的两个属性：
 

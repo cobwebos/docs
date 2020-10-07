@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561867"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802287"
 ---
 # <a name="graphics-binding"></a>图形绑定
 
@@ -120,7 +120,10 @@ if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 
 #### <a name="render-remote-image"></a>渲染远程图像
 
-每个帧开始时，需要将远程帧渲染到后台缓冲区中。 可通过调用 `BlitRemoteFrame` 来完成此操作，这会将颜色和深度信息填充到当前绑定的渲染目标。 因此，需要在将后台缓冲区绑定为渲染目标后完成此操作。
+在每个帧开始时，需要将远程帧呈现到后台缓冲区。 这是通过调用来完成的 `BlitRemoteFrame` ，这会将这两种眼睛的颜色和深度信息都填充到当前绑定的呈现器目标。 因此，在将完整后台缓冲区绑定为呈现器目标后，这一点很重要。
+
+> [!WARNING]
+> 远程映像被 array.blit 到后台缓冲区中后，应使用单通道立体声呈现技术呈现本地内容，例如，使用 **SV_RenderTargetArrayIndex**。 使用其他立体声呈现技术（例如，在单独的刀路中呈现每个眼睛）可能会导致严重的性能下降或图形项目，应避免使用。
 
 ```cs
 AzureSession currentSession = ...;

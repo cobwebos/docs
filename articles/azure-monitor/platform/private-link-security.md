@@ -4,20 +4,16 @@ description: 使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570419"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802219"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
-
-> [!IMPORTANT]
-> 目前，必须请求访问权限才能使用此功能。 可使用[注册表单](https://aka.ms/AzMonPrivateLinkSignup)申请访问权限。
-
 
 通过 [Azure 专用链接](../../private-link/private-link-overview.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。 对于很多服务，一个资源只需设置一个终结点即可。 不过，Azure Monitor 是不同互连服务的集合，它们相互协同，共同监视你的工作负载。 因此，我们构建了一个名为 Azure Monitor 专用链接范围 (AMPLS) 的资源，你可用它来定义你的监视网络的边界并连接到你的虚拟网络。 本文介绍何时使用以及如何设置 Azure Monitor 专用链接范围。
 

@@ -1,14 +1,16 @@
 ---
 title: 快速入门：创建、训练和发布知识库 - QnA Maker
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1646666244eb2247d6e7127c4d4e8d39cb0af5ff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535843"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777683"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
@@ -64,7 +66,7 @@ ms.locfileid: "89535843"
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="添加文本格式的问题和 markdown 格式的答案。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="选择 QnA Maker 服务知识库的屏幕截图":::
 
     markdown 符号 `*` 用于项目符号点。 `\n` 用于新行。
 
@@ -81,7 +83,7 @@ ms.locfileid: "89535843"
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="在文本框中输入示例用户查询。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="选择 QnA Maker 服务知识库的屏幕截图":::
 
 1. 选择“检查”，更详细地检查响应。**** 测试窗口用于测试对知识库所做的更改，然后会发布知识库。
 
@@ -131,7 +133,7 @@ ms.locfileid: "89535843"
 
     聊天机器人使用知识库中的一个答案进行响应。
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="将用户查询输入测试性 Web 聊天中。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="选择 QnA Maker 服务知识库的屏幕截图":::
 
 ## <a name="what-did-you-accomplish"></a>你完成了哪些操作？
 

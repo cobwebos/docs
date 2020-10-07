@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6220cfb5649995e54338f245b4cb62511b89a2c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: a4cc6a08ab0725f8fa3ceb745b933153842075a6
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004691"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803171"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>在 Azure 自动化中管理证书
 
@@ -84,8 +84,7 @@ New-AzAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $
 下面的示例演示如何通过 PowerShell 使用资源管理器模板将证书部署到自动化帐户：
 
 ```powershell-interactive
-$AutomationAccountName = "<automation account name>"
-$PfxCertPath = '<PFX cert path'
+$PfxCertPath = '<PFX cert path>'
 $CertificatePassword = '<password>'
 $certificateName = '<certificate name>'
 $AutomationAccountName = '<automation account name>'
@@ -138,7 +137,7 @@ $certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-example"></a>图形 runbook 示例
+### <a name="graphical-runbook-example"></a>图形 Runbook 示例
 
 通过在“库”窗格中右键单击证书并选择“添加到画布”，可以将内部 `Get-AutomationCertificate` cmdlet 的活动添加到图形 runbook。
 
@@ -162,6 +161,6 @@ print cert
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解用于访问证书的 cmdlet，请参阅[在 Azure 自动化中管理模块](modules.md)。
+* 若要了解有关用于访问凭据的 cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 * 有关 Runbook 的常规信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
 * 有关 DSC 配置的详细信息，请参阅 [Azure 自动化状态配置概述](../automation-dsc-overview.md)。

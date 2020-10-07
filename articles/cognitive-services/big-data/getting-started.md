@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 7f4849c75b36b1663416ad1a97e3264fabcdaa67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201739"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776606"
 ---
 # <a name="getting-started"></a>入门
 
@@ -60,7 +60,7 @@ Azure Databricks 是一种基于 Apache Spark 的分析平台，其中包含一�
 1. 安装大数据认知服务
     * 在 Databricks 工作区中创建新库  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
-    * 输入以下 maven 坐标的坐标值：`com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc1` 存储库：`https://mmlspark.azureedge.net/maven`  
+    * 输入以下 maven 坐标的坐标值：`com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc3` 存储库：`https://mmlspark.azureedge.net/maven`  
       <img src="media/library-coordinates.png" alt="Library Coordinates" width="50%"/>
     * 将库安装到群集上  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>

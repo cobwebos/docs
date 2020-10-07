@@ -5,20 +5,20 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
-ms.openlocfilehash: ac47a2922e92233f0acabf75817a712671306bc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 180af30f57a8123b6e90cc8b11848b92b3c86db1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681202"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802168"
 ---
 # <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>在 Unity 中使用全息远程处理和远程渲染
 
-[全息远程处理](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player)和 Azure 远程呈现在一个应用程序中互相排斥。 同样，也无法使用[Unity 播放模式](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode)。
+[全息远程处理](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) 和 Azure 远程呈现在一个应用程序中互相排斥。 同样，也无法使用 [Unity 播放模式](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) 。
 
 对于每次运行 Unity 编辑器，只能使用其中一种。 若要使用其他帐户，请先重新启动 Unity。
 
-## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>使用 Unity 播放模式在 Hololens 2 上预览
+## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>使用 Unity 播放模式在 HoloLens 2 上预览
 
  仍可使用 Unity 播放模式，例如，用于测试应用程序的 UI。 不过，这一点非常重要。 否则，会发生崩溃。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549974"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801412"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的诊断设置监视 Azure Cosmos DB 数据
 
@@ -71,7 +71,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
 有关如何使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细信息，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)一文。
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>诊断查询问题疑难解答
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> 诊断查询问题疑难解答
 
 1. 如何查询运行时间超过 3 毫秒的操作：
 
@@ -99,12 +99,12 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    | render timechart
    ```
     
-1. 如何获取分区键统计信息，以评估数据库帐户最大的三个分区之间的偏差：
+1. 如何获取分区键统计信息，以便评估数据库帐户的前3个分区之间的偏差：
 
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. 如何获取高开销查询的请求开销？
@@ -214,14 +214,6 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. 如何获取分区键统计信息，以评估数据库帐户的最大三个分区之间的偏差？
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. 如何获取操作的 P99 或 P50 复制延迟、请求费用或响应时间？
 
    ```Kusto
@@ -238,7 +230,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
  
 1. 如何获取 Controlplane 日志？
  
-   切记按照[禁用基于键的元数据写访问权限](audit-control-plane-logs.md#disable-key-based-metadata-write-access)一文中所述打开标志，并通过 Azure PowerShell、CLI 或 ARM 执行操作。
+   请记得按照 [禁用基于密钥的元数据写入访问权限](audit-control-plane-logs.md#disable-key-based-metadata-write-access) 一文中所述来切换标志，并使用 Azure PowerShell、Azure CLI 或 Azure 资源管理器执行操作。
  
    ```Kusto  
    AzureDiagnostics 
