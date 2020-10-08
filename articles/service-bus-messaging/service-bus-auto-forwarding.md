@@ -4,12 +4,12 @@ description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333675"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819570"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
@@ -53,6 +53,8 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 若要创建链接到另一个队列或主题的订阅，则订阅创建者必须具有源和目标实体的**管理**权限。 将消息发送到源主题仅需要源主题的**发送**权限。
 
+请勿创建超过4个跃点的链。 超过4个跃点的消息将死信。
+
 ## <a name="next-steps"></a>后续步骤
 
 有关自动转发的详细信息，请参阅以下参考主题：
@@ -63,7 +65,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 若要深入了解服务总线性能提升，请参阅 
 
-* [使用服务总线消息传送改进性能的最佳做法](service-bus-performance-improvements.md)
+* [使用服务总线消息传递改进性能的最佳实践](service-bus-performance-improvements.md)
 * [分区消息实体][Partitioned messaging entities]。
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

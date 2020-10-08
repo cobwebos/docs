@@ -5,24 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439471"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819754"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 身份验证：配置用于 P2S OpenVPN 协议连接的 VPN 客户端
 
 本文帮助你配置 VPN 客户端，以使用点到站点 VPN 和 Azure Active Directory 身份验证连接到虚拟网络。 在使用 Azure AD 进行连接和身份验证之前，必须先配置 Azure AD 租户。 有关详细信息，请参阅[配置 Azure AD 租户](openvpn-azure-ad-tenant.md)。
 
-> [!NOTE]
-> Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
->
-> Azure AD authentication 需要 Azure VPN 客户端，该客户端仅适用于 Windows 10。
->
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>使用客户端配置文件
 
@@ -194,7 +190,7 @@ ms.locfileid: "91439471"
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表 (NRPT) 条目，这意味着不会在 `ipconfig /all` 的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请使用 PowerShell 中的 [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps)。
+> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表 (NRPT) 条目，这意味着不会在 `ipconfig /all` 的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请使用 PowerShell 中的 [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true)。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？

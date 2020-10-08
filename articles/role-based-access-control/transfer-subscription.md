@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804174"
+ms.locfileid: "91819704"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到不同的 Azure AD 目录
 
@@ -24,7 +24,7 @@ ms.locfileid: "91804174"
 本文介绍将订阅转移到其他 Azure AD 目录并在转移后重新创建一些资源时可以遵循的基本步骤。
 
 > [!NOTE]
-> 对于 Azure 云服务提供商 (CSP) 订阅，不支持更改订阅的 Azure AD 目录。
+> 对于 Azure 云解决方案提供程序 (CSP) 订阅，不支持更改订阅的 Azure AD 目录。
 
 ## <a name="overview"></a>概述
 

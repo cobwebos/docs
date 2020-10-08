@@ -13,12 +13,12 @@ ms.date: 09/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: a9bf992a65914afb8fa800041b57ad9f44ba4fa0
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595611"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819436"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 标识平台中可配置的令牌生存期 (预览) 
 
@@ -90,14 +90,14 @@ Microsoft 标识平台使用两种 SSO 会话令牌：持久性和非持久性�
 | 访问令牌生存期 |AccessTokenLifetime<sup>2</sup> |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
 | 单因素刷新令牌最大期限 |MaxAgeSingleFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
-| 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） | 180 天 |10 分钟 |直到吊销<sup>1</sup> |
+| 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） | 180 天 |10 分钟 |180 天<sup>1</sup> |
 | 单因素会话令牌最大期限 |MaxAgeSessionSingleFactor |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
-| 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor |会话令牌（持久性和非持久性） | 180 天 |10 分钟 |直到吊销<sup>1</sup> |
+| 多因素会话令牌最大期限 |MaxAgeSessionMultiFactor |会话令牌（持久性和非持久性） | 180 天 |10 分钟 | 180 天<sup>1</sup> |
 
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
 * <sup>2</sup>若要确保 Microsoft 团队 Web 客户端工作，建议将 AccessTokenLifetime 保留为大于15分钟的 Microsoft 团队。
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 | properties | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |

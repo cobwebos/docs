@@ -1,15 +1,15 @@
 ---
 title: Azure 应用服务的内置策略定义
 description: 列出 Azure 应用服务的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 43235d839a0074609675596d9147bfc325944436
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8502d40a5402f45a60757d9585c0a2764e20b70c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968517"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819195"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-service"></a>Azure 应用服务的 Azure Policy 内置定义
 

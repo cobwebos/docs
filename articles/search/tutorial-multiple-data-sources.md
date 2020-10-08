@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998452"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819797"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教程：使用 .NET SDK 从多个数据源编制索引
 
@@ -61,19 +61,19 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 1. 依次选择“数据资源管理器”、“新建数据库”。  
 
-   ![创建新数据库](media/tutorial-multiple-data-sources/cosmos-newdb.png "新建数据库")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="创建新数据库" border="false":::
 
 1. 输入名称 **hotel-rooms-db**。 对于剩余的设置，请接受默认值。
 
-   ![配置数据库](media/tutorial-multiple-data-sources/cosmos-dbname.png "配置数据库")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="创建新数据库" border="false":::
 
 1. 创建新容器。 使用刚刚创建的现有数据库。 输入**hotels** 作为容器名称，输入 **/HotelId** 作为分区键。
 
-   ![添加容器](media/tutorial-multiple-data-sources/cosmos-add-container.png "添加容器")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="创建新数据库" border="false":::
 
 1. 选择“hotels”下的“项”，然后单击命令栏上的“上传项”。    导航到项目文件夹中的 **cosmosdb/HotelsDataSubset_CosmosDb.json** 文件并将其选中。
 
-   ![上传到 Azure Cosmos DB 集合](media/tutorial-multiple-data-sources/cosmos-upload.png "上传到 Cosmos DB 集合")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="创建新数据库" border="false":::
 
 1. 使用“刷新”按钮来刷新酒店集合中的项的视图。 此时应会列出七个新数据库文档。
 
@@ -83,11 +83,11 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 1. [创建 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)，名为“hotel-rooms”  ，用于存储示例酒店房间 JSON 文件。 可将“公共访问级别”设为任何有效值。
 
-   ![创建一个 blob 容器](media/tutorial-multiple-data-sources/blob-add-container.png "创建 Blob 容器")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="创建新数据库" border="false":::
 
 1. 创建容器后，将其打开，然后在命令栏中选择“上传”  。 导航到包含示例文件的文件夹。 选择所有这些文件，然后单击“上传”  。
 
-   ![上传文件](media/tutorial-multiple-data-sources/blob-upload.png "上传文件")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="创建新数据库" border="false":::
 
 上传完成后，这些文件应会显示在数据容器的列表中。
 
@@ -105,7 +105,7 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
-   ![获取服务名称以及管理密钥和查询密钥](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="创建新数据库" border="false":::
 
 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -115,7 +115,7 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 1. 在“浏览”选项卡中，  找到并安装 **Microsoft.Azure.Search**（9.0.1 或更高版本）。 需要再单击几个对话框来完成安装。
 
-    ![使用 NuGet 添加 Azure 库](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="创建新数据库" border="false":::
 
 1. 搜索 **Microsoft.Extensions.Configuration.Json** NuGet 包并安装它。
 
@@ -352,7 +352,7 @@ Blob 存储索引器可使用能标识要使用的分析模式的参数。 该�
 
 在 Azure 门户中，打开搜索服务的“概述”页，在“索引”列表中找到“hotel-rooms-sample”索引    。
 
-  ![Azure 认知搜索索引列表](media/tutorial-multiple-data-sources/index-list.png "Azure 认知搜索索引列表")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="创建新数据库" border="false":::
 
 单击列表中的 hotel-rooms-sample 索引。 随即会显示索引的“搜索资源管理器”界面。 输入一个词（如“奢华”）进行查询。 得到的结果中至少会显示一个文档，此文档的房间数组中会显示一系列房间对象。
 

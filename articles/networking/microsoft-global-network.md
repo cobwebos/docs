@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398383"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819892"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
 
-Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复杂的体系结构（跨越超过160000英里）连接我们的数据中心和客户。 
+Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复杂的体系结构（跨越超过165000英里）连接我们的数据中心和客户。 
  
 每天，世界各地的客户连接并将数万亿个请求传递到 Microsoft Azure、Bing、Dynamics 365、Microsoft 365、XBox 等。 无论类型如何，客户都希望能够从我们的服务获得即时的可靠性和响应能力。 
  
-[Microsoft 全球网络](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) 是提供出色的云体验的核心。 将我们的 Microsoft [数据中心](https://azure.microsoft.com/global-infrastructure/) 连接到54个 Azure 区域和在世界各地的大型边缘节点，我们的全球网络提供了可用性、容量和灵活性，可满足任何需求。
+[Microsoft 全球网络](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) 是提供出色的云体验的核心。 将我们的 Microsoft [数据中心](https://azure.microsoft.com/global-infrastructure/) 连接到61个 Azure 区域和在世界各地的大型边缘节点，我们的全球网络提供了可用性、容量和灵活性，可满足任何需求。
 
 ![Microsoft 全球网络](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>获取高级云网络
  
-使用 Microsoft 云时，可以轻松选择 [最佳体验](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) 。 从客户流量进入全球网络到战略放置的边缘节点的那一刻，你的数据将在接近光线速度的情况下通过优化的路由传输。 这可确保最佳的延迟，以获得最佳性能。 这些边缘节点（所有连接到3500个唯一 Internet 伙伴 (对等互连）) 到超过165个位置上的数千个连接，因此提供了互连策略的基础。 
+使用 Microsoft 云时，可以轻松选择 [最佳体验](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) 。 从客户流量进入全球网络到战略放置的边缘节点的那一刻，你的数据将在接近光线速度的情况下通过优化的路由传输。 这可确保最佳的延迟，以获得最佳性能。 这些边缘节点（所有连接到4000个唯一 Internet 伙伴 (对等互连）) 到超过175个位置上的数千个连接，因此提供了互连策略的基础。 
  
 无论是从伦敦连接到东京还是从华盛顿特区连接到洛杉矶，网络性能都可以量化，并受诸如延迟、抖动、数据包丢失和吞吐量等因素的影响。  在 Microsoft，我们首选并使用直接互连，而不是传输链接，这会使响应流量保持对称，并有助于使跃点、对等方和路径尽可能简短且简单。 
 

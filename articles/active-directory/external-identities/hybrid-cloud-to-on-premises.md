@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908262"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819380"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -28,7 +28,7 @@ ms.locfileid: "87908262"
 
 必须执行以下两个操作：
 
-- 按照[配置基于 saml 的单一登录](../manage-apps/configure-saml-single-sign-on.md)中所述，使用 SAML 来集成应用。 请务必记下所用的“登录 URL”值。****
+- 按照 [配置基于 saml 的单一登录](../manage-apps/configure-saml-single-sign-on.md)中所述，使用 SAML 来集成应用。 请务必记下所用的“登录 URL”值。****
 -  在将 **Azure Active Directory** 配置为身份验证源的情况下，使用 Azure AD 应用程序代理发布本地应用。 有关说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](../manage-apps/application-proxy-publish-azure-portal.md)。 
 
    配置“内部 URL”设置时，请使用非库应用程序模板中指定的登录 URL。**** 这样，用户便可以从组织边界以外访问该应用。 应用程序代理对本地应用执行 SAML 单一登录。
@@ -41,6 +41,9 @@ ms.locfileid: "87908262"
 
 - **通过 Azure AD 应用程序代理的身份验证**。 B2B 用户必须能够在本地应用程序中进行身份验证。 为此，必须通过 Azure AD 应用程序代理发布本地应用。 有关详细信息，请参阅[开始使用应用程序代理并安装连接器](../manage-apps/application-proxy-enable.md)和[使用 Azure AD 应用程序代理发布应用程序](../manage-apps/application-proxy-publish-azure-portal.md)。
 - **通过本地目录中的 B2B 用户对象授权**。 应用程序必须能够执行用户访问权限检查，并授予对正确资源的访问权限。 IWA 和 KCD 要求本地 Windows Server Active Directory 中有一个用户对象才能完成此授权。 根据 [KCD 的单一登录工作原理](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)中所述，应用程序代理需要使用此用户对象来模拟用户并获取应用程序的 Kerberos 令牌。 
+
+   > [!NOTE]
+   > 配置 Azure AD 应用程序代理时，请确保将 " **委派的登录标识** " 设置为 "IWA 单一登录 (默认) 的 **用户主体名称** "。
 
    对于 B2B 用户方案，可以使用两种方法在本地目录中创建授权所需的来宾用户对象：
 
@@ -61,10 +64,10 @@ ms.locfileid: "87908262"
 
 ### <a name="lifecycle-management-policies"></a>生命周期管理策略
 
-可以通过生命周期管理策略管理本地 B2B 用户对象。 例如：
+可以通过生命周期管理策略管理本地 B2B 用户对象。 例如： 。
 
 - 可以针对来宾用户设置多重身份验证 (MFA) 策略，以便在应用程序代理身份验证期间使用 MFA。 有关详细信息，请参阅 [B2B 协作用户的条件访问](conditional-access.md)。
-- 针对云 B2B 用户执行的任何赞助、访问评审、帐户验证等操作将应用到本地用户。 例如，如果通过生命周期管理策略删除了云用户，则也可以通过 MIM 同步或 Azure AD Connect 同步删除本地用户。有关详细信息，请参阅[使用 Azure AD 访问评审管理来宾访问权限](../governance/manage-guest-access-with-access-reviews.md)。
+- 针对云 B2B 用户执行的任何赞助、访问评审、帐户验证等操作将应用到本地用户。 例如，如果通过生命周期管理策略删除了云用户，则也可以通过 MIM 同步或 Azure AD Connect 同步删除本地用户。有关详细信息，请参阅 [使用 Azure AD 访问评审管理来宾访问权限](../governance/manage-guest-access-with-access-reviews.md)。
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>通过 MIM 创建 B2B 来宾用户对象
 

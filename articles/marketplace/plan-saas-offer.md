@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708112"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819931"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
 
@@ -130,7 +130,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 总结
+8. 摘要
 9. 说明
 10. 屏幕截图/视频
 11. 文档
@@ -141,7 +141,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 
 **调出说明**
 
-1. Title
+1. 标题
 1. 说明
 1. 有用的链接
 1. 屏幕截图
@@ -158,11 +158,11 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
     此文本框包含丰富的文本编辑器控件，你可以使用这些控件来使说明更具吸引力。 你还可以使用 HTML 标记来设置说明格式。 在此框中最多可以输入3000个字符，包括 HTML 标记。 有关其他提示，请参阅[编写出色的应用说明](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)。
 
 - **入门说明**：如果你选择通过 Microsoft (事务产品/服务销售产品/服务) ，则此字段是必需的。 这些是帮助客户连接到 SaaS 产品/服务的说明。 最多可以添加3000个字符的文本，并链接到更详细的联机文档。
-- **搜索关键字** (可选) ：提供多达三个搜索关键字，客户可以使用这些关键字在 marketplace () 中查找你的产品/服务。 不需要包含产品/服务 **名称** 和 **说明**：文本自动包含在搜索中。
+- **搜索关键字** (可选) ：提供多达三个搜索关键字，客户可以使用这些关键字在在线商店中查找你的产品/服务。 不需要包含产品/服务 **名称** 和 **说明**：文本自动包含在搜索中。
 - **隐私策略链接**：你的公司隐私策略的 URL。 你必须提供有效的隐私策略，并负责确保你的应用符合隐私法律和法规。
 - **联系信息**：必须指定组织中的以下联系人：
   - **支持联系人**：提供客户打开票证时要使用的 Microsoft 合作伙伴的姓名、电话和电子邮件。 还必须包含支持网站的 URL。
-  - **工程联系**：提供姓名、电话和电子邮件，以便 Microsoft 在产品/服务出现问题时直接使用。 此联系信息未在 marketplace 中列出。
+  - **工程联系**：提供姓名、电话和电子邮件，以便 Microsoft 在产品/服务出现问题时直接使用。 此联系信息未在商业应用商店中列出。
   - **Csp 计划联系人** (可选) ：如果你选择了 CSP 计划，请提供姓名、电话号码和电子邮件，以便这些合作伙伴可以与你联系，以解决任何问题。 你还可以将 URL 包含到营销材料。
 - **有用的链接** (可选) ：你可以为产品/服务的用户提供各种资源的链接。 例如，论坛、Faq 和发行说明。
 - **支持文档**：最多可以提供三个面向客户的文档，如白皮书、小册子、清单或 PowerPoint 演示文稿。
@@ -174,9 +174,9 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 
   这些徽标用于在线商店中的不同位置：
 
-  -  小徽标出现在 Azure Marketplace 搜索结果中，并出现在 &quot;Microsoft AppSource&quot; 主页和 &quot;搜索结果&quot; 页上。
-  -  在 Microsoft Azure 中创建新资源时，将显示 &quot;中" 徽标。
-  -  大徽标显示在 Azure Marketplace 中的产品/服务列表页上，并 Microsoft AppSource。
+  - 小徽标出现在 Azure Marketplace 搜索结果中，并出现在 &quot;Microsoft AppSource&quot; 主页和 &quot;搜索结果&quot; 页上。
+  - 在 Microsoft Azure 中创建新资源时，将显示 &quot;中" 徽标。
+  - 大徽标显示在 Azure Marketplace 中的产品/服务列表页上，并 Microsoft AppSource。
 
 - **媒体-屏幕截图**：必须至少添加一个最多5个屏幕截图，其中包含以下要求，其中显示了产品/服务的工作原理：
   - 1280 x 720 像素

@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: ca075414b234b65f15b82847a112104f6fbe3cc1
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 0398c035eeac7d02ac38f798cb58c513279fc709
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597887"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820007"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
@@ -311,8 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-          nodePublishSecretRef:
-              name: secrets-store-creds 
+        nodePublishSecretRef:
+          name: secrets-store-creds 
 ```
 
 运行以下命令来部署 Pod：
