@@ -1,18 +1,18 @@
 ---
 title: Azure 流分析的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 流分析的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 08192bc0e6ab0364d7b64c4b939a380dc3c51a08
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ef220271d1f8cb1e8a68a0ef48a5b28adbf0c3b7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979512"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823079"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-stream-analytics"></a>Azure 流分析的 Azure Policy 法规遵从性控制措施
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 的内置策略定义
 description: 列出 Azure Data Lake Storage Gen1 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: twooley
 ms.author: twooley
 ms.service: data-lake-store
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 9a0c4ade1628f224f4f62a06a53fd75a7cb8af64
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfdbe345fb87381f52a639e517c4024042675572
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984009"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824949"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 的 Azure Policy 内置定义
 

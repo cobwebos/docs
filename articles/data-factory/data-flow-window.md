@@ -1,5 +1,5 @@
 ---
-title: 映射数据流窗口转换
+title: 映射数据流中的窗口转换
 description: Azure 数据工厂映射数据流窗口转换
 author: kromerm
 ms.author: makromer
@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0231fc8919444558abcbc965ad127f7372eceb66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606229"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823596"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Azure 数据工厂窗口转换
+# <a name="window-transformation-in-mapping-data-flow"></a>映射数据流中的窗口转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -49,4 +49,4 @@ Over 子句的另一部分是设置 ```Order By```。 该操作将设置数据�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果正在查找简单的分组依据聚合，则使用[聚合转换](data-flow-aggregate.md)
+如果正在查找简单的分组依据聚合，则使用 [聚合转换](data-flow-aggregate.md)

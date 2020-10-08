@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530848"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824474"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为复杂数据类型建模
 
@@ -35,11 +35,13 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 以下 JSON 文档由简单字段和复杂字段构成。 复杂字段（例如 `Address` 和 `Rooms`）包含子字段。 `Address` 包含这些子字段的单个值集，因为它是文档中的单个对象。 相反，`Rooms` 包含其子字段的多个值集，集合中的每个对象各有一个值集。
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+<名称 = "索引复杂类型></a>
+
+## <a name="indexing-complex-types"></a>为复杂类型编制索引
+
+在编制索引期间，单个文档中的所有复杂集合最多可以有3000个元素。 复杂集合的某个元素是该集合的成员，因此，对于会议室 (宾馆示例中唯一的复杂集合) ，每个房间都是一个元素。 在上面的示例中，如果 "机密点 Motel" 有500个房间，旅馆记录将包含500个房间元素。 对于嵌套的复杂集合，还会计算每个嵌套元素，同时还会计算外部 (父) 元素的计数。
+
+此限制仅适用于复杂集合，而不是复杂类型 (如地址) 或字符串集合 (如标记) 。
 
 ## <a name="creating-complex-fields"></a>创建复杂字段
 
@@ -93,7 +104,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 ## <a name="updating-complex-fields"></a>更新复杂字段
 
-一般情况下，应用于字段的所有[重建索引规则](search-howto-reindex.md)仍会应用于复杂字段。 在此处重述一些主要规则以及添加字段并不需要重建索引，但大多数修改操作需要重建索引。
+一般情况下，应用于字段的所有[重建索引规则](search-howto-reindex.md)仍会应用于复杂字段。 在这里，重述几个主要规则，将字段添加到复杂类型不需要重新生成索引，但大多数修改都是如此。
 
 ### <a name="structural-updates-to-the-definition"></a>对定义的结构更新
 

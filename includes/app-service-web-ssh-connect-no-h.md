@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 060bc1039982cc0a77214d5dbe2a08de7a839c84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 458cd36a35ea37b2a317fe98fdeb5acc69a36ce8
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "67173429"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822814"
 ---
 若要通过容器打开直接的 SSH 会话，应用应该处于正在运行状态。
 
-将以下 URL 粘贴到浏览器中，将 \<app-name> 替换为应用名称：
+将以下 URL 粘贴到浏览器中，将 `<app-name>` 替换为应用名称：
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 42efc2bee88f073f2a628b1d2041afcc310cb871
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281253"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822975"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -30,11 +30,11 @@ ms.locfileid: "87281253"
 
 - **门户用户**：使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-- **PowerShell 用户**：运行[Azure Cloud Shell](https://shell.azure.com/powershell)中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 "Azure Cloud Shell 浏览器" 选项卡中，找到 "**选择环境**" 下拉列表，然后选择 " **PowerShell** " （如果尚未选择）。
+- **PowerShell 用户**：运行 [Azure Cloud Shell](https://shell.azure.com/powershell)中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 "Azure Cloud Shell 浏览器" 选项卡中，找到 " **选择环境** " 下拉列表，然后选择 " **PowerShell** " （如果尚未选择）。
 
     如果在本地运行 PowerShell，请使用 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 运行 `Connect-AzAccount`，创建与 Azure 的连接。
 
-- **Azure 命令行接口（CLI）用户**：运行[Azure Cloud Shell](https://shell.azure.com/bash)中的命令，或从计算机运行 CLI。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.28 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 运行 `az login`，创建与 Azure 的连接。
+- **Azure 命令行接口 (CLI) 用户**：在 [Azure Cloud Shell](https://shell.azure.com/bash)中运行命令，或从计算机运行 cli。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.28 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 运行 `az login`，创建与 Azure 的连接。
 
 用于登录或者用于连接 Azure 的帐户必须分配有[网络参与者角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)，或者分配有[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，并且该自定义角色分配有[权限](#permissions)中列出的相应操作。
 
@@ -59,7 +59,7 @@ ms.locfileid: "87281253"
     | **名称** | 输入在资源组中唯一的文本字符串。 |
     | **区域** | 选择所需的位置。 |
 
-4. 选择“查看 + 创建”。
+4. 选择“查看 + 创建”  。
 
 5. 看到“验证通过”消息后，选择“创建”。 
 
@@ -176,7 +176,7 @@ ms.locfileid: "87281253"
     | **操作** | “允许”或“拒绝”  | 此设置指定该规则是允许还是拒绝对提供的源和目标配置进行访问。 |
     | **Priority** | 一个介于 100 和 4096 之间的值，该值对于网络安全组中的所有安全规则都是唯一的 | Azure 按优先级顺序处理安全规则。 编号越低，优先级越高。 我们建议创建规则时在优先级数字之间留出空隙，例如 100、200 和 300。 留出空隙可便于在将来添加规则，使你可以为添加的规则分配比现有规则更高或更低的优先级。 |
     | **名称** | 规则在网络安全组中的唯一名称 | 名称最多可包含 80 个字符。 该名称必须以字母或数字开头，必须以字母、数字或下划线结尾。 名称只能包含字母、数字、下划线、句点和连字符。 |
-    | **说明** | 文本说明 | 可以选择性地指定安全规则的文本说明。 |
+    | **说明** | 文本说明 | 可以选择性地指定安全规则的文本说明。 说明的长度不能超过140个字符。 |
 
 #### <a name="commands"></a>命令
 
@@ -277,7 +277,7 @@ ms.locfileid: "87281253"
     | **名称** | 输入在资源组中唯一的文本字符串。 |
     | **区域** | 选择所需的位置。 |
 
-5. 选择“查看 + 创建”。
+5. 选择“查看 + 创建”  。
 
 6. 在“查看 + 创建”选项卡下，看到“验证通过”消息后，选择“创建”。  
 

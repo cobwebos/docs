@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891987"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822992"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>从 Azure 流分析 Power BI 输出
 
@@ -44,6 +44,9 @@ Azure 流分析会为用户创建一个 Power BI 数据集和表（如果不存�
 
 Power BI 使用先入先出 (FIFO) 保留策略。 数据将收集在表中，直到它达到 200,000 行。
 
+> [!NOTE]
+> 不建议使用多个输出写入同一数据集，因为这可能会导致多个问题。 每个输出尝试单独创建 Power BI 数据集，这可能会导致多个具有相同名称的数据集。 此外，如果输出没有一致的架构，则数据集会在每次写入时更改架构，从而导致架构更改请求过多。 即使避免这些问题，多个输出的性能也会低于单个合并输出。
+
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>将数据类型从流分析转换到 Power BI
 
 如果输出架构更改，Azure 流分析会在运行时动态更新数据模型。 列名称更改、列类型更改，以及添加或删除列，这些都会进行跟踪。
@@ -68,7 +71,7 @@ FLOAT | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | 字符串 | 字符串 | Double
 Double | Double | 字符串 | 字符串 | Double
-字符串 | 字符串 | 字符串 | 字符串 | 字符串 
+字符串 | String | String | String | 字符串 
 Datetime | 字符串 | 字符串 |  Datetime | 字符串
 
 ## <a name="output-batch-size"></a>输出批大小

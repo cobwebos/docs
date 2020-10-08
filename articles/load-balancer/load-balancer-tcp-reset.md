@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2019
+ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: f77dd21a2c017ee41f955fdf5e0848df190dec2a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651269"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823205"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>负载均衡器 TCP 重置和空闲超时
 
@@ -40,7 +40,11 @@ ms.locfileid: "91651269"
 
 ## <a name="configurable-tcp-idle-timeout"></a>可配置的 TCP 空闲超时
 
-Azure 负载均衡器的空闲超时设置为4分钟到120分钟。 默认情况下，它设置为 4 分钟。 如果处于非活动状态的时间超过超时值，则不能保证在客户端和云服务之间保持 TCP 或 HTTP 会话。
+Azure 负载均衡器的空闲超时范围如下：
+-  对于出站规则为4分钟到100分钟
+-  负载均衡器规则和入站 NAT 规则4到30分钟
+
+默认情况下，它设置为 4 分钟。 如果处于非活动状态的时间超过超时值，则不能保证在客户端和云服务之间保持 TCP 或 HTTP 会话。
 
 当连接关闭时，客户端应用程序可能会收到以下错误消息：“The underlying connection was closed:A connection that was expected to be kept alive was closed by the server.”（基础连接已关闭: 服务器关闭了应保持连接状态的连接。）
 

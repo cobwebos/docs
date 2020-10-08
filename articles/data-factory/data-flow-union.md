@@ -1,5 +1,5 @@
 ---
-title: 映射数据流联合转换
+title: 映射数据流中的联合转换
 description: Azure 数据工厂映射数据流新建分支转换
 author: kromerm
 ms.author: makromer
@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 1874e3536a3dda123c7fff9726c02e5d92d88804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e10418c18e6f8e0089a893e9d33ee1081f3131f1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204332"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823639"
 ---
-# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure 数据工厂映射数据流联合转换
+# <a name="union-transformation-in-mapping-data-flow"></a>映射数据流中的联合转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,9 +27,9 @@ Union 会将多个数据流组合成一个数据流，而这些流的 SQL Union 
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vngz]
 
-![联合转换](media/data-flow/union.png "联合")
+![联合转换](media/data-flow/union.png "Union")
 
-在这种情况下，可以将来自多个源（在本例中为三个不同的源文件）中的不同元数据组合在一起，并将它们合并到一个流中：
+在这种情况下，可以将来自多个源的不同元数据组合在一起 (在此示例中，三个不同的源文件) 并将它们合并为一个流：
 
 ![联合转换概述](media/data-flow/union111.png "联合1")
 
@@ -51,4 +51,4 @@ Union 会将多个数据流组合成一个数据流，而这些流的 SQL Union 
 
 ## <a name="next-steps"></a>后续步骤
 
-探索类似的转换，包括[Join](data-flow-join.md)和[Exists](data-flow-exists.md)。
+探索类似的转换，包括 [Join](data-flow-join.md) 和 [Exists](data-flow-exists.md)。

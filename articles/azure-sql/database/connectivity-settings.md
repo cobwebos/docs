@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: eab9004b37da83b5d571ff700c32215354286c94
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443846"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824146"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 连接设置
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "91443846"
 本文介绍的设置可用于控制与 Azure SQL 数据库和 Azure Synapse Analytics 的服务器的连接。 这些设置应用于与服务器关联的所有 SQL 数据库和 Azure Synapse 数据库。
 
 > [!IMPORTANT]
-> 本文不适用于 Azure SQL 托管实例
+> 本文不适用于 **Azure SQL 托管实例**。
 
 可从“防火墙和虚拟网络”屏幕访问连接设置，如以下屏幕截图所示：
 
@@ -38,6 +38,9 @@ ms.locfileid: "91443846"
  ![具有拒绝公共网络访问权限的连接屏幕截图][2]
 
 如果逻辑服务器上没有任何现有专用终结点，则任何将 " **拒绝公共网络访问** " 设置设置为 **"是"** 的尝试将失败，并出现如下错误消息：  
+
+> [!NOTE]
+> 若要在已配置专用终结点的逻辑服务器上定义虚拟网络防火墙规则，请将 " **拒绝公共网络访问权限** " 设置为 " **否**"。
 
 ```output
 Error 42102
