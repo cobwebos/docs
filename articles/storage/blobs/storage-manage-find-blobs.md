@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713690"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817532"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>通过 Blob 索引 (预览) 管理和查找 Azure Blob 数据
 
@@ -72,8 +72,11 @@ Blob 索引标记是可应用于存储帐户中的新对象或现有对象的键
 - 标记键和值区分大小写
 - 标记键和值仅支持字符串数据类型;任何数字、日期、时间或特殊字符都将保存为字符串
 - 标记键和值必须符合以下命名规则：
-  - 字母数字字符： a-z、a-z、0-9
-  - 特殊字符：空格、加、减、句点、冒号、等于、下划线、正斜杠
+  - 字母数字字符：
+    - **a** 至 **z**（小写字母）
+    - **A** 至 **Z**（大写字母）
+    - **0** 至 **9**（数字）
+  - 有效的特殊字符：空格、加、减、句点、冒号、等于、下划线、正斜杠 (` +-.:=_/`) 
 
 ## <a name="getting-and-listing-blob-index-tags"></a>获取和列出 blob 索引标记
 
@@ -244,7 +247,7 @@ Blob 索引标记和元数据都可以将任意用户定义的键/值属性与 b
 | **存储**     | 与 blob 数据存储在一起 | Blob 数据的子资源 |
 | **索引 & 查询** | 不适用;必须使用单独的服务，如 Azure 搜索 | 是的，本机索引和查询内置于 blob 存储中的功能 |
 | **加密** | 使用与 blob 数据相同的加密密钥加密的静态 | 使用 Microsoft 托管的加密密钥进行静态加密 |
-| **价格** | 元数据的大小包含在 blob 的存储成本中 | 固定成本/索引标记 |
+| **定价** | 元数据的大小包含在 blob 的存储成本中 | 固定成本/索引标记 |
 | **标头响应** | 作为 GetBlob 和 GetBlobProperties 中的标头返回的元数据 | TagCount 返回 GetBlob 或 GetBlobProperties;仅 GetBlobTags 和 ListBlobs 中返回的标记 |
 | **权限**  | 对 blob 数据的读取或写入权限扩展到元数据 | 读取/筛选或写入标记需要其他权限 |
 | **命名** | 元数据名称必须遵循 c # 标识符的命名规则 | Blob 索引标记支持的字母数字字符范围更广 |
@@ -297,7 +300,7 @@ az provider register --namespace 'Microsoft.Storage'
 - CopyBlob (在目标 blob 上应用了标记的另一个存储帐户中 Async copy) 当前导致 blob 索引引擎不返回筛选器集中的 blob 及其标记。 建议在过渡期间使用 URL (同步副本) 中的 CopyBlob。
 - 在创建快照时保留标记;但当前不支持升级快照，并且可能会导致空标记集。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Blob 索引可以帮助我筛选和查询 blob 中的内容吗？
 不可以，blob 索引标记可帮助你查找要查找的 blob。 如果需要在 blob 内搜索，请使用查询加速或 Azure 搜索。

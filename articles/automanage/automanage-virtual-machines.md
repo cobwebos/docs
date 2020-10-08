@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447904"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816825"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
 
@@ -37,7 +37,7 @@ Azure Automanage 还自动监视是否有偏移，并在检测到它时纠正。
 最后，体验非常简单。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在虚拟机上尝试启用 Azure Automanage 之前，需要考虑几个先决条件。
 
@@ -125,13 +125,13 @@ Automanage 帐户是安全上下文或用于执行自动操作的标识。 通�
 
 在同意“禁用”之前，请仔细阅读生成的弹出窗口中的消息。
 
-```
-Disabling automanagement in a VM results in the following behavior:
+> [!NOTE]
+> 禁用 VM 中的 automanagement 会导致以下行为：
+>
+> - VM 的配置和要载入的服务不会更改。
+> - 这些服务产生的任何费用都将保持计费，并继续进行。
+> - 任何 Automanage 行为会立即停止。
 
-1.    The configuration of the VM and the services it's onboarded to will not be changed
-2.    Any changes incurred by those services will remain billable and will continue to be incurred
-3.    Any Automanage behaviors will stop immediately
-```
 
 首先，我们不会将虚拟机从我们载入并配置的任何服务中脱离。 因此，这些服务产生的任何费用仍将继续计费。 如有必要，你将需要离开板。 任何 Automanage 行为将立即停止。 例如，我们将不再监视 VM 的偏差。
 

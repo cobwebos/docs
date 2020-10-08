@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: 230fac982e19c1106aa5757c9bf1c32d192740d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314503"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817515"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Java 的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概述
-[用于 Java 的 Azure 存储客户端库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) 支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。 此库还支持与 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，以便管理存储帐户密钥。
+[用于 Java 的 Azure 存储客户端库](https://search.maven.org/artifact/com.azure/azure-storage-blob-cryptography) 支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。 此库还支持与 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，以便管理存储帐户密钥。
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>通过信封技术加密和解密
 加密和解密的过程遵循信封技术。  

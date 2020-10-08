@@ -4,12 +4,12 @@ description: 了解如何针对不同情况自定义应用服务中的身份验�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: a01ca051f676f6a62face2c8ef0c9055c0c98c31
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 93c697162bfcb51b77c2e6f48b5824b81070bf51
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757514"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816413"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -334,6 +334,35 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
             "customProtoHeaderName": "<proto header value>"
         }
     },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
+        },
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
+            },
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+            }
+        },
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUri": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityProviderDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
+        }
+    },
     "identityProviders": {
         "azureActiveDirectory": {
             "enabled": <true|false>,
@@ -438,35 +467,6 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
                 }
             },
             //...
-        }
-    },
-    "login": {
-        "routes": {
-            "logoutEndpoint": "<logout endpoint>"
-        },
-        "tokenStore": {
-            "enabled": <true|false>,
-            "tokenRefreshExtensionHours": "<double>",
-            "fileSystem": {
-                "directory": "<directory to store the tokens in if using a file system token store (default)>"
-            },
-            "azureBlobStorage": {
-                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-            }
-        },
-        "preserveUrlFragmentsForLogins": <true|false>,
-        "allowedExternalRedirectUri": [
-            "https://uri1.azurewebsites.net/",
-            "https://uri2.azurewebsites.net/",
-            "url_scheme_of_your_app://easyauth.callback"
-        ],
-        "cookieExpiration": {
-            "convention": "FixedTime|IdentityProviderDerived",
-            "timeToExpiration": "<timespan>"
-        },
-        "nonce": {
-            "validateNonce": <true|false>,
-            "nonceExpirationInterval": "<timespan>"
         }
     }
 }

@@ -535,10 +535,6 @@
     - name: 应用程序配置
       displayName: App configuration
       items:
-        - name: Azure 门户应用注册培训指南
-          href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-        - name: Azure 门户应用注册体验
-          href: app-registration-portal-training-guide.md
         - name: 将单租户应用转换为多租户应用
           href: howto-convert-app-to-be-multi-tenant.md
         - name: 创建服务主体

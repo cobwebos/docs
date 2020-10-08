@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718095"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817732"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 
@@ -34,7 +34,7 @@ ms.locfileid: "88718095"
 
 非主节点类型可用于定义应用程序角色（例如前端和后端服务）并在群集中物理隔离服务 。 Service Fabric 群集可以有零个或更多非主节点类型。
 
-使用 Azure 资源管理器部署模板中节点类型定义下的 `isPrimary` 属性配置主节点类型。 有关节点类型属性的完整列表，请参阅 [NodeTypeDescription 对象](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)。 若要了解示例用法，请打开 [Service Fabric 群集示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)中的任意 AzureDeploy.json 文件，并通过“在页面上查找”来搜索 `nodetTypes` 对象 。
+使用 Azure 资源管理器部署模板中节点类型定义下的 `isPrimary` 属性配置主节点类型。 有关节点类型属性的完整列表，请参阅 [NodeTypeDescription 对象](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)。 若要了解示例用法，请打开 [Service Fabric 群集示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)中的任意 AzureDeploy.json 文件，并通过“在页面上查找”来搜索 `nodeTypes` 对象 。
 
 ### <a name="node-type-planning-considerations"></a>主节点计划注意事项
 
@@ -155,7 +155,7 @@ ms.locfileid: "88718095"
 
 #### <a name="virtual-machine-sizing"></a>虚拟机大小调整
 
-**对于生产工作负荷， (SKU) 的建议 VM 大小为 [标准 D2_V2](../virtual-machines/dv2-dsv2-series.md) (或等效) ，最少 50 GB 本地 SSD、2核和 4 GiB 内存。** 建议至少使用 50 GB 的本地 SSD，但某些工作负载（例如运行 Windows 容器的工作负荷）需要更大的磁盘。 为生产工作负载选择其他 [VM 大小](../virtual-machines/sizes-general.md)时，请记住以下约束：
+“对于生产工作负载，建议将 VM 大小 (SKU) 设为 [Standard D2_V2](../virtual-machines/dv2-dsv2-series.md)（或同等规模），并使其具有至少 50 GB 的本地 SSD、2 个核心和 4 GiB 的内存。” 建议至少使用 50 GB 的本地 SSD，但某些工作负载（例如运行 Windows 容器的工作负荷）需要更大的磁盘。 为生产工作负载选择其他 [VM 大小](../virtual-machines/sizes-general.md)时，请记住以下约束：
 
 - 不支持部分核心 VM 大小，例如 Standard A0。
 - 由于性能原因，不支持 A系列 VM 大小。

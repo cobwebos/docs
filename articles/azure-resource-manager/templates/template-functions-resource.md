@@ -3,12 +3,12 @@ title: 模板函数 - 资源
 description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 4f788af065db5ef5f23f9a8e96c2d45405959614
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: dd040715cc8fb1339c6054c53007dbcd08e2cbdb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369189"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816799"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -33,14 +33,14 @@ ms.locfileid: "91369189"
 
 返回某个[扩展资源](../management/extension-resource-types.md)的资源 ID，该资源属于适用于其他资源的资源类型，是对其功能的补充。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| ResourceId |是 |string |扩展资源应用到的资源的资源 ID。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| ResourceId |是 |字符串 |扩展资源应用到的资源的资源 ID。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -106,7 +106,7 @@ ms.locfileid: "91369189"
 
 :::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
 
-内置策略定义是租户级别资源。 有关部署内置策略定义的示例，请参阅 [tenantResourceId](#tenantresourceid)。
+内置策略定义是租户级别的资源。 有关部署内置策略定义的示例，请参阅 [tenantResourceId](#tenantresourceid)。
 
 <a id="listkeys"></a>
 <a id="list"></a>
@@ -119,10 +119,10 @@ ms.locfileid: "91369189"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
-| apiVersion |是 |string |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd**格式。 |
+| resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
+| apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd**格式。 |
 | functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
@@ -139,12 +139,11 @@ ms.locfileid: "91369189"
 | ------------- | ------------- |
 | 加载项/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
-| ApiManagement/服务/网关 | [listKeys](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
-| ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
-| ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
-| ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
-| Microsoft.AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
+| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
+| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
+| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
+| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
+| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
@@ -158,10 +157,10 @@ ms.locfileid: "91369189"
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
-| Microsoft.containerregistry/注册表/agentpools | listQueueStatus |
-| Microsoft.containerregistry/注册表/buildTasks | listSourceRepositoryProperties |
-| Microsoft.containerregistry/注册表/buildTasks/步骤 | listBuildArguments |
-| Microsoft.containerregistry/注册表/taskruns | listDetails |
+| Microsoft.ContainerRegistry/registries/agentpools | listQueueStatus |
+| Microsoft.ContainerRegistry/registries/buildTasks | listSourceRepositoryProperties |
+| Microsoft.ContainerRegistry/registries/buildTasks/steps | listBuildArguments |
+| Microsoft.ContainerRegistry/registries/taskruns | listDetails |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
 | Microsoft.ContainerRegistry/registries/tasks | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
@@ -337,21 +336,19 @@ ms.locfileid: "91369189"
 "sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
-有关 listKeyValue 示例，请参阅[快速入门：使用应用程序配置和资源管理器模板自动部署 VM](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)。
-
 ## <a name="pickzones"></a>pickZones
 
 `pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
 
 确定资源类型是否支持区域的区域。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace | 是 | string | 用于检查区域支持的资源类型的资源提供程序命名空间。 |
-| resourceType | 是 | string | 要检查区域支持的资源类型。 |
-| location | 是 | string | 要检查区域支持的区域。 |
+| providerNamespace | 是 | 字符串 | 用于检查区域支持的资源类型的资源提供程序命名空间。 |
+| resourceType | 是 | 字符串 | 要检查区域支持的资源类型。 |
+| location | 是 | 字符串 | 要检查区域支持的区域。 |
 | numberOfZones | 否 | integer | 要返回的逻辑区域数。 默认值为 1。 该数字必须是介于1和3之间的正整数。  对于单分区资源，请使用1。 对于多分区资源，该值必须小于或等于受支持区域的数目。 |
 | offset | 否 | integer | 起始逻辑区域的偏移量。 如果 offset 加 numberOfZones 超过支持的区域数量，则函数将返回错误。 |
 
@@ -413,11 +410,11 @@ ms.locfileid: "91369189"
 
 前面示例的输出返回三个数组。
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| 受支持 | array | ["1"] |
-| notSupportedRegion | array | [] |
-| notSupportedType | array | [] |
+| 受支持 | 数组 | ["1"] |
+| notSupportedRegion | 数组 | [] |
+| notSupportedType | 数组 | [] |
 
 你可以使用 pickZones 的响应来确定是否为区域提供 null，或将虚拟机分配给不同的区域。 下面的示例基于区域的可用性为区域设置一个值。
 
@@ -433,12 +430,12 @@ ms.locfileid: "91369189"
 
 返回有关资源提供程序及其支持的资源类型的信息。 如果未提供资源类型，则该函数将返回资源提供程序支持的所有类型。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |string |提供程序的命名空间 |
-| resourceType |否 |string |指定的命名空间中的资源类型。 |
+| providerNamespace |是 |字符串 |提供程序的命名空间 |
+| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -508,13 +505,13 @@ ms.locfileid: "91369189"
 
 返回表示资源的运行时状态的对象。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
-| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
-| 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
+| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
+| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -831,15 +828,15 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式因部署是在资源组、订阅、管理组还是租户的范围内进行而不同。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
-| resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -851,7 +848,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-您可以为其他部署范围使用 resourceId 功能，但该 ID 的格式会发生更改。
+可以对其他部署范围使用 resourceId 函数，但 ID 的格式会发生更改。
 
 如果在部署到订阅时使用 resourceId，则会按以下格式返回资源 ID：
 
@@ -859,19 +856,19 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-如果在将资源部署到管理组或租户时使用 resourceId，将按以下格式返回资源 ID：
+如果在部署到管理组或租户时使用 resourceId，则会按以下格式返回资源 ID：
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-为避免混淆，我们建议你在使用部署到订阅、管理组或租户的资源时不使用 resourceId。 请改用为范围设计的 ID 函数。
+为避免混淆，建议你在使用部署到订阅、管理组或租户的资源时不使用 resourceId， 而改用针对范围设计的 ID 函数。
 
-对于 [订阅级别的资源](deploy-to-subscription.md)，请使用 [subscriptionResourceId](#subscriptionresourceid) 函数。
+对于[订阅级别的资源](deploy-to-subscription.md)，请使用 [subscriptionResourceId](#subscriptionresourceid) 函数。
 
-对于 [管理组级别的资源](deploy-to-management-group.md)，请使用 [extensionResourceId](#extensionresourceid) 函数来引用作为管理组的扩展实现的资源。 例如，部署到管理组的自定义策略定义是管理组的扩展。 使用 [tenantResourceId](#tenantresourceid) 函数引用部署到租户但在你的管理组中可用的资源。 例如，内置策略定义实现为租户级别资源。
+对于[管理组级别的资源](deploy-to-management-group.md)，请使用 [extensionResourceId](#extensionresourceid) 函数来引用作为管理组的扩展实现的资源。 例如，部署到管理组的自定义策略定义是管理组的扩展。 请使用 [tenantResourceId](#tenantresourceid) 函数来引用已部署到租户但在你的管理组中可用的资源。 例如，内置策略定义是作为租户级别的资源实现的。
 
-对于 [租户级别的资源](deploy-to-tenant.md)，请使用 [tenantResourceId](#tenantresourceid) 函数。 对内置策略定义使用 tenantResourceId，因为它们是在租户级别实现的。
+对于[租户级别的资源](deploy-to-tenant.md)，请使用 [tenantResourceId](#tenantresourceid) 函数。 请对内置策略定义使用 tenantResourceId，因为内置策略定义是在租户级别实现的。
 
 ### <a name="remarks"></a>备注
 
@@ -977,7 +974,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -1031,14 +1028,14 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 返回在订阅级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -1113,13 +1110,13 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 返回在租户级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -1137,7 +1134,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="tenantresourceid-example"></a>tenantResourceId 示例
 
-内置策略定义是租户级别资源。 若要部署引用内置策略定义的策略分配，请使用 tenantResourceId 函数。
+内置策略定义是租户级别的资源。 若要部署引用内置策略定义的策略分配，请使用 tenantResourceId 函数。
 
 ```json
 {

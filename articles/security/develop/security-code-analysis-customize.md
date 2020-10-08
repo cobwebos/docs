@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031392"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816792"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>配置和自定义生成任务
 
@@ -131,7 +131,7 @@ Windows Defender 使用 Windows 更新客户端来下载和安装签名。 如�
 
 > [!NOTE]
 >
-> - Roslyn 分析器与编译器集成，只能作为 csc.exe 编译的一部分运行。 因此，此任务需要重新启用或再次运行生成中之前运行的编译器命令。 此重启或运行通过查询 Visual Studio Team Services (VSTS) 的 MSBuild 生成任务日志来完成。
+> - Roslyn 分析器与编译器集成，只能作为 csc.exe 编译的一部分运行。 因此，此任务需要重新启用或再次运行生成中之前运行的编译器命令。 此重播或运行是通过查询 Azure DevOps (以前 Visual Studio Team Services MSBuild 生成任务日志的) 来完成的。
 >
 >   任务从生成定义可靠获取 MSBuild 编译命令行没有其他途径。 我们考虑了添加自由格式文本框，使用户能够输入其命令行。 但这样做很难使这些命令行保持最新并与主生成同步。
 >

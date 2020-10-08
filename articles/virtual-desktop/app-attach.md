@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010151"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816326"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -27,7 +27,7 @@ ms.locfileid: "88010151"
 在开始之前，需要配置 MSIX 应用附加：
 
 - 访问 Windows 预览体验门户以获取支持 MSIX 应用附加 API 的 Windows 10 版本。
-- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅 [在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅 [使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - .MSIX 打包工具。
 - Windows 虚拟桌面部署中将存储 .MSIX 包的网络共享。
 
@@ -39,16 +39,16 @@ ms.locfileid: "88010151"
 
 若要从 Azure 门户获取 OS 映像：
 
-1. 打开[Azure 门户](https://portal.azure.com)并登录。
+1. 打开 [Azure 门户](https://portal.azure.com) 并登录。
 
-2. 请参阅**创建虚拟机**。
+2. 请参阅 **创建虚拟机**。
 
-3. 在 "**基本**" 选项卡中，选择 **"Windows 10 企业多会话，版本 2004"**。
+3. 在 " **基本** " 选项卡中，选择 **"Windows 10 企业多会话，版本 2004"**。
 
 4. 按照说明的其余部分操作来完成虚拟机的创建。
 
      >[!NOTE]
-     >可以使用此 VM 直接测试 .MSIX 应用附加。 若要了解详细信息，请跳到[生成用于 .msix 的 VHD 或 VHDX 包](#generate-a-vhd-or-vhdx-package-for-msix)。 否则，请继续阅读本部分。
+     >可以使用此 VM 直接测试 .MSIX 应用附加。 若要了解详细信息，请跳到 [生成用于 .msix 的 VHD 或 VHDX 包](#generate-a-vhd-or-vhdx-package-for-msix)。 否则，请继续阅读本部分。
 
 ### <a name="get-the-os-image-from-the-windows-insider-portal"></a>从 Windows 预览体验门户获取 OS 映像
 
@@ -200,12 +200,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 1. 右键单击该包，选择“属性”。
 2. 在出现的窗口中，选择“数字签名”选项卡。选项卡上的列表中应该只有一个项，如下图所示。 选择该项以突出显示该项，然后选择“详细信息”。
-3. 当 "数字签名详细信息" 窗口出现时，选择 "**常规**" 选项卡，然后选择 "**查看证书**"，然后选择 "**安装证书**"。
+3. 当 "数字签名详细信息" 窗口出现时，选择 " **常规** " 选项卡，然后选择 " **查看证书**"，然后选择 " **安装证书**"。
 4. 当安装程序打开时，选择“本地计算机”作为存储位置，然后选择“下一步” 。
 5. 如果安装程序询问你是否允许应用对设备进行更改，请选择“是”。
 6. 选择“将所有证书放入以下存储区”，然后选择“浏览” 。
 7. 当“选择证书存储”窗口出现时，选择“受信任的人员”，然后选择“确定” 。
-8. 选择 "**下一步**" 和 "**完成**"。
+8. 选择 " **下一步** " 和 " **完成**"。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>为 MSIX 应用附加准备 PowerShell 脚本
 
@@ -342,20 +342,25 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>转储 PowerShell 脚本
 
-对于此脚本，将“$packageName”的占位符替换为要测试的包的名称。
+对于此脚本，将“$packageName”的占位符替换为要测试的包的名称。 在生产部署中，最好是在关闭时运行它。
 
 ```powershell
 #MSIX app attach de staging sample
 
+$vhdSrc="<path to vhd>"
+
 #region variables
 $packageName = "<package name>"
-$msixJunction = "C:\temp\AppAttach\"
+$msixJunction = "C:\temp\AppAttach"
 #endregion
 
 #region deregister
 Remove-AppxPackage -AllUsers -Package $packageName
-cd $msixJunction
-rmdir $packageName -Force -Verbose
+Remove-Item "$msixJunction\$packageName" -Recurse -Force -Verbose
+#endregion
+
+#region Detach VHD
+Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 

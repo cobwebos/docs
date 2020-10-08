@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264637"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816436"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -83,6 +83,32 @@ ms.locfileid: "91264637"
   ...
 ]
 ```
+
+### <a name="automate-app-settings-with-the-azure-cli"></a>通过 Azure CLI 自动执行应用设置
+
+您可以使用 Azure CLI 从命令行创建和管理设置。
+
+- 使用 [az webapp config 应用设置设置](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set)值来为设置赋值：
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    替换为 `<setting-name>` 设置的名称，将替换为 `<value>` 要赋给它的值。 如果该设置尚不存在，此命令将创建它。
+    
+- 用 [az webapp config appsettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list)显示所有设置及其值：
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- 删除包含 [az webapp config 应用设置](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete)的一个或多个设置：
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    替换为以 `<names>` 空格分隔的设置名称列表。
 
 ## <a name="configure-connection-strings"></a>配置连接字符串
 
@@ -164,7 +190,12 @@ ms.locfileid: "91264637"
 
 在此处可以配置应用的某些常用设置。 某些设置要求[纵向扩展到更高的定价层](manage-scale-up.md)。
 
-- **堆栈设置**：用于运行应用的软件堆栈，包括语言和 SDK 版本。 对于 Linux 应用和自定义的容器应用，还可以设置可选的启动命令或文件。
+- **堆栈设置**：用于运行应用的软件堆栈，包括语言和 SDK 版本。
+
+    对于 Linux 应用和自定义容器应用，可以选择语言运行时版本，并设置可选的 **启动命令** 或启动命令文件。
+
+    ![Linux 容器的常规设置](./media/configure-common/open-general-linux.png)
+
 - **平台设置**：用于配置托管平台的设置，包括：
     - **位数**：32 位或 64 位。
     - **WebSocket 协议**：例如，[ASP.NET SignalR] 或 [socket.io](https://socket.io/)。

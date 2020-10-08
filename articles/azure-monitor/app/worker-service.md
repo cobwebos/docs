@@ -4,16 +4,16 @@ description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Fra
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760472"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816390"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
-Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerService` 的新 SDK，该 SDK 最适合用于消息传递、后台任务、控制台应用程序等非 HTTP 工作负荷。此类应用程序不像传统 ASP.NET/ASP.NET Core Web 应用程序那样具有传入 HTTP 请求的概念，因此，不支持对 [ASP.NET](asp-net.md) 或 [ASP.NET Core](asp-net-core.md) 应用程序使用 Application Insights 包。
+[辅助角色服务 APPLICATION INSIGHTS sdk](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 是一个新的 sdk，最适用于非 HTTP 工作负荷，例如消息传递、后台任务、控制台应用程序等。这些类型的应用程序不具有传入 HTTP 请求（如传统 ASP.NET/ASP.NET Core Web 应用程序）的概念，因此不支持对 [ASP.NET](asp-net.md) 或 [ASP.NET Core](asp-net-core.md) 应用程序使用 Application Insights 包。
 
 新 SDK 本身不执行任何遥测收集， 而是引入了其他众所周知的 Application Insights 自动收集器，例如 [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)、[PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)、[ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) 等。此 SDK 公开 `IServiceCollection` 中的扩展方法用于启用和配置遥测收集。
 
@@ -138,7 +138,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 [此处](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)分享了完整示例
 
-1. 将 Microsoft.ApplicationInsights.WorkerService(https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 包安装到应用程序。
+1. 将 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 包安装到应用程序。
 2. 将 `services.AddApplicationInsightsTelemetryWorkerService();` 添加到 `ConfigureServices()` 方法，如以下示例所示：
 
 ```csharp
@@ -225,7 +225,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 [此处](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)分享了完整示例
 
-1. 将 Microsoft.ApplicationInsights.WorkerService(https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 包安装到应用程序。
+1. 将 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 包安装到应用程序。
 
 2. 按以下示例所示修改 Program.cs。
 
@@ -293,7 +293,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ## <a name="run-your-application"></a>运行应用程序
 
-运行应用程序。 上述所有示例中的示例辅助角色每秒对 bing.com 发出 http 调用，并使用 ILogger 发出几个日志。 这些行包装在用于创建操作的 `TelemetryClient` 的 `StartOperation` 调用内部（在此示例中，`RequestTelemetry` 名为“operation”）。 Application Insights 将收集这些 ILogger 日志（默认为警告或更高级别）和依赖项，这些日志将通过父子关系关联到 `RequestTelemetry`。 这种关联也会跨进程/网络边界发生。 例如，如果对另一个受监视组件发出调用，则该组件也会关联到此父级。
+运行应用程序。 上述所有示例中的示例工作人员均每秒从 http 调用到 bing.com，并使用发出几个日志 `ILogger` 。 这些行包装在用于创建操作的 `TelemetryClient` 的 `StartOperation` 调用内部（在此示例中，`RequestTelemetry` 名为“operation”）。 Application Insights 将收集这些 ILogger 日志（默认为警告或更高级别）和依赖项，这些日志将通过父子关系关联到 `RequestTelemetry`。 这种关联也会跨进程/网络边界发生。 例如，如果对另一个受监视组件发出调用，则该组件也会关联到此父级。
 
 可将 `RequestTelemetry` 的此自定义操作视为等效于典型 Web 应用程序中的传入 Web 请求。 尽管不一定要使用操作，但操作最适合 [Application Insights 关联数据模型](./correlation.md) - `RequestTelemetry` 充当父操作，在辅助角色迭代中生成的每个遥测数据被视为在逻辑上属于同一操作。 此方法还确保生成的所有遥测数据（自动和手动）具有相同的 `operation_id`。 由于采样基于 `operation_id`，因此采样算法会在单个迭代中保留或删除所有遥测数据。
 
