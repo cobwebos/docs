@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707758"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822396"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -72,26 +72,17 @@ ms.locfileid: "90707758"
 
 1. 选择 " **添加规则** "，并在 **详细信息** 窗体上命名规则。 还可以设置 **规则范围**、 **Blob 类型**和 **blob 子类型** 值。 下面的示例将范围设置为筛选 blob。 这将导致添加 " **筛选器集** " 选项卡。
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="生命周期管理在 Azure 门户中添加规则详细信息页":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="生命周期管理在 Azure 门户中添加规则详细信息页&quot;:::
 
-1. 选择 " **基本 blob** " 以设置规则的条件。 在以下示例中，如果 Blob 有 30 天未修改，它们将转移到冷存储。
+1. 选择 &quot; **基本 blob** " 以设置规则的条件。 在以下示例中，如果 Blob 有 30 天未修改，它们将转移到冷存储。
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure 门户中的生命周期管理基础 blob 页":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="生命周期管理在 Azure 门户中添加规则详细信息页&quot;:::
 
-   " **上次访问** 时间" 选项在以下区域的预览中提供：
+1. 选择 &quot; **基本 blob** " 开头的 blob。
 
-    - 法国中部
-    - 加拿大东部
-    - 加拿大中部
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="生命周期管理在 Azure 门户中添加规则详细信息页&quot;:::
 
-   > [!IMPORTANT]
-   > 上次访问时间跟踪预览版仅适用于非生产。 生产服务级别协议 (SLA) 当前不可用。
-   
-   若要使用 "**上次访问**时间" 选项，请在 "Azure 门户的"**生命周期管理**"页上选择"**访问跟踪已启用**"。 有关 **最后访问** 的选项的详细信息，请参阅 [基于上次访问日期移动数据 (预览) ](#move-data-based-on-last-accessed-date-preview)。
-
-1. 如果在 "**详细信息**" 页上选择了 "**使用筛选器限制 blob** "，请选择 "**筛选器集**" 添加可选筛选器。 下面的示例筛选 *mylifecyclecontainer* 容器中以 "log" 开头的 blob。
-
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure 门户中的生命周期管理筛选器集页":::
+1. 选择 &quot; **基本 blob** ":::
 
 1. 选择“添加”以添加新策略。
 
@@ -164,7 +155,7 @@ $filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd
 $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
 
 #Set the policy
-$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
+Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
 # <a name="template"></a>[模板](#tab/template)

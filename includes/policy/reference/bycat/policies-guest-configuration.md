@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c788bfdd77d1745edbcf70c85f6f7afc94d25d58
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dc88b8dd433880cab9060418d1e610f3b217bcae
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982152"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821161"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -19,9 +19,9 @@ ms.locfileid: "90982152"
 |[审核允许通过没有密码的帐户进行远程连接的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea53dbee-c6c9-4f0e-9f9e-de0039b78023) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Linux 计算机允许通过没有密码的帐户进行远程连接，则计算机不合规 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_AINE.json) |
 |[审核未使用 SSH 密钥进行身份验证的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F630c64f9-8b6b-4c64-b511-6544ceff6fd6) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果计算机允许使用密码通过 SSH 进行身份验证，则计算机不合规 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxNoPasswordForSSH_AINE.json) |
 |[审核未将密码文件权限设为 0644 的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe6955644-301c-44b5-a4c4-528577de6861) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Linux 计算机未将密码文件权限设为 0644，则计算机不合规 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword121_AINE.json) |
-|[审核未安装指定应用程序的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd3b823c9-e0fc-4453-9fb2-8213b7338523) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Chef InSpec 资源指示未安装参数提供的一个或多个包，则计算机不合规。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationForLinux_AINE.json) |
+|[审核未安装指定应用程序的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd3b823c9-e0fc-4453-9fb2-8213b7338523) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Chef InSpec 资源指示未安装参数提供的一个或多个包，则计算机不合规。 |auditIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationForLinux_AINE.json) |
 |[审核具有不使用密码的帐户的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff6ec09a3-78bf-4f8f-99dc-6c77182d0f99) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Linux 计算机具有不使用密码的帐户，则计算机不合规 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword232_AINE.json) |
-|[审核安装了指定应用程序的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0447bc18-e2f7-4c0d-aa20-bff034275be1) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Chef InSpec 资源指示安装了参数提供的一个或多个包，则计算机不合规。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationForLinux_AINE.json) |
+|[审核安装了指定应用程序的 Linux 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0447bc18-e2f7-4c0d-aa20-bff034275be1) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Chef InSpec 资源指示安装了参数提供的一个或多个包，则计算机不合规。 |auditIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationForLinux_AINE.json) |
 |[审核未启用 Linux 来宾配置扩展的 Linux 虚拟机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffaf25c8c-9598-4305-b4de-0aee1317fb31) |此策略审核托管在 Azure 中的 Linux 虚拟机，这些虚拟机受来宾配置支持但未启用来宾配置扩展。 有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AuditExtensionLinux_Prerequisite.json) |
 |[审核缺少管理员组中任何指定成员的 Windows 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f71ea1-ac77-4f26-9fc5-2d926bbd4ba7) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果本地管理员组不包含策略参数中列出的一个或多个成员，则计算机不合规。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToInclude_AINE.json) |
 |[审核 Windows 计算机网络连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F630ac30f-a234-4533-ac2d-e0df77acda51) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 IP 和 TCP 端口的网络连接状态与策略参数不匹配，则计算机不合规。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsRemoteConnection_AINE.json) |

@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fa406692ae0ff011c65a2683ea04ad969bdc3b5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577214"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822185"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -85,6 +85,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureArcInfrastructure
 
 URL：
 

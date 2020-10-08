@@ -4,15 +4,15 @@ description: 了解如何在 Microsoft 商业应用商店中测试和提交 Azur
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: iqshahmicrosoft
-ms.author: iqshah
+author: github-2407
+ms.author: krsh
 ms.date: 08/14/2020
-ms.openlocfilehash: eea4ae449140334c422243b2ef2e9abce2534c39
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742751"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821317"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>测试 Azure Marketplace 的虚拟机映像
 
@@ -31,7 +31,7 @@ ms.locfileid: "91742751"
 
 本部分介绍如何创建和部署用户提供的虚拟机 (VM) 映像。 为此，可以从 Azure 部署的虚拟硬盘提供操作系统和数据磁盘 VHD 映像。 这些步骤使用通用 VHD 部署 VM。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 将通用操作系统 VHD 和数据磁盘 Vhd 上传到 Azure 存储帐户。
 3. 在主页上，选择 " **创建资源**"，搜索 "模板部署"，然后选择 " **创建**"。
 4. 选择“在编辑器中生成自己的模板”。
@@ -247,22 +247,22 @@ ms.locfileid: "91742751"
 
 6. 提供显示的“自定义部署”属性页的参数值。
 
-| ResourceGroupName | 现有 Azure 资源组名称。 通常，使用与密钥保管库相同的 RG。 |
-| --- | --- |
-| TemplateFile | 文件 VHDtoImage.json 的完整路径名。 |
-| userStorageAccountName | 存储帐户的名称。 |
-| dnsNameForPublicIP | 公共 IP 的 DNS 名称；必须为小写。 |
-| subscriptionId | Azure 订阅标识符。 |
-| 位置 | 资源组的标准 Azure 地理位置。 |
-| vmName | 虚拟机名称。 |
-| vhdUrl | 虚拟硬盘的 Web 地址。 |
-| vmSize | 虚拟机实例的大小。 |
-| publicIPAddressName | 公共 IP 地址的名称。 |
-| virtualNetworkName | 虚拟网络的名称。 |
-| nicName | 虚拟网络的网络接口卡的名称。 |
-| adminUserName | 管理员帐户的用户名。 |
-| adminPassword | 管理员密码。 |
-|
+    | ResourceGroupName | 现有 Azure 资源组名称。 通常，使用与密钥保管库相同的 RG。 |
+    | --- | --- |
+    | TemplateFile | 文件 VHDtoImage.json 的完整路径名。 |
+    | userStorageAccountName | 存储帐户的名称。 |
+    | dnsNameForPublicIP | 公共 IP 的 DNS 名称；必须为小写。 |
+    | subscriptionId | Azure 订阅标识符。 |
+    | 位置 | 资源组的标准 Azure 地理位置。 |
+    | vmName | 虚拟机名称。 |
+    | vhdUrl | 虚拟硬盘的 Web 地址。 |
+    | vmSize | 虚拟机实例的大小。 |
+    | publicIPAddressName | 公共 IP 地址的名称。 |
+    | virtualNetworkName | 虚拟网络的名称。 |
+    | nicName | 虚拟网络的网络接口卡的名称。 |
+    | adminUserName | 管理员帐户的用户名。 |
+    | adminPassword | 管理员密码。 |
+
 
 7. 提供这些值后，选择“购买”。
 
@@ -548,16 +548,15 @@ Azure 将开始部署。 它将使用指定的非托管 VHD 在指定的存储�
 
 ```PowerShell
 # storage account of existing generalized VHD
-
-$storageaccount = "testwinrm11815" # generalized VHD URL
+$storageaccount = "testwinrm11815"
+# generalized VHD URL
 $vhdUrl = "https://testwinrm11815.blob.core.windows.net/vhds/testvm1234562016651857.vhd"
 
 echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl
 $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
 
 # deploying VM with existing VHD
-
-New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName" -TemplateFile"C:\certLocation\VHDtoImage.json" - userStorageAccountName"$storageaccount" -dnsNameForPublicIP"$vmName" -subscriptionId"$mysubid" -location"$location" - vmName"$vmName" -vaultName"$kvname" -vaultResourceGroup"$rgName" -certificateUrl$objAzureKeyVaultSecret.Id -vhdUrl"$vhdUrl" - vmSize"Standard\_A2" -publicIPAddressName"myPublicIP1" -virtualNetworkName"myVNET1" -nicName"myNIC1" -adminUserName"isv" - adminPassword$pwd
+New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd
 ```
 
 ## <a name="run-validations"></a>运行验证
@@ -987,7 +986,7 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
                     ],
                     &quot;commandToExecute&quot;: &quot;[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',variables('hostDNSNameScriptArgument'))]":::
 
-6. 选择“**下一页**”。
+6. 选择“下一步”。
 
 #### <a name="run-a-certification-test"></a>运行认证测试
 
@@ -1014,35 +1013,33 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
 下面的示例演示对 API 的 PowerShell 调用：
 
 ```POWERSHELL
-$accesstoken = “token”
-$headers = New-Object “System.Collections.Generic.Dictionary[[String],[String]]”
-$headers.Add(“Authorization”, “Bearer $accesstoken”)
-$DNSName = “\&lt;\&lt;Machine DNS Name\&gt;\&gt;”
-$UserName = “\&lt;\&lt;User ID\&gt;\&gt;”
-$Password = “\&lt;\&lt;Password\&gt;\&gt;”
-$OS = “Linux”
-$PortNo = “22”
-$CompanyName = “ABCD”
-$AppID = “\&lt;\&lt;Application ID\&gt;\&gt;”
-$TenantId = “\&lt;\&lt;Tenant ID\&gt;\&gt;”
+$accesstoken = "token"
+$headers = @{ "Authorization" = "Bearer $accesstoken" }
+$DNSName = "<Machine DNS Name>"
+$UserName = "<User ID>"
+$Password = "<Password>"
+$OS = "Linux"
+$PortNo = "22"
+$CompanyName = "ABCD"
+$AppID = "<Application ID>"
+$TenantId = "<Tenant ID>"
 
-$body =
-@{
-DNSName = $DNSName
-UserName = $UserName
-Password = $Password
-OS = $OS
-PortNo = $PortNo
-CompanyName = $CompanyName
-AppID = $AppID
-TenantId = $TenantId
-}| ConvertTo-Json
+$body = @{
+   "DNSName" = $DNSName
+   "UserName" = $UserName
+   "Password" = $Password
+   "OS" = $OS
+   "PortNo" = $PortNo
+   "CompanyName" = $CompanyName
+   "AppID" = $AppID
+   "TenantId" = $TenantId
+} | ConvertTo-Json
 
 $body
 
-$uri = “URL”
+$uri = "URL"
 
-$res = (Invoke-WebRequest -Method “Post” -Uri $uri -Body $body -ContentType “application/json” -Headers $headers).Content
+$res = (Invoke-WebRequest -Method "Post" -Uri $uri -Body $body -ContentType "application/json" -Headers $headers).Content
 ```
 
 <br>下面是在 PowerShell 中调用 API 的示例：
@@ -1052,11 +1049,20 @@ $res = (Invoke-WebRequest -Method “Post” -Uri $uri -Body $body -ContentType 
 <br>使用前面的示例，可以检索 JSON 并解析它以获取以下详细信息：
 
 ```PowerShell
-$resVar=$res|ConvertFrom-Json
+$resVar = $res | ConvertFrom-Json
+$actualresult = $resVar.Response | ConvertFrom-Json
 
-$actualresult =$resVar.Response |ConvertFrom-Json
+Write-Host "OSName: $($actualresult.OSName)"
+Write-Host "OSVersion: $($actualresult.OSVersion)"
+Write-Host "Overall Test Result: $($actualresult.TestResult)"
 
-Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actualresult.OSVersion)”Write-Host”Overall Test Result: $($actualresult.TestResult)”For ($i=0; $i -lt$actualresult.Tests.Length; $i++){ Write-Host”TestID: $($actualresult.Tests[$i].TestID)”Write-Host”TestCaseName: $($actualresult.Tests[$i].TestCaseName)”Write-Host”Description: $($actualresult.Tests[$i].Description)”Write-Host”Result: $($actualresult.Tests[$i].Result)”Write-Host”ActualValue: $($actualresult.Tests[$i].ActualValue)”}
+For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
+   Write-Host "TestID: $($actualresult.Tests[$i].TestID)"
+   Write-Host "TestCaseName: $($actualresult.Tests[$i].TestCaseName)"
+   Write-Host "Description: $($actualresult.Tests[$i].Description)"
+   Write-Host "Result: $($actualresult.Tests[$i].Result)"
+   Write-Host "ActualValue: $($actualresult.Tests[$i].ActualValue)"
+}
 ```
 
 <br>此示例屏幕显示了 `$res.Content` JSON 格式的测试结果的详细信息：
@@ -1078,7 +1084,21 @@ Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actual
 此代码示例演示对 API 的 PowerShell 调用：
 
 ```PowerShell
-$accesstoken = “Get token for your Client AAD App”$headers = New-Object”System.Collections.Generic.Dictionary[[String],[String]]”$headers.Add(“Authorization”, “Bearer $accesstoken”)$Body = @{ “DNSName” = “XXXX.westus.cloudapp.azure.com”“UserName” = “XXX”“Password” = “XXX@123456”“OS” = “Windows”“PortNo” = “5986”“CompanyName” = “ABCD” “AppID” = “XXXX-XXXX-XXXX” “TenantId” = “XXXX-XXXX-XXXX” } | ConvertTo-Json$res = Invoke-WebRequest -Method”Post” -Uri$uri -Body$Body -ContentType”application/json” –Headers $headers;$Content = $res | ConvertFrom-Json
+$accesstoken = "Get token for your Client AAD App"
+$headers = @{ "Authorization" = "Bearer $accesstoken" }
+$Body = @{ 
+   "DNSName" = "XXXX.westus.cloudapp.azure.com"
+   "UserName" = "XXX"
+   "Password" = "XXX@123456"
+   "OS" = "Windows"
+   "PortNo" = "5986"
+   "CompanyName" = "ABCD"
+   "AppID" = "XXXX-XXXX-XXXX"
+   "TenantId" = "XXXX-XXXX-XXXX"
+} | ConvertTo-Json
+
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$Content = $res | ConvertFrom-Json
 ```
 
 以下示例屏幕显示了在 PowerShell 中调用 API 的示例：
@@ -1492,11 +1512,20 @@ $accesstoken = “Get token for your Client AAD App”$headers = New-Object”Sy
 <br>使用前面的示例，可以检索 JSON 并解析它以获取以下详细信息：
 
 ```PowerShell
-$resVar=$res|ConvertFrom-Json
+$resVar = $res | ConvertFrom-Json
+$actualresult = $resVar.Response | ConvertFrom-Json
 
-$actualresult =$resVar.Response |ConvertFrom-Json
+Write-Host "OSName: $($actualresult.OSName)"
+Write-Host "OSVersion: $($actualresult.OSVersion)"
+Write-Host "Overall Test Result: $($actualresult.TestResult)"
 
-Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actualresult.OSVersion)”Write-Host”Overall Test Result: $($actualresult.TestResult)”For ($i=0; $i -lt$actualresult.Tests.Length; $i++){ Write-Host”TestID: $($actualresult.Tests[$i].TestID)”Write-Host”TestCaseName: $($actualresult.Tests[$i].TestCaseName)”Write-Host”Description: $($actualresult.Tests[$i].Description)”Write-Host”Result: $($actualresult.Tests[$i].Result)”Write-Host”ActualValue: $($actualresult.Tests[$i].ActualValue)”}
+For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
+   Write-Host "TestID: $($actualresult.Tests[$i].TestID)"
+   Write-Host "TestCaseName: $($actualresult.Tests[$i].TestCaseName)"
+   Write-Host "Description: $($actualresult.Tests[$i].Description)"
+   Write-Host "Result: $($actualresult.Tests[$i].Result)"
+   Write-Host "ActualValue: $($actualresult.Tests[$i].ActualValue)"
+}
 ```
 
 <br>此屏幕显示了 `$res.Content` JSON 格式的测试结果的详细信息：
@@ -1713,14 +1742,11 @@ Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actual
 1. 使用 curl 命令调用 API。
 2. 方法是 Post，内容类型是 JSON，如以下代码片段示例所示。
 
-```JSON
-CURL POST -H “Content-Type:application/json”
-
--H “Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-
-[https://isvapp.azure-api.net/selftest-vm](https://isvapp.azure-api.net/selftest-vm)
-
--d ‘{ “DNSName”:”XXXX.westus.cloudapp.azure.com”, “UserName”:”XXX”, “Password”:”XXXX@123456”, “OS”:”Linux”, “PortNo”:”22”, “CompanyName”:”ABCD”, “AppId”:”XXXX-XXXX-XXXX”, “TenantId “XXXX-XXXX-XXXX”}’
+```shell
+curl POST -H "Content-Type:application/json" -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX"
+https://isvapp.azure-api.net/selftest-vm -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "UserName":"XXX",
+"Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD", "AppId":"XXXX-XXXX-XXXX",
+"TenantId "XXXX-XXXX-XXXX"}'
 ```
 
 <br>下面是使用卷调用 API 的示例：

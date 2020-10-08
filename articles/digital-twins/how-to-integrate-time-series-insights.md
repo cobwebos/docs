@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f64e959536b4abea4f2facb5ae3238b4843e4611
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569946"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822182"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -121,12 +121,14 @@ namespace SampleFunctionsApp
             Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
             foreach (var operation in message["patch"]) {
                 if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
+                {
                     //Convert from JSON patch path to a flattened property for TSI
                     //Example input: /Front/Temperature
                     //        output: Front.Temperature
                     string path = operation["path"].ToString().Substring(1);                    
                     path = path.Replace("/", ".");                    
                     tsiUpdate.Add(path, operation["value"]);
+                }
             }
             //Send an update if updates exist
             if (tsiUpdate.Count>0){
@@ -178,7 +180,7 @@ namespace SampleFunctionsApp
 2. 使用获得的连接字符串，以在函数应用中创建包含连接字符串的应用设置：
 
     ```azurecli
-    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string> -g <resource group> -n <your App Service (function app) name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
 ### <a name="set-the-time-series-insights-event-hub-connection-string"></a>设置时序见解事件中心连接字符串
@@ -192,7 +194,7 @@ namespace SampleFunctionsApp
 2. 在函数应用中，创建一个包含连接字符串的应用设置：
 
     ```azurecli
-    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string> -g <resource group> -n <your App Service (function app) name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>创建和连接时序见解实例

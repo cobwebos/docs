@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd95e3ed6b4c31072d7e754c731e748f12db3329
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c15724643fb3c8c74d3afe58509822c56d2d17f3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322387"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821962"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -1080,7 +1080,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 对于 `includeTrigger` 特性，可以指定 `true` 或 `false` 值。
 
-| Value | 类型 | 说明 |
+| 值 | 类型 | 说明 |
 |-------|------|-------------|
 | <*以前的操作*> | 字符串数组 | 包含指定的操作名称的数组。 使用工作流定义中显示的操作名称，其中的操作名称使用下划线 (_) 而不是空格 ("")。 |
 ||||
@@ -1224,7 +1224,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 属性 | Value | 类型 | 说明 |
+| 属性 | 值 | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `method` | <method-type> | String | 用于发送传出请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
 | `uri` | <HTTP-or-HTTPS-endpoint-URL> | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
@@ -1232,7 +1232,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *可选*
 
-| 属性 | Value | 类型 | 说明 |
+| 属性 | 值 | 类型 | 说明 |
 |----------|-------|------|-------------|
 | `headers` | <header-content> | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <query-parameters> | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 |
@@ -2416,8 +2416,6 @@ ID,Product_Name
 * 启用并发后，会显著降低[解除数组批处理](#split-on-debatch)时的 [SplitOn 限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 如果项数超过此限制，会禁用 SplitOn 功能。
 
 * 启用并发控制后，无法禁用并发。
-
-* 启用并发后，会显著降低[解除数组批处理](#split-on-debatch)时的 [SplitOn 限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 如果项数超过此限制，会禁用 SplitOn 功能。
 
 * 启用并发后，长时间运行的逻辑应用实例可能会导致新的逻辑应用实例进入等待状态。 此状态会阻止 Azure 逻辑应用创建新实例，即使并发运行次数小于指定的最大并发运行次数，也会发生这种情况。
 
