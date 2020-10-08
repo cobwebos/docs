@@ -975,6 +975,8 @@
           displayName: ARM
         - name: 在区域之间移动
           href: how-to-move-regions.md
+        - name: 阻止更改或删除
+          href: resource-locks.md
     - name: 全球分布
       items:
         - name: 配置多区域写入

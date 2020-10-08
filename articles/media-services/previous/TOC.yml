@@ -302,13 +302,12 @@
               href: hybrid-design-drm-sybsystem.md
             - name: 引用多 DRM 设计
               href: media-services-cenc-with-multidrm-access-control.md
-        - name: 使用 Indexer 进行处理
-          href: media-services-index-content.md
-          items:
-            - name: 任务预设
-              href: indexer-task-preset.md
     - name: 分析内容
       items:
+        - name: 使用 Indexer 进行处理
+          href: media-services-index-content.md
+        - name: 任务预设
+          href: indexer-task-preset.md
         - name: 使用 Face Redactor 进行处理
           href: media-services-face-redaction.md
         - name: Face Redactor 演练
@@ -396,7 +395,7 @@
           href: media-services-dotnet-check-job-progress-with-queues.md
         - name: 使用 Webhook 监视作业通知
           href: media-services-dotnet-check-job-progress-with-webhooks.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: media-services-frequently-asked-questions.md

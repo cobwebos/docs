@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: cd618cf5f2f82b9c87981e961ed401f3409ec9d4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580769"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761322"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>快速入门：与已连接到解决方案的 IoT 即插即用设备交互 (Java)
 
@@ -71,12 +71,12 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 在[为 IoT 即插即用快速入门和教程设置环境](set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
 
 * **IOTHUB_CONNECTION_STRING**：之前记下的 IoT 中心连接字符串。
-* **DEVICE_ID**：`"my-pnp-device"`。
+* **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
 
 在本快速入门中，你将使用以 Java 编写的示例 IoT 解决方案与刚设置的示例设备进行交互。
 
 > [!NOTE]
-> 此示例使用来自 IoT 中心服务客户端的“com.microsoft.azure.sdk.iot.service.*;”命名空间。 若要详细了解如何检索模型 ID，请参阅[开发人员指南](concepts-developer-guide-device-csharp.md)。
+> 此示例使用来自 IoT 中心服务客户端的“com.microsoft.azure.sdk.iot.service.*;”命名空间。 若要详细了解如何检索模型 ID，请参阅[开发人员指南](concepts-developer-guide-service.md)。
 
 1. 打开另一个终端窗口用作服务终端。
 

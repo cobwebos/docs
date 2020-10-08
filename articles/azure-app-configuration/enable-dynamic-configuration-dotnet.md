@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 49ab9090dd2f1860bed84d0494cb862212840e82
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b90334d4978c485033323b398e1409fa5731e813
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207037"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767595"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>教程：在 .NET Framework 应用中使用动态配置
 
@@ -39,7 +39,7 @@ ms.locfileid: "88207037"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
+7. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
@@ -47,7 +47,7 @@ ms.locfileid: "88207037"
 
     暂时将“标签”和“内容类型”保留为空   。
 
-7. 选择“应用”。 
+8. 选择“应用”。 
 
 ## <a name="create-a-net-framework-console-app"></a>创建 .NET Framework 控制台应用
 

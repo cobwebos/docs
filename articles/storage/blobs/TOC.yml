@@ -43,7 +43,7 @@
                   href: storage-quickstart-blobs-python.md
                 - name: Python (v2.1 SDK)
                   href: storage-quickstart-blobs-python-legacy.md
-            - name: Javascript
+            - name: JavaScript
               items:
                 - name: JavaScript（适用于 Node.js 的 v12 SDK）
                   href: storage-quickstart-blobs-nodejs.md
@@ -103,7 +103,7 @@
           href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Python
           href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Javascript
+        - name: JavaScript
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 其他语言
           href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -462,6 +462,8 @@
               href: storage-blob-static-website-how-to.md
             - name: 与 Azure CDN 集成
               href: static-website-content-delivery-network.md
+            - name: 使用 GitHub Actions 将静态站点部署到 Azure 存储
+              href: storage-blobs-static-site-github-actions.md
         - name: 使用自定义域
           href: storage-custom-domain-name.md
         - name: 将事件路由到自定义终结点
@@ -733,7 +735,7 @@
               href: data-lake-storage-directory-file-acl-java.md
             - name: Python
               href: data-lake-storage-directory-file-acl-python.md
-            - name: Javascript
+            - name: JavaScript
               href: data-lake-storage-directory-file-acl-javascript.md
             - name: PowerShell
               href: data-lake-storage-directory-file-acl-powershell.md
@@ -785,7 +787,7 @@
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
         - name: Python
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-        - name: Javascript
+        - name: JavaScript
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2

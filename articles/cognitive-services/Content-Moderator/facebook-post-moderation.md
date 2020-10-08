@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548508"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760183"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
 
 本教程介绍如何使用 Azure 内容审查器帮助审查 Facebook 页面上的帖子和评论。 Facebook 会将访客发布的内容发送到内容审查器服务。 然后，内容审查器工作流会根据内容评分和阈值发布内容，或者在评审工具中创建评审。 有关此方案的可行示例，请参阅[版本 2017 演示视频](https://channel9.msdn.com/Events/Build/2017/T6033)。
+
+> [!IMPORTANT]
+> 2018 年，Facebook 针对 Facebook 应用实施了更严格的审查策略。 如果 Facebook 评审团队尚未评审并批准你的应用，你将无法完成本教程的步骤。
 
 本教程演示如何：
 
@@ -33,9 +36,6 @@ ms.locfileid: "88548508"
 此图演示了此方案的每个组件：
 
 ![通过“FBListener”从 Facebook 接收信息，并通过“CMListener”发送信息的内容审查器示意图](images/tutorial-facebook-moderation.png)
-
-> [!IMPORTANT]
-> 2018 年，Facebook 针对 Facebook 应用实施了更严格的审查策略。 如果 Facebook 评审团队尚未评审并批准你的应用，你将无法完成本教程的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 

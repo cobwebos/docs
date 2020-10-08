@@ -1,14 +1,16 @@
 ---
 title: 教程：使用 Azure 机器人服务创建 FAQ 机器人
 description: 在本教程中，你将使用 QnA Maker 和 Azure 机器人服务创建一个无代码 FAQ 机器人。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: 0ec3b381c4361234b29717164b6b718aff0ae294
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652213"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777394"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>教程：使用 Azure 机器人服务创建 FAQ 机器人
 使用 QnA Maker 和 Azure [机器人服务](https://azure.microsoft.com/en-us/services/bot-service/)，在不编写代码的情况下创建 FAQ 机器人。

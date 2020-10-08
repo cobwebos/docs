@@ -384,6 +384,9 @@
             - name: 将应用从 ADAL 迁移到 MSAL
               href: msal-migration.md
               displayName: migration
+    - name: Microsoft 标识 Web 库
+      href: microsoft-identity-web.md
+      displayName: 'auth, library, .NET Core'
     - name: 身份验证协议
       displayName: Auth protocol
       items:

@@ -20,10 +20,14 @@
       items:
         - name: 获取电话号码
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: 向应用添加通话功能
+          href: quickstarts/voice-video-calling/pstn-call.md
         - name: 发送短信
           href: quickstarts/telephony-sms/send.md
         - name: 处理短信事件
           href: quickstarts/telephony-sms/handle-sms-events.md
+        - name: 在 Azure 逻辑应用中发送短信
+          href: quickstarts/telephony-sms/logic-app.md
     - name: 语音和视频呼叫
       items:
         - name: 在应用中添加语音呼叫

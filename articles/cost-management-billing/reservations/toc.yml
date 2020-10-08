@@ -130,3 +130,7 @@
       href: /rest/api/consumption/usagedetails
     - name: 成本管理 - 消耗预留详细信息 REST API
       href: /rest/api/consumption/reservationsdetails
+- name: 资源
+  items:
+    - name: “借助虚拟机预留实例节省资金”学习模块
+      href: /learn/modules/save-money-with-azure-reserved-instances
