@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661136"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818176"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理单元中添加和管理用户
 
@@ -31,21 +31,30 @@ ms.locfileid: "91661136"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可以通过两种方式将用户分配到管理单元。
+您可以单独或在大容量操作中将用户分配到管理单元。
 
-1. 单独分配
+- 用户配置文件中的单个分配
 
-    1. 可以在门户中转到 Azure AD，选择“用户”，然后选择要分配到管理单元的用户。 然后，可以在左侧面板中选择“管理单元”。 可以通过单击 "分配给管理单元"，然后选择要向其分配用户的管理单元，将用户分配给一个或多个管理单元。
+   1. 以特权角色管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com) 。
+   1. 选择 " **用户** " 并选择要分配到管理单元的用户，以打开用户的配置文件。
+   1. 选择 " **管理单元**"。 可以通过选择 " **分配到管理单元** "，并选择要在其中分配用户的管理单元，将用户分配到一个或多个管理单元。
 
        ![选择“添加”，然后输入管理单元的名称](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. 可以在门户中转到 Azure AD，并在左窗格中选择 "管理单元"，然后选择要在其中分配用户的管理单元。 选择 " **所有用户** "，然后选择 " **添加成员**"。 然后，可以从右侧窗格中选择一个或多个要分配到该管理单元的用户。
+- 从管理单元进行的单独分配
+
+   1. 以特权角色管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com) 。
+   1. 选择 " **管理单元** "，然后选择要在其中分配用户的管理单元。
+   1. 选择 " **所有用户** "，然后选择 " **添加成员** "，从 " **添加成员** " 窗格中选择要分配到管理单元的一个或多个用户。
 
         ![选择一个管理单元，然后选择“添加成员”](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-1. 批量分配
+- 批量分配
 
-    在门户中转到 Azure AD，并选择“管理单元”。 选择要在其中添加用户的管理单元。 单击“所有用户”->“从 .csv 文件添加成员”以继续。 然后，可以下载 CSV 模板并编辑该文件。 格式很简单，需要在每行中添加单个 UPN。 文件准备就绪后，将其保存在适当的位置，然后在步骤 3 中将其上传，如快照中所突出显示。
+   1. 以特权角色管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com) 。
+   1. 选择 " **管理单元**"。
+   1. 选择要在其中添加用户的管理单元。
+   1. 打开 "**所有用户**  >  **添加 .csv 文件中的成员**"。 然后，你可以 (CSV) 模板下载逗号分隔值并编辑该文件。 格式很简单，需要在每行中添加单个用户主体名称。 文件准备就绪后，将其保存在适当的位置，然后将其上传到此步骤中。
 
     ![向管理单元批量分配用户](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 

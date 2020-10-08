@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: 6be33df90ed58dc448009fb0e26ca49c800d1931
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766070"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819084"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在 Front Door 上载入根或顶点域
 Azure 前门使用 CNAME 记录来验证自定义域的加入的域所有权。 前门不会公开与前门配置文件关联的前端 IP 地址。 如果要将顶点域载入 Azure 前门，则无法将其映射到 IP 地址。
@@ -54,7 +54,7 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
 1. 选择 " **保存** " 以提交更改。
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="区域顶点的别名记录&quot;:::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="区域顶点的别名记录&quot;:::
 
 1. 上面的步骤将创建一个指向前门资源的区域顶点记录，还会创建一个的 CNAME 记录映射 &quot;afdverify":::
 
@@ -64,7 +64,7 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
 1. 选择  **证书管理类型** *"使用我自己的证书"*。
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="区域顶点的别名记录&quot;:::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="区域顶点的别名记录&quot;:::
 
 1. 上面的步骤将创建一个指向前门资源的区域顶点记录，还会创建一个的 CNAME 记录映射 &quot;afdverify" 几分钟后，然后再次选择自定义域，查看证书设置的进度。 
 

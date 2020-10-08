@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830676"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818532"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
 问题 - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构（例如，通过部署一个与此类似的模板： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale ）。已定义了缩放规则，其效果良好，但无论在 VM 中施放多少负载，它都不会自动缩放。
@@ -62,11 +62,11 @@ ms.locfileid: "87830676"
     
     如果 Insights 服务无法从 VM 读取数据，它应向你发送电子邮件。 例如，如果 VM 关闭你应收到电子邮件。 请务必查看创建 Azure 帐户时在电子邮件地址中指定的电子邮件。
     
-    此外，还可以自己查看数据。 使用云资源管理器查看 Azure 存储帐户。 例如，使用 [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2) 登录，并选择正在使用的 Azure 订阅。 然后，查看部署模板中的诊断扩展定义引用的诊断存储帐户名称。
+    此外，还可以自己查看数据。 使用云资源管理器查看 Azure 存储帐户。 例如，使用 [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)，登录并选取正在使用的 Azure 订阅。 然后，查看部署模板中的诊断扩展定义引用的诊断存储帐户名称。
     
     ![云资源管理器][explorer]
     
-    你将看到许多表，其中存储着每个 VM 的数据。 以 Linux 和 CPU 指标为例，查看最近的行。 Visual Studio Cloud Explorer 支持查询语言，因此，你可以运行查询。 例如，可以针对“Timestamp gt datetime’2016-02-02T21:20:00Z’”运行查询，以确保获得最近的事件。 时区对应 UTC。 在此处看到的数据是否符合设置的缩放规则？ 在下面的示例中，虚拟机 20 的 CPU 在过去 5 分钟内开始增加到 100%。
+    你将看到许多表，其中存储着每个 VM 的数据。 以 Linux 和 CPU 指标为例，查看最近的行。 Visual Studio Cloud Explorer 支持查询语言，因此可以运行查询。 例如，可以针对“Timestamp gt datetime’2016-02-02T21:20:00Z’”运行查询，以确保获得最近的事件。 时区对应 UTC。 在此处看到的数据是否符合设置的缩放规则？ 在下面的示例中，虚拟机 20 的 CPU 在过去 5 分钟内开始增加到 100%。
     
     ![存储表][tables]
     

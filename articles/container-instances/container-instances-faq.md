@@ -1,15 +1,16 @@
 ---
 title: 常见问题
 description: 有关 Azure 容器实例服务的常见问题解答
-author: dkkapur
+author: macolso
+ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421274"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818494"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -34,21 +35,21 @@ ms.locfileid: "87421274"
 ### <a name="what-windows-base-os-images-are-supported"></a>支持哪些 Windows 基础 OS 映像？
 
 > [!NOTE]
-> 由于在2020中的 Windows 更新后向后兼容性出现问题，下面的映像版本包含我们建议在基础映像中使用的最小版本号。 使用较旧映像版本的当前部署不受影响，但新的部署应遵循以下基本映像。 
+> 由于 Windows 在 2020 年更新后存在后向兼容性问题，因此以下映像版本包括我们建议你在基础映像中使用的最低版本号。 使用较旧映像版本的当前部署不受影响，但新部署应遵循以下基础映像的要求。 
 
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 基础映像
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `sac2016` `10.0.14393.3506` 或更高版本
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2016` `10.0.14393.3506` 或更高版本
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)：`sac2016`、`10.0.14393.3506` 或更新版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)：`ltsc2016`、`10.0.14393.3506` 或更新版本
 
 > [!NOTE]
 > 不支持基于半年频道版本 1709 或 1803 的 Windows 映像。
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像（预览版）
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `1809` `10.0.17763.1040` 或更高版本
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2019` 、 `1809` `10.0.17763.1040` 或更高版本
-* [Windows](https://hub.docker.com/_/microsoft-windows)： `1809` `10.0.17763.1040` 或更高版本
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)：`1809`、`10.0.17763.1040` 或更新版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)：`ltsc2019`、`1809`、`10.0.17763.1040` 或更新版本
+* [Windows](https://hub.docker.com/_/microsoft-windows)：`1809`、`10.0.17763.1040` 或更新版本
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>应在容器中使用哪个 .NET 或 .NET Core 映像层？ 
 
@@ -89,7 +90,7 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>自定义 VNet 中运行的实例可以使用哪些功能？
 
-可以[在所选 Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 IP 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 有关 Azure 容器实例的网络方案和限制，请参阅[虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
+可以[在所选 Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 IP 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 有关 Azure 容器实例的网络方案和限制，请参阅 [虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
 
 ## <a name="pricing"></a>定价
 

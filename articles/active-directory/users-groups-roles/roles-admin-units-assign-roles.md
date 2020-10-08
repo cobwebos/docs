@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450389"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817992"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>向管理单元分配限定范围的角色
 
@@ -38,8 +38,10 @@ ms.locfileid: "91450389"
 密码管理员  |  只能在所分配的管理单元内重置非管理员和密码管理员的密码。
 用户管理员  |  只能在所分配的管理单元内管理用户和组的所有方面，包括重置受限管理员的密码。
 
-## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>可分配给 AU 范围角色的安全主体
-以下安全主体可以分配给 AU 范围的角色：
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>可分配给作用域角色的安全主体
+
+可以将以下安全主体分配给具有管理单元范围的角色：
+
 * 用户
 * 角色可分配的云组 (预览) 
 * 服务主体名称 (SPN)

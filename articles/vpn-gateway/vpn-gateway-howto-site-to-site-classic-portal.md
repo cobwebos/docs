@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 002aa9da465d86392aaaa5d404f67959b341ecf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445933"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818972"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
@@ -104,7 +104,7 @@ ms.locfileid: "91445933"
 
 本地站点通常指本地位置。 它包含 VPN 设备的 IP 地址和地址范围，需要创建到该设备的连接，并且需要通过 VPN 网关将地址范围路由到该设备。
 
-1. 在 VNet 页面的“设置”下，单击“图示”。  
+1. 在 VNet 页的 " **监视**" 下，单击 " **关系图**"。
 1. 在“VPN 连接”页面上  ，单击“你没有任何现有的 VPN 连接。  单击此处开始操作”。
 1. 对于“连接类型”，请让“站点到站点”保持选中状态   。
 4. 单击“本地站点 - 配置所需的设置”  打开“本地站点”  页。 配置设置，然后单击“确定”  保存设置。

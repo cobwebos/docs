@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324053"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819033"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -79,7 +79,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-是的。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
+是。 事实上，Azure 前门支持主机、路径和查询字符串重定向以及 URL 重定向的一部分。 了解有关 [URL 重定向](front-door-url-redirect.md)的详细信息。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>路由规则的处理顺序是什么？
 
@@ -248,6 +248,10 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 1. **证书使用者名称不匹配**：对于 HTTPS 连接，前门要求后端从有效 CA 提供证书，该证书的使用者名称 (s) 与后端主机名匹配。 例如，如果后端主机名设置为 `myapp-centralus.contosonews.net` ，并且在 TLS 握手期间后端提供的证书既没有也没有 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` 使用者名称，则前门将拒绝连接，并导致错误。 
     1. **解决方案**：尽管不建议从符合性的角度考虑，但你可以通过对前门禁用证书使用者名称检查来解决此错误。 这存在于 Azure 门户中的 "设置" 下，并且位于 API 中的 "BackendPoolsSettings" 下。
 2. **后端承载无效 CA 颁发的证书**：只有 [有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 中的证书才能在前门上用于前门。 不允许来自内部 Ca 或自签名证书的证书。
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
+
+否。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

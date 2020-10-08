@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bac3e0dc6c6bcc98bb57989e1335ce6a60872a37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049343"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818331"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件访问：要求对管理员执行 MFA
 
@@ -24,11 +24,12 @@ ms.locfileid: "89049343"
 
 Microsoft 建议你至少要求对以下角色进行 MFA：
 
+* 身份验证管理员
 * 计费管理员
 * 条件访问管理员
 * Exchange 管理员
 * 全局管理员
-* 支持（密码）管理员
+* 支持管理员
 * 密码管理员
 * 安全管理员
 * SharePoint 管理员
@@ -67,12 +68,12 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
       * 用户管理员
    
       > [!WARNING]
-      > 条件性访问策略不支持向用户分配目录角色，该角色作用域为直接作用于对象的 [管理单元](../users-groups-roles/roles-admin-units-assign-roles.md) 或目录角色，如通过 [自定义角色](../users-groups-roles/roles-create-custom.md)。
+      > 条件访问策略不支持为用户分配[范围为管理单元](../users-groups-roles/roles-admin-units-assign-roles.md)的目录角色或范围直接为对象的目录角色（例如通过[自定义角色](../users-groups-roles/roles-create-custom.md)）。
 
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
-   1. 选择“完成”  。
+   1. 选择“完成”。
 1. 在“云应用或操作” > “包含”下方，选择“所有云应用” ，然后选择“完成”。
-1. 在 "**条件**  >  **客户端应用 (预览") **下，在 "**选择要应用此策略的客户端应用**，保留所有默认值并选择"**完成**"。
+1. 在 "**条件**  >  " "**客户端应用**" 下，将 "**配置" 设置**为 **"是"** ，然后在 "**选择要应用此策略的客户端应用"** 下，选择 "设置" **Done**
 1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
 1. 确认设置，然后将“启用策略”设置为“打开”。 
 1. 选择“创建”，以便创建启用策略所需的项目。
