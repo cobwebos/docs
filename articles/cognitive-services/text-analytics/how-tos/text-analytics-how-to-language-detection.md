@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: b5936d68ba98054eb6d98860c6edfaf12d6736d8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142378"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710119"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>示例：通过文本分析检测语言
 
@@ -31,6 +31,8 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 > 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于检测语言，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
 
 ## <a name="preparation"></a>准备工作
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 必须拥有以下格式的 JSON 文档：ID 和文本。
 

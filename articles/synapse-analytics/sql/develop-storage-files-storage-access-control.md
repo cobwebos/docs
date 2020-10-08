@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987131"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91449469"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 按需版本（预览版）对存储帐户的访问
 
@@ -26,7 +26,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 
 ## <a name="supported-storage-authorization-types"></a>支持的存储授权类型
 
-如果文件不是公开可用的，则已登录到 SQL 按需版本资源的用户必须获得访问和查询 Azure 存储中的文件的授权。 可以使用三种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)和[托管标识](?tabs=managed-identity)。
+如果文件不是公开可用的，则已登录到按需 SQL 资源的用户必须被授权访问和查询 Azure 存储中的文件。 可以使用三种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)和[托管标识](?tabs=managed-identity)。
 
 > [!NOTE]
 > **Azure AD 直通**是创建工作区时的默认行为。
@@ -53,7 +53,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 >
 > SAS 令牌：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
-你需要创建数据库范围或服务器范围的凭据来启用通过 SAS 令牌进行的访问。
+若要允许使用 SAS 令牌进行访问，需要创建数据库范围或服务器范围的凭据 
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
@@ -119,7 +119,7 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 
 ## <a name="server-scoped-credential"></a>服务器范围的凭据
 
-当 SQL 登录名在未指定 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数来读取某个存储帐户上的文件时，将使用服务器范围的凭据。 服务器范围的凭据的名称必须与 Azure 存储的 URL 匹配。 可通过运行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 来添加凭据。 需要提供 CREDENTIAL NAME 参数。 该参数必须匹配存储中数据的一部分路径或完整路径（参阅下文）。
+当 SQL 登录名在未指定 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数来读取某个存储帐户上的文件时，将使用服务器范围的凭据。 服务器范围的凭据的名称必须与 Azure 存储的 URL 匹配。 可通过运行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 来添加凭据。 需要提供 CREDENTIAL NAME 参数。 该参数必须匹配存储中数据的一部分路径或完整路径（参阅下文）。
 
 > [!NOTE]
 > 不支持参数 `FOR CRYPTOGRAPHIC PROVIDER`。
@@ -170,7 +170,7 @@ WITH IDENTITY='Managed Identity'
 
 ## <a name="database-scoped-credential"></a>数据库范围的凭据
 
-当任何主体在使用 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数时，或在不访问公共文件的[外部表](develop-tables-external-tables.md)中选择数据时，将使用数据库范围的凭据。 数据库范围的凭据不需要匹配存储帐户的名称，因为它将在定义存储位置的 DATA SOURCE 中显式使用。
+当任何主体在使用 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数时，或在不访问公共文件的[外部表](develop-tables-external-tables.md)中选择数据时，将使用数据库范围的凭据。 数据库范围的凭据不需要匹配存储帐户的名称。 它将在定义存储位置的数据源中显式使用。
 
 数据库范围的凭据允许使用以下身份验证类型来访问 Azure 存储：
 
@@ -268,7 +268,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
-                                DATA_SOURCE = [mysample],
+                                DATA_SOURCE = 'mysample',
                                 FORMAT='PARQUET') as rows;
 GO
 ```
@@ -314,7 +314,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = 'mysample', FORMAT='PARQUET') as rows;
 GO
 ```
 

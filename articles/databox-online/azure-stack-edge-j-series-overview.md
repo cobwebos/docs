@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 265bc1bb86c7fe8424656aa9adb30ddbe847e6fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985652"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91318580"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>什么是 Azure Stack Edge Pro R？
 
-Azure Stack Edge Pro R 是一种硬件即服务解决方案。 Microsoft 为你提供了持久耐用的加固型服务器类边缘设备，用于通过网络将数据传输到 Azure。 这些设备配备有图形处理单元 (GPU)，针对 AI、分析和无服务器计算进行了优化。 加固型设备适合在恶劣的环境中使用。
+Azure Stack Edge Pro R 是一种专为在恶劣环境中使用而设计的加固型边缘计算设备。 Azure Stack Edge Pro R 以“硬件即服务”解决方案的形式提供。 Microsoft 为客户提供了一个云托管设备，该设备充当网络存储网关并具有内置的图形处理单元 (GPU)，支持加速 AI 推理。
 
 本文概述了 Azure Stack Edge Pro R 解决方案、重要功能以及可以部署此设备的场景。
 
@@ -28,14 +28,13 @@ Azure Stack Edge Pro R 具有以下功能：
 
 |功能 |说明  |
 |---------|---------|
-|加固型硬件| 专为恶劣环境设计的加固型服务器类硬件。 设备可通过两人用手提箱携带。 |
+|加固型硬件| 专为恶劣环境设计的加固型服务器类硬件。 便携传输案例中包含的设备。 |
 |云托管     |设备和服务通过 Azure 门户进行管理。|
 |Edge 计算工作负载   |允许分析、处理、筛选数据。 支持 VM 和容器化工作负载。|
 |加速 AI 推断| 由 Nvidia T4 GPU 提供支持。|
-|高性能 | 高性能计算和数据传输。|
 |数据访问     | 使用云 API 从 Azure 存储 Blob 和 Azure 文件中直接访问数据，以便在云中进行其他数据处理。 设备带有本地缓存，以便快速访问最近使用的文件。|
 |断开连接模式| 可以选择通过 Azure Stack Hub 管理设备和服务。 在脱机模式下部署、运行和管理应用程序。 <br> 离线模式支持离线上传方案。|
-|支持的协议     |支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关支持的版本的详细信息，请转到 [Azure Stack Edge Pro R 系统需求](azure-stack-edge-gpu-system-requirements.md)。|
+|支持的文件传输协议     |支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关支持的版本的详细信息，请转到 [Azure Stack Edge Pro R 系统需求](azure-stack-edge-gpu-system-requirements.md)。|
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |双重加密    | 使用自加密驱动器提供第一层加密。 VPN 提供第二层加密。 BitLocker 支持本地加密数据，并通过 https 安全地将数据传输到云中。|
 |带宽限制| 中止以限制在高峰时段使用带宽。|
@@ -61,13 +60,13 @@ Azure Stack Edge Pro R 具有以下功能：
 
 Azure Stack Edge Pro R 解决方案包括 Azure Stack Edge 资源、Azure Stack Edge Pro R 加固型物理设备和本地 Web UI。
 
-- Azure Stack Edge Pro R 物理设备 - Azure Stack Edge Pro R 是单节点设备，可将其配置为向 Azure 发送数据。 该设备是 Microsoft 提供的具有加固型外壳的 1U 服务器。 根据需要，服务器可使用 UPS（也称为 1U）。
+- **Azure Stack Edge Pro R 物理设备** - 加固型传输案例中包含的 1 节点计算和存储设备。 还提供了可选的不间断电源 (UPS)。
 
     ![Azure Stack Edge Pro R 单节点设备](media/azure-stack-edge-j-series-overview/device-image-1.png)
 
 - Azure Stack Edge 资源 - Azure 门户中的一种资源，使用该资源可以通过 Web 界面（可从不同的地理位置访问该界面）管理加固型 Azure Stack Edge Pro R 设备。 使用 Azure Stack Edge 资源可以创建和管理资源、查看和管理设备与警报，以及管理共享。  
 
-- Azure Stack Edge Pro R 本地 Web UI - 使用本地 Web UI 进行初始设备配置，可以运行诊断、关闭和重启 Azure Stack Edge Pro R 设备、查看复制日志，并联系 Microsoft 支持部门以提出服务请求。
+- **Azure Stack Edge Pro R 本地 Web UI** - Azure Stack Edge Pro R 设备上基于浏览器的本地用户界面，主要用于设备的初始配置。 使用本地 Web UI 还可以运行诊断、关闭和重启 Azure Stack Edge Pro 设备、查看复制日志，并联系 Microsoft 支持部门以提出服务请求。
 
 
 ## <a name="region-availability"></a>上市区域
@@ -75,6 +74,8 @@ Azure Stack Edge Pro R 解决方案包括 Azure Stack Edge 资源、Azure Stack 
 将数据传输到其中的 Azure Stack Edge Pro R 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
 - **资源可用性** - 有关 Azure Stack Edge 资源可用的所有区域的列表，请转到[各区域提供的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
+
+- **设备可用性** - 有关 Azure Stack Edge Pro R 设备可供使用的所有国家/地区的列表，请转到 [Azure Stack Edge Pro R 定价](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR)的“Azure Stack Edge Pro R”选项卡中的“可用性”部分。
 
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Azure Stack Edge Pro R 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。
 

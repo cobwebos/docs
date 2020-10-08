@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a4b61b89921b41476ff1c2196502092809862a82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d43c223c0a3e67ff784688255bd75fc61e5c120c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495493"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91288012"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -34,7 +34,7 @@ AAD 授权依赖于 Azure Active Directory，使你能够在单一位置进行�
 
 - **服务器管理员**
 
-  创建 Azure Synapse Analytics 时，必须指定服务器管理员登录名。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。
+  创建 Azure Synapse Analytics 时，必须指定“服务器管理员登录名”。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。
 
 - **Azure Active Directory 管理员**
 
@@ -44,7 +44,7 @@ AAD 授权依赖于 Azure Active Directory，使你能够在单一位置进行�
 
 - 只有这些帐户才能自动连接到服务器上的任何 SQL 数据库。 （其他帐户若要连接到用户数据库，它们必须是数据库的所有者，或者在用户数据库中具有相应的用户帐户。）
 - 这些帐户以 `dbo` 用户的身份进入用户数据库，在用户数据库中拥有所有权限。 （用户数据库的所有者也以 `dbo` 用户的身份进入数据库。）
-- 不会以 `dbo` 用户的身份进入 `master` 数据库，在 master 数据库中拥有受限的权限。
+- 不以 `dbo` 用户的身份进入 `master` 数据库，并且在 master 数据库中的权限受限制。
 - 不是标准 SQL Server `sysadmin` 固定服务器角色的成员，SQL 数据库中未提供此角色。  
 - 可以在 master 数据库和服务器级 IP 防火墙规则中创建、更改及删除数据库、登录名与用户。
 - 可以在 `dbmanager` 和 `loginmanager` 角色中添加和删除成员。
@@ -61,7 +61,7 @@ CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-在登录名存在后，可以在 SQL 按需版本终结点内的各个数据库中创建用户，并向这些用户授予所需的权限。 若要创建用户，可以使用以下语法：
+在登录名存在后，可以在按需 SQL 终结点内的各个数据库中创建用户，并向这些用户授予所需的权限。 若要创建用户，可以使用以下语法：
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -102,7 +102,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
    为了提高性能，会暂时在数据库级别缓存登录名（服务器级主体）。 若要刷新身份验证缓存，请参阅 [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
-3. 使用 [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 语句创建数据库用户。 该用户可以是 Azure Active Directory 身份验证包含数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。示例语句：
+3. 使用 [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 语句创建数据库用户。 该用户可以是 Azure Active Directory 身份验证包含的数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含的数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。示例语句：
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -126,7 +126,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="login-managers"></a>登录名管理器
 
-另一个管理角色是登录管理员角色。 此角色的成员可在 master 数据库中创建新登录名。 如果需要，可以完成相同的步骤（创建登录名和用户，并向 **loginmanager** 角色添加用户），使用户能够在 master 数据库中创建新登录名。 通常不必要创建登录名，因为 Microsoft 建议使用包含的数据库用户在数据库级别进行身份验证，而不要使用基于登录名的用户。 有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+另一个管理角色是登录管理员角色。 此角色的成员可在 master 数据库中创建新登录名。 如果需要，可以完成相同的步骤（创建登录名和用户，并向 **loginmanager** 角色添加用户），使用户能够在 master 数据库中创建新登录名。 登录名通常不是必需的，因为 Microsoft 建议使用包含的数据库用户（在数据库级别进行身份验证），而不使用基于登录名的用户。 有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ---
 
@@ -190,7 +190,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 例如，**db_datareader** 固定数据库角色授予用户对数据库中每个表的读取访问权限，这通常超出了必要的范畴。 
 
-而如果先使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 语句创建自己的用户定义数据库角色，再根据业务需要向每个角色授予所需的最低权限，则要合适得多。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
+最好使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 语句创建自己的用户定义数据库角色，并谨慎地为每个角色授予满足业务需要所需的最低权限。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
 
 ## <a name="permissions"></a>权限
 
@@ -231,7 +231,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 - 在使用 `FOR/FROM LOGIN` 选项执行 `CREATE USER` 语句时，该语句必须是 Transact-SQL 批处理中的唯一语句。
 - 在使用 `WITH LOGIN` 选项执行 `ALTER USER` 语句时，该语句必须是 Transact-SQL 批处理中的唯一语句。
 - 若要执行 `CREATE/ALTER/DROP` 操作，用户需要对数据库拥有 `ALTER ANY USER` 权限。
-- 在数据库角色的所有者尝试在该数据库角色中添加或删除其他数据库用户时，可能会发生以下错误：“此数据库中不存在用户或角色‘Name’”。 在用户对所有者不可见时，会发生此错误。 若要解决此问题，请向角色所有者授予对该用户的 `VIEW DEFINITION` 权限。 
+- 在数据库角色的所有者尝试在该数据库角色中添加或删除其他数据库用户时，可能会发生以下错误：“此数据库中不存在用户或角色‘Name’”。 发生此错误的原因是用户对所有者不可见。 若要解决此问题，请向角色所有者授予对该用户的 `VIEW DEFINITION` 权限。 
 
 ## <a name="next-steps"></a>后续步骤
 

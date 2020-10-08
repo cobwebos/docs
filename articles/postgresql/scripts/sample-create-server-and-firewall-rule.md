@@ -1,19 +1,19 @@
 ---
 title: Azure CLI 脚本 - 创建 Azure Database for PostgreSQL
 description: Azure CLI 示例脚本 - 为 PostgreSQL 服务器创建 Azure 数据库，并配置服务器级防火墙规则。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 80d5135f036f7498223cf2bd7bf1e720eb71f89d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9dcf34211b77653943658c2bad5c1e2796e23c09
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496519"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707586"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 为 PostgreSQL 服务器创建 Azure 数据库并配置防火墙规则
 此示例 CLI 脚本为 PostgreSQL 服务器创建 Azure 数据库，并配置服务器级防火墙规则。 成功运行此脚本后，可以通过所有 Azure 服务和配置的 IP 地址访问 PostgreSQL 服务器。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461759"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91288199"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 资源消耗
 
@@ -29,7 +29,7 @@ SQL 按需版本是一项按查询付费的服务，不要求选取合适的大�
 
 ### <a name="data-warehouse-units"></a>数据仓库单位
 
-Synapse SQL 池表示所预配的分析资源的集合。 分析资源以 CPU、内存和 IO 的组合形式定义。 这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 通过更改服务级别，可更改可供系统使用的 DWU 数，这反过来又会调整系统的性能和成本。
+Synapse SQL 池表示所预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。 这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 更改服务级别会更改可用于系统的 DWU 数量。 此更改进而会调整系统的性能和成本。
 
 若要提高性能，可以增加数据仓库单位数。 若要降低性能，可减少数据仓库单位数。 存储和计算成本分别计费，因此更改数据仓库单位数不会影响存储成本。
 
@@ -73,7 +73,7 @@ CREATE DATABASE mySQLDW
 
 DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
-增加数据库单位时，将以线性方式增加计算资源。 第 2 代提供最佳查询性能和最大规模。 第 2 代系统还可以最大限度利用缓存。
+增加数据仓库单位时，将以线性方式增加计算资源。 第 2 代提供最佳查询性能和最大规模。 第 2 代系统还可以最大限度利用缓存。
 
 #### <a name="capacity-limits"></a>容量限制
 
@@ -124,11 +124,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 若要更改 DWU，请执行以下操作：
 
-1. 打开 [Azure 门户](https://portal.azure.com)，打开数据库，并单击“缩放”。
+1. 依次打开 [Azure 门户](https://portal.azure.com)和数据库，并选择“缩放”。
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
+3. 选择“保存”。 此时会显示确认消息。 选择“是”以确认，或选择“否”以取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -176,11 +176,11 @@ Content-Type: application/json; charset=UTF-8
 
 ### <a name="check-status-of-dwu-changes"></a>检查 DWU 更改的状态
 
-DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实现逻辑以确保某些操作在继续另一项操作前已完成。
+DWU 更改可能需要几分钟才能完成。 如果要自动缩放，请考虑实现逻辑以确保在已完成某些操作后才继续另一项操作。
 
-检查通过不同终结点的数据库状态可允许你正确实现自动化。 门户在完成操作和数据库当前状态时提供通知，但不允许以编程方式检查状态。
+检查通过不同终结点的数据库状态可允许你正确实现自动化。 门户会在完成操作时提供通知，并且会提供数据库当前状态，但不允许以编程方式检查状态。
 
-不能使用 Azure 门户检查向外扩展操作的数据库状态。
+不能使用 Azure 门户为横向扩展操作检查数据库状态。
 
 检查 DWU 更改的状态：
 

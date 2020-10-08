@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 20efae411ae4d2fae9bf3b5e69dbfdd98da1603a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985634"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91318547"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>什么是 Azure Stack Edge Mini R？
 
-Azure Stack Edge Mini R 是一种硬件即服务解决方案。 Microsoft 为你提供了一款具有内置视觉处理单元 (VPU) 且由云管理的超便携式加固型设备，该设备支持加速 AI 推理并具有网络存储网关的所有功能。 这些设备适合在恶劣环境中使用，并针对 AI、分析和无服务器计算进行了优化。
+Azure Stack Edge Mini R 是一种专为在恶劣环境中使用而设计的超便携式加固型边缘计算设备。 Azure Stack Edge Mini R 以“硬件即服务”解决方案的形式提供。 Microsoft 为你提供了一个云托管设备，该设备充当网络存储网关并具有支持加速 AI 推理的内置式视觉处理单元 (VPU)。
 
 本文概述了 Azure Stack Edge Mini R 解决方案、重要功能以及可以部署此设备的场景。
 
@@ -28,7 +28,7 @@ Azure Stack Edge Mini R 具有以下功能：
 
 |功能 |说明  |
 |---------|---------|
-|加固型硬件| 专为恶劣环境而设计的加固型硬件。|
+|加固型硬件| 专为恶劣环境设计的加固型硬件。|
 |超便携| 超便携、电池供电的外形规格。|
 |云托管|设备和服务通过 Azure 门户进行管理。|
 |Edge 计算工作负载|允许分析、处理、筛选数据。<br>支持 VM 和容器化工作负载。 |
@@ -36,7 +36,7 @@ Azure Stack Edge Mini R 具有以下功能：
 |有线和无线 | 允许进行有线数据传输和无线数据传输。|
 |数据访问     | 使用云 API 从 Azure 存储 Blob 和 Azure 文件中直接访问数据，以便在云中进行其他数据处理。 设备带有本地缓存，以便快速访问最近使用的文件。|
 |断开连接模式|  可以选择通过 Azure Stack Hub 管理设备和服务。 在脱机模式下部署、运行和管理应用程序。 <br> 离线模式支持离线上传方案。|
-|支持的协议     |支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关支持的版本的详细信息，请转到 [Azure Stack Edge Mini R 系统要求](azure-stack-edge-gpu-system-requirements.md)。|
+|支持的文件传输协议      |支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关支持的版本的详细信息，请转到 [Azure Stack Edge Mini R 系统要求](azure-stack-edge-gpu-system-requirements.md)。|
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |双重加密    | 使用自加密驱动器提供第一层加密。 VPN 提供第二层加密。 BitLocker 支持本地加密数据，并通过 https 安全地将数据传输到云中。|
 |带宽限制| 中止以限制在高峰时段使用带宽。|
@@ -60,13 +60,13 @@ Azure Stack Edge Mini R 具有以下功能：
 
 Azure Stack Edge Mini R 解决方案包括 Azure Stack Edge 资源、Azure Stack Edge Mini R 超便携式加固型物理设备和本地 Web UI。
 
-* Azure Stack Edge Mini R 物理设备 - 一种超便携式设备，具有板载电池和 Microsoft 提供的加固型外壳，可配置该设备以将数据发送到 Azure。 带电池的设备重量不到 7 磅。
+* **Azure Stack Edge Mini R 物理设备** - Microsoft 提供的超便携式加固型计算和存储设备。 该设备具有板载电池，重量不到 7 磅。
 
     ![Azure Stack Edge Mini R 设备](media/azure-stack-edge-k-series-overview/perspective-view-1.png)
 
 * Azure Stack Edge 资源 - Azure 门户中的一种资源，使用该资源可以通过 Web 界面（可从不同的地理位置访问该界面）管理加固型 Azure Stack Edge Mini R 设备。 使用 Azure Stack Edge 资源可以创建和管理资源、查看和管理设备与警报，以及管理共享。  
 
-* Azure Stack Edge Mini R 本地 Web UI - 使用本地 Web UI 进行初始设备配置，可以运行诊断、关闭和重启 Azure Stack Edge Mini R 设备、查看复制日志，并联系 Microsoft 支持部门以提出服务请求。
+* **Azure Stack Edge Mini R 本地 Web UI** - Azure Stack Edge Mini R 设备上基于浏览器的本地用户界面，主要用于设备的初始配置。 使用本地 Web UI 还可以运行诊断、关闭和重启 Azure Stack Edge Pro 设备、查看复制日志，并联系 Microsoft 支持部门以提出服务请求。
 
 
 ## <a name="region-availability"></a>上市区域
@@ -74,6 +74,8 @@ Azure Stack Edge Mini R 解决方案包括 Azure Stack Edge 资源、Azure Stack
 将数据传输到其中的 Azure Stack Edge Mini R 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
 - **资源可用性** - 有关 Azure Stack Edge 资源可用的所有区域的列表，请转到[各区域提供的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
+
+- **设备可用性** - 有关 Azure Stack Edge Mini R 设备可供使用的所有国家/地区的列表，请转到 [Azure Stack Edge Mini R 定价](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeMiniR)的“Azure Stack Edge Mini R”选项卡中的“可用性”部分。
 
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Azure Stack Edge Mini R 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。
 

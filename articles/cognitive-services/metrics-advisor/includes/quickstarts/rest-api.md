@@ -4,16 +4,17 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.service: metrics-advisor
+ms.service: cognitive-services
+ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/23/2020
 ms.author: aahi
-ms.openlocfilehash: 82eec57b30e177f75a3ac689dc096dfea54c6717
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 603668f5bd4bb3909c895c3b2816b7521312ab59
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943394"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91253730"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,10 +24,17 @@ ms.locfileid: "90943394"
     * 以下 BASH 示例使用 `\` 行继续符。 如果你的控制台或终端使用不同的行继续符，请使用此字符。
 
 > [!TIP]
-> * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) 上找到使用 REST API 的 Python 示例。
-> * 部署指标顾问资源可能需要 10 到 30 分钟。 部署成功后，单击“转到资源”。
-> * 部署完成后，可以开始通过 Web 门户和 REST API 使用指标顾问实例。 可以在创建的资源中找到相应的两个 URL。
-> * 需要从创建的资源中获取密钥和终结点以开始使用该服务，可以在资源中的“密钥和终结点”中找到。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+> * 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/MetricsAdvisor)找到调用 REST API 的 Python 示例。
+> * 指标顾问资源可能需要 10 到 30 分钟才能部署一个服务实例供你使用。 部署成功后，单击“转到资源”。 部署完成后，可以通过 Web 门户和 REST API 这两种方式开始使用指标顾问实例。 
+> * 可以在 Azure 门户的资源“概述”部分中找到 REST API 的 URL。 它将如下所示：
+>    * `https://<instance-name>.cognitiveservices.azure.com/`
+
+开始使用 REST API 需要两个密钥：
+
+* 指标顾问资源的密钥。 可以在 Azure 门户中资源的“密钥和终结点”部分中找到此密钥。
+    * 稍后要将示例中的 `Ocp-Apim-Subscription-Key` 替换为此密钥。 
+* 指标顾问实例的 API 密钥。 可以在指标顾问的 Web 门户中左侧导航菜单上的“API 密钥”中找到此密钥。
+    * 稍后要将示例中的 `x-api-key` 替换为此密钥。
 
 ## <a name="add-a-data-feed-from-a-sample-or-data-source"></a>从示例或数据源添加数据馈送
 
@@ -87,10 +95,10 @@ ms.locfileid: "90943394"
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥和 JSON 值编辑此命令。
 
 ```bash
-curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/datafeeds \
+curl -i https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds \
 -X POST \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY" \
 -H "Content-Type:application/json" \
 -d @body.json
 ```
@@ -100,7 +108,7 @@ curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/datafeeds \
 ```
 HTTP/1.1 201 Created
 Content-Length: 0
-Location: https://gualala-beta-0617.cognitiveservices.azure.com/anomalydetector-ee/v1.0/datafeeds/b5921405-8001-42b2-8746-004ddeeb780d
+Location: https://gualala-beta-0617.cognitiveservices.azure.com/metricsadvisor/v1.0/datafeeds/b5921405-8001-42b2-8746-004ddeeb780d
 x-envoy-upstream-service-time: 564
 apim-request-id: 4e4fe70b-d663-4fb7-a804-b9dc14ba02a3
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
@@ -112,14 +120,14 @@ Date: Thu, 03 Sep 2020 18:29:27 GMT
 使用上述 URL，可以查询在上一步中创建的数据馈送的详细信息。 （在以下步骤中，我们将使用数据馈送信息中的“metricID”）
 
 ```bash
-curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/datafeeds/REPLACE-WITH-YOUR-DATA-FEED-ID \
+curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WITH-YOUR-DATA-FEED-ID \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY"
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY"
 ```
 
 #### <a name="example-response"></a>示例响应
 
-```
+```json
 {
    "dataFeedId":"90919c03-be13-4efa-86e5-aa9dc72764ce",
    "dataFeedName":"test_data_feed_00000007",
@@ -168,12 +176,12 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/datafeeds/REPLAC
    "maxConcurrency":-1,
    "viewMode":"Private",
    "admins":[
-      "zhli2@microsoft.com"
+      "xyz@microsoft.com"
    ],
    "viewers":[
       
    ],
-   "creator":"bowgong@microsoft.com",
+   "creator":"xyz@microsoft.com",
    "status":"Active",
    "createdTime":"2020-09-08T08:39:28Z",
    "isAdmin":true,
@@ -202,10 +210,10 @@ cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源�
 
 
 ```bash
-curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/datafeeds/REPLACE-WITH-YOUR-DATA-FEED-ID/ingestionStatus/query \
+curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WITH-YOUR-DATA-FEED-ID/ingestionStatus/query \
 -X POST \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY" \
 -H "Content-Type:application/json" \
 -d @body.json
 ```
@@ -265,10 +273,10 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/datafeeds/REPLAC
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥、JSON 值和 JSON 大小编辑此命令。
 
 ```bash
-curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/enrichment/anomalyDetection/configurations \
+curl -i https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/enrichment/anomalyDetection/configurations \
 -X POST \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY" \
 -H "Content-Type:application/json" \
 -d @body.json
 ```
@@ -278,7 +286,7 @@ curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/enrichment/an
 ```
 HTTP/1.1 201 Created
 Content-Length: 0
-Location: https://gualala-beta-0617.cognitiveservices.azure.com/anomalydetector-ee/v1.0/enrichment/anomalyDetection/configurations/6a977d61-f0f5-488a-a162-2feb4643ae09
+Location: https://gualala-beta-0617.cognitiveservices.azure.com/metricsadvisor/v1.0/enrichment/anomalyDetection/configurations/6a977d61-f0f5-488a-a162-2feb4643ae09
 x-request-id: 17752fcc-9085-46d5-ad37-c4e9e9ba6a5a
 x-envoy-upstream-service-time: 253
 apim-request-id: 17752fcc-9085-46d5-ad37-c4e9e9ba6a5a
@@ -291,10 +299,10 @@ Date: Tue, 08 Sep 2020 09:50:38 GMT
 
 使用上述“Location”标头的 URL，可以查询已创建的检测配置（在以下步骤中，将在响应内容中使用“anomalyDetectionConfigurationId” ）
 
-```
-curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/enrichment/anomalyDetection/configurations/REPLACE-WITH-YOUR-DETECTION-CONFIGURATION-ID \
+```bash
+curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/enrichment/anomalyDetection/configurations/REPLACE-WITH-YOUR-DETECTION-CONFIGURATION-ID \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY"
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY"
 ```
 
 #### <a name="example-response"></a>示例响应
@@ -349,10 +357,10 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/enrichment/anoma
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥、JSON 值和 JSON 大小编辑此命令。
 
 ```bash
-curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/hooks \
+curl -i https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/hooks \
 -X POST \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY" \
 -H "Content-Type:application/json" \
 -d @body.json
 ```
@@ -362,7 +370,7 @@ curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/hooks \
 ```
 HTTP/1.1 201 Created
 Content-Length: 0
-Location: https://gualala-beta-0617.cognitiveservices.azure.com/anomalydetector-ee/v1.0/hooks/34d677bd-0875-4760-8bf6-24d48abde7c3
+Location: https://gualala-beta-0617.cognitiveservices.azure.com/metricsadvisor/v1.0/hooks/34d677bd-0875-4760-8bf6-24d48abde7c3
 x-request-id: 7b6cc1a6-02cb-405b-bee3-174fdae0a7d2
 x-envoy-upstream-service-time: 1640
 apim-request-id: 7b6cc1a6-02cb-405b-bee3-174fdae0a7d2
@@ -373,10 +381,10 @@ Date: Tue, 08 Sep 2020 10:37:59 GMT
 
 使用上述“Location”标头中的 URL，可以查询已创建的 Webhook。
 
-```
-curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/hooks/REPLACE-WITH-YOUR-HOOK-ID \
+```bash
+curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/hooks/REPLACE-WITH-YOUR-HOOK-ID \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY"
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY"
 ```
 
 #### <a name="example-response"></a>示例响应
@@ -437,10 +445,10 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/hooks/REPLACE-WI
 cURL 命令将从 BASH shell 执行。 请使用自己的资源名称、资源密钥、JSON 值和 JSON 大小编辑此命令。
 
 ```bash
-curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/alert/anomaly/configurations \
+curl -i https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/alert/anomaly/configurations \
 -X POST \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY" \
 -H "Content-Type:application/json" \
 -d @body.json
 ```
@@ -450,7 +458,7 @@ curl -i https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/alert/anomaly
 ```
 HTTP/1.1 201 Created
 Content-Length: 0
-Location: https://gualala-beta-0617.cognitiveservices.azure.com/anomalydetector-ee/v1.0/alert/anomaly/configurations/40004c91-6996-47c0-b8c8-fd20a8f4f0ab
+Location: https://gualala-beta-0617.cognitiveservices.azure.com/metricsadvisor/v1.0/alert/anomaly/configurations/40004c91-6996-47c0-b8c8-fd20a8f4f0ab
 x-request-id: 17752fcc-9085-46d5-ad37-c4e9e9ba6a5a
 x-envoy-upstream-service-time: 253
 apim-request-id: 17752fcc-9085-46d5-ad37-c4e9e9ba6a5a
@@ -463,10 +471,10 @@ Date: Tue, 08 Sep 2020 09:50:38 GMT
 
 使用上述“Location”标头中的 URL，可以查询已创建的警报配置。 （在以下步骤中，将在警报配置中使用“anomalyAlertingConfigurationId”）
 
-```
-curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/alert/anomaly/configurations/REPLACE-WITH-YOUR-ANOMALY-ALERTING-CONFIGURATION-ID \
+```bash
+curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/alert/anomaly/configurations/REPLACE-WITH-YOUR-ANOMALY-ALERTING-CONFIGURATION-ID \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY"
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY"
 ```
 
 #### <a name="example-response"></a>示例响应
@@ -508,10 +516,10 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/alert/anomaly/co
 
 可以使用在上述步骤中创建的警报配置来查询警报。
 
-```
-curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/anomalydetector-ee/v1.0/alert/anomaly/configurations/REPLACE-WITH-YOUR-ANOMALY-ALERTING-CONFIGURATION-ID/alerts/query \
+```bash
+curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/alert/anomaly/configurations/REPLACE-WITH-YOUR-ANOMALY-ALERTING-CONFIGURATION-ID/alerts/query \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY"
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY"
 ```
 
 #### <a name="example-response"></a>示例响应
@@ -536,10 +544,10 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/anomalydetector-
 
 #### <a name="query-anomalies-using-alertid"></a>使用 alertID 查询异常
 
-```
-curl https://REPLACE-WITH-YOUR-ENDPOINT/anomalydetector-ee/v1.0/alert/anomaly/configurations/REPLACE-WITH-YOUR-ANOMALY-ALERTING-CONFIGURATION-ID/alerts/REPLACE-WITH-YOUR-ALERTID/anomalies \
+```bash
+curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/alert/anomaly/configurations/REPLACE-WITH-YOUR-ANOMALY-ALERTING-CONFIGURATION-ID/alerts/REPLACE-WITH-YOUR-ALERTID/anomalies \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
--H "x-api-key: REPLACE-WITH-YOUR-RESOURCE-KEY"
+-H "x-api-key: REPLACE-WITH-YOUR-API-KEY"
 ```
 
 #### <a name="example-response"></a>示例响应

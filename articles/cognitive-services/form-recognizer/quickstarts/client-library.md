@@ -1,26 +1,28 @@
 ---
-title: 快速入门：表单识别器客户端库 | Microsoft Docs
-description: '[产品名称] 客户端库入门。'
+title: 快速入门：表单识别器客户端库
+titleSuffix: Azure Cognitive Services
+description: 使用表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键/值对和表数据。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 0aa72b595bf60184aa840922a3d8a6496bb983a7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: 表单处理, 自动化数据处理
+ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934340"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91318876"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>快速入门：使用表单识别器客户端库
 
-表单识别器客户端库入门。 表单识别器是一个认知服务，该服务使用机器学习技术从表单文档中识别和提取键值对和表数据。 然后，它会输出包含原始文件中的关系的结构化数据。 请遵循以下步骤安装 SDK 包并试用基本任务的示例代码。
+开始使用以你选择的语言编写的表单识别器客户端库。 Azure 表单识别器是一种认知服务，可让你使用机器学习技术构建自动化数据处理软件。 从表单文档中识别并提取文本、键/值对和表数据 &mdash; 该服务将输出结构化数据（其中包括原始文件中的关系）。 请遵循以下步骤安装 SDK 包并试用基本任务的示例代码。
 
 使用表单识别器客户端库执行以下操作：
 

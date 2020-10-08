@@ -1,29 +1,29 @@
 ---
-title: 与连接到 Azure IoT 解决方案的 IoT 即插即用预览版设备交互 (Node.js) | Microsoft Docs
-description: 使用 Node.js 连接到已与 Azure IoT 解决方案连接的 IoT 即插即用预览版设备并与之交互。
+title: 与已连接到 Azure IoT 解决方案的 IoT 即插即用设备交互 (Node.js) | Microsoft Docs
+description: 使用 Node.js 连接到已与 Azure IoT 解决方案连接的 IoT 即插即用设备并与之交互。
 author: elhorton
 ms.author: elhorton
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184731"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91574987"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>快速入门：与连接到解决方案的 IoT 即插即用预览版设备交互 (Node.js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>快速入门：与已连接到解决方案的 IoT 即插即用设备交互 (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-service-selector.md](../../includes/iot-pnp-quickstarts-service-selector.md)]
 
-IoT 即插即用预览版简化了 IoT 的使用，无需了解底层设备实现，就能使用它来与某个设备的功能交互。 本快速入门介绍如何使用 Node.js 来连接和控制已与解决方案连接的 IoT 即插即用设备。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现，就能与某个设备的功能交互。 本快速入门介绍如何使用 Node.js 来连接和控制已与解决方案连接的 IoT 即插即用设备。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 若要完成本快速入门，需要在开发计算机上使用 Node.js。 可以从 [nodejs.org](https://nodejs.org) 下载适用于多个平台的最新推荐版本。
 
@@ -33,29 +33,19 @@ IoT 即插即用预览版简化了 IoT 的使用，无需了解底层设备实�
 node --version
 ```
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-运行以下命令，获取中心的 IoT 中心连接字符串。 请记下此连接字符串，稍后将在本快速入门中使用：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-运行以下命令，获取已添加到中心的设备的设备连接字符串。 请记下此连接字符串，稍后将在本快速入门中使用：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
-```
-
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用示例代码克隆 SDK 存储库
 
-服务 SDK 处于预览阶段，因此需要从 [Node SDK 的预览分支](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)克隆示例。 在所选文件夹中打开一个终端窗口。 运行以下命令，克隆[适用于 Node.js 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub 存储库的 pnp-preview-refresh 分支：
+从 [Node SDK 存储库](https://github.com/Azure/azure-iot-sdk-node)克隆示例。 在所选文件夹中打开一个终端窗口。 运行以下命令，以克隆[用于 Node.js 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub 存储库：
 
 ```cmd/sh
-git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
 ## <a name="run-the-sample-device"></a>运行示例设备
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+若要详细了解示例配置，请参阅[示例自述文件](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md)。
 
 在本快速入门中，可以使用一个以 Node.js 编写的示例恒温器设备作为 IoT 即插即用设备。 运行示例设备：
 
@@ -65,12 +55,6 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
 
     ```cmd/sh
     npm install
-    ```
-
-1. 配置设备连接字符串：
-
-    ```cmd/sh
-    set IOTHUB_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
 1. 使用以下命令运行示例恒温器设备：
@@ -83,25 +67,19 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
 
 ## <a name="run-the-sample-solution"></a>运行示例解决方案
 
+在[为 IoT 即插即用快速入门和教程设置环境](set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
+
+* **IOTHUB_CONNECTION_STRING**：之前记下的 IoT 中心连接字符串。
+* **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
+
 在本快速入门中，你将使用以 Node.js 编写的示例 IoT 解决方案与你刚刚设置的示例设备进行交互。
 
-1. 打开另一个终端窗口用作服务终端。 服务 SDK 处于预览阶段，因此需要从 [Node SDK 的预览分支](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)克隆示例：
+1. 打开另一个终端窗口用作服务终端。
 
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
-    ```
-
-1. 转到该克隆的存储库分支所在的文件夹，然后导航到 /azure-iot-sdk-node/digitaltwins/samples/service/javascript 文件夹。 运行以下命令安装所有依赖项：
+1. 在克隆的 Node SDK 存储库中，导航到“/azure-iot-sdk-node/service/samples/javascript”文件夹。 运行以下命令安装所有依赖项：
 
     ```cmd/sh
     npm install
-    ```
-
-1. 为设备 ID 和 IoT 中心连接字符串配置环境变量：
-
-    ```cmd/sh
-    set IOTHUB_CONNECTION_STRING=<YourIOTHubConnectionString>
-    set IOTHUB_DEVICE_ID=<Your device ID>
     ```
 
 ### <a name="read-a-property"></a>读取属性
@@ -163,7 +141,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
 1. 在设备终端中，将看到设备已接收更新：
 
     ```cmd/sh
-    The following properties will be updated for root interface:
+    The following properties will be updated for the default component:
     {
       targetTemperature: {
         value: 42,
@@ -221,11 +199,9 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>后续步骤
 
 本快速入门已介绍如何将 IoT 即插即用设备连接到 IoT 解决方案。 若要详细了解 IoT 即插即用设备模型，请参阅：
 
 > [!div class="nextstepaction"]
-> [IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)
+> [IoT 即插即用建模开发人员指南](concepts-developer-guide-device-csharp.md)

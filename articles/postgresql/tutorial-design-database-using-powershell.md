@@ -1,19 +1,19 @@
 ---
 title: 教程：设计 Azure Database for PostgreSQL - 单一服务器 - Azure PowerShell
 description: 本教程演示如何使用 Azure PowerShell 创建、配置和查询你的第一个 Azure Database for PostgreSQL - 单一服务器。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b424213a1041c426653e5cb455615111c265746a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d60fbf57847c26d03fab4eb98fd74607984369da
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500055"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707587"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>教程：使用 PowerShell 设计 Azure Database for PostgreSQL - 单一服务器
 

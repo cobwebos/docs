@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260659"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics 速查表
 
@@ -22,18 +22,21 @@ ms.locfileid: "85807020"
 
 Azure Synapse Analytics 速查表引导你了解该服务的基本概念和重要命令。 对于初学者以及想要重点了解最基本 Azure Synapse 主题的用户而言，本文都能提供帮助。
 
-## <a name="architecture"></a>体系结构
+## <a name="basics"></a>基础
 
-> [!div class="mx-imgBorder"]
->![Synapse 体系结构](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+Synapse 工作区是用于在 Azure 中执行基于云的企业分析的安全协作边界。 工作区部署在特定的区域中，并有关联的 ADLS Gen2 帐户和文件系统（用于存储临时数据）。 工作区位于资源组下。
+
+通过工作区，可以使用 SQL 和 Apache spark 执行分析。 可用于 SQL 和 Spark 分析的资源将组织到 SQL 和 Spark 池中。 
+
+## <a name="synapse-sql"></a>Synapse SQL
+Synapse SQL 用于在 Synapse 工作区中执行基于 T-SQL 的分析。 Synapse SQL 有两种使用模型：专用模型和无服务器模型。  对于专用模型，请使用专用 SQL 池。 一个工作区可以有任意数量的这些池。 若要使用无服务器模型，请使用名为“按需 SQL”的无服务器 SQL 池。 每个工作区都有这些池之一。
+
+## <a name="apache-spark-for-synapse"></a>Apache Spark for Synapse
+若要使用 Spark 分析，请在 Synapse 工作区中创建并使用 Spark 池。
 
 ## <a name="terminology"></a>术语
 | 术语                         | 定义      |
 |:---                                 |:---                 |
-| **Synapse 工作区** | 用于在 Azure 中执行基于云的企业分析的安全协作边界。 工作区部署在特定的区域中，并有关联的 ADLS Gen2 帐户和文件系统（用于存储临时数据）。 工作区位于资源组下。 |
-| Synapse SQL   | 使用池或按需版本功能运行分析。  |
-| SQL 池   | 具有相应数据库的 0:N SQL 预配资源可以部署在工作区中。 每个 SQL 池具有一个关联的数据库。 可以手动或自动缩放、暂停和恢复 SQL 池。 SQL 池可以从 100 DWU 纵向扩展到 30000 DWU。       |
-| **SQL 按需版本**   | 为大规模数据构建的分布式数据处理系统，可用于对 Data Lake 中的数据运行 T-SQL 查询。 它是一个无服务器服务，因此你无需管理基础结构。       |
 |Apache Spark for Synapse | Spark 池中使用的 Spark 运行时。 当前支持的版本为使用 Python 3.6.1 的 Spark 2.4、Scala 2.11.12、支持 .NET 的 Apache Spark 0.5，以及 Delta Lake 0.3。  | 
 | **Apache Spark 池**  | 具有相应数据库的 0:N Spark 预配资源可以部署在工作区中。 可以自动暂停、恢复和缩放 Spark 池。  |
 | Spark 应用程序  |   由驱动程序进程和一组执行程序进程构成。 Spark 应用程序在 Spark 池中运行。            |
@@ -41,13 +44,13 @@ Azure Synapse Analytics 速查表引导你了解该服务的基本概念和重�
 | SQL 请求  |   操作，例如通过 SQL 池或 SQL 按需版本运行的查询。 |
 |数据集成| 提供在各种源之间引入数据的功能，并协调在工作区内部或外部运行的活动。| 
 |项目| 该概念涵盖了用户在管理数据源以及进行开发、协调和可视化时所需的所有对象。|
-|笔记本| 支持 Scala、PySpark、C# 和 SparkSQL 的交互式和反应式数据科学与工程接口。 |
+|**笔记本**| 支持 Scala、PySpark、C# 和 SparkSQL 的交互式和反应式数据科学与工程接口。 |
 |Spark 作业定义|用于通过包含代码及其依赖项的程序集 jar 提交 Spark 作业的接口。|
-|数据流|  提供完全可视的体验，无需编写代码即可执行大数据转换。 所有优化和执行操作都采用无服务器方式。 |
-|SQL 脚本| 文件中保存的 SQL 命令集。 一个 SQL 脚本可以包含一个或多个 SQL 语句。 使用 SQL 脚本可以通过 SQL 池或 SQL 按需版本运行 SQL 请求。|
+|**数据流**|  提供完全可视的体验，无需编写代码即可执行大数据转换。 所有优化和执行操作都采用无服务器方式。 |
+|**SQL 脚本**| 文件中保存的 SQL 命令集。 一个 SQL 脚本可以包含一个或多个 SQL 语句。 使用 SQL 脚本可以通过 SQL 池或 SQL 按需版本运行 SQL 请求。|
 |管道| 共同执行某个任务的活动的逻辑分组。|
-|活动| 定义要对数据执行的操作，例如复制数据、运行 Notebook 或 SQL 脚本。|
-|触发器| 执行管道。 可以手动或自动（计划、翻转窗口或基于事件）运行触发器。|
+|**活动**| 定义要对数据执行的操作，例如复制数据、运行 Notebook 或 SQL 脚本。|
+|**触发器**| 执行管道。 可以手动或自动（计划、翻转窗口或基于事件）运行触发器。|
 |链接服务| 连接字符串，定义工作区在连接到外部资源时所需的连接信息。|
 |数据集|  数据的命名视图，它只指向或引用要在活动中作为输入和输出使用的数据。 它属于链接服务。|
 

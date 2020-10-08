@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
-ms.openlocfilehash: a8d34d60cfb4037192abcc20649b478e9f58a6bb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7d2dc1d5d02f1a371d6d94f9eeddf395d49126d7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992076"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620131"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Oracle PeopleSoft - Protected by F5 BIG-IP APM 集成
 
@@ -44,7 +44,7 @@ ms.locfileid: "90992076"
         * F5 IP 智能订阅，用于检测和阻止已知攻击者和恶意流量 
         * 网络硬件安全模块 (HSM)，用于保护和管理强身份验证使用的数字密钥
 1. F5 BIG-IP 系统预配了 APM 模块（LTM 是可选的） 
-1. 尽管是可选的，但我们强烈建议在[同步/故障转移设备组](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG) 中部署 F5 系统，其中包括活动备用对，并具有针对高可用性 (HA) 的浮动 IP 地址。 可以使用链路聚合控制协议 (LACP) 实现进一步的接口冗余。 LACP 将连接的物理接口作为单个接口进行管理 
+1. 尽管是可选的，但我们强烈建议在[同步/故障转移设备组](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG) 中部署 F5 系统，其中包括活动备用对，并具有针对高可用性 (HA) 的浮动 IP 地址。 可以使用链路聚合控制协议 (LACP) 实现进一步的接口冗余。 LACP 将连接的物理接口作为单个虚拟接口（聚合组）管理，并检测组内的任何接口故障。
 
 ## <a name="scenario-description"></a>方案描述
 

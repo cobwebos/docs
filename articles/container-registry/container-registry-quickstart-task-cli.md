@@ -1,20 +1,21 @@
 ---
-title: 快速入门 - 生成和运行容器映像
-description: 使用 Azure 容器注册表快速运行任务，以便在云中按需生成和运行 Docker 容器映像。
+title: 快速入门 - 在 Azure 中按需生成容器映像
+description: 使用 Azure 容器注册表命令可以在 Azure 云中按需快速生成、推送和运行 Docker 容器映像。
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753707"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91538171"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入门：使用 Azure 容器注册表任务生成和运行容器映像
 
-本快速入门介绍如何使用 Azure 容器注册表任务命令在 Azure 本地快速生成、推送和运行 Docker 容器映像，并借此演示如何将“内部循环”开发周期工作卸载到云中。 [ACR 任务][container-registry-tasks-overview]是 Azure 容器注册表中的一套功能，可在整个容器生命周期内帮助管理和修改容器映像。 
+在本快速入门中，你将使用 [Azure 容器注册表任务][container-registry-tasks-overview]命令在 Azure 中以本机方式快速生成、推送和运行 Docker 容器映像，而无需本地安装 Docker。 ACR 任务是 Azure 容器注册表中的一套功能，可在整个容器生命周期内帮助管理和修改容器映像。 此示例说明如何使用本地 Dockerfile 通过按需生成将“内部循环”容器映像开发周期转移到云中。 
 
-完成本快速入门后，请探索 ACR 任务的更高级功能。 ACR 任务可以基于代码提交或基础映像更新自动生成映像，或者同时测试多个容器，此外还支持其他一些方案。 
+完成本快速入门后，请使用[教程](container-registry-tutorial-quick-task.md)探索 ACR 任务的更多高级功能。 ACR 任务可以基于代码提交或基础映像更新自动生成映像，或者同时测试多个容器，此外还支持其他一些方案。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
@@ -45,7 +46,7 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>从 Dockerfile 生成和推送映像
 
-现在，请使用 Azure 容器注册表来生成和推送映像。 首先创建一个工作目录，然后创建一个名为 Dockerfile 的 Dockerfile，其中只有一行内容：`FROM hello-world`。 这是一个从 Docker Hub 中的 `hello-world` 映像生成 Linux 容器映像的简单示例。 你可以创建自己的标准 Dockerfile 并为其他平台生成映像。 如果使用 bash shell，请使用以下命令创建 Dockerfile：
+现在，请使用 Azure 容器注册表来生成和推送映像。 首先创建一个本地工作目录，然后创建一个名为“Dockerfile”的 Dockerfile，其中只有一行内容：`FROM hello-world`。 这是一个从 Docker Hub 中的 `hello-world` 映像生成 Linux 容器映像的简单示例。 你可以创建自己的标准 Dockerfile 并为其他平台生成映像。 如果使用 bash shell，请使用以下命令创建 Dockerfile：
 
 ```bash
 echo FROM hello-world > Dockerfile

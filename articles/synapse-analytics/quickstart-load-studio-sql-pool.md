@@ -4,19 +4,19 @@ description: 通过 Synapse Studio 在 Synapse SQL 中大容量加载数据
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb618f155e659ecd1fa5760117193a9045e6da35
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 142309f75d3b7c93204bb9eaa8e5e0254f879c43
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535121"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91568904"
 ---
-# <a name="bulk-loading-with-synapse-sql"></a>使用 Synapse SQL 进行大容量加载
+# <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入门：使用 Synapse SQL 进行大容量加载
 
 使用 Synapse Studio 中的“大容量加载”向导时，加载数据相当简单。 此向导将引导你使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)创建 T-SQL 脚本以大容量加载数据。 
 
@@ -28,9 +28,9 @@ ms.locfileid: "87535121"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 此向导生成一个使用 AAD 直通身份验证进行身份验证的 COPY 语句。 [AAD 用户必须](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad)至少具有 ADLS Gen2 帐户的存储 Blob 数据参与者 Azure 角色才能访问工作区。
+- 此向导生成一个使用 Azure AD 直通进行身份验证的 COPY 语句。 [Azure AD 用户必须](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad)至少具有 ADLS Gen2 帐户的存储 Blob 数据参与者 Azure 角色才能访问工作区。
 
-- 若要创建一个新表，以便将数据加载到其中，必须具有[使用 COPY 语句的权限](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions)和“创建表”权限。
+- 若要创建一个新表，以便将数据加载到其中，必须具有[使用 COPY 语句所需的权限](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions)和“创建表”权限。
 
 - 与 ADLS Gen2 帐户关联的链接服务必须能够访问要加载的文件/文件夹。 例如，如果链接服务身份验证机制为“托管标识”，则工作区托管标识必须至少对存储帐户拥有存储 Blob 读取者权限。
 
@@ -44,13 +44,13 @@ ms.locfileid: "87535121"
 
     ![选择文件格式设置](./sql/media/bulk-load/bulk-load-file-format-settings.png)
 
-3. 可以单击“预览数据”，了解 COPY 语句如何解析文件，以便配置文件格式设置。 每次更改文件格式设置时单击“预览数据”，了解 COPY 语句将如何使用更新的设置来解析文件：![预览数据](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+3. 可以选择“预览数据”来了解 COPY 语句如何分析文件，以便帮助你配置文件格式设置。 每次更改文件格式设置时选择“预览数据”，以了解 COPY 语句将如何使用更新的设置来分析文件：![预览数据](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
-4. 选择要用于加载的 SQL 池，并对加载是针对现有表还是新表进行选择：![选择目标位置](./sql/media/bulk-load/bulk-load-target-location.png)
+4. 选择要用于加载的 SQL 池，包括选择该加载是针对现有表还是针对新表：![选择目标位置](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. 单击“配置列映射”，以确保具有适当的列映射。 就新表来说，配置列映射对于更新目标列数据类型至关重要：![配置列映射](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. 选择“配置列映射”，以确保具有适当的列映射。 就新表来说，配置列映射对于更新目标列数据类型至关重要：![配置列映射](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
-6. 单击“打开脚本”，此时系统会生成一个可使用 COPY 语句从数据湖加载数据的 T-SQL 脚本：![打开 SQL 脚本](./sql/media/bulk-load/bulk-load-target-final-script.png)
+6. 选择“打开脚本”，此时会生成一个 T-SQL 脚本，其中包含用于从数据湖加载数据的 COPY 语句：![打开 SQL 脚本](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>后续步骤
 

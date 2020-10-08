@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c67440453e5ca8395464369d75bfac418a564764
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943544"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91376612"
 ---
 本快速入门将介绍如何使用适用于 iOS 的 Azure 通信服务呼叫客户端库开始呼叫。
 
@@ -28,30 +28,30 @@ ms.locfileid: "90943544"
 
 ### <a name="creating-the-xcode-project"></a>创建 Xcode 项目
 
-在 Xcode 中，创建新的 iOS 项目，并选择“单视图应用”模板。 本教程使用 [SwiftUI 框架](https://developer.apple.com/xcode/swiftui/)，因此应将“语言”设置为“Swift”，并将“用户界面”设置为“SwiftUI”   。 在本快速入门过程中，不会创建单元测试或 UI 测试。 可随意取消选中“包括单元测试”，还可取消选中“包括 UI 测试” 。
+在 Xcode 中，创建新的 iOS 项目，并选择“单视图应用”模板。 本教程使用 [SwiftUI 框架](https://developer.apple.com/xcode/swiftui/)，因此应将“语言”设置为“Swift”，并将“用户界面”设置为“SwiftUI”   。 在此快速入门过程中，不会创建测试。 可以取消选中“包括测试”。
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="显示 Xcode 中的创建新项目窗口的屏幕截图。":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="显示 Xcode 中“新建项目”窗口的屏幕截图。":::
 
 ### <a name="install-the-package"></a>安装包
 
 将 Azure 通信服务呼叫客户端库及其依赖项（AzureCore.framework 和 AzureCommunication.framework）添加到你的项目。
 
 > [!NOTE]
-> 随着 AzureCommunicationCalling SDK 的发布，你会找到一个 bash 脚本 `BuildAzurePackages.sh`。 运行 `sh ./BuildAzurePackages.sh` 时，该脚本会提供生成的框架包的路径，需要在下一步中将该路径导入到示例应用中。 请注意，在运行该脚本之前，需要设置 Xcode 命令行工具（如果未设置）：启动 Xcode，选择“首选项 -> 位置”。 选择命令行工具的 Xcode 版本。
+> 随着 AzureCommunicationCalling SDK 的发布，你会找到一个 bash 脚本 `BuildAzurePackages.sh`。 运行 `sh ./BuildAzurePackages.sh` 时，该脚本会提供生成的框架包的路径，需要在下一步中将该路径导入到示例应用中。 请注意，在运行该脚本之前，需要设置 Xcode 命令行工具（如果未设置）：启动 Xcode，选择“首选项 -> 位置”。 选择命令行工具的 Xcode 版本。 **BuildAzurePackages.sh 脚本仅适用于 Xcode 11.5 及更高版本**
 
-1. 下载适用于 iOS 的 Azure 通信服务呼叫客户端库。
+1. [下载](https://github.com/Azure/Communication/releases)适用于 iOS 的 Azure 通信服务呼叫客户端库。
 2. 在 Xcode 中，单击项目文件，并选择生成目标以打开项目设置编辑器。
 3. 在“常规”选项卡下，滚动到“框架、库和嵌入内容”部分，然后单击“+”图标  。
-4. 在对话框的左下角，选择“添加文件”，导航到解压缩的客户端库包的 AzureCommunicationCalling.framework 目录 。
+4. 在对话框的左下角，使用下拉框选择“添加文件”，导航到解压缩的客户端库包的 AzureCommunicationCalling.framework 目录 。
     1. 重复最后一步，以便添加 AzureCore.framework 和 AzureCommunication.framework 。
 5. 打开项目设置编辑器的“生成设置”选项卡，滚动到“搜索路径”部分 。 为包含 AzureCommunicationCalling.framework 的目录添加新的“框架搜索路径”条目 。
     1. 添加另一个指向包含依赖项的文件夹的“框架搜索路径”条目。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="显示在 XCode 中更新框架搜索路径的屏幕截图。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="显示 Xcode 中“新建项目”窗口的屏幕截图。":::
 
 ### <a name="request-access-to-the-microphone"></a>请求访问麦克风
 
-若要访问设备的麦克风，需要使用 `NSMicrophoneUsageDescription` 更新应用的信息属性列表。 将关联值设置为将包含在系统用于向用户请求访问权限的对话框中的 `string`。
+若要访问设备的麦克风，需要使用 `NSMicrophoneUsageDescription` 更新应用的信息属性列表。 将关联的值设置为将要包含在系统用于向用户请求访问权限的对话框中的 `string`。
 
 右键单击项目树的 `Info.plist` 条目，然后选择“打开为” > “源代码” 。 将以下代码行添加到顶层 `<dict>` 节，然后保存文件。
 
@@ -121,7 +121,7 @@ struct ContentView: View {
 | ACSCallClient | CallClient 是呼叫客户端库的主入口点。|
 | ACSCallAgent | CallAgent 用于启动和管理呼叫。 |
 | CommunicationUserCredential | CommunicationUserCredential 用作实例化 CallAgent 的令牌凭据。| 
-| CommunicationIndentifier | CommunicationIndentifier 用于表示用户的标识，可以是以下项之一：CommunicationUser/PhoneNumber/CallingApplication。 |
+| CommunicationIdentifier | CommunicationIdentifier 用于表示用户的标识，可以是以下项之一：CommunicationUser/PhoneNumber/CallingApplication。 |
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -192,13 +192,13 @@ func endCall()
 
 可以通过选择“产品” > “运行”或使用 (&#8984;-R) 键盘快捷方式，在 iOS 模拟器上生成并运行应用。
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="快速入门应用的最终外观":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="显示 Xcode 中“新建项目”窗口的屏幕截图。":::
 
 可以通过在“文本”字段中提供用户 ID 并点击“开始呼叫”按钮，建立出站 VOIP 呼叫。 呼叫 `8:echo123` 会将你连接到回显机器人，这对于入门和验证音频设备是否正常运行非常有用。 
 
 > [!NOTE]
 > 首次发出呼叫时，系统将提示你提供麦克风访问权限。 在生产应用程序中，应使用 `AVAudioSession` API [检查权限状态](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)，并在未授予权限时正常更新应用程序的行为。
 
-## <a name="sample"></a>示例
+## <a name="sample-code"></a>代码示例
 
-可以从 [GitHub](https://github.com/Azure/Communication/tree/master/samples/AzureCommunicationCalling/iOS/Swift) 下载示例应用
+可以从 [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift) 下载示例应用

@@ -7,16 +7,19 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245394"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620199"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>教程：创建 Azure 时序见解 Gen1 环境
+
+> [!CAUTION]
+> 这是一篇 Gen1 文章。
 
 本教程逐步讲解如何创建 Azure 时序见解环境，并在其中填充模拟设备的数据。 在本教程中，你将了解如何执行以下操作：
 

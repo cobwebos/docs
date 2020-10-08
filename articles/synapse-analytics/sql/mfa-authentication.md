@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496400"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91361834"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>将多重 AAD 身份验证与 Synapse SQL（针对 MFA 的 SSMS 支持）配合使用
 
@@ -22,13 +22,11 @@ Synapse SQL 支持使用 Active Directory 通用身份验证从 SQL Server Manag
 
 本文讨论各种身份验证选项之间的差异，以及与使用通用身份验证相关的限制。 
 
-**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。 
-
-**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 下载最新版本的 SSMS。
+**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 下载最新版本的 SSMS。
 
 对于本文中讨论的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新连接对话框的外观应类似于下图：
 
-![1mfa-universal-connect](./media/mfa-authentication/1mfa-universal-connect.png "填写“用户名”框。")  
+![屏幕截图显示了“连接到服务器”对话框，你可以在其中选择服务器名称和身份验证选项。](./media/mfa-authentication/1mfa-universal-connect.png "填写“用户名”框。")  
 
 ## <a name="the-five-authentication-options"></a>五个身份验证选项  
 
@@ -51,7 +49,7 @@ Azure MFA 可满足用户简单登录过程的需求，同时可帮助保护数�
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD 域名称或租户 ID 参数
 
-从 [SSMS 版本 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 开始，以来宾用户身份从其他 Azure Active Directory 导入到当前 Active Directory 的用户在连接时可提供 Azure AD 域名或租户 ID。 
+从 [SSMS 版本 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 开始，以来宾用户身份从其他 Azure Active Directory 导入到当前 Active Directory 的用户在连接时可提供 Azure AD 域名或租户 ID。 
 
 来宾用户包括从其他 Azure AD、Microsoft 帐户（如 outlook.com、hotmail.com、live.com）或其他帐户（如 gmail.com）邀请的用户。 此信息使“Active Directory - 通用且具有 MFA 身份验证”  可以识别正确的身份验证机构。 此选项也是支持 outlook.com、hotmail.com、live.com 等 Microsoft 帐户 (MSA) 或非 MSA 帐户的必需选项。 
 
@@ -61,11 +59,11 @@ Azure MFA 可满足用户简单登录过程的需求，同时可帮助保护数�
 
 如果用户是链接到 Azure 服务器的 Azure AD 的本机用户，并且不是 MSA 帐户，则无需提供域名或租户 ID。 
 
-若要输入参数（从 SSMS 版本 17.2 开始），请在“连接到数据库”  对话框中，完成该对话框，选择“Active Directory - 通用且具有 MFA”  身份验证，单击“选项”  ，完成“用户名”  框，然后单击“连接属性”  选项卡。 
+若要输入参数（从 SSMS 版本 17.2 开始），请在“连接到数据库”对话框中，完成该对话框，选择“Active Directory - 通用且具有 MFA 支持”身份验证，选择“选项”，完成“用户名”框，然后选择“连接属性”选项卡。 
 
 选中“AD 域名或租户 ID”  框，然后提供身份验证机构，如域名 (**contosotest.onmicrosoft.com**) 或租户 ID 的 GUID。  
 
-   ![mfa-tenant-ssms](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![屏幕截图显示了“连接属性”选项卡中的“连接到服务器”，其中已输入了值。](./media/mfa-authentication/mfa-tenant-ssms.png)
 
 如果你运行 SSMS 18.x 或更高版本，则来宾用户不再需要 AD 域名或租户 ID，因为 18.x 或更高版本会自动识别它。
 
@@ -80,7 +78,7 @@ Azure MFA 可满足用户简单登录过程的需求，同时可帮助保护数�
 
 默认情况下，用户只拥有连接权限以及需要采用正常方式授予的任何其他数据访问权限。 
 
-请注意，作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”  对话框中选中该框，并添加 AD 域名 `contosotest.onmicrosoft.com`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”  ，否则它处于灰显状态。
+作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”对话框中选中该框，并添加 AD 域名 `contosotest.onmicrosoft.com`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”  ，否则它处于灰显状态。
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Synapse SQL 的通用身份验证限制
 

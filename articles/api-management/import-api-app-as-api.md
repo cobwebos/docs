@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 007598046ae64b390d44e61438b69bd26024b1c4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249484"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626881"
 ---
 # <a name="import-an-api-app-as-an-api"></a>将 API 应用导入为 API
 
@@ -56,7 +56,7 @@ ms.locfileid: "86249484"
 
     * **入门**
     * **不受限制**   
-7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
 8. 选择“创建”。
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 API

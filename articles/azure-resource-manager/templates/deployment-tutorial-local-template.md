@@ -4,13 +4,13 @@ description: 了解如何从本地计算机部署 Azure 资源管理器模板
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: ef52d20b20446e3b8f3b761949bf255b99d358cc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: fe13376ced428713703f2bd5cf33941129dec1d9
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499579"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611616"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>教程：部署本地 Azure 资源管理器模板
 

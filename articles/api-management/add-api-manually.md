@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295255"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631284"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
 
@@ -39,7 +39,7 @@ ms.locfileid: "89295255"
 2. 在左侧菜单中，选择“+ 添加 API”。
 3. 从列表中选择“空白 API”。  
     空白 API![](media/add-api-manually/blank-api.png)  
-4. 输入 API 的设置。 在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+4. 输入 API 的设置。 在[导入和发布第一个 API](import-and-publish.md#import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
 5. 选择“创建” 。
 
 此时，API 管理中没有任何操作映射到后端 API 中的操作。 如果调用通过后端（而不是通过 API 管理）公开的操作，则会收到 404 错误。
