@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81606323"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>映射数据流中的排序转换
@@ -24,7 +24,7 @@ ms.locfileid: "81606323"
 > [!NOTE]
 > 在将数据分布到多个节点和分区的 spark 群集上执行映射数据流。 如果选择在后续转换中对数据进行重新分区，则可能会由于重新组织数据而丢失排序。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ![排序设置](media/data-flow/sort.png "排序")
 
@@ -64,4 +64,4 @@ BasketballStats sort(desc(PTS, true),
 
 ## <a name="next-steps"></a>后续步骤
 
-排序后，您可能希望使用[聚合转换](data-flow-aggregate.md)
+排序后，您可能希望使用 [聚合转换](data-flow-aggregate.md)

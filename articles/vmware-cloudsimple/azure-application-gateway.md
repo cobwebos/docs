@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82185687"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>在 CloudSimple 私有云环境中将 Azure 应用程序网关与 VMware 虚拟机配合使用
@@ -49,7 +49,7 @@ ms.locfileid: "82185687"
 验证是否满足以下先决条件：
 
 * 已创建 Azure 资源管理器和虚拟网络。
-* 已创建 Azure 虚拟网络中的专用子网（适用于应用程序网关）。
+* 已创建 Azure 虚拟网络中应用程序网关) 的专用子网 (。
 * 已创建 CloudSimple 私有云。
 * 虚拟网络中的 IP 子网和私有云中的子网之间没有 IP 冲突。
 
@@ -67,13 +67,13 @@ ms.locfileid: "82185687"
 
 ## <a name="3-deploy-an-azure-application-gateway"></a>3. 部署 Azure 应用程序网关
 
-有关此操作的详细说明，请访问[使用 Azure 门户通过基于路径的路由规则创建应用程序网关](../application-gateway/create-url-route-portal.md)。 下面是所需步骤的摘要：
+有关此操作的详细说明，请访问 [使用 Azure 门户通过基于路径的路由规则创建应用程序网关](../application-gateway/create-url-route-portal.md)。 下面是所需步骤的摘要：
 
 1. 在订阅和资源组中创建虚拟网络。
-2. 在虚拟网络中创建一个子网（用作专用子网）。
-3. 创建标准应用程序网关（可选）：从 "Azure 门户" 主页上，单击页面左上角的 "**资源**  >  **网络**  >  **应用程序网关**"。 选择标准 SKU 和大小，并提供 Azure 订阅、资源组和位置信息。 如果需要，请为此应用程序网关创建新的公共 IP，并提供有关该应用程序网关的虚拟网络和专用子网的详细信息。
+2. 在虚拟网络中创建要用作专用子网) 的子网 (。
+3. 创建标准应用程序网关 (根据需要启用 WAF) ：从 Azure 门户主页，单击页面左上角的 "**资源**" "网络" "  >  **Networking**  >  **应用程序网关**"。 选择标准 SKU 和大小，并提供 Azure 订阅、资源组和位置信息。 如果需要，请为此应用程序网关创建新的公共 IP，并提供有关该应用程序网关的虚拟网络和专用子网的详细信息。
 4. 添加包含虚拟机的后端池，并将其添加到应用程序网关。
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. 在私有云中创建和配置 web 服务器 VM 池
 
-在 vCenter 中，创建具有所选 OS 和 web 服务器的 Vm （如 Windows/IIS 或 Linux/Apache）。 选择为私有云中的 web 层指定的子网/VLAN。 验证 web 服务器虚拟机上至少有一个 vNIC 位于 web 层子网中。
+在 vCenter 中，创建具有所选操作系统和 web 服务器的 Vm， (例如 Windows/IIS 或 Linux/Apache) 。 选择为私有云中的 web 层指定的子网/VLAN。 验证 web 服务器虚拟机上至少有一个 vNIC 位于 web 层子网中。

@@ -1,5 +1,5 @@
 ---
-title: 托管磁盘 VHD 到另一个区域的帐户 (Windows) - PowerShell
+title: 将托管磁盘的 VHD 导出/复制到其他区域的帐户中 (Windows) - PowerShell
 description: Azure PowerShell 脚本示例 - 将托管磁盘的 VHD 导出/复制到相同或不同区域中的存储帐户
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: ef760688e2a91da6e2f8ab759dc1858d3e583655
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: d76fda02f94f85126214de27d88079977824098d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322647"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320126"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell-windows"></a>使用 PowerShell 将托管磁盘的 VHD 导出/复制到不同区域中的存储帐户 (Windows)
 

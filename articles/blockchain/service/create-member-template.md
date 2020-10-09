@@ -5,13 +5,13 @@ services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
-ms.date: 07/16/2020
-ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.date: 09/16/2020
+ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642004"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91292755"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 区块链服务成员
 
@@ -49,14 +49,16 @@ ms.locfileid: "88642004"
     --------|------------
     订阅 | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
     资源组 | 可以创建新的资源组名称，也可以选择订阅中现有的资源组名称。
-    位置 | 选择要创建成员的位置。 联盟中所有成员的位置必须相同。 可用于部署的位置有 westeurope、eastus、southeastasia、westeurope、northeurope、westus2 和 japaneast。 功能在某些地区可能不可用。 Azure 区块链数据管理器在以下 Azure 区域提供：“美国东部”和“西欧”。
-    成员名称 | 为该 Azure 区块链服务成员选择一个唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
+    区域 | 选择区域以创建资源组。 联盟中所有成员的位置必须相同。 可用于部署的位置有 westeurope、eastus、southeastasia、westeurope、northeurope、westus2 和 japaneast。 功能在某些地区可能不可用。 Azure 区块链数据管理器在以下 Azure 区域提供：“美国东部”和“西欧”。
+    Bc 成员名称 | 为该 Azure 区块链服务成员选择一个唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
     联盟名称 | 输入唯一名称。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
-    成员密码 | 成员帐户密码用于加密为你的成员创建的 Ethereum 帐户的私钥。 你使用成员帐户和成员帐户密码进行联盟管理。
-    SKU 层级 | 你的新服务的定价层级。 在“标准”层级和“基本”层级之间进行选择 。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”层。 不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
-    SKU 名称 | 新服务的节点配置和成本。
+    成员密码 | 成员的默认事务节点的密码。 连接到区块链成员的默认事务节点公共终结点时，请使用密码进行基本身份验证。
+    联盟管理帐户密码 | 联盟帐户密码用于加密为成员创建的 Ethereum 帐户的私钥。 它用于联盟管理。
+    SKU 层级 | 你的新服务的定价层级。 在“标准”层级和“基本”层级之间进行选择 。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 如果使用区块链数据管理器或发送大量专用事务，也使用标准层。 不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
+    SKU 名称 | 新服务的节点配置和成本。 对于基本层，使用 B0；对于标准层，使用 S0。
+    位置 | 选择要创建成员的位置。 默认情况下，使用资源组位置 `[resourceGroup().location]`。 联盟中所有成员的位置必须相同。 可用于部署的位置有 westeurope、eastus、southeastasia、westeurope、northeurope、westus2 和 japaneast。 功能在某些地区可能不可用。 Azure 区块链数据管理器在以下 Azure 区域提供：“美国东部”和“西欧”。
 
-1. 选择“购买”以部署模板。
+1. 选择“查看 + 创建”以验证和部署模板。
 
   此处使用 Azure 门户来部署模板。 还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。
 

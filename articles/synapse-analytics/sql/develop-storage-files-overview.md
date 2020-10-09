@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986944"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91288981"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>访问 Synapse SQL 中的外部存储（按需版本）
 
@@ -52,7 +52,7 @@ CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-如果没有与 URL 匹配的服务器级凭据或 SQL 用户没有此凭据的引用权限，则将返回错误。 SQL 主体无法使用某些 Azure AD 标识进行模拟。
+如果没有与 URL 匹配的服务器级凭据，或 SQL 用户没有此凭据的引用权限，则会返回错误。 SQL 主体无法使用某个 Azure AD 标识进行模拟。
 
 ### <a name="direct-access"></a>[直接访问](#tab/direct-access)
 
@@ -75,7 +75,7 @@ SELECT * FROM
  FORMAT= 'parquet') as rows
 ```
 
-执行此查询的用户必须能够访问文件。 如果用户无法使用其 [Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity)或通过[匿名访问](develop-storage-files-storage-access-control.md?tabs=public-access)来直接访问文件，则必须使用 [SAS 令牌](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)或[工作区的托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity)来模拟用户。
+执行此查询的用户必须能够访问文件。 如果用户无法通过其 [Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity)或[匿名访问](develop-storage-files-storage-access-control.md?tabs=public-access)来直接访问文件，则必须使用 [SAS 令牌](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)或[工作区的托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity)来模拟用户。
 
 ### <a name="impersonation"></a>[模拟](#tab/impersonation)
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 具有读取表权限的用户可以使用基于一组 Azure 存储文件夹和文件创建的 EXTERNAL TABLE 来访问外部文件。
 
-[具有创建外部表权限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions)（例如 CREATE TABLE 和 ALTER ANY CREDENTIAL 或 REFERENCES DATABASE SCOPED CREDENTIAL）的用户可以使用以下脚本基于 Azure 存储数据源创建表：
+[具有创建外部表权限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true)（例如 CREATE TABLE 和 ALTER ANY CREDENTIAL 或 REFERENCES DATABASE SCOPED CREDENTIAL）的用户可以使用以下脚本基于 Azure 存储数据源创建表：
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

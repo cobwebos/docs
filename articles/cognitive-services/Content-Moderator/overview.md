@@ -8,24 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 82dc81c540115f08e57f87e63184e1e895c5e4fe
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: cog-serv-seo-aug-2020
+keywords: 内容审查器, azure 内容审查器, 联机审查器, 内容筛选软件, 内容审核服务
+ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309648"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 内容审查器是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、有风险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。 请参阅[审查 API](#moderation-apis) 部分，详细了解不同内容标记表示的意思。
+Azure 内容审查器是一种 AI 服务，可用于处理可能的冒犯性、危险或不可取内容。 它包括由 AI 提供支持的内容审核服务（用于扫描文本、图像和视频以及自动应用内容标记），以及审阅工具（面向一组人工审阅者的在线审查器环境）。
+
+你可能想在应用中内置内容筛选软件，以符合法规或维护用户的预期环境。
 
 ## <a name="where-its-used"></a>使用场合
 
-下面是软件开发人员或团队会使用内容审察器的一些场景：
+下面是软件开发人员或团队需要使用内容审核服务的一些场景：
 
 - 在联机市场中审查产品目录和其他用户生成的内容。
 - 在游戏公司中审查用户生成的游戏项目和聊天室。
@@ -33,7 +37,7 @@ Azure 内容审查器是一项认知服务，用于检查文本、图像和视�
 - 企业媒体公司对其内容进行集中式审查。
 - K-12 教育解决方案提供商为学生和教师筛选掉不当的内容。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 不能使用内容审查器检测非法儿童剥削图像。 不过，合格组织可以使用 [PhotoDNA 云服务](https://www.microsoft.com/photodna "Microsoft PhotoDNA 云服务")来筛查此类内容。
 
 ## <a name="what-it-includes"></a>组成部分
@@ -77,4 +81,4 @@ Azure 内容审查器是一项认知服务，用于检查文本、图像和视�
 
 ## <a name="next-steps"></a>后续步骤
 
-按照[在 Web 上试用内容审查器](quick-start.md)中的说明开始使用内容审查器服务。
+若要开始在 Web 门户上使用内容审查器，请按照[尝试在 Web 上使用内容审查器](quick-start.md)进行操作。 或者，完成[客户端库快速入门](client-libraries.md)以实现代码中的基本方案。

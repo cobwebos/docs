@@ -7,14 +7,14 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 10/07/2020
   ms.author: magoedte
-  ms.openlocfilehash: f03e869e884fff8a1d196817b658c28bbdc55ca9
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 346e64968c4616cb1ebcb02db4f4d6d7bca29526
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90908112"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91825804"
 landingContent:
 - title: 使用已启用 Azure Arc 的服务器将计算机连接到 Azure
   linkLists:
@@ -36,3 +36,9 @@ landingContent:
     links:
     - text: 部署支持 Arc 的服务器代理
       url: ./learn/quick-enable-hybrid-vm.md
+- title: 参考体系结构
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: 管理混合服务器的配置
+      url: /architecture/hybrid/azure-arc-hybrid-config

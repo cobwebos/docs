@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: a3fb3dbf026a696b9d472efcba139c371ff1e587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 92ec7c0a1469c9f02855cd6191faa8514e54c8f0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334920"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828791"
 ---
 | 资源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -41,4 +41,4 @@ ms.locfileid: "80334920"
 | 最大 WAF 自定义规则数|100||
 | 最大 WAF 排除项数|100||
 
-<sup>1</sup> 对于启用了 WAF 的 SKU，建议将资源数限制为 40 以获得最佳性能。
+<sup>1</sup> 对于启用了 WAF 的 SKU，必须将资源数限制为 40。

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 9eee3d5bc53ebe40ba4462f394ffe30cea6b70fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998267"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91320551"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>什么是 Azure Key Vault 托管 HSM（预览版）？
 
@@ -33,7 +33,7 @@ Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、�
 
 - **集中式密钥管理**：在一个位置管理整个组织内的重要高价值密钥。 通过精细控制每个密钥的权限，可根据“最低特权访问”原则控制每个密钥的访问权限。
 - **独立的访问控制**：托管 HSM“本地 RBAC”访问控制模型允许指定的 HSM 群集管理员完全控制甚至连管理组、订阅或资源组管理员都无法重写的 HSM。
-- **通过 FIPS 140-2 级别 3 验证的 HSM**：保护你的数据并满足通过 FIPS（联邦信息保护标准）140-2 级别 3 验证的 HSM 的合规性要求。 托管 HSM 使用 Marvell LiquidSecurity 系列的 HSM。
+- **通过 FIPS 140-2 级别 3 验证的 HSM**：保护你的数据并满足通过 FIPS（联邦信息保护标准）140-2 级别 3 验证的 HSM 的合规性要求。 托管 HSM 使用 Marvell LiquidSecurity HSM 适配器。
 - **监视和审核**：与 Azure Monitor 完全集成。 通过 Azure Monitor 获取所有活动的完整日志。 将 Azure Log Analytics 用于分析和警报。
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>与 Azure 和 Microsoft PaaS/SaaS 服务集成 

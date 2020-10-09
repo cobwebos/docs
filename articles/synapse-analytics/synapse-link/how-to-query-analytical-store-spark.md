@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881848"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91287723"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>使用 Azure Synapse Link 中的 Apache Spark（预览版）与 Azure Cosmos DB 进行交互
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>从容器加载流式处理数据帧
+在此笔势中，你将使用 Spark 流式处理功能将容器中的数据加载到数据帧中。 数据将存储在连接到工作区的主数据湖帐户（和文件系统）中。 
 > [!NOTE]
 > 如果想在 Synapse Apache Spark 中引用外部库，请访问[此处](#external-library-management)了解详细。 例如，如果想要将 Spark 数据帧引入到 Cosmos DB 的 API for Mongo DB 的容器中，可以在[此处](https://docs.mongodb.com/spark-connector/master/)使用用于 Spark 的 Mongo DB 连接器。
 

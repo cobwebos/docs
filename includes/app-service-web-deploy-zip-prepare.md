@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85570181"
 ---
 ## <a name="create-a-project-zip-file"></a>创建一个项目 zip 文件
@@ -27,7 +27,7 @@ ms.locfileid: "85570181"
 
 除非你希望应用服务为你运行部署自动化，否则请运行所有生成任务（例如，`npm`、`bower`、`gulp`、`composer` 和 `pip`），并确保你拥有运行应用所需的所有文件。 如果想要[直接运行包](../articles/app-service/deploy-run-package.md)，则此步骤是必需的。
 
-创建一个包含项目所有内容的 zip 文件。 对于 `dotnet` 项目，此文件夹是命令的输出文件夹 `dotnet publish` 。 以下命令使用您终端中的默认工具执行操作：
+创建一个包含项目所有内容的 zip 文件。 对于 `dotnet` 项目，此文件夹是 `dotnet publish` 命令的输出文件夹。 以下命令使用您终端中的默认工具执行操作：
 
 ```
 # Bash

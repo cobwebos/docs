@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437694"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91265266"
 ---
 # <a name="what-is-identity-protection"></a>什么是“标识保护”？
 
@@ -53,8 +53,8 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 | 匿名 IP 地址 | 从匿名 IP 地址登录（例如：Tor 浏览器，匿名程序 VPN）。 |
 | 不熟悉的登录属性 | 使用给定用户最近未曾出现过的属性进行登录。 |
 | 受恶意软件感染的 IP 地址 | 从受恶意软件感染的 IP 地址进行登录。 |
-| 凭据泄漏 | 此风险检测指示用户的有效凭据已泄漏。 |
-| 密码喷射 | 表示使用常见密码以统一的暴力攻击方式攻击了多个用户名。 |
+| 凭据泄漏 | 指示用户的有效凭据已泄露。 |
+| 密码喷射 | 指示正在使用常见密码以统一的暴力攻击方式攻击多个用户名。 |
 | Azure AD 威胁智能 | Microsoft 的内部和外部威胁智能源已识别出已知的攻击模式。 |
 
 要详细了解这些风险以及如何/何时计算，请参阅[什么是风险](concept-identity-protection-risks.md)一文。
@@ -96,13 +96,13 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 
 目前，安全操作员角色无法访问风险登录报告。
 
-条件访问管理员还可以创建将登录风险作为条件考虑进去的策略。有关详细信息，请参阅[条件访问：条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)一文。
+条件访问管理员还可以创建将登录风险作为条件考虑在内的策略。 有关详细信息，请参阅[条件访问：条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)一文。
 
 ## <a name="license-requirements"></a>许可要求
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 功能 | 详细信息  | Azure AD Free/Office 365 应用 | Azure AD Premium P1|Azure AD Premium P2 |
+| 功能 | 详细信息  | Azure AD Free/Microsoft 365 应用版 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
 | 风险策略 | 用户风险策略（通过标识保护实现）  | 否 | 否 |是 | 
 | 风险策略 | 登录风险策略（通过标识保护或条件访问实现）  | 否 |  否 |是 |

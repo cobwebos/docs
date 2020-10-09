@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292466"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762036"
 ---
 # <a name="chat-concepts"></a>聊天概念
 
@@ -128,7 +128,7 @@ Azure 通信服务聊天客户端库可用于向应用程序添加实时文本�
 
 实现此目标的一种方法是让可信服务充当聊天线程的成员。 假设要启用语言翻译。 此服务负责侦听其他成员 [1] 所交换的消息，调用认知 API 将内容翻译为所需语言 [2,3]，并在聊天线程中将翻译后的结果作为消息进行发送 [4]。 
 
-这样，消息历史记录将同时包含原始消息和已翻译消息。 在客户端应用程序中，可以添加逻辑以显示原始消息或已翻译消息。 请参阅[本快速入门](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate)以了解如何使用认知 API 将文本翻译为不同的语言。 
+这样，消息历史记录将同时包含原始消息和已翻译消息。 在客户端应用程序中，可以添加逻辑以显示原始消息或已翻译消息。 请参阅[本快速入门](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator)以了解如何使用认知 API 将文本翻译为不同的语言。 
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="显示通信服务聊天体系结构的关系图。":::
 

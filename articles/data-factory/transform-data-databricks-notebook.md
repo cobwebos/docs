@@ -12,10 +12,10 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81419011"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
@@ -70,7 +70,7 @@ ms.locfileid: "81419011"
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks 活动支持的库
 
-在上面的 Databricks 活动定义中，可以指定以下库类型： *jar*、*蛋状物*、 *whl*、 *maven*、 *pypi*、 *cran*。
+在上面的 Databricks 活动定义中，可以指定以下库类型： *jar*、 *蛋状物*、 *whl*、 *maven*、 *pypi*、 *cran*。
 
 ```json
 {
@@ -114,16 +114,16 @@ ms.locfileid: "81419011"
 
 ## <a name="passing-parameters-between-notebooks-and-data-factory"></a>在笔记本和数据工厂之间传递参数
 
-可以使用 databricks 活动中的*baseParameters*属性将数据工厂参数传递到笔记本。 
+可以使用 databricks 活动中的 *baseParameters* 属性将数据工厂参数传递到笔记本。 
 
-在某些情况下，你可能需要将笔记本中的某些值传递回数据工厂，该数据工厂可用于数据工厂中的控制流（条件检查）或下游活动（大小限制为2MB）使用。 
+在某些情况下，你可能需要将笔记本中的某些值传递回数据工厂，该数据工厂可用于控制流 (在数据工厂中的条件检查) 或下游活动 (大小限制为) 2MB。 
 
-1. 在笔记本中，可以调用[dbutils （"returnValue"）](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) ，并将相应的 "returnValue" 返回到数据工厂。
+1. 在笔记本中，可以调用 [dbutils ( "returnValue" ) ](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) 并将相应的 "returnValue" 返回到数据工厂。
 
 2. 您可以使用表达式（例如）在数据工厂中使用输出 `'@activity('databricks notebook activity name').output.runOutput'` 。 
 
    > [!IMPORTANT]
-   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例：`'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 

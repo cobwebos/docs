@@ -1,6 +1,6 @@
 ---
 title: 在 SQL 按需版本（预览版）中创建和使用外部表
-description: 本部分介绍如何在 SQL 按需版本（预览版）中创建和使用外部表。 如果希望在 SQL 按需版本中控制对外部数据的访问，并且希望将 Power BI 之类的工具与 SQL 按需版本结合使用，则可使用外部表。
+description: 本部分介绍如何在 SQL 按需版本（预览版）中创建和使用外部表。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206506"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91289321"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>通过 Azure Synapse Analytics 在 SQL 按需版本（预览版）中创建和使用外部表
 
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何将查询结果存储到存储，请参阅[将查询结果存储到存储](../sql/create-external-table-as-select.md)。
+若要了解如何将查询结果存储到存储，请参阅[将查询结果存储到存储](../sql/create-external-table-as-select.md)一文。

@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82203669"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift 资源
@@ -19,7 +19,7 @@ ms.locfileid: "82203669"
 
 ## <a name="azure-regions"></a>Azure 区域
 
-若要部署 Azure Red Hat OpenShift 群集，请参阅[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)。
+若要部署 Azure Red Hat OpenShift 群集，请参阅 [按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) 。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
 
@@ -28,7 +28,7 @@ ms.locfileid: "82203669"
 > [!Important]
 > 每个 VM 都有不同数目的驱动器可附加。 这可能并不像内存或 CPU 大小那样直接清楚。
 > 并非所有 VM 大小都可在所有区域中使用。 即使 API 支持指定的大小，如果在指定的区域中没有大小，则可能会出现错误。
-> 有关详细信息，请参阅[每个区域支持的 VM 大小的当前列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
+> 有关详细信息，请参阅 [每个区域支持的 VM 大小的当前列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) 。
 
 ## <a name="compute-node-sizes"></a>计算节点大小
 
@@ -63,4 +63,4 @@ Azure Red Hat OpenShift REST API 支持以下主/基础结构节点大小：
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程。
+尝试 [创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md) 教程。

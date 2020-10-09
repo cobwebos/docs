@@ -1,6 +1,6 @@
 ---
-title: 快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置单一登录 (SSO)
-description: 本快速入门逐步介绍在 Azure Active Directory (Azure AD) 租户中为应用程序设置单一登录 (SSO) 的过程。
+title: 快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)
+description: 本快速入门逐步介绍在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO) 的过程。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 040cc2dfa48f24fff4c7dda2cb6010efb01e9b86
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d9ef069291f010db510d626ceda959a0342c39e2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300130"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91305777"
 ---
-# <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置单一登录 (SSO)
+# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)
 
 通过为添加到 Azure Active Directory (Azure AD) 租户的应用程序设置单一登录 (SSO)，开始简化用户登录。 设置 SSO 后，用户可以使用其 Azure AD 凭据登录到应用程序。 SSO 在 Azure AD 免费版中提供。
 
@@ -38,7 +37,6 @@ ms.locfileid: "89300130"
 >[!IMPORTANT]
 >使用非生产环境测试本快速入门中的步骤。
 
-
 ## <a name="enable-single-sign-on-for-an-app"></a>为应用启用单一登录
 
 将应用程序添加到 Azure AD 租户后，将显示“概述”页。 如果要配置已添加的应用程序，请查看第一个快速入门。 它将引导你查看已添加到租户的应用程序。 
@@ -48,19 +46,21 @@ ms.locfileid: "89300130"
 1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要设置单一登录的应用程序。
 1. 在“管理”部分中，选择“单一登录”，打开“单一登录”窗格进行编辑  。
 
+    > [!IMPORTANT]
+    > 如果应用使用 OpenID Connect (OIDC) 标准来实现 SSO，则导航中不会显示单一登录选项。 请参阅基于 OIDC 的 SSO 快速入门，了解如何进行设置。
+
     :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="屏幕截图显示 Azure AD 门户中的“单一登录配置”页。":::
 
 1. 选择“SAML”以打开“SSO 配置”页。 在此示例中，我们配置进行 SSO 的应用程序是 GitHub。 设置 GitHub 后，用户可以使用 Azure AD 租户中自己的凭据登录 GitHub。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="屏幕截图显示 GitHub 上的“单一登录配置”页。":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="屏幕截图显示 Azure AD 门户中的“单一登录配置”页。":::
 
 1. 将应用程序配置为使用 Azure AD 进行基于 SAML 的 SSO 的过程因应用程序而异。 本文提供指向 GitHub 指南的链接。 若要查找其他应用的指南，请参阅[有关将 SaaS 应用程序与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/saas-apps/)。
 1. 请按照指南为应用程序设置 SSO。 许多应用程序对 SSO 功能都有特定的订阅要求。 例如，GitHub 需要企业订阅。
     > [!TIP]
     > 若要详细了解 SAML 配置选项，请参阅[配置基于 SAML 的单一登录](configure-saml-single-sign-on.md)。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="屏幕截图显示 GitHub 定价页面的企业订阅中的“单一登录”选项。":::
-
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="屏幕截图显示 Azure AD 门户中的“单一登录配置”页。":::
 
 > [!TIP]
 > 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。

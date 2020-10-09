@@ -180,6 +180,12 @@
           href: basic-age-gating.md
         - name: 定义自定义属性
           href: user-flow-custom-attributes.md
+        - name: API 连接器
+          items:
+            - name: 概述
+              href: api-connectors-overview.md
+            - name: 添加 API 连接器
+              href: add-api-connector.md
         - name: 传递外部 IdP 令牌
           href: idp-pass-through-user-flow.md
     - name: 标识保护和条件访问
@@ -256,12 +262,6 @@
               href: configure-tokens-custom-policy.md
             - name: 配置会话行为
               href: session-behavior-custom-policy.md
-        - name: API 连接器
-          items:
-            - name: 概述
-              href: api-connectors-overview.md
-            - name: 添加 API 连接器
-              href: add-api-connector.md
         - name: 传递外部 IdP 令牌
           href: idp-pass-through-custom.md
         - name: 自适应体验
@@ -322,7 +322,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
