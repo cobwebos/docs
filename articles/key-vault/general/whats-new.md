@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 的新增功能 | Microsoft Docs
+title: Azure Key Vault 的新增功能
 description: Azure Key Vault 的最新更新
 services: key-vault
 author: msmbaldwin
@@ -7,39 +7,42 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 07/27/2020
+ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 78d0f483bb18213fa7d6718f15dd77733a10049c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 324e8b86c42f991fa7b0d566bf71b50ca69a53a6
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069350"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728754"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault 的新增功能
 
-> [!WARNING]
-> 2020 年 7 月：对 Key Vault 进行了两个更新，它们可能会影响服务的实现：[Key Vault 软删除在默认情况下开启](#soft-delete-on-by-default)和 [Azure TLS 证书更改](#azure-tls-certificate-changes)。 有关详细信息，请参阅下文。
-
 下面是 Azure Key Vault 的新增功能。 新增功能和改进也在 [Azure 更新 Key Vault 频道](https://azure.microsoft.com/updates/?category=security&query=Key%20vault)上进行了公布。
 
-## <a name="soft-delete-on-by-default"></a>Key Vault 软删除在默认情况下开启
+## <a name="july-2020"></a>2020 年 7 月
 
-到 2020 年年底，软删除在默认情况下将对所有 Key Vault（新的和预先存在的）处于开启状态。 有关此可能的中断性变更的完整详细信息，以及查找受影响的 Key Vault 并预先更新它们的步骤，请参阅[对所有 Key Vault 启用软删除](soft-delete-change.md)。 
+> [!WARNING]
+> 这两个更新可能影响 Azure Key Vault 实现。
 
-## <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改  
+### <a name="soft-delete-on-by-default"></a>Key Vault 软删除在默认情况下开启
+
+到 2020 年年底，软删除在默认情况下将对所有 Key Vault（新的和预先存在的）处于开启状态****。 有关此可能的中断性变更的完整详细信息，以及查找受影响的 Key Vault 并预先更新它们的步骤，请参阅[对所有 Key Vault 启用软删除](soft-delete-change.md)。 
+
+### <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改  
 
 Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 此更改正在进行中，因为当前 CA 证书不符合某个 CA/浏览器论坛基线要求。
 
 ### <a name="when-will-this-change-happen"></a>此更改将在何时进行？
 
-- Azure Active Directory (Azure AD) 服务在 2020 年 7 月 7 日开始此过渡。
-- 所有新创建的 Azure TLS/SSL 终结点都包含链接到新根 CA 的已更新证书。 
+- [Azure Active Directory](/azure/active-directory) (Azure AD) 服务在 2020 年 7 月 7 日开始此过渡。
+- 所有新创建的 Azure TLS/SSL 终结点都包含链接到新根 CA 的已更新证书。
 - 现有 Azure 终结点将以分阶段的方法从 2020 年 8 月 13 日开始过渡，到 2020 年 10 月 26 日完成。
-- [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub)和 [DPS](/azure/iot-dps/) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)。
+- [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub)和 [DPS](/azure/iot-dps/) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 有关完整详细信息，请参阅 Blob 文章 - [Azure IoT TLS：即将进行更改！（…以及你为何要在意）](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)。
+- [Azure 存储](/azure/storage)将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 有关完整详细信息，请参阅 Blob 文章 - [Azure 存储 TLS：即将进行更改！（…以及你为何要在意）](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)。
 
 > [!IMPORTANT]
-> 进行此更改之后，客户可能需要更新其应用程序，以防止在尝试连接到 Azure 服务时出现连接故障。 
+> 进行此更改之后，客户可能需要更新其应用程序，以防止在尝试连接到 Azure 服务时出现连接故障。
 
 ### <a name="what-is-changing"></a>有什么变化？
 
@@ -66,22 +69,22 @@ Azure 服务使用的 TLS 证书都链接到以下根 CA 之一：
 
 如果此日期发生更改，则会收到新的吊销日期通知。
 
-### <a name="will-this-affect-me"></a>这是否会影响我？
+### <a name="will-this-change-affect-me"></a>此更改将对我产生影响吗？ 
 
 我们预计**大多数 Azure 客户不会**受到影响。  但是，如果应用程序显式指定可接受 CA 的列表，则可能会受到影响。 这种做法称为证书固定。
 
 下面是检测应用程序是否受影响的一些方式：
 
-- 在源代码中搜索在[此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)找到的任何 Microsoft IT TLS CAs 的指纹、公用名和其他证书属性。 如果存在匹配，则应用程序会受到影响。 若要解决此问题，请更新源代码，包括新的 CA。 作为最佳做法，请确保在简短通知时可以添加或编辑 CA。 行业法规要求在 7 天内替换 CA 证书，因此依赖于固定的客户需要迅速做出反应。
+- 在源代码中搜索在[此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)找到的任何 Microsoft IT TLS CAs 的指纹、公用名和其他证书属性。 如果存在匹配，则应用程序会受到影响。 若要解决此问题，请更新源代码，包括新的 CA。 最佳做法是确保在简短通知时可添加或编辑 CA。 行业法规要求在 7 天内替换 CA 证书，因此依赖于固定的客户需要迅速做出反应。
 
 - 如果你的应用程序与 Azure API 或其他 Azure 务集成，并且你不确定它是否使用证书固定，请向应用程序供应商核实。
 
-- 与 Azure 服务进行通信的不同操作系统和语言运行时可能需要额外步骤，才能正确利用这些新的根来构建证书链： 
-    - Linux：许多分发版要求将上面列出的 CA 添加到 /etc/ssl/certs。 有关特定说明，请参阅分发的文档。
+- 与 Azure 服务进行通信的不同操作系统和语言运行时可能需要额外步骤，才能正确利用这些新的根来构建证书链：
+    - Linux：许多发行版要求将 CA 添加到 /etc/ssl/certs。 有关特定说明，请查看发行版的相应文档。
     - **Java**：确保 Java 密钥存储包含上面列出的 CA。
-    - 在断开连接的环境中运行的 Windows：在断开连接的环境中运行的系统需要将上面列出的根添加到受信任的根证书颁发机构存储，并将中间证书添加到中间证书颁发机构存储。
+    - 在断开连接的环境中运行的 Windows：在断开连接的环境中运行的系统需要将新根添加到受信任的根证书颁发机构存储，并将中间证书添加到中间证书颁发机构存储。
     - Android：查看适用于你设备和 Android 版本的文档。
-    - 其他硬件设备（尤其是 IoT）：联系设备制造商。 
+    - 其他硬件设备（尤其是 IoT）：联系设备制造商。
 
 - 如果环境中的防火墙规则设置为仅允许对特定证书吊销列表 (CRL) 下载和/或在线证书状态协议 (OCSP) 验证位置进行出站呼叫。 需要允许以下 CRL 和 OCSP URL：
 

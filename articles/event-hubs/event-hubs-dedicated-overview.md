@@ -4,10 +4,10 @@ description: 本文概述专用 Azure 事件中心，它提供事件中心的单
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322441"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>专用事件中心概述
@@ -53,7 +53,7 @@ ms.locfileid: "85322441"
 
 ## <a name="how-to-onboard"></a>如何加入
 
-通过[Azure 门户](https://aka.ms/eventhubsclusterquickstart)[创建事件中心群集](event-hubs-dedicated-cluster-create-portal.md)的自助服务体验现在处于预览阶段。 如果你有任何疑问或需要事件中心专用层的帮助加入，请联系[事件中心团队](mailto:askeventhubs@microsoft.com)。
+通过[Azure 门户](https://aka.ms/eventhubsclusterquickstart)[创建事件中心群集](event-hubs-dedicated-cluster-create-portal.md)的自助服务体验现在处于预览阶段。 如果你有任何疑问或需要事件中心专用层的帮助加入，请联系 [事件中心团队](mailto:askeventhubs@microsoft.com)。
 
 ## <a name="faqs"></a>常见问题
 
@@ -65,9 +65,9 @@ ms.locfileid: "85322441"
 
 | 有效负载形状 | 接收方 | 入口带宽| 入口消息 | 出口带宽 | 出口消息 | TU 总数 | 每个 CU 的 TU 数 |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB 批 | 2 | 400 MB/秒 | 400k 条消息/秒 | 800 MB/秒 | 800k 条消息/秒 | 400 TU | 100 TU | 
-| 10x10KB 批 | 2 | 666 MB/秒 | 66.6k 条消息/秒 | 1.33 GB/秒 | 133k 条消息/秒 | 666 TU | 166 TU |
-| 6x32KB 批 | 1 | 1.05 GB/秒 | 34k 条消息/秒 | 1.05 GB/秒 | 34k 条消息/秒 | 1000 TU | 250 TU |
+| 100x1KB 批 | 2 | 400 MB/秒 | 400k 消息数/秒 | 800 MB/秒 | 800k 消息数/秒 | 400 TU | 100 TU | 
+| 10x10KB 批 | 2 | 666 MB/秒 | 66.6k 消息数/秒 | 1.33 GB/秒 | 133k 消息数/秒 | 666 TU | 166 TU |
+| 6x32KB 批 | 1 | 1.05 GB/秒 | 34k 消息数/秒 | 1.05 GB/秒 | 34k 消息数/秒 | 1000 TU | 250 TU |
 
 测试中使用了以下条件：
 
@@ -77,7 +77,7 @@ ms.locfileid: "85322441"
 
 #### <a name="can-i-scale-updown-my-cluster"></a>是否可以纵向扩展/纵向缩减群集？
 
-创建后，群集将按最少 4 个小时的使用量计费。 在自助服务体验的预览版本中，你可以向事件中心团队提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)，并在*技术 > 配额 > 请求中纵向扩展或缩减专用群集*，使群集扩大或缩小。 完成纵向缩减群集的请求最多可能需要 7 天。 
+创建后，群集将按最少 4 个小时的使用量计费。 在自助服务体验的预览版本中，你可以向事件中心团队提交 [支持请求](https://ms.portal.azure.com/#create/Microsoft.Support) ，并在 *技术 > 配额 > 请求中纵向扩展或缩减专用群集* ，使群集扩大或缩小。 完成纵向缩减群集的请求最多可能需要 7 天。 
 
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>如何将异地灾难恢复应用于群集？
 

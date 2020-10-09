@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 63c7e0c9569428b55420911f253deee52ce440cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85255392"
 ---
 # <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户中为通知中心配置 Apple Push Notification 服务设置
@@ -30,9 +30,9 @@ ms.locfileid: "85255392"
 
 以下过程提供的步骤演示了如何为通知中心配置 Apple Push Notification 服务 (APNS) 设置：
 
-1. 在 Azure 门户的“通知中心”页上，在左侧菜单中选择“Apple (APNS)”。  
+1. 在 Azure 门户的“通知中心”页上，在左侧菜单中选择“Apple (APNS)”。
 
-1. 对于“身份验证模式”，请选择“证书”或“令牌”。   
+1. 对于“身份验证模式”，请选择“证书”或“令牌”。
 
    - 如果选择“证书”：
       - 选择文件图标，再选择要上传的 .p12 文件。
@@ -49,4 +49,4 @@ ms.locfileid: "85255392"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将通知发送到 iOS 设备的分步说明的教程，请参阅以下文章：[使用 Azure 通知中心向 ios 应用程序发送推送通知](ios-sdk-get-started.md)。
+如需通过教程来了解如何将通知发送到 iOS 设备的分步说明，请参阅以下文章：[使用 Azure 通知中心向 iOS 应用发送推送通知](ios-sdk-get-started.md)。

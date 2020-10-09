@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85299001"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
@@ -73,25 +73,25 @@ IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备�
    sudo apt-get update
    ```
 
-查看 IoT Edge 的可用版本。
+查看哪些 IoT Edge 版本可用。
 
    ```bash
    apt list -a iotedge
    ```
 
-如果要更新到最新版本的安全守护程序，请使用以下命令，该命令还会将**libiothsm 标准**更新到最新版本：
+如果要更新到最新版本的安全守护程序，请使用以下命令，该命令还会将 **libiothsm-std** 更新到最新版本：
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-如果要更新到安全守护程序的特定版本，请从 apt 列表输出中指定版本。 每当更新**iotedge**时，它会自动尝试将**libiothsm 标准**包更新到其最新版本，这可能会导致依赖项冲突。 如果你不打算使用最新版本，请确保将两个包用于同一版本。 例如，以下命令将安装特定版本的1.0.9 版本：
+如果要更新到特定版本的安全守护程序，请从 apt 列表输出中指定该版本。 每当更新 **iotedge** 时，它都会自动尝试将 **libiothsm-std** 包更新到其最新版本，这可能会导致依赖项冲突。 如果不打算使用最新版本，请确保两个包都是针对同一版本。 例如，以下命令安装 1.0.9 发行版的特定版本：
 
    ```bash
    sudo apt-get install iotedge=1.0.9-1 libiothsm-std=1.0.9-1
    ```
 
-如果你想要安装的版本无法通过 apt 获取，你可以使用卷来面向[IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)存储库中的任何版本。 对于要安装的任何版本，请找到设备的相应**libiothsm**和**iotedge**文件。 右键单击每个文件对应的链接，并复制链接地址。 使用链接地址安装这些组件的特定版本：
+如果要安装的版本无法通过 apt-get 获取，则可使用 curl 将 [IoT Edge 发行版](https://github.com/Azure/azure-iotedge/releases)存储库中的任何版本作为目标。 不管要安装哪个版本，请找到设备的相应 **libiothsm-std** 和 **iotedge** 文件。 右键单击每个文件对应的链接，并复制链接地址。 使用链接地址安装这些组件的特定版本：
 
 ```bash
 curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
@@ -205,9 +205,9 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 Azure IoT Edge 定期发布新版 IoT Edge 服务。 在发布每个稳定版本之前，会有一个或多个候选发布 (RC) 版本。 RC 版本包括发布版的所有计划内功能，但仍需进行测试和验证。 若要提前测试某项新功能，可以安装 RC 版本，然后通过 GitHub 提供反馈。
 
-候选发布版本遵循相同的版本编号约定，但会在末尾追加 **-rc** 和一个增量数字。 可以在与稳定版本相同的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)列表中查看候选发布版本。 例如，查找**1.0.9-rc5**和**1.0.9-rc6**，在**1.0.9**之前提供两个候选发布版本。 还可以看到 RC 版本带有**预发行版**标签。
+候选发布版本遵循相同的版本编号约定，但会在末尾追加 **-rc** 和一个增量数字。 可以在与稳定版本相同的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)列表中查看候选发布版本。 例如，可以找到 **1.0.9-rc5** 和 **1.0.9-rc6** 这两个在 **1.0.9** 之前发布的候选发布版本。 还可以看到 RC 版本带有**预发行版**标签。
 
-IoT Edge 代理和中心模块包含根据相同约定标记的 RC 版本。 例如， **mcr.microsoft.com/azureiotedge-hub:1.0.9-rc6**。
+IoT Edge 代理和中心模块包含根据相同约定标记的 RC 版本。 例如 **mcr.microsoft.com/azureiotedge-hub:1.0.9-rc6**。
 
 充当预览版的候选发布版本不会包括在常规安装程序所针对的最新版本中。 需要手动将要测试的 RC 版资产设为目标。 大多数情况下，安装或更新到 RC 版本的过程与将目标设为任何其他特定版本的 IoT Edge 相同。
 
@@ -222,4 +222,4 @@ IoT Edge 代理和中心模块包含根据相同约定标记的 RC 版本。 例
 
 查看最新的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-在[物联网博客](https://azure.microsoft.com/blog/topics/internet-of-things/)中随时了解最新的更新和公告
+持续关注[物联网博客](https://azure.microsoft.com/blog/topics/internet-of-things/)中的最新更新和通告

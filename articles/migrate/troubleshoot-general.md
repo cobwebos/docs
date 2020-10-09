@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: hamusa
 ms.openlocfilehash: 433f3cc29e334a9034fa073d4ace735fc7e7e3ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75725866"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
-[Azure Migrate](migrate-services-overview.md)提供了一个用于评估和迁移的工具中心，以及第三方独立软件供应商（ISV）产品。 本文将帮助你排查 Azure Migrate、Azure Migrate 服务器评估和 Azure Migrate 服务器迁移的问题。
+[Azure Migrate](migrate-services-overview.md) 提供了一个用于评估和迁移的工具中心，以及第三方独立软件供应商 (ISV) 产品。 本文将帮助你排查 Azure Migrate、Azure Migrate 服务器评估和 Azure Migrate 服务器迁移的问题。
 
 ## <a name="how-do-i-create-or-find-a-project"></a>如何实现创建或查找项目？
 
-查看[Azure Migrate 项目疑难解答指南](troubleshoot-project.md)。
+查看 [Azure Migrate 项目疑难解答指南](troubleshoot-project.md)。
 
 ## <a name="i-cant-get-the-appliance-working"></a>无法使设备正常运行
 
-查看有关设备部署的[常见问题的解答](troubleshoot-appliance-discovery.md)。
+查看有关设备部署的 [常见问题的解答](troubleshoot-appliance-discovery.md) 。
 
 ## <a name="machines-arent-discovered"></a>未发现计算机
 
@@ -36,4 +36,4 @@ ms.locfileid: "75725866"
 
 ## <a name="assessment-isnt-working"></a>评估不起作用
 
-[查看](troubleshoot-assessment.md)常见的评估问题和错误。
+[查看](troubleshoot-assessment.md) 常见的评估问题和错误。

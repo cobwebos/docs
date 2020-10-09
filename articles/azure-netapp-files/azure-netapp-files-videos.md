@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
 ms.openlocfilehash: aca6899da3c92cca0fd8564da5ec3d1679eb2579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75890980"
 ---
 # <a name="azure-netapp-files-videos"></a>Azure NetApp 文件视频
@@ -26,5 +26,5 @@ ms.locfileid: "75890980"
 
 有多个视频可帮助你了解有关 Azure NetApp 文件的详细信息：  
 
-* [Microsoft Ignite 2019：使用 Azure Netapp 文件运行最苛刻的企业文件工作负载](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions)，提供 Azure netapp 文件（包括用例和演示）的简要介绍，并深入了解功能和路线图。
-* [Kirk Ryan 讨论的 Azure Netapp 文件](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists)是一系列专门用于 Azure NetApp 文件的视频、教程和演示。 
+* [Microsoft Ignite 2019：使用 Azure Netapp 文件运行最苛刻的企业文件工作负载](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions) ，提供 Azure netapp 文件（包括用例和演示）的简要介绍，并深入了解功能和路线图。
+* [Kirk Ryan 讨论的 Azure Netapp 文件](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists) 是一系列专门用于 Azure NetApp 文件的视频、教程和演示。 

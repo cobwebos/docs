@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75666544"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure 无服务器：通过 Azure 逻辑应用和 Azure Functions 构建基于云的应用和解决方案概述
@@ -23,7 +23,7 @@ ms.locfileid: "75666544"
 
 无服务器的意思并不是说没有服务器，而是说开发人员不需要考虑服务器。 在传统应用程序开发中，很大一部分工作是解决与缩放、托管以及监视解决方案相关的问题以满足应用程序的需求。 使用无服务器产品/服务时，解决方案中已考虑了这些问题。 此外，无服务器应用是按基于消耗的计划计费的。 如果永远不使用应用，则不会产生费用。 这些功能有助于开发人员集中精力处理解决方案的业务逻辑。
 
-用于无服务器的核心 Azure 服务是[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)和[Azure Functions](https://azure.microsoft.com/services/functions/)。 两种解决方案都遵守上述原则，有助于开发人员通过最少的代码构建可靠的云应用。
+用于无服务器的核心 Azure 服务是 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/) 和 [Azure Functions](https://azure.microsoft.com/services/functions/)。 两种解决方案都遵守上述原则，有助于开发人员通过最少的代码构建可靠的云应用。
 
 ## <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 

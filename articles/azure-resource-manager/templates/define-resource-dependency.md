@@ -4,15 +4,15 @@ description: 介绍如何在部署期间将一个资源设置为依赖于另一�
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85255205"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>在 ARM 模板中定义部署资源的顺序
 
-部署资源时，可能需要确保其他资源在部署之前存在。 例如，在部署数据库之前，需要一个逻辑 SQL 服务器。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。
+部署资源时，可能需要确保其他资源在部署之前存在。 例如，在部署数据库之前，需要逻辑 SQL Server。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。
 
 Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 只需为部署在同一模板中的资源定义依赖关系。
 
@@ -59,7 +59,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 每个父资源仅接受特定的资源类型作为子资源。 可接受的资源类型在父资源的 [模板架构](https://github.com/Azure/azure-resource-manager-schemas) 中指定。 子资源类型的名称包含父资源类型的名称，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 都是 **Microsoft.Web/sites** 的子资源。
 
-以下示例显示了逻辑 SQL server 和数据库。 请注意，在数据库和服务器之间定义了显式依赖关系，尽管数据库是服务器的子级。
+以下示例显示了逻辑 SQL Server 和数据库。 请注意，在数据库与服务器之间定义了显式依赖关系，尽管数据库是服务器的子级。
 
 ```json
 "resources": [

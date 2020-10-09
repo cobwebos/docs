@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650937"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>使用 Azure Policy 为托管应用程序部署关联
@@ -39,7 +39,7 @@ DeployIfNotExists 评估 它在资源提供程序处理了所选资源类型的�
 
 ## <a name="getting-help"></a>获取帮助
 
-如果有关于 Azure 自定义资源提供程序开发的问题，请尝试[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 添加标记 ```azure-custom-providers``` 可以快速得到回复！
+如果有关于 Azure 自定义资源提供程序开发的问题，请尝试 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 添加标记 ```azure-custom-providers``` 可以快速得到回复！
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,19 +6,19 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650456"
 ---
 # <a name="custom-resource-proxy-reference"></a>自定义资源代理引用
 
-本文将指导实现代理自定义资源的终结点的要求。 如果不熟悉 Azure 自定义资源提供程序，请参阅[自定义资源提供程序概述](overview.md)。
+本文将指导实现代理自定义资源的终结点的要求。 如果不熟悉 Azure 自定义资源提供程序，请参阅 [自定义资源提供程序概述](overview.md)。
 
 ## <a name="how-to-define-a-proxy-resource-endpoint"></a>如何定义代理资源终结点
 
-可以通过将**routingType**指定为 "proxy" 来创建代理资源。
+可以通过将 **routingType** 指定为 "proxy" 来创建代理资源。
 
 示例自定义资源提供程序：
 
@@ -42,7 +42,7 @@ ms.locfileid: "75650456"
 
 ## <a name="building-proxy-resource-endpoint"></a>生成代理资源终结点
 
-实现 "代理" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType**将为、和生成新的 AZURE 资源 API， `PUT` `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源。
+实现 "代理" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType** 将为、和生成新的 AZURE 资源 API， `PUT` `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源。
 
 > [!NOTE]
 > `id`、 `name` 和 `type` 字段不是必需的，但需要将自定义资源与现有的 Azure 生态系统相集成。
@@ -65,11 +65,11 @@ ms.locfileid: "75650456"
 
 参数引用：
 
-Property | 示例 | 说明
+properties | 示例 | 说明
 ---|---|---
 name | '{myCustomResourceName}' | 自定义资源的名称。
 类型 | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | 资源类型命名空间。
-id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | 资源 ID。
+ID | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | 资源 ID。
 
 ### <a name="create-a-custom-resource"></a>创建自定义资源
 
@@ -90,7 +90,7 @@ Content-Type: application/json
 }
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将转发到以下形式的 **终结点** ：
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -107,12 +107,12 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
 
-**终结点**回复
+**终结点** 回复
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -160,7 +160,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将转发到以下形式的 **终结点** ：
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -168,12 +168,12 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
 
-**终结点**回复
+**终结点** 回复
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -197,7 +197,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将转发到以下形式的 **终结点** ：
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -205,12 +205,12 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
 
-**终结点**回复
+**终结点** 回复
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -258,7 +258,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将转发到以下形式的 **终结点** ：
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -266,13 +266,13 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
 - 资源列表应置于顶级 `value` 属性下。
 
-**终结点**回复
+**终结点** 回复
 
 ``` HTTP
 HTTP/1.1 200 OK

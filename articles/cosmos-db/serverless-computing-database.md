@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263254"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
@@ -61,7 +61,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 下图显示在 Azure 门户中为此触发器编写的代码。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure Cosmos DB 和 Azure Functions 如何集成":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>财务用例 - 计时器触发器和输入绑定
 
@@ -75,13 +75,13 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 下图显示了 Azure 门户中适用于此方案的代码。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="用于财务方案的计时器触发器的 Index.js 文件":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Azure Cosmos DB 和 Azure Functions 如何集成":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="用于财务方案的计时器触发器的 Run.csx 文件":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Azure Cosmos DB 和 Azure Functions 如何集成":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>游戏用例 - 适用于 Cosmos DB 的 Azure Functions 触发器和输出绑定 
 
-在游戏中，创建新用户时，可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，可以将结果写入到[Azure Cosmos DB 或 SQL 数据库]()中，以便于检索。
+在游戏中，创建新用户时，可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，将结果写入 [Azure Cosmos DB 或 SQL 数据库]()以便于检索。
 
 **实施：** 使用适用于 Cosmos DB 的 Azure Functions 触发器和输出绑定
 

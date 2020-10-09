@@ -4,10 +4,10 @@ description: 本文提供有关使用共享访问签名 (SAS) 授权访问 Azure
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85323125"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>使用共享访问签名授权访问事件中心资源

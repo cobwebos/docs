@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 流分析作业处理 Azure 事件�
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85312888"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>使用 Azure 流分析处理事件中心的数据 

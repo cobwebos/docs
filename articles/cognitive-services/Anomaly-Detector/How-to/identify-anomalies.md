@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71840226"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>如何：在时序数据中使用异常探测器 API  
@@ -47,7 +47,7 @@ ms.locfileid: "71840226"
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>调整较低和较高异常情况检测边界
 
-默认情况下，使用`expectedValue`、 `upperMargin`和`lowerMargin`计算异常情况检测的上限和下限。 如果需要不同的边界，则建议`marginScale`将应用到`upperMargin`或`lowerMargin`。 将按如下所示计算边界：
+默认情况下，使用、和计算异常情况检测的上限和 `expectedValue` 下限 `upperMargin` `lowerMargin` 。 如果需要不同的边界，则建议将应用 `marginScale` 到 `upperMargin` 或 `lowerMargin` 。 将按如下所示计算边界：
 
 |边界  |计算  |
 |---------|---------|
@@ -71,4 +71,4 @@ ms.locfileid: "71840226"
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是异常检测器 API？](../overview.md)
-* [快速入门：使用异常探测器检测时序数据中的异常 REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [快速入门：使用异常检测器 REST API 检测时序数据的异常](../quickstarts/detect-data-anomalies-csharp.md)

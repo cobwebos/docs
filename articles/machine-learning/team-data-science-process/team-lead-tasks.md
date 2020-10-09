@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75864275"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process 团队主管的任务
@@ -77,7 +77,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 - 没有多个数据科学团队的小型数据科学小组。 
 - 具有多个数据科学团队的较大型数据科学小组，不过，该科学小组希望通过小组级冲刺规划等活动来优化团队间协作。 
 
-如果团队选择将团队特定的存储库置于单个组项目下，则团队主管应使用类似于* \<TeamName> 模板*和* \<TeamName> 实用工具*的名称创建存储库。 例如： *TeamATemplate*和*TeamAUtilities*。 
+如果团队选择将团队特定的存储库置于单个组项目下，则团队主管应使用类似于* \<TeamName> 模板*和* \<TeamName> 实用工具*的名称创建存储库。 例如： *TeamATemplate* 和 *TeamAUtilities*。 
 
 在任何情况下，团队主管都需要让其团队成员知道要设置和克隆哪个模板和实用工具存储库。 项目主管应当按照[数据科学团队的项目主管任务](project-lead-tasks.md)所述在单独的项目下或者在单个项目下创建项目存储库。 
 
@@ -199,7 +199,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
    
 1. 切换到创建的目录。
    
-1. 在 Git Bash 中运行命令 `git clone <clone URL>` ，其中 \<clone URL> 是从**克隆**对话框中复制的 URL。
+1. 在 Git Bash 中运行命令 `git clone <clone URL>` ，其中 \<clone URL> 是从 **克隆** 对话框中复制的 URL。
    
    例如，使用以下命令之一将 **TeamUtilities** 存储库克隆到本地计算机上的 *MyTeam* 目录。 
    

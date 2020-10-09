@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72968739"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>自动识别和转录多语言内容（预览版）
+# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a> (预览自动识别和转录多语言内容) 
 
 视频索引器支持自动语言标识和在多语言内容中进行脚本。 此过程涉及在音频中自动识别不同段中的口述语言，发送要转录的媒体文件的每个段并将其合并回一个统一脚本。 
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>选择针对门户编制索引的多语言标识
 
-可在上传和索引视频时选择**多语言检测**。 或者，你可以在重新索引视频时选择**多语言检测**。 以下步骤说明如何重新索引：
+可在上传和索引视频时选择 **多语言检测** 。 或者，你可以在重新索引视频时选择 **多语言检测**  。 以下步骤说明如何重新索引：
 
 1. 浏览到[视频索引器](https://vi.microsoft.com/)网站并登录。
-1. 请在 "**库**" 页上，将鼠标悬停在要重新索引的视频的名称上。 
-1. 在右下角，单击 "**重新索引视频**" 按钮。 
+1. 请在 " **库** " 页上，将鼠标悬停在要重新索引的视频的名称上。 
+1. 在右下角，单击 " **重新索引视频** " 按钮。 
 1. 在 "**重新索引视频**" 对话框中，从 "**视频源语言**" 下拉框中选择 "**多语言检测**"。
 
     * 当某个视频被索引为多语言时，"见解" 页将包含该选项，并显示其他见解类型，使用户能够查看哪个段是转录的语言 "口头 language"。
@@ -39,7 +39,7 @@ ms.locfileid: "72968739"
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>针对 API 的索引选择多语言识别
 
-使用 API 为视频编制[索引或重新创建索引时](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)，请 `multi-language detection` 在参数中选择选项 `sourceLanguage` 。
+使用 API 为视频编制 [索引或重新创建索引时](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) ，请 `multi-language detection` 在参数中选择选项 `sourceLanguage` 。
 
 ### <a name="model-output"></a>模型输出
 
@@ -81,8 +81,8 @@ ms.locfileid: "72968739"
 * 为每种语言检测的最小段长度-15 秒。
 * 语言检测偏移平均是3秒。
 * 语音应是连续的。 语言间的频繁分支结构可能会影响模型的性能。
-* 非本机扬声器的语音可能会影响模型性能（例如，当发言人使用其母语，并切换到另一种语言）时。
-* 该模型用于识别具有合理音频噪声（非语音命令、唱歌等）的自发对话语音。
+* 非本机扬声器的语音可能会影响模型的性能 (例如，当发言人使用其母语时，它们会切换到另一种语言) 。
+* 该模型用于识别具有合理音频噪声的自发对话语音， (非语音命令、唱歌等 ) 。
 * 项目创建和编辑当前不适用于多语言视频。
 * 使用多语言检测时，自定义语言模型不可用。
 * 不支持添加关键字。

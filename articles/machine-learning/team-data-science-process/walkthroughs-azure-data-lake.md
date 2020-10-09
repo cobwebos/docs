@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75864173"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>使用 U-SQL 的 Azure Data Lake 数据科学演练
@@ -32,6 +32,6 @@ ms.locfileid: "75864173"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关团队数据科学过程的概述，请参阅[团队数据科学过程概述](overview.md)。
+有关团队数据科学过程的概述，请参阅 [团队数据科学过程概述](overview.md)。
 
 有关 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 此生命周期概述了项目执行时通常遵循的步骤。 

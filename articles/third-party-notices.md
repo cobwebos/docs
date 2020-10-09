@@ -7,10 +7,10 @@ ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72750430"
 ---
 # <a name="legal-notices"></a>法律声明
@@ -21,7 +21,7 @@ Microsoft、Windows、Microsoft Azure 和/或其他在本文档中引用的 Micr
 该项目的许可证没有授予你使用任何 Microsoft 名称、徽标或商标的权利。
 Microsoft 的一般商标指导原则可在中找到 [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653) 。
 
-隐私信息可在[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
+隐私信息可在 [https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 
 Microsoft 和任何参与者通过暗示、禁止或其他方式保留其他所有权利，无论是他们各自的版权、专利权利，还是商标权利。
 

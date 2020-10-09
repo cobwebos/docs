@@ -1,7 +1,7 @@
 ---
 title: 使用共享访问签名的工作流
 titleSuffix: Microsoft Genomics
-description: 本文演示如何使用共享访问签名（SAS）而不是存储帐户密钥将工作流提交到 Microsoft 基因组学服务。
+description: 本文演示如何使用共享访问签名 (SAS) （而不是存储帐户密钥）将工作流提交到 Microsoft 基因组学服务。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248588"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS 而非存储帐户密钥将工作流提交到 Microsoft 基因组学 
 
-本文演示如何使用包含[共享访问签名（SAS）（](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)而不是存储帐户密钥）的 config.txt 文件，将工作流提交到 Microsoft 基因组学服务。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
+本文演示如何使用 config.txt 文件将工作流提交到 Microsoft 基因组学服务，该文件包含 (SAS) 而不是存储帐户密钥的 [共享访问签名 ](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
 
 本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果已使用提供的示例数据成功提交工作流，则可继续阅读本文。 
 

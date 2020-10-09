@@ -8,10 +8,10 @@ ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262814"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>作为键值存储 Azure Cosmos DB-费用概述
@@ -35,7 +35,7 @@ Azure Cosmos DB 性能基于以[请求单位](request-units.md)（RU/秒）表�
 
 ## <a name="cost-of-reads-and-writes"></a>读取和写入成本
 
-如果你预配 1000 RU/s，则这些金额将为 3600000 RU/小时，将会在美国和欧洲为该小时 $0.08 收费。 对于 1 KB 大小的数据项，这意味着可以使用预配的吞吐量消费 360 万次读取或 72 万次写入（360 万 RU / 5）。 规范化为百万次读取和写入，开销为 $0.022/百万（$0.08/3.6）和 $ 0.111/百万写入（$0.08/0.72）。 如下表中所示，百万次读写费用极低。
+如果你预配 1000 RU/s，则这些金额为 3600000 RU/小时，将在美国和欧洲)  (小时的成本为 $0.08。 对于 1 KB 大小的数据项，这意味着可以使用预配的吞吐量消费 360 万次读取或 72 万次写入（360 万 RU / 5）。 规范化为百万次读取和写入，成本为 $0.022 (/百万 $0.08/3.6) ，$ 0.111/百万次写入 ($0.08/0.72) 。 如下表中所示，百万次读写费用极低。
 
 |项大小|1 百万次读取的费用|1 百万次写入的费用|
 |-------------|-------|--------|
@@ -43,7 +43,7 @@ Azure Cosmos DB 性能基于以[请求单位](request-units.md)（RU/秒）表�
 |100 KB|$0.222|$1.111|
 
 
-大多数基本 Blob 或对象存储针对百万次读取事务收取 $0.40，针对百万次写入事务收取 $5。 如果以最佳方式使用，Cosmos DB 可能比其他解决方案要便宜98% （适用于 1 KB 事务）。
+大多数基本 Blob 或对象存储针对百万次读取事务收取 $0.40，针对百万次写入事务收取 $5。 如果以最佳方式使用，Cosmos DB 可能比其他 (的解决方案要便宜98%，) 。
 
 ## <a name="next-steps"></a>后续步骤
 

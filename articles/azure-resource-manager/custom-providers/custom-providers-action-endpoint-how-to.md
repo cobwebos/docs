@@ -6,21 +6,21 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650391"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>向 Azure REST API 添加自定义操作
 
-本文将介绍创建实现自定义操作的 Azure 自定义资源提供程序终结点的要求和最佳实践。 如果不熟悉 Azure 自定义资源提供程序，请参阅[自定义资源提供程序概述](overview.md)。
+本文将介绍创建实现自定义操作的 Azure 自定义资源提供程序终结点的要求和最佳实践。 如果不熟悉 Azure 自定义资源提供程序，请参阅 [自定义资源提供程序概述](overview.md)。
 
 ## <a name="how-to-define-an-action-endpoint"></a>如何定义操作终结点
 
 **终结点**是指向服务的 URL，该服务在其和 Azure 之间实现基础协定。 终结点在自定义资源提供程序中定义，可以是任何可公开访问的 URL。 下面的示例具有一个**action**由 `myCustomAction` 实现的调用的操作 `endpointURL` 。
 
-示例**ResourceProvider**：
+示例 **ResourceProvider**：
 
 ```JSON
 {
@@ -42,7 +42,7 @@ ms.locfileid: "75650391"
 
 ## <a name="building-an-action-endpoint"></a>构建操作终结点
 
-实现**操作**的**终结点**必须处理 Azure 中新 API 的请求和响应。 当创建具有**操作**的自定义资源提供程序时，它将在 Azure 中生成一组新的 api。 在这种情况下，该操作将为调用生成新的 Azure 操作 API `POST` ：
+实现**操作**的**终结点**必须处理 Azure 中新 API 的请求和响应。 当创建具有 **操作** 的自定义资源提供程序时，它将在 Azure 中生成一组新的 api。 在这种情况下，该操作将为调用生成新的 Azure 操作 API `POST` ：
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将转发到以下形式的 **终结点** ：
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -78,7 +78,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
@@ -130,18 +130,18 @@ az resource invoke-action --action {actionName} \
                             }'
 ```
 
-参数 | 必需 | 描述
+参数 | 必须 | 说明
 ---|---|---
-action | *是的* | 在**ResourceProvider**中定义的操作的名称。
+action | *是的* | 在 **ResourceProvider**中定义的操作的名称。
 ids | *是的* | **ResourceProvider**的资源 ID。
-request-body | 否** | 将发送到**终结点**的请求正文。
+request-body | 否** | 将发送到 **终结点**的请求正文。
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 > [!NOTE]
 > 操作在 Azure 资源管理器模板中具有有限的支持。 若要在模板中调用操作，它必须 [`list`](../templates/template-functions-resource.md#list) 在名称中包含前缀。
 
-包含 List 操作的示例**ResourceProvider** ：
+包含 List 操作的示例 **ResourceProvider** ：
 
 ```JSON
 {
@@ -184,11 +184,11 @@ request-body | 否** | 将发送到**终结点**的请求正文。
 }
 ```
 
-参数 | 必需 | 描述
+参数 | 必须 | 说明
 ---|---|---
 resourceIdentifier | *是的* | **ResourceProvider**的资源 ID。
 apiVersion | *是的* | 资源运行时的 API 版本。 应始终为 "2018-09-01-preview"。
-functionValues | 否** | 将发送到**终结点**的请求正文。
+functionValues | 否** | 将发送到 **终结点**的请求正文。
 
 ## <a name="next-steps"></a>后续步骤
 

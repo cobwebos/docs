@@ -11,14 +11,14 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248598"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何与 Microsoft 基因组学联系以获取支持
-本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 如果无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题](frequently-asked-questions-genomics.md)排查问题，这会很有帮助。 
+本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 如果无法使用 [故障排除指南](troubleshooting-guide-genomics.md) 或 [常见问题](frequently-asked-questions-genomics.md)排查问题，这会很有帮助。 
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>通过 Azure 门户创建支持票证

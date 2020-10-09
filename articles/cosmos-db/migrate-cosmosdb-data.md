@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263538"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>将数百 TB 的数据迁移到 Azure Cosmos DB 
@@ -22,7 +22,7 @@ Azure Cosmos DB 可以存储 TB 级的数据。 可以执行大规模数据迁�
 
 ## <a name="tools-for-data-migration"></a>数据迁移工具 
 
-目前，Azure Cosmos DB 迁移策略根据所选的 API 和数据大小而异。 迁移较小的数据集–用于验证数据建模、查询性能、分区键选择等等–可以选择[数据迁移工具](import-data.md)或[Azure 数据工厂的 Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)。 如果你熟悉 Spark，则还可以选择使用 [Azure Cosmos DB Spark 连接器](spark-connector.md)来迁移数据。
+目前，Azure Cosmos DB 迁移策略根据所选的 API 和数据大小而异。 迁移较小的数据集–用于验证数据建模、查询性能、分区键选择等等–可以选择 [数据迁移工具](import-data.md) 或 [Azure 数据工厂的 Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)。 如果你熟悉 Spark，则还可以选择使用 [Azure Cosmos DB Spark 连接器](spark-connector.md)来迁移数据。
 
 ## <a name="challenges-for-large-scale-migrations"></a>大规模迁移的挑战 
 
@@ -143,9 +143,9 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 完成迁移后，可以验证 Azure Cosmos DB 中的文档计数是否与源数据库中的文档计数相同。 在此示例中，Azure Cosmos DB 中的总大小为 65 TB。 迁移后，可以有选择地打开索引，并且可以将 ru 降低到工作负荷操作所需的级别。
 
 ## <a name="contact-the-azure-cosmos-db-team"></a>联系 Azure Cosmos DB 团队
-虽然可以遵循本指南成功地将大型数据集迁移到 Azure Cosmos DB，但对于大规模迁移，我们建议联系 Azure Cosmos DB 产品团队来验证数据建模并完成一般性的体系结构评审。 产品团队还可以根据数据集和工作负荷提出可能适用于你的其他性能和成本优化方案。 若要联系 Azure Cosmos DB 团队获取大规模迁移的帮助，你可以在 "常规建议" 问题类型和 "大（TB +）迁移" 问题子类型下打开支持票证，如下所示。
+虽然可以遵循本指南成功地将大型数据集迁移到 Azure Cosmos DB，但对于大规模迁移，我们建议联系 Azure Cosmos DB 产品团队来验证数据建模并完成一般性的体系结构评审。 产品团队还可以根据数据集和工作负荷提出可能适用于你的其他性能和成本优化方案。 若要联系 Azure Cosmos DB 团队获取大规模迁移的帮助，你可以在 "常规建议" 问题类型和 "大 (TB +) 迁移" 问题子类型下打开支持票证，如下所示。
 
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="迁移支持主题":::
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="迁移工具设置":::
 
 
 ## <a name="next-steps"></a>后续步骤

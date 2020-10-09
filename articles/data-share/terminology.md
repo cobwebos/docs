@@ -1,16 +1,16 @@
 ---
 title: Azure Data Share 术语
-description: 了解用于描述 Azure 数据共享中使用的资源（数据访问接口、数据使用者、数据共享、共享订阅、快照、邀请、收件人）的常用术语。
+description: '了解用于描述 Azure 数据共享中使用的资源的常见术语 (数据提供程序、数据使用者、数据共享、共享订阅、快照、邀请、收件人。 ) '
 ms.service: data-share
 author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73468556"
 ---
 # <a name="azure-data-share-concepts"></a>Azure 数据共享概念 
@@ -31,9 +31,9 @@ Azure 数据共享引入了一些与数据共享相关的新术语。 本文介�
 
 ## <a name="share-subscription"></a>共享订阅 
 
-当数据使用者接受来自数据提供程序的数据共享邀请时，将创建共享订阅。 数据访问接口可以通过导航到其 Azure 数据共享帐户中的 "**已发送共享**"，然后选择 "**共享订阅**" 来查看活动共享订阅。
+当数据使用者接受来自数据提供程序的数据共享邀请时，将创建共享订阅。 数据访问接口可以通过导航到其 Azure 数据共享帐户中的 " **已发送共享** "，然后选择 " **共享订阅**" 来查看活动共享订阅。
 
-数据使用者可以通过导航到**收到的共享**并查看其接收共享的状态来检查它们是否有活动的共享订阅。 
+数据使用者可以通过导航到 **收到的共享** 并查看其接收共享的状态来检查它们是否有活动的共享订阅。 
 
 ## <a name="snapshot"></a>快照
 

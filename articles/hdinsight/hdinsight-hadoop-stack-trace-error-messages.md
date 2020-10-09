@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 3987a2d208bb96120d443300068ea739acbb4131
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75680241"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight 中的 Apache Hadoop 索引故障排除文章
@@ -21,7 +21,7 @@ ms.locfileid: "75680241"
 
 ## <a name="out-of-memory-error"></a>内存不足错误
 
-* [解决 HDInsight 中的 Apache Hive 内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)：从 Hive 查询修复内存不足错误（OOM）。 客户方案包括跨多个大型表运行的查询。
+* [解决 HDInsight 中的 Apache Hive 内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)： (OOM) 从 Hive 查询修复内存不足错误。 客户方案包括跨多个大型表运行的查询。
 
 ## <a name="apache-hive-query-performance"></a>Apache Hive 查询性能
 

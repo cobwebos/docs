@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 05/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 7fc46d06b68dca074da060b4866186a6242ffad2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72757384"
 ---
 # <a name="content-moderator-api-reference"></a>内容审查器 API 参考
 
 可以通过以下方式开始 Azure 内容审查器 Api 入门：
 
-- 在 Azure 门户中，[订阅内容审查器 API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。
-- 请参阅[尝试在 web 上内容审查器](quick-start.md)，以利用[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)进行注册。
+- 在 Azure 门户中， [订阅内容审查器 API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。
+- 请参阅 [尝试在 web 上内容审查器](quick-start.md) ，以利用 [内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)进行注册。
 
 ## <a name="moderation-apis"></a>审查 API
 
