@@ -106,7 +106,7 @@
           href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
         - name: Node.js SDK 示例
           href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: '以 C# 编写的 REST API 示例'
+        - name: 以 C# 编写的 REST API 示例
           href: samples-rest.md
         - name: 其他 Azure 示例
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'

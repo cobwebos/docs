@@ -74,7 +74,7 @@
           href: overview-opc-twin-architecture.md
         - name: OPC 保管库体系结构
           href: overview-opc-vault-architecture.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 远程监视
       items:
@@ -90,7 +90,7 @@
               href: iot-accelerators-remote-monitoring-deploy-local-java.md
             - name: 使用 Docker 在本地部署
               href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-        - name: 连接真实设备
+        - name: 连接实际设备
           items:
             - name: Windows 上的 C
               href: iot-accelerators-connecting-devices.md
@@ -220,9 +220,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: 远程监视
       items:
         - name: 开发人员参考指南 (.NET)
@@ -266,7 +266,7 @@
               href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: 常见问题解答
       href: iot-accelerators-faq.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
     - name: 远程监视 V1
       href: 'https://docs.microsoft.com/previous-versions/azure/iot-suite/'
