@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 23e7b0f8dcb0c64259627d5350511ebdc48d6fac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73b5966bf90d2829456401a25cc5b8ea001397d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078971"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856222"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
-了解如何使用脚本操作将其他 Azure 存储*帐户*添加到 HDInsight。 本文档中的步骤会将存储帐户添加到现有 HDInsight 群集。** 本文适用于存储*帐户*（而不是默认群集存储帐户），而不是其他存储，例如 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) 和 [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) 。
+了解如何使用脚本操作将其他 Azure 存储 *帐户* 添加到 HDInsight。 本文档中的步骤会将存储帐户添加到现有 HDInsight 群集。** 本文适用于不 (默认群集存储帐户) 的存储 *帐户* ，而不适用于和等其他存储 [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) 。
 
 > [!IMPORTANT]  
 > 本文档中的信息是关于在创建群集后将其他存储帐户添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。

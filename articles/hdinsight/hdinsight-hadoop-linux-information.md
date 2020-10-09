@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961806"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856579"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -101,15 +101,15 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp`中找到。 此目录包�
 
 在大多数 Hadoop 分发版中，数据存储在 HDFS 中。 HDFS 受群集中计算机上的本地存储的支持。 为基于云的解决方案使用本地存储可能费用高昂，因为计算资源以小时或分钟为单位来计费。
 
-使用 HDInsight 时，数据文件使用 Azure Blob 存储以及可选的 Azure Data Lake Storage 以自适应且可复原的方式存储在云中。 这些服务提供以下优势：
+使用 HDInsight 时，数据文件在云中使用 Azure Blob 存储以一种适应性和复原方式存储，并可以选择 Azure Data Lake Storage Gen1/Gen2。 这些服务提供以下优势：
 
 * 成本低廉的长期存储。
 * 可从外部服务访问，例如网站、文件上传/下载实用程序、各种语言 SDK 和 Web 浏览器。
-* 大型文件容量和大型适应性存储。
+* 大型文件容量和大型自适应存储。
 
-有关详细信息，请参阅[了解 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 和 [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)。
+有关详细信息，请参阅 [Azure Blob 存储](../storage/common/storage-introduction.md)、 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
 
-使用 Azure 存储或 Data Lake Storage 时，不需要从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，而无论它是存储在 Azure 存储还是 Data Lake Storage 上：
+使用 Azure Blob 存储或 Data Lake Storage Gen1/Gen2 时，无需从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，而无论它是存储在 Azure 存储还是 Data Lake Storage 上：
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ hdfs dfs -ls /example/data
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`：与非默认存储帐户通信时使用。 例如，有额外的存储帐户时，或访问存储在可公开访问的存储帐户中的数据时。
 
-使用 [Azure Data Lake Storage Gen1](./hdinsight-hadoop-use-data-lake-store.md) 时，可以使用以下 URI 方案之一：
+使用 [Azure Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md) 时，可以使用以下 URI 方案之一：
 
 * `adl:///`：访问群集的默认 Data Lake Storage。
 
@@ -189,7 +189,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 从 HDInsight 群集外部访问数据的方法有多种。 以下是一些可用于处理数据的实用工具和 SDK 的链接：
 
-如果使用的是 __Azure 存储__，请参阅以下链接了解可用于访问数据的方式：
+如果使用 __Azure Blob 存储__，请参阅以下链接，了解访问数据的方法：
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)：适用于 Azure 的命令行接口命令。 在安装后，使用 `az storage` 命令获取有关使用存储的帮助，或者使用 `az storage blob` 获取特定于 Blob 的命令。
 * [blobxfer.py](https://github.com/Azure/blobxfer)：用于处理 Azure 存储中的 blob 的 python 脚本。
@@ -203,7 +203,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [存储 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-如果使用 __Azure Data Lake Storage__，请参阅以下链接，了解访问数据的方法：
+如果使用 __Azure Data Lake Storage Gen1__，请参阅以下链接，了解访问数据的方法：
 
 * [Web 浏览器](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

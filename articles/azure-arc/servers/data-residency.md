@@ -2,20 +2,20 @@
 title: 数据驻留
 description: 数据驻留和有关启用了 Azure Arc 的服务器的信息。
 ms.topic: reference
-ms.date: 09/22/2020
+ms.date: 10/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73acb07b8caa3c1368c936463f04969c29d37985
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5ece96acc3ee07ba2896279888363c7d52d737e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327759"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856443"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>启用了 Azure Arc 的服务器：数据驻留
 
 本文介绍数据驻留的概念，以及如何将其应用于启用了 Azure Arc 的服务器。
 
-支持 Azure Arc 的服务器 **[可](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** 在 **美国、欧洲、英国或亚太**中找到。
+已启用 Azure Arc 的服务器可在**美国、欧洲、英国、澳大利亚和亚太**中**[找到](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)**。
 
 ## <a name="data-residency"></a>数据驻留
 

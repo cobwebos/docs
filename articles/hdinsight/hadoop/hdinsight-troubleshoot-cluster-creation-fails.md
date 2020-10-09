@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996415"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856290"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 中的群集创建失败问题
 
@@ -29,9 +29,9 @@ ms.locfileid: "82996415"
 
 ## <a name="permissions-issues"></a>权限问题
 
-如果使用的是 Azure Data Lake Storage Gen2 并收到错误 `AmbariClusterCreationFailedErrorCode`（“:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::”），请打开 Azure 门户，转到你的存储帐户，并在访问控制 (IAM) 下确保“存储 Blob 数据参与者”或“存储 Blob 数据所有者”角色已经为该订阅的“用户分配的托管标识”分配了访问权限  。 有关详细说明，请参阅[在 Data Lake Storage Gen2 帐户上设置托管标识的权限](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
+如果使用的是 Azure Data Lake Storage Gen2 并收到错误 `AmbariClusterCreationFailedErrorCode`（“:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::”），请打开 Azure 门户，转到你的存储帐户，并在访问控制 (IAM) 下确保“存储 Blob 数据参与者”或“存储 Blob 数据所有者”角色已经为该订阅的“用户分配的托管标识”分配了访问权限  。 有关详细说明，请参阅在 [Data Lake Storage Gen2 上设置托管标识的权限](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2) 。
 
-如果使用 Azure Data Lake Storage Gen1，请参阅[此处](../hdinsight-hadoop-use-data-lake-store.md)的设置和配置说明。 HBase 群集不支持 Data Lake Storage Gen1，HDInsight 版本4.0 不支持此项。
+如果使用 Azure Data Lake Storage Gen1，请参阅安装和配置说明在 [Azure HDInsight 群集中使用 Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)。 HBase 群集不支持 Data Lake Storage Gen1，HDInsight 版本4.0 不支持此项。
 
 如果使用 Azure 存储，请确保创建群集期间存储帐户名称有效。
 

@@ -3,18 +3,18 @@ title: 通过 .NET 开始使用 Azure 队列存储 - Azure 存储
 description: Azure 队列用于在应用程序组件之间进行可靠的异步消息传送。 应用程序组件可以利用云消息传送进行独立缩放。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/08/2020
+ms.date: 10/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8dadc999f3bd26671b5a8ee4da26f051a822a26
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001104"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855916"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 
@@ -33,9 +33,6 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 ### <a name="prerequisites"></a>先决条件
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-- [适用于 .NET 的 Azure 存储通用客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-- [适用于 .NET 的 Azure 存储队列客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
-- [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 - 一个 [Azure 存储帐户](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -95,11 +92,6 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 1. 在线搜索“Microsoft.Azure.ConfigurationManager”，并选择“安装”以安装 Azure Configuration Manager。
 
 ---
-
-> [!NOTE]
-> [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/)中也包含存储客户端库包。 但是我们建议同时从 NuGet 安装存储客户端库，以确保始终使用最新版本。
->
-> 适用于 .NET 的存储客户端库中的 ODataLib 依赖项通过 NuGet（而非 WCF 数据服务）上提供的 ODataLib 包来解析。 ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。 存储空间客户端库使用的具体 ODataLib 包是 [OData](https://nuget.org/packages/Microsoft.Data.OData/)、[Edm](https://nuget.org/packages/Microsoft.Data.Edm/) 和 [Spatial](https://nuget.org/packages/System.Spatial/)。 尽管这些库由 Azure 表存储类使用，但是用存储空间客户端库进行编程时，它们是必需的依赖项。
 
 ### <a name="determine-your-target-environment"></a>确定目标环境
 
@@ -185,7 +177,7 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-使用 [CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy) 类可以检索存储在队列存储中的队列。 下面是创建服务客户端的一种方法：
+使用 [CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy&preserve-view=true) 类可以检索存储在队列存储中的队列。 下面是创建服务客户端的一种方法：
 
 ```csharp
 // Retrieve storage account from connection string
@@ -237,7 +229,7 @@ queue.CreateIfNotExists();
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-要将消息插入现有队列，请先创建一个新的 [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy)。 接下来，调用 [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy) 方法。 `CloudQueueMessage` 可以从 `string`（UTF-8 格式）或 `byte` 数组创建。 以下代码将创建一个队列（如果该队列不存在）并插入消息“Hello, World”：
+要将消息插入现有队列，请先创建一个新的 [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true)。 接下来，调用 [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true) 方法。 `CloudQueueMessage` 可以从 `string`（UTF-8 格式）或 `byte` 数组创建。 以下代码将创建一个队列（如果该队列不存在）并插入消息“Hello, World”：
 
 ```csharp
 // Retrieve storage account from connection string
@@ -270,7 +262,7 @@ queue.AddMessage(message);
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-通过调用 [PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy) 方法，可以速览队列前面的消息，而不必从队列中将其删除。
+通过调用 [PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy&preserve-view=true) 方法，可以速览队列前面的消息，而不必从队列中将其删除。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -333,7 +325,7 @@ queue.UpdateMessage(message,
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-代码通过两个步骤来取消对队列中某条消息的排队。 调用 [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy)时，你会获取队列中的下一条消息。 从 `GetMessage` 返回的消息对于从此队列读取消息的任何其他代码都是不可见的。 默认情况下，此消息持续 30 秒不可见。 要从队列中删除消息，还必须调用 [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy)。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 `DeleteMessage`。
+代码通过两个步骤来取消对队列中某条消息的排队。 调用 [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy&preserve-view=true)时，你会获取队列中的下一条消息。 从 `GetMessage` 返回的消息对于从此队列读取消息的任何其他代码都是不可见的。 默认情况下，此消息持续 30 秒不可见。 要从队列中删除消息，还必须调用 [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy&preserve-view=true)。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 `DeleteMessage`。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -406,7 +398,7 @@ Console.WriteLine("Deleted message");
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-以下代码示例使用 [GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy) 方法在一次调用中获取 20 条消息。 然后，使用 `foreach` 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 `GetMessages` 5 分钟后，尚未删除的任何消息都会再次变得可见。
+以下代码示例使用 [GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy&preserve-view=true) 方法在一次调用中获取 20 条消息。 然后，使用 `foreach` 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 `GetMessages` 5 分钟后，尚未删除的任何消息都会再次变得可见。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -438,7 +430,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-可以获取队列中消息的估计数。 使用 [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy) 方法可请求队列服务检索队列属性，包括消息计数。 [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy) 属性返回 `FetchAttributes` 方法检索到的最后一个值，不会调用队列服务。
+可以获取队列中消息的估计数。 使用 [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy&preserve-view=true) 方法可请求队列服务检索队列属性，包括消息计数。 [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy&preserve-view=true) 属性返回 `FetchAttributes` 方法检索到的最后一个值，不会调用队列服务。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -473,7 +465,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-若要删除队列及其包含的所有消息，请对队列对象调用 [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy) 方法。
+若要删除队列及其包含的所有消息，请对队列对象调用 [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy&preserve-view=true) 方法。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -499,16 +491,8 @@ queue.Delete();
 - 查看队列服务参考文档，了解有关可用 API 的完整详细信息：
   - [.NET 存储客户端库参考](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
   - [REST API 参考](https://msdn.microsoft.com/library/azure/dd179355)
-- 了解如何通过使用 [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 简化为使用 Azure 存储而写的代码。
 - 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
   - [通过 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md) 来存储结构化数据。
   - [通过 .NET 开始使用 Azure Blob 存储](../blobs/storage-dotnet-how-to-use-blobs.md) 来存储非结构化数据。
   - [使用.NET (C#) 连接到 SQL 数据库](../../azure-sql/database/connect-query-dotnet-core.md)，存储关系数据。
-
-[Download and install the Azure SDK for .NET]: /develop/net/
-[.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[Creating an Azure Project in Visual Studio]: https://msdn.microsoft.com/library/azure/ee405487.aspx
-[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
-[OData]: https://nuget.org/packages/Microsoft.Data.OData/5.0.2
-[Edm]: https://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-[Spatial]: https://nuget.org/packages/System.Spatial/5.0.2
+- 了解如何通过使用 [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 简化为使用 Azure 存储而写的代码。

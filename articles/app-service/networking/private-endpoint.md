@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773138"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857259"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>使用 Azure Web 应用的专用终结点
 
@@ -114,6 +114,8 @@ ms.locfileid: "91773138"
 将弹性高级计划中的 Azure 函数与专用终结点配合使用时，若要在 Azure Web 门户中运行或执行函数，你必须具有直接网络访问权限，否则会收到 HTTP 403 错误。 换句话说，浏览器必须能够访问专用终结点，以便从 Azure Web 门户执行该功能。 
 
 最多可以将100专用终结点连接到特定的 Web 应用。
+
+为 Web 应用启用专用终结点时，远程调试功能不可用。 建议将代码部署到槽并对其进行远程调试。
 
 专用终结点适用于 PremiumV2、PremiumV3、Windows 和 Linux Web 应用（容器化或不提供），Azure Functions 高级计划 (有时称为弹性高级计划) 。 
 

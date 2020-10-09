@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 73a097907a5b44c77ba5e1a9ead4cb4e3a8077c6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777757"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857803"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>认知服务文档：2020年9月1日（年9月30日2020）的新增功能
 
@@ -22,7 +22,7 @@ ms.locfileid: "91777757"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [快速入门：使用 Azure 命令行接口 (CLI 创建认知服务资源) ](cognitive-services-apis-create-account-cli.md)
+- [快速入门：使用 Azure Command-Line 接口 (CLI 创建认知服务资源) ](cognitive-services-apis-create-account-cli.md)
 - [快速入门：使用 Azure 管理客户端库创建认知服务资源](cognitive-services-apis-create-account-client-library.md)
 - [快速入门：使用 Azure 门户创建认知服务资源](cognitive-services-apis-create-account.md)
 - [快速入门：使用 ARM 模板创建认知服务资源](create-account-resource-manager-template.md)
@@ -99,3 +99,5 @@ ms.locfileid: "91777757"
 - [iAmBipinPaul](https://github.com/iAmBipinPaul) Bipin Paul (1) 
 - [rexwan](https://github.com/rexwan) -Rex Wang (1) 
 - [rglidden](https://github.com/rglidden) -Richard Glidden (1) 
+
+[!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

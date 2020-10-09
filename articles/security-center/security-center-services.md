@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439409"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858007"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -107,6 +107,6 @@ ms.locfileid: "91439409"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[安全中心如何收集数据以及 Log Analytics 代理](security-center-enable-data-collection.md)。
+- 了解[安全中心如何使用 Log Analytics 代理收集数据](security-center-enable-data-collection.md)。
 - 了解[安全中心如何管理和保护数据](security-center-data-security.md)。
 - 查看[支持安全中心的平台](security-center-os-coverage.md)。

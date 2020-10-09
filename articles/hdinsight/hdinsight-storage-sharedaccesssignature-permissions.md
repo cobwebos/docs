@@ -1,6 +1,6 @@
 ---
 title: 使用共享访问签名限制访问 - Azure HDInsight
-description: 了解如何使用共享访问签名限制对 HDInsight 访问存储在 Azure 存储 Blob 中的数据。
+description: 了解如何使用共享访问签名限制 HDInsight 访问 Azure Blob 存储中存储的数据。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006307"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856558"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制对 HDInsight 中的数据的访问
 
-HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。 共享访问签名 (SAS) 是可用于限制数据访问权限的一项 Azure 存储帐户功能。 例如，它可以提供对数据的只读访问。
+HDInsight 对与群集关联的 Azure Blob 存储帐户中的数据具有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。  (SAS) 的共享访问签名是 Azure Blob 存储帐户的一项功能，可用于限制对数据的访问。 例如，它可以提供对数据的只读访问。
 
 > [!IMPORTANT]  
 > 对于使用 Apache Ranger 的解决方案，请考虑使用已加入域的 HDInsight。 有关详细信息，请参阅[配置已加入域的 HDInsight](./domain-joined/apache-domain-joined-configure.md) 文档。
@@ -39,7 +39,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 * 如果使用 C#，Visual Studio 的版本必须是 2013 或更高。
 
-* 存储帐户的 URI 方案。 对于 Azure 存储，此架构为 `wasb://`；对于Azure Data Lake Storage Gen2，此架构为 `abfs://`；对于 Azure Data Lake Storage Gen1，此架构为 `adl://`。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。
+* 存储帐户的 URI 方案。 此方案 `wasb://` 适用于 Azure Blob 存储， `abfs://` 适用于 Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果为 Azure Blob 存储启用安全传输，则 URI 将为 `wasbs://` 。
 
 * 共享访问签名要添加到的现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
@@ -67,7 +67,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
     * 时间间隔已过。
     * 将存储访问策略修改为具有过去的到期时间。 更改到期时间是撤销 SAS 的一种方法。
 
-3. 删除了该 SAS 引用的存储访问策略，这是用于吊销 SAS 的另一种方法。 如果重新创建同名的存储访问策略，则以前策略的所有 SAS 令牌都将有效（如果 SAS 的到期时间尚未过）。 如果想要撤销 SAS，请确保使用不同名称（如果你使用将来的过期时间重新创建该访问策略）。
+3. 删除了该 SAS 引用的存储访问策略，这是用于吊销 SAS 的另一种方法。 如果重新创建同名的存储访问策略，则以前策略的所有 SAS 令牌都是有效的 (如果 SAS 上的过期时间尚未传递) 。 如果想要撤销 SAS，请确保使用不同名称（如果你使用将来的过期时间重新创建该访问策略）。
 
 4. 将重新生成用于创建 SAS 的帐户密钥。 重新生成密钥会导致使用前一密钥的所有应用程序无法通过身份验证。 将所有组件更新为使用新密钥。
 
@@ -207,9 +207,9 @@ Set-AzStorageblobcontent `
 
 1. 在 Visual Studio 中打开解决方案。
 
-2. 在解决方案资源管理器中，右键单击“SASExample”项目并选择“属性”。**** ****
+2. 在解决方案资源管理器中，右键单击“SASExample”项目并选择“属性”。 
 
-3. 选择“设置”****，并添加以下条目的值：
+3. 选择“设置”，并添加以下条目的值：
 
     |项目 |说明 |
     |---|---|
@@ -224,7 +224,7 @@ Set-AzStorageblobcontent `
 
 创建 HDInsight 群集时，必须指定主存储帐户。 还可以指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
 
-使用共享访问签名来限制容器访问。 将自定义条目添加到群集的 core-site 配置****。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
+使用共享访问签名来限制容器访问。 将自定义条目添加到群集的 core-site 配置。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>创建使用 SAS 的群集
 
@@ -353,29 +353,29 @@ Remove-AzResourceGroup `
 
 1. 打开群集的 Ambari Web UI。 此页面的地址为 `https://YOURCLUSTERNAME.azurehdinsight.net`。 出现提示时，使用创建群集时所用的管理员名称 (admin) 和密码向群集进行身份验证。
 
-1. 导航到“HDFS”**** > ****“配置” > ****“高级” > ****“自定义 core-site”。
+1. 导航到“HDFS” > “配置” > “高级” > “自定义 core-site”。
 
-1. 展开“自定义 core-site”**** 部分，并滚动到底部，然后选择“添加属性...”****。将以下值用于“键”和“值”：**** ****
+1. 展开“自定义 core-site”部分，并滚动到底部，然后选择“添加属性...”。将以下值用于“键”和“值”： 
 
     * **键**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **值**：前面执行的某个方法返回的 SAS。
 
     将 `CONTAINERNAME` 替换为用于 C# 或 SAS 应用程序的容器名称。 将 `STORAGEACCOUNTNAME` 替换为所用的存储帐户名称。
 
-    选择“添加”以保存此键和值****
+    选择“添加”以保存此键和值
 
-1. 选择“保存”按钮以保存配置更改。**** 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并选择“保存”****。
+1. 选择“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并选择“保存”。
 
-    完成更改后，选择“确定”****。
+    完成更改后，选择“确定”。
 
    > [!IMPORTANT]  
    > 必须重启几个服务才能使更改生效。
 
-1. 会显示一个“重启”下拉列表。**** 从下拉列表中选择“重启所有受影响的项”，然后选择“确认全部重启”。****____
+1. 会显示一个“重启”下拉列表。 从下拉列表中选择“重启所有受影响的项”，然后选择“确认全部重启”。
 
     对 **MapReduce2** 和 **YARN** 重复此过程。
 
-1. 重新启动这些服务后，选择每个服务并从“服务操作” **** 下拉列表中选择“禁用维护模式”。
+1. 重新启动这些服务后，选择每个服务并从“服务操作”  下拉列表中选择“禁用维护模式”。
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 

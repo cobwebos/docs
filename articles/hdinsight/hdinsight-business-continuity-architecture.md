@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: cb3ef1e802546d5a8b1574b304770fe7a364e2df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843774"
+ms.locfileid: "91856426"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight 业务连续性体系结构
 
@@ -250,8 +250,6 @@ Ranger 元存储用于永久存储和提供 Ranger 策略来控制数据授权�
 
 若要详细了解本文中所述的项，请参阅：
 
-* [Apache Ambari REST 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [安装和配置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [安装和配置 Azure PowerShell 模块 Az](/powershell/azure/)
-* [使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
-* [配置基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
+* [Azure HDInsight 业务连续性](./hdinsight-business-continuity.md)
+* [Azure HDInsight 高度可用的解决方案体系结构案例研究](./hdinsight-high-availability-case-study.md)
+* [什么是 Azure HDInsight 中的 Apache Hive 和 HiveQL？](./hadoop/hdinsight-use-hive.md)

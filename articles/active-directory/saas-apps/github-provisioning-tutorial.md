@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358315"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857528"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
@@ -28,6 +28,7 @@ ms.locfileid: "91358315"
 * Azure Active Directory 租户
 * 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
 * GitHub 中具有组织管理员权限的用户帐户
+* [为 GitHub 企业云组织配置的 SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * 确保为你的组织提供了 OAuth 访问权限，如[此处](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述
 * 仅当在组织级别启用了 SSO 时，才支持 SCIM 预配到单个组织
 
@@ -51,9 +52,6 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="configuring-user-provisioning-to-github"></a>为 GitHub 配置用户预配
 
 本部分指导完成将 Azure AD 连接到 GitHub 的用户帐户预配 API 和配置预配服务，以便在 GitHub 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
-
-> [!TIP]
-> 还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 GitHub 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>在 Azure AD 中为 GitHub 配置自动用户帐户预配
 
@@ -79,7 +77,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 8. 在“通知电子邮件”字段中输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”****。
 
-9. 单击“ **保存**”。
+9. 单击“保存”。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GitHub”****。
 
@@ -87,7 +85,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 要为 GitHub 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”************
 
-13. 单击“ **保存**”。
+13. 单击“保存”。
 
 此操作会对“用户和组”部分中分配到 GitHub 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务执行的所有操作****。
 

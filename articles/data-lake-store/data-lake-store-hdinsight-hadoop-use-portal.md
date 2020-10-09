@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b516180f09634dfa430275ef39370f0328a0927
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 8d0ffb008258c586a5965b0741b848f1cef319f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577894"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857051"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 
@@ -23,14 +23,14 @@ ms.locfileid: "91577894"
 >
 >
 
-了解如何使用 Azure 门户创建将 Azure Data Lake Storage Gen1 帐户用作默认存储或额外存储的 HDInsight 群集。 尽管其他存储对于 HDInsight 群集是可选的，但建议将业务数据存储在其他存储帐户中。
+了解如何使用 Azure 门户创建 Azure Data Lake Storage Gen1 为默认存储或附加存储的 HDInsight 群集。 尽管其他存储对于 HDInsight 群集是可选的，但建议将业务数据存储在其他存储帐户中。
 
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下要求：
 
 * **一个 Azure 订阅**。 转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 还必须在该帐户上创建根文件夹。  本文将使用名为 __/clusters__ 的根文件夹。
+* **Azure Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 还必须在该帐户上创建根文件夹。  本文将使用名为 __/clusters__ 的根文件夹。
 * **Azure Active Directory 服务主体**。 本操作方法指南提供了有关如何在 Azure Active Directory (Azure AD) 中创建服务主体的说明。 但是，只有 Azure AD 管理员才能创建服务主体。 如果你是管理员，则可以跳过此先决条件，然后继续。
 
 >[!NOTE]
@@ -39,17 +39,17 @@ ms.locfileid: "91577894"
 
 ## <a name="create-an-hdinsight-cluster"></a>创建 HDInsight 群集
 
-本部分创建使用 Data Lake Storage Gen1 帐户作为默认存储或额外存储的 HDInsight 群集。 本文仅重点介绍配置 Data Lake Storage Gen1 帐户的一部分。 有关创建群集的一般信息和过程，请参阅[在 HDInsight 中创建 Hadoop 群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。
+在本部分中，将创建一个 HDInsight 群集，并将 Data Lake Storage Gen1 作为默认存储或附加存储。 本文仅重点介绍配置 Data Lake Storage Gen1 的部分。 有关创建群集的一般信息和过程，请参阅[在 HDInsight 中创建 Hadoop 群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。
 
 ### <a name="create-a-cluster-with-data-lake-storage-gen1-as-default-storage"></a>创建使用 Data Lake Storage Gen1 作为默认存储的群集
 
-若要创建一个 HDInsight 群集，其中使用 Data Lake Storage Gen1 帐户作为默认存储帐户，请执行以下操作：
+若要创建 Data Lake Storage Gen1 作为默认存储帐户的 HDInsight 群集，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 有关创建 HDInsight 群集的一般信息，请遵循[创建群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)。
 3. 在“存储”边栏选项卡的“主存储类型”下，选择“Azure Data Lake Storage Gen1”，然后输入以下信息************：
 
-    ![使用 "主存储类型" 选项的 "存储" 边栏选项卡，选择 Data Lake Store 帐户 "选项，Data Lake Store 访问选项"。](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "将服务主体添加到 HDInsight 群集")
+    ![HDInsight 存储帐户设置](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png)
 
     * 选择 Data Lake Store 帐户：选择一个现有的 Data Lake Storage Gen1 帐户****。 必须具有现有的 Data Lake Storage Gen1 帐户。  请参阅[先决条件](#prerequisites)。
     * **根路径**：输入群集特定文件的存储路径。 在屏幕截图中，它是 __/clusters/myhdiadlcluster/__，其中，__/clusters__ 文件夹是必须存在的，*myhdicluster* 文件夹则由门户创建。  *myhdicluster* 是群集名称。
@@ -60,15 +60,15 @@ ms.locfileid: "91577894"
 
 ### <a name="create-a-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>创建使用 Data Lake Storage Gen1 作为额外存储的群集
 
-以下说明会创建一个 HDInsight 群集，该群集将 Azure 存储帐户作为默认存储，将 Data Lake Storage Gen1 帐户作为额外存储。
+以下说明使用 Azure Blob 存储帐户作为默认存储创建 HDInsight 群集，并使用作为附加存储 Data Lake Storage Gen1 的存储帐户。
 
-使用 Data Lake Storage Gen1 帐户创建 HDInsight 群集作为附加存储帐户：
+使用 Data Lake Storage Gen1 作为附加存储帐户创建 HDInsight 群集：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 有关创建 HDInsight 群集的一般信息，请遵循[创建群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)。
 3. 在“存储”**** 边栏选项卡的“主存储类型”**** 下，选择“Azure 存储”****，然后输入以下信息：
 
-    ![存储边栏选项卡的屏幕截图，其中包含主要存储类型选项和称为 Data Lake Store 访问选项。](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "将服务主体添加到 HDInsight 群集")
+    ![HDInsight 存储帐户设置附加存储](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png)
 
     * **选择方法** -若要指定属于 Azure 订阅的存储帐户，请选择 " **我的订阅**"，然后选择存储帐户。 要指定不属于 Azure 订阅的存储帐户，请选择“访问密钥”****，并提供该外部存储帐户的信息。
 
@@ -85,23 +85,26 @@ ms.locfileid: "91577894"
 在 Azure 门户中，可以使用现有的服务主体，或创建一个新的服务主体。
 
 若要从 Azure 门户创建服务主体：
-1. 请参阅[使用 Azure Active Directory 创建服务主体和证书](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+
+1. 从 "存储" 边栏选项卡中选择 **Data Lake Store 访问** 。
+1. 在 " **Data Lake Storage Gen1 访问** " 边栏选项卡中，选择 " **新建**"。
+1. 选择 " **服务主体**"，然后按照说明创建服务主体。
+1. 下载证书（如果决定以后再次使用）。 如要想要在创建其他 HDInsight 群集时使用相同的服务主体，下载证书的做法将非常有用。
+
+    ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png)
+
+1. 选择 " **访问权限** " 以配置文件夹访问权限。  请参阅[配置文件权限](#configure-file-permissions)。
 
 使用 Azure 门户中的现有服务主体：
 
-1. 服务主体应拥有存储帐户的 "所有者" 权限。 请参阅 [将服务主体的权限设置为存储帐户的所有者](#configure-serviceprincipal-permissions)
 1. 选择 **Data Lake Store 访问**。
 1. 在 " **Data Lake Storage Gen1 访问** " 边栏选项卡上，选择 " **使用现有**"。
 1. 选择 " **服务主体**"，然后选择一个服务主体。
 1. 上传与所选服务主体关联的证书（.pfx 文件），然后输入证书密码。
 
-    ![Data Lake Storage Gen1 访问 "边栏选项卡的屏幕截图，其中使用了" 使用现有选项 "，并选择了" 使用 h d insights s p "选项的" 选择服务主体 "边栏选项卡，然后选择" 选项 "](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "将服务主体添加到 HDInsight 群集")
+[将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png)
 
 1. 选择 " **访问权限** " 以配置文件夹访问权限。  请参阅[配置文件权限](#configure-file-permissions)。
-
-### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>将服务主体的权限设置为存储帐户的所有者
-1. 在 "访问控制 (IAM) 存储帐户" 边栏选项卡上，单击 "添加角色分配"。 
-2. 在 "添加角色分配" 边栏选项卡中选择 "角色"，然后选择 SPN，并单击 "保存"。
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>配置文件权限
 
@@ -116,12 +119,12 @@ ms.locfileid: "91577894"
 
   * 需要文件访问权限的文件夹上的权限。
 
-在 Data Lake Storage Gen1 帐户根级别分配权限：
+若要在根级别 Data Lake Storage Gen1 的存储帐户分配权限，请执行以下操作：
 
-1. 在 " **Data Lake Storage Gen1 访问** " 边栏选项卡中，选择 " **访问**"。 随即打开“选择文件权限”**** 边栏选项卡。 其中列出了你订阅中的所有 Data Lake Storage Gen1 帐户。
-1. 将鼠标悬停（不要单击）在 Data Lake Storage Gen1 帐户的名称上，使复选框可见，然后选中复选框。
+1. 在 " **Data Lake Storage Gen1 访问** " 边栏选项卡中，选择 " **访问**"。 随即打开“选择文件权限”**** 边栏选项卡。 其中列出了订阅中的所有存储帐户。
+1. 悬停 (不要单击) 将鼠标悬停在该帐户的名称上，Data Lake Storage Gen1 使复选框可见，然后选中该复选框。
 
-    !["Self file 权限" 边栏选项卡的屏幕截图，其中突出显示并选中了 "Data Lake Storage 第1代帐户"。](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "将服务主体添加到 HDInsight 群集")
+    ![选择文件权限](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png)
 
    默认情况下，将选择 " __读取__"、" __写入__" 和 " __执行__ "。
 
@@ -131,41 +134,41 @@ ms.locfileid: "91577894"
 
 在 HDInsight 群集根级别分配权限：
 
-1. 在 " **Data Lake Storage Gen1 访问** " 边栏选项卡中，选择 " **访问**"。 随即打开“选择文件权限”**** 边栏选项卡。 其中列出了你订阅中的所有 Data Lake Storage Gen1 帐户。
-1. 从 " **选择文件权限** " 边栏选项卡中，选择要显示其内容的 Data Lake Storage Gen1 帐户名称。
+1. 在 " **Data Lake Storage Gen1 访问** " 边栏选项卡中，选择 " **访问**"。 随即打开“选择文件权限”**** 边栏选项卡。 其中列出了订阅中具有 Data Lake Storage Gen1 的所有存储帐户。
+1. 从 " **选择文件权限** " 边栏选项卡中，选择具有 Data Lake Storage Gen1 名称的存储帐户以显示其内容。
 1. 通过选中文件夹左侧的复选框，选择 HDInsight 群集存储根目录。 根据之前的屏幕截图，群集存储根目录是选择 Data Lake Storage Gen1 作为默认存储时指定的 __/clusters__ 文件夹。
 1. 设置文件夹上的权限。  “读取”、“写入”和“执行”默认全部选中。
 1. 单击页面底部的“选择”****。
 1. 选择“运行”。
 1. 选择“完成”。
 
-如果使用 Data Lake Storage Gen1 作为额外存储，则必须仅为要从 HDInsight 群集访问的文件夹分配权限。 例如，在以下屏幕截图中，仅提供对 Data Lake Storage Gen1 帐户中 mynewfolder 文件夹的访问权限****。
+如果使用 Data Lake Storage Gen1 作为额外存储，则必须仅为要从 HDInsight 群集访问的文件夹分配权限。 例如，在下面的屏幕截图中，只提供对 Data Lake Storage Gen1 的存储帐户中 **mynewfolder** 文件夹的访问权限。
 
-![将服务主体权限分配给 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3-1.png "将服务主体权限分配给 HDInsight 群集")
+![将服务主体权限分配给 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3-1.png)
 
 ## <a name="verify-cluster-setup"></a><a name="verify-cluster-set-up"></a>验证群集设置
 
 群集设置完成后，在群集边栏选项卡中通过执行以下一个或两个步骤来验证结果：
 
-* 若要验证群集的关联存储是否为指定的 Data Lake Storage Gen1 帐户，请在左窗格中选择 " **存储帐户** "。
+* 若要验证群集的关联存储是否为具有指定 Data Lake Storage Gen1 的帐户，请在左窗格中选择 " **存储帐户** "。
 
-    ![突出显示了存储帐户选项的 Data Lake Storage 第1代帐户的屏幕截图。](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6-1.png "将服务主体添加到 HDInsight 群集")
+    ![验证关联的存储](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6-1.png)
 
 * 若要验证服务主体是否与 HDInsight 群集正确关联，请在左窗格中选择 " **Data Lake Storage Gen1 访问** "。
 
-    ![突出显示第1代 Data Lake Storage 第1代 Data Lake Storage 帐户的屏幕截图。](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "将服务主体添加到 HDInsight 群集")
+    ![验证服务主体](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png)
 
 ## <a name="examples"></a>示例
 
 使用 Data Lake Storage Gen1 作为存储设置群集后，请参阅以下示例，了解如何使用 HDInsight 群集来分析存储在 Data Lake Storage Gen1 中的数据。
 
-### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-account-as-primary-storage"></a>针对 Data Lake Storage Gen1 帐户（用作主存储）中的数据运行 Hive 查询
+### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-as-primary-storage"></a>对 Data Lake Storage Gen1 中的数据运行 Hive 查询， (作为主存储) 
 
 若要运行 Hive 查询，请在 Ambari 门户中使用 Hive 视图界面。 有关 Ambari Hive 视图用法的说明，请参阅[将 Hive 视图与 HDInsight 中的 Hadoop 配合使用](../hdinsight/hadoop/apache-hadoop-use-hive-ambari-view.md)。
 
-处理 Data Lake Storage Gen1 帐户中的数据时，需要更改几个字符串。
+使用 Data Lake Storage Gen1 中的数据时，有几个要更改的字符串。
 
-例如，如使用以 Data Lake Storage Gen1 作为主存储的群集，则数据的路径是：adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.net/path/to/file**。 基于 Data Lake Storage Gen1 帐户中存储的示例数据创建表的 Hive 查询如以下语句所示：
+例如，如使用以 Data Lake Storage Gen1 作为主存储的群集，则数据的路径是：adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.net/path/to/file**。 用于从存储在 Data Lake Storage Gen1 中的示例数据创建表的 Hive 查询如下所示：
 
 ```console
 CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
@@ -173,30 +176,30 @@ CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.a
 
 说明：
 
-* `adl://hdiadlsg1storage.azuredatalakestore.net/` 是 Data Lake Storage Gen1 帐户的根。
+* `adl://hdiadlsg1storage.azuredatalakestore.net/` Data Lake Storage Gen1 的帐户的根。
 * `/clusters/myhdiadlcluster` 是在创建群集时指定的群集数据的根。
 * `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/` 是查询中所用示例文件的位置。
 
-### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-account-as-additional-storage"></a>针对 Data Lake Storage Gen1 帐户（用作额外存储）中的数据运行 Hive 查询
+### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-as-additional-storage"></a>针对作为附加存储的 Data Lake Storage Gen1 (中的数据运行 Hive 查询) 
 
-如果创建的群集使用 Blob 存储作为默认存储，示例数据将不会包含在用作额外存储的 Data Lake Storage Gen1 帐户中。 在这种情况下，请先将数据从 Blob 存储传输到 Data Lake Storage Gen1 帐户，然后按前面的示例中所示运行查询。
+如果创建的群集使用 Blob 存储作为默认存储，则不会将示例数据包含在使用 Data Lake Storage Gen1 作为附加存储的存储帐户中。 在这种情况下，请先将数据从 Blob 存储传输到具有 Data Lake Storage Gen1 的存储帐户，然后运行这些查询，如前面的示例中所示。
 
-有关如何将数据从 Blob 存储复制到 Data Lake Storage Gen1 帐户的信息，请参阅以下文章：
+有关如何使用 Data Lake Storage Gen1 将数据从 Blob 存储复制到存储帐户的信息，请参阅以下文章：
 
-* [使用 Distcp 在 Azure 存储 Blob 与 Data Lake Storage Gen1 之间复制数据](data-lake-store-copy-data-wasb-distcp.md)
-* [使用 AdlCopy 将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [使用 Distcp 将数据复制到 Azure Blob 存储和 Data Lake Storage Gen1](data-lake-store-copy-data-wasb-distcp.md)
+* [使用 AdlCopy 将数据从 Azure Blob 存储复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 
 ### <a name="use-data-lake-storage-gen1-with-a-spark-cluster"></a>在 Spark 群集中使用 Data Lake Storage Gen1
 
-可以使用 Spark 群集对存储在 Data Lake Storage Gen1 帐户中的数据运行 Spark 作业。 有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)。
+可以使用 Spark 群集对存储在 Data Lake Storage Gen1 中的数据运行 Spark 作业。 有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)。
 
 ### <a name="use-data-lake-storage-gen1-in-a-storm-topology"></a>在 Storm 拓扑中使用 Data Lake Storage Gen1
 
-可使用 Data Lake Storage Gen1 帐户从 Storm 拓扑写入数据。 有关如何实现此方案的说明，请参阅[将 Azure Data Lake Storage Gen1 与 HDInsight 上的 Apache Storm 配合使用](../hdinsight/storm/apache-storm-write-data-lake-store.md)。
+您可以使用具有 Data Lake Storage Gen1 的存储帐户来写入风暴拓扑中的数据。 有关如何实现此方案的说明，请参阅[将 Azure Data Lake Storage Gen1 与 HDInsight 上的 Apache Storm 配合使用](../hdinsight/storm/apache-storm-write-data-lake-store.md)。
 
 ## <a name="see-also"></a>请参阅
 
-* [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [PowerShell：创建 HDInsight 群集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

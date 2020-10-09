@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 2f602c23f182ede2b9897563a8421163e1328e24
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 44c87a3415a236f614510aa3163ad2e9cbd1f64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079184"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856171"
 ---
 # <a name="use-scp-with-apache-hadoop-in-azure-hdinsight"></a>在 Azure HDInsight 中配合使用 SCP 与 Apache Hadoop
 
@@ -42,7 +42,7 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 若要了解如何将数据直接加载到兼容 HDFS 的存储中，请参阅以下文档：
 
 * [使用 Azure 存储的 HDInsight](hdinsight-hadoop-use-blob-storage.md)。
-* [使用 Azure Data Lake Storage 的 HDInsight](hdinsight-hadoop-use-data-lake-store.md)。
+* [使用 Azure Data Lake Storage Gen1 的 HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

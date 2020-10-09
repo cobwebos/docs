@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 4c758c63ea08768df226e3d6e4fbf0295334a142
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 10/08/2020
+ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843771"
+ms.locfileid: "91857769"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 业务连续性
 
@@ -128,8 +128,6 @@ HDInsight 建议 Azure Data Lake Storage Gen2 作为基础存储层。 [Azure �
 
 若要详细了解本文中所述的项，请参阅：
 
-* [Apache Ambari REST 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [安装和配置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [安装和配置 Azure PowerShell 模块 Az](/powershell/azure/)
-* [使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
-* [配置基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
+* [Azure HDInsight 业务连续性体系结构](./hdinsight-business-continuity-architecture.md)
+* [Azure HDInsight 高度可用的解决方案体系结构案例研究](./hdinsight-high-availability-case-study.md)
+* [什么是 Azure HDInsight 中的 Apache Hive 和 HiveQL？](./hadoop/hdinsight-use-hive.md)

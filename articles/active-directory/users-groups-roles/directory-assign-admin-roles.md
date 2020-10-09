@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6ccc2911312a74825b885f5f492e67774354316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304214"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858121"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "91304214"
 
 ## <a name="limit-use-of-global-administrator"></a>限制使用全局管理员
 
-已分配到全局管理员角色的用户可以读取和修改 Azure AD 组织中的每项管理设置。 默认情况下，当用户注册 Microsoft 云服务时，将创建一个 Azure AD 租户，并使该用户成为全局管理员角色的成员。 当你将订阅添加到现有租户时，你不会分配到全局管理员角色。 只有全局管理员和特权角色管理员可以委托管理员角色。 为了降低业务风险，我们建议将此角色分配给组织中尽量少的人员。
+已分配到全局管理员角色的用户可以读取和修改 Azure AD 组织中的每项管理设置。 默认情况下，当用户注册 Microsoft 云服务时，将创建一个 Azure AD 租户，并使该用户成为全局管理员角色的成员。 当你向现有租户添加订阅时，不会为你分配全局管理员角色。 只有全局管理员和特权角色管理员可以委托管理员角色。 为了降低业务风险，我们建议将此角色分配给组织中尽量少的人员。
 
 建议将此角色分配给组织中五个以下的人员，这是最佳做法。 如果已将“全局管理员”角色分配给组织中五个以上的管理员，可通过以下方法减少该角色的使用。
 
@@ -96,7 +96,7 @@ ms.locfileid: "91304214"
 
 ### <a name="azure-information-protection-administrator"></a>[Azure 信息保护管理员](#azure-information-protection-administrator-permissions)
 
-具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不在 Identity Protection 中心、Privileged Identity Management、监视 Microsoft 365 服务运行状况或 Office 365 安全 & 符合性中心内授予任何权限。
+具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予标识保护中心、Privileged Identity Management、监视 Microsoft 365 服务运行状况或 Office 365 安全与合规中心的权限。
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF 密钥集管理员](#b2c-ief-keyset-administrator-permissions)
 
@@ -130,7 +130,7 @@ ms.locfileid: "91304214"
 
 ### <a name="compliance-administrator"></a>[合规性管理员](#compliance-administrator-permissions)
 
-具有此角色的用户有权管理 Microsoft 365 合规中心、Microsoft 365 管理中心、Azure 和 Office 365 安全与合规中心中的合规性相关功能。 被分配者还可以管理 Exchange 管理中心、Teams 和 Skype for Business 管理中心内的所有功能，并可创建适用于 Azure 和 Microsoft 365 的支持票证。 有关详细信息，请访问 [Microsoft 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
+具有此角色的用户有权管理 Microsoft 365 合规中心、Microsoft 365 管理中心、Azure 和 Office 365 安全与合规中心中的合规性相关功能。 被分配者还可以管理 Exchange 管理中心、Teams 和 Skype for Business 管理中心内的所有功能，并可创建适用于 Azure 和 Microsoft 365 的支持票证。 [关于 Microsoft 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)中提供了详细信息。
 
 In | 有权执行的操作
 ----- | ----------
@@ -142,7 +142,7 @@ In | 有权执行的操作
 
 ### <a name="compliance-data-administrator"></a>[合规性数据管理员](#compliance-data-administrator-permissions)
 
-具有此角色的用户有权在 Microsoft 365 合规中心、Microsoft 365 管理中心和 Azure 中跟踪数据。 这些用户还可以在 Exchange 管理中心、Compliance Manager、Teams 和 Skype for Business 管理中心跟踪合规数据，并可创建适用于 Azure 和 Microsoft 365 的支持票证。 [此文档](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) 详细介绍了相容性管理员与符合性数据管理员之间的差异。
+具有此角色的用户有权在 Microsoft 365 合规中心、Microsoft 365 管理中心和 Azure 中跟踪数据。 这些用户还可以在 Exchange 管理中心、Compliance Manager、Teams 和 Skype for Business 管理中心跟踪合规数据，并可创建适用于 Azure 和 Microsoft 365 的支持票证。 [此文档](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center)详细介绍了合规性管理员与合规性数据管理员之间的差别。
 
 In | 有权执行的操作
 ----- | ----------
@@ -193,7 +193,7 @@ In | 有权执行的操作
 
 ### <a name="exchange-administrator"></a>[Exchange 管理员](#exchange-service-administrator-permissions)
 
-具有此角色的用户具有 Microsoft Exchange Online 内的全局权限（如果该服务存在）。 另外还能够创建和管理所有 Microsoft 365 组，管理支持票证并监视服务运行状况。 [有关 Microsoft 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的详细信息。
+具有此角色的用户具有 Microsoft Exchange Online 内的全局权限（如果该服务存在）。 另外还能够创建和管理所有 Microsoft 365 组，管理支持票证并监视服务运行状况。 有关详细信息，请参阅[关于 Microsoft 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Exchange 管理员”。 它是 [Exchange 管理中心](https://go.microsoft.com/fwlink/p/?LinkID=529144)内的“Exchange Online 管理员”。
@@ -274,7 +274,7 @@ In | 有权执行的操作
 
 ### <a name="hybrid-identity-administrator"></a>[混合标识管理员](#hybrid-identity-administrator-permissions)
 
-充当此角色的用户可以启用、配置和管理与在 Azure AD 中启用混合标识相关的服务及设置。 此角色授予将 Azure AD 配置为三种受支持的身份验证方法之一（密码哈希同步 (PHS)、直通身份验证 (PTA)，或联合身份验证（AD FS 或第三方联合身份验证提供程序）），以及部署相关本地基础结构来启用这些方法的能力。 本地基础结构包括预配和 PTA 代理。 此角色授予在非 Windows 10 设备或非 Windows Server 2016 计算机上启用无缝单一登录 (SSO) 以实现无缝身份验证的能力。 此外，此角色授予查看登录日志以及访问运行状况和分析数据的能力，以便进行监视和故障排除。 
+此角色中的用户可以使用云预配创建、管理和部署从 AD 到 Azure AD 的预配配置设置，以及管理联合身份验证设置。 用户还可以使用此角色对日志进行疑难解答和监视。  
 
 ### <a name="insights-administrator"></a>[Insights 管理员](#insights-administrator-permissions)
 此角色中的用户可以访问 [M365 Insights 应用程序](https://go.microsoft.com/fwlink/?linkid=2129521)中的全套管理员功能。 此角色能够读取目录信息，监视服务运行状况，提交支持票证，并访问 Insights 各方面的管理设置。
@@ -305,7 +305,7 @@ In | 有权执行的操作
 
 ### <a name="message-center-reader"></a>[消息中心读取者](#message-center-reader-permissions)
 
-此角色中的用户可以在已配置的服务（如 Exchange、Intune 和 Microsoft 团队）上监视 [消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) 中的通知和通知运行状况更新。 消息中心读者收到张贴内容的每周电子邮件摘要、更新，并可以在 Microsoft 365 中共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
+具有此角色的用户可以在其组织的[消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)监视 Exchange、Intune 和 Microsoft Teams 等已配置服务的通知和公告运行状况更新。 消息中心读者会收到包含帖子和更新的每周电子邮件摘要，并能在 Microsoft 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
 
 ### <a name="modern-commerce-user"></a>[现代商业用户](#modern-commerce-user-permissions)
 
@@ -326,10 +326,10 @@ In | 有权执行的操作
 
 ### <a name="network-administrator"></a>[网络管理员](#network-administrator-permissions)
 
-充当此角色的用户可以查看 Microsoft 根据其用户位置发出的网络遥测数据提供的网络外围体系结构建议。 Microsoft 365 的网络性能依赖于特别是用户位置的小心企业客户网络外围架构。 利用此角色，可以编辑已发现的用户位置并配置这些位置的网络参数，以促进改善遥测结果并设计建议
+充当此角色的用户可以查看 Microsoft 根据其用户位置发出的网络遥测数据提供的网络外围体系结构建议。 Microsoft 365 的网络性能依赖于精心规划的企业客户网络外围体系结构，而该体系结构通常特定于用户位置。 利用此角色，可以编辑已发现的用户位置并配置这些位置的网络参数，以促进改善遥测结果并设计建议
 ### <a name="office-apps-administrator"></a>[Office 应用管理员](#office-apps-administrator-permissions)
 
-此角色中的用户可以管理 Microsoft 365 应用的云设置。 这包括云策略管理、自助下载管理，以及查看与 Office 应用相关的报表的功能。 此外，该角色还可以在主管理中心管理支持票证和监视服务运行状况。 分配到此角色的用户还可以在 Office 应用中管理新功能的通信。 
+充当此角色的用户可以管理 Microsoft 365 应用的云设置。 这包括云策略管理、自助下载管理，以及查看与 Office 应用相关的报表的功能。 此外，该角色还可以在主管理中心管理支持票证和监视服务运行状况。 分配到此角色的用户还可以在 Office 应用中管理新功能的通信。 
 
 ### <a name="partner-tier1-support"></a>[合作伙伴一线支持人员](#partner-tier1-support-permissions)
 
@@ -397,7 +397,7 @@ In | 有权执行的操作
 
 ### <a name="security-administrator"></a>[安全管理员](#security-administrator-permissions)
 
-具有此角色的用户有权管理 Microsoft 365 安全中心、Azure Active Directory 标识保护、Azure Active Directory 身份验证、Azure 信息保护和 Office 365 安全与合规中心内与安全相关的功能。 有关 Office 365 权限的详细信息，请参阅 [Security & 相容性中心中的权限](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)。
+具有此角色的用户有权管理 Microsoft 365 安全中心、Azure Active Directory 标识保护、Azure Active Directory 身份验证、Azure 信息保护和 Office 365 安全与合规中心内与安全相关的功能。 [安全与合规中心内的权限](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
 In | 有权执行的操作
 --- | ---
@@ -416,7 +416,7 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 
 ### <a name="security-operator"></a>[安全操作员](#security-operator-permissions)
 
-具有此角色的用户可以管理警报，并对安全相关功能（包括 Microsoft 365 安全中心、Azure Active Directory、标识保护、Privileged Identity Management 以及 Office 365 安全与合规中心的所有信息）拥有全局只读访问权限。 有关 Office 365 权限的详细信息，请参阅 [Security & 相容性中心中的权限](/office365/securitycompliance/permissions-in-the-security-and-compliance-center)。
+具有此角色的用户可以管理警报，并对安全相关功能（包括 Microsoft 365 安全中心、Azure Active Directory、标识保护、Privileged Identity Management 以及 Office 365 安全与合规中心的所有信息）拥有全局只读访问权限。 [安全与合规中心内的权限](/office365/securitycompliance/permissions-in-the-security-and-compliance-center)提供了有关 Office 365 权限的详细信息。
 
 In | 有权执行的操作
 --- | ---
@@ -431,7 +431,7 @@ Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、
 
 ### <a name="security-reader"></a>[安全读取者](#security-reader-permissions)
 
-具有此角色的用户对安全相关的功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、标识保护、Privileged Identity Management 中的所有信息，并且能够阅读 Azure Active Directory 登录报告和审核日志，还授予了对 Office 365 安全与合规中心的只读权限。 有关 Office 365 权限的详细信息，请参阅 [Security & 相容性中心中的权限](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)。
+具有此角色的用户对安全相关的功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、标识保护、Privileged Identity Management 中的所有信息，并且能够阅读 Azure Active Directory 登录报告和审核日志，还授予了对 Office 365 安全与合规中心的只读权限。 [安全与合规中心内的权限](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
 In | 有权执行的操作
 --- | ---
@@ -481,9 +481,9 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 充当此角色的用户可以使用 Microsoft Teams 和 Skype for Business 管理中心的用户通话故障排除工具，来排查 Microsoft Teams 和 Skype for Business 中的通信问题。 充当此角色的用户只能查看他们所查找的特定用户的通话中的用户详细信息。 此角色无权查看、创建或管理支持票证。
 
-### <a name="teams-devices-administrator"></a>[团队设备管理员](#teams-devices-administrator-permissions)
+### <a name="teams-devices-administrator"></a>[Teams 设备管理员](#teams-devices-administrator-permissions)
 
-具有此角色的用户可以从团队管理中心管理已 [认证的团队设备](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) 。 此角色允许在一眼内查看所有设备，并能够搜索和筛选设备。 用户可以检查每个设备的详细信息，包括设备的登录帐户、品牌和型号。 用户可以更改设备上的设置并更新软件版本。 此角色不会授予检查团队活动和调用设备质量的权限。 
+具有此角色的用户可以在 Teams 管理中心管理 [Teams 认证的设备](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices)。 此角色允许同时查看所有设备，并能够搜索和筛选设备。 用户可以检查每个设备的详细信息，包括设备的登录帐户、品牌和型号。 用户可以更改设备上的设置并更新软件版本。 此角色不会授权检查 Teams 活动和设备的通话质量。 
 
 ### <a name="teams-service-administrator"></a>[Teams 服务管理员](#teams-service-administrator-permissions)
 
@@ -787,7 +787,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ### <a name="compliance-administrator-permissions"></a>合规性管理员权限
 
-可以读取和管理 Azure AD 和 Microsoft 365 中的符合性配置和报表。
+可以读取和管理 Azure AD 和 Microsoft 365 中的合规性配置和报表。
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1041,7 +1041,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/groups/unified/members/update | 更新 Microsoft 365 组的成员资格。 |
 | microsoft.directory/groups/unified/owners/update | 更新 Microsoft 365 组的所有权。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
-| microsoft.office365.network/performance/allProperties/read | 阅读 Microsoft 365 管理中心中的 "网络性能" 页面。 |
+| microsoft.office365.network/performance/allProperties/read | 读取 Microsoft 365 管理中心内的网络性能页。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
@@ -1136,7 +1136,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.exchange/allEntities/read    | 读取 Exchange Online 的各个方面。 |
 | microsoft.office365.messageCenter/messages/read    | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.messageCenter/securityMessages/read    | 读取 microsoft.office365.messageCenter 中的安全消息。 |
-| microsoft.office365.network/performance/allProperties/read | 阅读 Microsoft 365 管理中心中的 "网络性能" 页面。 |
+| microsoft.office365.network/performance/allProperties/read | 读取 Microsoft 365 管理中心内的网络性能页。 |
 | microsoft.office365.protectionCenter/allEntities/read    | 读取 Office 365 防护中心的各个方面。 |
 | microsoft.office365.securityComplianceCenter/allEntities/read    | 读取 microsoft.office365.securityComplianceCenter 中的所有标准属性。 |
 | microsoft.office365.usageReports/allEntities/read    | 阅读 Office 365 使用情况报告。 |
@@ -1216,9 +1216,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/cloudProvisioning/allProperties/allTasks | 读取和配置 Azure AD 云配置服务的所有属性。 |
 | microsoft.directory/federatedAuthentication/allProperties/allTasks | 在 Azure AD 中管理 Active Directory 联合身份验证服务 (ADFS) 或第三方联合身份验证提供程序的所有方面。 |
 | microsoft.directory/organization/dirSync/update | 更新 Azure Active Directory 中的 organization.dirSync 属性。 |
-| microsoft.directory/passwordHashSync/allProperties/allTasks | 在 Azure AD 中管理密码哈希同步 (PHS) 的所有方面。 |
-| microsoft.directory/passThroughAuthentication/allProperties/allTasks | 在 Azure AD 中管理直通身份验证 (PTA) 的所有方面。 |
-| microsoft.directory/seamlessSSO/allProperties/allTasks | 在 Azure AD 中管理无缝单一登录 (SSO) 的所有方面。 |
 | microsoft.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 属性。 |
 | microsoft.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 属性。 |
 | microsoft.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本属性。 |
@@ -1310,7 +1307,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 阅读 Microsoft 365 管理中心。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 Microsoft 365 管理中心。 |
 
 ### <a name="license-administrator-permissions"></a>许可证管理员权限
 
@@ -1360,7 +1357,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.messageCenter/securityMessages/read | 读取 microsoft.office365.messageCenter 中的安全消息。 |
 
 ### <a name="message-center-reader-permissions"></a>消息中心读取者权限
-只能在消息中心读取其组织的消息和更新。 
+只能读取消息中心内有关其组织的消息和更新。 
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1646,7 +1643,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ### <a name="security-administrator-permissions"></a>安全管理员权限
 
-可以读取安全信息和报告，并管理 Azure AD 和 Microsoft 365 中的配置。
+可以读取安全信息和报表，以及管理 Azure AD 和 Microsoft 365 中的配置。
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1699,7 +1696,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ### <a name="security-reader-permissions"></a>安全读取者权限
 
-可以 Azure AD 和 Microsoft 365 中读取安全信息和报告。
+可以读取 Azure AD 和 Microsoft 365 中的安全信息和报表。
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1779,9 +1776,9 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
-| microsoft. 团队/会议/allProperties/allTasks | 管理会议，包括会议策略、配置和会议桥。 |
-| microsoft. 团队/语音/allProperties/allTasks | 管理语音，包括调用策略和电话号码库存和分配。 |
-| callQuality/allProperties/read | 读取 "通话质量" 仪表板中的所有数据 (CQD) 。 |
+| microsoft.teams/meetings/allProperties/allTasks | 管理会议，包括会议策略、配置和会议网桥。 |
+| microsoft.teams/voice/allProperties/allTasks | 管理语音，包括呼叫策略以及电话号码清单和分配。 |
+| microsoft.teams/callQuality/allProperties/read | 读取通话质量仪表板 (CQD) 中的所有数据。 |
 
 ### <a name="teams-communications-support-engineer-permissions"></a>Teams 通信支持工程师权限
 
@@ -1797,7 +1794,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
-| callQuality/allProperties/read | 读取 "通话质量" 仪表板中的所有数据 (CQD) 。 |
+| microsoft.teams/callQuality/allProperties/read | 读取通话质量仪表板 (CQD) 中的所有数据。 |
 
 ### <a name="teams-communications-support-specialist-permissions"></a>Teams 通信支持专家权限
 
@@ -1813,11 +1810,11 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Microsoft 365 服务运行状况。 |
-| callQuality/basic/read | 在 "呼叫质量" 仪表板中读取基本数据 (CQD) 。 |
+| microsoft.teams/callQuality/basic/read | 读取通话质量仪表板 (CQD) 中的基本数据。 |
 
-### <a name="teams-devices-administrator-permissions"></a>团队设备管理员权限
+### <a name="teams-devices-administrator-permissions"></a>Teams 设备管理员权限
 
-可在已认证的团队设备上执行管理相关任务。
+可在 Teams 认证的设备上执行管理相关任务。
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1827,7 +1824,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
-| microsoft. 团队/设备/基本/读取 | 管理已认证的团队的所有方面的设备，包括配置策略。 |
+| microsoft.teams/devices/basic/read | 管理经 Teams 认证的设备的所有方面，包括配置策略。 |
 
 ### <a name="teams-service-administrator-permissions"></a>Teams 服务管理员权限
 
@@ -1854,7 +1851,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
-| allEntities/allProperties/allTasks | 管理团队中的所有资源。 |
+| microsoft.teams/allEntities/allProperties/allTasks | 管理 Teams 中的所有资源。 |
 
 ### <a name="user-administrator-permissions"></a>用户管理员权限
 可以管理用户和组的所有方面，包括重置有限管理员的密码。
@@ -1963,9 +1960,9 @@ SharePoint 服务管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12
 Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
-团队设备管理员 | 团队设备管理员 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
+Teams 设备管理员 | Teams 设备管理员 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
-用户 | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
+User | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 用户帐户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
 工作区设备联接 | 已放弃 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
@@ -1985,7 +1982,7 @@ Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2
 
 Azure 门户中不一定会显示 PowerShell 或 MS Graph API 返回的每个角色。 下表整理了这些差异。
 
-API 名称 | Azure 门户中的名称 | 说明
+API 名称 | Azure 门户中的名称 | 注释
 -------- | ------------------- | -------------
 公司管理员 | 全局管理员角色 | [为便于阅读，名称已更改](directory-assign-admin-roles.md#role-template-ids)
 CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
@@ -1999,11 +1996,11 @@ Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌]
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
 受限来宾用户 | 未显示，因为无法使用它 | NA
-用户 | 未显示，因为无法使用它 | NA
+User | 未显示，因为无法使用它 | NA
 工作区设备联接 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何将用户分配为 Azure 订阅的管理员，请参阅在 [AZURE RBAC 中添加或删除 azure 角色分配 () ](../../role-based-access-control/role-assignments-portal.md)
+* 若要详细了解如何将用户分配为 Azure 订阅的管理员，请参阅[添加或删除 Azure 角色分配 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 * 若要详细了解如何在 Microsoft Azure 中控制资源访问，请参阅[了解不同的角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * 有关订阅和 Azure AD 租户之间的关系的详细信息，或者有关关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

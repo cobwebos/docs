@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: 80a05fd389ecaf504f58d12bf8efe87debd4ab86
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604235"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856138"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>了解 Azure RBAC 的作用域
 
@@ -22,9 +22,13 @@ ms.locfileid: "91604235"
 
 ## <a name="scope-levels"></a>范围级别
 
-在 Azure 中，可以指定以下四个级别的作用域： [管理组](../governance/management-groups/overview.md)、订阅、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)和资源。 范围采用父子关系结构。 层次结构的每个级别都使范围更具针对性。 可以在任何这些级别的作用域中分配角色。 你选择的级别决定了角色的应用范围。 较低级别继承更高级别的角色权限。 
+在 Azure 中，可以指定以下四个级别的作用域： [管理组](../governance/management-groups/overview.md)、订阅、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)和资源。 范围采用父子关系结构。 层次结构的每个级别都使范围更具针对性。 可以在其中任何一个范围级别分配角色。 你选择的级别决定了角色的应用范围。 较低级别继承更高级别的角色权限。 
 
 ![角色分配的范围](./media/scope-overview/rbac-scope-no-label.png)
+
+管理组是订阅的范围级别，但管理组支持更复杂的层次结构。 下图显示了可以定义的管理组和订阅的层次结构的示例。 有关管理组的详细信息，请参阅 [什么是 Azure 管理组？](../governance/management-groups/overview.md)。
+
+![管理组和订阅层次结构](./media/scope-overview/rbac-scope-management-groups.png)
 
 ## <a name="scope-format"></a>作用域格式
 
@@ -62,7 +66,7 @@ ms.locfileid: "91604235"
 ## <a name="scope-examples"></a>作用域示例
 
 > [!div class="mx-tableFixed"]
-> | 范围 | 示例 |
+> | 作用域 | 示例 |
 > | --- | --- |
 > | 管理组 | `/providers/Microsoft.Management/managementGroups/marketing-group` |
 > | 订阅 | `/subscriptions/00000000-0000-0000-0000-000000000000` |
@@ -118,6 +122,6 @@ ms.locfileid: "91604235"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [添加角色分配的步骤](role-assignments-steps.md)
+- [角色分配的添加步骤](role-assignments-steps.md)
 - [Azure 服务的资源提供程序](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [使用 Azure 管理组来组织资源](../governance/management-groups/overview.md)
+- [什么是 Azure 管理组？](../governance/management-groups/overview.md)

@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/24/2020
-ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/08/2020
+ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078631"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856664"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
 > [!IMPORTANT]
-> 不推荐使用原始 AS2 连接器，因此除非需要跟踪功能，否则请改用**AS2 （v2）** 连接器。 除跟踪外，v2 连接器提供与原始版本相同的功能，是逻辑应用运行时的固有功能，并且在消息大小、吞吐量和延迟方面有显著的性能改进。 此外，v2 连接器不需要创建与集成帐户的连接。 但要求执行先决条件中所述的操作，确保将集成帐户关联到你计划在其中使用连接器的逻辑应用。
+> 不推荐使用原始 AS2 连接器，因此除非需要跟踪功能，否则请改用 **AS2 (v2) ** 连接器。 除跟踪外，v2 连接器提供与原始版本相同的功能，是逻辑应用运行时的固有功能，并且在消息大小、吞吐量和延迟方面有显著的性能改进。 此外，v2 连接器不需要创建与集成帐户的连接。 但要求执行先决条件中所述的操作，确保将集成帐户关联到你计划在其中使用连接器的逻辑应用。
 
-若要在 Azure 逻辑应用中使用 AS2 消息，可以使用 AS2 连接器，它提供用于管理 AS2 通信的触发器和操作。 例如，若要在传输消息时确保安全性和可靠性，可以使用以下操作：
+若要在 Azure 逻辑应用中使用 AS2 消息，可以使用 AS2 连接器，此连接器提供支持和管理 AS2 (版本 1.2) 通信的触发器和操作。 例如，若要在传输消息时确保安全性和可靠性，可以使用以下操作：
 
 * [**AS2 编码**操作](#encode)：可以通过消息处置通知 (MDN) 提供加密、数字签名和确认功能，这有助于为不可否认性提供支持。 例如，此操作会应用 AS2/HTTP 标头并执行以下任务（在配置好以后）：
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c35fa28457e3cb9a063fa29c20d8651fcb4eeb45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996680"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856478"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -147,7 +147,7 @@ ms.locfileid: "83996680"
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>回填方案中的窗口执行顺序
 
-如果触发器的 startTime 为过去时间，那么根据公式 M=(CurrentTime- TriggerStartTime)/TriggerSliceSize，触发器将在执行未来运行之前生成 {M} backfill(past) 次并行运行，以保证触发器并发性。 窗口的执行顺序是确定的（从最旧到最新的时间间隔）。 当前无法修改此行为。
+如果触发器的 startTime 过去，则基于此公式，M = (CurrentTime-TriggerStartTime) /TumblingWindowSize，触发器将生成 {M} 回填 (过去) 并行运行，从而在执行将来的运行之前执行触发器并发。 窗口的执行顺序是确定的（从最旧到最新的时间间隔）。 当前无法修改此行为。
 
 ### <a name="existing-triggerresource-elements"></a>现有 TriggerResource 元素
 
