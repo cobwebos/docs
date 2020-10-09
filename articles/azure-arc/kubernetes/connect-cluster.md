@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 使用 Azure Arc 连接已启用 Azure Arc 的 Kubernetes 群集
 keywords: Kubernetes, Arc, Azure, K8s, 容器
 ms.custom: references_regions
-ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 74a0de494148f1f3315511c0bf6cb10f40cdc416
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540619"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854998"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>连接已启用 Azure Arc 的 Kubernetes 群集（预览版）
 
@@ -68,10 +68,8 @@ Azure Arc 代理需要以下协议/端口/出站 URL 才能正常运行。
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | 代理需要该终结点才可连接到 Azure 并注册群集                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | 代理的数据平面终结点，用于推送状态和提取配置信息                                      |
-| `https://docker.io`                                                                                            | 拉取容器映像所需                                                                                         |
-| `https://github.com`、git://github.com                                                                         | 示例 GitOps 存储库托管在 GitHub 上。 配置代理需要连接到指定的任何 git 终结点。 |
 | `https://login.microsoftonline.com`                                                                            | 提取和更新 Azure 资源管理器令牌所需                                                                                    |
-| `https://azurearcfork8s.azurecr.io`                                                                            | 拉取 Azure Arc 代理的容器映像所需                                                                  |
+| `https://mcr.microsoft.com`                                                                            | 拉取 Azure Arc 代理的容器映像所需                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  需要请求系统分配的托管标识证书                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>为已启用 Azure Arc 的 Kubernetes 注册两个提供程序：
@@ -183,17 +181,36 @@ AzureArcTest1  eastus      AzureArcTest
     az -v
     ```
 
-    需要 `connectedk8s` 扩展版本 >= 0.2.3 来设置代理和出站代理。 如果你的计算机上有版本 < 0.2.3，请执行 [更新步骤](#before-you-begin) 以获取计算机上的最新版本的扩展。
+    需要 `connectedk8s` 扩展版本 >= 0.2.5 来设置代理和出站代理。 如果你的计算机上有版本 < 0.2.3，请执行 [更新步骤](#before-you-begin) 以获取计算机上的最新版本的扩展。
 
-2. 运行连接命令并指定代理参数：
+2. 将 Azure CLI 所需的环境变量设置为使用出站代理服务器：
+
+    * 如果使用的是 bash，请使用适当的值运行以下命令：
+
+        ```bash
+        export HTTP_PROXY=<proxy-server-ip-address>:<port>
+        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+        ```
+
+    * 如果使用的是 PowerShell，请使用适当的值运行以下命令：
+
+        ```powershell
+        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+        ```
+
+3. 运行连接命令并指定代理参数：
 
     ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > 1. 指定 excludedCIDR 时，请务必确保在群集中的通信对于代理不会中断。
-> 2. 上述代理规范当前仅适用于 Arc 代理，不适用于 sourceControlConfiguration 中使用的 flux pod。 启用 Arc 的 Kubernetes 团队正在积极地处理此功能，不久将会提供该功能。
+> 2. 尽管--proxy-http、--https 和--proxy skip 对于大多数出站代理环境都是必需的，但仅当存在需要注入到代理箱的可信证书存储区的代理中的受信任证书时，才需要代理证书。
+> 3. 上述代理规范当前仅适用于 Arc 代理，不适用于 sourceControlConfiguration 中使用的 flux pod。 启用 Arc 的 Kubernetes 团队正在积极地处理此功能，不久将会提供该功能。
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>适用于 Kubernetes 的 Azure Arc 代理
 

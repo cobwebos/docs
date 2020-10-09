@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321729"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851095"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -421,6 +421,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 1. 登录到 Windows VM。
 1. 以管理员身份运行 PowerShell 会话。
+1. 删除 panther 目录 (C:\Windows\Panther)。
 1. 将目录切换到 `%windir%\system32\sysprep`。 然后运行 `sysprep.exe`。
 1. 在 " **系统准备工具** " 对话框中，选择 " **进入系统全新体验 (OOBE) **，并确保已选中" **通用化** "复选框。
 
@@ -432,7 +433,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](sa-upload-generalized.md)。
 
 >[!NOTE]
-> 不支持自定义的 *unattend.xml* 文件。 尽管我们确实支持 additionalUnattendContent 属性，但针对向 Azure 预配代理使用的 unattention.xml 文件添加 [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 选项，它只提供有限的支持。 例如，可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) 添加 FirstLogonCommands 和 LogonCommands。 有关详细信息，请参阅 [additionalUnattendContent FirstLogonCommands 示例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
+> 不支持自定义的 *unattend.xml* 文件。 尽管我们确实支持 additionalUnattendContent 属性，但针对向 Azure 预配代理使用的 unattention.xml 文件添加 [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 选项，它只提供有限的支持。 例如，可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) 添加 FirstLogonCommands 和 LogonCommands。 有关详细信息，请参阅 [additionalUnattendContent FirstLogonCommands 示例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>将虚拟磁盘转换为固定大小的 VHD
 

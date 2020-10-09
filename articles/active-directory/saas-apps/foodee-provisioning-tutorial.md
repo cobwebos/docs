@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331149"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850415"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为 Foodee 配置自动用户预配
 
@@ -55,7 +55,7 @@ Azure AD 使用称为 " *分配* " 的概念来确定哪些用户应收到对所
 
 1. 登录到 [Foodee](https://www.food.ee/login/)，然后选择你的租户 ID。
 
-    ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Foodee 企业门户主菜单的屏幕截图。租户 id 占位符在菜单中可见。" border="false":::
 
 1. 在 " **企业门户**" 下，选择 " **单一登录**"。
 
@@ -63,7 +63,7 @@ Azure AD 使用称为 " *分配* " 的概念来确定哪些用户应收到对所
 
 1. 复制 " **API 令牌** " 框中的值供以后使用。 你将在 Azure 门户的 Foodee 应用程序的 "**预配**" 选项卡的 "**机密令牌**" 框中输入它。
 
-    ![Foodee](media/Foodee-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Foodee 企业门户主菜单的屏幕截图。租户 id 占位符在菜单中可见。" border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>从库中添加 Foodee
 
@@ -71,7 +71,7 @@ Azure AD 使用称为 " *分配* " 的概念来确定哪些用户应收到对所
 
 若要从 Azure AD 应用程序库中添加 Foodee，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择 " **Azure Active Directory**"。
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”  。
 
     ![Azure Active Directory 命令](common/select-azuread.png)
 
@@ -130,20 +130,20 @@ Azure AD 使用称为 " *分配* " 的概念来确定哪些用户应收到对所
 
 1. 在 " **映射**" 下，选择 " **将 Azure Active Directory 用户同步到 Foodee**"。
 
-    ![Foodee 用户映射](media/Foodee-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Foodee 企业门户主菜单的屏幕截图。租户 id 占位符在菜单中可见。" border="false":::
 
 1. 在 " **属性映射**" 下，查看从 Azure AD 同步到 Foodee 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Foodee 中的 *用户帐户* 以执行更新操作。 
 
-    ![Foodee 用户映射](media/Foodee-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Foodee 企业门户主菜单的屏幕截图。租户 id 占位符在菜单中可见。" border="false":::
 
 1. 若要提交更改，请选择 " **保存**"。
 1. 在 " **映射**" 下，选择 " **将 Azure Active Directory 组同步到 Foodee**"。
 
-    ![Foodee 用户映射](media/Foodee-provisioning-tutorial/groupmapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Foodee 企业门户主菜单的屏幕截图。租户 id 占位符在菜单中可见。" border="false":::
 
 1. 在 " **属性映射**" 下，查看从 Azure AD 同步到 Foodee 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Foodee 中的 *组帐户* 以执行更新操作。
 
-    ![Foodee 用户映射](media/Foodee-provisioning-tutorial/groupattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Foodee 企业门户主菜单的屏幕截图。租户 id 占位符在菜单中可见。" border="false":::
 
 1. 若要提交更改，请选择 " **保存**"。
 1. 配置范围筛选器。 若要了解如何操作，请参阅 [范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明。

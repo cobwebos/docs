@@ -4,21 +4,21 @@ description: 了解 Azure Defender for IoT 服务中的信息流。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 3d26d9e3d686ad7c34e7493dc1413b7a9e7a2f6b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 3fc695770350e5a60ae3da9ab1796da5cac99370
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934855"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843407"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>用于 IoT 体系结构的 Azure Defender
 
@@ -43,11 +43,11 @@ Defender for IoT 适用于以下两个功能工作流之一：内置和增强
 
 ### <a name="enhanced"></a>增强版
 
-在 **增强** 模式下，在 IoT 中心启用 **安全** 选项并在设备上安装用于 IoT 设备代理的 Defender 后，代理会从设备收集、聚合和分析原始安全事件。 原始安全事件可能包括 IP 连接、进程创建、用户登录和其他安全相关信息。 用于 IoT 设备代理的 Defender 还处理事件聚合，以帮助避免高网络吞吐量。 代理具有高度可自定义性，使你可以将其用于特定的任务，例如，仅在最快的 SLA 中发送重要信息，或者将广泛的安全信息和上下文聚合到更大的段，以避免服务成本更高。
+在 **增强** 模式下，在 IoT 中心启用 **安全** 选项并在设备上安装用于 IoT 设备代理的 Defender 后，代理会从设备收集、聚合和分析原始安全事件。 原始安全事件可能包括 IP 连接、进程创建、用户登录和其他安全相关信息。 防守 for IoT 设备代理还处理事件聚合，以帮助避免高网络吞吐量。 代理具有高度可自定义性，使你可以将其用于特定的任务，例如，仅在最快的 SLA 中发送重要信息，或者将广泛的安全信息和上下文聚合到更大的段，以避免服务成本更高。
 
 ![用于 IoT 体系结构的 Defender](./media/architecture/azure-iot-security-architecture.png)
 
-设备代理和其他应用程序使用 **azure 发送安全消息 SDK** 将安全信息发送到 Azure IoT 中心。 IoT 中心会提取此信息并将其转发到 IoT 服务的 Defender。
+设备代理和其他应用程序使用 **azure 发送安全消息 SDK** 将安全信息发送到 Azure IoT 中心。 IoT 中心获取此信息，并将其转发到 IoT 服务的 Defender。
 
 一旦启用了用于 IoT 服务的 Defender，IoT 中心还将发送其所有内部数据，供 Defender 用于分析。 此数据包括设备云操作日志、设备标识和中心配置。 所有这些信息都有助于创建用于 IoT 分析管道的 Defender。
 

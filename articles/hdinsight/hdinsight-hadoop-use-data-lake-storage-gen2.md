@@ -8,150 +8,35 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 21b09e6b7a2be6b87288d973b40c566fb6217841
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 4ef53b2249f8ce57255c13126c9310f1c889d64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849975"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855049"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
-Azure Data Lake Storage Gen2 是构建在 Azure Blob 存储基础之上的，专用于大数据分析的云存储服务。 Data Lake Storage Gen2 将 Azure Blob 存储和 Azure Data Lake Storage Gen1 的功能组合在一起。 生成的服务提供 Azure Data Lake Storage Gen1 的功能。 这些功能包括：文件系统语义、目录级和文件级安全性以及适应性。 以及 Azure Blob 存储的低成本、分层存储、高可用性和灾难恢复功能。
+[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 是一种专用于在 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)基础上进行大数据分析的云存储服务。 Data Lake Storage Gen2 将 Azure Blob 存储和 Azure Data Lake Storage Gen1 的功能组合在一起。 生成的服务提供了 Azure Data Lake Storage Gen1 中的功能，其中包括：文件系统语义、目录级别和文件级安全性以及适应性。 以及 Azure Blob 存储的低成本、分层存储、高可用性和灾难恢复功能。
+
+有关使用 Data Lake Storage Gen2 的群集创建选项的完整比较，请参阅 [比较用于 Azure HDInsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
+
+[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="data-lake-storage-gen2-availability"></a>Data Lake Storage Gen2 可用性
 
-Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作几乎所有 Azure HDInsight 群集类型的存储选项。 但是，HBase 只能有一个 Data Lake Storage Gen2 帐户。
-
-有关使用 Data Lake Storage Gen2 的群集创建选项的完整比较，请参阅[比较用于 Azure HDInsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
+Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作几乎所有 Azure HDInsight 群集类型的存储选项。 但是，HBase 只能有一个具有 Data Lake Storage Gen2 的帐户。
 
 > [!Note]  
-> 选择 Data Lake Storage Gen2 作为**主要存储类型**后，无法选择 Data Lake Storage Gen1 帐户作为附加存储。
+> 选择 "Data Lake Storage Gen2 作为 **主存储类型**后，将无法选择 Data Lake Storage Gen1 作为附加存储。
 
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-portal"></a>通过 Azure 门户创建使用 Data Lake Storage Gen2 的群集
+## <a name="create-hdinsight-clusters-using-data-lake-storage-gen2"></a>使用 Data Lake Storage Gen2 创建 HDInsight 群集
 
-若要创建将 Data Lake Storage Gen2 用作存储的 HDInsight 群集，请遵循以下步骤配置 Data Lake Storage Gen2 帐户。
+使用以下链接获取有关如何创建具有对 Data Lake Storage Gen2 的访问权限的 HDInsight 群集的详细说明。
 
-### <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
-
-创建用户分配的托管标识（如果还没有）。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左上角，单击“创建资源”。
-1. 在搜索框中键入“用户分配”并单击“用户分配的托管标识”。
-1. 单击**创建**。
-1. 输入托管标识的名称，选择正确的订阅、资源组和位置。
-1. 单击**创建**。
-
-有关 Azure HDInsight 中托管标识的工作原理的详细信息，请参阅 [Azure HDInsight 中的托管标识](hdinsight-managed-identities.md)。
-
-![创建用户分配的托管标识](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
-
-### <a name="create-a-data-lake-storage-gen2-account"></a>创建 Data Lake Storage Gen2 帐户
-
-创建 Azure Data Lake Storage Gen2 存储帐户。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左上角，单击“创建资源”。
-1. 在搜索框中，键入 **storage**，然后单击 **Storage account**。
-1. 单击**创建**。
-1. 在“创建存储帐户”屏幕上：
-    1. 选择正确的订阅和资源组。
-    1. 输入 Data Lake Storage Gen2 帐户的名称。
-    1. 单击“高级”选项卡。
-    1. 单击 **Data Lake Storage Gen2** 下的“分层命名空间”旁边的“启用”。
-    1. 单击“查看 + 创建”。
-    1. 单击“创建” 
-
-有关存储帐户创建过程中其他选项的详细信息，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
-
-![显示 Azure 门户中存储帐户创建情况的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
-
-### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>在 Data Lake Storage Gen2 帐户中设置托管标识的权限
-
-将托管标识分配到存储帐户上的“存储 Blob 数据所有者”角色。
-
-1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
-1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
-
-    ![显示存储访问控制设置的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
-
-1. 选择“+ 添加角色分配”按钮以添加一个新角色。
-1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者”角色 。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管标识，它将在“选定成员”下列出。
-
-    ![显示如何分配 Azure 角色的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
-
-1. 选择“保存” 。 现在，选定的用户分配的标识会列在选定的角色下。
-1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”选项卡中，选择以下选项：
-
-    * 对于“主要存储类型”，请选择“Azure Data Lake Storage Gen2” 。
-    * 在“主存储帐户”下，搜索并选择新建的 Data Lake Storage Gen2 存储帐户。
-
-    * 在“标识”下，选择新建的用户分配的托管标识。
-
-        ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的存储设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
-
-    > [!NOTE]
-    > * 若要添加辅助 Data Lake Storage Gen2 帐户，请直接在存储帐户级别将此前创建的托管标识分配给希望添加的新 Data Lake Storage Gen2 存储帐户。 请注意，不支持通过 HDInsight 上的“其他存储帐户”边栏选项卡添加辅助 Data Lake Storage Gen2 帐户。
-    > * 可以在 HDInsight 使用的 Azure 存储帐户上启用 RA-GRS 或 RA-ZRS。 但是，不支持针对 RA-GRS 或 RA-ZRS 辅助终结点创建群集。
-
-
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>通过 Azure CLI 创建使用 Data Lake Storage Gen2 的群集
-
-可以[下载示例模板文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)并[下载示例参数文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)。 在使用下面的模板和 Azure CLI 代码片段之前，请将以下占位符替换为其正确值：
-
-| 占位符 | 说明 |
-|---|---|
-| `<SUBSCRIPTION_ID>` | Azure 订阅的 ID |
-| `<RESOURCEGROUPNAME>` | 要在其中创建新群集和存储帐户的资源组。 |
-| `<MANAGEDIDENTITYNAME>` | 将获得 Azure Data Lake Storage Gen2 帐户的权限的托管标识的名称。 |
-| `<STORAGEACCOUNTNAME>` | 要创建的新 Azure Data Lake Storage Gen2 帐户。 |
-| `<FILESYSTEMNAME>`  | 此群集应在存储帐户中使用的文件系统的名称。 |
-| `<CLUSTERNAME>` | 你的 HDInsight 群集的名称。 |
-| `<PASSWORD>` | 你选择的使用 SSH 及 Ambari 仪表板登录群集的密码。 |
-
-以下代码片段将会执行下述初始步骤：
-
-1. 登录到 Azure 帐户。
-1. 设置要在其中执行创建操作的活动订阅。
-1. 为新的部署活动创建新的资源组。
-1. 创建用户分配的托管标识。
-1. 将一个扩展添加到 Azure CLI，以使用 Data Lake Storage Gen2 的功能。
-1. 使用 `--hierarchical-namespace true` 标志创建新的 Data Lake Storage Gen2 帐户。
-
-```azurecli
-az login
-az account set --subscription <SUBSCRIPTION_ID>
-
-# Create resource group
-az group create --name <RESOURCEGROUPNAME> --location eastus
-
-# Create managed identity
-az identity create -g <RESOURCEGROUPNAME> -n <MANAGEDIDENTITYNAME>
-
-az extension add --name storage-preview
-
-az storage account create --name <STORAGEACCOUNTNAME> \
-    --resource-group <RESOURCEGROUPNAME> \
-    --location eastus --sku Standard_LRS \
-    --kind StorageV2 --hierarchical-namespace true
-```
-
-接下来，登录到门户。 将新的用户分配的托管标识添加到存储帐户上的 "**存储 Blob 数据参与者**" 角色。 此步骤将在步骤3中[的 "使用 Azure 门户"](hdinsight-hadoop-use-data-lake-storage-gen2.md)下进行说明。
-
- > [!IMPORTANT]
- > 请确保存储帐户具有用户分配的标识和**存储 Blob 数据参与者**角色权限，否则，群集创建将失败。
-
-```azurecli
-az group deployment create --name HDInsightADLSGen2Deployment \
-    --resource-group <RESOURCEGROUPNAME> \
-    --template-file hdinsight-adls-gen2-template.json \
-    --parameters parameters.json
-```
-
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-azure-powershell"></a>通过 Azure PowerShell 创建使用 Data Lake Storage Gen2 的群集
-
-当前不支持使用 PowerShell 创建具有 Azure Data Lake Storage Gen2 的 HDInsight 群集。
+* [使用门户](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2-portal.md)
+* [使用 Azure CLI](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md)
+* 目前不支持 PowerShell 创建具有 Azure Data Lake Storage Gen2 的 HDInsight 群集。
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>HDInsight 中 Data Lake Storage Gen2 的访问控制
 
@@ -159,9 +44,9 @@ az group deployment create --name HDInsightADLSGen2Deployment \
 
 Data Lake Storage Gen2 使用一个支持基于角色的访问控制 (RBAC) 和类似于 POSIX 的访问控制列表 (ACL) 的访问控制模型。 Data Lake Storage Gen1 仅支持用于控制数据访问的访问控制列表。
 
-RBAC 使用角色分配有效地将权限集应用到 Azure 资源的用户、组和服务主体。 通常情况下，这些 Azure 资源限制为顶级资源（例如，Azure 存储帐户）。 对于 Azure 存储以及 Azure Data Lake Storage Gen2，此机制已扩展到文件系统资源。
+RBAC 使用角色分配有效地将权限集应用到 Azure 资源的用户、组和服务主体。 通常，这些 Azure 资源会被限制为顶级资源 (例如，Azure Blob 存储帐户) 。 对于 Azure Blob 存储，以及 Data Lake Storage Gen2，此机制已扩展到文件系统资源。
 
- 有关使用 RBAC 的文件权限的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
+有关使用 RBAC 的文件权限的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
 
 有关使用 ACL 分配文件权限的详细信息，请参阅[对文件和目录应用访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)。
 

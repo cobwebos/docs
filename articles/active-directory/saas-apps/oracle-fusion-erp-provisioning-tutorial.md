@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255815"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850010"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>教程：配置 Oracle 合成 ERP 以实现自动用户预配
 
@@ -56,11 +56,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 2. 单击左上角的 "导航器"。 在 " **工具**" 下，选择 " **安全控制台**"。
 
-    ![Oracle 合成 ERP 添加 SCIM](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Oracle 合成 E R P 管理员控制台中的 &quot;导航器&quot; 页的屏幕截图。突出显示工具和安全控制台。" border="false":::
 
 3. 导航到 " **用户**"。
     
-    ![Oracle 合成 ERP 添加 SCIM](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Oracle 合成 E R P 管理员控制台中的 &quot;导航器&quot; 页的屏幕截图。突出显示工具和安全控制台。" border="false":::
 
 4. 保存将用于登录到 Oracle 合成 ERP 管理控制台的管理员用户帐户的用户名和密码。 需要在 Azure 门户中 Oracle 合成 ERP 应用程序的 "设置" 选项卡的 " **管理员用户名** " 和 " **密码** " 字段中输入这些值。
 
@@ -116,21 +116,21 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` **租户 URL**"。 在 " **管理员用户名** " 和 " **密码** " 字段中输入之前检索到的管理员用户名和密码。 单击 Azure AD 和 Oracle 合成 ERP 之间的 " **测试连接** "。 
 
-    ![Oracle 合成 ERP 添加 SCIM](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Oracle 合成 E R P 管理员控制台中的 &quot;导航器&quot; 页的屏幕截图。突出显示工具和安全控制台。" border="false":::
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Oracle 合成 ERP**"。
 
-    ![Oracle 合成 ERP 添加 SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Oracle 合成 E R P 管理员控制台中的 &quot;导航器&quot; 页的屏幕截图。突出显示工具和安全控制台。" border="false":::
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 ORACLE 合成 ERP 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 ORACLE 合成 ERP 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![Oracle 合成 ERP 添加 SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Oracle 合成 E R P 管理员控制台中的 &quot;导航器&quot; 页的屏幕截图。突出显示工具和安全控制台。" border="false":::
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Oracle 合成 ERP**"。
 

@@ -2,17 +2,17 @@
 title: 指标、警报和诊断日志
 description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的诊断日志事件。
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145101"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848681"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
- 
+
 本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能监视 Batch 帐户。 Azure Monitor 收集 Batch 帐户中资源的[指标](../azure-monitor/platform/data-platform-metrics.md)和[诊断日志](../azure-monitor/platform/platform-logs-overview.md)。 以各种方法收集和使用此数据可以监视 Batch 帐户及诊断问题。 还可以配置[指标警报](../azure-monitor/platform/alerts-overview.md)，以便在某项指标达到指定值时收到通知。
 
 ## <a name="batch-metrics"></a>Batch 指标
@@ -57,7 +57,7 @@ ms.locfileid: "86145101"
 
 建议不要使用基于单一数据点触发的警报，因为指标可能会出现乱序送达、数据丢失和/或数据重复的情况。 创建警报时，可以使用阈值来应对这些不一致。
 
-例如，你可能想要配置一个当低优先级核心计数降到特定级别时触发的指标警报，以便能够调整池的组成部分。 为获得最佳结果，请设置一个 10 分钟或 10 分钟以上的周期，如果平均低优先级核心计数在整个周期内都低于阈值，则触发警报。 这样就可以有更多的时间来聚合指标，以便获得更准确的结果。 
+例如，你可能想要配置一个当低优先级核心计数降到特定级别时触发的指标警报，以便能够调整池的组成部分。 为获得最佳结果，请设置一个 10 分钟或 10 分钟以上的周期，如果平均低优先级核心计数在整个周期内都低于阈值，则触发警报。 这样就可以有更多的时间来聚合指标，以便获得更准确的结果。
 
 若要在 Azure 门户中配置指标警报，请执行以下操作：
 
@@ -87,11 +87,11 @@ ms.locfileid: "86145101"
 
 此外，还可以：
 
-- 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-about.md)。 数据中心每秒可以接受数百万事件，用户可以使用任何实时分析提供程序转换并存储这些事件。 
+- 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-about.md)。 数据中心每秒可以接受数百万事件，用户可以使用任何实时分析提供程序转换并存储这些事件。
 - 将诊断日志发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)（可用于分析这些日志），或者导出诊断日志以在 Power BI 或 Excel 中进行分析。
 
 > [!NOTE]
-> 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。 
+> 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>启用 Batch 诊断日志的收集
 
@@ -155,7 +155,7 @@ Azure Batch 服务日志（如果已收集）包含 Azure Batch 服务在单个 
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -170,9 +170,11 @@ Batch 服务发出的服务日志事件包括以下各项：
 - [池删除完成](batch-pool-delete-complete-event.md)
 - [池调整大小启动](batch-pool-resize-start-event.md)
 - [池调整大小完成](batch-pool-resize-complete-event.md)
+- [池自动缩放](batch-pool-autoscale-event.md)
 - [任务启动](batch-task-start-event.md)
 - [任务完成](batch-task-complete-event.md)
 - [任务失败](batch-task-fail-event.md)
+- [任务计划失败](batch-task-schedule-fail-event.md)
 
 ## <a name="next-steps"></a>后续步骤
 

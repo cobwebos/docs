@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312531"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850858"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>教程：为 Flock 配置自动用户预配
 
@@ -54,15 +54,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [Flock](https://web.flock.com/?)。 单击 "**设置" 图标**  >  **管理你的团队**。
 
-    ![Flock](media/flock-provisioning-tutorial/icon.png)
+    :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Flock 网站的屏幕截图。&quot;设置&quot; 图标突出显示，其快捷菜单可见。在该菜单中，将突出显示 &quot;管理你的团队&quot;。" border="false":::
 
 2. 选择 " **身份验证和设置**"。
 
-    ![Flock](media/Flock-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Flock 网站的屏幕截图。&quot;设置&quot; 图标突出显示，其快捷菜单可见。在该菜单中，将突出显示 &quot;管理你的团队&quot;。" border="false":::
 
 3. 复制 **API 令牌**。 这些值将在 Azure 门户的 Flock 应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。
 
-    ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Flock 网站的屏幕截图。&quot;设置&quot; 图标突出显示，其快捷菜单可见。在该菜单中，将突出显示 &quot;管理你的团队&quot;。" border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>从库中添加 Flock
@@ -120,7 +120,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Flock**"。
 

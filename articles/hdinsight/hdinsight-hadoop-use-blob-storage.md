@@ -8,20 +8,23 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086970"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855661"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
-可以将数据存储在 [Azure 存储](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) 或 [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) 中。 或这些选项的组合。 使用这些存储选项，可安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+可以将数据存储在 [Azure Blob 存储](../storage/common/storage-introduction.md)、 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)中。 或这些选项的组合。 使用这些存储选项，可安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 blob 容器作为默认文件系统。 或者在 HDInsight 3.6 中，可以选择 Azure 存储或 Azure Storage or Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 作为默认文件系统，但存在几种例外情况。 有关对将 Data Lake Storage Gen 1 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
+Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 blob 容器作为默认文件系统。 对于 HDInsight 3.6，你可以选择 "Azure Blob 存储"，也可以选择 "Azure Data Lake Storage Gen1/Azure Data Lake Storage Gen2 为默认文件系统，但有一些例外。 有关使用 Data Lake Storage Gen1 作为默认存储和链接存储的可支持性，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters)。
 
-本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Storage Gen 1 与 HDInsight 群集如何配合工作，请参阅[将 Azure Data Lake Storage 与 Azure HDInsight 群集配合使用](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+本文介绍 Azure 存储如何与 HDInsight 群集配合使用。 
+* 若要了解 Data Lake Storage Gen1 如何与 HDInsight 群集配合使用，请参阅 [将 Azure Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen1.md)。
+* 若要了解 Data Lake Storage Gen2 如何与 HDInsight 群集配合使用，请参阅 [将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](./hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+* 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](./hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!IMPORTANT]  
 > 存储帐户类型 BlobStorage 仅可用作 HDInsight 群集的辅助存储器****。
@@ -30,7 +33,7 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2（常规用途 v2）  | Blob     | 标准                    |高级| 热、冷、存档\*   |
 | 存储（常规用途 v1）   | Blob     | 标准                    |高级| 空值                    |
-| BlobStorage                    | Blob     | 标准                    |高级| 热、冷、存档\*   |
+| BlobStorage                    | Blob     | Standard                    |高级| 热、冷、存档\*   |
 
 建议不要使用默认 blob 容器来存储业务数据。 最佳做法是每次使用之后删除默认 Blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
@@ -169,9 +172,9 @@ Microsoft 提供以下工具用于操作 Azure 存储：
 
 有关详细信息，请参阅：
 
-* [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Azure Data Lake Storage 入门](../data-lake-store/data-lake-store-get-started-portal.md)
-* [将数据上传到 HDInsight](hdinsight-upload-data.md)
-* [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [快速入门：创建 Apache Hadoop 群集](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [教程：创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [将数据上传到 HDInsight](hdinsight-upload-data.md)
 * [教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据](hdinsight-storage-sharedaccesssignature-permissions.md)

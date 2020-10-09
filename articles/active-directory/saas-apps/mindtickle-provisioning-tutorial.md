@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 145793d7e451e7db9598118fb3adbd49d1d9c650
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256426"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850670"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>教程：为 MindTickle 配置自动用户预配
 
@@ -111,15 +111,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 MindTickle**"。
 
-    ![MindTickle 用户映射](media/mindtickle-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="&quot;映射&quot; 部分的屏幕截图。在 &quot;名称&quot; 下，将 Azure Active Directory 用户同步到 MindTickle &quot;。" border="false":::
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 MindTickle 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 MindTickle 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![MindTickle 用户映射](media/mindtickle-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="&quot;映射&quot; 部分的屏幕截图。在 &quot;名称&quot; 下，将 Azure Active Directory 用户同步到 MindTickle &quot;。" border="false":::
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

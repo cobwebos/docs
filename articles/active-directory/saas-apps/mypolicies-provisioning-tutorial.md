@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: a6db1866c42dbb90d6ea0f288aceed4672424fe0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321962"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850483"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>教程：为 myPolicies 配置自动用户预配
 
@@ -114,11 +114,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“ **保存**”。
+8. 单击“保存”。
 
 9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 myPolicies**"。
 
-    ![myPolicies 用户映射](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="&quot;映射&quot; 部分的屏幕截图。在 &quot;名称&quot; 下，将 Azure Active Directory 用户同步到 customappsso &quot;。" border="false":::
 
 10. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 myPolicies 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 myPolicies 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 

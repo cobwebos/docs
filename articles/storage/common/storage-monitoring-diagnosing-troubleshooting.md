@@ -4,17 +4,17 @@ description: 使用存储分析、客户端日志记录等功能及其他第三�
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 10/02/2020
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667905"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854551"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -24,9 +24,7 @@ ms.locfileid: "91667905"
 
 若要成功管理此类应用程序，应主动监视这些应用程序，并了解如何诊断和排查这些应用程序及其相关技术的所有方面的问题。 作为 Azure 存储服务的用户，应持续监视应用程序所用的存储服务是否出现任何意外的行为更改（如比正常响应时间慢），并使用日志记录收集更详细的数据并深入分析问题。 从监视和日志记录获取的诊断信息将有助于确定应用程序所遇到问题的根本原因。 然后，用户可以排查该问题，并确定可以执行以更正该问题的相应步骤。 Azure 存储是一项核心 Azure 服务，它是客户部署到 Azure 基础结构的大多数解决方案的重要组成部分。 Azure 存储提供的功能可以简化监视、诊断和排查基于云的应用程序中的存储问题的过程。
 
-有关 Azure 存储应用程序中端到端故障排除的动手指南，请参阅[端到端故障排除 - 使用 Azure 存储指标和日志记录、AzCopy 和 Message Analyzer](../storage-e2e-troubleshooting.md)。
-
-* [介绍]
+* [简介]
   * [本指南的组织方式]
 * [监视存储服务]
   * [监视服务运行状况]
@@ -68,7 +66,6 @@ ms.locfileid: "91667905"
 * [附录]
   * [附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]
   * [附录 2：使用 Wireshark 捕获网络流量]
-  * [附录 3：使用 Microsoft Message Analyzer 捕获网络流量]
   * [附录 4：使用 Excel 查看指标和日志数据]
   * [附录 5：使用 Application Insights for Azure DevOps 进行监视]
 
@@ -92,7 +89,7 @@ ms.locfileid: "91667905"
 
 “[故障排除指南]”一节针对可能会遇到的一些与存储相关的常见问题，提供了故障排除指南。
 
-“[附录]”提供了有关如何使用其他工具的信息，例如如何使用 Wireshark 和 Netmon 分析网络数据包数据，如何使用 Fiddler 分析 HTTP/HTTPS 消息，以及如何使用 Microsoft Message Analyzer 关联日志数据等。
+"[附录]" 包含有关使用其他工具（如 Wireshark 和 Netmon 分析网络数据包数据）和用于分析 HTTP/HTTPS 消息的 Fiddler 的信息。
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>监视存储服务
 如果熟悉 Windows 性能监视，则可以将存储度量值视为 Windows 性能监视器计数器的 Azure 存储等效项。 在“存储指标”中，可找到一组综合指标（相当于 Windows 性能监视器术语中的计数器），例如服务可用性、向服务发送的请求总数或向服务发出的成功请求的百分比。 有关可用度量值的完整列表，请参阅[存储分析度量值表架构](https://msdn.microsoft.com/library/azure/hh343264.aspx)。 可以指定希望存储服务每隔一小时还是每隔一分钟收集和聚合一次度量值。 有关如何启用度量值和监视存储帐户的详细信息，请参阅 [Enabling storage metrics and viewing metrics data](https://go.microsoft.com/fwlink/?LinkId=510865)（启用存储度量值并查看度量值数据）。
@@ -221,10 +218,9 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 
 * [Fiddler](https://www.telerik.com/fiddler) 是一个免费 Web 调试代理，使用它可以检查 HTTP 与 HTTPS 请求和响应消息的标头和有效负载数据。 有关详细信息，请参阅[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量](#appendix-1)。
 * [Microsoft 网络监视器 (Netmon)](https://cnet-downloads.com/network-monitor) 和 [Wireshark](https://www.wireshark.org/) 是免费的网络协议分析器，使用它们可以查看各种网络协议的详细数据包信息。 有关 Wireshark 的详细信息，请参阅[附录 2：使用 Wireshark 捕获网络流量](#appendix-2)。
-* Microsoft Message Analyzer 是 Microsoft 提供的用于取代 Netmon 的工具，它除了捕获网络数据包数据外，还可帮助你查看和分析其他工具捕获的日志数据。 有关详细信息，请参阅[附录 3：使用 Microsoft Message Analyzer 捕获网络流量](#appendix-3)。
 * 如果要执行基本连接测试，以检查客户端计算机是否能够通过网络连接到 Azure 存储服务，则不能在客户端上使用标准 **ping** 工具来执行此操作。 但是，可以使用 [**tcping** 工具](https://www.elifulkerson.com/projects/tcping.php)来检查连接性。
 
-在许多情况下，通过存储日志记录和存储客户端库记录的日志数据已足以诊断问题，但在某些情况下，可能需要更详细的信息，而这些网络日志记录工具可以提供这些信息。 例如，使用 Fiddler 查看 HTTP 和 HTTPS 消息时，可以查看发往和来自存储服务的标头和负载数据，这使你能够检查客户端应用程序如何重试存储操作。 协议分析器（例如 Wireshark）运行在数据包级别，这使你能够查看 TCP 数据，从而可以排查丢失的数据包和连接问题。 Message Analyzer 可以在 HTTP 和 TCP 层上运行。
+在许多情况下，通过存储日志记录和存储客户端库记录的日志数据已足以诊断问题，但在某些情况下，可能需要更详细的信息，而这些网络日志记录工具可以提供这些信息。 例如，使用 Fiddler 查看 HTTP 和 HTTPS 消息时，可以查看发往和来自存储服务的标头和负载数据，这使你能够检查客户端应用程序如何重试存储操作。 协议分析器（例如 Wireshark）运行在数据包级别，这使你能够查看 TCP 数据，从而可以排查丢失的数据包和连接问题。 
 
 ## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>端到端跟踪
 使用各种日志文件的端到端跟踪是一项有用的技术，用于调查潜在的问题。 可以使用度量数据中的日期/时间信息来指示在日志文件中查找有助于排查问题的详细信息的起始位置。
@@ -385,11 +381,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 应查看客户端日志以了解客户端应用程序正在提交多少个请求，并检查客户端中与 .NET 相关的常规性能瓶颈（如 CPU、.NET 垃圾回收、网络利用率或内存）。 作为排查 .NET 客户端应用程序问题的起点，请参阅[调试、跟踪和分析](https://msdn.microsoft.com/library/7fe0dd2y)。
 
 #### <a name="investigating-network-latency-issues"></a>调查网络延迟问题
-通常，因网络导致的高端到端延迟是由暂时状况导致的。 可以使用工具（如 Wireshark 或 Microsoft Message Analyzer）调查临时和持久网络问题，例如丢弃数据包。
+通常，因网络导致的高端到端延迟是由暂时状况导致的。 你可以使用 Wireshark 等工具调查临时和持久网络问题，例如丢弃数据包。
 
 有关使用 Wireshark 排查网络问题的详细信息，请参阅[附录 2：使用 Wireshark 捕获网络流量]。
-
-有关使用 Microsoft Message Analyzer 排查网络问题的详细信息，请参阅[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]。
 
 ### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>度量值显示低 AverageE2ELatency 和低 AverageServerLatency，但客户端遇到高延迟
 在这种情况下，最可能的原因是到达存储服务的存储请求出现延迟。 应调查来自客户端的请求为什么未到达 Blob 服务。
@@ -402,11 +396,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 * 检查客户端日志。 详细日志记录会指示重试已发生过。
 * 对代码进行调试，并查看与请求关联的 **OperationContext** 对象的属性。 如果该操作已重试过，则 **RequestResults** 属性会包括多个唯一的服务器请求 ID。 此外，还可以检查每个请求的开始和结束时间。 有关详细信息，请参阅 [服务器请求 ID]部分中的代码示例。
 
-如果客户端没有问题，则应调查潜在的网络问题，例如数据包丢失。 可以使用工具（如 Wireshark 或 Microsoft Message Analyzer）调查网络问题。
+如果客户端没有问题，则应调查潜在的网络问题，例如数据包丢失。 您可以使用 Wireshark 之类的工具来调查网络问题。
 
 有关使用 Wireshark 排查网络问题的详细信息，请参阅[附录 2：使用 Wireshark 捕获网络流量]。
-
-有关使用 Microsoft Message Analyzer 排查网络问题的详细信息，请参阅[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]。
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>度量值显示高 AverageServerLatency
 如果 blob 下载请求出现高 **AverageServerLatency**，则应使用存储日志记录日志来了解对于同一 blob（或一组 blob）是否存在重复的请求。 对于 Blob 上传请求，应调查客户端正在使用的数据块大小（例如，小于 64 K 的数据块大小可能会导致开销，除非读取操作也在小于 64 K 的区块中进行），以及是否有多个客户端正在并行将数据块上传到同一 Blob。 还应检查每分钟度量值以了解导致超出每秒可伸缩性目标的请求数峰值：另请参阅“[度量值显示 PercentTimeoutError 增加]”。
@@ -476,7 +468,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>度量值显示 PercentNetworkError 增加
 度量值显示其中一个存储服务的 **PercentNetworkError** 增加。 **PercentNetworkError** 指标是以下指标的聚合：**NetworkError**、**AnonymousNetworkError** 和 **SASNetworkError**。 如果存储服务在客户端发出存储请求时检测到网络错误，则会出现这些错误。
 
-出现此错误的最常见原因是客户端在存储服务超时到期之前断开连接。 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。 还可以使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 这些工具在[附录]中进行了说明。
+出现此错误的最常见原因是客户端在存储服务超时到期之前断开连接。 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。 还可以使用 Wireshark 或 Tcping 调查客户端的网络连接问题。 这些工具在[附录]中进行了说明。
 
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>客户端正在接收“HTTP 403 (禁止访问)”消息
 如果客户端应用程序引发“HTTP 403(禁止)”错误，则可能的原因是客户端在发送存储请求时使用了过期的共享访问签名 (SAS)（虽然其他可能的原因包括时钟偏差、无效密钥和空标头）。 如果已过期的 SAS 密钥是原因，则你不会在服务器端存储日志记录日志数据中看到任何条目。 下表显示了存储客户端库生成的客户端日志的示例，它说明了如何出现此问题：
@@ -648,7 +640,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
+| Timestamp | 操作 | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -719,13 +711,11 @@ sqllocaldb create v11.0
 
 * 检查度量值，了解与预期的基准行为相比是否存在任何更改。 通过度量值，可能能够确定此问题是暂时的还是永久性的，并可确定此问题影响哪些存储操作。
 * 可以使用度量值信息来搜索服务器端日志数据，获取有关发生的任何错误的更多详细信息。 此信息可能有助于排查和解决该问题。
-* 如果服务器端日志中的信息不足以成功排查此问题，则可以使用存储客户端库客户端日志来调查客户端应用程序和工具（如 Fiddler、Wireshark 和 Microsoft Message Analyzer）的行为以调查网络。
+* 如果服务器端日志中的信息不足以成功排查此问题，则可以使用存储客户端库客户端日志来调查客户端应用程序的行为，并使用 Fiddler 和 Wireshark 之类的工具来调查网络。
 
 有关使用 Fiddler 的详细信息，请参阅[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]。
 
 有关使用 Wireshark 的详细信息，请参阅[附录 2：使用 Wireshark 捕获网络流量]。
-
-有关使用 Microsoft Message Analyzer 的详细信息，请参阅[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]。
 
 ## <a name="appendices"></a><a name="appendices"></a>附录
 附录介绍几种在诊断和排查 Azure 存储（及其他服务）问题时可能很有用的工具。 这些工具不属于 Azure 存储，有些工具是第三方产品。 因此，这些附录中介绍的工具可能在与 Microsoft Azure 或 Azure 存储签订的任何支持协议中均未涉及，因此，在评估过程中，应查看这些工具的提供者提供的许可和支持选项。
@@ -776,40 +766,6 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 > 有关使用 Wireshark 的详细信息，请参阅 [Wireshark Users Guide](https://www.wireshark.org/docs/wsug_html_chunked)（Wireshark 用户指南）。
 >
 >
-
-### <a name="appendix-3-using-microsoft-message-analyzer-to-capture-network-traffic"></a><a name="appendix-3"></a>附录 3：使用 Microsoft Message Analyzer 捕获网络流量
-可以使用 Microsoft Message Analyzer 以与 Fiddler 类似的方式捕获 HTTP 和 HTTPS 流量，并以与 Wireshark 类似的方式捕获网络流量。
-
-#### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 配置 Web 跟踪会话
-若要使用 Microsoft Message Analyzer 为 HTTP 和 HTTPS 通信配置 Web 跟踪会话，请运行 Microsoft Message Analyzer 应用程序，然后在“文件”菜单上单击“捕获/跟踪”。 在可用的跟踪方案列表中，选择“Web 代理”。 然后在“跟踪方案配置”面板的“HostnameFilter”文本框中，添加存储终结点的名称（可以在 [Azure 门户](https://portal.azure.com)中查找这些名称）。 例如，如果 Azure 存储帐户的名称是 contosodata，则应将以下内容添加到 HostnameFilter 文本框：
-
-```
-contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-```
-
-> [!NOTE]
-> 空格字符分隔主机名。
->
->
-
-当准备好开始收集跟踪数据时，请单击“就此开始”  按钮。
-
-有关 Microsoft Message Analyzer **Web 代理**跟踪的详细信息，请参阅 [Microsoft-PEF-WebProxy Provider](https://technet.microsoft.com/library/jj674814.aspx)（Microsoft-PEF-WebProxy 提供程序）。
-
-Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；它可以捕获客户端 HTTPS 通信，并显示未加密的 HTTPS 消息。 “Web 代理”  跟踪的工作原理是通过为所有 HTTP 和 HTTPS 流量配置本地代理使其可以访问未加密的消息。
-
-#### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 诊断网络问题
-除了使用 Microsoft Message Analyzer **Web 代理**跟踪来捕获客户端应用程序和存储服务之间的 HTTP/HTTPS 流量的详细信息外，还可以使用内置的**本地链路层**跟踪来捕获网络数据包信息。 此能够实现捕获类似于使用 Wireshark 捕获的数据，并诊断丢弃的数据包等网络问题。
-
-下面的屏幕截图显示了**本地链路层**跟踪的一个示例，其中一些**信息性**消息显示在 **DiagnosisTypes** 列中。 单击 **DiagnosisTypes** 列中的图标可显示消息的详细信息。 在此示例中，服务器重新传输了消息 #305 因为它未收到来自客户端的确认消息：
-
-![屏幕截图，其显示了本地链路层跟踪的一个示例，其中一些信息性消息显示在 DiagnosisTypes 列中][9]
-
-当在 Microsoft Message Analyzer 中创建跟踪会话时，可以指定筛选器，以减少跟踪中的干扰项量。 在定义跟踪的“捕获/跟踪”页上，单击 **Microsoft-Windows-NDIS-PacketCapture** 旁边的“配置”链接。 下面的屏幕截图显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置：
-
-![屏幕截图，其中显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置。][10]
-
-有关 Microsoft Message Analyzer 本地链路层跟踪的详细信息，请参阅 [Microsoft-PEF-NDIS-PacketCapture Provider](https://technet.microsoft.com/library/jj659264.aspx)（Microsoft-PEF-NDIS-PacketCapture 提供程序）。
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>附录 4：使用 Excel 查看指标和日志数据
 使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储指标数据，以便可以轻松地将这些数据加载到 Excel 中以供查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用带分隔符格式加载到 Excel 中。 但是，需要基于[存储分析日志格式](https://msdn.microsoft.com/library/azure/hh343259.aspx)和[存储分析度量表架构](https://msdn.microsoft.com/library/azure/hh343264.aspx)中的信息添加相应的列标题。
@@ -897,7 +853,6 @@ Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；
 [附录]: #appendices
 [附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]: #appendix-1
 [附录 2：使用 Wireshark 捕获网络流量]: #appendix-2
-[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]: #appendix-3
 [附录 4：使用 Excel 查看指标和日志数据]: #appendix-4
 [附录 5：使用 Application Insights for Azure DevOps 进行监视]: #appendix-5
 

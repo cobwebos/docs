@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322022"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850864"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>教程：为 Figma 配置自动用户预配
 
@@ -53,23 +53,23 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [Figma 管理控制台](https://www.Figma.com/)。 单击租户旁边的齿轮图标。
 
-    ![FigmaFigma-设置](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Figma 管理控制台的屏幕截图。名为 A D Scim Test 的租户可见。租户旁边会突出显示齿轮图标。" border="false":::
 
 2. 导航到 " **常规" > 更新 "设置" 中的 "日志"**。
 
-    ![FigmaFigma-设置](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Figma 管理控制台的屏幕截图。名为 A D Scim Test 的租户可见。租户旁边会突出显示齿轮图标。" border="false":::
 
 3. 复制 **租户 ID**。 此值将用于构造要输入到 Azure 门户中 Figma 应用程序的 "预配" 选项卡的 " **租户 URL** " 字段中的 SCIM 终结点 url。
 
-    ![Figma 创建令牌](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma 管理控制台的屏幕截图。名为 A D Scim Test 的租户可见。租户旁边会突出显示齿轮图标。" border="false":::
 
 4. 向下滚动并单击 " **生成 API 令牌**"。
 
-    ![Figma 创建令牌](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma 管理控制台的屏幕截图。名为 A D Scim Test 的租户可见。租户旁边会突出显示齿轮图标。" border="false":::
 
 5. 复制 "  **API 令牌** " 值。 此值将在 Azure 门户的 Figma 应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。 
 
-    ![Figma 创建令牌](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Figma 管理控制台的屏幕截图。名为 A D Scim Test 的租户可见。租户旁边会突出显示齿轮图标。" border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>从库中添加 Figma
 
@@ -124,7 +124,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“ **保存**”。
+9. 单击“保存”。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Figma**"。
 

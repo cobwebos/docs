@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408501"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850585"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
@@ -101,11 +101,15 @@ Azure 防火墙包括以下功能：
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
-所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 有关详细信息，请参阅[教程：监视 Azure 防火墙日志和指标](tutorial-diagnostics.md)。
+所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 有关 Azure Monitor 日志示例，请参阅 [Azure 防火墙 Azure Monitor 日志](log-analytics-samples.md)。
+
+有关详细信息，请参阅[教程：监视 Azure 防火墙日志和指标](tutorial-diagnostics.md)。 
+
+Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的画布。 可以使用它在 Azure 门户中创建丰富的视觉对象报表。 有关详细信息，请参阅 [使用 Azure 防火墙工作簿监视日志](firewall-workbook.md)。
 
 ## <a name="forced-tunneling"></a>强制隧道
 
-你可以对 Azure 防火墙进行配置，使其将所有 Internet 绑定的流量路由到指定的下一跃点，而不是直接前往 Internet。 例如，你可能有本地边缘防火墙或其他网络虚拟设备 (NVA) 用来在将网络流量传递到 Internet 之前对其进行处理。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
+你可以对 Azure 防火墙进行配置，使其将所有 Internet 绑定的流量路由到指定的下一跃点，而不是直接前往 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
 
 ## <a name="certifications"></a>认证
 

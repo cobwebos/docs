@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825492"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843424"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -50,7 +50,7 @@ ms.locfileid: "91825492"
 
 <sup>2</sup> 在 2017 年 12 月之前创建的基本服务对索引数的限制较低（为 5 个而不是 15 个）。 基本层是唯一具有下限（每个索引 100 个字段）的 SKU。
 
-<sup>2</sup> 元素存在上限，因为有大量它们会导致高存储利用率。 复杂集合的元素定义为该集合的成员。 例如，假设有一个 [旅馆文档使用房间复杂集合](search-howto-complex-data-types.md#indexing-complex-types)，则房间集合中的每个房间都被视为一个元素。 在编制索引期间，索引引擎可以安全地在整个文档中处理最多3000个元素。 [此限制](search-api-migration.md#upgrade-to-2019-05-06) 是在中引入的， `api-version=2019-05-06` 并且仅适用于复杂集合，不适用于字符串集合或复杂字段。
+<sup>2</sup> 元素存在上限，因为有大量它们会大幅增加索引所需的存储空间。 复杂集合的元素定义为该集合的成员。 例如，假设有一个 [旅馆文档使用房间复杂集合](search-howto-complex-data-types.md#indexing-complex-types)，则房间集合中的每个房间都被视为一个元素。 在编制索引期间，索引引擎可以安全地在整个文档中处理最多3000个元素。 [此限制](search-api-migration.md#upgrade-to-2019-05-06) 是在中引入的， `api-version=2019-05-06` 并且仅适用于复杂集合，不适用于字符串集合或复杂字段。
 
 <a name="document-limits"></a>
 
@@ -108,8 +108,8 @@ ms.locfileid: "91825492"
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 私有终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
-| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
+| 私有终结点索引器支持 | 否 | “是” | “是” | “是” | “是” | 否 | “是” | “是” |
+| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | “是” | “是” | 否 | “是” | “是” |
 | 最大专用终结点 | 空值 | 10或30 | 100 | 400 | 400 | 空值 | 20 | 20 |
 | 最大不同资源类型<sup>2</sup> | 不适用 | 4 | 7 | 15 | 15 | 不适用 | 4 | 4 |
 

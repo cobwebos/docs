@@ -2,13 +2,13 @@
 title: 创建具有指定公共 IP 地址的池
 description: 了解如何创建使用你自己的公共 IP 地址的 Batch 池。
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.date: 10/08/2020
+ms.openlocfilehash: e822311718847e173763847d503335f71457308b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146481"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849322"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>创建具有指定公共 IP 地址的 Azure Batch 池
 
@@ -82,10 +82,10 @@ client-request-id: 00000000-0000-0000-0000-000000000000
        "resizeTimeout":"PT15M",
       "targetDedicatedNodes":5,
       "targetLowPriorityNodes":0,
-      "maxTasksPerNode":3,
+      "taskSlotsPerNode":3,
       "taskSchedulingPolicy": {
         "nodeFillType":"spread"
-      }, 
+      },
       "enableAutoScale":false,
       "enableInterNodeCommunication":true,
       "metadata": [ {

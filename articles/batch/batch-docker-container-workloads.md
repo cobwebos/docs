@@ -2,26 +2,28 @@
 title: 容器工作负载
 description: 了解如何在 Azure Batch 上通过容器映像运行和缩放应用。 创建支持运行容器任务的计算节点池。
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018503"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843441"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
 可以通过 Azure Batch 在 Azure 上运行和缩放大量批处理计算作业。 Batch 任务可直接在 Batch 池中的虚拟机（节点）上运行；但也可以设置一个 Batch 池，以便在节点上的 Docker 兼容容器中运行任务。 本文介绍如何创建支持运行容器任务的计算节点池，然后在池中运行容器任务。
 
-读者应熟悉容器的概念，并知道如何创建 Batch 池和作业。 以下代码示例使用 Batch .NET 和 Python SDK。 也可以使用其他 Batch SDK 和工具，包括 Azure 门户，来创建支持容器的 Batch 池，以及运行容器任务。
+此处的代码示例使用 Batch .NET 和 Python Sdk。 也可以使用其他 Batch SDK 和工具，包括 Azure 门户，来创建支持容器的 Batch 池，以及运行容器任务。
 
 ## <a name="why-use-containers"></a>为何使用容器？
 
 使用容器可以方便地运行 Batch 任务，无需管理环境和依赖项即可运行应用程序。 容器将应用程序部署为轻量级、可移植、自给自足的单元，可以在各种不同的环境中运行。 例如，在本地构建和测试容器，然后将容器映像上传到 Azure 或其他位置的注册表中。 容器部署模型可确保始终正确安装和配置应用程序的运行时环境，而不考虑在何处托管应用程序。 Batch 中基于容器的任务也可利用非容器任务的功能，包括应用程序包以及资源文件和输出文件的管理。
 
 ## <a name="prerequisites"></a>先决条件
+
+读者应熟悉容器的概念，并知道如何创建 Batch 池和作业。
 
 - **SDK 版本**：Batch SDK 支持到以下版本为止的容器映像：
   - Batch REST API 版本 2017-09-01.6.0
@@ -38,11 +40,11 @@ ms.locfileid: "90018503"
 
 - 批处理仅对在 Linux 池上运行的容器提供 RDMA 支持。
 
-- 对于 Windows 容器工作负载，我们建议为池选择多核 VM 大小。
+- 对于 Windows 容器工作负荷，建议为你的池选择多核 VM 大小。
 
 ## <a name="supported-virtual-machine-images"></a>受支持的虚拟机映像
 
-使用以下受支持的 Windows 或 Linux 映像之一，为容器工作负荷创建 VM 计算节点池。 有关与 Batch 兼容的 Marketplace 映像的详细信息，请参阅 [虚拟机映像列表](batch-linux-nodes.md#list-of-virtual-machine-images)。
+使用以下受支持的 Windows 或 Linux 映像之一，为容器工作负荷创建 VM 计算节点池。 有关与 Batch 兼容的市场映像的详细信息，请参阅[虚拟机映像列表](batch-linux-nodes.md#list-of-virtual-machine-images)。
 
 ### <a name="windows-support"></a>Windows 支持
 
@@ -94,7 +96,7 @@ Batch 支持被指派了容器支持的 Windows Server 映像。 通常，这些
 
 ### <a name="pool-without-prefetched-container-images"></a>不带预提取容器映像的池
 
-若要配置不带预提取容器映像的启用容器的池，请定义 `ContainerConfiguration` 和 `VirtualMachineConfiguration` 对象，如下面的示例中所示。 这些示例将 Ubuntu 服务器用于从 Marketplace Azure Batch 容器池映像。
+若要配置启用了容器但不带预提取容器映像的池，请定义 `ContainerConfiguration` 和 `VirtualMachineConfiguration` 对象，如以下示例所示。 这些示例使用市场中提供的适用于 Azure Batch 容器池映像的 Ubuntu Server。
 
 ```python
 image_ref_to_use = batch.models.ImageReference(
@@ -217,7 +219,7 @@ pool.StartTask = startTaskContainer;
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>从专用容器注册表中预提取映像
 
-另外，也可以通过对专有容器注册表服务器进行身份验证来预提取容器映像。 在以下示例中， `ContainerConfiguration` 和 `VirtualMachineConfiguration` 对象从专用 Azure 容器注册表中预提取专用 TensorFlow 映像。 图像中的参考信息与前面的示例相同。
+另外，也可以通过对专有容器注册表服务器进行身份验证来预提取容器映像。 在以下示例中，`ContainerConfiguration` 和 `VirtualMachineConfiguration` 对象从专用的 Azure 容器注册表预提取专用的 TensorFlow 映像。 图像中的参考信息与前面的示例相同。
 
 ```python
 image_ref_to_use = batch.models.ImageReference(
@@ -282,6 +284,12 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 - 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意，`--rm` 容器选项由 Batch 处理，因此它不需要其他 `--runtime` 选项。
 
 - 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
+
+- 对于 Windows，必须在将 [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) 设置为的情况下运行任务 `admin` 。 
+
+- 对于 Linux，Batch 会将用户/组权限映射到容器。 如果对容器中任何文件夹的访问权限都需要管理员权限，你可能需要以管理员提升级别的池范围运行任务。 这将确保批处理在容器上下文中以 root 身份运行任务。 否则，非管理员用户可能无权访问这些文件夹。
+
+- 对于启用了 GPU 的硬件的容器池，Batch 会自动为容器任务启用 GPU，因此不应包含 `–gpus` 参数。
 
 ### <a name="container-task-command-line"></a>容器任务命令行
 
@@ -353,7 +361,7 @@ containerTask.ContainerSettings = cmdContainerSettings;
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要通过 [Shipyard 食谱](https://github.com/Azure/batch-shipyard/tree/master/recipes)在 Azure Batch 上轻松部署容器工作负荷，请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具包。
-- 有关在 Linux 上安装和使用 Docker CE 的信息，请参阅 [docker](https://docs.docker.com/engine/installation/) 文档。
-- 了解如何 [使用托管自定义映像创建虚拟机池](batch-custom-images.md)。
+- 若要通过 [Shipyard 方法](https://github.com/Azure/batch-shipyard/tree/master/recipes)在 Azure Batch 上轻松部署容器工作负荷，请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具包。
+- 若要了解如何在 Linux 上安装和使用 Docker CE，请参阅 [Docker](https://docs.docker.com/engine/installation/) 文档。
+- 了解如何[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)。
 - 详细了解 [Moby 项目](https://mobyproject.org/)（用于创建基于容器的系统的框架）。

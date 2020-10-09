@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449103"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850959"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>用于应用服务的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ Azure 应用服务是一种完全托管的平台，用于生成和托管 Web 应
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|预览|
+|发布状态：|正式发布 (GA)|
 |定价：|[用于应用服务的 Azure Defender](azure-defender.md) 按[定价页中](security-center-pricing.md)的定价计费|
 |支持的应用服务计划：|![是](./media/icons/yes-icon.png)“基本”、“标准”、“高级”、“独立”或“Linux”<br>![否](./media/icons/no-icon.png)“免费”、“共享”或“消耗”<br>[了解有关应用服务计划的详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|

@@ -2,14 +2,14 @@
 title: 使用多实例任务运行 MPI 应用程序
 description: 了解如何在 Azure Batch 中使用多实例任务类型执行消息传递接口 (MPI) 应用程序。
 ms.topic: how-to
-ms.date: 03/13/2019
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926365"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850619"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 
@@ -39,7 +39,7 @@ ms.locfileid: "88926365"
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>多实例任务的要求
-多实例任务需要有**已启用节点间通信**和**已禁用并发任务执行**的池。 要禁用并发任务执行，请将 [CloudPool.MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) 属性设置为 1。
+多实例任务需要有**已启用节点间通信**和**已禁用并发任务执行**的池。 若要禁用并发任务执行，请将 [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) 属性设置为1。
 
 > [!NOTE]
 > Batch [限制](batch-quota-limit.md#pool-size-limits)已启用节点间通信的池的大小。
@@ -58,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> 如果尝试在已禁用节点间通信，或 *maxTasksPerNode* 值大于 1 的池中运行多实例任务，则永远不排定任务 -- 它无限期停留在“活动”状态。 
+> 如果尝试在已禁用节点间通信的池中运行多实例任务，或在 *taskSlotsPerNode* 值大于1的情况下运行该任务，则永远不会计划该任务--它将永久保持为 "活动" 状态。
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>使用 StartTask 安装 MPI
@@ -99,7 +99,7 @@ await myCloudPool.CommitAsync();
   * [Azure 中虚拟机的大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> 若要充分利用 [Linux 计算节点](batch-linux-nodes.md)上的 RDMA，必须使用节点上的 **Intel MPI**。 
+> 若要充分利用 [Linux 计算节点](batch-linux-nodes.md)上的 RDMA，必须使用节点上的 **Intel MPI**。
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>使用 Batch .NET 创建多实例任务

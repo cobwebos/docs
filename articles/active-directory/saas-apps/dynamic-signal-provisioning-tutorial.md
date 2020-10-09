@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a11ff33245bf92e225f0f2382f6e873eab1338c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323754"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851214"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>教程：为自动用户预配配置动态信号
 
@@ -100,11 +100,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 6. 在 "动态信号管理" 控制台中，导航到 " **管理员 > 高级 > API**"。
 
-    ![动态信号预配](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="动态信号管理控制台的屏幕截图。&quot;高级&quot; 在 &quot;管理&quot; 菜单中突出显示。还会显示 &quot;高级&quot; 菜单，其中突出显示了 &quot;P&quot;。" border="false":::
 
     将 **SCIM API url** 复制到 **租户 url**。 单击 " **生成新令牌** " 生成 **持有者令牌** ，并将值复制到 " **机密令牌**"。
 
-    ![动态信号预配](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="动态信号管理控制台的屏幕截图。&quot;高级&quot; 在 &quot;管理&quot; 菜单中突出显示。还会显示 &quot;高级&quot; 菜单，其中突出显示了 &quot;P&quot;。" border="false":::
 
 7. 填充步骤5中所示的字段后，请单击 " **测试连接** " 以确保 Azure AD 可以连接到动态信号。 如果连接失败，请确保动态信号帐户具有管理员权限，然后重试。
 
@@ -114,7 +114,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“ **保存**”。
+9. 单击“保存”。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到动态信号**"。
 

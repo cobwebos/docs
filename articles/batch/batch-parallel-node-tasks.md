@@ -2,16 +2,16 @@
 title: 并行运行任务以优化计算资源
 description: 通过减少所用的计算节点数并在 Azure Batch 池的每个节点上运行并发任务，来提高效率并降低成本
 ms.topic: how-to
-ms.date: 04/17/2019
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: e4c98244755cae7a606ebe26cbadef53ca5fd922
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3c3a81aa624ccc67c0f9e8ec23e5ef9b8e61c724
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926280"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850993"
 ---
-# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点 
+# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点
 
 通过在 Azure Batch 池中的每个计算节点上同时运行多个任务，可在池中的较少节点上最大程度利用资源。 对于某些工作负荷，这可以缩短作业时间并降低成本。
 
@@ -28,12 +28,17 @@ ms.locfileid: "88926280"
 如果不使用具有 1 个 CPU 内核的 Standard\_D1 节点，则可使用每个具有 16 个内核的 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点，同时允许并行执行任务。 因此，可以使用 *1/16 的节点*，即只需使用 63 个节点，而无需使用 1,000 个节点。 此外，如果每个节点需要大型应用程序文件或引用数据，作业持续时间和效率将再次得到提升，因为数据仅复制到 63 个节点。
 
 ## <a name="enable-parallel-task-execution"></a>允许并行执行任务
-可在池级别配置计算节点，以便并行执行任务。 在创建池时，可以通过 Batch .NET 库设置 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。 如果使用的是 Batch REST API，则可在创建池时在请求正文中设置 [maxTasksPerNode][rest_addpool] 元素。
+可在池级别配置计算节点，以便并行执行任务。 使用 Batch .NET 库时，请在创建池时设置 [CloudPool. TaskSlotsPerNode][maxtasks_net] 属性。 如果使用的是批处理 REST API，请在创建池时在请求正文中设置 [taskSlotsPerNode][rest_addpool] 元素。
 
-使用 Azure Batch 时，最多将每个节点的任务设置为核心节点数的 4 倍。 例如，如果将池的节点大小配置为“大型”（四核），则可将 `maxTasksPerNode` 设置为 16。 但是，无论节点有多少个核心，每个节点都不能超过 256 个任务。 有关每个节点大小的核心数的详细信息，请参阅[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)。 有关服务限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
+Azure Batch 允许你将每个节点的任务槽设置为 (4x) 节点核心数。 例如，如果将池的节点大小配置为“大型”（四核），则可将 `taskSlotsPerNode` 设置为 16。 但是，无论节点有多少个核心，每个节点不能有超过256的任务槽。 有关每个节点大小的核心数的详细信息，请参阅[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)。 有关服务限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
 
 > [!TIP]
-> 为池构造[自动缩放公式][enable_autoscaling]时，请务必考虑 `maxTasksPerNode` 值。 例如，如果增加每个节点的任务数，则可能会极大地影响对 `$RunningTasks` 求值的公式。 有关详细信息，请参阅[自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
+> 为池构造[自动缩放公式][enable_autoscaling]时，请务必考虑 `taskSlotsPerNode` 值。 例如，如果增加每个节点的任务数，则可能会极大地影响对 `$RunningTasks` 求值的公式。 有关详细信息，请参阅[自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
+>
+>
+
+> [!NOTE]
+> `taskSlotsPerNode`只能在创建池时设置元素和[TaskSlotsPerNode][maxtasks_net]属性。 创建完池以后，不能对上述元素和属性进行修改。
 >
 >
 
@@ -42,10 +47,28 @@ ms.locfileid: "88926280"
 
 可以通过 [CloudPool.TaskSchedulingPolicy][task_schedule] 属性指定任务，即让任务在池中所有节点之间平均分配（“散布式”）。 或者，先给池中的每个节点分配尽量多的任务，再将任务分配给池中的其他节点（“装箱式”）。
 
-此功能十分重要，如需示例，请参阅上面示例中 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池，该池配置后的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。 如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
+作为此功能的重要方式的一个示例，请考虑上述示例中 ([标准 \_ D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池，) 配置为 [CloudPool 的 TaskSlotsPerNode][maxtasks_net] 值为16。 如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
+
+## <a name="variable-slots-per-task"></a>每个任务的可变槽
+可以使用 [CloudTask. RequiredSlots][taskslots_net] 属性定义任务，以指定在计算节点上运行所需的槽数，默认值为1。 如果任务的权重与计算节点上的资源使用情况不同，则可以设置变量任务槽，因此每个计算节点可以具有合理数量的并发运行任务，而不会产生大量的系统资源，例如 CPU 或内存。
+
+例如，对于具有属性的池 `taskSlotsPerNode = 8` ，你可以使用提交多核心所需的 CPU 密集型任务 `requiredSlots = 8` ，而使用执行其他任务 `requiredSlots = 1` 。 将此混合工作负荷安排到池时，CPU 密集型任务将专门在计算节点上运行，而其他任务可以同时 (多达八个任务) 在其他节点上运行。 这将帮助你平衡计算节点上的工作负荷，并提高资源使用效率。
+
+> [!TIP]
+> 使用变量任务槽时，可能会暂时无法计划具有更多所需槽的大型任务，因为任何计算节点上都没有足够的可用槽，即使某些节点上仍有空闲的槽。 你可以提高这些任务的工作优先级，以增加对节点上可用槽的竞争机会。
+>
+> 批处理服务还会在无法计划要运行的任务时发出 [TaskScheduleFailEvent](batch-task-schedule-fail-event.md) ，但会在所需的槽可用之前继续重试计划。 你可以侦听该事件，以检测潜在的任务计划停滞问题，并相应地进行缓解。
+>
+
+> [!NOTE]
+> 不要将任务的指定 `requiredSlots` 为大于池的 `taskSlotsPerNode` 。 这将导致任务永远无法运行。 当前批处理服务不会在提交任务时执行此验证，因为作业可能在提交时未绑定到池，也不能通过禁用/重新启用将其更改为不同的池。
+>
 
 ## <a name="batch-net-example"></a>Batch .NET 示例
-此 [Batch .NET][api_net] API 代码片段演示了一个请求，该请求要求创建一个包含四个节点的池，每个节点最多四个任务。 它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。 有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool][poolcreate_net]。
+以下 [批处理 .Net][api_net] API 代码片段演示了如何创建一个每个节点具有多个任务槽的池，并使用所需的槽提交任务。
+
+### <a name="create-pool"></a>创建池
+此代码片段演示了一个创建池的请求，该池包含四个节点，每个节点都允许四个任务槽。 它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。 有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool][poolcreate_net]。
 
 ```csharp
 CloudPool pool =
@@ -55,9 +78,42 @@ CloudPool pool =
         virtualMachineSize: "standard_d1_v2",
         cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
-pool.MaxTasksPerComputeNode = 4;
+pool.TaskSlotsPerNode = 4;
 pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
 pool.Commit();
+```
+
+### <a name="create-task-with-required-slots"></a>创建具有所需槽的任务
+此代码片段将创建一个非默认的任务 `requiredSlots` 。 仅当计算节点上有足够的可用槽时，此任务才会运行。
+```csharp
+CloudTask task = new CloudTask(taskId, taskCommandLine)
+{
+    RequiredSlots = 2
+};
+```
+
+### <a name="list-compute-nodes-with-counts-for-running-tasks-and-slots"></a>列出正在运行的任务和槽的计算节点
+此代码段列出池中的所有计算节点，并输出每个节点正在运行的任务和任务槽的计数。
+```csharp
+ODATADetailLevel nodeDetail = new ODATADetailLevel(selectClause: "id,runningTasksCount,runningTaskSlotsCount");
+IPagedEnumerable<ComputeNode> nodes = batchClient.PoolOperations.ListComputeNodes(poolId, nodeDetail);
+
+await nodes.ForEachAsync(node =>
+{
+    Console.WriteLine(node.Id + " :");
+    Console.WriteLine($"RunningTasks = {node.RunningTasksCount}, RunningTaskSlots = {node.RunningTaskSlotsCount}");
+
+}).ConfigureAwait(continueOnCapturedContext: false);
+```
+
+### <a name="list-task-counts-for-the-job"></a>列出作业的任务计数
+此代码段获取作业的任务计数，其中包括每个任务状态的任务和任务槽数。
+```csharp
+TaskCountsResult result = await batchClient.JobOperations.GetJobTaskCountsAsync(jobId);
+
+Console.WriteLine("\t\tActive\tRunning\tCompleted");
+Console.WriteLine($"TaskCounts:\t{result.TaskCounts.Active}\t{result.TaskCounts.Running}\t{result.TaskCounts.Completed}");
+Console.WriteLine($"TaskSlotCounts:\t{result.TaskSlotCounts.Active}\t{result.TaskSlotCounts.Running}\t{result.TaskSlotCounts.Completed}");
 ```
 
 ## <a name="batch-rest-example"></a>Batch REST 示例
@@ -71,27 +127,38 @@ pool.Commit();
   "cloudServiceConfiguration": {
     "osFamily":"4",
     "targetOSVersion":"*",
-  }
+  },
   "targetDedicatedComputeNodes":2,
-  "maxTasksPerNode":4,
+  "taskSlotsPerNode":4,
   "enableInterNodeCommunication":true,
 }
 ```
 
-> [!NOTE]
-> 只能在创建池时设置 `maxTasksPerNode` 元素和 [MaxTasksPerComputeNode][maxtasks_net] 属性。 创建完池以后，不能对上述元素和属性进行修改。
->
->
+此代码片段演示了添加非默认任务的请求 `requiredSlots` 。 仅当计算节点上有足够的可用槽时，此任务才会运行。
+```json
+{
+  "id": "taskId",
+  "commandLine": "bash -c 'echo hello'",
+  "userIdentity": {
+    "autoUser": {
+      "scope": "task",
+      "elevationLevel": "nonadmin"
+    }
+  },
+  "requiredSLots": 2
+}
+```
 
 ## <a name="code-sample"></a>代码示例
-GitHub 上的 [ParallelNodeTasks][parallel_tasks_sample] 项目说明了如何使用 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。
+GitHub 上的 [ParallelNodeTasks][parallel_tasks_sample] 项目说明了如何使用 [TaskSlotsPerNode][maxtasks_net] 属性。
 
 此 C# 控制台应用程序使用 [Batch .NET][api_net] 库创建包含一个或多个计算节点的池。 并在这些节点上执行其数量可以配置的任务，以便模拟可变负荷。 应用程序的输出指定了哪些节点执行了每个任务。 该应用程序还提供了作业参数和持续时间的摘要。 下面显示了同一个应用程序运行两次后的输出摘要部分。
 
 ```
 Nodes: 1
 Node size: large
-Max tasks per node: 1
+Task slots per node: 1
+Max slots per task: 1
 Tasks: 32
 Duration: 00:30:01.4638023
 ```
@@ -101,7 +168,8 @@ Duration: 00:30:01.4638023
 ```
 Nodes: 1
 Node size: large
-Max tasks per node: 4
+Task slots per node: 4
+Max slots per task: 1
 Tasks: 32
 Duration: 00:08:48.2423500
 ```
@@ -130,4 +198,4 @@ Duration: 00:08:48.2423500
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
 [poolcreate_net]: /dotnet/api/microsoft.azure.batch.pooloperations
 [task_schedule]: /dotnet/api/microsoft.azure.batch.cloudpool
-
+[taskslots_net]: /dotnet/api/microsoft.azure.batch.cloudtask.requiredslots

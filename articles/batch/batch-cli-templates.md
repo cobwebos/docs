@@ -2,14 +2,14 @@
 title: 使用模板端到端运行作业
 description: 只需使用 CLI 命令便可创建池、上传输入数据、创建作业和关联的任务，以及下载生成的输出数据。
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494921"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848715"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
 
@@ -65,7 +65,7 @@ Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模�
 -   **参数**
 
     -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅为 `poolId` 定义一个参数；因此仅需提供一个池 ID 字符串来创建池。
-        
+
     -   模板正文可由了解 Batch 和 Batch 运行的应用程序的人进行创建；使用模板时，必须提供仅作者定义的参数值。 因此，没有深入了解 Batch 和/或应用程序的用户可以使用模板。
 
 -   **变量**
@@ -121,7 +121,7 @@ Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模�
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "maxTasksPerNode": 1,
+            "taskSlotsPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",
@@ -209,7 +209,7 @@ az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.js
             },
             "taskFactory": {
                 "type": "taskPerFile",
-                "source": { 
+                "source": {
                     "fileGroup": "ffmpeg-input"
                 },
                 "repeatTask": {
@@ -271,7 +271,7 @@ CLI 同样会提示你提供参数的值。 也可以提供 JSON 文件中的参
 Batch CLI 扩展提供了相关的命令，用以将客户端的文件上传到指定文件组，以及将指定文件组的文件下载到客户端。
 
 ```azurecli
-az batch file upload --local-path c:\source_videos\*.mp4 
+az batch file upload --local-path c:\source_videos\*.mp4
     --file-group ffmpeg-input
 
 az batch file download --file-group ffmpeg-output --local-path

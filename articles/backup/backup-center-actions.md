@@ -3,12 +3,12 @@ title: 使用备份中心执行操作
 description: 本文介绍如何使用备份中心执行操作
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 81c81f0e9d955e0a5243485baaedff4e6f0fc10d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994811"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854420"
 ---
 # <a name="perform-actions-using-backup-center"></a>使用备份中心执行操作
 
@@ -70,7 +70,7 @@ ms.locfileid: "90994811"
 ### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>如果要还原 Azure Database for PostgreSQL 服务器
 
 1. 导航到 "备份中心"，然后选择 "**概述**" 选项卡顶部的 "**还原**"。
-2. 在这种情况下，选择要备份的数据源的类型 (Azure Database for PostgreSQL 服务器) 。
+2. 选择要在这种情况下 Azure Database for PostgreSQL 服务器 (还原的数据源的类型) 。
 
     ![选择 Azure Database for PostgreSQL 服务器还原的数据源](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 

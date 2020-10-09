@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321350"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848851"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ ms.locfileid: "91321350"
 |**运行时间 SLA**|99.99%|99.99%|99.99%|
 |**最大备份保留期**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|**IO 吞吐量（近似）** |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
+|** (大致) 的 IOPS **\* |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |**IO 延迟（近似）**|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |**列存储索引** |空值|S3 及更高版本|支持|
 |**内存中 OLTP**|空值|空值|支持|
 
+\* 数据文件的所有读取和写入 IOPS，包括后台 IO (检查点和惰性编写器) 
+
 > [!IMPORTANT]
-> 基本、标准 S0、S1 和 S2 服务层级提供的 vCore (CPU) 不到一个。  对于 CPU 密集型工作负荷，建议使用 S3 或更高的服务层级。 
+> 基本、S0、S1 和 S2 服务目标提供少于一个 vCore (CPU) 。  对于占用大量 CPU 的工作负荷，建议使用 S3 或更高的服务目标。 
 >
->有关数据存储的基本、标准 S0 和 S1 服务层级放置在标准页 Blob 上。 标准页 Blob 使用基于硬盘驱动器 (HDD) 的存储介质，最适合用于对性能变化不太敏感的开发、测试和其他不频繁访问的工作负荷。
+> 在基本、S0 和 S1 服务目标中，数据库文件存储在 Azure 标准存储中，该存储使用硬盘驱动器 (HDD) 存储介质。 这些服务目标最适合用于对性能变化不太敏感的开发、测试和其他不常访问的工作负载。
 >
+
+> [!TIP]
+> 若要查看数据库或弹性池的实际 [资源调控](resource-limits-logical-server.md#resource-governance) 限制，请查询 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图。
 
 > [!NOTE]
 > 你可以在 azure SQL 数据库中的 Azure SQL 数据库中获取免费数据库，并将其与 Azure 免费帐户结合使用以浏览 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
@@ -58,7 +63,7 @@ ms.locfileid: "91321350"
 
 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](purchasing-models.md#dtu-based-purchasing-model)。
 
-||基本|标准|高级|
+||基本|Standard|高级|
 | :-- | --: | --: | --: |
 | **最大存储大小** | 2 GB | 1 TB | 4 TB  |
 | **最大 DTU** | 5 | 3000 | 4000 |

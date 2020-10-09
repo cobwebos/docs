@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265453"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850653"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>教程：为 Lucidchart 配置自动用户预配
 
@@ -49,11 +49,11 @@ ms.locfileid: "91265453"
 
 1. 登录到 [Lucidchart 管理控制台](https://www.lucidchart.com)。 导航到 **Team > 应用集成**。
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Lucidchart 管理控制台的屏幕截图。&quot;团队&quot; 菜单将突出显示并打开。在 &quot;管理员&quot; 下，突出显示应用集成。" border="false":::
 
 2. 导航到 **SCIM**。
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart 管理控制台的屏幕截图。&quot;团队&quot; 菜单将突出显示并打开。在 &quot;管理员&quot; 下，突出显示应用集成。" border="false":::
 
 3. 向下滚动以查看 **持有者令牌** 和 **Lucidchart 基 URL**。 复制并保存 **持有者令牌**。 此值将在 Azure 门户的 LucidChart 应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。 
 

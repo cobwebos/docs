@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cc6886b5341d8bc8a82288ad8a2a699381a953c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46b3009a7a57f726457a767afe501bfb28a06606
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933467"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843356"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>了解 LocalConfiguration.json 文件 - C 代理
 
@@ -42,12 +42,12 @@ ms.locfileid: "90933467"
 | 标识 | "DPS"、"SecurityModule"、"Device" | 身份验证标识-DPS 如果通过 DPS 进行身份验证，则通过安全模块凭据或设备进行身份验证（如果使用设备凭据进行身份验证） SecurityModule |
 | AuthenticationMethod | "SasToken"、"New-selfsignedcertificate" | 用于身份验证的用户机密-如果使用密钥是对称密钥，请选择 "SasToken"，如果密码是自签名证书，请选择 "自签名证书"  |
 | 文件路径 | 文件路径 (字符串)  | 包含身份验证密钥的文件的路径 |
-| HostName | 字符串 | Azure iot 中心的主机名。 通常 <我的中心>。 azure-devices.net |
+| HostName | 字符串 | Azure IoT 中心的主机名。 通常 <我的中心>。 azure-devices.net |
 | DeviceId | 字符串 | 在 Azure IoT 中心内注册的设备 ID ()  |
 | DPS | JsonObject | DPS 相关配置 |
 | IDScope | 字符串 | DPS 的 ID 范围 |
 | RegistrationId | 字符串  | DPS 设备注册 ID |
-| Logging | JsonObject | 代理记录器相关配置 |
+| 日志记录 | JsonObject | 代理记录器相关配置 |
 | SystemLoggerMinimumSeverity | 0 <= number <= 4 | 日志消息等于或高于此严重级别将记录到/var/log/syslog (0 是最低严重性)  |
 | DiagnosticEventMinimumSeverity | 0 <= number <= 4 | 日志消息等于或高于此严重性将作为诊断事件发送， (0 是最低严重性)  |
 

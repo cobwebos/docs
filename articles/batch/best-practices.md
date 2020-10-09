@@ -3,12 +3,12 @@ title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146532"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849483"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -63,7 +63,7 @@ Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch �
 
 ### <a name="third-party-images"></a>第三方映像
 
-可以使用发布到 Azure 市场的第三方映像创建池。 对于用户订阅模式 Batch 帐户，在使用某些第三方映像创建池时，你可能会看到错误“由于市场购买资格检查造成分配失败”。 若要解决此错误，请接受映像发布者设置的术语。 可以通过使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms)来实现此目的。
+可以使用发布到 Azure 市场的第三方映像创建池。 对于用户订阅模式 Batch 帐户，在使用某些第三方映像创建池时，你可能会看到错误“由于市场购买资格检查造成分配失败”。 若要解决此错误，请接受映像发布者设置的术语。 可以通过 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms) 来实现此目的。
 
 ### <a name="azure-region-dependency"></a>Azure 区域依赖项
 
@@ -109,7 +109,7 @@ Batch 中集成了用于通过 [OutputFiles](batch-task-output-files.md) 上传�
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>适当地设置每个节点的最大任务数
 
-Batch 在节点上支持超额订阅的任务（运行的任务数超过节点所具有的核心数）。 需要由你确保任务量“适合”池中的节点。 例如，如果你尝试计划 8 个任务，其中每个任务消耗 25% 的 CPU 使用率（在设置了 `maxTasksPerNode = 8` 的池中），则体验可能会下降。
+Batch 在节点上支持超额订阅的任务（运行的任务数超过节点所具有的核心数）。 需要由你确保任务量“适合”池中的节点。 例如，如果你尝试计划 8 个任务，其中每个任务消耗 25% 的 CPU 使用率（在设置了 `taskSlotsPerNode = 8` 的池中），则体验可能会下降。
 
 ### <a name="design-for-retries-and-re-execution"></a>设计重试和重新执行
 
@@ -157,7 +157,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 ### <a name="manage-os-upgrades"></a>管理 OS 升级
 
-对于用户订阅模式 Batch 帐户，自动 OS 升级可能会中断任务进程，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks)有助于减少由这些中断导致的错误。 我们还建议 [为不应运行任务的时间安排 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
+对于用户订阅模式 Batch 帐户，自动 OS 升级可能会中断任务进程，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks)有助于减少由这些中断导致的错误。 我们还建议[在任务不需要运行时安排 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
 ## <a name="isolation-security"></a>隔离安全性
 
@@ -217,6 +217,6 @@ Azure Batch 在 VM 上创建和管理一组用户和组，这些不应受到更�
 
 ### <a name="file-cleanup"></a>文件清理
 
-当任务的保留期到期后，Batch 会主动尝试清理运行任务的工作目录。 [你应负责清理](#manage-task-lifetime)在此目录之外写入的所有文件，以避免占用磁盘空间。 
+当任务的保留期到期后，Batch 会主动尝试清理运行任务的工作目录。 [你应负责清理](#manage-task-lifetime)在此目录之外写入的所有文件，以避免占用磁盘空间。
 
 如果在 Windows 上从 startTask 工作目录运行服务，则会阻止对工作目录的自动清理，因为文件夹仍在使用中。 这将导致性能下降。 若要解决此问题，请将该服务的目录更改为不受 Batch 管理的单独目录。

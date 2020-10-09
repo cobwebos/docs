@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: fae6c9f76f5c502d3a31c76330bd5b348d523e37
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 71dc05e3949c2675be6255723530693304e1aa3e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360576"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850075"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教程：为 MediusFlow 配置自动用户预配
 
@@ -62,7 +62,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 1.  通过提供租户 ID 来登录 [MediusFlow 管理控制台](https://office365.cloudapp.mediusflow.com/)。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 2. 验证与 MediusFlow 的连接。
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. 保存配置。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 5. 选中“使用用户预配”，然后单击“确定”。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 6. 单击“生成密钥”。 复制并保存此值。将在 Azure 门户中 MediusFLow 应用的“预配”选项卡的“密钥令牌”字段中输入此值。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 7. 单击“确定”。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 8. 若要使用预定义角色集、公司和 MediusFlow 中的其他常规配置来导入用户，需要先对其进行配置。 首先，通过单击“添加新配置”来添加配置。
 
-    ![配置用户](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 9. 提供用户的默认设置。 在此视图中，可以设置默认特性。 如果标准设置是正确的，那么只提供有效的公司名称就足够了。 由于这些配置设置是从 Mediusflow 中提取的，因此需要先对其进行配置。 有关详细信息，请参阅本文的“先决条件”部分。
 
-    ![配置用户](./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 10. 单击“保存”，以保存用户配置。
 
-    ![配置用户](./media/mediusflow-provisioning-tutorial/10-done-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 11. 若要获取用户预配链接，请单击“复制 SCIM 链接”。 复制并保存此值。 将在 Azure 门户中 MediusFLow 应用的“预配”选项卡的“租户 URL”字段中输入此值。
  
-    ![配置用户](./media/mediusflow-provisioning-tutorial/11-get-scim-link.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow 管理控制台的屏幕截图。在第一个集成步骤中，将突出显示 &quot;MediusFlow 租户名称&quot; 框和 &quot;身份验证&quot; 按钮。" border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用库添加 MediusFlow
 

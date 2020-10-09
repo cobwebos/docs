@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328048"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848953"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>教程：为 Dialpad 配置自动用户预配
 
@@ -54,13 +54,13 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [Dialpad 管理控制台](https://dialpadbeta.com/login) 并选择 " **管理设置**"。 确保从下拉列表中选择 **"我的公司** "。 导航到 " **身份验证 > API 密钥**"。
 
-    ![Dialpad 添加 SCIM](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Dialpad 管理控制台的屏幕截图，其中显示了 &quot;设置&quot; 图标、&quot;我的公司&quot;、&quot;身份验证&quot; 和 &quot;P I&quot; 键，并选中 &quot;我的公司&quot;。" border="false":::
 
 2. 通过单击 " **添加密钥** " 并配置机密令牌的属性，生成新密钥。
 
-    ![Dialpad 添加 SCIM](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Dialpad 管理控制台的屏幕截图，其中显示了 &quot;设置&quot; 图标、&quot;我的公司&quot;、&quot;身份验证&quot; 和 &quot;P I&quot; 键，并选中 &quot;我的公司&quot;。" border="false":::
 
-    ![Dialpad 添加 SCIM](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Dialpad 管理控制台的屏幕截图，其中显示了 &quot;设置&quot; 图标、&quot;我的公司&quot;、&quot;身份验证&quot; 和 &quot;P I&quot; 键，并选中 &quot;我的公司&quot;。" border="false":::
 
 3. 单击 " **单击以显示** 最近创建的 API 密钥的值" 按钮，然后复制显示的值。 此值将在 Azure 门户的 Dialpad 应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。 
 
@@ -89,19 +89,19 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 5. 在单独的浏览器中导航到下面突出显示的 **URL** 。 
 
-    ![Dialpad 添加 SCIM](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Dialpad 管理控制台的屏幕截图，其中显示了 &quot;设置&quot; 图标、&quot;我的公司&quot;、&quot;身份验证&quot; 和 &quot;P I&quot; 键，并选中 &quot;我的公司&quot;。" border="false":::
 
 6. 在右上角，选择 " **登录" > "使用 Dialpad online**"。
 
-    ![Dialpad 添加 SCIM](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Dialpad 管理控制台的屏幕截图，其中显示了 &quot;设置&quot; 图标、&quot;我的公司&quot;、&quot;身份验证&quot; 和 &quot;P I&quot; 键，并选中 &quot;我的公司&quot;。" border="false":::
 
 7. 由于 Dialpad 是一个 OpenIDConnect 应用，因此请选择使用你的 Microsoft 工作帐户登录到 Dialpad。
 
-    ![Dialpad 添加 SCIM](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Dialpad 管理控制台的屏幕截图，其中显示了 &quot;设置&quot; 图标、&quot;我的公司&quot;、&quot;身份验证&quot; 和 &quot;P I&quot; 键，并选中 &quot;我的公司&quot;。" border="false":::
 
 8. 身份验证成功后，接受同意页面的许可提示。 然后，该应用程序将自动添加到你的租户，你会被重定向到你的 Dialpad 帐户。
 
-    ![Dialpad 添加 SCIM](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Dialpad 管理控制台的屏幕截图，其中显示了 &quot;设置&quot; 图标、&quot;我的公司&quot;、&quot;身份验证&quot; 和 &quot;P I&quot; 键，并选中 &quot;我的公司&quot;。" border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>配置 Dialpad 的自动用户预配
 
@@ -133,7 +133,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Dialpad**"。
 

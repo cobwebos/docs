@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: a6dc9aa70c55a0ed511a73570274c68708988451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331227"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851282"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>教程：为4me 配置自动用户预配
 
@@ -118,19 +118,19 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“ **保存**”。
+9. 单击“保存”。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 4me**"。
 
-    ![4me 用户映射](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="&quot;映射&quot; 页的屏幕截图。在 &quot;名称&quot; 下，突出显示 &quot;将 Azure Active Directory 用户同步到 FourMe&quot;。" border="false":::
     
 11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到4me 的用户属性。 选为 " **匹配** " 属性的特性用于匹配4me 中的用户帐户以执行更新操作。 请确保 [4me 支持](https://developer.4me.com/v1/scim/users/) 对所选的匹配属性进行筛选。 选择“保存”按钮以提交任何更改。
 
-    ![4me 用户映射](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="&quot;映射&quot; 页的屏幕截图。在 &quot;名称&quot; 下，突出显示 &quot;将 Azure Active Directory 用户同步到 FourMe&quot;。" border="false":::
     
 12. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 4me**"。
 
-    ![4me 用户映射](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="&quot;映射&quot; 页的屏幕截图。在 &quot;名称&quot; 下，突出显示 &quot;将 Azure Active Directory 用户同步到 FourMe&quot;。" border="false":::
     
 13. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到4me 的组属性。 选为 " **匹配** " 属性的特性用于匹配4me 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 

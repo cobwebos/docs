@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323492"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851146"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>教程：为 Druva 配置自动用户预配
 
@@ -58,15 +58,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 2. 导航到 "**管理**  >  **部署**  >  **用户**"。
 
-    ![Druva 添加 SCIM](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Druva 管理控制台的屏幕截图。&quot;管理&quot; 已突出显示，&quot;管理&quot; 菜单可见。在该菜单中，在 &quot;部署&quot; 下突出显示 &quot;用户&quot;。" border="false":::
 
 3.  导航到 " **设置**"。 单击 " **生成令牌**"。
 
-    ![Druva 添加 SCIM](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Druva 管理控制台的屏幕截图。&quot;管理&quot; 已突出显示，&quot;管理&quot; 菜单可见。在该菜单中，在 &quot;部署&quot; 下突出显示 &quot;用户&quot;。" border="false":::
 
 4.  复制 " **身份验证令牌** " 值。 此值将在 Azure 门户的 Druva 应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。
     
-    ![Druva 添加 SCIM](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Druva 管理控制台的屏幕截图。&quot;管理&quot; 已突出显示，&quot;管理&quot; 菜单可见。在该菜单中，在 &quot;部署&quot; 下突出显示 &quot;用户&quot;。" border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>从库中添加 Druva
 
@@ -123,7 +123,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Druva**"。
 

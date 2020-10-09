@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 0af8df35bc2cc323e5165b973c889a0ab10f4cbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf779918dbfb9f7b95096f3a5efcc8e64f09c403
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304893"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850489"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>教程：为 iPass SmartConnect 配置自动用户预配
 
@@ -110,15 +110,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 iPass SmartConnect**"。
 
-    ![iPass SmartConnect 用户映射](media/ipass-smartconnect-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/usermapping.png" alt-text="&quot;映射&quot; 部分的屏幕截图。在 &quot;名称&quot; 下，将 Azure Active Directory 用户同步到 iPass SmartConnect 可见。" border="false":::
 
 9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 iPass SmartConnect 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 iPass SmartConnect 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![iPass SmartConnect 用户映射](media/ipass-smartconnect-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="&quot;映射&quot; 部分的屏幕截图。在 &quot;名称&quot; 下，将 Azure Active Directory 用户同步到 iPass SmartConnect 可见。" border="false":::
 
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。

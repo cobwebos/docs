@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 10/07/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9f0983bdb5e8763d13eeab8ea21bef7fb9ef47f
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cedb6d162829d63aaac1a36b35abee1faeae3f1b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803324"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843390"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)
 
@@ -303,14 +303,19 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 
 ```
 
+> [!NOTE]
+> 如果要设置**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-通过调用 **DataLakeDirectoryClient.SetAccessControlRecursiveAsync** 方法以递归方式设置 ACL。 向此方法传递 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 的[列表](/dotnet/api/system.collections.generic.list-1)。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。
+通过调用 **DataLakeDirectoryClient.SetAccessControlRecursiveAsync** 方法以递归方式设置 ACL。 将[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的[列表](/dotnet/api/system.collections.generic.list-1)传递给此方法。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。 
 
-此示例设置名为 `my-parent-directory` 的目录的 ACL。 这些条目为所有者用户提供读取、写入和执行权限，仅为负责人组授予读取和执行权限，不为所有其他用户提供任何访问权限。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
+如果要设置**默认**的 ACL 项，则可将[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope)属性设置为**true**。 
+
+此示例设置名为 `my-parent-directory` 的目录的 ACL。 此方法接受一个名为的布尔参数 `isDefaultScope` ，该参数指定是否设置默认 ACL。 在 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的构造函数中使用该参数。 ACL 的条目为拥有用户授予 "读取"、"写入" 和 "执行" 权限，为 "拥有" 组提供 "仅读" 和 "执行" 权限，并使所有人都无法访问。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
 
 ```cs
-public async void SetACLRecursively(DataLakeServiceClient serviceClient)
+public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -322,18 +327,18 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read | 
             RolePermissions.Write | 
-            RolePermissions.Execute),
+            RolePermissions.Execute, isDefaultScope),
                     
         new PathAccessControlItem(AccessControlType.Group, 
             RolePermissions.Read | 
-            RolePermissions.Execute),
+            RolePermissions.Execute, isDefaultScope),
                     
         new PathAccessControlItem(AccessControlType.Other, 
-            RolePermissions.None),
+            RolePermissions.None, isDefaultScope),
 
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read | 
-            RolePermissions.Execute, 
+            RolePermissions.Execute, isDefaultScope,
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
     };
 
@@ -347,17 +352,26 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
 
 通过调用 **DataLakeDirectoryClient.set_access_control_recursive** 方法以递归方式设置 ACL。
 
-此示例设置名为 `my-parent-directory` 的目录的 ACL。 这些条目为所有者用户提供读取、写入和执行权限，仅为负责人组授予读取和执行权限，不为所有其他用户提供任何访问权限。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
+如果要设置 **默认** acl 条目，请将字符串添加 `default:` 到每个 ACL 条目字符串的开头。 
+
+此示例设置名为 `my-parent-directory` 的目录的 ACL。 
+
+此方法接受一个名为的布尔参数 `is_default_scope` ，该参数指定是否设置默认 ACL。 如果该参数为 `True` ，则 ACL 项列表前面带有字符串 `default:` 。 
+
+ACL 的条目为拥有用户授予 "读取"、"写入" 和 "执行" 权限，为 "拥有" 组提供 "仅读" 和 "执行" 权限，并使所有人都无法访问。 此示例中的最后一个 ACL 条目为特定用户提供了对象 ID "" xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx "的读取和执行权限。这些条目为拥有用户提供 "读取"、"写入" 和 "执行" 权限，为 "拥有" 组提供 "仅读" 和 "执行" 权限，并使所有人都无法访问。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
 
 ```python
-def set_permission_recursively():
+def set_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
               
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x'
+        acl = 'user::rwx,group::rwx,other::rwx,user:4a9028cf-f779-4032-b09d-970ebe3db258:r--'   
+
+        if is_default_scope:
+           acl = 'default:user::rwx,default:group::rwx,default:other::rwx,default:user:4a9028cf-f779-4032-b09d-970ebe3db258:r--'
 
         directory_client.set_access_control_recursive(acl=acl)
         
@@ -392,14 +406,19 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 
 ```
 
+> [!NOTE]
+> 如果要更新**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`。
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-通过调用 **DataLakeDirectoryClient.UpdateAccessControlRecursiveAsync** 方法以递归方式更新 ACL。 
+通过调用 **DataLakeDirectoryClient.UpdateAccessControlRecursiveAsync** 方法以递归方式更新 ACL。  将[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的[列表](/dotnet/api/system.collections.generic.list-1)传递给此方法。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。 
 
-此示例以写入权限更新某个 ACL 条目。 
+如果要更新**默认**ACL 条目，则可以将[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope)属性设置为**true**。 
+
+此示例以写入权限更新某个 ACL 条目。 此方法接受一个名为的布尔参数 `isDefaultScope` ，该参数指定是否更新默认 ACL。 在 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的构造函数中使用该参数。
 
 ```cs
-public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
+public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient, bool isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -411,7 +430,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read |
             RolePermissions.Write | 
-            RolePermissions.Execute, 
+            RolePermissions.Execute, isDefaultScope, 
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
     };
 
@@ -423,19 +442,24 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-通过调用 **DataLakeDirectoryClient.update_access_control_recursive** 方法以递归方式更新 ACL。 
+通过调用 **DataLakeDirectoryClient.update_access_control_recursive** 方法以递归方式更新 ACL。 如果要更新 **默认** acl 条目，请将字符串添加 `default:` 到每个 ACL 条目字符串的开头。 
 
-此示例以写入权限更新某个 ACL 条目。 
+此示例以写入权限更新某个 ACL 条目。
+
+此示例设置名为 `my-parent-directory` 的目录的 ACL。 此方法接受一个名为的布尔参数 `is_default_scope` ，该参数指定是否更新默认 ACL。 如果该参数为 `True` ，则更新后的 ACL 条目将以字符串开头 `default:` 。  
 
 ```python
-def update_permission_recursively():
+def update_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
+
+        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'   
+
+        if is_default_scope:
+           acl = 'default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
 
         directory_client.update_access_control_recursive(acl=acl)
 
@@ -453,7 +477,7 @@ def update_permission_recursively():
 
 你可以采用递归方式删除一个或多个 ACL 条目。 若要删除 ACL 条目，请为要删除的 ACL 条目创建新的 ACL 对象，然后在 "删除 ACL" 操作中使用该对象。 不要获取现有 ACL，只需提供要删除的 ACL 项。 
 
-本部分包含有关如何删除 ACL 的示例。
+本部分包含有关如何删除 ACL 的示例。 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -470,14 +494,19 @@ $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID
 Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Acl $acl
 ```
 
+> [!NOTE]
+> 如果要删除**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`。
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-通过调用 **DataLakeDirectoryClient.RemoveAccessControlRecursiveAsync** 方法删除 ACL 条目。 
+通过调用 **DataLakeDirectoryClient.RemoveAccessControlRecursiveAsync** 方法删除 ACL 条目。 将[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的[列表](/dotnet/api/system.collections.generic.list-1)传递给此方法。 每个 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) 定义一个 ACL 条目。 
 
-此示例从名为 `my-parent-directory` 的目录的 ACL 中删除 ACL 条目。 
+如果要删除**默认**ACL 条目，则可将[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的[属性 namedobject.defaultscope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope)属性设置为**true**。 
+
+此示例从名为 `my-parent-directory` 的目录的 ACL 中删除 ACL 条目。 此方法接受一个名为的布尔参数 `isDefaultScope` ，该参数指定是否从默认 ACL 中删除该项。 在 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)的构造函数中使用该参数。
 
 ```cs
-public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
+public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -486,7 +515,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
     List<RemovePathAccessControlItem> accessControlListForRemoval = 
         new List<RemovePathAccessControlItem>()
         {
-            new RemovePathAccessControlItem(AccessControlType.User, 
+            new RemovePathAccessControlItem(AccessControlType.User, isDefaultScope,
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
         };
 
@@ -498,12 +527,12 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-通过调用 **DataLakeDirectoryClient.remove_access_control_recursive** 方法删除 ACL 条目。 
+通过调用 **DataLakeDirectoryClient.remove_access_control_recursive** 方法删除 ACL 条目。 如果要删除 **默认** acl 条目，请将该字符串添加 `default:` 到 ACL 条目字符串的开头。 
 
-此示例从名为 `my-parent-directory` 的目录的 ACL 中删除 ACL 条目。 
+此示例从名为 `my-parent-directory` 的目录的 ACL 中删除 ACL 条目。 此方法接受一个名为的布尔参数 `is_default_scope` ，该参数指定是否从默认 ACL 中删除该项。 如果该参数为 `True` ，则更新后的 ACL 条目将以字符串开头 `default:` 。 
 
 ```python
-def remove_permission_recursively():
+def remove_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
@@ -511,6 +540,9 @@ def remove_permission_recursively():
         directory_client = file_system_client.get_directory_client("my-parent-directory")
               
         acl = 'user:4a9028cf-f779-4032-b09d-970ebe3db258'
+
+        if is_default_scope:
+           acl = 'default:user:4a9028cf-f779-4032-b09d-970ebe3db258'
 
         directory_client.remove_access_control_recursive(acl=acl)
 

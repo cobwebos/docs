@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: bcddaec1660082c2d3fed42e0c10cbdde987693c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273511"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849208"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>教程：为自动用户预配配置元网络连接器
 
@@ -60,7 +60,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3.  设置 **Api 密钥名称** 和 **api 密钥说明**。
 
-    ![元网络连接器创建令牌](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="元网络连接器管理控制台的屏幕截图，其中突出显示了一个 P I 项名称和一个 Azure A D 和 P I 键的 P I 键说明值。" border="false":::
 
 4.  启用**组**和**用户**的**写入**权限。
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 5.  单击 " **添加**"。 复制并保存 **机密** ，因为这只是你可以查看它的唯一时间。 此值将在 Azure 门户的元网络连接器应用程序的 "预配" 选项卡的 "机密令牌" 字段中输入。
 
-    ![元网络连接器创建令牌](media/meta-networks-connector-provisioning-tutorial/token.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="元网络连接器管理控制台的屏幕截图，其中突出显示了一个 P I 项名称和一个 Azure A D 和 P I 键的 P I 键说明值。" border="false":::
 
 6.  通过导航到 "管理" **> 设置 > IdP >** 新建 "来添加 IdP。
 
@@ -143,7 +143,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到元网络连接器**"。
 

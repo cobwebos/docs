@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331210"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850126"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>教程：为15Five 配置自动用户预配
 
@@ -54,19 +54,19 @@ ms.locfileid: "91331210"
 
 1. 登录到 [15Five 管理控制台](https://my.15five.com/)。 导航到 **功能 > 集成**。
 
-    ![15Five 管理控制台](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="15Five 管理控制台的屏幕截图。集成显示在菜单中的 &quot;功能&quot; 下，并且突出显示了功能和集成。" border="false":::
 
 2.  单击 " **SCIM 2.0**"。
 
-    ![15Five 管理控制台](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="15Five 管理控制台的屏幕截图。集成显示在菜单中的 &quot;功能&quot; 下，并且突出显示了功能和集成。" border="false":::
 
 3.  导航到 **SCIM integration > 生成 OAuth 令牌**。
 
-    ![15Five 添加 SCIM](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="15Five 管理控制台的屏幕截图。集成显示在菜单中的 &quot;功能&quot; 下，并且突出显示了功能和集成。" border="false":::
 
 4.  复制 **SCIM 2.0 基 URL** 和 **访问令牌**的值。 此值将在 Azure 门户的15Five 应用程序的 "设置" 选项卡中的 " **租户 URL** " 和 " **机密令牌** " 字段中输入。
     
-    ![15Five 添加 SCIM](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="15Five 管理控制台的屏幕截图。集成显示在菜单中的 &quot;功能&quot; 下，并且突出显示了功能和集成。" border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加15Five
 
@@ -110,7 +110,7 @@ ms.locfileid: "91331210"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 15Five**"。
 
@@ -128,8 +128,8 @@ ms.locfileid: "91331210"
    |externalId|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
-   |urn： ietf： params： scim：架构：扩展：15Five：2.0：用户：位置|String|
-   |urn： ietf： params： scim：架构：扩展：15Five：2.0：用户：开始日期|String|
+   |urn： ietf： params： scim：架构：扩展：15Five：2.0：用户：位置|字符串|
+   |urn： ietf： params： scim：架构：扩展：15Five：2.0：用户：开始日期|字符串|
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 15Five**"。
 

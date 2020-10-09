@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987999"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848902"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 机密计算常见问题解答
 
@@ -56,6 +56,10 @@ DC 系列 VM 在较旧的 6 核 Intel 处理器上运行，使用 Intel SGX 并�
 **DCsv2 虚拟机是否可在全球使用？**
 
 不是。 目前，这些虚拟机只能在特定的区域中使用。 有关最新的可用区域，请查看[产品上市区域页](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。 
+
+**这些计算机上的超线程是否处于关闭状态？**
+
+所有 Azure 机密计算群集均禁用超线程。
 
 **如何在 DCsv2 虚拟机上安装 Open Enclave SDK？**
    

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319939"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851265"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>教程：为自动用户预配配置联合目录
 
@@ -53,24 +53,24 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [联合目录管理控制台](https://federated.directory/of)
 
-    ![联合目录教程](media/federated-directory-provisioning-tutorial/companyname.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
 
 2. 导航到 " **目录" > 用户目录** "，然后选择租户。 
 
-    ![联合目录](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
 
 3.  若要生成永久持有者令牌，请导航到 " **目录密钥" > "创建新密钥"。** 
 
-    ![联合目录](media/federated-directory-provisioning-tutorial/federated01.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
 
 4. 创建目录密钥。 
 
-    ![联合目录](media/federated-directory-provisioning-tutorial/federated02.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
     
 
 5. 复制“访问令牌”  值。 此值将在 Azure 门户中联合目录应用程序的 "预配" 选项卡的 " **机密令牌** " 字段中输入。 
 
-    ![联合目录](media/federated-directory-provisioning-tutorial/federated03.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>从库中添加联合目录
 
@@ -96,15 +96,15 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 5. 在单独的浏览器中导航到下面突出显示的 **URL** 。 
 
-    ![联合目录](media/federated-directory-provisioning-tutorial/loginpage1.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
 
 6. 单击 " **登录"**。
 
-    ![联合目录](media/federated-directory-provisioning-tutorial/federated04.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
 
 7.  由于联合目录是 OpenIDConnect 应用，因此请选择使用 Microsoft 工作帐户登录到联合目录。
     
-    ![联合目录](media/federated-directory-provisioning-tutorial/loginpage3.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
  
 8. 身份验证成功后，接受同意页面的许可提示。 然后，该应用程序将自动添加到你的租户，你会被重定向到联合目录帐户。
 
@@ -142,16 +142,16 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“ **保存**”。
+9. 单击“保存”。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到联合目录**"。
 
-    ![联合目录教程](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
     
     
 11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到联合目录的用户属性。 选为 " **匹配** " 属性的属性用于匹配联合目录中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![联合目录教程](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="联合目录管理控制台的屏幕截图，其中显示了用于输入公司名称的字段。还显示了 &quot;登录&quot; 按钮。" border="false":::
     
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。

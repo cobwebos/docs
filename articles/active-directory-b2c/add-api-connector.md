@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828338"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854352"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>将 API 连接器添加到注册用户流
 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-只有**Azure Active Directory**  >  **External 标识**  >  **自定义用户属性**中列出的用户属性和自定义属性可在请求中发送。
+只有**Azure AD B2C**用户属性体验中列出的用户属性和自定义属性  >  **User attributes**可在请求中发送。
 
 自定义属性在目录的 **extension_ \<extensions-app-id> _CustomAttribute**  格式中存在。 你的 API 应该会接收此相同序列化格式的声明。 有关自定义属性的详细信息，请参阅 [在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
 
@@ -236,8 +236,8 @@ Content-type: application/json
 
 | 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 版本                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| action                                             | String            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
+| action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中 **接收的声明** ，则这些值可以存储在目录中，并可存储在用户流的 **用户属性** 中。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
 
@@ -257,9 +257,9 @@ Content-type: application/json
 
 | 参数   | 类型   | 必须 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| 版本     | String | 是      | API 的版本。                                                    |
-| action      | String | 是      | 值必须是 `ShowBlockPage`                                              |
-| userMessage | String | 是      | 要向用户显示的消息。                                            |
+| 版本     | 字符串 | 是      | API 的版本。                                                    |
+| action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
 
 **阻止响应的最终用户体验**
 
@@ -281,10 +281,10 @@ Content-type: application/json
 
 | 参数   | 类型    | 必须 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| 版本     | String  | 是      | API 的版本。                                                    |
-| action      | String  | 是      | 值必须是 `ValidationError`。                                           |
+| 版本     | 字符串  | 是      | API 的版本。                                                    |
+| action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
 | status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
-| userMessage | String  | 是      | 要向用户显示的消息。                                            |
+| userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
 
 **验证-错误响应的最终用户体验**
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>最佳做法和故障排除方法
 
 ### <a name="using-serverless-cloud-functions"></a>使用无服务器云功能
-无服务器函数（如 Azure Functions 中的 HTTP 触发器）提供了一种简单的方法来创建 API 终结点，以便与 API 连接器一起使用。 例如，你可以使用无服务器云功能来执行验证逻辑，并限制对特定域的登录。 无服务器云功能还可以调用和调用其他 web Api、用户存储和其他云服务，以实现更复杂的方案。
+无服务器函数（如 Azure Functions 中的 HTTP 触发器）提供了一种简单的方法来创建 API 终结点，以便与 API 连接器一起使用。 [例如](code-samples.md#api-connectors)，你可以使用无服务器云功能来执行验证逻辑，并将登录限制到特定电子邮件域。 无服务器云功能还可以调用和调用其他 web Api、用户存储和其他云服务，以实现更复杂的方案。
 
 ### <a name="best-practices"></a>最佳做法
 请确保：
@@ -314,4 +314,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>后续步骤
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
+- [Azure Function 快速入门示例](code-samples.md#api-connectors)入门。

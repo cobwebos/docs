@@ -4,18 +4,18 @@ description: 本文提供了有关如何向虚拟网络中添加 Microsoft.Servi
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552979"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843373"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 服务总线命名空间
 
 通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
 
-配置为至少绑定到一个虚拟网络子网服务终结点后，各自的服务总线命名空间将不再接受来自任何位置的流量，而 (的授权虚拟网络) 和特定的 internet IP 地址（可选）。 从虚拟网络的角度来看，通过将服务总线命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。
+配置为绑定到至少一个虚拟网络子网服务终结点后，相应的服务总线命名空间将不再接受授权虚拟网络以及特定 Internet IP 地址（可选）以外的任何位置的流量。 从虚拟网络的角度来看，通过将服务总线命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。
 
 然后，绑定到子网的工作负荷与相应的服务总线命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。
 
@@ -55,23 +55,27 @@ ms.locfileid: "87552979"
 
 虚拟网络规则是服务总线命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问服务总线命名空间。 服务总线本身永远不会建立出站连接，不需要获得访问权限，因此永远不会通过启用此规则来授予对子网的访问权限。
 
+> [!NOTE]
+> 请记住，网络服务终结点向虚拟网络中运行的应用程序提供对服务总线命名空间的访问权限。 虚拟网络控制终结点的可访问性，但不能对服务总线实体 (队列、主题或订阅) 执行哪些操作。 使用 Azure Active Directory (Azure AD) 来授权应用程序可以对命名空间及其实体执行的操作。 有关详细信息，请参阅 [使用 Azure AD 对应用程序进行身份验证和授权，以访问服务总线实体](authenticate-application.md)。
+
+
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本部分演示如何使用 Azure 门户添加虚拟网络服务终结点。 若要限制访问，需要集成此事件中心命名空间的虚拟网络服务终结点。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到“服务总线命名空间”。
-2. 在左侧菜单中，选择 "**设置**" 下的 "**网络**" 选项。  
+2. 在左侧菜单上，选择“设置”下的“网络”选项 。  
 
     > [!NOTE]
-    > 只有**高级**命名空间才会显示 "**网络**" 选项卡。  
+    > 只会为“高级”命名空间显示“网络”选项卡 。  
     
-    默认情况下，选择 "**所选网络**" 选项。 如果未在此页上至少添加一个 IP 防火墙规则或一个虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
+    默认情况下，“选定网络”选项处于选中状态。 如果未在此页上添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。
 
-    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页-默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页面 - 默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
-    如果选择 "**所有网络**" 选项，则服务总线命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+    如果你选择“所有网络”选项，你的服务总线命名空间将接受来自 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
 
     ![防火墙 - 选中了“所有网络”选项](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-2. 若要限制对特定虚拟网络的访问，请选择 "**所选网络**" 选项（如果尚未选择）。
+2. 若要限制对特定虚拟网络的访问，请选择“选定网络”选项（如果尚未选择）。
 1. 在页面的“虚拟网络”部分，选择“+添加现有虚拟网络” 。 
 
     ![添加现有虚拟网络](./media/service-endpoints/add-vnet-menu.png)
@@ -90,7 +94,7 @@ ms.locfileid: "87552979"
     ![保存网络](./media/service-endpoints/save-vnet.png)
 
     > [!NOTE]
-    > 有关允许从特定 IP 地址或范围进行访问的说明，请参阅[允许从特定 ip 地址或范围进行访问](service-bus-ip-filtering.md)。
+    > 有关允许从特定 IP 地址或范围访问的说明，请参阅[允许从特定 IP 地址或范围访问](service-bus-ip-filtering.md)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。

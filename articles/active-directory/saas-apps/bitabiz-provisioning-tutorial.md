@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329187"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849287"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>教程：为 BitaBIZ 配置自动用户预配
 
@@ -54,11 +54,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 1. 登录到 [BitaBIZ 管理控制台](https://www.bitabiz.com/login?lang=en)。 单击“设置管理员”。****
 
-    ![BitaBIZ 管理控制台](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="BitaBIZ 管理员控制台的屏幕截图，其中突出显示了 &quot;设置管理员&quot;。" border="false":::
 
 2.  导航到 " **集成**"。
 
-    ![BitaBIZ 管理控制台](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="BitaBIZ 管理员控制台的屏幕截图，其中突出显示了 &quot;设置管理员&quot;。" border="false":::
 
 2.  导航到 **Microsoft Azure AD 设置**。  选择 **"** 自动用户预配"。 复制 **SCIM 预配终结点 URL** 和  **持有者令牌**的值。 这些值将在 Azure 门户的 BitaBIZ 应用程序的 "设置" 选项卡的 "租户 URL" 和 "机密令牌" 字段中输入。
 
@@ -120,7 +120,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 BitaBIZ**"。
 

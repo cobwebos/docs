@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5abfa26f5d897ade963253da81927a48cc65d781
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: aeb43f1b9f53a9f57cc436ced1db1bc3feed02d1
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394068"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843254"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>如何使用 PowerShell 在 Azure VPN 网关上配置 BGP
 本文介绍使用 Resource Manager 部署模型和 PowerShell 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接上启用 BGP 的步骤。
@@ -214,7 +214,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 
 此部分使用 BGP 添加 VNet 到 VNet 连接，如下图所示：
 
-![VNet 到 VNet 的 BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
+![显示 V 到 V Net 连接的关系图。](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
 以下说明延续前面的步骤。 必须完成 [第 I 部分](#enablebgp) ，以使用 BGP 创建和配置 TestVNet1 和 VPN 网关。 
 

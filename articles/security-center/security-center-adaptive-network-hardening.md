@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 4b47646e2f051a8fbfefbc36aa879bb80e9eca68
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439030"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851032"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
-了解如何在 Azure 安全中心内配置自适应网络强化。
+了解如何在安全中心配置自适应网络强化。
 
 ## <a name="availability"></a>可用性
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
-|所需角色和权限：|计算机的 Nsg 的写入权限|
+|定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|所需角色和权限：|对计算机网络安全组的写入权限|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
@@ -37,60 +37,53 @@ ms.locfileid: "91439030"
 
 自适应网络强化为进一步强化 NSG 规则提供了建议。 它使用机器学习算法，这种算法会将实际流量、已知受信任的配置、威胁情报和其他泄露标志都考虑在内，然后提供仅允许来自特定 IP/端口元组的流量的建议。
 
-例如，假设现有的 NSG 规则是在端口 22 上允许来自 140.20.30.10/24 流量。 基于分析提供的自适应网络强化建议会是，缩小范围并允许来自 140.23.30.10/29 的流量（这是更小的 IP 范围），拒绝发往该端口的所有其他流量。
+例如，假设现有的 NSG 规则是在端口 22 上允许来自 140.20.30.10/24 流量。 根据流量分析，自适应网络强化可能会建议缩小范围以允许来自 140.23.30.10/29 的流量，并拒绝到该端口的所有其他流量。
 
->[!TIP]
-> 自适应网络强化建议仅在以下特定端口上受支持（适用于 UDP 和 TCP）：13、17、19、22、23、53、69、81、111、119、123、135、137、138、139、161、162、389、445、512、514、593、636、873、1433、1434、1900、2049、2301、2323、2381、3268、3306、3389、4333、5353、5432、5555、5800、5900、5900、5985、5986、6379、6379、7000、7001、7199、8081、8089、8545、9042、9160、9300、11211、16379、26379、27017、37215
-
-
-![“网络强化”视图](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+>[!Note]
+> 自适应网络强化建议仅在以下 (用于 UDP 和 TCP) 的特定端口上受支持：13、17、19、22、23、53、69、81、111、119、123、135、137、138、139、161、162、389、445、512、、、、、、、、、514，593，636，873，1433，1434，1900，2049，2301，2323，2381，3268，3306，3389，4333，5353，5432，5555，5800，5900，5900，5985，5986，6379，6379，7000，7001，7199，8081，8089，8545，9042，9160，9300，11211，16379，26379，27017，37215，
 
 
+## <a name="view-and-manage-hardening-alerts-and-rules"></a>查看和管理强化警报和规则
 
+1. 在安全中心的菜单中，打开 " **Azure Defender** " 仪表板，并选择 "自适应网络强化" 磁贴 (1) 或与自适应网络强化 (2) 相关的 "见解面板" 项目。 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看“自适应网络强化”警报和规则
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/traffic-hardening.png" alt-text="访问自适应网络强化工具" lightbox="./media/security-center-adaptive-network-hardening/traffic-hardening.png":::
 
-1. 在安全中心内，选择“网络” -> “自适应网络强化”。 网络 VM 将在下面三个不同的选项卡下列出：
-   * **不正常的资源**：当前具有通过运行自适应网络强化算法触发的建议和警报的 VM。 
+    > [!TIP]
+    > "Insights" 面板显示了当前防御的 Vm 与自适应网络强化的百分比。 
+
+1. **自适应网络强化建议的详细信息页应应用于面向 internet 的虚拟机**建议，并将网络 vm 分组为三个选项卡：
+   * 不**正常的资源**：当前具有通过运行自适应网络强化算法触发的建议和警报的 vm。 
    * **正常的资源**：没有警报和建议的 VM。
-   * **未扫描的资源**：由于以下原因之一而无法运行自适应网络强化算法的 VM：
+   * 未**扫描的资源**：自适应网络强化算法无法在其上运行的 vm，原因如下：
       * **VM 是经典 VM**：只有 Azure 资源管理器 VM 受支持。
       * **没有足够的数据可用**：为了生成准确的流量强化建议，安全中心至少需要 30 天的流量数据。
       * **VM 未受 Azure defender 保护**：仅使用 [azure defender for Server](defender-for-servers-introduction.md) 保护的 vm 有资格使用此功能。
 
-     ![不正常的资源](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="访问自适应网络强化工具" 选项卡列出自适应网络强化建议你添加的规则
+    - “警报”选项卡列出了由于流量（流向不在建议规则所允许的 IP 范围内的资源）而生成的警报。
 
-2. 从“不正常的资源”选项卡中，选择要查看其警报的 VM，并选择要应用的建议强化规则。
+1. （可选）编辑规则：
 
-    ![强化警报](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
-
-
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>查看并应用自适应网络强化建议规则
-
-1. 从“不正常的资源”选项卡上，选择一个 VM。 此时会列出警报和建议的强化规则。
-
-     ![强化规则](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
-
-   > [!NOTE]
-   > “规则”选项卡列出了自适应网络强化建议添加的规则。 “警报”选项卡列出了由于流量（流向不在建议规则所允许的 IP 范围内的资源）而生成的警报。
-
-2. 如果要更改规则的某些参数，可以对其进行修改，如[修改规则](#modify-rule)中所述。
-   > [!NOTE]
-   > 还可以[删除](#delete-rule)或[添加](#add-rule)规则。
+    - [修改规则](#modify-rule)
+    - [删除规则](#delete-rule) 
+    - [添加规则](#add-rule)
 
 3. 选择要应用于 NSG 的规则，然后单击“强制执行”。
 
+    > [!TIP]
+    > 如果允许的源 IP 范围显示为 "无"，则表示建议的规则是 *拒绝* 规则，否则为 *允许* 规则。
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="访问自适应网络强化工具":::
+
       > [!NOTE]
       > 强制执行的规则将添加到保护 VM 的 NSG。 （VM 可由关联到其 NIC 的 NSG 和/或 VM 所在的子网保护）
-
-    ![强制执行规则](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
-
 
 ### <a name="modify-a-rule"></a>修改规则  <a name ="modify-rule"> </a>
 
 你可能想要修改已建议的规则的参数。 例如，你可能想要更改建议的 IP 范围。
 
-有关修改自适应网络强化规则的一些重要准则：
+修改自适应网络强化规则的一些重要准则：
 
 * 只能修改“允许”规则的参数。 
 * 不能将“允许”规则更改为“拒绝”规则。 
@@ -102,7 +95,7 @@ ms.locfileid: "91439030"
   > [!NOTE]
   > 在运行算法后，如果安全中心根据现有的 NSG 配置未识别出应允许的流量，则会建议执行**拒绝所有流量**规则。 因此，建议的规则是拒绝发往指定端口的所有流量。 此类型规则的名称显示为“系统生成”。 强制执行此规则后，此规则在 NSG 中的实际名称将是包含协议、流量方向、“DENY”和随机数字的字符串。
 
-若要修改自适应网络强化规则，请执行以下操作：
+*修改自适应网络强化规则：*
 
 1. 若要修改规则的某些参数，请在“规则”选项卡中单击规则行末尾的三个点 (...)，然后单击“编辑”。
 
@@ -126,7 +119,7 @@ ms.locfileid: "91439030"
 > [!NOTE]
 > 在这里只能添加“允许”规则。 如果要添加“拒绝”规则，可以直接在 NSG 上执行此操作。 有关详细信息，请参阅[创建、更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
 
-若要添加自适应网络强化规则，请执行以下操作：
+*添加自适应网络强化规则：*
 
 1. 单击“添加规则”（位于左上角）。
 
@@ -146,7 +139,7 @@ ms.locfileid: "91439030"
 
 必要时，可以删除当前会话的建议规则。 例如，你可能会确定应用建议的规则会阻止合法的流量。
 
-若要删除当前会话的自适应网络强化规则，请执行以下操作：
+*删除当前会话的自适应网络强化规则：*
 
 1. 在“规则”选项卡中单击规则行末尾的三个点 (...)，然后单击“删除”。  
 

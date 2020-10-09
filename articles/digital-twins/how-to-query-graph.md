@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 72658a97f89b14529e8ccb3639cb1b78f1b92316
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282300"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848801"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -181,7 +181,7 @@ AND Room.$dtId IN ['room1', 'room2']
 | 说明 | 查询 |
 | --- | --- |
 | 在 *房间 123* 具有的设备中，返回服务于操作员角色的 MxChip 设备 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
-| 获取具有名为*id1*的关系*的孪生* | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| 获取具有名为*id1*的关系*的孪生* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | 获取*floor11*包含的此聊天室模型的所有聊天室 | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="reference-expressions-and-conditions"></a>参考：表达式和条件
