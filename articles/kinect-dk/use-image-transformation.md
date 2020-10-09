@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: kinect, azure, 传感器, sdk, 坐标系, 校准, 投影, 取消投影, 转换, rgb-d, 点云
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73931693"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>使用 Azure Kinect 传感器 SDK 图像转换

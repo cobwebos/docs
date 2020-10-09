@@ -9,10 +9,10 @@ ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84905861"
 ---
 若要在应用服务中从应用程序代码内部访问生成的控制台日志，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，打开诊断日志记录：

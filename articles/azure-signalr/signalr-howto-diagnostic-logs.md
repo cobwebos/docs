@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85131959"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR 服务的资源日志
@@ -68,7 +68,7 @@ Azure SignalR 服务将资源日志捕获到一个类别中：
 
 **格式**
 
-“属性” | 描述
+名称 | 说明
 ------- | -------
 time | 日志事件时间
 level | 日志事件级别
@@ -81,7 +81,7 @@ properties | 与此日志事件相关的详细属性。 有关更多详细信息
 
 **属性表**
 
-“属性” | 说明
+名称 | 说明
 ------- | -------
 type | 日志事件的类型。 目前，我们提供有关与 Azure SignalR 服务建立的连接的信息。 仅 `ConnectivityLogs` 类型可用
 collection | 日志事件的集合。 允许的值为：`Connection`、`Authorization` 和 `Throttling`

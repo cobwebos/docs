@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85124045"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
@@ -86,7 +86,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 **最佳做法**：使用磁盘加密来帮助保护数据。   
 **详细信息**：使用 [Azure 磁盘加密](/azure/security/azure-security-disk-encryption-overview)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
 
-Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。 有关详细信息，请参阅 [Azure 资源提供程序加密模型支持](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
+Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。 有关 [详细信息，请参阅 Azure 资源提供程序加密模型支持](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
 
 **最佳做法**：使用加密来帮助降低与未经授权访问数据相关的风险。   
 **详细信息**：在将敏感数据写入驱动器之前先将驱动器加密。
@@ -95,9 +95,9 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 ## <a name="protect-data-in-transit"></a>保护传输中的数据
 
-保护传输中的数据应该是数据保护策略中不可或缺的部分。 由于数据将从许多位置来回移动，因此我们一般建议始终使用 SSL/TLS 协议来交换不同位置的数据。 在某些情况下，可能需要使用 VPN 隔离本地与云基础结构之间的整个信道。
+保护传输中的数据应该是数据保护策略中不可或缺的部分。 由于数据在许多位置间来回移动，因此，通常建议始终使用 SSL/TLS 协议在不同位置间交换数据。 在某些情况下，可以使用 VPN 隔离本地与云基础结构之间的整个信道。
 
-对于在本地基础结构与 Azure 之间移动的数据，请考虑适当的防护措施，例如 HTTPS 或 VPN。 通过公共 Internet 在 Azure 虚拟网络和本地位置之间发送加密流量时，请使用 [Azure VPN 网关](../../vpn-gateway/index.yml)。
+对于在本地基础结构与 Azure 之间移动的数据，请考虑适当的防护措施，例如 HTTPS 或 VPN。 通过公共 internet 在 Azure 虚拟网络与本地位置之间发送加密流量时，请使用 [AZURE VPN 网关](../../vpn-gateway/index.yml)。
 
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 

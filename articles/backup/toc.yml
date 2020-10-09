@@ -411,7 +411,7 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md

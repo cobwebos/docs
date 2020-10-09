@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
 ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74012026"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>异常检测器 API 的用户生成特色内容
@@ -23,7 +23,7 @@ ms.locfileid: "74012026"
 
 ## <a name="technical-blogs"></a>技术博客
 
-* [尝试认知服务：异常检测 API （日语）](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
+* [尝试认知服务：) 中的异常探测器 API (](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
 
 ## <a name="open-source-projects"></a>开放源代码项目
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: e7f5af42d0bb0079746cc9e64b621adfebd565d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072673"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>必应实体搜索 API 终结点
@@ -35,6 +35,6 @@ ms.locfileid: "74072673"
 > [!div class="nextstepaction"]
 > [什么是必应实体搜索 API？](overview.md)
 
-## <a name="see-also"></a>请参阅 
+## <a name="see-also"></a>另请参阅 
 
 有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应实体搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 参考文章。

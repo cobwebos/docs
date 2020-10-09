@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890959"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>在本地部署远程监视解决方案加速器 - Visual Studio Code
@@ -64,10 +64,10 @@ dotnet build -c Release
 1. 启动 Visual Studio Code。
 1. 在 VS Code 中，打开 " **dotnet** " 文件夹。
 1. 在 " **dotnet** " 文件夹中创建名为**vscode**的新文件夹。
-1. 将 services\scripts\local\launch\idesettings\vscode 上的文件**launch.js** ，并将**tasks.js上**的文件复制到刚创建的**vscode**文件夹。
-1. 在 VS Code 中打开 "**调试" 面板**，并运行 "**运行所有微服务**" 配置。 此配置会在 Docker 中运行设备模拟微服务，而在调试器中运行其他微服务。
+1. 将 services\scripts\local\launch\idesettings\vscode 上的文件 **launch.js** ，并将 **tasks.js上** 的文件复制到刚创建的 **vscode** 文件夹。
+1. 在 VS Code 中打开 " **调试" 面板** ，并运行 " **运行所有微服务** " 配置。 此配置会在 Docker 中运行设备模拟微服务，而在调试器中运行其他微服务。
 
-运行的输出运行调试控制台中的**所有 microsoervices**如下所示：
+运行的输出运行调试控制台中的 **所有 microsoervices** 如下所示：
 
 [![部署-本地-微服务](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
@@ -80,7 +80,7 @@ npm install
 npm start
 ```
 
-启动完成后，浏览器将显示**http： \/ /localhost： 3000/仪表板**页。 此页面上出现的错误在意料之中。 若要在无错误的情况下查看应用程序，请完成以下步骤。
+启动完成后，浏览器将显示 **http： \/ /localhost： 3000/仪表板**页。 此页面上出现的错误在意料之中。 若要在无错误的情况下查看应用程序，请完成以下步骤。
 
 ### <a name="configure-and-run-nginx"></a>配置并运行 NGINX
 

@@ -9,10 +9,10 @@ ms.author: memildin
 author: memildin
 manager: rkarlin
 ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85119263"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>针对 Azure Cosmos DB 的高级威胁防护（预览版）
@@ -81,16 +81,16 @@ ms.locfileid: "85119263"
 
 1. 启动“Azure Policy - 定义”页面，然后搜索“部署针对 Cosmos DB 的高级威胁防护”策略。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="搜索策略"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="设置 ATP"::: 
 
 1. 单击“部署针对 CosmosDB 的高级威胁防护”策略，然后单击“分配”。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="选择订阅或组":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="设置 ATP":::
 
 
 1. 在“范围”字段中，单击三个点，选择 Azure 订阅或资源组，然后单击“选择”。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="策略定义页":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="设置 ATP":::
 
 
 1. 输入其他参数，然后单击“分配”。
@@ -104,11 +104,11 @@ ms.locfileid: "85119263"
 
  可从 Azure 安全中心查看和管理当前[安全警报](../security-center/security-center-alerts-overview.md)。  单击[安全中心](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0)内的特定警报以查看可能的原因以及用于调查和缓解潜在威胁的建议操作。 下图显示了安全中心提供的警报详细信息的示例。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="威胁详细信息":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="设置 ATP":::
 
 电子邮件通知还会随警报详细信息和建议的操作一起发送。 下图显示了警报电子邮件的示例。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="警报详细信息":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="设置 ATP":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警报
 

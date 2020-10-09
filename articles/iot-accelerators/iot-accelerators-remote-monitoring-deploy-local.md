@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890891"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
@@ -96,7 +96,7 @@ npm install
 npm start
 ```
 
-启动完成后，浏览器将显示**http： \/ /localhost： 3000/仪表板**页。 此页面上出现的错误在意料之中。 若要在无错误的情况下查看应用程序，请完成以下步骤。
+启动完成后，浏览器将显示 **http： \/ /localhost： 3000/仪表板**页。 此页面上出现的错误在意料之中。 若要在无错误的情况下查看应用程序，请完成以下步骤。
 
 ### <a name="configure-and-run-nginx"></a>配置并运行 NGINX
 

@@ -17,10 +17,10 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74008269"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的使用情况和见解报告
@@ -36,14 +36,14 @@ ms.locfileid: "74008269"
 若要访问使用情况报表和 insights 报表中的数据，需要：
 
 * Azure AD 租户
-* 用于查看登录数据的 Azure AD 高级（P1/P2）许可证
-* 全局管理员、安全管理员、安全读者或报表读者角色中的用户。 此外，任何用户（非管理员）都可以访问自己的登录。 
+* Azure AD 高级 (P1/P2) 许可证来查看登录数据
+* 全局管理员、安全管理员、安全读者或报表读者角色中的用户。 此外，任何用户 (非管理员) 都可以访问自己的登录。 
 
 ## <a name="access-the-usage-and-insights-report"></a>访问使用情况和见解报告
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 选择正确的目录，然后选择 " **Azure Active Directory** "，然后选择 "**企业应用程序**"。
-3. 从 "**活动**" 部分中，选择 "**使用情况 & insights** " 以打开报表。 
+2. 选择正确的目录，然后选择 " **Azure Active Directory** "，然后选择 " **企业应用程序**"。
+3. 从 " **活动** " 部分中，选择 " **使用情况 & insights** " 以打开报表。 
 
 ![使用情况和见解报表](./media/concept-usage-insights-report/main-menu.png)
                                      
@@ -54,7 +54,7 @@ ms.locfileid: "74008269"
 
 单击列表底部的 "加载更多"，可以在页面上查看其他应用程序。 您可以选择日期范围来查看在该范围内使用的所有应用程序。
 
-你还可以在特定应用程序上设置焦点。 选择 "**查看登录活动**" 可查看一段时间内应用程序的登录活动，以及最常见的错误。  
+你还可以在特定应用程序上设置焦点。 选择 " **查看登录活动** " 可查看一段时间内应用程序的登录活动，以及最常见的错误。  
 
 当你在 "应用程序使用情况" 图中选择一天时，将获取该应用程序的登录活动的详细列表。  
 
