@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798532"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826556"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>教程：可视化和监视数据
 
@@ -44,19 +44,19 @@ ms.locfileid: "83798532"
 
 1. 转到“工作簿”，然后选择“模板”以查看 Azure Sentinel 内置工作簿的完整列表。 若要查看与你连接的数据类型相关的数据类型，每个工作簿中“必需的数据类型”字段将在绿色复选标记旁边列出数据类型（如果已将相关数据流式传输到 Azure Sentinel）。
   ![转到工作簿](./media/tutorial-monitor-data/access-workbooks.png)
-1. 单击“查看工作簿”，查看用你的数据填充的模板。
+1. 单击 " **查看模板** "，查看用你的数据填充的模板。
   
-1. 若要编辑工作簿，请选择“保存”，然后选择要保存模板 json 文件的位置。 
+1. 若要编辑工作簿，请选择 " **保存**"，然后选择要为模板保存 JSON 文件的位置。 
 
    > [!NOTE]
-   > 这会基于相关模板创建 Azure 资源，并保存模板 Json 文件本身，而不是数据。
+   > 这会基于相关模板创建 Azure 资源，并保存工作簿的 JSON 文件，而不是数据。
 
 
-1. 选择“查看工作簿”。 然后单击顶部的“编辑”按钮。 你现在可以编辑工作簿，并根据需要对其进行自定义。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。
+1. 选择 " **查看保存的工作簿**"。 然后单击顶部的“编辑”按钮。 你现在可以编辑工作簿，并根据需要对其进行自定义。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。
 ![查看工作簿](./media/tutorial-monitor-data/workbook-graph.png)
 1. 进行更改后，可以保存工作簿。 
 
-1. 还可以克隆工作簿：选择“编辑”，然后选择“另存为”，确保在同一订阅和资源组下将其另存为其他名称。 这些工作簿显示在“我的工作簿”选项卡下。
+1. 还可以克隆工作簿：选择“编辑”，然后选择“另存为”，确保在同一订阅和资源组下将其另存为其他名称。 这些克隆的工作簿显示在 " **我的工作簿** " 选项卡下。
 
 
 ## <a name="create-new-workbook"></a>创建新的工作簿
@@ -66,9 +66,9 @@ ms.locfileid: "83798532"
 
 1. 若要编辑工作簿，请选择“编辑”，然后根据需要添加文本、查询和参数。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。 
 
-1. 生成查询时，请将“数据源”设置为“日志”，“资源类型”设置为“日志分析”，然后选择相关工作区。 
+1. 生成查询时，请确保将 " **数据源** " 设置为 " **日志** "，将 " **资源类型** " 设置为 " **Log Analytics**"，然后选择 "相关工作区" (s) 。 
 
-1. 创建工作簿后，保存工作簿以确保将其保存在 Azure Sentinel 工作区的订阅和资源组下。
+1. 创建工作簿后，保存工作簿，并确保将其保存在 Azure Sentinel 工作区的订阅和资源组下。
 
 1. 如果要让组织中的其他人使用该工作簿，请在“保存到”下选择“共享报表”。 如果希望此工作簿仅供你使用，请选择“我的报表”。
 
@@ -79,15 +79,13 @@ ms.locfileid: "83798532"
 
 ## <a name="how-to-delete-workbooks"></a>如何删除工作簿
 
-可以删除从 Azure Sentinel 模板创建的工作簿。 
-
-若要删除自定义工作簿，请在“工作簿”页中，选择要删除的已保存工作簿，然后选择“删除”。 这将删除已保存的工作簿。
+若要删除保存的工作簿 (保存的模板或自定义工作簿) ，请在 "工作簿" 页中选择要删除的已保存工作簿，然后选择 " **删除**"。 这将删除已保存的工作簿。
 
 > [!NOTE]
-> 这会删除资源以及对模板所做的任何更改。 原始模板仍可用。
+> 这会删除工作簿资源以及对模板所做的任何更改。 原始模板仍可用。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你学习了如何在 Azure Sentinel 中查看数据。
+在本教程中，已学习如何使用 Azure 工作簿在 Azure Sentinel 中直观显示数据。
 
 若要了解如何自动完成对威胁的响应，请参阅[在 Azure Sentinel 中设置自动威胁响应](tutorial-respond-threats-playbook.md)。

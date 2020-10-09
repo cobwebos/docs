@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d22ec2219a86b8445931350b616dd76d0a22ec5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 133ea21bf7a7c1df0fccaeacce7d7a29199c033d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439815"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827691"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中对管理单元中的组的添加和管理
 
@@ -101,6 +101,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 }
 ```
+
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
@@ -136,13 +137,20 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 在 Azure 门户中，有两种方式可以从管理单元删除组。
 
-打开“Azure AD” > “组”，然后打开要从管理单元删除的组的配置文件 。 在左面板中选择“管理单元”以列出该组所属的所有管理单元。 选择要从中删除组的管理单元，然后选择“从管理单元中删除”。
+- 从组中删除概述
 
-![从管理单元删除组](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+  1. 打开**Azure AD**  >  **组**，然后打开要从管理单元中删除的组的配置文件。
+  1. 在左面板中选择“管理单元”以列出该组所属的所有管理单元。 选择要从中删除组的管理单元，然后选择“从管理单元中删除”。
 
-另一种方式是：转到“Azure AD” > “管理单元”，然后选择组所属的管理单元 。 在左面板中选择“组”以列出成员组。 选择要从管理单元中删除的组，然后选择“删除组”。
+    ![从管理单元删除组](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-![列出管理单元中的组](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+- 从管理单元中删除
+
+  1. 打开**Azure AD**  >  **管理单元**"，然后选择该组所属的管理单元。
+  1. 在左面板中选择“组”以列出成员组。
+  1. 选择要从管理单元中删除的组，然后选择“删除组”。
+
+    ![列出管理单元中的组](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883444"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826828"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro 技术规范
 
@@ -25,8 +25,8 @@ Azure Stack Edge Pro 设备具有以下计算和内存规范：
 
 | 规格           | 值                  |
 |-------------------------|----------------------------|
-| CPU    | 2 X 10 核 CPU                     |
-| 内存              | 128 GB RAM                  |
+| CPU    | 2 X 10 核心 CPU Intel 至强银色 4114 2.2 G                    |
+| 内存              | 128 GB RAM (8x 16 GB RDIMM)                  |
 
 ## <a name="fpga-specifications"></a>FPGA 规格
 
@@ -63,6 +63,15 @@ Azure Stack Edge Pro 设备有6个网络接口，PORT1-PORT6。
 | 规格           | 说明                 |
 |-------------------------|----------------------------|
 |  网络接口    | 2 个 1 GbE 接口 - 1 个管理接口，用户不可配置，用于初始设置。 其他接口可由用户配置，可以用于数据传输，默认为 DHCP。 <br>2 个 25 GbE 接口 – 这些接口也可用作 10 GbE 接口。 用户可将这些数据接口配置为 DHCP（默认）或静态接口。 <br> 2 个 25 GbE 接口 - 用户可将这些数据接口配置为 DHCP（默认）或静态接口。                  |
+
+使用的网络适配器是： 
+
+| 规格           | 说明                 |
+|-------------------------|----------------------------|
+|网络子卡 (rNDC)  |QLogic FastLinQ 41264 双重端口 25GbE SFP +、双端口1GbE、rNDC|
+|PCI 网络适配器 |QLogic FastLinQ 41262 zwei 端口 25Gbit/s SFP28 适配器|
+
+请参阅 Intel QLogic 中的硬件兼容性列表，以获取兼容的千兆位接口转换器 (GBIC) 。 千兆接口转换器 (GBIC) 不包含在 Azure Stack 边缘的传递中。 
 
 ## <a name="storage-specifications"></a>存储器规格
 

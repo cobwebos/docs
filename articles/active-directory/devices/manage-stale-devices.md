@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705531"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825961"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
 
@@ -69,7 +69,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 若要更新 Azure AD 中的设备，需要一个具有以下角色之一的帐户：
 
-- 全局管理员
+- 全局管理员角色
 - 云设备管理员
 - Intune 服务管理员
 
@@ -163,9 +163,9 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>为什么要考虑 Windows Autopilot 设备？
 
 当你删除与 Windows Autopilot 对象关联的 Azure AD 设备时，如果以后重新使用该设备，可能会出现以下三种情况：
-- 使用 Windows Autopilot 用户驱动的部署而无需使用白手套，将创建一个新的 Azure AD 设备，但不会使用 ZTDID 标记它。
+- 使用 Windows Autopilot 用户驱动的部署而无需预配，将创建一个新的 Azure AD 设备，但不会使用 ZTDID 对其进行标记。
 - 使用 Windows Autopilot 自行部署模式部署，由于找不到关联 Azure AD 设备，它们将会失败。   (这是一种安全机制，可确保没有 "入侵者" 设备尝试将 Azure AD 加入无凭据。 ) 失败将指示 ZTDID 不匹配。
-- 对于 Windows Autopilot 纯白手套部署，由于找不到关联 Azure AD 设备，它们将会失败。  (后台，白色手套部署使用相同的自部署模式进程，因此它们强制实施相同的安全机制。 ) 
+- 对于 Windows Autopilot 预配部署，由于找不到关联的 Azure AD 设备，它们将会失败。  (在幕后，预配部署使用相同的自部署模式进程，因此它们强制实施相同的安全机制。 ) 
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>如何知道所有已加入的设备类型？
 

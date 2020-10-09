@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485713"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827532"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -69,7 +69,7 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 
 活动分派是将活动路由到目标计算服务的轻型操作，因此，无需纵向扩展此方案的计算大小。
 
-有关创建和配置 Azure IR 的信息，请参阅操作方法指南下的“如何创建和配置 Azure IR”。 
+有关创建和配置 Azure IR 的信息，请参阅 [如何创建和配置 Azure Integration Runtime](create-azure-integration-runtime.md)。 
 
 > [!NOTE] 
 > Azure 集成运行时具有与数据流运行时相关的属性，该运行时定义将用来运行数据流的基础计算基础结构。 

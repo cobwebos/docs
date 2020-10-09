@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322081"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825423"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
 
-本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务为 Azure 虚拟机 (VM) 部署灾难恢复时所用的体系结构、组件和过程。 使用灾难恢复设置，Azure VM 可以持续复制到不同的目标区域。 如果发生服务中断，可将 VM 故障转移到次要区域，然后在次要区域中对其进行访问。 一切恢复正常后，可以执行故障回复，继续在主要位置操作。
+本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务为 Azure 虚拟机 (VM) 部署灾难恢复时所用的体系结构、组件和过程。 设置灾难恢复后，Azure Vm 将持续复制到其他目标区域。 如果发生服务中断，可将 VM 故障转移到次要区域，然后在次要区域中对其进行访问。 一切恢复正常后，可以执行故障回复，继续在主要位置操作。
 
 
 

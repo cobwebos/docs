@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081417"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825751"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor 工作簿数据源
 
@@ -50,14 +50,14 @@ Azure 资源发出可以通过工作簿访问的[指标](data-platform-metrics.m
 
 ![Azure Resource Graph KQL 查询的屏幕截图](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="azure-resource-manager"></a>Azure 资源管理器
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 
 工作簿支持 Azure 资源管理器 REST 操作。 这样，便可以查询 management.azure.com 终结点，而无需提供自己的授权标头令牌。
 
-若要使查询控件使用此数据源，请使用 "数据源" 下拉箭头选择 Azure 资源管理器。 提供相应的参数，如 Http 方法、url 路径、标头、url 参数和/或正文。
+若要让查询控件使用此数据源，请使用“数据源”下拉列表选择“Azure 资源管理器”。 提供适当的参数，例如 Http 方法、URL 路径、标头、URL 参数和/或正文。
 
 > [!NOTE]
-> `GET`目前仅 `POST` 支持、和 `HEAD` 操作。
+> 目前仅支持 `GET`、`POST` 和 `HEAD` 操作。
 
 ## <a name="azure-data-explorer"></a>Azure 数据资源管理器
 
@@ -65,7 +65,7 @@ Azure 资源发出可以通过工作簿访问的[指标](data-platform-metrics.m
 
 ![Kusto 查询窗口的屏幕截图](./media/workbooks-overview/data-explorer.png)
 
-## <a name="workload-health"></a>工作负荷运行状况
+## <a name="workload-health"></a>工作负载运行状况
 
 Azure Monitor 提供主动监视 Windows 或 Linux 来宾操作系统可用性和性能的功能。 Azure Monitor 为关键组件及其关系、有关如何度量这些组件的运行状况的条件，以及在检测到不正常情况时由哪些组件会发出警报的设置建模。 工作簿允许用户使用这些信息创建丰富的交互式报表。
 
@@ -83,35 +83,34 @@ Azure Monitor 提供主动监视 Windows 或 Linux 来宾操作系统可用性�
 
 ## <a name="json"></a>JSON
 
-JSON 提供程序允许您从静态 JSON 内容创建查询结果。 它最常用于参数创建静态值的 dropdown 参数。 简单的 JSON 数组或对象将自动转换为网格行和列。  对于更具体的行为，可以使用 "结果" 选项卡和 "JSONPath" 设置来配置列。
+使用 JSON 提供程序可从静态 JSON 内容创建查询结果。 它最常用于在参数中创建静态值的下拉列表参数。 简单的 JSON 数组或对象将自动转换为网格行和列。  有关更具体的行为，可使用“结果”选项卡和 JSONPath 设置来配置列。
 
 ## <a name="alerts-preview"></a>警报（预览版）
 
 > [!NOTE]
-> 查询 Azure 警报信息的建议方法是通过查询表来使用[Azure 资源关系图](#azure-resource-graph)数据源 `AlertsManagementResources` 。
+> 建议使用 [Azure Resource Graph](#azure-resource-graph) 数据源通过查询 `AlertsManagementResources` 表来查询 Azure 警报信息。
 >
-> 有关示例，请参阅[Azure 资源关系图表引用](../../governance/resource-graph/reference/supported-tables-resources.md)或[警报模板](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)。
+> 有关示例，请参阅 [Azure Resource Graph 表格引用](../../governance/resource-graph/reference/supported-tables-resources.md)或[警报模板](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)。
 >
-> 警报数据源将在一段时间内保持可用，同时作者转换为使用 ARG。 不建议在模板中使用此数据源。 
+> 作者转换为使用 ARG 时，警报数据源将在一段时间内保持可用。 不建议在模板中使用此数据源。 
 
-工作簿允许用户可视化与其资源相关的活动警报。 限制：警报数据源需要订阅的 "读取" 访问权限才能查询资源，可能不会显示较新的警报类型。 
+工作簿允许用户可视化与其资源相关的活动警报。 限制：警报数据源需要对订阅的读取访问权限才能查询资源，并且可能不会显示较新的警报类型。 
 
-若要使查询控件使用此数据源，请使用 "_数据源_" 下拉箭头选择 "_警报（预览）_ "，然后选择要面向的订阅、资源组或资源。 使用警报筛选器下拉列表根据分析需求选择一个有意义的警报子集。
+若要让查询控件使用此数据源，请使用“数据源”下拉列表选择“警报(预览)”，然后选择目标订阅、资源组或资源 。 使用警报筛选器下拉列表根据分析需求选择一个所关注的警报子集。
 
 ## <a name="custom-endpoint"></a>自定义终结点
 
 工作簿支持从任何外部源获取数据。 如果数据位于 Azure 外部，可以使用此数据源类型将数据引入工作簿。
 
-若要使查询控件使用此数据源，请使用 "_数据源_" 下拉箭头选择 "_自定义终结点_"。 提供相应的参数，如 `Http method` 、 `url` 、 `headers` `url parameters` 和/或 `body` 。 请确保数据源支持[CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) ，否则请求将会失败。
+若要让查询控件使用此数据源，请使用“数据源”下拉列表选择“自定义终结点” 。 提供适当的参数，如 `Http method`、`url`、`headers`、`url parameters` 和/或 `body`。 请确保数据源支持 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)，否则请求将会失败。
 
-若要避免在使用模板时自动调用不受信任的主机，用户需要将使用的主机标记为受信任。 为此，可以单击 "_添加为受信任_" 按钮，或在 "工作簿设置" 中将其添加为受信任的主机。 这些设置将保存在支持与 web 工作进程 IndexDb 的浏览器中，有关详细信息，请参阅[此处](https://caniuse.com/#feat=indexeddb)。
+若要避免在使用模板时自动调用不受信任的主机，用户需要将使用的主机标记为受信任。 为此，可以单击“添加为受信任”按钮，或在工作簿设置中将其添加为受信任的主机。 这些设置将保存在支持带有 Web 辅助角色的 IndexDb 的浏览器中；有关详细信息，请参阅[此处](https://caniuse.com/#feat=indexeddb)。
 
 > [!NOTE]
-> 请勿在任何字段（ `headers` 、、、）中写入任何 `parameters` 机密 `body` `url` ，因为这些字段对所有工作簿用户均可见。
+> 请勿在任何字段（`headers`、`parameters`、`body`、`url`）中写入任何机密，因为这些字段对所有工作簿用户均可见。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [开始](workbooks-visualizations.md)详细了解工作簿丰富的可视化效果选项。
 * [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。
 * [Log Analytics 查询优化提示](../log-query/query-optimization.md)
-* 

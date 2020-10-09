@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98cd28e8b770ebfb7ab395fbe7fff16a078e3529
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112772"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826847"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区和水平缩放
 
@@ -23,7 +23,7 @@ ms.locfileid: "85112772"
 
 逻辑分区也定义数据库事务的范围。 可以使用[支持快照隔离的事务](database-transactions-optimistic-concurrency.md)来更新逻辑分区中的项。 当向容器中添加新项时，系统将透明地创建新的逻辑分区。
 
-容器中逻辑分区的数量是没有限制的。 每个逻辑分区最多可以存储 20GB 数据。 如果分区键的可能值范围广泛，那么这些分区键是良好的分区键选择。 例如，在一个其中所有项都包含 `foodGroup` 属性的容器中，`Beef Products` 逻辑分区内的数据最多可能会增长到 20GB。 [选择具有多种可能值的分区键](partitioning-overview.md#choose-partitionkey)会确保容器能够缩放。
+容器中逻辑分区的数量是没有限制的。 每个逻辑分区最多可以存储 20GB 数据。 如果分区键的可能值范围广泛，那么这些分区键是良好的分区键选择。 例如，在所有项都包含属性的容器中 `foodGroup` ，逻辑分区内的数据 `Beef Products` 最多可增长到 20 GB。 [选择具有多种可能值的分区键](partitioning-overview.md#choose-partitionkey)会确保容器能够缩放。
 
 ## <a name="physical-partitions"></a>物理分区
 
@@ -36,7 +36,7 @@ Cosmos 容器中的物理分区数依赖于以下各项：
 
 容器中物理分区的总数是没有限制的。 随着预配的吞吐量或数据量规模的增长，Azure Cosmos DB 将会通过拆分现有物理分区来自动创建新物理分区。 物理分区拆分不影响应用程序可用性。 物理分区拆分后，单个逻辑分区内的所有数据仍将存储在同一个物理分区中。 物理分区拆分只是创建逻辑分区到物理分区的新映射。
 
-为容器预配的吞吐量在物理分区之间均匀划分。 不会均匀分配吞吐量请求的分区键设计可能会产生“热”分区。 热分区可能导致速率限制、预配吞吐量的低效使用，以及更高的成本。
+为容器预配的吞吐量在物理分区之间均匀划分。 不均匀分配请求的分区键设计可能会导致过多的请求被定向到成为 "热" 的一小部分分区。 热分区导致使用预配的吞吐量效率低下，这可能会导致速率限制和更高的成本。
 
 在 Azure 门户的“指标”边栏选项卡的“存储”部分中，可以看到容器的物理分区 ：
 
@@ -54,7 +54,7 @@ Cosmos 容器中的物理分区数依赖于以下各项：
 
 下图显示了逻辑分区如何映射到全局分配的物理分区：
 
-:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="演示 Azure Cosmos DB 分区的插图" border="false":::
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="查看物理分区数" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

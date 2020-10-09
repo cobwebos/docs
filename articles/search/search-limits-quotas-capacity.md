@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 10/07/2020
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462507"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825492"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -50,7 +50,7 @@ ms.locfileid: "89462507"
 
 <sup>2</sup> 在 2017 年 12 月之前创建的基本服务对索引数的限制较低（为 5 个而不是 15 个）。 基本层是唯一具有下限（每个索引 100 个字段）的 SKU。
 
-<sup>2</sup> 目前，在每个文档的复杂集合中包含极大量的元素会导致存储使用率很高。 这是一个已知问题。 同时，限制 3000 是所有服务层级的安全上限。 此限制仅对利用支持复杂类型字段 (`2019-05-06`) 的最早正式版 (GA) API 的索引操作强制实施。 为了避免造成可能正在使用早期 API 预览版（支持复杂类型字段）的客户端无法正常工作，我们不会对使用这些 API 预览版的索引操作强制实施此限制。 请注意，API 预览版并不旨在用于生产方案，我们强烈建议客户迁移到最新的 API 正式版。
+<sup>2</sup> 元素存在上限，因为有大量它们会导致高存储利用率。 复杂集合的元素定义为该集合的成员。 例如，假设有一个 [旅馆文档使用房间复杂集合](search-howto-complex-data-types.md#indexing-complex-types)，则房间集合中的每个房间都被视为一个元素。 在编制索引期间，索引引擎可以安全地在整个文档中处理最多3000个元素。 [此限制](search-api-migration.md#upgrade-to-2019-05-06) 是在中引入的， `api-version=2019-05-06` 并且仅适用于复杂集合，不适用于字符串集合或复杂字段。
 
 <a name="document-limits"></a>
 
@@ -84,7 +84,7 @@ ms.locfileid: "89462507"
 | 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |空值 |无限制 |无限制 |
 | 最小计划 | 5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 | 5 分钟 |
 | 最长运行时间| 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |空值  |24 小时 |24 小时 |
-| 带有技能组合<sup>5</sup>的索引器的最大运行时间 | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |空值  |2 小时 |2 小时 |
+| 包含技能组的索引器的最长运行时间 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |空值  |2 小时 |2 小时 |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |空值  |256 |256 |
 | Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |400&nbsp;万 |800&nbsp;万 |1600&nbsp;万 |空值 |400&nbsp;万 |400&nbsp;万 |
 

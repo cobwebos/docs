@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f8d1eaa76a30e39647830b54c30cb8f7e8bb8e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613962"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827303"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
@@ -41,7 +41,7 @@ Azure 存储提供以下类型的复制：
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
 | <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br /> OR <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> OR <br /><br /> 请求实时迁移 |
-| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 不可用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> |
+| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> |
 | <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 | 执行手动迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
 <sup>1</sup> 会产生一次性出口费用。<br />
@@ -123,18 +123,21 @@ ZRS 仅支持常规用途 v2 帐户，因此请确保在将实时迁移请求提
 
 可以通过 [Azure 支持门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)请求实时迁移。 在门户中，选择要转换为 ZRS 的存储帐户。
 
-1. 选择 **新的支持请求**
-2. 根据帐户信息填写“基本信息”。**** 在“服务”部分，选择“存储帐户管理”以及要转换为 ZRS 的资源。********
-3. 选择“**下一页**”。
+1. 选择 " **新建支持请求**"。
+2. 根据帐户信息完成 **基本** 操作： 
+    - **问题类型**：选择 " **技术**"。
+    - **服务**：选择 **"我的服务" 和 "** **存储帐户管理**"。
+    - **资源**：选择要转换为 ZRS 的资源。
+3. 选择“下一步”。
 4. 在“问题”部分指定以下值：****
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。****
     - **类别**：选择 **迁移到 ZRS**。
     - **标题**：键入描述性的标题，例如“ZRS 帐户迁移”。****
     - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，我想要从区域中的 [LRS，GRS] 迁移到 ZRS \_ \_ 。
-5. 选择“**下一页**”。
+5. 选择“下一步”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。****
-7. 选择“创建”。
+7. 选择“创建”  。
 
 支持人员将与你取得联系，并提供所需的任何帮助。
 
@@ -160,7 +163,7 @@ ZRS 经典版仅适用于常规用途 V1 (GPv1) 存储帐户中的**块 Blob**�
 
 你还可以使用 ZRS 提供的区域中的 Azure 门户、PowerShell 或 Azure CLI 将 ZRS 经典存储帐户升级到 ZRS。
 
-# <a name="portal"></a>[门户](#tab/portal)
+# <a name="portal"></a>[Portal](#tab/portal)
 
 若要升级到 Azure 门户中的 ZRS，请导航到该帐户的 **配置** 设置，然后选择 " **升级**"：
 

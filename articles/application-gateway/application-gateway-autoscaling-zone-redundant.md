@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649750"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826635"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -21,7 +21,7 @@ ms.locfileid: "89649750"
 
 新的 v2 SKU 包括以下增强：
 
-- **自动缩放**：凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供真正的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可同时在固定容量（自动缩放已禁用）和已启用自动缩放的模式下运行。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 应用程序流量会出现差异的应用程序可以受益于自动缩放模式。
+- 自动**缩放**：自动缩放 SKU 下的应用程序网关或 WAF 部署可以根据不断变化的流量负载模式进行扩展或缩减。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供真正的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可同时在固定容量（自动缩放已禁用）和已启用自动缩放的模式下运行。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 应用程序流量会出现差异的应用程序可以受益于自动缩放模式。
 - **区域冗余**：应用程序网关或 WAF 部署可跨多个可用性区域，因此不需要使用流量管理器在每个区域中单独预配应用程序网关实例。 可以选择一个或多个区域来部署应用程序网关实例，以便更灵活地应对区域故障。 应用程序的后端池可以通过类似方式分布在多个可用性区域中。
 
   仅当 Azure 区域可用时，区域冗余才可用。 在其他区域中，支持所有其他功能。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](../availability-zones/az-overview.md)
@@ -47,7 +47,7 @@ ms.locfileid: "89649750"
 
 每个容量单位最多包括：1 个计算单位，2500 个持久连接和 2.22-Mbps 吞吐量。
 
-若要了解详细信息，请参阅 [了解定价](understanding-pricing.md)。
+若要了解详细信息，请参阅[了解定价](understanding-pricing.md)。
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>缩放应用程序网关和 WAF v2
 

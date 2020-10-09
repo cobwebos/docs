@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035869"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825307"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 
@@ -28,9 +28,9 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用
 
 缩放级别 1 使用 4 个磁贴来呈现世界：一个 2 x 2 的正方形
 
-:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="2x2 地图磁贴布局":::
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="世界地图磁贴":::
 
-每个附加的缩放级别四分割上一个的平铺，创建 2<sup>缩放</sup>x 2<sup>缩放</sup>的网格。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
+每个附加的缩放级别四分割上一个的平铺，创建 2<sup>缩放</sup> x 2<sup>缩放</sup>的网格。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
 
 适用于 web 和 Android 的 Azure Maps 交互式地图控件支持25个缩放级别，其编号为0到24。 尽管仅当磁贴可用时，路上数据才会出现在中的缩放级别。
 
@@ -74,9 +74,9 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-由于地图的宽度和高度在每个缩放级别都不同，因此是像素坐标。 地图左上角的像素始终具有像素坐标 (0，0) 。 地图右下角的像素坐标* (width-1、height-1) *或引用上一部分中的方程式， * (tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>– 1) *。 例如，在级别2使用512正方形磁贴时，像素坐标范围为 (0，0) 到 (2047，2047) ，如下所示：
+由于地图的宽度和高度在每个缩放级别都不同，因此是像素坐标。 地图左上角的像素始终具有像素坐标 (0，0) 。 地图右下角的像素坐标 * (width-1、height-1) *或引用上一部分中的方程式， * (tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>– 1) *。 例如，在级别2使用512正方形磁贴时，像素坐标范围为 (0，0) 到 (2047，2047) ，如下所示：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="显示像素尺寸的地图":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="世界地图磁贴":::
 
 给定纬度和经度（以度为单位）和详细程度，像素 XY 坐标的计算方法如下：
 
@@ -100,9 +100,9 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-为每个图块指定了 XY 坐标，范围为从左上角的 (0，0) 到右下角* (2<sup>zoom</sup>–1、2<sup>zoom</sup>-1) * 。 例如，在缩放级别2，磁贴坐标范围从 (0，0) 到 (7、7) ，如下所示：
+为每个图块指定了 XY 坐标，范围为从左上角的 (0，0) 到右下角 * (2<sup>zoom</sup>–1、2<sup>zoom</sup>-1) * 。 例如，在缩放级别3，磁贴坐标范围从 (0，0) 到 (7、7) 如下：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="图块坐标地图":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="世界地图磁贴":::
 
 给定一对像素 XY 坐标，可以轻松确定包含该像素的图块的图块 XY 坐标：
 
@@ -116,17 +116,17 @@ var tileY = Math.floor(pixelY / tileSize);
 
 确定要使用的缩放级别时，请记住每个位置都在其磁贴上的固定位置。 因此，显示给定范围的区域所需的磁贴数取决于世界地图上缩放网格的特定位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。** 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="缩放演示比例":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="世界地图磁贴":::
 
 缩放级别确定后，可以计算 x 和 y 值。 每个缩放网格中左上的磁贴为 x = 0、y = 0;右下方的平铺处于 x = 2<sup>缩放-1</sup>、y = 2<sup>缩放-1</sup>。
 
 以下是缩放级别 1 的缩放网格：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="缩放级别 1 的缩放网格":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="世界地图磁贴":::
 
 ## <a name="quadkey-indices"></a>Quadkey 索引
 
-某些映射平台使用 `quadkey` 索引命名约定，该约定将磁贴 ZY 坐标合并为一维字符串（称为 `quadtree` 键或 `quadkeys` short）。 每个 `quadkey` 磁贴在特定的详细级别上唯一标识一个磁贴，并且可用作公用数据库 B 树索引中的键。 Azure Maps Sdk `quadkey` 除了[添加图块层](map-add-tile-layer.md)文档中所述的其他命名约定外，还支持使用命名约定覆盖图块层。
+某些映射平台使用 `quadkey` 索引命名约定，该约定将磁贴 ZY 坐标合并为一维字符串（称为 `quadtree` 键或 `quadkeys` short）。 每个 `quadkey` 磁贴在特定的详细级别上唯一标识一个磁贴，并且可用作公用数据库 B 树索引中的键。 Azure Maps Sdk `quadkey` 除了 [添加图块层](map-add-tile-layer.md) 文档中所述的其他命名约定外，还支持使用命名约定覆盖图块层。
 
 > [!NOTE]
 > `quadkeys`命名约定仅适用于一个或更高的缩放级别。 Azure Maps SDK 的支持缩放级别0，它是整个世界的单个地图图块。 
@@ -136,14 +136,14 @@ var tileY = Math.floor(pixelY / tileSize);
 ```
 tileX = 3 = 011 (base 2)
 
-tileY = 5 = 1012 (base 2)
+tileY = 5 = 101 (base 2)
 
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`有几个有趣的属性。 首先， `quadkey` (的位数) 等于相应磁贴的缩放级别。 其次， `quadkey` 任何图块的从 `quadkey` 其父图块的开始， (上一级) 包含图块。 如以下示例中所示，磁贴2是磁贴20到23的父级：
+`Qquadkeys` 有几个有趣的属性。 首先， `quadkey` (的位数) 等于相应磁贴的缩放级别。 其次， `quadkey` 任何图块的从 `quadkey` 其父图块的开始， (上一级) 包含图块。 如以下示例中所示，磁贴2是磁贴20到23的父级：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey 平铺棱锥图":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="世界地图磁贴":::
 
 最后， `quadkeys` 提供一维索引键，通常在 XY 空间中保留磁贴的邻近性。 换句话说，具有附近 XY 坐标的两个磁贴通常具有 `quadkeys` 相对接近的点。 这对于优化数据库性能非常重要，因为相邻磁贴通常是在组中请求的，因此最好将这些磁贴保存在相同的磁盘块上，以最大程度地减少磁盘读取次数。
 

@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057160"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826936"
 ---
 # <a name="role-based-access-control"></a>基于角色的访问控制
 
-自定义视觉支持 azure RBAC)  (azure RBAC，这是用于管理对 Azure 资源的个人访问权限的授权系统。 使用 RBAC，可以为不同的团队成员分配自定义视觉项目的不同级别的权限。 有关 RBAC 的详细信息，请参阅 [AZURE RBAC 文档](https://docs.microsoft.com/azure/role-based-access-control/)。
+自定义视觉支持 Azure 基于角色的访问控制 (Azure RBAC)，这是用于管理对 Azure 资源的个人访问权限的授权系统。 使用 RBAC，可以为不同的团队成员分配自定义视觉项目的不同级别的权限。 有关 RBAC 的详细信息，请参阅 [AZURE RBAC 文档](https://docs.microsoft.com/azure/role-based-access-control/)。
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>将角色分配添加到自定义视觉资源
 
@@ -43,8 +43,8 @@ ms.locfileid: "90057160"
 
 |角色  |权限  |
 |---------|---------|
-|`Cognitive Service Custom Vision Contributor`     | 对项目的完全访问权限，包括创建、编辑或删除项目的功能。        |
-|`Cognitive Service Custom Vision Trainer`     | 完全访问权限，但不允许创建或删除项目。 讲师可以查看和编辑项目，并对模型进行定型、发布、取消发布或导出。        |
-|`Cognitive Service Custom Vision Labeler`     | 能够上传、编辑或删除定型图像以及创建、添加、删除或删除标记。 Labelers 可以查看项目，但不能更新除定型图像和标记之外的任何内容。         |
-|`Cognitive Service Custom Vision Deployment`     | 能够发布、取消发布或导出模型。 Deployer 可以查看项目，但不能更新项目、培训图像或标记。        |
-|`Cognitive Service Custom Vision Reader`     | 可以查看项目。 读者不能进行任何更改。        |
+|`Cognitive Services Custom Vision Contributor`     | 对项目的完全访问权限，包括创建、编辑或删除项目的功能。        |
+|`Cognitive Services Custom Vision Trainer`     | 完全访问权限，但不允许创建或删除项目。 讲师可以查看和编辑项目，并对模型进行定型、发布、取消发布或导出。        |
+|`Cognitive Services Custom Vision Labeler`     | 能够上传、编辑或删除定型图像以及创建、添加、删除或删除标记。 Labelers 可以查看项目，但不能更新除定型图像和标记之外的任何内容。         |
+|`Cognitive Services Custom Vision Deployment`     | 能够发布、取消发布或导出模型。 Deployer 可以查看项目，但不能更新项目、培训图像或标记。        |
+|`Cognitive Services Custom Vision Reader`     | 可以查看项目。 读者不能进行任何更改。        |

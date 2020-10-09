@@ -1,18 +1,18 @@
 ---
 title: Azure 自动化的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 自动化的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: mgoedtel
 ms.author: magoedte
 ms.service: automation
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e26b30b7f0547c3824f1cb5735fa1a400bf0d144
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c38b51fbf2dcc528b0795d8289e14cfd18f3d9e2
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987501"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825839"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-automation"></a>Azure 自动化的 Azure Policy 法规遵从性控制措施
 

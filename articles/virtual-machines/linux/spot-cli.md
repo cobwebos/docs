@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 165a2c6221c8d3c14f71134deef962d0859bb438
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9a06dea64ffb348477308979fa07c0e2ce822b0c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816705"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825411"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>使用 Azure CLI 部署专色 Vm
 
@@ -64,8 +64,25 @@ az vm list \
    --output table
 ```
 
+## <a name="simulate-an-eviction"></a>模拟逐出
+
+可以模拟某个点 VM 的 [逐出](/rest/api/compute/virtualmachines/simulateeviction) ，以测试应用程序将 repond 突然逐出的程度。 
+
+将以下内容替换为你的信息： 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
 **后续步骤**
 
-你还可以使用 [Azure PowerShell](../windows/spot-powershell.md)、 [门户](../windows/spot-portal.md)或 [模板](spot-template.md)创建一个专色 VM。
+你还可以使用 [Azure PowerShell](../windows/spot-powershell.md)、 [门户](../spot-portal.md)或 [模板](spot-template.md)创建一个专色 VM。
+
+使用 [Azure 零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查询当前定价信息，获取有关专色定价的信息。 `meterName`和 `skuName` 都包含 `Spot` 。
 
 如果遇到错误，请参阅 [错误代码](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

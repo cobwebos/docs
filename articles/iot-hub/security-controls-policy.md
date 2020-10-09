@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中心的 Azure Policy 合规性控制
 description: 列出可用于 Azure IoT 中心的 Azure Policy 合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6ae471aecd9993b69da339d00a52701e5d0b4008
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 46b915e3250d8bb370351a45596b17dee2a08392
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987752"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825517"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-iot-hub"></a>Azure IoT 中心的 Azure Policy 合规性控制
 

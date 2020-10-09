@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594106"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825656"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中查看预生产环境中的拉取请求
 
@@ -51,11 +51,11 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 针对
 
 1. 转到“应用”文件夹，然后更改一些文本内容。 例如，可以更改标题或段落。 找到要编辑的文件后，单击“编辑”进行更改。
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="GitHub 接口中的“编辑文件”按钮":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="使用 GitHub 接口创建新分支":::
 
 1. 进行更改后，单击“提交更改”，将更改提交到分支。
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="GitHub 接口中的“提交更改”按钮":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="使用 GitHub 接口创建新分支":::
 
 ## <a name="create-a-pull-request"></a>创建拉取请求
 
@@ -63,13 +63,13 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 针对
 
 1. 在 GitHub 上打开项目的“拉取请求”选项卡：
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="GitHub 存储库中的“拉取请求”选项卡":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="使用 GitHub 接口创建新分支":::
 
 1. 单击分支的“比较和拉取请求”按钮。
 
 1. 可以选择填写有关更改的一些详细信息，然后单击“创建拉取请求”。
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="GitHub 中的拉取请求创建":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="使用 GitHub 接口创建新分支":::
 
 如果需要，可以分配审阅者并添加注释以讨论所做的更改。
 
@@ -82,7 +82,7 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 针对
 
 工作流完成应用的生成和部署后，GitHub 机器人会向拉取请求添加注释，其中包含预生产环境的 URL。 可以单击此链接来查看暂存更改。
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="包含预生产 URL 的拉取请求注释":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="使用 GitHub 接口创建新分支":::
 
 单击生成的 URL 以查看更改。
 
@@ -96,7 +96,7 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 针对
 
 单击“合并拉取请求”：
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="GitHub 接口中的“合并拉取请求”按钮":::
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="使用 GitHub 接口创建新分支":::
 
 合并将更改复制到跟踪的分支（“生产”分支）。 然后，在跟踪的分支上启动部署工作流，更改在应用程序重新生成后就会生效。
 

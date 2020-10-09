@@ -14,22 +14,60 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3db95c7ad7998817f4818203632310fe4aacb57a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797677"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827750"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和 Graph 示例
 
-基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获得，目前 PowerShell 和 Microsoft Graph 支持仅限于只读操作。 但是，可使用现有的 [MSOnline PowerShell cmdlet](/powershell/module/msonline) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
+基于组的许可的全部功能可通过 [Azure 门户](https://portal.azure.com)提供，目前，可以使用现有的 [MSOnline PowerShell cmdlet](/powershell/module/msonline) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
 
 > [!NOTE]
 > 开始运行 cmdlet 前，请先运行 `Connect-MsolService` cmdlet，确保连接到组织。
 
 > [!WARNING]
 > 此示例代码用于演示目的。 如果想要在环境中使用，请考虑先进行小规模的测试，或者在单独的测试组织中测试。 可能需要根据具体的环境需求调整该代码。
+
+## <a name="assign-licenses-to-a-group"></a>将许可证分配给组
+
+使用以下示例将许可证分配给组，方法是使用 Microsoft Graph：
+
+```
+POST https://graph.microsoft.com/v1.0/groups/1ad75eeb-7e5a-4367-a493-9214d90d54d0/assignLicense
+Content-type: application/json
+{
+  "addLicenses": [
+    {
+      "disabledPlans": [ "11b0131d-43c8-4bbb-b2c8-e80f9a50834a" ],
+      "skuId": "c7df2760-2c81-4ef7-b578-5b5392b571df"
+    },
+    {
+      "disabledPlans": [ "a571ebcc-fqe0-4ca2-8c8c-7a284fd6c235" ],
+      "skuId": "sb05e124f-c7cc-45a0-a6aa-8cf78c946968"
+    }
+  ],
+  "removeLicenses": []
+}
+
+```
+输出：
+```
+HTTP/1.1 202 Accepted
+Content-type: application/json
+location: https://graph.microsoft.com/v2/d056d009-17b3-4106-8173-cd3978ada898/directoryObjects/1ad75eeb-7e5a-4367-a493-9214d90d54d0/Microsoft.DirectoryServices.Group
+
+{
+  "id": "1ad75eeb-7e5a-4367-a493-9214d90d54d0",
+  "deletedDateTime": null,
+  "classification": null,
+  "createdDateTime": "2018-04-18T22:05:03Z",
+  "securityEnabled": true,
+
+}
+```
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>查看分配给组的产品许可证
 

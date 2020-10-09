@@ -12,15 +12,15 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: c29e0f687e36eb679875ea7899aa1a0cd91bd122
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2ce0e34032d8f0d07af3a7dcd3c47558814be7bd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169487"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826823"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>如何通过 PHP 使用 Twilio 实现语音和 SMS 功能
-本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
+本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅 [后续步骤](#NextSteps) 部分。
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什么是 Twilio？
 Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将语音、VoIP 和消息传送嵌入到应用程序中。 它们对基于云的全球环境中所需的所有基础结构进行虚拟化，并通过 Twilio 通信 API 平台将其公开。 可轻松构建和扩展应用程序。 享受现用现付定价所带来的灵活性，并从云可靠性中受益。
@@ -82,9 +82,9 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>将应用程序配置为使用 Twilio 库
 可以通过两种方式将应用程序配置为使用用于 PHP 的 Twilio 库：
 
-1. 从 GitHub 下载用于 PHP 的 Twilio 库 ([https://github.com/twilio/twilio-php][twilio_php]) 并将 "**服务**" 目录添加到应用程序。
+1. 从 GitHub 下载用于 PHP 的 Twilio 库 ([https://github.com/twilio/twilio-php][twilio_php]) 并将 " **服务** " 目录添加到应用程序。
    
-    - 或 -
+    \- 或 -
 2. 将用于 PHP 的 Twilio 库作为 PEAR 包安装。 可使用以下命令安装它：
 
     ```bash
@@ -146,10 +146,10 @@ catch (Exception $e)
 
 如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的网站来提供 TwiML 响应；有关详细信息，请参阅[如何从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
 
-* **注意**：若要解决 TLS/SSL 证书验证错误，请参阅[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **注意**：若要解决 TLS/SSL 证书验证错误，请参阅 [https://www.twilio.com/docs/api/errors][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>如何发送短信
-下面演示如何使用 **Services_Twilio** 类发送 SMS 消息。 "**发件**人" 号码由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须验证 Twilio 帐户的 "**到**" 编号。
+下面演示如何使用 **Services_Twilio** 类发送 SMS 消息。 " **发件** 人" 号码由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须验证 Twilio 帐户的 " **到** " 编号。
 
 ```php
 // Include the Twilio PHP library.

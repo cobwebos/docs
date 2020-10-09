@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297063"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826546"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
 
@@ -107,7 +107,7 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 
 以最终用户身份向应用程序授予许可时，应用程序可以访问你的电子邮件地址或你的用户名，具体取决于标识提供程序。 提供此信息后，应用程序的所有者可决定如何管理个人身份信息。
 
-最终用户需要联系各个 Web 应用的管理员，才能从他们的系统中撤消此信息。
+最终用户需要联系各个 web 应用的管理员，以从他们的系统中吊销此信息。
 
 若要从 Azure 静态 Web 应用平台中删除个人身份信息，并阻止平台提供有关将来请求的此信息，请使用 URL 提交请求：
 
@@ -195,7 +195,7 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 
 ## <a name="restrictions"></a>限制
 
-有关一般限制和限制，请参阅[配额一文](quotas.md)。
+有关一般限制和限制，请参阅 [配额一文](quotas.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: b445787c44efca4eb6bdee3e61eb39735e5c6b14
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4b512d0817c56bc2daabff057c8bc4aa1afa1dee
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259894"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826503"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>将 .NET for Apache Spark 与 Azure Synapse Analytics 配合使用
 
@@ -34,14 +34,29 @@ ms.locfileid: "91259894"
 
    ```dotnetcli
    cd mySparkApp
+   dotnet publish -c Release -f netcoreapp3.1 -r win-x64
+   ```
+   
+   **在 Linux 上：**
+
+   ```dotnetcli
+   cd mySparkApp
    dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
    ```
 
-   **在 Linux 上：**
+2. 压缩发布文件夹的内容， `publish.zip` 例如，由于步骤1所创建的内容。 所有程序集都应位于 ZIP 文件的第一层，并且不应有中间文件夹层。 这意味着在解压缩时 `publish.zip` ，所有程序集都将被提取到当前工作目录中。
 
-   ```bash
-   zip -r publish.zip
-   ```
+    在 Windows 上：
+
+使用类似于 [7-Zip](https://www.7-zip.org/) 或 [WinZip](https://www.winzip.com/)的提取程序将文件提取到带有所有已发布二进制文件的 bin 目录中。
+
+     **On Linux:**
+
+     1. Open a bash shell and cd into the bin directory with all the published binaries and run the following command.
+
+       ```bash
+       zip -r publish.zip
+       ```
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics 笔记本中的 .NET for Apache Spark 
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461336"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825322"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何为 Azure Redis 缓存设置异地复制
 
@@ -111,6 +111,7 @@ ms.locfileid: "91461336"
 - [尝试删除链接缓存时为何操作会失败？](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [应为辅助链接缓存选择哪个区域？](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [辅助链接缓存如何进行故障转移？](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [能否为防火墙配置异地复制？](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>是否可以通过标准层或基本层缓存使用异地复制？
 
@@ -185,7 +186,12 @@ ms.locfileid: "91461336"
 
 若要启动客户发起的故障转移，请先取消链接缓存。 然后将 Redis 客户端更改为使用（以前链接的）辅助缓存的连接终结点。 取消链接两个缓存后，辅助缓存将再次成为常规的读取写入缓存，并直接从 Redis 客户端接受请求。
 
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>是否可以使用异地复制来配置防火墙？
+
+是的，可以使用异地复制来配置 [防火墙](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) 。 要使异地复制与防火墙一起工作，请确保将辅助缓存的 IP 地址添加到主缓存的防火墙规则。
+
 ## <a name="next-steps"></a>后续步骤
+
 了解有关 Azure Cache for Redis 功能的详细信息。
 
 * [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)

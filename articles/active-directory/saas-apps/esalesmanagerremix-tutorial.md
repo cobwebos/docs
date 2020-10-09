@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555383"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826753"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
 
@@ -56,11 +56,11 @@ ms.locfileid: "88555383"
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>从库中添加 E Sales Manager Remix
 若要配置 E Sales Manager Remix 与 Azure AD 的集成，请执行以下操作，从库中将 E Sales Manager Remix 添加到托管 SaaS 应用列表：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择 " **Azure Active Directory**"。 
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”  。 
 
     ![“Azure Active Directory”按钮][1]
 
-1. 选择 "**企业应用程序**" "  >  **所有应用程序**"。
+1. 选择“企业应用程序” > “所有应用程序”   。
 
     ![“企业应用程序”窗口][2]
     
@@ -121,7 +121,7 @@ ms.locfileid: "88555383"
 
 1. 在“E Sales Manager Remix 配置”下，选择“配置 E Sales Manager Remix”********。
 
-    ![E Sales Manager Remix 配置](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![屏幕截图，显示 "E Sales Manager Remix 配置" 部分，其中选择了 "配置 E Sales Manager Remix"。](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     此时会打开“配置登录”窗口。****
 
@@ -199,7 +199,7 @@ ms.locfileid: "88555383"
 
     c. 选中 " **显示密码** " 复选框，然后记下 " **密码** " 框中显示的值。
 
-    d. 选择“创建”。
+    d. 选择“创建”  。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>创建 E Sales Manager Remix 测试用户
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2020
+ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: 66a04ebec6eb9d7219d4d5db3bdd1dfd780a730f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 92feb159fe4c893a55d37fa90c34acf4c4c93631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445995"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826168"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender 高级威胁防护与 Azure 安全中心
 
@@ -32,7 +32,7 @@ Azure 安全中心与 [Microsoft Defender 高级威胁防护 (ATP) ](https://www
 |定价：|需要 [Azure Defender](security-center-pricing.md)|
 |支持的计算机：|![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure 计算机<br>![是](./media/icons/yes-icon.png) 运行 Windows 的 Azure Arc 计算机|
 |所需角色和权限：|启用/禁用集成： **安全管理员** 或 **所有者**<br>在安全中心内查看 MDATP 警报： **安全读者**、 **读者**、 **资源组参与者**、 **资源组所有者**、 **安全管理员**、 **订阅所有者**或 **订阅参与者**|
-|云：|![是](./media/icons/yes-icon.png) 商业云。<br>![否](./media/icons/no-icon.png) 在公共 Azure 云中运行工作负荷的 GCC 客户<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|云：|![是](./media/icons/yes-icon.png) 商业云。<br>![否](./media/icons/no-icon.png) 在公共 Azure 云中运行工作负荷的 GCC 客户<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
 |||
 
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287094"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826657"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
 
@@ -224,7 +224,7 @@ az role assignment create \
 > [!NOTE]
 > 可以保存。RDP 文件本地计算机上用于启动到虚拟机的远程桌面连接，而无需导航到 Azure 门户中的虚拟机概述页面并使用连接选项。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 ### <a name="troubleshoot-deployment-issues"></a>排查部署问题
 
@@ -236,7 +236,7 @@ az role assignment create \
 
    > [!NOTE]
    > 如果在第一次失败后重新启动扩展，则包含部署错误的日志将保存为 CommandExecution_YYYYMMDDHHMMSSSSS .log。 "
-1. 在虚拟机上打开命令提示符，并验证是否对 Azure 主机上运行 (IMDS) 终结点上的实例元数据服务执行这些查询：
+1. 在 VM 上打开 PowerShell 命令提示符，并验证是否对 Azure 主机上运行 (IMDS) 终结点上的实例元数据服务执行这些查询：
 
    | 要运行的命令 | 预期输出 |
    | --- | --- |

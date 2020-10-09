@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776011"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825513"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -158,6 +158,12 @@ ms.locfileid: "91776011"
 将防火墙配置为控制对 Azure 机器学习工作区资源和公共 internet 的访问。 尽管我们建议使用 Azure 防火墙，但你应该能够使用其他防火墙产品来保护你的网络。 如果你对如何允许通过防火墙进行通信有疑问，请查阅你正在使用的防火墙的相关文档。
 
 有关防火墙设置的详细信息，请参阅 [使用防火墙后面的工作区](how-to-access-azureml-behind-firewall.md)。
+
+## <a name="custom-dns"></a>自定义 DNS
+
+如果需要为虚拟网络使用自定义 DNS 解决方案，则必须为工作区添加主机记录。
+
+有关所需域名和 IP 地址的详细信息，请参阅 [如何将工作区与自定义 DNS 服务器配合使用](how-to-custom-dns.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

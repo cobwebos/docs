@@ -3,14 +3,14 @@ title: 在专用主机上部署
 description: 使用专用主机为 Azure 容器实例工作负载实现真正的主机级隔离
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259638"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825614"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在专用主机上部署
 
@@ -131,7 +131,7 @@ ms.locfileid: "86259638"
 
 如果在桌面上创建并编辑了部署模板文件，可以通过将文件拖动到 Cloud Shell 目录上，将其上传到该文件。 
 
-使用 [az group create][az-group-create] 命令创建资源组。
+使用“[az group create][az-group-create]”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

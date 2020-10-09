@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362140"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825892"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -83,7 +83,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS 防护服务
 
-通过应用程序代理发布的应用程序受到保护，以免遭分布式拒绝服务 (DDoS) 攻击。 Azure DDoS 防护是一种随 Azure 平台一起提供的服务，用于保护 Azure 资源免受拒绝服务攻击。 基本服务层级会自动启用，可提供始终可用的流量监视以及对常见网络级别攻击的实时缓解功能。 有关详细信息，请参阅 [Azure DDoS 防护标准概述](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
+通过应用程序代理发布的应用程序受到保护，以免遭分布式拒绝服务 (DDoS) 攻击。 此保护由 Microsoft 管理，并在我们的所有数据中心中自动启用。 Azure DDoS 保护服务提供 always on 流量监视和常见网络级别攻击的实时缓解措施。 
 
 ## <a name="under-the-hood"></a>揭秘
 

@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447862"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827623"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -74,71 +74,17 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
 [W3C 跟踪上下文](https://w3c.github.io/trace-context/)和 Application Insights 数据模型按以下方式映射：
 
 | Application Insights                   | W3C TraceContext                                      |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `SpanKind` 如果是同步，则为服务器; `SpanKind` 如果是异步的，则为使用者                    |
-| `Dependency`                           | `SpanKind` 如果是同步，则为客户端; `SpanKind` 如果是异步的，则为                   |
-| `Request` 和 `Dependency` 的 `Id`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `SpanId` 此跨度的父范围的。 如果这是根跨度，则此字段必须为空。     |
+|------------------------------------    |-------------------------------------------------|
+| `Request` 和 `Dependency` 的 `Id`     | [父 id](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | 此跨度的父范围的[父 id](https://w3c.github.io/trace-context/#parent-id) 。 如果这是根跨度，则此字段必须为空。     |
+
 
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
 
-### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
- 
-  > [!NOTE]
-  >  从 `Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 开始，不再需要进行配置。
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>为 .NET 应用启用 W3C 分布式跟踪支持
 
-W3C Trace-Context 支持以后向兼容的方式实现。 关联预期可与使用旧版 SDK（不提供 W3C 支持）进行检测的应用程序配合使用。
-
-如果需要保持使用旧式 `Request-Id` 协议，可通过以下配置禁用 Trace-Context：
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-如果运行旧版 SDK，我们建议更新它，或应用以下配置来启用 Trace-Context。
-从版本 2.8.0-beta1 开始，`Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 包中会提供此功能。
-此项默认禁用。 若要启用它，请对 `ApplicationInsights.config` 进行以下更改：
-
-- 在 `RequestTrackingTelemetryModule` 下，添加 `EnableW3CHeadersExtraction` 元素并将其值设置为 `true`。
-- 在 `DependencyTrackingTelemetryModule` 下，添加 `EnableW3CHeadersInjection` 元素并将其值设置为 `true`。
-- 在 `TelemetryInitializers` 下添加 `W3COperationCorrelationTelemetryInitializer`。 设置如以下示例所示：
-
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers>
-```
-
-### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
-
- > [!NOTE]
-  > 从 `Microsoft.ApplicationInsights.AspNetCore` 版本 2.8.0 开始，不再需要进行配置。
- 
-W3C Trace-Context 支持以后向兼容的方式实现。 关联预期可与使用旧版 SDK（不提供 W3C 支持）进行检测的应用程序配合使用。
-
-如果需要保持使用旧式 `Request-Id` 协议，可通过以下配置禁用 Trace-Context：
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-如果运行旧版 SDK，我们建议更新它，或应用以下配置来启用 Trace-Context。
-
-此功能在 `Microsoft.ApplicationInsights.AspNetCore` 的版本 2.5.0-beta1 以及 `Microsoft.ApplicationInsights.DependencyCollector` 的版本 2.8.0-beta1 中提供。
-此项默认禁用。 若要启用该项，请将 `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` 设置为 `true`：
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
+默认情况下，在所有最近 .NET Framework/.NET Core Sdk 中启用了基于 W3C TraceContext 的分布式跟踪，并与旧的请求 Id 协议向后兼容。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 
@@ -304,24 +250,9 @@ logger.warning('After the span')
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
-.NET 至今已定义了多种方式来关联遥测和诊断日志：
+.NET 运行时支持通过[活动](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)和[DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)的帮助进行分发
 
-- `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)。
-- `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) 方法。
-- `ILogger` 使用[日志范围](/aspnet/core/fundamentals/logging#log-scopes)。
-- Windows Communication Foundation (WCF) 和 HTTP 将“当前”上下文传播关联到一起。
-
-但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 支持自动跨计算机关联。 .NET 库支持 `DiagnosticSource`，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
-
-`DiagnosticSource` 中的[活动用户指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
-
-ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
-
-从版本 4.1.0 开始，`System.Net.Http.HttpClient` 支持自动注入关联 HTTP 标头和以活动形式跟踪 HTTP 调用。
-
-经典 ASP.NET 有一个新的 HTTP 模块 [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)。 此模块使用 `DiagnosticSource` 实现遥测关联。 它会基于传入的请求标头启动活动。 它还会关联不同请求处理阶段的遥测，即使 Internet Information Services (IIS) 处理的每个阶段在不同的托管线程上运行。
-
-从版本 2.4.0-beta1 开始，Application Insights SDK 使用 `DiagnosticSource` 和 `Activity` 收集遥测数据并将其与当前活动相关联。
+Application Insights .NET SDK 使用 `DiagnosticSource` 和 `Activity` 来收集和关联遥测数据。
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java 中的遥测关联

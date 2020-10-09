@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443568"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827896"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
 
@@ -40,15 +40,15 @@ username**** 字段上的查询区分大小写，而 Name**** 字段上的查询
 
 风险检测上的“解决”**** 将状态设置为“用户已通过基于风险的策略驱动的 MFA”****。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="why-is-a-user-is-at-risk"></a>为什么用户面临风险？
 
-如果你是 Azure AD Identity Protection 的客户，请前往有风险的[用户](howto-identity-protection-investigate-risk.md#risky-users)视图，并单击 "有风险的用户"。 在底部的抽屉中，选项卡 "风险历史记录" 将显示导致用户风险更改的所有事件。 若要查看用户的所有有风险的登录，请单击 "用户的危险登录"。 若要查看此用户的所有风险检测，请单击 "用户的风险检测"。
+如果你是 Azure AD Identity Protection 的客户，请前往有风险的 [用户](howto-identity-protection-investigate-risk.md#risky-users) 视图，并单击 "有风险的用户"。 在底部的抽屉中，选项卡 "风险历史记录" 将显示导致用户风险更改的所有事件。 若要查看用户的所有有风险的登录，请单击 "用户的危险登录"。 若要查看此用户的所有风险检测，请单击 "用户的风险检测"。
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>如何获取特定类型检测的报告？
 
-中转到风险检测视图并按 "检测类型" 筛选。 然后，你可以在中下载此报表。CSV 或。JSON 格式使用顶部的 "**下载**" 按钮。 有关详细信息，请参阅文章[如何：调查风险](howto-identity-protection-investigate-risk.md#risk-detections)。
+中转到风险检测视图并按 "检测类型" 筛选。 然后，你可以在中下载此报表。CSV 或。JSON 格式使用顶部的 " **下载** " 按钮。 有关详细信息，请参阅文章 [如何：调查风险](howto-identity-protection-investigate-risk.md#risk-detections)。
 
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>为什么我不能为每个风险检测设置自己的风险级别？
 
@@ -60,17 +60,17 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 
 ### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>如何关闭特定的风险检测（如我在旧 UI 中执行的操作）？
 
-您可以通过确认链接的登录为已泄露或安全来提供有关风险检测的反馈。 登录时提供的反馈 trickles 对该登录上发出的所有检测。 如果要关闭未链接到登录的检测，可以在用户级别上提供相应的反馈。 有关详细信息，请参阅文章[如何：在 Azure AD Identity Protection 中提供风险反馈](howto-identity-protection-risk-feedback.md)。
+您可以通过确认链接的登录为已泄露或安全来提供有关风险检测的反馈。 登录时提供的反馈 trickles 对该登录上发出的所有检测。 如果要关闭未链接到登录的检测，可以在用户级别上提供相应的反馈。 有关详细信息，请参阅文章 [如何：在 Azure AD Identity Protection 中提供风险反馈](howto-identity-protection-risk-feedback.md)。
 
 ### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>我可以在多长时间后回来来了解我的用户会发生什么情况呢？
 
-- "有[风险的用户](howto-identity-protection-investigate-risk.md#risky-users)" 视图根据过去的所有登录显示用户的风险。 
-- 有风险的[登录](howto-identity-protection-investigate-risk.md#risky-sign-ins)视图在过去30天内显示了风险标志。 
-- "[风险检测](howto-identity-protection-investigate-risk.md#risk-detections)" 视图显示在过去90天内进行的风险检测。
+- "有 [风险的用户](howto-identity-protection-investigate-risk.md#risky-users) " 视图根据过去的所有登录显示用户的风险。 
+- 有风险的 [登录](howto-identity-protection-investigate-risk.md#risky-sign-ins) 视图在过去30天内显示了风险标志。 
+- " [风险检测](howto-identity-protection-investigate-risk.md#risk-detections) " 视图显示在过去90天内进行的风险检测。
 
 ### <a name="how-can-i-learn-more-about-a-specific-detection"></a>如何了解有关特定检测的详细信息？
 
-所有风险检测都记录在项目中有[什么风险](concept-identity-protection-risks.md#risk-types-and-detection)。 您可以将鼠标悬停在 Azure 门户上检测旁边的 "（i）" 符号，以了解有关检测的详细信息。
+所有风险检测都记录在项目中有 [什么风险](concept-identity-protection-risks.md#risk-types-and-detection)。 您可以将鼠标悬停在 Azure 门户检测旁边的 (") " 符号上，以了解有关检测的详细信息。
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>“标识保护”中的反馈机制是如何工作的？
 
@@ -99,3 +99,7 @@ IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报�
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>为什么登录的“登录风险(总计)”分数为高，而与之相关的检测结果为低风险或中等风险？
 
 高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。 
+
+### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>为什么链接到有风险的登录的风险级别不同于登录风险级别 (实时) 的情况？ 
+
+我们最近对如何计算实时登录风险进行了改进。 风险检测级别和登录风险级别之间出现的差异是这些更改的结果。 请注意，实时登录风险是在策略实施期间使用的值。 

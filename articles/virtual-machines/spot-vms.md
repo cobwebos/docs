@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817415"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827794"
 ---
 # <a name="use-spot-vms-in-azure"></a>使用 Azure 中的专色 Vm
 
@@ -67,11 +67,25 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 
 基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 
 
+你还可以使用 [Azure 零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查询定价信息，以查询有关专色定价的信息。 `meterName`和 `skuName` 都包含 `Spot` 。
 
 使用可变定价，你可以设置最高价格，以美元 (USD) 为单位，最多可使用 5 个小数位。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
 
+## <a name="pricing-and-eviction-history"></a>定价和逐出历史记录
 
-##  <a name="frequently-asked-questions"></a>常见问题
+可以在门户中的某个区域中查看每个大小的历史价格和逐出费率。 选择 " **查看定价历史记录" 和 "比较附近地区的价格"** 可查看表或特定大小的定价关系图。  以下图像中的定价和逐出率只是示例。 
+
+**图表**：
+
+:::image type="content" source="./media/spot-chart.png" alt-text="区域选项的屏幕截图，其中的定价和逐出率不同于图表。":::
+
+**表**：
+
+:::image type="content" source="./media/spot-table.png" alt-text="区域选项的屏幕截图，其中的定价和逐出率不同于图表。":::
+
+
+
+##  <a name="frequently-asked-questions"></a>常见问题解答
 
 **问：** 创建后，点 VM 与常规标准 VM 是否相同？
 
@@ -98,7 +112,7 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 **答:** 你可以在[问答](https://docs.microsoft.com/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
 
 ## <a name="next-steps"></a>后续步骤
-使用 [CLI](./linux/spot-cli.md)、 [门户](./windows/spot-portal.md)、 [ARM 模板](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 部署专色 vm。
+使用 [CLI](./linux/spot-cli.md)、 [门户](spot-portal.md)、 [ARM 模板](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 部署专色 vm。
 
 你还可以 [使用点 VM 实例部署规模集](../virtual-machine-scale-sets/use-spot.md)。
 

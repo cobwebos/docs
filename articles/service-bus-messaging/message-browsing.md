@@ -3,12 +3,12 @@ title: Azure 服务总线 - 消息浏览
 description: 通过浏览和扫视服务总线消息，Azure 服务总线客户端可以枚举队列或订阅中驻留的所有消息。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341245"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827444"
 ---
 # <a name="message-browsing"></a>消息浏览
 
@@ -30,7 +30,7 @@ Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) 可以检索多个消息，并以枚举形式返回它们。 如果没有消息可返回，枚举对象为空，而不是 NULL。
 
-也可以使用表示开始位置的 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) 播种方法重载，再调用无参数方法重载来进一步枚举。 PeekBatch 的运作方式基本相同，不同之处在于它是一次性检索一组消息。
+还可以通过 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) 使用方法的重载，以便在其中启动，然后调用无参数方法重载来进行进一步的枚举。 PeekBatch 的运作方式基本相同，不同之处在于它是一次性检索一组消息。
 
 ## <a name="next-steps"></a>后续步骤
 

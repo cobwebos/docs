@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629111"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826216"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册机密客户端应用程序
 
@@ -38,7 +38,7 @@ ms.locfileid: "91629111"
 1. 提供答复 URL。 稍后可以更改这些详细信息，但如果你知道应用程序的回复 URL，请立即输入。
 
     ![新的机密客户端应用注册。](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
-1. 选择“注册”。
+1. 选择“注册”  。
 
 ## <a name="api-permissions"></a>API 权限
 
@@ -50,7 +50,7 @@ ms.locfileid: "91629111"
 
 1. 选择“添加权限”。
 
-    如果你使用的是用于 FHIR 的 Azure API，则需要通过在**我的组织使用的 api**下搜索**azure 医疗保健 Api**来添加 azure 医疗保健 api 的权限。 
+    如果你使用的是用于 FHIR 的 Azure API，则需要通过在**我的组织使用的 api**下搜索**azure 医疗保健 Api**来添加 azure 医疗保健 api 的权限。 如果已 [部署了用于 FHIR 的 AZURE API](fhir-paas-powershell-quickstart.md)，你将只能找到此文件。
 
     如果引用的是其他资源应用程序，请选择之前在 **"我的 api**" 下创建的[FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "91629111"
 
 ## <a name="application-secret"></a>应用程序密码
 
-1. 选择 **证书 & 密码**。
+1. 选择“证书和机密”。
 1. 选择“新建客户端机密”。  
 
     ![机密客户端。 应用程序密码](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
@@ -75,9 +75,7 @@ ms.locfileid: "91629111"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在 Azure Active Directory 中注册机密客户端应用程序。 现已准备好部署适用于 [FHIR 的 AZURE API](fhir-paas-powershell-quickstart.md)。
-
-部署用于 FHIR 的 Azure API 后，可以查看其他可用设置。
+本文介绍了如何在 Azure Active Directory 中注册机密客户端应用程序。 接下来，可以使用 Postman 访问 FHIR 服务器
  
 >[!div class="nextstepaction"]
->[部署 Azure API for FHIR](fhir-paas-powershell-quickstart.md)
+>[使用 Postman 访问 Azure API for FHIR](access-fhir-postman-tutorial.md)

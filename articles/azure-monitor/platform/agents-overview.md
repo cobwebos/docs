@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033449"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825760"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -158,6 +158,7 @@ Azure 诊断扩展的限制包括：
 | 操作系统 | Azure Monitor 代理 | Log Analytics 代理 | 依赖关系代理 | 诊断扩展 | 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                     |   | X |   |   |
+| CentOS Linux 8                                           |   | X |   |   |
 | CentOS Linux 7                                           | X | X |   | X |
 | CentOS Linux 7。8                                         | X | X | X | X |
 | CentOS Linux 7。6                                         | X | X | X | X |
@@ -177,6 +178,7 @@ Azure 诊断扩展的限制包括：
 | Red Hat Enterprise Linux Server 6.7 +                     | X | X | X | X |
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
+| Ubuntu 20.04 LTS                                         |   | X |   |   |
 | Ubuntu 18.04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
 | Ubuntu 14.04 LTS                                         | X | X |   | X |

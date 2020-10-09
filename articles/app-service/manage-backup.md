@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539072"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827459"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -92,7 +92,7 @@ ms.locfileid: "91539072"
 
     备份过程中会显示进度消息。
 
-配置存储帐户和容器后，可随时启动手动备份。
+配置存储帐户和容器后，可随时启动手动备份。 手动备份会无限期保留。
 
 <a name="automatedbackups"></a>
 

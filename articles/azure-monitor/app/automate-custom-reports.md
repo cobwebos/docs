@@ -4,12 +4,12 @@ description: 使用 Azure Application Insights 数据自动化自定义每日/�
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f35b7cbde7b719a91b23b19481ab704c445485cb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320402"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827726"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 
@@ -153,5 +153,5 @@ availabilityResults
 * 详细了解如何创建 [Analytics 查询](../log-query/get-started-queries.md)。
 * 详细了解[采用编程方式查询 Application Insights 数据](https://dev.applicationinsights.io/)
 * 了解有关[逻辑应用](../../logic-apps/logic-apps-overview.md)的详细信息。
-* 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
+* 了解有关 [Microsoft 电源自动执行](https://ms.flow.microsoft.com)的详细信息。
 

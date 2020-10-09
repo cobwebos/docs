@@ -1,18 +1,18 @@
 ---
 title: Azure 认知服务的内置策略定义
 description: 列出 Azure 认知服务的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: bea774a1b09921415f0014adee19c2838f867c7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 612c288df1b9329b20088d42843239197e9be8d3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986330"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826574"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure 认知服务的 Azure Policy 内置策略定义
 

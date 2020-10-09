@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029539"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827772"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全信息重置工作或学校密码
 
@@ -69,7 +69,7 @@ ms.locfileid: "90029539"
 
     3. 键入并确认新密码，然后选择“完成”。
 
-- **使用电话号码重置密码。** 向之前在安全信息中设置的电话号码发送短信。 如果管理员已启用安全信息体验，可以在[设置安全信息以使用电话（预览版）](security-info-setup-phone-number.md)一文中找到有关设置电话号码的详细信息。 如果尚未使用安全信息，可以在[设置帐户以便进行双重验证](multi-factor-authentication-end-user-first-time.md)一文中找到有关设置电话号码的详细信息。
+- **使用电话号码重置密码。** 将自动语音呼叫置于你之前在 "安全信息" 中设置的电话号码。 如果管理员已启用安全信息体验，可以在[设置安全信息以使用电话（预览版）](security-info-setup-phone-number.md)一文中找到有关设置电话号码的详细信息。 如果尚未使用安全信息，可以在[设置帐户以便进行双重验证](multi-factor-authentication-end-user-first-time.md)一文中找到有关设置电话号码的详细信息。
 
     1. 选择“呼叫移动电话”，键入电话号码，并选择“呼叫”。
 

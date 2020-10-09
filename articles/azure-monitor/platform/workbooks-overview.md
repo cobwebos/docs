@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977570"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825777"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
@@ -112,7 +112,7 @@ ms.locfileid: "90977570"
 ![固定体验](./media/workbooks-overview/pin-experience.png)
 
 > [!NOTE]
-> 固定时会保存工作簿的状态，如果修改基础工作簿，仪表板上固定的工作簿不会更新。 若要更新固定的工作簿部分，需要删除该部分，然后将其重新固定。
+> 保存工作簿时，将保存工作簿的状态，并且在修改基础工作簿时，仪表板上固定工作簿不会更新。 若要更新固定的工作簿部分，需要删除该部分，然后将其重新固定。
 
 ## <a name="dashboard-time-ranges"></a>仪表板时间范围
 
