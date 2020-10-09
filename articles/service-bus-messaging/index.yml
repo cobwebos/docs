@@ -13,10 +13,10 @@ metadata:
   ms.author: spelluru
   ms.date: 06/23/2020
   ms.openlocfilehash: 7f2cab376320b51cbc4d420b6e5bc63c1df8f675
-  ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/11/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "88067369"
 landingContent:
 - title: 关于服务总线消息传送
@@ -47,7 +47,7 @@ landingContent:
       url: service-bus-quickstart-cli.md
     - text: Azure PowerShell
       url: service-bus-quickstart-powershell.md
-    - text: Azure Resource Manager 模板
+    - text: Azure 资源管理器模板
       url: service-bus-resource-manager-namespace-queue.md
 - title: 创建服务总线主题和订阅
   linkLists:
