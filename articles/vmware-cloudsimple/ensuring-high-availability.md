@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77025344"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>在 Azure 中的 VMware 上运行时确保应用程序的高可用性
@@ -47,7 +47,7 @@ CloudSimple 控制平面软件持续监视 VMware 群集的运行状况，并在
 
 ## <a name="availability-zones"></a>可用性区域
 
-可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域内的特殊物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 每个区域都有一个可用性区域。 有关详细信息，请参阅[什么是 Azure 中的可用性区域？](../availability-zones/az-overview.md)。
+可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域内的特殊物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 每个区域都有一个可用性区域。 有关详细信息，请参阅 [什么是 Azure 中的可用性区域？](../availability-zones/az-overview.md)。
 
 ## <a name="redundant-azure-expressroute-circuits"></a>冗余 Azure ExpressRoute 线路
 
@@ -55,7 +55,7 @@ CloudSimple 控制平面软件持续监视 VMware 群集的运行状况，并在
 
 ## <a name="redundant-networking-services"></a>冗余网络服务
 
-私有云的所有 CloudSimple 网络服务（包括 VLAN、防火墙、公共 IP 地址、Internet 和 VPN）均设计为具有高可用性，并且能够支持服务 SLA。
+私有云 (的所有 CloudSimple 网络服务包括 VLAN、防火墙、公共 IP 地址、Internet 和 VPN) ，旨在提供高可用性，并且能够支持服务 SLA。
 
 ## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>无状态 VMware Vm 的 Azure 第7层负载均衡器
 
@@ -63,4 +63,4 @@ CloudSimple 控制平面软件持续监视 VMware 群集的运行状况，并在
 
 ## <a name="azure-regions"></a>Azure 区域
 
-Azure 区域是一组在延迟定义的外围部署的数据中心，并通过专用的区域低延迟网络进行连接。 有关详细信息，请参阅[Azure 区域](https://azure.microsoft.com/global-infrastructure/regions)。
+Azure 区域是一组在延迟定义的外围部署的数据中心，并通过专用的区域低延迟网络进行连接。 有关详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions)。

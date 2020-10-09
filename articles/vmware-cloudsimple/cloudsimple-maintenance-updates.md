@@ -10,17 +10,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77025021"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple 维护和更新
 
 私有云环境旨在无单点故障。
 
-* ESXi 群集是通过 vSphere 高可用性（HA）配置的。 群集的大小调整为至少有一个备用节点用于复原。
+* ESXi 群集配置为具有 vSphere 高可用性 (HA) 。 群集的大小调整为至少有一个备用节点用于复原。
 * VSAN 提供冗余的主存储，它至少需要三个节点才能针对单一故障提供保护。 可以配置 vSAN，为更大的群集提供更高的复原能力。
 * vCenter、PSC 和 NSX Manager Vm 配置了10个存储，以防止存储故障。 Vm 受 vSphere HA 的节点/网络故障保护。
 * ESXi 主机具有冗余风扇和 Nic。
@@ -39,8 +39,8 @@ CloudSimple 还会持续监视以下故障：
 * 物理 NIC 端口
 * 服务器
 * 转动
-* 强力
-* 开关
+* 电源
+* 交换机
 * 交换机端口
 
 如果某个磁盘或节点发生故障，则会自动将新的节点添加到受影响的 VMware 群集，以使其立即返回到运行状况。
@@ -62,7 +62,7 @@ CloudSimple 备份包括：
 * 在更新或升级 VMware 管理软件之前自动备份。
 * 在数据通过 TLS 1.2 加密通道传输到 Azure 之前，源上的 vCenter 数据加密。 数据存储在 Azure blob 中，其中跨区域复制数据。
 
-可以通过打开[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来请求还原。
+可以通过打开 [支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来请求还原。
 
 ## <a name="maintenance"></a>维护
 
@@ -92,7 +92,7 @@ CloudSimple 执行多种类型的计划内维护。
 
 ## <a name="updates-and-upgrades"></a>更新和升级
 
-CloudSimple 负责在私有云中对 VMware 软件（ESXi、vCenter、PSC 和 NSX）进行生命周期管理。
+CloudSimple 负责在私有云中对 VMware software (ESXi、vCenter、PSC 和 NSX) 进行生命周期管理。
 
 软件更新包括：
 

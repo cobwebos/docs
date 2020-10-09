@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74408737"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>对 Azure Linux 虚拟机启动错误进行故障排除
 
-本文列出了在 Microsoft Azure 中启动 Linux 虚拟机（VM）时可能会收到的常见启动错误。 有关这些错误的详细信息，请参阅“启动错误和解决方案”部分中的文章  。
+本文列出了在 Microsoft Azure 中启动 Linux 虚拟机 (VM) 时可能会收到的常见启动错误。 有关这些错误的详细信息，请参阅“启动错误和解决方案”部分中的文章  。
 
 ## <a name="boot-errors-and-solutions"></a>启动错误和解决方案
 

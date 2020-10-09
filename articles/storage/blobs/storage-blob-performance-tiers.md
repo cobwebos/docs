@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74270228"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
@@ -31,9 +31,9 @@ Azure 块 Blob 存储提供两个不同的性能层：
 |上市区域     |   所有区域      | [特定区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
 |支持的[存储帐户类型](../common/storage-account-overview.md#types-of-storage-accounts)     |     常规用途 v2、Blob 存储、常规用途 v1    |    BlockBlobStorage     |
 |支持[高吞吐量块 Blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    是，在大于 4 MiB PutBlock 或 PutBlob 大小时     |    是，在大于 256 KiB PutBlock 或 PutBlob 大小时    |
-|冗余     |     请参阅[存储帐户的类型](../common/storage-account-overview.md#types-of-storage-accounts)   |  目前仅支持本地冗余存储 (LRS) 和区域冗余存储 (ZRS)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+|冗余     |     请参阅[存储帐户的类型](../common/storage-account-overview.md#types-of-storage-accounts)   |  目前仅支持本地冗余存储 (LRS) 和区域 redudant 存储 (ZRS) <div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
 
-<div id="zone-redundant-storage"><sup>1</sup>可对特定区域中的高级性能层块 Blob 存储帐户使用区域冗余存储 (ZRS)。</div>
+<div id="zone-redundant-storage"><sup>1</sup>区域冗余存储 (ZRS) 可用于高级性能块 blob 存储帐户的选择区域。</div>
 
 在成本方面，高级性能层为具有高事务率的应用程序提供优化的定价，以帮助[降低这些工作负荷的总存储成本](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/)。
 
@@ -76,7 +76,7 @@ Blob 存储生命周期管理提供了丰富的基于规则的策略：
 
 若要了解详细信息，请参阅[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)。
 
-无法在热、冷和存档层之间移动存储在高级块 Blob 存储帐户中的数据。 但是，可将块 Blob 存储帐户中的 Blob 复制到不同帐户中的热访问层。  若要将数据复制到另一帐户，请使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) API 或 [AzCopy v10](../common/storage-use-azcopy-v10.md)。 “从 URL 放置块”API 以同步方式复制服务器上的数据。  仅在已将所有数据从原始服务器位置移到目标位置后，调用才会完成。
+无法在热、冷和存档层之间移动存储在高级块 Blob 存储帐户中的数据。 但是，可将块 Blob 存储帐户中的 Blob 复制到不同帐户中的热访问层。 若要将数据复制到另一帐户，请使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) API 或 [AzCopy v10](../common/storage-use-azcopy-v10.md)。 “从 URL 放置块”API 以同步方式复制服务器上的数据。 仅在已将所有数据从原始服务器位置移到目标位置后，调用才会完成。
 
 ## <a name="next-steps"></a>后续步骤
 

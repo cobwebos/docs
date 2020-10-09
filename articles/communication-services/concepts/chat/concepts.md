@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292466"
 ---
 # <a name="chat-concepts"></a>聊天概念
 
@@ -28,7 +28,7 @@ Azure 通信服务聊天客户端库可用于向应用程序添加实时文本�
 
 聊天对话在聊天线程中进行。 聊天线程可以包含多个消息和多个用户。 每条消息都属于单个会话，用户可以是一个或多个会话的一部分。 
 
-聊天线程中的每个用户称为成员。 一个聊天线程最多可以具有 250 个成员。 只有会话成员才能发送和接收消息，或在聊天线程中添加/删除成员。 允许的最大消息大小大约为 28 KB。 通信服务会存储聊天历史记录，直到你对聊天线程执行了删除操作。 可以使用 `List/Get Messages` 操作检索聊天线程中的所有消息。
+聊天线程中的每个用户称为成员。 一个聊天线程最多可以具有 250 个成员。 只有会话成员才能发送和接收消息，或在聊天线程中添加/删除成员。 允许的最大消息大小大约为 28 KB。 可以使用 `List/Get Messages` 操作检索聊天线程中的所有消息。 通信服务会存储聊天历史记录，直到你对聊天线程或消息执行删除操作，或者直到聊天线程中没有剩余成员为止，此时聊天线程会被孤立并进行删除处理。   
 
 对于具有 20 个以上成员的聊天线程，已禁用已读回执和键入指示器功能。 
 
@@ -130,7 +130,7 @@ Azure 通信服务聊天客户端库可用于向应用程序添加实时文本�
 
 这样，消息历史记录将同时包含原始消息和已翻译消息。 在客户端应用程序中，可以添加逻辑以显示原始消息或已翻译消息。 请参阅[本快速入门](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate)以了解如何使用认知 API 将文本翻译为不同的语言。 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="显示与通信服务交互的认知服务的关系图。":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="显示通信服务聊天体系结构的关系图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

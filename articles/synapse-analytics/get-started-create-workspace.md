@@ -9,14 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300099"
 ---
-# <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
+# <a name="prerequisites"></a>先决条件
+
+若要完成本教程的所有步骤，你需要有权访问针对其分配了“所有者”角色的资源组。 在此资源组中创建 Synapse 工作区。
+
+## <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
 
 在本教程中，你将了解如何创建 Synapse 工作区、SQL 池和 Apache Spark 池。 
 

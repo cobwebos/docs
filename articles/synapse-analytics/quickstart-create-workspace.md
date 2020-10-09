@@ -6,80 +6,70 @@ author: pimorano
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 09/03/2020
 ms.author: pimorano
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: cbf7fb8deba86dd966ccb8087823c76b20413db8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260353"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>快速入门：创建 Synapse 工作区
-
 本快速入门介绍了使用 Azure 门户创建 Azure Synapse 工作区的步骤。
 
-如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
+## <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
 
-## <a name="prerequisites"></a>先决条件
+1. 打开 [Azure 门户](https://portal.azure.com)，然后在顶部搜索“Synapse”。
+1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics (工作区预览版)” 。
+1. 选择“添加”以使用这些设置来创建工作区：
 
-- [Azure Data Lake Storage Gen2 存储帐户](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+    |选项卡|设置 | 建议的值 | 说明 |
+    |---|---|---|---|
+    |基础|**工作区名称**|可以将它命名为任何内容。| 在本文档中，我们将使用 myworkspace。|
+    |基础|**区域**|匹配存储帐户的区域。|
 
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
+1. 需要 ADLSGEN2 帐户才能创建工作区。 最简单的选择是创建一个新工作区。 如果要重复使用现有工作区，需要执行一些其他配置。 
+1. 选项 1 创建新的 ADLSGEN2 帐户 
+    1. 在“选择 Data Lake Storage Gen 2”下，单击“新建”并将其命名为 contosolake  。
+    1. 在“选择 Data Lake Storage Gen 2”下，单击“文件系统”并将其命名为 users  。
+1. 选项 2 参阅本文档底部的“准备存储帐户”说明。
+1. Azure Synapse 工作区将此存储帐户用作“主要”存储帐户，并使用容器来存储工作区数据。 工作区将数据存储在 Apache Spark 表中。 它将 Spark 应用程序日志存储在名为 /synapse/workspacename 的文件夹下。
+1. 选择“查看 + 创建” > “创建”。 你的工作区将在几分钟内准备就绪。
 
-登录到 [Azure 门户](https://portal.azure.com/)
+## <a name="open-synapse-studio"></a>打开 Synapse Studio
 
-## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Synapse 工作区
+创建 Azure Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
 
-1. 在 Microsoft Azure 搜索窗格中，输入“Synapse 工作区”，然后选择此服务。
-![Azure 门户中的搜索栏，其中键入了“Azure Synapse 工作区”。](media/quickstart-create-synapse-workspace/workspace-search.png)
-2. 在“Synapse 工作区”页上，单击“+ 添加”。
-![突出显示了用于创建新的 Azure Synapse 工作区的命令。](media/quickstart-create-synapse-workspace/create-workspace-02.png)
-3. 使用以下信息填写“Azure Synapse 工作区”窗体：
+* 在 [Azure 门户](https://portal.azure.com)中打开 Synapse 工作区。 在“概述”部分的顶部，选择“启动 Synapse Studio” 。
+* 转到 `https://web.azuresynapse.net`，然后登录到工作区。
 
-    | 设置 | 建议的值 | 说明 |
-    | :------ | :-------------- | :---------- |
-    | **订阅** | 用户的订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-    | **资源组** | 任何资源组 | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)（命名规则和限制）。 |
-    | **工作区名称** | mysampleworkspace | 指定工作区的名称，该名称还将用于连接终结点。|
-    | **区域** | 美国东部 2 | 指定工作区的位置。|
-    | **Data Lake Storage Gen2** | 帐户：`storage account name` </br> 文件系统：`root file system to use` | 指定要用作主存储的 ADLS Gen2 存储帐户名称，以及要使用的文件系统。|
-    ||||
+## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>准备与 Synapse Analytics 配合使用的现有存储帐户
 
-    ![工作区预配流 -“基本信息”选项卡。](media/quickstart-create-synapse-workspace/create-workspace-03.png)
+1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 导航到现有的 ADLSGEN2 存储帐户
+1. 在左窗格中，选择“访问控制(IAM)”。 然后，分配以下角色或确保其已经分配：
+    * 为自己分配“所有者”角色。
+    * 为自己分配“存储 Blob 数据所有者”角色。
+1. 在左窗格中选择“容器”并创建容器。
+1. 可以为此容器指定任何名称。 在本文档中，我们将此容器命名为“users”。
+1. 接受默认设置“公共访问级别”，然后选择“创建” 。
 
-    可以通过以下方式选择存储帐户：
-    - 你的订阅中可用的 ADLS Gen2 帐户的列表
-    - 使用帐户名称手动输入
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>配置从工作区访问存储帐户的权限
 
-    > [!IMPORTANT]
-    > Azure Synapse 工作区需要能够读取所选 ADLS Gen2 帐户以及向其写入内容。 此外，对于作为主存储帐户链接的任何存储帐户，在创建存储帐户时必须已启用“分层命名空间”。
-    >
-    > 在 ADLS Gen2 选择字段下有一条说明，指出将在所选的 Data Lake Storage Gen2 文件系统上向工作区的托管标识分配“存储 Blob 数据参与者”角色，并向其授予完全访问权限。
+Azure Synapse 工作区的托管标识可能已具有对存储帐户的访问权限。 请执行以下步骤，以确保：
 
-4. （可选）修改任何“安全性 + 网络默认值”选项卡：
-5. （可选）在**标记**选项卡中添加任何标记。
-6. **摘要**选项卡将运行必要的验证，以确保可以成功创建工作区。 验证成功后，按“创建”![工作区预配流 - 确认选项卡](media/quickstart-create-synapse-workspace/create-workspace-05.png)。
-7. 在资源预配过程成功完成后，你会在 Synapse 工作区列表中看到所创建的工作区对应的条目。 ![Synapse 工作区列表，其中显示了新预配的工作区。](media/quickstart-create-synapse-workspace/create-workspace-07.png)
+1. 打开 [Azure 门户](https://portal.azure.com)和为工作区所选的主存储帐户。
+1. 从左窗格中选择“访问控制(标识和访问管理)”。
+1. 分配以下角色或确保其已经分配。 我们对工作区标识和工作区使用相同的名称。
+    * 对于存储帐户上的“存储 Blob 数据参与者”角色，请将 myworkspace 指定为工作区标识 。
+    * 将 myworkspace 指定为工作区名称。
 
-## <a name="clean-up-resources"></a>清理资源
-
-执行以下步骤，删除 Azure Synapse 工作区。
-> [!WARNING]
-> 删除 Azure Synapse 工作区将删除分析引擎、存储在包含的 SQL 池所在数据库中的数据，以及工作区元数据。 将无法再连接到 SQL 终结点、Apache Spark 终结点。 将删除所有代码项目（查询、笔记本、作业定义和管道）。
->
-> 删除工作区不会影响链接到工作区的 Data Lake Store Gen2 中的数据。
-
-如果要删除 Azure Synapse 工作区，请完成以下步骤：
-
-1. 导航到要删除的 Azure Synapse 工作区。
-1. 在命令栏中按“删除”。
- ![Azure Synapse 工作区概览 - 突出显示了删除命令。](media/quickstart-create-synapse-workspace/create-workspace-10.png)
-1. 确认删除，并按“删除”按钮。
- ![Azure Synapse 工作区概览 - 删除工作区确认对话框。](media/quickstart-create-synapse-workspace/create-workspace-11.png)
-1. 该过程成功完成后，工作区列表中将不再列出该 Azure Synapse 工作区。
+1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，可以[创建 SQL 池](quickstart-create-sql-pool-studio.md)或[创建 Apache Spark 池](quickstart-create-apache-spark-pool-studio.md)，开始分析和探究你的数据。
+* [创建 SQL 池](quickstart-create-sql-pool-studio.md) 
+* [创建 Apache Spark 池](quickstart-create-apache-spark-pool-portal.md)
+* [使用 SQL 按需版本](quickstart-sql-on-demand.md)

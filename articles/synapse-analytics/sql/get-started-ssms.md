@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077723"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288777"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ ms.locfileid: "87077723"
 1. 打开 SQL Server Management Studio (SSMS)。 
 1. 在“连接到服务器”对话框中，填写各个字段，然后选择“连接” ： 
   
-    ![连接到服务器](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
+    ![连接到服务器 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **服务器名称**：输入前面标识的 **服务器名称** 。
    * **身份验证**：选择一个身份验证类型，例如“SQL Server 身份验证”或“Active Directory 集成身份验证”。
@@ -60,7 +60,7 @@ ms.locfileid: "87077723"
 
 1. 在“对象资源管理器”中展开你的 Azure SQL Server。 可以查看与服务器关联的数据库，例如示例 AdventureWorksDW 数据库。 可以展开数据库来查看表：
    
-    ![浏览 AdventureWorksDW](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
+    ![浏览 AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
 ### <a name="sql-on-demand-preview"></a>SQL 按需版本（预览版）
@@ -70,16 +70,16 @@ ms.locfileid: "87077723"
 1. 打开 SQL Server Management Studio (SSMS)。
 1. 在“连接到服务器”对话框中，填写各个字段，然后选择“连接” ： 
    
-    ![连接到服务器](./media/get-started-ssms/connect-object-explorer1.png)
+    ![连接到服务器 2](./media/get-started-ssms/connect-object-explorer1.png)
    
    * **服务器名称**：输入前面标识的 **服务器名称** 。
    * **身份验证**：选择一个身份验证类型，例如“SQL Server 身份验证”或“Active Directory 集成身份验证”：
    * **用户名**和**密码**：如果在上面选择了“SQL Server 身份验证”，请输入用户名和密码。
-   * 单击“连接”。
+   * 选择“连接”  。
 
 4. 要浏览，请展开 Azure SQL 服务器。 可以查看与服务器关联的数据库。 展开“demo”以查看示例数据库中的内容。
    
-    ![浏览 AdventureWorksDW](./media/get-started-ssms/explore-tables.png)
+    ![浏览 AdventureWorksDW 2](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>运行示例查询
@@ -91,18 +91,18 @@ ms.locfileid: "87077723"
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
 2. 选择“新建查询”。 “新建查询”窗口随即打开。
    
-    ![新建查询](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
+    ![新建查询 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. 运行查询。 为此，请单击 `Execute` 或使用以下快捷键：`F5`。
+4. 通过选择 `Execute` 运行查询，也可使用以下快捷方式：`F5`。
    
-    ![运行查询](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
-5. 查看查询结果。 在此示例中，FactInternetSales 表包含 60398 行。
+    ![运行查询 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
+5. 查看查询结果。 在以下示例中，FactInternetSales 表有 60398 行。
    
-    ![查询结果](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
+    ![查询结果 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
 ### <a name="sql-on-demand"></a>SQL 按需版本
 
@@ -111,18 +111,18 @@ ms.locfileid: "87077723"
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
 2. 选择“新建查询”。 “新建查询”窗口随即打开。
    
-    ![新建查询](./media/get-started-ssms/new-query.png)
+    ![新建查询 2](./media/get-started-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. 运行查询。 为此，请单击 `Execute` 或使用以下快捷键：`F5`。
+4. 通过选择 `Execute` 运行查询，也可使用以下快捷方式：`F5`。
    
-    ![运行查询](./media/get-started-ssms/execute-query.png)
+    ![运行查询 2](./media/get-started-ssms/execute-query.png)
 5. 查看查询结果。 在此示例中，usPopulationView 视图包含 3664512 行。
    
-    ![查询结果](./media/get-started-ssms/results.png)
+    ![查询结果 2](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>后续步骤
 可以进行连接和查询后，接下来请尝试[使用 Power BI 可视化数据](get-started-power-bi-professional.md)。

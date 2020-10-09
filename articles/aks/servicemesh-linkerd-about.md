@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77593761"
 ---
 # <a name="linkerd"></a>Linkerd
@@ -63,13 +63,13 @@ Linkerd 提供了由超轻 [Linkerd][linkerd-proxy] 专用代理挎斗组成的�
 
 Linkerd 提供了以下一组功能：
 
-- **网格**–内置调试选项
+- **网格** –内置调试选项
 
-- **流量管理**-拆分、超时、重试、进入
+- **流量管理** -拆分、超时、重试、进入
 
-- **安全性**-加密（mTLS），证书 autorotated 每24小时一次
+- **安全性** –加密 (mTLS) ，每24小时 autorotated 证书
 
-- **可观察性**–金牌指标、点击、跟踪、服务配置文件和每个路由指标、具有拓扑图的 web 仪表板、prometheus、grafana
+- **可观察性** –金牌指标、点击、跟踪、服务配置文件和每个路由指标、具有拓扑图的 web 仪表板、prometheus、grafana
 
 
 ### <a name="scenarios"></a>方案

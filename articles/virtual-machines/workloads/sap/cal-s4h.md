@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77616212"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
@@ -115,7 +115,7 @@ ms.locfileid: "77616212"
 
     b. 输入实例“名称”****。
 
-    c. 选择 Azure**区域**。 SAP CAL 建议一个区域。 如果需要另一个 Azure 区域并且没有 SAP CAL 订阅，则需要通过 SAP 订购 CAL 订阅。
+    c. 选择 Azure **区域**。 SAP CAL 建议一个区域。 如果需要另一个 Azure 区域并且没有 SAP CAL 订阅，则需要通过 SAP 订购 CAL 订阅。
 
     d. 输入一个用于解决方案的八个或九个字符的主密码****。 密码用于不同组件的管理员。
 

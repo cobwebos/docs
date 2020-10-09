@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
 ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78228090"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>将语音服务与主权云配合使用
 
-## <a name="azure-government-united-states"></a>Azure 政府版（美国）
+## <a name="azure-government-united-states"></a>Azure 政府 (美国) 
 
 仅美国联邦、州、地方和部落政府及其合作伙伴可以通过屏蔽式美国公民控制的操作访问此专用实例。
 - 区域： US Gov 弗吉尼亚州
-- SR in SpeechSDK：*config。FromHost （"wss：//virginia.stt.speech.azure.us"，"\<\>"）;*
-- SpeechSDK 中的 TTS： *config。FromHost （"https[]()：//virginia.tts.speech.azure.us"，\<"key\>"）;*
-- 身份验证令牌：[]()https：//virginia.api.cognitive.microsoft.us/sts/v1.0/issueToken
+- SR in SpeechSDK：*config。FromHost ( "wss://virginia.stt.speech.azure.us"，" \<your-key\> " ) ;*
+- SpeechSDK 中的 TTS： *config。FromHost ( "https： []() //virginia.tts.speech.azure.us"，" \<your-key\> " ) ;*
+- 身份验证令牌： https： []() //virginia.api.cognitive.microsoft.us/sts/v1.0/issueToken
 - Azure 门户： https://portal.azure.us  
 - 自定义语音识别门户： https://virginia.cris.azure.us/Home/CustomSpeech
 - 可用的 SKU：S0
@@ -52,8 +52,8 @@ ms.locfileid: "78228090"
 
 一个位于中国的 Azure 数据中心，可直接访问中国移动、中国电信、中国联通和其他主要承运商主干网络，为中国用户提供高速且稳定的本地网络访问体验。
 - 区域：中国东部 2（上海）
-- SpeechSDK 中的 SR：*config.FromHost("wss://chinaeast2.stt.speech.azure.cn", "\<your-key\>");*
-- SpeechSDK 中的 TTS：*config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<your-key\>");*
+- SR in SpeechSDK： *config。FromHost ( "wss://chinaeast2.stt.speech.azure.cn"，" \<your-key\> " ) ;*
+- SpeechSDK 中的 TTS：  *config。FromHost ( "https： []() //chinaeast2.tts.speech.azure.cn"，" \<your-key\> " ) ;*
 - 身份验证令牌：https[]()://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
 - Azure 门户： https://portal.azure.cn
 - 自定义语音识别门户： https://speech.azure.cn/CustomSpeech

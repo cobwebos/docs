@@ -14,10 +14,10 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e147e4a5f104ca4cd1a10a776c907e3f9f1d6128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77616971"
 ---
 # <a name="operations-model-and-responsibilities"></a>操作模型和责任
@@ -40,7 +40,7 @@ Azure 上的 SAP HANA（大型实例）提供的服务与 Azure IaaS 服务相�
 
 **SDDC**：用来将数据中心作为软件定义的实体进行管理的管理软件。 Microsoft 可以通过它出于规模、可用性和性能原因而创建资源池。
 
-**O/S**：选择在服务器上运行的 OS （SUSE Linux 或 Red Hat linux）。 向提供的 OS 映像是各个 Linux 供应商提供给 Microsoft 用于运行 SAP HANA 的映像。 必须具有 Linux 供应商的订阅，以便获取 SAP HANA 优化的特定映像。 你负责向 OS 供应商注册映像。 
+**O/S**：选择 (SUSE Linux 或 Red Hat linux) 在服务器上运行。 向提供的 OS 映像是各个 Linux 供应商提供给 Microsoft 用于运行 SAP HANA 的映像。 必须具有 Linux 供应商的订阅，以便获取 SAP HANA 优化的特定映像。 你负责向 OS 供应商注册映像。 
 
 从 Microsoft 移交的观点来看，还对进一步修补 Linux 操作系统负有责任。 此修补还包括成功安装 SAP HANA 所需的附加包，而这些包尚未由特定 Linux 供应商在其 SAP HANA 优化型 OS 映像中提供。 （有关详细信息，请参阅 SAP 的 HANA 安装文档和 SAP 说明。） 
 

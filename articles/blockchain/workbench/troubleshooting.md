@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: troubleshooting
 ms.reviewer: brendal
 ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212847"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure 区块链工作台预览疑难解答
@@ -18,7 +18,7 @@ PowerShell 脚本用于协助开发人员进行调试或提供支持。 此脚�
 * Blockchain 网络，例如 Ethereum
 * Blockchain Workbench 微服务
 * Application Insights
-* Azure 监视（Azure Monitor 日志）
+* Azure 监视 (Azure Monitor 日志) 
 
 可以根据此信息确定后续步骤和问题的根本原因。
 
@@ -42,7 +42,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 此脚本接受以下参数：
 
-| 参数  | 描述 | 必需 |
+| 参数  | 说明 | 必须 |
 |---------|---------|----|
 | 订阅 ID | SubscriptionID，用于创建或定位所有资源。 | 是 |
 | ResourceGroupName | Blockchain Workbench 部署时所在的 Azure 资源组的名称。 | 是 |
@@ -56,7 +56,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 输出 ZIP 文件包含以下文件夹结构：
 
-| 文件夹或文件 | 描述  |
+| 文件夹或文件 | 说明  |
 |---------|---------|
 | \Summary.txt | 系统摘要 |
 | \Metrics\blockchain | 有关区块链的指标 |

@@ -12,20 +12,20 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74535309"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Azure Active Directory 操作参考指南
 
 此操作参考指南介绍了保护和维护以下方面应采取的检查和操作：
 
-- **[标识和访问管理](active-directory-ops-guide-iam.md)**-能够管理标识及其权利的生命周期。
-- **[身份验证管理](active-directory-ops-guide-auth.md)**-管理凭据、定义身份验证体验、委派分配、衡量使用情况以及基于企业安全状态定义访问策略的能力。
+- **[标识和访问管理](active-directory-ops-guide-iam.md)** -能够管理标识及其权利的生命周期。
+- **[身份验证管理](active-directory-ops-guide-auth.md)** -管理凭据、定义身份验证体验、委派分配、衡量使用情况以及基于企业安全状态定义访问策略的能力。
 - **[调控](active-directory-ops-guide-govern.md)** 能力，能够评估和证明授予了对环境的非特权和特权标识、审核和控制更改的访问权限。
-- **[操作](active-directory-ops-guide-ops.md)**-优化操作 Azure Active Directory （Azure AD）。
+- **[操作](active-directory-ops-guide-ops.md)** - (Azure AD) 优化操作 Azure Active Directory。
 
 此处的某些建议可能不适用于所有客户的环境，例如，如果你的组织使用密码哈希同步，则 AD FS 最佳实践可能不适用。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74535309"
 
 本参考指南中的每个部分都建议分配利益干系人成功计划和实现关键任务。 下表概述了本指南中所有利益干系人的列表：
 
-| 利益干系人 | 描述 |
+| 利益干系人 | 说明 |
 | :- | :- |
 | IAM 操作团队 | 此团队处理标识和访问管理系统的日常操作 |
 | 生产力团队 | 此团队拥有和管理工作效率应用程序，如电子邮件、文件共享和协作、即时消息和会议。 |
@@ -46,4 +46,4 @@ ms.locfileid: "74535309"
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用[标识和访问管理检查和操作](active-directory-ops-guide-iam.md)。
+开始使用 [标识和访问管理检查和操作](active-directory-ops-guide-iam.md)。

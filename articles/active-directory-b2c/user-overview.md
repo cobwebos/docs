@@ -11,10 +11,10 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78185652"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
@@ -76,12 +76,12 @@ ms.locfileid: "78185652"
 
 ## <a name="consumer-user"></a>使用者用户
 
-使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 通过使用[注册或登录用户流](user-flow-overview.md)、使用 Microsoft Graph API 或使用 Azure 门户创建使用者帐户。
+使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 通过使用 [注册或登录用户流](user-flow-overview.md)、使用 Microsoft Graph API 或使用 Azure 门户创建使用者帐户。
 
 可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
 
-有关管理使用者帐户的详细信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
+有关管理使用者帐户的详细信息，请参阅 [使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
 
 ### <a name="migrate-consumer-user-accounts"></a>迁移使用者用户帐户
 
-可能需要将现有的使用者用户帐户从任何标识提供者迁移到 Azure AD B2C。 有关详细信息，请参阅[将用户迁移到 Azure AD B2C](user-migration.md)。
+可能需要将现有的使用者用户帐户从任何标识提供者迁移到 Azure AD B2C。 有关详细信息，请参阅 [将用户迁移到 Azure AD B2C](user-migration.md)。

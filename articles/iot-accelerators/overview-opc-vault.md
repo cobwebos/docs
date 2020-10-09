@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 715ed204e28d6260c28fa099b40fc78aa12de44d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73826206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281535"
 ---
 # <a name="what-is-opc-vault"></a>什么是 OPC 保管库？
+
+> [!IMPORTANT]
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 OPC 保管库是可以配置、注册和管理云中 OPC UA 服务器与客户端应用程序的证书生命周期的微服务。 本文介绍 OPC 保管库的简单用例。
 
@@ -35,5 +38,4 @@ OPC 保管库是可以配置、注册和管理云中 OPC UA 服务器与客户�
 
 了解 OPC 保管库及其用途后，建议接下来完成以下步骤：
 
-> [!div class="nextstepaction"]
-> [OPC 保管库体系结构](overview-opc-vault-architecture.md)
+[OPC 保管库体系结构](overview-opc-vault-architecture.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74775534"
 ---
 # <a name="what-are-the-bing-search-apis"></a>什么是必应搜索 API？
@@ -34,15 +34,15 @@ ms.locfileid: "74775534"
 | 必应 API | 说明 |
 | -- | -- |
 | [实体搜索](../Bing-Entities-Search/overview.md) | 必应实体搜索 API 返回包含实体的搜索结果，这些实体可以是人、地点或事物。 根据查询，API 将返回满足搜索查询的一个或多个实体。 搜索查询可以包括值得注意的个人、本地企业、特征点、目标等。 |
-| [图像搜索](../Bing-Image-Search/overview.md) | 必应图像搜索 API 使你可以搜索和查找类似于[Bing.com/images](https://www.Bing.com/images)的高质量静态图像和动画图像。 可以将搜索优化为，按属性（包括大小、颜色、许可证和新鲜度）包含或排除图像。 此外，还可以搜索热门图像、上传图像以获取关于图像的见解，并能显示缩略图预览。 |
-| [新闻搜索](../Bing-News-Search/search-the-web.md) | 必应新闻搜索 API 允许你查找类似于[Bing.com/news](https://www.Bing.com/news)的新闻报道。 此 API 返回来自多个源或特定域的新闻报道。 可以跨类别搜索，以获取热门报道、头条新闻和头版标题。 |
+| [图像搜索](../Bing-Image-Search/overview.md) | 必应图像搜索 API 使你可以搜索和查找类似于 [Bing.com/images](https://www.Bing.com/images)的高质量静态图像和动画图像。 可以将搜索优化为，按属性（包括大小、颜色、许可证和新鲜度）包含或排除图像。 此外，还可以搜索热门图像、上传图像以获取关于图像的见解，并能显示缩略图预览。 |
+| [新闻搜索](../Bing-News-Search/search-the-web.md) | 必应新闻搜索 API 允许你查找类似于 [Bing.com/news](https://www.Bing.com/news)的新闻报道。 此 API 返回来自多个源或特定域的新闻报道。 可以跨类别搜索，以获取热门报道、头条新闻和头版标题。 |
 | [视频搜索](../Bing-Video-Search/overview.md) | 必应视频搜索 API 允许你在 web 上查找视频。 获取热门视频、相关内容和缩略图预览。 |
 | [视觉搜索](../Bing-visual-search/overview.md) | 上传图像或使用 URL 来获取关于图像的见解，如外观相似的产品、图像和相关搜索。 |
  [当地企业搜索](../bing-local-business-search/overview.md) | 必应本地业务搜索 API 允许应用程序根据搜索查询查找有关本地企业的联系信息和位置信息。 |
 
 ## <a name="the-bing-custom-search-api"></a>必应自定义搜索 API
 
-通过使用[必应自定义搜索](../Bing-Custom-Search/overview.md)API 创建自定义搜索实例，你可以创建仅侧重于你关注的内容和主题的搜索体验。 例如，指定必应搜索的域、网站和特定网页后，必应自定义搜索会将结果定制为特定内容。 若要进一步自定义搜索体验，可以通过结合使用必应自定义自动建议 API、图像 API 和视频搜索 API。
+通过使用 [必应自定义搜索](../Bing-Custom-Search/overview.md) API 创建自定义搜索实例，你可以创建仅侧重于你关注的内容和主题的搜索体验。 例如，指定必应搜索的域、网站和特定网页后，必应自定义搜索会将结果定制为特定内容。 若要进一步自定义搜索体验，可以通过结合使用必应自定义自动建议 API、图像 API 和视频搜索 API。
 
 ## <a name="additional-bing-search-apis"></a>其他必应搜索 API
 

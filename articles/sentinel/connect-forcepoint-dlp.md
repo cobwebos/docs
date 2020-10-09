@@ -13,16 +13,16 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588240"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>将 Forcepoint DLP 连接到 Azure Sentinel
 
 > [!IMPORTANT]
-> Azure Sentinel 中的 Forcepoint 数据丢失防护（DLP）数据连接器目前为公共预览版。 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Sentinel 中的 Forcepoint 数据丢失防护 (DLP) 数据连接器目前为公共预览版。 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
 
@@ -33,7 +33,7 @@ Forcepoint DLP 连接器可让你将 DLP 事件数据自动导出到 Azure Senti
 
 ## <a name="configure-and-connect-forcepoint-dlp"></a>配置并连接 Forcepoint DLP
 
-将 Forcepoint DLP 配置为将 JSON 格式的事件数据转发到 Azure 工作区，REST API 如[FORCEPOINT DLP 集成指南](https://frcpnt.com/dlp-sentinel)中所述。
+将 Forcepoint DLP 配置为将 JSON 格式的事件数据转发到 Azure 工作区，REST API 如 [FORCEPOINT DLP 集成指南](https://frcpnt.com/dlp-sentinel)中所述。
 
 
 ## <a name="find-your-data"></a>查找数据
@@ -41,7 +41,7 @@ Forcepoint DLP 连接器可让你将 DLP 事件数据自动导出到 Azure Senti
 设置 Forcepoint DLP 连接器后，数据将显示在 "CustomLogs **ForcepointDLPEvents_CL**下的 Log Analytics 中。
 
 
-若要在 Forcepoint DLP Log Analytics 中使用相关架构，请搜索**ForcepointDLPEvents_CL**。
+若要在 Forcepoint DLP Log Analytics 中使用相关架构，请搜索 **ForcepointDLPEvents_CL**。
 
 
 ## <a name="validate-connectivity"></a>验证连接

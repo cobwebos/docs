@@ -1,19 +1,19 @@
 ---
 title: 快速入门：在应用程序网关上创建 Azure WAF v2 - Azure 资源管理器模板
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure 资源管理器模板（ARM 模板）在 Azure 应用程序网关上创建 Web 应用程序防火墙 v2。
+description: 了解如何使用 Azure 资源管理器快速启动模板（ARM 模板）在 Azure 应用程序网关上创建 Web 应用程序防火墙 v2。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 036503f95a7dc1aaa5690bacc01d07034e6d162f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266925"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>快速入门：使用 ARM 模板在应用程序网关上创建 Azure WAF v2
 

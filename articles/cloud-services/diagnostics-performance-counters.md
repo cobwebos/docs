@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
 ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77469521"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
@@ -125,7 +125,7 @@ Application Insights 会自动收集以下性能计数器：
 
 `sampleRate` 属性定义的时间段使用 XML 持续时间数据类型来指示轮询性能计数器的频率。 在以下示例中，频率设置为 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔 3 分钟。
 
-有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 [W3 XML 日期和时间日期类型](https://www.w3schools.com/XML/schema_dtypes_date.asp)教程中的“持续时间数据类型”部分。 
+有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 [W3 XML 日期和时间日期类型](https://www.w3schools.com/XML/schema_dtypes_date.asp)教程中的“持续时间数据类型”部分。****
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

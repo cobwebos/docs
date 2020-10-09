@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77252221"
 ---
 # <a name="automate-mobility-service-installation"></a>自动执行移动服务安装
@@ -56,8 +56,8 @@ ms.locfileid: "77252221"
 1. 在 Configuration Manager 中，[对要安装或更新移动服务的服务器进行分类](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)。 其中一个集合应包含所有 Windows 服务器，而另一个集合应包含所有 Linux 服务器。
 1. 在网络共享上，创建文件夹：
 
-   - 若要在 Windows 计算机上安装，请创建一个名为_MobSvcWindows_的文件夹。
-   - 若要在 Linux 计算机上安装，请创建名为_MobSvcLinux_的文件夹。
+   - 若要在 Windows 计算机上安装，请创建一个名为 _MobSvcWindows_的文件夹。
+   - 若要在 Linux 计算机上安装，请创建名为 _MobSvcLinux_的文件夹。
 
 1. 登录到配置服务器计算机。
 1. 在配置服务器计算机上，打开管理命令提示符。
@@ -77,8 +77,8 @@ ms.locfileid: "77252221"
 
 1. 将以下安装文件复制到网络共享：
 
-   - 对于 Windows，将_Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_复制到_MobSvcWindows_。
-   - 对于 Linux，将以下文件复制到_MobSvcLinux_：
+   - 对于 Windows，将 _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ 复制到 _MobSvcWindows_。
+   - 对于 Linux，将以下文件复制到 _MobSvcLinux_：
      - _Microsoft-ASR_UARHEL6-64release.tar.gz_
      - _Microsoft-ASR_UARHEL7-64release.tar.gz_
      - _Microsoft-ASR_UASLES11-SP3-64release.tar.gz_
@@ -95,7 +95,7 @@ ms.locfileid: "77252221"
 
 复制以下代码：
 
-- 将_MobSvcWindows_文件夹中的代码另存为_install.bat_。
+- 将 _MobSvcWindows_ 文件夹中的代码另存为 _install.bat_。
 - 将此脚本中的 `[CSIP]` 占位符替换为配置服务器的实际 IP 地址值。
 - 此脚本支持移动服务代理的全新安装和已安装代理的更新。
 
@@ -198,7 +198,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 复制以下代码：
 
-- 将_MobSvcLinux_文件夹中的代码另存为_install_linux. sh_。
+- 将 _MobSvcLinux_ 文件夹中的代码另存为 _install_linux. sh_。
 - 将此脚本中的 `[CSIP]` 占位符替换为配置服务器的实际 IP 地址值。
 - 此脚本支持移动服务代理的全新安装和已安装代理的更新。
 
@@ -354,7 +354,7 @@ cd /tmp
 
     **参数** | Windows 值  | Linux 值 
     --- | --- | ---
-    **名称** | 安装 Microsoft Azure 移动服务 (Windows) | 安装 Microsoft Azure 移动服务（Linux）。
+    **名称** | 安装 Microsoft Azure 移动服务 (Windows) |  (Linux) 安装 Microsoft Azure 移动服务。
     **命令行** | install.bat | ./install_linux.sh
     程序可运行  | 用户是否已登录 | 用户是否已登录
     其他参数  | 使用默认设置 | 使用默认设置

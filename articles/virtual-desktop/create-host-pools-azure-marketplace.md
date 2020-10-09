@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084356"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287383"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -48,7 +48,8 @@ ms.locfileid: "90084356"
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。
    
-   >![注意]如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
+   >[!NOTE]
+   > 如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
 
 2. 在搜索栏中输入“Windows 虚拟桌面”，然后在“服务”下找到并选择“Windows 虚拟桌面” 。
 

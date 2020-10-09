@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201508"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
 
-以下[自定义策略初学者包](custom-policy-get-started.md#custom-policy-starter-pack)Azure AD 技术配置文件包含**AAD 通用**技术配置文件。 Azure AD 技术配置文件不会指定协议，因为协议在 **AAD-Common** 技术配置文件中进行配置：
+以下 [自定义策略初学者包](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD 技术配置文件包含 **AAD 通用** 技术配置文件。 Azure AD 技术配置文件不会指定协议，因为协议在 **AAD-Common** 技术配置文件中进行配置：
  
 - **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingAlternativeSecurityId-NoError** - 在目录中查找社交帐户。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 创建新的社交帐户。
@@ -251,7 +251,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 | Operation | 是 | 要执行的操作。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 |
 | RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果该用户对象已存在，则引发错误。 可能的值：`true` 或 `false`。|
-| ApplicationObjectId | 否 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](custom-policy-custom-attributes.md)。 |
+| ApplicationObjectId | 否 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。 有关详细信息，请参阅 [在自定义配置文件编辑策略中使用自定义属性](custom-policy-custom-attributes.md)。 |
 | ClientId | 否 | 作为第三方访问租户的客户端标识符。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](custom-policy-custom-attributes.md) |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
@@ -259,7 +259,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
  
 以下设置可用于配置失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization.md)。
 
-| 属性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 |

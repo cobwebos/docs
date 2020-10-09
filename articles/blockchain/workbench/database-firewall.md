@@ -5,10 +5,10 @@ ms.date: 09/09/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: dc7a1dc7e4a083ef8f5f7650f29ed1430b32e88b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85214190"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>配置 Azure Blockchain Workbench 数据库防火墙
@@ -19,7 +19,7 @@ ms.locfileid: "85214190"
 
 若要连接到要配置规则的数据库，请执行以下操作：
 
-1. 使用对 Azure 区块链工作台资源拥有**所有者**权限的帐户登录到 Azure 门户。
+1. 使用对 Azure 区块链工作台资源拥有 **所有者**     权限的帐户登录到 Azure 门户。
 2. 在左侧导航窗格中，选择“资源组”  。
 3. 选择你的 Blockchain Workbench 部署的资源组的名称。
 4. 选择“类型”****，对资源列表进行排序，然后选择 **SQL Server**。

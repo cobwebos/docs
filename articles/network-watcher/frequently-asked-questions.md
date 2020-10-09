@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
 ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77471850"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答 (FAQ)
@@ -51,14 +51,14 @@ ms.locfileid: "77471850"
 ### <a name="how-does-network-watcher-pricing-work"></a>网络观察程序如何定价？
 有关网络观察程序组件及其定价，请访问[定价页](https://azure.microsoft.com/pricing/details/network-watcher/)。
 
-### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>哪些区域是支持的网络观察程序/哪些区域可用？
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>哪些区域支持/提供网络观察程序？
 可以在 [Azure 服务可用性](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)页上查看最新的区域可用性
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>使用网络观察程序需要哪些权限？
 请查看[使用网络观察程序所需的 RBAC 权限](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)的列表。 若要部署资源，需要对 NetworkWatcherRG 的参与者权限（见下）。
 
 ### <a name="how-do-i-enable-network-watcher"></a>如何启用网络观察程序？
-为每个订阅[自动启用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)网络观察程序服务。
+网络观察程序服务是为每个订阅[自动启用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)的。
 
 ### <a name="what-is-the-network-watcher-deployment-model"></a>网络观察程序部署模型是什么？
 网络观察程序父资源是使用每个区域中的唯一实例部署的。 命名格式：NetworkWatcher_RegionName。 示例：NetworkWatcher_centralus 是“美国中部”区域的网络观察程序资源。

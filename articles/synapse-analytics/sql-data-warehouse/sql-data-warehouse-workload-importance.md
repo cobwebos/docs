@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 1b2c71d7bf9e796af77e9a2a4a3a31152f2ca884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212337"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics 工作负载重要性
@@ -50,7 +50,7 @@ ms.locfileid: "85212337"
 
 ### <a name="non-uniform-requests"></a>非统一请求
 
-另一个可以借助重要性满足查询需求的场景是提交了具有不同资源类的请求。  如前所述，在同一重要性下，Azure Synapse 中的 Synapse SQL 池会优化吞吐量。 当混合大小请求（如 smallrc 或 mediumrc）排队时，Synapse SQL 池会选择最早到达可用资源的请求。 如果应用了工作负荷重要性，则计划执行的下一个请求是重要性最高的请求。
+另一个可以借助重要性满足查询需求的场景是提交了具有不同资源类的请求。  如前所述，在重要性相同的情况下，Azure Synapse 中的 Synapse SQL 池会针对吞吐量进行优化。 如果混合大小请求（例如 smallrc 或 mediumrc）已排队，则 Synapse SQL 池会选择可用资源能满足的最早到达请求。 如果应用了工作负荷重要性，则计划执行的下一个请求是重要性最高的请求。
   
 请考虑 DW500c 中的以下示例：
 

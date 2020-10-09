@@ -1,6 +1,6 @@
 ---
 title: 通过 NVA 路由流量 - Azure PowerShell 脚本示例
-description: Azure PowerShell 脚本示例 - 通过防火墙网络虚拟设备路由流量。
+description: Azure PowerShell 脚本示例 - 通过防火墙 NVA 路由流量。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5f23514c9dd86491e94155db60add40b73bfcfb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 19bebb5c1817882dcb641a284332926e51a8dd2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074128"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313954"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>通过网络虚拟设备脚本示例路由流量
 

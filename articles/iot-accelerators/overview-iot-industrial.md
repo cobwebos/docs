@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c474b57533cb6165ce7fe77defccd4cb7042b06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3df10c9d7630e9db76994e8e508f30adb986e0d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189916"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281807"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>什么是工业 IoT (IIoT)
+
+> [!IMPORTANT]
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 IIoT 是指“工业物联网”。 IIoT 通过在制造业中应用 IoT 来增强工业效率。 
 
@@ -49,5 +52,4 @@ OPC 保管库是 OPC UA 全局发现服务器 (GDS) 的一个实现，它可以�
 
 大致了解工业 IoT 及其组件后，建议接下来学习以下主题：
 
-> [!div class="nextstepaction"]
-> [什么是 OPC 孪生](overview-opc-twin.md)
+[什么是 OPC 孪生](overview-opc-twin.md)

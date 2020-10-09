@@ -486,7 +486,7 @@
       href: monitoring-high-churn.md
     - name: 监视进程服务器
       href: vmware-physical-azure-monitor-process-server.md
-- name: 疑难解答
+- name: 故障排除
   items:
     - name: 排查 Azure VM 问题
       items:
