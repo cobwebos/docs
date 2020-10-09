@@ -15,12 +15,12 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258582"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841146"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统
 
@@ -121,7 +121,7 @@ DRM 子系统可能包含以下组件：
 
 以下部分介绍密钥管理的设计。
 
-| **ContentKey** | **方案** |
+| **ContentKey-to-asset** | **应用场景** |
 | --- | --- |
 | 一对一 |最简单的情况。 它提供最精细的控制。 但是，此排列方式通常产生最高的许可证传送成本。 每个受保护的资产需要至少一个许可证请求。 |
 | 一对多 |可以对多个资产使用相同的内容密钥。 例如，对于如流派或流派子集（或电影基因）的逻辑组中的所有资产，可以使用单个内容密钥。 |
@@ -152,7 +152,7 @@ DRM 子系统可能包含以下组件：
 | **构建基块** | **技术** |
 | --- | --- |
 | **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
+| **标识提供者 (IDP) ** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |媒体服务动态保护 |
 | **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
@@ -192,7 +192,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产 *不* 受 DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -421,11 +421,11 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
 **自定义 Azure AD 租户域帐户**：自定义 Azure AD 租户域的自定义登录页。
 
-![自定义 Azure AD 租户域帐户](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![显示自定义 Azure A D 租户域的自定义登录页的屏幕截图。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **采用智能卡的 Microsoft 域帐户**：由 Microsoft 公司 IT 部门自定义的、采用双重身份验证的登录页。
 
-![自定义 Azure AD 租户域帐户](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![屏幕截图，显示由 Microsoft 企业 I T 对双因素身份验证进行自定义的登录页面。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft 帐户**：使用者的 Microsoft 帐户登录页。
 

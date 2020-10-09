@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a3183e1fcac3f1a71d07835cacc37c2f57fb06
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010760"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839038"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>如何将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
@@ -72,7 +72,7 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 redis-cli.exe -p 6380 -a YourAccessKey
 ```
 
-![在 stunnel 中运行 redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
+![显示已成功连接到缓存的屏幕截图。](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
 如果将测试缓存与不安全的非 TLS 端口一起使用，请运行 `redis-cli.exe` 并传递主机名、端口和访问密钥（主要或次要），以连接到测试缓存     。
 

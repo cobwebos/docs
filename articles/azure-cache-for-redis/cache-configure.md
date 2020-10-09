@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460163"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840245"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -169,11 +169,11 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Redis 缓存顾问
 “Azure Redis 缓存顾问”  边栏选项卡会显示适用于缓存的建议。 在正常操作期间，不会显示任何建议。
 
-![建议](./media/cache-configure/redis-cache-no-recommendations.png)
+![显示建议显示位置的屏幕截图。](./media/cache-configure/redis-cache-no-recommendations.png)
 
 如果在缓存操作期间发生任何状况（例如，高内存使用率、网络带宽或服务器负载），会在“Azure Redis 缓存”  边栏选项卡中显示警报。
 
-![建议](./media/cache-configure/redis-cache-recommendations-alert.png)
+![显示警报在 Azure Cache for Redis 部分显示位置的屏幕截图。](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 可在“建议”  边栏选项卡上找到进一步的信息。
 
@@ -314,7 +314,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 
 如果高级缓存启用了群集功能，则可选择要重新启动的缓存分片。
 
-![重新启动](./media/cache-configure/redis-cache-reboot-cluster.png)
+![显示在何处选择要重新启动的缓存分片的屏幕截图。](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 如果要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”  。 如果高级缓存启用了群集功能，请选择要重启的分片，并单击“重启”  。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
 
@@ -474,11 +474,11 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 
 若要访问 Redis 控制台，则从“Azure Redis 缓存”  边栏选项卡单击“控制台”  。
 
-![Redis 控制台](./media/cache-configure/redis-console-menu.png)
+![突出显示控制台按钮的屏幕截图。](./media/cache-configure/redis-console-menu.png)
 
 若要针对缓存实例发出命令，请将所需命令键入控制台。
 
-![Redis 控制台](./media/cache-configure/redis-console.png)
+![屏幕截图 thas 显示具有输入命令和结果的 Redis 控制台。](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>配合使用 Redis 控制台和高级群集缓存

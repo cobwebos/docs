@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48db8541ebad19e3b22b737f7e92dcc980708ef6
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795603"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841588"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  
 
@@ -48,9 +48,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
-
->[!TIP]
-> 为提高 Synapse SQL 中的性能，请考虑**pdw_permanent_table_mappings**使用持久性用户表上的而不是**sys.databases pdw_table_mappings。** 有关详细信息，请参阅 **[.sys &#40;transact-sql&#41;pdw_permanent_table_mappings ](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
 
 > [!NOTE] 
 > 在有序 CCI 表中，同一批 DML 或数据加载操作生成的新数据将在该批中排序，而表中的所有数据不会经过全局排序。  用户可以重新生成 (REBUILD) 有序 CCI 来对表中的所有数据进行排序。  在 Synapse SQL 中，列存储索引重新生成是一项脱机操作。  对于已分区的表，每次将对一个分区执行重新生成。  重新生成的分区中的数据是“脱机”的，在对该分区完成重新生成之前，这些数据不可用。 
@@ -98,7 +95,7 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 以下示例将数据载入采用不同架构的表的性能做了比较。
 
-![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![条形图，该图显示了将数据加载到具有不同架构的表中的性能比较。](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
 以下示例对使用 CCI 和有序 CCI 的查询性能做了比较。

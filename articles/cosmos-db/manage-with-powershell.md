@@ -1,22 +1,22 @@
 ---
-title: 使用 PowerShell 创建和管理 Azure Cosmos DB
-description: 使用 Azure Powershell 管理 Azure Cosmos 帐户、数据库、容器和吞吐量。
+title: 使用 PowerShell 管理 Azure Cosmos DB 核心 (SQL) API 资源
+description: 使用 PowerShell 管理 Azure Cosmos DB 核心 (SQL) API 资源。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 77c91d96beb2722b7fce54be8a1db32d66be6196
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767529"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840874"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB 核心 (SQL) API 资源
 
-以下指南介绍了如何使用 Powershell 通过脚本来自动管理 Azure Cosmos DB 资源，其中包括帐户、数据库、容器和吞吐量。
+以下指南介绍了如何使用 PowerShell 编写脚本并自动管理 Azure Cosmos DB 核心 (SQL) API 资源，包括 Cosmos 帐户、数据库、容器和吞吐量。
 
 > [!NOTE]
 > 本文中的示例使用 [Az.CosmosDB](/powershell/module/az.cosmosdb) 管理 cmdlet。 有关最新更改，请参阅 [Az.CosmosDB](/powershell/module/az.cosmosdb) API 参考页。
@@ -169,6 +169,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
+
 ### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> 为 Azure Cosmos 帐户启用多个写入区域
 
 ```azurepowershell-interactive
@@ -352,6 +353,7 @@ Get-AzResourceLock `
 * [创建 Azure Cosmos DB 数据库](#create-db)
 * [创建共享吞吐量的 Azure Cosmos DB 数据库](#create-db-ru)
 * [获取 Azure Cosmos DB 数据库的吞吐量](#get-db-ru)
+* [将数据库吞吐量迁移到自动缩放](#migrate-db-ru)
 * [列出帐户中的所有 Azure Cosmos DB 数据库](#list-db)
 * [获取单个 Azure Cosmos DB 数据库](#get-db)
 * [删除 Azure Cosmos DB 数据库](#delete-db)
@@ -397,6 +399,20 @@ Get-AzCosmosDBSqlDatabaseThroughput `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
+```
+
+## <a name="migrate-database-throughput-to-autoscale"></a><a id="migrate-db-ru"></a>将数据库吞吐量迁移到自动缩放
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+
+Invoke-AzCosmosDBSqlDatabaseThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -Name $databaseName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="get-all-azure-cosmos-db-databases-in-an-account"></a><a id="list-db"></a>获取帐户中的所有 Azure Cosmos DB 数据库
@@ -480,6 +496,7 @@ Remove-AzResourceLock `
 * [使用自动缩放功能创建 Azure Cosmos DB 容器](#create-container-autoscale)
 * [使用大分区键创建 Azure Cosmos DB 容器](#create-container-big-pk)
 * [获取 Azure Cosmos DB 容器的吞吐量](#get-container-ru)
+* [将容器吞吐量迁移到自动缩放](#migrate-container-ru)
 * [使用自定义索引创建 Azure Cosmos DB 容器](#create-container-custom-index)
 * [在索引关闭的情况下创建 Azure Cosmos DB 容器](#create-container-no-index)
 * [创建键和 TTL 都独一无二的 Azure Cosmos DB 容器](#create-container-unique-key-ttl)
@@ -565,6 +582,22 @@ Get-AzCosmosDBSqlContainerThroughput `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+
+### <a name="migrate-container-throughput-to-autoscale"></a><a id="migrate-container-ru"></a>将容器吞吐量迁移到自动缩放
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+
+Invoke-AzCosmosDBSqlContainerThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>使用自定义索引策略创建 Azure Cosmos DB 容器

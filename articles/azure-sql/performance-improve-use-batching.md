@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618635"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840483"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批处理来提升 Azure SQL 数据库和 Azure SQL 托管实例应用程序的性能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -291,9 +291,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 **DataAdapter** 类允许修改 **DataSet** 对象，然后将更改作为 INSERT、UPDATE 和 DELETE 操作提交。 如果你正在这样使用 **DataAdapter**，请注意必须为每个不同的操作发出单独的调用。 为了提高性能，请将 **UpdateBatchSize** 属性值设置为应同时进行批处理的操作数。 有关详细信息，请参阅[使用 DataAdapter 执行批处理操作](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters)。
 
-### <a name="entity-framework"></a>实体框架
+### <a name="entity-framework"></a>Entity Framework
 
-[实体框架 6](https://github.com/dotnet/ef6) 现在支持批处理。
+[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) 支持批处理。
 
 ### <a name="xml"></a>XML
 

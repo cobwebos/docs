@@ -4,12 +4,12 @@ description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Fra
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8156541a5b04a5db5f2ce683fd0e514c81e8b53e
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816390"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840398"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
@@ -333,19 +333,18 @@ ms.locfileid: "91816390"
 可以通过向 `AddApplicationInsightsTelemetryWorkerService` 传递 `ApplicationInsightsServiceOptions` 来修改一些通用设置，如以下示例所示：
 
 ```csharp
-    using Microsoft.ApplicationInsights.WorkerService;
+using Microsoft.ApplicationInsights.WorkerService;
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions aiOptions
-                    = new Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions();
-        // Disables adaptive sampling.
-        aiOptions.EnableAdaptiveSampling = false;
+public void ConfigureServices(IServiceCollection services)
+{
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    // Disables adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
 
-        // Disables QuickPulse (Live Metrics stream).
-        aiOptions.EnableQuickPulseMetricStream = false;
-        services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
-    }
+    // Disables QuickPulse (Live Metrics stream).
+    aiOptions.EnableQuickPulseMetricStream = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+}
 ```
 
 请注意，此 SDK 中的 `ApplicationInsightsServiceOptions` 位于命名空间 `Microsoft.ApplicationInsights.WorkerService` 中，而不是像 ASP.NET Core SDK 那样位于 `Microsoft.ApplicationInsights.AspNetCore.Extensions` 中。
@@ -364,7 +363,37 @@ ms.locfileid: "91816390"
 
 ### <a name="sampling"></a>采样
 
-适用于辅助角色服务的 Application Insights SDK 支持固定速率采样和自适应采样。 自适应采样默认已启用。 为辅助角色服务配置采样的方式与对 [ASP.NET Core 应用程序](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)使用的方式相同。
+适用于辅助角色服务的 Application Insights SDK 支持固定速率采样和自适应采样。 自适应采样默认已启用。 可以通过使用 `EnableAdaptiveSampling` [ApplicationInsightsServiceOptions](#using-applicationinsightsserviceoptions)中的选项来禁用采样
+
+若要配置其他采样设置，可以使用以下示例。
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.WorkerService;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    
+    // Disable adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+
+    // Add Adaptive Sampling with custom settings.
+    // the following adds adaptive sampling with 15 items per sec.
+    services.Configure<TelemetryConfiguration>((telemetryConfig) =>
+        {
+            var builder = telemetryConfig.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond: 15);
+            builder.Build();
+        });
+    //...
+}
+```
+
+有关详细信息，请参阅 [示例](#sampling) 文档。
 
 ### <a name="adding-telemetryinitializers"></a>添加 TelemetryInitializer
 
@@ -540,7 +569,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
-[阅读代码或为其做出贡献](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
+* [阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet)
+
+有关最新的更新和 bug 修复， [请参阅发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

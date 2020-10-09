@@ -6,24 +6,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609159"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842574"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支持的高可用性服务
 
- 为了给分析组件提供最佳的可用性级别，我们使用独特的体系结构开发了 HDInsight，以确保关键服务的高可用性 (HA)。 此体系结构的某些组件由 Microsoft 开发，旨在提供自动故障转移。 其他组件是为了支持特定的服务而部署的标准 Apache 组件。 本文介绍 HDInsight 中 HA 服务模型的体系结构，HDInsight 如何支持 HA 服务的故障转移，以及在其他服务发生中断后如何进行恢复。
+为了给分析组件提供最佳的可用性级别，我们使用独特的体系结构开发了 HDInsight，以确保关键服务的高可用性 (HA)。 此体系结构的某些组件由 Microsoft 开发，旨在提供自动故障转移。 其他组件是为了支持特定的服务而部署的标准 Apache 组件。 本文介绍 HDInsight 中 HA 服务模型的体系结构，HDInsight 如何支持 HA 服务的故障转移，以及在其他服务发生中断后如何进行恢复。
  
 > [!NOTE]
 > 无偏差通信
 >
 > Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
 >
-
 
 ## <a name="high-availability-infrastructure"></a>高可用性基础结构
 
@@ -43,7 +42,7 @@ HDInsight 提供自定义的基础结构，以确保四个主要服务具有高�
 
 ![高可用性基础结构](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-此外，还有开源 Apache 可靠性组件支持的其他一些高可用性服务。 HDInsight 群集中还包含以下组件：
+另外还有其他高可用性服务，即开源 Apache 可靠性组件所支持的服务。 HDInsight 群集中还包含以下组件：
 
 - Hadoop 文件系统 (HDFS) NameNode
 - YARN ResourceManager
@@ -63,7 +62,7 @@ Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供
 | Apache Livy | 活动头节点 | Spark | 用于通过 REST 接口轻松与 Spark 群集交互 |
 
 >[!Note]
-> HDInsight 企业安全性套餐（ESP）群集目前仅提供 Ambari 服务器高可用性。
+> HDInsight 企业安全性套餐 (ESP) 群集目前仅提供 Ambari 服务器高可用性。
 
 ### <a name="architecture"></a>体系结构
 
@@ -100,7 +99,7 @@ master-ha-service 仅在活动头节点上运行，它会停止待机头节点�
 
 ![故障转移过程](./media/hdinsight-high-availability-components/failover-steps.png)
 
-运行状况监视器在每个头节点上连同主故障转移控制器一起运行，将检测信号通知发送到 Zookeeper 仲裁。 在此方案中，头节点被视为 HA 服务。 运行状况监视器检查每个高可用性服务是否正常，以及该服务是否已准备好参与领导选举。 如果是，则此头节点将参与竞选。 否则，它将退出选举，直到再次准备就绪。
+运行状况监视器在每个头节点上运行，并且主故障转移控制器用于向 Zookeeper 仲裁发送检测信号通知。 在此方案中，头节点被视为 HA 服务。 运行状况监视器检查每个高可用性服务是否正常，以及该服务是否已准备好参与领导选举。 如果是，则此头节点将参与竞选。 否则，它将退出选举，直到再次准备就绪。
 
 如果待机头节点赢得领导选举并变为活动头节点（例如，在前一个活动节点发生故障时），则其主故障转移控制器将启动其上的所有 HDInsight HA 服务。 主故障转移控制器还会停止另一头节点上的这些服务。
 

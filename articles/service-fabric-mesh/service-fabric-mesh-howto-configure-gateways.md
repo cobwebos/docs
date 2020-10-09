@@ -1,17 +1,17 @@
 ---
 title: 配置网关以路由请求
 description: 了解如何配置网关，以处理在 Service Fabric 网格上运行的应用程序的传入流量。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461955"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839718"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>配置网关资源以路由请求
 

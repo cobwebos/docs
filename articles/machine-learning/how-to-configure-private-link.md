@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 1a34f8ec42969cded5921d377b1fa62276a30cc7
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 4ba7ec73ac70723e21b6acad571d62d14edd250a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630383"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828119"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
 
@@ -64,7 +64,7 @@ Azure 机器学习 Python SDK 提供了 [PrivateEndpointConfig](https://docs.mic
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
 * `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 机器学习 studio 中的 " __网络__ " 选项卡可以配置专用终结点。 但是，它需要现有虚拟网络。 有关详细信息，请参阅 [在门户中创建工作区](how-to-manage-workspace.md)。
 
@@ -82,4 +82,6 @@ Azure 机器学习 Python SDK 提供了 [PrivateEndpointConfig](https://docs.mic
 
 ## <a name="next-steps"></a>后续步骤
 
-有关保护 Azure 机器学习工作区的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md) 一文。
+* 有关保护 Azure 机器学习工作区的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md) 一文。
+
+* 如果你计划在虚拟网络中使用自定义 DNS 解决方案，请参阅 [如何通过自定义 dns 服务器使用工作区](how-to-custom-dns.md)。

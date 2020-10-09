@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
-ms.openlocfilehash: b92b6930193b77d0fb50ad707001a6fca0401970
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 06d70012756694dca1fad8fa90db0293bb106bf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404746"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828146"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
@@ -56,7 +56,9 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 ## <a name="sink-settings"></a>接收器设置
 
-添加接收器后，通过 " **接收器** " 选项卡进行配置。可在此处选取或创建接收器写入的数据集。 以下视频介绍了几种用于文本分隔文件类型的不同接收器选项：
+添加接收器后，通过 " **接收器** " 选项卡进行配置。可在此处选取或创建接收器写入的数据集。 可以在 " [调试" 设置](concepts-data-flow-debug-mode.md) 中配置数据集参数的开发值 (需要打开调试模式) 。
+
+以下视频介绍了几种用于文本分隔文件类型的不同接收器选项：
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 

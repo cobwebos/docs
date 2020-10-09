@@ -4,12 +4,12 @@ description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616748"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838936"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站配置 Application Insights
 
@@ -346,9 +346,15 @@ ms.locfileid: "91616748"
 
 若要添加客户端监视，请打开 `_Layout.cshtml` 文件并按照客户端 JAVASCRIPT SDK 配置一文中的 [基于代码段的设置说明](javascript.md#snippet-based-setup) 进行操作。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 当前版本的 Visual Studio 2019 中存在一个已知问题，即，将检测密钥存储在用户机密中对于基于 .NET Framework 的应用而言是损坏的，因此，最终必须将密钥硬编码到 applicationinsights.config 文件中，以解决此错误。 本文旨在通过不使用用户机密来完全避免此问题。  
+
+## <a name="open-source-sdk"></a>开源 SDK
+
+* [阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet)
+
+有关最新的更新和 bug 修复， [请参阅发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

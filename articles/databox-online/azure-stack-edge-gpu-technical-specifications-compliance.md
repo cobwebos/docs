@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899035"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839939"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>具有 GPU 的 Azure Stack Edge Pro 的技术规格和符合性 
 
@@ -65,9 +65,9 @@ Azure Stack Edge Pro 设备具有以下网络硬件：
 
 以下是 Mellanox 卡的详细信息：
 
-| 参数           | 说明                 |
+| 参数           | 描述                 |
 |-------------------------|----------------------------|
-| 建模    | ConnectX®-4 Lx EN 网络接口卡                      |
+| “模型”    | ConnectX®-4 Lx EN 网络接口卡                      |
 | 模型说明               | 25GbE 双端口 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 设备部件号 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |
@@ -79,20 +79,20 @@ Azure Stack Edge Pro 设备具有以下网络硬件：
 
 ## <a name="storage-specifications"></a>存储器规格
 
-Azure Stack Edge Pro 设备具有5个 2.5 "NVMe DC P4610 Ssd，每个具有 1.6 TB 的容量。 启动驱动器为 240 GB SATA SSD。 设备的总可用容量约为 8.28 TB。 下表列出了设备的存储容量。
+Azure Stack Edge Pro 设备具有5个 2.5 "NVMe DC P4610 Ssd，每个具有 1.6 TB 的容量。 启动驱动器为 240 GB SATA SSD。 设备的总可用容量约为 4.19 TB。 下表列出了设备的存储容量。
 
 |     规格                          |     值             |
 |--------------------------------------------|-----------------------|
-|    启动 SATA 固态驱动器 (SSD)       |    1                  |
 |    NVMe Ssd 数                     |    5                  |
-|    启动 SSD 容量                       |    240 GB             |
 |    单 NVMe SSD 容量                |    1.6 TB             |
-|    总容量                          |    8.28 TB            |
-|    总可用容量*                  |    约 7.95 TB          |
+|    启动 SATA 固态驱动器 (SSD)       |    1                  |
+|    启动 SSD 容量                       |    240 GB             |
+|    总容量                          |    8.0 TB             |
+|    总可用容量*                  |    约 4.19 TB          |
 |    SAS 控制器                          |    HBA330 12 Gbps     |
 
 
-**已保留一些空间供内部使用。*
+**奇偶校验复原并保留空间供内部使用。*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542149"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841350"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>在 Azure 机器学习 studio 中连接到数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "91542149"
 
 下表定义和汇总了数据存储和数据集的优点。 
 
-|Object|说明| 优点|   
+|对象|描述| 好处|   
 |---|---|---|
 |数据存储| 通过在与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中存储连接信息（如订阅 ID 和令牌授权），安全地连接到 Azure 上的存储服务 | 由于你的信息已安全存储，你 <br><br> <li> 不要 &nbsp; 将 &nbsp; 身份验证 &nbsp; 凭据 &nbsp; 或 &nbsp; 原始 &nbsp; 数据源置于风险之中。 <li> 不再需要在脚本中对其进行硬编码。
 |数据集| 通过创建数据集，可以创建对数据源位置的引用及其元数据的副本。 利用数据集，你可以 <br><br><li> 在模型定型过程中访问数据。<li> 与其他用户共享数据和展开协作。<li> 利用开源库（如 pandas）进行数据浏览。 | 由于数据集是延迟计算的，并且数据仍保留在其现有位置，因此 <br><br><li>在存储中保留数据的单个副本。<li> 不产生额外的存储成本 <li> 不会无意中更改原始数据源。<li>会提高 ML 工作流性能速度。 
@@ -87,6 +87,7 @@ ms.locfileid: "91542149"
 1. 为“数据集类型”选择“表格”或“文件”。 
 1. 选择“下一步”，打开“数据存储和文件选择”窗体。 在此窗体上，可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的具体数据文件。
     1. 如果数据位于虚拟网络中，请启用“跳过验证”。 详细了解[虚拟网络隔离和隐私](how-to-enable-virtual-network.md#machine-learning-studio)。
+    1. 对于表格数据集，可以指定 "timeseries" 特征，以便对数据集启用时间相关的操作。 了解如何 [将 timeseries 特征添加到数据集](how-to-monitor-datasets.md#studio-dataset)。
 1. 选择“下一步”以填充“设置和预览”以及“架构”窗体；它们是根据文件类型智能填充的。在这些窗体上进行创建之前，可以进一步配置数据集。   
 1. 选择“下一步”，查看“确认详细信息”窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](#profile)。
 1. 选择“创建”以完成数据集的创建。
@@ -114,7 +115,7 @@ ms.locfileid: "91542149"
 
 |统计信息|说明
 |------|------
-|Feature| 正在汇总的列的名称。
+|功能| 正在汇总的列的名称。
 |配置文件| 基于推理的类型显示的内联可视化效果。 例如，字符串、布尔值和日期包含值计数，而小数（数字）则包含近似的直方图。 这样，就可以快速了解数据的分布。
 |类型分布| 列中类型的内联值计数。 Null 是其自身的类型，因此，此可视化效果可用于检测反常值或缺失值。
 |类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。

@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974898"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839786"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新预配设备
 
@@ -75,7 +75,7 @@ ms.locfileid: "74974898"
 
 4. 单击“保存”，开始根据所作更改进行设备的重新预配  。
 
-    ![选择注册分配策略](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![突出显示所做的更改和 "保存" 按钮的屏幕截图。](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 

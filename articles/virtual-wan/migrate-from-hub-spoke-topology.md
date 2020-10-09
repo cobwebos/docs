@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777184"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839633"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>迁移到 Azure 虚拟 WAN
 
@@ -110,10 +110,6 @@ Contoso 是一家全球金融组织，在欧洲和亚洲设有办事处。 他�
 
 将虚拟 WAN 中心连接到现有 ExpressRoute 线路，并通过 Internet 在任何远程分支上设置站点到站点 VPN。
 
-> [!NOTE]
-> ExpressRoute 线路必须升级为高级 SKU 类型，以便连接到虚拟 WAN 中心。
->
-
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="中心和辐射":::
 **图3：用于虚拟广域网迁移的客户托管的集散**
 
@@ -190,7 +186,7 @@ a****。 删除辐射虚拟网络到旧的客户托管中心的现有对等连�
 
 流量按如下方式路由：
 
-* 欧洲总部通过高级 ExpressRoute 线路连接到西欧虚拟 WAN 中心。
+* 欧洲总部通过 ExpressRoute 线路连接到西欧虚拟 WAN 集线器。
 
 * 虚拟 WAN 中心到中心全球连接确保流量能够传输到远程区域中连接的 VNet。
 

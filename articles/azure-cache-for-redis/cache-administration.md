@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008026"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838664"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
@@ -21,11 +21,11 @@ ms.locfileid: "88008026"
 ## <a name="reboot"></a>重新启动
 可通过“重新启动”边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
 
-![重新启动](./media/cache-administration/redis-cache-administration-reboot.png)
+![突出显示重启菜单选项的屏幕截图。](./media/cache-administration/redis-cache-administration-reboot.png)
 
 选择要重新启动的节点，并单击“重新启动” 。
 
-![重新启动](./media/cache-administration/redis-cache-reboot.png)
+![屏幕截图，显示可以重新启动的节点。](./media/cache-administration/redis-cache-reboot.png)
 
 如果高级缓存启用了群集功能，则可选择要重新启动的缓存分片。
 
@@ -35,9 +35,9 @@ ms.locfileid: "88008026"
 
 对客户端应用程序的影响因用户重新启动的节点而有所不同。
 
-* **主**节点-重新启动主节点时，适用于 Redis 的 Azure 缓存将故障转移到副本节点，并将其提升为主节点。 在此故障转移期间，可能会有一个较短的时间间隔无法连接到缓存。
+* **主** - 重新启动主节点时，Azure Cache for Redis 会故障转移到副本节点，并将其提升为主节点。 在此故障转移期间，可能会有一个较短的时间间隔无法连接到缓存。
 * **副本** - 重新启动副本节点时，通常不会影响缓存客户端。
-* **主副本和副本**-在两个缓存节点都重新启动时，缓存中的所有数据都将丢失，并且与缓存的连接将失败，直到主节点重新联机。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在最新备份后发生的所有缓存写入都将丢失。
+* **主和副本** - 同时重新启动这两个缓存节点时，缓存中的所有数据都会丢失，并且无法连接到缓存，直到主节点重新联机。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在最新备份后发生的所有缓存写入都将丢失。
 * **已启用群集的高级缓存的节点** - 重新启动已启用群集的高级缓存的一个或多个节点时，所选节点的行为与重新启动非群集缓存的相应节点时相同。
 
 ## <a name="reboot-faq"></a>重新启动常见问题解答
@@ -47,7 +47,7 @@ ms.locfileid: "88008026"
 * [能否使用 PowerShell、CLI 或其他管理工具重新启动缓存？](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>测试应用程序时应重新启动哪个节点？
-若要针对缓存的主节点故障测试应用程序的复原能力，请重新启动 **主** 节点。 若要在副本节点出现故障时测试应用程序的复原能力，请重新启动**副本**节点。 若要针对缓存的总故障测试应用程序的复原能力，请同时重新启动这 **两个** 节点。
+若要针对缓存的主节点故障测试应用程序的复原能力，请重新启动 **主** 节点。 若要针对副本节点故障测试应用程序的复原能力，请重新启动“副本”节点。 若要针对缓存的总故障测试应用程序的复原能力，请同时重新启动这 **两个** 节点。
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>能否通过重新启动缓存来清除客户端连接？
 能，如果重新启动缓存，则会清除所有客户端连接。 当所有客户端连接均已用完（由于客户端应用程序中的逻辑错误或 Bug）时，重新启动很有用。 每个定价层对于不同大小都有不同的[客户端连接数限制](cache-configure.md#default-redis-server-configuration)，达到这些限制后，将不再接受客户端连接。 通过重新启动缓存可以清除所有客户端连接。
@@ -60,7 +60,7 @@ ms.locfileid: "88008026"
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>如果执行重新启动，是否会丢失缓存中的数据？
 如果同时重新启动主节点和副本节点，则缓存中或该分片中（如果使用已启用群集的高级缓存）的所有数据都可能会丢失，但这种情况也不一定会发生。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
 
-如果只重新启动其中一个节点，数据通常不会丢失，但仍然存在丢失的可能。 例如，如果主节点重新启动并且正在进行缓存写入，则缓存写入的数据将丢失。 发生数据丢失的另一种情况是，在重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅[我在 Redis 中的数据发生了什么情况？](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
+如果只重新启动其中一个节点，数据通常不会丢失，但仍然存在丢失的可能。 例如，如果重新启动主节点时正在进行缓存写入，则缓存写入的数据会丢失。 发生数据丢失的另一种情况是，在重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅[我在 Redis 中的数据发生了什么情况？](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>能否使用 PowerShell、CLI 或其他管理工具重新启动缓存？
 能，有关 PowerShell 说明，请参阅[重新启动 Azure Redis 缓存](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis)。
@@ -98,7 +98,7 @@ ms.locfileid: "88008026"
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Azure Cache for Redis 功能。
+了解有关 Azure Cache for Redis 功能的详细信息。
 
-* [适用于 Redis 服务层的 Azure 缓存](cache-overview.md#service-tiers)
+* [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)
 

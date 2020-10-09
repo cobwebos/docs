@@ -4,12 +4,12 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803585"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839004"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -121,7 +121,7 @@ ms.locfileid: "91803585"
 
 ### <a name="user-secrets-and-other-configuration-providers"></a>用户机密和其他配置提供程序
 
-如果要将检测密钥存储在 ASP.NET Core 用户机密或从其他配置提供程序中检索它，则可以将重载与参数一起使用 `Microsoft.Extensions.Configuration.IConfiguration` 。 例如 `services.AddApplicationInsightsTelemetry(Configuration);`。
+如果要将检测密钥存储在 ASP.NET Core 用户机密或从其他配置提供程序中检索它，则可以将重载与参数一起使用 `Microsoft.Extensions.Configuration.IConfiguration` 。 例如，`services.AddApplicationInsightsTelemetry(Configuration);`。
 从 Applicationinsights.config AspNetCore 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)开始，调用 `services.AddApplicationInsightsTelemetry()` 会自动从应用程序读取检测密钥 `Microsoft.Extensions.Configuration.IConfiguration` 。 无需显式提供 `IConfiguration` 。
 
 ## <a name="run-your-application"></a>运行应用程序
@@ -134,7 +134,7 @@ ms.locfileid: "91803585"
 
 ### <a name="ilogger-logs"></a>ILogger 日志
 
-自动捕获通过 `Warning` 或更高严重性的 `ILogger` 发出的日志。 遵循 [ILogger 文档](ilogger.md#control-logging-level)自定义 Application Insights 捕获的日志级别。
+`ILogger` `Warning` 自动捕获通过严重性和更高版本发出的日志。 遵循 [ILogger 文档](ilogger.md#control-logging-level)自定义 Application Insights 捕获的日志级别。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -209,7 +209,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` 中的完整设置列表
 
-|设置 | 说明 | 默认
+|设置 | 描述 | 默认
 |---------------|-------|-------
 |EnablePerformanceCounterCollectionModule  | 启用/禁用 `PerformanceCounterCollectionModule` | 是
 |EnableRequestTrackingTelemetryModule   | 启用/禁用 `RequestTrackingTelemetryModule` | 是
@@ -397,7 +397,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何跟踪不会自动收集的遥测数据？
 
-使用构造函数注入获取 `TelemetryClient` 的实例，然后对其调用所需的 `TrackXXX()` 方法。 我们不建议在 ASP.NET Core 应用程序中创建新的 `TelemetryClient` 实例。 `DependencyInjection` 容器中已注册了 `TelemetryClient` 的单一实例，该实例与剩余的遥测功能共享 `TelemetryConfiguration`。 仅当需要与剩余的遥测功能使用不同的配置时，才建议创建新的 `TelemetryClient` 实例。
+使用构造函数注入获取 `TelemetryClient` 的实例，然后对其调用所需的 `TrackXXX()` 方法。 不建议 `TelemetryClient` `TelemetryConfiguration` 在 ASP.NET Core 应用程序中创建新的或实例。 `DependencyInjection` 容器中已注册了 `TelemetryClient` 的单一实例，该实例与剩余的遥测功能共享 `TelemetryConfiguration`。 仅当需要与剩余的遥测功能使用不同的配置时，才建议创建新的 `TelemetryClient` 实例。
 
 以下示例演示如何从控制器跟踪其他遥测数据。
 
@@ -423,6 +423,40 @@ public class HomeController : Controller
 ```
 
 有关 Application Insights 中自定义数据报告的详细信息，请参阅 [Application Insights 自定义指标 API 参考](./api-custom-events-metrics.md)。 类似的方法可用于将自定义指标发送到使用 [GETMETRIC API](./get-metric.md)Application Insights。
+
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>如何实现自定义 ILogger 日志集合？
+
+默认情况下，仅 `Warning` 自动捕获严重性和更高的日志。 若要更改此行为，请显式重写提供程序的日志记录配置，如下 `ApplicationInsights` 所示。
+以下配置允许 Applicationinsights.config 捕获所有严重性 `Information` 和更高的日志。
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+请注意，以下事项不会导致 Applicationinsights.config 提供程序捕获 `Information` 日志。 这是因为 SDK 添加默认日志记录筛选器，指导 `ApplicationInsights` 仅捕获 `Warning` 和更高版本。 因此，Applicationinsights.config 需要显式重写。
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+阅读有关 [ILogger 配置](ilogger.md#control-logging-level)的详细信息。
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>某些 Visual Studio 模板使用 IWebHostBuilder 中的 UseApplicationInsights() 扩展方法来启用 Application Insights。 这种用法是否仍然有效？
 
@@ -477,7 +511,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
-* [阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
+* [阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet)
 
 有关最新的更新和 bug 修复， [请参阅发行说明](./release-notes.md)。
 

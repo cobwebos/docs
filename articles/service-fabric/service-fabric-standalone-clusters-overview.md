@@ -1,16 +1,14 @@
 ---
 title: 独立 Service Fabric 群集概述
 description: Service Fabric 群集会在 Windows Server 或 Linux 上运行，这意味着可以在能够运行 Windows Server 和 Linux 的任何位置部署和承载 Service Fabric 应用程序。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080671"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841061"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 独立群集概述
 
@@ -27,7 +25,7 @@ Service Fabric 群集是你拥有的资源。  你应保护群集，防止未经
 > [!NOTE]
 > Windows 身份验证基于 Kerberos。 不支持使用 NTLM 作为身份验证类型。
 >
-> 请尽可能对 Service Fabric 群集使用 x.509 证书身份验证。
+> 请尽可能对 Service Fabric 群集使用 X.509 证书身份验证。
 
 ### <a name="node-to-node-security"></a>节点到节点安全性
 
