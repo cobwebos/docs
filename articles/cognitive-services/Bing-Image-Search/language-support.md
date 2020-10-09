@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68881922"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>必应图像搜索 API 的语言和区域支持
@@ -84,8 +84,8 @@ ms.locfileid: "68881922"
 |比利时|荷兰语|nl-BE|
 |比利时|法语|fr-BE|
 |巴西|葡萄牙语|pt-BR|
-|Canada|英语|en-CA|
-|Canada|法语|fr-CA|
+|加拿大|英语|en-CA|
+|加拿大|法语|fr-CA|
 |智利|西班牙语|es-CL|
 |丹麦|丹麦语|da-DK|
 |芬兰|芬兰语|fi-FI|
@@ -112,11 +112,11 @@ ms.locfileid: "68881922"
 |瑞典|瑞典语|sv-SE|
 |瑞士|法语|fr-CH|
 |瑞士|德语|de-CH|
-|中国台湾|繁体中文|zh-TW|
+|台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
-|United Kingdom|英语|en-GB|
-|United States|英语|zh-CN|
-|United States|西班牙语|es-US|
+|英国|英语|en-GB|
+|美国|英语|zh-CN|
+|美国|西班牙语|es-US|
 
 ## <a name="next-steps"></a>后续步骤
 有关必应新闻搜索终结点的详细信息，请参阅[新闻图像搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

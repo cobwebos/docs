@@ -169,7 +169,7 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: 在 iOS 设备上使用
               href: active-directory-certificate-based-authentication-ios.md
-    - name: 报告
+    - name: 报表
       items:
         - name: 使用情况和见解
           href: howto-authentication-methods-usage-insights.md

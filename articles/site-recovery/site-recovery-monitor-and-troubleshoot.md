@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68717347"
 ---
 # <a name="monitor-site-recovery"></a>监视 Site Recovery
@@ -173,8 +173,8 @@ ms.locfileid: "68717347"
 
 订阅方式如下：
 
-在保管库 >**监视**"部分中，单击" **Site Recovery 事件**"。
-1. 单击“电子邮件通知”。****
+在保管库 > **监视** "部分中，单击" **Site Recovery 事件**"。
+1. 单击“电子邮件通知”。
 1. 在“电子邮件通知”中，启用通知并指定收件人。**** 可向所有订阅管理员发送通知，并选择性地发送到特定的电子邮件地址。
 
     ![电子邮件通知](./media/site-recovery-monitor-and-troubleshoot/email.png)

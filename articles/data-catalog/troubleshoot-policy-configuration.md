@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68879553"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a> Azure 数据目录
@@ -21,7 +21,7 @@ ms.locfileid: "68879553"
 
 使用 Azure 数据目录时，以下功能受到限制：
 
-- 不支持具有类型为**Guest 角色**的帐户。 不能将来宾帐户添加为 Azure 数据目录的用户，并且来宾用户无法使用中的门户 [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) 。
+- 不支持具有类型为 **Guest 角色** 的帐户。 不能将来宾帐户添加为 Azure 数据目录的用户，并且来宾用户无法使用中的门户 [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) 。
 
 - 不支持使用 Azure 资源管理器模板或 Azure PowerShell 命令创建 Azure 数据目录资源。
 

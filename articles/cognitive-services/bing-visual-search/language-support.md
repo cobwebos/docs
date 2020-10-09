@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883550"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>必应视觉搜索 API 的语言和区域支持
@@ -86,8 +86,8 @@ ms.locfileid: "68883550"
 |比利时|荷兰语|nl-BE|
 |比利时|法语|fr-BE|
 |巴西|葡萄牙语|pt-BR|
-|Canada|英语|en-CA|
-|Canada|法语|fr-CA|
+|加拿大|英语|en-CA|
+|加拿大|法语|fr-CA|
 |智利|西班牙语|es-CL|
 |丹麦|丹麦语|da-DK|
 |芬兰|芬兰语|fi-FI|
@@ -114,8 +114,8 @@ ms.locfileid: "68883550"
 |瑞典|瑞典语|sv-SE|
 |瑞士|法语|fr-CH|
 |瑞士|德语|de-CH|
-|中国台湾|繁体中文|zh-TW|
+|台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
-|United Kingdom|英语|en-GB|
-|United States|英语|zh-CN|
-|United States|西班牙语|es-US|
+|英国|英语|en-GB|
+|美国|英语|zh-CN|
+|美国|西班牙语|es-US|

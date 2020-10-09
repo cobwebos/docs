@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68854004"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用修饰标记来突出显示文本
 
-必应支持命中突出显示，这会在某些答案的显示字符串中标记查询字词（或必应找到相关的其他字词）。 例如，网页结果的`name`、 `displayUrl`和`snippet`字段可能包含标记的查询字词。 
+必应支持命中突出显示，这将标记查询词 (或必应在某些回答的显示字符串中找到相关) 的其他字词。 例如，网页结果的 `name` 、 `displayUrl` 和 `snippet` 字段可能包含标记的查询字词。 
 
-默认情况下，必应不在显示字符串中包括突出显示标记。 若要启用标记，请在`textDecorations`请求中包括查询参数，并将其`true`设置为。
+默认情况下，必应不在显示字符串中包括突出显示标记。 若要启用标记，请 `textDecorations` 在请求中包括查询参数，并将其设置为 `true` 。
 
 ## <a name="hit-highlighting-example"></a>命中突出显示示例
 
-下面的示例演示了的 web 结果`Sailing Dinghy`。 必应使用 E000 和 E001 Unicode 字符标记查询词的开头和结尾。
+下面的示例演示了的 web 结果 `Sailing Dinghy` 。 必应使用 E000 和 E001 Unicode 字符标记查询词的开头和结尾。
   
 ![命中词突出显示](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
 
@@ -34,22 +34,22 @@ ms.locfileid: "68854004"
 
 ## <a name="marker-formatting"></a>标记格式
 
-必应提供使用 Unicode 字符或 HTML 标记作为标记的选项。 若要指定要使用的标记，请包含[textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat)查询参数： 
+必应提供使用 Unicode 字符或 HTML 标记作为标记的选项。 若要指定要使用的标记，请包含 [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) 查询参数： 
 
-| “值”             | 标记                       |
+| 值             | 记号笔                       |
 |-------------------|------------------------------|
-| `textFormat=Raw`  | Unicode 字符（默认值） |
+| `textFormat=Raw`  | Unicode 字符 (默认值)  |
 | `textFormat=HTML` | HTML 字符              |
 
 ## <a name="additional-text-decorations"></a>其他文本修饰
 
-必应返回几个不同的文本修饰。 例如， `Computation`答案可以在`log(2)` `expression`字段中包含查询词的下标标记。
+必应返回几个不同的文本修饰。 例如， `Computation` 答案可以 `log(2)` 在字段中包含查询词的下标标记 `expression` 。
 
 ![计算标记](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
 
-如果请求未指定修饰，则`expression`字段将包含。 `log10(2)` 
+如果请求未指定修饰，则 `expression` 字段将包含 `log10(2)` 。 
 
-如果`textDecorations`为`true`，必应在答案的显示字符串中包括以下标记。 如果没有等效的 HTML 标记，则表的单元格为空。
+如果 `textDecorations` 为 `true` ，必应在答案的显示字符串中包括以下标记。 如果没有等效的 HTML 标记，则表的单元格为空。
 
 |Unicode|HTML|说明
 |-|-|-

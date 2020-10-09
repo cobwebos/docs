@@ -25,7 +25,7 @@
           href: concept-conditional-access-users-groups.md
         - name: 云应用或操作
           href: concept-conditional-access-cloud-apps.md
-        - name: Conditions
+        - name: 条件
           href: concept-conditional-access-conditions.md
     - name: 访问控制
       items:

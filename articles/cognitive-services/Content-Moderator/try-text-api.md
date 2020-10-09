@@ -11,10 +11,10 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81272587"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
@@ -137,4 +137,4 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP:
 
 ## <a name="next-steps"></a>后续步骤
 
-请在代码中使用 REST API，或按照[.NET SDK 快速入门](dotnet-sdk-quickstart.md)与应用程序集成。
+请在代码中使用 REST API，或按照 [.NET SDK 快速入门](dotnet-sdk-quickstart.md) 与应用程序集成。
