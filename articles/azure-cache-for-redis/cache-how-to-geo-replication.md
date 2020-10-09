@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839684"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825322"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何为 Azure Redis 缓存设置异地复制
 
@@ -73,7 +73,7 @@ ms.locfileid: "91839684"
 
     还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。****
 
-    ![突出显示了如何查看主缓存和辅助缓存的链接状态的屏幕截图。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    ![缓存状态](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
     复制过程完成后，“链接状态”改为“成功”。********
 
