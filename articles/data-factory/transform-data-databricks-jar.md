@@ -12,10 +12,10 @@ author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
 ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81414609"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
@@ -63,11 +63,11 @@ ms.locfileid: "81414609"
 |type|对于 Databricks Jar 活动，活动类型是 DatabricksSparkJar。|是|
 |linkedServiceName|Databricks 链接服务的名称，Jar 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md)一   文。|是|
 |mainClassName|类的全名，包含要执行的主要方法。 此类必须包含在作为库提供的 JAR 中。|是|
-|参数|将传递到主要方法的参数。  这是一个字符串数组。|否|
+|parameters|将传递到主要方法的参数。  这是一个字符串数组。|否|
 |库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|是（至少有一个包含 mainClassName 方法）|
 
 > [!NOTE]
-> **已知问题**-使用相同的[交互式群集](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks)运行并发 Databricks Jar 活动（无需群集重新启动）时，在 Databricks 中存在一个已知问题，以下活动将使用第一个活动的参数。 因此，将错误传递给后续作业的参数。 若要缓解这种情况，请改用[作业群集](compute-linked-services.md#example---using-new-job-cluster-in-databricks)。 
+> **已知问题** -使用相同的 [交互式群集](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) 运行并发 Databricks Jar 活动 (在没有群集重启) 的情况下，将在 Databricks 中存在一个已知问题，其中，第一个活动的参数将用于以下活动。 因此，将错误传递给后续作业的参数。 若要缓解这种情况，请改用 [作业群集](compute-linked-services.md#example---using-new-job-cluster-in-databricks) 。 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
 ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75933937"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 生态系统中工作
@@ -70,8 +70,8 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 * 本地开发和运行 Scala Spark 应用程序。
 
 以下文章介绍了相关信息：
-* Intellij 创意：[使用用于 Intellij 的 Azure 工具包插件和 SCALA SDK 创建 Apache Spark 应用程序。](spark/apache-spark-intellij-tool-plugin.md)
-* 用于 Eclipse 的 eclipse IDE 或 Scala IDE：[创建 Apache Spark 应用程序和 Azure Toolkit for Eclipse](spark/apache-spark-eclipse-tool-plugin.md)
+* Intellij 创意： [使用用于 Intellij 的 Azure 工具包插件和 SCALA SDK 创建 Apache Spark 应用程序。](spark/apache-spark-intellij-tool-plugin.md)
+* 用于 Eclipse 的 eclipse IDE 或 Scala IDE： [创建 Apache Spark 应用程序和 Azure Toolkit for Eclipse](spark/apache-spark-eclipse-tool-plugin.md)
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>Spark 上面向数据科研人员的 Notebook
 
@@ -84,7 +84,7 @@ HDInsight 中的 Apache Spark 群集包含可与 Jupyter Notebook 配合使用�
 
 如果遇到必须使用仅在 Linux 上可用的工具或技术的情况，请考虑以下选项：
 
-* **Windows 10 版 Bash on Ubuntu** 在 Windows 上提供一个 Linux 子系统。 Bash 允许直接运行 Linux 实用工具，而无需维护专用的 Linux 安装。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统 (Windows 10) 安装指南](https://docs.microsoft.com/windows/wsl/install-win10)。  其他 [Unix shell](https://www.gnu.org/software/bash/) 也将适用。
+* **Windows 10 版 Bash on Ubuntu** 在 Windows 上提供一个 Linux 子系统。 Bash 允许直接运行 Linux 实用工具，而无需维护专用的 Linux 安装。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。
 * 使用**适用于 Windows 的 Docker** 可以访问许多基于 Linux 的工具，可以直接从 Windows 运行。 例如，可以直接在 Windows 中使用 Docker 来运行适用于 Hive 的 Beeline 客户端。 还可以使用 Docker 运行本地 Jupyter Notebook，以及远程连接到 Spark on HDInsight。 [适用于 Windows 的 Docker 入门](https://docs.docker.com/docker-for-windows/)
 * 使用 **[MobaXTerm](https://mobaxterm.mobatek.net/)** 可以通过 SSH 连接以图形方式浏览群集文件系统。
 

@@ -1,7 +1,7 @@
 ---
 title: 通过智能 Labeler 加快图像标签
 titleSuffix: Azure Cognitive Services
-description: 在本指南中，你将学习如何使用智能 Labeler 生成图像的建议标记。 这使您可以更快地在训练自定义视觉模型时标记大量图像。
+description: 在本指南中，你将学习如何使用智能 Labeler 生成图像的建议标记。 这使你可以在训练自定义视觉模型时更快地标记大量图像。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73647751"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>通过智能 Labeler 加快图像标签
 
-在本指南中，你将学习如何使用智能 Labeler 生成图像的建议标记。 这使您可以更快地在训练自定义视觉模型时标记大量图像。
+在本指南中，你将学习如何使用智能 Labeler 生成图像的建议标记。 这使你可以在训练自定义视觉模型时更快地标记大量图像。
 
 为自定义视觉模型标记图像时，服务将使用模型的最新定型迭代来预测未标记图像的标签。 然后，它会根据所选的置信度阈值和预测不确定性，将这些预测作为建议标记显示。 然后，可以确认或更改建议，加速手动标记图像以进行训练的过程。
 
@@ -30,7 +30,7 @@ ms.locfileid: "73647751"
 * 只应为其内容已经过一次训练的图像请求建议标记。 不要为刚开始训练的新标记获取建议。
 
 > [!IMPORTANT]
-> Smart Labeler 功能使用与常规预测相同的[定价模型](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)。 第一次触发一组图像的建议标记时，将按与预测调用相同的方式进行收费。 之后，该服务将在数据库中将所选图像的结果存储30天，并且可以在该时间段内随时访问这些结果。 30天后，如果再次请求其建议的标记，则会向你收费。
+> Smart Labeler 功能使用与常规预测相同的 [定价模型](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) 。 第一次触发一组图像的建议标记时，将按与预测调用相同的方式进行收费。 之后，该服务将在数据库中将所选图像的结果存储30天，并且可以在该时间段内随时访问这些结果。 30天后，如果再次请求其建议的标记，则会向你收费。
 
 ## <a name="smart-labeler-workflow"></a>智能 Labeler 工作流
 
@@ -41,13 +41,13 @@ ms.locfileid: "73647751"
     > [!TIP]
     > 请确保在以后使用所需建议的所有标记。
 1. 开始训练过程。
-1. 训练完成后，导航到未标记**的视图**，并在左窗格中选择 "**获取建议的标记**" 按钮。
+1. 训练完成后，导航到未标记 **的视图** ，并在左窗格中选择 " **获取建议的标记** " 按钮。
     > [!div class="mx-imgBorder"]
     > !["未标记的图像" 选项卡下显示了 "建议的标记" 按钮。](./media/suggested-tags/suggested-tags-button.png)
 1. 在出现的弹出窗口中，设置想要建议的映像数。 只应获取部分未标记图像的初始标记建议。 循环访问此过程时，将获得更好的标记建议。
 1. 确认建议的标记，修复不正确的标记。
     > [!TIP]
-    > 带有建议标记的图像按其预测不确定性排序（较小的值表明置信度较低）。 您可以使用 "**按不确定性排序**" 选项更改排序顺序。 如果将顺序设置为 "**高**" 并将其设置为 "低"，则可以先更正高确定性预测，然后迅速确认不确定性的预测。
+    > 带有建议标记的图像按其预测不确定性排序 (较小的值表明置信度) 较高。 您可以使用 " **按不确定性排序** " 选项更改排序顺序。 如果将顺序设置为 " **高**" 并将其设置为 "低"，则可以先更正高确定性预测，然后迅速确认不确定性的预测。
     * 在 "图像分类项目" 中，可以选择和确认批次中的标记。 按给定的建议标记筛选视图，取消选择标记为错误的图像，然后确认批处理中的其余部分。
         > [!div class="mx-imgBorder"]
         > ![对于带有筛选器的 IC，建议标记以批处理模式显示。](./media/suggested-tags/ic-batch-mode.png)

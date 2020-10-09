@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73827412"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>预测性维护解决方案加速器概述
@@ -53,7 +53,7 @@ ms.locfileid: "73827412"
 
 模拟设备可以处理在解决方案中通过 IoT 中心发送的以下命令：
 
-| Command | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 | StartTelemetry |控制模拟的状态。<br/>使设备开始发送遥测 |
 | StopTelemetry |控制模拟的状态。<br/>使设备停止发送遥测 |
@@ -62,7 +62,7 @@ IoT 中心会提供设备命令确认。
 
 ## <a name="azure-stream-analytics-job"></a>Azure 流分析作业
 
-**作业：遥测**使用以下两个语句操作传入设备遥测流：
+**作业：遥测** 使用以下两个语句操作传入设备遥测流：
 
 * 第一个语句会从设备选择所有遥测，然后将这些数据 从该存储中，数据在 Web 应用中进行可视化。
 * 第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到事件处理器****。
@@ -71,13 +71,13 @@ IoT 中心会提供设备命令确认。
 **事件处理器主机**在 Azure Web 作业中运行。 **事件处理器** 为已完成的周期获取平均传感器值。 然后，它将这些值传递给用于计算引擎 RUL 的已训练模型。 API 提供对属于解决方案一部分的机器学习工作区中的模型的访问。
 
 ## <a name="machine-learning"></a>机器学习
-机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 你可以从[azureiotsolutions.com][lnk-azureiotsolutions]页上的解决方案磁贴导航到 "机器学习" 工作区。 当解决方案处于“就绪”状态时，会提供一个磁贴。****
+机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 你可以从 [azureiotsolutions.com][lnk-azureiotsolutions] 页上的解决方案磁贴导航到 "机器学习" 工作区。 当解决方案处于“就绪”状态时，会提供一个磁贴。****
 
 Azure 机器学习模型可用作模板，它展示了如何使用通过 IoT 解决方案加速器服务收集的遥测数据。 Microsoft 基于公开的数据<sup>1</sup> 构建了飞机引擎的[回归模型\[\]][lnk_regression_model]，并发布了有关如何使用该模型的分步指南。
 
 Azure IoT 预测性维护解决方案加速器使用通过此模板创建的回归模型。 该模型将部署到你的 Azure 订阅，并且将通过一个自动生成的 API 使其可用。 该解决方案包含代表 4 个（共 100 个）引擎和 4 个（共 21 个）传感器数据流的测试数据的子集。 该数据可通过已训练模型提供精确的结果。
 
-*\[1 \] . Saxena 和 Goebel （2008）。"Turbofan 引擎降级模拟数据集"，NASA 显示 Prognostics 数据存储库（ https://c3.nasa.gov/dashlink/resources/139/) ，NASA 显示研究中心，Moffett 字段，CA*
+*\[1 \] . Saxena 和 Goebel (2008) 。"Turbofan 引擎降级模拟数据集"，NASA 显示 Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/) ，NASA 显示调研中心，Moffett 字段，CA*
 
 ## <a name="next-steps"></a>后续步骤
 了解预测性维护解决方案加速器的关键组件后，可对其进行自定义。

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895320"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
@@ -72,7 +72,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ### <a name="service-details"></a>服务详细信息
 
 * 查看开源库版本。
-* 检查[Azure 服务中断](https://azure.microsoft.com/status/)。  
+* 检查 [Azure 服务中断](https://azure.microsoft.com/status/)。  
 * 检查 Azure 服务使用限制。 
 * 检查 Azure 虚拟网络子网配置。  
 

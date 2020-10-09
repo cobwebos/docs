@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73744790"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>在内容审查器中导出或删除用数据
@@ -27,10 +27,10 @@ ms.locfileid: "73744790"
 
 | 数据 | 导出操作 | 删除操作 |
 | ---- | ---------------- | ---------------- |
-| 帐户信息（订阅密钥） | 不可用 | 使用 Azure 门户（Azure 订阅）进行删除。 或者使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面中的“删除团队”**** 按钮。 |
+| 帐户信息（订阅密钥） | 空值 | 使用 Azure 门户（Azure 订阅）进行删除。 或者使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面中的“删除团队”**** 按钮。 |
 | 用于自定义匹配的图像 | 调用[获取图像 ID API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f676)。 映像以单向专有哈希格式存储，并且无法提取实际映像。 | 调用[删除所有图像 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f686)。 或者使用 Azure 门户删除内容审查器资源。 |
 | 用于自定义匹配的术语 | 调用[获取所有词条 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67e) | 调用[删除所有词条 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67d)。 或者使用 Azure 门户删除内容审查器资源。 |
-| Tags | 不可用 | 使用评审 UI 中“标记设置”页面上可用于每个标记的“删除”图标**** 或者使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面中的“删除团队”**** 按钮。 |
+| 标记 | 空值 | 使用评审 UI 中“标记设置”页面上可用于每个标记的“删除”图标**** 或者使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面中的“删除团队”**** 按钮。 |
 | 审阅 | 调用[获取评审 API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) | 使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面中的“删除团队”**** 按钮。
-| 用户 | 不可用 | 使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面上可用于每个用户的“删除”图标****。 或者使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面中的“删除团队”**** 按钮。 |
+| 用户 | 空值 | 使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面上可用于每个用户的“删除”图标****。 或者使用[评审 UI](https://contentmoderator.cognitive.microsoft.com/)“团队设置”页面中的“删除团队”**** 按钮。 |
 

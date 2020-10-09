@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75980635"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的部署问题：常见问题 (FAQ)
@@ -45,7 +45,7 @@ ms.locfileid: "75980635"
 有关解决此类分配失败的帮助，请参阅[云服务分配失败：解决方法](cloud-services-allocation-failures.md#solutions)。
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>为何更改 VM 大小或将新 VM 添加到现有云服务有时会导致分配失败？
-数据中心内的群集可能具有不同的计算机类型配置（例如，系列、Av2 系列、D 系列、Dv2 系列、G 系列、H 系列，等等）。 但是，并非所有群集都一定要包含所有类型的 VM。 例如，如果尝试将 D 系列 VM 添加到已在仅限 A 系列的群集中部署的云服务，则会发生分配失败。 如果尝试更改 VM SKU 大小（例如，从 A 系列切换到 D 系列），也会发生此问题。
+数据中心内的群集可能具有不同的计算机类型配置 (例如，一系列、Av2 系列、D 系列、Dv2 系列、G 系列、H 系列等 ) 。 但是，并非所有群集都一定要包含所有类型的 VM。 例如，如果尝试将 D 系列 VM 添加到已在仅限 A 系列的群集中部署的云服务，则会发生分配失败。 如果尝试更改 VM SKU 大小（例如，从 A 系列切换到 D 系列），也会发生此问题。
 
 有关解决此类分配失败的帮助，请参阅[云服务分配失败：解决方法](cloud-services-allocation-failures.md#solutions)。
 

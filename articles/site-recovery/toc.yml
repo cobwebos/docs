@@ -48,6 +48,22 @@
           href: tutorial-dr-drill-azure.md
         - name: 故障转移到 Azure
           href: vmware-azure-tutorial-failover-failback.md
+    - name: Azure VMware 解决方案 - 灾难恢复到 Azure
+      items:
+        - name: 准备 Azure
+          href: avs-tutorial-prepare-azure.md
+        - name: 准备 Azure VMware 解决方案
+          href: avs-tutorial-prepare-avs.md
+        - name: 设置复制
+          href: avs-tutorial-replication.md
+        - name: 运行灾难恢复演练
+          href: avs-tutorial-dr-drill-azure.md
+        - name: 故障转移到 Azure
+          href: avs-tutorial-failover.md
+        - name: 重新保护 VM
+          href: avs-tutorial-reprotect.md
+        - name: 从 Azure 进行故障回复
+          href: avs-tutorial-failback.md
     - name: Hyper-V VM 灾难恢复到 Azure
       items:
         - name: 准备 Azure
@@ -260,7 +276,7 @@
               href: vmware-azure-enable-replication.md
             - name: 从复制中排除磁盘
               href: vmware-azure-exclude-disk.md
-            - name: 演练 - 设置通过多租户和 CSP 进行 VMWare VM 复制
+            - name: 演练 - 设置通过多租户和 CSP 进行 VMware VM 复制
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: 运行故障转移和故障回复
           items:

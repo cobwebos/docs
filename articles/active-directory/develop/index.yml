@@ -3,18 +3,18 @@ title: Microsoft 标识平台文档
 summary: Microsoft 标识平台是一项身份验证服务，也是开源库和应用程序管理工具。 在我们的快速入门、教程和代码示例中了解如何创建基于标准的新式身份验证解决方案。 构建这样的应用程序，你的用户和客户登录它们来使用其 Microsoft 身份或社交帐户，或者它们授权访问你的 API 或 Microsoft API（例如 Microsoft Graph）。
 metadata:
   ms.topic: landing-page
-  ms.date: 09/26/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
-  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
+  ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/28/2020
-  ms.locfileid: "91403137"
+  ms.lasthandoff: 10/07/2020
+  ms.locfileid: "91801879"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Microsoft 标识 Web 库概述
+      url: microsoft-identity-web.md
     - text: 教程：Blazor Server
       url: tutorial-blazor-server.md
     - text: 快速入门：保护 ASP.NET Core Web API

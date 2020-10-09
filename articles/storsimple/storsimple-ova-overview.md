@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76273875"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
@@ -32,7 +32,7 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 
 下表总结了 StorSimple 虚拟阵列的重要功能。
 
-| 功能 | StorSimple 虚拟阵列 |
+| Feature | StorSimple 虚拟阵列 |
 | --- | --- |
 | 安装要求 |使用虚拟化基础结构（HYPER-V 或 VMware） |
 | 可用性 |单节点 |
@@ -57,7 +57,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下表介绍了 StorSimple 虚拟阵列解决方案提供的某些主要优势。
 
-| 功能 | 好处 |
+| Feature | 好处 |
 | --- | --- |
 | 透明集成 |虚拟阵列支持 iSCSI 或 SMB 协议。 本地层和云层之间的数据移动是无缝的，并且对用户透明。 |
 | 降低存储成本 |借助 StorSimple，预配足够的本地存储来满足对最常使用的热门数据的当前需求。 随着存储需求的增长，StorSimple 将冷数据分层到经济高效的云存储中。 在发送到云之前对数据进行重复数据删除和压缩，以进一步降低存储要求和开支。 |
@@ -69,7 +69,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下面以表格形式列出了受支持的 StorSimple 工作负荷的摘要。
 
-|方案     |工作负荷     |支持      |限制               | 适用版本|
+|方案     |工作负载     |支持      |限制               | 适用版本|
 |-------------|-------------|---------------|---------------------------|--------------------|
 |远程办公室/分支机构 (ROBO)  |文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 |云存档  |存档文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
@@ -102,17 +102,17 @@ StorSimple 虚拟阵列尤其适合以下工作流：
 虚拟阵列支持以下数据保护和灾难恢复方案：
 
 * **卷或共享存储** - 使用还原作为恢复卷或共享的新工作流。 使用此方法恢复整个卷或共享。
-* **项目级恢复** - 共享允许对最近备份的简化访问。 可以轻松地从云中提供的特殊*备份*文件夹恢复单个文件。 此还原功能是用户驱动的，不需要任何管理干预。
+* **项目级恢复** - 共享允许对最近备份的简化访问。 可以轻松地从云中提供的特殊 *备份* 文件夹恢复单个文件。 此还原功能是用户驱动的，不需要任何管理干预。
 * **灾难恢复** - 使用故障转移功能可将所有卷或共享恢复到新的虚拟阵列。 创建新的虚拟阵列并向 StorSimple Device Manager 服务注册它，然后故障转移原始虚拟阵列。 然后，新的虚拟阵列会采用预配的资源。
 
 ## <a name="storsimple-virtual-array-components"></a>StorSimple 虚拟阵列组件
 
 虚拟阵列包括以下组件：
 
-* [虚拟阵列](#virtual-array)–基于虚拟化环境或虚拟机监控程序中预配的虚拟机的混合云存储设备。
+* [虚拟阵列](#virtual-array) –基于虚拟化环境或虚拟机监控程序中预配的虚拟机的混合云存储设备。
 * [StorSimple 设备管理器 service](#storsimple-device-manager-service) – Azure 门户的扩展，使你可以从可从不同地理位置访问的单个 web 界面管理一台或多台 StorSimple 设备。 可使用 StorSimple Device Manager 服务创建和管理服务、查看和管理设备和警报以及管理卷、共享和现有快照。
-* [本地 web 用户界面](#local-web-user-interface)-一种基于 WEB 的 UI，用于配置设备，以便它可以连接到本地网络，然后向 StorSimple 设备管理器服务注册设备。 
-* [命令行接口](#command-line-interface)-一种 Windows PowerShell 接口，可用于在虚拟阵列上启动支持会话。
+* [本地 web 用户界面](#local-web-user-interface) -一种基于 WEB 的 UI，用于配置设备，以便它可以连接到本地网络，然后向 StorSimple 设备管理器服务注册设备。 
+* [命令行接口](#command-line-interface) -一种 Windows PowerShell 接口，可用于在虚拟阵列上启动支持会话。
   以下各节更详细地介绍了其中的每个组件，并解释该解决方案如何排列数据、分配存储并促进存储管理和数据保护。
 
 ### <a name="virtual-array"></a>虚拟阵列
@@ -168,7 +168,7 @@ Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple D
 * [计划和按需备份](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>自动存储分层
-虚拟阵列使用新的分层机制管理虚拟阵列和云上存储的数据。 只有两个层：本地虚拟阵列和 Azure 云存储。 StorSimple 虚拟阵列根据热映射将数据自动排列为层，热映射跟踪当前使用情况、年限和与其他数据的关系。 使用最频繁（最热）的数据存储在本地，不太频繁使用的数据和非活动数据则自动迁移到云中。 （所有备份都存储在云中。）StorSimple 会随着使用模式的变化调整和重新排列数据和存储分配。 例如，随着时间的推移，一些信息可能不太频繁使用。 随着数据的使用频率逐渐减少，将其向外分层到云。 如果同一数据再次变得频繁使用，将其向内分层到存储阵列。
+虚拟阵列使用新的分层机制管理虚拟阵列和云上存储的数据。 只有两个层：本地虚拟阵列和 Azure 云存储。 StorSimple 虚拟阵列根据热映射将数据自动排列为层，热映射跟踪当前使用情况、年限和与其他数据的关系。 使用最频繁（最热）的数据存储在本地，不太频繁使用的数据和非活动数据则自动迁移到云中。  (所有备份都存储在云中。 ) StorSimple 会随着使用模式的变化调整和重新排列数据和存储分配。 例如，随着时间的推移，一些信息可能不太频繁使用。 随着数据的使用频率逐渐减少，将其向外分层到云。 如果同一数据再次变得频繁使用，将其向内分层到存储阵列。
 
 特定分层共享或卷的数据保证拥有自己的本地层空间（大约为该共享或卷的总预配空间的 10%）。 尽管这降低了该共享或卷所在的虚拟阵列上的可用存储，但它确保了单个共享或卷的分层不会受到其他共享或卷的分层需求的影响。 因此一个共享或卷上的非常繁忙的工作负荷无法将所有其他工作负荷强制施加到云。
 
@@ -208,7 +208,7 @@ StorSimple 数据保护功能支持创建按需备份。 此外，默认备份�
  - 提醒用户设置，可在其中配置用户电子邮件地址。 此信息可以由管理员清除。 
  - 可访问驻留在共享上的数据的用户。 会显示可访问共享数据的用户列表，并可供导出。 删除共享时也会删除此列表。
 
-有关详细信息，请[在信任中心查看 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)。
+有关详细信息，请 [在信任中心查看 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)。
 
 ## <a name="next-steps"></a>后续步骤
 

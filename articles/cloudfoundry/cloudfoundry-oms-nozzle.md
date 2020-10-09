@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277356"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
-[Azure Monitor](https://azure.microsoft.com/services/log-analytics/)是 Azure 中的一项服务。 它有助于用户收集并分析云和本地环境生成的数据。
+[Azure Monitor](https://azure.microsoft.com/services/log-analytics/) 是 Azure 中的一项服务。 它有助于用户收集并分析云和本地环境生成的数据。
 
-Log Analytics 喷嘴（喷嘴）是一个 Cloud Foundry （CF）组件，它将指标从[Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose 转发到 Azure Monitor 日志。 使用 Nozzle，可跨多个部署收集、查看和分析 CF 系统的运行状况和性能指标。
+喷嘴) Log Analytics 喷嘴 (是 Cloud Foundry (CF) 组件，该组件将指标从 [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose 转发到 Azure Monitor 日志。 使用 Nozzle，可跨多个部署收集、查看和分析 CF 系统的运行状况和性能指标。
 
 在本文档中，将了解如何将喷嘴部署到 CF 环境，然后从 Azure Monitor 日志控制台访问数据。
 
@@ -100,7 +100,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>通过 CF CLI 以管理员身份登录到 CF 部署
 
-运行下面的命令：
+运行以下命令：
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -124,13 +124,13 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>下载最新的 Log Analytics Nozzle 版本
 
-运行下面的命令：
+运行以下命令：
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
 ```
 
-#### <a name="set-environment-variables"></a>设置环境变量。
+#### <a name="set-environment-variables"></a>设置环境变量
 
 现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 Log Analytics 工作区信息。
 
@@ -155,7 +155,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>从开发计算机推送应用程序
 
-请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行下面的命令：
+请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行以下命令：
 ```
 cf push
 ```
@@ -193,7 +193,7 @@ cf apps
 
 可以[创建警报](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)，并视需要自定义查询和阈值。 下面是建议的警报：
 
-| 搜索查询                                                                  | 基于以下项生成警报 | 描述                                                                       |
+| 搜索查询                                                                  | 基于以下项生成警报 | 说明                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 结果数 < 1   | **bbs.Domain.cf-apps** 指示 cf-apps 域是否为最新。 也就是说，来自 Cloud Controller 的 CF 应用程序请求会同步到 bbs.LRPsDesired（Diego 需要的 AI），以供执行。 没有收到数据则表示在指定时间范围内，cf-apps 域不是最新的。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 结果数 > 0   | 对于 Diego 单元，0 表示正常，1 表示不正常。 设置在指定时间范围内检测到多个不正常的 Diego 单元时发出的警报。 |
@@ -201,7 +201,7 @@ cf apps
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | 结果数 > 0   | Consul 定期发出自己的运行状况状态。 0 表示系统正常，1 表示路由发射器检测到 Consul 停止运行。 |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | 结果数 > 0 | 由于反压力，Doppler 特意降低了消息的增量数。 |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | 结果数 > 0   | Loggregator 发出 **LGR**，指示日志记录进程存在的问题。 例如，日志消息输出过高时，就会出现此类问题。 |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 结果数 > 0   | 当喷嘴接收到来自 loggregator 的使用者警报缓慢时，它会将**slowConsumerAlert**向 valuemetric 发送到 Azure Monitor 日志。 |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 结果数 > 0   | 当喷嘴接收到来自 loggregator 的使用者警报缓慢时，它会将 **slowConsumerAlert** 向 valuemetric 发送到 Azure Monitor 日志。 |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | 结果数 > 0   | 如果丢失的事件增量数达到阈值，表示 Nozzle 存在问题，无法正常运行。 |
 
 ## <a name="scale"></a>缩放
@@ -226,7 +226,7 @@ Loggregator 发送 **LGR** 日志消息，指示日志记录进程存在的问�
 ### <a name="remove-the-nozzle-from-ops-manager"></a>通过 Ops Manager 删除 Nozzle
 
 1. 登录到 Ops Manager
-2. 找到 PCF 磁贴**Log Analytics 喷嘴 Microsoft Azure** 。
+2. 找到 PCF 磁贴 **Log Analytics 喷嘴 Microsoft Azure** 。
 3. 选择垃圾桶图标并确认删除。
 
 ### <a name="remove-the-nozzle-from-your-development-computer"></a>通过开发计算机删除 Nozzle

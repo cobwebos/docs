@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
 ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76119612"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查故障 Azure VM
 
-本文介绍如何在 Microsoft Azure 中创建嵌套虚拟化环境，以便可以将故障 VM 的磁盘装载到 Hyper-v 主机（修复 VM）上，以便进行故障排除。
+本文介绍如何在 Microsoft Azure 中创建嵌套虚拟化环境，以便可以在 Hyper-v 主机上装载错误 VM 的磁盘， (修复 VM) 进行故障排除。
 
 ## <a name="prerequisites"></a>先决条件
 

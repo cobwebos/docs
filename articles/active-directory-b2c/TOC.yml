@@ -256,6 +256,12 @@
               href: configure-tokens-custom-policy.md
             - name: 配置会话行为
               href: session-behavior-custom-policy.md
+        - name: API 连接器
+          items:
+            - name: 概述
+              href: api-connectors-overview.md
+            - name: 添加 API 连接器
+              href: add-api-connector.md
         - name: 传递外部 IdP 令牌
           href: idp-pass-through-custom.md
         - name: 自适应体验

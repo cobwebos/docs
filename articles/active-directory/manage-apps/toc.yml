@@ -110,18 +110,26 @@
   items:
     - name: 分配用户和管理对应用的访问权限
       items:
-        - name: 配置用户同意
-          href: configure-user-consent.md
-        - name: 管理并评估许可请求
-          href: manage-consent-requests.md
-        - name: 授予租户范围的管理员许可
-          href: grant-admin-consent.md
-        - name: 配置管理员同意工作流（预览版）
-          href: configure-admin-consent-workflow.md
+        - name: 许可和权限
+          items:
+            - name: 配置用户同意
+              href: configure-user-consent.md
+            - name: 配置组所有者同意
+              href: configure-user-consent-groups.md
+            - name: 配置权限分类
+              href: configure-permission-classifications.md
+            - name: 管理应用同意策略
+              href: manage-app-consent-policies.md
+            - name: 配置管理员同意工作流（预览版）
+              href: configure-admin-consent-workflow.md
+            - name: 管理并评估许可请求
+              href: manage-consent-requests.md
+            - name: 授予租户范围的管理员许可
+              href: grant-admin-consent.md
+            - name: 查看向应用授予的权限
+              href: manage-application-permissions.md
         - name: 管理应用的用户分配
           href: assign-user-or-group-access-portal.md
-        - name: 查看向应用授予的权限
-          href: manage-application-permissions.md
         - name: 在“我的应用”上创建集合
           href: access-panel-collections.md
         - name: 使用自助服务应用访问权限

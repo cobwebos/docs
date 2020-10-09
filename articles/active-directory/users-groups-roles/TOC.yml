@@ -183,6 +183,8 @@
                   href: roles-custom-available-permissions.md
                 - name: 企业应用权限
                   href: custom-enterprise-app-permissions.md
+                - name: 应用同意权限
+                  href: custom-consent-permissions.md
             - name: 委托应用管理权限
               href: roles-delegate-app-roles.md
         - name: 通过组来管理角色分配

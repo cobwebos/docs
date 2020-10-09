@@ -106,6 +106,8 @@
       items:
         - name: Azure 密钥保管库开发人员指南
           href: developers-guide.md
+        - name: 使用 Azure 资源管理器部署 Key Vault
+          href: vault-create-template.md
         - name: 保存 Web 应用机密
           href: vs-secure-secret-appsettings.md
         - name: 使用 .NET 进行服务到服务身份验证
