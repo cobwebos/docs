@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77019989"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>将工作负荷 Vm 从本地 vCenter 迁移到私有云 vCenter 环境
@@ -26,7 +26,7 @@ ms.locfileid: "77019989"
 * 本地环境和私有云之间的[站点到站点 VPN 连接](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
 * ExpressRoute Global Reach 本地 ExpressRoute 线路与 CloudSimple ExpressRoute 线路之间的连接。
 
-从本地 vCenter 环境到私有云的网络路径必须可用于使用 vMotion 迁移 Vm。  本地 vCenter 上的 vMotion 网络必须具有路由功能。  验证防火墙是否允许本地 vCenter 和私有云 vCenter 之间的所有 vMotion 流量。 （在私有云上，默认情况下会配置 vMotion 网络上的路由。）
+从本地 vCenter 环境到私有云的网络路径必须可用于使用 vMotion 迁移 Vm。  本地 vCenter 上的 vMotion 网络必须具有路由功能。  验证防火墙是否允许本地 vCenter 和私有云 vCenter 之间的所有 vMotion 流量。  (在私有云上，默认情况下会配置 vMotion 网络上的路由。 ) 
 
 ## <a name="migrate-isos-and-templates"></a>迁移 Iso 和模板
 
@@ -59,7 +59,7 @@ Move-VM -VM $vm -VMotionPriority High -Destination (Get-VMhost -Server $targetVC
 
 利用此选项，可以将工作负荷从本地 VMware 环境实时迁移到 Azure 中的私有云。  使用此扩展第2层网络，私有云中将提供本地子网。  迁移后，不需要为 Vm 分配新的 IP 地址。
 
-[使用第2层延伸网络迁移工作负载](migration-layer-2-vpn.md)介绍了如何使用第2层 VPN 将第2层网络从本地环境延伸到私有云。
+[使用第2层延伸网络迁移工作负载](migration-layer-2-vpn.md) 介绍了如何使用第2层 VPN 将第2层网络从本地环境延伸到私有云。
 
 ## <a name="migrate-vms-using-backup-and-disaster-recovery-tools"></a>使用备份和灾难恢复工具迁移 Vm
 

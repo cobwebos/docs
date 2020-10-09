@@ -9,10 +9,10 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173383"
 ---
 ## <a name="download-the-source-code"></a>下载源代码
@@ -76,4 +76,4 @@ git submodule foreach git pull origin master
 
 将从此 Azure Key Vault 资源读取配置值。 这些环境变量可保存在部署中的 " ** \<your home folder\> \\ pc \\ \<solution name\> ** " 文件中。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
 
-微服务所需的某些配置存储在最初部署时创建的**Key Vault**实例中。 应根据需要修改 keyvault 中的相应变量。
+微服务所需的某些配置存储在最初部署时创建的 **Key Vault** 实例中。 应根据需要修改 keyvault 中的相应变量。

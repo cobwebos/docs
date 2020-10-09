@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80875072"
 ---
 # <a name="create-containers-for-reuse"></a>创建要重复使用的容器
 
-使用这些容器配方来创建可重用的认知服务容器。 可以用部分或全部配置设置来构建容器，以便在容器启动时_不_需要它们。
+使用这些容器配方来创建可重用的认知服务容器。 可以用部分或全部配置设置来构建容器，以便在容器启动时 _不_ 需要它们。
 
 创建此新容器层（包含设置）并在本地对其进行测试后，可将容器存储在容器注册表中。 容器启动时，它只需获取当前未存储在容器中的设置。 专用注册表容器提供用于传入这些设置的配置空间。
 

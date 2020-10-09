@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80879592"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure 区块链服务安全
@@ -17,13 +17,13 @@ Azure 区块链服务使用多个 Azure 功能来保证数据的安全性和可�
 
 ## <a name="isolation"></a>隔离
 
-Azure 区块链服务资源隔离于专用虚拟网络中。 每个事务和验证节点均为虚拟机（VM）。 一个虚拟网络中的 Vm 无法直接与其他虚拟网络中的 Vm 通信。 隔离可确保通信在虚拟网络中保持私有。 有关 Azure 虚拟网络隔离的详细信息，请参阅[Azure 公有云中的隔离](../../security/fundamentals/isolation-choices.md#networking-isolation)。
+Azure 区块链服务资源隔离于专用虚拟网络中。 每个事务和验证节点都是 (VM) 的虚拟机。 一个虚拟网络中的 Vm 无法直接与其他虚拟网络中的 Vm 通信。 隔离可确保通信在虚拟网络中保持私有。 有关 Azure 虚拟网络隔离的详细信息，请参阅 [Azure 公有云中的隔离](../../security/fundamentals/isolation-choices.md#networking-isolation)。
 
 ![VNET 关系图](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>加密
 
-用户数据存储在 Azure 存储中。 用户数据以动态和静态加密，以保证安全性和保密性。 有关详细信息，请参阅[Azure 存储安全指南](../../storage/blobs/security-recommendations.md)。
+用户数据存储在 Azure 存储中。 用户数据以动态和静态加密，以保证安全性和保密性。 有关详细信息，请参阅 [Azure 存储安全指南](../../storage/blobs/security-recommendations.md)。
 
 ## <a name="authentication"></a>身份验证
 
@@ -43,7 +43,7 @@ Azure 区块链服务资源隔离于专用虚拟网络中。 每个事务和验�
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory （Azure AD）使用基于声明的身份验证机制，其中用户通过使用 Azure AD 用户凭据 Azure AD 进行身份验证。 Azure AD 提供基于云的标识管理，允许客户在整个企业中使用单个标识并访问云中的应用程序。 Azure 区块链 Service 与 Azure AD 启用 ID 联合、单一登录和多重身份验证相集成。 你可以为组织中的用户、组和应用程序角色分配区块链成员和节点访问权限。
+Azure Active Directory (Azure AD) 使用基于声明的身份验证机制，其中用户通过 Azure AD 使用 Azure AD 用户凭据进行身份验证。 Azure AD 提供基于云的标识管理，允许客户在整个企业中使用单个标识并访问云中的应用程序。 Azure 区块链 Service 与 Azure AD 启用 ID 联合、单一登录和多重身份验证相集成。 你可以为组织中的用户、组和应用程序角色分配区块链成员和节点访问权限。
 
 [GitHub](https://github.com/Microsoft/azure-blockchain-connector/releases)上提供了 Azure AD 客户端代理。 客户端代理会将用户定向到 Azure AD 登录页，并在身份验证成功后获取持有者令牌。 然后，用户将以太坊客户端应用程序（例如 Geth 或 Truffle）连接到客户端代理的终结点。 最后，在提交事务时，客户端代理会在 http 标头中注入持有者令牌，并且反向代理使用 OAuth 协议来验证令牌。
 
@@ -59,4 +59,4 @@ Azure Active Directory （Azure AD）使用基于声明的身份验证机制，�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[如何为 Azure 区块链服务配置 Azure Active Directory 访问权限](configure-aad.md)。
+请参阅 [如何为 Azure 区块链服务配置 Azure Active Directory 访问权限](configure-aad.md)。

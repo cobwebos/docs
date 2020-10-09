@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 473bc0a58fe49c7f454c81402b57ddce7fc745b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173011"
 ---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>在云设备上配置远程管理
@@ -27,7 +27,7 @@ ms.locfileid: "67173011"
 
     1. 确保启用了“启用远程管理”。****
     2. 默认通过 HTTPS 连接。 可以选择使用 HTTP 进行连接。 只有受信任的网络才支持通过 HTTP 连接。 确保启用了 HTTP。
-    3. 在边栏选项卡顶部的命令栏中，单击 " **..."然后单击**"**下载证书**" 下载远程管理证书。 可以指定要在其中保存此文件的位置。 应当将此证书安装在用来连接到云设备的客户端或主机上。
+    3. 在边栏选项卡顶部的命令栏中，单击 " **..."然后单击** " **下载证书** " 下载远程管理证书。 可以指定要在其中保存此文件的位置。 应当将此证书安装在用来连接到云设备的客户端或主机上。
 
         ![“远程管理”边栏选项卡](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
 5. 在出现提示时单击“保存”，确认更改。****

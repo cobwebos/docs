@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80811109"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
@@ -81,7 +81,7 @@ NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC 实时 VM 访问
 
-[Azure 安全中心](../../security-center/security-center-intro.md)可以管理 vm 上的 nsg 并锁定对 vm 的访问，直到具有适当的基于角色的访问控制[RBAC](/azure/role-based-access-control/overview)权限的用户请求访问。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
+[Azure 安全中心](../../security-center/security-center-intro.md) 可以管理 vm 上的 nsg 并锁定对 vm 的访问，直到具有适当的基于角色的访问控制 [RBAC](/azure/role-based-access-control/overview) 权限的用户请求访问。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
 
 了解详细信息：
 
@@ -232,7 +232,7 @@ Azure 网络支持以下安全远程访问方案：
 Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均衡。 应用程序网关支持：
 
 * 基于 Cookie 的会话关联。 此功能可确保建立到负载均衡器后面的某个服务器的连接在客户端和服务器之间保持不变。 此操作确保了事务的稳定性。
-* TLS 卸载。 当客户端与负载均衡器连接时，该会话将使用 HTTPS （TLS）协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为 "TLS 卸载"，因为负载均衡器后面的 web 服务器不会遇到加密所涉及的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
+* TLS 卸载。 当客户端与负载均衡器连接时，该会话使用 HTTPS (TLS) 协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为 "TLS 卸载"，因为负载均衡器后面的 web 服务器不会遇到加密所涉及的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
 * 基于 URL 的内容路由。 此功能可使负载均衡器决定在哪里转接基于目标 URL 的连接。 它提供的弹性大于基于 IP 地址做出负载均衡决策的解决方案。
 
 了解详细信息：
@@ -389,7 +389,7 @@ Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure �
 
 了解详细信息：
 
-* [虚拟网络点击](../../virtual-network/virtual-network-tap-overview.md)
+* [虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)
 
 ### <a name="logging"></a>日志记录
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173412"
 ---
 远程连接到设备的过程不同，具体取决于客户端的操作系统。
@@ -38,7 +38,7 @@ ms.locfileid: "67173412"
 
     `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
 
-6. 在出现提示时提供密码。 使用用于登录本地 web UI 的相同密码。 默认的本地 web UI 密码为*Password1*。 使用远程 PowerShell 成功连接到设备后，会看到以下示例输出：  
+6. 在出现提示时提供密码。 使用用于登录本地 web UI 的相同密码。 默认的本地 web UI 密码为 *Password1*。 使用远程 PowerShell 成功连接到设备后，会看到以下示例输出：  
 
     ```
     Windows PowerShell
@@ -62,7 +62,7 @@ ms.locfileid: "67173412"
 - [仅 `gss-ntlmssp` 从 NTLM 模块安装包](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 对于 Ubuntu 客户端，请使用以下命令：
     - `sudo apt-get install gss-ntlmssp`
 
-有关详细信息，请参阅[通过 SSH 进行 PowerShell 远程处理](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。
+有关详细信息，请参阅 [通过 SSH 进行 PowerShell 远程处理](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。
 
 请按照以下步骤从 NFS 客户端进行远程连接。
 

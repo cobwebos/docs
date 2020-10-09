@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77020635"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>为 CloudSimple 私有云配置 vSAN 加密
 
 你可以配置 vSAN 软件加密功能，使你的 CloudSimple 私有云可以使用 Azure 虚拟网络中运行的密钥管理服务器。
 
-使用 vSAN 加密时，VMware 需要使用外部 KMIP 1.1 兼容的第三方密钥管理服务器（KMS）工具。 你可以利用 VMware 提供的任何受支持的 KMS，并可用于 Azure。
+使用 vSAN 加密时，VMware 要求使用外部 KMIP 1.1 兼容的第三方密钥管理服务器 (KMS) 工具。 你可以利用 VMware 提供的任何受支持的 KMS，并可用于 Azure。
 
 本指南介绍如何使用在 Azure 虚拟网络中运行的 HyTrust KeyControl KMS。 类似的方法可用于 vSAN 的任何其他经过认证的第三方 KMS 解决方案。
 
@@ -58,12 +58,12 @@ KMS 服务器群集在 Azure 虚拟网络中运行，可通过配置的 Azure Ex
 
 ### <a name="cloudsimple-portal-obtain-expressroute-peering-information"></a>CloudSimple 门户：获取 ExpressRoute 对等互连信息
 
-若要继续安装，需要提供 authorization 密钥和对等线路 URI，以便 ExpressRoute 以及对 Azure 订阅的访问权限。 此信息可在 CloudSimple 门户中的 "虚拟网络连接" 页面上找到。 有关说明，请参阅[设置与私有云的虚拟网络连接](virtual-network-connection.md)。 如果在获取信息时遇到任何问题，请[提出支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+若要继续安装，需要提供 authorization 密钥和对等线路 URI，以便 ExpressRoute 以及对 Azure 订阅的访问权限。 此信息可在 CloudSimple 门户中的 "虚拟网络连接" 页面上找到。 有关说明，请参阅 [设置与私有云的虚拟网络连接](virtual-network-connection.md)。 如果在获取信息时遇到任何问题，请 [提出支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ### <a name="azure-portal-connect-your-virtual-network-to-your-private-cloud"></a>Azure 门户：将虚拟网络连接到私有云
 
-1. 按照[使用 Azure 门户配置 ExpressRoute 的虚拟网络网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)中的说明，为虚拟网络创建虚拟网络网关。
-2. 按照[使用门户将虚拟网络连接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)中的说明，将虚拟网络链接到 CloudSimple ExpressRoute 线路。
+1. 按照 [使用 Azure 门户配置 ExpressRoute 的虚拟网络网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)中的说明，为虚拟网络创建虚拟网络网关。
+2. 按照 [使用门户将虚拟网络连接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)中的说明，将虚拟网络链接到 CloudSimple ExpressRoute 线路。
 3. 使用 CloudSimple 中的欢迎电子邮件中收到的 CloudSimple ExpressRoute 线路信息，将虚拟网络链接到 Azure 中的 CloudSimple ExpressRoute 线路。
 4. 输入 "授权密钥" 和 "对等线路 URI"，为连接指定一个名称，然后单击 **"确定"**。
 
@@ -71,11 +71,11 @@ KMS 服务器群集在 Azure 虚拟网络中运行，可通过配置的 Azure Ex
 
 ### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure 门户：在 Azure 资源管理器的虚拟网络中部署 HyTrust KeyControl 群集
 
-若要在 Azure 资源管理器的虚拟网络中部署 HyTrust KeyControl 群集，请执行以下任务。 有关详细信息，请参阅[HyTrust 文档](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)。
+若要在 Azure 资源管理器的虚拟网络中部署 HyTrust KeyControl 群集，请执行以下任务。 有关详细信息，请参阅 [HyTrust 文档](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0) 。
 
-1. 按照 HyTrust 文档中的说明，创建具有指定入站规则的 Azure 网络安全组（nsg-hytrust）。
+1. 按照 HyTrust 文档中的说明，使用指定的入站规则 (nsg-hytrust) 创建 Azure 网络安全组。
 2. 在 Azure 中生成 SSH 密钥对。
-3. 从 Azure Marketplace 中的映像部署初始 KeyControl 节点。  使用生成的密钥对的公钥，并选择**nsg-hytrust**作为 KeyControl 节点的网络安全组。
+3. 从 Azure Marketplace 中的映像部署初始 KeyControl 节点。  使用生成的密钥对的公钥，并选择 **nsg-hytrust** 作为 KeyControl 节点的网络安全组。
 4. 将 KeyControl 的专用 IP 地址转换为静态 IP 地址。
 5. 使用 SSH 连接到 KeyControl VM，使用以前提到的密钥对的公共 IP 地址和私钥。
 6. 当在 SSH shell 中出现提示时，选择将 `No` 节点设置为初始 KeyControl 节点。
@@ -83,18 +83,18 @@ KMS 服务器群集在 Azure 虚拟网络中运行，可通过配置的 Azure Ex
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI：配置 KMIP 服务器
 
-中转到 https://*公共*ip，其中*公共 ip*是 KeyControl 节点 VM 的公共 ip 地址。 请按照[HyTrust 文档](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)中的步骤进行操作。
+中转到 https://*公共*ip，其中 *公共 ip* 是 KeyControl 节点 VM 的公共 ip 地址。 请按照 [HyTrust 文档](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)中的步骤进行操作。
 
 1. [配置 KMIP 服务器](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
 2. [为 VMware 加密创建证书捆绑](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
 
 ### <a name="vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network"></a>vCenter UI：配置 vSAN 加密以在 Azure 虚拟网络中使用 KMS 群集
 
-按照 HyTrust 说明[在 vCenter 中创建 KMS 群集](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)。
+按照 HyTrust 说明 [在 vCenter 中创建 KMS 群集](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)。
 
 ![在 vCenter 中添加 KMS 群集详细信息](media/vsan-config01.png)
 
-在 vCenter 中，前往**群集 > "配置**"，并选择 "**常规**" 选项。 启用加密并选择以前添加到 vCenter 的 KMS 群集。
+在 vCenter 中，前往 **群集 > "配置** "，并选择 " **常规** " 选项。 启用加密并选择以前添加到 vCenter 的 KMS 群集。
 
 ![在 vCenter 中启用 vSAN 加密和配置 KMS 群集](media/vsan-config02.png)
 

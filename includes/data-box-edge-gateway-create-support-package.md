@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173409"
 ---
 如果遇到任何设备问题，你可以从系统日志创建支持包。 Microsoft 支持部门使用此包对问题进行故障排除。 按照以下步骤创建支持包：
@@ -31,11 +31,11 @@ ms.locfileid: "67173409"
 
     使用的参数如下所示：
 
-    - `-Path`-指定要将支持包复制到的网络或本地路径。 （必需）
-    - `-Credential`-指定用于访问受保护路径的凭据。
-    - `-Zip`-指定以生成 zip 文件。
-    - `-Include`-指定要包括在支持包中的组件。 如果未指定， `Default` 则假定为。
-    - `-IncludeArchived`-指定在支持包中包含存档的日志。
-    - `-IncludePeriodicStats`-指定在支持包中包含周期性的状态日志。
+    - `-Path` -指定要将支持包复制到的网络或本地路径。 （必需）
+    - `-Credential` -指定用于访问受保护路径的凭据。
+    - `-Zip` -指定以生成 zip 文件。
+    - `-Include` -指定要包括在支持包中的组件。 如果未指定， `Default` 则假定为。
+    - `-IncludeArchived` -指定在支持包中包含存档的日志。
+    - `-IncludePeriodicStats` -指定在支持包中包含周期性的状态日志。
 
     

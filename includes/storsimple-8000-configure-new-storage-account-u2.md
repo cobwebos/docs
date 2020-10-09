@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d6bad1ec584b28fee77bc654eba8a2d0c7b5df30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173013"
 ---
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>在 StorSimple Device Manager 服务所在的同一 Azure 订阅中添加存储帐户凭据
@@ -29,7 +29,7 @@ ms.locfileid: "67173013"
 
     3. 将根据所选的存储帐户显示**位置**（灰显并且在此处无法更改）。
 
-    4. 选择 "**启用 SSL 模式**"，为你的设备和云之间的网络通信创建一个安全通道。 如果仅在私有云中操作，请禁用“启用 SSL”。****
+    4. 选择 " **启用 SSL 模式** "，为你的设备和云之间的网络通信创建一个安全通道。 如果仅在私有云中操作，请禁用“启用 SSL”。****
 
         ![“添加存储帐户凭据”边栏选项卡](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct3.png)
 

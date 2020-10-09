@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
 ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76169530"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
@@ -22,7 +22,7 @@ ms.locfileid: "76169530"
 你是否刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
 
 > [!div class="checklist"]
-> * 随时了解*Azure 认知服务*中的新发展，或查找与*语音服务*相关的最新新闻。
+> * 随时了解 *Azure 认知服务*中的新发展，或查找与 *语音服务*相关的最新新闻。
 > * 发行说明包含所有发布版的信息。
 > * 搜索以查看社区是否讨论你的问题，或者是否已存在有关要实现的功能的现有文档。
 > * 如果未找到满意答案，请在 Stack Overflow 上提问。 
@@ -31,7 +31,7 @@ ms.locfileid: "76169530"
 
 ## <a name="stay-informed"></a>随时获取最新信息
 
-有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新信息，请跟踪[语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
+有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新信息，请跟踪 [语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
 
 ## <a name="release-notes"></a>发行说明
 

@@ -9,15 +9,15 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77024868"
 ---
 # <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>什么是 Azure VMware 解决方案（通过 CloudSimple）
 
-**Azure VMware 解决方案 By CloudSimple**是一项完全托管的服务，可让你在 Azure 中运行 VMware 平台。 此解决方案包括 vSphere、vCenter、vSAN、NSX 和相应的工具。 VMware 环境在 Azure 云位置的 Azure 裸机基础结构上以本机方式运行。 该服务包括有效且安全地使用 VMware 平台所需的所有功能。
+**Azure VMware 解决方案 By CloudSimple** 是一项完全托管的服务，可让你在 Azure 中运行 VMware 平台。 此解决方案包括 vSphere、vCenter、vSAN、NSX 和相应的工具。 VMware 环境在 Azure 云位置的 Azure 裸机基础结构上以本机方式运行。 该服务包括有效且安全地使用 VMware 平台所需的所有功能。
 
 ![Azure 上通过 CloudSimple 的 VMware 解决方案概述](media/azure-vmware-solution-by-cloudsimple.png)
 

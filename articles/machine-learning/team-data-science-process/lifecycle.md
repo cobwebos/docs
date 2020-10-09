@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76720446"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期
@@ -28,7 +28,7 @@ Team Data Science Process (TDSP) 提供可用于构建数据科学项目的建�
 
 TDSP 生命周期由 5 个以迭代方式执行的主要阶段组成。 这些阶段包括：
 
-   1. [业务理解](lifecycle-business-understanding.md)
+   1. [了解业务](lifecycle-business-understanding.md)
    2. [数据采集和理解](lifecycle-data.md)
    3. [建模](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)

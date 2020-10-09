@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus，aro，openshift，指标，red hat
 ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80886882"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中部署独立的 Prometheus 实例
@@ -23,16 +23,16 @@ ms.locfileid: "80886882"
 
 目标设置：
 
-- 一个项目（prometheus），其中包含 Prometheus 和 Alertmanager。
-- 包含要监视的应用程序的两个项目（应用程序 project1 和 project2）。
+- 一个项目 (prometheus) ，其中包含 Prometheus 和 Alertmanager。
+-  (应用程序 project1 和 project2) 的两个项目，其中包含要监视的应用程序。
 
 你将在本地准备一些 Prometheus 配置文件。 创建新文件夹以存储它们。 配置文件在群集中存储为机密，以防机密令牌稍后添加到群集中。
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>使用 OC 工具登录到群集
 
-1. 打开 web 浏览器，然后前往群集的 web 控制台（ https://openshift 。*随机 id*。*region*azmosa.io）。
+1. 打开 web 浏览器，然后前往群集 (的 web 控制台 https://openshift 。*随机 id*。*region*azmosa.io) 。
 2. 使用 Azure 凭据登录。
-3. 在右上角选择你的用户名，然后选择 "**复制登录命令**"。
+3. 在右上角选择你的用户名，然后选择 " **复制登录命令**"。
 4. 将用户名粘贴到将使用的终端。
 
 > [!NOTE]
@@ -78,9 +78,9 @@ scrape_configs:
 oc create secret generic prom --from-file=prometheus.yml -n prometheus-project
 ```
 
-Prometheus. docker-compose.override.yml 文件是一个基本的 Prometheus 配置文件。 它设置间隔，并在三个项目中配置自动发现（prometheus、project1、project2）。 在前面的配置文件中，自动发现的终结点通过 HTTP 擦除，无需身份验证。
+Prometheus. docker-compose.override.yml 文件是一个基本的 Prometheus 配置文件。 它在三个项目中设置间隔并配置自动发现 (prometheus，project1，project2) 。 在前面的配置文件中，自动发现的终结点通过 HTTP 擦除，无需身份验证。
 
-有关抓取终结点的详细信息，请参阅[Prometheus 局势 config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)。
+有关抓取终结点的详细信息，请参阅 [Prometheus 局势 config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)。
 
 
 ## <a name="prepare-the-alertmanager-config-file"></a>准备 Alertmanager config 文件
@@ -102,7 +102,7 @@ receivers:
 - name: default
 - name: deadmansswitch
 ```
-通过输入以下配置创建名为 Prom-警报的机密：
+输入以下配置，创建名为 Prom-Alerts 的密码：
 ```
 oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-project
 ```
@@ -113,12 +113,12 @@ Alertmanager. docker-compose.override.yml 是警报管理器配置文件。
 > 若要验证前面的两个步骤，请运行 `oc get secret -n prometheus-project` 命令。
 
 ## <a name="start-prometheus-and-alertmanager"></a>启动 Prometheus 和 Alertmanager
-请参阅[openshift/源存储库](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus)并下载[prometheus yaml](
-https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml)模板。 通过输入以下配置将模板应用到 prometheus-项目：
+请参阅 [openshift/源存储库](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) 并下载 [prometheus yaml](
+https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) 模板。 通过输入以下配置将模板应用到 prometheus-项目：
 ```
 oc process -f https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml | oc apply -f - -n prometheus-project
 ```
-Prometheus yaml 文件是一个 OpenShift 模板。 它将创建一个 Prometheus 实例，并在其前面创建一个具有 oauth 代理的实例和一个 Alertmanager 实例，该实例也使用 oauth 代理进行保护。 在此模板中，oauth 代理配置为允许任何可 "获取" prometheus 命名空间的用户（请参阅 `-openshift-sar` 标志）。
+Prometheus yaml 文件是一个 OpenShift 模板。 它将创建一个 Prometheus 实例，并在其前面创建一个具有 oauth 代理的实例和一个 Alertmanager 实例，该实例也使用 oauth 代理进行保护。 在此模板中，oauth 代理配置为允许任何可 "获取" prometheus 命名空间的用户 (参阅 `-openshift-sar` 标志) 。
 
 > [!NOTE]
 > 若要验证 prom StatefulSet 是否具有相同的所需和当前数量的副本，请运行 `oc get statefulset -n prometheus-project` 命令。 若要检查项目中的所有资源，请运行 `oc get all -n prometheus-project` 命令。
@@ -182,7 +182,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>可选：部署示例应用程序
 
-一切正常，但没有度量值源。 中转到 Prometheus URL （ https://prom-prometheus-project.apps .*随机 id*。*region*azmosa.io/）。 可以使用以下命令找到它：
+一切正常，但没有度量值源。 请参阅 Prometheus URL (https://prom-prometheus-project.apps 。*随机 id*。*region*azmosa.io/) 。 可以使用以下命令找到它：
 
 ```
 oc get route prom -n prometheus-project
@@ -190,7 +190,7 @@ oc get route prom -n prometheus-project
 > [!IMPORTANT]
 > 请记得将 https://前缀添加到主机名的开头。
 
-"**状态 > 服务发现**" 页将显示0/0 活动目标。
+" **状态 > 服务发现** " 页将显示0/0 活动目标。
 
 若要部署示例应用程序，该应用程序在/metrics 终结点下公开基本 Python 指标，请运行以下命令：
 ```
@@ -203,7 +203,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 有关更多详细信息，请选择 "**状态**  >  **目标**"。
 
 > [!NOTE]
-> 对于每个成功的擦除目标，Prometheus 将在 up 度量值中添加一个数据点。 选择左上角的 " **Prometheus** " **，输入作为**表达式，然后选择 "**执行**"。
+> 对于每个成功的擦除目标，Prometheus 将在 up 度量值中添加一个数据点。 选择左上角的 " **Prometheus** " **，输入作为** 表达式，然后选择 " **执行**"。
 
 ## <a name="next-steps"></a>后续步骤
 

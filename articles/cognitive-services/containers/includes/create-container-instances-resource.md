@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80876391"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>创建 Azure 容器实例资源
@@ -35,13 +35,13 @@ ms.locfileid: "80876391"
 
 3. 在“网络”选项卡上，输入以下详细信息：****
 
-    |设置|“值”|
+    |设置|Value|
     |--|--|
     |端口|将 TCP 端口设置为 `5000`。 在端口 5000 上公开此容器。|
 
 4. 在“高级”选项卡上，**** 输入所需的**环境变量**作为 Azure 容器实例资源的容器计费设置：
 
-    | 键 | 值 |
+    | Key | Value |
     |--|--|
     |`apikey`|从资源的“键”页复制。**** 它是一个由 32 个字母数字组成的字符串（不包含空格或短划线），即 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
     |`billing`|从资源的“概览”页复制。****|
