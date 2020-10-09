@@ -9,10 +9,10 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80628424"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "80628424"
 1. 选择要使用的资源组并输入名称。
 1. 选择“增量”，然后选择“查看 + 创建”**** ****
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="屏幕截图。创建快照边栏选项卡，填写名称并选择增量，然后创建快照。":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="屏幕截图。磁盘的边栏选项卡，其中突出显示了“+创建快照”****，因为这是必选的。":::
 
 1. 选择“创建”****
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="屏幕截图。验证快照的验证页，确认所做的选择，然后创建快照。":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="屏幕截图。磁盘的边栏选项卡，其中突出显示了“+创建快照”****，因为这是必选的。":::
 
 ## <a name="next-steps"></a>后续步骤
 

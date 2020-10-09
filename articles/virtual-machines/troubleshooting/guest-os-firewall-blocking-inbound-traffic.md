@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80422562"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
@@ -102,7 +102,7 @@ ms.locfileid: "80422562"
 
 #### <a name="mitigation-2"></a>缓解措施 2
 
-1.  查询防火墙配置文件，以确定是否已将入站防火墙策略设置为*BlockInboundAlways*：
+1.  查询防火墙配置文件，以确定是否已将入站防火墙策略设置为 *BlockInboundAlways*：
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ ms.locfileid: "80422562"
     >    * *BlockInbound*：除非存在有效规则允许该流量，否则将阻止所有入站流量。
     >    * *BlockInboundAlways*：忽略所有防火墙规则，并阻止所有流量。
 
-2.  编辑*DefaultInboundAction*以将这些配置文件设置为**允许**流量。 为此，请运行以下命令：
+2.  编辑 *DefaultInboundAction* 以将这些配置文件设置为 **允许** 流量。 为此，请运行以下命令：
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound

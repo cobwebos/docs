@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80653635"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Microsoft Azure 多重身份验证用户数据收集
@@ -116,7 +116,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 完成原因
 - 已使用绕过
 
-更改（用于将用户更改同步到 MFA 服务器或 Azure AD）：
+ (用于将用户更改同步到 MFA 服务器或 Azure AD) 的更改：
 
 - 更改时间戳
 - 用户名
@@ -138,8 +138,8 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 登录到 MFA 服务器，导航到“用户”选项卡，选择相关的用户，然后单击“编辑”按钮。******** 拍摄每个选项卡的屏幕截图 (Alt-PrtScn)，为用户提供其当前 MFA 设置。
 - 在 MFA 服务器的命令行中运行以下命令（请根据安装更改路径 (`C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>`)），以生成 JSON 格式的文件。
 - 管理员也可以使用 Web 服务 SDK GetUserGdpr 操作作为选项，导出针对给定用户收集的所有 MFA 云服务信息，或将其合并到更大的报告解决方案。
-- 搜索 `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` 和 "" 的任何备份 \<username> （包括搜索中的引号），以查找正在添加或更改的用户记录的所有实例。
-   - 通过取消选中 "MFA 服务器 UX，日志记录" 部分的 "日志文件" 选项卡中的 **"日志用户更改"** ，可以限制（但不能清除）这些记录。
+- 搜索 `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` 和 "" 的任何备份 \<username> (在搜索) 中包含引号，以查找正在添加或更改的用户记录的所有实例。
+   - 可以 (限制这些记录，但不要通过取消选中 "在 MFA 服务器 UX、日志记录部分、日志文件" 选项卡中的 **"记录用户更改"** 来消除) 。
    - 如果配置了 syslog 并在 MFA 服务器 UX、日志记录部分、Syslog 选项卡中选中了 **"日志用户更改"** ，则可以改为从 syslog 收集日志条目。
 - MultiFactorAuthSvc.log 和其他 MFA 服务器日志文件中出现的、与身份验证尝试相关的其他用户名被视为有效，并且与使用 MultiFactorAuthGdpr.exe 导出功能或 Web 服务 SDK GetUserGdpr 提供的信息重复。
 

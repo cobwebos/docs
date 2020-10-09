@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80546318"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
@@ -32,7 +32,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图概述了在[IoT 体系结构](../iot-fundamentals/iot-introduction.md)上叠加的远程监视解决方案加速器的逻辑组件：
+下图概述了在 [IoT 体系结构](../iot-fundamentals/iot-introduction.md)上叠加的远程监视解决方案加速器的逻辑组件：
 
 ![逻辑体系结构](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -122,7 +122,7 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 
 [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)是一个事件处理引擎，用于检查从设备流式传输的大量数据。
 
-### <a name="azure-time-series-insights"></a>Azure Time Series Insights
+### <a name="azure-time-series-insights"></a>Azure 时序见解
 
 [Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/)存储来自连接到解决方案加速器的设备的遥测数据。 通过它还可在解决方案 Web UI 中显示和查询设备遥测数据。
 
@@ -167,4 +167,4 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 详细的解决方案体系结构示意图：
 * [用于远程监视体系结构的解决方案加速器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
-有关远程监视解决方案加速器的更多概念信息，请参阅[自定义解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。
+有关远程监视解决方案加速器的更多概念信息，请参阅 [自定义解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。

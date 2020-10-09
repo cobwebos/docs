@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83996969"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
@@ -284,7 +284,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | **startTime** | string | 是 | 无 | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | 对象 (object) | 是 | 无 | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **recurrence** | object | 是 | 无 | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | 否 | 1 | 1 到 1000 | `"interval":10` |
 | **endTime** | string | 是 | 无 | 代表将来某个时间的日期/时间值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | object | 否 | 无 | schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |

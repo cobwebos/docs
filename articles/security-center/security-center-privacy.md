@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
 ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80585976"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>在 Azure 安全中心内管理用户数据
@@ -25,7 +25,7 @@ ms.locfileid: "80585976"
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-分配了读者、所有者、参与者或帐户管理员角色的安全中心用户可以在该工具中访问客户数据。 若要详细了解帐户管理员角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)详细了解读者、所有者和参与者角色。 请参阅[Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)。
+分配了读者、所有者、参与者或帐户管理员角色的安全中心用户可以在该工具中访问客户数据。 若要详细了解帐户管理员角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)详细了解读者、所有者和参与者角色。 请参阅 [Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)。
 
 ## <a name="searching-for-and-identifying-personal-data"></a>搜索并标识个人数据
 安全中心用户可以通过 Azure 门户查看其个人数据。 安全中心仅存储安全联系人详细信息，例如电子邮件地址和电话号码。 有关详细信息，请参阅[在 Azure 安全中心内提供安全联系人详细信息](security-center-provide-security-contact-details.md)。

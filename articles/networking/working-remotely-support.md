@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80982848"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 网络服务远程进行工作
@@ -48,7 +48,7 @@ Azure VPN 网关支持点到站点 (P2S) 和站点到站点 (S2S) VPN 连接。 
 如果使用安全套接字隧道协议 (SSTP)，并发连接数将限制为 128。 若要获得更多的连接，我们建议转换到 OpenVPN 或 IKEv2。 有关详细信息，请参阅[从 SSTP 转换到 OpenVPN 协议或 IKEv2](../vpn-gateway/ikev2-openvpn-from-sstp.md
 )。
 
-若要访问 Azure 中部署的资源，远程开发人员可以使用 Azure 堡垒解决方案，而不是 VPN 连接来获取安全外壳访问（RDP 或 SSH），而无需访问要访问的 Vm 上的公共 Ip。 有关详细信息，请参阅[使用 Azure 堡垒远程工作](../bastion/work-remotely-support.md)。
+若要访问 Azure 中部署的资源，远程开发人员可以使用 Azure 堡垒解决方案，而不是 VPN 连接以 (RDP 或 SSH) 获取安全外壳访问权限，而无需访问要访问的 Vm 上的公共 Ip。 有关详细信息，请参阅 [使用 Azure 堡垒远程工作](../bastion/work-remotely-support.md)。
 
 若要聚合大规模 VPN 连接，以支持不同本地全局位置和不同区域性中心辐射型虚拟网络中的资源之间的任意点到任意点连接，并优化多个家庭宽带网络的利用率，可以使用 Azure 虚拟 WAN。 有关详细信息，请参阅[正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md)。
 
@@ -64,7 +64,7 @@ Azure 还有众多的生态系统合作伙伴。 Azure 上的合作伙伴网络�
 
 - 基于 Azure VPN 的解决方案  ：对于通过 P2S 或 S2S VPN 连接到 Azure 的远程工作员工，你可以通过在本地网络与 Azure VPN 网关之间配置 S2S VPN，来使其能够访问本地网络。 有关详细信息，请参阅[创建站点到站点连接][S2S]。
 
-- **ExpressRoute**：使用 ExpressRoute 专用对等互连，可以在 Azure 部署与本地基础结构或共置设施中的基础结构之间启用专用连接。 通过 Microsoft 对等互连使用 ExpressRoute 还可以从本地网络访问 Microsoft 中的公共终结点。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 建立的典型连接相比，ExpressRoute 提供的连接更安全，可靠性更高，吞吐量更高，并且延迟更低且稳定。 有关详细信息，请参阅 [ExpressRoute 概述][ExR]。 利用已成为我们 [ExpressRoute 合作伙伴生态系统][ExR-eco]一部分的现有网络提供商，可以帮助减少与 Microsoft 建立高带宽连接所需的时间。  使用[ExpressRoute Direct][ExR-D] ，可以直接将本地网络连接到 Microsoft 骨干。 ExpressRoute Direct 提供两个不同的线路速率选项，即两个 10 Gbps 或 100 Gbps。 
+- **ExpressRoute**：使用 ExpressRoute 专用对等互连，可以在 Azure 部署与本地基础结构或共置设施中的基础结构之间启用专用连接。 通过 Microsoft 对等互连使用 ExpressRoute 还可以从本地网络访问 Microsoft 中的公共终结点。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 建立的典型连接相比，ExpressRoute 提供的连接更安全，可靠性更高，吞吐量更高，并且延迟更低且稳定。 有关详细信息，请参阅 [ExpressRoute 概述][ExR]。 利用已成为我们 [ExpressRoute 合作伙伴生态系统][ExR-eco]一部分的现有网络提供商，可以帮助减少与 Microsoft 建立高带宽连接所需的时间。  使用 [ExpressRoute Direct][ExR-D] ，可以直接将本地网络连接到 Microsoft 骨干。 ExpressRoute Direct 提供两个不同的线路速率选项，即两个 10 Gbps 或 100 Gbps。 
 
 - **Azure 虚拟 WAN**：Azure 虚拟 WAN 可以实现 VPN 连接与 ExpressRoute 线路之间的无缝互操作。 如前所述，Azure 虚拟 WAN 还支持不同本地全局位置和不同区域性中心辐射型虚拟网络中的资源之间的任意点到任意点连接。
 
@@ -74,7 +74,7 @@ Azure 还有众多的生态系统合作伙伴。 Azure 上的合作伙伴网络�
 
 ## <a name="microsoft-support-for-multi-cloud-traffic"></a>Microsoft 对多云流量的支持
 
-对于其他公有云中的部署，Microsoft 可提供全球连接。 Azure 虚拟 WAN、VPN 或 ExpressRoute 在此方面都可以发挥作用。 若要扩展从 Azure 到其他云的连接，可以在两个云之间配置 S2S VPN。 还可以使用 ExpressRoute 建立从 Azure 到其他公有云的连接。 Oracle 云是 ExpressRoute 合作伙伴生态系统的一部分。 可以在[Azure 与 Oracle 云基础结构之间建立直接互连][Az-OCI]。 属于 ExpressRoute 伙伴生态系统的一部分的大多数服务提供商还能提供与其他公有云之间的专用连接。 利用这些服务提供商，可以通过 ExpressRoute 在 Azure 与其他云中的部署之间建立专用连接。
+对于其他公有云中的部署，Microsoft 可提供全球连接。 Azure 虚拟 WAN、VPN 或 ExpressRoute 在此方面都可以发挥作用。 若要扩展从 Azure 到其他云的连接，可以在两个云之间配置 S2S VPN。 还可以使用 ExpressRoute 建立从 Azure 到其他公有云的连接。 Oracle 云是 ExpressRoute 合作伙伴生态系统的一部分。 可以在 [Azure 与 Oracle 云基础结构之间建立直接互连][Az-OCI]。 属于 ExpressRoute 伙伴生态系统的一部分的大多数服务提供商还能提供与其他公有云之间的专用连接。 利用这些服务提供商，可以通过 ExpressRoute 在 Azure 与其他云中的部署之间建立专用连接。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -87,7 +87,7 @@ Azure 还有众多的生态系统合作伙伴。 Azure 上的合作伙伴网络�
 | [应用程序网关高流量支持](../application-gateway/high-traffic-support.md) | 使用启用了 Web 应用程序防火墙 (WAF) 的应用程序网关，以一种可缩放且安全的方式管理到 Web 应用程序的流量。 |
 | [用于远程工作的网络虚拟设备 (NVA) 的注意事项](../vpn-gateway/nva-work-remotely-support.md)|查看相关指南，了解如何利用 Azure 中的 NVA 提供远程访问解决方案。 |
 | [从 SSTP 转换到 OpenVPN 协议或 IKEv2](https://go.microsoft.com/fwlink/?linkid=2124112) | 通过转换为 OpenVPN 协议或 IKEv2，克服 SSTP 的 128 个并发连接的限制。|
-| [使用 Azure 堡垒远程工作](../bastion/work-remotely-support.md) | 直接在 Azure 门户中提供与 Azure 虚拟网络中的虚拟机的安全且无缝的 RDP/SSH 连接，而无需使用公共 IP 地址。 |
+| [使用 Azure Bastion 进行远程工作](../bastion/work-remotely-support.md) | 直接在 Azure 门户中提供与 Azure 虚拟网络中的虚拟机的安全且无缝的 RDP/SSH 连接，而无需使用公共 IP 地址。 |
 | [使用 Azure ExpressRoute 创建混合连接以支持远程用户](../expressroute/work-remotely-support.md) | 使用 ExpressRoute 进行混合连接，使组织中的用户能够远程工作。|
 | [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)|使用 Azure 防火墙保护 Azure 虚拟网络资源。 |
 

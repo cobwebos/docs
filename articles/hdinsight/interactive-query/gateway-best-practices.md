@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80586972"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 中关于 Apache Hive 的网关深入探讨和最佳做法
@@ -32,7 +32,7 @@ HDInsight 网关是 HDInsight 群集中唯一可通过 Internet 公开访问的�
 
 对于服务发现，网关的优势在于可以将群集中的每个组件作为网关网站 (`clustername.azurehdinsight.net/hive2`) 下不同的终结点进行访问，这不同于众多 `host:port` 配对。
 
-对于身份验证，网关允许用户使用 `username:password` 凭据对进行身份验证。 对于启用了 ESP 的群集，此凭据将是用户的域用户名和密码。 通过网关对 HDInsight 群集进行身份验证不需要客户端获取 kerberos 票证。 由于网关接受 `username:password` 凭据并代表用户获取用户的 Kerberos 票证，因此可以从任何客户端主机（包括与（ESP）群集加入不同的 AA DDS 域的客户端）进行安全连接。
+对于身份验证，网关允许用户使用 `username:password` 凭据对进行身份验证。 对于启用了 ESP 的群集，此凭据将用作用户的域用户名和密码。 通过网关向 HDInsight 群集验证身份时，客户端无需获取 kerberos 票证。 由于网关接受 `username:password` 凭据并代表用户获取用户的 Kerberos 票证，因此可以在任何客户端主机（包括与 ESP 群集加入不同 AA-DDS 域的客户端）与网关之间建立安全连接。
 
 ## <a name="best-practices"></a>最佳实践
 

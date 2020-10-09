@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80436892"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>有关 Azure HDInsight 中的 Apache Kafka 的常见问题解答
@@ -44,9 +44,9 @@ HDInsight Kafka 群集包含以下资源：
 
 是的，可通过 Ambari 门户更改。 门户中的每个组件都附带一个“配置”部分，可在该部分更改组件配置。**** 某些更改可能需要重启代理。
 
-## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>HDInsight 支持 Apache Kafka 哪种类型的身份验证？
+## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>对于 Apache Kafka，HDInsight 支持哪种类型的身份验证？
 
-使用[企业安全性套餐（ESP）](../domain-joined/apache-domain-joined-architecture.md)，可以获取 Kafka 群集的主题级安全性。 有关详细信息，请参阅[教程：在 HDInsight 中配置 Apache Kafka 的策略企业安全性套餐（预览）](../domain-joined/apache-domain-joined-run-kafka.md)。
+使用[企业安全性套餐 (ESP)](../domain-joined/apache-domain-joined-architecture.md)，可以获得 Kafka 群集的主题级别安全性。 有关详细信息，请参阅[教程：在带有企业安全性套餐（预览）的 HDInsight 中配置 Apache Kafka 策略](../domain-joined/apache-domain-joined-run-kafka.md)。
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>我的数据是否已加密？ 是否可以使用我自己的密钥？
 

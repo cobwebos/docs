@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80549207"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
@@ -91,5 +91,5 @@ ms.locfileid: "80549207"
 | [Azure 流量管理器](/azure/traffic-manager/traffic-manager-overview)| 一种全局 DNS 负载均衡器。|
 | [Azure 应用程序代理](/azure/active-directory/active-directory-application-proxy-get-started)| 用于保护远程访问本地托管 Web 应用程序的身份验证前端。 |
 |[Azure 防火墙](/azure/firewall/overview)|是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。|
-|[Azure DDoS 保护](/azure/virtual-network/ddos-protection-overview)|与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
+|[Azure DDoS 防护](/azure/virtual-network/ddos-protection-overview)|与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
 |[虚拟网络服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)|可通过直接连接，将 VNet 的虚拟网络专用地址空间和标识扩展到 Azure 服务。|

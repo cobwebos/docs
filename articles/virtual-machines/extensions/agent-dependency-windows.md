@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250668"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871858"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 依赖项虚拟机扩展
 
@@ -27,7 +27,7 @@ ms.locfileid: "79250668"
 
 ## <a name="operating-system"></a>操作系统
 
-适用于 Windows 的 Azure VM 依赖关系代理扩展可以针对用于 VM 的 Azure Monitor 部署一文的 "[支持的操作系统](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)" 部分中列出的受支持操作系统运行。
+适用于 Windows 的 Azure VM 依赖关系代理扩展可以针对用于 VM 的 Azure Monitor 部署一文的 " [支持的操作系统](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) " 部分中列出的受支持操作系统运行。
 
 ## <a name="extension-schema"></a>扩展架构
 

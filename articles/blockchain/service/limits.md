@@ -5,10 +5,10 @@ ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80676518"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure 区块链服务中的限制
@@ -22,9 +22,9 @@ Azure 区块链服务具有服务和功能限制，如成员可以具有的节�
 | 定价层 | 最大事务节点数 | 最大验证器节点 |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
-| 标准 | 10 | 2 |
+| Standard | 10 | 2 |
 
-联盟网络应该至少有两个 Azure 区块链 Service 标准层节点。 标准层节点包括两个验证器节点。 需要四个验证器节点来满足[伊斯坦布尔错综复杂容错的共识](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)。
+联盟网络应该至少有两个 Azure 区块链 Service 标准层节点。 标准层节点包括两个验证器节点。 需要四个验证器节点来满足 [伊斯坦布尔错综复杂容错的共识](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)。
 
 "基本" 层用于开发、测试和概念证明。 将标准层用于生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”层。
 
@@ -37,7 +37,7 @@ Azure 区块链服务具有服务和功能限制，如成员可以具有的节�
 不支持降低分类帐和日志存储大小。
 ## <a name="consortium-limits"></a>协会限制
 
-* **联盟和成员名称必须**与 Azure 区块链服务中的其他联盟和成员名称唯一。
+* **联盟和成员名称必须** 与 Azure 区块链服务中的其他联盟和成员名称唯一。
 
 * **不能更改成员和联盟名称**
 
@@ -57,14 +57,14 @@ Azure 区块链服务具有服务和功能限制，如成员可以具有的节�
 
 * **联盟中的所有成员都必须使用同一分类帐版本**
 
-    有关 Azure 区块链服务中可用的修补、更新和分类帐版本的详细信息，请参阅[修补程序、更新和版本](ledger-versions.md)。
+    有关 Azure 区块链服务中可用的修补、更新和分类帐版本的详细信息，请参阅 [修补程序、更新和版本](ledger-versions.md)。
 
 ## <a name="performance"></a>性能
 
-不要使用*eth。* 每次提交事务时，估计气体函数。 *Eth. 估算*函数消耗大量内存。 多次调用函数可以减少每秒的事务数。
+不要使用 *eth。* 每次提交事务时，估计气体函数。 *Eth. 估算*函数消耗大量内存。 多次调用函数可以减少每秒的事务数。
 
 如果可能，请使用保守气体值提交事务，并最大限度地*eth.estimate*减少使用
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解有关系统修补和升级的策略-[修补、更新和版本](ledger-versions.md)。
+详细了解有关系统修补和升级的策略- [修补、更新和版本](ledger-versions.md)。

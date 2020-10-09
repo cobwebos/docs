@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80550235"
 ---
 # <a name="overview-of-shared-device-mode"></a>共享设备模式的概述
@@ -56,7 +56,7 @@ Azure Active Directory 使用称作“共享设备模式”的功能来实现这
 
 ### <a name="build-applications-that-support-firstline-workers"></a>生成可为一线工作人员提供支持的应用程序
 
-你可以通过使用 Microsoft 身份验证库（MSAL）来支持应用程序中的 Firstline 工作线程，并[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)程序启用名为*共享设备模式*的设备状态。 当设备处于共享设备模式时，Microsoft 将为应用程序提供所需的信息，使应用程序能够根据设备上用户的状态修改其行为，从而保护用户数据。
+可以通过使用 Microsoft 身份验证库 (MSAL) 和 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 来支持应用程序中的 Firstline 工作线程，以启用名为 *共享设备模式*的设备状态。 当设备处于共享设备模式时，Microsoft 将为应用程序提供所需的信息，使应用程序能够根据设备上用户的状态修改其行为，从而保护用户数据。
 
 支持的功能包括：
 
@@ -75,7 +75,7 @@ Azure Active Directory 使用称作“共享设备模式”的功能来实现这
 
 一旦应用程序支持共享设备模式并包含所需的数据和安全更改，你就可以播发这些更改，使其可供一线工作人员使用。
 
-组织的设备管理员可以通过 Microsoft Intune 等移动设备管理 (MDM) 解决方案，将其设备和你的应用程序部署到其存储和工作区中。 预配过程的一部分工作是将设备标记为共享设备  。 管理员通过部署[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)并通过配置参数设置共享设备模式来配置共享设备模式。 执行这些步骤后，所有支持共享设备模式的应用程序都将使用 Microsoft Authenticator 应用程序来管理其用户状态，并为设备和组织提供安全功能。
+组织的设备管理员可以通过 Microsoft Intune 等移动设备管理 (MDM) 解决方案，将其设备和你的应用程序部署到其存储和工作区中。 预配过程的一部分工作是将设备标记为共享设备  。 管理员通过部署 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 并通过配置参数设置共享设备模式来配置共享设备模式。 执行这些步骤后，所有支持共享设备模式的应用程序都将使用 Microsoft Authenticator 应用程序来管理其用户状态，并为设备和组织提供安全功能。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322124"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
@@ -66,7 +66,7 @@ ms.locfileid: "85322124"
     $DataFactoryName = "ADFTutorialFactory";
     ```
 
-5. 若要创建数据工厂，请运行以下**AzDataFactory** cmdlet，并使用 $ResGrp 变量中的 Location 和 ResourceGroupName 属性： 
+5. 若要创建数据工厂，请运行以下 **AzDataFactory** cmdlet，并使用 $ResGrp 变量中的 Location 和 ResourceGroupName 属性： 
     
     ```powershell       
     $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
@@ -101,7 +101,7 @@ ms.locfileid: "85322124"
         }
     ```
 2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹 。
-3. 运行**AzDataFactoryLinkedService** cmdlet 创建链接服务： **AzureSqlDatabaseLinkedService**。 
+3. 运行 **AzDataFactoryLinkedService** cmdlet 创建链接服务： **AzureSqlDatabaseLinkedService**。 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -126,7 +126,7 @@ ms.locfileid: "85322124"
         }
     }
     ```
-2. 运行**AzDataFactoryDataset** cmdlet 以创建数据集。 
+2. 运行 **AzDataFactoryDataset** cmdlet 以创建数据集。 
 
     ```powershell
     New-AzDataFactoryDataset $df -File ".\OutputDataset.json"
@@ -168,7 +168,7 @@ ms.locfileid: "85322124"
     }    
     ```
 
-2. 若要创建管道： **RunSSISPackagePipeline**，请运行**AzDataFactoryPipeline** cmdlet。
+2. 若要创建管道： **RunSSISPackagePipeline**，请运行 **AzDataFactoryPipeline** cmdlet。
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -176,7 +176,7 @@ ms.locfileid: "85322124"
 
 ### <a name="monitor-the-pipeline-run"></a>监视管道运行
 
-1. 运行**AzDataFactorySlice**以获取输出数据集的所有切片的详细信息 * *，它是管道的输出表。
+1. 运行 **AzDataFactorySlice** 以获取输出数据集的所有切片的详细信息 * *，它是管道的输出表。
 
     ```powershell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z

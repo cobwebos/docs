@@ -4,10 +4,10 @@ description: 本文概述了 Azure 服务总线消息、有效负载、消息路
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341684"
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80548595"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何记录安全事件支持票证
@@ -32,7 +32,7 @@ ms.locfileid: "80548595"
 
     i. 问题和/或漏洞是什么？
 
-    ii. 对于漏洞，请提供 CVE （mitre.org）或已填充的 CVSS3 v3 计算器（ https://www.first.org/cvss/calculator/3.0) 。
+    ii. 对于漏洞，请提供 CVE (mitre.org) 或 CVSS3 v3 计算器的已填充 (https://www.first.org/cvss/calculator/3.0) 。
 
     iii. 是否有解决方法或缓解措施？ 如果是，请提供补救措施。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80548595"
     - 如果需要与我们交流有关问题，请使用所有对应关系中的确认号码。
     - 可在任何时候查看问题解决进度。
 
-5. 接下来如何操作？ 根据具体问题和严重性，可能会采取以下步骤：
+5. 接下来会发生什么? 根据具体问题和严重性，可能会采取以下步骤：
 
     - 我们会将评估结果传达给你。 根据结果，可能会删除或要求修改所提交的信息。 在这种情况下，我们将与你共同努力，确保将受到影响的客户的干扰降至最低。
     - 我们将与你共同努力，帮助减轻由事件/漏洞对共同客户造成的影响。

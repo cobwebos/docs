@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80398462"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure 自定义资源提供程序概述
@@ -37,11 +37,11 @@ Azure 自定义资源提供程序是 Azure 的可扩展平台。 它允许你定
 
 ## <a name="what-is-a-custom-resource-provider"></a>什么是自定义资源提供程序
 
-Azure 自定义资源提供程序是通过在 Azure 和终结点之间创建约定来完成的。 此协定通过新资源**CustomProviders/resourceProviders**定义新资源和操作的列表。 自定义资源提供程序随后会在 Azure 中公开这些新 Api。 Azure 自定义资源提供程序由三个部分组成：自定义资源提供程序、**终结点**和自定义资源。
+Azure 自定义资源提供程序是通过在 Azure 和终结点之间创建约定来完成的。 此协定通过新资源 **CustomProviders/resourceProviders**定义新资源和操作的列表。 自定义资源提供程序随后会在 Azure 中公开这些新 Api。 Azure 自定义资源提供程序由三个部分组成：自定义资源提供程序、 **终结点**和自定义资源。
 
 ## <a name="how-to-build-custom-resource-providers"></a>如何生成自定义资源提供程序
 
-自定义资源提供程序是 Azure 与终结点之间的约定列表。 此合同介绍 Azure 应该如何与终结点进行交互。 资源提供程序的行为类似于代理，并将向指定的**终结点**转发请求和响应。 资源提供程序可以指定两种类型的协定： [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md)和[**操作**](./custom-providers-action-endpoint-how-to.md)。 通过终结点定义启用这些。 终结点定义由三个字段组成：**名称**、 **routingType**和**终结点**。
+自定义资源提供程序是 Azure 与终结点之间的约定列表。 此合同介绍 Azure 应该如何与终结点进行交互。 资源提供程序的行为类似于代理，并将向指定的 **终结点**转发请求和响应。 资源提供程序可以指定两种类型的协定： [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) 和 [**操作**](./custom-providers-action-endpoint-how-to.md)。 通过终结点定义启用这些。 终结点定义由三个字段组成： **名称**、 **routingType**和 **终结点**。
 
 示例端点：
 
@@ -53,17 +53,17 @@ Azure 自定义资源提供程序是通过在 Azure 和终结点之间创建约�
 }
 ```
 
-属性 | 必须 | 说明
+properties | 必须 | 说明
 ---|---|---
 name | *是的* | 终结点定义的名称。 Azure 会通过其 API 在“/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}”下公开此名称
-routingType | 否** | 确定**终结点**的协定类型。 如果未指定，则会默认为 "Proxy"。
+routingType | 否** | 确定 **终结点**的协定类型。 如果未指定，则会默认为 "Proxy"。
 endpoint | *是* | 终结点，可向其路由请求。 此项将处理响应以及请求的任何附带作用。
 
 ### <a name="building-custom-resources"></a>构建自定义资源
 
-**ResourceTypes**介绍添加到 Azure 的新自定义资源。 这些方法公开基本的 RESTful CRUD 方法。 了解[有关创建自定义资源的详细信息](./custom-providers-resources-endpoint-how-to.md)
+**ResourceTypes** 介绍添加到 Azure 的新自定义资源。 这些方法公开基本的 RESTful CRUD 方法。 了解 [有关创建自定义资源的详细信息](./custom-providers-resources-endpoint-how-to.md)
 
-包含**resourceTypes**的示例自定义资源提供程序：
+包含 **resourceTypes**的示例自定义资源提供程序：
 
 ```JSON
 {
@@ -91,9 +91,9 @@ GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pro
 
 ### <a name="building-custom-actions"></a>构建自定义操作
 
-**操作**描述添加到 Azure 的新操作。 它们可以在资源提供程序的顶层公开，也可以嵌套在**resourceType**下。 了解[有关创建自定义操作的详细信息](./custom-providers-action-endpoint-how-to.md)
+**操作** 描述添加到 Azure 的新操作。 它们可以在资源提供程序的顶层公开，也可以嵌套在 **resourceType**下。 了解 [有关创建自定义操作的详细信息](./custom-providers-action-endpoint-how-to.md)
 
-包含**操作**的示例自定义资源提供程序：
+包含 **操作**的示例自定义资源提供程序：
 
 ```JSON
 {
@@ -118,7 +118,7 @@ POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pr
 
 ## <a name="looking-for-help"></a>寻求帮助
 
-如果有关于 Azure 自定义资源提供程序开发的问题，请尝试[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 添加标记 ```azure-custom-providers``` 可以快速得到回复！
+如果有关于 Azure 自定义资源提供程序开发的问题，请尝试 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 添加标记 ```azure-custom-providers``` 可以快速得到回复！
 
 ## <a name="next-steps"></a>后续步骤
 
