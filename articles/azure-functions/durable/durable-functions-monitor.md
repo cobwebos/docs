@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77562116"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
@@ -28,7 +28,7 @@ ms.locfileid: "77562116"
 * 监视器可缩放。 由于每个监视器是一个业务流程实例，因此可以创建多个监视器，而无需创建新函数或定义更多的代码。
 * 监视器可轻松集成到更大的工作流。 监视器可以是更复杂业务流程函数或[子业务流程](durable-functions-sub-orchestrations.md)的一部分。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="configuring-twilio-integration"></a>配置 Twilio 集成
 
@@ -50,8 +50,8 @@ ms.locfileid: "77562116"
 
 本文介绍示例应用中的以下函数：
 
-* `E3_Monitor`：定期调用的业务流程[协调程序函数](durable-functions-bindings.md#orchestration-trigger) `E3_GetIsClear` 。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
-* `E3_GetIsClear`：一个[活动函数](durable-functions-bindings.md#activity-trigger)，用于检查位置的当前天气情况。
+* `E3_Monitor`：定期调用的业务流程 [协调程序函数](durable-functions-bindings.md#orchestration-trigger) `E3_GetIsClear` 。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
+* `E3_GetIsClear`：一个 [活动函数](durable-functions-bindings.md#activity-trigger) ，用于检查位置的当前天气情况。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor orchestrator 函数

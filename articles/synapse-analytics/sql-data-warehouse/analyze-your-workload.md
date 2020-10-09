@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85208393"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析工作负荷
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何管理数据库用户和安全性的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关更大的资源类如何提高聚集列存储索引质量的详细信息，请参阅重新[生成索引以提高段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+有关如何管理数据库用户和安全性的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 若要进一步了解如何通过更大型资源类来改进聚集列存储索引质量，请参阅[重建索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

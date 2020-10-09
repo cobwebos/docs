@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74083993"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
@@ -26,7 +26,7 @@ ms.locfileid: "74083993"
 
 * **共享托管服务提供程序 (HSP)** ：合作伙伴拥有物理基础结构，并使用共享资源（vCenter、数据中心、物理存储等）在同一基础结构上托管多个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
 
-* **专用托管服务提供程序**：合作伙伴拥有物理基础结构，但使用专用资源（多个 vcenter、物理数据存储等）在单独的基础结构上托管每个租户的 vm。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有它作为自助解决方案。
+* **专用托管服务提供程序**：合作伙伴拥有物理基础结构，但使用专用资源 (多个 vcenter、物理数据存储等，) 并在单独的基础结构上托管每个租户的 vm。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有它作为自助解决方案。
 
 * **托管服务提供程序 (MSP)** ：客户拥有托管 VM 的物理基础结构，合作伙伴提供灾难恢复启用和管理功能。
 

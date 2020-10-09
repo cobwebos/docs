@@ -11,10 +11,10 @@ ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203089"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
@@ -45,8 +45,8 @@ ms.locfileid: "85203089"
 | TenantId | 是 | 此策略所属的租户的唯一标识符。 |
 | PolicyId | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
 | PublicPolicyUri | 是 | 策略的 URI，它是租户 ID 和策略 ID 的组合。 |
-| DeploymentMode | 否 | 可能的值：`Production` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
-| UserJourneyRecorderEndpoint | 否 | 当 **DeploymentMode** 设置为 `Development` 时使用的终结点。 值必须是 `urn:journeyrecorder:applicationinsights`。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
+| DeploymentMode | 否 | 可能的值：`Production` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 有关详细信息，请参阅 [收集日志](troubleshoot-with-application-insights.md)。 |
+| UserJourneyRecorderEndpoint | 否 | 当 **DeploymentMode** 设置为 `Development` 时使用的终结点。 值必须是 `urn:journeyrecorder:applicationinsights`。 有关详细信息，请参阅 [收集日志](troubleshoot-with-application-insights.md)。 |
 
 
 以下示例演示如何指定 **TrustFrameworkPolicy** 元素：
@@ -67,7 +67,7 @@ ms.locfileid: "85203089"
 用户旅程中通常使用以下类型的策略文件：
 
 - **基本**文件：包含大多数定义。 为了帮助进行故障排除和长期维护策略，我们建议对此文件进行极少量的更改。
-- 保存租户的唯一配置更改的**扩展**文件。 此策略文件派生自“基本”文件。 使用此文件可以添加新功能或替代现有功能。 例如，使用此文件可与新的标识提供者联合。
+- **扩展**文件：保存租户的独特配置更改。 此策略文件派生自“基本”文件。 使用此文件可以添加新功能或替代现有功能。 例如，使用此文件可与新的标识提供者联合。
 - **信赖方 (RP)** 文件：注重单个任务的文件，由信赖方应用程序（例如 Web、移动或桌面应用程序）直接调用。 每个独特的任务（例如注册或登录、密码重置或配置文件编辑）都需要自身的 RP 策略文件。 此策略文件派生自“扩展”文件。
 
 信赖方应用程序调用 RP 策略文件来执行特定的任务。 例如，启动登录流。 Azure AD B2C 中的标识体验框架依次从“基本”文件、“扩展”文件和“RP”策略文件中添加所有元素，以组合当前生效的策略。 “RP”文件中具有相同类型和名称的元素将替代“扩展”中的这些元素，“扩展”替代“基本”。 下图显示了策略文件与信赖方应用程序之间的关系。
@@ -91,7 +91,7 @@ ms.locfileid: "85203089"
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
-| PolicyId | 1:1 | 父策略的标识符。 |
+| `PolicyId` | 1:1 | 父策略的标识符。 |
 
 
 以下示例演示如何指定基本策略。 此 **B2C_1A_TrustFrameworkExtensions** 策略派生自 **B2C_1A_TrustFrameworkBase** 策略。

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74483538"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理器进行灾难恢复
@@ -169,7 +169,7 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)。
-- 详细了解[Azure DNS](../dns/dns-overview.md)。
+- 详细了解 [Azure DNS](../dns/dns-overview.md)。
 
 
 

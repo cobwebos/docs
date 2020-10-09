@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203446"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
@@ -201,7 +201,7 @@ ms.locfileid: "85203446"
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值：`AfterInput`（默认值）链接显示在页面底部，或者 `None`（删除“忘记密码”链接）。|
-| setting.enableRememberMe <sup>2</sup>| 否| 显示 "[使我保持登录](custom-policy-keep-me-signed-in.md)" 复选框。 可能的值：`true` 或 `false`（默认值）。 |
+| setting.enableRememberMe <sup>2</sup>| 否| 显示 " [使我保持登录](custom-policy-keep-me-signed-in.md) " 复选框。 可能的值：`true` 或 `false`（默认值）。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
 说明：

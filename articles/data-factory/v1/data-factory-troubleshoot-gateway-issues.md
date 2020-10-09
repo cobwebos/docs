@@ -12,10 +12,10 @@ ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85319061"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
@@ -24,7 +24,7 @@ ms.locfileid: "85319061"
 > [!NOTE]
 > 本文适用于 Azure 数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[数据工厂中的自承载集成运行时](../create-self-hosted-integration-runtime.md)。
 
-有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解如何使用网关将数据从 SQL Server 数据库移动到 Microsoft Azure Blob 存储。
+有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 请参阅 [在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md) 一文，了解如何使用网关将数据从 SQL Server 数据库移动到 Microsoft Azure Blob 存储。
 
 ## <a name="failed-to-install-or-register-gateway"></a>无法安装或注册网关
 ### <a name="1-problem"></a>1. 问题
@@ -49,7 +49,7 @@ ms.locfileid: "85319061"
 计算机上已安装有网关。
 
 #### <a name="resolution"></a>解决方法
-卸载计算机上的现有网关，然后再次单击 "**直接安装在此计算机上**" 链接。
+卸载计算机上的现有网关，然后再次单击 " **直接安装在此计算机上** " 链接。
 
 ### <a name="3-problem"></a>3. 问题
 注册新网关时可能会出现此错误。
@@ -205,7 +205,7 @@ TLS/SSL 证书可能已在网关计算机上丢失。 网关计算机无法加�
 
 1. 启动数据管理网关配置管理器。
 2. 切换到“设置”选项卡。  
-3. 单击 "**更改**" 按钮以更改 TLS/SSL 证书。
+3. 单击 " **更改** " 按钮以更改 TLS/SSL 证书。
 
    ![更改证书按钮](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
 4. 选择一个新证书作为 TLS/SSL 证书。 你可以使用你或任何组织生成的任何 TLS/SSL 证书。
@@ -232,7 +232,7 @@ TLS/SSL 证书可能已在网关计算机上丢失。 网关计算机无法加�
 如果看到数据存储连接或驱动程序相关错误，请完成以下步骤：
 
 1. 在网关计算机上启动数据管理网关配置管理器。
-2. 切换到“诊断”**** 选项卡。
+2. 切换到“诊断”选项卡。
 3. 在“测试连接”中，添加网关组值。****
 4. 单击“测试”****，查看是否可使用连接信息和凭据从网关计算机连接到本地数据源。 如果在安装驱动程序后测试连接仍然失败，请重新启动网关以便选择最新的更改。
 

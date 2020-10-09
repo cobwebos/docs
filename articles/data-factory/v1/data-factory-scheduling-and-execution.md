@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85319714"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
@@ -29,7 +29,7 @@ ms.locfileid: "85319714"
 * [数据集](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>管道的开始和结束时间
-管道仅在其**开始**时间和**结束**时间之间处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 可以在管道定义中找到这些设置（开始、结束、暂停）： 
+管道仅在其 **开始** 时间和 **结束** 时间之间处于活动状态。 开始时间之前或结束时间之后，不会执行管道。 如果暂停管道，则无论开始和结束时间，都不会执行管道。 不暂停才可运行管道。 可以在管道定义中找到这些设置（开始、结束、暂停）： 
 
 ```json
 "start": "2017-04-01T08:00:00Z",
@@ -180,15 +180,15 @@ ms.locfileid: "85319714"
 在数据集定义的可用性部分中，已了解频率和间隔属性。 有几个其他属性会影响活动的计划和执行。 
 
 ### <a name="dataset-availability"></a>数据集可用性 
-下表描述了可在**可用性**部分中使用的属性：
+下表描述了可在 **可用性** 部分中使用的属性：
 
-| Property | 描述 | 必须 | 默认 |
+| properties | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，则将“频率”<b></b>设置为“小时”<b></b>，“间隔”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为不小于15 |是 |不可用 |
 | 样式 |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>若将 Month 设置为 Month，style 设置为 EndOfInterval，则会在每月的最后一天生成切片。 若将 style 设为 StartOfInterval，会在每月的第一天生成切片。<br/><br/>若将 Frequency 设置为 Day，style 设置为 EndOfInterval，则会在一天的最后一小时生成切片。<br/><br/>若将 Frequency 设置为 Hour，style 设置为 EndOfInterval，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率更精细，则忽略更精细的部分。 <br/><br/>例如，如果“interval”<b></b>是“每小时”<b></b>（frequency: hour 且 interval: 1），而 <b> AnchorDateTime</b> 包含<b>分钟和秒</b>，则将忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
-| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/><b>注意</b>：如果同时指定了 anchorDateTime 和 offset，则结果是合并移位。 |否 |不可用 |
+| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/><b>注意</b>：如果同时指定了 anchorDateTime 和 offset，则结果是合并移位。 |否 |NA |
 
 ### <a name="offset-example"></a>偏移示例
 默认情况下，每天 (`"frequency": "Day", "interval": 1`) 在 UTC 时间晚上 12 点（午夜）开始切片。 要将开始时间改为 UTC 时间早上 6 点，请按以下片段中所示设置偏移量： 
@@ -230,10 +230,10 @@ ms.locfileid: "85319714"
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
 
-| 策略名称 | 描述 | 适用对象 | 必须 | 默认 |
+| 策略名称 | 说明 | 适用对象 | 必须 | 默认 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |不可用 |
-| minimumRows | 验证**AZURE SQL 数据库**或**azure 表**中的数据是否包含最小行数。 |<ul><li>Azure SQL Database</li><li>Azure 表</li></ul> |否 |不可用 |
+| minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
+| minimumRows | 验证 **AZURE SQL 数据库** 或 **azure 表** 中的数据是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
 
 #### <a name="examples"></a>示例
 **minimumSizeMB:**
@@ -266,7 +266,7 @@ ms.locfileid: "85319714"
 ## <a name="activity-policies"></a>活动策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| Property | 允许的值 | 默认值 | 描述 |
+| properties | 允许的值 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |

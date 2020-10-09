@@ -14,10 +14,10 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77617009"
 ---
 # <a name="onboarding-requirements"></a>加入要求
@@ -61,7 +61,7 @@ ms.locfileid: "77617009"
 > 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
 
 
-**数据库**
+**Database**
 
 - SAP HANA（平台版或企业版）的许可证和软件安装组件。
 
@@ -70,7 +70,7 @@ ms.locfileid: "77617009"
 - 连接到 SAP HANA 和相关的 SAP 支持合同的任何 SAP 应用程序的许可证和软件安装组件。
 - 与 Azure 上的 SAP HANA（大型实例）环境和相关的支持合同配合使用的任何非 SAP 应用程序的许可证和软件安装组件。
 
-**技能**
+**技术**
 
 - 有关 Azure IaaS 及其组件的经验和知识。
 - 有关在 Azure 中部署 SAP 工作负荷的经验和知识。

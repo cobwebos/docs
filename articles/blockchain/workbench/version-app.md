@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 2a70112fd0ab6e2f664ca48265c121936b01e58b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85209865"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure 区块链工作台预览版应用程序版本控制
@@ -19,7 +19,7 @@ ms.locfileid: "85209865"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Blockchain Workbench 部署。 有关详细信息，请参阅[Azure 区块链工作台部署](deploy.md)，了解有关部署的详细信息
+* Blockchain Workbench 部署。 有关部署的详细信息，请参阅 [Azure Blockchain Workbench 部署](deploy.md)
 * Blockchain Workbench 中部署的区块链应用程序。 请参阅 [在 Azure Blockchain Workbench 中创建区块链应用程序](create-app.md)
 
 ## <a name="add-an-app-version"></a>添加应用版本
