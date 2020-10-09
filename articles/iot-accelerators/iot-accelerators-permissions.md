@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61447418"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 azureiotsolutions.com 站点来部署解决方案加速器
@@ -38,7 +38,7 @@ ms.locfileid: "61447418"
 
 部署解决方案加速器、管理用户以及管理 Azure 服务的权限取决于你在所选目录中的角色。 与解决方案加速器关联的常见 Azure AD 角色包括：
 
-* **全局管理员**：每个 Azure AD 租户可以有多个[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md)：
+* **全局管理员**：每个 Azure AD 租户可以有多个 [全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md) ：
 
   * 创建某个 Azure AD 租户时，默认情况下会成为该租户的全局管理员。
   * 全局管理员可以部署基本和标准解决方案加速器。

@@ -55,7 +55,7 @@
       href: cache-high-availability.md
     - name: 故障转移和修补
       href: cache-failover.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: cache-best-practices.md
     - name: 安全性
       items:

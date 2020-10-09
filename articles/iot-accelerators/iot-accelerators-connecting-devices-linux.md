@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
 ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61454483"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>将设备连接到远程监视解决方案加速器 (Linux)
@@ -25,7 +25,7 @@ ms.locfileid: "61454483"
 
 如果更喜欢模拟某个设备，请参阅[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成该操作指南中的步骤，你需要一台运行 Ubuntu 版本 15.04 或更高版本的设备。 继续操作之前，请[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)。
 

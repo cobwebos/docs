@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60547330"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>必应自动推荐 API 的语言和区域支持
@@ -34,7 +34,7 @@ ms.locfileid: "60547330"
 | 英语（加拿大）     | `en-CA`          |
 | 英语（印度）    | `en-IN`          |
 | 英语(印度尼西亚)     | `en-ID`          |
-| 英语（马来西亚）     | `en-MY`          |
+| 英语(马来西亚)     | `en-MY`          |
 | 英语（新西兰）    | `en-NZ`          |
 | 英语（菲律宾）     | `en-PH`          |
 | 英语（南非）    | `en-ZA`          |
@@ -50,21 +50,21 @@ ms.locfileid: "60547330"
 | 德语（瑞士）      | `de-CH`          |
 | 意大利语     | `it`          |
 | 日语    | `ja`          |
-| 朝鲜语      | `ko`          |
+| 韩语      | `ko`          |
 | 挪威语   | `no`          |
 | 波兰语      | `pl`          |
 | 葡萄牙语（巴西）   | `pt-BR`|
-| 葡萄牙语(葡萄牙) | `pt-PT`|
+| 葡萄牙语（葡萄牙） | `pt-PT`|
 | 俄语     | `ru`          |
 | 西班牙语（阿根廷）    | `es-AR`          |
 | 西班牙语（智利）     | `es-CL`          |
-| 西班牙语（墨西哥）    | `es-MX`          |
+| 西班牙语(墨西哥)    | `es-MX`          |
 | 西班牙语(西班牙)    | `es-ES`          |
 | 西班牙语（美国）    | `es-US`          |
 | 瑞典语     | `sv`          |
 | 土耳其语     | `tr`          |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure 认知服务文档页](https://docs.microsoft.com/azure/cognitive-services/)
 - [Azure 认知服务产品页](https://azure.microsoft.com/services/cognitive-services/)

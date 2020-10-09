@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390125"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>如何使用排名显示必应 Web 搜索 API 结果  
@@ -24,13 +24,13 @@ ms.locfileid: "66390125"
 
 在每个组（主线或边栏）中，[项](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items)数组标识了内容必须出现的顺序。 每个项提供以下两种方法来标识答案中的结果。  
 
--   `answerType` 和 `resultIndex` - `answerType` 字段标识答案（例如，网页或新闻），`resultIndex` 标识答案中的结果（例如某篇新闻文章）。 索引从零开始。  
+-   `answerType` 和 `resultIndex` - `answerType` 字段标识答案（例如，网页或新闻），`resultIndex` 标识答案中的结果（例如某篇新闻文章）。 索引是从零开始的。  
 
 -   `value` - `value` 字段包含一个 ID，它与答案或答案中结果的 ID 匹配。 答案或结果包含 ID，而不是同时包含。  
 
 使用 ID 更简单，因为你只需要将排名 ID 与答案或其结果之一的 ID 进行匹配。 如果答案对象包含 `id` 字段，则同时显示答案的所有结果。 例如，如果 `News` 对象包含 `id` 字段，则同时显示所有新闻文章。 如果 `News` 对象不包含 `id` 字段，则每个新闻文章均包含 `id` 字段，排名响应会将新闻文章与其他答案的结果混合。  
 
-使用 `answerType` 和 `resultIndex` 会稍微复杂一些。 使用 `answerType` 来标识包含要显示的结果的答案。 然后，使用 `resultIndex` 对答案的所有结果进行索引，以获取要显示的结果。 （ `answerType`值是[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse)对象中的字段的名称。）如果希望将答案的结果一起显示，则排名响应项目不包含该`resultIndex`字段。  
+使用 `answerType` 和 `resultIndex` 会稍微复杂一些。 使用 `answerType` 来标识包含要显示的结果的答案。 然后，使用 `resultIndex` 对答案的所有结果进行索引，以获取要显示的结果。  (`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 对象中的字段的名称。 ) 如果您应该将所有答案的结果显示在一起，则排名响应项目不包含该 `resultIndex` 字段。  
 
 ## <a name="ranking-response-example"></a>排名响应示例
 

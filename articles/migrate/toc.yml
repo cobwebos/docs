@@ -166,7 +166,7 @@
           href: how-to-migrate-at-scale.md
         - name: 迁移示例（Contoso 系列）
           href: contoso-migration-overview.md
-- name: 故障排除
+- name: 疑难解答
   items:
     - name: 排查 Azure Migrate 问题
       href: troubleshoot-general.md

@@ -13,10 +13,10 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
   ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
-  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/18/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "88506542"
 landingContent:
 - title: 关于个性化体验创建服务
