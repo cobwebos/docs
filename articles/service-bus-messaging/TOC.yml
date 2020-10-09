@@ -231,7 +231,7 @@
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 故障排除指南
           href: service-bus-troubleshooting-guide.md

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 86854fa22a49f09e5d3d2fc5fdb53c245850fbac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77587934"
 ---
 # <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>将 Zimperium 移动威胁防御连接到 Azure Sentinel
@@ -35,18 +35,18 @@ Zimperium 移动威胁防御连接器使你能够将 Zimperium 威胁日志与 A
 
 ## <a name="configure-and-connect-zimperium-mobile-threat-defense"></a>配置并连接 Zimperium 移动威胁防御
 
-Zimperium 移动威胁防御可将日志直接集成到**Azure Sentinel**。
+Zimperium 移动威胁防御可将日志直接集成到 **Azure Sentinel**。
 
 1. 在 Azure Sentinel 门户中，单击 "数据连接器"，并选择 " **Zimperium 移动威胁防御**"。
-2. 选择 "**打开连接器" 页面**。
-3. 按照**Zimperium 移动威胁防御**连接器页面上的说明进行总结，如下所示。
- 1. 在 zConsole 中，在导航栏上单击 "**管理**"。
+2. 选择 " **打开连接器" 页面**。
+3. 按照 **Zimperium 移动威胁防御** 连接器页面上的说明进行总结，如下所示。
+ 1. 在 zConsole 中，在导航栏上单击 " **管理** "。
  2. 单击“集成”选项卡。****
- 3. 单击 "**威胁报告**" 按钮，然后单击 "**添加集成**" 按钮。
- 4. 通过从 "可用集成" 中选择**Microsoft Azure Sentinel** ，并输入 "工作区 ID" 和 "主密钥" 来连接到 Azure Sentinel 来创建集成。
+ 3. 单击 " **威胁报告** " 按钮，然后单击 " **添加集成** " 按钮。
+ 4. 通过从 "可用集成" 中选择 **Microsoft Azure Sentinel** ，并输入 "工作区 ID" 和 "主密钥" 来连接到 Azure Sentinel 来创建集成。
  5. 也可以选择将威胁数据推送到 Azure Sentinel 的筛选级别。 
 
-4. 有关其他信息，请参阅[Zimperium 客户支持门户](https://support.zimperium.com)。
+4. 有关其他信息，请参阅 [Zimperium 客户支持门户](https://support.zimperium.com)。
 
 
 ## <a name="find-your-data"></a>查找数据

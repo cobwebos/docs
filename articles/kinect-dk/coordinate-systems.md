@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度相机, tof, 原理, 性能, 失效
 ms.openlocfilehash: 4bb1c3b79862b918870cff786042d9b4c66270d1
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67508527"
 ---
 # <a name="azure-kinect-dk-coordinate-systems"></a>Azure Kinect DK 坐标系

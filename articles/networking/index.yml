@@ -13,10 +13,10 @@ metadata:
   manager: mtillman
   ms.date: 09/28/2020
   ms.openlocfilehash: bb515afe97116041ca30de31bdb70544cfe29e69
-  ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/29/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "91446036"
 highlightedContent:
   items:
@@ -115,7 +115,7 @@ conceptualContent:
       text: 什么是 Azure 负载均衡器？
     - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
       itemType: whats-new
-      text: 新变化
+      text: 新增功能
     - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
       itemType: quickstart
       text: 对传入 VM 的 Internet 流量进行负载均衡

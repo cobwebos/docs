@@ -80,7 +80,7 @@
           href: howto-integrate-activity-logs-with-splunk.md
         - name: 将活动日志与 SumoLogic 集成
           href: howto-integrate-activity-logs-with-sumologic.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 缺少审核数据
           href: troubleshoot-missing-audit-data.md

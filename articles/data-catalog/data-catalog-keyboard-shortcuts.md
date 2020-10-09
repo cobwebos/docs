@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69014455"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>适用于 Azure 数据目录的键盘快捷方式
@@ -72,7 +72,7 @@ ms.locfileid: "69014455"
 | 导航 |Tab 和 SHIFT+TAB |
 | 单击某个项 |空格键或 Enter 键 |
 | 向下钻取到某个分区 |空格键或 Enter 键 |
-| 从某个分区退出 |Esc |
+| 从某个分区退出 |ESC |
 | 固定/取消固定资产 |ALT+P |
 | 在发现页上，当某项资产具有焦点时，选择资产 |空格键或 Enter 键 |
 | 从多选中添加/删除资产 |Ctrl+空格键或 Enter 键 |

@@ -13,16 +13,16 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: d904e51321870fb4b61a237c23e425034b76dc0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588104"
 ---
 # <a name="connect-your-squadra-technologies-secrmm-data-to-azure-sentinel"></a>将 Squadra 技术 secRMM 数据连接到 Azure Sentinel 
 
 > [!IMPORTANT]
-> Azure Sentinel 中的 Squadra 技术安全可移动媒体管理器（secRMM）数据连接器目前为公共预览版。
+> Azure Sentinel 中的 Squadra 技术安全可移动媒体管理器 (secRMM) 数据连接器目前为公共预览版。
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
@@ -37,7 +37,7 @@ Squadra 技术 secRMM 连接器可让你轻松地将 Squadra 技术 secRMM 安�
 Squadra 技术 secRMM 可以直接将日志集成到 Azure Sentinel 并将其导出。
 1. 在 Azure Sentinel 门户中，单击 "数据连接器"，然后选择 "Squadra 技术 secRMM"，然后单击 "连接器" 页。
 
-2. 按照[Azure sentinel 的 Squadra 技术载入指南](http://www.squadratechnologies.com/StaticContent/ProductDownload/secRMM/9.9.0.0/secRMMAzureSentinelAdministratorGuide.pdf)中所述的步骤，在 azure sentinel 中获取 Squadra secRMM 数据。   
+2. 按照 [Azure sentinel 的 Squadra 技术载入指南](http://www.squadratechnologies.com/StaticContent/ProductDownload/secRMM/9.9.0.0/secRMMAzureSentinelAdministratorGuide.pdf) 中所述的步骤，在 azure sentinel 中获取 Squadra secRMM 数据。   
 
 
 ## <a name="find-your-data"></a>查找数据

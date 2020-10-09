@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881017"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure 专用 HSM 的支持
@@ -31,14 +31,14 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 ## <a name="gemalto-support"></a>Gemalto 支持
 
 使用专用 HSM 服务的客户根据其 Plus 支持计划提供 Gemalto 身份的支持。 这只需要使用 Gemalto 身份支持门户的注册过程。 为此，我们将提供客户 ID 和说明作为首次与 Microsoft 合作以获取对专用 HSM 服务的访问权限。 从 Gemalto 获得支持的机制是[客户支持门户](https://supportportal.gemalto.com/csm/)。
-重要的一点是，Gemalto 身份将通过下载在客户支持门户上提供使用 HSM （例如，客户端访问软件和 Sdk）所需的所有软件和文档。
+重要的一点是，Gemalto 身份将提供使用 HSM (所需的所有软件和文档（例如，客户端访问软件和 Sdk) 通过下载在客户支持门户上）。
 
 ### <a name="software-components"></a>软件组件
 
 HSM 设备的配置中使用各种软件组件：
 
 * 客户端软件
-* SDK 中 IsInRole 中的声明
+* SDK
 * 工具
 
 ### <a name="guidance"></a>指南

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588019"
 ---
 # <a name="connect-trend-micro-deep-security"></a>连接趋势微深度安全性
@@ -26,7 +26,7 @@ ms.locfileid: "77588019"
 趋势微 Deep Security 连接器可让你轻松地将深层安全日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 这样，你就可以更深入地了解组织的网络和系统，并改进了安全操作功能。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure Sentinel 工作区的读取和写入权限。
 
@@ -34,7 +34,7 @@ ms.locfileid: "77588019"
 
 1. 在 Azure 门户中，导航到 " **Azure Sentinel**  >  **数据连接器**"，然后选择 "**走向微" 安全**连接器。
 
-2. 选择 "**打开连接器" 页面**。
+2. 选择 " **打开连接器" 页面**。
 
 3. 按照说明和后续步骤进行操作。
 

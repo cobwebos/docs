@@ -4,10 +4,10 @@ description: 了解如何在 Azure 容器实例中装载 emptyDir 卷以在容�
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77117741"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 emptyDir 卷
@@ -29,11 +29,11 @@ ms.locfileid: "77117741"
 
 *emptyDir* 卷中的数据将一直保留到容器崩溃。 但是，并不保证重新启动的容器能够持久保留 *emptyDir* 卷中的数据。 如果停止容器组，则不会持久保留 emptyDir** 卷。
 
-Linux *emptyDir*卷的最大大小为 50 GB。
+Linux *emptyDir* 卷的最大大小为 50 GB。
 
 ## <a name="mount-an-emptydir-volume"></a>装载 emptyDir 卷
 
-若要在容器实例中装载 emptyDir 卷，可以使用[Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)、 [YAML 文件](container-instances-reference-yaml.md)或其他编程方法部署容器组。
+若要在容器实例中装载 emptyDir 卷，可以使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)、 [YAML 文件](container-instances-reference-yaml.md)或其他编程方法部署容器组。
 
 首先， `volumes` 在文件的容器组部分填充数组 `properties` 。 接下来，针对容器组中希望装载 *emptyDir* 卷的每个容器，在容器定义的 `properties` 节中填充 `volumeMounts` 数组。
 
@@ -42,7 +42,7 @@ Linux *emptyDir*卷的最大大小为 50 GB。
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-若要查看容器组部署的示例，请参阅[使用资源管理器模板部署多容器组](container-instances-multi-container-group.md)和[使用 YAML 文件部署多容器组](container-instances-multi-container-yaml.md)。
+若要查看容器组部署的示例，请参阅 [使用资源管理器模板部署多容器组](container-instances-multi-container-group.md) 和 [使用 YAML 文件部署多容器组](container-instances-multi-container-yaml.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

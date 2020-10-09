@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70860325"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
@@ -48,7 +48,7 @@ ms.locfileid: "70860325"
 单击窗口左上角的 "上传/下载文件" 图标，然后选择 "上传" 或 "下载"。  
 ![上传/下载文件](media/using-the-shell-window/uploaddownload.png)
 * 若要上载文件，请使用弹出窗口浏览到本地计算机上的文件，选择所需的文件，然后单击 "打开" 按钮。  文件将上传到 `/home/user` 目录。
-* 对于 "下载文件"，请在弹出窗口中输入完全限定的文件路径（即，在默认情况下显示在目录下的路径 `/home/user` ），然后选择 "下载" 按钮。  
+* 对于 "下载文件"，请在弹出窗口中输入完全限定的文件路径 (例如，在 `/home/user` 默认情况下显示) 目录下的路径，然后选择 "下载" 按钮。  
 > [!NOTE] 
 > 文件和文件路径在 Cloud Shell 中区分大小写。 仔细检查文件路径中的大小写。
 
@@ -59,14 +59,14 @@ ms.locfileid: "70860325"
 ![打开新会话](media/using-the-shell-window/newsession.png)
 
 ## <a name="cloud-shell-editor"></a>Cloud Shell 编辑器
-* 请参阅[使用 Azure Cloud Shell 编辑器](using-cloud-shell-editor.md)页。
+* 请参阅 [使用 Azure Cloud Shell 编辑器](using-cloud-shell-editor.md) 页。
 
 ## <a name="web-preview"></a>Web 预览
 单击窗口左上角的 "web 预览" 图标，选择 "配置"，指定要打开的所需端口。  选择 "打开端口" 以仅打开端口，或单击 "打开并浏览" 打开端口并在新选项卡中预览端口。  
 ![Web 预览](media/using-the-shell-window/preview.png)  
 <br>
 ![配置端口](media/using-the-shell-window/preview-configure.png)  
-单击窗口左上角的 "web 预览" 图标，选择 "预览端口 ..."若要在新选项卡中预览打开的端口，请单击窗口左上角的 "web 预览" 图标，选择 "关闭端口 ..."关闭打开的端口。  
+单击窗口左上角的 "web 预览" 图标，选择 "预览端口 ..."在新选项卡中预览打开的端口。单击窗口左上角的 "web 预览" 图标，选择 "关闭端口 ..."关闭打开的端口。  
 ![预览/关闭端口](media/using-the-shell-window/preview-options.png)
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>最小化和最大化 Cloud Shell 窗口

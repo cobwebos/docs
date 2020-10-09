@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71057272"
 ---
 # <a name="troubleshoot-rdp-issues"></a>排查 RDP 问题
@@ -27,7 +27,7 @@ ms.locfileid: "71057272"
 
 - [重置 RDP](reset-rdp.md)
 - [RDP 故障排除](troubleshoot-rdp-connection.md)
-- [详细的 RDP 故障排除步骤](detailed-troubleshoot-rdp.md)
+- [详细的 RDP 故障排除](detailed-troubleshoot-rdp.md)
 - [排查由于 DHCP 已禁用而导致的 RDP 错误](troubleshoot-rdp-dhcp-disabled.md)
 - [排查由于 NSG 设置而导致的 RDP 错误](troubleshoot-rdp-nsg-problem.md)
 - [排查特定错误](troubleshoot-specific-rdp-errors.md)
@@ -35,15 +35,15 @@ ms.locfileid: "71057272"
 - [排查远程桌面服务问题](troubleshoot-remote-desktop-services-issues.md)
 - [排查内部错误](Troubleshoot-rdp-internal-error.md)
 - [排查连接频繁断开的问题](troubleshoot-rdp-intermittent-connectivity.md)
-- [排查常规错误](troubleshoot-rdp-general-error.md)
+- [排查常见错误](troubleshoot-rdp-general-error.md)
 - [排查身份验证错误](troubleshoot-authentication-error-rdp-vm.md)
 - [按事件 ID 排查 Azure VM RDP 连接问题](event-id-troubleshoot-vm-rdp-connecton.md)
 - [排查由于静态 IP 而导致的 VM 中的 RDP 错误](troubleshoot-rdp-static-ip.md)
 - [排查由于 NIC 已禁用而导致的 VM 中的 RDP 错误](troubleshoot-rdp-nic-disabled.md)
-- [排查由安全模式导致的 RDP 错误](troubleshoot-rdp-safe-mode.md)
+- [排查由于安全模式导致的 RDP 错误](troubleshoot-rdp-safe-mode.md)
 - [在 Azure VM 中禁用来宾 OS 防火墙](disable-guest-os-firewall-windows.md)
 - [在来宾 OS 上启用或禁用防火墙规则](enable-disable-firewall-rule-guest-os.md)
 - [来宾 OS 防火墙正在阻止入站流量](guest-os-firewall-blocking-inbound-traffic.md)
 - [来宾 OS 防火墙配置不正确](guest-os-firewall-misconfigured.md) 
-- [排查由 netvsc.sys 导致的 RDP 错误](troubleshoot-rdp-driver-netvsc.md)
+- [排查由于 netvsc.sys 导致的 RDP 错误](troubleshoot-rdp-driver-netvsc.md)
 

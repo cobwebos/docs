@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71827900"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>为 Azure 认知服务启用诊断日志记录
 
-本指南逐步说明如何为 Azure 认知服务启用诊断日志记录。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 继续之前，必须有一个 Azure 帐户，其中至少有一个认知服务（如[必应 Web 搜索](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/overview)、[语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)或[LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)）的订阅。
+本指南逐步说明如何为 Azure 认知服务启用诊断日志记录。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 继续之前，必须有一个 Azure 帐户，其中至少有一个认知服务（如 [必应 Web 搜索](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/overview)、 [语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)或 [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)）的订阅。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -113,7 +113,7 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅 Azure 诊断日志 Microsoft Azure 的[指标概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)和[azure 诊断日志文章概述](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)。
+* 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅 Azure 诊断日志 Microsoft Azure 的 [指标概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) 和 [azure 诊断日志文章概述](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) 。
 * 阅读以下文章，了解事件中心：
   * [什么是 Azure 事件中心？](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs)
   * [事件中心入门](https://docs.microsoft.com/azure/event-hubs/event-hubs-csharp-ephcs-getstarted)
