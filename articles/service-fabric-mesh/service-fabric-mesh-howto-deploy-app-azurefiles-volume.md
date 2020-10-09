@@ -1,17 +1,17 @@
 ---
 title: 在 Service Fabric 网格应用中使用基于 Azure 文件的卷
 description: 了解如何使用 Azure CLI，通过将基于 Azure 文件的卷装载到服务，在 Azure Service Fabric 网格应用程序中存储状态。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01cee3dc3f6b67aba1e6f8455ed7b538a44fc6f7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260104"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842781"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载基于 Azure 文件的卷 
 
@@ -21,7 +21,7 @@ ms.locfileid: "86260104"
 
 ## <a name="prerequisites"></a>先决条件
 > [!NOTE]
-> **WINDOWS RS5 开发计算机上的部署的已知问题：** RS5 Windows 计算机上的 Powershell cmdlet SmbGlobalMapping 的公开 bug 阻止装载 Azurefile 卷。 下面是在本地开发计算机上装载基于 AzureFile 的卷时遇到的示例错误。
+> **WINDOWS RS5 开发计算机上的部署的已知问题：** RS5 Windows 计算机上的 Powershell cmdlet New-SmbGlobalMapping 的打开 bug 阻止装载 Azurefile 卷。 下面是在本地开发计算机上装载基于 AzureFile 的卷时遇到的示例错误。
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)

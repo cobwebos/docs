@@ -3,18 +3,18 @@ title: 虚拟网络
 titleSuffix: Azure Cognitive Services
 description: 为认知服务资源配置分层网络安全。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.author: dapine
-ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/07/2020
+ms.author: aahi
+ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505021"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843135"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
@@ -40,40 +40,29 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 ## <a name="supported-regions-and-service-offerings"></a>支持的区域和服务产品
 
-支持 [认知服务的区域](https://azure.microsoft.com/global-infrastructure/services/)支持虚拟网络 (vnet) 。 如果未列出认知服务，则当前不支持虚拟网络。
+支持 [认知服务的区域](https://azure.microsoft.com/global-infrastructure/services/)支持虚拟网络 (vnet) 。 认知服务支持网络规则配置服务标记。 下面列出的服务包含在 **CognitiveServicesManagement** 服务标记中。
 
 > [!div class="checklist"]
-> * [异常检测器](./anomaly-detector/index.yml)
-> * [计算机视觉](./computer-vision/index.yml)
-> * [内容审查器](./content-moderator/index.yml)
-> * [自定义视觉](./custom-vision-service/index.yml)
-> * [人脸](./face/index.yml)
-> * [表单识别器](./form-recognizer/index.yml)
-> * [语言理解](./luis/index.yml)
-> * [个性化体验创建服务](./personalizer/index.yml)
-> * [文本分析](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [文本翻译](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
-> * [沉浸式阅读器](./immersive-reader/index.yml)
+> * 异常检测器
+> * 计算机视觉
+> * 内容审查器
+> * 自定义视觉
+> * 人脸
+> * 表单识别器
+> * 语言理解 (LUIS)
+> * 个性化体验创建服务
+> * 文本分析
+> * QnA Maker
+> * 文本翻译
+> * 沉浸式阅读器
 
-## <a name="service-tags"></a>服务标记
+> [!NOTE]
+> 如果使用的是 LUIS，则 **CognitiveServicesManagement** 标记只允许使用 SDK 或 REST API 来使用该服务。 若要从虚拟网络访问和使用 LUIS 门户，你将需要使用以下标记：  
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+> * **AzureActiveDirectory**
+> * **AzureFrontDoor.Frontend**
 
-认知服务支持网络规则配置服务标记。 下面列出的服务包含在 **CognitiveServicesManagement** 服务标记中。
-
-> [!div class="checklist"]
-> * [异常检测器](./anomaly-detector/index.yml)
-> * [计算机视觉](./computer-vision/index.yml)
-> * [内容审查器](./content-moderator/index.yml)
-> * [自定义视觉](./custom-vision-service/index.yml)
-> * [人脸](./face/index.yml)
-> * [表单识别器](./form-recognizer/index.yml)
-> * [语言理解 (LUIS)](./luis/index.yml)
-> * [个性化体验创建服务](./personalizer/index.yml)
-> * [文本分析](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [翻译](./translator/index.yml)
-> * [语音服务](./speech-service/index.yml)
-> * [沉浸式阅读器](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>更改默认网络访问规则
 
@@ -99,7 +88,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
    ![虚拟网络拒绝](media/vnet/virtual-network-deny.png)
 
-1. 选择“保存”应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -221,7 +210,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
    ![删除 vNet](media/vnet/virtual-network-remove.png)
 
-1. 选择“保存”应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -380,7 +369,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
    ![删除 IP 范围](media/vnet/virtual-network-delete-ip-range.png)
 
-1. 选择“保存”应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -514,7 +503,7 @@ VNet 中的应用程序可以使用相同的连接字符串和它们将使用的
 
 创建专用终结点时，必须指定它所连接的认知服务资源。 有关创建专用终结点的详细信息，请参阅：
 
-* [使用 Azure 门户中的专用链接中心创建专用终结点](../private-link/create-private-endpoint-portal.md)
+* [使用 Azure 门户中的“专用链接中心”创建专用终结点](../private-link/create-private-endpoint-portal.md)
 * [使用 Azure CLI 创建专用终结点](../private-link/create-private-endpoint-cli.md)
 * [使用 Azure PowerShell 创建专用终结点](../private-link/create-private-endpoint-powershell.md)
 

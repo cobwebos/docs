@@ -1,19 +1,20 @@
 ---
 title: 在独立 Service Fabric 群集中添加或删除节点
 description: 了解如何向运行 Windows Server 的本地或任意云中物理计算机或虚拟机上的 Azure Service Fabric 群集添加节点。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258717"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842914"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>向在 Windows Server 上运行的独立 Service Fabric 群集添加或删除节点
-[在 Windows Server 计算机上创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)之后，（业务）需求可能发生变化，因此需要向群集添加或删除节点。 本文提供了实现此目标的详细步骤。 请注意，在本地开发群集中不支持添加/删除节点的功能。
+在 [Windows Server 计算机上创建独立的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)后，你的 (业务) 需求可能会改变，你需要在群集中添加或删除节点，如本文所述。
+
+> [!NOTE]
+> 节点添加和删除功能在本地开发群集中不受支持。
 
 ## <a name="add-nodes-to-your-cluster"></a>向群集添加节点
 
@@ -66,7 +67,7 @@ ms.locfileid: "86258717"
    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
    ```
 
-   可在 Service Fabric Explorer 中监视升级进度。 或者，可以运行[start-servicefabricclusterupgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)。
+   可在 Service Fabric Explorer 中监视升级进度。 或者，也可运行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)。
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>将节点添加到使用 gMSA 配置 Windows 安全性的群集中。
 对于使用组托管服务帐户 (gMSA)(https://technet.microsoft.com/library/hh831782.aspx) 配置的群集，可以使用配置升级添加新的节点：
@@ -95,7 +96,7 @@ ms.locfileid: "86258717"
 可以采用以下方式通过配置升级将节点从群集中删除：
 
 1. 运行 [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) 获取最新配置文件，并将节点从“节点”部分删除  。
-将 "NodesToBeRemoved" 参数添加到 "FabricSettings" 中的“设置”部分。 “值”应当是一个逗号分隔列表，其中包含需要删除的节点的节点名称。
+将 "NodesToBeRemoved" 参数添加到 "FabricSettings" 中的“设置”部分。 "值" 应为需要删除的节点名称的逗号分隔列表。
 
     ```
          "fabricSettings": [
@@ -132,7 +133,7 @@ ms.locfileid: "86258717"
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>从群集中删除节点类型
-删除节点类型前，请仔细检查是否存在任何引用该节点类型的节点。 请在删除相应节点类型之前删除这些节点。 删除所有相应节点后，可从群集配置中删除节点类型并使用 [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) 开始配置升级。
+删除节点类型之前，请检查是否存在任何引用该节点类型的节点。 请在删除相应节点类型之前删除这些节点。 删除所有相应节点后，可从群集配置中删除节点类型并使用 [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) 开始配置升级。
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>替换群集的主节点

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: d110630ad3291473aee395259d1aaa623a935f5f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825471"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842829"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -42,7 +42,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="key-vault-authentication-options"></a>Key Vault 身份验证选项
 
-在 Azure 订阅中创建密钥保管库时，该密钥保管库自动与订阅的 Azure AD 租户关联。 两个平面中的所有调用方都必须在此租户中注册并进行身份验证，然后才能访问该密钥保管库。 在这两种情况下，应用程序可以通过两种方式访问密钥保管库：
+在 Azure 订阅中创建密钥保管库时，该密钥保管库自动与订阅的 Azure AD 租户关联。 两个平面中的所有调用方都必须在此租户中注册并进行身份验证，然后才能访问该密钥保管库。 在这两种情况下，应用程序都可以通过以下三种方式访问 Key Vault：
 
 - **仅限应用程序**：应用程序表示服务主体或托管标识。 对于定期需要从密钥保管库访问证书、密钥或机密的应用程序，此标识是最常见的方案。 要使此方案正常运行， `objectId` 必须在访问策略中指定应用程序的，并且 `applicationId` _不_ 能指定或必须是 `null` 。
 - 仅用户：用户从租户中注册的任何应用程序访问密钥保管库。 此类访问的示例包括 Azure PowerShell 和 Azure 门户。 要使此方案正常工作， `objectId` 必须在访问策略中指定用户的，且 `applicationId` 不得指定， _not_或者必须是 `null` 。
@@ -71,7 +71,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 在管理平面中，你将使用 [AZURE RBAC)  (azure 基于角色的访问控制 ](https://docs.microsoft.com/azure/role-based-access-control/overview) 来授权调用方可以执行的操作。 在 Azure RBAC 模型中，每个 Azure 订阅都有一个 Azure AD 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。
 
-可以在资源组中创建密钥保管库，并使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可通过分配适当的 Azure 角色在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 Azure 角色：
+可以在资源组中创建密钥保管库，并使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可通过分配适当的 Azure 角色在特定范围级别授予访问权限。 若要向用户授予管理密钥保管库的访问权限，请将预定义的 [Key Vault 参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) 角色分配给特定范围内的用户。 可以将以下范围级别分配给 Azure 角色：
 
 - **订阅**：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
 - **资源组**：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
@@ -184,11 +184,11 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 
 | 角色 | 管理平面权限 | 数据平面权限 - 保管库访问策略 | 数据平面权限 - Azure RBAC（预览版）  |
 | --- | --- | --- | --- |
-| 安全团队 | 密钥保管库参与者 | 证书：所有操作 <br> 密钥：所有操作 <br> 机密：所有操作 | 密钥保管库管理员（预览版） |
+| 安全团队 | [密钥保管库参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) | 证书：所有操作 <br> 密钥：所有操作 <br> 机密：所有操作 | [密钥保管库管理员（预览版）](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) |
 | 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 | 无 |
-| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | 密钥保管库读取者（预览版） |
-| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | 密钥保管库加密服务加密 |
-| 应用程序 | 无 | 机密：get、list <br> 证书：get、list | 密钥保管库读取者（预览版）、密钥保管库机密用户（预览版） |
+| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [Key Vault Reader (预览版) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [密钥保管库加密服务加密](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
+| 应用程序 | 无 | 机密：get、list <br> 证书：get、list | [Key Vault Reader (预览版) ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview)， [Key Vault 机密用户 (预览版) ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
 
 三个团队角色需要访问其他资源的权限以及密钥保管库权限。 若要部署 VM（或 Azure 应用服务的 Web 应用功能），开发人员和操作人员需要部署访问权限。 审核员需要具有对存储密钥保管库日志的存储帐户的“读取”访问权限。
 
@@ -199,7 +199,11 @@ Azure 基于角色的访问控制是另一种用于控制对 Azure Key Vault 数
 
 ## <a name="resources"></a>资源
 
-* [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
+[关于 Azure Key Vault](overview.md) 
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 
+[Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) 
+[AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 
+[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 ## <a name="next-steps"></a>后续步骤
 

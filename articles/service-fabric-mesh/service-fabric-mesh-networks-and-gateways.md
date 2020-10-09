@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 网络简介
 description: 了解有关 Service Fabric 网格中的网络、网关和智能流量路由。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459137"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842693"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric 网格应用程序中的网络简介
 本文介绍了不同类型的负载均衡器、网关如何将网络与你的应用程序连接到其他网络，以及如何在应用程序中的服务之间路由流量。

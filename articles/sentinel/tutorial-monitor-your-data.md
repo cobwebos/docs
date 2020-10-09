@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826556"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843067"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>教程：可视化和监视数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "91826556"
 ## <a name="create-new-workbook"></a>创建新的工作簿
 
 1. 若要从头开始创建新工作簿，请选择“工作簿”，然后选择“添加工作簿”。 
-  ![转到工作簿](./media/tutorial-monitor-data/create-workbook.png)
+  ![显示新工作簿屏幕的屏幕截图。](./media/tutorial-monitor-data/create-workbook.png)
 
 1. 若要编辑工作簿，请选择“编辑”，然后根据需要添加文本、查询和参数。 有关如何自定义工作簿的详细信息，请参阅如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/platform/workbooks-overview.md)。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "91826556"
 
 1. 如果要让组织中的其他人使用该工作簿，请在“保存到”下选择“共享报表”。 如果希望此工作簿仅供你使用，请选择“我的报表”。
 
-1. 若要在工作区中切换工作簿，可以在任何工作簿的顶部窗格中选择“打开”![切换工作簿](./media/tutorial-monitor-data/switch.png)。 在右侧打开的窗口中，在工作簿之间切换。
+1. 若要在工作区中的工作簿之间切换，可以选择 " **打开**" ![ 图标以打开工作簿。 ](./media/tutorial-monitor-data/switch.png)在任意工作簿的顶部窗格中。 在右侧打开的窗口中，在工作簿之间切换。
 
    ![切换工作簿](./media/tutorial-monitor-data/switch-workbooks.png)
 

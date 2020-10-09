@@ -7,14 +7,14 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669060"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842863"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>预览： Azure 中 Windows Vm 的自动 VM 来宾修补
+# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>预览：Azure 中 Windows VM 的自动 VM 来宾修补
 
 为 Windows Vm 启用自动 VM 来宾修补有助于通过安全、自动修补虚拟机来保持安全符合性，从而简化更新管理。
 
@@ -251,8 +251,10 @@ az vm get-instance-view --resource-group myResourceGroup --name myVM
 ## <a name="on-demand-patch-assessment"></a>按需修补程序评估
 如果已为 VM 启用自动 VM 来宾修补，则在 VM 的非高峰时段内会定期执行修补程序评估。 此过程是自动完成的，并且可以通过 VM 的实例视图查看最新评估的结果，如本文档前面所述。 你还可以随时为 VM 触发按需修补程序评估。 修补程序评估可能需要几分钟才能完成，最新评估的状态会在 VM 的实例视图上更新。
 
+若要启用预览功能，每个订阅都需要一次性选择 *InGuestPatchVMPreview* 功能。 可按照前面介绍的用于自动 VM 来宾修补的 [预览启用过程](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) 来启用按需修补程序评估功能预览。
+
 > [!NOTE]
->按需修补程序评估不会自动触发已安装的修补程序。 按照本文档前面所述的可用性优先修补过程操作，VM 的评估和适用的修补程序将仅在 VM 的非高峰时间安装。
+>按需修补程序评估不会自动触发修补程序安装。 按照本文档前面所述的可用性优先修补过程操作，VM 的评估和适用的修补程序将仅在 VM 的非高峰时间安装。
 
 ### <a name="rest-api"></a>REST API
 ```

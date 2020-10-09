@@ -1,16 +1,14 @@
 ---
 title: 升级 Azure Service Fabric 群集的配置
 description: 了解如何使用资源管理器模板升级在 Azure 中运行的 Service Fabric 群集的配置。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: 010f2b5d6dee3a5985c421e468bcd28b18148e5a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 692dc2162159ab61a3ac527e12dac43438084a60
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247721"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842710"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>在 Azure 中升级群集的配置 
 
@@ -28,8 +26,8 @@ ms.locfileid: "86247721"
 
 1. 转到 https://resources.azure.com
 2. 通过展开**订阅**  ->  **\<Your Subscription>**  ->  **resourceGroups**  ->  **\<Your Resource Group>**  ->  **提供程序**  ->  **ServiceFabric**  ->  **群集**导航到订阅 -> **\<Your Cluster Name>**
-3. 在右上角，选择 "**读/写"。**
-4. 选择 "**编辑**"，更新 `fabricSettings` JSON 元素并添加新元素：
+3. 在右上角，选择 " **读/写"。**
+4. 选择 " **编辑** "，更新 `fabricSettings` JSON 元素并添加新元素：
 
 ```json
       {
@@ -48,9 +46,9 @@ ms.locfileid: "86247721"
 - 使用 [Azure 门户](../azure-resource-manager/templates/export-template-portal.md)导出和更新资源管理器模板。
 - 使用 [PowerShell](../azure-resource-manager/management/manage-resources-powershell.md) 导出和更新资源管理器模板。
 - 使用 [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md) 导出和更新资源管理器模板。
-- 使用 Azure PowerShell [AzServiceFabricSetting](/powershell/module/az.servicefabric/set-azservicefabricsetting)和[AzServiceFabricSetting](/powershell/module/az.servicefabric/remove-azservicefabricsetting)命令直接修改设置。
+- 使用 Azure PowerShell [AzServiceFabricSetting](/powershell/module/az.servicefabric/set-azservicefabricsetting) 和 [AzServiceFabricSetting](/powershell/module/az.servicefabric/remove-azservicefabricsetting) 命令直接修改设置。
 - 使用 Azure CLI [az sf cluster setting](/cli/azure/sf/cluster/setting) 命令直接修改这些设置。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-in-out.md)。
+* 了解如何 [扩展和缩减群集](service-fabric-cluster-scale-in-out.md)。

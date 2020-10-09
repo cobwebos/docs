@@ -4,19 +4,19 @@ description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务�
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 07/09/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 207b4a926e77ff55faad388b6eeaeb221ec252a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: e875eda2a59841d3238a13389768c6fa37cef774
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006774"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843169"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -252,6 +252,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 有关详细信息，请参阅 [如何为 Azure 弹簧 Cloud 应用程序启用系统分配的托管标识](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
 
+### <a name="azure-stack-edge"></a>Azure Stack Edge
+
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | --- | --- | --- | --- |
+| 系统分配 | 在可用 Azure Stack Edge 服务的区域内可用 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集
 

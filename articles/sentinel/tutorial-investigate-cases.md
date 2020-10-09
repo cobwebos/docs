@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566329"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843101"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：通过 Azure Sentinel 调查事件
 
@@ -119,11 +119,13 @@ ms.locfileid: "88566329"
 - 错误的错误数据
 - 确定
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt 文本}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="用于突出显示 &quot;选择分类&quot; 列表中可用分类的屏幕截图。&quot;:::
 
-选择适当的分类后，在 " **注释** " 字段中添加一些描述性文本。 当您需要引用此事件时，这将非常有用。 完成后单击 " **应用** "，事件将关闭。
+选择适当的分类后，在 &quot; **注释** &quot; 字段中添加一些描述性文本。 当您需要引用此事件时，这将非常有用。 完成后单击 " **应用** "，事件将关闭。
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt 文本}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="用于突出显示 &quot;选择分类&quot; 列表中可用分类的屏幕截图。&quot;:::
+
+选择适当的分类后，在 &quot; **注释** &quot; 字段中添加一些描述性文本。 当您需要引用此事件时，这将非常有用。 完成后单击 ":::
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已学习如何使用 Azure Sentinel 来调查事件。 继续学习有关 [如何使用自动行动手册来响应威胁](tutorial-respond-threats-playbook.md)的教程。

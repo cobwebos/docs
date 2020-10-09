@@ -1,16 +1,14 @@
 ---
 title: 配置 Azure Service Fabric 独立群集
 description: 了解如何配置独立的或本地 Azure Service Fabric 群集。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: dekapur
-ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246565"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843152"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
 本文介绍可使用 ClusterConfig.json  文件设置的独立 Azure Service Fabric 群集的配置设置。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。  更改或添加配置设置后，可以[创建一个独立的群集](service-fabric-cluster-creation-for-windows-server.md)，也可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
