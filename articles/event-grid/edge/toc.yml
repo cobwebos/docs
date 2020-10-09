@@ -36,7 +36,7 @@
       href: delivery-output-batching.md
     - name: 高级筛选
       href: advanced-filtering.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 保存状态
       items:
@@ -54,7 +54,7 @@
       href: configure-webhook-subscriber-auth.md
     - name: 配置标识身份验证
       href: configure-identity-auth.md
-    - name: 故障排除
+    - name: 疑难解答
       href: troubleshoot.md
 - name: 参考
   items:

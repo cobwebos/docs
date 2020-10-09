@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: raynew
 ms.openlocfilehash: f4cd9cad3813378fcdc3f06e8ab1c28eced4f93c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173475"
 ---
-名称 | 商用 URL | 政府 URL | 说明
+名称 | 商用 URL | 政府 URL | 描述
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | 由 Azure Active Directory 用于访问控制和标识管理。 
 备份 | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | 用于复制数据传输和协调。
