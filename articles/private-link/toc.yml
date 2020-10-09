@@ -28,6 +28,8 @@
   items:
     - name: 连接到存储帐户
       href: tutorial-private-endpoint-storage-portal.md
+    - name: 连接到 Cosmos DB 帐户
+      href: tutorial-private-endpoint-cosmosdb-portal.md
 - name: 概念
   items:
     - name: 专用终结点
@@ -42,8 +44,6 @@
           href: security-baseline.md
 - name: 如何
   items:
-    - name: 专门连接到 Cosmos DB 帐户
-      href: create-private-endpoint-cosmosdb-portal.md
     - name: 私密连接到 Web 应用
       href: create-private-endpoint-webapp-portal.md
     - name: 对专用终结点禁用网络策略

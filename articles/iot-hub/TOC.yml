@@ -145,7 +145,7 @@
           href: iot-hub-devguide-file-upload.md
         - name: 管理设备标识
           href: iot-hub-devguide-identity-registry.md
-        - name: 控制对 IoT 中心的访问
+        - name: 控制 IoT 中心的访问权限
           href: iot-hub-devguide-security.md
         - name: 了解设备孪生
           href: iot-hub-devguide-device-twins.md

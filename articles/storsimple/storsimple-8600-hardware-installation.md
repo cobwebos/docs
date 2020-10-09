@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79254750"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871807"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
 
@@ -119,7 +119,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **将导轨组件固定到机架上**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |旋紧螺丝 |
    |   2 |方孔前机架立柱螺丝 |
@@ -145,7 +145,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **安装法兰帽**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |机箱紧固螺丝 |
 

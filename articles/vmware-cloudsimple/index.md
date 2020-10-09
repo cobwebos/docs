@@ -11,10 +11,10 @@ manager: dikamath
 ms.custom: seo-azure-migrate
 keywords: vms 支持, cloudsimple 的 azure vmware 解决方案, cloudsimple azure, vms 工具, vmware 文档
 ms.openlocfilehash: fffe0255bb905c0314e2ed59f5beab726e681e00
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230630"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple

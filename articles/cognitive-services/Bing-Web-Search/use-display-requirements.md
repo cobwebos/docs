@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60499879"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>必应搜索 API 使用和显示要求
@@ -36,7 +36,7 @@ ms.locfileid: "60499879"
 
 |术语  |说明  |
 |---------|---------|
-|Answer     | 响应中返回的一类结果。 例如，从必应 Web 搜索 API 返回的响应可能包括网页结果、图片、视频、视觉对象和新闻类别的答复。 |
+|答案     | 响应中返回的一类结果。 例如，从必应 Web 搜索 API 返回的响应可能包括网页结果、图片、视频、视觉对象和新闻类别的答复。 |
 |响应     | 在响应针对搜索 API 的单个调用时收到的任何答复和关联的数据。 |
 |结果    | 答复中的某项信息。 例如，与单篇新闻文章关联的数据集是新闻答复中的结果。 |
 |搜索 API    | 必应自定义搜索、必应实体搜索、必应图像搜索、必应新闻搜索、必应视频搜索、必应视觉搜索、必应本地业务搜索和必应 Web 搜索 API 的总称。 |
@@ -97,7 +97,7 @@ ms.locfileid: "60499879"
     - 主要（或者仅）筛选或限制为图片、新闻和/或视频或视觉搜索结果的响应页面。
 
 ### <a name="notices-and-branding"></a>通知和品牌推广 
-请：
+应做事项：
 
 - 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)功能性超链接。 将该超链接标记为 Microsoft 隐私声明****。
 
@@ -134,7 +134,7 @@ ms.locfileid: "60499879"
 - 让用户在特定条件下（例如服务中断时）在该设备上访问以前返回给该用户的结果。
 - 在根据用户的信号预期到该用户的需求的情况下（例如，预期服务会中断时），存储针对个性化主动查询返回的结果。
 
-#### <a name="server"></a>Server (服务器)
+#### <a name="server"></a>服务器
 
 只能针对以下目的，在所控制的服务器上安全地保留特定于单个用户的结果，并且显示保留的结果：
 

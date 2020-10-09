@@ -76,6 +76,8 @@
           href: configure-local-rbac.md
         - name: 配置数据库设置
           href: configure-database.md
+        - name: 配置客户管理的密钥
+          href: bring-your-own-key.md
         - name: 配置 CORS
           href: configure-cross-origin-resource-sharing.md
         - name: 配置导出
