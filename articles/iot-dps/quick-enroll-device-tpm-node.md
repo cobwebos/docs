@@ -1,5 +1,5 @@
 ---
-title: 使用 Node.js 将 TPM 设备注册到 Azure 设备预配
+title: 快速入门 - 使用 Node.js 将 TPM 设备注册到 Azure 设备预配服务
 description: 快速入门 - 使用 Node.js 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: b0928b81ebf585e51eb9275c81df29918aa5e6a0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 184fb4bbf8845b749459e1963bed3c6d9fa64856
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421937"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323839"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>快速入门：使用 Node.js 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 

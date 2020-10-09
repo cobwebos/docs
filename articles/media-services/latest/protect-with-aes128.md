@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89289318"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教程：使用 AES-128 来加密视频以及使用密钥传送服务

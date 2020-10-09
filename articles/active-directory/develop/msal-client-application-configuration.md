@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81534459"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
@@ -35,10 +35,10 @@ ms.locfileid: "81534459"
 
 颁发机构是一个 URL，表示 MSAL 可从中请求令牌的目录。 常见的颁发机构包括：
 
-- https \: //login.microsoftonline.com/ \<tenant\> /，其中 &lt; 租户 &gt; 是 Azure Active Directory （Azure AD）租户的租户 ID 或与此 Azure AD 租户关联的域。 仅用于将特定组织的用户登录。
+- https \: //login.microsoftonline.com/ \<tenant\> /，其中 &lt; 租户 &gt; 是 AZURE ACTIVE DIRECTORY (的租户 ID，Azure AD) 租户或与此 Azure AD 租户关联的域。 仅用于将特定组织的用户登录。
 - https \: //login.microsoftonline.com/common/。 用于使用工作、学校帐户或个人 Microsoft 帐户登录用户。
 - https \: //login.microsoftonline.com/organizations/。 用于通过工作和学校帐户将用户登录。
-- https \: //login.microsoftonline.com/consumers/。 用于仅使用个人 Microsoft 帐户（以前称为 Windows Live ID 帐户）登录用户。
+- https \: //login.microsoftonline.com/consumers/。 用于仅使用个人 Microsoft 帐户登录的用户 (以前称为 Windows Live ID 帐户) 。
 
 颁发机构设置需要与应用程序注册门户中声明的设置一致。
 
@@ -80,8 +80,8 @@ Azure AD 云颁发机构有两个组成部分：
   - 与 Azure AD 实例关联的域名（也适用于单租户应用程序）
 - 以下租户 ID 占位符之一代表 Azure AD 颁发机构受众枚举：
     - 多租户应用程序的 `organizations`
-    - `consumers`仅登录用户的个人帐户（& a）
-    - `common`使用他们的工作和学校帐户或个人 Microsoft 帐户登录用户
+    - `consumers` 仅登录用户的个人帐户（& a）
+    - `common` 使用他们的工作和学校帐户或个人 Microsoft 帐户登录用户
 
 如果你同时指定 Azure AD 颁发机构受众和租户 ID，MSAL 将引发有含义的异常。
 
@@ -93,7 +93,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 目前，仅使用个人 Microsoft 帐户让应用登录用户的唯一方法是配置这两个设置：
 - 将应用程序注册受众设置为 `Work and school accounts and personal accounts` 。
-- 将你的代码/配置中的受众设置为 `AadAuthorityAudience.PersonalMicrosoftAccount` （或 `TenantID` = "使用者"）。
+- 将你的代码/配置中的受众设置为 `AadAuthorityAudience.PersonalMicrosoftAccount` (或 `TenantID` = "使用者" ) 。
 
 ## <a name="client-id"></a>客户端 ID
 
@@ -136,7 +136,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 ## <a name="client-secret"></a>客户端机密
 
-此选项指定机密客户端应用的客户端机密。 此机密（应用密码）由应用程序注册门户提供，或在使用 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 的应用注册期间提供给 Azure AD。
+此选项指定机密客户端应用的客户端机密。 此机密 (应用程序密码) 由应用程序注册门户提供，或在应用程序注册过程中通过 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 提供给 Azure AD。
 
 ## <a name="logging"></a>日志记录
 

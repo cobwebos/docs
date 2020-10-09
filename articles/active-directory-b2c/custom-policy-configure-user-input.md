@@ -12,22 +12,22 @@ ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389354"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何在 Azure Active Directory B2C （Azure AD B2C）的注册旅程中收集新属性。 你将获得用户的 "城市"，将其配置为下拉箭头，并定义是否需要提供此项。
+本文介绍如何在注册旅程 Azure Active Directory B2C (Azure AD B2C) 中收集新属性。 你将获得用户的 "城市"，将其配置为下拉箭头，并定义是否需要提供此项。
 
 > [!NOTE]
-> 此示例使用内置声明 "city"。 相反，您可以选择一个受支持的[Azure AD B2C 内置属性](user-profile-attributes.md)或自定义属性。 若要使用自定义属性，请[在策略中启用自定义属性](custom-policy-custom-attributes.md)。 若要使用不同的内置或自定义属性，请将 "city" 替换为所选的属性，例如内置属性*jobTitle*或*extension_loyaltyId*之类的自定义属性。  
+> 此示例使用内置声明 "city"。 相反，您可以选择一个受支持的 [Azure AD B2C 内置属性](user-profile-attributes.md) 或自定义属性。 若要使用自定义属性，请 [在策略中启用自定义属性](custom-policy-custom-attributes.md)。 若要使用不同的内置或自定义属性，请将 "city" 替换为所选的属性，例如内置属性 *jobTitle* 或 *extension_loyaltyId*之类的自定义属性。  
 
-你可以使用注册或登录用户旅程收集用户的初始数据。 稍后可以通过配置文件编辑用户旅程收集其他声明。 Azure AD B2C 以交互方式直接从用户那里收集信息，标识体验框架将使用其[自断言技术配置文件](self-asserted-technical-profile.md)。 在此示例中，你：
+你可以使用注册或登录用户旅程收集用户的初始数据。 稍后可以通过配置文件编辑用户旅程收集其他声明。 Azure AD B2C 以交互方式直接从用户那里收集信息，标识体验框架将使用其 [自断言技术配置文件](self-asserted-technical-profile.md)。 在此示例中，你：
 
 1. 定义 "city" 声明。 
 1. 要求用户提供其城市。
@@ -52,7 +52,7 @@ ms.locfileid: "85389354"
 
 1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 找到 [ClaimsSchema](claimsschema.md) 元素。 如果该元素不存在，请添加该元素。
-1. 将 city 声明添加到**ClaimsSchema**元素。  
+1. 将 city 声明添加到 **ClaimsSchema** 元素。  
 
 ```xml
 <ClaimType Id="city">
@@ -69,7 +69,7 @@ ms.locfileid: "85389354"
 
 ## <a name="add-a-claim-to-the-user-interface"></a>向用户界面添加声明
 
-以下技术配置文件[自断言](self-asserted-technical-profile.md)，在用户需要提供输入时被调用：
+以下技术配置文件 [自断言](self-asserted-technical-profile.md)，在用户需要提供输入时被调用：
 
 - **LocalAccountSignUpWithLogonEmail** -本地帐户注册流。
 - **SelfAsserted-** 联合帐户首次用户登录。
@@ -127,7 +127,7 @@ ms.locfileid: "85389354"
 
 ## <a name="read-and-write-a-claim"></a>读取和写入声明
 
-以下技术配置文件是[Active Directory 技术配置文件，这些配置文件](active-directory-technical-profile.md)将数据读写到 Azure Active Directory 中。  
+以下技术配置文件是 [Active Directory 技术配置文件，这些配置文件](active-directory-technical-profile.md)将数据读写到 Azure Active Directory 中。  
 使用 `PersistedClaims` 将数据写入用户配置文件，并 `OutputClaims` 从各自 Active Directory 技术配置文件中的用户配置文件中读取数据。
 
 覆盖扩展文件中的这些技术配置文件。 找到 **ClaimsProviders** 元素。  添加新的 ClaimsProviders，如下所示：
@@ -237,5 +237,5 @@ ms.locfileid: "85389354"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 IEF 参考中的[ClaimsSchema](claimsschema.md)元素。
-- 了解如何[使用自定义配置文件编辑策略中的自定义属性](custom-policy-custom-attributes.md)。
+- 详细了解 IEF 参考中的 [ClaimsSchema](claimsschema.md) 元素。
+- 了解如何 [使用自定义配置文件编辑策略中的自定义属性](custom-policy-custom-attributes.md)。

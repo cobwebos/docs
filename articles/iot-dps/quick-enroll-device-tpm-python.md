@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 将 TPM 设备注册到 Azure 设备预配服务
+title: 快速入门 - 使用 Python 将 TPM 设备注册到 Azure 设备预配服务
 description: 快速入门 - 使用 Python 预配服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: dd34806cbfeeccadbaac247a9ea4d019cc22fc57
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 96bd1e85de45ac36515580025dfc392e931643f3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876404"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323757"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>快速入门：使用 Python 预配服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 30ca4d330d9b16214396ac81e5ab5722ca0e7569
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89254282"
 ---
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Azure Stack Edge 资源，然后转到“概览”。  设备应为“联机”状态。

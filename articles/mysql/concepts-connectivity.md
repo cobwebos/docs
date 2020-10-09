@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: cb5adb3787176e3bdbfb7897aa7d7deb9cc2dae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82100135"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>处理暂时性错误并有效地连接到 Azure Database for MySQL
@@ -71,7 +71,7 @@ ms.locfileid: "82100135"
 
 设置 TestOnBorrow 参数后，当有新的请求时，连接池会自动验证任何可用空闲连接的有效性。 如果此类连接有效，它会直接返回，否则连接池将收回连接。 然后，连接池会创建新的有效连接并将其返回。 此过程可确保有效访问数据库。 
 
-有关具体设置的信息，请参阅 [JDBC 连接池官方简介文档](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)。 主要需要设置以下三个参数： TestOnBorrow （设置为 true）、ValidationQuery （设置为 SELECT 1）和 ValidationQueryTimeout （设置为1）。 具体的示例代码如下所示：
+有关具体设置的信息，请参阅 [JDBC 连接池官方简介文档](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)。 主要需要设置以下三个参数： TestOnBorrow (设置为 true) ，ValidationQuery (设置为 SELECT 1) ，ValidationQueryTimeout (设置为 1) 。 具体的示例代码如下所示：
 
 ```java
 public class SimpleTestOnBorrowExample {

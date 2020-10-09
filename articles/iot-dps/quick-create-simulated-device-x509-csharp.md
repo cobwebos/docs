@@ -1,5 +1,5 @@
 ---
-title: 使用 C# 将模拟的 X.509 设备预配到 Azure IoT 中心
+title: 快速入门 - 使用 C# 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C# 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 639ab07113a0e62cac43af5b79f052da1efd93ab
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 27bb1c97fa082f15642ab9eff6b0bdba357068a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74976513"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323968"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
 
@@ -22,7 +22,7 @@ ms.locfileid: "74976513"
 
 这些步骤展示如何使用[用于 C# 的 Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp)在运行 Windows OS 的开发计算机上模拟 X.509 设备。 该示例还使用设备预配服务将模拟设备连接到 IoT 中心。
 
-如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+如果不熟悉自动预配过程，请查看[预配](about-iot-dps.md#provisioning-process)概述。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
 - [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。

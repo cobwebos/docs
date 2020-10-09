@@ -1,27 +1,29 @@
 ---
 title: 什么是异常检测器 API？
 titleSuffix: Azure Cognitive Services
-description: 使用异常检测器 API 的高级算法来确定时序数据中的异常。
+description: 使用异常检测器 API 算法对时序数据应用异常情况检测。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: 异常检测, 机器学习, 算法
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887497"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91319310"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-可以使用异常检测器 API 来监视并检测与机器学习配合使用的时序数据中的异常。 异常检测器 API 可以自动标识最佳适配模型并将其应用到数据，不限行业、场景或数据量，通过这种方式进行适应。 使用时序数据，此 API 可以确定异常检测的边界、预期的值，以及哪些数据点异常。
+使用异常检测器 API，无需了解机器学习方面的知识，就能监视和检测时序数据中的异常。 异常检测器 API 算法通过自动标识最佳适配模型并将其应用到数据来进行自适应，并且不限行业、场景或数据量。 使用时序数据，此 API 可以确定异常检测的边界、预期的值，以及哪些数据点异常。
 
 ![检测服务请求中的模式更改](./media/anomaly_detection2.png)
 
@@ -33,7 +35,7 @@ ms.locfileid: "90887497"
 
 |Feature  |说明  |
 |---------|---------|
-|检测实时出现的异常。 | 检测流式传输数据中的异常，方法是：使用以前见过的数据点来确定最近的数据点是否异常。 此操作使用发送的数据点生成一个模型，然后确定目标点是否异常。 每生成一个新数据点就调用该 API，这样就可以在创建数据时监视数据。 |
+|实时检测异常。 | 检测流式传输数据中的异常，方法是：使用以前见过的数据点来确定最近的数据点是否异常。 此操作使用发送的数据点生成一个模型，然后确定目标点是否异常。 每生成一个新数据点就调用该 API，这样就可以在创建数据时监视数据。 |
 |以批的形式检测整个数据集中的异常。 | 使用时序来检测数据中可能存在的任何异常。 此操作使用整个时序数据生成一个模型，每个点使用同一模型进行分析。         |
 |以批的形式检测整个数据集中的更改点。 | 使用时序来检测数据中存在的趋势更改点。 此操作使用整个时序数据生成一个模型，每个点使用同一模型进行分析。    |
 | 获取数据的其他信息。 | 获取数据的有用详细信息以及任何观察到的异常，包括预期的值、异常边界和位置。 |

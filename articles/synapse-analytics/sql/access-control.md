@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031307"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91289474"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>管理对工作区、数据和管道的访问
 
@@ -50,7 +50,7 @@ ms.locfileid: "90031307"
 1. 打开 [Azure 门户](https://portal.azure.com)
 2. 导航到 Azure Data Lake Storage Gen2 帐户
 3. 导航到为 Azure Synapse 工作区选取的容器（文件系统）
-4. 单击“访问控制(标识和访问管理)”
+4. 选择“访问控制(IAM)”
 5. 分配以下角色：
    1. 将“读取者”角色分配到：`Synapse_WORKSPACENAME_Users`
    2. 将“存储 Blob 数据所有者”角色分配到：`Synapse_WORKSPACENAME_Admins`
@@ -64,17 +64,17 @@ ms.locfileid: "90031307"
 
 1. 转到 [Azure Synapse Web UI](https://web.azuresynapse.net)
 2. 转到“管理”  > “安全性” > “访问控制”  
-3. 单击“添加管理员”，然后选择 `Synapse_WORKSPACENAME_Admins`
+3. 选择“添加管理员”，然后选择 `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>步骤 4：配置对工作区的 SQL 管理员访问权限
 
 1. 转到 [Azure 门户](https://portal.azure.com)
 2. 导航到你的工作区
 3. 转到“设置” > “Active Directory 管理员” 
-4. 单击“设置管理员”
+4. 选择“设置管理员”
 5. 选择 `Synapse_WORKSPACENAME_Admins`
-6. 单击“选择”
-7. 单击“保存”
+6. 选择“选择”
+7. 选择“保存”
 
 > [!NOTE]
 > WORKSPACENAME - 应将此部分替换为实际的工作区名称。

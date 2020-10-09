@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496383"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91288522"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 按需版本（预览版） 
 
@@ -25,9 +25,11 @@ SQL 按需版本是针对 Data Lake 中的数据运行的查询服务。 它可�
 - 熟悉的 T-SQL 语法，可以就地查询数据，而无需将数据复制或加载到专用存储。 
 - 通过 T-SQL 接口建立的集成连接，提供各种商业智能和即席查询工具（包括最流行的驱动程序）。 
 
-SQL 按需版本是专为大规模数据和计算构建的分布式数据处理系统。 使用 SQL 按需版本可在几秒到几分钟内分析完大数据，具体所需时间取决于工作负荷。 得益于内置的查询执行容错机制，即使是对于涉及大型数据集的长时间运行的查询，该系统也能够提供很高的可靠性和成功率。
+按需 SQL 是专为大规模数据和计算功能构建的分布式数据处理系统。 使用 SQL 按需版本可在几秒到几分钟内分析完大数据，具体所需时间取决于工作负荷。 得益于内置的查询执行容错机制，即使是对于涉及大型数据集的长时间运行的查询，该系统也能够提供很高的可靠性和成功率。
 
-SQL 按需版本是无服务器服务，因此不需要设置基础结构，也不需要维护群集。 此服务的默认终结点将在每个 Azure Synapse 工作区内提供，因此在创建工作区后，可以立即开始查询数据。 保留的资源不产生任何费用，你只需为运行的查询所扫描的数据付费，因此，此模型是真正的按用量付费模型。  
+按需 SQL 是无服务器服务，因此不需要设置基础结构，也不需要维护群集。 此服务的默认终结点将在每个 Azure Synapse 工作区内提供，因此在创建工作区后，可以立即开始查询数据。 
+
+保留的资源不产生任何费用，你只需为运行的查询所处理的数据付费。因此，此模型是真正的按用量付费模型。  
 
 如果在数据管道中使用 Apache Spark for Azure Synapse 进行数据准备、清理或扩充，可以直接从 SQL 按需版本[查询已在流程中创建的 Spark 外部表](develop-storage-files-spark-tables.md)。 使用[专用链接](../security/how-to-connect-to-workspace-with-private-links.md)可将 SQL 按需版本终结点整合到[托管工作区 VNet](../security/synapse-workspace-managed-vnet.md) 中。  
 
@@ -56,7 +58,7 @@ SQL 按需版本是无服务器服务，因此不需要设置基础结构，也�
 
 ## <a name="t-sql-support"></a>T-SQL 支持
 
-SQL 按需版本提供 T-SQL 查询外围应用，该外围应用在某些方面略有增强/扩展，以便改善半结构化和非结构化数据的查询体验。 此外，由于 SQL 按需版本的设计，T-SQL 语言的某些方面不受支持，例如，目前不支持 DML 功能。
+SQL 按需版本提供 T-SQL 查询外围应用，该外围应用在某些方面略有增强/扩展，以便改善半结构化和非结构化数据的查询体验。 此外，由于 按需 SQL 的设计，T-SQL 语言的某些方面不受支持，例如，目前不支持 DML 功能。
 
 - 可以使用熟悉的概念来组织工作负荷：
 - 数据库 - SQL 按需版本终结点可以包含多个数据库。

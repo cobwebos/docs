@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76697602"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>如何区分委派权限和应用程序权限之间的差异

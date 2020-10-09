@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85391751"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>导出模型以用于移动设备
@@ -29,7 +29,7 @@ ms.locfileid: "85391751"
 * 用于 iOS11 的 CoreML________。
 * 用于 Windows ML 的 ONNX________。
 * __[视觉 AI 开发人员工具包](https://azure.github.io/Vision-AI-DevKit-Pages/)__。
-* 适用于 Windows、Linux 或 ARM 体系结构的__Docker 容器__。 容器包含 Tensorflow 模型和服务代码，可使用自定义视觉 API。
+* 适用于 Windows、Linux 或 ARM 体系结构的 __Docker 容器__ 。 容器包含 Tensorflow 模型和服务代码，可使用自定义视觉 API。
 
 > [!IMPORTANT]
 > 自定义影像服务仅导出压缩域____。 已针对移动设备上实时分类的约束对压缩域生成的模型进行了优化。 面对相同数量的定型数据时，用压缩域生成的分类器比用标准域生成的分类器的准确度略低。
@@ -43,7 +43,7 @@ ms.locfileid: "85391751"
 
 若要转换现有模型的域，请执行以下步骤：
 
-1. 在[自定义视觉网站](https://customvision.ai)上，选择 "__主页__" 图标以查看项目的列表。
+1. 在 [自定义视觉网站](https://customvision.ai)上，选择 " __主页__ " 图标以查看项目的列表。
 
     ![“主页”图标和项目列表的图像](./media/export-your-model/projects-list.png)
 
@@ -51,10 +51,10 @@ ms.locfileid: "85391751"
 
     ![齿轮图标的图像](./media/export-your-model/gear-icon.png)
 
-1. 在 "__域__" 部分中，选择一个__压缩__域。 选择“保存更改”来保存更改____。 
+1. 在 " __域__ " 部分中，选择一个 __压缩__ 域。 选择“保存更改”来保存更改____。 
 
     > [!NOTE]
-    > 对于视觉 AI 开发工具包，必须在 "**导出功能**" 部分下指定 "**视觉 ai 开发工具包**" 选项，然后才能__创建该项目__。
+    > 对于视觉 AI 开发工具包，必须创建具有__常规 (Compact) __域的项目，并且必须在 "**导出功能**" 部分下指定 "**视觉 AI 开发工具包**" 选项。
 
     ![域选项的图像](./media/export-your-model/domains.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "85391751"
     > [!TIP]
     > 如果“导出”项不可用，则表示所选迭代未使用压缩域____。 使用此页面中的“迭代”部分，选择使用压缩域的迭代，然后选择“导出”________。
 
-1. 选择所需的导出格式，然后选择 "__导出__" 以下载模型。
+1. 选择所需的导出格式，然后选择 " __导出__ " 以下载模型。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -79,6 +79,6 @@ ms.locfileid: "85391751"
 
 * [将 Tensorflow 模型与 Python 配合使用](export-model-python.md)
 * [将 ONNX 模型用于 Windows 机器学习](custom-vision-onnx-windows-ml.md)
-* 请参阅[iOS 应用程序中的 CoreML 模型](https://go.microsoft.com/fwlink/?linkid=857726)示例，以便使用 Swift 实现实时映像分类。
-* 请参阅 android[应用程序中的 Tensorflow 模型](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)示例，了解 android 上的实时图像分类。
-* 请参阅在 Xamarin iOS 应用中使用 Xamarin 进行实时映像分类的[CoreML 模型](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)示例。
+* 请参阅 [iOS 应用程序中的 CoreML 模型](https://go.microsoft.com/fwlink/?linkid=857726) 示例，以便使用 Swift 实现实时映像分类。
+* 请参阅 android [应用程序中的 Tensorflow 模型](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) 示例，了解 android 上的实时图像分类。
+* 请参阅在 Xamarin iOS 应用中使用 Xamarin 进行实时映像分类的 [CoreML 模型](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) 示例。

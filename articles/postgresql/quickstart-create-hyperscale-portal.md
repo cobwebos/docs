@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e43e20ceb5e84d652fee9ca4db6d5dc871ed1e4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906492"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91268446"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建超大规模 (Citus) 服务器组
 
@@ -25,7 +25,7 @@ ms.locfileid: "90906492"
 
 使用 psql 连接到 Hyperscale 协调器节点后，可以完成一些基本任务。
 
-Hyperscale 服务器中有三种类型的表：
+超大规模 (Citus) 服务器中有三种类型的表：
 
 - 分布式表或分片表（分散在不同的位置以帮助进行缩放，从而提高性能并便于并行化）
 - 引用表（保留多个副本）
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-接下来，我们将这些 Postgres 表放到协调器节点上，并告知 Hyperscale 在工作器节点之间将这些表分片。 为此，我们将针对每个表运行一个查询，指定将该表分片所依据的键。 在当前示例中，我们要将 `user_id` 上的事件和用户表分片：
+接下来，我们将这些 Postgres 表放到协调器节点上，并告知超大规模 (Citus) 在工作器之间将这些表分片。 为此，我们将针对每个表运行一个查询，指定将该表分片所依据的键。 在当前示例中，我们要将 `user_id` 上的事件和用户表分片：
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -117,7 +117,7 @@ ORDER BY hour;
 
 到目前为止，查询只是涉及到 github\_events，但我们可将这些信息与 github\_users 合并。 由于我们基于同一个标识符 (`user_id`) 分片了用户和事件，因此，这两个表中具有匹配用户 ID 的行将[共置](concepts-hyperscale-colocation.md)到同一个数据库节点，并可以轻松联接。
 
-如果在 `user_id` 上联接，则 Hyperscale 可将联接执行下推到分片中，以便在工作器节点上并行执行。 例如，让我们查找创建了最多存储库的用户：
+如果按 `user_id` 进行联接，则超大规模 (Citus) 可将联接执行下推到分片中，以便在工作器节点上并行执行。 例如，让我们查找创建了最多存储库的用户：
 
 ```sql
 SELECT gu.login, count(*)

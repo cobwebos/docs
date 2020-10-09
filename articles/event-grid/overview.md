@@ -2,13 +2,13 @@
 title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 ms.topic: overview
-ms.date: 07/07/2020
-ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436861"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91326486"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -20,16 +20,17 @@ ms.locfileid: "89436861"
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
-![源和处理程序的事件网格模型](./media/overview/functional-model.png)
+:::image type="content" source="./media/overview/functional-model.png" alt-text="源和处理程序的事件网格模型" lightbox="./media/overview/functional-model.png":::
 
 此图展示事件网格连接源和处理程序的方式，而不是支持的集成的完整列表。
 
 ## <a name="event-sources"></a>事件源
 
-当前，以下 Azure 服务支持将事件发送到事件网格：
+目前，以下 Azure 服务支持将事件发送到事件网格。 有关列表中某个源的详细信息，请选择相应链接。
 
 - [Azure 应用配置](event-schema-app-configuration.md)
 - [Azure Blob 存储](event-schema-blob-storage.md)
+- [Azure 通信服务](event-schema-communication-services.md) 
 - [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)

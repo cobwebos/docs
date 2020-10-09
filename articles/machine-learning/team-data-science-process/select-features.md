@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76716681"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) 中的功能选择
@@ -44,7 +44,7 @@ ms.locfileid: "76716681"
 
 例如，考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为方便起见，继续使用文本挖掘示例。 假设在通过[特征哈希][feature-hashing]模块创建了一组 256 个特征后想要生成回归模型，并且响应变量为“Col1”（包含范围为 1 到 5 的书籍审核评级）。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 然后，[基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征且目标属性为“Col1”的数据集。 下图显示了此实验的流程以及输入参数：
 
-![基于筛选器的特征选择模块属性](./media/select-features/feature-Selection1.png)
+![Filter-Based 功能选择模块属性](./media/select-features/feature-Selection1.png)
 
 下图显示了生成的数据集：
 

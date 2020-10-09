@@ -12,10 +12,10 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389337"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C 的 Cookie 定义
@@ -39,7 +39,7 @@ Microsoft Azure AD B2C 服务与 SameSite 浏览器配置兼容，其中包括�
 
 下表列出了 Azure AD B2C 中使用的 Cookie。
 
-| “属性” | 域 | 过期时间 | 目标 |
+| 名称 | 域 | 过期时间 | 目的 |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | [浏览器会话](session-behavior.md)结束 | 保存各个租户的用户成员身份数据。 用户所属的租户，以及成员身份级别（管理员或用户）。 |
 | `x-ms-cpim-slice` | b2clogin.com、login.microsoftonline.com、署名域 | [浏览器会话](session-behavior.md)结束 | 用于将请求路由到相应的生产实例。 |

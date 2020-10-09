@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280471"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91289015"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何使用 SQL 按需版本（预览版）中的 OPENROWSET
 
@@ -119,7 +119,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 | Azure Blob 存储         | wasb[s]  | \<container>@\<storage_account>.blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | http[s]  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | http[s]  | \<storage_account>.dfs.core.windows.net /path/file   |
-| Azure Data Lake Store Gen2 | abfs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Store Gen2 | aufs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -184,7 +184,7 @@ ESCAPE_CHAR = 'char'
 
 FIRSTROW = 'first_row' 
 
-指定要加载的第一行的行号。 默认值为 1。 这表示指定数据文件中的第一行。 通过对行终止符进行计数来确定行号。 FIRSTROW 从 1 开始。
+指定要加载的第一行的行号。 默认值为 1，表示指定数据文件中的第一行。 通过对行终止符进行计数来确定行号。 FIRSTROW 从 1 开始。
 
 FIELDQUOTE = 'field_quote' 
 
@@ -203,7 +203,7 @@ PARSER_VERSION = 'parser_version'
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'
 
-CSV 分析器版本 1.0 是默认版本且功能丰富，而 2.0 是为提高性能而构建的，并不支持所有选项和编码。 
+CSV 分析器版本 1.0 是默认版本且功能丰富。 版本 2.0 是为提高性能而构建的，并不支持所有选项和编码。 
 
 CSV 分析器版本 2.0 详细信息：
 
@@ -229,7 +229,7 @@ WITH (
 ) AS [r]
 ```
 
-以下示例在不指定列名和数据类型的情况下，以 Parquet 格式返回人口普查数据集内第一行的所有列： 
+以下示例在不指定列名和数据类型的情况下，以 Parquet 格式返回人口普查数据集中第一行的所有列： 
 
 ```sql
 SELECT 

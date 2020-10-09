@@ -1,6 +1,6 @@
 ---
 title: 快速入门：在 Linux 上创建 Azure IoT Edge 设备 | Microsoft Docs
-description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure 门户远程部署预生成的代码。
+description: 本快速入门介绍如何在 Linux 上创建 IoT Edge 设备，然后从 Azure 门户远程部署预生成的代码。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: bbed5899a860f3ba8ac7047a283966536f6c8a87
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384797"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91328609"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
@@ -93,7 +93,7 @@ ms.locfileid: "87384797"
 2. 查看设备的连接字符串，该字符串将物理设备与其在 IoT 中心的标识链接在一起。 它包含 IoT 中心名称、设备名称，以及用于对这两者之间的连接进行身份验证的共享密钥。 设置 IoT Edge 设备时，我们将在下一部分中再次引用此连接字符串。
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
    ![查看 CLI 输出中的连接字符串](./media/quickstart/retrieve-connection-string.png)
@@ -117,7 +117,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 * 对于 bash 或 Cloud Shell 用户，请将以下命令复制到文本编辑器中，将占位符文本替换为自己的信息，然后将其复制到 bash 或 Cloud Shell 窗口中：
 
    ```azurecli-interactive
-   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * 对于 PowerShell 用户，请将以下命令复制到 PowerShell 窗口中，然后将占位符文本替换为自己的信息：
@@ -128,7 +128,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    --template-uri "https://aka.ms/iotedge-vm-deploy" `
    --parameters dnsLabelPrefix='my-edge-vm1' `
    --parameters adminUsername='azureUser' `
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```

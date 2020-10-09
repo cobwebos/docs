@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用异常检测器 API 以批或流数据的形式检测数据系列的异常。
+description: 了解如何使用异常检测器 API 的两种检测模式来检测时序数据的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5a3757a33beebb6e688dbea13259723da9280cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c19f901f4419cca59a3b4e070191c8bb89ce7c34
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904576"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91319191"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常
 

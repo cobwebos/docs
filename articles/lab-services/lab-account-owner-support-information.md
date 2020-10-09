@@ -4,10 +4,10 @@ description: 介绍了实验室帐户所有者如何设置支持联系人信息�
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 17456f61352b1e26a33c042b27faa2d3aa44d73a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445077"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>设置支持信息（Azure 实验室服务中的实验室帐户所有者）

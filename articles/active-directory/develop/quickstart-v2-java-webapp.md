@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258092"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -193,15 +193,16 @@ ms.locfileid: "88115214"
 3.   Tomcat 的默认 HTTP 端口为 8080，但需通过端口 8443 进行 HTTPS 连接。 对此进行配置：
         - 转到 tomcat/conf/server.xml
         - 搜索 `<connector>` 标记，并将现有连接器替换为：
-        ```
+
+        ```xml
         <Connector
                    protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="8443" maxThreads="200"
                    scheme="https" secure="true" SSLEnabled="true"
                    keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
                    clientAuth="false" sslProtocol="TLS"/>
-        ``` 
-       
+        ```
+
 4. 打开命令提示符，转到此示例的根文件夹（pom.xml 位于其中），然后运行 `mvn package` 以生成项目
     - 这会在 /targets 目录中生成一个 `msal-web-sample-0.1.0.war` 文件。
     - 将此文件重命名为 `msal4jsample.war`
@@ -249,16 +250,11 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 import com.microsoft.aad.msal4j.*;
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-了解有关权限和许可的详细信息：
+若要深入了解如何生成在 Microsoft 标识平台上将用户登录的 Web 应用，请继续学习我们的多部分方案系列：
 
 > [!div class="nextstepaction"]
-> [权限和许可](./v2-permissions-and-consent.md)
-
-若要详细了解此方案的授权流，请查看 Oauth 2.0 授权代码流：
-
-> [!div class="nextstepaction"]
-> [授权代码 Oauth 流](./v2-oauth2-auth-code-flow.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+[场景：可将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md?tabs=java)

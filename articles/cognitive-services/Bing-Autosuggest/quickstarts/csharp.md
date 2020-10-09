@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
+description: 了解如何使用必应自动建议 API 和 C# 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af64e80137b375e6e7b7037f72240e814b4b1e15
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1157d322d6329774b638a0692bc7ef68d7ecc189
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919414"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91277523"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 

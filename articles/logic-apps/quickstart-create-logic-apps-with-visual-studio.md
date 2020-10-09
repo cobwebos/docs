@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/07/2020
-ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008876"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91322438"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
 
@@ -22,7 +22,7 @@ ms.locfileid: "88008876"
 
 在本快速入门中，你将使用 Visual Studio 创建与 Azure 门户快速入门相同的逻辑应用。 此逻辑应用监视网站的 RSS 源，并针对该源中的每个新项发送电子邮件。 完成后的逻辑应用看起来与以下概略性的工作流类似：
 
-![完成的逻辑应用](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
+![屏幕截图，显示已完成逻辑应用的概略性工作流。](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
@@ -55,7 +55,7 @@ ms.locfileid: "88008876"
 
   设计器需要通过 Internet 连接在 Azure 中创建资源，以及从逻辑应用中的连接器读取属性和数据。
 
-* 逻辑应用支持的（例如 Office 365 Outlook、Outlook.com 或 Gmail）电子邮件帐户。 至于其他提供商，请查看[此处的连接器列表](/connectors/)。 本示例使用 Office 365 Outlook。 如果使用其他提供商，整个步骤仍然是相同的，但 UI 可能稍有不同。
+* 逻辑应用支持的电子邮件帐户（如 Outlook for Microsoft 365、Outlook.com 或 Gmail）。 至于其他提供商，请查看[此处的连接器列表](/connectors/)。 本示例使用 Office 365 Outlook。 如果使用其他提供商，整个步骤仍然是相同的，但 UI 可能稍有不同。
 
   > [!IMPORTANT]
   > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。

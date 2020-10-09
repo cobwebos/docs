@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da4e1cfc68dff4ad2bc0552c6d35fe1230779306
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255602"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91312951"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>什么是 Azure AD Connect 管理员代理？ 
 Azure AD Connect 管理代理是 Azure Active Directory Connect 的一个新组件，可安装在 Azure Active Directory Connect 服务器上。 该组件用于从 Active Directory 环境收集特定的数据，以帮助 Microsoft 支持工程师在收到支持案例时排查问题。 
@@ -46,7 +46,7 @@ Azure AD Connect 管理代理二进制文件将放到 AAD Connect 服务器中�
 
 安装该代理后，服务器控制面板上的“添加/删除程序”列表中会显示以下两个新程序： 
 
-![管理代理](media/whatis-aadc-admin-agent/adminagent1.png)
+![显示“添加/删除程序”列表的屏幕截图，其中包括你添加的新程序。](media/whatis-aadc-admin-agent/adminagent1.png)
 
 ## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>向 Microsoft 服务工程师显示同步服务中的哪些数据？ 
 当你提出支持案例时，Microsoft 支持工程师可以查看给定用户在 Active Directory 中的相关数据、Azure Active Directory Connect 服务器中的 Active Directory 连接器空间，以及 Azure Active Directory Connect 服务器中的 Metaverse。 
@@ -69,7 +69,7 @@ Microsoft 支持工程师无法更改你的系统中的任何数据，且无法�
 3. 保存 config 文件。
 4. 按如下所示重启 Azure AD Connect 管理代理服务
 
-![管理代理](media/whatis-aadc-admin-agent/adminagent2.png)
+![显示在何处重启 Azure AD 管理员代理服务的屏幕截图。](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

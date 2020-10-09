@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: f97aab59d38e9b15838a78d0227bc2848615cd92
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3442c3b6023edcde97aabcb13e91120ba6811027
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504358"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323067"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员
 
@@ -91,7 +91,7 @@ az blockchain member create \
 | **protocol** | 区块链协议。 目前支持 Quorum 协议。
 | **consortium** | 要加入或创建的联盟的名称。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
 | **consortium-management-account-password** | 联盟帐户密码也称为成员帐户密码。 成员帐户密码用于加密为你的成员创建的 Ethereum 帐户的私钥。 你使用成员帐户和成员帐户密码进行联盟管理。
-| **sku** | 层类型。 标准或基本 。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”层。 不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
+| **sku** | 层类型。 标准或基本 。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 如果使用区块链数据管理器或发送大量专用事务，也使用标准层。 不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
 
 创建区块链成员和支持资源需要大约 10 分钟。
 

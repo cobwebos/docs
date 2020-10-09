@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 Ruby 检查拼写 - 必应拼写检查
 titleSuffix: Azure Cognitive Services
-description: 通过本快速入门开始使用必应拼写检查 REST API 检查拼写和语法。
+description: 开始使用必应拼写检查 REST API 和 Ruby 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: fae466124244f5d2b04ad6e59681011b9c5ba974
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0b29ba1b09123784bfbac6fda4f5a1c6953f4e49
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993518"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91327385"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>快速入门：使用必应拼写检查 REST API 和 Ruby 检查拼写
 

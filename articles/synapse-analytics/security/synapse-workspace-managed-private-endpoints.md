@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459533"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91249496"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 托管专用终结点（预览版）
 
@@ -27,7 +27,9 @@ Azure Synapse 支持专用链接。 通过专用链接，你可以安全地从 A
 
 使用专用链接时，虚拟网络与工作区之间的流量全部通过 Microsoft 主干网络进行传输。 专用链接可防止数据泄露风险。 可以通过创建专用终结点来建立到资源的专用链接。
 
-专用终结点使用虚拟网络中的专用 IP 地址将服务有效接入虚拟网络中。 专用终结点映射到 Azure 中的特定资源，而不是整个服务。 客户可以将连接限制到其组织批准的特定资源。 详细了解[专用链接和专用终结点](https://docs.microsoft.com/azure/private-link/)。
+专用终结点使用虚拟网络中的专用 IP 地址将服务有效接入虚拟网络中。 专用终结点映射到 Azure 中的特定资源，而不是整个服务。 客户可以将连接限制到其组织批准的特定资源。 
+
+详细了解[专用链接和专用终结点](https://docs.microsoft.com/azure/private-link/)。
 
 >[!IMPORTANT]
 >托管专用终结点仅在具有托管工作区虚拟网络的 Azure Synapse 工作区中受支持。
@@ -35,9 +37,9 @@ Azure Synapse 支持专用链接。 通过专用链接，你可以安全地从 A
 >[!NOTE]
 >未来，将阻止来自托管工作区虚拟网络的所有出站流量（通过托管专用终结点的出站流量除外）。 建议创建托管专用终结点来连接到工作区外部的所有 Azure 数据源。 
 
-在 Azure Synapse 中创建托管专用终结点时，创建的专用终结点连接将处于“挂起”状态。 将启动审批工作流。 专用链接资源所有者负责批准或拒绝该连接。
+在 Azure Synapse 中创建托管专用终结点时，创建的专用终结点连接将处于“挂起”状态。 系统将启动审批工作流。 专用链接资源所有者负责批准或拒绝该连接。
 
-如果所有者批准该连接，则会建立专用链接。 否则，将不会建立专用链接。 在任一情况下，都会以连接状态更新托管专用终结点。
+如果所有者批准该连接，则会建立专用链接。 但是，如果所有者不批准该连接，则不会建立专用链接。 在任一情况下，都会以连接状态更新托管专用终结点。
 
 只有处于已批准状态的托管专用终结点才能将流量发送到给定的专用链接资源。
 
@@ -56,4 +58,4 @@ SQL 池和 SQL 按需版本是 Azure Synapse 工作区中的分析功能。 这�
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建用于访问数据源的托管专用终结点](./how-to-create-managed-private-endpoints.md)
+若要了解详细信息，请继续学习[创建用于访问数据源的托管专用终结点](./how-to-create-managed-private-endpoints.md)一文。

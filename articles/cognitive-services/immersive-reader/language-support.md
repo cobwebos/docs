@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c4aa9c22a0350c5d946d2fd45a983eac34681512
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309299"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91320925"
 ---
 # <a name="language-support-for-immersive-reader"></a>沉浸式阅读器的语言支持
 
@@ -30,7 +30,8 @@ ms.locfileid: "84309299"
 | 阿拉伯语（沙特阿拉伯） | ar-SA |
 | 保加利亚语 | bg |
 | 保加利亚语（保加利亚） | bg-BG |
-| 加泰罗尼亚语 | ca-ES |
+| 加泰罗尼亚语 | ca |
+| 加泰罗尼亚语（加泰罗尼亚） | ca-ES |
 | 中文 | zh |
 | 中文（中国） | zh-CN |
 | 中文(香港特别行政区) | zh-HK |
@@ -40,7 +41,8 @@ ms.locfileid: "84309299"
 | 简体中文 | zh-Hans |
 | 简体中文（中国） | zh-Hans-CN |
 | 简体中文（新加坡） | zh-Hans-SG |
-| 中文(繁体) | zh-Hant-CN |
+| 中文(繁体) | zh-Hant |
+| 繁体中文(中国) | zh-Hant-CN |
 | 繁体中文（香港特别行政区） | zh-Hant-HK |
 | 繁体中文（澳门特别行政区） | zh-Hant-MO |
 | 繁体中文（台湾） | zh-Hant-TW |
@@ -103,7 +105,7 @@ ms.locfileid: "84309299"
 | 斯洛伐克语 | sk |
 | 斯洛伐克语（斯洛伐克） | sk-SK |
 | 斯洛文尼亚语 | sl |
-| 斯洛文尼亚语（斯洛文尼亚） | sl-SL |
+| 斯洛文尼亚语（斯洛文尼亚） | sl-SI |
 | 西班牙语 | es |
 | 西班牙语（拉丁美洲） | es-419 |
 | 西班牙语（墨西哥） | es-MX |
@@ -126,13 +128,15 @@ ms.locfileid: "84309299"
 | 语言 | 标记 |
 |----------|-----|
 | 南非荷兰语 | af |
+| 阿拉伯语 | ar |
 | 阿拉伯语（埃及） | ar-EG |
 | 阿拉伯语（沙特阿拉伯） | ar-SA |
 | Bangla | bn |
 | 波斯尼亚语 | bs |
 | 保加利亚语 | bg |
 | 保加利亚语（保加利亚） | bg-BG |
-| 加泰罗尼亚语 | ca-ES |
+| 加泰罗尼亚语 | ca |
+| 加泰罗尼亚语（加泰罗尼亚） | ca-ES |
 | 中文 | zh |
 | 中文（中国） | zh-CN |
 | 中文(香港特别行政区) | zh-HK |
@@ -142,7 +146,8 @@ ms.locfileid: "84309299"
 | 简体中文 | zh-Hans |
 | 简体中文（中国） | zh-Hans-CN |
 | 简体中文（新加坡） | zh-Hans-SG |
-| 中文(繁体) | zh-Hant-CN |
+| 中文(繁体) | zh-Hant |
+| 繁体中文(中国) | zh-Hant-CN |
 | 繁体中文（香港特别行政区） | zh-Hant-HK |
 | 繁体中文（澳门特别行政区） | zh-Hant-MO |
 | 繁体中文（台湾） | zh-Hant-TW |
@@ -152,6 +157,7 @@ ms.locfileid: "84309299"
 | 捷克语（捷克共和国） | cs-CZ |
 | 丹麦语 | da |
 | 丹麦语（丹麦） | da-DK |
+| 达里语（阿富汗） | prs |
 | 荷兰语 | nl |
 | 荷兰语（荷兰） | nl-NL |
 | 英语 | en |
@@ -176,6 +182,7 @@ ms.locfileid: "84309299"
 | 德语（奥地利） | de-AT |
 | 德语（德国） | de-DE |
 | 德语（瑞士）| de-CH |
+| 古吉拉特语 | gu |
 | 希腊语 | el |
 | 希腊语（希腊） | el-GR |
 | 海地语(克里奥尔语) | ht |
@@ -198,6 +205,8 @@ ms.locfileid: "84309299"
 | 斯瓦希里语 | sw |
 | 韩语 | ko |
 | 韩语(韩国) | ko-KR |
+| 库尔德语(中部) | ku |
+| 库尔德语(北部) | kmr |
 | 拉脱维亚语 | lv |
 | 立陶宛语 | lt |
 | 马达加斯加语 | mg |
@@ -206,8 +215,11 @@ ms.locfileid: "84309299"
 | 马拉雅拉姆语 | ml |
 | 马耳他语 | mt |
 | 毛利语 | mi |
+| 马拉地语 | mr |
 | 挪威博克马尔语| nb |
 | 挪威博克马尔语（挪威） | nb-NO |
+| 奥里雅语 | 或 |
+| 普什图语（阿富汗） | ps |
 | 波斯语 | fa |
 | 波兰语 | pl |
 | 波兰语（波兰） | pl-PL |
@@ -227,7 +239,7 @@ ms.locfileid: "84309299"
 | 斯洛伐克语 | sk |
 | 斯洛伐克语（斯洛伐克） | sk-SK |
 | 斯洛文尼亚语 | sl |
-| 斯洛文尼亚语（斯洛文尼亚） | sl-SL |
+| 斯洛文尼亚语（斯洛文尼亚） | sl-SI |
 | 西班牙语 | es |
 | 西班牙语（拉丁美洲） | es-419 |
 | 西班牙语（墨西哥） | es-MX |
@@ -257,12 +269,14 @@ ms.locfileid: "84309299"
 
 | 语言 | 标记 |
 |----------|-----|
+| 阿拉伯语 | ar |
 | 阿拉伯语（埃及） | ar-EG |
 | 阿拉伯语（沙特阿拉伯） | ar-SA |
 | 巴斯克语 | eu |
 | 保加利亚语 | bg |
 | 保加利亚语（保加利亚） | bg-BG |
-| 加泰罗尼亚语 | ca-ES |
+| 加泰罗尼亚语 | ca |
+| 加泰罗尼亚语（加泰罗尼亚） | ca-ES |
 | 简体中文 | zh-Hans |
 | 简体中文（中国） | zh-Hans-CN |
 | 简体中文（新加坡） | zh-Hans-SG |
@@ -338,7 +352,7 @@ ms.locfileid: "84309299"
 | 斯洛伐克语 | sk |
 | 斯洛伐克语（斯洛伐克） | sk-SK |
 | 斯洛文尼亚语 | sl |
-| 斯洛文尼亚语（斯洛文尼亚） | sl-SL |
+| 斯洛文尼亚语（斯洛文尼亚） | sl-SI |
 | 西班牙语 | es |
 | 西班牙语（拉丁美洲） | es-419 |
 | 西班牙语（墨西哥） | es-MX |
@@ -365,7 +379,8 @@ ms.locfileid: "84309299"
 | 巴斯克语 | eu |
 | 保加利亚语 | bg |
 | 保加利亚语（保加利亚） | bg-BG |
-| 加泰罗尼亚语 | ca-ES |
+| 加泰罗尼亚语 | ca |
+| 加泰罗尼亚语（加泰罗尼亚） | ca-ES |
 | 克罗地亚语 | hr |
 | 克罗地亚语（克罗地亚） | hr-HR |
 | 捷克语 | cs |
@@ -423,7 +438,7 @@ ms.locfileid: "84309299"
 | 斯洛伐克语 | sk |
 | 斯洛伐克语（斯洛伐克） | sk-SK |
 | 斯洛文尼亚语 | sl |
-| 斯洛文尼亚语（斯洛文尼亚） | sl-SL |
+| 斯洛文尼亚语（斯洛文尼亚） | sl-SI |
 | 西班牙语 | es |
 | 西班牙语（拉丁美洲） | es-419 |
 | 西班牙语（墨西哥） | es-MX |

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294928"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323033"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>接收图像输入
 
-将以下代码添加到 **Program** 类的 **Main** 方法。 此代码会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
+将以下代码添加到 **Program** 类的 **Main** 方法。 此代码会将一个提示写入到控制台，要求用户输入其本地图像文件路径。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
 
 ```csharp
         static void Main(string[] args)
@@ -159,7 +159,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>处理输入图像数据
 
-将以下方法添加到 **Program** 类。 此方法会将指定 URL 中的图像转换为字节数组。
+将以下方法添加到 **Program** 类。 此方法会将指定文件路径中的图像转换为字节数组。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.

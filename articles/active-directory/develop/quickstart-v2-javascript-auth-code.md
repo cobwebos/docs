@@ -1,7 +1,7 @@
 ---
 title: 使用授权代码在 JavaScript 单页应用 (SPA) 中登录用户 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 JavaScript 应用如何使用 Microsoft 标识平台调用需要访问令牌的 API。
+description: 了解 JavaScript 单页应用程序 (SPA) 如何通过授权代码流使用个人帐户、工作帐户和学校帐户将用户登录。
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
+ms.openlocfilehash: 224ce2ea64016db7b632ac36193f39e679c8da4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257973"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 加密 Azure 规模集磁盘
-description: 了解如何使用 Azure PowerShell 来加密 Windows 虚拟机规模集中的 VM 实例和附加的磁盘
+description: 了解如何使用 Azure CLI 对 Windows 虚拟机规模集中的 VM 实例和附加磁盘进行加密
 author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: dfb8a0dc6c27b042319f43bc5970dd8d1bc2b094
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4d8e6d225e02006683166de73a0b66f795bc3993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321965"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
@@ -26,7 +26,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

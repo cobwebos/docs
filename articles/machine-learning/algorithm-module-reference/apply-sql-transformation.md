@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76314532"
 ---
 # <a name="apply-sql-transformation"></a>应用 SQL 转换
 
-本文介绍 Azure 机器学习设计器（预览版）模块。
+本文介绍 Azure 机器学习设计器的某个模块。
 
 你可以使用“应用 SQL 转换”模块执行以下操作：
   

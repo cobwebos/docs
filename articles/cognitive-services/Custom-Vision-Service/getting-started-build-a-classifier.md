@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277336"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>快速入门：如何使用自定义影像服务生成分类器
 
-在本快速入门中，你将了解如何通过自定义视觉服务网站生成分类器。 生成分类器模型后，可以使用自定义视觉服务进行图像分类。
+本快速入门介绍如何通过自定义视觉网站生成图像分类器。 生成模型后，可以在其中使用新图像进行测试，并最终将其集成到你自己的图像识别软件中。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -27,7 +28,7 @@ ms.locfileid: "88551346"
 
 - 一组用于训练分类器的图像。 有关选择图像的提示，请参阅下文。
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>在 Azure 门户中创建自定义视觉资源
+## <a name="create-custom-vision-resources"></a>创建自定义视觉资源
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +46,7 @@ ms.locfileid: "88551346"
 1. 输入项目名称和描述。 然后选择一个资源组。 如果登录帐户与 Azure 帐户相关联，则“资源组”下拉列表将显示包含自定义影像服务资源的所有 Azure 资源组。 
 
    > [!NOTE]
-   > 如果没有可用的资源组，请确认已使用登录 [Azure 门户](https://portal.azure.com/)时所用的同一帐户登录 [customvision.ai](https://customvision.ai)。 此外，请确认在自定义视觉门户中选择的“目录”与自定义视觉资源所在 Azure 门户中的目录相同。 在这两个站点中，可从屏幕右上角的下拉帐户菜单中选择目录。 
+   > 如果没有可用的资源组，请确认已使用登录 [Azure 门户](https://portal.azure.com/)时所用的同一帐户登录 [customvision.ai](https://customvision.ai)。 此外，请确认在自定义视觉网站中选择的“目录”与自定义视觉资源所在 Azure 门户中的目录相同。 在这两个站点中，可从屏幕右上角的下拉帐户菜单中选择目录。 
 
 1. 选择“项目类型”下的“分类”   。 然后，在“分类类型”下，根据用例选择“多标签”或“多类”    。 多标签分类将任意数量的标记应用于图像（零个或多个），而多类分类将图像分类为单个类别（提交的每个图像将被分类为最有可能的标记）。 以后可以更改分类类型（如果需要）。
 
@@ -120,3 +121,4 @@ ms.locfileid: "88551346"
 > [!div class="nextstepaction"]
 > [测试和重新训练模型](test-your-model.md)
 
+* [什么是自定义视觉？](./overview.md)

@@ -2,16 +2,19 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: b0dc5553828b9dd31b297df076857332e9cbd881
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511273"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91327437"
 ---
-本文介绍如何开始通过 Node.js 使用自定义视觉客户端库来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Node.js 应用程序的模板。
+本指南提供说明和示例代码，以帮助你开始使用适用于 Node.js 的自定义视觉客户端库来构建对象检测模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
+
+> [!NOTE]
+> 若要在不编写代码的情况下构建和训练对象检测模型，请改为参阅[基于浏览器的指南](../../get-started-build-detector.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,7 +29,7 @@ ms.locfileid: "88511273"
 
 ## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
 
-若要在项目中安装适用于 Node.js 的自定义视觉服务客户端库，请运行以下命令：
+若要使用适用于 Node.js 的自定义视觉编写图像分析应用，需要自定义视觉 NPM 包。 若要安装它们，请在 PowerShell 中运行以下命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -37,7 +40,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 在首选项目目录中创建名为 sample.js  的新文件。
 
-### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
+## <a name="create-the-custom-vision-project"></a>创建自定义视觉项目
 
 将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在相应的定义中插入订阅密钥，并将 sampleDataRoot 路径值设置为图像文件夹路径。 请确保终结点值与你在 [Customvision.ai](https://www.customvision.ai/) 创建的训练和预测终结点匹配。 请注意，创建对象检测和图像分类项目之间的区别是 **createProject** 调用中指定的域。
 
@@ -78,7 +81,7 @@ async function asyncForEach (array, callback) {
     const sampleProject = await trainer.createProject("Sample Obj Detection Project", { domainId: objDetectDomain.id });
 ```
 
-### <a name="create-tags-in-the-project"></a>在项目中创建标记
+## <a name="create-tags-in-the-project"></a>在项目中创建标记
 
 若要在项目中创建分类标记，请将以下代码添加到 sample.js  末尾：
 
@@ -87,7 +90,7 @@ async function asyncForEach (array, callback) {
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>上传和标记图像
+## <a name="upload-and-tag-images"></a>上传和标记图像
 
 在对象检测项目中标记图像时，需要使用标准化坐标指定每个标记对象的区域。 
 
@@ -173,7 +176,7 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>训练项目和发布
+## <a name="train-and-publish-the-project"></a>训练并发布项目
 
 此代码创建预测模型的第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
 
@@ -229,7 +232,11 @@ node sample.js
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解如何在代码中完成对象检测过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。 以下训练指南涉及图像分类，但其原理与对象检测类似。
+现在，你已在代码中完成了对象检测过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。 以下指南涉及图像分类，但其原理与对象检测类似。
 
 > [!div class="nextstepaction"]
 > [测试和重新训练模型](../../test-your-model.md)
+
+* 什么是自定义视觉？
+* [SDK 参考文档（训练）](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK 参考文档（预测）](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

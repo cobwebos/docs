@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
 ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85391700"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
@@ -41,16 +41,16 @@ ms.locfileid: "85391700"
 
 - 自定义影像服务在 Azure 上输入了正式上市！
 - 添加了新的机器学习后端高级培训功能以提高性能，尤其是在有挑战性的数据集和精细分类的情况下。 使用高级培训，你可以指定定型的计算时间预算，自定义视觉将 experimentally 确定最佳训练和扩大设置。 对于快速迭代，您可以继续使用现有的快速训练。
-- 引入了 3.0 Api。 在2019年10月1日宣布弃用了3.0 之前的 Api。 有关如何开始操作的示例，请参阅[.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、 [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、 [Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、 [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)或[中转](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial)的文档快速入门。
+- 引入了 3.0 Api。 在2019年10月1日宣布弃用了3.0 之前的 Api。 有关如何开始操作的示例，请参阅 [.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、 [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、 [Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、 [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)或 [中转](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) 的文档快速入门。
 - 已在 3.0 Api 中将 "默认迭代" 替换为发布/取消发布。
 - 添加了新的模型导出目标。 Dockerfile 导出已升级到支持 ARM for Raspberry Pi 3。 已将导出支持添加到了[远景 AI 开发工具包。](https://visionaidevkit.com/)
 - 对于 S0 层，每个项目的标记数增加到500。 对于 S0 层，每个项目的映像数限制增加到100000。
 - 删除成人域。 建议改用常规域。
-- 公开上市的[定价](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)。  
+- 公开上市的 [定价](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) 。  
 
 ## <a name="february-25-2019"></a>2019 年 2 月 25 日
 
-- 公布了有限试用项目（不与 Azure 资源关联的项目）的结束，因为自定义视觉接近完成其迁移到 Azure 公共预览。 从2019年3月25日开始，CustomVision.ai 站点将仅支持查看与 Azure 资源关联的项目，如免费自定义视觉资源。 2019年10月1日起，你仍可以通过自定义视觉 Api 访问现有的有限试用项目。 这会让你有时间为你通过自定义视觉编写的任何应用更新 API 密钥。 2019年10月1日后，你未移动到 Azure 的任何受限试用项目都将被删除。
+- 宣布 (不与 Azure 资源) 关联的项目的受限试用项目结束，因为自定义视觉接近于 Azure 公共预览版。 从2019年3月25日开始，CustomVision.ai 站点将仅支持查看与 Azure 资源关联的项目，如免费自定义视觉资源。 2019年10月1日起，你仍可以通过自定义视觉 Api 访问现有的有限试用项目。 这会让你有时间为你通过自定义视觉编写的任何应用更新 API 密钥。 2019年10月1日后，你未移动到 Azure 的任何受限试用项目都将被删除。
 
 ## <a name="january-22-2019"></a>2019 年 1 月 22 日
 
@@ -62,7 +62,7 @@ ms.locfileid: "85391700"
 - 修复了大量辅助功能问题以获得改进的屏幕阅读器和键盘导航支持。
 - 对图像查看器进行了 UX 更新并改进了对象检测标记体验以便更快速地进行标记。  
 - 更新了对象检测域的基础模型以获得更好质量的对象检测。
-- bug 修复。
+- Bug 修复。
 
 ## <a name="november-6-2018"></a>2018 年 11 月 6 日
 
@@ -71,7 +71,7 @@ ms.locfileid: "85391700"
 ## <a name="october-9-2018"></a>2018 年 10 月 9 日
 
 - 对象检测进入付费预览版。 现在可以使用 Azure 资源创建对象检测项目。
-- 向网站添加了“移至 Azure”功能，以便更轻松地升级有限试用版项目以链接到 Azure。 资源链接项目（F0 或 S0）可以在产品的 "设置" 页上找到此设置。  
+- 向网站添加了“移至 Azure”功能，以便更轻松地升级有限试用版项目以链接到 Azure。 资源链接项目 (F0 或 S0 ) 你可以在产品的 "设置" 页上找到此项目。  
 - 添加了导出到 ONNX 1.2 的功能，以支持 Windows ML 的 Windows 2018 10 月更新版本。
 Bug 修复，其中包括带有特殊字符的 ONNX 导出。
 
@@ -83,7 +83,7 @@ Bug 修复，其中包括带有特殊字符的 ONNX 导出。
 ## <a name="june-28-2018"></a>2018 年 6 月 28 日
 
 - Bug 修复 & 后端改进。
-- 已启用多类分类，适用于图像恰好有一个标签的项目。 在多类模式预测中，概率总和为1（在指定的标记之间对所有图像进行分类）。
+- 已启用多类分类，适用于图像恰好有一个标签的项目。 对于多类模式的预测，概率的总和为1， (所有映像都分类) 指定的标记之间。
 
 ## <a name="june-13-2018"></a>2018 年 6 月 13 日
 
@@ -108,7 +108,7 @@ Bug 修复，其中包括带有特殊字符的 ONNX 导出。
 
 ## <a name="december-19-2017"></a>2017 年 12 月 19 日
 
-- 除了以前发布的导出到 iOS （CoreML）外，还添加了 "导出到 Android （TensorFlow）"。这样，便可以在应用程序中对已定型的压缩模型进行脱机运行。
+- 除了以前发布的导出到 iOS (CoreML 外，还可以导出到 Android (TensorFlow) 添加。 ) 这允许导出已定型的压缩模型，使其在应用程序中脱机运行。
 - 添加了零售和地标“精简”域，以支持对这些域使用模型导出。
 - 已发布版本 [1.2 训练 API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) 和 [1.1 预测 API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164)。 已更新 API 支持模型导出（不会将图像保存到“预测”的新预测操作），并在训练 API 中引入了批处理操作。
 - UX 经过调整，现在可以查看使用了哪个域来训练迭代。

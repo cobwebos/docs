@@ -1,22 +1,24 @@
 ---
-title: 快速入门：使用自定义视觉客户端库创建对象检测
-description: 快速入门：使用自定义视觉客户端库创建项目、添加标记、上传图像、训练项目以及检测对象。
+title: 快速入门：使用自定义视觉客户端库进行对象检测
+titleSuffix: Azure Cognitive Services
+description: 快速入门：使用自定义视觉客户端库创建对象检测项目、添加标记、上传图像、训练项目以及检测对象。
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/17/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.date: 09/14/2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: 自定义视觉
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 404e76ec8fe4d874695c77ee18542c7db6665796
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 75ed10046dfbc9e0a0c35614237bc2422d84da13
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919329"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91327438"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>快速入门：使用自定义视觉 SDK 创建对象检测项目
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>快速入门：使用自定义视觉客户端库创建对象检测项目
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial-od.md)]

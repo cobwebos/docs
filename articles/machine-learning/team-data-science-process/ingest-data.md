@@ -12,21 +12,21 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76720531"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>将数据载入存储环境以进行分析
 
-团队数据科学过程要求在每个阶段将数据引入或加载到最合适的方式。 数据目标可以包含 Azure Blob 存储、SQL Azure 数据库、SQL Server Azure VM、HDInsight （Hadoop）、Synapse 分析和 Azure 机器学习。 
+团队数据科学过程要求在每个阶段将数据引入或加载到最合适的方式。 数据目标可以包括 Azure Blob 存储、SQL Azure 数据库、Azure VM SQL Server、HDInsight (Hadoop) 、Synapse 分析和 Azure 机器学习。 
 
 以下文章介绍如何将数据引入到存储和处理数据的各种目标环境中。
 
 * 到/从 [Azure Blob 存储](move-azure-blob.md)
 * 到 [Azure VM 上的 SQL Server](move-sql-server-virtual-machine.md)
-* 到[AZURE SQL Database](move-sql-azure.md)
+* 到 [AZURE SQL Database](move-sql-azure.md)
 * 到 [Hive 表](move-hive-tables.md)
 * 到 [SQL 分区表](parallel-load-sql-partitioned-tables.md)
 * 从[本地 SQL Server](move-sql-azure-adf.md)

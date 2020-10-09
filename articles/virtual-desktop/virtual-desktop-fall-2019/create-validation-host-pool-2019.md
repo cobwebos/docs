@@ -1,17 +1,17 @@
 ---
 title: Windows 虚拟桌面（经典）主机池服务更新 - Azure
-description: 如何创建验证主机池以在将更新推广到生产之前监视服务更新。
+description: 了解如何在 Windows 虚拟桌面（经典）中创建验证主机池，以便在将服务更新推出到生产环境之前监视更新。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 572b74347194070615efadca4ed6b1329b3f89c2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 291f1e8b8870257c233dc32894ff49b26c0a3501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526793"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323523"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建主机池以验证服务更新
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07244f28a345bc3290762c657c2189941009faac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077731"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91249444"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse 工作区托管标识（预览版）
 
@@ -58,4 +58,4 @@ Azure Synapse 使用托管标识来协调管道。 托管标识生命周期直�
 
 ## <a name="next-steps"></a>后续步骤
 
-[向 Azure Synapse 工作区托管标识授予权限](./how-to-grant-workspace-managed-identity-permissions.md)
+详细了解如何[向 Azure Synapse 工作区托管标识授予权限](./how-to-grant-workspace-managed-identity-permissions.md)

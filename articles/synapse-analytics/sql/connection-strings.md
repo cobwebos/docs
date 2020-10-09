@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a1110b089d5edf9793bf2bb2c699a717a4b1a4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004963"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91289372"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>Synapse SQL（预览版）的连接字符串
 
 可以使用几种不同的应用程序协议（例如 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)）连接到 Synapse SQL（预览版）。 下面是每个协议的连接字符串的一些示例。 
 
-可以使用 Azure 门户来生成连接字符串。  若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”下单击“显示数据库连接字符串”   。
+可以使用 Azure 门户来生成连接字符串。  若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”下选择“显示数据库连接字符串”。
 
 ## <a name="sample-adonet-connection-string"></a>示例 ADO.NET 连接字符串
 

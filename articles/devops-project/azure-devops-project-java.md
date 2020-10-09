@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建用于 Java 的 CI/CD 管道 - Azure DevOps Starter
-description: 可以通过 DevOps Starter 轻松地完成 Azure 入门。 使用它可以快速启动所选 Azure 服务上的应用。
+description: 了解如何利用简化的 Azure DevOps Starter 体验在 Azure Pipelines 中为 Java 应用设置持续集成 (CI) 和持续交付 (CD) 管道。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 738822d2dd4a67ea0b5c83c6c5f6c289e93766c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 29b05feab0a44629c3d450709a3bc05481be6e84
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327780"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91330360"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 Java 应用设置 CI/CD 管道
 
@@ -94,14 +94,14 @@ DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 
 1. 在生成管道的顶部，选择生成管道名称。
 
-1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。
+1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。  
 
-1. 在生成管道名称下，选择“历史记录”。   
-在“历史记录”窗格中，此时会看到最近针对生成所做的更改的审核线索。  Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
+1. 在生成管道名称下，选择“历史记录”。    
+在“历史记录”窗格中，此时会看到最近针对生成所做的更改的审核线索。   Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
-1. 选择“触发器”。  DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
+1. 选择“触发器”。   DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
 
-1. 选择“保留期”。 可以根据方案指定策略，以保留或删除特定数目的生成。
+1. 选择“保留期”。  可以根据方案指定策略，以保留或删除特定数目的生成。
 
 1. 选择“生成和发布”，然后选择“发布”。  
  DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
@@ -112,13 +112,13 @@ DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 
 1. 在“删除”图标的旁边，选择“持续部署触发器”。 此发布管道有一个启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会运行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。 
 
-1. 在左侧，选择“任务”。 这些任务是部署过程执行的活动。 在此示例中，已创建一个用于将项目部署到 Azure 应用服务的任务。
+1. 在左侧，选择“任务”。  这些任务是部署过程执行的活动。 在此示例中，已创建一个用于将项目部署到 Azure 应用服务的任务。
 
-1. 在右侧，选择“查看发布”。 此视图显示发布历史记录。
+1. 在右侧，选择“查看发布”。  此视图显示发布历史记录。
 
-1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。 可以浏览多个菜单，例如“发布摘要”、“关联的工作项”、“测试”。
+1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。  可以浏览多个菜单，例如“发布摘要”、“关联的工作项”、“测试”。
 
-1. 选择“提交”。 此视图显示与特定部署相关联的代码提交。 
+1. 选择“提交”。  此视图显示与特定部署相关联的代码提交。 
 
 1. 选择“日志”。 日志包含有关部署过程的有用信息。 日志可以在部署过程中以及部署以后查看。
 

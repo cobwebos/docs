@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 将 X.509 设备注册到 Azure 设备预配服务
+title: 快速入门 - 使用 Python 将 X.509 设备注册到 Azure 设备预配服务
 description: 本快速入门使用组注册。 本快速入门将使用 Python 将 X.509 设备注册到 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f3ac856b3817bb63c53a36505cf89065a8650154
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 577890720e9a0a262b099ab638fafe4268c4f756
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875398"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91330190"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>快速入门：使用 Python 将 X.509 设备注册到设备预配服务
 

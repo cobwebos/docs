@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp 文件与 Oracle Database 的好处 |Microsoft Docs
-description: 介绍了技术并提供了 Oracle 直接 NFS （dNFS）与传统 NFS 客户端之间的性能比较。 显示将 dNFS 与 Azure NetApp 文件一起使用的优点。
+description: 介绍技术并在 Oracle 直接 NFS (dNFS) 和传统 NFS 客户端之间提供性能比较。 显示将 dNFS 与 Azure NetApp 文件一起使用的优点。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: b-juche
 ms.openlocfilehash: 56322dc8def288ed388713e143f6b77816360ba3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82117040"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>将 Azure NetApp 文件与 Oracle Database 配合使用的好处
 
-Oracle Direct NFS （dNFS）可让性能提高到操作系统自身的 NFS 驱动程序的性能。 本文介绍了该技术，并提供了 dNFS 和传统 NFS 客户端（内核 NFS）之间的性能比较。 它还展示了在 Azure NetApp 文件中使用 dNFS 的优点和便利性。  
+Oracle 直接 NFS (dNFS 的) 使性能比操作系统自己的 NFS 驱动程序的性能更高。 本文介绍了该技术，并提供了 dNFS 和传统 NFS 客户端 (内核 NFS) 之间的性能比较。 它还展示了在 Azure NetApp 文件中使用 dNFS 的优点和便利性。  
 
 ## <a name="how-oracle-direct-nfs-works"></a>Oracle 直接 NFS 的工作方式
 
@@ -39,7 +39,7 @@ Oracle Direct NFS （dNFS）可让性能提高到操作系统自身的 NFS 驱�
 
     ![Oracle 直接 NFS 提高性能](../media/azure-netapp-files/solutions-oracle-direct-nfs-performance-load-balancing.png)
 
-[直接 NFS 的 ORACLE 常见问题解答](http://www.orafaq.com/wiki/Direct_NFS)显示 oracle dNFS 是一个优化的 NFS 客户端。 它提供对位于 NAS 存储设备上的 NFS 存储的快速、可缩放的访问（通过 TCP/IP 进行访问）。 dNFS 内置于数据库内核中，就像 ASM 一样，后者主要用于 DAS 或 SAN 存储。 因此，*指导原则是在实现 NAS 存储时使用 dNFS，并在实现 SAN 存储时使用 ASM。*
+[直接 NFS 的 ORACLE 常见问题解答](http://www.orafaq.com/wiki/Direct_NFS)显示 oracle dNFS 是一个优化的 NFS 客户端。 它提供对位于 NAS 存储设备上的 NFS 存储的快速、可缩放访问， (通过 TCP/IP) 访问。 dNFS 内置于数据库内核中，就像 ASM 一样，后者主要用于 DAS 或 SAN 存储。 因此， *指导原则是在实现 NAS 存储时使用 dNFS，并在实现 SAN 存储时使用 ASM。*
 
 dNFS 是 Oracle 18c 中的默认选项。
 

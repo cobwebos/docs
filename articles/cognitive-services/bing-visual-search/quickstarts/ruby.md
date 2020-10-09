@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 Ruby 获取图像见解 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
-description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
+description: 了解如何使用必应视觉搜索 API 和 Ruby 上传图像，并获取有关该图像的见解。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba5d07017c0244c370a8dc6945a7958beb0f224f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870367"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91324563"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>快速入门：使用必应视觉搜索 REST API 和 Ruby 获取图像见解
 

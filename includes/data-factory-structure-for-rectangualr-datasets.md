@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173620"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形数据集的结构定义
@@ -16,7 +16,7 @@ ms.locfileid: "67173620"
 
 每个列包含以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。 有关何时应指定类型信息，请参阅下面的类型转换部分 |否 |
@@ -39,7 +39,7 @@ ms.locfileid: "67173620"
 * 对于存储数据架构、类型信息以及数据本身的**结构化数据源**（如 SQL Server、Oracle、Azure 表等源），仅当想要执行列映射，以便将特定源列映射到接收器中的特定列且其名称不相同时，才应该指定“结构”部分（请参阅下面列映射部分中的详细信息）。 
   
     如上所述，“结构”部分中的类型信息是可选的。 对于结构化源，类型信息已可用作数据存储中的数据集定义的一部分，因此包含“结构”部分时不应包含类型信息。
-* **对于读取数据源（尤其是 Azure blob）的架构**，可以选择存储数据而无需存储数据的任何架构或类型信息。 对于这些类型的数据源，应在以下 2 种情况下包含“结构”：
+* **对于读取数据源上的架构 (专门的 Azure blob) **  你可以选择存储数据而不存储任何架构或类型信息。 对于这些类型的数据源，应在以下 2 种情况下包含“结构”：
   * 想要执行列映射。
   * 当数据集是“复制”活动中的源时，可以在“结构”中提供类型信息，数据工厂将使用此类型信息转换为接收器的本机类型。 有关详细信息，请参阅 [Move data to and from Azure Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md)（将数据移入和移出 Azure Blob）一文。
 
@@ -54,8 +54,8 @@ ms.locfileid: "67173620"
 * 小数
 * Byte[]
 * Bool
-* String 
-* Guid
+* 字符串 
+* GUID
 * datetime
 * Datetimeoffset
 * Timespan 
