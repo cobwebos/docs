@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: data-factory
-author: linda33wj
+author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 01/08/2020
-ms.author: jingwang
+ms.date: 10/06/2020
+ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: bfb42e0ba81eef145932db072c8a80a2f8e00932
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a5ea95e0ea958c495e28eaa1fee72e34362157a1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425250"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859153"
 ---
 Azure 数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 若要将限制提高到订阅的最高限制，请联系支持部门。
 
@@ -21,14 +21,14 @@ Azure 数据工厂是一项多租户服务，具有以下默认限制，目的�
 
 | 资源 | 默认限制 | 最大限制 |
 | -------- | ------------- | ------------- |
-| Azure 订阅中的数据工厂 | 800 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| Azure 订阅中的数据工厂 | 800 | 800 |
 | 数据工厂中的实体（例如管道、数据集、触发器、链接服务、专用终结点和集成运行时）总数 | 5,000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 一个订阅中 Azure-SSIS Integration Runtime 的总 CPU 内核数 | 256 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 每个数据工厂的并行管道运行数（在工厂中的所有管道之间共享） | 10,000  | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)的每个订阅的并发外部活动运行数<br><small>外部活动在集成运行时上进行管理，但在链接服务上执行，包括 Databricks、存储过程、HDInsights、Web 等。</small> | 3000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)的每个订阅的并发管道活动运行数 <br><small>管道活动在集成运行时上执行，包括 Lookup、GetMetadata 和 Delete。</small>| 1000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 每个数据工厂的并行管道运行数（在工厂中的所有管道之间共享） | 10,000  | 10,000 |
+| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)的每个订阅的并发外部活动运行数<br><small>外部活动在集成运行时上进行管理，但在链接服务上执行，包括 Databricks、存储过程、HDInsights、Web 等。</small> | 3,000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)的每个订阅的并发管道活动运行数 <br><small>管道活动在集成运行时上执行，包括 Lookup、GetMetadata 和 Delete。</small>| 1,000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)的每个订阅的并发创作操作数<br><small>包括测试连接、浏览器文件夹列表和表列表、预览数据。 | 200 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)每个订阅的并发数据集成单位<sup>1</sup> 消耗量| 区域组 1<sup>2</sup>：6000<br>区域组 2<sup>2</sup>：3000<br>区域组 3<sup>2</sup>：1500 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)每个订阅的并发数据集成单位<sup>1</sup> 消耗量| 区域组 1<sup>2</sup>：6,000<br>区域组 2<sup>2</sup>：3,000<br>区域组 3<sup>2</sup>：1,500 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个管道的最大活动数，包括容器的内部活动 | 40 | 40 |
 | 可以针对单个自承载集成运行时创建的最大链接集成运行时数 | 100 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个管道的最大参数个数 | 50 | 50 |
@@ -41,14 +41,13 @@ Azure 数据工厂是一项多租户服务，具有以下默认限制，目的�
 | 管道对象的每对象字节数<sup>3</sup> | 200 KB | 200 KB |
 | 数据集和链接服务对象的每对象字节数<sup>3</sup> | 100 KB | 2,000 KB |
 | 每个复制活动运行的数据集成单元数<sup>1</sup> | 256 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 编写 API 调用 | 1,200/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 读取 API 调用 | 12,500/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 每分钟监视的查询数 | 1,000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| 每分钟的实体 CRUD 操作数 | 50 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 编写 API 调用 | 1,200/小时 | 1,200/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 |
+| 读取 API 调用 | 12,500/小时 | 12,500/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 |
+| 每分钟监视的查询数 | 1,000 | 1,000 |
 | 数据流调试会话最长时间 | 8 小时 | 8 小时 |
 | 每个集成运行时的数据流的并发数量 | 50 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个工厂每个用户的数据流调试会话的并发数量 | 3 | 3 |
-| 数据流 Azure IR TTL 限制 | 4 小时 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 数据流 Azure IR TTL 限制 | 4 小时 |  4 小时 |
 
 <sup>1</sup> 数据集成单元 (DIU) 用于云到云复制操作，详见[数据集成单元（版本 2）](../articles/data-factory/copy-activity-performance.md#data-integration-units)。 有关计费的信息，请参阅 [Azure 数据工厂定价](https://azure.microsoft.com/pricing/details/data-factory/)。
 
