@@ -21,7 +21,7 @@
       href: service-health-overview.md
     - name: 资源运行状况
       href: resource-health-overview.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 配置服务运行状况事件的警报
       href: ./alerts-activity-log-service-notifications-portal.md

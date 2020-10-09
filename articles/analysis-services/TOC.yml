@@ -31,7 +31,7 @@
       href: analysis-services-service-principal.md
     - name: 客户端库
       href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
-    - name: 兼容性级别
+    - name: 兼容级别
       href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: 连接到本地数据源
       href: analysis-services-gateway.md

@@ -4,7 +4,7 @@
       href: ../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/virtual-machines/windows/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: ../../../azure-sql/virtual-machines/windows/frequently-asked-questions-faq.md?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
 - name: 入门
   items:
