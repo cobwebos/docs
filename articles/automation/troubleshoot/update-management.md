@@ -2,15 +2,15 @@
 title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713505"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858398"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -57,27 +57,25 @@ Error details: Failed to enable the Update solution
 
 ### <a name="cause"></a>原因
 
-被取代的更新未正确指示为“已拒绝”，因此无法将其视为“不适用”。
+不会在 Windows Server Update Services (WSUS) 拒绝被取代的更新，因此可将其视为不适用。
 
 ### <a name="resolution"></a>解决方法
 
-如果被取代的更新变得 100% 不适用，则应将该更新的审批状态更改为 `Declined`。 若要更改所有更新的审批状态，请执行以下操作：
+如果被取代的更新变为100%，则应在 WSUS 中将该更新的批准状态更改为 `Declined` 。 若要更改所有更新的审批状态，请执行以下操作：
 
 1. 在自动化帐户中，选择“更新管理”来查看计算机的状态。 请参阅[查看更新评估](../update-management/update-mgmt-view-update-assessments.md)。
 
 2. 检查被取代的更新，确保其 100% 不适用。
 
-3. 请将该更新标记为“已拒绝”，除非对更新有疑问。
+3. 在 "计算机报告到的 WSUS 服务器" 上， [拒绝更新](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates)。
 
 4. 选择“计算机”，然后在“合规性”列中，强制执行重新扫描，以检查合规性 。 请参阅[管理 VM 的更新](../update-management/update-mgmt-manage-updates-for-vm.md)。
 
 5. 对于其他被取代的更新，请重复上述步骤。
 
-6. 运行清理向导以删除已拒绝的更新中的文件。 
+6. 对于 Windows Server Update Services (WSUS) ，请清除所有被取代的更新，以使用 WSUS [服务器清理向导](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard)刷新基础结构。
 
-7. 对于 Windows Server Update Services (WSUS)，手动清除所有被取代的更新以刷新基础结构。
-
-8. 定期重复此过程以更正显示问题，并最大程度地减少用于更新管理的磁盘空间量。
+7. 定期重复此过程以更正显示问题，并最大程度地减少用于更新管理的磁盘空间量。
 
 ## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>场景：更新管理下的门户中未显示计算机
 
