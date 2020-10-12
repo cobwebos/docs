@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Site Recovery 管理用于本地灾难恢复的网络适配器
+title: 管理网络适配器以使用 Azure Site Recovery 实现本地灾难恢复
 description: 介绍如何使用 Azure Site Recovery 管理网络接口，以实现本地到 Azure 的灾难恢复
 author: Harsha-CS
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: harshacs
 ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068109"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理用于本地到 Azure 灾难恢复的 VM 网络接口

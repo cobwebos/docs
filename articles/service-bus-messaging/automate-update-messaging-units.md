@@ -4,10 +4,10 @@ description: 本文介绍如何使用自动更新 Service Bus 命名空间的消
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.openlocfilehash: 0a72cc991e768a7bed01762d984cc56238ae0ad0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984839"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>自动更新 Azure 服务总线命名空间的消息传送单元。 
@@ -45,7 +45,7 @@ ms.locfileid: "90984839"
 1. 对于 " **消息单元** " 设置，请从下拉列表中选择消息传送单元数。
 1. 在工具栏上选择“保存”，保存该设置。 
 
-    :::image type="content" source="./media/automate-update-messaging-units/manual-scale.png" alt-text="手动缩放消息单元":::       
+    :::image type="content" source="./media/automate-update-messaging-units/manual-scale.png" alt-text="服务总线命名空间-缩放页":::       
 
 
 ## <a name="custom-autoscale---default-condition"></a>自定义自动缩放-默认条件
@@ -64,31 +64,17 @@ ms.locfileid: "90984839"
 1. 选择 "基于**缩放模式**的**指标缩放"** 。 
 1. 选择“+ 添加规则”。 
 
-    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-add-rule-link.png" alt-text="默认值-根据指标缩放":::    
-1. 在 " **缩放规则** " 页上，执行以下步骤：
-    1. 从 " **指标名称** " 下拉列表中选择一个度量值。 在此示例中，它是 **CPU**。 
-    1. 选择运算符和阈值。 在此示例中，它们 **大于** ， **75** 用于 **触发缩放操作的指标阈值**。 
-    1. 在 "**操作**" 部分中选择**操作**。 在此示例中，它设置为 " **增加**"。 
-    1. 然后选择 "**添加**"
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-add-rule-link.png" alt-text="服务总线命名空间-缩放页"
     
-        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="默认-如果 CPU 使用率大于75%，则向外缩放":::       
+        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="服务总线命名空间-缩放页" 
 
-        > [!NOTE]
-        > 如果在此示例中总体 CPU 使用率超过75%，则自动缩放功能将增加命名空间的消息传送单元。 增量是从1到2、2到4和4到8完成的。 
-1. 再次选择 " **+ 添加规则** "，然后在 " **缩放规则** " 页上执行以下步骤：
-    1. 从 " **指标名称** " 下拉列表中选择一个度量值。 在此示例中，它是 **CPU**。 
-    1. 选择运算符和阈值。 在此示例中，它们 **小于** 和 **25** 的 **指标阈值触发缩放操作**。 
-    1. 在 "**操作**" 部分中选择**操作**。 在此示例中，它设置为 " **减小**"。 
-    1. 然后选择 "**添加**" 
-
-        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="默认-如果 CPU 使用率小于25%，则放大":::       
+        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="服务总线命名空间-缩放页":::       
 
         > [!NOTE]
         > 如果在此示例中总体 CPU 使用率低于25%，则自动缩放功能会减少命名空间的消息传送单元。 减量的实现方式为8到4，4到2，2到1。 
 1. 设置消息传送单元的 **最小** 值和 **最大** 值以及 **默认** 数量。
 
-    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="基于指标的默认规则":::
-1. 选择工具栏上的 " **保存** " 以保存自动缩放设置。 
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="服务总线命名空间-缩放页" 以保存自动缩放设置。 
         
 ### <a name="scale-to-specific-number-of-messaging-units"></a>缩放到特定的消息传送单元数
 请按照以下步骤进行操作，将该规则配置为缩放命名空间以使用特定数量的消息传送单元。 同样，如果其他任何缩放条件都不匹配，则会应用默认条件。 
@@ -98,7 +84,7 @@ ms.locfileid: "90984839"
 1. 选择缩放**模式**的 "**缩放到特定消息单元**"。 
 1. 对于 " **消息传送单元**"，选择默认消息传送单元数。 
 
-    :::image type="content" source="./media/automate-update-messaging-units/default-scale-messaging-units.png" alt-text="默认值-缩放到特定消息传送单元":::       
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-messaging-units.png" alt-text="服务总线命名空间-缩放页":::       
 
 ## <a name="custom-autoscale---additional-conditions"></a>自定义自动缩放-其他条件
 上一部分说明了如何添加自动缩放设置的默认条件。 本部分说明如何将更多条件添加到自动缩放设置。 对于这些额外的非默认条件，可以基于特定的一周或某个日期范围设置计划。 
@@ -107,34 +93,21 @@ ms.locfileid: "90984839"
 1. 在 "**自动缩放设置**" 页上，为 "**选择如何缩放资源**" 选项选择 "**自定义自动缩放**"。 
 1. 选择 "在**默认**块下**添加缩放条件**"。 
 
-    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="自定义-添加缩放条件链接":::    
-1. 指定条件的 **名称** 。 
-1. 确认已选择 " **基于指标缩放** " 选项。 
-1. 选择 " **+ 添加规则** "，添加一个规则，以便在总体 CPU 使用率超过75% 时增加消息单元。 按照 " [默认条件](#custom-autoscale---default-condition) " 部分中的步骤进行操作。 
-5. 设置消息传送单元的 **最小** 值和 **最大** 值以及 **默认** 数量。
-6. 您还可以在自定义条件 (上设置计划，而不是在默认条件) 上设置 **计划** 。 您可以为条件指定开始日期和结束日期 (或者) 选择 (星期一、星期二等的特定日期。 ) 一周。 
-    1. 如果选择 " **指定开始/结束日期**"，请选择 " **时区**"、" **开始日期** " 和 "时间" 和 " **结束日期和时间** " (，如下图所示) 条件生效。 
+    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="服务总线命名空间-缩放页" (，如下图所示) 条件生效。 
 
-       :::image type="content" source="./media/automate-update-messaging-units/custom-min-max-default.png" alt-text="消息传送单元数的最小值、最大值和默认值":::
-    1. 如果选择 " **重复特定日期**"，请选择应应用该条件的星期几、时区、开始时间和结束时间。 
+       :::image type="content" source="./media/automate-update-messaging-units/custom-min-max-default.png" alt-text="服务总线命名空间-缩放页" **重复特定日期**"，请选择应应用该条件的星期几、时区、开始时间和结束时间。 
 
-        :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days.png" alt-text="重复特定日":::
+        :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days.png" alt-text="服务总线命名空间-缩放页":::
   
 ### <a name="scale-to-specific-number-of-messaging-units"></a>缩放到特定的消息传送单元数
 1. 在 "**自动缩放设置**" 页上，为 "**选择如何缩放资源**" 选项选择 "**自定义自动缩放**"。 
 1. 选择 "在**默认**块下**添加缩放条件**"。 
 
-    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="自定义-添加缩放条件链接":::    
-1. 指定条件的 **名称** 。 
-2. 选择**缩放模式**的 "**缩放到特定消息单元**" 选项。 
-1. 从下拉列表中选择 **消息传送单元** 数。 
-6. 对于 " **计划**"，为条件指定开始日期和结束日期 (或) 选择 " (" 星期一 "、" 星期二 "等的特定日期。 ) 周和时间。 
-    1. 如果选择 " **指定开始/结束日期**"，请选择要生效的条件的 **时区**、 **开始日期和时间** 以及 **结束日期和时间** 。 
+    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="服务总线命名空间-缩放页" **指定开始/结束日期**"，请选择要生效的条件的 **时区**、 **开始日期和时间** 以及 **结束日期和时间** 。 
     
-    :::image type="content" source="./media/automate-update-messaging-units/scale-specific-messaging-units-start-end-dates.png" alt-text="缩放到特定消息传送单元-开始和结束日期":::        
-    1. 如果选择 " **重复特定日期**"，请选择应应用该条件的星期几、时区、开始时间和结束时间。
+    :::image type="content" source="./media/automate-update-messaging-units/scale-specific-messaging-units-start-end-dates.png" alt-text="服务总线命名空间-缩放页" **重复特定日期**"，请选择应应用该条件的星期几、时区、开始时间和结束时间。
     
-    :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="缩放到特定消息传送单元-重复特定天数":::
+    :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="服务总线命名空间-缩放页":::
 
 > [!IMPORTANT]
 > 若要详细了解自动缩放设置的工作原理，尤其是它如何选择配置文件或条件并评估多个规则的详细信息，请参阅 [了解自动缩放设置](../azure-monitor/platform/autoscale-understanding-settings.md)。          

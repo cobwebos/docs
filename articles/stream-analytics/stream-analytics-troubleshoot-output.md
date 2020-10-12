@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87903181"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
@@ -24,7 +24,7 @@ ms.locfileid: "87903181"
 1. 使用每项输出对应的“测试连接”按钮来验证与输出的连接****。
 1. 查看“监视器”**** 选项卡上的[监视指标](stream-analytics-monitoring.md)。由于值将进行聚合，因此指标会延迟几分钟。
 
-   * 如果“输入事件”的值大于零，则作业可以读取输入数据****。 如果“输入事件”的值小于或等于零，表示作业的输入有问题****。 有关详细信息，请参阅[对输入连接进行故障排除](stream-analytics-troubleshoot-input.md)。 如果作业有引用数据输入，请在查看**输入事件**指标时按逻辑名称应用拆分。 如果未对引用数据单独提供输入事件，则可能表示未正确配置此输入源以获取正确的引用数据集。
+   * 如果“输入事件”的值大于零，则作业可以读取输入数据****。 如果“输入事件”的值小于或等于零，表示作业的输入有问题****。 有关详细信息，请参阅[对输入连接进行故障排除](stream-analytics-troubleshoot-input.md)。 如果作业具有参考数据输入，请在查看输入事件指标时按逻辑名称应用拆分。 如果仅参考数据中没有输入事件，则可能意味着此输入源未正确配置，无法获取正确的参考数据集。
    * 如果“数据转换错误”**** 的值大于零并不断增大，请参阅 [Azure 流分析数据错误](data-errors.md)，详细了解数据转换错误。
    * 如果“运行时错误”**** 的值大于零，表示作业可以接收数据，但在处理查询时生成错误。 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)，然后筛选“失败”**** 状态。
    * 如果“输入事件”**** 的值大于零，而“输出事件”**** 的值等于零，则下列陈述之一是正确的：
@@ -89,7 +89,7 @@ ms.locfileid: "87903181"
 
 ## <a name="get-help"></a>获取帮助
 
-如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

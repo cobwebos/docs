@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87023460"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
@@ -343,7 +343,7 @@ Azure 订阅是发生计费的地方。 用户创建的每个 Azure 资源或使
 
 ## <a name="twin-queries"></a>孪生查询
 
-[设备和模块孪生查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备孪生或模块孪生中检索信息。 可以使用相同的 IoT 中心查询语言检索有关 IoT 中心内运行的[作业](#job)的信息。
+[设备和模块孪生查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备孪生或模块孪生中检索信息。 可以使用相同的 IoT 中心查询语言，检索在 IoT 中心内运行的[作业](#job)的相关信息。
 
 ## <a name="twin-synchronization"></a>孪生同步
 

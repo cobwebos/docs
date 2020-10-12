@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807146"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
@@ -20,15 +20,15 @@ ms.locfileid: "84807146"
 
 ## <a name="required-command-line-tools"></a>所需的命令行工具
 
-建议将[Azure Cloud Shell](https://shell.azure.com/)用于以下所有命令行操作。 从 shell.azure.com 或单击链接启动 shell：
+建议将 [Azure Cloud Shell](https://shell.azure.com/) 用于以下所有命令行操作。 从 shell.azure.com 或单击链接启动 shell：
 
-[![嵌入启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 或者，使用以下图标从 Azure 门户启动 Cloud Shell：
 
 ![门户启动](./media/application-gateway-ingress-controller-install-new/portal-launch-icon.png)
 
-你的[Azure Cloud Shell](https://shell.azure.com/)已有所有必需的工具。 如果你选择使用其他环境，请确保已安装以下命令行工具：
+你的 [Azure Cloud Shell](https://shell.azure.com/) 已有所有必需的工具。 如果你选择使用其他环境，请确保已安装以下命令行工具：
 
 * `az` - Azure CLI：[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * `kubectl` - Kubernetes 命令行工具：[安装说明](https://kubernetes.io/docs/tasks/tools/install-kubectl)
@@ -251,8 +251,8 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
    值：
      - `verbosityLevel`：设置 AGIC 日志记录基础结构的详细级别。 有关可能的值，请参阅[日志记录级别](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)。
-     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例：`a123b234-a3b4-557d-b2df-a0bc12de1234`
-     - `appgw.resourceGroup`：在其中创建了应用程序网关的 Azure 资源组的名称。 示例：`app-gw-resource-group`
+     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例： `a123b234-a3b4-557d-b2df-a0bc12de1234`
+     - `appgw.resourceGroup`：在其中创建了应用程序网关的 Azure 资源组的名称。 示例： `app-gw-resource-group`
      - `appgw.name`：应用程序网关的名称。 示例： `applicationgatewayd0f0`
      - `appgw.shared`：此布尔标志应默认为 `false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
      - `kubernetes.watchNamespace`：指定 AGIC 应监视的命名空间。 此命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。
@@ -277,7 +277,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
     ```
 
 ## <a name="install-a-sample-app"></a>安装示例应用
-现在，我们已安装了应用程序网关、AKS 和 AGIC，接下来可以通过[Azure Cloud Shell](https://shell.azure.com/)安装示例应用：
+现在，我们已安装了应用程序网关、AKS 和 AGIC，接下来可以通过 [Azure Cloud Shell](https://shell.azure.com/)安装示例应用：
 
 ```yaml
 cat <<EOF | kubectl apply -f -

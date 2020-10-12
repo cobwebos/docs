@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
 ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399680"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用网络观察程序和 Grafana 管理和分析网络安全组流日志

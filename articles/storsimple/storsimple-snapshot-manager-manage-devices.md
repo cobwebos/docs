@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054843"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备
@@ -34,7 +34,7 @@ ms.locfileid: "90054843"
 | 结果列 | 说明 |
 |:--- |:--- |
 | 名称 |在 Azure 经典门户中配置的设备的名称 |
-| 型号 |设备的型号 |
+| 建模 |设备的型号 |
 | 版本 |在设备上安装的软件的版本 |
 | 状态 |设备是否可用 |
 | 上次同步时间 |上次同步设备时的日期和时间 |
@@ -83,7 +83,7 @@ ms.locfileid: "90054843"
    
     ![配置 StorSimple 设备](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 3. 在“设备”**** 下拉框中，选择设备或虚拟设备的 IP 地址。 
-4. 在“密码”**** 文本框中，键入为 Azure 经典门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击“确定”。 StorSimple Snapshot Manager 搜索你所标识的设备。 
+4. 在“密码”**** 文本框中，键入为 Azure 经典门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击" **确定**"。 StorSimple Snapshot Manager 搜索你所标识的设备。 
    
    * 如果设备可用，则 StorSimple Snapshot Manager 会添加一个连接。
    * 如果设备由于任何原因而不可用，则 StorSimple Snapshot Manager 会返回一条错误消息。 单击 **“确定”** 以关闭错误消息，然后单击 **“取消”** 以关闭 **“配置设备”** 对话框。
@@ -101,7 +101,7 @@ ms.locfileid: "90054843"
 3. 右键单击 **“作用域”** 窗格中的顶级节点，然后单击 **“切换导入显示”**。
    
     ![选择“切换导入显示”](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. 此时会出现 **“切换导入显示”** 对话框，其中显示已导入卷组和备份的状态。 单击“确定”。
+4. 此时会出现 **“切换导入显示”** 对话框，其中显示已导入卷组和备份的状态。 单击" **确定**"。
 
 成功导入卷组和备份后，可以使用 StorSimple Snapshot Manager 对其进行管理，就像管理使用 StorSimple Snapshot Manager 创建和配置的卷组和备份一样。 
 

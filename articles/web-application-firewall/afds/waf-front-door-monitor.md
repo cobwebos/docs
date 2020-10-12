@@ -1,6 +1,6 @@
 ---
 title: Azure Web 应用程序防火墙监视和日志记录
-description: 了解具有 FrontDoor 监视和日志记录的 Web 应用程序防火墙（WAF）
+description: 了解 Web 应用程序防火墙 (WAF) 与 FrontDoor 监视和日志记录
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
@@ -8,23 +8,23 @@ services: web-application-firewall
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808953"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web 应用程序防火墙监视和日志记录
 
-Azure Web 应用程序防火墙（WAF）监视和日志记录通过日志记录和与 Azure Monitor 和 Azure Monitor 日志集成提供。
+Azure Web 应用程序防火墙 (WAF) 监视和日志记录通过日志记录和与 Azure Monitor 和 Azure Monitor 日志集成提供。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-带有 FrontDoor 日志的 WAF 与[Azure Monitor](../../azure-monitor/overview.md)集成。 Azure Monitor 允许你跟踪包括 WAF 警报和日志在内的诊断信息。 可以在门户中的 "**诊断**" 选项卡下或直接通过 Azure Monitor 服务配置 WAF 监视。
+带有 FrontDoor 日志的 WAF 与 [Azure Monitor](../../azure-monitor/overview.md)集成。 Azure Monitor 允许你跟踪包括 WAF 警报和日志在内的诊断信息。 可以在门户中的 " **诊断** " 选项卡下或直接通过 Azure Monitor 服务配置 WAF 监视。
 
 从 Azure 门户中转到前门资源类型。 从左侧的 "**监视** / **指标**" 选项卡中，你可以添加**WebApplicationFirewallRequestCount**以跟踪与 WAF 规则匹配的请求数。 可以基于操作类型和规则名称创建自定义筛选器。
 
-:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics":::
+:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics ":::
 
 ## <a name="logs-and-diagnostics"></a>日志和诊断
 
@@ -32,9 +32,9 @@ Azure Web 应用程序防火墙（WAF）监视和日志记录通过日志记录�
 
 ![WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
 
-[FrontdoorAccessLog](../../frontdoor/front-door-diagnostics.md)记录所有请求。 FrontdoorWebApplicationFirewallLog 记录与具有以下架构的 WAF 规则匹配的任何请求：
+[FrontdoorAccessLog](../../frontdoor/front-door-diagnostics.md) 记录所有请求。 FrontdoorWebApplicationFirewallLog 记录与具有以下架构的 WAF 规则匹配的任何请求：
 
-| Property  | 说明 |
+| 属性  | 说明 |
 | ------------- | ------------- |
 |操作|针对请求执行的操作|
 | ClientIp | 发出请求的客户端的 IP 地址。 如果请求中有一个 X 转发的标头，则将从 "标头" 字段中提取客户端 IP。 |
@@ -134,4 +134,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[前门](../../frontdoor/front-door-overview.md)。
+- 详细了解 [前门](../../frontdoor/front-door-overview.md)。

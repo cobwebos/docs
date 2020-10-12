@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089543"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
@@ -92,9 +92,9 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 ### <a name="settings"></a>设置 
 **使用托管磁盘**：此设置指定是否在 DR 演练时使用托管磁盘。 默认值为“是”。 如果已将 **-UseManagedDisks** 设置为“No”，则会使用非托管磁盘价格来计算成本。****
 
-**货币**：生成报表时使用的货币。
+**货币**：生成报告时使用的货币。
 
-**成本持续时间**：可以查看一个月或一整年的所有成本。 
+**成本持续时间**：可以查看每月或整年的所有成本。 
 
 ## <a name="detailed-cost-analysis-table"></a>详细成本分析表
 ![详细成本分析](media/hyper-v-azure-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png)
@@ -109,19 +109,19 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
     a. **Vm 数**
 
-    b. **IaaS 大小（你的选择）**
+    b. **你的选择 (IaaS 大小) **
 
-    c. **存储类型(标准/高级)**
+    c. **存储类型标准/高级**
 
     d. **VM 总存储大小(GB)**
 
-    e. **一年的 DR 演练次数**
+    e. **一年中的 DR-Drills 数**
 
-    f. **每次 DR 演练的持续时间（天）**
+    f. **每个 DR-Drill 持续时间 (天) **
 
     g. **OS 类型**
 
-    h.如果该值不存在，请单击“添加行”。 **数据冗余**
+    h. **数据冗余**
 
     i. **Azure 混合使用权益**
 

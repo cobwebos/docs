@@ -4,19 +4,19 @@ description: Azure 容器实例服务的配额、限制和区域可用性。
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: eaaa8e0b2d72aaea546a1bc351da40932c1deb14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87384816"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Azure 容器实例的配额和限制
 
 所有 Azure 服务都包括某些针对资源和功能的默认限制和配额。 本文详细介绍了 Azure 容器实例的默认配额和限制。
 
-Azure 容器实例的计算、内存和存储资源的可用性因区域和操作系统而异。 有关详细信息，请参阅[Azure 容器实例的资源可用性](container-instances-region-availability.md)。
+Azure 容器实例的计算、内存和存储资源的可用性因区域和操作系统而异。 有关详细信息，请参阅 [Azure 容器实例的资源可用性](container-instances-region-availability.md)。
 
-使用 "[列出使用情况](/rest/api/container-instances/location/listusage)API" 查看订阅的某个区域的当前配额使用量。
+使用 " [列出使用情况](/rest/api/container-instances/location/listusage) API" 查看订阅的某个区域的当前配额使用量。
 
 ## <a name="service-quotas-and-limits"></a>服务配额和限制
 

@@ -6,10 +6,10 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 302e0cc9b77605afd4012e95fc7c0ab8a22fef3e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186310"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>从自动化帐户启用更改跟踪和清单
@@ -43,7 +43,7 @@ ms.locfileid: "86186310"
 
 2. 单击“+ 添加 Azure VM”并从列表中选择一个或多个 VM。 无法启用的虚拟机将灰显，无法选择。 Azure VM 可以位于任何区域中，无论自动化帐户位于哪里。 
 
-3. 单击“启用”以将选定 VM 添加到计算机组为此功能保存的搜索结果。 有关详细信息，请参阅[Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
+3. 单击“启用”以将选定 VM 添加到计算机组为此功能保存的搜索结果。 有关详细信息，请参阅 [Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
 
     ![启用 Azure VM](media/automation-enable-changes-from-auto-acct/enable-azure-vms.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "86186310"
 
 4. 若要为所有可用的计算机和将来的计算机启用该功能，请选择“在所有可用的和将来的计算机上启用”。 此选项将从工作区中删除已保存的搜索和作用域配置，并为向工作区报告的所有 Azure 和非 Azure 计算机启用该功能。 选中此项后，此操作将永久禁用“管理计算机”按钮，因为没有剩余的作用域配置。
 
-5. 如果需要，可以通过重新添加初始的已保存搜索来添加作用域配置。 有关详细信息，请参阅[Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
+5. 如果需要，可以通过重新添加初始的已保存搜索来添加作用域配置。 有关详细信息，请参阅 [Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
 
 6. 若要为一台或多台计算机启用该功能，请选择“在所选计算机上启用”并单击每台计算机旁边的“添加”以启用该功能。 此任务会将所选计算机名称添加到计算机组为此功能保存的搜索查询。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要使用该功能，请参阅[管理更改跟踪和清单](change-tracking-file-contents.md)。
+* 若要使用该功能，请参阅 [管理更改跟踪和清单](change-tracking-file-contents.md)。
 * 若要排查该功能的常见问题，请参阅[排查更改跟踪和清单问题](troubleshoot/change-tracking.md)。

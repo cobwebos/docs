@@ -12,17 +12,17 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86170218"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>有关配置 Arkose 实验室与 Azure Active Directory B2C 的教程
 
 在本教程中，了解如何将 Azure AD B2C authentication 与 Arkose 实验室集成。 Arkose 实验室可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户空缺。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，你将需要：
 
@@ -46,7 +46,7 @@ ms.locfileid: "86170218"
 
 ## <a name="onboard-with-arkose-labs"></a>与 Arkose 实验室集成
 
-1. 首先联系[Arkose 实验室](https://www.arkoselabs.com/book-a-demo/)并创建帐户。
+1. 首先联系 [Arkose 实验室](https://www.arkoselabs.com/book-a-demo/) 并创建帐户。
 
 2. 创建帐户后，导航到 https://dashboard.arkoselabs.com/login 。
 
@@ -60,9 +60,9 @@ ms.locfileid: "86170218"
 
 1. 登录到 Azure 门户。
 
-2. 请确保使用包含你的 Azure 订阅的目录。 在顶部菜单中选择 " **目录 + 订阅**" 筛选器，然后选择包含你的订阅的目录。 此目录与包含 Azure B2C 租户的目录不同。
+2. 请确保使用包含你的 Azure 订阅的目录。 在顶部菜单中选择 " **目录 + 订阅** " 筛选器，然后选择包含你的订阅的目录。 此目录与包含 Azure B2C 租户的目录不同。
 
-3. 选择 "Azure 门户" 左上角的 "**所有服务**"，然后搜索并选择 " **存储帐户**"。
+3. 选择 "Azure 门户" 左上角的 " **所有服务** "，然后搜索并选择 "  **存储帐户**"。
 
 4. 选择“添加” ****。
 
@@ -100,19 +100,19 @@ ms.locfileid: "86170218"
 
    ![Arkose 实验室注册和登录](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. 选择“保存”。
+7. 选择“保存” 。
 
 ### <a name="part-2--set-up-a-back-end-server"></a>第2部分-设置后端服务器
 
 下载 Git Bash 并按照以下步骤操作：
 
-1. 按照说明[创建一个 web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)，直到出现消息 "恭喜！已将第一个 PHP 应用部署到应用服务 "显示。
+1. 按照说明 [创建一个 web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)，直到出现消息 "恭喜！已将第一个 PHP 应用部署到应用服务 "显示。
 
 2. 打开本地文件夹，然后将该 verify-token 文件重命名为 " **verify-token.php** **"。**
 
 3. 打开新重命名的文件 verify-token 文件和：
 
-   a. 将内容替换为在[GitHub 存储库](https://github.com/ArkoseLabs/Azure-AD-B2C)中找到的 verify-token 文件中的内容。
+   a. 将内容替换为在 [GitHub 存储库](https://github.com/ArkoseLabs/Azure-AD-B2C)中找到的 verify-token 文件中的内容。
 
    b. 将第3行 <private_key> 替换为从 Arkose 实验室仪表板获取的私钥。
 
@@ -126,7 +126,7 @@ ms.locfileid: "86170218"
 
 #### <a name="store-the-custom-html"></a>存储自定义 HTML
 
-1. 打开存储在[GitHub 存储库](https://github.com/ArkoseLabs/Azure-AD-B2C)中的 index.html 文件。
+1. 打开存储在 [GitHub 存储库](https://github.com/ArkoseLabs/Azure-AD-B2C)中的 index.html 文件。
 
 2. 将的所有实例替换 `<tenantname>` 为 b2C 租户名称 (换言之， `<tenantname>.b2clogin.com`) 。 应有四个实例。
 
@@ -145,9 +145,9 @@ ms.locfileid: "86170218"
 > [!NOTE]
 > 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
 
-1. 基于[此处](tutorial-create-user-flows.md)的信息创建用户流。 进入**测试用户流**部分时停止。
+1. 基于 [此处](tutorial-create-user-flows.md)的信息创建用户流。 进入 **测试用户流**部分时停止。
 
-2. 在[用户流](user-flow-javascript-overview.md)中启用 JavaScript。
+2. 在 [用户流](user-flow-javascript-overview.md)中启用 JavaScript。
 
 3. 在同一 "用户流" 页上，启用 "自定义页面 URL：中转到**用户流**  >  **页面布局**  >  "**使用自定义页面内容**  =  **yes**  >  **insert 自定义页面 URL**。
 此自定义页面 URL 从 blob 存储中 index.html 文件的位置获取  
@@ -156,13 +156,13 @@ ms.locfileid: "86170218"
 
 ## <a name="test-the-user-flow"></a>测试用户流
 
-1. 打开 Azure AD B2C 租户，然后在 "**策略**" 下选择 "**用户流**"。
+1. 打开 Azure AD B2C 租户，然后在 " **策略**" 下选择 " **用户流**"。
 
 2. 选择以前创建的用户流。
 
-3. 选择 "**运行用户流**"，然后选择设置：
+3. 选择 " **运行用户流** "，然后选择设置：
 
-   a. **应用程序**-选择注册的应用 (示例为 JWT) 。
+   a. **应用程序** -选择注册的应用 (示例为 JWT) 。
 
    b. **回复 url** -选择 "重定向 url"。
 
@@ -174,7 +174,7 @@ ms.locfileid: "86170218"
 
 6. 完成登录流。
 
-7. 选择 "**继续**" 后，将显示 Arkose 实验室测验题。
+7. 选择 " **继续**" 后，将显示 Arkose 实验室测验题。
 
 ## <a name="next-steps"></a>后续步骤
 

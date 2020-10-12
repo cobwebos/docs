@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056211"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
@@ -53,7 +53,7 @@ ms.locfileid: "90056211"
 现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 的联机参考文档。
 
 > [!NOTE]
-> Azure AD PowerShell cmdlet 不适用于新版 Powershell 7，因为它基于 .Net Core。 我们意识到这一点，此 cmdlet 正在更新过程中。 从现在开始，我们建议使用要用于 Azure AD PowerShell 操作的 Windows PowerShell 1.x 模块。 
+> Azure AD PowerShell cmdlet 不适用于新版 Powershell 7，因为它基于 .Net Core。 我们意识到这一点，此 cmdlet 正在更新过程中。 到目前为止，我们建议使用 Windows PowerShell 5.x 模块来执行 Azure AD PowerShell 操作。 
 
 
 ## <a name="connect-to-the-directory"></a>连接到目录
@@ -328,13 +328,13 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 
 ## <a name="group-writeback-to-on-premises-preview"></a>到本地的组写回（预览版）
 
-如今，许多组仍在本地 Active Directory 中管理。 为了应答将云组同步回本地的请求，Azure AD 的 Microsoft 365 组写回功能现在可用于预览。
+如今，许多组仍在本地 Active Directory 中管理。 为了响应将云组同步回本地的请求，适用于 Azure AD 的 Microsoft 365 组写回功能现在推出了预览版。
 
-Microsoft 365 在云中创建和管理组。 使用写回功能，可以将 Microsoft 365 组作为分发组写回到安装有 Exchange 的 Active Directory 林。 然后，具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。 组写回功能不支持 Azure AD 安全组或通讯组。
+Microsoft 365 组是在云中创建和管理的。 使用写回功能，可以将 Microsoft 365 组作为通讯组写回到安装了 Exchange 的 Active Directory 林。 然后，具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。 组写回功能不支持 Azure AD 安全组或通讯组。
 
 有关更多详细信息，请参阅 [Azure AD Connect 同步服务](../hybrid/how-to-connect-syncservice-features.md)的文档。
 
-Microsoft 365 组写回是 (Azure AD) 的 Azure Active Directory 公共预览功能，可用于任何付费的 Azure AD 许可计划。 有关预览的一些法律信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Microsoft 365 组写回是 Azure Active Directory (Azure AD) 的一项公共预览功能，可通过任何付费 Azure AD 许可计划获得。 有关预览的一些法律信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="next-steps"></a>后续步骤
 

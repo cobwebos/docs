@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400088"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 资源提供程序操作

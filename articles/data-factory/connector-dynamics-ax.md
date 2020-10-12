@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982690"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics AX 中复制数据
@@ -143,7 +143,7 @@ Dynamics AX 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource**。 | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，则默认值为**00:30:00** （30分钟）。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，默认值为“00:30:00”（30 分钟）。 | 否 |
 
 **示例**
 

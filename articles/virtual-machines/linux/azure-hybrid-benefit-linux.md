@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
 ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279767"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>预览： Azure 混合权益-它如何应用于 Linux 虚拟机
@@ -43,7 +43,7 @@ Azure 混合权益适用于所有 RHEL 和 SLES Marketplace PAYG 映像。 此�
 
 如果已在使用 Linux Vm 的权益，则保留实例、专用主机和 SQL 混合权益不符合 Azure 混合权益。
 
-## <a name="how-to-get-started"></a>如何入门
+## <a name="how-to-get-started"></a>如何开始使用
 
 Azure 混合权益目前处于 Linux Vm 的预览阶段。 获取预览版的访问权限后，可以使用 Azure 门户或 Azure CLI 启用此权益。
 
@@ -138,7 +138,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 若要将 Azure 混合权益用于 SLES Vm，必须先向 SUSE 公有云计划注册。 在此处了解有关程序的详细信息。 购买 SUSE 订阅后，必须使用 SUSE 客户中心、订阅管理工具服务器或 SUSE 管理器将这些订阅的 Vm 注册到自己的更新源。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 *问：我是否可以将 "RHEL_BYOS" 的许可证类型用于 SLES 映像，反之亦然？*
 
 答：不能。 尝试输入不正确匹配 VM 上运行的发行版的许可证类型将不会更新任何计费元数据。 但是，如果意外输入错误的许可证类型，则再次将 VM 更新为正确的许可证类型将仍会启用此权益。

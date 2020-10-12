@@ -4,10 +4,10 @@ description: 了解如何在 Azure 容器注册表中启用保留策略，以便
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83683461"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>设置未标记清单的保留策略

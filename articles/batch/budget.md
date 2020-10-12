@@ -4,10 +4,10 @@ description: 了解如何进行成本分析，并为用于运行 Batch 工作负
 ms.topic: how-to
 ms.date: 07/19/2019
 ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654236"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch 成本分析和预算

@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 83a33fa3891e01c484f298f22d67467bc54a7618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85551986"
 ---
 # <a name="authorization-agents-android"></a>授权代理 (Android)
@@ -63,7 +63,7 @@ MSAL 默认使用浏览器和[自定义标签页](https://developer.chrome.com/m
 
 由于 MSAL 无法指定可在众多 Android 手机上使用的确切浏览器包，因此 MSAL 实施浏览器选择试探法，以尝试提供最佳的跨设备 SSO。
 
-MSAL 将检索设备上安装的浏览器的完整列表，以选择要使用的浏览器。 该列表由包管理器按顺序（间接反映了用户的偏好）返回。 例如，如果已设置默认浏览器，则它是列表中的第一个条目。 始终会选择列表中的第一个浏览器，无论它是否支持自定义标签页。  如果浏览器支持自定义标签页，MSAL 将启动自定义标签页。自定义标签页的外观更接近应用中 `WebView`，允许基本的 UI 自定义。 有关详细信息，请参阅 [Android 中的自定义标签页](https://developer.chrome.com/multidevice/android/customtabs)。
+MSAL 将检索设备上安装的浏览器的完整列表，以选择要使用的浏览器。 该列表由包管理器按顺序（间接反映了用户的偏好）返回。 例如，如果已设置默认浏览器，则它是列表中的第一个条目。 始终会选择列表中的第一个浏览器，无论它是否支持自定义标签页。 如果浏览器支持自定义标签页，MSAL 将启动自定义标签页。自定义标签页的外观更接近应用中 `WebView`，允许基本的 UI 自定义。 有关详细信息，请参阅 [Android 中的自定义标签页](https://developer.chrome.com/multidevice/android/customtabs)。
 
 如果设备上没有浏览器包，MSAL 将使用应用中 `WebView`。
 

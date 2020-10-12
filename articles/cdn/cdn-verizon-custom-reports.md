@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84888711"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon 中的自定义报表
@@ -68,7 +68,7 @@ ms.locfileid: "84888711"
 
 ## <a name="edge-cnames-custom-report-fields"></a>边缘 CNAME 自定义报表字段
 
-| 字段                     | 描述   |
+| 字段                     | 说明   |
 |---------------------------|---------------|
 | 2xx                       | 为导致 2xx HTTP 状态代码（例如，200 正常）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 |
 | 3xx                       | 为导致 3xx HTTP 状态代码（例如，302 已找到 或 304 未修改）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 |
@@ -77,7 +77,7 @@ ms.locfileid: "84888711"
 | 缓存命中率 %               | 指示直接从缓存提供到请求者的可缓存请求百分比。 |
 | 缓存命中数                | 为导致缓存命中（例如，TCP_EXPIRED_HIT、TCP_HIT 或 TCP_PARTIAL_HIT）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 当发现请求内容的缓存版本时，将发生缓存命中。 |
 | 已传输数据 (MB)     | 指示从边缘服务器向边缘 CNAME 的 HTTP 客户端（Web浏览器）传输的数据总量 (MB)。 通过将 HTTP 响应标头添加到响应正文来计算数据的传输量。 因此，向每个资产传输的数据量大于其实际文件大小。 |
-| 描述               | 通过其主机名标识边缘 CNAME |
+| 说明               | 通过其主机名标识边缘 CNAME |
 | 命中数                      | 指示边缘 CNAME 的请求总数 |
 | 未命中数                    | 为导致缓存失误（例如，TCP_CLIENT_REFRESH_MISS、TCP_EXPIRED_MISS 或 TCP_MISS）的边缘 CNAME 指示请求总数或数据传输总量 (MB)。 当请求内容未在接受请求的边缘服务器上缓存时，将发生缓存失误。 | 
 | 无缓存                  | 为导致 CONFIG_NOCACHE 缓存状态代码的边缘 CNAME 指示请求总数或数据传输总量 (MB)。  |

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
 ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208106"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
@@ -58,7 +58,7 @@ Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和 3.x�
 
 * 主机配置文件 (host.json) 应该为空或包含字符串 `"version": "2.0"`。
 
-* 若要改善监视，门户中的 Web 作业仪表板（使用该设置）将 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 替换为 Azure 应用程序 Insights，使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) 设置。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+* 为了改进监视功能，门户中使用 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 设置的 WebJobs 仪表板已替换为使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) 设置的 Azure Application Insights。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 * 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中的 [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) 值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
 

@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021471"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
@@ -95,13 +95,13 @@ ms.locfileid: "87021471"
 7. 此时会显示“数据存储浏览器”窗口。
 
    ![数据存储浏览器的屏幕截图。 数据存储中的文件夹可见。](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. 在工具栏中，单击 :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png"::: 图标创建新的文件夹。 指定文件夹名称，将其记录下来。 稍后创建虚拟机时需用到此文件夹名称（建议的最佳做法）。 单击“确定”  。
+8. 在工具栏中，单击 :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png"::: 图标创建新的文件夹。 指定文件夹名称，将其记录下来。 稍后创建虚拟机时需用到此文件夹名称（建议的最佳做法）。 单击" **确定**"。
 
    !["数据存储浏览器" 的屏幕截图，其中突出显示了新的文件夹图标。 对话框中已填充文件夹名称，突出显示 "确定" 按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. 新文件夹会显示在“数据存储浏览器”的左窗格中。
 
    ![使用文件夹层次结构中可见的新文件夹的数据存储浏览器屏幕截图。](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. 单击 "上传" 图标 :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png"::: ，然后选择 "**上传文件**"。
+10. 单击 "上传" 图标 :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png"::: ，然后选择 " **上传文件**"。
 
     ![显示 "上传" 图标的快捷菜单的屏幕截图。 已选择 "上传文件" 项。](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. 浏览并指向已下载的 VMDK 文件。 有两个文件。 选择要上传的文件。
@@ -129,7 +129,7 @@ ms.locfileid: "87021471"
     ![虚拟机版本页的屏幕截图。 已选择虚拟机版本8选项，并突出显示 "下一步" 按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. 在“来宾操作系统”页上，选择“Windows”作为“来宾操作系统”。************ 从下拉列表中选择“Microsoft Windows Server 2012 (64 位)”作为“版本”。********
 
-    ![所选 Windows 的 "来宾操作系统" 页的屏幕截图，版本设置为 Microsoft Windows Server 2012 （64位），下一个突出显示。](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
+    ![选择了 Windows 的 "来宾操作系统" 页的屏幕截图，版本设置为 Microsoft Windows Server 2012 (64 位) ，下一个突出显示。](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. 在“CPU”页上调整“虚拟插槽数”和“每个虚拟插槽的核心数”，使“总核心数”为 4（或 4 以上）。**************** 单击“下一步”。
 
     ![显示一个虚拟套接字的 Cpu 页的屏幕截图，每个虚拟插槽四个核心，四个内核总数。 "下一步" 按钮将突出显示。](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
@@ -151,10 +151,10 @@ ms.locfileid: "87021471"
 26. 在“高级选项”页上，接受默认值，并单击“下一步”。********
 
     !["高级选项" 页的屏幕截图。 "下一步" 按钮将突出显示。](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。**** 单击 **“继续”** 。
+27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。**** 单击“继续” 。
 
     ![已突出显示 "继续" 按钮的 "已准备完成" 页的屏幕截图。 选中 "在完成前编辑虚拟机设置" 选项。](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。******** 选择“新建硬盘”。**** 单击“添加” 。
+28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。******** 选择“新建硬盘”。**** 单击“添加”。
 
     !["虚拟机属性" 页的 "硬件" 选项卡的屏幕截图。 在硬件列表中选择了新硬盘。 "添加" 按钮将突出显示。](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. 此时会显示“添加硬件”**** 窗口。 在“设备类型”页的“选择要添加的设备类型”下选择“硬盘”，并单击“下一步”。****************
@@ -163,19 +163,19 @@ ms.locfileid: "87021471"
 30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。******** 单击“下一步”。
 
     !["选择磁盘" 页的屏幕截图。 "创建新的虚拟磁盘" 选项已选中，"下一步" 按钮将突出显示。](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。******** 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 有关要预配的磁盘的大小的详细信息，请查看[最佳实践文档](storsimple-ova-best-practices.md)中的 "调整大小" 部分。 在“磁盘预配”下，选择“精简预配”。******** 单击“下一步”。
+31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。******** 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 有关要预配的磁盘的大小的详细信息，请查看 [最佳实践文档](storsimple-ova-best-practices.md)中的 "调整大小" 部分。 在“磁盘预配”下，选择“精简预配”。******** 单击“下一步”。
 
     !["创建磁盘" 页的屏幕截图。 磁盘大小设置为 500 GB，将选择 "精简设置" 选项，并突出显示 "下一步" 按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. 在“高级选项”页上，接受默认值。****
 
-    !["高级选项" 页的屏幕截图。 虚拟设备节点设置为 SCSI （0:0），并突出显示 "下一步" 按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. 在“准备完成”页上，查看磁盘选项。**** 单击“完成” 。
+    !["高级选项" 页的屏幕截图。 虚拟设备节点设置为 SCSI (0:0) ，并突出显示 "下一步" 按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
+33. 在“准备完成”页上，查看磁盘选项。**** 单击“完成”  。
 
     !["准备完成" 页的屏幕截图。 磁盘选项的摘要可见，并突出显示 "完成" 按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成” 。
+34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成”  。
 
     ![虚拟机属性页的屏幕截图。 硬件列表包含新的硬盘，并且突出显示 "完成" 按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 在右窗格中选择虚拟机后，导航到 "**摘要**" 选项卡。查看虚拟机的设置。
+35. 在右窗格中选择您的虚拟机后，导航到 " **摘要** " 选项卡。查看虚拟机的设置。
 
     !["VSphere 客户端摘要" 选项卡的屏幕截图。新虚拟机突出显示，其资源和常规属性都可见。](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -188,18 +188,18 @@ ms.locfileid: "87021471"
 执行以下步骤，启动虚拟设备并与其进行连接。
 
 #### <a name="to-start-the-virtual-device"></a>启动虚拟设备
-1. 启动虚拟设备。 在 vSphere 配置管理器的左窗格中选择设备，并右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。  此时会启动虚拟机。 可以在 vSphere 客户端底部的“最新任务”窗格中查看状态。****
+1. 启动虚拟设备。 在 vSphere 配置管理器的左窗格中选择设备，并右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。 此时会启动虚拟机。 可以在 vSphere 客户端底部的“最新任务”窗格中查看状态。****
 
    ![设备快捷菜单的屏幕截图。 已选择 "电源" 项。 选中 "开机" 项后，将显示相邻的菜单。](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 完成设置任务需要几分钟时间。 设备运行后，导航到 "**控制台**" 选项卡。发送 Ctrl + Alt + Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
+2. 完成设置任务需要几分钟时间。 设备运行后，导航到 " **控制台** " 选项卡。发送 Ctrl + Alt + Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
 
    ![VSphere 客户端控制台选项卡的屏幕截图。密码框为空。](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
 
-   !["VSphere 客户端控制台" 选项卡的屏幕截图。页上的文本表明密码必须更改。](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
+   ![VSphere 客户端控制台选项卡的屏幕截图。页面上的文本表明密码必须更改。](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
 4. 请输入至少包含 8 个字符的密码。 密码必须包含以下要求中 4 项内容中的 3 项：大写、小写、数字、特殊字符。 再次输入密码进行确认。 用户会收到密码已更改的通知。
 
-   !["VSphere 客户端控制台" 选项卡的屏幕截图。页上的文本表明密码已更改。](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
+   ![VSphere 客户端控制台选项卡的屏幕截图。页面上的文本表明密码已更改。](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
 5. 成功更改密码后，虚拟设备会重新启动。 等待重新启动完成。 会显示设备的 Windows PowerShell 控制台和进度栏。
 
    ![显示包含进度栏的控制台窗口的屏幕截图。 窗口中的文本表明初始设置正在进行，并要求用户等待。](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)
@@ -210,12 +210,12 @@ ms.locfileid: "87021471"
    接下来，配置网络。
 7. 使用 `Get-HcsIpAddress` 命令列出在虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `Ethernet`。
 
-   ![显示具有 Set-hcsipaddress 命令输出的控制台窗口的屏幕截图。 "以太网" 列出为设备的名称。](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
+   ![显示带有 Get-HcsIpAddress 命令输出的控制台窗口的屏幕截图。 "以太网" 列出为设备的名称。](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. 使用 `Set-HcsIpAddress` cmdlet 配置网络。 下面显示了一个示例：
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![显示控制台窗口的屏幕截图，其中包含 Get-help Set-hcsipaddress 命令的输出和 Set-hcsipaddress 命令的正确用法。](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
+    ![显示控制台窗口的屏幕截图，其中包含 Get-Help Set-HcsIpAddress 命令的输出和 Set-HcsIpAddress 命令的正确用法。](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
 9. 完成初始设置并启动设备以后，会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 需使用该 IP 地址连接到虚拟设备的 Web UI 并完成本地设置和注册。
 
    ![显示带有设备横幅文本的控制台窗口的屏幕截图。 该文本包括设备 IP 地址和 URL。](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)
@@ -237,7 +237,7 @@ ms.locfileid: "87021471"
 
 若在使用本地 Web UI 进行初始配置期间遇到其他错误，请参阅以下工作流：
 
-* 运行诊断测试以对[WEB UI 设置进行故障排除](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
+* 运行诊断测试以对 [WEB UI 设置进行故障排除](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
 * [生成日志包并查看日志文件](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
 ## <a name="next-steps"></a>后续步骤

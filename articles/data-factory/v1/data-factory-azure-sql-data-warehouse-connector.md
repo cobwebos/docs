@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b7324115c880fb1ee4d5a1730a3b84a289cee4b0
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89490133"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) 
@@ -68,7 +68,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了特定于 Azure Synapse Analytics 链接服务的 JSON 元素的说明。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **AzureSqlDW** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure Synapse Analytics 实例所需的信息。 仅支持基本身份验证。 |是 |
@@ -81,7 +81,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure Synapse 分析数据库中的表或视图的名称。 |是 |
 
@@ -96,7 +96,7 @@ Azure Synapse Analytics 连接器支持基本身份验证。
 ### <a name="sqldwsource"></a>SqlDWSource
 源为 **SqlDWSource** 类型时，可在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
@@ -142,10 +142,10 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
-| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 Azure Synapse Analytics 的建议方法。** 有关约束和详细信息，请参阅 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。 |True <br/>False（默认值） |否 |
+| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 Azure Synapse Analytics 的建议方法。** 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。 |True <br/>False（默认值） |否 |
 | polyBaseSettings |**allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 |&nbsp; |否 |
 | rejectValue |指定在查询失败之前可以拒绝的行数或百分比。 <br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅[CREATE EXTERNAL TABLE (transact-sql) ](https://msdn.microsoft.com/library/dn935021.aspx)主题的**Arguments**部分。 |0（默认值）、1、2 … |否 |
 | rejectType |指定将 rejectValue 选项指定为文字值还是百分比。 |值（默认），百分比 |否 |
@@ -355,7 +355,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| 图像 |Byte[] |
+| image |Byte[] |
 | int |Int32 |
 | money |小数 |
 | nchar |String, Char[] |

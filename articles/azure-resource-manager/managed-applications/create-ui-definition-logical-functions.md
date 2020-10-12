@@ -1,24 +1,24 @@
 ---
 title: 创建 UI 定义逻辑函数
-description: 介绍用于执行逻辑操作的函数。
+description: 介绍用于执行逻辑运算的函数。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 00d2f0eeb5d353c8ebd7ad30f6866f890d6cb42e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095978"
 ---
-# <a name="createuidefinition-logical-functions"></a>CreateUiDefinition 逻辑函数
+# <a name="createuidefinition-logical-functions"></a>创建 UI 定义逻辑函数
 
-这些函数可用于条件表达式。 某些函数可能不支持所有的 JSON 数据类型。
+可以在条件表达式中使用这些函数。 某些函数可能不支持所有的 JSON 数据类型。
 
 ## <a name="and"></a>and
 
-如果所有参数的计算结果都为 `true`，则返回 `true`。 此函数仅支持布尔类型的两个或更多参数。
+如果所有参数的计算结果都为 `true`，则返回 `true`。 此函数仅支持布尔类型的两个或两个以上参数。
 
 以下示例返回 `true`：
 
@@ -131,9 +131,9 @@ ms.locfileid: "87095978"
 
 ## <a name="if"></a>if
 
-根据条件为 true 或 false 返回值。 第一个参数是要测试的条件。 当条件为 true 时，第二个参数是要返回的值。 如果条件为 false，则第三个参数是要返回的值。
+根据条件为 true 或 false 返回值。 第一个参数是要测试的条件。 第二个参数是条件为 true 时返回的值。 第三个参数是条件为 false 时返回的值。
 
-下面的示例返回 `yes` 。
+下面的示例返回 `yes`。
 
 ```json
 "[if(equals(42, mul(6, 7)), 'yes', 'no')]"

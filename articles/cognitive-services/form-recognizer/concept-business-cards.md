@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
 ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334542"
 ---
 # <a name="business-card-concepts"></a>名片概念
@@ -64,7 +64,7 @@ Azure 窗体识别器可以使用其预生成的模型之一来分析和提取�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|状态 | string | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
+|status | 字符串 | notStarted：分析操作尚未开始。<br /><br />正在运行：分析操作正在进行。<br /><br />失败：分析操作失败。<br /><br />succeeded：分析操作成功。|
 
 当 " **状态** " 字段的值为 " **成功** " 时，如果请求，JSON 响应将包括业务卡理解和可选的文本识别结果。 业务卡理解结果被组织为命名字段值的字典，其中每个值都包含提取的文本、规范化值、边界框、置信度和对应的单词元素。 文本识别结果组织为带有文本、边界框和置信度信息的线条和单词的层次结构。
 

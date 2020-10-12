@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904796"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
@@ -96,7 +96,7 @@ No certificate was found in the certificate store with thumbprint
    Connect-AzAccount –Credential $Cred
    ```
 
-1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅文章[使用 Azure Active Directory 对 Azure 进行身份验证](../automation-use-azure-ad.md)。
+1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅文章 [使用 Azure Active Directory 对 Azure 进行身份验证](../automation-use-azure-ad.md)。
 
 1. 如果该错误看上去是暂时性的，请尝试向身份验证例程添加重试逻辑，使身份验证更加可靠。
 
@@ -271,7 +271,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 ### <a name="resolution"></a>解决方法
 
-若要将经典运行方式帐户用于 Azure 经典部署模型 cmdlet，请参阅[创建经典运行方式帐户以管理 azure 服务](../automation-create-standalone-account.md#create-a-classic-run-as-account)。 若要在 Azure 资源管理器 cmdlet 中使用服务主体，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+若要通过 Azure 经典部署模型 cmdlet 使用经典运行方式帐户，请参阅[创建经典运行方式帐户来管理 Azure 服务](../automation-create-standalone-account.md#create-a-classic-run-as-account)。 若要在 Azure 资源管理器 cmdlet 中使用服务主体，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>场景：Runbook 失败并出现“任务已取消”错误消息
 
@@ -508,7 +508,7 @@ The quota for the monthly total job run time has been reached for this subscript
 1. 选择“设置”，然后选择“定价”。 
 1. 选择页面底部的“启用”，以将帐户升级到“基本”层。
 
-## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>方案： Runbook 输出流大于 1 MB
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>场景：Runbook 输出流大于 1 MB
 
 ### <a name="issue"></a>问题
 
@@ -520,11 +520,11 @@ The runbook job failed due to a job stream being larger than 1MB, this is the li
 
 ### <a name="cause"></a>原因
 
-之所以发生此错误，是因为 runbook 试图将过多的异常数据写入输出流。
+出现此错误是因为 runbook 尝试向输出流写入太多异常数据。
 
 ### <a name="resolution"></a>解决方法
 
-作业输出流的限制为 1 MB。 确保 Runbook 使用 `try` 和 `catch` 块包含对可执行文件或子进程的调用。 如果操作引发异常，请让代码将该异常中的消息写入自动化变量中。 此方法可防止将消息写入作业输出流中。 对于执行的混合 Runbook 辅助角色作业，将显示截断为 1 MB 的输出流，且不显示错误消息。
+作业输出流限制为 1 MB。 确保 Runbook 使用 `try` 和 `catch` 块包含对可执行文件或子进程的调用。 如果操作引发异常，请让代码将该异常中的消息写入自动化变量中。 此方法可防止将消息写入作业输出流中。 对于执行的混合 Runbook 辅助角色作业，将显示截断为 1 MB 的输出流，且不显示任何错误消息。
 
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>场景：已尝试启动 Runbook 作业三次，但每次都失败
 

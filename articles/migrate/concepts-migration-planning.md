@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
 ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090087"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 构建迁移计划
 
-本文提供了一个快速指南，帮助你使用[Azure Migrate](migrate-services-overview.md)在 Azure 上构建迁移计划。如果你有其他问题，请查看以下资源：
+本文提供了一个快速指南，帮助你使用 [Azure Migrate](migrate-services-overview.md)在 Azure 上构建迁移计划。如果你有其他问题，请查看以下资源：
 
 - 有关 Azure Migrate 的[一般问题](resources-faq.md)
 - 关于[Azure Migrate 设备](common-questions-appliance.md)的问题
@@ -24,11 +24,11 @@ ms.locfileid: "87090087"
 
 ## <a name="define-the-goals-of-cloud-migration"></a>定义云迁移的目标
 
-构建迁移计划之前，请务必了解并评估要迁移到云的[动机](/azure/cloud-adoption-framework/strategy/motivations)，从而帮助生成更成功的业务成果。 作为[Azure 的云采用框架](/azure/cloud-adoption-framework)说明，可能存在适用于你的业务的不同触发器和迁移方法：  
+构建迁移计划之前，请务必了解并评估要迁移到云的 [动机](/azure/cloud-adoption-framework/strategy/motivations) ，从而帮助生成更成功的业务成果。 作为 [Azure 的云采用框架](/azure/cloud-adoption-framework) 说明，可能存在适用于你的业务的不同触发器和迁移方法：  
 
 **关键业务事件** | **迁移结果**
 --- | ---
-数据中心退出 | 节约成本
+数据中心退出 | 成本节约
 合并、收购或 divestiture | 减少供应商或降低技术复杂性
 资本支出降低 | 优化内部操作
 终止对任务关键型技术的支持 | 提高业务灵活性
@@ -89,21 +89,21 @@ ms.locfileid: "87090087"
 
 ### <a name="sizing-recommendations"></a>大小建议
 
-将计算机标记为 "就绪" 后，服务器评估会根据 Vm 的大小建议确定 Azure VM 和磁盘 SKU。 你可以根据性能历史记录选择查看大小建议（以便在迁移时优化资源），或基于其本地配置，而无需考虑性能历史记录。 对于数据库，可在数据库评估中查看有关数据库 SKU、定价层和计算级别的建议。  
+将计算机标记为 "就绪" 后，服务器评估会根据 Vm 的大小建议确定 Azure VM 和磁盘 SKU。 你可以根据性能历史记录选择查看大小建议 (以便在迁移) 时优化资源，或基于其本地配置进行优化，而不考虑性能历史记录。 对于数据库，可在数据库评估中查看有关数据库 SKU、定价层和计算级别的建议。  
 
 ### <a name="compute-assessments-to-get-estimated-costs-for-running-the-workloads-in-azure"></a>计算评估以获取在 Azure 中运行工作负荷的估计成本
 
-评估中的*基于性能*的大小调整选项可让你为 Azure 优化工作负荷。 除了合理精简以外，还有其他一些途径可帮助节省成本：
+评估中的 *基于性能* 的大小调整选项可让你为 Azure 优化工作负荷。 除了合理精简以外，还有其他一些途径可帮助节省成本：
 
-- **保留实例**：对于保留实例，你可以通过 Windows 和 Linux （vm）上1年或3年的即用即付定价显著降低成本。
+- **保留实例**：对于保留实例，你可以通过 Windows 和 Linux (vm 上的1年或3年的即用即付定价显著降低成本) 
 
 - **Azure 混合权益**：你可以将具有软件保障的 Windows Server 本地许可证带到 Azure，并将其与保留实例选项组合
 
-- **企业协议产品/服务（EA）**：企业协议提供适用于你的订阅的内置节省
+- **企业协议提供 (EA) **：企业协议提供适用于你的订阅的内置节省
 
 - **产品/服务**：有多个 Azure 产品/服务，例如即用即付开发/测试和 Enterprise 开发/测试，为开发或测试 vm 提供较低的费率
 
-- **VM 运行时间**：你可以在运行 Azure vm 以减少成本（不适用于 RI）时，提及每个月的每月和小时的持续时间。
+- **VM 运行时间**：你可以在运行 Azure vm 时说每个月的每月和小时的持续时间，以降低成本， (不适用于 RI) 
 
 - **目标区域**：你可以在不同区域中创建多个评估，以比较在地理位置迁移到某个区域是否可能更具成本效益
 
@@ -117,7 +117,7 @@ ms.locfileid: "87090087"
 
 ### <a name="evaluate-gaps-and-potential-blockers"></a>评估差距和潜在拦截
 
-确定要迁移的应用程序和底层基础结构时，请确定这些应用程序的停机时间限制，并在应用程序和底层基础结构之间查找任何操作依赖关系。 此分析有助于规划满足恢复时间目标（RTO）的迁移，并确保最小到零数据丢失。 在迁移之前，我们建议你查看并缓解任何兼容性问题或不受支持的功能，这些问题可能会阻止迁移你的服务器和 SQL 数据库和服务器评估报表，并 Azure Migrate：数据库评估建议。
+确定要迁移的应用程序和底层基础结构时，请确定这些应用程序的停机时间限制，并在应用程序和底层基础结构之间查找任何操作依赖关系。 此分析有助于规划满足恢复时间目标 (RTO) 的迁移，并确保最小到零数据丢失。 在迁移之前，我们建议你查看并缓解任何兼容性问题或不受支持的功能，这些问题可能会阻止迁移你的服务器和 SQL 数据库和服务器评估报表，并 Azure Migrate：数据库评估建议。
 
 ### <a name="first-workloads-to-target-and-approach"></a>目标和方法的第一个工作负荷
 
@@ -130,8 +130,8 @@ ms.locfileid: "87090087"
     - 操作系统支持终止：导出你的评估报告并筛选运行 Windows Server 2008 和 Windows Server 2008 R2 操作系统的所有计算机。 这些 Sku 已结束支持，只有 Azure 会在你将其迁移到 Azure 时提供免费的3年安全更新。 当您组合、Azure 混合权益和使用预订实例时，保存可能会高得多。
     - SQL Server 迁移：对于 Azure SQL 数据库，请使用数据库评估建议为 Azure SQL Azure Migrate 数据库迁移准备就绪的数据库，并使用 Azure Migrate： Server 迁移为 Azure SQL VM 准备好使用 Azure SQL VM。
     - 软件最终支持：导出应用程序清单，并筛选出可能会到达支持结束的任何软件/扩展。 应设置这些应用程序的优先级。
-    - 过度预配的 Vm：导出评估报告并筛选出 CPU 使用率较低的计算机（%）和内存使用率（%）。  可以使用此机会迁移到 Azure 中的 rightsized VM，并保存已为未充分利用的资源付费。
-    - 容量限制：导出评估报告并筛选出 CPU 使用率高的计算机（%）和内存使用率（%）。  可以通过将 overstrained Vm 迁移到 Azure 并利用自动缩放功能满足需求，来防止这些 Vm 中断和提高性能。 你还可以通过分析磁盘 IOPS 和吞吐量来了解你的存储约束，并找到最适合你的需求的建议磁盘类型。
+    - 过度预配的 Vm：导出评估报告并筛选出 CPU 使用率低的计算机 (% ) 和内存利用率 (% ) 。  可以使用此机会迁移到 Azure 中的 rightsized VM，并保存已为未充分利用的资源付费。
+    - 容量限制：导出评估报告并筛选出 CPU 使用率高 (% ) 和内存利用率 (% ) 的计算机。  可以通过将 overstrained Vm 迁移到 Azure 并利用自动缩放功能满足需求，来防止这些 Vm 中断和提高性能。 你还可以通过分析磁盘 IOPS 和吞吐量来了解你的存储约束，并找到最适合你的需求的建议磁盘类型。
 
 - 从小到**大**一点：开始移动应用程序和工作负荷，这是最小的风险和不太复杂的工作负载，以便在迁移策略中建立信心。 你还可以将你的 Azure Migrate 评估建议与组织的 CMDB 存储库交叉，以便在试点迁移中查找和迁移开发/测试环境工作负荷。 在迁移生产工作负荷时，可以使用这些试验中的知识。  
 
@@ -155,9 +155,9 @@ ms.locfileid: "87090087"
 
 使用此分析构建迁移路线图，并声明一个维护时段，将应用程序和数据库迁移到最少停机时间，并在迁移期间限制潜在的操作/业务影响。  
 
-建议你始终先测试并继续使用 Azure Migrate 的 *测试迁移*功能，然后开始例行将完全规模迁移到 Azure。 此真实数据将帮助你估计所涉及的实际时间，并对迁移计划做出必要的调整。 还可以通过测试迁移来发现迁移计划的任何潜在问题，并在实际迁移发生之前修复这些问题。  
+建议你始终先测试并继续使用 Azure Migrate 的 *测试迁移* 功能，然后开始例行将完全规模迁移到 Azure。 此真实数据将帮助你估计所涉及的实际时间，并对迁移计划做出必要的调整。 还可以通过测试迁移来发现迁移计划的任何潜在问题，并在实际迁移发生之前修复这些问题。  
 
-准备好迁移后，请使用 Azure Migrate 的*服务器迁移工具*和 Azure Migrate 的*数据迁移服务*，以实现与端到端跟踪的无缝集成的无缝迁移体验。 服务器迁移工具支持在客户的数据中心或任何其他私有或公有云（包括 AWS、GCP 等）中迁移本地托管的 Vm 和服务器。 Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。  
+准备好迁移后，请使用 Azure Migrate 的 *服务器迁移工具* 和 Azure Migrate 的 *数据迁移服务* ，以实现与端到端跟踪的无缝集成的无缝迁移体验。 服务器迁移工具支持在客户的数据中心或任何其他私有或公有云（包括 AWS、GCP 等）中迁移本地托管的 Vm 和服务器。 Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。  
 
 > [!NOTE]
 > 对于 VMware Vm，服务器评估使用在 vCenter Server 中为 VM 指定的操作系统来处理来宾操作系统分析。 对于在 VMware 上运行的 Linux Vm，它当前不识别来宾操作系统的确切内核版本。
@@ -166,4 +166,4 @@ ms.locfileid: "87090087"
 
 - 在 Azure 云采用框架中调查 [云迁移旅程](/azure/architecture/cloud-adoption/getting-started/migrate)   。
 - Azure Migrate[入门](https://youtu.be/wFfq3YPxYHE)。
-- 为[VMware vm](tutorial-assess-vmware.md)或[hyper-v vm](tutorial-assess-hyper-v.md)创建评估。
+- 为 [VMware vm](tutorial-assess-vmware.md) 或 [hyper-v vm](tutorial-assess-hyper-v.md)创建评估。

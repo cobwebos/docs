@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 资源管理器模板在 Azure 事件网格中创建系统主题
-description: 本文介绍如何使用 Azure 资源管理器模板在 Azure 事件网格中创建系统主题。
+description: 本文说明如何使用 Azure 资源管理器模板在 Azure 事件网格中创建系统主题。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115156"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>使用资源管理器模板在 Azure 事件网格中创建系统主题
-本文说明如何使用资源管理器模板来创建和管理系统主题。 有关系统主题的概述，请参阅[系统主题](system-topics.md)。
+本文说明如何使用资源管理器模板创建和管理系统主题。 有关系统主题的概述，请参阅[系统主题](system-topics.md)。
 
 ## <a name="create-system-topic-first-and-then-create-event-subscription"></a>首先创建系统主题，然后创建事件订阅
-若要首先在 Azure 源上创建系统主题，然后为该主题创建事件订阅，可以使用类似如下的模板： 
+若要先在 Azure 源上创建系统主题，然后再为该主题创建事件订阅，可以使用类似于下面的模板： 
 
 ```json
 {
@@ -110,10 +110,10 @@ ms.locfileid: "86115156"
 }
 ```
 
-有关使用资源管理器模板为其创建系统主题和订阅的说明，请参阅[使用 Azure 资源管理器模板将 Blob 存储事件路由到 web 终结点](blob-event-quickstart-template.md)。 
+参阅[使用 Azure 资源管理器模板将 Blob 存储事件路由到 Web 终结点](blob-event-quickstart-template.md)，以获取有关使用资源管理器模板为它们创建系统主题和订阅的说明。 
 
 ## <a name="create-system-topic-while-creating-an-event-subscription"></a>创建事件订阅时创建系统主题 
-若要在 Azure 源上创建事件订阅时隐式创建系统主题，可以使用以下模板：
+若要在 Azure 源上创建事件订阅的同时隐式创建系统主题，可以使用以下模板：
 
 ``` json
 {
@@ -192,4 +192,4 @@ ms.locfileid: "86115156"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[Azure 事件网格部分中的系统主题](system-topics.md)，详细了解 Azure 事件网格支持的系统主题和主题类型。 
+请参阅 [Azure 事件网格中的系统主题](system-topics.md)部分，详细了解 Azure 事件网格支持的系统主题和主题类型。 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 61177d1338be30ae14ccea3ff94c5e0e554aa331
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077307"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
@@ -20,7 +20,7 @@ ms.locfileid: "89077307"
 
 了解如何使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交并运行 U-SQL 作业。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

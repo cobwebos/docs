@@ -1,7 +1,7 @@
 ---
 title: 体系结构：全局传输网络体系结构
 titleSuffix: Azure Virtual WAN
-description: 了解 Azure 虚拟 WAN 如何通过在云工作负荷之间启用无处不在的连接来实现全局传输网络体系结构。
+description: 了解 Azure 虚拟 WAN 如何通过支持在云工作负载之间建立无处不在的、任意点到任意点的连接，来实现全局传输网络体系结构。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212700"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
@@ -47,7 +47,7 @@ Azure 虚拟 WAN 支持在 VNet 中的全局分布式云工作负荷集、分支
 
 若要建立虚拟 WAN，可以在包含最多辐射（分支、VNet、用户）的区域中创建单个虚拟 WAN 中心，然后将其他区域中的辐射连接到该中心。 如果企业的运营足迹主要在包括少量几个远程辐射的单个区域内，则这是一个不错的选择。  
   
-## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>集线器到中心连接
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>中心到中心的连接
 
 企业云足迹可以跨多个云区域，最好是从最靠近其物理站点和用户的区域访问云（改善延迟）。 全局传输网络体系结构的重要原则之一是在所有云与本地网络终结点之间实现跨区域连接。 这意味着，与一个区域中的云相连接的分支发出的流量，可以使用 [Azure 全球网络](https://azure.microsoft.com/global-infrastructure/global-network/)实现的中心到中心连接抵达不同区域中的另一个分支或 VNet。
 
@@ -134,7 +134,7 @@ Azure 虚拟 WAN 中心将互连整个混合网络中的所有网络终结点，
 图 5：**使用 Azure 防火墙的安全虚拟中心**
 
 > [!NOTE]
-> 当前不支持与防火墙的集线器。 集线器之间的流量将直接在每个中心绕过 Azure 防火墙。
+> 当前不支持在中心间配置防火墙。 中心之间的流量将直接绕过每个中心的 Azure 防火墙移动。
 
 虚拟 WAN 的 Azure 防火墙支持以下全局安全传输连接路径。 括号中的字母对应于图 5 中的标识。
 

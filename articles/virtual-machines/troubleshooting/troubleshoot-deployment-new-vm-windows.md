@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028390"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
@@ -43,7 +43,7 @@ ms.locfileid: "87028390"
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y：** 如果 OS 是通用的 Windows，并且是使用通用设置上载和/或捕获的，则不会有任何错误。 同理，如果 OS 是通用的 Windows，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
+**Y：** 如果 OS 是通用的 Windows，并且已上传和/或采用通用设置捕获，则不会出现任何错误。 同理，如果 OS 是通用的 Windows，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
 
 **上载错误：**
 

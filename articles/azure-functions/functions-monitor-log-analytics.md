@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208356"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>利用 Azure Monitor 日志监视 Azure Functions
@@ -28,17 +28,25 @@ Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/
 
 1. 在[Azure 门户](https://portal.azure.com)的函数应用的 "**监视**" 部分中，选择 "**诊断设置**"，然后选择 "**添加诊断设置**"。
 
-   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="选择诊断设置":::
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="选择诊断设置&quot;:::
 
-1. 在 " **诊断设置** " 页的 " **类别详细信息** 和 **日志**" 下，选择 " **FunctionAppLogs**"。
+1. 在 &quot; **诊断设置** &quot; 页的 &quot; **类别详细信息** 和 **日志**&quot; 下，选择 &quot; **FunctionAppLogs**&quot;。
 
    **FunctionAppLogs**表包含所需的日志。
 
-1. 在 " **目标详细信息**" 下，选择 " **发送到 Log Analytics**"。然后选择 **Log Analytics 工作区**。 
+1. 在 &quot; **目标详细信息**&quot; 下，选择 &quot; **发送到 Log Analytics**&quot;。然后选择 **Log Analytics 工作区**。 
 
 1. 输入 **诊断设置名称**，然后选择 " **保存**"。
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="添加诊断设置":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="选择诊断设置&quot;:::
+
+1. 在 &quot; **诊断设置** &quot; 页的 &quot; **类别详细信息** 和 **日志**&quot; 下，选择 &quot; **FunctionAppLogs**&quot;。
+
+   **FunctionAppLogs**表包含所需的日志。
+
+1. 在 &quot; **目标详细信息**&quot; 下，选择 &quot; **发送到 Log Analytics**&quot;。然后选择 **Log Analytics 工作区**。 
+
+1. 输入 **诊断设置名称**，然后选择 ":::
 
 ## <a name="user-generated-logs"></a>用户生成的日志
 
@@ -89,7 +97,15 @@ logging.info('My app logs here.')
 
    Azure Functions 将所有日志写入**LogManagement**下的**FunctionAppLogs**表中。 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics 工作区中的查询窗口":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="选择诊断设置&quot;:::
+
+1. 在 &quot; **诊断设置** &quot; 页的 &quot; **类别详细信息** 和 **日志**&quot; 下，选择 &quot; **FunctionAppLogs**&quot;。
+
+   **FunctionAppLogs**表包含所需的日志。
+
+1. 在 &quot; **目标详细信息**&quot; 下，选择 &quot; **发送到 Log Analytics**&quot;。然后选择 **Log Analytics 工作区**。 
+
+1. 输入 **诊断设置名称**，然后选择 ":::
 
 下面是一些示例查询：
 

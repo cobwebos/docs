@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
 ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88650547"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域
@@ -43,11 +43,11 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 区域对的示例包括：
 
-| 主 | 辅助副本 |
+| 主 | 次要 |
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
-| 东南亚 |东亚 |
+| Southeast Asia |东亚 |
 
 可在 [此处查看区域对的完整列表](../best-practices-availability-paired-regions.md#what-are-paired-regions)。
 
@@ -81,7 +81,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 可以在[此处](../storage/common/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](./managed-disks-overview.md)。
 
-### <a name="storage-costs"></a>存储成本
+### <a name="storage-costs"></a>存储费用
 价格根据所选存储类型和可用性的不同而异。
 
 **Azure 托管磁盘**

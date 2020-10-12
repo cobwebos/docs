@@ -4,10 +4,10 @@ description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613996"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
@@ -40,11 +40,11 @@ Azure 备份将备份数据存储在保管库-恢复服务保管库和备份保�
 保管库具有以下功能：
 
 - 使用保管库可以方便地组织备份数据，并将管理开销降至最低。
-- 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
-- 可以使用 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/role-assignments-portal.md)来管理保管库访问权限。
+- 可以监视保管库中的备份项，包括 Azure VM 和本地计算机。
+- 可以使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 来管理对保管库的访问。
 - 指定如何复制保管库中的数据以实现冗余：
-  - **本地冗余存储 (LRS) **：若要防止数据中心出现故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](../storage/common/storage-redundancy.md#locally-redundant-storage)。
-  - **异地冗余存储 (GRS) **：若要防止区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](../storage/common/storage-redundancy.md#geo-redundant-storage)。
+  - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](../storage/common/storage-redundancy.md#locally-redundant-storage)。
+  - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](../storage/common/storage-redundancy.md#geo-redundant-storage)。
   - **区域冗余存储 (ZRS) **：在 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中复制数据，从而在同一区域中保证数据的驻留和复原能力。 [了解详细信息](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - 恢复服务保管库默认使用 GRS。
 
@@ -68,8 +68,8 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 **备份类型** | **详细信息** | **使用情况**
 --- | --- | ---
 **完整** | 完整备份包含整个数据源。 占用的网络带宽比差异或增量备份更多。 | 用于初始备份。
-**时差** |  差异备份存储自初始完整备份以来发生更改的块。 使用较少的网络带宽和存储量，且不保留未更改数据的冗余副本。<br/><br/> 效率不高，因为需要传输并存储每次后续备份之后未发生更改的数据块。 | Azure 备份不使用此备份类型。
-**式** | 增量备份仅存储自上次备份以来发生更改的数据块。 存储和网络效率高。 <br/><br/> 使用增量备份时，无需使用完整备份进行补充。 | DPM/MABS 使用此备份类型来备份磁盘，备份到 Azure 的所有方案都使用此备份类型。 不用于 SQL Server 备份。
+**差异** |  差异备份存储自初始完整备份以来发生更改的块。 使用较少的网络带宽和存储量，且不保留未更改数据的冗余副本。<br/><br/> 效率不高，因为需要传输并存储每次后续备份之后未发生更改的数据块。 | Azure 备份不使用此备份类型。
+**增量** | 增量备份仅存储自上次备份以来发生更改的数据块。 存储和网络效率高。 <br/><br/> 使用增量备份时，无需使用完整备份进行补充。 | DPM/MABS 使用此备份类型来备份磁盘，备份到 Azure 的所有方案都使用此备份类型。 不用于 SQL Server 备份。
 
 ## <a name="sql-server-backup-types"></a>SQL Server 备份类型
 
@@ -109,7 +109,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 ## <a name="backup-policy-essentials"></a>备份策略概要
 
 - 备份策略是按保管库创建的。
-- 可以创建备份策略来备份以下工作负荷： azure vm、azure Vm 中的 SQL、SAP HANA 在 Azure Vm 和 Azure 文件共享中。 MARS 控制台中指定了使用 MARS 代理进行文件和文件夹备份的策略。
+- 可以创建备份策略来备份以下工作负荷： azure vm、azure Vm 中的 SQL、SAP HANA 在 Azure Vm 和 Azure 文件共享中。 在 MARS 控制台中指定了使用 MARS 代理进行文件和文件夹备份的策略。
   - Azure 文件共享
 - 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
 - 策略由两个部分组成
@@ -117,21 +117,21 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
   - 保留期：每个备份应保留多长时间。
 - 可将计划定义为带有特定时间点的“每日”或“每周”计划。
 - 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
-  - "每周" 指的是一周中某天的备份
-  - "每月" 是指每月的某一天的备份
-  - "每年" 指的是一年中的某一天的备份
-- "每月"、"每年" 备份点的保留期称为长期保留 (LTR) 
-- 创建保管库后，还会创建一个 "DefaultPolicy"，并将其用于备份资源。
-- 对备份策略的保留期所做的任何更改都将以追溯方式到新的恢复点。
+  - “每周”是指一周中某天的备份
+  - “每月”是指一月中某天的备份
+  - “每年”是指一年中某天的备份
+- “每月”、“每年”备份点的保留期称为“长期保留 (LTR)”
+- 创建保管库时，还会创建“DefaultPolicy”，“DefaultPolicy”可用于备份资源。
+- 对备份策略保留期所做的任何更改都将以追溯方式应用于除新恢复点以外的所有旧恢复点。
 
 ### <a name="additional-reference"></a>其他参考
 
-- Azure VM 计算机：如何 [创建](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) 和 [修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) 策略。
-- Azure 虚拟机中的 SQL Server 数据库：如何 [创建](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) 和 [修改](./manage-monitor-sql-database-backup.md#modify-policy) 策略。
+- Azure VM 计算机：如何[创建](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)策略。
+- Azure VM 计算机中的 SQL Server 数据库：如何[创建](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)策略。
 - Azure 文件共享：如何 [创建](./backup-afs.md) 和 [修改](./manage-afs-backup.md#modify-policy) 策略。
-- SAP HANA：如何 [创建](./backup-azure-sap-hana-database.md#create-a-backup-policy) 和 [修改](./sap-hana-db-manage.md#change-policy) 策略。
-- MARS：如何 [创建](./backup-windows-with-mars-agent.md#create-a-backup-policy) 和 [修改](./backup-azure-manage-mars.md#modify-a-backup-policy) 策略。
-- [根据工作负荷类型计划备份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- SAP HANA：如何[创建](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)策略。
+- MARS：如何[创建](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)策略。
+- [根据工作负载类型计划备份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
 - [如果更改保留策略，现有恢复点会发生什么情况？](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
@@ -150,11 +150,11 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
     - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定，VM 总备份时间不超过 24 小时。
 1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](./backup-instant-restore-capability.md)。
 
-无需显式允许 internet 连接来备份 Azure Vm。
+无需明确允许 Internet 连接来备份 Azure VM。
 
 ![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或 Azure VM 文件或文件夹
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或者 Azure VM 文件或文件夹
 
 1. 若要设置方案，请在计算机中下载并安装 MARS 代理。 然后选择要备份的内容、运行备份的时间，以及备份在 Azure 中保留的期限。
 1. 初始备份根据备份设置运行。
@@ -185,15 +185,15 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure VM 至少包含两个磁盘：一个磁盘用于操作系统，另一个用作临时磁盘。 Azure VM 还可以使用数据磁盘来存储应用数据。 磁盘以 VHD 的形式进行存储。
 
 - 在 Azure 上的标准或高级存储帐户中，VHD 以页 Blob 的形式进行存储：
-  - **标准存储：** 对运行工作负荷不受延迟影响的 Vm 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
-  - **高级存储：** 高性能磁盘支持。 使用高级 SSD 磁盘。
+  - **标准存储：** 为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
+  - **高级存储：** 高性能磁盘支持。 使用高级·SSD 磁盘。
 - 磁盘具有不同的性能层：
-  - **标准 HDD 磁盘：** 由 Hdd 提供支持，并用于经济高效的存储。
-  - **标准 SSD 磁盘：** 组合高级 SSD 磁盘和标准 HDD 磁盘的元素。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
-  - **高级 SSD 磁盘：** 由 Ssd 提供支持，并为运行 i/o 密集型工作负荷的 Vm 提供高性能和低延迟。
+  - **标准 HDD 磁盘：** 基于 HDD，用作经济高效的存储。
+  - **标准 SSD 磁盘：** 结合了高级 SSD 磁盘和标准 HDD 磁盘的特点。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
+  - **高级·SSD 磁盘：** 基于 SSD，为运行 I/O 密集型工作负荷的 VM 提供高性能和低延迟。
 - 磁盘可以是托管磁盘或非托管磁盘：
-  - **非托管磁盘：** Vm 使用的传统类型的磁盘。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
-  - **托管磁盘：** Azure 会为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
+  - **非托管磁盘：** VM 使用的传统磁盘类型。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
+  - **托管磁盘：** Azure 将为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
 
 有关磁盘存储和 VM 可用的磁盘类型的详细信息，请参阅以下文章：
 
@@ -205,7 +205,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 可以通过 Azure 备份来备份使用高级存储的 Azure VM：
 
 - 在备份使用高级存储的 VM 过程中，备份服务将在存储帐户中创建名为 *AzureBackup-* 的临时暂存位置。 暂存位置大小与恢复点快照大小相同。
-- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅 [高级页 blob 存储帐户的可伸缩性目标](../storage/blobs/scalability-targets-premium-page-blobs.md)。 不要修改暂存位置。
+- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../storage/blobs/scalability-targets-premium-page-blobs.md)。 不要修改暂存位置。
 - 备份作业完成后，将删除暂存位置。
 - 用于暂存位置的存储的价格与[高级存储定价](../virtual-machines/disks-types.md#billing)相一致。
 
@@ -226,7 +226,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看支持矩阵， [了解备份方案支持的功能和限制](backup-support-matrix.md)。
+- 查看支持矩阵，以[了解备份方案支持的功能和限制](backup-support-matrix.md)。
 - 为以下方案之一设置备份：
   - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
   - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。

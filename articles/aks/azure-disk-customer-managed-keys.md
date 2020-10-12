@@ -5,23 +5,23 @@ services: container-service
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 8687d95878cde7d0ed3308d67f26ffc266abad1e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297750"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>对 Azure Kubernetes Service (AKS) 中的 Azure 磁盘使用自带密钥 (BYOK)
 
-Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，可以提供客户托管密钥，将其用于对 AKS 群集的 OS 和数据磁盘进行静态加密。 了解有关 [Linux][customer-managed-keys-linux] 和 [Windows][customer-managed-keys-windows]上的客户托管密钥的详细信息。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，可以提供客户托管密钥，将其用于对 AKS 群集的 OS 和数据磁盘进行静态加密。 详细了解 [Linux][customer-managed-keys-linux] 和 [Windows][customer-managed-keys-windows] 上的客户管理密钥。
 
 ## <a name="limitations"></a>限制
-* 数据磁盘加密支持仅限于运行 Kubernetes 版本1.17 及更高版本的 AKS 群集。
-* 只有在创建 AKS 群集时，才能启用使用客户托管密钥的 OS 和数据磁盘的加密。
+* 数据磁盘加密支持仅限于运行 Kubernetes 1.17 及更高版本的 AKS 群集。
+* 只有在创建 AKS 群集时才能启用使用客户管理的密钥对 OS 和数据磁盘进行加密。
 
 ## <a name="prerequisites"></a>先决条件
 * 使用密钥保管库加密托管磁盘时，必须为 *Azure 密钥保管库*启用软删除和清除保护。
-* 需要 Azure CLI 版本2.11.1 或更高版本。
+* 需要 Azure CLI 版本 2.11.1 或更高版本。
 
 ## <a name="create-an-azure-key-vault-instance"></a>创建 Azure Key Vault 实例
 

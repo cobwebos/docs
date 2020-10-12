@@ -1,5 +1,5 @@
 ---
-title: 运行部署规划器，通过 Azure Site Recovery 运行 VMware 灾难恢复
+title: 运行部署规划器以使用 Azure Site Recovery 进行 VMware 灾难恢复
 description: 本文介绍如何运行用于从 VMware 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: mayurigupta13
 manager: rochakm
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119831"
 ---
-# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>为 VMware 灾难恢复运行部署规划器
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>运行用于 VMware 灾难恢复的部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
 
 
@@ -224,7 +224,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 该工具默认使用分析所有 VM 期间收集的读/写 IOPS、写入 IOPS 和数据变动量的第 95 百分位值。 此指标可确保系统不使用第 100 百分位峰值（在发生临时事件时，可能会出现在 VM 中）来确定目标存储帐户和源带宽需求。 例如，临时事件可能是一天运行一次的备份作业、定期发生的数据库索引编制或分析报告生成活动，或者其他类似的短期时间点事件。
 
-使用第 95 百分位值可以反映真实的工作负荷特征，使这些工作负荷在 Azure 中运行时提供最佳性能。 我们预计不需要更改此数字。 如果更改此值（例如更改为第 90 百分位），则可在默认文件夹中更新并保存配置文件“ASRDeploymentPlanner.exe.config”，针对现有的分析数据生成新报告。**
+使用第 95 百分位值可以反映真实的工作负荷特征，使这些工作负荷在 Azure 中运行时提供最佳性能。 我们预计不需要更改此数字。 如果更改此值（例如更改为第 90 百分位），则可在默认文件夹中更新并保存配置文件“ASRDeploymentPlanner.exe.config”，针对现有的分析数据生成新报告。 
 ```xml
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
@@ -269,7 +269,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 |-Virtualization|指定虚拟化类型（VMware 或 Hyper-V）。|
 | -Directory | （可选）UNC 或本地目录路径，其中存储了分析数据（在分析期间生成的文件）。 需要使用此数据来生成报告。 如果未指定目录名称，请使用“ProfiledData”目录。 |
 | -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
-| -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <存储帐户名称**> >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
+| -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <存储帐户名称  > >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的 VM 名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Environment | （可选）这是目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府或 Azure 中国世纪互联时，请使用此参数。 |
 

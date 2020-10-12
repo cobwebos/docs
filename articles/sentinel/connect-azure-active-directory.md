@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 279f54c3de964580cc37d1288a6e1b7726348e10
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208620"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>将数据从 Azure Active Directory (Azure AD) 
@@ -28,7 +28,7 @@ ms.locfileid: "88208620"
 
 可以使用 Azure Sentinel 的内置连接器从 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 收集数据，并将其流式传输到 Azure Sentinel。 连接器允许流式传输 [登录日志](../active-directory/reports-monitoring/concept-sign-ins.md) 和 [审核日志](../active-directory/reports-monitoring/concept-audit-logs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 
 - 任何 Azure AD 许可证 (免费/O365/P1/P2) 足以将登录日志引入 Azure Sentinel。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 gb 费用。

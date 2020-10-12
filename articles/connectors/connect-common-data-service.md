@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334576"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Common Data Service 中的记录
@@ -49,7 +49,7 @@ ms.locfileid: "91334576"
 
    ![用于监视环境的触发器信息](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | properties | 必须 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅 [Power Platform-环境概述](/power-platform/admin/environments-overview)。 |
    | **实体名称** | 是 | 要监视的实体，例如 "Lead" |
@@ -70,7 +70,7 @@ ms.locfileid: "91334576"
 
    ![要在其中创建记录的环境的操作信息](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | properties | 必须 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的环境，该记录在触发器中不必是相同的环境，而是在此示例中为 "Fabrikam 销售生产" |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -91,14 +91,14 @@ ms.locfileid: "91334576"
       |----------------|-------------|
       | **名字** | 要用作任务记录中主要联系人的潜在顾客记录的名字 |
       | **姓氏** | 要用作任务记录中主要联系人的潜在客户记录的姓氏 |
-      | **说明** | 要包括在任务记录中的其他输出，如电子邮件地址和办公电话号码 |
+      | **描述** | 要包括在任务记录中的其他输出，如电子邮件地址和办公电话号码 |
       |||
 
    完成操作后，该操作可能类似于以下示例：
 
    ![已完成 "创建新记录" 操作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
 
 1. 若要手动启动逻辑应用，请在设计器工具栏上选择 " **运行**"。 若要测试逻辑应用，请创建新的 "潜在顾客" 记录。
 

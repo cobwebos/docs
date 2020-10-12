@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512633"
 ---
 # <a name="default-insights-tag"></a>默认见解标记
@@ -100,7 +100,7 @@ ms.locfileid: "86512633"
 
 ## <a name="pagesincluding-insight"></a>PagesIncluding 见解
 
-PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是一个对象列表 `Image` ，该 `hostPageUrl` 字段包含包含图像的网页的 URL。 有关示例用法，请参阅[PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
+PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是一个对象列表 `Image` ，该 `hostPageUrl` 字段包含包含图像的网页的 URL。 有关示例用法，请参阅 [PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
 
 ```json
       {
@@ -168,7 +168,7 @@ ShoppingSources 见解提供了一个网站列表，用户可以在这些网站�
 
 ## <a name="moresizes-insight"></a>MoreSizes 见解
 
-MoreSizes 见解标识在 Internet 上找到 Bing 的图像的大小（更大或更小）（请参阅 `availableSizesCount` 字段）：
+MoreSizes 见解可识别 Internet 上的 Bing)  (大或更小的图像大小， (参见 `availableSizesCount` 现场) ：
 
 ```json
       {
@@ -203,7 +203,7 @@ MoreSizes 见解标识在 Internet 上找到 Bing 的图像的大小（更大或
 
 ## <a name="visualsearch-insight"></a>VisualSearch 见解
 
-VisualSearch 见解提供了与原始图像在视觉上相似的图像列表（包含与原始图像中显示的内容类似的内容）。 有关示例用法，请参阅[VisualSearch 见解示例](./bing-insights-usage.md#visualsearch-insight-example)。
+VisualSearch 见解提供了与原始图像在视觉上相似的图像列表（包含与原始图像中显示的内容类似的内容）。 有关示例用法，请参阅 [VisualSearch 见解示例](./bing-insights-usage.md#visualsearch-insight-example)。
 
 ```json
       {
@@ -243,7 +243,7 @@ VisualSearch 见解提供了与原始图像在视觉上相似的图像列表（�
 
 ## <a name="recipes-insight"></a>Recipes 见解
 
-Recipes 见解提供了一个网页列表，这些网页中包含用于制作图像中显示的食物的配方。 有关示例用法，请参阅[食谱见解示例](./bing-insights-usage.md#recipes-insight-example)。
+Recipes 见解提供了一个网页列表，这些网页中包含用于制作图像中显示的食物的配方。 有关示例用法，请参阅 [食谱见解示例](./bing-insights-usage.md#recipes-insight-example)。
 
 ```json
       {
@@ -377,7 +377,7 @@ ProductVisualSearch 见解提供了与原始图像中显示的产品在视觉上
 
 ## <a name="relatedsearches-insight"></a>RelatedSearches 见解
 
-RelatedSearches 见解提供了其他人（基于其他用户的搜索词）进行的相关搜索列表。 有关示例用法，请参阅[RelatedSearches 见解示例](./bing-insights-usage.md#relatedsearches-insight-example)。
+RelatedSearches 见解提供了其他人（基于其他用户的搜索词）进行的相关搜索列表。 有关示例用法，请参阅 [RelatedSearches 见解示例](./bing-insights-usage.md#relatedsearches-insight-example)。
 
 ```json
       {
@@ -423,7 +423,7 @@ DocumentLevelSuggestions 见解提供基于图像内容的建议搜索词列表�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[bing insights 使用情况示例](bing-insights-usage.md)，了解必应如何显示视觉对象见解。
+查看 [bing insights 使用情况示例](bing-insights-usage.md) ，了解必应如何显示视觉对象见解。
 
 若要快速了解如何使用第一个请求，请参阅快速入门：
 

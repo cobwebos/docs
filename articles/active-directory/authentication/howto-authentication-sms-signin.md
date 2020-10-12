@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419557"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>为用户配置和启用通过 Azure Active Directory 进行基于短信的身份验证（预览版）
@@ -65,7 +65,7 @@ ms.locfileid: "87419557"
 1. 搜索并选择“Azure Active Directory”。
 1. 在“Azure Active Directory”窗口左侧的导航菜单中，选择“安全性”>“身份验证方法”>“身份验证方法策略(预览版)”。
 
-    [![浏览到并选择 "Azure 门户中的" 身份验证方法策略（预览） "窗口。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![在 Azure 门户中浏览到“身份验证方法策略(预览版)”窗口并将其选中。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. 从可用身份验证方法列表中选择“短信”。
 1. 将“启用”设置为“是”。
@@ -81,7 +81,7 @@ ms.locfileid: "87419557"
 1. 在短信身份验证策略窗口中，将“目标”设置为“选择用户”。
 1. 选择“添加用户或组”，然后选择某个测试用户或组，例如“Contoso 用户”或“Contoso 短信用户”。 
 
-    [![选择要在 Azure 门户中为基于 SMS 的身份验证启用的用户或组。](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
+    [![在 Azure 门户中选择要启用基于短信的身份验证的用户或组。](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
 1. 选择用户或组后，选择“选择”，然后保存更新的身份验证方法策略。 
 
@@ -142,13 +142,13 @@ ms.locfileid: "87419557"
 1. 确认用户帐户已在“短信”身份验证方法策略中启用。
 1. 确保使用已在 Azure 门户中经过验证的正确格式设置电话号码（例如 +1 4251234567）。
 1. 确保电话号码未在租户中的其他地方使用。
-1. 检查帐户中是否设置了语音号码。 如果设置了语音号码，请删除并尝试重新输入电话号码。
+1. 检查帐户中是否设置了语音号码。 如果设置了语音号码，请将其删除，然后再次尝试设置电话号码。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关不使用密码登录 Azure AD 的其他方法（例如 Microsoft Authenticator 应用或 FIDO2 安全密钥），请参阅 [Azure AD 无密码身份验证选项][concepts-passwordless]。
 
-你还可以使用 Microsoft Graph REST API beta 来[启用][rest-enable]或[禁用][rest-disable]基于 SMS 的登录。
+你还可以使用 Microsoft Graph REST API beta 来 [启用][rest-enable] 或 [禁用][rest-disable] 基于 SMS 的登录。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md

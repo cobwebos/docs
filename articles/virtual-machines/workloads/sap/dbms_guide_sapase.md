@@ -16,10 +16,10 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654593"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
@@ -80,7 +80,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 数据库大小介于 50 GB – 250 GB （如 SAP 解决方案管理器）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E4s_v3 (4 vCPU/32 GB RAM)  | E4s_v3 (4 vCPU/32 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -101,7 +101,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 例如，如果数据库大小介于 250 GB – 750 GB 之间，则中型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E16s_v3 (vCPU/128 GB RAM)  | E16s_v3 (vCPU/128 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -121,7 +121,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 数据库大小介于 750 GB – 2000 GB （如大型 SAP Business Suite system）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E64s_v3 (64 vCPU/432 GB RAM)  | E64s_v3 (64 vCPU/432 GB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -142,7 +142,7 @@ Sap [支持说明](https://launchpad.support.sap.com/#/notes/1928533) 中列出�
 
 数据库大小为 2 TB + 的小型 SAP ASE DB 服务器的配置示例，如更大的全局使用的 SAP 业务套件系统，如下所示
 
-| 配置 | Windows | Linux | 注释 |
+| Configuration | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | M 系列 (1.0 到 4.0 TB RAM)   | M 系列 (1.0 到 4.0 TB RAM)  | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -188,7 +188,7 @@ HADR 用户指南详细介绍了2个节点 SAP ASE "始终打开" 解决方案�
 > Azure 上唯一受支持的配置是使用不带浮动 IP 的故障管理器。  浮动 IP 地址方法在 Azure 上不起作用。 
 
 ### <a name="third-node-for-disaster-recovery"></a>用于灾难恢复的第三个节点
-除了使用 SAP ASE Always On 来实现本地高可用性，你可能需要将配置扩展到另一个 Azure 区域中的异步复制的节点。 可在 [此处](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到此类方案的文档。
+除了使用 SAP ASE Always-On 实现本地高可用性之外，您可能还需要将配置扩展到另一个 Azure 区域中的异步复制的节点。 可在 [此处](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到此类方案的文档。
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE 数据库加密 & SSL 
 SAP 软件预配管理器 (SWPM) 正在提供一个在安装过程中对数据库进行加密的选项。  如果要使用加密，则建议使用 SAP 完全数据库加密。  请参阅中记录的详细信息：
@@ -239,7 +239,7 @@ SAP 软件预配管理器 (SWPM) 正在提供一个在安装过程中对数据�
 
 需要确保 ICM 使用完全限定的主机名，并且此名称可在打开 DBACockpit 的计算机上解析，具体取决于如何将托管 SAP 系统的 Azure 虚拟机连接到 AD 和 DNS。 请参阅 [SAP 支持说明 #773830](https://launchpad.support.sap.com/#/notes/773830) 以了解 ICM 如何根据配置文件参数确定完全限定的主机名，并在必要时显式设置参数 ICM/host_name_full。
 
-如果在仅限云的方案中部署 VM，而在本地与 Azure 之间没有跨界连接，则需要定义公共 IP 地址和 `domainlabel` 。 VM 的公共 DNS 名称格式如下所示：
+如果在没有跨界连接的情况下在本地与 Azure 之间部署 Cloud-Only VM，则需要定义公共 IP 地址和 `domainlabel` 。 VM 的公共 DNS 名称格式如下所示：
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
