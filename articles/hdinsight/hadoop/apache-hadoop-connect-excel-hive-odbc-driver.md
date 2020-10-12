@@ -1,5 +1,5 @@
 ---
-title: Excel & Apache Hadoop 与开放式数据库连接（ODBC）驱动程序-Azure HDInsight
+title: Excel & Apache Hadoop 与开放式数据库连接 (ODBC) 驱动程序-Azure HDInsight
 description: 了解如何设置和使用针对 Excel 的 Microsoft Hive ODBC 驱动程序来从 Microsoft Excel 查询 HDInsight 群集中的数据。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087837"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Apache Hadoop
@@ -32,7 +32,7 @@ Microsoft 的大数据解决方案将 Microsoft 商业智能 (BI) 组件与已�
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>安装 Microsoft Hive ODBC 驱动程序
 
-下载并安装[Microsoft Hive ODBC 驱动程序](https://www.microsoft.com/download/details.aspx?id=40886)。 选择与要在其中使用 ODBC 驱动程序的应用程序版本匹配的版本。  在本文中，驱动程序用于 Office Excel。
+下载并安装 [Microsoft Hive ODBC 驱动程序](https://www.microsoft.com/download/details.aspx?id=40886)。 选择与要在其中使用 ODBC 驱动程序的应用程序版本匹配的版本。  在本文中，驱动程序用于 Office Excel。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>创建 Apache Hive ODBC 数据源
 
@@ -68,7 +68,7 @@ Microsoft 的大数据解决方案将 Microsoft 商业智能 (BI) 组件与已�
 
     ![高级 DSN 配置选项](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "高级 DSN 配置选项")
 
-1. 选择“测试”以测试数据源****。 正确配置数据源后，测试结果会显示**成功！**
+1. 选择“测试”以测试数据源****。 正确配置数据源后，测试结果会显示 **成功！**
 
 1. 选择“确定”以关闭“测试”窗口****。  
 
@@ -86,7 +86,7 @@ Microsoft 的大数据解决方案将 Microsoft 商业智能 (BI) 组件与已�
 
     ![打开 Excel 数据连接向导](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "打开 Excel 数据连接向导")
 
-3. 从下拉列表中，选择在上一部分中创建的数据源名称，然后选择 **"确定"**。
+3. 在下拉列表中，选择在上一部分创建的数据源名称，然后选择“确定”。
 
 4. 第一次使用时，将打开“ODBC 驱动程序”**** 对话框。 从左侧菜单中选择 **Windows**。 然后选择“连接”**** 以打开“导航器”**** 窗口。
 

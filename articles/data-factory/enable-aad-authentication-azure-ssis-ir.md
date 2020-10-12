@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
 ms.openlocfilehash: ffbb81fa56b87281199309d61ab3e2e59c1a5acd
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563987"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
@@ -128,7 +128,7 @@ SQL 数据库支持使用 Azure AD 用户创建数据库。 首先，需要创�
 
    命令应会成功完成，并授予该内含用户创建数据库的权限 (SSISDB)。
 
-10. 如果 SSISDB 是使用 SQL 身份验证创建的，并且想要切换到使用 Azure AD 身份验证来访问 Azure-SSIS IR，请首先确保向**master**数据库授予权限的步骤成功完成。 然后，右键单击**SSISDB**数据库并选择 "**新建查询**"。
+10. 如果 SSISDB 是使用 SQL 身份验证创建的，并且希望为 Azure-SSIS IR 改为使用 Azure AD 身份验证来访问它，请首先确保向“master”数据库授予权限的步骤已成功完成。 然后右键单击 SSISDB 数据库并选择“新建查询” 。
 
 11. 在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”。
 
@@ -176,7 +176,7 @@ SQL 托管实例支持直接使用 ADF 的托管标识创建数据库。 无需�
     
     命令应会成功完成，并授予 ADF 的托管标识创建数据库的权限 (SSISDB)。
 
-6.  如果 SSISDB 是使用 SQL 身份验证创建的，并且想要切换到使用 Azure AD 身份验证来访问 Azure-SSIS IR，请首先确保向**master**数据库授予权限的步骤成功完成。 然后，右键单击**SSISDB**数据库并选择 "**新建查询**"。
+6.  如果 SSISDB 是使用 SQL 身份验证创建的，并且希望为 Azure-SSIS IR 改为使用 Azure AD 身份验证来访问它，请首先确保向“master”数据库授予权限的步骤已成功完成。 然后右键单击 SSISDB 数据库并选择“新建查询” 。
 
 7.  在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用基础结构自动化工具
-description: 了解如何使用 Ansible、Chef、Puppet、Terraform 和 Packer 等基础结构自动化工具在 Azure 中创建和管理虚拟机。
+description: 了解如何使用 Ansible、Chef、Puppet、Terraform 和 Packer 等基础结构自动化工具来创建和管理 Azure 中的虚拟机。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
 ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830540"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
@@ -57,11 +57,11 @@ ms.locfileid: "87830540"
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
+[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
-Cloud-init 还支持不同的发行版。 例如，不需使用 apt-get install 或 yum install 来安装包， 而是可定义要安装的程序包的列表。 Cloud-init 将对所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
-我们正在积极地与经认可的 Linux 发行版合作伙伴合作，以便在 Azure Marketplace 中提供启用了云初始化的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。
+我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。
 了解有关 Azure 上的 cloud-init 的更多详细信息：
 
 - [Cloud-init 对 Azure 中 Linux 虚拟机的支持](./linux/using-cloud-init.md)
@@ -134,7 +134,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何：
 
-- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构](/azure/developer/jenkins/pipeline-with-github-and-docker)。
+- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 LINUX VM 上创建开发基础结构](/azure/developer/jenkins/pipeline-with-github-and-docker)。
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板

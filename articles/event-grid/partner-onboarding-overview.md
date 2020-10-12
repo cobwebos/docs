@@ -4,10 +4,10 @@ description: 加入 Azure 事件网格伙伴主题类型。 了解合作伙伴�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826783"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>作为 Azure 事件网格合作伙伴加入
@@ -18,10 +18,10 @@ ms.locfileid: "87826783"
 
 ## <a name="become-an-event-grid-partner"></a>成为事件网格伙伴
 
-如果对成为公共事件网格伙伴感兴趣，请首先填写[此窗体](https://aka.ms/gridpartnerform)。 然后，联系事件网格团队，网址为 [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) 。
+如果对成为公共事件网格伙伴感兴趣，请首先填写 [此窗体](https://aka.ms/gridpartnerform)。 然后，联系事件网格团队，网址为 [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) 。
 
 ## <a name="how-partner-topics-work"></a>合作伙伴主题的工作方式
-合作伙伴主题采用事件网格已经用于从 Azure 资源（例如 Azure 存储和 Azure IoT 中心）发布事件的现有体系结构，并使这些工具公开供任何人使用。 默认情况下，使用这些工具仅专用于你的 Azure 订阅。 若要公开事件，请填写表单，并[联系事件网格团队](mailto:gridpartner@microsoft.com)。
+合作伙伴主题采用事件网格已经用于从 Azure 资源（例如 Azure 存储和 Azure IoT 中心）发布事件的现有体系结构，并使这些工具公开供任何人使用。 默认情况下，使用这些工具仅专用于你的 Azure 订阅。 若要公开事件，请填写表单，并 [联系事件网格团队](mailto:gridpartner@microsoft.com)。
 
 通过合作伙伴主题可以将事件发布到 Azure 事件网格，以用于多租户消耗。
 
@@ -45,7 +45,7 @@ ms.locfileid: "87826783"
 
 1. 你的客户访问 Azure 门户以记下所需的 Azure 订阅 ID 和资源组。
 1. 客户通过您的系统请求合作伙伴主题。 在响应中，你将创建一个到你的合作伙伴命名空间的事件隧道。
-1. 事件网格在客户的 Azure 订阅和资源组中创建一个**待定**合作伙伴主题。
+1. 事件网格在客户的 Azure 订阅和资源组中创建一个 **待定** 合作伙伴主题。
 
     ![创建事件通道](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "87826783"
 ### <a name="partner-topic-types"></a>合作伙伴主题类型
 * 资源：`partnerTopicTypes`
 * 使用者：客户
-* 说明：合作伙伴主题类型是租户范围的资源类型，使客户能够发现已批准的合作伙伴主题类型的列表。 URL 如下所示https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* 说明：合作伙伴主题类型是租户范围的资源类型，使客户能够发现已批准的合作伙伴主题类型的列表。 URL 如下所示 https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * 范围：Global
 
 ## <a name="publish-events-to-event-grid"></a>将事件发布到事件网格

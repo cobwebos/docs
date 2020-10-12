@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543276"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 启动到 Grub 救援
@@ -35,7 +35,7 @@ ms.locfileid: "87543276"
 * 如果出现“未知的文件系统”错误，则请注意，此错误可能是由于启动分区中的文件系统损坏，或者是由于内核配置不正确。 
 
    * 对于文件系统问题，请按 [Linux Recovery:Cannot SSH to Linux VM due to file system errors (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes)（Linux 恢复：由于文件系统错误（fsck、inode）而无法通过 SSH 连接到 Linux VM）一文中的步骤操作。
-   * 对于内核问题，请按照[如何从与内核相关的启动问题中恢复 Azure Linux 虚拟机](https://support.microsoft.com/help/4091524/how-recover-azure-linux-vm-from-kernel-related-boot-related-issues)或 Linux 恢复一文中的步骤进行[操作：使用 Chroot 修复与内核问题相关的非启动问题](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)。
+   * 对于内核问题，请按照[如何从与内核相关的启动问题中恢复 Azure Linux 虚拟机](https://support.microsoft.com/help/4091524/how-recover-azure-linux-vm-from-kernel-related-boot-related-issues)或 [Linux 恢复：Fixing non-boot issues related to Kernel problems using chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)（Linux 恢复：使用 chroot 修复与内核问题相关的非启动问题）一文中的步骤操作。
    
 ### <a name="error---file-not-found"></a>错误 - 找不到文件
 

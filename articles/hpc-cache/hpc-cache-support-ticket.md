@@ -7,23 +7,23 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: v-erkel
 ms.openlocfilehash: 95247985be955b71403a5c2c78962792c6451183
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87061425"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>为 Azure HPC 缓存打开支持票证
 
-使用 Azure 门户打开支持票证。 导航到你的缓存实例，然后单击显示在侧栏底部的 "**新建支持请求**" 链接。
+使用 Azure 门户打开支持票证。 导航到你的缓存实例，然后单击显示在侧栏底部的 " **新建支持请求** " 链接。
 
-若要在没有活动缓存时打开票证，请使用 Azure 门户中的主帮助 + 支持页。 从屏幕左上角的控件打开门户菜单，然后滚动到底部并单击 "**帮助 + 支持**"。
+若要在没有活动缓存时打开票证，请使用 Azure 门户中的主帮助 + 支持页。 从屏幕左上角的控件打开门户菜单，然后滚动到底部并单击 " **帮助 + 支持**"。
 
-选择 "**新建支持请求**"，然后选择 "**技术**" 以获取特定于 Azure HPC 缓存的帮助。
+选择 " **新建支持请求** "，然后选择 " **技术** " 以获取特定于 Azure HPC 缓存的帮助。
 
 从列表中选择你的订阅。
 
-若要查找 Azure HPC 缓存服务，请单击 "**所有服务**" 按钮，然后搜索 HPC。
+若要查找 Azure HPC 缓存服务，请单击 " **所有服务** " 按钮，然后搜索 HPC。
 
 !["支持请求-基本" 选项卡的屏幕截图，部分填写，如所述](media/hpc-cache-support-request.png)
 

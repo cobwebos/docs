@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
 ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816450"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
@@ -24,7 +24,7 @@ ms.locfileid: "88816450"
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>错误代码： DeploymentDocument 'CsmDocument_2_0' 验证失败
 
-**错误**： "无法访问脚本操作位置 URI： \<SCRIPT ACTION URL\> "
+**错误**：“无法通过 URI:\<SCRIPT ACTION URL\>”
 
 ### <a name="error-message-1"></a>错误消息 1
 
@@ -56,7 +56,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ---
 
-### <a name="error-message-3"></a>错误消息3
+### <a name="error-message-3"></a>错误消息 3
 
 “请求中提供的 VM 大小 \<CUSTOMER_SPECIFIED_VM_SIZE\> 无效，或者不支持 \<ROLE\> 角色。 有效值是：\<VALID_VM_SIZE_FOR_ROLE\>”
 

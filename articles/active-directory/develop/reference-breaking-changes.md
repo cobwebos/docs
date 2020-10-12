@@ -13,15 +13,15 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115027"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
-> 通过将此 URL 粘贴到 RSS 源读取器来获得对此页的更新的通知：<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
+> 通过将此 URL 粘贴到 RSS 源阅读器中即可在此页面更新时获得通知：<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
 身份验证系统会持续更改和添加功能，以增强安全性并提高标准符合性。 为了让大家随时了解最新的开发成果，本文将提供有关以下详细信息的信息：
 
@@ -49,11 +49,11 @@ ms.locfileid: "88115027"
 
 2018年6月1日，Azure 政府 (AAD) 机构的官方 Azure Active Directory 从更改 `https://login-us.microsoftonline.com` 为 `https://login.microsoftonline.us` 。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到终结点上的用户 `.us` 。  
 
-从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点 () 登录到在美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要[更新你的应用以明确支持它们](./authentication-national-cloud.md)。 这可能需要在美国政府云中创建新的应用注册。 
+从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点 () 登录到在美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要 [更新你的应用以明确支持它们](./authentication-national-cloud.md)。 这可能需要在美国政府云中创建新的应用注册。 
 
 此更改的执行将通过以下方式进行：使用逐步推出：美国政府版中的用户登录到应用程序时，不经常会看到强制执行，而美国政府用户经常使用的应用将在最后应用强制实施。 预计会在6月2020的所有应用中完成强制。 
 
-有关更多详细信息，请参阅[此迁移中的 Azure 政府博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
+有关更多详细信息，请参阅 [此迁移中的 Azure 政府博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
 
 ## <a name="march-2020"></a>2020 年 3 月
 

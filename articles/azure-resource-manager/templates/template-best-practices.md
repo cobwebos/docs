@@ -4,10 +4,10 @@ description: 介绍创作 Azure 资源管理器模板的建议方法。 提供�
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87809249"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
@@ -34,7 +34,7 @@ ms.locfileid: "87809249"
 
 如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍可按预期运行，但你不能更新它们。 为了尽量降低风险，请将资源组和资源放入同一个区域。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 
@@ -276,7 +276,7 @@ ms.locfileid: "87809249"
 
 ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 测试工具包可帮助你了解如何在模板中实施最佳做法。
 
-完成模板后，运行测试工具包，看是否有方法可以改进它的实现。 有关详细信息，请参阅[ARM 模板测试工具包](test-toolkit.md)。
+完成模板后，运行测试工具包，看是否有方法可以改进它的实现。 有关详细信息，请参阅 [ARM 模板测试工具包](test-toolkit.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

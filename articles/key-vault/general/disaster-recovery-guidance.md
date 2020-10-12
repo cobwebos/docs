@@ -1,6 +1,6 @@
 ---
-title: Azure 服务中断影响 Azure Key Vault 时该怎么办 - Azure Key Vault | Microsoft Docs
-description: 了解 Azure 服务中断影响 Azure Key Vault 时该怎么办。
+title: Azure Key Vault 可用性和冗余 - Azure Key Vault | Microsoft Docs
+description: 了解 Azure Key Vault 可用性和冗余。
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6ccd127a35ea0d6a135a4b345297988cfdd8015b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983229"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315807"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 密钥保管库可用性和冗余
 

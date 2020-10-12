@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88054828"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器创建无人参与安装脚本
@@ -34,12 +34,12 @@ ms.locfileid: "88054828"
 * 将连接器安装与注册集成为另一个过程的一部分。
 * 创建包含连接器代码但未注册的标准服务器映像。
 
-要使[应用程序代理连接器](application-proxy-connectors.md)正常工作，必须使用应用程序管理员和密码将其注册到 Azure AD 的目录。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
+要使 [应用程序代理连接器](application-proxy-connectors.md) 正常工作，必须使用应用程序管理员和密码将其注册到 Azure AD 的目录。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
 
 无人参与安装包括两个步骤。 第一步，安装连接器。 第二步，向 Azure AD 注册连接器。
 
 > [!IMPORTANT]
-> 如果要为 Azure 政府云安装连接器，请查看[先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)和[安装步骤](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。 这需要启用对一组不同 URL 的访问以及运行安装的其他参数。
+> 如果要为 Azure 政府云安装连接器，请查看 [先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) 和 [安装步骤](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。 这需要启用对一组不同 URL 的访问以及运行安装的其他参数。
 
 ## <a name="install-the-connector"></a>安装连接器
 使用以下步骤免注册安装连接器：

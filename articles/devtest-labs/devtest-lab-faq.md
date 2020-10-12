@@ -4,10 +4,10 @@ description: 本文提供有关 Azure 开发测试实验室的部分常见问题
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289374"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 可以，可将多个磁盘附加到 VM 中。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>开发测试实验室支持第 2 代映像吗？
-是的。 开发测试实验室服务支持[第2代映像](../virtual-machines/windows/generation-2.md)。 但是，如果第1代和第2代版本都可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果该映像只有第2代可用版本，则会看到该映像。 
+是。 开发测试实验室服务支持 [第2代映像](../virtual-machines/windows/generation-2.md)。 但是，如果第1代和第2代版本都可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果该映像只有第2代可用版本，则会看到该映像。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
 要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，请执行以下步骤之一：
@@ -342,7 +342,7 @@ foreach($labVM in $labVMs)
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何时应该为开发测试实验室环境创建新的虚拟网络以及使用现有的虚拟网络？
 如果你的 VM 需要与现有基础结构进行交互，则考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，可能需要将虚拟网络/子网的数量降至最低，以便不会对分配给订阅的使用的 IP 地址空间进行分段。
 
-请考虑在此处（[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）使用虚拟网络对等互连模式。 此方法支持跨订阅的 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。
+请考虑使用此处的虚拟网络对等互连模式 ([中心辐射模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) 。 此方法支持跨订阅的 vnet/子网通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。
 
 每个订阅的虚拟网络数量有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 默认数量为 50，但此限制可以提高到 100。
 

@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d168ff36e63cc07dc1b334ae7817bfed45b4fcd0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87042264"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>如何监视 Azure 上的 SAP HANA（大型实例）
@@ -27,7 +27,7 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 - CPU
 - 内存
 - 网络带宽
-- 硬盘空间
+- 磁盘空间
 
 对于 Azure 虚拟机，你需要确定上述资源类是否足够，或者它们是否已耗尽。 下面提供了有关每个不同的类的更多详细信息：
 

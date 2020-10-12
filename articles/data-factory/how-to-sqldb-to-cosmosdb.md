@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
 ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82691905"
 ---
-# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>将规范化的数据库架构从 Azure SQL 数据库迁移到 Azure CosmosDB 不规范容器
+# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>将规范化数据库架构从 Azure SQL 数据库迁移到 Azure CosmosDB 非规范化容器
 
 本指南将介绍如何在 Azure SQL 数据库中使用现有的规范化数据库架构，并将其转换为 Azure CosmosDB 不规范架构，以便加载到 Azure CosmosDB。
 
@@ -46,11 +46,11 @@ FROM SalesLT.SalesOrderHeader o;
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-1. 选择 " **+ 新建管道**" 以创建新管道。
+1. 选择 " **+ 新建管道** " 以创建新管道。
 
 2. 添加数据流活动
 
-3. 在 "数据流" 活动中，选择 "**新建映射**数据流"。
+3. 在 "数据流" 活动中，选择 " **新建映射**数据流"。
 
 4. 我们将在下面构造此数据流图形
 
@@ -106,5 +106,5 @@ FROM SalesLT.SalesOrderHeader o;
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用映射数据流[转换](concepts-data-flow-overview.md)生成数据流逻辑的其余部分。
+* 使用映射数据流 [转换](concepts-data-flow-overview.md)生成数据流逻辑的其余部分。
 * 下载本教程的[已完成管道模板](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/SQL%20Orders%20to%20CosmosDB.zip)，然后将模板导入工厂。

@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482847"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL 建议
@@ -73,4 +73,4 @@ Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负�
 
 ## <a name="data-loading-misconfiguration"></a>数据加载配置错误
 
-应始终从与 SQL 池相同的区域中的存储帐户加载数据，以最大程度地减少延迟。 使用[COPY 语句实现高吞吐量数据引入](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并拆分存储帐户中的暂存文件，以最大限度地提高吞吐量。 如果不能使用 COPY 语句，则可以使用 SqlBulkCopy API 或 bcp，使用较高的批大小，以获得更好的吞吐量。 有关其他数据加载指南，请访问以下[文档](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 
+应始终从与 SQL 池位于相同区域的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 

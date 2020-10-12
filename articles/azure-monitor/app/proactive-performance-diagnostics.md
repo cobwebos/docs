@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321303"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
 [Application Insights](./app-insights-overview.md) 可自动分析 Web 应用程序的性能，并在出现潜在问题时发出警告。 我们会通过邮件将智能检测通知发送给你。
 
-除为你[支持的语言](./platforms.md)配置 Application Insights 应用外，此功能不需要特殊设置。 在应用生成足够多的遥测数据后，此功能会激活。
+不需要对此功能进行任何特殊设置，只需在应用中为[支持的语言](./platforms.md)配置 Application Insights 即可。 在应用生成足够多的遥测数据后，此功能会激活。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>我何时会收到智能检测通知？
 

@@ -4,10 +4,10 @@ description: 开发测试实验室提供了可用于诊断项目失败的信息�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480807"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
@@ -41,7 +41,7 @@ ms.locfileid: "85480807"
 
 3. 打开状态文件****。
 
-有关在**linux** VM 上查找日志文件的说明，请参阅以下文章：[将 Azure 自定义脚本扩展版本2用于 linux 虚拟机](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+有关在 **linux** VM 上查找日志文件的说明，请参阅以下文章： [将 Azure 自定义脚本扩展版本2用于 linux 虚拟机](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
 
 ## <a name="related-blog-posts"></a>相关的博客文章

@@ -8,10 +8,10 @@ ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: fec52caa3cb7565a86a6c50d300fe448b6518457
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320062"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>在合作伙伴中心使用“合作伙伴中心提交 API”加入 Azure 应用
@@ -29,7 +29,7 @@ ms.locfileid: "87320062"
 
 在开始编写代码以调用“合作伙伴中心提交 API”之前，请确保满足以下先决条件。
 
-- 你（或你的组织）必须有一个 Azure AD 目录，并且必须对该目录拥有[全局管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)权限。 如果你已使用 Microsoft 365 或 Microsoft 的其他业务服务，则你已具有 Azure AD 目录。 否则，可以[在合作伙伴中心创建新的 Azure AD](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)，这不会产生额外的费用。
+- 你（或你的组织）必须有一个 Azure AD 目录，并且必须对该目录拥有[全局管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)权限。 如果你已使用 Microsoft 365 或 Microsoft 的其他业务服务，表示你已经具有 Azure AD 目录。 否则，可以[在合作伙伴中心创建新的 Azure AD](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)，这不会产生额外的费用。
 
 - 必须[将某个 Azure AD 应用程序与你的合作伙伴中心帐户相关联](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account)，并获取租户 ID、客户端 ID 和密钥。 需要使用这些值来获取 Azure AD 访问令牌，调用“Microsoft Store 提交 API”时将会使用该令牌。
 

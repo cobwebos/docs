@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545854"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>教程：为 Zscaler 配置自动用户预配
@@ -106,7 +106,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![Zscaler One 配置 SAML](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. 选择 " **启用基于 SCIM 的设置** "，以获取 **基本 URL** 和 **持有者令牌**中的设置。 然后保存设置。 将 **基 url** 设置复制到 Azure 门户中的 **租户 url** 。 将 " **持有者令牌** " 设置复制到 Azure 门户中的 " **机密令牌** "。
+    b. 选择 " **启用 SCIM-Based 设置** "，以获取 **基本 URL** 和 **持有者令牌**中的设置。 然后保存设置。 将 **基 url** 设置复制到 Azure 门户中的 **租户 url** 。 将 " **持有者令牌** " 设置复制到 Azure 门户中的 " **机密令牌** "。
 
 7. 填写步骤5中所示的框后，请选择 " **测试连接** " 以确保 Azure AD 可以连接到 Zscaler。 如果连接失败，请确保 Zscaler 一个帐户具有管理员权限，然后重试。
 

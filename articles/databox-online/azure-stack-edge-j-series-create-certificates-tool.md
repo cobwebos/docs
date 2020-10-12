@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891097"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack 中心就绪检查程序工具为 Azure Stack Edge Pro 创建证书 
@@ -37,7 +37,7 @@ ms.locfileid: "90891097"
 - VPN 证书
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 若要为 Azure Stack Edge Pro 设备部署创建 Csr，请确保： 
 
@@ -65,7 +65,7 @@ ms.locfileid: "90891097"
     Get-InstalledModule -Name Microsoft.AzureStack.ReadinessChecker  | ft Name, Version 
     ```
 
-3. 如果证书不存在，则为所有证书创建一个目录。 键入： 
+3. 如果证书不存在，则为所有证书创建一个目录。 类型： 
     
     ```azurepowershell
     New-Item "C:\certrequest" -ItemType Directory
@@ -142,11 +142,11 @@ ms.locfileid: "90891097"
 
     `New-AzsCertificateFolder -CertificateType AzureStackEdge -OutputPath "$ENV:USERPROFILE\Documents\AzureStackCSR"`
 
-3. 将 PFX 密码转换为安全字符串。 键入：       
+3. 将 PFX 密码转换为安全字符串。 类型：       
 
     `$pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString` 
 
-4. 接下来，验证证书。 键入：
+4. 接下来，验证证书。 类型：
 
     `Invoke-AzsCertificateValidation -CertificateType AzureStackEdge -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
 

@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317015"
 ---
-# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Azure Vm 上的群集配置最佳实践 (SQL Server) 
+# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>群集配置最佳做法（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 群集用于实现高可用性和灾难恢复 (HADR) ，并在 Azure 虚拟机 (Vm) 中 SQL Server。 
@@ -44,7 +44,7 @@ ms.locfileid: "91317015"
 
 ||[磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[云见证](/windows-server/failover-clustering/deploy-cloud-witness)  |[文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**支持的 OS**| 全部 |Windows Server 2016 及更高版本| 全部|
+|**支持的 OS**| All |Windows Server 2016 及更高版本| All|
 
 
 
@@ -58,7 +58,7 @@ ms.locfileid: "91317015"
 若要开始，请参阅 [配置磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支持的操作系统**：全部   
+**支持的操作系统**：All   
 
 
 ### <a name="cloud-witness"></a>云见证
@@ -68,7 +68,7 @@ ms.locfileid: "91317015"
 若要开始，请参阅 [配置云见证](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)。
 
 
-**支持的操作系统**： Windows Server 2016 及更高版本   
+**支持的操作系统**：Windows Server 2016 及更高版本   
 
 
 ### <a name="file-share-witness"></a>文件共享见证
@@ -80,9 +80,9 @@ ms.locfileid: "91317015"
 若要开始，请参阅 [配置文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支持的操作系统**： Windows Server 2012 及更高版本   
+**支持的操作系统**：Windows Server 2012 和更高版本   
 
-## <a name="connectivity"></a>连接
+## <a name="connectivity"></a>连接性
 
 在传统的本地网络环境中，SQL Server 故障转移群集实例似乎是在一台计算机上运行 SQL Server 的单个实例。 由于故障转移群集实例从节点故障转移到节点，因此，实例的虚拟网络名称 (VNN) 提供统一的连接点，并允许应用程序连接到 SQL Server 实例，而无需知道哪个节点当前处于活动状态。 发生故障转移时，虚拟网络名称会在新的活动节点启动后注册到该节点。 此过程对于连接到 SQL Server 的客户端或应用程序是透明的，这会最大程度地减少客户端或应用程序在故障期间遇到的停机时间。 
 
@@ -92,8 +92,8 @@ ms.locfileid: "91317015"
 
 | |**虚拟网络名称 (VNN)**  |**分布式网络名称 (DNN)**  |
 |---------|---------|---------|
-|**最低操作系统版本**| 全部 | 全部 |
-|**最低 SQL Server 版本** |全部 |SQL Server 2019 CU2|
+|**最低操作系统版本**| All | All |
+|**最低 SQL Server 版本** |All |SQL Server 2019 CU2|
 |**支持的 HADR 解决方案** | 故障转移群集实例 <br/> 可用性组 (availability group) | 故障转移群集实例|
 
 
@@ -105,8 +105,8 @@ ms.locfileid: "91317015"
 
 若要开始操作，请了解如何为 [FCI 配置 Azure 负载均衡器](hadr-vnn-azure-load-balancer-configure.md)。 
 
-**支持的操作系统**：全部   
-**支持的 SQL 版本**：全部   
+**支持的操作系统**：All   
+**支持的 SQL 版本**：All   
 **支持的 HADR 解决方案**：故障转移群集实例和可用性组   
 
 
@@ -125,7 +125,7 @@ ms.locfileid: "91317015"
 
 若要开始操作，请了解如何 [配置 FCI 的 DNN 资源](hadr-distributed-network-name-dnn-configure.md)。 
 
-**支持的操作系统**： Windows Server 2016 及更高版本   
+**支持的操作系统**：Windows Server 2016 及更高版本   
 **支持的 SQL 版本**： SQL Server 2019 及更高版本   
 **支持的 HADR 解决方案**：仅限故障转移群集实例
 
@@ -136,12 +136,12 @@ ms.locfileid: "91317015"
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC) ，并在群集共享卷 (CSV) 和 [azure 标准负载均衡器](../../../load-balancer/load-balancer-standard-overview.md) 上，或 SQL Server 使用 azure 共享磁盘的 vm 上。 
+Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC)，其中存储位于群集共享卷 (CSV) 和[标准负载均衡器](../../../load-balancer/load-balancer-standard-overview.md)上，或者位于正在使用 Azure 共享磁盘的 SQL Server VM 上。 
 
-在 Azure 虚拟机上，Windows Server 2016 或更早版本的 MSDTC 不支持群集共享卷，原因如下：
+在 Azure 虚拟机上，具有群集共享卷的 Windows Server 2016 或更早版本不支持 MSDTC，因为：
 
 - 无法将群集 MSDTC 资源配置为使用共享存储。 在 Windows Server 2016 上，如果创建 MSDTC 资源，即使存储可用，它也不会显示任何可用的共享存储。 Windows Server 2019 中已修复此问题。
-- 基本负载均衡器不会处理 RPC 端口。
+- 基本负载均衡器不处理 RPC 端口。
 
 
 ## <a name="next-steps"></a>后续步骤

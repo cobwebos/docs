@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249597"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
@@ -342,7 +342,7 @@ ms.locfileid: "86249597"
 ```
 
 #### <a name="filter-response-based-on-product"></a>根据产品筛选响应
- 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 从31:50 开始，查看用于此演示的[深色天空预测 API](https://developer.forecast.io/)的概述。
+ 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请参阅 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 34:30。 从31:50 开始，查看用于此演示的 [深色天空预测 API](https://developer.forecast.io/) 的概述。
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -396,15 +396,15 @@ ms.locfileid: "86249597"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必需|
+|名称|描述|必须|
 |----------|-----------------|--------------|
-|set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|适合|
+|set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|说明|必需|默认|
+|名称|描述|必须|默认|
 |----------|-----------------|--------------|-------------|
-|template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- liquid - 设置正文策略会使用 liquid 模板引擎 |不适合||
+|template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- liquid - 设置正文策略会使用 liquid 模板引擎 |否||
 
 对于访问请求和响应信息，Liquid 模板可绑定到具有以下属性的上下文对象： <br />
 <pre>context.
@@ -510,14 +510,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必须|
+|名称|描述|必须|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
-|value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|不适合|
+|value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|否|
 
 ### <a name="properties"></a>属性
 
-|名称|说明|必需|默认|
+|名称|描述|必须|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|
 |name|指定要设置的标头的名称。|是|空值|
@@ -565,17 +565,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必需|
+|名称|描述|必须|
 |----------|-----------------|--------------|
-|set-query-parameter|根元素。|适合|
-|value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|适合|
+|set-query-parameter|根元素。|是|
+|value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|描述|必需|默认|
+|名称|描述|必须|默认|
 |----------|-----------------|--------------|-------------|
-|exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|不适合|override|
-|name|指定要设置的查询参数的名称。|适合|不适用|
+|exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
+|name|指定要设置的查询参数的名称。|是|空值|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
@@ -644,16 +644,16 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|必需|
+|名称|描述|必须|
 |----------|-----------------|--------------|
-|rewrite-uri|根元素。|适合|
+|rewrite-uri|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|属性|说明|必需|默认|
+|属性|描述|必须|默认|
 |---------------|-----------------|--------------|-------------|
-|template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|适合|空值|
-|copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|不适合|是|
+|template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|空值|
+|copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|是|
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。

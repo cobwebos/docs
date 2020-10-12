@@ -8,10 +8,10 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531203"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
@@ -42,9 +42,9 @@ ms.locfileid: "87531203"
 删除 Data Lake Analytics 帐户前，先删除其默认 Data Lake Store 帐户。
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“删除” 。
+2. 单击 **“删除”** 。
 3. 键入帐户名称。
-4. 单击“删除” 。
+4. 单击 **“删除”** 。
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -61,7 +61,7 @@ Data Lake Analytics 支持以下数据源：
 ### <a name="add-a-data-source"></a>添加数据源
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 **“数据源”**。
+2. 单击 **“数据源”** 。
 3. 单击“添加数据源”****。
     
    * 若要添加 Data Lake Store 帐户，需要帐户名称和此帐户的访问权限才能对其进行查询。
@@ -87,7 +87,7 @@ Data Lake Analytics 支持以下数据源：
 3. 选择一个用户，然后单击“选择”****。
 4. 选择一个角色，然后单击“选择”****。 若要设置要使用 Azure Data Lake 的新的开发人员，请选择“Data Lake Analytics 开发人员”**** 角色。
 5. 选择 U-SQL 数据库的访问控制列表 (ACL)。 如果对所选内容满意，请单击“选择”****。
-6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”  。
+6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”。
 7. 查看所选的所有更改，然后单击“运行”****。
 8. 完成向导后，单击“完成”****。
 
@@ -109,10 +109,10 @@ Data Lake Analytics 支持以下数据源：
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>将用户或安全组添加到 Data Lake Analytics 帐户
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 "**访问控制（IAM）**" "  >  **添加角色分配**"。
+2. 单击 "**访问控制 (IAM) **"  >  **添加角色分配**"。
 3. 选择角色。
 4. 添加用户。
-5. 单击“确定”。
+5. 单击" **确定**"。
 
 >[!NOTE]
 >如果用户或安全组需要提交作业，还需要对存储帐户的权限。 有关详细信息，请参阅[保护 Data Lake Store 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。
@@ -148,7 +148,7 @@ Data Lake Analytics 支持以下数据源：
 
 1. 在 Azure 门户中，转到 Data Lake Analytics 帐户。
 2. 单击“作业见解”****。 默认显示“所有作业”选项卡，即显示正在运行的作业、排队的作业以及已结束作业的列表。
-3. 单击 "**管道作业**" 选项卡。管道作业的列表将与每个管道的聚合统计信息一起显示。
+3. 单击 " **管道作业** " 选项卡。管道作业的列表将与每个管道的聚合统计信息一起显示。
 
 ### <a name="monitoring-recurring-jobs"></a>监视定期作业
 定期作业是指具有相同的业务逻辑，但每次运行时均使用不同输入数据的作业。 理想情况下，定期作业应始终成功，并具有相对稳定的执行时间；监视这些行为有助于确保作业处于正常状态。 定期作业是使用“Recurrence”属性标识的。 使用 ADF V2 计划的作业会自动填充此属性。
@@ -157,7 +157,7 @@ Data Lake Analytics 支持以下数据源：
 
 1. 在 Azure 门户中，转到 Data Lake Analytics 帐户。
 2. 单击“作业见解”****。 默认显示“所有作业”选项卡，即显示正在运行的作业、排队的作业以及已结束作业的列表。
-3. 单击 "**定期作业**" 选项卡。将显示定期作业的列表以及每个定期作业的聚合统计信息。
+3. 单击 " **定期作业** " 选项卡。将显示定期作业的列表以及每个定期作业的聚合统计信息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,16 +1,16 @@
 ---
 title: 使用 PowerShell 在 Azure Functions 中创建你的第一个持久函数
-description: 使用 Visual Studio Code 创建并发布 Azure 持久函数。
+description: 在 PowerShell 中使用 Visual Studio Code 创建并发布 Azure 持久函数。
 author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 11ae695a898e011fd287730d894394eff013a0ca
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272955"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91317253"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>在 PowerShell 中创建你的第一个持久函数
 

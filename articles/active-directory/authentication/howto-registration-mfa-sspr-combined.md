@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de76a9138f782ab699bcd6ff56dab09a4e694102
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87035513"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>在 Azure Active Directory 中启用合并安全信息注册
@@ -25,7 +25,7 @@ ms.locfileid: "87035513"
 > [!NOTE]
 > 自2020年8月15日起，将自动为所有新的 Azure AD 租户启用合并注册。
 
-若要在启用新体验之前确保了解功能和影响，请参阅[组合的安全信息注册概念](concept-registration-mfa-sspr-combined.md)。
+若要在启用新体验之前确保了解功能和影响，请参阅 [组合的安全信息注册概念](concept-registration-mfa-sspr-combined.md)。
 
 ![合并安全信息注册增强了体验](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "87035513"
 >
 > 如果你随后禁用此体验，则需要访问上一 SSPR 注册页的用户在 `https://aka.ms/ssprsetup` 可以访问页面之前需要执行多重身份验证。
 
-如果已在 Internet Explorer 中将 "*站点到区域分配" 列表*配置为 "区域分配"，则以下站点必须位于同一区域中：
+如果已在 Internet Explorer 中将 " *站点到区域分配" 列表* 配置为 "区域分配"，则以下站点必须位于同一区域中：
 
 * *[https://login.microsoftonline.com](https://login.microsoftonline.com)*
 * *[https://mysignins.microsoft.com](https://mysignins.microsoft.com)*
@@ -57,9 +57,9 @@ ms.locfileid: "87035513"
 > [!NOTE]
 > 仅当用户访问组合注册页面时，此策略才适用。 当用户访问其他应用程序时，此策略不会强制进行 MFA 注册。
 >
-> 可以使用[Azure Identity Protection-配置 Mfa 策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)来创建 mfa 注册策略。
+> 可以使用 [Azure Identity Protection-配置 Mfa 策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)来创建 mfa 注册策略。
 
-有关在条件访问中创建受信任位置的详细信息，请参阅[Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
+有关在条件访问中创建受信任位置的详细信息，请参阅 [Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建要求从受信任位置进行注册的策略
 
@@ -88,8 +88,8 @@ ms.locfileid: "87035513"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要帮助，请参阅[排除组合安全信息注册问题](howto-registration-mfa-sspr-combined-troubleshoot.md)或了解[Azure AD 条件访问中的位置条件是什么？](../conditional-access/location-condition.md)
+如果需要帮助，请参阅 [排除组合安全信息注册问题](howto-registration-mfa-sspr-combined-troubleshoot.md) 或了解 [Azure AD 条件访问中的位置条件是什么？](../conditional-access/location-condition.md)
 
-启用用户组合注册后，可以[启用自助密码重置](tutorial-enable-sspr.md)并[启用 Azure 多重身份验证](tutorial-enable-azure-mfa.md)。
+启用用户组合注册后，可以 [启用自助密码重置](tutorial-enable-sspr.md) 并 [启用 Azure 多重身份验证](tutorial-enable-azure-mfa.md)。
 
-如果需要，请学习如何[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
+如果需要，请学习如何 [强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。

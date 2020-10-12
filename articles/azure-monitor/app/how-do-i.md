@@ -4,10 +4,10 @@ description: 有关 Application Insights 的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319246"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
@@ -88,7 +88,7 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 ## <a name="visualize-data"></a>可视化数据
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>包含来自多个应用的指标的仪表板
-* 在[指标资源管理器](../platform/metrics-charts.md)中，自定义图表并将其保存为收藏项。 将图表固定到 Azure 仪表板。
+* 在 [指标资源管理器](../platform/metrics-charts.md)中，自定义图表并将其保存为收藏项。 将图表固定到 Azure 仪表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>包含来自其他源和 Application Insights 的数据的仪表板
 * [将遥测数据导出到 Power BI](./export-power-bi.md)。

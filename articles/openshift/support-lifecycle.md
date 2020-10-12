@@ -7,13 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854500"
 ---
-# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 的支持生命周期
+# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>支持 Azure Red Hat OpenShift 4 的生命周期
 
 Red Hat 每三个月 (OCP) 约每三个月发布一次 Red Hat OpenShift 容器平台。 这些版本包括新增功能和改进。 修补程序版本经常 (每周) ，并且仅适用于次要版本中的关键 bug 修复。 这些修补程序版本可能包含安全漏洞或主要 bug 的修补程序。
 

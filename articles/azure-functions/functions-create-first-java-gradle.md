@@ -7,10 +7,10 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322170"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
@@ -18,9 +18,9 @@ ms.locfileid: "87322170"
 本文说明如何使用 Gradle 命令行工具生成和发布 Java 函数项目以 Azure Functions。 完成后，函数代码会在 Azure 的[无服务器托管计划](functions-scale.md#consumption-plan)中运行，并由 HTTP 请求触发。 
 
 > [!NOTE]
-> 如果 Gradle 不是你首选的开发工具，请使用[Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、 [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)来查看适用于 Java 开发人员的类似教程。
+> 如果 Gradle 不是你首选的开发工具，请使用 [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、 [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)来查看适用于 Java 开发人员的类似教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Java 开发函数，必须安装以下软件：
 
@@ -98,7 +98,7 @@ Hello, AzureFunctions
 </pre>
 
 > [!NOTE]
-> 如果将 authLevel 设置为 `FUNCTION` 或 `ADMIN` ，则在本地运行时不需要此[功能键](functions-bindings-http-webhook-trigger.md#authorization-keys)。  
+> 如果将 authLevel 设置为 `FUNCTION` 或 `ADMIN` ，则在本地运行时不需要此 [功能键](functions-bindings-http-webhook-trigger.md#authorization-keys) 。  
 
 在终端中使用 `Ctrl+C` 停止函数代码。
 
@@ -126,7 +126,7 @@ gradle azureFunctionsDeploy
 
 + 资源组。 使用你提供的 _resourceGroup_ 命名。
 + 存储帐户。 Functions 所需。 此名称根据存储帐户名称要求随机生成。
-+ 应用服务计划。 在指定的_appRegion_中，函数应用的无服务器消耗计划托管。 此名称随机生成。
++ 应用服务计划。 在指定的 _appRegion_中，函数应用的无服务器消耗计划托管。 此名称随机生成。
 + 函数应用。 函数应用是函数的部署和执行单元。 此名称是 _appName_ 追加一个随机生成的数字。 
 
 此部署还会在启用“从包运行”模式的情况下，使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 将项目文件打包并部署到新函数应用。
@@ -142,7 +142,7 @@ gradle azureFunctionsDeploy
 
 1. 浏览到 [Azure 门户]，登录，在页面顶部将函数应用的 _appName_ 键入“搜索”栏，**** 然后按 Enter。
  
-1. 在函数应用中，选择 "**函数**"，选择函数，然后单击右上角的 " **</> 获取函数 Url** "。 
+1. 在函数应用中，选择 " **函数**"，选择函数，然后单击右上角的 " **</> 获取函数 Url** "。 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="从 Azure 门户复制函数 URL":::
 

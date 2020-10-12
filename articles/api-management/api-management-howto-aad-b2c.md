@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254923"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
@@ -60,7 +60,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于面�
 
    ![注册新应用程序 3][api-management-howto-aad-b2c-app-details]
 
-1. 如果你使用的是新的开发人员门户 (不是旧的开发人员门户) ，请在应用程序声明中包括**给定的名称**、**姓氏**和**用户的对象 ID** 。
+1. 如果你使用的是新的开发人员门户 (不是旧的开发人员门户) ，请在应用程序声明中包括 **给定的名称**、 **姓氏**和 **用户的对象 ID** 。
 
     ![应用程序声明](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
@@ -92,7 +92,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于面�
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>开发人员门户 - 添加 Azure AD B2C 帐户身份验证
 
-在开发人员门户中，可以通过 "**登录" 按钮**进行 AAD B2C 登录： OAuth 小组件。 此小组件已包括在默认开发人员门户内容的登录页上。
+在开发人员门户中，可以通过 " **登录" 按钮** 进行 AAD B2C 登录： OAuth 小组件。 此小组件已包括在默认开发人员门户内容的登录页上。
 
 尽管每当新用户使用 AAD B2C 登录时都会自动创建一个新帐户，但你可以考虑向注册页添加同一小组件。
 

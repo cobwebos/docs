@@ -4,15 +4,15 @@ description: 从开发的角度来了解文件和目录及其在 Azure Batch 工
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87552624"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Azure Batch 中的文件和目录
 
-在 Azure Batch 中，每个任务都有一个可以在其下创建文件和目录的工作目录。 此工作目录可用于存储任务运行的程序、任务处理的数据，以及任务执行的处理的输出。 任务的所有文件和目录由任务用户拥有。
+在 Azure Batch 中，每个任务都有一个工作目录，任务可以在该目录中创建文件和目录。 此工作目录可用于存储任务运行的程序、任务处理的数据，以及任务执行的处理的输出。 任务的所有文件和目录由任务用户拥有。
 
 Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 此根目录位于 VM 的临时存储驱动器上，而不是直接位于 OS 驱动器上。
 

@@ -10,17 +10,17 @@ author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
 ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82890982"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
 “Azure 机器学习算法备忘单”可帮助你从设计器为预测分析模型选择正确的算法****。
 
-Azure 机器学习具有一个大型算法库，来自***分类***、***推荐器系统***、***群集***、***异常检测***、***回归***和***文本分析***系列。 每一类算法都可用于解决一种类型的机器学习问题。
+Azure 机器学习具有一个大型算法库，来自 ***分类***、 ***推荐器系统***、 ***群集***、 ***异常检测***、 ***回归***和 ***文本分析*** 系列。 每一类算法都可用于解决一种类型的机器学习问题。
 
 有关其他指南，请参阅[如何选择算法](how-to-select-algorithms.md)
 

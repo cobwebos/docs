@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87824573"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>使用 PowerShell 启用用于 VM 的 Azure Monitor
@@ -22,12 +22,12 @@ ms.locfileid: "87824573"
 ## <a name="prerequisites"></a>必备条件
 
 - [创建并配置 Log Analytics 工作区](vminsights-configure-workspace.md)。
-- 请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- 请参阅 [支持的操作系统](vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 
 ## <a name="powershell-script"></a>PowerShell 脚本
 
-若要为多个虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor，请使用 Azure PowerShell 库中提供的 PowerShell 脚本[Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此脚本循环访问：
+若要为多个虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor，请使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此脚本循环访问：
 
 - 订阅中的每个虚拟机和虚拟机规模集。
 - 通过 *ResourceGroup* 指定的具有作用域的资源组。
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅[使用用于 VM 的 Azure Monitor 映射](vminsights-maps.md)查看已发现的应用程序依赖项。 
-* 请参阅[查看 AZURE VM 性能](vminsights-performance.md)，找出瓶颈、整体利用率和 VM 的性能。
+* 请参阅 [使用用于 VM 的 Azure Monitor 映射](vminsights-maps.md) 查看已发现的应用程序依赖项。 
+* 请参阅 [查看 AZURE VM 性能](vminsights-performance.md) ，找出瓶颈、整体利用率和 VM 的性能。

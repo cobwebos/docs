@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
 ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974402"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出将 IoT 数据导出到云目标
@@ -35,7 +35,7 @@ ms.locfileid: "90974402"
 > [!Tip]
 > 当你打开数据导出时，你只会获得那一刻的数据。 当前，数据导出关闭时无法检索数据。 若要保留更多的历史数据，请及早打开数据导出。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 若要使用数据导出功能，您必须具有 [V3 应用程序](howto-get-app-info.md)，并且您必须具有 [数据导出](howto-manage-users-roles.md) 权限。
 
@@ -157,7 +157,7 @@ ms.locfileid: "90974402"
     - 对于 Azure 事件中心、Azure 服务总线队列或主题，请粘贴资源的连接字符串，并根据需要输入区分大小写的事件中心、队列或主题名称。
     - 对于 Azure Blob 存储，请粘贴资源的连接字符串，并根据需要输入区分大小写的容器名称。
     - 对于 Webhook，请粘贴 webhook 终结点的回调 URL。
-    - 选择“创建”。
+    - 选择“创建”  。
 
 1. 选择 " **+ 目标** "，然后从下拉列表中选择一个目标。 最多可以向单个导出添加5个目标。
 
@@ -275,7 +275,7 @@ ms.locfileid: "90974402"
 | 功能  | 旧数据导出 | 新数据导出 |
 | :------------- | :---------- | :----------- |
 | 可用数据类型 | 遥测、设备、设备模板 | 遥测，属性更改 |
-| Filtering | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
+| 筛选 | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
 | 根据 | 无 | 使用自定义字符串或设备上的属性值丰富 |
 | Destinations | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同|
 | 支持的应用程序版本 | V2、V3 | 仅 V3 |

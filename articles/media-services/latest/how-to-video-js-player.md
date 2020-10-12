@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: 99e17db99842546b7f595d62f82f8bacb0ee6a8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329697"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>如何在 Azure 媒体服务中使用 Video.js 播放器
@@ -30,7 +30,7 @@ Video.js 是为 HTML5 世界打造的 web 视频播放器。 它在浏览器中�
 
 可在中找到它的官方文档 [https://docs.videojs.com/](https://docs.videojs.com/) 。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 本文中的示例代码可在 [Azure 示例/3rdparty-示例](https://github.com/Azure-Samples/media-services-3rdparty-player-samples)中找到。
 
 ## <a name="implement-the-player"></a>实现播放器

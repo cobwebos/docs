@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799813"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI Azure Database for MySQL 的数据加密
@@ -50,7 +50,7 @@ ms.locfileid: "87799813"
 * 此密钥必须具有以下属性以用作客户管理的密钥：
   * 无过期日期
   * 未禁用
-  * 执行**get**、 **wrap**、**解包**操作
+  * 执行 **get**、 **wrap**、 **解包** 操作
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
@@ -82,7 +82,7 @@ ms.locfileid: "87799813"
     az mysql server key create –name  <server name>  -g <resource_group> --kid <key url>
     ```
 
-    密钥 url：`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+    密钥 url：  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>对还原服务器或副本服务器使用数据加密
 
@@ -126,7 +126,7 @@ az mysql server key create –name  <server name> -g <resource_group> --kid <key
 az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
 ```
 
-密钥 url：`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+密钥 url： `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>列出使用的密钥
 
@@ -146,9 +146,9 @@ az mysql server key delete -g <resource_group> --kid <key url>
 
 ### <a name="for-a-new-server"></a>对于新服务器
 
-使用预先创建的 Azure 资源管理器模板之一来预配启用了数据加密的服务器：[包含数据加密的示例](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
+使用预先创建的 Azure 资源管理器模板之一来预配启用了数据加密的服务器： [包含数据加密的示例](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
 
-此 Azure 资源管理器模板创建 Azure Database for MySQL 服务器，并使用作为参数传递的**KeyVault**和**密钥**在服务器上启用数据加密。
+此 Azure 资源管理器模板创建 Azure Database for MySQL 服务器，并使用作为参数传递的 **KeyVault** 和 **密钥** 在服务器上启用数据加密。
 
 ### <a name="for-an-existing-server"></a>对于现有服务器
 
@@ -156,7 +156,7 @@ az mysql server key delete -g <resource_group> --kid <key url>
 
 * 传递先前在 properties 对象中的属性下复制的 Azure Key Vault 密钥的资源 ID `Uri` 。
 
-* 使用*2020-01-01-preview*作为 API 版本。
+* 使用 *2020-01-01-preview* 作为 API 版本。
 
 ```json
 {
@@ -268,4 +268,4 @@ az mysql server key delete -g <resource_group> --kid <key url>
 
 ## <a name="next-steps"></a>后续步骤
 
- 若要了解有关数据加密的详细信息，请参阅[Azure Database for MySQL 通过客户托管的密钥进行数据加密](concepts-data-encryption-mysql.md)。
+ 若要了解有关数据加密的详细信息，请参阅 [Azure Database for MySQL 通过客户托管的密钥进行数据加密](concepts-data-encryption-mysql.md)。
