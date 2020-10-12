@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
 ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409759"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
@@ -105,7 +105,7 @@ ms.locfileid: "91409759"
 * 使用非通用术语来标记关系。
 * 使用关系名称将源顶点的标签与目标顶点的标签相关联。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="关系标签示例。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="具有属性顶点的实体模型。" border="false":::
 
 遍历器用于筛选边缘的标签越具体越好。 此决定也会对查询成本产生显著影响。 可以 [使用 executionProfile 步骤](graph-execution-profile.md)随时评估查询成本。
 

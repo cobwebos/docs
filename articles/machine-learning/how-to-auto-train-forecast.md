@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
 ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296767"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
@@ -102,11 +102,11 @@ test_labels = test_data.pop(label).values
 
 可以直接在 `AutoMLConfig` 对象中指定不同的训练集和验证集。   详细了解 [AutoMLConfig](#configure-experiment)。
 
-对于时序预测，默认情况下，只有 **滚动起源交叉验证 (ROCV) ** 用于验证。 一起传递定型和验证数据，并设置中与参数之间的交叉验证折叠数 `n_cross_validations` `AutoMLConfig` 。 ROCV 使用原始时间点将时序分成训练数据和验证数据。 在时间内滑动原点会生成交叉验证折叠。 此策略保留时序数据完整性并消除了数据泄露风险
+对于时序预测，默认情况下仅使用滚动原点交叉验证 (ROCV) 进行验证。 将训练数据和验证数据一起传递，并在 `AutoMLConfig` 中使用 `n_cross_validations` 参数设置交叉验证折叠数。 ROCV 使用原始时间点将时序分成训练数据和验证数据。 在时间内滑动原点会生成交叉验证折叠。 此策略保留时序数据完整性并消除了数据泄露风险
 
 ![滚动起源交叉验证](./media/how-to-auto-train-forecast/ROCV.svg)
 
-还可以自带验证数据，在 [AutoML 中配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md#provide-validation-data)中了解详细信息。
+你还可以自带验证数据，详情请参阅[在 AutoML 中配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md#provide-validation-data)。
 
 
 ```python
@@ -140,7 +140,7 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 
 下表汇总了这些额外的参数。 有关语法设计模式，请查看[参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)。
 
-| 参数&nbsp;名称 | 说明 | 必选 |
+| 参数&nbsp;名称 | 说明 | 必须 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中用于生成时序的日期时间列并推断其频率。|✓|
 |`forecast_horizon`|定义要预测的未来的时段数。 范围以时序频率为单位。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
@@ -260,7 +260,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 > [!Warning]
-> 为使用 SDK 创建的试验启用 DNN 时，将禁用 [最佳模型说明](how-to-machine-learning-interpretability-automl.md) 。
+> 为使用 SDK 创建的试验启用 DNN 时，系统会禁用[最佳模型说明](how-to-machine-learning-interpretability-automl.md)。
 
 若要为在 Azure 机器学习工作室中创建的 AutoML 试验启用 DNN，请参阅[工作室操作指南中的任务类型设置](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)。
 
@@ -343,7 +343,7 @@ day_datetime,store,week_of_year
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
-* 了解 [Interpretability：自动机器学习 (预览) 中的模型说明 ](how-to-machine-learning-interpretability-automl.md)。 
-* 了解如何在 [多个模型解决方案加速器](https://aka.ms/many-models)中用 AutoML 训练多个模型。
-* 遵循 [教程](tutorial-auto-train-models.md) ，了解有关使用自动机器学习创建试验的端到端示例。
+* 了解[可解释性：自动化机器学习中的模型说明（预览版）](how-to-machine-learning-interpretability-automl.md)。 
+* 了解如何在[多模型解决方案加速器](https://aka.ms/many-models)中使用 AutoML 训练多个模型。
+* 按照[教程](tutorial-auto-train-models.md)获取使用自动化机器学习创建试验的端到端示例。
 

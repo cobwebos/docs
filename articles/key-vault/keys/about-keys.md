@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967559"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91708860"
 ---
 # <a name="about-keys"></a>关于密钥
 
@@ -47,7 +47,7 @@ Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 JavaScript
 - 保管库使用 FIPS 140-2 级别 2 验证的 HSM 来保护共享 HSM 后端基础结构中的 HSM 密钥。 
 - 托管 HSM 池使用 FIPS 140-2 级别 3 验证的 HSM 模块来保护密钥。 每个 HSM 池都是独立的单租户实例，它有自己的[安全域](../managed-hsm/security-domain.md)，提供与共享同一硬件基础结构的其他所有 HSM 池之间的完全加密隔离。
 
-这些密钥在单租户 HSM 池中受到保护。 可通过软形式或从受支持的 HSM 设备导出来导入 RSA、EC 和对称密钥。 也可在 HSM 池中生成密钥。 当通过 [BYOK（创建自己的密钥）规范](../keys/byok-specification.md)中所述的方法使用密钥导入 HSM 密钥时，可将密钥材料安全地传输到托管 HSM 池中。 
+这些密钥在单租户 HSM 池中受到保护。 可通过软形式或从受支持的 HSM 设备导出来导入 RSA、EC 和对称密钥。 也可在 HSM 池中生成密钥。 当通过 [BYOK（创建自己的密钥）规范](../keys/byok-specification.md)中所述的方法导入 HSM 密钥时，可将密钥材料安全地传输到托管 HSM 池中。 
 
 有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)
 

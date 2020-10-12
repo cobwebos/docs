@@ -4,10 +4,10 @@ description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网�
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890087"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器 (早期版本的脱机备份工作流) 
@@ -203,7 +203,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 1. 输入想要准备传输到 Azure 的已装载磁盘的驱动器号（不要包含尾部的冒号）。 根据提示确认格式化驱动器。
 
-    该工具随后便开始准备磁盘和复制备份数据。 如果所提供的磁盘没有足够空间来备份数据，则可能需要在工具提示时附加更多磁盘。 <br/>
+    该工具随后便开始准备磁盘和复制备份数据。 在该工具提示你附加更多磁盘时，你可能需要附加更多磁盘（如果提供的磁盘没有足够空间来容纳备份数据）。 <br/>
 
     工具成功完成后，提供的一个或多个磁盘便已准备就绪，可寄送到 Azure。 此外，还会在 Azure 中创建一个导入作业，其名称是在运行“启动脱机备份”部分中的工作流期间提供的。 最后，工具上还显示磁盘所要寄送到的 Azure 数据中心的寄送地址。
 

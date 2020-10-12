@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
 ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836116"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接
@@ -224,8 +224,8 @@ SAP 系统通常包含敏感的业务数据。 托管 SAP 系统的 VM 具有公
 
 如果通过第三方防火墙路由出站流量：
 
-- 如果使用 Azure 隔离代理，请确保防火墙配置允许与 Azure 管理 API 建立出站连接： `https://management.azure.com` 和`https://login.microsoftonline.com`   
-- 如果使用 SUSE 的 Azure 公有云更新基础结构来应用更新和修补程序，请参阅[Azure 公有云更新基础结构 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
+- 如果使用 Azure 隔离代理，请确保防火墙配置允许与 Azure 管理 API 建立出站连接： `https://management.azure.com` 和 `https://login.microsoftonline.com`   
+- 如果使用 SUSE 的 Azure 公有云更新基础结构来应用更新和修补程序，请参阅 [Azure 公有云更新基础结构 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>后续步骤
 

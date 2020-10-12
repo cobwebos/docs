@@ -4,10 +4,10 @@ description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存�
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324329"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
@@ -24,7 +24,7 @@ ms.locfileid: "87324329"
 * [Analytics](../log-query/log-query-overview.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](./export-power-bi.md)，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
-* 还可以[通过 PowerShell 访问设置连续导出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
+* 也可以访问“[通过 Powershell 连续导出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)”设置。
 
 连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](./data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87324329"
 4. 在存储中创建或选择一个容器。
 
 > [!NOTE]
-> 创建导出后，新引入的数据将开始流向 Azure Blob 存储。 连续导出只会在启用连续导出后传输创建/引入的新遥测数据。 启用连续导出之前存在的任何数据都不会被导出，且不支持使用连续导出以追溯性方式导出先前创建的数据。
+> 创建导出后，新引入的数据将开始流向 Azure Blob 存储。 连续导出只传输在启用连续导出后创建/引入的新遥测数据。 启用连续导出之前存在的任何数据都不会被导出，且不支持使用连续导出以追溯性方式导出先前创建的数据。
 
 数据出现在存储中之前可能有大约一小时的延迟。
 
@@ -98,7 +98,7 @@ ms.locfileid: "87324329"
 ## <a name="inspect-the-data"></a><a name="get"></a> 检查数据
 可以直接在门户中检查存储。 单击最左侧菜单中的“主页”，在顶部显示“Azure 服务”处选择“存储帐户”，选择存储帐户名称，在“概述”页的服务下，选择“Blob”，最后选择容器名称。
 
-若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。  （如果没有此菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开 Visual C#/云/并选择“用于 .NET 的 Microsoft Azure SDK”。）
+若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。 （如果没有此菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开 Visual C#/云/并选择“用于 .NET 的 Microsoft Azure SDK”。）
 
 打开 Blob 存储后，会看到包含一组 Blob 文件的容器。 每个文件的 URI 派生自 Application Insights 的资源名称、其检测密钥、遥测类型/日期/时间。 （资源名称为全小写形式，检测密钥不包含连字符。）
 

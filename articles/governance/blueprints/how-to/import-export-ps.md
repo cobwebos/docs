@@ -4,10 +4,10 @@ description: 了解如何以代码的形式使用蓝图定义。 使用导出和
 ms.date: 08/27/2020
 ms.topic: how-to
 ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051434"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>通过 PowerShell 导入和导出蓝图定义
@@ -23,7 +23,7 @@ ms.locfileid: "89051434"
 
 无论出于何种原因，在代码中管理蓝图定义都有好处。 本文介绍如何 `Import-AzBlueprintWithArtifact` `Export-AzBlueprintWithArtifact` 在 [Az](https://powershellgallery.com/packages/Az.Blueprint/) 模块中使用和命令。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假定使用 Azure 蓝图的中等实践知识。 如果尚未执行此操作，请完成以下文章：
 

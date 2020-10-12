@@ -11,10 +11,10 @@ ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
 ms.openlocfilehash: d3b8bfbef544e754f684421daa847f1724435d53
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88875584"
 ---
 # <a name="move-an-azure-workbook-to-another-region"></a>将 Azure 工作簿移到另一个区域
@@ -45,11 +45,11 @@ ms.locfileid: "88875584"
 
 5. 保存。 
 
-## <a name="verify"></a>Verify
+## <a name="verify"></a>验证
 
 使用 Azure 工作簿浏览 UI 查找新工作簿。 确保位置是目标位置。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在新区域中创建工作簿后，删除上一个区域中的原始工作簿。
 1. 在工作簿查看器中打开原始工作簿。

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: aahi
 ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934799"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>如何：生成度量值图以分析相关指标
@@ -35,7 +35,7 @@ ms.locfileid: "90934799"
 
 单击 " **添加关系**"，您将能够选择另一个度量值，并指定两个节点之间的关系类型。 您还可以应用特定的维度筛选器。 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="添加节点和关系":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="选择指标":::
 
 重复上述步骤后，将有一个指标图形，描述所有相关指标之间的关系。
 **节点颜色提示**
@@ -50,7 +50,7 @@ ms.locfileid: "90934799"
 
 单击到关系图中的事件，并向下滚动到 " **跨指标分析**"，并将其置于诊断信息下方。
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="查看相关指标和异常":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="选择指标":::
 
 ## <a name="next-steps"></a>后续步骤
 

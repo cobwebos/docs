@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: fbc24db21ee43e3c2aef3d0164e8510a79508fd2
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658586"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
@@ -24,7 +24,7 @@ Azure 存储始终会存储数据的多个副本，以防范各种计划内和�
 在确定最适合自己方案的冗余选项时，请考虑如何在较低成本与较高可用性和持久性之间做出取舍。 可帮助你确定应选择哪种冗余选项的因素包括：  
 
 - 如何在主要区域中复制数据
-- 你的数据是否已复制到地理位置远于主要区域的第二个区域，以防范地区性灾难
+- 是否要将你的数据复制到地理上距主要区域较远的另一个区域，以防范区域性灾难
 - 应用程序是否要求在主要区域出于任何原因而不可用时，能够对次要区域中复制的数据进行读取访问
 
 ## <a name="redundancy-in-the-primary-region"></a>主要区域中的冗余

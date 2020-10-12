@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.openlocfilehash: b5f7ed1f2ded8f6ec0320d417b59bab016d75028
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777269"
 ---
 # <a name="personalizer-troubleshooting"></a>Personalizer 故障排除
@@ -85,7 +85,7 @@ ms.locfileid: "91777269"
 了解有关 [学习策略概念](concept-active-learning.md#understand-learning-policy-settings) 以及 [如何应用](how-to-manage-model.md) 新学习策略的详细信息。 如果你不想要选择学习策略，可以根据当前事件，使用 [脱机评估](how-to-offline-evaluation.md) 建议学习策略。
 
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 
 ### <a name="the-api-key-for-my-loop-has-been-compromised-what-can-i-do"></a>我的循环的 API 密钥已泄露。 我该怎么办？
 

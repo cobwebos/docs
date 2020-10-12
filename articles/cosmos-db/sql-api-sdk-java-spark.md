@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326671"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB 核心 (SQL) API Apache Spark 连接器：发行说明和资源
@@ -26,8 +26,8 @@ ms.locfileid: "91326671"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
-> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -68,7 +68,7 @@ ms.locfileid: "91326671"
 - 添加新的 config 选项， `changefeedstartfromdatetime` 该选项可用于指定处理 changefeed 时的开始时间。 有关详细信息，请参阅 [Config options](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)。
 
 ### <a name="320"></a>3.2.0
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 - 修复了导致大型结果集在执行器中占用过多内存的回归 (例如，使用数百万行) ，最终导致错误 `java.lang.OutOfMemoryError: GC overhead limit exceeded` 。
 
 ### <a name="311"></a>3.1.1
@@ -94,15 +94,15 @@ ms.locfileid: "91326671"
 * 修复了流式处理检查点问题。
 
 ### <a name="305"></a>3.0.5
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 若要减少干扰，请在出现级别错误的情况下，修复无意中留下的消息的日志级别。
 
 ### <a name="304"></a>3.0.4
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 在分区拆分期间修复结构化流中的 bug。 Bug 可能导致某些缺少的更改源记录或用于检查点写入的 Null 异常。
 
 ### <a name="303"></a>3.0.3
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复了一个 bug，该 bug 导致为 readStream 提供的自定义架构被忽略。
 
 ### <a name="302"></a>3.0.2
@@ -110,7 +110,7 @@ ms.locfileid: "91326671"
 * 修复了一个回归 (unshaded JAR 包括) 的所有着色依赖关系，并将生成时间增加50%。
 
 ### <a name="301"></a>3.0.1
-#### <a name="key-bug-fixes"></a>关键 Bug 修复
+#### <a name="key-bug-fixes"></a>关键 bug 修复
 * 修复了导致 TCP 直接传输通过 RequestTimeoutException 失败的依赖项问题。
 
 ### <a name="300"></a>3.0.0
@@ -122,6 +122,6 @@ ms.locfileid: "91326671"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 的详细信息。
+详细了解 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。
 
 详细了解 [Apache Spark](https://spark.apache.org/)。

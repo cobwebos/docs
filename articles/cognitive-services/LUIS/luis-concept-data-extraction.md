@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541775"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
@@ -72,7 +72,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 |数据对象|数据类型|数据位置|值|
 |--|--|--|--|
-|Intent|String|topScoringIntent.intent|"GetStoreInfo"|
+|Intent|字符串|topScoringIntent.intent|"GetStoreInfo"|
 
 如果聊天机器人或 LUIS 调用应用基于不止一个意向评分来进行决策，则返回所有意向的评分。
 
@@ -134,8 +134,8 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 |数据对象|数据类型|数据位置|值|分数|
 |--|--|--|--|:--|
-|Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
-|Intent|String|intents[1].intent|"None"|0.0168218873|
+|Intent|字符串|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Intent|字符串|intents[1].intent|"None"|0.0168218873|
 
 如果添加预构建的域，则意向名称指示该域，例如 `Utilties` 或 `Communication` 以及意向：
 
@@ -195,9 +195,9 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 |域|数据对象|数据类型|数据位置|值|
 |--|--|--|--|--|
-|实用工具|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|通信|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
-||Intent|String|intents[2].intent|"None"|
+|实用工具|Intent|字符串|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|通信|Intent|字符串|intents[1].intent|<b>Communication</b>.StartOver"|
+||Intent|字符串|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>实体中的数据

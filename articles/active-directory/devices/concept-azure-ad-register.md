@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256432"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 注册设备
@@ -34,7 +34,7 @@ Azure AD 注册设备的目标是向用户提供对自带设备的支持 (BYOD) 
 |   | iOS/Android –公司门户或 Microsoft Authenticator 应用 |
 |   | MacOS –公司门户 |
 | **设备登录选项** | 最终用户本地凭据 |
-|   | 密码 |
+|   | Password |
 |   | Windows Hello |
 |   | PIN |
 |   | 其他设备的生物识别或模式 |

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660859"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect 和联合身份验证
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) Connect 可让你配置使用本地 Active Dir
 | [新增 AD FS WAP 服务器](how-to-connect-fed-management.md#addwapserver) |初始安装后，使用其他 Web 应用程序代理 (WAP) 服务器扩展 AD FS 场。 |
 | [添加新的联合域](how-to-connect-fed-management.md#addfeddomain) |添加其他要与 Azure AD 联合的域。 |
 | [更新 TLS/SSL 证书](how-to-connect-fed-ssl-update.md)| 更新 AD FS 场的 TLS/SSL 证书。 |
-| [续订 Microsoft 365 和 Azure AD 的联合身份验证证书](how-to-connect-fed-o365-certs.md)|使用 Azure AD 续订 O365 证书。|
+| [续签 Microsoft 365 和 Azure AD 的联合身份验证证书](how-to-connect-fed-o365-certs.md)|使用 Azure AD 续订 O365 证书。|
 | **其他联合配置** | |
 | [将 Azure AD 的多个实例与 AD FS 的单个实例联合](how-to-connect-fed-single-adfs-multitenant-federation.md) | 联合多个 Azure AD 与单个 AD FS 场| 
 | [添加自定义公司徽标/插图](how-to-connect-fed-management.md#customlogo) |通过指定 AD FS 登录页上显示的自定义徽标来修改登录体验。 |
