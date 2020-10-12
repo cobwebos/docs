@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service .
-ms.openlocfilehash: 163f93ab93890f27eb2a9b18cc23804595fcb822
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a12bfa042c8741814cedc70f1dcb67dedbfd331e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84870614"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400428"
 ---
 # <a name="tutorial-register-a-peering-service-connection-using-azure-powershell"></a>教程：使用 Azure PowerShell 注册对等互连服务连接
 
 在本教程中，你将了解如何使用 Azure PowerShell 注册对等互连服务。
 
-Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Office 365、Dynamics 365、软件即服务 (SaaS)、Azure 或可通过公共 Internet 访问的任何 Microsoft 服务）建立的连接。 在本文中，你将了解如何使用 Azure PowerShell 注册对等互连服务连接。
+Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云服务（例如 Microsoft 365、Dynamics 365、软件即服务 (SaaS) 服务、Azure 或可通过公共 Internet 访问的任何 Microsoft 服务）建立的连接。 在本文中，你将了解如何使用 Azure PowerShell 注册对等互连服务连接。
 
 如果还没有 Azure 订阅，请现在就创建一个[帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

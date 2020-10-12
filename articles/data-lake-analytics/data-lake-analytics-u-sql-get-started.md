@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128839"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 入门
@@ -24,7 +24,7 @@ U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处�
 * 有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](https://docs.microsoft.com/u-sql/)。
 * 若要了解 **U-SQL 设计理念**，请参阅 Visual Studio 博客文章 [U-SQL（使大数据处理更轻松的语言）简介](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在学习本文档中的 U-SQL 示例之前，请先阅读并完成[教程：使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。 该教程介绍了将 U-SQL 与针对 Visual Studio 的 Azure Data Lake 工具结合使用的机制。
 

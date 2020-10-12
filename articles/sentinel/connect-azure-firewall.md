@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: 05a2869152def0fc9a44defaa21f0643d9fdbb08
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504870"
 ---
 # <a name="connect-data-from-azure-firewall"></a>从 Azure 防火墙连接数据
@@ -28,7 +28,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 详细了解如何 [监视 Azure 防火墙日志](https://docs.microsoft.com/azure/firewall/tutorial-diagnostics)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你必须具有 Azure Sentinel 工作区的读取和写入权限。
 

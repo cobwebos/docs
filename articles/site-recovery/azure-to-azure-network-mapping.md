@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Site Recovery 中的两个区域之间映射虚拟网络
-description: 了解如何在两个 Azure 区域之间映射虚拟网络，以便将 Azure VM 灾难恢复与 Azure Site Recovery。
+description: 了解如何在两个 Azure 区域之间映射虚拟网络，以便使用 Azure Site Recovery 进行 Azure VM 灾难恢复。
 author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
 ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069486"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
@@ -33,7 +33,7 @@ ms.locfileid: "90069486"
 3. 在“添加网络映射”中，选择源和目标位置。**** 在本示例中，源 VM 在“东亚”区域运行，将复制到“东南亚”区域。
 
     ![选择源和目标](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. 现在，按相反方向创建网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
+3. 现在，创建反方向的网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
 
     ![添加网络映射窗格 - 选择目标网络的源和目标位置](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
@@ -84,8 +84,8 @@ ms.locfileid: "90069486"
 
 **目标网络** | **详细信息**
 --- | ---
-目标网络是故障转移 VNet | -目标 IP 地址将是具有相同 IP 地址的静态 IP 地址。 <br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。 例如：如果源 IP 地址是 10.0.0.19，故障转移网络使用范围 10.0.0.0/24，则分配给目标 VM 的下一个 IP 地址是 10.0.0.254。
-目标网络不是故障转移 VNet | -目标 IP 地址将是具有相同 IP 地址的静态 IP 地址。<br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。<br/><br/> 例如：如果源静态 IP 地址是 10.0.0.19，故障转移在范围为 10.0.0.0/24 的非故障转移网络中发生，则目标静态 IP 地址将是 10.0.0.0.19（如果该地址可用，否则是 10.0.0.254）。
+目标网络是故障转移 VNet | - 目标 IP 地址将是静态的，使用相同的 IP 地址。 <br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。 例如：如果源 IP 地址是 10.0.0.19，故障转移网络使用范围 10.0.0.0/24，则分配给目标 VM 的下一个 IP 地址是 10.0.0.254。
+目标网络不是故障转移 VNet | - 目标 IP 地址将是静态的，使用相同的 IP 地址。<br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。<br/><br/> 例如：如果源静态 IP 地址是 10.0.0.19，故障转移在范围为 10.0.0.0/24 的非故障转移网络中发生，则目标静态 IP 地址将是 10.0.0.0.19（如果该地址可用，否则是 10.0.0.254）。
 
 - 故障转移 VNet 是设置灾难恢复时选择的目标网络。
 - 我们建议始终使用非生产网络进行测试故障转移。

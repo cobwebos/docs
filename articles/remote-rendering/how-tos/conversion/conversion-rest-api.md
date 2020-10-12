@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87985608"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型转换 REST API
@@ -18,7 +18,7 @@ ms.locfileid: "87985608"
 
 ## <a name="regions"></a>区域
 
-请参阅要将请求发送到的基本 Url 的[可用区域列表](../../reference/regions.md)。
+请参阅要将请求发送到的基本 Url 的 [可用区域列表](../../reference/regions.md) 。
 
 ## <a name="common-headers"></a>常用标头
 
@@ -39,13 +39,13 @@ ms.locfileid: "87985608"
 转换服务向提供三个 REST API 终结点：
 
 - 使用与 Azure 远程呈现帐户链接的存储帐户开始模型转换。 
-- 使用提供的*共享访问签名 (SAS) *开始模型转换。
+- 使用提供的 *共享访问签名 (SAS) *开始模型转换。
 - 查询转换状态
 
 ### <a name="start-conversion-using-a-linked-storage-account"></a>使用链接的存储帐户开始转换
-你的 Azure 远程呈现帐户需要通过遵循有关如何[链接存储帐户](../create-an-account.md#link-storage-accounts)的步骤来访问提供的存储帐户。
+你的 Azure 远程呈现帐户需要通过遵循有关如何 [链接存储帐户](../create-an-account.md#link-storage-accounts)的步骤来访问提供的存储帐户。
 
-| 终结点 | 方法 |
+| 端点 | 方法 |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/create | POST |
 
@@ -54,7 +54,7 @@ ms.locfileid: "87985608"
 #### <a name="request-body"></a>请求正文
 
 > [!NOTE]
-> `input.folderPath`将检索到的所有内容，以便在 Azure 上执行转换。 如果 `input.folderPath` 未指定，则将检索容器的全部内容。 检索到的所有 blob 和文件夹都必须具有[有效的 Windows 文件名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
+> `input.folderPath`将检索到的所有内容，以便在 Azure 上执行转换。 如果 `input.folderPath` 未指定，则将检索容器的全部内容。 检索到的所有 blob 和文件夹都必须具有 [有效的 Windows 文件名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {
@@ -75,9 +75,9 @@ ms.locfileid: "87985608"
 }
 ```
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>使用提供的共享访问签名开始转换
-如果 ARR 帐户未链接到你的存储帐户，此 REST 接口允许你使用*共享访问签名 (SAS) *提供访问权限。
+如果 ARR 帐户未链接到你的存储帐户，此 REST 接口允许你使用 *共享访问签名 (SAS) *提供访问权限。
 
-| 终结点 | 方法 |
+| 端点 | 方法 |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
@@ -85,13 +85,13 @@ ms.locfileid: "87985608"
 
 #### <a name="request-body"></a>请求正文
 
-请求正文与上面的 "创建 REST" 调用相同，但输入和输出包含* (SAS) 令牌的共享访问签名*。 这些令牌提供对存储帐户的访问，用于读取输入和写入转换结果。
+请求正文与上面的 "创建 REST" 调用相同，但输入和输出包含 * (SAS) 令牌的共享访问签名*。 这些令牌提供对存储帐户的访问，用于读取输入和写入转换结果。
 
 > [!NOTE]
 > 这些 SAS URI 标记是查询字符串，而不是完整的 URI。 
 
 > [!NOTE]
-> `input.folderPath`将检索到的所有内容，以便在 Azure 上执行转换。 如果 `input.folderPath` 未指定，则将检索容器的全部内容。 检索到的所有 blob 和文件夹都必须具有[有效的 Windows 文件名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
+> `input.folderPath`将检索到的所有内容，以便在 Azure 上执行转换。 如果 `input.folderPath` 未指定，则将检索容器的全部内容。 检索到的所有 blob 和文件夹都必须具有 [有效的 Windows 文件名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {
@@ -118,7 +118,7 @@ ms.locfileid: "87985608"
 使用上述某个 REST 调用开始正在进行的转换的状态可以使用以下接口进行查询：
 
 
-| 终结点 | 方法 |
+| 端点 | 方法 |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/**conversionId** | GET |
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87448882"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
@@ -139,9 +139,9 @@ FROM data
 
 对于有三个或三个以上输入连接到同一事件中心的查询，请创建单独的使用者组。 这需要创建额外的流分析输入。
 
-### <a name="create-separate-inputs-with-different-consumer-groups"></a>使用不同的使用者组创建单独的输入
+### <a name="create-separate-inputs-with-different-consumer-groups"></a>使用不同的使用者组创建不同的输入
 
-你可以使用不同的使用者组为同一事件中心创建不同的输入。 以下联合查询是一个示例，其中*InputOne*和*InputTwo*引用相同的事件中心源。 任何查询都可以具有不同的使用者组的单独输入。 UNION 查询只是一个示例。
+你可以使用不同的使用者组为同一事件中心创建不同的输入。 下面的 UNION 查询是一个示例，其中 InputOne 和 InputTwo 指代同一事件中心源 。 任何查询都可以使用不同的使用者组创建不同的输入 UNION 查询只是一个示例。
 
 ```sql
 WITH 
@@ -161,13 +161,13 @@ SELECT foo FROM DataTwo
 
 ```
 
-## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>每个分区的读取者超过 IoT 中心限制
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>每个分区的读取器数超过 IoT 中心限制
 
-流分析作业使用 IoT 中心内置的[与事件中心兼容的终结点](../iot-hub/iot-hub-devguide-messages-read-builtin.md)连接和读取 IoT 中心的事件。 如果每个分区的读取超过 IoT 中心的限制，则可以使用[事件中心的解决方案](#readers-per-partition-exceeds-event-hubs-limit)来解决该问题。 可以通过 IoT 中心门户终结点会话或通过[Iot 中心 SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)为内置终结点创建使用者组。
+流分析作业使用 IoT 中心内置的[事件中心集线器兼容终结点](../iot-hub/iot-hub-devguide-messages-read-builtin.md)从 IoT 中心连接和读取事件。 如果每个分区的读取数超过了 IoT 中心的限制，则可以使用[事件中心的解决方案](#readers-per-partition-exceeds-event-hubs-limit)来解决它。 可以通过 IoT 中心门户终结点会话或通过[IoT 中心 SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)为内置终结点创建使用者组。
 
 ## <a name="get-help"></a>获取帮助
 
-如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

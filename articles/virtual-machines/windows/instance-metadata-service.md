@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
 ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086702"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
@@ -518,7 +518,7 @@ createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
 encryptionSettings | 磁盘的加密设置
-图像   | 源用户映像虚拟硬盘
+image   | 源用户映像虚拟硬盘
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 osType  | 磁盘中包含的 OS 类型
@@ -533,7 +533,7 @@ caching | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
-图像   | 源用户映像虚拟硬盘
+image   | 源用户映像虚拟硬盘
 lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
@@ -839,7 +839,7 @@ Visual Basic  | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务返回标准 HTTP 错误。 例如：
 
-HTTP 状态代码 | 原因
+HTTP 状态代码 | Reason
 -----------------|-------
 200 正常 |
 400 错误的请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少参数 `format=json`

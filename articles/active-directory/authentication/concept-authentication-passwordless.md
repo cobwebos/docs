@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773920"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
@@ -164,7 +164,7 @@ Azure AD 无密码登录功能当前以预览版提供。 请注意以下事项�
 
 下面是在选择 Microsoft 无密码技术时要考虑的一些因素：
 
-||**Windows Hello for Business**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
+||**Windows Hello 企业版**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>电话 (运行 Android 6.0 或更高版本的 iOS 和 Android 设备。 ) |Windows 10 版本1903或更高版本<br>Azure Active Directory|
 |**模式**|平台|软件|硬件|

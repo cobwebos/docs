@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
 ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87446178"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
@@ -42,7 +42,7 @@ Azure Monitor 支持比[经典警报](./alerts-classic-portal.md)更具优势的
  指标警报支持针对使用维度的指标发出警报。 可以使用维度将指标筛选到适当级别。 受支持的解决方案将提供 [Log Analytics 工作区](./metrics-supported.md#microsoftoperationalinsightsworkspaces)中受日志支持的指标的完整列表。
 
 > [!NOTE]
-> 若要查看通过[Azure Monitor 指标](./metrics-charts.md)从 Log Analytics 工作区中提取的支持指标，必须针对该特定指标创建日志指标警报。 在 "日志" 的 "指标警报" 中选择的维度仅在通过 Azure Monitor 度量值时才会显示。
+> 要通过 [Azure Monitor - 指标](./metrics-charts.md)查看从 Log Analytics 工作区中提取的受支持指标，必须针对该特定指标创建日志的指标警报。 只能通过“Azure Monitor - 指标”浏览在“日志的指标警报”中选择的维度。
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>为 Log Analytics 创建指标警报
 
@@ -53,25 +53,25 @@ Azure Monitor 支持比[经典警报](./alerts-classic-portal.md)更具优势的
 
 在针对 Log Analytics 数据收集的日志指标正常工作之前，必须设置以下各项，并确保这些项可用：
 
-1. **活动的 Log Analytics 工作区**：有效且活动的 Log Analytics 工作区必须存在。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../learn/quick-create-workspace.md)。
-2. 为**Log Analytics 工作区配置代理**：需要为 Azure vm （和/或）本地 vm 配置代理，以便将数据发送到在前面的步骤中使用的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics - 代理概述](./agents-overview.md)。
-3. **已安装支持的 Log Analytics 解决方案**： Log Analytics 解决方案应配置并将数据发送到 Log Analytics 工作区支持的解决方案是[Windows & Linux 的性能计数器](./data-sources-performance-counters.md)、[代理运行状况的检测信号记录](../insights/solution-agenthealth.md)、[更新管理](../../automation/update-management/update-mgmt-overview.md)和[事件数据](./data-sources-windows-events.md)。
-4. **配置为发送日志的 Log Analytics 解决方案**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](./metrics-supported.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](./data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。**
+1. **活动的 Log Analytics 工作区**：必须存在一个有效且活动的 Log Analytics 工作区。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../learn/quick-create-workspace.md)。
+2. **为 Log Analytics 工作区配置了代理**：需要为 Azure VM 和/或本地 VM 配置代理，以便将数据发送到前一步骤中使用的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics - 代理概述](./agents-overview.md)。
+3. **安装了受支持的 Log Analytics 解决方案**：Log Analytics 解决方案应已进行配置并可将数据发送到 Log Analytics 工作区 - 支持的解决方案为[适用于 Windows 和 Linux 的性能计数器](./data-sources-performance-counters.md)、[代理运行状况的检测信号记录](../insights/solution-agenthealth.md)、[更新管理](../../automation/update-management/update-mgmt-overview.md)和[事件数据](./data-sources-windows-events.md)。
+4. **配置为发送日志的 Log Analytics 解决方案**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](./metrics-supported.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](./data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。
 
 ## <a name="configuring-metric-alert-for-logs"></a>配置日志的指标警报
 
  可以使用 Azure 门户、资源管理器模板、REST API、PowerShell 和 Azure CLI 来创建和管理指标警报。 由于日志的指标警报是指标警报的变体，在满足先决条件后，可为指定的 Log Analytics 工作区创建日志的指标警报。 [指标警报](./alerts-metric-near-real-time.md)的所有特征和功能同样适用于日志的指标警报，包括有效负载架构、适用的配额限制和计费价格。
 
-有关分步详细信息和示例，请参阅[创建和管理指标警报](https://aka.ms/createmetricalert)。 具体而言，对于日志的指标警报，请遵照说明管理指标警报，并确保：
+有关详细分步说明和示例，请参阅[创建和管理指标警报](https://aka.ms/createmetricalert)。 具体而言，对于日志的指标警报，请遵照说明管理指标警报，并确保：
 
-- 指标警报的目标是有效的 Log Analytics 工作区**
-- 为选定 Log Analytics 工作区的指标警报选择的信号类型为“指标”******
+- 指标警报的目标是有效的 Log Analytics 工作区
+- 为选定 Log Analytics 工作区的指标警报选择的信号类型为“指标”
 - 使用维度筛选器根据特定的条件或资源进行筛选；日志的指标是多维的
-- 配置信号逻辑时，可以创建单个警报来跨越多个维度值（例如“计算机”）**
+- 配置信号逻辑时，可以创建单个警报来跨越多个维度值（例如“计算机”）
 - 如果**不**使用 Azure 门户为选定的 *Log Analytics 工作区*创建指标警报，则用户必须先手动创建一个显式规则，以便使用 [Azure Monitor - 计划的查询规则](/rest/api/monitor/scheduledqueryrules)将日志数据转换为指标。
 
 > [!NOTE]
-> 通过 Azure 门户对应的规则为 Log Analytics 工作区创建指标警报时，会自动在后台创建用于将日志数据转换为[Azure Monitor](/rest/api/monitor/scheduledqueryrules)指标的规则，*而无需任何用户干预或操作*。 如果不使用 Azure 门户创建日志的指标警报，请参阅[日志的指标警报的资源模板](#resource-template-for-metric-alerts-for-logs)部分，了解在创建指标警报之前，创建基于 ScheduledQueryRule 的“日志到指标”转换规则的示例方法 - 否则没有任何数据可用于创建日志的指标警报。
+> 通过 Azure 门户为 Log Analytics 工作区创建指标警报时，会自动在后台创建相应的规则用于通过 [Azure Monitor - 计划的查询规则](/rest/api/monitor/scheduledqueryrules)将日志数据转换为指标，无需任何用户干预或操作。 如果不使用 Azure 门户创建日志的指标警报，请参阅[日志的指标警报的资源模板](#resource-template-for-metric-alerts-for-logs)部分，了解在创建指标警报之前，创建基于 ScheduledQueryRule 的“日志到指标”转换规则的示例方法 - 否则没有任何数据可用于创建日志的指标警报。
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>日志的指标警报的资源模板
 

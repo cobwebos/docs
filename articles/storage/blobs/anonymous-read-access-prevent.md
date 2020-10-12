@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086566"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 blob 的匿名公共读取访问
 
-对 Azure 存储中容器和 blob 的匿名公共读取访问是共享数据的一种简便方法，但也可能会带来安全风险。 非常重要的是，必须谨慎管理匿名访问，并了解如何评估匿名访问数据。 对于可公开访问的数据，操作复杂性、人为错误或恶意攻击会导致成本高昂的数据泄露。 Microsoft 建议仅在需要时为应用程序方案启用匿名访问。
+对 Azure 存储中的容器和 blob 进行匿名公共读取访问虽然是共享数据的一种简便方法，但也可能会带来安全风险。 非常重要的是，必须谨慎管理匿名访问，并了解如何评估匿名访问数据。 对于可公开访问的数据，操作复杂性、人为错误或恶意攻击会导致成本高昂的数据泄露。 Microsoft 建议仅在需要时为应用程序方案启用匿名访问。
 
-默认情况下，始终禁止对 blob 数据进行公共访问。 但是，存储帐户的默认配置允许具有适当权限的用户配置对存储帐户中的容器和 blob 的公共访问。 为增强安全性，无论单独容器的公共访问设置如何，都可以禁止对存储帐户进行所有公共访问。 不允许对存储帐户进行公共访问会阻止用户在帐户中启用容器的公共访问权限。 如果你的方案需要存储帐户，Microsoft 建议你禁止对其进行公共访问。 禁用公共访问有助于防止意外的匿名访问导致的数据泄露。
+默认情况下，始终禁止对 blob 数据进行公共访问。 但是，存储帐户的默认配置允许具有适当权限的用户配置对存储帐户中的容器和 blob 的公共访问。 为增强安全性，无论单独容器的公共访问设置如何，都可以禁止对存储帐户进行所有公共访问。 禁止对存储帐户进行公共访问可以阻止用户启用帐户中的容器的公共访问权限。 若非有必要，Microsoft 建议禁止对存储帐户进行公共访问。 禁止公共访问有助于防止意外的匿名访问产生的数据泄露。
 
 当你禁止访问存储帐户的公共 blob 时，Azure 存储将拒绝对该帐户的所有匿名请求。 帐户不允许公共访问后，该帐户中的容器以后无法进行公共访问。 已配置为公开访问的所有容器将不再接受匿名请求。 有关详细信息，请参阅 [配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
 
@@ -48,18 +48,23 @@ ms.locfileid: "90086566"
 
     新度量值将显示给定时间间隔内针对 Blob 存储的事务数之和。 生成的指标显示如下图所示：
 
-    :::image type="content" source="media/anonymous-read-access-prevent/configure-metric-blob-transactions.png" alt-text="显示如何将指标配置为对 blob 事务求和的屏幕截图":::
+    :::image type="content" source="media/anonymous-read-access-prevent/configure-metric-blob-transactions.png" alt-text="显示如何将指标配置为对 blob 事务求和的屏幕截图&quot;:::
 
-1. 接下来，选择 " **添加筛选器** " 按钮，为匿名请求的指标创建筛选器。
-1. 在 " **筛选器** " 对话框中，指定以下值：
+1. 接下来，选择 &quot; **添加筛选器** &quot; 按钮，为匿名请求的指标创建筛选器。
+1. 在 &quot; **筛选器** &quot; 对话框中，指定以下值：
     1. 将 **属性** 值设置为 *Authentication*。
-    1. 将 " **运算符** " 字段设置为等号 (=) 。
+    1. 将 &quot; **运算符** " 字段设置为等号 (=) 。
     1. 将 " **值** " 字段设置为 " *匿名*"。
 1. 在右上角，选择要查看指标的时间间隔。 还可以通过指定从1分钟到1个月之间的时间间隔，来指示请求聚合的粒度。
 
 配置指标后，匿名请求将开始显示在图形上。 下图显示在过去的30分钟内聚合的匿名请求。
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="显示针对 Blob 存储的聚合匿名请求的屏幕截图":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="显示如何将指标配置为对 blob 事务求和的屏幕截图&quot;:::
+
+1. 接下来，选择 &quot; **添加筛选器** &quot; 按钮，为匿名请求的指标创建筛选器。
+1. 在 &quot; **筛选器** &quot; 对话框中，指定以下值：
+    1. 将 **属性** 值设置为 *Authentication*。
+    1. 将 &quot; **运算符** ":::
 
 你还可以配置警报规则，以便在针对存储帐户发出一定数量的匿名请求时通知你。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../../azure-monitor/platform/alerts-metric.md)。
 
@@ -85,7 +90,12 @@ Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析�
 1. 在 " **类别详细信息**" 下的 " **日志** " 部分中，选择要记录的请求的类型。 所有匿名请求都是读取请求，因此请选择 " **StorageRead** " 以捕获匿名请求。
 1. 在 " **目标详细信息**" 下，选择 " **发送到 Log Analytics**"。 选择之前创建的 "订阅" 和 "Log Analytics" 工作区，如下图所示。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="显示如何为日志记录请求创建诊断设置的屏幕截图":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="显示如何将指标配置为对 blob 事务求和的屏幕截图&quot;:::
+
+1. 接下来，选择 &quot; **添加筛选器** &quot; 按钮，为匿名请求的指标创建筛选器。
+1. 在 &quot; **筛选器** &quot; 对话框中，指定以下值：
+    1. 将 **属性** 值设置为 *Authentication*。
+    1. 将 &quot; **运算符** ":::
 
 创建诊断设置后，随后会根据该设置记录对存储帐户的请求。 有关详细信息，请参阅 [创建诊断设置以收集 Azure 中的资源日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
 
@@ -241,7 +251,12 @@ Azure 策略支持确定对资源评估策略规则时会发生什么情况的�
 1. 筛选在上一步中创建的策略分配名称的结果。 该报表显示不符合策略的资源数量。
 1. 你可以向下钻取到报表以获取更多详细信息，包括不合规的存储帐户的列表。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="显示 blob 公共访问审核策略的相容性报告的屏幕截图":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="显示如何将指标配置为对 blob 事务求和的屏幕截图&quot;:::
+
+1. 接下来，选择 &quot; **添加筛选器** &quot; 按钮，为匿名请求的指标创建筛选器。
+1. 在 &quot; **筛选器** &quot; 对话框中，指定以下值：
+    1. 将 **属性** 值设置为 *Authentication*。
+    1. 将 &quot; **运算符** ":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>使用 Azure 策略强制实施授权访问
 
@@ -277,7 +292,12 @@ Azure 策略通过确保 Azure 资源符合要求和标准来支持云监管。 
 
 下图显示了当你尝试创建一个存储帐户时，如果你尝试创建一个存储帐户以允许公共访问 (新帐户的默认值，则在此情况下) 会要求拒绝公共访问。
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="显示在违反策略时创建存储帐户时出现的错误的屏幕截图":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="显示如何将指标配置为对 blob 事务求和的屏幕截图&quot;:::
+
+1. 接下来，选择 &quot; **添加筛选器** &quot; 按钮，为匿名请求的指标创建筛选器。
+1. 在 &quot; **筛选器** &quot; 对话框中，指定以下值：
+    1. 将 **属性** 值设置为 *Authentication*。
+    1. 将 &quot; **运算符** ":::
 
 ## <a name="next-steps"></a>后续步骤
 

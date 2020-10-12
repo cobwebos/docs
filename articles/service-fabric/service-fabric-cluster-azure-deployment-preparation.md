@@ -4,10 +4,10 @@ description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群�
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281321"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
@@ -28,7 +28,7 @@ ms.locfileid: "87281321"
 * 群集的可靠性和持久性特征
 
 ### <a name="select-the-initial-number-of-node-types"></a>选择初始节点类型数目
-首先，需要确定要创建的群集用于什么目的， 以及打算要将哪些类型的应用程序部署到此群集中。 应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？ （构成应用程序的）服务是否有不同的基础结构要求，例如，更多的 RAM 或更高的 CPU 周期？ Service Fabric 群集可以包括多个节点类型：主节点类型，以及一个或多个非主节点类型。 每个节点类型将映射到虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可以设置[节点属性和放置约束][placementconstraints]，以将特定服务限制为特定节点类型。  有关详细信息，请参阅[Service Fabric 群集容量规划](service-fabric-cluster-capacity.md)。
+首先，需要确定要创建的群集用于什么目的， 以及打算要将哪些类型的应用程序部署到此群集中。 应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？ （构成应用程序的）服务是否有不同的基础结构要求，例如，更多的 RAM 或更高的 CPU 周期？ Service Fabric 群集可以包括多个节点类型：主节点类型，以及一个或多个非主节点类型。 每个节点类型将映射到虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可以设置[节点属性和放置约束][placementconstraints]，以将特定服务限制为特定节点类型。  有关详细信息，请参阅 [Service Fabric 群集容量计划](service-fabric-cluster-capacity.md)。
 
 ### <a name="select-node-properties-for-each-node-type"></a>选择每个节点类型的节点属性
 节点类型定义关联规模集中 VM 的 VM SKU、数目和属性。
