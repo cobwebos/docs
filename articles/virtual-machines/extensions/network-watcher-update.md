@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
 ms.openlocfilehash: c386685d63894472623ffc4392a529541a91391c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410301"
 ---
 # <a name="how-to-update-the-network-watcher-extension-to-the-latest-the-version"></a>如何将网络观察程序扩展更新到最新版本 
@@ -25,7 +25,7 @@ ms.locfileid: "91410301"
 
 [Azure 网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)是一项网络性能监视、诊断和分析服务，可以对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是按需捕获网络流量和运行 Azure 虚拟机上的其他高级功能所必需的。 网络观察程序扩展由连接监视器、连接监视器 (预览) 、连接故障排除和数据包捕获等功能使用。   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文档假定你已在虚拟机中安装了网络观察程序扩展，并提供有关将其更新到最新版本的说明。 
 
 ## <a name="latest-version"></a>最新版本

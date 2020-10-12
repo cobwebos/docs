@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934848"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>用于 IoT 事件聚合的 Defender
@@ -81,11 +81,11 @@ ms.locfileid: "90934848"
 
 | 配置名称 | 默认值 |
 |:-----------|:---------------|
-| aggregationEnabledProcessCreate | 是 |
+| aggregationEnabledProcessCreate | true |
 | aggregationIntervalProcessCreate | PT1H.JSON|
-| aggregationEnabledConnectionCreate | 是 |
+| aggregationEnabledConnectionCreate | true |
 | aggregationIntervalConnectionCreate | PT1H.JSON|
-| aggregationEnabledProcessTerminate | 是 |
+| aggregationEnabledProcessTerminate | true |
 | aggregationIntervalProcessTerminate | PT1H.JSON|
 |
 

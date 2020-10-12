@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
 ms.openlocfilehash: 6bb3b8dbc7887419f7901a52b56c25f60c869abb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994855"
 ---
 # <a name="application-development-on-intel-sgx"></a>Intel SGX 上的应用程序开发 
@@ -59,5 +59,5 @@ OE SDK 旨在充当任何 CSP 的任何硬件上的单个抽象层。 可以在 
 
 
 ## <a name="next-steps"></a>后续步骤 
-- [部署机密计算 DCsv2 系列虚拟机](quick-create-portal.md)
+- [DCsv2-Series 虚拟机部署机密计算](quick-create-portal.md)
 - [下载并安装 OE SDK 并开始开发应用程序](https://github.com/openenclave/openenclave)

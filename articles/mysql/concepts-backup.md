@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89418579"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
@@ -27,20 +27,20 @@ Azure Database for MySQL 对数据文件和事务日志进行备份。 根据受
 
 #### <a name="servers-with-up-to-4-tb-storage"></a>具有最多 4 TB 存储空间的服务器
 
-对于支持最多 4 TB 存储空间的服务器，每周进行一次完整备份。 差异备份一天发生两次。 每五分钟执行一次事务日志备份。
+对于支持最多 4 TB 存储空间的服务器，每周进行一次完整备份。 差异备份一天进行两次。 事务日志备份每五分钟进行一次。
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>具有高达 16 TB 存储空间的服务器
-在 [Azure 区域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新预配的服务器都可支持高达 16 TB 的存储。 这些大型存储服务器上的备份基于快照。 在创建服务器后立即计划第一次完整的快照备份。 此第一个完整快照备份将保留为服务器的基准备份。 后续的快照备份仅为差异备份。 
+在 [Azure 区域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新预配的服务器都可支持高达 16 TB 的存储。 这些大型存储服务器上的备份基于快照。 第一次完整快照备份在创建服务器后立即进行计划。 此第一个完整快照备份将保留为服务器的基准备份。 后续快照备份仅为差异备份。 
 
-差异快照备份每天至少发生一次。 差异快照备份不按固定计划进行。 差异快照备份每24小时进行一次，除非 binlog 中的事务日志 (的事务日志) 在上次差异备份后超过 50 GB。 一天内，最多允许6个差异快照。 
+一天至少进行一次差异快照备份。 差异快照备份不按固定计划进行。 差异快照备份每24小时进行一次，除非 binlog 中的事务日志 (的事务日志) 在上次差异备份后超过 50 GB。 一天内，最多允许有 6 张差异快照。 
 
-每五分钟执行一次事务日志备份。 
+事务日志备份每五分钟进行一次。 
 
 ### <a name="backup-retention"></a>备份保留
 
 根据服务器上的备份保持期设置来保留备份。 可以选择 7 到 35 天的保留期。 默认保持期为 7 天。 可以在服务器创建期间或以后通过使用 [Azure 门户](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration)或 [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration) 更新备份配置来设置保留期。 
 
-备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 从恢复的角度来看，备份保留期也可以视为恢复时段。 在备份保留期间内执行时间点还原所需的所有备份都保留在备份存储中。 例如，如果 "备份保留期" 设置为 "7 天"，则会将恢复时段视为 "最后7天"。 在这种情况下，将保留在过去 7 天内还原服务器所需的所有备份。 具有7天的备份保留时段：
+备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 从恢复的角度来看，备份保留期也可以视为恢复时段。 在备份保留期间内执行时间点还原所需的所有备份都保留在备份存储中。 例如，如果备份保留期设置为 7 天，则可认为恢复时段是最近 7 天。 在这种情况下，将保留在过去 7 天内还原服务器所需的所有备份。 具有7天的备份保留时段：
 - 具有最多 4 TB 存储空间的服务器将保留最多2个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
 -   具有高达 16 TB 存储的服务器将保留完整的数据库快照、所有差异快照和事务日志备份，过去8天。
 
@@ -78,9 +78,9 @@ Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作�
 可以还原到备份保留期中的任意时间点，不管备份冗余选项如何。 新服务器在原始服务器所在的 Azure 区域中创建。 它在创建时，使用原始服务器在定价层、计算的代、vCore 数、存储大小、备份保留期和备份冗余选项方面的配置。
 
 > [!NOTE]
-> 有两个服务器参数 (重置为默认值，并且不会从主服务器复制到还原操作之后) 
-> * time_zone-要设置为默认值**系统**的此值
-> * event_scheduler-已还原服务器上的 event_scheduler 设置为**OFF**
+> 还原操作完成后，有两个服务器参数重置为默认值（而不是从主服务器复制）
+> * time_zone - 此值设置为默认值“SYSTEM”
+> * event_scheduler - 还原的服务器上的 event_scheduler 设置为“OFF”
 >
 > 需要通过重新配置[服务器参数](howto-server-parameters.md)来设置这些服务器参数
 

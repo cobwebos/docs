@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 4c6b8b0bfa78dca5ca32c8c72edcc463ebb9057a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322132"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
@@ -70,7 +70,7 @@ Jeff 继续浏览高优先级和中优先级建议，并进行有关实施的决
 
 ### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>强制实施建议以防止安全配置错误
 
-为了确保用户不会创建对 Jeff 分数产生负面影响的资源，他们对建议最重要的建议配置了 "强制" 和 "拒绝" 选项。 有关详细信息 [，请参阅防止强制/拒绝建议](prevent-misconfigurations.md)的错误配置。
+为了确保用户不会创建对 Jeff 分数产生负面影响的资源，他们对建议最重要的建议配置了 "强制" 和 "拒绝" 选项。 有关详细信息，请参阅[使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)。
 
 
 ## <a name="conclusion"></a>结论

@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322875"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
@@ -36,7 +36,7 @@ ms.locfileid: "89322875"
 | 资源位置  | 指明资源正在其中运行的数据中心。| `JA East`|
 | 已耗用的服务 | 使用的 Azure 平台服务。| `Microsoft.Compute`|
 | 资源组 | 部署的资源正在其中运行的资源组。 有关详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。|`MyRG`|
-| 实例 ID | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>or<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| 实例 ID | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>或<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Tags| 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何使用 [CLI](./linux/tag.md) 或 [PowerShell](./windows/tag.md) 标记虚拟机这仅适用于资源管理器 vm。| `{"myDepartment":"RD","myUser":"myName"}`|
 | 其他信息 | 服务特定的元数据。 对于 VM，我们在其他信息字段中填充以下数据： <br><br> 映像类型 - 所运行的特定映像。 在“映像类型”下找到受支持字符串的完整列表。<br><br> 服务类型：所部署的大小。<br><br> VMName：VM 的名称。 仅规模集 VM 才填充此字段。 如果需要规模集 VM 的 VM 名称，可在上面的实例 ID 字符串中找到。<br><br> UsageType：指定其所代表的使用情况类型。<br><br> ComputeHR 是基础 VM（如 Standard_D1_v2）的计算小时数使用情况。<br><br> ComputeHR_SW 是 VM 使用高级软件（如 Microsoft R Server）产生的高级软件费用。 | 虚拟机<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>虚拟机规模集<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>高级软件<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
@@ -59,7 +59,7 @@ ms.locfileid: "89322875"
 - Windows Server Preview 
 
 ## <a name="service-type"></a>服务类型
-其他信息字段中的服务类型字段对应所部署的 VM 的确切大小。 高级存储 VM（基于 SSD）和非高级存储 VM（基于 HDD）的定价相同。 如果部署基于 SSD 的大小（如标准 \_ DS2 \_ v2），则会在 `Standard\_D2\_v2 VM` "计量子类别" 列中看到非 ssd 大小 () ，并在 `Standard\_DS2\_v2` "其他信息" 字段中看到 SSD 大小 () 。
+其他信息字段中的服务类型字段对应所部署的 VM 的确切大小。 高级存储 VM（基于 SSD）和非高级存储 VM（基于 HDD）的定价相同。 如果部署基于 SSD 的大小（如标准 \_ DS2 \_ v2），则会在 "计量 Sub-Category" 列中看到非 ssd 大小 (`Standard\_D2\_v2 VM`) ，并 `Standard\_DS2\_v2` 在 "其他信息" 字段中找到 SSD 大小的 () 。
 
 ## <a name="region-names"></a>区域名称
 使用情况详细信息“资源位置”字段中填充的区域名称与 Azure 资源管理器中使用的区域名称不同。 以下是区域值之间的映射：

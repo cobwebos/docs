@@ -15,10 +15,10 @@ ms.date: 09/09/2020
 ms.author: mlottner
 ms.custom: references_regions
 ms.openlocfilehash: 19263f8db58c8d20288d3ae74c24efd85667bc33
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933476"
 ---
 # <a name="azure-defender-for-iot-prerequisites"></a>Azure Defender for IoT 必备组件
@@ -76,7 +76,7 @@ Defender for IoT 将所有欧洲地区的所有流量路由到西欧的区域数
 在开始之前，请查看 IoT 中心位置以验证服务可用性。
 
 1. 打开 IoT 中心。
-1. 单击“概览”。
+1. 单击“概览”。 
 1. 验证列出的位置是否与其中一个 [受支持的服务区域](#supported-service-regions)匹配。
 
 ## <a name="supported-platforms-for-agents"></a>支持的代理平台

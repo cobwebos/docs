@@ -1,18 +1,18 @@
 ---
-title: 迁移到 Kubernetes
+title: 迁移到 Bridge to Kubernetes
 services: azure-dev-spaces
 ms.date: 09/21/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，桥到 Kubernetes
 ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994628"
 ---
-# <a name="migrating-to-bridge-to-kubernetes"></a>迁移到 Kubernetes
+# <a name="migrating-to-bridge-to-kubernetes"></a>迁移到 Bridge to Kubernetes
 
 桥接 Kubernetes 为使用 Azure Dev Spaces 的许多开发方案提供更轻量的替代方法。 桥接 Kubernetes 是在[Visual Studio][vs]   和 [Visual Studio Code][vsc]中使用扩展的仅限客户端体验。  
 
@@ -34,12 +34,12 @@ Azure Dev Spaces 帮助 Kubernetes 开发人员使用直接在其 AKS 群集中�
 
 Azure Dev Spaces 和桥接 Kubernetes 具有类似的功能，它们在多个区域中也有所不同：
 
-| 需求  | Azure Dev Spaces  | 桥接 Kubernetes  |
+| 要求  | Azure Dev Spaces  | Bridge to Kubernetes  |
 |---------------|-------------------|--------------------------------|
 | Azure Kubernetes 服务 | 15个 Azure 区域 | 任何 AKS 服务区域    |
 | **安全性** |
 | 群集上所需的安全访问  | AKS 群集参与者  | Kubernetes RBAC-部署更新   |
-| 开发计算机上所需的安全访问  | 空值  | 本地管理/sudo   |
+| 开发计算机上所需的安全访问  | 不适用  | 本地管理/sudo   |
 | **可用性** |
 | 独立于 Kubernetes 和 Docker 项目  | 否  | 是   |
 | 自动回滚更改，后期调试  | 否  | 是   |
@@ -120,7 +120,7 @@ Azure Dev Spaces 和桥接到 Kubernetes 之间的最大差异在于代码的运
 详细了解 Bridge 到 Kubernetes 的工作原理。
 
 > [!div class="nextstepaction"]
-> [桥到 Kubernetes 的工作原理][how-it-works-bridge-to-kubernetes]
+> [Bridge to Kubernetes 的工作原理][how-it-works-bridge-to-kubernetes]
 
 
 [azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli

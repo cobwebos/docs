@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934304"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>什么是启用了 Azure Arc 的 PostgreSQL 超大规模？
@@ -43,18 +43,18 @@ ms.locfileid: "90934304"
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc PostgreSQL 超大规模
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="已启用 Azure Arc PostgreSQL 超大规模":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database for PostgreSQL 超大规模 (Citus) ":::
 
 这是可用于启用了 Azure Arc 的数据服务的 Postgres 数据库引擎的超大规模外形规格。 它还由启用超大规模体验的 Citus 扩展提供支持。 按照此外观，我们的客户提供了托管系统和运行系统的基础结构。
 
 ## <a name="next-steps"></a>后续步骤
 - **创建**
    > 想尝试一下吗？  
-   > 在 Azure Kubernetes Service 上快速开始使用 [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) (AKS) 、AWS 弹性 Kubernetes SERVICE (EKS) 、Google Cloud Kubernetes ENGINE (GKE) 或 Azure VM。
+   > 在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes 服务 (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中，通过 [Azure Arc 快速入门](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)快速开始操作。
 
    - **创建**
       - [安装客户端工具](install-client-tools.md)
-      - [创建 Azure Arc 数据控制器](create-data-controller.md) (需要先安装客户端工具) 
+      - [创建 Azure Arc 数据控制器](create-data-controller.md)（首先需要安装客户端工具）
       - [在 Azure arc 上创建 Azure Database for PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md) ， (需要首先创建 azure arc 数据控制器。 ) 
 - [**阅读有关启用了 Azure Arc 的数据服务的详细信息**](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [**了解 Azure Arc**](https://aka.ms/azurearc)

@@ -6,10 +6,10 @@ ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378111"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM 模板测试工具包的默认测试用例
@@ -102,13 +102,13 @@ ms.locfileid: "89378111"
 }
 ```
 
-## <a name="environment-urls-cant-be-hardcoded"></a>环境 Url 不能硬编码
+## <a name="environment-urls-cant-be-hardcoded"></a>环境 URL 不能硬编码
 
-测试名称： **DeploymentTemplate 不能包含硬编码 Uri**
+测试名称：**DeploymentTemplate 不得包含硬编码 Uri**
 
-不要在模板中硬编码环境 Url。 请改用 [环境函数](template-functions-deployment.md#environment) 在部署期间动态获取这些 url。 有关被阻止的 URL 主机的列表，请参阅该 [测试用例](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)。
+请勿在模板中对环境 URL 进行硬编码。 请改用[环境函数](template-functions-deployment.md#environment)在部署期间动态获取这些 URL。 有关被阻止的 URL 主机的列表，请参阅[测试用例](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1)。
 
-下面的示例将 **无法** 进行此测试，因为 URL 是硬编码的。
+下面的示例未通过此测试，因为 URL 已进行硬编码。
 
 ```json
 "variables":{
@@ -116,7 +116,7 @@ ms.locfileid: "89378111"
 }
 ```
 
-与[concat](template-functions-string.md#concat)或[uri](template-functions-string.md#uri)一起使用时，该测试也**会失败**。
+与 [concat](template-functions-string.md#concat) 或 [uri](template-functions-string.md#uri) 一起使用时，此测试也会失败。
 
 ```json
 "variables":{
@@ -234,7 +234,7 @@ ms.locfileid: "89378111"
 
 应将资源的位置设置为[模板表达式](template-expressions.md)或 `global`。 模板表达式通常使用上一测试中所述的位置参数。
 
-下面的示例将 **无法** 进行此测试，因为位置不是表达式或 `global` 。
+下面的示例未通过此测试，因为该位置不是表达式或 `global`。
 
 ```json
 {
@@ -382,9 +382,9 @@ ms.locfileid: "89378111"
 
 ## <a name="artifacts-parameter-defined-correctly"></a>项目参数定义正确
 
-Test name： **伪像参数**
+测试名称：项目参数
 
-当包含 `_artifactsLocation` 和 `_artifactsLocationSasToken` 的参数时，请使用正确的默认值和类型。 必须满足以下条件才能通过此测试：
+当包含 `_artifactsLocation` 和 `_artifactsLocationSasToken` 的参数时，请使用正确的默认值和类型。 若要通过此测试，必须满足以下条件：
 
 * 如果提供一个参数，就必须提供另一个参数
 * `_artifactsLocation` 必须是字符串
@@ -545,9 +545,9 @@ Test name： **伪像参数**
 
 对于 `reference` 和 `list*`，当使用 `concat` 构造资源 ID 时，无法通过测试。
 
-## <a name="dependson-best-practices"></a>dependsOn 最佳实践
+## <a name="dependson-best-practices"></a>dependsOn 最佳做法
 
-测试名称： **DependsOn 最佳实践**
+测试名称：DependsOn 最佳做法
 
 设置部署依赖项时，不要使用 [if](template-functions-logical.md#if) 函数来测试某个条件。 如果一个资源依赖于[基于条件部署](conditional-resource-deployment.md)的资源，设置依赖项时应与任何其他资源一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
@@ -603,7 +603,7 @@ Test name： **伪像参数**
 
 ## <a name="use-stable-vm-images"></a>使用稳定的 VM 映像
 
-测试名称： **虚拟机不应为预览版**
+测试名称：虚拟机不应为预览版
 
 虚拟机不应使用预览映像。
 

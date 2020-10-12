@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933500"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>使用 Power BI 和 Synapse SQL 无服务器通过 Synapse 链接 (预览来分析 Azure Cosmos DB 数据) 
@@ -22,7 +22,7 @@ ms.locfileid: "90933500"
 
 在此方案中，您将使用合作伙伴零售商店中有关 Surface product sales 的虚拟数据。 你将基于与大型家庭的邻近度和广告对特定周的影响，分析每个商店的收入。 在本文中，将创建名为 **RetailSales** 和 **StoreDemographics** 的两个视图，并在它们之间进行查询。 可以从此 [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存储库中获取示例产品数据。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保创建以下资源：
 
@@ -46,16 +46,7 @@ ms.locfileid: "90933500"
 
 每个工作区都附带了一个 Synapse SQL 无服务器终结点。 创建 SQL 脚本后，通过顶部工具栏上的工具栏， **按需**连接到 sql。
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="启用 SQL 脚本以在工作区中使用 Synapse SQL 无服务器终结点":::
-
-创建一个名为 **RetailCosmosDB**的新数据库，并在 Synapse 链接启用的容器上创建一个 SQL 视图。 以下命令显示了如何创建数据库：
-
-```sql
--- Create database
-Create database RetailCosmosDB
-```
-
-接下来，在启用了不同 Synapse 链接的 Azure Cosmos 容器中创建多个视图。 这将允许你使用 T-sql 来联接和查询不同容器中的 Azure Cosmos DB 数据。  创建视图时，请确保选择 " **RetailCosmosDB** " 数据库。
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="将 SQL 脚本添加到 Synapse 分析工作区" 数据库。
 
 以下脚本演示如何在每个容器上创建视图。 为简单起见，让我们使用 Synapse SQL 无服务器 over Synapse 链接启用容器的 [自动架构推理](analytical-store-introduction.md#analytical-schema) 功能：
 
@@ -106,7 +97,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 选择 " **运行** "，为下表提供结果：
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="联接 StoreDemographics 和 RetailSales 视图后的查询结果":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="将 SQL 脚本添加到 Synapse 分析工作区":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>具有 Power BI 的容器的模型视图
 
@@ -141,7 +132,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 1. 将 " **productCode** from **RetailSales** " 视图拖放到图例中，以选择特定的产品线。
 选择这些选项后，应会看到类似于以下屏幕截图的关系图：
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="将家庭规模相对重要性与每个商店平均收入进行比较的报表":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="将 SQL 脚本添加到 Synapse 分析工作区":::
 
 ## <a name="next-steps"></a>后续步骤
 

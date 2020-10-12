@@ -4,10 +4,10 @@ description: 备份保管库概述。
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: 773152212ed831c0083cfdf912f45ece578d079f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994659"
 ---
 # <a name="backup-vaults-overview"></a>备份保管库概述
@@ -32,7 +32,7 @@ ms.locfileid: "90994659"
 
 ### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>使用平台托管的密钥加密备份数据
 
-默认情况下，所有数据将使用平台托管的密钥进行加密。 无需执行任何显式操作即可启用此加密。 它适用于备份到备份保管库的所有工作负荷。
+默认情况下，所有数据将使用平台托管的密钥进行加密。 无需从你的终端执行任何明确操作即可实现此加密。 它适用于备份到备份保管库的所有工作负荷。
 
 ## <a name="create-a-backup-vault"></a>创建备份保管库
 

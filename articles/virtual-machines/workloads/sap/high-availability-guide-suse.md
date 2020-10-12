@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 01a450c045c996cdcb49b8fbfdf1ce572ee2d1df
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760594"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
@@ -136,7 +136,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
-1. 在 Azure 门户上打开[ASCS/SCS 多 SID 模板][template-multisid-xscs]或[聚合模板][template-converged]。 
+1. 在 Azure 门户上打开 [ASCS/SCS 多 SID 模板][template-multisid-xscs] 或 [聚合模板][template-converged] 。 
    ASCS/SCS 模板仅为 SAP NetWeaver ASCS/SCS 和 ERS () Linux 创建负载均衡规则，而聚合模板还会为数据库 (创建负载均衡规则，例如 Microsoft SQL Server 或 SAP HANA) 。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装数据库，请使用[聚合模板][template-converged]。
 1. 输入以下参数
    1. 资源前缀（仅限于 ASCS/SCS 多 SID 模板）  
@@ -203,13 +203,13 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    1. 负载均衡规则
       1. ASCS 的负载均衡规则
          1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
-         1. 输入新负载均衡器规则的名称 (例如**nw1-ascs**) 
-         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测 (例如**nw1-ascs-前端**、 **nw1**和**nw1-ascs-hp**) 
+         1. 输入新负载均衡器规则的名称 (例如 **nw1-ascs**) 
+         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测 (例如 **nw1-ascs-前端**、 **nw1** 和 **nw1-ascs-hp**) 
          1. 选择“HA 端口”
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
-         * 重复上述步骤以创建 ERS (的负载均衡规则，例如**nw1-ERS**) 
+         * 重复上述步骤以创建 ERS (的负载均衡规则，例如 **nw1-ERS**) 
 1. 或者，如果你的方案需要基本负载均衡器（内部），请执行以下步骤：  
    1. 创建前端 IP 地址
       1. ASCS 的 IP 地址 10.0.0.7
@@ -218,7 +218,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.7**）
          1. 单击“确定”
       1. ASCS ERS 的 IP 地址 10.0.0.8
-         * 重复上述步骤创建 ERS (的 IP 地址，例如**10.0.0.8**和**nw1**) 
+         * 重复上述步骤创建 ERS (的 IP 地址，例如 **10.0.0.8** 和 **nw1**) 
    1. 创建后端池
       1. 打开负载均衡器，单击后端池，并单击“添加”
       1. 输入新后端池的名称（例如 **nw1-backend**）
@@ -529,7 +529,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    enque/encni/set_so_keepalive = true
    </code></pre>
 
-   对于 ENSA1 和 ENSA2，请确保 `keepalive` 按 SAP 说明[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述设置 OS 参数。    
+   对于 ENSA1 和 ENSA2，请确保 `keepalive` 按 SAP 说明 [1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述设置 OS 参数。    
 
    * ERS 配置文件
 

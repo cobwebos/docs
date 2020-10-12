@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474302"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 元素
@@ -56,16 +56,16 @@ ms.locfileid: "87474302"
 ## <a name="remarks"></a>备注
 
 - 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证  。 默认值是 **false**秒。
-- `validations`属性是一个数组，您可以在其中添加条件以检查文本框中提供的值。
-- `regex`属性为 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
-- `isValid`属性包含计算结果为 true 或 false 的表达式。 在表达式中，定义确定文本框是否有效的条件。
-- `message`属性是当文本框的值未通过验证时要显示的字符串。
+- `validations` 属性是一个数组，可在其中添加条件，用于检查文本框中提供的值。
+- `regex` 属性是一个 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
+- `isValid` 属性包含计算结果为 true 或 false 的表达式。 在表达式中，定义确定文本框是否有效的条件。
+- `message` 属性是当文本框的值未通过验证时会显示的一个字符串。
 - 当 `required` 设置为 **false** 时可以为 `regex` 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
-- `placeholder`属性是用户开始编辑时消失的帮助文本。 如果 `placeholder` `defaultValue` 同时定义了和，则将 `defaultValue` 优先使用并显示。
+- `placeholder` 属性是帮助文本，当用户开始编辑后会消失。 如果同时定义了 `placeholder` 和 `defaultValue`，会优先显示 `defaultValue`。
 
 ## <a name="example"></a>示例
 
-下面的示例使用带有[ArmApiControl](microsoft-solutions-armapicontrol.md)控件的文本框来检查资源名称的可用性。
+以下实例结合使用 [Microsoft.Solutions.ArmApiControl](microsoft-solutions-armapicontrol.md) 控件和文本框来检查资源名称的可用性。
 
 ```json
 "basics": [

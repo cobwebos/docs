@@ -1,6 +1,6 @@
 ---
 title: Azure VMware 解决方案（通过 CloudSimple）-为 Oracle RAC 优化 CloudSimple 私有云
-description: 描述如何部署新群集并为 Oracle 真实应用程序群集（RAC）安装和配置优化 VM
+description: 介绍如何部署新群集并为 Oracle 真实应用程序群集优化 VM) 安装和配置 (RAC
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,19 +9,19 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86507661"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>优化 CloudSimple 私有云以安装 Oracle RAC
 
-你可以在 CloudSimple 私有云环境中部署 Oracle 真实应用程序群集（RAC）。 本指南介绍了如何部署新群集并优化 Oracle RAC 解决方案的 VM。 完成本主题中的步骤后，即可安装和配置 Oracle RAC。
+你可以在 CloudSimple 私有云环境中将 Oracle 真正的应用程序群集 (RAC) 部署。 本指南介绍了如何部署新群集并优化 Oracle RAC 解决方案的 VM。 完成本主题中的步骤后，即可安装和配置 Oracle RAC。
 
 ## <a name="storage-policy"></a>存储策略
 
-成功实现 Oracle RAC 需要群集中有足够数量的节点。  在 vSAN 存储策略中，可容忍的故障（FTT）将应用于用于存储数据库、日志和重做磁盘的数据磁盘。  需要有效地容忍故障的节点数量为 2N + 1，其中 N 是 FTT 的值。
+成功实现 Oracle RAC 需要群集中有足够数量的节点。  在 vSAN 存储策略中，无法容忍 (FTT) 应用于用于存储数据库、日志和重做磁盘的数据磁盘。  需要有效地容忍故障的节点数量为 2N + 1，其中 N 是 FTT 的值。
 
 示例：如果所需的 FTT 为2，则群集中的节点总数必须为 2 * 2 + 1 = 5。
 
@@ -61,7 +61,7 @@ Oracle RAC 虚拟机具有多个磁盘，这些磁盘用于特定功能。  共�
 
 * 每个虚拟机都配置有四个 SCSI 控制器。
 * SCSI 控制器类型设置为 "VMware 半虚拟"。
-* 创建了多个虚拟磁盘（.vmdk）。
+* 创建了多个 ( .vmdk) 的虚拟磁盘。
 * 磁盘装载到不同的 SCSI 控制器上。
 * 为共享群集磁盘设置了多个编写器共享类型。
 * 为确保磁盘的高可用性，定义了 vSAN 存储策略。
@@ -74,9 +74,9 @@ Oracle RAC 虚拟机具有多个磁盘，这些磁盘用于特定功能。  共�
     * OS 磁盘
     * 用于存储 Oracle 网格的磁盘安装文件
     * 用于存储 Oracle 数据库安装文件的磁盘
-* 磁盘可以配置为**精简预配**。
-* 每个磁盘都装载在第一个 SCSI 控制器（SCSI0）上。  
-* 共享设置为 "**无共享**"。
+* 磁盘可以配置为 **精简预配**。
+* 每个磁盘都装载在第一个 SCSI 控制器上 (SCSI0) 。  
+* 共享设置为 " **无共享**"。
 * 使用 vSAN 策略对存储定义冗余。  
 
 ![Oracle RAC 数据磁盘组配置](media/oracle-vm-os-disks.png)
@@ -87,11 +87,11 @@ Oracle RAC 虚拟机具有多个磁盘，这些磁盘用于特定功能。  共�
 
 * 四个磁盘配置为虚拟磁盘，并装载在所有 Oracle RAC 虚拟机上。
 * 每个磁盘都装载到不同的 SCSI 控制器上。
-* 每个虚拟磁盘均配置为**厚空间预配零**。  
-* 共享设置为**多作者**。  
-* 磁盘必须配置为自动存储管理（ASM）磁盘组。  
+* 每个虚拟磁盘均配置为 **厚空间预配零**。  
+* 共享设置为 **多作者**。  
+* 磁盘必须配置为自动存储管理 (ASM) 磁盘组。  
 * 使用 vSAN 策略对存储定义冗余。  
-* ASM 冗余设置为**外部**冗余。
+* ASM 冗余设置为 **外部** 冗余。
 
 ![Oracle RAC 数据磁盘组配置](media/oracle-vm-data-disks.png)
 
@@ -102,11 +102,11 @@ Oracle RAC 虚拟机具有多个磁盘，这些磁盘用于特定功能。  共�
 * 重做日志磁盘必须配置为多个磁盘组。  
 * 在所有 Oracle RAC 虚拟机上创建并装入六个磁盘。
 * 磁盘装载到不同的 SCSI 控制器上
-* 每个虚拟磁盘均配置为**厚空间预配零**。
-* 共享设置为**多作者**。  
+* 每个虚拟磁盘均配置为 **厚空间预配零**。
+* 共享设置为 **多作者**。  
 * 磁盘必须配置为两个 ASM 磁盘组。
 * 每个 ASM 磁盘组都包含三个磁盘，它们位于不同的 SCSI 控制器上。  
-* ASM 冗余设置为 "**正常**冗余"。
+* ASM 冗余设置为 " **正常** 冗余"。
 * 同时在 ASM 重做日志组上创建了五个重做日志文件
 
 ```
@@ -130,23 +130,23 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 
 * 在所有 Oracle RAC 虚拟机上创建并装入五个磁盘。
 * 磁盘装载到一个 SCSI 控制器上
-* 每个虚拟磁盘均配置为**厚空间预配零**。
-* 共享设置为**多作者**。  
+* 每个虚拟磁盘均配置为 **厚空间预配零**。
+* 共享设置为 **多作者**。  
 * 磁盘必须配置为 ASM 磁盘组。  
-* ASM 冗余设置为 "**高**冗余"。
+* ASM 冗余设置为 " **高** 冗余"。
 
 ![Oracle RAC 投票磁盘组配置](media/oracle-vm-voting-disks.png)
 
-### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Oracle 快速恢复区域磁盘配置（可选）
+### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Oracle 快速恢复区域磁盘配置 (可选) 
 
-"快速恢复" 区域（FRA）是 Oracle ASM 磁盘组管理的文件系统。  FRA 为备份和恢复文件提供共享存储位置。 Oracle 在快速恢复区域中创建存档的日志和闪回日志。 Oracle 恢复管理器（RMAN）可以选择在 "快速恢复" 区域中存储其备份集和映像副本，并在媒体恢复期间还原文件时使用。
+ (FRA) 的快速恢复区域是 Oracle ASM 磁盘组管理的文件系统。  FRA 为备份和恢复文件提供共享存储位置。 Oracle 在快速恢复区域中创建存档的日志和闪回日志。 Oracle 恢复管理器 (RMAN) 可以选择在 "快速恢复" 区域中存储其备份集和映像副本，并在媒体恢复期间还原文件时使用。
 
 * 在所有 Oracle RAC 虚拟机上创建并装入两个磁盘。
 * 磁盘装载到不同的 SCSI 控制器上
-* 每个虚拟磁盘均配置为**厚空间预配零**。
-* 共享设置为**多作者**。  
+* 每个虚拟磁盘均配置为 **厚空间预配零**。
+* 共享设置为 **多作者**。  
 * 磁盘必须配置为 ASM 磁盘组。  
-* ASM 冗余设置为**外部**冗余。
+* ASM 冗余设置为 **外部** 冗余。
 
 ![Oracle RAC 投票磁盘组配置](media/oracle-vm-fra-disks.png)
 
@@ -154,29 +154,29 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 
 若要在私有云上部署 vSphere 群集，请遵循以下过程：
 
-1. 在 CloudSimple 门户中，[创建私有云](create-private-cloud.md)。 CloudSimple 在新创建的私有云中创建一个名为 "cloudowner" 的默认 vCenter 用户。 有关默认私有云用户和权限模型的详细信息，请参阅[了解私有云权限模型](learn-private-cloud-permissions.md)。  此步骤将为私有云创建主管理群集。
+1. 在 CloudSimple 门户中， [创建私有云](create-private-cloud.md)。 CloudSimple 在新创建的私有云中创建一个名为 "cloudowner" 的默认 vCenter 用户。 有关默认私有云用户和权限模型的详细信息，请参阅 [了解私有云权限模型](learn-private-cloud-permissions.md)。  此步骤将为私有云创建主管理群集。
 
-2. 在 CloudSimple 门户中，使用新群集[展开私有云](expand-private-cloud.md)。  此群集将用于部署 Oracle RAC。  根据所需的容错容错（最少三个节点）选择节点数。
+2. 在 CloudSimple 门户中，使用新群集 [展开私有云](expand-private-cloud.md) 。  此群集将用于部署 Oracle RAC。  根据所需的容错容错 (最少三个节点) 选择节点数。
 
 ## <a name="set-up-networking-for-oracle-rac"></a>为 Oracle RAC 设置网络
 
-1. 在私有云中，[创建两个 vlan](create-vlan-subnet.md)，一个用于 oracle 公用网络，另一个用于 oracle 专用网络并分配适当的子网 CIDRs。
-2. 创建 Vlan 后，[在私有云 vCenter 上创建分布式端口组](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere)。
-3. 在管理群集上为 Oracle 环境设置[DHCP 和 DNS 服务器虚拟机](dns-dhcp-setup.md)。
+1. 在私有云中， [创建两个 vlan](create-vlan-subnet.md)，一个用于 oracle 公用网络，另一个用于 oracle 专用网络并分配适当的子网 CIDRs。
+2. 创建 Vlan 后， [在私有云 vCenter 上创建分布式端口组](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere)。
+3. 在管理群集上为 Oracle 环境设置 [DHCP 和 DNS 服务器虚拟机](dns-dhcp-setup.md) 。
 4. 在安装在私有云中[的 dns 服务器上配置 dns 转发](on-premises-dns-setup.md#create-a-conditional-forwarder)。
 
 ## <a name="set-up-vsan-storage-policies"></a>设置 vSAN 存储策略
 
 vSAN 策略为 VM 磁盘上存储的数据定义允许和磁盘条带化失败。  创建 VM 时，必须在 VM 磁盘上应用创建的存储策略。
 
-1. [登录到私有云的 vSphere 客户端](./vcenter-access.md)。
-2. 在顶部菜单中，选择 "**策略和配置文件**"。
-3. 在左侧菜单中，选择 " **Vm 存储策略**"，然后选择 "**创建 vm 存储策略**"。
-4. 为策略输入有意义的名称，然后单击 "**下一步**"。
-5. 在 "**策略结构**" 部分，选择 "**启用 vSAN 存储的规则**"，然后单击 "**下一步**"。
-6. 在 " **vSAN**  >  **可用性**" 部分中，为 "站点灾难容错" 选择 "**无**"。 对于 "容错失败"，请为所需的 FTT 选择**RAID 镜像**选项。
+1. [登录到私有云的 vSphere 客户端](./vcenter-access.md) 。
+2. 在顶部菜单中，选择 " **策略和配置文件**"。
+3. 在左侧菜单中，选择 " **Vm 存储策略** "，然后选择 " **创建 vm 存储策略**"。
+4. 为策略输入有意义的名称，然后单击 " **下一步**"。
+5. 在 " **策略结构** " 部分，选择 " **启用 vSAN 存储的规则** "，然后单击 " **下一步**"。
+6. 在 " **vSAN**  >  **可用性**" 部分中，为 "站点灾难容错" 选择 "**无**"。 对于 "容错失败"，请为所需的 FTT 选择 **RAID 镜像** 选项。
     ![vSAN 设置 ](media/oracle-rac-storage-wizard-vsan.png) 。
-7. 在 "**高级**" 部分中，选择 "每个对象的磁盘条带数"。 对于 "对象空间保留"，请选择 "**配置**"。 选择 "**禁用对象校验和**"。 单击 "**下一步**"。
+7. 在 " **高级** " 部分中，选择 "每个对象的磁盘条带数"。 对于 "对象空间保留"，请选择 " **配置**"。 选择 " **禁用对象校验和**"。 单击 " **下一步**"。
 8. 按照屏幕上的说明查看兼容 vSAN 数据存储的列表，查看设置，然后完成安装。
 
 ## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>创建 Oracle Vm 并创建用于 Oracle 的共享 VM 磁盘
@@ -185,18 +185,18 @@ vSAN 策略为 VM 磁盘上存储的数据定义允许和磁盘条带化失败�
 
 ### <a name="create-vms"></a>创建 VM
 
-1. 在 vCenter 中，单击 "**主机和群集**" 图标。 选择为 Oracle 创建的群集。
-2. 右键单击该群集，然后选择 "**新建虚拟机**"。
-3. 选择 "**新建虚拟机**"，然后单击 "**下一步**"。
-4. 为计算机命名，选择 Oracle VM 的位置，然后单击 "**下一步**"。
-5. 选择群集资源，然后单击 "**下一步**"。
-6. 选择群集的 vSAN 数据存储，然后单击 "**下一步**"。
-7. 保留默认的 ESXi 6.5 兼容性选择，并单击 "**下一步**"。
-8. 选择要创建的 VM 的 ISO 来宾操作系统，然后单击 "**下一步**"。
+1. 在 vCenter 中，单击 " **主机和群集** " 图标。 选择为 Oracle 创建的群集。
+2. 右键单击该群集，然后选择 " **新建虚拟机**"。
+3. 选择 " **新建虚拟机** "，然后单击 " **下一步**"。
+4. 为计算机命名，选择 Oracle VM 的位置，然后单击 " **下一步**"。
+5. 选择群集资源，然后单击 " **下一步**"。
+6. 选择群集的 vSAN 数据存储，然后单击 " **下一步**"。
+7. 保留默认的 ESXi 6.5 兼容性选择，并单击 " **下一步**"。
+8. 选择要创建的 VM 的 ISO 来宾操作系统，然后单击 " **下一步**"。
 9. 选择安装操作系统所需的硬盘大小。
-10. 若要在另一台设备上安装应用程序，请单击 "**添加新设备**"。
+10. 若要在另一台设备上安装应用程序，请单击 " **添加新设备**"。
 11. 选择 "网络选项" 并分配为公用网络创建的分布式端口组。
-12. 若要添加其他网络接口，请单击 "**添加新设备**"，然后选择为专用网络创建的分布式端口组。
+12. 若要添加其他网络接口，请单击 " **添加新设备** "，然后选择为专用网络创建的分布式端口组。
 13. 对于 "新 DC/DVD 驱动器"，选择包含用于首选操作系统安装的 ISO 的数据存储 ISO 文件。 选择之前上传到 Iso 和 Templates 文件夹的文件，然后单击 **"确定"**。
 14. 查看设置，然后单击 **"确定"** 以创建新的 VM。
 15. 开启 VM 的电源。 安装操作系统和所需的任何更新
@@ -209,15 +209,15 @@ Oracle 使用共享磁盘来存储数据、日志和重做日志文件。  可�
 
 #### <a name="create-disks-on-the-first-vm"></a>在第一个 VM 上创建磁盘
 
-1. 在 vCenter 中，右键单击其中一个 Oracle Vm，然后选择 "**编辑设置**"。
-2. 在 "新设备" 部分中，选择 " **SCSI 控制器**"，并单击 "**添加**"。
-3. 在 "新设备" 部分中，选择 "**新建硬盘**"，然后单击 "**添加**"。
+1. 在 vCenter 中，右键单击其中一个 Oracle Vm，然后选择 " **编辑设置**"。
+2. 在 "新设备" 部分中，选择 " **SCSI 控制器** "，并单击 " **添加**"。
+3. 在 "新设备" 部分中，选择 " **新建硬盘** "，然后单击 " **添加**"。
 4. 展开 "新建硬盘" 的属性。
 5. 指定硬盘的大小。
 6. 将 VM 存储策略指定为你前面定义的 vSAN 存储策略。
 7. 选择该位置作为 vSAN 数据存储上的文件夹。 此位置可帮助浏览磁盘并将磁盘附加到另一个 VM。
-8. 对于磁盘设置，请选择 "**厚预配预先零**"。
-9. 对于共享，请指定**多个编写器**。
+8. 对于磁盘设置，请选择 " **厚预配预先零**"。
+9. 对于共享，请指定 **多个编写器**。
 10. 对于 "虚拟设备" 节点，选择在步骤2中创建的新的 SCSI 控制器。
 
     ![在第一个 VM 上创建磁盘](media/oracle-rac-new-hard-disk.png)
@@ -226,13 +226,13 @@ Oracle 使用共享磁盘来存储数据、日志和重做日志文件。  可�
 
 #### <a name="attach-disks-to-second-vm"></a>将磁盘附加到第二个 VM
 
-1. 在 vCenter 中，右键单击其中一个 Oracle Vm，然后选择 "**编辑设置**"。
-2. 在 "新设备" 部分中，选择 " **SCSI 控制器**"，并单击 "**添加**"。
-3. 在 "新设备" 部分，选择 "**现有硬盘**"，然后单击 "**添加**"。
+1. 在 vCenter 中，右键单击其中一个 Oracle Vm，然后选择 " **编辑设置**"。
+2. 在 "新设备" 部分中，选择 " **SCSI 控制器** "，并单击 " **添加**"。
+3. 在 "新设备" 部分，选择 " **现有硬盘** "，然后单击 " **添加**"。
 4. 浏览到为第一个 VM 创建磁盘的位置，并选择 VMDK 文件。
 5. 将 VM 存储策略指定为你前面定义的 vSAN 存储策略。
-6. 对于磁盘设置，请选择 "**厚预配预先零**"。
-7. 对于共享，请指定**多个编写器**。
+6. 对于磁盘设置，请选择 " **厚预配预先零**"。
+7. 对于共享，请指定 **多个编写器**。
 8. 对于 "虚拟设备" 节点，选择在步骤2中创建的新的 SCSI 控制器。
 
     ![在第一个 VM 上创建磁盘](media/oracle-rac-existing-hard-disk.png)
@@ -243,17 +243,17 @@ Oracle 使用共享磁盘来存储数据、日志和重做日志文件。  可�
 
 VM 到主机关联规则确保 VM 在所需的主机上运行。  你可以在 vCenter 上定义规则，以确保 Oracle VM 在具有足够资源的主机上运行，并满足任何特定的许可要求。
 
-1. 在 CloudSimple 门户中，[升级](escalate-private-cloud-privileges.md)cloudowner 用户的权限。
+1. 在 CloudSimple 门户中， [升级](escalate-private-cloud-privileges.md) cloudowner 用户的权限。
 2. 登录到私有云的 vSphere 客户端。
-3. 在 vSphere 客户端中，选择部署了 Oracle Vm 的群集，然后单击 "**配置**"。
+3. 在 vSphere 客户端中，选择部署了 Oracle Vm 的群集，然后单击 " **配置**"。
 4. 在 "配置" 下，选择 " **VM/主机组**"。
 5. 单击“+”  。
-6. 添加 VM 组。 选择 " **VM 组**" 作为 "类型"。 输入组的名称。 选择 Vm，然后单击 **"确定"** 以创建组。
-6. 添加主机组。 选择 "**主机组**" 作为 "类型"。 输入组的名称。 选择将在其中运行 Vm 的主机，然后单击 **"确定"** 以创建组。
+6. 添加 VM 组。 选择 " **VM 组** " 作为 "类型"。 输入组的名称。 选择 Vm，然后单击 **"确定"** 以创建组。
+6. 添加主机组。 选择 " **主机组** " 作为 "类型"。 输入组的名称。 选择将在其中运行 Vm 的主机，然后单击 **"确定"** 以创建组。
 7. 若要创建规则，请单击 " **VM/主机规则**"。
 8. 单击“+”  。
-9. 输入规则的名称，并选中 "**启用**"。
-10. 对于 "规则类型"，选择 "**要承载的虚拟机**"。
+9. 输入规则的名称，并选中 " **启用**"。
+10. 对于 "规则类型"，选择 " **要承载的虚拟机**"。
 11. 选择包含 Oracle Vm 的 VM 组。
 12. 选择 **"必须在此组中的主机上运行"**。
 13. 选择创建的主机组。

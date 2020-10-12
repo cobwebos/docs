@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: duau
 ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401021"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>配置性能流量路由方法
@@ -25,8 +25,8 @@ ms.locfileid: "89401021"
 
 ##  <a name="to-configure-performance-routing-method"></a>配置性能路由方法
 
-1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册一个 [月免费试用版](https://azure.microsoft.com/free/)。 
-2. 在门户的搜索栏中，搜索“流量管理器配置文件”****，并单击要为其配置路由方法的配置文件名称。
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
+2. 在门户的搜索栏中，搜索 " **流量管理器配置文件** "，然后单击要为其配置路由方法的配置文件名称。
 3. 在“流量管理器配置文件”  边栏选项卡中，检查要包含在配置中的云服务和网站是否都存在。
 4. 在“设置”  部分，单击“配置”  ，并在“配置”  边栏选项卡中完成如下操作：
     1. 对于“流量路由方法设置”  和“路由方法”  ，请选择“性能”  。

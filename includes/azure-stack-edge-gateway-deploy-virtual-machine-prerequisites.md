@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/31/2020
 ms.author: alkohli
 ms.openlocfilehash: 3a17e73c66c2296cc36b24e3b0a8abfcab00e46a
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89419381"
 ---
 必须先将客户端配置为通过 Azure 资源管理器通过 Azure PowerShell 连接到设备，然后才能在 Azure Stack Edge 设备上部署 Vm。 有关详细步骤，请参阅 [连接到 Azure Stack Edge 设备上的 Azure 资源管理器](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)。
@@ -16,13 +16,13 @@ ms.locfileid: "89419381"
 
 请确保以下步骤可用于从客户端访问设备 (在连接到 Azure 资源管理器时已完成此配置，只是验证配置是否成功。 ) ： 
 
-1. 验证 Azure 资源管理器通信是否正常工作。 键入：     
+1. 验证 Azure 资源管理器通信是否正常工作。 类型：     
 
     ```powershell
     Add-AzureRmEnvironment -Name <Environment Name> -ARMEndpoint "https://management.<appliance name>.<DNSDomain>"
     ```
 
-1. 调用本地设备 Api 进行身份验证。 键入： 
+1. 调用本地设备 Api 进行身份验证。 类型： 
 
     `login-AzureRMAccount -EnvironmentName <Environment Name>`
 

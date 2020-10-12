@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 0012ac99600c77dce5940387e1da54f29c3f6ab7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652007"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
@@ -24,9 +24,9 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 ## <a name="infrastructure"></a>基础结构
 
-应用程序网关基础结构包括虚拟网络、子网、网络安全组和用户定义的路由。
+应用程序网关基础结构包括虚拟网络、子网、网络安全组和用户定义路由。
 
-有关详细信息，请参阅 [应用程序网关基础结构配置](configuration-infrastructure.md)。
+有关详细信息，请参阅[应用程序网关基础结构配置](configuration-infrastructure.md)。
 
 
 
@@ -34,25 +34,25 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。
 
-有关详细信息，请参阅 [应用程序网关前端 IP 地址配置](configuration-front-end-ip.md)。
+有关详细信息，请参阅[应用程序网关前端 IP 地址配置](configuration-front-end-ip.md)。
 
 ## <a name="listeners"></a>侦听器
 
 侦听器是一个逻辑实体，它可以使用端口、协议、主机和 IP 地址检查传入的连接请求。 配置侦听器时，必须输入与网关上传入请求中的对应值相匹配的值。
 
-有关详细信息，请参阅 [应用程序网关侦听器配置](configuration-listeners.md)。
+有关详细信息，请参阅[应用程序网关侦听器配置](configuration-listeners.md)。
 
 ## <a name="request-routing-rules"></a>请求路由规则
 
 使用 Azure 门户创建应用程序网关时，可创建一个默认规则 (*rule1*)。 此规则会将默认侦听器 (*appGatewayHttpListener*) 绑定到默认后端池 (*appGatewayBackendPool*) 和默认后端 HTTP 设置 (*appGatewayBackendHttpSettings*)。 创建网关后，可以编辑该默认规则的设置，或创建新的规则。
 
-有关详细信息，请参阅 [应用程序网关请求路由规则](configuration-request-routing-rules.md)。
+有关详细信息，请参阅[应用程序网关请求传递规则](configuration-request-routing-rules.md)。
 
 ## <a name="http-settings"></a>HTTP 设置
 
 应用程序网关使用此处指定的配置将流量路由到后端服务器。 创建 HTTP 设置后，必须将其关联到一个或多个请求路由规则。
 
-有关详细信息，请参阅 [应用程序网关 HTTP 设置配置](configuration-http-settings.md)。
+有关详细信息，请参阅[应用程序网关 HTTP 设置配置](configuration-http-settings.md)。
 
 ## <a name="back-end-pool"></a>后端池
 

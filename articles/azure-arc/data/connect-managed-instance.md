@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934353"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>连接到启用了 Azure Arc 的 SQL 托管实例
@@ -82,7 +82,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-获得 NSG 的名称后，可以使用以下命令添加防火墙规则。 此处的示例值为端口30913创建 NSG 规则，并允许来自 **任何** 源 IP 地址的连接。  这不是最佳安全做法！  通过指定特定于客户端 IP 地址的源地址前缀值或涵盖团队或组织的 IP 地址的 IP 地址范围，可以更好地锁定事件。
+获得 NSG 的名称后，可以使用以下命令添加防火墙规则。 此处的示例值为端口30913创建 NSG 规则，并允许来自 **任何** 源 IP 地址的连接。  这不是最佳安全做法！  通过指定特定于你的客户端 IP 地址或 IP 地址范围（涵盖你的团队或组织的 IP 地址）的 -source-address-prefixes 值，可以更好地锁定内容。
 
 将下面参数的值替换 `--destination-port-ranges` 为你在上面的 F 命令中获取的端口号 `azdata sql instance list` 。
 

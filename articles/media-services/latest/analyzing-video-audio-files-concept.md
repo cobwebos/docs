@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320675"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
@@ -27,7 +27,7 @@ ms.locfileid: "89320675"
 
 在 Azure 媒体服务 v3 中，可以使用视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 若要了解何时使用视频索引器与媒体服务分析器预设，请查看 [比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
 
-若要使用媒体服务 v3 预设来分析内容，请创建一个 **转换** ，并提交使用以下预设之一的 **作业** ： [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) 或 **AudioAnalyzerPreset**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
+若要使用媒体服务 v3 预设分析内容，请创建**转换**，然后提交使用以下某个预设的**作业**：[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) 或 **AudioAnalyzerPreset**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
 > [!NOTE]
 > 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
@@ -50,20 +50,20 @@ ms.locfileid: "89320675"
 
 使用此预设，可以从音频或视频文件中提取多个音频见解。 输出包括一个 JSON 文件（包含所有见解）和该音频脚本的 VTT 文件。 此预设接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性用于指定输入文件的语言。 音频见解包括：
 
-* **音频**脚本：带有时间戳的口述字词的脚本。 支持多种语言。
-* **演讲者索引**：扬声器的映射和相应的口述字词。
-* **语音情绪分析**：对音频操作执行的情绪分析的输出。
-* **关键字**：从音频脚本中提取的关键字。
+* **音频听录**：带有时间戳的口语脚本。 支持多种语言。
+* **说话人索引**：说话人和相应口语的映射。
+* **语音情绪分析**：对音频听录进行情绪分析后的输出。
+* **关键字**：从音频听录内容提取的关键字。
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
 使用此预设，可以从视频中提取多个音频和视频见解。 输出包括一个 JSON 文件（包含所有见解）、该视频脚本的 VTT 文件以及视频缩略图集合。 此预设还接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性表示视频的语言。 视频见解包括上述所有音频见解，此外还包含以下项：
 
-* **面部跟踪**：视频中出现面部的时间。 每张人脸都有一个面部 ID 和对应的视频缩略图集合。
-* **视觉对象文本**：通过光学字符识别检测到的文本。 该文本带有时间戳，也用于提取关键字（以及音频脚本）。
-* **关键帧**：从视频中提取的关键帧的集合。
-* **视觉对象内容裁决**：本质上标记为成人或猥亵的视频部分。
-* **批注**：基于预定义的对象模型对视频进行批注的结果
+* **人脸跟踪**：视频中出现人脸的时间段。 每张人脸都有一个面部 ID 和对应的视频缩略图集合。
+* **视觉文本**：通过光学字符识别检测出的文本。 该文本带有时间戳，也用于提取关键字（以及音频脚本）。
+* **关键帧**：从视频中提取的关键帧集合。
+* **视觉内容审核**：标记为成人或猥亵性的视频部分。
+* **注释**：基于预定义对象模型对视频进行注释的结果
 
 ## <a name="insightsjson-elements"></a>insights.json 元素
 

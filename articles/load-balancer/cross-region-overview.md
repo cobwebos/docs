@@ -14,10 +14,10 @@ ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
 ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336524"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器 (预览) 
@@ -55,7 +55,7 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 
 跨区域负载均衡器的运行状况探测每隔20秒收集有关可用性的信息。 如果一个区域负载均衡器将其可用性降到0，则跨区域负载均衡器将检测到失败。 然后，区域负载均衡器会脱离旋转。 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="全局区域流量视图图示。" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="跨区域负载均衡器关系图。" border="true":::
 
 ### <a name="ultra-low-latency"></a>超高延迟
 

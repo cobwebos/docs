@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934793"
 ---
 # <a name="offline-deployment-overview"></a>脱机部署概述
@@ -29,7 +29,7 @@ ms.locfileid: "90934793"
 
 脚本将以交互方式提示输入以下信息。  或者，如果你想要运行脚本而不使用交互式提示，则可以在运行脚本之前设置相应的环境变量。
 
-|Prompt|环境变量|说明|
+|Prompt|环境变量|注意|
 |---|---|---|
 |提供源容器注册表-按 ENTER 可使用 `mcr.microsoft.com`|SOURCE_DOCKER_REGISTRY|通常，你将从 Microsoft 容器注册表中提取映像，但如果你使用不同的注册表参加个人预览版，则可以使用提供给你的信息作为预览计划的一部分。|
 |提供源容器注册表存储库-按 ENTER 可使用 `arcdata` ：|SOURCE_DOCKER_REPOSITORY|如果要从 Microsoft 容器注册表拉取，存储库将为 `arcdata` 。|

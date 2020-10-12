@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 260125b5e7aa4537c6e204d93263b65be042793a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540738"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>为 Windows 虚拟桌面 (经典) 主机池自定义远程桌面协议属性
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 |RDP 属性 | 台式机 | RemoteApps |
 |---|---| --- |
-| 多监视器模式 | 已启用 | 空值 |
+| 多监视器模式 | 已启用 | 不适用 |
 | 已启用驱动器重定向 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
 | 远程音频模式 | 本地播放 | 本地播放 |
 
@@ -49,7 +49,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已突出显示名称和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图，以编辑自定义的 R D P 属性。](../media/singlecustomrdpproperty.png)
+> ![已突出显示名称和 FriendlyName 的 PowerShell cmdlet Get-RDSRemoteApp 的屏幕截图，以编辑自定义的 R D P 属性。](../media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>添加或编辑多个自定义 RDP 属性
 
@@ -61,7 +61,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已突出显示名称和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图，以编辑自定义的 R D P 属性。](../media/multiplecustomrdpproperty.png)
+> ![已突出显示名称和 FriendlyName 的 PowerShell cmdlet Set-RDSRemoteApp 的屏幕截图，以编辑自定义的 R D P 属性。](../media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>重置所有自定义 RDP 属性
 
@@ -72,7 +72,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/resetcustomrdpproperty.png)
+> ![突出显示了 Name 和 FriendlyName 的 PowerShell cmdlet Get-RDSRemoteApp 的屏幕截图。](../media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>后续步骤
 
