@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84705043"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>诊断虚拟机路由问题
@@ -38,7 +38,7 @@ ms.locfileid: "84705043"
 2. 在 Azure 门户顶部的搜索框中，输入处于运行状态的 VM 的名称。 当 VM 名称显示在搜索结果中时，请选择它。
 3. 在左侧的“设置”下，选择“网络”，然后通过选择网络接口资源的名称导航到对应资源   。
      ![查看网络接口](./media/diagnose-network-routing-problem/view-nics.png)
-4. 在左侧选择“有效路由”  。 将显示名为**myVMNic1**的网络接口的有效路由，如下图所示： ![ 查看有效路由](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. 在左侧选择“有效路由”  。 将显示名为 **myVMNic1** 的网络接口的有效路由，如下图所示： ![ 查看有效路由](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     如果已将多个网络接口附加到 VM，可以选择任一网络接口来查看其有效路由。 由于每个网络接口可能位于不同的子网中，因此，每个网络接口可能有不同的有效路由。
 
@@ -52,7 +52,7 @@ ms.locfileid: "84705043"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，还需要运行， `Connect-AzAccount` 使用具有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，还需要运行， `Connect-AzAccount` 使用具有 [所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
 使用 [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) 获取网络接口的有效路由。 以下示例获取资源组 myResourceGroup 中名为 myVMNic1 的网络接口的有效路由****：
 
@@ -87,7 +87,7 @@ NetworkInterfaces
 
 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令，或者在计算机上运行 CLI。 本文需要 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需要运行 `az login`，并使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
-使用 [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) 获取网络接口的有效路由。 以下示例获取名为*myVMNic1*的网络接口的有效路由，该网络接口位于名为*myResourceGroup*的资源组中：
+使用 [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) 获取网络接口的有效路由。 以下示例获取资源组 myResourceGroup 中名为 myVMNic1 的网络接口的有效路由****：
 
 ```azurecli-interactive
 az network nic show-effective-route-table \

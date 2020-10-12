@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86024071"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory 标识保护 - 安全概览
 
-Azure 门户中的[安全性概述](https://aka.ms/IdentityProtectionRefresh)使你能够深入了解你的组织的安全状况。 它有助于发现潜在攻击，并了解策略有效性。
+Azure 门户中的 [安全性概述](https://aka.ms/IdentityProtectionRefresh) 使你能够深入了解你的组织的安全状况。 它有助于发现潜在攻击，并了解策略有效性。
 
 “安全概览”大致分为以下两部分：
 
@@ -37,7 +37,7 @@ Azure 门户中的[安全性概述](https://aka.ms/IdentityProtectionRefresh)使
 
 ### <a name="new-risky-sign-ins-detected"></a>检测到新的有风险登录
 
-此图表显示在选定时间段内检测到的有风险登录数。 可以按登录风险类型（实时或聚合）和登录风险级别（低、中、高）筛选此图表视图。 未保护的登录是指未接受 MFA 质询的成功实时风险登录。 （注意：由于脱机检测而存在风险的登录无法通过登录风险策略实时保护）。 将鼠标悬停在 UTC 日期增量之上可以查看当天检测到的有风险登录数。 单击此图表会转到“有风险登录”报告。
+此图表显示在选定时间段内检测到的有风险登录数。 可以按登录风险类型（实时或聚合）和登录风险级别（低、中、高）筛选此图表视图。 未保护的登录是指未接受 MFA 质询的成功实时风险登录。  (注意：由于脱机检测而存在风险的登录，不能通过登录风险策略实时保护) 。 将鼠标悬停在 UTC 日期增量之上可以查看当天检测到的有风险登录数。 单击此图表会转到“有风险登录”报告。
 
 ## <a name="tiles"></a>磁贴
  
@@ -60,7 +60,7 @@ Azure 门户中的[安全性概述](https://aka.ms/IdentityProtectionRefresh)使
 
 ### <a name="identity-secure-score"></a>标识安全评分
 
-“标识安全功能分数”衡量并比较你的安全状态与行业模式。 如果单击 "标识安全分数（预览版）" 磁贴，它会重定向到 "标识安全分数" 边栏选项卡，可以在其中了解有关改善安全状况的详细信息。
+“标识安全功能分数”衡量并比较你的安全状态与行业模式。 如果单击 "标识安全分数 (预览) " 磁贴，它会重定向到 "标识安全分数" 边栏选项卡，你可以在其中了解有关改善安全状况的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

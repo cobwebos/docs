@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 78879733a35395ae2dc486ab8eb08da544925a8a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255148"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Azure 媒体服务 v3 文档更新
@@ -28,7 +28,7 @@ ms.locfileid: "89255148"
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-* IoT Edge 公开的实时视频分析预览。 请参阅 IoT Edge 文档 [上的实时视频分析](../live-video-analytics-edge/index.yml) 中的详细信息。
+* IoT Edge 上的实时视频分析预览版现已公开发行。 请参阅 [IoT Edge 上的实时视频分析](../live-video-analytics-edge/index.yml)文档中的详细信息。
 * 新快速入门：
 
     * [使用门户上传、编码和流式处理内容](manage-assets-quickstart.md)

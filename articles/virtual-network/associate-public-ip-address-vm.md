@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035461"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>将公共 IP 地址关联到虚拟机
@@ -56,7 +56,7 @@ ms.locfileid: "88035461"
    ![查看分配的公共 IP 地址](./media/associate-public-ip-address-vm/view-assigned-public-ip-address.png)
 
    > [!NOTE]
-   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
+   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
 
 7. 使用网络安全组中的安全规则[允许将网络流量发往 VM](#allow-network-traffic-to-the-vm)。
 
@@ -82,7 +82,7 @@ ms.locfileid: "88035461"
      ```
 
      > [!NOTE]
-     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
    - 如果不知道连接到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) 命令进行查看。 例如，以下命令列出了连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM 的网络接口的名称：
 
@@ -111,7 +111,7 @@ ms.locfileid: "88035461"
    ```
 
    > [!NOTE]
-   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
+   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
 
 4. 使用网络安全组中的安全规则[允许将网络流量发往 VM](#allow-network-traffic-to-the-vm)。
 
@@ -140,7 +140,7 @@ ms.locfileid: "88035461"
      ```
 
      > [!NOTE]
-     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+     > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
    - 如果不知道连接到 VM 的网络接口的名称，请使用 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 命令进行查看。 例如，以下命令列出了连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM 的网络接口的名称：
 
@@ -204,7 +204,7 @@ ms.locfileid: "88035461"
    ```
 
    > [!NOTE]
-   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
+   > 地址是从每个 Azure 区域中使用的地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 分配的地址可能是用于该区域的池中的任何地址。 如果需要从区域中的特定池分配地址，请使用[公共 IP 地址前缀](public-ip-address-prefix.md)。
 
 4. 使用网络安全组中的安全规则[允许将网络流量发往 VM](#allow-network-traffic-to-the-vm)。
 

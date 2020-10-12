@@ -10,17 +10,17 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 701c94237ef5348e11b5d7fbc85d4da1f20136ee
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036804"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>使用事件网格对 Azure Maps 事件做出响应
 
 Azure Maps 与 Azure 事件网格集成，以便用户可以将事件通知发送到其他服务并触发下游进程。 本文旨在帮助你将业务应用程序配置为侦听 Azure Maps 事件。 这允许用户以可靠、可缩放且安全的方式对关键事件做出反应。 例如，每次设备进入地域隔离区内时，用户都可以构建一个应用程序来更新数据库、创建票证并发送电子邮件通知。
 
-Azure 事件网格是一种完全托管的事件路由服务，它使用发布-订阅模型。 事件网格提供对 Azure 服务的内置支持，如[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)和[azure 逻辑应用](https://docs.microsoft.com/azure/azure-functions/functions-overview)。 它可以使用 webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](https://docs.microsoft.com/azure/event-grid/overview)。
+Azure 事件网格是一种完全托管的事件路由服务，它使用发布-订阅模型。 事件网格提供对 Azure 服务（如 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 和 [Azure 逻辑应用](https://docs.microsoft.com/azure/azure-functions/functions-overview)）的内置支持。 它可以使用 Webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](https://docs.microsoft.com/azure/event-grid/overview)。
 
 
 ![Azure 事件网格功能模型](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)

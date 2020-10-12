@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 7d2bdb96485a811ea9b3dde5320084f666508622
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907490"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL 单一服务器的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM 和使用 Azure 专用终结点 Azure Database for PostgreSQL 单一服务器。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for PostgreSQL 服务器。 请确保数据库服务器是这些定价层中的一种。
@@ -91,7 +91,7 @@ ms.locfileid: "90907490"
     |||
 
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 1. 看到“验证通过”消息时，选择“创建” 。
 
@@ -121,8 +121,8 @@ ms.locfileid: "90907490"
     | 计算 + 存储| 根据工作负荷选择服务器需要的定价层。 |
     |||
  
-7. 选择“确定”。 
-8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+7. 选择“确定”  。 
+8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 9. 看到 "验证通过" 消息后，选择 " **创建**"。 
 10. 看到“验证通过”消息时选择“创建”。 
 
@@ -133,7 +133,7 @@ ms.locfileid: "90907490"
 1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "网络" "  >  **Networking**  >  **专用" 链接**。
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。**** **** ****
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="专用链接概述":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="专用链接概述&quot;:::
 
 1. 在“创建专用终结点 - 基本信息”中，输入或选择以下信息：
 
@@ -173,13 +173,30 @@ ms.locfileid: "90907490"
     > [!Note] 
     > 使用服务的预定义专用 DNS 区域，或提供首选 DNS 区域名称。 有关详细信息，请参阅 [Azure 服务 DNS 区域配置](../private-link/private-endpoint-dns.md) 。
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 2. 看到“验证通过”消息时，选择“创建” 。 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="已创建专用链接":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="专用链接概述&quot;:::
 
-    > [!NOTE] 
-    > "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
+1. 在“创建专用终结点 - 基本信息”中，输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | **项目详细信息** | |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
+    | **实例详细信息** |  |
+    | 名称 | 输入“myPrivateEndpoint”**。 如果此名称已被使用，请创建唯一的名称。 |
+    |区域|选择“西欧”。|
+    |||
+5. 在完成时选择“下一步:资源”。
+6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
+    | 订阅| 选择订阅。 |
+    | 资源类型 | 选择 " 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用远程桌面 (RDP) 连接到 VM
 
@@ -194,14 +211,14 @@ ms.locfileid: "90907490"
 
 1. 打开 downloaded.rdp** 文件。
 
-    1. 出现提示时，选择“连接”。
+    1. 出现提示时，选择“连接”  。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
         > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
 1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -231,7 +248,7 @@ ms.locfileid: "90907490"
     | 服务器类型| 选择 **PostgreSQL**。|
     | 服务器名称| 选择 *mydemopostgresserver.privatelink.postgres.database.azure.com* |
     | 用户名 | 输入在 username@servername PostgreSQL 服务器创建过程中提供的用户名。 |
-    |密码 |输入在创建 PostgreSQL 服务器期间提供的密码。 |
+    |Password |输入在创建 PostgreSQL 服务器期间提供的密码。 |
     |SSL|选择 " **必需**"。|
     ||
 
@@ -247,7 +264,7 @@ ms.locfileid: "90907490"
 使用完专用终结点、PostgreSQL 服务器和 VM 后，请删除该资源组及其包含的所有资源：
 
 1. 在门户顶部的**搜索**框中输入 " *myResourceGroup* "，然后 *myResourceGroup*   从搜索结果中选择 "myResourceGroup"。
-2. 选择“删除资源组”****。
+2. 选择“删除资源组”。
 3. 输入 myResourceGroup 作为 **"资源组名称"** ，然后选择 " **删除**"。
 
 ## <a name="next-steps"></a>后续步骤

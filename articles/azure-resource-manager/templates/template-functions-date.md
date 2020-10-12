@@ -4,10 +4,10 @@ description: 介绍了可在 Azure 资源管理器模板中用来处理日期的
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86058038"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
@@ -150,7 +150,7 @@ ms.locfileid: "86058038"
 
 只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
 
-如果使用[选项将错误回滚](rollback-on-error.md)到之前的成功部署，并且以前的部署包含使用 utcNow 的参数，则不会重新评估参数。 而是在回滚部署中自动重复使用以前部署中的参数值。
+如果使用[出错时回退选项](rollback-on-error.md)回退到以前成功的部署，而以前的部署包含一个使用 utcNow 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
 
 重新部署依赖于 utcNow 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
 

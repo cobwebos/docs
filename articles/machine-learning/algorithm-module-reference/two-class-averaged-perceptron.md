@@ -1,5 +1,5 @@
 ---
-title: 双类平均感知器：模块引用
+title: Two-Class 平均感知器：模块引用
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习中使用双类平均感知器模块，以便根据平均感知器算法创建机器学习模型。
 services: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907745"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>双类平均感知器模块

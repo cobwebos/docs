@@ -9,10 +9,10 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037110"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
@@ -83,11 +83,11 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 | **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 > [!NOTE]
-> 此示例将添加 `--recursive` 标记以复制所有子目录中的文件。
+> 此示例追加 `--recursive` 标志以复制所有子目录中的文件。
 
 ### <a name="copy-the-contents-of-a-directory"></a>复制目录的内容
 
-可以复制目录的内容，而无需使用通配符 ( * ) 来复制包含目录本身。
+可以使用通配符 (*) 复制目录的内容，而无需复制包含内容的目录本身。
 
 |    |     |
 |--------|-----------|

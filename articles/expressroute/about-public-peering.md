@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
 ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398080"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>创建和管理 ExpressRoute 公共对等互连
@@ -28,7 +28,7 @@ ms.locfileid: "89398080"
 >已弃用公共对等互连。 不能在新的 ExpressRoute 线路上创建公共对等互连。 如果你使用的是新的 ExpressRoute 线路，请将 [Microsoft 对等互连](expressroute-circuit-peerings.md#microsoftpeering) 用于 Azure 服务。
 >
 
-## <a name="connectivity"></a>连接
+## <a name="connectivity"></a>连接性
 
 始终会从 WAN 发起到 Microsoft Azure 服务的连接。 Microsoft Azure 服务无法通过此路由域发起到网络的连接。 如果为 ExpressRoute 线路启用了 Azure 公共对等互连，则可以通过该线路访问 [Azure 中使用的公共 IP 范围](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 

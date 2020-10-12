@@ -4,10 +4,10 @@ description: 概述了服务器评估和迁移期间使用的 Azure Migrate 设�
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322251"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 设备体系结构
@@ -85,7 +85,7 @@ Azure Migrate 设备用于以下应用场景。
 
 当设备上运行的 Azure Migrate 代理更新时，设备也会随之升级。 这会自动发生，因为默认情况下在设备上启用了自动更新。 您可以更改此默认设置以手动更新代理。
 
-在注册表中关闭自动更新，方法是将 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "自动更新" 项设置为 0 (DWORD) 。
+通过将 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "自动更新" 项设置为 0 (DWORD) ，可以关闭注册表中的自动更新。
 
 
 ## <a name="next-steps"></a>后续步骤

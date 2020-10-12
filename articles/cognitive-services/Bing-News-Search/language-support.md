@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710552"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
@@ -129,7 +129,7 @@ ms.locfileid: "84710552"
 |奥地利|AT|  
 |比利时|BE|  
 |巴西|BR|  
-|加拿大|CA|  
+|Canada|CA|  
 |智利|CL|  
 |丹麦|DK|  
 |芬兰|FI|  
@@ -156,10 +156,10 @@ ms.locfileid: "84710552"
 |西班牙|ES|  
 |瑞典|SE|  
 |瑞士|CH|  
-|台湾|TW|  
+|中国台湾|TW|  
 |土耳其|TR|  
-|英国|GB|  
-|美国|美国|
+|United Kingdom|GB|  
+|United States|美国|
 
 ## <a name="next-steps"></a>后续步骤
 有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)。

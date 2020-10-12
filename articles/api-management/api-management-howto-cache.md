@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250475"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
@@ -37,7 +37,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 ## <a name="availability"></a>可用性
 
 > [!NOTE]
-> 内部缓存在 Azure API 管理的“消耗”**** 层中不可用。 可以改为[使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
+> 内部缓存在 Azure API 管理的“消耗”层中不可用。 可以改为[使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +54,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 2. 浏览到自己的 APIM 实例。
 3. 选择 " **API** " 选项卡。
 4. 在 API 列表中单击“演示会议 API”。
-5. 选择“GetSpeakers”****。
+5. 选择“GetSpeakers”。
 6. 选择屏幕顶部的“设计”选项卡。
 7. 在“入站处理”部分中，单击 **</>** 图标。
 
@@ -76,7 +76,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
    <cache-store duration="20" />
    ```
 
-    **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
+    **持续时间**指定缓存响应的到期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
 > [!TIP]
 > 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `caching-type` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
@@ -85,10 +85,10 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 若要查看作用的缓存，请从开发人员门户调用操作。
 
 1. 在 Azure 门户中浏览到自己的 APIM 实例。
-2. 选择 " **api** " 选项卡。
+2. 选择“API”选项卡。
 3. 选择向其添加了缓存策略的 API。
 4. 选择“GetSpeakers”操作。
-5. 单击右上方菜单中的“测试”选项卡。****
+5. 单击右上方菜单中的“测试”选项卡。
 6. 按“发送”。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤

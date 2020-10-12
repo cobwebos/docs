@@ -4,10 +4,10 @@ description: 如何在服务清单中描述终结点资源，包括如何设置 
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91354753"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
@@ -220,7 +220,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 假设应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 端口将由 ServiceFabric 决定，协议为 tcp。
 
-假设指定了错误值。 假设端口指定了字符串值 "Foo" 而不是 int。 Get-servicefabricapplication 命令将失败并出现错误： `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+假设指定了错误值。 假设端口指定了字符串值 "Foo" 而不是 int。 New-ServiceFabricApplication 命令将失败并出现错误： `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 从存档层解冻 Blob 数据
-description: 将 blob 从存档存储中解除冻结，以便可以访问 blob 数据。 将已存档的 blob 复制到联机层。
+description: 从存档存储中解冻 Blob，以便可以访问 Blob 数据。 将存档的 Blob 复制到联机层。
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035138"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
@@ -60,8 +60,8 @@ ms.locfileid: "88035138"
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>将存档 Blob 解冻到联机层
-# <a name="portal"></a>[门户](#tab/azure-portal)
-1. 登录 [Azure 门户](https://portal.azure.com)。
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 

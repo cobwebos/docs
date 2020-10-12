@@ -4,19 +4,19 @@ description: 了解如何部署嵌套的 Azure 资源管理器模板以提供 Az
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481334"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>部署用于测试环境的嵌套 Azure 资源管理器模板
 嵌套部署允许您从主资源管理器模板内执行其他 Azure 资源管理器模板。 它使你能够将部署分解为一组目标和特定用途的模板。 它提供测试、重复使用和可读性方面的优势。 [部署 Azure 资源时使用链接模板](../azure-resource-manager/templates/linked-templates.md)一文提供了此解决方案的更好概述，其中包含多个代码示例。 本文提供了特定于 Azure 开发测试实验室的示例。 
 
 ## <a name="key-parameters"></a>关键参数
-虽然你可以从头开始创建自己的资源管理器模板，但是我们建议你在 Visual Studio 中使用[Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)，这可以轻松地开发和调试模板。 将嵌套的部署资源添加到 azuredeploy.js上的时，Visual Studio 会添加多个项以使模板更加灵活。 这些项包括具有辅助模板和参数文件的子文件夹、主模板文件中的变量名称，以及新文件的存储位置的两个参数。 **_ArtifactsLocation**和 **_ArtifactsLocationSasToken**是开发测试实验室使用的关键参数。 
+虽然你可以从头开始创建自己的资源管理器模板，但是我们建议你在 Visual Studio 中使用 [Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) ，这可以轻松地开发和调试模板。 将嵌套的部署资源添加到 azuredeploy.js上的时，Visual Studio 会添加多个项以使模板更加灵活。 这些项包括具有辅助模板和参数文件的子文件夹、主模板文件中的变量名称，以及新文件的存储位置的两个参数。 **_ArtifactsLocation**和 **_ArtifactsLocationSasToken**是开发测试实验室使用的关键参数。 
 
-如果你不熟悉开发测试实验室如何适用于环境，请参阅[使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)。 模板存储在链接到开发测试实验室中的实验室的存储库中。 使用这些模板创建新环境时，文件将移入实验室中的 Azure 存储容器。 为了能够识别和复制嵌套文件，开发测试实验室会标识 _artifactsLocation 和 _artifactsLocationSasToken 参数，并将子文件夹复制到存储容器。 然后，它会自动将位置和共享访问签名（SaS）令牌插入参数中。 
+如果你不熟悉开发测试实验室如何适用于环境，请参阅 [使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)。 模板存储在链接到开发测试实验室中的实验室的存储库中。 使用这些模板创建新环境时，文件将移入实验室中的 Azure 存储容器。 为了能够识别和复制嵌套文件，开发测试实验室会标识 _artifactsLocation 和 _artifactsLocationSasToken 参数，并将子文件夹复制到存储容器。 然后，它会自动将位置和共享访问签名 (SaS) 令牌插入参数中。 
 
 ## <a name="nested-deployment-example"></a>嵌套部署示例
 下面是一个简单的嵌套部署示例：
@@ -57,7 +57,7 @@ ms.locfileid: "85481334"
 "outputs": {}
 ```
 
-包含此模板的存储库中的文件夹包含一个子文件夹， `nestedtemplates` 其中包含**NestOne.js**的文件和**NestOne.parameters.js**。 在**上的azuredeploy.js**中，模板的 URI 是使用项目位置、嵌套模板文件夹和嵌套模板文件名生成的。 同样，使用嵌套模板的项目位置、嵌套模板文件夹和参数文件生成参数的 URI。 
+包含此模板的存储库中的文件夹包含一个子文件夹， `nestedtemplates` 其中包含 **NestOne.js** 的文件和 **NestOne.parameters.js**。 在 ** 上的azuredeploy.js**中，模板的 URI 是使用项目位置、嵌套模板文件夹和嵌套模板文件名生成的。 同样，使用嵌套模板的项目位置、嵌套模板文件夹和参数文件生成参数的 URI。 
 
 下面是 Visual Studio 中同一个项目结构的图像： 
 

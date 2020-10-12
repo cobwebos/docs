@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 7/17/2020
 ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015643"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
@@ -19,7 +19,7 @@ ms.locfileid: "87015643"
 
 ## <a name="region-availability"></a>上市区域
 
-专用群集在[支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域中提供。
+专用群集在 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域中提供。
 
 * 当前不支持 Azure 中国世纪互联。
 * 由于缺少私有链接支持，目前不支持 US Gov 德克萨斯州。
@@ -96,9 +96,9 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 
 1. 默认情况下，预配专用群集后，会在群集托管资源组中创建专用终结点 (1) 和专用 DNS 区域 (2)。 群集使用专用区域中的 A 记录来解析专用终结点的 IP，以便与 API 服务器通信。
 
-2. 专用 DNS 区域仅链接到群集节点附加到的 VNet (3)。 这意味着专用终结点只能由该链接 VNet 中的主机进行解析。 在 VNet 中未配置自定义 DNS 的情况下（默认），这种方式不会像 DNS 的168.63.129.16 上的主机点一样出现问题，因为该链接可以解析专用 DNS 区域中的记录。
+2. 专用 DNS 区域仅链接到群集节点附加到的 VNet (3)。 这意味着专用终结点只能由该链接 VNet 中的主机进行解析。 在 VNet 中未配置任何自定义 DNS 的情况下 (默认) 上，此操作不会像 DNS 的168.63.129.16 上的主机点一样出现问题，因为该链接可以解析专用 DNS 区域中的记录。
 
-3. 在包含群集的 VNet 具有自定义 DNS 设置 (4) 的情况下，除非将专用 DNS 区域链接到包含自定义 DNS 解析程序的 VNet (5)，否则群集部署将失败。 在群集预配期间创建专用区域或通过使用基于事件的部署机制（例如，Azure 事件网格和 Azure Functions）来检测区域创建时，可以手动创建此链接。
+3. 在包含群集的 VNet 具有自定义 DNS 设置 (4) 的情况下，除非将专用 DNS 区域链接到包含自定义 DNS 解析程序的 VNet (5)，否则群集部署将失败。 使用基于事件的部署 (机制（例如，Azure 事件网格和 Azure Functions) ，在群集预配期间创建专用区域或通过自动化创建该区域后，可以手动创建此链接。
 
 ## <a name="dependencies"></a>依赖项  
 

@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401123"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>事件中心的 Azure 安全基线
@@ -62,7 +62,7 @@ ms.locfileid: "89401123"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -114,7 +114,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -247,7 +247,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指导**：在 Azure Monitor 中，配置与活动日志和事件中心诊断设置中的 Azure 事件中心相关的日志，以将日志发送到要查询的 Log Analytics 工作区或要进行长期存档存储的存储帐户。 使用 Log Analytics 工作区针对安全日志和事件中的异常活动创建警报。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。 
+或者，可以启用数据并将其载入 Azure Sentinel。 
 
 了解 Azure 活动日志： https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
@@ -759,7 +759,7 @@ Microsoft 会管理事件中心的底层基础结构，并实施严格的控制�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -970,7 +970,7 @@ Microsoft 反恶意软件已在支持 Azure 服务（例如 Azure Cache for Redi
 
 **指南**： Azure 事件中心通过 azure 存储服务加密 (azure SSE) 提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 如果使用 Azure Key Vault 来存储客户管理的密钥，请确保定期自动备份密钥。
 
-请确保通过以下 PowerShell 命令定期自动备份 Key Vault 机密： AzKeyVaultSecret
+请确保通过以下 PowerShell 命令定期自动备份 Key Vault 机密： Backup-AzKeyVaultSecret
 
 如何为静态 Azure 事件中心数据配置客户管理的密钥： https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 

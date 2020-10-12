@@ -4,10 +4,10 @@ description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure �
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86057343"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识在 ACR 任务中进行跨注册表的身份验证 
@@ -105,7 +105,7 @@ az role assignment create \
   --role acrpull
 ```
 
-继续[将目标注册表凭据添加到任务](#add-target-registry-credentials-to-task)。
+继续 [将目标注册表凭据添加到任务](#add-target-registry-credentials-to-task)。
 
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建具有系统分配的标识的任务
 
@@ -113,7 +113,7 @@ az role assignment create \
 
 ### <a name="create-task"></a>创建任务
 
-通过执行以下 [az acr task create][az-acr-task-create] 命令，创建任务 helloworldtask。 该任务在没有源代码上下文的情况下运行，且该命令引用工作目录中的文件 `helloworldtask.yaml`。 不具有值的 `--assign-identity` 参数在任务上启用系统分配的标识。 
+通过执行以下 [az acr task create][az-acr-task-create] 命令，创建任务 helloworldtask。 该任务无需源代码上下文即可运行，该命令将引用工作目录中的 `helloworldtask.yaml` 文件。 不带任何值的 `--assign-identity` 参数将在任务中启用系统分配的标识。 
 
 ```azurecli
 az acr task create \

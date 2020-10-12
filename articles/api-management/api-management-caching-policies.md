@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: f0aeef7bc67f5c59bb80d5ff24a97be737447a81
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510175"
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
@@ -100,7 +100,7 @@ ms.locfileid: "88510175"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|说明|必须|
 |----------|-----------------|--------------|
 |cache-lookup|根元素。|是|
 |vary-by-header|开始按指定标头（例如 Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match）的值缓存响应。|否|
@@ -114,8 +114,8 @@ ms.locfileid: "88510175"
 | caching-type               | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 | downstream-caching-type        | 此属性必须设置为以下值之一。<br /><br /> -   none - 不允许下游缓存。<br />-   private - 允许下游专用缓存。<br />-   public - 允许专用和共享下游缓存。                                                                                                          | 否       | 无              |
 | must-revalidate                | 启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。                                                                                                                                                                                                                      | 否       | 是              |
-| vary-by-developer              | 将设置为， `true` 以缓存每个开发人员帐户的响应，该帐户拥有请求中包含的 [订阅密钥](./api-management-subscriptions.md) 。                                                                                                                                                                                                                                                                                                  | 是      |         错误          |
-| vary-by-developer-groups       | 设置为 `true` 即可按[用户组](./api-management-howto-create-groups.md)缓存响应。                                                                                                                                                                                                                                                                                                             | 是      |       错误            |
+| vary-by-developer              | 将设置为， `true` 以缓存每个开发人员帐户的响应，该帐户拥有请求中包含的 [订阅密钥](./api-management-subscriptions.md) 。                                                                                                                                                                                                                                                                                                  | 是      |         False          |
+| vary-by-developer-groups       | 设置为 `true` 即可按[用户组](./api-management-howto-create-groups.md)缓存响应。                                                                                                                                                                                                                                                                                                             | 是      |       False            |
 
 ### <a name="usage"></a>使用情况
 此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
@@ -179,7 +179,7 @@ ms.locfileid: "88510175"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|说明|必须|
 |----------|-----------------|--------------|
 |cache-store|根元素。|是|
 
@@ -222,7 +222,7 @@ ms.locfileid: "88510175"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|说明|必须|
 |----------|-----------------|--------------|
 |cache-lookup-value|根元素。|是|
 
@@ -232,7 +232,7 @@ ms.locfileid: "88510175"
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | caching-type | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 | default-value    | 在缓存密钥查找未命中的情况下，会分配给变量的值。 如果未指定此属性，则会分 `null`。                                                                                                                                                                                                           | 否       | `null`            |
-| key              | 要在查找中使用的缓存密钥值。                                                                                                                                                                                                                                                                                                                       | 是      | 空值               |
+| key              | 要在查找中使用的缓存密钥值。                                                                                                                                                                                                                                                                                                                       | 是      | 不适用               |
 | variable-name    | 在查找成功的情况下，会向其分配查找值的[上下文变量](api-management-policy-expressions.md#ContextVariables)的名称。 如果查找未命中，则会为此变量分配 `default-value` 属性的值或 `null`（如果省略了 `default-value` 属性）。                                       | 是      | 空值               |
 
 ### <a name="usage"></a>使用情况
@@ -265,7 +265,7 @@ ms.locfileid: "88510175"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|说明|必须|
 |----------|-----------------|--------------|
 |cache-store-value|根元素。|是|
 
@@ -274,7 +274,7 @@ ms.locfileid: "88510175"
 | 名称             | 说明                                                                                                                                                                                                                                                                                                                                                 | 必须 | 默认           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | caching-type | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
-| duration         | 会根据提供的期间值（以秒为单位指定）将值缓存一段时间。                                                                                                                                                                                                                                                                                 | 是      | 空值               |
+| duration         | 会根据提供的期间值（以秒为单位指定）将值缓存一段时间。                                                                                                                                                                                                                                                                                 | 是      | 不适用               |
 | key              | 缓存密钥，会在其下存储值。                                                                                                                                                                                                                                                                                                                   | 是      | 空值               |
 | value            | 要缓存的值。                                                                                                                                                                                                                                                                                                                                     | 是      | 空值               |
 ### <a name="usage"></a>使用情况
@@ -304,7 +304,7 @@ ms.locfileid: "88510175"
 
 #### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|说明|必须|
 |----------|-----------------|--------------|
 |cache-remove-value|根元素。|是|
 

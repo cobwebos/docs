@@ -6,15 +6,15 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253643"
 ---
 # <a name="active-and-inactive-events"></a>活动和非活动事件
 
-**活动**事件是对排名的任何调用，你知道将向客户显示结果并确定奖励分数。 这是默认行为。
+**活动**事件是对排名的任何调用，你知道将向客户显示结果并确定奖励分数。 此选项为默认行为。
 
 不 **活动** 的事件是对排名的调用，您不确定用户是否将由于业务逻辑而看到建议的操作。 这允许您放弃该事件，因此 Personalizer 不会对默认值进行训练。 非活动事件不应调用奖励 API。
 

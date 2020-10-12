@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f969d7edc22c9c36481ca42449193af5f8c7b0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709991"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>在 Azure 中部署使用 IPv6 的虚拟机规模集
@@ -27,7 +27,7 @@ ms.locfileid: "84709991"
 2.    创建双堆栈负载均衡器。  
 3.    创建网络安全组 (NSG) 规则。  
 
-只有一个步骤与创建单个 VM 不同，那就是创建使用虚拟机规模集资源的网络接口 (NIC) 配置：networkProfile/networkInterfaceConfigurations。 JSON 结构与用于单个 Vm 的 networkInterfaces/对象类似，其中添加了 NIC，并使用 **"primary"： true**属性将 IPv4 IpConfiguration 设置为主接口，如以下示例中所示：
+只有一个步骤与创建单个 VM 不同，那就是创建使用虚拟机规模集资源的网络接口 (NIC) 配置：networkProfile/networkInterfaceConfigurations。 JSON 结构与用于单个 Vm 的 networkInterfaces/对象类似，其中添加了 NIC，并使用 **"primary"： true**  属性将 IPv4 IpConfiguration 设置为主接口，如以下示例中所示：
 
 ```json
           "networkProfile": {

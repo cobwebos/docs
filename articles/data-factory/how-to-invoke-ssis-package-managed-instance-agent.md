@@ -10,24 +10,24 @@ ms.author: lle
 author: lle
 ms.date: 04/14/2020
 ms.openlocfilehash: cf1bf9e05f83610fd43146cf4c99c5006fdc97b3
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171470"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>使用 Azure SQL 托管实例代理运行 SSIS 包
 
 本文介绍如何使用 Azure SQL 托管实例代理运行 SQL Server Integration Services (SSIS) 包。 此功能的行为类似于在本地环境中通过 SQL Server 代理计划 SSIS 包。
 
-利用此功能，可以运行 SQL 托管实例中的 SSISDB 中存储的 SSIS 包、文件系统（如 Azure 文件）或 Azure SSIS 集成运行时包存储区。
+使用此功能可以运行存储在以下位置的 SSIS 包：SQL 托管实例中的 SSISDB、文件系统（例如 Azure 文件存储），或 Azure-SSIS 集成运行时包存储。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，请[下载](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)并安装最新 SQL SERVER MANAGEMENT STUDIO （SSMS）。 版本支持详细信息如下所示：
+若要使用此功能，请[下载](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)并安装最新版 SQL Server Management Studio (SSMS)。 版本支持详细信息如下所示：
 
-- 若要在 SSISDB 或文件系统中运行包，请安装 SSMS 18.5 或更高版本。
-- 若要在包存储中运行包，请安装 SSMS 18.6 或更高版本。
+- 若要运行 SSISDB 或文件系统中的包，请安装 SSMS 版本 18.5 或更高版本。
+- 若要运行包存储中的包，请安装 SSMS 版本 18.6 或更高版本。
 
 还需要在 Azure 数据工厂中[预配 Azure-SSIS 集成运行时](tutorial-create-azure-ssis-runtime-portal.md)。 它使用 SQL 托管实例作为终结点服务器。
 
@@ -44,7 +44,7 @@ ms.locfileid: "87171470"
 
    ![用于创建新 SSIS 作业步骤的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
-1. 在 "**包**" 选项卡上，选择 " **SSIS 目录**" 作为包位置。
+1. 在“包”选项卡上，选择“SSIS 目录”作为包位置 。
 1. 由于 SSISDB 位于 SQL 托管实例中，因此不需要指定身份验证。
 1. 指定 SSISDB 中的某个 SSIS 包。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87171470"
 
 1. 在“包”选项卡上：
 
-   1. 对于 "**包位置**"，请选择 "**文件系统**"。
+   1. 对于“包位置”，选择“文件系统” 。
 
    1. 对于“文件源类型”：
 
@@ -106,9 +106,9 @@ ms.locfileid: "87171470"
 1. 选择“确定”以保存代理作业配置。
 1. 启动代理作业以运行 SSIS 包。
 
-## <a name="run-an-ssis-package-in-the-package-store"></a>在包存储区中运行 SSIS 包
+## <a name="run-an-ssis-package-in-the-package-store"></a>运行包存储中的 SSIS 包
 
-在此过程中，将使用 SQL 托管实例代理来运行存储在 Azure-SSIS IR 包存储区中的 SSIS 包。
+在此过程中，将使用 SQL 托管实例代理来运行存储在 Azure-SSIS IR 包存储中的 SSIS 包。
 
 1. 在最新版 SSMS 中，连接到 SQL 托管实例。
 1. 创建新的代理作业和新的作业步骤。 在“SQL Server 代理”下，右键单击“作业”文件夹，然后选择“新建作业”  。
@@ -121,13 +121,13 @@ ms.locfileid: "87171470"
 
 1. 在“包”选项卡上：
 
-   1. 对于 "**包位置**"，选择 "**包存储**"。
+   1. 对于“包位置”，选择“包存储” 。
 
-   1. 对于**包路径**：
+   1. 对于“包路径”：
 
       包路径为 `<package store name>\<folder name>\<package name>`。
 
-      ![包存储区类型的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png)
+      ![包存储类型的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png)
 
    1. 如果包文件是使用密码加密的，请选择“加密密码”并输入密码。
 1. 在“配置”选项卡中，如果需要通过配置文件来运行 SSIS 包，请输入配置文件路径。

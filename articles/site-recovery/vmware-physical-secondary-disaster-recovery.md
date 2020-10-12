@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711895"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
@@ -195,7 +195,7 @@ Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所�
   4. **** Windows 主目标服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe**** 复制到该服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
   更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe**** 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
   5. **** vContinuum 服务器：将 vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe**** 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
-  更新不需要应用于使用**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe**准备的主目标，因为这是新的 GA 安装程序，并且具有所有最新的更改。
+  更新不需要应用于使用 **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** 准备的主目标，因为这是新的 GA 安装程序，并且具有所有最新的更改。
   6. **** Linux 主目标服务器：要更新统一代理，请将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz**** 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
   7. **** Windows 源服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe**** 复制到该源服务器。 双击以运行该文件。 
   如果源服务器已更新到 Update 4 或源代理已安装有最新的基本安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe****，则不需要在源服务器上安装 Update 5 代理。

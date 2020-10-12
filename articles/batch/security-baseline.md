@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400970"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 的 Azure 安全基线
@@ -596,7 +596,7 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 azure 资源的管理平面的访问权限，包括 batch 帐户、批处理池 () 和存储帐户。
+**指南**：使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制对 Azure 资源（包括 Batch 帐户、Batch 池和存储帐户）的管理平面的访问。
 
 了解 Azure RBAC：
 
@@ -942,7 +942,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：如果对 Azure Batch 池使用自定义映像，请使用 azure RBAC)  (azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。
+**指南**：如果为 Azure Batch 池使用自定义映像，请使用 Azure 基于角色的访问控制 (Azure RBAC) 来确保只有经授权的用户才能访问映像。
 
 了解 Azure RBAC：
 
@@ -1018,11 +1018,11 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何对 Key Vault 进行身份验证：
+如何向 Key Vault 进行身份验证：
 
 https://docs.microsoft.com/azure/key-vault/general/authentication
 
-如何分配 Key Vault 访问策略：
+如何分配 Key Vault 访问策略： 
 
 https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
@@ -1171,7 +1171,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities（IT 规划和功能的测试、培训与演练计划指南）： https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 

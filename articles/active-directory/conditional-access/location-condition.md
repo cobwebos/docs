@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055371"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在条件访问策略中使用位置条件 
@@ -190,11 +190,11 @@ Azure Active Directory (Azure AD) 当前不支持使用 IPv6 的直接网络连�
 
 使用云托管代理或 VPN 解决方案时，Azure AD 在评估策略时使用的 IP 地址是该代理的 IP 地址。 不会使用包含用户公共 IP 地址的 X-Forwarded-For (XFF) 标头，因为没有任何机制验证该地址是否来自受信任的源，该标头可能提供了一种用于伪造 IP 地址的方法。
 
-部署云代理后，可以使用需要 Azure AD 加入混合设备的策略，或 AD FS 内部公司网络声明。
+当云代理准备就绪时，可以使用一个策略来要求设备加入混合 Azure AD，或使用来自 AD FS 的公司网络内部的声明。
 
 ### <a name="api-support-and-powershell"></a>API 支持和 PowerShell
 
-已命名位置的图形 API 预览版本可用。有关详细信息，请参阅[NAMEDLOCATION API](/graph/api/resources/namedlocation?view=graph-rest-beta)。
+命名位置的 Graph API 预览版本可用。有关详细信息，请参阅 [namedLocation API](/graph/api/resources/namedlocation?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>后续步骤
 

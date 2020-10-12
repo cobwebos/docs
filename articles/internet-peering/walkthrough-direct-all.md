@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e27fa26514d27d68aecdf9e28b36e2747dc8ffe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710756"
 ---
 # <a name="direct-peering-walkthrough"></a>直接对等互连演练
@@ -24,19 +24,19 @@ ms.locfileid: "84710756"
 > ![直接对等互连工作流和连接状态](./media/direct-peering.png)
 
 为了预配直接对等互连，必须遵循以下步骤：
-1. 查看 Microsoft 对[等互连策略](https://peering.azurewebsites.net/peering)以了解直接对等互连的要求。
-1. 按照[创建或修改直接对等互连](howto-direct-powershell.md)中的说明提交对等请求。
-1. 提交对等互连请求后，Microsoft 将使用你的注册电子邮件地址进行联系，以提供 LOA （授权信）或其他信息。
+1. 查看 Microsoft 对 [等互连策略](https://peering.azurewebsites.net/peering) 以了解直接对等互连的要求。
+1. 按照 [创建或修改直接对等互连](howto-direct-powershell.md) 中的说明提交对等请求。
+1. 提交对等互连请求后，Microsoft 将使用你的注册电子邮件地址联系，以提供 LOA (的授权) 或其他信息。
 1. 对等互连请求获得批准后，连接状态将更改为 ProvisioningStarted。
 1. 你需要：
     1. 根据 LOA 完成布线
-    1. （可选）使用 169.254.0.0/16 执行链接测试
+    1.  (（可选）) 使用 169.254.0.0/16 执行链接测试
     1. 配置 BGP 会话，然后通知我们。
 1. Microsoft 预配具有拒绝所有策略的 BGP 会话并验证端对端。
 1. 如果成功，您将收到一条通知，指出对等互连连接状态处于活动状态。
 1. 然后，将通过新对等互连允许流量。
 
-请注意，不会将连接状态与标准[BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)会话状态混淆。
+请注意，不会将连接状态与标准 [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) 会话状态混淆。
 
 ## <a name="convert-a-legacy-direct-peering-to-azure-resource"></a>将旧版直接对等互连转换为 Azure 资源
 若要将旧直接对等互连转换为 Azure 资源，必须遵循以下步骤：
@@ -45,7 +45,7 @@ ms.locfileid: "84710756"
 1. 批准后，你将看到直接对等互连，连接状态为 "活动"。
 
 ## <a name="deprovision-direct-peering"></a>取消预配直接对等
-请与[Microsoft 对等](mailto:peering@microsoft.com)团队联系以取消预配直接对等互连。
+请与 [Microsoft 对等](mailto:peering@microsoft.com) 团队联系以取消预配直接对等互连。
 
 如果将直接对等互连设置为取消设置，则会看到连接状态为 " **PendingRemove** "。
 
@@ -54,4 +54,4 @@ ms.locfileid: "84710756"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[设置与 Microsoft 的对等互连的先决条件](prerequisites.md)。
+* 了解 [设置与 Microsoft 的对等互连的先决条件](prerequisites.md)。

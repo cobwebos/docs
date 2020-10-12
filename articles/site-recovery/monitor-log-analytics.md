@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006935"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
@@ -20,7 +20,7 @@ ms.locfileid: "89006935"
 
 Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日志，以及其他监视数据。 在 Azure Monitor 日志中，可以使用 Log Analytics 编写和测试日志查询，并以交互方式分析日志数据。 可以可视化和查询日志结果，并配置警报来根据监视的数据采取措施。
 
-对于 Site Recovery，你可以使用 Azure Monitor 日志来帮助你执行以下操作：
+对于 Site Recovery，Azure Monitor 日志可帮助你执行以下操作：
 
 - **监视 Site Recovery 运行状况和状态**。 例如，可以监视复制运行状况、测试故障转移状态、Site Recovery 事件、受保护计算机的恢复点目标 (RPO)，以及磁盘/数据更改率。
 - **为 Site Recovery 设置警报**。 例如，可以针对计算机运行状况、测试故障转移状态或 Site Recovery 作业状态配置警报。
@@ -44,14 +44,14 @@ Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日
 
 1. 在保管库中，单击“诊断设置” > “添加诊断设置”。 
 
-    ![显示 "添加诊断设置" 选项的屏幕截图。](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![显示“添加诊断设置”选项的屏幕截图。](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. 在“诊断设置”中，指定一个名称，并选中“发送到 Log Analytics”复选框 。
 3. 选择 Azure Monitor 日志订阅和 Log Analytics 工作区。
 4. 在切换选项中选择“Azure 诊断”。
 5. 在日志列表中，选择带有 **AzureSiteRecovery** 前缀的所有日志。 。
 
-    ![诊断设置屏幕的屏幕截图。](./media/monitoring-log-analytics/select-workspace.png)
+    ![“诊断设置屏幕”的屏幕截图。](./media/monitoring-log-analytics/select-workspace.png)
 
 Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDiagnostics**) 内。
 
@@ -68,8 +68,8 @@ Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDia
 7. 安装完成后，转到 Log Analytics 工作区并单击“高级设置”。 转到“数据”页并单击“Windows 性能计数器” 。 
 8. 单击“+”添加以下两个计数器，采样间隔为 300 秒：
 
-    - ASRAnalytics ( * ) \SourceVmChurnRate
-    - ASRAnalytics ( * ) \SourceVmThrpRate
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 变动和上传速率数据将开始输入工作区。
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![显示随 Site Recovery 复制的 Azure Vm 条形图的屏幕截图。](./media/monitoring-log-analytics/example1.png)
+![此屏幕截图显示了使用 Site Recovery 复制 Azure VM 的条形图。](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>查询 Site Recovery 作业
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![跟踪特定 Azure VM RPO 的趋势图屏幕截图。](./media/monitoring-log-analytics/example2.png)
+![此屏幕截图显示了跟踪特定 Azure VM 的 RPO 的趋势图。](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>查询 Azure VM 的数据更改（变动）速率和上传速率
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![特定 Azure VM 的趋势图的屏幕截图。](./media/monitoring-log-analytics/example3.png)
+![此屏幕截图显示了特定 Azure VM 的趋势图。](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>查询 VMware 或物理计算机的数据更改（变动）速率和上传速率
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
 ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323358"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务
@@ -56,7 +56,7 @@ ms.locfileid: "91323358"
 3. 在 " **主机名替代**" 下，选择 " **从后端目标选取主机名**"。
 4. 选择“保存”。
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="从后端 http 设置中选取主机名":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="应用服务后端":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>重定向到应用服务的相对路径时的其他配置
 

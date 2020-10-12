@@ -1,13 +1,13 @@
 ---
 title: 在 Azure 开发测试实验室中配置和使用公共环境 | Microsoft Docs
-description: 本文介绍如何在 Azure 开发测试实验室中配置和使用公共环境（Git 存储库中的 Azure 资源管理器模板）。
+description: 本文介绍如何在 Azure 开发测试实验室中的) Git 存储库中配置和使用 (Azure 资源管理器模板的公共环境。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482660"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置和使用公共环境
@@ -25,7 +25,7 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
 
 1. 选择实验室的“配置和策略”。**** 
 2. 在“虚拟机基础”部分，选择“公共环境”。********
-3. 若要为实验室启用公共环境，请选择“是”。**** 否则请选择“否”。 
+3. 若要为实验室启用公共环境，请选择“是”。**** 否则请选择“否”  。 
 4. 如果启用了公共环境，则默认会启用存储库中的所有环境。 可以取消选择某个环境，使实验室用户不能使用它。 
 
 ![公共环境页](media/devtest-lab-configure-use-public-environments/public-environments-page.png)

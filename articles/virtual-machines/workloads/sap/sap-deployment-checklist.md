@@ -16,10 +16,10 @@ ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650691"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
@@ -135,7 +135,7 @@ ms.locfileid: "89650691"
             - Oracle Linux 7.5。 如果使用的是 RHCKL 内核，则需要 release 3.10.0-862.13.1. el7。 如果使用的是 Oracle UEK 内核，则需要版本5。
         - 根据 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，测试和评估 Sap 应用程序层 vm 与 DBMS vm 之间的网络延迟。 根据 [SAP 支持说明 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的网络延迟指南来评估结果。 网络延迟应为适中或良好的范围。 异常适用于 Vm 与 HANA 大型实例单元之间的流量，如 [本文](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。
         - 请确保将 ILB 部署设置为使用直接服务器返回。 当 Azure Ilb 用于 DBMS 层上的高可用性配置时，此设置将减少延迟。
-        - 如果要将 Azure 负载均衡器与 Linux 来宾操作系统一起使用，请检查 Linux 网络参数 **tcp_timestamps** 是否设置为 **0**。 此建议与较旧版本 [SAP 说明 #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建议冲突。 现已更新 SAP 说明，指出需要将此参数设置为 **0** 才能使用 Azure 负载均衡器。
+        - 如果要将 Azure 负载均衡器与 Linux 来宾操作系统一起使用，请检查 Linux 网络参数 **net.ipv4.tcp_timestamps** 是否已设置为 **0**。 此建议与较旧版本 [SAP 说明 #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建议冲突。 现已更新 SAP 说明，指出需要将此参数设置为 **0** 才能使用 Azure 负载均衡器。
         - 请考虑使用 [Azure 邻近性放置组](../../linux/co-location.md) 来获得最佳网络延迟。 有关详细信息，请参阅 [适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组](sap-proximity-placement-scenarios.md)。
    4. 高可用性和灾难恢复部署。
         - 如果在不定义特定 Azure 可用性区域的情况下部署 SAP 应用程序层，请确保运行 SAP 对话框实例的所有 Vm 或单个 SAP 系统的中间件实例都部署在 [可用性集中](../../windows/manage-availability.md)。
@@ -161,7 +161,7 @@ ms.locfileid: "89650691"
             -   [SAP 支持说明 #2753418-由于计时器回退，潜在的性能下降](https://launchpad.support.sap.com/#/notes/2753418)
             -   [SAP 支持说明 #2791572-由于 Azure 中的 Hyper-v 缺少 VDSO 支持而导致性能下降](https://launchpad.support.sap.com/#/notes/2791572)
             -   [SAP 支持说明 #2382421 优化 HANA 和操作系统级别的网络配置](https://launchpad.support.sap.com/#/notes/2382421)
-            -   [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA 外接程序](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA Add-On](https://launchpad.support.sap.com/#/notes/2694118)
             -   [SAP 支持说明 #1984787-SUSE LINUX Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787)
             -   [SAP 支持说明 #2002167 Red Hat Enterprise Linux 7、windows：安装和升级](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [SAP support note #2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690)（SAP 支持说明 #2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
