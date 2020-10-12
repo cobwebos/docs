@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763578"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
@@ -195,7 +195,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPass
 ```
 
 
-若要查看新策略并获取其**ObjectID**，请运行以下命令：
+若要查看新策略并获取其 **ObjectID**，请运行以下命令：
 
 ``` powershell
 Get-AzureADPolicy
@@ -268,5 +268,5 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure AD 中的身份验证工作原理的详细信息，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
-- 有关用户单一登录的详细信息，请参阅[对应用程序的单一登录 Azure Active Directory](what-is-single-sign-on.md)。
-- 有关与开发人员相关的所有内容的概述，请访问[Microsoft 标识平台](../develop/v2-overview.md)。
+- 有关用户单一登录的详细信息，请参阅 [对应用程序的单一登录 Azure Active Directory](what-is-single-sign-on.md)。
+- 有关与开发人员相关的所有内容的概述，请访问 [Microsoft 标识平台](../develop/v2-overview.md) 。

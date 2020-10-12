@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330105"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型

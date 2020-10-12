@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
 ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543480"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 门户将多个 IP 地址分配给虚拟机
@@ -52,8 +52,8 @@ ms.locfileid: "87543480"
 
 完成以下步骤，添加新的专用 IP 地址：
 
-1. 完成本文[核心步骤](#coreadd)部分中的步骤，并确保位于 VM 网络接口的 " **IP 配置**" 部分。  查看显示为默认值的子网（例如 10.0.0.0/24）。
-2. 单击“添加”  。 在出现的 "**添加 ip 配置**" 窗格中，使用新的*静态*专用 IP 地址创建一个名为*IPConfig-4*的 IP 配置，方法是选取最后一个八位字节的新编号，然后单击 **"确定"**。  （对于 10.0.0.0/24 子网，示例 IP 为*10.0.0.7*。）
+1. 完成本文 [核心步骤](#coreadd) 部分中的步骤，并确保位于 VM 网络接口的 " **IP 配置** " 部分。  查看显示为默认 (例如 10.0.0.0/24) 的子网。
+2. 单击“添加”。 在出现的 "**添加 ip 配置**" 窗格中，使用新的*静态*专用 IP 地址创建一个名为*IPConfig-4*的 IP 配置，方法是选取最后一个八位字节的新编号，然后单击 **"确定"**。   (10.0.0.0/24 子网，示例 IP 为 *10.0.0.7*。 ) 
 
     > [!NOTE]
     > 在添加静态 IP 地址时，必须在 NIC 连接到的子网中指定未使用的有效地址。 如果所选地址不可用，门户会对 IP 地址显示一个 X，而你必须选择其他地址。
@@ -84,7 +84,7 @@ ms.locfileid: "87543480"
 
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>将公共 IP 地址资源关联到新 IP 配置
 
-1. 完成本文 [核心步骤](#coreadd) 部分的步骤。
+1. 完成本文[核心步骤](#coreadd)部分的步骤。
 2. 单击“添加” 。 在显示的“添加 IP 配置”窗格中，创建名为“IPConfig-4”的 IP 配置******。 启用“公共 IP 地址”****，并从显示的“选择公共 IP 地址”窗格中选择一个现有的可用公共 IP 地址资源****。
 
     在选择公共 IP 地址资源后单击“确定”，窗格随即关闭****。 如果还没有公共 IP 地址，则可通过完成本文[创建公共 IP 地址资源](#create-public-ip)部分的步骤创建一个。 

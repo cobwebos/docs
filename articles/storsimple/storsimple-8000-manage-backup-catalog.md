@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 549c14e0506613aca91ee4666026348d74afedbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514752"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>使用 StorSimple 设备管理器服务管理备份目录
@@ -32,7 +32,7 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示执行
 “备份目录”边栏选项卡提供了一个查询，可缩小备份集选择范围。**** 可筛选基于以下参数检索到的备份集：
 
 * **设备** – 在其上创建备份集的设备。
-* **备份策略或卷**–与此备份集关联的备份策略或卷。
+* **备份策略或卷** –与此备份集关联的备份策略或卷。
 * **起始和结束** – 创建备份集的日期和时间范围。
 
 然后基于以下属性以表格方式列出所筛选的备份集：

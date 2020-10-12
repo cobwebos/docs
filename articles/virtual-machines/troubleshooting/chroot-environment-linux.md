@@ -14,10 +14,10 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
 ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82864677"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Linux 救援 VM 中的 Chroot 环境
@@ -450,7 +450,7 @@ ms.locfileid: "82864677"
 1. 从救援 VM 中分离磁盘，并执行与原始 VM 之间的磁盘交换。
 1. 启动原始 VM 并检查其连接状态。
 
-## <a name="suse-sles-12-sp4-suse-sles-12-sp4-for-sap---suse-sles-15-sp1-suse-sles-15-sp1-for-sap"></a>SUSE-SLES 12 SP4，SUSE-SLES 12 SP4 For SAP &&  # # SUSE-SLES 15 SP1，SUSE-SLES 15 SP1 For SAP
+## <a name="suse-sles-12-sp4-suse-sles-12-sp4-for-sap---suse-sles-15-sp1-suse-sles-15-sp1-for-sap"></a>SUSE-SLES 12 SP4、SUSE-SLES 12 SP4 For SAP 以及 ## SUSE-SLES 15 SP1、SUSE-SLES 15 SP1 For SAP
 
 1. 停止或解除分配受影响的 VM。
 1. 使用托管磁盘在同一资源组 (RSG) 和位置中创建 OS 版本相同的救援 VM 映像。

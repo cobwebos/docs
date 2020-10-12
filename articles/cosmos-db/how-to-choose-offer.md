@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
 ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605210"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>如何在标准（手动）和自动缩放预配的吞吐量之间进行选择 
@@ -38,9 +38,9 @@ Azure Cosmos DB 支持两种类型或提供预配的吞吐量：标准（手动�
 
 ### <a name="new-applications"></a>新应用程序 ###
 
-如果你正在生成一个新应用程序，但还不知道流量模式，你可能想要从入口点 RU/s（或最小 RU/s）开始，以避免在开始时过度预配。 或者，如果你有一个不需要大规模的小型应用程序，你可能只需要预配最小的入口点 RU/s 来优化成本。 对于预期流量较低的小型应用程序，还可以考虑 [无服务器](throughput-serverless.md) 容量模式。
+如果你正在生成一个新应用程序，但还不知道流量模式，你可能想要从入口点 RU/s（或最小 RU/s）开始，以避免在开始时过度预配。 或者，如果你有一个不需要大规模的小型应用程序，你可能只需要预配最小的入口点 RU/s 来优化成本。 对于预期流量较低的小型应用程序，还可以考虑[无服务器](throughput-serverless.md)容量模式。
 
-无论你计划使用标准 (手动) 还是自动缩放，都应该考虑以下事项：
+无论计划使用标准（手动）还是自动缩放，都应该考虑以下事项：
 
 如果在 400 RU/s 的入口点预配标准（手动）RU/s，则无法消耗超过 400 RU/s 的吞吐量，除非手动更改吞吐量。 你将以每小时标准（手动）预配的吞吐量为 400 RU/s 计费。
 

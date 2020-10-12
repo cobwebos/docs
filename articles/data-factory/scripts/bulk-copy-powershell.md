@@ -11,15 +11,15 @@ ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
 ms.openlocfilehash: ecfc9930c3387e19fd74d7cc52d11864ef25259a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439021"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂批量复制多个表
 
-此示例 PowerShell 脚本将数据从 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) 。
+此 PowerShell 示例脚本将数据从 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics（以前称为 SQL 数据仓库）。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

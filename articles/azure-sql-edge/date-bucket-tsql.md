@@ -1,5 +1,5 @@
 ---
-title: Date_Bucket (Transact-sql) -Azure SQL Edge
+title: Date_Bucket (Transact-SQL) - Azure SQL Edge
 description: 了解如何在 Azure SQL Edge 中使用 Date_Bucket
 keywords: Date_Bucket, SQL Edge
 services: sql-edge
@@ -10,15 +10,15 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886834"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-`origin` `1900-01-01 00:00:00.000` 如果未指定源参数，则此函数将从参数定义的时间戳或的默认原始值返回对应于每个 datetime bucket 开头的日期时间值。 
+此函数从 `origin` 参数定义的时间戳或默认原始值 `1900-01-01 00:00:00.000`（如果未指定 origin 参数）返回与每个日期/时间 Bucket 的起始值相对应的日期/时间值。 
 
 有关所有 Transact-SQL 日期和时间数据类型及函数的概述，请参阅[日期和时间数据类型及函数 &#40;Transact-SQL&#41;](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/)。
 
@@ -67,7 +67,7 @@ DATE_BUCKET (datePart, number, date, origin)
 
 **源** 
 
-可解析为以下值之一的可选表达式：
+可解析为下列值之一的可选表达式：
 
 + **date**
 + **datetime**
@@ -76,9 +76,9 @@ DATE_BUCKET (datePart, number, date, origin)
 + **smalldatetime**
 + **time**
 
-的数据类型 `Origin` 应与参数的数据类型匹配 `Date` 。 
+`Origin` 的数据类型应与 `Date` 参数的数据类型相匹配。 
 
-`DATE_BUCKET` 如果没有为函数指定原值，则使用默认原始日期值 `1900-01-01 00:00:00.000` 1 1900，即 12:00 AM （星期一，AM）。
+如果没有为该函数指定原始值，`DATE_BUCKET` 将使用默认原始日期值 `1900-01-01 00:00:00.000`，即 1900 年 1 月 1 日星期一上午 12:00。
 
 ## <a name="return-type"></a>返回类型
 
@@ -105,14 +105,14 @@ Select DATE_BUCKET(wk, 4, @date)
 Select DATE_BUCKET(wk, 6, @date)
 ```
 
-下面的表达式的输出为 `2020-04-06 00:00:00.0000000` ，从默认的原始时间开始为6275周 `1900-01-01 00:00:00.000` 。
+以下表达式的输出为 `2020-04-06 00:00:00.0000000`，即，从默认原始时间 `1900-01-01 00:00:00.000` 开始的 6275 周。
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
 Select DATE_BUCKET(wk, 5, @date)
 ```
 
-下面的表达式的输出为 `2020-06-09 00:00:00.0000000` ，从指定的源时间开始为75周 `2019-01-01 00:00:00` 。
+以下表达式的输出为 `2020-06-09 00:00:00.0000000`，即，从指定原始时间 `2019-01-01 00:00:00` 开始的 75 周。
 
 ```sql
 declare @date datetime2 = '2020-06-15 21:22:11'
@@ -148,9 +148,9 @@ Invalid bucket width value passed to date_bucket function. Only positive values 
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
 
-## <a name="origin-argument"></a>源参数  
+## <a name="origin-argument"></a>origin 参数  
 
-中的和参数的数据类型 `origin` `date` 必须相同。 如果使用不同的数据类型，则会生成错误。
+`origin` 和 `date` 参数的数据类型必须相同。 如果使用不同的数据类型，则会生成错误。
 
 ## <a name="remarks"></a>备注
 
@@ -293,9 +293,9 @@ Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
 GO  
 ``` 
-### <a name="c-using-a-non-default-origin-value"></a>C. 使用非默认的原始值
+### <a name="c-using-a-non-default-origin-value"></a>C. 使用非默认原始值
 
-此示例使用非默认 orgin 值生成日期存储桶。 
+本示例使用非默认原始值来生成日期 Bucket。 
 
 ```sql
 declare @date datetime2 = '2020-06-15 21:22:11'

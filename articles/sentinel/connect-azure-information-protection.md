@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88794429"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>连接 Azure 信息保护中的数据
@@ -35,7 +35,7 @@ ms.locfileid: "88794429"
     
     如果更改了工作区，则 Azure 信息保护的新报表数据现在将存储在用于 Azure Sentinel 的工作区中，而不能将历史数据提供给 Azure Sentinel 使用。 此外，如果为自定义查询、警报或 REST Api 配置了上一个工作区，则必须为 Azure Sentinel 工作区重新配置这些内容，前提是要使用它们进行 Azure 信息保护。 使用 Azure 信息保护的客户端和服务不需要重新配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 适用于你的租户的以下 Azure AD 管理员角色之一： 
     - Azure 信息保护管理员

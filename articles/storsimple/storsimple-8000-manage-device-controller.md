@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513936"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 设备控制器
@@ -111,7 +111,7 @@ ms.locfileid: "85513936"
 执行以下步骤，将 Microsoft Azure StorSimple 设备重置为出厂默认设置：
 
 ### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中将设备重置为默认设置
-1. 通过设备的串行控制台访问设备。 检查标题消息，确保已连接到**主动**控制器。
+1. 通过设备的串行控制台访问设备。 检查标题消息，确保已连接到 **主动** 控制器。
 2. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**。
 3. 在提示符下，键入以下命令重置整个群集，并删除所有数据、元数据和控制器设置：
    

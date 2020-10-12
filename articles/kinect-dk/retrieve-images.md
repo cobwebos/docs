@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 检索, 传感器, 相机, sdk, 深度, rgb, 图像, 颜色, 捕获, 分辨率, 缓冲区
 ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87538908"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>检索 Azure Kinect 图像数据

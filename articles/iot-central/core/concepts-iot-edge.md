@@ -11,15 +11,15 @@ ms.custom:
 - device-developer
 - iot-edge
 ms.openlocfilehash: 5c51649e742f6e314e0e324ae19c38f1a83b02ee
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90016854"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
 
-本文适用于解决方案构建者和设备开发人员。
+本文适用于解决方案构建者和设备开发人员。 
 
 IoT Edge 包含三个组件：
 

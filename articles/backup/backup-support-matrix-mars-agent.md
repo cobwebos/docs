@@ -4,10 +4,10 @@ description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332672"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
@@ -45,7 +45,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 --- | ---
 大小 |  缓存文件夹中的可用空间应至少为备份数据总大小的 5% 到 10%。
 位置 | 缓存文件夹必须存储在要备份的计算机本地，并且该计算机必须联机。 缓存文件夹不应位于网络共享、可移动媒体或脱机卷上。
-文件夹 | 不应在删除了重复数据的卷上加密缓存文件夹，也不能对压缩后的文件夹进行加密，即稀疏文件或具有重新分析点的文件夹。
+文件夹 | 不应在已删除重复数据的卷、已压缩文件夹、稀疏文件夹或具有重分析点的文件夹中加密缓存文件夹。
 位置更改 | 可以通过停止备份引擎 (`net stop bengine`)，并将缓存文件夹复制到新驱动器来更改缓存位置。 （确保新驱动器有足够的空间。）然后，将 **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** 下的两个注册表项（**Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation**）更新为新位置，并重启引擎。
 
 ## <a name="networking-and-access-support"></a>网络和访问支持
@@ -99,15 +99,15 @@ MARS 代理需要以下 URL 的访问权限：
 >[!NOTE]
 >对于新线路，公共对等互连已弃用。
 
-### <a name="private-endpoint-support"></a>私有终结点支持
+### <a name="private-endpoint-support"></a>专用终结点支持
 
-你现在可以使用专用终结点将数据从服务器安全备份到恢复服务保管库。 由于 Azure Active Directory 当前不支持私有终结点，因此需要对 Azure Active Directory 所需的 Ip 和 Fqdn 进行单独的出站访问。
+现在可以使用专用终结点将数据从服务器安全地备份到恢复服务保管库。 由于 Azure Active Directory 目前不支持专用终结点，因此需要分别允许 Azure Active Directory 所需的 IP 和 FQDN 进行出站访问。
 
-使用 MARS 代理备份本地资源时，请确保包含要备份的资源的本地网络 () 与包含保管库的专用终结点的 Azure VNet 对等互连。 然后，你可以继续安装 MARS 代理并配置备份。 但是，必须确保仅通过对等互连网络进行备份的所有通信。
+使用 MARS 代理备份本地资源时，请确保已将本地网络（包含要备份的资源）与包含保管库的专用终结点的 Azure VNet 对等互连。 然后可以继续安装 MARS 代理并配置备份。 但必须确保仅通过对等互连网络进行所有备份通信。
 
-如果在向保管库注册了 MARS 代理后，删除该保管库的专用终结点，则需要使用保管库重新注册该容器。 不需要停止对它们的保护。
+如果在某个 MARS 代理注册到保管库后删除了该保管库的专用终结点，则需要向该保管库重新注册容器。 不需要停止对它们的保护。
 
-阅读有关 [Azure 备份的专用终结点的](private-endpoints.md)详细信息。
+了解有关 [Azure 备份的专用终结点](private-endpoints.md)的详细信息。
 
 ### <a name="throttling-support"></a>限制支持
 
@@ -141,19 +141,19 @@ Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | - .NET
 
 有关详细信息，请参阅[支持的 MABS 和 DPM 操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
-### <a name="operating-systems-at-end-of-support"></a>支持的操作系统
+### <a name="operating-systems-at-end-of-support"></a>结束支持的操作系统
 
-以下操作系统已结束支持，强烈建议升级操作系统以继续保持受保护状态。
+以下操作系统已结束支持，强烈建议升级操作系统以继续受到保护。
 
-如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure Vm 并利用 Azure VM 备份来继续保护。 有关迁移 Windows server 的详细信息，请访问 [此处的迁移页面](https://azure.microsoft.com/migration/windows-server/) 。
+如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure VM，并利用 Azure VM 备份继续受到保护。 访问[此处的迁移页面](https://azure.microsoft.com/migration/windows-server/)，以获取有关迁移 Windows 服务器的详细信息。
 
-对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问 [FAQ 页面](https://www.microsoft.com/windows-server/extended-security-updates) 了解更多。
+对于无法升级操作系统或迁移到 Azure 的本地或托管环境，请激活计算机的扩展安全更新，以继续受到保护和支持。 请注意，仅特定版本才有资格获得扩展安全更新。 访问[常见问题解答页面](https://www.microsoft.com/windows-server/extended-security-updates)以了解详细信息。
 
 | **操作系统**                                       | **文件/文件夹** | **系统状态** | **软件/模块要求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (旗舰版、企业版、专业版、家庭高级版/基本版、初学者)  | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
-| Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation)  | 是               | 是                | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
-| Windows Server 2008 SP2 (Standard、Datacenter、Foundation)   | 是               | 否                 | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
+| Windows 7（Ultimate、Enterprise、Pro、Home Premium/Basic、Starter） | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
+| Windows Server 2008 R2（Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | - .NET 3.5、.NET 4.5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
+| Windows Server 2008 SP2（Standard、Datacenter、Foundation）  | 是               | 否                 | - .NET 3.5、.NET 4.5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  - Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>备份限制
 
@@ -171,13 +171,13 @@ Windows 7| 1,700 GB
 
 ### <a name="other-limitations"></a>其他限制
 
-- MARS 不支持对单个保管库具有相同名称的多个计算机的保护。
+- MARS 不支持在单个保管库中保护多台同名计算机。
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
 **类型** | **支持**
 --- | ---
-过<sup>*</sup>| 。
+已加密<sup>*</sup>| 。
 Compressed | 。
 稀疏 | 。
 压缩和稀疏 |。
@@ -189,7 +189,7 @@ Compressed | 。
 OneDrive（同步的文件是稀疏流）| 不支持。
 已启用 DFS 复制的文件夹 | 不支持。
 
-\* 确保 MARS 代理有权访问所需的证书来访问加密的文件。 将跳过不可访问的文件。
+\* 确保 MARS 代理有权访问所需的证书，以便访问加密的文件。 无法访问的文件将被跳过。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支持备份的驱动器或卷
 

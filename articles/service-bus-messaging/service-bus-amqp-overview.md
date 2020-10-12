@@ -4,10 +4,10 @@ description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQ
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066332"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
@@ -54,7 +54,7 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过服务总线使用 AMQP 1.0 交换消息。
 
-![此图显示了一个服务总线，其中包含两个 Linux 环境和两个 Windows 环境的交换消息。][0]
+![此图显示一个服务总线交换消息，其中包含两个 Linux 环境和两个 Windows 环境。][0]
 
 **图 1：演示使用服务总线和 AMQP 1.0 进行跨平台消息传送的部署方案示例**
 

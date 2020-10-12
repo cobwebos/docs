@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514216"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
@@ -33,7 +33,7 @@ ms.locfileid: "85514216"
 * 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
 * 在 Windows 系统上[下载最新的 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。 该工具的最新版本包含安全更新，允许对 BitLocker 密钥使用外部保护程序并更新了解锁模式功能。
 
-  * 解压缩到默认文件夹 `waimportexportv1`。 例如 `C:\WaImportExportV1`。
+  * 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
 * 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 Azure Data Box 运营团队 `adbops@microsoft.com` 。  
   * 该帐户必须是有余额的有效帐户，且有退货功能。
   * 生成导出作业的跟踪号。
@@ -127,7 +127,7 @@ ms.locfileid: "85514216"
 
 6. 在“回寄信息”中：
 
-   * 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com` 并提供有关计划使用的电信公司的信息。
+   * 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
    * 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
    * 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 

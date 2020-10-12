@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 41389bc5ed8580cd80dbc40e771c7f15241f5ae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85479396"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>适用于 iOS 的 Microsoft 身份验证库和适用于 macOS 的 Microsoft 身份验证库的差异
@@ -42,7 +42,7 @@ ms.locfileid: "85479396"
 
 ### <a name="conditional-access-authentication-differences"></a>条件性访问身份验证差异
 
-对于条件访问方案，使用适用于 iOS 的 MSAL 时，用户将会出现更少的提示。 这是因为，iOS 使用 broker 应用（Microsoft Authenticator），这在某些情况下不再需要提示用户。
+对于条件访问方案，使用适用于 iOS 的 MSAL 时，用户将会出现更少的提示。 这是因为，iOS 使用 broker 应用 (Microsoft Authenticator) 在某些情况下不再需要提示用户。
 
 ### <a name="project-setup-differences"></a>项目设置差异
 

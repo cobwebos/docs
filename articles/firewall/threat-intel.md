@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
 ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83655085"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>基于 Azure 防火墙威胁智能的筛选
@@ -27,7 +27,7 @@ ms.locfileid: "83655085"
 
 默认情况下，基于威胁智能的筛选在警报模式下启用。 门户界面在你的区域可用之前，无法关闭此功能或更改模式。
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="基于威胁智能的筛选门户界面":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="防火墙威胁智能":::
 
 ## <a name="logs"></a>日志
 

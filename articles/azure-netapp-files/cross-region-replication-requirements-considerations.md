@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708547"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>使用跨区域复制的要求和注意事项 
@@ -40,8 +40,8 @@ ms.locfileid: "90708547"
 * 当复制关系处于活动或中断状态时，以及在删除复制关系之后，可以删除复制关系的源卷上的手动快照。 在复制关系中断之前，不能删除目标卷的手动快照。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建复制对等](cross-region-replication-create-peering.md)
-* [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)
+* [创建复制对等互连](cross-region-replication-create-peering.md)
+* [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)

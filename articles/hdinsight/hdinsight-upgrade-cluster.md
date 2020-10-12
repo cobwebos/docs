@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
 ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085882"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集迁移到较新版本
@@ -51,7 +51,7 @@ ms.locfileid: "86085882"
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-有关数据库备份和还原的详细信息，请参阅[使用自动数据库备份恢复 AZURE SQL 数据库中的数据库](../azure-sql/database/recovery-using-backups.md)。
+有关数据库备份和还原的详细信息，请参阅[使用自动数据库备份在 Azure SQL 数据库中恢复数据库](../azure-sql/database/recovery-using-backups.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

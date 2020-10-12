@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314430"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
@@ -67,7 +67,7 @@ ms.locfileid: "91314430"
         - 不**正常资源**–仍会受到确定问题影响的资源。
         - **不适用的资源** –建议无法提供明确答案的资源。 “不适用”选项卡还会为每个资源提供原因。 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="不适用的资源及其原因。":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="建议详细信息页。":::
 
 ## <a name="preview-recommendations"></a>预览建议
 
@@ -77,7 +77,7 @@ ms.locfileid: "91314430"
 
 预览建议示例如下：
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="建议详细信息页。":::
  
 ## <a name="next-steps"></a>后续步骤
 

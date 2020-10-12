@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric sfctl 网格机密
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取和删除 Service Fabric 网格密钥资源的命令的列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于获取和删除 Service Fabric 网格密钥资源的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260336"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
@@ -17,20 +17,20 @@ ms.locfileid: "86260336"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| 删除 | 删除机密资源。 |
+| “删除” | 删除机密资源。 |
 | list | 列出所有机密资源。 |
-| show | 获取具有给定名称的机密资源。 |
+| 显示 | 获取具有给定名称的机密资源。 |
 
 ## <a name="sfctl-mesh-secret-delete"></a>sfctl mesh secret delete
 删除机密资源。
 
 删除指定的机密资源及其所有其命名值。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|描述|
 | --- | --- |
 | --name -n [必需] | 机密资源的名称。 |
 
@@ -64,9 +64,9 @@ ms.locfileid: "86260336"
 
 获取具有给定名称的机密资源的相关信息。 此信息包括机密的说明和其他属性。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|描述|
 | --- | --- |
 | --name -n [必需] | 机密资源的名称。 |
 
@@ -82,5 +82,5 @@ ms.locfileid: "86260336"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

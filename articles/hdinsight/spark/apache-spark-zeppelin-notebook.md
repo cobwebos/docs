@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084522"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
@@ -153,20 +153,20 @@ Zeppelin 笔记本保存在群集头节点。 因此，如果删除群集，笔�
 
 此操作可在下载位置将笔记本另存为 JSON 文件。
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>用于 `Shiro` 配置对企业安全性套餐（ESP）群集中 Zeppelin 解释器的访问
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>使用 `Shiro` 在企业安全性套餐 (ESP) 群集中配置 Zeppelin 解释器的访问权限
 
-如上所述， `%sh` HDInsight 4.0 中不支持解释器。 此外，由于 `%sh` 解释器使用 shell 命令引入了潜在的安全问题，例如 access keytabs，它也已从 HDInsight 3.6 ESP 群集中删除。 这意味着， `%sh` 在默认情况下，在单击 "**创建新备注**" 或解释器 UI 时，解释器不可用。
+如上所述，从 HDInsight 4.0 开始不再支持 `%sh` 解释器。 此外，由于 `%sh` 解释器会导致潜在的安全问题（例如，使用 shell 命令访问 keytabs），因此也从 HDInsight 3.6 ESP 群集中删除了该解释器。 这意味着，默认情况下，单击“创建新注释”时或位于解释器 UI 时，`%sh` 解析器不可用。
 
-特权域用户可以使用 `Shiro.ini` 文件来控制对解释器 UI 的访问。 只有这些用户可以创建新 `%sh` 的解释器并对每个新的解释器设置权限 `%sh` 。 若要使用文件控制访问 `shiro.ini` ，请使用以下步骤：
+特权域用户可以使用 `Shiro.ini` 文件来控制对解释器 UI 的访问。 只有这些用户可以创建新的 `%sh` 解释器并对每个新 `%sh` 解释器设置权限。 若要使用 `shiro.ini` 文件控制访问权限，请执行以下步骤：
 
-1. 使用现有的域组名称定义新的角色。 在下面的示例中， `adminGroupName` 是 AAD 中的一组特权用户。 不要在组名称中使用特殊字符或空格。 后面的字符将 `=` 授予此角色的权限。 `*`表示组具有完全权限。
+1. 使用现有域组名称定义新的角色。 在以下示例中，`adminGroupName` 是 AAD 中的一组特权用户。 请勿在组名称中使用特殊字符或空格。 `=` 后的字符用于为此角色提供权限。 `*` 表示组具有完全权限。
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. 添加新的角色以访问 Zeppelin 解释器。 在下面的示例中，中的所有用户 `adminGroupName` 都有权访问 Zeppelin 解释器，并且可以创建新的解释器。 可以在中的方括号之间放置多个角色 `roles[]` ，用逗号分隔。 然后，具有必要权限的用户可以访问 Zeppelin 解释器。
+2. 添加新的角色以访问 Zeppelin 解释器。 在以下示例中，`adminGroupName` 中的所有用户都授予了 Zeppelin 解释器的访问权限，并且可以创建新的解释器。 你可以在 `roles[]` 中的括号之间放置多个角色，用逗号分隔。 然后，具有必要权限的用户可以访问 Zeppelin 解释器。
 
     ```
     [urls]

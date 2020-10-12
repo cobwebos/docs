@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540275"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530062"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教程：建立 Azure Functions 专用站点访问
 
@@ -73,7 +73,7 @@ ms.locfileid: "86540275"
 1. 选择“网络”选项卡，然后选择“新建”配置新的虚拟网络。
 
     >[!div class="mx-imgBorder"]
-    >![为新 VM 创建新的虚拟网络](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![显示“网络”选项卡的屏幕截图，其中突出显示了“虚拟网络”部分中的“新建”操作。](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. 在“创建虚拟网络”中，使用插图下面的表格中的设置：
 

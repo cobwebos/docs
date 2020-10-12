@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 PHP 建议搜索查询
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
+description: 了解如何使用必应自动建议 API 和 PHP 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6552c345678b6996f4a35e9e1fc7a1838505ff09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 534702a9122fd19be1b47dc1fcbd54ba7bfad14c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930176"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91332604"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>快速入门：使用必应自动建议 REST API 和 PHP 建议搜索查询
 

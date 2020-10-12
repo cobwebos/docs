@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dacurwin
 ms.openlocfilehash: b8941bb4fa77cb0008cb7271681e972bc21d6588
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83659544"
 ---
 现在可以使用[专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)将数据从虚拟网络内的服务器安全地备份到恢复服务保管库。 专用终结点为保管库使用 VNET 地址空间中的 IP。 虚拟网络中的资源与保管库之间的网络流量将通过虚拟网络和 Microsoft 主干网络上的专用链接传输。 这样就不会从公共 Internet 泄露信息。 专用终结点可用于备份和还原在 Azure VM 中运行的 SQL 数据库和 SAP HANA 数据库。 它还可以通过 MARS 代理用于本地服务器。

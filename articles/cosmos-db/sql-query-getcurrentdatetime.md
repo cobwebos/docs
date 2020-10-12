@@ -8,10 +8,10 @@ ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606965"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
@@ -28,7 +28,7 @@ GetCurrentDateTime ()
   
   以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回当前 UTC 日期和时间 ISO 8601 字符串值，其中：
   
-  |格式|说明|
+  |格式|描述|
   |-|-|
   |YYYY|四位数的年份|
   |MM|两位数的月份（01 = 1 月，依此类推。）|

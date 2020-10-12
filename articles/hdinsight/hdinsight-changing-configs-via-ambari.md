@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: 52eb1b6c89ff02cb44fe731c2463ab02c284f26c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086443"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 优化群集
@@ -29,7 +29,7 @@ Ambari Web UI 可用于管理主机、服务、警报、配置和视图。 Ambar
 
 ## <a name="manage-your-clusters-configuration"></a>管理群集的配置
 
-配置设置可帮助优化特定服务。 若要修改服务的配置设置，请从 "**服务**" 边栏（左侧）中选择该服务。 然后导航到服务详细信息页中的 "配置 **" 选项卡**。
+配置设置可帮助优化特定服务。 若要修改服务的配置设置，请从左侧)  (的 " **服务** " 边栏中选择该服务。 然后导航到服务详细信息页中的 "配置 **" 选项卡** 。
 
 ![Apache Ambari Services 边栏](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 

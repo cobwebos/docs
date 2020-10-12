@@ -8,10 +8,10 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077365"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
@@ -20,7 +20,7 @@ ms.locfileid: "86077365"
 
 在 Analysis Services 中，服务主体可以与 Azure 自动化、PowerShell 无人参与模式、自定义客户端应用程序和 Web 应用配合使用，以便自动完成常见的任务。 例如，预配服务器、部署模型、数据刷新、垂直缩放、暂停/恢复等操作均可使用服务主体自动完成。 权限通过角色成员身份分配给服务主体，十分类似于常规的 Azure AD UPN 帐户。
 
-Analysis Services 还支持使用服务主体执行由托管标识执行的操作。 有关详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。    
+Analysis Services 还支持由托管标识使用服务主体执行的操作。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。    
 
 ## <a name="create-service-principals"></a>创建服务主体
  
@@ -38,7 +38,7 @@ Analysis Services 还支持使用服务主体执行由托管标识执行的操�
 
 ## <a name="add-service-principals-to-server-admin-role"></a>将服务主体添加到服务器管理员角色
 
-在使用服务主体进行 Analysis Services 服务器管理操作之前，必须将其添加到服务器管理员角色。 必须直接将服务主体添加到服务器管理员角色。 不支持将服务主体添加到安全组，然后将该安全组添加到服务器管理员角色。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
+在使用服务主体进行 Analysis Services 服务器管理操作之前，必须将其添加到服务器管理员角色。 必须直接将服务主体添加到服务器管理员角色。 不支持先将服务主体添加到安全组，然后再将该安全组添加到服务器管理员角色。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
 
 ## <a name="service-principals-in-connection-strings"></a>连接字符串中的服务主体
 
@@ -50,9 +50,9 @@ Analysis Services 还支持使用服务主体执行由托管标识执行的操�
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>使用 Az.AnalysisServices 模块
 
-将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用来执行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
+将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用以进行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
 
-在以下示例中，appID 和 password 用于执行控制平面操作，以同步到只读副本并进行纵向/横向扩展：
+以下示例使用 appID 和密码执行控制平面操作，以便与只读副本同步并进行纵向/横向扩展：
 
 ```powershell
 Param (

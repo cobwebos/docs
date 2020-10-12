@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085933"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
@@ -35,9 +35,9 @@ ms.locfileid: "86085933"
 
 * **SSH 客户端**。 请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* **Azure SQL 数据库**。  请参阅在 Azure 门户中的[AZURE SQL 数据库中创建数据库](../sql-database/sql-database-get-started.md)。  本文使用名为**oozietest**的数据库。
+* **Azure SQL 数据库**。  请参阅在 Azure 门户中的 [AZURE SQL 数据库中创建数据库](../sql-database/sql-database-get-started.md)。  本文使用名为 **oozietest**的数据库。
 
-* 群集主存储的 URI 方案。 `wasb://`对于 Azure 存储空间， `abfs://` 适用于 Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 `wasb://` 对于 Azure 存储空间， `abfs://` 适用于 Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="example-workflow"></a>示例工作流
 
@@ -234,7 +234,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 编辑以下代码，将替换为 `<serverName>` [逻辑 SQL server](../azure-sql/database/logical-servers.md)名称，将替换为 `<sqlLogin>` 服务器登录名。  输入相应的命令以连接到必备的 SQL 数据库。  在提示符下输入密码。
+2. 编辑以下代码，将 `<serverName>` 替换为[逻辑 SQL 服务器](../azure-sql/database/logical-servers.md)名称，将 `<sqlLogin>` 替换为服务器登录名。  输入相应的命令以连接到必备的 SQL 数据库。  在提示符下输入密码。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -457,7 +457,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
     如果在运行此命令后检查状态，会发现作业处于正在运行状态，并且返回了作业中操作的信息。  该作业可能需要几分钟时间才能完成。
 
-6. 编辑以下代码，将替换为 `<serverName>` 你的服务器名称，将替换为 `<sqlLogin>` 服务器登录名。  *任务成功完成后*，可以使用以下命令验证是否已生成数据并将其导出到 SQL 数据库表。  在提示符下输入密码。
+6. 编辑以下代码，将 `<serverName>` 替换为服务器名称，将 `<sqlLogin>` 替换为服务器登录名。  任务成功完成后，可以使用以下命令验证是否已生成数据并已将其导出到 SQL 数据库表。  在提示符下输入密码。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest

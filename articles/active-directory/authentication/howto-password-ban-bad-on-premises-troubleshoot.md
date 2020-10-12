@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116455"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>故障排除：本地 Azure AD 密码保护
@@ -46,11 +46,11 @@ ms.locfileid: "88116455"
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>代理服务无法与 Azure 通信
 
-1. 确保代理计算机已连接到[部署要求](howto-password-ban-bad-on-premises-deploy.md)中列出的终结点。
+1. 确保代理计算机已连接到 [部署要求](howto-password-ban-bad-on-premises-deploy.md)中列出的终结点。
 
 1. 确保为同一 Azure 租户注册了林和所有代理服务器。
 
-   可以通过运行和 PowerShell cmdlet 来检查此要求 `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` ，并比较 `AzureTenant` 每个返回项的属性。 对于正确的操作，报告的租户名称在所有 DC 代理和代理服务器上必须相同。
+   可以通过运行和 PowerShell cmdlet 来检查此要求  `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` ，并比较 `AzureTenant` 每个返回项的属性。 对于正确的操作，报告的租户名称在所有 DC 代理和代理服务器上必须相同。
 
    如果存在 Azure 租户注册不匹配条件，可以 `Register-AzureADPasswordProtectionProxy` 根据需要运行和/或 PowerShell cmdlet 来解决此问题 `Register-AzureADPasswordProtectionForest` ，并确保使用同一 Azure 租户中的凭据进行所有注册。
 
@@ -84,20 +84,20 @@ The forest has not been registered with Azure. Password policies cannot be downl
 
 此问题有两个可能的原因。
 
-1. 林尚未注册。 若要解决此问题，请运行 "[部署要求](howto-password-ban-bad-on-premises-deploy.md)" 中所述的 AzureADPasswordProtectionForest 命令。
+1. 林尚未注册。 若要解决此问题，请运行 " [部署要求](howto-password-ban-bad-on-premises-deploy.md)" 中所述的 Register-AzureADPasswordProtectionForest 命令。
 1. 林已注册，但 DC 代理无法对林注册数据进行解密。 这种情况的根本原因与上面列出的 " [DC 代理无法加密或解密密码策略文件](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files)" 中 #2 的问题相同。 确认这一理论的一种简单方法是，你只会在运行 Windows server 2012 或 Windows Server 2012R2 域控制器上的 DC 代理上看到此错误，而在 Windows Server 2016 和更高版本的域控制器上运行的 DC 代理可以正常进行。 解决方法是相同的：将所有域控制器升级到 Windows Server 2016 或更高版本。
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>正在接受弱密码，但不应
 
 此问题可能有几个原因。
 
-1. 你的 DC 代理 () 运行的公共预览版软件版本已过期。 请参阅[公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
+1. 你的 DC 代理 () 运行的公共预览版软件版本已过期。 请参阅 [公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
 
 1. DC 代理 (s) 无法下载策略或者无法解密现有策略。 检查上述主题中的可能原因。
 
-1. 密码策略强制模式仍设置为“审核”。 如果此配置有效，请将其重新配置为使用 Azure AD 密码保护门户。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
+1. 密码策略强制模式仍设置为“审核”。 如果此配置有效，请将其重新配置为使用 Azure AD 密码保护门户。 有关详细信息，请参阅 [操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
-1. 密码策略已被禁用。 如果此配置生效，请使用 Azure AD 密码保护门户将其重新配置为启用。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
+1. 密码策略已被禁用。 如果此配置生效，请使用 Azure AD 密码保护门户将其重新配置为启用。 有关详细信息，请参阅 [操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
 1. 你未在域中的所有域控制器上安装 DC 代理软件。 在这种情况下，很难确保远程 Windows 客户端在密码更改操作过程中以特定的域控制器为目标。 如果你认为已成功将安装了 DC 代理软件的特定 DC 作为目标，则可以通过双重检查 DC 代理管理事件日志进行验证：无论结果如何，都至少要有一个事件来记录密码验证的结果。 如果用户的密码更改不存在任何事件，则可能是由另一个域控制器处理密码更改。
 
@@ -105,7 +105,7 @@ The forest has not been registered with Azure. Password policies cannot be downl
 
    尽管支持对 DC 代理软件进行增量部署，但受到这些限制的限制，但 Microsoft 强烈建议尽快在域中的所有域控制器上安装 DC 代理软件。
 
-1. 密码验证算法实际可能按预期方式工作。 请参阅[如何计算密码](concept-password-ban-bad.md#how-are-passwords-evaluated)。
+1. 密码验证算法实际可能按预期方式工作。 请参阅 [如何计算密码](concept-password-ban-bad.md#how-are-passwords-evaluated)。
 
 ## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe 无法设置弱 DSRM 密码
 
@@ -202,13 +202,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 在任何版本中，Azure AD 密码保护代理软件不受时间限制。 Microsoft 仍建议将 DC 和代理代理发布到最新版本。 `Get-AzureADPasswordProtectionProxy`Cmdlet 可用于查找需要升级的代理程序，类似于针对 DC 代理的示例。
 
-有关具体的升级过程的详细信息，请参阅[升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升级代理服务](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service)。
+有关具体的升级过程的详细信息，请参阅 [升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) 和 [升级代理服务](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) 。
 
 ## <a name="emergency-remediation"></a>紧急补救
 
 如果 DC 代理服务造成了问题，可以立即关闭 DC 代理服务。 DC 代理密码筛选器 dll 仍会尝试调用未运行的服务并记录警告事件（10012、10013），但在此期间会接受所有传入的密码。 然后，也可以通过 Windows 服务控制管理器并根据需要使用启动类型“Disabled”来配置 DC 代理服务。
 
-另一种补救措施是在 Azure AD 密码保护门户中将“启用”模式设置为“否”。 下载更新的策略后，各 DC 代理服务将进入静默模式，在这种模式下，将按原样接受所有密码。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
+另一种补救措施是在 Azure AD 密码保护门户中将“启用”模式设置为“否”。 下载更新的策略后，各 DC 代理服务将进入静默模式，在这种模式下，将按原样接受所有密码。 有关详细信息，请参阅 [操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
 ## <a name="removal"></a>删除
 

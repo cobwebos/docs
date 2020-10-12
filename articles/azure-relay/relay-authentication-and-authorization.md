@@ -4,10 +4,10 @@ description: 本文概述了如何使用 Azure 中继服务进行共享访问签
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4b0a5c7a092155a006419eedd170a63abed42bb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033371"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure 中继身份验证和授权
@@ -20,7 +20,7 @@ ms.locfileid: "87033371"
 
 可以在中继命名空间上配置用于 SAS 的密钥。 与服务总线消息传送不同，[中继混合连接](relay-hybrid-connections-protocol.md)支持未经授权的发件人或匿名发件人。 可在创建实体时启用它的匿名访问权限，如门户中以下屏幕截图所示：
 
-![标题为 "创建混合连接" 的对话框具有 "名称" 文本框，并选中 "需要客户端身份验证" 复选框。][0]
+![标题为“创建混合连接”的对话框具有一个“名称”文本框和一个标记为“需要客户端身份验证”的复选框，该复选框处于选中状态。][0]
 
 若要使用 SAS，可在由以下项构成的中继命名空间上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象：
 

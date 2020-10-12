@@ -1,7 +1,7 @@
 ---
 title: 持续部署 Azure 机器学习模型
 titleSuffix: Azure Machine Learning
-description: 了解如何持续部署具有 Azure 机器学习 DevOps 扩展的模型。
+description: 了解如何使用 Azure 机器学习 DevOps 扩展来持续部署模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,19 +11,19 @@ ms.date: 08/03/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
 ms.openlocfilehash: c95e1012decf1e3ae4ee3fbab8aae1a4c1a71be9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87544547"
 ---
-# <a name="continuously-deploy-models"></a>持续部署模型
+# <a name="continuously-deploy-models"></a>连续部署模型
 
-本文介绍如何使用 Azure DevOps 中的持续部署自动检查新版本的已注册模型并将这些新模型推送到生产环境中。
+本文介绍如何使用 Azure DevOps 中的持续部署来自动检查新版已注册模型并将这些新模型推送到生产环境中。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
-本文假设已在 Azure 机器学习工作区中注册了一个模型。 有关培训和注册 scikit-learn 模型的示例，请参阅[本教程](how-to-train-scikit-learn.md)。
+本文假设你已在 Azure 机器学习工作区中注册了一个模型。 有关训练和注册 scikit-learn 模型的示例，请参阅[此教程](how-to-train-scikit-learn.md)。
 
 ## <a name="continuously-deploy-models"></a>持续部署模型
 
@@ -53,7 +53,7 @@ ms.locfileid: "87544547"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 GitHub 上的以下项目，了解有关 ML 模型的连续部署的更多示例。
+查看 GitHub 上的以下项目，了解有关 ML 模型的持续部署的更多示例。
 
 * [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)

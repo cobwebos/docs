@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ed19b9dae179c3e4fe89a9ce28df4ad0cd080af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e35366e35fc127057020906ac6d3dfb0f207ab72
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263206"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91331329"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>使用 Azure 门户在 VM 上配置 Azure 资源托管标识
 
@@ -63,7 +63,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 3. 在“系统分配”  、“状态”  下，选择“开启”  ，然后单击“保存”  ：
 
-   ![“配置”页屏幕截图](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![显示“标识(预览)”的屏幕截图，其中“系统分配的标识”状态设置为“启用”。](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>从 VM 删除系统分配托管标识
 
@@ -99,7 +99,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。
 2. 导航到所需的 VM，依次单击“标识”、“用户分配”和“添加”。**********\+**
 
-   ![向 VM 添加用户分配托管标识](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
+   ![显示“标识”页的屏幕截图，其中“用户分配的标识”处于选中状态，并且突出显示了“添加”按钮。](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 
 3. 单击要添加到 VM 的用户分配的标识，然后单击“添加”****。
 

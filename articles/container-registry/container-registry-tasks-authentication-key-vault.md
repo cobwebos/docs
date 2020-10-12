@@ -4,10 +4,10 @@ description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure �
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86058123"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的外部身份验证 
@@ -129,7 +129,7 @@ az keyvault set-policy --name mykeyvault \
   --secret-permissions get
 ```
 
-继续操作以[手动运行任务](#manually-run-the-task)。
+继续完成[手动运行任务](#manually-run-the-task)。
 
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建具有系统分配的标识的任务
 

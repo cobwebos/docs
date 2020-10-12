@@ -4,10 +4,10 @@ description: 了解如何购买 Azure VMware 解决方案的预订实例。
 ms.topic: how-to
 ms.date: 10/02/2020
 ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91492377"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>利用 Azure VMware 解决方案节省成本
@@ -83,7 +83,7 @@ ms.locfileid: "91492377"
 > - 现有预订的区域
 > - SKU
 > - 数量
-> - 持续时间
+> - Duration
 >
 >不过，如果想要进行更改，则可以 *交换*   预订。
 

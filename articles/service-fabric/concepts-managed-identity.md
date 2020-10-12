@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257629"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>通过 Service Fabric 使用 Azure 的托管标识
@@ -35,7 +35,7 @@ Azure 托管标识基于几个关键概念：
 - 系统分配托管标识直接在 Azure 服务实例上启用。  系统分配标识的生命周期对于启用它的 Azure 服务实例来说是独一无二的。
 - **用户分配托管标识**是作为独立的 Azure 资源创建的。 可以将该标识分配给一个或多个 Azure 服务实例，并独立于这些实例的生命周期对其进行管理。
 
-若要进一步了解托管标识类型之间的差异，请参阅[Azure 资源的托管标识如何工作？](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
+若要进一步了解托管标识类型之间的差异，请参阅 [Azure 资源托管标识如何工作](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric 应用程序支持的方案
 

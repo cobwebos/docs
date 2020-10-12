@@ -1,13 +1,13 @@
 ---
 title: 排查迁移错误
-description: 排查将资源移动到新的资源组或订阅的问题。
+description: 排查将资源移到新资源组或订阅时出现的问题。
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 41b1e2435caf9874f3582a3394664c7b7f5a8d29
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054156"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源移到新的资源组或订阅时遇到的问题

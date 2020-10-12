@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
 ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331958"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
@@ -73,7 +73,7 @@ ms.locfileid: "91331958"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为“ExcelSource”。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 | 否       |
@@ -106,14 +106,14 @@ ms.locfileid: "91331958"
 
 下表列出了 Excel 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。使用内联数据集时，你将看到其他文件设置，这些设置与 " [数据集属性](#dataset-properties) " 部分中描述的属性相同。
 
-| 名称                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
+| 名称                      | 说明                                                  | 必须 | 允许的值                                            | 数据流脚本属性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | 通配符路径           | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否       | string[]                                                  | wildcardPaths                     |
-| 分区根路径       | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否       | String                                                    | partitionRootPath                 |
+| 分区根路径       | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否       | 字符串                                                    | partitionRootPath                 |
 | 文件列表             | 你的源是否指向列出要处理的文件的文本文件 | 否       | `true` 或 `false`                                         | fileList                          |
-| 要存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | String                                                    | rowUrlColumn                      |
+| 要存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | 字符串                                                    | rowUrlColumn                      |
 | 完成后          | 在处理后删除或移动文件。 文件路径从容器根开始 | 否       | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
-| 按上次修改时间筛选   | 选择根据文件上次更改时间筛选文件 | 否       | 时间戳                                                 | ModifiedAfter <br> modifiedBefore |
+| 按上次修改时间筛选   | 选择根据文件上次更改时间筛选文件 | 否       | Timestamp                                                 | ModifiedAfter <br> modifiedBefore |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例

@@ -4,10 +4,10 @@ description: 了解如何提供概念证明，以便 Azure 开发测试实验室
 ms.topic: article
 ms.date: 06/2/2020
 ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288033"
 ---
 # <a name="deliver-a-proof-of-concept"></a>提供概念证明 
@@ -37,8 +37,8 @@ Azure 开发测试实验室的重要方案之一是在云中启用开发和测�
 
 若要使用开发测试实验室成功完成试验或概念证明，有几个前提条件： 
 
-* **Azure 订阅**：企业中的现有[企业协议](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/)可实现 Azure 访问权限，并且他们可以使用现有的或新的开发测试实验室订阅。 或者，企业可以在试验期间使用[Visual Studio 订阅](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/)（利用免费的 Azure 额度）。 如果这两个选项都不可用，则企业可以创建和使用[免费的 Azure 帐户](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)。 如果有企业协议，则使用[Enterprise 开发/测试订阅](https://azure.microsoft.com/offers/ms-azr-0148p/)是获取对 Windows 10/Windows 8.1 客户端操作系统的访问权限以及开发和测试工作负荷的折扣率的极佳选择。 
-* **Azure Active Directory 租户**：若要启用管理用户（例如，添加用户或添加实验室所有者），这些用户必须是用于试验的 Azure 订阅中使用的[Azure Active Directory 租户](https://azure.microsoft.com/services/active-directory/)的组成部分。 企业通常会设置[混合标识](../active-directory/hybrid/whatis-hybrid-identity.md)，使用户能够在云中使用本地标识，但这不是开发测试实验室试点项目所必需的。 
+* **Azure 订阅**：企业中的现有 [企业协议](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/) 可实现 Azure 访问权限，并且他们可以使用现有的或新的开发测试实验室订阅。 或者，企业可以在试点 (利用免费的 Azure 信用额度) 使用 [Visual Studio 订阅](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) 。 如果这两个选项都不可用，则企业可以创建和使用 [免费的 Azure 帐户](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)。 如果有企业协议，则使用 [Enterprise 开发/测试订阅](https://azure.microsoft.com/offers/ms-azr-0148p/) 是获取对 Windows 10/Windows 8.1 客户端操作系统的访问权限以及开发和测试工作负荷的折扣率的极佳选择。 
+* **Azure Active Directory 租户**：若要启用管理用户 (例如，添加用户或添加实验室所有者) ，这些用户必须是用于试验的 Azure 订阅中使用的 [Azure Active Directory 租户](https://azure.microsoft.com/services/active-directory/) 的一部分。 企业通常会设置 [混合标识](../active-directory/hybrid/whatis-hybrid-identity.md) ，使用户能够在云中使用本地标识，但这不是开发测试实验室试点项目所必需的。 
 
 ## <a name="scoping-of-the-pilot"></a>试验范围 
 
@@ -58,7 +58,7 @@ Azure 开发测试实验室的重要方案之一是在云中启用开发和测�
    
    "如果我们可以计划在试点结束时丢弃虚拟机和实验室，我们可以为试验设置单个订阅，并在此过程中完成所有工作，同时解决大规模推出问题。" 
 
-进行试验 "完美" 的一般趋势，使其与在公司推出服务后的最终状态完全相同。 这是一个假假设。 您越接近 "完美"，您就可以在开始试验*之前*完成更多的工作。 试验的目的是做出正确的决定，以便扩展和推出最终服务。 
+进行试验 "完美" 的一般趋势，使其与在公司推出服务后的最终状态完全相同。 这是一个假假设。 您越接近 "完美"，您就可以在开始试验 *之前* 完成更多的工作。 试验的目的是做出正确的决定，以便扩展和推出最终服务。 
 
 试验的重点应该是选择最少的必要工作负荷和依赖项，以便回答 Azure 开发测试实验室是否适用于企业的合适服务。 建议选择具有最少依赖项的最简单的工作负荷，以帮助确保快速而干净的成功。 如果无法做到这一点，请选择一种最具代表性的工作负载来公开潜在的复杂性，以便可以在扩展阶段复制试验阶段的成功。 
 
@@ -77,9 +77,9 @@ Azure 开发测试实验室的重要方案之一是在云中启用开发和测�
 
 ### <a name="outcomes"></a>申请人 
 
-在构建概念证明时，我们首先关注结果（我们尝试实现哪些目标）。 在概念证明结束时，我们期待： 
+构建概念证明时，我们首先重点介绍 (要实现) 的结果。 在概念证明结束时，我们期待： 
 
-* 一款适用于供应商的端到端解决方案，使用 Azure Active Directory （Azure AD）中的来宾帐户来访问 Azure 中的隔离环境。 环境具有其工作效率所需的资源。 
+* 一款适用于供应商的端到端解决方案，使用 Azure Active Directory (Azure AD) 中的来宾帐户来访问 Azure 中的隔离环境。 环境具有其工作效率所需的资源。 
 * 会对任何影响广泛使用和采用的潜在阻碍性问题进行枚举和理解。
 * 开发概念证明所涉及的人员对所有代码都有充分的了解。 他们还了解所涉及的宣传品，并自信地采用更广泛的采用。
 
@@ -89,15 +89,15 @@ Azure 开发测试实验室的重要方案之一是在云中启用开发和测�
 * 是否有 Azure AD 租户和 Azure AD 全局管理员身份确定了谁可以为与 Azure AD 相关的问题提供帮助和指导？ 
 * 我们有一个用于协作处理项目的人员吗？ 
 
-   * 源代码和脚本（如 Azure Repos） 
-   * 文档（如 Microsoft 团队或 SharePoint）  
-   * 会话（如 Microsoft 团队） 
-   * 工作项（如 Azure Boards） 
+   * 源代码和脚本 (如 Azure Repos)  
+   * 文档 (如 Microsoft 团队或 SharePoint)   
+   * 会话 (如 Microsoft 团队)  
+   * 工作项 (如 Azure Boards)  
 * 供应商需要哪些资源？ 这包括网络上可用的应用程序，这些应用程序在本地虚拟机上和其他所需的服务器上可用。 
-* 虚拟机是否会加入 Azure 中的域？ 如果是，这是 Azure Active Directory 域服务（Azure AD DS）还是其他内容？ 
+* 虚拟机是否会加入 Azure 中的域？ 如果是这样，是否将 Azure Active Directory 域服务 (Azure AD DS) 或其他内容？ 
 * 是否确定了将成为概念证明目标的团队或供应商？ 谁将成为该环境的客户？
 * 我们将使用哪个 Azure 区域来进行概念证明？ 
-* 除了 IaaS （Vm）以外，还可以通过开发测试实验室来使用供应商提供的服务列表？ 
+* 除了 IaaS (Vm) ，还可以通过开发测试实验室使用供应商提供的服务列表？ 
 * 我们如何计划开发供应商/用户使用实验室？ 
 
 ### <a name="components-of-the-proof-of-concept-solution"></a>概念证明解决方案的组成部分 
@@ -114,10 +114,10 @@ Azure 开发测试实验室的重要方案之一是在云中启用开发和测�
 
 在发布完整的开发测试实验室解决方案之前，必须做出一些重要的规划和设计决策。 使用概念证明的经验有助于做出这些决策。 其他注意事项包括： 
 
-* **订阅拓扑**： Azure 中资源的企业级要求可以超出[单个订阅中的可用配额](../azure-resource-manager/management/azure-subscription-service-limits.md)。 这需要多个 Azure 订阅和/或服务请求以增加初始订阅限制。 务必提前决定如何将资源分布到多个订阅。 一个有价值的资源是[订阅决策指南](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)，因为以后很难将资源移到另一个订阅。 例如，在创建实验室后，无法将其移动到另一个订阅。  
-* **网络拓扑**：开发测试 Labs 自动创建的[默认网络基础结构](../app-service/networking-features.md)可能不足以满足企业用户的要求和限制。 常见的情况是，可以查看[Azure ExpressRoute 连接的虚拟网络](/azure/architecture/reference-architectures/hybrid-networking/)、跨订阅连接的[中心辐射](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，甚至[强制路由](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)以确保仅本地连接。 开发测试实验室允许将现有虚拟网络连接到实验室，以便在实验室中创建新的虚拟机时使用。 
-* **虚拟机的远程访问**：有许多选项可用于远程访问位于开发测试实验室中的虚拟机。 最简单的方法是使用公共 Ip 或共享公共 Ip。 这些是[实验室中可用的设置](devtest-lab-shared-ip.md)。 如果这些选项不足，还可以选择使用远程访问网关。 此选项显示在[开发测试实验室企业参考体系结构](devtest-lab-reference-architecture.md)上，并在[开发测试实验室远程桌面网关文档](configure-lab-remote-desktop-gateway.md)中进行了进一步说明。 企业还可以使用 ExpressRoute 或站点到站点 VPN 将其实验室连接到本地网络。 此选项可根据虚拟机的专用 IP 地址，实现到这些虚拟机的直接远程桌面或 SSH 连接，而不会向 internet 公开。 
-* **处理权限**：开发测试实验室中通常使用的两个主要权限是[所有者和实验室用户](devtest-lab-add-devtest-user.md)。 在推出开发测试实验室之前做出决定，这一点很重要，他们将获得实验室中每个级别的访问权限。 常见的模型是预算所有者（例如，团队主管）作为实验室所有者，将团队成员作为实验室用户。 此模型使负责预算的人员（团队主管）能够调整策略设置并使团队保持在预算内。  
+* **订阅拓扑**： Azure 中资源的企业级要求可以超出 [单个订阅中的可用配额](../azure-resource-manager/management/azure-subscription-service-limits.md)。 这需要多个 Azure 订阅和/或服务请求以增加初始订阅限制。 务必提前决定如何将资源分布到多个订阅。 一个有价值的资源是 [订阅决策指南](/azure/architecture/cloud-adoption/decision-guides/subscriptions/) ，因为以后很难将资源移到另一个订阅。 例如，在创建实验室后，无法将其移动到另一个订阅。  
+* **网络拓扑**：开发测试 Labs 自动创建的 [默认网络基础结构](../app-service/networking-features.md) 可能不足以满足企业用户的要求和限制。 常见的情况是，可以查看 [Azure ExpressRoute 连接的虚拟网络](/azure/architecture/reference-architectures/hybrid-networking/)、跨订阅连接的 [中心辐射](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ，甚至 [强制路由](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) 以确保仅本地连接。 开发测试实验室允许将现有虚拟网络连接到实验室，以便在实验室中创建新的虚拟机时使用。 
+* **虚拟机的远程访问**：有许多选项可用于远程访问位于开发测试实验室中的虚拟机。 最简单的方法是使用公共 Ip 或共享公共 Ip。 这些是 [实验室中可用的设置](devtest-lab-shared-ip.md)。 如果这些选项不足，还可以选择使用远程访问网关。 此选项显示在 [开发测试实验室企业参考体系结构](devtest-lab-reference-architecture.md) 上，并在 [开发测试实验室远程桌面网关文档](configure-lab-remote-desktop-gateway.md)中进行了进一步说明。 企业还可以使用 ExpressRoute 或站点到站点 VPN 将其实验室连接到本地网络。 此选项可根据虚拟机的专用 IP 地址，实现到这些虚拟机的直接远程桌面或 SSH 连接，而不会向 internet 公开。 
+* **处理权限**：开发测试实验室中通常使用的两个主要权限是 [所有者和实验室用户](devtest-lab-add-devtest-user.md)。 在推出开发测试实验室之前做出决定，这一点很重要，他们将获得实验室中每个级别的访问权限。 常见的模型是预算所有者 (团队主管，例如) 实验室所有者和团队成员作为实验室用户。 此模型使用户 (团队主管) 负责预算调整策略设置并将团队保持在预算内。  
 
 ## <a name="completing-the-proof-of-concept"></a>完成概念证明 
 

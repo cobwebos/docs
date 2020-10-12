@@ -10,15 +10,15 @@ ms.date: 10/10/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 6b9805d66149a18216a200bc89a79b3e06106c9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83195114"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 磁盘加密
 
-Azure 磁盘加密为虚拟机的操作系统和数据磁盘提供卷加密，帮助保护数据，以便符合在组织安全性与符合性方面所做的承诺。 若要了解详细信息，请参阅[Azure 磁盘加密： Linux vm](../virtual-machines/linux/disk-encryption-overview.md)和[azure 磁盘加密： Windows vm](../virtual-machines/windows/disk-encryption-overview.md)  
+Azure 磁盘加密为虚拟机的操作系统和数据磁盘提供卷加密，帮助保护数据，以便符合在组织安全性与符合性方面所做的承诺。 若要了解详细信息，请参阅 [Azure 磁盘加密： Linux vm](../virtual-machines/linux/disk-encryption-overview.md) 和 [azure 磁盘加密： Windows vm](../virtual-machines/windows/disk-encryption-overview.md)  
 
 在以下情况下，Azure 磁盘加密也可以应用于 Windows 和 Linux 虚拟机规模集：
 - 使用托管磁盘创建的规模集。 本机（或非托管）磁盘规模集不支持 Azure 磁盘加密。
