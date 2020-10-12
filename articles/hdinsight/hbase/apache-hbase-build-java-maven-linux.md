@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323768"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
@@ -31,7 +31,7 @@ ms.locfileid: "87323768"
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* 如果使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell，则需要 [AZ 模块](https://docs.microsoft.com/powershell/azure/)。
 
 * 文本编辑器。 本文使用 Microsoft 记事本。
 

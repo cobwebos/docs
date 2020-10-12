@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279427"
+ms.locfileid: "91893401"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 
@@ -37,7 +37,7 @@ Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的�
 | 由 Rogue Wave 软件提供的 CentOS |CentOS 6.x、7.x、8.x |CentOS 6.3：[LIS 下载](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+：在内核中 |包：在“WALinuxAgent”下的[存储库](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> 从 2020 年 5 月 26 日开始，CoreOS 已处于[生命周期终止](https://coreos.com/os/eol/)状态。 |不再可用 | | |
 | 由 Credativ 提供的 Debian |8.x、9.x |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
-|由 Kinvolk 提供的 Flatcar Container Linux| 稳定、Beta| 在内核中 | wa-linux-已在/usr/share/oem/bin/waagent 中安装代理 |
+|由 Kinvolk 提供的 Flatcar Container Linux| Pro、稳定、Beta| 在内核中 | wa-linux-已在/usr/share/oem/bin/waagent 中安装代理 |
 | Oracle Oracle Linux |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [用 Red Hat Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 由 SUSE 提供的 SUSE Linux Enterprise |SLES/SLES for SAP 11.x、12.x、15.x <br/> [SUSE 公有云映像生命周期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在内核中 |包：<p> 对于 11，在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中<br>对于 12，包含在“公有云”模块中的“python-azure-agent”下<br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -58,6 +58,7 @@ Azure 与众多认可的 Linux 分发商密切合作，以优化他们在 Azure 
 - [Debian 云内核 - 适用于 Azure 上的 Debian 10 和 Debian 9“后向移植”映像](https://wiki.debian.org/Cloud/MicrosoftAzure)
 - [SLES Azure 优化内核](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
 - [Ubuntu Azure 优化内核](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Flatcar 容器 Linux Pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>合作伙伴
 

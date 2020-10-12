@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359148"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
@@ -91,5 +91,5 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 - [可支持性](supportability.md)
 - [高可用性](high-availability.md)
 - [物理安全性](physical-security.md)
-- [监视](monitoring.md)
+- [Monitoring](monitoring.md)
 - [部署体系结构](deployment-architecture.md)

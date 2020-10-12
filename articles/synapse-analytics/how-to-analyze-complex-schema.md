@@ -10,17 +10,17 @@ ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 51422bd47b5bd2d7d5103c154e90eaa910396024
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661031"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>分析 Azure Synapse 分析中的复杂数据类型
 
 本文适用于 [Azure Cosmos DB 的 Azure Synapse 链接](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md)中的 Parquet 文件和容器。 您可以使用 Spark 或 SQL 来读取或转换包含复杂架构（如数组或嵌套结构）的数据。 以下示例是使用单个文档完成的，但可以使用 Spark 或 SQL 轻松扩展到数十亿个文档。 本文中包含的代码使用 PySpark (Python) 。
 
-## <a name="use-case"></a>用例
+## <a name="use-case"></a>使用案例
 
 复杂的数据类型越来越常见，为数据工程师带来了挑战。 分析嵌套的架构和数组可能涉及耗时且复杂的 SQL 查询。 此外，可能很难重命名或强制转换嵌套列数据类型。 此外，在使用深度嵌套的对象时，可能会遇到性能问题。
 

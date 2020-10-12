@@ -9,10 +9,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441187"
 ---
 目前，超磁盘有其他限制，如下所示：
@@ -26,7 +26,7 @@ ms.locfileid: "91441187"
 
 |区域  |冗余选项  |
 |---------|---------|
-|Brazil South     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
+|巴西南部     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |印度中部     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |东亚     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |
 |德国中西部     |仅 (可用性集和虚拟机规模集的单个 Vm 不受支持) |

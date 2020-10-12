@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 8d97c713dfec574a8ef7f3f0dde4701ddea0e98b
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669008"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>适用于 SAP 解决方案的 Azure monitor (预览版) 
@@ -114,5 +114,5 @@ SAP 解决方案的 Azure Monitor 是免费的产品 (无许可费) 。 客户�
 
 了解提供程序并为 SAP 解决方案资源创建第一个 Azure Monitor。
  - 了解有关[提供程序](./azure-monitor-providers.md)的详细信息
- - [通过 Azure PowerShell 为 SAP 解决方案部署 Azure Monitor](azure-monitor-sap-quickstart-powershell.md)
+ - [使用 Azure PowerShell 部署 Azure Monitor for SAP Solutions](azure-monitor-sap-quickstart-powershell.md)
  - 对于 SAP 解决方案 Azure Monitor 是否有疑问？ 检查 [FAQ](./azure-monitor-faq.md) 部分

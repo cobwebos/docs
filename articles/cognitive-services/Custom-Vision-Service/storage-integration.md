@@ -10,22 +10,22 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
 ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532624"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>集成 Azure 存储以提供通知和备份
 
-可以将自定义视觉项目与 Azure blob 存储队列集成，以获取项目定型/出口活动和已发布模型的备份副本的推送通知。 此功能有助于避免在长时间运行的情况下不断轮询服务的结果。 相反，你可以将存储队列通知集成到工作流中。
+可以将自定义视觉项目与 Azure blob 存储队列集成，以获取项目训练/导出活动的推送通知和已发布模型的备份副本。 运行长时间的操作时，此功能有助于避免不断轮询服务来获取结果。 你可以改为将存储队列通知集成到工作流中。
 
 本指南演示如何通过卷使用这些 REST Api。 你还可以使用 HTTP 请求服务（如 Postman）发出请求。
 
 > [!NOTE]
 > 推送通知依赖于**CreateProject** API 中的可选_notificationQueueUri_参数，而模型备份则需要使用可选的_exportModelContainerUri_参数。 本指南将同时使用这两个功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 中的自定义视觉资源。 如果没有，请参阅 "Azure 门户"，并 [创建新自定义视觉资源](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。 此功能当前不支持认知服务资源 (都) 。
 - 具有 blob 容器的 Azure 存储帐户。 如果需要此步骤的帮助，请遵循 [Azure 存储实验室的练习 1](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) 。

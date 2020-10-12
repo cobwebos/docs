@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
 ms.openlocfilehash: b4acd431656eb008702f62dc1ecf12bda62dae17
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051077"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>手写识别器 API 的语言和区域支持
@@ -83,7 +83,7 @@ ms.locfileid: "89051077"
 | 斯洛文尼亚语                                  |     `sl-SI`     |
 | 西班牙语（阿根廷）                        |     `es-AR`     |
 | 西班牙语(西班牙)                            |     `es-ES`     |
-| 西班牙语(墨西哥)                           |     `es-MX`     |
+| 西班牙语（墨西哥）                           |     `es-MX`     |
 | 瑞典语（瑞典）                           |     `sv-SE`     |
 | 土耳其语                                    |     `tr-TR`     |
 | 威尔士语                                      |     `cy-GB`     |

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
 ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297600"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
@@ -61,7 +61,7 @@ ms.locfileid: "91297600"
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
 - `lastModified` 筛选器当前适用于筛选子项，但不适用于筛选指定的文件夹/文件本身。
 - “获取元数据”活动不支持文件夹/文件的通配符筛选器。
-- `structure``columnCount`从二进制、JSON 或 XML 文件获取元数据时，不支持和。
+- 从二进制文件、JSON 文件或 XML 文件获取元数据时，不支持 `structure` 和 `columnCount`。
 
 **关系数据库**
 

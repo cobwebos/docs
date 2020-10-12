@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 29778d872541ea251a46affcccd0e2befbd9003d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500491"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327929"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Grammarly 的集成
 
@@ -81,16 +81,13 @@ ms.locfileid: "89500491"
 1. 在基本 SAML 配置  部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
 
-1. Grammarly 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
-
-    ![image](common/default-attributes.png)
-
-1. 除了上述属性，Grammarly 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+1. Grammarly 应用程序需要特定格式的 SAML 断言。 这些属性也是预先填充的，但可以根据要求查看它们。
     
     | 名称 |  源属性|
     | -------------- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
+    | EmailAddress | user.principalname|
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -110,7 +107,7 @@ ms.locfileid: "89500491"
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -126,7 +123,7 @@ ms.locfileid: "89500491"
 
 ## <a name="configure-grammarly-sso"></a>配置 Grammarly SSO
 
-若要在 Grammarly 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Grammarly 支持团队](mailto:support@grammarly.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Grammarly 上配置单一登录，需要将“登录 URL”、“Azure AD 标识符”以及下载的“证书(Base64)”复制到 Grammarly 管理面板。 [了解操作方法](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-)。
 
 ### <a name="create-grammarly-test-user"></a>创建 Grammarly 测试用户
 

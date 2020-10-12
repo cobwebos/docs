@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 114245030ba2356861b83a580f103d3b84c0eae3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663764"
 ---
 # <a name="grid-visualizations"></a>网格可视化
@@ -236,10 +236,10 @@ requests
 8. 在 *列呈现*器下，选择 "阈值"。
 9.  输入并选择以下 *阈值设置*。
    
-    | 运算符 | 值   | 图标   |
+    | 操作员 | 值   | 图标   |
     |----------|---------|---------|
     | ==       | warning | 警告 |
-    | ==       | error   | Failed  |
+    | ==       | error   | 已失败  |
 
     ![带有以上设置的 "编辑列设置" 选项卡的屏幕截图。](./media/workbooks-grid-visualizations/column-settings.png)
 

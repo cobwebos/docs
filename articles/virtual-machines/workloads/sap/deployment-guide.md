@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
 ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359604"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
@@ -1057,16 +1057,16 @@ az --version
    az login
    ```
 
-1. 按照使用 Azure CLI 为 azure [vm 上的 azure 资源配置托管标识][qs-configure-cli-windows-vm] 一文中的步骤，为 VM 启用系统分配的托管标识。 适用于 SAP 的 VM 扩展不支持用户分配的托管标识。 但是，可以同时启用系统分配的和用户分配的标识。
+1. 按照使用 Azure CLI 为 azure [vm 上的 azure 资源配置托管标识][qs-configure-cli-windows-vm] 一文中的步骤，为 VM 启用 System-Assigned 托管标识。 适用于 SAP 的 VM 扩展不支持 User-Assigned 托管标识。 但是，可以同时启用系统分配的和用户分配的标识。
 
-   示例：
+   例如：
    ```azurecli
    az vm identity assign -g <resource-group-name> -n <vm name>
    ```
 
 1. 按照[使用 Azure CLI 向资源分配托管标识访问][howto-assign-access-cli]中所述，将托管标识访问权限分配给 VM 的资源组或所有网络接口、托管磁盘和 VM 本身。
 
-    示例：
+    例如：
 
     ```azurecli
     spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)

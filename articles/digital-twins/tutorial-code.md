@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bd8eee2fd6134bb36c0b0ab45492567f4fdbec26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297498"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
@@ -234,8 +234,7 @@ await foreach (ModelData md in modelDataList)
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }
 ```
-
-再次运行程序以测试这段新代码之前，请记得，在上次运行该程序时，已上传了模型。 Azure 数字孪生不允许将相同的模型上传两次，因此，在重新运行此程序时，应该会看到异常。
+再次运行程序以测试这段新代码之前，请记得，在上次运行该程序时，已上传了模型。 Azure 数字孪生不允许两次上传相同的模型，因此，如果尝试再次上传相同的模型，则程序会引发异常。
 
 现在，在命令窗口中，再次使用以下命令运行程序：
 
@@ -258,7 +257,6 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 ```
-
 如果在命令窗口中使用 `dotnet run` 运行程序，则会看到返回的错误代码。 输出结果如下所示：
 
 ```cmd/sh
@@ -270,11 +268,11 @@ Load model: 409:Service request failed.
 Status: 409 (Conflict)
 
 Content:
-{"error":{"code":"DocumentAlreadyExists","message":"A document with same identifier already exists.","details":[]}}
+{"error":{"code":"ModelAlreadyExists","message":"Model with same ID already exists dtmi:com:contoso:SampleModel;1. Use Model_List API to view models that already exist. See the Swagger example. (http://aka.ms/ModelListSwSmpl):}}
 
 Headers:
 api-supported-versions: REDACTED
-Date: Tue, 05 May 2020 01:57:51 GMT
+Date: Thu, 10 Sep 2020 01:57:51 GMT
 Content-Length: 115
 Content-Type: application/json; charset=utf-8
 
@@ -392,6 +390,25 @@ await ListRelationships(client, "sampleTwin-0");
 ```
 
 在命令窗口中，使用 `dotnet run` 运行程序。 你应该会看到已创建的所有关系列表。
+
+下面是示例输出：
+
+```cmd/sh
+Hello World!
+Service client created - ready to go
+
+Upload a model
+Type name: System.Collections.Generic.Dictionary'2[System.String,System.String]: dtmi:contosocom:DigitalTwins:SampleModel;1
+Create twin: sampleTwin-0
+Create twin: sampleTwin-1
+Create twin: sampleTwin-2
+Created relationship successfully
+Created relationship successfully
+Twin sampleTwin-0 is connected to:
+-contains->sampleTwin-1
+-contains->sampleTwin-2
+
+```
 
 ### <a name="query-digital-twins"></a>查询数字孪生
 

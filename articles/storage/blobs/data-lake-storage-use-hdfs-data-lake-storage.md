@@ -1,6 +1,6 @@
 ---
 title: 将 HDFS CLI 与 Azure Data Lake Storage Gen2 配合使用
-description: 使用 Hadoop 分布式文件系统 (HDFS) CLI Azure Data Lake Storage Gen2。 创建一个容器，获取文件或目录的列表，等等。
+description: 将 Hadoop 分布式文件系统 (HDFS) CLI 用于 Azure Data Lake Storage Gen2。 创建一个容器、获取文件或目录的列表等等。
 services: storage
 author: normesta
 ms.service: storage
@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836303"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
@@ -22,10 +22,10 @@ ms.locfileid: "87836303"
 
 HDInsight 可以访问在本地附加到计算节点的分布式容器。 可以使用与 HDFS 以及 Hadoop 支持的其他文件系统直接交互的 shell 来访问此容器。
 
-有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和[hdfs 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和 [HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->如果你使用的是 Azure Databricks 而不是 HDInsight，并且想要通过使用命令行界面与数据进行交互，则可以使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅[DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
+>如果你使用的是 Azure Databricks 而不是 HDInsight，并且想要通过使用命令行界面与数据进行交互，则可以使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅 [DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上结合使用 HDFS CLI 和 HDInsight Hadoop 群集
 
@@ -58,7 +58,7 @@ hdfs dfs -mkdir /samplefolder
 
 将 `<path>` 占位符替换为容器或容器文件夹的 URI。
 
-例如： `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
+例如：`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>创建目录
 
@@ -66,7 +66,7 @@ hdfs dfs -mkdir /samplefolder
 
 将 `<path>` 占位符替换为根容器名称或容器中的文件夹。
 
-例如： `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+例如：`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>删除文件或目录
 
@@ -74,7 +74,7 @@ hdfs dfs -mkdir /samplefolder
 
 将 `<path>` 占位符替换为要删除的文件或文件夹的 URI。
 
-例如： `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
+例如：`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>显示文件和目录的访问控制列表 (ACL)
 
