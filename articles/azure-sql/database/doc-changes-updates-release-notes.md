@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
 ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236567"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
@@ -52,7 +52,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 | ---| --- |
 | 通过单一数据库和弹性池加速的数据库恢复 | 有关信息，请参阅[加速的数据库恢复](../accelerated-database-recovery.md)。|
 | 数据发现和分类  |有关详细信息，请参阅 [Azure SQL 数据库和 Azure Synapse Analytics 数据发现和分类](data-discovery-and-classification-overview.md)。|
-| 弹性数据库作业 (预览)  | 有关信息，请参阅[创建、配置和管理弹性作业](elastic-jobs-overview.md)。 |
+| 弹性数据库作业（预览版） | 有关信息，请参阅[创建、配置和管理弹性作业](elastic-jobs-overview.md)。 |
 | 弹性查询 | 有关信息，请参阅[弹性查询概述](elastic-query-overview.md)。 |
 | 弹性事务 | [跨云数据库的分布式事务](elastic-transactions-overview.md)。 |
 | Azure 门户中的查询编辑器 |有关信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据](connect-query-portal.md)。|
@@ -97,7 +97,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 |问题  |发现日期  |状态  |解决日期  |
 |---------|---------|---------|---------|
-|[服务主体无法访问 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020年8月|具有解决方法||
+|[服务主体无法访问 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|具有解决方法||
 |[没有使用 CHECKSUM 的手动备份可能无法还原](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解决|2020 年 6 月|
 |[在修改、禁用或启用现有作业后代理无响应](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已解决|2020 年 6 月|
 |[资源组上的权限不应用于 SQL 托管实例](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020 年 2 月|具有解决方法||
@@ -127,9 +127,9 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>服务主体无法访问 Azure AD 和 AKV
 
-在某些情况下，服务主体可能存在一个用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的问题。 因此，此问题会影响 Azure AD 身份验证以及透明数据库加密 (TDE) 与 SQL 托管实例一起使用。 这可能是间歇性连接问题，或者无法运行语句，如从外部提供程序创建登录名/用户或将其作为登录名/用户执行。 在某些情况下，在新的 Azure SQL 托管实例上使用客户管理的密钥设置 TDE 可能也不起作用。
+在某些情况下，用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的服务主体可能存在问题。 此问题最终会对使用 Azure AD 身份验证和 SQL 托管实例的透明数据库加密 (TDE) 产生影响。 这可能是一个间歇性连接问题，或者无法运行诸如 CREATE LOGIN/USER FROM EXTERNAL PROVIDER 或 EXECUTE AS LOGIN/USER 之类的语句。 在某些情况下，在新的 Azure SQL 托管实例上使用客户托管密钥设置 TDE 也可能不起作用。
 
-**解决方法**：若要在执行任何更新命令之前防止此问题出现在 SQL 托管实例上，或在更新命令后遇到此问题，请访问 Azure 门户，访问 SQL 托管实例 [Active Directory 管理边栏选项卡](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息 "托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体。 如果你遇到此错误消息，请单击它，然后按照提供的分步说明进行操作，直到此错误得以解决。
+**解决方法**：为了防止在执行任何更新命令之前 SQL 托管实例出现此问题，或者你已在更新命令后遇到此问题，请转到 Azure 门户，访问 SQL 托管实例[“Active Directory 管理员”边栏选项卡](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果看到此错误消息，请单击它，然后按照提供的分步说明操作，直到解决此错误为止。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>没有使用 CHECKSUM 的手动备份可能无法还原
 
@@ -143,7 +143,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>资源组上的权限不应用于 SQL 托管实例
 
-将 SQL 托管实例参与者 Azure 角色应用于 (RG) 的资源组时，它不会应用于 SQL 托管实例，因此不起作用。
+将 SQL 托管实例参与者 Azure 角色应用于资源组 (RG) 时，该角色不应用于 SQL 托管实例，因此不起作用。
 
 **解决方法**：在订阅级别为用户设置“SQL 托管实例参与者”角色。
 
@@ -297,7 +297,7 @@ using (var scope = new TransactionScope())
 
 ```
 
-**解决方法 (自2020年3月版以后无需) **：使用 [ChangeDatabase (String) ](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) 在连接上下文中使用其他数据库，而不是使用两个连接。
+**解决方法（自 2020 年 3 月起不再需要）** ：使用 [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) 在连接上下文中使用其他数据库，而非使用两个连接。
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
 

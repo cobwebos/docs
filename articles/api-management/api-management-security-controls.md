@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: a147179f7b55e43379b3c3fa3a7a0767cc97b198
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902569"
 ---
 # <a name="security-controls-for-api-management"></a>API 管理的安全控制
@@ -66,7 +66,7 @@ ms.locfileid: "87902569"
 
 此部分记录不影响 Azure API 管理的常见漏洞。
 
-| 漏洞               | 描述                                                                                                                                                                                                                                                                                                               |
+| 漏洞               | 说明                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed 是在实现 TLS SessionTicket 扩展过程中出现的漏洞，在某些 F5 产品中发现。 该漏洞会导致从取消初始化的内存中泄露（“溢出”）最多 31 字节的数据。 这是由 TLS 堆栈导致的，该堆栈填充了会话 ID，从客户端传递，在带有数据的情况下有 32 位长。 |
 

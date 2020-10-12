@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5a286753e438b7d65f3d33a82669c4f7e79a282
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86544471"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>在云设备上创建公共终结点
@@ -31,7 +31,7 @@ ms.locfileid: "86544471"
 
         在“添加入站安全规则”边栏选项卡中：
 
-        1. 对于 "**名称**"，请为终结点键入以下名称： WinRMHttps。
+        1. 对于 " **名称**"，请为终结点键入以下名称： WinRMHttps。
         
         2. 对于“优先级”，选择一个小于 1000（这是默认规则的优先级）的数字。**** 数字越大，优先级越低。
 

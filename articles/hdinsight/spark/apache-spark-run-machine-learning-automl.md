@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087463"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中的 Apache Spark 上使用自动化机器学习运行 Azure 机器学习工作负载
@@ -71,10 +71,10 @@ dataflow_with_token = dprep.read_csv(
 
 ## <a name="experiment-submission"></a>试验提交
 
-在[自动机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应将属性 `spark_context` 设置为在分布式模式下运行包。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
+在[自动化机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应设置属性 `spark_context`，使包在分布式模式下运行。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关自动机器学习背后的动机的详细信息，请参阅[使用 Microsoft 的自动机器学习在步调上发布模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
+* 有关自动化机器学习的动机详细信息，请参阅[使用 Microsoft 自动化机器学习逐步发布模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
 * 有关如何使用 Azure ML 自动化 ML 功能的详细信息，请参阅 [Azure 机器学习中的全新自动化机器学习功能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Microsoft Research 提供的 AutoML 项目](https://www.microsoft.com/research/project/automl/)

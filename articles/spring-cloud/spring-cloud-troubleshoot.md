@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336150"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure 春季云问题
@@ -195,7 +195,7 @@ Azure 春季云服务实例的名称将用于请求下的子域名称 `azureapps
 
 1. 重启应用程序。
 
-1. 请参阅 `https://<your application test endpoint>/actuator/env` 并检查响应。  它看起来应该如下所示：
+1. 请参阅 `https://<your application test endpoint>/actuator/env` 并检查响应。  应如下所示：
 
     ```json
     {

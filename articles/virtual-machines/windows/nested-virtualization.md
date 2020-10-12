@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074247"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
@@ -38,11 +38,11 @@ ms.locfileid: "87074247"
 
 1. 单击虚拟机属性上的“连接”  按钮。 此时会创建和下载远程桌面协议文件（.rdp 文件）。
 
-2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。  在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
+2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
-3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。 
+3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。
 
-4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。  
+4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
 
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>启用 Azure VM 上的 HYPER-V 功能
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
@@ -155,7 +155,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   
 3. 输入作用域的名称和说明，然后单击“下一步”  。
   
-4. 定义 DHCP 服务器的 IP 范围（例如，192.168.0.100 到192.168.0.200）。
+4. 为 DHCP 服务器定义 IP 范围（例如，192.168.0.100 到 192.168.0.200）。
   
 5. 单击“下一步”  直到出现“默认网关”页。 输入之前创建的 IP 地址（例如，192.168.0.1）作为默认网关，然后单击“添加”  。
   

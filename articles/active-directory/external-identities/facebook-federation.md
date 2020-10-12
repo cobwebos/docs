@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908290"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>将 Facebook 添加为外部标识的标识提供者
@@ -32,7 +32,7 @@ ms.locfileid: "87908290"
 
 > [!NOTE]  
 > 在下面的第 9 步和第 16 步中使用以下 URL。
-> - 对于 "**站点 URL** "，请输入应用程序的地址，例如 `https://contoso.com` 。
+> - 对于 " **站点 URL** "，请输入应用程序的地址，例如 `https://contoso.com` 。
 > - 对于“有效 OAuth 重定向 URI”，输入“`https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp`”。 可以在“Azure Active Directory 概述”边栏选项卡中找到 `<tenant-ID>`。
 
 

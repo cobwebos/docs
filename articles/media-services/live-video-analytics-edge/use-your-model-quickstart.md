@@ -1,15 +1,15 @@
 ---
 title: 使用自己的 HTTP 模型分析实时视频 - Azure
-description: 在本快速入门中，你将应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
+description: 在本快速入门中，你将使用自己的 HTTP 模型应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 5fd7f1a7db323e3aa7971c1ced6fc588d6e60e37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07661fb1e9496aacff6f108a840e0c357f068d41
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684139"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91336456"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>快速入门：使用自己的 HTTP 模型分析实时视频
 

@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935035"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
@@ -56,9 +56,9 @@ Azure 认知搜索充分利用其他 Azure 服务进行更深入的监视和管�
 * 服务的只读访问权限是查询权限，通常，向客户端应用程序授予这种权限的方式是向该应用程序提供 URL 和查询 API 密钥。
 * 具有读写访问权限就能够添加、删除或修改服务器对象，包括 API 密钥、索引、索引器、数据源和计划。读写访问权限是通过提供 URL 和管理 API 密钥来授予的。
 
-服务预配设备的权限是通过角色分配授予的。 Azure [RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 
+服务预配设备的权限是通过角色分配授予的。 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 是基于 [Azure 资源管理器](../azure-resource-manager/management/overview.md)构建的授权系统，用于预配 Azure 资源。 
 
-在 Azure 认知搜索环境中， [azure 角色分配](search-security-rbac.md) 将确定谁可以执行任务，无论他们使用的是 [门户](search-manage.md)、 [PowerShell](search-manage-powershell.md)还是 [管理 REST api](/rest/api/searchmanagement/search-howto-management-rest-api)：
+在 Azure 认知搜索上下文中，[Azure 角色分配](search-security-rbac.md)将确定哪些用户可以执行任务，而不考虑他们是使用[门户](search-manage.md)、[PowerShell](search-manage-powershell.md) 还是[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api)：
 
 * 创建或删除服务
 * 缩放服务
@@ -123,7 +123,7 @@ Azure 认知搜索利用 [Azure Monitor](../azure-monitor/index.yml) 来收集�
 
 添加副本更为常见，但当存储受到限制时，你可以添加分区以获得更多容量。 预配服务的层确定是否可以添加分区。 基本层锁定在一个分区上。 标准层及以上层支持其他数量的分区。
 
-分区将添加到除数 12 (具体说来，1，2，3，4，6或 12) 。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
+分区数按 12 的因数进行添加（具体而言为 1、2、3、4、6 或 12）。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
 
 ### <a name="remove-replicas"></a>删除副本
 

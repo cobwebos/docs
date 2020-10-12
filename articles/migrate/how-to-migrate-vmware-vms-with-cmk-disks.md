@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260017"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>将 VMware Vm 迁移到启用了服务器端加密和客户管理的密钥的 Azure Vm
 
 本文介绍如何将 VMware Vm 迁移到 Azure 虚拟机，其中使用服务器端加密 (SSE) 使用客户托管密钥 (CMK) ，使用 Azure Migrate Server 迁移 (无代理复制) 。
 
-Azure Migrate Server 迁移门户体验允许你将[VMware vm 迁移到带有无代理复制的 Azure。](tutorial-migrate-vmware.md) 门户体验目前不提供在 Azure 中为复制的磁盘启用 CMK 的功能。 当前只能通过 REST API 来为复制的磁盘启用具有 CMK 的 SSE。 在本文中，你将了解如何创建和部署[azure 资源管理器模板](../azure-resource-manager/templates/overview.md)来复制 VMware VM，并在 Azure 中配置复制的磁盘，以便将 SSE 与 CMK 一起使用。
+Azure Migrate Server 迁移门户体验允许你将 [VMware vm 迁移到带有无代理复制的 Azure。](tutorial-migrate-vmware.md) 门户体验目前不提供在 Azure 中为复制的磁盘启用 CMK 的功能。 当前只能通过 REST API 来为复制的磁盘启用具有 CMK 的 SSE。 在本文中，你将了解如何创建和部署 [azure 资源管理器模板](../azure-resource-manager/templates/overview.md) 来复制 VMware VM，并在 Azure 中配置复制的磁盘，以便将 SSE 与 CMK 一起使用。
 
-本文中的示例使用[Azure PowerShell](/powershell/azure/new-azureps-module-az)执行创建和部署资源管理器模板所需的任务。
+本文中的示例使用 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 执行创建和部署资源管理器模板所需的任务。
 
 [详细了解](../virtual-machines/windows/disk-encryption.md) (SSE) 的客户托管密钥的服务器端加密， (托管磁盘的 CMK) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- [查看](tutorial-migrate-vmware.md)有关将 VMware vm 迁移到 Azure 的教程和无代理复制，以了解工具要求。
-- [按照以下说明](how-to-add-tool-first-time.md)创建一个 Azure Migrate 项目，并向该项目添加**Azure Migrate： Server 迁移**工具。
-- [按照以下说明](how-to-set-up-appliance-vmware.md)在本地环境中设置适用于 VMware 的 Azure Migrate 设备，并完成发现。
+- [查看](tutorial-migrate-vmware.md) 有关将 VMware vm 迁移到 Azure 的教程和无代理复制，以了解工具要求。
+- [按照以下说明](how-to-add-tool-first-time.md) 创建一个 Azure Migrate 项目，并向该项目添加 **Azure Migrate： Server 迁移** 工具。
+- [按照以下说明](how-to-set-up-appliance-vmware.md) 在本地环境中设置适用于 VMware 的 Azure Migrate 设备，并完成发现。
 
 ## <a name="prepare-for-replication"></a>为复制做准备
 
@@ -51,16 +51,16 @@ VM 发现完成后，"服务器迁移" 磁贴上的 "发现的服务器" 行将�
 ### <a name="identifying-replication-infrastructure-components"></a>标识复制基础结构组件
 
 1. 在 Azure 门户上，请在 "资源组" 页上，选择在其中创建 Azure Migrate 项目的资源组。
-2. 从左侧菜单中选择 "**部署**"，然后搜索以字符串 *"MigrateV2. VMwareV2EnableMigrate"* 开头的部署名称。 你将看到一个列表，其中列出了门户体验在此项目中为 Vm 设置复制所创建的资源管理器模板。 我们将下载一个这样的模板，并将其用作使模板准备好使用 CMK 进行复制的基础。
-3. 若要下载该模板，请选择与上一步中的字符串模式匹配的任何部署 > 从左侧菜单中选择 "**模板**" > 单击顶部菜单中的 "**下载**"。 将 template.js保存到本地文件。 你将在上一步中编辑此模板文件。
+2. 从左侧菜单中选择 " **部署** "，然后搜索以字符串 *"MigrateV2. VMwareV2EnableMigrate"* 开头的部署名称。 你将看到一个列表，其中列出了门户体验在此项目中为 Vm 设置复制所创建的资源管理器模板。 我们将下载一个这样的模板，并将其用作使模板准备好使用 CMK 进行复制的基础。
+3. 若要下载该模板，请选择与上一步中的字符串模式匹配的任何部署 > 从左侧菜单中选择 " **模板** " > 单击顶部菜单中的 " **下载** "。 将 template.js保存到本地文件。 你将在上一步中编辑此模板文件。
 
 ## <a name="create-a-disk-encryption-set"></a>创建磁盘加密集
 
 磁盘加密集对象将托管磁盘映射到包含要用于 SSE 的 CMK 的 Key Vault。 若要使用 CMK 复制 Vm，你将创建磁盘加密集，并将其作为输入传递给复制操作。
 
-按照[此处](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md)的示例使用 Azure PowerShell 创建磁盘加密集。 请确保在要迁移到 Vm 的目标订阅中创建磁盘加密集，并确保在目标 Azure 区域中创建磁盘加密集以进行迁移。
+按照 [此处](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) 的示例使用 Azure PowerShell 创建磁盘加密集。 请确保在要迁移到 Vm 的目标订阅中创建磁盘加密集，并确保在目标 Azure 区域中创建磁盘加密集以进行迁移。
 
-磁盘加密集可配置为使用客户管理的密钥对托管磁盘进行加密，或者使用客户管理的密钥和平台密钥对双加密进行加密。 若要使用 "静态加密" 选项，请按[此处](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md)所述配置磁盘加密集。
+磁盘加密集可配置为使用客户管理的密钥对托管磁盘进行加密，或者使用客户管理的密钥和平台密钥对双加密进行加密。 若要使用 "静态加密" 选项，请按 [此处](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md)所述配置磁盘加密集。
 
 在下面显示的示例中，磁盘加密集配置为使用客户管理的密钥。
 
@@ -143,9 +143,9 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="create-resource-manager-template-for-replication"></a>创建用于复制的资源管理器模板
 
-- 在所选编辑器中打开在 "**标识复制基础结构组件**" 步骤中下载的资源管理器模板文件。
+- 在所选编辑器中打开在 " **标识复制基础结构组件** " 步骤中下载的资源管理器模板文件。
 - 除了类型为 *"microsoft.recoveryservices/保管库/replicationFabrics/replicationProtectionContainers/replicationMigrationItems"* 的资源以外，从模板中删除所有资源定义
-- 如果有多个以上类型的资源定义，请删除所有其他资源定义。 从资源定义中删除所有**dependsOn**属性定义。
+- 如果有多个以上类型的资源定义，请删除所有其他资源定义。 从资源定义中删除所有 **dependsOn** 属性定义。
 - 在此步骤结束时，应该有一个类似于以下示例的文件，并且具有相同的属性集。
 
 ```
@@ -186,13 +186,13 @@ uuid                                 label       name    maxSizeInBytes
 }
 ```
 
-- 编辑资源定义中的 "**名称**" 属性。 将 name 属性中最后一个 "/" 后面的字符串替换为 $machine 的值 *。* 前一步骤)  ( 名称。
-- 将**providerSpecificDetails. vmwareMachineId**属性的值更改为 $machine 的值 *。ResourceId* ( 上一步) 。
-- 分别将**targetResourceGroupId**、 **targetNetworkId**、 **targetSubnetName**的值设置为目标资源组 ID、目标虚拟网络资源 id 和目标子网名称。
-- 将**licenseType**的值设置为 "WindowsServer"，以应用此 VM Azure 混合权益。 如果此 VM 不符合 Azure 混合权益的条件，请将**licenseType**的值设置为 NoLicenseType。
-- 将**targetVmName**属性的值更改为已迁移 VM 所需的 Azure 虚拟机名称。
-- （可选）在**targetVmName**属性下面添加一个名为**targetVmSize**的属性。 将**targetVmSize**属性的值设置为已迁移 VM 所需的 Azure 虚拟机大小。
-- **DisksToInclude**属性是用于复制的磁盘输入列表，每个列表项都代表一个本地磁盘。 创建任意数量的列表项作为本地虚拟机上的磁盘数。 将列表项中的**diskId**属性替换为上一步中标识的磁盘的 uuid。 将 VM 的 OS 磁盘的**isOSDisk**值设置为 "true"，将所有其他磁盘设置为 "false"。 保留**logStorageAccountId**和**logStorageAccountSasSecretName**属性不变。 将**diskType**值设置为 Azure 托管磁盘类型 (*Standard_LRS，Premium_LRS StandardSSD_LRS*) 用于磁盘。 对于需要使用 CMK 加密的磁盘，请添加名为**diskEncryptionSetId**的属性，并将值设置为 ($des 创建的磁盘加密集的资源 ID **。***创建磁盘加密集*步骤中的 Id) 
+- 编辑资源定义中的 " **名称** " 属性。 将 name 属性中最后一个 "/" 后面的字符串替换为 $machine 的值 *。* 前一步骤)  ( 名称。
+- 将 **providerSpecificDetails. vmwareMachineId** 属性的值更改为 $machine 的值 *。ResourceId* ( 上一步) 。
+- 分别将 **targetResourceGroupId**、 **targetNetworkId**、 **targetSubnetName** 的值设置为目标资源组 ID、目标虚拟网络资源 id 和目标子网名称。
+- 将 **licenseType** 的值设置为 "WindowsServer"，以应用此 VM Azure 混合权益。 如果此 VM 不符合 Azure 混合权益的条件，请将 **licenseType** 的值设置为 NoLicenseType。
+- 将 **targetVmName** 属性的值更改为已迁移 VM 所需的 Azure 虚拟机名称。
+- （可选）在**targetVmName**属性下面添加一个名为**targetVmSize**的属性。 将 **targetVmSize** 属性的值设置为已迁移 VM 所需的 Azure 虚拟机大小。
+- **DisksToInclude**属性是用于复制的磁盘输入列表，每个列表项都代表一个本地磁盘。 创建任意数量的列表项作为本地虚拟机上的磁盘数。 将列表项中的 **diskId** 属性替换为上一步中标识的磁盘的 uuid。 将 VM 的 OS 磁盘的 **isOSDisk** 值设置为 "true"，将所有其他磁盘设置为 "false"。 保留 **logStorageAccountId** 和 **logStorageAccountSasSecretName** 属性不变。 将 **diskType** 值设置为 Azure 托管磁盘类型 (*Standard_LRS，Premium_LRS StandardSSD_LRS*) 用于磁盘。 对于需要使用 CMK 加密的磁盘，请添加名为**diskEncryptionSetId**的属性，并将值设置为 ($des 创建的磁盘加密集的资源 ID **。***创建磁盘加密集*步骤中的 Id) 
 - 保存已编辑的模板文件。 对于上面的示例，编辑后的模板文件如下所示：
 
 ```
@@ -253,7 +253,7 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="set-up-replication"></a>设置复制
 
-你现在可以将编辑的资源管理器模板部署到项目资源组，以便为 VM 设置复制。 了解如何[通过 Azure 资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)
+你现在可以将编辑的资源管理器模板部署到项目资源组，以便为 VM 设置复制。 了解如何 [通过 Azure 资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $ProjectResourceGroup -TemplateFile "C:\Users\Administrator\Downloads\template.json"

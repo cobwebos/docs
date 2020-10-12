@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91286513"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教程：配置从 Azure AD 到 SAP SuccessFactors 的属性回写
@@ -275,18 +275,18 @@ SuccessFactors 写回预配应用程序使用特定的 *代码* 值在 Employee 
 
 1. 在 " **属性映射** " 部分下的 "映射" 表中，您可以将以下 Azure Active Directory 特性映射到 SuccessFactors。 下表提供了有关如何映射回写属性的指导。 
 
-   | \# | Azure AD 属性 | SuccessFactors 特性 | 注解 |
+   | \# | Azure AD 属性 | SuccessFactors 特性 | 备注 |
    |--|--|--|--|
    | 1 | employeeId | personIdExternal | 默认情况下，此属性是匹配的标识符。 你可以使用任何其他 Azure AD 属性，而不是使用雇员可在 SuccessFactors 中存储等于 personIdExternal 的值。    |
    | 2 | mail | 电子邮件 | 地图电子邮件属性源。 出于测试目的，可以将 userPrincipalName 映射到电子邮件。 |
    | 3 | 8448 | emailType | 此常数值是与业务电子邮件关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为 [EmailType 检索常数值](#retrieve-constant-value-for-emailtype) 部分。 |
-   | 4 | 是 | emailIsPrimary | 使用此属性将业务电子邮件设置为 SuccessFactors 中的主电子邮件。 如果业务电子邮件不是主电子邮件，请将此标志设置为 false。 |
+   | 4 | true | emailIsPrimary | 使用此属性将业务电子邮件设置为 SuccessFactors 中的主电子邮件。 如果业务电子邮件不是主电子邮件，请将此标志设置为 false。 |
    | 5 | userPrincipalName | [custom01 – custom15] | 使用 " **添加新映射**"，可以选择将 userPrincipalName 或任何 Azure AD 属性写入 SuccessFactors 用户对象中提供的自定义属性。  |
    | 6 | 本地-samAccountName | username | 使用 " **添加新映射**"，可以选择将本地 samAccountName 映射到 SuccessFactors username 属性。 |
    | 7 | SSO | loginMethod | 如果为 [部分 SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)设置 SuccessFactors 租户，然后使用 "添加新映射"，则可以选择将 loginMethod 设置为常量值 "SSO" 或 "PWD"。 |
    | 8 | telephoneNumber | businessPhoneNumber | 使用此映射可将 *telephoneNumber* 从 Azure AD 流到 SuccessFactors 业务/工作电话号码。 |
    | 9 | 10605 | businessPhoneType | 此常数值是与 business phone 关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为 [PhoneType 检索常数值](#retrieve-constant-value-for-phonetype) 部分。 |
-   | 10 | 是 | businessPhoneIsPrimary | 使用此属性设置业务电话号码的主要标志。 有效值为 true 或 false。 |
+   | 10 | true | businessPhoneIsPrimary | 使用此属性设置业务电话号码的主要标志。 有效值为 true 或 false。 |
    | 11 | mobile | cellPhoneNumber | 使用此映射可将 *telephoneNumber* 从 Azure AD 流到 SuccessFactors 业务/工作电话号码。 |
    | 12 | 10606 | cellPhoneType | 此常数值是与手机关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为 [PhoneType 检索常数值](#retrieve-constant-value-for-phonetype) 部分。 |
    | 13 | false | cellPhoneIsPrimary | 使用此属性设置手机号码的主要标志。 有效值为 true 或 false。 |

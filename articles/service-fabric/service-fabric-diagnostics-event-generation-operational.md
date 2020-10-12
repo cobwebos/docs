@@ -6,15 +6,15 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846657"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric 事件列表 
 
-Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [Service Fabric 事件](service-fabric-diagnostics-events.md)。 这些事件基于 Service Fabric 在节点上执行的操作和群集所有者/操作员所做的群集或管理决策。 可以通过配置多个方法来访问这些事件，包括[使用群集配置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)，或查询[EventStore](service-fabric-diagnostics-eventstore.md)。 在 Windows 计算机上，这些事件被传输到 EventLog - 因此可以在“事件查看器”中查看 Service Fabric 事件。 
+Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [Service Fabric 事件](service-fabric-diagnostics-events.md)。 这些事件基于 Service Fabric 在节点上执行的操作和群集所有者/操作员所做的群集或管理决策。 可以通过配置多个方法来访问这些事件，包括 [使用群集配置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)，或查询 [EventStore](service-fabric-diagnostics-eventstore.md)。 在 Windows 计算机上，这些事件被传输到 EventLog - 因此可以在“事件查看器”中查看 Service Fabric 事件。 
 
 下面是这些事件的一些特征
 * 每个事件被绑定到群集中的特定实体，例如应用程序、服务、节点、副本。

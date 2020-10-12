@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167464"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91281688"
 ---
 # <a name="what-is-opc-twin"></a>什么是 OPC 孪生？
+
+> [!IMPORTANT]
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 OPC 孪生由使用 Azure IoT Edge 和 IoT 中心连接云与工厂网络的微服务构成。 OPC 孪生通过 REST API 提供发现、注册和远程控制工业设备的功能。 OPC 孪生不需要 OPC 统一体系结构 (OPC UA) SDK，对编程语言不可知，可包含在无服务器工作流中。 本文将介绍 OPC 孪生的几个用例。
 
@@ -41,5 +44,4 @@ OPC 孪生可与通过 REST API 以任何编程语言编写的应用程序配合
 
 了解 OPC 孪生及其用途后，建议接下来完成以下步骤：
 
-> [!div class="nextstepaction"]
-> [什么是 OPC 保管库](overview-opc-vault.md)
+[什么是 OPC 保管库](overview-opc-vault.md)

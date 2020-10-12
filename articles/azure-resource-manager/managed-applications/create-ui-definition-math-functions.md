@@ -1,20 +1,20 @@
 ---
 title: 创建 UI 定义数学函数
-description: 描述执行数学运算时要使用的函数。
+description: 介绍进行数学运算时使用的函数。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 022e59d847a4d89b4243223637fc6fd1e73255a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095976"
 ---
-# <a name="createuidefinition-math-functions"></a>CreateUiDefinition 数学函数
+# <a name="createuidefinition-math-functions"></a>创建 UI 定义数学函数
 
-函数使您可以执行数学运算。
+可以通过这些函数进行数学运算。
 
 ## <a name="add"></a>add
 
@@ -68,7 +68,7 @@ ms.locfileid: "87095976"
 
 ## <a name="min"></a>min
 
-返回这两个数字中较小的一个。
+返回两个数字中的较小数。
 
 以下示例返回 `1`：
 

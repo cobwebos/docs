@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829833"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
@@ -50,7 +50,7 @@ ms.locfileid: "85829833"
 
 1. 在“新建函数”页面的搜索字段中，输入 `cosmos`，然后选择“Azure Cosmos DB 触发器” 模板。
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure 门户中的“函数”页面":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB 代码":::
 
 
 1. 使用下表中指定的设置配置新触发器：
@@ -64,7 +64,7 @@ ms.locfileid: "85829833"
     | **租约的集合名称** | 租约 | 要存储租约的集合的名称。 |
     | **不存在租约集合时创建一个** | 是 | 检查是否存在租约集合；如果不存在，则自动创建一个。 |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="创建 Azure Cosmos DB 触发的函数":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB 代码":::
 
 1. 选择“创建函数”。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "85829833"
 
 1. 若要显示基于模板的函数代码，请选择“代码 + 测试”。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="运用 C# 语言的 Cosmos DB 函数模板":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB 代码":::
 
     此函数模板将文档的数量和第一个文档 ID 写入到日志中。
 
@@ -111,15 +111,7 @@ ms.locfileid: "85829833"
 
 1. 在数据资源管理器中展开新的 **Items** 容器，选择“项”，然后选择“新建项”。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="在 Items 容器中创建项":::
-
-1. 将新项的内容替换为以下内容，然后选择“保存”。
-
-    ```yaml
-    {
-        "id": "task1",
-        "category": "general",
-        "description": "some task"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB 代码"
     }
     ```
 

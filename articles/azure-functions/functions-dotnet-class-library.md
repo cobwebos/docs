@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206208"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
@@ -205,11 +205,11 @@ Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install
 
 ## <a name="readytorun"></a>ReadyToRun
 
-可以将函数应用编译为 [ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译的形式，它可以提高启动性能，从而有助于降低 [冷启动](functions-scale.md#cold-start) 在 [消耗计划](functions-scale.md#consumption-plan)中运行时的影响。
+可以将函数应用编译为 [ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译形式，可以提高启动性能，帮助降低在[消耗计划](functions-scale.md#consumption-plan)中运行时的[冷启动](functions-scale.md#cold-start)的影响。
 
-ReadyToRun 在 .NET 3.0 中提供，并且需要 [3.0 版本的 Azure Functions 运行时](functions-versions.md)。
+ReadyToRun 在 .NET 3.0 中提供，并且需要 [Azure Functions 运行时版本 3.0](functions-versions.md)。
 
-若要将你的项目编译为 ReadyToRun，请通过添加和元素更新你的项目文件 `<PublishReadyToRun>` `<RuntimeIdentifier>` 。 下面是用于发布到 Windows 32 位函数应用的配置。
+若要将项目编译为 ReadyToRun，请通过添加 `<PublishReadyToRun>` 和 `<RuntimeIdentifier>` 元素来更新项目文件。 以下是用于发布到 Windows 32 位函数应用的配置。
 
 ```xml
 <PropertyGroup>
@@ -221,9 +221,9 @@ ReadyToRun 在 .NET 3.0 中提供，并且需要 [3.0 版本的 Azure Functions 
 ```
 
 > [!IMPORTANT]
-> ReadyToRun 当前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 另外，请注意函数应用中配置的 "位数"。 例如，如果 Azure 中的 function app 为 Windows 64 位，则必须在 Windows 上编译应用 `win-x64` 作为 [运行时标识符](/dotnet/core/rid-catalog)。
+> ReadyToRun 目前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 此外，请注意函数应用中配置的“位数”。 例如，如果 Azure 中的函数应用为 Windows 64 位，则在 Windows 上编译应用时必须使用 `win-x64` 作为[运行时标识符](/dotnet/core/rid-catalog)。
 
-还可以从命令行通过 ReadyToRun 生成应用。 有关详细信息，请参阅 `-p:PublishReadyToRun=true` 中的选项 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 。
+也可以通过命令行使用 ReadyToRun 生成应用。 有关详细信息，请参阅 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 中的 `-p:PublishReadyToRun=true` 选项。
 
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 

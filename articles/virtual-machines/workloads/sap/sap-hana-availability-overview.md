@@ -16,17 +16,17 @@ ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653539"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
 可以使用许多 Azure 功能在 Azure VM 上部署 SAP HANA 等任务关键型数据库。 本文提供了有关如何实现 Azure VM 中承载的 SAP HANA 实例的可用性的指南。 本文介绍了几个方案，可以使用 Azure 基础结构实现这些方案来提高 Azure 中 SAP HANA 的可用性。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假定你熟悉 Azure 上的基础结构即服务 (IaaS) 基础知识，包括： 
 

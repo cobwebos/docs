@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187058"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
@@ -69,7 +69,7 @@ ms.locfileid: "86187058"
 * 注册设备。
 
 ## <a name="errors-during-the-required-network-settings"></a>配置所需的网络设置期间的错误
-| 错误。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：此命令只能在主动控制器上运行。 |在被动控制器上执行配置。 |从主动控制器运行此命令。 有关详细信息，请参阅[标识设备上的主动控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 2 |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
@@ -80,7 +80,7 @@ ms.locfileid: "86187058"
 | 7 |Invoke-HcsSetupWizard：端点映射程序中没有更多可用的端点。 （异常来自 HRESULT：0x800706D9） |群集功能不工作。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>配置可选 Web 代理设置期间的错误
-| 错误。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式： http:// *\<IP address or FQDN of the web proxy server>* ：*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，则需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
@@ -103,7 +103,7 @@ ms.locfileid: "86187058"
 
 设置设备管理员密码和 StorSimple Snapshot Manager 密码时，可能会遇到以下一个或多个错误。
 
-| 错误。 | 错误消息 | 建议的操作 |
+| 不是。 | 错误消息 | 建议的操作 |
 | --- | --- | --- |
 | 1 |密码超过最大长度。 |设备管理员密码必须介于 8 到 15 个字符之间。 |
 | 2 |密码不符合所需的长度。 |设备管理员密码必须介于 8 到 15 个字符之间。|
@@ -126,12 +126,12 @@ ms.locfileid: "86187058"
 ## <a name="errors-during-device-registration"></a>设备注册期间的错误
 可以使用在 Microsoft Azure 中运行的 StorSimple 设备管理器服务来注册设备。 在设备注册过程中，可能会遇到以下一个或多个问题。
 
-| 错误。 | 错误消息 | 可能的原因 | 建议的操作 |
+| 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |错误 350027：无法使用 StorSimple 设备管理器注册设备。 | |等候几分钟时间，并重试操作。 如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。 |
 | 2 |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)。 |
 | 3 |错误 350063：已通过对 StorSimple 设备管理器服务的身份认证，但注册失败。 请稍后重试操作。 |此错误表示已通过使用 ACS 的身份验证，但对服务的注册调用失败。 这可能是偶发性网络故障的结果。 |如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。 |
-| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，并重试该操作。 如果问题仍然存在，请[联系 Microsoft 支持部门。](storsimple-8000-contact-microsoft-support.md) |
+| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，并重试该操作。 如果问题仍然存在，请 [联系 Microsoft 支持部门。](storsimple-8000-contact-microsoft-support.md) |
 | 5 |错误 350031：设备已注册。 | |无需执行任何操作。 |
 | 6 |错误 350016：设备注册失败。 | |请确保注册密钥正确。 |
 | 7 |Invoke-HcsSetupWizard：注册设备时发生错误；这可能是由于 IP 地址或 DNS 名称不正确。 请检查网络设置，然后重试。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 （错误 350050） |确保设备可以 ping 外部网络。 如果没有连接到外部网络，则注册可能会失败并出现此错误。 此错误可能是以下一个或多个原因的组合：<ul><li>IP 不正确</li><li>子网不正确</li><li>网关不正确</li><li>DNS 设置不正确</li></ul> |请参阅[分步故障排除示例](#step-by-step-storsimple-troubleshooting-example)中的步骤。 |
@@ -139,7 +139,7 @@ ms.locfileid: "86187058"
 | 9 |警告：无法激活设备。 设备管理员和 StorSimple Snapshot Manager 密码尚未更改。 |如果注册失败，则设备管理员和 StorSimple Snapshot Manager 密码不会更改。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>用于排查 StorSimple 部署问题的工具
-StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障排除。 其中包括：
+StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障排除。 其中包括:
 
 * 支持包和设备日志。
 * 专为故障排除而设计的 cmdlet。

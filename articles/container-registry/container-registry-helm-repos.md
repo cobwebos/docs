@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 容器注册表中的存储库来为 Kuber
 ms.topic: article
 ms.date: 06/12/2020
 ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537861"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>将 Helm 图表推送和提取到 Azure 容器注册表
@@ -31,9 +31,9 @@ ms.locfileid: "86537861"
 * 在 Helm CLI 中使用 `helm chart` 命令在注册表中推送、提取和管理 Helm 图表
 * 使用 `helm install` 从本地存储库缓存将图表安装到 Kubernetes 群集。
 > [!NOTE]
-> 从 Helm 3 开始，将使用[az acr Helm][az-acr-helm]命令与 Helm 2 client 一起使用。 请参阅[产品路线图](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)。 如果以前已部署了 Helm 2 图表，请参阅[将 Helm v2 迁移到 v3](https://helm.sh/docs/topics/v2_v3_migration/)。
+> 从 Helm 3 开始，将使用 [az acr Helm][az-acr-helm] 命令与 Helm 2 client 一起使用。 请参阅[产品路线图](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)。 如果以前已部署了 Helm 2 图表，请参阅[将 Helm v2 迁移到 v3](https://helm.sh/docs/topics/v2_v3_migration/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文中的方案需要以下资源：
 
@@ -272,7 +272,7 @@ helm uninstall myhelmtest
 
 ## <a name="delete-chart-from-the-registry"></a>从注册表中删除图表
 
-若要从容器注册表中删除图表，请使用[az acr repository delete][az-acr-repository-delete]命令。 运行以下命令，并在出现提示时确认操作：
+若要从容器注册表中删除图表，请使用 [az acr repository delete][az-acr-repository-delete] 命令。 运行以下命令，并在出现提示时确认操作：
 
 ```azurecli
 az acr repository delete --name mycontainerregistry --image helm/hello-world:v1

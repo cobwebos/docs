@@ -10,10 +10,10 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 7fc878e0c9e099b201264c1c3981c603668214d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318375"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义网格
@@ -25,14 +25,14 @@ ms.locfileid: "91318375"
 
 本文中的示例网格显示来自服务的数据，在[向远程监视解决方案加速器 Web UI 添加自定义服务](iot-accelerators-remote-monitoring-customize-service.md)操作指南文章中介绍了服务的添加方法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 应先完成下列文章中的步骤，再继续操作：
 

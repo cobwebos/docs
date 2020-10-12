@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: alkohli
 ms.openlocfilehash: 16d782c6a25d8d2d8e1323b7cb683f41d8c99649
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054970"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>使用 StorSimple Snapshot Manager 管理 StorSimple 解决方案
@@ -51,7 +51,7 @@ StorSimple Snapshot Manager 可用于监视和管理当前、 计划和已完成
 | 了解有关 StorSimple Snapshot Manager 的详细信息 |[什么是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md) |
 | 安装 StorSimple Snapshot Manager<br>重新安装 StorSimple Snapshot Manager<br>删除 StorSimple Snapshot Manager |[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) |
 | 使用 StorSimple Snapshot Manager 菜单和功能：<ul><li>菜单栏</li><li>工具栏</li><li>作用域窗格</li><li>“结果”窗格</li><li>“操作”窗格</li><li>键盘导航和快捷键</li></ul> |[StorSimple Snapshot Manager 用户界面](storsimple-use-snapshot-manager.md) |
-| 使用包含在 StorSimple Snapshot Manager 中的常见 MMC 功能：<ul><li>视图</li><li>从此处新建窗口</li><li>刷新</li><li>导出列表</li><li>帮助</li></ul> |[使用 StorSimple Snapshot Manager 中的 MMC 菜单操作](storsimple-snapshot-manager-mmc-menu.md) |
+| 使用包含在 StorSimple Snapshot Manager 中的常见 MMC 功能：<ul><li>查看</li><li>从此处新建窗口</li><li>刷新</li><li>导出列表</li><li>帮助</li></ul> |[使用 StorSimple Snapshot Manager 中的 MMC 菜单操作](storsimple-snapshot-manager-mmc-menu.md) |
 | 添加或替换设备<br>连接一个设备<br>验证导入的卷组<br>刷新连接的设备<br>对设备进行身份验证<br>查看设备详细信息<br>删除设备配置<br>更改设备密码<br>替换发生故障的设备<br> |[使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备](storsimple-snapshot-manager-manage-devices.md) |
 | 装载卷<br>查看有关卷的信息<br>删除卷<br>重新扫描卷<br>配置和备份基本卷<br>配置和备份动态镜像卷 |[使用 StorSimple Snapshot Manager 查看和管理卷](storsimple-snapshot-manager-manage-volumes.md) |
 | 查看卷组<br>创建卷组<br>备份卷组<br>编辑卷组<br>删除卷组 |[使用 StorSimple Snapshot Manager 创建和管理卷组](storsimple-snapshot-manager-manage-volume-groups.md) |

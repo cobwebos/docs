@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84417270"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
@@ -89,7 +89,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
    
     1. “配额类型” > “Batch”
       
-       选择“**下一页**”。
+       选择“**下一步**”。
     
 1. 在“详细信息”中：
       
@@ -109,7 +109,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
 
     1. 根据[业务影响情况](https://aka.ms/supportseverity)选择“严重性”。
 
-       选择“**下一页**”。
+       选择“**下一步**”。
 
 1. 在“联系人信息”中：
    

@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric sfctl 网格
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理 Service Fabric 网格应用程序的命令的列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于管理 Service Fabric 网格应用程序的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 4682eee93b5ff9f01e65611e8d5e0920930776a5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257247"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
@@ -31,5 +31,5 @@ ms.locfileid: "86257247"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

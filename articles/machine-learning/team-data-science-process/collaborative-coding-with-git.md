@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090206"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
@@ -80,7 +80,7 @@ git push origin script
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-如有必要，请在“新建拉取请求”  屏幕上，导航到要将更改合并到的 Git 存储库和分支。 添加或更改所需的任何其他信息。 在 "**审阅者**" 下，添加审阅者的姓名，然后选择 "**创建**"。 
+如有必要，请在“新建拉取请求”  屏幕上，导航到要将更改合并到的 Git 存储库和分支。 添加或更改所需的任何其他信息。 在 " **审阅者**" 下，添加审阅者的姓名，然后选择 " **创建**"。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -98,7 +98,7 @@ git push origin script
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-返回到左侧导航栏中的 "**存储库**" 时，可以看到已切换到主分支，因为 `script` 已删除该分支。
+返回到左侧导航栏中的 " **存储库** " 时，可以看到已切换到主分支，因为 `script` 已删除该分支。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

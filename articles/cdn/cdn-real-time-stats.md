@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887224"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的实时统计信息
@@ -35,7 +35,7 @@ ms.locfileid: "84887224"
 * [连接](#connections)
 
 ## <a name="accessing-real-time-stats"></a>访问实时统计信息
-1. 在[Azure 门户](https://portal.azure.com)中，浏览到 CDN 配置文件。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 CDN 配置文件。
    
     ![CDN 配置文件边栏选项卡](./media/cdn-real-time-stats/cdn-profile-blade.png)
 2. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
@@ -92,5 +92,5 @@ HTTP 状态代码列表直接显示在图表上方。 此列表指明可纳入�
 ## <a name="next-steps"></a>后续步骤
 * 通过 [Azure CDN 中的实时警报](cdn-real-time-alerts.md)获取通知
 * 更深入地挖掘[高级 HTTP 报表](cdn-advanced-http-reports.md)
-* 分析[使用模式](cdn-analyze-usage-patterns.md)
+* 分析 [使用模式](cdn-analyze-usage-patterns.md)
 

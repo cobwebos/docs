@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343014"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 X-EC-Debug HTTP 标头
@@ -33,7 +33,7 @@ ms.locfileid: "84343014"
 ## <a name="requesting-debug-cache-information"></a>请求调试缓存信息
 在指定的请求中使用以下指令，定义要包含在响应中的调试缓存信息：
 
-请求标头 | 描述 |
+请求标头 | 说明 |
 ---------------|-------------|
 X-EC-Debug: x-ec-cache | [缓存状态代码](#cache-status-code-information)
 X-EC-Debug: x-ec-cache-remote | [缓存状态代码](#cache-status-code-information)
@@ -54,7 +54,7 @@ X-EC-Debug: x-ec-cache-state | [缓存状态](#cache-state-response-header)
 ## <a name="cache-status-code-information"></a>缓存状态代码信息
 X-EC-Debug 响应标头可以标识服务器及其如何通过以下指令处理了响应：
 
-Header | 描述
+Header | 说明
 -------|------------
 X-EC-Debug: x-ec-cache | 每当通过 CDN 路由内容时，都会报告此标头。 此标头标识完成请求的 POP 服务器。
 X-EC-Debug: x-ec-cache-remote | 仅当请求的内容已缓存在来源防护服务器或 ADN 网关服务器上时，才报告此标头。
@@ -103,11 +103,11 @@ X-EC-Debug 标头采用以下格式报告缓存状态代码信息：
 
 上述响应标头语法中使用的元素定义如下：
 
-“值”  | 说明
+Value  | 说明
 -------| --------
 YES    | 指示请求的内容是否符合缓存的条件。
 是     | 指示请求的内容是否不符合缓存的条件。 此状态可能是以下原因之一造成的： <br /> - 客户特定的配置：特定于你帐户的配置可能阻止 POP 服务器缓存资产。 例如，规则引擎可能会通过对符合条件的请求启用“绕过缓存”功能，来阻止缓存资产。<br /> - 缓存响应标头：所请求资产的 Cache-Control 和 Expires 标头可能阻止 POP 服务器缓存该资产。
-未知 | 指示服务器无法评估请求的资产是否可缓存。 如果由于基于令牌的身份验证而拒绝了请求，则通常会出现此状态。
+UNKNOWN | 指示服务器无法评估请求的资产是否可缓存。 如果由于基于令牌的身份验证而拒绝了请求，则通常会出现此状态。
 
 ### <a name="sample-response-header"></a>示例响应标头
 
@@ -151,7 +151,7 @@ YES    | 指示请求的内容是否符合缓存的条件。
 
 - MATimePeriod：将最大期限值（即 MASeconds）转换为单位更大（例如，天）的近似等效值。 
 
-- UnixTime：指示 Unix 时间（也称为 POSIX 时间或 Unix epoch）中请求的内容的缓存时间戳。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
+- UnixTime：指示 Unix time 中请求的内容的缓存时间戳 (也称为 POSIX 时间或 Unix epoch) 。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
 
     如果源服务器不使用第三方 HTTP 缓存服务器或该服务器不返回 Age 响应标头，则缓存时间戳始终为检索或重新验证资产时的日期/时间。 否则，POP 服务器将使用 Age 字段计算资产的 TTL，如下所示：Retrieval/RevalidateDateTime - Age。
 

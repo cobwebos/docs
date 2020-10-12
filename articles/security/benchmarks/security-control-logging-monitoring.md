@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076309"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全控制：日志记录和监视
@@ -108,7 +108,7 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 使用 Azure 安全中心和 Log Analytics 工作区监视安全日志和事件中的异常活动并发出警报。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。
+或者，可以启用数据并将其载入 Azure Sentinel。
 
 - [如何加入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 

@@ -2,16 +2,16 @@
 title: Azure 实验室服务 | Microsoft Docs
 description: 了解实验室服务如何轻松创建、管理以及保护包含由开发者、测试人员、教育工作者、学生等人群使用的虚拟机的实验室。
 ms.topic: overview
-ms.date: 06/26/2020
-ms.openlocfilehash: 7661b26d16eb2c2acd53c30889ea791689c1eec0
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 09/16/2020
+ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85442799"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91333930"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure 实验室服务简介
-利用 Azure 实验室服务，可以创建由 Azure 托管基础结构的实验室。 目前，课堂实验室是 Azure 实验室服务支持的唯一托管实验室类型。 从运行 VM 到处理错误及缩放基础结构，该服务本身可以处理托管实验室类型的所有基础结构管理。 IT 管理员在 Azure 实验室服务中创建实验室帐户后，讲师可以快速为其班级建立实验室，指定班级中需要练习的 VM 的数量和类型，并将用户添加到班级中。 用户注册到班级后，用户就可以访问 VM 做班级练习。  
+利用 Azure 实验室服务，可以创建由 Azure 托管基础结构的实验室。 目前，课堂实验室是 Azure 实验室服务支持的唯一托管实验室类型。 从运行 VM 到处理错误及缩放基础结构，该服务本身可以处理托管实验室类型的所有基础结构管理。 IT 管理员在 Azure 实验室服务中创建实验室帐户后，讲师可以快速为其班级建立实验室，指定班级做练习所需的 VM 的数量和类型，并将用户添加到班级中。 用户注册到班级后，用户就可以访问 VM 做班级练习。  
 
 ## <a name="key-capabilities"></a>关键功能
 Azure 实验室服务支持以下关键功能：

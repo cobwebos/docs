@@ -4,10 +4,10 @@ description: 了解如何在 Azure 外部有效管理客户的计算机和 Kuber
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336609"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>通过 Azure Arc 大规模管理混合基础结构

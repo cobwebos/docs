@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319555"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>适合 Azure 托管应用程序的创建体验的 CreateUiDefinition.json
@@ -36,7 +36,7 @@ ms.locfileid: "89319555"
 }
 ```
 
-`CreateUiDefinition`始终包含三个属性：
+`CreateUiDefinition` 始终包含三个属性：
 
 * 处理程序 (handler)
 * 版本
@@ -50,9 +50,9 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 可以使用 JSON 编辑器创建 createUiDefinition，然后在 [createUiDefinition 沙盒](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)中对其进行测试，以便预览它。 有关沙盒的详细信息，请参阅[测试 Azure 托管应用程序的门户接口](test-createuidefinition.md)。
 
-## <a name="config"></a>配置
+## <a name="config"></a>Config
 
-`config` 属性为可选。 使用它可以覆盖基本步骤的默认行为，也可以将接口设置为分步向导。 如果 `config` 使用，则它是在文件的部分中 **createUiDefinition.js** 的第一个属性 `parameters` 。 以下示例显示可用的属性。
+`config` 属性为可选。 使用它可以重写基本步骤的默认行为，也可以将界面设置为分步向导。 如果使用 `config`，则它是 **createUiDefinition.json** 文件的 `parameters` 节中的第一个属性。 以下示例显示可用的属性。
 
 ```json
 "config": {
@@ -105,15 +105,15 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 ### <a name="wizard"></a>向导
 
-`isWizard`属性使你能够在继续下一步之前要求对每个步骤进行成功的验证。 如果 `isWizard` 未指定属性，则默认值为 **false**，并且不需要逐步验证。
+`isWizard` 属性使你能够在继续下一步之前要求对每个步骤进行成功的验证。 如果未指定 `isWizard` 属性，则默认值为 **false**，不需要逐步验证。
 
-`isWizard`启用后，将设置为**true**，"**基本**信息" 选项卡可用，并禁用所有其他选项卡。 选中 " **下一步** " 按钮时，该选项卡的图标指示选项卡的验证是通过还是失败。 完成一个选项卡的必填字段并验证后，" **下一步** " 按钮允许导航到下一个选项卡。所有选项卡通过验证后，你可以进入 " **查看并创建** " 页，然后选择 " **创建** " 按钮以开始部署。
+启用了 `isWizard` 时，将设置为 **true**，“基本信息”选项卡可用，所有其他选项卡被禁用。 选择“下一步”按钮时，该选项卡的图标指示选项卡的验证是通过还是失败。 完成并验证某个选项卡的必填字段之后，即可通过“下一步”按钮导航到下一个选项卡。所有选项卡都通过验证后，你可以进入“查看并创建”页面，选择“创建”按钮开始进行部署。
 
 :::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="选项卡向导":::
 
-### <a name="override-basics"></a>替代基础知识
+### <a name="override-basics"></a>重写基本信息
 
-基本配置使你可以自定义基础步骤。
+基本信息配置允许你自定义基本信息步骤。
 
 对于 `description`，请提供启用了 markdown 的字符串，用于描述资源。 支持多行格式和链接。
 
@@ -129,7 +129,7 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 “基本信息”步骤是 Azure 门户分析文件时生成的第一步。 默认情况下，通过“基本信息”步骤，用户可选择订阅、资源组和部署位置。
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="基本信息默认值":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="选项卡向导":::
 
 在本部分中可以添加更多元素。 在可能的情况下，请添加可查询部署范围内的参数的元素（例如群集名称或管理员凭据）。
 

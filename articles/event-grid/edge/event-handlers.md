@@ -4,10 +4,10 @@ description: 事件处理程序和边缘上事件网格中的目标
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 18e2b944f60ebdf8a1b0c60ba446a13df13134c5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171578"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>事件处理程序和边缘上事件网格中的目标
@@ -84,7 +84,7 @@ ms.locfileid: "86171578"
 * connectionString：目标为通过共享访问策略生成的特定事件中心的连接字符串。
 
     >[!NOTE]
-    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 可以通过导航到要在 Azure 门户中发布到的特定事件中心，并单击 "**共享访问策略**" 生成新的特定于实体的 connecection 字符串，来生成特定于实体的连接字符串。
+    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 可以通过导航到要在 Azure 门户中发布到的特定事件中心，并单击 " **共享访问策略** " 生成新的特定于实体的 connecection 字符串，来生成特定于实体的连接字符串。
 
     ```json
         {
@@ -106,7 +106,7 @@ ms.locfileid: "86171578"
 * connectionString：目标为通过共享访问策略生成的特定服务总线队列的连接字符串。
 
     >[!NOTE]
-    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 通过导航到要在 Azure 门户中发布到的特定服务总线队列，并单击 "**共享访问策略**" 生成新的特定于实体的 connecection 字符串，生成特定于实体的连接字符串。
+    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 通过导航到要在 Azure 门户中发布到的特定服务总线队列，并单击 " **共享访问策略** " 生成新的特定于实体的 connecection 字符串，生成特定于实体的连接字符串。
 
     ```json
         {
@@ -128,7 +128,7 @@ ms.locfileid: "86171578"
 * connectionString：目标为通过共享访问策略生成的特定服务总线主题的连接字符串。
 
     >[!NOTE]
-    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 通过导航到要在 Azure 门户中发布到的特定服务总线主题，并单击 "**共享访问策略**" 生成新的特定于实体的 connecection 字符串，生成特定于实体的连接字符串。
+    > 连接字符串必须是实体特定的。 使用命名空间连接字符串将不起作用。 通过导航到要在 Azure 门户中发布到的特定服务总线主题，并单击 " **共享访问策略** " 生成新的特定于实体的 connecection 字符串，生成特定于实体的连接字符串。
 
     ```json
         {
@@ -145,7 +145,7 @@ ms.locfileid: "86171578"
 
 ## <a name="storage-queues"></a>存储队列
 
-若要发布到存储队列，请将设置 `endpointType` 为 `storageQueue` 并提供：
+若要发布到存储队列，请将设置  `endpointType` 为 `storageQueue` 并提供：
 
 * queueName：要发布到的存储队列的名称。
 * connectionString：存储队列所在的存储帐户的连接字符串。

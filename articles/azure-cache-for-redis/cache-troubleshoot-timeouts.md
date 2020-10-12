@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
 ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213452"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>排查 Azure Cache for Redis 超时问题
@@ -31,7 +31,7 @@ Azure Cache for Redis 定期更新其服务器软件，作为它提供的托管�
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis 超时异常
 
-Stackexchange.redis 使用名 `synctimeout` 为的配置设置进行同步操作，默认值为5000毫秒。 如果同步调用未在此时间内完成，StackExchange.Redis 客户端会引发类似于以下示例的超时错误：
+StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作，该设置的默认值为 5000 毫秒。 如果同步调用未在此时间内完成，StackExchange.Redis 客户端会引发类似于以下示例的超时错误：
 
 ```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
@@ -74,7 +74,7 @@ Stackexchange.redis 使用名 `synctimeout` 为的配置设置进行同步操作
 
 1. 确保服务器和客户端应用程序位于 Azure 中的同一区域。 例如，你可能会在你的缓存位于美国东部但客户端在美国西部，但请求未在此间隔内完成， `synctimeout` 或者当你从本地开发计算机进行调试时，你可能会遇到超时。 
 
-    强烈建议将缓存和客户端置于同一 Azure 区域。 如果你的方案包括跨区域调用，则应将 `synctimeout` 间隔设置为高于默认 5000 ms 间隔的值，方法是 `synctimeout` 在连接字符串中包括一个属性。 以下示例演示了 Azure Redis 缓存提供的 StackExchange.Redis 连接字符串代码片段，其中的 `synctimeout` 为 2000 毫秒。
+    强烈建议将缓存和客户端置于同一 Azure 区域。 如果方案中包括跨区域调用，则应将 `synctimeout` 时间间隔设置为比默认的 5000 毫秒时间间隔更高的值，方法是在连接字符串中包括 `synctimeout` 属性。 以下示例演示了 Azure Redis 缓存提供的 StackExchange.Redis 连接字符串代码片段，其中的 `synctimeout` 为 2000 毫秒。
 
     ```output
     synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...

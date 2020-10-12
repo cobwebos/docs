@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319495"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
-> 本文适用于旧版 Azure 事件中心 SDK。 对于最新版本的 SDK，请参阅 [在应用程序的多个实例之间平衡分区负载](event-processor-balance-partition-load.md)。 若要了解如何将代码迁移到新版 SDK，请参阅以下迁移指南。 
+> 本文适用于旧版 Azure 事件中心 SDK。 有关 SDK 的当前版本，请参阅[跨应用程序的多个实例均衡分区负载](event-processor-balance-partition-load.md)。 若要了解如何将代码迁移到新版 SDK，请参阅以下迁移指南。 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
@@ -88,7 +88,7 @@ public class SimpleEventProcessor : IEventProcessor
 最后，使用者将 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 实例注册到事件中心服务。 向 EventProcessorHost 实例注册事件处理程序类会启动事件处理。 注册操作告知事件中心服务预期使用者应用会使用其某些分区发送的事件，并且每当推送要使用的事件时，都要调用 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 实现代码。 
 
 > [!NOTE]
-> ConsumerGroupName 区分大小写。  对 consumerGroupName 的更改可能会导致从流的开头读取所有分区。
+> consumerGroupName 区分大小写。  对 consumerGroupName 的更改可能会导致从流的开头读取所有分区。
 
 ### <a name="example"></a>示例
 

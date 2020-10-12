@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551701"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400343"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Linux 虚拟机的文件
 
@@ -70,7 +70,7 @@ ms.locfileid: "88551701"
  
 1. 在本地计算机上打开浏览器，并键入 VM 的公共 IP 地址查看默认的 nginx 网页。
 
-    ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-working.png)
+    ![显示默认 nginx 网页的屏幕截图。](./media/tutorial-backup-vms/nginx-working.png)
 
 1. 通过 SSH 连接到 VM。
 
@@ -86,7 +86,7 @@ ms.locfileid: "88551701"
     
 4. 在本地计算机上按 CTRL + F5 刷新浏览器，检查默认的 nginx 页面是否已消失。
 
-    ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-broken.png)
+    ![显示默认 nginx 网页已消失的屏幕截图。](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. 在本地计算机上登录到 [Azure 门户](https://portal.azure.com/)。
 6. 在左侧菜单中选择“虚拟机”。 

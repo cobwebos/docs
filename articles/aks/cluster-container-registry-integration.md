@@ -6,10 +6,10 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87406497"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
@@ -47,7 +47,7 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>`
 
 > [!NOTE]
-> 如果你使用的是来自 AKS 群集的不同订阅中的 ACR，请在附加或分离 AKS 群集时使用 ACR 资源 ID。
+> 如果所用 ACR 与 AKS 群集位于不同的订阅中，则在从 AKS 群集进行附加或分离时，请使用 ACR 资源 ID。
 
 ```azurecli
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
@@ -100,7 +100,7 @@ az acr import  -n <acr-name> --source docker.io/library/nginx:latest --image ngi
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-创建一个名为**nginx. yaml**的文件，其中包含以下。 替换为**acr 名称**的注册表资源名称。 例如： *myContainerRegistry*。
+创建名为 acr-nginx.yaml 的文件，其中包含以下内容。 请将 acr-name 替换为注册表的资源名称。 示例：myContainerRegistry。
 
 ```yaml
 apiVersion: apps/v1

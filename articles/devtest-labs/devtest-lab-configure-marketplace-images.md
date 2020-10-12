@@ -4,10 +4,10 @@ description: 在 Azure 开发测试实验室中创建 VM 时，配置可以使�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512429"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置 Azure 市场映像设置
@@ -19,8 +19,8 @@ ms.locfileid: "86512429"
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 3. 在实验室列表中，选择实验室。 
-4. 在 "实验室" 页的 "主页" 页上，选择 "**配置和策略**"。
-5. 在实验室的 "**配置和策略**" 页的 "**虚拟机基础**" 下，选择 " **Marketplace 映像**"。
+4. 在 "实验室" 页的 "主页" 页上，选择 " **配置和策略**"。
+5. 在实验室的 " **配置和策略** " 页的 " **虚拟机基础**" 下，选择 " **Marketplace 映像**"。
 6. 指定是否希望所有限定的 Azure 市场映像可用作新 VM 的基础。 如果选择“是”****，则在实验室中允许符合以下所有条件的所有 Azure 市场映像：
    
    * 由映像创建单个 VM，**和**
@@ -38,15 +38,15 @@ ms.locfileid: "86512429"
      ![可指定哪个 Azure 市场映像可以用作 VM 的基础映像](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 如果无法找到要为实验室启用的特定映像，请执行以下步骤： 
 
 - 查看是否可以在创建计算 VM 时查看映像。
-- 所使用的订阅类型中的映像可能不可用。 与订阅管理员联系以获取订阅类型（例如： MSDN、免费、即用即付，等等）。 
+- 所使用的订阅类型中的映像可能不可用。 请与订阅管理员联系，以获取订阅的类型 (例如： MSDN、free、即用即付等。 ) 。 
 - 在开发测试实验室中对第2代映像的支持是有限的。 如果第 1 代版本和第 2 代版本都可用于映像，则开发测试实验室在创建 VM 时仅显示映像的 1 代版本。 解决方法是在实验室外创建自定义 Gen 2 映像，并使用它来创建 VM。 如果只有第2代映像可用，则支持并在列表中通过开发测试实验室显示该版本。 
       
 
 
 ## <a name="next-steps"></a>后续步骤
-配置了创建 VM 时允许 Azure Marketplace 映像的方式后，下一步是[将 vm 添加到实验室](devtest-lab-add-vm.md)。
+配置了创建 VM 时允许 Azure Marketplace 映像的方式后，下一步是 [将 vm 添加到实验室](devtest-lab-add-vm.md)。
 
