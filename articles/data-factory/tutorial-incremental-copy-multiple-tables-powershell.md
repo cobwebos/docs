@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 以增量方式复制多个表
-description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库的数据库中。
+description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250955"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541809"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
@@ -821,11 +821,11 @@ END
 4. 在“数据工厂”页上，选择“创作和监视”以在单独的选项卡中启动 Azure 数据工厂。
 
 5. 在“开始使用”页上，选择左侧的“监视”。 
-![管道运行](media/doc-common-process/get-started-page-monitor-button.png)    
+![屏幕截图显示了 Azure 数据工厂的“开始使用”页。](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. 可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”列中的链接。
 
-    ![管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![屏幕截图显示了数据工厂的管道运行，包括你的管道。](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. 在“操作”列中选择链接时，会看到管道的所有活动运行。 
 
 8. 若要回到“管道运行”视图，请选择“所有管道运行” 。 

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 服务器评估发现本地物理�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 0436ce3a02b6e271a62fe827d1a2d9a8b77dbfbe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600732"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442286"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>教程：使用“服务器评估”功能发现物理服务器
 
@@ -37,7 +37,7 @@ ms.locfileid: "90600732"
 
 **要求** | **详细信息**
 --- | ---
-**设备** | 需要一台计算机以运行 Azure Migrate 设备。 计算机应：<br/><br/> - 已安装 Windows Server 2016。 不支持在具有 Windows Server 2019 的计算机上运行设备。<br/><br/> - 具有 16-GB RAM、8 个 vCPU、约 80 GB 的磁盘存储和外部虚拟交换机。<br/><br/> - 静态或动态 IP 地址，可直接访问或通过代理访问 Internet。
+**设备** | 需要一台计算机以运行 Azure Migrate 设备。 计算机应：<br/><br/> - 已安装 Windows Server 2016。 _（目前只有 Windows Server 2016 支持设备部署。）_<br/><br/> - 16 GB RAM，8 个 vCPU，约 80 GB 磁盘存储<br/><br/> - 静态或动态 IP 地址，可直接访问或通过代理访问 Internet。
 **Windows 服务器** | 允许 WinRM 端口 5985 (HTTP) 上的入站连接，使设备可以拉取配置和性能元数据。
 **Linux 服务器** | 允许端口 22 (TCP) 上的入站连接。
 
@@ -69,7 +69,7 @@ ms.locfileid: "90600732"
 
     ![在用户设置中，验证用户是否可以注册 Active Directory 应用](./media/tutorial-discover-physical/register-apps.png)
 
-
+9. 或者，租户/全局管理员可将“应用程序开发人员”角色分配给帐户，以允许注册 AAD 应用。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-physical-servers"></a>准备物理服务器
 
@@ -139,13 +139,13 @@ ms.locfileid: "90600732"
 
         **方案** | **下载*** | **哈希值**
         --- | --- | ---
-        物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
+        物理 (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
 
     - 对于 Azure 政府：
 
         **方案** | **下载*** | **哈希值**
         --- | --- | ---
-        物理 (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
+        物理 (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
 ### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本

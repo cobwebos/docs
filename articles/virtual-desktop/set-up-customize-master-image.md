@@ -7,10 +7,10 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433698"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
@@ -125,7 +125,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>禁用存储感知
 
-对于使用 Windows 10 企业版或 Windows 10 企业多会话的 Windows 虚拟桌面会话主机，建议禁用存储感知。 可以在 " **存储**" 下的 "设置" 菜单中禁用存储感知，如以下屏幕截图所示：
+对于使用 Windows 10 企业版或 Windows 10 企业版多会话的 Windows 虚拟桌面会话主机，建议禁用存储感知。 可以在 " **存储**" 下的 "设置" 菜单中禁用存储感知，如以下屏幕截图所示：
 
 > [!div class="mx-imgBorder"]
 > !["设置" 下的 "存储" 菜单的屏幕截图。 "存储感知" 选项已关闭。](media/storagesense.png)

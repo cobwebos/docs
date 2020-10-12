@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91260404"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark 历史记录服务器来调试和诊断 Apache Spark 应用程序
@@ -125,7 +125,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 |绿色|已成功完成：作业已成功完成。|
 |橙色|重试：失败但不影响作业最终结果的任务实例。 这些任务包括可能稍后会成功的重复或重试实例。|
 |蓝色|正在运行：任务正在运行。|
-|White|正在等待或已跳过：任务正在等待运行，或已跳过该阶段。|
+|白色|正在等待或已跳过：任务正在等待运行，或已跳过该阶段。|
 |Red|失败：任务失败。|
 
 下图显示了绿色、橙色和蓝色状态颜色。
@@ -143,7 +143,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 > [!NOTE]  
 > 每个作业都可以播放。 不完整的作业不支持播放。
 
-### <a name="zoom"></a>Zoom
+### <a name="zoom"></a>缩放
 
 使用鼠标滚动在作业图上放大和缩小，或选择 " **缩放到合适大小** " 以使其适应屏幕大小。
 

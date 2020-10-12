@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: b2ac4bbf1457144d23a91c4e83b554b3ee806119
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337222"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>在 Azure IoT Central 中基于规则创建 Webhook 操作
@@ -111,9 +111,9 @@ ms.locfileid: "87337222"
 
 ## <a name="data-format-change-notice"></a>数据格式更改通知
 
-如果在**2020 年4月 3**日之前创建并保存了一个或多个 webhook，则需要删除 webhook 并创建新的 webhook。 这是因为，较旧的 webhook 使用的是将来将弃用的旧有效负载格式。
+如果在 **2020 年4月 3**日之前创建并保存了一个或多个 webhook，则需要删除 webhook 并创建新的 webhook。 这是因为，较旧的 webhook 使用的是将来将弃用的旧有效负载格式。
 
-### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook 有效负载（从2020年4月3日起已弃用）
+### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>从2020年4月3日起，Webhook 负载 (格式弃用) 
 
 ```json
 {
@@ -154,7 +154,7 @@ ms.locfileid: "87337222"
 
 目前，没有通过 API 订阅/取消订阅这些 Webhook 的编程方式。
 
-如果你有关于如何改进此功能的建议，请将你的建议发布到[用户语音论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
+如果你有关于如何改进此功能的建议，请将你的建议发布到 [用户语音论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890274"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
@@ -41,7 +41,7 @@ Azure VM 备份作业由“jobId”字段予以标识，并且可以如[此处](
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}` 是上面提到的“jobId”。 响应始终为 200 OK，并且始终包含指示作业的当前状态的“status”字段。 完成后，"extendedInfo" 部分会显示有关该作业的更多详细信息。
+`{jobName}` 是上面提到的“jobId”。 响应始终为 200 OK，并且始终包含指示作业的当前状态的“status”字段。 当状态为“Completed”或“CompletedWithWarnings”之后，“extendedInfo”部分将显示关于作业的更多详细信息。
 
 ### <a name="response"></a>响应
 

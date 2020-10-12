@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337664"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>将 IoT DevKit 设备连接到远程监视解决方案加速器
@@ -24,7 +24,7 @@ ms.locfileid: "87337664"
 
 [MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)（Azure IoT 设备 Workbench）或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 [项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)包含有助于确定 IoT 解决方案原型的示例应用程序。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 若要完成本教程中的步骤，请先执行以下任务：
 
@@ -46,16 +46,16 @@ ms.locfileid: "87337664"
 
 若要在 DevKit 设备上配置 IoT 中心设备连接字符串，请执行以下操作：
 
-1. 将 IoT DevKit 切换到**配置模式**：
+1. 将 IoT DevKit 切换到 **配置模式**：
 
     * 按住按钮 A****。
-    * 推送并释放 "**重置**" 按钮。
+    * 推送并释放 " **重置** " 按钮。
 
 1. 屏幕将显示 DevKit ID 和 `Configuration`。
 
     ![IoT DevKit 配置模式](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. 按**F1**打开命令面板，键入并选择 " **Azure IoT 设备工作台：配置设备设置 ... > Config 设备连接字符串**"。
+1. 按 **F1** 打开命令面板，键入并选择 " **Azure IoT 设备工作台：配置设备设置 ... > Config 设备连接字符串**"。
 
 1. 粘贴以前复制的连接字符串，然后按 **Enter** 对设备进行配置。
 

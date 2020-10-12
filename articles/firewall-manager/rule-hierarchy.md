@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893669"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>使用 Azure 防火墙策略来定义规则层次结构
@@ -48,7 +48,7 @@ Azure 防火墙策略允许你定义规则层次结构并强制实施符合性�
 - 数据库防火墙策略。 数据库防火墙策略继承基本防火墙策略。
 - 工程防火墙策略。 工程防火墙策略还继承基本防火墙策略。
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="策略层次结构" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="团队和要求" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>创建自定义角色以访问规则集合组 
 
@@ -59,10 +59,10 @@ Azure 防火墙策略允许你定义规则层次结构并强制实施符合性�
 1. 获取订阅：
 
    `Select-AzSubscription -SubscriptionId xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx`
-2. 运行下面的命令：
+2. 运行以下命令：
 
    `Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize`
-3. 使用 AzRoleDefinition 命令以 JSON 格式输出读取者角色。 
+3. 使用 Get-AzRoleDefinition 命令以 JSON 格式输出读取者角色。 
 
    `Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json`
 4. 在编辑器中打开文件上的 ReaderSupportRole.js。
@@ -122,21 +122,21 @@ JSON 文件应类似于以下示例：
                              "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx"] 
 } 
 ```
-9. 若要创建新的自定义角色，请使用 AzRoleDefinition 命令并指定 JSON 角色定义文件。 
+9. 若要创建新的自定义角色，请使用 New-AzRoleDefinition 命令，并指定 JSON 角色定义文件。 
 
    `New-AzRoleDefinition -InputFile "C:\CustomRoles\RuleCollectionGroupRole.json`
 
 ### <a name="list-custom-roles"></a>列出自定义角色
 
-若要列出所有自定义角色，可以使用 AzRoleDefinition 命令：
+若要列出所有自定义角色，可以使用 Get-AzRoleDefinition 命令：
 
    `Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom`
 
 你还可以在 Azure 门户中查看自定义角色。 请访问订阅，选择 " **访问控制 (IAM) **，" **角色**"。
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="团队和要求":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy 读取权限":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="团队和要求":::
 
 有关详细信息，请参阅 [教程：使用 Azure PowerShell 创建 Azure 自定义角色](../role-based-access-control/tutorial-custom-role-powershell.md)。
 

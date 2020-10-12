@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337137"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
@@ -58,7 +58,7 @@ IoT Central 为 IoT Edge 设备启用以下功能：
   - 不存储在 IoT Edge 设备上的云属性。
   - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
 
-  有关详细信息，请参阅 "[将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序" 一](./concepts-iot-edge.md)文。
+  有关详细信息，请参阅 " [将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序" 一](./concepts-iot-edge.md) 文。
 
 - 使用 Azure IoT 设备预配服务大规模预配 Azure IoT Edge 设备的功能
 - 规则和操作。
@@ -152,7 +152,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-管理员可以使用预定义角色之一或通过创建自定义角色来定义 Azure IoT Central 应用程序的[访问规则](howto-manage-users-roles.md)。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
+管理员可以使用预定义角色之一或通过创建自定义角色来定义 Azure IoT Central 应用程序的 [访问规则](howto-manage-users-roles.md) 。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
 
 ## <a name="security"></a>安全性
 

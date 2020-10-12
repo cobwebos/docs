@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Technical Support'
 ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327678"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
@@ -194,7 +194,7 @@ IoT 中心页上提供两个[快速入门示例](/azure/iot-hub)。 这些示例
 
 4. 服务本地代理侦听指定端口，该端口等待来自用户的新 SSH 连接（示例中使用端口 2222，但可以将该端口配置为任何其他的可用端口）。 用户将 SSH 客户端指向 localhost 上的服务本地代理端口。
 
-### <a name="notes"></a>说明
+### <a name="notes"></a>注意
 
 * 上述步骤完成了 SSH 客户端（右侧）与 SSH 守护程序（左侧）之间的端到端隧道连接。 此端到端连接的一部分涉及通过设备流将流量发送到 IoT 中心。
 

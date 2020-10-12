@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870708"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
@@ -31,7 +31,7 @@ ms.locfileid: "88870708"
 
 [语音转文本](speech-to-text.md)（也称为“语音识别”**）可将音频流听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 使用[语音翻译](speech-translation.md)通过单个调用将语音输入翻译为另一种语言。 有关详细信息，请参阅[语音转文本基础知识](speech-to-text-basics.md)。
 
-**语音识别 (SR) 、短语列表、意向、翻译和本地容器** 在以下平台上可用：
+可在以下平台上使用语音识别 (SR)、短语列表、意向、翻译和本地容器：
 
   - C++/Windows 和 Linux 和 macOS
   - C#（Framework 和 .NET Core）/Windows 和 UWP 和 Unity 和 Xamarin 和 Linux 和 macOS
@@ -40,13 +40,13 @@ ms.locfileid: "88870708"
   - Python
   - Swift
   - Objective-C  
-  - 仅 (SR) 
+  - Go（仅 SR）
 
 ### <a name="text-to-speech"></a>文本转语音
 
 [文本转语音](text-to-speech.md)（也称为“语音合成”**）将文本转换为类似人类语言的合成语音。 输入文本是字符串文字或使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 有关标准语音或神经语音的详细信息，请参阅[文本转语音语言和语音支持](language-support.md#text-to-speech)。
 
-可在以下平台上使用**文本到语音 (TTS) ** ：
+可在以下平台上使用文本转语音 (TTS)：
 
   - C++/Windows 和 Linux
   - C#/Windows 和 UWP 和 Unity
@@ -115,7 +115,7 @@ ms.locfileid: "88870708"
 
 一些语音 SDK 编程语言支持编解码器压缩的音频输入流。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用压缩的音频输入格式 <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
-**编解码器压缩的音频输入** 在以下平台上提供：
+可在以下平台上使用编解码器压缩的音频输入：
 
   - C++/Linux
   - C#/Linux

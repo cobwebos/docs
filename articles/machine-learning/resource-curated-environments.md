@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: reference
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662078"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure 机器学习的特选环境
@@ -22,7 +22,7 @@ ms.locfileid: "89662078"
 本文列出了 Azure 机器学习中的特选环境，以及其中预装的包和通道。 特选环境由 Azure 机器学习提供，且默认可用于你的工作区。 它们由缓存的 Docker 映像提供支持，降低了运行准备成本，缩短了部署时间。 使用这些环境可以快速完成各种机器学习框架的入门。
 
 > [!NOTE]
-> 此列表将于2020年9月更新。 请使用 Python SDK 获取最新列表。 有关详细信息，请参阅[环境](./how-to-use-environments.md#use-a-curated-environment)一文。
+> 此列表于 2020 年 9 月进行了更新。 请使用 Python SDK 获取最新列表。 有关详细信息，请参阅[环境](./how-to-use-environments.md#use-a-curated-environment)一文。
 
 ## <a name="azureml-automl"></a>AzureML-AutoML
 
@@ -37,10 +37,10 @@ ms.locfileid: "89662078"
 * Python
 * numpy
 * scikit-learn
-* Pandas
+* pandas
 * py-xgboost
 * fbprophet
-* 节日
+* holidays
 * setuptools-git
 * psutil
 
@@ -59,7 +59,7 @@ ms.locfileid: "89662078"
 * inference-schema
 * py-cpuinfo
 
-## <a name="azureml-automl-dnn"></a>AutoML-DNN
+## <a name="azureml-automl-dnn"></a>AzureML-AutoML-DNN
 
 **包通道：**
 
@@ -72,10 +72,10 @@ ms.locfileid: "89662078"
 * Python
 * numpy
 * scikit-learn
-* Pandas
+* pandas
 * py-xgboost
 * fbprophet
-* 节日
+* holidays
 * setuptools-git
 * pytorch
 * cudatoolkit
@@ -94,7 +94,7 @@ ms.locfileid: "89662078"
 * azureml-train-automl-client
 * azureml-train-automl-runtime
 * inference-schema
-* pytorch-转换器
+* pytorch-transformers
 * spacy
 * en_core_web_sm
 * py-cpuinfo
@@ -112,9 +112,9 @@ ms.locfileid: "89662078"
 * Python
 * numpy
 * scikit-learn
-* Pandas
+* pandas
 * fbprophet
-* 节日
+* holidays
 * setuptools-git
 * pytorch
 * cudatoolkit
@@ -134,12 +134,12 @@ ms.locfileid: "89662078"
 * azureml-train-automl-runtime
 * inference-schema
 * horovod
-* pytorch-转换器
+* pytorch-transformers
 * spacy
 * en_core_web_sm
 * py-cpuinfo
 
-## <a name="azureml-automl-dnn-vision-gpu"></a>AutoML-DNN-GPU
+## <a name="azureml-automl-dnn-vision-gpu"></a>AzureML-AutoML-DNN-Vision-GPU
 
 **Conda 包：**
 
@@ -148,7 +148,7 @@ ms.locfileid: "89662078"
 **Pip 包：**
 
 * azureml-core
-* azureml-dataset-运行时
+* azureml-dataset-runtime
 * azureml-contrib-dataset
 * azureml-telemetry
 * azureml-automl-core
@@ -161,7 +161,7 @@ ms.locfileid: "89662078"
 * azureml-train-automl
 * azureml-contrib-automl-dnn-vision
 
-## <a name="azureml-automl-gpu"></a>AutoML-GPU
+## <a name="azureml-automl-gpu"></a>AzureML-AutoML-GPU
 
 **包通道：**
 
@@ -174,9 +174,9 @@ ms.locfileid: "89662078"
 * Python
 * numpy
 * scikit-learn
-* Pandas
+* pandas
 * fbprophet
-* 节日
+* holidays
 * setuptools-git
 * psutil
 
@@ -195,7 +195,7 @@ ms.locfileid: "89662078"
 * inference-schema
 * py-cpuinfo
 
-## <a name="azureml-chainer-510-cpu"></a>Chainer-5.1.0-CPU
+## <a name="azureml-chainer-510-cpu"></a>AzureML-Chainer-5.1.0-CPU
 
 **包通道：**
 
@@ -210,7 +210,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * chainer
 * mpi4py
@@ -230,13 +230,13 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * chainer
 * cupy-cuda90
 * mpi4py
 
-## <a name="azureml-dask-cpu"></a>Dask-CPU
+## <a name="azureml-dask-cpu"></a>AzureML-Dask-CPU
 
 **包通道：**
 
@@ -252,7 +252,7 @@ ms.locfileid: "89662078"
 
 * adlfs
 * azureml-core
-* azureml-dataset-运行时
+* azureml-dataset-runtime
 * dask[complete]
 * dask-ml[complete]
 * 分布式
@@ -265,7 +265,7 @@ ms.locfileid: "89662078"
 * 笔记本
 * pyarrow
 
-## <a name="azureml-dask-gpu"></a>Dask-GPU
+## <a name="azureml-dask-gpu"></a>AzureML-Dask-GPU
 
 **包通道：**
 
@@ -293,7 +293,7 @@ ms.locfileid: "89662078"
 * 笔记本
 * pyarrow
 
-## <a name="azureml-hyperdrive-forecastdnn"></a>Hyperdrive-ForecastDNN
+## <a name="azureml-hyperdrive-forecastdnn"></a>AzureML-Hyperdrive-ForecastDNN
 
 **Conda 包：**
 
@@ -311,7 +311,7 @@ ms.locfileid: "89662078"
 * azureml-train-automl-runtime
 * azureml-contrib-automl-dnn-forecasting
 
-## <a name="azureml-minimal"></a>AzureML-最小
+## <a name="azureml-minimal"></a>AzureML-Minimal
 
 **包通道：**
 
@@ -341,7 +341,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 
 ## <a name="azureml-pytorch-10-cpu"></a>AzureML-PyTorch-1.0-CPU
@@ -359,11 +359,11 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 
 ## <a name="azureml-pytorch-10-gpu"></a>AzureML-PyTorch-1.0-GPU
@@ -381,11 +381,11 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 
 ## <a name="azureml-pytorch-11-cpu"></a>AzureML-PyTorch-1.1-CPU
@@ -403,14 +403,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-11-gpu"></a>AzureML-PyTorch-1.1-GPU
 
@@ -427,14 +427,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-12-cpu"></a>AzureML-PyTorch-1.2-CPU
 
@@ -451,14 +451,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-12-gpu"></a>AzureML-PyTorch-1.2-GPU
 
@@ -475,14 +475,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-13-cpu"></a>AzureML-PyTorch-1.3-CPU
 
@@ -499,14 +499,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-13-gpu"></a>AzureML-PyTorch-1.3-GPU
 
@@ -523,14 +523,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-14-cpu"></a>AzureML-PyTorch-1.4-CPU
 
@@ -547,14 +547,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-14-gpu"></a>AzureML-PyTorch-1.4-GPU
 
@@ -571,14 +571,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-15-cpu"></a>AzureML-PyTorch-1.5-CPU
 
@@ -595,14 +595,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-15-gpu"></a>AzureML-PyTorch-1.5-GPU
 
@@ -619,14 +619,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-16-cpu"></a>AzureML-PyTorch-1.6-CPU
 
@@ -643,14 +643,14 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
 ## <a name="azureml-pytorch-16-gpu"></a>AzureML-PyTorch-1.6-GPU
 
@@ -667,16 +667,16 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * torch
 * torchvision
-* 配合
+* mkl
 * horovod
 * tensorboard
-* 此后
+* future
 
-## <a name="azureml-scikit-learn-0203"></a>Scikit-learn-0.20。3
+## <a name="azureml-scikit-learn-0203"></a>AzureML-Scikit-learn-0.20.3
 
 **包通道：**
 
@@ -691,7 +691,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * scikit-learn
 * scipy
@@ -712,7 +712,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow
 * horovod
@@ -732,7 +732,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow-gpu
 * horovod
@@ -752,7 +752,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow
 * horovod
@@ -772,7 +772,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow-gpu
 * horovod
@@ -792,7 +792,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow
 * horovod
@@ -812,7 +812,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow-gpu
 * horovod
@@ -832,7 +832,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow
 * horovod
@@ -852,7 +852,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow-gpu
 * horovod
@@ -872,7 +872,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow
 * horovod
@@ -892,7 +892,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow-gpu
 * horovod
@@ -912,7 +912,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow
 * horovod
@@ -932,12 +932,12 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * tensorflow-gpu
 * horovod
 
-## <a name="azureml-tutorial"></a>AzureML-教程
+## <a name="azureml-tutorial"></a>AzureML-Tutorial
 
 **包通道：**
 
@@ -958,7 +958,7 @@ ms.locfileid: "89662078"
 * azureml-core
 * azureml-defaults
 * azureml-telemetry
-* azureml-restclients-hyperdrive
+* azureml-train-restclients-hyperdrive
 * azureml-train-core
 * azureml-widgets
 * azureml-pipeline-core
@@ -969,7 +969,7 @@ ms.locfileid: "89662078"
 * azureml-train-automl-client
 * azureml-train-automl-runtime
 * azureml-train-automl
-* azureml-定型
+* azureml-train
 * azureml-sdk
 * azureml-interpret
 * azureml-tensorboard
@@ -977,7 +977,7 @@ ms.locfileid: "89662078"
 * mlflow
 * sklearn-pandas
 
-## <a name="azureml-vowpalwabbit-880"></a>VowpalWabbit-8.8。0
+## <a name="azureml-vowpalwabbit-880"></a>AzureML-VowpalWabbit-8.8.0
 
 **包通道：**
 
@@ -991,4 +991,4 @@ ms.locfileid: "89662078"
 
 * azureml-core
 * azureml-defaults
-* azureml-dataset-运行时 [保险丝，pandas]
+* azureml-dataset-runtime[fuse,pandas]

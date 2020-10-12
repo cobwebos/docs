@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89670333"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>在 PowerShell 中跨区域移动资源
@@ -19,11 +19,11 @@ ms.locfileid: "89670333"
 了解如何使用 Azure 资源移动器中的 PowerShell 将 Azure 资源移到另一个区域。 
 
 > [!NOTE]
-> Azure 资源移动器当前为预览版。
+> Azure 资源转移器目前提供预览版。
 
 
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 - 你的 Azure 订阅应有权访问资源移动器，你应具有订阅的 [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) 或 [用户访问管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) 权限。
 - 资源移动器并不跟踪更改和升级，因此在开始移动它们之前，对资源进行任何所需的更改。
@@ -49,7 +49,7 @@ ms.locfileid: "89670333"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到你的 Azure 订阅。
+登录到 Azure 订阅。
 
 ```azurepowershell-interactive
 # Sign in to an Azure subscription
@@ -344,10 +344,10 @@ Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGr
 
 ## <a name="discard-or-commit-the-move"></a>放弃或提交移动
 
-初始移动后，您可以决定是要提交移动还是放弃移动。 
+初始移动后，你可以决定是提交移动，还是放弃它。 
 
-- **丢弃**：如果正在测试，你可能会放弃移动，并且不希望实际移动源资源。 如果放弃移动，则会将资源返回到 *启动移动挂起*状态。 如果需要，你可以重新启动移动。
-- **Commit**： commit 完成移动到目标区域。 提交后，源资源将处于 " *删除源挂起*" 状态，你可以决定是否要将其删除。
+- **放弃**：如果要测试，并且不想实际移动源资源，则可能需要放弃移动。 放弃移动会将资源返回到“启动移动挂起”状态。 如果需要，你可以重新启动移动。
+- **提交**：提交即完成移动到目标区域的操作。 提交后，源资源将处于“删除源挂起”状态，你可以决定是否要删除它。
 
 ### <a name="discard"></a>弃用
 

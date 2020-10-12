@@ -7,17 +7,17 @@ ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255292"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
 在创建 AKS 群集的过程中，你可能需要自定义群集配置来满足你的需求。 本文介绍了几个用于自定义 AKS 群集的选项。
 
-## <a name="os-configuration"></a>操作系统配置
+## <a name="os-configuration"></a>OS 配置
 
 AKS 现在支持 Ubuntu 18.04 作为节点操作系统 (操作系统) 在 kubernetes 版本高于1.18.8 中的群集。 对于小于 1.18. x 的版本，AKS Ubuntu 16.04 仍是默认的基本映像。 从 kubernetes v 1.18. x 开始，默认基是 AKS Ubuntu 18.04。
 
@@ -211,7 +211,7 @@ az provider register --namespace Microsoft.ContainerService
 az extension add --name aks-preview
 ```
 
-若要更新 aks CLI 扩展，请使用以下 Azure CLI 命令：
+若要更新 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
 
 ```azurecli
 az extension update --name aks-preview
@@ -270,7 +270,7 @@ az provider register --namespace Microsoft.ContainerService
 az extension add --name aks-preview
 ```
 
-若要更新 aks CLI 扩展，请使用以下 Azure CLI 命令：
+若要更新 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
 
 ```azurecli
 az extension update --name aks-preview

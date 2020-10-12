@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: dc8b5e75b4feed886f843e7a516cc18429afec11
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728482"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893350"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub 操作将自定义容器部署到应用服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "91728482"
 |**生成** | 1. 创建环境。 <br /> 2. 构建容器映像。 |
 |**部署** | 1. 部署容器映像。 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  
@@ -138,10 +138,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 下面的示例演示生成 Node.JS Docker 映像的工作流的一部分。 使用 [Docker 登录名](https://github.com/azure/docker-login) 登录到专用容器注册表。 此示例使用 Azure 容器注册表，但相同的操作适用于其他注册表。 
 
-# <a name="publish-profile"></a>[发布配置文件](#tab/publish-profile)
-
-此示例演示如何使用发布配置文件进行身份验证，以生成 Node.JS Docker 映像。
-
 
 ```yaml
 name: Linux Container Node Workflow
@@ -191,41 +187,6 @@ jobs:
         docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
-# <a name="service-principal"></a>[服务主体](#tab/service-principal)
-
-此示例演示如何使用服务主体生成用于身份验证的 Node.JS Docker 映像。 
-
-```yaml
-on: [push]
-
-name: Linux_Container_Node_Workflow
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}   
-    - uses: azure/docker-login@v1
-      with:
-        login-server: mycontainer.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}  
-    - run: |
-        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}      
-    - name: Azure logout
-      run: |
-        az logout
-```
-
----
 
 ## <a name="deploy-to-an-app-service-container"></a>部署到应用服务容器
 
@@ -237,7 +198,7 @@ jobs:
 | **publish-profile** | （可选）具有 Web 部署机密的发布配置文件内容 |
 | **images** | 完全限定的容器映像 () 名称。 例如，"myregistry.azurecr.io/nginx:latest" 或 "python： 3.7.2-alpine/"。 对于多容器方案，可以 (多行分隔) 提供多个容器映像名称 |
 | **slot-name** | （可选）输入生产槽以外的现有槽 |
-| **配置-文件** | Docker 合成文件 (可选) 路径 |
+| **配置-文件** | Docker-Compose 文件 (可选) 路径 |
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/publish-profile)
 

@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Az
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890342"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
@@ -67,7 +67,7 @@ ms.locfileid: "88890342"
 
 1. 右侧会打开 " **选择文件共享** " 上下文窗格。 Azure 将在存储帐户中搜索可备份的文件共享。 如果你最近添加了文件共享，但在列表中看不到它们，则留出一些时间让文件共享出现。
 
-1. 从 " **选择文件共享** " 列表中，选择要备份的一个或多个文件共享。 选择“确定”。
+1. 从 " **选择文件共享** " 列表中，选择要备份的一个或多个文件共享。 选择“确定”  。
 
    ![选择文件共享](./media/backup-afs/select-file-shares.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "88890342"
 
 1. 选择 " **启用备份** " 以开始保护文件共享。
 
-   ![选择 "启用备份"](./media/backup-afs/select-enable-backup.png)
+   ![选择“启用备份”](./media/backup-afs/select-enable-backup.png)
 
 1. 可以跟踪门户通知中的配置进度，或监视用于保护文件共享的保管库下的备份作业。
 
@@ -206,12 +206,12 @@ ms.locfileid: "88890342"
 
    ![保留备份日期](./media/backup-afs/retain-backup-date.png)
 
-1. 选择“确定”以确认。
+1. 选择“确定”  以确认。
 
 >[!NOTE]
 >为相应帐户中的任何文件共享配置保护时，Azure 备份会锁定存储帐户。 这样可以防止意外删除包含备份文件共享的存储帐户。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 * 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
 

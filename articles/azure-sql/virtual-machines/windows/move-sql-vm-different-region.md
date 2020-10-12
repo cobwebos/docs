@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298569"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 将 SQL Server VM 移到 Azure 中的另一个区域
@@ -73,7 +73,7 @@ ms.locfileid: "91298569"
 
 以下步骤演示如何使用 Azure Site Recovery 将数据复制到目标区域。 在源区域以外的任何区域中创建恢复服务保管库。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 从导航窗格的左上角选择“创建资源”。 
 1. 选择“IT 和管理工具”，然后选择“备份和 Site Recovery” 。 
 1. 在“基本”选项卡上的“项目详细信息”下，在目标区域中创建新的资源组或在目标区域中选择现有的资源组 。 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建具有多个 Nic 的 Linux VM
+title: 在 Azure 中创建具有多个 NIC 的 Linux VM
 description: 了解如何使用 Azure CLI 或 Resource Manager 模板创建附有多个 NIC 的 Linux VM。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836915"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
@@ -169,7 +169,7 @@ Azure 资源管理器模板使用声明性 JSON 文件来定义环境。 可以�
 
 阅读有关[使用 *copy* 创建多个实例](../../azure-resource-manager/templates/copy-resources.md)的详细信息。 
 
-你还可以使用 `copyIndex()` 来向资源名称追加一个数字，从而允许你创建 `myNic1` 、等 `myNic2` 。下面显示了追加索引值的示例：
+也可以使用 `copyIndex()` 并在资源名称中追加一个数字，来创建 `myNic1`、`myNic2`，等等。下面显示了追加索引值的示例：
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 

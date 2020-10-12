@@ -4,10 +4,10 @@ description: 了解如何删除已委派给 Azure Lighthouse 服务提供商的�
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167214"
 ---
 # <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限

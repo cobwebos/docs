@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行基于代理的 VMware VM �
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296138"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -251,19 +251,19 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
 
 1. 在 Azure Migrate 项目中选择“服务器”>“Azure Migrate: 服务器迁移”，然后单击“复制”。
 
-    ![复制 VM](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Azure Migrate 中“服务器”屏幕的屏幕截图。 在“Azure Migrate:服务器迁移”的“迁移工具”下选择了“复制”按钮。](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
-2. 在“复制”>“源设置” > “你的计算机是否已虚拟化”中，选择“是，使用 VMware vSphere”。
+2. 在“复制”>“源设置” > “你的计算机是否已虚拟化”中，选择“是，使用 VMware vSphere”。   
 3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称。
 4. 在“vCenter 服务器”中，指定用于管理 VM 的 vCenter 服务器的名称，或者 VM 所在的 vSphere 服务器的名称。
 5. 在“进程服务器”中，选择复制设备的名称。
 6. 在“来宾凭据”中，指定用于推送安装移动服务的 VM 管理员帐户。 然后单击“下一页:虚拟机”。
 
-    ![复制 VM](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![“复制”屏幕中“源设置”选项卡的屏幕截图。 “来宾凭据”字段突出显示，值设置为“VM-admin-account”。](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. 在“虚拟机”中，选择要复制的计算机。
 
-    - 如果已针对 VM 运行评估，则可以应用评估结果中提供的 VM 大小和磁盘类型（高级/标准）建议。 为此，请在“从 Azure Migrate 评估导入迁移设置?”中选择“是”选项。
+    - 如果已针对 VM 运行评估，则可以应用评估结果中提供的 VM 大小和磁盘类型（高级/标准）建议。 为此，请在“从 Azure Migrate 评估导入迁移设置?”中选择“是”选项。 
     - 如果你未运行评估，或者不想要使用评估设置，请选择“否”选项。
     - 如果你已选择使用评估，请选择 VM 组和评估名称。
 8. 在“可用性选项”中，选择：
@@ -290,7 +290,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - **可用性区域**：指定要使用的可用性区域。
     - **可用性集**：指定要使用的可用性集。
 
-15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”  。
+15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 

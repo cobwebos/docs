@@ -14,10 +14,10 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166427"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
@@ -34,10 +34,10 @@ ms.locfileid: "88166427"
 Azure AD B2C 的颁发机构格式是：`https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`
 
 - `azureADB2CHostname` - Azure AD B2C 租户的名称加主机。 例如， *contosob2c.b2clogin.com*。
-- `tenant` - Azure AD B2C 租户的域名或目录（租户）ID。 例如， *contosob2c.onmicrosoft.com*或 GUID。
+- `tenant` - Azure AD B2C 租户的域名或目录（租户）ID。 例如， *contosob2c.onmicrosoft.com* 或 GUID。
 - `policyName` - 要应用的用户流或自定义策略的名称。 例如，b2c_1_susi 这样的注册/登录策略。
 
-有关 Azure AD B2C 机构的详细信息，请参阅[将重定向 Url 设置为 b2clogin.com](../../active-directory-b2c/b2clogin.md)。
+有关 Azure AD B2C 机构的详细信息，请参阅 [将重定向 Url 设置为 b2clogin.com](../../active-directory-b2c/b2clogin.md)。
 
 ## <a name="instantiating-the-application"></a>实例化应用程序
 
@@ -157,9 +157,9 @@ ROPC 流仅适用于本地帐户，在本地帐户中用户已使用电子邮件
 
 ## <a name="google-auth-and-embedded-webview"></a>Google 身份验证和嵌入式 web 视图
 
-如果你使用 Google 作为标识提供者，则建议你使用系统浏览器，因为 Google 不允许[从 embedded webview 进行身份验证](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 目前， `login.microsoftonline.com` 是使用 Google 的受信任的颁发机构，适用于嵌入的 web 视图。 但是，不是 `b2clogin.com` Google 的受信任的颁发机构，因此用户将无法进行身份验证。
+如果你使用 Google 作为标识提供者，则建议你使用系统浏览器，因为 Google 不允许 [从 embedded webview 进行身份验证](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 目前， `login.microsoftonline.com` 是使用 Google 的受信任的颁发机构，适用于嵌入的 web 视图。 但是，不是 `b2clogin.com` Google 的受信任的颁发机构，因此用户将无法进行身份验证。
 
-如果发生更改，我们将提供对此[问题](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688)的更新。
+如果发生更改，我们将提供对此 [问题](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) 的更新。
 
 ## <a name="token-caching-in-msalnet"></a>MSAL.NET 中的令牌缓存
 
@@ -182,7 +182,7 @@ Azure AD B2C 方案中可能缺少这两个声明，因为并非所有社交标�
 
 建议的解决方法是使用之前介绍的[按策略缓存](#acquire-a-token-to-apply-a-policy)。
 
-或者， `tid` 如果使用的是 Azure AD B2C 中的[自定义策略](../../active-directory-b2c/custom-policy-get-started.md)，则可以使用声明。 自定义策略可以使用[声明转换](../../active-directory-b2c/claims-transformation-technical-profile.md)将其他声明返回到应用程序。
+或者， `tid` 如果使用的是 Azure AD B2C 中的 [自定义策略](../../active-directory-b2c/custom-policy-get-started.md) ，则可以使用声明。 自定义策略可以使用 [声明转换](../../active-directory-b2c/claims-transformation-technical-profile.md)将其他声明返回到应用程序。
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>“在令牌响应中缺失”的缓解措施
 

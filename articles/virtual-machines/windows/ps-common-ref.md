@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure 虚拟机的常见 PowerShell 命令
+title: 适用于 Azure 虚拟机的常用 PowerShell 命令
 description: 帮助你开始在 Azure 中创建和管理 VM 的常用 PowerShell 命令。
 author: cynthn
 ms.service: virtual-machines
@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 6f7f2adb5c3e154c3910ee1082e9afad70de9758
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836167"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>用于创建和管理 Azure 虚拟机的常用 PowerShell 命令

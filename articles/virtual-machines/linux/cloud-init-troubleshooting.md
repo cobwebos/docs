@@ -9,10 +9,10 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434633"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>对使用 cloud-init 的 VM 预配进行故障排除
@@ -21,19 +21,19 @@ ms.locfileid: "89434633"
 
 预配问题的一些示例：
 - VM 停滞在“正在创建”状态达 40 分钟，并且 VM 创建操作被标记为失败
-- `CustomData` 不处理
+- `CustomData` 未得到处理
 - 临时磁盘装载失败
 - 未创建用户，或存在用户访问问题
 - 未正确设置网络
 - 交换文件或分区故障
 
-本文逐步讲解如何对 cloud-init 进行故障排除。 有关更深入的详细信息，请参阅 [云初始化深入探讨](./cloud-init-deep-dive.md)。
+本文逐步讲解如何对 cloud-init 进行故障排除。 如需更深入的详细信息，请参阅[深入探讨 cloud-init](./cloud-init-deep-dive.md)。
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>步骤1：测试部署，无需 `customData`
+## <a name="step-1-test-the-deployment-without-customdata"></a>步骤 1：在不使用 `customData` 的情况下测试部署
 
-`customData`创建 VM 时，可以接受将其传递给它的云初始化。 首先，你应确保这不会导致任何部署问题。 尽量在不传入任何配置的情况下预配 VM。 如果你发现 VM 无法预配，请继续执行下面的步骤；如果发现未应用你传递的配置，请转到[步骤 4]()。 
+在创建 VM 时，Cloud-init 可以接受传递给它的 `customData`。 首先，你应确保这不会导致任何部署问题。 尽量在不传入任何配置的情况下预配 VM。 如果你发现 VM 无法预配，请继续执行下面的步骤；如果发现未应用你传递的配置，请转到[步骤 4]()。 
 
-## <a name="step-2-review-image-requirements"></a>步骤2：查看映像要求
+## <a name="step-2-review-image-requirements"></a>步骤 2：查看映像要求
 VM 预配失败的主要原因是 OS 映像不满足在 Azure 上运行的先决条件。 尝试在 Azure 中预配映像之前，请确保已正确准备好映像。 
 
 
@@ -60,7 +60,7 @@ VM 预配失败的主要原因是 OS 映像不满足在 Azure 上运行的先决
 
 - 在创建 VM 之前[启用启动诊断](./tutorial-monitor.md#enable-boot-diagnostics)，然后在启动过程中[查看](./tutorial-monitor.md#view-boot-diagnostics)它们。
 
-- [运行 AZ VM Repair](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) 附加并装载 OS 磁盘，这将允许你收集以下日志：
+- [运行 AZ VM Repair](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) 来附加和装载 OS 磁盘，这将允许你收集以下日志：
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*

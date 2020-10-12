@@ -1,6 +1,6 @@
 ---
 title: 使用云组来管理 Azure Active Directory 中的角色分配 | Microsoft Docs
-description: 预览用于委托标识管理的自定义 Azure AD 角色。 管理 Azure 门户、PowerShell 或图形 API 中的 Azure 角色分配。
+description: 预览用于委托标识管理的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色分配。
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6c39fd6ceb9e5623d2b857ce8196ef29e73d78a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542302"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory（预览版）中的角色分配
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 即将引入公共预览，可在其中向 Azu
 
 ## <a name="how-this-feature-works"></a>该功能的工作原理
 
-创建新的 Microsoft 365 或安全组，将 "isAssignableToRole" 属性设置为 "true"。 还可以通过启用“Azure AD 角色可以分配到组”，在 Azure 门户中创建组时启用此属性。 无论采用哪种方式，你都可以将组分配给一个或多个 Azure AD 角色，方法与为用户分配角色的方式相同。 在单个 Azure AD 组织（租户）中最多可以创建 200 个可分配角色的组。
+创建新的 Microsoft 365 或安全组，并将“isAssignableToRole”属性设置为“true”。 还可以通过启用“Azure AD 角色可以分配到组”，在 Azure 门户中创建组时启用此属性。 无论采用哪种方式，你都可以将组分配给一个或多个 Azure AD 角色，方法与为用户分配角色的方式相同。 在单个 Azure AD 组织（租户）中最多可以创建 200 个可分配角色的组。
 
 如果不希望组成员具有对角色的现有访问权限，则可以使用 Azure AD Privileged Identity Management。 将组分配为 Azure AD 角色的符合条件的成员。 然后，该组中的每个成员都有资格为分配给该组的角色激活其分配。 然后，他们可以在固定的时间内激活角色分配。
 
