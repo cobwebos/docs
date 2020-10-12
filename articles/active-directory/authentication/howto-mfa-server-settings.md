@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84485490"
 ---
 # <a name="configure-mfa-server-settings"></a>配置 MFA 服务器设置
@@ -68,4 +68,4 @@ ms.locfileid: "84485490"
 
 ## <a name="next-steps"></a>后续步骤
 
-其他 MFA 服务器配置选项可从 MFA 服务器自身的 web 控制台获得。 你还可以[配置 AZURE MFA 服务器以实现高可用性](howto-mfaserver-deploy-ha.md)。
+其他 MFA 服务器配置选项可从 MFA 服务器自身的 web 控制台获得。 你还可以 [配置 AZURE MFA 服务器以实现高可用性](howto-mfaserver-deploy-ha.md)。

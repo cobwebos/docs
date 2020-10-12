@@ -17,10 +17,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: faf9acc6e91b43e2dd82589127f8697c666d86e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250517"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点
@@ -53,7 +53,7 @@ ms.locfileid: "91250517"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 ## <a name="add-code-that-manages-streaming-endpoints"></a>添加管理流式处理终结点的代码
     

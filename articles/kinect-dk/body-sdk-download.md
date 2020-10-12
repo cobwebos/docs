@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
 ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79117210"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK

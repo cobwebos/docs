@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090119"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
 当服务器处于暂存模式时，可以在激活服务器之前更改配置并预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
 
-## <a name="staging-mode"></a>暂存模式
+## <a name="staging-mode"></a>过渡模式
 暂存模式可以用于许多方案，包括：
 
 * 高可用性。
@@ -60,7 +60,7 @@ ms.locfileid: "90090119"
    ![屏幕截图显示 "Azure AD Connect" 对话框中的 "已准备好配置" 页。](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. 注销/登录并从“开始”菜单选择“同步服务”。 
 
-#### <a name="configuration"></a>配置
+#### <a name="configuration"></a>Configuration
 如果对主服务器进行了自定义更改并希望比较配置和临时服务器，则使用 [Azure AD Connect 配置文档管理器](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
 #### <a name="import-and-synchronize"></a>导入和同步

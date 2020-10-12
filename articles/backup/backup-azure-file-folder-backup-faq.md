@@ -4,10 +4,10 @@ description: 解决与使用 Azure 备份对文件和文件夹进行备份相关
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182507"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务 (MARS) 代理
@@ -22,7 +22,7 @@ ms.locfileid: "89182507"
 
 ### <a name="where-can-i-download-the-vault-credentials-file"></a>在哪里可以下载保管库凭据文件？
 
-在 Azure 门户中，导航到保管库的 " **属性** "。 在 " **备份凭据**" 下，选中 " **已使用最新的恢复服务代理**" 复选框。 选择“下载”。
+在 Azure 门户中，导航到保管库的 " **属性** "。 在 " **备份凭据**" 下，选中 " **已使用最新的恢复服务代理**" 复选框。 选择“下载”  。
 
 ![下载凭据](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 

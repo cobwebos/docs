@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Data Box/Azure Data Box Heavy 将数据发送到 "热"、"冷"、"存档" blob 层
+title: 通过 Azure Data Box/Azure Data Box Heavy 将数据发送到热、冷、存档 blob 层
 description: 介绍如何使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的块 Blob 存储层（如热、冷或存档存储层）
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84608700"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的 Azure 存储 Blob 层
@@ -47,8 +47,8 @@ Data Box 或 Data Box Heavy 中的数据会上传到与存储帐户关联的存�
 
 Data Box 设备中的数据上传到默认层后，可能需要将数据移到非默认层。 可通过两种方法将数据移动到非默认层。
 
-- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期  。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)。
-- 脚本 - 可以通过 Azure PowerShell 使用脚本的方法来启用 Blob 级别分层  。 可以调用 `SetBlobTier` 操作在 Blob 上设置层。
+- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)。
+- 脚本 - 可以通过 Azure PowerShell 使用脚本的方法来启用 Blob 级别分层。 可以调用 `SetBlobTier` 操作在 Blob 上设置层。
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>使用 Azure PowerShell 设置 Blob 层
 

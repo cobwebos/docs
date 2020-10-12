@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394085"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
@@ -22,7 +22,7 @@ ms.locfileid: "89394085"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -960,7 +960,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md)
 
-* [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+* [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 
 * [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
@@ -1031,7 +1031,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：使用备份和还原功能来计划应用的定期备份。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "备份和还原" 功能。
 
-还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用了许多 Azure 存储功能，以确保在发生硬件故障、服务中断或区域灾难时能够实现数据的可用性。 此外，Azure DevOps 团队按照过程来保护数据免遭意外或恶意删除。
+还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用许多 Azure 存储功能，确保在发生硬件失败、服务中断或区域灾难时保持数据可用性。 此外，Azure DevOps 团队按照标准程序来保护数据免遭意外或恶意删除。
 
 - [在 Azure 中备份应用](../app-service/manage-backup.md)
 
@@ -1049,7 +1049,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：使用备份和还原功能来计划应用的定期备份。 在高级计划中运行的函数应用与 Azure App Service 中的 web 应用具有相同的托管功能，其中包括 "备份和还原" 功能。 在 Azure 密钥保管库中备份客户托管的密钥。
 
-还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用了许多 Azure 存储功能，以确保在发生硬件故障、服务中断或区域灾难时能够实现数据的可用性。 此外，Azure DevOps 团队按照过程来保护数据免遭意外或恶意删除。
+还利用源代码管理解决方案（如 Azure Repos 和 Azure DevOps）来安全地存储和管理代码。 Azure DevOps Services 利用许多 Azure 存储功能，确保在发生硬件失败、服务中断或区域灾难时保持数据可用性。 此外，Azure DevOps 团队按照标准程序来保护数据免遭意外或恶意删除。
 
 - [在 Azure 中备份应用](../app-service/manage-backup.md)
 
@@ -1125,7 +1125,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 

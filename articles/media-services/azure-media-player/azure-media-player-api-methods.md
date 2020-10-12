@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81727263"
 ---
 # <a name="api"></a>API #
@@ -39,7 +39,7 @@ Azure Media Player 设置视频和 API 所花的时间取决于所使用的播�
     });
 ```
 
-或者
+OR
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){
@@ -49,7 +49,7 @@ Azure Media Player 设置视频和 API 所花的时间取决于所使用的播�
 
 ## <a name="api-methods"></a>API 方法 ##
 
-现在，你可以访问准备就绪的播放机，可以控制视频、获取值或响应视频事件。 Azure Media Player API 函数名称将尝试遵循[HTML5 媒体 API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)。 主要区别在于，getter/setter 函数用于视频属性。
+现在，你可以访问准备就绪的播放机，可以控制视频、获取值或响应视频事件。 Azure Media Player API 函数名称将尝试遵循 [HTML5 媒体 API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)。 主要区别在于，getter/setter 函数用于视频属性。
 
 ```javacript
     // setting a property on a bare HTML5 video element

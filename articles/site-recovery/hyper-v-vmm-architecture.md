@@ -1,5 +1,5 @@
 ---
-title: 体系结构-使用 Azure Site Recovery 的 Hyper-v 灾难恢复到辅助站点
+title: 使用 Azure Site Recovery 的到辅助站点的 Architecture-Hyper-V 灾难恢复
 description: 本文概述使用 Azure Site Recovery 将本地 Hyper-V VM 灾难恢复到辅助 System Center VMM 站点所用的体系结构。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495992"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
@@ -23,20 +23,20 @@ a
 
 下面的表和图提供了用于将 Hyper-V 复制到辅助站点的组件的概要视图。
 
-**组件** | **要求** | **详细信息**
+组件  | **要求** | **详细信息**
 --- | --- | ---
 **Azure** | Azure 订阅 | 在 Azure 订阅中创建恢复服务保管库，以便协调和管理不同 VMM 位置之间的复制。
 **VMM 服务器** | 需要 VMM 主位置和辅助位置。 | 我们建议在主站点和辅助站点中各提供一个 VMM 服务器。
-**Hyper-V Server** |  主要和辅助 VMM 云中需要一台或多台 Hyper-V 主机服务器。 | 使用 Kerberos 或证书身份验证通过 LAN 或 VPN 在主要和辅助 Hyper-V 主机服务器之间复制数据。  
+**Hyper-V 服务器** |  主要和辅助 VMM 云中需要一台或多台 Hyper-V 主机服务器。 | 使用 Kerberos 或证书身份验证通过 LAN 或 VPN 在主要和辅助 Hyper-V 主机服务器之间复制数据。  
 **Hyper-V VM** | 在 Hyper-V 主机服务器上。 | 源主机服务器应该至少有一个要复制的 VM。
 
 **本地到本地的体系结构**
 
-![显示本地到本地保护的关系图。](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![此图显示了本地到本地保护。](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>复制过程
 
-1. 触发初始复制时，会创建[HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))快照。
+1. 当触发初始复制时，系统会拍摄一个 [Hyper-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))。
 2. VM 上的虚拟硬盘会逐一复制到辅助位置。
 3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助位置。 当初始复制正在进行时，快照和日志将占用磁盘资源。
 4. 当初始复制完成时，将删除 VM 快照，并开始增量复制。

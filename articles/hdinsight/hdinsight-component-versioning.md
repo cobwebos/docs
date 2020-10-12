@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
 ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394323"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>适用于 Azure HDInsight 的 Apache 组件和版本
@@ -78,7 +78,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 | HDInsight 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | * 6 月30日，2021 |2021 年 6 月 30 日 |是 |是 |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | *2021 年 6 月 30 日 |2021 年 6 月 30 日 |是 |是 |
 
 *我们将延长对特定 HDInsight 3.6 群集类型的支持时间范围
 
@@ -102,7 +102,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 
 此表列出了无法在 Azure 门户中使用的 HDInsight 版本。
 
-| HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
+| HDInsight 版本 | HDP 版本 | VM OS | 发布日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 年 6 月 28 日 |是 |否 |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016 年 3 月 29 日 |2016 年 12 月 29 日 |2018 年 1 月 9 日 |是 |否 |

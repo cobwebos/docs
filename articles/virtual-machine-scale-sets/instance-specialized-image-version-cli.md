@@ -11,10 +11,10 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e58cef5ae1fc727235539a91e80e424e6ed3be34
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496366"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建规模集
@@ -54,7 +54,7 @@ az vmss create \
 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 映像生成器（预览版）](../virtual-machines/linux/image-builder-overview.md)可帮助自动创建映像版本，甚至还可以使用它来更新[现有映像版本并创建新的映像版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器 (预览版) ](../virtual-machines/linux/image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 

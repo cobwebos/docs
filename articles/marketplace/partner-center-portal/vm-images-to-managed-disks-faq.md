@@ -8,10 +8,10 @@ ms.date: 11/22/2019
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.openlocfilehash: 814a4012ace95e84e75bcb4071c549822b2b0633
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182422"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>正在将 Azure Marketplace 中的虚拟机 (VM) 映像移动到托管磁盘存储
@@ -38,11 +38,11 @@ VM 映像的用户将不会遇到中断。
 
 ### <a name="do-i-need-to-take-any-action"></a>是否需要执行任何操作？
 
-不能。 发布者或使用者不需要执行任何操作。
+不是。 发布者或使用者不需要执行任何操作。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>是否必须将系统更新为以不同方式调用云门户 Api，然后再将其移动到托管磁盘存储？
 
-不能。 你的现有 API 调用将继续工作。
+不是。 你的现有 API 调用将继续工作。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>是否所有 VM 映像都同时移动到托管磁盘？
 

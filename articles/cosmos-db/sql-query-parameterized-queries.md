@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496978"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的参数化查询
 
-Azure Cosmos DB 支持使用熟悉 @ 表示法表示的参数的查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。
+Azure Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。
 
 ## <a name="examples"></a>示例
 
@@ -27,7 +27,7 @@ Azure Cosmos DB 支持使用熟悉 @ 表示法表示的参数的查询。 参数
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-然后，你可以将此请求作为参数化 JSON 查询发送到 Azure Cosmos DB，如下所示：
+然后，可将此请求作为参数化 JSON 查询发送到 Azure Cosmos DB，如下所示：
 
 ```sql
     {
@@ -50,7 +50,7 @@ Azure Cosmos DB 支持使用熟悉 @ 表示法表示的参数的查询。 参数
     }
 ```
 
-参数值可以是任何有效的 JSON：字符串、数字、布尔值、null，甚至数组或嵌套的 JSON。 由于 Azure Cosmos DB 无架构，因此不会针对任何类型对参数进行验证。
+参数值可以是任何有效的 JSON：字符串、数字、布尔值、null，甚至数组或嵌套的 JSON。 由于 Azure Cosmos DB 是无架构的，因此不会针对任何类型验证参数。
 
 下面是每个 Azure Cosmos DB SDK 中参数化查询的示例：
 

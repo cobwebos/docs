@@ -4,10 +4,10 @@ description: 提供可以使用 Azure 实验室服务为其设置实验室的某
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001617"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
@@ -49,17 +49,17 @@ ms.locfileid: "87001617"
 ## <a name="big-data-analytics"></a>大数据分析
 可以设置 GPU 实验室来讲授大数据分析类。 使用此类类，学员可以了解如何处理大量数据，并应用计算机和统计学习算法来获取数据见解。 学生的主要目标是了解如何使用数据分析工具，例如 Apache Hadoop 的开源软件包，该软件包提供存储、管理和处理大数据的工具。 
 
-有关如何设置此类实验室的详细信息，请参阅[使用 HortonWorks 数据平台的 Docker 部署为大数据分析设置实验室](class-type-big-data-analytics.md)。
+有关如何设置此类实验室的详细信息，请参阅 [使用 HortonWorks 数据平台的 Docker 部署为大数据分析设置实验室](class-type-big-data-analytics.md)。
 
 ## <a name="matlab"></a>MATLAB
-[MATLAB](https://www.mathworks.com/products/matlab.html)（代表矩阵实验室）是[MathWorks](https://www.mathworks.com/)的编程平台。  它结合了计算能力和视觉对象，使其成为数学、工程、物理学和化学字段的常用工具。
+[MATLAB](https://www.mathworks.com/products/matlab.html)（代表矩阵实验室）是 [MathWorks](https://www.mathworks.com/)的编程平台。  它结合了计算能力和视觉对象，使其成为数学、工程、物理学和化学字段的常用工具。
 
-有关如何设置此类型的实验室的详细信息，请参阅[设置实验室来讲授 MATLAB](class-type-matlab.md)。
+有关如何设置此类型的实验室的详细信息，请参阅 [设置实验室来讲授 MATLAB](class-type-matlab.md)。
 
 ## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks 计算机辅助设计 (CAD)
-可以设置一个 GPU 实验室，使工程学生可以访问[SolidWorks](https://www.solidworks.com/)。  SolidWorks 提供用于对实体对象进行建模的 3D CAD 环境。  借助 SolidWorks，工程师可以轻松创建、直观显示、模拟和记录其设计。
+可以设置一个 GPU 实验室，使工程学生可以访问 [SolidWorks](https://www.solidworks.com/)。  SolidWorks 提供用于对实体对象进行建模的 3D CAD 环境。  借助 SolidWorks，工程师可以轻松创建、直观显示、模拟和记录其设计。
 
-有关如何设置此类型的实验室的详细信息，请参阅[使用 SolidWorks 设置工程设计类的实验室](class-type-solidworks.md)
+有关如何设置此类型的实验室的详细信息，请参阅 [使用 SolidWorks 设置工程设计类的实验室](class-type-solidworks.md)
 
 ## <a name="next-steps"></a>后续步骤
 

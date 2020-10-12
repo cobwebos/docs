@@ -1,6 +1,6 @@
 ---
 title: Azure 前门的 Web 应用程序防火墙自定义规则
-description: 了解如何使用 Web 应用程序防火墙（WAF）自定义规则来保护 web 应用程序免受恶意攻击。
+description: 了解如何使用 Web 应用程序防火墙 (WAF) 自定义规则来保护 Web 应用程序免受恶意攻击。
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
@@ -8,15 +8,15 @@ services: web-application-firewall
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 158bfe30bf48ee420be8efb9ff32fff0e555d9e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79475818"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>适用于 Azure 前门的 Web 应用程序防火墙的自定义规则
 
-使用带有前门的 Azure Web 应用程序防火墙（WAF），可以根据定义的条件来控制对 Web 应用程序的访问。 自定义 WAF 规则由优先级编号、规则类型、匹配条件和操作组成。 自定义规则有两种类型：匹配规则和速率限制规则。 匹配规则根据一组匹配条件控制访问权限，而速率限制规则根据匹配条件和传入请求的速率控制访问。 您可以禁用自定义规则以防止对其进行评估，但仍保留配置。 
+使用前端的 Azure Web 应用程序防火墙 (WAF) ，你可以根据定义的条件来控制对 Web 应用程序的访问。 自定义 WAF 规则由优先级编号、规则类型、匹配条件和操作组成。 自定义规则有两种类型：匹配规则和速率限制规则。 匹配规则根据一组匹配条件控制访问权限，而速率限制规则根据匹配条件和传入请求的速率控制访问。 您可以禁用自定义规则以防止对其进行评估，但仍保留配置。 
 
 ## <a name="priority-match-conditions-and-action-types"></a>优先级、匹配条件和操作类型
 
@@ -26,12 +26,12 @@ ms.locfileid: "79475818"
 
 - **操作：** 定义在匹配 WAF 规则时如何路由请求。 当请求与自定义规则匹配时，可以选择要应用的以下操作之一。
 
-    - *允许*-WAF 将该寻找转发到后端，并将条目记录到 WAF 日志中并退出。
-    - *阻止请求*被阻止，WAF 向客户端发送响应，而不将请求转发到后端。 WAF 记录 WAF 日志中的条目。
+    - *允许* -WAF 将该寻找转发到后端，并将条目记录到 WAF 日志中并退出。
+    - *阻止请求* 被阻止，WAF 向客户端发送响应，而不将请求转发到后端。 WAF 记录 WAF 日志中的条目。
     - WAF*记录 WAF*日志中的条目，并继续评估下一规则。
-    - *重定向*-WAF 将请求重定向到指定的 URI，将条目记录到 WAF 日志中并退出。
+    - *重定向* -WAF 将请求重定向到指定的 URI，将条目记录到 WAF 日志中并退出。
 
-- **Match 条件：** 定义匹配变量、运算符和匹配值。 每个规则可能包含多个匹配条件。 匹配条件可以基于地理位置、客户端 IP 地址（CIDR）、大小或字符串匹配。 字符串匹配可用于匹配变量列表。
+- **Match 条件：** 定义匹配变量、运算符和匹配值。 每个规则可能包含多个匹配条件。 匹配条件可以基于地理位置、客户端 IP 地址 (CIDR) 、大小或字符串匹配。 字符串匹配可用于匹配变量列表。
   - **匹配变量：**
     - RequestMethod
     - QueryString
@@ -42,7 +42,7 @@ ms.locfileid: "79475818"
     - Cookie
   - **操作员**
     - 如果没有匹配的规则，则 "所有：" 通常用于定义默认操作。 Any 是 match all 运算符。
-    - Equal
+    - 等于
     - 包含
     - LessThan： size 约束
     - GreaterThan： size 约束
@@ -52,7 +52,7 @@ ms.locfileid: "79475818"
     - EndsWith
     - 正则表达式
   
-  - **Regex**不支持以下操作： 
+  - **Regex** 不支持以下操作： 
     - 反向引用和捕获子表达式
     - 任意零宽度断言
     - 子程序引用和递归模式
@@ -64,7 +64,7 @@ ms.locfileid: "79475818"
     - 标注和嵌入代码
     - 原子分组和所有格限定符
 
-  - **取反 [optional]：** 如果条件的结果应为 "求反"，则可以将 "*求反*条件" 设置为 "true"。
+  - **取反 [optional]：** 如果条件的结果应为 "求反"，则可以将 " *求反* 条件" 设置为 "true"。
       
   - **转换 [可选]：** 在尝试匹配之前，包含转换名称的字符串的列表。 这些转换可以是：
      - 大写 
@@ -178,6 +178,6 @@ ms.locfileid: "79475818"
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure PowerShell 配置 Web 应用程序防火墙策略](waf-front-door-custom-rules-powershell.md) 
-- 了解[带有前门的 Web 应用程序防火墙](afds-overview.md)
+- 了解 [带有前门的 Web 应用程序防火墙](afds-overview.md)
 - 了解如何[创建 Front Door](../../frontdoor/quickstart-create-front-door.md)。
 

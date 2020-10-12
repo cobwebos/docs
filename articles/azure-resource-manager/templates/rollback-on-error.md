@@ -4,10 +4,10 @@ description: 指定失败的部署应回退到成功的部署。
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79460137"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>出错时回退以成功部署

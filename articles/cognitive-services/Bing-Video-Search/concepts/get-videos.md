@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79220299"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用必应视频搜索 API 来搜索视频
@@ -120,10 +120,10 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 默认情况下，视频搜索 API 返回与查询相关的所有视频。 如果只需免费视频或者时长不到五分钟的视频，请使用以下筛选器查询参数：
 
-- [定价](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;筛选器视频（如免费的或需要支付的视频）
-- [分辨率](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;按解决方案筛选视频（例如，使用720p 或更高分辨率的视频）
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;按视频长度（例如，长度不到五分钟的视频）筛选视频
-- [新鲜度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;按 age 筛选视频（例如，过去一周内必应发现的视频）
+- [定价](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash;按定价 (筛选视频例如，免费或需要为) 付费的视频
+- [解决方法](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash;按解决方案筛选视频 (例如，使用720p 或更高分辨率的视频) 
+- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash;按视频长度筛选视频 (例如，长度不到五分钟的视频) 
+- [新鲜度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash;按 age 筛选视频 (例如，过去一周内必应发现的视频) 
 
 若要从特定域获取视频，请在查询字符串中包含 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
 

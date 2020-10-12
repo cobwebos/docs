@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009029"
 ---
 # <a name="display-feature-information"></a>显示功能信息
@@ -69,9 +69,9 @@ map.events.add((OnFeatureClick) (features) -> {
 
 除了 toast 消息以外，还有很多其他方法可以提供功能的元数据属性，例如：
 
-- [Snakbar 小组件](https://developer.android.com/training/snackbar/showing.html)-Snackbars 提供有关操作的轻型反馈。 它们会在移动设备的底部显示简短消息，在较大的设备上显示在左下方。 Snackbars 显示在屏幕上的所有其他元素之上，一次只能显示一个。
-- [对话框-对话框](https://developer.android.com/guide/topics/ui/dialogs)是一个小窗口，它会提示用户做出决定或输入其他信息。 对话框并不填充屏幕，通常用于模式事件，这些事件要求用户执行操作，然后才能继续。
-- 向当前活动添加一个[片段](https://developer.android.com/guide/components/fragments)。
+- [Snakbar 小组件](https://developer.android.com/training/snackbar/showing.html) -Snackbars 提供有关操作的轻型反馈。 它们会在移动设备的底部显示简短消息，在较大的设备上显示在左下方。 Snackbars 显示在屏幕上的所有其他元素之上，一次只能显示一个。
+- [对话框-对话框](https://developer.android.com/guide/topics/ui/dialogs) 是一个小窗口，它会提示用户做出决定或输入其他信息。 对话框并不填充屏幕，通常用于模式事件，这些事件要求用户执行操作，然后才能继续。
+- 向当前活动添加一个 [片段](https://developer.android.com/guide/components/fragments) 。
 - 导航到另一个活动或视图。
 
 ## <a name="next-steps"></a>后续步骤

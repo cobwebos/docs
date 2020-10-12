@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0aba88c10304cf7d87277ad851ae38eae8eb5bf3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87497114"
 ---
-# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问适用于 Maria DB 审核日志的 Azure 数据库
+# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问 Azure Database for Maria DB 审核日志
 
 可以从 Azure CLI 配置 [Azure Database for MariaDB 审核日志](concepts-audit-logs.md)。
 

@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f067d4c777bb9a49ac2cc50595046249479a8f7a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393830"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>适用于 Azure Database for MariaDB 的 Azure 安全基线
@@ -60,7 +60,7 @@ ms.locfileid: "89393830"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -106,7 +106,7 @@ ms.locfileid: "89393830"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 
 **Azure 安全中心监视**：不适用
@@ -757,7 +757,7 @@ Microsoft 管理 MariaDB 的底层基础结构，并实施了严格控制来防�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 
 **Azure 安全中心监视**：不适用

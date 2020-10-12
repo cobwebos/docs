@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207497"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>具有低或无网络宽带的大型数据集的数据传输
@@ -38,7 +38,7 @@ ms.locfileid: "86207497"
 
 此方案中可用的选项是用于 Azure Data Box 脱机传输或 Azure 导入/导出的设备。
 
-- **用于脱机传输的 Azure Data Box 系列** – 当受到时间、网络可用性或成本的限制时，使用 Microsoft 提供的 Data Box 设备将大量数据移动到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
+- **适用于脱机传输 Azure Data Box 系列** –当你按时间、网络可用性或成本进行限制时，请使用 Microsoft 提供的 Data Box 设备中的设备将大量数据移到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
 - **Azure 导入/导出** - 通过寄送自己的磁盘驱动器，使用 Azure 导入/导出服务安全地将大量数据导入 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。
 
 ## <a name="comparison-of-key-capabilities"></a>关键功能比较
@@ -48,7 +48,7 @@ ms.locfileid: "86207497"
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    导入/导出                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    **数据大小**                    |    最多为 35 TB                 |    每个设备最多 80 TB                       |    每个设备最多 800 TB               |    变量                            |
-|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 文件存储                    |    Azure Blob<br>Azure 文件存储            |    Azure Blob<br>Azure 文件存储          |
+|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 文件                    |    Azure Blob<br>Azure 文件            |    Azure Blob<br>Azure 文件          |
 |    **外形规格**                  |    每笔订单 5 个 SSD             |    每笔订单 1 X 50 磅 桌面大小的设备    |    每笔订单 1 X ~500 磅 大型设备    |    每笔订单最多 10 个 HDD/SSD        |
 |    **初始设置时间**           |    低 <br>（15 分钟）            |    低等到中等 <br> （<30 分钟）               |    中等<br>（1-2 小时）               |    中等到困难<br>（不定） |
 |    **将数据发送到 Azure**           |    是                          |    是                                           |    是                                   |    是                                 |

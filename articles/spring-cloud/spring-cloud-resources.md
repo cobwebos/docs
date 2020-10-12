@@ -8,15 +8,15 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: d58827632a36a69bc9b9592c607364daa6ef7d97
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904224"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud 开发人员资源
 
-**本文适用于：** ✔️ Java ✔️ C#
+本文适用于：✔️ Java ✔️ C#
 
 身为开发人员，你可能发现以下 Azure Spring Cloud 资源非常有用：
 

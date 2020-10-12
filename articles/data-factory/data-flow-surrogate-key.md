@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81606296"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>映射数据流中的代理键转换 
@@ -21,7 +21,7 @@ ms.locfileid: "81606296"
 
 使用代理键转换向每个数据行添加递增的键值。 在星型架构分析数据模型中设计维度表时，这非常有用。 在星型架构中，维度表中的每个成员都需要唯一键，这是一个非业务键。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ![代理键转换](media/data-flow/surrogate.png "代理键转换")
 
@@ -41,7 +41,7 @@ ms.locfileid: "81606296"
 
 #### <a name="database-sources"></a>数据库源
 
-使用 SQL 查询选项可选择源中的 MAX （）。 例如，`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+使用 SQL 查询选项可选择源中的最大 ( # A1。 例如， `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![代理键查询](media/data-flow/sk002.png "代理键转换查询")
 
@@ -83,4 +83,4 @@ AggregateDayStats
 
 ## <a name="next-steps"></a>后续步骤
 
-这些示例使用[联接](data-flow-join.md)和[派生列](data-flow-derived-column.md)转换。
+这些示例使用 [联接](data-flow-join.md) 和 [派生列](data-flow-derived-column.md) 转换。

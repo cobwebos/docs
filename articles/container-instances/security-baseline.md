@@ -8,10 +8,10 @@ ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393422"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>容器实例的 Azure 安全基线
@@ -22,7 +22,7 @@ ms.locfileid: "89393422"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -988,7 +988,7 @@ ms.locfileid: "89393422"
 
 * [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+* [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 
 * [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 

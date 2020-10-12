@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 09/02/2020
 ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393813"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
@@ -104,7 +104,7 @@ VM 发布者已在2019年7月2日向添加新的 Azure 虚拟机大小增加了�
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
 
-| **区域** | **名称**             | **货币代码** |
+| **区域** | **Name**             | **货币代码** |
 |------------|----------------------|-------------------|
 | DZ         | 阿尔及利亚              | DZD               |
 | AR         | 阿根廷            | ARS               |

@@ -11,10 +11,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385257"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置会话行为
@@ -48,21 +48,21 @@ ms.locfileid: "85385257"
 
 ### <a name="configure-the-applications"></a>配置应用程序
 
-将用户重定向到 Azure AD B2C 注销终结点（适用于 OAuth2 和 SAML 协议）时，Azure AD B2C 将从浏览器中清除该用户的会话。  若要允许[单一注销](session-overview.md#single-sign-out)，请 `LogoutUrl` 从 Azure 门户设置应用程序的：
+将用户重定向到 Azure AD B2C 注销终结点（适用于 OAuth2 和 SAML 协议）时，Azure AD B2C 将从浏览器中清除该用户的会话。  若要允许[单一注销](session-overview.md#single-sign-out)，请在 Azure 门户中设置应用程序的 `LogoutUrl`：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 通过单击页面右上角的帐户选择 Azure AD B2C 目录。
-1. 在左侧菜单中，选择 " **Azure AD B2C**"，选择 "**应用注册**"，然后选择你的应用程序。
-1. 选择 "**设置**"，选择 "**属性**"，然后找到 "**注销 URL** " 文本框。 
+1. 在左侧菜单中，依次选择“Azure AD B2C”、“应用注册”、你的应用程序。
+1. 选择“设置”，接着选择“属性”，然后找到“注销 URL”文本框。 
 
 ### <a name="configure-the-token-issuer"></a>配置令牌颁发者 
 
-为了支持单一注销，JWT 和 SAML 的令牌颁发者技术配置文件必须指定：
+若要支持单一注销，JWT 和 SAML 的令牌颁发者技术配置文件必须指定以下内容：
 
-- 协议名称，如`<Protocol Name="OpenIdConnect" />`
-- 对会话技术配置文件的引用，例如 `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` 。
+- 协议名称，例如 `<Protocol Name="OpenIdConnect" />`
+- 对会话技术配置文件的引用，例如 `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />`。
 
-下面的示例演示了具有单一注销的 JWT 和 SAML 令牌颁发者：
+下面的示例演示了单一注销的 JWT 和 SAML 令牌颁发者：
 
 ```xml
 <ClaimsProvider>

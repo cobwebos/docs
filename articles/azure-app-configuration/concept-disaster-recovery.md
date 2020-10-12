@@ -1,16 +1,16 @@
 ---
-title: Azure 应用配置复原和灾难恢复
-description: 了解如何通过 Azure 应用配置实现复原和灾难恢复。
+title: 使用 Azure 应用程序配置实现复原和灾难恢复
+description: 了解如何使用 Azure 应用程序配置实现复原和灾难恢复。
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207199"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
@@ -23,11 +23,11 @@ ms.locfileid: "86207199"
 
 ![异地冗余的存储](./media/geo-redundant-app-configuration-stores.png)
 
-应用程序会以并行方式从主要存储和辅助存储加载其配置。 这样做可以提高成功获取配置数据的可能性。 你负责使两个存储中的数据保持同步。以下部分说明了如何在应用程序中构建异地复原功能。
+应用程序会以并行方式从主要存储和辅助存储加载其配置。 这样做可以提高成功获取配置数据的可能性。 使两个存储中的数据保持同步由你负责。以下部分介绍如何将异地复原能力内置到应用程序中。
 
 ## <a name="failover-between-configuration-stores"></a>配置存储之间的故障转移
 
-从技术上讲，应用程序不会执行故障转移。 它将会尝试同时从两个应用配置存储检索相同的配置数据集。 按以下方式安排代码：让代码先从辅助存储加载数据，再从主要存储加载数据。 此方法可确保只要主要存储中的配置数据可用就会优先进行加载。 下面的代码片段演示如何在 .NET Core 中实现这种排列：
+从技术上讲，应用程序不会执行故障转移。 它将会尝试同时从两个应用配置存储检索相同的配置数据集。 按以下方式安排代码：让代码先从辅助存储加载数据，再从主要存储加载数据。 此方法可确保只要主要存储中的配置数据可用就会优先进行加载。 以下代码片段演示如何在 .NET Core 中实现这种安排：
 
 #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -66,7 +66,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 所有异地冗余的配置存储必须包含相同的数据集，这一点非常重要。 可通过两种方式实现此目的：
 
-### <a name="backup-manually-using-the-export-function"></a>使用 Export 函数手动备份
+### <a name="backup-manually-using-the-export-function"></a>使用“导出”功能手动备份
 
 可以按需使用应用配置中的“导出”功能将数据从主要存储复制到辅助存储****。 可通过 Azure 门户和 CLI 使用此功能。
 
@@ -74,21 +74,21 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 转到“导入/导出”选项卡****，然后依次选择“导出”**** > “应用配置”**** > “目标”**** > “选择资源”****。
 
-1. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择 "**应用**"。
+1. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择“应用”。
 
-1. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 您可以按原样保留默认时间值，并将它们**从标签**和**标签**设置为相同的值。 选择“应用”。 对主存储中的所有标签重复此操作。
+1. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 可将默认时间值保持原样，并将“原始标签”和“标签”设置为相同的值 。 选择“应用”。 对主要存储中的所有标签重复此操作。
 
-1. 在配置更改时重复前面的步骤。
+1. 每当配置更改时，应再次执行上述步骤。
 
-还可以使用 Azure CLI 来实现导出过程。 以下命令显示了如何将所有配置从主存储导出到辅助副本：
+还可以使用 Azure CLI 来实现导出过程。 以下命令演示如何将所有配置从主要存储导出到辅助存储：
 
 ```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
 
-### <a name="backup-automatically-using-azure-functions"></a>使用 Azure Functions 自动备份
+### <a name="backup-automatically-using-azure-functions"></a>使用 Azure Functions 实现自动备份
 
-可以使用 Azure Functions 自动执行备份过程。 它利用了在应用配置中与 Azure 事件网格集成。 设置后，应用配置会将事件发布到事件网格，以获取对配置存储区中的键值所做的任何更改。 因此，Azure Functions 应用可以相应地侦听这些事件和备份数据。 有关详细信息，请参阅教程，了解[如何自动备份应用配置存储](./howto-backup-config-store.md)。
+可以使用 Azure Functions 自动执行备份过程。 它利用了与应用程序配置中 Azure 事件网格的集成。 一旦设置后，对于配置存储区中键值的任何更改，应用程序配置会向事件网格发布事件。 因此，Azure Functions 应用可以相应地侦听这些事件和备份数据。 有关详细信息，请参阅有关[如何自动备份应用程序配置存储](./howto-backup-config-store.md)教程。
 
 ## <a name="next-steps"></a>后续步骤
 

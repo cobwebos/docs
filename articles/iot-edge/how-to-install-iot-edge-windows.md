@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
 ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465552"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
@@ -42,7 +42,7 @@ ms.locfileid: "84465552"
 用于 Windows 的 IoT Edge 需要 Windows 版本 1809/内部版本 17763，这是最新的 [Windows 长期支持版本](https://docs.microsoft.com/windows/release-information/)。 对于 Windows SKU 支持，请根据你是准备生产方案还是开发和测试方案，查看支持的内容：
 
 * **生产**：有关生产方案目前支持哪些操作系统的最新信息，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。
-* **开发和测试**：对于开发和测试方案，可以在支持容器功能的 windows 版本17763的任何 SKU （专业版、企业版、服务器等）上安装 windows 容器 Azure IoT Edge。
+* **开发和测试**：对于开发和测试方案，包含 Windows 容器的 Azure IoT Edge 可以安装在支持容器功能的 Windows 内部版本 17763 的任何 SKU（专业版、企业版、服务器等）上。
 
 IoT Core 设备必须包含 IoT Core Windows 容器可选功能才能支持 IoT Edge 运行时。 在[远程 PowerShell 会话](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)中使用以下命令来检查设备是否支持 Windows 容器：
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 示例 - 网络
-description: 了解网络 Azure CLI 示例，包括用于在 Azure 资源之间连接的示例，以及用于负载均衡和流量方向的示例。
+description: 了解用于网络的 Azure CLI 示例，包括用于 Azure 资源之间的连接的示例以及用于负载均衡和流量方向的示例。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c038f0d238646f43b93ba2a2c6a1120ab5feccee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87497284"
 ---
 # <a name="azure-cli-samples-for-networking"></a>用于网络的 Azure CLI 示例

@@ -8,10 +8,10 @@ ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182116"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
@@ -293,7 +293,7 @@ spec:
 ```
 
 > [!NOTE]
-> 接收入站流量从负载均衡器流向 AKS 群集的虚拟网络。 虚拟网络具有一个 (NSG) 的网络安全组，该安全组允许来自负载均衡器的所有入站流量。 此 NSG 使用类型为*LoadBalancer*的[服务标记][service-tags]，以允许来自负载均衡器的流量。
+> 入站、外部流量从负载均衡器流向 AKS 群集的虚拟网络。 该虚拟网络有一个网络安全组 (NSG)，该安全组允许来自负载均衡器的所有入站流量。 此 NSG 使用 LoadBalancer 类型的[服务标记][service-tags]允许来自负载均衡器的流量。
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>维护入站连接上的客户端 IP
 
@@ -317,7 +317,7 @@ spec:
 
 下面是类型 `LoadBalancer` 的 Kubernetes 服务支持的注释列表，这些注释仅适用于入站流：
 
-| Annotation | Value | 描述
+| Annotation | Value | 说明
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定负载均衡器是否应为“内部”。 如果未设置，则默认为 public。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子网的名称                    | 指定内部负载均衡器应绑定到的子网。 如果未设置，则默认为在云配置文件中配置的子网。

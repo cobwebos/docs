@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000611"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用
@@ -54,7 +54,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 1. 启动 Visual Studio。
 
-2. 选择“创建新项目”。
+2. 选择“创建新项目”。****
 
 3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。******** 然后，选择“下一步”。
 
@@ -121,7 +121,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 1. 打开 Visual Studio。
 
-2. 在“开始”窗口中，选择“创建新项目” 。
+2. 在“开始”窗口中，选择“创建新项目”。  
 
 3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。******** 然后，选择“下一步”。
 

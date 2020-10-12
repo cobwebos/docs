@@ -5,10 +5,10 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921743"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
@@ -73,7 +73,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 
-可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如，值 "~ 3" 表示 function app 将使用1.x 作为其主版本。 函数应用在发布后会升级到每个新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如，值“~3”表示函数应用将使用 3.x 作为其主版本。 函数应用在发布后，将升级到各个新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009250"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面中创建租户和主机池 (经典) 
@@ -49,7 +49,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **原因：** 同意未授予 Azure Active directory 实例中的 Windows 虚拟桌面。
 
-**解决方法：** [按照此指南](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop)授予同意。
+**解决方法：** [按照此指南](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) 授予同意。
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>错误：用户无权查询管理服务
 
@@ -73,14 +73,14 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **原因：** 未在 Azure Active Directory 中为登录用户分配 "TenantCreator" 角色。
 
-**修复：** 按照[为 Azure Active Directory 租户中的用户分配 TenantCreator 应用程序角色](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)中的说明进行操作。 按照说明操作后，你将拥有一个分配给 TenantCreator 角色的用户。
+**修复：** 按照 [为 Azure Active Directory 租户中的用户分配 TenantCreator 应用程序角色](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)中的说明进行操作。 按照说明操作后，你将拥有一个分配给 TenantCreator 角色的用户。
 
 > [!div class="mx-imgBorder"]
 > ![已分配 TenantCreator 角色的屏幕截图。](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>正在创建 Windows 虚拟桌面会话主机 Vm
 
-可以通过多种方式创建会话主机 Vm，但 Windows 虚拟桌面团队仅支持与[Azure Marketplace](https://azuremarketplace.microsoft.com/)产品/服务相关的 VM 设置问题。 有关详细信息，请参阅[使用 Windows 虚拟桌面的问题-预配主机池 Azure Marketplace 产品/服务](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)。
+可以通过多种方式创建会话主机 Vm，但 Windows 虚拟桌面团队仅支持与 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 产品/服务相关的 VM 设置问题。 有关详细信息，请参阅 [使用 Windows 虚拟桌面的问题-预配主机池 Azure Marketplace 产品/服务](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)。
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>使用 Windows 虚拟桌面的问题–预配主机池 Azure Marketplace 产品/服务
 
@@ -97,10 +97,10 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **原因2：** 使用的订阅是 Microsoft 云服务提供程序的一部分 (CSP) 租户。
 
-**修复2：** 请访问 GitHub 位置以**创建和设置新的 Windows 虚拟桌面主机池**，并按照以下说明进行操作：
+**修复2：** 请访问 GitHub 位置以 **创建和设置新的 Windows 虚拟桌面主机池** ，并按照以下说明进行操作：
 
-1. 右键单击 "**部署到 Azure** "，然后选择 "**复制链接地址**"。
-2. 打开**记事本**并粘贴链接。
+1. 右键单击 " **部署到 Azure** "，然后选择 " **复制链接地址**"。
+2. 打开 **记事本** 并粘贴链接。
 3. 在 # 字符之前，请插入 CSP 最终客户租户名称。
 4. 在浏览器中打开新链接，Azure 门户将加载模板。
 
@@ -120,8 +120,8 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 查看活动日志中的错误：
 
 1. 退出当前的 Azure Marketplace 部署产品/服务。
-2. 在顶部搜索栏中，搜索并选择 "**活动日志**"。
-3. 找到名为 "**验证部署** **" 的活动，并选择**该活动。
+2. 在顶部搜索栏中，搜索并选择 " **活动日志**"。
+3. 找到名为 " **验证部署** **" 的活动，并选择** 该活动。
 
    > [!div class="mx-imgBorder"]
    > ![单个 * * 验证部署的屏幕截图 * * 状态的活动 * * 失败 * * 状态](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
@@ -134,15 +134,15 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 如果操作模板超过配额限制，则可以执行下列操作之一来解决此问题：
 
  - 使用首次使用的参数运行 Azure Marketplace，但这次使用的 Vm 和 VM 内核数更少。
- - 在浏览器中打开在**statusMessage**字段中看到的链接，以提交为指定 VM SKU 增加 Azure 订阅配额的请求。
+ - 在浏览器中打开在 **statusMessage** 字段中看到的链接，以提交为指定 VM SKU 增加 Azure 订阅配额的请求。
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure 资源管理器模板和 PowerShell Desired State Configuration (DSC) 错误
 
 按照以下说明解决 Azure 资源管理器模板和 PowerShell DSC 的不成功部署。
 
-1. 使用[Azure 资源管理器的 "查看部署" 操作](../../azure-resource-manager/resource-manager-deployment-operations.md)查看部署中的错误。
-2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误，[以审核对资源的操作](../../azure-resource-manager/resource-group-audit.md)。
-3. 确定错误后，请使用错误消息和资源[解决 azure 资源管理器的常见 Azure 部署错误](../../azure-resource-manager/resource-manager-common-deployment-errors.md)，以解决此问题。
+1. 使用 [Azure 资源管理器的 "查看部署" 操作](../../azure-resource-manager/resource-manager-deployment-operations.md)查看部署中的错误。
+2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误， [以审核对资源的操作](../../azure-resource-manager/resource-group-audit.md)。
+3. 确定错误后，请使用错误消息和资源 [解决 azure 资源管理器的常见 Azure 部署错误](../../azure-resource-manager/resource-manager-common-deployment-errors.md) ，以解决此问题。
 4. 删除在之前的部署过程中创建的任何资源，然后重试部署模板。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>错误：部署失败 .... \<hostname> /joindomain
@@ -162,22 +162,22 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **原因1：** 为将 Vm 加入到域而提供的凭据不正确。
 
-**修复1：** 如果 Vm 未加入[会话主机 VM 配置](troubleshoot-vm-configuration-2019.md)中的域，请参阅 "凭据错误"。
+**修复1：** 如果 Vm 未加入 [会话主机 VM 配置](troubleshoot-vm-configuration-2019.md)中的域，请参阅 "凭据错误"。
 
 **原因2：** 域名未解析。
 
-**修复2：** 请参阅[错误：未](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve)在[会话主机 VM 配置](troubleshoot-vm-configuration-2019.md)中解析域名。
+**修复2：** 请参阅 [错误：未](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve) 在 [会话主机 VM 配置](troubleshoot-vm-configuration-2019.md)中解析域名。
 
-**原因3：** 虚拟网络 (VNET) DNS 配置设置为 "**默认**"。
+**原因3：** 虚拟网络 (VNET) DNS 配置设置为 " **默认**"。
 
 若要解决此问题，请执行以下操作：
 
-1. 打开 Azure 门户，并中转到 "**虚拟网络**" 选项卡。
+1. 打开 Azure 门户，并中转到 " **虚拟网络** " 选项卡。
 2. 找到 VNET，然后选择 " **DNS 服务器**"。
-3. "DNS 服务器" 菜单应该出现在屏幕的右侧。 在该菜单上，选择 "**自定义**"。
-4. 请确保 "自定义" 下列出的 DNS 服务器匹配域控制器或 Active Directory 域。 如果看不到你的 DNS 服务器，可以通过在 "**添加 dns 服务器**" 字段中输入其值来添加它。
+3. "DNS 服务器" 菜单应该出现在屏幕的右侧。 在该菜单上，选择 " **自定义**"。
+4. 请确保 "自定义" 下列出的 DNS 服务器匹配域控制器或 Active Directory 域。 如果看不到你的 DNS 服务器，可以通过在 " **添加 dns 服务器** " 字段中输入其值来添加它。
 
-### <a name="error-your-deployment-failedunauthorized"></a>错误：部署失败。 ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>错误：部署失败...\Unauthorized
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -187,7 +187,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **修复：** 更改你的订阅类型或区域，使其可以访问所需的功能。
 
-### <a name="error-vmextensionprovisioningerror"></a>错误： VMExtensionProvisioningError
+### <a name="error-vmextensionprovisioningerror"></a>错误：VMExtensionProvisioningError
 
 > [!div class="mx-imgBorder"]
 > ![部署的屏幕截图失败，终端预配状态为 "失败"。](../media/7aaf15615309c18a984673be73ac969a.png)
@@ -196,9 +196,9 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **原因2：** 与连接发生暂时性错误。
 
-**修复：** 使用 PowerShell 登录，确认 Windows 虚拟桌面环境正常运行。 在[使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中手动完成 VM 注册。
+**修复：** 使用 PowerShell 登录，确认 Windows 虚拟桌面环境正常运行。 在 [使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中手动完成 VM 注册。
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>错误：不允许指定的管理员用户名
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>错误：不允许使用指定的管理员用户名
 
 > [!div class="mx-imgBorder"]
 > ![不允许管理员指定的部署的屏幕截图。](../media/f2b3d3700e9517463ef88fa41875bac9.png)
@@ -218,7 +218,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **修复：** 更新用户名或使用其他用户。
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>错误： VM 在处理扩展时报告了故障
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>错误：VM 在处理扩展时报告了一项故障
 
 > [!div class="mx-imgBorder"]
 > ![部署中具有终端预配状态的资源操作的屏幕截图失败。](../media/49c4a1836a55d91cd65125cf227f411f.png)
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>错误：用户需要 Azure 多重身份验证 (MFA) 
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>错误：用户需要 Azure 多重身份验证(MFA)
 
 > [!div class="mx-imgBorder"]
 > ![部署的屏幕截图失败，因为缺少多重身份验证 (MFA) ](../media/MFARequiredError.png)
@@ -388,7 +388,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 **原因：** 指定的 Windows 虚拟桌面租户管理员需要 Azure 多重身份验证 (MFA) 才能登录。
 
-**修复：** 按照[教程：使用 PowerShell 创建服务主体和角色分配](create-service-principal-role-powershell.md)中的步骤，创建服务主体，并为其分配一个适用于 Windows 虚拟桌面租户的角色。 在验证是否可以使用服务主体登录到 Windows 虚拟桌面后，重新运行 Azure Marketplace 产品/服务或 GitHub Azure 资源管理器模板，具体取决于所使用的方法。 按照以下说明为方法输入正确的参数。
+**修复：** 按照 [教程：使用 PowerShell 创建服务主体和角色分配](create-service-principal-role-powershell.md)中的步骤，创建服务主体，并为其分配一个适用于 Windows 虚拟桌面租户的角色。 在验证是否可以使用服务主体登录到 Windows 虚拟桌面后，重新运行 Azure Marketplace 产品/服务或 GitHub Azure 资源管理器模板，具体取决于所使用的方法。 按照以下说明为方法输入正确的参数。
 
 如果你运行的是 Azure Marketplace 产品/服务，请提供以下参数的值，以正确地向 Windows 虚拟桌面进行身份验证：
 
@@ -414,10 +414,10 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 - 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
 - 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration-2019.md)。
-- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection-2019.md)。
+- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection-2019.md)。
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](../troubleshoot-client.md)问题
 - 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
-- 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup-2019.md)。
+- 若要了解有关该服务的详细信息，请参阅 [Windows 虚拟桌面环境](environment-setup-2019.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)。

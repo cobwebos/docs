@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207379"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
@@ -100,7 +100,7 @@ SQuirreL SQL 是一个 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
     !["SQuirreL SQL 添加新别名" 对话框](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
-7. 将以下值用于 "**添加别名**" 对话框：
+7. 将以下值用于 " **添加别名** " 对话框：
 
     |属性 |值 |
     |---|---|
@@ -117,7 +117,7 @@ SQuirreL SQL 是一个 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
     若要保存连接别名，请使用“添加别名”**** 对话框底部的“确定”**** 按钮。
 
-8. 在 SQuirreL SQL 顶部的“连接到”**** 下拉列表中，选择“Hive on HDInsight”****。 出现提示时，选择“连接”****。
+8. 在 SQuirreL SQL 顶部的“连接到”**** 下拉列表中，选择“Hive on HDInsight”****。 出现提示时，选择“连接”。
 
     ![带参数的连接对话框](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 

@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
 ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84634351"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
@@ -24,7 +24,7 @@ ms.locfileid: "84634351"
 
 ## <a name="what-you-learn"></a>学习内容
 
-了解如何可视化 Azure IoT 中心通过 Power BI 接收的实时传感器数据。 如果要尝试使用 web 应用可视化 IoT 中心的数据，请参阅[使用 web 应用可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
+了解如何可视化 Azure IoT 中心通过 Power BI 接收的实时传感器数据。 如果要尝试使用 web 应用可视化 IoT 中心的数据，请参阅 [使用 web 应用可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -34,7 +34,7 @@ ms.locfileid: "84634351"
 
 * 创建并发布实现数据可视化的 Power BI 报表。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 * 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如，[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些文章涵盖以下要求：
   
@@ -42,7 +42,7 @@ ms.locfileid: "84634351"
   * 已在订阅中创建一个 Azure IoT 中心。
   * 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 
-* 一个 Power BI 帐户。 （[免费试用 Power BI](https://powerbi.microsoft.com/)）
+* 一个 Power BI 帐户。  ([免费试用 Power BI](https://powerbi.microsoft.com/)) 
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
@@ -64,15 +64,15 @@ ms.locfileid: "84634351"
 
    ![在 Azure 中创建流分析作业](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
 
-3. 选择“创建”。
+3. 选择“创建” 。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>将输入添加到流分析作业
 
 1. 打开流分析作业。
 
-2. 在 "**作业拓扑**" 下，选择 "**输入**"。
+2. 在“作业拓扑”下选择“输入”。
 
-3. 在 "**输入**" 窗格中，选择 "**添加流输入**"，然后从下拉列表中选择 " **IoT 中心**"。 在 "新建输入" 窗格中，输入以下信息：
+3. 在 " **输入** " 窗格中，选择 " **添加流输入**"，然后从下拉列表中选择 " **IoT 中心** "。 在 "新建输入" 窗格中，输入以下信息：
 
    **输入别名**：输入输入的唯一别名。
 
@@ -84,7 +84,7 @@ ms.locfileid: "84634351"
 
    **终结点**：选择“消息传送”****。
 
-   **共享访问策略名称**：选择想要流分析作业用于 IoT 中心的共享访问策略的名称。 对于本教程，您可以选择 "*服务*"。 默认情况下，在新的 IoT 中心创建*服务*策略，并授予在 IoT 中心公开的云端终结点上发送和接收的权限。 若要了解详细信息，请参阅[访问控制和权限](iot-hub-devguide-security.md#access-control-and-permissions)。
+   **共享访问策略名称**：选择想要流分析作业用于 IoT 中心的共享访问策略的名称。 对于本教程，您可以选择 " *服务*"。 默认情况下，在新的 IoT 中心创建 *服务* 策略，并授予在 IoT 中心公开的云端终结点上发送和接收的权限。 若要了解详细信息，请参阅 [访问控制和权限](iot-hub-devguide-security.md#access-control-and-permissions)。
 
    **共享访问策略密钥**：根据所选的共享访问策略名称自动填充此字段。
 
@@ -94,15 +94,15 @@ ms.locfileid: "84634351"
 
    ![向 Azure 中的流分析作业添加输入](./media/iot-hub-live-data-visualization-in-power-bi/add-input-to-stream-analytics-job.png)
 
-4. 选择“保存”。
+4. 选择“保存” 。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
 
-1. 在 "**作业拓扑**" 下，选择 "**输出**"。
+1. 在“作业拓扑”下选择“输出”。
 
-2. 在 "**输出**" 窗格中，选择 "**添加**并**Power BI**"。
+2. 在 " **输出** " 窗格中，选择 " **添加** 并 **Power BI**"。
 
-3. 在**Power BI-新建 "输出**" 窗格上，选择 "**授权**"，然后按照提示登录到 Power BI 帐户。
+3. 在 **Power BI-新建 "输出** " 窗格上，选择 " **授权** "，然后按照提示登录到 Power BI 帐户。
 
 4. 登录到 Power BI 后，请输入以下信息：
 
@@ -118,11 +118,11 @@ ms.locfileid: "84634351"
 
    ![向 Azure 中的流分析作业添加输出](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job.png)
 
-5. 选择“保存”。
+5. 选择“保存” 。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
-1. 在 "**作业拓扑**" 下，选择 "**查询**"。
+1. 在“作业拓扑”下选择“查询”。
 
 2. 将 `[YourInputAlias]` 替换为作业的输入别名。
 
@@ -130,35 +130,35 @@ ms.locfileid: "84634351"
 
    ![向 Azure 中的流分析作业添加查询](./media/iot-hub-live-data-visualization-in-power-bi/add-query-to-stream-analytics-job.png)
 
-4. 选择 "**保存查询**"。
+4. 选择“保存查询”。
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-在流分析作业中，选择 "**概述**"，然后选择 "立即**启动**"  >  **Now**  >  **Start**。 成功启动作业后，作业状态将从“已停止”**** 更改为“正在运行”****。
+在流分析作业中，选择 "**概述**"，然后选择 "立即**启动**"  >  **Now**  >  **Start**。 成功启动作业后，作业状态将从“已停止”  更改为“正在运行”  。
 
 ![在 Azure 中运行流分析作业](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>创建并发布实现数据可视化的 Power BI 报表
 
-以下步骤说明如何使用 Power BI 服务创建和发布报表。 如果要在 Power BI 中使用 "新建外观"，则可以在执行一些修改的情况下执行这些步骤。 若要了解差异以及如何在 "新建外观" 中导航，请参阅[Power BI 服务的 "新外观"](https://docs.microsoft.com/power-bi/consumer/service-new-look)。
+以下步骤说明如何使用 Power BI 服务创建和发布报表。 如果要在 Power BI 中使用 "新建外观"，则可以在执行一些修改的情况下执行这些步骤。 若要了解差异以及如何在 "新建外观" 中导航，请参阅 [Power BI 服务的 "新外观"](https://docs.microsoft.com/power-bi/consumer/service-new-look)。
 
 1. 确保示例应用程序正在设备上运行。 如果没有，请参考[设置设备](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)中的教程。
 
 2. 登录到 [Power BI](https://powerbi.microsoft.com/en-us/) 帐户。
 
-3. 选择你使用的工作区，"**我的工作区**"。
+3. 选择你使用的工作区，" **我的工作区**"。
 
 4. 选择“数据集”。
 
    此时应当会看到你在为流分析作业创建输出时指定的数据集。
 
-5. 对于创建的数据集，选择 "**添加报表**" （数据集名称右侧的第一个图标）。
+5. 对于创建的数据集，选择 " **添加报表** " (数据集名称) 右侧的第一个图标。
 
    ![创建 Microsoft Power BI 报表](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-create-report.png)
 
 6. 创建折线图，显示某段时间的实时温度。
 
-   1. 在 "报表创建" 页的 "**可视化**" 窗格中，选择 "折线图" 图标以添加折线图。
+   1. 在 "报表创建" 页的 " **可视化** " 窗格中，选择 "折线图" 图标以添加折线图。
 
    2. 在“字段”窗格中展开一个表，该表是在为流分析作业创建输出时指定的。****
 
@@ -170,13 +170,13 @@ ms.locfileid: "84634351"
 
       ![向 Microsoft Power BI 报表添加温度折线图](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-temperature.png)
 
-7. 创建另一个折线图，显示某段时间的实时湿度。 为此，请单击画布的空白部分，然后执行上述相同步骤，将**即 eventenqueuedutctime**放置在 x 轴上，将**湿度**置于 y 轴上。
+7. 创建另一个折线图，显示某段时间的实时湿度。 为此，请单击画布的空白部分，然后执行上述相同步骤，将 **即 eventenqueuedutctime** 放置在 x 轴上，将 **湿度** 置于 y 轴上。
 
    ![向 Microsoft Power BI 报表添加湿度折线图](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-humidity.png)
 
 8. 选择“保存”以保存报表。****
 
-9. 在左侧窗格中选择 "**报表**"，然后选择您刚创建的报表。
+9. 在左侧窗格中选择 " **报表** "，然后选择您刚创建的报表。
 
 10. 选择 "**文件**" "  >  **发布到 web**"。
 
@@ -187,7 +187,7 @@ ms.locfileid: "84634351"
     >
     > ![联系你的管理员通知](./media/iot-hub-live-data-visualization-in-power-bi/contact-admin.png)
 
-11. 选择 "**创建嵌入代码**"，然后选择 "**发布**"。
+11. 选择 " **创建嵌入代码**"，然后选择 " **发布**"。
 
 你将提供报表链接，你可以将其与报表访问的任何人共享，还可以使用代码片段将报表集成到博客或网站中。
 
@@ -199,6 +199,6 @@ Microsoft 还提供 [Power BI 移动应用](https://powerbi.microsoft.com/en-us/
 
 现已成功使用 Power BI 可视化 Azure IoT 中心的实时传感器数据。
 
-若要从 Azure IoT 中心直观显示数据，请参阅[使用 web 应用可视化 Azure Iot 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
+若要从 Azure IoT 中心直观显示数据，请参阅 [使用 web 应用可视化 Azure Iot 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

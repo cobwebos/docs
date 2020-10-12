@@ -1,6 +1,6 @@
 ---
-title: 用于在 SAP HANA （大型实例）中启用 Kdump 的脚本 |Microsoft Docs
-description: 用于在 SAP HANA （大型实例）中启用 Kdump 的脚本，B-HLI 类型 I，B-HLI 类型 II
+title: 用于在 SAP HANA 中启用 Kdump (大型实例) 的脚本 |Microsoft Docs
+description: 用于在 SAP HANA 中启用 Kdump 的脚本 () ，b-hli 类型 I，B-HLI 类型 II
 services: virtual-machines-linux
 documentationcenter: ''
 author: prtyag
@@ -14,15 +14,15 @@ ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84488879"
 ---
 # <a name="enable-kdump-service"></a>启用 Kdump 服务
 
-本文档介绍有关如何在 Azure HANA 大型实例上启用 Kdump 服务的详细信息（**类型 I 和键入 II**）
+本文档介绍有关如何在 Azure HANA 大型实例 (**类型 I 和类型 II** 上启用 Kdump 服务的详细信息) 
 
 ## <a name="supported-skus"></a>支持的 SKU
 
@@ -74,7 +74,7 @@ ms.locfileid: "84488879"
 
 - 如果成功启用了命令输出 Kdump，请重新启动系统以应用更改，然后成功启用 Kdump。 重新启动系统以应用更改。
 
-- 如果命令输出无法执行特定操作，请退出!!!!,，则不启用 Kdump 服务。 请参阅[支持问题](#support-issue)部分。
+- 如果命令输出无法执行特定操作，请退出!!!!,，则不启用 Kdump 服务。 请参阅 [支持问题](#support-issue)部分。
 
 ## <a name="test-kdump"></a>测试 Kdump
 

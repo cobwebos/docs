@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
 ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683898"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>FarmBeats 的灾难恢复
@@ -26,15 +26,15 @@ ms.locfileid: "81683898"
 
 ## <a name="enable-data-redundancy"></a>启用数据冗余
 
-FarmBeats 将数据存储在三个 Azure 第一方服务中，即**azure 存储**、 **Cosmos DB**和**时序见解**。 使用以下步骤将这些服务的数据冗余启用到配对的 Azure 区域：
+FarmBeats 将数据存储在三个 Azure 第一方服务中，即 **azure 存储**、 **Cosmos DB** 和 **时序见解**。 使用以下步骤将这些服务的数据冗余启用到配对的 Azure 区域：
 
-1.  **Azure 存储**-按照此准则为 FarmBeats 部署中的每个存储帐户启用数据冗余。
+1.  **Azure 存储** -按照此准则为 FarmBeats 部署中的每个存储帐户启用数据冗余。
 2.  **Azure Cosmos DB** -按照此原则为你的 FarmBeats 部署的 Cosmos DB 帐户启用数据冗余。
-3.  **Azure 时序见解（TSI）** -TSI 当前不提供数据冗余。 若要恢复时序见解数据，请前往传感器/天气合作伙伴，并再次将数据推送到 FarmBeats 部署。
+3.  **Azure 时序见解 (tsi) ** -TSI 当前不提供数据冗余。 若要恢复时序见解数据，请前往传感器/天气合作伙伴，并再次将数据推送到 FarmBeats 部署。
 
 ## <a name="restore-service-from-online-backup"></a>从联机备份还原服务
 
-你可以为 FarmBeats 部署启动为其存储的故障转移和恢复存储的数据。 恢复 Azure 存储和 Cosmos DB 的数据后，在 Azure 配对区域中创建另一个 FarmBeats 部署，然后将新部署配置为使用还原的数据存储中的数据（即 Azure 存储和 Cosmos DB），方法是使用以下步骤：
+你可以为 FarmBeats 部署启动为其存储的故障转移和恢复存储的数据。 恢复 Azure 存储和 Cosmos DB 的数据后，请在 Azure 配对区域中创建另一个 FarmBeats 部署，然后将新部署配置为使用还原的数据存储中的数据 (即 Azure 存储和 Cosmos DB) ，方法是使用以下步骤：
 
 1. [配置 Cosmos DB](#configure-cosmos-db)
 2. [配置存储帐户](#configure-storage-account)

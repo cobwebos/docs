@@ -8,10 +8,10 @@ ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
 ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131865"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>调试失败 U-SQL 作业的用户定义 C# 代码
@@ -62,7 +62,7 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 
 如果已将源代码导入解决方案，则可以使用 Visual Studio 调试工具（监视、变量等）来排查问题：
 
-1. 按 **F5** 开始调试。 代码将一直运行，直到由于出现异常而停止。
+1. 按 **F5** 启动调试。 代码将一直运行，直到由于出现异常而停止。
 
 2. 打开源代码文件并设置断点，按 **F5** 逐步调试代码。
 
