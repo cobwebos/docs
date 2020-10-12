@@ -12,10 +12,10 @@ ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 3fb177afa804788632f22d24bbd376d64cbe1c9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250685"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>跟踪试验运行并通过 MLflow 和 Azure 机器学习 (预览版部署 ML 模型) 
@@ -353,7 +353,7 @@ webservice.wait_for_deployment()
 
 1. 从列表中选择已创建的资源组。
 
-1. 选择“删除资源组”****。
+1. 选择“删除资源组”。
 
 1. 输入资源组名称。 然后选择“删除”。
 

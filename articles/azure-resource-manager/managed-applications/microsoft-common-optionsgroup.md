@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tomfitz
 ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004178"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素
 
-Microsoft.common.optionsgroup 控件使用户可以从两个或更多个选项中选择一个选项。 用户只能选择一个选项。
+OptionsGroup 控件使用户可以从两个或更多个选项中选择一个选项。 用户只能选择一个选项。
 
 > [!NOTE]
-> 过去，此控件水平呈现选项。 现在，控件将选项垂直显示为单选按钮。
+> 过去，此控件以水平方向呈现选项。 现在，控件将选项垂直显示为单选按钮。
 
 ## <a name="ui-sample"></a>UI 示例
 

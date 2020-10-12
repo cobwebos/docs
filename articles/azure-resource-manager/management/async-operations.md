@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723446"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
@@ -29,25 +29,25 @@ ms.locfileid: "88723446"
 
 请参阅 [REST API 文档](/rest/api/azure/)，了解要执行的操作的响应。
 
-获取201或202响应代码后，就可以监视操作的状态了。
+获取 201 或 202 响应代码后，就可以监视操作状态了。
 
-## <a name="url-to-monitor-status"></a>用于监视状态的 URL
+## <a name="url-to-monitor-status"></a>用来监视状态的 URL
 
-可以通过两种不同的方式监视异步操作的状态。 通过检查从原始请求返回的标头值来确定正确的方法。 首先，查找：
+可以通过两种不同的方式监视异步操作的状态。 请通过检查从原始请求返回的标头值来确定正确的方法。 首先，查找：
 
 * `Azure-AsyncOperation` - URL，用于检查操作目前的状态。 如果操作返回此值，请使用它来跟踪操作的状态。
 * `Retry-After` - 在检查异步操作的状态之前等待的秒数。
 
 如果 `Azure-AsyncOperation` 不是标头值之一，请查找：
 
-* `Location` - URL，用于确定操作的完成时间。 仅当未返回 AsyncOperation 时才使用此值。
+* `Location` - URL，用于确定操作的完成时间。 只有在未返回 Azure-AsyncOperation 时，才使用此值。
 * `Retry-After` - 在检查异步操作的状态之前等待的秒数。
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation 请求和响应
 
-如果你有来自 `Azure-AsyncOperation` 标头值的 URL，请将 GET 请求发送到该 url。 使用中的值 `Retry-After` 来计划检查状态的频率。 你将获得一个指示操作状态的响应对象。 使用 URL 检查操作的状态时，将返回不同的响应 `Location` 。 有关位置 URL 响应的详细信息，请参阅 [创建存储帐户 (202，并在) 之后重试 ](#create-storage-account-202-with-location-and-retry-after)。
+如果你有一个来自 `Azure-AsyncOperation` 标头值的 URL，请向该 URL 发送 GET 请求。 使用来自 `Retry-After` 的值计划以何频率检查状态。 你将得到一个指示操作状态的响应对象。 使用 `Location` URL 检查操作状态时，将返回一个不同的响应。 若要详细了解来自某个位置 URL 的响应，请参阅[创建存储帐户（202，位置和重试间隔）](#create-storage-account-202-with-location-and-retry-after)。
 
-响应属性可能有所不同，但始终包括异步操作的状态。
+响应属性可能会变化，但始终包括异步操作的状态。
 
 ```json
 {
@@ -55,7 +55,7 @@ ms.locfileid: "88723446"
 }
 ```
 
-下面的示例显示了可能从操作返回的其他值：
+以下示例显示可能从操作返回的其他值：
 
 ```json
 {
@@ -75,23 +75,23 @@ ms.locfileid: "88723446"
 }
 ```
 
-当状态为“已失败”或“已取消”时，返回错误对象。 所有其他值都是可选的。 收到的响应看起来可能与示例不同。
+当状态为“已失败”或“已取消”时，返回错误对象。 所有其他值都是可选的。 你收到的响应看起来可能不同于示例。
 
 ## <a name="provisioningstate-values"></a>provisioningState 值
 
 用于创建、更新或删除（PUT、PATCH、DELETE）资源的操作通常返回 `provisioningState` 值。 完成操作后，将返回以下三个值之一：
 
 * 已成功
-* 已失败
+* 失败
 * 已取消
 
-所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”****。
+所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”  。
 
 ## <a name="example-requests-and-responses"></a>示例请求和响应
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现 202 响应）
 
-此示例演示如何确定 [虚拟机的启动操作](/rest/api/compute/virtualmachines/start)的状态。 初始请求采用以下格式：
+此示例演示了如何确定[虚拟机的启动操作](/rest/api/compute/virtualmachines/start)的状态。 初始请求采用以下格式：
 
 ```HTTP
 POST 
@@ -123,7 +123,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
-此示例演示如何确定部署操作的状态以将 [资源部署](/rest/api/resources/deployments/createorupdate) 到 Azure。 初始请求采用以下格式：
+此示例演示了将资源部署到 Azure 时，如何确定[部署操作](/rest/api/resources/deployments/createorupdate)的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -167,7 +167,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现 202 响应）
 
-此示例演示如何确定 [存储帐户](/rest/api/storagerp/storageaccounts/create)的 "创建" 操作的状态。 初始请求采用以下格式：
+此示例演示了如何确定[存储帐户的创建操作](/rest/api/storagerp/storageaccounts/create)的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -206,4 +206,4 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 ## <a name="next-steps"></a>后续步骤
 
 * 有关每个 REST 操作的文档，请参阅 [REST API 文档](/rest/api/azure/)。
-* 有关通过资源管理器 REST API 部署模板的信息，请参阅 [使用资源管理器模板部署资源和 REST API 资源管理器](../templates/deploy-rest.md)。
+* 有关通过资源管理器 REST API 部署模板的信息，请参阅[使用资源管理器模板和资源管理器 REST API 部署资源](../templates/deploy-rest.md)。

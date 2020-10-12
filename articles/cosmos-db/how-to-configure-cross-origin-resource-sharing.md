@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
 ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85390867"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>配置跨源资源共享 (CORS)
 
-跨源资源共享 (CORS) 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为“同源策略”的安全限制，防止网页调用不同域中的 API。 但是，CORS 提供了一种安全的方式，允许源域调用另一个域中的 API。 Azure Cosmos DB 中的核心（SQL） API 现在支持跨域资源共享（CORS），方法是使用 "allowedOrigins" 标头。 为 Azure Cosmos 帐户启用 CORS 支持后，仅对经过身份验证的请求进行评估，以根据指定的规则确定是否允许这些请求。
+跨源资源共享 (CORS) 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为“同源策略”的安全限制，防止网页调用不同域中的 API。 但是，CORS 提供了一种安全的方式，允许源域调用另一个域中的 API。 Azure Cosmos DB 的 Core (SQL) API 现在支持使用 "allowedOrigins" 标头 (CORS) 的跨域资源共享。 为 Azure Cosmos 帐户启用 CORS 支持后，仅对经过身份验证的请求进行评估，以根据指定的规则确定是否允许这些请求。
 
 可以使用 Azure 门户或 Azure 资源管理器模板配置跨源资源共享 (CORS) 设置。 对于使用 Core (SQL) API 的 Cosmos 帐户，Azure Cosmos DB 支持在 Node.js 和基于浏览器的环境中均可使用的 JavaScript 库。 使用网关模式时，该库现在可以充分利用 CORS 支持。 无需客户端配置即可使用此功能。 借助 CORS 支持，来自浏览器的资源可以通过 [JavaScript 库](https://www.npmjs.com/package/@azure/cosmos)直接访问 Azure Cosmos DB 或直接通过 [REST API](/rest/api/cosmos-db/) 进行访问来执行简单操作。
 
@@ -28,7 +28,7 @@ ms.locfileid: "85390867"
 
 1. 导航到 Azure Cosmos DB 帐户。 打开“CORS”  边栏选项卡。
 
-2. 指定可以对 Azure Cosmos DB 帐户执行跨源调用的源的逗号分隔列表。 例如：`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com`。 还可以使用通配符“\*”允许所有源，然后选择“提交”****。 
+2. 指定可以对 Azure Cosmos DB 帐户执行跨源调用的源的逗号分隔列表。 例如：`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com`。 你还可以使用通配符 " \* " 允许所有来源并选择 " **提交**"。 
 
    > [!NOTE]
    > 目前，不能将通配符用作域名的一部分。 例如，尚不支持 `https://*.mydomain.net` 格式。 

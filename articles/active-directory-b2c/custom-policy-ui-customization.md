@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388878"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
@@ -32,14 +32,14 @@ ms.locfileid: "85388878"
 
 ### <a name="4-modify-the-extensions-file"></a>4. 修改扩展文件
 
-若要配置 UI 自定义，请将基文件中的**ContentDefinition**及其子元素复制到扩展文件中。
+若要配置 UI 自定义，请将基文件中的 **ContentDefinition** 及其子元素复制到扩展文件中。
 
-1. 打开策略的基文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkBase.xml`</em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
+1. 打开策略的基文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkBase.xml`</em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取 [自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜索并复制 ContentDefinitions**** 元素的全部内容。
 1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml**。 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
 1. 粘贴复制为**BuildingBlocks**元素的子元素的**ContentDefinitions**元素的全部内容。
 1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition**** 元素。
-1. 将 LoadUri**** 的值更改为上传到存储的 HTML 文件的 URL。 例如 `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
+1. 将 LoadUri**** 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
 
     自定义策略应类似于以下代码片段：
 
@@ -79,11 +79,11 @@ ms.locfileid: "85388878"
 
 ## <a name="configure-dynamic-custom-page-content-uri"></a>配置动态自定义页面内容 URI
 
-通过使用 Azure AD B2C 自定义策略，你可以在 URL 路径中发送参数，或在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 参数可以是任何[声明解析](claim-resolver-overview.md)程序，如应用程序 ID、语言 ID 或自定义查询字符串参数（例如） `campaignId` 。
+通过使用 Azure AD B2C 自定义策略，你可以在 URL 路径中发送参数，或在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 参数可以是任何 [声明解析](claim-resolver-overview.md)程序，如应用程序 ID、语言 ID 或自定义查询字符串参数（例如） `campaignId` 。
 
 ### <a name="sending-query-string-parameters"></a>发送查询字符串参数
 
-若要发送查询字符串参数，请在[信赖方策略](relyingparty.md)中添加一个元素，如下 `ContentDefinitionParameters` 所示。
+若要发送查询字符串参数，请在 [信赖方策略](relyingparty.md)中添加一个元素，如下 `ContentDefinitionParameters` 所示。
 
 ```xml
 <RelyingParty>
@@ -133,4 +133,4 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 ## <a name="next-steps"></a>后续步骤
 
-有关可自定义的 UI 元素的详细信息，请参阅[用户流的 ui 自定义的参考指南](customize-ui-overview.md)。
+有关可自定义的 UI 元素的详细信息，请参阅 [用户流的 ui 自定义的参考指南](customize-ui-overview.md)。

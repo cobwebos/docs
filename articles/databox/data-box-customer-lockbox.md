@@ -9,10 +9,10 @@ ms.date: 07/10/2020
 ms.author: alkohli
 ms.subservice: pod
 ms.openlocfilehash: 9c95760d03db976b59537adcecbe39a942b72126
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86209275"
 ---
 # <a name="use-customer-lockbox-for-azure-data-box-preview"></a>使用 Azure Data Box (预览的客户密码箱) 
@@ -37,22 +37,22 @@ Microsoft 的支持和 Data Box 运营团队通常不会访问客户数据。 �
 在开始之前，请确保：
 
 1. 按照中的说明创建了 Azure Data Box 顺序：
-    1. [教程：按顺序 Azure Data Box](data-box-deploy-ordered.md)导入订单。
-    1. [教程：订单 Azure Data Box](data-box-deploy-export-ordered.md)的出口订单。
+    1. [教程：按顺序 Azure Data Box](data-box-deploy-ordered.md) 导入订单。
+    1. [教程：订单 Azure Data Box](data-box-deploy-export-ordered.md) 的出口订单。
 
 2. 已为 Data Box 配置客户密码箱。 这是一项可选服务。 
 
-    1. 客户密码箱当前以预览版提供 Data Box 服务。 若要为你的组织启用 Data Box 客户密码箱，请注册[Azure 公共预览版的客户密码箱](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Kwz02N6XVCoKNpxIpqE_hUNzlTUUNYVkozOVlFNVRSWDVHRkkwTFQyViQlQCN0PWcu)。
+    1. 客户密码箱当前以预览版提供 Data Box 服务。 若要为你的组织启用 Data Box 客户密码箱，请注册 [Azure 公共预览版的客户密码箱](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Kwz02N6XVCoKNpxIpqE_hUNzlTUUNYVkozOVlFNVRSWDVHRkkwTFQyViQlQCN0PWcu)。
     2. 对于具有最小开发人员的 Azure 支持计划的所有客户，客户密码箱自动提供。 <!--How do you enable Lockbox? change this for Azure Data Box, perhaps you need a different support plan When you have an eligible support plan, no action is required by you to enable Customer Lockbox. Customer Lockbox requests are initiated by a Microsoft engineer if this action is needed to progress a support ticket that is filed from somebody in your organization.-->
 
-3. 已为此问题打开服务请求或支持票证。 有关支持票证的信息，请参阅[File a service request for Data Box](data-box-disk-contact-microsoft-support.md)。
+3. 已为此问题打开服务请求或支持票证。 有关支持票证的信息，请参阅 [File a service request for Data Box](data-box-disk-contact-microsoft-support.md)。
 
 
 ## <a name="track-approve-request-via-lockbox"></a>跟踪、通过密码箱批准请求
 
 若要跟踪和批准请求以访问客户数据，请执行以下步骤：
 
-1. Microsoft 检测到在 Azure 数据中心上传或下载数据时出现问题。 例如，在**数据复制**阶段，Data Box 订单暂停。 
+1. Microsoft 检测到在 Azure 数据中心上传或下载数据时出现问题。 例如，在 **数据复制** 阶段，Data Box 订单暂停。 
 
     支持工程师通过支持会话连接到 Data Box，并尝试通过使用标准工具和遥测来解决该问题。 如果 Data Box 磁盘已锁定且共享不可访问，则支持工程师会创建一个密码箱请求。 
  
@@ -62,7 +62,7 @@ Microsoft 的支持和 Data Box 运营团队通常不会访问客户数据。 �
 
     ![Azure 门户中的请求](./media/data-box-customer-lockbox/3-lockbox-request-azure-portal.png)
 
-    若要从门户审批密码箱请求，可以选择 "**批准**"。
+    若要从门户审批密码箱请求，可以选择 " **批准**"。
 
     ![批准请求](./media/data-box-customer-lockbox/4-lockbox-request-details-azure-portal.png)
 
@@ -76,7 +76,7 @@ Microsoft 的支持和 Data Box 运营团队通常不会访问客户数据。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Microsoft Azure 的客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Microsoft Azure 客户密码箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
 <!--- [Approve, audit support access requests to VMs using Customer Lockbox for Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/)-->
 

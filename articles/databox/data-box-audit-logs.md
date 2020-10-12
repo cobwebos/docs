@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbe9ab649a708fb36b1c9e4fe89bccadc7ea90
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86209304"
 ---
 # <a name="audit-logs-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的审核日志
@@ -30,11 +30,11 @@ Data Box 或 Data Box Heavy 顺序在其操作过程中完成以下步骤：订�
 
 在 Data Box 上，收集以下日志：
 
-- **系统日志**-Data Box 作为基于 Windows 的设备，将记录所有硬件、软件和系统事件。 系统审核日志中收集并报告了一组这些事件。 
+- **系统日志** -Data Box 作为基于 Windows 的设备，将记录所有硬件、软件和系统事件。 系统审核日志中收集并报告了一组这些事件。 
 
-- **安全**Data Box 成为基于 Windows 的设备，将记录所有安全事件。 在安全审核日志中收集和报告一组这些事件。 
+- **安全** Data Box 成为基于 Windows 的设备，将记录所有安全事件。 在安全审核日志中收集和报告一组这些事件。 
 
-- **应用程序**-这些日志仅特定于 Data Box。 这些日志包含设备上生成的所有事件，以响应运行的 Data Box 服务。
+- **应用程序** -这些日志仅特定于 Data Box。 这些日志包含设备上生成的所有事件，以响应运行的 Data Box 服务。
 
 下一节将讨论其中的每个日志。
 
@@ -49,7 +49,7 @@ Data Box 或 Data Box Heavy 顺序在其操作过程中完成以下步骤：订�
 |    |                              |
 |Microsoft-内核-电源  |41  |系统在无干净关闭的情况下重新启动。| 
 |    |                              |
-|Microsoft-Windows-BitLocker-驱动程序|全部|    |
+|Microsoft-Windows-BitLocker-驱动程序|All|    |
 
 ### <a name="security-logs"></a>安全日志
 
@@ -65,14 +65,14 @@ Data Box 或 Data Box Heavy 顺序在其操作过程中完成以下步骤：订�
 
 以下应用程序日志事件 Id 作为 Data Box 上包审核日志的一部分收集。     
 
-- **DataBox-审核**-包含本地 UI 中发生的事件。 
+- **DataBox-审核** -包含本地 UI 中发生的事件。 
 - **DataBox-重新设置-Audit** -包含与 Data Box 设备的重新设置相关的事件。 当通过本地 UI 重置设备时，将发生 Data Box 的重新设置。 如果要擦除已复制的数据，请选择此选项，方法是删除现有共享，然后重新创建共享作为重新设置或设备重置的一部分。
-- **DataBox** --HcsMgmt-仅在设备退回到 Azure 数据中心之前，包含仅与**准备**发送步骤相关的事件。 
+- **DataBox** --HcsMgmt-仅在设备退回到 Azure 数据中心之前，包含仅与 **准备** 发送步骤相关的事件。 
 - **Microsoft-DataBox-IfxAudit** -包含有关作业的产品的不同实体记录的消息，这些消息指示有关某些流中发生的情况的详细信息。
 
 下表汇总了各种事件提供程序以及在每种情况下收集的相应事件 Id。
 
-|事件提供程序名称    |事件 ID    | 备注 |
+|事件提供程序名称    |事件 ID    | 注意 |
 |-----------------|-----------------|-------------------|
 |Microsoft-DataBox-审核 |4624        |成功的登录。|
 |                                      |4625        |帐户登录失败。 未知的用户名或密码错误。|
@@ -83,7 +83,7 @@ Data Box 或 Data Box Heavy 顺序在其操作过程中完成以下步骤：订�
 |                                                  |                 |         |
 |Microsoft-DataBox-HcsMgmt-Audit        |65003       |准备交付状态事件 NotStarted、正在进行、失败、已取消、成功、ScanCompletedWithIssues、SucceededWithWarnings          |
 |                                                  |                 |     |
-|Microsoft-DataBox-IfxAudit    |全部 |所有事件都记录在代码中的审核日志 API |
+|Microsoft-DataBox-IfxAudit    |All |所有事件都记录在代码中的审核日志 API |
 
 下面是 (INFINEON) 审核日志的检测框架示例：
 
@@ -96,7 +96,7 @@ Data Box 或 Data Box Heavy 顺序在其操作过程中完成以下步骤：订�
 |     磁盘覆盖                          |     记录磁盘无法覆盖。|
 |     启用或禁用远程 PowerShell     |     记录与启用或禁用设备上的远程 PowerShell 相关的事件。 |
 |     获取安装阶段详细信息               |     以阶段在设备上安装软件相关事件记录在 Azure 数据中心。|
-|     解锁或锁定 BitLocker 卷           |     记录事件，以指示*basevolume*和*Hcsdata*卷的 BitLocker 状态。|
+|     解锁或锁定 BitLocker 卷           |     记录事件，以指示 *basevolume* 和 *Hcsdata* 卷的 BitLocker 状态。|
 |     净化磁盘                              |     记录了与无法删除的物理磁盘故障相关的事件，以及设备上的所有物理磁盘均已成功清除的事件。 |
 |     启用或禁用本地用户               |     记录 Storsimpleadmin 身份和 PodSupportAdminUser 的本地用户帐户的启用或禁用相关事件。| 
 |     密码重置                          |     将记录与为本地 Storsimpleadmin 身份用户成功或失败的密码重置相关的事件。 |
@@ -104,7 +104,7 @@ Data Box 或 Data Box Heavy 顺序在其操作过程中完成以下步骤：订�
 
 除了 INFINEON 审核日志之外，还会为 Data Box 收集保管链审核日志。 这些日志无法实时查看，只是在作业完成后，数据将从 Data Box 磁盘中删除。 这些日志包含 INFINEON 审核日志中包含的信息的子集。
 
-有关监管审核日志链的详细信息，请参阅[在数据擦除后获取保管链日志链](data-box-logs.md#get-chain-of-custody-logs-after-data-erasure)。
+有关监管审核日志链的详细信息，请参阅 [在数据擦除后获取保管链日志链](data-box-logs.md#get-chain-of-custody-logs-after-data-erasure)。
 
 <!-- write a few lines about order history and link out to the detailed section on order history-->
 

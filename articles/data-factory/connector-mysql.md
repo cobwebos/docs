@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jingwang
 ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89612623"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
@@ -57,7 +57,7 @@ ms.locfileid: "89612623"
 
 MySQL 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MySql** | 是 |
 | connectionString | 指定连接到 Azure Database for MySQL 实例所需的连接信息。<br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -65,11 +65,11 @@ MySQL 链接的服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必选 |
+| 属性 | 说明 | 选项 | 必须 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如，  `SSLMode=<0/1/2/3/4>` 。| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
-| SSLCert | 包含用于证明客户端标识的 SSL 证书的 pem 文件的完整路径和名称。 <br/> 若要在将此证书发送到服务器之前，指定用于加密此证书的私钥，请使用 `SSLKey` 属性。| | 是，如果使用双向 SSL 验证。 |
-| SSLKey | 文件的完整路径和名称，该文件包含用于在双向 SSL 验证过程中对客户端证书进行加密的私钥。|  | 是，如果使用双向 SSL 验证。 |
+| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`。| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
+| SSLCert | 包含用于证明客户端身份的 SSL 证书的 .pem 文件的完整路径和名称。 <br/> 若要在将此证书发送到服务器之前，指定私钥来加密此证书，请使用 `SSLKey` 属性。| | 是（如果使用双向 SSL 验证）。 |
+| SSLKey | 包含私钥（用于在双向 SSL 验证过程中对客户端证书进行加密）的文件的完整路径和名称。|  | 是（如果使用双向 SSL 验证）。 |
 | UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
 
 **示例：**
@@ -148,7 +148,7 @@ MySQL 链接的服务支持以下属性：
 
 若要从 MySQL 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MySqlTable** | 是 |
 | tableName | MySQL 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
@@ -181,10 +181,10 @@ MySQL 链接的服务支持以下属性：
 
 从 MySQL 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MySqlSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

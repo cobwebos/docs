@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.openlocfilehash: 12725c28c3e128317301bc51f9ce93f76021cc2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291361"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 托管实例
@@ -50,10 +50,10 @@ ms.locfileid: "91291361"
 * 创建 [RDS SQL Server 数据库](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)。
 * [在 Azure 门户的 Azure SQL 数据库中创建数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)或[在 SQL 托管实例中创建数据库](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)，然后创建名为“AdventureWorks2012”的空数据库。 
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更高版本。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络。 若要迁移到 SQL 托管实例，请确保在用于 SQL 托管实例的同一虚拟网络的不同子网中创建 DMS 实例。  或者，如果对 DMS 使用不同的虚拟网络，则需要在两个虚拟网络之间创建虚拟网络对等互连。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Microsoft Azure 虚拟网络。 若要迁移到 SQL 托管实例，请确保在用于 SQL 托管实例的同一虚拟网络的不同子网中创建 DMS 实例。  或者，如果对 DMS 使用不同的虚拟网络，则需要在两个虚拟网络之间创建虚拟网络对等互连。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务 [终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 添加到将在其中预配服务的子网中：
+    > 在虚拟网络设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，则请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到要在其中预配该服务的子网：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点

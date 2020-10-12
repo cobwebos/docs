@@ -12,17 +12,17 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 20cb5f70a5844cb2d56fc9ff357fcaf640a6c56b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388572"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)来启用 ADFS 用户帐户登录。 可通过将 [SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)添加到自定义策略来实现登录。
+本文介绍如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自定义策略](custom-policy-overview.md) 来启用 ADFS 用户帐户登录。 可通过将 [SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)添加到自定义策略来实现登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,13 +34,13 @@ ms.locfileid: "85388572"
 
 需要将你的证书存储在 Azure AD B2C 租户中。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择“策略密钥”，然后选择“添加”。
 6. 对于“选项”，请选择 `Upload`。
-7. 输入策略密钥的**名称**。 例如 `SamlCert`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+7. 输入策略密钥的**名称**。 例如，`SamlCert`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 浏览并选择带有私钥的证书 .pfx 文件。
 9. 单击“创建”。
 
@@ -159,7 +159,7 @@ ms.locfileid: "85388572"
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
 
-    将**TechnicalProfileReferenceId**的值更新为之前创建的技术配置文件的 ID。 例如，`Contoso-SAML2`。
+    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Contoso-SAML2`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -176,7 +176,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
 - 将 your-tenant**** 替换为你的租户名称，例如 your-tenant.onmicrosoft.com。
 - 将 your-policy 替换为你的策略名称。 例如，B2C_1A_signup_signin_adfs。
-- **你的技术配置文件**，其中包含 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
+- **你的技术配置文件** ，其中包含 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
 
 打开浏览器并导航到此 URL。 确保键入正确的 URL 并且你有权访问 XML 元数据文件。 要通过使用 ADFS 管理管理单元添加新的依赖方信任并手动配置设置，请在联合服务器上执行以下过程。 本地计算机上“管理员”**** 中的成员身份或同等身份是完成此过程所需的最低要求。
 
@@ -188,7 +188,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 6. 在“选择访问控制策略”**** 页上选择一个策略，然后单击“下一步”****。
 7. 在“准备好添加信任”**** 页上，复查设置，然后单击“下一步”**** 来保存信赖方信任的信息。
 8. 在“完成”**** 页上，单击“关闭”****，此操作将自动显示“编辑声明规则”**** 对话框。
-9. 选择“添加规则”****。
+9. 选择 " **添加规则**"。
 10. 在“声明规则模板”**** 中，选择“以声明方式发送 LDAP 特性”****。
 11. 提供“声明规则名称”****。 有关“属性存储”****，选择“选择 Active Directory”**** 添加以下声明，然后单击“完成”**** 和“确定”****。
 
@@ -200,7 +200,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
     | E-Mail-Address | 电子邮件 |
     | Display-Name | name |
 
-    请注意，这些名称将不会显示在 "传出声明类型" 下拉列表中。 需要在中手动键入。 （下拉列表实际上可编辑）。
+    请注意，这些名称将不会显示在 "传出声明类型" 下拉列表中。 需要在中手动键入。  (下拉列表实际上) 可编辑。
 
 12.  根据证书类型，可能需要设置哈希算法。 在信赖方信任（B2C 演示）属性窗口上，选择“高级”选项卡并将“安全哈希算法”更改为 `SHA-256`，然后单击“确定”************。
 13. 在“服务器管理器”中，选择“工具”****，然后选择“ADFS 管理”****。

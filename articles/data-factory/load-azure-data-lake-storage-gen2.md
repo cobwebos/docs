@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660462"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
@@ -80,7 +80,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
    3. 单击“测试连接”以验证设置，然后选择“创建” 。
 
       ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. 随即会显示新创建的 AmazonS3 连接。 选择“下一步”。 
+   4. 随即会显示新创建的 AmazonS3 连接。 选择“**下一步**”。 
 
 5. 在“选择输入文件或文件夹”页上，浏览到要复制的文件夹和文件。 选中文件夹/文件，然后选择“选择”。
 

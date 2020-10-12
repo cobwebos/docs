@@ -7,10 +7,10 @@ ms.date: 9/13/2020
 ms.topic: article
 ms.service: api-management
 ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341304"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
@@ -37,7 +37,7 @@ template:
 ```
 
 
-## <a name="distributed-application-runtime-dapr-integration-policies"></a>分布式应用程序运行时 (Dapr) 集成策略
+## <a name="distributed-application-runtime-dapr-integration-policies"></a>分布式 Application Runtime (Dapr) 集成策略
 
 -  向[服务发送请求](api-management-dapr-policies.md#invoke)：使用 Dapr 运行时找到 Dapr 微服务并可靠地与之通信。 若要详细了解 Dapr 中的服务调用，请参阅此 [自述](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) 文件中的说明。
 -  [将消息发送到发布/订阅主题](api-management-dapr-policies.md#pubsub)：使用 Dapr 运行时将消息发布到发布/订阅主题。 若要详细了解 Dapr 中的发布/订阅消息，请参阅此 [自述](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) 文件中的说明。
@@ -91,8 +91,8 @@ template:
 
 | 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
-| backend-id       | 必须设置为 "dapr"           | 是      | 空值     |
-| dapr-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 参数。| 是 | 空值 |
+| backend-id       | 必须设置为 "dapr"           | 是      | 不适用     |
+| dapr-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
 | dapr-方法      | 要在目标微服务上调用的方法的名称或 URL。 映射到 Dapr 中的 [方法名称](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 参数。| 是 | 空值 |
 
 ### <a name="usage"></a>使用情况
@@ -150,7 +150,7 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 说明  | 必需 |
+| 元素             | 说明  | 必须 |
 |---------------------|--------------|----------|
 | 发布到 dapr     | Root 元素 | 是      |
 
@@ -232,7 +232,7 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 说明  | 必需 |
+| 元素             | 说明  | 必须 |
 |---------------------|--------------|----------|
 | dapr-binding | Root 元素 | 是      |
 | metadata            | 以键/值对的形式绑定特定元数据。 映射到 Dapr 中的 [元数据](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 属性。 | 否 |
@@ -243,7 +243,7 @@ template:
 
 | 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
-| name            | 目标绑定名称。 必须与 Dapr 中 [定义](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) 的绑定的名称相匹配。           | 是      | 空值     |
+| name            | 目标绑定名称。 必须与 Dapr 中 [定义](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) 的绑定的名称相匹配。           | 是      | 不适用     |
 | operation       | 目标操作名称 (绑定特定) 。 映射到 Dapr 中的 [操作](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 属性。 | 否 | 无 |
 | ignore-error     | 如果设置为， `true` 则在从 Dapr 运行时收到错误时指示策略不触发 ["错误时"](api-management-error-handling-policies.md) 部分 | 否 | `false` |
 | response-variable-name | 用于存储来自 Dapr 运行时的响应的 [Variables](api-management-policy-expressions.md#ContextVariables) 集合项的名称 | 否 | 无 |

@@ -12,17 +12,17 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eb402fae083e2c1c57e47aa8ee6f7cef08d5323d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387960"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Twitter 帐户的登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)为 Twitter 帐户的用户启用登录。
+本文说明如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自定义策略](custom-policy-overview.md) 为 Twitter 帐户的用户启用登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,10 +34,10 @@ ms.locfileid: "85387960"
 若要将 Twitter 用作 Azure AD B2C 中的身份提供程序，则需要创建 Twitter 应用程序。
 
 1. 使用 Twitter 帐户凭据登录到 [Twitter 开发人员](https://developer.twitter.com/en/apps)网站。
-2. 选择“创建应用”。****
+2. 选择 "  **创建应用**"。
 3. 输入“应用名称”和“应用程序说明”********。
-4. 在“网站 URL”**** 中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如 `https://contosob2c.b2clogin.com`。
-5. 对于“回调 URL”****，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-policy-Id` 替换为你的策略的标识符。 例如 `b2c_1A_signup_signin_twitter`。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+4. 在“网站 URL”**** 中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如，`https://contosob2c.b2clogin.com`。
+5. 对于“回调 URL”****，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-policy-Id` 替换为你的策略的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
 6. 在页面底部，阅读并接受条款，然后选择“创建”。****
 7. 在“应用详细信息”**** 页上，选择“编辑”>“编辑详细信息”****，勾选“启用 Twitter 登录”**** 框，然后选择“保存”****。
 8. 选择“密钥和令牌”**** 并记录“使用者 API 密钥”**** 和“使用者 API 密钥”**** 的值，以便稍后使用。
@@ -46,13 +46,13 @@ ms.locfileid: "85387960"
 
 你需要存储前面在 Azure AD B2C 租户中记录的机密密钥。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择“策略密钥”，然后选择“添加”。
 6. 对于“选项”，请选择 `Manual`。
-7. 输入策略密钥的**名称**。 例如 `TwitterSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+7. 输入策略密钥的**名称**。 例如，`TwitterSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密。
 9. 在“密钥用法”处选择 `Encryption`。
 10. 单击“创建”。
@@ -125,7 +125,7 @@ ms.locfileid: "85387960"
 2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
-5. 重命名用户旅程的 ID。 例如 `SignUpSignInTwitter`。
+5. 重命名用户旅程的 ID。 例如，`SignUpSignInTwitter`。
 
 ### <a name="display-the-button"></a>显示按钮
 
@@ -149,7 +149,7 @@ ms.locfileid: "85387960"
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
 
-    将**TechnicalProfileReferenceId**的值更新为之前创建的技术配置文件的 ID。 例如 `Twitter-OAUTH1`。
+    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Twitter-OAUTH1`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 

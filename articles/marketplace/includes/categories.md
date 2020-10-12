@@ -10,10 +10,10 @@ ms.custom: include file
 author: anbene
 ms.author: mingshen
 ms.openlocfilehash: 763ee108e1e2899bb2268ae5e6236f74a73e4b44
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498034"
 ---
 | [**Azure 市场**](https://azuremarketplace.microsoft.com/marketplace/apps)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) |
@@ -34,7 +34,7 @@ ms.locfileid: "87498034"
 | &nbsp;&nbsp;数据准备 | &nbsp;&nbsp;税 & 审核 |
 | &nbsp;&nbsp;知识挖掘 | &nbsp;&nbsp;法规 |
 | &nbsp;&nbsp;ML 操作 | &nbsp;&nbsp;数据，调控 & 隐私 |
-| **区块链**  | &nbsp;&nbsp;运行状况 & 安全 |
+| 区块链  | &nbsp;&nbsp;运行状况 & 安全 |
 | &nbsp;&nbsp;应用加速器 | **Customer Service**  |
 | &nbsp;&nbsp;单节点分类帐 | &nbsp;&nbsp;联系人中心 |
 | &nbsp;&nbsp;多节点分类帐 | &nbsp;&nbsp;面对面服务 |
@@ -79,7 +79,7 @@ ms.locfileid: "87498034"
 | **迁移**  | &nbsp;&nbsp;资产 & 生产管理 |
 | &nbsp;&nbsp;数据迁移 | &nbsp;&nbsp;需求预测 |
 | **混合现实**  | &nbsp;&nbsp;信息管理 & 连接 |
-| **联网**  | &nbsp;&nbsp;规划、采购 & 报告 |
+| **网络**  | &nbsp;&nbsp;规划、采购 & 报告 |
 | &nbsp;&nbsp;设备管理器 | &nbsp;&nbsp;优质 & 服务管理 |
 | &nbsp;&nbsp;连接 | &nbsp;&nbsp;销售 & 订单管理 |
 | &nbsp;&nbsp;道 | &nbsp;&nbsp;运输 & 仓库管理 |
@@ -92,7 +92,7 @@ ms.locfileid: "87498034"
 | &nbsp;&nbsp;备份 & 恢复 | &nbsp;&nbsp;游戏化 |
 | &nbsp;&nbsp;企业混合存储 | **Sales** |
 | &nbsp;&nbsp;文件共享 | &nbsp;&nbsp;销售 |
-| &nbsp;&nbsp;数据生命周期管理 | &nbsp;&nbsp;配置、价格、报价（CPQ） |
+| &nbsp;&nbsp;数据生命周期管理 | &nbsp;&nbsp;配置、定价、报价 (CPQ)  |
 | **Web**  | &nbsp;&nbsp;合同管理 |
 | &nbsp;&nbsp;Cms & 博客 | &nbsp;&nbsp;CRM |
 | &nbsp;&nbsp;入门 Web 应用 | &nbsp;&nbsp;电子商务 |

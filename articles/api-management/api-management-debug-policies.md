@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341302"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>在 Visual Studio Code 中调试 Azure API 管理策略
@@ -28,7 +28,7 @@ Azure API 管理中的[策略](api-management-policies.md)提供了强大的功�
 > [!NOTE]
 > 此功能目前以公共预览版提供。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 首先按照本 [教程](get-started-create-service-instance.md) 创建 API 管理开发人员层实例。
 

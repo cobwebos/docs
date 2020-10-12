@@ -5,15 +5,15 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87003315"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Azure 区块链工作台数据库视图
 
-Azure 区块链工作台预览版将数据从分布式分类帐传递到*脱离链*的 SQL DB 数据库。 使用脱离链数据库可以使用 SQL 和现有工具（如[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)）与区块链数据进行交互。
+Azure 区块链工作台预览版将数据从分布式分类帐传递到 *脱离链* 的 SQL DB 数据库。 使用脱离链数据库可以使用 SQL 和现有工具（如 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)）与区块链数据进行交互。
 
 Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执行查询的数据。 这些视图经过很大力度的非规范化，因此，可以快速轻松地使用它们开始生成报告、分析，或者结合现有工具使用区块链数据，而无需重新培训数据库工作人员。
 

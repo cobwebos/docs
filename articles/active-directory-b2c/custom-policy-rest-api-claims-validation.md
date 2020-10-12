@@ -12,17 +12,17 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388912"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>演练：在 Azure AD B2C 用户旅程中集成 REST API 声明交换来验证用户输入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-支持 Azure Active Directory B2C （Azure AD B2C）的标识体验框架（IEF）使标识开发人员能够在用户旅程中集成与 RESTful API 的交互。  本演练结束时，你将能够创建一个 Azure AD B2C 用户旅程，它与[RESTful 服务](custom-policy-rest-api-intro.md)交互以验证用户输入。
+标识体验框架 (IEF) 支持 Azure Active Directory B2C (Azure AD B2C) 允许标识开发人员在用户旅程中集成与 RESTful API 的交互。  本演练结束时，你将能够创建一个 Azure AD B2C 用户旅程，它与 [RESTful 服务](custom-policy-rest-api-intro.md) 交互以验证用户输入。
 
 在此方案中，我们将添加一项功能，以便用户在 Azure AD B2C 注册页面中输入会员号。 我们将通过将此数据发送到 REST API 来验证是否已将此电子邮件和会员号组合映射到促销代码。 如果 REST API 查找此用户的促销代码，它将返回到 Azure AD B2C。 最后，促销代码将插入到令牌声明中，以便应用程序使用。
 
@@ -55,7 +55,7 @@ REST API 验证数据后，就必须返回 HTTP 200 (Ok)，其中包含以下 JS
 }
 ```
 
-如果验证失败，则 REST API 必须返回带有 JSON 元素的 HTTP 409 （冲突） `userMessage` 。 IEF 需要 `userMessage` REST API 返回的声明。 如果验证失败，则此声明将以字符串的形式呈现给用户。
+如果验证失败，则 REST API 必须返回与 JSON 元素) 的 HTTP 409 (冲突 `userMessage` 。 IEF 需要 `userMessage` REST API 返回的声明。 如果验证失败，则此声明将以字符串的形式呈现给用户。
 
 ```json
 {
@@ -95,7 +95,7 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 
 ## <a name="configure-the-restful-api-technical-profile"></a>配置 RESTful API 技术配置文件 
 
-[Restful 技术配置文件](restful-technical-profile.md)提供与你自己的 Restful 服务的交互支持。 Azure AD B2C 在 `InputClaims` 集合中将数据发送到 RESTful 服务，在 `OutputClaims` 集合中接收返回的数据。 查找**ClaimsProviders**元素并添加新的声明提供程序，如下所示：
+[Restful 技术配置文件](restful-technical-profile.md)提供与你自己的 Restful 服务的交互支持。 Azure AD B2C 在 `InputClaims` 集合中将数据发送到 RESTful 服务，在 `OutputClaims` 集合中接收返回的数据。 查找 **ClaimsProviders** 元素并添加新的声明提供程序，如下所示：
 
 ```xml
 <ClaimsProvider>
@@ -134,7 +134,7 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 
 ## <a name="validate-the-user-input"></a>验证用户输入
 
-若要在注册期间获得用户的会员号，必须允许用户在屏幕上输入此数据。 将**loyaltyId**输出声明添加到 "现有注册技术配置文件" 部分的元素，将其添加到注册页面 `OutputClaims` 。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。  
+若要在注册期间获得用户的会员号，必须允许用户在屏幕上输入此数据。 将 **loyaltyId** 输出声明添加到 "现有注册技术配置文件" 部分的元素，将其添加到注册页面 `OutputClaims` 。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。  
 
 将验证技术配置文件引用添加到注册技术配置文件，这将调用 `REST-ValidateProfile` 。 新验证技术配置文件将添加到 `<ValidationTechnicalProfiles>` 基本策略中定义的集合的顶部。 此行为意味着，只有在成功验证后，Azure AD B2C 在目录中创建帐户。   
 
@@ -221,12 +221,12 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“标识体验框架”。
-1. 选择 "**上载自定义策略**"，然后上传所更改的策略文件： " *TrustFrameworkExtensions.xml*" 和 " *SignUpOrSignin.xml*"。 
+1. 选择 " **上载自定义策略**"，然后上传所更改的策略文件： " *TrustFrameworkExtensions.xml*" 和 " *SignUpOrSignin.xml*"。 
 1. 选择已上传的注册或登录策略，并单击“立即运行”按钮。
 1. 现在，应该可以使用电子邮件地址注册。
-1. 单击 "**立即注册**" 链接。
-1. 在 "**会员 ID**" 中，键入1234，然后单击 "**继续**"。 此时，应会收到验证错误消息。
-1. 更改为其他值，然后单击 "**继续**"。
+1. 单击 " **立即注册** " 链接。
+1. 在 " **会员 ID**" 中，键入1234，然后单击 " **继续**"。 此时，应会收到验证错误消息。
+1. 更改为其他值，然后单击 " **继续**"。
 1. 发送回应用程序的令牌包含 `promoCode` 声明。
 
 ```json

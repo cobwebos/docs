@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
 ms.openlocfilehash: 58f807a5a036f14af9baede604debe9d577cdbf6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000679"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
@@ -149,7 +149,7 @@ namespace reducer
 
 1. 在 Visual Studio 中，选择“视图” > “服务器资源管理器”。 
 
-1. 右键单击 " **Azure**"，选择 " **连接到 Microsoft Azure 订阅 ...**"，然后完成登录过程。
+1. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。  
 
 1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
 

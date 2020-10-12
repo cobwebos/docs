@@ -7,19 +7,19 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85957172"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件网格绑定
 
 本参考介绍了如何在 Azure Functions 中处理[事件网格](../event-grid/overview.md)事件。 有关如何在 HTTP 终结点中处理事件网格消息的详细信息，请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。
 
-事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。  发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。
+事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。
 
-事件处理程序接收并处理事件。  Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 在本参考中，你将了解如何使用事件网格触发器在从事件网格接收到事件时调用函数，并使用输出绑定将事件发送到[事件网格自定义主题](../event-grid/post-to-custom-topic.md)。
+事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 在本参考中，你将了解如何使用事件网格触发器在从事件网格接收到事件时调用函数，并使用输出绑定将事件发送到[事件网格自定义主题](../event-grid/post-to-custom-topic.md)。
 
 如果愿意，你可以使用 HTTP 触发器处理事件网格事件；请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。 目前，在以 [CloudEvents 架构](../event-grid/cloudevents-schema.md#azure-functions)传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
@@ -34,11 +34,11 @@ ms.locfileid: "85957172"
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
-使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
+使用触发器和绑定需要引用相应的程序包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | 安装[NuGet 包]版本2。x | |
+| C#                                              | 安装 [NuGet 包]版本 2.x | |
 | C # 脚本，Java，JavaScript，Python，PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
 | C# 脚本（Azure 门户中仅限联机）         | 添加绑定                            | 若要更新现有绑定扩展而不必重新发布函数应用，请参阅[更新扩展]。 |
 

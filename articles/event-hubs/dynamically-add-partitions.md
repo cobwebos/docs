@@ -4,10 +4,10 @@ description: 本文介绍如何将分区动态添加到 Azure 事件中心的某
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002533"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>动态将分区添加到 Azure 事件中心的事件中心（Apache Kafka 主题）
@@ -64,13 +64,13 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
 ## <a name="event-hubs-clients"></a>事件中心客户端
 让我们看看事件中心上的分区计数更新时，事件中心客户端的行为。 
 
-向现有的偶数中心添加分区时，事件中心客户端从服务接收， `MessagingException` 通知客户端实体元数据（实体是事件中心，元数据是分区信息）已更改。 客户端将自动重新打开 AMQP 链接，然后该链接会选取已更改的元数据信息。 然后客户端正常运行。
+向现有的事件中心添加分区后，事件中心客户端会从服务接收到 `MessagingException`，其作用是通知客户端：实体元数据（实体是事件中心，元数据是分区信息）已更改。 客户端将自动重新打开 AMQP 链接，然后该链接会选取已更改的元数据信息。 然后客户端正常运行。
 
 ### <a name="senderproducer-clients"></a>发送方/生成者客户端
 事件中心提供三个发送方选项：
 
 - **分区发送方** - 在此方案中，客户端直接向分区发送事件。 尽管分区是可识别的并且可以直接向其发送事件，但我们不建议采用这种模式。 添加分区不会影响此方案。 建议重启应用程序，以便其能够检测新添加的分区。 
-- **分区密钥发送方** - 在此方案中，客户端使用密钥发送事件，以便属于该密钥的所有事件最终位于同一分区。 在这种情况下，服务将对密钥进行哈希处理，并路由到相应的分区。 由于哈希更改，分区计数更新可能导致出现不序问题。 因此，如果在意排序，请在增加分区计数之前确保应用程序使用现有分区中的所有事件。
+- **分区密钥发送方** - 在此方案中，客户端使用密钥发送事件，以便属于该密钥的所有事件最终位于同一分区。 在这种情况下，服务将对密钥进行哈希处理，并路由到相应的分区。 由于哈希更改，分区计数更新可能导致出现乱序问题。 因此，如果在意排序，请在增加分区计数之前确保应用程序使用现有分区中的所有事件。
 - **轮循机制发送方（默认）** - 在此方案中，事件中心服务以轮询方式在分区间发送事件。 事件中心服务可感知分区计数更改，并在分区计数更改后的几秒钟内发送到新的分区。
 
 ### <a name="receiverconsumer-clients"></a>接收方/使用者客户端
@@ -100,7 +100,7 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
     > 虽然现有数据保持了排序状态，但由于添加了分区，分区计数更改，因此在这之后哈希的消息的分区哈希将中断。
 - 在以下情况下，建议将分区添加到现有主题或事件中心实例：
     - 使用轮循机制（默认）的方法来发送事件时
-     - Kafka 默认分区策略，示例–粘滞 Assignor 策略
+     - Kafka 默认分区策略，例如“粘滞分配器”策略
 
 
 ## <a name="next-steps"></a>后续步骤

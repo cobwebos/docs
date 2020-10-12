@@ -1,6 +1,6 @@
 ---
-title: 将 CoreOS VM 加入 Azure AD 域服务 |Microsoft Docs
-description: 了解如何配置 CoreOS 虚拟机并将其加入到 Azure AD 域服务托管域。
+title: 将 CoreOS VM 加入到 Azure AD 域服务 | Microsoft Docs
+description: 了解如何配置 CoreOS Linux 虚拟机并将其加入到 Azure AD 域服务托管域。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,17 +12,17 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: iainfou
 ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005100"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 CoreOS 虚拟机加入 Azure Active Directory 域服务托管域
 
-若要让用户使用一组凭据登录到 Azure 中的虚拟机（Vm），可以将 Vm 加入到 Azure Active Directory 域服务（Azure AD DS）托管域。 将 VM 加入到 Azure AD DS 托管域时，可以使用域中的用户帐户和凭据来登录和管理服务器。 还会应用托管域中的组成员身份，以便控制对 VM 上的文件或服务的访问。
+若要让用户使用一组凭据登录到 Azure 中的虚拟机 (VM)，可以将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 托管域。 将 VM 加入到 Azure AD DS 托管域时，可以使用域中的用户帐户和凭据来登录和管理服务器。 托管域中的组成员身份也应用于控制对 VM 上的文件或服务的访问。
 
-本文介绍了如何将 CoreOS VM 加入到托管域。
+本文介绍如何将 CoreOS VM 加入到托管域。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,35 +48,35 @@ ms.locfileid: "87005100"
 
 创建 VM 时，请注意虚拟网络设置，确保 VM 可以与托管域通信：
 
-* 将 VM 部署到相同的或对等互连的虚拟网络，在该网络中已启用 Azure AD 域服务。
+* 将该 VM 部署到已启用 Azure AD 域服务的虚拟网络或与其对等互连的虚拟网络。
 * 将 VM 部署到与 Azure AD 域服务托管域不同的子网中。
 
 部署 VM 后，请遵循使用 SSH 连接到 VM 的步骤。
 
 ## <a name="configure-the-hosts-file"></a>配置主机文件
 
-若要确保为托管域正确配置了 VM 主机名，请编辑 */etc/hosts*文件，并设置主机名：
+若要确保为托管域正确配置了 VM 主机名，请编辑“/etc/hosts”文件，并设置主机名：
 
 ```console
 sudo vi /etc/hosts
 ```
 
-在*hosts*文件中，更新*localhost*地址。 如下示例中：
+在 hosts 文件中，更新 localhost 地址 。 在以下示例中：
 
-* *aaddscontoso.com*是托管域的 DNS 域名。
-* *coreos*是你要加入到托管域的 coreos VM 的主机名。
+* aaddscontoso.com 是托管域的 DNS 域名。
+* coreos 是你要加入到托管域的 CoreOS VM 的主机名。
 
-请用自己的值更新这些名称：
+将以下名称更新为你自己的值：
 
 ```console
 127.0.0.1 coreos coreos.aaddscontoso.com
 ```
 
-完成后，使用编辑器的命令保存并退出*hosts*文件 `:wq` 。
+完成后，使用编辑器的 `:wq` 命令保存并退出 hosts 文件。
 
 ## <a name="configure-the-sssd-service"></a>配置 SSSD 服务
 
-更新 */Etc/sssd/sssd.conf* sssd 配置。
+更新 /etc/sssd/sssd.conf SSSD 配置。
 
 ```console
 sudo vi /etc/sssd/sssd.conf
@@ -84,12 +84,12 @@ sudo vi /etc/sssd/sssd.conf
 
 为以下参数指定你自己的托管域名：
 
-* 全部大写的*域*
-* *[域/AADDSCONTOSO]* ，其中 AADDSCONTOSO 全部大写
-* *ldap_uri*
-* *ldap_search_base*
-* *krb5_server*
-* 全部大写*krb5_realm*
+* 全部大写的域
+* [域/AADDSCONTOSO] 其中 AADDSCONTOSO 全部大写
+* ldap_uri
+* ldap_search_base
+* krb5_server
+* 全部大写的“krb5_realm”
 
 ```console
 [sssd]
@@ -120,9 +120,9 @@ krb5_realm = AADDSCONTOSO.COM
 
 ## <a name="join-the-vm-to-the-managed-domain"></a>将 VM 加入托管域
 
-更新 SSSD 配置文件后，立即将虚拟机加入到托管域。
+更新 SSSD 配置文件后，现在将虚拟机加入到托管域。
 
-1. 首先，使用 `adcli info` 命令验证你是否可以查看有关托管域的信息。 下面的示例获取域*AADDSCONTOSO.COM*的信息。 以大写形式指定你自己的托管域名：
+1. 首先，使用 `adcli info` 命令验证你是否可以查看有关托管域的信息。 下面的示例获取域“AADDSCONTOSO.COM”的信息。 以全部大写的形式指定你自己的托管域名：
 
     ```console
     sudo adcli info AADDSCONTOSO.COM
@@ -130,19 +130,19 @@ krb5_realm = AADDSCONTOSO.COM
 
    如果 `adcli info` 命令找不到托管域，请查看以下故障排除步骤：
 
-    * 请确保可从 VM 访问域。 尝试 `ping aaddscontoso.com` 查看是否返回了正答复。
-    * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，托管域在该网络中可用。
+    * 确保可从该 VM 中访问域。 尝试使用 `ping aaddscontoso.com` 查看是否返回肯定答复。
+    * 检查 VM 是否已部署到提供托管域的虚拟网络或与其对等互连的虚拟网络。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
 
-1. 现在，使用命令将 VM 加入托管域 `adcli join` 。 指定属于托管域的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 现在，使用 `adcli join` 命令将 VM 加入到托管域。 指定属于托管域的用户。 如有必要，[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同样，必须以全部大写的形式输入托管域名。 在下面的示例中，名为的帐户 `contosoadmin@aaddscontoso.com` 用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是托管域的一部分。
+    同样，必须以全部大写的形式输入托管域名。 在以下示例中，名为 `contosoadmin@aaddscontoso.com` 的帐户用于初始化 Kerberos。 输入你自己的属于托管域的用户帐户。
 
     ```console
     sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos
     ```
 
-    `adcli join`当 VM 已成功加入托管域时，该命令不返回任何信息。
+    VM 成功加入托管域后，`adcli join` 命令不会返回任何信息。
 
 1. 若要应用域加入配置，请启动 SSSD 服务：
   
@@ -154,7 +154,7 @@ krb5_realm = AADDSCONTOSO.COM
 
 若要验证 VM 是否已成功加入托管域，请使用域用户帐户启动新的 SSH 连接。 确认已创建主目录，并且已应用域的组成员身份。
 
-1. 从控制台创建新的 SSH 连接。 使用命令（如）使用属于托管域的域帐户 `ssh -l` ， `contosoadmin@aaddscontoso.com` 然后输入 VM 的地址，例如*coreos.aaddscontoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
+1. 从控制台创建新的 SSH 连接。 通过 `ssh -l` 命令使用属于托管域的域帐户（如 `contosoadmin@aaddscontoso.com`），然后输入 VM 的地址，例如 coreos.aaddscontoso.com。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com coreos.aaddscontoso.com
@@ -170,7 +170,7 @@ krb5_realm = AADDSCONTOSO.COM
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在将 VM 连接到托管域或使用域帐户登录时遇到问题，请参阅[排查域加入问题](join-windows-vm.md#troubleshoot-domain-join-issues)。
+如果在将 VM 连接到托管域或使用域帐户登录时遇到问题，请参阅[域加入问题故障排除](join-windows-vm.md#troubleshoot-domain-join-issues)。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

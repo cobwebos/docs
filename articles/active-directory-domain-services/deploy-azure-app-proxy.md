@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: f02f8c0c5aabc48e7b9966898028485a4687f413
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723072"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>部署 Azure AD 应用程序代理以安全访问 Azure Active Directory 域服务托管域中的内部应用程序

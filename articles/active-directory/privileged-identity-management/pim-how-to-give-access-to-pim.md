@@ -1,5 +1,5 @@
 ---
-title: 授予访问权限以管理 PIM-Azure Active Directory |Microsoft Docs
+title: 授予管理 PIM 的访问权限 - Azure Active Directory | Microsoft Docs
 description: 了解如何授予其他管理员访问权限以管理 Azure AD Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009556"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>委托对 Privileged Identity Management 的访问权限
 
-若要委派对 Privileged Identity Management (PIM) 的访问权限，全局管理员可以向其他用户分配特权角色管理员角色。 默认情况下，安全管理员和安全读者对 Privileged Identity Management 具有只读访问权限。 要授予对 Privileged Identity Management 的访问权限，第一位用户可以将其他用户分配到“特权角色管理员”角色****。 特权角色管理员角色仅在管理 Azure AD 角色时是必需的。 特权角色管理员权限不需要管理 Azure 资源的设置。
+为了委托对 Privileged Identity Management (PIM) 的访问权限，全局管理员可以将其他用户分配到“特权角色管理员”角色。 默认情况下，安全管理员和安全信息读取者拥有 Privileged Identity Management 的只读访问权限。 要授予对 Privileged Identity Management 的访问权限，第一位用户可以将其他用户分配到“特权角色管理员”角色****。 “特权角色管理员”角色仅在管理 Azure AD 角色时是必需的。 若要管理 Azure 资源的设置，特权角色管理员权限不是必需的。
 
 > [!NOTE]
 > 管理 Privileged Identity Management 需要 Azure 多重身份验证。 由于 Microsoft 帐户无法注册 Azure 多重身份验证，因此使用 Microsoft 帐户登录的用户无法访问 Privileged Identity Management。
 
 请确保特权角色管理员角色中始终至少有两位用户，以防其中一位用户被锁定或帐户被删除。
 
-## <a name="delegate-access-to-manage-pim"></a>委派管理 PIM 的访问权限
+## <a name="delegate-access-to-manage-pim"></a>委托用于管理 PIM 的访问权限
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
@@ -46,9 +46,9 @@ ms.locfileid: "88009556"
 
     ![特权角色管理员 - 成员](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. 选择 "**添加成员**"，打开 "**添加托管成员**" 窗格。
+1. 选择“添加成员”打开“添加受管理成员”窗格。
 
-1. 选择 "**选择成员**"，打开 "**选择成员**" 窗格。
+1. 选择“选择成员”，打开“选择成员”窗格。
 
     ![特权角色管理员 - 选择成员](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 

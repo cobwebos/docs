@@ -7,15 +7,15 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 88777ee44551ed6abdb7a6c7c909d6bf55db48c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79527838"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 Query Performance Insight
 
-**适用于：** Azure Database for MariaDB 10。2
+**适用于：** Azure Database for MariaDB 10.2
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。
 
@@ -68,4 +68,4 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure Database for MariaDB 中的[监视和优化](concepts-monitoring.md)。
+- 详细了解如何在 Azure Database for MariaDB 中进行[监视和优化](concepts-monitoring.md)。

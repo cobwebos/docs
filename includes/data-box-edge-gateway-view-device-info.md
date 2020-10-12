@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 3312d1ec7c2535e103cf8959599c0d4c3014f520
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86218068"
 ---
 1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
@@ -49,7 +49,7 @@ ms.locfileid: "86218068"
     |-----------|-------------|
     | FriendlyName                   | 设备部署过程中通过本地 web UI 配置的设备的友好名称。 默认的友好名称为设备序列号。  |
     | SerialNumber                   | 设备序列号是在工厂中分配的唯一编号。                                                                             |
-    | 型号                          | Azure Stack 边缘或 Data Box Gateway 设备的模型。 模型是 Azure Stack 边缘的物理，Data Box Gateway 的虚拟。                   |
+    | “模型”                          | Azure Stack 边缘或 Data Box Gateway 设备的模型。 模型是 Azure Stack 边缘的物理，Data Box Gateway 的虚拟。                   |
     | FriendlySoftwareVersion        | 对应于设备软件版本的友好字符串。 对于运行预览版的系统，友好软件版本将为 1902 Data Box Edge。 |
     | HcsVersion                     | 设备上运行的 HCS 软件版本。 例如，与 Data Box Edge 1902 对应的 HCS 软件版本为1.4.771.324。            |
     | LocalCapacityInMb              | 设备的总本地容量（以 Mb 为单位）。                                                                                                        |

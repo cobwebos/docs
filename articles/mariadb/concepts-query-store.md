@@ -7,15 +7,15 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79527803"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
 
-**适用于：** Azure Database for MariaDB 10。2
+**适用于：** Azure Database for MariaDB 10.2
 
 使用 Azure Database for Mariadb 中的查询存储功能可以跟踪一段时间内的查询性能。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for MariaDB 实例的 **mysql** 架构数据库中。
 
@@ -75,7 +75,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 以下是一些示例，说明如何使用查询存储中的等待统计信息获得有关工作负载的更多见解：
 
-| **观测** | **Action** |
+| **观测** | **操作** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。 |
 |高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。 |

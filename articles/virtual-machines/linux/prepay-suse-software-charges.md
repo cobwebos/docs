@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81759284"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
@@ -23,15 +23,15 @@ ms.locfileid: "81759284"
 
 - 对于至少一个企业或个人订阅，你必须至少拥有一个使用即用即付定价的所有者角色。
 - 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项  。 如果禁用此设置，则必须是订阅的 EA 管理员。
-- 对于云解决方案提供商（CSP）程序，管理代理或销售代理可以购买软件计划。
+- 对于云解决方案提供商 (CSP) 程序，管理代理或销售代理可以购买软件计划。
 
 ## <a name="buy-a-software-plan"></a>购买软件计划
 
-1. 登录到 Azure 门户并中转到 "[预订](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)"。
-2. 单击 "**添加**"，然后选择要购买的软件计划。
+1. 登录到 Azure 门户并中转到 " [预订](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)"。
+2. 单击 " **添加** "，然后选择要购买的软件计划。
 填写必填字段。 任何与所购买内容的属性相匹配的 SUSE Linux VM 或 RedHat VM 均可获得折扣。 实际获得折扣的部署数取决于所选范围和数量。
 3. 选择一个订阅。 它用于为计划付费。
-订阅支付方法将收取预订的前期成本。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或使用即用即付定价的个人协议（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。
+订阅支付方法将收取预订的前期成本。 订阅类型必须是企业协议 (产品/服务： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) 或使用即用即付定价 (产品/服务定价的个人协议： MS-BC-OP-NT-AZR-Ms-azr-0003p 或 bc-op-nt-azr-0023P) 。
     - 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。
     - 对于使用即用即付定价的单个订阅，将对订阅的信用卡或发票付款方式收取费用。
 4. 选择一个范围。 范围可以包含一个订阅或多个订阅（共享范围）。
@@ -47,7 +47,7 @@ ms.locfileid: "81759284"
 
 ## <a name="discount-applies-to-different-suse-vm-sizes"></a>折扣适用于不同的 SUSE VM 大小
 
-与保留 VM 实例一样，SUSE Linux 计划提供实例大小的灵活性。 即使部署的 VM 的大小不同于所购买的 SUSE 计划，你的折扣仍适用。 有关详细信息，请参阅[了解如何应用软件计划折扣](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)。
+与保留 VM 实例一样，SUSE Linux 计划提供实例大小的灵活性。 即使部署的 VM 的大小不同于所购买的 SUSE 计划，你的折扣仍适用。 有关详细信息，请参阅 [了解如何应用软件计划折扣](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)。
 
 ## <a name="redhat-plan-discount"></a>RedHat 计划折扣
 
@@ -58,7 +58,7 @@ RedHat 计划折扣仅适用于你在购买时选择的 VM 大小。 在购买�
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>不允许取消和交换
 
-您无法取消或交换您购买的 SUSE 或 RedHat 计划。 请检查你的使用情况，确保购买的是正确的计划。 若要帮助确定要购买的内容，请参阅[了解如何应用软件计划折扣](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)。
+您无法取消或交换您购买的 SUSE 或 RedHat 计划。 请检查你的使用情况，确保购买的是正确的计划。 若要帮助确定要购买的内容，请参阅 [了解如何应用软件计划折扣](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
@@ -66,7 +66,7 @@ RedHat 计划折扣仅适用于你在购买时选择的 VM 大小。 在购买�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何管理预订，请参阅[管理 Azure 预订](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
+若要了解如何管理预订，请参阅 [管理 Azure 预订](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 
 要了解更多信息，请参阅下列文章：
 

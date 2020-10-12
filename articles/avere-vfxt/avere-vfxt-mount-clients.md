@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272565"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>装载 Avere vFXT 群集
@@ -78,7 +78,7 @@ vserver 路径是其 IP 地址加上命名空间交接点的路径的组合****�
 
 如果群集是通过 Blob 存储创建的，则该容器的命名空间路径为 `/msazure`
 
-示例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
+示例：``mount 10.0.0.12:/msazure /mnt/vfxt``
 
 如果在创建群集后添加了存储，则命名空间接合路径是在创建联接时在 " **命名空间路径** " 中设置的值。 例如，如果使用 ``/avere/files`` 作为命名空间路径，则客户端会将 IP_address:/avere/files 装载到其本地装载点**。
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82086243"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小

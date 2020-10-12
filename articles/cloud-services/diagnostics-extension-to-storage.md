@@ -9,10 +9,10 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723247"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
@@ -59,16 +59,16 @@ ms.locfileid: "88723247"
 
 * **WadLogsTable** - 使用跟踪侦听器以代码编写的日志。
 * **WADDiagnosticInfrastructureLogsTable** - 诊断监视器和配置更改。
-* **WADDirectoriesTable** - 诊断监视器监视的目录。  这包括 IIS 日志、IIS 失败请求日志和自定义目录。  在“容器”字段中指定 blob 日志文件的位置，在 RelativePath 字段中指定 blob 的名称。  AbsolutePath 字段指示文件的位置和名称，就像文件是存在于 Azure 虚拟机上一样。
-* **WADPerformanceCountersTable** - 性能计数器。
-* **WADWindowsEventLogsTable** - Windows 事件日志。
+* **WADDirectoriesTable** -诊断监视器监视的目录。  这包括 IIS 日志、IIS 失败请求日志和自定义目录。  在“容器”字段中指定 blob 日志文件的位置，在 RelativePath 字段中指定 blob 的名称。  AbsolutePath 字段指示文件的位置和名称，就像文件是存在于 Azure 虚拟机上一样。
+* **WADPerformanceCountersTable** -性能计数器。
+* **WADWindowsEventLogsTable** -Windows 事件日志。
 
 **Blob**
 
-* **wad-control-container** -（仅适用于 SDK 2.4 及更低版本）包含用于控制 Azure 诊断的 XML 配置文件。
+* **wad** -仅适用于 SDK 2.4 和以前的)  (包含用于控制 Azure 诊断的 XML 配置文件。
 * **wad-iis-failedreqlogfiles** – 包含 IIS 失败请求日志中的信息。
 * **wad-iis-logfiles** – 包含有关 IIS 日志的信息。
-* **"custom"** - 一个自定义容器，其所基于的配置目录受诊断监视器监视。  此 blob 容器的名称会在 WADDirectoriesTable 中指定。
+* **"自定义"** –基于配置诊断监视器所监视的目录的自定义容器。  此 blob 容器的名称会在 WADDirectoriesTable 中指定。
 
 ## <a name="tools-to-view-diagnostic-data"></a>用于查看诊断数据的工具
 将数据传输到存储空间以后，可以使用多个工具来查看这些数据。 例如：

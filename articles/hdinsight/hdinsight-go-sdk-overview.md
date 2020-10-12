@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79479580"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
@@ -36,7 +36,7 @@ ms.locfileid: "79479580"
 
 ## <a name="authentication"></a>身份验证
 
-首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，你将拥有一个实例 `ClustersClient` ，该实例包含可用于执行管理操作的许多函数（如下部分所述）。
+首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，你将拥有一个实例 `ClustersClient` ，该实例包含可用于执行管理操作的以下部分中 (列出的许多函数) 。
 
 > [!NOTE]  
 > 除了以下示例中所示的方法以外，还有其他一些身份验证方法可能更符合你的需要。 此处概述了所有函数：[Azure SDK for Go 中的身份验证函数](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
@@ -73,7 +73,7 @@ az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]  
-> 如果尚未通过其他功能注册 HDInsight 资源提供程序（例如通过 Azure 门户创建 HDInsight 群集），则需要执行此操作一次，然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
+> 如果尚未通过其他功能注册 HDInsight 资源提供程序 (例如通过 Azure 门户) 创建 HDInsight 群集，则需要执行此操作一次，然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
 >```azurecli-interactive
 >az provider register --namespace Microsoft.HDInsight
 >```
@@ -144,7 +144,7 @@ func main() {
 
 #### <a name="example"></a>示例
 
-此示例演示如何创建具有两个头节点和一个辅助角色节点的[Apache Spark](https://spark.apache.org/)群集。
+此示例演示如何创建具有两个头节点和一个辅助角色节点的 [Apache Spark](https://spark.apache.org/) 群集。
 
 > [!NOTE]  
 > 首先需要创建一个资源组和存储帐户，下面将予以介绍。 如果已创建资源组和存储帐户，则可以跳过这些步骤。
@@ -165,7 +165,7 @@ az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
 
-现在，运行以下命令获取存储帐户的密钥（需要用它来创建群集）：
+现在，请运行以下命令获取存储帐户的密钥， (需要此密钥来创建群集) ：
 
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>

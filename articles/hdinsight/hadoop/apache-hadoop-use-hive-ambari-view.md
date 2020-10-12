@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207830"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用

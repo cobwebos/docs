@@ -8,10 +8,10 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: a80ad943a6b11be86587d2e247a44a1b7d1e064d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660174"
 ---
 # <a name="creating-an-incremental-snapshot-for-managed-disks"></a>创建托管磁盘的增量快照

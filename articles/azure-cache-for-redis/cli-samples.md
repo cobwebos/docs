@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure CLI 管理 Redis 的 Azure 缓存
-description: Azure CLI 用于管理 Redis 的 Azure 缓存的示例：创建缓存、删除缓存、获取缓存详细信息、主机名、端口和密钥，以及连接 web 应用。
+title: 使用 Azure CLI 管理 Azure Cache for Redis
+description: 管理 Azure Cache for Redis 的 Azure CLI 示例：创建缓存，删除缓存，获取缓存详细信息、主机名、端口和密钥，并连接 Web 应用。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 04/14/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87499596"
 ---
-# <a name="manage-azure-cache-for-redis-with-azure-cli"></a>通过 Azure CLI 管理 Redis 的 Azure 缓存
+# <a name="manage-azure-cache-for-redis-with-azure-cli"></a>使用 Azure CLI 管理 Azure Cache for Redis
 
 下表包含指向使用 Azure CLI 生成的 bash 脚本的链接。
 

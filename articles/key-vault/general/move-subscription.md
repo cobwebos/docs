@@ -12,10 +12,10 @@ ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
 ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394726"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
@@ -27,7 +27,7 @@ ms.locfileid: "89394726"
 > [!IMPORTANT]
 > **将密钥保管库移动到另一个订阅会导致环境发生中断性变更。**
 > 在决定将密钥保管库移动到新订阅之前，请确保你了解此变更的影响，并仔细遵循本文中的指导。
-> 如果 (MSI 使用托管服务标识) 请阅读文档末尾的移动后说明。 
+> 如果使用的是托管服务标识 (MSI)，请阅读此文档末尾的移动后说明。 
 
 创建密钥保管库时，它会自动绑定到创建它的订阅的默认 Azure Active Directory 租户 ID。 所有访问策略条目也都绑定到此租户 ID。 如果将 Azure 订阅从租户 A 移到租户 B，租户 B 中的服务主体（用户和应用程序）将无法访问现有的密钥保管库。若要解决此问题，需执行以下操作：
 
@@ -70,9 +70,9 @@ ms.locfileid: "89394726"
 7. 确认有关移动资源的警告
 8. 选择“确定”
 
-### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>将密钥保管库移动到新租户中的订阅的其他步骤
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>附加步骤（如果将密钥保管库移到了新租户中的订阅）
 
-如果已将密钥保管库移动到新租户中的订阅，则需要手动更新租户 ID 并删除旧的访问策略。 下面是通过 PowerShell 和 Azure CLI 执行这些步骤的教程。 如果使用的是 PowerShell，可能需要运行下面所述的 AzContext 命令，以允许查看当前所选范围之外的资源。 
+如果将密钥保管库移到了新租户中的订阅，则需要手动更新租户 ID 并删除旧的访问策略。 下面是通过 PowerShell 和 Azure CLI 执行这些步骤的教程。 如果使用的是 PowerShell，可能需要运行下面所述的 Clear-AzContext 命令，这样就能查看当前所选范围外的资源。 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -97,9 +97,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 既然保管库已与正确的租户 ID 关联，并且旧的访问策略条目已删除，请使用 Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet 或 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令设置新的访问策略条目。
 
-如果使用 Azure 资源的托管标识，还需要将其更新为新的 Azure Active Directory 租户。 有关托管标识的详细信息，请 [参见托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。
+如果使用的是 Azure 资源的托管标识，则还需要将其更新为新的 Azure Active Directory 租户。 有关托管标识的详细信息，请参阅[托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。
 
-如果使用的是托管标识，则还必须更新标识，因为旧标识将不再位于正确的 Azure Active Directory 租户中。 请参阅以下文档以帮助解决此问题。 
+如果使用的是托管标识，则还必须更新标识，因为旧标识将不再位于相应的 Azure Active Directory 租户中。 参阅下述有助于解决此问题的文档。 
 
-* [正在更新 MSI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
+* [更新 MSI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
 * [将订阅转移到新目录](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)

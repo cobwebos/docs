@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79504321"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>启用单一登录的步骤
 云设置适用于单一登录。  在安装代理时，当前没有启用 SSO 的选项，但你可以使用以下步骤启用 SSO 并使用它。 
 
 ### <a name="step-1-download-and-extract-azure-ad-connect-files"></a>步骤1：下载并提取 Azure AD Connect 文件
-1.  首先，下载最新版本的[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
+1.  首先，下载最新版本的 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2.  使用管理权限打开命令提示符，并导航到刚刚下载的 msi。
-3.  运行以下内容：`msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
+3.  运行以下内容：  `msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
 4. 更改 filepath 和 extractfolder，使其与你的文件路径和提取文件夹的名称相匹配。  内容现在应在提取文件夹中。
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>步骤2：导入无缝 SSO PowerShell 模块
 
-1. 下载并安装[Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+1. 下载并安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
 2. 浏览到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
 3. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
 
@@ -44,6 +44,6 @@ ms.locfileid: "79504321"
 
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5. 在租户上启用此功能
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5。 在租户上启用此功能
 
 若要在租户上启用此功能，请调用 `Enable-AzureADSSO -Enable $true`。

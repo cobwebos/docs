@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272767"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
@@ -74,7 +74,7 @@ ms.locfileid: "88272767"
 
 * **位置** - 选择群集和资源的 Azure 位置。
 
-完成后单击 **"确定"** 。
+完成后，单击“确定”。
 
 > [!NOTE]
 > 如果希望群集控制器有一个面向公众的 IP 地址，请为群集创建一个新的虚拟网络，而不是选择一个现有的网络。 此设置在第二页上。

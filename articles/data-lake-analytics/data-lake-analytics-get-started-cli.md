@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/18/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: be7f9d66a10f3f0f4a1ae0f9e28e226f268a7f7c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87497437"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>通过 Azure CLI 开始使用 Azure Data Lake Analytics
@@ -19,7 +19,7 @@ ms.locfileid: "87497437"
 
 本文介绍如何使用 Azure CLI 命令行接口创建 Azure Data Lake Analytics 帐户、提交 USQL 作业和目录。 此作业读取制表符分隔值 (TSV) 文件，并将其转换为逗号分隔值 (CSV) 文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，需要以下项：
 
@@ -196,4 +196,4 @@ az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-fr
 
 * 若要查看 Data Lake Analytics Azure CLI 参考文档，请参阅 [Data Lake Analytics](/cli/azure/dla)。
 * 若要查看 Data Lake Store Azure CLI 参考文档，请参阅 [Data Lake Store](/cli/azure/dls)。
-* 若要查看更复杂的查询，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
+* 若要查看更复杂的查询，请参阅 [使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。

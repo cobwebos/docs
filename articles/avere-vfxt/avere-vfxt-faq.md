@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
 ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272685"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure FAQ
@@ -26,7 +26,7 @@ Avere vFXT for Azure 是高性能的文件系统，可在 Azure 计算中缓存�
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT 是存储解决方案吗？
 
-否。 Avere vFXT for Azure 是一个文件系统 *缓存* ，它附加到存储环境（例如你的 EMC 或 NetApp NAS）或 Azure blob 容器。 Avere vFXT 高效处理来自客户端的数据请求，并缓存它所服务的数据，以便随着时间推移大幅度提高性能。 Avere vFXT 本身不存储数据。 它没有关于其后所存储的数据量的信息。
+不是。 Avere vFXT for Azure 是一个文件系统 *缓存* ，它附加到存储环境（例如你的 EMC 或 NetApp NAS）或 Azure blob 容器。 Avere vFXT 高效处理来自客户端的数据请求，并缓存它所服务的数据，以便随着时间推移大幅度提高性能。 Avere vFXT 本身不存储数据。 它没有关于其后所存储的数据量的信息。
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT 是分层的解决方案吗？
 
@@ -106,7 +106,7 @@ Avere vFXT 群集可以小到三个虚拟机节点或大到 24 个节点。 如�
 
 ### <a name="does-the-avere-vfxt-environment-autoscale"></a>Avere vFXT 环境是否“自动缩放”？
 
-否。 可以缩放群集大小，但添加或删除群集节点要手动操作。
+不是。 可以缩放群集大小，但添加或删除群集节点要手动操作。
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>可否将 Avere vFXT 群集作为虚拟机规模集运行？
 
@@ -122,11 +122,11 @@ Avere vFXT 不支持虚拟机规模集的部署。 仅针对参与群集的原�
 
 ### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Avere vFXT VM 是否会消耗计算配额？
 
-是的。 请确保在区域中有足够的配额以支持群集。  
+是。 请确保在区域中有足够的配额以支持群集。  
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>是否可以在不同的可用性区域中运行 Avere vFXT 群集计算机？
 
-否。 Avere vFXT 中使用的高可用性模型目前不支持位于不同的可用区域中的单个 Avere vFXT 集群成员。
+不是。 Avere vFXT 中使用的高可用性模型目前不支持位于不同的可用区域中的单个 Avere vFXT 集群成员。
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>可否可以克隆 Avere vFXT 虚拟机？
 
@@ -177,7 +177,7 @@ Avere vFXT for Azure 当前不支持本地 SSD。 用于 Avere vFXT 的磁盘必
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT 是否需要自己的子网？
 
-是的。 Avere vFXT (HA) 群集严格运行，并且需要多个 IP 地址才能运行。 如果群集位于自己的子网中，则可以避免 IP 地址冲突的风险，冲突可能导致安装和正常操作出现问题。 群集的子网可以位于其他资源使用的虚拟网络中，前提是没有 IP 地址重叠。
+是。 Avere vFXT (HA) 群集严格运行，并且需要多个 IP 地址才能运行。 如果群集位于自己的子网中，则可以避免 IP 地址冲突的风险，冲突可能导致安装和正常操作出现问题。 群集的子网可以位于其他资源使用的虚拟网络中，前提是没有 IP 地址重叠。
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>可否在 InfiniBand 上运行 Avere vFXT？
 
@@ -253,7 +253,7 @@ Avere vFXT 不支持专用对象存储。
 
 ### <a name="can-i-use-archive-blob-storage"></a>可否使用存档 Blob 存储？
 
-否。 存档存储的服务级别协议 (SLA) 与 Avere vFXT 系统的实时目录和文件访问需求不兼容。
+不是。 存档存储的服务级别协议 (SLA) 与 Avere vFXT 系统的实时目录和文件访问需求不兼容。
 
 ### <a name="can-i-use-cool-blob-storage"></a>可否使用冷 Blob 存储？
 
